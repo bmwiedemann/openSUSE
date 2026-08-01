@@ -172,4 +172,29 @@
     <comment>- Update to 1.15.0:</comment>
     <requestid>1338666</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>bb3e9cf22bdd7337840966f7b2c66b8f</srcmd5>
+    <version>1.18.0</version>
+    <time>1785601717</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.18.0
+
+Three upstream releases since 1.15.0. The library soname is unchanged at 9
+(LT_CURRENT 18 - LT_AGE 9), verified against the built
+/usr/lib64/libnghttp3.so.9, so no consumer rebuild is implied and
+baselibs.conf needs no change.
+
+Notable: new nghttp3_conn_close_stream2 / nghttp3_stream_close2 callback,
+nghttp3_conn_stream_flushed, public variable-length integer encode/decode,
+header length validated against the estimated uncompressed length, header
+name validation fixed, a memory leak on the failure path fixed, and a build
+error with gcc-16 fixed.
+
+Motivation: nghttp2 1.70.0 requires libnghttp3 &gt;= 1.17.0, so this unblocks
+that update. I will submit nghttp2 once this lands.
+
+Built on aarch64: 0 rpmlint badness, source_validator clean, tarball
+signature verified against the packaged keyring. (forwarded request 1368497 from pluskalm)</comment>
+    <requestid>1368788</requestid>
+  </revision>
 </revisionlist>

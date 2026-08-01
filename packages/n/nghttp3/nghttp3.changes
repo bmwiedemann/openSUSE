@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Jul 30 06:28:44 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.18.0:
+  * Added nghttp3_conn_close_stream2 and the nghttp3_stream_close2
+    callback
+  * Validate the header length against the estimated uncompressed
+    length
+  * Fix a build error with gcc-16
+- Changes from 1.17.0:
+  * Added nghttp3_conn_stream_flushed and public API to encode and
+    decode variable-length integers
+  * Fix header name validation
+- Changes from 1.16.0:
+  * Added nghttp3_conn_get_stream_user_data
+  * Call the nghttp3_stream_close callback for all streams
+  * Fix a memory leak on the failure path
+  * Ignore content-length for the extended CONNECT
+  * Reject HTTP status codes with a leading zero
+  * Optimize huffman decode length estimation
+- The library soname is unchanged at 9
+
+-------------------------------------------------------------------
 Wed Mar 11 10:35:30 UTC 2026 - Angel Yankov <angel.yankov@suse.com>
 
 - Update to 1.15.0:

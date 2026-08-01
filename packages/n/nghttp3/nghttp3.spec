@@ -19,11 +19,10 @@
 %global soname  libnghttp3
 %global sover   9
 Name:           nghttp3
-Version:        1.15.0
+Version:        1.18.0
 Release:        0
 Summary:        Implementation of Hypertext Transfer Protocol version 3 in C
 License:        MIT
-Group:          Development/Libraries/C and C++
 URL:            https://nghttp2.org/nghttp3/
 Source0:        https://github.com/ngtcp2/nghttp3/releases/download/v%{version}/nghttp3-%{version}.tar.xz
 Source1:        https://github.com/ngtcp2/nghttp3/releases/download/v%{version}/nghttp3-%{version}.tar.xz.asc
@@ -39,7 +38,6 @@ RFC 9204 QPACK in C.
 
 %package -n %{soname}-%{sover}
 Summary:        Hypertext Transfer Protocol version 3 implementation
-Group:          System/Libraries
 
 %description -n %{soname}-%{sover}
 nghttp3 is an implementation of RFC 9114 HTTP/3 mapping over QUIC and
@@ -57,7 +55,6 @@ The following extensions have been implemented:
 
 %package devel
 Summary:        Development files for nghttp3
-Group:          Development/Languages/C and C++
 Requires:       %{soname}-%{sover} = %{version}
 Provides:       libnghttp3-devel = %{version}-%{release}
 Obsoletes:      libnghttp3-devel < %{version}-%{release}
