@@ -1081,4 +1081,12 @@ known issue: KMPs not yet propetly supported</comment>
     <comment>update longterm</comment>
     <requestid>1367937</requestid>
   </revision>
+  <revision rev="136" vrev="1">
+    <srcmd5>19950090cef3f05adb5b5a8499bfd4ca</srcmd5>
+    <version>6.18.41</version>
+    <time>1785601801</time>
+    <user>dimstar_suse</user>
+    <comment>update longterm</comment>
+    <requestid>1368776</requestid>
+  </revision>
 </revisionlist>

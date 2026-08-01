@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Thu Jul 30 14:37:09 CEST 2026 - rfrohl@suse.com
+
+- Linux 6.18.41 (bsc#1258210).
+- posix-cpu-timers: Prevent UAF caused by non-leader exec() race
+  (bsc#1258210).
+- posix-timers: Expand timer_[re]arm() callbacks with a boolean
+  return value (bsc#1258210).
+- commit 12779a8
+
+-------------------------------------------------------------------
+Tue Jul 28 10:55:51 CEST 2026 - msuchanek@suse.de
+
+- mkspec-dtb: Move provides-obsoletes to package list
+- commit 62b3949
+
+-------------------------------------------------------------------
+Tue Jul 28 09:39:24 CEST 2026 - msuchanek@suse.de
+
+- mkspec-dtb: Move DTS prefix into package list
+- commit 225c506
+
+-------------------------------------------------------------------
+Tue Jul 28 09:28:48 CEST 2026 - msuchanek@suse.de
+
+- mkspec-dtb: Put per-architecture package lists into a hash
+- commit c4b48e1
+
+-------------------------------------------------------------------
+Tue Jul 28 08:49:59 CEST 2026 - msuchanek@suse.de
+
+- mkspec-dtb: re-indent
+- commit 1e2a2b0
+
+-------------------------------------------------------------------
+Mon Jul 27 15:26:17 CEST 2026 - msuchanek@suse.de
+
+- pkspec-dtb: Fix dtb-al rename.
+- commit 98ec660
+
+-------------------------------------------------------------------
+Mon Jul 27 15:18:40 CEST 2026 - msuchanek@suse.de
+
+- mkspec-dtb: Skip missing DTBs.
+- commit 133d77b
+
+-------------------------------------------------------------------
 Fri Jul 24 18:22:56 CEST 2026 - rfrohl@suse.com
 
 - usb: atm: ueagle-atm: reject descriptors that confuse probe
@@ -190179,7 +190225,7 @@ Mon May 10 21:28:42 CEST 2021 - tiwai@suse.de
 Mon May 10 15:38:19 CEST 2021 - dmueller@suse.com
 
 - Add dtb-apple (bsc#1185845)
-- commit 405d0ae
+- commit a4cbf85
 
 -------------------------------------------------------------------
 Mon May 10 10:46:48 CEST 2021 - mkubecek@suse.cz
@@ -204155,7 +204201,7 @@ Mon Oct  5 23:19:30 CEST 2020 - afaerber@suse.com
 
 - rpm/mkspec-dtb: Update for 5.9
   arch/arm64/boot/dts/al subdir has been renamed to amazon.
-- commit e450c4d
+- commit 3949f1c
 
 -------------------------------------------------------------------
 Mon Oct  5 17:30:07 CEST 2020 - tiwai@suse.de
