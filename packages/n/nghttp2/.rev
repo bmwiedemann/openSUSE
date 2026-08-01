@@ -975,4 +975,12 @@
     <comment></comment>
     <requestid>1362476</requestid>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>e0ab904f618bc8cad1a1d04a521c5888</srcmd5>
+    <version>1.70.0</version>
+    <time>1785601716</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.70.0. Needs nghttp3 &gt;= 1.17.0, still pending as sr#1368497 against devel:libraries:c_c++ (Factory has 1.15.0); libnghttp3/libngtcp2 buildrequires are now versioned so this stays unresolvable until it lands, as requested on sr#1368765.</comment>
+    <requestid>1368786</requestid>
+  </revision>
 </revisionlist>

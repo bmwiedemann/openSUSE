@@ -24,20 +24,19 @@
 %bcond_with http3
 %endif
 Name:           nghttp2
-Version:        1.69.0
+Version:        1.70.0
 Release:        0
 Summary:        Implementation of Hypertext Transfer Protocol version 2 in C
 License:        MIT
-Group:          Development/Libraries/C and C++
 URL:            https://nghttp2.org/
 Source0:        https://github.com/nghttp2/nghttp2/releases/download/v%{version}/nghttp2-%{version}.tar.xz
 Source1:        https://github.com/nghttp2/nghttp2/releases/download/v%{version}/nghttp2-%{version}.tar.xz.asc
 Source2:        nghttp2.keyring
 Source3:        baselibs.conf
-# PATCH-FIX-UPSTREAM: CVE-2026-58055
-Patch:          0001-nghttpx-Tighten-up-CONNECT-and-HTTP-Upgrade-handling.patch
 BuildRequires:  libboost_thread-devel
 BuildRequires:  pkgconfig
+# for util/test_util_localtime_date
+BuildRequires:  timezone
 BuildRequires:  pkgconfig(cunit)
 BuildRequires:  pkgconfig(jansson)
 BuildRequires:  pkgconfig(libcares)
@@ -53,15 +52,13 @@ BuildRequires:  gcc13-c++
 BuildRequires:  gcc-c++
 %endif
 %if %{with http3}
+BuildRequires:  libngtcp2_crypto_ossl-devel >= 1.23.0
 BuildRequires:  pkgconfig(libevent_openssl)
-BuildRequires:  pkgconfig(libnghttp3)
-BuildRequires:  libngtcp2_crypto_ossl-devel
+BuildRequires:  pkgconfig(libnghttp3) >= 1.17.0
 %endif
 %ifnarch ppc %{arm}
 BuildRequires:  pkgconfig(jemalloc)
 %endif
-# for util/test_util_localtime_date
-BuildRequires:  timezone
 
 %description
 This is an implementation of Hypertext Transfer Protocol version 2.
@@ -74,7 +71,6 @@ HPACK encoder and decoder are available as public API.
 
 %package -n %{soname}-%{sover}
 Summary:        Shared library for nghttp2
-Group:          System/Libraries
 
 %description -n %{soname}-%{sover}
 Shared C libraries for implementation of Hypertext Transfer Protocol
@@ -82,7 +78,6 @@ version 2.
 
 %package -n python3-nghttp2
 Summary:        Python3 bindings for nghttp2
-Group:          Development/Libraries/Python
 
 %description -n python3-nghttp2
 Python bindings for implementation of Hypertext Transfer Protocol version
@@ -90,7 +85,6 @@ Python bindings for implementation of Hypertext Transfer Protocol version
 
 %package -n %{soname}-devel
 Summary:        Development files for nghttp2
-Group:          Development/Languages/C and C++
 Requires:       %{soname}-%{sover} = %{version}
 Provides:       %{name}-devel = %{version}
 
@@ -100,7 +94,7 @@ Hypertext Transfer Protocol version 2.
 
 %package doc
 Summary:        Documentation for nghttp2
-Group:          Documentation/HTML
+BuildArch:      noarch
 
 %description doc
 Documentation for nghttp2, which includes a shared C library,

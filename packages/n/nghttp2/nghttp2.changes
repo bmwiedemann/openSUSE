@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Jul 31 08:15:24 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Require the versions configure actually checks for: libnghttp3 >= 1.17.0
+  and libngtcp2 >= 1.23.0. Without them OBS starts the build and lets it
+  fail in configure, instead of holding the package unresolvable until
+  nghttp3 is in place
+
+-------------------------------------------------------------------
+Fri Jul 31 06:47:45 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.70.0:
+  * nghttpx: add separate frontend and backend stream timeouts, plus an
+    HTTP/2 stream write timeout
+  * nghttpx: drop HTTP/2 and HTTP/3 connections whose frontend write
+    rate is too low, so a peer can no longer hold a connection open by
+    reading slowly
+  * Rework HTTP header validation, and add the value check that was
+    missing for the priority header field
+  * Fix an out-of-bounds read in the base64 decoder
+  * get_socket_error() now reports the errno of getsockopt() when that
+    call itself fails, instead of a stale value
+  * Update the bundled llhttp to 9.4.2 and mruby to 4.0.0, and refresh
+    the bundled ngtcp2, neverbleed and sfparse
+  * Large internal rework: nghttpx now carries its error paths in
+    std::expected rather than out-parameters
+- Drop 0001-nghttpx-Tighten-up-CONNECT-and-HTTP-Upgrade-handling.patch,
+  the fix is part of this release (CVE-2026-58055, bsc#1269489)
+- Mark the doc subpackage noarch, it ships documentation only and
+  rpmlint rightly flagged it with no-binary
+- Run spec-cleaner: drop the Group tags and sort the build
+  dependencies
+
+-------------------------------------------------------------------
 Mon Jun 29 09:22:53 UTC 2026 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - stricter validation for HTTP CONNECT and Upgrade requests across HTTP/1,
