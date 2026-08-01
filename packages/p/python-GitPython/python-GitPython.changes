@@ -1,4 +1,113 @@
 -------------------------------------------------------------------
+Sat Jul 25 17:39:39 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to version 3.1.56:
+  * prepare next release
+  * fix: reject unsafe output options in Commit.count
+  * Stop testing experimental 3.13t
+  * Add support for Python 3.15
+  * Declare support for Python 3.13-3.14
+  * prepare release
+  * fix: prevent environment expansion in remote URLs
+  * prepare next release
+  * fix: guard diff output options
+  * fix: reject unsafe clone templates
+  * fix: validate split short-option values
+  * prepare for security fix
+  * fix: validate config section delimiters
+  * Address review feedback about hook resolution
+  * fix: respect core.hooksPath for commit hooks
+  * upate contributing guide to avoid agent impersonation
+  * fix: make `submodule.update()` after `submodule.deinit()` work
+  * typing: introduce sensible basedpyright defaults
+  * review
+  * feat(submodule): add deinit method to Submodule (#2014)
+  * bump patch level prior to release
+  * fix: prevent environment expansion in clone URLs
+  * test: skip relative config include across Windows drives
+  * bump to v3.1.51
+  * fix: Guard unsafe git command options (GHSA-956x-8gvw-wg5v)
+  * chore: avoid duplicate runs of CI in PRs
+  * fix: allow relative config paths with includes (#2103)
+  * fix: reject joined unsafe short options
+  * Address review feedback about unsafe option abbreviations
+  * Add Commit.is_shallow property; document stats() limitation at shallow boundary (#2167)
+  * Reject abbreviated forms of unsafe git options
+  * Bump https://github.com/astral-sh/ruff-pre-commit
+  * Bump git/ext/gitdb from `0a019a2` to `4950ea9`
+  * Bump actions/checkout from 6 to 7
+  * Bump https://github.com/astral-sh/ruff-pre-commit
+  * refactor: seperate out Progress type
+  * Cut xtrace noise from POSIX-ownership diagnostic steps
+  * test: accept stderr in string process adapter
+  * fix: preserve diff process stderr
+  * test: allow alternate bad fetch errors
+  * fix: use shared empty tree sha for index diffs
+  * Support index diffs against empty tree
+  * Match test_root_module's deep-traversal assertion to gitdb's structure
+  * Remove temporary test jobs (testing complete)
+  * Remove `submodules: recursive` (testing complete)
+  * Cover submodule working trees in safe.directory on Cygwin
+  * Add `submodules: recursive` temporarily, for testing
+  * Restructure CI diagnostic steps
+  * Show file ownership and safe.directory entries on every test job
+  * Add a diagnostic job demonstrating the TokenOwner mechanism
+  * Clearly reproduce Cygwin safe.directory submodule bug
+  * Add a test that required submodules are initialized
+  * Add a test that fixture directories are usable by git
+  * Add xfail_if_raises context manager to defer xfail condition evaluation
+  * doc(_call_process): correct example
+  * support relative worktree paths (git 2.48+ worktree.useRelativePaths)
+  * fix(worktree): align with Git's gitdir resolution
+  * Bump git/ext/gitdb from `335c0f6` to `0a019a2`
+  * Document init script behavior when multiple remotes have master
+  * Word `shell` mention of `shlex.split` more carefully
+  * Rewrite Git.execute() command parameter docstring per #2146
+  * docs(cmd): clarify Git.execute() string vs list command argument
+  * Separate quality paragraphs and adjust decline wording
+  * Add AI-disclusure and quality requirements to the contribution guidelines.
+
+-------------------------------------------------------------------
+Sat Jul 25 17:32:21 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to version 3.1.56:
+  - Add support for Python 3.15
+  - fix: reject unsafe output options in Commit.count
+- Update to version 3.1.55:
+  - fix: prevent environment expansion in remote URLs
+- Update to version 3.1.54:
+  - Harden unsafe Git option validation
+- Update to version 3.1.53:
+  - feat(submodule): add deinit method to Submodule (#2014)
+  - typing: introduce sensible basedpyright defaults
+  - fix: make submodule.update() after submodule.deinit() work
+  - Fix commit hooks respecting core.hooksPath
+  - fix: validate config section delimiters
+- Update to version 3.1.52:
+  - Skip cross-drive relative config test on Windows
+  - fix: preserve literal clone URLs
+- Update to version 3.1.51:
+  - Add AI-disclosure and quality requirements to the
+    contribution guidelines
+  - docs(cmd): clarify Git.execute() string vs list command
+    argument
+  - Rewrite Git.execute() command parameter docstring per #2146
+  - Document init script behavior with multiple master remotes
+  - Support relative worktree paths (git 2.48+
+    worktree.useRelativePaths)
+  - Defer xfail condition evaluation with xfail_if_raises context
+    manager
+  - Run more submodule tests on Cygwin (fix flaky xfails)
+  - Cut xtrace noise from POSIX-ownership diagnostic steps
+  - Support index diffs against the empty tree
+  - refactor: seperate out Progress type
+  - Add Commit.is_shallow property; document stats() limitation
+    at shallow boundary
+  - Allow relative config paths with includes
+  - Reject abbreviated forms of unsafe git options
+  - guard unsafe git command options
+
+-------------------------------------------------------------------
 Tue Jun 30 16:14:52 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to version 3.1.50:
