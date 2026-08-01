@@ -1906,4 +1906,12 @@
     <comment></comment>
     <requestid>1364992</requestid>
   </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>23c8293eef86e8e9f5bbb89e534f0569</srcmd5>
+    <version>8.5.9</version>
+    <time>1785601719</time>
+    <user>dimstar_suse</user>
+    <comment>[bsc#1273075], [bsc#1273076], [bsc#1273077], [bsc#1273078], CVE-2026-17543, CVE-2026-17544, CVE-2026-7260, CVE-2026-9672, GHSA-7qpv-r5mr-78m4, GHSA-vc5h-9ppw-p5f3, GHSA-x692-q9x7-8c3f</comment>
+    <requestid>1368801</requestid>
+  </revision>
 </revisionlist>
