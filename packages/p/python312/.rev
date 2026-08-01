@@ -2095,4 +2095,41 @@
   header files are (bsc#1268375).</comment>
     <requestid>1362410</requestid>
   </revision>
+  <revision rev="51" vrev="8">
+    <srcmd5>effa12d2f671448237ffd79b588ec933</srcmd5>
+    <version>3.12.13</version>
+    <time>1785601701</time>
+    <user>dimstar_suse</user>
+    <comment>- CVE-2026-3276: Fix O(n^2) canonical ordering in
+  unicodedata.normalize() (bsc#1267581, gh#python/cpython#149079)
+CVE-2026-3276-On2-unicodedata-normalize.patch
+
+- CVE-2026-7774: tarfile.data_filter: validate written link
+  target (bsc#1267821, gh#149486)
+  CVE-2026-7774-tarfile-data_filter-symlink.patch
+
+- CVE-2026-0864: Normalize all line endings (CR, CRLF, and LF) in
+  configparser (bsc#1269066, gh#python/cpython#143927)
+  CVE-2026-0864-normalize-LFTAB-configparser.patch
+
+- CVE-2026-11972: Make tarfile._Stream.seek break at EOF
+  (bsc#1269788, gh#python/cpython#151981)
+  CVE-2026-11972-tarfile-Stream-seek-EOF.patch
+
+- CVE-2026-4360: Pass filter_function to TarFile._extract_one()
+  during .extract() (bsc#1269959, gh#python/cpython#151987)
+  CVE-2026-4360-filter_function-TarFile-extractone.patch
+
+- CVE-2026-15308: Fix quadratic complexity in incremental parsing
+  in HTMLParser (bsc#1271192, gh#python/cpython#153030)
+  CVE-2026-15308-HTMLParser-CPU-exhaust.patch
+
+- Add patch support-sphinx-9.patch:
+  * Support changes required for Sphinx 9.
+
+- CVE-2026-7210: Use XML_SetHashSalt16Bytes in
+  pyexpat/_elementtree when possible (bsc#1264962,
+  gh#python/cpython#149018).</comment>
+    <requestid>1368858</requestid>
+  </revision>
 </revisionlist>
