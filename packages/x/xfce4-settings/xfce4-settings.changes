@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Jul 30 07:00:59 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.20.5:
+  * Fix -Wdiscarded-qualifiers compiler warning
+  * Remove G_GNUC_CONST
+  * wayland: Set mode dimensions to 1x1 if width or height <= 0
+  * Revert "dialogs/display-settings: Fix possible arithmetic exception"
+  * dialogs/display-settings: Fix possible arithmetic exception
+  * Add missing chain up to parent class
+  * display-settings: Release main object early to avoid use-after-free
+  * display-settings: Handle source memory management
+  * I18n: Update po/LINGUAS list
+  * wayland: display-settings: Fall back to output name when EDID is
+    duplicated
+  * xfsettingsd: Add some debug traces to gtk-settings helper
+  * gtk-settings-module: handle g_value_transform() failures
+  * Special-case gtk-xft-hintstyle
+  * Include an allowlist of xfconf props to sync to GtkSettings
+  * Fix incorrect TitleCase to kebab-case in gtk-settings-module.c
+  * Translation Updates
+
+-------------------------------------------------------------------
 Tue Mar  3 15:09:45 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 4.20.4:
