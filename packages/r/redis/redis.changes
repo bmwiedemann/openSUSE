@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Thu Jul 30 09:26:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Build the server only, restoring the build: since 8.x upstream vendors
+  redisbloom, redisearch, redisjson and redistimeseries into modules/ and
+  the default target builds them, turning any module failure into a hard
+  error. All four fail here and none of them was ever packaged, so the
+  build was failing on every architecture for artifacts that are then
+  discarded. Select just the server with "build core"
+  * redisbloom needs cmake and a python3 providing pip, since its readies
+    build system probes the interpreter with "python3 -m pip --version"
+  * redisearch aborts with "Unsupported operating system: unknown"
+  * redisjson is Rust and reaches for crates.io, so it needs vendored
+    crates to build offline at all
+  * redistimeseries fails at link time
+  Building the modules belongs in a separate multibuild flavour, so that
+  the server's own rebuilds do not pull in cmake, autotools and a Rust
+  toolchain
+- Drop redis-full.conf from %doc: it is generated only by the module
+  build, where it carries the loadmodule lines, and would otherwise
+  reference modules this package does not ship
+
+-------------------------------------------------------------------
+Wed Jul 29 17:52:06 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 8.10.1
+  Major changes compared to 8.8
+  - Compact hashes - a new hash encoding that reduces memory usage
+    by storing hash field names just once for keys that share a
+    schema
+  - New command: HIMPORT - high-throughput compact hash bulk
+    insertion
+  - TLS peer certificate-based server-to-server authentication
+  - New commands: LMOVEM, BLMOVEM - move multiple elements between
+    lists
+  - New command: SUNIONCARD - get the cardinality of the union of
+    multiple sets
+  - New command: SDIFFCARD - get the cardinality of the difference
+    between sets
+  - New command: BACKUP - node-side implementation for backup and
+    restore based on multi-part AOF (MP-AOF)
+  - XREAD, XREADGROUP - new MAXCOUNT and MAXSIZE arguments to cap
+    the cumulative reply entries and size
+  - New command: FT.ALIASLIST - get all aliases for the index
+  - Stemmer support for Malay and Tagalog languages
+  - JSONPath extensions
+  - New commands: TS.NRANGE, TS.NREVRANGE - Query a range across
+    multiple time series; group results by timestamp
+  - New command: TS.READ - optionally blocking read
+  - New command: TS.QUERYLABELS - Get a list of labels and
+    label-values
+  - New command: TS.MRANGE, TS.MREVRANGE - new EXCLUDEEMPTY
+    argument to exclude series with no reported samples
+  - Performance improvements
+
+-------------------------------------------------------------------
 Thu Jul 23 19:31:06 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 8.8.1

@@ -20,7 +20,7 @@
 %define _log_dir        %{_localstatedir}/log/%{name}
 %define _conf_dir       %{_sysconfdir}/%{name}
 Name:           redis
-Version:        8.8.1
+Version:        8.10.0
 Release:        0
 Summary:        Persistent key-value database
 License:        AGPL-3.0-only
@@ -70,7 +70,16 @@ echo "`grep -F %{name}-%{version}.tar.gz %{SOURCE10} | cut -d' ' -f4`  %{SOURCE0
 
 %build
 export HOST=OBS # for reproducible builds
-%make_build CFLAGS="%{optflags}" \
+# Build the server only. Since 8.x upstream vendors redisbloom, redisearch,
+# redisjson and redistimeseries into modules/ and the default target builds
+# them, turning any module failure into a hard error. None of them is
+# packaged here (see %%files), and each needs build tooling the server does
+# not: cmake and a python3 with pip for redisbloom, an OS-detection fix for
+# redisearch, and vendored crates for the Rust redisjson, which otherwise
+# tries to reach crates.io and cannot work in an offline build root.
+# "build core" selects just the server; adding the modules belongs in a
+# separate multibuild flavour so the server's own rebuilds stay cheap.
+%make_build build core CFLAGS="%{optflags}" \
         BUILD_WITH_SYSTEMD=yes \
         BUILD_TLS=yes
 %sysusers_generate_pre %{SOURCE9} %{name}
@@ -161,7 +170,9 @@ echo "See %{_docdir}/%{name}/README.SUSE to continue"
 
 %files
 %license LICENSE.txt
-%doc 00-RELEASENOTES BUGS REDISCONTRIBUTIONS.txt redis-full.conf *.md
+# redis-full.conf is generated only by the module build (it carries the
+# loadmodule lines) and would reference modules this package does not ship
+%doc 00-RELEASENOTES BUGS REDISCONTRIBUTIONS.txt *.md
 %if 0%{?suse_version} > 1500
 %{_distconfdir}/logrotate.d/%{name}
 %else
