@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Aug  1 07:51:06 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 3.3.1
+  General:
+  * Fixed reading integer values from profiles
+  Language:
+  * The build configuration name "profiling" now maps to the
+    "profiling" build variant by default
+  Qt support:
+  * Fixed lookup of the metatypes files for Qt versions before 6.5
+
+-------------------------------------------------------------------
 Thu Apr 23 12:23:18 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 3.2.0

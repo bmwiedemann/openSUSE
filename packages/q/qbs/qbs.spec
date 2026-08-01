@@ -17,12 +17,8 @@
 #
 
 
-%if %{?suse_version} > 1500
-# No python-beautifulsou4 is 15.6
-%bcond_without qch_doc
-%endif
 Name:           qbs
-Version:        3.2.0
+Version:        3.3.1
 Release:        0
 Summary:        Build tool for software projects
 # Legal:
@@ -42,12 +38,10 @@ BuildRequires:  cmake(Qt6Gui)
 BuildRequires:  cmake(Qt6Network)
 BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  cmake(Qt6Xml)
-%if %{with qch_doc}
 BuildRequires:  python3
 BuildRequires:  python3-bs4
 BuildRequires:  python3-lxml
 BuildRequires:  cmake(Qt6Tools)
-%endif
 # Qt Creator used to package qbs too
 Conflicts:      libqt5-creator <= 4.5.0
 
@@ -86,12 +80,7 @@ This package contains examples to show different qbs usages.
 %cmake_qt6 \
   -DQBS_ENABLE_RPATH:BOOL=FALSE \
   -DQBS_INSTALL_MAN_PAGE:BOOL=TRUE \
-%if %{with qch_doc}
   -DQBS_INSTALL_QCH_DOCS:BOOL=TRUE \
-%endif
-%if 0%{?suse_version} == 1500
-  -DQBS_LIBEXEC_INSTALL_DIR:STRING=lib/qbs \
-%endif
   -DQBS_LIB_INSTALL_DIR:STRING=%{_lib} \
   -DQBS_PLUGINS_INSTALL_BASE:STRING=%{_lib} \
   -DWITH_TESTS:BOOL=FALSE
@@ -111,10 +100,8 @@ rm -r %{buildroot}%{_qt6_sharedir}/qbs/python
 %files
 %license LGPL_EXCEPTION.txt LICENSE.LGPLv21 LICENSE.LGPLv3 LICENSE.GPL3-EXCEPT
 %doc README.md changelogs/changes-%{version}.md
-%if %{with qch_doc}
 %dir %{_qt6_sharedir}/doc/qbs
 %doc %{_qt6_sharedir}/doc/qbs/qbs.qch
-%endif
 %{_bindir}/qbs
 %{_bindir}/qbs-config
 %{_bindir}/qbs-config-ui

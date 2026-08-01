@@ -252,4 +252,12 @@ Initial import of qbs 1.10.1
     <comment>Update to 3.2.0</comment>
     <requestid>1348940</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>951358c83494ab30e8d619d5314f9e12</srcmd5>
+    <version>3.3.1</version>
+    <time>1785602124</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.3.1</comment>
+    <requestid>1368969</requestid>
+  </revision>
 </revisionlist>
