@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Fri Jul 31 06:49:45 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.16.1:
+  * Preview: add an option to opt out of human-readable names; PT018
+    fixes are now safe by default and unsafe only when comments are
+    present; UP040, UP046 and UP047 skip the fix when a defaulted
+    TypeVar precedes a non-defaulted one; fix RUF065 false positive
+    with unpacked arguments
+  * Bug fixes: gracefully handle unknown enumeration values in LSP
+    messages; B008 marks range as immutable; C408 NFKC-normalizes
+    keyword names in its fix; fix RET504 false positive when a
+    variable is read in a finally clause; D214, D405 and D413 skip
+    section detection inside RST directive bodies; FURB192
+    parenthesizes yield arguments
+  * Rule changes: PT022 fixes are now marked unsafe, as are FURB105
+    fixes that remove unknown separators
+  * Server: fix indexing of excluded nested Ruff workspaces and lint
+    TOML files in the LSP
+  * Reduce syntax error noise by swallowing dedents like indents
+
+-------------------------------------------------------------------
+Fri Jul 24 17:44:06 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.16.0 
+ * Breaking changes
+   * Ruff now enables a much larger set of rules by default (413, up from 59)
+   * Ruff can now format Python code blocks in Markdown files and will do this by default
+   * Ruff now supports ruff: ignore comments at the ends of lines, like noqa comments, or on the line preceding a diagnostic
+   * Fixes are now shown in check and format --check output:
+   * format --check now supports the same output formats as the linter
+   * The filename, location, end_location, fix.edits[].location, and fix.edits[].end_location
+       fields in the JSON output format may now be null rather than defaulting to the empty string and row 1, column 1, respectively.
+ * Stabilization
+  * The following rules have been stabilized and are no longer in preview:
+    + airflow3-incompatible-function-signature (AIR303)
+    + missing-copyright-notice (CPY001)
+    + unnecessary-from-float (FURB164)
+    + sorted-min-max (FURB192)
+    + implicit-string-concatenation-in-collection-literal (ISC004)
+    + log-exception-outside-except-handler (LOG004)
+    + invalid-bool-return-type (PLE0304)
+    + too-many-positional-arguments (PLR0917)
+    + stop-iteration-return (PLR1708)
+    + none-not-at-end-of-union (RUF036)
+    + access-annotations-from-class-dict (RUF063)
+    + duplicate-entry-in-dunder-all (RUF068)
+  * The following behaviors have been stabilized:
+    + blind-except (BLE001) is now suppressed when the exception is logged via logging methods other than critical, error and exception.
+    + future-required-type-annotation (FA102) now checks for additional PEP 585-compatible APIs, such as those from collections.abc.
+    + f-string-in-get-text-func-call (INT001), format-in-get-text-func-call (INT002), and printf-in-get-text-func-call (INT003) now check for additional common ways of using the gettext module, such as assigning it to builtins._.
+    + suspicious-url-open-usage (S310) now resolves local string literal bindings to avoid more false positives.
+    + snmp-insecure-version (S508) and snmp-weak-cryptography (S509) now support the recommended API from newer versions of PySNMP.
+    + typing-text-str-alias (UP019) now recognizes typing_extensions.Text in addition to typing.Text.
+ * Preview features
+  * [pyupgrade] Fix false positive with TypeVar default before Python 3.13 (UP040) 
+  * Bug fixes
+  * [ruff] Fix missing check on unrecognized early bound (RUF016) 
+  * Rule changes
+  * Insert a space after the colon in Ruff suppression comments 
+  * Performance
+  * [pyupgrade] Speed up unnecessary-future-import (UP010) 
+  * Documentation
+  * [ruff] Add missing period in "Why is this bad?" section (RUF200) 
+  * [flake8-simplify] Clarify os.environ behavior on Windows (SIM112) 
+  * [pydocstyle] Document fix safety (D400) 
+
+-------------------------------------------------------------------
 Mon Jul 20 13:57:57 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - update to 0.15.22:

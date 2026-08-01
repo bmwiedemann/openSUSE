@@ -3551,4 +3551,12 @@
     <comment></comment>
     <requestid>1366798</requestid>
   </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>daea12a1e2ce890701de60038d1b4136</srcmd5>
+    <version>0.16.1</version>
+    <time>1785601697</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.16.1. Supersedes sr#1367767 (0.16.0), which is still in Staging:F — this carries 0.16.0 plus the 0.16.1 point release.</comment>
+    <requestid>1368791</requestid>
+  </revision>
 </revisionlist>
