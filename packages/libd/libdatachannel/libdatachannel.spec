@@ -21,7 +21,7 @@
 %define soversion 0_%{son}
 %define libname %{name}%{soversion}
 Name:           libdatachannel
-Version:        0.24.1
+Version:        0.24.5
 Release:        0
 Summary:        WebRTC network library featuring Data Channels, Media Transport, and WebSockets
 License:        MPL-2.0

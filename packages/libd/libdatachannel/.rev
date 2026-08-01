@@ -32,4 +32,41 @@
   - Bump checkout action to v6 by @xavier2k6 in #1480 </comment>
     <requestid>1333836</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c37b475aefc93f602fa5db11477f8886</srcmd5>
+    <version>0.24.5</version>
+    <time>1785602084</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.24.5:
+  * Fix TLS bad record mac error on WebSocket connection
+  * Update libjuice to v1.7.2 and fix build with nettle 4
+- update to 0.24.4:
+  * Fix MbedTLS DTLS ReadCallback to return actual bytes received
+  * Fix heap-use-after-free in IceTransport::RecvCallback
+  * Export remaining C-API symbols for the Windows DLL
+  * Fix AV1 RTP packetizer handling of OBUs that already carry a
+    size field
+  * fix: OpenSSL DTLS input BIO synchronization
+  * fix: OpenSSL TLS input BIO synchronization
+  * Fix POLLERR handling in TCP server
+- update to 0.24.3:
+  * Add size checks for REMB parsing and RTCP dispatching
+  * Drop incoming packets if DTLS incoming queue is full
+  * Update code to work with OpenSSL 4.0 which deprecated some
+    functions
+  * Fix REMB SSRC
+  * Fix double shared mutex lock in
+    impl::PeerConnection::closeTracks()
+  * Fix race between DTLS ClientHello and registerIncoming()
+  * Fix WebSocket disconnect on idling with MbedTLS and GnuTLS
+  * Fix certificate generation with BoringSSL
+  * Update libjuice to v1.7.1 and libsrtp to v2.8.0
+- update to 0.24.2:
+  * Fix buffer alignment in SctpTransport::sendReset()
+  * Fix candidate race condition on ICE transport destruction
+    with libnice
+  * Fix multiple group attributes in description
+  * Fix missing size checks in RTP/RTCP packet processing</comment>
+    <requestid>1368911</requestid>
+  </revision>
 </revisionlist>

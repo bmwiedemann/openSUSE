@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Jul 31 19:36:16 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.24.5:
+  * Fix TLS bad record mac error on WebSocket connection
+  * Update libjuice to v1.7.2 and fix build with nettle 4
+- update to 0.24.4:
+  * Fix MbedTLS DTLS ReadCallback to return actual bytes received
+  * Fix heap-use-after-free in IceTransport::RecvCallback
+  * Export remaining C-API symbols for the Windows DLL
+  * Fix AV1 RTP packetizer handling of OBUs that already carry a
+    size field
+  * fix: OpenSSL DTLS input BIO synchronization
+  * fix: OpenSSL TLS input BIO synchronization
+  * Fix POLLERR handling in TCP server
+- update to 0.24.3:
+  * Add size checks for REMB parsing and RTCP dispatching
+  * Drop incoming packets if DTLS incoming queue is full
+  * Update code to work with OpenSSL 4.0 which deprecated some
+    functions
+  * Fix REMB SSRC
+  * Fix double shared mutex lock in
+    impl::PeerConnection::closeTracks()
+  * Fix race between DTLS ClientHello and registerIncoming()
+  * Fix WebSocket disconnect on idling with MbedTLS and GnuTLS
+  * Fix certificate generation with BoringSSL
+  * Update libjuice to v1.7.1 and libsrtp to v2.8.0
+- update to 0.24.2:
+  * Fix buffer alignment in SctpTransport::sendReset()
+  * Fix candidate race condition on ICE transport destruction
+    with libnice
+  * Fix multiple group attributes in description
+  * Fix missing size checks in RTP/RTCP packet processing
+  * Fix setColorSpace bug
+
+-------------------------------------------------------------------
 Wed Feb 18 23:31:39 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
 
 - Update to 0.24.1
@@ -6,7 +41,7 @@ Wed Feb 18 23:31:39 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
   - Add sessionId() accessor on Description class by @aronrosenberg in #1496
   - Fix crash if WebSocket is deleted in onError callback by @paullouisageneau in #1482
   - Fix AV1 RTP packetizer to handle frames without temporal unit delimiters by @rsanting in #1495
-  - Bump checkout action to v6 by @xavier2k6 in #1480 
+  - Bump checkout action to v6 by @xavier2k6 in #1480
 
 -------------------------------------------------------------------
 Wed Dec 10 00:12:02 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
@@ -18,7 +53,7 @@ Wed Dec 10 00:12:02 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
   - Fix consent-freshness property handling for compatibility with older libnice versions by @kunkundi in #1468
   - Document proxyServer field in rtcWsConfiguration by @egnima in #1458
   - Fix WebSocket example in Readme (add std::endl) by @NathanFouere in #1474
-  - Update libjuice to v1.7.0 
+  - Update libjuice to v1.7.0
 
 -------------------------------------------------------------------
 Wed Oct 29 06:26:13 UTC 2025 - ecsos <ecsos@opensuse.org> - 0.23.2

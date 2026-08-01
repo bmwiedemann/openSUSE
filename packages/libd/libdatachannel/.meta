@@ -1,5 +1,6 @@
 <package name="libdatachannel" project="openSUSE:Factory">
   <title></title>
   <description></description>
+  <devel project="devel:libraries:c_c++" package="libdatachannel"/>
   <url>https://libdatachannel.org/</url>
 </package>
