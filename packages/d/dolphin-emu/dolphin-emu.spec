@@ -18,12 +18,12 @@
 
 %define __builder ninja
 Name:           dolphin-emu
-Version:        2603a
+Version:        2606
 Release:        0
 Summary:        Dolphin, a GameCube and Wii Emulator
 License:        (Apache-2.0 OR MIT) AND BSD-2-Clause AND libpng-2.0 AND GPL-2.0-or-later
 URL:            https://dolphin-emu.org
-# n=dolphin-emu && v=2603a && d=$n-$v && f=$d.tar.xz && cd /tmp && git clone -b$v https://github.com/$n/dolphin.git $n && pushd $n && git submodule && git submodule update --init --recursive Externals/SFML/SFML Externals/VulkanMemoryAllocator Externals/cpp-ipc/cpp-ipc Externals/cpp-optparse/cpp-optparse Externals/cubeb/cubeb Externals/gtest Externals/imgui/imgui Externals/implot/implot Externals/libspng/libspng Externals/minizip-ng/minizip-ng Externals/rcheevos/rcheevos Externals/tinygltf/tinygltf Externals/watcher/watcher Externals/zlib-ng/zlib-ng && git submodule status && rm -rf .??* && popd && mv $n $d && tar c --remove-files "$d" | xz -9e > "$f"
+# n=dolphin-emu && v=2606 && d=$n-$v && f=$d.tar.xz && cd /tmp && git clone -b$v https://github.com/$n/dolphin.git $n && pushd $n && git submodule && git submodule update --init --recursive Externals/VulkanMemoryAllocator Externals/cpp-ipc/cpp-ipc Externals/cpp-optparse/cpp-optparse Externals/cubeb/cubeb Externals/gtest Externals/imgui/imgui Externals/implot/implot Externals/rcheevos/rcheevos Externals/tinygltf/tinygltf Externals/watcher/watcher && git submodule status && rm -rf .??* && popd && mv $n $d && tar c --remove-files "$d" | xz -9e > "$f"
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -65,22 +65,22 @@ BuildRequires:  pkgconfig(libxxhash)
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(lzo2)
 BuildRequires:  pkgconfig(miniupnpc)
+BuildRequires:  pkgconfig(minizip-ng)
 BuildRequires:  pkgconfig(portaudio-2.0)
 BuildRequires:  pkgconfig(pugixml)
 BuildRequires:  pkgconfig(sdl3)
+BuildRequires:  pkgconfig(sfml-all) >= 3
 BuildRequires:  pkgconfig(sm)
 BuildRequires:  pkgconfig(soundtouch)
 BuildRequires:  pkgconfig(speexdsp)
+BuildRequires:  pkgconfig(spng)
 BuildRequires:  pkgconfig(vulkan)
 BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(xrandr)
+BuildRequires:  pkgconfig(zlib-ng)
 Requires:       nintendo-gamecube-wiimote-udev-rules
 ExclusiveArch:  x86_64 aarch64
-%if 0%{?sle_version} > 150000 && 0%{?sle_version} < 160000
-BuildRequires:  gcc13
-BuildRequires:  gcc13-c++
-%endif
 
 %description
 Dolphin is an emulator for two Nintendo video game consoles, GameCube and the Wii.
@@ -114,10 +114,6 @@ export CMAKE_GENERATOR=Ninja
 export CMAKE_POLICY_VERSION_MINIMUM=3.5
 cmake . -LA \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-%if 0%{?sle_version} > 150000 && 0%{?sle_version} < 160000
-    -DCMAKE_C_COMPILER=gcc-13 \
-    -DCMAKE_CXX_COMPILER=g++-13 \
-%endif
     -DCMAKE_C_FLAGS="%{optflags}" \
     -DCMAKE_CXX_FLAGS="%{optflags}" \
     -DCMAKE_INSTALL_PREFIX=%{_prefix} \

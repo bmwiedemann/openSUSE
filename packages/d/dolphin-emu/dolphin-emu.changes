@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 31 03:13:40 UTC 2026 - Илья Индиго <ilya@ilya.top>
+
+- Used minizip-ng, sfml3, spng and zlib-ng from dependencies.
+- Updated to 2606
+  * https://github.com/dolphin-emu/dolphin/compare/2603a...2606
+
+-------------------------------------------------------------------
 Wed Mar 18 13:40:24 UTC 2026 - Илья Индиго <ilya@ilya.top>
 
 - Updated to 2603a
