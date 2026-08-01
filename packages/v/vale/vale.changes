@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Fri Jul 31 19:05:45 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 3.17.0:
+  * docs: fix CI
+  * docs: add sponsor
+  * fix: stop sharing per-file scope state across goroutines
+  * fix: name the spelling a vocab term wants, not its pattern
+  * perf: reuse one Docutils interpreter instead of one per file
+  * perf: reuse one mdx2vast process instead of one per file
+  * perf: keep Asciidoctor running instead of restarting it per file
+  * chore: golangci
+  * perf: stop scanning the whole document to place each alert
+  * docs: update contributing
+  * perf: run one search per block instead of one per line
+  * fix: stop narrowing paragraph to a scope nothing carries
+  * fix: read block-comment decoration as decoration, not markup
+  * perf: stop deduplicating rule runs per text
+  * perf: read literals through a pattern's lookarounds
+  * perf: read literals through a pattern's lookarounds
+  * perf: decide a rule's scope once per block scope
+  * build: use regexp2 v2.5.4
+  * perf: compile the capitalization word pattern once
+  * perf: only map runs to the source when something will ask
+  * docs: write an actual security policy
+  * fix: place inline fragments where they actually are
+  * fix: close extracted files properly
+  * fix: bound COMPOUNDMIN and COMPOUNDRULE
+  * Create SECURITY.md
+  * feat: support inline scopes
+  * feat: allow scoping by class
+  * test: add cases for new package-level settings
+  * feat: allow a setting to be given for a whole style
+  * fix: honour a sequence rule's declared scope
+  * perf: run each rule once per distinct text
+  * perf: run each rule once per distinct text
+  * chore: golangci
+  * perf: locate spelling alerts by offset
+  * perf: stop searching once a usable match is found
+  * chore: fix golangci-lint
+  * chore: use the jdkato/regexp2 fork
+  * perf: skip rules whose tokens cannot match
+  * erf: compile rules in parallel
+  * perf: Split selectors once instead of on every comparison
+  * Cache parsed scopes instead of rebuilding them per block
+  * fix: stop section styles leaking across globs
+
+-------------------------------------------------------------------
+Thu Jul 30 19:23:05 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 3.16.0:
+  * spell: use strings.Cut for the continuation split
+  * spell: follow affix continuation classes
+  * docs: update README link
+  * perf: pre-compile Tengo
+  * perf: stop repeating work in the per-block hot path
+  * fix: match sequence patterns against whole tokens
+  * feat: add `matchCase` for alert reporting
+  * perf: index line starts instead of counting newlines per alert
+  * perf: slice matches out by offset instead of converting to runes
+  * perf: place alerts by offset instead of searching for their text
+  * feat: match universal POS tags in sequence
+  * fix: locate sequence matches by position, not by searching
+  * chore: drop our regexp2 fork
+  * chore: move NLP to the new prose/v3 library
+
+-------------------------------------------------------------------
 Thu Jul 23 16:17:21 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 3.15.2:

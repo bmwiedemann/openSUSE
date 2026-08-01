@@ -1040,4 +1040,41 @@
   * fix: don't leak line comments into a following block comment (#1020) (forwarded request 1367510 from jfkw)</comment>
     <requestid>1367518</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>5b06c4e48a64d4f003159266ebf107a1</srcmd5>
+    <version>3.17.0</version>
+    <time>1785601888</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.17.0:
+  * docs: fix CI
+  * docs: add sponsor
+  * fix: stop sharing per-file scope state across goroutines
+  * fix: name the spelling a vocab term wants, not its pattern
+  * perf: reuse one Docutils interpreter instead of one per file
+  * perf: reuse one mdx2vast process instead of one per file
+  * perf: keep Asciidoctor running instead of restarting it per file
+  * chore: golangci
+  * perf: stop scanning the whole document to place each alert
+  * docs: update contributing
+  * perf: run one search per block instead of one per line
+  * fix: stop narrowing paragraph to a scope nothing carries
+  * fix: read block-comment decoration as decoration, not markup
+  * perf: stop deduplicating rule runs per text
+  * perf: read literals through a pattern's lookarounds
+  * perf: read literals through a pattern's lookarounds
+  * perf: decide a rule's scope once per block scope
+  * build: use regexp2 v2.5.4
+  * perf: compile the capitalization word pattern once
+  * perf: only map runs to the source when something will ask
+  * docs: write an actual security policy
+  * fix: place inline fragments where they actually are
+  * fix: close extracted files properly
+  * fix: bound COMPOUNDMIN and COMPOUNDRULE
+  * Create SECURITY.md
+  * feat: support inline scopes
+  * feat: allow scoping by class
+  * test: add cases for new package-level settings
+  * feat: allow a setting to be given for a whole style (forwarded request 1368914 from jfkw)</comment>
+    <requestid>1368915</requestid>
+  </revision>
 </revisionlist>
