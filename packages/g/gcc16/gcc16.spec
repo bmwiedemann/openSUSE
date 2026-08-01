@@ -224,7 +224,7 @@
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        16.1.1+git8886
+Version:        16.1.1+git9481
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -2594,7 +2594,7 @@ for flag in $RPM_OPT_FLAGS; do
   add_flag=
   case $flag in
     -U_FORTIFY_SOURCE|-D_FORTIFY_SOURCE=*) ;;
-    -fno-rtti|-fno-exceptions|-Wmissing-format-attribute|-fstack-protector*) ;;
+    -fno-rtti|-fno-exceptions|-Wmissing-format-attribute|-fstack-protector*|-fhardened) ;;
     -ffortify=*|-Wall|-m32|-m64) ;;
 %ifarch %ix86
     # -mcpu is superseded by -mtune but -mtune is not supported by
@@ -2615,13 +2615,13 @@ for flag in $RPM_OPT_FLAGS; do
   *) add_flag=$flag ;;
   esac
   if test -n "$add_flag"; then
-    optflags+=" $add_flag"
+    optflags="$optflags $add_flag"
     case $add_flag in
       # Filter out -Werror=return-type for D (only valid for C and C++)
       -Werror=return-type) ;;
       # Likewise -Wtime_t-conversion
       -Wtime_t-conversion) ;;
-      *) optflags_d+=" $add_flag" ;;
+      *) optflags_d="$optflags_d $add_flag" ;;
     esac
   fi
 done

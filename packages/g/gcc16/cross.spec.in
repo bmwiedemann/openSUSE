@@ -162,6 +162,11 @@ ExclusiveArch: %arm
 %ifarch %{cross_arch}
 ExcludeArch: %{cross_arch}
 %endif
+%if "%{cross_arch}" == "x86_64" && 0%{!?gcc_libc_bootstrap:1}
+%ifarch %ix86
+ExclusiveArch: do-not-build
+%endif
+%endif
 %endif
 %if 0%{?gcc_libc_bootstrap:1}
 %if %{suse_version} < 1699 && "%{cross_arch}" == "loongarch64"

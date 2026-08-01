@@ -1,5 +1,5 @@
 #
-# spec file for package cross-hppa-gcc16
+# spec file for package cross-x86_64-gcc16-bootstrap
 #
 # Copyright (c) 2026 SUSE LLC and contributors
 #
@@ -16,10 +16,11 @@
 #
 
 
-%define pkgname cross-hppa-gcc16
-%define cross_arch hppa
-%define gcc_target_arch hppa-suse-linux
+%define pkgname cross-x86_64-gcc16-bootstrap
+%define cross_arch x86_64
+%define gcc_target_arch x86_64-suse-linux
 %define gcc_target_glibc 1
+%define gcc_libc_bootstrap 1
 # nospeccleaner
 
 %bcond_without release_checking
@@ -222,7 +223,7 @@ BuildRequires:  cross-%cross_arch-glibc-devel
 BuildRequires:  nvptx-tools
 Requires:       cross-nvptx-newlib-devel >= %{version}-%{release}
 Requires:       nvptx-tools
-ExclusiveArch:  x86_64
+ExclusiveArch:  
 %define nvptx_newlib 1
 %endif
 %if "%{cross_arch}" == "amdgcn"
@@ -234,7 +235,7 @@ Requires:       lld%{product_libs_llvm_ver}
 # The default multilib set requires llvm20 or later but we support llvm19
 # as well with a reduced set of multilibs
 %if 0%{?product_libs_llvm_ver} >= 19
-ExclusiveArch:  x86_64
+ExclusiveArch:  
 %else
 ExclusiveArch:  do-not-build
 %endif
@@ -258,7 +259,7 @@ ExclusiveArch:  do-not-build
 %if %{suse_version} < 1699 && "%{cross_arch}" == "loongarch64"
 ExclusiveArch:  do-not-build
 %else
-ExclusiveArch:  i586 ppc64le x86_64 s390x aarch64 riscv64 loongarch64
+ExclusiveArch:  i586 ppc64le  s390x aarch64 riscv64 loongarch64
 %endif
 %endif
 %define _binary_payload w.ufdio

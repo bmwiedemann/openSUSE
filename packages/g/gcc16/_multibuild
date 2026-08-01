@@ -17,6 +17,7 @@
 <flavor>cross-avr-gcc16</flavor>
 <flavor>cross-pru-gcc16-bootstrap</flavor>
 <flavor>cross-pru-gcc16</flavor>
+<flavor>cross-x86_64-gcc16-bootstrap</flavor>
 <flavor>cross-x86_64-gcc16</flavor>
 <flavor>cross-ppc64-gcc16</flavor>
 <flavor>cross-arm-none-gcc16-bootstrap</flavor>

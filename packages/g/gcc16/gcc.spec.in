@@ -1463,7 +1463,7 @@ for flag in $RPM_OPT_FLAGS; do
   add_flag=
   case $flag in
     -U_FORTIFY_SOURCE|-D_FORTIFY_SOURCE=*) ;;
-    -fno-rtti|-fno-exceptions|-Wmissing-format-attribute|-fstack-protector*) ;;
+    -fno-rtti|-fno-exceptions|-Wmissing-format-attribute|-fstack-protector*|-fhardened) ;;
     -ffortify=*|-Wall|-m32|-m64) ;;
 %ifarch %ix86
     # -mcpu is superseded by -mtune but -mtune is not supported by
@@ -1484,13 +1484,13 @@ for flag in $RPM_OPT_FLAGS; do
   *) add_flag=$flag ;;
   esac
   if test -n "$add_flag"; then
-    optflags+=" $add_flag"
+    optflags="$optflags $add_flag"
     case $add_flag in
       # Filter out -Werror=return-type for D (only valid for C and C++)
       -Werror=return-type) ;;
       # Likewise -Wtime_t-conversion
       -Wtime_t-conversion) ;;
-      *) optflags_d+=" $add_flag" ;;
+      *) optflags_d="$optflags_d $add_flag" ;;
     esac
   fi
 done

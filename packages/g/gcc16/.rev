@@ -103,4 +103,28 @@ builds significantly due to switching to release checking.
     <comment>- Update to 16.1.1+git8886, includes GCC 16.1 release.</comment>
     <requestid>1352001</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5cf57e0414650650f0e509e59109a7cc</srcmd5>
+    <version>16.1.1+git9423</version>
+    <time>1785504417</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to gcc-16.1.1+git9423
+
+- Build a full cross-x86_64 compiler [bsc#1272616], but not on %ix86
+
+- Update gcc15-Wtime_t-conversion.patch 
+
+- Make build recipe compatible with POSIX sh
+
+- do not pass in -fhardened</comment>
+    <requestid>1368360</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>75ed8d63807d5ae72036af7b97444d4c</srcmd5>
+    <version>16.1.1+git9481</version>
+    <time>1785606667</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to gcc-16.1.1+git9481, GCC 16.2 RC1</comment>
+    <requestid>1368864</requestid>
+  </revision>
 </revisionlist>
