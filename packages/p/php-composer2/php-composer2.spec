@@ -29,6 +29,8 @@ Source2:        https://github.com/composer/composer/releases/download/%{version
 # 161DFBE342889F01DDAC4E61CBB3D576F2A0946F
 Source3:        %{name}.keyring
 Patch0:         php-composer2-compiler-env.patch
+# https://github.com/Seldaek/phar-utils/pull/13
+Patch1:         php-composer2-little-endian-no-machine-order.patch
 BuildRequires:  php-cli
 BuildRequires:  php-phar
 Requires:       php >= 7.2.5

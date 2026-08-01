@@ -1,0 +1,44 @@
+From d058888bd0345070272809fac50b7c07fd2483e6 Mon Sep 17 00:00:00 2001
+From: Martin Pluskal <martin@pluskal.org>
+Date: Thu, 30 Jul 2026 15:36:54 +0200
+Subject: [PATCH] Write phar fields little-endian, not in machine byte order
+
+The phar file format stores all multi-byte values little-endian. The
+reader was fixed in #3 (unpack('L') -> unpack('V')), but the two write
+sites still use pack('L'), which is machine byte order.
+
+On a big-endian host this writes every manifest entry timestamp and the
+signature-flags word byte-swapped. PHP's phar extension reads them back
+little-endian, so the signature type is unrecognised and the archive is
+rejected with "broken or unsupported signature" - the phar is unusable.
+It also breaks the reproducibility this class exists to provide, since
+the same input yields different output per architecture.
+
+pack('V') is the little-endian counterpart of pack('L') and matches the
+existing unpack('V') on the read side.
+---
+ src/Timestamps.php | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+Index: composer-2.10.2/vendor/seld/phar-utils/src/Timestamps.php
+===================================================================
+--- composer-2.10.2.orig/vendor/seld/phar-utils/src/Timestamps.php
++++ composer-2.10.2/vendor/seld/phar-utils/src/Timestamps.php
+@@ -73,7 +73,7 @@ $pos += 4 + $filenameLength;
+ $pos += 4;
+ 
+ 
+-$timeStampBytes = pack('L', $timestamp);
++$timeStampBytes = pack('V', $timestamp);
+ $this->contents[$pos + 0] = $timeStampBytes[0];
+ $this->contents[$pos + 1] = $timeStampBytes[1];
+ $this->contents[$pos + 2] = $timeStampBytes[2];
+@@ -120,7 +120,7 @@ $algo = $algos[$signatureAlgo];
+ 
+ $signature = hash($algo, substr($this->contents, 0, $pos), true)
+ 
+-. pack('L', $signatureAlgo)
++. pack('V', $signatureAlgo)
+ 
+ . 'GBMB';
+ 
