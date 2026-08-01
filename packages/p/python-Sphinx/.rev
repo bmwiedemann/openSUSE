@@ -1680,4 +1680,41 @@ IMPORTANT: It would be better to fix/update the test, so if you can fix this ple
   gh#sphinx-doc/sphinx#13548</comment>
     <requestid>1306500</requestid>
   </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>4c5f0b1f7d107f2a671080b97266dab2</srcmd5>
+    <version>9.1.0</version>
+    <time>1785601662</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 9.1.0:
+  ## Dependencies
+  * Drop Python 3.11 support.
+  * Drop Docutils 0.20 support.
+  * Support Docutils 0.22.
+  ## Incompatible changes
+  * SphinxComponentRegistry.create_source_parser() no longer has an app
+    parameter, instead taking config and env.
+  * Non-decodable characters in source files now raise an error.
+  * sphinx.ext.autodoc has been substantially rewritten, and there may be
+    some incompatible changes in edge cases, especially when extensions
+    interact with autodoc internals.
+  *  Don’t include escaped title content in the search index.
+  ## Deprecated
+  * Deprecate remaining public .app attributes, including builder.app,
+    env.app, events.app, and SphinxTransform.app.
+  * Deprecate the set_application() method of Parser objects.
+  * Deprecate the Parser.config and env attributes.
+  * Deprecate support for non-UTF 8 source encodings, scheduled for removal
+    in Sphinx 10.
+  * Deprecate sphinx.io. Sphinx no longer uses the sphinx.io classes, having
+    replaced them with standard Python I/O. The entire sphinx.io module will
+    be removed in Sphinx 10.
+  * sphinx.environment.adapters.toctree.global_toctree_for_doc() and
+    sphinx.environment.BuildEnvironment.get_and_resolve_doctree() will
+    require a tags keyword argument from Sphinx 11.
+  ## Features added
+  * Add add_static_dir() for copying static assets from extensions to the
+    build output.
+  * Add doctest_fail_fast option to exit after the first failed test.</comment>
+    <requestid>1367901</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-Sphinx
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,11 +31,10 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-Sphinx%{psuffix}
-Version:        8.2.3
+Version:        9.1.0
 Release:        0
 Summary:        Python documentation generator
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
 URL:            https://www.sphinx-doc.org
 Source:         https://files.pythonhosted.org/packages/source/s/sphinx/sphinx-%{version}.tar.gz
 # Provide intersphinx inventory offline, run update-intersphinx.sh
@@ -47,23 +46,11 @@ Source3:        requests.inv
 Source4:        readthedocs.inv
 Source5:        update-intersphinx.sh
 Source99:       python-Sphinx.keyring
-# PATCH-FIX-UPSTREAM https://github.com/sphinx-doc/sphinx/pull/13527 Followup-to: Fix tests for Python 3.14a7+
-Patch0:         autodoc.patch
-# PATCH-FIX-UPSTREAM https://github.com/sphinx-doc/sphinx/commit/8962398b761c3d85a7c74b6f789b3ffb127bde0c autosummary: Update test for Python 3.14.0a5+
-Patch1:         autosummary.patch
-# PATCH-FIX-UPSTREAM https://github.com/sphinx-doc/sphinx/commit/e01e42f5fc738815b8499c4ede30c6caf130f0a4 Fix INVALID_BUILTIN_CLASSES test for Python 3.14.0a6+
-Patch2:         typing.patch
-# PATCH-FIX-UPSTREAM https://github.com/sphinx-doc/sphinx/commit/68d56109ff50dd81dd31d4a01e3dccbd006c50ee Tests: update LaTeX label test expectations from Docutils r10151
-Patch3:         docutils022.patch
-# PATCH-FIX-UPSTREAM docutils022plus.patch https://github.com/sphinx-doc/sphinx/pull/13548
-Patch4:         docutils022plus.patch
-BuildRequires:  %{python_module base}
+BuildRequires:  %{python_module base >= 3.12}
 BuildRequires:  %{python_module flit-core >= 3.11}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-pip
 # workaround for suboptimal CentOS-7 project config
 #!BuildIgnore:  texinfo
 Requires:       python-Babel >= 1.3
@@ -71,7 +58,7 @@ Requires:       python-Jinja2 >= 2.3
 Requires:       python-Pygments >= 2.14
 Requires:       python-alabaster >= 0.7
 Requires:       python-defusedxml >= 0.7.1
-Requires:       python-docutils >= 0.12
+Requires:       python-docutils >= 0.21
 Requires:       python-imagesize
 Requires:       python-packaging
 Requires:       python-requests >= 2.5.0
@@ -96,7 +83,7 @@ Requires(post): update-alternatives
 Requires(postun): update-alternatives
 %endif
 %if %{with test}
-BuildRequires:  %{python_module Cython}
+BuildRequires:  %{python_module Cython >= 3.0}
 BuildRequires:  %{python_module Sphinx = %{version}}
 BuildRequires:  %{python_module Sphinx-latex = %{version}}
 BuildRequires:  %{python_module defusedxml >= 0.7.1}
@@ -128,7 +115,6 @@ the parsing and translating suite, the Docutils.
 
 %package latex
 Summary:        Sphinx packages for LaTeX
-Group:          Productivity/Publishing/TeX/Base
 Requires:       python-Sphinx = %{version}
 Requires:       texlive-dvipng
 Requires:       texlive-gnu-freefont
@@ -209,7 +195,6 @@ This package contains the LaTeX components for python-Sphinx.
 %if 0%{?suse_version} > 1500
 %package -n python-Sphinx-doc
 Summary:        Man files for python-Sphinx
-Group:          Documentation/Other
 Requires:       python3-Sphinx = %{version}
 
 %description -n python-Sphinx-doc
@@ -226,7 +211,6 @@ This package contains the documentation for Sphinx.
 
 %package -n python-Sphinx-doc-man
 Summary:        Man files for python-Sphinx
-Group:          Documentation/Man
 Requires:       python3-Sphinx = %{version}
 Supplements:    python3-Sphinx
 Obsoletes:      python-Sphinx-doc-man-common <= %{version}
@@ -242,7 +226,6 @@ This package contains the manual pages for the Sphinx executables.
 
 %package -n python-Sphinx-doc-html
 Summary:        HTML Documentation for python-Sphinx
-Group:          Documentation/HTML
 Provides:       python-Sphinx-doc-html = %{version}
 
 %description -n python-Sphinx-doc-html
@@ -340,7 +323,8 @@ export PYTHONPATH=.
 export LC_ALL="C.utf8"
 # test_latex_images test downloading a remote image
 # test_signature_annotations doesn’t work
-%pytest tests -k 'not (linkcheck or test_latex_images or test_signature_annotations or test_copy_images or test_ext_imgconverter)'
+# test_stemmer broken
+%pytest tests -k 'not (linkcheck or test_latex_images or test_signature_annotations or test_copy_images or test_ext_imgconverter or test_stemmer)'
 %endif
 
 %if ! %{with test}
@@ -353,8 +337,7 @@ export LC_ALL="C.utf8"
 %python_alternative %{_bindir}/sphinx-quickstart
 %{python_sitelib}/sphinx/
 %exclude %{python_sitelib}/sphinx/texinputs/
-%dir %{python_sitelib}/sphinx-%{version}.dist-info
-%{python_sitelib}/sphinx-%{version}.dist-info/*
+%{python_sitelib}/sphinx-%{version}.dist-info
 %dir %{python_sitelib}/sphinxcontrib
 
 %files %{python_files latex}

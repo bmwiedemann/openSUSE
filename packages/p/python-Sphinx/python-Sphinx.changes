@@ -1,4 +1,120 @@
 -------------------------------------------------------------------
+Fri Jul 24 03:00:36 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 9.1.0:
+  ## Dependencies
+  * Drop Python 3.11 support.
+  * Drop Docutils 0.20 support.
+  * Support Docutils 0.22.
+  ## Incompatible changes
+  * SphinxComponentRegistry.create_source_parser() no longer has an app
+    parameter, instead taking config and env.
+  * Non-decodable characters in source files now raise an error.
+  * sphinx.ext.autodoc has been substantially rewritten, and there may be
+    some incompatible changes in edge cases, especially when extensions
+    interact with autodoc internals.
+  *  Don’t include escaped title content in the search index.
+  ## Deprecated
+  * Deprecate remaining public .app attributes, including builder.app,
+    env.app, events.app, and SphinxTransform.app.
+  * Deprecate the set_application() method of Parser objects.
+  * Deprecate the Parser.config and env attributes.
+  * Deprecate support for non-UTF 8 source encodings, scheduled for removal
+    in Sphinx 10.
+  * Deprecate sphinx.io. Sphinx no longer uses the sphinx.io classes, having
+    replaced them with standard Python I/O. The entire sphinx.io module will
+    be removed in Sphinx 10.
+  * sphinx.environment.adapters.toctree.global_toctree_for_doc() and
+    sphinx.environment.BuildEnvironment.get_and_resolve_doctree() will
+    require a tags keyword argument from Sphinx 11.
+  ## Features added
+  * Add add_static_dir() for copying static assets from extensions to the
+    build output.
+  * Add doctest_fail_fast option to exit after the first failed test.
+  * linkcheck: Permit warning on every redirect with
+    linkcheck_allowed_redirects = {}.
+  * Support C domain objects in the table of contents.
+  * LaTeX: add support for fontawesome6 package.
+  * autodoc: Detect typing_extensions.overload and final() decorators.
+  * LaTeX: allow more cases of table nesting.
+  * LaTeX: support CSS3 length units.
+  * intersphinx: Add a file-based cache for remote inventories.
+  * LaTeX: add support for fontawesome7 package.
+  * autodoc: Initial support for PEP 695 type aliases.
+  * Add the new mathjax_config_path option to load MathJax configuration from
+    a file.
+  * linkcheck: Add the linkcheck_case_insensitive_urls option to allow
+    case-insensitive URL comparison for specific URL patterns.
+  * autosummary: Provide more context in import exception stack traces.
+  * Add config options to sphinx.ext.duration.
+  * Use MathJax v4 by default in the sphinx.ext.mathjax extension, from v3
+    previously.
+  * intersphinx: Fix error in format string interpolation.
+  * Add source_code_parser type to suppress_warnings for grouping issues
+    related to the C and C++ parsers.
+  ## Bugs fixed
+  * autodoc: Fix duplicate :no-index-entry: for modules.
+  * Fix compatibility with MyST-Parser.
+  * Fix tests for Python 3.15.
+  * autodoc: Fix default option parsing.
+  * Remove incorrect static typing assertions.
+  * LaTeXTranslator fails to build documents using the "acronym" standard
+    role.
+  * LaTeX: Fix rendering for grid filled merged vertical cell.
+  * LaTeX: Fix overrun footer for cases of merged vertical table cells.
+  * Fix creating HTMLThemeFactory objects in third-party extensions.
+  * LaTeX: PDF build crashes if a code-block contains more than circa 1350
+    codelines (about 27 a4-sized pages at default pointsize).
+  * LaTeX: TABs ending up in sphinxVerbatim fail to obey tab stops.
+  * autodoc: Improve support for non-weakreferencable objects.
+  * autodoc: Restore some missing exports in sphinx.ext.autodoc.
+  * autodoc: Restore sphinx.ext.autodoc.mock.
+  * autodoc: Restore the mapping interface for options objects.
+  * autodoc: Deprecate the mapping interface for options objects.
+  * multiple py:type directives for the same canonical type no longer result
+    in spurious duplicate object description warnings.
+  * LaTeX: tables using longtable raise error if tabularcolumns specifies
+    automatic widths (L, R, C, or J).
+  * LaTeX: when assigning longtable class to table for PDF, it may render
+    horizontally and overflow in right margin.
+  * LaTeX: adding a footnote to a longtable cell causes table to occupy full
+    width.
+  * LaTeX: Table in cell fails to build if it has many rows.
+  * LaTeX: longtable does not allow nested table.
+  * LaTeX: links in table captions do not work in PDF.
+  * LaTeX: URLs/links in section titles should render in PDF.
+  * Correctly parse and cross-reference unpacked type annotations.
+  * Add tilde ~ prefix support for py:deco.
+  * LaTeX: table nested in a merged cell leads to invalid LaTeX mark-up.
+  * LaTeX: possible duplicated footnotes in PDF from object signatures.
+  * LaTeX: if a cell contains a table, row coloring is turned off for the
+    next table cells.
+  * gettext: Correctly ignore trailing backslashes.
+  * intersphinx: Don’t add “v” prefix to non-numeric versions.
+  * Autodoc: Allow type aliases defined in the project to be properly
+    cross-referenced when used as type annotations.
+  * doctest: doctest blocks are now correctly added to a group defined by the
+    configuration variable doctest_test_doctest_blocks.
+  * Coverage builder: Fix TypeError when warning about missing modules.
+  * autoclass: parent class members no longer considered directly defined in
+    certain cases, depending on autodoc processing order.
+  * LaTeX: page break can separate admonition title from contents.
+  * Fix autodoc_type_aliases when they appear in PEP 604 union syntax.
+  * autodoc: show traceback during import in human readable representation.
+  * Support images with data URIs that aren’t base64-encoded.
+  * autodoc: Fix handling of undefined names in annotations by using the
+    FORWARDREF annotationlib format.
+  * EPUB: unify path separators in manifest items to forward slashes.
+  * text builder: fix an infinite loop when processing CSV tables.
+  * Remove extra parentheses from js:function arguments and errors.
+- Drop patches:
+  * autodoc.patch
+  * autosummary.patch
+  * typing.patch
+  * docutils022.patch
+  * docutils022plus.patch
+
+-------------------------------------------------------------------
 Mon Sep 22 10:57:18 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add upstream patch docutils022plus.patch to fix compatibility with
