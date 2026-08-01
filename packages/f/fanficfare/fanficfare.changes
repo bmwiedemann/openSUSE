@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Jul 30 07:13:44 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to the version 4.59.0:
+  - Change urlunparse() to urljoin() #1377
+  - browsercache_firefox2: Fix for Firefox 1.53.0b2 Beta Change
+  - base_otw_adapter: Fix Series name masked using flaresolverr
+    #1370
+  - base_xenforo2forum_adapter: Change \n\n in forum tags to
+    ' ' like like 'Worm\n\n(Wildbow (Author))'
+  - base_otw_adapter: Better reporting of get token failure #1370
+  - fetcher_flaresolverr_proxy: Strip wrapper HTML from JSON
+    responses. See #1370
+  - adapter_ficbooknet: enable replace_text_formatting for epub
+    output #1368, thanks trousev!
+  - Fix for PI's 'pass calibre columns into FanficFare' broken by
+    270e01c
+  - adapter_literotica: Raise StoryDoesNotExist when redirected
+    to home page. Closes #1365
+  - adapter_literotica: Fix for site changes #1364, #1360, #1372,
+    #1374, #1378 -- Many thanks dbhmw!
+  - New site: sofurry.com, thanks dbhmw!
+  - New site: pmdfanfiction.com, thanks ndpereyra!
+  - adapter_ficbooknet: Fixes for site changes.
+  - Add retry_failedtoload_images option
+  - PI: Don't throw notifications when doing show_message()
+  - PI: INI Snippets
+  - PI: Prefill Add Reject URLs dialog from clipboard and allow
+    ctrl-enter
+  - Add OTW story note labels config #1347
+  - Improve continue_on_chapter_error_try_limit exceeded
+    reporting
+  - Chrome browsercache_sqldb added, but cannot read cache while
+    browser is open. See #1341
+  - adapter_fanficauthorsnet: Domains changed from .nsns to -nsns
+  - Include genre/category in defaults.ini when include_in_X for
+    extragenres/extracategories
+- Add missing Requires: python3-apsw
+
+-------------------------------------------------------------------
 Mon Jun  1 19:17:15 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to the version 4.58.0:

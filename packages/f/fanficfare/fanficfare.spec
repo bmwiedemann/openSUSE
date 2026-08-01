@@ -19,7 +19,7 @@
 %define modname FanFicFare
 %define modnamedown fanficfare
 Name:           fanficfare
-Version:        4.58.0
+Version:        4.59.0
 Release:        0
 Summary:        Tool for making eBooks from stories on fanfiction and other web sites
 License:        GPL-3.0-only
@@ -39,6 +39,7 @@ BuildRequires:  python3-requests-file
 BuildRequires:  python3-setuptools >= 17.1
 BuildRequires:  python3-wheel
 Requires:       python3-Brotli
+Requires:       python3-apsw
 Requires:       python3-beautifulsoup4
 Requires:       python3-chardet
 Requires:       python3-cloudscraper
