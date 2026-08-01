@@ -242,4 +242,12 @@
   Fixed by debian patch no-rpath-prebuilt.patch</comment>
     <requestid>1364119</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>62d9d86b6773b9fe81117442c432c976</srcmd5>
+    <version>0.19.1</version>
+    <time>1785601743</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1368552</requestid>
+  </revision>
 </revisionlist>
