@@ -24,7 +24,7 @@
 %define pp_so_ver       12
 %define wand_so_ver     2
 Name:           GraphicsMagick
-Version:        1.3.47
+Version:        1.3.48
 Release:        0
 Summary:        Viewer and Converter for Images
 License:        MIT
@@ -33,14 +33,12 @@ URL:            http://www.GraphicsMagick.org/
 Source:         https://downloads.sourceforge.net/project/graphicsmagick/graphicsmagick/%{version}/%{name}-%{version}.tar.xz
 Patch0:         GraphicsMagick-perl-linkage.patch
 Patch1:         GraphicsMagick-disable-insecure-coders.patch
-# CVE-2026-42050: Stack buffer overflow in XTileImage [bsc#1265048]
-Patch7:         GraphicsMagick-CVE-2026-42050.patch
 # CVE-2026-46523: heap-use-after-free via a crafted MSL image [bsc#1268125]
 Patch8:         GraphicsMagick-CVE-2026-46523.patch
-# CVE-2026-13606: memory corruption via crafted Photo CD (PCD) file [bsc#1269891]
-Patch9:         GraphicsMagick-CVE-2026-13606.patch
-# CVE-2026-61870: Memory leak in VIFF encoder when allocation fails [bsc#1271293]
-Patch10:        GraphicsMagick-CVE-2026-61870.patch
+# CVE-2026-61464: Heap Buffer Over-Write in X11 import with crafted window title [bsc#1271496]
+Patch11:        GraphicsMagick-CVE-2026-61464.patch
+# CVE-2026-56379: arbitrary MVG drawing command injection via the SVG decoder when processing specially crafted SVG files [bsc#1268878]
+Patch12:        GraphicsMagick-CVE-2026-56379.patch
 BuildRequires:  cups-client
 BuildRequires:  dcraw
 BuildRequires:  gcc-c++
