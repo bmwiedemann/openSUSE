@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Jul 31 05:53:20 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.2.30:
+  * build(deps): bump chainguard.dev/sdk from 0.1.156 to 0.1.158
+    (#2359)
+  * build(deps): bump chainguard-dev/actions/setup-registry from
+    1.6.28 to 1.6.29 (#2358)
+  * chore(harden-runner): allow apple endpoints to OSX builds
+    (#2361)
+  * Use slices.Concat in TestWriteCABundleChecksumsNoBundles
+    (#2349)
+  * build(deps): bump github/codeql-action/init from 4.37.2 to
+    4.37.3 (#2354)
+  * build(deps): bump google.golang.org/api from 0.289.0 to 0.290.0
+    (#2353)
+  * build(deps): bump github/codeql-action/analyze from 4.37.2 to
+    4.37.3 (#2355)
+  * build(deps): bump k8s.io/apimachinery from 0.36.2 to 0.36.3
+    (#2352)
+  * build(deps): bump chainguard.dev/sdk from 0.1.145 to 0.1.156
+    (#2351)
+  * build(deps): bump zizmorcore/zizmor-action from 0.6.0 to 0.6.1
+    (#2356)
+  * Regenerate apko-discover.lock.json golden file (#2350)
+  * build(deps): bump github/codeql-action/analyze from 4.37.1 to
+    4.37.2 (#2348)
+  * build(deps): bump github/codeql-action/init from 4.37.1 to
+    4.37.2 (#2347)
+  * build(deps): bump chainguard.dev/sdk from 0.1.140 to 0.1.145
+    (#2346)
+  * Write sha256 checksum sidecar next to CA bundles (#2331)
+
+-------------------------------------------------------------------
 Mon Jul 27 04:57:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.2.29:
