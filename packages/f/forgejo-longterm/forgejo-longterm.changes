@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Jul 31 05:33:01 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 15.0.6:
+  + fix: disable hooks during diff patch
+  + fix: add CGNAT (100.64.0.0/10) to 'private' hostmatcher rule
+  + fix: prevent arbitrary file reads from org-mode rendering
+  + fix: prevent stored XSS in Actions pre-execution errors
+  + feat(install): fix docker docs link to v15.0
+  + fix(ui): be able to edit a comment if attachment is disabled
+  + chore: document SSH_ALLOW_UNEXPECTED_AUTHORIZED_KEYS
+  + chore: Update link to policy in security.txt
+  + fix: add forgejo_runtime_token to actions context
+
+-------------------------------------------------------------------
+Thu Jul 30 19:02:05 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 15.0.5:
+  + fix: don't terminate subprocesses when SSH connection
+    is closed (internal SSH)
+  + fix: add forgejo_default_actions_url to actions context
+- Update to version 15.0.4:
+  + fix: don't cache write permission on first pushed git reference
+  + fix: ensure migrations allow/deny host lists are applied to
+    onedev, pagure, and codebase migrators
+  + Improved compliance with the config settings
+    [migrations].ALLOWED_DOMAINS, [migrations].BLOCKED_DOMAINS,
+    and [migrations].ALLOW_LOCALNETWORKS, which control the remotes
+    that Forgejo can access for git & LFS migration and mirroring
+    operations, fixing time-of-check vs. time-of-use issue and missing
+    checks in LFS
+
+-------------------------------------------------------------------
 Mon Jun 15 20:49:18 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 15.0.3:

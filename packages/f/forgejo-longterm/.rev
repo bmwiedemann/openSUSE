@@ -213,4 +213,21 @@
     - 12.0.0: https://codeberg.org/forgejo/forgejo/src/branch/forgejo/release-notes-published/12.0.0.md (forwarded request 1359667 from rrahl0)</comment>
     <requestid>1359668</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>5ca181994ca73be1ef516d5ff89d3d98</srcmd5>
+    <version>15.0.6</version>
+    <time>1785601884</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 15.0.6:
+  + fix: disable hooks during diff patch
+  + fix: add CGNAT (100.64.0.0/10) to 'private' hostmatcher rule
+  + fix: prevent arbitrary file reads from org-mode rendering
+  + fix: prevent stored XSS in Actions pre-execution errors
+  + feat(install): fix docker docs link to v15.0
+  + fix(ui): be able to edit a comment if attachment is disabled
+  + chore: document SSH_ALLOW_UNEXPECTED_AUTHORIZED_KEYS
+  + chore: Update link to policy in security.txt
+  + fix: add forgejo_runtime_token to actions context (forwarded request 1368729 from rrahl0)</comment>
+    <requestid>1368730</requestid>
+  </revision>
 </revisionlist>
