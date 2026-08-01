@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul 23 17:10:46 UTC 2026 - Lee Duncan <lduncan@suse.com>
+
+- Changed _services and spec file to recreate the tarball file
+  based on version 1.1 instead of version 1.1.1, since the software
+  that compares versions was having issues with using 1.1.1.
+  (bsc#1268742)
+
+-------------------------------------------------------------------
 Thu Apr 02 19:33:20 UTC 2026 - Lee Duncan <lduncan@suse.com>
 
 - Update to version v1.1+110.f16f944:

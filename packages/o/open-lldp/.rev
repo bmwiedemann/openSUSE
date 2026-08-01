@@ -230,4 +230,15 @@
   * Release 1.1.1 branch</comment>
     <requestid>1344492</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>d1c36adbade401ca1d3a7d3e7dca3351</srcmd5>
+    <version>1.1+110.f16f944</version>
+    <time>1785601615</time>
+    <user>dimstar_suse</user>
+    <comment>- Changed _services and spec file to recreate the tarball file
+  based on version 1.1 instead of version 1.1.1, since the software
+  that compares versions was having issues with using 1.1.1.
+  (bsc#1268742)</comment>
+    <requestid>1368069</requestid>
+  </revision>
 </revisionlist>

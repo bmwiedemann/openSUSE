@@ -22,7 +22,7 @@ Name:           open-lldp
 Summary:        Link Layer Discovery Protocol (LLDP) Agent
 License:        GPL-2.0-only
 Group:          System/Daemons
-Version:        1.1.1+87.f16f944
+Version:        1.1+110.f16f944
 Release:        0
 BuildRequires:  bison
 BuildRequires:  flex
