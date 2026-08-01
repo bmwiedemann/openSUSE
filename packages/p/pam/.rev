@@ -1429,4 +1429,41 @@
     <comment></comment>
     <requestid>1364026</requestid>
   </revision>
+  <revision rev="155" vrev="1">
+    <srcmd5>df2759f803e0e35fd65bd3777750735f</srcmd5>
+    <version>1.7.2+git48</version>
+    <time>1785601607</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.7.2+git48:
+  * pam_unix: make SHA512 the default
+  * po: update translations using Weblate (Hebrew)
+  * po: update translations using Weblate (Russian)
+  * po: update translations using Weblate (Greek)
+  * po: update translations using Weblate (Norwegian Nynorsk)
+  * po: update translations using Weblate (Chinese (Simplified) (zh_CN))
+  * po: update translations using Weblate (Serbian)
+  * po: update translations using Weblate (Polish)
+  * po: update translations using Weblate (Chinese (Simplified) (zh_CN))
+  * po: update translations using Weblate (Hungarian)
+  * po: add translation using Weblate (Kabyle)
+  * po: update translations using Weblate (Indonesian)
+  * po: update translations using Weblate (Lithuanian)
+  * po: update translations using Weblate (Italian)
+  * po: update translations using Weblate (Finnish)
+  * po: update translations using Weblate (Slovenian)
+  * po: update translations using Weblate (Spanish)
+  * po: update translations using Weblate (Punjabi)
+  * po: update translations using Weblate (Kazakh)
+  * po: update translations using Weblate (Swedish)
+  * po: update translations using Weblate (Ukrainian)
+  * po: update translations using Weblate (Portuguese (Brazil))
+  * po: update translations using Weblate (Turkish)
+  * po: update translations using Weblate (Georgian)
+  * po: update translations using Weblate (Romanian)
+  * po: update translations using Weblate (Czech)
+  * po: update translations using Weblate (Korean)
+  * Update translation files
+  * pam_userdb: fix password comparison timing leak</comment>
+    <requestid>1368617</requestid>
+  </revision>
 </revisionlist>

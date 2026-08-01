@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Thu Jul 30 15:08:37 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 1.7.2+git48:
+  * pam_unix: make SHA512 the default
+  * po: update translations using Weblate (Hebrew)
+  * po: update translations using Weblate (Russian)
+  * po: update translations using Weblate (Greek)
+  * po: update translations using Weblate (Norwegian Nynorsk)
+  * po: update translations using Weblate (Chinese (Simplified) (zh_CN))
+  * po: update translations using Weblate (Serbian)
+  * po: update translations using Weblate (Polish)
+  * po: update translations using Weblate (Chinese (Simplified) (zh_CN))
+  * po: update translations using Weblate (Hungarian)
+  * po: add translation using Weblate (Kabyle)
+  * po: update translations using Weblate (Indonesian)
+  * po: update translations using Weblate (Lithuanian)
+  * po: update translations using Weblate (Italian)
+  * po: update translations using Weblate (Finnish)
+  * po: update translations using Weblate (Slovenian)
+  * po: update translations using Weblate (Spanish)
+  * po: update translations using Weblate (Punjabi)
+  * po: update translations using Weblate (Kazakh)
+  * po: update translations using Weblate (Swedish)
+  * po: update translations using Weblate (Ukrainian)
+  * po: update translations using Weblate (Portuguese (Brazil))
+  * po: update translations using Weblate (Turkish)
+  * po: update translations using Weblate (Georgian)
+  * po: update translations using Weblate (Romanian)
+  * po: update translations using Weblate (Czech)
+  * po: update translations using Weblate (Korean)
+  * Update translation files
+  * pam_userdb: fix password comparison timing leak
+  * meson: use an empty array for link args instead of an empty string
+  * pam_succeed_if: prevent logging unknown user names in plaintext
+  * pam_limits: improve 'wrong limit value' log message
+  * pam_pwhistory: allow earlier passwords when remember count is reduced
+  * pam_namespace: fix error handling in secure_opendir()
+  * pam_rhosts: fix typos in pam_rhosts(8) man page
+  * .github: add gcc-15 jobs
+- Obsoletes pam_userdb-fix-password-comparison-timing-leak.patch
+
+-------------------------------------------------------------------
 Tue Jun 16 15:15:09 UTC 2026 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - Fix password comparison timing leak from pam_userdb
