@@ -1903,4 +1903,12 @@ Fixes a critical bug in version 0.6.2, crashes when using internet services.
 </comment>
     <requestid>1367789</requestid>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>ce4702db9f3b72d74d06fdbfae9e2c0f</srcmd5>
+    <version>1.2.26</version>
+    <time>1785601882</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1368687</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jul 30 19:05:08 UTC 2026 - Jonas Kvinge <jonaski@opensuse.org>
+
+- Update to version 1.2.26
+  * Fixed re-loading playlist item metadata for local files not in the collection after editing tags (#2257)
+  * Replaced deprecated QLibraryInfo::path with QLibraryInfo::paths
+  * Removed dedicated network access manager for lyrics
+  * Refactor the playlist items save/reload code
+  * Refactor the translation loading code
+- Remove Leap 15.5/15.6 CC/CXX override
+
+-------------------------------------------------------------------
 Sat Jul 25 22:55:36 UTC 2026 - Jonas Kvinge <jonaski@opensuse.org>
 
 - Update to version 1.2.25
