@@ -1,7 +1,7 @@
 #
 # spec file for package tumbler
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +16,11 @@
 #
 
 
-%bcond_with git
 %bcond_with libffmpegthumbnailer
 %define libname libtumbler-1-0
 
 Name:           tumbler
-Version:        4.20.1
+Version:        4.20.2
 Release:        0
 Summary:        Thumbnail Management for Xfce
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -63,9 +62,6 @@ BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libcurl)
 # EPUB Plugin
 BuildRequires:  (pkgconfig(libgepub-0.6) or pkgconfig(libgepub-0.7))
-%if %{with git}
-BuildRequires:  xfce4-dev-tools
-%endif
 # no matter what rpmlint says, we need the same lib-version
 Requires:       %libname = %{version}
 Recommends:     ffmpegthumbnailer
@@ -144,13 +140,7 @@ pkg-config --exists libgepub-0.7 && sed -i "s/gepub-0.6/gepub-0.7/g" configure |
 tar -xzf %SOURCE1
 
 %build
-%if %{with git}
-NOCONFIGURE=1 ./autogen.sh
-%configure \
-	--disable-static
-%else
 %configure
-%endif
 %make_build
 
 %install

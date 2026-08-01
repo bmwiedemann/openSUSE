@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jul 30 06:50:40 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.20.2:
+  * Update copyright year
+  * Support new matroska mime types
+  * Remove G_GNUC_CONST
+  * Add missing chain up to parent class
+  * Handle cases where there are no plugins gracefully
+  * desktop-thumbnailer: Don't use GIOStream to get thumbnail pixbuf
+- Remove obsolete "bcond_with git" stuff
+
+-------------------------------------------------------------------
 Tue Oct 14 09:47:42 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 4.20.1:
