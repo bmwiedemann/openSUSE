@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Aug  1 10:37:17 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Add more build requirements to fix a build failure on Leap 16.x.
+
+-------------------------------------------------------------------
 Mon Jun 15 09:29:55 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 9.0.1

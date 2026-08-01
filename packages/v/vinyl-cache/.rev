@@ -15,4 +15,12 @@
     <comment>- Update to release 9.0.1</comment>
     <requestid>1359515</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>214de1c5554e85733117f7fe1f758c5a</srcmd5>
+    <version>9.0.1</version>
+    <time>1785602163</time>
+    <user>dimstar_suse</user>
+    <comment>- Add more build requirements to fix a build failure on Leap 16.x.</comment>
+    <requestid>1369004</requestid>
+  </revision>
 </revisionlist>

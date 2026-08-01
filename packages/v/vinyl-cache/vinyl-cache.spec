@@ -45,6 +45,7 @@ BuildRequires:  libtool
 BuildRequires:  libxslt-devel
 BuildRequires:  netcfg
 BuildRequires:  ncurses-devel
+BuildRequires:  python3-base
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-docutils
 BuildRequires:  readline-devel
