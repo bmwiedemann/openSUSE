@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jul 30 19:01:58 UTC 2026 - Nassim Lhadj <lhadjnassim311@gmail.com>
+
+- Update to version 0.1.8:
+  * core: fix dbus inhibit lock counting
+  * nix: remove sdbus-cpp overlay
+  * core: don't skip on-resume when on-timeout already fired
+  * Fix: allow hypridle -c to run without default conf
+  * config: update dpms commands to lua syntax
+  * core: implement GetActive and ActiveChanged on dbus service
+  * core: add per-listener condition_cmd with retry
+
+-------------------------------------------------------------------
 Wed Sep 10 20:04:30 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 0.1.7:
