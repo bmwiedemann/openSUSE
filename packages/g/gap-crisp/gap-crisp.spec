@@ -1,7 +1,7 @@
 #
 # spec file for package gap-crisp
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           gap-crisp
-Version:        1.4.8
+Version:        1.4.9
 Release:        0
 Summary:        GAP: Computing with Radicals, Injectors, Schunck classes and Projectors
 License:        BSD-2-Clause
 Group:          Productivity/Scientific/Math
 URL:            https://github.com/bh11/crisp
-Source:         https://github.com/bh11/crisp/archive/refs/tags/CrISP-%version.tar.gz
+Source:         https://github.com/bh11/crisp/archive/refs/tags/CRISP-%version.tar.gz
 BuildRequires:  gap-rpm-devel
-BuildRequires:  xz
 BuildArch:      noarch
-Requires:       gap-core >= 4.5
+Requires:       gap-core >= 4.12
 
 %description
 The GAP package "CRISP" provides algorithsmf roc omputing subgroups
@@ -41,7 +40,7 @@ subgroups invariant under a prescribed set of automorphisms and
 belonging to a given group class.
 
 %prep
-%autosetup -n crisp-CrISP-%version
+%autosetup -n crisp-CRISP-%version
 
 %build
 
