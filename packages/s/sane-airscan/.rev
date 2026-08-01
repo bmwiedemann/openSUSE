@@ -142,4 +142,23 @@
   * Add EPSON EW-M752T to support list (forwarded request 1339550 from rrahl0)</comment>
     <requestid>1339551</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b703fd7b0af116747963f999cf53cf62</srcmd5>
+    <version>0.99.38</version>
+    <time>1785601919</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.99.38:
+  * Add compability for Canon MF270 Series
+  * mdns: attempt to fix SIGSEGV (use-after-free) in mdns_query_callback (see #404)
+  * escl: reject eSCL 1.0 sources gracefully instead of asserting
+  * Add Canon MG5700 compatibility
+  * Document support for Brother MFC-J5730DW
+  * Fixed typos in airscan-discover.1 man page. Man pages regenerated.
+  * Fix grammatical error in configuration section
+  * Fix grammar in device configuration instructions
+  * Added Xerox C315 support information
+  * Add tests to meson.build
+- Run upstream tests during build (forwarded request 1368726 from rrahl0)</comment>
+    <requestid>1368727</requestid>
+  </revision>
 </revisionlist>

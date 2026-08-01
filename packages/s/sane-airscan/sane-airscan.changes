@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jul 31 05:22:10 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 0.99.38:
+  * Add compability for Canon MF270 Series
+  * mdns: attempt to fix SIGSEGV (use-after-free) in mdns_query_callback (see #404)
+  * escl: reject eSCL 1.0 sources gracefully instead of asserting
+  * Add Canon MG5700 compatibility
+  * Document support for Brother MFC-J5730DW
+  * Fixed typos in airscan-discover.1 man page. Man pages regenerated.
+  * Fix grammatical error in configuration section
+  * Fix grammar in device configuration instructions
+  * Added Xerox C315 support information
+  * Add tests to meson.build
+- Run upstream tests during build
+
+-------------------------------------------------------------------
 Tue Mar 17 09:19:22 UTC 2026 - rrahl0@opensuse.org
 
 - Update to version 0.99.37:

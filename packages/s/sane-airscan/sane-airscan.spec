@@ -17,7 +17,7 @@
 
 
 Name:           sane-airscan
-Version:        0.99.37
+Version:        0.99.38
 Release:        0
 Summary:        Universal driver for Apple AirScan (eSCL) and WSD
 License:        SUSE-GPL-2.0+-with-sane-exception
@@ -55,16 +55,17 @@ scanning protocol
 %meson_install
 rm %{buildroot}%{_libdir}/sane/lib%{name}.so
 
+%check
+%meson_test
+
 %files
 %license LICENSE COPYING
 %doc README.md
-%{_bindir}/airscan-discover
-%config(noreplace) %{_sysconfdir}/sane.d/airscan.conf
 %config %{_sysconfdir}/sane.d/dll.d/airscan
+%config(noreplace) %{_sysconfdir}/sane.d/airscan.conf
+%{_bindir}/airscan-discover
 %{_libdir}/sane/lib%{name}.so.1
-%{_mandir}/man?/{sane-airscan,airscan-discover}.?%{?ext_man}
-%if 0%{?suse_version} == 1500
-%dir %{_sysconfdir}/sane.d/dll.d
-%endif
+%{_mandir}/man?/airscan-discover.?%{?ext_man}
+%{_mandir}/man?/sane-airscan.?%{?ext_man}
 
 %changelog
