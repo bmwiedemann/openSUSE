@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jul 30 06:35:06 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.20.1:
+  * Update copyright year
+  * Remove undesired 'n' in logs
+  * settings: Update sleep mode allowed values
+  * settings: Remove sleep mode combobox tooltips
+  * settings: Add shutdown as sleep mode when inactive
+  * backlight-helper: Fix brightness control device selection logic
+  * Translation Updates
+- Remove obsolete 0001-relax-x11-version.patch
+
+-------------------------------------------------------------------
 Wed Jul 15 13:02:57 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
 
 - Suggest pkexec-rpm to tell solver we prefer the original one

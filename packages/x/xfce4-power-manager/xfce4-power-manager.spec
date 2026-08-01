@@ -19,7 +19,7 @@
 %define panel_version 4.14.0
 %bcond_with git
 Name:           xfce4-power-manager
-Version:        4.20.0
+Version:        4.20.1
 Release:        0
 Summary:        Power Management for the Xfce Desktop Environment
 License:        GPL-2.0-or-later
@@ -27,8 +27,6 @@ Group:          System/GUI/XFCE
 URL:            https://docs.xfce.org/xfce/xfce4-power-manager/start
 Source0:        https://archive.xfce.org/src/xfce/xfce4-power-manager/4.20/%{name}-%{version}.tar.bz2
 Source1:        xfce4-power-manager.xml
-# PATCH-FIX-OPENSUSE 0001-relax-x11-version.patch -- Allow build for Leap with its ancient but sufficient X11 packages.
-Patch1:         0001-relax-x11-version.patch
 # PATCH-FIX-OPENSUSE 0002-remove-pm-helper-policy.patch -- Remove pm-helper from the polkit policy - see comment about its usage below.
 Patch2:         0002-remove-pm-helper-policy.patch
 BuildRequires:  appstream-glib
