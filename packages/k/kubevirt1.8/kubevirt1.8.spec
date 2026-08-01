@@ -291,7 +291,7 @@ the Kubevirt container images.
 # for Tumbleweed-based containers is used.
 #
 %if 0%{?suse_version} >= 1699
-    tagprefix=kubevirt
+    tagprefix=opensuse
     labelprefix=org.opensuse.kubevirt
     registry=registry.opensuse.org
 
@@ -345,7 +345,7 @@ build_tests="true" \
     %{nil}
 
 %if 0%{?suse_version} >= 1699
-env DOCKER_PREFIX=$reg_path DOCKER_TAG=%{version}-%{release} KUBEVIRT_NO_BAZEL=true ./hack/build-manifests.sh
+env DOCKER_PREFIX=$reg_path DOCKER_TAG=%{version} KUBEVIRT_NO_BAZEL=true ./hack/build-manifests.sh
 %endif
 
 %install

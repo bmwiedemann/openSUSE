@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul 30 18:17:46 UTC 2026 - Victor Toso de Carvalho <victor.carvalho@suse.com>
+
+- Fix the release manifests' image references (bsc#1272604): pull
+  registry.opensuse.org/opensuse/virt-* tagged by plain version,
+  aligning with what kubevirt-1.8-image provides. The previous
+  kubevirt/ namespace and version-release tag belong to the retired
+  virt-*-container flow and match no published image.
+
+-------------------------------------------------------------------
 Tue Jul 28 14:16:58 UTC 2026 - Victor Toso de Carvalho <victor.carvalho@suse.com>
 
 - Add a libguestfs-tools subpackage: upstream's

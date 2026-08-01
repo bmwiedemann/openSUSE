@@ -88,4 +88,14 @@ with a single new entry on top covering both changes above.
 </comment>
     <requestid>1368214</requestid>
   </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>9153cf8c41689b9b1e51c3acb3f95981</srcmd5>
+    <version>1.8.4</version>
+    <time>1785601877</time>
+    <user>dimstar_suse</user>
+    <comment>Fix the release manifests' image references (bsc#1272604): pull registry.opensuse.org/opensuse/virt-* tagged by plain version, aligning with what kubevirt-1.8-image provides. The previous kubevirt/ namespace and version-release tag belong to the retired virt-*-container flow (deletion in progress [0]) and match no published image: the kubevirt/ containers are frozen at 1.8.3-era tags, and the version-release tag scheme can never match since kubevirt-1.8-image's release counter is independent of the RPM's.
+
+[0] https://build.opensuse.org/request/show/1368602</comment>
+    <requestid>1368683</requestid>
+  </revision>
 </revisionlist>
