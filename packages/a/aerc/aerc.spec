@@ -1,7 +1,7 @@
 #
 # spec file for package aerc
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2023 Hannes Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           aerc
-Version:        0.21.0
+Version:        0.22.0
 Release:        0
 Summary:        An email client for terminals
 License:        GPL-3.0-or-later
@@ -30,6 +30,7 @@ Patch0:         fix-script-interpreter.patch
 Patch1:         skip-autoconfig-test.patch
 BuildRequires:  gcc
 BuildRequires:  golang-packaging
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  make
 BuildRequires:  notmuch-devel >= 0.37
 BuildRequires:  scdoc
@@ -69,6 +70,7 @@ LC_ALL=C.UTF-8 ./filters/test.sh
 %license LICENSE
 %{_datadir}/%{name}
 %{_datadir}/applications/%{name}.desktop
+%{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 %{_bindir}/%{name}
 %{_bindir}/carddav-query
 %{_libexecdir}/%{name}
