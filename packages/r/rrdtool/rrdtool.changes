@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Tue Jul 28 19:12:54 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to 1.10.3
+  * The Python binding is now installed with pip into a consistent,
+    distribution-independent location
+  * Modernize obsolete autoconf macros so configure regenerates cleanly
+    with current autotools
+  * Mark the Ruby bindings as Ractor safe
+  * Fix Compatiblity with TCL-9
+  * Correctly link Ruby Bindings
+  * Fix MacOS Build error (no SOCK_CLOEXEC on mac)
+  * Fix build on 32bits platforms (like armhf) when time_t is 64bits
+  * Fix compilation on illumos
+  * Python2.3 is deprecated and therefore, the Python bindings should use
+    Python3 as default
+  * Fix issue where RRDtool detects a LINE or AREA with a constant numeric
+    value as being exportable
+  * Fix broken argc overflow check in rrdcached tune handler that rejected
+    all tune commands
+  * Harden rrdcached pid file parsing and daemon options with strtol
+    validation
+  * Add NULL, bounds, and zero-division safety guards in xport, graph, and
+    graph_helper (CVE-2026-43958, bsc#1267243)
+  * Escape control characters in JSON xport output per RFC 7159
+  * Add pkg-config fallback for Perl and Ruby bindings when building
+    standalone
+  * Export ABS_TOP_BUILDDIR to environment for Ruby extconf.rb during
+    in-tree builds
+  * Fix parse_tick: shift the legend by 2 spaces for the "coloured-box"
+  * Add Georgian translation
+  * Add -S short option for --step in rrdtool xport
+- Use python rpm macros for python subpackages
+  * Build python packages with %pyproject_* macros instead of upstream build
+    system
+  * Build for all python flavors in TW
+  * Use %sle15_python_module_pythons to build only for modern python versions
+    for Leap 15.x
+  * Use %python_subpackages to generate all flavor subpackages
+  * Use %{python_module} macros for BuildRequires
+- Drop patches included in upstream release
+  * link_ruby_bindings.patch
+  * fix-graph-overlapping-legends.patch
+- Update language bindings subpackage descriptions
+
+-------------------------------------------------------------------
 Wed May 13 18:51:56 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Add fix-graph-overlapping-legends.patch

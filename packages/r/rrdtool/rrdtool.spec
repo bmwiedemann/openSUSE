@@ -16,10 +16,8 @@
 #
 
 
-%define python python3
-%if 0%{?suse_version} >= 1600
- %define python %{primary_python}
-%endif
+%define python_subpackage_only 1
+%{?sle15_python_module_pythons}
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
@@ -32,7 +30,7 @@
 %bcond_without  libwrap
 %bcond_with     rados
 Name:           rrdtool
-Version:        1.9.0
+Version:        1.10.3
 Release:        0
 Summary:        Round Robin Database Tool to store and display time-series data
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
@@ -50,9 +48,6 @@ Source99:       %{name}.changes
 # PATCH-FIX-UPSTREAM -- bnc#793636
 Patch1:         rrdtool-zero_vs_nothing.patch
 Patch2:         harden_rrdcached.service.patch
-Patch3:         link_ruby_bindings.patch
-# PATCH-FIX-UPSTREAM -- bsc#1262407
-Patch4:         fix-graph-overlapping-legends.patch
 # Needed for tests
 BuildRequires:  bc
 BuildRequires:  cairo-devel >= 1.2
@@ -72,8 +67,10 @@ BuildRequires:  systemd-rpm-macros
 BuildRequires:  zlib-devel
 Requires:       dejavu
 %if %{with python}
-BuildRequires:  %{python}-devel
-BuildRequires:  %{python}-setuptools
+BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 %endif
 %if %{with lua}
 BuildRequires:  lua-devel
@@ -140,9 +137,7 @@ Requires:       perl = %{perl_version}
 %description -n perl-%{name}
 RRD is the Acronym for Round Robin Database. RRD is a system to store and
 display time-series data (i.e. network bandwidth, machine-room temperature,
-server load average). This package contains documentation on using RRD.
-
-This package contains the Perl bindings.
+server load average). This package contains the Perl bindings.
 
 %if %{with lua}
 %package -n lua-%{name}
@@ -153,20 +148,21 @@ Requires:       %{name} = %{version}-%{release}
 %description -n lua-%{name}
 RRD is the Acronym for Round Robin Database. RRD is a system to store and
 display time-series data (i.e. network bandwidth, machine-room temperature,
-server load average). This package contains documentation on using RRD.
-
-This package contains the Lua bindings.
+server load average). This package contains the Lua bindings.
 %endif
 
 %if %{with python}
-%package -n %{python}-%{name}
+%python_subpackages
+
+%package -n python-%{name}
 Summary:        Python bindings for RRDtool
 Group:          Development/Languages/Python
 Requires:       %{name} = %{version}-%{release}
-Requires:       %{python}
 
-%description -n %{python}-%{name}
-Python RRDtool bindings.
+%description -n python-%{name}
+RRD is the Acronym for Round Robin Database. RRD is a system to store and
+display time-series data (i.e. network bandwidth, machine-room temperature,
+server load average). This package contains the Python bindings.
 %endif
 
 %if %{with ruby}
@@ -194,9 +190,7 @@ Requires:       tcl >= 8.0
 %description -n tcl-%{name}
 RRD is the Acronym for Round Robin Database. RRD is a system to store and
 display time-series data (i.e. network bandwidth, machine-room temperature,
-server load average). This package contains documentation on using RRD.
-
-This package contains the Tcl bindings.
+server load average). This package contains the Tcl bindings.
 %endif
 
 %package cached
@@ -247,11 +241,7 @@ autoreconf -fi
         --enable-perl \
         --enable-perl-site-install \
         --with-perl-options='INSTALLDIRS="vendor"' \
-%if %{with python}
-        --enable-python \
-%else
         --disable-python \
-%endif
 %if %{with ruby}
         --enable-ruby \
         --enable-ruby-site-install \
@@ -272,6 +262,12 @@ autoreconf -fi
         --with-systemdsystemunitdir=%{_unitdir}
 
 %make_build
+
+%if %{with python}
+pushd bindings/python
+%pyproject_wheel
+popd
+%endif
 
 %install
 make \
@@ -315,6 +311,12 @@ chmod 644 %{buildroot}%{_tmpfilesdir}/rrdcached.conf
 
 mkdir -p %{buildroot}%{_sbindir}
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcrrdcached
+
+%if %{with python}
+pushd bindings/python
+%pyproject_install
+popd
+%endif
 
 %check
 # Follow upstream, disable the following, failing tests: rpn1
@@ -381,14 +383,10 @@ getent passwd %{rrdcached_user} >/dev/null || useradd -s /sbin/nologin -g %{rrdc
 %endif
 
 %if %{with python}
-%files -n %{python}-%{name}
+%files %{python_files %{name}}
 %license bindings/python/COPYING
 %doc bindings/python/README.md
-%if 0%{?suse_version} >= 1500
-%{python3_sitearch}/*
-%else
 %{python_sitearch}/*
-%endif
 %endif
 
 %if %{with ruby}
