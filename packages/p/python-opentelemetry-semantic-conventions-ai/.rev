@@ -7,4 +7,32 @@
     <comment>New package, forwarded from devel:languages:python (dependency for vllm).</comment>
     <requestid>1365269</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>daaf6c1000c7874cec56e6756c441045</srcmd5>
+    <version>0.5.2</version>
+    <time>1785601996</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.5.2
+
+Source moves from the PyPI sdist to the upstream traceloop/openllmetry
+monorepo archive (tag v0.62.1, subdirectory
+packages/opentelemetry-semantic-conventions-ai).
+
+Rationale, also recorded as a prominent comment in the spec: upstream bumped
+this package's in-tree version to 0.5.2 on 2026-06-15 (commit d7aaf6cc) but
+never published 0.5.2 to PyPI, whose newest sdist is still 0.5.1. A
+%{version}-derived files.pythonhosted.org URL therefore 404s. The monorepo
+tag is held in its own %{monorepo_ver} macro so it, not %{version}, is what
+moves on the next update. Gentoo's GURU overlay packages 0.5.2 the same way.
+
+Dependency floors raised to match upstream: opentelemetry-sdk &gt;= 1.42.0 and
+opentelemetry-semantic-conventions &gt;= 0.63b1 (Factory has 1.43.0 and 0.64b0).
+requires-python is now &gt;=3.10; the singlespec builds only python313 and
+python314, so no flavour falls below that floor.
+
+Local aarch64 build against openSUSE_Tumbleweed: %check runs the upstream
+suite, 249 tests pass on both flavours; rpmlint 0 errors, 0 warnings, 0
+badness. Built RPM verified as version 0.5.2 with the correct dist-info.</comment>
+    <requestid>1368785</requestid>
+  </revision>
 </revisionlist>

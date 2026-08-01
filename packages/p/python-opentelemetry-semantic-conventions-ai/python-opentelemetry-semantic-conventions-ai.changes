@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jul 31 08:07:13 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.5.2:
+  * Migrate the cache token attributes to the upstream OpenTelemetry
+    semantic conventions package
+  * Emit consistent embeddings_count, result_count and similarity
+    attributes across the Pinecone and Milvus vector stores
+  * Minimum supported Python is now 3.10
+- Take the sources from the upstream openllmetry monorepo archive
+  instead of the PyPI sdist:
+  * Upstream bumped this package to 0.5.2 in the monorepo but never
+    published that release to PyPI, where the newest sdist is still
+    0.5.1, so a PyPI source URL for 0.5.2 does not exist
+  * The tarball is now the monorepo tag tracked by the monorepo_ver
+    macro and the package is built from its packages subdirectory
+- Require opentelemetry-sdk >= 1.42.0 and
+  opentelemetry-semantic-conventions >= 0.63b1 as mandated by upstream
+
+-------------------------------------------------------------------
 Sun Jul 12 13:54:01 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Initial package python-opentelemetry-semantic-conventions-ai 0.5.1
