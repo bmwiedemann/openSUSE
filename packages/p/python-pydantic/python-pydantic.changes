@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 28 01:32:49 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-ruff-0.16.patch:
+  * Support changes required by ruff 0.16.
+
+-------------------------------------------------------------------
 Sun May 10 19:57:53 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.13.4:

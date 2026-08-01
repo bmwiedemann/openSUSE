@@ -33,6 +33,8 @@ Summary:        Data validation and settings management using python type hintin
 License:        MIT
 URL:            https://github.com/pydantic/pydantic
 Source:         https://github.com/pydantic/pydantic/archive/v%{version}.tar.gz#/pydantic-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Support changes required by ruff 0.16
+Patch0:         support-ruff-0.16.patch
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module hatch-fancy-pypi-readme}
 BuildRequires:  %{python_module hatchling}

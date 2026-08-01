@@ -705,4 +705,13 @@
     `model_validate_json()` by @Viicos in #13084</comment>
     <requestid>1352320</requestid>
   </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>8a8c7b71114ef7430af328c1b8138045</srcmd5>
+    <version>2.13.4</version>
+    <time>1785601683</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch support-ruff-0.16.patch:
+  * Support changes required by ruff 0.16.</comment>
+    <requestid>1368260</requestid>
+  </revision>
 </revisionlist>
