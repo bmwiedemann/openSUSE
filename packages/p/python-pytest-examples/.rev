@@ -126,4 +126,13 @@
     <comment></comment>
     <requestid>1301382</requestid>
   </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>105ec9205968561d2d8d2ebcc860313a</srcmd5>
+    <version>0.0.18</version>
+    <time>1785601668</time>
+    <user>dimstar_suse</user>
+    <comment>- Update patch ruff.patch:
+  * Support both ruff 0.15 and 0.16.</comment>
+    <requestid>1368110</requestid>
+  </revision>
 </revisionlist>

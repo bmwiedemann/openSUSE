@@ -1,26 +1,28 @@
-From 60ae70d05ee345b38c2d2048d36b4a4545c98b6b Mon Sep 17 00:00:00 2001
-From: Brent Westbrook <brentrwestbrook@gmail.com>
-Date: Mon, 18 Aug 2025 13:36:21 -0400
-Subject: [PATCH] Bump Ruff to 0.12.9, update regexes for new output rendering
+From 2d072137cc40d224e1a2479c73c64c7f82768c70 Mon Sep 17 00:00:00 2001
+From: Hasan <hasan.r67@gmail.com>
+Date: Fri, 10 Jul 2026 12:48:55 +0200
+Subject: [PATCH] Bump Ruff to 0.12.9, update output parsing for new rendering
 
-Ruff 0.12.9 updated our default `full` output rendering to split the
-header (`filename:line:column error`) over two lines, which was causing a few
-test failures. This PR bumps the Ruff dependency to `>=0.12.9` and updates the
-regular expressions affecting the failing tests to expect the new format.
+Ruff 0.12.9 (astral-sh/ruff#19966) split the diagnostic header so the
+location renders on a separate `--> file:line:col` line, indented to
+align with the source gutter. Update the offset-rewriting regex to match
+the new format and preserve the variable-width indentation (so the path
+substitution still works when the error is on a multi-digit line number),
+and bump the minimum Ruff to 0.12.9.
 
-See https://github.com/astral-sh/ruff/issues/19966 for more details.
+Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>
 ---
  pyproject.toml             |  2 +-
- pytest_examples/lint.py    |  4 ++--
- tests/test_lint.py         |  4 ++--
+ pytest_examples/lint.py    |  8 +++++---
+ tests/test_lint.py         | 17 ++++++++++++++--
  tests/test_run_examples.py |  4 ++--
- uv.lock                    | 43 +++++++++++++++++++-------------------
- 5 files changed, 29 insertions(+), 28 deletions(-)
+ uv.lock                    | 40 +++++++++++++++++++-------------------
+ 5 files changed, 43 insertions(+), 28 deletions(-)
 
-diff --git a/pyproject.toml b/pyproject.toml
-index d630714..168de4f 100644
---- a/pyproject.toml
-+++ b/pyproject.toml
+Index: pytest_examples-0.0.18/pyproject.toml
+===================================================================
+--- pytest_examples-0.0.18.orig/pyproject.toml
++++ pytest_examples-0.0.18/pyproject.toml
 @@ -34,7 +34,7 @@ classifiers = [
      "Topic :: Software Development :: Libraries :: Python Modules",
  ]
@@ -30,52 +32,101 @@ index d630714..168de4f 100644
  
  [project.entry-points.pytest11]
  examples = "pytest_examples"
-diff --git a/pytest_examples/lint.py b/pytest_examples/lint.py
-index 67133d4..17b6cb4 100644
---- a/pytest_examples/lint.py
-+++ b/pytest_examples/lint.py
-@@ -57,9 +57,9 @@ def ruff_check(
+Index: pytest_examples-0.0.18/pytest_examples/lint.py
+===================================================================
+--- pytest_examples-0.0.18.orig/pytest_examples/lint.py
++++ pytest_examples-0.0.18/pytest_examples/lint.py
+@@ -56,10 +56,12 @@ def ruff_check(
+     if p.returncode == 1 and stdout:
  
          def replace_offset(m: re.Match[str]):
-             line_number = int(m.group(1))
+-            line_number = int(m.group(1))
 -            return f'{example.path}:{line_number + example.start_line}'
-+            return f' --> {example.path}:{line_number + example.start_line}'
++            line_number = int(m.group(2))
++            return f'{m.group(1)}--> {example.path}:{line_number + example.start_line}'
  
 -        output = re.sub(r'^-:(\d+)', replace_offset, stdout, flags=re.M)
-+        output = re.sub(r'^ --> -:(\d+)', replace_offset, stdout, flags=re.M)
++        # ruff >=0.12.9 renders the location on a separate ` --> file:line:col` line, indented to
++        # align with the source gutter, so the leading whitespace widens for multi-digit line numbers.
++        output = re.sub(r'^( *)--> -:(\d+)', replace_offset, stdout, flags=re.M)
          raise FormatError(f'ruff failed:\n{indent(output, "  ")}')
      elif p.returncode != 0:
          raise RuntimeError(f'Error running ruff, return code {p.returncode}:\n{stderr or stdout}')
-diff --git a/tests/test_lint.py b/tests/test_lint.py
-index b735bb1..cfc67ed 100644
---- a/tests/test_lint.py
-+++ b/tests/test_lint.py
-@@ -24,11 +24,11 @@ def test_ruff_config():
+Index: pytest_examples-0.0.18/tests/test_lint.py
+===================================================================
+--- pytest_examples-0.0.18.orig/tests/test_lint.py
++++ pytest_examples-0.0.18/tests/test_lint.py
+@@ -15,7 +15,7 @@ def test_ruff():
+ def test_ruff_config():
+     code = 'from typing import Union\n\n\ndef foo(x: Union[int, str]):\n    pass\n'
+     example = CodeExample.create(code)
+-    ruff_check(example, ExamplesConfig())
++    ruff_check(example, ExamplesConfig(ruff_ignore=['FA100']))
+ 
+     with pytest.raises(FormatError, match='real/file.py:4:12: UP007 [*] Use `X | Y` for type annotations'):
+         ruff_check(example, ExamplesConfig(target_version='py311', upgrade=True))
+@@ -24,11 +24,24 @@ def test_ruff_config():
  def test_ruff_offset():
      code = 'print(x)\n'
      example = CodeExample.create(code)
 -    with pytest.raises(FormatError, match='testing.md:1:7: F821 Undefined name'):
-+    with pytest.raises(FormatError, match='F821 Undefined name `x`\n   --> testing.md:1:7'):
++    with pytest.raises(FormatError, match=r'F821 Undefined name `x`\n +--> testing.md:1:7'):
          ruff_check(example, ExamplesConfig())
  
      example = CodeExample.create(code, start_line=10)
 -    with pytest.raises(FormatError, match='testing.md:11:7: F821 Undefined name'):
-+    with pytest.raises(FormatError, match='F821 Undefined name `x`\n   --> testing.md:11:7'):
++    with pytest.raises(FormatError, match=r'F821 Undefined name `x`\n +--> testing.md:11:7'):
++        ruff_check(example, ExamplesConfig())
++
++
++def test_ruff_offset_multiline():
++    # the error is on line 10 of the example, so ruff widens the gutter and indents `-->` further;
++    # the offset substitution must still rewrite the `-` placeholder to the real path
++    code = 'x = 1\n' * 9 + 'print(y)\n'
++    example = CodeExample.create(code)
++    with pytest.raises(FormatError, match=r'F821 Undefined name `y`\n +--> testing.md:10:7'):
++        ruff_check(example, ExamplesConfig())
++
++    example = CodeExample.create(code, start_line=10)
++    with pytest.raises(FormatError, match=r'F821 Undefined name `y`\n +--> testing.md:20:7'):
          ruff_check(example, ExamplesConfig())
  
  
-diff --git a/tests/test_run_examples.py b/tests/test_run_examples.py
-index d9df4b2..53958cc 100644
---- a/tests/test_run_examples.py
-+++ b/tests/test_run_examples.py
-@@ -111,8 +111,8 @@ def test_find_run_examples(example: CodeExample, eval_example: EvalExample):
+Index: pytest_examples-0.0.18/tests/test_run_examples.py
+===================================================================
+--- pytest_examples-0.0.18.orig/tests/test_run_examples.py
++++ pytest_examples-0.0.18/tests/test_run_examples.py
+@@ -67,7 +67,7 @@ def test_find_run_examples(example: Code
+ def test_ruff_ok(pytester: pytest.Pytester):
+     pytester.makefile(
+         '.md',
+-        my_file='```py\nimport sys\nprint(sys.platform)\n```',
++        my_file='```py\nimport sys\n\nprint(sys.platform)\n```',
+     )
+     # language=Python
+     pytester.makepyfile(
+@@ -88,7 +88,7 @@ def test_find_run_examples(example: Code
+ def test_ruff_error(pytester: pytest.Pytester):
+     pytester.makefile(
+         '.md',
+-        my_file='```py\nimport sys\nprint(missing)\n```',
++        my_file='```py\nimport sys\n\nprint(missing)\n```',
+     )
+     # language=Python
+     pytester.makepyfile(
+@@ -109,10 +109,12 @@ def test_find_run_examples(example: Code
+     output = re.sub(r'(=|_){3,}', r'\1\1\1', output)
+     for phrase in [
          '=== FAILURES ===\n',
-         '___ test_find_run_examples[my_file.md:1-4] ___\n',
+-        '___ test_find_run_examples[my_file.md:1-4] ___\n',
++        '___ test_find_run_examples[my_file.md:1-5] ___\n',
          'ruff failed:\n',
 -        '  my_file.md:2:8: F401 [*] `sys` imported but unused\n',
 -        '  my_file.md:3:7: F821 Undefined name `missing`\n',
-+        '  F401 [*] `sys` imported but unused\n   --> my_file.md:2:8\n',
-+        '  F821 Undefined name `missing`\n   --> my_file.md:3:7\n',
++        '  F401 [*] `sys` imported but unused\n',
++        '--> my_file.md:2:8\n',
++        '  F821 Undefined name `missing`\n',
++        '--> my_file.md:4:7\n',
          '  Found 2 errors.\n',
          '  [*] 1 fixable with the `--fix` option.\n',
          '=== short test summary info ===\n',
