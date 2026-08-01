@@ -1,0 +1,6 @@
+<package name="nbox" project="openSUSE:Factory">
+  <title>Terminal UI and CLI for NetBox</title>
+  <description>Terminal UI, CLI, and MCP server for NetBox.
+Fast search, IPAM lookups, and device context.</description>
+  <url>https://github.com/lance0/nbox</url>
+</package>
