@@ -1,4 +1,89 @@
 -------------------------------------------------------------------
+Mon Jul 27 07:57:55 UTC 2026 - Frantisek Simorda <frantisek.simorda@suse.com>
+
+- Update to version 2.0.0:
+  * workflows: fix ubuntu libsensors pkgname
+  * workflows: bump ubuntu runners to 22.04 & 24.04
+  * cmake: use git --describe as version if available
+  * codeql action: fix libsensors pkg name
+  * work around old GCC bug
+  * fix some additional compiler warnings
+  * remove more unused includes
+  * fix some minor compiler warnings
+  * remove some unused includes
+  * fix cmake warnings
+  * Add back hwmon model keyword
+  * yamlconfig: clarify error message
+  * update man page
+  * unify initialization order
+  * make num_temps_ an optional field
+  * workflow: remove ubuntu-18.04 runner
+  * main: re-init temp-state on conf reload
+  * Add Documentation field to systemd unit
+  * Fix build on RISC-V
+  * Fix man page section
+  * README: remove dead lgtm badges
+  * Add hwmon model option
+  * cmake: Add debian help to yaml-cpp error
+  * README: update debian deps list
+  * yamlconfig: fix allowed_keywords check
+  * yamlconfig: give proper error message on invalid keywords
+  * always init temp_state after sensors init
+  * thinkfan.conf.5: document optional devices
+  * thinkfan.conf.5: improve layout
+  * improve init error messages
+  * cleanup headers
+  * Log YAML syntax error on .conf files
+  * Provide assistance on disabled thinkpad_acpi fan control
+  * yamlconfig: fix hwmon sensor with indices & correction
+  * fix minor CodeQL warnings
+  * driver: tighten robust-IO higher-order FN sigs
+  * Add CodeQL workflow
+  * Update README.md
+  * fix help info on -b option
+  * cmake: set project language to CXX
+  * README: Add debian-specific setup instruction
+  * workflows: add ubuntu 22.04 build
+  * factor out libsensors interface
+  * Remove path on sleep command
+  * Revert "cmake: use yaml-cpp imported target"
+  * update config manpage for multi-fan support
+  * thinkfan.1: move warning to the beginning
+  * cmake: use yaml-cpp imported target
+  * fix TpFanDriver::lookup()
+  * cleanup & simplify hwmon config design & search logic
+  * TemperatureState: remove unused function decls
+  * move libsensors feature lookup into lookup() func
+  * don't re-initialize sensors on wakeup
+  * hwmon: improve error message on failed search
+  * shutdown initialized fans only
+  * sensors: load versioned libnvidia-ml.so.1
+  * update thinkfan(1) man page
+  * use SIGPWR instead of SIGWINCH on sleep
+  * set default bias level to 0
+  * cmake: set thinkfan version to 2.0.0
+  * temperature_state: simplify/fix biasing math
+  * sensors: always call set_num_temps in c'tor if possible
+  * cleanup & add max_errors to yaml config
+  * factor out hwmon/sysfs access logic
+  * driver.cpp/h: fix copyright header
+  * remove explicitly defaulted Driver::~Driver()
+  * move TemperatureState into separate object file
+  * make Driver::path_ private
+  * rename SensorLost -> DriverLost
+  * Implement general driver initialization retries
+  * Tolerate failures reading LM sensors for some amount of time.
+  * crash hard on ::sensors_fatal_error
+  * LMSensorsDriver: minor simplifications for readability
+  * increment version string
+  * Minor fixes.
+  * CI: fix Ubuntu 18.04 libsensors4-dev package install
+  * LMSensorDriver: reformat code
+  * rename call_back -> callback
+  * Added support for LM sensors to the CI server.
+  * Added support for LM Sensors.
+
+-------------------------------------------------------------------
 Sat Mar 22 01:32:38 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to fix FTBFS with cmake4

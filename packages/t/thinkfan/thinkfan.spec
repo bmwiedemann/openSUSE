@@ -1,7 +1,7 @@
 #
 # spec file for package thinkfan
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,12 +26,12 @@
 %global modprobe_d_files 50-thinkfan.conf
 
 Name:           thinkfan
-Version:        1.3.1
+Version:        2.0.0
 Release:        0
 Summary:        A minimalist fan control program
 License:        GPL-3.0-only
 URL:            https://github.com/vmatare/thinkfan/
-Source0:        %{name}-%{version}.tar.bz2
+Source0:        https://github.com/vmatare/thinkfan/archive/refs/tags/%{version}.tar.gz
 Source1:        thinkfan-sysconfig
 Patch1:         thinkfan-systemd.patch
 Patch2:         harden_thinkfan-sleep.service.patch
@@ -40,6 +40,7 @@ Patch4:         harden_thinkfan.service.patch
 BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 BuildRequires:  libatasmart-devel
+BuildRequires:  libsensors4-devel
 BuildRequires:  yaml-cpp-devel
 BuildRequires:  pkgconfig(systemd)
 
