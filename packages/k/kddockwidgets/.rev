@@ -79,4 +79,12 @@
     <comment>Update to 2.4.0</comment>
     <requestid>1315538</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>50e5e2d81ddab70d734d01f4c8dffc4f</srcmd5>
+    <version>2.4.1</version>
+    <time>1785602134</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2.4.1</comment>
+    <requestid>1368976</requestid>
+  </revision>
 </revisionlist>
