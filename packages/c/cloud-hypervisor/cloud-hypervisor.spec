@@ -17,13 +17,14 @@
 
 
 Name:           cloud-hypervisor
-Version:        52.0
+Version:        53.0
 Release:        0
 Summary:        A Virtual Machine Monitor
 License:        Apache-2.0 AND BSD-3-Clause
 URL:            https://cloudhypervisor.org
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
+PreReq:         permissions
 BuildRequires:  bison
 BuildRequires:  cargo
 BuildRequires:  cargo-packaging
@@ -35,7 +36,7 @@ BuildRequires:  rust >= 1.89
 BuildRequires:  pkgconfig(libcap)
 BuildRequires:  pkgconfig(ossp-uuid)
 #riscv is still not ready
-ExclusiveArch:  aarch64 riscv64 x86_64
+ExclusiveArch:  %{arm64} %{riscv64} %{x86_64}
 
 %description
 Cloud Hypervisor is an open source Virtual Machine Monitor (VMM) that runs on
@@ -86,10 +87,16 @@ install -Dm0755 ./target/release/ch-remote %{buildroot}%{_bindir}/ch-remote
                  %{nil}
 %endif
 
+%post
+%set_permissions %{_bindir}/%{name}
+
+%verifyscript
+%verify_permissions -e %{_bindir}/%{name}
+
 %files
 %license LICENSES/Apache-2.0.txt LICENSES/BSD-3-Clause.txt LICENSES/CC-BY-4.0.txt
 %doc README.md
-%caps(cap_net_admin+ep) %{_bindir}/%{name}
+%verify(not mode caps) %{_bindir}/%{name}
 
 %files remote
 %license LICENSES/Apache-2.0.txt LICENSES/BSD-3-Clause.txt LICENSES/CC-BY-4.0.txt

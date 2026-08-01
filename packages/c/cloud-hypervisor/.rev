@@ -207,4 +207,38 @@
   + Cancel vhost-user reconnection if the device has been unplugged (forwarded request 1355957 from rrahl0)</comment>
     <requestid>1355958</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>116cd254933ca243b4fb2983d9d76097</srcmd5>
+    <version>53.0</version>
+    <time>1785602062</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 53.0:
+  + Snapshot/Restore and Live Migration Improvements
+  + virtio-rtc Device Support
+  + Guest Clock Updates Across Snapshot/Restore and Migration
+  + Buffered Serial Output for Late-Connecting Clients
+  + New Command-Line and API Options
+  + The legacy --platform SMBIOS keys serial_number and uuid are
+    deprecated
+  + The generic vhost-user device's virtio_id command-line
+    parameter is deprecated
+  + Revert create memfd for private mappings
+  + Correctly save and restore ARM64 SVE registers
+  + Set the guest physical address space size correctly on AMD
+  + Various TPM fixes, including for Windows guests
+  + Preserve WRITE_ZEROES on QCOW2 images with backing files
+  + Resolve relative QCOW2 backing file paths correctly
+  + Fix a guest deadlock by signalling DEVICE_NEEDS_RESET and
+    releasing the activation barrier when a virtio device fails to
+    activate
+  + Handle a guest/host half-close on vsock connections
+  + Don't leak a file descriptor when ejecting a VFIO device
+  + Fix PCI segment ID validation and make the PCI BDF
+    configurable for the balloon and ivshmem devices
+  + Clean up a stale API socket under a lock before binding
+  + Cache the local timezone before installing seccomp filters
+  + Enhance the ACPI PPTT with cache topology information
+  + Deduplicate VmConfig::preserved_fds (forwarded request 1368899 from rrahl0)</comment>
+    <requestid>1368900</requestid>
+  </revision>
 </revisionlist>
