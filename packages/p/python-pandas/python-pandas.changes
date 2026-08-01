@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jul 28 15:19:23 UTC 2026 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.0.5
+  * Fixed a regression where the pandas 3.0.4 wheels could crash
+    with a segmentation fault on Python 3.14 (and other datetime
+    code paths), because they were built against an incompatible
+    numpy version (GH 66086)
+- Re-enable xdist, the resource usage penalty when not used is too
+  high. Use --without xdist when troubleshooting.
+  * update constraints for increased job limit
+
+-------------------------------------------------------------------
 Tue Jul 21 15:35:33 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - avoid xdist - makes troubleshooting testsuite failures quite hard

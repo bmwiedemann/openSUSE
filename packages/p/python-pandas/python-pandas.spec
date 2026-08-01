@@ -56,6 +56,8 @@ ExclusiveArch:  donotbuild
 %bcond_with adbc
 # depend/not depend on python-pyarrow and apache-arrow [bsc#1218592]
 %bcond_without pyarrow
+# call `osc -M test-py3XX --without xdist` when you have to debug the test suite
+%bcond_without xdist
 
 %if 0%{?suse_version} && %{suse_version} <= 1500
 # requires __has_builtin with keywords
@@ -63,7 +65,7 @@ ExclusiveArch:  donotbuild
 %endif
 Name:           python-pandas%{psuffix}
 # Set version through _service
-Version:        3.0.3
+Version:        3.0.5
 Release:        0
 Summary:        Python data structures for data analysis, time series, and statistics
 License:        BSD-3-Clause
@@ -169,6 +171,7 @@ Summary:        The python pandas[test] extra
 Requires:       python-hypothesis >= 6.116.0
 Requires:       python-pandas = %{version}
 Requires:       python-pytest >= 8.3.4
+Requires:       python-pytest-xdist >= 3.6.1
 BuildArch:      noarch
 
 %description test
@@ -407,6 +410,7 @@ Requires:       python-psycopg2 >= 2.9.10
 %{?with_pyarrow:Requires:       python-pyarrow >= 13.0.0}
 Requires:       python-pyreadstat >= 1.2.8
 Requires:       python-pytest >= 8.3.4
+Requires:       python-pytest-xdist >= 3.6.1
 Requires:       python-scipy >= 1.14.1
 Requires:       python-tables >= 3.10.1
 Requires:       python-tabulate >= 0.9.0
@@ -558,7 +562,7 @@ SKIP_MARKERS+=" or slow or db"
 
 %{python_expand $python -c 'import pandas; print(pandas.__path__); print(pandas.show_versions())'
 # cache: can't just say no cacheprovider, because one test checks for the --lf option of pytest-cache
-xvfb-run pytest-%{$python_bin_suffix} -v -rsfE \
+xvfb-run pytest-%{$python_bin_suffix} %{?with_xdist:-n %{jobs}} -v -rsfE \
                                       -o cache_dir=$PWD/.pytest_cache --cache-clear \
                                       -m "not (${SKIP_MARKERS})" \
                                       -k "not (${SKIP_TESTS})" \

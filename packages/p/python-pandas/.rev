@@ -946,4 +946,19 @@ All packages broken by this update should be fixed now.</comment>
   * The how parameter string inputs are now rigorously validated during a</comment>
     <requestid>1367011</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>b6da16ccccf0609a528e05e9b7b7d077</srcmd5>
+    <version>3.0.5</version>
+    <time>1785601673</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0.5
+  * Fixed a regression where the pandas 3.0.4 wheels could crash
+    with a segmentation fault on Python 3.14 (and other datetime
+    code paths), because they were built against an incompatible
+    numpy version (GH 66086)
+- Re-enable xdist, the resource usage penalty when not used is too
+  high. Use --without xdist when troubleshooting.
+  * update constraints for increased job limit (forwarded request 1368223 from bnavigator)</comment>
+    <requestid>1368224</requestid>
+  </revision>
 </revisionlist>
