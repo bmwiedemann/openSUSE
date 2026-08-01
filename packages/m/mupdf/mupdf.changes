@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Fri Jul 31 08:35:36 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Stop packaging the libmupdf.so.28 symlink: the SONAME is
+  libmupdf.so.28.1, so nothing links against the short name, but every
+  release installs it at the same path and two consecutive
+  libmupdf<minor>_<patch> packages then conflict on it
+
+-------------------------------------------------------------------
+Fri Jul 31 06:50:26 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.28.1:
+  * New PDF write option "reproducible", which omits the MuPDF
+    version number and other varying data from written files.
+  * New table-hunt options structure with a first option
+    "vertically-collapse-bordered-cells"; fz_table_hunt(),
+    fz_table_hunt_within_bounds(), fz_find_table_within_bounds(),
+    fz_find_table_within_grid() and fz_propose_table_within_bounds()
+    take it as an additional argument.
+  * Structured text now flags vectors recognised as highlight,
+    underline or strikeout.
+  * pdf_clip_page() takes the clip rectangle by value instead of by
+    pointer.
+  * Markdown input is now validated as UTF-8, and Markdown support
+    is correctly disabled in html=no builds.
+  * Fix a double free of the fz_output created by
+    fz_new_document_writer_with_buffer(), a SEGV in mutool clean, a
+    memory error in PDF font subsetting and structured-text
+    corruption during page segmentation.
+  * Fix redaction of images in non-basic colour spaces.
+  * Better table detection: improved border and column-divider
+    handling, less vertical oversegmentation and better scoring.
+  * Building the C++, Python and C# bindings now requires the pipcl
+    Python package; the bundled copy was removed.
+- Track the new shared-library SONAME: the rendering library
+  subpackage is renamed libmupdf28_0 to libmupdf28_1
+  (libmupdf.so.28.1).
+- Drop the gcc 11 workaround for openSUSE Leap 15.x, which is out of
+  support; the lowest supported target is 16.0.
+
+-------------------------------------------------------------------
 Sun Jun 28 05:11:46 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Build against the system cmark-gfm library instead of the copy

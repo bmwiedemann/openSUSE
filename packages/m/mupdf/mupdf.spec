@@ -19,12 +19,10 @@
 
 # mupdf sets the shared-library SONAME to libmupdf.so.<minor>.<patch>, so it
 # changes on every upstream release; keep %%sover in sync with the version.
-%define sover 28_0
-%if 0%{?suse_version} < 1600
-%define gcc_ver 11
-%endif
+%define sover 28_1
+%define soversion 28.1
 Name:           mupdf
-Version:        1.28.0
+Version:        1.28.1
 Release:        0
 Summary:        PDF and XPS Viewer and Parser and Rendering Library
 License:        AGPL-3.0-or-later
@@ -38,7 +36,7 @@ Patch0:         mupdf-no-strip.patch
 Patch1:         mupdf-system-cmark-gfm.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
-BuildRequires:  gcc%{?gcc_ver}-c++
+BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  jbig2dec-devel
 BuildRequires:  libjpeg-devel
@@ -126,8 +124,8 @@ echo > user.make "\
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-export CC=gcc%{?gcc_ver:-%{gcc_ver}}
-export CXX=g++%{?gcc_ver:-%{gcc_ver}}
+export CC=gcc
+export CXX=g++
 export XCFLAGS="%{optflags} -fcommon -fPIC -DJBIG_NO_MEMENTO -DTOFU -DTOFU_CJK"
 %make_build build=release shared=yes verbose=yes
 
@@ -156,6 +154,13 @@ EOF
 find %{buildroot}/%{_mandir} -type f -exec chmod 0644 {} \;
 find %{buildroot}/%{_includedir} -type f -exec chmod 0644 {} \;
 cd %{buildroot}/%{_bindir} && ln -s %{name}-x11 %{name}
+# Upstream also installs a short libmupdf.so.<minor> symlink beside the real
+# libmupdf.so.<minor>.<patch>. The SONAME is the long form, so nothing ever
+# links against the short one, while every release ships it at the same path --
+# which makes two consecutive libmupdf<minor>_<patch> packages conflict on
+# /usr/lib64/libmupdf.so.<minor>. Drop it.
+find %{buildroot}%{_libdir} -maxdepth 1 -type l -name 'libmupdf.so.*' \
+    ! -name 'libmupdf.so.%{soversion}' -delete
 %fdupes %{buildroot}%{_datadir}
 
 %ldconfig_scriptlets -n libmupdf%{sover}

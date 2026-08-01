@@ -833,4 +833,12 @@
     <comment>Build against system cmark-gfm (unbundle vendored copy); adds mupdf-system-cmark-gfm.patch. Depends on cmark-gfm (SR#1362035, currently in review) - please co-stage.</comment>
     <requestid>1362065</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>65b1a16d2423c795b6543f11c2c59426</srcmd5>
+    <version>1.28.1</version>
+    <time>1785601961</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.28.1. Supersedes sr#1368767, adding the fix dimstar asked for there: the libmupdf.so.28 symlink is dropped, since the SONAME is libmupdf.so.28.1 and the short link only made libmupdf28_0 and libmupdf28_1 conflict on that path.</comment>
+    <requestid>1368800</requestid>
+  </revision>
 </revisionlist>
