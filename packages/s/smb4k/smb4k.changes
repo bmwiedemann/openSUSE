@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Aug  1 09:24:15 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 4.0.6
+  * Fix the apparance of the second tab of the custom settings
+    editor widget.
+  * Simplify check in Smb4KMounter::triggerRemounts(). This
+    is feasible, because only mounts under
+    /var/run/smb4k/<user name> are allowed.
+  * Remove obsolete Smb4KNotification::unmountingNotAllowed()
+    error notification.
+  * Do not report an error, if a foreign share is passed to the
+    unmount function, but just return silently.
+  * Improve check, if a share is foreign (i.e. it can be unmounted
+    by the user) or not. Also, clean up the includes and correct
+    the comment for the Kerberos ticket.
+  * Simplify Smb4KMountHelper::removeMountPoint() function.
+  * Remove the filesystem check from the mounthelper, because
+    that is not needed when only unmounts
+    from /var/run/smb4k/<user ID> are allowed.
+
+-------------------------------------------------------------------
 Wed Dec 10 17:57:34 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 4.0.5

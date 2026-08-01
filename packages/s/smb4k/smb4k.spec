@@ -1,7 +1,7 @@
 #
 # spec file for package smb4k
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,15 +20,15 @@
 %define qt6_version 6.6.2
 
 Name:           smb4k
-Version:        4.0.5
+Version:        4.0.6
 Release:        0
 Summary:        Network Neighborhood Browser and Samba Share Mounting Utility
 License:        GPL-2.0-or-later
 URL:            https://apps.kde.org/smb4k
 Source0:        https://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.xz
-BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  fdupes
 BuildRequires:  gettext
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KDSoap-qt6)
 BuildRequires:  cmake(KDSoapWSDiscoveryClient) >= 0.3.0

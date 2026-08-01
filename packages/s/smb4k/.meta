@@ -4,5 +4,6 @@
 utility for the KDE Software Compilation. It scans your network neighborhood
 for all available workgroups, servers and shares and can mount all desired
 shares to your local file system.</description>
+  <devel project="KDE:Extra" package="smb4k"/>
   <url>https://apps.kde.org/smb4k</url>
 </package>
