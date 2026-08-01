@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 30 04:31:57 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.4.2:
+  * Support signing with ML-DSA through the PKCS#11 signer.
+- Add missing Requires on update-alternatives.
+
+-------------------------------------------------------------------
 Wed Jun  3 04:44:45 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Initial release of 0.4.0.

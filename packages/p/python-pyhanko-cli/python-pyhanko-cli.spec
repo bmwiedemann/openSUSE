@@ -17,12 +17,13 @@
 
 
 Name:           python-pyhanko-cli
-Version:        0.4.0
+Version:        0.4.2
 Release:        0
 Summary:        CLI tools for stamping and signing PDF files
 License:        MIT
 URL:            https://github.com/MatthiasValvekens/pyHanko
 Source:         https://files.pythonhosted.org/packages/source/p/pyhanko-cli/pyhanko_cli-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 80.8.0}
 BuildRequires:  python-rpm-macros
@@ -30,6 +31,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module FontTools >= 4.33.3}
 BuildRequires:  %{python_module Pillow}
+BuildRequires:  %{python_module PyYAML >= 6.0}
 BuildRequires:  %{python_module asn1crypto >= 1.5.1}
 BuildRequires:  %{python_module certifi >= 2023.5.7}
 BuildRequires:  %{python_module certomancer}
@@ -50,6 +52,7 @@ BuildRequires:  %{python_module uharfbuzz >= 0.25}
 BuildRequires:  %{python_module xsdata >= 24.4}
 # /SECTION
 BuildRequires:  fdupes
+Requires:       python-PyYAML >= 6.0
 Requires:       python-asn1crypto >= 1.5.1
 Requires:       python-certifi >= 2023.5.7
 Requires:       python-click >= 8.1.3
@@ -57,6 +60,8 @@ Requires:       python-platformdirs >= 4.3.8
 Requires:       python-pyhanko >= 0.35.0
 Requires:       python-pyhanko-certvalidator >= 0.31.0
 Requires:       python-tzlocal >= 4.3
+Requires(post): update-alternatives
+Requires(preun): update-alternatives
 # Used to be shipped by pyHanko package
 Conflicts:      python-pyHanko <= 0.34.1
 BuildArch:      noarch
