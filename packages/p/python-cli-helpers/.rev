@@ -189,4 +189,13 @@
   * Add `mysql_heavy` table format.</comment>
     <requestid>1353613</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>844491634ef2bd44ea68088a3604f48d</srcmd5>
+    <version>2.15.1</version>
+    <time>1785602056</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.15.1:
+  * Better handle empty headers in vertical table output.</comment>
+    <requestid>1368881</requestid>
+  </revision>
 </revisionlist>
