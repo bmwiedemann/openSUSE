@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jul 30 16:00:09 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.10.0
+  * An operation `ClassTranspositionConjugationBall` has been
+    added, together with a method for rcwa groups over ZZ. (Not
+    documented so far.)
+  * RCWA no longer requires the SmallGrp package: viewing and
+    displaying an rcwa group used the attribute `IdGroup` and its
+    tester `HasIdGroup`, which are provided by that package, and
+    thus failed if it was not loaded. The isomorphism type is still
+    shown whenever `IdGroup` is known, and the order is printed
+    otherwise.
+
+-------------------------------------------------------------------
 Mon May  4 22:08:28 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.9.0

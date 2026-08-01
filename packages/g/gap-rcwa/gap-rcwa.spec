@@ -17,7 +17,7 @@
 
 
 Name:           gap-rcwa
-Version:        4.9.0
+Version:        4.10.0
 Release:        0
 Summary:        GAP: Residue-Class-Wise Affine Groups
 License:        GPL-2.0-or-later
