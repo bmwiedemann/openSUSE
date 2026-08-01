@@ -190,4 +190,12 @@ Now with proper naming, thanks to Jan Engelhardt.</comment>
     <comment>Update to 8.1.1</comment>
     <requestid>1368128</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>0f8b301f879dfa895dee37764e8ec025</srcmd5>
+    <version>8.1.3</version>
+    <time>1785602101</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 8.1.3</comment>
+    <requestid>1368933</requestid>
+  </revision>
 </revisionlist>

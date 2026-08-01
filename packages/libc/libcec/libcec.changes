@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri Jul 31 19:39:48 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 8.1.3 (includes the never-published 8.1.2):
+  * New Sony command handler: ask a set that woke up without
+    announcing it for its power status, report standby for a source
+    the set treats as switched off, and re-announce the sources
+    when it wakes
+  * The connected display's model year, read from its EDID where
+    one can be read, now decides which vendor quirks apply; an
+    unreadable EDID counts as a recent set
+  * LG: report standby for devices that are not the active source
+    instead of claiming every listed source is powered on, keep the
+    watched source when the TV routes to itself while powering on,
+    stop blocking the processor thread for two seconds on power-on,
+    only let the active source report LG's deck status code, and
+    report CEC version 1.4 instead of 1.3a
+  * Philips: keep the active source while the TV settles on another
+    address under the same HDMI port, and announce the Philips
+    vendor id on the bus
+  * Samsung: follow the TV's power state on the active source for
+    model year 2016 and newer, and stop answering the broadcast
+    powered-up vendor command from logical address 0xf
+  * Panasonic: send the capabilities blob on <give physical
+    address> and <give device vendor id> while the TV is still
+    settling after it powered up
+  * Removed the deck status update on activate source, which has
+    been switched off for every vendor since 2012
+  * Build the Python wrapper against SWIG 4.5, which removed the
+    Python 2 compatibility macros its typemaps relied on
+  * cec_command now declares its copy constructor explicitly, so
+    consumers copying a command no longer warn under
+    -Wdeprecated-copy
+
+-------------------------------------------------------------------
 Tue Jul 28 06:03:35 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 8.1.1:
