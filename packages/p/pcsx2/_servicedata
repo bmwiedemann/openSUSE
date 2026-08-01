@@ -1,4 +1,6 @@
 <servicedata>
-<service name="tar_scm">
-                <param name="url">https://github.com/PCSX2/pcsx2.git</param>
-              <param name="changesrevision">76842401eed431152201e17ad44fa679e2fc90dd</param></service></servicedata>
+  <service name="tar_scm">
+    <param name="url">https://github.com/PCSX2/pcsx2.git</param>
+    <param name="changesrevision">45b8338f6dd55564180af6db45273a2fa1eea016</param>
+  </service>
+</servicedata>

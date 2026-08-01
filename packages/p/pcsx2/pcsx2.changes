@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul 14 08:22:35 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 2.7.470:
+  * many numerous updates and bug fixes
+- do not ship 3rdparth/rapidjson in source rpm (boo#1271328)
+- make source rpm more deterministic
+
+-------------------------------------------------------------------
 Tue May 05 09:16:39 UTC 2026 - Yunhe Guo <i@guoyunhe.me>
 
 - Update to version 2.7.314~git20260504:

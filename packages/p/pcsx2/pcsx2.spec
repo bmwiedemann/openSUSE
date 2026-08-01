@@ -17,14 +17,13 @@
 
 
 Name:           pcsx2
-Version:        2.7.314~git20260504
+Version:        2.7.470
 Release:        0
 Summary:        Sony PlayStation 2 Emulator
 License:        GPL-2.0-only AND GPL-3.0-only AND LGPL-2.1-only AND LGPL-3.0-only
-URL:            http://pcsx2.net/
+URL:            https://pcsx2.net/
 Source0:        %{name}-%{version}.tar.xz
 Source1:        https://github.com/PCSX2/pcsx2_patches/releases/download/latest/patches.zip
-ExclusiveArch:  x86_64
 BuildRequires:  clang
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
@@ -37,6 +36,7 @@ BuildRequires:  libbacktrace-devel
 BuildRequires:  libpcap-devel-static
 BuildRequires:  libzip-tools
 BuildRequires:  libzstd-devel-static
+BuildRequires:  pkgconfig
 BuildRequires:  qt6-gui-private-devel
 BuildRequires:  qt6-widgets-private-devel
 BuildRequires:  sndio-devel
@@ -87,6 +87,7 @@ BuildRequires:  pkgconfig(wayland-egl)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xrender)
 BuildRequires:  pkgconfig(zlib)
+ExclusiveArch:  x86_64
 
 %description
 Sony PlayStation 2 emulator. Requires a BIOS image in %{_libdir}/%{name}/bios
@@ -104,6 +105,7 @@ sed -i 's/"Unknown"/"%{version}"/g' cmake/Pcsx2Utils.cmake
 # to both old and new CPU.
 mkdir build
 cd build
+# FIXME: you should use the %%cmake macros
 cmake ..\
   -DCMAKE_BUILD_TYPE=Release \
   -DCMAKE_C_COMPILER=clang \
