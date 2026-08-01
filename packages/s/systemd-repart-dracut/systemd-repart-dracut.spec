@@ -28,7 +28,7 @@ BuildRequires:  git-core
 %endif
 
 Name:           systemd-repart-dracut
-Version:        1+git20260626.ecafb3f%{git_version}
+Version:        1+git20260730.6c531e2%{git_version}
 Release:        0
 Summary:        Systemd-repart service dracut module
 License:        MIT

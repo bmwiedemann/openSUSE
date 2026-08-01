@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 30 11:16:53 UTC 2026 - schubi@suse.com
+
+- Update to version 1+git20260730.6c531e2:
+  * Improve error checking for systemd-repart and mount/umount
+
+-------------------------------------------------------------------
 Fri Jun 26 12:33:09 UTC 2026 - schubi@suse.com
 
 - Update to version 1+git20260626.ecafb3f:
