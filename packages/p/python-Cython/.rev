@@ -1396,4 +1396,30 @@
     assertions from CPython's inline functions.</comment>
     <requestid>1366052</requestid>
   </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>9ea01d622a97f65c0db0847884f89653</srcmd5>
+    <version>3.2.9</version>
+    <time>1785601704</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.2.9:
+  * Indexing into freshly created lists with an out-of-bounds
+    index could crash. (Github issue :issue:`7793`)
+  * Function arguments with default values could end up
+    uninitialised in closures, leading to crashes. Patch by
+    Anthony Donlon.  (Github issue :issue:`7782`)
+  * bytearray.append(None) could crash. The optimised code was
+    also lacking concurrency guards. (Github issue :issue:`7796`)
+  * Some rare corner cases when concatenating text strings were
+    resolved. (Github issue :issue:`7799`)
+  * Assignments of builtin string types to typedefs of object
+    could erroneously be rejected. (Github issue :issue:`7789`)
+  * Subscripting type failed with a TypeError. (Github issue
+    :issue:`5563`)
+  * Manually disabling CYTHON_VECTORCALL in CPython could lead to
+    invalid C code. Patch by Florent Gallaire.  (Github issue
+    :issue:`7807`)
+  * Some internal Limited API version checks for Py3.12 were
+    corrected. (Github issue :issue:`7845`)</comment>
+    <requestid>1368882</requestid>
+  </revision>
 </revisionlist>
