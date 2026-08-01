@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sat Aug  1 06:35:59 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.10.15:
+  * Apply the caller-supplied session's configuration to the v2 API
+    endpoints
+  * Prioritize the API key over OAuth profile authentication
+  * Deprecate the legacy SmithDB-migration and run-sharing SDK
+    methods
+  * Stop supported APIs from emitting nested deprecation warnings
+    for the deprecated methods they call internally
+  * Use a common backend-detection helper and refresh the bundled
+    OpenAPI client
+- Add langsmith-python314-iscoroutinefunction.patch: switch to
+  inspect.iscoroutinefunction(); the asyncio alias is deprecated in
+  Python 3.14, and the newly deprecated client methods trip it at
+  import time
+
+-------------------------------------------------------------------
+Fri Jul 31 06:53:46 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.10.14:
+  * Trace raw Gemini Live WebSocket sessions with the new
+    wrap_gemini_live helper and its optional gemini-live extra
+  * Count an acknowledged sandbox reattachment as progress so a
+    reconnect is no longer treated as a stalled session
+- Update to 0.10.13:
+  * Expose the annotation queue clients on the public API
+  * Require a session ID for feedback when ClickHouse is unavailable
+  * Check the minimum supported backend version per resource
+  * Strip only a trailing /api, not a bare /v1, from the generated
+    OpenAPI client base URL
+
+-------------------------------------------------------------------
+Thu Jul 30 06:13:40 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.10.12:
+  * Migrate the internal list_runs and read_run usages to the SmithDB
+    v2 API
+  * Raise the sandbox WebSocket open timeout to 120s and retry
+    connect failures rather than waiting longer
+
+-------------------------------------------------------------------
 Wed Jul 29 06:16:13 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.10.11:

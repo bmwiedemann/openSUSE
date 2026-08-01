@@ -17,12 +17,14 @@
 
 
 Name:           python-langsmith
-Version:        0.10.11
+Version:        0.10.15
 Release:        0
 Summary:        Client library for the LangSmith LLM tracing and evaluation platform
 License:        MIT
 URL:            https://github.com/langchain-ai/langsmith-sdk
 Source:         https://files.pythonhosted.org/packages/source/l/langsmith/langsmith-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM langsmith-python314-iscoroutinefunction.patch mpluskal@suse.com -- use inspect.iscoroutinefunction(), the asyncio alias is deprecated in Python 3.14
+Patch0:         langsmith-python314-iscoroutinefunction.patch
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes

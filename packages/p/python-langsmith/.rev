@@ -142,4 +142,20 @@ Built for openSUSE_Tumbleweed/aarch64 with 0 rpmlint badness; %check passes
     <comment>Update to 0.10.11</comment>
     <requestid>1368286</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>482cd2a1bd1d1d8794f573b96b1b4517</srcmd5>
+    <version>0.10.14</version>
+    <time>1785504636</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.10.14</comment>
+    <requestid>1368763</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>779eb97e6c0f60452f6ffd3d9499d121</srcmd5>
+    <version>0.10.15</version>
+    <time>1785602114</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.10.15</comment>
+    <requestid>1368959</requestid>
+  </revision>
 </revisionlist>
