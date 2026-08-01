@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Aug  1 06:31:12 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.12.1:
+  * Add package-specific pre-release policies with
+    --prerelease-package
+  * Support local HTML files as flat indexes
+  * Add Xonsh virtual environment activation scripts
+    (activate.xsh)
+  * Preserve filesystem paths passed to uv add --index when
+    updating pyproject.toml
+  * Accelerate SHA-256 hashing on non-Windows ARM64 platforms
+  * Parse canonical uv lockfiles directly, with a fallback for
+    other valid TOML syntax
+  * Preview: add automatic fixes to uv check with --fix, honor
+    direct URL constraints when validating metadata-free
+    lockfiles, and ignore malformed PEP 723 scripts found
+    during project checks
+  * Bug fixes: flush shell startup file updates before uv tool
+    update-shell and uv python update-shell exit, make
+    workspace-root dependency groups available to commands run
+    from workspace members, resolve --find-links paths in
+    requirements files relative to the containing file, and
+    respect configured indexes in uv tool list --outdated
+- Raise the cargo BuildRequires floor to 1.95 to match the
+  rust-version declared by the workspace
+
+-------------------------------------------------------------------
 Wed Jul 29 06:44:08 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.12.0:

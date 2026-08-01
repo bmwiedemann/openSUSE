@@ -26,7 +26,7 @@
 %global build_rustflags -C linker=clang -C link-arg=-fuse-ld=%{_bindir}/mold -C link-arg=-Wl,-z,relro,-z,now -C debuginfo=2 -C incremental=false -C strip=none
 %endif
 Name:           python-uv
-Version:        0.12.0
+Version:        0.12.1
 Release:        0
 Summary:        A Python package installer and resolver, written in Rust
 License:        Apache-2.0 OR MIT
@@ -37,7 +37,7 @@ BuildRequires:  %{python_module maturin}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module tomli}
 BuildRequires:  alts
-BuildRequires:  cargo >= 1.94
+BuildRequires:  cargo >= 1.95
 BuildRequires:  cargo-packaging
 BuildRequires:  cmake
 BuildRequires:  fdupes

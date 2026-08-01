@@ -2923,4 +2923,12 @@
     <comment>Update to 0.12.0</comment>
     <requestid>1368311</requestid>
   </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>91bd5fa8ec96c80d22723afccf5ae60c</srcmd5>
+    <version>0.12.1</version>
+    <time>1785602127</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.12.1</comment>
+    <requestid>1368963</requestid>
+  </revision>
 </revisionlist>
