@@ -63,4 +63,12 @@
     <comment></comment>
     <requestid>1295816</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>cadc8c8615a69d2aa07f0c95df1319e9</srcmd5>
+    <version>5.5.1</version>
+    <time>1785602003</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.5.1 - See ChangeLog file for changes (forwarded request 1367377 from dstoecker)</comment>
+    <requestid>1368802</requestid>
+  </revision>
 </revisionlist>

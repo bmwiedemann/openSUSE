@@ -1,7 +1,7 @@
 #
 # spec file for package reprepro
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,18 @@
 
 
 Name:           reprepro
-Version:        5.4.6
+Version:        5.5.1
 Release:        0
 Summary:        Debian repository metadata generator
 License:        GPL-2.0-only AND GPL-2.0-or-later AND MIT
 URL:            https://salsa.debian.org/debian/reprepro
 Source:         http://deb.debian.org/debian/pool/main/r/reprepro/reprepro_%{version}.orig.tar.xz
 BuildRequires:  automake
-BuildRequires:  pkgconfig(gpgme)
 BuildRequires:  libarchive-devel
 BuildRequires:  libzstd-devel
 BuildRequires:  xz-devel
 BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(gpgme)
 %if 0%{?suse_version}
 BuildRequires:  libbz2-devel
 BuildRequires:  libdb-4_8-devel
