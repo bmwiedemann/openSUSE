@@ -1,7 +1,7 @@
 #
 # spec file for package gap-inducereduce
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-inducereduce
-Version:        1.3
+Version:        1.4
 Release:        0
 Summary:        GAP: Unger's algorithm
 License:        GPL-3.0-or-later
@@ -28,7 +28,6 @@ Source:         https://github.com/gap-packages/InduceReduce/releases/download/v
 BuildArch:      noarch
 BuildRequires:  gap-rpm-devel
 Requires:       gap-core >= 4.9
-Requires:       gap-gapdoc >= 1.5
 
 %description
 The package "InduceReduce" provides an implementation of Unger's

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Aug  1 10:21:45 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.4
+  * Dropped the dependency on the `GAPDoc` package, which was only
+    needed for building the manual.
+  * The test suite no longer requires the `SmallGrp` package.
+
+-------------------------------------------------------------------
 Fri Oct 17 11:46:24 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.3
