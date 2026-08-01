@@ -24,6 +24,12 @@ endif
 "          Switch it off if you prefer real vi compatibility
 set nocompatible
 
+" runtime/syntax/generator/vim.vim.base:2017 when 'vim-data' missing:
+if !filereadable($'{$VIMRUNTIME}/syntax/lua.vim')
+    \ && !filereadable($'{$VIMRUNTIME}/syntax/python.vim')
+    let g:vimsyn_embed = '' " avoid error on startup
+endif
+
 " enable syntax highlighting
 if &t_Co > 2 || has("gui_running")
     syntax on

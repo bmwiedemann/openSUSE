@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 23 07:15:11 UTC 2026 - Christoffer Aasted <dezzadk@gmail.com>
+
+- Guard suse.vimrc against missing syntax without vim-data
+
+-------------------------------------------------------------------
 Sat Jul 18 17:44:00 UTC 2026 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Guard suse.vimrc against re-entry to prevent an infinite sourcing

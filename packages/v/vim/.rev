@@ -8548,4 +8548,12 @@ always built-in because vim has direct perl dependencies anyway.
   loop (bsc#1271684).</comment>
     <requestid>1366841</requestid>
   </revision>
+  <revision rev="405" vrev="4">
+    <srcmd5>fd3b7ec8faeeb7742f3699992b5f9171</srcmd5>
+    <version>9.2.0780</version>
+    <time>1785601637</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1368240</requestid>
+  </revision>
 </revisionlist>
