@@ -139,4 +139,12 @@
   longer apply) and the obsolete ed and patch build dependencies</comment>
     <requestid>1364500</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b865b6c798a7c4c3b1e7985d6048f5d1</srcmd5>
+    <version>3.7.0</version>
+    <time>1785602098</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.7.0</comment>
+    <requestid>1368934</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Jul 31 19:40:28 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 3.7.0:
+  * Incremental cache invalidation: mutants are re-tested only in
+    functions whose source changed, with cross-call dependency
+    tracking that also invalidates callers of a changed function
+  * Detect changes to non-Python dependency files via git, with a
+    curated file-list fallback when git is unavailable, and
+    invalidate cached results when result-affecting config fields
+    change
+  * New config options cache_invalidation_exclude and
+    use_git_change_detection; uv.lock, poetry.lock, Pipfile.lock
+    and pdm.lock are now copied by default
+  * "mutmut browse", "show" and "apply" are much faster and use
+    far less memory
+  * Fix the trampoline dropping a generator's return value, so
+    "yield from" on a mutated generator no longer yields None
+  * Fix async generators so that aclose()/athrow() are handled by
+    the mutated function's except/finally blocks
+  * Fix max_stack_depth when a test changes the working directory
+  * Fix type_check_command reporting type errors in copied files
+    that have no mutants
+- Add git-core to the test requirements so the new git-based
+  change-detection tests run instead of being skipped
+- Drop the no-op shebang sed from the spec: upstream's
+  src/mutmut/__main__.py carries no shebang line
+
+-------------------------------------------------------------------
 Wed Jul  8 10:38:36 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives on SLE-16-based and newer systems

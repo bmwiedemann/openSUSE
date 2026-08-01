@@ -23,7 +23,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-mutmut
-Version:        3.6.0
+Version:        3.7.0
 Release:        0
 Summary:        Python mutation testing
 License:        BSD-3-Clause
@@ -56,6 +56,9 @@ BuildRequires:  %{python_module pytest >= 6.2.5}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module setproctitle >= 1.1.0}
 BuildRequires:  %{python_module textual >= 1.0.0}
+# mutmut uses git as a soft dependency for change detection; without it the
+# git-based cache-invalidation tests skip
+BuildRequires:  git-core
 # /SECTION
 %python_subpackages
 
@@ -64,7 +67,6 @@ Python mutation testing.
 
 %prep
 %autosetup -p1 -n mutmut-%{version}
-sed -i '1{/^#!/d}' src/mutmut/__main__.py
 # Factory ships a newer uv-build than upstream's <0.10.0 build-backend pin
 sed -i -E 's/"uv_build>=[0-9.]+,<[0-9.]+"/"uv_build"/' pyproject.toml
 
