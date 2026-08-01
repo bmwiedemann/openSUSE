@@ -25,6 +25,8 @@ URL:            https://www.freetds.org/
 Source:         https://www.freetds.org/files/stable/freetds-%{version}.tar.gz
 Source1:        baselibs.conf
 Patch0:         configure-return-void-fix.patch
+#PATCH-FIX-UPSTREAM bsc#1257934 FTBFS with libnettle 4.0 update
+Patch1:         freetds-Fix-FTBFS-nettle-4.0.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
