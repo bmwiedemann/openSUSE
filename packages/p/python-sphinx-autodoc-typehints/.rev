@@ -310,4 +310,41 @@
     <comment>- Fix the condition with suse_version macro on SLFO (jsc#PED-15846)</comment>
     <requestid>1335055</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>013f11ef8bcd2986cea0c3177cf5e5ae</srcmd5>
+    <version>3.13.0</version>
+    <time>1785606669</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.13.0:
+  * Replace prettier with mdformat and yamlfmt
+  * fix(annotations): use py:class for types on 3.13+
+  * fix(overloads): keep summary above overloads
+  * feat(resolver): type C data descriptors from stub files
+  * fix(docstring): keep types on params with a trailing underscore
+  * fix(resolver): survive PEP 649 lazy annotation evaluation errors
+  * process_signature: don't skip the first arg on bound instance methods
+  * fix(annotations): use class role for Ellipsis/NotImplementedType on 3.13+
+  * fix(annotations): avoid NameError for TYPE_CHECKING-only annotations on
+    3.14
+  * Show version in error tracebacks
+  * Support PEP 695 type statement and python 3.12+ TypeAliasType
+  * Fix typehints_formatter cache warning
+  * fix(stubs): resolve type hints for PyO3 native submodules
+  * fix(ivar): tolerate malformed :ivar field entries
+  * fix(resolver): surface hints for @no_type_check targets
+  * feat(resolver): auto-inject :vartype: for annotated instance vars
+  * fix(intersphinx): skip union aliases in type mapping
+
+- drop nptyping dependency
+
+- Update Requires to match reality.
+- Run the testsuite using python -m pytest.
+
+- update to 3.9.11:
+  * fix(stubs): resolve imports inside if-blocks in .pyi stubs
+  * fix(stubs): evaluate stub-only definitions for annotation
+    resolution
+- update to 3.9.10:</comment>
+    <requestid>1367900</requestid>
+  </revision>
 </revisionlist>

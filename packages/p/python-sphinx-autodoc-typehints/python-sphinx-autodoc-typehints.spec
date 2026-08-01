@@ -26,37 +26,27 @@
 %bcond_with test
 %endif
 
-%{?sle15_python_module_pythons}
 Name:           python-sphinx-autodoc-typehints%{psuffix}
-Version:        3.5.2
+Version:        3.13.0
 Release:        0
 Summary:        Type hints (PEP 484) support for the Sphinx autodoc extension
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/tox-dev/sphinx-autodoc-typehints
 Source:         https://files.pythonhosted.org/packages/source/s/sphinx_autodoc_typehints/sphinx_autodoc_typehints-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE python-sphinx-autodoc-typehints-system-object.inv.patch gh#agronholm/sphinx-autodoc-typehints#174 mcepl@suse.com
-# Don't download inventory from the Internet, but use the local one.
-Patch0:         python-sphinx-autodoc-typehints-system-object.inv.patch
+BuildRequires:  %{python_module base >= 3.12}
 BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Sphinx >= 1.7
+Requires:       python-Sphinx >= 9.1
 BuildArch:      noarch
 %if %{with test}
 # SECTION tests
-BuildRequires:  %{python_module Sphinx >= 7.3.5}
 BuildRequires:  %{python_module doc}
 BuildRequires:  %{python_module pytest >= 8.1.1}
+BuildRequires:  %{python_module sphinx-autodoc-typehints = %{version}}
 BuildRequires:  %{python_module sphobjinv >= 2.3.1}
-BuildRequires:  %{python_module typing_extensions >= 4.11}
-
-# Do not depend on nptyping for SLFO:Main
-%if 0%{suse_version} >= 1699
-BuildRequires:  %{python_module nptyping >= 2.5}
-%endif
+BuildRequires:  %{python_module typing_extensions >= 4.15}
 
 %endif
 # /SECTION
@@ -80,19 +70,22 @@ and return value types of functions.
 %endif
 
 %check
-export PYTHONPATH=./src
 %if %{with test}
 # test_sphinx_output -- too depenedent on sphinx version available
 # gh#tox-dev/sphinx-autodoc-typehints#229
-%pytest -k 'not (test_sphinx_output or test_format_annotation)'
+# test_sphinx_build_stub_types_produce_crossrefs -- requires intersphinx, which
+# requires network
+donttest="test_sphinx_output or test_format_annotation"
+donttest+=" or test_sphinx_build_stub_types_produce_crossrefs"
+%python_exec -B -m pytest -k "not ($donttest)"
 %endif
 
 %if %{without test}
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%{python_sitelib}/%{modname}-%{version}*-info
 %{python_sitelib}/%{modname}
+%{python_sitelib}/%{modname}-%{version}.dist-info
 %endif
 
 %changelog

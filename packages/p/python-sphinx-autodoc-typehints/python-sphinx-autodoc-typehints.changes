@@ -1,4 +1,111 @@
 -------------------------------------------------------------------
+Wed Jul 22 02:15:06 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.13.0:
+  * Replace prettier with mdformat and yamlfmt
+  * fix(annotations): use py:class for types on 3.13+
+  * fix(overloads): keep summary above overloads
+  * feat(resolver): type C data descriptors from stub files
+  * fix(docstring): keep types on params with a trailing underscore
+  * fix(resolver): survive PEP 649 lazy annotation evaluation errors
+  * process_signature: don't skip the first arg on bound instance methods
+  * fix(annotations): use class role for Ellipsis/NotImplementedType on 3.13+
+  * fix(annotations): avoid NameError for TYPE_CHECKING-only annotations on
+    3.14
+  * Show version in error tracebacks
+  * Support PEP 695 type statement and python 3.12+ TypeAliasType
+  * Fix typehints_formatter cache warning
+  * fix(stubs): resolve type hints for PyO3 native submodules
+  * fix(ivar): tolerate malformed :ivar field entries
+  * fix(resolver): surface hints for @no_type_check targets
+  * feat(resolver): auto-inject :vartype: for annotated instance vars
+  * fix(intersphinx): skip union aliases in type mapping
+
+-------------------------------------------------------------------
+Sun Apr 12 07:46:12 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- drop nptyping dependency
+
+-------------------------------------------------------------------
+Wed Apr  1 00:25:25 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update Requires to match reality.
+- Run the testsuite using python -m pytest.
+
+-------------------------------------------------------------------
+Wed Mar 25 08:59:35 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.9.11:
+  * fix(stubs): resolve imports inside if-blocks in .pyi stubs
+  * fix(stubs): evaluate stub-only definitions for annotation
+    resolution
+- update to 3.9.10:
+  * fix(stubs): use __new__ param annotations not class vars
+  * fix(stubs): prevent forward ref warnings from stub
+    annotation pollution
+- update to 3.9.9:
+  * fix(stubs): resolve relative imports in .pyi stubs
+- update to 3.9.8:
+  * fix(docstring): preserve blank line after field list
+- update to 3.9.7:
+  * fix(resolver): resolve NamedTuple hints from class
+- update to 3.9.6:
+  * fix(stubs): resolve stub type hints for C/Rust extensions
+- update to 3.9.5:
+  * fix(stubs): resolve stub imports for type hint evaluation
+- update to 3.9.4:
+  * fix(stubs): strip all suffixes for extension modules
+- update to 3.9.3:
+  * fix(intersphinx): exclude builtin type aliases from mapping
+- update to 3.9.1:
+  * fix(intersphinx): access inventory dict directly
+- update to 3.9.0:
+  * Add permissions to workflows
+  * ♻️ refactor(tests): consolidate test infrastructure and reach
+    100% coverage
+  * Move SECURITY.md to .github/SECURITY.md
+  * Switch FUNDING.yml to github: gaborbernat
+- update to 3.8.0:
+  * feat(signatures): enable overload signature display
+  * feat(annotations): preserve documented type aliases
+  * feat(annotations): use annotationlib on 3.14+ for forward
+  * refactor(core): extract format-specific submodules
+  * feat(warnings): add source location context
+  * feat(stubs): resolve type hints from .pyi stub files
+  * feat(annotations): support Annotated with Doc() for param
+    descriptions
+  * test(output): normalize Sphinx text for stable comparisons
+  * feat(attrs): backfill type annotations for attrs classes
+  * docs(readme): rewrite with Diataxis framework
+- update to 3.7.0:
+  * Migrate type checking from mypy to ty
+  * Move from extras to dependency-groups
+  * fix(types): resolve PEP 695 type params in annotations
+  * fix: separate injected :rtype: from preceding paragraph
+  * fix(rtype): skip Return type for generators with Yields
+  * fix(guard): silence ImportError for third-party guards
+  * fix(sig): prevent KeyError in method lookup
+  * fix(annotations): show NewType as alias name with supertype
+  * fix(annotations): link enum variants in Literal types
+  * fix(parser): prevent directive side-effects in snippet
+    parsing
+- update to 3.6.3:
+  * build(tox): migrate from tox.ini to tox.toml
+  * Fix extra () after NewType in rendered output
+  * Fix ValueError on wrapper loops in inspect.unwrap
+  * Fix IndexError with always_document_param_types and braces-
+    after defaults
+  * Fix warning for __new__ of NamedTuple subclasses
+- update to 3.6.2:
+  * Fix compatibility with 9.1.0
+- update to 3.6.1:
+  * Include metadata in type hints
+- update to 3.6.0:
+  * Use Sphinx 9 class interface
+- drop python-sphinx-autodoc-typehints-system-object.inv.patch
+  (obsolete)
+
+-------------------------------------------------------------------
 Wed Feb 25 10:10:30 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Fix the condition with suse_version macro on SLFO (jsc#PED-15846)
