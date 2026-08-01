@@ -2551,4 +2551,22 @@ Extra note: I see glib2 in G:N is missing its link - manual merge needed after a
   + Updated translations.</comment>
     <requestid>1361817</requestid>
   </revision>
+  <revision rev="308" vrev="1">
+    <srcmd5>a2dbb76133ffbc5ca7f526f199f58af8</srcmd5>
+    <version>2.88.3</version>
+    <time>1785601727</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.88.3 (CVE-2026-15588):
+  + Fix potential miscompilation with GCC 17 with `G_GNUC_CONST` on
+    `get_type()` functions
+  + Bugs fixed:
+    - G_GNUC_CONST vs get_type comes home to roost
+    - (CVE-2026-15588) Security report: GDBusServer
+      pre-authentication DoS via unbounded SASL line buffering
+    - Drop G_GNUC_CONST for *_get_type
+    - gdbusauth: Limit length of lines read from client
+    - gdbusauth: Unmark a new string as translatable
+    - Several Meson/gcc fixes</comment>
+    <requestid>1368512</requestid>
+  </revision>
 </revisionlist>

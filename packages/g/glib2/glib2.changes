@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jul 29 16:21:08 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.88.3 (CVE-2026-15588):
+  + Fix potential miscompilation with GCC 17 with `G_GNUC_CONST` on
+    `get_type()` functions
+  + Bugs fixed:
+    - G_GNUC_CONST vs get_type comes home to roost
+    - (CVE-2026-15588) Security report: GDBusServer
+      pre-authentication DoS via unbounded SASL line buffering
+    - Drop G_GNUC_CONST for *_get_type
+    - gdbusauth: Limit length of lines read from client
+    - gdbusauth: Unmark a new string as translatable
+    - Several Meson/gcc fixes
+
+-------------------------------------------------------------------
 Thu Jun 25 15:52:10 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.88.2:
