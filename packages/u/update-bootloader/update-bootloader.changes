@@ -1,4 +1,18 @@
 --------------------------------------------------------------------
+Tue Jul 28 15:30:57 UTC 2026 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/update-bootloader#197
+- fix test suite
+- adjust two tests
+- updated test results
+- fix command line parser (bsc#1271602)
+- add test case
+- update test result
+- fix and reenable ksh tests: ksh uses alts now
+- update ksh test results
+- 1.28
+
+--------------------------------------------------------------------
 Mon Jan 26 14:28:26 UTC 2026 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/perl-bootloader#194

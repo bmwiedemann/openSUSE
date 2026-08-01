@@ -1,7 +1,7 @@
 #
 # spec file for package update-bootloader
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %{!?_distconfdir:%global _distconfdir /etc}
 
 Name:           update-bootloader
-Version:        1.27
+Version:        1.28
 Release:        0
 Requires:       coreutils
 Requires:       util-linux
