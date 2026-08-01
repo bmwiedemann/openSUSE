@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 29 09:50:47 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch for deterministic .edj file creation
+  (boo#1052415)
+
+-------------------------------------------------------------------
 Mon Oct 27 16:52:12 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - Enable luajit and valgrind on riscv64

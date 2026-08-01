@@ -65,6 +65,8 @@ Patch2:         https://git.enlightenment.org/enlightenment/efl/commit/d9ec36e1d
 Patch3:         efl_scim.patch
 # PATCH-FIX-UPSTREAM
 Patch4:         efl-1.26.3-header.patch
+# PATCH-FIX-UPSTREAM
+Patch5:         https://git.enlightenment.org/enlightenment/efl/pulls/133.patch#/reproducible.patch
 BuildRequires:  ImageMagick
 BuildRequires:  cmake
 BuildRequires:  gcc-c++

@@ -1,0 +1,79 @@
+From 3edede0e22b73076cde1f432ae761f63d9d3827a Mon Sep 17 00:00:00 2001
+From: "Bernhard M. Wiedemann" <bwiedemann@suse.de>
+Date: Sun, 19 Jul 2026 06:38:08 +0200
+Subject: [PATCH] Make edje_cc script compilation order deterministic
+
+Threaded script compilation completes out of order, so compiled
+embryo scripts are written into the output file in the order the
+embryo_cc processes happen to finish, making the .edj output
+non-deterministic.
+
+Serializing to 1 in-flight command fixes this at a small build-time
+cost. Set the EDJE_CC_PENDING_COMMANDS_MAX environment variable to a
+higher value (the previous hard-coded limit was 8) if you don't care
+about reproducibility and want to wait a few seconds less. Values
+below 1 are rejected with a warning, because with a limit of 0 every
+script would stay in the pending queue forever and never be compiled.
+
+See https://reproducible-builds.org/ for why this is good.
+
+This patch was done while working on reproducible builds for openSUSE.
+
+Fixes #41
+---
+ src/bin/edje/edje_cc_out.c | 18 +++++++++++++++---
+ 1 file changed, 15 insertions(+), 3 deletions(-)
+
+diff --git a/src/bin/edje/edje_cc_out.c b/src/bin/edje/edje_cc_out.c
+index 08fbf2d517..f55a47f126 100644
+--- a/src/bin/edje/edje_cc_out.c
++++ b/src/bin/edje/edje_cc_out.c
+@@ -2245,7 +2245,9 @@ typedef struct
+    Script_Write *sc;
+ } Pending_Script_Write;
+ 
+-#define PENDING_COMMANDS_MAX 8
++/* 1 by default so compiled scripts get written in deterministic order,
++ * for reproducible builds; raise via EDJE_CC_PENDING_COMMANDS_MAX */
++static int pending_commands_max = 1;
+ 
+ static int pending_write_commands = 0;
+ static Eina_List *pending_script_writes = NULL;
+@@ -2274,7 +2276,7 @@ data_scripts_exe_del_cb(void *data EINA_UNUSED, int evtype EINA_UNUSED, void *ev
+    if (!ev->exe) return ECORE_CALLBACK_RENEW;
+    if (ecore_exe_data_get(ev->exe) != sc) return ECORE_CALLBACK_RENEW;
+    pending_write_commands--;
+-   if (pending_write_commands < PENDING_COMMANDS_MAX)
++   if (pending_write_commands < pending_commands_max)
+      {
+         if (pending_script_writes)
+           {
+@@ -2308,7 +2310,7 @@ data_scripts_exe_del_cb(void *data EINA_UNUSED, int evtype EINA_UNUSED, void *ev
+ static void
+ data_write_script_queue(Script_Write *sc, const char *exeline)
+ {
+-   if (pending_write_commands >= PENDING_COMMANDS_MAX)
++   if (pending_write_commands >= pending_commands_max)
+      {
+         Pending_Script_Write *pend = malloc(sizeof(Pending_Script_Write));
+         if (pend)
+@@ -2347,6 +2349,16 @@ data_write_scripts(Eet_File *ef)
+    char embryo_cc_path[PATH_MAX] = "";
+    char inc_path[PATH_MAX] = "";
+    int i;
++   char *envmax;
++
++   if ((envmax = getenv("EDJE_CC_PENDING_COMMANDS_MAX")))
++     {
++        int newmax = atoi(envmax);
++
++        if (newmax > 0) pending_commands_max = newmax;
++        else
++          WRN("Ignoring invalid EDJE_CC_PENDING_COMMANDS_MAX \"%s\"", envmax);
++     }
+ 
+ #ifdef _WIN32
+ # define BIN_EXT ".exe"
+-- 
+2.51.0
+
