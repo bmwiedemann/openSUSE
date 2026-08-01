@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 28 10:45:25 UTC 2026 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Update to version 1699_20260728:
+  * profiles: whitelist selinux-sandbox seunshare (bsc#1268256)
+  * profiles: drop netcfg /etc/exports
+
+-------------------------------------------------------------------
 Thu Jul 23 13:52:54 UTC 2026 - Mislav Bozicevic <mislav.bozicevic@suse.com>
 
 - Update to version 1699_20260723:
