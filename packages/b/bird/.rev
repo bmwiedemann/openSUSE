@@ -211,4 +211,38 @@
     <comment></comment>
     <requestid>1345139</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>d7834e3a5fbe3c88e0b8584982acd37a</srcmd5>
+    <version>2.19.2</version>
+    <time>1785601905</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.19.2
+      - BGP: Fix stack buffer overflow in Flowspec NLRI decoder
+      - BGP: Minor improvements in Flowspec parsing
+      - BGP: Fix minor issues with send hold timer
+      - Fix null byte handling in authentication keys
+      - Filter: Fix zero arg handling
+      - Update bird-users mailing list links
+  * Version 2.19.1 (2026-06-09)
+      o BGP: Fix several issues in Flowspec handling
+      o OSPF: Fix handling of LLS data length field
+      o OSPF: Fix OOB read in authentication check
+      o OSPF: Fix OOB read in Router-LSA validation
+      o Filters: Fix path matching when AS path is too long.
+  * Version 2.19.0 (2026-05-25)
+      o BGP/MPLS Ethernet VPNs using VXLAN tunnels
+      o BGP: PMSI tunnel attribute
+      o Linux Netlink implementation for bridge interfaces
+      o BGP: Automatic peering based on discovered neighbors
+      o RAdv: Router discovery based on incoming Router Advertisments
+      o Nest: Add message when attempting to reload protocol that is not UP
+      o BMP: Fix off-by-one buffer overflow
+      o OSPF: Fix infinite loop in OSPF Graceful Restart
+      o ASPA: Fix downstream validation
+      o Filters: Fix string attributes
+      o Logging: Fix error handling
+      o Minor filter improvements
+      o Various documentation fixes</comment>
+    <requestid>1368706</requestid>
+  </revision>
 </revisionlist>

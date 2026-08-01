@@ -21,17 +21,17 @@
 %define bird_home %{_localstatedir}/lib/bird
 %define bird_runtimedir %{_rundir}/%{name}
 Name:           bird
-Version:        2.18.1
+Version:        2.19.2
 Release:        0
 Summary:        The BIRD Internet Routing Daemon
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Routing
 URL:            https://bird.nic.cz/
-Source:         https://bird.nic.cz/download/bird-2.18.tar.gz
+Source:         https://bird.nic.cz/download/bird-%{version}.tar.gz
 Source1:        bird.service
 Source3:        bird.tmpfiles.d
 Source4:        system-user-bird.conf
-Source5:        https://bird.nic.cz/download/bird-doc-2.18.tar.gz
+Source5:        https://bird.nic.cz/download/bird-doc-%{version}.tar.gz
 Patch1:         log-commit.patch
 BuildRequires:  bison
 BuildRequires:  flex
@@ -80,7 +80,7 @@ systems and distributed under the GNU General Public License.
 This package holds the PDF documentation.
 
 %prep
-%autosetup -p1 -a 5 -n bird-2.18
+%autosetup -p1 -a 5
 
 %build
 export CFLAGS="%{optflags} -fpic -DPIC -fno-strict-aliasing -Wno-parentheses -Wno-pointer-sign"
@@ -132,6 +132,6 @@ install -D -m 0644 %{SOURCE4} %{buildroot}%{_sysusersdir}/system-user-bird.conf
 %files doc
 %doc NEWS README
 %doc doc/bird.conf.*
-%doc bird-doc-2.18/doc/*.pdf
+%doc bird-doc-%{version}/doc/*.pdf
 
 %changelog
