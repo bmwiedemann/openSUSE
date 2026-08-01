@@ -17,7 +17,7 @@
 
 
 Name:           GeoLite2
-Version:        2026.07.07
+Version:        2026.08.01
 Release:        0
 Summary:        Free Geolocation Data
 License:        CC-BY-SA-4.0

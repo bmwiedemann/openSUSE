@@ -25,4 +25,21 @@
   * Returned Russian and Crimean IPs in later versions.</comment>
     <requestid>1364233</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>96904ebc5b0d8d7c7ff8529e85746456</srcmd5>
+    <version>2026.07.28</version>
+    <time>1785255645</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 2026.07.28
+  * No changes provides.</comment>
+    <requestid>1368205</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>328bf1398466f0775d73ac9ac8ddcb24</srcmd5>
+    <version>2026.08.01</version>
+    <time>1785602105</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1368955</requestid>
+  </revision>
 </revisionlist>
