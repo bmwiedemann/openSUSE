@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 31 15:16:35 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.4.3
+  * Fix test suite to pass even if primgrp package is not loaded
+
+-------------------------------------------------------------------
 Fri Jul 17 08:21:49 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.4.2

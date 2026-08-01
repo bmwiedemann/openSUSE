@@ -17,7 +17,7 @@
 
 
 Name:           gap-datastructures
-Version:        0.4.2
+Version:        0.4.3
 Release:        0
 Summary:        GAP: Collection of standard data structures for GAP
 License:        GPL-2.0-or-later
