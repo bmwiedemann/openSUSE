@@ -38,6 +38,12 @@
     <param name="parse-version">patch</param>
   </service>
   <service mode="buildtime" name="replace_using_package_version">
+    <param name="file">Dockerfile.libguestfs-tools</param>
+    <param name="regex">%%kubevirt_ver%%</param>
+    <param name="package">kubevirt1.8</param>
+    <param name="parse-version">patch</param>
+  </service>
+  <service mode="buildtime" name="replace_using_package_version">
     <param name="file">Dockerfile.operator</param>
     <param name="regex">%%kubevirt_ver%%</param>
     <param name="package">kubevirt1.8</param>
@@ -45,6 +51,12 @@
   </service>
   <service mode="buildtime" name="replace_using_package_version">
     <param name="file">Dockerfile.pr-helper</param>
+    <param name="regex">%%kubevirt_ver%%</param>
+    <param name="package">kubevirt1.8</param>
+    <param name="parse-version">patch</param>
+  </service>
+  <service mode="buildtime" name="replace_using_package_version">
+    <param name="file">Dockerfile.sidecar-shim</param>
     <param name="regex">%%kubevirt_ver%%</param>
     <param name="package">kubevirt1.8</param>
     <param name="parse-version">patch</param>

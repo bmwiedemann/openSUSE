@@ -5,7 +5,9 @@
     <package>exportserver</package>
     <package>handler</package>
     <package>launcher</package>
+    <package>libguestfs-tools</package>
     <package>operator</package>
     <package>pr-helper</package>
+    <package>sidecar-shim</package>
     <package>synchronization-controller</package>
 </multibuild>
