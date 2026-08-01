@@ -1,7 +1,7 @@
 #
 # spec file for package python-twine
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,8 @@ License:        Apache-2.0
 URL:            https://github.com/pypa/twine
 Source:         https://files.pythonhosted.org/packages/source/t/twine/twine-%{version}.tar.gz
 Patch0:         0001-remove-disable-socket-pytest-opt.patch
+# PATCH-FIX-UPSTREAM Two patches from gh#pypa/twine#1330
+Patch1:         support-new-docutils.patch
 BuildRequires:  %{python_module id}
 BuildRequires:  %{python_module importlib-metadata >= 3.6}
 BuildRequires:  %{python_module jaraco.envs}

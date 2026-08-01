@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 21 03:51:40 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-new-docutils.patch:
+  * Support changes required by new readme_renderer/docutils.
+
+-------------------------------------------------------------------
 Thu Sep 18 01:35:42 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 6.2.0:

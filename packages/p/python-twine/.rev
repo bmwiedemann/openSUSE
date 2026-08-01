@@ -273,4 +273,13 @@
 - Drop patch skip-unsupported-Metadata-Version-test.patch, merged upstream.</comment>
     <requestid>1305594</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>d33329f4e236961faa77c620865e911b</srcmd5>
+    <version>6.2.0</version>
+    <time>1785601654</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch support-new-docutils.patch:
+  * Support changes required by new readme_renderer/docutils.</comment>
+    <requestid>1366852</requestid>
+  </revision>
 </revisionlist>
