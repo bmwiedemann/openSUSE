@@ -1,0 +1,24 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>18ef2296422b4f7c1a900f2afa2f13fa</srcmd5>
+    <version>0.1.12</version>
+    <time>1784126122</time>
+    <user>dimstar_suse</user>
+    <comment>New package: Apache TVM FFI Python bindings; dependency for python-xgrammar and python-vllm.</comment>
+    <requestid>1365520</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>20d5567283c45d5dc84aa6e2417abffe</srcmd5>
+    <version>0.1.13</version>
+    <time>1785601985</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.1.13
+
+Includes upstream's breaking changes (dataclasses field-resolution split,
+unified native enum state, exact-match reflection, TVMFFIAny relayout) and
+raises the Python floor to 3.9. The sole reverse dependency python-xgrammar
+was rebuilt against 0.1.13 locally on aarch64: clean build, native binding
+loads on both python313 and python314.</comment>
+    <requestid>1368783</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,8 @@
+# The tvm_ffi Python package deliberately bundles its C++ headers, JIT
+# sources, bundled 3rdparty trees and the CMake package configuration under
+# the installed site-packages directory. Downstream native consumers (e.g.
+# xgrammar) discover them from that path via find_package(tvm_ffi CONFIG),
+# so they must stay in the Python package rather than move to a -devel
+# subpackage. Silence the resulting devel-file / bundled-build-tooling noise.
+addFilter("devel-file-in-non-devel-package .*/site-packages/tvm_ffi/.*")
+addFilter("non-executable-script .*/site-packages/tvm_ffi/.*")

@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Fri Jul 31 07:52:41 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.1.13:
+  * Breaking: dataclasses field resolution was separated from native
+    lifetimes, native enum state was unified and reflection now
+    requires exact field and method name matches
+  * Optional and Variant are now backed by TVMFFIAny for a stable
+    ABI layout, breaking code compiled against 0.1.12
+  * Minimum supported Python is now 3.9
+  * Add structural visitor and typed structural walk APIs, type
+    subsumption relations and an Expected<void> specialisation
+  * Tie the Python wrapper lifetime to the underlying C++ FFI object
+  * Support pickling of FFI String and Bytes, expose Tensor data_ptr
+  * Expand dtype parsing and introspection, require canonical Python
+    device names
+  * Refactor stubgen and improve typing of overloaded methods
+  * Rust bindings gained Map, Optional and the match_any! macro
+  * ORCJIT addon gained a shared session, a high-level load_module
+    and an embedded liborc_rt
+  * Core wheels are now tagged per Python version instead of abi3
+  * Various fixes: exception-safe object construction, uint1 tensor
+    packing, JIT GPU backend detection, hidden static library symbols
+- Require Cython >= 3.2.8, CMake >= 3.26, scikit-build-core >= 0.10.0
+  and ninja >= 1.11 as mandated by upstream
+
+-------------------------------------------------------------------
+Mon Jul 13 04:54:28 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package python-apache-tvm-ffi 0.1.12
+  * Minimal FFI runtime, C++ headers and CMake package config for
+    native machine learning kernels, required to build xgrammar
