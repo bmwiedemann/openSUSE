@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Jul 21 08:44:53 UTC 2026 - Frantisek Simorda <frantisek.simorda@suse.com>
+
+- update to 1.1.0:
+  * [FIX] Parameter reading and parsing in `spi-pipe`.
+  * [FIX] parameter reading and parsing in `spi-config`.
+  * Update copyright dates.
+  * [FIX] wrong declaration of `-r` option in `spi-pipe`.
+  * [FIX] Some small errors in `spi-tools` detected by an AI.
+  * [FIX] Typo in `spi-config` man page.
+  * Merge pull request #33 from parsamajidi21/master
+  * README: Example of building binaries for Android devices
+  * add sample Android.bp to build within an Android tree
+  * [DOC] Working on `README.md`.
+  * [DEV] Add a `CMakeLists.txt` file for cmake build system.
+  * [DEV] Only write new configuration in `spi-pipe` if something changed.
+  * Merge pull request #32 from mjsir911/master
+  * Allow CFLAGS to be passed to ./configure
+  * [FIX] Typo in `spi-config` man page.
+
+-------------------------------------------------------------------
 Mon Jan  2 14:20:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.2:
