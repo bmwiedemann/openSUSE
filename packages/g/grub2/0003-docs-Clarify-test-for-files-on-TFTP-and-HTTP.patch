@@ -1,17 +1,22 @@
-From a0bcce49bc285fb71c572963e662db3d88bcd563 Mon Sep 17 00:00:00 2001
+From 83cc0e322d7fe398388242e528de174041737681 Mon Sep 17 00:00:00 2001
 From: Michael Chang <mchang@suse.com>
 Date: Wed, 16 Jul 2025 17:52:03 +0800
 Subject: [PATCH 3/4] docs: Clarify test for files on TFTP and HTTP
 
+Signed-off-by: Michael Chang <mchang@suse.com>
+Reviewed-by: Andrew Hamilton <adhamilt@gmail.com>
+Reviewed-by: Avnish Chouhan <avnish@linux.ibm.com>
+Reviewed-by: Leo Sandoval <lsandova@redhat.com>
+Part-of: <https://gitlab.freedesktop.org/gnu-grub/grub/-/merge_requests/167>
 ---
  docs/grub.texi | 8 ++++----
  1 file changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/docs/grub.texi b/docs/grub.texi
-index 9aaea7282..4b947e942 100644
+index 313aa0275..bcacd0fc5 100644
 --- a/docs/grub.texi
 +++ b/docs/grub.texi
-@@ -5887,13 +5887,13 @@ the strings are not equal
+@@ -8927,13 +8927,13 @@ the strings are not equal
  @item @var{prefix}@var{integer1} @code{-plt} @var{prefix}@var{integer2}
  @var{integer1} is less than @var{integer2} after stripping off common non-numeric @var{prefix}.
  @item @var{file1} @code{-nt} @var{file2}
@@ -30,5 +35,5 @@ index 9aaea7282..4b947e942 100644
  @var{file} exists and is not a directory
  @item @code{-s} @var{file}
 -- 
-2.50.0
+2.55.0
 

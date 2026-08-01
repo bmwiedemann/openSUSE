@@ -1,4 +1,4 @@
-From 6704d7715b6303f4b7e2cb9da7c6dcc3bfdd5726 Mon Sep 17 00:00:00 2001
+From e2cdb5c4c7733bc45a5536b5a6c2a951c693dbc0 Mon Sep 17 00:00:00 2001
 From: Michael Chang <mchang@suse.com>
 Date: Mon, 14 Jul 2025 22:10:18 +0800
 Subject: [PATCH 2/4] http: Return HTTP status code in http_establish
@@ -25,15 +25,19 @@ successful solely based on establishing the connection, it now also
 takes the HTTP status code into account.
 
 Signed-off-by: Michael Chang <mchang@suse.com>
+Reviewed-by: Andrew Hamilton <adhamilt@gmail.com>
+Reviewed-by: Avnish Chouhan <avnish@linux.ibm.com>
+Reviewed-by: Leo Sandoval <lsandova@redhat.com>
+Part-of: <https://gitlab.freedesktop.org/gnu-grub/grub/-/merge_requests/167>
 ---
- grub-core/net/http.c | 6 ++++++
- 1 file changed, 6 insertions(+)
+ grub-core/net/http.c | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
 
 diff --git a/grub-core/net/http.c b/grub-core/net/http.c
-index 686949c17..c5509dc45 100644
+index 5a19f8d95..94289259c 100644
 --- a/grub-core/net/http.c
 +++ b/grub-core/net/http.c
-@@ -125,6 +125,7 @@ parse_line (grub_file_t file, http_data_t data, char *ptr, grub_size_t len)
+@@ -122,6 +122,7 @@ parse_line (grub_file_t file, http_data_t data, char *ptr, grub_size_t len)
  	case 404:
  	  data->err = GRUB_ERR_FILE_NOT_FOUND;
  	  data->errmsg = grub_xasprintf (_("file `%s' not found"), data->filename);
@@ -41,7 +45,7 @@ index 686949c17..c5509dc45 100644
  	  return GRUB_ERR_NONE;
  	default:
  	  data->err = GRUB_ERR_NET_UNKNOWN_ERROR;
-@@ -132,6 +133,7 @@ parse_line (grub_file_t file, http_data_t data, char *ptr, grub_size_t len)
+@@ -129,6 +130,7 @@ parse_line (grub_file_t file, http_data_t data, char *ptr, grub_size_t len)
  	     valid answers like 403 will trigger this very generic message.  */
  	  data->errmsg = grub_xasprintf (_("unsupported HTTP error %d: %s"),
  					 code, ptr);
@@ -49,17 +53,25 @@ index 686949c17..c5509dc45 100644
  	  return GRUB_ERR_NONE;
  	}
        data->first_line_recv = 1;
-@@ -444,6 +446,10 @@ http_establish (struct grub_file *file, grub_off_t offset, int initial)
+@@ -473,6 +475,18 @@ http_establish (struct grub_file *file, grub_off_t offset, int initial)
  	}
        return grub_error (GRUB_ERR_TIMEOUT, N_("time out opening `%s'"), data->filename);
      }
 +
 +  if (data->err)
-+    return grub_error (data->err, N_("%s"), data->errmsg);
++    {
++      char *str = data->errmsg;
++      if (data->sock)
++	grub_net_tcp_close (data->sock, GRUB_NET_TCP_ABORT);
++      err = grub_error (data->err, "%s", str);
++      grub_free (str);
++      data->errmsg = 0;
++      return err;
++    }
 +
    return GRUB_ERR_NONE;
  }
  
 -- 
-2.50.0
+2.55.0
 

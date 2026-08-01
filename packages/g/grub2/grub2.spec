@@ -209,6 +209,13 @@ Patch:          0007-efinet-Set-DNS-server-from-UEFI-protocol.patch
 Patch:          0008-kern-efi-efi-Print-URI-and-DNS-device-path-info.patch
 Patch:          0009-kern-efi-efi-Correct-endianness-in-IPv6-device-path.patch
 Patch:          0010-bootp-Fix-logical-operator-in-DHCP-option-overload-c.patch
+Patch:          0001-test-Fix-f-test-on-files-over-network.patch
+Patch:          0002-http-Return-HTTP-status-code-in-http_establish.patch
+Patch:          0003-docs-Clarify-test-for-files-on-TFTP-and-HTTP.patch
+Patch:          0004-tftp-Fix-hang-when-file-is-a-directory.patch
+Patch:          0001-cacheinfo-fix-hit-ratio-calculation-and-statistics-o.patch
+Patch:          0002-disk-fix-cache-lock-and-hit-counter-for-invalidated-.patch
+Patch:          0003-disk-reduce-cache-slot-thrashing.patch
 Patch:          rename-grub-info-file-to-grub2.patch
 Patch:          grub2-linux.patch
 Patch:          use-grub2-as-a-package-name.patch
@@ -376,10 +383,6 @@ Patch:          grub2-bls-boot-show-snapshot.patch
 Patch:          0001-Improve-TPM-key-protection-on-boot-interruptions.patch
 Patch:          0004-Key-revocation-on-out-of-bound-file-access.patch
 Patch:          0001-mkconfig-Determine-GRUB_DISTRIBUTOR-from-etc-SUSE-br.patch
-Patch:          0001-test-Fix-f-test-on-files-over-network.patch
-Patch:          0002-http-Return-HTTP-status-code-in-http_establish.patch
-Patch:          0003-docs-Clarify-test-for-files-on-TFTP-and-HTTP.patch
-Patch:          0004-tftp-Fix-hang-when-file-is-a-directory.patch
 Patch:          0001-getroot-Skip-mount-points-in-grub_find_device.patch
 Patch:          0001-linux-fallback-to-EFI-handover-on-x86_64.patch
 Patch:          0002-linux-fallback-to-direct-PE-entry-boot-on-arm64.patch

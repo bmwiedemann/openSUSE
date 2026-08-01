@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jul 27 07:14:43 UTC 2026 - Michael Chang <mchang@suse.com>
+
+- Fix KVM and Xen VM images taking too long to boot (bsc#1266384)
+  * 0001-cacheinfo-fix-hit-ratio-calculation-and-statistics-o.patch
+  * 0002-disk-fix-cache-lock-and-hit-counter-for-invalidated-.patch
+  * 0003-disk-reduce-cache-slot-thrashing.patch
+
+-------------------------------------------------------------------
+Mon Jul 27 06:50:53 UTC 2026 - Michael Chang <mchang@suse.com>
+
+- Replace patch with upstreamed version
+  * 0001-test-Fix-f-test-on-files-over-network.patch
+  * 0002-http-Return-HTTP-status-code-in-http_establish.patch
+  * 0003-docs-Clarify-test-for-files-on-TFTP-and-HTTP.patch
+  * 0004-tftp-Fix-hang-when-file-is-a-directory.patch
+
+-------------------------------------------------------------------
 Tue Jul  7 05:52:20 UTC 2026 - Michael Chang <mchang@suse.com>
 
 - Backport merged upstream patch

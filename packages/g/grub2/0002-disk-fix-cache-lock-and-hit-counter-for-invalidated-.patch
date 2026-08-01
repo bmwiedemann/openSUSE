@@ -1,0 +1,49 @@
+From dc0b2735bfeb8f8b10c85709ea43d9e58e204863 Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Tue, 9 Jun 2026 13:21:25 +0800
+Subject: [PATCH 2/3] disk: fix cache lock and hit counter for invalidated
+ cache entries
+
+In grub_disk_cache_fetch(), a cache entry may match (dev_id, disk_id,
+sector) while having already been invalidated (data == NULL). Such
+entries should be treated as cache misses rather than valid cache hits.
+However, the current implementation still marks the entry as locked and
+increments the cache hit counter before returning NULL.
+
+Avoid locking invalidated cache entries by setting cache->lock only
+when cache->data is present. This prevents entries without valid data
+from remaining permanently locked. Also update cache statistics so that
+only valid entries contribute to grub_disk_cache_hits, matching
+entries with NULL data are now counted as cache misses instead.
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+Reviewed-by: Andrew Hamilton <adhamilt@gmail.com>
+Reviewed-by: Leo Sandoval <lsandova@redhat.com>
+Part-of: <https://gitlab.freedesktop.org/gnu-grub/grub/-/merge_requests/145>
+---
+ grub-core/kern/disk.c | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/grub-core/kern/disk.c b/grub-core/kern/disk.c
+index 82e04fd00..d81ea1bd0 100644
+--- a/grub-core/kern/disk.c
++++ b/grub-core/kern/disk.c
+@@ -89,9 +89,13 @@ grub_disk_cache_fetch (unsigned long dev_id, unsigned long disk_id,
+   if (cache->dev_id == dev_id && cache->disk_id == disk_id
+       && cache->sector == sector)
+     {
+-      cache->lock = 1;
++      if (cache->data)
++	cache->lock = 1;
+ #if DISK_CACHE_STATS
+-      grub_disk_cache_hits++;
++      if (cache->data)
++	grub_disk_cache_hits++;
++      else
++	grub_disk_cache_misses++;
+ #endif
+       return cache->data;
+     }
+-- 
+2.55.0
+

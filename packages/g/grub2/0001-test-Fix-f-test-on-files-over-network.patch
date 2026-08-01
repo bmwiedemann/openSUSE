@@ -1,4 +1,4 @@
-From 0a8f0e75151067a8b7c09a6ffdfa9558aa040d3b Mon Sep 17 00:00:00 2001
+From ffc05ec967da97447defceac21ab76feb1f50a68 Mon Sep 17 00:00:00 2001
 From: Michael Chang <mchang@suse.com>
 Date: Mon, 14 Jul 2025 17:59:20 +0800
 Subject: [PATCH 1/4] test: Fix -f test on files over network
@@ -30,15 +30,19 @@ the most common case: checking whether a "file" exists on a network
 device.
 
 Signed-off-by: Michael Chang <mchang@suse.com>
+Reviewed-by: Andrew Hamilton <adhamilt@gmail.com>
+Reviewed-by: Avnish Chouhan <avnish@linux.ibm.com>
+Reviewed-by: Leo Sandoval <lsandova@redhat.com>
+Part-of: <https://gitlab.freedesktop.org/gnu-grub/grub/-/merge_requests/167>
 ---
- grub-core/commands/test.c | 17 +++++++++++++++++
- 1 file changed, 17 insertions(+)
+ grub-core/commands/test.c | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
 
 diff --git a/grub-core/commands/test.c b/grub-core/commands/test.c
-index 62d3fb398..541f36daf 100644
+index ee47ab264..55e842191 100644
 --- a/grub-core/commands/test.c
 +++ b/grub-core/commands/test.c
-@@ -91,6 +91,23 @@ get_fileinfo (char *path, struct test_parse_ctx *ctx)
+@@ -94,6 +94,24 @@ get_fileinfo (char *path, struct test_parse_ctx *ctx)
        return;
      }
  
@@ -51,6 +55,7 @@ index 62d3fb398..541f36daf 100644
 +      ctx->file_exists = file ? 1 : 0;
 +      ctx->file_info.dir = 0;
 +      ctx->file_info.mtimeset = 0;
++      ctx->filename = NULL;
 +      grub_errno = GRUB_ERR_NONE;
 +      if (file)
 +	grub_file_close (file);
@@ -63,5 +68,5 @@ index 62d3fb398..541f36daf 100644
    if (! fs)
      {
 -- 
-2.50.0
+2.55.0
 
