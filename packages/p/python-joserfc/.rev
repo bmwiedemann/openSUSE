@@ -130,4 +130,12 @@
   * Raises DecodeError when encrypted_key is None in JWE.</comment>
     <requestid>1366811</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>171d9ed8ff175905393daa618cfee83e</srcmd5>
+    <version>1.7.4</version>
+    <time>1785602040</time>
+    <user>dimstar_suse</user>
+    <comment>Add bug reference for CVE-2026-62995, bsc#1272991</comment>
+    <requestid>1368855</requestid>
+  </revision>
 </revisionlist>
