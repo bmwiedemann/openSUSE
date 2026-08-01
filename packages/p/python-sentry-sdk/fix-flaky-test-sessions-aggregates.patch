@@ -1,0 +1,27 @@
+Index: sentry-python-2.66.1/tests/test_sessions.py
+===================================================================
+--- sentry-python-2.66.1.orig/tests/test_sessions.py	2026-07-22 14:00:48.000000000 +0200
++++ sentry-python-2.66.1/tests/test_sessions.py	2026-07-27 01:43:09.031441923 +0200
+@@ -1,9 +1,22 @@
++from datetime import datetime, timezone
+ from unittest import mock
+ 
++import pytest
++
+ import sentry_sdk
+ from sentry_sdk.sessions import auto_session_tracking, track_session
+ 
+ 
++@pytest.fixture(autouse=True)
++def freeze_session_time():
++    frozen_time = datetime(2026, 7, 26, 17, 43, 0, tzinfo=timezone.utc)
++    with mock.patch("sentry_sdk.session.datetime") as mock_datetime:
++        mock_datetime.now.return_value = frozen_time
++        mock_datetime.side_effect = lambda *args, **kw: datetime(*args, **kw)
++        mock_datetime.timezone = timezone
++        yield
++
++
+ def sorted_aggregates(item):
+     aggregates = item["aggregates"]
+     aggregates.sort(key=lambda item: (item["started"], item.get("did", "")))

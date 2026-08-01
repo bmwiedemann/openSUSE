@@ -19,7 +19,7 @@
 # nothing provides python2-venusian >= 1.0 needed by python2-pyramid
 %{?sle15_python_module_pythons}
 Name:           python-sentry-sdk
-Version:        2.60.0
+Version:        2.66.1
 Release:        0
 Summary:        Python SDK for Sentry.io
 License:        BSD-2-Clause
@@ -31,6 +31,9 @@ Patch0:         dont-walk-iterate.patch
 # PATCH-FIX-OPENSUSE build-pytest.patch mcepl@suse.com
 # switch off test coverage
 Patch1:         build-pytest.patch
+# PATCH-FIX-UPSTREAM fix-flaky-test-sessions-aggregates.patch mcepl@suse.com
+# freeze datetime in test_sessions.py to avoid flaky minute-boundary failure
+Patch2:         fix-flaky-test-sessions-aggregates.patch
 BuildRequires:  %{python_module Flask >= 1.0}
 BuildRequires:  %{python_module MarkupSafe}
 BuildRequires:  %{python_module SQLAlchemy >= 1.2}
@@ -45,7 +48,7 @@ BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module executing}
 BuildRequires:  %{python_module falcon >= 1.4}
 BuildRequires:  %{python_module grpcio >= 1.39}
-BuildRequires:  %{python_module httpx >= 0.16.0}
+BuildRequires:  %{python_module httpx2 >= 2.2.0}
 BuildRequires:  %{python_module loguru >= 0.5}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pymongo >= 3.1}
@@ -115,7 +118,7 @@ Suggests:       python-executing
 Suggests:       python-falcon >= 1.4
 Suggests:       python-fastapi >= 0.79.0
 Suggests:       python-grpcio >= 1.39
-Suggests:       python-httpx >= 0.16.0
+Suggests:       python-httpx2 >= 2.2.0
 Suggests:       python-jsonschema
 Suggests:       python-loguru >= 0.5
 Suggests:       python-pymongo >= 3.1
@@ -142,6 +145,7 @@ Suggests:       gdal
 #Requires:       python-fastapi >= 0.79.0}
 # /SECTION
 BuildArch:      noarch
+ExcludeArch:    %arm32 %ix86
 %python_subpackages
 
 %description

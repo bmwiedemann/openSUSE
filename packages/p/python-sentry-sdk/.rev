@@ -505,4 +505,99 @@ Reduce dependencies from 260MiB to 14MiB.
 </comment>
     <requestid>1355845</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>cf94995d466b36a0858c98c5fa0a91b1</srcmd5>
+    <version>2.63.0</version>
+    <time>1781879774</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.63.0:
+  ## New Features
+  * Add integration for aiomysql
+  * Support HTTPX2
+  * Add server.address to transformed spans when stream_gen_ai_spans=True
+  * Allow integrations to define control flow exceptions
+  * Disable string truncation for events by default
+  ## Bug Fixes
+  * Fastapi
+    + Prevent double wrapping of sync handlers on FastAPI &gt;= 0.137
+    + Use effective_route_context path for prefixed routers
+  * Other
+    + (arq) Never capture control flow exceptions
+    + (client) Guard against dotless qualified_name in _setup_instrumentation
+    + (rq) Restore functools.wraps() for patched functions
+    + (tracing_utils) Handle baggage values containing '=' in
+      from_incoming_header
+    + (utils) Handle image_url string shorthand in _is_image_type_with_blob_content
+  * Langchain
+    + Stop setting transaction status when child span fails
+    + Catch TypeError on langchain.agents import
+  * Openai Agents
+    + Handle starting_agent keyword argument in runner patches
+    + Remove hosted MCP tool spans
+    + Use name, not description in start_span
+    + Stop setting transaction status when child span fails
+  * Pydantic AI
+    + Only use hooks when ModelRequestContext.model exists
+    + Stop setting tokens on Invoke Agent spans
+    + Stop setting transaction status when child span fails</comment>
+    <requestid>1360426</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>2895a2c5845effff005743cbd3868cf0</srcmd5>
+    <version>2.66.1</version>
+    <time>1785601823</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.66.1:
+  - Bug Fixes 
+  - Tracing
+    - Handle exceptions raised within traces_sampler and other
+      callbacks
+- Update to 2.66.0:
+  - New Features 
+    - (tracing) Promote trace_lifecycle and ignore_spans to
+      top-level options
+  - Tracing
+    - Skip child span creation in streaming path when no current
+      span
+- Update to 2.65.0:
+  - Huey
+    - Set messaging.destination.name on consumer spans
+    - Set messaging.destination.name on producer spans
+  - Other
+    - (arq) Set messaging.destination.name on consumer spans
+    - (dramatiq) Set messaging.destination.name on consumer spans
+    - (rq) Set messaging.destination.name on consumer spans
+  - Tracing
+    - Take first sentry-trace header in case multiple are
+      supplied
+  - Other
+    - (django) Avoid ValueError in async middleware process_*
+      hooks
+    - (scope) Drop None user attribute values in set_user
+    - (starlette) Don't overwrite user set during request in
+      AuthenticationMiddleware
+- Update to 2.64.0:
+  - The SDK now extracts all gen_ai spans out of a transaction
+    and sends them as v2 envelope items gen_ai spans from being
+    dropped when the transaction payload exceeds size limits.
+    Because they are no longer constrained truncated. To keep the
+    previous behavior, set stream_gen_ai_spans=False.
+  - Self-hosted Sentry users should opt out with
+    stream_gen_ai_spans=False, since streamed gen_ai spans may
+    not be ingested
+  - Documentation 
+    - Add light/dark logos
+    - Fix typos
+  - Other
+    - (test): exclude django 6.1 alphas and betas from tox
+    - (test): need to include the alpha tag for mcp package
+      inclusion
+- Add fix-flaky-test-sessions-aggregates.patch:
+  - Freeze datetime inside test_sessions.py to prevent flaky
+    minute-boundary failure (assert 2 == 1 on len(aggregates))
+- Exclude %arm32 and %ix86 architectures (32bit doesn’t seem to
+  be supported)
+</comment>
+    <requestid>1368544</requestid>
+  </revision>
 </revisionlist>
