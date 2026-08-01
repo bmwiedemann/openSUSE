@@ -888,4 +888,13 @@
   Support PEM encoded chain from ca_cert blob (bsc#1258365).</comment>
     <requestid>1364749</requestid>
   </revision>
+  <revision rev="103" vrev="8">
+    <srcmd5>8dea06461b7ba279b3f5ccf540238e50</srcmd5>
+    <version>2.11</version>
+    <time>1785601741</time>
+    <user>dimstar_suse</user>
+    <comment>- Add mesh-Reject-AMPE-MIC-element-with-length-AES_BLOCK_S.patch
+  https://w1.fi/security/2026-4/</comment>
+    <requestid>1368539</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,37 @@
+From 0ef47396926cb8ce4827b6a5a593ebfc270b8e06 Mon Sep 17 00:00:00 2001
+From: Mingyu Jung <me@6r33n.kr>
+Date: Wed, 29 Jul 2026 22:12:12 +0900
+Subject: [PATCH] mesh: Reject AMPE MIC element with length != AES_BLOCK_SIZE
+Reference: https://w1.fi/security/2026-4/
+
+mesh_rsn_process_ampe() positioned the AMPE decrypt output at
+elems->mic + elems->mic_len and only required elems->mic_len to be at
+least AES_BLOCK_SIZE (16). The SIV tag is always exactly one AES block,
+so a peer that sent a MIC element longer than 16 octets pushed ampe_buf
+forward by mic_len while aes_siv_decrypt() still wrote
+crypt_len - AES_BLOCK_SIZE plaintext bytes there (before the tag is
+verified), ending (mic_len - 16) bytes past the received frame buffer.
+
+With a 255-octet MIC element this results in a 239-byte out-of-bounds
+heap write of attacker controlled content, reachable from a mesh peer
+that is able to complete SAE authentication successfully (i.e., knows
+the password).
+
+Require the MIC element to be exactly AES_BLOCK_SIZE to avoid this.
+
+Signed-off-by: Mingyu Jung <me@6r33n.kr>
+---
+ wpa_supplicant/mesh_rsn.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/wpa_supplicant/mesh_rsn.c
++++ b/wpa_supplicant/mesh_rsn.c
+@@ -679,7 +679,7 @@ int mesh_rsn_process_ampe(struct wpa_sup
+ 		return -1;
+ 	}
+ 
+-	if (!elems->mic || elems->mic_len < AES_BLOCK_SIZE) {
++	if (!elems->mic || elems->mic_len != AES_BLOCK_SIZE) {
+ 		wpa_msg(wpa_s, MSG_DEBUG, "Mesh RSN: missing mic ie");
+ 		return -1;
+ 	}

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 30 09:37:32 UTC 2026 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
+
+- Add mesh-Reject-AMPE-MIC-element-with-length-AES_BLOCK_S.patch
+  https://w1.fi/security/2026-4/
+
+-------------------------------------------------------------------
 Thu Jul  9 15:08:24 UTC 2026 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
 
 - Add Require-network_ctx-and-AKMP-match-for-accepting-PMK.patch

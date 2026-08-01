@@ -51,6 +51,8 @@ Patch10:        CVE-2026-58374.patch
 Patch11:        Require-network_ctx-and-AKMP-match-for-accepting-PMK.patch
 # PATCH-FIX-UPSTREAM https://w1.fi/security/2026-3/
 Patch12:        SAE-Fix-crash-due-to-NULL-pointer-dereference-in-H2E.patch
+# PATCH-FIX-UPSTREAM https://w1.fi/security/2026-4/
+Patch13:        mesh-Reject-AMPE-MIC-element-with-length-AES_BLOCK_S.patch
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 BuildRequires:  systemd-rpm-macros
