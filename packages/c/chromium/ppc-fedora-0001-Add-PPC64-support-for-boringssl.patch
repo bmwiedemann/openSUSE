@@ -4941,12 +4941,12 @@ Index: chromium-146.0.7680.65/third_party/boringssl/src/crypto/fipsmodule/aes/gc
  
 Index: chromium-146.0.7680.65/third_party/boringssl/src/crypto/fipsmodule/rand/rand.cc.inc
 ===================================================================
---- chromium-146.0.7680.65.orig/third_party/boringssl/src/crypto/fipsmodule/rand/rand.cc.inc
-+++ chromium-146.0.7680.65/third_party/boringssl/src/crypto/fipsmodule/rand/rand.cc.inc
-@@ -423,6 +423,11 @@
-     // Take a read lock around accesses to |state->drbg|. This is needed to
+--- chromium-151.0.7872.0/third_party/boringssl/src/crypto/fipsmodule/rand/rand.cc.inc	2026/06/12 14:41:33	1.1
++++ chromium-151.0.7872.0/third_party/boringssl/src/crypto/fipsmodule/rand/rand.cc.inc	2026/06/12 14:42:14
+@@ -433,6 +433,11 @@
+     // Take a read lock around accesses to `state->drbg`. This is needed to
      // avoid returning bad entropy if we race with
-     // |rand_thread_state_clear_all|.
+     // `rand_thread_state_clear_all`.
 +    //
 +    // This lock must be taken after any calls to |CRYPTO_sysrand| to avoid a
 +    // bug on ppc64le. glibc may implement pthread locks by wrapping user code
@@ -5796,7 +5796,7 @@ Index: chromium-146.0.7680.65/third_party/boringssl/src/crypto/test/abi_test.h
  
  // Enable ABI testing if all of the following are true.
  //
-@@ -232,6 +303,12 @@ inline crypto_word_t ToWord(T t) {
+@@ -303,6 +303,12 @@
    // on 32-bit architectures for simplicity.
    static_assert(sizeof(T) == 4, "parameter types must be word-sized");
    return (crypto_word_t)t;
@@ -5807,7 +5807,7 @@ Index: chromium-146.0.7680.65/third_party/boringssl/src/crypto/test/abi_test.h
 +  // copy of a parameter is identical to the register one.
 +  return (crypto_word_t)t;
  #elif defined(OPENSSL_X86_64) || defined(OPENSSL_AARCH64)
-   // AAPCS64, section 5.4.2, clauses C.7 and C.14 says any remaining bits in
+   // AAPCS64, section 5.4.2, clauses C.7 and C.14 say any remaining bits in
    // aarch are unspecified. iOS64 contradicts this and says the callee extends
 @@ -286,9 +363,9 @@ inline crypto_word_t ToWord(T t) {
  template <typename R, typename... Args>

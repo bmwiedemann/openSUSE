@@ -1,11 +1,11 @@
-Index: chromium-149.0.7779.3/components/autofill/core/browser/BUILD.gn
+Index: chromium-151.0.7922.10/components/autofill/core/browser/BUILD.gn
 ===================================================================
---- chromium-149.0.7779.3.orig/components/autofill/core/browser/BUILD.gn
-+++ chromium-149.0.7779.3/components/autofill/core/browser/BUILD.gn
-@@ -122,6 +122,11 @@ proto_library("amount_extraction_heurist
- }
- 
- static_library("browser") {
+--- chromium-151.0.7922.10.orig/components/autofill/core/browser/BUILD.gn
++++ chromium-151.0.7922.10/components/autofill/core/browser/BUILD.gn
+@@ -131,6 +131,11 @@ static_library("browser") {
+   _configs = configs
+   configs = []
+   configs = [ "//third_party/tflite:tflite_shim_config" ] + _configs
 +  if (is_clang) {
 +    cflags = [
 +      "-fbracket-depth=1000",

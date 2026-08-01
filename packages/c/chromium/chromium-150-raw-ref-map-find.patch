@@ -1,0 +1,23 @@
+Author: Andres Salomon <dilinger@debian.org>
+
+/usr/bin/../include/c++/v1/map:657:12: error: no matching function for call to object of type 'const std::less<base::raw_ref<permissions::PermissionRequest>>'
+
+llvm-19 headers don't like when chromium switched from a C-style pointer
+to a base::raw_ref, so we have to iterate through the map manually instead
+of using std::map::find().
+
+--- a/components/permissions/permission_request_manager.cc
++++ b/components/permissions/permission_request_manager.cc
+@@ -437,7 +437,11 @@ bool PermissionRequestManager::Repriorit
+ bool PermissionRequestManager::
+     HasActiveSourceFrameOrDisallowActivationOtherwise(
+         const PermissionRequest& request) const {
+-  const auto iter = request_sources_map_.find(request);
++  auto iter = request_sources_map_.begin();
++  for (; iter != request_sources_map_.end(); iter++) {
++    if (iter->first == request)
++      break;
++  }
+   if (iter != request_sources_map_.end()) {
+     return !iter->second.IsSourceFrameInactiveAndDisallowActivation();
+   }

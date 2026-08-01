@@ -132,7 +132,7 @@
 %global official_build 1
 
 Name:           chromium%{n_suffix}
-Version:        150.0.7871.186
+Version:        151.0.7922.71
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -154,7 +154,6 @@ Source105:      INSTALL.sh
 #
 Source106:      chrome-wrapper
 Source107:      chromium.conf
-Source110:      disable-ai.json
 # global patches
 Patch0:         chromium-libusb_interrupt_event_handler.patch
 # PATCH-FIX-OPENSUSE Make the 1-click-install ymp file always download [bnc#836059]
@@ -172,7 +171,6 @@ Patch98:        chromium-102-regex_pattern-array.patch
 Patch99:        chromium-148-sandbox-glibc-2.43.patch
 # PATCH-FIX-SUSE: allow prop codecs to be set with chromium branding
 Patch202:       chromium-prop-codecs.patch
-Patch240:       chromium-117-string-convert.patch
 Patch261:       chromium-121-rust-clang_lib.patch
 Patch337:       chromium-123-missing-QtGui.patch
 Patch359:       chromium-126-quiche-interator.patch
@@ -205,8 +203,8 @@ Patch399:       chromium-148-no_dep_on_intree_rustc_binary.patch
 Patch400:       chromium-149-profile_no_const.patch
 Patch401:       chromium-149-strip-path.patch
 Patch402:       chromium-150-toolchain.patch
-Patch403:       chromium-150-sysroot.patch
-Patch410:       disable-ai.patch
+Patch403:       chromium-151-metrics-metadata-histograms.patch
+Patch404:       chromium-151-value_or.patch
 # conditionally applied patches ppc64le only
 # where applicable patch numbers from fedora specfile + 100
 Patch452:       ppc-fedora-memory-allocator-dcheck-assert-fix.patch
@@ -249,7 +247,6 @@ Patch498:       ppc-fedora-0001-Implement-support-for-PPC64-on-Linux.patch
 Patch499:       ppc-fedora-0001-Force-baseline-POWER8-AltiVec-VSX-CPU-features-when-.patch
 Patch501:       ppc-fedora-fix-rustc.patch
 Patch503:       ppc-fedora-fix-breakpad-compile.patch
-Patch504:       ppc-fedora-fix-partition-alloc-compile.patch
 Patch505:       ppc-fedora-fix-study-crash.patch
 Patch507:       ppc-fedora-fix-different-data-layouts.patch
 Patch508:       ppc-fedora-0002-Add-ppc64-trap-instructions.patch
@@ -273,6 +270,8 @@ Patch550:       ppc-chromium-136-clang-config.patch
 # from debian
 Patch551:       ppc-debian-0003-third_party-ffmpeg-Add-ppc64-generated-config.patch
 Patch552:       ppc-libvpx-add-missing-prototype.patch
+# help for dawn
+Patch553:       ppc-dawn-add-ppc64.patch
 # conditionally applied patches
 # patch where libxml < 2.12
 Patch1010:      chromium-124-system-libxml.patch
@@ -298,7 +297,7 @@ Patch1062:       chromium-146-clang-19-crash.patch
 Patch1063:       chromium-bafd7d217b9e26edf3be8d20b1ff56bcea4b16ee.patch
 # error:  [44980s] ../components/enterprise/client_certificates/core/private_key_factory.cc:126:14: error: expression is not assignable
 Patch1064:       chromium-146-keyfactory.patch
-Patch1065:       chromium-150-icubridge_item_length.patch
+Patch1065:       chromium-150-i18n-builder-enum.patch
 # error with llvm < 23
 # clang++: error: unknown argument: '-fsanitize-ignore-for-ubsan-feature=array-bounds'
 Patch1066:       chromium-146-ignore-for-ubsan.patch
@@ -306,8 +305,9 @@ Patch1067:       chromium-146-bytemuck.patch
 Patch1068:       chromium-148-only_address_sanitizer.patch
 # error: no member named 'iota' in namespace 'std::ranges'
 Patch1069:       chromium-148-revert_std_ranges_iota.patch
-# revert using raw_ref in permission_request_manager, fails to compile
-Patch1070:       chromium-f14702bb2b25c940cc95eb772110e715618bd069.patch
+Patch1071:       chromium-150-raw-ref-map-find.patch
+Patch1072:       chromium-151-privatefriends.patch
+Patch1073:       chromium-151-constexpr.patch
 Patch1080:       rollup.patch
 
 # end conditionally applied patches
@@ -593,6 +593,8 @@ if [[ $(echo ${clang_version} | cut -d. -f1) -lt 21 ]]; then
 %patch -p1 -R -P 1063
 %patch -p1 -P 1065
 %patch -p1 -P 1069
+%patch -p1 -P 1072
+%patch -p1 -P 1073
 fi
 %patch -p1 -P 1064
 
@@ -600,9 +602,8 @@ if [[ $(echo ${clang_version} | cut -d. -f1) -lt 23 ]]; then
 %patch -p1 -P 1066
 %patch -p1 -P 1067
 %patch -p1 -P 1068
+%patch -p1 -P 1071
 fi
-
-%patch -p1 -R -P 1070
 
 ## ROLLUP_HACK
 rm -rf third_party/devtools-frontend/src/node_modules/rollup
@@ -675,6 +676,21 @@ sed -i -e "s@^NODE_VERSION=.*@NODE_VERSION=\"${node_version}\"@" third_party/nod
 # fix the gperf binary
 rm -f third_party/gperf/cipd/bin/gperf
 ln -sf /usr/bin/gperf third_party/gperf/cipd/bin/gperf
+
+# dawn wants a go binary
+%ifarch x86_64
+%define darch amd64
+%else
+%ifarch aarch64
+%define darch arm64
+%else
+%ifarch ppc64le
+%define darch ppc64
+%endif
+%endif
+%endif
+mkdir -p third_party/dawn/tools/golang/linux-%{darch}/bin/
+ln -sf /usr/bin/go third_party/dawn/tools/golang/linux-%{darch}/bin/go
 
 # python3
 mkdir -p $HOME/bin
@@ -801,6 +817,9 @@ keeplibs=(
     third_party/fast_float
     third_party/fdlibm
     third_party/federated_compute
+    third_party/federated_compute/third_party/googleapis
+    third_party/federated_compute/third_party/protodatastore-cpp
+    third_party/federated_compute/third_party/tensorflow-federated
     third_party/fft2d
     third_party/flatbuffers
     third_party/fp16
@@ -1302,8 +1321,6 @@ ln -s %{_bindir}/chromium-browser %{buildroot}%{_bindir}/chromium
 mkdir -p %{buildroot}%{_sysconfdir}/chromium/policies
 mkdir %{buildroot}%{_sysconfdir}/chromium/policies/managed
 mkdir %{buildroot}%{_sysconfdir}/chromium/policies/recommended
-# disable AI
-install -m 0644 %{SOURCE110} %{buildroot}%{_sysconfdir}/chromium/policies/managed
 mkdir -p %{buildroot}%{_datadir}/chromium/extensions
 mkdir -p %{buildroot}%{_sysconfdir}/chromium/native-messaging-hosts
 # SVG
@@ -1327,7 +1344,6 @@ ccache --show-stats
 %dir %{_sysconfdir}/chromium/policies/recommended
 %dir %{_sysconfdir}/chromium/native-messaging-hosts
 %config %{_sysconfdir}/chromium/master_preferences
-%config %{_sysconfdir}/chromium/policies/managed/disable-ai.json
 %config(noreplace)  %{_sysconfdir}/chromium/chromium.conf
 %{_libdir}/chromium
 %{_datadir}/applications/*.desktop

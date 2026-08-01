@@ -1,0 +1,38 @@
+Author: Andres Salomon <dilinger@debian.org>
+
+In file included from ../../base/i18n/icubridge/icu_bridge.cc:7:
+../../base/i18n/icubridge/date_time_formatter.h:142:19: error: use of non-static data member 'length' of 'DateTimeFormatterOptions' from nested type 'Builder'
+  142 |     static_assert(length != DateTimeFormatterOptions::ItemLength::kNone,
+      |                   ^~~~~~
+../../base/i18n/icubridge/date_time_formatter.h:151:22: error: use of non-static data member 'length' of 'DateTimeFormatterOptions' from nested type 'Builder'
+  151 |     options.length = length;
+      |                      ^~~~~~
+2 errors generated.
+
+Clang-19 really doesn't like this out-of-line definition of Builder where
+the inline declaration has a default value for length, but the definition
+does not. It seems to get confused. So, just define it inline.
+
+--- a/base/i18n/icubridge/date_time_formatter.h
++++ b/base/i18n/icubridge/date_time_formatter.h
+@@ -131,11 +131,7 @@ struct BASE_I18N_EXPORT DateTimeFormatte
+   // instead of using this class directly.
+   template <FormatIdentifier component_type_value,
+             ItemLength length = ItemLength::kNone>
+-  class BASE_I18N_EXPORT Builder;
+-};
+-template <DateTimeFormatterOptions::FormatIdentifier component_type_value,
+-          DateTimeFormatterOptions::ItemLength length>
+-class BASE_I18N_EXPORT DateTimeFormatterOptions::Builder {
++class BASE_I18N_EXPORT Builder {
+  public:
+   // Returns the constructed DateTimeFormatterOptions object.
+   DateTimeFormatterOptions Get() const {
+@@ -202,6 +198,7 @@ class BASE_I18N_EXPORT DateTimeFormatter
+   std::optional<base::HourClockType> hour_clock_type_;
+   std::optional<base::AmPmClockType> am_pm_clock_type_;
+ };
++};
+ 
+ // Namespace containing the primary entry points for date/time formatting.
+ //

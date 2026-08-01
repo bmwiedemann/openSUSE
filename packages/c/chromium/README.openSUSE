@@ -12,3 +12,20 @@ Stephan Hartmann - https://github.com/stha09/chromium-patches/releases
 Arch - https://github.com/archlinux/svntogit-packages/tree/packages/chromium/trunk
 Arch: https://gitlab.com/Matt.Jolly/chromium-patches/
 
+updating notes:
+===============
+regenerate ppc-fedora-0002-regenerate-xnn-buildgn.patch
+- prereq: have bazel8 installed
+- prereq: mkdir /google/bin/releases/bazel-infra/bazelisk
+- prereq: ln -sf /google/bin/releases/bazel-infra/bazelisk/gbazelisk /usr/bin/bazel8
+- have python > 3.11
+- unpack the tarball
+- cd chromium-151.0.7922.47/third_party/xnnpack
+- patch -p3 < ../../../../../../ppc-fedora-0001-add-xnn-ppc64el-support.patch
+- cp BUILD.gn BUILD.gn.orig
+- python3.13 generate_build_gn.py
+  (ends with some error that git does not know "git cl" which can be ignored)
+- diff -u BUILD.gn.orig BUILD.gn
+
+
+

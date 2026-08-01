@@ -291,7 +291,7 @@ Index: chromium-144.0.7559.59/sandbox/linux/seccomp-bpf-helpers/syscall_paramete
                   PTRACE_GETREGS, PTRACE_GETFPREGS, PTRACE_GET_THREAD_AREA,
                   PTRACE_GETREGSET,
  #endif
-@@ -529,13 +554,14 @@ SANDBOX_EXPORT bpf_dsl::ResultExpr Restr
+@@ -548,13 +548,14 @@
    size_t argIndex;
    switch (sysno) {
  #if defined(__arm__) || \
@@ -532,7 +532,7 @@ Index: chromium-144.0.7559.59/sandbox/linux/seccomp-bpf-helpers/syscall_sets.cc
      case __NR__llseek:
  #endif
  #if !defined(__aarch64__)
-@@ -604,18 +621,19 @@ bool SyscallSets::IsAllowedGeneralIo(int
+@@ -621,11 +621,12 @@
      case __NR_readv:
      case __NR_pread64:
  #if defined(__arm__) || \
@@ -547,6 +547,10 @@ Index: chromium-144.0.7559.59/sandbox/linux/seccomp-bpf-helpers/syscall_sets.cc
      case __NR_recvfrom:  // Could specify source.
      case __NR_recvmsg:   // Could specify source.
  #endif
+@@ -637,10 +638,10 @@
+     (defined(ARCH_CPU_MIPS_FAMILY) && defined(ARCH_CPU_32_BITS))
+     case __NR_recvmmsg_time64:  // Could specify source.
+ #endif
 -#if defined(__i386__) || defined(__x86_64__)
 +#if defined(__i386__) || defined(__x86_64__) || defined(__powerpc64__)
      case __NR_select:
@@ -556,8 +560,8 @@ Index: chromium-144.0.7559.59/sandbox/linux/seccomp-bpf-helpers/syscall_sets.cc
      case __NR__newselect:
  #endif
      case __NR_write:
-@@ -635,11 +653,12 @@ bool SyscallSets::IsAllowedGeneralIo(int
- #endif
+@@ -656,11 +656,12 @@
+     case __NR_vmsplice:
  // send* syscalls need their flags filtered.
  #if defined(__arm__) || \
 -    (defined(ARCH_CPU_MIPS_FAMILY) && defined(ARCH_CPU_32_BITS))
@@ -571,7 +575,7 @@ Index: chromium-144.0.7559.59/sandbox/linux/seccomp-bpf-helpers/syscall_sets.cc
      case __NR_sendmsg:  // Could specify destination.
      case __NR_sendto:   // Could specify destination.
  #endif
-@@ -652,11 +671,12 @@ bool SyscallSets::IsAllowedGeneralIo(int
+@@ -674,11 +674,12 @@
  bool SyscallSets::IsSockSendOneMsg(int sysno) {
    switch (sysno) {
  #if defined(__arm__) || \

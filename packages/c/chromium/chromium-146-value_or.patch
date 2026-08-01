@@ -51,14 +51,12 @@
  #endif  // BUILDFLAG(ENTERPRISE_CACHE_ENCRYPTION)
 --- chromium-149.0.7795.2/content/browser/service_worker/service_worker_version.cc	2026/04/27 15:20:37	1.1
 +++ chromium-149.0.7795.2/content/browser/service_worker/service_worker_version.cc	2026/04/29 16:32:07
-@@ -845,7 +845,9 @@
+@@ -857,7 +857,7 @@ bool ServiceWorkerVersion::FinishRequest
      }
    } else {
      // Equivalent to the previous, non-optional iterator behavior. Maybe unsafe.
 -    request_timeouts_.erase(request->timeout_iter.value_or({}));
-+    if (request->timeout_iter.has_value()) {
-+      request_timeouts_.erase(*request->timeout_iter);
-+    }
++    request_timeouts_.erase(request->timeout_iter.value_or(std::set<InflightRequestTimeoutInfo>::iterator{}));
    }
    inflight_requests_.Remove(request_id);
    // TODO(crbug.com/40864997): remove the following DCHECK when the cause

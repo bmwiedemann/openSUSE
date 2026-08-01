@@ -1,11 +1,18 @@
---- chromium-150.0.7838.0/build/toolchain/gcc_toolchain.gni	2026/05/16 16:15:10	1.1
-+++ chromium-150.0.7838.0/build/toolchain/gcc_toolchain.gni	2026/05/16 16:15:43
-@@ -401,8 +401,6 @@
+Index: chromium-151.0.7922.10/build/toolchain/gcc_toolchain.gni
+===================================================================
+--- chromium-151.0.7922.10.orig/build/toolchain/gcc_toolchain.gni
++++ chromium-151.0.7922.10/build/toolchain/gcc_toolchain.gni
+@@ -408,13 +408,6 @@ template("single_gcc_toolchain") {
          command = "cmd /s /c \"\"$python_path\" $tool_wrapper_path delete-file {{output}} && $command\""
        } else {
          command = "rm -f {{output}} && $command"
--        inputs =
--            [ get_path_info(rebase_path(ar, ".", root_out_dir), "abspath") ]
+-
+-        # Add ar to inputs if it's not from $PATH. Some toolchains leave
+-        # |ar| empty during toolchain setup, so guard get_path_info() here.
+-        if (ar != "" && get_path_info(ar, "file") != ar) {
+-          inputs =
+-              [ get_path_info(rebase_path(ar, ".", root_out_dir), "abspath") ]
+-        }
        }
  
        # Almost all targets build with //build/config/compiler:thin_archive which

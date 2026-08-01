@@ -1,0 +1,11 @@
+--- chromium-151.0.7886.2/third_party/dawn/tools/python/cipd_deps.py	2026/06/18 11:42:19	1.1
++++ chromium-151.0.7886.2/third_party/dawn/tools/python/cipd_deps.py	2026/06/18 11:45:14
+@@ -75,4 +75,8 @@
+     native_x86 = platform.machine().lower() in ('x86', 'x86_64', 'amd64')
+     if native_x86:
+         return 'amd64'
++
++    native_ppc64 = platform.machine().lower() in ('ppc64', 'ppc64le')
++    if native_ppc64:
++        return 'ppc64'
+     raise ValueError('Unable to determine architecture')

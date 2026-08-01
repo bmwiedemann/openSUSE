@@ -1,0 +1,20 @@
+../../third_party/abseil-cpp/absl/types/source_location.h:112:20: error: calling a private constructor of class 'absl::SourceLocation::PrivateTag'
+  112 |       PrivateTag = PrivateTag{}, std::uint_least32_t line = __builtin_LINE(),
+      |                    ^
+
+
+clang-19 seems to ignore the friend class declaration. That's okay, access
+control is for people using bleeding-edge compilers.
+
+
+--- a/third_party/abseil-cpp/absl/types/source_location.h
++++ b/third_party/abseil-cpp/absl/types/source_location.h
+@@ -74,7 +74,7 @@ ABSL_NAMESPACE_BEGIN
+ // explained above.
+ class SourceLocation {
+   struct PrivateTag {
+-   private:
++   public:
+     explicit PrivateTag() = default;
+     friend class SourceLocation;
+   };

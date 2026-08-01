@@ -84,10 +84,10 @@ Index: chromium-144.0.7559.59/third_party/skia/include/core/SkTypes.h
 +#endif
 +
  #endif
-Index: chromium-144.0.7559.59/third_party/skia/src/base/SkSpinlock.cpp
+Index: chromium-144.0.7559.59/third_party/skia/src/core/SkSpinlock.cpp
 ===================================================================
---- chromium-144.0.7559.59.orig/third_party/skia/src/base/SkSpinlock.cpp
-+++ chromium-144.0.7559.59/third_party/skia/src/base/SkSpinlock.cpp
+--- chromium-144.0.7559.59.orig/third_party/skia/src/core/SkSpinlock.cpp
++++ chromium-144.0.7559.59/third_party/skia/src/core/SkSpinlock.cpp
 @@ -33,7 +33,8 @@
  #endif
  
@@ -519,10 +519,10 @@ Index: chromium-144.0.7559.59/third_party/skia/src/opts/SkRasterPipeline_opts.h
      };
  
      r = lerpY(topR, bottomR);
-Index: chromium-144.0.7559.59/third_party/skia/src/base/SkVx.h
+Index: chromium-144.0.7559.59/third_party/skia/src/core/SkVx.h
 ===================================================================
---- chromium-144.0.7559.59.orig/third_party/skia/src/base/SkVx.h
-+++ chromium-144.0.7559.59/third_party/skia/src/base/SkVx.h
+--- chromium-144.0.7559.59.orig/third_party/skia/src/core/SkVx.h
++++ chromium-144.0.7559.59/third_party/skia/src/core/SkVx.h
 @@ -41,7 +41,12 @@
  #endif
  
@@ -607,7 +607,7 @@ Index: chromium-144.0.7559.59/third_party/skia/src/core/SkBitmapProcState_opts_s
 --- chromium-144.0.7559.59.orig/third_party/skia/src/core/SkBitmapProcState_opts_ssse3.cpp
 +++ chromium-144.0.7559.59/third_party/skia/src/core/SkBitmapProcState_opts_ssse3.cpp
 @@ -8,7 +8,7 @@
- #include "include/private/base/SkFeatures.h"
+ #include "include/private/SkFeatures.h"
  #include "src/core/SkOptsTargets.h"
  
 -#if defined(SK_CPU_X86) && !defined(SK_ENABLE_OPTIMIZE_SIZE)
@@ -615,10 +615,10 @@ Index: chromium-144.0.7559.59/third_party/skia/src/core/SkBitmapProcState_opts_s
  
  // The order of these includes is important:
  // 1) Select the target CPU architecture by defining SK_OPTS_TARGET and including SkOpts_SetTarget
-Index: chromium-144.0.7559.59/third_party/skia/include/private/base/SkFeatures.h
+Index: chromium-144.0.7559.59/third_party/skia/include/private/SkFeatures.h
 ===================================================================
---- chromium-144.0.7559.59.orig/third_party/skia/include/private/base/SkFeatures.h
-+++ chromium-144.0.7559.59/third_party/skia/include/private/base/SkFeatures.h
+--- chromium-144.0.7559.59.orig/third_party/skia/include/private/SkFeatures.h
++++ chromium-144.0.7559.59/third_party/skia/include/private/SkFeatures.h
 @@ -63,6 +63,8 @@
  
  #if defined(__i386) || defined(_M_IX86) ||  defined(__x86_64__) || defined(_M_X64)

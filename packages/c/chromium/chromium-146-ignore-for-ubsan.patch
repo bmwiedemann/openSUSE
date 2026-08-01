@@ -1,22 +1,24 @@
---- chromium-149.0.7795.2/build/config/compiler/BUILD.gn	2026/04/21 14:39:00	1.1
-+++ chromium-149.0.7795.2/build/config/compiler/BUILD.gn	2026/04/21 14:41:08
-@@ -598,12 +598,6 @@
+--- chromium-151.0.7886.2/build/config/compiler/BUILD.gn	2026/06/16 13:32:36	1.1
++++ chromium-151.0.7886.2/build/config/compiler/BUILD.gn	2026/06/16 13:33:17
+@@ -576,14 +576,6 @@
    if (is_clang) {
      # Flags for diagnostics.
      cflags += [ "-fcolor-diagnostics" ]
--    if (!is_win) {
--      cflags += [ "-fdiagnostics-show-inlining-chain" ]
--    } else {
--      # Combine after https://github.com/llvm/llvm-project/pull/192241
--      cflags += [ "/clang:-fdiagnostics-show-inlining-chain" ]
+-    if (!is_wasm) {
+-      if (!is_win) {
+-        cflags += [ "-fdiagnostics-show-inlining-chain" ]
+-      } else {
+-        # Combine after https://github.com/llvm/llvm-project/pull/192241
+-        cflags += [ "/clang:-fdiagnostics-show-inlining-chain" ]
+-      }
 -    }
      if (diagnostics_print_source_range_info && !is_win) {
        cflags += [ "-fdiagnostics-print-source-range-info" ]
      }
-@@ -1728,12 +1722,6 @@
+@@ -1579,12 +1571,6 @@
  ubsan_hardening("c_array_bounds") {
    sanitizer = "array-bounds"
-   condition = !(is_asan && target_cpu == "x86")
+   condition = !(is_asan && target_cpu == "x86") && !is_wasm
 -
 -  # Because we've enabled array-bounds sanitizing we also want to suppress
 -  # the related warning about "unsafe-buffer-usage-in-static-sized-array",
@@ -26,8 +28,8 @@
  }
  
  # Enable UBSan subset to ensure we always hit `return` statement in non-void
---- chromium-149.0.7795.2/build/config/sanitizers/sanitizers.gni	2026/04/21 14:40:02	1.1
-+++ chromium-149.0.7795.2/build/config/sanitizers/sanitizers.gni	2026/04/21 14:40:49
+--- chromium-151.0.7886.2/build/config/sanitizers/sanitizers.gni	2026/06/16 13:33:26	1.1
++++ chromium-151.0.7886.2/build/config/sanitizers/sanitizers.gni	2026/06/16 13:33:54
 @@ -540,7 +540,6 @@
          # be usable even in release builds, i.e. as widely as possible.
          # It's important not to have full-on UBSan workarounds activate
