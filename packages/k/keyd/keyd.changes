@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 31 09:06:23 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
+
+- make /etc/keyd part of the package otherwise keyd fails:
+  opendir: No such file or directory (thanks Thomas Renninger)
+- put keyd-application-mapper into its own sub-package and added
+  its missing Python dependencies
+
+-------------------------------------------------------------------
 Sat Dec 20 11:35:38 UTC 2025 - Michael Pujos <pujos.michael@gmail.com>
 
 - Update to v2.5.0:

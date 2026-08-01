@@ -42,4 +42,16 @@ pointer being treated as a tablet, resulting in mouse pointer not working
 </comment>
     <requestid>1323776</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>da54e390b9f35f34be550f782bd1daa7</srcmd5>
+    <version>2.6.0</version>
+    <time>1785602028</time>
+    <user>dimstar_suse</user>
+    <comment>- make /etc/keyd part of the package otherwise keyd fails:
+  opendir: No such file or directory (thanks Thomas Renninger)
+- put keyd-application-mapper into its own sub-package and added
+  its missing Python dependencies
+</comment>
+    <requestid>1368813</requestid>
+  </revision>
 </revisionlist>

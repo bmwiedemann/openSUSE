@@ -1,7 +1,7 @@
 #
 # spec file for package keyd
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,6 @@ License:        MIT
 URL:            https://github.com/rvaiya/keyd
 Source:         %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-v%{version}.tar.gz
 BuildRequires:  gcc
-Requires:       python3-xlib
 Requires(postun): sed
 Requires(postun): shadow
 Requires(pre):  shadow
@@ -53,10 +52,9 @@ make test-io
 
 %files
 %license LICENSE
+%dir %{_sysconfdir}/keyd
 %{_bindir}/%{name}
-%{_bindir}/keyd-application-mapper
 %{_mandir}/man1/%{name}.1%{?ext_man}
-%{_mandir}/man1/keyd-application-mapper.1%{?ext_man}
 %{_datadir}/%{name}
 %{_unitdir}/%{name}.service
 %{_sysusersdir}/%{name}.conf
@@ -89,5 +87,19 @@ if [ $1 -eq 0 ]; then
     # performed only on uninstall
     getent group keyd >/dev/null 2>&1 && groupdel keyd
 fi
+
+%package application-mapper
+Summary:        Application mapper for keyd
+Requires:       keyd = %{version}
+Requires:       python3-dbus-python
+Requires:       python3-gobject
+Requires:       python3-xlib
+
+%description application-mapper
+Application mapper for keyd
+
+%files application-mapper
+%{_bindir}/keyd-application-mapper
+%{_mandir}/man1/keyd-application-mapper.1%{?ext_man}
 
 %changelog
