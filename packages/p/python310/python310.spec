@@ -117,7 +117,6 @@ Source0:        https://www.python.org/ftp/python/%{folderversion}/%{tarname}.ta
 Source1:        https://www.python.org/ftp/python/%{folderversion}/%{tarname}.tar.xz.sigstore
 Source2:        baselibs.conf
 Source3:        README.SUSE
-Source7:        macros.python3
 Source8:        import_failed.py
 Source9:        import_failed.map
 Source10:       pre_checkin.sh
@@ -245,9 +244,42 @@ Patch50:        CVE-2026-1502-reject-CRLF-HTTP-tunnel.patch
 # PATCH-FIX-UPSTREAM CVE-2026-6019-Morsel-js_output.patch bsc#1262654 mcepl@suse.com
 # Base64-encode cookie values embedded in JS
 Patch51:        CVE-2026-6019-Morsel-js_output.patch
+# PATCH-FIX-UPSTREAM CVE-2026-11940-tarfile-escape.patch bsc#1268977 mcepl@suse.com
+# Fix symlink escape via tarfile hardlink-extraction fallback
+Patch52:        CVE-2026-11940-tarfile-escape.patch
+# PATCH-FIX-UPSTREAM CVE-2026-8328-ftplib-no-trust-PASV-resp.patch bsc#1265268 mcepl@suse.com
+# Make ftplib not trust the PASV response
+Patch53:        CVE-2026-8328-ftplib-no-trust-PASV-resp.patch
+# PATCH-FIX-UPSTREAM CVE-2026-7210-pyexpat-entropy-hash-flooding.patch bsc#1264962 mcepl@suse.com
+# Use XML_SetHashSalt16Bytes in pyexpat/_elementtree when possible
+Patch54:        CVE-2026-7210-pyexpat-entropy-hash-flooding.patch
+# PATCH-FIX-OPENSUSE test_UDPLITE_support.patch bsc#1268375 mcepl@suse.com
+# improve testing of the presence of IPPROTO_UDPLITE support
+Patch55:        test_UDPLITE_support.patch
+# PATCH-FIX-UPSTREAM Based on gh#python/cpython#142057 Support fixes required for Sphinx 9
+Patch56:        support-sphinx-9.patch
+# PATCH-FIX-UPSTREAM CVE-2026-15308-HTMLParser-CPU-exhaust.patch bsc#1271192 mcepl@suse.com
+# Fix quadratic complexity in incremental parsing in HTMLParser
+Patch57:        CVE-2026-15308-HTMLParser-CPU-exhaust.patch
+# PATCH-FIX-UPSTREAM CVE-2026-4360-filter_function-TarFile-extractone.patch bsc#1269959 mcepl@suse.com
+# Pass filter_function to TarFile._extract_one() during .extract()
+Patch58:        CVE-2026-4360-filter_function-TarFile-extractone.patch
+# PATCH-FIX-UPSTREAM CVE-2026-11972-tarfile-Stream-seek-EOF.patch bsc#1269788 mcepl@suse.com
+# Make tarfile._Stream.seek break at EOF
+Patch59:        CVE-2026-11972-tarfile-Stream-seek-EOF.patch
+# PATCH-FIX-UPSTREAM CVE-2026-0864-normalize-LFTAB-configparser.patch bsc#1269066 mcepl@suse.com
+# Normalize all line endings (CR, CRLF, and LF) in configparser
+Patch60:        CVE-2026-0864-normalize-LFTAB-configparser.patch
+# PATCH-FIX-UPSTREAM CVE-2026-7774-tarfile-data_filter-symlink.patch bsc#1267821 mcepl@suse.com
+# tarfile.data_filter: validate written link target
+Patch61:        CVE-2026-7774-tarfile-data_filter-symlink.patch
+# PATCH-FIX-UPSTREAM CVE-2026-3276-On2-unicodedata-normalize.patch bsc#1267581 mcepl@suse.com
+# gh-149079: Fix O(n^2) canonical ordering in unicodedata.normalize()
+Patch62:        CVE-2026-3276-On2-unicodedata-normalize.patch
 ### END OF PATCHES                                                              
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
+BuildRequires:  crypto-policies-scripts
 BuildRequires:  fdupes
 BuildRequires:  gmp-devel
 BuildRequires:  lzma-devel
@@ -262,7 +294,6 @@ BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(zlib)
 #!BuildIgnore:  gdk-pixbuf-loader-rsvg
 %if 0%{?suse_version} >= 1550 && %{without base}
-# The provider for python(abi) is in rpm-build-python
 # Skip for the base flavor: rpm-build-python requires python3-base, which
 # creates an unresolvable dependency loop when building python3xx-base itself.
 BuildRequires:  rpm-build-python
@@ -784,12 +815,6 @@ sed -i "1s@#\!.*python[^ ]*@#\!%{_bindir}/python%{python_version}@" \
 # Remove -IVendor/ from python-config boo#1231795
 sed -i 's/-IVendor\///' %{buildroot}%{_bindir}/python%{python_abi}-config
 
-# RPM macros
-%if %{primary_interpreter}
-mkdir -p %{buildroot}%{_rpmconfigdir}/macros.d/
-install -m 644 %{SOURCE7} %{buildroot}%{_rpmconfigdir}/macros.d/ # macros.python3
-%endif
-
 # import_failed hooks
 FAILDIR=%{buildroot}/%{sitedir}/_import_failed
 mkdir $FAILDIR
@@ -930,10 +955,6 @@ fi
 %{_mandir}/man1/python%{python_version}.1%{?ext_man}
 # license text, not a doc because the code can use it at run-time
 %{sitedir}/LICENSE.txt
-# RPM macros
-%if %{primary_interpreter}
-%{_rpmconfigdir}/macros.d/macros.python3
-%endif
 # binary parts
 %dir %{sitedir}/lib-dynload
 %{dynlib array}

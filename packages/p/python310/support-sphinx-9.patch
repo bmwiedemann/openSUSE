@@ -1,0 +1,55 @@
+From e7eedd63aa09cd59f13c017084a91ad3591b0e16 Mon Sep 17 00:00:00 2001
+From: Adam Turner <9087854+aa-turner@users.noreply.github.com>
+Date: Sat, 29 Nov 2025 00:49:46 +0000
+Subject: [PATCH] Prepare for Sphinx 9
+
+---
+ Doc/howto/urllib2.rst                   |    2 +-
+ Doc/library/socket.rst                  |    7 ++-----
+ Doc/tools/extensions/glossary_search.py |    2 +-
+ 3 files changed, 4 insertions(+), 7 deletions(-)
+
+Index: Python-3.10.20/Doc/howto/urllib2.rst
+===================================================================
+--- Python-3.10.20.orig/Doc/howto/urllib2.rst	2026-03-03 01:49:35.000000000 +0100
++++ Python-3.10.20/Doc/howto/urllib2.rst	2026-07-27 22:39:02.469360986 +0200
+@@ -22,7 +22,7 @@
+     You may also find useful the following article on fetching web resources
+     with Python:
+ 
+-    * `Basic Authentication <https://web.archive.org/web/20201215133350/http://www.voidspace.org.uk/python/articles/authentication.shtml>`_
++    * `Basic Authentication <https://web.archive.org/web/20201215133350/http://www.voidspace.org.uk/python/articles/authentication.shtml>`__
+ 
+         A tutorial on *Basic Authentication*, with examples in Python.
+ 
+Index: Python-3.10.20/Doc/library/socket.rst
+===================================================================
+--- Python-3.10.20.orig/Doc/library/socket.rst	2026-07-27 22:38:58.293999697 +0200
++++ Python-3.10.20/Doc/library/socket.rst	2026-07-27 22:39:02.470643429 +0200
+@@ -1729,11 +1729,8 @@
+       :attr:`socket.type`.
+ 
+ 
+-.. method:: socket.setsockopt(level, optname, value: int)
+-.. method:: socket.setsockopt(level, optname, value: buffer)
+-   :noindex:
+-.. method:: socket.setsockopt(level, optname, None, optlen: int)
+-   :noindex:
++.. method:: socket.setsockopt(level, optname, value: int | Buffer)
++            socket.setsockopt(level, optname, None, optlen: int)
+ 
+    .. index:: pair: module; struct
+ 
+Index: Python-3.10.20/Doc/tools/extensions/glossary_search.py
+===================================================================
+--- Python-3.10.20.orig/Doc/tools/extensions/glossary_search.py	2026-03-03 01:49:35.000000000 +0100
++++ Python-3.10.20/Doc/tools/extensions/glossary_search.py	2026-07-27 22:39:48.150081477 +0200
+@@ -33,7 +33,7 @@
+             rendered = app.builder.render_partial(definition)
+             terms[term] = {
+                 'title': glossary_item[0].astext(),
+-                'body': rendered['html_body']
++                'body': rendered['fragment']
+             }
+ 
+     if hasattr(app.env, 'glossary_terms'):
