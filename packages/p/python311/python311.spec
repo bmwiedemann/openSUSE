@@ -232,6 +232,35 @@ Patch46:        CVE-2026-1502-reject-CRLF-HTTP-tunnel.patch
 # PATCH-FIX-UPSTREAM CVE-2026-6019-Morsel-js_output.patch bsc#1262654 mcepl@suse.com
 # Base64-encode cookie values embedded in JS
 Patch47:        CVE-2026-6019-Morsel-js_output.patch
+# PATCH-FIX-UPSTREAM CVE-2026-11940-tarfile-escape.patch bsc#1268977 mcepl@suse.com
+# Fix symlink escape via tarfile hardlink-extraction fallback
+Patch48:        CVE-2026-11940-tarfile-escape.patch
+# PATCH-FIX-UPSTREAM CVE-2026-8328-ftplib-no-trust-PASV-resp.patch bsc#1265268 mcepl@suse.com
+# Make ftplib not trust the PASV response
+Patch49:        CVE-2026-8328-ftplib-no-trust-PASV-resp.patch
+# PATCH-FIX-UPSTREAM CVE-2026-7210-pyexpat-entropy-hash-flooding.patch bsc#1264962 mcepl@suse.com
+# Use XML_SetHashSalt16Bytes in pyexpat/_elementtree when possible
+Patch50:        CVE-2026-7210-pyexpat-entropy-hash-flooding.patch
+# PATCH-FIX-UPSTREAM Based on gh#python/cpython#142057 Support fixes required for Sphinx 9
+Patch51:        support-sphinx-9.patch
+# PATCH-FIX-UPSTREAM CVE-2026-15308-HTMLParser-CPU-exhaust.patch bsc#1271192 mcepl@suse.com
+# Fix quadratic complexity in incremental parsing in HTMLParser
+Patch52:        CVE-2026-15308-HTMLParser-CPU-exhaust.patch
+# PATCH-FIX-UPSTREAM CVE-2026-4360-filter_function-TarFile-extractone.patch bsc#1269959 mcepl@suse.com
+# Pass filter_function to TarFile._extract_one() during .extract()
+Patch53:        CVE-2026-4360-filter_function-TarFile-extractone.patch
+# PATCH-FIX-UPSTREAM CVE-2026-11972-tarfile-Stream-seek-EOF.patch bsc#1269788 mcepl@suse.com
+# Make tarfile._Stream.seek break at EOF
+Patch54:        CVE-2026-11972-tarfile-Stream-seek-EOF.patch
+# PATCH-FIX-UPSTREAM CVE-2026-0864-normalize-LFTAB-configparser.patch bsc#1269066 mcepl@suse.com
+# Normalize all line endings (CR, CRLF, and LF) in configparser
+Patch55:        CVE-2026-0864-normalize-LFTAB-configparser.patch
+# PATCH-FIX-UPSTREAM CVE-2026-7774-tarfile-data_filter-symlink.patch bsc#1267821 mcepl@suse.com
+# tarfile.data_filter: validate written link target
+Patch56:        CVE-2026-7774-tarfile-data_filter-symlink.patch
+# PATCH-FIX-UPSTREAM CVE-2026-3276-On2-unicodedata-normalize.patch bsc#1267581 mcepl@suse.com
+# gh-149079: Fix O(n^2) canonical ordering in unicodedata.normalize()
+Patch57:        CVE-2026-3276-On2-unicodedata-normalize.patch
 ### END OF PATCHES
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
@@ -435,9 +464,13 @@ other applications.
 
 %autopatch -p1 -M 08
 %if 0%{?suse_version} <= 1500
-%patch -P 09 -p1
+%patch -p1 -P 09
 %endif
-%autopatch -p1 -m 10
+%autopatch -p1 -m 10 -M 50
+%if ! 0%{?sle_version} || 0%{?sle_version} >= 160000
+%patch -p1 -P 51 
+%endif
+%autopatch -p1 -m 52
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac

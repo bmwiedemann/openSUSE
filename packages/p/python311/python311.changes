@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Fri Jul 31 13:55:17 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- CVE-2026-3276: Fix O(n^2) canonical ordering in
+  unicodedata.normalize() (bsc#1267581, gh#python/cpython#149079)
+CVE-2026-3276-On2-unicodedata-normalize.patch
+
+-------------------------------------------------------------------
+Fri Jul 31 13:42:27 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- CVE-2026-7774: tarfile.data_filter: validate written link
+  target (bsc#1267821, gh#149486)
+  CVE-2026-7774-tarfile-data_filter-symlink.patch
+
+-------------------------------------------------------------------
+Fri Jul 31 13:35:09 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- CVE-2026-0864: Normalize all line endings (CR, CRLF, and LF) in
+  configparser (bsc#1269066, gh#python/cpython#143927)
+  CVE-2026-0864-normalize-LFTAB-configparser.patch
+
+-------------------------------------------------------------------
+Fri Jul 31 13:22:45 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- CVE-2026-11972: Make tarfile._Stream.seek break at EOF
+  (bsc#1269788, gh#python/cpython#151981)
+  CVE-2026-11972-tarfile-Stream-seek-EOF.patch
+
+-------------------------------------------------------------------
+Fri Jul 31 13:07:50 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- CVE-2026-4360: Pass filter_function to TarFile._extract_one()
+  during .extract() (bsc#1269959, gh#python/cpython#151987)
+  CVE-2026-4360-filter_function-TarFile-extractone.patch
+
+-------------------------------------------------------------------
+Fri Jul 31 12:54:51 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- CVE-2026-15308: Fix quadratic complexity in incremental parsing
+  in HTMLParser (bsc#1271192, gh#python/cpython#153030)
+  CVE-2026-15308-HTMLParser-CPU-exhaust.patch
+
+-------------------------------------------------------------------
+Thu Jul 23 04:58:44 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-sphinx-9.patch:
+  * Support changes required for Sphinx 9.
+
+-------------------------------------------------------------------
+Sat Jul  4 10:25:43 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- CVE-2026-7210: Use XML_SetHashSalt16Bytes in
+  pyexpat/_elementtree when possible (bsc#1264962,
+  gh#python/cpython#149018).
+  CVE-2026-7210-pyexpat-entropy-hash-flooding.patch
+
+-------------------------------------------------------------------
+Thu Jul  2 22:49:04 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- CVE-2026-8328: Make ftplib not trust the PASV response
+  (bsc#1265268)
+  CVE-2026-8328-ftplib-no-trust-PASV-resp.patch
+
+-------------------------------------------------------------------
+Wed Jul  1 23:10:26 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- CVE-2026-11940: fix the symlink escape via tarfile
+  hardlink-extraction fallback (bsc#1268977)
+  CVE-2026-11940-tarfile-escape.patch
+
+-------------------------------------------------------------------
 Mon Jun 29 06:37:10 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
 
 - Add test_UDPLITE_support.patch which improves testing for the
