@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Fri Jul 31 06:01:46 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.15.0:
+  * Update Rancher refs to v2.15.0 (#638)
+  * chore(deps): update docker/login-action action to v4 (#621)
+  * chore(deps): update actions/checkout action to v7 (#619)
+  * chore(deps): update docker/build-push-action action to v7
+    (#620)
+  * chore(deps): update google-github-actions/upload-cloud-storage
+    action to v3 (#623)
+  * chore(deps): update google-github-actions/auth action to v3
+    (#622)
+  * chore(deps): update docker/login-action digest to c94ce9f
+    (#615)
+  * chore(deps): update actions/setup-go digest to 40f1582 (#614)
+  * chore(deps): update rancher/renovate-config digest to a2fdde8
+    (#616)
+  * chore(deps): update fossas/fossa-action action to v1.9.0 (#618)
+  * chore(deps): update golangci/golangci-lint-action action to
+    v9.2.1 (#617)
+  * [main] Dependency bumps for main HEAD (v2.15.0) (#612)
+  * Remove RKE1 related code (#613)
+  * Add tests covering hide-local-auth-provider feature flag is on
+    (#607)
+  * Migrate from urfave/cli v1 to v3 (#592)
+  * [main] Dependency bumps for main HEAD (#589)
+  * Fix build script and harden GitHub Actions workflows (#580)
+  * chore: Fix typos and inconsistencies in wording (#570)
+  * Pin GH Actions to commit sha (#572)
+  * Bump dependencies (#564)
+
+-------------------------------------------------------------------
+Fri Jul 31 05:54:35 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.14.4:
+  * [v2.14] Prerelease dependency bumps for v2.14.4 by
+    @pmatseykanets in #639
+  * Bump Rancher version to v2.14.4 by @tashima42 in #641
+
+-------------------------------------------------------------------
+Fri Jul 31 05:52:24 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.14.3:
+  * Prerelease dependency bumps for v2.14.3 (#608)
+  * Bump Rancher version to v2.14.3 (#624)
+
+-------------------------------------------------------------------
 Fri May 29 10:58:10 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.14.2:

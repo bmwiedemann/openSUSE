@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/rancher/cli</param>
-              <param name="changesrevision">431c4310799598e078bb2bb2e45ed50109f532c9</param></service></servicedata>
+              <param name="changesrevision">431c4310799598e078bb2bb2e45ed50109f532c9</param></service><service name="tar_scm">
+                <param name="url">https://github.com/rancher/cli.git</param>
+              <param name="changesrevision">40e7fd344b8e17d831a57981a9de516ae52aad3b</param></service></servicedata>
