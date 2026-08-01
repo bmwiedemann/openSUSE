@@ -1,4 +1,128 @@
 -------------------------------------------------------------------
+Mon Jul 27 20:02:32 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.24.0 (
+    bsc#1272609, CVE-2026-41608,
+    bsc#1272654, CVE-2026-58023,
+    bsc#1272655, CVE-2026-55970,
+    bsc#1272656, CVE-2026-49158,
+    bsc#1272657, CVE-2026-48586,
+    bsc#1272658, CVE-2026-48145,
+    bsc#1272652, CVE-2026-58389,
+    bsc#1272653, CVE-2026-55971,
+    bsc#1272645, CVE-2026-48144,
+    bsc#1272647, CVE-2026-45112,
+    bsc#1272648, CVE-2026-43871,
+    bsc#1272649, CVE-2026-55969,
+    bsc#1272650, CVE-2026-55968,
+    bsc#1272651, CVE-2026-58662,
+    bsc#1272609, CVE-2026-41608):
+  * THRIFT-5930 - thrift_server_socket() copies Unix socket paths
+    into sockaddr_un.sun_path without bounds checking
+  * #3585 - limit recursion depth in c_glib thrift_protocol_skip
+  * #3507 - Add peer hostname validation to c_glib TLS client
+  * #3393 - Fix parent class resolution in c_glib generated
+    dispatch_call
+  * THRIFT-3165 - Disable unsafe TLSv1.0 and TLSv1.1 by default
+  * THRIFT-6021 - When C++ client with HTTP transport calls a
+    oneway RPC method, it must not expect a response
+  * THRIFT-6060 - C++ THttpClient does not reopen socket after
+    server sends Connection: close
+  * THRIFT-6073 - Allow injecting external SSL_CTX into C++
+    SSLContext
+  * #3597 - link UnitTests against libthriftz to resolve
+    THeaderTransport vtable
+  * #3597 - fix off-by-ten header bounds check in
+    readHeaderFormat
+  * #3569 - Add the cpp.ref (&) annotation to the recursive
+    exception in Recursive.thrift
+  * #3519 - Preserve private_optional field order
+  * #3498 - change sprintf to snprintf to eliminate security
+    warnings on OSX
+  * #3506 - Enforce RFC 6125 wildcard placement in TSSLSocket
+    hostname matching
+  * #3508 - Replace memory-safety asserts with unconditional
+    throws in TBufferTransports
+  * #3431 - Remove another boost header from the public API
+  * #3529 - nodejs+compiler: Add opt-in BigInt support for int64
+    via js:bigint flag
+  * #3461 - Migration *.sln to *.slnx (except c++ libs)
+  * #2957 - Fix PHP cross-test server IPv4 binding
+  * #3372 - Fix JavaScript exception construction implementation
+    (ES6)
+  * #3520 - added thrift-threat-model.md, SECURITY.md and
+    security section to AGENTS.md
+  * THRIFT-6030 - Harden Erlang protocol negative sizes
+  * #3410 - Add byte-count limit to TCompactProtocol varint
+    reader
+  * THRIFT-5214 - go: Implement connection check in TSocket
+  * THRIFT-5969 - Introduce gofmt for Go library
+  * THRIFT-5996 - go: connection check should work for TLS
+    sockets
+  * THRIFT-6011 - Make compiled Go code formatting compatible
+    with gofmt
+  * THRIFT-6012 - Fix inverted regexp.MatchString arguments and
+    precompile patterns in Go validator
+  * THRIFT-6044 - Limit struct read/write recursion depth in Go
+    library
+  * THRIFT-6071 - Validate container size fits int32 range before
+    narrowing conversion in TSimpleJSONProtocol
+  * #3604 - Bound the container element count before the 64-bit
+    size precheck in the Go JSON protocol
+  * #3604 - widen container size precheck to 64-bit in go
+    protocols
+  * #3599 - check wire-supplied size in simple json ReadMapBegin
+  * #3497 - Bump golang.org/x/sys to
+    0.0.0-20220412211240-33da011f77ad
+  * #3458 - Prevent concurrent calls to socketConn.Close() in Go
+  * #3428 - Fix range check on 32-bit architectures
+  * #3379 - Replace addr with factory in TServerSocket
+  * #3410 - Add byte-count limit to TCompactProtocol varint
+    reader
+  * #3381 - added int range checks
+  * #3618 - Bump jvm from 2.3.21 to 2.4.0 in /lib/kotlin
+  * #3619 - Bump com.diffplug.spotless from 8.5.1 to 8.7.0 in
+    /lib/kotlin
+  * #3605 - enforce stringLengthLimit in
+    TCompactProtocol.readBinary
+  * #3574 - Bump com.diffplug.spotless from 8.4.0 to 8.5.1 in
+    /lib/kotlin
+  * #3572 - Bump org.jetbrains.kotlinx:kotlinx-coroutines-jdk8 in
+    /lib/kotlin
+  * #3452 - Add message byte tracking to consumeBuffer() in Java
+    transports
+  * #3434 - Bump jvm from 2.3.20 to 2.3.21 in /lib/kotlin
+  * #3420 - Fix Java Spotless formatting
+  * #3415 - Connect skip() to TConfiguration recursion limit
+  * #3412 - Use bounded default for maxSkipDepth in TProtocolUtil
+  * #3410 - Add byte-count limit to TCompactProtocol varint
+    reader
+  * #3396 - Enable TLS hostname verification in
+    TNonblockingSSLSocket
+  * #3390 - Enable TLS hostname verification in
+    TSSLTransportFactory
+  * THRIFT-5915 - Python 3.12+ is not supported due to distutils
+  * THRIFT-5923 - UUID support for Python
+  * THRIFT-6024 - Python THeaderTransport and TZlibTransport
+    default max frame/decompressed size should be
+    DEFAULT_MAX_FRAME_SIZE (16384000), not HARD_MAX_FRAME_SIZE
+    (0x3FFFFFFF)
+  * THRIFT-6043 - Harden Python binary protocol negative sizes
+  * THRIFT-6067 - Python: pip install fails on setuptools < 69
+    due to sys.exit() in setup.py (PEP 517 build backend)
+  * THRIFT-6069 - suggestion for a few python perf improvements
+  * THRIFT-6070 - Publish Python wheel distributions to PyPI
+  * #3410 - Add byte-count limit to TCompactProtocol varint
+    reader
+  * #3413 - Use sslcompat hostname matcher in TSSLSocket
+  * #3411 - Add default recursion depth limit to TProtocol.skip()
+  * #3408 - Add decompressed payload size limit to Python
+    THeaderTransport
+  * #3377 - Optimize Python C extension readStruct for nested
+    structs
+  * #2957 - Fix PHP cross-test server IPv4 binding
+
+-------------------------------------------------------------------
 Thu Apr 30 06:50:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.23.0 (bsc#1263557, CVE-2026-41602,
