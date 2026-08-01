@@ -3412,4 +3412,12 @@ Think &quot;osc service runall download_files&quot; are buggy!
     <comment></comment>
     <requestid>1363721</requestid>
   </revision>
+  <revision rev="358" vrev="1">
+    <srcmd5>728a91a6c89c0ed5a7d12137b9ae2138</srcmd5>
+    <version>9.12.0</version>
+    <time>1785602014</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1368821</requestid>
+  </revision>
 </revisionlist>

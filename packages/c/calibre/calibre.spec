@@ -30,7 +30,7 @@
 %{?sle15_python_module_pythons}
 
 Name:           calibre
-Version:        9.11.0
+Version:        9.12.0
 Release:        0
 Summary:        EBook Management Application
 License:        GPL-3.0-only
@@ -88,25 +88,27 @@ BuildRequires:  update-desktop-files
 BuildRequires:  chmlib-devel >= 0.40
 #BuildRequires:  dbus-1-python3 >= 1.2.0
 BuildRequires:  chmlib-devel >= 0.40
+# upstream use: freetype2-devel >= 2.14.1
 BuildRequires:  freetype2-devel >= 2.13.2
 BuildRequires:  graphite2-devel >= 1.3.14
 BuildRequires:  hyphen-devel >= 2.8.8
-#upstream use:  iconv >= 1.17
+#upstream use:  iconv >= 1.18
 BuildRequires:  liberation-fonts
-BuildRequires:  libmtp-devel >= 1.1.21
-# Upstream use libopenssl-devel >= 3.1.7
-BuildRequires:  libopenssl-3-devel >= 3.1.4
-BuildRequires:  libpoppler-devel >= 23.08.0
-BuildRequires:  libstemmer-devel >= 2.2.0
+BuildRequires:  libmtp-devel >= 1.1.22
+# upstream use: libopenssl-3-devel >= 3.5.7
+BuildRequires:  libopenssl-3-devel >= 3.5.3
+BuildRequires:  libpoppler-devel >= 25.11.0
+BuildRequires:  libstemmer-devel >= 3.0.1
 BuildRequires:  libwmf-devel >= 0.2.8
 %if 0%{suse_version} == 1600
-BuildRequires:  (libpodofo-devel >= 0.10.3 and libpodofo-devel < 1.0.0)
+BuildRequires:  (libpodofo-devel >= 0.10.5 and libpodofo-devel < 1.0.0)
 %else
-BuildRequires:  (libpodofo-0_10-devel >= 0.10.3 and libpodofo-0_10-devel < 1.0.0)
+BuildRequires:  (libpodofo-0_10-devel >= 0.10.5 and libpodofo-0_10-devel < 1.0.0)
 %endif
-# upstream use: mozjpeg >= 4.1.4
-BuildRequires:  optipng >= 0.7.7
-BuildRequires:  poppler-tools >= 23.08.0
+# upstream use: mozjpeg >= 4.1.5
+BuildRequires:  nodejs >= 22
+BuildRequires:  optipng >= 0.9.1
+BuildRequires:  poppler-tools >= 25.11.0
 BuildRequires:  python-rpm-macros
 BuildRequires:  qt6-core-private-devel >= %{my_qtversion}
 BuildRequires:  qt6-declarative-devel >= %{my_qtversion}
@@ -114,10 +116,12 @@ BuildRequires:  qt6-gui-private-devel >= %{my_qtversion}
 BuildRequires:  qt6-imageformats-devel >= %{my_qtversion}
 BuildRequires:  qt6-platformsupport-private-devel >= %{my_qtversion}
 BuildRequires:  qt6-wayland-devel >= %{my_qtversion}
+BuildRequires:  pkgconfig(ffnvcodec) >= 11.1
 #BuildRequires:  python311-dbus-python
 BuildRequires:  xdg-utils >= 1.0.2
 BuildRequires:  pkgconfig(Qt6Core) >= %{my_qtversion}
 BuildRequires:  pkgconfig(Qt6Gui) >= %{my_qtversion}
+BuildRequires:  pkgconfig(Qt6Multimedia) >= %{my_qtversion}
 BuildRequires:  pkgconfig(Qt6Network) >= %{my_qtversion}
 BuildRequires:  pkgconfig(Qt6Positioning) >= %{my_qtversion}
 BuildRequires:  pkgconfig(Qt6Sensors) >= %{my_qtversion}
@@ -127,15 +131,15 @@ BuildRequires:  pkgconfig(Qt6WebChannel) >= %{my_qtversion}
 BuildRequires:  pkgconfig(Qt6WebEngineCore) >= %{my_qtversion}
 BuildRequires:  pkgconfig(Qt6WebEngineWidgets) >= %{my_qtversion}
 BuildRequires:  pkgconfig(Qt6Widgets) >= %{my_qtversion}
-BuildRequires:  pkgconfig(dbus-glib-1) >= 0.112
+BuildRequires:  pkgconfig(dbus-glib-1) >= 0.114
 BuildRequires:  pkgconfig(espeak-ng)
-BuildRequires:  pkgconfig(fontconfig) >= 2.14.2
-BuildRequires:  pkgconfig(glib-2.0) >= 2.78.0
-BuildRequires:  pkgconfig(gpg-error) >= 1.47
+BuildRequires:  pkgconfig(fontconfig) >= 2.17.1
+BuildRequires:  pkgconfig(glib-2.0) >= 2.88.1
+# upstream use: pkgconfig(gpg-error) >= 1.56
+BuildRequires:  pkgconfig(gpg-error) >= 1.51
 BuildRequires:  pkgconfig(hunspell) >= 1.7.2
-###BuildRequires:  pkgconfig(icu-i18n) < 76.0
-BuildRequires:  pkgconfig(icu-i18n) >= 73.2
-# Upstream use 7.1
+BuildRequires:  pkgconfig(icu-i18n) >= 78.1
+# upstream use 7.1
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavdevice)
 BuildRequires:  pkgconfig(libavfilter)
@@ -143,21 +147,23 @@ BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libswscale)
 #
-BuildRequires:  pkgconfig(libffi) >= 3.4.4
+BuildRequires:  pkgconfig(libffi) >= 3.5.2
 BuildRequires:  libjbig-devel >= 2.1
-BuildRequires:  pkgconfig(libgcrypt) >= 1.10.2
-BuildRequires:  pkgconfig(libjpeg) >= 3.0.0
+BuildRequires:  pkgconfig(libgcrypt) >= 1.11.3
+# upstream use: pkgconfig(libjpeg) >= 3.1.2
+BuildRequires:  pkgconfig(libjpeg) >= 3.0.4
 BuildRequires:  pkgconfig(libmspack)
-BuildRequires:  pkgconfig(libopenjp2) >= 2.5.0
-BuildRequires:  pkgconfig(libpng16) >= 1.6.40
-BuildRequires:  pkgconfig(libtiff-4) >= 4.6.0
-BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.26
-BuildRequires:  pkgconfig(libwebp) >= 1.3.2
-# upstream use BuildRequires:  pkgconfig(ncurses) >= 6.4
-BuildRequires:  pkgconfig(ncurses) >= 6.1
-BuildRequires:  pkgconfig(readline) >= 8.2
-BuildRequires:  pkgconfig(sqlite3) >= 3.43.0
-BuildRequires:  pkgconfig(uchardet) >= 0.0.7
+# upstream use: pkgconfig(libopenjp2) >= 2.5.4
+BuildRequires:  pkgconfig(libopenjp2) >= 2.5.2
+# upstream use: pkgconfig(libpng16) >= 1.6.57
+BuildRequires:  pkgconfig(libpng16) >= 1.6.44
+BuildRequires:  pkgconfig(libtiff-4) >= 4.7.1
+BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.30
+BuildRequires:  pkgconfig(libwebp) >= 1.6.0
+BuildRequires:  pkgconfig(ncurses) >= 6.5
+BuildRequires:  pkgconfig(readline) >= 8.3
+BuildRequires:  pkgconfig(sqlite3) >= 3.53.2
+BuildRequires:  pkgconfig(uchardet) >= 0.0.8
 # calibre no longer depends on ImageMagick
 # but keept BuildRequires to convert icon to serveral sizes
 BuildRequires:  pkgconfig(ImageMagick) >= 6.5.9
@@ -167,13 +173,14 @@ BuildRequires:  %{python_module Brotli >= 1.2.0}
 BuildRequires:  %{python_module Deprecated >= 1.3.1}
 BuildRequires:  %{python_module FontTools >= 4.61.0}
 BuildRequires:  libjpeg-turbo >= 3.0.0
-BuildRequires:  pkgconfig(libxml-2.0) >= 2.10.3
-BuildRequires:  pkgconfig(libxslt) >= 1.1.39
+BuildRequires:  pkgconfig(lcms2) >= 2.17
+BuildRequires:  pkgconfig(libxml-2.0) >= 2.15.3
+BuildRequires:  pkgconfig(libxslt) >= 1.1.45
 # Not in suse BuildRequires:  %%{python_module MacFSEvents >= 0.8.4}
 BuildRequires:  %{python_module Markdown >= 3.10.0}
 BuildRequires:  %{python_module Pillow >= 12.1.1}
-BuildRequires:  %{python_module PyQt6 >= 6.10.0}
-BuildRequires:  %{python_module PyQt6-WebEngine >= 6.10.0}
+BuildRequires:  %{python_module PyQt6 >= 6.10.1}
+BuildRequires:  %{python_module PyQt6-WebEngine >= 6.10.1}
 BuildRequires:  %{python_module PyQt6-sip >= 13.10.2}
 BuildRequires:  %{python_module Pygments >= 2.20.0}
 BuildRequires:  %{python_module apsw >= 3.51.1.0}
@@ -199,7 +206,7 @@ BuildRequires:  %{python_module msgpack >= 1.1.2}
 BuildRequires:  %{python_module multivolumefile >= 0.2.3}
 BuildRequires:  %{python_module netifaces >= 0.11.0}
 BuildRequires:  %{python_module psutil >= 7.1.3}
-# Upstream use py7zr >= 1.1.2
+# upstream use py7zr >= 1.1.2
 BuildRequires:  %{python_module py7zr >= 1.1.0}
 BuildRequires:  %{python_module pybcj >= 1.0.7}
 BuildRequires:  %{python_module pychm >= 0.8.6}
@@ -215,7 +222,7 @@ BuildRequires:  %{python_module texttable >= 1.7.0}
 BuildRequires:  %{python_module webencodings >= 0.5.1}
 BuildRequires:  %{python_module wrapt >= 2.0.1}
 BuildRequires:  %{python_module xxhash >= 3.6.0}
-# Upstream use zeroconf >= 0.148.0
+# upstream use zeroconf >= 0.148.0
 BuildRequires:  %{python_module zeroconf >= 0.136.0}
 BuildRequires:  %{python_module qt6-devel >= %{my_qtversion}}
 BuildRequires:  %{python_module qtwebengine-qt6 >= %{my_qtversion}}
@@ -235,7 +242,7 @@ BuildRequires:  %{python_module setuptools >= 80.9.0}
 BuildRequires:  %{python_module setuptools_scm >= 9.2.2}
 BuildRequires:  %{python_module sip-devel >= 6.14.0}
 BuildRequires:  %{python_module wheel >= 0.46.2}
-# Upstream use pyqt-builder >= 1.19.1
+# upstream use pyqt-builder >= 1.19.1
 BuildRequires:  %{python_module pyqt-builder >= 1.19.0}
 BuildRequires:  %{python_module pywebpush}
 Requires(pretrans): findutils
@@ -244,25 +251,27 @@ Requires:       %{python_flavor}-Deprecated >= 1.3.1
 Requires:       %{python_flavor}-FontTools >= 4.61.0
 Requires:       bzip2 >= 1.0.8
 Requires:       chmlib >= 0.40
-Requires:       expat >= 2.4.4
+Requires:       expat >= 2.7.3
 Requires:       liberation-fonts
 Requires:       libjpeg-turbo >= 3.0.0
-Requires:       libmtp9 >= 1.1.21
-Requires:       libpng16-16 >= 1.6.40
-Requires:       libsqlite3-0 >= 3.43.0
+Requires:       libmtp9 >= 1.1.22
+Requires:       libpng16-16 >= 1.6.44
+Requires:       libsqlite3-0 >= 3.53.2
 Requires:       libwmf >= 0.2.8
-Requires:       optipng >= 0.7.7
+Requires:       optipng >= 0.9.1
 Requires:       poppler-tools >= 23.08.0
 Requires:       sqlite3 >= 3.43.0
-Requires:       unrar >= 6.2.11
+Requires:       unrar >= 7.2.2
 Requires:       xdg-utils >= 1.0.2
-Requires:       xz >= 5.4.1
-Requires:       zlib >= 1.2.13
+Requires:       xz >= 5.8.3
+# upstream use zlib >= 1.3.2
+Requires:       zlib >= 1.3.1
+Requires:       zstd >= 1.5.7
 # Not in suse Requires: %%{python_flavor}-MacFSEvents >= 0.8.4
 Requires:       %{python_flavor}-Markdown >= 3.10.0
 Requires:       %{python_flavor}-Pillow >= 12.1.1
-Requires:       %{python_flavor}-PyQt6 >= 6.10.0
-Requires:       %{python_flavor}-PyQt6-WebEngine >= 6.10.0
+Requires:       %{python_flavor}-PyQt6 >= 6.10.1
+Requires:       %{python_flavor}-PyQt6-WebEngine >= 6.10.1
 Requires:       %{python_flavor}-PyQt6-sip >= 13.10.2
 Requires:       %{python_flavor}-Pygments >= 2.20.0
 Requires:       %{python_flavor}-apsw >= 3.51.1.0
@@ -287,7 +296,7 @@ Requires:       %{python_flavor}-msgpack >= 1.1.2
 Requires:       %{python_flavor}-multivolumefile >= 0.2.3
 Requires:       %{python_flavor}-netifaces >= 0.11.0
 Requires:       %{python_flavor}-psutil >= 7.1.3
-# Upstream use py7zr >= 1.1.2
+# upstream use py7zr >= 1.1.2
 Requires:       %{python_flavor}-py7zr >= 1.1.0
 Requires:       %{python_flavor}-pybcj >= 1.0.7
 Requires:       %{python_flavor}-pychm >= 0.8.6
@@ -303,7 +312,7 @@ Requires:       %{python_flavor}-texttable >= 1.7.0
 Requires:       %{python_flavor}-webencodings >= 0.5.1
 Requires:       %{python_flavor}-wrapt >= 2.0.1
 Requires:       %{python_flavor}-xxhash >= 3.6.0
-# Upstream use zeroconf >= 0.148.0
+# upstream use zeroconf >= 0.148.0
 Requires:       %{python_flavor}-zeroconf >= 0.136.0
 Requires:       %{python_flavor}-qt6 >= %{my_qtversion}
 Requires:       %{python_flavor}-qtwebengine-qt6 >= %{my_qtversion}

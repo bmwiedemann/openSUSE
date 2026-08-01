@@ -1,16 +1,13 @@
-Index: calibre-7.23.0/src/calibre/gui2/main.py
+Index: calibre-9.12.0/src/calibre/gui2/main.py
 ===================================================================
---- calibre-7.23.0.orig/src/calibre/gui2/main.py
-+++ calibre-7.23.0/src/calibre/gui2/main.py
-@@ -52,8 +52,9 @@ various URL based actions is in the User
-                       help=_('Start minimized to system tray.'))
-     parser.add_option('-v', '--verbose', default=0, action='count',
-                       help=_('Ignored, do not use. Present only for legacy reasons'))
--    parser.add_option('--no-update-check', default=False, action='store_true',
--            help=_('Do not check for updates'))
-+    parser.add_option('--update-check', dest='no_update_check', default=True,
-+            action='store_false',
-+            help=_('Check for updates'))
-     parser.add_option('--ignore-plugins', default=False, action='store_true',
-             help=_('Ignore custom plugins, useful if you installed a plugin'
-                 ' that is preventing calibre from starting'))
+--- calibre-9.12.0.orig/src/calibre/gui2/main.py
++++ calibre-9.12.0/src/calibre/gui2/main.py
+@@ -52,7 +52,7 @@ various URL based actions is in the User
+     parser.add_option('--with-library', default=None, action='store', help=_('Use the library located at the specified path.'))
+     parser.add_option('--start-in-tray', default=False, action='store_true', help=_('Start minimized to system tray.'))
+     parser.add_option('-v', '--verbose', default=0, action='count', help=_('Ignored, do not use. Present only for legacy reasons'))
+-    parser.add_option('--no-update-check', default=False, action='store_true', help=_('Do not check for updates'))
++    parser.add_option('--update-check', dest='no_update_check', default=True, action='store_false', help=_('Check for updates'))
+     parser.add_option(
+         '--ignore-plugins',
+         default=False,

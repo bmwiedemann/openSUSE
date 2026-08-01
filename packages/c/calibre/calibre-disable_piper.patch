@@ -1,7 +1,8 @@
-diff -Pdpru calibre-8.10.0.orig/setup/build.py calibre-8.10.0/setup/build.py
---- calibre-8.10.0.orig/setup/build.py	2025-09-05 01:58:58.000000000 +0200
-+++ calibre-8.10.0/setup/build.py	2025-09-15 15:22:33.949905212 +0200
-@@ -446,6 +446,8 @@ class Build(Command):
+Index: calibre-9.12.0/setup/build.py
+===================================================================
+--- calibre-9.12.0.orig/setup/build.py
++++ calibre-9.12.0/setup/build.py
+@@ -470,6 +470,8 @@ class Build(Command):
                  continue
              if not is_ext_allowed(self.compiling_for, ext):
                  continue
@@ -10,10 +11,11 @@ diff -Pdpru calibre-8.10.0.orig/setup/build.py calibre-8.10.0/setup/build.py
              if ext.error:
                  if ext.optional:
                      self.warn(ext.error)
-diff -Pdpru calibre-8.10.0.orig/setup/commands.py calibre-8.10.0/setup/commands.py
---- calibre-8.10.0.orig/setup/commands.py	2025-09-05 01:58:58.000000000 +0200
-+++ calibre-8.10.0/setup/commands.py	2025-09-15 15:07:20.219859954 +0200
-@@ -30,7 +30,6 @@ __all__ = [
+Index: calibre-9.12.0/setup/commands.py
+===================================================================
+--- calibre-9.12.0.orig/setup/commands.py
++++ calibre-9.12.0/setup/commands.py
+@@ -33,7 +33,6 @@ __all__ = [
      'manual',
      'mathjax',
      'osx',
@@ -21,7 +23,7 @@ diff -Pdpru calibre-8.10.0.orig/setup/commands.py calibre-8.10.0/setup/commands.
      'pot',
      'publish',
      'publish_betas',
-@@ -94,10 +93,6 @@ from setup.hyphenation import Hyphenatio
+@@ -98,10 +97,6 @@ from setup.hyphenation import Hyphenatio
  
  hyphenation = Hyphenation()
  
@@ -32,12 +34,13 @@ diff -Pdpru calibre-8.10.0.orig/setup/commands.py calibre-8.10.0/setup/commands.
  from setup.liberation import LiberationFonts
  
  liberation_fonts = LiberationFonts()
-diff -Pdpru calibre-8.10.0.orig/setup/resources.py calibre-8.10.0/setup/resources.py
---- calibre-8.10.0.orig/setup/resources.py	2025-09-05 01:58:58.000000000 +0200
-+++ calibre-8.10.0/setup/resources.py	2025-09-15 15:19:39.795613461 +0200
-@@ -104,7 +104,7 @@ class RapydScript(Command):  # {{{
- class Resources(Command):  # {{{
+Index: calibre-9.12.0/setup/resources.py
+===================================================================
+--- calibre-9.12.0.orig/setup/resources.py
++++ calibre-9.12.0/setup/resources.py
+@@ -116,7 +116,7 @@ class RapydScript(Command):  # {{{
  
+ class Resources(Command):  # {{{
      description = 'Compile various needed calibre resources'
 -    sub_commands = ['liberation_fonts', 'mathjax', 'rapydscript', 'hyphenation', 'piper_voices']
 +    sub_commands = ['liberation_fonts', 'mathjax', 'rapydscript', 'hyphenation']
