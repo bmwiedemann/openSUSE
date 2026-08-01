@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 23 14:35:33 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Add tar-assume-dir-size-0.patch
+  * Fixes tar incorrectly skipping members in certain archives containing
+    dirs with non-zero sizes (bsc#1271272)
+
+-------------------------------------------------------------------
 Mon Jul 13 16:01:05 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add tar-acl_-prefix.patch: Avoid acl_ prefix for functions

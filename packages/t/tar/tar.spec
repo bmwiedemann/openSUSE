@@ -68,6 +68,9 @@ Patch22:        fix-dereference.patch
 Patch23:        openat2-fix-dotlike-failure.patch
 # PATCH-FIX-UPSTREAM https://cgit.git.savannah.gnu.org/cgit/tar.git/patch/?id=08c3fc2e9337094aff01a511170fd35fdb8f1ee3
 Patch24:        tar-acl_-prefix.patch
+# PATCH-FIX-UPSTREAM https://cgit.git.savannah.gnu.org/cgit/tar.git/patch/?id=19a3a73e8c48bd3c59cbea9b5ed6780fc6836c6d
+# Fix for bsc#1271272
+Patch25:        tar-assume-dir-size-0.patch
 BuildRequires:  automake >= 1.15
 BuildRequires:  libacl-devel
 BuildRequires:  libselinux-devel

@@ -1,0 +1,59 @@
+commit 19a3a73e8c48bd3c59cbea9b5ed6780fc6836c6d
+Author: Sergey Poznyakoff <gray@gnu.org>
+Date:   Thu Jul 23 10:42:56 2026 +0300
+
+    Assume directory members have size=0.
+    
+    Since commit b8d8a61b, tar started honoring size field in headers
+    of the directory archive members when listing and extracting. That
+    doesn't seem right: although GNU tar always stores 0 for such members,
+    there are other tar implementation that don't. As a result, GNU tar
+    skips the actual directory contents when listing or extracting archives
+    created by such implementations.
+    
+    This commit fixes that by assuming that size is 0 for directory archive
+    members.
+    
+    * src/list.c (member_is_dir): Restore function.
+    (skim_member): Don't apply skim_file to directory members.
+    * tests/skipdir.at: Fix expectations.
+
+diff --git a/src/list.c b/src/list.c
+index cf7b41c4..1f441364 100644
+--- a/src/list.c
++++ b/src/list.c
+@@ -1437,6 +1437,24 @@ skip_member (void)
+   skim_member (false);
+ }
+ 
++static bool
++member_is_dir (struct tar_stat_info *info, char typeflag)
++{
++  switch (typeflag)
++    {
++    case AREGTYPE:
++    case REGTYPE:
++    case CONTTYPE:
++      return info->had_trailing_slash;
++
++    case DIRTYPE:
++      return true;
++
++    default:
++      return false;
++    }
++}
++
+ /* Skip the current member in the archive.
+    If MUST_COPY, always copy instead of skipping.  */
+ void
+@@ -1450,7 +1468,8 @@ skim_member (bool must_copy)
+ 
+       if (current_stat_info.is_sparse)
+ 	sparse_skim_file (&current_stat_info, must_copy);
+-      else
++      else if (!member_is_dir (&current_stat_info,
++			       current_header->header.typeflag))
+ 	skim_file (current_stat_info.stat.st_size, must_copy);
+ 
+       mv_end ();
