@@ -102,6 +102,10 @@ Patch11:        0001-man-document-static-ip-setup-differences-to-dracut-n.patch
 Patch13:        2312.patch
 # PATCH-FIX-UPSTREAM https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/merge_requests/2308.patch
 Patch14:        2308.patch
+# PATCH-FIX-UPSTREAM 2462.patch bsc#1259025, glfd#NetworkManager/NetworkManager!2462 sckang@suse.com --  nm-initrd-generator: set parent for NBFT vlan connection
+Patch15:        2462.patch
+# PATCH-FEATURE-SLE NetworkManager-initrd-generator-ip-hcn.patch PED-14534 sckang@suse.com -- handle "ip=hcn" option in nm-initrd-generator, it generates an empty connection
+Patch16:        NetworkManager-initrd-generator-ip-hcn.patch
 
 BuildRequires:  c++_compiler
 BuildRequires:  dnsmasq
@@ -329,6 +333,10 @@ This package is intended to be installed by default for server deployments.
 %patch -P 11 -p1
 %patch -P 13 -p1
 %patch -P 14 -p1
+%patch -P 15 -p1
+%if 0%{?sle_version} && 0%{?sle_version} > 160000
+%patch -P 16 -p1
+%endif
 
 # Fix server.conf's location, to end up in %%{_defaultdocdir}/%%{name},
 # rather then %%{_datadir}/doc/%%{name}/examples:

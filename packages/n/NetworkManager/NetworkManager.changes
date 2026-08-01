@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul 28 02:12:42 UTC 2026 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add 2462.patch: nm-initrd-generator: set parent for NBFT
+  vlan connection
+  (bsc#1259025, glfd#NetworkManager/NetworkManager!2462).
+- Add NetworkManager-initrd-generator-ip-hcn.patch: handle "ip=hcn"
+  option in nm-initrd-generator, it generates an empty connection
+  (PED-14534).
+
+-------------------------------------------------------------------
 Tue Jun 30 02:22:22 UTC 2026 - Jonathan Kang <songchuan.kang@suse.com>
 
 - Modify nfs: Exit gracefully if /etc/fstab is missing

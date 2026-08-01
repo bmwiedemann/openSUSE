@@ -2601,4 +2601,17 @@ New stable release</comment>
   (bsc#1185815).</comment>
     <requestid>1363445</requestid>
   </revision>
+  <revision rev="294" vrev="3">
+    <srcmd5>0080922472e6be80f5cf3b7190df9dbc</srcmd5>
+    <version>1.56.1</version>
+    <time>1785601730</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 2462.patch: nm-initrd-generator: set parent for NBFT
+  vlan connection
+  (bsc#1259025, glfd#NetworkManager/NetworkManager!2462).
+- Add NetworkManager-initrd-generator-ip-hcn.patch: handle &quot;ip=hcn&quot;
+  option in nm-initrd-generator, it generates an empty connection
+  (PED-14534).</comment>
+    <requestid>1368515</requestid>
+  </revision>
 </revisionlist>
