@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Jul 29 06:57:54 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 4.6.0:
+  * Fixes three advisories reported by tinyb0y, none of which have a
+    CVE assigned yet: GHSA-fwcr-mqg6-hqmx (stack buffer overflow in
+    the tcpprep --services file parser), GHSA-m6w7-8497-g9c9 (heap
+    out-of-bounds read via --pktlen with --preload-pcap) and
+    GHSA-5q26-7fxx-v8fh (heap out-of-bounds access in ARP address
+    rewriting)
+  * Fix Linux TX_RING support, broken by a header and probe
+    collision
+  * Fix an out-of-bounds read in libopts --save-opts handling
+  * Fix jumbo-frame truncation that silently mangled captures with
+    frames larger than the MTU
+  * AF_XDP and io_uring injection backends now reach line rate; new
+    --raw PF_INET/SOCK_RAW injection path and --loss option
+  * CMake joins autotools as a supported build system; GNU AutoGen
+    is no longer required and release tarballs ship pre-built files
+    for both
+  * Install the replay engine as a static C library
+- Drop tcpreplay-fix-txring-includes.patch, merged upstream
+- Do not ship the newly installed libtcpreplay: it is static-only,
+  has no configure switch to disable it and nothing in Factory links
+  against it, so the package stays a command-line tool set
+
+-------------------------------------------------------------------
 Sat Jul 25 19:11:23 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 4.5.5 - a security release:

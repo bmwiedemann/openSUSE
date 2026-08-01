@@ -17,7 +17,7 @@
 
 
 Name:           tcpreplay
-Version:        4.5.5
+Version:        4.6.0
 Release:        0
 Summary:        Network analysis and testing tools
 License:        GPL-3.0-only
@@ -25,9 +25,6 @@ URL:            https://tcpreplay.appneta.com/
 Source0:        https://github.com/appneta/tcpreplay/releases/download/v%{version}/%{name}-%{version}.tar.xz
 Source1:        https://github.com/appneta/tcpreplay/releases/download/v%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
-# Fix the __GLIBC_MINOR typo in txring.h and include <linux/if_packet.h>,
-# which is what actually defines the PACKET_TX_RING API - sent upstream
-Patch0:         tcpreplay-fix-txring-includes.patch
 BuildRequires:  libdnet-devel
 BuildRequires:  libpcap-devel
 BuildRequires:  pkgconfig
@@ -61,6 +58,15 @@ supports switches, routers and IP Flow/NetFlow appliances.
 
 %install
 %make_install
+# 4.6.0 started installing the replay engine as a STATIC library plus its
+# headers and pkgconfig file.  There is no configure switch to turn that
+# off, and openSUSE does not ship static-only libraries without a consumer
+# to justify them -- nothing in Factory links against libtcpreplay.  Drop
+# them and keep this package what it has always been: the command-line
+# tools.  Revisit if upstream grows a shared library or a consumer appears.
+rm -r %{buildroot}%{_includedir}/%{name}
+rm %{buildroot}%{_libdir}/lib%{name}.a
+rm %{buildroot}%{_libdir}/pkgconfig/lib%{name}.pc
 
 %files
 %license docs/LICENSE
