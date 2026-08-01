@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Aug  1 08:42:38 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.10
+  * Bugfix: need to check for null-pointer, since host can be NULL.
+  * Updated QUIC setup scripts.
+  * QUIC configuration improvements.
+  * Improved check for enhanced getopt.
+
+-------------------------------------------------------------------
 Mon Jul 13 08:27:40 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.0.9
