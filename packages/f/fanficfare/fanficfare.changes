@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sat Aug  1 18:04:04 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to the version 4.60.0:
+  - Update translations.
+  - base_xenforo2forum_adapter: When capitalize_forumtags don't
+    capitaloize right after numbers. 1990s 1st, 2nd, etc
+  - base_otw_adapter: Save and use if served full work initially
+  - base_otw_adapter: Save a network req if need to login.
+  - adapter_asianfanficscom: Fixes for major site changes
+  - base_otw_adapter: Don't require open_pages_in_browser to skip
+    login.
+  - base_xenforo2forum_adapter: Look both forward and backward
+    when post not found in reader page. #1395
+  - adapter_sofurrycom: Revisit login url after 404, thanks dbhmw
+    #1385
+  - Add option keep_img_tags - keep <img> tags when
+    include_images:false
+  - adapter_sofurrycom: More fixes for site change, thanks, dbhmw
+    #1386
+  - adapter_sofurrycom: Fixes for site change, thanks, dbhmw
+    #1384 and #600
+  - adapter_test1: Handle bool settings in [teststory:] better
+  - INI Snippet: Repopulate the combobox in AddNewDialog() when
+    shown in case of library change.
+  - adapter_pmdfanfiction: Fix downloading chapters for stories
+    with chapter groups - Thanks, BlizzardBricks
+  - Better error message for open_pages_in_browser_tries_limit
+    exceeded
+  - Add avif image type to image processing.
+
+-------------------------------------------------------------------
 Thu Jul 30 07:13:44 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to the version 4.59.0:
