@@ -24,4 +24,32 @@
 - Run obs-git-init (and add *-build directory to .gitignore)</comment>
     <requestid>1363512</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1b6937a9dfbc2623cd25fb3bbbf519ae</srcmd5>
+    <version>26.5.1</version>
+    <time>1785705236</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 26.5.1:
+  - CVE-2026-56846: HTTP/2 retained headers can bypass maxSessionMemory limits (bsc#1272941)
+  - CVE-2026-56848: HTTP/2 re-entrant send can cause heap-use-after-free (bsc#1272942)
+  - CVE-2026-58043: Permission Model path matching can over-grant filesystem access (bsc#1272943)
+  - CVE-2026-56850: HTTPS Agent can reuse mTLS identities across PFX certificates (bsc#1272944)
+  - CVE-2026-58040: HTTPS Agent session reuse can skip hostname verification (bsc#1272945)
+  - CVE-2026-58041: node:sqlite SQLTagStore iterator replay can re-execute writes (bsc#1272946)
+  - CVE-2026-58042: dns.resolveAny() can abort on DNS responses with many A records (bsc#1272947)
+  - CVE-2026-58045: node:zlib sync APIs can crash on spoofed TypedArray length (bsc#1272948)
+  - CVE-2026-56847: Permission Model allows trace events to write outside the allowlist (bsc#1272949)
+  - CVE-2026-58039: Permission Model allows process reports to write outside the allowlist (bsc#1272950)
+  - CVE-2026-58044: HTTP parser header truncation can enable request smuggling (bsc#1272951)
+- Changes in 26.5.0:
+  - buffer: implement blob.textStream()
+  - esm: add --experimental-import-text flag
+  - perf_hooks: sample delay per event loop iteration
+  - stream: expose ReadableStreamTee
+  - tls: report negotiated TLS groups
+
+- Add upstream patch to fix build on aarch64:
+  * nodejs-add-missing-include.patch</comment>
+    <requestid>1369027</requestid>
+  </revision>
 </revisionlist>

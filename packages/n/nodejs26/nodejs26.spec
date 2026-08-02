@@ -25,7 +25,7 @@
 %endif
 
 Name:           nodejs26
-Version:        26.4.0
+Version:        26.5.1
 Release:        0
 
 # Double DWZ memory limits
@@ -133,6 +133,8 @@ Patch102:       node-gyp-addon-gypi.patch
 # PATCH-FIX-OPENSUSE -- install user global npm packages to /usr/local
 # instead of /usr
 Patch104:       npm_search_paths.patch
+# PATCH-FIX-UPSTREAM - https://github.com/nodejs/node/pull/63287
+Patch105:       nodejs-add-missing-include.patch
 
 Patch120:       flaky_test_rerun.patch
 
@@ -301,14 +303,14 @@ BuildRequires:  pkgconfig(libbrotlidec)
 Provides:       bundled(LIEF) = 0.17.0
 Provides:       bundled(ada) = 3.4.4
 Provides:       bundled(libuv) = 1.52.1
-Provides:       bundled(llhttp) = 9.4.2
+Provides:       bundled(llhttp) = 9.4.3
 Provides:       bundled(merve) = 1.2.2
-Provides:       bundled(ngtcp2) = 1.22.1
-Provides:       bundled(node-acorn) = 8.16.0
+Provides:       bundled(ngtcp2) = 1.23.0
+Provides:       bundled(node-acorn) = 8.17.0
 Provides:       bundled(node-acorn-walk) = 8.3.5
-Provides:       bundled(node-amaro) = 1.1.9
+Provides:       bundled(node-amaro) = 1.1.10
 Provides:       bundled(node-minimatch) = 10.2.5
-Provides:       bundled(node-undici) = 8.5.0
+Provides:       bundled(node-undici) = 8.9.0
 Provides:       bundled(simdjson) = 4.6.4
 Provides:       bundled(uvwasi) = 0.0.23
 Provides:       bundled(v8) = 14.6.202.34
@@ -393,11 +395,11 @@ Provides:       bundled(node-jsonparse) = 1.3.1
 Provides:       bundled(node-just-diff) = 6.0.2
 Provides:       bundled(node-just-diff-apply) = 5.5.0
 Provides:       bundled(node-libnpmaccess) = 10.0.3
-Provides:       bundled(node-libnpmdiff) = 8.1.9
-Provides:       bundled(node-libnpmexec) = 10.2.9
-Provides:       bundled(node-libnpmfund) = 7.0.23
+Provides:       bundled(node-libnpmdiff) = 8.1.10
+Provides:       bundled(node-libnpmexec) = 10.3.0
+Provides:       bundled(node-libnpmfund) = 7.0.24
 Provides:       bundled(node-libnpmorg) = 8.0.1
-Provides:       bundled(node-libnpmpack) = 9.1.9
+Provides:       bundled(node-libnpmpack) = 9.1.10
 Provides:       bundled(node-libnpmpublish) = 11.2.0
 Provides:       bundled(node-libnpmsearch) = 9.0.1
 Provides:       bundled(node-libnpmteam) = 8.0.2
@@ -416,7 +418,7 @@ Provides:       bundled(node-minizlib) = 3.1.0
 Provides:       bundled(node-ms) = 2.1.3
 Provides:       bundled(node-mute-stream) = 3.0.0
 Provides:       bundled(node-negotiator) = 1.0.0
-Provides:       bundled(node-node-gyp) = 12.3.0
+Provides:       bundled(node-node-gyp) = 12.4.0
 Provides:       bundled(node-nopt) = 9.0.0
 Provides:       bundled(node-npm-audit-report) = 7.0.0
 Provides:       bundled(node-npm-bundled) = 5.0.0
@@ -429,11 +431,11 @@ Provides:       bundled(node-npm-profile) = 12.0.1
 Provides:       bundled(node-npm-registry-fetch) = 19.1.1
 Provides:       bundled(node-npm-user-validate) = 4.0.0
 Provides:       bundled(node-p-map) = 7.0.4
-Provides:       bundled(node-pacote) = 21.5.0
+Provides:       bundled(node-pacote) = 21.5.1
 Provides:       bundled(node-parse-conflict-json) = 5.0.1
 Provides:       bundled(node-path-scurry) = 2.0.2
 Provides:       bundled(node-picomatch) = 4.0.4
-Provides:       bundled(node-postcss-selector-parser) = 7.1.1
+Provides:       bundled(node-postcss-selector-parser) = 7.1.4
 Provides:       bundled(node-proc-log) = 6.1.0
 Provides:       bundled(node-proggy) = 4.0.0
 Provides:       bundled(node-promise-all-reject-late) = 1.0.1
@@ -443,7 +445,7 @@ Provides:       bundled(node-qrcode-terminal) = 0.12.0
 Provides:       bundled(node-read) = 5.0.1
 Provides:       bundled(node-read-cmd-shim) = 6.0.0
 Provides:       bundled(node-safer-buffer) = 2.1.2
-Provides:       bundled(node-semver) = 7.8.1
+Provides:       bundled(node-semver) = 7.8.4
 Provides:       bundled(node-signal-exit) = 4.1.0
 Provides:       bundled(node-sigstore) = 4.1.1
 Provides:       bundled(node-smart-buffer) = 4.2.0
@@ -454,10 +456,10 @@ Provides:       bundled(node-spdx-expression-parse) = 4.0.0
 Provides:       bundled(node-spdx-license-ids) = 3.0.23
 Provides:       bundled(node-ssri) = 13.0.1
 Provides:       bundled(node-supports-color) = 10.2.2
-Provides:       bundled(node-tar) = 7.5.15
+Provides:       bundled(node-tar) = 7.5.16
 Provides:       bundled(node-text-table) = 0.2.0
 Provides:       bundled(node-tiny-relative-date) = 2.0.2
-Provides:       bundled(node-tinyglobby) = 0.2.16
+Provides:       bundled(node-tinyglobby) = 0.2.17
 Provides:       bundled(node-treeverse) = 3.0.0
 Provides:       bundled(node-tuf-js) = 4.1.0
 Provides:       bundled(node-undici) = 6.26.0
