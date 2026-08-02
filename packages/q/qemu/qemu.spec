@@ -100,7 +100,7 @@ URL:            https://www.qemu.org/
 Summary:        Machine emulator and virtualizer
 License:        BSD-2-Clause AND BSD-3-Clause AND GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
 Group:          System/Emulators/PC
-Version:        11.0.2
+Version:        11.0.3
 Release:        0
 Source0:        qemu-%{version}.tar.xz
 Source1:        common.inc
@@ -539,6 +539,7 @@ efi-rtl8139.rom efi-virtio.rom efi-vmxnet3.rom}
 
 # Workaround for GCC packages that only contain the versioned binaries
 %if %{build_ppc_firmware}
+%ifnarch ppc64 ppc64le
 mkdir -p %{_builddir}/cross-tools
 PPC_GCC=$(ls /usr/bin/powerpc64-suse-linux-gcc-* 2>/dev/null | head -n1)
 if [ -n "$PPC_GCC" ]; then
@@ -546,6 +547,18 @@ if [ -n "$PPC_GCC" ]; then
     ln -sf /usr/bin/powerpc64-suse-linux-ld %{_builddir}/cross-tools/powerpc64-suse-linux-ld
     export PATH=%{_builddir}/cross-tools:$PATH
 fi
+%endif
+%endif
+%if %{build_x86_firmware}
+%ifnarch x86_64
+mkdir -p %{_builddir}/cross-tools
+X86_GCC=$(ls /usr/bin/x86_64-suse-linux-gcc-* 2>/dev/null | head -n1)
+if [ -n "$X86_GCC" ]; then
+    ln -sf "$X86_GCC" %{_builddir}/cross-tools/x86_64-suse-linux-gcc
+    ln -sf /usr/bin/x86_64-suse-linux-ld %{_builddir}/cross-tools/x86_64-suse-linux-ld
+    export PATH=%{_builddir}/cross-tools:$PATH
+fi
+%endif
 %endif
 
 %if %{legacy_qemu_kvm}
@@ -1930,7 +1943,7 @@ wider support than qboot, but still focuses on quick boot up.
 %package seabios
 Summary:        x86 Legacy BIOS for QEMU
 Group:          System/Emulators/PC
-Version:        11.0.2%{sbver}
+Version:        11.0.3%{sbver}
 Release:        0
 BuildArch:      noarch
 Conflicts:      %name < 1.6.0
@@ -1951,7 +1964,7 @@ is the default and legacy BIOS for QEMU.
 %package vgabios
 Summary:        VGA BIOSes for QEMU
 Group:          System/Emulators/PC
-Version:        11.0.2%{sbver}
+Version:        11.0.3%{sbver}
 Release:        0
 BuildArch:      noarch
 Conflicts:      %name < 1.6.0
@@ -1977,7 +1990,7 @@ video card. For use with QEMU.
 %package ipxe
 Summary:        PXE ROMs for QEMU NICs
 Group:          System/Emulators/PC
-Version:        11.0.2
+Version:        11.0.3
 Release:        0
 BuildArch:      noarch
 Conflicts:      %name < 1.6.0

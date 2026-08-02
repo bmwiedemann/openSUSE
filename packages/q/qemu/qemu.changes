@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Thu Jul 30 22:09:17 UTC 2026 - Dario Faggioli <dfaggioli@suse.com>
+
+- (Properly, this time for real) fix bsc#1268245:
+  * [openSUSE][RPM] spec: properly fix bsc#1268245 (this time for real!)
+
+-------------------------------------------------------------------
+Thu Jul 30 16:44:25 UTC 2026 - Dario Faggioli <dfaggioli@suse.com>
+
+- Update to latest stable release (11.0.3)
+  Full backport list here:
+   https://lore.kernel.org/qemu-devel/20260725052155.1228635-1-mjt@tls.msk.ru/
+  A selection of them is reported here below:
+   target/arm: do not clear halting reason in has_work helper
+   target/arm: teach arm_cpu_has_work about halting reasons
+   hw/audio/intel-hda: restrict all DMA engine paths to memories
+   hw/net/cadence: Return current Cadence GEM queue pointers
+   hw/misc/applesmc: Fix a typo setting MSSD key
+   replay: fix use of uninitialized pointer on error
+   hw/display/qxl: validate monitors_config heads[] in phys2virt
+   net: Correct padding check in qemu_receive_packet()
+   hw/net/xilinx_axienet: Fix PHY register 17 link status reporting
+   hw/usb/hcd-xhci-sysbus: Fix OOB heap access in xhci_sysbus_intr_raise()
+   hw/usb/hcd-xhci: Fix guest-triggerable assert() in xhci_find_stream()
+   usbredir: fix infinite loop and SIGFPE with zero max_packet_size
+   usbredir: fix use-after-free on buffered bulk packet overflow
+   tests/qtest: add xhci-pci unplug finalize regression test
+   hw/usb/hcd-xhci-pci: break host link cycle so device_finalize() runs on unplug
+   hw/usb/xhci: clamp interval exponent to avoid UB shift in xhci_init_epctx()
+   accel/tcg: move jit thread manipulation into do_tb_phys_invalidate
+   hw/display/virtio-gpu: Check pixman_image_create_bits() results
+   hw/display/virtio-gpu: handle migration iov allocation failure
+   hw/display/virtio-gpu: cap submit_3d command buffer allocation
+   ui/vnc: validate SetPixelFormat field ranges
+   ui/vnc: fix out-of-bounds write in lossy refresh dirty marking
+   ui/gtk: Narrow DMA-BUF critical section
+   ui/input-barrier: fix off-by-one in keycode bounds check
+   ui/vnc: validate color shifts in SetPixelFormat
+   ui/vnc: fix OOB write in vnc_refresh_lossy_rect
+   net: only advertise passt in netdev help when CONFIG_PASST
+   hw/usb/hcd-xhci: Turn guest-triggerable abort() into qemu_log_mask()
+   hw/usb/hcd-ohci: Make sure that ohci_service_ed_list() cannot loop forever
+   hw/display/virtio-gpu: fix dmabuf_fd leak on remap failure
+   hw/scsi/vmw_pvscsi: add a comment to explain the endianness
+   hw/scsi/vmw_pvscsi: translate data endianness
+   hw/sparc64/niagara: use int64_t for vdisk size to avoid truncation
+   hw/display/qxl: fix TOCTOU in cursor chunk data_size handling
+   hw/misc/ivshmem: clear chardev handlers before freeing peers
+   linux-user/alpha: populate AT_HWCAP from env->amask
+   linux-user/alpha: add coredump support
+   s390x/css: firm up handling of chained TIC CCWs
+   s390x/sclpcpi: check event length field before reading from buffer
+   s390x/sclp: prevent re-reading the sclp header
+   hw/misc/stm32_rcc: Correct offset-to-irq calculation
+   hw/display/sm501: Don't allow guest to set ram size larger than it is
+   hw/display/sm501: Avoid overflow problems in bounds check calculations
+   hw/display/sm501: Catch bad coordinates for RTL operations
+   ...
+
+- Fix bsc#1273022:
+  * hw/i386/pc: xen: reinstate the "xenfv" machine alias (bsc#1273022)
+
+-------------------------------------------------------------------
 Tue Jul 21 10:28:48 UTC 2026 - Dario Faggioli <dfaggioli@suse.com>
 
 - Properly fix bsc#1268245:
