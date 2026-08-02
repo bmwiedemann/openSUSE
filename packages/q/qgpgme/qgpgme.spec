@@ -17,13 +17,14 @@
 
 
 %define sover 15
-%if 0%{?suse_version} >= 1600
+%bcond_without qt5
+%if 0%{?suse_version} > 1600
 %bcond_without qt6
 %else
 %bcond_with qt6
 %endif
 Name:           qgpgme
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        Qt API bindings/wrapper for GPGME
 License:        GPL-2.0-or-later
@@ -36,13 +37,15 @@ Source3:        baselibs.conf
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(Gpgmepp) >= 2.0.0
-BuildRequires:  cmake(Qt5Core) >= 5.15.0
+BuildRequires:  cmake(Gpgmepp) >= 2.1.0
 BuildRequires:  pkgconfig(gpg-error) >= 1.47
-BuildRequires:  pkgconfig(gpgme) >= 2.0.0
+BuildRequires:  pkgconfig(gpgme) >= 2.1.0
+%if %{with qt5}
+BuildRequires:  cmake(Qt5Core) >= 5.15.0
+%endif
 %if %{with qt6}
 BuildRequires:  cmake(Qt6Core) >= 6.5.0
-BuildRequires:  cmake(Qt6CoreTools) >= 6.9.1
+BuildRequires:  cmake(Qt6CoreTools) >= 6.11.1
 BuildRequires:  cmake(Qt6Test)
 %endif
 %if 0%{?suse_version} < 1600
@@ -52,6 +55,7 @@ BuildRequires:  gcc12-c++
 %description
 QGpgme provides a very high level Qt API around GpgMEpp.
 
+%if %{with qt5}
 %package -n libqgpgme%{sover}
 Summary:        Qt5 API bindings/wrapper for GPGME
 
@@ -59,6 +63,7 @@ Summary:        Qt5 API bindings/wrapper for GPGME
 QGpgme provides a very high level Qt API around GpgMEpp.
 
 This package contains the shared library built for Qt5.
+%endif
 
 %if %{with qt6}
 %package -n libqgpgmeqt6-%{sover}
@@ -70,21 +75,23 @@ QGpgme provides a very high level Qt API around GpgMEpp.
 This package contains the shared library built for Qt6.
 %endif
 
+%if %{with qt5}
 %package -n libqgpgme-devel
 Summary:        Development files for %{name} (Qt5)
 Requires:       libqgpgme%{sover} = %{version}
-Requires:       cmake(Gpgmepp) >= 2.0.0
+Requires:       cmake(Gpgmepp) >= 2.1.0
 
 %description -n libqgpgme-devel
 QGpgme provides a very high level Qt API around GpgMEpp.
 
 This package contains the files needed to build using %{name} and Qt5.
+%endif
 
 %if %{with qt6}
 %package -n libqgpgmeqt6-devel
 Summary:        Development files for %{name} (Qt6)
 Requires:       libqgpgmeqt6-%{sover} = %{version}
-Requires:       cmake(Gpgmepp) >= 2.0.0
+Requires:       cmake(Gpgmepp) >= 2.1.0
 
 %description -n libqgpgmeqt6-devel
 QGpgme provides a very high level Qt API around GpgMEpp.
@@ -100,9 +107,15 @@ This package contains the files needed to build using %{name} and Qt6.
 export CXX=g++-12
 %endif
 %cmake \
+%if %{with qt5}
 	-DBUILD_WITH_QT5:BOOL=ON \
+%else
+	-DBUILD_WITH_QT5:BOOL=OFF \
+%endif
 %if %{with qt6}
 	-DBUILD_WITH_QT6:BOOL=ON \
+%else
+	-DBUILD_WITH_QT6:BOOL=OFF \
 %endif
 	-DBUILD_TESTING:BOOL=ON \
 	%{nil}
@@ -114,14 +127,18 @@ export CXX=g++-12
 %check
 %ctest
 
+%if %{with qt5}
 %ldconfig_scriptlets -n libqgpgme%{sover}
+%endif
 %if %{with qt6}
 %ldconfig_scriptlets -n libqgpgmeqt6-%{sover}
 %endif
 
+%if %{with qt5}
 %files -n libqgpgme%{sover}
 %license COPYING
 %{_libdir}/libqgpgme.so.%{sover}{,.*}
+%endif
 
 %if %{with qt6}
 %files -n libqgpgmeqt6-%{sover}
@@ -129,12 +146,14 @@ export CXX=g++-12
 %{_libdir}/libqgpgmeqt6.so.%{sover}{,.*}
 %endif
 
+%if %{with qt5}
 %files -n libqgpgme-devel
 %license COPYING
 %doc ChangeLog NEWS README VERSION
 %{_libdir}/libqgpgme.so
 %{_includedir}/qgpgme-qt5
 %{_libdir}/cmake/QGpgme
+%endif
 
 %if %{with qt6}
 %files -n libqgpgmeqt6-devel

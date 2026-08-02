@@ -28,4 +28,12 @@ v4: -devel require gpgmepp, broke plasma-pass</comment>
     <comment>qgpgme 2.1.0 (forwarded request 1356109 from AndreasStieger)</comment>
     <requestid>1356112</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6b877eb2742b73febbe3f59145a36565</srcmd5>
+    <version>2.2.0</version>
+    <time>1785705228</time>
+    <user>dimstar_suse</user>
+    <comment>qgpgme 2.2.0</comment>
+    <requestid>1369101</requestid>
+  </revision>
 </revisionlist>

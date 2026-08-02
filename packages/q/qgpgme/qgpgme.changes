@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 31 08:59:02 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 2.2.0:
+  * Add job for querying Active Directory
+  * Don't start dirmngr for WKD lookup if it is disabled for gpg
+
+-------------------------------------------------------------------
 Sun May 31 06:55:22 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 2.1.0:
