@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Fri Jul 31 06:16:11 UTC 2026 - Andy Alt <arch_stanton5995@proton.me>
+
+- rmw 0.10.0:
+  * BREAKING: the meson build option `want_btrfs_clone` is now `with-reflink`
+    (note the hyphens); update any build scripts that pass it
+  * build: add GLib/GIO as a dependency (glib2 >= 2.52), used for directory
+    moves across btrfs/bcachefs subvolumes and in place of several internal
+    utility functions; require canfigger >= 0.3.2 (was 0.3.0)
+  * config: configuring waste folders is now optional. With nothing
+    configured, rmw uses the desktop trash (~/.local/share/Trash) for files
+    on the home filesystem, and a trash folder on the filesystem itself for
+    files elsewhere, such as a removable drive
+  * config: add the "no-add" WASTE attribute. The folder never receives
+    removed files, but it is still listed, restored from, and purged
+  * restore: 'rmw -s' now opens at the waste folder nearest the current
+    directory on the same filesystem, instead of the first one listed (#532)
+  * restore: 'rmw -s' now dumps the active waste folder when output is not a
+    terminal, so it can be piped, including in builds without curses
+  * bugfix: moving a file no longer fails with "Invalid cross-device link"
+    when the waste folder is on a separate mount of the same device, such as
+    a bind mount (#552), or on a separate bcachefs subvolume (#526); rmw
+    falls back to the file's own mount or the next waste directory
+  * bugfix: a trailing slash on a symlink no longer fails with "Not a
+    directory" (#450)
+  * ficlone: add bcachefs support and make cross-subvolume moves safer
+    (reflink needs btrfs or bcachefs).
+    A directory is copied in full before the source is removed, so a failed
+    clone leaves the source intact; timestamps, ownership, and extended
+    attributes are preserved. Copying a directory with special files (FIFOs,
+    sockets, devices) now fails with an error instead of hanging
+  * purge: when purging is disabled (expire_age = 0), a normal run skips the
+    purge-time file and the purge routine, and the "purging is disabled"
+    notice prints only for an explicit -g/--purge/--empty. An age (-g90)
+    still overrides expire_age
+  * purge: print one progress dot per 100 trashinfo files checked
+  * output: the startup diagnostic lines (home_dir, config_file, discovered
+    topdir trashes, ficlone support) now require -vv, and "Created directory"
+    notices require -v; plain -v keeps the per-file action messages
+  * restore: add 'x' to the exit keys on the ncurses restore screen
+  * restore: the ncurses screen no longer flashes when switching waste
+    folders (#543); the "Reading ..." notice now appears in the window (#531)
+  * install: fish completions now go to fish's vendor_completions.d (was
+    docdir), so they load automatically, and the install_shell_completions
+    option is now honored
+  * build: pick matching curses and menu libraries, and probe the headers
+    against the library found rather than whatever is on the system (#579)
+  * docs: the man page is now authored as MANUAL.md and generated to rmw.1
+    in the repo root; add a BTRFS AND BCACHEFS section
+  * testing: add the RMW_DISCOVERY env var (on/off) to control $topdir
+    discovery; deprecate RMW_FAKE_HOME (set HOME/XDG_* instead)
+  * refactor: rename btrfs.c/btrfs.h to ficlone.c/ficlone.h, and the
+    corresponding functions and macro to do_ficlone(), is_ficlone_fs(),
+    and HAVE_FICLONE
+  * update project description
+
+-------------------------------------------------------------------
 Thu Apr 23 14:35:55 UTC 2026 - Andy Alt <arch_stanton5995@proton.me>
 
 - Use system-installed canfigger instead of the bundled copy
@@ -47,12 +103,12 @@ Tue Mar 26 11:00:00 UTC 2024 - Andy Alt <arch_stanton5995@proton.me>
 - fix for tests failing after Epochalypse - add tests-fail-after-epochalypse.patch
   Reported by bmwiedemann while working on reproducible builds for OpenSuse
   (https://github.com/theimpossibleastronaut/rmw/issues/439)
-  
+
 -------------------------------------------------------------------
 Wed Mar 20 11:00:00 UTC 2024 - Andy Alt <arch_stanton5995@proton.me>
 
 - fix and enable all tests - add test-restore-fix-use-Xvfb.patch
-  
+
 -------------------------------------------------------------------
 Mon Mar 18 19:55:34 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 

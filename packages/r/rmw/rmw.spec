@@ -18,7 +18,7 @@
 
 
 Name:           rmw
-Version:        0.9.5
+Version:        0.10.0
 Release:        0
 Summary:        Safe-remove utility for the command line
 License:        GPL-3.0-or-later
@@ -28,16 +28,17 @@ Source:         https://github.com/theimpossibleastronaut/rmw/releases/download/
 BuildRequires:  meson >= 0.59.0
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  pkgconfig(canfigger)
+BuildRequires:  pkgconfig(gio-2.0) >= 2.52
+BuildRequires:  pkgconfig(gio-unix-2.0)
+BuildRequires:  pkgconfig(glib-2.0) >= 2.52
 BuildRequires:  pkgconfig(ncurses)
 
 %description
-rmw (ReMove to Waste) is a safe-remove utility for the command line. It
-can move and restore files to and from directories specified in a
-configuration file, and can also be integrated with your regular
-desktop trash folder (if your desktop environment uses the
-FreeDesktop.org Trash specification). One of the unique features of rmw
-is the ability to purge items from your waste (or trash) directories
-after x number of days.
+rmw (ReMove to Waste) is a safe-remove and restore utility for the
+command line. By default it uses your desktop's trash (the
+FreeDesktop.org Trash specification) and needs no setup, though you
+can add your own waste folders. It can also purge items after a set
+number of days.
 
 %lang_package
 
@@ -67,6 +68,9 @@ rm %{buildroot}%{_docdir}/%{name}/COPYING
 %{_bindir}/rmw
 %{_docdir}/%{name}
 %{_mandir}/man?/*1%{?ext_man}
+%dir %{_datadir}/fish
+%dir %{_datadir}/fish/vendor_completions.d
+%{_datadir}/fish/vendor_completions.d/%{name}.fish
 
 %license COPYING
 
