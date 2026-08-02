@@ -23,7 +23,7 @@
 %define pkg_suffix -qt6
 %define sover -1_2
 %else
-%define sover 1_2
+ExclusiveArch:  do_not_build
 %endif
 Name:           kdsingleapplication%{?pkg_suffix}
 Version:        1.2.1
@@ -39,11 +39,6 @@ BuildRequires:  cmake(Qt6Core)
 BuildRequires:  cmake(Qt6Network)
 BuildRequires:  cmake(Qt6Test)
 BuildRequires:  cmake(Qt6Widgets)
-%else
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5Network)
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5Widgets)
 %endif
 
 %description
@@ -64,9 +59,6 @@ Requires:       libkdsingleapplication%{?pkg_suffix}%{sover} = %{version}
 %if 0%{?qt6}
 Requires:       cmake(Qt6Network)
 Requires:       cmake(Qt6Widgets)
-%else
-Requires:       cmake(Qt5Network)
-Requires:       cmake(Qt5Widgets)
 %endif
 
 %description devel
@@ -81,19 +73,11 @@ Development files for libkdsingleapplication%{?pkg_suffix}.
   -DKDSingleApplication_TESTS:BOOL=TRUE
 
 %qt6_build
-%else
-%cmake \
-  -DKDSingleApplication_QT6:BOOL=FALSE \
-  -DKDSingleApplication_TESTS:BOOL=TRUE
-
-%cmake_build
 %endif
 
 %install
 %if 0%{?qt6}
 %qt6_install
-%else
-%cmake_install
 %endif
 
 # Packaged using %%license and %%doc
@@ -115,8 +99,6 @@ rm -r %{buildroot}%{_datadir}/doc
 %{_libdir}/libkdsingleapplication%{?pkg_suffix}.so
 %if 0%{?qt6}
 %{_qt6_mkspecsdir}/modules/qt_KDSingleApplication.pri
-%else
-%{_libqt5_archdatadir}/mkspecs/modules/qt_KDSingleApplication.pri
 %endif
 
 %changelog

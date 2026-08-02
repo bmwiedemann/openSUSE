@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Aug  1 19:30:06 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Drop the Qt 5 flavor (but keep the multibuild setup)
+
+-------------------------------------------------------------------
 Thu Apr 23 08:33:15 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.2.1
