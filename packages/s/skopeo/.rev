@@ -396,4 +396,12 @@
     <user>dimstar_suse</user>
     <comment>Grr. skopeo was again checked in without podman 6</comment>
   </revision>
+  <revision rev="46" vrev="3">
+    <srcmd5>bf9b4c33dd5238f6928fbf76cac7d19b</srcmd5>
+    <version>1.23.0</version>
+    <time>1785705191</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1367367</requestid>
+  </revision>
 </revisionlist>
