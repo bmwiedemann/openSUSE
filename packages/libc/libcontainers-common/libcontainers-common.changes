@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue Jun 30 13:21:53 UTC 2026 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- New release 20260521
+  * bump bundled c/common to 0.68.0:
+    + containers.conf:
+      - previously /usr/share/containers/containers.conf,
+        /etc/containers/containers.conf,
+        ~/.config/containers/containers.conf were read all in order;
+        now only the file with the highest precedence is read
+      - ~/.config/containers/containers.conf will be read before a
+        drop-in file from /etc/containers/containers.conf.d/
+    + storage.conf:
+      - support for drop-in configuration files
+      - storage.rootless.conf.d/ storage.rootful.conf.d/
+        allow configuring options system wide for all users
+      - rootless_storage_path field is deprecated, instead set
+        graphroot to the same value in a drop-in file
+        under storage.rootless.conf.d/
+      - graphroot, runroot options in the default storage.conf are
+        now read by all users; if a specific root only graphroot was
+        set, then this option must be moved to a new drop-in
+        under storage.rootful.conf.d/
+    + registries.conf:
+      - drop support for v1 syntax
+      - support reading the default file under /usr/share/containers
+      - correctly use XDG_CONFIG_HOME for the per user file lookup
+    + registries.d:
+      - support reading files under /usr/share/containers/registries.d/
+    + policy.json:
+      - add /usr/share/containers/policy.json search location
+- Move all vendor config files
+  from /etc/containers/ to /usr/share/containers
+  * user-modified files in /etc/containers continue to work as overrides
+  * preserve ownership of /etc/containers
+  * ghost /etc/containers/{storage,containers}.conf
+- Add Conflicts: podman < 6, buildah < 1.44, skopeo < 1.23
+
+-------------------------------------------------------------------
 Wed Apr 29 10:40:17 UTC 2026 - Danish Prakash <danish.prakash@suse.com>
 
 - New release 20260429

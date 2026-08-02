@@ -4,7 +4,7 @@
     <param name="url">https://github.com/containers/container-libs.git</param>
     <param name="scm">git</param>
     <param name="filename">container-libs</param>
-    <param name="revision">common/v0.67.1</param>
+    <param name="revision">common/v0.68.0</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">common/v(.*)</param>
   </service>
