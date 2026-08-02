@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jul 25 15:35:42 UTC 2026 - Marcus Meissner <meissner@suse.com>
+
+- updated to 11.14 release
+  - 7.1 format conversions in DirectSound.
+  - Support for AES-GMAC algorithm in BCrypt.
+  - New WoW64 mode supported on FreeBSD.
+  - Icons in Start Menu.
+  - Various bug fixes.
+- update staging to 11.14 release
+
+-------------------------------------------------------------------
 Sat Jul 11 14:22:09 UTC 2026 - Marcus Meissner <meissner@suse.com>
 
 - updated to 11.13 release

@@ -68,8 +68,8 @@
 
 %define         _lto_cflags %{nil}
 Name:           wine%{psuffix}
-%define downloadver  11.13
-Version:        11.13
+%define downloadver  11.14
+Version:        11.14
 Release:        0
 Summary:        An MS Windows Emulator
 Group:          System/Emulators/PC
