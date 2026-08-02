@@ -17,7 +17,7 @@
 
 
 Name:           hwinfo
-Version:        25.4
+Version:        25.5
 %define lname	libhd%(echo "%version" | perl -pe 's{\\D.*}{}')
 Release:        0
 Summary:        Hardware Library
@@ -116,6 +116,9 @@ system.
 %dir %{_datadir}/hwinfo
 %{_datadir}/hwinfo/*
 %{_tmpfilesdir}/%{name}.conf
+%dir %{_datadir}/bash-completion
+%dir %{_datadir}/bash-completion/completions/
+%{_datadir}/bash-completion/completions/%{name}
 
 %files -n %lname
 %{_libdir}/libhd.so.*

@@ -1,4 +1,24 @@
 --------------------------------------------------------------------
+Fri Jul 31 12:25:46 UTC 2026 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/hwinfo#187
+- small adjustments to bash-completion, update spec file
+- 25.5
+
+--------------------------------------------------------------------
+Fri Jul 31 11:59:39 UTC 2026 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/hwinfo#183
+- add bash completion script for hwinfo
+
+--------------------------------------------------------------------
+Fri Jul 31 11:43:30 UTC 2026 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/hwinfo#186
+- serial driver file name changed in /proc in current kernel,
+  adjusting code (bsc#1271724)
+
+--------------------------------------------------------------------
 Tue Jun 2 14:47:54 UTC 2026 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/hwinfo#181
