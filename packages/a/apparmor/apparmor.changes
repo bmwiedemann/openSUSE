@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jul 31 18:15:46 UTC 2026 - Christian Boltz <suse-beta@cboltz.de>
+
+- update to AppArmor 5.0.2
+  - several fixes in utils, parser and some profiles
+  - see https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_5.0.2
+    for the upstream changelog
+- remove upstreamed patches:
+  - curl.diff
+  - lsblk-mr2147.diff
+- add nslookup.diff to fix nslookup output
+
+-------------------------------------------------------------------
 Sun Jul  5 09:58:18 UTC 2026 - Christian Boltz <suse-beta@cboltz.de>
 
 - add curl.diff to fix curl console output

@@ -3207,4 +3207,19 @@ Detailed changelog:
     <comment>- add curl.diff to fix curl console output (forwarded request 1363856 from cboltz)</comment>
     <requestid>1363857</requestid>
   </revision>
+  <revision rev="240" vrev="1">
+    <srcmd5>fbef070fb3db823b9a7152462c217ada</srcmd5>
+    <version>5.0.2</version>
+    <time>1785705226</time>
+    <user>dimstar_suse</user>
+    <comment>- update to AppArmor 5.0.2
+  - several fixes in utils, parser and some profiles
+  - see https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_5.0.2
+    for the upstream changelog
+- remove upstreamed patches:
+  - curl.diff
+  - lsblk-mr2147.diff
+- add nslookup.diff to fix nslookup output (forwarded request 1368905 from cboltz)</comment>
+    <requestid>1368906</requestid>
+  </revision>
 </revisionlist>

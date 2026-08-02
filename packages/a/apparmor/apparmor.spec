@@ -51,11 +51,11 @@
 %define CATALINA_HOME /usr/share/tomcat6
 %define JAR_FILE changeHatValve.jar
 
-%define tarversion v5.0.1
-%define pyeggversion 5.0.1
+%define tarversion v5.0.2
+%define pyeggversion 5.0.2
 
 Name:           apparmor
-Version:        5.0.1
+Version:        5.0.2
 Release:        0
 Summary:        AppArmor userlevel parser utility
 License:        GPL-2.0-or-later
@@ -86,14 +86,11 @@ Patch7:         apparmor-enable-precompiled-cache.diff
 # /usr/etc/krb5.conf - boo#1246689 - not submitted upstream yet since https://github.com/krb5/krb5/pull/1437/ is still open
 Patch11:        kerberosclient-usrmerge.diff
 
-# lsblk: fix FSTYPE and UUID - submitted upstream https://gitlab.com/apparmor/apparmor/-/merge_requests/2147
-Patch12:        lsblk-mr2147.diff
+# fix nslookup profile - submitted upstream 2026-07-31 https://gitlab.com/apparmor/apparmor/-/merge_requests/2185
+Patch12:        nslookup.diff
 
 # fix wg-quick profile - boo#1265394 - submitted upstream https://gitlab.com/apparmor/apparmor/-/merge_requests/2123
 Patch13:        wg-quick.diff
-
-# fix curl console output - submitted upstream https://gitlab.com/apparmor/apparmor/-/merge_requests/2161
-Patch14:        curl.diff
 
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -367,7 +364,6 @@ mv -v profiles/apparmor.d/usr.lib.apache2.mpm-prefork.apache2 profiles/apparmor/
 %patch -P 11 -p1
 %patch -P 12 -p1
 %patch -P 13 -p1
-%patch -P 14 -p1
 
 %build
 export SUSE_ASNEEDED=0
