@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Aug  1 18:32:49 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.1.13.post0:
+  * Staging object-tying feature in the core
+  * Rust bindings gained runtime-checked try_cast between ObjectRef
+    types and a leaf-lookup dispatch for match_any, whose ordered
+    conversion and exact-leaf dispatch were also optimised
+  * Manylinux CI sources LLVM from a release and links libstdc++
+    dynamically
+
+-------------------------------------------------------------------
 Fri Jul 31 07:52:41 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.1.13:
