@@ -526,4 +526,27 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1364927</requestid>
   </revision>
+  <revision rev="51" vrev="3">
+    <srcmd5>17ed8426ef919e4d74e4aa3a422bc9aa</srcmd5>
+    <version>4.8</version>
+    <time>1785705197</time>
+    <user>dimstar_suse</user>
+    <comment>- Potential incompatibility!
+  Extend UsrEtc (/usr/etc) support to the main configuration:
+  * Ship the vendor chrony.conf and the chrony.d pool defaults
+    under /usr/etc instead of /etc.
+  * chronyd.service now uses /etc/chrony.conf when it exists and
+    falls back to /usr/etc/chrony.conf otherwise
+    (chrony-usretc-service.patch)
+  * Use the confdir directive for chrony.d so that files in
+    /etc/chrony.d override same-named vendor files in /usr/etc/chrony.d
+  * Preserve admin-modified /etc/chrony.conf and /etc/chrony.d/pool.conf
+    across the upgrade via the standard .rpmsave migration scriptlets.
+  * chrony.keys stays in /etc.
+  * To add the new chrony.d overlay/fallback mechanism to existing
+    configurations the &quot;include&quot; line at the end of /etc/chrony.conf
+    needs to be replaced by the &quot;confdir&quot; line from the new
+    /usr/etc/chrony.conf file.</comment>
+    <requestid>1368834</requestid>
+  </revision>
 </revisionlist>

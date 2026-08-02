@@ -1,0 +1,18 @@
+Use /etc/chrony.conf when present, otherwise fall back to the vendor
+default in /usr/etc/chrony.conf (UsrEtc / hermetic-usr). The selection is
+done in the unit itself so no chronyd code change is needed. $$OPTIONS is
+passed literally to the shell by systemd and expanded from the service
+environment (EnvironmentFile); exec keeps chronyd as the main process so
+Type=notify still works.
+
+--- examples/chronyd.service.orig
++++ examples/chronyd.service
+@@ -15,7 +15,7 @@ Type=notify
+ Environment="OPTIONS="
+ EnvironmentFile=-/etc/sysconfig/chronyd
+ ExecStartPost=@CHRONY_HELPER@ update-daemon
+-ExecStart=/usr/sbin/chronyd -n $OPTIONS
++ExecStart=/bin/sh -c 'if [ -f /etc/chrony.conf ]; then exec /usr/sbin/chronyd -n $$OPTIONS; else exec /usr/sbin/chronyd -n -f /usr/etc/chrony.conf $$OPTIONS; fi'
+
+ CapabilityBoundingSet=~CAP_AUDIT_CONTROL CAP_AUDIT_READ CAP_AUDIT_WRITE
+ CapabilityBoundingSet=~CAP_BLOCK_SUSPEND CAP_KILL CAP_LEASE CAP_LINUX_IMMUTABLE

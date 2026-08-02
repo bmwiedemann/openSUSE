@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Jul 27 14:08:47 UTC 2026 - Reinhard Max <max@suse.com>
+
+- Potential incompatibility!
+  Extend UsrEtc (/usr/etc) support to the main configuration:
+  * Ship the vendor chrony.conf and the chrony.d pool defaults
+    under /usr/etc instead of /etc.
+  * chronyd.service now uses /etc/chrony.conf when it exists and
+    falls back to /usr/etc/chrony.conf otherwise
+    (chrony-usretc-service.patch)
+  * Use the confdir directive for chrony.d so that files in
+    /etc/chrony.d override same-named vendor files in /usr/etc/chrony.d
+  * Preserve admin-modified /etc/chrony.conf and /etc/chrony.d/pool.conf
+    across the upgrade via the standard .rpmsave migration scriptlets.
+  * chrony.keys stays in /etc.
+  * To add the new chrony.d overlay/fallback mechanism to existing
+    configurations the "include" line at the end of /etc/chrony.conf
+    needs to be replaced by the "confdir" line from the new
+    /usr/etc/chrony.conf file.
+
+-------------------------------------------------------------------
 Fri Jul  3 11:14:34 UTC 2026 - Reinhard Max <max@suse.com>
 
 - boo#1257934: support libnettle 4.0 (chrony-libnettle4.patch).

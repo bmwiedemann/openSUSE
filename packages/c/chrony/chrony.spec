@@ -71,6 +71,8 @@ Patch3:         chrony-service-ordering.patch
 Patch7:         chrony-htonl.patch
 Patch8:         chrony.nm-dispatcher.dhcp.patch
 Patch9:         chrony-libnettle4.patch
+# Select /etc/chrony.conf if present, else fall back to /usr/etc/chrony.conf (UsrEtc)
+Patch10:        chrony-usretc-service.patch
 BuildRequires:  NetworkManager-devel
 BuildRequires:  bison
 BuildRequires:  findutils
@@ -183,6 +185,9 @@ e.g. because the servers will be set via DHCP.
 %patch -P 7
 %patch -P 8
 %patch -P 9
+%if %{with usr_etc}
+%patch -P 10
+%endif
 
 # Remove pool statements from the default /etc/chrony.conf. They will
 # be provided by branding packages in /etc/chrony.d/pool.conf .
@@ -192,8 +197,16 @@ sed -e 's|^\pool|! pool|' \
 
 cat << EOF >> chrony.conf
 
-# Also include any directives found in configuration files in /etc/chrony.d
-include %{_sysconfdir}/chrony.d/*.conf
+# Also read any directives found in configuration files in the chrony.d
+# directories. With confdir, when the same file name exists in more than
+# one directory only the file in the first listed directory is used, so
+# listing /etc/chrony.d first lets admin drop-ins override the vendor
+# defaults in /usr/etc/chrony.d. Empty or missing directories are tolerated.
+%if %{with usr_etc}
+confdir %{_sysconfdir}/chrony.d %{_distconfdir}/chrony.d
+%else
+confdir %{_sysconfdir}/chrony.d
+%endif
 
 # Add sourcedir needed by NetworkManager DHCP dispatcher
 sourcedir /run/chrony-dhcp
@@ -233,8 +246,17 @@ EOF
 
 %install
 %make_install
+%if %{with usr_etc}
+# Ship the vendor chrony.conf in /usr/etc; the service unit uses it as a
+# fallback when the admin has not provided /etc/chrony.conf.
+install -Dpm 0644 chrony.conf \
+  %{buildroot}%{_distconfdir}/chrony.conf
+mkdir -p %{buildroot}%{_distconfdir}/chrony.d
+%else
 install -Dpm 0644 chrony.conf \
   %{buildroot}%{_sysconfdir}/chrony.conf
+%endif
+# /etc/chrony.d always exists for admin drop-ins/overrides
 mkdir %{buildroot}%{_sysconfdir}/chrony.d
 install -Dpm 0640 examples/chrony.keys.example \
   %{buildroot}%{_sysconfdir}/chrony.keys
@@ -281,9 +303,14 @@ install -d %{buildroot}%{_localstatedir}/log/chrony
 touch %{buildroot}%{_localstatedir}/lib/chrony/{drift,rtc}
 
 %if %{with pools}
-# Install the NTP pool files
-install -Dpm 644 %{SOURCE12} %{SOURCE13} %{buildroot}/etc/chrony.d
-echo '# Add ntp pools here' > %{buildroot}/etc/chrony.d/pool.conf.empty
+# Install the NTP pool files as vendor defaults
+%if %{with usr_etc}
+%define pool_dir %{_distconfdir}/chrony.d
+%else
+%define pool_dir %{_sysconfdir}/chrony.d
+%endif
+install -Dpm 644 %{SOURCE12} %{SOURCE13} %{buildroot}%{pool_dir}
+echo '# Add ntp pools here' > %{buildroot}%{pool_dir}/pool.conf.empty
 %endif
 
 mkdir -p %{buildroot}%{_sysusersdir}
@@ -309,7 +336,7 @@ make %{?_smp_mflags} quickcheck
 %service_add_pre chronyd.service chrony-wait.service
 %if %{with usr_etc}
 # Prepare for migration to /usr/etc; save any old .rpmsave
-for i in logrotate.d/chrony ; do
+for i in logrotate.d/chrony chrony.conf ; do
    test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
 done
 %endif
@@ -317,7 +344,7 @@ done
 %if %{with usr_etc}
 %posttrans
 # Migration to /usr/etc, restore just created .rpmsave
-for i in logrotate.d/chrony ; do
+for i in logrotate.d/chrony chrony.conf ; do
    test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
 done
 %endif
@@ -342,15 +369,22 @@ done
 %endif
 %doc FAQ NEWS README
 %doc examples
+%if %{with usr_etc}
+%{_distconfdir}/chrony.conf
+%else
 %config(noreplace) %attr(0640,root,%{name}) %{_sysconfdir}/chrony.conf
+%endif
 %config(noreplace) %attr(0640,root,%{name}) %verify(not md5 size mtime) %{_sysconfdir}/chrony.keys
-%if 0%{?suse_version} > 1500
+%if %{with usr_etc}
 %{_distconfdir}/logrotate.d/chrony
 %else
 %config(noreplace) %{_sysconfdir}/logrotate.d/chrony
 %endif
 %attr(0755,root,root) %{_prefix}/lib/NetworkManager/dispatcher.d/20-chrony-onoffline
 %attr(0755,root,root) %{_prefix}/lib/NetworkManager/dispatcher.d/20-chrony-dhcp
+%if %{with usr_etc}
+%dir %{_distconfdir}/chrony.d/
+%endif
 %dir %{_sysconfdir}/chrony.d/
 %dir %{_sysconfdir}/dhcp/
 %dir %{_sysconfdir}/dhcp/dhclient.d/
@@ -377,6 +411,37 @@ done
 %ghost %attr(0750, %{name}, %{name}) %{_rundir}/%{name}
 
 %if %{with pools}
+%if %{with usr_etc}
+# The pool.conf moved from /etc to /usr/etc; preserve an admin-modified
+# copy across the upgrade using the standard .rpmsave dance.
+%pre pool-empty
+test -f %{_sysconfdir}/chrony.d/pool.conf.rpmsave && mv -v %{_sysconfdir}/chrony.d/pool.conf.rpmsave %{_sysconfdir}/chrony.d/pool.conf.rpmsave.old ||:
+
+%posttrans pool-empty
+test -f %{_sysconfdir}/chrony.d/pool.conf.rpmsave && mv -v %{_sysconfdir}/chrony.d/pool.conf.rpmsave %{_sysconfdir}/chrony.d/pool.conf ||:
+
+%pre pool-suse
+test -f %{_sysconfdir}/chrony.d/pool.conf.rpmsave && mv -v %{_sysconfdir}/chrony.d/pool.conf.rpmsave %{_sysconfdir}/chrony.d/pool.conf.rpmsave.old ||:
+
+%posttrans pool-suse
+test -f %{_sysconfdir}/chrony.d/pool.conf.rpmsave && mv -v %{_sysconfdir}/chrony.d/pool.conf.rpmsave %{_sysconfdir}/chrony.d/pool.conf ||:
+
+%pre pool-openSUSE
+test -f %{_sysconfdir}/chrony.d/pool.conf.rpmsave && mv -v %{_sysconfdir}/chrony.d/pool.conf.rpmsave %{_sysconfdir}/chrony.d/pool.conf.rpmsave.old ||:
+
+%posttrans pool-openSUSE
+test -f %{_sysconfdir}/chrony.d/pool.conf.rpmsave && mv -v %{_sysconfdir}/chrony.d/pool.conf.rpmsave %{_sysconfdir}/chrony.d/pool.conf ||:
+
+%files pool-empty
+%{_distconfdir}/chrony.d/pool.conf.empty
+
+%files pool-suse
+%{_distconfdir}/chrony.d/pool.conf.suse
+
+%files pool-openSUSE
+%{_distconfdir}/chrony.d/pool.conf.opensuse
+%else
+
 %files pool-empty
 %attr(-,root,root)%config (noreplace) /etc/chrony.d/pool.conf.empty
 
@@ -385,6 +450,7 @@ done
 
 %files pool-openSUSE
 %attr(-,root,root)%config (noreplace) /etc/chrony.d/pool.conf.opensuse
+%endif
 %endif
 
 %changelog
