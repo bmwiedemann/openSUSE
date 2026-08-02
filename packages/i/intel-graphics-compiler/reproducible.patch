@@ -1,0 +1,39 @@
+From 7afc7932fab707c426842a413b829d1e49897200 Mon Sep 17 00:00:00 2001
+From: "Bernhard M. Wiedemann" <bwiedemann@suse.de>
+Date: Sun, 19 Jul 2026 06:06:35 +0200
+Subject: [PATCH] Fully initialize struct BiFDataRecord
+
+for reproducible builds.
+Without this patch, 4 bytes were left uninitialized
+and ASLR caused it to have random content.
+
+See https://reproducible-builds.org/ for why this matters.
+
+Fixes #359
+
+This patch was done while working on reproducible builds for openSUSE.
+---
+ IGC/BiFManager/BiFManagerCommon.hpp | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/IGC/BiFManager/BiFManagerCommon.hpp b/IGC/BiFManager/BiFManagerCommon.hpp
+index 90a697f6bf7b..06b919c2effe 100644
+--- a/IGC/BiFManager/BiFManagerCommon.hpp
++++ b/IGC/BiFManager/BiFManagerCommon.hpp
+@@ -46,6 +46,8 @@ class CollectBuiltinsPass : public llvm::InstVisitor<CollectBuiltinsPass> {
+ struct BiFDataRecord {
+   // Section ID
+   BiFSectionID ID;
++  // Explicit padding to initialize for reproducible builds
++  int32_t padding;
+   // Beginning of section in the stream
+   int64_t bufferStart;
+   // Size of the section in the stream
+@@ -53,6 +55,7 @@ struct BiFDataRecord {
+ 
+   BiFDataRecord(BiFSectionID ID, int64_t bufferStart, int64_t bufferSize) {
+     this->ID = ID;
++    this->padding = 0;
+     this->bufferStart = bufferStart;
+     this->bufferSize = bufferSize;
+   }

@@ -39,6 +39,7 @@ Source4:        https://github.com/intel/vc-intrinsics/archive/%{vc_intrinsics_r
 Patch0:         0001-Replace-ciso646-with-version.patch
 Patch1:         0003-Empty-check-before-vector-use.patch
 Patch2:         0001-Remove-rpath.patch
+Patch3:         https://github.com/intel/intel-graphics-compiler/pull/418.patch#/reproducible.patch
 BuildRequires:  bison
 BuildRequires:  cmake
 BuildRequires:  flex
@@ -136,6 +137,7 @@ mkdir igc
 tar -xzf %{_sourcedir}/v%{version}.tar.gz -C igc --strip-components=1
 pushd igc
 %patch -P 1 -p1
+%patch -P3 -p1
 popd
 
 %build
