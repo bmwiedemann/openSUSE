@@ -392,4 +392,12 @@
     <comment>Plasma 6.7.3 (forwarded request 1365832 from Vogtinator)</comment>
     <requestid>1365869</requestid>
   </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>4b5cb40c264b47caac2f98303dbc3e37</srcmd5>
+    <version>6.7.3</version>
+    <time>1785705250</time>
+    <user>dimstar_suse</user>
+    <comment>Make Qt 5 optional during runtime as well (forwarded request 1369026 from Vogtinator)</comment>
+    <requestid>1369036</requestid>
+  </revision>
 </revisionlist>

@@ -106,7 +106,7 @@ BuildArch:      noarch
 This package contains the Oxygen cursor set.
 
 %package style
-Summary:        Oxygen style
+Summary:        Oxygen style for Qt 6
 License:        GPL-2.0-or-later
 # Color schemes were moved to the oxygen repo
 Conflicts:      plasma5-desktop < 5.16.90
@@ -118,9 +118,20 @@ Obsoletes:      oxygen5-style-lang < %{version}
 # The oxygen desktop theme was moved here in 6.2.0
 Conflicts:      libplasma6-desktoptheme < 6.2.0
 Conflicts:      plasma-framework-desktoptheme < 6.2.0
+%if %{with plasma5}
+Requires:       (%{name}-style-qt5 if libQt5Widgets5)
+%endif
 
 %description style
-This package contains the libraries of the Oxygen style.
+This package contains the libraries of the Oxygen style for Qt 6.
+
+%package style-qt5
+Summary:        Oxygen style for Qt 5
+License:        GPL-2.0-or-later
+Requires:       %{name}-style = %{version}
+
+%description style-qt5
+This package contains the libraries of the Oxygen style for Qt 5.
 
 %package decoration
 Summary:        Oxygen's KWin decoration
@@ -187,6 +198,8 @@ This package provides Oxygen wallpapers.
 %{_kf6_sharedir}/kstyle/
 
 %if %{with plasma5}
+%files style-qt5
+%license LICENSES/*
 %{_kf6_bindir}/oxygen-demo5
 %{_kf5_libdir}/liboxygenstyle5.so.*
 %{_kf5_libdir}/liboxygenstyleconfig5.so.*
