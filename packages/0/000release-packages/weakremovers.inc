@@ -64675,6 +64675,8 @@ Provides: weakremover(zypper-docker)
 # factory:non-oss
 Provides: weakremover(bladeRF-fpga-firmware)
 Provides: weakremover(bladeRF-fx3-firmware)
+Provides: weakremover(broadcom-wl)
+Provides: weakremover(broadcom-wl-kmp-default)
 Provides: weakremover(devilutionx)
 Provides: weakremover(devilutionx-32bit)
 Provides: weakremover(displaylink-driver)
