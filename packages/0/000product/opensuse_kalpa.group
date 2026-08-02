@@ -1603,6 +1603,7 @@
     <package name="yakuake" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="yast2-logs" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="zstd" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
+    <package name="zypp-single-rpmtrans" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="zypper" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="zypper-needs-restarting" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
   </packagelist>

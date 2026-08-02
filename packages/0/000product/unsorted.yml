@@ -8958,6 +8958,8 @@ unsorted:
   - ima-evm-utils-devel 
   - ima-inspect 
   - image-janitor 
+  - image-optimizer 
+  - image-optimizer-lang 
   - imageburner 
   - imageburner-lang 
   - imagej 
@@ -10040,7 +10042,6 @@ unsorted:
   - kdb-postgresql-driver 
   - kdb-sqlite3-driver 
   - kdbusaddons-devel 
-  - kddockwidgets-devel 
   - kddockwidgets-qt6-devel 
   - kde-fcstd-thumbnailer 
   - kde-inotify-survey-lang 
@@ -10153,6 +10154,7 @@ unsorted:
   - keybinder-3.0-devel 
   - keychain 
   - keyd 
+  - keyd-application-mapper 
   - keyfinder-cli 
   - keylightctl 
   - keylightd 
@@ -12165,12 +12167,12 @@ unsorted:
   - libarmnnTestUtils3-opencl 
   - libarpack2 
   - libarprec0 
-  - libarrow2300 
-  - libarrow_acero2300 
-  - libarrow_compute2300 
-  - libarrow_dataset2300 
-  - libarrow_flight2300 
-  - libarrow_flight_sql2300 
+  - libarrow2500 
+  - libarrow_acero2500 
+  - libarrow_compute2500 
+  - libarrow_dataset2500 
+  - libarrow_flight2500 
+  - libarrow_flight_sql2500 
   - libasan4 
   - libasan4-32bit 
   - libasan8-32bit 
@@ -13164,7 +13166,7 @@ unsorted:
   - libedit-devel 
   - libedit0-32bit 
   - libeditorconfig-devel 
-  - libeduvpn_common-5_0_2 
+  - libeduvpn_common-5_0_3 
   - libefa1-32bit 
   - libei-devel 
   - libeiskaltdcpp2_4 
@@ -14381,7 +14383,6 @@ unsorted:
   - libkdcraw-qt5 
   - libkdcraw-qt5-devel 
   - libkddockwidgets-qt6-3 
-  - libkddockwidgets3 
   - libkdecoration2-devel 
   - libkdecorations2-5 
   - libkdecorations2-5-lang 
@@ -14992,7 +14993,7 @@ unsorted:
   - libmunge2 
   - libmuparser2_3_5 
   - libmuparserx4_0_12 
-  - libmupdf28_0 
+  - libmupdf28_1 
   - libmupen64plus-devel 
   - libmupen64plus2 
   - libmusicbrainz-devel 
@@ -15466,7 +15467,7 @@ unsorted:
   - libparlatype7 
   - libparpack2-openmpi4 
   - libparpack2-openmpi5 
-  - libparquet2300 
+  - libparquet2500 
   - libparserutils-devel 
   - libparserutils0 
   - libpartio1 
@@ -16768,11 +16769,11 @@ unsorted:
   - libtheoraenc2-32bit 
   - libthreadar-devel 
   - libthreadar1000 
-  - libthrift-0_23_0 
+  - libthrift-0_24_0 
   - libthrift-devel 
   - libthrift_c_glib0 
-  - libthriftnb-0_23_0 
-  - libthriftz-0_23_0 
+  - libthriftnb-0_24_0 
+  - libthriftz-0_24_0 
   - libtidy-devel 
   - libtidy58 
   - libtidyp-1_04-0 
@@ -19910,6 +19911,7 @@ unsorted:
   - nbdkit-tmpdisk-plugin 
   - nbdkit-vddk-plugin 
   - nbdkit-xz-filter 
+  - nbox 
   - nbping 
   - nbsdgames 
   - ncdu 
@@ -24550,6 +24552,7 @@ unsorted:
   - python313-MulticoreTSNE 
   - python313-OSMPythonTools 
   - python313-OWSLib 
+  - python313-OpenEXR 
   - python313-PTable 
   - python313-Pallets-Sphinx-Themes 
   - python313-Parsley 
@@ -28529,6 +28532,7 @@ unsorted:
   - python314-MulticoreTSNE 
   - python314-OSMPythonTools 
   - python314-OWSLib 
+  - python314-OpenEXR 
   - python314-PTable 
   - python314-Pallets-Sphinx-Themes 
   - python314-Parsley 
@@ -31813,6 +31817,7 @@ unsorted:
   - python314-rpyc 
   - python314-rq 
   - python314-rq-scheduler 
+  - python314-rrdtool 
   - python314-rsa 
   - python314-rst.linker 
   - python314-rstcheck 
@@ -32508,11 +32513,9 @@ unsorted:
   - python315-nogil-dbm 
   - python315-nogil-devel 
   - python315-nogil-idle 
-  - python315-nogil-profiling 
   - python315-nogil-testsuite 
   - python315-nogil-tk 
   - python315-nogil-tools 
-  - python315-profiling 
   - python315-testsuite 
   - python315-tk 
   - python315-tools 
