@@ -1,7 +1,7 @@
 #
 # spec file for package papirus-icon-theme
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           papirus-icon-theme
-Version:        20250501
+Version:        20260801
 Release:        0
 Summary:        Papirus icon theme for Linux
 License:        GPL-3.0-only

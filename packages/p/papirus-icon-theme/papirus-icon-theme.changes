@@ -1,4 +1,123 @@
 -------------------------------------------------------------------
+Sun Aug  2 04:40:10 UTC 2026 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- update to 20260801
+
+Added icons
+
+  * 64Gram (panel icons) by @mochaaP in #4134
+  * AIMP Audio Converter by @varlesh
+  * AIMP by @varlesh
+  * AIMP Tag Editor by @varlesh
+  * Amnezia VPN by @varlesh
+  * application-x-coff by @achadwick
+  * application/x-genesis-rom-smd by @achadwick
+  * AssaultCube Reloaded by @achadwick
+  * audio/x-matroska (mimetype) by @Stzx in #4106
+  * Azote by @varlesh
+  * Black Desert (apps, game) by @aaheen in #4133
+  * Brave Origin Nightly by @alteredpark in #4289
+  * Cider (official packages) by @ferranox in #4316
+  * Cities skylines 2 Icons #4081 by @mjkim0727
+  * Claw by @varlesh
+  * ClipIt by @varlesh
+  * Clipse GUI by @varlesh
+  * Commodore (mimetypes) by @achadwick
+  * cs-thunderbolt (Cinnamon Desktop) #4204 by @varlesh
+  * EasyEffects (symbolic icons) by @varlesh
+  * Electron 37 by @varlesh
+  * Euphonica (MPD client) (app and actions icons) by @varlesh
+  * Feishin by @Adra642 in #4244
+  * Fuse (emulator) by @achadwick
+  * Gajim (actions and panel icons) #4082 by @varlesh
+  * GNOME Manuals by @achadwick
+  * Google Antigravity #4188 by @Adra642 in #4245
+  * HardInfo2 by @varlesh
+  * Helium Browser by @achadwick
+  * Hollow Knight: Silksong #3325 by @Shyxuu2 and @achadwick in #4156
+  * ImageLounge (Fedora) by @chtholly255 in #4284
+  * Indicators icons by @varlesh
+  * Jellyfin Desktop by @romch007 in #4209
+  * labwc-tweaks by @varlesh
+  * LibreSprite by @achadwick
+  * LocalSend (AUR) #3968 #3732 by @varlesh
+  * lxqt-about by @varlesh
+  * Max Messenger by @varlesh
+  * NAPS2 by @achadwick
+  * Nero Burning ROM by @achadwick
+  * Nintendo DS ROMs by @achadwick
+  * Nix (mimetype) #3478 by @LucidLettuce and @achadwick in #4208
+  * nwg-shell by @varlesh
+  * OpenJDK 25 by @Adra642 in #4174
+  * Overwatch (Steam) by @makinori in #4195
+  * PasswordSafe by @achadwick
+  * Photocre (Flatpak) by @achadwick
+  * Photopea by @achadwick
+  * PINCE by @varlesh
+  * Podman Desktop #3294 by @varlesh
+  * PortProtonQt by @varlesh
+  * ProtonVPN tray symlinks (Flatpak) #4079 by @varlesh
+  * qBittorrent by @varlesh
+  * Reaper (DAW) (Flatpak) by @aaheen in #4132
+  * RenderDoc by @zoli111 in #4113
+  * Ruffle by @achadwick
+  * Sensors icons for KInfoCenter by @varlesh
+  * Sheepy: A Short Adventure by @E-man-dev in #4094
+  * SongRec by @achadwick
+  * StartWine (hardcoded) by @varlesh
+  * Syncthing Tray and SyncThingy (Flatpak) by @achadwick
+  * System Administration (mintsysadm) #4203 by @varlesh
+  * Team Fortress 2 Classified by @achadwick
+  * text/x-meson by @achadwick
+  * text/x-shellscript #4310 by @HanabishiRecca in #4308
+  * TheXTech by @ninstar in #4220
+  * Thunderbird (Flatpak) by @morganist
+  * TIC-80 and PICO-8 (mimetypes) by @achadwick
+  * TIC-80 and PICO-8 by @achadwick
+  * tools-report-bug by @varlesh
+  * Toontown Rewritten (Flatpak) by @achadwick
+  * Typst (mimetype) #3552 by @FernLeafie and @achadwick in #4266
+  * ungoogled-chromium-browser (Gentoo) by @htv04 in #4288
+  * VICE (per-machine emulator icons) by @achadwick
+  * wdisplays by @varlesh
+  * weather-clouds-symbolic by @Erwin-Iosef in #4092
+  * WhiskerMenu, Notes, SysTray, XKB (Xfce applets) by @varlesh
+  * Yandex Music #4176 by @varlesh
+  * ZamAudio by @varlesh
+  * ZX Spectrum emulation formats (mimetypes) by @achadwick
+
+Updated icons
+
+  * C family mimetype icons by @achadwick
+  * IntelliJ IDEA Ultimate and Community edition by @Adra642 in #4189
+  * MuseScore by @Naicon67 in #4154
+  * PyCharm and PyCharm CE by @Adra642 in #4261
+  * ReText by @achadwick
+  * text-x-kotlin by @achadwick
+  * text-x-readme by @achadwick
+  * text/x-tcl by @achadwick
+  * Zotero #4117 by @achadwick
+
+Removed icons
+
+  * SmartGit and SmartSynchronize #4114 by @varlesh
+
+Changes and fixes
+
+  * Added a workaround to scale 16px symbolic icons up to 20px #4036 by @SmartFinn
+  * Added image-flip/rotate symlinks for Koko & Breeze by @achadwick
+  * Added symlinks for recent IANA types & bzip{1,2,3} coverage by @achadwick
+  * Changed target for display-symbolic to devices icons #4136
+  * Fixed mimetypes for WPS Office #4089 by @zrquan in #4090
+  * Fixed OpenRA Flatpak names by @Dejweed in #4085
+  * Fixed tray icons for BlueMan/BlueBerry symlinks #4077 by @varlesh
+  * Fixed Ungoogled Chromium Flatpak app ID by @rany2 #4109
+
+Others
+
+  * Fixed grammar in Icon Request issue template by @spageektti in #4306
+
+-------------------------------------------------------------------
 Sat May  3 06:53:42 UTC 2025 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - update to 20250501
