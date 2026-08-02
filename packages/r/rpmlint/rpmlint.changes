@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 31 12:04:42 UTC 2026 - Mislav Bozicevic <mislav.bozicevic@suse.com>
+
+- Update to version 2.9.0+git20260731.cace0392:
+  * varlink-whitelist: whitelist sysextmgr (bsc#1247107)
+  * varlink-whitelist: add wtmpdb (bsc#1261919)
+  * varlink-whitelist: add account-utils (bsc#1261919)
+
+-------------------------------------------------------------------
 Wed Jul 22 08:44:39 UTC 2026 - Wolfgang Frisch <wolfgang.frisch@suse.com>
 
 - Update to version 2.9.0+git20260722.276b8fa5:
