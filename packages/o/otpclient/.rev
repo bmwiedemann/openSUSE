@@ -662,4 +662,25 @@
     <comment>update</comment>
     <requestid>1366749</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>6de9b70ba9c780e56a3ff0c1ced85010</srcmd5>
+    <version>5.1.6</version>
+    <time>1785705288</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.1.6:
+  * FIX: with Auto-Lock enabled but the timeout left at its
+    default, the database re-locked roughly five seconds after each
+    unlock. The idle timer counts seconds, but the default was 5
+    and documented as minutes; it is now 300 seconds (five
+    minutes), so profiles that never set a timeout pick up a sane
+    value automatically (#467)
+  * FIX: the unlock prompt could not be dismissed and closing it
+    quit the whole application, so Settings could not be reached
+    while locked. Dismissing it (Escape, the dialog close button,
+    clicking outside, or the window close button) now drops to the
+    locked screen and keeps the toolbar reachable; the toolbar lock
+    button doubles as an unlock button while locked, and an
+    explicit Quit button remains on the prompt (#467)</comment>
+    <requestid>1369095</requestid>
+  </revision>
 </revisionlist>
