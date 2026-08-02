@@ -27,7 +27,7 @@
 %endif
 
 Name:           golang-github-prometheus-prometheus
-Version:        3.12.0
+Version:        3.13.2
 Release:        0
 Summary:        The Prometheus monitoring system and time series database
 License:        Apache-2.0
@@ -35,19 +35,17 @@ Group:          System/Monitoring
 URL:            https://prometheus.io/
 Source:         prometheus-%{version}.tar.gz
 Source1:        vendor.tar.gz
+Source2:        web-%{version}.tar.gz
+
 Source3:        prometheus.service
 Source4:        prometheus.yml
 Source5:        prometheus.sysconfig
 Source6:        prometheus.firewall.xml
 Source7:        prometheus.tmpfiles
 #
-Source10:       package-lock.json
-Source11:       node_modules.spec.inc
-%include        %{_sourcedir}/node_modules.spec.inc
-#
 Source21:       Makefile
 Source22:       PACKAGING_README.md
-Source23:       create_package-lock_json.sh
+Source23:       prepare_webassets.sh
 #
 Patch1:         0001-Do-not-force-the-pure-Go-name-resolver.patch
 # Lifted from Debian's prometheus package
@@ -62,7 +60,6 @@ BuildRequires:  firewall-macros
 # with -buildmode=pie
 BuildRequires:  glibc-devel-static
 BuildRequires:  golang-github-prometheus-promu >= 0.14.0
-BuildRequires:  local-npm-registry
 BuildRequires:  golang(API) >= 1.25
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if 0%{?suse_version} >= 1500
@@ -90,15 +87,15 @@ Prometheus's main features are:
  - multiple modes of graphing and dashboarding support
 
 %prep
-%autosetup -a1 -p1 -n prometheus-%{version}
-pushd web/ui
-local-npm-registry %{_sourcedir} install --include=dev
-popd
+# As the 0003-Remove-build-react-app.patch patch was already applied
+# during the webassets generation, it would fail to apply now.
+# Hence we are using setup and autopatch instead of autosetup
+# to omit this patch during the build
+%setup -q -a1 -n prometheus-%{version}
+%autopatch -p1 -M 2
+tar xf %{SOURCE2}
 
 %build
-pushd web/ui
-npm run build
-popd
 rm -f npm_licenses.tar.bz2 npm_licenses
 ln -s . npm_licenses
 find npm_licenses/web/ui/node_modules -iname "license*" | tar cfj npm_licenses.tar.bz2 --files-from=-
