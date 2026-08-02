@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 31 10:50:47 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- added patches
+  CVE-2026-9672: upgrade gd [bsc#1273101]
+  * gd-CVE-2026-9672.patch
+
+-------------------------------------------------------------------
 Thu Feb 22 08:15:24 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

@@ -1,7 +1,7 @@
 #
 # spec file for package gd
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,8 @@ Patch1:         gd-fontpath.patch
 Patch2:         gd-format.patch
 # could be upstreamed
 Patch3:         gd-aliasing.patch
+# CVE-2026-9672: upgrade gd [bsc#1273101]
+Patch4:         gd-CVE-2026-9672.patch
 # needed for tests
 BuildRequires:  dejavu-fonts
 BuildRequires:  libjpeg-devel
