@@ -17,7 +17,7 @@
 
 
 Name:           schedctl
-Version:        1.2.1
+Version:        1.3.0
 Release:        0
 Summary:        Linux eBPF sched_ext plug and play schedulers for fun and profit
 License:        Apache-2.0
@@ -43,10 +43,14 @@ go build -ldflags='-s -X main.version=%{version}' -o=./schedctl main.go
 
 %install
 install -D -m 0755 %{name} "%{buildroot}/%{_bindir}/%{name}"
+mkdir -p "%{buildroot}/%{_mandir}/man1"
+install -m 0644 dist/man/*.1 "%{buildroot}/%{_mandir}/man1/"
+gzip -9 "%{buildroot}/%{_mandir}/man1/"*.1
 
 %files
 %doc README.md
 %license LICENSE
 %{_bindir}/%{name}
+%{_mandir}/man1/*
 
 %changelog
