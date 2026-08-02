@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Aug  1 17:32:15 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
+
+- added fix-gcc16-compilation.patch to fix GCC 16 compilation:
+  removed unnecessary NULL comparison triggering
+  "error: ambiguous overload for ‘operator!="
+
+-------------------------------------------------------------------
 Tue Sep 30 11:39:24 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Remove BuildRequires on libboost_system-devel, 
