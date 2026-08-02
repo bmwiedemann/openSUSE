@@ -29,9 +29,9 @@ BuildRequires:  cargo
 BuildRequires:  cmake >= 3.22
 BuildRequires:  gcc-c++
 BuildRequires:  rust
-Requires:       cargo
+Requires:       (cargo or rustup)
 Requires:       cmake >= 3.12
-Requires:       rust
+Requires:       (rust or rustup)
 
 %description
 Corrosion, formerly known as cmake-cargo, is a tool for integrating Rust into

@@ -55,4 +55,31 @@
     build-scripts and proc-macros).</comment>
     <requestid>1362258</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>daf0cacdb9553c7dce643c545b889854</srcmd5>
+    <version>0.6.1</version>
+    <time>1785705223</time>
+    <user>dimstar_suse</user>
+    <comment>Allow installing corrosion alongside rustup
+
+The rustup package ships /usr/bin/cargo and /usr/bin/rustc itself and
+conflicts with the cargo and rust packages, without providing those
+capabilities. The hard &quot;Requires: cargo&quot; and &quot;Requires: rust&quot; can therefore
+only be satisfied by the distro toolchain, so rustup users cannot install
+corrosion at all -- zypper offers only &quot;deinstall rustup&quot; or &quot;break the
+dependency&quot;. Note that the cargo package's own description recommends rustup
+for development systems.
+
+Rich dependencies keep the distro-toolchain case unchanged and additionally
+accept rustup. Nothing is lost: since 0.6.0 dropped the native tooling,
+corrosion ships only CMake files and calls whatever cargo/rustc are on PATH.
+
+Build results are unchanged from the devel package (SLE_12 and 15.7 were
+already unresolvable), and the resulting rpm installs cleanly against
+rustup 1.28.2 on Tumbleweed.
+
+This affects anyone building KDE from source with rustup: current KDE master
+calls find_package(Corrosion) in five modules. (forwarded request 1368822 from dfaure)</comment>
+    <requestid>1368873</requestid>
+  </revision>
 </revisionlist>
