@@ -17,13 +17,13 @@
 
 
 Name:           rhythmbox
-Version:        3.4.9
+Version:        3.5.0
 Release:        0
 Summary:        GNOME Music Management Application
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Players
 URL:            https://wiki.gnome.org/Apps/Rhythmbox
-Source0:        https://download.gnome.org/sources/rhythmbox/3.4/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/rhythmbox/3.5/%{name}-%{version}.tar.xz
 Source1:        %{name}-remote-control.xml
 Source2:        daap-server.xml
 
@@ -133,7 +133,7 @@ rm -rf %{buildroot}%{_libdir}/rhythmbox/plugins/rbzeitgeist/
 %dir %{_datadir}/metainfo
 %{_datadir}/applications/org.gnome.Rhythmbox3.desktop
 %{_datadir}/applications/org.gnome.Rhythmbox3.device.desktop
-%{_datadir}/metainfo/org.gnome.Rhythmbox3.appdata.xml
+%{_datadir}/metainfo/org.gnome.Rhythmbox3.metainfo.xml
 %{_datadir}/dbus-1/services/org.gnome.Rhythmbox3.service
 %{_datadir}/glib-2.0/schemas/org.gnome.rhythmbox.gschema.xml
 %{_datadir}/icons/hicolor/scalable/apps/org.gnome.Rhythmbox*.svg
@@ -154,6 +154,7 @@ rm -rf %{buildroot}%{_libdir}/rhythmbox/plugins/rbzeitgeist/
 %{_libdir}/rhythmbox/plugins/dbus-media-server/
 %{_libdir}/rhythmbox/plugins/fmradio/
 %{_libdir}/rhythmbox/plugins/generic-player/
+%{_libdir}/rhythmbox/plugins/gpodder/
 %{_libdir}/rhythmbox/plugins/grilo/
 %{_libdir}/rhythmbox/plugins/im-status/
 %{_libdir}/rhythmbox/plugins/ipod/

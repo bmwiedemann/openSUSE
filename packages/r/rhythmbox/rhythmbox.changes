@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Aug  2 10:19:34 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.5.0:
+  + New playback backend is enabled by default
+  + Support for finding lyrics using lrclib.net, in sidecar .lrc
+    files, and embedded in Ogg files
+  + Reworked notifications for podcast updates and downloads
+  + Redesigned display of podcast episodes, including indication of
+    episodes that have already been played
+  + New plugin implementing podcast feed and episode sync using the
+    gPodder.net API
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Oct 13 11:21:17 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.4.9:
