@@ -1150,4 +1150,12 @@
   * iscsi: validate interface IP against target address family (#527)</comment>
     <requestid>1366256</requestid>
   </revision>
+  <revision rev="141" vrev="113">
+    <srcmd5>05d5d0cb196c5a37baee46ba02cf62b7</srcmd5>
+    <version>unknown</version>
+    <time>1785705224</time>
+    <user>dimstar_suse</user>
+    <comment>Added bug numbers to CVE numbers in Changes file</comment>
+    <requestid>1368883</requestid>
+  </revision>
 </revisionlist>
