@@ -1846,4 +1846,12 @@ mostly-working synapse than nothing at all) and the package has been update to
       - Fix ELEMENTSEC-2026-1760</comment>
     <requestid>1368235</requestid>
   </revision>
+  <revision rev="166" vrev="2">
+    <srcmd5>84abdecf68f4f483a492a82185f94128</srcmd5>
+    <version>1.157.2</version>
+    <time>1785705274</time>
+    <user>dimstar_suse</user>
+    <comment>Add python-devel to BuildRequires for rust abi3 linking</comment>
+    <requestid>1369070</requestid>
+  </revision>
 </revisionlist>

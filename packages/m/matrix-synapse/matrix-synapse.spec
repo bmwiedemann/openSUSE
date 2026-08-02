@@ -255,6 +255,7 @@ Patch2:         0002-Build-RustExtension-with-debug-symbols.patch
 # disable by marking as source until we get a decision upstream
 Source100:      10719-Fix-instert-of-duplicate-key-into-event_json.patch
 BuildRequires:  %{use_python}-base >= 3.11
+BuildRequires:  %{use_python}-devel
 BuildRequires:  %{use_python}-pip
 BuildRequires:  %{use_python}-poetry-core >= 1.1.0
 BuildRequires:  %{use_python}-setuptools
