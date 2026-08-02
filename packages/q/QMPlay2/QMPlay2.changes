@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Aug  2 11:40:18 UTC 2026 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 26.08.02:
+  * don't close panel when mouse is pressed inside window on full
+    screen (regression fix),
+  * use BT.2020 surface for BT.2020 videos in Vulkan (enabled by
+    default for Wayland),
+  * add support for BT.2020 TRC for sRGB conversion,
+  * display real gamma correction values,
+  * load and display LRC file contents,
+  * add option to hide QMPlay2 logo,
+  * fix HLG HDR display.
+
+-------------------------------------------------------------------
 Sat Jun 27 22:14:11 UTC 2026 - Simon Vogl <simon.vogl@gmx.net>
 
 - Update to version 26.06.27:
