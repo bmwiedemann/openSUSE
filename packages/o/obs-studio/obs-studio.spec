@@ -31,7 +31,6 @@ BuildRequires:  cmake >= 3.28
 BuildRequires:  cmake(LibDataChannel) >= 0.21.0
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
-BuildRequires:  ffmpeg-7-mini-devel >= 6.1
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  mbedtls-2-devel
 BuildRequires:  pciutils-devel
@@ -44,6 +43,11 @@ BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(jansson) >= 2.14
+BuildRequires:  pkgconfig(libavcodec)
+BuildRequires:  pkgconfig(libavdevice)
+BuildRequires:  pkgconfig(libavfilter)
+BuildRequires:  pkgconfig(libavformat)
+BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libcurl) >= 6.1
 BuildRequires:  pkgconfig(libglvnd)
 BuildRequires:  pkgconfig(libpipewire-0.3) >= 0.3.65

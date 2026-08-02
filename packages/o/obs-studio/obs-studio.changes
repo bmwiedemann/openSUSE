@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 31 16:23:26 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add pkgconfig(libavcodec), pkgconfig(libavdevice),
+  pkgconfig(libavfilter), pkgconfig(libavformat) and
+  pkgconfig(libavutil) BuildRequires and drop ffmpeg-7-mini-devel.
+  Build obs-studio with the latest available version of ffmpeg.
+
+-------------------------------------------------------------------
 Fri Jul 31 02:03:26 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
 
 - Update to version 32.2.1:

@@ -153,4 +153,13 @@ There are still minor multi-architecture adjustments to refine, but the package 
     <comment></comment>
     <requestid>1368717</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>9b5600f1b48232c4c4091361ddebed90</srcmd5>
+    <version>32.2.1</version>
+    <time>1785705321</time>
+    <user>dimstar_suse</user>
+    <comment>Add pkgconfig(libavcodec), pkgconfig(libavdevice), pkgconfig(libavfilter), pkgconfig(libavformat) and pkgconfig(libavutil) BuildRequires and drop ffmpeg-7-mini-devel.
+Build obs-studio with the latest available version of ffmpeg. </comment>
+    <requestid>1369099</requestid>
+  </revision>
 </revisionlist>
