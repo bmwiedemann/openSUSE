@@ -4636,4 +4636,12 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
   * initialize image info properties ee20b08</comment>
     <requestid>1368146</requestid>
   </revision>
+  <revision rev="346" vrev="2">
+    <srcmd5>ae04f0a80cd2bef6699b27d9d15f2ad9</srcmd5>
+    <version>7.1.2.28</version>
+    <time>1785705195</time>
+    <user>dimstar_suse</user>
+    <comment>[bsc#1272953], CVE-2026-64685</comment>
+    <requestid>1368832</requestid>
+  </revision>
 </revisionlist>
