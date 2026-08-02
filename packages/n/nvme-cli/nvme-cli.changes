@@ -1,4 +1,214 @@
 -------------------------------------------------------------------
+Fri Jul 31 14:55:54 UTC 2026 - Daniel Wagner <dwagner@suse.de>
+
+- Update to version 3.0~b.4:
+  * Release v3.0-b.4
+  * doc: Regenerate all docs for v3.0-b.4
+  * libnvme/config: add epcsd supporting
+  * libnvme/config: add support for persistent
+  * libnvme/fabrics: remove pdc-enabled build time config
+  * plugins/config: add create command
+  * libnvme/config-emit: ensure config dir exists
+  * shared/fs-util: add missing windows implementation
+  * shared/fs-util: add sh_mkdir_from_fname and shr_dirname
+  * shared: split platform parts into separate files
+  * shared: update prefix for compiler attributes
+  * doc: remove nvme-config.txt
+  * plugins: invoke the arg parser for the remaining commands
+  * discoverd: rename discoverd.conf to nvme-discoverd.conf
+  * ocp: add NULL checks after memory allocation
+  * ocp: fix __le64 usage in C9 log reading
+  * ocp: fix use after free and memory leak related to C9 log page reads
+  * ocp: use libnvme_alloc and libnvme_free for log buffer allocations
+  * ocp: read telemetry log with maximum transfer size
+  * innogrit: fix resource leak in innogrit_vsc_getcdump()
+  * scaleflux: clamp code_type before array access in nvme_parse_evtlog()
+  * wdc: fix out-of-bounds access in wdc_show_cloud_smart_log_normal()
+  * micron: clean up and fix micron telemetry log reading
+  * nbft: ensure transport buffer is null terminated in read_ssns() and read_hfi()
+  * nvme-models: fix stream EOF state errors in __nvme_product_name and pull_class_info
+  * ibm: fix missing break in show_ibm_smart_log() case 0x00f5
+  * nvme-rpmb: fix out-of-bounds allocation in read_rpmb_key()
+  * tests: align config-convert expectation with preserved legacy json
+  * plugins/ymtc: fix additional smart info display for YMTC PE511
+  * utils: check asprintf return value
+  * util: fix memory leak in read_binary_file()
+  * util: fix memory leak in read_binary_file()
+  * utils: add crash handlers for option capture
+  * nvme: avoid stale pointer in get_log_offset()
+  * fabrics: avoid double free in build_options()
+  * fabrics: avoid reduntant libnvmf_context_set_crypto() call
+  * fabrics: avoid mem leak in libnvmf_context_set_crypto()
+  * fabrics: accept fabrics arguments for disconnect
+  * nvme: add arg parser to gen/show hostnqn
+  * plugins/keys: report line number 1 based
+  * plugins/keys: show error when missing trailing colon
+  * plugins/keys: update help text for gen-tls
+  * fabrics: add --kxchap-* arguments
+  * nvme: add compat tls/chap key management commands
+  * libnvme: rename DH-HMAC- prefix with KX-HMAC-
+  * tests: add nvme keys tests cases
+  * nvme: split keyring insert out of keys check-tls/check-dhchap
+  * nvme: move key commands into new keys plugin
+  * shared: add more test coverage
+  * libnvme: return libnvmf_tid_parse{,_strict}() as int, not a pointer
+  * libnvme/nbft: tests: Regenerate reference NBFT table dumps
+  * nvme: preserve legacy json config for rollbacks
+  * libnvme: reuse heap reader for NBFT security lists
+  * libnvme: fix comments that still describe removed JSON config support
+  * libnvme/nbft: Add sample synthetic NBFT tables
+  * shared: move init unit test
+  * shared: move compiler-attributes to common code
+  * libnvme: return libnvmf_tid_from_fields() as int, not a pointer
+  * nvme: fix to check sanitize status error
+  * nbft-plugin: fix resource leak in show_nbft()
+  * discoverd: parse discoverd.conf with the shared ini parser
+  * libnvme: parse NBFT Security Profile descriptors
+  * doc: add nvme-discoverd(8) and the design README
+  * meson: make nvmf-autoconnect independently toggleable
+  * discoverd: add the nvme-discoverd daemon
+  * libnvme: harden NBFT interface references
+  * libnvme: validate NBFT descriptor ranges
+  * libnvme: drop test/ioctl's own freep(), use shared/cleanup.h
+  * shared: add README
+  * shared: add test coverage for array-util, base64, crc32
+  * shared: rename everything to the shr_ namespace
+  * shared: add PTRARRAY_DEFINE() for type-checked ptrarray wrappers
+  * shared: dedup cleanup.h boilerplate
+  * shared: move base64, crc32, and misc utility functions
+  * shared: fix mkdir_p() silently truncating long paths
+  * shared: relicense to LGPL-2.1-or-later
+  * sfx-nvme: fix resource leak in sfx_status()
+  * nbft: fix resource leak of ssns->hfis in read_ssns()
+  * sndk plugin: Fix vs-smart-add-log for NVMe OF
+  * nvme: add utils dump-command-metadata command
+  * memblaze: fix stack overflow in perf-stats-print-x
+  * nvme: add global options config file
+  * shared: move ini parser to common code
+  * nvme: move args into separate header
+  * nvme: do not include libnvme-mi on global level
+  * nvme: change verbosity type
+  * util/json: use stdint types
+  * shared: add a small static utility library
+  * wdc: free dssd_specific_ver when smart_log_ver < 3
+  * virtium: remove erroneous (float) cast in vt_save_smart_to_vtview_log()
+  * nvme-print: print address instead of traddr
+  * nvme: replace argconfig_parse with parse_args
+  * nvme-cli: resolve hostnqn/hostid on ctx creation
+  * libnvme/tree: free hnqn/hid in error path
+  * sfx-nvme: fix dead assignment in sfx_dump_evtlog()
+  * exclusion: fix uninitialized argument in libnvmf_exclusion_read()
+  * nvme: Fix get-log xfer-len parameter handling
+  * libnvme: generate the trivial libnvme_global_ctx bool accessors
+  * libnvme: let the accessor generator override the naming segment
+  * fabrics: check registry owner before connect-all/discover
+  * libnvme: fix SIGSEGV in __libnvme_transport_handle_open_mi
+  * nvme: Add nvme args support for different supported output formats
+  * tests/micron: Add micron vs-drive-info tests
+  * micron: Fix vs-pcie-stats output-format handling
+  * tests/micron: Add micron clear-pcie-correctable-errors tests
+  * tests/micron: Add micron vs-pcie-stats tests and fix command issues
+  * tests/micron: Add micron vs-temperature-stats tests and fix command
+  * micron: Fix vs-internal-log return value on error
+  * tests/micron: Add vs-internal-log tests for micron plugin.
+  * wdc: fix null pointer dereference in get_dev_mgmt_log_page_lid_data()
+  * libnvme: write registry entry on an already-connected controller
+  * nvme-print: handle NULL phy slot pointer
+  * doc: add man pages for config show and validate
+  * nvme: add JSON output to config show
+  * fabrics: create handle for existing discovery controller
+  * libnvme/tree: only do a lookup in libnvme_lookup_ctrl
+  * libnvme/tree: only do a lookup in libnvme_lookup_subystem
+  * libnvme/tree: only do a lookup in libnvme_lookup_host
+  * libnvme/tree: rename nvme_alloc_subsystem
+  * libnvme/tree: do not set hostsymname in libnvme_get_host
+  * libnvme: validate FC WWN addressing in tid_sanitize_addr()
+  * fabrics: don't resolve host_traddr as a hostname
+  * libnvme/test: restore hostnqn precedence test coverage
+  * libnvme/test: replace tree-dump with a JSON-free scan_topology test
+  * libnvme: drop the legacy JSON config path and json.c/json-c
+  * build: add python-jsonschema to Windows UCRT64 deps
+  * util: add optional argconfig parse hook
+  * fabrics: load fabrics module after parsing args
+  * gitignore: ignore unit-py build artifacts
+  * util: add json_object_add_value_bool() macro
+  * nvme: fix legacy config.json auto-conversion naming
+  * libnvme: fix bogus host-lookup failure in NBFT discovery
+  * nvme: fix a crash in config-validate/config-show/config-convert under -o json
+  * nvme: fabrics_config_validate: reject a missing config file
+  * nvme, plugins/config: migrate config-* into a config plugin
+  * nvme-cli: rework "nvme config" into config-validate/config-show
+  * libnvme/test: check fopen() before fclose() in config-emit
+  * doc: add nvme-fabrics.conf(5) man page and sample file
+  * nvme-cli: retire --dump-config from discover/connect-all/connect
+  * meson: stop installing an empty discovery.conf stub by default
+  * libnvme/fabrics: drop the dead JSON config loops and parser hooks
+  * libnvme: consolidate libnvme_get_host() into tree.c
+  * libnvme: fix regressions from the implicit host-lookup removal
+  * fabrics, nvme-cli: consume the INI config directly from the CLI
+  * libnvme/config: apply a parameter store to a connect context
+  * nbft: Add Security Profile Descriptor API
+  * nbft: Use original flags instead of individual bool members
+  * nbft: Extend the parser for Boot Specification rev. 1.3
+  * nvme-types-nbft: Update to Boot Specification rev. 1.3
+  * libnvme/fabrics: do not look up hostnqn/hostid implicitly
+  * libnvme/fabrics: decouple hostnqn pointer lifetime from fctx
+  * libnvme/examples: set default hostnqn/hostid on global ctx
+  * libnvme/test: replace env configuration with explicit
+  * lib: add global context to libnvme_read_hostnqn/hostid
+  * lib: add global context setters for hostnqn/hostid
+  * fabrics: check arguments in libnvmf_host_get_ids
+  * fabrics: make libnvmf_host_get_ids a public API
+  * tests: add end-to-end coverage for nvme config-convert
+  * tests: extract shared command/logging infra into TestNVMeBase
+  * doc: add nvme-config-convert man page
+  * libnvme/design: fix stale config-convert references in CONFIG.md
+  * nvme-cli: add the config-convert command
+  * fabrics, nvme-cli: add the discovery.conf reader for INI conversion
+  * nvme-cli: add the config.json reader for INI conversion
+  * doc: add NEWS.md
+  * doc: update the URL for the latest binary for testing
+  * wdc-nvme: replace wdc_get_pci_ids() with nvme_get_pci_ids()
+  * libnvme/python: add config_read() and config_validate()
+  * libnvme/config: deduplicate CONFIG_MAIN_PATH
+  * libnvme/config: add the configuration write side
+  * plugins/wdc: json output format not actually json
+  * libnvme/fabrics: add --devid-file to nvme connect
+  * nvme-cli/fabrics: add --idempotent to nvme connect
+  * sandisk: fix -Wformat-truncation warning in sndk_vs_internal_fw_log()
+  * meson: pass -D_GNU_SOURCE to reallocarray detection
+  * plugins/memblaze: extract smart log add-x (0xCA) into separate file
+  * libnvme/mi: Fix a libvnme typo
+  * libnvme/tests: Fix a libvnme typo
+  * meson: stop deriving RUNDIR from --prefix
+  * tree: fix store uuid/nguid from sysfs
+  * ocp-smart-extended-log: fix sizeof mismatch in malloc for get_c0_log_page()
+  * libnvme/config: clarify internal documentation
+  * libnvme/fabrics: use host_iface, not trsvcid, in libnvmf_add_ctrl()
+  * libnvme/config: add the connect argument emitter
+  * libnvme/config: publish the resolved configuration API
+  * libnvme/config: resolve the cascade into the connection list
+  * libnvme/config: add an INI-format NVMe-oF config parser
+  * libnvme/config: add the parameter store and key table
+  * libnvme/config: add an internal INI reader
+  * doc: add NVMe-oF connection configuration documentation
+  * micron: Use new nvme-pci-ids to get PCI IDs
+  * nvme-models: Update product name detection to use nvme-pci-ids
+  * pci-ids: Add nvme-pci-ids for cross-platform reading of IDs
+  * ioctl-linux: fix uninitialized cmd32.result in ioctl_passthru32()
+  * netapp: fix dead store in netapp_smdevices_get_info() and netapp_ontapdevices_get_info()
+  * test: replace rewind() with fseek() to enable error detection
+  * libnvme: replace environment options with explicit APIs
+  * nvme: remove dead initialization of data_written in get_telemetry_log()
+  * plugins/solidigm: update printf formatting for 64bit types
+  * plugins/ocp: fix casting from pointers with different size
+  * pyproject: fix toml syntax
+- Package missing man pages and move nvme-fabrics.conf.sample
+  to documentation directory to resolve build failure due to
+  unpackaged files.
+
+
+-------------------------------------------------------------------
 Wed Jul 08 13:54:09 UTC 2026 - Daniel Wagner <dwagner@suse.de>
 
 - Update to version 3.0~b.3:

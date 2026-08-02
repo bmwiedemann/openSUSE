@@ -19,7 +19,7 @@
 %bcond_without check
 
 Name:           nvme-cli
-Version:        3.0~b.3
+Version:        3.0~b.4
 Release:        0
 Summary:        NVM Express user space tools
 License:        GPL-2.0-only
@@ -139,6 +139,8 @@ export KBUILD_BUILD_TIMESTAMP=@${SOURCE_DATE_EPOCH:-$(date +%s)}
 
 %install
 %meson_install
+# Move nvme-fabrics.conf.sample to build directory to package as %doc
+mv %{buildroot}%{_sysconfdir}/nvme/nvme-fabrics.conf.sample .
 install -m 644 -D /dev/null %{buildroot}%{_sysconfdir}/nvme/hostnqn
 install -m 644 -D /dev/null %{buildroot}%{_sysconfdir}/nvme/hostid
 install -m 644 -D /dev/null %{buildroot}%{_sysconfdir}/nvme/discovery.conf
@@ -206,6 +208,7 @@ fi
 %files
 %license LICENSE
 %doc README.md
+%doc nvme-fabrics.conf.sample
 %{_sbindir}/nvme
 %if 0%{?suse_version} < 1600
 %{_sbindir}/rcnvmefc-boot-connections
@@ -214,6 +217,8 @@ fi
 %{_sbindir}/rcnvmf-connect-nbft
 %endif
 %{_mandir}/man1/nvme*.1*%{?ext_man}
+%{_mandir}/man5/nvme*.5*%{?ext_man}
+%{_mandir}/man8/nvme*.8*%{?ext_man}
 %{_udevrulesdir}/65-persistent-net-nbft.rules
 %{_udevrulesdir}/70-nvmf-keys.rules
 %{_udevrulesdir}/70-nvmf-autoconnect.rules
