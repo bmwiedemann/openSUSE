@@ -11,6 +11,5 @@ module has a different cloning policy from almost all of them. See
 &quot;Cloning policy&quot; and &quot;Comparison to other cloning modules&quot; for details.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-Data-Clone"/>
   <url>http://search.cpan.org/dist/Data-Clone</url>
 </package>

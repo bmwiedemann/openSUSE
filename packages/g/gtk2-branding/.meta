@@ -13,5 +13,4 @@ with GTK1, so to switch, programmers have to port applications to it.
 
 To develop applications with gtk, you need the package gtk2-devel.
 </description>
-  <devel project="GNOME:Factory" package="gtk2-branding"/>
 </package>

@@ -341,4 +341,12 @@
   + Updated translations. (forwarded request 1338639 from iznogood)</comment>
     <requestid>1338647</requestid>
   </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>00d49888a6e000456874472346a590b2</srcmd5>
+    <version>1.0.29</version>
+    <time>1774470116</time>
+    <user>anag_factory</user>
+    <comment>- Drop gnome-doc-utils-devel BuildRequires: no longer needed</comment>
+    <requestid>1342461</requestid>
+  </revision>
 </revisionlist>

@@ -3,6 +3,5 @@
   <description>Shared library for NetworkManager-applet.
 
 </description>
-  <devel project="GNOME:Factory" package="libnma"/>
   <url>https://gitlab.gnome.org/GNOME/libnma</url>
 </package>

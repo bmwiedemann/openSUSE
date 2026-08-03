@@ -4,5 +4,4 @@
 Specifications, for generating event sounds on free desktops, such as
 GNOME. It comes with several backends (ALSA, PulseAudio, null) and is
 designed to be portable.</description>
-  <devel project="GNOME:Factory" package="libcanberra"/>
 </package>

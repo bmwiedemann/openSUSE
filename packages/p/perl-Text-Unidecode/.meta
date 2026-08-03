@@ -15,6 +15,5 @@ always an attempt at transliteration -- i.e., conveying, in Roman letters, the
 pronunciation expressed by the text in some other writing system. (See the
 example in the synopsis.)
   </description>
-  <devel project="devel:languages:perl" package="perl-Text-Unidecode"/>
   <url>http://search.cpan.org/perldoc?Text::Unidecode</url>
 </package>

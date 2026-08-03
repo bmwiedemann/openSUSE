@@ -189,4 +189,12 @@ Needs SR#1093175</comment>
     <comment>switch some tests and patches around</comment>
     <requestid>1364959</requestid>
   </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>f1c30f1d2bf8c7457943f6c7a7228960</srcmd5>
+    <version>0.18.1</version>
+    <time>1784126578</time>
+    <user>dimstar_suse</user>
+    <comment>fix tests with GnuPG 2.5.21 (forwarded request 1365740 from AndreasStieger)</comment>
+    <requestid>1365741</requestid>
+  </revision>
 </revisionlist>

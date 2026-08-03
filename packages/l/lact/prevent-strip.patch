@@ -1,0 +1,14 @@
+Index: lact-0.9.1/Cargo.toml
+===================================================================
+--- lact-0.9.1.orig/Cargo.toml
++++ lact-0.9.1/Cargo.toml
+@@ -41,9 +41,7 @@
+ rust-embed = { version = "8.11.0", features = ["debug-embed"] }
+ 
+ [profile.release]
+-strip = "symbols"
+ codegen-units = 1
+-opt-level = "s"
+ lto = true
+ 
+ [profile.release.package.cairo-rs]

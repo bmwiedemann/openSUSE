@@ -7,5 +7,4 @@ hostname, first visted dat, last visited date and visit count.
 To find your history file it might be worth using *Mozilla::Backup* which
 has some platform-independent code for finding the profiles of various
 Mozilla-isms (including Firefox, Camino, K-Meleon, etc.).</description>
-  <devel project="devel:languages:perl" package="perl-File-Mork"/>
 </package>

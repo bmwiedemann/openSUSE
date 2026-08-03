@@ -4,5 +4,6 @@
 repository. It can invert this, explode git repositories into sequences of
 per-commit tarballs. The DAG is expressed as a metadata file with mailbox-like
 entries.</description>
+  <devel project="devel:tools:scm" package="git-weave"/>
   <url>http://www.catb.org/~esr/git-weave/</url>
 </package>

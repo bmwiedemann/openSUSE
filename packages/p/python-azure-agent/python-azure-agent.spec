@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-agent
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -155,7 +155,7 @@ setup
 
 %prep
 %setup -q -n WALinuxAgent-%{version}
-%if 0%{?suse_version} > 1315 && 0%{?suse_version} <= 1600
+%if 0%{?suse_version} > 1315 && 0%{?suse_version} < 1699
 %patch -P 6
 %endif
 %patch -P 7

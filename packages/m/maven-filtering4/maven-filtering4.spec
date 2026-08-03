@@ -20,7 +20,7 @@
 %global version_suffix 4
 %global file_version 4.0.0-beta-2-SNAPSHOT
 Name:           %{base_name}%{version_suffix}
-Version:        4.0.0~20250928.git84993b0
+Version:        4.0.0~20260707.git2d20dde
 Release:        0
 Summary:        Shared component providing resource filtering
 License:        Apache-2.0
@@ -38,7 +38,7 @@ BuildRequires:  maven4-lib
 BuildRequires:  plexus-build-api0
 BuildRequires:  plexus-interpolation
 BuildRequires:  plexus-utils
-BuildRequires:  slf4j2
+BuildRequires:  slf4j
 BuildRequires:  xmvn-install
 BuildRequires:  xmvn-resolve
 BuildRequires:  mvn(org.apache.maven.shared:maven-shared-components:pom:)
@@ -64,8 +64,6 @@ cp %{SOURCE1} build.xml
 
 %pom_xpath_remove pom:project/pom:parent/pom:relativePath
 
-%pom_xpath_set pom:project/pom:properties/pom:slf4jVersion 2
-
 %build
 mkdir -p lib
 build-jar-repository -s lib \
@@ -77,7 +75,7 @@ build-jar-repository -s lib \
     plexus/utils \
     plexus/interpolation \
     plexus/plexus-build-api0 \
-    slf4j/api-2
+    slf4j/api
 
 ant -Dproject.version=%{version} \
   jar javadoc

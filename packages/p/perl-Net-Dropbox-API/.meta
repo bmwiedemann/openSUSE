@@ -3,6 +3,5 @@
   <description>The Dropbox API is a OAuth based API.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-Net-Dropbox-API"/>
   <url>http://search.cpan.org/dist/Net-Dropbox-API</url>
 </package>

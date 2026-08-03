@@ -1342,4 +1342,32 @@ and CVE references,
   - ... and some CI improvements</comment>
     <requestid>1336544</requestid>
   </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>6cb379bf0fc6e7be6a0260c2726684cb</srcmd5>
+    <version>7.6</version>
+    <time>1781879430</time>
+    <user>anag_factory</user>
+    <comment>- Update to 7.6:
+  * HTTP/1.1: Transfer-Encoding:identity is now prohibited
+  * Harden peerDigestSwapInMask against an invalid cache digest
+    reply
+  * Fix parsing of legacy url_rewrite_program responses
+  * Fix handling of truncated legacy errorpage %codes
+  * Honor reply_header_max_size for received FTP control responses
+  * Improve parsing of certain FTP directory listing formats
+  * Support the Nettle 4.0 md5_digest API
+  * Reject excessively large FTP control replies
+- Drop old_nettle_compat.patch: it was only applied on
+  suse_version &lt; 1500 (EOL distros) and no longer applies to the
+  current sources
+
+- Update to version 7.5:
+  - ICP: Fix HttpRequest lifetime for ICP v3 queries (#2377)
+  - ICP: Fix validation of packet sizes and URLs (#2220)
+  - Do not escape malformed URI twice when sending ICP errors (#2374)
+  - Bug 5501: Squid may exit when ACLs decode an invalid URI (#2145)
+
+- Update to 7.3 (bsc#1250627, CVE-2025-59362, bsc#1250223)</comment>
+    <requestid>1360283</requestid>
+  </revision>
 </revisionlist>

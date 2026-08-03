@@ -18,13 +18,12 @@
 
 %define _firmwaredir /lib/firmware
 Name:           linux-npu-driver
-Version:        1.33.0
+Version:        1.35.0
 Release:        0
 Summary:        Driver for Intel NPU device
 License:        MIT
 URL:            https://github.com/intel/linux-npu-driver
 Source0:        %{name}-%{version}.tar.xz
-Patch0:         gtest.patch
 BuildRequires:  cmake
 BuildRequires:  git
 %if 0%{?suse_version} >= 1600 && 0%{?is_opensuse}
@@ -55,7 +54,7 @@ export CC=gcc-12 CXX=g++-12
 %cmake \
 	-DENABLE_NPU_COMPILER_BUILD=OFF \
 	-DCMAKE_CXX_FLAGS="-fcf-protection=none" \
-	-DCMAKE_C_FLAGS="-fcf-protection=none" 
+	-DCMAKE_C_FLAGS="-fcf-protection=none" -DCMAKE_CXX_FLAGS="-Wno-error=missing-field-initializers" 
 %cmake_build
 
 %install

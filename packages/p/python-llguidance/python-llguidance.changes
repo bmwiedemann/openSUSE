@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+Sun Jul 12 19:13:36 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package python-llguidance 1.7.6
+  * Python bindings for the llguidance Rust library providing fast
+    constrained decoding of LLM output via grammars and JSON schemas

@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyvo
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,30 +17,31 @@
 
 
 Name:           python-pyvo
-Version:        1.7
+Version:        1.8.1
 Release:        0
 Summary:        Astropy affiliated package for accessing Virtual Observatory data and services
 License:        BSD-3-Clause
 URL:            https://github.com/astropy/pyvo
 Source:         https://files.pythonhosted.org/packages/source/p/pyvo/pyvo-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
+BuildRequires:  %{python_module astropy >= 4.2}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module astropy >= 4.1}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-astropy-header}
-BuildRequires:  %{python_module pytest-doctestplus}
+BuildRequires:  %{python_module pytest-doctestplus >= 0.13}
 BuildRequires:  %{python_module pytest-remotedata}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests-mock}
 BuildRequires:  %{python_module requests}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-astropy >= 4.1
+Requires:       python-astropy >= 4.2
 Requires:       python-requests
 Suggests:       python-pillow
+Suggests:       python-defusedxml
 Suggests:       python-sphinx-astropy
 Suggests:       python-pytest-astropy
 Suggests:       python-requests-mock

@@ -51,4 +51,12 @@
     <comment>- Update to release 2.6.2</comment>
     <requestid>1287614</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>bfb25220241f70d46d1a7c8cfc1242ea</srcmd5>
+    <version>2.6.3</version>
+    <time>1785504677</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.6.3</comment>
+    <requestid>1368543</requestid>
+  </revision>
 </revisionlist>

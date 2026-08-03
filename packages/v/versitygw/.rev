@@ -7,4 +7,12 @@
     <comment>new package versitygw: a high-performance S3 translation service</comment>
     <requestid>1356541</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d4ade9b8195194a82ae0f63810a69d49</srcmd5>
+    <version>1.7.0</version>
+    <time>1784127080</time>
+    <user>dimstar_suse</user>
+    <comment>update to 1.7.0</comment>
+    <requestid>1365803</requestid>
+  </revision>
 </revisionlist>

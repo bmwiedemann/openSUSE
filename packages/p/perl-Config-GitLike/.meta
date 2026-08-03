@@ -5,6 +5,5 @@ by the version control system Git. It can both parse and modify these
 files, as well as create entirely new ones.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-Config-GitLike"/>
   <url>http://search.cpan.org/dist/Config-GitLike</url>
 </package>

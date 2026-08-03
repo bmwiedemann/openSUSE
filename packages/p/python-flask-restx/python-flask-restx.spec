@@ -1,7 +1,7 @@
 #
 # spec file for package python-flask-restx
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,32 +17,30 @@
 
 
 Name:           python-flask-restx
-Version:        1.3.0
+Version:        1.3.2
 Release:        0
 Summary:        Framework for fast, easy and documented API development with Flask
 License:        BSD-3-Clause
 URL:            https://github.com/python-restx/flask-restx
 Source:         https://github.com/python-restx/flask-restx/archive/%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/python-restx/flask-restx/pull/622
-Patch0:         Replace-pytz-with-zoneinfo-datetime-timezone.patch
-Patch1:         Fix-testing-with-flask.patch
-Patch2:         flask-restx-importlib.patch
+# PATCH-FIX-UPSTREAM gh#python-restx/flask-restx#648
+Patch0:         flask-restx-importlib.patch
+# PATCH-FIX-UPSTREAM gh#python-restx/flask-restx#649
+Patch1:         support-python-314.patch
 BuildRequires:  %{python_module Faker}
 BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module Werkzeug}
 BuildRequires:  %{python_module aniso8601}
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module blinker}
-BuildRequires:  %{python_module importlib_resources if %python-base < 3.9}
 BuildRequires:  %{python_module jsonschema}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-benchmark}
 BuildRequires:  %{python_module pytest-flask}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module q}
+BuildRequires:  %{python_module referencing}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module tzlocal}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -50,9 +48,7 @@ Requires:       python-Flask
 Requires:       python-Werkzeug
 Requires:       python-aniso8601
 Requires:       python-jsonschema
-%if %{python_version_nodots} < 39
-Requires:       python-importlib_resources
-%endif
+Requires:       python-referencing
 BuildArch:      noarch
 %python_subpackages
 

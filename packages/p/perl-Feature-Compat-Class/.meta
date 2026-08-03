@@ -5,6 +5,5 @@
 Perl added such syntax at version 5.38.0, which is enabled by
 
     use feature 'class';</description>
-  <devel project="devel:languages:perl" package="perl-Feature-Compat-Class"/>
   <url>https://metacpan.org/dist/Feature-Compat-Class</url>
 </package>

@@ -2,5 +2,6 @@
   <title>Minify your container images without changes</title>
   <description>Slim helps you build optimized containers, while Root.io automatically fixes vulnerabilities without disrupting your workflows. Use Slim's open source toolkit to optimize containers, then keep them secure with Root's automated vulnerability remediation – from optimization to continuous security in one
 seamless journey.</description>
+  <devel project="Virtualization:containers" package="slim"/>
   <url>https://github.com/slimtoolkit/slim</url>
 </package>

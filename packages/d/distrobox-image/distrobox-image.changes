@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb 18 08:18:01 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use libzypp config packages zypp-excludedocs and
+  zypp-no-recommends instead of changing the default config using
+  sed.
+
+-------------------------------------------------------------------
 Thu Jul 24 11:20:25 UTC 2025 - Jan Fooken <jan.fooken@suse.com>
 
 - Add dirmngr package to ensure GnuPG can access keyservers

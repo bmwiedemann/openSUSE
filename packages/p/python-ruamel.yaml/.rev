@@ -427,4 +427,24 @@
     <comment></comment>
     <requestid>1286851</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>d08b117a2e86a87f9243f5f45aa7829d</srcmd5>
+    <version>0.19.1</version>
+    <time>1774469857</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.19.1:
+  * Minimum Python version is now 3.9.
+  * Added .max_depth to YAML() instance to limit recursion.
+  * Removed mandatory dependency on ruamel.yaml.clib(z);
+    available via [libyaml] and [oldlibyaml] extras.
+  * Duplicate merge keys (&lt;&lt;) are now always disallowed.
+  * Merge keys now keep their position when preceding keys
+    are deleted.
+  * Indent root-level block scalars starting with markers.
+  * Fix for dataclasses with default_factory missing
+    mapping values.
+  * Added support for Python 3.14.
+  * Updated license year to 2026.</comment>
+    <requestid>1342400</requestid>
+  </revision>
 </revisionlist>

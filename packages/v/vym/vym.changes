@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Jul  7 11:26:49 UTC 2026 - Uwe Drechsel <vym@insilmaril.de>
+
+- Updated git commit hash in src/git.h to point to HEAD in release
+  branch.
+
+-------------------------------------------------------------------
+Sat Jul  4 11:58:33 UTC 2026 - Uwe Drechsel <vym@insilmaril.de>
+
+Version 3.0.0
+
+Bugfixes
+
+ - [#210](https://github.com/insilmaril/vym/issues/210) BranchPropertyEditor not updated when changing maps
+ - [#207](https://github.com/insilmaril/vym/issues/207) Cmd-D not working to close Script output window
+ - [#206](https://github.com/insilmaril/vym/issues/206) Two dialogs when creating new vymLink
+ - [#189](https://github.com/insilmaril/vym/issues/189) Updated demo maps
+ - Fix building with Qt 6.6
+
+
+-------------------------------------------------------------------
 Fri May  8 21:51:38 UTC 2026 - Uwe Drechsel <vym@insilmaril.de>
 
 - More detailed changelog for 2.9.613, as requested:

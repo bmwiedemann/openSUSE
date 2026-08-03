@@ -19,12 +19,12 @@
 %define sover 5
 %define libname lib%{name}%{sover}
 Name:           hyprtoolkit
-Version:        0.5.3
+Version:        0.5.4
 Release:        0
 Summary:        A C++ GUI toolkit for native Wayland applications
 License:        BSD-3-Clause
 URL:            https://github.com/hyprwm/hyprtoolkit
-Source0:        https://github.com/hyprwm/hyprtoolkit/archive/v%{version}/%{name}-v%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.gz
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  cmake
 BuildRequires:  gcc-c++ >= 14

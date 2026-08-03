@@ -50,4 +50,37 @@ Needed for sr#1161399</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1245142</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2071a8c37a035cd0e124ee9ab0ed725c</srcmd5>
+    <version>2.0.1</version>
+    <time>1775743773</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.1:
+  * @diggit: Fixed typo in exception name raised when
+    `JLINKARM_SelectUSB` fails.
+  * Python 2 is no longer supported.
+  * @concatime: File paths are now encoded using `os.fsencode()`
+    to support UTF-8 file paths.
+  * `jtag_store_instruction` - To send an instruction to the JTAG
+    device.
+  * `jtag_store_data` - To send data to the JTAG device (TDO).
+  * `jtag_get_device_info` - To get information about a JTAG
+    device on the scan chain.
+  * `jtag_read` / `jtag_read{8,16,32}` - To read data from a JTAG
+    device (from the input buffer / TDI).
+  * `jtag_sync_bits` / `jtag_sync_bytes` - To force a flush of
+    the output buffer.
+  * @hkpeprah: Fixed a bug where `.flash()` raised a
+    `JLinkEraseException`, now raises a
+  * `JLinkFlashException()` as expected.
+  * @omrisarig13: Fixed broken links in `README.md`.
+  * @karl-rainlabs: Fixed incorrect decorator around JTAG APIs.
+  * @bbrown1867: Temporary library copying is now determined
+    dynamically based on the version of the SDK in use.
+    Previously, the default behaviour would always
+    copy the library, which would fail if custom devices and
+    functions were in use via XML files in the same directory
+    as the SDK.</comment>
+    <requestid>1345304</requestid>
+  </revision>
 </revisionlist>

@@ -18,6 +18,5 @@ Net::OAuth provides:
 Net::OAuth does not provide:
 *   Consumer or Service Provider encapsulation
 *   token/nonce/key storage/management</description>
-  <devel project="devel:languages:perl" package="perl-Net-OAuth"/>
   <url>http://search.cpan.org/dist/Net-OAuth</url>
 </package>

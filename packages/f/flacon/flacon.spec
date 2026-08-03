@@ -18,7 +18,7 @@
 
 
 Name:           flacon
-Version:        13.0.1
+Version:        13.0.2
 Release:        0
 Summary:        Audio File Encoder
 License:        LGPL-2.1-or-later

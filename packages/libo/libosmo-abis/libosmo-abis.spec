@@ -38,7 +38,6 @@ BuildRequires:  pkgconfig(libosmocodec) >= 1.11.0
 BuildRequires:  pkgconfig(libosmocore) >= 1.11.0
 BuildRequires:  pkgconfig(libosmogsm) >= 1.11.0
 BuildRequires:  pkgconfig(libosmovty) >= 1.11.0
-BuildRequires:  pkgconfig(ortp) >= 0.22
 BuildRequires:  pkgconfig(talloc)
 
 %description
@@ -110,7 +109,8 @@ echo "%version" >.tarball-version
 autoreconf -fiv
 # bugzilla.opensuse.org/795968 for rationale
 %configure --includedir="%_includedir/%name" \
-	--enable-shared --disable-static --disable-dahdi --enable-e1d
+	--enable-shared --disable-static --disable-dahdi --enable-e1d \
+	--disable-ortp
 %make_build
 
 %install

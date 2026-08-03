@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Fri May 29 13:52:41 UTC 2026 - Reinhard Max <max@suse.com>
+
+- New version 8.6.18:
+  * [d93d96] Pointer arithmetic with NULL in ImgGetPhoto()
+  * [6c4795] leak in XCreateBitmapFromData() in ImgGetPhoto()
+  * [04e173] Add support for Copy/Cut/Paste keys in X11
+  * [95da0f] tkpWinRopModes[GXnoop] is R2_NOT, should be R2_NOP
+  * [2c240b] Install pkg-config file
+  * [816739] Install man pages
+  * [265ff2] Artifacts in a few themed widgets on x11 and aqua
+  * [a80e5f] Core dump Tk_GetFontFromObj
+  * [c23f79] Xft text is unusable for 32-bit visual when default
+    visual is 24-bit
+  * [44b34c] Fix crash on exit due to faulty asm code in DllMain
+  * [4d2baa] Improve the look of the ttk::spinbox widgets in the
+    built-in themes
+  * [edd1a6] Lack of bounds checking in argument parsing for some
+    widgets
+  * [8e4fb0] crash in text sync subcommand
+  * [c77b42] X11: crash by wm forget on menu
+  * [5d2061] fails to build with glibc 2.43
+  * [e2418c] Pointer warp relative to the screen's root window
+    fails if the Tk root window is withdrawn
+  * [7f67bb] Check recursive menu usage to avoid crash
+  * [aca995] Get rid of the ugly Motif-style cascade arrows on X11
+  * [556606] Block cursor in text widget may hide the character
+    underneath
+  * [011533] Flip ttk::notebook tab states "first" and "last" for
+    "-tabplacement e*|s*"
+
+- New version 8.6.17:
+  * [844c0b] Menu entry underline does not consider
+    activeborderwidth
+  * [080a28] Aqua: tk_getOpenFile crash
+  * [c99266] console menu zh_cn translations
+  * [7231bf99] Setting ttk state may change the variable passed
+    by value
+  * [5d0bc3] block cursor size on a tab is too large
+  * [6b0f77] gcc 14 breaks configure test for bigendian leading to
+    broken floating point
+  * [d25b72] error popup on ttk::scale with invisible trough
+  * [3d13f8,e90e8c] Aqua: dark mode improvements
+  * [e94c8b] interop with clipboard managers
+  * [dc38c9] Aqua: NSHighResolutionCapable should be a Boolean value
+  * [4e1e10] Aqua: CGRect/NSRect type mismatch on 32-bit
+
+-------------------------------------------------------------------
+Fri Mar  7 09:18:18 UTC 2025 - Reinhard Max <max@suse.com>
+
+- New version 8.6.16:
+  * [18e984] Assignment of invalid symbolic constant NotifyNormal
+  * [398109] Segmentation fault with bogus resource value (X11)
+  * Improved the appearance of the Treeitem.indicator element
+  * [265d4e] macOS Sequoia: warning: 'setShowsResizeIndicator:'
+    is deprecated
+  * [eb3328] [grid] and [pack] with half-dead argument can cause
+    hangup or even crash
+  * [f52986] SIGABRT from Tk_DeleteErrorHandler()
+  * [bcbf4c] Tk intialization overwrites thread specific data
+
+-------------------------------------------------------------------
 Fri Sep 13 16:40:01 UTC 2024 - Reinhard Max <max@suse.com>
 
 - New version 8.6.15:

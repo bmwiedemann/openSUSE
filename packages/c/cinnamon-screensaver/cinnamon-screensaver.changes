@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Mar 25 23:09:23 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.6.1:
+  * Make Caribou dependency optional (#489)
+  * Handle layout switching thru cinnamon, remove use of XApp.
+  * Switch to xapp-symbolic-icons (XSI)
+  * Refactor positioning of floating UI elements.
+  * unlock: Remove additional dimming when unlock dialog is
+    shown.
+  * unlock.py: Don't show password entry and unlock button until
+    prompted by pam.
+
+-------------------------------------------------------------------
 Mon Jan 20 01:59:07 UTC 2025 - Marguerite Su <i@marguerite.su>
 
 - move typelib back to the right location

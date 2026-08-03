@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jul 28 12:02:41 UTC 2026 - Marvin Friedrich <contact@marvinf.com>
+
+- Update to 12.5.2:
+  * Add mouse support via PS/2 protocol and the UEFI pointing
+    protocols, allowing pointer control in the boot menu on
+    compatible systems.  This feature also allows for the use
+    of Limine on handheld devices with only touchscreen input. 
+  * Run Limine where the firmware loaded it on x86-64/UEFI rather
+    than relocating below 4GiB, staging only the 32-bit handoff
+    stub and its stack low and reaching the AP handoff callbacks
+    through the HHDM.
+  * Check the carry flag rather than the result when drawing from
+    RDSEED/RDRAND, so that a legitimate zero draw no longer
+    abandons the hardware entropy source.
+  * Bounds check every fread(), not just reads from memory files.
+
+-------------------------------------------------------------------
 Tue Jul  7 09:05:27 UTC 2026 - Marvin Friedrich <contact@marvinf.com>
 
 - Update to 12.4.0:

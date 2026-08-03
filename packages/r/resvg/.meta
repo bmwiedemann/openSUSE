@@ -1,5 +1,6 @@
 <package name="resvg" project="openSUSE:Factory">
   <title>An SVG rendering library.</title>
   <description></description>
+  <devel project="graphics" package="resvg"/>
   <url>https://github.com/linebender/resvg</url>
 </package>

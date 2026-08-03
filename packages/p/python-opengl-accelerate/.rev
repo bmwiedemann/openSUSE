@@ -142,4 +142,15 @@
   * Support Cython 3.1 changes.</comment>
     <requestid>1295643</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>ad6165b18e0ec912a23b880faaf775f8</srcmd5>
+    <version>3.1.10</version>
+    <time>1771605862</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.10:
+  * Mostly bug fixes.
+- Switch to pypi tarball, we can avoid tar_scm and awkward steps in %prep.
+- Drop patch support-cython-3.1.patch, merged upstream.</comment>
+    <requestid>1334100</requestid>
+  </revision>
 </revisionlist>

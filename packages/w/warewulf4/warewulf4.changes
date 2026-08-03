@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 28 13:10:24 UTC 2026 - Christian Goll <cgoll@suse.com>
+
+- updated golang.org/x/text to v0.40.0 to fix  CVE-2026-56852 
+  (bsc#1272014)
+
+-------------------------------------------------------------------
 Tue Jun 23 11:04:33 UTC 2026 - Christian Goll <cgoll@suse.com>
 
 - adding correct flag --update-overlays fixing  (bsc#1268790)  

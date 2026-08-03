@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 13 13:27:15 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Use the log4j-slf4j2-impl instead of log4j-slf4j-impl
+
+-------------------------------------------------------------------
 Mon Jun 23 09:28:19 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Remove repositories section from parent pom, since it exposes

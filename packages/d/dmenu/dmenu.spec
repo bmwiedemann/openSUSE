@@ -1,7 +1,7 @@
 #
 # spec file for package dmenu
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           dmenu
-Version:        5.3
+Version:        5.4
 Release:        0
 Summary:        A generic and efficient menu for X
 License:        MIT

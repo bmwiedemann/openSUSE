@@ -200,4 +200,32 @@ the list of changes is still too long to enumerate here.
   the list of changes is still too long to enumerate here.</comment>
     <requestid>1308706</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c8c1d6f0055ef523a11822e11525410c</srcmd5>
+    <version>10.1.12</version>
+    <time>1785504453</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 10.1.12:
+  - Fix typo in pldoc for require_prolog_version/2
+  - DOC: remove unused code that's the same as documentation
+- Removed upstreamed patch:
+  - terminate_socket.patch
+
+- Add terminate_socket.patch patch to fix http:proxy test suite
+  failure due to incomplete thread cleanup
+  (gh#SWI-Prolog/packages-http!175).
+
+- Update to 10.1.11:
+  Complete changelog is
+  https://www.swi-prolog.org/ChangeLog?branch=development&amp;from=10.1.10&amp;to=10.1.11
+  and upstream still doesn’t provide any abbreviated version, and
+  the list of changes is still too long to enumerate here.
+
+- Update to 10.1.10:
+  Complete changelog is
+  https://www.swi-prolog.org/ChangeLog?branch=development&amp;from=9.3.31&amp;to=10.1.10
+  and upstream still doesn’t provide any abbreviated version, and
+  the list of changes is still too long to enumerate here.</comment>
+    <requestid>1368479</requestid>
+  </revision>
 </revisionlist>

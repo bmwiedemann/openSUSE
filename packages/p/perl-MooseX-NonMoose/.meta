@@ -7,6 +7,5 @@ inlining, at &quot;make_immutable&quot; time) a constructor that makes sure thin
 like &quot;BUILD&quot; methods are called.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-MooseX-NonMoose"/>
   <url>http://search.cpan.org/dist/MooseX-NonMoose</url>
 </package>

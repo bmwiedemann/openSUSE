@@ -76,4 +76,19 @@
 - No more greedy globs in %files.</comment>
     <requestid>1273883</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b7f00eccfc43a8334d3d96e43484ca91</srcmd5>
+    <version>2.1.0</version>
+    <time>1775743767</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.1.0:
+  * Greatly simplify timestamp parsing and generation code,
+    leveraging improvements in native Python capabilities in the
+    past decade-and-a-half. See :commit:`53c2d15` for further
+    details.
+  * Simplify GitHub Actions workflow. Add zizmor to audit
+    workflows.
+  * Modernize packaging and documentation configuration.</comment>
+    <requestid>1345297</requestid>
+  </revision>
 </revisionlist>

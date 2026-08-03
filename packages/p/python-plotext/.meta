@@ -8,5 +8,6 @@
 - it can save plots as text or as colored html,
 - it provides a simple function to color strings,
 - it comes with a dedicated command line tool</description>
+  <devel project="devel:languages:python" package="python-plotext"/>
   <url>https://github.com/piccolomo/plotext</url>
 </package>

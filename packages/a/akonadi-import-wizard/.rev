@@ -951,4 +951,13 @@
     <comment>KDE release gear 26.04.3 (forwarded request 1362728 from krop)</comment>
     <requestid>1363152</requestid>
   </revision>
+  <revision rev="120" vrev="2">
+    <srcmd5>837d98205c3a6075639ea3284188ebac</srcmd5>
+    <version>26.04.3</version>
+    <time>1784125996</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream change:
+  * 0001-Add-missing-find_package-KF6I18n.patch</comment>
+    <requestid>1365600</requestid>
+  </revision>
 </revisionlist>

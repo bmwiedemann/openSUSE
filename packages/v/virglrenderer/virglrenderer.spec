@@ -1,7 +1,7 @@
 #
 # spec file for package virglrenderer
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,13 +23,13 @@
 %endif
 %define         libname lib%{name}1
 Name:           virglrenderer
-Version:        1.1.1
+Version:        1.3.0
 Release:        0
 Summary:        Virgl Rendering library
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://docs.mesa3d.org/drivers/virgl/
-Source0:        https://gitlab.freedesktop.org/virgl/%{name}/-/archive/%{name}-%{version}/%{name}-%{name}-%{version}.tar.gz
+Source0:        https://gitlab.freedesktop.org/virgl/%{name}/-/archive/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  Mesa-devel
 BuildRequires:  meson >= 0.46
 BuildRequires:  pkgconfig >= 0.9.0
@@ -79,13 +79,12 @@ This package contains a server to test virgl rendering
 without GL.
 
 %prep
-%autosetup -n %{name}-%{name}-%{version} -p1
+%autosetup -n %{name}-%{version} -p1
 
 %build
 %meson \
 %if %{with vulkan}
     -Dvenus=true \
-    -Dvenus-validate=true \
 %endif
     -Dvideo=true
 %meson_build

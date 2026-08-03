@@ -3,5 +3,6 @@
   <description>FAPG (Fast Audio Playlist Generator) is a tool to generate list of audio files
 (Wav, MP3, Ogg, etc) in various formats (M3U, PLS, HTML, etc). It is designed
 for speed even for large lists, and automation use.</description>
+  <devel project="multimedia:apps" package="fapg"/>
   <url>http://royale.zerezo.com/fapg/</url>
 </package>

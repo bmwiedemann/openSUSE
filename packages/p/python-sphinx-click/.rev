@@ -94,4 +94,17 @@
   * typing: Update for latest types-docutils</comment>
     <requestid>1184221</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>28081115fbdf98e10d7636b3900e8db7</srcmd5>
+    <version>6.2.0</version>
+    <time>1774470007</time>
+    <user>anag_factory</user>
+    <comment> - update to 6.2.0:
+  * Update dependencies based on pyproject.toml:
+    + Update python-devel to &gt;= 3.10
+    + Add BuildRequires: setuptools &gt;= 80, setuptools_scm &gt;= 8
+    + Add BuildRequires: click &gt;= 8.0, sphinx &gt;= 4.0, docutils
+    + Remove BuildRequires: pbr (no longer used)</comment>
+    <requestid>1342407</requestid>
+  </revision>
 </revisionlist>

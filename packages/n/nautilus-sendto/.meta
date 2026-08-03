@@ -3,5 +3,4 @@
   <description>This package provides the functionality to the Nautilus file browser to
 send files over e-mail or instant messaging protocols via Evolution,
 Empathy and Pidgin.</description>
-  <devel project="GNOME:Factory" package="nautilus-sendto"/>
 </package>

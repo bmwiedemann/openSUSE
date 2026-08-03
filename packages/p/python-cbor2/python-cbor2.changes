@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Mar 24 11:58:11 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 5.9.0 (CVE-2026-26209, bsc#1260367)
+  * Added the max_depth decoder parameter to limit the maximum allowed
+    nesting level of containers, with a default value of 400 levels.
+  * Changed the default read_size from 4096 to 1 for backwards
+    compatibility.
+  * Fixed C encoder not respecting string referencing when encoding
+    string-type datetimes.
+  * Fixed a missed check for an exception in the C implementation of
+    CBOREncoder.encode_shared().
+  * Fixed two reference/memory leaks in the C extension's long string
+    decoder.
+  * Fixed C decoder ignoring the str_errors setting when decoding
+    strings, and improved string decoding performance by using stack
+    allocation for small strings and purging unnecessary conditionals.
+
+-------------------------------------------------------------------
 Fri Jan  2 10:14:38 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Update to 5.8.0 (CVE-2025-68131, bsc#1255783)

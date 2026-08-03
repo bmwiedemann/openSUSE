@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-nfs-client
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yast2-nfs-client
-Version:        5.0.1
+Version:        5.0.2
 Release:        0
 URL:            https://github.com/yast/yast-nfs-client
 Summary:        YaST2 - NFS Configuration
@@ -27,7 +27,6 @@ Group:          System/YaST
 Source0:        %{name}-%{version}.tar.bz2
 
 BuildRequires:  perl-XML-Writer
-BuildRequires:  update-desktop-files
 BuildRequires:  yast2-devtools >= 4.2.2
 BuildRequires:  yast2-testsuite
 # Replace PackageSystem with Package

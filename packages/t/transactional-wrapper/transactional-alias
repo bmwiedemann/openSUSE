@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Starting the alias suport for transactinoal-wrapper"
+echo "Starting the alias support for transactional-wrapper"
 
 CMDLINE=""
 COMMAND=""
@@ -9,7 +9,7 @@ DIRECT_COMMANDS=""
 TRANSACTIONAL_COMMANDS=""
 RUN_TRANSACTIONAL="1"
 CONFIG=""
-while [[ $# -gt 0 ]] do
+while [[ $# -gt 0 ]]; do
   case $1 in
     -c|--config)
       if [ -z "$CMDLINE" ] ; then

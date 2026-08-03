@@ -3,6 +3,5 @@
   <description>StringPrep is the preparation of internationalized strings (stringprep, RFC 3454).
 
 </description>
-  <devel project="Java:packages" package="ongres-stringprep"/>
   <url>https://github.com/ongres/stringprep</url>
 </package>

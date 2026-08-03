@@ -2,6 +2,5 @@
   <title>Distraction-free note taking app with optional cloud sync</title>
   <description>Iotas is a simple note taking with mobile-first design and optional speedy
 Nextcloud Notes sync.</description>
-  <devel project="GNOME:Apps" package="iotas"/>
   <url>https://apps.gnome.org/Iotas/</url>
 </package>

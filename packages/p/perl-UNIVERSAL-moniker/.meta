@@ -8,5 +8,4 @@ what we would prefer to call them.
 
 This module will add a 'moniker' (and 'plural_moniker') method to
 'UNIVERSAL', and so to every class or module.</description>
-  <devel project="devel:languages:perl" package="perl-UNIVERSAL-moniker"/>
 </package>

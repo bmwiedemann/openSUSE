@@ -1,0 +1,30 @@
+diff -up spotbugs-4.8.5/spotbugs-ant/src/main/java/edu/umd/cs/findbugs/anttask/AbstractFindBugsTask.java.p00 spotbugs-4.8.5/spotbugs-ant/src/main/java/edu/umd/cs/findbugs/anttask/AbstractFindBugsTask.java
+--- spotbugs-4.8.5/spotbugs-ant/src/main/java/edu/umd/cs/findbugs/anttask/AbstractFindBugsTask.java.p00	2024-05-31 20:55:49.513394826 +0300
++++ spotbugs-4.8.5/spotbugs-ant/src/main/java/edu/umd/cs/findbugs/anttask/AbstractFindBugsTask.java	2024-05-31 21:45:10.847030481 +0300
+@@ -343,13 +343,19 @@ public abstract class AbstractFindBugsTa
+                 findbugsLib = homeDir;
+                 homeDir = homeDir.getParentFile();
+             }
+-            File findbugsLibFindBugs = new File(findbugsLib, "spotbugs.jar");
+-            // log("executing using home dir [" + homeDir + "]");
+-            if (findbugsLibFindBugs.exists()) {
+-                findbugsEngine.setClasspath(new Path(getProject(), findbugsLibFindBugs.getPath()));
+-            } else {
+-                throw new IllegalArgumentException("Can't find spotbugs.jar in " + findbugsLib);
+-            }
++            Path classpath=new Path(getProject());
++            for(String lib : findbugsLib.list(
++                    (dir, name)->name.endsWith(".jar")
++                        || new File(dir, name).isDirectory()))
++            {
++                File libFile=new File(findbugsLib, lib);
++                if (libFile.exists()) {
++                    classpath.add(new Path(getProject(), libFile.getPath()));
++                } else {
++                    throw new IllegalArgumentException("Can't find "+libFile+" in " + findbugsLib);
++                }
++            }
++            findbugsEngine.setClasspath(classpath);
+             findbugsEngine.createJvmarg().setValue("-Dspotbugs.home=" + homeDir.getPath());
+         } else {
+             // Use an explicitly specified classpath and list of plugin Jars

@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-journal
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yast2-journal
-Version:        5.0.2
+Version:        5.0.3
 Release:        0
 Group:          System/YaST
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -26,7 +26,6 @@ Summary:        YaST2 - Reading of systemd journal
 
 Source0:        %{name}-%{version}.tar.bz2
 
-BuildRequires:  update-desktop-files
 # Yast::Builtins::strftime
 BuildRequires:  yast2-ruby-bindings >= 3.1.38
 BuildRequires:  yast2

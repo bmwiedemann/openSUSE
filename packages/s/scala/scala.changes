@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul  1 04:37:42 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Use the jline3 bundle jar to make an eventual upgrade of jline3
+  easier
+
+-------------------------------------------------------------------
 Tue Sep 24 13:19:04 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use SOURCE_DATE_EPOCH for reproducible jar mtime

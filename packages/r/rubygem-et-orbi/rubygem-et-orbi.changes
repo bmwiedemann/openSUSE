@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 13 09:16:25 UTC 2026 - Aleksei Burlakov <aburlakov@suse.com>
+
+- update to version 1.4.0:
+  * Rework EoTime #rweek and #rday
+  * Introduce EtOrbi.rweek_ref= (:sunday, :monday, :iso, :us, ...)
+
+-------------------------------------------------------------------
 Fri Jun 21 09:48:41 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
 
 - ## et-orbi 1.2.11  released 2024-03-23

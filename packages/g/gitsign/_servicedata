@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/sigstore/gitsign</param>
-              <param name="changesrevision">d5e8a584d0551218fc96b5c89c0db910788b432a</param></service></servicedata>
+              <param name="changesrevision">d5e8a584d0551218fc96b5c89c0db910788b432a</param></service><service name="tar_scm">
+                <param name="url">https://github.com/sigstore/gitsign.git</param>
+              <param name="changesrevision">7de6b7bf5a05c607c8cbce8d03d7114562553811</param></service></servicedata>

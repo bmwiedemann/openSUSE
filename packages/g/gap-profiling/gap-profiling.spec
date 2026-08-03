@@ -1,7 +1,7 @@
 #
 # spec file for package gap-profiling
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-profiling
-Version:        2.6.2
+Version:        2.6.3
 Release:        0
 Summary:        GAP: Line-by-line profiling and code coverage for GAP
 License:        CDDL-1.0 AND MIT
@@ -30,7 +30,6 @@ BuildRequires:  gap-devel >= 4.12
 BuildRequires:  gap-rpm-devel
 BuildRequires:  python-rpm-macros
 Requires:       gap-core >= 4.12
-Requires:       gap-gapdoc >= 1.5
 Requires:       gap-io >= 4.4.4
 
 %description

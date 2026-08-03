@@ -2,5 +2,6 @@
   <title>Swift demangler for Rizin</title>
   <description>Plugin for Rizin to demangle swift binaries
 </description>
+  <devel project="devel:tools" package="rz-libswift"/>
   <url>https://github.com/rizinorg/rz-libswift</url>
 </package>

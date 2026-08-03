@@ -10,6 +10,5 @@ MooseX::Getopt defining the options for you instead of &quot;opt_spec&quot;
 returning a Getopt::Long::Descriptive spec.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-MooseX-App-Cmd"/>
   <url>http://search.cpan.org/dist/MooseX-App-Cmd</url>
 </package>

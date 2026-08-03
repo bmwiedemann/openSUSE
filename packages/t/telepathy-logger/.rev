@@ -245,4 +245,12 @@
     <comment></comment>
     <requestid>1186869</requestid>
   </revision>
+  <revision rev="31" vrev="11">
+    <srcmd5>a8d7d056362ec88e016c44f81a29ff41</srcmd5>
+    <version>0.8.2</version>
+    <time>1774555881</time>
+    <user>anag_factory</user>
+    <comment>Fix build after gnome-docs-utils going away</comment>
+    <requestid>1342854</requestid>
+  </revision>
 </revisionlist>

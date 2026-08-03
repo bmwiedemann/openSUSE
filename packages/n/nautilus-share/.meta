@@ -16,5 +16,4 @@ Features: * A new entry in your Nautilus right-click menu with a
 
 * Nautilus displays a palm icon to visually show you which folders are
 shared.</description>
-  <devel project="GNOME:Apps" package="nautilus-share"/>
 </package>

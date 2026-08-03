@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Jul 28 05:01:32 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.15.0:
+  * fix(context): clarify the fallback login prompt wording in
+    #1061
+  * Fix notifications --mine outside git repositories in #1056
+  * feat(assignees): add set, add, and remove assignees APIs in
+    #1045
+  * fix(deps): update go dependencies in #1057
+  * fix(deps): update go dependencies in #1051
+  * fix(theme): don't query the terminal at start-up in #1054
+  * upgrade go sdk and add test in #1048
+  * feat(comments): accept -d/--description for comment body in
+    #1043
+  * Add reply to code review in #978
+  * fix(http): add transport timeouts so tea fails fast on stalled
+    servers in #1020
+  * fix(config): write to keychain before config in #1044
+
+-------------------------------------------------------------------
 Wed Jul 15 16:56:42 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 0.14.2:

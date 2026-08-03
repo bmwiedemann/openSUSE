@@ -5,6 +5,5 @@ GNOME Games, but it may be used by others. The API will only break
 with the major version number. The ABI is unstable.
 
 </description>
-  <devel project="GNOME:Factory" package="libgnome-games-support1_3"/>
   <url>https://git.gnome.org/browse/libgnome-games-support/</url>
 </package>

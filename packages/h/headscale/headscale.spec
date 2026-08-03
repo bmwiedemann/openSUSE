@@ -17,7 +17,7 @@
 
 
 Name:           headscale
-Version:        0.29.1
+Version:        0.29.3
 Release:        0
 Summary:        An open source, self-hosted implementation of the Tailscale control server
 License:        BSD-3-Clause

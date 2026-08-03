@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul 13 11:18:06 UTC 2026 - Aleksei Burlakov <aburlakov@suse.com>
+
+- New upstream release version 1.4.0:
+  * Add index hint for releasing blocked executions by @rosa in #718
+  * Avoid an unintended FOR UPDATE query execution inside lock_candidates by @genya0407 in #720
+  * docs: improve grammar a little by @G-Rath in #723
+  * Dynamic scheduled tasks by @cupatea in #553 
+
+-------------------------------------------------------------------
 Thu Aug 14 07:54:30 UTC 2025 - Aleksei Burlakov <aburlakov@suse.com>
 
 - 1.2.1:

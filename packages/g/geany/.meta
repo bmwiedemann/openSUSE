@@ -6,5 +6,4 @@ few dependencies from other packages. Another goal was to be as
 independent as possible from a special Desktop Environment like KDE
 or GNOME. So it is using only the GTK2 toolkit and therefore you need
 only the GTK2 runtime libraries to run Geany.</description>
-  <devel project="GNOME:Apps" package="geany"/>
 </package>

@@ -7,5 +7,4 @@ format.
 Simple Scan is basically a frontend for SANE - which is the same backend
 as XSANE uses. This means that all existing scanners will work and the
 interface is well tested.</description>
-  <devel project="GNOME:Apps" package="simple-scan"/>
 </package>

@@ -115,4 +115,21 @@
 - Update Requires from setup.py (forwarded request 1351218 from glaubitz)</comment>
     <requestid>1351227</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>491b4ebd2c2d6d7ee7730f20b8667f49</srcmd5>
+    <version>3.69.0</version>
+    <time>1784126611</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.69.0:
+  * regenerate google-cloud-spanner
+  * add asynchronous code snippets and minor cleanup change
+  * drop Python 3.7-3.9 support and regenerate
+  * log client configuration at startup
+  * update API sources and regenerate
+  * replace insecure pickle with json for partition deserialization
+  * Add last statement option samples
+  * correctly parse type assertions in extends clause
+  * provide a hub when traversing a File or Program and no parentPath is given</comment>
+    <requestid>1365761</requestid>
+  </revision>
 </revisionlist>

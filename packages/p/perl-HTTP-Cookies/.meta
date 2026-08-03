@@ -11,6 +11,5 @@ For more information about cookies refer to
 &lt;URL:http://www.cookiecentral.com/&gt;. This module also implements the new
 style cookies described in _RFC 2965_. The two variants of cookies are
 supposed to be able to coexist happily.</description>
-  <devel project="devel:languages:perl" package="perl-HTTP-Cookies"/>
   <url>http://search.cpan.org/dist/HTTP-Cookies/</url>
 </package>

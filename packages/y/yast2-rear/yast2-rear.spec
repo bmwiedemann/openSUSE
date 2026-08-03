@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-rear
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yast2-rear
-Version:        5.0.0
+Version:        5.0.1
 Release:        0
 Summary:        YaST2 - Rear - Relax and Recover
 License:        GPL-2.0-only
@@ -29,7 +29,6 @@ BuildRequires:  doxygen
 BuildRequires:  libxslt
 BuildRequires:  perl-XML-Writer
 BuildRequires:  sgml-skel
-BuildRequires:  update-desktop-files
 BuildRequires:  yast2
 BuildRequires:  yast2-devtools >= 4.4.0
 BuildRequires:  yast2-storage-ng

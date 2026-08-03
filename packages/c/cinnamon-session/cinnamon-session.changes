@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Mar 25 23:10:05 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.6.3:
+  * .github/workflows: Update build.yml with generate-test-
+    packages.
+  * csm-manager.c: Close the end-session dialog before trying to
+    lock (#199)
+  * csm-manager.c: Fix the suspend action enum when blocked by an
+    inhibitor.
+  * Set env for qt ibus (#191)
+  * csm-manager.c: Add functionality to restart the cinnamon-
+    launcher (#184)
+  * Fixes cinnamon-session-quit --logout --no-prompt --force not
+    working (#183)
+  * Remove old upower support to match c-s-d commits (#185)
+  * csm-manager.c: Don't consider suspend inhibitors when
+    gathering capabilities for the logout dialog.
+  * csm-manager.c: Clear system inhibitors before attempting to
+    restart or shutdown using systemd.
+
+-------------------------------------------------------------------
 Sat Nov 22 21:16:02 CET 2025 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove unused BuildRequires: update-desktop-files.

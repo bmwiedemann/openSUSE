@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Tue Feb 24 06:50:19 MST 2026 - carnold@suse.com
+
+- Version update to 1.3.0 (jsc#PED-14625)
+  New features
+    Add experimental implementation for Intel  and Panfrost virtual
+    native contexts
+  API and configuration changes:
+    drop obsolete render-server option
+    virglrenderer: introduce virgl_renderer_resource_map_fixed
+    vkr: drop obsolete venus-validate build option
+  New Vulkan features enabled:
+    VK_EXT_mesh_shader
+    VK_KHR_cooperative_matrix
+    VK_KHR_robustness2
+    VK_KHR_shader_bfloat16
+    VK_KHR_shader_untyped_pointers
+    VK_EXT_shader_float8
+    VK_EXT_shader_uniform_buffer_unsized_array
+  Fixes and enhancements:
+    c11/threads: fix build on c23 (bsc#1258756)
+    virgl: fix untyped resource mapping leak
+    drm/amdgpu: implement resource_map
+    virglrenderer: extend contexts to map OPAQUE_HANDLE
+    virglrenderer: use same render node as qemu for native context
+    vkr: align up opaque fd export alloc even for dedicated alloc
+    vkr: plug leaks on ring destroy
+    vrend: Add VIRGL_CCMD_GET_PIPE_RESOURCE_LAYOUT
+    vrend: Add more 10bit RGB formats
+    vrend: Correct eglGetPlatformDisplay argument type
+    vrend: Correct minigbm definitions
+    vrend: Prepare to utilize GBM allocation by default when using EGL
+- Version 1.2.0 changes
+  API changes:
+    Add API to get drm device fd
+    Add some APIs needed by vtest
+  Fixes and enhancements:
+    Add epoll-shim deps on FreeBSD for venus support
+    Fix enable video build egl and drm error
+    venus: enable loading vulkan symbols dynamically at runtime
+    venus: fall back to "/tmp" if XDG_RUNTIME_DIR is not defined
+    vkr: check dma-buf support for gbm and udmabuf backings
+    vkr: improve suppport for QEMU
+    vkr_allocator: enable required extensions
+    vtest: add native context support
+    drm: add asahi native-context implementation
+    vrend: misc fixes
+
+-------------------------------------------------------------------
 Wed Sep  3 06:57:15 UTC 2025 - pgajdos@suse.com
 
 - version update to 1.1.1

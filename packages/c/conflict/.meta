@@ -3,5 +3,6 @@
   <description>conflict displays conflicting filenames in your execution path. Unlike the csh
 command which, it displays all of the conflicting (non-alias) executable
 filenames in your path.</description>
+  <devel project="utilities" package="conflict"/>
   <url>https://invisible-island.net/conflict/conflict.html</url>
 </package>

@@ -17,7 +17,7 @@
 
 
 Name:           klog
-Version:        7.0
+Version:        7.1
 Release:        0
 Summary:        Time tracking in a human-readable, plain-text file format
 License:        MIT
@@ -27,7 +27,7 @@ Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
 BuildRequires:  zsh
-BuildRequires:  golang(API) >= 1.25
+BuildRequires:  golang(API) >= 1.26
 
 %description
 klog is a plain-text file format and a command line tool for time tracking.

@@ -4,6 +4,5 @@
 which did a decent job at handling very simple email sending tasks, but was not
 suitable for serious use, for a variety of reasons.
 </description>
-  <devel project="devel:languages:perl" package="perl-Email-Sender"/>
   <url>http://search.cpan.org/dist/Email-Sender/</url>
 </package>

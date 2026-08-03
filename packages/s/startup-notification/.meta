@@ -2,5 +2,4 @@
   <title>Reference Implementation for the Startup-Notification Protocol</title>
   <description>Startup-notification contains a reference implementation of the
 startup-notification protocol.</description>
-  <devel project="GNOME:Factory" package="startup-notification"/>
 </package>

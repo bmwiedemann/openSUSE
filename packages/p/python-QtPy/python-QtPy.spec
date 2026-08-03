@@ -1,7 +1,7 @@
 #
 # spec file for package python-QtPy
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %bcond_with test
 BuildArch:      noarch
 %endif
-%bcond_without pyqt5
+%bcond_with pyqt5
 %bcond_without pyqt6
 %ifnarch %power64 s390x
 %if 0%{?suse_version} < 1600
@@ -74,9 +74,6 @@ BuildRequires:  %{python_module qt3d-qt5}
 BuildRequires:  %{python_module qt5}
 BuildRequires:  %{python_module qtcharts-qt5}
 BuildRequires:  %{python_module qtdatavis3d-qt5}
-%ifnarch %{power64} s390x
-BuildRequires:  %{python_module qtwebengine-qt5}
-%endif
 %endif
 %if %{with pyqt6}
 BuildRequires:  %{python_module PyQt6-3D}
@@ -161,10 +158,8 @@ donttest+=" or test_qtopengl"
 %if %{with pyqt5}
 # no QtSensors in our PyQt5
 donttest_pyqt5=" or test_qtsensors"
-%ifarch %{power64} s390x
-# No QtWebengine on ppc and s390x
-donttest_pyqt5="${donttest_pyqt5} or test_qtwebengine or test_qt_api"
-%endif
+# No Qt5 Webengine: https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/message/IFZ4HRNKQUXZHXD7S3FWM3QIONDNMOMY/
+donttest_pyqt5="${donttest_pyqt5} or test_qtwebengine"
 export QT_API=pyqt5 FORCE_QT_API=1
 %pytest -rwEfs -v ../qtpy -k "not ($donttest_qt_api $donttest $donttest_pyqt5)"
 %endif

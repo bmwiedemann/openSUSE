@@ -243,4 +243,18 @@
   * Fix grid generation for geostrophic streamfunction</comment>
     <requestid>1343872</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>9bcdb2858dda1fc61d5e188e8b999c70</srcmd5>
+    <version>3.6.23</version>
+    <time>1784126652</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.6.23:
+  * Add Pyodide build
+  * update pre-commits
+- update to 3.6.22:
+  * Audit the wheel for abi3
+  * p_from_z: raise ValueError if any z &gt; 5
+  * Add &quot;where&quot; based ufunc masked array support decorator</comment>
+    <requestid>1365766</requestid>
+  </revision>
 </revisionlist>

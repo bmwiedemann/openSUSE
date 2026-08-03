@@ -386,4 +386,19 @@
     <comment></comment>
     <requestid>1361592</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>d710aa30940acd0607733c6b69472ad0</srcmd5>
+    <version>4.5.5</version>
+    <time>1782916602</time>
+    <user>anag_factory</user>
+    <comment>- move to the right subpackage
+
+- Add missing requires to be able to start the server
+
+- Update to 4.5.5 (fixes CVE-2026-46606 (bsc#1268800), CVE-2026-46607
+  * bump dependencies and web lib to address security
+- Update to 3.3.0.4
+  *  KeyError: 'syscalls' and terminal layout broken #1956</comment>
+    <requestid>1362713</requestid>
+  </revision>
 </revisionlist>

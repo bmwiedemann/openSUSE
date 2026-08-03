@@ -128,4 +128,18 @@
   * Specify case, when formatting type and precision are missing.</comment>
     <requestid>1349203</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>83f5f6366a7511344d3ca55e739cb630</srcmd5>
+    <version>2.3.1</version>
+    <time>1784126657</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.3.1:
+  * Fix ieee() for bit width &gt; 128. (skirpichev)
+  * Fix Fix mpc.__module__. (skirpichev)
+  * Check for buffer overflows in __format__() dunders.
+    (skirpichev)
+  * Support CPython v3.15. (skirpichev)
+  * Drop additional constraint for Jacobi symbol. (skirpichev)</comment>
+    <requestid>1365770</requestid>
+  </revision>
 </revisionlist>

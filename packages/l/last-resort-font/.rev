@@ -24,4 +24,25 @@
     <comment></comment>
     <requestid>1135392</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>025cd3c6ff8394c2a3c4f1f977fc234e</srcmd5>
+    <version>17.000</version>
+    <time>1774470070</time>
+    <user>anag_factory</user>
+    <comment>- update to 17.000:
+  * This version of the *Last Resort* fonts corresponds to
+    Unicode Version 17.0.0. The following changes were made in
+    this release:
+  * Eight new glyphs were added
+- update to 16.000:
+  * This version of the *Last Resort* fonts corresponds to
+    Unicode Version 16.0.0. The following changes were made in
+    this release:
+  * 10 new glyphs  to the following new blocks were added
+  * 5,185 mappings that correspond to the 5,185 new characters in
+    Unicode Version 16.0 were changed.
+  * The sources and build scripts were added.
+  * That is all. (forwarded request 1342316 from dirkmueller)</comment>
+    <requestid>1342485</requestid>
+  </revision>
 </revisionlist>

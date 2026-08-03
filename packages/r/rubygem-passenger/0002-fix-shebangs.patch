@@ -1,137 +1,105 @@
-From 06910e90a5bfc182acf4827da6b7f33561986b13 Mon Sep 17 00:00:00 2001
-From: Manuel Schnitzer <webmaster@mschnitzer.de>
-Date: Sat, 7 Apr 2018 03:46:44 +0200
-Subject: [PATCH] Fix shebangs for SUSE packaging
-
----
- bin/passenger                                                           | 2 +-
- bin/passenger-config                                                    | 2 +-
- bin/passenger-install-apache2-module                                    | 2 +-
- bin/passenger-install-nginx-module                                      | 2 +-
- bin/passenger-memory-stats                                              | 2 +-
- bin/passenger-status                                                    | 2 +-
- src/cxx_supportlib/vendor-copy/libuv/gyp_uv.py                          | 2 +-
- src/helper-scripts/backtrace-sanitizer.rb                               | 2 +-
- src/helper-scripts/crash-watch.rb                                       | 2 +-
- src/helper-scripts/meteor-loader.rb                                     | 2 +-
- src/helper-scripts/prespawn                                             | 2 +-
- .../winston/node_modules/async/support/sync-package-managers.js         | 2 +-
- 24 files changed, 24 insertions(+), 24 deletions(-)
-
-Index: passenger-6.0.26/bin/passenger
-===================================================================
---- passenger-6.0.26.orig/bin/passenger
-+++ passenger-6.0.26/bin/passenger
+diff --color -Nur passenger-6.1.7.orig/bin/passenger passenger-6.1.7/bin/passenger
+--- passenger-6.1.7.orig/bin/passenger	2026-07-14 13:14:28.190095089 +0200
++++ passenger-6.1.7/bin/passenger	2026-07-14 13:30:16.343314289 +0200
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env ruby
 +#!/usr/bin/ruby
  #  Phusion Passenger - https://www.phusionpassenger.com/
  #  Copyright (c) 2010-2025 Asynchronous B.V.
  #
-Index: passenger-6.0.26/bin/passenger-config
-===================================================================
---- passenger-6.0.26.orig/bin/passenger-config
-+++ passenger-6.0.26/bin/passenger-config
+diff --color -Nur passenger-6.1.7.orig/bin/passenger-config passenger-6.1.7/bin/passenger-config
+--- passenger-6.1.7.orig/bin/passenger-config	2026-07-14 13:14:28.190159956 +0200
++++ passenger-6.1.7/bin/passenger-config	2026-07-14 13:30:16.344698831 +0200
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env ruby
 +#!/usr/bin/ruby
  #  Phusion Passenger - https://www.phusionpassenger.com/
  #  Copyright (c) 2010-2025 Asynchronous B.V.
  #
-Index: passenger-6.0.26/bin/passenger-install-apache2-module
-===================================================================
---- passenger-6.0.26.orig/bin/passenger-install-apache2-module
-+++ passenger-6.0.26/bin/passenger-install-apache2-module
+diff --color -Nur passenger-6.1.7.orig/bin/passenger-install-apache2-module passenger-6.1.7/bin/passenger-install-apache2-module
+--- passenger-6.1.7.orig/bin/passenger-install-apache2-module	2026-07-14 13:14:28.190739671 +0200
++++ passenger-6.1.7/bin/passenger-install-apache2-module	2026-07-14 13:30:16.345023347 +0200
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env ruby
 +#!/usr/bin/ruby
  # encoding: binary
  #  Phusion Passenger - https://www.phusionpassenger.com/
  #  Copyright (c) 2010-2025 Asynchronous B.V.
-Index: passenger-6.0.26/bin/passenger-install-nginx-module
-===================================================================
---- passenger-6.0.26.orig/bin/passenger-install-nginx-module
-+++ passenger-6.0.26/bin/passenger-install-nginx-module
+diff --color -Nur passenger-6.1.7.orig/bin/passenger-install-nginx-module passenger-6.1.7/bin/passenger-install-nginx-module
+--- passenger-6.1.7.orig/bin/passenger-install-nginx-module	2026-07-14 13:14:28.190974622 +0200
++++ passenger-6.1.7/bin/passenger-install-nginx-module	2026-07-14 13:30:16.346217471 +0200
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env ruby
 +#!/usr/bin/ruby
  #  Phusion Passenger - https://www.phusionpassenger.com/
  #  Copyright (c) 2010-2025 Asynchronous B.V.
  #
-Index: passenger-6.0.26/bin/passenger-memory-stats
-===================================================================
---- passenger-6.0.26.orig/bin/passenger-memory-stats
-+++ passenger-6.0.26/bin/passenger-memory-stats
+diff --color -Nur passenger-6.1.7.orig/bin/passenger-memory-stats passenger-6.1.7/bin/passenger-memory-stats
+--- passenger-6.1.7.orig/bin/passenger-memory-stats	2026-07-14 13:14:28.191132348 +0200
++++ passenger-6.1.7/bin/passenger-memory-stats	2026-07-14 13:30:16.346843181 +0200
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env ruby
 +#!/usr/bin/ruby
  #  Phusion Passenger - https://www.phusionpassenger.com/
  #  Copyright (c) 2010-2025 Asynchronous B.V.
  #
-Index: passenger-6.0.26/bin/passenger-status
-===================================================================
---- passenger-6.0.26.orig/bin/passenger-status
-+++ passenger-6.0.26/bin/passenger-status
+diff --color -Nur passenger-6.1.7.orig/bin/passenger-status passenger-6.1.7/bin/passenger-status
+--- passenger-6.1.7.orig/bin/passenger-status	2026-07-14 13:14:28.191244872 +0200
++++ passenger-6.1.7/bin/passenger-status	2026-07-14 13:30:16.347379317 +0200
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env ruby
 +#!/usr/bin/ruby
  #  Phusion Passenger - https://www.phusionpassenger.com/
  #  Copyright (c) 2010-2025 Asynchronous B.V.
  #
-Index: passenger-6.0.26/src/cxx_supportlib/vendor-copy/libuv/gyp_uv.py
-===================================================================
---- passenger-6.0.26.orig/src/cxx_supportlib/vendor-copy/libuv/gyp_uv.py
-+++ passenger-6.0.26/src/cxx_supportlib/vendor-copy/libuv/gyp_uv.py
+diff --color -Nur passenger-6.1.7.orig/src/cxx_supportlib/vendor-copy/libuv/gyp_uv.py passenger-6.1.7/src/cxx_supportlib/vendor-copy/libuv/gyp_uv.py
+--- passenger-6.1.7.orig/src/cxx_supportlib/vendor-copy/libuv/gyp_uv.py	2026-07-14 13:14:28.267697910 +0200
++++ passenger-6.1.7/src/cxx_supportlib/vendor-copy/libuv/gyp_uv.py	2026-07-14 13:30:16.347991165 +0200
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/python
  
  import os
  import platform
-Index: passenger-6.0.26/src/helper-scripts/backtrace-sanitizer.rb
-===================================================================
---- passenger-6.0.26.orig/src/helper-scripts/backtrace-sanitizer.rb
-+++ passenger-6.0.26/src/helper-scripts/backtrace-sanitizer.rb
+diff --color -Nur passenger-6.1.7.orig/src/helper-scripts/backtrace-sanitizer.rb passenger-6.1.7/src/helper-scripts/backtrace-sanitizer.rb
+--- passenger-6.1.7.orig/src/helper-scripts/backtrace-sanitizer.rb	2026-07-14 13:14:28.674784916 +0200
++++ passenger-6.1.7/src/helper-scripts/backtrace-sanitizer.rb	2026-07-14 13:30:16.348427433 +0200
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env ruby
 +#!/usr/bin/ruby
  #  Phusion Passenger - https://www.phusionpassenger.com/
  #  Copyright (c) 2013-2025 Asynchronous B.V.
  #
-Index: passenger-6.0.26/src/helper-scripts/crash-watch.rb
-===================================================================
---- passenger-6.0.26.orig/src/helper-scripts/crash-watch.rb
-+++ passenger-6.0.26/src/helper-scripts/crash-watch.rb
+diff --color -Nur passenger-6.1.7.orig/src/helper-scripts/crash-watch.rb passenger-6.1.7/src/helper-scripts/crash-watch.rb
+--- passenger-6.1.7.orig/src/helper-scripts/crash-watch.rb	2026-07-14 13:14:28.674861600 +0200
++++ passenger-6.1.7/src/helper-scripts/crash-watch.rb	2026-07-14 13:30:16.348747420 +0200
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env ruby
 +#!/usr/bin/ruby
  # Copyright (c) 2015-2025 Asynchronous B.V.
  #
  # Permission is hereby granted, free of charge, to any person obtaining
-Index: passenger-6.0.26/src/helper-scripts/meteor-loader.rb
-===================================================================
---- passenger-6.0.26.orig/src/helper-scripts/meteor-loader.rb
-+++ passenger-6.0.26/src/helper-scripts/meteor-loader.rb
+diff --color -Nur passenger-6.1.7.orig/src/helper-scripts/meteor-loader.rb passenger-6.1.7/src/helper-scripts/meteor-loader.rb
+--- passenger-6.1.7.orig/src/helper-scripts/meteor-loader.rb	2026-07-14 13:14:28.675517119 +0200
++++ passenger-6.1.7/src/helper-scripts/meteor-loader.rb	2026-07-14 13:30:16.349356135 +0200
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env ruby
 +#!/usr/bin/ruby
  # encoding: binary
+ 
  #  Phusion Passenger - https://www.phusionpassenger.com/
- #  Copyright (c) 2010-2025 Asynchronous B.V.
-Index: passenger-6.0.26/src/helper-scripts/prespawn
-===================================================================
---- passenger-6.0.26.orig/src/helper-scripts/prespawn
-+++ passenger-6.0.26/src/helper-scripts/prespawn
+diff --color -Nur passenger-6.1.7.orig/src/helper-scripts/prespawn passenger-6.1.7/src/helper-scripts/prespawn
+--- passenger-6.1.7.orig/src/helper-scripts/prespawn	2026-07-14 13:14:28.675765653 +0200
++++ passenger-6.1.7/src/helper-scripts/prespawn	2026-07-14 13:30:16.350357586 +0200
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env ruby
 +#!/usr/bin/ruby
  #  Phusion Passenger - https://www.phusionpassenger.com/
  #  Copyright (c) 2010-2025 Asynchronous B.V.
  #
-Index: passenger-6.0.26/src/nodejs_supportlib/vendor-copy/winston/node_modules/async/support/sync-package-managers.js
-===================================================================
---- passenger-6.0.26.orig/src/nodejs_supportlib/vendor-copy/winston/node_modules/async/support/sync-package-managers.js
-+++ passenger-6.0.26/src/nodejs_supportlib/vendor-copy/winston/node_modules/async/support/sync-package-managers.js
+diff --color -Nur passenger-6.1.7.orig/src/nodejs_supportlib/vendor-copy/winston/node_modules/async/support/sync-package-managers.js passenger-6.1.7/src/nodejs_supportlib/vendor-copy/winston/node_modules/async/support/sync-package-managers.js
+--- passenger-6.1.7.orig/src/nodejs_supportlib/vendor-copy/winston/node_modules/async/support/sync-package-managers.js	2026-07-14 13:14:28.685201168 +0200
++++ passenger-6.1.7/src/nodejs_supportlib/vendor-copy/winston/node_modules/async/support/sync-package-managers.js	2026-07-14 13:30:16.350783488 +0200
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env node
 +#!/usr/bin/node

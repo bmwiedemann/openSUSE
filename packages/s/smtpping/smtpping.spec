@@ -1,8 +1,8 @@
 #
 # spec file for package smtpping
 #
-# Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2017-2021, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2017-2026, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           smtpping
-Version:        1.1.4
+Version:        1.1.5
 Release:        0
 Summary:        A tool for measuring SMTP server delay, delay variation and throughput
 License:        GPL-2.0-only
@@ -36,8 +36,7 @@ A tool for measuring SMTP server delay, delay variation and throughput.
 
 %build
 %cmake \
-    -DMAN_INSTALL_DIR="%{_mandir}" \
-    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+    -DMAN_INSTALL_DIR="%{_mandir}"
 
 %install
 %cmake_install

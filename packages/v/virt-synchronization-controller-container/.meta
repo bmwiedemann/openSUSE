@@ -1,5 +1,0 @@
-<package name="virt-synchronization-controller-container" project="openSUSE:Factory">
-  <title>Kubevirt synchronization controller container</title>
-  <description></description>
-  <devel project="Virtualization" package="virt-synchronization-controller-container"/>
-</package>

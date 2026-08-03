@@ -468,4 +468,21 @@
 </comment>
     <requestid>1335564</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>1ddeda038fadcabf175c2130b299b9ed</srcmd5>
+    <version>15.0.0</version>
+    <time>1780920319</time>
+    <user>anag_factory</user>
+    <comment>- update to 15.0.0:
+  * Breaking change: Dropped support for Python3.8
+  * Fixed empty print ignoring the `end` parameter
+  * Fixed `Text.from_ansi` removing newlines
+  * Fixed `FileProxy.isatty` not proxying
+  * Fixed inline code in Markdown tables cells
+  * Improved import time with lazy loading
+  * Changed link id generation to avoid random number generation
+    at runtime https://github.com/Textualize/rich/pull/3845
+</comment>
+    <requestid>1357809</requestid>
+  </revision>
 </revisionlist>

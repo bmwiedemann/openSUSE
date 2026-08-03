@@ -73,4 +73,12 @@
     <comment></comment>
     <requestid>1318364</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>a93ad3c6c8f9e5246a8265bec72086a7</srcmd5>
+    <version>0.7.0</version>
+    <time>1784127218</time>
+    <user>dimstar_suse</user>
+    <comment>- refresh vendor.tar.gz to address RUSTSEC-2026-0190</comment>
+    <requestid>1365828</requestid>
+  </revision>
 </revisionlist>

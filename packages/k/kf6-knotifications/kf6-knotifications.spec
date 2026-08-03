@@ -28,11 +28,11 @@
 %define mypython_sitearch %{expand:%%%{mypython}_sitearch}
 %endif
 
-# Full KF6 version (e.g. 6.27.0)
+# Full KF6 version (e.g. 6.28.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 %bcond_without released
 Name:           kf6-knotifications
-Version:        6.27.0
+Version:        6.28.0
 Release:        0
 Summary:        KDE Desktop notifications
 License:        LGPL-2.1-or-later

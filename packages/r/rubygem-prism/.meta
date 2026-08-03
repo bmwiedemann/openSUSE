@@ -3,5 +3,6 @@
   <description>Prism Ruby parser.
 
 </description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-prism"/>
   <url>https://github.com/ruby/prism</url>
 </package>

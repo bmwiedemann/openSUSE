@@ -4,5 +4,4 @@
 that is based on ideas from XPP and in particular XPP2 but completely
 revised and rewritten to take best advantage of latest JIT JVMs such as
 Hotspot in JDK 1.4.</description>
-  <devel project="Java:packages" package="xpp3"/>
 </package>

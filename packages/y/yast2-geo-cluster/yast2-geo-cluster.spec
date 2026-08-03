@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-geo-cluster
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,13 @@
 
 
 Name:           yast2-geo-cluster
-Version:        5.0.0
+Version:        5.0.1
 Release:        0
 Summary:        Configuration of booth
 License:        GPL-2.0-only
 Group:          System/YaST
 URL:            https://github.com/yast/yast-geo-cluster
 Source0:        %{name}-%{version}.tar.bz2
-BuildRequires:  update-desktop-files
 BuildRequires:  yast2
 BuildRequires:  yast2-devtools >= 4.2.2
 # SuSEFirewall2 replaced by Firewalld(fate#323460)

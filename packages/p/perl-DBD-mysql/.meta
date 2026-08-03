@@ -6,5 +6,4 @@ language and the MySQL programming API that comes with the MySQL relational
 database management system. Most functions provided by this programming API
 are supported. Some rarely used functions are missing, mainly because noone
 ever requested them. :-)</description>
-  <devel project="devel:languages:perl" package="perl-DBD-mysql"/>
 </package>

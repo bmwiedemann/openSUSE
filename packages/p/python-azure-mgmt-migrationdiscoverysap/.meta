@@ -1,4 +1,5 @@
 <package name="python-azure-mgmt-migrationdiscoverysap" project="openSUSE:Factory">
   <title></title>
   <description></description>
+  <devel project="devel:languages:python:azure" package="python-azure-mgmt-migrationdiscoverysap"/>
 </package>

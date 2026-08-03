@@ -18,6 +18,19 @@
 
 %define pccs_user pccs
 %global _buildshell /bin/bash
+%if %{defined primary_python}
+%define my_python_fix_shebang %python3_fix_shebang
+%define pythons %primary_python
+%else
+%if 0%{?sle_version} > 150300
+%define my_python_fix_shebang %python311_fix_shebang
+%global pythons python311
+%else
+%global pythons %nil
+%endif
+%endif
+%define mypyexe %{expand:%__%modern_python}
+
 Name:           confidential-computing.tee.dcap.pccs
 Version:        1.25
 Release:        0
@@ -26,6 +39,7 @@ License:        BSD-3-Clause
 URL:            https://github.com/intel/confidential-computing.tee.dcap.pccs
 ExclusiveArch:  x86_64
 Source0:        %name-%version.tar
+Patch0:         %name.patch
 Source123:      %name.node_modules.cpio
 Source321:      %name.node_modules.txt
 BuildRequires:  bash
@@ -49,13 +63,17 @@ System user %pccs_user for Intel(R) SGX PCK Caching Service
 Summary:        Intel(R) Software Guard Extensions PCK Caching Service
 BuildRequires:  cpio
 BuildRequires:  gawk
-BuildRequires:  pkgconfig(python3)
+BuildRequires:  gcc-c++
+BuildRequires:  make
+BuildRequires:  nodejs-devel >= 22
+BuildRequires:  %pythons-devel
+BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  python-rpm-macros
 BuildRequires:  systemd-rpm-macros
 Conflicts:      intel-tee-pccs-admin-tool
 Conflicts:      sgx-dcap-pccs
-Requires:       python3-keyring
-Requires:       python3-requests
+Requires:       %pythons-keyring
+Requires:       %pythons-requests
 Requires:       system-user-%pccs_user = %version-%release
 Requires(posttrans): system-user-%pccs_user = %version-%release
 %systemd_requires
@@ -73,11 +91,12 @@ PCCS also caches Intel SGX DCAP provisioning certification collateral (i.e.,
 Platform Manifests), helping centralize the infrastructure set-up as well.
 
 %files -n suse-sgx-dcap-pccs
+%doc README.txt
 %license License.txt
 %_bindir/pccsadmin.py
 %_libexecdir/suse-sgx-dcap-pccs
 %_unitdir/*.service
-%python3_sitearch/*
+%python_sitearch/*
 %pre -n suse-sgx-dcap-pccs
 %service_add_pre pccs.service
 %post -n suse-sgx-dcap-pccs
@@ -93,35 +112,7 @@ Platform Manifests), helping centralize the infrastructure set-up as well.
 %build
 find \( -name "*.js" -o -name "*.py" \) -type f -exec chmod -c 644 '{}' +
 
-# avoids binary bindings
-sed --regexp-extended -i~ '
-s|^[[:blank:]]+//[[:blank:]]*"|	"|
-s|^[[:blank:]]+//[[:blank:]]*}|	}|
-s|[[:blank:]]//.*$||' service/config/default.json
-diff -u "$_"~ "$_" && exit 1
-python3 - <<'_EOS_'
-import json
-with open("service/config/default.json", "r") as f:
-	content = json.load(f)
-with open("a.json", "w") as f:
-	json.dump(content, f, indent=2, sort_keys=True)
-	f.write('\n')
-content["DB_CONFIG"]="mysql"
-del content["sqlite"]
-with open("b.json", "w") as f:
-	json.dump(content, f, indent=2, sort_keys=True)
-	f.write('\n')
-_EOS_
-cat b.json
-mv b.json service/config/default.json
-rm a.json
-
-sed -i~ "
-s|^const __dirname.*|import os from 'os';|
-/filename: __dirname/s|^.*|    filename: os.homedir() + '/logs/pccs_server.log',|
-" service/utils/Logger.js
-diff -u "$_"~ "$_" && exit 1
-
+rm -fv service/config/default.json service/config/production.json
 sed -i~ '1{s|^.*|#!%_bindir/node|}' service/pccs_server.js
 diff -u "$_"~ "$_" && exit 1
 
@@ -129,14 +120,14 @@ sed -i~ '
 /^After/{
 	s|^.*|After=network.target time-sync.target mariadb.service|
 	a\
-# Use %_libexecdir/suse-sgx-dcap-pccs/config/default.json as template\
-ConditionPathExists=%_localstatedir/lib/%pccs_user/config/default.json
+# Use %_libexecdir/suse-sgx-dcap-pccs/config/upstream.json as template\
+ConditionPathExists=%_libexecdir/suse-sgx-dcap-pccs/config/default.json
 }
 /^EnvironmentFile=/d
 /^Environment=/d
 /^ExecStart/s|^.*|ExecStart=%_libexecdir/suse-sgx-dcap-pccs/pccs_server.js|
 /^User/s|^.*|User=%pccs_user|
-/^WorkingDirectory/s|^.*|WorkingDirectory=%_localstatedir/lib/%pccs_user|
+/^WorkingDirectory/s|^.*|WorkingDirectory=%_libexecdir/suse-sgx-dcap-pccs|
 ' service/pccs.service
 diff -u "$_"~ "$_" && exit 1
 
@@ -173,6 +164,12 @@ do
 	fi
 	rm -- "./${tgz}"
 done < <(gawk '{print $2}' %{SOURCE321})
+	export NODE_PATH=$PWD
+	export V=1
+	export PYTHON=$(type -P "%?mypyexe" | xargs --no-run-if-empty readlink -f)
+	npm rebuild --verbose sqlite3
+	mv -t sqlite3 sqlite3/build/Release
+	rm -rf sqlite3/build
 find \( \
 	-name .nyc_output -o \
 	-name .vscode -o \
@@ -185,6 +182,7 @@ find \( \
 	-name docs -o \
 	-name emacs -o \
 	-name gyp -o \
+	-name node-addon-api -o \
 	-name test -o \
 	-name tests -o \
 	-name tools -o \
@@ -274,9 +272,9 @@ _EOC_
 mv -t '%buildroot%_tmpfilesdir' "${suc}"
 
 mkdir -p '%buildroot%_bindir'
-mkdir -p '%buildroot%python3_sitearch'
+mkdir -p '%buildroot%python_sitearch'
 mv PccsAdminTool/pccsadmin.py '%buildroot%_bindir'
-mv PccsAdminTool/lib '%buildroot%python3_sitearch'
+mv PccsAdminTool/lib '%buildroot%python_sitearch'
 
 pushd service
 mkdir -p '%buildroot%_libexecdir/suse-sgx-dcap-pccs'
@@ -303,7 +301,25 @@ mv -t '%buildroot%_libexecdir/suse-sgx-dcap-pccs' \
 popd
 mv -t '%buildroot%_libexecdir/suse-sgx-dcap-pccs' node_modules
 
-%python3_fix_shebang
+%my_python_fix_shebang
 
+tee README.txt <<'_EOR_'
+# Quickstart for pccs.service
+
+zypper in suse-sgx-dcap-pccs
+
+cp -i %_libexecdir/suse-sgx-dcap-pccs/config/upstream.json %_libexecdir/suse-sgx-dcap-pccs/config/default.json
+edit %_libexecdir/suse-sgx-dcap-pccs/config/default.json
+  "DB_CONFIG": "sqlite",
+  "HTTPS_private_pem": "%_localstatedir/lib/%pccs_user/private.pem",
+  "HTTPS_file_crt": "%_localstatedir/lib/%pccs_user/file.crt",
+
+openssl genrsa -out ~%pccs_user/private.pem 2048
+openssl req -new -key ~%pccs_user/private.pem -out ~%pccs_user/csr.pem -subj '/CN=localhost'
+openssl x509 -req -in ~%pccs_user/csr.pem -signkey ~%pccs_user/private.pem -out ~%pccs_user/file.crt
+
+chown -c %pccs_user:%pccs_user %_libexecdir/suse-sgx-dcap-pccs/config/default.json ~%pccs_user/private.pem ~%pccs_user/csr.pem ~%pccs_user/file.crt
+systemctl enable --now pccs.service 
+_EOR_
 %changelog
 

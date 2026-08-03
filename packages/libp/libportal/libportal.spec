@@ -31,14 +31,13 @@ ExclusiveArch:  donotbuild
 %endif
 
 Name:           libportal%{pkgsuffix}
-Version:        0.9.1
+Version:        0.10.0
 Release:        0
 Summary:        A GIO-style async API for most Flatpak portals
 License:        LGPL-3.0-or-later
 URL:            https://github.com/flatpak/libportal
 Source0:        %{url}/releases/download/%{version}/libportal-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM -- Qt 6.9 compat
-Patch0:         libportal-qt69.patch
+
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
 BuildRequires:  meson >= 0.55.0

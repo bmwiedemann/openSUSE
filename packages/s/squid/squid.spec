@@ -24,14 +24,14 @@
 %define         squidhelperdir %{_sbindir}
 %endif
 Name:           squid
-Version:        7.4
+Version:        7.6
 Release:        0
 Summary:        Caching and forwarding HTTP web proxy
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Web/Proxy
 URL:            http://www.squid-cache.org
-Source0:        https://github.com/squid-cache/squid/releases/download/SQUID_7_4/squid-7.4.tar.xz
-Source1:        https://github.com/squid-cache/squid/releases/download/SQUID_7_4/squid-7.4.tar.xz.asc
+Source0:        https://github.com/squid-cache/squid/releases/download/SQUID_7_6/squid-7.6.tar.xz
+Source1:        https://github.com/squid-cache/squid/releases/download/SQUID_7_6/squid-7.6.tar.xz.asc
 Source5:        pam.squid
 Source6:        unsquid.pl
 Source7:        %{name}.logrotate
@@ -46,7 +46,6 @@ Source15:       cache_dir.sed
 Source16:       initialize_cache_if_needed.sh
 Source17:       tmpfilesdir.squid.conf
 Patch1:         missing_installs.patch
-Patch2:         old_nettle_compat.patch
 Patch3:         harden_squid.service.patch
 BuildRequires:  cppunit-devel
 BuildRequires:  expat
@@ -108,9 +107,6 @@ cp %{SOURCE10} .
 # upstream patches after RELEASE
 perl -p -i -e 's|%{_prefix}/local/bin/perl|%{_bindir}/perl|' `find -name "*.pl"`
 %patch -P 1 -p1
-%if 0%{?suse_version} < 1500
-%patch -P 2 -p1
-%endif
 
 %build
 autoreconf -fi
@@ -318,7 +314,7 @@ fi
 %ghost %dir %{_rundir}/%{name}
 %license COPYING
 %doc ChangeLog CONTRIBUTORS CREDITS
-%doc QUICKSTART README RELEASENOTES.html SPONSORS*
+%doc QUICKSTART README SPONSORS
 %doc README.kerberos
 %doc doc/contrib doc/scripts
 %doc doc/debug-sections.txt src/%{name}.conf.default
@@ -392,7 +388,7 @@ fi
 %{squidhelperdir}/negotiate_kerberos_auth_test
 %{squidhelperdir}/negotiate_wrapper_auth
 %{squidhelperdir}/ntlm_fake_auth
-%{squidhelperdir}/pinger
+%verify(not caps) %attr(0750, root, squid) %{squidhelperdir}/pinger
 %{squidhelperdir}/security_fake_certverify
 %{squidhelperdir}/security_file_certgen
 %{squidhelperdir}/storeid_file_rewrite

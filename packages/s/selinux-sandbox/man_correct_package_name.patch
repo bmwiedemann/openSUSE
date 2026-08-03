@@ -1,0 +1,13 @@
+Index: selinux-sandbox-3.11/sandbox.8
+===================================================================
+--- selinux-sandbox-3.11.orig/sandbox.8
++++ selinux-sandbox-3.11/sandbox.8
+@@ -16,7 +16,7 @@ Run the
+ application within a tightly confined SELinux domain.  The default sandbox domain only allows applications the ability to read and write stdin, stdout and any other file descriptors handed to it. It is not allowed to open any other files.  The \-M option will mount an alternate homedir and tmpdir to be used by the sandbox.
+ 
+ If you have the
+-.I policycoreutils-sandbox
++.I selinux-sandbox
+ package installed, you can use the \-X option and the \-M option.
+ .B sandbox \-X
+ allows you to run X applications within a sandbox.  These applications will start up their own X Server and create a temporary home directory and /tmp.  The default SELinux policy does not allow any capabilities or network access.  It also prevents all access to the users other processes and files.  Files specified on the command that are in the home directory or /tmp will be copied into the sandbox directories.

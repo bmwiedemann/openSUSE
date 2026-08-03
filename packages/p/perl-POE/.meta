@@ -24,6 +24,5 @@ encouraged to look around.
 No matter how high you go, though, it all boils down to calls to POE::Kernel.
 So your down-to-earth code can easily cooperate with stratospheric systems.
   </description>
-  <devel project="devel:languages:perl" package="perl-POE"/>
   <url>http://search.cpan.org/perldoc?POE</url>
 </package>

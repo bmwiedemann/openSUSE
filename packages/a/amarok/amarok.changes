@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun 17 14:45:24 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 3.3.3
+  https://blogs.kde.org/2026/06/17/amarok-3.3.3-released/
+  * Restore functionality for inhibiting system suspend when music is playing
+  * Fix restoring main window layout after restart (kde#514963)
+  * Fix context applet height saving sometimes not working (kde#514190)
+  * Adapt parsing in Wikipedia applet to handle some page syntax changes
+  * Don't multiply tracks when dragging from file browser to PUD (kde#521425)
+- Drop gcc16.patch
+
+-------------------------------------------------------------------
 Tue Jun  2 12:46:39 UTC 2026 - Josef Melcr <josef.melcr@suse.com>
 
 - Add gcc16.patch to fix the broken build with GCC 16 

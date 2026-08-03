@@ -8,6 +8,5 @@ The values collected by the latest trap can then be queried or tested
 through a special trap object.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-Test-Trap"/>
   <url>http://search.cpan.org/dist/Test-Trap</url>
 </package>

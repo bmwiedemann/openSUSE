@@ -142,4 +142,26 @@
     <comment></comment>
     <requestid>1267933</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>07fe45931ef2dd903bd1f2b6b93bcca2</srcmd5>
+    <version>1.3.2</version>
+    <time>1775743778</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.3.2:
+  * Fix for &quot;EmailTest.test_invalid_values_check&quot; unit test
+  * Set minimum Python version to 3.9
+  * fix code block error
+  * Replace pytz with zoneinfo / datetime.timezone
+  * Fix testing for Flask 3.1.0 changes
+  * Move from jsonschema.RefResolver to the new referencing library
+  * A fix to allow nullable fields.nested for input validation
+  * Added a thread lock to guard first-time schema construction
+- Drop patches, merged upstream:
+  * Fix-testing-with-flask.patch
+  * Replace-pytz-with-zoneinfo-datetime-timezone.patch
+- Rebased flask-restx-importlib.patch, submit upstream.
+- Add patch support-python-314.patch:
+  * Support Python 3.14 functools.partial() changes.</comment>
+    <requestid>1345331</requestid>
+  </revision>
 </revisionlist>

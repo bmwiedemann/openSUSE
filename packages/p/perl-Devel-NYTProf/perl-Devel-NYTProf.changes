@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Apr  1 06:56:56 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.150.0 (6.15)
+   see /usr/share/doc/packages/perl-Devel-NYTProf/Changes
+
+  =head2 Changes in Devel::NYTProf 6.15 - 31st Mar 2026
+  Updated URL linking to Brendan Gregg's Flame Graph page; thanks to Paul
+  Cochrane.
+  (L<GH 220|https://github.com/timbunce/devel-nytprof/pull/220>).
+  Infrastructure: set up GitHub Actions using configuration based on file
+  originally suggeted by Gabor Szabo.
+  Eliminated "Possible precedence problem ..." warning being emitted during
+  tests; thanks to Masahiro Iuchi.
+  (L<GH 230|https://github.com/timbunce/devel-nytprof/pull/230).
+
+-------------------------------------------------------------------
 Fri Mar  8 22:16:58 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides

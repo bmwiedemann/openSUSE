@@ -7,6 +7,5 @@ It is intended for use in light-usage, low-memory, or low-cpu templating situati
 It is intended to have fully-compatible template and stash usage, with a limited by similar Perl API.
 
 Unlike Template Toolkit, Template::Tiny will process templates without a compile phase (but despite this is still quicker, owing to heavy use of the Perl regular expression engine.</description>
-  <devel project="devel:languages:perl" package="perl-Template-Tiny"/>
   <url>https://metacpan.org/release/Template-Tiny</url>
 </package>

@@ -24,4 +24,15 @@
     <comment></comment>
     <requestid>1249628</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8dd82594293d225c235bf4ad58b43ee1</srcmd5>
+    <version>2.3.0</version>
+    <time>1774555647</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.2.0:
+  * switch build system
+  * drop python 3.6 support
+  * updated files from repo_helper</comment>
+    <requestid>1342223</requestid>
+  </revision>
 </revisionlist>

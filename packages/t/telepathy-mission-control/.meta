@@ -6,5 +6,4 @@ managers, to provide a simple way to manipulate a bunch of connection
 managers at once, to remove the need to have in each program the
 account definitions and credentials, to manage channel handling/request
 and to manage presence statuses.</description>
-  <devel project="GNOME:Factory" package="telepathy-mission-control"/>
 </package>

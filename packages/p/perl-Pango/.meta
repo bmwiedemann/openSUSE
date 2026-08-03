@@ -15,5 +15,4 @@ supported.
 In addition to the low level layout rendering routines, Pango includes
 Pango::Layout, a high level driver for laying out entire blocks of text,
 and routines to assist in editing internationalized text.</description>
-  <devel project="devel:languages:perl" package="perl-Pango"/>
 </package>

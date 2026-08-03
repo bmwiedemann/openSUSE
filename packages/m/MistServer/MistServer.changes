@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Wed Jul 22 22:34:01 UTC 2026 - Yoshio Sato <vasua.ukraine@gmail.com>
+
+- Update to the new upstream release 3.11.1
+  - 3.11.1 cnahgelog:
+    * Bugfix: Player now once again remember mute status of the player across reloads
+    * Bugfix: Player debug information that was left in by accident was removed
+    * Bugfix: Player adaptive bit rate fix
+    * Bugfix: Fixed multiple HTTP(S) entries not showing up in the stream info JSON
+    * Bugfix: Removed protocol scoring information from the info JSON output if the build is a release build (debug builds still have it), removed spammy track sorting debug messages
+    * Bugfix: Improved display of FPS values in the Admin interface
+  - 3.11 changelog:
+    * Feature: JWTs can now give access to streams through stream tags
+    * Feature: Support for Gradual Decoder Refresh (GDR) H264 feeds
+    * Feature: Can now send/receive PCM audio over MPEG-TS as a custom data track
+    * Feature: Generic (non-stream-specific) SRT listening ports can now be set to raw mode
+    * Feature: Added TS Demuxer process (MistProcTSDemux), which can take a raw TS track and demux it into non-raw tracks, while also keeping the raw track around. This enables "hybrid" raw TS streams, which can either remux or not depending on your output
+    * Feature: Added PUSH_INPUT_CLOSE trigger
+    * Feature: The "Resume support" feature is finally fully back! If resume support is enabled on a stream, you can push to it, disconnect, and push again to resume the previous push cleanly. The feature has also been extended to support stream processes, so a process that restarts can also resume the previous track properly
+    * Feature: Added first, last and source track selectors
+    * Feature: Stream info JSON now includes H264 chroma information and added support for previously missing H264 levels
+    * Feature: Added mono video track selector (for selecting monochrome tracks)
+    * Feature: Added invalidate_sessid and untag_sessid API functions
+    * Feature: Admin web interface now has a "Connections" tab that shows current connections (clients API call output)
+    * Feature: Added new Raw WebSocket protocol, which supports sending any codec combination as raw data over a WebSocket
+    * Feature: Added new "Optimal" track sorting, which is the new default. It uses a heuristic to determine what is most likely the "best" quality video track
+    * Feature: Added /ws/stream/STREAMNAME API websocket that gives information about a specific stream, including information hidden from the public-facing stream information endpoints
+    * Feature: New playback method selection method: now calculates a score from various protocol properties and is configurable at the server level to prioritize whatever your preference is (with a sensible "balanced" default)
+    * Feature: Added WebCodec-based player to the metaplayer, which adds support for many previously missing codecs to modern browsers
+    * Feature: Stream info JSON now includes H265 codec properties
+    * Feature: Added support for AC-3 audio in generic MPEG2-TS data tracks
+    * Improvement: Optimized JSON library to parse with less resource usage
+    * Improvement: Updated mbedtls to 3.6.6
+    * Improvement: Player now has "cover", "coverv" and "coverh" as possible values for the "fillSpace" option
+    * Improvement: When using the player with fallback streams, automatically restores the non-fallback stream when it comes back online
+    * Improvement: Statistics parsing efficiency significantly improved
+    * Improvement: RTMP pushes now supposed the "diminished" flag to disable RTMP Enhanced for servers that break when trying to negotiate it
+    * Improvement: MistProcAV now will refuse to select audio tracks for video transcodes and vice-versa. It will also refuse to select more than one input track.
+    * Improvement: DTSC pulls now propagate track source information
+    * Improvement: clients and totals API calls now support more ways to call them (see docs for details)
+    * Improvement: Now correctly supports both spec-conformant RTSP SETUP calls and non-conformant RTSP SETUP calls (should improve RTSP camera compatibility, especially with cheaper brands)
+    * Improvement: JSON now has an internal "raw" type for strings, which does not enforce UTF-8 encoding (used for binary strings in various spots to prevent corrupting the data with UTF-16 conversion that otherwise takes place)
+    * Improvement: Improved PES alignment handling for H264 and H265 tracks (thanks Taiwan22!)
+    * Improvement: Autodetect sampling rate and channel count from AAC init data
+    * Bugfix: Processes that output to different streams than the input stream, now keep the output stream alive while active
+    * Bugfix: MacOS compile fixes
+    * Bugfix: Fix relative URLs with X-Mst-Path HTTP header
+    * Bugfix: Fixed pixel format issue in MistProcAV
+    * Bugfix: Fixed WS/MP4 conflating old/new tracks when switching video qualities
+    * Bugfix: Fixed WS/MP4 unload issues in the player
+    * Bugfix: Fixed controller angel process reload
+    * Bugfix: JWT-based session invalidation works again
+    * Bugfix: Fix RTMP push to Twitter (they don't support RTMP Enhanced; now auto-applies "diminished" flag)
+    * Bugfix: Fixed crash in MistProcAV when creating JPEG tracks
+    * Bugfix: Fixed "WS/" naming of connectors that run over WebSockets
+    * Bugfix: Fixed EBML (MKV) AV1 init data ingest
+    * Bugfix: Fixed language handling in the TS parser
+    * Bugfix: Fixed playlist files not working with Windows line endings
+    * Bugfix: Fixed handling of broken HEAD responses (falls back to plain requests)
+    * Bugfix: Fixed HLS responses leaking request headers into the response
+    * Bugfix: The usual mountain of small fixes 
+
+-------------------------------------------------------------------
 Sun Jun 28 11:44:58 UTC 2026 - Yoshio Sato <vasua.ukraine@gmail.com>
 
 - Fix packaging:

@@ -10,5 +10,6 @@ The backup will contain a textfile Adlisting.txt which contains
 the ad contents as the title, body, price etc.
 
 All images will be downloaded as well.</description>
+  <devel project="utilities" package="kleingebaeck"/>
   <url>https://github.com/TLINDEN/kleingebaeck</url>
 </package>

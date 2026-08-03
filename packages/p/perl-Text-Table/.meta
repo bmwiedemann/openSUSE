@@ -10,6 +10,5 @@ Text::Table allows you to create and maintain tables that adapt to alignment
 requirements as you use them.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-Text-Table"/>
   <url>http://search.cpan.org/dist/Text-Table</url>
 </package>

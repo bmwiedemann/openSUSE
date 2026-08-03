@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jul 28 14:17:14 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 0.15.6:
+  * Parse links to notes in frontmatter 
+  * Set filters for lsp completion items from the config
+  * Set a note's modification time in frontmatter and allow for custom key 
+    naming for both creation and modification keys
+  * Indexing made significantly more performant
+  * Support filtering by date and time with "<date> <time>" instead of 
+    <date>T<time> only
+  * Exclude globs now prune matching directories from indexing, improving
+    speed of indexing
+
+-------------------------------------------------------------------
 Mon Jun 15 09:04:20 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 0.15.5:

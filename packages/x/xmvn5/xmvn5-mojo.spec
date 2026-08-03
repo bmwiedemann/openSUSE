@@ -1,7 +1,7 @@
 #
 # spec file for package xmvn5-mojo
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -89,9 +89,6 @@ find -name ResolverIntegrationTest.java -delete
 
 # Remove all dependencies with scope test, since a raw xmvn does not hide them
 %pom_remove_dep -r :::test:
-
-# Normalize slf4j version to 2
-%pom_xpath_set pom:project/pom:properties/pom:slf4jVersion 2 xmvn-parent
 
 # Normalize maven4 to version 4 (compatibility version)
 %pom_xpath_set pom:project/pom:properties/pom:mavenVersion 4 xmvn-parent

@@ -1357,4 +1357,12 @@ https://git.reviewboard.kde.org/r/104878/ (forwarded request 116659 from StefanB
     <comment>- Add gcc16.patch to fix the broken build with GCC 16</comment>
     <requestid>1359799</requestid>
   </revision>
+  <revision rev="149" vrev="1">
+    <srcmd5>0125894c290b1aa317326195256de4d2</srcmd5>
+    <version>3.3.3</version>
+    <time>1781879393</time>
+    <user>anag_factory</user>
+    <comment>Update to 3.3.3</comment>
+    <requestid>1360071</requestid>
+  </revision>
 </revisionlist>

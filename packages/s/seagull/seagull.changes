@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jul 30 06:07:41 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 0.8.2:
+  + Use g_error_new_literal when it can be used
+  + Fix destructor type for sqlite3_bind_text
+  + Use g_error_new_literal in tests
+  + Move the containers to the imfreedom organization
+  + Use fixed endianness for errors bound into SQL statements
+  + Put developer-related tests in a 'dev' suite
+
+-------------------------------------------------------------------
 Tue Mar 17 08:59:23 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 0.8.1:

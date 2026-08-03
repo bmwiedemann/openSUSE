@@ -16,7 +16,7 @@
 #
 
 Name:           error-codes
-Version:        0.3.0+git20260204.54278a1
+Version:        0.4.0+git20260325.4cbfc70
 Release:        0
 Summary:        Lookup error codes and their description
 License:        GPL-2.0-or-later
@@ -26,6 +26,7 @@ BuildRequires:  docbook5-xsl-stylesheets
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(pam)
+BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libeconf)
 
 %description

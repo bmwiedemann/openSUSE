@@ -9,5 +9,4 @@ however, the features provided by the Sub::Exporter manpage over what the
 Exporter manpage provides is just to great to pass up.
 
 Test::Output ties STDOUT and STDERR using Test::Output::Tie.</description>
-  <devel project="devel:languages:perl" package="perl-Test-Output"/>
 </package>

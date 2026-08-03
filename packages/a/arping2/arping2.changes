@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun 30 21:12:10 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.29
+  * Respect -q when using -P
+  * Prevent using -P option with MAC dest
+  * Prevent using -B option being used with positional arg
+
+-------------------------------------------------------------------
 Thu Feb  5 10:38:06 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.28

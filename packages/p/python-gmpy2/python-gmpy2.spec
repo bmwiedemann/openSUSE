@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-gmpy2
-Version:        2.3.0
+Version:        2.3.1
 Release:        0
 Summary:        GMP/MPIR, MPFR, and MPC interface to Python 2.6+ and 3x
 License:        LGPL-3.0-only
@@ -48,7 +48,7 @@ rounded real floating-point arithmetic) and MPC (correctly
 rounded complex floating-point arithmetic) libraries.
 
 %prep
-%setup -q -n gmpy2-%{version}
+%autosetup -p1 -n gmpy2-%{version}
 
 %build
 export CFLAGS="%{optflags}"

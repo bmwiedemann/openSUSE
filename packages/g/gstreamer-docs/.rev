@@ -327,4 +327,13 @@
     <comment></comment>
     <requestid>1359028</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>e238df523434cf9a26b4deb968a56167</srcmd5>
+    <version>1.28.5</version>
+    <time>1784126480</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.28.5:
+  + No changes, stable bump only</comment>
+    <requestid>1365710</requestid>
+  </revision>
 </revisionlist>

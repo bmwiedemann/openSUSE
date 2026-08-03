@@ -3,5 +3,6 @@
   <description>This tool is designed to manipulate FAT filesystems, in order to explore,
 extract, repair, recover and forensic them. It currently supports FAT12, FAT16
 and FAT32.</description>
+  <devel project="filesystems" package="fatcat"/>
   <url>https://github.com/Gregwar/fatcat</url>
 </package>

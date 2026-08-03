@@ -14,6 +14,5 @@ Machine (JVM) and the format of Java .class files.  BCEL is already
 being used successfully in several projects such as compilers,
 optimizers, obsfuscators and analysis tools, the most popular probably
 being the Xalan XSLT processor at Apache.</description>
-  <devel project="Java:packages" package="bcel5_3"/>
   <url>http://jakarta.apache.org/bcel/</url>
 </package>

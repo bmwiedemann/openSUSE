@@ -59,4 +59,18 @@
     <comment></comment>
     <requestid>1032372</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>5204c5d25f02771e2b4bea04ed7eaee1</srcmd5>
+    <version>2.8.0</version>
+    <time>1774555882</time>
+    <user>anag_factory</user>
+    <comment>- Update spec file:
+  + remove unnecessary buildrequirements
+  + remove deprecated Group
+  + remove plugins, which don't get shipped anymore
+  + use meson macros
+  + remove older leap packaging
+  + fix building by ignoring incompatible-pointer-types (forwarded request 1342857 from rrahl0)</comment>
+    <requestid>1342858</requestid>
+  </revision>
 </revisionlist>

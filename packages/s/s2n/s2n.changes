@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Mon Jun 15 09:39:25 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.7.4
+  * test: add integration tests for serialization (#5861)
+  * ci: fix OpenSSL 1.0.2u download in Rust bindings CI (#5868)
+  * refactor: reset d2i pointer before private key type-hint fallback (#5844)
+  * ci: update to CBMC 6.9.0 (#5867)
+  * refactor(metrics-subscriber): key handshake counters by IANA id (#5858)
+  * test: document io behaviors (#5864)
+  * chore: update fxhash dependency (#5869)
+  * refactor(metrics-subscriber): serialize FrozenCounter as a list (#5870)
+  * fix: relax cert key preferences requirement (#5860)
+  * build(deps): update s2n-codec requirement from 0.78 to 0.79
+    in /bindings/rust/standard (#5872)
+  * fix(config): Re-complete domain cert map after failed add (#5846)
+  * feat(metrics-subscriber): Public access to types for deserialization (#5875)
+  * build(deps): bump the all-gha-updates group across 1 directory with 2 updates (#5878)
+  * build(deps): update s2n-codec requirement from 0.79 to 0.80
+    in /bindings/rust/standard (#5874)
+  * chore: bindings release 0.3.37 (#5882)
+  * refactor: add iovec definition for Windows (#5880)
+  * refactor: disable MLock on Windows (#5881)
+  * test(metrics-subscriber): add memory profile test (#5883)
+  * refactor: gate KTLS module out of Windows build (#5886)
+  * refactor: replace MIN/MAX with S2N_MIN/S2N_MAX to remove
+    <sys/param.h> dependency (#5879)
+  * feat(metrics-subscriber): pluggable synthetic-traffic detector (#5885)
+  * fix: validate pointer parameters in public API functions (#5889)
+  * feat(serialize): add SSLv3 and TLS 1.0 CBC implicit IV preservation (#5873)
+  * refactor(metrics-subscriber): cache parsed ClientHello lists (#5884)
+  * feat(metrics-subscriber): add operation field to Attribution (#5892)
+  * chore: release metrics subscriber v0.0.3 (#5896)
+  * fix: pad DH shared secret to constant length (#5778)
+  * feat: add PQ-compatible variants of security policies (#5887)
+  * build(deps): bump aws-actions/configure-aws-credentials from
+    6.1.1 to 6.1.3 in /.github/workflows in the all-gha-updates
+    group across 1 directory (#5894)
+  * feat: add unstable API to allow IP addresses in CN for hostname validation (#5897)
+  * refactor: gate socket support for Linux only (#5895)
+  * ci: set up Windows MSYS2 Github Actions (#5898)
+  * chore: add new team member (#5899)
+  * build(deps): update tabled requirement from 0.20.0 to 0.21.0
+    in /bindings/rust/standard (#5901)
+  * build(deps): bump the all-gha-updates group in /.github/workflows
+    with 3 updates (#5902)
+  * build(deps): update s2n-codec requirement from 0.80 to 0.81
+    in /bindings/rust/standard (#5900)
+  * feat(metrics-schema): Seperate out schema serialization from
+    s2n-tls-metrics-subscriber (#5877)
+  * feat(event): add security policy label to handshake event (#5893)
+  * fix: enable s2n-tls feature probes on Windows (#5907)
+  * test(metrics): add EMF snapshot test (#5909)
+  * refactor(metrics snapshot test): use per-unit measurements (#5910)
+  * refactor: make MetricLabel more generic (#5912)
+
+-------------------------------------------------------------------
 Thu May 21 12:13:30 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.7.3

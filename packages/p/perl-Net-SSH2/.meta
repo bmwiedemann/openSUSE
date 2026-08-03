@@ -12,6 +12,5 @@ methods you want to use, call connect, authenticate with one of the 'auth'
 methods, then create channels on the connection to perform commands.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-Net-SSH2"/>
   <url>http://search.cpan.org/dist/Net-SSH2/</url>
 </package>

@@ -285,4 +285,20 @@
 </comment>
     <requestid>1238868</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>48ec48c25822404ce7af725aac41730c</srcmd5>
+    <version>6.6.1</version>
+    <time>1774555703</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.6.1:
+  * Make Caribou dependency optional (#489)
+  * Handle layout switching thru cinnamon, remove use of XApp.
+  * Switch to xapp-symbolic-icons (XSI)
+  * Refactor positioning of floating UI elements.
+  * unlock: Remove additional dimming when unlock dialog is
+    shown.
+  * unlock.py: Don't show password entry and unlock button until
+    prompted by pam.</comment>
+    <requestid>1342644</requestid>
+  </revision>
 </revisionlist>

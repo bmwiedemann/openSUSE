@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 13 13:13:06 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Do not use the slf4j2 compatibility package, as the base slf4j
+  package is now on version 2.0.18
+- Do not use the maven-resolver2 compatibility package, as the base
+  maven-resolver package is now on version 2.0.20
+
+-------------------------------------------------------------------
 Mon Mar  9 12:35:05 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Require the compatibility version of Maven (4), so that we don't

@@ -1,4 +1,5 @@
 <package name="jpeginfo" project="openSUSE:Factory">
   <title>jpeginfo</title>
   <description>Utility to generate informative listings from JPEG files and to check them for errors. Also supports automatic deletion of broken JPEGs.</description>
+  <devel project="graphics" package="jpeginfo"/>
 </package>

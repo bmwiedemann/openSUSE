@@ -103,4 +103,12 @@
     <comment>Use SOURCE_DATE_EPOCH for reproducible jar mtime</comment>
     <requestid>1203016</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>9bfd08434771b2bf8234d819f08fb646</srcmd5>
+    <version>2.13.12</version>
+    <time>1782916734</time>
+    <user>anag_factory</user>
+    <comment>Use the jline3 bundle jar</comment>
+    <requestid>1362762</requestid>
+  </revision>
 </revisionlist>

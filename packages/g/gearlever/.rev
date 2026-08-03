@@ -262,4 +262,34 @@
     <comment></comment>
     <requestid>1358025</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>b31666b02b826aa8f4f367b8d1b2501a</srcmd5>
+    <version>4.6.2</version>
+    <time>1785504455</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.6.2:
+  * version bump
+  * disable config parser interpolation
+  * version bump
+  * check before update for custom args, only then apply
+  * Update it.mijorus.gearlever.metainfo.xml.in
+  * Update meson.build
+  * feat: add machine-readable list output
+  * fix: make back button visible again when multi-update finishes
+  * Update LINGUAS
+  * Add Slovak language
+  * preserve custom exec arguments on update
+  * Updated pt-PT translation with new string added
+  * version bump
+  * added prepare update status
+  * fixed missing current download property
+  * Update Project-Id-Version and Content-Type in zh_TW.po
+  * Remove 'General' translation from zh_TW.po
+  * Update LINGUAS
+  * Update LINGUAS to add Hebrew
+  * Add zh_TW translation
+  * Add Hebrew
+</comment>
+    <requestid>1368415</requestid>
+  </revision>
 </revisionlist>

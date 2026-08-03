@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jun 26 05:40:16 UTC 2026 - Axel Braun <axel.braun@gmx.de>
+
+- version 2.6.4 (bsc#1269693, CVE-2026-54707,
+     bsc#1269698, CVE-2026-54706):
+  * updated dependencies
+  * Security fix: Prevent symlink traversal
+  * Security fix: Prevent upload of files when file upload mode is disabled. Prevent creation of empty folder on empty POST request payload
+  * Dependencies: Updates tor dependencies and other python and web dependencies. Also updates flatpak runtime.
+  * Bug fix: Show indeterminate progress and warn user during Tor traversal
+
+-------------------------------------------------------------------
 Tue Mar 11 13:31:10 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Enable build on python 3.13
@@ -119,14 +130,14 @@ Fri Feb 25 06:52:51 UTC 2022 - Axel Braun <axel.braun@gmx.de>
   * relax-async-mode.patch added
   * fix-test-cli-web.patch added
   * fix for boo#1194866
-  
+
 -------------------------------------------------------------------
 Thu Feb 24 19:33:47 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 2.5.0
   * CVE-2022-21696: It was possible to change the username to that
     of another chat participant with an additional space character
-    at the end of the name string. 
+    at the end of the name string.
   * CVE-2022-21695: Authenticated users (or unauthenticated in
     public mode) could send messages without being visible in the
     list of chat participants
@@ -218,7 +229,7 @@ Sun May 16 09:28:39 UTC 2021 - Axel Braun <axel.braun@gmx.de>
 - update to version 2.3.1
   * Bugfix: Fix chat mode
   * Bugfix: Fix –persistent in onionshare-cli
-  * Bugfix: Fix checking for updates in Windows and macOS 
+  * Bugfix: Fix checking for updates in Windows and macOS
   * Major new feature: Multiple tabs, including better support for persistent services, faster Tor connections
   * New feature: Chat anonymously mode
   * New feature: All new design
@@ -229,11 +240,11 @@ Sun May 16 09:28:39 UTC 2021 - Axel Braun <axel.braun@gmx.de>
   * package onionshare-data removed
   * singlespec removed
   * update alternatives removed (pyside2 issues with python flavours)
-  
+
 -------------------------------------------------------------------
 Wed Jun  3 10:24:26 UTC 2020 - Axel Braun <axel.braun@gmx.de>
 
-- fix for dependency error (see https://build.opensuse.org/request/show/807929 ) 
+- fix for dependency error (see https://build.opensuse.org/request/show/807929 )
 
 -------------------------------------------------------------------
 Thu May 21 06:55:37 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
@@ -290,7 +301,7 @@ Tue Aug 13 07:50:48 UTC 2019 - Axel Braun <axel.braun@gmx.de>
   * Removed translations because less than 90% of the strings were translated:
         Bengali (বাংলা)
         Persian (فارسی)
-        
+
 -------------------------------------------------------------------
 Fri Feb 22 09:26:00 UTC 2019 - Robert Frohl <rfrohl@suse.com>
 
@@ -325,5 +336,5 @@ Wed Dec 12 10:29:46 UTC 2018 - Ismail Dönmez <idonmez@suse.com>
 Fri Nov 23 17:20:53 UTC 2018 - Axel Braun <axel.braun@gmx.de>
 
 - Version 1.3.1
-  initial build on OBS 
+  initial build on OBS
   thanks to scarabeus_iv for the testing part!

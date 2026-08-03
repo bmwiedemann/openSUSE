@@ -8,6 +8,5 @@ This package is a compat package providing various functions to
 integrate GdkPixbuf with Xlib data types
 
 </description>
-  <devel project="GNOME:Factory" package="gdk-pixbuf-xlib"/>
   <url>https://gitlab.gnome.org/Archive/gdk-pixbuf-xlib</url>
 </package>

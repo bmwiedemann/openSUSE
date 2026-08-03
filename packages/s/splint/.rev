@@ -146,4 +146,12 @@
     <comment></comment>
     <requestid>1151605</requestid>
   </revision>
+  <revision rev="22" vrev="104">
+    <srcmd5>5f6f616be4023be855fdb323d4200463</srcmd5>
+    <version>3.1.2</version>
+    <time>1773161887</time>
+    <user>anag_factory</user>
+    <comment>- Make it build with latest gcc</comment>
+    <requestid>1337966</requestid>
+  </revision>
 </revisionlist>

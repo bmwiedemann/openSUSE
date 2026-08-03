@@ -1,4 +1,11 @@
 <package name="zig0.16" project="openSUSE:Factory">
-  <title></title>
-  <description></description>
+  <title>Compiler for the Zig language</title>
+  <description>General-purpose programming language and toolchain for maintaining robust, optimal, and reusable software.
+
+* Robust - behavior is correct even for edge cases such as out of memory.
+* Optimal - write programs the best way they can behave and perform.
+* Reusable - the same code works in many environments which have different constraints.
+* Maintainable - precisely communicate intent to the compiler and other programmers.
+The language imposes a low overhead to reading code and is resilient to changing requirements and environments.</description>
+  <url>https://ziglang.org/</url>
 </package>

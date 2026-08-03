@@ -10,6 +10,5 @@ Features
  * Network access blocking;
  * The `rewrite` recording mode that rewrites cassettes
    from scratch.</description>
-  <devel project="devel:languages:python:pytest" package="python-pytest-recording"/>
   <url>https://github.com/kiwicom/pytest-recording</url>
 </package>

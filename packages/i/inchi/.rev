@@ -16,4 +16,26 @@
   architectures (rh#1930943).</comment>
     <requestid>1005812</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>aa4c71b67e2759b579ddf69ce70332f4</srcmd5>
+    <version>1.07.5</version>
+    <time>1775743890</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.07.5
+  * For details on bug fixes and added features see the CHANGELOG,
+    https://github.com/IUPAC-InChI/InChI/blob/v1.07.5/INCHI-1-DOC/CHANGELOG.md
+- Drop inchi-1.06-optflags.patch:  no longer needed
+- Drop inchi-1.06-big-endian.patch:  fails to apply, needs rewrite
+- Add inchi-1.07-no-fetchcontent.patch:  inhibit dynamic downloads
+- .spec file:
+  * switch to cmake, as upstream uses it to build
+  * small tweaks to cmakefiles to fix build problems
+- Add inchi-1.06-big-endian.patch: Fix build on big-endian
+  architectures (rh#1930943).
+- Add Conflicts with openbabel-devel &lt;= 2.4.1: openbabel-devel
+  used to ship the headers of its bundled inchi.
+- Initial package: inchi-1.06.
+</comment>
+    <requestid>1345499</requestid>
+  </revision>
 </revisionlist>

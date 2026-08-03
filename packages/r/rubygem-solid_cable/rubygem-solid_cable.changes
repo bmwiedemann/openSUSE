@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jul 13 11:11:14 UTC 2026 - Aleksei Burlakov <aburlakov@suse.com>
+
+- New upstream release version 4.0.0:
+  * Upgrade ci to test against all ruby versions by @npezza93 in #76
+  * Drop ruby 3.1 support by @npezza93 in #77
+  * Retry if connection fails by @npezza93 in #75
+  * Eagerly initialize last_id to avoid skipping messages by @xrav3nz in #78
+  * Drop ruby 3.2 support by @npezza93
+  * Harden CI by @npezza93
+  * Add connection timeout error and not established to the list of retryable connection errors by @npezza93
+
+-------------------------------------------------------------------
 Mon Feb  3 10:38:27 UTC 2025 - Dan Čermák <dan.cermak@posteo.net>
 
 - 3.0.7:

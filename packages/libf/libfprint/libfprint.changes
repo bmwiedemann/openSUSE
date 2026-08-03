@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 30 15:01:53 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Add upstream patch focal-tech-support.patch to add support for
+  new focal tech fingerprint reader
+
+-------------------------------------------------------------------
 Wed Feb 11 18:33:35 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Fix compilation error with meson < 14

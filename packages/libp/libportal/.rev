@@ -99,4 +99,28 @@
 Not sure this is correct, but lets try it :-) (forwarded request 1283735 from iznogood)</comment>
     <requestid>1284675</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>38d783e5083b1f6fc9d5138fcd2761c4</srcmd5>
+    <version>0.10.0</version>
+    <time>1781879446</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.10.0:
+  + Features:
+    - Support directory selection in xdp_portal_open_file()
+    - Add clipboard API and support InputCapture session
+      persistence
+  + Bug fixes:
+    - Replace deprecated Gio.UnixInputStream with
+      GioUnix.InputStream in tests
+    - Fix a memory leak in the background API
+    - Specify --doc-format=gi-docgen when building introspection
+    - Use canonical property names and G_PARAM_STATIC_STRINGS for
+      all GObject properties in inputcapture
+    - Fix invalid free of call-related data in inputcapture
+    - Expose libportal/settings.h header in libportal/portal.h
+    - Fix build with Qt 6.9+
+    - Don't install glib-backports.h as part of public headers
+- Drop libportal-qt69.patch: Fixed upstream.</comment>
+    <requestid>1360253</requestid>
+  </revision>
 </revisionlist>

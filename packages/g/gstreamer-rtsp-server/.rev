@@ -612,4 +612,13 @@
     <comment></comment>
     <requestid>1359037</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>c38067f64364f8792400010970127b5c</srcmd5>
+    <version>1.28.5</version>
+    <time>1784126491</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.28.5:
+  + No changes, stable bump only</comment>
+    <requestid>1365712</requestid>
+  </revision>
 </revisionlist>

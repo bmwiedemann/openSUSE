@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Jul 28 07:05:42 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.de>
+
+- update to 0.7.0:
+  * Add --sort-by-ctime=yes|no option to sort directory entries by
+    ctime as returned by the lstat syscall instead of alphabetically.
+    Only has an effect together with --sort-dirents=yes.
+- Create the build directory during unpacking, as the 0.7.0 tarball
+  no longer has a leading directory component
+
+-------------------------------------------------------------------
+Fri Jul 17 10:30:00 UTC 2026 - claudeaibmw@lsmod.de
+
+- update to 0.6.2:
+  * Improve portability, especially to FreeBSD.
+  * Port to Fuse3.
+  * Set _FILE_OFFSET_BITS for 32-bit platforms.
+- Build against fuse3 and require fuse3 instead of fuse
+- Use upstream tarball filename matching the signature file so
+  that source signature verification works again
+- Add Holger Levsen's key to the keyring (signed the 0.5.11
+  release), drop expired Ximin Luo key
+- Build with distro %optflags
+- Point URL to upstream repository
+
+-------------------------------------------------------------------
 Sun Dec  4 21:38:00 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.5.11:

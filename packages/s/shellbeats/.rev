@@ -7,4 +7,15 @@
     <comment>Hi, I'm submitting 'shellbeats' to Factory. It's a simple CLI music player for YouTube. I'm already maintaining it in multimedia:apps and will handle bug reports and future update. Note: Fixed the source integrity issues and mismatch errors from the previous request. Regards, Luis Machado.</comment>
     <requestid>1335121</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>94c48aae58c639b7fe5bb5cb03898262</srcmd5>
+    <version>0.7</version>
+    <time>1774469943</time>
+    <user>anag_factory</user>
+    <comment>- Update to commit 29b683d (Version 0.7)
+- Added dependencies: libcjson and libcurl
+- Fixed pause state desync and added XDG_CONFIG_HOME support
+- Added SuriSync integration and improved menu navigation (forwarded request 1342348 from lmachado.d)</comment>
+    <requestid>1342349</requestid>
+  </revision>
 </revisionlist>

@@ -177,4 +177,13 @@
     <comment></comment>
     <requestid>1237104</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>3ffa3056706dec08904a4c1d77b22a68</srcmd5>
+    <version>6.6.0</version>
+    <time>1774555702</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.6.0:
+  * no changelog available</comment>
+    <requestid>1342643</requestid>
+  </revision>
 </revisionlist>

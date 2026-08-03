@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jul 15 11:21:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.15.1:
+  * fix(vulncheck): fix multiple reads from check work queue
+- Update to version 0.15.0:
+  * Features
+    - 6d7f30b feat(vulncheck): control the concurrency of the
+      vulncheck command runs
+  * Chores
+    - 14932f5 chore(deps): go mod tidy
+
+-------------------------------------------------------------------
 Tue Jun 02 04:36:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.14.0 (no releases between 0.12.1 and this):

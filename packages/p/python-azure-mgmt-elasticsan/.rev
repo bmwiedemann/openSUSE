@@ -69,4 +69,16 @@
 - Update Requires from setup.py (forwarded request 1202550 from glaubitz)</comment>
     <requestid>1202618</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5e46c84ddfed8dd720af5738c5b66294</srcmd5>
+    <version>2.0.0</version>
+    <time>1772050337</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 2.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from pyproject.toml (forwarded request 1335027 from glaubitz)</comment>
+    <requestid>1335071</requestid>
+  </revision>
 </revisionlist>

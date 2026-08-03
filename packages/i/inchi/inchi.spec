@@ -1,7 +1,7 @@
 #
 # spec file for package inchi
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,25 +16,29 @@
 #
 
 
+%{?sle15_python_module_pythons}
+
 %define abiver  1
-%define urlver  106
 Name:           inchi
-Version:        1.06
+Version:        1.07.5
 Release:        0
 Summary:        The IUPAC International Chemical Identifier
-License:        LGPL-2.0-or-later
-URL:            https://www.inchi-trust.org
-Source0:        https://www.inchi-trust.org/download/%{urlver}/INCHI-1-SRC.zip
-Source1:        https://www.inchi-trust.org/download/%{urlver}/INCHI-1-DOC.zip
-Source2:        https://www.inchi-trust.org/download/%{urlver}/INCHI-1-TEST.zip
-# PATCH-FIX-UPSTREAM inchi-1.06-optflags.patch -- Pass optflags to compiler and don't require gcc-c++ (picked from Fedora)
-Patch0:         inchi-1.06-optflags.patch
-# PATCH-FIX-UPSTREAM inchi-1.06-big-endian.patch -- Fix tests on big-endian architectures (rh#1930943)
-Patch1:         inchi-1.06-big-endian.patch
-BuildRequires:  dos2unix
+License:        MIT
+URL:            https://www.inchi-trust.org/
+Source0:        https://github.com/IUPAC-InChI/InChI/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+## use system installed gtest, do not fetch on-the-fly
+Patch0:         inchi-1.07-no-fetchcontent.patch
+BuildRequires:  cmake
+BuildRequires:  fdupes
 BuildRequires:  gcc
-BuildRequires:  unzip
+BuildRequires:  gcc-c++
 Suggests:       inchi-doc
+## test dependencies
+BuildRequires:  gmock
+BuildRequires:  gtest
+BuildRequires:  %{pythons}
+BuildRequires:  %{python_module pydantic}
+BuildRequires:  %{python_module pytest}
 
 %description
 The IUPAC International Chemical Identifier (InChI) is a non-proprietary
@@ -78,77 +82,81 @@ This package contains the user documentation for the InChI software
 and InChI library API reference for developers.
 
 %prep
-# Extract Source0 then cd into extracted directory then extract Source1 then extract Source2
-%setup -q -n INCHI-1-SRC -a 1 -a 2
+%setup -q -n InChI-%{version}
 %autopatch -p1
-dos2unix -k readme.txt
 
-# Remove files from INCHI-1-DOC that are already present in ICHI-1-SRC so that they are not listed twice
-rm -v INCHI-1-DOC/{LICENCE.pdf,readme.txt}
-
-# Uncompress test datasets and reference test outputs
-cd INCHI-1-TEST/test
-unzip -d reference -qq -a test-results.zip
-unzip -qq -a test-datasets.zip
-dos2unix -k reference/*.inc *.sdf
-
-# Test scripts are Windows batch scripts; turn them into shell scripts
-for test_script in inchify_{InChI_TestSet,zzp} ; do
-    sed -e 's,REM,#,g'                                         \
-        -e 's,/,-,g'                                           \
-        -e 's,NUL,/dev/null,g'                                 \
-        -e 's,inchi-1.exe,../../INCHI_EXE/bin/Linux/inchi-1,g' \
-        ${test_script}.cmd > ${test_script}.sh
-    dos2unix ${test_script}.sh
-done
+## req'd by gtest
+sed -e 's:CMAKE_CXX_STANDARD 11:CMAKE_CXX_STANDARD 17:' -i CMakeLists.txt
+## fix link failures w/ system gtest
+sed -e "/target_link_libraries/s:gtest_main gmock_main test_dependencies libinchi:& gtest gmock:" \
+    -i INCHI-1-TEST/tests/test_unit/CMakeLists.txt
+## (re-)introduce versioned sonames, see github.com/IUPAC-InChI/InChI/issues/195
+sed -e '/add_library(libinchi SHARED)/a\
+set_target_properties(libinchi PROPERTIES VERSION ${PROJECT_VERSION} SOVERSION ${PROJECT_VERSION_MAJOR})' \
+    -i INCHI-1-SRC/INCHI_API/libinchi/src/CMakeLists.txt
 
 %build
-export OPTFLAGS="%{optflags}"
-%make_build -C INCHI_API/demos/inchi_main/gcc
-%make_build -C INCHI_EXE/inchi-1/gcc
+%cmake
+%cmake_build
 
 %install
+## no cmake install rules provided
 # Install binary
-install -pm 755 INCHI_EXE/bin/Linux/inchi-1 -D -t %{buildroot}%{_bindir}
+install -pm 755 %{__builddir}/INCHI-1-SRC/INCHI_EXE/inchi-1/src/bin/inchi-1 -D -t %{buildroot}%{_bindir}
 
 # Install shared library and do the appropriate links
-install -p INCHI_API/bin/Linux/libinchi.so.%{abiver}.*.* -D -t %{buildroot}%{_libdir}
-ln -s $(basename %{buildroot}%{_libdir}/libinchi.so.%{abiver}.*.*) %{buildroot}%{_libdir}/libinchi.so.%{abiver}
+install -p %{__builddir}/INCHI-1-SRC/INCHI_API/libinchi/src/lib/libinchi.so.%{abiver}.* -D -t %{buildroot}%{_libdir}
+ln -s $(basename %{buildroot}%{_libdir}/libinchi.so.%{abiver}.*) %{buildroot}%{_libdir}/libinchi.so.%{abiver}
 ln -s libinchi.so.%{abiver} %{buildroot}%{_libdir}/libinchi.so
 
 # Install the headers
-install -pm644 INCHI_BASE/src/{ichisize,inchi_api,ixa}.h -D -t %{buildroot}%{_includedir}/inchi
+install -pm644 INCHI-1-SRC/INCHI_BASE/src/{bcf_s,inchi_api,ixa}.h -D -t %{buildroot}%{_includedir}/inchi
+
+## install doc files, silence rpmlint wrt. file dups
+install -d %{buildroot}%{_defaultdocdir}/%{name}-doc
+cp -r INCHI-1-DOC/* %{buildroot}%{_defaultdocdir}/%{name}-doc
+%fdupes %{buildroot}%{_defaultdocdir}/%{name}-doc
 
 %post -n libinchi%{abiver} -p /sbin/ldconfig
 %postun -n libinchi%{abiver} -p /sbin/ldconfig
 
 %check
-# Run tests
-cd INCHI-1-TEST/test
-for test_script in inchify_{InChI_TestSet,zzp} ; do
-    sh ./${test_script}.sh
-done
-
-# Compare test outputs with reference test outputs
-for test_output in its-*.inc zzp-*.inc ; do
-    diff -u reference/${test_output} ${test_output}
-done
+%ctest
+pushd INCHI-1-TEST
+## fix hardcoded paths
+sed -e "/SDF_PATH = /s:INCHI-1-TEST/::" \
+    -e "s:CMake_build/full_build/INCHI-1-SRC/INCHI_API/libinchi/src/lib/libinchi.so:%{buildroot}%{_libdir}/libinchi.so:" \
+    -i tests/test_library/test_multithreading.py
+## increase assert time (or disable "test_execution_time")
+sed -e "/assert execution_time/s: < 10: < 100:" -i tests/test_meta/test_performance.py
+## disable test_permutation, unpackaged python module rdkit
+mv tests/test_meta/{test,notest}_permutation.py
+## fix for use of pydantic v1 in leap 15.6
+##%%if 0%%{?sle_version} == 150600 && 0%%{?is_opensuse}
+## is_opensuse seems unset in OBS science project
+%if 0%{?sle_version} == 150600
+sed -e "s:.model_dump_json():.json():" -i src/sdf_pipeline/drivers.py
+%endif
+export PYTHONPATH=src
+pytest --exe-path=%{buildroot}/%{_bindir}/inchi-1
+mv tests/test_meta/{notest,test}_permutation.py
+popd
 
 %files
-%license LICENCE.pdf
+%license LICENSE
 %{_bindir}/inchi-1
 
 %files -n libinchi%{abiver}
-%license LICENCE.pdf
+%license LICENSE
 %{_libdir}/libinchi.so.%{abiver}*
 
 %files devel
-%license LICENCE.pdf
+%license LICENSE
 %{_includedir}/inchi
 %{_libdir}/libinchi.so
 
 %files doc
-%license LICENCE.pdf
-%doc readme.txt INCHI-1-DOC/*
+%license LICENSE
+%{_defaultdocdir}/inchi-doc
 
 %changelog

@@ -1,0 +1,102 @@
+From 1efd3c5f4ff91d127f416573685d0d00ad7ae3e5 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fridrich=20=C5=A0trba?= <fridrich.strba@bluewin.ch>
+Date: Sat, 8 Nov 2025 10:16:48 +0100
+Subject: [PATCH 6/7] Plexus-utils 4.x, Plexus-xml 3.x and javax.annotations
+
+---
+ maven-core/pom.xml                | 4 ++++
+ maven-model/pom.xml               | 4 ++++
+ maven-repository-metadata/pom.xml | 4 ++++
+ maven-settings/pom.xml            | 4 ++++
+ pom.xml                           | 8 +++++++-
+ 5 files changed, 23 insertions(+), 1 deletion(-)
+
+diff --git a/maven-core/pom.xml b/maven-core/pom.xml
+index 764050bde7..56630a5e1d 100644
+--- a/maven-core/pom.xml
++++ b/maven-core/pom.xml
+@@ -127,6 +127,10 @@ under the License.
+       <groupId>javax.inject</groupId>
+       <artifactId>javax.inject</artifactId>
+     </dependency>
++    <dependency>
++      <groupId>javax.annotation</groupId>
++      <artifactId>javax.annotation-api</artifactId>
++    </dependency>
+     <!-- Plexus -->
+     <dependency>
+       <groupId>org.codehaus.plexus</groupId>
+diff --git a/maven-model/pom.xml b/maven-model/pom.xml
+index ca28f22440..6c0d40af7e 100644
+--- a/maven-model/pom.xml
++++ b/maven-model/pom.xml
+@@ -41,6 +41,10 @@ under the License.
+       <groupId>org.codehaus.plexus</groupId>
+       <artifactId>plexus-utils</artifactId>
+     </dependency>
++    <dependency>
++      <groupId>org.codehaus.plexus</groupId>
++      <artifactId>plexus-xml</artifactId>
++    </dependency>
+     <dependency>
+       <groupId>org.junit.jupiter</groupId>
+       <artifactId>junit-jupiter-api</artifactId>
+diff --git a/maven-repository-metadata/pom.xml b/maven-repository-metadata/pom.xml
+index 8f5fcbd3f3..291022857e 100644
+--- a/maven-repository-metadata/pom.xml
++++ b/maven-repository-metadata/pom.xml
+@@ -40,6 +40,10 @@ under the License.
+       <groupId>org.codehaus.plexus</groupId>
+       <artifactId>plexus-utils</artifactId>
+     </dependency>
++    <dependency>
++      <groupId>org.codehaus.plexus</groupId>
++      <artifactId>plexus-xml</artifactId>
++    </dependency>
+     <dependency>
+       <groupId>org.apache.maven.resolver</groupId>
+       <artifactId>maven-resolver-api</artifactId>
+diff --git a/maven-settings/pom.xml b/maven-settings/pom.xml
+index 6408b2e9ad..816e9949db 100644
+--- a/maven-settings/pom.xml
++++ b/maven-settings/pom.xml
+@@ -40,6 +40,10 @@ under the License.
+       <groupId>org.codehaus.plexus</groupId>
+       <artifactId>plexus-utils</artifactId>
+     </dependency>
++    <dependency>
++      <groupId>org.codehaus.plexus</groupId>
++      <artifactId>plexus-xml</artifactId>
++    </dependency>
+   </dependencies>
+ 
+   <build>
+diff --git a/pom.xml b/pom.xml
+index 07fd63400b..4672e7161e 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -136,7 +136,8 @@ under the License.
+     <plexusVersion>2.2.0</plexusVersion>
+     <plexusInterpolationVersion>1.29</plexusInterpolationVersion>
+     <!-- Blocked by 3.4.0+ changes, see MNG-7710, downgrade from parent 4.0.1 -->
+-    <version.plexus-utils>3.6.1</version.plexus-utils>
++    <version.plexus-utils>4.0.2</version.plexus-utils>
++    <version.plexus-xml>3.0.2</version.plexus-xml>
+     <guiceVersion>5.1.0</guiceVersion>
+     <guavaVersion>33.6.0-jre</guavaVersion>
+     <guavafailureaccessVersion>1.0.3</guavafailureaccessVersion>
+@@ -248,6 +249,11 @@ under the License.
+         <artifactId>plexus-utils</artifactId>
+         <version>${version.plexus-utils}</version>
+       </dependency>
++      <dependency>
++        <groupId>org.codehaus.plexus</groupId>
++        <artifactId>plexus-xml</artifactId>
++        <version>${version.plexus-xml}</version>
++      </dependency>
+       <dependency>
+         <groupId>com.google.inject</groupId>
+         <artifactId>guice</artifactId>
+-- 
+2.55.0
+

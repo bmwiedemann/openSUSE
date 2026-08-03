@@ -135,4 +135,18 @@
   * Fixed: A few small bugs</comment>
     <requestid>1301858</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ed25691f9351c67651e385ba06a0a6fa</srcmd5>
+    <version>0.9.0</version>
+    <time>1774469874</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.9.0:
+  * Reorganized project structure (src layout, docs
+    directory).
+  * Switched build system to flit.
+  * Added experimental command-line interface.
+  * Added dependencies: narwhals, rich, click.
+  * Modernized codebase and improved compatibility layers.</comment>
+    <requestid>1342273</requestid>
+  </revision>
 </revisionlist>

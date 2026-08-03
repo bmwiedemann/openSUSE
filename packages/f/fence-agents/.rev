@@ -1296,4 +1296,12 @@
   * fencing.py: change from Bash &quot;source&quot; to POSIX-compliant &quot;.&quot;</comment>
     <requestid>1361074</requestid>
   </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>0dec38dfa3dc3e1d7b07e62f87c5c54d</srcmd5>
+    <version>4.17.0+git.1784121740.9871084</version>
+    <time>1785255683</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1368206</requestid>
+  </revision>
 </revisionlist>

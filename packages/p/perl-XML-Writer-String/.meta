@@ -10,6 +10,5 @@ providing the required print() method.
 It is recommended that $writer-&gt;end() is called prior to calling $s-&gt;value() to
 check for well-formedness.
   </description>
-  <devel project="devel:languages:perl" package="perl-XML-Writer-String"/>
   <url>http://search.cpan.org/perldoc?XML::Writer::String</url>
 </package>

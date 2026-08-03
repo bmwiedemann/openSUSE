@@ -85,8 +85,7 @@ BuildRequires:  xmvn-resolve
 BuildRequires:  mvn(io.github.java-diff-utils:java-diff-utils)
 BuildRequires:  mvn(junit:junit)
 BuildRequires:  mvn(net.java.dev.jna:jna)
-BuildRequires:  mvn(org.jline:jline-builtins)
-BuildRequires:  mvn(org.jline:jline-terminal-jna)
+BuildRequires:  mvn(org.jline:jline)
 BuildRequires:  mvn(org.openjdk.jol:jol-core)
 Requires:       javapackages-tools
 Obsoletes:      %{base_name}-swing < 2.13.4
@@ -144,12 +143,6 @@ cp -p %{SOURCE4} src/reflect/pom.xml
 cp -p %{SOURCE5} src/compiler/pom.xml
 cp -p %{SOURCE6} src/scalap/pom.xml
 
-# Fedora has a split jline3, so split up the dependency
-%pom_change_dep org.jline:jline org.jline:jline-terminal-jna src/compiler
-%pom_add_dep org.jline:jline-reader:%{jlinever} src/compiler
-%pom_add_dep org.jline:jline-style:%{jlinever} src/compiler
-%pom_add_dep org.jline:jline-builtins:%{jlinever} src/compiler
-
 %build
 export LC_ALL=C.UTF-8
 
@@ -160,8 +153,7 @@ COMPJAR=$PWD/%{base_name}-%{version}/lib/scala-compiler.jar
 COMPJAR=%{_javadir}/scala/scala-compiler.jar
 %endif
 
-JLINE_JARS=$(build-classpath jna jline3/jline-terminal jline3/jline-terminal-jna \
-    jline3/jline-reader jline3/jline-style jline3/jline-builtins)
+JLINE_JARS=$(build-classpath jline3/jline)
 JAVAC_FLAGS="-g -parameters -source 8 -target 8"
 SCALAC_FLAGS="-g:vars -release 8 -J-Xmx512M -J-Xms32M"
 SCALADOC_FLAGS='-J-Xmx512M -J-Xms32M -doc-footer epfl -diagrams -implicits -groups -doc-version %{version} -doc-source-url https://github.com/scala/scala/blob/v%{version}/src/€{FILE_PATH_EXT}#L€{FILE_LINE}'
@@ -349,9 +341,7 @@ cd -
 
 # Create the binary scripts
 mkdir -p %{buildroot}%{_bindir}
-CLASSPATH=$(build-classpath jna jline3/jline-terminal \
-            jline3/jline-terminal-jna jline3/jline-reader jline3/jline-style \
-            jline3/jline-builtins)\
+CLASSPATH=$(build-classpath jline3/jline)\
 :%{_javadir}/scala/scala-library.jar\
 :%{_javadir}/scala/scala-reflect.jar\
 :%{_javadir}/scala/scala-compiler.jar

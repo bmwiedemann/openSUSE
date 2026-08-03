@@ -181,4 +181,12 @@
     <comment>- refresh nmon-incrase-cpumax-to-support-2048-cpus.patch (bsc#1247368)</comment>
     <requestid>1317384</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>3bdc582d091557f688c73d538e413b4f</srcmd5>
+    <version>16s</version>
+    <time>1775743872</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1345457</requestid>
+  </revision>
 </revisionlist>

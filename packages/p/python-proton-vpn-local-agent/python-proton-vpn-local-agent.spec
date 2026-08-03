@@ -1,7 +1,7 @@
 #
 # spec file for package python-proton-vpn-local-agent
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 %define         _name python-proton-vpn-local-agent
 Name:           python-proton-vpn-local-agent
-Version:        1.6.0
+Version:        1.6.3
 Release:        0
 Summary:        Proton VPN local agent written in Rust
 License:        GPL-3.0-only
@@ -55,7 +55,7 @@ pushd %{_name}
 popd
 
 %install
-%if 0%{?suse_version} == 1600
+%if 0%{?suse_version} >= 1600 && 0%{?suse_version} < 1650
 pushd %{_name}
 %endif
 for p in $(echo "%{pythons}" | sed s/python31/python3.1/g); do

@@ -3,6 +3,5 @@
   <description>OSGi Compendium, Interfaces and Classes for use in compiling bundles.
 
 </description>
-  <devel project="Java:packages" package="osgi-compendium"/>
   <url>http://www.osgi.org</url>
 </package>

@@ -2,5 +2,6 @@
   <title></title>
   <description>Myrlyn Linux Package Manager GUI
 </description>
+  <devel project="system:packagemanager" package="myrlyn"/>
   <url>https://github.com/shundhammer/myrlyn</url>
 </package>

@@ -96,4 +96,14 @@
     service_account_email field</comment>
     <requestid>1346114</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>bdc7d339af8b3e759b019463f6a7d0d4</srcmd5>
+    <version>2.39.0</version>
+    <time>1784126601</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.39.0:
+  * regenerate pubsub library using gapic-generator v1.32.0
+  * resolve issue with pubsub generation</comment>
+    <requestid>1365758</requestid>
+  </revision>
 </revisionlist>

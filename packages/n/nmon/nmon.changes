@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Apr  9 08:01:15 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 16s:
+  * Refactor internal structures to separate system-wide and
+    uptime statistics from CPU-specific counters
+  * Adjust CPUMAX to 2048 on POWER and 512 on other platforms
+  * Add -w option to configure timestamp digit length (4-16)
+  * Add bounds checking for NFS v4 client/server name counts
+  * Standardize architecture macros (X86/ARM)
+  * Extend Ubuntu version detection support up to Ubuntu 30
+  * Update help documentation and fix various UI typos
+  * Fix alignment issues in kernel statistics display
+- drop nmon-incrase-cpumax-to-support-2048-cpus.patch (obsolete)
+
+-------------------------------------------------------------------
 Wed Nov 12 15:42:05 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - refresh nmon-incrase-cpumax-to-support-2048-cpus.patch (bsc#1247368)

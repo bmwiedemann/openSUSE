@@ -102,4 +102,12 @@
     <comment>- Remove source files, so they aren't shipped.</comment>
     <requestid>1357230</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>21c9cc19361f0d303c7845aef8966c72</srcmd5>
+    <version>1.4.4</version>
+    <time>1784127327</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1365942</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Mar 30 13:36:15 UTC 2026 - Friedrich Haubensak <hsk17@mail.de>
+
+- Update to 1.07.5
+  * For details on bug fixes and added features see the CHANGELOG,
+    https://github.com/IUPAC-InChI/InChI/blob/v1.07.5/INCHI-1-DOC/CHANGELOG.md
+- Drop inchi-1.06-optflags.patch:  no longer needed
+- Drop inchi-1.06-big-endian.patch:  fails to apply, needs rewrite
+- Add inchi-1.07-no-fetchcontent.patch:  inhibit dynamic downloads
+- .spec file:
+  * switch to cmake, as upstream uses it to build
+  * small tweaks to cmakefiles to fix build problems
+
+-------------------------------------------------------------------
 Sat Sep 24 23:11:29 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Add inchi-1.06-big-endian.patch: Fix build on big-endian
@@ -14,4 +27,3 @@ Tue Aug 23 20:54:24 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
 Mon Aug 15 18:03:55 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Initial package: inchi-1.06.
-

@@ -5,6 +5,5 @@
 You should use Ref::Util::XS by installing Ref::Util itself: if the system you install it on has a C compiler available, 'Ref::Util::XS' will be installed and used automatically, providing a significant speed boost to everything that uses 'Ref::Util'.
 
 See Ref::Util for full documentation of the available functions.</description>
-  <devel project="devel:languages:perl" package="perl-Ref-Util-XS"/>
   <url>https://metacpan.org/release/Ref-Util-XS</url>
 </package>

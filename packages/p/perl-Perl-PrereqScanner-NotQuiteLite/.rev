@@ -33,4 +33,15 @@
 </comment>
     <requestid>1288042</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3e2a378adda8c40808f4288d2e36a5c5</srcmd5>
+    <version>0.9918</version>
+    <time>1775743727</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.9918
+   see /usr/share/doc/packages/perl-Perl-PrereqScanner-NotQuiteLite/Changes
+  0.9918 2026/04/05
+    - Support builtin, experimental, native class and Feature::Compat::Class</comment>
+    <requestid>1345219</requestid>
+  </revision>
 </revisionlist>

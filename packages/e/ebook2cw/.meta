@@ -3,5 +3,6 @@
   <description>ebook2cw is a command line program (optional graphical user interface
 available) which converts a plain text (ASCII, ISO 8859-1 or UTF-8) file (e. g.
 an ebook) to Morse code MP3 or OGG audio files.</description>
+  <devel project="hamradio" package="ebook2cw"/>
   <url>https://fkurz.net/ham/ebook2cw.html</url>
 </package>

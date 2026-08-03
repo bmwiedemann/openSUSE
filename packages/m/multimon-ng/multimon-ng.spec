@@ -1,8 +1,8 @@
 #
 # spec file for package multimon-ng
 #
-# Copyright (c) 2025 SUSE LLC
-# Copyright (c) 2017-2025, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2017-2026, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           multimon-ng
-Version:        1.4.1
+Version:        1.6.0
 Release:        0
 Summary:        A fork of multimon that decodes multiple digital transmission modes
 License:        GPL-2.0-only
@@ -28,6 +28,7 @@ Source:         https://github.com/EliasOenal/multimon-ng/archive/%{version}.tar
 BuildRequires:  cmake
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libpulse)
+BuildRequires:  pkgconfig(sdl3)
 BuildRequires:  pkgconfig(x11)
 Recommends:     sox
 
@@ -57,7 +58,8 @@ MultimonNG a fork of multimon. It decodes the following digital transmission mod
 %files
 %license COPYING
 %doc README.md
-%{_bindir}/%{name}
+%{_bindir}/gen-ng
+%{_bindir}/multimon-ng
 %{_mandir}/man1/multimon-ng.1%{?ext_man}
 
 %changelog

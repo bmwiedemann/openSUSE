@@ -977,4 +977,16 @@ This should fix the problems reported with the previous openSUSE:Factory submiss
     <comment></comment>
     <requestid>1364784</requestid>
   </revision>
+  <revision rev="83" vrev="2">
+    <srcmd5>9f48da0befc16e6c1855116a83716956</srcmd5>
+    <version>12.3.0</version>
+    <time>1784125996</time>
+    <user>dimstar_suse</user>
+    <comment>- Add new bug references: 
+  CVE-2026-54058 (bsc#1271419), CVE-2026-59197 (bsc#1271418),
+  CVE-2026-59198 (bsc#1271420), CVE-2026-59199 (bsc#1271421),
+  CVE-2026-59200 (bsc#1271422), CVE-2026-59203 (bsc#1271423),
+  CVE-2026-59204 (bsc#1271424), CVE-2026-59205 (bsc#1271425))</comment>
+    <requestid>1365920</requestid>
+  </revision>
 </revisionlist>

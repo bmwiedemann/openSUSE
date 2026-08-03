@@ -11,5 +11,4 @@
 A new LayoutManager that utilizes both of these concepts and is tuned
 toward a free-form drag and drop layout model as can be provided by GUI
 builders.</description>
-  <devel project="Java:packages" package="swing-layout"/>
 </package>

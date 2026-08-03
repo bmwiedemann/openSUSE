@@ -46,5 +46,4 @@ events are created is non-obvious. This is especially the case with
 watchers that watch for a condition rather than an event. In some cases,
 target events are generated on a schedule that depends on the operation of
 the event loop.</description>
-  <devel project="devel:languages:perl" package="perl-Event"/>
 </package>

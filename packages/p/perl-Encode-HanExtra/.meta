@@ -8,5 +8,4 @@ However, the numbers of Chinese encodings are staggering, and a
 complete coverage will easily increase the size of perl distribution by
 several megabytes; hence, this CPAN module tries to provide the rest of
 them.</description>
-  <devel project="devel:languages:perl" package="perl-Encode-HanExtra"/>
 </package>

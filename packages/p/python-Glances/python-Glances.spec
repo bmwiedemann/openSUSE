@@ -42,10 +42,12 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-defusedxml
+Requires:       python-fastapi
 Requires:       python-jinja2
 Requires:       python-packaging
 Requires:       python-psutil >= 5.6.7
 Requires:       python-shtab
+Requires:       python-uvicorn
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Recommends:     python-curses
@@ -87,7 +89,7 @@ from systemd and a firewalld file to open the default port.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 # Remove installed "data" files
-rm -r %{buildroot}/usr/share/doc/glances
+rm -r %{buildroot}%{_datadir}/doc/glances
 
 mkdir -p %{buildroot}%{_sbindir}
 ln -sf service %{buildroot}%{_sbindir}/rcglances

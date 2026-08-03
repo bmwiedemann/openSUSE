@@ -12,5 +12,4 @@ The module will work on the majority of Windows, UNIX, and Macintosh
 platforms. Generated files are also compatible with Gnumeric and
 OpenOffice.org, the Linux/UNIX spreadsheet applications. The generated
 files are not compatible with MS Access.</description>
-  <devel project="devel:languages:perl" package="perl-Spreadsheet-WriteExcel"/>
 </package>

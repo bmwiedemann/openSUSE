@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-drms
-Version:        0.9.0
+Version:        0.9.1
 Release:        0
 Summary:        Tool to access HMI, AIA and MDI data with Python
 License:        MIT
@@ -34,8 +34,8 @@ BuildRequires:  python-rpm-macros
 Requires:       python-numpy >= 1.23.5
 Requires:       python-packaging >= 23.0
 Requires:       python-pandas >= 1.5.1
-Requires(postun): update-alternatives
 Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module astropy}
@@ -63,6 +63,9 @@ default, but can also be used with local NetDRMS sites.
 
 %install
 %pyproject_install
+# Recompile as hash-based bytecode so .pyc invalidation does not depend on the
+# reproducibility-clamped .py mtimes (avoids python-bytecode-inconsistent-mtime).
+%python_expand $python -m compileall -q -f --invalidation-mode=unchecked-hash -o 0 -o 1 -s %{buildroot} %{buildroot}%{$python_sitelib}/drms
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

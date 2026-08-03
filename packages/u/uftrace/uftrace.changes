@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar 24 22:59:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.19:
+  * Add func-percentile.py script for latency percentiles (#1982)
+  * Support srcline info in the chrome dump output
+  * Convert timestamp to real time (UTC) in the chrome dump
+    output
+  * Fix segfaults on binaries built with mold linker (#1951)
+  * Update some C++ exception test cases
+
+-------------------------------------------------------------------
 Thu Sep 11 03:02:54 UTC 2025 - Hoyeon Lee <hoyeon.lee@suse.com>
 
 - Initial packaging for uftrace 0.18.1

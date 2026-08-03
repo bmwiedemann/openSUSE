@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Fri Jun 19 11:44:24 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
+
+- removed upstream fix-leap16-compilation.patch
+- Update to 2.1.2
+  * [AMD]
+    - Route SMN I/O through per-UMC PCI device on multi-die platforms
+    - Remove AMD_UMC_Normalize_Channels() function
+    - Skip Rank calculation when secondary regions are active
+    - Aggregate DIMM size from RAM regions
+    - [UMC] Attempt to detect shared DRAM CS mask
+  * [x86_64]
+    - Decode and display Extended Supervisor State Mask (XSS)
+    - STMXCSR: remove XCR0.SSE condition with legacy architectures
+    - Reorder processing logic of XCR0 and MXCSR registers
+    - [AVX|SSE] Media and Extended Control and Status Register
+    - [Intel][AMD] Complete CPUID dump leaf list from updated specs
+  * [Intel]
+    - Rephrase to " Advanced Matrix Extensions Brain Float16 "
+    - Rename CPUID.(EAX=0x29, ECX=0).EBX[0] feature to APX_NDD_NF
+    - Display AVX10-128/256/512 and APX-NCI_NDD_NF CPUID bits
+    - Display APX_F, AMX_COMPLEX and new leaf 7.1 features
+    - Dump additional CPUID leaves through 0x29
+  * [CLI]
+    - Show blanks instead of zero values in DIMM geometry
+  * [Doc]
+    - [AMD] DDR4 Limit encoding specification
+    - [AMD] DDR5 Limit encoding specification
+    - [AMD] Register HWCR[34] Downgrade FP512 to FP256
+    - [Intel] Architecture Instruction Set Extensions and Future Features
+    - [x86_64] Dump undocumented CPUID leaves introduced in AMD Family 1Ah
+    - [AMD][Zen] Fix the bit fields of AMD_CPPC_REQUEST MSR register
+  * [Build]
+    - [CR] Fix __builtin_strnlen() fallback for GCC < 7
+    - [CR] Propagate StrCopy() hardening to other architectures
+    - [CR] Ensure bounded and null-terminated string copies
+    - [Build] Add a dependency to create Symlink first
+    - [Build] Fix module rebuild dependency tracking
+    - [Build][openSUSE] Fix WRMSRNS collision with Leap 16.0 kernel headers (#594)
+  * [Kernel]
+    - [aarch64][ppc64][riscv64] Make use of cpufreq_cpu_put()
+    - [CPUFreq] Fallback to policy-based governor label when unavailable
+    - [CPPC] Read per CPU the updated ACPI-CPPC registers
+    - [CPPC] Read the updated ACPI-CPPC registers
+    - [CR][Kernel] Remove __free(put_cpufreq_policy) dependency
+    - [CR][Kernel] Call cpufreq_cpu_put() to release cpu_policy
+    - [CPPC] Compute Bounds after altering the Energy Policy
+
+-------------------------------------------------------------------
 Wed May 20 20:00:25 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
 
 - added fix-leap16-compilation.patch to fix compilation on Leap 16 x86_64 

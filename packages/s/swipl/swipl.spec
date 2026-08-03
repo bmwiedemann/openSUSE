@@ -17,7 +17,7 @@
 
 
 Name:           swipl
-Version:        9.3.31
+Version:        10.1.12
 Release:        0
 Summary:        Prolog Compiler
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -33,8 +33,8 @@ BuildRequires:  freetype2-devel
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
 BuildRequires:  gperftools-devel
+BuildRequires:  hamcrest
 BuildRequires:  java-devel >= 1.8.0
-BuildRequires:  python3-devel >= 3.6
 # For %%check
 BuildRequires:  junit
 BuildRequires:  libarchive-devel
@@ -43,11 +43,13 @@ BuildRequires:  libunwind-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
+BuildRequires:  python3-devel >= 3.6
 BuildRequires:  readline-devel
 BuildRequires:  unixODBC-devel
 BuildRequires:  pkgconfig(ice)
 BuildRequires:  pkgconfig(libedit)
 BuildRequires:  pkgconfig(libssl)
+BuildRequires:  pkgconfig(libutf8proc)
 BuildRequires:  pkgconfig(ossp-uuid)
 BuildRequires:  pkgconfig(sm)
 BuildRequires:  pkgconfig(x11)
@@ -60,14 +62,12 @@ BuildRequires:  pkgconfig(xpm)
 BuildRequires:  pkgconfig(xrender)
 BuildRequires:  pkgconfig(xt)
 BuildRequires:  pkgconfig(yaml-0.1)
-BuildRequires:  hamcrest
 Provides:       swi-prolog = %{version}
 Provides:       swi_pl = %{version}
 Obsoletes:      swi-prolog < %{version}
 Obsoletes:      swi_pl < %{version}
 # Builds on i586 don't seem to work (gh#SWI-Prolog/swipl-devel#1139)
-ExcludeArch:    %ix86
-
+ExcludeArch:    %{ix86}
 #  jpackage-utils
 
 %description
@@ -82,12 +82,16 @@ sed -i -e "s|#!%{_bindir}/env swipl|#!%{_bindir}/swipl|" \
     packages/protobufs/bootstrap/protoc-gen-swipl
 
 %build
+export LANG=C.utf8
+# Otherwise breaks unicode_security4pl.so
+%define _lto_cflags %{nil}
 export SOURCE_DATE_EPOCH="$(sed -n '/^----/n;s/ - .*$//;p;q' %{SOURCE99} | date -u -f - +%%s)"
 %define __builder ninja
-%cmake
+%cmake -DSYSTEM_LIBEDIT=ON
 %cmake_build
 
 %install
+export LANG=C.utf8
 %cmake_install
 
 # # Fix script
@@ -108,10 +112,10 @@ rmdir -v %{buildroot}%{_datadir}/pkgconfig
 %fdupes %{buildroot}/%{_docdir}/%{name}-%{version}
 
 %check
-export LANG="C.utf8"
+export LANG=C.utf8
 CTEST_OPT_ARGS=""
 # gh#SWI-Prolog/swipl-devel#1139
-%ifarch %ix86
+%ifarch %{ix86}
 CTEST_OPT_ARGS+=" --exclude-regex 'swipl:transaction'"
 %endif
 %ctest --verbose $CTEST_OPT_ARGS

@@ -6,5 +6,4 @@ system assigns to it a syntactic structure, which consists of a set of
 labeled links connecting pairs of words. The parser also produces a
 &quot;constituent&quot; (Penn tree-bank style phrase tree) representation of a
 sentence (showing noun phrases, verb phrases, etc.).</description>
-  <devel project="GNOME:Factory" package="link-grammar"/>
 </package>

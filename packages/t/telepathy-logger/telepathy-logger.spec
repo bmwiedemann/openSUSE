@@ -30,10 +30,10 @@ Patch0:         telepathy-logger-tests-Rename-function.patch
 Patch1:         libtpl-extensions-dependencies.patch
 # PATCH-FIX-UPSTREAM 1.diff dimstar@opensuse.org -- tools: Fix the build with Python 3
 Patch2:         https://gitlab.freedesktop.org/telepathy/telepathy-logger/-/merge_requests/1.diff
-BuildRequires:  gnome-doc-utils-devel
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
+BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(dbus-1) >= 1.1.0
 BuildRequires:  pkgconfig(dbus-glib-1) >= 0.82
 BuildRequires:  pkgconfig(glib-2.0) >= 2.28

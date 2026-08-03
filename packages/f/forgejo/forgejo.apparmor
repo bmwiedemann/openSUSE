@@ -5,6 +5,7 @@ include <tunables/global>
 @{APP_DATADIR} = /var/lib/forgejo
 @{APP_LOGDIR}  = /var/log/forgejo
 @{APP_REPOSITORY_DIRS} = @{APP_DATADIR}/data/forgejo-repositories @{APP_DATADIR}/repositories
+@{APP_HOOKS_DIRS} = @{APP_DATADIR}/data/home/hooks @{APP_REPOSITORY_DIRS}/*/*/hooks
 
 profile forgejo /usr/bin/forgejo flags=(attach_disconnected) {
   include <abstractions/forgejo>
@@ -79,11 +80,10 @@ profile forgejo /usr/bin/forgejo flags=(attach_disconnected) {
     owner @{APP_REPOSITORY_DIRS}/ r,
     owner @{APP_REPOSITORY_DIRS}/** rwlk,
 
-    owner @{APP_REPOSITORY_DIRS}/*/*.git/hooks/pre-receive  Px -> forgejo//hooks-pre-receive,
-    owner @{APP_REPOSITORY_DIRS}/*/*.git/hooks/post-receive Px -> forgejo//hooks-post-receive,
-    owner @{APP_REPOSITORY_DIRS}/*/*.git/hooks/proc-receive Px -> forgejo//hooks-proc-receive,
-
-    owner @{APP_REPOSITORY_DIRS}/*/*.git/hooks/update Px -> forgejo//hooks-update,
+    owner @{APP_HOOKS_DIRS}/pre-receive  Px -> forgejo//hooks-pre-receive,
+    owner @{APP_HOOKS_DIRS}/post-receive Px -> forgejo//hooks-post-receive,
+    owner @{APP_HOOKS_DIRS}/proc-receive Px -> forgejo//hooks-proc-receive,
+    owner @{APP_HOOKS_DIRS}/update       Px -> forgejo//hooks-update,
 
     owner @{APP_DATADIR}/data/tmp/local-repo/pull.*/ r,
     owner @{APP_DATADIR}/data/tmp/local-repo/pull.*/** rwlk,
@@ -127,9 +127,9 @@ profile forgejo /usr/bin/forgejo flags=(attach_disconnected) {
   profile hooks-pre-receive {
     include <abstractions/forgejo-hooks>
 
-    owner @{APP_REPOSITORY_DIRS}/*/*/hooks/pre-receive r,
-    owner @{APP_REPOSITORY_DIRS}/*/*/hooks/pre-receive.d/ r,
-    owner @{APP_REPOSITORY_DIRS}/*/*/hooks/pre-receive.d/gitea Px -> forgejo//hooks-gitea,
+    owner @{APP_HOOKS_DIRS}/pre-receive r,
+    owner @{APP_HOOKS_DIRS}/pre-receive.d/ r,
+    owner @{APP_HOOKS_DIRS}/pre-receive.d/gitea Px -> forgejo//hooks-gitea,
 
     include if exists <forgejo.d/hooks-pre-receive.d>
     include if exists <local/forgejo-hooks-pre-receive>
@@ -138,9 +138,9 @@ profile forgejo /usr/bin/forgejo flags=(attach_disconnected) {
   profile hooks-post-receive {
     include <abstractions/forgejo-hooks>
 
-    owner @{APP_REPOSITORY_DIRS}/*/*/hooks/post-receive r,
-    owner @{APP_REPOSITORY_DIRS}/*/*/hooks/post-receive.d/ r,
-    owner @{APP_REPOSITORY_DIRS}/*/*/hooks/post-receive.d/gitea Px -> forgejo//hooks-gitea,
+    owner @{APP_HOOKS_DIRS}/post-receive r,
+    owner @{APP_HOOKS_DIRS}/post-receive.d/ r,
+    owner @{APP_HOOKS_DIRS}/post-receive.d/gitea Px -> forgejo//hooks-gitea,
 
     include if exists <forgejo.d/hooks-post-receive.d>
     include if exists <local/forgejo-hooks-post-receive>
@@ -149,9 +149,9 @@ profile forgejo /usr/bin/forgejo flags=(attach_disconnected) {
   profile hooks-proc-receive {
     include <abstractions/forgejo-hooks>
 
-    owner @{APP_REPOSITORY_DIRS}/*/*/hooks/proc-receive r,
-    owner @{APP_REPOSITORY_DIRS}/*/*/hooks/proc-receive.d/ r,
-    owner @{APP_REPOSITORY_DIRS}/*/*/hooks/proc-receive.d/gitea Px -> forgejo//hooks-gitea,
+    owner @{APP_HOOKS_DIRS}/proc-receive r,
+    owner @{APP_HOOKS_DIRS}/proc-receive.d/ r,
+    owner @{APP_HOOKS_DIRS}/proc-receive.d/gitea Px -> forgejo//hooks-gitea,
 
     include if exists <forgejo.d/hooks-proc-receive.d>
     include if exists <local/forgejo-hooks-proc-receive>
@@ -160,9 +160,9 @@ profile forgejo /usr/bin/forgejo flags=(attach_disconnected) {
   profile hooks-update {
     include <abstractions/forgejo-hooks>
 
-    owner @{APP_REPOSITORY_DIRS}/*/*/hooks/update r,
-    owner @{APP_REPOSITORY_DIRS}/*/*/hooks/update.d/ r,
-    owner @{APP_REPOSITORY_DIRS}/*/*/hooks/update.d/gitea Px -> forgejo//hooks-gitea,
+    owner @{APP_HOOKS_DIRS}/update r,
+    owner @{APP_HOOKS_DIRS}/update.d/ r,
+    owner @{APP_HOOKS_DIRS}/update.d/gitea Px -> forgejo//hooks-gitea,
 
     include if exists <forgejo.d/hooks-update.d>
     include if exists <local/forgejo-hooks-update>
@@ -171,7 +171,7 @@ profile forgejo /usr/bin/forgejo flags=(attach_disconnected) {
   profile hooks-gitea {
     include <abstractions/forgejo-hooks>
 
-    owner @{APP_REPOSITORY_DIRS}/*/*/hooks/*.d/gitea r,
+    owner @{APP_HOOKS_DIRS}/*.d/gitea r,
     /usr/bin/forgejo Px -> forgejo//forgejo-hooks,
   }
 
@@ -181,5 +181,6 @@ profile forgejo /usr/bin/forgejo flags=(attach_disconnected) {
     /usr/bin/env      rm,
     /usr/bin/cat      rm,
     /usr/bin/basename rm,
+    /usr/bin/dirname  rm,
   }
 }

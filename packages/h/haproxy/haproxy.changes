@@ -1,4 +1,129 @@
 -------------------------------------------------------------------
+Wed Jul 29 16:17:48 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 3.4.3+git0.80ea565fd:
+  * [RELEASE] Released version 3.4.3
+  * IMPORT: cebtree: private: fix the duplicate detection in the lookup shortcut
+  * BUG/MINOR: server: fix check reuse-pool in srv_settings_cpy()
+  * BUG/MINOR: server: duplicate server alt_proto in srv_settings_cpy()
+  * BUG/MINOR: server: fix QUIC on server-template
+  * MINOR: server: improve parsing error for server-template
+  * BUG/MAJOR: ssl/ocsp: lock the OCSP response around reads in the stapling callback
+  * BUG/MEDIUM: sample: reject the deprecated protobuf group wire types
+  * BUG/MEDIUM: peers: check the available room before encoding dict values
+  * BUILD: ssl: Do not use SSL3_MT_KEY_UPDATE, hardcode 24 instead
+  * BUG/MEDIUM: ssl: Put CO_ER_SSL_KEYUPDATE at the right place
+  * DOC: ssl: Document tune.ssl.keyupdate-rate-limit
+  * MEDIUM: ssl: Add a way to rate-limit TLSv1.3 KeyUpdate
+  * CLEANUP: slz: clarify that the size promise applies to the stream, not to a call
+  * BUG/MINOR: slz: avoid undefined shifts when building the word byte by byte
+  * BUG/MINOR: slz: fix the adler32 accumulators signedness on 32-bit
+  * BUG/MINOR: slz: do not append a block to an already finished stream
+  * BUG/MEDIUM: slz: bound the bits wasted by the 9-bit literals
+  * BUG/MINOR: slz: use the exact switch cost for the last literals of a block
+  * CLEANUP: slz: fix the documented worst case size of flush() and finish()
+  * BUG/MINOR: slz: do not read past the end of the input around the match loop
+  * BUG/MINOR: http-rules: fix release of a failed "set-cookie-fmt" redirect rule
+  * BUG/MINOR: htx: Transfer HTX_FL_EOM flag on success in htx_append_msg()
+  * BUG/MINOR: htx: Perform raw copy for messages of same size in htx_copy_msg()
+  * BUG/MEDIUM: tools: make string encoding possible to fail instead of truncating
+  * BUG/MINOR: http-htx: check the strdup() of the "lf-string" http reply argument
+  * BUG/MINOR: http-act: reject a negative capture id in the capture actions
+  * BUG/MINOR: http-act: work on a copy of the sample in del-headers-bin
+  * BUG/MINOR: http-act: restore the response buffer state in the early-hint action
+  * BUG/MINOR: http-act: fix a double free of the map reference on a parsing error
+  * BUG/MINOR: http-act: fix a double free of the regex on a rule parsing error
+  * BUG/MINOR: http-ana: fix a one-byte over-read in the client-side cookie parser
+  * BUG/MINOR: h3: don't use a block pointer to roll back a partial HTX conversion
+  * BUG/MINOR: h2: don't use a block pointer to roll back a partial HTX conversion
+  * BUG/MINOR: h1: report the right error position on authority/host mismatch
+  * BUG/MINOR: http-htx: check the trash allocation in http_scheme_based_normalize()
+  * BUG/MINOR: http: fix an out-of-bounds read in http_get_host_port() on empty host
+  * BUG/MINOR: http-fetch: fix a NULL channel dereference in smp_fetch_body()
+  * BUG/MEDIUM: http-fetch: reject a negative capture id in capture.{req,res}.hdr
+  * BUG/MEDIUM: http-fetch: don't parse a non-HTTP check buffer as an HTX message
+  * BUG/MINOR: http-htx: fix the length moved when removing a header value
+  * BUG/MEDIUM: mux-h1: Always adjust case for all outgoing headers as expected
+  * REORG: h1-htx: Move h1 headers map in h1-htx
+  * DEBUG: fd: catch access attempts to closed FDs
+  * BUG/MEDIUM: ssl: Handle non-application data record while splicing
+  * BUG/MEDIUM: ssl: Spell HAVE_VANILLA_OPENSSL correctly
+  * BUG/MEDIUM: proxy: protect "show errors" against backend deletion
+  * BUG/MINOR: resolvers: do not index resolvers names in the proxies
+  * BUG/MEDIUM: server: Properly check for streams before deletion
+  * BUG/MEDIUM: proxy: protect show backend against be deletion
+  * BUG/MEDIUM: proxy: protect "show servers ..." against backend deletion
+  * BUG/MEDIUM: proxy: protect "show servers ..." against server deletion
+  * DOC: remove outdated experimental mention on dynamic backends
+  * DOC: fix typo in "del ssl ech" command
+  * BUG/MINOR: sample: Fix bytes() when length it greater than remaining data
+  * BUG/MEDIUM: sample: Adjust sample size capacity after pointer shift for ltrim()
+  * BUG/MEDIUM: sample: Adjust sample size capacity after pointer shift for bytes()
+  * BUG/MEDIUM: net-helper: Adjust sample size capacity after pointer shift
+  * BUG/MINOR: mux-h1: Don't delay send if message with c-l was fully sent
+  * REGTESTS: protobuf: add regression test for nested vs flat paths
+  * BUG/MINOR: ssl: fix proxy lookup for show ssl sni
+  * BUG/MEDIUM: protobuf: fix nested path bypass in field lookup
+  * BUG/MEDIUM: protobuf: adjust sample size capacity after pointer shift
+  * BUG/MEDIUM: ssl-gencert: Don't forget to free memory when done
+  * DOC: stats: Document that stats admin is vulnerable to a CSRF attack
+  * BUG/MEDIUM: stats: Ensure that Origin is valid on POSTs
+  * BUG/MEDIUM: cache: reattach the row when a secondary entry is incomplete
+  * DOC: stats: document the per-proxy byte count fields in the CSV list
+  * MINOR: shctx: clamp shctx_row_data_get() reads against the offset
+  * BUG/MINOR: shctx: fix shctx_row_data_get() when offset exceeds a block
+  * BUG/MEDIUM: stats: subject "stats admin" accesses to "stats scope" filtering
+  * MINOR: stats: factor the proxy vs scope check into its own function
+  * BUG/MEDIUM: applet: Reenable reads in applet context if requesting a connection
+  * BUG/MINOR: hlua: Apply socket timeout on server side only
+  * MINOR: haterm: add note about QUIC usage on SSL port
+  * BUG/MINOR: http-conv: Make url-dec failed if no space for trailing null byte
+  * BUG/MINOR: stream: Fix custom max-retries initialization when setting backend
+  * REGTESTS: Improve script testing the set-timeout action
+  * BUG/MINOR: stream: Fix custom timeouts initialization when setting backend
+  * MEDIUM: htx: Be sure size of headers never exceed regular buffer on update
+  * MINOR: htx: Add a field to save the headers data size
+  * BUG/MEDIUM: chunk: Review chunks usage to not retrieve a large buffer by error
+  * MINOR: chunks: Add function to get a large/regular chunk depending on a buffer
+  * BUG/MINOR: sample: Fix a possible underflow on be2hex for large chunk size
+  * BUG/MEDIUM: tcpcheck: Add proxy used for healthcheck sections in proxies list
+  * BUG/MEDIUM: fd: Fix a deadlock when closing other tgroups fds
+  * BUG/MINOR: quic: ignore STREAM after MUX closure on BE side
+  * BUG/MEDIUM: mux_quic: complete stream shutdown for read channel
+  * MINOR: mux_quic: use separate error code for STOP_SENDING
+  * BUG/MEDIUM: mux_quic: do not free QCS if STOP_SENDING to sent
+  * BUG/MINOR: trace/quic_frame: use buf, not trace_buf in chunk_frm_appendf()
+  * MINOR: trace: always pretend to use args when disabled
+  * MINOR: compiler: add a macro to ignore all arguments
+  * CLEANUP: traces: get rid of a few rare empty args in TRACE calls
+  * BUILD: quic: workaround a gcc bug saying "maybe used uninitialized" when USE_TRACE=0
+  * BUG/MINOR: mux_quic: prevent multiple STOP_SENDING emission per stream
+  * BUG/MEDIUM: h3: fix parser desync on error with multiple frames
+
+-------------------------------------------------------------------
+Mon Jul 20 17:21:06 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 2.0.0+git1.99619c2:
+  * DOC: otel: filled in the ChangeLog for the 2.0.0 release
+  * VERSION: otel: bumped filter version to 2.0.0
+  * MINOR: otel: test: dumped the filter CLI state into the runner log
+  * MINOR: otel: added optional section name argument to the filter line
+  * MINOR: otel: created only the signals the YAML configuration provides
+  * DOC: otel: test: published the haterm-collected benchmark results
+  * MINOR: otel: test: added haterm as the default speed-test backend
+  * MINOR: otel: added optional context argument to 'config' keyword
+  * MINOR: otel: adapted the filter to the OTel C wrapper 3.0.0 API
+  * DOC: otel: added the ChangeLog with the 1.0.0 release entry
+
+-------------------------------------------------------------------
+Wed Jul 15 11:55:46 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update haproxy-opentelemetry to version 1.0.0+git0.7e491e4:
+  * VERSION: otel: bumped filter version to 1.0.0
+  * DOC: otel: required the OTel C wrapper version 2.2.1
+- use tag in the version format now
+
+-------------------------------------------------------------------
 Fri Jul 03 10:14:57 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version bfa018f:

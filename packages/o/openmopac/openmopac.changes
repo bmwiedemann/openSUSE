@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Fri May 22 10:01:31 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 23.2.5:
+  * Update README.md to fix Zenodo badge
+  * Version bump to 23.2.5
+  * Avoid out-of-bounds copies in API wrapper for natom<0
+  * Correctly initialize error handler in API calls
+  * Add API test for error handler recovery
+  * Add C++ compatibility to API header
+  * Update citation information & patch bump
+  * Fix example directory location in CMake packaging
+  * Increment patch level (23.2.3)
+  * Fix fragile command to get number of cores on Linux
+  * Update Mac GHA runner
+  * Update /examples/README.md (typo)
+  * Update /examples/README.md w/ further info
+  * Update README.md (clean-up & streamlining)
+  * Update README.md
+  * Add examples to repo and packaging
+  * Fix minor inconsistency in GRAD as a synonym for GRADIENTS
+  * Update patch version
+  * Fix RHF/UHF test reference data & remove case w/ SCF hysteresis
+  * Add RHF/UHF switch test for API
+  * Fix density matrix init in API, add support for RHF init of UHF
+  * Set RHF & UHF flags in API
+  * Update patch version
+  * Fix API dipole with frozen atoms
+  * Fix API PM6-D3H4 bug
+  * Fix API charge bug
+  * Add API test to detect charge & PM6-D3H4 bugs
+  * Change jsmol path to relative base URL
+  * Adjust format of error message
+  * Add time limit to MOZYME iter
+  * Add more suggestions to the SCF failure message
+  * Set no-convergence error flags for iter timeout
+  * Distinguish between PRECISE and PRECISION keywords
+  * Minor version bump to 23.2
+  * Fix loop bounds when checking for lattice vectors in API
+  * Remove last defunct references to Java/JMol
+  * Fix powershell command
+  * Switch to powershell to get # of cores in Windows CI
+  * Suppress time limit in ITER for CYCLES & BIGCYCLES
+  * Check (relative) time limit in iter
+  * Synchronize density calculation in mullik w/ iter
+  * Add missing variable declarations in mullik
+  * Fix typo in mpcsyb arguments
+  * Avoid use of mpack in mixed MOPAC/MOZYME code paths (mullik)
+  * Fix d orbitals in overlap matrix & add UHF case to mullik
+  * Move population matrix from global pb to local popmat
+  * Remove (unreliable) UHF barrier for MULLIK
+  * Update references for 2 tests that failed (probing nonequilibrium C-C distances)
+  * Narrow correction region & increase polynomial degree of correction to 7
+  * Regularize C-C correction, add derivative, & move to compfg
+  * Replace C-C step function correction with continuous correction
+  * Add QMMM support to MOZYME
+  * Update I parameters in PM6-ORG and remove out-of-model elements
+  * Adjust Intel installer CLI options
+  * Update Windows runner version
+  * Remove zero-electron barrier for gradients
+  * Install OpenBLAS through Ubuntu package manager
+  * Update linux GHA runner versions
+  * Clarify COSMO authorship
+  * Remove remaining unused COSMO arrays
+  * Remove cmat & ciint
+
+-------------------------------------------------------------------
 Wed May 21 11:18:56 UTC 2025 - Martin Pluskal <mpluskal@suse.com>
 
 - Regenerate obscpio archive without excluding hidden files 

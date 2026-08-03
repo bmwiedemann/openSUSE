@@ -17,21 +17,21 @@
 
 
 Name:           disorderfs
-Version:        0.5.11
+Version:        0.7.0
 Release:        0
 Summary:        FUSE filesystem that introduces non-determinism
 License:        GPL-3.0-or-later
 Group:          Development/Tools/Building
-URL:            https://packages.debian.org/sid/disorderfs
-Source0:        https://deb.debian.org/debian/pool/main/d/disorderfs/disorderfs_%{version}.orig.tar.bz2
-Source1:        https://reproducible-builds.org/_lfs/releases/disorderfs/disorderfs-%{version}.tar.bz2.asc
+URL:            https://salsa.debian.org/reproducible-builds/disorderfs
+Source0:        https://reproducible-builds.org/_lfs/releases/disorderfs/disorderfs-%{version}.tar.gz
+Source1:        https://reproducible-builds.org/_lfs/releases/disorderfs/disorderfs-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
 BuildRequires:  asciidoc
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  xsltproc
-BuildRequires:  pkgconfig(fuse)
-Requires:       fuse
+BuildRequires:  pkgconfig(fuse3)
+Requires:       fuse3
 
 %description
 disorderfs is an overlay FUSE filesystem that introduces non-determinism into
@@ -40,9 +40,10 @@ directory entries are read. This is useful for detecting non-determinism
 in the build process.
 
 %prep
-%setup -q
+%setup -q -c
 
 %build
+export CXXFLAGS="%{optflags}"
 make %{?_smp_mflags}
 
 %install

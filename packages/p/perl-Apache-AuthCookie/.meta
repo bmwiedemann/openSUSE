@@ -13,5 +13,4 @@ the user.
 
 All you have to do is write a custom module that inherits from
 AuthCookie.</description>
-  <devel project="devel:languages:perl" package="perl-Apache-AuthCookie"/>
 </package>

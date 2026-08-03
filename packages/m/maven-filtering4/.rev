@@ -23,4 +23,12 @@
     <comment>Be gracious with binary files among the resources to filter</comment>
     <requestid>1316612</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>999bbee02801b9406461847cde68436e</srcmd5>
+    <version>4.0.0~20260707.git2d20dde</version>
+    <time>1784126091</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 20260707 git checkout</comment>
+    <requestid>1365422</requestid>
+  </revision>
 </revisionlist>

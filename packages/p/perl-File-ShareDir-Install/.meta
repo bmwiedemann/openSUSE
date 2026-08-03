@@ -7,5 +7,4 @@ allows you to locate these files after installation.
 It is a port the Module::Install::Share manpage to the ExtUtils::MakeMaker
 manpage with the improvement of only installing the files you want; '.svn'
 and other source-control junk will be ignored.</description>
-  <devel project="devel:languages:perl" package="perl-File-ShareDir-Install"/>
 </package>

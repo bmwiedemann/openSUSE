@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul  3 15:37:43 UTC 2026 - Radoslav Kolev <radoslav.kolev@suse.com>
+
+- Adjust openSUSE key to current in openSUSE-build-key
+- remove references to openSUSE-2022 key, as it no longer exists
+- Properly support SLE 16.x+, use suse_version instead of sle_version
+
+-------------------------------------------------------------------
 Fri Sep 26 11:52:21 UTC 2025 - Max Lin <mlin@suse.com>
 
 - Adjust keys according to the current openSUSE-build-key

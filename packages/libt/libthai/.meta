@@ -5,5 +5,4 @@ developers' tasks to incorporate Thai language support in their
 applications. It includes important Thai-specific functions, such as
 word breaking, input and output methods, and basic character and string
 support.</description>
-  <devel project="GNOME:Factory" package="libthai"/>
 </package>

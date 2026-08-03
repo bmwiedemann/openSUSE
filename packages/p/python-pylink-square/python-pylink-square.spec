@@ -1,7 +1,7 @@
 #
 # spec file for package python-pylink-square
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pylink-square
-Version:        1.4.0
+Version:        2.0.1
 Release:        0
 Summary:        Python interface for SEGGER J-Link
 License:        Apache-2.0
 URL:            http://www.github.com/Square/pylink
-Source:         https://files.pythonhosted.org/packages/source/p/pylink-square/pylink-square-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/pylink-square/pylink_square-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -46,9 +46,7 @@ BuildArch:      noarch
 Python interface for SEGGER J-Link.
 
 %prep
-%setup -q -n pylink-square-%{version}
-sed -i 's/assertEquals/assertEqual/g' tests/unit/test_library.py
-sed -i 's/\.called_once_with/.assert_called_once_with/g' tests/unit/test_jlink.py
+%setup -q -n pylink_square-%{version}
 
 %build
 %pyproject_wheel

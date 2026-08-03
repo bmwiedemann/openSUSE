@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu Jul 30 03:01:16 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.36.2:
+  ## Dependency changes
+  * Bump the minimal signxml version to 5.1.0 (in the [etsi] group) to
+    accommodate its point-in-time validation API.
+  * Relax upper bound for uharfbuzz to <0.56.0.
+  * Drop the direct dependency on pyyaml, which was no longer used.
+  * Relax upper bound for aiohttp to <3.15.
+  ## Signing
+  * Support signing with ML-DSA through the PKCS#11 signer.
+  ## Validation
+  * Realign the EU List of Trusted Lists anchor after its recent re-anchoring
+    by OJEU publication, and allow bootstrapping against a specific anchor.
+  * Improve error messages for invalid trusted-list signatures.
+  ## Bugs fixed
+  * Prevent new signature fields from reusing old signature objects during
+    difference analysis.
+  * Tolerate space-padded offsets in classic cross-reference tables in
+    non-strict mode, and raise an explicit error for invalid xref operation
+    markers in strict mode.
+  * Provide clearer errors when parsing malformed numbers in cross-reference
+    tables.
+  * Fix unintended use of naive datetime in digest algorithm policy check.
+  * Fix Configurable field introspection for PEP 604 union annotations.
+  * Fix ISO 32000-1 §7.4.2 odd-digit handling in ASCIIHexDecode.
+  * Handle fields with /AS in difference analysis.
+  * Drop unsupported subfilters while enumerating signature fields, i.e.
+    before validation.
+  * Sync font size between style and FontEngine. This also promotes the
+    font_size field to FontEngine.
+  * When parsing XMP, auto-promote URIs serialised as text properties to URI
+    status when they appear as text in an XML element.
+  * When parsing XMP, make sure that XML attributes that are part of RDF/XML
+    meta-syntax are not accidentally treated as semantic property attributes
+    at the XMP level.
+
+-------------------------------------------------------------------
 Wed Jun  3 04:03:45 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.35.1:

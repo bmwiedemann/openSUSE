@@ -24,6 +24,7 @@ Mon May 11 08:37:41 UTC 2026 - Tina Müller <timueller+perl@suse.de>
           - support for RFC 8702 RSA-PSS-SHAKE128/256 and ECDSA-SHAKE128/256
           - support for FRP256v1 elliptic-curve
           - bundled libtomcrypt update branch:develop (commit: 8b5af49b 2026-05-06)
+          - CVE-2026-41565 bsc#1266804
 
   0.088   2026-04-23
           - Crypt::KeyDerivation - new functions: pbkdf1_openssl, bcrypt_pbkdf, scrypt_pbkdf, argon2_pbkdf
@@ -32,6 +33,7 @@ Mon May 11 08:37:41 UTC 2026 - Tina Müller <timueller+perl@suse.de>
           - bundled libtommath update branch:develop (commit: ae40a87 2026-04-20)
           - security fix CVE-2026-41564 https://github.com/DCIT/perl-CryptX/security/advisories/GHSA-24c2-gp6c-24c6
             bsc#1262697
+          - CVE-2026-41565 bsc#1266804
 
 -------------------------------------------------------------------
 Wed Jun 11 14:55:45 UTC 2025 - Tina Müller <timueller+perl@suse.de>

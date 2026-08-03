@@ -18,7 +18,7 @@
 
 
 Name:           asciinema
-Version:        3.2.0
+Version:        3.2.1
 Release:        0
 Summary:        Terminal session recorder
 License:        GPL-3.0-or-later

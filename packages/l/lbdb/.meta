@@ -12,5 +12,4 @@ To use the fetch address feature, put the following lines in your
 To use the database in mutt, put the following line into your .muttrc:
 
 set query_command=&quot;lbdbq %s&quot;</description>
-  <devel project="devel:openSUSE:Factory" package="lbdb"/>
 </package>

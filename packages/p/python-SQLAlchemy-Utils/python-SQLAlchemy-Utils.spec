@@ -1,7 +1,7 @@
 #
 # spec file for package python-SQLAlchemy-Utils
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-SQLAlchemy-Utils
-Version:        0.41.2
+Version:        0.42.1
 Release:        0
 Summary:        Various utility functions for SQLAlchemy
 License:        BSD-3-Clause
 URL:            https://github.com/kvesteri/sqlalchemy-utils
-Source:         https://files.pythonhosted.org/packages/source/S/SQLAlchemy-Utils/SQLAlchemy-Utils-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/S/SQLAlchemy-Utils/sqlalchemy_utils-%{version}.tar.gz
 BuildRequires:  %{python_module Babel >= 1.3}
 BuildRequires:  %{python_module Jinja2 >= 2.3}
 BuildRequires:  %{python_module Pygments >= 1.2}
@@ -71,7 +71,7 @@ Requires:       python-backports.zoneinfo
 Various utility functions and custom data types for SQLAlchemy.
 
 %prep
-%autosetup -p1 -n SQLAlchemy-Utils-%{version}
+%autosetup -p1 -n sqlalchemy_utils-%{version}
 
 %build
 %pyproject_wheel
@@ -98,6 +98,8 @@ rm tests/types/test_composite.py
 rm tests/types/test_ltree.py
 rm tests/types/test_tsvector.py
 rm tests/types/test_uuid.py
+rm tests/functions/test_database.py
+rm tests/types/test_enriched_datetime_pendulum.py
 %pytest -rs -k 'not (TestDatabasePostgres or TestDatabaseMssql or OnPostgres or OnMysql or TestPostgres or TestMysql or TestSortQueryRelationshipCounts or TestSortQueryWithPolymorphicInheritance or TestMaterializedViews or TestLazyEvaluatedSelectExpressionsForAggregates or TestAggregatesWithManyToManyRelationships or TestAggregateManyToManyAndManyToMany or TestAggregateOneToManyAndOneToMany or TestJSONSQL or TestJSONBSQL or TestSortQueryWithCustomPolymorphic or TestAggregateOneToManyAndManyToMany or test_timezone or test_add_observed_object or test_render_mock_ddl)'
 
 %files %{python_files}

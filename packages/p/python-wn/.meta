@@ -1,5 +1,6 @@
 <package name="python-wn" project="openSUSE:Factory">
   <title>Wordnet interface library</title>
   <description>Wn is a Python library for exploring information in wordnets.</description>
+  <devel project="Education" package="python-wn"/>
   <url>https://github.com/goodmami/wn</url>
 </package>

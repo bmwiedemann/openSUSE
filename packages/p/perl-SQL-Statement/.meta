@@ -17,5 +17,4 @@ There are three main uses for SQL::Statement. One or another (hopefully not
 all) may be irrelevant for your needs: 1) to access and manipulate data in
 CSV, XML, and other formats 2) to build your own DBD for a new data source
 3) to parse and examine the structure of SQL statements.</description>
-  <devel project="devel:languages:perl" package="perl-SQL-Statement"/>
 </package>

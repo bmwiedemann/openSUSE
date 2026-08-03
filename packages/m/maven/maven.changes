@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Sun Jul 12 05:43:16 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream preview version 3.10.0-rc-1
+- Notable Changes
+  * New Features and Improvements
+    + use Resolver 2.x
+    + allow defining user-wide and installation-wide Maven
+      extensions
+    + Reproducible Builds is active by default
+    + promote session.topDirectory, session.rootDirectory and
+      project.rootDirectory properties
+    + version range filtering
+    + allow defining user relocations
+    + allow using transitive dependency manager
+    + in a failed build limit reactor summary to only failed modules
+    + new CLI options for fine-grained update policy control:
+      -UA (force artifact updates only),
+      -UM (force metadata updates only),
+      --artifacts-update-policy=<policy>,
+      --metadata-update-policy=<policy>
+  * New API and Updates for Maven Plugins
+    + upgrade SLF4J to 2.x
+    + promote MessageBuilderFactory service for colored message
+      support
+    + promote java version in JavaToolchain
+- Potentially Breaking Core Changes (if migrating from 3.9.x)
+  * Classpath ordering change
+    + Dependency classpath ordering changed from "pre-order"
+      (depth-first) to "level-order" (breadth-first), aligning with
+      Maven 4 behavior and Resolver 2.x defaults.
+    + To restore the previous behavior, add
+      -Daether.system.dependencyVisitor=preOrder to your Maven
+      invocation.
+  * Changes in the Super POM:
+    + removed deprecated release-profile; each project should have
+      its own release profile
+    + removed plugin management; each project should have its own
+      plugin management
+    + set default values for project.build.sourceEncoding and
+      project.reporting.outputEncoding to UTF-8
+- Modified patches:
+  * 0001-Adapt-mvn-script.patch
+  * 0002-Invoke-logback-via-reflection.patch
+  * 0003-Remove-dependency-on-powermock.patch
+  * 0004-Fix-build-with-qdox-2.0.1.patch
+  * 0005-Reproducible-maven.build.timestamp.patch
+    + rebase
+- Added patches:
+  * 0006-Plexus-utils-4.x-Plexus-xml-3.x-and-javax.annotation.patch
+    + use plexus-utils 4.0.2 with plexus-xml 3.0.2 instead of
+      plexus-utils 3.6.1
+  * 0007-Do-not-depend-on-maven-resolver-supplier-mvn3.patch
+    + apply when building the non-distributed maven-bootstrap
+      flavour
+    + avoid cycle between maven-resolver-supplier-mvn3 from
+      maven-resolver and maven-resolver-provider from this build
+      that are the dependencies of each other
+  * jline-4.1.x.patch
+    + apply when building against jline3 >= 4.1
+    + implements a new interace function
+
+-------------------------------------------------------------------
 Mon May 18 09:39:09 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 3.9.16
@@ -465,8 +527,8 @@ Wed May  3 11:44:20 UTC 2023 - Fridrich Strba <fstrba@suse.com>
     + Cutting ties with Maven 2 backward compatibility, preparing
       grounds for Maven 4.
     + General fixes and improvements.
-    + The Maven Resolver transport has changed from Wagon to “native
-      HTTP”, see Resolver Transport guide.
+    + The Maven Resolver transport has changed from Wagon to "native
+      HTTP", see Resolver Transport guide.
     + Maven 2.x was auto-injecting an ancient version of
       plexus-utils dependency into the plugin classpath, and Maven
       3.x continued doing this to preserve backward compatibility.

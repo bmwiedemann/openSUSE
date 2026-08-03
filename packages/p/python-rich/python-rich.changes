@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue May 19 21:51:38 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 15.0.0:
+  * Breaking change: Dropped support for Python3.8
+  * Fixed empty print ignoring the `end` parameter
+  * Fixed `Text.from_ansi` removing newlines
+  * Fixed `FileProxy.isatty` not proxying
+  * Fixed inline code in Markdown tables cells
+  * Improved import time with lazy loading
+  * Changed link id generation to avoid random number generation
+    at runtime https://github.com/Textualize/rich/pull/3845
+
+-------------------------------------------------------------------
 Sat Feb 28 08:59:11 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 14.3.3:

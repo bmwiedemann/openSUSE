@@ -11,4 +11,20 @@ Made because vkBasalt is unmaintained and the only other option is ReShade -&gt;
 It is also one of the add-ons used in Goverlay that are missing in the distro.</comment>
     <requestid>1357944</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b542aa445da7c010481b4afebd4737d2</srcmd5>
+    <version>0.0.7</version>
+    <time>1782916569</time>
+    <user>anag_factory</user>
+    <comment>- Update to v0.0.7:
+  * Flatpak Support: Added Flatpak manifest and CI/CD integration.
+  * Layer Improvements: Implemented optional $LIB-relative library_path support.
+  * Environment Configuration: Added _FILE suffix support to CONFIG_PATH.
+  * Path Expansion: Added support for expanding paths using ~, $HOME, and $USER.
+  * PKGBUILD: Updated reference PKGBUILD.
+  * Fix RPMLINT warning &quot;unstripped-binary-or-object&quot; for libVkLayer_vksumi.so
+    by ensuring build system flags/stripping are properly handled during
+    %build/%install.</comment>
+    <requestid>1362747</requestid>
+  </revision>
 </revisionlist>

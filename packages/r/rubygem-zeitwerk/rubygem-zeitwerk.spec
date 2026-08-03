@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-zeitwerk
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,13 +24,13 @@
 #
 
 Name:           rubygem-zeitwerk
-Version:        2.7.1
+Version:        2.8.2
 Release:        0
 %define mod_name zeitwerk
 %define mod_full_name %{mod_name}-%{version}
-BuildRequires:  ruby-macros >= 5
 BuildRequires:  %{ruby >= 3.2}
 BuildRequires:  %{rubygem gem2rpm}
+BuildRequires:  ruby-macros >= 5
 URL:            https://github.com/fxn/zeitwerk
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml

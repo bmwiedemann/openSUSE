@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 28 11:25:29 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.18.29:
+  * fix(secrets): do not remove synchronized fields and readoly
+    fields
+
+-------------------------------------------------------------------
 Thu Jul 23 06:03:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.18.28:

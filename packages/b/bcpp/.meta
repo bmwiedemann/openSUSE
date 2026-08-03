@@ -2,5 +2,6 @@
   <title>Beautify C++ programs</title>
   <description>bcpp indents C/C++ source programs, replacing tabs with spaces or the reverse.
 Unlike indent, it does (by design) not attempt to wrap long statements.</description>
+  <devel project="devel:tools" package="bcpp"/>
   <url>https://invisible-island.net/bcpp/bcpp.html</url>
 </package>

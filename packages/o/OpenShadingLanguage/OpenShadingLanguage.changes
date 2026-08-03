@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 13 09:36:51 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Add workaround for llvm-as and llvm-link not being handled by
+  alts after the the switch.
+
+-------------------------------------------------------------------
 Sun May 31 16:53:49 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - restore pybind11 helper to make cmake find the 311 library

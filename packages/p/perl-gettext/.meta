@@ -16,5 +16,4 @@ domain.
 
 _bindtextdomain(domain, dirname)_ instructs the retrieval functions to look
 for the databases belonging to domain 'domain' in the directory 'dirname'</description>
-  <devel project="devel:languages:perl" package="perl-gettext"/>
 </package>

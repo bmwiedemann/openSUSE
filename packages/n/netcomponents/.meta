@@ -12,5 +12,4 @@ when possible, but also provide access to the fundamental protocols
 where applicable so that the programmer can construct custom
 implementations (for example, the TFTP packet classes and the TFTP
 packet send and receive methods are exposed).</description>
-  <devel project="Java:packages" package="netcomponents"/>
 </package>

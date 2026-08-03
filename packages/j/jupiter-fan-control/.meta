@@ -1,4 +1,5 @@
 <package name="jupiter-fan-control" project="openSUSE:Factory">
   <title>Jupiter Fan Control</title>
   <description>Jupiter fan controller</description>
+  <devel project="hardware" package="jupiter-fan-control"/>
 </package>

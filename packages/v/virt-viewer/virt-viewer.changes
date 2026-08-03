@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 13 12:41:03 UTC 2026 - JS <obs.coke518@passinbox.com>
+
+- Build with SPICE on openSUSE. Remain disabled on SLES16.
+
+-------------------------------------------------------------------
 Thu Jul  2 10:26:17 MDT 2026 - carnold@suse.com
 
 - Add BuildRequires for python3-base

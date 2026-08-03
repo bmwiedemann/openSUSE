@@ -22,5 +22,4 @@ function checks for a couple of optional methods. If an object provides a
 method named 'clone_self', it is called and the result returned without
 further processing. Alternately, if an object provides a method named
 'clone_init', it is called on the copied object before it is returned.</description>
-  <devel project="devel:languages:perl" package="perl-Clone-PP"/>
 </package>

@@ -221,4 +221,12 @@
 - Fix version which is shown with `tea --version` (forwarded request 1366010 from rrahl0)</comment>
     <requestid>1366011</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>785f7ad516a3ba8d45300b283ce63f97</srcmd5>
+    <version>0.15.0</version>
+    <time>1785504471</time>
+    <user>dimstar_suse</user>
+    <comment>update to 0.15.0 (forwarded request 1368118 from ojkastl_buildservice)</comment>
+    <requestid>1368426</requestid>
+  </revision>
 </revisionlist>

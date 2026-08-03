@@ -7,5 +7,4 @@ recognize matches to the grammar. In addition to the parser generator
 itself, JavaCC provides other standard capabilities related to parser
 generation such as tree building (via a tool called JJTree included
 with JavaCC), actions, debugging, etc.</description>
-  <devel project="Java:packages" package="javacc"/>
 </package>

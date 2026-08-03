@@ -24,6 +24,5 @@ multi-megabyte .pm files that chew up a lot of memory needlessly.
 Author:
 -------
     Adam Kennedy &lt;adamk@cpan.org&gt;</description>
-  <devel project="devel:languages:perl" package="perl-File-ShareDir"/>
   <url>http://search.cpan.org/perldoc?File::ShareDir</url>
 </package>

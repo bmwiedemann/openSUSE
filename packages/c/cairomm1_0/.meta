@@ -3,6 +3,5 @@
   <description>This package provides a C++ interface for Cairo.
 
 </description>
-  <devel project="GNOME:Factory" package="cairomm1_0"/>
   <url>http://cairographics.org</url>
 </package>

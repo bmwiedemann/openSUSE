@@ -71,4 +71,12 @@
     <comment>Fix dependency</comment>
     <requestid>1362167</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>61d790d442463ce2c8da531a24f9af75</srcmd5>
+    <version>3.11.1</version>
+    <time>1785504461</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1368416</requestid>
+  </revision>
 </revisionlist>

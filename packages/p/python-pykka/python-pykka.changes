@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr  8 21:32:15 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.4.2:
+  * fix: Break reference cycle between Actor and ActorRef
+
+-------------------------------------------------------------------
 Tue Jan 27 07:09:55 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.4.1:

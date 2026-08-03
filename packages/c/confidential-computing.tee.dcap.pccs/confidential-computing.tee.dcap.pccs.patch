@@ -1,0 +1,205 @@
+---
+ service/config/default.json  |   49 ------------------------------------------
+ service/config/upstream.json |   50 +++++++++++++++++++++++++++++++++++++++++++
+ service/pccs_server.js       |    4 +--
+ service/utils/Logger.js      |    7 ++----
+ service/utils/apputil.js     |   14 +++++++-----
+ 5 files changed, 64 insertions(+), 60 deletions(-)
+
+--- a/service/config/default.json
++++ b/service/config/default.json
+@@ -1,49 +0,0 @@
+-{
+-    "HTTPS_PORT" : 8081,
+-    "hosts" : "127.0.0.1",
+-    "uri": "https://api.trustedservices.intel.com/sgx/certification/v4/",
+-    "ApiKey": "",
+-    "proxy" : "",
+-    "RefreshSchedule": "0 0 1 * * *",
+-    "UserTokenHash" : "",
+-    "AdminTokenHash" : "",
+-    "CachingFillMode" : "LAZY",
+-    "OPENSSL_FIPS_MODE" : false,
+-    "LogLevel" : "info",
+-    "DB_CONFIG" : "sqlite",
+-    "sqlite" : {
+-        "options" : {
+-            "dialect": "sqlite",
+-            "define": {
+-                "freezeTableName": true
+-            },
+-            "logging" : false, 
+-            "storage": "pckcache.db"
+-        }
+-    }, 
+-    //"mysql" : {   // This config section is used only if DB_CONFIG == "mysql".
+-    //              // Uncomment when using with MySQL and adjust the values to match your DB setup.
+-    //    "database" : "pckcache",
+-    //    "username" : "<Your MySQL username>",
+-    //    "password" : "<Your MySQL password>",
+-    //    "options" : {
+-    //        "host": "localhost",
+-    //        "port": "3306",
+-    //        "dialect": "mysql",
+-    //        "pool": {
+-    //            "max": 5,
+-    //            "min": 0,
+-    //            "acquire": 30000,
+-    //            "idle": 10000
+-    //        },
+-    //        "define": {
+-    //            "freezeTableName": true
+-    //        },
+-    //        "logging" : false
+-    //    },
+-    //    "ssl":{
+-    //        "required": false,
+-    //        "ca":"/if_ssl_is_required/path/to/your_ssl_ca"
+-    //    }
+-    //}
+-}
+--- /dev/null
++++ b/service/config/upstream.json
+@@ -0,0 +1,50 @@
++{
++    "HTTPS_PORT" : 8081,
++    "HTTPS_private_pem" : "/var/lib/pccs/private.pem",
++    "HTTPS_file_crt" : "/var/lib/pccs/file.crt",
++    "hosts" : "127.0.0.1",
++    "uri": "https://api.trustedservices.intel.com/sgx/certification/v4/",
++    "ApiKey": "",
++    "proxy" : "",
++    "RefreshSchedule": "0 0 1 * * *",
++    "UserTokenHash" : "",
++    "AdminTokenHash" : "",
++    "CachingFillMode" : "LAZY",
++    "OPENSSL_FIPS_MODE" : false,
++    "LogLevel" : "info",
++    "DB_CONFIG" : "sqlite",
++    "sqlite" : {
++        "options" : {
++            "dialect": "sqlite",
++            "define": {
++                "freezeTableName": true
++            },
++            "logging" : true, 
++            "storage": "/var/lib/pccs/pckcache.db"
++        }
++    }, 
++    "mysql" : {
++        "database" : "pckcache",
++        "username" : "<Your MySQL username>",
++        "password" : "<Your MySQL password>",
++        "options" : {
++            "host": "localhost",
++            "port": "3306",
++            "dialect": "mysql",
++            "pool": {
++                "max": 5,
++                "min": 0,
++                "acquire": 30000,
++                "idle": 10000
++            },
++            "define": {
++                "freezeTableName": true
++            },
++            "logging" : true
++        },
++        "ssl":{
++            "required": false,
++            "ca":"/if_ssl_is_required/path/to/your_ssl_ca"
++        }
++    }
++}
+--- a/service/pccs_server.js
++++ b/service/pccs_server.js
+@@ -130,8 +130,8 @@ function startHttpsServer() {
+   let privateKey;
+   let certificate;
+   try {
+-    privateKey = fs.readFileSync('./ssl_key/private.pem', 'utf8');
+-    certificate = fs.readFileSync('./ssl_key/file.crt', 'utf8');
++    privateKey = fs.readFileSync(Config.get('HTTPS_private_pem'), 'utf8');
++    certificate = fs.readFileSync(Config.get('HTTPS_file_crt'), 'utf8');
+   } catch (err) {
+     logger.error('The private key or certificate for HTTPS server is missing.');
+     logger.endAndExitProcess();
+--- a/service/utils/Logger.js
++++ b/service/utils/Logger.js
+@@ -35,8 +35,7 @@ import path from 'path';
+ import clshooked from 'cls-hooked';
+ import * as fs from 'fs';
+ import { parseAndModifyUrl } from "../pcs_client/pcs_client.js";
+-import { fileURLToPath } from 'url';
+-const __dirname = path.dirname(fileURLToPath(import.meta.url));
++import os from 'os';
+ const { createLogger, format, transports } = winston;
+ const { combine, timestamp, printf } = format;
+ 
+@@ -51,7 +50,7 @@ export function formatLogMessage (tokens
+ const options = {
+   file: {
+     level: Config.has('LogLevel') ? Config.get('LogLevel') : 'info',
+-    filename: __dirname + `/../logs/pccs_server.log`,
++    filename: os.homedir() + '/logs/pccs_server.log',
+     handleExceptions: true,
+     json: false,
+     colorize: true,
+@@ -109,7 +108,7 @@ process.on('SIGINT', () => {
+ });
+ 
+ // Create ./logs if it doesn't exist
+-fs.mkdirSync('./logs', { recursive: true });
++fs.mkdirSync(os.homedir() + '/logs', { recursive: true });
+ 
+ // Add a stopped flag
+ let stopped = false;
+--- a/service/utils/apputil.js
++++ b/service/utils/apputil.js
+@@ -35,6 +35,10 @@ import { sequelize } from '../dao/models
+ import { Umzug, SequelizeStorage } from 'umzug';
+ import * as fs from 'fs';
+ import url from 'url';
++import path from 'path';
++import {fileURLToPath} from 'url';
++const __filename = fileURLToPath(import.meta.url);
++const __dirname = path.dirname(__filename);
+ 
+ export function get_api_version_from_url(url) {
+   if (!url) return 0;
+@@ -84,14 +88,14 @@ async function test_db_status() {
+ }
+ 
+ async function db_migration() {
+-  const migrations = fs.readdirSync('./migrations').map(name => {
+-    const path = `./migrations/${name}`;
++  const migrations = fs.readdirSync(__dirname + '/../migrations').map(name => {
++    const my_path = `${__dirname}/..//migrations/${name}`;
+ 
+     return {
+       name,
+       up: async () => {
+         if (name.endsWith('.up.sql')) {
+-          const sqls = fs.readFileSync(path, 'utf-8').split(';');
++          const sqls = fs.readFileSync(my_path, 'utf-8').split(';');
+           for (const sql of sqls) {
+             if (sql.trim()) {
+               await sequelize.query(sql);  // Await ensures each query completes before the next begins.
+@@ -99,7 +103,7 @@ async function db_migration() {
+             }
+           }
+         } else if (name.endsWith('.js')){
+-          const migration = await import(url.pathToFileURL(path));
++          const migration = await import(url.pathToFileURL(my_path));
+           return migration.default.up(sequelize);
+         }
+       },
+@@ -115,7 +119,7 @@ async function db_migration() {
+             return Promise.all(queries);
+           }
+         } else if (name.endsWith('.js')) {
+-          const migration = await import(url.pathToFileURL(path));
++          const migration = await import(url.pathToFileURL(my_path));
+           return migration.default.down(sequelize);
+         }
+       },

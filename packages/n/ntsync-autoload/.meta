@@ -4,5 +4,6 @@
 
 The module allows wine to handle the translations of some Windows specific
 primitives in a more efficient way.</description>
+  <devel project="Emulators:Wine" package="ntsync-autoload"/>
   <url>https://www.opensuse.org/</url>
 </package>

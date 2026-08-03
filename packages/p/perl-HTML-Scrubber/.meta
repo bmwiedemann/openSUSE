@@ -6,5 +6,4 @@ fashion, then this module is for you.
 I wasn't satisfied with HTML::Sanitizer because it is based on
 HTML::TreeBuilder, so I thought I'd write something similar that works
 directly with HTML::Parser.</description>
-  <devel project="devel:languages:perl" package="perl-HTML-Scrubber"/>
 </package>

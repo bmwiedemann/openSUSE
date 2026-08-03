@@ -18,9 +18,9 @@
 Name:           impala
 Version:        0.7.4
 Release:        0
-Summary:        TUI for managing wifi on Linux 
-License:        GPL-3.0+
-Url:            https://github.com/pythops/impala
+Summary:        TUI for managing wifi on Linux
+License:        GPL-3.0-or-later
+URL:            https://github.com/pythops/impala
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 BuildRequires:  cargo
@@ -48,4 +48,3 @@ TUI for managing wifi on Linux.
 %{_bindir}/%{name}
 
 %changelog
-

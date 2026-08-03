@@ -1,0 +1,6 @@
+<package name="libubootenv" project="openSUSE:Factory">
+  <title>Replacement for fw_printenv/setenv utilities provided by U-Boot</title>
+  <description>Hardware-independent replacement for fw_printenv/setenv utilities
+provided by U-Boot.</description>
+  <url>https://github.com/sbabic/libubootenv</url>
+</package>

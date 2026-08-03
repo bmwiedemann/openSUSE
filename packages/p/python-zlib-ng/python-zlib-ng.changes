@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Mar 24 15:21:22 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.0:
+  * Updated bundled zlib-ng to 2.2.5.
+  * Python 3.14 is supported.
+  * Python 3.8 and 3.9 are no longer supported.
+  * Fix an issue where flushing using igzip_threaded caused a
+    gzip end of stream and started a new gzip stream. In essence
+    creating a concatenated gzip stream. Now it is in concordance
+    with how single threaded gzip streams are flushed using
+    Z_SYNC_FLUSH.
+  * Switched to setuptools-scm for building the package rather
+    than versioningit.
+  * Test files are added to the source distribution.
+  * Fix an issue where some tests failed because they ignored
+    PYTHONPATH.
+
+-------------------------------------------------------------------
 Fri Nov 22 17:33:04 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.5.1:

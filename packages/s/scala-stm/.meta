@@ -12,6 +12,5 @@ maps, and we also have an easier and safer replacement
 for wait and notifyAll.
 
 </description>
-  <devel project="Java:packages" package="scala-stm"/>
   <url>http://nbronson.github.io/scala-stm/</url>
 </package>

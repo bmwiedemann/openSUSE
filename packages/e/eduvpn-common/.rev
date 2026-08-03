@@ -31,4 +31,12 @@
     <comment>version update to 5.0.2 (forwarded request 1349371 from reneum)</comment>
     <requestid>1349373</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>abe06f0d55584241b330a1564acc0fb4</srcmd5>
+    <version>5.0.3</version>
+    <time>1785504433</time>
+    <user>dimstar_suse</user>
+    <comment>Modify .changes as in declined #1368355 (forwarded request 1368390 from reneum)</comment>
+    <requestid>1368391</requestid>
+  </revision>
 </revisionlist>

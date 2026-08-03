@@ -884,4 +884,27 @@
     0.52.0-nightly.20260715.gfa975395b</comment>
     <requestid>1367470</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>ae6cc72ce0dfc8e2dcde89a43260f347</srcmd5>
+    <version>0.53.0</version>
+    <time>1785504615</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.53.0:
+  * fix(core,a2a): group cancelled tool responses and coalesce
+    consecutive roles to prevent 400 Bad Request
+  * feat(caretaker-triage): implement LLM triage orchestrator and
+    container build
+  * refactor(cli): align macOS permissive Seatbelt profiles with
+    deny-default model
+  * fix(core): mitigate infinite ReAct loops and prompt injection
+    loops
+  * fix(a2a-server): enforce workspace trust and task isolation
+    to prevent RCE
+  * fix(core): sequentially verify cached credentials and restore
+    GOOGLE_APPLICATION_CREDENTIALS fallback
+  * feat(evals): add eval coverage report command
+  * **Full Changelog**: https://github.com/google-gemini/gemini-
+    cli/compare/v0.52.0...v0.53.0</comment>
+    <requestid>1368493</requestid>
+  </revision>
 </revisionlist>

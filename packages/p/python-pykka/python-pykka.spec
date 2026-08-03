@@ -20,7 +20,7 @@
 %define modname pykka
 %define skip_python36 1
 Name:           python-pykka
-Version:        4.4.1
+Version:        4.4.2
 Release:        0
 Summary:        A Python implementation of the actor model
 License:        Apache-2.0

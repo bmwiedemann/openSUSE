@@ -1599,4 +1599,12 @@
   * docs: document output capture and mcp (#3595) (forwarded request 1366402 from develop7)</comment>
     <requestid>1366403</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>66b0a6f5c6ddf86a7cbe4d7f4a647bb8</srcmd5>
+    <version>18.18.1</version>
+    <time>1785255579</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 18.18.1: (forwarded request 1368193 from develop7)</comment>
+    <requestid>1368194</requestid>
+  </revision>
 </revisionlist>

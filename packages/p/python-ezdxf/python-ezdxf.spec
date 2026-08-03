@@ -18,12 +18,26 @@
 
 %define packagename ezdxf
 Name:           python-ezdxf
-Version:        1.4.3
+Version:        1.4.4
 Release:        0
 Summary:        Python package for manipulating DXF drawings
 License:        MIT
 URL:            https://ezdxf.mozman.at/
 Source:         https://github.com/mozman/ezdxf/archive/v%{version}.tar.gz#/%{packagename}-%{version}.tar.gz
+BuildRequires:  %{python_module fonttools}
+BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pyparsing >= 2.0.1}
+BuildRequires:  %{python_module typing_extensions >= 4.6.0}
+Requires:       python-fonttools
+Requires:       python-numpy
+Requires:       python-pyparsing >= 2.0.1
+Requires:       python-typing_extensions >= 4.6.0
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+Recommends:     python-Pillow
+Recommends:     python-PyMuPDF >= 1.20.0
+Recommends:     python-matplotlib
+Recommends:     python-qt5
 # SECTION setup requirements
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module pip}
@@ -33,24 +47,10 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # /SECTION
 # SECTION test requirements
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module matplotlib}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module qt5}
 # /SECTION
-BuildRequires:  %{python_module pyparsing >= 2.0.1}
-BuildRequires:  %{python_module fonttools}
-BuildRequires:  %{python_module numpy}
-BuildRequires:  %{python_module typing_extensions >= 4.6.0}
-Requires:       python-fonttools
-Requires:       python-numpy
-Requires:       python-pyparsing >= 2.0.1
-Requires:       python-typing_extensions >= 4.6.0
-Recommends:     python-Pillow
-Recommends:     python-PyMuPDF >= 1.20.0
-Recommends:     python-matplotlib
-Recommends:     python-qt5
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 %python_subpackages
 
 %description

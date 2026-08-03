@@ -25,6 +25,7 @@ Source0: %{name}-%{version}.tar.xz
 Source10: package-lock.json
 Source11: node_modules.spec.inc
 patch10: load-css-overrides.patch
+patch11: esbuild-ppc64.patch
 
 %include %_sourcedir/node_modules.spec.inc
 
@@ -83,6 +84,7 @@ Cockpit Snapshots module for interacting with Snapper snapshots
 %prep
 %setup -q -n %{name}-%{version}
 %patch -P 10 -p1
+%patch -P 11 -p1
 
 rm -rf node_modules
 rm -f package-lock.json

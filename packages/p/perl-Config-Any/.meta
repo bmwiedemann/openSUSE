@@ -13,6 +13,5 @@ extra work for the developers. As a developer you only need to learn a single
 interface to be able to use the power of different configuration formats.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-Config-Any"/>
   <url>http://search.cpan.org/dist/Config-Any/</url>
 </package>

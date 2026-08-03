@@ -18,6 +18,5 @@ whether or not processing for the current chain has been completed
 command in the chain (false).
 
 </description>
-  <devel project="Java:packages" package="apache-commons-chain"/>
   <url>http://commons.apache.org/%{base_name}/</url>
 </package>

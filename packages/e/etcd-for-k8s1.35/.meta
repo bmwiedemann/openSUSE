@@ -1,5 +1,6 @@
 <package name="etcd-for-k8s1.35" project="openSUSE:Factory">
   <title>etcd-for-k8s1.35</title>
   <description>Etcd is a distributed reliable key-value store for the most critical data of a distributed system</description>
+  <devel project="devel:kubic" package="etcd-for-k8s1.35"/>
   <url>https://github.com/etcd-io/etcd</url>
 </package>

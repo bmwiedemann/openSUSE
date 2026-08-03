@@ -6,6 +6,5 @@ Often MacOS's homebrew OpenSSL cause a problem on installation due to include pa
 
 This module resolves the include path by Net::SSLeay's workaround. Original code is taken from 'inc/Module/Install/PRIVATE/Net/SSLeay.pm' by Net::SSLeay.
 </description>
-  <devel project="devel:languages:perl" package="perl-Crypt-OpenSSL-Guess"/>
   <url>https://metacpan.org/release/Crypt-OpenSSL-Guess</url>
 </package>

@@ -2,5 +2,6 @@
   <title>Fake implementation of the OpenH264 library</title>
   <description>Fake implementation of the OpenH264 library we can link from
 regardless of the actual library being available.</description>
+  <devel project="multimedia:libs" package="noopenh264"/>
   <url>https://codeberg.org/distro-openh264/noopenh264</url>
 </package>

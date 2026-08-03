@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Jul 14 08:13:09 UTC 2026 - Nassim Lhadj <lhadjnassim311@gmail.com>
+
+- Update to 0.5.4 :
+  * backend: hold ref for fn
+  * element/textbox: dont VCENTER on multiline textboxes
+  * element/textbox: fix cursor sizing on multiline
+  * element/textbox: fix missing scale in focusCursor
+  * element/textbox: fix multiline selection boxes
+  * element/textbox: handle up and down arrows
+  * backend: fix synchronization issues
+  * Fix to build with rawhide g++
+  * fix: undefined behavior in cover and tile mode causing horizontal pixels
+  * element/image: error when image exceeds max resolution
+  * system/icons: improve inherits, allow png icons, fixup pathing, add caching
+  * TextBox: Fix carriage returns not respecting multiline=false
+  * element/text: attach async completion listener before enqueueing
+  * window/popup: log unsupported nested popup attempts
+  * core/backend: defer destroy to atexit, fix shutdown UAF (#37)
+  * palette/config: log expected path when no config file is found
+  * element/slider: count digits correctly in maxLabelSize
+  * element/layouts: fix shrink underflow, dedup row/column, add tests
+  * renderer/gl: capture weak self in async texture upload
+  * element/text: lock weak ref in async listener
+  * internal: fix include for NAME_MAX climits->linux/limits.h
+  
+-------------------------------------------------------------------
 Mon Feb 16 22:31:17 UTC 2026 - Avindra Goolcharan <avindra@opensuse.org>
 
 - update to 0.5.3:

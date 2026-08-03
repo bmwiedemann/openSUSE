@@ -19,6 +19,11 @@
 %define kf6_version 6.19.0
 %define qt6_version 6.9.0
 
+%ifarch aarch64 ppc64le riscv64 s390x x86_64
+%bcond_without kalzium_ocaml_bindings
+%else
+%bcond_with    kalzium_ocaml_bindings
+%endif
 %bcond_without released
 Name:           kalzium
 Version:        26.04.3
@@ -33,8 +38,10 @@ Source2:        applications.keyring
 %endif
 BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+%if %{with kalzium_ocaml_bindings}
 BuildRequires:  ocaml
 BuildRequires:  ocaml-facile-devel
+%endif
 BuildRequires:  openbabel-devel
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(AvogadroLibs)

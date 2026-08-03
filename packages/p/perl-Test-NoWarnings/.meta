@@ -2,5 +2,4 @@
   <title>Make sure you didn't emit any warnings while testing</title>
   <description>The perl-Test-NoWarnings package
 </description>
-  <devel project="devel:languages:perl" package="perl-Test-NoWarnings"/>
 </package>

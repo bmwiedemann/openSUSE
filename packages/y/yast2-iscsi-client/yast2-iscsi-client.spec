@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-iscsi-client
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,13 @@
 
 
 Name:           yast2-iscsi-client
-Version:        5.0.11
+Version:        5.0.12
 Release:        0
 Summary:        YaST2 - iSCSI Client Configuration
 License:        GPL-2.0-only
 Group:          System/YaST
 URL:            https://github.com/yast/yast-iscsi-client
 Source0:        %{name}-%{version}.tar.bz2
-BuildRequires:  update-desktop-files
 # Yast2::Systemd::Socket
 BuildRequires:  yast2 >= 4.1.3
 # needed for test of finish client which include installation/misc

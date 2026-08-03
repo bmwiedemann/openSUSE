@@ -8,5 +8,4 @@ simple:
 VALUE_THREE = The value contains a \# (hash). # This is a comment.
 COMPOSED_VALUE[one] = The first component of a clustered value
 COMPOSED_VALUE[two] = The second component of a clustered value</description>
-  <devel project="devel:languages:perl" package="perl-libconfigfile"/>
 </package>

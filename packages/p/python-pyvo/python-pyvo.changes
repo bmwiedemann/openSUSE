@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Mar 18 21:24:28 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.1:
+  * Pass session through to DatalinkService requests.
+  * Add DALRateLimitError for HTTP 429 responses with retry
+    timing info.
+  * Fix a bug in the space frame equinox processing.
+  * Add DEFAULT_JOB_POLL_TIMEOUT constant.
+  * Fix SIA2 overflow warnings.
+  * Add timeout parameter to run_async method in tap module.
+  * No longer show a warning when an overflow status is
+    encountered with a maxrec set by the user
+  * Add support for the jobInfo element for UWS jobs
+  * Fix DALOverflowWarning error message to only indicate the
+    cause as limits from user or server.
+  * Add retry option to AsyncTAPJob.fetch_result for transient
+    failures
+  * Improve the MivotViewer API: adding support of multiple
+    mapped objects per row and a partial redesign of the public
+    API. Also, improved the gateway between annotations and
+    SkyCoord objects.
+  * Adding "hats" and "hips" servicetype shorthands for registry
+    searches for HATS and HIPS resources.
+  * Upgrade of the MivotViewer API including the removal of the
+    xml_viewer module.
+
+-------------------------------------------------------------------
 Wed Sep 10 11:45:20 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 1.7:

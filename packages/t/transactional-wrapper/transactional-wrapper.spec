@@ -1,7 +1,7 @@
 #
 # spec file for package transactional-wrapper
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,7 +23,7 @@ Group:          System/Base
 Version:        0.0.1
 Release:        0
 BuildArch:      noarch
-Url:            https://github.com/jsrain/transactional-wrapper/
+URL:            https://github.com/jsrain/transactional-wrapper/
 Requires:       transactional-update
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -36,7 +36,6 @@ Source100:      zypper
 
 %define with_alias 0
 %define with_configs 0
-
 
 %description
 Generic wrapper for calling commands which need to run in transactional update transparently

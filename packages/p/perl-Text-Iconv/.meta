@@ -10,5 +10,4 @@ Settings of fromcode and tocode and their permitted combinations are
 implementation-dependent. Valid values are specified in the system
 documentation; the iconv(1) utility should also provide a -l option that lists
 all supported codesets.</description>
-  <devel project="devel:languages:perl" package="perl-Text-Iconv"/>
 </package>

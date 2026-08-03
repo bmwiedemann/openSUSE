@@ -272,4 +272,13 @@
   directory structure. (forwarded request 1139233 from dimstar)</comment>
     <requestid>1139258</requestid>
   </revision>
+  <revision rev="39" vrev="25">
+    <srcmd5>6a6d8cd7dba56f305a37bac555edef40</srcmd5>
+    <version>2.0.16</version>
+    <time>1774470062</time>
+    <user>anag_factory</user>
+    <comment>- Drop gnome-doc-utils-devel BuildRequires: no longer needed since
+  a long time.</comment>
+    <requestid>1342460</requestid>
+  </revision>
 </revisionlist>

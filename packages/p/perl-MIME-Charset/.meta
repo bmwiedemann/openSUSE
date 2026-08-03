@@ -2,6 +2,5 @@
   <title>Charset Informations for MIME</title>
   <description>MIME::Charset provides informations about character sets used for MIME messages
 on Internet.</description>
-  <devel project="devel:languages:perl" package="perl-MIME-Charset"/>
   <url>http://search.cpan.org/dist/MIME-Charset</url>
 </package>

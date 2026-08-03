@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Mar 26 13:53:24 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to version 3.16.22:
+  * pipewire: Fix pipewire loop locking
+  * steamcompmgr: Use output timings for forwarding frametime to Steam
+  * backend: Remove DeferredFb, intergrate defferal into OpenVRFb directly
+  * steamcompmgr: Set cgroup device memory limits manually
+  * steamcompmgr: Fix Steam bootstrapper not showing up
+  * openvr: Improve frame pacing
+  * steamcompmgr: Only forward to vr overlays on vblank + don't forward overlays that aren't dirty
+  * steamcompmgr: Always forward VR overlay targets, even without a typical base plane active
+  * edid: rotate non-HDR displays with bRotate as well
+  * DRMBackend: If the EDID changes from under us, force a modeset
+  * DRMBackend: fix a typo in the name of a (private) data member
+  * Apps: Add gamescope-type
+  * Scripts: Add display script for OneXPlayer F1 Series OLED display
+  * steamcompmgr: Support _STEAMOS_TOUCH_POINTER_EMULATION
+  * WaylandBackend: Fix relative pointer state tracking
+  * steamcompmgr: Fix condition on enabling mouse cursor constraint
+  * DRMBackend: Fix NULL dereference in drm_prepare_liftoff()
+  * rendervulkan: Only define 32-bit float DRM_FORMATs if necessary.
+- Add wlroots-fix-build-with-libinput-1.31.patch
+  * Fixes builds with libinput 1.31
+
+-------------------------------------------------------------------
 Tue Feb 10 14:58:09 UTC 2026 - ecsos@opensuse.org
 
 - Update to version 3.16.20:

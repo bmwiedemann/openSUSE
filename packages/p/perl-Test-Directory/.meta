@@ -7,6 +7,5 @@ Test::Directory implements an object-oriented interface for managing test direct
 There are two flavors of methods for interacting with the directory. _Utility_ methods simply return a value (i.e. the number of files/errors) with no output, while the _Test_ functions use Test::Builder to produce the approriate test results and diagnostics for the test harness.
 
 The directory will be automatically cleaned up when the object goes out of scope; see the _clean_ method below for details.</description>
-  <devel project="devel:languages:perl" package="perl-Test-Directory"/>
   <url>https://metacpan.org/release/Test-Directory</url>
 </package>

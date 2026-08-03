@@ -1,4 +1,91 @@
 -------------------------------------------------------------------
+Thu Jun 18 04:41:14 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Skip more tests that require network access.
+
+-------------------------------------------------------------------
+Sun Jun 14 18:50:11 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.25:
+  * Document `pipx run --spec='validate-pyproject[all]' validate-
+    pyproject --help` by @cclauss
+  * Test on Python 3.14 by @cclauss
+  * Add PEP 794 support by @henryiii
+  * Fix broken store loading if properties is nested by @henryiii
+  * Fix more integer types by @henryiii
+  * Update `uv` integration a bit by @henryiii
+  * Allow `package-data` for stubs packages by @cdce8p
+- update to 0.24.1:
+  * Fixed multi plugin id was read from the wrong place
+  * Implemented alternative plugin sorting,
+    https://github.com/abravalheri/validate-pyproject/pull/243
+- update to 0.24:
+  * Fix integration with `SchemaStore` by loading extra/side
+    schemas, #226, #229.
+  * Add support for loading extra schemas, #226.
+  * Fixed verify author dict is not empty, #232.
+  * Added support for `validate_pyproject.multi_schema` plugins
+    with extra schemas, #231.
+  * `validate-pyproject` no longer communicates test dependencies
+    via the `tests` extra and documentation dependencies
+    dependencies via the `docs/requirements.txt` file. Instead
+    `dependency-groups` have been adopted to support CI
+    environments, #227.
+  * As a result, `uv`'s high level interface also works for
+    developers. You can use the `dependency-groups` package on
+    PyPI if you need to convert to a classic requirements list.
+  * Contributions by @henryiii.
+- update to 0.23:
+  * Validate SPDX license expressions
+- update to 0.22:
+  * Prevent injecting defaults and modifying input in-place,
+- update to 0.21:
+  * Added support PEP 735
+  * Added support PEP 639
+  * Renamed testing extra to test
+  * General updates in CI setup
+- update to 0.20.2:
+  * Attempt to solve problems with release pipeline (CI), related
+    to https://github.com/actions/upload-artifact/issues/618.
+  * The package code is unchanged regarding v0.20.
+- update to 0.20.1:
+  * Attempt to solve problems with release pipeline (CI).
+  * The package code is unchanged regarding v0.20
+- update to 0.20:
+  * ``setuptools`` plugin:
+  * Update `setuptools.schema.json` in
+    https://github.com/abravalheri/validate-pyproject/pull/206
+- update to 0.19:
+  * Relax requirements about module names to also allow dash
+    characters, #164
+  * Migrate metadata to ``pyproject.toml`` , #192
+- update to 0.18:
+  * Allow overwrite when schemas refer to the same `tool`,  #175.
+- update to 0.17:
+  * Update version regex according to latest packaging version,
+    https://github.com/abravalheri/validate-pyproject/pull/153
+  * Remove duplicate `# ruff: noqa` by @Avasam,
+    https://github.com/abravalheri/validate-pyproject/pull/158
+  * Remove invalid top-of-the-file `# type: ignore` statement by
+    @Avasam, https://github.com/abravalheri/validate-
+    pyproject/pull/159
+  * Align `tool.setuptools.dynamic.optional-dependencies` with
+    `project.optional-dependencies,
+    https://github.com/abravalheri/validate-pyproject/pull/170
+  * Bump min Python version to 3.8,
+    https://github.com/abravalheri/validate-pyproject/pull/167
+- update to 0.16:
+  * Fix setuptools readme field , #116
+  * Fix missing type keywords, #117
+  * Add schema validator check, #118
+  * Add ``SchemaStore`` conversion script, #119
+  * Support uint formats (used by Ruff), #128
+  * Allow tool(s) to be specified via URL (added CLI option:
+    ``--tool``), #121
+  * Allow schemas to be specified from ``SchemaStore`` (added CLI
+    option: ``--store``), #133
+
+-------------------------------------------------------------------
 Tue Aug 26 08:25:02 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives on SLE-16-based and newer systems

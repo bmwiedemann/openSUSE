@@ -68,4 +68,13 @@
     <comment></comment>
     <requestid>1320113</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>727191d9c7c02d207b81ac9aac0f5575</srcmd5>
+    <version>1.2.2</version>
+    <time>1773161876</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.2.2:
+  * Fix compile error</comment>
+    <requestid>1337965</requestid>
+  </revision>
 </revisionlist>

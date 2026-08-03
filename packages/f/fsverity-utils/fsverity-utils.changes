@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 24 21:28:12 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7:
+  * Allowed fsverity-utils to build when PKCS#11 support is not
+    available in OpenSSL.  In that case, `fsverity sign` just
+    won't support that feature.
+
+-------------------------------------------------------------------
 Thu Apr  4 08:52:34 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.6:

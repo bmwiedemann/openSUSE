@@ -10,5 +10,4 @@ This sucks.
 File::chdir gives you an alternative, '$CWD' and '@CWD'. These two
 variables combine all the power of 'chdir()', the File::Spec manpage and
 the Cwd manpage.</description>
-  <devel project="devel:languages:perl" package="perl-File-chdir"/>
 </package>

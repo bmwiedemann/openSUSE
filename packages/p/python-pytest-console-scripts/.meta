@@ -9,6 +9,5 @@ much quicker test runs during development while simulating the real runs as
 much as possible.
 
 </description>
-  <devel project="devel:languages:python:pytest" package="python-pytest-console-scripts"/>
   <url>https://github.com/kvas-it/pytest-console-scripts</url>
 </package>

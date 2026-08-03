@@ -13,5 +13,4 @@ must be stable.
 *NOTE:* This module is not yet a complete XPath implementation. Over time I
 expect the subset of XPath supported to grow. See the SYNTAX documentation
 for details on the current level of support.</description>
-  <devel project="devel:languages:perl" package="perl-Class-XPath"/>
 </package>

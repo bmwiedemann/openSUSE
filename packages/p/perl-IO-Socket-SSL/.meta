@@ -18,5 +18,4 @@ If you are using non-blocking sockets read on, as version 0.98 added better
 support for non-blocking.
 
 If you are trying to use it with threads see the BUGS section.</description>
-  <devel project="devel:languages:perl" package="perl-IO-Socket-SSL"/>
 </package>

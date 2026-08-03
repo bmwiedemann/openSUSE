@@ -10,6 +10,5 @@ components of the POD. Subclasses of *Pod::Parser* override these methods
 to translate the POD into whatever output format they desire.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-Pod-Parser"/>
   <url>http://search.cpan.org/dist/Pod-Parser/</url>
 </package>

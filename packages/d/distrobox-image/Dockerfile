@@ -70,7 +70,7 @@ RUN zypper --non-interactive install --no-recommends bash \
     words \
     xauth \
     zip \
+    zypp-excludedocs \
+    zypp-no-recommends \ 
   && zypper al parallel-printer-support \
-  && zypper clean \
-  && sed -i 's/.*solver.onlyRequires.*/solver.onlyRequires = false/g' /etc/zypp/zypp.conf \
-  && sed -i 's/.*rpm.install.excludedocs.*/rpm.install.excludedocs = no/g' /etc/zypp/zypp.conf
+  && zypper clean

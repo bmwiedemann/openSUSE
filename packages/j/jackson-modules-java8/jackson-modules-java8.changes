@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 15 12:03:52 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 2.18.9
+  * No changes, only syncing the whole stack for databind security
+    issues
+
+-------------------------------------------------------------------
 Thu Jun 25 13:26:57 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to 2.18.8

@@ -215,4 +215,14 @@ so the bots can find them
             bsc#1262697</comment>
     <requestid>1352784</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>fe1b8a1ac00fb5de0ba426c51e8419d5</srcmd5>
+    <version>0.89.0</version>
+    <time>1780920329</time>
+    <user>anag_factory</user>
+    <comment>Add CVE / bsc references retroactively:
+          - CVE-2026-41565 bsc#1266804
+          - CVE-2026-41565 bsc#1266804</comment>
+    <requestid>1357617</requestid>
+  </revision>
 </revisionlist>

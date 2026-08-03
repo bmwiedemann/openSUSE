@@ -17,7 +17,7 @@
 
 
 Name:           intel-gpu-tools
-Version:        2.3
+Version:        2.5
 Release:        0
 Summary:        Collection of tools for development and testing of the Intel DRM driver
 License:        MIT
@@ -37,6 +37,7 @@ BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(dri2proto)
 BuildRequires:  pkgconfig(gsl)
 BuildRequires:  pkgconfig(gtk-doc)
+BuildRequires:  pkgconfig(jansson)
 BuildRequires:  pkgconfig(json-c)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libdrm_intel) >= 2.4.82
@@ -44,6 +45,7 @@ BuildRequires:  pkgconfig(libdw)
 BuildRequires:  pkgconfig(libkmod)
 # This is only for tests
 #BuildRequires:  pkgconfig(liboping)
+BuildRequires:  pkgconfig(libpci)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(libunwind)
 BuildRequires:  pkgconfig(pciaccess) >= 0.10

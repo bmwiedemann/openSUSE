@@ -7,5 +7,6 @@ archives. Also, fuse-zip is faster that all known implementations on large
 archives with many files.
 
 </description>
+  <devel project="Archiving" package="fuse-zip"/>
   <url>http://code.google.com/p/fuse-zip/</url>
 </package>

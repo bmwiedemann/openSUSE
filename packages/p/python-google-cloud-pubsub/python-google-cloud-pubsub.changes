@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 14 19:53:02 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.39.0:
+  * regenerate pubsub library using gapic-generator v1.32.0
+  * resolve issue with pubsub generation
+
+-------------------------------------------------------------------
 Sat Apr 11 20:10:26 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - udpate to 2.37.0:

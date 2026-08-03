@@ -19,7 +19,7 @@
 %define skip_python2 1
 %define _name eduvpn_common
 Name:           eduvpn-common
-Version:        5.0.2
+Version:        5.0.3
 Release:        0
 Summary:        Shared library for eduVPN
 License:        MIT
@@ -47,13 +47,13 @@ Recommends:     python3-%{name}
 %description
 Shared library written in Go with functions that all eduVPN clients can use.
 
-%package -n lib%{_name}-5_0_2
+%package -n lib%{_name}-5_0_3
 Summary:        Shared library for eduVPN
 Group:          System/Libraries
 Provides:       %{name} = %{version}
 Obsoletes:      %{name} < %{version}
 
-%description -n lib%{_name}-5_0_2
+%description -n lib%{_name}-5_0_3
 Shared library written in Go with functions that all eduVPN clients can use.
 
 %package -n python-%{name}
@@ -102,10 +102,10 @@ pushd wrappers/python
 %pytest tests.py
 popd
 
-%post -n lib%{_name}-5_0_2 -p /sbin/ldconfig
-%postun -n lib%{_name}-5_0_2 -p /sbin/ldconfig
+%post -n lib%{_name}-5_0_3 -p /sbin/ldconfig
+%postun -n lib%{_name}-5_0_3 -p /sbin/ldconfig
 
-%files -n lib%{_name}-5_0_2
+%files -n lib%{_name}-5_0_3
 %license LICENSE
 %doc CHANGES.md README.md
 %{_libdir}/lib%{_name}-%{version}.so

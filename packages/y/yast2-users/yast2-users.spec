@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-users
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yast2-users
-Version:        5.0.7
+Version:        5.0.8
 Release:        0
 Summary:        YaST2 - User and Group Configuration
 License:        GPL-2.0-only
@@ -31,7 +31,6 @@ BuildRequires:  doxygen
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  perl-Digest-SHA1
-BuildRequires:  update-desktop-files
 # Y2Issues::WithIssues mixin
 BuildRequires:  yast2 >= 4.4.18
 BuildRequires:  yast2-core-devel

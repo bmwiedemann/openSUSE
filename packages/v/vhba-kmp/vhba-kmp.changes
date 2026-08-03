@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 25 14:19:12 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20260313
+  * vhba: fix build errors with Linux kernel 7.0
+
+-------------------------------------------------------------------
 Tue Aug  5 11:43:56 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update vhba-sle-kernel.diff to workaround the presence of

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 23 16:07:16 UTC 2026 - J. Daniel Schmidt <jdsn@suse.de>
+
+- change key default algorithm to ed25519 (needs openssl >= 1.1.1)
+- add support to define expiry in days
+- version 0.6
+
+-------------------------------------------------------------------
 Wed Apr  9 12:53:40 UTC 2014 - jdsn@suse.de
 
 - updated to official GPL-2.0 text

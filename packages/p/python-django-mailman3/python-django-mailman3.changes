@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 10 11:15:14 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- (Build)Require python-django-allauth[socialaccount,openid] extras
+- Include upstream sociallogin.patch to fix tests with django-allauth
+  0.64+
+
+-------------------------------------------------------------------
 Fri Dec 19 07:26:21 UTC 2025 - Andreas Schneider <asn@cryptomilk.org>
 
 - If possible build for primary_python (fixes Leap 16.0)

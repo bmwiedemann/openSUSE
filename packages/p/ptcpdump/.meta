@@ -1,5 +1,6 @@
 <package name="ptcpdump" project="openSUSE:Factory">
   <title></title>
   <description>ptcpdump is an eBPF-based implementation of tcpdump that includes an additional feature: it adds process information as comments for each packet when available.</description>
+  <devel project="network:utilities" package="ptcpdump"/>
   <url>https://github.com/mozillazg/ptcpdump</url>
 </package>

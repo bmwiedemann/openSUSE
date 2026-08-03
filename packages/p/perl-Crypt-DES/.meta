@@ -7,5 +7,4 @@ methods
   =item keysize
   =item encrypt
   =item decrypt</description>
-  <devel project="devel:languages:perl" package="perl-Crypt-DES"/>
 </package>

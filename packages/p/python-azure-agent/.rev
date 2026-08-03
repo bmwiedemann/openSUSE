@@ -431,4 +431,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1320490</requestid>
   </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>23bf5903f83ee6e81daab54fc206977e</srcmd5>
+    <version>2.14.0.1</version>
+    <time>1784126365</time>
+    <user>dimstar_suse</user>
+    <comment>- adjust check for suse_version (jsc#PED-15805) (forwarded request 1365504 from jsrain)</comment>
+    <requestid>1365687</requestid>
+  </revision>
 </revisionlist>

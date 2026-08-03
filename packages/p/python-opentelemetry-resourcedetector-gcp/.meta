@@ -1,4 +1,5 @@
 <package name="python-opentelemetry-resourcedetector-gcp" project="openSUSE:Factory">
   <title></title>
   <description></description>
+  <devel project="devel:languages:python" package="python-opentelemetry-resourcedetector-gcp"/>
 </package>

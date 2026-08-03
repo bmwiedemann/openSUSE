@@ -220,4 +220,36 @@
 - modernize spec file</comment>
     <requestid>1222934</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>3a0621cadde629460f0cc5f6093b0e84</srcmd5>
+    <version>2.1</version>
+    <time>1781879770</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.1:
+  * Add static license specifier LicenseRef-Repoze-BSD-derived to the package
+    metadata to satisfy SPDX license format.
+  * Add &quot;Operating System :: Independent&quot; trove classifier.
+  * Add support for Python 3.12, 3.13, and 3.14.
+  * Added HTTP 418 error code via pyramid.httpexceptions.HTTPImATeapot.
+  * Base coverage reports in tests on Python 3.14 instead of Python 3.8.
+  * Replace usage of md5 in the Pyramid view system with sha256. This
+    is not a security-related feature and is considered an implementation
+    detail.
+  * Replace usage of pkg_resources in pyramid.path.DottedNameResolver.
+  * Replace usage of pkg_resources in pdistreport and pshell CLI commands.
+  * Remove internal usages of deprecated locale and datetime APIs to reduce
+    deprecation warnings.
+  * Fix issues where permissions may be checked on exception views.
+  * Applications raising pyramid.exceptions.BadCSRFToken and
+    pyramid.exceptions.BadCSRFOrigin were returning invalid HTTP status.
+  * Drop support for Python 3.6, 3.7, 3.8, and 3.9.
+  * Drop support for l*gettext() methods in the i18n module.
+  * Add get_spec method to IPackageOverrides.
+  * When using a cache buster with asset overrides, the cache buster will
+    find the first existing file in the override stack, rather than taking
+    the first override regardless of whether the file exists or not.
+- Drop patch py313-tests.patch, merged upstream.
+- Remove Python 2 leftovers.</comment>
+    <requestid>1360425</requestid>
+  </revision>
 </revisionlist>

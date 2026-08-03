@@ -6,6 +6,5 @@ and calculation objects: sparse and full. With the sparse method, none of
 the data is stored and only a few statistical measures are available. Using
 the full method, the entire data set is retained and additional functions
 are available.</description>
-  <devel project="devel:languages:perl" package="perl-Statistics-Descriptive"/>
   <url>http://search.cpan.org/dist/Statistics-Descriptive/</url>
 </package>

@@ -1,5 +1,6 @@
 <package name="rubygem-cgi" project="openSUSE:Factory">
   <title>Support for the Common Gateway Interface protocol</title>
   <description>Support for the Common Gateway Interface protocol.</description>
+  <devel project="devel:languages:ruby" package="rubygem-cgi"/>
   <url>https://github.com/ruby/cgi</url>
 </package>

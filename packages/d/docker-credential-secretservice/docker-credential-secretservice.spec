@@ -1,7 +1,7 @@
 #
-# spec file for package docker-distribution
+# spec file for package docker-credential-secretservice
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,24 +12,24 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           docker-credential-secretservice
-Version:        0.7.0
+Version:        0.9.8
 Release:        0
 Summary:        Leverage Docker credentials with libsecret
 License:        MIT
 Group:          System/Management
-Url:            http://www.docker.io
+URL:            http://www.docker.io
 Source0:        docker-credential-helpers-%{version}.tar.xz
 Source1:        config.secure.json
 BuildRequires:  go >= 1.8.0
+BuildRequires:  libsecret-devel
 BuildRequires:  make
 BuildRequires:  pkg-config
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  libsecret-devel
 Requires(pre):  %fillup_prereq
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{?systemd_requires}

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 25 09:51:18 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.4
+  * Resolved some compile warnings/errors with newer
+    compilers, libcs, and -std modes.
+
+-------------------------------------------------------------------
 Thu Jan 29 14:00:41 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 5.3

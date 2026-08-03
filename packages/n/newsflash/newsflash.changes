@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Jul 30 04:13:52 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 5.2.4:
+  + opml import: avoid duplicating categories
+  + commafeed: make entry urls optional
+  + database optimizations
+  + fix sidebar only show relevant
+- Update to version 5.2.3:
+  + Hotfix forgot to update html2gtk
+- Update to version 5.2.2:
+  + Hotfix html2gtk html entities and gmarkup
+- Update to version 5.2.1:
+  + Hotfix crash because of uint cast
+- Update to version 5.2.0:
+  + Article View: add justification preferenc
+  + keep track of deleted articles (avoid re-download)
+  + add feed dialog: add switch to scrape articles
+  + add category settings
+  + Article View: add rubber banding to swipe
+  + Article View: only load visible part during swipe
+  + Article View: unescape html entities
+  + Article View: handle pre tag without code tag
+  + Article View: improve html to gtk translation
+  + feedbin: fix enclosure itunes duration
+  + search: fix full-text-search query
+  + feed settings: correctly save mute preference
+  + feed settings: delete all on app reset
+  + tag/feed-list: support over 200 entries
+  + Media Viewer: always show buttons for touch navigation
+  + Notifications: withdraw when opening app
+  + Notifications: dont show if there are no unread articles
+  + UI state restore: fix visual glitch when sidebar is collapsed
+
+-------------------------------------------------------------------
 Fri May 29 19:22:42 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 5.1.0:

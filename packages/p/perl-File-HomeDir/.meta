@@ -44,5 +44,4 @@ Platform Neutrality
     methods will harmlessly degrade to the main home directory, but on
     platforms that care *File::HomeDir* will always try to Do The Right
     Thing(tm).</description>
-  <devel project="devel:languages:perl" package="perl-File-HomeDir"/>
 </package>

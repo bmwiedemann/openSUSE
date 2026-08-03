@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jul 14 17:21:57 UTC 2026 - RN <R_Nik_C@proton.me>
+
+- Update to version 2.66.0:
+  * CI: ensures `CMAKE_BUILD_TYPE` is correctly set
+  * GPU (BSD): fixes building when DRM is not enabled
+  * Common (Tracer): updates comments [ci skip]
+  * CPU (Linux): removes ARM core count in CPU name
+  * CPU (Linux): disables printing package count by default
+  * BluetoothRadio: fixes memleaks
+  * GPU: code cleanups and bug fixes
+
+-------------------------------------------------------------------
 Sat Jun 27 22:15:20 UTC 2026 - RN <R_Nik_C@proton.me>
 
 - Update to version 2.65.1:

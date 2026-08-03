@@ -17,7 +17,7 @@
 
 
 Name:           python-pyreadstat
-Version:        1.3.4
+Version:        1.3.5
 Release:        0
 Summary:        Package to read and write statistical data files into pandas
 License:        Apache-2.0
@@ -33,8 +33,9 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  glibc-devel
+BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(zlib)
 Requires:       python-narwhals >= 2.10.1
 Requires:       python-numpy
 Requires:       python-pandas >= 0.24.0

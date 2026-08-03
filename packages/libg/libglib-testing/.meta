@@ -1,5 +1,4 @@
 <package name="libglib-testing" project="openSUSE:Factory">
   <title></title>
   <description></description>
-  <devel project="GNOME:Factory" package="libglib-testing"/>
 </package>

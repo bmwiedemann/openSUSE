@@ -17,7 +17,7 @@
 
 
 Name:           MistServer
-Version:        3.10
+Version:        3.11.1
 Release:        0
 Summary:        Internet streaming media toolkit
 License:        Unlicense
@@ -28,13 +28,13 @@ Source2:        mistserver.sysuser
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  group(video)
+BuildRequires:  mbedtls-3-devel
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(librist)
 BuildRequires:  pkgconfig(libsrtp2)
-BuildRequires:  mbedtls-3-devel
 BuildRequires:  pkgconfig(srt)
 BuildRequires:  pkgconfig(usrsctp)
 Requires:       group(video)
@@ -150,6 +150,9 @@ install -D -p -m 0644 %{SOURCE2} %{buildroot}%{_sysusersdir}/mistserver.conf
 %{_bindir}/MistOutHTTPMinimalServer
 %{_bindir}/MistOutHTTPS
 %{_bindir}/MistOutHTTPTS
+%{_bindir}/MistOutWSRaw
+%{_bindir}/MistProcTSDemux
+%{_bindir}/MistUtilStats
 %{_bindir}/MistOutJPG
 %{_bindir}/MistOutJSON
 %{_bindir}/MistOutJSONLine

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar 25 08:56:19 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.0:
+  * Adopt Ruff
+  * Tighten MyPy settings
+  * Update GitHub actions versions
+  * Avoid storing build time in gzip headers
+- drop no-store-btime-gzip.patch (upstream)
+
+-------------------------------------------------------------------
 Fri Jul 19 17:56:18 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Add no-store-btime-gzip.patch to fix bsc#1227999 by not storing

@@ -14,5 +14,6 @@ Serf is also completely masterless, meaning there's no single point of
 failure.
 
 This package provides the agent that should be started on every node.</description>
+  <devel project="systemsmanagement" package="hashicorp-serf"/>
   <url>https://github.com/hashicorp/serf</url>
 </package>

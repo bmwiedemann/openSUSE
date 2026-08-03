@@ -17,7 +17,7 @@
 
 
 Name:           jackson-module-jsonSchema
-Version:        2.18.8
+Version:        2.18.9
 Release:        0
 Summary:        Jackson module for JSON Schema 3 generation
 License:        Apache-2.0

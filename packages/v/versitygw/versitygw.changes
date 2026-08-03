@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Wed Jul 15 04:50:10 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.7.0:
+  * fix: omit null version id for suspended buckets
+  * fix: prevent nil pointer panic in s3proxy ListMultipartUploads
+    and ListParts
+  * chore(deps): bump the dev-dependencies group with 15 updates
+  * test: ListParts query tests
+  * chore(deps): bump the dev-dependencies group across 1 directory
+    with 21 updates
+  * test: go generateCommand executable, different platform tests,
+    install scripts
+  * fix: update Fiber to `v3.4.0`
+  * Remove go report card
+  * feat: add chart sidecar and versioning directory support
+  * fix: copy-source parsing mismatch that could bypass path
+    validation
+  * fix: LDAP access key filter injection
+  * fix: update example config with recent options
+  * feat: add configurable default ETag for files without metadata
+  * test(azure): widen multipart test parts above min size; tighten
+    isQuotedEtag
+  * test: go executable, base install script
+  * make azure multipart part etags quoted and consistent
+  * fix azure etag quote bytes
+  * fix azure multipart etag quoting
+  * fix: add section for goreleaser deb/rpm
+  * chore(deps): bump the dev-dependencies group with 14 updates
+
+-------------------------------------------------------------------
+Sun Jun 28 07:08:38 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.6.0:
+  * fix: prevent connection errors in space/quotas error paths
+  * feat: add options extensions to embed config
+  * test: README updates, speed up some file integrity checks
+  * chore(deps): bump actions/checkout from 6 to 7
+  * feat: add windows functional test coverage and fix some windows
+    behavior
+  * feat: Add 'topologySpreadConstraints'
+  * test: ListObjectVersions query tests
+  * chore(deps): bump the dev-dependencies group across 1 directory
+    with 12 updates
+  * fix: validate object lock default retention upper limits
+  * fix: support asterisk read preconditions
+  * fix: reject empty Content-MD5 on PUT operations
+  * feat(helm): Make it possible to specify deployment strategy
+  * feat: migrate Fiber to v3.3.0
+  * test: jailing, logging, executable cleanups
+  * feat: support x-amz-website-redirect-location
+  * feat: improve static website hosting support
+  * Add website integration tests and remove NotImplemented stubs
+  * Add WebsiteConfiguration types, validation, and S3 error codes
+  * fix: prevent index-out-of-range panic in s3proxy
+    GetBucketOwnershipControls
+  * test: jailing work (base)
+  * fix: prevent nil pointer panic in webhook sendLog
+  * chore(deps): bump the dev-dependencies group with 24 updates
+  * fix: prevent panic in ParseCopySource on empty input
+  * s3api: add WithOnListen option for server readiness
+    notification
+  * chore(deps): bump the dev-dependencies group with 23 updates
+
+-------------------------------------------------------------------
 Tue Jun 02 04:35:54 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.5.0:

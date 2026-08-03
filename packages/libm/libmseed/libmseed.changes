@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Jul 30 18:12:18 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.5.3:
+  * optimizations for segment handling
+
+-------------------------------------------------------------------
+Wed Jul 29 20:26:15 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.5.2:
+  * Add MSF_RECORDLIST_NOEXTRAS to skip copying extra headers into
+    MS3RecordList entries when building a record list.
+  * Reject a blockette offset within the fixed header as fatal.
+  * Break ms_parse_raw2() blockette walk on unknown length, treat
+    a self-referential next offset as fatal, add Blockette 405 length.
+  * Reject sample count that would overflow size_t when converting to
+    doubles in mstl3_convertsamples(), avoiding undersized malloc on
+    32-bit.
+  * Reject size_t overflow in libmseed_memory_prealloc() growth
+    loop, avoiding an infinite hang on huge allocation requests.
+  * Free duplicated MS3Record when record-list entry allocation fails.
+  * Reject out-of-range leap-second epochs in ms_readleapsecondfile().
+
+-------------------------------------------------------------------
 Sun Jul 26 07:06:21 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.5.1:

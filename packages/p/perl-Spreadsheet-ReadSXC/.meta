@@ -15,6 +15,5 @@ read_xml_file() instead and pass the path to content.xml as an argument. Or
 you can extract the XML string from content.xml and pass the string to the
 function read_xml_string(). Both functions also take a reference to a hash
 of options as an optional second argument.</description>
-  <devel project="devel:languages:perl" package="perl-Spreadsheet-ReadSXC"/>
   <url>http://search.cpan.org/dist/Spreadsheet-ReadSXC/</url>
 </package>

@@ -2,5 +2,4 @@
   <title>A collection of helpers for building DLNA applications</title>
   <description>GUPnP-dlna is a collection of helpers for building DLNA media sharing
 applications using GUPnP.</description>
-  <devel project="GNOME:Factory" package="gupnp-dlna"/>
 </package>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jun 30 23:32:25 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to v0.0.7:
+  * Flatpak Support: Added Flatpak manifest and CI/CD integration.
+  * Layer Improvements: Implemented optional $LIB-relative library_path support.
+  * Environment Configuration: Added _FILE suffix support to CONFIG_PATH.
+  * Path Expansion: Added support for expanding paths using ~, $HOME, and $USER.
+  * PKGBUILD: Updated reference PKGBUILD.
+  * Fix RPMLINT warning "unstripped-binary-or-object" for libVkLayer_vksumi.so
+    by ensuring build system flags/stripping are properly handled during
+    %build/%install.
+
+-------------------------------------------------------------------
 Sun Jun  7 19:31:48 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
 
 - Initial release.

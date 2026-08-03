@@ -11,5 +11,4 @@ PlantUML supports the following diagram types:
    - state diagram
  
  Output images can be generated in PNG, in SVG or LaTeX format.  PlantUML also supports generation of ASCII art diagrams (only for sequence diagrams).</description>
-  <devel project="Java:packages" package="plantuml"/>
 </package>

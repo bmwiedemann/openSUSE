@@ -1,7 +1,7 @@
 #
 # spec file for package xmvn5-tools
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,7 +40,7 @@ BuildRequires:  kojan-xml
 BuildRequires:  objectweb-asm
 BuildRequires:  picocli
 BuildRequires:  sisu-inject
-BuildRequires:  slf4j2
+BuildRequires:  slf4j
 BuildRequires:  xmvn-install
 BuildRequires:  xmvn-resolve
 BuildArch:      noarch
@@ -115,7 +115,7 @@ Requires:       javapackages-tools
 Requires:       kojan-xml
 Requires:       objectweb-asm
 Requires:       picocli
-Requires:       slf4j2
+Requires:       slf4j
 
 %description -n %{parent}%{version_suffix}-install
 This package provides XMvn%{version_suffix} Install, which is a command-line interface
@@ -151,9 +151,6 @@ find -name ResolverIntegrationTest.java -delete
 # Don't put Class-Path attributes in manifests
 %pom_remove_plugin :maven-jar-plugin xmvn-tools
 
-# Normalize slf4j version to 2
-%pom_xpath_set pom:project/pom:properties/pom:slf4jVersion 2 xmvn-parent
-
 # Normalize maven4 to version 4 (compatibility version)
 %pom_xpath_set pom:project/pom:properties/pom:mavenVersion 4 xmvn-parent
 
@@ -168,7 +165,7 @@ build-jar-repository -s lib \
   objectweb-asm/asm \
   org.eclipse.sisu.inject \
   picocli/picocli \
-  slf4j/api-2
+  slf4j/api
 
 ant -Dtest.skip=true package javadoc
 
@@ -194,7 +191,7 @@ done
 %fdupes -s %{buildroot}%{_javadocdir}
 
 # helper scripts
-%jpackage_script org.fedoraproject.xmvn.tools.install.cli.InstallerCli "" "" %{parent}/%{parent}-install-%{version_suffix}:%{parent}/%{parent}-api-%{version_suffix}:%{parent}/%{parent}-core-%{version_suffix}:slf4j/api-2:slf4j/simple-2:objectweb-asm/asm:commons-compress:commons-io:apache-commons-lang3:picocli/picocli:kojan-xml/kojan-xml %{parent}%{version_suffix}-install
+%jpackage_script org.fedoraproject.xmvn.tools.install.cli.InstallerCli "" "" %{parent}/%{parent}-install-%{version_suffix}:%{parent}/%{parent}-api-%{version_suffix}:%{parent}/%{parent}-core-%{version_suffix}:slf4j/api:slf4j/simple:objectweb-asm/asm:commons-compress:commons-io:apache-commons-lang3:picocli/picocli:kojan-xml/kojan-xml %{parent}%{version_suffix}-install
 %jpackage_script org.fedoraproject.xmvn.tools.resolve.ResolverCli "" "" %{parent}/%{parent}-resolve-%{version_suffix}:%{parent}/%{parent}-api-%{version_suffix}:%{parent}/%{parent}-core-%{version_suffix}:picocli/picocli:kojan-xml/kojan-xml %{parent}%{version_suffix}-resolve
 %jpackage_script org.fedoraproject.xmvn.tools.subst.SubstCli "" "" %{parent}/%{parent}-subst-%{version_suffix}:%{parent}/%{parent}-api-%{version_suffix}:%{parent}/%{parent}-core-%{version_suffix}:picocli/picocli:kojan-xml/kojan-xml %{parent}%{version_suffix}-subst
 

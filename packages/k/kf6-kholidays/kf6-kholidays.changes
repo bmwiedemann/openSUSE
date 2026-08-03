@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jul 10 12:15:52 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.28.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.28.0
+- Changes since 6.27.0:
+  * Update dependency version to 6.28.0
+  * holiday_et_am - fix region name
+  * holidays: Add Ethiopian holidays (et_en, et_am)
+  * Updated Croatian holidays as of 2026.
+  * fix occurrence of Mother's Day and Father's Day in Slovakia
+  * Update version to 6.28.0
+
+-------------------------------------------------------------------
 Sat Jun  6 11:42:12 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.27.0

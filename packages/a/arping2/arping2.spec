@@ -1,7 +1,7 @@
 #
 # spec file for package arping2
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           arping2
-Version:        2.28
+Version:        2.29
 Release:        0
 Summary:        Layer-2 Ethernet pinger
 License:        GPL-2.0-or-later
@@ -54,6 +54,6 @@ rm -Rv "$b/%_includedir"
 %files
 %_sbindir/arping2
 %_mandir/man8/arping2.8*
-%doc README
+%doc README.md
 
 %changelog

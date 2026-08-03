@@ -15,58 +15,72 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 
 Name:           mcp-server-snapper
-Version:        0.2.0
+Version:        0.3.0
 Release:        0
 Summary:        MCP Server for Snapper
-License:        MIT
+License:        MIT AND BSD-2-Clause AND BSD-3-Clause
 URL:            https://github.com/aschnell/mcp-server-snapper
 Source:         %{name}-%{version}.tar.xz
-Patch0:         sle15sp7.patch
-BuildArch:      noarch
-BuildRequires:  python3-base
-BuildRequires:  python-rpm-macros
-BuildRequires:  python3-devel
-%if 0%{?suse_version} < 1600
-%{sle15_python_module_pythons}
-BuildRequires:  %{python_module dbus-python}
-BuildRequires:  %{python_module mcp}
-%else
-BuildRequires:  python3-dbus-python
-BuildRequires:  python3-mcp
-%endif
-Requires:       %{python_for_executables}-dbus-python
-Requires:       %{python_for_executables}-mcp
-Requires:       %{python_for_executables}-pydantic
+Source1:        vendor.tar.gz
+BuildRequires:  go >= 1.25
+Requires:       snapper
 
 %description
 An MCP server for Snapper.
 
 %prep
-%setup -q
-
-%if 0%{?suse_version} < 1600
-%patch -P 0 -p1
-%endif
+%setup -q -a 1
+cp vendor/github.com/godbus/dbus/v5/LICENSE LICENSE-dbus
+cp vendor/golang.org/x/sys/LICENSE LICENSE-sys
+cp vendor/github.com/modelcontextprotocol/go-sdk/LICENSE LICENSE-mcp
+cp vendor/github.com/google/jsonschema-go/LICENSE LICENSE-jsonschema
+cp vendor/github.com/yosida95/uritemplate/v3/LICENSE LICENSE-uritemplate
+cp vendor/github.com/segmentio/encoding/LICENSE LICENSE-encoding
+cp vendor/github.com/segmentio/asm/LICENSE LICENSE-asm
+cp vendor/golang.org/x/oauth2/LICENSE LICENSE-oauth2
+cp vendor/golang.org/x/sync/LICENSE LICENSE-sync
+cp vendor/golang.org/x/time/LICENSE LICENSE-time
 
 %build
+./build.sh
 
 %check
-cd testsuite && MCPSERVER=../src/mcp-server-snapper ./tools.py
+for test in tools/tools ; do
+    echo "Running $test..."
+    MCPSERVER=src/mcp-server-snapper "testsuite/$test" || { echo "Test $test failed!" ; exit 1; }
+done
 
 %install
 install -d -m 0755 %{buildroot}%{_bindir}
 install -m 0755 src/mcp-server-snapper %{buildroot}%{_bindir}/mcp-server-snapper
+
 install -d -m 0755 %{buildroot}%{_prefix}/lib/mcp-server-snapper/testsuite
-install -m 0755 testsuite/*.py %{buildroot}%{_prefix}/lib/mcp-server-snapper/testsuite/
+install -m 0644 testsuite/README %{buildroot}%{_prefix}/lib/mcp-server-snapper/testsuite/README
+
+for prog in create-snapshot-1 create-snapshot-2 create-snapshot-3 get-config list-configs list-snapshots rollback tools; do
+    install -d -m 0755 %{buildroot}%{_prefix}/lib/mcp-server-snapper/testsuite/$prog
+    install -m 0755 testsuite/$prog/$prog %{buildroot}%{_prefix}/lib/mcp-server-snapper/testsuite/$prog/$prog
+    install -m 0644 testsuite/$prog/README %{buildroot}%{_prefix}/lib/mcp-server-snapper/testsuite/$prog/README
+done
 
 %files
 %license LICENSE
+%license LICENSE-dbus
+%license LICENSE-sys
+%license LICENSE-mcp
+%license LICENSE-jsonschema
+%license LICENSE-uritemplate
+%license LICENSE-encoding
+%license LICENSE-asm
+%license LICENSE-oauth2
+%license LICENSE-sync
+%license LICENSE-time
+
 %doc README.md
 %{_bindir}/mcp-server-snapper
 
 %package testsuite
 Summary:        Testsuite for package %{name}
-BuildArch:      noarch
 Requires:       %{name}
 
 %description testsuite
@@ -79,6 +93,5 @@ Do not install on a production system!
 
 %files testsuite
 %{_prefix}/lib/mcp-server-snapper/
-%{_prefix}/lib/mcp-server-snapper/testsuite/
 
 %changelog

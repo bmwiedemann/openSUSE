@@ -7,5 +7,4 @@ The performance is currently about twice that of XML::Sablotron (based
 on XSLTMark tests converted to Perl). The libxslt processor is also
 highly standard compliant, with practically all of XSLT 1.0 being
 supported in version 0.9 of libxslt.</description>
-  <devel project="devel:languages:perl" package="perl-XML-LibXSLT"/>
 </package>

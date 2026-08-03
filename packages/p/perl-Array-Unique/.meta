@@ -11,6 +11,5 @@ case sensitive.
 As a side effect the module does not allow undef as a value in the array.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-Array-Unique"/>
   <url>http://search.cpan.org/dist/Array-Unique</url>
 </package>

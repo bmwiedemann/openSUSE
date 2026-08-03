@@ -17,7 +17,7 @@
 
 
 Name:           vym
-Version:        2.9.613
+Version:        3.0.0
 Release:        0
 Summary:        Tool to generate and manipulate thought maps
 License:        GPL-2.0-only
@@ -56,6 +56,13 @@ overview over complex contexts, to sort ideas etc.
 %setup -q
 
 %build
+%if 0%{?suse_version}
+%if 0%{?suse_version} <= 1560
+export CC=/usr/bin/gcc-13
+export CXX=/usr/bin/g++-13
+%endif
+%endif
+
 %global cmake_options \\\
     -DCMAKE_INSTALL_DATAROOTDIR="share" \\\
     -DCMAKE_INSTALL_MANDIR="%{_mandir}/man1" \\\

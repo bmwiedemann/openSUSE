@@ -1,4 +1,5 @@
 <package name="python-datamodel-code-generator" project="openSUSE:Factory">
   <title></title>
   <description></description>
+  <devel project="devel:languages:python" package="python-datamodel-code-generator"/>
 </package>

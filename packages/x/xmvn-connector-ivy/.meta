@@ -6,6 +6,5 @@ attached to default Maven lifecycle when building packages, others can
 be called directly from Maven command line.
 
 </description>
-  <devel project="Java:packages" package="xmvn-connector-ivy"/>
   <url>https://fedora-java.github.io/xmvn/</url>
 </package>

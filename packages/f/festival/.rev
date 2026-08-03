@@ -353,4 +353,12 @@ into sibling directories. (forwarded request 163507 from Andreas_Schwab)</commen
     <comment></comment>
     <requestid>1303109</requestid>
   </revision>
+  <revision rev="48" vrev="16">
+    <srcmd5>bdfd18fdf3a07eb180564c9a7f7259c3</srcmd5>
+    <version>2.5.0</version>
+    <time>1785504649</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1368519</requestid>
+  </revision>
 </revisionlist>

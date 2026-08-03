@@ -57,4 +57,13 @@
   * fix: Simplify the actor thread's name</comment>
     <requestid>1329411</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2c14a7222260b0826bd6b534244ba762</srcmd5>
+    <version>4.4.2</version>
+    <time>1775743766</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.4.2:
+  * fix: Break reference cycle between Actor and ActorRef</comment>
+    <requestid>1345292</requestid>
+  </revision>
 </revisionlist>

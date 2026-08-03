@@ -55,4 +55,17 @@
 </comment>
     <requestid>1188716</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>bf18286390db0e4ae87e53dfb152c444</srcmd5>
+    <version>2.0.0</version>
+    <time>1774469859</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.0.0:
+  * Adopt Ruff
+  * Tighten MyPy settings
+  * Update GitHub actions versions
+  * Avoid storing build time in gzip headers
+- drop no-store-btime-gzip.patch (upstream)</comment>
+    <requestid>1342410</requestid>
+  </revision>
 </revisionlist>

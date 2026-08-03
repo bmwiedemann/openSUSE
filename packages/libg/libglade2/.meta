@@ -6,5 +6,4 @@ easiest way to create the interface files.  For an idea of how to use
 the library, see the documentation, especially
 /usr/share/doc/packages/libglade/test-libgladee.c and the glade-xml.h
 include, which is in the libglade package.</description>
-  <devel project="GNOME:Factory" package="libglade2"/>
 </package>

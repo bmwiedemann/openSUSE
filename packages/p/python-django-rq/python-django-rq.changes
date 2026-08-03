@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jul 14 09:13:43 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- update to 4.1.1
+  * Added support for webhooks argument when registering cron jobs.
+  * Fixed get_scheduler_pid() on rq >= 2.10.
+  * stats.json and rqstats --json/--yaml now expose safe Redis
+    connection metadata instead of raw redis-py connection kwargs.
+    Secret values and redis-py internals are omitted.
+- Drop upstream fix-job-id-test-failures.patch
+
+-------------------------------------------------------------------
 Wed Jun 10 12:06:39 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add upstream patch fix-job-id-test-failures.patch, to fix tests with

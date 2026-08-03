@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul  1 04:08:20 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Added prevent-strip.patch to stop stripping binaries after compilation
+- Added fix-clang-args.patch to fix lact-daemon build
+
+-------------------------------------------------------------------
 Tue Jun 30 02:51:51 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
 
 - For lact.config.yaml file:

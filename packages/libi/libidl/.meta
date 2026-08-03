@@ -4,5 +4,4 @@
 v2.2-compliant Interface Definition Language (IDL) files. IDL is a
 specification for defining interfaces that can be used between
 different CORBA implementations.</description>
-  <devel project="GNOME:Factory" package="libidl"/>
 </package>

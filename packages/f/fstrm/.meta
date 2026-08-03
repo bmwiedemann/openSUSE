@@ -22,6 +22,5 @@ facilitate the addition of high speed binary logging to DNS servers written in
 C using the dnstap log format.
 
 </description>
-  <devel project="server:dns" package="fstrm"/>
   <url>https://github.com/farsightsec/fstrm</url>
 </package>

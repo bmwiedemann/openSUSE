@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Feb 17 13:32:07 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.5.1:
+  * Fix -calc-command-history and -calc-error-color not working due
+    to getting parsed incorrectly #148
+
+-------------------------------------------------------------------
 Wed Oct 29 10:30:08 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.5.0:

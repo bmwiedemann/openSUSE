@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Wed Mar 25 13:53:21 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.0.8:
+  + Fix memory leaks with a collab Telepathy error.
+  + Fix paste of images from Firefox.
+  + Fix memory leaks in styles dialog, Gtk text input.
+  + Fix use after free and memory leak with list numbering.
+  + Fix memory leak with text drag and drop.
+  + Fix memory leak in OpenXML importer/exporter.
+  + Remove babelfish and freetranslation plugins.
+  + Fix appstream for newer flathub requirements.
+  + Properly remember the recent files even if AbiWord crashes.
+  + wordperfect: Use the more recent version of libwpd libwpg and
+    libwps.
+- Changes from version 3.0.7:
+  + Fix memory leaks in Styles, Font Chooser, Borders, List, Clip
+    Art, Replace, Tabs and Table dialogs.
+  + Fix memory leaks in XHTML import.
+  + Fix memory leaks in cut and paste.
+  + Fix memory leaks in the ODF exporter.
+  + Fix memory leaks in the GdkPixbuf importer.
+  + Fix crash when editing lists.
+  + Fix crash when inserting a JPEG image.
+  + Restored icons from page setup dialog (Removed XPM in 3.0.6).
+  + Minor spacing adjustement in the status bar.
+- Switch to source service, update URL.
+- Following the above, use autogen.sh to bootstrap the build
+  system.
+- Add pkgconfig(asio) BuildRequires: New dependency.
+- Drop patches fixed upstream:
+  + abiword-librevenge.patch
+  + abiword-libwps-0.4.patch
+  + boost_asio.patch
+  + xml-inc.patch
+- Drop custom appdata and missing m4 file:
+  + abiword.appdata.xml
+  + AbiCommand_plugin.m4
+- Stop passing -fno-strict-aliasing and -std=c++14 to C(XX)FLAGS:
+  No longer needed.
+
+-------------------------------------------------------------------
 Thu Jul 25 21:25:08 UTC 2024 - Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreuter.net>
 
 - Remove unused --enable-dynamic configure option

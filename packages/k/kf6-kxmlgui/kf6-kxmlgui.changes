@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jul 10 12:16:07 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.28.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.28.0
+- Changes since 6.27.0:
+  * Update dependency version to 6.28.0
+  * Support modifier-only shortcuts in KShortcutsEditor (kde#518302)
+  * Refactor internal KShortcutsEditor bits to support shortcut patterns
+  * don't call moveValuesTo on invalid source (kde#520556)
+  * Update version to 6.28.0
+
+-------------------------------------------------------------------
 Sat Jun  6 11:42:25 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.27.0

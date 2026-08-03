@@ -16,11 +16,17 @@
 #
 
 
-%global bundled_slf4j_version 1.7.25
-%global homedir %{_datadir}/%{name}%{?maven_version_suffix}
-%global confdir %{_sysconfdir}/%{name}%{?maven_version_suffix}
-Name:           maven
-Version:        3.9.16
+%global base_name maven
+%global homedir %{_datadir}/%{base_name}%{?maven_version_suffix}
+%global confdir %{_sysconfdir}/%{base_name}%{?maven_version_suffix}
+%global file_version 3.10.0-rc-1
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "bootstrap"
+%bcond_without bootstrap
+%else
+%bcond_with bootstrap
+%endif
+Version:        3.10.0~rc1
 Release:        0
 Summary:        Java project management and project comprehension tool
 # maven itself is ASL 2.0
@@ -28,81 +34,98 @@ Summary:        Java project management and project comprehension tool
 License:        Apache-2.0 AND MIT
 Group:          Development/Tools/Building
 URL:            https://maven.apache.org/
-Source0:        http://archive.apache.org/dist/%{name}/%{name}-3/%{version}/source/apache-%{name}-%{version}-src.tar.gz
+Source0:        https://archive.apache.org/dist/%{base_name}/%{base_name}-3/%{file_version}/source/apache-%{base_name}-%{file_version}-src.tar.gz
 Source1:        maven-bash-completion
 Source2:        mvn.1
-Source10:       apache-%{name}-build.tar.xz
+Source10:       apache-%{base_name}-build.tar.xz
+Source100:      pom_properties.py
 Patch1:         0001-Adapt-mvn-script.patch
-# Downstream-specific, avoids dependency on logback
 Patch2:         0002-Invoke-logback-via-reflection.patch
 Patch3:         0003-Remove-dependency-on-powermock.patch
 Patch4:         0004-Fix-build-with-qdox-2.0.1.patch
 Patch5:         0005-Reproducible-maven.build.timestamp.patch
+Patch6:         0006-Plexus-utils-4.x-Plexus-xml-3.x-and-javax.annotation.patch
+Patch7:         0007-Do-not-depend-on-maven-resolver-supplier-mvn3.patch
+Patch8:         jline-4.1.x.patch
 BuildRequires:  ant
+BuildRequires:  atinject
+BuildRequires:  javapackages-local
+BuildRequires:  maven-resolver-api
+BuildRequires:  maven-resolver-impl
+BuildRequires:  maven-resolver-named-locks
+BuildRequires:  maven-resolver-spi
+BuildRequires:  maven-resolver-util
+BuildRequires:  modello >= 2.0.0
+BuildRequires:  objectweb-asm
+BuildRequires:  plexus-interpolation
+BuildRequires:  plexus-utils
+BuildRequires:  plexus-xml
+BuildRequires:  sisu-inject
+BuildRequires:  slf4j
+%if %{with bootstrap}
+Name:           %{base_name}-bootstrap
+BuildRequires:  ant
+BuildArch:      noarch
+%else
+Name:           %{base_name}
 BuildRequires:  aopalliance
 BuildRequires:  apache-commons-cli
 BuildRequires:  apache-commons-codec
 BuildRequires:  apache-commons-logging
-BuildRequires:  atinject
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  glassfish-annotation-api
+BuildRequires:  google-errorprone-annotations
+BuildRequires:  google-gson
 BuildRequires:  google-guice
 BuildRequires:  guava
 BuildRequires:  httpcomponents-client
 BuildRequires:  httpcomponents-core
+BuildRequires:  j2objc-annotations
 BuildRequires:  jakarta-inject
 BuildRequires:  jansi
-BuildRequires:  javapackages-local
 BuildRequires:  jcl-over-slf4j
-BuildRequires:  jdom2
-BuildRequires:  maven-resolver-api >= 1.9.25
+BuildRequires:  jline3-jansi-core
+BuildRequires:  jline3-native
+BuildRequires:  jline3-terminal
+BuildRequires:  jline3-terminal-jni
+BuildRequires:  jspecify
 BuildRequires:  maven-resolver-connector-basic
-BuildRequires:  maven-resolver-impl
-BuildRequires:  maven-resolver-named-locks
-BuildRequires:  maven-resolver-spi
+BuildRequires:  maven-resolver-supplier-mvn3
+BuildRequires:  maven-resolver-transport-apache
 BuildRequires:  maven-resolver-transport-file
-BuildRequires:  maven-resolver-transport-http
 BuildRequires:  maven-resolver-transport-wagon
-BuildRequires:  maven-resolver-util
 BuildRequires:  maven-shared-utils
 BuildRequires:  maven-wagon-file
 BuildRequires:  maven-wagon-http
 BuildRequires:  maven-wagon-http-shared
 BuildRequires:  maven-wagon-provider-api
-BuildRequires:  modello >= 2.0.0
-BuildRequires:  objectweb-asm
 BuildRequires:  plexus-cipher >= 2.0
 BuildRequires:  plexus-classworlds
-BuildRequires:  plexus-cli
 BuildRequires:  plexus-containers-component-annotations
-BuildRequires:  plexus-interpolation
 BuildRequires:  plexus-metadata-generator
 BuildRequires:  plexus-sec-dispatcher >= 2.0
-BuildRequires:  plexus-utils
-BuildRequires:  plexus-xml
-BuildRequires:  qdox
-BuildRequires:  sisu-inject
 BuildRequires:  sisu-plexus
-BuildRequires:  slf4j
 BuildRequires:  slf4j-sources
 BuildRequires:  unix2dos
-BuildRequires:  xbean
 BuildRequires:  xmvn-install
 BuildRequires:  xmvn-resolve
 BuildRequires:  xmvn-subst
 BuildRequires:  mvn(org.apache.maven:maven-parent:pom:)
+#!BuildIgnore:  maven-lib
 Requires:       %{name}-lib = %{version}-%{release}
 Requires(post): aaa_base
 Requires(postun): aaa_base
 # maven-lib cannot be noarch because of the position of jansi.jar
 #BuildArch:      noarch
+%endif
 
 %description
 Maven is a software project management and comprehension tool. Based on the
 concept of a project object model (POM), Maven can manage a project's build,
 reporting and documentation from a central piece of information.
 
+%if %{without bootstrap}
 %package        lib
 Summary:        Core part of Maven
 # Require full javapackages-tools since maven-script uses
@@ -120,48 +143,46 @@ Requires:       apache-commons-codec
 Requires:       apache-commons-logging
 Requires:       atinject
 Requires:       glassfish-annotation-api
+Requires:       google-errorprone-annotations
+Requires:       google-gson
 Requires:       google-guice
 Requires:       guava
 Requires:       httpcomponents-client
 Requires:       httpcomponents-core
+Requires:       j2objc-annotations
 Requires:       jakarta-inject
-Requires:       jansi
-Requires:       javapackages-tools
 Requires:       jcl-over-slf4j
-Requires:       junit
+Requires:       jline3-jansi-core
+Requires:       jline3-native
+Requires:       jline3-terminal
+Requires:       jline3-terminal-jni
+Requires:       jspecify
 Requires:       maven-resolver-api
 Requires:       maven-resolver-connector-basic
 Requires:       maven-resolver-impl
 Requires:       maven-resolver-named-locks
 Requires:       maven-resolver-spi
+Requires:       maven-resolver-supplier-mvn3
+Requires:       maven-resolver-transport-apache
 Requires:       maven-resolver-transport-file
-Requires:       maven-resolver-transport-http
 Requires:       maven-resolver-transport-wagon
 Requires:       maven-resolver-util
-Requires:       maven-shared-utils
 Requires:       maven-wagon-file
 Requires:       maven-wagon-http
 Requires:       maven-wagon-http-shared
 Requires:       maven-wagon-provider-api
 Requires:       objectweb-asm
 Requires:       plexus-cipher
-Requires:       plexus-classworlds
 Requires:       plexus-containers-component-annotations
 Requires:       plexus-interpolation
 Requires:       plexus-sec-dispatcher
 Requires:       plexus-utils
 Requires:       plexus-xml
+Requires:       python3
 Requires:       sisu-inject
 Requires:       sisu-plexus
 Requires:       slf4j
-# Maven upstream uses patched version of SLF4J.  They unpack
-# slf4j-simple-sources.jar, apply non-upstreamable, Maven-specific
-# patch (using a script written in Groovy), compile and package as
-# maven-slf4j-provider.jar, together with Maven-specific additions.
-Provides:       bundled(slf4j) = %{bundled_slf4j_version}
-# This package might be installed on a system, since it used to be
-# produced by the binary maven repackaging in some repositories.
-# This Obsoletes will allow a clean upgrade.
+Obsoletes:      %{name}-bootstrap
 Obsoletes:      %{name}-jansi
 # If XMvn is part of the same RPM transaction then it should be
 # installed first to avoid triggering rhbz#1014355.
@@ -178,14 +199,24 @@ BuildArch:      noarch
 %description    javadoc
 %{summary}.
 
+%endif
+
 %prep
-%setup -q -n apache-%{name}-%{version} -a10
+%setup -q -n apache-maven-%{file_version} -a10
 
 %patch -P 1 -p1
 %patch -P 2 -p1
 %patch -P 3 -p1
 %patch -P 4 -p1
 %patch -P 5 -p1
+%patch -P 6 -p1
+%if %{with bootstrap}
+%patch -P 7 -p1
+%else
+%if %{?pkg_vcmp:%pkg_vcmp jline3-terminal >= 4.1}%{!?pkg_vcmp:0}
+%patch -P 8 -p1
+%endif
+%endif
 
 # not really used during build, but a precaution
 find -name '*.jar' -not -path '*/test/*' -delete
@@ -207,55 +238,61 @@ sed -i "
 /buildNumber=/ d
 /timestamp=/ d
 " `find -name build.properties`
-sed -i "s/version=.*/version=%{version}/" `find -name build.properties`
 sed -i "s/distributionId=.*/distributionId=apache-maven/" `find -name build.properties`
 sed -i "s/distributionShortName=.*/distributionShortName=Maven/" `find -name build.properties`
 sed -i "s/distributionName=.*/distributionName=Apache\ Maven/" `find -name build.properties`
 
 %{mvn_package} :apache-maven __noinstall
 
+%pom_remove_dep :jline-terminal-ffm maven-jline
+%pom_remove_dep :jline-terminal-ffm apache-maven
 %pom_remove_dep -r :logback-classic
 
 %pom_xpath_remove pom:parent/pom:relativePath
 
-for i in maven-compat maven-core maven-embedder maven-model maven-model-builder maven-plugin-api maven-resolver-provider maven-settings-builder
-do
-  %pom_add_dep org.codehaus.plexus:plexus-xml:3.0.0 $i
-done
-
+%if %{without bootstrap}
 %{mvn_alias} :maven-resolver-provider :maven-aether-provider
+%endif
+
+(cd maven-core && python3 %{SOURCE100} pom.xml >build.properties)
 
 %build
 mkdir -p lib
 build-jar-repository -s lib \
     atinject \
-    commons-cli \
-    glassfish-annotation-api \
-    guice/google-guice \
-    jakarta-inject \
     maven-resolver/maven-resolver-api \
     maven-resolver/maven-resolver-impl \
     maven-resolver/maven-resolver-named-locks \
     maven-resolver/maven-resolver-spi \
     maven-resolver/maven-resolver-util \
-    maven-shared-utils/maven-shared-utils \
-    maven-wagon/provider-api \
     objectweb-asm/asm-commons \
     objectweb-asm/asm \
     org.eclipse.sisu.inject \
+    plexus/interpolation \
+    plexus/utils \
+    plexus/xml \
+    slf4j/api
+
+%if %{without bootstrap}
+
+build-jar-repository -s lib \
+    commons-cli \
+    guice/google-guice \
+    jakarta-inject \
+    jline3/jansi-core \
+    jline3/jline-terminal \
+    maven-resolver/maven-resolver-supplier-mvn3 \
+    maven-wagon/provider-api \
     org.eclipse.sisu.plexus \
     plexus-classworlds \
     plexus-containers/plexus-component-annotations \
-    plexus/interpolation \
     plexus/plexus-cipher \
-    plexus/plexus-sec-dispatcher \
-    plexus/utils \
-    plexus/xml \
-    slf4j/api \
-    slf4j/simple
+    plexus/plexus-sec-dispatcher
 ln -s $(build-classpath slf4j/slf4j-simple-sources) lib/
-%{ant} \
+
+ant \
   -Dtest.skip=true \
+  -Dproject.version=%{file_version} \
   package javadoc
 
 %{mvn_artifact} pom.xml
@@ -271,20 +308,38 @@ for i in \
     repository-metadata \
     resolver-provider \
     core \
+    jline \
     slf4j-provider \
     embedder \
     compat; do
-  cp -r %{name}-${i}/target/site/apidocs target/site/apidocs/%{name}-${i}
-  %{mvn_artifact} %{name}-${i}/pom.xml %{name}-${i}/target/%{name}-${i}-%{version}.jar
+  cp -r %{base_name}-${i}/target/site/apidocs target/site/apidocs/%{base_name}-${i}
+  %{mvn_artifact} %{base_name}-${i}/pom.xml %{base_name}-${i}/target/%{base_name}-${i}-%{file_version}.jar
 done
 
+%else
+
+ant -f bootstrap.xml -Dtest.skip=true -Dproject.version=%{file_version}
+
+%endif
+
 %install
+%if %{with bootstrap}
+
+install -dm 0755 %{buildroot}%{_javadir}/%{base_name}
+for i in \
+    model-builder \
+    resolver-provider; do
+  install -pm 0644 %{base_name}-${i}/target/%{base_name}-${i}-%{file_version}.jar \
+    %{buildroot}%{_javadir}/%{base_name}/%{base_name}-${i}.jar
+done
+
+%else
 %mvn_install
 %fdupes %{buildroot}%{_javadocdir}
 
-install -d -m 755 %{buildroot}%{homedir}/boot
-install -d -m 755 %{buildroot}%{confdir}
-install -d -m 755 %{buildroot}%{_datadir}/bash-completion/completions/
+install -dm 0755 %{buildroot}%{homedir}/boot
+install -dm 0755 %{buildroot}%{confdir}
+install -dm 0755 %{buildroot}%{_datadir}/bash-completion/completions/
 
 cp -a apache-maven/src/{bin,conf,lib} %{buildroot}%{homedir}/
 rm -rf %{buildroot}%{homedir}/lib/*-native/
@@ -298,32 +353,41 @@ build-jar-repository -p %{buildroot}%{homedir}/lib \
     atinject \
     commons-cli \
     commons-codec \
+    commons-logging \
     glassfish-annotation-api \
+    google-errorprone/annotations \
+    google-gson/gson \
     guava/guava \
     guice/google-guice \
     httpcomponents/httpclient \
     httpcomponents/httpcore \
+    j2objc-annotations \
     jakarta-inject \
-    jansi/jansi \
+    jline3/jansi-core \
+    jline3/jline-native \
+    jline3/jline-terminal \
+    jline3/jline-terminal-jni \
+    jspecify \
     maven-resolver/maven-resolver-api \
     maven-resolver/maven-resolver-connector-basic \
     maven-resolver/maven-resolver-impl \
     maven-resolver/maven-resolver-named-locks \
     maven-resolver/maven-resolver-spi \
+    maven-resolver/maven-resolver-supplier-mvn3 \
+    maven-resolver/maven-resolver-transport-apache \
     maven-resolver/maven-resolver-transport-file \
-    maven-resolver/maven-resolver-transport-http \
     maven-resolver/maven-resolver-transport-wagon \
     maven-resolver/maven-resolver-util \
-    maven-shared-utils/maven-shared-utils \
+    maven-wagon/provider-api \
     maven-wagon/file \
     maven-wagon/http \
     maven-wagon/http-shared \
-    maven-wagon/provider-api \
     objectweb-asm/asm \
     org.eclipse.sisu.inject \
     org.eclipse.sisu.plexus \
-    plexus/plexus-cipher \
+    plexus-containers/plexus-component-annotations \
     plexus/interpolation \
+    plexus/plexus-cipher \
     plexus/plexus-sec-dispatcher \
     plexus/utils \
     plexus/xml \
@@ -349,8 +413,19 @@ ln -sf %{confdir}/logging %{buildroot}%{homedir}/conf
 install -d -m 0755 %{buildroot}%{_bindir}
 ln -sf %{homedir}/bin/mvn %{buildroot}%{_bindir}/
 ln -sf %{homedir}/bin/mvnDebug %{buildroot}%{_bindir}/
-install -d -m 755 %{buildroot}%{_mandir}/man1/
+install -dm 0755 %{buildroot}%{_mandir}/man1/
 install -p -m 644 %{SOURCE2} %{buildroot}%{_mandir}/man1/
+
+%endif
+
+%files
+%if %{with bootstrap}
+%{_javadir}/%{base_name}
+%else
+%{_bindir}/mvn
+%{_bindir}/mvnDebug
+%{_datadir}/bash-completion
+%{_mandir}/man1/mvn.1%{?ext_man}
 
 %files lib -f .mfiles
 %doc README.md
@@ -362,13 +437,9 @@ install -p -m 644 %{SOURCE2} %{buildroot}%{_mandir}/man1/
 %config(noreplace) %{confdir}/settings.xml
 %config(noreplace) %{confdir}/logging/simplelogger.properties
 
-%files
-%{_bindir}/mvn
-%{_bindir}/mvnDebug
-%{_datadir}/bash-completion
-%{_mandir}/man1/mvn.1%{?ext_man}
-
 %files javadoc -f .mfiles-javadoc
 %license LICENSE NOTICE
+
+%endif
 
 %changelog

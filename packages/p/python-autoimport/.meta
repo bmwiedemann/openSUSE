@@ -2,5 +2,6 @@
   <title>Autoimport missing python libraries</title>
   <description>Module to help automatically import missing python libraries when developing
 code.</description>
+  <devel project="devel:languages:python" package="python-autoimport"/>
   <url>https://github.com/lyz-code/autoimport</url>
 </package>

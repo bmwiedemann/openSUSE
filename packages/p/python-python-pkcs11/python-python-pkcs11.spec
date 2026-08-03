@@ -17,7 +17,7 @@
 
 
 Name:           python-python-pkcs11
-Version:        0.9.4
+Version:        0.9.5
 Release:        0
 Summary:        PKCS#11 (Cryptoki) support for Python
 License:        MIT
@@ -25,7 +25,7 @@ URL:            https://github.com/pyauth/python-pkcs11
 Source:         https://files.pythonhosted.org/packages/source/p/python-pkcs11/python_pkcs11-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module cryptography}
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module devel >= 3.10}
 BuildRequires:  %{python_module oscrypto}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 18.0}
@@ -36,13 +36,11 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  softhsm
 # SECTION test requirements
 BuildRequires:  %{python_module asn1crypto}
-BuildRequires:  %{python_module cached-property}
 BuildRequires:  %{python_module parameterized}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-asn1crypto
-Requires:       python-cached-property
 %python_subpackages
 
 %description

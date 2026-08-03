@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul 30 04:11:04 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.6.3:
+  + fix: add error handling for certificate not yet valid
+- Update to version 1.6.2:
+  + chore: Update Root CA and add legacy intermediate CA
+- Update to version 1.6.1:
+  + Fix lint
+
+-------------------------------------------------------------------
 Wed Dec 24 02:42:20 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - fixing Leap16.0, by locating the correct directory of the library

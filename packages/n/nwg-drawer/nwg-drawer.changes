@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar 24 23:50:47 UTC 2026 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 0.7.5.
+  Changelog: https://github.com/nwg-piotr/nwg-drawer/releases/tag/v0.7.5
+  - fixed hWrapper orphans; #183 by @teleportingtortoise;
+  - fixed file-box rendering glitches; #184 by @teleportingtortoise;
+  - dependencies updated; this also gets us rid of the github.com/expr-lang/expr vulnerability below the 1.17.7 version.
+
+-------------------------------------------------------------------
 Fri Jul 18 12:53:20 UTC 2025 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 0.7.4.

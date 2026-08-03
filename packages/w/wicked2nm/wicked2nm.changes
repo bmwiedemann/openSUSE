@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jul 14 13:44:39 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update v1.5.1
+  * Update agama to fix default vlan flags.
+    Previously the default vlan flags in NM was set to 0, which
+    overrides default kernel behavior and thus differed from
+    wicked. It is now set to 1.
+    [bsc#1271079]
+  * Tests: Sort wicked show-config output by interface name
+  * Add leap16.1 to CI
+
+-------------------------------------------------------------------
 Tue Jun 16 09:15:52 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Require minimum cargo version 1.78 for lockfile version 4 parsing

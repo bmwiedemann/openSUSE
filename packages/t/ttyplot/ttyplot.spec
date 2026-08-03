@@ -18,12 +18,13 @@
 
 
 Name:           ttyplot
-Version:        1.7.5
+Version:        1.7.6
 Release:        0
 Summary:        Realtime plotting utility for terminals
 License:        Apache-2.0
 URL:            https://github.com/tenox7/ttyplot
 Source:         https://github.com/tenox7/ttyplot/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  aalib-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(ncurses)
 
@@ -37,7 +38,7 @@ display using reverse video for the second line.
 %autosetup -p1
 
 %build
-%make_build CFLAGS="%{optflags} $(pkg-config --cflags --libs ncursesw)"
+%make_build CFLAGS="%{optflags} $(pkg-config --cflags --libs ncursesw)" AA=1
 
 %install
 %make_install DESTDIR=%{buildroot} PREFIX=%{_prefix} MANPREFIX=%{_mandir}

@@ -1,7 +1,7 @@
 #
 # spec file for package fprintd
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           fprintd
-Version:        1.94.4
+Version:        1.94.5
 Release:        0
 Summary:        D-Bus service for Fingerprint reader access
 License:        GPL-2.0-or-later
@@ -38,7 +38,7 @@ BuildRequires:  python3-libpamtest
 BuildRequires:  typelib-1_0-FPrint-2_0
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(libfprint-2) >= 1.94.0
+BuildRequires:  pkgconfig(libfprint-2) >= 1.94.9
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(pam_wrapper)
 BuildRequires:  pkgconfig(polkit-gobject-1)

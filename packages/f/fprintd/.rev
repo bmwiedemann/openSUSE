@@ -181,4 +181,16 @@
     <comment></comment>
     <requestid>1308211</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>1bd5356d3187c3d5399963fe0a98f2bd</srcmd5>
+    <version>1.94.5</version>
+    <time>1774470085</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.94.5:
+  * fprintd now depends on libfprint 1.94.9
+  * Improved handling of device errors
+  * pam: reduce minimum timeout to 1 second
+  * pam: support unlimited timeout (forwarded request 1342427 from dirkmueller)</comment>
+    <requestid>1342484</requestid>
+  </revision>
 </revisionlist>

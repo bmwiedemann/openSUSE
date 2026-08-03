@@ -6,5 +6,6 @@ Supports all compression formats allowed by the RINEX 2, 3 and 4 standards:
 * Hatanaka compression for Observation Data Files,
 * LZW (.Z), gzip (.gz), bzip2 (.bz2) and .zip.
 </description>
+  <devel project="devel:languages:python" package="python-hatanaka"/>
   <url>https://github.com/valgur/hatanaka</url>
 </package>

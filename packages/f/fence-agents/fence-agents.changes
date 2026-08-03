@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul 21 13:35:32 UTC 2026 - varkoly@suse.com
+
+- Update to version 4.17.0+git.1784121740.9871084:
+  * fence_vmware_rest: add token-based authentication support
+  * fence_aws: add tag/eni/ebs identity-method instance resolution
+  * fence_kubevirt: report Succeeded and Failed as OFF
+
+-------------------------------------------------------------------
 Mon Jun 22 10:28:33 UTC 2026 - varkoly@suse.com
 
 - Update to version 4.17.0+git.1781703439.0804740:

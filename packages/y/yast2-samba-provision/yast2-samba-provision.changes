@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 25 17:45:35 UTC 2026 - Michal Filka <mfilka@suse.com>
+
+- jsc#PED-14507
+  - Removed reference to update-desktop-files from spec file 
+  - 1.0.6
+-------------------------------------------------------------------
 Tue Apr 20 18:14:05 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - stop packaging docdir, it only contained the license which

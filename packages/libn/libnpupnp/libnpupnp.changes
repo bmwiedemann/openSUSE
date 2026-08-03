@@ -1,3 +1,13 @@
+-------------------------------------------------------------------
+Mon Mar 23 19:23:42 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 6.3.0
+  * Disable expat usage by default. Seems to work fine with the
+    internal XML parser.
+  * Improve logging subsystem (switch subsystems logging through
+    environ).
+
+-------------------------------------------------------------------
 Mon Nov 24 11:18:19 UTC 2025 - Michael Pujos <pujos.michael@gmail.com>
 
 - Update to 6.2.3:

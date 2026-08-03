@@ -1,4 +1,90 @@
 -------------------------------------------------------------------
+Tue Jul 28 13:04:32 UTC 2026 - Ben Greiner <code@bnavigator.de>
+
+- Update to 25.0.0 
+  https://arrow.apache.org/release/25.0.0.html
+  https://arrow.apache.org/release/24.0.0.html
+  ## Bug Fixes
+  * GH-43574 - [Python][Parquet] do not add partition columns from
+    file path when reading single file (#49853)
+  * GH-46179 - [Python] Bump index level once if pandas df already
+    contains index_level_i column (#46884)
+  * GH-48254 - [Python][Parquet] Support extension types in
+    read_schema (#48255)
+  * GH-49327 - [Python][Packaging] Use ARROW_SIMD_LEVEL=NEON for
+    macOS arm64 (#50181)
+  * GH-49740 - [C++][Python] Fix casts to view types leaving null
+    variadic buffers (#50166)
+  * GH-49745 - [Docs][Python] Fix doctests failure in substrait.rst
+    (#49754)
+  * GH-49764 - [C++][Python] Avoid building bundled Abseil outside
+    resolve_dependency (#49936)
+  * GH-49831 - [Python] Withhold annotations from Python wheel
+    until they are complete (#50168)
+  * GH-49846 - [CI][Python] fix test-conda-python-3.11-hypothesis
+    (#49847)
+  * GH-49875 - [Python] Fix timezone dropped when converting
+    tz-aware Categorical to Arrow array (#49878)
+  * GH-49917 - [Python] Remove Py_XDECREF to avoid Use-After-Free
+    on PyList_SetItem in SparseCSFTensorToNdarray (#49916)
+  * GH-49923 - [Parquet][Python] Inconsistent default values for
+    Parquet pre_buffer (#49924)
+  * GH-49927 - [Python][Parquet] Expose bloom_filter_offset and
+    bloom_filter_length to Python in column chunk metadata (#49926)
+  * GH-49933 - [Python] Fix test_table_column_subset_metadata to
+    set freq on correct object (#49944)
+  * GH-49942 - [Python] Protect PyBuffer and NumPyBuffer
+    destructors against interpreter finalization (#49943)
+  * GH-49998 - [CI][Python] Pin to an older release of miniforge to
+    fix mamba hang (#49999)
+  * GH-50012 - [Python] Fix list_ storage crashes when values
+    exceed int32 offsets (#50016)
+  * GH-50037 - [Python] test_table_uses_memory_pool flaky on macOS
+    14 job (#50045)
+  * GH-50041 - [CI][Python] Make
+    test_string_to_tzinfo_pytz_fallback more robust for platforms
+    supporting lower case tz names (#50042)
+  * GH-50043 - [C++][Python] Fix hash_any/hash_all on sliced
+    boolean arrays (#50094)
+  * GH-50105 - [C++][Python] Fix sliced sparse union null checks
+    (#50108)
+  * GH-50113 - [C++][Python] Fix count for sliced union arrays
+    (#50114)
+  * GH-50174 - [CI][Python] Fix debug Python job (#50207)
+  * GH-50176 - [Python] Explicitly pass exc_type=ImportError to
+    importorskip pyarrow.* (#50177)
+  * GH-50227 - [Docs][Python][Parquet] Update parquet default
+    version text in parquet.rst (#50228)
+  * GH-50277 - [CI][Python] Avoid using generators for test
+    parametrization on newer Pytest (#50278)
+  * GH-50291 - [Python][Packaging] Stop using nightly build
+    dependencies for building free-threaded wheels (#50315)
+  ## New Features and Improvements
+  * GH-22232 - [C++][Python] Introduce optional default_column_type
+    parameter (#47663)
+  * GH-31318 - [Python] Add fixed-offset timezones to Hypothesis
+    test strategy (#49844)
+  * GH-40062 - [C++][Python] Conversion of Table to Arrow Tensor
+    (#41870)
+  * GH-47435 - [Python][Parquet] Add direct key
+    encryption/decryption API (#49667)
+  * GH-48028 - [Python][Packaging] Update quay.io base manylinux
+    and musllinux images for Python wheels and remove cp313t
+    (#50082)
+  * GH-49232 - [Python] deprecate feather python (#49590)
+  * GH-49644 - [Python] Support converting list of
+    multi-dimensional arrays to FixedShapeTensor (#50203)
+  * GH-49751 - [Python] Add raw fd support to pa.OSFile (#49750)
+  * GH-49967 - [Python][CI] Raise oldest NumPy wheel-test
+    requirement to a patched release (#49965)
+  * GH-50072 - [Python] Add tests for replace_with_mask kernel
+    (#50102)
+  * GH-50191 - [CI][Python] Switch caching to
+    apache/infrastructure-actions/stash (#50192)
+  * GH-50197 - [C++][Python] Add "hypot" compute kernel (#50198)
+  * GH-50208 - [CI][C++][Python] Disable ccache hash_dir (#50209)
+
+-------------------------------------------------------------------
 Thu Sep 25 10:25:07 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 21.0.0

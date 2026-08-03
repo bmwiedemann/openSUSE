@@ -20,6 +20,5 @@ perform structural analysis, and then in depth first mode to actually produce
 the output, but obeying the depth relationships of the first pass.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-Data-Dump-Streamer"/>
   <url>http://search.cpan.org/dist/Data-Dump-Streamer/</url>
 </package>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Mar 22 06:18:25 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.480.0 (0.48)
+   see /usr/share/doc/packages/perl-Parse-PMFile/Changes
+
+  0.48 2026/03/21
+    - Improve class detection (GH#16, ehuelsmann++)
+
+-------------------------------------------------------------------
 Mon Apr 22 03:08:03 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.47

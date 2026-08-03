@@ -5,6 +5,5 @@
 *	Provide hourly forecasts for the next 24 hours
 *	Also shows tomorrow and 7-day forcasts
 *	Supports metric or imperial systems</description>
-  <devel project="GNOME:Apps" package="mousam"/>
   <url>https://github.com/amit9838/mousam</url>
 </package>

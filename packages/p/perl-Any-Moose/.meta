@@ -18,6 +18,5 @@ else that uses Any-Moose will continue to pick Mouse.
 
 So, if you have to use the Mouse manpage, please be considerate to the
 Moose fanboys (like myself!) and use the Any-Moose manpage instead. ':)'</description>
-  <devel project="devel:languages:perl" package="perl-Any-Moose"/>
   <url>http://search.cpan.org/perldoc?Any:Moose</url>
 </package>

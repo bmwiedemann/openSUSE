@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-kdump
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yast2-kdump
-Version:        5.0.6
+Version:        5.0.7
 Release:        0
 Summary:        Configuration of kdump
 License:        GPL-2.0-only
@@ -26,7 +26,6 @@ URL:            https://github.com/yast/yast-kdump
 
 Source0:        %{name}-%{version}.tar.bz2
 
-BuildRequires:  update-desktop-files
 BuildRequires:  yast2
 BuildRequires:  rubygem(%{rb_default_ruby_abi}:rspec)
 BuildRequires:  rubygem(%{rb_default_ruby_abi}:yast-rake)

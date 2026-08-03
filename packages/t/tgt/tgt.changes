@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Mar 24 23:14:52 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 1.0.97+0.f0dc199:
+  * tgt 1.0.97
+  * tgtd.service hardening
+  * glusterfs apparently changed some of their APIs to take some extra options parameters, which it is OK to pass NULL for. This seems to have happened a number of years ago now (2019?), so perhaps we can get away with not making this conditional?
+  * More updates to examples and manpage update
+  * Update examples
+  * tgt 1.0.96
+  * Install examples in documentation directory
+  * Support vtl setup from config files
+  * Fix escaping of commands
+- drop tgt-install-examples-in-documentation-dir.patch (upstream)
+
+-------------------------------------------------------------------
 Tue Mar 25 23:32:28 UTC 2025 - lduncan@suse.com
 
 - Update to version 1.0.95+0.2b6396622346:
@@ -65,14 +80,14 @@ Wed Nov 15 07:31:31 UTC 2023 - ming li <mli@suse.com>
     just build test.
   * README: minor update
     update URLs.
-    remove too old kernel version info. 
+    remove too old kernel version info.
 
 -------------------------------------------------------------------
 Mon Jan  2 13:28:45 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.85:
   * remove duplicate includes
-  * Fix blank documentation line in service file 
+  * Fix blank documentation line in service file
 
 -------------------------------------------------------------------
 Fri Dec 23 20:01:34 UTC 2022 - Lee Duncan <lduncan@suse.com>
@@ -95,7 +110,7 @@ Sat Dec  3 17:25:58 UTC 2022 - Dirk Müller <dmueller@suse.com>
 - update to 1.0.84:
   * fix bug: target bound initiator-name but client cannot discovery the
     target device
-  * fix use-after-free in iser_conn_free() 
+  * fix use-after-free in iser_conn_free()
 
 -------------------------------------------------------------------
 Tue Apr  5 19:01:02 UTC 2022 - Lee Duncan <lduncan@suse.com>
@@ -199,7 +214,7 @@ Sun Aug 12 01:11:13 UTC 2018 - lduncan@suse.com
 -------------------------------------------------------------------
 Thu Nov 23 13:42:22 UTC 2017 - rbrown@suse.com
 
-- Replace references to /var/adm/fillup-templates with new 
+- Replace references to /var/adm/fillup-templates with new
   %_fillupdir macro (boo#1069468)
 
 -------------------------------------------------------------------
@@ -214,7 +229,7 @@ Mon Nov 16 16:43:18 UTC 2015 - lduncan@suse.com
 - Adding upstream patch to silence bogus error
   message when backing-store directory not present
   (bsc#954801), adding patch:
-  * tgt-missing-module-directory-not-an-error 
+  * tgt-missing-module-directory-not-an-error
 
 -------------------------------------------------------------------
 Mon Nov 16 00:54:26 UTC 2015 - lduncan@suse.com
@@ -377,5 +392,5 @@ Wed Apr  4 10:26:41 CEST 2007 - hare@suse.de
 
 - Initial version svn r849
 - Update to latest git version
-- Fixes for build on openSUSE 
+- Fixes for build on openSUSE
 

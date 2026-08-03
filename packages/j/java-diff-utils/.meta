@@ -5,6 +5,5 @@
 Main reason to build this library was the lack of easy-to-use libraries with all the usual stuff you need while working with diff files. Originally it was inspired by JRCS library and it's nice design of diff module.
 
 This is originally a fork of java-diff-utils from Google Code Archive.</description>
-  <devel project="Java:packages" package="java-diff-utils"/>
   <url>https://java-diff-utils.github.io/java-diff-utils/</url>
 </package>

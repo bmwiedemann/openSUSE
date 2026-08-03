@@ -1,7 +1,7 @@
 #
 # spec file for package check-create-certificate
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2010-2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,17 @@
 
 
 Name:           check-create-certificate
-Version:        0.5
+Version:        0.6
 Release:        0
 Summary:        A non-interactive script that creates an SSL certificate if it does not exist
 License:        GPL-2.0
 Group:          Productivity/Networking/System
 Url:            http://github.com/jdsn/check-create-certificate
 
-Source:         %{name}-%{version}.tar.bz2
+Source0:        check-create-certificate
+Source1:        COPYING
 BuildRequires:  coreutils
-Requires:       openssl
+Requires:       openssl >= 1.1.1
 Requires:       perl
 Requires:       perl-base
 
@@ -43,15 +44,13 @@ Authors:
 
 %prep
 
-%setup -q
-
 %build
 
 %install
 mkdir -p %{buildroot}%{_prefix}/sbin
-install -m 755 script/%{name} %{buildroot}%{_sbindir}/
+install -m 755 %{SOURCE0} %{buildroot}%{_sbindir}/
 mkdir -p %{buildroot}/%{_docdir}/%{name}
-install -m 644 COPYING %{buildroot}/%{_docdir}/%{name}/
+install -m 644 %{SOURCE1} %{buildroot}/%{_docdir}/%{name}/
 
 %files
 %defattr(-,root,root)

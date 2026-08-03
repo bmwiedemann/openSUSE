@@ -9,5 +9,4 @@ tokens are recognized (see below for the list), then this module is able to
 correctly handle the presence of said tokens inside identifiers, values,
 comments, BEGIN ... END blocks (even nested), dollar-quoted strings, MySQL
 custom DELIMITERs, procedural code etc.</description>
-  <devel project="devel:languages:perl" package="perl-SQL-SplitStatement"/>
 </package>

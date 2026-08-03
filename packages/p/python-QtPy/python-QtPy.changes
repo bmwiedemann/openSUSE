@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 29 09:29:44 UTC 2026 - Ben Greiner <code@bnavigator.de>
+
+- Drop Qt5 Webengine tests: Must be removed from Tumbleweed
+  https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/message/IFZ4HRNKQUXZHXD7S3FWM3QIONDNMOMY/
+
+-------------------------------------------------------------------
 Mon Jun  2 08:37:07 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Drop pyside2 support for Leap 16 and factory (boo#1243916)

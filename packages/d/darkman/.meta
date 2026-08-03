@@ -1,4 +1,5 @@
 <package name="darkman" project="openSUSE:Factory">
   <title></title>
   <description>Framework for dark-mode and light-mode transitions</description>
+  <devel project="X11:Utilities" package="darkman"/>
 </package>

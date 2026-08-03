@@ -122,4 +122,12 @@
     <comment></comment>
     <requestid>1066606</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>b31eba0ce8b04b87ecd64ee62d8e8aa1</srcmd5>
+    <version>0.8.2</version>
+    <time>1773161878</time>
+    <user>anag_factory</user>
+    <comment>- Make it build with latest gcc</comment>
+    <requestid>1337964</requestid>
+  </revision>
 </revisionlist>

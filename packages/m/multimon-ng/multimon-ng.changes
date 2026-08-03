@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jul 28 08:21:51 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.6.0
+  * Added GSC paging support with error correction, auto-polarity,
+    batch messages, and JSON output (#263)
+  * Major FLEX_NEXT improvements based on ARIB STD-43A, including
+    more robust decoding, message reassembly, validation,
+    timestamps, and JSON output.
+  * Improved POCSAG polarity detection, BCH error correction,
+    charset support, and malformed-message handling.
+  * Added FLEX and POCSAG generation, automatic input format
+    detection, and an optional SDL3 oscilloscope.
+  * Improved CMake, MinGW, and automated test support.
+  * Fixed FLEX group-message bounds and other decoder issues.
+- Build with support for the SDL3-based oscilloscope.
+
+-------------------------------------------------------------------
 Sun Feb 23 11:10:29 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.4.1

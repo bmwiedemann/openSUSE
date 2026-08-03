@@ -8,5 +8,6 @@ position in the expression list and modify the list. Enter data by typing
 numbers (with optional decimal point), separated by operators.
 
 An output transcript may be saved and reloaded for further editing.</description>
+  <devel project="utilities" package="add"/>
   <url>https://invisible-island.net/add/add.html</url>
 </package>

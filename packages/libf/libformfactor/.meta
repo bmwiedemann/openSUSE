@@ -2,5 +2,6 @@
   <title>Efficient computation of scattering form factors of arbitrary polyhedra</title>
   <description>Efficient computation of scattering form factors (Fourier shape transforms) of
 arbitrary polyhedra according to Wuttke, J Appl Cryst 54, 580-587 (2021).</description>
+  <devel project="science" package="libformfactor"/>
   <url>https://jugit.fz-juelich.de/mlz/libformfactor</url>
 </package>

@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-sudo
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           yast2-sudo
 Summary:        YaST2 - Sudo configuration
-Version:        5.0.0
+Version:        5.0.1
 Release:        0
 URL:            https://github.com/yast/yast-sudo
 Group:          System/YaST
@@ -31,7 +31,6 @@ Requires:       yast2-users
 Requires:       yast2 >= 2.21.22
 Requires:       yast2-ruby-bindings >= 1.0.0
 
-BuildRequires:  update-desktop-files
 BuildRequires:  yast2
 BuildRequires:  yast2-devtools >= 4.2.2
 BuildRequires:  yast2-users

@@ -35,6 +35,5 @@ libsyck and a C compiler).
 To restate, the YAML::Tiny manpage does *not* preserve your comments,
 whitespace, or the order of your YAML data. But it should round-trip from
 Perl structure to file and back again just fine.</description>
-  <devel project="devel:languages:perl" package="perl-YAML-Tiny"/>
   <url>http://search.cpan.org/dist/YAML-Tiny</url>
 </package>

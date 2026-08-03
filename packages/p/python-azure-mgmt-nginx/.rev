@@ -72,4 +72,19 @@
 - Use modern RPM macros to express version dependencies (forwarded request 1164840 from glaubitz)</comment>
     <requestid>1165236</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>29f114a6b4625ab60ed310d7fe047f4c</srcmd5>
+    <version>4.0.0</version>
+    <time>1774470075</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 4.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Drop extra LICENSE.txt as upstream now ships its own
+- Rename LICENSE.txt to LICENSE in %files section
+- Update Requires from pyproject.toml (forwarded request 1342434 from glaubitz)</comment>
+    <requestid>1342468</requestid>
+  </revision>
 </revisionlist>

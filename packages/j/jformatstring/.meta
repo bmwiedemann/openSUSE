@@ -15,6 +15,5 @@ under the LGPL), it is broken out as a separate project. While there may be
 some confusion/discussion about the licenses, the FindBugs project does not 
 interpret the FindBugs LGPL license to be any stronger than GPL v2 + the 
 Classpath exception.</description>
-  <devel project="Java:packages" package="jformatstring"/>
   <url>https://jformatstring.dev.java.net/</url>
 </package>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 17 22:17:43 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2025.04.14:
+  * Remove "%3" tooltip in SVG output
+  * Add an option to specify time format
+
+-------------------------------------------------------------------
 Fri Jun  7 15:48:37 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2024.06.06:

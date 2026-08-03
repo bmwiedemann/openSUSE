@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-gpmc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yast2-gpmc
-Version:        1.5.1
+Version:        1.5.2
 Release:        0
 Summary:        Group Policy Management Console for YaST
 License:        GPL-3.0-only
@@ -28,7 +28,6 @@ Source:         %{name}-%{version}.tar.bz2
 
 BuildRequires:  perl-XML-Writer
 BuildRequires:  python3
-BuildRequires:  update-desktop-files
 BuildRequires:  yast2
 BuildRequires:  yast2-devtools
 BuildRequires:  yast2-testsuite

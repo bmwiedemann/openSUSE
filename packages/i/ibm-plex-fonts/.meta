@@ -5,5 +5,6 @@ its previous corporate font family, “Helvetica Neue”, for this new era. The
 Grotesque style was the perfect fit. Not only do Grotesque font families
 balance human and rational elements, the Grotesque style also came about during
 the Industrial Age, when IBM was born.</description>
+  <devel project="M17N:fonts" package="ibm-plex-fonts"/>
   <url>https://www.ibm.com/plex/</url>
 </package>

@@ -253,4 +253,41 @@
   * Removed test that currently has no live examples in lite-xl-plugin-manager.</comment>
     <requestid>1314442</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>0c1a587c665f249ce6f97f3b1c9cf323</srcmd5>
+    <version>1.4.7+git20260506.ece8d63</version>
+    <time>1782916666</time>
+    <user>anag_factory</user>
+    <comment>- Adjustments for mbedtls-devel pointing to v4
+  * mbedtls-3-devel is available in TW, but Leap would still use mbedtls-devel
+
+- Update to version 1.4.7+git20260506.ece8d63:
+  * Fixed update-checksums, and and ensured we don't symlink lite-xl because of how it resolves things.
+  * Typo.
+  * Updated zlib.
+  * Added in arch.
+  * Fixed test.
+  * Added cjson.
+  * Don't bother installing local lite-xls.
+  * Fixed an issue with plugins with different modversions but same version not appearing.
+  * Changed switch slightly.
+  * Paid more attention to the SYMLINK flag.
+  * Added in new switch logic.
+  * Updated CHANGELOG.md.
+  * Added a UTC timestamp.
+  * Added in removal for reinstalls of lite-xl, and added a local guard.
+  * Updated CHANGELOG.md.
+  * Due to a change in how libgit2 handles shallow clones, it's best if these are not enabled by default. If you shallow clone something, and try to update, it'll just regrab everything as of at least 1.9.1.
+  * Improved update to not update only repos, but also to update SKIP checksum files.
+  * Updated CHANGELOG.md.
+  * Ensured that we only try to copy the system config when it actually exists.
+  * Added in distinctions for different platforms for constructed bottles.
+  * Removed simplfied.
+  * Updated CHANGELOG.md.
+  * Ensured version comes out in JSON.
+  * Added in the capability of specifying a bottle's location, and constructing them as folders outside the normal flow.
+  * Added in the ability to specify the system config.
+  * Updated CHANGELOG.md.</comment>
+    <requestid>1362714</requestid>
+  </revision>
 </revisionlist>

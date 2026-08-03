@@ -1,7 +1,7 @@
 #
 # spec file for package pdfmixtool
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           pdfmixtool
-Version:        1.2.1
+Version:        1.2.2
 Release:        0
 Summary:        Split, Merge, Rotate and Mix PDF Files
 License:        GPL-3.0-only

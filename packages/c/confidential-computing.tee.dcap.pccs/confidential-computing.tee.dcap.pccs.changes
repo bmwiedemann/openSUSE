@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 25 12:34:56 UTC 2026 - ohering@suse.de
+
+- Build sqlite3_bindings with confidential-computing.tee.dcap.pccs.patch
+
+-------------------------------------------------------------------
 Tue Mar  3 03:03:03 UTC 2026 - ohering@suse.de
 
 - Initial version 1.25 (9c4fe2d21a32)

@@ -12,6 +12,5 @@ globs).
 
 the Data::Visitor manpage is meant to be subclassed, but also ships with a
 callback driven subclass, the Data::Visitor::Callback manpage.</description>
-  <devel project="devel:languages:perl" package="perl-Data-Visitor"/>
   <url>http://search.cpan.org/dist/Data-Visitor/</url>
 </package>

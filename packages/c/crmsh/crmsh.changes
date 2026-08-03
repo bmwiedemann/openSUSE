@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Jul 30 09:22:12 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.1.0+20260730.157564b0:
+  * Dev: sbd: Drop default deprecated properties
+  * Dev: sbd: Discover deprecated properties dynamically
+  * Dev: ra: Split deprecated parameter helpers
+  * Dev: sbd: Check and fix deprecated properties (jsc#PED-14631)
+  * Revert "Dev: bootstrap: Still set deprecated properties during bootstrap (#2077)"
+
+-------------------------------------------------------------------
+Fri Jul 24 09:21:41 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.1.0+20260724.39cac41c:
+  * Fix: bootstrap: Log pacemaker enable action conditionally
+
+-------------------------------------------------------------------
+Mon Jul 20 09:05:43 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.1.0+20260720.849ba1da:
+  * Dev: behave: Add 1122/tcp to firewalld configuration globally
+
+-------------------------------------------------------------------
+Wed Jul 15 06:10:48 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.1.0+20260715.d98bfe99:
+  * Dev: log: Add quiet-aware logger adapter
+
+-------------------------------------------------------------------
 Mon Jul 13 07:19:49 UTC 2026 - XLiang@suse.com
 
 - Update to version 5.1.0+20260713.74b4d0ac:

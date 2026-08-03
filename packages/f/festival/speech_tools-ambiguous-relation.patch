@@ -1,0 +1,42 @@
+diff -Naru speech_tools_orig/ling_class/EST_Utterance.cc speech_tools/ling_class/EST_Utterance.cc
+--- speech_tools_orig/ling_class/EST_Utterance.cc	2017-09-05 00:54:03.000000000 +0900
++++ speech_tools/ling_class/EST_Utterance.cc	2026-07-30 16:01:43.973998028 +0900
+@@ -269,7 +269,7 @@
+     EST_Features::Entries ri;
+     for(ri.begin(utt.relations); ri; ri++)
+     {
+-	EST_Relation *rel = relation(ri->v);
++	EST_Relation *rel = ::relation(ri->v);
+ 	for(EST_Item *i=rel->head(); i != NULL; i=next_item(i))
+ 	{
+ 	    EST_String id = i->S(feature);
+@@ -280,7 +280,7 @@
+     EST_Features::Entries eri;
+     for(eri.begin(extra.relations); eri; eri++)
+     {
+-	EST_Relation *rel = relation(eri->v);
++	EST_Relation *rel = ::relation(eri->v);
+ 	EST_String rel_name = rel->name();
+ 
+ 	while (utt.relation_present(rel_name))
+diff -Naru speech_tools_orig/ling_class/EST_UtteranceFile.cc speech_tools/ling_class/EST_UtteranceFile.cc
+--- speech_tools_orig/ling_class/EST_UtteranceFile.cc	2017-09-05 00:54:03.000000000 +0900
++++ speech_tools/ling_class/EST_UtteranceFile.cc	2026-07-30 15:58:41.119192467 +0900
+@@ -276,7 +276,7 @@
+     EST_Features::Entries p;
+     for (p.begin(utt.relations); p; p++)
+     {
+-	v = relation(p->v)->save(outf,sinames);
++	v = ::relation(p->v)->save(outf,sinames);
+ 	if (v == write_fail) return v;
+     }
+     outf << "End_of_Relations\n";
+@@ -300,7 +300,7 @@
+     EST_Features::Entries p;
+     for (p.begin(utt.relations); p; p++)
+     {
+-	v = utt_save_all_contents(outf,relation(p->v)->head(),
++	v = utt_save_all_contents(outf,::relation(p->v)->head(),
+ 				  sinames,si_count);
+ 	if (v == write_fail) return v;
+     }

@@ -1,7 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun 29 12:11:39 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- update to 4.13.3
+  * Make sure client disconnects when write loop exits
+  * Address flaky unit test
+  * Stop using codecov service, since it has been failing for a long time
+
+-------------------------------------------------------------------
 Mon May 25 20:15:30 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
-- update to 4.13.2:
+- update to 4.13.2 (bsc#1269545, CVE-2026-48809, bsc#1269544, CVE-2026-48802):
   * Prevent unnecessary resource allocations #441 (commit)
   * Add zizmor to CI builds #437 (commit)
 

@@ -5,5 +5,4 @@ strings, or any other two lists of things.  It uses an intelligent
 algorithm similar to (or identical to) the one used by the Unix &quot;diff&quot;
 program.  It is guaranteed to find the *smallest possible* set of
 differences.</description>
-  <devel project="devel:languages:perl" package="perl-Algorithm-Diff"/>
 </package>

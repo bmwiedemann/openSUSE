@@ -18,5 +18,6 @@ connected-mode sessions. As such, it can be used to create many types of ham
 radio software, from simple beaconing to full-fledged packet radio terminal
 applications akin to Linpac. (See PyHam’s Paracon software for an example of
 the latter.)</description>
+  <devel project="hamradio" package="python-pyham_pe"/>
   <url>https://pyham-pe.readthedocs.io/en/latest/</url>
 </package>

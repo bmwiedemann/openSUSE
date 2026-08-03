@@ -18,18 +18,18 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-randomly
-Version:        4.0.1
+Version:        4.1.0
 Release:        0
 Summary:        Pytest plugin to randomly order tests and control random.seed
 License:        MIT
 URL:            https://github.com/pytest-dev/pytest-randomly
 Source:         https://github.com/pytest-dev/pytest-randomly/archive/%{version}.tar.gz#/pytest-randomly-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-importlib-metadata >= 3.6.0
 Requires:       python-pytest
 Recommends:     python-Faker >= 13.11.0
 Suggests:       python-numpy
@@ -37,7 +37,6 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Faker >= 13.11.0}
 BuildRequires:  %{python_module factory_boy}
-BuildRequires:  %{python_module importlib-metadata >= 3.6.0}
 # Django package not available on SLFO:Main
 %if 0%{suse_version} >= 1699
 BuildRequires:  %{python_module model-bakery >= 1.13.0}

@@ -80,4 +80,18 @@
   * Normalize the license headers (forwarded request 1339528 from rrahl0)</comment>
     <requestid>1339529</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>7298db50cbbe15d03806a11b8d92f96b</srcmd5>
+    <version>0.8.2</version>
+    <time>1785504625</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.8.2:
+  + Use g_error_new_literal when it can be used
+  + Fix destructor type for sqlite3_bind_text
+  + Use g_error_new_literal in tests
+  + Move the containers to the imfreedom organization
+  + Use fixed endianness for errors bound into SQL statements
+  + Put developer-related tests in a 'dev' suite (forwarded request 1368488 from rrahl0)</comment>
+    <requestid>1368489</requestid>
+  </revision>
 </revisionlist>

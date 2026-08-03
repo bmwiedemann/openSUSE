@@ -1,7 +1,7 @@
 #
 # spec file for package sbc
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2012 B1 Systems GmbH, Vohburg, Germany.
 # Copyright (c) 2025, Martin Hauke <mardnh@gmx.de>
 #
@@ -20,7 +20,7 @@
 
 %define sonum 1
 Name:           sbc
-Version:        2.1
+Version:        2.2
 Release:        0
 Summary:        Bluetooth Low-Complexity, Sub-Band Codec Utilities
 License:        GPL-2.0-or-later

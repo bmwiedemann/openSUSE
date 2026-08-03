@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Apr  5 06:23:53 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.9918
+   see /usr/share/doc/packages/perl-Perl-PrereqScanner-NotQuiteLite/Changes
+
+  0.9918 2026/04/05
+    - Support builtin, experimental, native class and Feature::Compat::Class
+
+-------------------------------------------------------------------
 Mon Jun 23 20:37:26 UTC 2025 - Tina Müller <tina.mueller@suse.com>
 
 - Normalize CPAN version

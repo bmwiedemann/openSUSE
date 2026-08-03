@@ -219,4 +219,14 @@
     last successful calculation #146</comment>
     <requestid>1314316</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>a148304be4b0dd68b90fc4cbfbd8dc38</srcmd5>
+    <version>2.5.1</version>
+    <time>1771343665</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.5.1:
+  * Fix -calc-command-history and -calc-error-color not working due
+    to getting parsed incorrectly #148</comment>
+    <requestid>1333563</requestid>
+  </revision>
 </revisionlist>

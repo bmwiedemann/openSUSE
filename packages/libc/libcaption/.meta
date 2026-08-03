@@ -3,5 +3,6 @@
   <description>libcaption is a library written in C to aid in the creating and parsing of
 closed caption data, open sourced under the MIT license to use within community
 developed broadcast tools.</description>
+  <devel project="multimedia:libs" package="libcaption"/>
   <url>https://github.com/szatmary/libcaption</url>
 </package>

@@ -1,4 +1,5 @@
 <package name="cxxbridge" project="openSUSE:Factory">
   <title>cxxbridge</title>
   <description> C++ code generator for integrating `cxx` crate into a non-Cargo build. </description>
+  <devel project="utilities" package="cxxbridge"/>
 </package>

@@ -385,4 +385,29 @@ Most of the source code files carry a GPL-2.0 notice, not GPL-2.0+ (forwarded re
     <comment></comment>
     <requestid>1256088</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>536fe7ebec5d00298de0589f95d7f10a</srcmd5>
+    <version>1.0.97</version>
+    <time>1774469936</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.0.97+0.f0dc199:
+  * tgt 1.0.97
+  * tgtd.service hardening
+  * glusterfs apparently changed some of their APIs to take some extra options parameters, which it is OK to pass NULL for. This seems to have happened a number of years ago now (2019?), so perhaps we can get away with not making this conditional?
+  * More updates to examples and manpage update
+  * Update examples
+  * tgt 1.0.96
+  * Install examples in documentation directory
+  * Support vtl setup from config files
+  * Fix escaping of commands
+- drop tgt-install-examples-in-documentation-dir.patch (upstream)
+
+    remove too old kernel version info.
+  * Fix blank documentation line in service file
+  * fix use-after-free in iser_conn_free()
+- Replace references to /var/adm/fillup-templates with new
+  * tgt-missing-module-directory-not-an-error
+- Fixes for build on openSUSE</comment>
+    <requestid>1342338</requestid>
+  </revision>
 </revisionlist>

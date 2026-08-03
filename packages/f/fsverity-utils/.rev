@@ -50,4 +50,15 @@ https://www.kernel.org/doc/html/latest/filesystems/fsverity.html </comment>
     file actually named `--foo`, use `fsverity measure -- --foo`.</comment>
     <requestid>1164524</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>20f51c82e3aa435f4f197dacfd7202db</srcmd5>
+    <version>1.7</version>
+    <time>1774469913</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.7:
+  * Allowed fsverity-utils to build when PKCS#11 support is not
+    available in OpenSSL.  In that case, `fsverity sign` just
+    won't support that feature.</comment>
+    <requestid>1342315</requestid>
+  </revision>
 </revisionlist>

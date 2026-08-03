@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           xtl
-Version:        0.8.1
+Version:        0.8.2
 Release:        0
 Summary:        The x template library
 License:        BSD-3-Clause

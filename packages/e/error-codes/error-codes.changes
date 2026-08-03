@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 25 12:50:03 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.4.0+git20260325.4cbfc70:
+  * Release version 0.4.0
+  * Add support for libcurl
+  * Fix name of gen_*_data_h output files
+
+-------------------------------------------------------------------
 Wed Feb 04 22:16:56 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 0.3.0+git20260204.54278a1:

@@ -148,4 +148,41 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1283484</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>d5d955f32f9ed04a89c9d735c0605a1c</srcmd5>
+    <version>1.12.0</version>
+    <time>1774469834</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.9.0:
+  * don't use pytest-xdist #184
+  * add an xkb.Action test #184
+- update to 1.8.0:
+  * don't do things in parallel #178
+  * use ruff linting/formatting #178
+  * be less strange about extension key lifetimes #178
+  * guard against null return from xcb_get_extension_data() #180
+- update to 1.7.1:
+  * wait for xvfb screen to be the right size #177 (Tycho
+    Andersen)
+- update to 1.7.0:
+  * cffi api mode (George Harker) #169
+  * v1.7.0
+- update to 1.6.2:
+  * Add python_requires to setup.py (amykyta-sx) #176
+- update to 1.6.1:
+  * use $(CABAL) for cabal #174
+- update to 1.6.0:
+  * build+test against xcb-proto 1.17.0 #165
+  * add python 3.11
+  * drop support for xcb-proto-1.15.x
+  * switch to ubuntu-24.04
+  * always use $PATH python #172
+  * run more stuff in parallel #172
+  * delete lock before unlocking #170
+  * run tests in parallel #170
+  * drop xpyb references
+  * drop pyTruth
+  * drop mkVar</comment>
+    <requestid>1342262</requestid>
+  </revision>
 </revisionlist>

@@ -226,6 +226,17 @@ export CC="gcc-%{?force_gcc_version}"
 export CXX="g++-%{?force_gcc_version}"
 %endif
 
+if [ -e /usr/bin/llvm-as ] ; then
+LLVM_AS=%{_bindir}/llvm-as
+else
+LLVM_AS=$(ls -1 %{_bindir}/llvm-as-* | sort -n | head -n 1)
+fi
+if [ -e /usr/bin/llvm-link ] ; then
+LLVM_LINK=%{_bindir}/llvm-link
+else
+LLVM_LINK=$(ls -1 %{_bindir}/llvm-link-* | sort -n | head -n 1)
+fi
+
 %if 0%{?suse_version} == 1500
 export pybind11_DIR="$(pybind11-config --cmakedir)"
 %endif
@@ -234,6 +245,8 @@ export pybind11_DIR="$(pybind11-config --cmakedir)"
 %if %{without qt}
       -DUSE_QT:BOOL=FALSE \
 %endif
+      -DLLVM_AS_TOOL:FILEPATH=${LLVM_AS} \
+      -DLLVM_LINK_TOOL:FILEPATH=${LLVM_LINK} \
       -DCMAKE_SKIP_RPATH:BOOL=TRUE \
       -DCMAKE_INSTALL_DOCDIR:PATH=%{_docdir}/%{name} \
       -DOSL_SHADER_INSTALL_DIR:PATH=%{_datadir}/%{osldir}/shaders/ \

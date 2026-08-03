@@ -1,7 +1,7 @@
 #
 # spec file for package python-ruamel.yaml
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-ruamel.yaml
-Version:        0.18.14
+Version:        0.19.1
 Release:        0
 Summary:        Python YAML parser
 License:        MIT
 URL:            https://sourceforge.net/p/ruamel-yaml
-Source:         https://files.pythonhosted.org/packages/source/r/ruamel.yaml/ruamel.yaml-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/r/ruamel.yaml/ruamel_yaml-%{version}.tar.gz
 Patch0:         0000-fix-big-endian-issues.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}

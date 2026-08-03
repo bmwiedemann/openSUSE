@@ -17,24 +17,25 @@
 
 #!BuildTag: opensuse/valkey:%%valkey_version%%-%RELEASE%
 #!BuildTag: opensuse/valkey:%%valkey_version%%
-#!BuildTag: opensuse/valkey:9.0
+#!BuildTag: opensuse/valkey:9.1
 #!BuildTag: opensuse/valkey:9
 #!BuildTag: opensuse/valkey:latest
 
+#!FilterBaseContainerPkgs
 FROM opensuse/bci/bci-micro:latest AS target
 FROM opensuse/tumbleweed:latest AS builder
 COPY --from=target / /target
 
 RUN set -euo pipefail; \
     export PERMCTL_ALLOW_INSECURE_MODE_IF_NO_PROC=1 SOURCE_DATE_EPOCH=0; \
-    zypper -n --installroot /target --gpg-auto-import-keys install --no-recommends valkey sed
+    zypper -n --installroot /target --gpg-auto-import-keys install --no-recommends sed valkey
 
 RUN set -euo pipefail; zypper -n install --no-recommends systemd && \
     systemd-tmpfiles --create --root /target valkey.conf
 # sanity check that the version from the tag is equal to the version of valkey that we expect
 RUN set -euo pipefail; \
     [ "$(rpm --root /target -q --qf '%{version}' valkey | \
-    cut -d '.' -f -2)" = "9.0" ]
+    cut -d '.' -f -2)" = "9.1" ]
 
 # cleanup logs and temporary files
 RUN set -euo pipefail; zypper -n --installroot /target clean -a; \

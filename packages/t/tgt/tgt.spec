@@ -1,7 +1,7 @@
 #
 # spec file for package tgt
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define tgt_service_tag 0.2b6396622346
+%define tgt_service_tag 0.f0dc199
 
 Name:           tgt
-Version:        1.0.95
+Version:        1.0.97
 Release:        0
 Summary:        Generic Linux target framework (tgt)
 License:        GPL-2.0-only
@@ -28,7 +28,6 @@ URL:            https://github.com/fujita/tgt
 Source:         %{name}-%{version}+%{tgt_service_tag}.tar.xz
 Source1:        sysconfig.%{name}
 Patch1:         %{name}-fix-build
-Patch2:         %{name}-install-examples-in-documentation-dir.patch
 Patch3:         harden_tgtd.service.patch
 Patch4:         %{name}-systemd-service-update.patch
 BuildRequires:  docbook-xsl-stylesheets

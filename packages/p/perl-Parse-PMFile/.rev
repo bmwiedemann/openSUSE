@@ -56,4 +56,15 @@
     <comment></comment>
     <requestid>1174472</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>732c831b5f1a6903c12ebd6a34a18556</srcmd5>
+    <version>0.480.0</version>
+    <time>1775743722</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.480.0 (0.48)
+   see /usr/share/doc/packages/perl-Parse-PMFile/Changes
+  0.48 2026/03/21
+    - Improve class detection (GH#16, ehuelsmann++)</comment>
+    <requestid>1345207</requestid>
+  </revision>
 </revisionlist>

@@ -26,21 +26,21 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-sybil%{psuffix}
-Version:        9.3.0
+Version:        10.1.0
 Release:        0
 Summary:        Automated testing of examples in documentation
 License:        MIT
 URL:            https://github.com/simplistix/sybil
 Source:         https://github.com/simplistix/sybil/archive/refs/tags/%{version}.tar.gz#/sybil-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module base >= 3.11}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
 %if %{with test}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module pytest >= 8}
+BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module sybil = %{version}}
-BuildRequires:  %{python_module testfixtures}
+BuildRequires:  %{python_module testfixtures >= 11}
 %if 0%{?sle_version} && 0%{?sle_version} <= 150400
 BuildRequires:  %{python_module dataclasses}
 %endif
@@ -61,7 +61,6 @@ of the normal test run. Integration is provided for the main Python test runners
 
 %prep
 %autosetup -p1 -n sybil-%{version}
-sed -i '/pytest-cov/ d'  setup.py
 
 %if 0%{suse_version} < 1699
 # Remove seedir dependency for SLFO

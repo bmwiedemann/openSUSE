@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 25 01:37:34 UTC 2026 - Luis Machado <luisfelipedutra@alunos.utfpr.edu.br>
+
+- Update to commit 29b683d (Version 0.7)
+- Added dependencies: libcjson and libcurl
+- Fixed pause state desync and added XDG_CONFIG_HOME support
+- Added SuriSync integration and improved menu navigation 
+
+-------------------------------------------------------------------
 Wed Feb 25 13:54:44 UTC 2026 - Luis Machado <luisfelipedutra@alunos.utfpr.edu.br>
 
 - Fix source URL mismatch and re-sync tarball with upstream hash.

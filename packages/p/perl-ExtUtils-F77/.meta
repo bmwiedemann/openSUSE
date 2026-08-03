@@ -4,5 +4,4 @@
 subroutines on your system. Basically one must add a list of Fortran
 runtime libraries. The problem is their location and name varies with
 each OS/compiler combination!</description>
-  <devel project="devel:languages:perl" package="perl-ExtUtils-F77"/>
 </package>

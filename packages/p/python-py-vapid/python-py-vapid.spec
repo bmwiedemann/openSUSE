@@ -1,7 +1,7 @@
 #
 # spec file for package python-py-vapid
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_without libalternatives
 Name:           python-py-vapid
-Version:        1.9.2
+Version:        1.9.4
 Release:        0
 Summary:        VAPID header generation library
 License:        MPL-2.0
@@ -26,19 +26,17 @@ URL:            https://github.com/mozilla-services/vapid
 Source:         https://files.pythonhosted.org/packages/source/p/py-vapid/py_vapid-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM Based on gh#web-push-libs/vapid#108
 Patch0:         remove-mock.patch
-# PATCH-FIX-UPSTREAM Based on gh#web-push-libs/vapid#110
-Patch1:         support-new-cryptography.patch
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       alts
-Requires:       python-cryptography >= 2.5
+Requires:       python-cryptography >= 46
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module cryptography >= 2.5}
+BuildRequires:  %{python_module cryptography >= 46}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
@@ -48,6 +46,8 @@ VAPID header generation library.
 
 %prep
 %autosetup -p1 -n py_vapid-%{version}
+rm -rvf build
+rm -v py_vapid/tests/.test_vapid.py.swp
 
 %build
 %pyproject_wheel

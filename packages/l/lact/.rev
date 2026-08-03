@@ -126,4 +126,16 @@ https://github.com/ilya-zlobintsev/LACT/releases/tag/v0.9.0</comment>
   * A more detailed changelog can be found at: https://github.com/ilya-zlobintsev/LACT/releases/tag/v0.9.1</comment>
     <requestid>1362556</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>0b38e045669f720786dc08c3f30a58c2</srcmd5>
+    <version>0.9.1</version>
+    <time>1782916790</time>
+    <user>anag_factory</user>
+    <comment>Can you link this as the devel project?
+
+Changelog:
+- Added prevent-strip.patch to stop stripping binaries after compilation
+- Added fix-clang-arg.patch to fix lact-daemon build</comment>
+    <requestid>1362766</requestid>
+  </revision>
 </revisionlist>

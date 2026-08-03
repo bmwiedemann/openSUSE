@@ -8,5 +8,6 @@ stream cipher.&quot; The main features are:
 * Recover internal state from ciphertext and plaintext.
 * Remove or change a ZIP archive's password using the internal state.
 * Recover the original password from the internal state.</description>
+  <devel project="security" package="bkcrack"/>
   <url>https://github.com/kimci86/bkcrack/</url>
 </package>

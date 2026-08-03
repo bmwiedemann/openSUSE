@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar 29 20:40:42 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 6.1.3:
+  * Approximate quadrature roots when the roots-finding solver for
+    short-range two-electron integrals is not converged
+- drop cmake-fix-wrong-cint-version-patch.patch, no longer needed
+
+-------------------------------------------------------------------
 Sun Jul  6 07:08:38 UTC 2025 - Christoph G <foss@grueninger.de>
 
 - update to 6.1.2

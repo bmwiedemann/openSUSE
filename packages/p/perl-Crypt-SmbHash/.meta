@@ -2,5 +2,4 @@
   <title>perl module Crypt::SmbHash</title>
   <description>This module provides functions to generate LM/NT hashes as used by
 Samba</description>
-  <devel project="devel:languages:perl" package="perl-Crypt-SmbHash"/>
 </package>

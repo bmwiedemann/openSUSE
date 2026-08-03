@@ -80,4 +80,41 @@
     <comment>- Convert to libalternatives on SLE-16-based and newer systems</comment>
     <requestid>1301384</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>80074c8dfe13aa7bf08033dd5b42245a</srcmd5>
+    <version>0.25</version>
+    <time>1781879421</time>
+    <user>anag_factory</user>
+    <comment>- Skip more tests that require network access.
+
+- update to 0.25:
+  * Document `pipx run --spec='validate-pyproject[all]' validate-
+    pyproject --help` by @cclauss
+  * Test on Python 3.14 by @cclauss
+  * Add PEP 794 support by @henryiii
+  * Fix broken store loading if properties is nested by @henryiii
+  * Fix more integer types by @henryiii
+  * Update `uv` integration a bit by @henryiii
+  * Allow `package-data` for stubs packages by @cdce8p
+- update to 0.24.1:
+  * Fixed multi plugin id was read from the wrong place
+  * Implemented alternative plugin sorting,
+    https://github.com/abravalheri/validate-pyproject/pull/243
+- update to 0.24:
+  * Fix integration with `SchemaStore` by loading extra/side
+    schemas, #226, #229.
+  * Add support for loading extra schemas, #226.
+  * Fixed verify author dict is not empty, #232.
+  * Added support for `validate_pyproject.multi_schema` plugins
+    with extra schemas, #231.
+  * `validate-pyproject` no longer communicates test dependencies
+    via the `tests` extra and documentation dependencies
+    dependencies via the `docs/requirements.txt` file. Instead
+    `dependency-groups` have been adopted to support CI
+    environments, #227.
+  * As a result, `uv`'s high level interface also works for
+    developers. You can use the `dependency-groups` package on
+    PyPI if you need to convert to a classic requirements list.</comment>
+    <requestid>1360137</requestid>
+  </revision>
 </revisionlist>

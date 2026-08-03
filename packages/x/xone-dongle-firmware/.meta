@@ -1,4 +1,5 @@
 <package name="xone-dongle-firmware" project="openSUSE:Factory">
   <title>Xone-Dongle-Firmware</title>
   <description>Xbox Wireless Controller Adapter firmware</description>
+  <devel project="hardware" package="xone-dongle-firmware"/>
 </package>

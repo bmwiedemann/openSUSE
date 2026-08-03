@@ -37,4 +37,21 @@
 - Use modern RPM macros to express version dependencies (forwarded request 1164795 from glaubitz)</comment>
     <requestid>1165191</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ba48d51171739de6b4826fdbadb711c2</srcmd5>
+    <version>1.0.0b3</version>
+    <time>1784126379</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.0b3
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Drop extra LICENSE.txt as upstream now ships its own
+- Remove unzip package from BuildRequires
+- Rename LICENSE.txt to LICENSE in %files section
+- Switch source archive format to TAR.GZ
+- Update Requires from pyproject.toml (forwarded request 1365465 from glaubitz)</comment>
+    <requestid>1365684</requestid>
+  </revision>
 </revisionlist>

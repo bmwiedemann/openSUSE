@@ -21,7 +21,7 @@
 %define sover 1
 %define libname libliquid%{sover}
 Name:           liquid-dsp
-Version:        1.8.0
+Version:        1.8.1
 Release:        0
 Summary:        Digital signal processing library for software-defined radios
 License:        MIT
@@ -29,7 +29,6 @@ Group:          Development/Libraries/C and C++
 URL:            https://liquidsdr.org
 #Git-Clone:     https://github.com/jgaeddert/liquid-dsp.git
 Source:         https://github.com/jgaeddert/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         liquid-dsp-libsuffix.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake >= 3.10
 
@@ -70,7 +69,6 @@ applications that want to make use of libliquid.
 %build
 %cmake \
 	-DBUILD_EXAMPLES=OFF \
-	-DENABLE_SIMD=OFF \
 	%{nil}
 %cmake_build
 
@@ -78,6 +76,7 @@ applications that want to make use of libliquid.
 %cmake_install
 
 %check
+export RPM_BUILD_NCPUS=1
 %ctest
 
 %ldconfig_scriptlets -n %{libname}

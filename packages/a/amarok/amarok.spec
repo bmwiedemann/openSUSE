@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           amarok
-Version:        3.3.2
+Version:        3.3.3
 Release:        0
 Summary:        Media Player
 License:        GPL-2.0-or-later
@@ -38,8 +38,6 @@ Patch0:         flac_mimetype_bnc671581.diff
 Patch1:         disable-web-plugins-by-default.patch
 # PATCH-FIX-OPENSUSE
 Patch2:         0001-Work-around-QTBUG-75797-for-openQA.patch
-# PATCH-FIX-OPENSUSE
-Patch3:         gcc16.patch
 BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  libmariadbd-devel

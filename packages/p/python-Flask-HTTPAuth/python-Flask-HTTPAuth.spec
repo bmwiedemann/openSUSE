@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask-HTTPAuth
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2017-2024 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,12 +19,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Flask-HTTPAuth
-Version:        4.8.0
+Version:        4.8.1
 Release:        0
 Summary:        Basic and Digest HTTP authentication for Flask routes
 License:        MIT
 URL:            https://github.com/miguelgrinberg/flask-httpauth/
-Source:         https://files.pythonhosted.org/packages/source/F/Flask-HTTPAuth/Flask-HTTPAuth-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/f/flask_httpauth/flask_httpauth-%{version}.tar.gz
 BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module asgiref >= 3.2}
 BuildRequires:  %{python_module importlib-metadata}
@@ -43,7 +43,7 @@ BuildArch:      noarch
 Simple extension that provides Basic and Digest HTTP authentication for Flask routes.
 
 %prep
-%setup -q -n Flask-HTTPAuth-%{version}
+%autosetup -p1 -n flask_httpauth-%{version}
 
 %build
 %pyproject_wheel
@@ -60,6 +60,6 @@ Simple extension that provides Basic and Digest HTTP authentication for Flask ro
 %doc README.md
 %{python_sitelib}/flask_httpauth.py*
 %{python_sitelib}/[Ff]lask_[Hh][Tt][Tt][Pp][Aa]uth-%{version}.dist-info
-%pycache_only %{python_sitelib}/__pycache__
+%pycache_only %{python_sitelib}/__pycache__/flask_httpauth*
 
 %changelog

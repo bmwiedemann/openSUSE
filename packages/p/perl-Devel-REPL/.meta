@@ -9,6 +9,5 @@ tailor the environment through the use of profiles and run control files, for
 example to pre-load certain Perl modules when working on a particular project.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-Devel-REPL"/>
   <url>http://search.cpan.org/~dhouston/Devel-REPL-%{version}/lib/Devel/REPL.pm</url>
 </package>

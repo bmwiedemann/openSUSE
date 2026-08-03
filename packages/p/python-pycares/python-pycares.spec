@@ -1,7 +1,7 @@
 #
 # spec file for package python-pycares
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pycares
-Version:        4.11.0
+Version:        5.0.1
 Release:        0
 Summary:        Python interface for c-ares
 License:        MIT
@@ -29,7 +29,7 @@ Source99:       python-pycares.rpmlintrc
 # PATCH-FIX-UPSTREAM cleanup_tests.patch bsc#[0-9]+ mcepl@suse.com
 # Make the test suite slightly more normal
 Patch0:         cleanup_tests.patch
-BuildRequires:  %{python_module cffi}
+BuildRequires:  %{python_module cffi >= 1.5.0}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -38,8 +38,8 @@ BuildRequires:  c-ares-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  python-rpm-macros
-Requires:       python-cffi
-Recommends:     python-idna
+Requires:       python-cffi >= 1.5.0
+Recommends:     python-idna >= 2.1
 %python_subpackages
 
 %description

@@ -6,6 +6,5 @@ host messaging connector that provides integration with GNOME Shell and the
 corresponding extensions repository https://extensions.gnome.org.
 
 </description>
-  <devel project="GNOME:Factory" package="gnome-browser-connector"/>
   <url>https://wiki.gnome.org/action/show/Projects/GnomeShellIntegration</url>
 </package>

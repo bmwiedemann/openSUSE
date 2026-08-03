@@ -31,6 +31,8 @@ URL:            https://wiki.gnome.org/Apps/Evince
 Source0:        %{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM evince-kpathsea.patch -- Fix build with gcc 15
 Patch0:         evince-kpathsea.patch
+# PATCH-FIX-UPSTREAM evince-CVE-2026-63729.patch bsc#1272433 alynx.zhou@suse.com -- Fix use-after-free in synctex_parser.c
+Patch1:         evince-CVE-2026-63729.patch
 
 BuildRequires:  c_compiler
 BuildRequires:  desktop-file-utils

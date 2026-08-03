@@ -1,7 +1,7 @@
 #
 # spec file for package supertux2
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,38 +18,35 @@
 
 %define _name   supertux
 Name:           supertux2
-Version:        0.6.3
+Version:        0.7.0
 Release:        0
 Summary:        Jump'n run game
 License:        CC-BY-SA-3.0 AND GPL-3.0-or-later AND GPL-2.0-or-later AND GPL-1.0-only
 Group:          Amusements/Games/Action/Arcade
-URL:            https://supertux.github.io/
+URL:            https://www.supertux.org/
 Source:         https://github.com/SuperTux/supertux/releases/download/v%{version}/SuperTux-v%{version}-Source.tar.gz
-Patch0:         supertux2-gcc12.patch
-Patch1:         boost.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  graphviz-devel
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libboost_date_time-devel
-BuildRequires:  libboost_filesystem-devel
-BuildRequires:  libboost_locale-devel
-BuildRequires:  libphysfs-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(SDL2_image)
+BuildRequires:  pkgconfig(SDL2_ttf)
+BuildRequires:  pkgconfig(fmt)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(glm)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(openal)
+BuildRequires:  pkgconfig(physfs)
 BuildRequires:  pkgconfig(raqm)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  pkgconfig(zlib)
 %if 0%{?suse_version} > 1600
-BuildRequires:  glbinding-devel
+BuildRequires:  pkgconfig(epoxy)
 %else
 BuildRequires:  pkgconfig(glew)
 %endif
@@ -77,11 +74,10 @@ export CFLAGS="%{optflags} -fPIC" CXXFLAGS="$CFLAGS"
   -DINSTALL_SUBDIR_BIN="$(realpath --relative-to=%{_prefix} %{_bindir})"            \
   -DINSTALL_SUBDIR_SHARE="$(realpath --relative-to=%{_prefix} %{_datadir})/%{name}" \
   -DINSTALL_SUBDIR_DOC="$(realpath --relative-to=%{_prefix} %{_docdir})/%{name}" \
+  -DUSE_SYSTEM_SDL2_TTF=ON \
+  -DIS_SUPERTUX_RELEASE=ON \
 %if 0%{?suse_version} > 1600
-  -DENABLE_BOOST_STATIC_LIBS=OFF \
-  -DGLBINDING_ENABLED=ON
-%else
-  -DENABLE_BOOST_STATIC_LIBS=OFF
+  -DUSE_GL_LIBRARY=libepoxy
 %endif
 
 %cmake_build
@@ -99,8 +95,9 @@ rm -f %{buildroot}%{_docdir}/%{name}/LICENSE.txt
 %{_datadir}/%{name}/
 %attr(755,root,root) %{_datadir}/%{name}/sounds/normalize.sh
 %{_datadir}/applications/%{name}.desktop
-%{_datadir}/pixmaps/%{name}.*
+%{_datadir}/pixmaps/supertux.*
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
-%{_datadir}/metainfo/%{name}.appdata.xml
+%{_datadir}/metainfo/org.supertuxproject.SuperTux.metainfo.xml
+%{_libdir}/libsimplesquirrel.so
 
 %changelog

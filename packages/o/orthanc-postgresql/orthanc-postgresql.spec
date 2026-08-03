@@ -21,7 +21,7 @@ Name:           orthanc-postgresql
 Summary:        Database plugin for Orthanc
 License:        AGPL-3.0-or-later
 Group:          Productivity/Databases/Tools
-Version:        10.1
+Version:        10.2
 Release:        0
 URL:            https://orthanc-server.com
 Source0:        https://orthanc.uclouvain.be/downloads/sources/%{name}/OrthancPostgreSQL-%{version}.tar.gz

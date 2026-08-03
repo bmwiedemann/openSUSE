@@ -17,7 +17,7 @@
 
 %define         libname  libmopac2
 Name:           openmopac
-Version:        23.1.2
+Version:        23.2.5
 Release:        0
 Summary:        Molecular Orbital PACkage
 License:        Apache-2.0

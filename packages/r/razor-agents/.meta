@@ -16,5 +16,4 @@ Reporting Agent, can be blocked out by the rest of the Filtering Agents
 on the network.
 
 Can be used as one of the spamassassin rules.</description>
-  <devel project="devel:languages:perl" package="razor-agents"/>
 </package>

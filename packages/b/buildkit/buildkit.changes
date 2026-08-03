@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Jul 30 05:11:42 UTC 2026 - Bharti Gautam <bharti.gautam@suse.com>
+
+- Update to version 0.32.0:
+  * test: require image exporter for session finalize
+  * test: avoid local exporter invalid mode integration hang
+  * build(deps): bump docker/login-action from 4.4.0 to 4.5.1
+  * build(deps): bump github/codeql-action/upload-sarif
+  * vendor: github.com/moby/go-archive v0.2.1
+  * exporter: add session export finalization
+  * dockerfile: update version to 1.26
+  * build(deps): bump github/codeql-action/upload-sarif
+  * cache/s3: only request required upload checksums
+  * vendor: update github.com/aws/aws-sdk-go-v2 modules to latest
+  * sourcepolicy: normalize parsed source identifiers
+  * build(deps): bump google.golang.org/grpc from 1.82.0 to 1.82.1
+  * vendor: update moby/policy-helpers to 856be88baec4
+  * Align ttrpc v1.2.9 and sys/mount v0.3.5 with Moby versions
+  * Update bbolt to v1.5.0
+  * Update ProtonMail go-crypto to v1.4.1
+  * Update patch dependencies
+  * Update critical containerd and Docker deps
+  * build(deps): bump actions/labeler from 6.2.0 to 7.0.0
+  * build(deps): bump actions/checkout from 7.0.0 to 7.0.1
+  * build(deps): bump github/codeql-action/upload-sarif
+  * detect: read OTEL_IGNORE_ERROR from environment
+  * solver: update stale shared-dep test for exec-keys fix
+  * solver: advertise committed cache keys after exec
+  * solver: regression test for stale-complete shared-dep cache starvation
+  * solver: log dep cache-key starvation (edgeState vs result keys)
+  * cache/remotecache: normalize cache layer media types
+  * util/compression: use zstd.EncoderLevelFromZstd to map compression levels
+
+-------------------------------------------------------------------
 Mon Jul 20 06:16:31 UTC 2026 - Yash Maurya <yash.maurya@suse.com>
 
 - Update to version 0.31.2:

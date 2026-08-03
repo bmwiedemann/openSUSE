@@ -10,6 +10,5 @@ parse a CSV string into fields.
 The module accepts either strings or files as input and can utilize any
 user-specified characters as delimiters, separators, and escapes so it is
 perhaps better called ASV (anything separated values) rather than just CSV.</description>
-  <devel project="devel:languages:perl" package="perl-Text-CSV"/>
   <url>http://search.cpan.org/perldoc?Text::CSV</url>
 </package>

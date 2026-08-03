@@ -17,8 +17,8 @@
 
 
 %define srcversion 7.1
-%define patchversion 7.1.4
-%define git_commit 46107bf27f8f84b13fd6618b75eddf390698e9b6
+%define patchversion 7.1.5
+%define git_commit 862e13e4f33a559933485ef9dd6c1897b602d237
 %define variant %{nil}
 %define build_html 1
 %define build_pdf 0
@@ -28,9 +28,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,arch-symbols,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-docs
-Version:        7.1.4
+Version:        7.1.5
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g46107bf
+Release:        <RELEASE>.g862e13e
 %else
 Release:        0
 %endif

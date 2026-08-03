@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Apr  8 21:28:29 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.5.0:
+  * Improved build system with many more (and improved) type
+    hints.
+  * Fixed visible control characters issue on Windows. Fixes #293
+  * Included fix for the progressbar command
+  * Greatly improved Windows (colour) support and fixed several
+    Windows bugs
+
+-------------------------------------------------------------------
 Thu Feb  1 08:47:23 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.3.2:

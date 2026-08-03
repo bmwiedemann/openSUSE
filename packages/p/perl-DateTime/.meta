@@ -16,5 +16,4 @@ The calendar represented does have a year 0, and in that way differs from
 how dates are often written using &quot;BCE/CE&quot; or &quot;BC/AD&quot;.
 
 For infinite datetimes, please see the DateTime::Infinite module.</description>
-  <devel project="devel:languages:perl" package="perl-DateTime"/>
 </package>

@@ -6,5 +6,6 @@ for operating on /proc safely. The goal of this library is to help avoid the
 relentless onslaught of security vulnerabilities in Linux system utilities
 caused by bad path handling.
 </description>
+  <devel project="Virtualization:containers" package="libpathrs"/>
   <url>https://github.com/cyphar/libpathrs</url>
 </package>

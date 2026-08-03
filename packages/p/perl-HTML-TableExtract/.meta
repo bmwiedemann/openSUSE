@@ -92,5 +92,4 @@ Advice
     extraction on what the document is trying to communicate rather than
     some feature of the HTML comprising the document (other than the fact
     that the data is contained in a table).</description>
-  <devel project="devel:languages:perl" package="perl-HTML-TableExtract"/>
 </package>

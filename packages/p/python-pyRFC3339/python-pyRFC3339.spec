@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyRFC3339
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pyRFC3339
-Version:        2.0.1
+Version:        2.1.0
 Release:        0
 Summary:        Generate and parse RFC 3339 timestamps
 License:        MIT
@@ -27,7 +27,8 @@ URL:            https://github.com/kurtraschke/pyRFC3339
 Source:         https://github.com/kurtraschke/pyRFC3339/archive/refs/tags/v%{version}.tar.gz#/pyRFC3339-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 64}
+BuildRequires:  %{python_module setuptools_scm >= 8}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -43,6 +44,7 @@ pyRFC3339 parses and generates :RFC:`3339`-compliant timestamps using Python `da
 %autosetup -p1 -n pyRFC3339-%{version}
 
 %build
+export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
 %pyproject_wheel
 
 %install

@@ -9,5 +9,4 @@ It is also capable of determining that a parameter is of a specific
 type, that it is an object of a certain class hierarchy, that it
 possesses certain methods, or applying validation callbacks to
 arguments.</description>
-  <devel project="devel:languages:perl" package="perl-Params-Validate"/>
 </package>

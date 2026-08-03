@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Mar 26 01:55:35 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.11.0:
+  * Removed support for Python 3.9 and PyPy 3.10.
+  * Added support for Python 3.14 and PyPy 3.11.
+  * The following dependencies now have a minimum supported version:
+    + lxml >= 5.1.0
+    + packaging >= 23.0
+    + jmespath >= 1.0.0
+  * Removed Selector.remove() and SelectorList.remove(), deprecated in 1.7.0.
+  * The Selector() constructor now accepts bytearray values for the body
+    argument in addition to bytes.
+  * attrib and remove_namespaces() no longer fail with unhandled exceptions
+    on JSON selectors.
+  * Switched the build system to hatchling.
+
+-------------------------------------------------------------------
 Tue Feb  4 16:21:06 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.10.0:

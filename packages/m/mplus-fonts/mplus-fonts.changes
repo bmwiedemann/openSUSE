@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar 25 17:52:29 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot 20260325
+  * (The TTFs have not been touched in a while, so they are just
+    version 20241126)
+  * Corrected the width of mplus-2* U+FF76
+  * Fixed U+7E6D (繭)
+
+-------------------------------------------------------------------
 Wed Jan 18 22:47:30 UTC 2023 - Gordon Leung <pirateclip@protonmail.com>
 
 - Updated to most recent commit (20230116)

@@ -2,8 +2,12 @@
 Thu Jul  9 07:54:13 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 12.3.0 (fixes CVE-2026-42311 (bsc#1270404),
-  CVE-2026-54059 (bsc#1270409), CVE-2026-54060 (bsc#1270410),
-  CVE-2026-55379 (bsc#1270411), CVE-2026-55380 (bsc#1270412))
+  CVE-2026-54058 (bsc#1271419), CVE-2026-54059 (bsc#1270409),
+  CVE-2026-54060 (bsc#1270410), CVE-2026-55379 (bsc#1270411),
+  CVE-2026-55380 (bsc#1270412), CVE-2026-59197 (bsc#1271418),
+  CVE-2026-59198 (bsc#1271420), CVE-2026-59199 (bsc#1271421),
+  CVE-2026-59200 (bsc#1271422), CVE-2026-59203 (bsc#1271423),
+  CVE-2026-59204 (bsc#1271424), CVE-2026-59205 (bsc#1271425))
   * Remove non-image ImageCms modes
   * Speed up ImageChops operations
   * Speed up Image.filter()

@@ -2,5 +2,6 @@
   <title>GUI for ebook2cw</title>
   <description>A graphical user interface (GUI) for ebook2cw. The GUI uses the same
 configuration file as ebook2cw, called ebook2cw.conf.</description>
+  <devel project="hamradio" package="ebook2cwgui"/>
   <url>https://fkurz.net/ham/ebook2cw.html#gui</url>
 </package>

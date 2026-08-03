@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jul 15 05:02:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 14.1.0:
+  Ansible 14.1.0 includes ansible-core 2.21.2 as well as a curated
+  set of Ansible collections that provide a vast number of modules
+  and plugins.
+  Collections which have opted-in to being a part of the Ansible 14
+  unified changelog will have an entry on this page:
+  https://github.com/ansible-community/ansible-build-data/blob/main/14/CHANGELOG-v14.rst
+
+-------------------------------------------------------------------
 Fri Jun 19 05:26:41 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 14.0.1:

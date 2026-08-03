@@ -4,5 +4,4 @@
 and set $ENV{PAGER} (see &quot;NOTES&quot;) or as a factory for creating objects
 defined elsewhere such as IO::Pager::Buffered and
 IO::Pager::Unbuffered.</description>
-  <devel project="devel:languages:perl" package="perl-IO-Pager"/>
 </package>

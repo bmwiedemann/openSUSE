@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 13 10:54:23 UTC 2026 - Aleksei Burlakov <aburlakov@suse.com>
+
+- New upstream release version 0.30.0:
+  * hiredis-client: Now support configuring SSL `verify_mode`.
+
+-------------------------------------------------------------------
 Mon Feb  3 10:21:35 UTC 2025 - Dan Čermák <dan.cermak@posteo.net>
 
 - # 0.23.2

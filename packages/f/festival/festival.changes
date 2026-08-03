@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 30 07:20:39 UTC 2026 - Yasuhiko Kamata <belphegor@belbel.or.jp>
+
+- Added patch speech_tools-ambiguous-relation.patch to fix a build
+  failure in Tumbleweed.
+
+-------------------------------------------------------------------
 Mon Sep  8 03:36:35 UTC 2025 - Yasuhiko Kamata <belphegor@belbel.or.jp>
 
 - Added patch speech_tools-substrcmp-size_t.patch to fix a

@@ -18,7 +18,7 @@ So, the expected behavior when installing a package could be: zypper installs th
 and if the operation succeeds, new snapshot gets activated automatically.
 
 
-Implemetation:
+Implementation:
 
 This project offers two implementations: One needs the respective tool to be aware of the transactional
 system and call the transactional-wrapper command when the system is read only; the other one uses an alias
@@ -41,7 +41,7 @@ The configuration references a configuration file, which can specify:
 - exit codes which don't mean error but say that the operation did not do any change to the system, and
   therefore there is no point in activating the snapshot
 
-The transactinoal alias handles calling the transactional-wrapper with proper parameters.
+The transactional alias handles calling the transactional-wrapper with proper parameters.
 
 
 Transactional Wrapper:
@@ -50,13 +50,13 @@ transactional-wrapper is expected to be run as a child process of the tool which
 part of the system. It does not require any parameters (it can receive the command-line if its parent process
 from the /proc filesystem.  This means that the respective tool does not need to replicate the commands.
 
-It can optionally provide configurarion for the respectie tool, either via file or via command-line parameters,
+It can optionally provide configuration for the respective tool, either via file or via command-line parameters,
 to specify behavior on exit codes.
 
 The transactional wrapper - if installed - can be disabled or enabled via configuration file. Additionally,
 it can define the behavior on successful transaction:
 - call transactional-update apply
-- do nothing (requires user to activate the snapshot before using next transacitonal command
+- do nothing (requires user to activate the snapshot before using next transactional command
 - reboot immediately
 - soft-reboot immediately
 - reboot via kexec immediately

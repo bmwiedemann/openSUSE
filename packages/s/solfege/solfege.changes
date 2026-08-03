@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 25 16:23:56 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop gnome-doc-utils-devel BuildRequires: deprecated and not
+  actually used.
+
+-------------------------------------------------------------------
 Wed May 14 16:05:21 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Use %make_build instead of %jobs (boo#1237231)

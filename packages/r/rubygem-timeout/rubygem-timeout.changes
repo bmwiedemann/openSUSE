@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jul 13 11:31:37 UTC 2026 - Aleksei Burlakov <aburlakov@suse.com>
+
+- 0.6.1:
+
+## What's Changed
+  * add test case for string argument by @t-mangoe in #90
+  * Improve Timeout.timeout documentation formatting and typos by @ybiquitous in #92
+  * [DOC] document the private instance method by @nobu in #94
+  * Compatibility with Fiber scheduler. by @ioquatix in #97
+  * Remove warnings by @etiennebarrie in #99
+
+New Contributors
+  * @t-mangoe made their first contribution in #90
+  * @ybiquitous made their first contribution in #92
+  * @ioquatix made their first contribution in #97
+  * @etiennebarrie made their first contribution in #99
+
+-------------------------------------------------------------------
 Mon Feb  3 10:44:03 UTC 2025 - Dan Čermák <dan.cermak@posteo.net>
 
 - 0.4.3:

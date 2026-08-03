@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 10 09:00:28 UTC 2026 - Michal Filka <mfilka@suse.com>
+
+- jsc#PED-14507
+  - Removed reference to update-desktop-files from spec file 
+  - 5.0.1
+-------------------------------------------------------------------
 Wed Aug 30 20:16:10 UTC 2023 - Josef Reidinger <jreidinger@suse.cz>
 
 - 5.0.0 (bsc#1185510)

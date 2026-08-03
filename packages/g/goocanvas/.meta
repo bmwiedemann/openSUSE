@@ -4,5 +4,4 @@
 uses cairo for rendering, has an optional model/view split, and uses
 interfaces for items &amp; models (so you can easily turn any application
 object into a canvas item or model).</description>
-  <devel project="GNOME:Factory" package="goocanvas"/>
 </package>

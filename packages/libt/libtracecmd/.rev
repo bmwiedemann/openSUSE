@@ -104,4 +104,20 @@
   * Fix checking glob() return values (forwarded request 1301273 from PPavlu)</comment>
     <requestid>1302092</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>36c272c207441c2540634890af85e404</srcmd5>
+    <version>1.5.5</version>
+    <time>1774470160</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.5.5:
+  * Add saving the BTF (/sys/kernel/btf/vmlinux) file and parsing
+    it
+  * Add saving of last_boot_info and /proc/modules
+  * Fix tracecmd_compress_lseek() to support querying within
+    compression block
+  * Fix reading of kallsyms if it gets updated while being read
+  * Fix memory leak in partial reverse iteration
+  * Fix continuing in tracecmd_iterate_events_reverse() (forwarded request 1342505 from PPavlu)</comment>
+    <requestid>1342526</requestid>
+  </revision>
 </revisionlist>

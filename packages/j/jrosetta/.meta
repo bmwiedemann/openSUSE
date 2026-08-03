@@ -4,6 +4,5 @@
 to build a graphical console in Swing with the latest requirements, such as
 command history, completion and so on for instance for scripting language
 or command line.</description>
-  <devel project="Java:packages" package="jrosetta"/>
   <url>http://dev.artenum.com/projects/JRosetta/</url>
 </package>

@@ -4,5 +4,4 @@
 
 Currently it does not support &quot;optional features&quot; specification (See the
 cpanfile/feature).</description>
-  <devel project="devel:languages:perl" package="perl-Module-Build-Prereqs-FromCPANfile"/>
 </package>

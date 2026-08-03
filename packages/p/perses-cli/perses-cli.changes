@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Jul 30 05:35:53 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.54.0:
+  Large update, for the full changes to perses (not just the CLI)
+  see https://github.com/perses/perses/releases/tag/v0.54.0
+  * Core & UI
+    - [SECURITY] Unvalidated project parameter enables filesystem
+      path traversal (CVE-2026-63445) (75e5471040cc)
+    - [SECURITY] Missing authorization in datasource proxy allows
+      cross-scope secret disclosure (CVE-2026-63199)
+      (2368c9ef4eb0a)
+    - [SECURITY] API: Fix miss-usage of project query param
+      (CVE-2026-63458) 8015fb
+    - [ENHANCEMENT] percli apply: add new flag --create-project
+      (#3987)
+    - [BUGFIX] Return the mkdir error when creating the CLI config
+      directory (#4256)
+    - [BUGFIX] CLI describe: return service.New error instead of a
+      nil err (#4239)
+    - [BUGFIX] Set PERSES_CLI env on the Windows plugin dev server
+      (#4241)
+    - [BUGFIX] CLI/plugin generate: Fix plugin template using new
+      import (#4153)
+    - [BUGFIX] CLI: skip non-main Go packages when building a
+      directory (#4174)
+    - [BUGFIX] Fix percli get user panic when users exist (#4092)
+    - [DOC] Add native provider authentication bash and CLI
+      snippets (#4254)
+    - [IGNORE] percli plugin generate: update deprecated CUE
+      imports by @AntoineThebaud in #3949
+
+-------------------------------------------------------------------
 Thu Mar 12 12:34:22 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.53.1:

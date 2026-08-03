@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Thu Jul 30 08:59:21 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 3.4.13:
+  + no changelog
+- Update summary
+- Require python-numpy, otherwise it won't run
+
+-------------------------------------------------------------------
+Sun Mar  1 13:53:58 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- initial packaging

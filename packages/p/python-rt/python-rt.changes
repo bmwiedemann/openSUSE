@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Mar 25 08:07:01 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.6.0:
+  * Parameters search_params and catalog_id used in asset search
+    are now optional
+  * If catalog_id is set to None, search all catalogs
+  * Added option to define all query parameters for get/search
+    asset and ticket endpoints
+  * Fixed typing of methods that returned a partially unknown
+    dictionary
+
+-------------------------------------------------------------------
 Thu Jan  1 10:24:10 UTC 2026 - Sebastian Wagner <sebix@sebix.at>
 
 - Update to version v3.4.0:

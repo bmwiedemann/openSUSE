@@ -5,5 +5,4 @@ unencumbered -- that is, not covered by any patents -- lossless
 data-compression library for use on virtually any computer hardware and
 operating system. The zlib was written by Jean-loup Gailly
 (compression) and Mark Adler (decompression).</description>
-  <devel project="Java:packages" package="jzlib"/>
 </package>

@@ -4,5 +4,6 @@
 from as many channels as you like. Synchronization support is available for
 iPods and filesystem-based MP3 players, but Podcasts can (of course) also be
 played with any desktop player application.</description>
+  <devel project="multimedia:apps" package="gpodder"/>
   <url>https://gpodder.org</url>
 </package>

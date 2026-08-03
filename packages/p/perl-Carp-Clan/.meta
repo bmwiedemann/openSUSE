@@ -64,5 +64,4 @@ Forcing a Stack Trace
     &quot;verbose&quot; inside the &quot;'qw()'&quot; term (or argument list) of the &quot;use&quot;
     statement, but consider that a pattern of packages to skip is pointless
     when &quot;verbose&quot; causes a full stack trace anyway.</description>
-  <devel project="devel:languages:perl" package="perl-Carp-Clan"/>
 </package>

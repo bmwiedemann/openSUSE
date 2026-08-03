@@ -1,4 +1,5 @@
 <package name="readpe" project="openSUSE:Factory">
   <title>readpe</title>
   <description></description>
+  <devel project="security:forensics" package="readpe"/>
 </package>

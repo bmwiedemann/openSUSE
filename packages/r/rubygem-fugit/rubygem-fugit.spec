@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-fugit
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,13 +24,13 @@
 #
 
 Name:           rubygem-fugit
-Version:        1.11.1
+Version:        1.13.0
 Release:        0
 %define mod_name fugit
 %define mod_full_name %{mod_name}-%{version}
-BuildRequires:  ruby-macros >= 5
-BuildRequires:  %{ruby}
 BuildRequires:  %{rubygem gem2rpm}
+BuildRequires:  %{ruby}
+BuildRequires:  ruby-macros >= 5
 URL:            https://github.com/floraison/fugit
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml

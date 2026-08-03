@@ -8,6 +8,5 @@ By setting a minimum test coverage through 'all_cover_ok()', a code author can e
 
 Along with the Test::Pod, this module can provide the first tests to setup for a module author.
 </description>
-  <devel project="devel:languages:perl" package="perl-Test-Strict"/>
   <url>http://search.cpan.org/dist/Test-Strict/</url>
 </package>

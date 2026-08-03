@@ -10,6 +10,5 @@ X Version 11_, available as Postscript or *roff source from
 'ftp://ftp.x.org', or _Volume 0: X Protocol Reference Manual_ of O'Reilly &amp;
 Associates's series of books about X (ISBN 1-56592-083-X,
 'http://www.oreilly.com'), which contains most of the same information.</description>
-  <devel project="devel:languages:perl" package="perl-X11-Protocol"/>
   <url>http://search.cpan.org/dist/X11-Protocol/</url>
 </package>

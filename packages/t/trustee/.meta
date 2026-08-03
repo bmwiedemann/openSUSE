@@ -1,5 +1,5 @@
 <package name="trustee" project="openSUSE:Factory">
-  <title></title>
-  <description></description>
-  <url>https://src.opensuse.org/SGX/_ObsPrj</url>
+  <title>Attestation and Secret Delivery Components</title>
+  <description>This package contains tools and components for attesting confidential guests and providing secrets to them. Collectively, these components are known as Trustee. Trustee typically operates on behalf of the guest owner and interact remotely with guest components.</description>
+  <url>https://github.com/confidential-containers/trustee.git</url>
 </package>

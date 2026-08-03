@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jun 18 20:06:25 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 3.2.1:
+  * Improve error reporting for server API failures - server-
+    provided error messages are now surfaced, with actionable
+    guidance (e.g. running asciinema auth)
+  * Upgrade the virtual terminal (avt) to the latest version
+  * Upgrade dependencies, including security fixes
+
+-------------------------------------------------------------------
 Mon May 11 12:18:13 UTC 2026 - Andreas Schwab <schwab@suse.de>
 
 - Enable build on riscv64

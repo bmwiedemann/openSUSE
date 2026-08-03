@@ -309,4 +309,28 @@
     <comment></comment>
     <requestid>1321574</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>2747f607cb110d63679f973a29a7200b</srcmd5>
+    <version>6.6.3</version>
+    <time>1774555703</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.6.3:
+  * .github/workflows: Update build.yml with generate-test-
+    packages.
+  * csm-manager.c: Close the end-session dialog before trying to
+    lock (#199)
+  * csm-manager.c: Fix the suspend action enum when blocked by an
+    inhibitor.
+  * Set env for qt ibus (#191)
+  * csm-manager.c: Add functionality to restart the cinnamon-
+    launcher (#184)
+  * Fixes cinnamon-session-quit --logout --no-prompt --force not
+    working (#183)
+  * Remove old upower support to match c-s-d commits (#185)
+  * csm-manager.c: Don't consider suspend inhibitors when
+    gathering capabilities for the logout dialog.
+  * csm-manager.c: Clear system inhibitors before attempting to
+    restart or shutdown using systemd.</comment>
+    <requestid>1342645</requestid>
+  </revision>
 </revisionlist>

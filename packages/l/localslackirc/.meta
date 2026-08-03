@@ -5,4 +5,5 @@
 One instance of localslackirc connects to one slack account and one IRC client, passing the messages between the two.
 
 localslackirc also supports Rocket.Chat.</description>
+  <devel project="server:irc" package="localslackirc"/>
 </package>

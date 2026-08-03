@@ -2,5 +2,4 @@
   <title></title>
   <description>Change the exit code of pytest test sessions when a required percent of tests pass.
 </description>
-  <devel project="devel:languages:python:pytest" package="python-pytest-percent"/>
 </package>

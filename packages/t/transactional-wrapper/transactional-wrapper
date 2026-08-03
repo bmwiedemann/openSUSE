@@ -1,13 +1,13 @@
 #!/bin/bash
 
-echo "Starting transactinoal-wrapper"
+echo "Starting transactional-wrapper"
 ACTION="info"
 CMDLINE=""
 VERBOSE=0
 . /usr/etc/transactional-wrapper.conf
 [ -f /etc/transactional-wrapper.conf ] && . /etc/transactional-wrapper.conf
 
-while [[ $# -gt 0 ]] do
+while [[ $# -gt 0 ]]; do
   case $1 in
     -c|--config)
       . "/usr/share/transactional-wrapper/configs/$2"
@@ -44,11 +44,11 @@ if [ $ENABLE_TRANSACTIONAL_WRAPPER == "0" ] ; then
 fi
 
 test -z "$CMDLINE" && CMDLINE=`cat "/proc/$PPID/cmdline" | tr '\000' ' '`
-$VERBOSE && echo "Calling transactional-wrapper for $CMDLINE"
+[ $VERBOSE = "1" ] && echo "Calling transactional-wrapper for $CMDLINE"
 
 tempfile=$(mktemp)
 /sbin/transactional-update run $CMDLINE | tee $tempfile
-EXIT=`sed -n 's/.*Application returned with exit status //p' <$tempfile |sed 's/\.$//i'`
+EXIT=`sed -n 's/.*Application returned with exit status //p' <$tempfile |sed 's/\.$//'`
 rm $tempfile
 
 WRAPPED_EXIT=",$EXIT,"
@@ -61,7 +61,7 @@ if echo $NOOP_EXIT_CODES | grep $WRAPPED_EXIT ; then
 fi
 
 if echo $SUCCESS_EXIT_CODES | grep $WRAPPED_EXIT ; then
-  $VERBOSE && echo "Transaction succeeded with exit code $EXIT"
+  [ $VERBOSE = "1" ] && echo "Transaction succeeded with exit code $EXIT"
 else
   echo "Execution of transaction failed with exit code $EXIT"
   exit $EXIT
@@ -73,31 +73,23 @@ if [ $ACTION = "info" ] ; then
   echo "operations will be based on currently running snapshot"
   echo "and further snapshots will not include the changes."
   exit $EXIT
-fi
-
-if [ $ACTION = "soft-reboot" ] ; then
-  echo "Soft-rebooting to acticate the snapshot in 10 secinds"
+elif [ $ACTION = "soft-reboot" ] ; then
+  echo "Soft-rebooting to activate the snapshot in 10 seconds"
   echo "Interrupt the script to interrupt system restart"
   sleep 10
   systemctl soft-reboot
-fi
-
-if [ $ACTION = "reboot" ] ; then
-  echo "Rebooting to acticate the snapshot in 10 secinds"
+elif [ $ACTION = "reboot" ] ; then
+  echo "Rebooting to activate the snapshot in 10 seconds"
   echo "Interrupt the script to interrupt system restart"
   sleep 10
   systemctl reboot
-fi
-
-if [ $ACTION = "kexec" ] ; then
-  echo "Rebooting via kexec to acticate the snapshot in 10 secinds"
+elif [ $ACTION = "kexec" ] ; then
+  echo "Rebooting via kexec to activate the snapshot in 10 seconds"
   echo "Interrupt the script to interrupt system restart"
   sleep 10
   systemctl kexec
-fi
-
-if [ $ACTION = "apply" ] ; then
-  echo "Applying new snapshot via transactinal-update apply"
+elif [ $ACTION = "apply" ] ; then
+  echo "Applying new snapshot via transactional-update apply"
   /sbin/transactional-update apply;
   exit $EXIT
 fi

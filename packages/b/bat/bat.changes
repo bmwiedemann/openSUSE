@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul  7 20:49:20 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Add RPMSpec_support.patch, which adds support for RPM Spec
+  files. The upstream PR gh#sharkdp/bat!3431 has not been
+  accepted, because the file format is apparently not enough
+  popular in SublimeText (no comments how smart test it is).
+  Certainly, this format is a bit more popular in the openSUSE
+  world.
+
+-------------------------------------------------------------------
 Wed Dec  3 18:51:38 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.26.1

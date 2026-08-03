@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jul 30 05:36:57 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.1.1:
+  * Dependency Updates
+    - #1634 Update Go to v1.26.5
+    - #1659 Update module github.com/suzuki-shunsuke/ghtkn-go-sdk
+      to v0.5.0
+    - #1622 Update module github.com/urfave/cli/v3 to v3.10.1
+    - #1633 Update module github.com/google/go-github/v88 to v89
+    - #1646 Update dependency sigstore/cosign to v3.1.2
+    - #1653 Update dependency anchore/syft to v1.49.0
+    - #1657 Update dependency goreleaser/goreleaser to v2.17.1
+
+-------------------------------------------------------------------
 Tue Jun 09 04:46:30 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 4.1.0:

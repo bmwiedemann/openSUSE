@@ -235,4 +235,25 @@
 </comment>
     <requestid>1335845</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>fe1821dc44e979545cd07feaaa0af395</srcmd5>
+    <version>10.1.0</version>
+    <time>1781879415</time>
+    <user>anag_factory</user>
+    <comment>- Update to 10.1.0:
+  * Ignore trailing whitespace in doctest output by default, see
+    :data:`~sybil.evaluators.doctest.KEEP_TRAILING_WHITESPACE` if you need
+    whitespace sensitivity.
+  * Make :func:`~sybil.testing.run_pytest` runs immune to ambient color
+    environment variables.
+  * Re-work :func:`~sybil.testing.run_pytest` to fix problems caused by
+    re-invoking external plugins during the nested runs.
+  * Moved to a uv-based, pyproject.toml-driven project layout.
+  * Introduce ruff code formatting.
+  * Fixed several issues with lexing of Markdown fenced code blocks.
+  * Add :func:`~sybil.testing.run_pytest` to for in-process pytest execution
+    of example tests that use :any:`fixtures &lt;fixture&gt;` in documentation.
+  * Supported Python versions are now 3.11 onwards.</comment>
+    <requestid>1360134</requestid>
+  </revision>
 </revisionlist>

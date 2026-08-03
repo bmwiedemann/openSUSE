@@ -10,5 +10,4 @@ Features:
  * Incrementally backs up, letting you restore from any particular backup
  * Schedules regular backups
  * Integrates well into your GNOME desktop</description>
-  <devel project="GNOME:Apps" package="deja-dup"/>
 </package>

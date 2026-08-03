@@ -3,6 +3,5 @@
   <description>Main parent POM for all Units of Measurement Maven projects.
 
 </description>
-  <devel project="Java:packages" package="uom-parent"/>
   <url>https://github.com/unitsofmeasurement/uom-parent</url>
 </package>

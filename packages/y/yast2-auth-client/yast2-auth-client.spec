@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-auth-client
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yast2-auth-client
-Version:        5.0.3
+Version:        5.0.4
 Release:        0
 URL:            https://github.com/yast/yast-auth-client
 Summary:        YaST2 - Centralised System Authentication Configuration
@@ -28,7 +28,6 @@ Source0:        %{name}-%{version}.tar.bz2
 
 BuildRequires:  doxygen
 BuildRequires:  perl-XML-Writer
-BuildRequires:  update-desktop-files
 BuildRequires:  yast2
 BuildRequires:  yast2
 BuildRequires:  yast2-devtools >= 4.2.2

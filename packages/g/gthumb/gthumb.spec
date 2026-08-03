@@ -24,7 +24,7 @@ Summary:        An Image Viewer and Browser for GNOME
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Viewers
 URL:            https://wiki.gnome.org/Apps/gthumb
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  AppStream
 BuildRequires:  bison
@@ -32,7 +32,6 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  gcc-c++
-BuildRequires:  gnome-doc-utils-devel
 BuildRequires:  intltool >= 0.50.1
 BuildRequires:  itstool
 BuildRequires:  libjpeg-devel

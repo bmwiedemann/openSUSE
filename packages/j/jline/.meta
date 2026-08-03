@@ -4,5 +4,4 @@
 applications. It features tab-completion, command history, password
 masking, customizable keybindings, and pass-through handlers to use to
 chain to other console applications.</description>
-  <devel project="Java:packages" package="jline"/>
 </package>

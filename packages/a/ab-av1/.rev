@@ -16,4 +16,25 @@ Now includes shell completions in the main package.</comment>
     <comment>Update to version 0.10.2</comment>
     <requestid>1319569</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a5c74bd62993e462c6a9a88bdc0e5c30</srcmd5>
+    <version>0.11.0</version>
+    <time>1771605999</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.11.0:
+  * svt-av1: Support crf quarter steps:
+    + defaults to -crf-increment to 0.25 if svt-av1 &gt;= 4.0.0
+  * svt-av1: Widen default crf search range [10, 55] -&gt; [5, 70]
+  * Use ffmpeg `-fps_mode passthrough` for all sample encodes.
+    This improves VMAF scores in some cases.
+  * Use explicit pixel format in xpsnr calls, use highest quality
+    format of the ref &amp; distorted streams.
+    This can improve scores in some cases.
+  * Wait for vmaf/xpsnr processes to finish e.g. to allow custom
+    logging to flush.
+  * Update sample-encode json output to use float `predicted_encode_seconds`.
+  * Fix higher crf-search VMAF tolerance than expected when using
+    `--crf-increment` values above 1.</comment>
+    <requestid>1334186</requestid>
+  </revision>
 </revisionlist>

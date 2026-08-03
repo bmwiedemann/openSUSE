@@ -6,5 +6,4 @@ reading, manipulation, and writing. It has a straightforward API, is
 lightweight and fast, and is optimized for the Java programmer. It is
 an alternative to DOM and SAX, although it integrates well with both
 DOM and SAX.</description>
-  <devel project="Java:packages" package="jdom"/>
 </package>

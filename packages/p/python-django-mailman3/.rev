@@ -143,4 +143,14 @@
     <comment></comment>
     <requestid>1324684</requestid>
   </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>cd422fb1873968f8ada0a03735884d85</srcmd5>
+    <version>1.3.14</version>
+    <time>1773161904</time>
+    <user>anag_factory</user>
+    <comment>- (Build)Require python-django-allauth[socialaccount,openid] extras
+- Include upstream sociallogin.patch to fix tests with django-allauth
+  0.64+</comment>
+    <requestid>1337984</requestid>
+  </revision>
 </revisionlist>

@@ -4,5 +4,4 @@
 information. It maintains the state of any number of variables and
 provides methods for parsing configuration files and command line
 arguments.</description>
-  <devel project="devel:languages:perl" package="perl-AppConfig"/>
 </package>

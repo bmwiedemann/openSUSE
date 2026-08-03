@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Jun 19 05:40:02 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.2.0:
+  ## Deprecations:
+  * Deprecate ModelView(Model, db.session) in favor of ModelView(Model, db)
+  ## New Features:
+  * SQLAlchemy filter classes (FilterEqual, FilterLike, etc.) now accept a
+    dotted-path string for the column argument (e.g.
+    FilterEqual(column="author.email", name="Author Email")); the path is
+    resolved against the view's model and the necessary joins are added
+    automatically.
+  * Flask-SQLAlchemy-Lite support
+  * Add page title header with icon above every view via new
+    {% block page_title %}
+  * Upgrade bundled Bootstrap from 4.2.1 to 4.6.2 and remove unminified files
+  * Flash error message on form validation failure ("Failed to create/save
+    record")
+  ## Bugfixes:
+  * Fix CSS class on column headers (dots replaced with dashes e.g.:
+    col-user.email -> col-user-email)
+  * Return HTTP 403 instead of 500 when inaccessible_callback returns None
+  * FileAdmin: show empty date instead of 1970-01-01 when directory has no
+    timestamp
+  * Fix "Save & Add Another" using non-relative redirect URL (broke behind
+    reverse proxies)
+
+-------------------------------------------------------------------
 Mon Feb 16 17:50:25 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.2:

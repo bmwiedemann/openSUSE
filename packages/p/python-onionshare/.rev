@@ -266,4 +266,23 @@
     <comment></comment>
     <requestid>1252072</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>8dcd8d34366d1fdf43e8fda765227020</srcmd5>
+    <version>2.6.4</version>
+    <time>1782916556</time>
+    <user>anag_factory</user>
+    <comment>- version 2.6.4 (bsc#1269693, CVE-2026-54707,
+     bsc#1269698, CVE-2026-54706):
+  * updated dependencies
+  * Security fix: Prevent symlink traversal
+  * Security fix: Prevent upload of files when file upload mode is disabled. Prevent creation of empty folder on empty POST request payload
+  * Dependencies: Updates tor dependencies and other python and web dependencies. Also updates flatpak runtime.
+  * Bug fix: Show indeterminate progress and warn user during Tor traversal
+
+    at the end of the name string.
+  * Bugfix: Fix checking for updates in Windows and macOS
+- fix for dependency error (see https://build.opensuse.org/request/show/807929 )
+  initial build on OBS</comment>
+    <requestid>1362627</requestid>
+  </revision>
 </revisionlist>

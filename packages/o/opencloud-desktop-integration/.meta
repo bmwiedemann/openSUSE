@@ -1,4 +1,5 @@
 <package name="opencloud-desktop-integration" project="openSUSE:Factory">
   <title>Nautilus and Nemo integrations for OpenCloud</title>
   <description>This package provides shell integration shell integrations for Nautilus and Nemo for OpenCloud.</description>
+  <devel project="isv:OpenCloud" package="opencloud-desktop-integration"/>
 </package>

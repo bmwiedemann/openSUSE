@@ -19,13 +19,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-rich
-Version:        14.3.3
+Version:        15.0.0
 Release:        0
 Summary:        A Python library for rich text and beautiful formatting in the terminal
 License:        MIT
 URL:            https://github.com/Textualize/rich
 Source:         https://github.com/Textualize/rich/archive/refs/tags/v%{version}.tar.gz#/rich-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module markdown-it-py >= 2.2.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}

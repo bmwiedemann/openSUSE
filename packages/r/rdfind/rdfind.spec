@@ -1,7 +1,7 @@
 #
 # spec file for package rdfind
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2014 Johannes Kastl
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           rdfind
-Version:        1.7.0
+Version:        1.8.0
 Release:        0
 Summary:        Find duplicate files and replace them with symlinks or hardlinks
 License:        GPL-2.0-or-later

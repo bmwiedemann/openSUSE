@@ -3,4 +3,5 @@
   <description>The dummy bindings are useful for the Agama installer which cannot use any YaST UI. It uses YaST as a backend library, the UI is renedered as a web page.
 
 Do not use with regular YaST!</description>
+  <devel project="YaST:Head" package="yast2-ycp-ui-bindings-dummy"/>
 </package>

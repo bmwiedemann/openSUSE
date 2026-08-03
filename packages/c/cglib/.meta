@@ -9,5 +9,4 @@ sure aspectwerks.jar is in the Classpath (from the 'aspectwerks' RPM)
 NOTE: If you use the cglib.jar you may need to add asm.jar to your
 ClassPath (from the 'asm' RPM).  The cglib-nodep.jar includes the ASM
 classes already.</description>
-  <devel project="Java:packages" package="cglib"/>
 </package>

@@ -1,4 +1,5 @@
 <package name="opensuse-oem-image" project="openSUSE:Factory">
   <title>openSUSE OEM Image</title>
   <description></description>
+  <devel project="Virtualization:Appliances:Images:openSUSE-Tumbleweed" package="opensuse-oem-image"/>
 </package>

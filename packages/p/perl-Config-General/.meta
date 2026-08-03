@@ -12,5 +12,4 @@ pairs in your config files.
 
 In addition to the capabilities of an Apache config file it supports some
 enhancements such as here-documents, C-style comments or multiline options.</description>
-  <devel project="devel:languages:perl" package="perl-Config-General"/>
 </package>

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jun 19 05:28:23 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+ 
+- update to 2.20.7:
+  https://github.com/ansible/ansible/blob/v2.20.7/changelogs/CHANGELOG-v2.20.rst
+  * Security Fixes
+    - ansible-galaxy install - Ensure role requirements are passed
+      as positional arguments to :command:`git clone`. Previously,
+      a malicious role author could inject arbitrary git
+      configuration in role dependencies. (CVE-2026-11332)
+  * Bugfixes
+    - module_utils sanitize_keys and remove_value functions now
+      sort their input to ensure matching subsets are always
+      obscured.
+
+-------------------------------------------------------------------
 Tue May 19 11:32:23 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package ansible-core-2.20 following the 2.20.x series

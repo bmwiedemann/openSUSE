@@ -42,6 +42,8 @@ Source99:       baselibs.conf
 # PATCH-FIX-OPENSUSE - fix compilation problem on < GCC 14
 Patch0:         label-can-only-be-part-of-a-statement.patch
 Patch1:         libfprint-old-meson.patch
+# PATCH-FEATURE-UPSTREAM support focal tech reader gl#libfprint/libfprint@2c7842c9
+Patch2:         focal-tech-support.patch
 BuildRequires:  gcc-c++
 BuildRequires:  gobject-introspection
 BuildRequires:  gobject-introspection-devel

@@ -1020,4 +1020,12 @@ Bug fixes:
     <comment>update to 16.0.1 (forwarded request 1366962 from ojkastl_buildservice)</comment>
     <requestid>1367691</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>2b084fda06a824394d0d358a19157ba6</srcmd5>
+    <version>16.0.2</version>
+    <time>1785504474</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 16.0.2: (forwarded request 1368705 from darix)</comment>
+    <requestid>1368725</requestid>
+  </revision>
 </revisionlist>

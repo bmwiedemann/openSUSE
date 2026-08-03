@@ -7,4 +7,12 @@
     <comment>selinux toolchain 3.11</comment>
     <requestid>1364588</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c7230280d78422c53b1920f0339bfcec</srcmd5>
+    <version>3.11</version>
+    <time>1785504692</time>
+    <user>dimstar_suse</user>
+    <comment>manpage</comment>
+    <requestid>1368577</requestid>
+  </revision>
 </revisionlist>

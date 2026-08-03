@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul  7 07:07:07 UTC 2026 - ohering@suse.de
+
+- Remove OCaml bindings on 32bit architectures
+
+-------------------------------------------------------------------
 Tue Jun 30 18:19:09 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.04.3

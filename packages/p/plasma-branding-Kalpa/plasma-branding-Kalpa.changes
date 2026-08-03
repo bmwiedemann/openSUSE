@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jun 18 15:47:31 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
+
+- add 0001-add-missed-locale1-in-sddm-config.patch
+
+-------------------------------------------------------------------
+Thu Jun 12 00:00:00 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
+
+- Version 20260612
+  * Add cups.service.d drop-in to set SystemGroup in cups-files.conf,
+    allowing wheel group members to administer CUPS
+
+-------------------------------------------------------------------
 Mon Jun  1 16:39:55 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
 
 - Version 20260601

@@ -17,7 +17,7 @@
 
 
 Name:           gap-utils
-Version:        0.96
+Version:        0.97
 Release:        0
 Summary:        GAP: Utility functions in GAP
 License:        GPL-2.0-or-later
@@ -27,8 +27,8 @@ URL:            https://gap-packages.github.io/utils
 Source:         https://github.com/gap-packages/utils/releases/download/v%version/utils-%version.tar.gz
 BuildRequires:  gap-rpm-devel
 BuildRequires:  xz
-Requires:       gap-core >= 4.10.1
-Suggests:       gap-curlinterface >= 2.3.0
+Requires:       gap-core >= 4.12
+Suggests:       gap-curlinterface >= 2.4.0
 BuildArch:      noarch
 
 %description

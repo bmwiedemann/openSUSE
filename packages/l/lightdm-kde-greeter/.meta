@@ -1,5 +1,6 @@
 <package name="lightdm-kde-greeter" project="openSUSE:Factory">
   <title>LightDM KDE Greeter</title>
   <description></description>
+  <devel project="X11:Utilities" package="lightdm-kde-greeter"/>
   <url>https://invent.kde.org/plasma/lightdm-kde-greeter</url>
 </package>

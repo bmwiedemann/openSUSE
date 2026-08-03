@@ -225,4 +225,41 @@
     <comment></comment>
     <requestid>1298156</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>17c90e4d20fd40cbf69e5a88972ab28c</srcmd5>
+    <version>1.2.6</version>
+    <time>1774555693</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.2.6:
+  * Many bugfixes related to CD-TEXT processing (Rasheeq Azad,
+    Denis Leroy)
+  * Several crash fixes (Ole Bertram, Denis Leroy, Jan
+    Solanti)
+  * Fixed version command (Daniel Foster)
+  * iconv detection improvement and cross-OS support (DL)
+  * Ejects CD to allow source medium insertion with copy
+    command (dhucul)
+  * Fix burning issue with gcdmaster (Sven Geuer)
+  * Many typos fixes (Sven Geuer, Michael Ortmann)
+  * *BSDs support fixes (Michael Ortmann, Benjamin Jacobs, DL)
+  * Do retries for blank and discid commands (DL)
+- drop cdrdao-drop-gconf-dep.patch (obsolete)
+
+  * one of ENCODING_ISO_8859_1, ENCODING_ASCII, ENCODING_MS_JIS, ENCODING_KOREAN, ENCODING_MANDARIN
+  (in filesystem package now)
+- update to cvs to fix build of gcdmaster with gnome-2.6
+- find new libgnomeuimm
+- change neededforbuild to libsigc++12
+- fix warning: control reaches end of non-void function
+- added resmgr support, rerun autoconf to bring in new
+- fix gcc-3.3 build
+- fix multiline-string issue in code
+- fix to build on x86_64 and with pccts includes in lib64
+- fix build with latest gcc
+- make it build with gcc-3.1
+- Completed #neededforbuild.
+- added &lt;string.h&gt; for gcc-2.96
+- fixed neededforbuild</comment>
+    <requestid>1342631</requestid>
+  </revision>
 </revisionlist>

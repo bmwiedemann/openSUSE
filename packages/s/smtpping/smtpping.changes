@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul 28 08:18:43 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.1.5
+  * Require CMake 3.5 policy version.
+  * Fix undeterminate values and return.
+  * Fix utility robustness.
+  * Harden DNS response parser against malformed replies.
+
+-------------------------------------------------------------------
 Sat Mar 22 15:55:02 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to fix FTBFS with cmake4

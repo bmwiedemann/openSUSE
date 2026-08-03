@@ -7,4 +7,12 @@
     <comment>new package</comment>
     <requestid>1315496</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9e0cd22906592e209bb7c5019919bbc0</srcmd5>
+    <version>4.1.0</version>
+    <time>1784126083</time>
+    <user>dimstar_suse</user>
+    <comment>Use the slf4j package that is now on version 2.0.18</comment>
+    <requestid>1365414</requestid>
+  </revision>
 </revisionlist>

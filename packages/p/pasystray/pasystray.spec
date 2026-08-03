@@ -1,7 +1,7 @@
 #
 # spec file for package pasystray
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -63,6 +63,7 @@ Pasystray allows setting the default PulseAudio source/sink and moving streams o
 
 %build
 autoreconf -fi
+export CFLAGS="-fpermissive -std=gnu99 %{optflags}"
 %configure --sysconfdir=%{_sysconfdir}
 %make_build
 

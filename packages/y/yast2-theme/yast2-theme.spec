@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-theme
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yast2-theme
-Version:        5.0.1
+Version:        5.0.2
 Release:        0
 
 Source0:        %{name}-%{version}.tar.bz2
@@ -25,13 +25,11 @@ Source0:        %{name}-%{version}.tar.bz2
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkg-config
-BuildRequires:  update-desktop-files
 BuildRequires:  yast2-devtools
 BuildRequires:  rubygem(%{rb_default_ruby_abi}:yast-rake)
 %if 0%{?is_opensuse}
 BuildRequires:  breeze5-icons
 BuildRequires:  oxygen5-icon-theme
-BuildRequires:  update-desktop-files
 BuildRequires:  yast2-qt-branding
 %endif
 

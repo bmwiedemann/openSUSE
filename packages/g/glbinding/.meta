@@ -1,5 +1,6 @@
 <package name="glbinding" project="openSUSE:Factory">
   <title>C++ binding for the OpenGL API</title>
   <description>glbinding is a cross-platform C++ binding for the OpenGL API.</description>
+  <devel project="devel:libraries:c_c++" package="glbinding"/>
   <url>https://github.com/cginternals/glbinding</url>
 </package>

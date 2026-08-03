@@ -52,4 +52,14 @@
   * support mTLS certificates when available</comment>
     <requestid>1345970</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>cccc0d7f78766cf8ef8314500c4ca335</srcmd5>
+    <version>3.16.1</version>
+    <time>1784126596</time>
+    <user>dimstar_suse</user>
+    <comment>- - update to google-cloud-logging-v3.16.1:
+  * **logging:** fix StructuredLogHandler docstring parameter
+    name (#17625) (32862f0), closes #17604</comment>
+    <requestid>1365757</requestid>
+  </revision>
 </revisionlist>

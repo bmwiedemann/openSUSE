@@ -20,7 +20,7 @@ BUILDKEYDIR="/usr/lib/rpm/gnupg/keys"
 declare -A RPMGPGKEYS
 
 # List of GPG keys and common names
-RPMGPGKEYS["openSUSE"]="gpg-pubkey-29b700a4-62b07e22.asc"
+RPMGPGKEYS["openSUSE"]="gpg-pubkey-29b700a4-6a17fa38.asc"
 RPMGPGKEYS["openSUSE-Backports"]="gpg-pubkey-287a0027-682477e3.asc"
 RPMGPGKEYS["SuSE-SLE-15"]="gpg-pubkey-39db7c82-66c5d91a.asc"
 RPMGPGKEYS["SuSE-SLE-15.3"]="gpg-pubkey-39db7c82-66c5d91a.asc"

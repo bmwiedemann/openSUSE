@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ce3cfe107e47abd478ecdf376fa8abcf</srcmd5>
+    <version>1.7.6</version>
+    <time>1784126110</time>
+    <user>dimstar_suse</user>
+    <comment>New package: low-level constrained-decoding/guidance library; dependency for python-vllm.</comment>
+    <requestid>1365518</requestid>
+  </revision>
+</revisionlist>

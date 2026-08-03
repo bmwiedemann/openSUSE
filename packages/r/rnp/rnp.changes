@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 14 17:12:59 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fix tests
+  * drop disable-tests.patch
+  * add rnp-v0.18.1-gnupg-2_5_21-no-partial-file-guard.patch
+
+-------------------------------------------------------------------
 Fri Jul 10 19:06:52 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - No longer skip test_encryption_x25519, use a fix instead

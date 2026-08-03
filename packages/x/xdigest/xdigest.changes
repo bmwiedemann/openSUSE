@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 19 19:04:28 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 0.5.0:
+  * Build fixes for multiple platforms
+  * USE_ASM can now auto-detect
+
+-------------------------------------------------------------------
 Fri Feb 13 17:12:47 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 0.4.1, dropping the patches we upstreamed:

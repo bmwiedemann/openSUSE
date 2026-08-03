@@ -3,12 +3,12 @@ Subject: Disable plugins which cause automatic network requests by default
 References: boo#1070899
  
 diff --git a/src/services/lastfm/amarok_service_lastfm.json b/src/services/lastfm/amarok_service_lastfm.json
-index 035ef66152..21054ba64c 100644
+index 430a6ac..e91b4ef 100644
 --- a/src/services/lastfm/amarok_service_lastfm.json
 +++ b/src/services/lastfm/amarok_service_lastfm.json
-@@ -63,7 +63,7 @@
-         "Description[tr]": "Last.fm işlevlerini Amarok ile tümleştiren bir hizmet",
+@@ -73,7 +73,7 @@
          "Description[uk]": "Служба, яка інтегрує функціональність Last.fm до Amarok",
+         "Description[zh_CN]": "一个将 Last.fm 的功能集成到 Amarok 的服务",
          "Description[zh_TW]": "一種將 Last.fm 其功能性整合到 Amarok 中的服務",
 -        "EnabledByDefault": true,
 +        "EnabledByDefault": false,
@@ -16,12 +16,12 @@ index 035ef66152..21054ba64c 100644
          "License": "GPL",
          "Name": "Last.fm",
 diff --git a/src/services/magnatune/amarok_service_magnatunestore.json b/src/services/magnatune/amarok_service_magnatunestore.json
-index 68dd12b6a1..0265f47405 100644
+index 810d33a..58b484d 100644
 --- a/src/services/magnatune/amarok_service_magnatunestore.json
 +++ b/src/services/magnatune/amarok_service_magnatunestore.json
-@@ -63,7 +63,7 @@
-         "Description[tr]": "Kötü amaçlı olmayan Magnatune plak şirketinden etiketinden müzik önizle ve satın al",
+@@ -73,7 +73,7 @@
          "Description[uk]": "Прослухайте і купіть музику з ненав’язливої агенції звукозапису Magnatune",
+         "Description[zh_CN]": "从不作恶的 Magnatune 唱片品牌中浏览并购买音乐",
          "Description[zh_TW]": "從標為不邪惡的 Magnatune 唱片標籤的音樂中，預聽並購買",
 -        "EnabledByDefault": true,
 +        "EnabledByDefault": false,

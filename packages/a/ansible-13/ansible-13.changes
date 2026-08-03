@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jun 19 05:27:02 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 13.8.0:
+  Ansible 13.8.0 includes ansible-core 2.20.7 as well as a curated
+  set of Ansible collections that provide a vast number of modules
+  and plugins.
+  Collections which have opted-in to being a part of the Ansible 13
+  unified changelog will have an entry on this page:
+  https://github.com/ansible-community/ansible-build-data/blob/main/13/CHANGELOG-v13.rst
+
+-------------------------------------------------------------------
 Wed Jun  3 05:15:33 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package ansible-13 following the 13.x series of ansible

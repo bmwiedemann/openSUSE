@@ -1,7 +1,7 @@
 #
 # spec file for package pam_pkcs11
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,8 @@ Source4:        pkcs11_eventmgr.service
 Patch0:         %{name}-fsf-address.patch
 Patch1:         %{name}-0.5.3-nss-conf.patch
 Patch3:         %{name}-0.6.0-nss-autoconf.patch
+# PATCH-FIX-OPENSUSE pam_pkcs11-0.6.13-fix-null-deref.patch -- Fix null deref described in bsc#1259854
+Patch4:         %{name}-0.6.13-fix-null-deref.patch
 
 BuildRequires:  curl-devel
 BuildRequires:  docbook-xsl-stylesheets

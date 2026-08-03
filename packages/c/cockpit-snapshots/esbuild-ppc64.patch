@@ -1,0 +1,27 @@
+From ab9730f4cfc3db836ba79460f1df6999c32020ef Mon Sep 17 00:00:00 2001
+From: Miika Alikirri <miika.alikirri@suse.com>
+Date: Tue, 10 Feb 2026 18:47:35 +0200
+Subject: Don't use esbuild wasm on ppc64
+
+For some reason, wasm runtime is broken on node24 so we should
+use native runtime instead
+---
+ build.js | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/build.js b/build.js
+index 7548c91..26340e5 100755
+--- a/build.js
++++ b/build.js
+@@ -13,7 +13,7 @@ import { cockpitPoEsbuildPlugin } from './pkg/lib/cockpit-po-plugin.js';
+ import { cockpitRsyncEsbuildPlugin } from './pkg/lib/cockpit-rsync-plugin.js';
+ 
+ const production = process.env.NODE_ENV === 'production';
+-const useWasm = os.arch() !== 'x64';
++const useWasm = os.arch() !== 'x64' && os.arch() !== 'ppc64';
+ const esbuild = (await import(useWasm ? 'esbuild-wasm' : 'esbuild')).default;
+ 
+ const parser = (await import('argparse')).default.ArgumentParser();
+-- 
+2.52.0
+

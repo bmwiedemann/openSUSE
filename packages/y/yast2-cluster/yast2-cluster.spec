@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-cluster
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define _fwdefdir %{_prefix}/lib/firewalld/services
 
 Name:           yast2-cluster
-Version:        5.0.1
+Version:        5.0.2
 Release:        0
 Summary:        Configuration of cluster
 License:        GPL-2.0-only
@@ -30,7 +30,6 @@ Source0:        %{name}-%{version}.tar.bz2
 Source1:        cluster.firewalld.xml
 
 BuildRequires:  firewall-macros
-BuildRequires:  update-desktop-files
 BuildRequires:  yast2-devtools >= 4.2.2
 BuildRequires:  rubygem(%{rb_default_ruby_abi}:yast-rake)
 

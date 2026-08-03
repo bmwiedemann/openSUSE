@@ -19,6 +19,5 @@ anything in C&lt;...&gt; or F&lt;...&gt; codes, anything in verbatim paragraphs
 list for a document starts out from the stopword list defined by
 Pod::Wordlist, and can be supplemented (on a per-document basis) by
 having `&quot;=for stopwords&quot;' / `&quot;=for :stopwords&quot;' region(s) in a document.</description>
-  <devel project="devel:languages:perl" package="perl-Pod-Spell"/>
   <url>http://search.cpan.org/dist/Pod-Spell/</url>
 </package>

@@ -1,7 +1,7 @@
 #
 # spec file for package libtpms
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,14 @@
 
 %define lname libtpms0
 Name:           libtpms
-Version:        0.10.1
+Version:        0.10.2
 Release:        0
 Summary:        Library providing Trusted Platform Module (TPM) functionality
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/stefanberger/libtpms
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
+Patch0:         libtpms-fix-const-correctness.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes

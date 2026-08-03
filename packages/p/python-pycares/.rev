@@ -165,4 +165,34 @@
     <comment></comment>
     <requestid>1305968</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>4dfbf33b964d6b9ead33ba789dcd62c6</srcmd5>
+    <version>5.0.1</version>
+    <time>1774555641</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.0.1:
+  * Fix IDNA 2008 test
+- update to 5.0.0:
+  * Use Literal for type
+  * Use CMake for compiling c-ares
+  * build(deps): bump actions/setup-python from 5 to 6
+  * build(deps): bump pypa/cibuildwheel from 3.1.4 to 3.2.0
+  * Move project metadata to pyproject.toml
+  * Remove gethostbyname
+  * Remove getsock
+  * Replace ares_{get,set}servers with ares_{get,set}_servers_csv
+  * Remove ares_init and ares_mkquery, they are unused
+  * build(deps): bump actions/download-artifact from 5 to 6
+  * build(deps): bump actions/upload-artifact from 4 to 5
+  * Make c-ares thread-safety mandatory
+  * Migrate API to c-ares' dnsrec variants
+  * Build wheels in parallel
+  * build(deps): bump actions/checkout from 5 to 6
+  * Update bundled c-ares to v1.34.6
+  * Make callback a mandatory kwarg-only argument
+  * Return bytes data for TXT records
+  * Add support for TLSA, HTTP and URI queries
+  * Remove event_thread option, make it implicit</comment>
+    <requestid>1342111</requestid>
+  </revision>
 </revisionlist>

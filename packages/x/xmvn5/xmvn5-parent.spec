@@ -1,7 +1,7 @@
 #
 # spec file for package xmvn5-parent
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -50,9 +50,6 @@ This package provides XMvn parent POM.
 # remove dependency plugin maven-binaries execution
 # we provide apache-maven by symlink
 %pom_xpath_remove "pom:executions/pom:execution[pom:id[text()='maven-binaries']]"
-
-# Normalize slf4j version to 2
-%pom_xpath_set pom:project/pom:properties/pom:slf4jVersion 2 xmvn-parent
 
 # Normalize maven4 to version 4 (compatibility version)
 %pom_xpath_set pom:project/pom:properties/pom:mavenVersion 4 xmvn-parent

@@ -27,5 +27,4 @@ is fully dynamic and they may include arbitrary BeanShell scripts in
 their bodies, methods, and constructors. Users may now freely mix
 loose, unstructured BeanShell scripts, method closures, and full
 scripted classes.</description>
-  <devel project="Java:packages" package="bsh2"/>
 </package>

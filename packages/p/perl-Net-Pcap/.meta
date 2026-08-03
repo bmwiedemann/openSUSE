@@ -7,6 +7,5 @@ monitoring.  Applications include network statistics collection, security
 monitoring, network debugging, etc.&quot;
 
 </description>
-  <devel project="devel:languages:perl" package="perl-Net-Pcap"/>
   <url>http://search.cpan.org/dist/Net-Pcap</url>
 </package>

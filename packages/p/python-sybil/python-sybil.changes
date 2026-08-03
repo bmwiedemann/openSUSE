@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jun 18 04:22:41 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 10.1.0:
+  * Ignore trailing whitespace in doctest output by default, see
+    :data:`~sybil.evaluators.doctest.KEEP_TRAILING_WHITESPACE` if you need
+    whitespace sensitivity.
+  * Make :func:`~sybil.testing.run_pytest` runs immune to ambient color
+    environment variables.
+  * Re-work :func:`~sybil.testing.run_pytest` to fix problems caused by
+    re-invoking external plugins during the nested runs.
+  * Moved to a uv-based, pyproject.toml-driven project layout.
+  * Introduce ruff code formatting.
+  * Fixed several issues with lexing of Markdown fenced code blocks.
+  * Add :func:`~sybil.testing.run_pytest` to for in-process pytest execution
+    of example tests that use :any:`fixtures <fixture>` in documentation.
+  * Supported Python versions are now 3.11 onwards.
+
+-------------------------------------------------------------------
 Wed Feb 25 10:07:19 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Fix the condition with suse_version macro on SLFO (jsc#PED-15847)

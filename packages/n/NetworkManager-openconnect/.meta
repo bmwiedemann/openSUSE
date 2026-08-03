@@ -2,5 +2,4 @@
   <title>NetworkManager VPN support for OpenConnect</title>
   <description>NetworkManager-openconnect provides VPN support to NetworkManager for
 OpenConnect.</description>
-  <devel project="GNOME:Factory" package="NetworkManager-openconnect"/>
 </package>

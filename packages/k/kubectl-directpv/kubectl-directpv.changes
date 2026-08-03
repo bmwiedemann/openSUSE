@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Mar 26 05:48:33 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.1.6:
+  * upgrade dependencies (#1021)
+  * upgrade dependencies (#1019)
+  * upgrade dependencies, linters and controller (#1018)
+  * Add maintenance notice to README
+  * fix: define the healthz port in the same node-server container
+    where its referenced (#1016)
+  * Remove unused healthz port from controller and fix port
+    placement in DaemonSets (#1015)
+  * Check volume existent before deletion in volume controller
+    (#1014)
+  * Add mounts from /proc/1/mountinfo (#1006)
+  * legacy: fix selector labels as same as installer (#1004)
+  * Update kubernetes and sidecar images (#1003)
+  * Show Drive ID in 'list drives' default output (#1008)
+  * Upgrade dependencies (#1010)
+
+-------------------------------------------------------------------
 Tue Apr 29 13:58:43 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 4.1.5:

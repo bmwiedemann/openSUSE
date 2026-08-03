@@ -2,5 +2,6 @@
   <title>Terminal output generator</title>
   <description>This package generates impressive-looking terminal output to look busy when
 stakeholders walk by.</description>
+  <devel project="utilities" package="rust-stakeholder"/>
   <url>https://github.com/giacomo-b/rust-stakeholder</url>
 </package>

@@ -1,4 +1,5 @@
 <package name="rgbds" project="openSUSE:Factory">
   <title>Rednex Game Boy Development System</title>
   <description>An assembly toolchain for the Nintendo Game Boy &amp; Game Boy Color</description>
+  <devel project="Emulators" package="rgbds"/>
 </package>

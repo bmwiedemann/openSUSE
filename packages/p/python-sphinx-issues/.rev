@@ -102,4 +102,17 @@
   * Properly handle user and org names with symbols in them</comment>
     <requestid>1316832</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>dea9d3a1111f661a93145327bda6e27f</srcmd5>
+    <version>6.0.0</version>
+    <time>1774469854</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.0.0:
+  * Backwards-incompatible: Remove implicit extraction of
+    group/project from GitHub URLs in issues_uri.
+  * Support Python 3.10-3.14. 3.9 is no longer supported,
+    as it is EOL.
+  * Pin lower bound of Sphinx to 8.1.0</comment>
+    <requestid>1342396</requestid>
+  </revision>
 </revisionlist>

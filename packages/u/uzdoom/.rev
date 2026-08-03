@@ -7,4 +7,12 @@
     <comment></comment>
     <requestid>1321858</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8ac7053909668646bcf1c8b678a28894</srcmd5>
+    <version>4.14.3</version>
+    <time>1771606028</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop nonfree content from source archive</comment>
+    <requestid>1334210</requestid>
+  </revision>
 </revisionlist>

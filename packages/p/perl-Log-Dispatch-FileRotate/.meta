@@ -9,5 +9,4 @@ with additions. To that end the arguments
 
 behave the same as Log::Dispatch::File. So see its man page (perldoc
 Log::Dispatch::File)</description>
-  <devel project="devel:languages:perl" package="perl-Log-Dispatch-FileRotate"/>
 </package>

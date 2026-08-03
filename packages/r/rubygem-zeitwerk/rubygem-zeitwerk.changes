@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 13 11:38:01 UTC 2026 - Aleksei Burlakov <aburlakov@suse.com>
+
+- New upstream release 2.8.2:
+  * on_load and on_unload accept constant paths with leading colons
+  * on_load and on_unload validate that their input is a constant path 
+
+-------------------------------------------------------------------
 Fri Dec 13 14:39:22 UTC 2024 - Aleksei Burlakov <aburlakov@suse.com>
 
 - openSUSE:Factory doesn't support ruby3.2 --> don't limit to ruby3.2

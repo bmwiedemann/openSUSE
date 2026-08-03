@@ -1,7 +1,7 @@
 #
 # spec file for package SQLiteCpp
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,9 +24,13 @@ Summary:        A C++ SQLite3 wrapper
 License:        MIT
 URL:            https://srombauts.github.io/SQLiteCpp
 Source:         https://github.com/SRombauts/SQLiteCpp/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Fix-required-C-version-for-CMake-builds.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Generate-pkgconfig-file-also-from-CMake-build.patch
 BuildRequires:  c++_compiler
+BuildRequires:  cmake
 BuildRequires:  gtest
-BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(sqlite3)
 
@@ -50,22 +54,27 @@ Requires:       pkgconfig(sqlite3)
 This package provides the headers and sources for developing against SQLiteCpp.
 
 %prep
-%autosetup
+%autosetup -p1
 sed -iE "s/\r$//" README.md
+# Make SONAME lowercase for compatibility with meson build - https://github.com/SRombauts/SQLiteCpp/issues/542
+echo 'set_property(TARGET SQLiteCpp PROPERTY OUTPUT_NAME "sqlitecpp")' >> CMakeLists.txt
 
 %build
-%meson \
+%cmake \
+  -DSQLITECPP_INTERNAL_SQLITE:BOOL=false \
   -DSQLITE_ENABLE_COLUMN_METADATA=true \
   -DSQLITECPP_BUILD_TESTS=true \
   -DSQLITECPP_BUILD_EXAMPLES=true \
-	%{nil}
-%meson_build
+  %{nil}
+%cmake_build
 
 %install
-%meson_install
+%cmake_install
+# Remove ROS specific file
+rm %{buildroot}%{_datadir}/%{name}/package.xml
 
 %check
-%meson_test
+%ctest --parallel 1
 
 %ldconfig_scriptlets -n %{shlib}
 
@@ -79,5 +88,6 @@ sed -iE "s/\r$//" README.md
 %{_includedir}/%{name}/
 %{_libdir}/lib*.so
 %{_libdir}/pkgconfig/*.pc
+%{_libdir}/cmake/SQLiteCpp
 
 %changelog

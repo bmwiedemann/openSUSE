@@ -10,5 +10,4 @@ provides routines for parsing, viewing, modifying, and saving this
 metadata. The libiptcdata package also includes a command line utility,
 iptc, for editing IPTC data in JPEG files. The library implements the
 IPTC Information Interchange Model according to its specification.</description>
-  <devel project="GNOME:Factory" package="libiptcdata"/>
 </package>

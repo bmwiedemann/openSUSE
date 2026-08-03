@@ -16,6 +16,5 @@ jsoup implements the WHATWG HTML5 specification.
 jsoup can deal with invalid HTML tag soup.
 
 </description>
-  <devel project="Java:packages" package="jsoup"/>
   <url>http://jsoup.org/</url>
 </package>

@@ -22,5 +22,6 @@ because a recommended package gets automatically (and silently) installed
 when it is available to be installed so software which is a generic security issue
 would get automatically installed in most cases without an explicit user request.
 </description>
+  <devel project="Printing" package="cups-filters2"/>
   <url>https://github.com/OpenPrinting/cups-filters</url>
 </package>

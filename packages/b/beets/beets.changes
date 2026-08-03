@@ -1,4 +1,215 @@
 -------------------------------------------------------------------
+Wed Jul 29 15:02:11 UTC 2026 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- update to 2.13.1:
+  * Bug fixes
+    * Fixed source distributions not including the bundled man pages. (#6882)
+- update to 2.13.0:
+  * New features
+    * Convert Plugin: Add new configuration option convert.refresh and
+      command-line option --refresh, allowing to force Convert Plugin operation
+      when original file is newer than existing converted file.
+    * Edit Plugin: The interactive import editor now shows album-level fields
+      (as configured by albumfields) as a YAML header section when editing an
+      album import. Fields that appear in both itemfields and albumfields are
+      shown only in the header, not per-track.
+    * FetchArt Plugin: Add fetch_for_asis setting that enables fetching album
+      art from online sources even when imported files are not modified by the
+      auto-tagger. Default is no which means FetchArt Plugin looks for art only
+      in the local filesystem when the user (or quiet_fallback) chooses asis.
+    * FtInTitle Plugin: Apply featured-artist rewriting to fetched metadata
+      before commands such as MBSync Plugin use it. (#1153)
+    * LastGenre Plugin: Add support for normalizing genre spellings and naming
+      variants with a new configuration option aliases. The feature is enabled
+      by default and ships with a built-in list of regex patterns. These
+      patterns can be replaced via the user's configuration. The default
+      whitelist and genre tree were audited against the top 1,000 Last.fm tags:
+      canonical names are now consistent across both files, long-standing
+      mismatches between them have been resolved, and entries align with the
+      built-in alias patterns. (#6466)
+    * Lyrics Plugin: Add lrcmux backend, which aggregates lyrics from various
+      other sources.
+    * Lyrics Plugin: Added a --no-keep-synced command option to override
+      keep_synced: yes for a single manual lyrics fetch.
+    * Lyrics Plugin: Added a rest_directory configuration option for specifying
+      a reStructuredText output directory, semantically equivalent to -r,
+      --write-rest. (#2806)
+    * modify command: Support += and -= operators to add or remove individual
+      values from multi-valued fields without replacing the whole field.
+      (#6587)
+    * ReplayGain Plugin: Add a metaflac backend that computes ReplayGain for
+      FLAC files using the metaflac command-line tool. (#1203)
+    * Spotify Plugin: Recognize native Spotify URIs (e.g. spotify:album:<id>
+      and spotify:track:<id>) when extracting release/track IDs, in addition to
+      full open.spotify.com URLs and bare IDs
+    * Tidal Plugin: Add cover art support. Album metadata now includes
+      cover_art_url from Tidal's coverArt relationship, which the FetchArt
+      Plugin plugin can retrieve.
+    * A database backup is now automatically created before running schema
+      migrations. Control with the create_backup_before_migrations option
+      (default: yes).
+  * Bug fixes
+    * Convert Plugin: convert -a with copy_album_art enabled no longer crashes
+      when the stored album art path points to a missing file (for example a
+      multi-disc album whose cover lives in the album root rather than a
+      per-disc directory); the missing art is skipped instead. (#4692)
+    * Edit Plugin: Preserve missing album art paths when editing album
+      metadata, instead of turning artpath: null into a path ending in None.
+      (#2438)
+    * ImportFeeds Plugin: import command no longer aborts the whole run when a
+      symlink cannot be created (e.g. on Windows or a read-only directory); the
+      failure is logged and the import continues. (#840)
+    * Lyrics Plugin: Leave lyrics empty when a source reports an instrumental
+      track, and store that state in lyrics_instrumental flexible attribute.
+      Existing [Instrumental] lyrics are migrated automatically. (#6719)
+    * Missing Plugin: Honor the -f/--format option (and the format_album
+      configuration) when listing missing albums in album mode. (#3804)
+    * Smart Playlist Plugin: splupdate no longer crashes with TypeError:
+      unhashable type: 'list' when a playlist configuration includes a
+      playlist: query. (#5354)
+    * SubsonicUpdate Plugin: Log a clearer error when the Subsonic server
+      returns a non-JSON response. (#5635)
+    * Tidal Plugin: Normalize Tidal album types to lowercase.
+    * A date query containing a stray | (for example added:2000|2001, as might
+      be typed by a user expecting | to mean "or") now raises a clean "a valid
+      date/time string" error instead of crashing with an uncaught KeyError. A
+      | was being accepted as a relative-date unit due to a regular expression
+      character-class typo.
+    * Album store no longer copies artpath onto its items as an absolute path,
+      which broke relative-path portability. A database migration removes any
+      such stale artpath attributes left on items by earlier versions. (#6756)
+    * Sorting by a nullable field (for example a flexible attribute with a
+      declared type whose null value is None) that is present on only some
+      items no longer crashes with a TypeError. Missing values are now grouped
+      together, ordered before present ones when sorting ascending and after
+      them when descending. (#3461)
+  * Other changes
+    * Contributing: The project now uses uv for packaging, virtual environment,
+      and dependency management, replacing poetry. The build backend has
+      changed from poetry-core to hatchling. Please see updates in Development
+      Tools and Getting the Source for more information. (#5783)
+    * Installation Add Homebrew to the list of supported package managers in
+      the installation guide.
+    * Installation: Note that Windows users should run beets in a terminal
+      emulator (such as Windows Terminal or cmder) for output to display
+      correctly. (#2848)
+    * Installation: Switch isolated tool installation guidance and GitHub
+      workflow setup to uv tool commands.
+    * LastGenre Plugin: Add a new "Choosing the Right Tool" documentation
+      section to guide users in picking the right approach across genre
+      fetching, filtering, and normalization.
+    * Spotify Plugin: Retry on 503 Service Unavailable responses from the
+      Spotify API instead of immediately aborting, matching the existing 429
+      rate-limit retry behavior..0:
+
+-------------------------------------------------------------------
+Sat Jul 25 15:52:23 UTC 2026 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- update to 2.12.0:
+  * New features
+    * Convert Plugin: The --force and --keep-new CLI flags are now also
+      available as config options via force and keep_new.
+    * import command: The --nomove / -M CLI flag can now be used to override
+      the move: yes config option during import.
+    * Lyrics Plugin: Write synced (LRC) lyrics to the SYLT (synchronized
+      lyrics) ID3 frame and plain text to USLT for ID3-tagged files, instead of
+      storing raw LRC timestamps in USLT. Players that only support USLT
+      continue to see readable plain lyrics. (#6541)
+    * ListenBrainz Plugin: Add support for importing ListenBrainz listening
+      history from an export file. Use the -f / --export-file flag to specify
+      the path to the ListenBrainz export file.
+    * MusicBrainz Plugin: Introduce aliases_as_credits to make
+      aliases-as-artist-credit optional.
+    * Bad Files Plugin: Added settings for auto error and warning actions.
+    * Tidal Plugin: New flexible attributes are now populated during imports,
+      including tidal_track_id, tidal_album_id, tidal_artist_id,
+      tidal_track_popularity, tidal_album_popularity, and tidal_updated. Added
+      a new beet tidalsync command to refresh popularity data for imported
+      items by default, or albums with --album, with --force to re-fetch and
+      --write to update file tags.
+    * Migration: Existing Tidal imports can copy the previously stored IDs into
+      the new flexible attributes with modify command: run beet modify
+      data_source:tidal tidal_album_id='$mb_albumid' -a for albums and beet
+      modify data_source:tidal tidal_track_id='$mb_trackid' for items.
+  * Bug fixes
+    * Convert Plugin: Tidy the --playlist help text so it no longer has awkward
+      indentation in CLI output.
+    * Duplicates Plugin: Fix plugin output: information about duplicate items
+      was not displayed by default. --count option was ignored (#6476)
+    * FetchArt Plugin: Catch OSError in _set_art so that permission errors
+      (e.g. a file locked by another process) are logged as warnings instead of
+      crashing beets. (#6193)
+    * Fish Plugin: Fix error on plugin initialization.
+    * import command: Fix duplicate album merge during import when running in
+      threaded mode. The merge action no longer creates a duplicate folder or
+      reports could not get filesize errors. (#6601)
+    * Lyrics Plugin: Add rate limiting and exponential backoff to HTTP requests
+      to prevent 429 Too Many Requests errors from lyrics sources during bulk
+      imports. (#6728)
+    * Lyrics Plugin: Improve Musica.com lyric scraping so fetched lyrics no
+      longer omit the opening verse or include non-lyric page content.
+    * MBSync Plugin / BPSync Plugin: Do not clear items metadata when
+      import.from_scratch is enabled. (#6613)
+    * modify command: Fix beet modify -a splitting multi-value field strings
+      (like artists, genres) into individual characters when modifying albums.
+      Album field types now fall back to the corresponding item field type
+      definitions. (#5690)
+    * move command: move command no longer crashes when an item referenced in
+      the database has been deleted from disk. Missing items are now skipped
+      with a warning and the command continues. (#6720)
+    * MPDStats Plugin: Fix crashes and invalid configuration when passing
+      --host, --port, or --password on the command line. (#5404)
+    * MusicBrainz Collection Plugin: Handle MusicBrainz 401 Unauthorized errors
+      during mbupdate without crashing, and log a clearer message that points
+      users to musicbrainz.user and musicbrainz.pass configuration. (#6651)
+    * MusicBrainz Plugin: Fix KeyError: 'aliases' crash when looking up
+      releases with more than 500 tracks.
+    * MusicBrainz Pseudo-Release Plugin: Fix crashes when applying a
+      pseudo-release. One in PseudoAlbumInfo.raw_data and a
+      sqlite3.ProgrammingError.
+    * Replace Plugin: Fix TypeError when invoking the Replace Plugin command.
+      (#6260)
+    * Spotify Plugin: Improved Spotify API parsing to handle missing label data
+      (#6679)
+    * Spotify Plugin: Use single instead of double quotes in spotify queries.
+    * Tidal Plugin: add Tidal Plugin dependency extra to make sure
+      requests-oauthlib is installed. (#6633)
+    * Tidal Plugin: Fix auth URL not printed in environments without a
+      configured browser (#6710)
+    * AttrDict.__getattribute__ now unmasks AttributeError raised inside a
+      cached_property body. Previously such errors were swallowed by the
+      __getattr__ fallback, producing a misleading message about the property
+      name itself. The wrapped RuntimeError keeps the original traceback so it
+      still points at the real failing line. (#6558)
+    * ReadError and WriteError now include the file path and the underlying
+      reason in their message instead of a <super: ...> object representation.
+      (#6560)
+    * Fix a CLI help formatting regression that moved command descriptions to
+      separate lines; descriptions are inline again, with regression test
+      coverage.
+    * Path format queries now correctly match multi-value fields such as genres
+      when using exact string matches like genres:=Classical or
+      genres:=~Classical. (#6598)
+  * For plugin developers
+    * Introduced beets.importer.DuplicateAction to simplify handling of
+      duplicates.
+    * Plugin authors can import all autotagger helpers directly from
+      beets.autotag, including match classes, distance helpers, and
+      assign_items, without relying on lower-level autotag modules.
+  * Other changes
+    * Lyrics Plugin: Fold rate limiting and 429 retry from the lyrics-specific
+      LyricsSession into the shared
+      beetsplug._utils.requests.TimeoutAndRetrySession so all plugins benefit.
+      The standalone LyricsSession class has been removed.
+    * Spotify Plugin: spotifysync now batches its SQLite commit for a sync run,
+      follows the standard beets write-before-store pattern, and logs
+      audio-features API unavailability only once per run.
+    * Titlecase Plugin: Correct the path format example and document the
+      %titlecase{text} template function. (#6697)
+    * Log message prefix formatting (musicbrainz: msg) moved from a filter to
+      LegacyFormatter, making future customization easier.
+
+-------------------------------------------------------------------
 Mon Jul 20 06:55:06 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove min requirement for python-numpy, that's only required for

@@ -1,15 +1,15 @@
 <services>
-  <service name="tar_scm" mode="disabled">
+  <service name="tar_scm" mode="manual">
     <param name="url">https://github.com/fujita/tgt.git</param>
     <param name="scm">git</param>
     <param name="filename">tgt</param>
-    <param name="version">master</param>
-    <param name="versionformat">1.0.95+@TAG_OFFSET@.%h</param>
-    <param name="match-tag">v1.0.95</param>
+    <param name="version">v1.0.97</param>
+    <param name="versionformat">1.0.97+@TAG_OFFSET@.%h</param>
+    <param name="match-tag">v1.0.97</param>
     <param name="revision">master</param>
     <param name="changesgenerate">enable</param>
   </service>
-  <service name="recompress" mode="disabled">
+  <service name="recompress" mode="manual">
     <param name="file">tgt*.tar</param>
     <param name="compression">xz</param>
   </service>

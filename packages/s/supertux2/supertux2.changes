@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Mar 27 23:34:47 UTC 2026 - Mateus Machado <martusguy@proton.me>
+
+- Bump to 0.7.0
+  * Brand new sprites and abilities for Tux: slope sliding, strong buttjumping, rock rolling, and crawling
+  * Revamped graphics for most backgrounds, tiles, objects, and badguys
+  * Complete level design + story rework of the Story Mode, Revenge in Redmond, and Bonus Island I
+  * Not only new NPCs (e.g: Granito) and enemies (e.g: DiveMine, Fish, and Corrupted Granito), but also revamps for numerous enemies such as: GoldBomb, Igel, Ghoul, and both bosses (Yeti and Ghost Tree)
+  * New music
+  * Level editor revamp
+  * Local multiplayer mode
+  * New gameplay mechanics such as glinted enemies, keys, the item pocket, and unlockable bonus islands via Tux Dolls
+  * Many internal improves and code refactoring, such as moving to SimpleSquirrel
+  * Improvements to compilation/porting, including CMake refactor, Android revival, and Flatpak builds
+- Drop boost.patch: SuperTux no longer requires any Boost C++ libraries.
+- Drop supertux2-gcc12.patch: GCC 12 is no longer supported in modern openSUSE.
+
+-------------------------------------------------------------------
 Thu Oct  2 10:28:53 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Remove BuildRequires on libboost_system-devel,

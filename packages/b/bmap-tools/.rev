@@ -31,4 +31,21 @@
     <comment></comment>
     <requestid>1168628</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3e7284ea6f435682e17a035871380659</srcmd5>
+    <version>3.9.0</version>
+    <time>1774555701</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.9.0:
+  * copy: add `--removable-device`, `--keyring` and
+    `--fingerprint` options
+  * Respect query part of the url when operating on the path
+  * support FTP authentication
+  * rework GPG tests
+  * Move project to yoctoproject
+  * Maintainers change from Artem Bityutskiy (Thank you!) to
+    Trevor Woerner, Joshua Watt, Tim Orling
+  * Consolidate name as 'bmaptool'</comment>
+    <requestid>1342637</requestid>
+  </revision>
 </revisionlist>

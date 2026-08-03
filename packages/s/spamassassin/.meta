@@ -8,5 +8,4 @@ User Agent, your mail program) or your LDA (Local Delivery Agent).
 See the files in the documentation directory
 /usr/share/doc/packages/spamassassin/ for more information on how to
 use the filter.</description>
-  <devel project="devel:languages:perl" package="spamassassin"/>
 </package>

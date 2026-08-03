@@ -4,6 +4,5 @@
 
 A typical use sets up the progress bar with a number of items to do, and then calls update to update the bar whenever an item is processed.
 </description>
-  <devel project="devel:languages:perl" package="perl-Term-ProgressBar"/>
   <url>http://search.cpan.org/~fluffy/Term-ProgressBar-%{version}/</url>
 </package>

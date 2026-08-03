@@ -32,6 +32,7 @@ Source5:        system-user-msr.conf
 Patch1:         Fix-the-layout-changes-after-linux-6.patch
 Patch2:         Fixup-for-commit-1aaba11da9aa-driver-core-class-remo.patch
 Patch3:         kernel-7.2.patch
+Patch4:         fix-build-warnings.patch
 BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  kernel-default-devel
 BuildRequires:  systemd-rpm-macros

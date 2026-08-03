@@ -1,7 +1,7 @@
 #
 # spec file for package python-parsel
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,33 +18,31 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-parsel
-Version:        1.10.0
+Version:        1.11.0
 Release:        0
 Summary:        Library to extract data from HTML and XML using XPath and CSS selectors
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/scrapy/parsel
 Source:         https://files.pythonhosted.org/packages/source/p/parsel/parsel-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
-BuildRequires:  %{python_module cssselect >= 1.2.0}
-BuildRequires:  %{python_module jmespath}
-BuildRequires:  %{python_module lxml}
+BuildRequires:  %{python_module base >= 3.10}
+BuildRequires:  %{python_module hatchling >= 1.27}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module psutil}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module typing-extensions}
-BuildRequires:  %{python_module w3lib >= 1.19.0}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-cssselect >= 1.2.0
-Requires:       python-jmespath
-Requires:       python-lxml
-Requires:       python-typing-extensions
+Requires:       python-jmespath >= 1.0.0
+Requires:       python-lxml >= 5.1
+Requires:       python-packaging >= 23
 Requires:       python-w3lib >= 1.19.0
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module cssselect >= 1.2.0}
+BuildRequires:  %{python_module jmespath >= 1.0.0}
+BuildRequires:  %{python_module lxml >= 5.1}
+BuildRequires:  %{python_module psutil}
+BuildRequires:  %{python_module sybil}
+BuildRequires:  %{python_module w3lib >= 1.19.0}
 # /SECTION
 %python_subpackages
 
@@ -63,7 +61,7 @@ selectors.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+%python_exec -Bm pytest
 
 %files %{python_files}
 %license LICENSE

@@ -1,7 +1,7 @@
 #
 # spec file for package lite-xl-plugin-manager
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 %define baseprogramname lite-xl
 Name:           lite-xl-plugin-manager
-Version:        1.4.2+git20251016.6cfa420
+Version:        1.4.7+git20260506.ece8d63
 Release:        0
 Summary:        A %{baseprogramname} plugin manager
 %if 0%{?suse_version} > 1500
@@ -29,11 +29,20 @@ URL:            https://github.com/lite-xl/lite-xl-plugin-manager
 Source0:        %{name}-%{version}.tar.gz
 Source100:      README.md
 Patch0:         lpm.c.diff
-#%%if 0%%{?suse_version} > 1500 || 0%%{?sle_version} >= 150600
-#BuildRequires:  mbedtls-2-devel
-#%%else
+### 20260629:
+###   TW has:
+###     mbedtls-devel   => v4
+###     mbedtls-3-devel => v3
+###     mbedtls-2-devel => v2
+###   Leap 16.0/16.1 have:
+###     mbedtls-devel   => v3
+###     mbedtls-2-devel => v2
+%if 0%{?suse_version} == 1699
+BuildRequires:  mbedtls-3-devel
+%else
 BuildRequires:  mbedtls-devel
-#%%endif
+%endif
+#####
 BuildRequires:  meson
 BuildRequires:  pkgconfig(libgit2)
 BuildRequires:  pkgconfig(libzip)
@@ -52,7 +61,8 @@ Requires:       %{baseprogramname}
 * Also contains a plugin_manager.lua plugin to integrate the binary with lite
   in the form of an easy-to-use GUI.
 * By default in releases, lpm will automatically consume the manifest.json in
-  the latest branch of this repository, which corresponds to the most recent versioned release.
+  the latest branch of this repository, which corresponds to the most recent
+  versioned release.
 * Conforms to SCPS3.
 
 %prep

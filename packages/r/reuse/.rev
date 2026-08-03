@@ -240,4 +240,12 @@
     <comment></comment>
     <requestid>1300413</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>65c715a8ce9717aa2c9459668c56d6f2</srcmd5>
+    <version>6.2.0</version>
+    <time>1781879521</time>
+    <user>anag_factory</user>
+    <comment>reuse 6.2.0: fixes the long-standing build failure (binaryornot -&gt; python-magic), enables the optional encoding backends, deps audited for the 5.x-&gt;6.x jump. Resubmit now that the blocking botdel (sr#1359687) is declined.</comment>
+    <requestid>1360307</requestid>
+  </revision>
 </revisionlist>

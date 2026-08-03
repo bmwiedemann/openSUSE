@@ -21,5 +21,4 @@ ibdiag:   This package provides 3 tools which provide the user interface
                           the given links and nodes in a specific path.
             - ibdiagui:   A GUI wrapper for the above tools.
   </description>
-  <devel project="science:HPC" package="ibutils"/>
 </package>

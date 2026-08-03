@@ -8,5 +8,4 @@ Gregorian, Julian, Buddhist, Coptic and Ethiopic systems
 are also included, and we welcome further additions.
 Supporting classes include time zone, duration, format
 and parsing.</description>
-  <devel project="Java:packages" package="joda-time"/>
 </package>

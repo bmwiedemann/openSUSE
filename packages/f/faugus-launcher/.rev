@@ -750,4 +750,36 @@
 </comment>
     <requestid>1367570</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>093f8a092f55d5de71dc756f67eeef42</srcmd5>
+    <version>2.0.3</version>
+    <time>1785504604</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump to version 2.0.2:
+  * Update translation template (faugus-launcher.pot)
+  * Updated translations for many languages
+  * Update update-pot.yml
+  * Update translation template (faugus-launcher.pot)
+  * Update translation template (faugus-launcher.pot)
+  * Allow protonfixes
+  * Updated gamepad navigation on settings
+  * Update translation template (faugus-launcher.pot)
+  * Added tabs to settings
+  * Updated fedora spec
+  * Update build artifact
+  * Deprecated artifact build
+  * Update release workflow
+  * Build artifacts
+  * Update release-packages.yml
+  * Update release workflow
+  * Release workflow
+  * Forgot to remove wayland for gog
+  * Ignore Steam user 0
+  * Update update-pot.yml
+  * Added support for GOG Galaxy
+  * Re-added Epic Games launcher
+  * Update translation template (faugus-launcher.pot)
+  * Incrementally loads images</comment>
+    <requestid>1368443</requestid>
+  </revision>
 </revisionlist>

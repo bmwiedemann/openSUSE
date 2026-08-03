@@ -1,0 +1,53 @@
+From f35d23dba69f71aae24f9b77694bf701b438a11e Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Thu, 9 Apr 2026 15:46:25 +1000
+Subject: [PATCH] Support Python 3.14 partial() changes
+
+functools.partial() was changed in Python 3.14 to be a method
+descriptor, which means we need to wrap it in staticmethod now. This
+change does appear to be backward compatible, so I haven't guarded it
+with a version check.
+---
+ tests/test_fields.py | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/tests/test_fields.py b/tests/test_fields.py
+index 9f255c5c..b57f83c6 100644
+--- a/tests/test_fields.py
++++ b/tests/test_fields.py
+@@ -693,7 +693,7 @@ def test_unsupported_value_format(self):
+ 
+ 
+ class FormatedStringFieldTest(StringTestMixin, BaseFieldTestMixin, FieldTestCase):
+-    field_class = partial(fields.FormattedString, "Hello {name}")
++    field_class = staticmethod(partial(fields.FormattedString, "Hello {name}"))
+ 
+     def test_defaults(self):
+         field = fields.FormattedString("Hello {name}")
+@@ -731,7 +731,7 @@ def test_tuple(self):
+ 
+ 
+ class UrlFieldTest(StringTestMixin, BaseFieldTestMixin, FieldTestCase):
+-    field_class = partial(fields.Url, "endpoint")
++    field_class = staticmethod(partial(fields.Url, "endpoint"))
+ 
+     def test_defaults(self):
+         field = fields.Url("endpoint")
+@@ -931,7 +931,7 @@ def test_as_list_is_reusable(self, api):
+ 
+ 
+ class ListFieldTest(BaseFieldTestMixin, FieldTestCase):
+-    field_class = partial(fields.List, fields.String)
++    field_class = staticmethod(partial(fields.List, fields.String))
+ 
+     def test_defaults(self):
+         field = fields.List(fields.String)
+@@ -1025,7 +1025,7 @@ def test_list_of_raw(self):
+ 
+ 
+ class WildcardFieldTest(BaseFieldTestMixin, FieldTestCase):
+-    field_class = partial(fields.Wildcard, fields.String)
++    field_class = staticmethod(partial(fields.Wildcard, fields.String))
+ 
+     def test_types(self):
+         with pytest.raises(fields.MarshallingError):

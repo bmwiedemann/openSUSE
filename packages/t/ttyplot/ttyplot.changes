@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jul 14 13:23:25 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.7.6
+  New rendering modes
+  * braille line mode (-b) — high-resolution 2×4 dot plotting; two
+    lines distinguished by color.
+  * block / quadrant mode (-B) — 2×2 block-element plotting,
+    like -b
+  * fill (-f) — fill the area under the line in braille/block mode
+    (line 1).
+  * aalib ASCII-art mode (-A) — experimental smooth ASCII line
+    rendering, opt-in (make AA=1, requires aalib).
+  * updated dark color scheme.
+- Build with support for aalib.
+
+-------------------------------------------------------------------
 Mon Jun 22 06:23:12 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.7.5

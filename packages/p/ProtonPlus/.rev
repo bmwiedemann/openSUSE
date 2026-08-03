@@ -338,4 +338,13 @@
   + Updated translations (forwarded request 1366007 from rrahl0)</comment>
     <requestid>1366008</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>dae555d9efe7d6b8181700c4c60cd1e5</srcmd5>
+    <version>0.5.22</version>
+    <time>1785504620</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.5.22:
+  + Temporary fix for Proton-GE RTSP (forwarded request 1368486 from rrahl0)</comment>
+    <requestid>1368487</requestid>
+  </revision>
 </revisionlist>

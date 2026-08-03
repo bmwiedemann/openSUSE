@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jun 30 16:16:20 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- simplify provides/obsoletes
+
+-------------------------------------------------------------------
+Thu Jun 25 14:23:57 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Add correct Provides/Obsoletes
+
+-------------------------------------------------------------------
+Mon Mar 24 23:34:26 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Remove single-spec multi-version packaging.
+
+-------------------------------------------------------------------
 Fri Jan 24 11:36:37 UTC 2025 - Pablo Suárez Hernández <psuarezhernandez@suse.com>
 
 - Update to version 0.6.1

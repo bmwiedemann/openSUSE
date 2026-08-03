@@ -112,4 +112,22 @@ Submitting because it is an optional package for python-astropy</comment>
 - Ship README as docs.</comment>
     <requestid>1276025</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2f1b87afb1e6b2085c6cc8479138a480</srcmd5>
+    <version>2.25</version>
+    <time>1774470009</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.25:
+  * Added a ``gravconst`` parameter to the ``omm.initialize()``
+    routine.
+  * The documentation now specifies the acceptable range for orbital
+    element angles like inclination and mean anomaly, and a new function
+   ``check_satrec(sat)`` will tell the caller if any of the angles are
+    out of bounds.
+  * The documentation now gives an example of loading elements from
+    JSON.
+  * Tweaked the fallback Python code to accept TLE lines without a
+    final checksum character in the 69th column, to match the C++ code.</comment>
+    <requestid>1342402</requestid>
+  </revision>
 </revisionlist>

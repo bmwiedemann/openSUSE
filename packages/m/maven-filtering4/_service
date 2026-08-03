@@ -2,7 +2,7 @@
 	<service name="tar_scm" mode="disabled">
 		<param name="scm">git</param>
 		<param name="url">https://github.com/apache/maven-filtering.git</param>
-		<param name="revision">84993b07cd1f8b9c8d5b2ecfe04bf08b0176fdc7</param>
+		<param name="revision">2d20dde6b86914f0434cf97a76937299d55c5dca</param>
 		<param name="versionformat">4.0.0~%cd.git%h</param>
 	</service>
 	<service name="recompress" mode="disabled">

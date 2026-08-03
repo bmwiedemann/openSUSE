@@ -17,7 +17,7 @@
 
 
 Name:           grype-db
-Version:        0.54.2
+Version:        0.54.3
 Release:        0
 Summary:        A vulnerability scanner for container images and filesystems
 License:        Apache-2.0

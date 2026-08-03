@@ -5,5 +5,4 @@
 We will provide a &quot;always&quot; working update for this package so that the
 update stack could be easily tested.
 </description>
-  <devel project="devel:openSUSE:Factory" package="update-test-trivial"/>
 </package>

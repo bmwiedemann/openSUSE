@@ -244,4 +244,39 @@
   + HA subnet router health probing (forwarded request 1360782 from rrahl0)</comment>
     <requestid>1360783</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>b5bfe7b50518b80438a4ad76b3c67dab</srcmd5>
+    <version>0.29.3</version>
+    <time>1785504537</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.29.3:
+  - Fix tagged node stuck expired after tailscale logout, unable to
+    re-authenticate #3394
+  - Re-registering a tagged node with a different pre-auth key now
+    applies the new key's tags instead of silently keeping the old
+    ones #3394
+  - Fix re-authenticating an already-tagged node with
+    --advertise-tags being rejected when the authenticating user
+    owns the tags #3394
+  - Fix ephemeral nodes lingering as disconnected after reconnect
+    churn #3383
+  - Fix node registration falsely returning 401 registration timed
+    out when auth completes as the request context expires #3392
+  - Check the machine key on the followup registration poll so a
+    leaked auth ID cannot return the registering user's identity
+    #3393
+  - Reject /key requests below the supported capability version
+    floor, matching /ts2021 #3391
+- Update to version 0.29.2:
+  - Fix map generation serializing on the policy lock, so a mass
+    reconnect on autogroup:self, via or relay policies no longer
+    stalls clients into unexpected EOF retry loops #3358
+  - Fix /ts2021 rejecting the WebSocket GET upgrade with 405, which
+    prevented Tailscale JS/WASM control clients from connecting
+    #3359
+  - Gracefully handle nodes with an invalid FQDN (empty or too
+    long) instead of failing map delivery; offending names are
+    logged at startup with the fix command #3349 (forwarded request 1368376 from darix)</comment>
+    <requestid>1368424</requestid>
+  </revision>
 </revisionlist>

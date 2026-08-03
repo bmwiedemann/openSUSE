@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Wed Mar 25 09:20:28 UTC 2026 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- update to 2.1.2
+
+ 2.1.2 (2025-09-24)
+ Wheels are available for Python 3.14 (and still include GEOS 3.13.1).
+
+ 2.1.1 (2025-05-19)
+ - Fix performance degradation calling shapely functions (caused by deprecation
+   of certain positional arguments) (#2283).
+ - Fix crash caused by `from_ragged_array()` (#2291).
+ - Fix compilation error building with recent LLVM toolchain (#2293).
+
+ 2.1.0 (2025-04-03)
+ Shapely 2.1.0 is a feature release with various new functions,
+ improvements and bug fixes. Highlights include initial support for geometries
+ with M or ZM values, functionality for coverage validation and
+ simplification, and a set of new top-level functions.
+
+ Shapely supports Python >= 3.10, and binary wheels on PyPI include GEOS 3.13.1
+ and are now also provided for musllinux (Alpine) x86_64 platforms.
+
+ For a full changelog, see
+ https://shapely.readthedocs.io/en/latest/release/2.x.html#version-2-1-0
+
+ 2.0.7 (2025-01-30)
+ - Fix compilation error on certain Linux platforms, such as Alpine (#1945).
+ - Fixes crash when reading nonlinear geometry types (CircularString,
+   CompoundCurve, MultiCurve, CurvePolygon, MultiSurface) from WKB/WKT with
+   GEOS >= 3.13; these types are not yet supported in Shapely and now raise a
+   `NotImplementedError` (#2160)
+ - Fix the `project` method to return a Python float (#2093).
+
+- Drop 1945.patch (included upstream)
+
+-------------------------------------------------------------------
 Thu Nov 21 09:13:30 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - avoid stale "requires:" requirement on shapely packages

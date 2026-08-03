@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Wed Jul 22 08:06:55 UTC 2026 - Andreas Schwab <schwab@suse.de>
+
+- Enable OpenVINO backend only on x86_64 and aarch64
+
+-------------------------------------------------------------------
+Tue Jul 21 23:49:41 UTC 2026 - Markus Ebner <info@ebner-markus.de>
+
+- Update to version 10078
+  * GGML: bump to version 0.17.0
+  * Vulkan: add support for Q2_0 quantization
+  * CUDA: vectorize same-type get_rows with int4 copy
+  * OpenCL: optimize Q4_K/Q5_K flat matrix-vector kernels by loading quants as uint
+  * OpenCL: improve Q4_K performance with transposed no-shuffle scales for coalesced reads
+  * OpenCL: optimize MoE DP4A activation tile access using 128-bit local memory transfers
+  * OpenCL: add broadcast support for Adreno MUL_MAT and honor view_offs
+  * OpenCL: add ABS operation
+  * DFlash: rotate injected K/V cache
+  * DFlash/Eagle3: automatically download Hugging Face sidecar files
+  * DeepSeek V4: write only used rows to model state
+  * Quantization: exclude DeepSeek V4 FFN routing table (ffn_gate_tid2eid) from quantization
+  * Vulkan: refactor queue handling to use per-instance mutexes and unique handles
+  * OpenVINO: improve dynamic backend loading support
+  * Hexagon: add CLAMP operation
+  * UI: add conversation bulk actions and improve Settings/Sidebar
+  * UI: enable agentic flow when only the JavaScript sandbox is active
+  * UI: fix Settings → Display tool call visibility toggle
+  * UI: fix collapsed user bubble markdown rendering
+  * Full commit log:
+    https://github.com/ggml-org/llama.cpp/compare/b10054...b10078
+
+-------------------------------------------------------------------
+Fri Jul 17 01:59:30 UTC 2026 - Markus Ebner <info@ebner-markus.de>
+
+- Update to version 10054:
+  * SYCL: add fused top-k MoE
+  * Vulkan: Use native e2m1 and e4m3 conversions for mxfp4/nvfp4
+  * SYCL: set fattn_vec_nthreads to 256 for Battlemage
+  * Vulkan/CPU: Support f16 as SET_ROWS src
+  * SYCL: Flash Attention with XMX engine via oneDNN
+  * SYCL: implement xielu op
+  * SYCL: support kernel type fp16 for conv2d_dw
+  * DeepseekV4: reduce graph splits
+  * ui: fix thinking menu never appearing in single-model mode
+  * CUDA: dedup MoE gate/up activation quantization
+  * Enable CUDA graphs on volta+turing
+  * CUDA: Support CUDA Virtual Devices
+  * Full commit log:
+    https://github.com/ggml-org/llama.cpp/compare/b9964...b10054
+
+-------------------------------------------------------------------
+Fri Jul 17 01:53:30 UTC 2026 - Markus Ebner <info@ebner-markus.de>
+
+- Enable multiversioned build for the CPU backend
+
+-------------------------------------------------------------------
 Sun Jul 12 11:16:07 UTC 2026 - Markus Ebner <info@ebner-markus.de>
 
 - Enable OpenVINO Backend

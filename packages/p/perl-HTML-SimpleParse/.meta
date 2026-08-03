@@ -18,5 +18,4 @@ pairs of tags are inside other pairs of tags.
 
 Because of these characteristics, you can make a very effective HTML
 filter by sub-classing HTML::SimpleParse.</description>
-  <devel project="devel:languages:perl" package="perl-HTML-SimpleParse"/>
 </package>

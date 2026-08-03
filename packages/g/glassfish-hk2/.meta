@@ -5,6 +5,5 @@ a module subsystem coupled with a simple yet powerful
 component model to build server side software.
 
 </description>
-  <devel project="Java:packages" package="glassfish-hk2"/>
   <url>http://hk2.java.net/</url>
 </package>

@@ -4,5 +4,4 @@
 Although many features were added to NanoXML, it is very small.
 The full parser with builder fits in a JAR file of about 32K.
 </description>
-  <devel project="Java:packages" package="nanoxml"/>
 </package>

@@ -3,6 +3,5 @@
   <description>Code shared between JAXP, JAXB, SAAJ, and JAX-WS projects.
 
 </description>
-  <devel project="Java:packages" package="istack-commons"/>
   <url>http://istack-commons.java.net</url>
 </package>

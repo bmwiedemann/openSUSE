@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Apr  8 21:26:39 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.1:
+  * Corrected minimum pytest version requirement from >=3.6 to
+    >=6.2.0 to match actual requirements (tmp_path fixture)
+  * Closed issue #11 - file mode bits are now preserved (resolved
+    by pathlib migration in 3.0)
+  * Migrated to uv for package management and builds
+  * Added ruff for code formatting and linting
+  * Converted documentation from RST to Markdown
+  * Added Dependabot for automated dependency updates
+  * Updated GitHub Actions workflows for CI/CD
+
+-------------------------------------------------------------------
 Mon Dec  9 04:57:10 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Initial release of 3.0.0. 
+- Initial release of 3.0.0.

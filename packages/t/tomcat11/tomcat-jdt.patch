@@ -1,6 +1,6 @@
---- apache-tomcat-11.0.18-src.orig/java/org/apache/jasper/compiler/JDTCompiler.java	2026-03-06 20:07:11.876514348 +0100
-+++ apache-tomcat-11.0.18-src/java/org/apache/jasper/compiler/JDTCompiler.java	2026-03-06 20:12:04.110579179 +0100
-@@ -316,25 +316,25 @@
+--- apache-tomcat-11.0.24-src.orig/java/org/apache/jasper/compiler/JDTCompiler.java	2026-07-03 09:01:34.000000000 +0200
++++ apache-tomcat-11.0.24-src/java/org/apache/jasper/compiler/JDTCompiler.java	2026-07-27 15:58:33.000000000 +0200
+@@ -323,27 +323,27 @@
              } else if (opt.equals("15")) {
                  settings.put(CompilerOptions.OPTION_Source, CompilerOptions.VERSION_15);
              } else if (opt.equals("16")) {
@@ -34,10 +34,13 @@
 -                settings.put(CompilerOptions.OPTION_Source, CompilerOptions.VERSION_25);
 +                settings.put(CompilerOptions.OPTION_Source, "25");
              } else if (opt.equals("26")) {
+-                settings.put(CompilerOptions.OPTION_Source, CompilerOptions.VERSION_26);
++                settings.put(CompilerOptions.OPTION_Source, "26");
+             } else if (opt.equals("27")) {
                  // Constant not available in latest ECJ version shipped with
                  // Tomcat. May be supported in a snapshot build.
-@@ -347,11 +347,11 @@
-                 settings.put(CompilerOptions.OPTION_Source, "27");
+@@ -356,11 +356,11 @@
+                 settings.put(CompilerOptions.OPTION_Source, "28");
              } else {
                  log.warn(Localizer.getMessage("jsp.warning.unknown.sourceVM", opt));
 -                settings.put(CompilerOptions.OPTION_Source, CompilerOptions.VERSION_17);
@@ -50,7 +53,7 @@
          }
  
          // Target JVM
-@@ -401,35 +401,35 @@
+@@ -410,38 +410,38 @@
                  settings.put(CompilerOptions.OPTION_TargetPlatform, CompilerOptions.VERSION_15);
                  settings.put(CompilerOptions.OPTION_Compliance, CompilerOptions.VERSION_15);
              } else if (opt.equals("16")) {
@@ -104,10 +107,15 @@
 +                settings.put(CompilerOptions.OPTION_TargetPlatform, "25");
 +                settings.put(CompilerOptions.OPTION_Compliance, "25");
              } else if (opt.equals("26")) {
+-                settings.put(CompilerOptions.OPTION_TargetPlatform, CompilerOptions.VERSION_26);
+-                settings.put(CompilerOptions.OPTION_Compliance, CompilerOptions.VERSION_26);
++                settings.put(CompilerOptions.OPTION_TargetPlatform, "26");
++                settings.put(CompilerOptions.OPTION_Compliance, "26");
+             } else if (opt.equals("27")) {
                  // Constant not available in latest ECJ version shipped with
                  // Tomcat. May be supported in a snapshot build.
-@@ -444,12 +444,12 @@
-                 settings.put(CompilerOptions.OPTION_Compliance, "27");
+@@ -456,12 +456,12 @@
+                 settings.put(CompilerOptions.OPTION_Compliance, "28");
              } else {
                  log.warn(Localizer.getMessage("jsp.warning.unknown.targetVM", opt));
 -                settings.put(CompilerOptions.OPTION_TargetPlatform, CompilerOptions.VERSION_17);

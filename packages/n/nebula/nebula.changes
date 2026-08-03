@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Jul 30 06:23:36 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.11.0:
+  + Logging has switched from logrus to Go's structured slog
+  + firewall.inbound_action and firewall.outbound_action (used to
+    set reject vs. drop policy) were each being applied to the
+    opposite direction, that is now corrected
+  + Reject packets for non-TCP now use ICMP code 13
+  + The SSH debug server's profiling commands are now confined to
+    sshd.sandbox_dir, which defaults to $TMP/nebula-debug
+  + Generate IPv6 reject packets, matching the existing IPv4 behavior
+  + Accept - in nebula-cert to read from stdin or write to stdout
+  + Search for both config.yml and config.yaml in service and command
+    line modes
+  + Reload the firewall when the unsafe networks in the certificate
+    change
+  + Reconfigure, start, and stop the stats listener on a config
+    reload instead of requiring a restart
+  + Update a static host's addresses when they change on reload
+  + Don't require a port on ICMP firewall rules
+  + Connection track ICMP traffic
+  + Return NODATA instead of NXDOMAIN from the DNS server for a name
+    that exists
+  + Record the local host's details in the DNS server
+  + Reduce relay handshake log spam
+  + Start, stop, and reload subsystems cleanly without leaking goroutines
+  + Control is now safe to stop and wait on from any lifecycle state
+  + Trigger an immediate lighthouse update when reconnecting to or
+    adding a lighthouse instead of waiting for the next update tick
+
+-------------------------------------------------------------------
 Tue Apr 14 18:08:31 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - add the nebula-service binary

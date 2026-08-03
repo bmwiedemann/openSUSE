@@ -1,7 +1,7 @@
 #
 # spec file for package plexus-sec-dispatcher4
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,7 +36,7 @@ BuildRequires:  javapackages-local >= 6
 BuildRequires:  modello >= 2.0.0
 BuildRequires:  objectweb-asm
 BuildRequires:  sisu-inject
-BuildRequires:  slf4j2
+BuildRequires:  slf4j
 BuildRequires:  xmvn-install
 BuildRequires:  xmvn-resolve
 BuildRequires:  mvn(org.codehaus.plexus:plexus:pom:)
@@ -58,18 +58,14 @@ API documentation for %{name}.
 cp %{SOURCE1} .
 cp %{SOURCE100} build.xml
 
-# Normalize slf4j version to 2
-%pom_xpath_set pom:project/pom:properties/pom:version.slf4j 2
-
 %build
 mkdir -p lib
 build-jar-repository -s lib \
     javax.inject \
     objectweb-asm/asm \
     org.eclipse.sisu.inject \
-    slf4j/api-2
-%{ant} \
-  jar javadoc
+    slf4j/api
+ant jar javadoc
 
 %{mvn_file} :plexus-{*} plexus/@1 plexus/plexus-@1
 %{mvn_artifact} pom.xml target/%{base_name}-%{version}.jar

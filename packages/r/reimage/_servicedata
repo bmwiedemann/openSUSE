@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/cerbos/reimage</param>
-              <param name="changesrevision">ed7840f64ea65a2066c74fe735eddd2a710ed9c1</param></service></servicedata>
+              <param name="changesrevision">ed7840f64ea65a2066c74fe735eddd2a710ed9c1</param></service><service name="tar_scm">
+                <param name="url">https://github.com/cerbos/reimage.git</param>
+              <param name="changesrevision">b8a305ea3671922e2222991a4cfc2ec572c44e24</param></service></servicedata>

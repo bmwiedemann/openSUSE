@@ -25,7 +25,7 @@ Name:           jakarta-messaging
 Version:        3.1.0
 Release:        0
 Summary:        JMS / Jakarta Messaging API
-License:        EPL-2.0 OR GPL-2.0 WITH Classpath-Exception
+License:        EPL-2.0 OR GPL-2.0-only WITH Classpath-exception-2.0
 Group:          Development/Libraries/Java
 URL:            https://github.com/jakartaee/messaging
 Source0:        %{url}/archive/%{src_ver}/%{srcname}-%{version}.tar.gz

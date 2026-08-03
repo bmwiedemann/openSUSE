@@ -27,6 +27,5 @@ clean:
         -cleanee =&gt; scalar(caller),
       );
   }</description>
-  <devel project="devel:languages:perl" package="perl-namespace-autoclean"/>
   <url>http://search.cpan.org/dist/namespace-autoclean/</url>
 </package>

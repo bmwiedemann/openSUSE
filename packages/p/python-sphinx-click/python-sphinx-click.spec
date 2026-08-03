@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinx-click
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,19 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-sphinx-click
-Version:        6.0.0
+Version:        6.2.0
 Release:        0
 Summary:        Sphinx extension that automatically documents click applications
 License:        MIT
 URL:            https://github.com/stephenfin/sphinx-click
 Source:         https://files.pythonhosted.org/packages/source/s/sphinx_click/sphinx_click-%{version}.tar.gz
-BuildRequires:  %{python_module devel >= 3.8}
-BuildRequires:  %{python_module pbr}
+BuildRequires:  %{python_module Sphinx >= 4.0}
+BuildRequires:  %{python_module click >= 8.0}
+BuildRequires:  %{python_module devel >= 3.10}
+BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools >= 80}
+BuildRequires:  %{python_module setuptools_scm >= 8}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

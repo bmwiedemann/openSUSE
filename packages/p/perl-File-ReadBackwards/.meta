@@ -9,6 +9,5 @@ plain text and have a line ending appropriate to the OS. But you can set the
 input record separator string on a per file basis.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-File-ReadBackwards"/>
   <url>http://search.cpan.org/dist/File-ReadBackwards</url>
 </package>

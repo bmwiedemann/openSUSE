@@ -145,4 +145,38 @@
     <comment>- add the nebula-service binary (forwarded request 1347103 from rrahl0)</comment>
     <requestid>1347104</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>558c9dd7d82a278d498015b826775c4e</srcmd5>
+    <version>1.11.0</version>
+    <time>1785504633</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.11.0:
+  + Logging has switched from logrus to Go's structured slog
+  + firewall.inbound_action and firewall.outbound_action (used to
+    set reject vs. drop policy) were each being applied to the
+    opposite direction, that is now corrected
+  + Reject packets for non-TCP now use ICMP code 13
+  + The SSH debug server's profiling commands are now confined to
+    sshd.sandbox_dir, which defaults to $TMP/nebula-debug
+  + Generate IPv6 reject packets, matching the existing IPv4 behavior
+  + Accept - in nebula-cert to read from stdin or write to stdout
+  + Search for both config.yml and config.yaml in service and command
+    line modes
+  + Reload the firewall when the unsafe networks in the certificate
+    change
+  + Reconfigure, start, and stop the stats listener on a config
+    reload instead of requiring a restart
+  + Update a static host's addresses when they change on reload
+  + Don't require a port on ICMP firewall rules
+  + Connection track ICMP traffic
+  + Return NODATA instead of NXDOMAIN from the DNS server for a name
+    that exists
+  + Record the local host's details in the DNS server
+  + Reduce relay handshake log spam
+  + Start, stop, and reload subsystems cleanly without leaking goroutines
+  + Control is now safe to stop and wait on from any lifecycle state
+  + Trigger an immediate lighthouse update when reconnecting to or
+    adding a lighthouse instead of waiting for the next update tick (forwarded request 1368494 from rrahl0)</comment>
+    <requestid>1368495</requestid>
+  </revision>
 </revisionlist>

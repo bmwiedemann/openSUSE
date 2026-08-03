@@ -17,7 +17,7 @@
 
 
 Name:           kubectl-tree
-Version:        0.5.0
+Version:        0.6.0
 Release:        0
 Summary:        Kubectl plugin to browse Kubernetes object hierarchies as a tree
 License:        Apache-2.0

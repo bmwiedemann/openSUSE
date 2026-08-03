@@ -17,7 +17,7 @@
 
 
 Name:           python-pylru
-Version:        1.2.2
+Version:        1.3.1
 Release:        0
 Summary:        A least recently used (LRU) cache implementation
 License:        MIT
@@ -33,7 +33,14 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-Pylru implements a true LRU cache along with several support classes. The cache is efficient and written in pure Python. It works with Python 2.6+ including the 3.x series. Basic operations (lookup, insert, delete) all run in a constant amount of time. Pylru provides a cache class with a simple dict interface. It also provides classes to wrap any object that has a dict interface with a cache. Both write-through and write-back semantics are supported. Pylru also provides classes to wrap functions in a similar way, including a function decorator.
+Pylru implements a true LRU cache along with several support classes. The cache
+is efficient and written in pure Python. It works with Python 2.6+ including
+the 3.x series. Basic operations (lookup, insert, delete) all run in a constant
+amount of time. Pylru provides a cache class with a simple dict interface. It
+also provides classes to wrap any object that has a dict interface with a
+cache. Both write-through and write-back semantics are supported. Pylru also
+provides classes to wrap functions in a similar way, including a function
+decorator.
 
 %prep
 %setup -q -n pylru-%{version}
@@ -50,7 +57,7 @@ Pylru implements a true LRU cache along with several support classes. The cache 
 
 %files %{python_files}
 %license LICENSE.txt
-%doc README.rst
+%doc README.md
 %{python_sitelib}/pylru.py
 %pycache_only %{python_sitelib}/__pycache__/pylru*
 %{python_sitelib}/pylru-%{version}*-info

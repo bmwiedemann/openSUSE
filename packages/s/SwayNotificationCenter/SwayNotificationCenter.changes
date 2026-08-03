@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Mar 24 18:38:40 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 0.12.6:
+  - Fixed floating notification keyboard mode being set too early
+
+-------------------------------------------------------------------
+Mon Mar 23 18:03:35 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 0.12.5:
+  - Fixed segfault when displaying notification + new monitor is mapped
+  - Added --custom-system-css arg to swaync MAN 1 page
+  - Added --replace arg to replace the currently running swaync instance
+  - Set floating notification layer keyboard mode to ON_DEMAND after map
+
+-------------------------------------------------------------------
 Fri Feb 13 18:01:02 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 0.12.4:

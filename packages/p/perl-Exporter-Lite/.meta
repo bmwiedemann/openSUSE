@@ -26,5 +26,4 @@ In order to make exporting optional, use @EXPORT_OK.
 
 when My::Module is used, '$Foo' and 'bar()' will _not_ show up. You have to
 ask for them. 'use My::Module qw($Foo bar)'.</description>
-  <devel project="devel:languages:perl" package="perl-Exporter-Lite"/>
 </package>

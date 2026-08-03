@@ -15,6 +15,5 @@ The main focus of this module is to provide simple and reliable error
 handling for those having a hard time installing the TryCatch manpage, but
 who still want to write correct 'eval' blocks without 5 lines of
 boilerplate each time.</description>
-  <devel project="devel:languages:perl" package="perl-Try-Tiny"/>
   <url>http://search.cpan.org/perldoc?Try:Tiny</url>
 </package>

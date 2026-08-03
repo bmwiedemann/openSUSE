@@ -8,6 +8,5 @@ relationships as represented by both HTML links and entity-relationship
 diagrams. It's also designed to help resolve the obtuse errors that a
 database sometimes gives related to failures due to constraints.
 </description>
-  <devel project="Java:packages" package="schemaspy"/>
   <url>http://schemaspy.sourceforge.net/</url>
 </package>

@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Mon Jul 13 10:37:49 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 2.0.18
+  * Breaking Changes & Compatibility
+    + Minimum Java Requirement Bump: The baseline Java requirement
+      has been upgraded from Java 5 (in the 1.7.x series) to Java 8.
+    + New Backend Discovery Mechanism: SLF4J no longer relies on the
+      legacy StaticLoggerBinder class-path search mechanism. It has
+      fully migrated to using the Java ServiceLoader mechanism (SPI)
+      to discover logging backends. Downstream logging providers
+      (like Logback or SLF4J bridges) must be updated to versions
+      that support ServiceLoader to function with SLF4J 2.x.
+    + Explicit Provider Override: Introduced the slf4j.provider
+      system property, allowing administrators or developers to
+      explicitly specify the logging provider class, bypassing the
+      ServiceLoader mechanism entirely for faster initialization.
+  * New Features & Enhancements
+    + Fluent Logging API: Introduced a backward-compatible fluent
+      logging API (e.g., logger.atInfo().setMessage("...").log()).
+      Existing clients using the traditional logging methods do not
+      need to rewrite their code.
+    + JPMS Modularity: SLF4J has been fully modularized in
+      accordance with the Java Platform Module System (JPMS)
+      specifications.
+    + BOM Artifact: Introduced a Bill of Materials (BOM) file
+      (added in 2.0.8) to help downstream projects easily
+      synchronize and align versions across all org.slf4j bridge and
+      API packages.
+  * Notable Internal Fixes
+    + MDC Initialization Race Condition: Fixed an edge-case bug
+      where the Mapped Diagnostic Context (MDC) could be initialized
+      before the LoggerFactory, which occasionally resulted in the
+      MDC getting stuck using an incorrect MDCAdapter instance.
+- Generate the ant build system from the upstream maven build and
+  adapt it
+- Removed patches:
+  * build-remove-slf4j_api-binder.patch
+  * slf4j-commons-lang3.patch
+  * slf4j-reload4j-bundlename.patch
+    + not needed with this version
+
+-------------------------------------------------------------------
 Tue Jul 22 11:32:50 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Remove stale pre_checkin.sh file
@@ -194,7 +236,7 @@ Sun Sep 10 13:38:22 UTC 2017 - fstrba@suse.com
 - Specify java source and target levels 1.6 in order to allow
   building with jdk9
 - Disable doclint to avoid bailing out on formatting errors
-- Recompress the build.xml.tar.bz2, so that it is a real tar.bz2 
+- Recompress the build.xml.tar.bz2, so that it is a real tar.bz2
 
 -------------------------------------------------------------------
 Fri May 19 16:49:25 UTC 2017 - tchvatal@suse.com
@@ -230,12 +272,12 @@ Fri Aug 29 12:50:01 UTC 2014 - coolo@suse.com
 -------------------------------------------------------------------
 Thu Sep 19 14:22:54 UTC 2013 - mvyskocil@suse.com
 
-- self-provide osgi(slf4j.api) symbol 
+- self-provide osgi(slf4j.api) symbol
 
 -------------------------------------------------------------------
 Fri Sep 13 10:51:12 UTC 2013 - mvyskocil@suse.com
 
-- fix build with apache-commons-lang 
+- fix build with apache-commons-lang
 
 -------------------------------------------------------------------
 Wed Sep 11 07:49:42 UTC 2013 - mvyskocil@suse.com
@@ -250,7 +292,7 @@ Mon Sep  9 11:06:22 UTC 2013 - tchvatal@suse.com
 -------------------------------------------------------------------
 Fri Apr 27 09:59:40 UTC 2012 - mvyskocil@suse.cz
 
-- format spec file to be suitable for Factory 
+- format spec file to be suitable for Factory
 
 -------------------------------------------------------------------
 Mon Dec 12 19:31:15 UTC 2011 - dmacvicar@suse.de

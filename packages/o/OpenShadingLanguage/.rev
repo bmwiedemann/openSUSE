@@ -314,4 +314,13 @@ Initial version 1.9.13 created for blender see boo#1120406</comment>
     <comment></comment>
     <requestid>1356341</requestid>
   </revision>
+  <revision rev="38" vrev="3">
+    <srcmd5>251ffa3ff3f834ee50bf1b5a7768c212</srcmd5>
+    <version>1.15.4.0</version>
+    <time>1784127287</time>
+    <user>dimstar_suse</user>
+    <comment>- Add workaround for llvm-as and llvm-link not being handled by
+  alts after the the switch.</comment>
+    <requestid>1365929</requestid>
+  </revision>
 </revisionlist>

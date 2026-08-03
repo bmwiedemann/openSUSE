@@ -1,5 +1,6 @@
 <package name="chainguard-dfc" project="openSUSE:Factory">
   <title>Chainguard Dockerfile Converter</title>
   <description>https://www.chainguard.dev/unchained/announcing-dockerfile-converter-fast-and-easy-migration-to-use-chainguard-containers</description>
+  <devel project="Virtualization:containers" package="chainguard-dfc"/>
   <url>https://github.com/chainguard-dev/dfc</url>
 </package>

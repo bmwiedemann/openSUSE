@@ -1,6 +1,7 @@
 #
 # spec file for package rpm-repos-openSUSE
 #
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2021 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -15,11 +16,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%if 0%{?suse_version} && (!0%{?sle_version})
+
+%if 0%{?suse_version} >= 1699
 %global distname Tumbleweed
 %endif
 
-%if 0%{?suse_version} == 1600 && 0%{?is_opensuse}
+%if (0%{?suse_version} < 1699 || 0%{?sle_version}) && 0%{?is_opensuse}
 %global distname Leap
 %endif
 
@@ -128,7 +130,6 @@ BuildRequires:  openSUSE-build-key
 Requires:       openSUSE-build-key
 BuildArch:      noarch
 
-
 %description -n rpm-repo-keys-openSUSE
 openSUSE GPG keys for validating packages from openSUSE repositories by
 DNF and PackageKit.
@@ -143,17 +144,15 @@ DNF and PackageKit.
 %prep
 # Nothing to prepare
 
-
 %build
 # Nothing to build
-
 
 %install
 # Install the GPG key symlinks
 mkdir -p %{buildroot}%{_sysconfdir}/pki/rpm-gpg
 bash %{S:0} %{buildroot}
 
-%if (0%{?sle_version} && 0%{?sle_version} < 150300) || "%{distname}" == "Tumbleweed"
+%if (0%{?sle_version} && 0%{?sle_version} < 150300) || 0%{?suse_version} >= 1600
 rm %{buildroot}%{_sysconfdir}/pki/rpm-gpg/*SuSE*
 rm %{buildroot}%{_sysconfdir}/pki/rpm-gpg/*Backports*
 %endif
@@ -196,10 +195,15 @@ sed -e 's/@DIST_ARCH@/zsystems/g' -i %{buildroot}%{_sysconfdir}/yum.repos.d/open
 %if "%{distname}" == "Leap"
 
 # ==== Primary Leap repository configuration ====
+%if 0%{?suse_version} >= 1600
+# Leap 16.0+ pulls updates directly from the main OSS/Non-OSS repos
+install %{S:11} -pm 0644 %{buildroot}%{_sysconfdir}/yum.repos.d
+install %{S:12} -pm 0644 %{buildroot}%{_sysconfdir}/yum.repos.d
+
+%else
 
 %if 0%{?sle_version} >= 150300
-# Setup for main SLE/Leap arches
-#ifarch ix86 x86_64 aarch64 power64 s390x
+# Setup with updates/backports for Leap 15.3+
 install %{S:11} -pm 0644 %{buildroot}%{_sysconfdir}/yum.repos.d
 install %{S:12} -pm 0644 %{buildroot}%{_sysconfdir}/yum.repos.d
 install %{S:14} -pm 0644 %{buildroot}%{_sysconfdir}/yum.repos.d
@@ -208,7 +212,7 @@ install %{S:15} -pm 0644 %{buildroot}%{_sysconfdir}/yum.repos.d
 # TODO: Add "Step" repos for arm and riscv64
 
 %else
-# Setup for primary arches
+# Legacy Leap 15.2 and older
 %ifarch %{ix86} x86_64
 install %{S:11} -pm 0644 %{buildroot}%{_sysconfdir}/yum.repos.d
 install %{S:12} -pm 0644 %{buildroot}%{_sysconfdir}/yum.repos.d
@@ -237,6 +241,8 @@ sed -e 's/@DIST_ARCH@/riscv/g' -i %{buildroot}%{_sysconfdir}/yum.repos.d/opensus
 
 %ifarch s390x
 sed -e 's/@DIST_ARCH@/zsystems/g' -i %{buildroot}%{_sysconfdir}/yum.repos.d/opensuse-leap-oss.repo
+%endif
+
 %endif
 
 %endif

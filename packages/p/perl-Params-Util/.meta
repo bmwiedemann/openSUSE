@@ -26,5 +26,4 @@ You must explicitly name the functions you want to export, or use the
 ':ALL' param to just have it export everything (although this is not
 recommended if you have any _FOO functions yourself with which future
 additions to 'Params::Util' may clash)</description>
-  <devel project="devel:languages:perl" package="perl-Params-Util"/>
 </package>

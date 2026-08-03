@@ -35,7 +35,7 @@
 
 %define         short_name cf-cli
 Name:           %{short_name}%{?name_ext}
-Version:        8.18.3+git.0.83ce51d9c
+Version:        8.18.4+git.0.3fcd823a1
 Release:        0
 Summary:        Cloud Foundry command line client
 License:        Apache-2.0

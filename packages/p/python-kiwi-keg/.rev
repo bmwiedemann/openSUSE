@@ -49,4 +49,13 @@
     <comment></comment>
     <requestid>1247429</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>66fdf1cbbd61656c3cb7d18e0a1e2f49</srcmd5>
+    <version>2.2.1</version>
+    <time>1771606003</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop accidentally packged obscpio files
+- Patch fix-doc-link.patch was removed with 2.2.0 as fix is upstream (forwarded request 1334197 from jgleissner)</comment>
+    <requestid>1334205</requestid>
+  </revision>
 </revisionlist>

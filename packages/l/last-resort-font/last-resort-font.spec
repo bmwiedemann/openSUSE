@@ -1,7 +1,7 @@
 #
 # spec file for package last-resort-font
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           last-resort-font
-Version:        15.100
+Version:        17.000
 Release:        0
 Summary:        A special-purpose font that includes a collection of glyphs to represent types of Unicode characters
 License:        OFL-1.1

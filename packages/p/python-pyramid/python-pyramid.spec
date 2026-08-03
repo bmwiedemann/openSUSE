@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyramid
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2014-2017 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,17 +19,15 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pyramid
-Version:        2.0.2
+Version:        2.1
 Release:        0
 Summary:        The Pyramid web application development framework
 License:        BSD-4-Clause AND ZPL-2.1 AND MIT
 URL:            https://pylonsproject.org
 Source0:        https://files.pythonhosted.org/packages/source/p/pyramid/pyramid-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/Pylons/pyramid/pull/3767/commits/bc84ac3af6dbbec655c0ab4544d811d92a175437
-Patch0:         https://github.com/Pylons/pyramid/pull/3767/commits/bc84ac3af6dbbec655c0ab4544d811d92a175437.patch#/py313-tests.patch
-BuildRequires:  %{python_module PasteDeploy >= 1.5.0}
 BuildRequires:  %{python_module WebOb >= 1.8.3}
 BuildRequires:  %{python_module WebTest >= 1.3.1}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module hupper >= 1.5}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module plaster-pastedeploy}
@@ -44,7 +42,6 @@ BuildRequires:  %{python_module zope.deprecation >= 3.5.0}
 BuildRequires:  %{python_module zope.interface >= 3.8.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-PasteDeploy >= 1.5.0
 Requires:       python-WebOb >= 1.8.3
 Requires:       python-hupper >= 1.5
 Requires:       python-plaster
@@ -57,12 +54,6 @@ Requires:       python-zope.interface >= 3.8.0
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
-%if %{with python2}
-BuildRequires:  python-repoze.lru >= 0.4
-%endif
-%ifpython2
-Requires:       python-repoze.lru >= 0.4
-%endif
 %python_subpackages
 
 %description
@@ -70,17 +61,9 @@ Pyramid is a Python web application development framework
 produced by the Pylons Project (http://pylonsproject.org).
 It was previously known as repoze.bfg (http://bfg.repoze.org).
 
-
-
-
-
-
-
-
-
-
 # NOTE: The documentation in the docs/ directory is under a
 # non-free license (CC-BY-NC-SA-3.0). Do not package it.
+
 %prep
 %autosetup -p1 -n pyramid-%{version}
 

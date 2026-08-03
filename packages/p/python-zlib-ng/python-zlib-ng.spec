@@ -1,7 +1,7 @@
 #
 # spec file for package python-zlib-ng
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,18 +27,17 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-zlib-ng%{psuffix}
-Version:        0.5.1
+Version:        1.0.0
 Release:        0
 License:        Python-2.0
 Summary:        Faster zlib and gzip compatible compression and decompression
 Group:          Development/Languages/Python
 URL:            https://github.com/pycompression/python-zlib-ng
 Source0:        https://files.pythonhosted.org/packages/source/z/zlib-ng/zlib_ng-%{version}.tar.gz
-Source1:        https://github.com/pycompression/python-zlib-ng/archive/refs/tags/v%{version}.tar.gz#/zlib-ng-%{version}-gh.tar.gz
-BuildRequires:  %{python_module devel >= 3.8}
+BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module versioningit}
+BuildRequires:  %{python_module setuptools >= 77}
+BuildRequires:  %{python_module setuptools-scm >= 8}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -57,7 +56,7 @@ Faster zlib and gzip compatible compression and decompression by providing Pytho
 This package provides Python bindings for the zlib-ng library.
 
 %prep
-%setup -q -a1 -n zlib_ng-%{version}
+%setup -q -n zlib_ng-%{version}
 
 %build
 %if !%{with test}

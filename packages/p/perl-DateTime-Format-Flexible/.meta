@@ -8,6 +8,5 @@ DateTime::Format::Flexible attempts to take any string you give it and parse it
 into a DateTime object.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-DateTime-Format-Flexible"/>
   <url>https://metacpan.org/release/DateTime-Format-Flexible</url>
 </package>

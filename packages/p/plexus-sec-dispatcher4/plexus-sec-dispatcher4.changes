@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 13 12:51:42 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Do not use the slf4j2 compatibility package, as the base slf4j
+  package is now on version 2.0.18
+
+-------------------------------------------------------------------
 Mon Nov  3 18:39:40 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging with version 4.1.0

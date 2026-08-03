@@ -8,5 +8,4 @@ manpage and the Module::Install manpage.
 
 See the CPAN::Meta manpage for further details of the CPAN Meta
 Specification.</description>
-  <devel project="devel:languages:perl" package="perl-Test-CPAN-Meta"/>
 </package>

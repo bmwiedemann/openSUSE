@@ -16,4 +16,12 @@
 - Use gfortran-14 for building on Leap</comment>
     <requestid>1279028</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b35a0b28db0200612cb6506ebc6551da</srcmd5>
+    <version>23.2.5</version>
+    <time>1781879900</time>
+    <user>anag_factory</user>
+    <comment>Update to 23.2.5 (accumulated 23.2.x series)</comment>
+    <requestid>1360612</requestid>
+  </revision>
 </revisionlist>

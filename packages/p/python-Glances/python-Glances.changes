@@ -1,7 +1,17 @@
 -------------------------------------------------------------------
+Tue Jun 30 16:18:47 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- move to the right subpackage
+
+-------------------------------------------------------------------
+Mon Jun 29 09:27:00 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Add missing requires to be able to start the server
+
+-------------------------------------------------------------------
 Tue Jun 23 10:56:37 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
-- Update to 4.5.5 (fixes CVE-2026-46606 (bsc#1268800), CVE-2026-46607 
+- Update to 4.5.5 (fixes CVE-2026-46606 (bsc#1268800), CVE-2026-46607
   (bsc#1268854), CVE-2026-46608 (bsc#1268855), CVE-2026-46611 (bsc#1268856),
   CVE-2026-53925 (bsc#1268984))
   * /api/4/containers stays ~4-5s with ~60 Docker containers #3559
@@ -208,12 +218,12 @@ Tue Apr 25 15:51:39 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
   * Refactor some loop in the processes function
   * Replace json by ujson #2201
   * Improvements on documentation, unit test and CI
-  * bump dependencies and web lib to address security 
+  * bump dependencies and web lib to address security
 
 -------------------------------------------------------------------
 Mon Nov  7 20:12:07 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to 3.3.0.4 
+- Update to 3.3.0.4
   * Correct an issue on alpine.Dockerfile
   * Revert a miss
 
@@ -342,7 +352,7 @@ Mon Nov 22 11:48:11 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - Update to version 3.2.4.2
   * Added support for Python 3.10
-  *  KeyError: 'syscalls' and terminal layout broken #1956 
+  *  KeyError: 'syscalls' and terminal layout broken #1956
 
 -------------------------------------------------------------------
 Sun Nov 21 11:50:41 UTC 2021 - Michael Ströder <michael@stroeder.com>

@@ -164,4 +164,12 @@ already being maintained over a long period by https://build.opensuse.org/users/
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1360041</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>9f94ef86733549dd03eefbe2938754f7</srcmd5>
+    <version>4.1.1</version>
+    <time>1784126142</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1365636</requestid>
+  </revision>
 </revisionlist>

@@ -4,5 +4,4 @@
 GObject-based C. Infinote is a protocol for collaborative editing
 multiple documents and is portable to both Windows and Unix-like
 platforms.</description>
-  <devel project="GNOME:Apps" package="libinfinity"/>
 </package>

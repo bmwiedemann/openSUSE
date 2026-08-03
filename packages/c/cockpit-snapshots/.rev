@@ -7,4 +7,13 @@
     <comment>Initial submission of the cockpit-snapshots module</comment>
     <requestid>1336036</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f13b6d5674af518fa92935e381064a35</srcmd5>
+    <version>3.1</version>
+    <time>1773161908</time>
+    <user>anag_factory</user>
+    <comment>- Patch esbuild to use native runtime on ppc64 (bsc#1257698)
+	  * added esbuild-ppc64.patch</comment>
+    <requestid>1338000</requestid>
+  </revision>
 </revisionlist>

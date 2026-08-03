@@ -7,6 +7,5 @@ discover the operations available on it; and instantiate the appropriate
 bean to perform the operation(s).
 
 </description>
-  <devel project="Java:packages" package="glassfish-activation"/>
   <url>https://github.com/javaee/activation</url>
 </package>

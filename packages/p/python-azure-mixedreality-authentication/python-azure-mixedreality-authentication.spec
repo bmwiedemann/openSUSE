@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-mixedreality-authentication
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-mixedreality-authentication
-Version:        1.0.0b1
+Version:        1.0.0b2
 Release:        0
 Summary:        Microsoft Azure Mixed Reality Authentication Client Library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-mixedreality-authentication/azure-mixedreality-authentication-%{version}.zip
-Source1:        LICENSE.txt
+Source:         https://files.pythonhosted.org/packages/source/a/azure-mixedreality-authentication/azure_mixedreality_authentication-%{version}.tar.gz
 BuildRequires:  %{python_module azure-mixedreality-nspkg >= 1.0.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module pip}
@@ -33,10 +32,9 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  unzip
 Requires:       python-azure-mixedreality-nspkg >= 1.0.0
-Requires:       python-msrest >= 0.5.0
 Requires:       (python-azure-core >= 1.4.0 with python-azure-core < 2.0.0)
+Requires:       (python-msrest >= 0.6.21 with python-msrest < 1.0.0)
 Conflicts:      python-azure-sdk <= 2.0.0
 %if 0%{?sle_version} >= 150400
 Obsoletes:      python3-azure-mixedreality-authentication <= 1.0.0b1
@@ -53,10 +51,9 @@ This package supports exchanging Mixed Reality account credentials for an access
 token from the STS that can be used to access Mixed Reality services.
 
 %prep
-%setup -q -n azure-mixedreality-authentication-%{version}
+%setup -q -n azure_mixedreality_authentication-%{version}
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-mixedreality-authentication-%{version}
 %pyproject_wheel
 
 %install

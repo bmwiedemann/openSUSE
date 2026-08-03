@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Mar 24 21:29:20 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 17.000:
+  * This version of the *Last Resort* fonts corresponds to
+    Unicode Version 17.0.0. The following changes were made in
+    this release:
+  * Eight new glyphs were added
+- update to 16.000:
+  * This version of the *Last Resort* fonts corresponds to
+    Unicode Version 16.0.0. The following changes were made in
+    this release:
+  * 10 new glyphs  to the following new blocks were added
+  * 5,185 mappings that correspond to the 5,185 new characters in
+    Unicode Version 16.0 were changed.
+  * The sources and build scripts were added.
+  * That is all.
+
+-------------------------------------------------------------------
 Wed Dec 27 21:11:44 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 15.100:

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Mar 25 13:29:45 UTC 2026 - Petr Pavlu <petr.pavlu@suse.com>
+
+- Update to version 3.4:
+  * Allow adding a regex to "trace-cmd list -o" to filter out
+    showing of options
+  * trace-cmd list has new --proto option to show function
+    prototypes
+  * trace-cmd record will now save the BTF file (if needed)
+  * trace-cmd report will show function arguments if available
+  * Add support for showing parent functions in function graph
+  * trace-cmd extract will always record the BTF file
+  * Add -K option to trace-cmd record to prevent it from resetting
+    the current state of the tracing system
+  * trace-cmd record and extract now handle the persistent ring
+    buffer
+  * Use write() instead of fwrite() when writing to trace_options
+    to ensure that bad options are properly reported
+  * Do not have trace-cmd extract delete instances after it
+    extracts the data
+
+-------------------------------------------------------------------
 Wed Feb 25 12:23:45 UTC 2026 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
 
 - Update to version 3.3.4:

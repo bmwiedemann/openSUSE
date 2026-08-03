@@ -10,5 +10,4 @@ built-in debugger. (It can also be used for evil, of course.)
 I wouldn't recommend using PadWalker directly in production code, but it's
 your call. Some of the modules that use PadWalker internally are certainly
 safe for and useful in production.</description>
-  <devel project="devel:languages:perl" package="perl-PadWalker"/>
 </package>

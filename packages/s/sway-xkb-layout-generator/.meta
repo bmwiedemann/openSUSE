@@ -1,4 +1,5 @@
 <package name="sway-xkb-layout-generator" project="openSUSE:Factory">
   <title>sway-xkb-layout-generator</title>
   <description>A xkb layout generator script for Sway based on localectl</description>
+  <devel project="X11:Wayland" package="sway-xkb-layout-generator"/>
 </package>

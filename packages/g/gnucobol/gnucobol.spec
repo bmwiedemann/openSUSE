@@ -82,7 +82,7 @@ providing full access to nearly all C libraries.
 %package esql
 Summary:        ESQL for GnuCOBOL
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
-Obsoletes:      esql <= %{version}-%{release}
+Obsoletes:      esql < %{version}-%{release}
 Provides:       esql = %{version}-%{release}
 
 %description esql
@@ -93,7 +93,7 @@ Summary:        Devel package for ESQL
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
 Requires:       unixODBC
 Requires:       esql
-Obsoletes:      esql-devel <= %{version}-%{release}
+Obsoletes:      esql-devel < %{version}-%{release}
 Provides:       esql-devel = %{version}-%{release}
 
 %description esql-devel

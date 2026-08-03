@@ -1,0 +1,101 @@
+-------------------------------------------------------------------
+Wed Jul 15 07:25:20 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Introduce libzpc-legacy package for the 1.x branch (jsc#PED-16483)
+  * Retain the 1.5.0 codebase to provide libzpc1 and libzpc-devel
+    compatibility during the transition to libzpc 2.x 
+
+-------------------------------------------------------------------
+Fri Feb  6 16:34:24 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Upgrade libzpc to version 1.5.0 (jsc#PED-14603, jsc#PED-14275, jsc#PED-15049) 
+  * [FEATURE] Support live guest relocation
+
+-------------------------------------------------------------------
+Wed Jan  7 12:21:51 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Upgrade libzpc to 1.4.1 
+  (jsc#PED-14603, jsc#PED-15051, jsc#PED-15049, jsc#PED-15023) 
+  - Bug fixes
+
+-------------------------------------------------------------------
+Mon Jun 16 09:24:17 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Upgrade libzpc to version 1.4.0 (jsc#PED-11163)
+  - [FEATURE] Support for MSA 10 (XTS-FULL) and MSA 11 (HMAC)
+  - [PATCH] bug fixes 
+
+-------------------------------------------------------------------
+Mon Apr  7 06:21:10 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Upgrade libzpc to 1.3.1
+ - Bug fixes 
+
+-------------------------------------------------------------------
+Tue Feb 18 06:43:13 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- License update to MIT 
+
+-------------------------------------------------------------------
+Thu Feb 13 06:11:40 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Upgrade libzpc to version 1.3.0 (jsc#PED-11163, jsc#PED-10294)
+  - [FEATURE] Support for Ultravisor retrievable secrets
+  - [PATCH] Handle CCA cipher key token with Encrypted V0 payload
+  - [PATCH] bug fixes 
+
+-------------------------------------------------------------------
+Mon Jan 15 07:16:57 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Upgrade libzpc to version 1.2.0 (jsc#PED-3335)
+  * Support for get/set intermediate iv for CBC and XTS
+  * Support for internal iv for GCM
+  * Exploit KBLOB2PROTK3 ioctl for clear AES and EC keys
+  * Fix AES EP11 version 6 key support for generate and import_clear
+
+-------------------------------------------------------------------
+Wed Sep 20 06:46:33 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Version 1.1.1 (jsc#PED-5214)
+  * Exploit PKEY_KBLOB2PROTK2 for AES EP11 version 6 keys
+
+-------------------------------------------------------------------
+Wed Feb  8 16:19:14 UTC 2023 - Mark Post <mpost@suse.com>
+
+- Upgrade to version 1.1.0 (jsc#PED-582)
+  * Implements an ECC-KEY API : `zpc/ecc_key.h`.
+  * Implements an ECDSA-CTX API : `zpc/ecdsa_ctx.h`.
+
+-------------------------------------------------------------------
+Tue Sep 13 17:46:49 UTC 2022 - Mark Post <mpost@suse.com>
+
+- Upgrade to version 1.0.1 (jsc#PED-582)
+  * Updated spec file for rpm build
+- Removed obsolete libzpc-sles15p4-mark-stack-nonexec.patch
+- Updated spec file to use %{name} and %{version} variables in
+  more places.
+
+-------------------------------------------------------------------
+Wed Apr 27 06:56:08 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- use source url
+
+-------------------------------------------------------------------
+Tue Nov  2 14:42:14 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- libzpc-sles15p4-mark-stack-nonexec.patch: note the asssembler as
+  non execstack
+- libzpc-rpmlintrc removed
+
+-------------------------------------------------------------------
+Mon Nov  1 15:46:47 UTC 2021 - Mark Post <mpost@suse.com>
+
+- Cleaned up the wording in the description. Updated the
+  summaries to actually reflect the contents of the packages.
+- Changed the %setup macro to use $autosetup instead.
+- Added a BuildRequires for texlive-bibtex-bin
+
+-------------------------------------------------------------------
+Tue Oct 19 21:49:30 UTC 2021 - Mark Post <mpost@suse.com>
+
+- Initial version 1.0.0 (jsc#SLE-18746)

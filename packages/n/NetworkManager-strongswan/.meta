@@ -6,5 +6,4 @@ NetworkManager uses DBUS to communicate with a plugin loaded by the IKEv2 charon
 
 The plugin uses a certificate for gateway authentication and supports EAP and RSA authentication for client authentication.
 PSK is not supported, as it is considered insecure if the secrets are not strong enough.</description>
-  <devel project="GNOME:Factory" package="NetworkManager-strongswan"/>
 </package>

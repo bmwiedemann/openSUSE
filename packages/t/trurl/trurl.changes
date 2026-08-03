@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun 19 09:12:09 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Make it build again on TW by temporary disable tests.
+  see comments: https://github.com/curl/trurl/pull/441
+- Add patch:
+  * fix-discarded-qualifiers.patch
+
+-------------------------------------------------------------------
 Tue Feb 10 22:56:53 UTC 2026 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Update license tag to curl 

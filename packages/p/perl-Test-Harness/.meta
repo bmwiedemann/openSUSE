@@ -12,6 +12,5 @@ here. Straps is now available as a stand alone module: Test::Harness::Straps.
 
 See TAP::Parser, TAP::Harness for the main documentation for this distribution.
   </description>
-  <devel project="devel:languages:perl" package="perl-Test-Harness"/>
   <url>http://search.cpan.org/perldoc?Test::Harness</url>
 </package>

@@ -12,5 +12,4 @@ The module uses an object-oriented interface. You use one of two different
 classes, depending on whether you are signing or verifying a message. To
 sign, use the the Mail::DKIM::Signer manpage class. To verify, use the the
 Mail::DKIM::Verifier manpage class. Simple, eh?</description>
-  <devel project="devel:languages:perl" package="perl-Mail-DKIM"/>
 </package>

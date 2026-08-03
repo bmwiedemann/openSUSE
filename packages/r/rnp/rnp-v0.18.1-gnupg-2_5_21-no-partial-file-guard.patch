@@ -1,0 +1,29 @@
+From 94059c7a589555c0c65b3687ef95b8595de5c9cb Mon Sep 17 00:00:00 2001
+From: Andreas Stieger <Andreas.Stieger@gmx.de>
+Date: Tue, 14 Jul 2026 20:23:34 +0200
+Subject: [PATCH] Fix compatibility with GnuPG 2.5.21 (test_encryption_cek)
+
+Pass --compatibility-flags=no-partial-file-guard test_encryption_cek in
+cli_tests. Related to GnuPG T7873.
+
+Fixes #2399
+---
+ src/tests/cli_tests.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/tests/cli_tests.py b/src/tests/cli_tests.py
+index 3ecfcac4..971c03c9 100755
+--- a/src/tests/cli_tests.py
++++ b/src/tests/cli_tests.py
+@@ -5022,7 +5022,7 @@ class Encryption(unittest.TestCase):
+         for _ in range(10):
+             ret, _, _ = run_proc(RNP, ['--homedir', RNPDIR2, '-r', 'test_cek', '-e', src, '--overwrite', '--output', enc])
+             self.assertEqual(ret, 0)
+-            ret, _, err = run_proc(GPG, ['--batch', '--homedir', GPGHOME2, '--show-session-key', GPG_LOOPBACK, '--passphrase', PASSWORD, '--output', '/dev/null', '-d', enc])
++            ret, _, err = run_proc(GPG, ['--batch', '--homedir', GPGHOME2, '--show-session-key', GPG_LOOPBACK, '--passphrase', PASSWORD, '--output', '/dev/null', '--compatibility-flags=no-partial-file-guard', '-d', enc])
+             self.assertEqual(ret, 0)
+             m = pattern.match(err)
+             self.assertTrue(m)
+-- 
+2.55.0
+

@@ -10,6 +10,5 @@ Additionally, Moose is built on top of the Class::MOP manpage, which is a
 metaclass system for Perl 5. This means that Moose not only makes building
 normal Perl 5 objects better, but it provides the power of metaclass
 programming as well.</description>
-  <devel project="devel:languages:perl" package="perl-Moose"/>
   <url>http://search.cpan.org/dist/Moose/</url>
 </package>

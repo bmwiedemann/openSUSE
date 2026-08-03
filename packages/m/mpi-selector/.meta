@@ -7,5 +7,4 @@ the site-wide default.
 
 The default can be changed easily via the mpi-selector command --
 editing of shell startup files is not required.</description>
-  <devel project="science:HPC" package="mpi-selector"/>
 </package>

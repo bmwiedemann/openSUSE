@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Jun 18 16:02:13 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.2.0 (fixes the build; the package was flagged
+  for removal by botdel after >= 6 weeks of build failures):
+  * file-type detection moved from binaryornot to python-magic
+    (libmagic) — this also resolves the test_project failure that
+    broke the build on Tumbleweed, where binaryornot misclassified a
+    tiny ASCII file as binary
+  * see the upstream CHANGELOG for the full 5.0.2 -> 6.2.0 feature set
+- Adjust dependencies for 6.2.0: require python >= 3.10; replace
+  python3-binaryornot with python3-python-magic; drop the explicit
+  python3-boolean.py (now pulled in transitively via
+  license-expression); raise the floors on attrs (>= 23.2), click
+  (>= 8.1), license-expression (>= 21.6.14) and python-debian
+  (>= 0.1.48)
+- Enable the optional encoding-detection backends (python3-chardet,
+  python3-charset-normalizer; file-magic comes from the file package)
+  so the TestEncodingModule suite runs against all backends
+- Run the doc build with src/ on PYTHONPATH (apidoc/autodoc imports
+  the modules) and SPHINXOPTS= so the offline intersphinx warning is
+  not fatal; point %check at tests/ with the installed package on
+  PYTHONPATH so the subprocess-based tests can import reuse
+-------------------------------------------------------------------
 Wed Jul 16 07:55:34 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
 
 - Change BuildRequires to poetry-core

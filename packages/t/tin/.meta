@@ -7,4 +7,5 @@ useful things. It has also support for different languages.
 This version contains 2 patches by dnh@opensuse.org changing the
 default key for toggling rot13 from '%' to 'd' and displaying the
 number of unread posts instead of lines in the threadview.</description>
+  <devel project="server:mail" package="tin"/>
 </package>

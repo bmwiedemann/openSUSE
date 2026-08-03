@@ -16,7 +16,7 @@
 #
 
 Name:           vkSumi
-Version:        0.0.6
+Version:        0.0.7
 Release:        0
 Summary:        Vulkan layer for runtime color grading on Linux
 License:        MIT
@@ -48,6 +48,7 @@ sed -i '1s|#!/usr/bin/env bash|#!/usr/bin/bash|' scripts/vksumi-toggle
 
 %install
 %meson_install
+%{__strip} %{buildroot}%{_libdir}/libVkLayer_vksumi.so
 
 %files
 %license LICENSE

@@ -18,13 +18,14 @@
 
 %define sover 0
 Name:           xdigest
-Version:        0.4.1
+Version:        0.5.0
 Release:        0
 Summary:        Digest algorithm library designed for speed
 License:        Apache-2.0
 URL:            https://github.com/rinrab/xdigest
 Source:         https://github.com/rinrab/xdigest/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
+ExcludeArch: riscv64
 
 %description
 Xdigest is a digest algorithm implementation library designed for speed. It
@@ -57,10 +58,10 @@ This package contains the files needed to develop and build using %{name}.
 
 %build
 %cmake \
-%ifnarch %{ix86} x86_64
+%ifarch aarch64
 	-DUSE_ASM:BOOL=OFF \
 %endif
-%ifarch %{arm} ppc64le riscv64 s390x
+%ifarch ppc64le s390x
 	-DENABLE_TESTS:BOOF=OFF \
 %endif
 	%{nil}

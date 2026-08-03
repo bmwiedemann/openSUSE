@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Tue Jul 28 06:38:44 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
+
+- adjust to new package naming
+
+-------------------------------------------------------------------
+Mon Jul 27 12:02:51 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
+
+- filter basecontainer packages from installation for optimizing rebuilds
+
+-------------------------------------------------------------------
+Fri Jul 24 08:58:10 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
+
+- make use of micro image for delivery
+
+-------------------------------------------------------------------
+Fri Jul 24 06:26:39 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
+
+- First version of the MCP Host for Bugzilla BCI

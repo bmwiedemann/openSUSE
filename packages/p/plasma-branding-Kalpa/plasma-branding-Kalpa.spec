@@ -18,12 +18,15 @@
 
 
 Name:           plasma-branding-Kalpa
-Version:        20260601
+Version:        20260612
 Release:        0
 Summary:        Kalpa Desktop default settings
 License:        MIT
 URL:            https://codeberg.org/KalpaDesktop/plasma-branding-Kalpa
 Source:         %{name}-%{version}.tar.gz
+
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-add-missed-locale1-in-sddm-config.patch
 
 BuildRequires:  cmake
 BuildRequires:  flatpak
@@ -83,16 +86,11 @@ This package provides default configurations and applications for Kalpa Desktop
 %dir %{_prefix}/lib/sddm
 %dir %{_prefix}/lib/sddm/sddm.conf.d
 %dir %{_userunitdir}/transactional-update-notifier.service.d
+%dir %{_prefix}/lib/systemd/system/cups.service.d
 %{_datadir}/kalpa/flathub.flatpakrepo
 %{_datadir}/kio/servicemenus/*.desktop
-%ifnarch aarch64
 %{_distconfdir}/skel/.config/autostart/kalpa-firstboot.desktop
 %{_bindir}/kalpa-firstboot
-%endif
-%ifarch aarch64
-%{_distconfdir}/skel/.config/autostart/kalpa-firstboot-aarch64.desktop
-%{_bindir}/kalpa-firstboot-aarch64
-%endif
 %{_distconfdir}/transactional-update.conf.d/50-desktop.conf
 %{_userunitdir}/distrobox-upgrade-all.service
 %{_userunitdir}/distrobox-upgrade-all.timer
@@ -101,6 +99,7 @@ This package provides default configurations and applications for Kalpa Desktop
 %{_prefix}/lib/sddm/sddm.conf.d/
 %{_distconfdir}/xdg/
 %{_userunitdir}/transactional-update-notifier.service.d/set-notification-priority.conf
+%{_prefix}/lib/systemd/system/cups.service.d/kalpa-cups.conf
 %{_datadir}/discover/
 
 %changelog

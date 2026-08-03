@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Fri Feb 20 12:52:43 UTC 2026 - Joachim Gleissner <jgleissner@suse.com>
+
+- Drop accidentally packged obscpio files
+- Patch fix-doc-link.patch was removed with 2.2.0 as fix is upstream
+
+-------------------------------------------------------------------
+Fri Feb 20 12:12:31 UTC 2026 - Joachim Gleissner <jgleissner@suse.com>
+
+- Update to version 2.2.1:
+  * Bump version: 2.2.0 → 2.2.1
+  * Adapt unit test
+  * Fix issue with multiple base profiles in config.sh
+
+-------------------------------------------------------------------
+Fri Dec 19 15:34:50 UTC 2025 - Joachim Gleissner <jgleissner@suse.com>
+
+- Update to version 2.2.0:
+  * Bump version: 2.1.1 → 2.2.0
+  * Add update_kiwi_description to spec file list
+  * Add some comments
+  * Minor fixes
+  * Deleted unused file
+  * Adjust README
+  * Re-implement unit tests
+  * Update README
+  * Cosmetic fix
+  * Typo fix
+  * Avoid mypy/flake8 warnings
+  * Fix small issue with AnnotatedMapping
+  * Refactoring of keg tools
+  * Silence issue with mypy typing
+  * Docs: Validation fix
+  * Fix issue with incomplete source info
+  * Fix potentially missed source info
+  * Indentation fixes
+  * Minor fix in script generator
+  * Do not import unused dict_utils
+  * Do not look for deletion commit in repo without commits
+  * Formatting fixes
+  * Support base profiles in config scripts
+  * Improve profile handling
+  * Fix source path parsing
+  * Drop tests with python < 3.10
+  * Drop support for python < 3.10
+  * Ignore kiwi validation error if '--force' is set
+  * Support namespaced profiles section
+  * Refactor image composer
+  * chore(docs): Remove -W flag in docs/Makefile and clean up spec file
+  * chore(spec): drop patch for OBS doc link
+  * chore(spec): fix conditional check for new_setuptools on SLE-15-SP3
+  * chore(spec): improve spec file and enable support for SLE-15-SP3
+  * chore(spec): remove obsolete patch for OBS doc link
+  * chore(spec): convert to pyproject macros and prepare for Python 3.14. Implement `https://build.opensuse.org/request/show/1241670` changes.
+  * Fix Sphinx warning about theme options
+  * Avoid Sphinx warning
+  * Use newer docbook schema
+  * Fix link to OBS documentation
+  * Add metadata needed for doc portal
+  * Use schemaversion 7.4 for fake config.kiwi files
+  * Use setup_method() instead of setup()
+  * Adapt unit test to typo fix
+  * Support disabling systemd timers
+  * Typo fix
+  * Fix unit tests for source tracking
+  * Include images.sh sources in source logs
+  * Add comment with osc documentation
+  * compose_kiwi_description: check for changed files
+  * Add source service commands
+  * Update README.rst
+  * Python 3.6 compatibility fix
+
+-------------------------------------------------------------------
 Fri Jan 31 15:05:06 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Add fix-doc-link.patch to fix build with new Sphinx

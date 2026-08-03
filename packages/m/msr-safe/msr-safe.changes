@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 30 04:32:17 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
+
+- add fix-build-warnings.patch to fix some warnings/errors
+
+-------------------------------------------------------------------
 Mon Jun 29 08:22:23 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
 
 - add kernel-7.2.patch to fix kernel 7.2.

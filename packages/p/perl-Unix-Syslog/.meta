@@ -4,5 +4,4 @@
 Perl's XSUBs. The implementation attempts to resemble the native libc-
 functions of your system, so that anyone being familiar with syslog.h
 should be able to use this module right away.</description>
-  <devel project="devel:languages:perl" package="perl-Unix-Syslog"/>
 </package>

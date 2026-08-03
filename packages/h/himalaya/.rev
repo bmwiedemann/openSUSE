@@ -133,4 +133,49 @@
     <comment></comment>
     <requestid>1174258</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6dd2dbf026974b99e2cde2d31803ac5d</srcmd5>
+    <version>1.2.0</version>
+    <time>1774470090</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1342472</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>72d798be2e2153fcaed403ddf480e36e</srcmd5>
+    <version>2.0.0</version>
+    <time>1785255633</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.0:
+  Added:
+  * Added Gmail REST API support: a [gmail] account backend behind the shared
+    mail commands (--backend gmail), plus a protocol-specific gmail command
+    exposing the full REST surface (profile, labels, messages, attachments,
+    drafts, threads, history, settings). Authenticates with a single OAuth 2.0
+    bearer token (gmail.auth.token.raw / .command), the only authorization
+    Gmail's REST API accepts.
+  * Added Microsoft Graph REST API support: a [msgraph] account backend behind
+    the shared mail commands (--backend msgraph), plus a protocol-specific
+    msgraph command exposing the Graph mail surface (profile, mail-folder,
+    message, attachment). Mirrors [gmail], authenticating with a single OAuth
+    2.0 bearer token.
+  * Restored the RFC 2971 ID-after-auth quirk as imap.id.{auto, fields},
+    replacing the v1.2.0 imap.extensions.id.send-after-auth flag dropped during
+    the v2 migration.
+  * Brought the m2dir backend to CLI feature parity with maildir (messages,
+    flags, envelopes). Mailbox rename and message copy / move still await
+    io-m2dir support.
+  * Added --save &lt;MAILBOX&gt; to messages send, mirroring the flag on messages
+    compose / reply / forward.
+  * Added --send to messages add (alias messages save), mirroring messages send --save.
+  * Added raw passthrough commands imap raw &lt;command&gt; and smtp raw &lt;command&gt;.
+  * The wizard now pre-fills mailbox.alias.* from the server, so a generated
+    account has a working default mailbox (the inbox alias, which backs
+    commands that omit -m/--mailbox) and known Sent/Drafts/Trash/… targets
+    without hand-editing ids. JMAP reads the RFC 8621 mailbox roles live over
+    the tested connection. Gmail and Microsoft Graph map their fixed
+    system-label ids (INBOX, SENT, …) and well-known folder names (inbox,
+    sentitems, …). IMAP pins the reserved INBOX only. The other special-use</comment>
+    <requestid>1368199</requestid>
+  </revision>
 </revisionlist>

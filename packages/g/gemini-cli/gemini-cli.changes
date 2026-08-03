@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Jul 30 06:28:25 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.53.0:
+  * fix(core,a2a): group cancelled tool responses and coalesce
+    consecutive roles to prevent 400 Bad Request
+  * feat(caretaker-triage): implement LLM triage orchestrator and
+    container build
+  * refactor(cli): align macOS permissive Seatbelt profiles with
+    deny-default model
+  * fix(core): mitigate infinite ReAct loops and prompt injection
+    loops
+  * fix(a2a-server): enforce workspace trust and task isolation
+    to prevent RCE
+  * fix(core): sequentially verify cached credentials and restore
+    GOOGLE_APPLICATION_CREDENTIALS fallback
+  * feat(evals): add eval coverage report command
+  * **Full Changelog**: https://github.com/google-gemini/gemini-
+    cli/compare/v0.52.0...v0.53.0
+
+-------------------------------------------------------------------
 Thu Jul 23 14:05:44 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.52.0:

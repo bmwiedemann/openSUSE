@@ -8,6 +8,5 @@ options
  RFC2348 Blocksize Option
 
 </description>
-  <devel project="devel:languages:perl" package="perl-Net-TFTP" />
   <url>http://search.cpan.org/dist/Net-TFTP/</url>
 </package>

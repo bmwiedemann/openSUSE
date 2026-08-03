@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 25 12:03:41 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop gnome-doc-utils-devel BuildRequires: no longer needed since
+  a long time.
+
+-------------------------------------------------------------------
 Tue Jan 16 16:17:31 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Own /usr/share/gtk-doc: glib no longer uses gtk-doc and as a

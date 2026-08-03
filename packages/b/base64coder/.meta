@@ -7,6 +7,5 @@ library.  The undocumented classes sun.misc.BASE64Encoder and
 sun.misc.BASE64Decoder should not be used.
 
 </description>
-  <devel project="Java:packages" package="base64coder"/>
   <url>http://www.source-code.biz/%{name}/java/</url>
 </package>

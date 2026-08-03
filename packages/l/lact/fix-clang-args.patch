@@ -1,0 +1,12 @@
+Index: lact-0.9.1/lact-daemon/build.rs
+===================================================================
+--- lact-0.9.1.orig/lact-daemon/build.rs
++++ lact-0.9.1/lact-daemon/build.rs
+@@ -41,6 +41,7 @@
+         .header("include/nvidia.h")
+         .parse_callbacks(Box::new(bindgen::CargoCallbacks::new()))
+         .generate_comments(false)
++        .clang_arg("-Iinclude")
+         .clang_arg("-Iinclude/nvidia/src/common/sdk/nvidia/inc")
+         .generate()
+         .expect("Unable to generate nvidia bindings")

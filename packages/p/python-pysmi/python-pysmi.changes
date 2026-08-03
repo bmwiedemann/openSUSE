@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 18 21:54:21 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.3:
+  * Add new implicit imports handling.
+
+-------------------------------------------------------------------
 Fri Jul 25 23:57:07 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Skipping failing tests (gh#lextudio/pysnmp#198)

@@ -1,0 +1,42 @@
+From 2c7842c905147a2d127c1b168b2e9d432b8c91a4 Mon Sep 17 00:00:00 2001
+From: Daniel Schaefer <dhs@frame.work>
+Date: Thu, 12 Feb 2026 16:08:31 +0800
+Subject: [PATCH] focaltech_moc: add new pid:0x077A pid:0x079A
+
+Tested on working hardware with examples/enroll and examples/verify
+
+Signed-off-by: Daniel Schaefer <dhs@frame.work>
+---
+ data/autosuspend.hwdb                           | 2 ++
+ libfprint/drivers/focaltech_moc/focaltech_moc.c | 2 ++
+ 2 files changed, 4 insertions(+)
+
+diff --git a/data/autosuspend.hwdb b/data/autosuspend.hwdb
+index f49e17d6..9d1fd351 100644
+--- a/data/autosuspend.hwdb
++++ b/data/autosuspend.hwdb
+@@ -185,6 +185,8 @@ usb:v2808pA99A*
+ usb:v2808pA57A*
+ usb:v2808pA78A*
+ usb:v2808p1579*
++usb:v2808p077A*
++usb:v2808p079A*
+  ID_AUTOSUSPEND=1
+  ID_PERSIST=0
+ 
+diff --git a/libfprint/drivers/focaltech_moc/focaltech_moc.c b/libfprint/drivers/focaltech_moc/focaltech_moc.c
+index 2d410f88..8bd93e4b 100644
+--- a/libfprint/drivers/focaltech_moc/focaltech_moc.c
++++ b/libfprint/drivers/focaltech_moc/focaltech_moc.c
+@@ -35,6 +35,8 @@ static const FpIdEntry id_table[] = {
+   { .vid = 0x2808,  .pid = 0xa57a,  },
+   { .vid = 0x2808,  .pid = 0xa78a,  },
+   { .vid = 0x2808,  .pid = 0x1579,  },
++  { .vid = 0x2808,  .pid = 0x077A,  },
++  { .vid = 0x2808,  .pid = 0x079A,  },
+   { .vid = 0,  .pid = 0,  .driver_data = 0 },   /* terminating entry */
+ };
+ 
+-- 
+GitLab
+

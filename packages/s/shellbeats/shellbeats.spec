@@ -15,10 +15,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%global commit 280e5cabcc2e84a6a5f4b91c70c99f7b094a0c3f
+%global commit 29b683d29786ebc4963300cf5888952d9cacbe76
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 Name:           shellbeats
-Version:        0.6
+Version:        0.7
 Release:        0
 Summary:        Terminal music player for YouTube
 License:        GPL-3.0-only
@@ -27,6 +27,9 @@ URL:            https://shellbeats.com
 Source0:        https://github.com/lalo-space/shellbeats/archive/%{commit}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  gcc
 BuildRequires:  make
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(libcjson)
+BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(ncurses)
 Requires:       mpv
 Requires:       yt-dlp
@@ -49,6 +52,6 @@ test -x %{buildroot}%{_bindir}/shellbeats
 %files
 %{_bindir}/%{name}
 %license LICENSE
-%doc README.md YOUTUBE_PLAYLIST_GUIDE.md
+%doc README.md
 
 %changelog

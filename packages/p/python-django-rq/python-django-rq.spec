@@ -18,15 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-django-rq
-Version:        4.1
+Version:        4.1.1
 Release:        0
 Summary:        Simple app that provides django integration for RQ (Redis Queue)
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/rq/django-rq
 Source:         https://github.com/rq/django-rq/archive/v%{version}/django_rq-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fix-job-id-test-failures.patch gh#rq/django-rq@7aa920acd594
-Patch0:         fix-job-id-test-failures.patch
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}

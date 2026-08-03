@@ -3,5 +3,6 @@
   <description>This program computes odd for drawing card sets (e.g. non-replacement
 probabilities) using the hypergeometric function. It can also be used to
 compute binomial coefficients and the gamma function.</description>
+  <devel project="science" package="deal"/>
   <url>http://www.catb.org/~esr/deal/</url>
 </package>

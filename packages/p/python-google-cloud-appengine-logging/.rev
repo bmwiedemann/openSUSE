@@ -55,4 +55,13 @@
   * Require google-api-core &gt;= 2.11.0</comment>
     <requestid>1344807</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>26f663ac22357926a7815b294f2e3a93</srcmd5>
+    <version>1.10.0</version>
+    <time>1784126644</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.10.0:
+  * regenerate google-cloud-a packages</comment>
+    <requestid>1365769</requestid>
+  </revision>
 </revisionlist>

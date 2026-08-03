@@ -12,5 +12,4 @@ manpage package from CPAN.
 This module does not actually provide any transport implementation or
 server basis. For these, see the RPC::XML::Client manpage and the
 RPC::XML::Server manpage, respectively.</description>
-  <devel project="devel:languages:perl" package="perl-RPC-XML"/>
 </package>

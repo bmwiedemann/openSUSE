@@ -258,4 +258,19 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1325936</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>75378a8b94e26f587e6e47b30457b199</srcmd5>
+    <version>3.6.0</version>
+    <time>1774469997</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.6.0:
+  * Parameters search_params and catalog_id used in asset search
+    are now optional
+  * If catalog_id is set to None, search all catalogs
+  * Added option to define all query parameters for get/search
+    asset and ticket endpoints
+  * Fixed typing of methods that returned a partially unknown
+    dictionary</comment>
+    <requestid>1342395</requestid>
+  </revision>
 </revisionlist>

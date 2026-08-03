@@ -2,5 +2,4 @@
   <title>User Interface Builder for GTK+</title>
   <description>Glade is a RAD tool to enable quick &amp; easy development of user
 interfaces for the Gtk+ toolkit and the GNOME desktop environment.</description>
-  <devel project="GNOME:Factory" package="glade"/>
 </package>

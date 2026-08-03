@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jul 29 07:43:26 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.0.7:
+  * extract: harden validation of malicious filenames during
+    extraction.
+  * genhelp: add Zsh completion generator.
+  * repoparser: allow lines starting with variable.
+  * genhelp: make gzipped embedded help reproducible.
+  * doc: misc improvements.
+
+-------------------------------------------------------------------
 Mon Apr 13 12:52:33 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.0.6:

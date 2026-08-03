@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Feb 19 15:10:04 UTC 2026 - trenn@suse.de
+
+- Update to version 2.24.9.ga83fbb2:
+  * support reproducible builds
+  * The issue of not determining whether the memory request was successful.
+  * fix: allocating large page memory using libhugetlbfs in the loongarch architecture failed.
+  * build: Update HOWTO to reflect changes made in #86
+  * elflink.c: Fix HUGETLB_FORCE_ELFMAP partial segment remapping
+  * tests/icache-hygiene: Add LoongArch64 support for SIGILL handling
+  * tests: fixed check for __loongarch64 define
+  * Add support for loongarch64 architecture in ld.hugetlbfs
+  * keep_symbol: keep STB_GNU_UNIQUE symbols
+
+-------------------------------------------------------------------
 Mon Mar 11 09:47:47 UTC 2024 - trenn@suse.de
 
 - Adopt to mainline:

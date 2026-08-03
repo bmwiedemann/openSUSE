@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Feb 20 12:53:05 UTC 2026 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Update to version 0.11.0:
+  * svt-av1: Support crf quarter steps:
+    + defaults to -crf-increment to 0.25 if svt-av1 >= 4.0.0
+  * svt-av1: Widen default crf search range [10, 55] -> [5, 70]
+
+-------------------------------------------------------------------
+Sun Feb 15 14:51:51 UTC 2026 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Update to version 0.10.4:
+  * Use ffmpeg `-fps_mode passthrough` for all sample encodes.
+    This improves VMAF scores in some cases.
+  * Use explicit pixel format in xpsnr calls, use highest quality
+    format of the ref & distorted streams.
+    This can improve scores in some cases.
+  * Wait for vmaf/xpsnr processes to finish e.g. to allow custom
+    logging to flush.
+  * Update sample-encode json output to use float `predicted_encode_seconds`.
+  * Fix higher crf-search VMAF tolerance than expected when using
+    `--crf-increment` values above 1.
+
+-------------------------------------------------------------------
 Sun Nov 23 08:03:41 UTC 2025 - Enrico Belleri <kilgore.trout@idesmi.eu>
 
 - Update to version 0.10.2:

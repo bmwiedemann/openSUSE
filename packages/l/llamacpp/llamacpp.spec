@@ -25,11 +25,17 @@
 %global mtmd_sover         0.0.%{version}
 %global mtmd_sover_suffix  0
 
-%global ggml_sover         0.16.0
+%global ggml_sover         0.17.0
 %global ggml_sover_suffix  0
 
+%ifarch x86_64 aarch64
+%bcond_without openvino
+%else
+%bcond_with openvino
+%endif
+
 Name:           llamacpp
-Version:        9964
+Version:        10078
 Release:        0
 Summary:        Inference of Meta's LLaMA model (and others) in pure C/C++
 License:        MIT
@@ -45,8 +51,10 @@ BuildRequires:  shaderc
 BuildRequires:  spirv-headers
 BuildRequires:  pkgconfig(OpenCL)
 BuildRequires:  pkgconfig(OpenCL-CLHPP)
-BuildRequires:  pkgconfig(openvino)
 BuildRequires:  pkgconfig(libcurl)
+%if %{with openvino}
+BuildRequires:  pkgconfig(openvino)
+%endif
 BuildRequires:  pkgconfig(vulkan)
 # 32bit seems not to be supported anymore
 ExcludeArch:    %{ix86} %{arm}
@@ -201,9 +209,12 @@ mkdir -p %{_libdir}
     -DLLAMA_CURL=ON \
     -DGGML_NATIVE=OFF \
     -DGGML_CPU=ON \
+    -DGGML_CPU_ALL_VARIANTS=ON \
     -DGGML_VULKAN=ON \
     -DGGML_OPENCL=ON \
+%if %{with openvino}
     -DGGML_OPENVINO=ON \
+%endif
     -DGGML_BACKEND_DL=ON \
     -DGGML_BACKEND_DIR="%{backend_dir}" \
     -DGGML_OPENCL_USE_ADRENO_KERNELS=OFF \
@@ -266,7 +277,7 @@ mkdir -p %{_libdir}
 %files -n libggml-cpu
 %license LICENSE
 %dir %{backend_dir}
-%{backend_dir}/libggml-cpu.so
+%{backend_dir}/libggml-cpu-*.so
 
 %files -n libggml-vulkan
 %license LICENSE
@@ -278,10 +289,12 @@ mkdir -p %{_libdir}
 %dir %{backend_dir}
 %{backend_dir}/libggml-opencl.so
 
+%if %{with openvino}
 %files -n libggml-openvino
 %license LICENSE
 %dir %{backend_dir}
 %{backend_dir}/libggml-openvino.so
+%endif
 
 %files -n ggml-devel
 %license LICENSE

@@ -1,7 +1,7 @@
 #
 # spec file for package snphost
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (C) 2023 VirTEE
 #
 # All modifications and additions to the file contributed by third parties

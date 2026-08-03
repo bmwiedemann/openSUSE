@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-samba-client
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,13 @@
 
 
 Name:           yast2-samba-client
-Version:        5.0.3
+Version:        5.0.4
 Release:        0
 Summary:        YaST2 - Samba Client Configuration
 License:        GPL-2.0-only
 Group:          System/YaST
 URL:            https://github.com/yast/yast-samba-client
 Source0:        %{name}-%{version}.tar.bz2
-BuildRequires:  update-desktop-files
 BuildRequires:  yast2-devtools >= 4.4.0
 BuildRequires:  yast2-pam
 BuildRequires:  yast2-perl-bindings

@@ -5,6 +5,5 @@ subroutines, forked system calls (e.g. system(), fork()) and from XS or C
 modules.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-IO-CaptureOutput"/>
   <url>http://search.cpan.org/dist/IO-CaptureOutput/</url>
 </package>

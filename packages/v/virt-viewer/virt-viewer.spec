@@ -23,6 +23,10 @@
 %define with_govirt 0
 %endif
 
+%if 0%{?suse_version} < 1600 || 0%{?suse_version} >= 1699 || 0%{?is_opensuse}
+%global with_spice 1
+%endif
+
 Name:           virt-viewer
 Summary:        Virtual Machine Viewer
 License:        GPL-2.0-or-later
@@ -55,7 +59,7 @@ BuildRequires:  libgovirt-devel
 BuildRequires:  libpixman-1-0-devel
 BuildRequires:  libxml2-devel
 BuildRequires:  meson
-%if 0%{?suse_version} < 1600 || 0%{?suse_version} >= 1699
+%if 0%{?with_spice}
 BuildRequires:  spice-gtk-devel
 %endif
 BuildRequires:  python3-base
@@ -78,7 +82,7 @@ the display, and libvirt for looking up VNC server details.
 %prep
 %autosetup -p1
 
-%if 0%{?suse_version} < 1600 || 0%{?suse_version} >= 1699
+%if 0%{?with_spice}
 %define have_spice -Dspice=enabled
 %else
 %define have_spice -Dspice=disabled

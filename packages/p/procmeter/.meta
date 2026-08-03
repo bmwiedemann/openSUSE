@@ -2,5 +2,4 @@
   <title>Display actual system parameters</title>
   <description>With procmeter one can display various system parameters as e.g.
 processor load, network load, etc.</description>
-  <devel project="GNOME:Apps" package="procmeter"/>
 </package>

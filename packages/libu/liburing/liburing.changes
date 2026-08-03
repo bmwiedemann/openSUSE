@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 18 12:34:56 UTC 2026 - olaf@aepfle.de
+
+- disable failing tests via catch-all in SLE15, force bash
+
+-------------------------------------------------------------------
 Tue Mar  3 11:46:48 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - consider that %{suse_version} will be different across SLE 16

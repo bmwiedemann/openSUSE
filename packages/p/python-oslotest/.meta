@@ -1,5 +1,5 @@
 <package name="python-oslotest" project="openSUSE:Factory">
   <title></title>
   <description></description>
-  <devel project="devel:languages:python" package="python-oslotest"/>
+  <devel project="Cloud:OpenStack:Factory" package="python-oslotest"/>
 </package>

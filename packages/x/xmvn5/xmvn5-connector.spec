@@ -1,7 +1,7 @@
 #
 # spec file for package xmvn5-connector
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,7 @@ BuildRequires:  atinject
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 17
 BuildRequires:  javapackages-local
-BuildRequires:  maven-resolver2-api
+BuildRequires:  maven-resolver-api
 BuildRequires:  maven4-lib
 BuildRequires:  objectweb-asm
 BuildRequires:  sisu-inject
@@ -81,9 +81,6 @@ find -name ResolverIntegrationTest.java -delete
 # Don't put Class-Path attributes in manifests
 %pom_remove_plugin :maven-jar-plugin xmvn-tools
 
-# Normalize slf4j version to 2
-%pom_xpath_set pom:project/pom:properties/pom:slf4jVersion 2 xmvn-parent
-
 # Normalize maven4 to version 4 (compatibility version)
 %pom_xpath_set pom:project/pom:properties/pom:mavenVersion 4 xmvn-parent
 
@@ -104,7 +101,7 @@ build-jar-repository -s lib \
     maven/maven-core-4 \
     maven/maven-model-4 \
     maven/maven-plugin-api-4 \
-    maven-resolver/maven-resolver-api-2 \
+    maven-resolver/maven-resolver-api \
     objectweb-asm/asm \
     org.eclipse.sisu.inject \
     org.eclipse.sisu.plexus \

@@ -271,4 +271,24 @@
   * feat(api): update API spec from langfuse/langfuse 53433e8</comment>
     <requestid>1363841</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4401f045b67b59a05ed0aef112c9273c</srcmd5>
+    <version>4.14.0</version>
+    <time>1784126630</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.14.0:
+  * chore(deps): bump the github-actions group with 2 updates
+  * fix(langchain): handle Anthropic cache_creation nested dict
+    in usage
+  * feat(tracing): support prompt linking via
+    propagate_attributes
+  * feat(openai): capture service_tier in model_parameters
+- update to 4.13.2:
+  * fix(openai): handle null choices in chat completion responses
+- update to 4.13.1:
+  * feat(api): update API spec from langfuse/langfuse 811f641
+  * fix(openai): parse raw API responses and add flag to skip
+    tracing them</comment>
+    <requestid>1365773</requestid>
+  </revision>
 </revisionlist>

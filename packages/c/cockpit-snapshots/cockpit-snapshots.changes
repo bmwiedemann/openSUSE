@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 10 07:40:31 UTC 2026 - Alice Brooks <alice.brooks@suse.com>
+
+- Patch esbuild to use native runtime on ppc64 (bsc#1257698)
+	  * added esbuild-ppc64.patch
+
+-------------------------------------------------------------------
 Mon Mar  2 12:57:31 UTC 2026 - Alice Brooks <alice.brooks@suse.com>
 
 - Update to version 3.1

@@ -27,7 +27,7 @@ URL:            https://github.com/wcampbell0x2a/backhand
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
-ExclusiveArch:  %{rust_tier1_arches}
+ExclusiveArch:  %{rust_tier1_arches} riscv64
 
 %description
 Tools for the reading, creating, and modification of SquashFS file systems.

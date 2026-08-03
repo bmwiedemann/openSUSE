@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<services>
+  <service name="cargo_vendor" mode="manual">
+    <param name="src">harmony-0.0.8.tar.gz</param>
+    <param name="method">registry</param>
+    <param name="update">true</param>
+    <param name="compression">zst</param>
+    <param name="no-root-manifest">true</param>
+    <param name="cargotoml">Cargo.toml</param>
+  </service>
+</services>

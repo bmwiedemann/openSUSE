@@ -9,5 +9,4 @@ A program using one or more such modules can apply a different policy and reques
 Metrics::Any::Adapter' statement.
 
 This separation of concerns allows module authors to write code which will report metrics without needing to care about the exact mechanism of that reporting (as well as to write code which does not itself depend on the code required to perform that reporting).</description>
-  <devel project="devel:languages:perl" package="perl-Metrics-Any"/>
 </package>

@@ -1,0 +1,35 @@
+From cfdacb9195ce266e5ae23307b31304898369f696 Mon Sep 17 00:00:00 2001
+From: Abhilash Raj <raj.abhilash1@gmail.com>
+Date: Wed, 2 Oct 2024 15:43:46 +0530
+Subject: [PATCH] fix: Remove sociallogin.account from the debug print.
+
+Since SocialLogin.account isn't a mandatory field, we can't make
+and assumption that it was filled in when it was created. Instead
+of checking everytie if the attribute exists, removing it form
+the debug print to restore compat with newer versions of
+django-allauth.
+
+Fixes #82
+---
+ django_mailman3/signals.py | 4 ++--
+ pyproject.toml             | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/django_mailman3/signals.py b/django_mailman3/signals.py
+index e1d253a..adc6b95 100644
+--- a/django_mailman3/signals.py
++++ b/django_mailman3/signals.py
+@@ -171,8 +171,8 @@ def on_social_account_added(sender, **kwargs):
+     # Add to mailman emails that were marked as verified by the social account
+     # provider.
+     sociallogin = kwargs["sociallogin"]
+-    logger.debug("Social account %s added for user %s",
+-                 sociallogin.account, sociallogin.user.username)
++    logger.debug("Social account added for user %s",
++                 sociallogin.user.username)
+     for address in sociallogin.email_addresses:
+         if EmailAddress.objects.filter(email=address.email).exists():
+             # TODO: should we do something if it belongs so another user?
+-- 
+GitLab
+

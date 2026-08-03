@@ -10,5 +10,6 @@ Both libcupsfilters and libcupsfilters2 are required by cups-filters2.
 The sub-package libcupsfilters-devel provides
 development files for libcupsfilters.
 </description>
+  <devel project="Printing" package="libcupsfilters"/>
   <url>https://github.com/OpenPrinting/libcupsfilters</url>
 </package>

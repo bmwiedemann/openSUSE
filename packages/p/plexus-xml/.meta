@@ -6,6 +6,5 @@ have been extracted from plexus-utils 3:
   * plexus-utils 3 = plexus-utils 4 + plexus-xml 3.
 
 </description>
-  <devel project="Java:packages" package="plexus-xml"/>
   <url>https://github.com/codehaus-plexus/%{name}</url>
 </package>

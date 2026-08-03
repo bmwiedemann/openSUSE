@@ -1,0 +1,16 @@
+Index: pam_pkcs11-pam_pkcs11-0.6.13/src/common/pkcs11_lib.c
+===================================================================
+--- pam_pkcs11-pam_pkcs11-0.6.13.orig/src/common/pkcs11_lib.c
++++ pam_pkcs11-pam_pkcs11-0.6.13/src/common/pkcs11_lib.c
+@@ -468,6 +468,11 @@
+       PK11SlotInfo *slot;
+       PRIntervalTime slot_poll_interval; /* only for legacy hardware */
+ 
++      /* stop if handle or module is not initialized */
++      if (h == NULL || h->module == NULL) {
++        break;
++      }
++
+       /* if the card is not inserted, then block until something happens */
+       slot_poll_interval = PR_MillisecondsToInterval(PAM_PKCS11_POLL_TIME);
+       slot = SECMOD_WaitForAnyTokenEvent(h->module, 0 /* flags */,

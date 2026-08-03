@@ -37,7 +37,7 @@ BuildRequires:  mvn(org.apache.ant:ant-apache-regexp)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildRequires:  mvn(org.apache.logging.log4j:log4j-api)
 BuildRequires:  mvn(org.apache.logging.log4j:log4j-core)
-BuildRequires:  mvn(org.apache.logging.log4j:log4j-slf4j-impl)
+BuildRequires:  mvn(org.apache.logging.log4j:log4j-slf4j2-impl)
 BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-annotations)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-antrun-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
@@ -153,6 +153,8 @@ rm -r %{name}-tools/src/test/java/org/apache/uima/tools/viewer/CasAnnotationView
   </configuration>"
 
 %pom_xpath_remove pom:project/pom:repositories uimaj-parent
+
+%pom_change_dep :log4j-slf4j-impl :log4j-slf4j2-impl . uimaj-core
 
 %{mvn_package} :PearPackagingMavenPlugin uima-pear-maven-plugin
 %{mvn_package} :jcasgen-maven-plugin jcasgen-maven-plugin

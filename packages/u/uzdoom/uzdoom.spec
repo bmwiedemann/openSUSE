@@ -1,7 +1,7 @@
 #
 # spec file for package uzdoom
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,8 @@ License:        GPL-3.0-only
 Group:          Amusements/Games/3D/Shoot
 URL:            https://zdoom.org/
 #Git-Clone:     https://github.com/UZDoom/UZDoom
-Source:         https://github.com/UZDoom/UZDoom/archive/refs/tags/%version.tar.gz
+#Source:         https://github.com/UZDoom/UZDoom/archive/refs/tags/%version.tar.gz
+Source:         %name-%version.tar.zst
 Patch2:         gzdoom-discord.patch
 Patch3:         0001-Revert-Switch-to-miniz-from-zlib.patch
 Patch4:         gzdoom-lzma-simd.patch
@@ -37,6 +38,7 @@ BuildRequires:  libjpeg-devel
 BuildRequires:  pkg-config
 BuildRequires:  unzip
 BuildRequires:  zmusic-devel >= 1.1.14
+BuildRequires:  zstd
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(flac)
 BuildRequires:  pkgconfig(gl)
@@ -79,7 +81,7 @@ SSE2 is a hard requirement even on 32-bit x86.
 %endif
 
 %prep
-%autosetup -p1 -n UZDoom-%version
+%autosetup -p1
 %if 0%{?suse_version} < 1690
 # system lzma-sdk too old, use bundled copy
 %patch -P 5 -R -p1
@@ -102,7 +104,7 @@ export CXXFLAGS="$CXXFLAGS -DSHARE_DIR=\\\"%_datadir/doom\\\""
 	-DINSTALL_DOCS_PATH="%_defaultdocdir/%name" \
 	-DINSTALL_PK3_PATH="%_datadir/doom" \
 	-DINSTALL_SOUNDFONT_PATH="%_datadir/doom" \
-	-DDYN_OPENAL=OFF -DINSTALL_RPATH:STRING="NO"
+	-DDYN_OPENAL=OFF -DINSTALL_RPATH:STRING="NO" -DBUILD_NONFREE:BOOL=OFF
 %cmake_build
 
 %install

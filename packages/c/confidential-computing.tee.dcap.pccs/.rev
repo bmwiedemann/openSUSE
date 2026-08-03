@@ -7,4 +7,12 @@
     <comment>Initial version 1.25 (9c4fe2d21a32) (jsc#PED-8938)</comment>
     <requestid>1337322</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a290c5048449701ff271480088fa2dda</srcmd5>
+    <version>1.25</version>
+    <time>1774555672</time>
+    <user>anag_factory</user>
+    <comment>Build sqlite3_bindings with confidential-computing.tee.dcap.pccs.patch</comment>
+    <requestid>1342558</requestid>
+  </revision>
 </revisionlist>

@@ -4,5 +4,4 @@
 solvers in Java. The SAT4J library targets first users of SAT &quot;black
 boxes&quot;, those willing to embed SAT technologies into their application
 without worrying about the details.</description>
-  <devel project="Java:packages" package="sat4j"/>
 </package>

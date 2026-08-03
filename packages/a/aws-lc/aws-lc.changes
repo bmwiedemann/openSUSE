@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Thu Jul 30 07:31:04 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 5.4.0:
+  + Add AArch64 NEON runtime fallback for ML-KEM and ML-DSA
+  + Support for EVP_AEAD_CTX_copy
+  + Remove dead P-256 nistz asm under OPENSSL_SMALL and extend the
+    size-check harness
+  + Use built-in Camellia in krb5 integration patch;
+    fix CTS doc label
+  + add AES-KWP wrap/unwrap CASTs
+- Update to version 5.3.0:
+  + Add ACVP support for multi-expansion HKDF
+- Update to version 5.2.0:
+  + OPENSSL_SMALL: imply MY_ASSEMBLER_IS_TOO_OLD_FOR_512AVX on x86_64
+  + Documented and added feature stability tests for EVP_AEAD
+    implementations that support concurrency through
+    EVP_AEAD_CTX_seal/gather functions
+  + Fix libgit2, xtrabackup, grpc tests and add OSSL3 peer cert APIs
+  + Null-guard EVP_AEAD_CTX_cleanup for fork+shm safety
+  + Add Symbol Versioning Support
+  + Symbol versioning follow-ups: register peer cert APIs,
+    fix dist_pkg_tests matrix
+  + Add ML-KEM decapsulate CASTs to break-kat tooling
+  + Pin required libssh2 integration to a release
+  + openssl/target.h: Allow building for the e2k architecture
+  + Add CTS mode, krb5 integration test
+  + Gate s2n-bignum _alt variants under OPENSSL_SMALL
+  + Fix SSL_OP_IGNORE_UNEXPECTED_EOF being ignored over sockets
+- Update to version 5.1.0:
+  + Quote LIBCRYPTO_PATH for dynamic load test
+  + Add SSL_CTX_set_security_callback and related APIs for OpenSSL compat
+  + ML-DSA: import and enable x86_64 assembly backend from mldsa-native
+  + Fix PostgreSQL integration: match upstream revoked-cert alert regex
+  + Support SSL_OP_IGNORE_UNEXPECTED_EOF option
+  + Stabilize libgit2 integration test
+  + Fix SSL_CTX_add_extra_chain_cert slot routing for chains added
+    before the leaf
+  + Make OPENSSL_memcmp constant time
+  + Add WASIp2 build and test support
+  + Move TLS 1.3 KDF into the FIPS module and wire up ACVP
+  + Define OPENSSL_INIT_NO_ATEXIT as a no-op
+  + ML-DSA: import and enable aarch64 assembly backend from mldsa-native
+  + Add 'version -fips' to surface FIPS module version in openssl tool
+  + Concurrency is not generally supported for EVP_AEAD_CTX_foo functions
+
+
+-------------------------------------------------------------------
 Fri May 29 19:00:04 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 5.0.0:

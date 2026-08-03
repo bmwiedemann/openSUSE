@@ -1,7 +1,7 @@
 #
 # spec file for package csindex
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,7 +39,7 @@ Uses the ISO 8859-2 encoding.
 install -m 644 %{SOURCE1} .
 
 %build
-make CC="gcc $RPM_OPT_FLAGS" %{?_smp_mflags}
+make CC="gcc $RPM_OPT_FLAGS -fpermissive -std=gnu89" %{?_smp_mflags}
 
 %install
 mkdir -p $RPM_BUILD_ROOT/usr/bin

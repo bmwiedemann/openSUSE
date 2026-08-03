@@ -17,7 +17,7 @@
 
 
 %define ansible_community_major_version 13
-%define required_ansible_core_version 2.20.5
+%define required_ansible_core_version 2.20.7
 %define next_ansible_core_version 2.21.0
 
 
@@ -43,7 +43,7 @@
 %endif
 
 Name:           ansible-13
-Version:        13.7.0
+Version:        13.8.0
 Release:        0
 Summary:        Radically simple IT automation
 License:        GPL-3.0-or-later

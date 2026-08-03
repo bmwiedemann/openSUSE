@@ -21,4 +21,18 @@ Changes in V2:
 - Drop _service and migrate to manualrun download_files</comment>
     <requestid>1304297</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>32ca95c0b05dba672e5db825b54fde2e</srcmd5>
+    <version>0.19</version>
+    <time>1774469923</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.19:
+  * Add func-percentile.py script for latency percentiles (#1982)
+  * Support srcline info in the chrome dump output
+  * Convert timestamp to real time (UTC) in the chrome dump
+    output
+  * Fix segfaults on binaries built with mold linker (#1951)
+  * Update some C++ exception test cases</comment>
+    <requestid>1342330</requestid>
+  </revision>
 </revisionlist>

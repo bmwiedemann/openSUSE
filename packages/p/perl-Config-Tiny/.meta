@@ -13,5 +13,4 @@ manpage or one of the many other 'Config::' modules. To rephrase, the
 Config::Tiny manpage does *not* preserve your comments, whitespace, or the
 order of your config file.
 </description>
-  <devel project="devel:languages:perl" package="perl-Config-Tiny"/>
 </package>

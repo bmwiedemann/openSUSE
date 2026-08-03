@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Thu Jul 30 23:19:33 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 16.0.2:
+  - Security bug fixes
+    - PR (backported): fix: add CGNAT (100.64.0.0/10) to 'private'
+      hostmatcher rule
+    - PR: - fix: prevent arbitrary file reads from org-mode
+      rendering
+    - PR: - fix: prevent stored XSS in Actions pre-execution
+      warnings and errors
+  - Bug fixes
+    - PR (backported): fix: only look for jobs in repositories
+      where Actions are enabled
+    - PR (backported): fix: prevent stuck runner jobs when
+      FetchTask performance is slower than client-side timeout
+    - PR (backported): fix: enable reverse-proxy authentication on
+      git routes
+    - PR (backported): fix oauth2: Initialize gothic even if oauth2
+      is disabled
+    - PR (backported): fix: suppress git subcommand errors caused
+      by context cancellation involving SIGTERM
+    - PR (backported): fix: multiple session middlewares have
+      independent in-memory state
+  - Included for completeness but not user-facing (chores, etc.)
+    - PR: Update module github.com/go-ldap/ldap/v3 to v3.4.14
+      (v16.0/forgejo)
+    - PR: Update module github.com/klauspost/compress to v1.18.7
+      [SECURITY] (v16.0/forgejo)
+    - PR (backported): add forgejo and pagure to the swagger api
+      definition
+    - PR: Update module github.com/go-chi/chi/v5 to v5.3.0
+      [SECURITY] (v16.0/forgejo)
+    - PR: Update dependency postcss to v8.5.18 [SECURITY]
+      (v16.0/forgejo)
+    - PR: Update module golang.org/x/text to v0.39.0 [SECURITY]
+      (v16.0/forgejo)
+    - PR: Update module code.forgejo.org/forgejo/runner/v12 to
+      v12.13.2 (v16.0/forgejo)
+    - PR: Update google.golang.org/grpc (indirect) to v1.82.1
+      [SECURITY] (v16.0/forgejo)
+    - PR (backported): chore: document
+      SSH_ALLOW_UNEXPECTED_AUTHORIZED_KEYS
+    - PR: Update dependency svgo to v4.0.2 [SECURITY]
+      (v16.0/forgejo)
+
+-------------------------------------------------------------------
+Tue Jul 28 15:01:04 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Apparmor:
+  update profile for centralized git hooks
+
+-------------------------------------------------------------------
 Tue Jul 21 12:49:38 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 16.0.1:

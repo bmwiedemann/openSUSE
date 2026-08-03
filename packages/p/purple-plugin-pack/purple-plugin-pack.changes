@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar 26 13:56:12 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update spec file:
+  + remove unnecessary buildrequirements
+  + remove deprecated Group
+  + remove plugins, which don't get shipped anymore
+  + use meson macros
+  + remove older leap packaging
+  + fix building by ignoring incompatible-pointer-types
+
+-------------------------------------------------------------------
 Mon Oct 31 05:29:13 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.8.0:

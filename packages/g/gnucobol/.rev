@@ -23,4 +23,12 @@
     <comment>Correct Obsoletes</comment>
     <requestid>1342067</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>b5d7d7e3cd704181a2c5654032bca51e</srcmd5>
+    <version>3.2</version>
+    <time>1784127439</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1365979</requestid>
+  </revision>
 </revisionlist>

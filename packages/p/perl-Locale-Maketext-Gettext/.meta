@@ -5,5 +5,4 @@ is a subclass of Locale::Maketext(3) that follows the way GNU gettext
 works. It works seamlessly, both in the sense of GNU gettext and Maketext.
 As a result, you enjoy both their advantages, and get rid of both their
 problems, too.</description>
-  <devel project="devel:languages:perl" package="perl-Locale-Maketext-Gettext"/>
 </package>

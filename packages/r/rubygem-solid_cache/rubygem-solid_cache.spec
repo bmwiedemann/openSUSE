@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-solid_cache
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,13 +24,13 @@
 #
 
 Name:           rubygem-solid_cache
-Version:        1.0.6
+Version:        1.0.10
 Release:        0
 %define mod_name solid_cache
 %define mod_full_name %{mod_name}-%{version}
-BuildRequires:  ruby-macros >= 5
-BuildRequires:  %{ruby}
 BuildRequires:  %{rubygem gem2rpm}
+BuildRequires:  %{ruby}
+BuildRequires:  ruby-macros >= 5
 URL:            http://github.com/rails/solid_cache
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml

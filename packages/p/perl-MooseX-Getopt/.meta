@@ -41,6 +41,5 @@ configfile attribute) for you.
 Options specified in multiple places follow the following precendence
 order: commandline overrides configfile, which overrides explicit
 new_with_options parameters.</description>
-  <devel project="devel:languages:perl" package="perl-MooseX-Getopt"/>
   <url>http://search.cpan.org/dist/MooseX-Getopt/</url>
 </package>

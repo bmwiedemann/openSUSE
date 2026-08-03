@@ -459,4 +459,12 @@ There are 4 months worth of complicated commit, and I cannot go through them all
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1355470</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>b9c03450c0e6ddd1ccf74cc50917e126</srcmd5>
+    <version>2.1.2</version>
+    <time>1781879890</time>
+    <user>anag_factory</user>
+    <comment>Update to 2.1.2</comment>
+    <requestid>1360594</requestid>
+  </revision>
 </revisionlist>

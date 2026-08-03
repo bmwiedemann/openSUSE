@@ -2,5 +2,6 @@
   <title>Minisign reimplemented in Zig</title>
   <description>A Zig implementation of Minisign. minizign supports signature verification,
 signing, and key generation.</description>
+  <devel project="security" package="minizign"/>
   <url>https://github.com/jedisct1/zig-minisign</url>
 </package>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-unittest-xml-reporting
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,17 @@
 
 
 Name:           python-unittest-xml-reporting
-Version:        3.2.0
+Version:        4.0.0
 Release:        0
 Summary:        PyUnit-based test runner with JUnit like XML reporting
 License:        LGPL-3.0-or-later
 URL:            https://github.com/xmlrunner/unittest-xml-reporting
 Source:         https://github.com/xmlrunner/unittest-xml-reporting/archive/%{version}.tar.gz
-# PATCH-FIX-UPSTREAM python-311.patch gh#xmlrunner/unittest-xml-reporting#274
-Patch0:         python-311.patch
-# PATCH-FIX-OPENSUSE Add one to the refcount for Python 3.12
-Patch1:         python-312.patch
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
@@ -46,10 +44,9 @@ systems, IDEs and continuous integration servers.
 
 %prep
 %autosetup -p1 -n unittest-xml-reporting-%{version}
-# Do not install the LICENSE for us.
-sed -i '/data_files =/d' setup.py
 
 %build
+export SETUPTOOLS_SCM_PRETEND_VERSION="%{version}"
 %pyproject_wheel
 
 %install

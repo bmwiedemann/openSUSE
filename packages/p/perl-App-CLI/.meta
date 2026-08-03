@@ -17,5 +17,4 @@ cmd_map($cmd)
 
 get_cmd($cmd, @arg)
     return subcommand of first level via $ARGV[0]</description>
-  <devel project="devel:languages:perl" package="perl-App-CLI"/>
 </package>

@@ -38,12 +38,16 @@ Group:          Hardware/Other
 
 # Get the source from tar_scm
 Source0:        %{sname}-%{version}.tar.xz
+
 # Additional sources for rust vendor and sysusers configuration
 Source1:        vendor.tar.xz
+
 # Sysusers configuration for creating the "lact" system user and group to manage the daemon's permissions
 Source2:        system-user-%{sname}.conf
+
 # Handle exclusions
 Source3:        %{sname}.rpmlintrc
+
 # LACT configuration file
 # The LACT config file is located in /etc/lact/config.yaml,
 # and contains all of the GPU settings that are typically edited in the GUI,
@@ -53,9 +57,16 @@ Source3:        %{sname}.rpmlintrc
 # This configuration file provides a specific setting for the admin user and group that the daemon will use for permissions management.
 # Instead of using "wheel" or "sudo", it creates a dedicated "lact" system user and group for this purpose, and specify them in the config file.
 Source4:        %{sname}.config.yaml
+
 # Post-installation/unistallation guide for users
 Source5:        install-guide.txt
 Source6:        uninstall-guide.txt
+
+# PATCH-FIX-OPENSUSE prevent-strip.patch -- Prevent stripping binaries after compilation.
+Patch0:         prevent-strip.patch
+
+# PATCH-FIX-OPENSUSE fix-clang-args.patch -- Fix clang args for bindgen to find vendored DRM headers.
+Patch1:         fix-clang-args.patch
 
 # Rust is only available on these architectures
 ExclusiveArch:  x86_64 aarch64
@@ -141,15 +152,6 @@ EOF
 %build
 # Copy the post-installation/uninstallation guides
 cp %_sourcedir/*install-guide.txt .
-
-# lact-daemon vendors its own DRM uapi headers (include/drm/) for the
-# NVIDIA bindgen target, but its build.rs never adds them to clang's
-# search path. This works by accident on distros whose kernel-headers
-# package ships /usr/include/drm/ (e.g. openSUSE Factory/Tumbleweed),
-# but fails where it doesn't (e.g. Leap 16's SLFO-derived headers),
-# with: fatal error: 'drm/drm.h' file not found. Force the vendored
-# copy explicitly so the build doesn't depend on that.
-export BINDGEN_EXTRA_CLANG_ARGS="-Iinclude"
 
 %if %{with headless}
 # Build headless flavor (daemon + CLI only)

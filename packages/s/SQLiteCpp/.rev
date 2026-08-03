@@ -31,4 +31,19 @@
     <comment></comment>
     <requestid>1279939</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>17d61ba513dea56bfb9e08735734faec</srcmd5>
+    <version>3.3.3</version>
+    <time>1775743754</time>
+    <user>dimstar_suse</user>
+    <comment>- Change build system from meson to CMake. Some dependent packages
+  (e.g. OpenMS) require CMake config files.
+- Add patches:
+  * 0001-Generate-pkgconfig-file-also-from-CMake-build.patch to
+    install pkgconfig file
+  * 0001-Fix-required-C-version-for-CMake-builds.patch to ensure
+    compatible C++ standard with gtest
+</comment>
+    <requestid>1345252</requestid>
+  </revision>
 </revisionlist>

@@ -169,4 +169,12 @@ For newer release I take more care of the changelog</comment>
     <comment></comment>
     <requestid>1164505</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>b4e613433b44fc89b159797db7bff5c3</srcmd5>
+    <version>5.4</version>
+    <time>1775743781</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1345443</requestid>
+  </revision>
 </revisionlist>

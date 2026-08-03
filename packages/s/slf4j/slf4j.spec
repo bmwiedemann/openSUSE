@@ -1,7 +1,7 @@
 #
 # spec file for package slf4j
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2000-2009, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           slf4j
-Version:        1.7.36
+Version:        2.0.18
 Release:        0
 Summary:        Simple Logging Facade for Java
 # the log4j-over-slf4j and jcl-over-slf4j submodules are ASL 2.0, rest is MIT
@@ -26,22 +26,16 @@ License:        Apache-2.0 AND MIT
 Group:          Development/Libraries/Java
 URL:            https://www.slf4j.org/
 Source0:        %{name}-%{version}.tar.xz
-Source1:        http://www.apache.org/licenses/LICENSE-2.0.txt
-Source2:        build.xml.tar.xz
-Patch1:         build-remove-slf4j_api-binder.patch
-Patch2:         slf4j-commons-lang3.patch
-Patch3:         slf4j-reload4j-bundlename.patch
+Source1:        %{name}-build.tar.xz
+Source2:        http://www.apache.org/licenses/LICENSE-2.0.txt
 BuildRequires:  ant >= 1.6.5
-BuildRequires:  apache-commons-lang3
-BuildRequires:  apache-commons-logging
 BuildRequires:  cal10n
-BuildRequires:  java-devel >= 1.5.0
+BuildRequires:  fdupes
+BuildRequires:  java-devel >= 9
 BuildRequires:  javapackages-local >= 6
 BuildRequires:  javassist >= 3.4
 BuildRequires:  reload4j
-# this is ugly hack, which creates package which requires the same,
-# however slf4j is not splitted between -api and -impl, but pom files are modeled as if it was
-Provides:       osgi(slf4j.api)
+Obsoletes:      %{name}2
 BuildArch:      noarch
 
 %description
@@ -56,138 +50,125 @@ SLF4J interfaces directly, e.g. NLOG4J or SimpleLogger. Alternatively,
 it is possible (and rather easy) to write SLF4J adapters for the given
 API implementation, e.g. Log4jLoggerAdapter or JDK14LoggerAdapter..
 
+%package bom
+Summary:        SLF4J BOM
+Group:          Development/Libraries/Java
+
+%description bom
+SLF4J project BOM
+
 %package javadoc
 Summary:        Javadoc for %{name}
 Group:          Documentation/HTML
+Obsoletes:      %{name}2-javadoc
 
 %description javadoc
 API documentation for %{name}.
 
-%package manual
-Summary:        Documents for %{name}
-Group:          Documentation/Other
-
-%description manual
-Manual for %{name}.
-
 %package jdk14
 Summary:        SLF4J JDK14 Binding
 Group:          Development/Libraries/Java
+Obsoletes:      %{name}2-jdk14
 
 %description jdk14
 SLF4J JDK14 Binding.
 
+%package jdk-platform-logging
+Summary:        SLF4J Platform Logging Binding
+Group:          Development/Libraries/Java
+Obsoletes:      %{name}2-jdk-platform-logging
+
+%description jdk-platform-logging
+SLF4J Platform Logging Binding.
+
+%package parent
+Summary:        SLF4J Parent POM
+Group:          Development/Libraries/Java
+
+%description parent
+SLF4J project parent pom.xml file
+
 %package reload4j
 Summary:        SLF4J LOG4J-12 Binding
 Group:          Development/Libraries/Java
-Provides:       %{name}-log4j12 = %{version}
-Obsoletes:      %{name}-log4j12 < %{version}
+Obsoletes:      %{name}2-reload4j
 
 %description reload4j
 SLF4J LOG4J-12 Binding.
 
-%package jcl
-Summary:        SLF4J JCL Binding
-Group:          Development/Libraries/Java
-
-%description jcl
-SLF4J JCL Binding.
-
 %package ext
 Summary:        SLF4J Extensions Module
 Group:          Development/Libraries/Java
+Obsoletes:      %{name}2-ext
 
 %description ext
 Extensions to the SLF4J API.
 
-%package -n jcl-over-slf4j
+%package -n jcl-over-%{name}
 Summary:        JCL 1.1.1 implemented over SLF4J
 Group:          Development/Libraries/Java
+Obsoletes:      jcl-over-%{name}2
 
-%description -n jcl-over-slf4j
+%description -n jcl-over-%{name}
 JCL 1.1.1 implemented over SLF4J.
 
-%package -n log4j-over-slf4j
-Summary:        Log4j implemented over SLF4J
-Group:          Development/Libraries/Java
-
-%description -n log4j-over-slf4j
-Log4j implemented over SLF4J.
-
-%package -n jul-to-slf4j
+%package -n jul-to-%{name}
 Summary:        JUL to SLF4J bridge
 Group:          Development/Libraries/Java
+Obsoletes:      jul-to-%{name}2
 
-%description -n jul-to-slf4j
+%description -n jul-to-%{name}
 JUL to SLF4J bridge.
+
+%package -n log4j-over-%{name}
+Summary:        Log4j implemented over SLF4J
+Group:          Development/Libraries/Java
+Obsoletes:      log4j-over-%{name}2
+
+%description -n log4j-over-%{name}
+Log4j implemented over SLF4J.
+
+%package migrator
+Summary:        SLF4J Migrator
+Group:          Development/Libraries/Java
+Obsoletes:      %{name}2-migrator
+
+%description migrator
+SLF4J Migrator.
 
 %package sources
 Summary:        SLF4J Source JARs
 Group:          Development/Libraries/Java
+Obsoletes:      %{name}2-sources
 
 %description sources
 SLF4J Source JARs.
 
 %prep
-%setup -q -a2
-%patch -P 1 -p1
-%patch -P 2 -p1
-%patch -P 3 -p1
-find . -name "*.jar" | xargs rm
-cp -p %{SOURCE1} APACHE-LICENSE
-
-sed -i -e "s|ant<|org.apache.ant<|g" integration/pom.xml
-
-sed -i -e "s|\${reload4j.version}|1\.2\.19|g" \
-	log4j-over-slf4j/src/main/resources/META-INF/MANIFEST.MF
-
-%{_bindir}/find -name "*.css" -o -name "*.js" -o -name "*.txt" | \
-    %{_bindir}/xargs -t perl -pi -e 's/\r$//g'
-
-# Unexpanded variable in the manifests
-for i in */src/main/resources/META-INF/MANIFEST.MF; do
-  echo "" >> ${i}
-  echo "Bundle-Version: %{version}" >> ${i}
-  sed -i '/^$/d' ${i}
-  perl -pi -e 's#\$\{parsedVersion\.osgiVersion\}#%{version}#g' ${i}
-  perl -pi -e 's#\$\{slf4j\.api\.minimum\.compatible\.version\}#1\.6\.0#g' ${i}
-done
-
-# The general pattern is that the API package exports API classes and does
-# # not require impl classes. slf4j was breaking that causing "A cycle was
-# # detected when generating the classpath slf4j.api, slf4j.nop, slf4j.api."
-# # The API bundle requires impl package, so to avoid cyclic dependencies
-# # during build time, it is necessary to mark the imported package as an
-# # optional one.
-# # Reported upstream: http://bugzilla.slf4j.org/show_bug.cgi?id=283
-sed -i "/Import-Package/s/$/;resolution:=optional/" slf4j-api/src/main/resources/META-INF/MANIFEST.MF
+%setup -q -a1
+cp %{SOURCE2} LICENSE-2.0.txt
 
 %build
-export CLASSPATH=$(build-classpath reload4j \
-                   commons-logging \
-                   commons-lang3 \
-                   javassist-3.14.0 \
-                   cal10n)
-export CLASSPATH=$CLASSPATH:$(pwd)/slf4j-api/target/slf4j-api-%{version}.jar
-export MAVEN_REPO_LOCAL=$(pwd)/.m2
-ant -Dmaven2.jpp.mode=true \
-    -Dmaven.test.skip=true \
-    -Dmaven.repo.local=$MAVEN_REPO_LOCAL \
-    package javadoc \
+mkdir -p lib
+build-jar-repository -s lib cal10n/cal10n-api javassist reload4j/reload4j
+
+ant package javadoc
 
 # Sources
-for i in api ext jcl jdk14 reload4j nop simple; do
+for i in api ext jdk14 jdk-platform-logging migrator nop reload4j simple; do
   mkdir -p %{name}-${i}/target
   jar \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
     --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)" \
 %endif
     --create --file=%{name}-${i}/target/%{name}-${i}-%{version}-sources.jar -C %{name}-${i}/src/main/java .
-  jar \
+  if [ -d %{name}-${i}/src/main/resources ]; then
+    jar \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
-    --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)" \
+      --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)" \
 %endif
-    --update --file=%{name}-${i}/target/%{name}-${i}-%{version}-sources.jar -C %{name}-${i}/src/main/resources .
+      --update --file=%{name}-${i}/target/%{name}-${i}-%{version}-sources.jar -C %{name}-${i}/src/main/resources .
+  fi
 done
 
 for i in jcl-over-slf4j jul-to-slf4j log4j-over-slf4j; do
@@ -197,21 +178,28 @@ for i in jcl-over-slf4j jul-to-slf4j log4j-over-slf4j; do
     --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)" \
 %endif
     --create --file=${i}/target/${i}-%{version}-sources.jar -C ${i}/src/main/java .
-  jar \
+  if [ -d ${i}/src/main/resources ]; then
+    jar \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
-    --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)" \
+      --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)" \
 %endif
-    --update --file=${i}/target/${i}-%{version}-sources.jar -C ${i}/src/main/resources .
+      --update --file=${i}/target/${i}-%{version}-sources.jar -C ${i}/src/main/resources .
+  fi
 done
 
 %install
 # jars
 install -d -m 0755 %{buildroot}%{_javadir}/%{name}
+install -d -m 0755 %{buildroot}%{_javadocdir}/%{name}
 
-for i in api ext jcl jdk14 reload4j nop simple; do
+for i in api ext jdk14 jdk-platform-logging migrator nop reload4j simple; do
   install -m 644 slf4j-${i}/target/slf4j-${i}-%{version}.jar \
     %{buildroot}%{_javadir}/%{name}/${i}.jar
   ln -sf ${i}.jar %{buildroot}%{_javadir}/%{name}/%{name}-${i}.jar
+  install -pm 0644 %{name}-${i}/target/%{name}-${i}-%{version}-sources.jar \
+    %{buildroot}%{_javadir}/%{name}/%{name}-${i}-sources.jar
+  %add_maven_depmap org.slf4j:%{name}-${i}:jar:sources:%{version} %{name}/%{name}-${i}-sources.jar -f sources
+  cp -pr slf4j-${i}/target/site/apidocs %{buildroot}%{_javadocdir}/%{name}/slf4j-${i}
 done
 
 # Compatibility symlink
@@ -220,22 +208,21 @@ ln -sf reload4j.jar %{buildroot}%{_javadir}/%{name}/%{name}-log4j12.jar
 
 for i in jcl-over-slf4j jul-to-slf4j log4j-over-slf4j; do
   install -m 644 ${i}/target/${i}-%{version}.jar %{buildroot}%{_javadir}/%{name}/${i}.jar
-done
-
-for i in api ext jcl jdk14 reload4j nop simple; do
-  install -pm 0644 %{name}-${i}/target/%{name}-${i}-%{version}-sources.jar \
-    %{buildroot}%{_javadir}/%{name}/%{name}-${i}-sources.jar
-done
-
-for i in jcl-over-slf4j jul-to-slf4j log4j-over-slf4j; do
   install -pm 0644 ${i}/target/${i}-%{version}-sources.jar \
     %{buildroot}%{_javadir}/%{name}/${i}-sources.jar
+  %add_maven_depmap org.slf4j:${i}:jar:sources:%{version} %{name}/${i}-sources.jar -f sources
+  cp -pr ${i}/target/site/apidocs %{buildroot}%{_javadocdir}/%{name}/${i}
 done
 
 # poms
 install -d -m 755 %{buildroot}%{_mavenpomdir}/%{name}
 
-for i in api ext jcl jdk14 reload4j nop simple; do
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}/bom.pom
+%add_maven_depmap %{name}/bom.pom -f bom
+%{mvn_install_pom} parent/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/parent.pom
+%add_maven_depmap %{name}/parent.pom -f parent
+
+for i in api ext jdk14 jdk-platform-logging migrator nop reload4j simple; do
   %{mvn_install_pom} slf4j-${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/${i}.pom
 done
 
@@ -247,39 +234,22 @@ for i in api nop simple; do
   %add_maven_depmap %{name}/${i}.pom %{name}/${i}.jar
 done
 
-for i in ext jcl jdk14 jcl-over-slf4j jul-to-slf4j log4j-over-slf4j; do
+for i in ext jdk14 jdk-platform-logging migrator jcl-over-slf4j jul-to-slf4j log4j-over-slf4j; do
   %add_maven_depmap %{name}/${i}.pom %{name}/${i}.jar -f ${i}
 done
+%add_maven_depmap %{name}/reload4j.pom %{name}/reload4j.jar -f reload4j -a org.slf4j:slf4j-log4j12
 
-%add_maven_depmap %{name}/reload4j.pom %{name}/reload4j.jar -f reload4j  -a org.slf4j:%{name}-log4j12
-
-for i in api ext jcl jdk14 reload4j nop simple; do
-  %add_maven_depmap org.slf4j:%{name}-${i}:jar:sources:%{version} %{name}/%{name}-${i}-sources.jar -f sources
-done
-
-%add_maven_depmap org.slf4j:%{name}-log4j12:jar:sources:%{version} %{name}/%{name}-reload4j-sources.jar -f sources
-
-for i in jcl-over-slf4j jul-to-slf4j log4j-over-slf4j; do
-  %add_maven_depmap org.slf4j:${i}:jar:sources:%{version} %{name}/${i}-sources.jar -f sources
-done
-
-# manual
-install -d -m 0755 %{buildroot}%{_docdir}/%{name}-%{version}
-rm -f target/site/.htaccess
-cp -pr target/site %{buildroot}%{_docdir}/%{name}-%{version}/
-install -m 644 LICENSE.txt %{buildroot}%{_docdir}/%{name}-%{version}/
-
-# javadoc
-install -d -m 0755 %{buildroot}%{_javadocdir}/%{name}
-cp -pr target/site/* %{buildroot}%{_javadocdir}/%{name}/
-rm -rf target/site
+%fdupes -s %{buildroot}%{_javadocdir}/%{name}
 
 %files -f .mfiles
-%dir %{_docdir}/%{name}-%{version}
-%license %{_docdir}/%{name}-%{version}/LICENSE.txt
 %{_javadir}/%{name}/%{name}-api.jar
 %{_javadir}/%{name}/%{name}-nop.jar
 %{_javadir}/%{name}/%{name}-simple.jar
+%license LICENSE.txt LICENSE-2.0.txt
+
+%files bom -f .mfiles-bom
+
+%files parent -f .mfiles-parent
 
 %files jdk14 -f .mfiles-jdk14
 %{_javadir}/%{name}/%{name}-jdk14.jar
@@ -288,24 +258,24 @@ rm -rf target/site
 %{_javadir}/%{name}/%{name}-reload4j.jar
 %{_javadir}/%{name}/*log4j12.jar
 
-%files jcl -f .mfiles-jcl
-%{_javadir}/%{name}/%{name}-jcl.jar
-
 %files ext -f .mfiles-ext
 %{_javadir}/%{name}/%{name}-ext.jar
 
-%files -n jcl-over-slf4j -f .mfiles-jcl-over-slf4j
+%files -n jcl-over-%{name} -f .mfiles-jcl-over-%{name}
 
-%files -n log4j-over-slf4j -f .mfiles-log4j-over-slf4j
+%files -n log4j-over-%{name} -f .mfiles-log4j-over-%{name}
 
-%files -n jul-to-slf4j -f .mfiles-jul-to-slf4j
+%files -n jul-to-%{name} -f .mfiles-jul-to-%{name}
+
+%files jdk-platform-logging -f .mfiles-jdk-platform-logging
+%exclude %{_javadir}/%{name}/%{name}-jdk-platform-logging.jar
+
+%files migrator -f .mfiles-migrator
+%exclude %{_javadir}/%{name}/%{name}-migrator.jar
 
 %files sources -f .mfiles-sources
 
 %files javadoc
 %{_javadocdir}/%{name}
-
-%files manual
-%{_docdir}/%{name}-%{version}/site
 
 %changelog

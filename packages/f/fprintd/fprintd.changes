@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar 25 10:07:47 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.94.5:
+  * fprintd now depends on libfprint 1.94.9
+  * Improved handling of device errors
+  * pam: reduce minimum timeout to 1 second
+  * pam: support unlimited timeout
+
+-------------------------------------------------------------------
 Mon Sep 22 08:14:57 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove not needed BuildRequires python3-pydbus

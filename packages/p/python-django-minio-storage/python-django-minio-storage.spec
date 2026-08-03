@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-minio-storage
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,14 @@
 
 
 %bcond_with test
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-django-minio-storage
-Version:        0.5.3
+Version:        0.5.9
 Release:        0
 Summary:        Django file storage using minio
-License:        Apache-2.0 OR MIT
+License:        Apache-2.0
 URL:            https://github.com/py-pa/django-minio-storage
-Source:         https://files.pythonhosted.org/packages/source/d/django-minio-storage/django-minio-storage-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/d/django-minio-storage/django_minio_storage-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
@@ -50,7 +49,7 @@ BuildRequires:  minio
 Django file storage using the minio python client.
 
 %prep
-%setup -q -n django-minio-storage-%{version}
+%setup -q -n django_minio_storage-%{version}
 
 %build
 %pyproject_wheel
@@ -75,7 +74,7 @@ export MINIO_STORAGE_SECRET_KEY=$MINIO_SECRET_KEY
 
 %files %{python_files}
 %doc README.md docs/usage.md
-%license LICENSE-APACHE LICENSE-MIT
+%license LICENSE-APACHE
 %{python_sitelib}/minio_storage
 %{python_sitelib}/django_minio_storage-%{version}.dist-info
 

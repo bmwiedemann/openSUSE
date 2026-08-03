@@ -7,4 +7,16 @@
     <comment></comment>
     <requestid>1243473</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0f44c7d6cd21b54b60276fe677902966</srcmd5>
+    <version>0.6.1</version>
+    <time>1782916611</time>
+    <user>anag_factory</user>
+    <comment>- simplify provides/obsoletes
+
+- Add correct Provides/Obsoletes
+
+- Remove single-spec multi-version packaging.</comment>
+    <requestid>1362884</requestid>
+  </revision>
 </revisionlist>

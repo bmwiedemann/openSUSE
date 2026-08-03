@@ -8,5 +8,4 @@ TELNET port ultimately means communicating with a program designed for
 human interaction.  These interactive features include the ability to
 specify a time-out and to wait for patterns to appear in the input
 stream, such as the prompt from a shell.</description>
-  <devel project="devel:languages:perl" package="perl-Net-Telnet"/>
 </package>

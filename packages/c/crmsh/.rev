@@ -3905,4 +3905,12 @@ and fixes bnc#880052</comment>
     <comment></comment>
     <requestid>1365452</requestid>
   </revision>
+  <revision rev="417" vrev="1">
+    <srcmd5>4e705e9a7705ccc9de846abcac868002</srcmd5>
+    <version>5.1.0+20260730.157564b0</version>
+    <time>1785504675</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1368536</requestid>
+  </revision>
 </revisionlist>

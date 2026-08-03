@@ -5,5 +5,4 @@
 If this module is already available to be loaded, it can be used as with lib.pm, passing relative paths, which will be absolutized relative to the current file then passed on to lib. Multiple arguments will be separately absolutized, and absolute paths will be passed on unchanged.
 
 For cases where this module cannot be loaded beforehand, the last section of the &quot;SYNOPSIS&quot; can be copy-pasted into a file to perform the same task.</description>
-  <devel project="devel:languages:perl" package="perl-lib-relative"/>
 </package>

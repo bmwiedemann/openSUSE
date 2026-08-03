@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 10 09:00:28 UTC 2026 - Michal Filka <mfilka@suse.com>
+
+- jsc#PED-14507
+  - Removed reference to update-desktop-files from spec file 
+  - 5.0.8
+-------------------------------------------------------------------
 Mon Oct 13 14:09:17 UTC 2025 - Stefan Schubert <schubi@suse.de>
 
 - Fixed perl logic while creating home directory (belonging to bsc#1125779)

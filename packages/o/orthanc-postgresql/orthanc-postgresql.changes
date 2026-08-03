@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul 29 09:24:29 UTC 2026 - Axel Braun <axel.braun@gmx.de>
+
+- version 10.2
+  * Internal changes only:
+    - Enable linking with libpq18 (Ubuntu 26.04).
+    - Show more details when an internal error occurs.
+
+-------------------------------------------------------------------
 Wed Apr 15 14:09:58 UTC 2026 - Axel Braun <axel.braun@gmx.de>
 
 - version 10.1

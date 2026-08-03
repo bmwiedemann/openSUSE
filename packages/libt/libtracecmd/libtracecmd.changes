@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Mar 25 13:46:34 UTC 2026 - Petr Pavlu <petr.pavlu@suse.com>
+
+- Update to version 1.5.5:
+  * Add saving the BTF (/sys/kernel/btf/vmlinux) file and parsing
+    it
+  * Add saving of last_boot_info and /proc/modules
+  * Fix tracecmd_compress_lseek() to support querying within
+    compression block
+  * Fix reading of kallsyms if it gets updated while being read
+  * Fix memory leak in partial reverse iteration
+  * Fix continuing in tracecmd_iterate_events_reverse()
+
+-------------------------------------------------------------------
 Mon Aug 25 09:53:53 UTC 2025 - Petr Pavlu <petr.pavlu@suse.com>
 
 - Update to version 1.5.4:

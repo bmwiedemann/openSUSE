@@ -65,4 +65,12 @@
   - Drop support-python-314.patch, fixed upstream</comment>
     <requestid>1320600</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>b19d3197d25cdc0cb9f5c0b46bd09514</srcmd5>
+    <version>1.0.15</version>
+    <time>1784126734</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1365790</requestid>
+  </revision>
 </revisionlist>

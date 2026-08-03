@@ -84,4 +84,15 @@ Cleaned the spec file up (forwarded request 161566 from worldcitizen)</comment>
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ce0cab9dfc556dc426e26d9f0658e673</srcmd5>
+    <version>0.6</version>
+    <time>1774470132</time>
+    <user>anag_factory</user>
+    <comment>Update needed due to: https://code.opensuse.org/leap/features/issue/276
+
+Updated package to align with new standards.
+Algorithm can be set via parameter now as well as expiry time.</comment>
+    <requestid>1342516</requestid>
+  </revision>
 </revisionlist>

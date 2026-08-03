@@ -1,7 +1,7 @@
 #
 # spec file for package python-progressbar2
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-progressbar2
-Version:        4.3.2
+Version:        4.5.0
 Release:        0
 Summary:        Python library to provide visual text-based progress to long running operations
 License:        BSD-3-Clause
@@ -26,11 +26,12 @@ Group:          Development/Languages/Python
 URL:            https://github.com/WoLpH/python-progressbar
 Source:         https://files.pythonhosted.org/packages/source/p/progressbar2/progressbar2-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-python-utils >= 2.3.0
+Requires:       python-python-utils >= 3.8.1
 Conflicts:      python-progressbar
 BuildArch:      noarch
 # SECTION test requirements
@@ -38,7 +39,7 @@ BuildRequires:  %{python_module dill}
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module pygments}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module python-utils >= 2.3.0}
+BuildRequires:  %{python_module python-utils >= 3.8.1}
 # /SECTION
 %python_subpackages
 
@@ -55,6 +56,7 @@ rm pytest.ini
 %install
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+rm -v %{buildroot}/%{_bindir}/progressbar
 
 %check
 # remove problematic section from pytest.ini

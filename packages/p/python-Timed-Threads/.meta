@@ -6,5 +6,6 @@ an exception.
 
 The main motivation of this module is to support TimedConstraint in the
 open-source implementation of Mathematica, called Mathics3.</description>
+  <devel project="science" package="python-Timed-Threads"/>
   <url>https://github.com/Mathics3/python-timed-threads/</url>
 </package>

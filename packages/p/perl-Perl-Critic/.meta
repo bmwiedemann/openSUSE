@@ -39,6 +39,5 @@ and interface to the service are subject to change.
 Also, the Perl Development Kit (PDK 8.0) from ActiveState includes a very
 slick graphical interface to Perl-Critic. For details, go to the
 http://www.activestate.com/perl_dev_kit manpage</description>
-  <devel project="devel:languages:perl" package="perl-Perl-Critic"/>
   <url>http://search.cpan.org/dist/Perl-Critic/</url>
 </package>

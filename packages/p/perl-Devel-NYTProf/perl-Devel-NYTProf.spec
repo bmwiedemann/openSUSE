@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Devel-NYTProf
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,37 +18,39 @@
 
 %define cpan_name Devel-NYTProf
 Name:           perl-Devel-NYTProf
-Version:        6.140.0
+Version:        6.150.0
 Release:        0
-%define cpan_version 6.14
+# 6.15 -> normalize -> 6.150.0
+%define cpan_version 6.15
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Powerful fast feature-rich Perl source code profiler
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/J/JK/JKEENAN/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Capture::Tiny)
-BuildRequires:  perl(File::Which) >= 1.09
+BuildRequires:  perl(File::Which) >= 1.90
 BuildRequires:  perl(JSON::MaybeXS)
-BuildRequires:  perl(Sub::Name) >= 0.11
-BuildRequires:  perl(Test::Differences) >= 0.60
+BuildRequires:  perl(Sub::Name) >= 0.110
+BuildRequires:  perl(Test::Differences) >= 0.600
 BuildRequires:  perl(Test::More) >= 0.84
-Requires:       perl(File::Which) >= 1.09
+Requires:       perl(File::Which) >= 1.90
 Requires:       perl(JSON::MaybeXS)
-Provides:       perl(Devel::NYTProf) = 6.140.0
-Provides:       perl(Devel::NYTProf::Apache) = 6.140.0
+Provides:       perl(Devel::NYTProf) = %{version}
+Provides:       perl(Devel::NYTProf::Apache) = %{version}
 Provides:       perl(Devel::NYTProf::Constants)
-Provides:       perl(Devel::NYTProf::Core) = 6.140.0
-Provides:       perl(Devel::NYTProf::Data) = 6.140.0
+Provides:       perl(Devel::NYTProf::Core) = %{version}
+Provides:       perl(Devel::NYTProf::Data) = %{version}
 Provides:       perl(Devel::NYTProf::FileHandle)
 Provides:       perl(Devel::NYTProf::FileInfo)
-Provides:       perl(Devel::NYTProf::ReadStream) = 6.140.0
-Provides:       perl(Devel::NYTProf::Reader) = 6.140.0
+Provides:       perl(Devel::NYTProf::ReadStream) = %{version}
+Provides:       perl(Devel::NYTProf::Reader) = %{version}
 Provides:       perl(Devel::NYTProf::Run)
 Provides:       perl(Devel::NYTProf::SubCallInfo)
 Provides:       perl(Devel::NYTProf::SubInfo)
-Provides:       perl(Devel::NYTProf::Util) = 6.140.0
+Provides:       perl(Devel::NYTProf::Util) = %{version}
 %undefine       __perllib_provides
 %{perl_requires}
 
@@ -97,7 +99,7 @@ NYTProf is effectively two profilers in one: a statement profiler, and a
 subroutine profiler.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"

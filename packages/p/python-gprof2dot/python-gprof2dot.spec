@@ -1,7 +1,7 @@
 #
 # spec file for package python-gprof2dot
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-gprof2dot
-Version:        2024.6.6
+Version:        2025.4.14
 Release:        0
 Summary:        Script to generate a dot graph from the output of several profilers
 License:        LGPL-3.0-or-later

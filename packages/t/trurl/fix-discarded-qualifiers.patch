@@ -1,0 +1,78 @@
+diff --git a/trurl.c b/trurl.c
+index b5a716c..8ff2112 100644
+--- a/trurl.c
++++ b/trurl.c
+@@ -483,7 +483,7 @@ static void pathadd(struct option *o, const char *path)
+ 
+ static char *encodeassign(const char *query)
+ {
+-  char *p = strchr(query, '=');
++  const char *p = strchr(query, '=');
+   char *urle;
+   if(p) {
+     /* URL encode the left and the right side of the '=' separately */
+@@ -600,9 +600,9 @@ static int getarg(struct option *o,
+     gap = false;
+   }
+   else if((flag[0] == '-') && (flag[1] == '-')) {
+-    char *equals = strchr(&flag[2], '=');
++    const char *equals = strchr(&flag[2], '=');
+     if(equals) {
+-      arg = (char *)&equals[1];
++      arg = &equals[1];
+       gap = false;
+     }
+   }
+@@ -862,14 +862,14 @@ static void get(struct option *o, CURLU *uh)
+         /* this is meant as a variable to output */
+         const char *start = ptr;
+         char *end;
+-        char *cl;
++        const char *cl;
+         size_t vlen;
+         bool isquery = false;
+         bool queryall = false;
+         bool strict = false; /* strict mode, fail on URL decode problems */
+         bool must = false; /* must mode, fail on missing component */
+         int mods = 0;
+-        end = strchr(ptr, endbyte);
++        end = (char *)strchr(ptr, endbyte);
+         ptr++; /* pass the { */
+         if(!end) {
+           /* syntax error */
+@@ -1022,7 +1022,7 @@ static void get(struct option *o, CURLU *uh)
+ static const struct var *setone(CURLU *uh, const char *setline,
+                                 struct option *o)
+ {
+-  char *ptr = strchr(setline, '=');
++  const char *ptr = strchr(setline, '=');
+   const struct var *v = NULL;
+   if(ptr && (ptr > setline)) {
+     size_t vlen = ptr - setline;
+@@ -1684,7 +1684,7 @@ static char *canonical_path(const char *path)
+ {
+   /* split the path per slash, URL decode + encode, then put together again */
+   size_t len = strlen(path);
+-  char *sl;
++  const char *sl;
+   char *dupe = NULL;
+ 
+   do {
+@@ -1810,7 +1810,7 @@ static void singleurl(struct option *o,
+       size_t plen;
+       const char *w;
+       size_t wlen;
+-      char *sep;
++      const char *sep;
+       bool urlencode = true;
+       const struct var *v;
+ 
+@@ -1855,7 +1855,7 @@ static void singleurl(struct option *o,
+       sep = strchr(w, ' ');
+       if(sep) {
+         wlen = sep - w;
+-        iinfo->ptr = sep + 1; /* next word is here */
++        iinfo->ptr = (char *)(sep + 1); /* next word is here */
+       }
+       else {
+         /* last word */

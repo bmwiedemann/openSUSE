@@ -1,0 +1,81 @@
+From: Jiri Slaby <jslaby@suse.cz>
+Subject: Fix build warnings/errors
+
+Include proper headers to avoid warnings like:
+  msr_allowlist.c:53:5: warning: no previous prototype for `msr_allowlist_maskexists' [-Wmissing-prototypes]
+
+It then turned out that some return types were wrong -- fix them too.
+
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+---
+ msr_allowlist.c |    2 ++
+ msr_allowlist.h |    2 +-
+ msr_batch.c     |    2 --
+ msr_safe.h      |    2 ++
+ msr_version.c   |    2 ++
+ msr_version.h   |    2 +-
+ 6 files changed, 8 insertions(+), 4 deletions(-)
+
+--- a/msr_allowlist.c
++++ b/msr_allowlist.c
+@@ -16,6 +16,8 @@
+ #include <linux/uaccess.h>
+ #include <linux/version.h>
+ 
++#include "msr_allowlist.h"
++
+ #define MAX_WLIST_BSIZE ((128 * 1024) + 1) // "+1" for null character
+ 
+ struct allowlist_entry
+--- a/msr_allowlist.h
++++ b/msr_allowlist.h
+@@ -20,7 +20,7 @@
+ 
+ int msr_allowlist_init(int *majordev);
+ 
+-int msr_allowlist_cleanup(int majordev);
++void msr_allowlist_cleanup(int majordev);
+ 
+ int msr_allowlist_exists(void);
+ 
+--- a/msr_batch.c
++++ b/msr_batch.c
+@@ -73,8 +73,6 @@ static int msrbatch_apply_allowlist(stru
+     return err;
+ }
+ 
+-extern int msr_safe_batch(struct msr_batch_array *oa);
+-
+ static long msrbatch_ioctl(struct file *f, unsigned int ioc, unsigned long arg)
+ {
+     int err = 0;
+--- a/msr_safe.h
++++ b/msr_safe.h
+@@ -36,4 +36,6 @@ struct msr_batch_array
+ 
+ #define X86_IOC_MSR_BATCH   _IOWR('c', 0xA2, struct msr_batch_array)
+ 
++int msr_safe_batch(struct msr_batch_array *oa);
++
+ #endif
+--- a/msr_version.c
++++ b/msr_version.c
+@@ -12,6 +12,8 @@
+ #include <linux/module.h>
+ #include <linux/uaccess.h>
+ 
++#include "msr_version.h"
++
+ static struct class *cdev_class;
+ static char cdev_created;
+ static char cdev_registered;
+--- a/msr_version.h
++++ b/msr_version.h
+@@ -20,6 +20,6 @@
+ 
+ int msr_version_init(int *majordev);
+ 
+-int msr_version_cleanup(int majordev);
++void msr_version_cleanup(int majordev);
+ 
+ #endif

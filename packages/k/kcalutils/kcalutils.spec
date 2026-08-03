@@ -62,7 +62,9 @@ applications access and use calendar data via the KCalCore library.
 Summary:        Development files for kcalutils
 Requires:       libKPim6CalendarUtils6
 Requires:       cmake(KF6CalendarCore) >= %{kf6_version}
+Requires:       cmake(KF6Config) >= %{kf6_version}
 Requires:       cmake(KF6CoreAddons) >= %{kf6_version}
+Requires:       cmake(Qt6Widgets) >= %{qt6_version}
 Provides:       kcalutils5-devel = %{version}
 Obsoletes:      kcalutils5-devel < %{version}
 

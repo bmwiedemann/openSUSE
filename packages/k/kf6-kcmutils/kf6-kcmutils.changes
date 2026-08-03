@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jul 10 12:15:42 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.28.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.28.0
+- Changes since 6.27.0:
+  * KF6KCMUtilsQuick: inject version macros to all public headers
+  * Update dependency version to 6.28.0
+  * kquickconfigmodule.h: remove unused QQmlComponent include
+  * kcmloadtest: remove unused include
+  * Update version to 6.28.0
+
+-------------------------------------------------------------------
 Sat Jun  6 11:42:04 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.27.0

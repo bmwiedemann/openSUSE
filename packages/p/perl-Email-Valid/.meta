@@ -5,5 +5,4 @@ optionally, whether a mail host exists for the domain.
 
 Please note that there is no way to determine whether an address is
 deliverable without attempting delivery (for details, see perlfaq 9).</description>
-  <devel project="devel:languages:perl" package="perl-Email-Valid"/>
 </package>

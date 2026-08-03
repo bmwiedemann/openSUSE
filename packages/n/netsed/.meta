@@ -2,5 +2,6 @@
   <title>Network packet stream editor</title>
   <description>NetSED is a utility designed to alter the contents of packets forwarded through
 the network in real time.</description>
+  <devel project="network:utilities" package="netsed"/>
   <url>http://silicone.homelinux.org/projects/netsed/</url>
 </package>

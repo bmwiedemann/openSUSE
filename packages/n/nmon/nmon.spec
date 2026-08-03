@@ -1,7 +1,7 @@
 #
 # spec file for package nmon
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2011-2013 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,14 +18,13 @@
 
 
 Name:           nmon
-Version:        16q
+Version:        16s
 Release:        0
 Summary:        Performance Monitor
 License:        GPL-3.0-only
 URL:            https://nmon.sourceforge.io/pmwiki.php
 Source0:        https://sourceforge.net/projects/nmon/files/lmon%{version}.c
 Source1:        https://www.gnu.org/licenses/gpl-3.0.txt
-Patch1:         nmon-incrase-cpumax-to-support-2048-cpus.patch
 BuildRequires:  ncurses-devel
 Provides:       lmon = %{version}
 

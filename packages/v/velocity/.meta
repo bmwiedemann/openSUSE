@@ -19,5 +19,4 @@ or as an integrated component of other systems. Velocity also provides
 template services for the Turbine web application framework.
 Velocity+Turbine provides a template service that will allow web
 applications to be developed according to a true MVC model.</description>
-  <devel project="Java:packages" package="velocity"/>
 </package>

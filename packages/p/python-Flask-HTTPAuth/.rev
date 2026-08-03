@@ -89,4 +89,17 @@
     <comment>- Support both lowercased and unnormalized metadata directory names.</comment>
     <requestid>1271227</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>50d605fdef825fbbbb2cbfb92828d492</srcmd5>
+    <version>4.8.1</version>
+    <time>1775743870</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.8.1 (bsc#1261355, CVE-2026-34531):
+  * Do not accept empty or missing tokens (commit)
+  * New installation section in the documentation (commit)
+  * Revised documentation (commit)
+  * Fix documentation links #163 (commit) (thanks Ofer Nave!)
+  * Code modernization (commit)</comment>
+    <requestid>1345462</requestid>
+  </revision>
 </revisionlist>

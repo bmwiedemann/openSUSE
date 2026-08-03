@@ -1,4 +1,305 @@
 -------------------------------------------------------------------
+Thu Jul 30 06:06:33 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.1.2:
+  * New Features
+    - Scaffold straight from the catalog README view with ctrl+d
+      In the terragrunt catalog TUI, pressing ctrl+d while reading
+      a component's README now scaffolds it immediately, skipping
+      the interactive form. Module and template inputs are written
+      as # TODO placeholders, and unit/stack copies get a fully
+      placeholder terragrunt.values.hcl. The hint bar at the bottom
+      of the README view advertises the new key.
+  * Performance Improvements
+    - Fewer filesystem checks when resolving
+      find_in_parent_folders()
+      find_in_parent_folders() walks up from a unit toward the
+      filesystem root, checking each directory for the
+      configuration file it was asked to find. Even when the call
+      named a file, as in find_in_parent_folders("root.hcl"), each
+      directory along the way was also checked for the default
+      configuration filenames. Units sharing a parent chain then
+      repeated every check their siblings had already made.
+      Terragrunt now checks only the filename the call names, and
+      reuses what it already learned about a directory for the rest
+      of the command. Deeply nested estates benefit most, since
+      every level between a unit and its root configuration used to
+      be re-checked once per unit.
+      In micro-benchmarks, resolving the root configuration for 100
+      units nested eight directories deep went from 4.8ms to
+      0.49ms. Across the benchmarked shapes the lookups run between
+      7x and 10x faster, and the time saved grows with both the
+      number of units and how deeply they sit below their root
+      configuration.
+  * Bug Fixes
+    - Fixed roles assuming themselves for backend operations
+      A regression in v1.1.1 broke setups that provide static AWS
+      credentials and configure a role via the iam_role attribute,
+      the --iam-assume-role flag, or TG_IAM_ASSUME_ROLE.
+      In those setups, Terragrunt assumes the role once at the
+      start of a run, and every later AWS call uses that role
+      session. In v1.1.1, backend operations like bootstrapping the
+      state bucket started performing an extra role assumption of
+      their own. Since the run was already using the role session
+      at that point, the role tried to assume itself, and AWS
+      rejected the call with an AccessDenied error unless the
+      role's trust policy happened to include the role itself.
+      Backend operations now reuse the role session from the start
+      of the run, as they did before v1.1.1.
+      This does not affect the assume_role attribute of the
+      remote_state block. Roles configured there are
+      backend-specific and are still assumed on top of the supplied
+      credentials, so the cross-account role assumption should
+      continue to work as expected.
+    - Local sources no longer re-init when uncopied files change
+      For units with a local source, Terragrunt decides whether the
+      cached copy is stale by hashing the source directory. That
+      hash previously covered every file in the directory,
+      including hidden files and exclude_from_copy matches that are
+      never copied into the cache. Creating or touching such a file
+      (an editor swap file, a scratch note) changed the hash,
+      forcing a needless re-copy and auto-init on the next run.
+      The hash now covers only the files a copy would deliver,
+      honoring the default hidden-file rule along with
+      include_in_copy and exclude_from_copy. Files that never reach
+      the cache no longer trigger re-initialization.
+    - Fixed width truncation of colored and multi-byte log content
+      The width option in a custom log format sizes a column to a
+      fixed number of visible characters. When the content held
+      color codes or multi-byte characters and was longer than the
+      column, truncation cut the raw bytes: it could slice through
+      the middle of a color code, leaving color bleeding into the
+      rest of the line, or split a multi-byte character into
+      invalid output, and it dropped more visible text than the
+      configured width.
+      width now measures and cuts by visible characters. Color
+      codes are preserved intact, multi-byte characters are never
+      split, and the column keeps exactly the requested number of
+      visible characters.
+    - Provider cache downloads now require a secret URL
+      The Provider Cache Server now hardens the download endpoint
+      that fetches provider archives on the caller's behalf. That
+      endpoint attaches whatever registry credentials are
+      configured for the upstream host, and it was the only one on
+      the server that did not require the token generated for the
+      run, so any other process on the machine could use a running
+      cache server to pull artifacts from a private registry with
+      the credentials of whoever started the run.
+      The download URLs handed to OpenTofu and Terraform now carry
+      a secret path segment, generated fresh each time the cache
+      server starts and redacted from the server's own logs.
+      Requests that omit the segment get a 404.
+    - Run report no longer mangles the names of paths that share a
+      prefix with the working directory
+      When a run's path shared a string prefix with the working
+      directory without being nested under it, the run report
+      shortened its name by shearing off the prefix mid-segment. A
+      working directory of /repo/project alongside a run at
+      /repo/project-staging/unit produced the name -staging/unit.
+      The report now shortens a path only when it is genuinely
+      nested under the working directory. Sibling paths keep their
+      full name.
+    - Feature flag defaults no longer leak between units in run
+      --all
+      A feature block's default was recorded once per run and
+      shared by every unit. During run --all, the first unit to be
+      parsed set the value for a flag name, so a unit defining
+      default = false could evaluate feature.toggle.value as true
+      because a sibling unit was parsed first. Which unit won
+      depended on parsing order, making the result vary between
+      runs.
+      Defaults are now resolved per unit, including defaults
+      inherited through include. Overrides passed with --feature or
+      TG_FEATURE continue to apply to every unit in the run.
+    - Fixed S3 source downloads under EKS Pod Identity
+      Downloading unit sources from private S3 buckets
+      (s3::https://...) now works when EKS Pod Identity is the only
+      credential source. Previously, the bundled aws-sdk-go v1
+      rejected the Pod Identity Agent endpoint (169.254.170.23)
+      because it only allowed loopback hosts. Terragrunt now uses
+      aws-sdk-go v1.55.6, which allows the EKS and ECS container
+      credential endpoints.
+  * Experiments Added
+    - otel-logs experiment exports logs to OpenTelemetry
+      Terragrunt previously emitted only traces and metrics, so
+      there was no way to ship its log output to an OpenTelemetry
+      backend or correlate log lines with the spans of a failed
+      run.
+      Enable the new otel-logs experiment to add an OpenTelemetry
+      logs signal, configured with TG_TELEMETRY_LOGS_EXPORTER:
+      - none - no log exporting, the default.
+      - console - write log records to the console as JSON.
+      - otlpHttp - export logs to an OpenTelemetry collector over
+        HTTP.
+      - otlpGrpc - export logs to an OpenTelemetry collector over
+        gRPC.
+
+      TG_TELEMETRY_LOGS_EXPORTER=otlpHttp terragrunt run --all --experiment otel-logs -- apply
+
+      The OTLP exporters read the endpoint from the standard
+      OTEL_EXPORTER_OTLP_ENDPOINT environment variable. Set
+      TG_TELEMETRY_LOGS_EXPORTER_INSECURE_ENDPOINT=true to disable
+      TLS when collecting locally. Records emitted while a span is
+      active carry its trace and span IDs, so a failed unit's logs
+      link to its span in the backend. Without the experiment
+      enabled, the logs exporter stays inert regardless of
+      TG_TELEMETRY_LOGS_EXPORTER.
+    - profiling experiment adds pprof collection for Terragrunt
+      runs
+      Enable the new profiling experiment to collect CPU profiles,
+      memory (heap) profiles, and goroutine profiles (stack traces
+      of all goroutines) using CLI flags. Profiling is intended for
+      debugging the performance of Terragrunt itself, and for
+      exploring ways to optimize Terragrunt as an application; it
+      will not help with improving the performance of the
+      infrastructure Terragrunt manages.
+
+      Example:
+
+        terragrunt --experiment=profiling --profile-cpu cpu.prof --profile-mem mem.prof --profile-goroutine goroutine.prof run -- plan
+
+      Use --profile-dir to collect all profiles into a single
+      directory with conventional names (terragrunt_cpu.prof,
+      terragrunt_mem.prof, terragrunt_goroutine.prof):
+
+        terragrunt --experiment=profiling --profile-dir /tmp/profiles run --all -- plan
+
+      The same behavior is available via environment variables when
+      the profiling experiment is enabled:
+      - TG_PROFILE_CPU
+      - TG_PROFILE_MEM
+      - TG_PROFILE_GOROUTINE
+      - TG_PROFILE_DIR
+      When using --profile-dir or TG_PROFILE_DIR, Terragrunt also
+      sets TOFU_CPU_PROFILE for each unit so downstream OpenTofu
+      processes (OpenTofu 1.11 or later) write their own CPU
+      profiles into unit-specific subdirectories. An explicitly set
+      TOFU_CPU_PROFILE is never overridden.
+  * Experiments Updated
+    - azure-backend now manages Azure Storage remote state
+      The azure-backend experiment now enables functional
+      Terragrunt support for the Azure Storage (azurerm)
+      remote-state backend.
+      When the experiment is enabled, Terragrunt can bootstrap the
+      resource group, storage account, and blob container used by
+      remote_state { backend = "azurerm" }, detect whether the
+      backend needs bootstrapping, converge blob versioning and
+      soft-delete settings, delete state blobs or containers, and
+      migrate state blobs within the same storage account.
+      Terragrunt-only settings such as location, the storage
+      account SKU options, the skip_* flags, enable_soft_delete,
+      soft_delete_retention_days, and msi_resource_id are consumed
+      by Terragrunt and removed before it runs OpenTofu/Terraform
+      with init -backend-config, so the underlying azurerm backend
+      receives only keys it understands. msi_resource_id is not
+      bootstrap-only: it also selects the managed identity used for
+      delete and migrate.
+      This remains opt-in while the experiment is active:
+
+        terragrunt --experiment azure-backend run -- plan
+
+    - oci - Credential helpers for OCI module sources
+      oci:// module downloads now use the Docker credential helpers
+      you already have configured, so registries like Amazon ECR
+      authenticate automatically with no extra setup.
+    - oci - Content-addressable caching for OCI module sources
+      oci:// module sources now integrate with Content Addressable
+      Storage. When the oci experiment is enabled, downloads are
+      cached by their manifest digest, so a repeated fetch of the
+      same tag or digest is served from the local store instead of
+      re-downloaded from the registry.
+      Mutable tags stay correct: every fetch re-resolves the tag to
+      its current manifest digest at download time, so re-pushing a
+      module under the same tag invalidates the cache and pulls the
+      new content rather than serving a stale copy. A digest-pinned
+      source (?digest=sha256:...) skips registry resolution and
+      keys the cache directly.
+    - oci - Downloading modules from OCI registries
+      The oci experiment now downloads source code (including
+      OpenTofu modules) from OCI Distribution registries. When
+      enabled, Terragrunt accepts oci:// source URLs in Terragrunt
+      configurations (including terraform.source attributes).
+      Specify either tag or digest; omitting both selects the
+      latest tag. //subdir selectors are supported. Artifacts
+      follow the same publishing contract OpenTofu 1.10 consumes
+      natively.
+      Authentication covers static credentials via interim
+      TG_TMP_OCI_* environment variables and read-only ambient
+      discovery of Docker and containers auth files. Static
+      credentials can be limited to one registry with
+      TG_TMP_OCI_REGISTRY; without it, the configured token or
+      username and password may be offered to any registry the
+      process contacts. Credential helpers (such as ecr-login) are
+      not invoked yet, so registries that need per-run token
+      minting only work while an externally obtained login is
+      present in an ambient file.
+      When the experiment is disabled, oci:// sources remain
+      unsupported.
+      For setup steps, see the experiment documentation.
+      https://docs.terragrunt.com/reference/experiments/active#oci
+  * What's changed
+    - fix: prevent auto-init env vars from leaking into main
+      command (#6576)
+    - feat: add experimental azurerm remote state backend (#6428)
+    - docs: Improving docs by addressing frequently asked questions
+      (#6560)
+    - chore: Reducing race in vexec testing (#6551)
+    - feat(getter): credential helpers for oci:// module sources
+      (#6508)
+    - chore: coverage report fixes (#6557)
+    - chore: Updating Kapa integration (#6558)
+    - chore: Fixing pprof venv access (#6556)
+    - feat(profiling): add automatic pprof collection (#5711)
+    - docs: Adding search telemetry (#6555)
+    - chore: fixed failed lint tests (#6550)
+    - chore: Refactor for network isolation in tests (#6507)
+    - feat: Adding earlier catalog bail (#6493)
+    - docs: Re-organizing content related to the run queue out of
+      stack documentation (#6114)
+    - fix: Fixing self-chained role assumption (#6521)
+    - perf: Memoize `find_in_parent_folders()` (#6545)
+    - chore: Cleaning up tests for #6547 (#6549)
+    - chore: Adding vhttp client to abstract away HTTP client
+      connections (#6121)
+    - fix: Fixing report path prefix trim (#6527)
+    - docs: Adding changelog entry for #5995 (#6548)
+    - fix: Adding random URL segment to download URI (#6547)
+    - chore: Adding more tests for build metadata (#6538)
+    - fix: Isolate feature defaults per unit in run --all (#5995)
+    - chore: Update grpc, x/mod, go-shellwords deps (#6543)
+    - chore: Fixing panic in Windows test (#6536)
+    - fix: support EKS Pod Identity for S3 source downloads (#6532)
+    - fix: Fixing log truncation (#6526)
+    - docs: Adding CLI flag precedence rule (#6524)
+    - chore(deps): bump astro from 7.0.4 to 7.1.0 in /docs (#6515)
+    - chore: lint fixes (#6518)
+    - feat(getter): add OCI digest CAS resolver with tag
+      re-resolution (#6503)
+    - chore: speed up slowest tests with unit-level coverage and
+      hermetic fixtures (#6436)
+    - fix: Preventing spurious re-inits (#6504)
+    - chore: Adding `vsops` (#6506)
+    - fix: Fixing docs `TF_TOKEN_*` rendering (#6509)
+    - chore: Unify Venv struct by dropping `cas.Venv` (#6488)
+    - chore: Adding some integration testing for the `version`
+      attribute (#6487)
+    - chore: Running `fd -tf -e go -x golines -w` to avoid run-on
+      lines (#6484)
+    - chore: AWS dependencies bump (#6502)
+    - feat(getter): add WithOCI and gate oci sources behind the oci
+      experiment (#6486)
+    - feat(getter): add static and ambient OCI credential discovery
+      (#6483)
+    - feat: Add `otel-logs` experiment (#6279)
+    - chore: Avoid package-level module resolution for `version`
+      attribute (#6482)
+    - feat(getter): implement OCIGetter.Get with fake-store unit
+      tests (#6479)
+    - chore: Fixing code fences on `/reference/hcl/blocks/` (#6485)
+    - chore: Log Windows console mode retrieval failures at debug
+      level (#6374) (#6376)
+
+-------------------------------------------------------------------
 Wed Jul 15 05:56:02 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.1.1:

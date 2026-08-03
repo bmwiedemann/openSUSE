@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr  8 11:01:11 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 4.8.1 (bsc#1261355, CVE-2026-34531):
+  * Do not accept empty or missing tokens (commit)
+  * New installation section in the documentation (commit)
+  * Revised documentation (commit)
+  * Fix documentation links #163 (commit) (thanks Ofer Nave!)
+  * Code modernization (commit)
+
+-------------------------------------------------------------------
 Tue Apr 22 02:19:34 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Support both lowercased and unnormalized metadata directory names.

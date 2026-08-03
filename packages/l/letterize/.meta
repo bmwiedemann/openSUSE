@@ -7,5 +7,6 @@ are considered pronounceable. A typical 7-digit phone number has 19,683
 possible mnemonics, but this test usually cuts the list down to a few hundred
 or so, a reasonable number to eyeball-check. For some numbers, the list will,
 sadly, be empty.</description>
+  <devel project="utilities" package="letterize"/>
   <url>http://www.catb.org/~esr/letterize/</url>
 </package>

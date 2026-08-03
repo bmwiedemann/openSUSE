@@ -506,4 +506,19 @@
   * Allow setting headings to be bold/italics/underlined (#721).</comment>
     <requestid>1333290</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>ce02d8c152c5c727a495ae2f6383b2b4</srcmd5>
+    <version>0.16.1</version>
+    <time>1771605922</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.16.1:
+  New features:
+  * Allow italic to be used as well as italics in theme (#847).
+  Fixes:
+  * Render modals at the center of the screen (#848).
+  Docs:
+  * Add styling docs to slide_title (#845)
+  * Describe slide titles and headings better (#846).</comment>
+    <requestid>1334123</requestid>
+  </revision>
 </revisionlist>

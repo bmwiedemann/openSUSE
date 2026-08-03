@@ -6,5 +6,4 @@ complete library of its kind with the ability to connect an abstract
 callback to a class method, function, or function object. It contains
 adaptor classes for connection of dissimilar callbacks and has an ease
 of use unmatched by other C++ callback libraries.</description>
-  <devel project="GNOME:Factory" package="libsigc++2"/>
 </package>

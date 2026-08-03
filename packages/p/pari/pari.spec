@@ -22,7 +22,7 @@
 %global sover 9
 %global lname   libpari-gmp-tls%sover
 Name:           pari
-Version:        2.17.3
+Version:        2.17.4
 Release:        0
 Summary:        Computer Algebra System for computations in Number Theory
 License:        GPL-2.0-only

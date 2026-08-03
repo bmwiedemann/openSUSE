@@ -4,5 +4,4 @@
 addresses in strings and returns a list of 'Email::Address' objects found.
 Alternatley you may construct objects manually. The goal of this software
 is to be correct, and very very fast.</description>
-  <devel project="devel:languages:perl" package="perl-Email-Address"/>
 </package>

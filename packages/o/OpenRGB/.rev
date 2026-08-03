@@ -118,4 +118,41 @@
     <comment></comment>
     <requestid>1111348</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a60f14fa2a67a99a2ca8b2b6a83f3f98</srcmd5>
+    <version>1.0~rc2+git32.gda9a96e3</version>
+    <time>1781880191</time>
+    <user>anag_factory</user>
+    <comment>- Build against mbedtls 2.x to avoid build failures with mbedtls 4.x
+
+- Update to 1.0~rc2+git32
+- Correct license to GPL-2.0-or-later per upstream
+- Update build
+  * Change build to use Qt6
+  * Remove %suse_update_desktop_file
+      + Included %check section in spec for .desktop files
+  * Build optional systemd unit for daemon usage
+  * Drop Leap 15.5 &amp; earlier due to lack of Qt6 and GCC8+
+  * Override compiler to GCC13 for Leap 15.6
+  * Address bsc#1215130 (Option B)
+      + Add OpenRGB-udev-i2c-use-group.patch
+      + Removes permissions from /dev/port
+      + Motherboards using old SuperIO based RGB control via
+        GigabyteSuperIORGBController &amp; MSIRGBController will likely
+        be impacted.
+      + Members of the 'openrgb' group retain i2c/SMBus access
+      + No impact to USB based devices (inc Motherboards)
+  * Drop patch as it's no longer required: 
+    OpenRGB-use_system_libs.patch 
+
+- Switch from obscpio to tar.gz as requested in
+  https://build.opensuse.org/request/show/1270147#comment-2134657
+
+- Remove vendored in sources and use the _service file instead.
+  - Uses recommended obscpio
+    (https://github.com/openSUSE/obs-service-tar_scm?tab=readme-ov-file#obscpio).
+  - This is a house keeping change that doesn't actually change the package.
+    The reasons for this change are listed here:</comment>
+    <requestid>1360595</requestid>
+  </revision>
 </revisionlist>

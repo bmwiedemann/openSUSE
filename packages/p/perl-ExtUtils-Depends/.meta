@@ -34,5 +34,4 @@ For example:
   ExtUtils::Depends-&gt;new ('Gnome2::Canvas', 'Gtk2');
      this command automatically brings in all the stuff needed
      for Glib, since Gtk2 depends on it.</description>
-  <devel project="devel:languages:perl" package="perl-ExtUtils-Depends"/>
 </package>

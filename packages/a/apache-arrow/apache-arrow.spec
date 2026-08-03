@@ -29,15 +29,15 @@
 %define gccver 13
 %endif
 
-%define sonum   2300
+%define sonum   2500
 # See git submodule /testing pointing to the correct revision
-%define arrow_testing_commit a871ddc17a4dd936b7aa43898d59f86a11c3a2b5
+%define arrow_testing_commit 9ff285c88565f0f6abc855918c6a342e70e4909c
 # See git submodule /cpp/submodules/parquet-testing pointing to the correct revision
 %define parquet_testing_commit e74785d85a4ecee829e1e405444d6a1b24b8bc9c
 # See cpp/thirdparty/versions.txt, replace by BuildRequires: pkgconfig(mimalloc) as soon as gh#apache/arrow#42211 is resolved
-%define arrow_mimalloc_build_version v3.1.5
+%define arrow_mimalloc_build_version v3.3.1
 Name:           apache-arrow
-Version:        23.0.1
+Version:        25.0.0
 Release:        0
 Summary:        A development platform for in-memory data
 License:        Apache-2.0 AND BSD-3-Clause AND BSD-2-Clause AND MIT
@@ -88,6 +88,7 @@ BuildRequires:  pkgconfig(libzstd) >= 1.5.7
 BuildRequires:  pkgconfig(protobuf) >= 21.3
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(thrift) >= 0.22.0
+BuildRequires:  pkgconfig(xsimd) >= 14.2.0
 BuildRequires:  pkgconfig(zlib) >= 1.3.1
 %if %{with tests}
 BuildRequires:  timezone
@@ -454,7 +455,7 @@ rm %{buildroot}%{_libdir}/libarrow_flight_testing.a
 %endif
 %endif
 %endif
-rm -r %{buildroot}%{_datadir}/doc/arrow/
+rm -r %{buildroot}%{_docdir}
 %fdupes %{buildroot}%{_libdir}/cmake
 
 %check

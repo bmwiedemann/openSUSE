@@ -5,6 +5,5 @@
 *Note*: the arrays must be sorted before you call 'diff'.
 
 And if you need more complex array tools, check Array::Compare.</description>
-  <devel project="devel:languages:perl" package="perl-Array-Diff"/>
   <url>https://metacpan.org/release/Array-Diff</url>
 </package>

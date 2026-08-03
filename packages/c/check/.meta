@@ -6,5 +6,4 @@ are run in a separate address space, so Check cancatch both, assertion
 failures and code errors that cause segmentationfaults or other
 signals. The output of unit tests can be used within source code
 editors and IDEs.</description>
-  <devel project="GNOME:Factory" package="check"/>
 </package>

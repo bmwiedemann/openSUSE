@@ -194,4 +194,13 @@
   * producer: fix stalled shutdown when brokers unreachable</comment>
     <requestid>1364124</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>91f2914947e05830c9ea42c0e29ea27a</srcmd5>
+    <version>3.0.8</version>
+    <time>1784126625</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.8:
+  * transport: Fix TLS SNI when `ssl_check_hostname=False`</comment>
+    <requestid>1365772</requestid>
+  </revision>
 </revisionlist>

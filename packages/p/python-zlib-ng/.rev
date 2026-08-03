@@ -46,4 +46,25 @@
 - build against modern python on sle15</comment>
     <requestid>1225873</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6e6baa66773571d8df9fdb4352857d65</srcmd5>
+    <version>1.0.0</version>
+    <time>1774469865</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.0.0:
+  * Updated bundled zlib-ng to 2.2.5.
+  * Python 3.14 is supported.
+  * Python 3.8 and 3.9 are no longer supported.
+  * Fix an issue where flushing using igzip_threaded caused a
+    gzip end of stream and started a new gzip stream. In essence
+    creating a concatenated gzip stream. Now it is in concordance
+    with how single threaded gzip streams are flushed using
+    Z_SYNC_FLUSH.
+  * Switched to setuptools-scm for building the package rather
+    than versioningit.
+  * Test files are added to the source distribution.
+  * Fix an issue where some tests failed because they ignored
+    PYTHONPATH.</comment>
+    <requestid>1342268</requestid>
+  </revision>
 </revisionlist>

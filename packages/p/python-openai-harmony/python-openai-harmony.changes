@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+Sun Jul 12 19:07:38 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package python-openai-harmony 0.0.8
+  * Python bindings for OpenAI's harmony response format used by the
+    gpt-oss open-weight models

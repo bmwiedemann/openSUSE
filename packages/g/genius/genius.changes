@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 25 12:15:40 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop gnome-doc-utils-devel BuildRequires: no longer needed
+
+-------------------------------------------------------------------
 Fri Mar 13 08:44:33 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.0.29:

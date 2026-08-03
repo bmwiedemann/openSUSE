@@ -11,5 +11,4 @@ JSON-GLib uses GLib native data types and the generic value container
 GValue for ease of development. It also provides integration with the
 GObject classes for direct serialization into, and deserialization from,
 JSON data streams.</description>
-  <devel project="GNOME:Factory" package="json-glib"/>
 </package>

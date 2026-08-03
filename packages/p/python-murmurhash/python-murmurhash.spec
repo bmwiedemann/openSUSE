@@ -1,7 +1,7 @@
 #
 # spec file for package python-murmurhash
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ Summary:        Cython bindings for MurmurHash
 License:        MIT
 URL:            https://github.com/explosion/murmurhash
 Source:         https://files.pythonhosted.org/packages/source/m/murmurhash/murmurhash-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Support Python 3.15
+Patch0:         support-python-315.patch
 BuildRequires:  %{python_module Cython >= 3.1}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
@@ -63,6 +65,11 @@ mkdir -p %{buildroot}%{_includedir}
 cp -r -p murmurhash/include/murmurhash %{buildroot}%{_includedir}/
 
 %check
+tmp=$(mktemp -d)
+cp murmurhash/tests/* $tmp
+pushd $tmp
+%pytest_arch
+popd
 
 %files %{python_files}
 %doc README.md

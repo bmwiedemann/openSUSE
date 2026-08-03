@@ -1,4 +1,241 @@
 -------------------------------------------------------------------
+Wed Jul 22 14:55:39 UTC 2026 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- update to 25.0.0
+  https://arrow.apache.org/release/25.0.0.html
+  https://arrow.apache.org/release/24.0.0.html
+  ## Bug Fixes
+  * GH-17081 - [C++] arrow::stl::TupleRangeFromTable docs incorrect
+    (#50095)
+  * GH-36503 - [C++] Make DictionaryArray::dictionary() thread-safe
+    (#48905)
+  * GH-38558 - [C++] Add support for null sort option per sort key
+    (#46926)
+  * GH-39784 - [C++][Gandiva] Fix decimal in_expr crash with cached
+    object code (#49951)
+  * GH-40410 - [C++] Skip only s3fs-tests and s3fs-module-tests
+    that require MinIO if MinIO is not available (#50215)
+  * GH-45193 - [C++][Compute] Treat NaNs and nulls as distinct
+    values in rank tie-breaking (#49304)
+  * GH-47252 - [C++][Compute] Fix sort_indices for temporal types
+    in arrow::Table (#50270)
+  * GH-47447 - [C++] Fix replace_with_mask for null type arrays
+    (#49950)
+  * GH-47481 - [C++][Acero] record_batch_reader_source specify
+    Ordering::Implicit to support select * limit k (#47482)
+  * GH-47642 - [C++] Catch exceptions from initial_task in
+    AsyncTaskScheduler (#49860)
+  * GH-47657 - [C++][Parquet] Check for integer overflow when
+    coercing timestamps (#49615)
+  * GH-48094 - [C++] Restrict SecureString capacity tail check to
+    Linux (#49906)
+  * GH-48801 - [C++] Set CMAKE_POLICY_VERSION_MINIMUM for RapidJSON
+    (#49993)
+  * GH-48926 - [C++] Upgrade Abseil/Protobuf/GRPC/Google-Cloud-CPP
+    bundled versions (#48964)
+  * GH-49272 - [C++][CI] Fix intermittent segfault in
+    arrow-json-test with MinGW (#49462)
+  * GH-49433 - [C++] Buffer ARROW_LOG output to prevent thread
+    interleaving (#49663)
+  * GH-49465 - [CI][C++] Fix Abseil hang in arrow-flight-test on
+    ODBC Windows (#50085)
+  * GH-49614 - [C++] Report an error instead of silent truncation
+    in base64_decode on invalid input (#49660)
+  * GH-49689 - [R][C++] Parquets do not support list-columns of
+    ordered factors (ordered dictionaries) (#49937)
+  * GH-49719 - [C++] Rename vendored date header guards (#49778)
+  * GH-49740 - [C++][Python] Fix casts to view types leaving null
+    variadic buffers (#50166)
+  * GH-49752 - [C++][Gandiva] Fix potential buffer overrun in
+    Gandiva SSL function (#49780)
+  * GH-49753 - [C++][Gandiva] Fix overflow in string functions
+    (#49813)
+  * GH-49759 - [C++][Integration] Harden BinaryView JSON parsing
+    with runtime validation (#49758)
+  * GH-49764 - [C++][Python] Avoid building bundled Abseil outside
+    resolve_dependency (#49936)
+  * GH-49767 - [CI][C++] Disable mold on Ubuntu 24.04 to work
+    around mold#1247 (#50033)
+  * GH-49803 - [C++][CI] Avoid aborting when fuzz-mutated IPC file
+    has less batches (#49804)
+  * GH-49834 - [C++] Avoid building re2 unit tests (#50152)
+  * GH-49837 - [C++][Parquet] Avoid unbounded temporary std::vector
+    in DELTA_(LENGTH_)BYTE_ARRAY decoder (#49838)
+  * GH-49872 - [C++] Remove deprecated std::is_trivial (#49871)
+  * GH-49888 - [C++][Compute] Fix count for run-end encoded arrays
+    with nulls (#49908)
+  * GH-49896 - [C++] Reject short buffer reads in IPC reader
+    (#49897)
+  * GH-49930 - [CI][C++] Pin MinGW MSYS2 packages to unblock CI
+    (#49931)
+  * GH-49948 - [CI][C++] Revert PR 49931 (Pin MinGW MSYS2 packages)
+    but keep bumped minIO version (#49945)
+  * GH-49966 - [C++] Detect different endianness between IPC file
+    and stream in IPC file fuzzer (#49968)
+  * GH-49974 - [C++][CMake] Add missing result variable
+    initialization for validate_apple_libtool() (#49975)
+  * GH-49991 - [C++][FlightRPC] Fix unity build ordering issue
+    (#49990)
+  * GH-50000 - [C++][FlightRPC] Use grpcpp/grpcpp.h not
+    grpcpp/version_info.h for old gRPC (#50001)
+  * GH-50010 - [C++][Parquet] Fix undefined behavior in
+    TypedColumnWriterImpl::UpdateLevelHistogram (#50011)
+  * GH-50043 - [C++][Python] Fix hash_any/hash_all on sliced
+    boolean arrays (#50094)
+  * GH-50051 - [C++][Parquet] Avoid size overflow in
+    WKBBuffer::ReadCoords (#50036)
+  * GH-50065 - [Packaging][CI][C++] Drop unused libboost-system-dev
+    (#50066)
+  * GH-50098 - [C++][Parquet] Enable filesystem support when
+    building Parquet utilities (#50099)
+  * GH-50103 - [C++] Missing iosfwd include in
+    cpp/src/arrow/util/string_util.h (#50101)
+  * GH-50105 - [C++][Python] Fix sliced sparse union null checks
+    (#50108)
+  * GH-50109 - [C++][Gandiva] Fix incorrect error messages (#50110)
+  * GH-50113 - [C++][Python] Fix count for sliced union arrays
+    (#50114)
+  * GH-50129 - [C++][Parquet] Enable ARROW_JSON automatically with
+    PARQUET_REQUIRE_ENCRYPTION (#50130)
+  * GH-50149 - [C++][Parquet] Avoid process abort when encoding
+    fuzzer encounters OOM (#50150)
+  * GH-50156 - [C++][Parquet] Ignore min/max for unknown column
+    order (#50157)
+  * GH-50173 - [C++][Gandiva] Install tzdata-legacy to fix failing
+    TestTime.TestCastTimestampWithTZ from
+    gandiva/precompiled/time_test.cc (#50211)
+  * GH-50204 - [C++] Fix S3FileSystem::MakeUri dropping the bucket
+    on Windows MinGW (#50205)
+  * GH-50210 - [C++][Gandiva] Replace precompiled std::string to
+    fix _Unwind_Resume JIT failure on JNI builds (#50214)
+  * GH-50212 - [C++][Parquet] Add PrintTo to fix failure in
+    parquet-internals-test on test-conda-cpp-valgrind (#50213)
+  * GH-50218 - [C++][FlightRPC] Add missing sudo to fix ODBC Linux
+    job (#50307)
+  * GH-50240 - [C++] Make IPC message decoding stricter (#50235)
+  * GH-50294 - [C++][R] Missing typename in ulp_distance.cc breaks
+    clang-15 builds (#50296)
+  * GH-50295 - [C++][R] #include in vector_select_k.cc breaks macOS
+    CRAN and wasm builds (#50297)
+  * GH-50300 - [C++][CI] Update include to
+    generated/Message_generated.h so Meson is able to find (#50301)
+  * GH-50330 - [C++][R][Parquet] Add missing typename in
+    RleBitPackedDecoderGetRunDecode (#50332)
+  ## New Features and Improvements
+  * GH-19667 - [C++][Gandiva] Use arrow::Resultstd::string for
+    RegexUtil::SqlLikePatternToPcre (#49879)
+  * GH-22232 - [C++][Python] Introduce optional default_column_type
+    parameter (#47663)
+  * GH-32381 - [C++] Improve error handling for hash table merges
+    (#49512)
+  * GH-38849 - [C++][Parquet] Add support for list view and large
+    list view (#50160)
+  * GH-40062 - [C++][Python] Conversion of Table to Arrow Tensor
+    (#41870)
+  * GH-45331 - [C++] Use xsimd for CPU feature detection (#49940)
+  * GH-45819 - [C++] Add OptionalBitmapAnd utility (#49848)
+  * GH-46369 - [C++] Add key-value pairs to the FileSystemFactory
+    interface and to S3Options (#50044)
+  * GH-46914 - [C++][FlightSQL] Remove boost/algorithm/string.h
+    dependency (#50241)
+  * GH-47769 - [C++] SVE dynamic dispatch (#49756)
+  * GH-47876 - [C++][FlightRPC] ODBC: macOS .PKG installer for
+    Intel and ARM (#49766)
+  * GH-48068 - [C++][FlightRPC] Linux ODBC: Configure Dremio
+    instance to allow remote testing (#49695)
+  * GH-48408 - [C++] Enable ULP-based float comparison (#49290)
+  * GH-49537 - [C++][FlightRPC] Windows CI to Support ODBC DLL &
+    MSI Signing (#49603)
+  * GH-49552 - [C++][FlightRPC][ODBC] Enable ODBC test build on
+    Linux (#49668)
+  * GH-49651 - [C++][FlightRPC] Fix ODBC Linux test segmentation
+    fault (#49688)
+  * GH-49686 - [C++][FlightRPC][ODBC][Release] Create signing
+    script for Windows FlightSQL ODBC build (#49788)
+  * GH-49720 - [C++] Optimize base64_decode validation using lookup
+    table (#49748)
+  * GH-49723 - [C++][FlightRPC][ODBC] Update ODBC Documentation
+    (#49851)
+  * GH-49772 - [C++] Bump bundled mimalloc version (#49801)
+  * GH-49776 - [CI][C++] Install libc6-dbg in apt-based Linux C++
+    images (#50034)
+  * GH-49783 - [C++][FlightRPC][ODBC] Reuse connections across test
+    suite (#49784)
+  * GH-49785 - [C++][FlightRPC][ODBC] Get ODBC tests passing on
+    Linux (#49786)
+  * GH-49789 - [C++] Use CMAKE_INSTALL_DOCDIR instead of static
+    share/doc/${PROJECT_NAME} (#49790)
+  * GH-49805 - [C++][Parquet] Avoid unbounded temporary allocation
+    in DeltaBitPackDecoder::DecodeArrow (#49806)
+  * GH-49835 - [C++] A constexpr dynamic dispatch with static
+    dispatch when possible (#49840)
+  * GH-49898 - [C++][CI] Use mold in more builds (#49899)
+  * GH-49918 - [C++][Parquet] Catch std::vector allocation errors
+    in encoding fuzzer (#49919)
+  * GH-49921 - [C++] Bump xsimd to 14.2.0 (#49922)
+  * GH-49938 - [C++] Bump bundled c-ares to 1.34.6 (#49939)
+  * GH-49952 - [C++][Gandiva] Use timegm in date_time_test
+    utilities (#49953)
+  * GH-49959 - [C++][Parquet] Avoid unbounded temp alloc in
+    BYTE_STREAM_SPLIT decoder (#49960)
+  * GH-50005 - [C++] Use FetchContent for RapidJSON (#50006)
+  * GH-50007 - [C++][Parquet] Add bloom filter folding to
+    automatically size SBBF filters (#50008)
+  * GH-50026 - [C++][Parquet] SIMD-accelerate SBBF probe via
+    branchless autovec (#50030)
+  * GH-50046 - [CI][C++] Improve caching with
+    apache/infrastructure-actions/stash and more general cache keys
+    (#50047)
+  * GH-50052 - [CI][C++] Bump vcpkg to newest version (#50053)
+  * GH-50054 - [C++][IPC] Validate indices buffer size in
+    ReadSparseCOOIndex (#50055)
+  * GH-50057 - [C++] Avoid signed overflow in Decimal FromString
+    exponent (#50058)
+  * GH-50063 - [C++] Validate buffer size for row-major tensors
+    (#50064)
+  * GH-50075 - [C++][Gandiva] fix buffer overrun in to_hex
+    int32/int64 (#50076)
+  * GH-50077 - [C++][IPC] Avoid int64 overflow in
+    ReadSparseCSXIndex (#50038)
+  * GH-50078 - [C++][ORC] Avoid signed overflow when converting
+    timestamps (#50035)
+  * GH-50083 - [C++] Access mimalloc through dynamically-resolved
+    symbols (#41128)
+  * GH-50111 - [C++][Gandiva] Improve function error messages
+    (#50112)
+  * GH-50161 - [C++][IPC] Validate CSF sparse index buffer counts
+    (#50070)
+  * GH-50162 - [C++][Parquet] Avoid int32 overflow in
+    BitPackedRunDecoder::GetBatch offset (#50089)
+  * GH-50182 - [C++][Parquet] Fix truncated min/max statistics for
+    all-infinity floating-point columns (#50183)
+  * GH-50184 - [C++][Parquet] Avoid reading past truncated
+    statistics values in FormatStatValue (#50025)
+  * GH-50189 - [C++][CI] Remove Ceph install step (#50190)
+  * GH-50197 - [C++][Python] Add "hypot" compute kernel (#50198)
+  * GH-50208 - [CI][C++][Python] Disable ccache hash_dir (#50209)
+  * GH-50216 - [C++][Parquet] Add RleBitPackedToBitmapDecoder
+    (#50217)
+  * GH-50231 - [C++] Handle unset Substrait extension mapping type
+    (#50263)
+  * GH-50237 - [C++] Migrate arrow/ipc/metadata_internal.h to
+    Result (#50245)
+  * GH-50260 - [C++] Add ComputeLogicalNullCount to ChunkedArray
+    (#50261)
+  * GH-50265 - [C++][Parquet] Update parquet.thrift to sync with
+    2.13.0 (#50266)
+  * GH-50267 - [C++][Parquet] Upgrade thrift compiler from 0.21.0
+    to 0.23.0 (#50268)
+  * GH-50275 - [C++][CSV] avoid int32 overflow in block parser
+    value counts (#50074)
+  * GH-50283 - [CI][Ruby] Switch caching to
+    apache/infrastructure-actions/stash (#50284)
+  * GH-50292 - [C++][Parquet] Avoid int64 overflow in
+    CheckReadRangeOrThrow (#50060)
+  * GH-50304 - [C++][IPC] Reject negative sparse tensor shape and
+    non-zero length (#50305)
+
+-------------------------------------------------------------------
 Tue Apr  7 07:56:24 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 23.0.1:

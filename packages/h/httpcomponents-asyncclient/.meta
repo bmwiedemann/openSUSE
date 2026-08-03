@@ -7,6 +7,5 @@ a great number of concurrent connections is more important than performance
 in terms of a raw data throughput.
 
 </description>
-  <devel project="Java:packages" package="httpcomponents-asyncclient"/>
   <url>http://hc.apache.org/</url>
 </package>

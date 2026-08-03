@@ -7,4 +7,5 @@ according to the disk space that you can put the dictionary. You should use skk-
 If you want to make a lot of English to Japanese conversions with the SKK abbrev conversion,
 you can use the english-japanese dictionary skk-jisyo.edict with skk-jisyo.l.
 If you want to strengthen place names, it is good to use place names dictionary skk-jisyo.geo together.</description>
+  <devel project="M17N" package="skkdic"/>
 </package>

@@ -1,7 +1,7 @@
 #
 # spec file for package ladish
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,16 @@
 #
 
 
+%define file_version 1.3-gfcd24852
 %define enable_gui 0
 Name:           ladish
-Version:        1+git.20210227
+Version:        1.3_gfcd24852
 Release:        0
 Summary:        LADI Session Handler
 License:        AFL-2.1 AND GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            http://ladish.org/
-Source:         %{name}-%{version}.tar.xz
+Source:         %{name}-%{file_version}.tar.bz2
 Patch0:         ladish-version.patch
 Patch1:         ladish-add-aarch64.patch
 BuildRequires:  alsa-devel
@@ -58,7 +59,7 @@ BuildRequires:  libgnomecanvasmm-devel
 LADI Session Handler or simply ladish is a session management system for JACK applications on GNU/Linux.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{name}-%{file_version}
 
 %build
 export CFLAGS="%{optflags} -Wno-error"
@@ -71,13 +72,7 @@ export CXXFLAGS="%{optflags} -Wno-unused-but-set-variable"
 /usr/bin/python3 waf install --destdir=%{buildroot}
 # We install it later correctly
 rm -r %{buildroot}/%{_datadir}/doc
-%if %{enable_gui}
-%suse_update_desktop_file -r -i gladish "AudioVideo;Midi;"
-%else
-rm %{buildroot}/%{_datadir}/applications/gladish.desktop
-rm -r %{buildroot}/%{_datadir}/icons/
-rm -r %{buildroot}/%{_datadir}/locale/
-%endif
+
 %fdupes -s %{buildroot}
 
 %post   -p /sbin/ldconfig
@@ -85,7 +80,7 @@ rm -r %{buildroot}/%{_datadir}/locale/
 
 %files
 %license COPYING afl21.txt gpl2.txt
-%doc AUTHORS NEWS README
+%doc AUTHORS NEWS
 %{_datadir}/ladish
 %{_bindir}/ladish_control
 %{_bindir}/ladishd

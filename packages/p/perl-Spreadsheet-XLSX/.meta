@@ -4,6 +4,5 @@
 Excel 2007 (.xlsx) file format. It supports styles and many of Excel's
 quirks, but not all. It populates the classes from Spreadsheet::ParseExcel
 for interoperability; including Workbook, Worksheet, and Cell.</description>
-  <devel project="devel:languages:perl" package="perl-Spreadsheet-XLSX"/>
   <url>http://search.cpan.org/dist/Spreadsheet-XLSX/</url>
 </package>

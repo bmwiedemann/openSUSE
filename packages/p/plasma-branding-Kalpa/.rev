@@ -148,4 +148,16 @@
     publishes an aarch64 build of Firefox, making it un-necessary</comment>
     <requestid>1356417</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>2e4b5e1e7c49ff14f2df5a45d49eec5c</srcmd5>
+    <version>20260612</version>
+    <time>1781879460</time>
+    <user>anag_factory</user>
+    <comment>- add 0001-add-missed-locale1-in-sddm-config.patch
+
+- Version 20260612
+  * Add cups.service.d drop-in to set SystemGroup in cups-files.conf,
+    allowing wheel group members to administer CUPS</comment>
+    <requestid>1360278</requestid>
+  </revision>
 </revisionlist>

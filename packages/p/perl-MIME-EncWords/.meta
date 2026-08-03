@@ -32,6 +32,5 @@ The fields basically decode to (sorry, I cannot approximate the non-Latin
 multibyte characters with any 7 bit sequences):
 
       Subject: ???(laziness), ????(impatience), ??(hubris)</description>
-  <devel project="devel:languages:perl" package="perl-MIME-EncWords"/>
   <url>http://search.cpan.org/~nezumi/MIME-EncWords-1.010.10/</url>
 </package>

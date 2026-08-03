@@ -1,4 +1,181 @@
 -------------------------------------------------------------------
+Tue Jul 28 13:11:56 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.0.0:
+  Added:
+  * Added Gmail REST API support: a [gmail] account backend behind the shared
+    mail commands (--backend gmail), plus a protocol-specific gmail command
+    exposing the full REST surface (profile, labels, messages, attachments,
+    drafts, threads, history, settings). Authenticates with a single OAuth 2.0
+    bearer token (gmail.auth.token.raw / .command), the only authorization
+    Gmail's REST API accepts.
+  * Added Microsoft Graph REST API support: a [msgraph] account backend behind
+    the shared mail commands (--backend msgraph), plus a protocol-specific
+    msgraph command exposing the Graph mail surface (profile, mail-folder,
+    message, attachment). Mirrors [gmail], authenticating with a single OAuth
+    2.0 bearer token.
+  * Restored the RFC 2971 ID-after-auth quirk as imap.id.{auto, fields},
+    replacing the v1.2.0 imap.extensions.id.send-after-auth flag dropped during
+    the v2 migration.
+  * Brought the m2dir backend to CLI feature parity with maildir (messages,
+    flags, envelopes). Mailbox rename and message copy / move still await
+    io-m2dir support.
+  * Added --save <MAILBOX> to messages send, mirroring the flag on messages
+    compose / reply / forward.
+  * Added --send to messages add (alias messages save), mirroring messages send --save.
+  * Added raw passthrough commands imap raw <command> and smtp raw <command>.
+  * The wizard now pre-fills mailbox.alias.* from the server, so a generated
+    account has a working default mailbox (the inbox alias, which backs
+    commands that omit -m/--mailbox) and known Sent/Drafts/Trash/… targets
+    without hand-editing ids. JMAP reads the RFC 8621 mailbox roles live over
+    the tested connection. Gmail and Microsoft Graph map their fixed
+    system-label ids (INBOX, SENT, …) and well-known folder names (inbox,
+    sentitems, …). IMAP pins the reserved INBOX only. The other special-use
+    roles await LIST RETURN (SPECIAL-USE) support in io-imap (upstream
+    imap-codec has none yet).
+  * Added the json-schema <DIR> command, which writes one JSON Schema file per
+    structured-output command (himalaya-<cmd>-<subcmd>.json) describing its
+    --json payload, so downstream tooling can validate and type Himalaya's
+    machine output. Only the schemas for compiled-in backends are emitted
+    (#547).
+  * The discovery wizard now falls back to the system DNS resolver
+    (/etc/resolv.conf on unix, the network adapters on windows) before the
+    Cloudflare default, making the resolution chain HIMALAYA_DNS_RESOLVER then
+    system then 1.1.1.1. This avoids leaking the email domain to a third-party
+    resolver and works around networks that block the default.
+  * Added local socket-proxy support: imap.server / smtp.server now accept a
+    unix:///path scheme to connect through a pre-authenticated session proxy
+    such as sirup. No SASL is negotiated over the socket (the session arrives
+    already authenticated), and a single-session proxy can back the storage
+    backend without Himalaya opening a second connection (#264).
+  Changed:
+  * Flattened the imap command tree into top-level verbs mirroring the
+    protocol's flat command list (select, create, append, store, fetch, …),
+    replacing the former mailbox / envelope / message / flag subgroups.
+  * Unified raw-message input across the messages, imap, maildir, jmap, msgraph
+    and smtp send/add commands behind a single MessageArg (file path, inline
+    raw, or piped stdin), and removed the legacy --file flag on messages add.
+  * Split the merged Account out of every client wrapper: subcommands now
+    receive account and client as sibling arguments instead of reaching through
+    client.account.
+  * Breaking: changed bare himalaya (no subcommand) to run the account wizard
+    instead of listing the default account's envelopes. Himalaya is now a
+    lower-level tool: envelope listing lives under its explicit commands, and
+    the bare invocation is the natural entry point for setting up an account.
+  * Changed the wizard to print the generated account as a ready-to-save TOML
+    document on stdout instead of writing it to disk, mirroring ortie. Redirect
+    it into your config file yourself (e.g. himalaya >
+    ~/.config/himalaya/config.toml). It runs on bare himalaya and is still
+    proposed when a command finds no config, while a config that exists but
+    lacks the requested account is now a hard error rather than a wizard
+    trigger.
+  * The account's connection is tested before the config is printed, so a bad
+    credential or endpoint stops the wizard instead of yielding a config that
+    cannot connect. The output is compact: only the [accounts.<name>] table
+    stays a section header, every other table is flattened into dotted keys
+    (imap.sasl.plain.username = …), and empty tables and defaulted values
+    (starttls, alpn, id.auto) are dropped.
+  * Reworked the wizard's account-setup flow. The discovery list now shows one
+    entry per reachable service (IMAP + SMTP, JMAP, Gmail, Microsoft Graph),
+    and the authentication method is chosen in a second, service-specific
+    prompt: the SASL mechanism (PLAIN, LOGIN, SCRAM-SHA-256, OAUTHBEARER, …)
+    for IMAP + SMTP, the HTTP scheme (Basic / Bearer) for JMAP. OAuth 2.0 is no
+    longer a dead-end list entry: it folds into the "API token" credential
+    prompt, which now offers the OS keyrings and the OAuth token brokers
+    (Ortie, pizauth, oama) together, the brokers appearing only when the
+    service advertises OAuth.
+  * The wizard now tests IMAP and SMTP as it configures them: the IMAP
+    connection is validated first, then it asks whether SMTP reuses the same
+    credentials (the two may advertise different auth), re-running the SASL
+    prompt for a distinct one, and tests SMTP last.
+  * The wizard no longer prompts for an account name. It is derived from the
+    input (the domain's first label, or the folder name). Rename it by editing
+    the printed [accounts.<name>] table key.
+  Fixed:
+  * Fixed compilation error when the wizard feature was disabled (#634).
+  * Fixed mailbox-alias resolution to apply across every shared messages
+    subcommand (add, read, reply, forward, copy, move) and the --save flag on
+    compose / reply / forward, so aliases like mailbox.alias.sent are honoured
+    before the backend call.
+  * Fixed swapped save/send success messages ("saved" printed after a pure
+    send, "sent" after a pure save).
+  Removed:
+  * Removed the [message.composer.*] / [message.reader.*] config tables and the
+    compose-with / reply-with / forward-with / mailto / read-with subcommands.
+    Richer composition now chains standalone tools such as mml into messages
+    send / add.
+  * The "stdout = MIME draft" contract was incompatible with composers spawning
+    an interactive editor, whose UI inherited the parent's piped stdout.
+  * Dropped HIMALAYA_CONFIG environment-variable support. -c/--config still
+    accepts one or more :-separated paths.
+  * Removed the account configure command (alias account edit) and its
+    per-field edit wizard. Account setup now goes through the bare himalaya
+    discovery wizard, leaving account list and account check for inspection.
+
+-------------------------------------------------------------------
+Wed Mar 25 05:44:11 UTC 2026 - munix9@googlemail.com
+
+- Update to version 1.2.0:
+  * Added
+    - Added --quiet flag (#545).
+    - Added support for custom TLS certificate.
+    - Added support for multiple config files via
+      HIMALAYA_CONFIG=path1:path2:… (#612).
+    - Added -d|--downloads-dir argument to attachment download
+      command (#559).
+    - Added View and View MIME post edit choices (#486).
+    - Made message send and template send return id (#627).
+    - Enabled shell expansion for email, IMAP and SMTP login
+      fields, which allows usage of environment variables (#632).
+  * Fixed
+    - Bumped all deps, fixing rustls-platform-verifier
+      compatibility version issue.
+    - Fixed invalid fetch with NIL body encoding (#525).
+    - Fixed freeze when sending large attachments (#593).
+    - Fixed abusive warn logs from IMAP libs (#552).
+    - Downgraded toml@0.8 due to regression (#611).
+
+- Update to version 1.1.0:
+  * Added
+    - Added -y|--yes flag for folder purge and folder delete
+      commands. [#469]
+  * Changed
+    - Put back warn the default log level. [#522]
+      Since logs are sent to stderr, warnings can be easily
+      discarded by prepending commands with RUST_LOG=off or
+      by appending commands with 2>/dev/null.
+    - Changed message.send.save-copy default to true. [#536]
+    - Changed default downloads directory. [core#1]
+  * Fixed
+    - Fixed permissions issues when using install.sh. [#515]
+    - Fixed de/serialization issues of backends' none variant.
+      [#523]
+    - Fixed list envelopes out of bound error when empty result.
+      [#535]
+    - Fixed macOS x86_64 builds. [#538]
+
+- Update to version 1.0.0:
+  The Himalaya CLI scope has changed. It does not include anymore
+  the synchronization, nor the envelope watching. These scopes
+  have moved to dedicated projects:
+
+  * Neverest CLI, CLI to synchronize, backup and restore emails
+  * Mirador CLI, CLI to watch mailbox changes
+
+  Due to the long time difference with the previous v1.0.0-beta.4
+  release, this changelog may be incomplete. The simplest way to
+  upgrade is to reconfigure Himalaya CLI from scratch, using the
+  wizard or the config.sample.toml.
+
+  Changelog:
+  https://github.com/pimalaya/himalaya/releases/tag/v1.0.0
+
+- Add desktop file, icon, completions and man pages
+- Remove cargo_config (obsolete)
+- Update _service file (use cargo_vendor, new url)
+- Clean up spec file
+
+-------------------------------------------------------------------
 Wed May 15 09:29:03 UTC 2024 - Sai Karthik Karra <kskarthik@disroot.org>
 
 - Update upstream project url in spec 

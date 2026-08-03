@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-ftp-server
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yast2-ftp-server
-Version:        5.0.0
+Version:        5.0.1
 Release:        0
 Summary:        YaST2 - FTP configuration
 License:        GPL-2.0-only
@@ -26,7 +26,6 @@ URL:            https://github.com/yast/yast-ftp-server
 
 Source0:        %{name}-%{version}.tar.bz2
 
-BuildRequires:  update-desktop-files
 # Yast2::CommandLine readonly parameter
 BuildRequires:  yast2 >= 4.2.57
 BuildRequires:  yast2-devtools >= 4.2.2

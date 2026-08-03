@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jul 30 05:36:51 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.54.3:
+  * Bug Fixes
+    - Grype DB parsing of vunnel logs fails to capture tracebacks
+      at error level [Issue #181] [PR #1083 @Eljees]
+  * Dependencies
+    -  chore(deps): Bump gitpython from 3.1.52 to 3.1.54 (#1084)
+    -  chore(deps): update anchore dependencies (#1072)
+    -  chore(deps): Bump google.golang.org/grpc from 1.80.0 to
+       1.82.1 (#1082)
+    -  chore(deps): Bump gitpython from 3.1.49 to 3.1.52 (#1081)
+
+-------------------------------------------------------------------
 Fri Jul 17 05:16:17 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.54.2:

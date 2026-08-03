@@ -14,7 +14,7 @@
 # You can contact the BCI team via https://github.com/SUSE/bci/discussions
 
 #!UseOBSRepositories
-#!ExclusiveArch: aarch64 x86_64 ppc64le s390x
+#!ExclusiveArch: aarch64 ppc64le s390x riscv64 x86_64
 #!BuildTag: opensuse/bci/openjdk-devel:%%java_version%%-%RELEASE%
 #!BuildTag: opensuse/bci/openjdk-devel:%%java_version%%
 #!BuildTag: opensuse/bci/openjdk-devel:21
@@ -27,7 +27,7 @@ RUN set -euo pipefail; \
 # cleanup logs and temporary files
 RUN set -euo pipefail; zypper -n clean -a; \
     rm -rf {/target,}/var/log/{alternatives.log,lastlog,suseconnect.log,tallylog,zypper.log,zypp/history,YaST2}; \
-    rm -rf /target/run/*; \
+    rm -rf {/target,}/run/{zypp.pid,regenerate-initrd,systemd}; \
     rm -f {/target,}/etc/{shadow-,group-,passwd-,.pwd.lock}; \
     rm -f {/target,}/usr/lib/sysimage/rpm/.rpm.lock; \
     rm -f {/target,}/var/lib/zypp/AnonymousUniqueId; \

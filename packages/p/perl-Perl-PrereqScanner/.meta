@@ -26,5 +26,4 @@ currently find the following prereqs:
 It will trim the following pragamata: 'strict', 'warnings', and 'lib'.
 'base' is trimmed unless a specific version is required. 'parent' is kept,
 since it's only recently become a core library.</description>
-  <devel project="devel:languages:perl" package="perl-Perl-PrereqScanner"/>
 </package>

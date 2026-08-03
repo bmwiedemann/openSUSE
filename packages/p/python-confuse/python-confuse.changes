@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar 24 21:06:07 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
+
+- Update to 2.2.0
+  * Drop support for Python 3.9.
+  * Ship inline type information via a `py.typed` marker for type checkers.
+  * Tighten and extend type hints across the public API, templates, and sources.
+  * Add strict mypy configuration and align tests/examples with the new typing.
+  * Include `docs` and `tests` directory in source distributions.
+- Added BuildRequires: %{python_module typing-extensions} and %{python_module pytest}
+
+-------------------------------------------------------------------
 Tue Nov 11 16:39:57 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - update to 2.1.0

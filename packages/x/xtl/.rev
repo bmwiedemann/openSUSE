@@ -110,4 +110,13 @@
     will soon become a hard error.</comment>
     <requestid>1325071</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>09079ed306c5a5be4ed840eac89b123d</srcmd5>
+    <version>0.8.2</version>
+    <time>1774555793</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.8.2:
+  * Removed warnings</comment>
+    <requestid>1342732</requestid>
+  </revision>
 </revisionlist>

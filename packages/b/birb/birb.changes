@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Jul 30 06:02:45 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 0.9.0:
+  + Add a basic readline object
+  + Depend on glib 2.80 or newer
+  + Add some UTF8 helper functions
+  + Add birb_email_is_valid
+- Update to version 0.8.1:
+  + Remove an erroneous changelog entry
+  + Fix indent in new file
+  + Implement GPollableOutputStream for BirbResponseStream
+  + Put developer-related tests in a 'dev' suite
+- Update to version 0.8.0:
+  + Cleanup license check script
+  + Add a basic readline object
+  + Move the build containers to the imfreedom organization
+  + Prepare for the new round of API development
+  + Add StringList
+  + Add a pango attribute for handling mention data
+
+-------------------------------------------------------------------
 Sun Apr  5 21:01:25 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - require main package for devel package

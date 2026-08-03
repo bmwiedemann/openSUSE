@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun 17 19:14:21 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.1
+  * mptcp: monitor: add JSON support
+  * iplink: bond_slave: print actor and partner churn state
+  * dpll: add client-side filtering for device show, pin show
+  * dpll: add pin filtering by parent-device and parent-pin
+  * tc: Add JSON output support to HFSC/QFQ/multiq
+  * ss: add support for showing TCP delack timers
+  * Remove support for hamradio protocols
+
+-------------------------------------------------------------------
 Thu Apr 16 10:25:50 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 7.0

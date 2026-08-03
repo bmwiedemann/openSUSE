@@ -20,7 +20,7 @@
 # binaries are java 8 compatible
 %define __requires_exclude java-headless
 Name:           jackson-core
-Version:        2.18.8
+Version:        2.18.9
 Release:        0
 Summary:        Core part of Jackson
 License:        Apache-2.0

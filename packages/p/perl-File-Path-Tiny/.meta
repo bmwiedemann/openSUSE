@@ -7,6 +7,5 @@ endorsement to go out and replace all use of File::Path with
 File::Path::Tiny.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-File-Path-Tiny"/>
   <url>http://search.cpan.org/dist/File-Path-Tiny</url>
 </package>

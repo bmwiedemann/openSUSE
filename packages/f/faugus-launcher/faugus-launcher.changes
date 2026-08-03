@@ -1,47 +1,48 @@
 -------------------------------------------------------------------
+Wed Jul 29 21:47:33 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Bump to version 2.0.3:
+  * Update translation template (faugus-launcher.pot)
+  * Updated translations for many languages
+  * Updated screenshots
+  * Fixed context menu background color
+  * Apply accent color to context menus
+  * Updated AppImage script
+  * Improved main screen colors
+  * Show games count in categories menu
+  * Update translation template (faugus-launcher.pot)
+  * Improved the Proton Manager
+  * Adjusted banner size
+  * Swap Banner with tabs
+  * Update translation template (faugus-launcher.pot)
+  * Updated settings labels
+  * Update translation template (faugus-launcher.pot)
+  * Reverted Settings tab + interface improvements
+  * Added recent files to backup
+  * Improved zoom slider
+  * Reposition context menu with gamepad
+  * Update translation template (faugus-launcher.pot)
+  * Replaced AddGame tabs
+  * Fixed treeview edit alignment
+  * Replaced context menu
+  * Update translation template (faugus-launcher.pot)
+  * Added Recent option
+  * Shows Steam family shared games
+  * Update translation template (faugus-launcher.pot)
+  * Added "Recent" section in the context menu
+  * Update translation template (faugus-launcher.pot)
+  * Replaced Popover with Gio
+  * Transparency fix on launcher background with some GTK themes
+  * Update release-packages.yml
+
+-------------------------------------------------------------------
 Fri Jul 24 03:20:47 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
 
 - Bump to version 2.0.2:
   * Update translation template (faugus-launcher.pot)
-  * chore(l10n): update Portuguese (Brazil) translation
-  * chore(l10n): update Arabic translation
-  * chore(l10n): update Chinese (Traditional Han script) translation
-  * chore(l10n): update Chinese (Traditional Han script) translation
-  * chore(l10n): update Italian translation
-  * chore(l10n): update Italian translation
-  * chore(l10n): update Italian translation
-  * chore(l10n): update French translation
-  * chore(l10n): update Russian translation
-  * chore(l10n): update Russian translation
-  * chore(l10n): update Romanian translation
-  * chore(l10n): update Georgian translation
-  * chore(l10n): update Georgian translation
-  * chore(l10n): update Finnish translation
-  * chore(l10n): update Finnish translation
-  * chore(l10n): update Portuguese (Brazil) translation
-  * chore(l10n): update Portuguese (Brazil) translation
-  * chore(l10n): update German translation
-  * chore(l10n): update German translation
-  * chore(l10n): update German translation
-  * chore(l10n): update Japanese translation
-  * chore(l10n): update Turkish translation
-  * chore(l10n): update Nepali translation
-  * chore(l10n): update Nepali translation
-  * chore(l10n): update Serbian translation
-  * chore(l10n): update Norwegian Bokmål translation
-  * chore(l10n): update Polish translation
-  * chore(l10n): update Polish translation
-  * chore(l10n): update Persian translation
-  * chore(l10n): update Dutch translation
-  * chore(l10n): update Chinese (Simplified Han script) translation
-  * chore(l10n): update Spanish translation
-  * chore(l10n): update Spanish translation
-  * chore(l10n): add Finnish translation
-  * chore(l10n): add French translation
+  * Updated translations for many languages
   * Update update-pot.yml
   * Update translation template (faugus-launcher.pot)
-  * Update update-pot.yml
-  * Update update-pot.yml
   * Update translation template (faugus-launcher.pot)
   * Allow protonfixes
   * Updated gamepad navigation on settings
@@ -62,8 +63,6 @@ Fri Jul 24 03:20:47 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail
   * Re-added Epic Games launcher
   * Update translation template (faugus-launcher.pot)
   * Incrementally loads images
-  * Update translation for zh-CN
-  * Update translation for zh-CN
 
 -------------------------------------------------------------------
 Tue Jul 21 06:28:30 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>

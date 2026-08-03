@@ -1,4 +1,5 @@
 <package name="pastebinit" project="openSUSE:Factory">
   <title>Pastebin it !!!</title>
   <description>This software lets you send a file or simply the result of a command directly to the pastebin you want (if it's supported) and gives you the URL in return.</description>
+  <devel project="network:utilities" package="pastebinit"/>
 </package>

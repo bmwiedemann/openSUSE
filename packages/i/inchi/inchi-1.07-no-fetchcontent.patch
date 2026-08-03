@@ -1,0 +1,25 @@
+--- a/CMakeLists.txt	2026-02-17 13:12:19.000000000 +0100
++++ b/CMakeLists.txt	2026-03-26 16:08:41.208664230 +0100
+
+@@ -9,14 +9,14 @@
+ # set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fsanitize=address")
+ # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address")
+ 
+-include(FetchContent)
+-FetchContent_Declare(
+-    googletest
+-    GIT_REPOSITORY https://github.com/google/googletest.git
+-    GIT_TAG        v1.17.0
+-)
++##include(FetchContent)
++##FetchContent_Declare(
++##    googletest
++##    GIT_REPOSITORY https://github.com/google/googletest.git
++##    GIT_TAG        v1.17.0
++##)
+ set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+-FetchContent_MakeAvailable(googletest)
++##FetchContent_MakeAvailable(googletest)
+ 
+ include(CTest)
+ include(GoogleTest)

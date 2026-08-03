@@ -1,7 +1,7 @@
 #
 # spec file for package kubectl-directpv
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,15 @@
 
 
 Name:           kubectl-directpv
-Version:        4.1.5
+Version:        4.1.6
 Release:        0
 Summary:        Kubectl plugin for the MinIO CSI driver for Direct Attached Storage
 License:        Apache-2.0
 URL:            https://github.com/minio/directpv
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) >= 1.24
+# 16.0 fails with go.mod requires go >= 1.26.0 (running go 1.26rc3; GOTOOLCHAIN=local)
+BuildRequires:  go1.26 >= 1.26.0
 
 %description
 DirectPV is a CSI driver for Direct Attached Storage. In a simpler sense, it is

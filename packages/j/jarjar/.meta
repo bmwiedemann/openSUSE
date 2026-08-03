@@ -6,5 +6,4 @@ two reasons: You can easily ship a single jar file with no external
 dependencies. You can avoid problems where your library depends on a
 specific version of a library, which may conflict with the dependencies
 of another library.</description>
-  <devel project="Java:packages" package="jarjar"/>
 </package>

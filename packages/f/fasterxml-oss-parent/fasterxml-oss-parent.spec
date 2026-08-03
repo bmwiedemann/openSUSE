@@ -1,7 +1,7 @@
 #
 # spec file for package fasterxml-oss-parent
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global oname oss-parent
 Name:           fasterxml-oss-parent
-Version:        68
+Version:        79
 Release:        0
 Summary:        FasterXML parent pom
 License:        Apache-2.0

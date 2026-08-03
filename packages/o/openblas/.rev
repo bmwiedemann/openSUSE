@@ -950,4 +950,20 @@ Currently, openSUSE:Factory:Staging:E.
   tests to non conflicting locations</comment>
     <requestid>1364948</requestid>
   </revision>
+  <revision rev="79" vrev="3">
+    <srcmd5>76fc2abca4244144473516d7e3cd9074</srcmd5>
+    <version>0.3.33</version>
+    <time>1785504423</time>
+    <user>dimstar_suse</user>
+    <comment>- Keep building the devel libraries on the &quot;serial&quot; flavour
+  with alternatives enabled, as they can be installed in
+  parallel and there is the flexiblas integration interwined
+  with them 
+
+- Build the devel libraries on the same flavour set as default for the
+  building architecture (pthreads in x86_64, openmp elsewhere)
+- On systems built without alternatives mode, ensure the various
+  libopenblas_FLAVOUR packages conflict with each other.</comment>
+    <requestid>1368371</requestid>
+  </revision>
 </revisionlist>

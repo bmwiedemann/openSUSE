@@ -5,5 +5,4 @@ Kerberos ticket. It pops up reminders when the ticket is about to
 expire.
 
 It features ticket autorenewal and supports pkinit.</description>
-  <devel project="GNOME:Apps" package="krb5-auth-dialog"/>
 </package>

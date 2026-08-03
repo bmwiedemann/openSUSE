@@ -84,4 +84,12 @@ outside of Factory
   * added esbuild-ppc64.patch</comment>
     <requestid>1333287</requestid>
   </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>6158048e0a11a573e51864dc8f9aa3c7</srcmd5>
+    <version>4.1</version>
+    <time>1772050326</time>
+    <user>anag_factory</user>
+    <comment>- Update dependencies bsc#1257836/CVE-2026-25547, bsc#1258640/CVE-2026-26996</comment>
+    <requestid>1335048</requestid>
+  </revision>
 </revisionlist>

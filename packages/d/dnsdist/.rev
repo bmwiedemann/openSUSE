@@ -253,4 +253,22 @@
   * bsc#1262546 (CVE-2026-33593): Denial of service via crafted DNSCrypt query</comment>
     <requestid>1349637</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>e16a972998bd160851743f40fb309fba</srcmd5>
+    <version>2.0.7</version>
+    <time>1785504437</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.7
+  https://www.dnsdist.org/changelog.html#change-2.0.7
+  * CVE-2026-40011: Prometheus denial of service via crafted DNS queries (bsc#1269203)
+  * CVE-2026-42004: EDNS options smuggling (bsc#1269202)
+  * CVE-2026-42005: Insufficient input validation of internal web server (bsc#1269201)
+  * CVE-2026-40208: Denial of service via DoH3 queries (bsc#1269207)
+  * CVE-2026-40209: Denial of service via IXFR queries (bsc#1269206)
+  * CVE-2026-40210: Out-of-bounds read in SetMacAddrAction (bsc#1269205)
+  * CVE-2026-40211: Denial of service via crafted DoH3 queries (bsc#1269204)
+- update to 2.0.6
+  https://www.dnsdist.org/changelog.html#change-2.0.6</comment>
+    <requestid>1368386</requestid>
+  </revision>
 </revisionlist>

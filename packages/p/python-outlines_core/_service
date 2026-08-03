@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<services>
+  <service mode="manual" name="download_files" />
+  <service name="cargo_vendor" mode="manual">
+     <param name="src">outlines_core-*.tar.gz</param>
+     <param name="method">registry</param>
+     <param name="update">true</param>
+     <param name="compression">zst</param>
+     <param name="no-root-manifest">false</param>
+     <param name="cargotoml">Cargo.toml</param>
+  </service>
+</services>

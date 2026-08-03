@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 23 09:21:09 UTC 2026 - Tobias Klausmann <tobias.klausmann@freenet.de>
+
+- Fix cmake *tagets.cmake and zlib.pc for the compat build, as the target dir
+  {_libdir} is manually changed in the spec file to {_libdir}/zlib-ng-compat,
+  we have to manually adjust the directory in the devel files as well.
+
+-------------------------------------------------------------------
 Tue Mar 17 08:48:53 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.3.3:

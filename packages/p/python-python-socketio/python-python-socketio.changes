@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun 29 13:42:37 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 5.16.3
+  * Catch all exceptions in redis and rabbitmq client managers #1581
+- Update to 5.16.2 (fixes CVE-2026-48804, bsc#1269491)
+  * Prevent unnecessary resource allocations #1574
+  * Add zizmor to CI builds #1570
+
+-------------------------------------------------------------------
 Thu Mar 12 08:22:42 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.16.1:

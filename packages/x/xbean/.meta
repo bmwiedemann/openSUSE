@@ -8,6 +8,5 @@ without JMX code, lifecycle and class loader management, and a Spring
 integration is included.
 
 </description>
-  <devel project="Java:packages" package="xbean"/>
   <url>http://geronimo.apache.org/xbean/</url>
 </package>

@@ -52,4 +52,18 @@
   *</comment>
     <requestid>1143266</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5074dacd97a3fa7ea932ebd7e56d864c</srcmd5>
+    <version>4.5.0</version>
+    <time>1775743766</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.5.0:
+  * Improved build system with many more (and improved) type
+    hints.
+  * Fixed visible control characters issue on Windows. Fixes #293
+  * Included fix for the progressbar command
+  * Greatly improved Windows (colour) support and fixed several
+    Windows bugs</comment>
+    <requestid>1345293</requestid>
+  </revision>
 </revisionlist>

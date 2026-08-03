@@ -6,6 +6,5 @@ stemmed words as appropriate to the selected locale.
 
 You can import some or all of the class methods.
   </description>
-  <devel project="devel:languages:perl" package="perl-Lingua-Stem"/>
   <url>http://search.cpan.org/perldoc?Lingua::Stem</url>
 </package>

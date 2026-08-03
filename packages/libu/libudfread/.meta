@@ -5,5 +5,6 @@ intended for software that want to support Blu-ray playback (such as VLC and
 MPlayer). We, the authors of this library, do not condone nor endorse piracy.
 
 </description>
+  <devel project="multimedia:libs" package="libudfread"/>
   <url>http://www.videolan.org/developers/libbluray.html</url>
 </package>

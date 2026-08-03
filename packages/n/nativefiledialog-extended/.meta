@@ -8,5 +8,6 @@ dependencies like wxWidgets and Qt.
 This library is based on Michael Labbe's Native File Dialog  
 (mlabbe/nativefiledialog).
   </description>
+  <devel project="devel:libraries:c_c++" package="nativefiledialog-extended"/>
   <url>https://github.com/btzy/nativefiledialog-extended</url>
 </package>

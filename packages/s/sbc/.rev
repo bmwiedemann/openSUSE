@@ -85,4 +85,15 @@
     <comment></comment>
     <requestid>1271857</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>5b880024fc8bce64d536c5af5200c407</srcmd5>
+    <version>2.2</version>
+    <time>1774555666</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.2:
+  * Fix issue when compiling with C23 requirements.
+
+- add fix-build-on-non-x86.patch: fix build on non-x86</comment>
+    <requestid>1342507</requestid>
+  </revision>
 </revisionlist>

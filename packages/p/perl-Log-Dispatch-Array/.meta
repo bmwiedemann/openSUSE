@@ -5,6 +5,5 @@ to an array reference. This is probably only useful for testing the
 logging of your code.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-Log-Dispatch-Array"/>
   <url>http://search.cpan.org/dist/Log-Dispatch-Array</url>
 </package>

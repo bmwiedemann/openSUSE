@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jul 14 19:56:28 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.69.0:
+  * regenerate google-cloud-spanner
+  * add asynchronous code snippets and minor cleanup change
+  * drop Python 3.7-3.9 support and regenerate
+  * log client configuration at startup
+  * update API sources and regenerate
+  * replace insecure pickle with json for partition deserialization
+  * Add last statement option samples
+  * correctly parse type assertions in extends clause
+  * provide a hub when traversing a File or Program and no parentPath is given
+
+-------------------------------------------------------------------
 Wed May  6 13:03:39 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.65.0

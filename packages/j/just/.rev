@@ -716,4 +716,161 @@
   + Add cached recipes (forwarded request 1362438 from rrahl0)</comment>
     <requestid>1362439</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>5c3ce61d65de6858312c9cf71e3944aa</srcmd5>
+    <version>1.57.0</version>
+    <time>1785504464</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.57.0:
+  + Pass arguments to cmd.exe without escaping
+  + split('') splits into characters
+  + Accept markdown justfiles found by name
+  + Make [env] variables visible to shell() invocations
+  + Forbid duplicate groups
+  + Forbid option names beginning with -
+  + Don't accept option arguments starting with -= or --=
+  + Reject empty alphabet in choose() regardless of count
+  + Forbid [arg(flag)] with [arg(pattern)]
+  + Add extension to cache key
+  + Don't reevaluate lazy assignments in user-defined functions
+  + Don't print parenthesis around dependencies without arguments
+  + Accept override paths containing module aliases
+  + Fix line number in error message after multi-line interpolation
+  + Don't execute dotenv commands during dry run
+  + Only run dotenv-command in root module
+  + Detect module cycle when path uses ..
+  + Recipes with [arg(min)] greater than zero cannot be default
+  + Avoid panic in ambiguous module file error
+  + Consider value when checking for setting conflicts
+  + Ignore disabled indentation settings
+  + Reject duplicate function parameters
+  + Allow defaulted option before required positional parameter
+  + Truncate cache entry before writing
+  + Ignore absent optional modules under --allow-missing
+  + Add len() function
+  + Avoid panic when passed parentless justfile path
+  + Fix flags and options link in readme
+  + Add else if to grammar
+  + Remove function context macro
+  + Remove on-demand assignment evaluation
+  + Compute assignment references for --evaluate
+  + Evaluate const assignments in evaluation order
+  + Collect references transitively
+  + Serialize dependency path in JSON
+  + Print full recipe path for alias targets in --show and --usage
+  + Reject unexpected arguments to --completions
+  + Use recipe path in usage hint
+  + Trim non-cycle prefix from circular variable dependency errors
+  + Suggest similarly named submodules
+  + Report disabled recipes and aliases in --show and --usage
+  + Respect --no-highlight when echoing script recipes
+  + Report undefined variables in order
+  + Report correct final recipe in circular dependencies
+  + Ignore files with module directory name
+  + Dump unexports in alphabetical order
+  + Reject extra arguments to --groups
+  + Reject search-path-prefixes with --global-justfile
+  + Refactor AST display
+  + Format justfile with no items as empty string
+  + Return search errors other than NotFound during fallback
+  + Propagate more exit codes
+  + Use interpreter file name to determine script shell kind
+  + Resolve module aliases in --evaluate paths
+  + Trim and ignore empty doc comments
+  + Blame second recipe for duplicate [default] attribute
+  + Visit modules in order in --choose
+  + Include path in canonicalize() error message
+  + Remove fuzzer
+- Update to version 1.56.0:
+  + Omit authorization header in install script if GITHUB_TOKEN is empty
+  + Evaluate assignments in dependency order
+  + Do not run shell() commands during dry run
+  + List aliases for recipes in other modules
+  + Don't unindent format strings twice
+  + Include doc comments and attributes in --show
+  + Don't resolve submodule variables to parent module variables
+  + Show dependency paths
+  + Reject shell-expanded string identifier in format string interpolation
+  + Resolve variables in [cache] expressions
+  + Preserve blank CRLF lines between recipes
+  + Report mixed leading whitespace in recipe bodies
+  + Preserve eager keyword in --dump and --fmt
+  + Export [env] variables to recipe bodies
+  + Don't add trailing space to empty doc comments
+  + Preserve CRLF when unindenting blank lines
+  + Include parameter multiple in dump
+  + Skip private variables when calculating --evaluate padding
+  + Don't show flag placeholders in --usage
+  + Fix is_dependency() in [confirm] expressions
+  + Skip private modules when choosing
+  + Don't re-evaluate assignments in user-defined functions
+  + Forbid format-string backticks
+  + Don't use shebangs as doc comments
+  + Don't deduplicate ASTs
+  + Allow escaping CRLF in strings
+  + Ignore sigils on continuation lines
+  + Catch circular references though function calls
+  + Resolve references in module [doc] attributes
+  + Avoid exponential blowup when traversing dependencies
+  + Handle invalid shebang lines
+  + Fix variable shadowing
+  + Handle timestamp formatting errors
+  + Display correct mismatched delimiter in format string
+  + Handle unterminated format string
+  + Error on end-of-file after backslash
+  + Make path_exists('') return false
+  + Make set ignore-comments only apply to shell recipes
+  + Remove !include error
+  + Allow [doc] to be const expression
+  + Allow conditional attributes on all items
+  + Resolve module aliases in --show, --list, and --usage
+  + Add num_jobs() function
+  + Add --jobs option to limit parallelism
+  + Add indentation setting
+  + Add [arg(min)]
+  + Add [arg(max)]
+- Update to version 1.55.1:
+  + Fix panic when empty path is passed to --show and --usage
+  + Upgrade sha2 to 0.11.0
+  + Remove Test::test_round_trip()
+  + Remove round-trip testing
+- Update to version 1.55.0:
+  + Fix forwarded dependency flag value
+  + Allow [arg(pattern)] to be a list
+  + Allow [arg(help)] to be expression
+  + Allow [arg(pattern)] to be expression
+  + Add stream gates to style()
+  + Accept -F for --dotenv-filename
+  + Add just_version() function
+  + Add [arg(multiple)]
+  + Allow combining short options
+  + Allow variadic parameters to be options
+  + Default [arg(short)] to first character of parameter name
+  + Add support for RGB and fixed colors to style()
+  + Improve style() function
+  + Add set minimum-version
+  + Add module aliases
+  + Add example to cached recipes readme
+  + Fix readme heading levels
+  + Move Friendly Admonitions higher in Cached Recipes section
+  + Rename test helper functions
+  + Simplify tests
+  + Use assert_eval_eq in tests
+  + Expand readme intro list
+  + Organize readme into sections
+  + Rename option tests
+  + Move option application to switch.apply()
+  + Document that [arg(help)] may be a list
+  + Move override processing out of Analyzer
+  + Add ConstEvalError
+  + Remove ModuleAlias
+  + Chain tests
+  + Remove temptree dependency
+  + Simplify show tests
+  + Remove unnecessary tab escapes
+  + Indent Test::write() strings
+  + Document cache key printing
+  + Remove generic argument from Count (forwarded request 1368313 from Oppzippy)</comment>
+    <requestid>1368425</requestid>
+  </revision>
 </revisionlist>

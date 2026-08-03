@@ -1,0 +1,7 @@
+-------------------------------------------------------------------
+Sun Jul 12 19:11:55 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package python-outlines_core 0.2.14
+  * Rust core of the Outlines structured-generation library, exposing
+    the Guide, Index and Vocabulary types plus JSON-schema to regex
+    conversion used to constrain language-model output

@@ -1,4 +1,5 @@
 <package name="gamescope-session-plus" project="openSUSE:Factory">
   <title>Gamescope Session</title>
   <description>Steam Big Picture Mode session based on gamescope for ChimeraOS</description>
+  <devel project="games:tools" package="gamescope-session-plus"/>
 </package>

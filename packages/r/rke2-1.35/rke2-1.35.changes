@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jul  1 09:19:52 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.35.6+rke2r1:
+  * This release updates Kubernetes to v1.35.6, and fixes a number
+    of issues.
+  * Details see
+    https://github.com/rancher/rke2/releases/tag/v1.35.6+rke2r1
+  * Warning
+    This release upgrades Traefik chart to v40.x which includes a
+    breaking change for the ingress-nginx migration: the provider
+    name changes from kubernetesIngressNginx to
+    kubernetesIngressNGINX. Check
+    https://github.com/traefik/traefik-helm-chart/releases/tag/v40.0.0
+    for more details
+
+-------------------------------------------------------------------
 Tue Jun  2 04:53:02 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.35.5+rke2r2:

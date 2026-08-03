@@ -4,8 +4,8 @@
     <param name="url">https://github.com/docker/docker-credential-helpers</param>
     <param name="exclude">.git</param>
     <param name="filename">docker-credential-helpers</param>
-    <param name="versionformat">0.7.0</param>
-    <param name="revision">v0.7.0</param>
+    <param name="versionformat">0.9.8</param>
+    <param name="revision">v0.9.8</param>
     <param name="changesgenerate">enable</param>
   </service>
   <service name="recompress" mode="disabled">

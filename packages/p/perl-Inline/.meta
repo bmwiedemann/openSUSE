@@ -4,5 +4,4 @@
 like C, C++, Java, Python, Tcl and even Assembly. You don't need to
 compile anything. All the details are handled transparently, so you can
 just run your Perl script like normal.</description>
-  <devel project="devel:languages:perl" package="perl-Inline"/>
 </package>

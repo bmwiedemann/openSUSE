@@ -4,6 +4,5 @@
 depth and to delete an entire directory subtree from the filesystem.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-File-Path"/>
   <url>http://search.cpan.org/dist/File-Path/</url>
 </package>

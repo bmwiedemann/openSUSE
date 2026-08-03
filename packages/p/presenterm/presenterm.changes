@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Feb 20 07:22:37 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.16.1:
+  New features:
+  * Allow italic to be used as well as italics in theme (#847).
+  Fixes:
+  * Render modals at the center of the screen (#848).
+  Docs:
+  * Add styling docs to slide_title (#845)
+  * Describe slide titles and headings better (#846).
+
+-------------------------------------------------------------------
 Mon Feb 16 08:59:36 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.16.0:

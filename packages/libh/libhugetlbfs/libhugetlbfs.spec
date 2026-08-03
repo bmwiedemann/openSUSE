@@ -1,7 +1,7 @@
 #
 # spec file for package libhugetlbfs
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define my_make_flags V=1 CFLAGS="%{optflags} -fPIC" LDFLAGS="-pie" BUILDTYPE=NATIVEONLY PREFIX=%{_prefix} LIBDIR32=%{_libdir} DESTDIR=%{buildroot}
 Name:           libhugetlbfs
-Version:        2.24.0.g1322884
+Version:        2.24.9.ga83fbb2
 Release:        0
 Summary:        Helper library for the Huge Translation Lookaside Buffer Filesystem
 License:        LGPL-2.1-or-later

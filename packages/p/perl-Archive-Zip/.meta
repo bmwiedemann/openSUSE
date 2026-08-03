@@ -19,5 +19,4 @@ write the compressed streams inside the files.
 
 One can use the Archive::Zip::MemberRead manpage to read the zip file
 archive members as if they were files.</description>
-  <devel project="devel:languages:perl" package="perl-Archive-Zip"/>
 </package>

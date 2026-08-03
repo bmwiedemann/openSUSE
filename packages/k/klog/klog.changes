@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Feb 25 09:31:45 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 7.1:
+  * [ FEATURE ] Include warnings in JSON output of klog json
+    subcommand.
+  * [ FEATURE ] When using klog report --fill and combining this
+    with a periodic date filter such as --this-week, --last-month
+    or --period 2021-05, fill up the entire queried period, rather
+    than just the gaps in between.
+  * [ FEATURE ] Display warning when using --diff together with
+    entry-level filtering, as that likely yields nonsensical
+    results.
+  * [ FIX ] Revise and define behaviour when applying filters to
+    empty records (i.e., records that don’t contain any time
+    entries).
+
+-------------------------------------------------------------------
 Mon Feb 09 06:18:51 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 7.0:

@@ -32,4 +32,15 @@
     <comment></comment>
     <requestid>1323497</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>7adea26674571283946e194ffebfb136</srcmd5>
+    <version>0.5.4</version>
+    <time>1774555711</time>
+    <user>anag_factory</user>
+    <comment>- Change how we unpack this to make sure we're doing so correctly.
+- Add patch support-numpy-2.4.patch:
+  * Support Numpy 2.4 changes.
+- Ship the licenses and the README in the binary packages.</comment>
+    <requestid>1342663</requestid>
+  </revision>
 </revisionlist>

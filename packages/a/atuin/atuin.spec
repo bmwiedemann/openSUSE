@@ -17,7 +17,7 @@
 
 
 Name:           atuin
-Version:        18.17.1
+Version:        18.18.1
 Release:        0
 Summary:        Magical shell history
 License:        MIT
@@ -77,6 +77,7 @@ Nushell command line completion support for %{name}.
 %autosetup -a1 -p1
 # Git does not resolve symlinks
 cp -v CONTRIBUTORS crates/atuin/src/command/CONTRIBUTORS
+ln -s ../../../vendor/bash-preexec crates/atuin/vendor/bash-preexec
 
 %build
 %{cargo_build} --no-default-features -F "atuin/client,atuin/sync,atuin/daemon,atuin/clipboard"

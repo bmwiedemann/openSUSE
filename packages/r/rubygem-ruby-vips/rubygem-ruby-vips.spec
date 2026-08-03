@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-ruby-vips
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,13 +24,13 @@
 #
 
 Name:           rubygem-ruby-vips
-Version:        2.2.2
+Version:        2.3.0
 Release:        0
 %define mod_name ruby-vips
 %define mod_full_name %{mod_name}-%{version}
 # MANUAL
 %define requires_file() %( readlink -f '%*' | LC_ALL=C xargs -r rpm -q --qf 'Requires: %%{name} >= %%{epoch}:%%{version}\\n' -f | sed -e 's/ (none):/ /' -e 's/ 0:/ /' | grep -v "is not")
-BuildRequires: libvips-devel
+BuildRequires:  libvips-devel
 # /MANUAL
 BuildRequires:  ruby-macros >= 5
 BuildRequires:  %{ruby >= 2.0.0}
@@ -42,7 +42,7 @@ Summary:        A fast image processing library with low memory needs
 License:        MIT
 
 %description
-ruby-vips is a binding for the libvips image processing library. It is fast 
+ruby-vips is a binding for the libvips image processing library. It is fast
 and it can process large images without loading the whole image in memory.
 
 %prep

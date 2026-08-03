@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-reipl
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yast2-reipl
-Version:        5.0.0
+Version:        5.0.1
 Release:        0
 Summary:        YaST2 - IPL loader
 License:        GPL-2.0-only
@@ -26,7 +26,6 @@ URL:            https://github.com/yast/yast-reipl
 
 Source0:        %{name}-%{version}.tar.bz2
 
-BuildRequires:  update-desktop-files
 BuildRequires:  yast2
 BuildRequires:  yast2-devtools >= 4.2.2
 BuildRequires:  rubygem(%{rb_default_ruby_abi}:rspec)

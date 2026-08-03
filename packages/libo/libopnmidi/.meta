@@ -1,5 +1,6 @@
 <package name="libopnmidi" project="openSUSE:Factory">
   <title>Header files for libOPNMIDI</title>
   <description>Development and header files for libOPNMIDI.</description>
+  <devel project="multimedia:apps" package="libopnmidi"/>
   <url>https://github.com/Wohlstand/libOPNMIDI</url>
 </package>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul  7 07:07:07 UTC 2026 - olaf@aepfle.de
+
+- Update to version 1.4.5
+  (bsc#1270492, CVE-2026-42327, bsc#1270542, CVE-2026-41677,
+   bsc#1270705, CVE-2026-41678, bsc#1270747, CVE-2026-41681,
+   bsc#1270839, CVE-2026-41898, bsc#1270932, CVE-2026-44662,
+   bsc#1270952, CVE-2026-45784)
+
+-------------------------------------------------------------------
 Fri Sep 26 16:17:25 UTC 2025 - Jeff Mahoney <jeffm@suse.com>
 
 - Add header from kernel configs to blobs to fix image builds

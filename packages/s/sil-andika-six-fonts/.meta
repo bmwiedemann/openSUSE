@@ -13,5 +13,6 @@ change the doc to use it instead of Andika, and avoid any
 issues with reflow. Then you can use Andika v7 for new
 documents and benefit from the many improvements in this and
 future versions.</description>
+  <devel project="M17N:fonts" package="sil-andika-six-fonts"/>
   <url>https://software.sil.org/andika/</url>
 </package>

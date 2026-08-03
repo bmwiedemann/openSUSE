@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Mar 18 13:48:07 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 20:
+  * switch to stable repo
+  * update the release notes
+  * #419 support new subsystem namespace
+  * fix window dragging: do not return from jQuery canvas mouse handlers
+  * fix #412: remove unescape(encodeURIComponent(...)) that corrupts Unicode clipboard text
+  * explicitly catch decode errors and report the failure
+  * remove debug logging
+  * forgot to bump version
+  * update the release notes
+  * #406 use Javascript name until translate_modifiers() is called
+  * #406 also parse 'modifiers-keynames' to correctly map modifiers with xpra > v6.4
+  * #406 move modifier mapping where it belongs
+  * remove debug logging
+  * #406 make it possible to override modifier mappings and use more sensible defaults
+  * derp
+  * #407 don't decorate desktop windows
+  * #407 remove undocumented and overly complicated changes from #131
+  * #407 this should now be redundant
+  * #407 correctly detect desktop windows and make them fullscreen
+  * when decorations are added or removed, update the internal position
+  * windowtype is now a list, same fix as ff25ece6e46af0f8ce8df60e54724e85f8ea6973
+  * class-instance attribute may not exist
+  * windowtype is a list now: aadf9b05dbc8a5e87a709c78d36449089de79968
+  * add middle mouse emulation
+  * xpra 6.4 waits for a keymap-changed packet to configure the keyboard
+  * fix: add null check for navigator.keyboard in toggle_fullscreen()
+
+-------------------------------------------------------------------
 Sun Dec 07 22:37:33 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to version 19:

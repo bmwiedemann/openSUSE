@@ -25,4 +25,19 @@
 - Use modern RPM macros to express version dependencies (forwarded request 1164822 from glaubitz)</comment>
     <requestid>1165218</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2e5132e0972bdfe6eecd133127945f9a</srcmd5>
+    <version>1.0.0~b2</version>
+    <time>1784126390</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.0b2
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Drop extra LICENSE.txt as upstream now ships its own
+- Rename LICENSE.txt to LICENSE in %files section
+- Update Requires from pyproject.toml (forwarded request 1365505 from glaubitz)</comment>
+    <requestid>1365688</requestid>
+  </revision>
 </revisionlist>

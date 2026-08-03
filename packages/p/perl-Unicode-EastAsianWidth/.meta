@@ -5,5 +5,4 @@
 It exports the following functions to the caller's scope, to be used by Perl's Unicode matching system: 'InEastAsianFullwidth', 'InEastAsianHalfwidth', 'InEastAsianAmbiguous', 'InEastAsianNarrow', 'InEastAsianWide', 'InEastAsianNeutral'.
 
 In accord to TR11 cited above, two additional context-sensitive properties are exported: 'InFullwidth' (union of 'Fullwidth' and 'Wide') and 'InHalfwidth' (union of 'Halfwidth', 'Narrow' and 'Neutral').</description>
-  <devel project="devel:languages:perl" package="perl-Unicode-EastAsianWidth"/>
 </package>

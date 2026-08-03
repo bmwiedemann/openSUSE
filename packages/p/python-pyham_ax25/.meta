@@ -9,5 +9,6 @@ The ax25.ports and ax25.socket modules provide facilities for working with
 the Linux native AX.25 stack. Unlike other Python AX.25 packages, this includes
 the creation and use of connected-mode sessions, and thus it is not limited to
 unproto (UI frame) usage.</description>
+  <devel project="hamradio" package="python-pyham_ax25"/>
   <url>https://pyham-ax25.readthedocs.io/en/latest/</url>
 </package>

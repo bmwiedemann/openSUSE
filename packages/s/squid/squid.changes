@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Jun 17 06:05:42 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 7.6:
+  * HTTP/1.1: Transfer-Encoding:identity is now prohibited
+  * Harden peerDigestSwapInMask against an invalid cache digest
+    reply
+  * Fix parsing of legacy url_rewrite_program responses
+  * Fix handling of truncated legacy errorpage %codes
+  * Honor reply_header_max_size for received FTP control responses
+  * Improve parsing of certain FTP directory listing formats
+  * Support the Nettle 4.0 md5_digest API
+  * Reject excessively large FTP control replies
+- Drop old_nettle_compat.patch: it was only applied on
+  suse_version < 1500 (EOL distros) and no longer applies to the
+  current sources
+
+-------------------------------------------------------------------
+Tue May 05 10:51:15 UTC 2026 - Adam Majer <amajer@suse.com>
+
+- Update to version 7.5:
+  - ICP: Fix HttpRequest lifetime for ICP v3 queries (#2377)
+  - ICP: Fix validation of packet sizes and URLs (#2220)
+  - Do not escape malformed URI twice when sending ICP errors (#2374)
+  - Bug 5501: Squid may exit when ACLs decode an invalid URI (#2145)
+
+-------------------------------------------------------------------
 Wed Mar  4 15:29:26 UTC 2026 - Adam Majer <adam.majer@suse.de>
 
 - Update to 7.4
@@ -29,7 +55,7 @@ Since version 6, some previously deprecated features have been removed:
  * Ident protocol support
  * basic_smb_lm_auth and ntlm_smb_lm_auth helpers - use Samba's ntlm_auth instead
 
-- Update to 7.3
+- Update to 7.3 (bsc#1250627, CVE-2025-59362, bsc#1250223)
   - Regression Bug 5520: ERR_INVALID_URL for CONNECT host with leading digit
   - Quit NTLM authenticate() on missing NTLM authorization header
   - Fix Auth::User::absorb() IP list transfer logic

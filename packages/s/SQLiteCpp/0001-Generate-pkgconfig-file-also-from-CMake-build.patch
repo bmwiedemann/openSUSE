@@ -1,0 +1,53 @@
+From 613e338c59aa92d53d7a88f96aabc684dc1eeac4 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Fri, 3 Apr 2026 22:31:16 +0200
+Subject: [PATCH] Generate pkgconfig file also from CMake build
+
+---
+ CMakeLists.txt              | 10 ++++++++++
+ cmake/sqlitecpp.pc.in | 11 +++++++++++
+ 2 files changed, 21 insertions(+)
+ create mode 100644 cmake/sqlitecpp.pc.in
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 9d853c9..c2b048d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -381,6 +381,17 @@ if (SQLITECPP_INSTALL)
+     ${CMAKE_CURRENT_BINARY_DIR}/cmake/${PROJECT_NAME}Config.cmake
+     ${CMAKE_CURRENT_BINARY_DIR}/cmake/${PROJECT_NAME}ConfigVersion.cmake
+     DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME})
++
++cmake_path(
++    RELATIVE_PATH CMAKE_INSTALL_FULL_LIBDIR
++    BASE_DIRECTORY ${CMAKE_INSTALL_PREFIX}
++    OUTPUT_VARIABLE PC_RELATIVE_LIBDIR)
++string(JOIN " -l" PC_LIBS_PRIVATE "" ${CMAKE_DL_LIBS})
++string(PREPEND PC_LIBS_PRIVATE ${CMAKE_THREAD_LIBS_INIT})
++configure_file(cmake/sqlitecpp.pc.in cmake/sqlitecpp.pc @ONLY)
++install(FILES
++    ${CMAKE_CURRENT_BINARY_DIR}/cmake/sqlitecpp.pc
++    DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig/)
+ 
+ # Optional additional targets:
+ 
+diff --git a/cmake/sqlitecpp.pc.in b/cmake/sqlitecpp.pc.in
+new file mode 100644
+index 0000000..d964000
+--- /dev/null
++++ b/cmake/sqlitecpp.pc.in
+@@ -0,0 +1,11 @@
++prefix=@CMAKE_INSTALL_PREFIX@
++includedir=${prefix}/include
++libdir=${prefix}/@PC_RELATIVE_LIBDIR@
++
++Name: sqlitecpp
++Description: a smart and easy to use C++ SQLite3 wrapper.
++Version: @PROJECT_VERSION@
++Requires.private: sqlite3
++Libs: -L${libdir} -lsqlitecpp
++Libs.private: @PC_LIBS_PRIVATE@
++Cflags: -I${includedir}
+-- 
+2.53.0
+

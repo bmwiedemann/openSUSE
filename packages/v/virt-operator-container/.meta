@@ -1,8 +1,0 @@
-<package name="virt-operator-container" project="openSUSE:Factory">
-  <title>KubeVirt operator container</title>
-  <description></description>
-  <devel project="Virtualization" package="virt-operator-container"/>
-  <build>
-    <disable arch="i586"/>
-  </build>
-</package>

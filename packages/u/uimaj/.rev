@@ -71,4 +71,12 @@
     <comment>More robust build</comment>
     <requestid>1287884</requestid>
   </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>0a748c476a9f242b8b351ee2d6673971</srcmd5>
+    <version>3.5.0</version>
+    <time>1784126087</time>
+    <user>dimstar_suse</user>
+    <comment>Use the log4j-slf4j2-impl instead of log4j-slf4j-impl</comment>
+    <requestid>1365417</requestid>
+  </revision>
 </revisionlist>

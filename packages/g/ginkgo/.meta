@@ -4,5 +4,6 @@
 systems, with a focus on solution of sparse linear systems. It is implemented
 using modern C++ (you will need an at least C++17 compliant compiler to build
 it), with GPU kernels implemented for NVIDIA, AMD and Intel GPUs.</description>
+  <devel project="science" package="ginkgo"/>
   <url>https://ginkgo-project.github.io/</url>
 </package>

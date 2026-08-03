@@ -20,7 +20,7 @@
 %bcond_with xsimd
 %define plainpython python
 # See git submodule /testing pointing to the correct revision
-%define arrow_testing_commit a871ddc17a4dd936b7aa43898d59f86a11c3a2b5
+%define arrow_testing_commit 9ff285c88565f0f6abc855918c6a342e70e4909c
 # See git submodule /cpp/submodules/parquet-testing pointing to the correct revision
 %define parquet_testing_commit e74785d85a4ecee829e1e405444d6a1b24b8bc9c
 %if %{suse_version} <= 1500
@@ -28,7 +28,7 @@
 %define gccver 13
 %endif
 Name:           python-pyarrow
-Version:        23.0.1
+Version:        25.0.0
 Release:        0
 Summary:        Python library for Apache Arrow
 License:        Apache-2.0 AND BSD-3-Clause AND BSD-2-Clause AND MIT
@@ -38,13 +38,13 @@ Source0:        apache-arrow-%{version}.tar.gz
 Source1:        arrow-testing-%{version}.tar.gz
 Source2:        parquet-testing-%{version}.tar.gz
 Source99:       python-pyarrow.rpmlintrc
-BuildRequires:  %{python_module Cython >= 3}
-BuildRequires:  %{python_module devel >= 3.9}
+BuildRequires:  %{python_module Cython >= 3.1}
+BuildRequires:  %{python_module devel >= 3.10}
+BuildRequires:  %{python_module libcst >= 1.8.6}
 BuildRequires:  %{python_module numpy-devel >= 1.25}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module scikit-build-core}
 BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  cmake >= 3.25
 BuildRequires:  fdupes
 BuildRequires:  gcc%{?gccver}-c++
@@ -163,8 +163,6 @@ donttest="$donttest or test_schema_sizeof"
 %{python_sitearch}/pyarrow
 %exclude %{python_sitearch}/pyarrow/include
 %exclude %{python_sitearch}/pyarrow/src
-%exclude %{python_sitearch}/pyarrow/lib.h
-%exclude %{python_sitearch}/pyarrow/lib_api.h
 %{python_sitearch}/pyarrow-%{version}.dist-info
 
 %files %{python_files devel}
@@ -172,7 +170,5 @@ donttest="$donttest or test_schema_sizeof"
 %license LICENSE.txt NOTICE.txt
 %{python_sitearch}/pyarrow/include
 %{python_sitearch}/pyarrow/src
-%{python_sitearch}/pyarrow/lib.h
-%{python_sitearch}/pyarrow/lib_api.h
 
 %changelog

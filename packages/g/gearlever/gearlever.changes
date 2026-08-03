@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Jul 29 20:53:28 UTC 2026 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to version 4.6.2:
+  * version bump
+  * disable config parser interpolation
+  * version bump
+  * check before update for custom args, only then apply
+  * Update it.mijorus.gearlever.metainfo.xml.in
+  * Update meson.build
+  * feat: add machine-readable list output
+  * fix: make back button visible again when multi-update finishes
+  * Update LINGUAS
+  * Add Slovak language
+  * preserve custom exec arguments on update
+  * Updated pt-PT translation with new string added
+  * version bump
+  * added prepare update status
+  * fixed missing current download property
+  * Update Project-Id-Version and Content-Type in zh_TW.po
+  * Remove 'General' translation from zh_TW.po
+  * Update LINGUAS
+  * Update LINGUAS to add Hebrew
+  * Add zh_TW translation
+  * Add Hebrew
+
+-------------------------------------------------------------------
 Mon Jun 08 14:34:21 UTC 2026 - ecsos <ecsos@opensuse.org>
 
 - Update to version 4.5.4:

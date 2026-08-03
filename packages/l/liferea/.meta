@@ -8,5 +8,4 @@ for Linux or require many extra libraries to be installed. Liferea
 tries to fill this gap by creating a fast, easy-to-use, easy-to-install
 news aggregator for GTK and GNOME.
 </description>
-  <devel project="GNOME:Apps" package="liferea"/>
 </package>

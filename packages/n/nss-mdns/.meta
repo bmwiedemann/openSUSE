@@ -12,5 +12,4 @@ register the local hostname via mDNS. I recommend Avahi.
 
 By default, nss-mdns tries to contact a running avahi-daemon to resolve
 hostnames and addresses and makes use of its superior record cacheing.</description>
-  <devel project="GNOME:Factory" package="nss-mdns"/>
 </package>

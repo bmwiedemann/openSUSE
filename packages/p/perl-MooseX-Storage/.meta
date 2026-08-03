@@ -5,6 +5,5 @@ flexible and highly pluggable way to serialize Moose classes to a number of
 different formats and styles.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-MooseX-Storage"/>
   <url>http://search.cpan.org/dist/MooseX-Storage/</url>
 </package>

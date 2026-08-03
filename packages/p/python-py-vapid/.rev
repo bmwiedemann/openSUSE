@@ -67,4 +67,19 @@
   * Support new cryprtography changes.</comment>
     <requestid>1312273</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>aef471d5b0929172b6a7ec129538bc1d</srcmd5>
+    <version>1.9.4</version>
+    <time>1774469880</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.9.4:
+  * Update rust dependencies
+  * Merge EC updates from feat: Update to latest EC recommendations
+  * Formatting fixes
+  * Switch to using hatchling as builder
+- drop support-new-cryptography.patch (upstream)
+- Update to v1.9.0
+  * fix JWT padding (Thanks @JohnDoee) #81</comment>
+    <requestid>1342282</requestid>
+  </revision>
 </revisionlist>

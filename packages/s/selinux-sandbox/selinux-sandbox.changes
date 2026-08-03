@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 30 09:54:41 UTC 2026 - Robert Frohl <rfrohl@suse.com>
+
+- Fix package name in manpage (bsc#1272976)
+    add man_correct_package_name.patch
+
+-------------------------------------------------------------------
 Tue Jul  7 11:48:49 UTC 2026 - Robert Frohl <rfrohl@suse.com>
 
 - Incorporate changes from the policycoreutils sandbox subpackage,

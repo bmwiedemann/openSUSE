@@ -210,4 +210,34 @@
   * Update arabic translations</comment>
     <requestid>1333428</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>d5c7d85b3ef4256ed22ec15004dd27c4</srcmd5>
+    <version>2.2.0</version>
+    <time>1781879789</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.2.0:
+  ## Deprecations:
+  * Deprecate ModelView(Model, db.session) in favor of ModelView(Model, db)
+  ## New Features:
+  * SQLAlchemy filter classes (FilterEqual, FilterLike, etc.) now accept a
+    dotted-path string for the column argument (e.g.
+    FilterEqual(column=&quot;author.email&quot;, name=&quot;Author Email&quot;)); the path is
+    resolved against the view's model and the necessary joins are added
+    automatically.
+  * Flask-SQLAlchemy-Lite support
+  * Add page title header with icon above every view via new
+    {% block page_title %}
+  * Upgrade bundled Bootstrap from 4.2.1 to 4.6.2 and remove unminified files
+  * Flash error message on form validation failure (&quot;Failed to create/save
+    record&quot;)
+  ## Bugfixes:
+  * Fix CSS class on column headers (dots replaced with dashes e.g.:
+    col-user.email -&gt; col-user-email)
+  * Return HTTP 403 instead of 500 when inaccessible_callback returns None
+  * FileAdmin: show empty date instead of 1970-01-01 when directory has no
+    timestamp
+  * Fix &quot;Save &amp; Add Another&quot; using non-relative redirect URL (broke behind
+    reverse proxies)</comment>
+    <requestid>1360444</requestid>
+  </revision>
 </revisionlist>

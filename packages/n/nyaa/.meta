@@ -1,5 +1,6 @@
 <package name="nyaa" project="openSUSE:Factory">
   <title>A nyaa.si tui tool for browsing and downloading torrents</title>
   <description>A simple cli tool for browsing and downloading Anime torrents from nyaa.si.</description>
+  <devel project="utilities" package="nyaa"/>
   <url>https://github.com/Beastwick18/nyaa</url>
 </package>

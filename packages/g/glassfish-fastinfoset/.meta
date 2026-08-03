@@ -8,6 +8,5 @@ document.  Fast infoset documents are generally smaller in size and faster to
 parse and serialize than equivalent XML documents.
 
 </description>
-  <devel project="Java:packages" package="glassfish-fastinfoset"/>
   <url>https://fi.java.net</url>
 </package>

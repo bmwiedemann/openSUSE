@@ -5,6 +5,5 @@ take over Perl's parser, allowing the creation of new syntax.
 This document describes how to create a simple declarator.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-Devel-Declare"/>
   <url>http://search.cpan.org/dist/Devel-Declare</url>
 </package>

@@ -1,4 +1,5 @@
 <package name="python-assertpy" project="openSUSE:Factory">
   <title></title>
   <description>Simple assertion library for unit testing in python with a fluent API</description>
+  <devel project="devel:languages:python" package="python-assertpy"/>
 </package>

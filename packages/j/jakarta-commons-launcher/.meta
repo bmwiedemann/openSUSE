@@ -25,5 +25,4 @@ shell script may be desirable are:
 
 * You want to provide localized error messages, which is very tricky to
    do in batch and shell scripts.</description>
-  <devel project="Java:packages" package="jakarta-commons-launcher"/>
 </package>

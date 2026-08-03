@@ -9,5 +9,4 @@ In the following documentation, a &quot;hashset&quot; is a hash being used as a 
 -- the hash conveys that its keys are there, and the actual values
 associated with the keys are not significant. (But what values are there,
 are always true.)</description>
-  <devel project="devel:languages:perl" package="perl-HTML-Tagset"/>
 </package>

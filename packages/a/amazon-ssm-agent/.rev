@@ -669,4 +669,21 @@
   * Add support for the upcoming public key in the agent code (forwarded request 1361796 from glaubitz)</comment>
     <requestid>1361812</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>1ff2f81e4742a3bcc7fb63ef2d7db493</srcmd5>
+    <version>3.3.4851.0</version>
+    <time>1784126354</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.3.4851.0
+  * Add ECS/EKS credential endpoints and loopback to port-forward denylist
+  * Canonicalize IP addresses before port-forwarding denylist check
+  * Pass the ActiveDirectory domain password via stdin using -y /dev/stdin
+    instead of the -w flag
+  * Fix false StuckAtInProgress timeout for associations with rate &gt;= 2h
+  * Fix non-interactive session big file transfer issues
+  * Prevent ssm-user race condition with flock-based serialization
+  * Send AWS::EC2::Instance as source type when registered with provider EC2
+  * Validate process name in orphan worker detection (forwarded request 1365508 from glaubitz)</comment>
+    <requestid>1365685</requestid>
+  </revision>
 </revisionlist>

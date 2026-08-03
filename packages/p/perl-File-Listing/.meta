@@ -29,6 +29,5 @@ entries are represented by an array consisting of [ $filename, $filetype,
 $filesize, $filetime, $filemode ]. The $filetype value is one of the
 letters 'f', 'd', 'l' or '?'. The $filetime value is the seconds since Jan
 1, 1970. The $filemode is a bitmask like the mode returned by stat().</description>
-  <devel project="devel:languages:perl" package="perl-File-Listing"/>
   <url>http://search.cpan.org/dist/File-Listing/</url>
 </package>

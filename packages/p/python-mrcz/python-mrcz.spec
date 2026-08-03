@@ -1,7 +1,7 @@
 #
 # spec file for package python-mrcz
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,27 +18,30 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-mrcz
-Version:        0.5.7
+Version:        0.5.9
 Release:        0
 Summary:        MRCZ meta-compressed image file-format library
 License:        BSD-3-Clause
 URL:            https://github.com/em-MRCZ/python-mrcz
-Source:         https://github.com/em-MRCZ/python-mrcz/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/m/mrcz/mrcz-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM https://github.com/em-MRCZ/python-mrcz/pull/15 Numpy 2.0 and deprecation fixes
 Patch:          numpy2.patch
 # PATCH-FIX-UPSTREAM https://github.com/em-MRCZ/python-mrcz/pull/16 Remove distutils / support python >=3.12
 Patch:          new-pythons.patch
-BuildRequires:  %{python_module blosc}
-BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module blosc >= 1.4}
+BuildRequires:  %{python_module build}
+BuildRequires:  %{python_module numpy >= 1.8}
+BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-numpy
-Recommends:     python-blosc
+Requires:       python-numpy >= 1.8
+Recommends:     python-blosc >= 1.4
 BuildArch:      noarch
 %python_subpackages
 
@@ -50,8 +53,9 @@ file input/output for the era of "Big Data" in electron and optical
 microscopy.
 
 %prep
-%autosetup -p1
-dos2unix README.rst
+%setup -n mrcz-%{version}
+dos2unix mrcz/ReliablePy.py mrcz/ioMRC.py mrcz/test_mrcz.py utils/update_mrcz_to_0.5.0.py
+%autopatch -p1
 
 %build
 %pyproject_wheel

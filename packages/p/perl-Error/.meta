@@ -7,5 +7,4 @@ catch, or can simply be recorded.
 
 Errors in the class 'Error' should not be thrown directly, but the user
 should throw errors from a sub-class of 'Error'.</description>
-  <devel project="devel:languages:perl" package="perl-Error"/>
 </package>

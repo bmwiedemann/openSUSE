@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Feb 25 09:54:56 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.8.0:
+  * New features
+    - optionally disable first/last byte reading
+    - optionally disable checksumming
+    - control first and last byte size: -firstbytessize and
+      -lastbytessize
+    - hash 4096 first/last bytes instead of comparing 64 during the
+      first/last bytes step.
+    - add progress option (closes #30) by @pauldreik in #197
+  * Minor fixes
+    - fix typo in the man-page by @vcunat in #189
+    - Fix results perm check by @pauldreik in #210
+    - fix bug when using minfilesize and ignoreempty at the same
+      time
+    - fix minor bug in dryrun output
+    - support building with nettle 4.0
+    - polish the man page slightly
+    - building with cmake now runs the existing tests and newly
+      written unit tests
+
+-------------------------------------------------------------------
 Mon Feb 10 09:41:44 UTC 2025 - Jiri Slaby <jslaby@suse.cz>
 
 - use gcc 13 for releases < 1600

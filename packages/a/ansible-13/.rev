@@ -7,4 +7,12 @@
     <comment>new package ansible-13 following the 13.x series of ansible</comment>
     <requestid>1356864</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>657979aa772161fe4a2bf9a431b67ff1</srcmd5>
+    <version>13.8.0</version>
+    <time>1781879857</time>
+    <user>anag_factory</user>
+    <comment>update to 13.8.0</comment>
+    <requestid>1360469</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 14 14:17:41 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.11.1
+  * pmb.parse: DeviceinfoSchema: remove broken @Cache
+
+-------------------------------------------------------------------
 Mon Jul 13 14:34:23 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.11.0

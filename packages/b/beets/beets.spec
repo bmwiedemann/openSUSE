@@ -24,7 +24,7 @@
 %{?sle15_python_module_pythons}
 %endif
 Name:           beets
-Version:        2.11.0
+Version:        2.13.1
 Release:        0
 Summary:        Music tagger and library organizer
 License:        MIT
@@ -34,13 +34,13 @@ Source:         https://github.com/beetbox/beets/archive/refs/tags/v%{version}.t
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-PyYAML
-BuildRequires:  python3-Unidecode
+BuildRequires:  python3-Unidecode >= 1.3.6
 BuildRequires:  python3-confuse >= 2.2.0
 BuildRequires:  python3-devel >= 3.10.0
+BuildRequires:  python3-hatchling
 BuildRequires:  python3-jellyfish
-BuildRequires:  python3-mediafile >= 0.16.2
+BuildRequires:  python3-mediafile >= 0.17.0
 BuildRequires:  python3-pip
-BuildRequires:  python3-poetry-core
 BuildRequires:  python3-setuptools
 # test requirements
 BuildRequires:  python3-Flask
@@ -56,11 +56,11 @@ BuildRequires:  python3-rarfile
 BuildRequires:  python3-responses
 BuildRequires:  python3-testsuite
 Requires:       python3-PyYAML
-Requires:       python3-Unidecode
+Requires:       python3-Unidecode >= 1.3.6
 Requires:       python3-confuse >= 2.2.0
 Requires:       python3-jellyfish
-Requires:       python3-lap
-Requires:       python3-mediafile >= 0.16.0
+Requires:       python3-lap >= 0.5.12
+Requires:       python3-mediafile >= 0.17.0
 Requires:       python3-numpy
 Requires:       python3-packaging >= 24.0
 Requires:       python3-platformdirs

@@ -1,7 +1,7 @@
 #
 # spec file for package libbraiding
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libbraiding
 %define lname	libbraiding0
-Version:        1.3.1
+Version:        1.3.2
 Release:        0
 Summary:        Library for computations on braid groups
 License:        GPL-2.0-or-later
@@ -55,6 +55,7 @@ This subpackage provides the development headers for it.
 %autosetup -p1
 
 %build
+unset DEBUG
 %configure --disable-static
 %make_build
 

@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Tue Mar 24 15:25:20 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.9.0:
+  * don't use pytest-xdist #184
+  * add an xkb.Action test #184
+- update to 1.8.0:
+  * don't do things in parallel #178
+  * use ruff linting/formatting #178
+  * be less strange about extension key lifetimes #178
+  * guard against null return from xcb_get_extension_data() #180
+- update to 1.7.1:
+  * wait for xvfb screen to be the right size #177 (Tycho
+    Andersen)
+- update to 1.7.0:
+  * cffi api mode (George Harker) #169
+  * v1.7.0
+- update to 1.6.2:
+  * Add python_requires to setup.py (amykyta-sx) #176
+- update to 1.6.1:
+  * use $(CABAL) for cabal #174
+- update to 1.6.0:
+  * build+test against xcb-proto 1.17.0 #165
+  * add python 3.11
+  * drop support for xcb-proto-1.15.x
+  * switch to ubuntu-24.04
+  * always use $PATH python #172
+  * run more stuff in parallel #172
+  * delete lock before unlocking #170
+  * run tests in parallel #170
+  * drop xpyb references
+  * drop pyTruth
+  * drop mkVar
+  * drop mkTuple
+  * drop repeatStr
+  * drop mkImport
+  * drop noArgs
+  * add support for xprint
+  * add support for XKB
+  * drop mkInt
+
+-------------------------------------------------------------------
 Fri Jun  6 04:19:46 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
@@ -68,7 +109,7 @@ Mon Oct 26 13:01:07 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Re-activate tests
 - Update to 0.10.1
-  * testing: handle lock file open() failures gracefully 
+  * testing: handle lock file open() failures gracefully
 - from v0.10.0
   * Drop support for Python 2.7
   * testing: protect find_display() with flock()
@@ -96,7 +137,7 @@ Mon Jun 17 12:07:45 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 Mon May  6 10:35:38 UTC 2019 - pgajdos@suse.com
 
 - version update to 0.8.0
-  * Fix few more instances of inefficient struct format 
+  * Fix few more instances of inefficient struct format
 
 -------------------------------------------------------------------
 Mon Mar  4 11:54:51 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>

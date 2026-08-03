@@ -1,7 +1,7 @@
-From 78eea6718316f99993d303d1d8cc878a81ee920a Mon Sep 17 00:00:00 2001
+From 401c5b782c3c986b814c973c44044a011800f07d Mon Sep 17 00:00:00 2001
 From: Michael Simacek <msimacek@redhat.com>
 Date: Tue, 6 Jun 2017 13:47:43 +0200
-Subject: [PATCH 2/5] Invoke logback via reflection
+Subject: [PATCH 2/7] Invoke logback via reflection
 
 ---
  .../cli/logging/impl/LogbackConfiguration.java | 18 +++++++++++++-----
@@ -47,5 +47,5 @@ index 4dc5a37b88..a977ba0854 100644
  
      @Override
 -- 
-2.53.0
+2.55.0
 

@@ -12,5 +12,4 @@ The classes (packages) into which the native types are boxed are fully
 configurable. By default, a method invoked on a non-object is assumed to be
 defined in a class whose name corresponds to the 'ref()' type of that value
 - or SCALAR if the value is a non-reference.</description>
-  <devel project="devel:languages:perl" package="perl-autobox"/>
 </package>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-opengl-accelerate
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,14 @@
 #
 
 
-%define tarname PyOpenGL-accelerate
-%define _version 3.1.9
 %{?sle15_python_module_pythons}
 Name:           python-opengl-accelerate
-Version:        %{_version}
+Version:        3.1.10
 Release:        0
 Summary:        Acceleration for python-opengl
 License:        BSD-3-Clause
 URL:            http://pyopengl.sourceforge.net
-Source0:        %{tarname}-%{_version}.tar.gz
-# PATCH-FIX-UPSTREAM Based on gh#mcfletch/pyopengl#146
-Patch0:         support-cython-3.1.patch
+Source0:        https://files.pythonhosted.org/packages/source/p/pyopengl-accelerate/pyopengl_accelerate-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module opengl >= %{version}}
@@ -49,13 +45,7 @@ arrays extensively speed-up is around 10% compared to unaccelerated
 code.
 
 %prep
-%autosetup -p1 -n %{tarname}-%{_version}
-
-# _service pulldown creates %%{tarname}-%%{_version}/accelerate/<required files>,
-# move them to root of build area and remove 'accelerate' directory
-# to continue as normal.
-mv accelerate/* ./
-rmdir accelerate
+%autosetup -p1 -n pyopengl_accelerate-%{version}
 
 %build
 export CFLAGS="%{optflags} -DGLX_GLXEXT_LEGACY"

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul  8 12:41:05 UTC 2026 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Fixing Obsoletes for more successful builds in Leap
+
+-------------------------------------------------------------------
 Mon Mar 23 14:27:04 UTC 2026 - Sarah Kriesch <sarah.kriesch@opensuse.org>
 
 -  Add Obsoletes for esql packages because of conflicts with gnucobol-esql

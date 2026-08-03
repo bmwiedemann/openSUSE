@@ -132,4 +132,12 @@ This license was added to the spreadsheet linked at license.opensuse.org to cate
     <comment></comment>
     <requestid>1151909</requestid>
   </revision>
+  <revision rev="20" vrev="681">
+    <srcmd5>9bd625000997f75c082bcfd0cf6e6a30</srcmd5>
+    <version>19980713</version>
+    <time>1773161875</time>
+    <user>anag_factory</user>
+    <comment>- Make it build with latest gcc</comment>
+    <requestid>1337962</requestid>
+  </revision>
 </revisionlist>

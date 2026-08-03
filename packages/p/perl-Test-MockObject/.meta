@@ -13,6 +13,5 @@ interfaces with very little code. You don't have to reimplement the behavior,
 just the input and the output.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-Test-MockObject"/>
   <url>http://search.cpan.org/dist/Test-MockObject/</url>
 </package>

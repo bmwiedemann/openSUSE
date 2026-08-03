@@ -7,5 +7,6 @@ It is built with Go and the Bubble Tea TUI framework. It supports
 email providers such as Gmail and iCloud. Mail can be read, composed
 and managed entirely from the command line.
 </description>
+  <devel project="server:mail" package="matcha"/>
   <url>https://github.com/floatpane/matcha</url>
 </package>

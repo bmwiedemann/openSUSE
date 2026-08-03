@@ -1,7 +1,7 @@
 #
 # spec file for package python-pysmi
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pysmi%{psuffix}
-Version:        1.6.2
+Version:        1.6.3
 Release:        0
 Summary:        SNMP SMI/MIB Parser
 License:        BSD-2-Clause

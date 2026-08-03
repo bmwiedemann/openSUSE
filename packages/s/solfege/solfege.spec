@@ -1,7 +1,7 @@
 #
 # spec file for package solfege
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,6 @@ URL:            https://www.gnu.org/software/solfege/
 BuildRequires:  automake
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
-BuildRequires:  gnome-doc-utils-devel
 BuildRequires:  libxslt
 BuildRequires:  python3-gobject-devel
 BuildRequires:  swig

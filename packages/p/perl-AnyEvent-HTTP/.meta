@@ -17,6 +17,5 @@ The caller is responsible for authentication management, cookies (if the
 simplistic implementation in this module doesn't suffice), referer and
 other high-level protocol details for which this module offers only limited
 support.</description>
-  <devel project="devel:languages:perl" package="perl-AnyEvent-HTTP"/>
   <url>http://search.cpan.org/dist/AnyEvent-HTTP</url>
 </package>

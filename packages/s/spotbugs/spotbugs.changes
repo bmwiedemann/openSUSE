@@ -1,0 +1,387 @@
+-------------------------------------------------------------------
+Wed Apr 22 21:49:19 UTC 2026 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v4.9.8
+  * Fixed
+    + Maven plugin reporting issue if -adjustPriority is not set
+      (#3774)
+- Update to v4.9.7
+  * Fixed
+    + Fix Eclipse not always using latest preferences file state
+      (#3740)
+    + Fix exception throw when singleton implementing Cloneable has
+      no clone() method (#3727)
+    + Fix for missing -adjustPriority parameter in Eclipse
+      preferences (#3687)
+    + Documentation of -adjustPriority parameter
+    + Functionality from DetectorFactory
+      setEnabledButNonReporting(), getPriorityAdjustment() methods
+      and BugInstance.adjustForDetector() is deprecated and moved
+      to PriorityAdjuster (#3753)
+    + Improved FindNakedNotify to handle the case when the lock is
+      loaded from a field (#3634)
+  * Changed
+    + Support for fully qualified class names for detectors in
+      -adjustPriority parameter
+    + Support for numerical and absolute priority adjustments
+    + Bump up Apache Commons BCEL to the version 6.11.0 (#3569)
+  * Deprecated
+    + Add back and deprecate
+      edu.umd.cs.findbugs.io.IO.close(InputStream) method. (#3756)
+  * Build
+    + Allow our GA builds to work with JDK 25 (and drop support for
+      JDK 24) (#3564)
+- Update to v4.9.6
+  * Fixed
+    + Fix exception throw when analyzing
+      jakarta.servlet.http.HttpServletRequest method calls (#3711)
+- Update to v4.9.5
+  * Fixed
+    + Fix for an error when a record method has the
+      @SuppressFBWarnings annotation (#3622)
+    + Fix SF_SWITCH_FALLTHROUGH false positive when continuing a
+      loop (#3617)
+    + CWO_CLOSED_WITHOUT_OPENED false positive (#3616)
+    + SF_SWITCH_NO_DEFAULT false positive fix for switch-arrow
+      (#3645)
+    + Fix the issue with BCEL logging Duplicating value: ...
+      (#3621)
+    + Add missing jakarta support for servlets / pre/post destroy
+      (#3694)
+  * Added
+    + Add 'java.nio.file.Path.of' to known types for path traversal
+      checks (#3699)
+  * Cleanup
+    + S1481: Unused local variables should be removed (#3654)
+    + Moved test libraries to jakarta namespace including switching
+      off jsr305 where possible for jakarta.annotation (#3695)
+- Add patch:
+  * 01-dom4j-2.1.patch
+    + Use dom4j v2.1 instead of 2.2.0
+- Separate subpackage for spotbugs-annotations
+
+-------------------------------------------------------------------
+Sun Nov 23 20:22:58 UTC 2025 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v4.9.4
+  * Changed
+    + AnnotationMatcher can now ignore bugs if annotation is also
+      applied on methods or fields. Previously only annotations on
+      classes were considered.
+    + Add relevant CWE ids to bugs and refer the CWEs in the bug
+      messages (#3354).
+    + Replace LOCAL_VARIABLE_UNKNOWN with exact method name for
+      NP_NULL_ON_SOME_PATH_FROM_RETURN_VALUE (#3485)
+  * Fixed
+    + Widen main method recognition according to JEP 445. (#3371)
+    + Do not report US_USELESS_SUPPRESSION_ON_* on methods, fields,
+      parameters, packages or classes with an *.Generated
+      annotation with retention >= class (#3350)(#3409)
+    + Rewrite some member in ResourceValueFrame.java to Enum
+      (#2061)
+    + Ignore non-interpreted text when looking for
+      FS_BAD_DATE_FORMAT_FLAG_COMBO (#3387)
+    + Fix IllegalArgumentException thrown from
+      FindNoSideEffectMethods detector (#3320)
+    + Do not report RV_RETURN_VALUE_IGNORED_NO_SIDE_EFFECT when
+      part of a Mockito doAnswer(), doCallRealMethod(),
+      doNothing(), doThrow() or doReturn() call (#3334)
+    + Fix CT_CONSTRUCTOR_THROW false positive with public and
+      private constructors in specific order of methods (#3417)
+    + Fix AT_NONATOMIC_OPERATIONS_ON_SHARED_VARIABLE,
+      AT_NONATOMIC_64BIT_PRIMITIVE and
+      AT_STALE_THREAD_WRITE_OF_PRIMITIVE FP when the relevant code
+      is in private method, which is only called with proper
+      synchronization (#3428)
+    + Do not report RV_RETURN_VALUE_IGNORED_NO_SIDE_EFFECT when
+      part of a BDDMockito call (#3441)
+    + Fix AT_NONATOMIC_OPERATIONS_ON_SHARED_VARIABLE when field of
+      a local variable is set. (#3459)
+    + Fix AT_NONATOMIC_OPERATIONS_ON_SHARED_VARIABLE FP when there
+      was no compound operation (#3363)
+    + Fix NM_FIELD_NAMING_CONVENTION crash in the TestASM detector
+      (#3489)
+    + Do not report UWF_FIELD_NOT_INITIALIZED_IN_CONSTRUCTOR for
+      fields initialized in JUnit 3/4 setUp() method. (#3169)
+    + Fix US_USELESS_SUPPRESSION_ON_FIELD/UUF_UNUSED_FIELD false
+      positive (#3496)
+    + Make the osgi manifest of the annotations jar Java 8
+      compatible (#3498) (#3500)
+    + TextUICommandLine supports all options encoded in Eclipse
+      preferences file (#3520)
+    + Unnecessary suppressions fix for records headers (#3471)
+    + Dead store fix when switch case contains loops (#3530)
+      (#3449)
+    + Consider PUTFIELD and PUTSTATIC when looking for assertions
+      with side effects (#3463)
+    + Detect cases when equals() unconditionally returns true or
+      false (#3528)
+    + Do not report that an Iterator does not throw
+      NoSuchElementException when hasNext() returns true (#3501)
+    + Detect random value cast to int when stored in temporary
+      variable (#3461)
+    + Look for interfaces default methods when searching uncalled
+      private methods (#1988)
+    + Fixed field self assignment false positive (#2258)
+    + Fixed DMI_INVOKING_TOSTRING_ON_ARRAY on newer JDK (#1147)
+    + Fix NP_NULL_ON_SOME_PATH_FROM_RETURN_VALUE false positive
+      with Objects.requireNonNull (#2965) (#3573)
+    + Track inner classes access methods to correctly report the
+      bugs (#2029)
+    + SF_SWITCH_NO_DEFAULT false positive fix (#1148) (#3572)
+  * Added
+    + Added the unnecessary annotation to the
+      US_USELESS_SUPPRESSION_ON_* messages (#3395)
+    + Multi-threaded code checks can be skipped with @NotThreadSafe
+      (#3390)
+    + New bug type CWO_CLOSED_WITHOUT_OPENED for locks that might
+      be released without even being acquired. (See SEI CERT rule
+      LCK08-J) (#2055)
+      ~ Breaking change: changed values and new items in
+        ResourceValueFrame.
+    + Inline access method for method. (#3481)
+    + Added DMI_MISLEADING_SUBSTRING for calling subString(0) on a
+      StringBuffer/StringBuilder (#1928)
+  * Signing
+    + Signing for Eclipse plugin has been removed at the current
+      time due to signing keys being expired. The expired key
+      produced a warning during install, the same is true without
+      signing.
+
+-------------------------------------------------------------------
+Thu May  1 07:46:31 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Explicitely state all relevant build requires
+
+-------------------------------------------------------------------
+Thu Mar 27 21:37:22 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Fix javadoc generation with javadoc:aggregate
+
+-------------------------------------------------------------------
+Sat Mar 15 21:48:59 UTC 2025 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v4.9.3
+  * Added
+    + Introduced UselessSuppressionDetector to report the useless
+      annotations instead of NoteSuppressedWarnings (#3348)
+  * Fixed
+    + Do not report US_USELESS_SUPPRESSION_ON_METHOD on synthetic
+      methods (#3351)
+
+-------------------------------------------------------------------
+Sat Mar  1 22:14:16 UTC 2025 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v4.9.2
+  * Added
+    + Reporting useless @SuppressFBWarnings annotations (#641)
+  * Fixed
+    + Fixed html bug descriptions for
+      AT_STALE_THREAD_WRITE_OF_PRIMITIVE and
+      AT_NONATOMIC_64BIT_PRIMITIVE (#3303)
+    + Fixed an HSM_HIDING_METHOD false positive when ECJ generates
+      a synthetic method for an enum switch (#3305)
+    + Fix AT_UNSAFE_RESOURCE_ACCESS_IN_THREAD false negatives,
+      detector depending on method order.
+    + Fix THROWS_METHOD_THROWS_CLAUSE_THROWABLE reported in a
+      method calling MethodHandle.invokeExact due to its
+      polymorphic signature (#3309)
+    + Fix AT_STALE_THREAD_WRITE_OF_PRIMITIVE false positive in
+      inner class (#3310).
+    + Fix AT_STALE_THREAD_WRITE_OF_PRIMITIVE false positive for ECJ
+      compiled enum switches (#3316)
+    + Fix RC_REF_COMPARISON false positive with Lombok With
+      annotation (#3319)
+    + Avoid calling File.getCanonicalPath twice to improve
+      performance (#3325)
+    + Fix MC_OVERRIDABLE_METHOD_CALL_IN_CONSTRUCTOR and
+      MC_OVERRIDABLE_METHOD_CALL_IN_CLONE false positive when the
+      overridable method is outside the class (#3328).
+    + Fix NullPointerException thrown from ThrowingExceptions
+      detector (#3337).
+  * Removed
+    + Removed the TLW_TWO_LOCK_NOTIFY, LI_LAZY_INIT_INSTANCE,
+      BRSA_BAD_RESULTSET_ACCESS, BC_NULL_INSTANCEOF,
+      NP_FIELD_NOT_INITIALIZED_IN_CONSTRUCTOR and
+      RCN_REDUNDANT_CHECKED_NULL_COMPARISON deprecated bug
+      patterns.
+
+-------------------------------------------------------------------
+Mon Feb 10 01:42:47 UTC 2025 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v4.9.1
+  * Added
+    + New detector SharedVariableAtomicityDetector for new bug
+      types AT_NONATOMIC_OPERATIONS_ON_SHARED_VARIABLE,
+      AT_NONATOMIC_64BIT_PRIMITIVE and
+      AT_STALE_THREAD_WRITE_OF_PRIMITIVE (See SEI CERT rules
+      VNA00-J, VNA02-J and VNA05-J).
+    + New detector FindHiddenMethod for bug type HSM_HIDING_METHOD.
+      This bug is reported whenever a subclass method hides the
+      static method of super class. (See SEI CERT MET07-J).
+  * Fixed
+    + Fixed the parsing of generics methods in ThrowingExceptions
+      (#3267)
+    + Accept the 1st parameter of
+      java.util.concurrent.CompletableFuture's completeOnTimeout(),
+      getNow() and obtrudeValue() functions as nullable (#1001).
+    + Fixed the analysis error when FindReturnRef was checking
+      instructions corresponding to a CFG branch that was optimized
+      away (#3266)
+    + Added execute file permission to files in the distribution
+      archive (#3274)
+    + Fixed a stack overflow in MultipleInstantiationsOfSingletons
+      when a singleton initializer makes recursive calls (#3280)
+    + Fixed NPE in FindReturnRef on inner class fields (#3283)
+    + Fixed NP_NULL_ON_SOME_PATH_FROM_RETURN_VALUE false positive
+      when add edu.umd.cs.findbugs.annotations.Nullable (#3243)
+
+-------------------------------------------------------------------
+Thu Jan 16 19:07:52 UTC 2025 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Specify build and runtime dependencies on
+  mvn(net.sf.saxon:Saxon-HE) < 11 to avoid ambiguity with newer
+  versions of Saxon.
+
+-------------------------------------------------------------------
+Thu Jan 16 10:36:16 UTC 2025 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v4.9.0
+  * Added
+    + Updated the SuppressFBWarnings annotation to support finer
+      grained bug suppressions (#3102)
+    + SimpleDateFormat, DateTimeFormatter, FastDateFormat string
+      check for bad combinations of flag formatting (#637)
+    + New detector ResourceInMultipleThreadsDetector and introduced
+      new bug type:
+      ~ AT_UNSAFE_RESOURCE_ACCESS_IN_THREAD is reported in case of
+        unsafe resource access in multiple threads.
+  * Fixed
+    + Do not consider Records as Singletons (#2981)
+    + Keep a maximum of 10000 cached analysis entries for plugin's
+      analysis engines (#3025)
+    + Only report MC_OVERRIDABLE_METHOD_CALL_IN_READ_OBJECT when
+      calling own methods (#2957)
+    + Check the actual caught exceptions (instead of their common
+      type) when analyzing multi-catch blocks (#2968)
+    + System property findbugs.refcomp.reportAll is now being used.
+      For some new conditions, it will emit an experimental warning
+      (#2988)
+    + -version flag prints the version to the standard output
+      (#2797)
+    + Revert the changes from (#2894) to get HTML stylesheets to
+      work again (#2969)
+    + Fix FP SING_SINGLETON_GETTER_NOT_SYNCHRONIZED report when the
+      synchronization is in a called method (#3045)
+    + Let BetterCFGBuilder2.isPEI handle dup2 bytecode used by
+      Spring AOT (#3059)
+    + Detect failure to close RocksDB's ReadOptions (#3069)
+    + Fix FP EI_EXPOSE_REP when there are multiple immutable
+      assignments (#3023)
+    + Fixed false positive
+      NP_NONNULL_FIELD_NOT_INITIALIZED_IN_CONSTRUCTOR for Kotlin,
+      handle Kotlin's Intrinsics.checkNotNullParameter() (#3094)
+    + Fixed some CWE mappings (#3124)
+    + Recognize some classes as immutable, fixing EI_EXPOSE and
+      MS_EXPOSE FPs (#3137)
+    + Do not report UWF_FIELD_NOT_INITIALIZED_IN_CONSTRUCTOR for
+      fields initialized in method annotated with TestNG's
+      @BeforeClass. (#3152)
+    + Fixed detector FindReturnRef not finding references exposed
+      from nested and inner classes (#2042)
+    + Fix call graph, include non-parametric void methods (#3160)
+    + Fix multiple reporting of identical bugs messing up
+      statistics (#3185)
+    + Added missing comma between line number and confidence when
+      describing matching and mismatching bugs for tests (#3187)
+    + Fixed method matchers with array types (#3203)
+    + Fix SARIF report's message property in Exception to meet the
+      standard (#3197)
+    + Fixed FI_FINALIZER_NULLS_FIELDS FPs for functions called
+      finalize() but not with the correct signature. (#3207)
+    + Fixed an error in the detection of bridge methods causing
+      analysis crashes (#3208)
+    + Fixed detector ThrowingExceptions by removing false positive
+      reports, such as synthetic methods (lambdas), methods which
+      inherited their exception specifications and methods which
+      call throwing methods (#2040)
+    + Do not report DP_DO_INSIDE_DO_PRIVILEGED,
+      DP_CREATE_CLASSLOADER_INSIDE_DO_PRIVILEGED and
+      USC_POTENTIAL_SECURITY_CHECK_BASED_ON_UNTRUSTED_SOURCE in
+      code targeting Java 17 and above, since it advises the usage
+      of deprecated method (#1515).
+    + Fixed a RV_RETURN_VALUE_IGNORED_NO_SIDE_EFFECT false positive
+      for a builder delegating to another builder (#3235)
+  * Cleanup
+    + Cleanup thread issue and regex issue in test-harness (#3130)
+    + Remove extra blank lines and remove public from interface
+      objects as inherently already public (#3131)
+    + Fix order of modifiers on properties/methods and ensure
+      correct location in file (#3132, #3177)
+    + Return objects directly instead of creating more garbage
+      collection by defining them (#3133, #3175)
+    + Restrict the constructor of abstract classes visibility to
+      protected (#3178)
+    + Cleanup double initialization and fix comments referring to
+      findbugs instead of spotbugs(#3134)
+    + Use diamond operator in constructor calls of Collections
+      (#3176)
+    + Use Collection.isEmpty() or String.isEmpty() to test for
+      emptiness (#3180, #3219)
+    + Use method references instead of lambdas where possible
+      (#3179)
+    + Move default clauses to the end of switches (#3222)
+    + Remove unnecessary throws declarations (#3220)
+    + Use Boolean.parseBoolean() for string-to-boolean conversion.
+      (#3217)
+    + Rename shadowing fields (#3221)
+    + Combine catch blocks with the same body (#3223)
+    + Merge conditions of nested ifs (#3231)
+    + Use non deprecated 'getDottedClassName' instead of
+      'toDottedClassName'(#3251)
+    + Use try with resources where possible (#3253)
+  * Changed
+    + Bump up Java version to 11
+
+-------------------------------------------------------------------
+Fri Oct 25 21:39:05 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Build against saxon10 which is the default saxon in Tumbleweed
+  and exists in Leap 15.x. It also works just fine without sucking
+  in new dependencies including circular dependency between saxon
+  and xmlresolver.
+
+-------------------------------------------------------------------
+Mon Oct 14 05:00:57 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Add runtime dependencies on
+  mvn(org.apache.logging.log4j:log4j-{api,core,slf4j-impl}) and
+  mvn(net.sf.saxon:Saxon-HE:12)
+
+-------------------------------------------------------------------
+Thu Sep 26 08:34:21 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Runtime dependencies are auto-generated
+
+-------------------------------------------------------------------
+Wed Jul  3 12:22:53 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v4.8.6
+  * Fixed
+    + Do not report BC_UNCONFIRMED_CAST for Java 21's type switches
+      when the switch instruction is TABLESWITCH (#2782)
+    + Do not throw exception when inspecting empty switch
+      statements (#2995)
+    + Adjust priority since relaxed mode reports even
+      IGNORED_PRIORITY (#2994)
+    + Fix duplicated log4j2 jar in distribution (#3001)
+
+-------------------------------------------------------------------
+Thu May 30 17:25:50 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Initial packaging with v4.8.5
+- Add patch:
+  * 00-dont-use-manifest-classpath.patch
+    + Construct classpath from all the items in the
+      $SPOTBUGS_HOME/lib directory instead of relying on manifest’s
+      classpath.

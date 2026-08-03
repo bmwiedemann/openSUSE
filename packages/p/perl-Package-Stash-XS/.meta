@@ -4,5 +4,4 @@
 functionality in a way that's less buggy and much faster. It will be used
 by default if it's installed, and should be preferred in all environments
 with a compiler.</description>
-  <devel project="devel:languages:perl" package="perl-Package-Stash-XS"/>
 </package>

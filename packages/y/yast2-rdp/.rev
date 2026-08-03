@@ -91,4 +91,12 @@ or in the OSS repo, just having it in the OBS project it enough.</comment>
     <comment>submit new version 5.0.0</comment>
     <requestid>1119004</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ec18175d509cf2fedbbbece5efc8104d</srcmd5>
+    <version>5.0.1</version>
+    <time>1774555623</time>
+    <user>anag_factory</user>
+    <comment>submit new version 5.0.1</comment>
+    <requestid>1342587</requestid>
+  </revision>
 </revisionlist>

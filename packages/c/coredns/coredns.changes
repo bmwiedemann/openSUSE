@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Sun Jul 12 17:16:41 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.14.6:
+  * Bump deps
+  * Test: populating build test failure
+  * fix(auto): keep first matching zone file for duplicate origins
+  * plugin/secondary: serve catalog member zones
+  * plugin/tsig: don't echo client's TSIG.Error if verification is successful
+  * docs(timeouts): document DoQ read timeout
+  * plugin/dnstap: fix self-deadlock in listener broadcast on client flush 
+    error
+  * core/dnsserver: bound DoQ stream read with the server read timeout
+  * plugin/transfer: Fix panic in CoreDNS transfer plugin caused by empty DNS 
+    record
+  * core/dnsserver: add Config.UDPDecorateWriterFunc for external plugins
+  * plugin/kubernetes: fix AXFR panic when nsAddrs returns multiple records
+  * plugin/hosts: fix data race between lookups and reload
+  * core/dnsserver: sanitize DoH/DoH3 request parse errors
+  * plugin/dnstap: close the previous connection before reconnecting
+  * plugin/erratic: apply default truncate amount of 2 for bare `truncate`
+  * Test: Fix flaky health test
+  * plugin/pkg/response: classify nxdomain without soa as denial
+  * plugin/file: return SOA in authority for negative CNAME target answers
+  * plugin/forward: make per-upstream read timeout configurable
+  * plugin/secondary: parse catalog zones after transfer
+  * plugin/pkg/dnsutil: guard Join against an empty label slice
+  * plugin/file: run additional processing for wildcard answers
+  * fix(tls): use Go TLS defaults
+  * plugin/secondary: stop update loop on reload shutdown
+  * fix(8201): restore old behavior forward plugin continue on empty conf file
+  * fix(forward): make dnstap FORWARDER_* describe the socket from CoreDNS to 
+    upstream
+  * plugin/cache: add regression test for AD bit not partitioning the cache
+  * fix(rewrite): restore the original question on empty replies
+  * plugin/auto: warn on duplicate zone file origins
+  * test: use dynamic ports in reload tests
+  * plugin/transfer: configure notify source address
+  * fix: accept scoped IPv6 addresses in transfer targets
+  * fix(trace): correct Zipkin v2 endpoint docs
+  * fix(log): synthesize deferred error responses
+  * fix(dnstap): store IPv4-mapped IPv6 addresses as 4 octets with SocketFamily
+    INET
+  * plugin/hosts: add wildcard support
+  * fix(local): handle names under .localhost.
+  * plugin/hosts: fall through unsupported query types
+  * plugin/rewrite: Fix nil-pointer panic in EDNS0 response reversion with no 
+    OPT record
+  * feat(forward): add doh support
+  * core/dnsserver: propagate HTTPRequestValidateFunc to all configs in a server 
+    block
+
+-------------------------------------------------------------------
 Wed Jun 24 06:35:03 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Exclude flaky unit test on build

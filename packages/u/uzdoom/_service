@@ -1,0 +1,17 @@
+<services>
+	<service name="tar_scm" mode="manual">
+		<param name="scm">git</param>
+		<param name="url">https://github.com/uzdoom/uzdoom</param>
+		<param name="revision">4.14.3</param>
+		<param name="version">4.14.3</param>
+		<!-- nonfree license -->
+		<param name="exclude">wadsrc_bm/static</param>
+		<param name="exclude">wadsrc_extra/nonfree</param>
+		<param name="exclude">wadsrc_widepix/static</param>
+	</service>
+	<service name="recompress" mode="manual">
+		<param name="file">*.tar</param>
+		<param name="compression">zstd</param>
+	</service>
+	<service name="set_version" mode="manual"/>
+</services>

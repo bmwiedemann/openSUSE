@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Mar 25 21:54:52 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.9.0:
+  * copy: add `--removable-device`, `--keyring` and
+    `--fingerprint` options
+  * Respect query part of the url when operating on the path
+  * support FTP authentication
+  * rework GPG tests
+  * Move project to yoctoproject
+  * Maintainers change from Artem Bityutskiy (Thank you!) to
+    Trevor Woerner, Joshua Watt, Tim Orling
+  * Consolidate name as 'bmaptool'
+
+-------------------------------------------------------------------
 Tue Apr 16 10:59:14 UTC 2024 - Max Lin <mlin@suse.com>
 
 - Add %{?sle15_python_module_pythons} to build with python 3.11 on Leap15

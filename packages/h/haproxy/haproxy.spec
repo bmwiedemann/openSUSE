@@ -44,10 +44,10 @@
 %bcond_with opentelemetry
 
 Name:           haproxy
-Version:        3.4.2+git0.9feeb3287
+Version:        3.4.3+git0.80ea565fd
 Release:        0
 %if %{with opentelemetry}
-%global otel_revision bfa018f
+%global otel_revision 2.0.0+git1.99619c2
 %global otel_subdir   haproxy-opentelemetry-%{otel_revision}
 %global otel_additional_source -a9
 %endif
@@ -87,7 +87,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  vim
 BuildRequires:  zlib-devel
 %if %{with opentelemetry}
-BuildRequires:  pkgconfig(opentelemetry-c-wrapper) >= 2.2.0
+BuildRequires:  pkgconfig(opentelemetry-c-wrapper) >= 3.0.0
 %endif
 Provides:       %{name}-doc = %{version}
 Obsoletes:      %{name}-doc < %{version}

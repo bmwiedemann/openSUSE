@@ -17,4 +17,5 @@ configure servers to use the certificates, though, that's up to you.
 Warning: the rootCA-key.pem file that mkcert automatically generates gives
 complete power to intercept secure requests from your machine. Do not share it.
   </description>
+  <devel project="devel:languages:go" package="mkcert"/>
 </package>

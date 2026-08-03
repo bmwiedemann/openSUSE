@@ -9,6 +9,5 @@ point for state detection (are we running in compile-time or run-time
 mode) and to act as a relatively light-weight module loader.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-prefork"/>
   <url>http://search.cpan.org/dist/prefork</url>
 </package>

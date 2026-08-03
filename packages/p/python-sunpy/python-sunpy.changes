@@ -1,4 +1,85 @@
 -------------------------------------------------------------------
+Wed Jul 29 14:58:52 UTC 2026 - Ben Greiner <code@bnavigator.de>
+
+- Update to 8.0.0
+  ## Breaking Changes
+  * Adjusted the reference_date property of
+    ~sunpy.map.sources.AIAMap and ~sunpy.map.sources.HMIMap so that
+    its return value is in the same time scale as the date
+    property, in order to avoid subtle user mistakes. (#8477)
+  ## New Features
+  * Added ~sunpy.map.sources.PHIMap to handle imagery from the
+    Polarimetric and Helioseismic Imager (PHI) on the Solar Orbiter
+    mission. (#8522)
+  * Added support for saving and loading astropy.table.QTable
+    containing SkyCoord objects in sunpy.coordinates frames to/from
+    FITS files. (#8548)
+  * Added an option to ~sunpy.coordinates.get_horizons_coord to
+    print out the response from JPL Horizons, which can contain
+    useful contextual details. (#8575)
+  * The Solar Orbiter Archive can now be queried via
+    ~sunpy.net.Fido without installing any extra packages. The
+    sunpy-soar package has been merged into sunpy, and no longer
+    needs to be separately installed or imported. (#8605)
+  * Added ~sunpy.map.sources.METISMap to handle imagery from the
+    the multi-wavelength coronagraph for the Solar Orbiter mission.
+    (#8641)
+  * sunpy can now be built for use with free-threaded Python,
+    although some certain optional dependencies (e.g., OpenCV) are
+    not yet compatible with free threading. (#8653)
+  * Added a default ~sunpy.map.sources.METISMap.mask property to
+    ~sunpy.map.sources.METISMap and a gallery example demonstrating
+    how to download, load, and plot METIS observations. (#8658)
+  * Update sunpy.util.io.is_url() to use urllib.parse.urlparse
+    instead of urllib.request.urlopen so no network requests are
+    made or needed. This may result in different exceptions being
+    raised if URLs are unreachable, from multiple places in sunpy
+    such as Map and Timeseries. (#8679)
+  ## Bug Fixes
+  * Fix ~`sunpy.net.scraper.Scraper` to correctly handle proper
+    local file URI on Windows and make internal code more
+    consistent. (#8493)
+  * Fixed bugs when using thread-based parallel processing due to
+    unintentionally shared state information. This primarily
+    affected these context managers:
+    ~sunpy.coordinates.SphericalScreen,
+    ~sunpy.coordinates.PlanarScreen,
+    ~sunpy.coordinates.propagate_with_solar_surface, and
+    ~sunpy.coordinates.transform_with_sun_center. (#8500)
+  * Fix incorrect Level 1 detection in sunpy.map.sources.EITMap.
+    (#8515)
+  * Correct SUIT colormap CSV files to match official values
+    (#8528)
+  * Fixed a bug in sunpy.coordinates.spice when converting times to
+    the time scale/format used by SPICE, which resulted in a time
+    inaccuracy of up to 1.6 ms. (#8534)
+  * Fixed a bug where SIP distortion information in a Map WCS was
+    ignored. (#8573)
+  * Fixed bugs where SIP distortion information was ignored when
+    creating a ~sunpy.map.Map using a ~astropy.wcs.WCS instance
+    with SIP information. (#8586)
+  * Improved sunpy.map.Map error messages when NumPy array inputs
+    are missing metadata or WCS information or are passed in place
+    of python lists. (#8589)
+  * Fixed a bug where
+    ~sunpy.timeseries.sources.NOAAPredictIndicesTimeSeries would
+    always plot to the current pyplot-managed axes even when a
+    different axes was specified. (#8600)
+  * Pass extra keyword arguments through from
+    ~sunpy.map.header_helper.make_heliographic_header to
+    ~sunpy.map.header_helper.make_fitswcs_header. (#8611)
+  * Fixed a bug where ~sunpy.map.MapSequence.plot did not respect
+    the mask of individual maps when updating animation frames.
+    (#8617)
+  * Update the ADAPT client for new filename patterns. (#8637)
+  * Fixed the sunpy.net.solarnet.SOLARNETClient to use
+    solarnet.oma.be instead of the blocked solarnet2.oma.be host.
+    (#8639)
+  * Fixed the potential sharing of metadata when using a
+    ~sunpy.timeseries.TimeSeries method to create a new instance
+    base on an existing instance. (#8653)
+
+-------------------------------------------------------------------
 Wed Jun 17 15:19:38 UTC 2026 - Ben Greiner <code@bnavigator.de>
 
 - Delete old astropy cache before tests 

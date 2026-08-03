@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 29 09:09:52 UTC 2026 - René Neumaier <r.neumaier@mailbox.org>
+
+- Update to upstream 5.0.3
+  * Tiny fixes with ICMPv6 that do not affect openSUSE
+  * Update dependencies (no details found in upstream changelog)
+
+-------------------------------------------------------------------
 Sun Apr 26 10:20:17 UTC 2026 - René Neumaier <r.neumaier@mailbox.org> - 5.0.2
 
 - Update to 5.0.2

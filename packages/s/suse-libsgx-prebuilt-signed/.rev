@@ -7,4 +7,12 @@
     <comment>Initial version ae_2.25 and dcap_1.24 (jsc#PED-8938)</comment>
     <requestid>1337321</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>24e238d73c0b7a686c01f44abcc46f2e</srcmd5>
+    <version>1</version>
+    <time>1774555672</time>
+    <user>anag_factory</user>
+    <comment>Provide all signed enclaves in a single package</comment>
+    <requestid>1342763</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jul 30 05:41:38 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.34:
+  This is a maintenance release with mostly under the hood changes
+  and support for RPM builds directly in GitHub per commit and for
+  the tagged release flows.
+  * Notifications - Cleanup and improve ipn event handling for
+    messages/warnings/errors
+  * Cmake - QT6 only from now on
+  * Cmake - Minor fixes to not trigger warnings
+  * Replace QSharedMemory which is attachable after termination
+    with QLockFile (#117)
+  * Fix DATAROOTDIR #116
+
+-------------------------------------------------------------------
 Tue Jun 02 04:48:58 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.33:

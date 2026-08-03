@@ -225,4 +225,14 @@
     <comment></comment>
     <requestid>1355877</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>548c4ef34a2cc6f2602decc0a2c086d8</srcmd5>
+    <version>6.1.7</version>
+    <time>1784126189</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1365641 from hennevogel
+
+New upstream release 6.1.7, see bundled CHANGELOG</comment>
+    <requestid>1365653</requestid>
+  </revision>
 </revisionlist>

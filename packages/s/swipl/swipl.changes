@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Jul 20 10:41:14 CEST 2026 - Matej Cepl <mcepl@suse.com>
+
+- Update to 10.1.12:
+  - Fix typo in pldoc for require_prolog_version/2
+  - DOC: remove unused code that's the same as documentation
+- Removed upstreamed patch:
+  - terminate_socket.patch
+
+-------------------------------------------------------------------
+Fri Jul 10 11:30:58 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Add terminate_socket.patch patch to fix http:proxy test suite
+  failure due to incomplete thread cleanup
+  (gh#SWI-Prolog/packages-http!175).
+
+-------------------------------------------------------------------
+Fri Jul 10 09:23:15 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 10.1.11:
+  Complete changelog is
+  https://www.swi-prolog.org/ChangeLog?branch=development&from=10.1.10&to=10.1.11
+  and upstream still doesn’t provide any abbreviated version, and
+  the list of changes is still too long to enumerate here.
+
+-------------------------------------------------------------------
+Mon Jun 29 07:19:48 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 10.1.10:
+  Complete changelog is
+  https://www.swi-prolog.org/ChangeLog?branch=development&from=9.3.31&to=10.1.10
+  and upstream still doesn’t provide any abbreviated version, and
+  the list of changes is still too long to enumerate here.
+
+-------------------------------------------------------------------
 Thu Oct  2 20:00:59 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 9.3.31:

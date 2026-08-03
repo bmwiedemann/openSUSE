@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-et-orbi
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,14 +24,14 @@
 #
 
 Name:           rubygem-et-orbi
-Version:        1.2.11
+Version:        1.4.0
 Release:        0
 %define mod_name et-orbi
 %define mod_full_name %{mod_name}-%{version}
-BuildRequires:  ruby-macros >= 5
-BuildRequires:  %{ruby}
 BuildRequires:  %{rubygem gem2rpm}
-Url:            https://github.com/floraison/et-orbi
+BuildRequires:  %{ruby}
+BuildRequires:  ruby-macros >= 5
+URL:            https://github.com/floraison/et-orbi
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        time with zones

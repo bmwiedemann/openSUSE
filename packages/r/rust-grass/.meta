@@ -7,6 +7,5 @@ exposing only 2 functions.
 In addition to a library, this crate also includes a binary that is
 intended to act as an invisible replacement to the Sass commandline
 executable.</description>
-  <devel project="GNOME:Apps" package="rust-grass"/>
   <url>https://github.com/connorskees/grass</url>
 </package>

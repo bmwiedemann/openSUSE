@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar 24 17:22:46 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.5.9:
+  * Did not properly specify how to find source files so 0.5.8
+    wheel was broken. (In my defense I've used src<package>
+    builds for almost five years now.)
+  * Suppress warnings about SyntaxError: invalid escape
+    sequences.
+  * Switch to using pyproject.toml over setup.py.
+- refresh new-pythons.patch: remove setup.py hunk as it no longer exists.
+
+-------------------------------------------------------------------
 Thu Jun  5 04:39:19 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
@@ -20,7 +32,7 @@ Mon Sep  9 13:39:13 UTC 2024 - Markéta Machová <mmachova@suse.com>
 -------------------------------------------------------------------
 Thu Apr 22 06:21:32 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Do not build for Python 3.6, due to no NumPy. 
+- Do not build for Python 3.6, due to no NumPy.
 
 -------------------------------------------------------------------
 Tue May 12 08:26:00 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
@@ -41,7 +53,7 @@ Sat May  9 15:21:11 UTC 2020 - andy great <andythe_great@pm.me>
     the zeroth frame in the stack. For this reason, upgrading from
     0.5.5 is _strongly_ recommended.
 - Clean up spec file.
-    
+
 -------------------------------------------------------------------
 Tue Dec 10 16:30:58 UTC 2019 - Todd R <toddrme2178@gmail.com>
 

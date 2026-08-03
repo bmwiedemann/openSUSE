@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jul 10 12:15:54 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.28.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.28.0
+- Too many changes since 6.27.0, only listing bugfixes:
+  * mkdirjob: add setOwnership to set uid/gid (kde#517067)
+  * deletejob: report files removed before a partial failure (kde#424545)
+  * kfileitem: do not read .directory on slow filesystems in iconName (kde#519189)
+  * widgets/kfileitem: center small icons in grid view (kde#520659)
+
+-------------------------------------------------------------------
 Sat Jun  6 11:42:14 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.27.0

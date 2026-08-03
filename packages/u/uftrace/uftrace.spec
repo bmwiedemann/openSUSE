@@ -18,7 +18,7 @@
 Name:           uftrace
 Summary:        A function call graph tracer for C, C++, Rust and Python programs
 Group:          Development/Tools/Debuggers
-Version:        0.18.1
+Version:        0.19
 Release:        1
 License:        GPL-2.0-only
 URL:            https://github.com/namhyung/uftrace

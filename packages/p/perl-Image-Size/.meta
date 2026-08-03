@@ -6,5 +6,4 @@ and 'height' parameters to image tags. The sizes are cached internally
 based on the file name, so multiple calls on the same file name (images
 used in bulleted lists, for example) do not result in repeated
 computations.</description>
-  <devel project="devel:languages:perl" package="perl-Image-Size"/>
 </package>

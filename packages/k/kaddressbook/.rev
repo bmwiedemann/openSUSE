@@ -976,4 +976,13 @@
     <comment>KDE release gear 26.04.3 (forwarded request 1362728 from krop)</comment>
     <requestid>1363194</requestid>
   </revision>
+  <revision rev="123" vrev="2">
+    <srcmd5>2f45af742782ba93066e653d8c75f7e9</srcmd5>
+    <version>26.04.3</version>
+    <time>1784126003</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream change:
+  * 0001-Explicitely-check-KF6I18n-dependency-ourselves-using.patch</comment>
+    <requestid>1365601</requestid>
+  </revision>
 </revisionlist>

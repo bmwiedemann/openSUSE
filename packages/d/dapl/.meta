@@ -6,5 +6,4 @@ a userspace RDMA API that supports DAT 2.0 specification and IB
 transport extensions for atomic operations and rdma write with
 immediate data.
 </description>
-  <devel project="science:HPC" package="dapl"/>
 </package>

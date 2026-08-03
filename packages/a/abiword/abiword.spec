@@ -17,26 +17,14 @@
 
 
 Name:           abiword
-Version:        3.0.5
+Version:        3.0.8
 Release:        0
 Summary:        A Multiplatform Word Processor
-# FIXME next version: check if the telepathy support still requires old version of empathy (with libempathy-gtk)
-# FIXME: package aiksaurus, libots, mathview-frontend-libxml2
 License:        GPL-2.0-or-later
 Group:          Productivity/Office/Word Processor
-URL:            http://www.abisource.com/
-Source0:        http://abisource.com/downloads/abiword/%{version}/source/%{name}-%{version}.tar.gz
-Source1:        abiword.appdata.xml
-# I don't know why this is missing in the release tarballs!
-Source2:        https://raw.githubusercontent.com/AbiWord/abiword/release-3.0.4/plugins/command/plugin.m4#/AbiCommand_plugin.m4
-# PATCH-FIX-UPSTREAM abiword-librevenge.patch fstrba@suse.com -- Fix build against librevenge-based libraries (svn revs 34461, 34462, 34463, 34464 and 34468)
-Patch5:         abiword-librevenge.patch
-# PATCH-FIX-UPSTREAM abiword-libwps-0.4.patch dimstar@opensuse.org -- Port to libwps-0.4; patch taken from Fedora.
-Patch6:         abiword-libwps-0.4.patch
-# PATCH-FIX-UPSTREAM boost_asio.patch adam.majer@suse.de -- Add support for boost::asio
-Patch7:         boost_asio.patch
-# PATCH-FIX-UPSTREAM xml-inc.patch -- Add missing include
-Patch8:         xml-inc.patch
+URL:            https://gitlab.gnome.org/World/AbiWord/
+Source0:        %{name}-%{version}.tar.xz
+
 BuildRequires:  autoconf-archive
 BuildRequires:  bison
 BuildRequires:  dbus-1-glib-devel
@@ -52,6 +40,7 @@ BuildRequires:  libwmf-devel
 BuildRequires:  link-grammar-devel
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
+BuildRequires:  pkgconfig(asio)
 BuildRequires:  pkgconfig(cairo) >= 1.10
 BuildRequires:  pkgconfig(enchant) >= 1.2.0
 BuildRequires:  pkgconfig(fribidi) >= 0.10.4
@@ -65,14 +54,6 @@ BuildRequires:  pkgconfig(libwpg-0.3)
 BuildRequires:  pkgconfig(libwps-0.4)
 BuildRequires:  pkgconfig(libxslt)
 BuildRequires:  pkgconfig(wv-1.0) >= 1.2.0
-# FIXME: requires libgda >= 1.2.0 libgnomedb >= 1.2.0 and we have
-# libgda-[34].0.pc
-#BuildRequires:  libgda-4_0-devel
-#BuildRequires:  libgnomedb-devel
-# FIXME: missing BuildRequires as of 05/12/2009:
-# Aiksaurus.h not found
-# libots-1 >= 0.5.0
-# mathview-frontend-libxml2 >= 0.7.5
 Conflicts:      abiword-unstable
 Recommends:     gnome-icon-theme
 
@@ -110,35 +91,10 @@ AbiWord is a multiplatform word processor with a GTK+ interface on the
 UNIX platform.
 
 %prep
-%autosetup -p0
-cp %{SOURCE2} plugins/command/plugin.m4
+%autosetup -p1
 
 %build
-# We modified plugin configuration and thus we need to regenerate the whole build system
-# The following script is lifted from upstream autogen-common.sh file that is not
-# distributed in the release tarball.
-rm -rf plugins/aiksaurus
-find plugins -name Makefile.am | sed  's|.am$||g' > plugin-makefiles.m4
-find plugins -maxdepth 1 -type d | grep -v -e '^\.$' -e '\./\.' | sed 's|plugins/||g' | xargs echo > plugin-list.m4
-(for plugin in `cat plugin-list.m4`; do
-        u=`echo $plugin | tr '[:lower:]' '[:upper:]'`
-        echo 'AM_CONDITIONAL(['$u'_BUILTIN], test "$enable_'$plugin'_builtin" = "yes")'
-done) > plugin-builtin.m4
-find plugins -name plugin.m4 | xargs cat > plugin-configure.m4
-for f in ` find ./plugins -name '*.m4' | grep -v 'plugin\.m4'`; do
-    ln -sf $f
-done
-libtoolize --force --copy --install
-autoreconf -fi
-
-# -fno-strict-aliasing added 2009-04-12. Leave it in because we are
-# not sure it is not needed any more and the performance cost of this
-# option is cheaper then random undefined behaviours.
-CFLAGS="%{optflags} -fno-strict-aliasing"
-%if 0%{?suse_version} >= 1550
-# Enforce std=c++14 as codebase is not c++17 (default for gcc 11) ready
-CXXFLAGS="%{optflags} -std=c++14"
-%endif
+NOCONFIGURE=1 ./autogen.sh
 %configure \
         --disable-static \
         --enable-plugins \
@@ -156,16 +112,14 @@ CXXFLAGS="%{optflags} -std=c++14"
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
-install -dm 0755 %{buildroot}%{_datadir}/appdata
-install -Dm 0644 %{S:1} %{buildroot}%{_datadir}/appdata/abiword.appdata.xml
-%fdupes %{buildroot}
+%fdupes %{buildroot}%{_prefix}
 
 %ldconfig_scriptlets -n libabiword-3_0
 
 %files
 %license COPYING
 %doc AUTHORS COPYRIGHT.TXT
-%{_bindir}/*
+%{_bindir}/abiword
 %dir %{_datadir}/appdata
 %{_datadir}/appdata/abiword.appdata.xml
 %{_datadir}/applications/abiword.desktop

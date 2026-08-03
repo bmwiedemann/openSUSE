@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 25 17:45:35 UTC 2026 - Michal Filka <mfilka@suse.com>
+
+- jsc#PED-14507
+  - Removed reference to update-desktop-files from spec file 
+  - 1.5.2
+-------------------------------------------------------------------
 Wed Jan 13 16:46:07 UTC 2021 - dmulder@suse.com
 
 - Fix unable to parse samba admx templates; (bsc#1180896);

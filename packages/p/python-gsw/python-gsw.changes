@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jul 14 20:11:19 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.6.23:
+  * Add Pyodide build
+  * update pre-commits
+- update to 3.6.22:
+  * Audit the wheel for abi3
+  * p_from_z: raise ValueError if any z > 5
+  * Add "where" based ufunc masked array support decorator
+
+-------------------------------------------------------------------
 Tue Mar 31 09:19:32 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.6.21:

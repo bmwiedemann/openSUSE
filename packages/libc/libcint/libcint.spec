@@ -2,6 +2,7 @@
 # spec file for package libcint
 #
 # Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,14 +21,12 @@
 %define libname %{name}%{major}
 %define develname   cint
 Name:           libcint
-Version:        6.1.2
+Version:        6.1.3
 Release:        0
 Summary:        General Gaussian-type orbitals integrals for quantum chemistry
 License:        BSD-2-Clause
 URL:            https://github.com/sunqm/libcint
 Source:         https://github.com/sunqm/libcint/archive/v%{version}/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/sunqm/libcint/issues/117
-Patch0:         cmake-fix-wrong-cint-version-patch.patch
 BuildRequires:  cmake >= 3.15
 BuildRequires:  gcc-fortran
 BuildRequires:  openblas-devel
@@ -61,15 +60,16 @@ developing applications that use %{name}.
 %autosetup -p1
 
 %build
-%cmake -DCMAKE_INSTALL_LIBDIR=%{_lib} \
+%cmake \
+       -DCMAKE_INSTALL_LIBDIR=%{_lib} \
        -DCMAKE_C_STANDARD=17 \
        -DENABLE_EXAMPLE:BOOL=ON \
        -DWITH_F12:BOOL=ON \
        -DWITH_COULOMB_ERF:BOOL=ON \
        -DWITH_RANGE_COULOMB:BOOL=ON \
        -DENABLE_TEST:BOOL=ON \
-       -DQUICK_TEST:BOOL=ON
-
+       -DQUICK_TEST:BOOL=ON \
+       %{nil}
 %cmake_build
 
 %install
@@ -78,12 +78,11 @@ developing applications that use %{name}.
 %check
 %ctest
 
-%post -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}
 
 %files -n %{libname}
-%{_libdir}/libcint.so.%{major}
-%{_libdir}/libcint.so.%{version}
+%license LICENSE
+%{_libdir}/libcint.so.%{major}{,.*}
 
 %files -n %{develname}-devel
 %license LICENSE

@@ -6,5 +6,4 @@ JDOM tree, and returns a NodeSet (java.util.List) of selected
 elements.  Is is being used in the development of the
 as-yet-unreleased werken.xslt (eXtensible Stylesheet Language) and the
 werken.canonical (XML canonicalization) packages.</description>
-  <devel project="Java:packages" package="werken-xpath"/>
 </package>

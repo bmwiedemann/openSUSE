@@ -135,4 +135,14 @@
     <comment></comment>
     <requestid>1356893</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>87ea4f4423afa6ade07fa076b9040dbb</srcmd5>
+    <version>13.0.2</version>
+    <time>1785255667</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 13.0.2:
+  * Fixed an issue where the AppImage interface was always in English
+</comment>
+    <requestid>1368207</requestid>
+  </revision>
 </revisionlist>

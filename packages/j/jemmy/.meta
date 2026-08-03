@@ -6,5 +6,4 @@ library which provides clear and straightforward API to access Java UI. Tests
 are then just java programs, which use the API. Having the tests in Java allows 
 to use all the flexibility of high level language to capture test logic and 
 also do any other operations needed to be done from test.</description>
-  <devel project="Java:packages" package="jemmy"/>
 </package>

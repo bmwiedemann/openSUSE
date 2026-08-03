@@ -26,5 +26,4 @@ Finally, note that this package is not intended to do everything you
 could ever imagine automagically for you; it is rather intended to
 serve as a toolbox (in the best of UNIX spirit and traditions) which
 should, however, always get you where you want to go.</description>
-  <devel project="devel:languages:perl" package="perl-Date-Calc"/>
 </package>

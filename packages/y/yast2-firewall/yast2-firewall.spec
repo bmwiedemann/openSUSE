@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-firewall
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yast2-firewall
-Version:        5.0.1
+Version:        5.0.2
 Release:        0
 Summary:        YaST2 - Firewall Configuration
 Group:          System/YaST
@@ -26,10 +26,7 @@ URL:            https://github.com/yast/yast-firewall
 
 Source0:        %{name}-%{version}.tar.bz2
 
-BuildRequires:  perl-XML-Writer
-BuildRequires:  update-desktop-files
 BuildRequires:  yast2-devtools >= 4.2.2
-BuildRequires:  yast2-testsuite
 # Replace PackageSystem with Package
 BuildRequires:  yast2 >= 4.4.38
 BuildRequires:  rubygem(%rb_default_ruby_abi:rspec)

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jul 15 06:26:16 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.9.1:
+  * Add export status codes and their reference documentation
+  * Fix hexadecimal parsing of DRMS keyword values
+  * Log successful export requests and correct a docstring
+  * Restores a passing test suite against pandas 2.3.3 (the 0.9.0
+    to_datetime corner-case tests failed with current pandas)
+- Recompile the installed modules as hash-based bytecode to avoid
+  python-bytecode-inconsistent-mtime
+
+-------------------------------------------------------------------
 Sun Apr 26 11:03:33 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.9.0:

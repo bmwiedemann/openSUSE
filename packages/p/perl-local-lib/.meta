@@ -12,6 +12,5 @@ to ship an application with an app-specific copy of a Perl module, or
 collection of modules. Useful in cases like when an upstream maintainer hasn't
 applied a patch to a module of theirs that you need for your application.
 </description>
-  <devel project="devel:languages:perl" package="perl-local-lib"/>
   <url>http://search.cpan.org/dist/local-lib/</url>
 </package>

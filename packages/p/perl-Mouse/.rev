@@ -260,4 +260,15 @@
       - Provide empty import on Mouse::Deprecated for imported Moose test (haarg #120, jkeenan #127)</comment>
     <requestid>1324187</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>e500739acfc160a4bcb8aab138fbd329</srcmd5>
+    <version>2.6.2</version>
+    <time>1775743728</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.6.2 (v2.6.2)
+   see /usr/share/doc/packages/perl-Mouse/Changes
+  v2.6.2 2026-04-04T01:03:21Z
+      - Fix the conversion from floating point number to string with quadmath Perl (#126)</comment>
+    <requestid>1345220</requestid>
+  </revision>
 </revisionlist>

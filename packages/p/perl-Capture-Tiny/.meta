@@ -10,6 +10,5 @@ in any particular situation and just use this one.
 This module was heavily inspired by the IO::CaptureOutput manpage, which
 provides similar functionality without the ability to tee output and with
 more complicated code and API.</description>
-  <devel project="devel:languages:perl" package="perl-Capture-Tiny"/>
   <url>http://search.cpan.org/dist/Capture-Tiny/</url>
 </package>

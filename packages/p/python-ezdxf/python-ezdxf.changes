@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jul 15 06:43:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.4.4:
+  * Fix float parsing for values written with a leading dot or
+    without a leading zero
+  * Fix empty layer linetype patterns when using custom layout
+    properties
+  * Fix CIF/MIF text decoding
+  * Add get_textstyle() and valid_text_height() helpers and support
+    text style width and oblique factors in MTEXT
+  * Correctness fixes for BlockRecord.destroy() and Body copy and
+    transform handling
+
+-------------------------------------------------------------------
 Fri Jun  5 05:01:25 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove source files, so they aren't shipped.

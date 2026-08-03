@@ -1,7 +1,7 @@
 #
 # spec file for package python-ml-dtypes
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,11 +19,13 @@
 Name:           python-ml-dtypes
 Version:        0.5.4
 Release:        0
-Summary:        stand-alone implementation of several NumPy dtype extensions
+Summary:        Stand-alone implementation of several NumPy dtype extensions
 License:        Apache-2.0
 URL:            https://github.com/jax-ml/ml_dtypes
 Source:         https://files.pythonhosted.org/packages/source/m/ml-dtypes/ml_dtypes-%{version}.tar.gz
 Source1:        https://github.com/jax-ml/ml_dtypes/archive/refs/tags/v%{version}.tar.gz#/ml_dtypes-%{version}-gh.tar.gz
+# PATCH-FIX-UPSTREAM gh#jax-ml/ml_dtypes#367
+Patch0:         support-numpy-2.4.patch
 BuildRequires:  %{python_module abseil}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel}
@@ -61,19 +63,23 @@ Requires:       python-numpy >= 2.0
 - `int2`, `int4`, `uint2` and `uint4`: low precision integer types.
 
 %prep
-%autosetup -p1 -a1 -n ml_dtypes-%{version}
+%autosetup -N -n ml_dtypes-%{version}
+tar -zx --strip-components=1 -f %{SOURCE1}
+%autopatch -p1
 
 %build
 %pyproject_wheel
 
 %install
 %pyproject_install
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
 %pytest_arch -k "not testFInfo_float8_e8m0fnu"
 
 %files %{python_files}
+%license LICENSE LICENSE.eigen
+%doc README.md
 %{python_sitearch}/ml_dtypes
 %{python_sitearch}/ml_dtypes-%{version}.dist-info
 

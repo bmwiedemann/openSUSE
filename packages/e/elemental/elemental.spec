@@ -17,7 +17,7 @@
 
 
 Name:           elemental
-Version:        3.0.0
+Version:        3.0.2
 Release:        0
 Summary:        Elemental 3
 License:        Apache-2.0

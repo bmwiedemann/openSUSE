@@ -1,7 +1,7 @@
 #
 # spec file for package mplus-fonts
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,13 @@
 
 
 Name:           mplus-fonts
-Version:        20230116
+Version:        20260325
 Release:        0
 Summary:        Font set incorporating all Kanji until level 2, and latin glyphs
 License:        OFL-1.1
 Group:          System/X11/Fonts
 URL:            https://mplusfonts.github.io/
+#Git-Clone:     https://github.com/coz-m/MPLUS_FONTS
 Source0:        MPLUS_FONTS-%{version}.tar.xz
 Requires:       mplus1-fonts
 Requires:       mplus2-fonts
@@ -90,13 +91,13 @@ A monospaced variable font combining full-width Japanese glyphs
 (shared with M PLUS Code Latin 50 described below).
 
 %package -n mplus-code-latin50-fonts
-Summary:        Non-variable M PLUS Code Latin 60 font
+Summary:        Non-variable M PLUS Code Latin 50 font
 Group:          System/X11/Fonts
 %reconfigure_fonts_prereq
 
 %description -n mplus-code-latin50-fonts
 A monospaced font with 7 weights from Thin to Bold.
-M PLUS Code Latin 50 has a 50% character width.
+M PLUS Code Latin 50 has a character aspect ratio of 0.5.
 
 %package -n mplus-code-latin60-fonts
 Summary:        Non-variable M PLUS Code Latin 60 font
@@ -105,7 +106,7 @@ Group:          System/X11/Fonts
 
 %description -n mplus-code-latin60-fonts
 A monospaced font with 7 weights from Thin to Bold.
-M PLUS Code Latin 60 has a 60% character width.
+M PLUS Code Latin 60 has a character aspect ratio of 0.6.
 
 %package -n mplus-code-latin-variable-fonts
 Summary:        Variable M PLUS Code Latin font

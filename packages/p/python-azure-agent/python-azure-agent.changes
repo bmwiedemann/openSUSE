@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 14 07:06:39 UTC 2026 - Jiri Srain <jsrain@suse.com>
+
+- adjust check for suse_version (jsc#PED-15805)
+
+-------------------------------------------------------------------
 Fri Nov 21 13:49:16 UTC 2025 - Robert Schweikert <rjschwei@suse.com>
 
 - Fix dependencies for SLE 16 (bsc#1254129)

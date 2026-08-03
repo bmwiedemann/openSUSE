@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jul 30 11:09:03 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.2:
+  * Update Go dependencies
+  * Fix release date string by @dirkmueller in #530
+  * Update grpc to 1.82.1 to address GHSA-hrxh-6v49-42gf
+
+-------------------------------------------------------------------
+Thu Jul 16 11:26:42 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.1:
+  * [backport] Ensure disabled CoW is applied by @davidcassany in #510
+  * Bump github.com/containerd/containerd/v2 from 2.3.1 to 2.3.2
+
+-------------------------------------------------------------------
 Tue Jun 23 15:50:45 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - Initial package for openSUSE Factory (3.0.0)

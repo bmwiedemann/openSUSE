@@ -3,5 +3,6 @@
   <description>This library provides functionality for parsing and serializing RPM package manifest files.
 
 It is primarily designed for use by package managers like DNF, which populate information into manifest files. However, it can also be used directly to interact with manifest objects in custom applications.</description>
+  <devel project="system:packagemanager:dnf" package="libpkgmanifest"/>
   <url>https://github.com/rpm-software-management/libpkgmanifest</url>
 </package>

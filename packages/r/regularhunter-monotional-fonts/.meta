@@ -1,5 +1,6 @@
 <package name="regularhunter-monotional-fonts" project="openSUSE:Factory">
   <title>Monotional Fonts</title>
   <description>A humanist, monospace font based on DejaVu Sans Mono and inspired by André Berg's Meslo</description>
+  <devel project="M17N:fonts" package="regularhunter-monotional-fonts"/>
   <url>https://github.com/regularhunter/monotional-font/</url>
 </package>

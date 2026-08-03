@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul 13 09:04:16 UTC 2026 - Aleksei Burlakov <aburlakov@suse.com>
+
+- Update to version 3.2.0:
+  * Boost app startup time by removing to_sentence usage by @ThomasCrambert
+  * Handle parentheses in variables in commands by @i7an
+  * allow warning when a env var was not overwritten by @grosser
+  * fix a few small issues by @grosser
+
+-------------------------------------------------------------------
 Mon Dec  9 16:59:36 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - initial package

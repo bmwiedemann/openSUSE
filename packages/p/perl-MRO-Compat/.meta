@@ -24,6 +24,5 @@ The interface documentation here serves only as a quick reference of what the
 function basically does, and what differences between MRO::Compat and 5.9.5+
 One should look out for. The main docs in 5.9.5's mro are the real interface
 docs, and contain a lot of other useful information.</description>
-  <devel project="devel:languages:perl" package="perl-MRO-Compat"/>
   <url>http://search.cpan.org/dist/MRO-Compat/</url>
 </package>

@@ -44,6 +44,8 @@ Source2:        %{name}.keyring
 Source3:        %{url}/-/raw/v%{version}/pytest.ini
 # PATCH-FIX-UPSTREAM https://gitlab.com/mailman/django-mailman3/-/commit/465c1ffc77556bb8a80a678f53a40f16b9766cc6 feat: Add Python 3.13 and Django 5.2 (LTS) support
 Patch0:         django52.patch
+# PATCH-FIX-UPSTREAM https://gitlab.com/mailman/django-mailman3/-/commit/e2a0066b95f570d063b7ef029d74b1c32bdc7b5b fix: Remove sociallogin.account from the debug print
+Patch1:         sociallogin.patch
 BuildRequires:  %{python_module pdm}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -54,16 +56,26 @@ Requires:       python-django-allauth >= %{django_allauth_min_version}
 Requires:       python-django-gravatar2 >= %{django_gravatar2_min_version}
 Requires:       python-mailmanclient >= %{mailmanclient_min_version}
 Requires:       (python-Django >= %{django_min_version} with python-Django < %{django_max_version})
+# SECTION django-allauth[socialaccount,openid] extra dependencies
+Requires:       python-PyJWT
+Requires:       python-oauthlib
+Requires:       python-python3-openid
+Requires:       python-requests
+# /SECTION
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Django >= %{django_min_version}}
+BuildRequires:  %{python_module PyJWT}
 BuildRequires:  %{python_module django-allauth >= %{django_allauth_min_version}}
 BuildRequires:  %{python_module django-gravatar2 >= %{django_gravatar2_min_version}}
 BuildRequires:  %{python_module editables}
 BuildRequires:  %{python_module mailmanclient >= %{mailmanclient_min_version}}
+BuildRequires:  %{python_module oauthlib}
 BuildRequires:  %{python_module pdm-backend}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module python3-openid}
+BuildRequires:  %{python_module requests}
 # /SECTION
 %python_subpackages
 

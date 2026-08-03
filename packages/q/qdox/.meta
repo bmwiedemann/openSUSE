@@ -4,5 +4,4 @@
 class/interface/method definitions from source files complete with
 JavaDoc @tags. It is designed to be used by active code generators or
 documentation tools.</description>
-  <devel project="Java:packages" package="qdox"/>
 </package>

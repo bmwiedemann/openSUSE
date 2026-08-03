@@ -507,4 +507,13 @@
     <comment>- adding correct flag --update-overlays fixing  (bsc#1268790)</comment>
     <requestid>1361571</requestid>
   </revision>
+  <revision rev="43" vrev="4">
+    <srcmd5>e88080b39160bd39d2da026754e4532c</srcmd5>
+    <version>4.7.0</version>
+    <time>1785255625</time>
+    <user>dimstar_suse</user>
+    <comment>- updated golang.org/x/text to v0.40.0 to fix  CVE-2026-56852 
+  (bsc#1272014)</comment>
+    <requestid>1368197</requestid>
+  </revision>
 </revisionlist>

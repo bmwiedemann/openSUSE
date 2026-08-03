@@ -11,5 +11,4 @@ To override any generated methods, it is sufficient to ensure that the
 overriding method is defined when Class::MethodMaker is called. Note that
 the 'use' keyword introduces a 'BEGIN' block, so you may need to define (or
 at least declare) your overriding method in a 'BEGIN' block.</description>
-  <devel project="devel:languages:perl" package="perl-Class-MethodMaker"/>
 </package>

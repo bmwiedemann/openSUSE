@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 25 14:25:28 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2:
+  * Fix issue when compiling with C23 requirements.
+
+-------------------------------------------------------------------
 Thu Apr 17 10:29:41 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.1
@@ -26,7 +32,7 @@ Mon Feb 26 13:11:00 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 -------------------------------------------------------------------
 Sun Jan 17 14:11:57 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- add fix-build-on-non-x86.patch: fix build on non-x86 
+- add fix-build-on-non-x86.patch: fix build on non-x86
 
 -------------------------------------------------------------------
 Mon Jan 11 01:03:32 UTC 2021 - Dirk Müller <dmueller@suse.com>

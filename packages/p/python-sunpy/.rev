@@ -544,4 +544,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1361621</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>53245a7fc2ddb5adc0f686c062df4599</srcmd5>
+    <version>8.0.0</version>
+    <time>1785504435</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 8.0.0
+  ## Breaking Changes
+  * Adjusted the reference_date property of
+    ~sunpy.map.sources.AIAMap and ~sunpy.map.sources.HMIMap so that
+    its return value is in the same time scale as the date
+    property, in order to avoid subtle user mistakes. (#8477)
+  ## New Features
+  * Added ~sunpy.map.sources.PHIMap to handle imagery from the
+    Polarimetric and Helioseismic Imager (PHI) on the Solar Orbiter
+    mission. (#8522)
+  * Added support for saving and loading astropy.table.QTable
+    containing SkyCoord objects in sunpy.coordinates frames to/from
+    FITS files. (#8548)
+  * Added an option to ~sunpy.coordinates.get_horizons_coord to
+    print out the response from JPL Horizons, which can contain
+    useful contextual details. (#8575)
+  * The Solar Orbiter Archive can now be queried via
+    ~sunpy.net.Fido without installing any extra packages. The
+    sunpy-soar package has been merged into sunpy, and no longer
+    needs to be separately installed or imported. (#8605)
+  * Added ~sunpy.map.sources.METISMap to handle imagery from the
+    the multi-wavelength coronagraph for the Solar Orbiter mission.
+    (#8641)
+  * sunpy can now be built for use with free-threaded Python,
+    although some certain optional dependencies (e.g., OpenCV) are
+    not yet compatible with free threading. (#8653)
+  * Added a default ~sunpy.map.sources.METISMap.mask property to
+    ~sunpy.map.sources.METISMap and a gallery example demonstrating
+    how to download, load, and plot METIS observations. (#8658)
+  * Update sunpy.util.io.is_url() to use urllib.parse.urlparse</comment>
+    <requestid>1368380</requestid>
+  </revision>
 </revisionlist>

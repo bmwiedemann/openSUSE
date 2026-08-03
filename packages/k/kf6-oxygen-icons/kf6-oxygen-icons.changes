@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Jul 10 12:16:09 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.28.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.28.0
+- Changes since 6.27.0:
+  * Update dependency version to 6.28.0
+  * add to favorites icon
+  * updated kt-magnet for sizes 22-64
+  * actions/kt-magnet initial version
+  * appimage mimetype
+  * symlink system-save-session -> document-save
+  * application-x-msdownload -> application-x-ms-dos-executable
+  * amarok-symbolic
+  * some symlinks for eye icon
+  * more symbolic icons for 32x32
+  * another icon complete
+  * more versions 2
+  * more versions
+  * new versions
+  * keepsecret app icon
+  * one more version
+  * new icon for a series
+  * Update version to 6.28.0
+
+-------------------------------------------------------------------
 Fri Jun 12 08:59:48 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.27.0

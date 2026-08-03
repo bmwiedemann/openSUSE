@@ -1,0 +1,4 @@
+<package name="mcp-bugzilla-image" project="openSUSE:Factory">
+  <title>openSUSE Tumbleweed MCP Host for Bugzilla</title>
+  <description>MCP Host for Bugzilla container based on the openSUSE Tumbleweed Base Container Image.</description>
+</package>

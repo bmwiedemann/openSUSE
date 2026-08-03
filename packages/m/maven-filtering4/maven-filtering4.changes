@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Jul 13 16:49:46 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to the git checkout from 7th of June 2026 (hash 2d20dde)
+  * Changes
+    + Configure download_path_suffix for distribution area
+    + Set up for ATR (#343)
+    + Update parent POM to 47 and site to 2.0.0 (#319)
+    + Cleanup and refactor tests (#312)
+    + Add README badges for 3.x vs 4 branches
+    + Update mavenVersion to 4.0.0-rc-5 (#307)
+    + Update maven-shared-components to 49
+    + Update plexus-interpolation to 1.29
+    + Update plexus-utils (test resources) to 4.0.3 (#331)
+    + Update mockitoVersion to 5.23.0 (#310, #324, #329)
+    + Update junitVersion to 5.14.4
+
+-------------------------------------------------------------------
+Mon Jul 13 12:26:47 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Do not use the slf4j2 compatibility package, as the base slf4j
+  package is now on version 2.0.18
+
+-------------------------------------------------------------------
 Sat Nov  8 14:28:18 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

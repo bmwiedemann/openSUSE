@@ -64,6 +64,7 @@ Patch21:        festival-configure-c99.patch
 Patch22:        speech_tools-remove-externs.patch
 Patch23:        speech_tools-explicit-func-match.patch
 Patch24:        speech_tools-substrcmp-size_t.patch
+Patch25:        speech_tools-ambiguous-relation.patch
 BuildRequires:  gcc-c++
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
@@ -115,6 +116,9 @@ cd ../speech_tools
 %patch -P 22 -p1
 %patch -P 23 -p1
 %patch -P 24 -p1
+%if 0%{?suse_version} >= 1699
+%patch -P 25 -p1
+%endif
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects

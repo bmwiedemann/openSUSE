@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar 25 08:49:39 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+ - update to 6.2.0:
+  * Update dependencies based on pyproject.toml:
+    + Update python-devel to >= 3.10
+    + Add BuildRequires: setuptools >= 80, setuptools_scm >= 8
+    + Add BuildRequires: click >= 8.0, sphinx >= 4.0, docutils
+    + Remove BuildRequires: pbr (no longer used)
+
+-------------------------------------------------------------------
 Mon Jul  1 08:08:55 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.0.0:

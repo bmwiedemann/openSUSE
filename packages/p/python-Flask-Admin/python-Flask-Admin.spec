@@ -18,42 +18,59 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Flask-Admin
-Version:        2.0.2
+Version:        2.2.0
 Release:        0
 Summary:        Extensible admin interface framework for Flask
 License:        BSD-3-Clause
 URL:            https://github.com/flask-admin/flask-admin/
 Source:         https://files.pythonhosted.org/packages/source/f/flask_admin/flask_admin-%{version}.tar.gz
-BuildRequires:  %{python_module Flask >= 0.7}
-BuildRequires:  %{python_module Flask-Babel}
-BuildRequires:  %{python_module Flask-SQLAlchemy}
-BuildRequires:  %{python_module Pillow >= 3.3.2}
-BuildRequires:  %{python_module SQLAlchemy-Utils}
-BuildRequires:  %{python_module SQLAlchemy}
-BuildRequires:  %{python_module WTForms}
-BuildRequires:  %{python_module arrow}
-BuildRequires:  %{python_module asgiref}
-BuildRequires:  %{python_module azure-storage-blob}
-BuildRequires:  %{python_module beautifulsoup4}
-BuildRequires:  %{python_module boto3}
-BuildRequires:  %{python_module colour}
 BuildRequires:  %{python_module flit-core}
-BuildRequires:  %{python_module moto}
-BuildRequires:  %{python_module peewee}
 BuildRequires:  %{python_module pip}
+# Test requirements
+BuildRequires:  %{python_module Flask >= 2.0}
+BuildRequires:  %{python_module Flask-Babel >= 3.0.1}
+BuildRequires:  %{python_module Flask-SQLAlchemy >= 3}
+BuildRequires:  %{python_module Flask-SQLAlchemy-Lite}
+BuildRequires:  %{python_module Jinja2 >= 3.0}
+BuildRequires:  %{python_module MarkupSafe >= 2.0}
+BuildRequires:  %{python_module Pillow >= 10}
+BuildRequires:  %{python_module SQLAlchemy-Utils >= 0.38}
+BuildRequires:  %{python_module SQLAlchemy}
+BuildRequires:  %{python_module WTForms >= 2.3}
+BuildRequires:  %{python_module Werkzeug >= 2.0}
+BuildRequires:  %{python_module arrow >= 0.14}
+BuildRequires:  %{python_module azure-storage-blob >= 12}
+BuildRequires:  %{python_module beautifulsoup4}
+BuildRequires:  %{python_module boto3 >= 1.33}
+BuildRequires:  %{python_module colour >= 0.1.5}
+BuildRequires:  %{python_module moto}
+BuildRequires:  %{python_module peewee >= 3.14}
+BuildRequires:  %{python_module pymongo >= 3.10}
 BuildRequires:  %{python_module pytest-recording}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module tablib}
-BuildRequires:  %{python_module wheel}
+BuildRequires:  %{python_module tablib >= 3}
+BuildRequires:  %{python_module wtf-peewee >= 3.0.4}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Flask >= 0.7
-Requires:       python-Jinja2
-Requires:       python-MarkupSafe
+Requires:       python-Flask >= 2.0
+Requires:       python-Jinja2 >= 3.0
+Requires:       python-MarkupSafe >= 2.0
 Requires:       python-SQLAlchemy
-Requires:       python-WTForms
-Requires:       python-Werkzeug
-
+Requires:       python-WTForms >= 2.3
+Requires:       python-Werkzeug >= 2.0
+Recommends:     python-Flask-SQLAlchemy >= 3
+Recommends:     python-Flask-SQLAlchemy-Lite
+Recommends:     python-Pillow >= 10
+Recommends:     python-SQLAlchemy >= 1.4
+Recommends:     python-SQLAlchemy-Utils >= 0.38
+Recommends:     python-arrow >= 0.14
+Recommends:     python-azure-storage-blob >= 12
+Recommends:     python-boto3 >= 1.33
+Recommends:     python-colour >= 0.1.5
+Recommends:     python-peewee >= 3.14
+Recommends:     python-pymongo >= 3.10
+Recommends:     python-tablib >= 3
+Recommends:     python-wtf-peewee >= 3.0.4
 BuildArch:      noarch
 %python_subpackages
 

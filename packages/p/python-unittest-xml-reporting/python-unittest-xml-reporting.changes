@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Feb 20 01:40:08 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.0.0:
+  * Switch to setuptools_scm, and pyproject.toml.
+  * Support Python 3.10+.
+- Drop patches:
+  * python-311.patch
+  * python-312.patch
+
+-------------------------------------------------------------------
 Mon Mar 18 05:33:49 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch python-312.patch:

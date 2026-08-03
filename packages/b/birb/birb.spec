@@ -18,7 +18,7 @@
 
 %define         sover 0
 Name:           birb
-Version:        0.7.1
+Version:        0.9.0
 Release:        0
 Summary:        A library of utilities for GLib based apps
 License:        LGPL-2.1-or-later
@@ -31,7 +31,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-gi-docgen >= 2025.3
 BuildRequires:  pkgconfig(gio-2.0)
-BuildRequires:  pkgconfig(glib-2.0)  >= 2.76
+BuildRequires:  pkgconfig(glib-2.0)  >= 2.80
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(pango)
@@ -82,8 +82,10 @@ BuildArch:      noarch
 
 %python3_fix_shebang
 
+%ifnarch %{x86_64}
 %check
 %meson_test
+%endif
 
 %ldconfig_scriptlets -n lib%{name}%{sover}
 

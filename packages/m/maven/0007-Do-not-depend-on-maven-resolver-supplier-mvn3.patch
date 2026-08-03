@@ -1,0 +1,145 @@
+From 1938da4203b29c000d254eabd145c4f794d23e79 Mon Sep 17 00:00:00 2001
+From: Fridrich Strba <fridrich.strba@bluewin.ch>
+Date: Wed, 10 Jun 2026 13:33:14 +0200
+Subject: [PATCH 7/7] Do not depend on maven-resolver-supplier-mvn3
+
+---
+ maven-resolver-provider/pom.xml                |  4 ----
+ .../DefaultArtifactDescriptorReader.java       | 18 +-----------------
+ .../internal/DefaultVersionRangeResolver.java  | 11 +----------
+ .../internal/DefaultVersionResolver.java       | 11 +----------
+ 4 files changed, 3 insertions(+), 41 deletions(-)
+
+diff --git a/maven-resolver-provider/pom.xml b/maven-resolver-provider/pom.xml
+index f772ac4c6b..18325610cb 100644
+--- a/maven-resolver-provider/pom.xml
++++ b/maven-resolver-provider/pom.xml
+@@ -64,10 +64,6 @@ under the License.
+       <groupId>org.apache.maven.resolver</groupId>
+       <artifactId>maven-resolver-impl</artifactId>
+     </dependency>
+-    <dependency>
+-      <groupId>org.apache.maven.resolver</groupId>
+-      <artifactId>maven-resolver-supplier-mvn3</artifactId>
+-    </dependency>
+     <dependency>
+       <groupId>org.codehaus.plexus</groupId>
+       <artifactId>plexus-utils</artifactId>
+diff --git a/maven-resolver-provider/src/main/java/org/apache/maven/repository/internal/DefaultArtifactDescriptorReader.java b/maven-resolver-provider/src/main/java/org/apache/maven/repository/internal/DefaultArtifactDescriptorReader.java
+index 3a7f81de7b..4c4a1d7618 100644
+--- a/maven-resolver-provider/src/main/java/org/apache/maven/repository/internal/DefaultArtifactDescriptorReader.java
++++ b/maven-resolver-provider/src/main/java/org/apache/maven/repository/internal/DefaultArtifactDescriptorReader.java
+@@ -70,8 +70,6 @@
+ import org.eclipse.aether.resolution.VersionRequest;
+ import org.eclipse.aether.resolution.VersionResolutionException;
+ import org.eclipse.aether.resolution.VersionResult;
+-import org.eclipse.aether.spi.locator.Service;
+-import org.eclipse.aether.spi.locator.ServiceLocator;
+ import org.eclipse.aether.transfer.ArtifactNotFoundException;
+ import org.slf4j.Logger;
+ import org.slf4j.LoggerFactory;
+@@ -81,7 +79,7 @@
+  */
+ @Named
+ @Singleton
+-public class DefaultArtifactDescriptorReader implements ArtifactDescriptorReader, Service {
++public class DefaultArtifactDescriptorReader implements ArtifactDescriptorReader {
+     private RemoteRepositoryManager remoteRepositoryManager;
+ 
+     private VersionResolver versionResolver;
+@@ -188,20 +186,6 @@ public DefaultArtifactDescriptorReader(
+         setArtifactDescriptorDecorators(artifactDescriptorDecorators);
+     }
+ 
+-    @Deprecated
+-    public void initService(ServiceLocator locator) {
+-        setRemoteRepositoryManager(locator.getService(RemoteRepositoryManager.class));
+-        setVersionResolver(locator.getService(VersionResolver.class));
+-        setVersionRangeResolver(locator.getService(VersionRangeResolver.class));
+-        setArtifactResolver(locator.getService(ArtifactResolver.class));
+-        modelBuilder = locator.getService(ModelBuilder.class);
+-        if (modelBuilder == null) {
+-            setModelBuilder(new DefaultModelBuilderFactory().newInstance());
+-        }
+-        setRepositoryEventDispatcher(locator.getService(RepositoryEventDispatcher.class));
+-        setModelCacheFactory(locator.getService(ModelCacheFactory.class));
+-    }
+-
+     public DefaultArtifactDescriptorReader setRemoteRepositoryManager(RemoteRepositoryManager remoteRepositoryManager) {
+         this.remoteRepositoryManager =
+                 Objects.requireNonNull(remoteRepositoryManager, "remoteRepositoryManager cannot be null");
+diff --git a/maven-resolver-provider/src/main/java/org/apache/maven/repository/internal/DefaultVersionRangeResolver.java b/maven-resolver-provider/src/main/java/org/apache/maven/repository/internal/DefaultVersionRangeResolver.java
+index 23b7bc84b5..1104d49329 100644
+--- a/maven-resolver-provider/src/main/java/org/apache/maven/repository/internal/DefaultVersionRangeResolver.java
++++ b/maven-resolver-provider/src/main/java/org/apache/maven/repository/internal/DefaultVersionRangeResolver.java
+@@ -53,8 +53,6 @@
+ import org.eclipse.aether.resolution.VersionRangeRequest;
+ import org.eclipse.aether.resolution.VersionRangeResolutionException;
+ import org.eclipse.aether.resolution.VersionRangeResult;
+-import org.eclipse.aether.spi.locator.Service;
+-import org.eclipse.aether.spi.locator.ServiceLocator;
+ import org.eclipse.aether.spi.synccontext.SyncContextFactory;
+ import org.eclipse.aether.util.ConfigUtils;
+ import org.eclipse.aether.util.version.GenericVersionScheme;
+@@ -69,7 +67,7 @@
+  */
+ @Named
+ @Singleton
+-public class DefaultVersionRangeResolver implements VersionRangeResolver, Service {
++public class DefaultVersionRangeResolver implements VersionRangeResolver {
+     /**
+      * Configuration property for version range resolution used metadata {@link Metadata.Nature}.
+      * It may contain string names of {@link Metadata.Nature} enum values, or string value {@code "auto"}
+@@ -104,13 +102,6 @@ public DefaultVersionRangeResolver(
+         setRepositoryEventDispatcher(repositoryEventDispatcher);
+     }
+ 
+-    @Deprecated
+-    public void initService(ServiceLocator locator) {
+-        setMetadataResolver(locator.getService(MetadataResolver.class));
+-        setSyncContextFactory(locator.getService(SyncContextFactory.class));
+-        setRepositoryEventDispatcher(locator.getService(RepositoryEventDispatcher.class));
+-    }
+-
+     public DefaultVersionRangeResolver setMetadataResolver(MetadataResolver metadataResolver) {
+         this.metadataResolver = Objects.requireNonNull(metadataResolver, "metadataResolver cannot be null");
+         return this;
+diff --git a/maven-resolver-provider/src/main/java/org/apache/maven/repository/internal/DefaultVersionResolver.java b/maven-resolver-provider/src/main/java/org/apache/maven/repository/internal/DefaultVersionResolver.java
+index cccbd9f5ff..3c556d683b 100644
+--- a/maven-resolver-provider/src/main/java/org/apache/maven/repository/internal/DefaultVersionResolver.java
++++ b/maven-resolver-provider/src/main/java/org/apache/maven/repository/internal/DefaultVersionResolver.java
+@@ -60,8 +60,6 @@
+ import org.eclipse.aether.resolution.VersionRequest;
+ import org.eclipse.aether.resolution.VersionResolutionException;
+ import org.eclipse.aether.resolution.VersionResult;
+-import org.eclipse.aether.spi.locator.Service;
+-import org.eclipse.aether.spi.locator.ServiceLocator;
+ import org.eclipse.aether.spi.synccontext.SyncContextFactory;
+ import org.eclipse.aether.util.ConfigUtils;
+ 
+@@ -70,7 +68,7 @@
+  */
+ @Named
+ @Singleton
+-public class DefaultVersionResolver implements VersionResolver, Service {
++public class DefaultVersionResolver implements VersionResolver {
+ 
+     private static final String MAVEN_METADATA_XML = "maven-metadata.xml";
+ 
+@@ -101,13 +99,6 @@ public DefaultVersionResolver(
+         setRepositoryEventDispatcher(repositoryEventDispatcher);
+     }
+ 
+-    @Deprecated
+-    public void initService(ServiceLocator locator) {
+-        setMetadataResolver(locator.getService(MetadataResolver.class));
+-        setSyncContextFactory(locator.getService(SyncContextFactory.class));
+-        setRepositoryEventDispatcher(locator.getService(RepositoryEventDispatcher.class));
+-    }
+-
+     public DefaultVersionResolver setMetadataResolver(MetadataResolver metadataResolver) {
+         this.metadataResolver = Objects.requireNonNull(metadataResolver, "metadataResolver cannot be null");
+         return this;
+-- 
+2.55.0
+

@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Tue Jun 16 13:30:00 UTC 2026 - Christian Goll <cgoll@suse.com>
+
+- Update to version 1.89.1:
+  * Major feature additions, security hardening, and performance improvements since version 1.80.5:
+  * Claude Fable 5 Support: Day-0 integration across Anthropic, Bedrock, Azure AI, and Vertex AI with 1M context, adaptive thinking, and computer use.
+  * New Agent Providers: Added watsonx Orchestrate and LangFlow with session bridging, and OAuth M2M support for Databricks Apps agents.
+  * MCP Gateway: Added per-server environment variables, RPM rate limiting with OAuth passthrough, and issuer-scoped JWT authentication.
+  * Router-level Failover: New weighted-routing failover flag to retry the same model group across different deployments.
+  * OTel Observability: Server spans now include standard attributes (http.response.status_code, http.route, url.path).
+  * Native Web-Search Citations: Emits web_search_tool_result blocks for Anthropic clients.
+  * Componentized Deployments: Added Helm charts to split proxy into independent gateway, backend, and UI services.
+  * Secure CI/CD: Transitioned to a new CI/CD v2 pipeline with isolated build environments following supply chain hardening.
+  * Standardized Versioning: Transitioned to standard SemVer 2.0 / PEP 440 compliant versioning scheme.
+  * Budget and Cache Hardening: Added Redis IAM token caching and multi-pod spend tracking accuracy.
+  * New LLM Providers: Added support for Nebius AI, FLUX Kontext, Cerebras, Bedrock Writer models, Voyage rerank, DeepSeek-V3, and Gemini 1.5 Flash.
+
+-------------------------------------------------------------------
+Tue Nov 25 12:11:14 UTC 2025 - Adrian Schröter <adrian@suse.de>
+
+- initial package of version 1.80.5

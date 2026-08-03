@@ -4,6 +4,5 @@
 Splitting rules are read from SRX file, which is standard format for this task.
 
 </description>
-  <devel project="Java:packages" package="segment"/>
   <url>https://github.com/loomchild/segment</url>
 </package>

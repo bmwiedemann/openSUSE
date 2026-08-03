@@ -13,5 +13,4 @@ Design goals The main design goals of JFlex are:
     * Convenient specification syntax
     * Platform independence
     * JLex compatibility</description>
-  <devel project="Java:packages" package="jflex"/>
 </package>

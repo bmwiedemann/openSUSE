@@ -7,5 +7,4 @@ description format to a number of specific language bindings. This
 grammar will be specified in XML Schema and DTD form. The grammar will
 be automatically generated from the DOM specifications themselves, to
 ensure stability and correctness.</description>
-  <devel project="Java:packages" package="dom2-core-tests"/>
 </package>

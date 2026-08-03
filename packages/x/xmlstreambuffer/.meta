@@ -21,6 +21,5 @@ Stream buffers may be used as an efficient alternative to DOM where:
  SAX or StAX.
 
 </description>
-  <devel project="Java:packages" package="xmlstreambuffer"/>
   <url>http://java.net/projects/xmlstreambuffer/</url>
 </package>

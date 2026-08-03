@@ -29,6 +29,8 @@ Source2:        selinux-sandbox.keyring
 Source3:        SANDBOX-README.md
 # PATCH-FEATURE-OPENSUSE sandbox_seunshare_move_usr_bin.patch bsc#1268256
 Patch1:         sandbox_seunshare_move_usr_bin.patch
+# PATCH-FEATURE-OPENSUSE man_correct_package_name.patch bsc#1272976
+Patch2:         man_correct_package_name.patch
 # PATCH-FEATURE-NOT-SUBMITTED sandbox-fix-cleanup.patch https://bugzilla.redhat.com/show_bug.cgi?id=2481569
 Patch10:        sandbox-fix-cleanup.patch
 BuildRequires:  libcap-ng-devel

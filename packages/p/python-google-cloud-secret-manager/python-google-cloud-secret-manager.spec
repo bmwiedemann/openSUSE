@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-cloud-secret-manager
-Version:        2.27.0
+Version:        2.29.0
 Release:        0
 Summary:        Google Cloud Secret Manager API client library
 License:        Apache-2.0

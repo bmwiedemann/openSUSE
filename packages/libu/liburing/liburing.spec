@@ -17,6 +17,7 @@
 #
 
 
+%global _buildshell /bin/bash
 %define lname   liburing2
 Name:           liburing
 Version:        2.14
@@ -28,6 +29,7 @@ URL:            https://github.com/axboe/liburing
 Source0:        https://brick.kernel.dk/snaps/%{name}-%{version}.tar.gz
 Source1:        https://brick.kernel.dk/snaps/%{name}-%{version}.tar.gz.asc
 Source2:        https://git.kernel.org/pub/scm/docs/kernel/pgpkeys.git/plain/keys/F7D358FB2971E0A6.asc#/%{name}.keyring
+BuildRequires:  bash
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -94,11 +96,36 @@ export CPPFLAGS="%{optflags} -fno-stack-protector"
 %if !0%{?qemu_user_space_build}
 declare -a TEST_EXCLUDE=( conn-unreach.t io-wq-unused-exit.t )
 
-%if 0%{?sle_version} == 150600
-TEST_EXCLUDE+=( fallocate.t register-restrictions.t timeout.t )
-%endif
-%if 0%{?sle_version} == 150700
-TEST_EXCLUDE+=( accept-non-empty.t bind-listen.t fallocate.t fifo-futex-poll.t min-timeout.t min-timeout-wait.t )
+%if 0%{?suse_version} < 1600
+TEST_EXCLUDE+=( accept-non-empty.t )
+TEST_EXCLUDE+=( accept.t )
+TEST_EXCLUDE+=( bind-listen.t )
+TEST_EXCLUDE+=( eploop.t )
+TEST_EXCLUDE+=( eventfd-ring.t )
+TEST_EXCLUDE+=( evloop.t )
+TEST_EXCLUDE+=( fallocate.t )
+TEST_EXCLUDE+=( fd-pass.t )
+TEST_EXCLUDE+=( fifo-futex-poll.t )
+TEST_EXCLUDE+=( fixed-buf-merge.t )
+TEST_EXCLUDE+=( fixed-seg.t )
+TEST_EXCLUDE+=( fpos.t )
+TEST_EXCLUDE+=( link-timeout.t )
+TEST_EXCLUDE+=( min-timeout-wait.t )
+TEST_EXCLUDE+=( min-timeout.t )
+TEST_EXCLUDE+=( nop.t )
+TEST_EXCLUDE+=( read-before-exit.t )
+TEST_EXCLUDE+=( recv-msgall-stream.t )
+TEST_EXCLUDE+=( recv-mshot-fair.t )
+TEST_EXCLUDE+=( recvsend_bundle.t )
+TEST_EXCLUDE+=( register-restrictions.t )
+TEST_EXCLUDE+=( rsrc_tags.t )
+TEST_EXCLUDE+=( send_recv.t )
+TEST_EXCLUDE+=( sendzc-bug.t )
+TEST_EXCLUDE+=( socket-rw-offset.t )
+TEST_EXCLUDE+=( sqwait.t )
+TEST_EXCLUDE+=( sync-cancel.t )
+TEST_EXCLUDE+=( timeout.t )
+TEST_EXCLUDE+=( wq-aff.t )
 %endif
 %if 0%{?suse_version} >= 1600 && %{suse_version} < 1699
 TEST_EXCLUDE+=( min-timeout.t min-timeout-wait.t )

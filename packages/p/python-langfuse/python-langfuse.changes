@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jul 14 20:17:06 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.14.0:
+  * chore(deps): bump the github-actions group with 2 updates
+  * fix(langchain): handle Anthropic cache_creation nested dict
+    in usage
+  * feat(tracing): support prompt linking via
+    propagate_attributes
+  * feat(openai): capture service_tier in model_parameters
+- update to 4.13.2:
+  * fix(openai): handle null choices in chat completion responses
+- update to 4.13.1:
+  * feat(api): update API spec from langfuse/langfuse 811f641
+  * fix(openai): parse raw API responses and add flag to skip
+    tracing them
+
+-------------------------------------------------------------------
 Sun Jul  5 10:15:28 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.13.0:

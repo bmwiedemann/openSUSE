@@ -1,5 +1,6 @@
 <package name="regularhunter-monotional-sz-fonts" project="openSUSE:Factory">
   <title>Monotional Fonts</title>
   <description>A humanist, monospace font based on DejaVu Sans Mono and inspired by André Berg's Meslo. This is the slashed zero (SZ) variant </description>
+  <devel project="M17N:fonts" package="regularhunter-monotional-sz-fonts"/>
   <url>https://github.com/regularhunter/monotional-font/</url>
 </package>

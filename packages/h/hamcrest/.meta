@@ -4,5 +4,4 @@
 predicates) allowing 'match' rules to be defined declaratively, to be
 used in other frameworks. Typical scenarios include testing frameworks,
 mocking libraries and UI validation rules.</description>
-  <devel project="Java:packages" package="hamcrest"/>
 </package>

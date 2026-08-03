@@ -7,4 +7,16 @@
     <comment>new package with MCP server for snapper</comment>
     <requestid>1359641</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2a40e564ee2bcd785262e0ffd19abdf7</srcmd5>
+    <version>0.3.0</version>
+    <time>1785504678</time>
+    <user>dimstar_suse</user>
+    <comment>- rewrite in Go
+- removed: sle15sp7.patch
+- version 0.3.0
+
+- added: sle15sp7.patch</comment>
+    <requestid>1368551</requestid>
+  </revision>
 </revisionlist>

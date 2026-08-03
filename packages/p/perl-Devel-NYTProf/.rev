@@ -164,4 +164,22 @@
 </comment>
     <requestid>1156544</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>0013caea6119e2738ec4c3650a50b65c</srcmd5>
+    <version>6.150.0</version>
+    <time>1775743725</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 6.150.0 (6.15)
+   see /usr/share/doc/packages/perl-Devel-NYTProf/Changes
+  =head2 Changes in Devel::NYTProf 6.15 - 31st Mar 2026
+  Updated URL linking to Brendan Gregg's Flame Graph page; thanks to Paul
+  Cochrane.
+  (L&lt;GH 220|https://github.com/timbunce/devel-nytprof/pull/220&gt;).
+  Infrastructure: set up GitHub Actions using configuration based on file
+  originally suggeted by Gabor Szabo.
+  Eliminated &quot;Possible precedence problem ...&quot; warning being emitted during
+  tests; thanks to Masahiro Iuchi.
+  (L&lt;GH 230|https://github.com/timbunce/devel-nytprof/pull/230).</comment>
+    <requestid>1345216</requestid>
+  </revision>
 </revisionlist>

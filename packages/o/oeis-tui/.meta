@@ -2,5 +2,6 @@
   <title>A CLI/TUI for the Encyclopedia of Integer Sequences (OEIS)</title>
   <description>A command-line and terminal interface for browsing the On-Line Encyclopedia of
 Integer Sequences (OEIS).</description>
+  <devel project="science" package="oeis-tui"/>
   <url>https://github.com/hako/oeis-tui</url>
 </package>

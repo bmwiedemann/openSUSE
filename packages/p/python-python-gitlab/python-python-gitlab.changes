@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Jul 28 05:10:05 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 8.5.0:
+  * Bug Fixes
+    - Typo (72134f5)
+    - api: Allow ProjectMergeRequestDiscussionNote.resolved to be
+      updated (b411e5a)
+    - client: Retry fetching server version after an unknown result
+      (046fbac)
+  * Continuous Integration
+    - Run the pre-commit rst checks in the CI (a9c5d17)
+  * Documentation
+    - Correct error with backticks (e57559e)
+    - discussions: Add example of resolving a single project merge
+      request discussion note (2ef6452)
+  * Features
+    - api: Add ListMixin to remaining *DiscussionNoteManagers
+      (0e2347c)
+    - client: Additionally handle retries for request timeouts
+      (4e32439)
+    - hooks: Support custom webhook template on project hooks
+      (39dc990)
+    - users: Allow updating only a user's email, username or name
+      (0d2afb8)
+  * Testing
+    - api: Ensure ProjectMergeRequestDiscussionNote.resolved can be
+      updated successfully (57fd60c)
+
+-------------------------------------------------------------------
 Fri May 29 10:37:21 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 8.4.0:

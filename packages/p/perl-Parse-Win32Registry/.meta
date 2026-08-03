@@ -19,5 +19,4 @@ It is intended to be used to parse offline registry files. If a registry
 file is currently in use, you will not be able to open it. However, you can
 save part or all of a currently loaded registry file using the Windows reg
 command if you have the appropriate administrative access.</description>
-  <devel project="devel:languages:perl" package="perl-Parse-Win32Registry"/>
 </package>

@@ -51,5 +51,4 @@ develop interactive applications...
 
   A 'busy' block is therefore useful to prevent attempts at input when the
   program is busy at some non-interactive task.</description>
-  <devel project="devel:languages:perl" package="perl-IO-Interactive"/>
 </package>

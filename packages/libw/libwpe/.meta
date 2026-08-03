@@ -3,6 +3,5 @@
   <description>General-purpose library developed for the WPE-flavored port of WebKit.
 
 </description>
-  <devel project="GNOME:Factory" package="libwpe"/>
   <url>https://github.com/WebPlatformForEmbedded/libwpe</url>
 </package>

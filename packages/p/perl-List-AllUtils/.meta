@@ -6,6 +6,5 @@ remember. This module will export all of the functions that either of
 those two modules defines.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-List-AllUtils"/>
   <url>http://search.cpan.org/dist/List-AllUtils</url>
 </package>

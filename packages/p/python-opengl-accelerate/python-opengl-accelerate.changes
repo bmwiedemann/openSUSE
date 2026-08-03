@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Feb 20 01:50:54 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.1.10:
+  * Mostly bug fixes.
+- Switch to pypi tarball, we can avoid tar_scm and awkward steps in %prep.
+- Drop patch support-cython-3.1.patch, merged upstream.
+
+-------------------------------------------------------------------
 Fri Jul 25 05:03:22 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-cython-3.1.patch:

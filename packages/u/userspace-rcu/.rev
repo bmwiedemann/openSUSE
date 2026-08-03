@@ -408,4 +408,24 @@
 - userspace-rcu-ppc64le.patch use ppc for ppc64le</comment>
     <requestid>1325235</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>a579a1c645e183ce7d4750d4632992d2</srcmd5>
+    <version>0.15.6</version>
+    <time>1774555652</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.15.6:
+  * urcu-mb: Add missing TSAN annotation to
+    _urcu_mb_read_lock_update
+  * lfstack: Coding style cleanup
+  * urcu-qsbr: Use CMM_SEQ_CST_FENCE for _urcu_qsbr_thread_online
+  * urcu-mb: Use CMM_SEQ_CST_FENCE for _urcu_mb_read_lock_update
+  * urcu-qsbr: Use CMM_SEQ_CST_FENCE for quiescent state update
+    and offline
+  * urcu-mb: Use CMM_SEQ_CST_FENCE for
+    _urcu_mb_read_unlock_update_and_wakeup
+  * Fix: Only include linux/time_types.h when __NR_futex_time64
+    is defined
+  * Use __NR_futex_time64 in futex syscall wrapper</comment>
+    <requestid>1342337</requestid>
+  </revision>
 </revisionlist>

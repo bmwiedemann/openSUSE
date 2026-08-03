@@ -1,7 +1,7 @@
 #
 # spec file for package aws-nitro-enclaves-cli
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define ne_rundir %_rundir/nitro_enclaves
 
 Name:           aws-nitro-enclaves-cli
-Version:        1.4.3~git0.82501bb
+Version:        1.4.5~git0.18a5f6f
 Release:        0
 Summary:        Tools for managing enclaves
 License:        Apache-2.0

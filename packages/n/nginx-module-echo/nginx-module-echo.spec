@@ -1,7 +1,7 @@
 #
 # spec file for package nginx-module-echo
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define project_name echo-nginx-module
 %define so_name ngx_http_echo_module.so
 Name:           nginx-module-echo
-Version:        0.63
+Version:        0.64
 Release:        0
 Summary:        NGINX echo module
 License:        BSD-2-Clause

@@ -198,4 +198,15 @@
   16.1 and following (1610, 1620, 1630...)</comment>
     <requestid>1336276</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>797f1264b751818a3bd3f165d3316c15</srcmd5>
+    <version>4.1.0</version>
+    <time>1785504600</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.1.0:
+  * Fix a crash with Faker installed when explicitly enabling and disabling
+    the plugin (via -p randomly -p no:randomly).
+  * Drop Python 3.9 support.</comment>
+    <requestid>1368446</requestid>
+  </revision>
 </revisionlist>

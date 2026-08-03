@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul 30 05:29:31 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.1.0:
+  * Fix a crash with Faker installed when explicitly enabling and disabling
+    the plugin (via -p randomly -p no:randomly).
+  * Drop Python 3.9 support.
+
+-------------------------------------------------------------------
 Tue Mar  3 12:37:43 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Adapt %suse_version checks to support new %suse_version design for

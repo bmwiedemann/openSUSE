@@ -29,6 +29,7 @@
 %else
 %define soversion 2
 %endif
+
 Name:           zlib-ng%{?compat_suffix}
 Version:        2.3.3
 Release:        0
@@ -101,6 +102,13 @@ mkdir -p %{buildroot}%{_libdir}/zlib-ng-compat
 pushd %{buildroot}%{_libdir}/
 	mv libz.so.* zlib-ng-compat/
 	ln -sf zlib-ng-compat/libz.so.1 libz.so
+popd
+
+pushd %{buildroot}%{_libdir}/cmake/ZLIB
+	sed -i 's/\/usr\/%_lib/\/usr\/%_lib\/zlib-ng-compat/g' ZLIB-targets-*.cmake
+popd
+pushd %{buildroot}%{_libdir}/pkgconfig
+	sed -i 's/\/usr\/%_lib/\/usr\/%_lib\/zlib-ng-compat/g' zlib.pc
 popd
 %endif
 

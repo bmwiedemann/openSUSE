@@ -26,7 +26,6 @@ URL:            http://www.jirka.org/genius.html
 Source:         https://download.gnome.org/sources/genius/1.0/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
-BuildRequires:  gnome-doc-utils-devel
 BuildRequires:  intltool
 BuildRequires:  mpfr-devel >= 2.3.0
 BuildRequires:  pkgconfig

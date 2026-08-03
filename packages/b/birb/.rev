@@ -66,4 +66,28 @@
     <comment>- require main package for devel package (forwarded request 1344708 from rrahl0)</comment>
     <requestid>1344709</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1b1433cf994bfdf0de1ab708fc693d2e</srcmd5>
+    <version>0.9.0</version>
+    <time>1785504628</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.0:
+  + Add a basic readline object
+  + Depend on glib 2.80 or newer
+  + Add some UTF8 helper functions
+  + Add birb_email_is_valid
+- Update to version 0.8.1:
+  + Remove an erroneous changelog entry
+  + Fix indent in new file
+  + Implement GPollableOutputStream for BirbResponseStream
+  + Put developer-related tests in a 'dev' suite
+- Update to version 0.8.0:
+  + Cleanup license check script
+  + Add a basic readline object
+  + Move the build containers to the imfreedom organization
+  + Prepare for the new round of API development
+  + Add StringList
+  + Add a pango attribute for handling mention data (forwarded request 1368498 from rrahl0)</comment>
+    <requestid>1368499</requestid>
+  </revision>
 </revisionlist>

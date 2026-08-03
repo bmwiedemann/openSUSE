@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu Jul 30 04:06:26 UTC 2026 - william.brown@suse.com
+
+- Update to version 0.17.0~1:
+  * Add experimental concurrent cache support
+  * Release 0.17.0
+  * tests: pin libc in the dist test crate
+  * doc: clarify server-side outputs and drop 'recommended mode' claim
+  * doc: document SCCACHE_CLIENT_SIDE env var
+  * doc: document client-side and direct modes in Architecture.md
+  * Fix description of Unix socket-based Redis connection
+  * server: remove redundant async block in start_compile_task
+  * server: simplify bind() request loops with ? instead of manual match arms
+  * Add support for arg files in Rust (#2782)
+  * feat: support S3 SSE-KMS with AWS-managed and customer-managed keys (#2770)
+  * abort compile tasks and associated subprocesses when a client disconnects
+  * treat -ivfsoverlay as a preprocessor-only argument
+  * gcc: refine response-file tokenizer visibility and whitespace handling
+  * integration: convert cmake 4.x modules XFAIL test to a passing test
+  * gcc/clang: cache and distribute builds using quoted @response files
+  * fix: Fix ToolchainPackager cfg gate to build on ppc64le/s390x
+  * fix: make gcc diagnostics color output work the same as for rustc
+  * implement client-side mode
+  * split handle_compile_response so that the compilation result can be handled separately
+  * implement IpcStorage — Storage backend over IPC
+  * extend wire protocol with storage RPCs
+  * implement AddAssign for ServerStats and related types
+  * add Storage::get_path for direct file access
+  * implement get_raw/put_raw on MultiLevelStorage
+  * add client_side_mode config flag (SCCACHE_CLIENT_SIDE)
+  * Extract new_client_runtime() helper to DRY up client runtime creation
+  * Clarify single-threaded runtime rationale comment (grammar)
+  * fix: use single-threaded tokio runtime in sccache dist-client
+  * fix: use single-threaded tokio runtime in sccache client
+  * fix: handle disabled cache backend features in multilevel chain
+  * Fix ldd output parsing: remove .exists() check that failed on systems where the symlink source path does not exist locally (e.g. aarch64)
+  * Fix cfg guard for PanicToolchainPackager to also cover non-x86_64 Linux architectures (e.g. aarch64)
+
+-------------------------------------------------------------------
 Wed Jul  8 02:01:46 UTC 2026 - William Brown <william.brown@suse.com>
 
 - Completely drop openssl to prevent future security issues

@@ -6,6 +6,5 @@ This project is a spin-off from the JAXB RI for its schema compiler
 to generate Java source files.
 
 </description>
-  <devel project="Java:packages" package="codemodel"/>
   <url>http://codemodel.java.net</url>
 </package>

@@ -35,8 +35,6 @@ ExclusiveArch:  do_not_build
 %if "%flavor" == "serial"
 %define build_flags USE_THREAD=0 USE_OPENMP=0
 %define openblas_so_prio 20
-# we build devel packages only from one flavor
-%define build_devel 1
  %define flexiname libopenblas.so.%{so_v}
  %define flexidevelname libopenblas.so
 %endif
@@ -90,6 +88,22 @@ ExclusiveArch:  do_not_build
 %endif
 %endif
 %endif
+
+%if %{with alternatives}
+# with alternatives enabled, "serial" is the flavor
+# that provides the devel packages
+ %if "%flavor" == "serial"
+  %define build_devel 1
+ %endif
+%else
+# with alternatives disabled, we are forced to make
+# the default flavor the one building the devel
+# packages
+ %if 0%{?arch_flavor}
+  %define build_devel 1
+ %endif
+%endif
+
 
 %ifarch ppc64le
 %if 0%{?c_f_ver} > 9
@@ -179,7 +193,6 @@ Recommends:     compatlib%{name}%{so_v} = %{version}
 %endif
  %if "%flavor" == "serial"
 Obsoletes:      lib%{pname}%{so_v} < %{version}
-Provides:       lib%{pname}%{so_v} = %{version}
  %else
 Obsoletes:      lib%{pname}0 < %{version}
  %endif
@@ -188,6 +201,12 @@ Obsoletes:      lib%{pname}p0 < %{version}
  %endif
  %if "%flavor" == "openmp"
 Obsoletes:      lib%{pname}o0 < %{version}
+ %endif
+ %if "%flavor" == "serial" || %{without alternatives}
+Provides:       lib%{pname}%{so_v} = %{version}
+ %endif
+ %if %{without alternatives}
+Conflicts:      lib%{pname}%{so_v}
  %endif
 
 %description -n lib%{name}%{so_v}
@@ -269,7 +288,7 @@ This package contains the static libraries.
 %package      -n %{pname}-common-devel
 Summary:        Development headers and libraries for OpenBLAS
 Group:          Development/Libraries/C and C++
-Requires:       lib%{pname}_serial-devel = %{version}
+Requires:       lib%{name}-devel = %{version}
 Requires(pre):  coreutils
 Requires(post): coreutils
 Obsoletes:      %{pname}-devel < %version

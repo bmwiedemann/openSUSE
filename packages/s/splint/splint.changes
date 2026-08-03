@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 10 10:20:29 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Make it build with latest gcc
+
+-------------------------------------------------------------------
 Mon Feb 26 13:37:38 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

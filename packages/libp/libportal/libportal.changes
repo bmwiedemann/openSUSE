@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Jun 18 08:08:56 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.10.0:
+  + Features:
+    - Support directory selection in xdp_portal_open_file()
+    - Add clipboard API and support InputCapture session
+      persistence
+  + Bug fixes:
+    - Replace deprecated Gio.UnixInputStream with
+      GioUnix.InputStream in tests
+    - Fix a memory leak in the background API
+    - Specify --doc-format=gi-docgen when building introspection
+    - Use canonical property names and G_PARAM_STATIC_STRINGS for
+      all GObject properties in inputcapture
+    - Fix invalid free of call-related data in inputcapture
+    - Expose libportal/settings.h header in libportal/portal.h
+    - Fix build with Qt 6.9+
+    - Don't install glib-backports.h as part of public headers
+- Drop libportal-qt69.patch: Fixed upstream.
+
+-------------------------------------------------------------------
 Fri Jun  6 18:13:23 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Fix qt devel sub-packages Requires.

@@ -8,6 +8,5 @@ make a good replacement for regular expressions and generally have quite
 a few advantages over the &quot;traditional&quot; way of building parser via CFGs.
 
 </description>
-  <devel project="Java:packages" package="parboiled"/>
   <url>http://parboiled.org/</url>
 </package>

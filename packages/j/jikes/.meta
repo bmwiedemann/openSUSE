@@ -27,5 +27,4 @@ that make it a valuable contribution to the Java community:
    and makefile generation.
 
 Note that you must set CLASSPATH correctly to use jikes.</description>
-  <devel project="Java:packages" package="jikes"/>
 </package>

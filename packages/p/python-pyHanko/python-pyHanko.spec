@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pyHanko
-Version:        0.35.1
+Version:        0.36.2
 Release:        0
 Summary:        Tools for stamping and signing PDF files
 License:        MIT
@@ -40,11 +40,11 @@ BuildRequires:  %{python_module pytest-aiohttp}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-barcode}
-BuildRequires:  %{python_module python-pkcs11}
+BuildRequires:  %{python_module python-pkcs11 >= 0.9.5}
 BuildRequires:  %{python_module qrcode}
 BuildRequires:  %{python_module requests >= 2.31}
 BuildRequires:  %{python_module requests-mock}
-BuildRequires:  %{python_module signxml >= 4.2}
+BuildRequires:  %{python_module signxml >= 5.1}
 BuildRequires:  %{python_module tzlocal >= 4.3}
 BuildRequires:  %{python_module uharfbuzz >= 0.25}
 BuildRequires:  %{python_module uritools >= 3.0.1}
@@ -52,7 +52,6 @@ BuildRequires:  %{python_module xsdata >= 24.4}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  softhsm
-Requires:       python-PyYAML >= 6.0
 Requires:       python-asn1crypto >= 1.5.1
 Requires:       python-cryptography >= 43.0.3
 Requires:       python-lxml >= 5.4
@@ -64,10 +63,11 @@ Suggests:       python-FontTools >= 4.33.3
 Suggests:       python-uharfbuzz >= 0.25
 Suggests:       python-qrcode >= 7.3.1
 Suggests:       python-Pillow >= 7.2
+Suggests:       python-PyYAML >= 6.0
 Suggests:       python-python-barcode
-Suggests:       python-python-pkcs11 >= 0.9
+Suggests:       python-python-pkcs11 >= 0.9.5
 Suggests:       python-aiohttp
-Suggests:       python-signxml >= 4.2
+Suggests:       python-signxml >= 5.1
 # Also provide lowercase name
 Provides:       python-pyhanko = %{version}-%{release}
 Requires(post): update-alternatives
@@ -98,6 +98,7 @@ echo "directories.tokendir = $(pwd)/softhsm_tokens" > $SOFTHSM2_CONF
 export CERTOMANCER_CONFIG_PATH="pyhanko_testing_commons/test_data/data/crypto/certomancer.yml"
 export SOFTHSM2_MODULE_PATH=$(softhsm2-util --show-config default-pkcs11-lib)
 export PKCS11_TEST_MODULE=$SOFTHSM2_MODULE_PATH
+export P11_PQC="no"
 PYTHONPATH=%{buildroot}%{python3_sitelib} ./pyhanko_testing_commons/test_data/data/crypto/testing-ca-setup/pkcs11-setup-certomancer.sh
 # Tests that are skipped or ignored require modules that are not shipped
 donttest=""

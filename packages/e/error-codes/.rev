@@ -29,4 +29,15 @@
   * manpage: fix missing command as parameter</comment>
     <requestid>1331070</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c275bc09c46e62dffffcffaf3471b27c</srcmd5>
+    <version>0.4.0+git20260325.4cbfc70</version>
+    <time>1774470080</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.4.0+git20260325.4cbfc70:
+  * Release version 0.4.0
+  * Add support for libcurl
+  * Fix name of gen_*_data_h output files</comment>
+    <requestid>1342470</requestid>
+  </revision>
 </revisionlist>

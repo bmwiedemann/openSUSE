@@ -13,5 +13,4 @@ If you are interested in how fast these calls work, check out the
 slurp_bench.pl program in the extras/ directory. It compares many different
 forms of slurping. You can select the I/O direction, context and file
 sizes. Use the --help option to see how to run it.</description>
-  <devel project="devel:languages:perl" package="perl-File-Slurp"/>
 </package>

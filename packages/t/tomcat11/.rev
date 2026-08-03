@@ -103,4 +103,12 @@
     <comment>11.0.23 + libtcnative-2_0</comment>
     <requestid>1363909</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>9195f4b7ff3cd17c9af8354f08de5dd9</srcmd5>
+    <version>11.0.24</version>
+    <time>1785255484</time>
+    <user>dimstar_suse</user>
+    <comment>11.0.23</comment>
+    <requestid>1368164</requestid>
+  </revision>
 </revisionlist>

@@ -1,8 +1,8 @@
 #
 # spec file for package python-onionshare
 #
-# Copyright (c) 2025 SUSE LLC
-# Copyright (c) 2018-2025 Dr. Axel Braun
+# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2018-2026 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,13 @@
 #
 
 
-# Always only build one flavor
-%if 0%{?suse_version} >= 1550
 %define pythons python3
-%else
-%{?sle15_python_module_pythons}
-%endif
 %global mypython %pythons
 %global mysitelib %{expand:%%{%{mypython}_sitelib}}
 %define plainpython python
 
 Name:           python-onionshare
-Version:        2.6.3
+Version:        2.6.4
 Release:        0
 Summary:        Self-hosting Tor Onion Service based file sharing
 License:        GPL-3.0-or-later
@@ -39,7 +34,7 @@ Source99:       python-onionshare.rpmlintrc
 # PATCH-FIX-OPENSUSE skip test_large_download in gui tests
 Patch0:         0001-adjust_tests.diff
 
-BuildRequires:  %{mypython}-devel >= 3.8
+BuildRequires:  %{mypython}-devel >= 3.10
 BuildRequires:  %{mypython}-pip
 BuildRequires:  %{mypython}-setuptools
 BuildRequires:  %{mypython}-wheel
@@ -50,19 +45,19 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  %{mypython}-poetry-core
 BuildRequires:  update-desktop-files
 # SECTION test
-BuildRequires:  %{mypython}-pytest
+BuildRequires:  %{mypython}-pytest >= 7.2.0
 BuildRequires:  %{mypython}-pytest-qt
 BuildRequires:  %{mypython}-pytest-xvfb
 # /SECTION
 # SECTION runtime test
 BuildRequires:  %{mypython}-Cython >= 3.0.2
-BuildRequires:  %{mypython}-Flask >= 2.3.2
+BuildRequires:  %{mypython}-Flask >= 3.1.3
 BuildRequires:  %{mypython}-Flask-Compress >= 1.13
-BuildRequires:  %{mypython}-Flask-SocketIO >= 5.3.4
+BuildRequires:  %{mypython}-Flask-SocketIO >= 5.6
 BuildRequires:  %{mypython}-PyNaCl
 BuildRequires:  %{mypython}-PySocks
 BuildRequires:  %{mypython}-Unidecode
-BuildRequires:  %{mypython}-Werkzeug >= 2.3.4
+BuildRequires:  %{mypython}-Werkzeug >= 3.1
 BuildRequires:  %{mypython}-cepa
 BuildRequires:  %{mypython}-click
 BuildRequires:  %{mypython}-colorama
@@ -71,7 +66,7 @@ BuildRequires:  %{mypython}-gevent >= 23.9.1
 BuildRequires:  %{mypython}-gevent-websocket
 BuildRequires:  %{mypython}-packaging >= 23.1
 BuildRequires:  %{mypython}-psutil
-BuildRequires:  %{mypython}-pyside6 >= 6.5.2
+BuildRequires:  %{mypython}-pyside6 >= 6.8.2
 BuildRequires:  %{mypython}-python-gnupg
 BuildRequires:  %{mypython}-qrcode
 BuildRequires:  %{mypython}-requests
@@ -107,18 +102,18 @@ Requires:       tor
 Provides:       python-onionshare = %{version}-%{release}
 Provides:       python-onionshare_cli = %{version}-%{release}
 # Obsolete old multiflavor packages
-Obsoletes:      %{plainpython}-onionshare-data < 2.3.1
-Obsoletes:      python310-onionshare < 2.3.1
-Obsoletes:      python36-onionshare < 2.3.1
-Obsoletes:      python38-onionshare < 2.3.1
-Obsoletes:      python39-onionshare < 2.3.1
+Obsoletes:      %{plainpython}-onionshare-data < 2.6.4
+Obsoletes:      python310-onionshare < 2.6.4
+Obsoletes:      python311-onionshare < 2.6.4
+Obsoletes:      python312-onionshare < 2.6.4
+Obsoletes:      python313-onionshare < 2.6.4
 %if %{suse_version} >= 1500
 # incorrect package name was used until 2024-01-24
-Obsoletes:      %{plainpython}-onionshare <= 2.6
+Obsoletes:      %{plainpython}-onionshare <= 2.6.3
 %endif
 %if 0%{?sle_version} >= 150600 && "%pythons" != "python3"
 # obsolete python 3.6 package
-Obsoletes:      python3-onionshare <= 2.6
+Obsoletes:      python3-onionshare <= 2.6.3
 %endif
 BuildArch:      noarch
 %python_subpackages

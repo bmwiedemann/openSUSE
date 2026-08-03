@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-connection_pool
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-connection_pool
-Version:        2.5.0
+Version:        3.0.2
 Release:        0
 %define mod_name connection_pool
 %define mod_full_name %{mod_name}-%{version}

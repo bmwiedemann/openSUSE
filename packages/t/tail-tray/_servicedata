@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/SneWs/tail-tray</param>
-              <param name="changesrevision">5089d8a02763a01668fb90c0896fbf25b9b4d16c</param></service></servicedata>
+              <param name="changesrevision">5089d8a02763a01668fb90c0896fbf25b9b4d16c</param></service><service name="tar_scm">
+                <param name="url">https://github.com/SneWs/tail-tray.git</param>
+              <param name="changesrevision">15aed130bcc8f1485fccd61b63f5452e4cf1cef1</param></service></servicedata>

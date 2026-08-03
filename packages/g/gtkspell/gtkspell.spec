@@ -26,7 +26,6 @@ Group:          System/Libraries
 URL:            http://gtkspell.sf.net/
 Source:         %{name}-%{version}.tar.gz
 BuildRequires:  fdupes
-BuildRequires:  gnome-doc-utils-devel
 BuildRequires:  intltool
 BuildRequires:  libstdc++-devel
 BuildRequires:  pkgconfig

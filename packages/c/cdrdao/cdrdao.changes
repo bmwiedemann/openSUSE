@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Mar 25 21:49:15 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.6:
+  * Many bugfixes related to CD-TEXT processing (Rasheeq Azad,
+    Denis Leroy)
+  * Several crash fixes (Ole Bertram, Denis Leroy, Jan
+    Solanti)
+  * Fixed version command (Daniel Foster)
+  * iconv detection improvement and cross-OS support (DL)
+  * Ejects CD to allow source medium insertion with copy
+    command (dhucul)
+  * Fix burning issue with gcdmaster (Sven Geuer)
+  * Many typos fixes (Sven Geuer, Michael Ortmann)
+  * *BSDs support fixes (Michael Ortmann, Benjamin Jacobs, DL)
+  * Do retries for blank and discid commands (DL)
+- drop cdrdao-drop-gconf-dep.patch (obsolete)
+
+-------------------------------------------------------------------
 Sun Jul 27 05:12:40 UTC 2025 - Giacomo Comes <gcomes.obs@gmail.com>
 
 - add -std=gnu11 to CFLAGS
@@ -10,7 +28,7 @@ Fri Dec  8 16:11:08 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 - Update to version 1.2.5:
   * gcdmaster port to GTK 3 (Stefan Roellin)
   * Support to specify encoding in TOC (Denis Leroy):
-  * one of ENCODING_ISO_8859_1, ENCODING_ASCII, ENCODING_MS_JIS, ENCODING_KOREAN, ENCODING_MANDARIN 
+  * one of ENCODING_ISO_8859_1, ENCODING_ASCII, ENCODING_MS_JIS, ENCODING_KOREAN, ENCODING_MANDARIN
     may be specified on LANGUAGE section.
   * TOC always dumped in UTF-8, unless --no-utf8 is specified
   * Fix --swap argument with generic-mmc-raw driver (Alex Free)
@@ -201,7 +219,7 @@ Tue Jan 24 14:50:31 CET 2006 - nadvornik@suse.cz
 Wed Dec 14 01:23:08 CET 2005 - ro@suse.de
 
 - removed /usr/share/mime directory from filelist
-  (in filesystem package now) 
+  (in filesystem package now)
 
 -------------------------------------------------------------------
 Tue Nov  1 16:14:01 CET 2005 - nadvornik@suse.cz
@@ -211,12 +229,12 @@ Tue Nov  1 16:14:01 CET 2005 - nadvornik@suse.cz
 -------------------------------------------------------------------
 Sun Aug  7 22:00:13 CEST 2005 - ro@suse.de
 
-- update to cvs to fix build of gcdmaster with gnome-2.6 
+- update to cvs to fix build of gcdmaster with gnome-2.6
 
 -------------------------------------------------------------------
 Sun Aug  7 11:18:37 CEST 2005 - ro@suse.de
 
-- find new libgnomeuimm 
+- find new libgnomeuimm
 
 -------------------------------------------------------------------
 Wed Apr 20 16:14:43 CEST 2005 - nadvornik@suse.de
@@ -226,7 +244,7 @@ Wed Apr 20 16:14:43 CEST 2005 - nadvornik@suse.de
 -------------------------------------------------------------------
 Fri Feb 11 01:44:16 CET 2005 - ro@suse.de
 
-- change neededforbuild to libsigc++12 
+- change neededforbuild to libsigc++12
 
 -------------------------------------------------------------------
 Thu Sep 23 17:33:14 CEST 2004 - nadvornik@suse.cz
@@ -243,7 +261,7 @@ Thu Jul 01 16:00:04 CEST 2004 - nadvornik@suse.cz
 -------------------------------------------------------------------
 Mon Apr 19 15:04:28 CEST 2004 - ro@suse.de
 
-- fix warning: control reaches end of non-void function 
+- fix warning: control reaches end of non-void function
 
 -------------------------------------------------------------------
 Fri Apr 02 16:42:21 CEST 2004 - nadvornik@suse.cz
@@ -308,7 +326,7 @@ Thu Jul 24 11:03:47 CEST 2003 - uli@suse.de
 -------------------------------------------------------------------
 Fri Mar  7 13:47:26 CET 2003 - meissner@suse.de
 
-- added resmgr support, rerun autoconf to bring in new 
+- added resmgr support, rerun autoconf to bring in new
   resmgr checks.
 
 -------------------------------------------------------------------
@@ -319,12 +337,12 @@ Tue Feb 11 17:10:32 CET 2003 - nadvornik@suse.cz
 -------------------------------------------------------------------
 Mon Jan 27 00:22:04 CET 2003 - ro@suse.de
 
-- fix gcc-3.3 build 
+- fix gcc-3.3 build
 
 -------------------------------------------------------------------
 Mon Jan 20 01:14:28 CET 2003 - ro@suse.de
 
-- fix multiline-string issue in code 
+- fix multiline-string issue in code
 
 -------------------------------------------------------------------
 Fri Sep 27 14:36:04 CEST 2002 - ro@suse.de
@@ -349,17 +367,17 @@ Mon Jun 17 16:19:08 CEST 2002 - meissner@suse.de
 -------------------------------------------------------------------
 Tue May 14 15:34:46 CEST 2002 - ro@suse.de
 
-- fix to build on x86_64 and with pccts includes in lib64 
+- fix to build on x86_64 and with pccts includes in lib64
 
 -------------------------------------------------------------------
 Fri Apr 26 02:11:56 CEST 2002 - ro@suse.de
 
-- fix build with latest gcc 
+- fix build with latest gcc
 
 -------------------------------------------------------------------
 Mon Apr 22 13:03:34 CEST 2002 - ro@suse.de
 
-- make it build with gcc-3.1 
+- make it build with gcc-3.1
 
 -------------------------------------------------------------------
 Fri Sep  7 13:49:25 CEST 2001 - nadvornik@suse.cz
@@ -388,7 +406,7 @@ Thu May 31 01:36:53 MEST 2001 - egger@suse.de
 - Updated to version 1.1.5.
 - Fixed specfile.
 - Enabled GNOME frontend (to be moved into subpackage).
-- Completed #neededforbuild. 
+- Completed #neededforbuild.
 
 -------------------------------------------------------------------
 Wed May  9 23:28:42 CEST 2001 - mfabian@suse.de
@@ -400,7 +418,7 @@ Tue Feb 20 15:19:18 CET 2001 - sf@suse.de
 
 - added ia64 to RULES
 - added ia64 to btorder.h
-- added <string.h> for gcc-2.96 
+- added <string.h> for gcc-2.96
 
 -------------------------------------------------------------------
 Fri Feb  9 14:29:45 CET 2001 - ro@suse.de
@@ -412,7 +430,7 @@ Fri Feb  9 14:29:45 CET 2001 - ro@suse.de
 -------------------------------------------------------------------
 Sun Nov  5 18:35:46 CET 2000 - ro@suse.de
 
-- fixed neededforbuild 
+- fixed neededforbuild
 
 -------------------------------------------------------------------
 Thu Jul  6 12:30:10 CEST 2000 - kukuk@suse.de
@@ -422,7 +440,7 @@ Thu Jul  6 12:30:10 CEST 2000 - kukuk@suse.de
 -------------------------------------------------------------------
 Fri May 19 10:33:35 CEST 2000 - smid@suse.cz
 
-- man pages fixed 
+- man pages fixed
 
 -------------------------------------------------------------------
 Thu Apr  6 13:34:18 CEST 2000 - smid@suse.cz
@@ -432,12 +450,12 @@ Thu Apr  6 13:34:18 CEST 2000 - smid@suse.cz
 -------------------------------------------------------------------
 Mon Jan 17 18:00:46 CET 2000 - ro@suse.de
 
-- man to usr/share/man 
+- man to usr/share/man
 
 -------------------------------------------------------------------
 Tue Nov  9 00:53:06 CET 1999 - ro@suse.de
 
-- update to 1.1.3 (added xcdrdao, gtk-frontend) 
+- update to 1.1.3 (added xcdrdao, gtk-frontend)
 
 -------------------------------------------------------------------
 Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de

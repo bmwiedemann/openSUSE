@@ -1,7 +1,7 @@
 #
 # spec file for package bat
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,9 @@ License:        Apache-2.0 OR MIT
 URL:            https://github.com/sharkdp/bat
 Source0:        https://github.com/sharkdp/bat/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
+# PATCH-FEATURE-UPSTREAM RPMSpec_support.patch gh#sharkdp/bat!3431 mcepl@suse.com
+# Add RPMSpec support
+Patch0:         RPMSpec_support.patch
 BuildRequires:  cargo-packaging
 BuildRequires:  rust >= 1.79
 ExclusiveArch:  %{rust_arches}
@@ -63,6 +66,16 @@ Zsh command line completion support for %{name}.
 %autosetup -a1 -p1 -n %{name}-%{version}
 
 %build
+# First build: compile bat to get a binary capable of rebuilding the assets
+%{cargo_build}
+
+# Recompile the assets including the newly added RPMSpec syntax definition.
+# We do not use '--blank' because git submodules for standard syntaxes are not
+# present in the release tarball. Omitting '--blank' ensures we load the embedded
+# standard syntaxes first and then append the new ones.
+./target/release/%{name} cache --build --source=assets --target=assets
+
+# Second build: recompile bat to embed the newly generated assets/syntaxes.bin
 %{cargo_build}
 
 %install

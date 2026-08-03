@@ -2,5 +2,4 @@
   <title>Client library for interacting with the Zeitgeist daemon</title>
   <description>Libzeitgeist is a client library for interacting with the Zeitgeist
 daemon.</description>
-  <devel project="GNOME:Factory" package="libzeitgeist"/>
 </package>
