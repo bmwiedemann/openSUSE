@@ -1,6 +1,7 @@
 #
 # spec file for package hawk-apiserver
 #
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +20,7 @@
 %define www_base %{_datadir}/hawk
 
 Name:           hawk-apiserver
-Version:        0.2.0+git.1784281563.0b756ed
+Version:        0.2.1+git.1785508813.a4ed7d1
 Release:        0
 Summary:        Web server and API provider for Hawk
 License:        GPL-3.0-or-later

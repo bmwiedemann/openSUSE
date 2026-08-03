@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug  3 07:44:01 UTC 2026 - Aleksei Burlakov <aburlakov@suse.com>
+
+- Version 0.2.1+git.1785508813.a4ed7d1:
+  * cib/live/clones is handled in the hawk-apiserver instead of hawk
+
+-------------------------------------------------------------------
 Fri Jul 17 13:00:01 UTC 2026 - Aleksei Burlakov <aburlakov@suse.com>
 
 - Version 0.2.0+git.1784281563.0b756ed:
