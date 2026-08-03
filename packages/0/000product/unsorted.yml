@@ -8032,8 +8032,6 @@ unsorted:
   - grant-zsh-completion 
   - grantlee-editor 
   - grantlee-editor-lang 
-  - grantlee5 
-  - grantlee5-devel 
   - grantleetheme-devel 
   - graphite2 
   - graphite2-devel 
@@ -10096,7 +10094,6 @@ unsorted:
   - kdnssd-lang 
   - kdocker 
   - kdoctools-devel 
-  - kdsingleapplication-devel 
   - kdsingleapplication-qt6-devel 
   - kdsoap-devel 
   - kdsoap-qt6-devel 
@@ -14391,7 +14388,6 @@ unsorted:
   - libkdepim-devel 
   - libkdevplatform65 
   - libkdsingleapplication-qt6-1_2 
-  - libkdsingleapplication1_2 
   - libkdsoap-server-qt6-2 
   - libkdsoap-server2 
   - libkdsoap2 
@@ -21154,6 +21150,7 @@ unsorted:
   - oxygen6-decoration 
   - oxygen6-style 
   - oxygen6-style-lang 
+  - oxygen6-style-qt5 
   - oxygen6-wallpapers 
   - p0f 
   - p11-kit-32bit 
