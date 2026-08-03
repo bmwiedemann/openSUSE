@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Aug  2 22:38:30 UTC 2026 - Michael Hamilton <michael@actrix.gen.nz>
+
+- Version 2.6.7
+  * Ambient-light slider now works properly at night.
+  * More sensibly handle transition to night for semi-auto mode.
+  * Enhanced Help-Dialog, added TOC, added a separate tab of online links.
+  * Improved hover tips on Light-Metering dialog's plot.
+  * Assign window-role properties to make it easier to assign 
+    positions to different windows in KDE/Plasma Wayland.
+  * Fix for Qt<6.6 - QMessageBox.Option and setOption() only exist in Qt>=6.6
+  * Fix a possible set_vcp cascade when switching the ambient-slider from a 
+    physical hardware lux-meter - such as an Arduino - to manual lux input.
+  * Fix broken link in release notes.
+  * Fix restart after settings change.
+
+-------------------------------------------------------------------
 Mon Jul  6 19:38:21 UTC 2026 - Michael Hamilton <michael@actrix.gen.nz>
 
 - Version 2.6.5 
