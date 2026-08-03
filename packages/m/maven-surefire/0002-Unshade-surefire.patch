@@ -306,6 +306,37 @@ index 71723c4d0..7d7a5bf60 100644
  
  /**
   * Abstract base class for running tests using Surefire.
+@@ -1896,8 +1896,7 @@
+             getExtensionsArtifact(),
+             getApiArtifact(),
+             getSpiArtifact(),
+-            getLoggerApiArtifact(),
+-            getSurefireSharedUtilsArtifact()
++            getLoggerApiArtifact()
+         };
+         Set<Artifact> inProcArtifacts = retainInProcArtifactsUnique(providerArtifacts, additionalInProcArtifacts);
+         Classpath inProcClasspath = createInProcClasspath(providerClasspath, inProcArtifacts);
+@@ -2020,8 +2019,7 @@
+             getExtensionsArtifact(),
+             getApiArtifact(),
+             getSpiArtifact(),
+-            getLoggerApiArtifact(),
+-            getSurefireSharedUtilsArtifact()
++            getLoggerApiArtifact()
+         };
+         Set<Artifact> inProcArtifacts = retainInProcArtifactsUnique(providerArtifacts, additionalInProcArtifacts);
+         Classpath inProcClasspath = createInProcClasspath(providerClasspath, inProcArtifacts);
+@@ -2065,10 +2063,6 @@
+         return getPluginArtifactMap().get("org.apache.maven.surefire:surefire-api");
+     }
+ 
+-    private Artifact getSurefireSharedUtilsArtifact() {
+-        return getPluginArtifactMap().get("org.apache.maven.surefire:surefire-shared-utils");
+-    }
+-
+     private Artifact getLoggerApiArtifact() {
+         return getPluginArtifactMap().get("org.apache.maven.surefire:surefire-logger-api");
+     }
 diff --git a/maven-surefire-common/src/main/java/org/apache/maven/plugin/surefire/StartupReportConfiguration.java b/maven-surefire-common/src/main/java/org/apache/maven/plugin/surefire/StartupReportConfiguration.java
 index 45f642b5c..901f487a0 100644
 --- a/maven-surefire-common/src/main/java/org/apache/maven/plugin/surefire/StartupReportConfiguration.java

@@ -168,4 +168,12 @@ put into adi:2</comment>
     <comment>Follow-up SR: fix removal of now not existing maven-surefire-provider-junit5-javadoc</comment>
     <requestid>1358588</requestid>
   </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>9ef341233525cd3c5780719e2d97b559</srcmd5>
+    <version>3.5.6</version>
+    <time>1785770329</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1273185</comment>
+    <requestid>1369190</requestid>
+  </revision>
 </revisionlist>

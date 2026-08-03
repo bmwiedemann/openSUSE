@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Aug  2 14:14:27 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * 0002-Unshade-surefire.patch
+    + fix incomplete removal of surefire-shared-utils (bsc#1273185)
+
+-------------------------------------------------------------------
 Wed Jun 10 15:44:31 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Obsolete the separate maven-surefire-provider-junit5-javadoc,
