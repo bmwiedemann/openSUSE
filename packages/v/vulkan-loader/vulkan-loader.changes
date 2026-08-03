@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul 28 23:28:43 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to tag SDK-1.4.357.0
+  * Log driverUUID instead of deviceUUID for missing device config
+  * Some fixes to missing bounds checks, overflows, out-of-bounds
+    reads
+
+-------------------------------------------------------------------
 Wed May 13 03:19:56 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to tag SDK-1.4.350.0
