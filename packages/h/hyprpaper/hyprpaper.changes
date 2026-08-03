@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jul 31 16:31:49 UTC 2026 - Nassim Lhadj <lhadjnassim311@gmail.com>
+
+- Update to version 0.8.4:
+  * Fix: set id and overwrite wildcard on explicit
+  * protocol: add a status object
+  * feature: add ability to randomize sort order
+  * feature: add opt-in recursive wallpaper directory scanning
+  * config/ui: add random-shuffle slideshow order
+
+-------------------------------------------------------------------
 Mon Feb 16 22:25:24 UTC 2026 - Avindra Goolcharan <avindra@opensuse.org>
 
 - Update to version 0.8.3:
