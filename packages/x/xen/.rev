@@ -3182,4 +3182,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1364767</requestid>
   </revision>
+  <revision rev="376" vrev="1">
+    <srcmd5>e1170d843afd3f63751c3d60e8526122</srcmd5>
+    <version>4.22.0_02</version>
+    <time>1785770068</time>
+    <user>dimstar_suse</user>
+    <comment>Security and Maintenance Update. Update to Xen to version 4.22.0 which includes several security fixes and features. Also fixed dropped changelog spec file change.</comment>
+    <requestid>1368922</requestid>
+  </revision>
 </revisionlist>

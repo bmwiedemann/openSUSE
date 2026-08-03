@@ -85,7 +85,7 @@ the execution time of each script.
  
 --- a/tools/libs/light/libxl_create.c
 +++ b/tools/libs/light/libxl_create.c
-@@ -1321,6 +1321,7 @@ static void initiate_domain_create(libxl
+@@ -1323,6 +1323,7 @@ static void initiate_domain_create(libxl
       * build info around just to know if the domain has a device model or not.
       */
      store_libxl_entry(gc, domid, &d_config->b_info);

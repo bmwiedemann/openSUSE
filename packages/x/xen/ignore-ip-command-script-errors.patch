@@ -17,25 +17,25 @@ an artifact of using 'set -e' everywhere.
 
 --- a/tools/hotplug/Linux/xen-network-common.sh
 +++ b/tools/hotplug/Linux/xen-network-common.sh
-@@ -84,7 +84,7 @@
-     local virtual="$2"
+@@ -83,7 +83,7 @@ setup_bridge_port() {
+     local dev="$1"
  
      # take interface down ...
 -    ip link set dev ${dev} down
 +    ip link set dev ${dev} down || true
  
-     if [ $virtual -ne 0 ] ; then
-         # Initialise a dummy MAC address. We choose the numerically
-@@ -95,7 +95,7 @@
-     fi
+     # Initialise a dummy MAC address. We choose the numerically
+     # largest non-broadcast address to prevent the address getting
+@@ -92,7 +92,7 @@ setup_bridge_port() {
+     ip link set dev ${dev} address fe:ff:ff:ff:ff:ff || true
  
      # ... and configure it
 -    ip address flush dev ${dev}
 +    ip address flush dev ${dev} || true
  }
  
- setup_physical_bridge_port() {
-@@ -123,12 +123,12 @@
+ # Usage: create_bridge bridge
+@@ -113,12 +113,12 @@ add_to_bridge () {
      # Don't add $dev to $bridge if it's already on the bridge.
      if [ ! -e "/sys/class/net/${bridge}/brif/${dev}" ]; then
          log debug "adding $dev to bridge $bridge"

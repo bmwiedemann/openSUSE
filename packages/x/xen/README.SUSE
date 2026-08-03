@@ -197,6 +197,15 @@ suit your needs.  You'll need to change (at very least) the "name" and "disk"
 parameters. See /etc/xen/examples/ for example configuration files.
 
 
+Booting a paravirtual VM
+------------------------
+In older versions of SLES, a bootloader tool called pygrub was used to select
+the kernel and ramdisk of a paravirtual VM to start the boot process.  This
+tool is now deprecated and is security unsupported and should not be used.
+Tools such as virt-install use grub.xen which is the recommended bootloader
+tool for bootstrapping paravirtual VMs.
+
+
 Managing Virtual Machines
 -------------------------
 VMs can be managed from the command line using 'virsh' or from virt-manager.

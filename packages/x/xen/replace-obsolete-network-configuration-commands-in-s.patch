@@ -16,7 +16,7 @@ brctl. Replace them by commands from iproute2 package.
 
 --- a/tools/hotplug/Linux/colo-proxy-setup
 +++ b/tools/hotplug/Linux/colo-proxy-setup
-@@ -76,17 +76,10 @@
+@@ -76,17 +76,10 @@ function teardown_primary()
  
  function setup_secondary()
  {
@@ -34,7 +34,7 @@ brctl. Replace them by commands from iproute2 package.
      do_without_error ip link set dev $forwardbr up
      do_without_error modprobe xt_SECCOLO
  
-@@ -98,17 +91,10 @@
+@@ -98,17 +91,10 @@ function setup_secondary()
  
  function teardown_secondary()
  {
@@ -54,7 +54,7 @@ brctl. Replace them by commands from iproute2 package.
          $vifname -j SECCOLO --index $index
 --- a/tools/hotplug/Linux/remus-netbuf-setup
 +++ b/tools/hotplug/Linux/remus-netbuf-setup
-@@ -139,7 +139,7 @@
+@@ -139,7 +139,7 @@ check_ifb() {
  
  setup_ifb() {
  
@@ -65,7 +65,7 @@ brctl. Replace them by commands from iproute2 package.
          REMUS_IFB="$ifb"
 --- a/tools/hotplug/Linux/vif-bridge
 +++ b/tools/hotplug/Linux/vif-bridge
-@@ -39,11 +39,7 @@
+@@ -39,11 +39,7 @@ bridge=${bridge:-}
  bridge=$(xenstore_read_default "$XENBUS_PATH/bridge" "$bridge")
  
  if [ -z "$bridge" ]; then
@@ -80,7 +80,7 @@ brctl. Replace them by commands from iproute2 package.
       fatal "Could not find bridge, and none was specified"
 --- a/tools/hotplug/Linux/vif-nat
 +++ b/tools/hotplug/Linux/vif-nat
-@@ -172,7 +172,7 @@
+@@ -172,7 +172,7 @@ case "$command" in
          ;;
      offline)
          [ "$dhcp" != 'no' ] && dhcp_down
@@ -91,7 +91,7 @@ brctl. Replace them by commands from iproute2 package.
  
 --- a/tools/hotplug/Linux/vif-route
 +++ b/tools/hotplug/Linux/vif-route
-@@ -23,13 +23,15 @@
+@@ -23,13 +23,15 @@ main_ip=$(dom0_ip)
  
  case "${command}" in
      add|online)
@@ -111,7 +111,7 @@ brctl. Replace them by commands from iproute2 package.
          ;;
 --- a/tools/hotplug/Linux/xen-network-common.sh
 +++ b/tools/hotplug/Linux/xen-network-common.sh
-@@ -111,13 +111,7 @@
+@@ -101,13 +101,7 @@ create_bridge () {
  
      # Don't create the bridge if it already exists.
      if [ ! -e "/sys/class/net/${bridge}/bridge" ]; then
@@ -125,7 +125,7 @@ brctl. Replace them by commands from iproute2 package.
      fi
  }
  
-@@ -129,11 +123,7 @@
+@@ -119,11 +113,7 @@ add_to_bridge () {
      # Don't add $dev to $bridge if it's already on the bridge.
      if [ ! -e "/sys/class/net/${bridge}/brif/${dev}" ]; then
          log debug "adding $dev to bridge $bridge"
@@ -137,7 +137,7 @@ brctl. Replace them by commands from iproute2 package.
      else
          log debug "$dev already on bridge $bridge"
      fi
-@@ -150,11 +140,8 @@
+@@ -140,11 +130,8 @@ remove_from_bridge () {
      # Don't remove $dev from $bridge if it's not on the bridge.
      if [ -e "/sys/class/net/${bridge}/brif/${dev}" ]; then
          log debug "removing $dev from bridge $bridge"

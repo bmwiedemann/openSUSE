@@ -29,8 +29,8 @@
 %{?!primary_python:%define primary_python python3}
 
 Name:           xen
-ExclusiveArch:  %ix86 x86_64 aarch64
-%define xen_build_dir xen-4.21.1-testing
+ExclusiveArch:  %ix86 x86_64
+%define xen_build_dir xen-4.22.0-testing
 #
 %define with_gdbsx 0
 %define with_dom0_support 0
@@ -126,12 +126,12 @@ BuildRequires:  pesign-obs-integration
 BuildRequires:  python-rpm-macros
 Provides:       installhint(reboot-needed)
 
-Version:        4.21.1_06
+Version:        4.22.0_02
 Release:        0
 Summary:        Xen Virtualization: Hypervisor (aka VMM aka Microkernel)
 License:        GPL-2.0-only
 Group:          System/Kernel
-Source0:        xen-4.21.1-testing-src.tar.bz2
+Source0:        xen-4.22.0-testing-src.tar.bz2
 Source1:        stubdom.tar.bz2
 Source2:        mini-os.tar.bz2
 Source9:        xen.changes
@@ -161,15 +161,6 @@ Source10183:    xen_maskcalc.py
 # For xen-libs
 Source99:       baselibs.conf
 # Upstream patches
-Patch1:         69d4ab43-EFI-avoid-OOB-config-file-reads.patch
-Patch2:         69d8ed8e-x86-time-dont-kill-calibration-timer-on-S3.patch
-Patch3:         69e0e400-x86-use-native-TSC-scaling-factors-when-.patch
-Patch4:         69e0e401-CPU-round-cpu_khz-calculations.patch
-Patch5:         69e26ac9-x86-mkelf32-actually-pad-segment-to-2Mb.patch
-Patch6:         69e26aca-x86-mitigate-AMD-SN-7053-FP-DSS.patch
-Patch7:         69f0ab36-gnttab-split-gnttab_map_frame.patch
-Patch8:         69f0ab36-xenstored-make-conn_delete_all_transactions-idempotent.patch
-Patch9:         6a034fca-x86-mitigate-AMD-SN-7052.patch
 # Our platform specific patches
 Patch400:       xen-destdir.patch
 Patch401:       vif-bridge-no-iptables.patch
@@ -710,6 +701,7 @@ CC=gcc-4.8
 rm -fv xen/.config
 echo CONFIG_REQUIRE_NX=y > xen/.config
 echo CONFIG_DIT_DEFAULT=y >> xen/.config
+echo CONFIG_SHADOW_PAGING=y >> xen/.config
 %if %{with xen_debug}
 echo CONFIG_DEBUG=y >> xen/.config
 echo "CONFIG_DOM0_MEM=\"1G+10%%,max:64G\"" >> xen/.config

@@ -1,7 +1,85 @@
 -------------------------------------------------------------------
+Wed Jul 29 15:01:12 MDT 2026 - carnold@suse.com
+
+- Update to Xen 4.22.0 FCS release
+  New Features
+  * Support for per-domain Xenstore quota in C xenstored (includes
+    xenstore-stubdom), libxl and xl.
+  * Support for Xenstore watch depth feature in C xenstored (includes
+    xenstore-stubdom).
+  * On x86:
+    - Support for Bus Lock Threshold on AMD Zen5 and later CPUs, used by Xen to
+      mitigate (by rate-limiting) the system wide impact of an HVM guest
+      misusing atomic instructions.
+    - Support for CPIO microcode in discrete multiboot modules.
+    - Introduce get-core-temp command to xenpm to query CPU temperatures on
+      Intel platforms.
+  * On Arm:
+    - Support for guest suspend and resume to/from RAM via vPSCI.
+      Applies only to non-hardware domain guests.
+    - Continued Armv8-R MPU enablement.
+    - Drop ThumbEE support.
+    - FF-A v1.2 support.
+  * On RISC-V:
+    - SSTC extension support for Xen (not for guest yet).
+    - Introduce domain build helpers (CONFIG_DOMAIN_BUILD_HELPERS) which allows
+      to load Linux kernel, initrd and allocation related things forfor device
+      tree-based domains, laying the groundwork for guest boot support.
+  This release fixes the following security issues.
+  * bsc#1271528 - VUL-0: CVE-2026-42493: xen: x86 shadow paging is
+    deprecated (XSA-495)
+  * bsc#1271529 - VUL-0: CVE-2026-42492: xen: vIRQ event channel
+    binding may break Xenstore (XSA-496)
+  * bsc#1271530 - VUL-0: CVE-2026-42494,CVE-2026-42495,
+    CVE-2026-62423,CVE-2026-62424,CVE-2026-62425: xen: buffer
+    overruns in libfsimage iso9660 handling (XSA-497)
+  * bsc#1271531 - VUL-0: CVE-2026-62426,CVE-2026-62427: xen: sysctl
+    and platform-op locks open to abuse (XSA-499)
+  * bsc#1271532 - VUL-0: CVE-2026-62428: xen: grant-table: type
+    confusion in grant-copy (XSA-500)
+  * bsc#1271533 - VUL-0: xen: grant-table: version change racing with
+    other operations (XSA-501)
+  * bsc#1271534 - VUL-0: CVE-2026-62429: xen: vNUMA domain cleanup
+    may race other operations (XSA-502)
+  * bsc#1271535 - VUL-0: CVE-2026-62430: xen: x86: Out-of-bounds
+    read in vRTC emulation (XSA-503)
+  * bsc#1271536 - VUL-0: CVE-2026-62431: xen: Viridian STIMER
+    division by zero (XSA-504)
+  * bsc#1271537 - VUL-0: CVE-2026-62432: xen: evtchn: Race between
+    FIFO expand and reset (XSA-505)
+  * bsc#1271538 - VUL-0: CVE-2026-62433: xen: correct buffer checks
+    for DM_OP hypercalls (XSA-506)
+  * bsc#1271539 - VUL-0: CVE-2026-62434: xen: PoD: Don't try to
+    reclaim special pages (XSA-507)
+  * bsc#1271947 - VUL-0: xen: pygrub is only supported in
+    de-privileged mode (XSA-508)
+- Dropped patches contained in new tarball
+  69d4ab43-EFI-avoid-OOB-config-file-reads.patch
+  69d8ed8e-x86-time-dont-kill-calibration-timer-on-S3.patch
+  69e0e400-x86-use-native-TSC-scaling-factors-when-.patch
+  69e0e401-CPU-round-cpu_khz-calculations.patch
+  69e26ac9-x86-mkelf32-actually-pad-segment-to-2Mb.patch
+  69e26aca-x86-mitigate-AMD-SN-7053-FP-DSS.patch
+  69f0ab36-gnttab-split-gnttab_map_frame.patch
+  69f0ab36-xenstored-make-conn_delete_all_transactions-idempotent.patch
+  6a034fca-x86-mitigate-AMD-SN-7052.patch
+- Updated README.SUSE to indicate that pygrub is deprecated and
+  unsupported.
+- Keep shadow paging enabled for those who expect this feature
+  to remain unchanged for PV guests despite XSA-495.
+  xen.spec
+
+-------------------------------------------------------------------
 Thu Jul  2 10:26:17 MDT 2026 - carnold@suse.com
 
 - Add BuildRequires for python3-base
+
+-------------------------------------------------------------------
+Thu Jun 18 09:52:40 MDT 2026 - carnold@suse.com
+
+- Drop aarch64 from the ExclusiveArch field. We never shipped Xen
+  on aarch64 and we don't need to use hardware resources to build
+  it.
 
 -------------------------------------------------------------------
 Tue May 12 13:03:24 MDT 2026 - carnold@suse.com
