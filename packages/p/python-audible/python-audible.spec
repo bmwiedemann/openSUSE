@@ -1,7 +1,7 @@
 #
 # spec file for package python-audible
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,15 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-audible
-Version:        0.10.0
+Version:        0.12.0
 Release:        0
 Summary:        A(Sync) Interface for internal Audible API
 License:        AGPL-3.0-only
 URL:            https://github.com/mkb79/audible
 Source:         https://files.pythonhosted.org/packages/source/a/audible/audible-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE remove-python-restriction.patch
-Patch1:         remove-python-restriction.patch
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module beautifulsoup4}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module httpx >= 0.20.0}
 BuildRequires:  %{python_module pbkdf2}
 BuildRequires:  %{python_module pip}

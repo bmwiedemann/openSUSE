@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Mon Aug  3 07:37:14 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.12.0:
+  Added:
+  * Asynchronous access token refresh for AsyncClient.
+    Authenticator.async_auth_flow and the new async_refresh_access_token
+    refresh the token without blocking the event loop, guarded by an
+    asyncio.Lock (bound to the running event loop) so that multiple concurrent
+    requests trigger only a single refresh. The synchronous
+    refresh_access_token is likewise guarded by a threading.Lock.
+  Changed:
+  * API requests now authenticate with the x-amz-access-token header instead of
+    the legacy Authorization: Bearer scheme, matching the current Audible API
+    (see #832). Header construction is centralized in the new
+    audible.utils.build_access_token_header helper. The obsolete client-id: 0
+    header is no longer sent with bearer auth.
+  Fixed:
+  * OrjsonProvider now honors the ensure_ascii parameter. Non-ASCII characters
+    were previously left unescaped, so the serialized output depended on which
+    JSON library was installed.
+  Security:
+  * Raised the minimum versions of the optional cryptography (>=48.0.1), orjson
+    (>=3.11.6) and ujson (>=5.13.0) dependencies to exclude releases with known
+    vulnerabilities.
+
+-------------------------------------------------------------------
+Mon Aug  3 07:35:19 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.11.0:
+  * feat: Add high-performance JSON backend provider system (#827)
+  * feat: add optional pycryptodome support for performance optimization (#822)
+  * Add support for Python 3.13 and set to default (#728)
+  * refactor: playwright login callback (#648)
+  * Drop Python 3.10, add 3.14, and modernize dependencies (#855)
+  * fix(register.py): handle missing fields in the registration response (#797)
+  * Fix coverage data upload (#592)
+  * docs: add goodreads_ratings response group to catalog/products/ASIN (#623)
+  * refactor: rename json and crypto modules to *_provider to avoid naming conflicts (#830)
+  * Refactor ruff check fixes (#594)
+  * Refactor exception hierarchy under AudibleError. (#550)
+- Drop remove-python-restriction.patch: Python 3.13 is default now
+
+-------------------------------------------------------------------
 Tue Nov 26 13:00:14 UTC 2024 - Nico Krapp <nico.krapp@suse.com>
 
 - Add remove-python-restriction.patch to enable build for python313
