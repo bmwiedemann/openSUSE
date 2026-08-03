@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Mon Aug 03 05:52:16 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.29.0:
+  * New Features
+    - zizmor now has experimental support for auditing pre-commit
+      inputs, meaning both pre-commit configuration and hook
+      definitions (#2209)
+    - New audit: insecure-url-scheme detects usages of insecure
+      (i.e. plaintext) protocols when making network requests. The
+      initial version of this audit is limited to pre-commit inputs
+      only (#2228)
+    - zizmor now supports GitHub's "self-repository" reference
+      syntax for local actions, e.g. uses: $/foo/bar instead of a
+      manual checkout and uses: ./foo/bar (#2248)
+  * Changes
+    - The unpinned-uses and unpinned-images audits have been
+      separated more cleanly: unpinned-uses is now principally
+      responsible for Git-style uses: clauses, whereas
+      unpinned-images is now responsible for docker://-style uses:
+      clauses (in addition to already checking other image
+      references) (#2222)
+  * Removals
+    - --collect=workflows-only and --collect=actions-only have been
+      fully removed. Use --collect=workflows and --collect=actions
+      for the replacement behavior (#2242)
+  * Bug Fixes
+    - Fixed a bug where zizmor would reject a valid workflow
+      definition for containing a literal jobs..outputs. value for
+      being a non-string (#2220)
+    - Fixed a bug where the github-app audit would incorrectly flag
+      some usages as needing a repositories: key, despite
+      requesting organization-level-only permissions (#2227)
+    - Fixed a class of bugs where zizmor would discover the user's
+      configuration in unintuitive ways. When auditing from a Git
+      repository, zizmor now uses the repository root to discover
+      configuration consistently (#2234)
+
+-------------------------------------------------------------------
 Wed Jul 22 06:31:29 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.28.0:
