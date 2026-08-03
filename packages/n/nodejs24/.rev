@@ -202,4 +202,23 @@ for details, see https://nodejs.org/en/blog/release/v24.14.0
 - ip-address-bsc1268097.patch: dropped upstreamed</comment>
     <requestid>1362946</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ddb39e56256ba5b2e96ede9b1b785539</srcmd5>
+    <version>24.18.1</version>
+    <time>1785770097</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 24.18.1:
+  - CVE-2026-56846: HTTP/2 retained headers can bypass maxSessionMemory limits (bsc#1272941)
+  - CVE-2026-56848: HTTP/2 re-entrant send can cause heap-use-after-free (bsc#1272942)
+  - CVE-2026-58043: Permission Model path matching can over-grant filesystem access (bsc#1272943)
+  - CVE-2026-56850: HTTPS Agent can reuse mTLS identities across PFX certificates (bsc#1272944)
+  - CVE-2026-58040: HTTPS Agent session reuse can skip hostname verification (bsc#1272945)
+  - CVE-2026-58041: node:sqlite SQLTagStore iterator replay can re-execute writes (bsc#1272946)
+  - CVE-2026-58042: dns.resolveAny() can abort on DNS responses with many A records (bsc#1272947)
+  - CVE-2026-58045: node:zlib sync APIs can crash on spoofed TypedArray length (bsc#1272948)
+  - CVE-2026-56847: Permission Model allows trace events to write outside the allowlist (bsc#1272949)
+  - CVE-2026-58039: Permission Model allows process reports to write outside the allowlist (bsc#1272950)
+  - CVE-2026-58044: HTTP parser header truncation can enable request smuggling (bsc#1272951)</comment>
+    <requestid>1369028</requestid>
+  </revision>
 </revisionlist>

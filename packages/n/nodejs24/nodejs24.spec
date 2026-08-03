@@ -25,7 +25,7 @@
 %endif
 
 Name:           nodejs24
-Version:        24.18.0
+Version:        24.18.1
 Release:        0
 
 # Double DWZ memory limits
@@ -322,7 +322,7 @@ BuildRequires:  pkgconfig(libbrotlidec)
 Provides:       bundled(LIEF) = 0.17.0
 Provides:       bundled(ada) = 3.4.4
 Provides:       bundled(libuv) = 1.52.1
-Provides:       bundled(llhttp) = 9.4.2
+Provides:       bundled(llhttp) = 9.4.3
 Provides:       bundled(merve) = 1.2.2
 Provides:       bundled(ngtcp2) = 1.15.1
 Provides:       bundled(node-acorn) = 8.16.0
@@ -330,7 +330,7 @@ Provides:       bundled(node-acorn-walk) = 8.3.5
 Provides:       bundled(node-amaro) = 1.1.9
 Provides:       bundled(node-corepack) = 0.35.0
 Provides:       bundled(node-minimatch) = 10.2.5
-Provides:       bundled(node-undici) = 7.28.0
+Provides:       bundled(node-undici) = 7.29.0
 Provides:       bundled(simdjson) = 4.6.4
 Provides:       bundled(uvwasi) = 0.0.23
 Provides:       bundled(v8) = 13.6.233.17
