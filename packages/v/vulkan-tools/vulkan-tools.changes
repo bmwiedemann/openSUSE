@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 28 23:46:47 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to tag SDK-1.4.357.0
+  * vulkaninfo: Add VK_KHR_display support and related fixes
+
+-------------------------------------------------------------------
 Wed May 13 03:50:42 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to tag SDK-1.4.350.0
