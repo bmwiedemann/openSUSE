@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Jul 31 19:46:57 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.25.0:
+  * Fix build error with gcc-16
+  * Add ngtcp2_stream_close2 callback
+  * Verify the end offset of STREAM frame before updating flow
+    control
+  * Rework connection flow window accounting after sending
+    STOP_SENDING
+  * Stop buffering data after shutting downstream read
+  * Expand NGTCP2_MAX_INITIAL_CRYPTO_OFFSET to 64K so that large
+    post-quantum key shares are no longer rejected
+  * Handle a client migrating back to the original path
+  * crypto/quictls: Rework the global initialization
+  * ksl: Align keys in 8 bytes boundary
+  * bbr: Update longterm variable computation
+  * Optimize rob and acktr
+- Drop the now-dead libnghttp3 dependency: --with-libnghttp3 and
+  its BuildRequires only affect the examples, which
+  --enable-lib-only does not build
+- Declare the version floors configure actually checks:
+  pkgconfig(gnutls) >= 3.7.3 and pkgconfig(openssl) >= 1.1.1
+- Clean up the spec file with spec-cleaner (drop obsolete Group
+  tags)
+
+-------------------------------------------------------------------
 Wed Jul 22 08:44:01 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 1.24.0:

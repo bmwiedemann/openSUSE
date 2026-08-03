@@ -370,4 +370,12 @@
   * Remove stale function declarations (forwarded request 1367105 from pmonrealgonzalez)</comment>
     <requestid>1367107</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>176d388dac272e29db397c008c8ca5e4</srcmd5>
+    <version>1.25.0</version>
+    <time>1785770076</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.25.0</comment>
+    <requestid>1368936</requestid>
+  </revision>
 </revisionlist>

@@ -16,10 +16,6 @@
 #
 
 
-%if 0%{?suse_version} && 0%{?suse_version} < 1600
-%global force_gcc_version 14
-%endif
-
 %global soname  libngtcp2
 %global sover   16
 %global gnutls_soname %{soname}_crypto_gnutls
@@ -32,13 +28,14 @@
 # requires OpenSSL 3.x with QUIC support
 %bcond_with openssl
 %endif
-
+%if 0%{?suse_version} && 0%{?suse_version} < 1600
+%global force_gcc_version 14
+%endif
 Name:           ngtcp2
-Version:        1.24.0
+Version:        1.25.0
 Release:        0
 Summary:        Implementation of the IETF QUIC protocol
 License:        MIT
-Group:          Development/Libraries/C and C++
 URL:            https://nghttp2.org/ngtcp2
 Source0:        https://github.com/ngtcp2/ngtcp2/releases/download/v%{version}/ngtcp2-%{version}.tar.xz
 Source1:        https://github.com/ngtcp2/ngtcp2/releases/download/v%{version}/ngtcp2-%{version}.tar.xz.asc
@@ -47,10 +44,9 @@ Source3:        baselibs.conf
 BuildRequires:  gcc%{?force_gcc_version}-c++
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(gnutls) >= 3
-BuildRequires:  pkgconfig(libnghttp3) >= 1.12.0
+BuildRequires:  pkgconfig(gnutls) >= 3.7.3
 %if %{with openssl}
-BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(openssl) >= 1.1.1
 %endif
 
 %description
@@ -59,7 +55,6 @@ with a C library API.
 
 %package -n %{soname}-%{sover}
 Summary:        Implementation of the IETF QUIC protocol
-Group:          System/Libraries
 
 %description -n %{soname}-%{sover}
 ngtcp2 is an implementation of the QUIC protocol (RFC 9000)
@@ -67,7 +62,6 @@ with a C library API.
 
 %package -n %{gnutls_soname}%{gnutls_sover}
 Summary:        The ngtcp2 crypto API with GNUTLS as a backend
-Group:          System/Libraries
 
 %description -n %{gnutls_soname}%{gnutls_sover}
 ngtcp2 is an implementation of the QUIC protocol (RFC 9000).
@@ -76,7 +70,6 @@ GNUTLS as the cryptographic provider.
 
 %package -n %{openssl_soname}%{openssl_sover}
 Summary:        The ngtcp2 crypto API with OpenSSL as a backend
-Group:          System/Libraries
 
 %description -n %{openssl_soname}%{openssl_sover}
 ngtcp2 is an implementation of the QUIC protocol (RFC 9000).
@@ -85,14 +78,12 @@ OpenSSL as the cryptographic provider.
 
 %package -n python3-ngtcp2
 Summary:        Python3 bindings for ngtcp2
-Group:          Development/Libraries/Python
 
 %description -n python3-ngtcp2
 Python bindings for the ngtcp2 implementation of the QUIC protocol.
 
 %package devel
 Summary:        Development files for ngtcp2
-Group:          Development/Languages/C and C++
 Requires:       %{soname}-%{sover} = %{version}
 Provides:       libngtcp2-devel = %{version}-%{release}
 Obsoletes:      libngtcp2-devel < %{version}-%{release}
@@ -103,7 +94,6 @@ QUIC protocol.
 
 %package -n libngtcp2_crypto_gnutls-devel
 Summary:        GnuTLS Development files for ngtcp2
-Group:          Development/Languages/C and C++
 Requires:       %{gnutls_soname}%{gnutls_sover} = %{version}
 Requires:       libngtcp2-devel = %{version}-%{release}
 
@@ -112,7 +102,6 @@ GnuTLS as TLS backend development files for use with libngtcp2.
 
 %package -n libngtcp2_crypto_ossl-devel
 Summary:        OpenSSL Development files for ngtcp2
-Group:          Development/Languages/C and C++
 Requires:       %{openssl_soname}%{openssl_sover} = %{version}
 Requires:       libngtcp2-devel = %{version}-%{release}
 
@@ -128,11 +117,12 @@ QUIC protocol.
 export CC="gcc-%{?force_gcc_version}"
 export CXX="g++-%{?force_gcc_version}"
 %endif
+# --enable-lib-only skips the examples, so the example-only dependencies
+# (libnghttp3, libev) are never probed and must not be requested here.
 %configure \
   --disable-static        \
   --disable-silent-rules  \
   --enable-lib-only       \
-  --with-libnghttp3       \
   --with-gnutls           \
 %if %{with openssl}
   --with-openssl          \
