@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Jul 31 20:32:30 UTC 2026 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 26.27.39122.11
+  * No changelog was made available 
+  * Build against libopencl-clang17
+
+-------------------------------------------------------------------
+Sun Jul 12 12:03:32 UTC 2026 - Markus Ebner <info@ebner-markus.de>
+
+- Update to version 26.22.38646.4
+  * Early support for Nova Lake (Xe3P) graphics architecture
+  * Introduced an experimental "LEO" (Level Zero Executing OpenCL) backend
+  * Xe3P enablement for upcoming Nova Lake and Crescent Island hardware
+  * Added initial support for Nova Lake P
+  * Reductions in memory pool size (from 16MB to 2MB)
+  * Reduced I/O alignment requirements for discrete GPUs
+  * Official branding support for Arc Pro B65 and B70 GPUs
+- Removed 0001-fix-add-missing-include.patch
+  * No longer needed
+
+-------------------------------------------------------------------
 Wed Apr 29 09:22:18 UTC 2026 - Patrik Jakobsson <patrik.jakobsson@suse.com>
 
 - 0001-fix-add-missing-include.patch

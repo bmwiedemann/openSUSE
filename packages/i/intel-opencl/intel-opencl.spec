@@ -23,28 +23,27 @@
 %endif
 
 Name:           intel-opencl
-Version:        26.09.37435.1
+Version:        26.27.39122.11
 Release:        1%{?dist}
 Summary:        Intel Graphics Compute Runtime for OpenCL
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/intel/compute-runtime
 Source0:        https://github.com/intel/compute-runtime/archive/%{version}/compute-runtime-%{version}.tar.gz
-Patch0:         0001-fix-add-missing-include.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 %if %{with level_zero}
-BuildRequires:  level-zero-devel >= 1.21.9
+BuildRequires:  level-zero-devel >= 1.28.6
 %endif
 BuildRequires:  libigc-devel
-BuildRequires:  libigdgmm-devel >= 22.3.0
+BuildRequires:  libigdgmm-devel >= 22.10.0
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(igc-opencl)
 BuildRequires:  pkgconfig(libva)
-Requires:       libigc2
-Requires:       libigdfcl2
-Requires:       libopencl-clang16
+Requires:       libigc2 >= 2.34.4
+Requires:       libigdfcl2 >= 2.34.4
+Requires:       libopencl-clang17 >= 2.34.4
 Recommends:     libOpenCL1
 ExclusiveArch:  x86_64
 
