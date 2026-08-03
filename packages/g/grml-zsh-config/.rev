@@ -277,4 +277,23 @@
   * tmux: make active pane color match our screen style</comment>
     <requestid>1340845</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>18736afff00d7b878d8493c16e4325ff</srcmd5>
+    <version>0.20.1</version>
+    <time>1785770318</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.20.1:
+  * loadavg-screen: obtain load average numbers in a portable(*) way
+
+- Update to 0.20.0:
+  * This release assumes GNU screen 5.00. GNU screen 4 config files are still
+    provided but in a non-default path (&quot;screenrc_v4&quot;).
+  * screenrc: remove default setting &quot;sorendition 10 99&quot;
+  * screenrc: remove setting &quot;nethack on&quot;
+  * screenrc: add *_v4 files for screen 4.x
+  * screenrc: update for screen v5
+  * zshrc: dirstack: fix chpwd math expression for unset DIRSTACKSIZE
+  * zshrc: check for /etc/os-release instead of /etc/debian_version.</comment>
+    <requestid>1369178</requestid>
+  </revision>
 </revisionlist>

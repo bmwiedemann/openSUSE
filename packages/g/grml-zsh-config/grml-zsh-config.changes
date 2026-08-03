@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Aug  3 07:26:01 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.20.1:
+  * loadavg-screen: obtain load average numbers in a portable(*) way
+
+-------------------------------------------------------------------
+Mon Aug  3 07:25:26 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.20.0:
+  * This release assumes GNU screen 5.00. GNU screen 4 config files are still
+    provided but in a non-default path ("screenrc_v4").
+  * screenrc: remove default setting "sorendition 10 99"
+  * screenrc: remove setting "nethack on"
+  * screenrc: add *_v4 files for screen 4.x
+  * screenrc: update for screen v5
+  * zshrc: dirstack: fix chpwd math expression for unset DIRSTACKSIZE
+  * zshrc: check for /etc/os-release instead of /etc/debian_version.
+
+-------------------------------------------------------------------
 Wed Mar 18 07:18:46 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.19.28:
