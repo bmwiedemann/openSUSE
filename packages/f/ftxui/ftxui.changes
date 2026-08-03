@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Mon Aug  3 07:23:28 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 7.02:
+  Component:
+  * Bugfix: Fix high CPU usage (app and terminal emulator, e.g. tmux) caused by a
+    cursor position request/reply feedback loop redrawing the screen at ~60fps in
+    the non-alternate-screen modes. See #1302.
+  * Animation frames are now produced only when requested via
+    animation::RequestAnimationFrame() (e.g. by animation::Animator), as in
+    FTXUI 6. Receiving an event no longer implicitly triggers an animation
+    frame.
+  * Bugfix: App::PostEvent is now thread safe again, as documented. Since the
+    7.0.0 event loop rework it pushed into an unsynchronized buffer, racing with
+    the main loop when called from another thread.
+  * Bugfix: Fix unbounded memory growth in the event buffer. A receiver used
+    during terminal setup was kept for the whole App lifetime, retaining every
+    subsequent event (including every mouse move).
+  Dom:
+  * Performance: text computes its requirement once and renders only the
+    visible lines. This makes scrolling a large text inside a frame
+    significantly faster. See #1309.
+  * Performance: text selection now only visits and stores the selected line
+    range, instead of scanning and allocating one entry per line of the whole
+    text on every frame.
+
+-------------------------------------------------------------------
+Tue Jul 14 12:21:48 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 7.0.1:
+  Screen:
+  * Bugfix: Restore TrueColor support on Windows Terminal (default to TrueColor
+    on Windows and check WT_SESSION environment variable for WSL
+    compatibility). See #1305.
+  * Feature: Honor the NO_COLOR environment variable (https://no-color.org).
+    When set and non-empty, colors degrade to the terminal's default colors.
+  * Bugfix: Apple's Terminal.app (TERM_PROGRAM=Apple_Terminal) is now reported
+    as Palette256 instead of TrueColor; it does not support 24bit colors.
+  * Bugfix: An empty terminal name or terminal emulator name is now treated as
+    unidentified by Terminal::ComputeColorSupport, instead of implying
+    TrueColor support.
+  * Bugfix: Avoid segmentation fault / crash during static initialization if
+    Color::RGB or other color constants are constructed globally/statically
+    before main(). See #1303.
+  Build:
+  * Bugfix: Fix build failure when an older FTXUI is installed in a system
+    include path (e.g. MacPorts upgrade). A CMake deduplication quirk was
+    promoting the project's own -I include/ to -isystem, causing package
+    managers' -I/opt/local/include (which may contain stale headers) to win.
+    See #1299, #1300.
+
+-------------------------------------------------------------------
 Mon Jun 15 05:55:08 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 7.0.0:
