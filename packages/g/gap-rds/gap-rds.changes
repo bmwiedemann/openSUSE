@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Aug  2 16:17:49 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.10
+  * Fix missing commas in the `AllDiffsets` methods taking a start
+    set and a group, which made these methods error out.
+  * Declare the SmallGrp package dependency explicitly (it is
+    needed by `NormalSgsForQuotientImages` and friends, which use
+    `IdSmallGroup` as a fingerprint for isomorphism types).
+
+-------------------------------------------------------------------
 Tue Sep 23 23:30:15 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.9
