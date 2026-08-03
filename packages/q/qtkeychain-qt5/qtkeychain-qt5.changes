@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Aug  1 07:35:30 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.17.0
+  * Windows: Do not ignore "service" when storing data. Note: This
+    is a breaking change.
+  * Android: Support payloads > 256kb
+  * Add wasm backend
+  * CMake: Assume Qt 6 by default; pass -DBUILD_WITH_QT5=ON to use Qt 5
+
+-------------------------------------------------------------------
 Thu Apr 30 14:26:35 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 0.16.0

@@ -18,7 +18,7 @@
 
 %define sover 1
 Name:           qtkeychain-qt6
-Version:        0.16.0
+Version:        0.17.0
 Release:        0
 Summary:        Platform-independent Qt API for storing passwords securely
 License:        BSD-2-Clause
@@ -64,7 +64,6 @@ Provides translations for the "qtkeychain-qt6" package.
 
 %build
 %cmake_qt6 \
-  -DBUILD_WITH_QT6:BOOL=TRUE \
   -DQMAKE_EXECUTABLE:STRING=%{_qt6_bindir}/qmake
 
 %qt6_build

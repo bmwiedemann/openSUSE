@@ -18,7 +18,7 @@
 
 %define sover 1
 Name:           qtkeychain-qt5
-Version:        0.16.0
+Version:        0.17.0
 Release:        0
 Summary:        A password store library
 License:        BSD-2-Clause
@@ -62,11 +62,15 @@ This package contains development files for libqtkeychain.
 %autosetup -p1 -n qtkeychain-%{version}
 
 %build
-%cmake -DBUILD_TEST_APPLICATION:BOOL=FALSE
+%cmake \
+  -DBUILD_TEST_APPLICATION:BOOL=FALSE \
+  -DBUILD_WITH_QT5:BOOL=TRUE
+
 %cmake_build
 
 %install
 %cmake_install
+
 %find_lang qtkeychain --with-qt
 
 %ldconfig_scriptlets -n libqt5keychain%{sover}
