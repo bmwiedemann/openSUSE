@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug  3 07:42:43 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.7.0
+  * Added support for ATN-B2 CPDLC version 2
+  * Fixed compilation errors with SDRPlay API older than 3.15
+
+-------------------------------------------------------------------
 Wed Feb 25 20:14:55 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.6.0
