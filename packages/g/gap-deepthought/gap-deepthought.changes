@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Aug  2 18:01:01 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.0.10
+  * Drop the dependency on the GAPDoc package
+
+-------------------------------------------------------------------
 Fri Jun 20 12:06:52 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.0.9

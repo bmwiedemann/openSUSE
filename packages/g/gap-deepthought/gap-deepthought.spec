@@ -1,7 +1,7 @@
 #
 # spec file for package gap-deepthought
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           gap-deepthought
-Version:        1.0.9
+Version:        1.0.10
 Release:        0
 Summary:        GAP: Deep Thought for computations in nilpotent groups
 License:        GPL-2.0-or-later
@@ -29,7 +29,6 @@ BuildRequires:  c_compiler
 BuildRequires:  gap-devel
 BuildRequires:  gap-rpm-devel
 Requires:       gap-core >= 4.12
-Requires:       gap-gapdoc >= 1.5
 Requires:       gap-polycyclic >= 2.11
 
 %description
