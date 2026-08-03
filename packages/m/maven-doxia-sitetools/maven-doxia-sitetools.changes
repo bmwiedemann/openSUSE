@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Aug  2 14:10:22 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Generate build.properties file for doxia-site-renderer and use it
+  to filter the maven-project.properties and copy it into the jar.
+  Fixes bsc#1273186
+
+-------------------------------------------------------------------
 Wed Apr  8 07:41:17 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 2.1.0

@@ -105,4 +105,12 @@ put into adi:2</comment>
     <comment>2.1.0</comment>
     <requestid>1345130</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>7e5d7f76cdac857291fbc496ee1594c4</srcmd5>
+    <version>2.1.0</version>
+    <time>1785770333</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1273186</comment>
+    <requestid>1369195</requestid>
+  </revision>
 </revisionlist>

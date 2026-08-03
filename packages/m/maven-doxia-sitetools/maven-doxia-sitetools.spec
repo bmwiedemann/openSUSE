@@ -25,6 +25,7 @@ Group:          Development/Libraries/Java
 URL:            https://maven.apache.org/doxia/
 Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-build.tar.xz
+Source10:       pom_properties.py
 BuildRequires:  ant
 BuildRequires:  apache-commons-io
 BuildRequires:  apache-commons-lang3
@@ -68,6 +69,8 @@ API documentation for %{name}.
 
 %prep
 %setup -q -a1
+# parse pom.xml to get properties to replace in resource files
+python3 %{SOURCE10} doxia-site-renderer/pom.xml >doxia-site-renderer/build.properties
 
 %build
 mkdir -p lib
