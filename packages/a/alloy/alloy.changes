@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Jul 30 13:37:00 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Update to version 1.18.0:
+  * BREAKING: otelcol HTTP receivers default to idle_timeout="1m",
+    read_header_timeout="1m", write_timeout="30s" to match
+    upstream. Affects otlp, faro, jaeger, zipkin, influxdb,
+    splunkhec, datadog and jaeger_remote_sampling.
+  * Back off usage reporting on persistent failure
+  * Fix Beyla glob parsing
+  * Bump github.com/prometheus/procfs for XFS Collector fix
+  * database_observability.mysql: Simplify denylist in-memory map
+  * database_observability.postgres: Handle DSN with unix sockets
+  * database_observability.postgres: Update collect intervals
+  * database_observability: Explain-plan conditions now redact
+  * Don't emit error log when remotecfg is unused
+  * For a full list of changes, please refer to the CHANGELOG:
+    https://github.com/grafana/alloy/blob/v1.18.0/CHANGELOG.md
+- CVE-2026-39821: Fix validation bypass and privilege escalation
+                  by bumping x/net/idna to 0.57.0 (bsc#1266654)
+  * Add bump-x_net.patch
+- Require Go 1.26.5 for building
+- Drop 0001-Fix-CVE-2026-10722.patch
+
+-------------------------------------------------------------------
 Mon Jun 29 10:34:54 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
 
 - CVE-2026-10722: Fix manipulated argument offset leading to
@@ -40,6 +64,10 @@ Wed Jun 17 10:30:00 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
                     version 0.9.0 (bsc#1267489)
   * CVE-2026-45685: Fix DoS in MongoDB TCP parser by bumping
                     go.opentelemetry.io/obi to 0.9.0 (bsc#1267488)
+  * CVE-2026-41607: Fix out-of-bounds read in Apache Thrift by
+                    bumping it to 0.23.0 (bsc#1263289)
+  * CVE-2026-41606: Fix uncontrolled recursion in Apache Thrift
+                    (bsc#1263324)
 - Drop patches:
   * 0001-Bump-sql_exporter.patch
   * 0002-Bump-Apache-Thrift.patch
@@ -66,13 +94,13 @@ Wed Jun 17 10:30:00 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
               CVE-2026-39830, CVE-2026-39832, CVE-2026-46597,
               CVE-2026-46598, CVE-2026-46595, CVE-2026-39835
               (bsc#1266196)
-    CVE-2026-39821: Fix validation bypass and privilege escalation
-                    by bumping x/net/idna (bsc#1266654)
     security: Fix multiple issues when parsing HTML files:
               CVE-2026-25680, CVE-2026-42502, CVE-2026-27136,
               CVE-2026-25681, CVE-2026-42506 (bsc#1267185)
     CVE-2026-33532: Remove dependency on vulnerable yaml library
                     (bsc#1260981)
+    CVE-2026-33814: Fix infinite loop in golang.org/x/net by
+                    bumping it to 0.55.0 (bsc#1265845)
 
 -------------------------------------------------------------------
 Tue Jun  9 11:29:33 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
@@ -170,10 +198,8 @@ Sun Apr 26 12:53:57 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
       goroutine exits on Stop (#5874) (1e3334b) (@cristiangreco)
     - deps: Update module github.com/aws/aws-sdk-go-v2/service/s3
       to v1.97.3 [SECURITY] (#6004) (38f4346)
-    - deps: Update module github.com/go-git/go-git/v5 to v5.17.1
-      [SECURITY] (#5934) (a5154af)
-    - deps: Update module github.com/go-git/go-git/v5 to v5.18.0
-      [SECURITY] (#6090) (0e59d64)
+    - CVE-2026-41506: Update module github.com/go-git/go-git/v5 to
+      v5.18.0 (bsc#1264949)
     - deps: Update module github.com/nwaples/rardecode/v2 to v2.2.0
       [SECURITY] (b44d51a) (@jharvey10)
     - deps: Update module
@@ -290,6 +316,8 @@ Thu Mar 26 08:34:00 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
       trace_id_cache_size settings
     - prometheus.scrape: Update arguments and targets even if
       scrape_native_histograms and extra_metrics are updated
+  * CVE-2026-1229: Fix incorrect calculation in Cloudflare circl
+                   package by bumping it to 1.6.3 (bsc#1265542)
 
 - update to 1.14.0:
   * BREAKING CHANGES

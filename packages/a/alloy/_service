@@ -1,6 +1,3 @@
 <services>
   <service name="download_files" mode="manual" />
-  <service name="go_modules" mode="manual">
-    <param name="subdir">collector</param>
-  </service>
 </services>
