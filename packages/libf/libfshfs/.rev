@@ -151,4 +151,20 @@
     <comment>- Update to release 20260130</comment>
     <requestid>1330139</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>1dc631c21789adf4e0daaaae799681a9</srcmd5>
+    <version>20260730</version>
+    <time>1785504681</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20260730</comment>
+    <requestid>1368542</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>1c471aae6c8f7b15938d523924f9ac38</srcmd5>
+    <version>20260802</version>
+    <time>1785770113</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20260802</comment>
+    <requestid>1369110</requestid>
+  </revision>
 </revisionlist>
