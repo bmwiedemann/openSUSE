@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Aug  3 07:28:20 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 13.5.3:
+  * Sync CI tooling, workflow pins and dependency floors with the
+    latest repomatic release; no functional changes to the package.
+- update to 13.5.2:
+  * Reorganize the installation page: quick start first, then uvx
+    try-it tabs, install methods, the Python compatibility matrix
+    and the dependency graph.
+  * Register MyST heading anchors so in-page documentation links
+    resolve at build time.
+  * Render the CLI --help screen live in the documentation so its
+    option list can't drift from the code.
+
+-------------------------------------------------------------------
 Tue Jul 28 04:57:34 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 13.5.1:
