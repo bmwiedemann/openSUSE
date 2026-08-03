@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jul 31 19:41:39 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 9.2:
+  * Nano refuses to start when standard output is not a terminal.
+  * Options --newbuffer and 'set newbuffer' were added as better
+    synonyms of --multibuffer (which keeps working).
+  * The legacy keystroke pairs ^W^T and ^/^T are recognized again.
+  * Fix a crash at startup when a section of the history file is
+    overlong.
+
+-------------------------------------------------------------------
 Tue Jun 23 13:05:42 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 9.1:
