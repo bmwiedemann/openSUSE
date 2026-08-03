@@ -156,4 +156,13 @@
   * https://github.com/django-compressor/django-compressor/pull/1323</comment>
     <requestid>1334542</requestid>
   </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>7886136a7886753e35e4e8c6eb0228ca</srcmd5>
+    <version>4.6.0</version>
+    <time>1785770222</time>
+    <user>dimstar_suse</user>
+    <comment>- Clean up BuildRequires/Requires/Recommends.
+- Use python_exec and autosetup macros.</comment>
+    <requestid>1369131</requestid>
+  </revision>
 </revisionlist>

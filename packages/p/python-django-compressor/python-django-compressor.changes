@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug  3 05:47:38 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Clean up BuildRequires/Requires/Recommends.
+- Use python_exec and autosetup macros.
+
+-------------------------------------------------------------------
 Mon Feb 23 15:20:31 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Correct test requirement onto calmjs.parse
