@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 03 05:56:32 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.56.5:
+  * build(deps): bump chainguard.dev/apko from 1.2.27 to 1.2.29 in
+    the gomod group (#2603)
+  * build(deps): bump the actions group with 2 updates (#2604)
+
+-------------------------------------------------------------------
 Mon Jul 27 04:57:56 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.56.4:
