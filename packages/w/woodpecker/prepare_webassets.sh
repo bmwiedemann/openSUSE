@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# do not use set -e, as the make step will abort the build due to warnings/errors
 set -o pipefail
 
 [[ "$#" == "2" ]] || {
@@ -32,17 +31,16 @@ webassets_tarball="web-${version}.tar.gz"
 obscpio="$basename.obscpio"
 working_directory="$(pwd)"
 tmpdir="$(mktemp -d -p /tmp)"
+echo "Changing into tmpdir ${tmpdir}"
 cd "${tmpdir}" || exit 15
 
 echo "##########"
 echo "Extracting obscpio archive"
-cpio -id < "$working_directory/$obscpio" || exit 21
-ls -lah
+cpio -id < "${working_directory}/${obscpio}" || exit 21
 cd "$basename" || exit 23
-ls -lah
 
 echo "##########"
-cd web/ || exit 25
+cd web || exit 25
 rm -rf node_modules || exit 27
 pnpm install --frozen-lockfile
 pnpm build

@@ -4,7 +4,7 @@
 NAME = woodpecker
 SPEC = woodpecker.spec
 
-default: clean obsservices webassets
+default: clean obsservices prepare_webassets
 
 clean:
 	rm -rf $(NAME) $(NAME)-*.tar $(NAME)-*.tar.gz $(NAME)-*.obscpio web-*.tar.gz vendor.tar.gz
@@ -14,7 +14,7 @@ obsservices:
 	echo "Running OBS services"
 	osc service manualrun
 
-webassets:
+prepare_webassets:
 	podman run \
 		-ti \
 		--rm \
