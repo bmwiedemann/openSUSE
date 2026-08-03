@@ -1,4 +1,126 @@
 -------------------------------------------------------------------
+Mon Aug 03 05:51:49 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.49:
+  * Security
+    - config: keep an extends target's path and contents out of
+      messages about it (72bcb49)
+      An extends value is expanded from the environment before it
+      is resolved, so naming the resolved path in an error or
+      warning printed environment variable values wherever that
+      message went, which under CI is the build log. extends also
+      points at an arbitrary path, so a target that is not valid
+      TOML had its offending line quoted back. A file reached
+      through extends is now named by the reference as written, and
+      its own text is never repeated. A config you name yourself is
+      unchanged, and rumdl config, the language server's report to
+      its editor, and RUST_LOG=debug still show resolved paths.
+      Reported privately by Shuvam Kumar.
+  * Fixed
+    - md072: keep every trailing newline when sorting frontmatter
+      keys (a5e7c40)
+    - fix-utils: measure fix ranges against the content the rule
+      read (2ed4238)
+    - md044: read a wikilink's display text, not the page name it
+      hides (51d584e)
+    - md039: keep wikilinks and nested images intact when trimming
+      link text (aabd859)
+    - md045,md057,md044: stop reporting wiki embeds as images
+      (1147d17)
+    - md058,md065: preserve the trailing newline when inserting
+      blank lines (#783) (0ba54ce)
+    - md013: track line numbers in BlockBuilder for list reflow
+      (#780) (56e2b3f)
+    - mkdocs: read an indented code block inside a container body
+      as code (9439134)
+    - md087,inline-config: judge directives in indented container
+      bodies (9285de1)
+  * Performance
+    - md038: judge nested backticks against the outermost spans on
+      a line (b02ea88)
+- Update to version 0.2.48:
+  * Added
+    - md087: report inline disable comments that suppress nothing
+      (40fc37d)
+    - md051,md057: check path-shaped frontmatter values behind an
+      option (98a0ff0)
+    - md033: add allowed-inside and a no-markdown-equivalent
+      allowlist value (cb0ba51)
+    - name rules by their readable name in generated output
+      (3b196d8)
+    - md082: add allow-parent-headings to accept a heading with
+      subsections (662d570)
+    - md040: add custom-languages for fence labels Linguist does
+      not know (1eda9f4)
+    - md086: add rule for unclosed comment delimiters (6cbd27f)
+    - md057: report relative links that point at their own file
+      (7fd85fe)
+    - lsp: report inline config problems as diagnostics (20acc02)
+  * Fixed
+    - md063: name the documented style spellings when a style is
+      invalid (5476db8)
+    - md013: exempt an HTML-only line in a blockquote inside a list
+      item (98e5d34)
+    - md013: exempt nested standalone links (3be374e)
+    - md013: adjust paragraph reflow limit for common indent
+      (2f7c68e)
+    - md032: avoid warning on pseudo-list markers after recognized
+      lists (71e6ff5)
+    - md062: preserve parentheses in link destinations (8ec2eea)
+    - md051: resolve cross-file links whose path carries a query
+      string (8876d46)
+    - md051,md057: read frontmatter in documents that hold no body
+      links (5f35562)
+    - md040: take disabled fences out of the label vote by the
+      shared state (dd7011d)
+    - md040: honor a rule alias in a disable comment (7b86267)
+    - md040: reject custom-languages entries containing whitespace
+      (651a7ec)
+    - md040: stop normalizing fence labels to an invalid preferred
+      alias (7c10626)
+    - config: apply map-valued rule options set in rumdl.toml
+      (a8ff5b6)
+    - inline-config: ignore directives inside indented code blocks
+      (fee4d6f)
+    - config: warn when an inline enable targets a per-file-ignored
+      rule (3c3837f)
+    - lsp: measure diagnostic positions in UTF-16 code units
+      (3cb34b4)
+    - comments: read an unclosed comment in a container body, not
+      in code (85bd3f8)
+    - comments: hide the block an unclosed <!-- opens from every
+      rule (27c247c)
+    - md086: keep reporting an Obsidian opener below an unclosed
+      HTML one (a05dff9)
+    - md086: don't report a comment opener the other syntax hides
+      (4d589a1)
+    - comments: ignore Obsidian comment delimiters inside front
+      matter (441a0a4)
+    - comments: ignore comment delimiters inside front matter
+      (dded694)
+    - comments: end an HTML comment at the first --> after the
+      opener (274166a)
+    - md057: keep search paths a fallback when matching a link to
+      its own file (26e88cc)
+    - md057: anchor reference definition fixes to the link
+      destination (b930b71)
+    - lsp: use defaults when a workspace root's own scope cannot be
+      resolved (d1777ce)
+    - cli: count fixes a document enables with an inline
+      configure-file comment (f17a5eb)
+    - lsp: resolve a secondary workspace root's own configuration
+      (41b9a22)
+    - cli: count an unloadable subdirectory config as a config
+      warning (648aa72)
+    - md041: report the fix capability its opt-in fix enables
+      (ed30c9a)
+    - lsp: resolve workspace configuration from the workspace root
+      (8e0fcee)
+  * Performance
+    - md062,lint-context: scan link escapes in one forward pass
+      (8fff82b)
+
+-------------------------------------------------------------------
 Fri Jul 31 06:18:28 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.47:
