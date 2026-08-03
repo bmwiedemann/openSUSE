@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 03 05:55:40 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.2.31:
+  * build(deps): bump go.step.sm/crypto from 0.85.0 to 0.86.0
+    (#2362)
+  * Intern parsed repository packages (#2357)
+
+-------------------------------------------------------------------
 Fri Jul 31 05:53:20 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.2.30:
