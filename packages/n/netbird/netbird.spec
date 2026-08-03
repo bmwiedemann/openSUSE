@@ -17,7 +17,7 @@
 
 
 %ifnarch %{ix86}
-%bcond_without netbird_ui
+%bcond_with netbird_ui
 %else
 %bcond_with netbird_ui
 %endif
@@ -32,7 +32,7 @@
 %bcond_with stub_config
 
 Name:           netbird
-Version:        0.74.7
+Version:        0.76.1
 Release:        0
 Summary:        Mesh VPN based on WireGuard
 License:        AGPL-3.0-only AND BSD-3-Clause
@@ -43,6 +43,7 @@ Source2:        %{name}.service
 Source3:        %{name}-management.service
 Source4:        %{name}-signal.service
 Patch0:         service-install-cli-change.patch
+Patch1:         skip-ui.patch
 BuildRequires:  fdupes
 BuildRequires:  fish
 BuildRequires:  git-core
@@ -64,6 +65,9 @@ BuildRequires:  pkgconfig(appindicator3-0.1)
 BuildRequires:  pkgconfig(ayatana-appindicator3-0.1)
 %endif
 BuildRequires:  hicolor-icon-theme
+%endif
+%if %{without netbird_ui}
+Obsoletes:      netbird-applet < %{version}-%{release}
 %endif
 
 %description
@@ -198,6 +202,10 @@ Zsh command line completion support for %{name}-signal.
 %autosetup -p1 -a1
 
 %build
+%if %{without netbird_ui}
+rm -rf client/ui/
+%endif
+
 COMMIT_HASH="$(sed -n 's/commit: \(.*\)/\1/p' %_sourcedir/%{name}.obsinfo)"
 
 DATE_FMT="+%%Y-%%m-%%dT%%H:%%M:%%SZ"

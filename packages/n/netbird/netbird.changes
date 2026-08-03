@@ -1,4 +1,256 @@
 -------------------------------------------------------------------
+Fri Jul 31 21:01:50 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.76.1
+  - [client] Support Andorid session expiry handling by @pappz in
+    #6945
+  - [client] Stop and remove the daemon on netbird-ui cask
+    uninstall by @lixmal in #6977
+  - [misc] Update SECURITY.md by @mlsmaycon in #6981
+  - [misc] group x package updates and run weekly by @mlsmaycon in
+    #7000
+  - [client] Fix daemon lock order inversion between SetConfig and
+    login by @lixmal in #6978
+  - [client] Fix expression order in legacy nftables route rules by
+    @Optic00 in #7011
+  - [proxy] remove cluster tag from proxy metrics by
+    @pascal-fischer in #6985
+  - [misc] update contributing guide by @mlsmaycon in #7009
+  - [client] Restrict debug bundle log path and upload destinations
+    by @lixmal in #6975
+  - [management, proxy] Management-owned LLM pricing: file-backed
+    defaults + by @braginini in #6965
+
+-------------------------------------------------------------------
+Thu Jul 30 00:24:18 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.76.0
+  - [management] Force routing-peer DNS resolution for
+    reverse-proxy domain targets by @lixmal in #6872
+  - [management] Read reverse-proxy service and target columns in
+    Postgres path by @lixmal in #6886
+  - [client] Expose RenameProfile in the Android profile manager
+    binding by @pappz in #6926
+  - [client] Build UI release binaries with the production tag by
+    @pappz in #6898
+  - [client] Escape dots in interface names for sysctl
+    configuration by @stefan-fast in #6930
+  - [client] Serialize iOS tunnel reconfiguration callbacks by
+    @pappz in #6870
+  - [client] Unify route selection in the route manager by @pappz
+    in #6928
+  - [client] parse NB_LAZY_CONN_INACTIVITY_THRESHOLD as a Go
+    duration by @riccardomanfrin in #6947
+  - [client] Export peer details for Android by @pappz in #6925
+  - [management] explicit accountID check when deleting a user by
+    @pascal-fischer in #6944
+  - [infrastructure] Deprecate legacy Dex and Zitadel
+    getting-started scripts by @TechHutTV in #6952
+  - [client] Fix UI crash on Windows builds without dark-mode
+    support by @lixmal in #6958
+  - [signal] make pprof configurable by @pascal-fischer in #6963
+  - [client] Authorize daemon IPC callers by their local identity
+    by @lixmal in #6967
+
+-------------------------------------------------------------------
+Thu Jul 30 00:23:07 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.75.1
+  - Agent Network
+    - Added prompt cache token and cost accounting to Agent Network
+      usage. #6900
+    - Added support for Claude Opus 5. #6895
+    - Scoped Agent Network model allowlists per policy, group, and
+      provider. #6905
+  - Client Improvements
+    - Reconcile routed AllowedIPs when a lazy connection becomes
+      idle. #6863
+    - Fetch FreeBSD port files from the GitHub mirror instead of
+      cgit. #6880
+    - Restored the missing backup.Reset behavior. #6883
+    - Made Test_ConnectPeers deterministic under Docker/eBPF kernel
+      and Darwin CI. #6884
+    - Export agent version information for iOS. #6918
+    - Use platform-specific installer URLs for manual update
+      downloads. #6922
+    - Exit the GUI immediately when the Windows session ends. #6878
+    - Fixed stale routing peers after removing overlapping-prefix
+      networks. #6799
+    - Added ReapplyMatching support to the dedicated
+      AllowedIPsRefCounter. #6935
+  - Infrastructure & Miscellaneous
+    - Restored the rootless-latest Docker image tag. #6914
+
+-------------------------------------------------------------------
+Thu Jul 30 00:20:06 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.75.0
+  New Feature: Redesigned Desktop Client
+  This release ships a complete rewrite of the desktop client. We
+  went ahead and replaced the old Fyne-based tray application with
+  a new Wails v3 app backed by a React and TypeScript frontend, and
+  it is a massive upgrade. You get a proper main connection view,
+  an exit-node switcher, a networks and peers browser with detail
+  panels, profile management, full settings, debug-bundle creation,
+  and a first-run welcome flow, all in one place instead of buried
+  in a tray menu. #6473 by @pappz and @heisbrot
+
+  The new UI is also translated into 10 languages now, and session
+  handling got a lot smarter, so you actually know when your
+  session is about to expire instead of finding out the hard way.
+  Do note that launch-on-login is now enabled by default on fresh
+  GUI installs, so if you manage devices through MDM, the
+  disableAutostart setting is enforced on every launch to keep that
+  under your control.
+  
+  - Rebuilt the desktop client as a Wails v3 application with a
+    React + TypeScript frontend, replacing the Fyne UI. #6473
+  - Added internationalization with 10 locales (English, German,
+    Spanish, French, Hungarian, Italian, Japanese, Portuguese,
+    Russian, and Simplified Chinese), shared between the tray and
+    the frontend. #6473, #6790 by @s-shimizu-clpl
+  - Added a new system tray with per-platform theme-aware icons,
+    including a native XEmbed host and theme watcher on Linux.
+    #6473
+  - Improved session handling with an auth session watcher, pending
+    login flow, session-expiration dialog and tray notifications,
+    and netbird login improvements. #6473
+  - Extended the daemon API with status stream subscription, an
+    event stream, networks and exit-node selection endpoints, and
+    richer full status, with probe throttling to protect the daemon
+    from UI-driven request storms. #6473
+  - Enabled launch-on-login by default on fresh GUI installs,
+    managed through the daemon as the single source of truth (HKCU
+    on Windows). #6738 by @mlsmaycon
+  - Enforced MDM disableAutostart on every GUI launch, not just
+    fresh installs. #6782 by @riccardomanfrin
+
+  Learn more:
+  - Desktop app overview:
+    https://docs.netbird.io/client/desktop-app
+  - Profiles: https://docs.netbird.io/client/profiles
+  - Deep dive on the new app:
+    https://netbird.io/knowledge-hub/netbird-v0-75-new-desktop-app
+    
+  - What's Changed
+    - Desktop Client Improvements
+      - Made the client connect immediately on profile selection,
+        except while managing profiles. #6838 by @pappz
+      - Brought the connection up in Go after SSO login for a
+        faster, more reliable post-login connect. #6744 by
+        @mlsmaycon
+      - Kept the session deadline visible across reconnects. #6847
+        by @pappz
+      - Fixed the browser dialog not closing during the
+        renew-session flow. #6745 by @heisbrot
+      - Disconnected the daemon on GUI quit via an async Down call.
+        #6796 by @pappz
+      - Restored residual state in foreground mode before login.
+        #6707 by @dfry
+      - Clarified the outdated client overlay wording. #6718 by
+        @heisbrot
+      - Used menu-bar wording on the macOS welcome screen. #6810 by
+        @heisbrot
+      - Added SSO login flow timing instrumentation. #6717 by
+        @mlsmaycon
+      - Updated Wails to v3.0.0-alpha2.117. #6837 by @pappz
+    - Client improvements
+      - Added a JSON gateway for the NetBird daemon, exposing the
+        daemon API over HTTP/JSON. #6272 by @jnfrati
+      - Introduced client-side event aggregation. #6627 by
+        @dmitri-netbird
+      - Offloaded client config generation to the client, reducing
+        work on the management server. #6711 by @dmitri-netbird
+      - Warmed lazy connections from the DNS resolver so
+        lazily-connected peers come up faster. #6854 by @mlsmaycon
+      - Fixed forwarder peers never being excluded from lazy
+        connections. #6674 by @riccardomanfrin
+      - Fixed WGWatcher silently failing to restart on fast
+        disconnect/reconnect. #6664 by @riccardomanfrin
+      - Cleared stale UDP checksums in the eBPF XDP proxy after
+        port rewrite. #6861 by @lixmal
+      - Raised the relay early-message buffer cap to 10,000 to
+        avoid dropping relayed handshakes. #6752 by
+        @riccardomanfrin
+      - Fixed a nil-context panic in the iOS dynamic route
+        resolver. #6848 by @pappz
+      - Fixed a DNS probe listener panic on unparseable local
+        addresses. #6797 by @pappz
+      - Fixed the browser (WASM) relay WebSocket close and raised
+        the RDP dial timeout. #6684 by @lixmal
+      - Included system events in status conversion. #6746 by
+        @lixmal
+      - Refreshed WireGuard stats in mobile debug bundles. #6814 by
+        @pappz
+      - Distinguished empty vs. corrupt state in debug diagnostics.
+        #6816 by @pappz
+    - Management Improvements
+      - Added the dashboard_features account setting #6742 and the
+        agent_network_only account setting #6736, with
+        agent_network_only requiring
+        dashboard_features.agent_network to be enabled #6750 — all
+        by @mlsmaycon
+      - Added traffic filters for source and destination ID. #6697
+        by @pascal-fischer
+      - Allowed disabling the device code flow when using Dex.
+        #6809 by @pascal-fischer
+      - Propagated auth grant types for the combined server. #6817
+        by @pascal-fischer
+      - Built routes for the peer cache on network map components
+        #6780 and added component types #6866 — both by
+        @pascal-fischer
+      - Fixed fetching of missing settings in the GetAccount call.
+        #6800 by @dmitri-netbird
+      - Fixed a duplicate operationId in the OpenAPI spec. #6734 by
+        @CoderSufiyan
+      - Enabled pprof via an environment variable. #6778 by
+        @pascal-fischer
+      - Added logging to ephemeral peer deletion. #6747 by
+        @pascal-fischer
+    - Agent Network
+      - Added Kimi (Moonshot AI) to the provider catalog. #6853 by
+        @mlsmaycon
+      - Added Bedrock cost-allocation metadata plus a per-provider
+        metadata_disabled option. #6791 by @mlsmaycon
+      - Matched Bedrock provider models against the normalized
+        request model. #6773 by @mlsmaycon
+      - Probed the agent-network endpoint with a GET instead of
+        getent. #6867 by @mlsmaycon
+      - Fixed the proxy multi-stage Docker build. #6864 by
+        @mlsmaycon
+    - Relay Improvements
+      - Trusted X-Real-Ip headers only from configured trusted
+        proxies. #6833 by @pappz
+      - Removed the deprecated Hello handshake and gob token
+        decode. #6783 by @lixmal
+      - Self-Hosting Improvements
+      - Added a unified admin CLI for self-hosted helpers. #6507 by
+        @jnfrati
+      - Simplified the enterprise bootstrap. #6869 by @bcmmbaga
+    - Internal, CI, and Docs
+      - Copied the trustedproxy package into the Docker build
+        context. #6851 by @pappz
+      - Ran pnpm install with --ignore-scripts in frontend CI.
+        #6859 by @pappz
+      - Re-generated gateway proto files. #6696 by @jnfrati
+      - Fixed flaky tests in account settings and event aggregation
+        #6811, #6710 by @dmitri-netbird, and in the peer-connect
+        handshake wait #6871 by @riccardomanfrin
+      - Updated the Agent Network readme. #6699 by @braginini
+- disable UI for now and obsolete it in the command line client:
+  the switch to wails/react/pnpm makes building the UI a real chore
+- add skip-ui.patch to patch out references to the UI code for now.
+  This patch needs to be applied before vendoring and during the
+  build. For vendoring we need to run:
+
+  rm -rv client/ui
+  patch -p1 < ../skip-ui.patch
+  go mod vendor
+  tar --zstd -cvf ../vendor.tar.zst vendor
+  rm -rv vendor/
+  git reset --hard
+
+-------------------------------------------------------------------
 Fri Jul 17 16:31:16 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 0.74.7
