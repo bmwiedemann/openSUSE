@@ -1,4 +1,627 @@
 -------------------------------------------------------------------
+Fri Jul 31 20:58:55 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 34.0.0:
+  * Automatically label issues with OS extracted from description
+    (gh#nextcloud/desktop#9479)
+  * Drop macOS 12 Support
+    (gh#nextcloud/desktop#9477)
+  * fix: show paused status when account has no sync sources
+    (gh#nextcloud/desktop#9473)
+  * chore(i18n): id -> ID
+    (gh#nextcloud/desktop#9476)
+  * Server Actions Integration for File Provider Extension
+    (gh#nextcloud/desktop#9469)
+  * Consolidated Xcode Workspace
+    (gh#nextcloud/desktop#9474)
+  * fix: use text emoji replacements to avoid creating
+    duplicate labels
+    (gh#nextcloud/desktop#9487)
+  * chore: update Craft and craft cache
+    (gh#nextcloud/desktop#9494)
+  * fix(macOS): Defined PRODUCT_BUNDLE_IDENTIFIER for FinderSync
+    (gh#nextcloud/desktop#9498)
+  * chore(macOS): Updated Xcode Project Settings
+    (gh#nextcloud/desktop#9499)
+  * fix(macOS): macdeployqt now finds libvpx
+    (gh#nextcloud/desktop#9497)
+  * fix(macOS): Resolved warning about deprecated ld_classic
+    (gh#nextcloud/desktop#9495)
+  * fix(macOS): Resolved Some Xcode Compiler Warnings
+    ((gh#nextcloud/desktop#9500)
+  * fix(e2ee): ensure PIN input dialog is top most window
+    (gh#nextcloud/desktop#9490)
+  * chore(i18n): Add context for translators
+    (gh#nextcloud/desktop#9492)
+  * chore(deps): bump actions/stale from 10.1.1 to 10.2.0
+    (gh#nextcloud/desktop#9493)
+  * fix: enhanced detail in "Stale DB entry" log entry
+    (gh#nextcloud/desktop#9483)
+  * fix(macOS): skip build-tree RPATH to prevent
+    install_name_tool conflict
+    (gh#nextcloud/desktop#9509)
+  * fix(macOS): Remove TARGETED_DEVICE_FAMILY
+    (gh#nextcloud/desktop#9510)
+  * fix: remove hard-coded app name from sync folder path
+    (gh#nextcloud/desktop#9515)
+  * Fix #7009: Remove leftover .msi and msi.log after update 
+    (gh#nextcloud/desktop#8980)
+  * fix: disable server version check (<7.0) 
+    (gh#nextcloud/desktop#9475)
+  * feat(macOS): QtWebEngine Switch
+    (gh#nextcloud/desktop#9517)
+  * Fix FinderSync Extension
+    (gh#nextcloud/desktop#9528)
+  * fix(win32): only increase ACL size if a new ACE is about
+    to be added
+    (gh#nextcloud/desktop#9491)
+  * chore: test upload of a locked file inside a remote
+    deleted folder
+    (gh#nextcloud/desktop#9336)
+  * feature: new settings UI 
+    (gh#nextcloud/desktop#9419)
+  * Bugfix/e2ee fixes for hardware certificate end to end
+    encryption
+    (gh#nextcloud/desktop#9514)
+  * test(integration): add tests for FileActionsModel. 
+    (gh#nextcloud/desktop#9518)
+  * fix(macOS): fix crash for FileProviderSettings
+    (gh#nextcloud/desktop#9540)
+  * fix: load app icons for external sites app 
+    (gh#nextcloud/desktop#9542)
+  * fix: suppress duplicate "The log output cannot be saved"
+    popups
+    (gh#nextcloud/desktop#9539)
+  * Regain Synchronization Folder Access
+    (gh#nextcloud/desktop#9556)
+  * Note about missing End-to-End Encryption Support in File
+    Provider Extension
+    (gh#nextcloud/desktop#9561)
+  * chore(deps): bump actions/upload-artifact from 6.0.0 to 7.0.0
+    (gh#nextcloud/desktop#9554)
+  * fix(accountmanager): check existing account proxy type
+    setting.
+    (gh#nextcloud/desktop#9551)
+  * fix(file-provider): Fetch share options by user ID not
+    user name (#9074)
+    (gh#nextcloud/desktop#9579)
+  * Improve error handling and clean menu texts
+    (gh#nextcloud/desktop#9585)
+  * feat(e2ee): add basic support for e2ee metadata format 2.1
+    (gh#nextcloud/desktop#9571)
+  * fix(e2ee/vfs): disable on-demand population of encrypted
+    folders (gh#nextcloud/desktop#9570)
+  * Bugfix/migrate user encryption certificate
+    (gh#nextcloud/desktop#9568)
+  * Bugfix/better handling of locked files during upload
+    (gh#nextcloud/desktop#9566)
+  * feat(syncengine): fail and restart the sync if discovery
+    is suspicious
+    (gh#nextcloud/desktop#9572)
+  * fix(e2ee): allow read of metadata 1.2 again
+    (gh#nextcloud/desktop#9544)
+  * Handle macOS alias files in File Provider Extension
+    (gh#nextcloud/desktop#9445)
+  * Sync Status on App Launch
+    (gh#nextcloud/desktop#9595)
+  * Updated File Provider Extension Translations
+    (gh#nextcloud/desktop#9596)
+  * chore(deps): bump cpp-linter/cpp-linter-action from 2.16.7
+    to 2.17.0
+    (gh#nextcloud/desktop#9583)
+  * fix: Robustly parse file action responses and handle
+    tooltip/URL children 
+    (gh#nextcloud/desktop#9547)
+  * fix(propagateuploadng): do not encode davUrl
+    (gh#nextcloud/desktop#9588)
+  * Refactored change enumeration completion
+    (gh#nextcloud/desktop#9601)
+  * Bugfix/use display name for e2ee shares
+    (gh#nextcloud/desktop#9605)
+  * Refine new settings dialog
+    (gh#nextcloud/desktop#9599)
+  * Improve integration.
+    (gh#nextcloud/desktop#9617)
+  * fix(i18n): let Qt handle plural forms
+    (gh#nextcloud/desktop#9621)
+  * fix(file-provider): Working Set Change Enumeration
+    (gh#nextcloud/desktop#9625)
+  * Sanitized file provider UI extension string catalog
+    (gh#nextcloud/desktop#9633)
+  * fix(filesystem): deal with win32 long paths when recursively
+    removing folders
+    (gh#nextcloud/desktop#9634)
+  * Set folders writable if remote perms require it, recurse
+    into subdirs if etag and remoteperms differ
+    (gh#nextcloud/desktop#9637)
+  * chore(network): enable again our request timeout feature
+    (gh#nextcloud/desktop#9646)
+  * fix(read-only): make the parent folder writable before
+    deleting a file
+    (gh#nextcloud/desktop#9655)
+  * feature(icon/ai): improved Nextcloud Assistant icon 
+    (gh#nextcloud/desktop#9658)
+  * fix(macOS): Fix developer build
+    (gh#nextcloud/desktop#9667)
+  * chore(i18n): Correct text case in error message label
+    (gh#nextcloud/desktop#9672)
+  * chore(l10n): Update QLabel text property to not translate
+    (gh#nextcloud/desktop#9673)
+  * fix(settings): add missing endGroup() in
+    Folder::removeFromSettings
+    (gh#nextcloud/desktop#9607)
+  * Replace UNIX sockets with XPC on macOS
+    (gh#nextcloud/desktop#9463)
+  * Remove Debian build
+    (gh#nextcloud/desktop#9700)
+  * chore(deps): bump maxim-lobanov/setup-xcode from 1.6.0
+    to 1.7.0
+    (gh#nextcloud/desktop#9669)
+  * Fix build with Xcode 26.4
+    (gh#nextcloud/desktop#9706)
+  * fix(macOS): hide dock icon when closing settings with ⌘+W
+    (gh#nextcloud/desktop#9702)
+  * chore: improve one translated string
+    (gh#nextcloud/desktop#9692)
+  * fix(asyncimageresponse): enhance check for received SVG
+    response 
+    (gh#nextcloud/desktop#9697)
+  * fix(gui/settings): use different palette colour for 
+    backgrounds 
+    (gh#nextcloud/desktop#9703)
+  * fix(integration): only call parseEndpoints if fileId is
+    not empty. 
+    (gh#nextcloud/desktop#9701)
+  * chore(legalnotice): update copyright year 
+    (gh#nextcloud/desktop#9717)
+  * chore(deps): bump actions/cache from 5.0.3 to 5.0.4
+    (gh#nextcloud/desktop#9668)
+  * fix(macOS): Extension Display Names
+    (gh#nextcloud/desktop#9723)
+  * Improve Sandbox Migration Experience
+    (gh#nextcloud/desktop#9720)
+  * fix(windows/vfs): do not create DB record for invalid
+    virtual items 
+    (gh#nextcloud/desktop#9737)
+  * fix(windows/vfs): automated test for Windows VFS case
+    clash items
+    (gh#nextcloud/desktop#9741)
+  * fix(macOS): Fix background update check incorrectly calling
+    Sparkle when automaticallyChecksForUpdates is NO
+    (gh#nextcloud/desktop#9744)
+  * fix(macOS): Sparkle Sandboxing
+    (gh#nextcloud/desktop#9752)
+  * Chore/remove compilation warning qt 6.10 
+    (gh#nextcloud/desktop#9749)
+  * chore: systemd service is now wanted by graphical target
+    (gh#nextcloud/desktop#9758)
+  * fix(macOS): Set app extension version information correctly
+    (gh#nextcloud/desktop#9766)
+  * fix(macOS): Launch on Login
+    (gh#nextcloud/desktop#9773)
+  * fix(macOS): macOS 13 Ventura Compatibility
+    (gh#nextcloud/desktop#9778)
+  * chore(ci): update images
+    (gh#nextcloud/desktop#9786)
+  * chore: PPA Debian package type is a community packaging
+    (gh#nextcloud/desktop#9790)
+  * fix(gui): use native QLineEdit styling for server address
+    (gh#nextcloud/desktop#9801)
+  * fix(windows/vfs): ensure critical logs are going to be
+    produced 
+    (gh#nextcloud/desktop#9800)
+  * Bugfix/remove useless output debug at start
+    (gh#nextcloud/desktop#9792)
+  * chore(deps): bump cpp-linter/cpp-linter-action from 2.17.0
+    to 2.17.1 
+    (gh#nextcloud/desktop#9799)
+  * fix: remove unused COPY_SECUREFILEDROP_LINK socket command
+    (gh#nextcloud/desktop#9808)
+  * fix(folderman): disconnect slotFolderCanSyncChanged when
+    unloading folder. 
+    (gh#nextcloud/desktop#9813)
+  * Remove Windows Shell/Explorer pinning fallback commands from
+    SocketApi 
+    (gh#nextcloud/desktop#9819)
+  * fix(macOS): Open app settings on necessity of sandbox
+    folder migration
+    (gh#nextcloud/desktop#9830)
+  * Fix File Provider Domain Account Setup
+    (gh#nextcloud/desktop#9838)
+  * fix(macOS): Word wrap in sandbox migration error display
+    (gh#nextcloud/desktop#9841)
+  * keep sync dylib install_name as @rpath through cmake --install
+    (gh#nextcloud/desktop#9844)
+  * fix: use openBrowser to open URLs
+    (gh#nextcloud/desktop#9849)
+  * Store credentials provided through command line in macOS
+    keychain
+    (gh#nextcloud/desktop#9847)
+  * chore(deps): bump actions/upload-artifact from 7.0.0 to 7.0.1
+    (gh#nextcloud/desktop#9834)
+  * chore(deps): bump actions/github-script from 8.0.0 to 9.0.0
+    (gh#nextcloud/desktop#9833)
+  * chore(deps): bump actions/cache from 5.0.4 to 5.0.5
+    (gh#nextcloud/desktop#9832)
+  * chore(deps): bump cpp-linter/cpp-linter-action from 2.17.1
+    to 2.18.0 
+    (gh#nextcloud/desktop#9831)
+  * feature(file-provider): Open folder tray window header button
+    (gh#nextcloud/desktop#9857)
+  * chore(i18n): Change group folder to team folder 
+    (gh#nextcloud/desktop#9866)
+  * feat(loginFlow): delay initialization of web view page until
+    needed (gh#nextcloud/desktop#9874)
+  * Push File Ignore List
+    (gh#nextcloud/desktop#9884)
+  * fix(sharing): parse received timestamp from expiration date 
+    (gh#nextcloud/desktop#9882)
+  * Fix "Always keep downloaded"
+    (gh#nextcloud/desktop#9890)
+  * Prevent unnecessary logging about an inexistent trash
+    container item in database
+    (gh#nextcloud/desktop#9897)
+  * Replaced decoration asset for items to keep downloaded
+    (gh#nextcloud/desktop#9900)
+  * chore: uses known working zlib 1.3.1 release 
+    (gh#nextcloud/desktop#9905)
+  * Run time switch for debug logging
+    (gh#nextcloud/desktop#9904)
+  * fix(cfapi): avoid creation of db records if CfExecute failed 
+    (gh#nextcloud/desktop#9912)
+  * fix(upload): skip locked files during upload to avoid errors
+    (gh#nextcloud/desktop#9810)
+  * chore(github): enhance pull request template with a checklist.
+    (gh#nextcloud/desktop#9925)
+  * chore: update CODEOWNERS file. 
+    (gh#nextcloud/desktop#9926)
+  * chore(i18n): Added nbsp before ellipsis 
+    (gh#nextcloud/desktop#9943)
+  * fix(translation): string for time display 
+    (gh#nextcloud/desktop#9960)
+  * fix(win32): unlock file after acquiring a lock 
+    (gh#nextcloud/desktop#9962)
+  * Remove obsolete launch agent after installation
+    (gh#nextcloud/desktop#9976)
+  * Exclude Bundles and Packages from Synchronization
+    (gh#nextcloud/desktop#9971)
+  * fix: settings dialog minimum size 
+    (gh#nextcloud/desktop#9982)
+  * fix(editLocally): evaluate lock-record DB call outside
+    Q_ASSERT 
+    (gh#nextcloud/desktop#9973)
+  * Fix File Provider Item Eviction
+    (gh#nextcloud/desktop#9981)
+  * fix logger for stdout 
+    (gh#nextcloud/desktop#9975)
+  * Fix Open Local Folder
+    (gh#nextcloud/desktop#10008)
+  * Apply eager content policy also to first item in nested
+    hierarchies
+    (gh#nextcloud/desktop#10009)
+  * fix: Refactor visitedDirectory handling in
+    MaterializedEnumerationObserver 
+    (gh#nextcloud/desktop#10011)
+  * perf(rename): cache fileExists results in 
+    PropagateLocalRename::start
+    (gh#nextcloud/desktop#9999)
+  * Check Quota before File Provider Item Upload
+    (gh#nextcloud/desktop#10014)
+  * fix: remove admin recall feature 
+    (gh#nextcloud/desktop#10017
+  * Prevent duplicate database records for the same file provider
+    item
+    (gh#nextcloud/desktop#10020)
+  * Disable file provider on macOS 13 Ventura
+    (gh#nextcloud/desktop#10021)
+  * fix(file-provider): detect lock changes during working
+    set enumeration. 
+    (gh#nextcloud/desktop#10002)
+  * Fix Content Policy Inheritance for New Items
+    (gh#nextcloud/desktop#10038)
+  * fix(logs): change update channel log severity to info 
+    (gh#nextcloud/desktop#10037)
+  * Restored and updated (some) file provider translations
+    (gh#nextcloud/desktop#10041)
+  * Preserve local creation and modification dates
+    (gh#nextcloud/desktop#10044)
+  * fix(discovery): do not sync shares with "Allow download
+    and sync" unset
+    (gh#nextcloud/desktop#9963)
+  * fix: double background in settings navigation
+    (gh#nextcloud/desktop#10046)
+  * Reconciled file provider domain names
+    (gh#nextcloud/desktop#10051)
+  * fix: use branded icons also for dev builds 
+    (gh#nextcloud/desktop#10050)
+  * Enable "Sync now" button
+    (gh#nextcloud/desktop#10055)
+  * Open in browser
+    (gh#nextcloud/desktop#10057)
+  * Fixup for pull request #10057
+    (gh#nextcloud/desktop#10059)
+  * Copy internal link
+    (gh#nextcloud/desktop#10060)
+  * Pulled in new file provider translations
+    (gh#nextcloud/desktop#10061)
+  * New remote items inherit content policy
+    (gh#nextcloud/desktop#10063)
+  * feat: tray redesign 
+    (gh#nextcloud/desktop#9977)
+  * Updated documentation for contributors on macOS
+    (gh#nextcloud/desktop#10083)
+  * chore(deps): bump webiny/action-conventional-commits from
+    1.3.1 to 1.4.2 
+    (gh#nextcloud/desktop#9922)
+  * chore(deps): bump actions/stale from 10.2.0 to 10.3.0
+    (gh#nextcloud/desktop#10077)
+  * fix(lscoljob): disable Qt's decompression check to allow
+    listing of really large folders again 
+    (gh#nextcloud/desktop#9988)
+  * fix(tray): show correct sync status icon in macOS account
+    popup. 
+    (gh#nextcloud/desktop#10094)
+  * fix(logs): further clarify update channel selection logging
+    and logic 
+    (gh#nextcloud/desktop#10058)
+  * Re-enumerate file provider items after app updates
+    (gh#nextcloud/desktop#10068)
+  * fix(networkjobs): move processEvents after reply reads in
+    LsColJob 
+    (gh#nextcloud/desktop#10093)
+  * chore: update CONTRIBUTING.md. 
+    (gh#nextcloud/desktop#10105)
+  * feat(UI): Account wizard redesign 
+    (gh#nextcloud/desktop#10030)
+  * chore(deps): bump actions/checkout from 6.0.2 to 6.0.3 
+    (gh#nextcloud/desktop#10107)
+  * fix: evaluate notify-push ids and only start sync if the ids
+    are know 
+    (gh#nextcloud/desktop#10104)
+  * feat(agents): add some more details on what we want for
+    c++ code 
+    (gh#nextcloud/desktop#10091)
+  * Updated API calls NextcloudKit dependency to breaking changes
+    in 7.3.3
+    (gh#nextcloud/desktop#10109)
+  * fix: do not trigger false remote wipe message 
+    (gh#nextcloud/desktop#10110)
+  * fix: Add missing icons to buttons on Plasma 
+    (gh#nextcloud/desktop#10121)
+  * fix(agents): correct from AGPL to GPL. 
+    (gh#nextcloud/desktop#10124)
+  * fix: Account Wizard UX fixes 
+    (gh#nextcloud/desktop#10114)
+  * chore(readme): add link to the CONTRIBUTING.md. 
+    (gh#nextcloud/desktop#10126)
+  * Updated macOS App Icon
+    (gh#nextcloud/desktop#10113)
+  * fix(filedetails): use correct path for fetching file tags 
+    (gh#nextcloud/desktop#10067)
+  * fix(common): preserve Windows Explorer custom folder icons
+    during migration. 
+    (gh#nextcloud/desktop#9872)
+  * fix(macOS): fall back to SVG + ECM pipeline for branded builds
+    (gh#nextcloud/desktop#10141)
+  * Fix clean build by conditionally signing file provider
+    extensions(gh#nextcloud/desktop#10142)
+  * fix(ci): Use macOS 26 runners for GitHub actions.
+    (gh#nextcloud/desktop#10144)
+  * feat(UI): Updated settings dialog UI 
+    (gh#nextcloud/desktop#10031)
+  * fix: reduce logging 
+    (gh#nextcloud/desktop#10152)
+  * fix: do not double translate string 
+    (gh#nextcloud/desktop#10149)
+  * fix: AppToken was not removed 
+    (gh#nextcloud/desktop#10153)
+  * fix(gui): add maybe_unused attribute to parameter. 
+    (gh#nextcloud/desktop#10151)
+  * chore(i18n): Delete .tx/nextcloud.client-desktop directory 
+    (gh#nextcloud/desktop#10155)
+  * fix: updated link to instructions for KDE Craft. 
+    (gh#nextcloud/desktop#10161)
+  * fix(l10n): Update translations from Transifex
+    (gh#nextcloud/desktop#10158)
+  * fix: add direct log when folder watcher detects changes
+    (gh#nextcloud/desktop#10145)
+  * feat: update craft configuration for next release
+    (gh#nextcloud/desktop#10166)
+  * fix(file-provider): use slash prefix for child item queries.
+    (gh#nextcloud/desktop#10130)
+  * Replace Qt Multimedia with a native audio abstraction
+    (gh#nextcloud/desktop#10098)
+  * Bugfix/noid/single app on linux using d bus 
+    (gh#nextcloud/desktop#10088)
+  * fix(file-provider): prevent data loss when parent folder moves
+    during sync. 
+    (gh#nextcloud/desktop#10134)
+  * [stable-34.0] fix(file-provider): invalidate lock tokens when
+    file paths change. 
+    (gh#nextcloud/desktop#10185)
+  * [stable-34.0] Fix initial menu bar extra sync status 
+    (gh#nextcloud/desktop#10191)
+  * [stable-34.0] chore(macOS): Removed obsolete SwiftNIO 
+    dependency 
+    (gh#nextcloud/desktop#10194)
+  * [stable-34.0] fix(#10177): Unblock menu bar extra 
+    (gh#nextcloud/desktop#10195)
+  * [stable-34.0] Movable wizard window 
+    (gh#nextcloud/desktop#10197)
+  * [stable-34.0] fix(gui): prevent nullptr dereference when VFS
+    mode is unavailable (gh#nextcloud/desktop#10199)
+  * [stable-34.0] fix(vfs/windows): use proper relative local path
+    for DB records 
+    (gh#nextcloud/desktop#10207)
+  * [stable-34.0] chore(agents): add guideline for verifiable
+    claims in contributions. 
+    (gh#nextcloud/desktop#10201)
+  * [stable-34.0] Relabel "virtual files" as "File Provider" 
+    (gh#nextcloud/desktop#10209)
+  * [stable-34.0] fix(libsync): folder move or rename data loss. 
+    (gh#nextcloud/desktop#10218)
+  * [stable-34.0] fix: build error with OpenSSL 4.0 
+    (gh#nextcloud/desktop#10228)
+  * [stable-34.0] fix(#10216): Prevent app nap and silent kill
+    (gh#nextcloud/desktop#10231)
+  * [stable-34.0] fix(UI): read OCC_UPDATE_URL only for dev builds
+    (gh#nextcloud/desktop#10240)
+  * [stable-34.0] feat(tray): move logout and remove to settings
+    menu 
+    (gh#nextcloud/desktop#10239)
+  * [stable-34.0] fix(gui): remove gap after status messages 
+    (gh#nextcloud/desktop#10247)
+  * [stable-34.0] Bugfix/end to end encryption 
+    (gh#nextcloud/desktop#10249)
+  * [stable-34.0] Correct Remote Change Propagation to File
+    Provider Framework 
+    (gh#nextcloud/desktop#10254)
+  * [stable-34.0] Support Adobe Lock Files 
+    (gh#nextcloud/desktop#10265)
+  * [stable-34.0] Confine Enumeration (master) 
+    (gh#nextcloud/desktop#10267)
+  * [stable-34.0] fix: parsing ] in ignore list in File Provider
+    correctly 
+    (gh#nextcloud/desktop#10270)
+  * [stable-34.0] Remove QtWebEngine 
+    (gh#nextcloud/desktop#10278)
+  * [stable-34.0] Fix crash due to
+    FILEPROVIDER_OBSERVER_TOO_MANY_ITEMS 
+    (gh#nextcloud/desktop#10285)
+  * [stable-34.0] fix(cmd,csync): don't silently ignore a missing
+    --exclude file 
+    (gh#nextcloud/desktop#10291)
+  * [stable-34.0] fix(logs): prints the Qt platform name
+    at startup 
+    (gh#nextcloud/desktop#10287)
+  * [stable-34.0] Prevent crash on wake (Ticket#96101255) 
+    (gh#nextcloud/desktop#10294)
+  * [stable-34.0] chore: disable building with Qt WebEngine in
+    craft settings 
+    (gh#nextcloud/desktop#10296)
+  * [stable-34.0] "Edit locally" in Web → Reveal in Finder
+    on macOS 
+    (gh#nextcloud/desktop#10305)
+  * [stable-34.0] feature(signup): migrate simple-signup to
+    standard browser (gh#nextcloud/desktop#10311)
+  * [stable-34.0] Bugfix/noid/fix account provisioning 
+    (gh#nextcloud/desktop#10319)
+  * [stable-34.0] feat(tray): Migrate TrayWindow to the new tray
+    user menu (gh#nextcloud/desktop#10321)
+  * [stable-34.0] Support Adobe InDesign safe save 
+    (gh#nextcloud/desktop#10324)
+  * [stable-34.0] fix: translation strings 
+    (gh#nextcloud/desktop#10330)
+  * [stable-34.0] fix: load existing accounts before creating
+    a new one 
+    (gh#nextcloud/desktop#10327)
+  * [stable-34.0] fix: Don't recursively call processEvents 
+    (gh#nextcloud/desktop#10333)
+  * [stable-34.0] fix(UI): validate E2EE file names 
+    (gh#nextcloud/desktop#10337)
+  * [stable-34.0] fix(exclude): avoid trying to read patterns
+    from file when reading failed 
+    (gh#nextcloud/desktop#10341)
+  * [stable-34.0] Enable removal of downloaded items on a folder
+    (gh#nextcloud/desktop#10342)
+  * [stable-34.0] fix: "dismiss" string and showing of chat
+    message in tray preview 
+    (gh#nextcloud/desktop#10346)
+  * [stable-34.0] fix(TransifexStringCatalogSanitizer): Hardening
+    to prevent data loss 
+    (gh#nextcloud/desktop#10347)
+  * [stable-34.0] feature: add search dialog to new tray menu 
+    (gh#nextcloud/desktop#10349)
+  * [stable-34.0] fix: do not allow scheme change for push
+    notifications 
+    (gh#nextcloud/desktop#10352)
+  * [stable-34.0] Feature/governance labels integration 
+    (gh#nextcloud/desktop#10353)
+  * [stable-34.0] chore: cleanup some unused capability/sharing
+    methods (gh#nextcloud/desktop#10355)
+  * [stable-34.0] perf(activity): cache singleton pointers and
+    avoid string concat in hot path 
+    (gh#nextcloud/desktop#10358)
+  * [stable-34.0] fix(tray): Fix macOS material choice for tray
+    menu background 
+    (gh#nextcloud/desktop#10364)
+  * [stable-34.0] Improve FinderSync Extension handling 
+    (gh#nextcloud/desktop#10368)
+  * [stable-34.0] feat(governance): update governance API for
+    latest changes 
+    (gh#nextcloud/desktop#10383)
+  * [stable-34.0] Check for file provider upload size mismatch
+    (gh#nextcloud/desktop#10384)
+  * [stable-34.0] chore: @claucambra is a new code owner
+    (gh#nextcloud/desktop#10386)
+  * [stable-34.0] Improved upload chunk integrity 
+    (gh#nextcloud/desktop#10387)
+  * [stable-34.0] Improved file provider switch user experience
+    (gh#nextcloud/desktop#10388)
+  * [stable-34.0] refactor(gui/search): build as a proper QML
+    module 
+    (gh#nextcloud/desktop#10391)
+  * [stable-34.0] Detect upload conflicts with an If-Match
+    precondition 
+    (gh#nextcloud/desktop#10394)
+  * [stable-34.0] feat: Handle AutoCAD lock files in classic sync
+    (gh#nextcloud/desktop#10396)
+  * [stable-34.0] feat(fileprovider): Handle AutoCAD lock files
+    (gh#nextcloud/desktop#10397)
+  * [stable-34.0] chore: Add performance test/results requirement
+    for perf PRs in PR template 
+    (gh#nextcloud/desktop#10401)
+  * [stable-34.0] feat: Handle Adobe lock files
+    (InDesign, Premiere) in classic sync 
+    (gh#nextcloud/desktop#10402)
+  * [stable-34.0] fix(folderwatcher): ignore events for stale
+    inotify watch descriptors 
+    (gh#nextcloud/desktop#10403)
+  * [stable-34.0] fix(macOS): Prevent stripping of application
+    name components following a dot in Sparkle update notices
+    (gh#nextcloud/desktop#10404)
+  * Updated macOS dependencies for stable-34.0
+    (gh#nextcloud/desktop#10415)
+  * [stable-34.0] fix(file-provider): Remove the misleading size
+    check for uploads again 
+    (gh#nextcloud/desktop#10412)
+  * [stable-34.0] feat(ui): Add context menus to text fields
+    (gh#nextcloud/desktop#10418)
+  * [stable-34.0] feat: refactor activity window into own folder
+    structure 
+    (gh#nextcloud/desktop#10419)
+  * [stable-34.0] Add a reset button in the app settings
+    (gh#nextcloud/desktop#10421)
+  * [stable-34.0] Bugfix/end to end encryption various fixes 
+    (gh#nextcloud/desktop#10423)
+  * [stable-34.0] fix: Search and Activity dialog not showing
+    (gh#nextcloud/desktop#10436)
+  * [stable-34.0] feat: Handle Affinity lock files in classic sync
+    (gh#nextcloud/desktop#10441)
+  * [stable-34.0] fix(edit-locally): Correctly handle edit-locally
+    request URLs with punycode hosts 
+    (gh#nextcloud/desktop#10440)
+  * [stable-34.0] fix(file-provider): Do not continue polling ETag
+    from file provider when account is disabled 
+    (gh#nextcloud/desktop#10448)
+  * [stable-34.0] Don't drop all remote changes when one folder
+    read fails 
+    (gh#nextcloud/desktop#10450)
+  * [stable-34.0] fix(agents): ensure agents follow proper testing
+    practices 
+    (gh#nextcloud/desktop#10449)
+  * [stable-34.0] fix(file-provider): Ensure path comparisons are
+    done on equal normalization 
+    (gh#nextcloud/desktop#10454)
+  * [stable-34.0] fix(governance): makes desktop UI closer to the
+    files web UI 
+    (gh#nextcloud/desktop#10455)
+  * [stable-34.0] Do not vend .allowsExcludingFromSync capability
+    on items 
+    (gh#nextcloud/desktop#10458)
+- Update BuildRequires cmake(Qt6Core), minimum version is 6.10.0
+
+-------------------------------------------------------------------
 Mon Jun 29 15:52:10 UTC 2026 - Natasha Ament <stacheldrahtje@ament-teusink.eu>
 
 - Update to version 33.0.7:

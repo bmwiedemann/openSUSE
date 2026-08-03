@@ -24,7 +24,7 @@
 %endif
 
 Name:           nextcloud-desktop
-Version:        33.0.7
+Version:        34.0.0
 Release:        0
 Summary:        Nextcloud desktop synchronisation client
 License:        GPL-2.0-or-later AND LGPL-3.0-or-later
@@ -46,7 +46,7 @@ BuildRequires:  cmake(KF6Archive)
 BuildRequires:  cmake(KF6GuiAddons)
 BuildRequires:  cmake(KF6KIO)
 BuildRequires:  cmake(Qt6Concurrent)
-BuildRequires:  cmake(Qt6Core) >= 6.5.0
+BuildRequires:  cmake(Qt6Core) >= 6.10.0
 BuildRequires:  cmake(Qt6Core5Compat)
 BuildRequires:  cmake(Qt6DBus)
 BuildRequires:  cmake(Qt6Gui)
