@@ -31,6 +31,8 @@ Source2:        %{name}.keyring
 Source3:        baselibs.conf
 #PATCH-FIX-OPENSUSE Do not pull revision info from GIT when autoconf is run
 Patch0:         libgpg-error-nobetasuffix.patch
+# PATCH-FIX-UPSTREAM - https://github.com/gpg/libgpg-error/commit/bfdf7b0b7b62f4463451a7d5f8408cec75520dca
+Patch1:         libgpg-error-fix-armv7.patch
 BuildRequires:  fdupes
 BuildRequires:  libtool
 BuildRequires:  pkgconfig

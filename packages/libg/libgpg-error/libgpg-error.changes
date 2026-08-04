@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 30 07:47:10 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add upstream patch to fix build on 32-bit arm:
+  * libgpg-error-fix-armv7.patch
+
+-------------------------------------------------------------------
 Sun May 10 10:05:45 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 1.61:
