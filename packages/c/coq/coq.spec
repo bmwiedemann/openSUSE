@@ -109,6 +109,18 @@ HTML reference manual for Coq.
 %prep
 %setup -q -a 50 -a 51 -n %{_name}-%{version}
 
+%if %{pkg_vcmp ocaml-dune >= 3.21}
+sed --regexp-extended --in-place=~ '
+s|lang dune [0-9\.]+|lang dune 3.21|
+s|using coq 0.8|using rocq 0.11|
+' dune-project
+diff -u "$_"~ "$_" || : $?
+sed --regexp-extended --in-place=~ '
+s|coq |rocq |
+' dune
+diff -u "$_"~ "$_" || : $?
+%endif
+
 %build
 %if 0%{?qemu_user_space_build}
 # The OCaml compiler sometimes needs a bit more stack than the usual limit.
@@ -129,7 +141,13 @@ export CFLAGS='%{optflags}'
    -datadir %{_datadir}/%{_name} \
    -docdir %{_docdir}/%{_name} \
    -configdir %{_sysconfdir}/xdg/%{_name} \
+%if %{pkg_vcmp ocaml >= 5.0}
+%ifarch x86_64
    -native-compiler yes \
+%endif
+%else
+   -native-compiler yes \
+%endif
    -natdynlink yes \
    -browser "xdg-open %s"
 make %{?_smp_mflags} dunestrap

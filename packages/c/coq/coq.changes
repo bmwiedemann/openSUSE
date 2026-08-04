@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug  3 20:47:43 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Use "rocq" instead of "coq" with Dune >= 3.21.
+- Disable native compilation on non-x86 for OCaml >= 5.
+- Based on proposal by Olaf Hering.
+
+-------------------------------------------------------------------
 Tue Mar 31 21:41:58 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 9.2.0.
