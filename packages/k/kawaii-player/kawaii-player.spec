@@ -17,25 +17,24 @@
 
 
 # See also http://en.opensuse.org/openSUSE:Specfile_guidelines
-
-%define _over   7.0.0-1
-%define _bver   7.0.0
+%define _over   7.1.0-1-beta
+%define _bver   7.1.0
 Name:           kawaii-player
-Version:        7.0.0.1
+Version:        7.1.0.1
 Release:        0
 Summary:        Multimedia player, library manager and media server
 License:        GPL-3.0-or-later
-Group:          Productivity/Multimedia/Video/Players
 URL:            https://github.com/kanishka-linux/kawaii-player
 Source0:        https://github.com/kanishka-linux/kawaii-player/archive/v%{_over}.tar.gz#/%{name}-%{_over}.tar.gz
 Source1:        %{name}-rpmlintrc
 BuildRequires:  fdupes
-BuildRequires:  mpv-devel
+BuildRequires:  pkgconfig
 BuildRequires:  python3-Cython
 BuildRequires:  python3-devel
 BuildRequires:  python3-pip
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-wheel
+BuildRequires:  pkgconfig(mpv)
 Requires:       ffmpegthumbnailer
 Requires:       python3-Pillow
 Requires:       python3-base

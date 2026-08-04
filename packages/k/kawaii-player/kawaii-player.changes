@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug  3 14:13:26 UTC 2026 - Daniel Donisa <daniel.donisa@suse.com>
+
+- Update to version 7.1.0-1-beta
+  * Updated upstream version from 7.0.0-1 to 7.1.0-1-beta
+  * Updated dist-info version to match Python package version
+
+-------------------------------------------------------------------
 Thu Jun 11 10:29:26 UTC 2026 - Daniel Donisa <daniel.donisa@suse.com>
 
 - Removed BuildArch: noarch and updated file packaging targets to %{python3_sitearch} to compile separate native CPU packages on all target architectures. Required because now the package builds a native C extension module (mpv.cpython-*.so).
