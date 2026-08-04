@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon Aug  3 05:42:28 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to git snapshot 0+git20260731.a422116:
+  * Security: apply the sandbox profile to the leader process that
+    executes tools, stop acceptEdits from auto-approving agent writes
+    into the always-trusted global hook root, and fix workspace
+    file-reference resolution bypassing filesystem confinement
+  * Treat .grok/sandbox.toml edits as protected, embed the
+    deployment-config signing public key and add a remote kill-switch
+    for managed-config signature verification
+  * Release a session's resources when it closes: subagents, LSP
+    servers, stdio MCP children, bash and background commands, hook
+    children and the full PTY process tree; also kill agent children
+    and the idle inhibitor when the parent process dies
+  * Bound memory when loading or forking large sessions, cap the
+    workspace-server worker count on many-core hosts and raise the
+    file-descriptor soft limit on Linux
+  * Recover rather than abort on HTTP client construction, session
+    thread and runtime spawn failures, thread exhaustion at startup,
+    invalid MCP server configuration and a corrupt session-search
+    cache; capture SIGABRT so panic-aborts still leave a crash report
+  * Carry running background tasks and subagents across compaction and
+    let stop cancel a compaction already in flight
+  * Parse hooks from configuration files, let plugin subagents inherit
+    the parent MCP servers, make the subagent nesting depth
+    configurable and allow extra root CAs via GROK_EXTRA_CA_BUNDLE
+  * Stream tool calls from headless mode over ACP, expose Skills
+    through available_commands_update and bridge gateway task
+    lifecycle events to ACP
+  * Default the web search model to grok-4.5 and enable doom-loop
+    recovery by default
+  * Many terminal UI fixes, including an instant startup paint, much
+    cheaper fullscreen resize on long sessions, /undo as an alias for
+    /rewind and clearer plan and reasoning rendering in minimal mode
+- Refresh the vendored Rust crate dependencies
+
+-------------------------------------------------------------------
 Thu Jul 23 19:53:56 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to git snapshot 0+git20260723.69f0ba8:

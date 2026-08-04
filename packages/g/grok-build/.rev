@@ -27,4 +27,16 @@
   * Refresh the vendored Rust crate dependencies</comment>
     <requestid>1367576</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>21555421ea33bb3385867c24c6f47d9b</srcmd5>
+    <version>0+git20260731.a422116</version>
+    <time>1785871969</time>
+    <user>dimstar_suse</user>
+    <comment>Update to git snapshot 0+git20260731.a422116.
+
+Supersedes SR 1369161: identical sources, plus the missing blank line
+before the changelog separator (changes-lint clean, source_validator
+clean).</comment>
+    <requestid>1369213</requestid>
+  </revision>
 </revisionlist>
