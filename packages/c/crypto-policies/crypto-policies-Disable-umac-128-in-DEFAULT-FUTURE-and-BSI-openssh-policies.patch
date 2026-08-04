@@ -1,0 +1,208 @@
+From a18f60c0e269a5a3913affb64eaa84ef442b9312 Mon Sep 17 00:00:00 2001
+From: Lucas Mulling <lucas.mulling@suse.com>
+Date: Wed, 29 Jul 2026 16:06:30 -0300
+Subject: [PATCH] Disable umac-128 in DEFAULT, FUTURE and BSI openssh policies
+
+Signed-off-by: Lucas Mulling <lucas.mulling@suse.com>
+---
+ policies/BSI.pol                                | 3 +++
+ policies/DEFAULT.pol                            | 3 +++
+ policies/FEDORA42.pol                           | 2 ++
+ policies/FEDORA43.pol                           | 2 ++
+ policies/FUTURE.pol                             | 3 +++
+ tests/outputs/BSI-openssh.txt                   | 2 +-
+ tests/outputs/BSI-opensshserver.txt             | 2 +-
+ tests/outputs/DEFAULT-openssh.txt               | 2 +-
+ tests/outputs/DEFAULT-opensshserver.txt         | 2 +-
+ tests/outputs/DEFAULT:GOST-openssh.txt          | 2 +-
+ tests/outputs/DEFAULT:GOST-opensshserver.txt    | 2 +-
+ tests/outputs/DEFAULT:NO-PQ-openssh.txt         | 2 +-
+ tests/outputs/DEFAULT:NO-PQ-opensshserver.txt   | 2 +-
+ tests/outputs/DEFAULT:TEST-PQ-openssh.txt       | 2 +-
+ tests/outputs/DEFAULT:TEST-PQ-opensshserver.txt | 2 +-
+ tests/outputs/FEDORA42-openssh.txt              | 2 +-
+ tests/outputs/FEDORA42-opensshserver.txt        | 2 +-
+ tests/outputs/FEDORA43-openssh.txt              | 2 +-
+ tests/outputs/FEDORA43-opensshserver.txt        | 2 +-
+ tests/outputs/FUTURE-openssh.txt                | 2 +-
+ tests/outputs/FUTURE-opensshserver.txt          | 2 +-
+ 21 files changed, 29 insertions(+), 16 deletions(-)
+
+Index: fedora-crypto-policies-20250714.cd6043a/policies/BSI.pol
+===================================================================
+--- fedora-crypto-policies-20250714.cd6043a.orig/policies/BSI.pol
++++ fedora-crypto-policies-20250714.cd6043a/policies/BSI.pol
+@@ -63,6 +63,9 @@ cipher@{sequoia,RPM} = AES-256-CFB AES-2
+ # and disabled in client OpenSSH 7.6 (2017) and server OpenSSH 6.7 (2014).
+ cipher@SSH = -*-CBC
+ 
++# BSI-TR-02102 recommends HMAC-SHA2-256 and HMAC-SHA2-512
++mac@SSH = -UMAC-128
++
+ # BSI TR 02102-2 / revision 2023.1, Table 1 and Table 2
+ # Note this goes to all ciphers. DHE-GSS is not valid for TLS, but used in SSH.
+ # 	TLS: ECDHE DHE DHE-RSA PSK DHE-PSK ECDHE-PSK RSA-PSK are ok, GSS is not used in TLS, will not be used for TLS
+Index: fedora-crypto-policies-20250714.cd6043a/policies/DEFAULT.pol
+===================================================================
+--- fedora-crypto-policies-20250714.cd6043a.orig/policies/DEFAULT.pol
++++ fedora-crypto-policies-20250714.cd6043a/policies/DEFAULT.pol
+@@ -58,6 +58,9 @@ cipher@{sequoia,RPM} = AES-256-CFB AES-2
+ # and disabled in client OpenSSH 7.6 (2017) and server OpenSSH 6.7 (2014).
+ cipher@SSH = -*-CBC
+ 
++# BSI-TR-02102 recommends HMAC-SHA2-256 and HMAC-SHA2-512
++mac@SSH = -UMAC-128
++
+ # 'RSA' is intentionally before DHE ciphersuites, as the DHE ciphersuites have
+ # interoperability issues in TLS.
+ key_exchange = KEM-ECDH ECDHE RSA DHE DHE-RSA PSK DHE-PSK ECDHE-PSK RSA-PSK ECDHE-GSS DHE-GSS
+Index: fedora-crypto-policies-20250714.cd6043a/policies/FEDORA42.pol
+===================================================================
+--- fedora-crypto-policies-20250714.cd6043a.orig/policies/FEDORA42.pol
++++ fedora-crypto-policies-20250714.cd6043a/policies/FEDORA42.pol
+@@ -55,6 +55,8 @@ cipher@{sequoia,RPM} = AES-256-CFB AES-2
+ # and disabled in client OpenSSH 7.6 (2017) and server OpenSSH 6.7 (2014).
+ cipher@SSH = -*-CBC
+ 
++mac@SSH = -UMAC-128
++
+ # 'RSA' is intentionally before DHE ciphersuites, as the DHE ciphersuites have
+ # interoperability issues in TLS.
+ key_exchange = ECDHE RSA DHE DHE-RSA PSK DHE-PSK ECDHE-PSK RSA-PSK ECDHE-GSS DHE-GSS
+Index: fedora-crypto-policies-20250714.cd6043a/policies/FEDORA43.pol
+===================================================================
+--- fedora-crypto-policies-20250714.cd6043a.orig/policies/FEDORA43.pol
++++ fedora-crypto-policies-20250714.cd6043a/policies/FEDORA43.pol
+@@ -58,6 +58,8 @@ cipher@{sequoia,RPM} = AES-256-CFB AES-2
+ # and disabled in client OpenSSH 7.6 (2017) and server OpenSSH 6.7 (2014).
+ cipher@SSH = -*-CBC
+ 
++mac@SSH = -UMAC-128
++
+ # 'RSA' is intentionally before DHE ciphersuites, as the DHE ciphersuites have
+ # interoperability issues in TLS.
+ key_exchange = KEM-ECDH ECDHE RSA DHE DHE-RSA PSK DHE-PSK ECDHE-PSK RSA-PSK ECDHE-GSS DHE-GSS
+Index: fedora-crypto-policies-20250714.cd6043a/policies/FUTURE.pol
+===================================================================
+--- fedora-crypto-policies-20250714.cd6043a.orig/policies/FUTURE.pol
++++ fedora-crypto-policies-20250714.cd6043a/policies/FUTURE.pol
+@@ -52,6 +52,9 @@ cipher@{sequoia,RPM} = AES-256-CFB AES-2
+ # and disabled in client OpenSSH 7.6 (2017) and server OpenSSH 6.7 (2014).
+ cipher@SSH = -*-CBC
+ 
++# BSI-TR-02102 recommends HMAC-SHA2-256 and HMAC-SHA2-512
++mac@SSH = -UMAC-128
++
+ key_exchange = KEM-ECDH ECDHE DHE DHE-RSA PSK DHE-PSK ECDHE-PSK ECDHE-GSS DHE-GSS
+ 
+ # Enable SNTRUP by default for OpenSSH
+Index: fedora-crypto-policies-20250714.cd6043a/tests/outputs/BSI-openssh.txt
+===================================================================
+--- fedora-crypto-policies-20250714.cd6043a.orig/tests/outputs/BSI-openssh.txt
++++ fedora-crypto-policies-20250714.cd6043a/tests/outputs/BSI-openssh.txt
+@@ -1,5 +1,5 @@
+ Ciphers aes256-gcm@openssh.com,aes256-ctr,aes128-gcm@openssh.com,aes128-ctr
+-MACs hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha2-256,umac-128@openssh.com,hmac-sha2-512
++MACs hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha2-256,hmac-sha2-512
+ GSSAPIKexAlgorithms gss-nistp256-sha256-,gss-group16-sha512-
+ KexAlgorithms ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256,diffie-hellman-group16-sha512
+ PubkeyAcceptedAlgorithms ecdsa-sha2-nistp256,ecdsa-sha2-nistp256-cert-v01@openssh.com,sk-ecdsa-sha2-nistp256@openssh.com,sk-ecdsa-sha2-nistp256-cert-v01@openssh.com,ecdsa-sha2-nistp384,ecdsa-sha2-nistp384-cert-v01@openssh.com,ecdsa-sha2-nistp521,ecdsa-sha2-nistp521-cert-v01@openssh.com,ssh-ed25519,ssh-ed25519-cert-v01@openssh.com,sk-ssh-ed25519@openssh.com,sk-ssh-ed25519-cert-v01@openssh.com,rsa-sha2-256,rsa-sha2-256-cert-v01@openssh.com,rsa-sha2-512,rsa-sha2-512-cert-v01@openssh.com
+Index: fedora-crypto-policies-20250714.cd6043a/tests/outputs/BSI-opensshserver.txt
+===================================================================
+--- fedora-crypto-policies-20250714.cd6043a.orig/tests/outputs/BSI-opensshserver.txt
++++ fedora-crypto-policies-20250714.cd6043a/tests/outputs/BSI-opensshserver.txt
+@@ -1,5 +1,5 @@
+ Ciphers aes256-gcm@openssh.com,aes256-ctr,aes128-gcm@openssh.com,aes128-ctr
+-MACs hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha2-256,umac-128@openssh.com,hmac-sha2-512
++MACs hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha2-256,hmac-sha2-512
+ GSSAPIKexAlgorithms gss-nistp256-sha256-,gss-group16-sha512-
+ KexAlgorithms ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256,diffie-hellman-group16-sha512
+ HostKeyAlgorithms ecdsa-sha2-nistp256,ecdsa-sha2-nistp256-cert-v01@openssh.com,sk-ecdsa-sha2-nistp256@openssh.com,sk-ecdsa-sha2-nistp256-cert-v01@openssh.com,ecdsa-sha2-nistp384,ecdsa-sha2-nistp384-cert-v01@openssh.com,ecdsa-sha2-nistp521,ecdsa-sha2-nistp521-cert-v01@openssh.com,ssh-ed25519,ssh-ed25519-cert-v01@openssh.com,sk-ssh-ed25519@openssh.com,sk-ssh-ed25519-cert-v01@openssh.com,rsa-sha2-256,rsa-sha2-256-cert-v01@openssh.com,rsa-sha2-512,rsa-sha2-512-cert-v01@openssh.com
+Index: fedora-crypto-policies-20250714.cd6043a/tests/outputs/DEFAULT-openssh.txt
+===================================================================
+--- fedora-crypto-policies-20250714.cd6043a.orig/tests/outputs/DEFAULT-openssh.txt
++++ fedora-crypto-policies-20250714.cd6043a/tests/outputs/DEFAULT-openssh.txt
+@@ -1,5 +1,5 @@
+ Ciphers aes256-gcm@openssh.com,chacha20-poly1305@openssh.com,aes256-ctr,aes128-gcm@openssh.com,aes128-ctr
+-MACs hmac-sha2-256-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha2-256,hmac-sha1,umac-128@openssh.com,hmac-sha2-512
++MACs hmac-sha2-256-etm@openssh.com,hmac-sha1-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha2-256,hmac-sha1,hmac-sha2-512
+ GSSAPIKexAlgorithms gss-nistp256-sha256-,gss-group14-sha256-,gss-group16-sha512-
+ KexAlgorithms mlkem768x25519-sha256,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256,diffie-hellman-group14-sha256,diffie-hellman-group16-sha512,diffie-hellman-group18-sha512
+ PubkeyAcceptedAlgorithms ecdsa-sha2-nistp256,ecdsa-sha2-nistp256-cert-v01@openssh.com,sk-ecdsa-sha2-nistp256@openssh.com,sk-ecdsa-sha2-nistp256-cert-v01@openssh.com,ecdsa-sha2-nistp384,ecdsa-sha2-nistp384-cert-v01@openssh.com,ecdsa-sha2-nistp521,ecdsa-sha2-nistp521-cert-v01@openssh.com,ssh-ed25519,ssh-ed25519-cert-v01@openssh.com,sk-ssh-ed25519@openssh.com,sk-ssh-ed25519-cert-v01@openssh.com,rsa-sha2-256,rsa-sha2-256-cert-v01@openssh.com,rsa-sha2-512,rsa-sha2-512-cert-v01@openssh.com
+Index: fedora-crypto-policies-20250714.cd6043a/tests/outputs/DEFAULT-opensshserver.txt
+===================================================================
+--- fedora-crypto-policies-20250714.cd6043a.orig/tests/outputs/DEFAULT-opensshserver.txt
++++ fedora-crypto-policies-20250714.cd6043a/tests/outputs/DEFAULT-opensshserver.txt
+@@ -1,5 +1,5 @@
+ Ciphers aes256-gcm@openssh.com,chacha20-poly1305@openssh.com,aes256-ctr,aes128-gcm@openssh.com,aes128-ctr
+-MACs hmac-sha2-256-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha2-256,hmac-sha1,umac-128@openssh.com,hmac-sha2-512
++MACs hmac-sha2-256-etm@openssh.com,hmac-sha1-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha2-256,hmac-sha1,hmac-sha2-512
+ GSSAPIKexAlgorithms gss-curve25519-sha256-,gss-nistp256-sha256-,gss-group14-sha256-,gss-group16-sha512-
+ KexAlgorithms mlkem768x25519-sha256,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256,diffie-hellman-group14-sha256,diffie-hellman-group16-sha512,diffie-hellman-group18-sha512
+ HostKeyAlgorithms ecdsa-sha2-nistp256,ecdsa-sha2-nistp256-cert-v01@openssh.com,sk-ecdsa-sha2-nistp256@openssh.com,sk-ecdsa-sha2-nistp256-cert-v01@openssh.com,ecdsa-sha2-nistp384,ecdsa-sha2-nistp384-cert-v01@openssh.com,ecdsa-sha2-nistp521,ecdsa-sha2-nistp521-cert-v01@openssh.com,ssh-ed25519,ssh-ed25519-cert-v01@openssh.com,sk-ssh-ed25519@openssh.com,sk-ssh-ed25519-cert-v01@openssh.com,rsa-sha2-256,rsa-sha2-256-cert-v01@openssh.com,rsa-sha2-512,rsa-sha2-512-cert-v01@openssh.com
+Index: fedora-crypto-policies-20250714.cd6043a/tests/outputs/FEDORA42-openssh.txt
+===================================================================
+--- fedora-crypto-policies-20250714.cd6043a.orig/tests/outputs/FEDORA42-openssh.txt
++++ fedora-crypto-policies-20250714.cd6043a/tests/outputs/FEDORA42-openssh.txt
+@@ -1,5 +1,5 @@
+ Ciphers aes256-gcm@openssh.com,chacha20-poly1305@openssh.com,aes256-ctr,aes128-gcm@openssh.com,aes128-ctr
+-MACs hmac-sha2-256-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha2-256,hmac-sha1,umac-128@openssh.com,hmac-sha2-512
++MACs hmac-sha2-256-etm@openssh.com,hmac-sha1-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha2-256,hmac-sha1,hmac-sha2-512
+ GSSAPIKexAlgorithms gss-curve25519-sha256-,gss-nistp256-sha256-,gss-group14-sha256-,gss-group16-sha512-
+ KexAlgorithms curve25519-sha256,curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256,diffie-hellman-group14-sha256,diffie-hellman-group16-sha512,diffie-hellman-group18-sha512
+ PubkeyAcceptedAlgorithms ecdsa-sha2-nistp256,ecdsa-sha2-nistp256-cert-v01@openssh.com,sk-ecdsa-sha2-nistp256@openssh.com,sk-ecdsa-sha2-nistp256-cert-v01@openssh.com,ecdsa-sha2-nistp384,ecdsa-sha2-nistp384-cert-v01@openssh.com,ecdsa-sha2-nistp521,ecdsa-sha2-nistp521-cert-v01@openssh.com,ssh-ed25519,ssh-ed25519-cert-v01@openssh.com,sk-ssh-ed25519@openssh.com,sk-ssh-ed25519-cert-v01@openssh.com,rsa-sha2-256,rsa-sha2-256-cert-v01@openssh.com,rsa-sha2-512,rsa-sha2-512-cert-v01@openssh.com
+Index: fedora-crypto-policies-20250714.cd6043a/tests/outputs/FEDORA42-opensshserver.txt
+===================================================================
+--- fedora-crypto-policies-20250714.cd6043a.orig/tests/outputs/FEDORA42-opensshserver.txt
++++ fedora-crypto-policies-20250714.cd6043a/tests/outputs/FEDORA42-opensshserver.txt
+@@ -1,5 +1,5 @@
+ Ciphers aes256-gcm@openssh.com,chacha20-poly1305@openssh.com,aes256-ctr,aes128-gcm@openssh.com,aes128-ctr
+-MACs hmac-sha2-256-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha2-256,hmac-sha1,umac-128@openssh.com,hmac-sha2-512
++MACs hmac-sha2-256-etm@openssh.com,hmac-sha1-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha2-256,hmac-sha1,hmac-sha2-512
+ GSSAPIKexAlgorithms gss-curve25519-sha256-,gss-nistp256-sha256-,gss-group14-sha256-,gss-group16-sha512-
+ KexAlgorithms curve25519-sha256,curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256,diffie-hellman-group14-sha256,diffie-hellman-group16-sha512,diffie-hellman-group18-sha512
+ HostKeyAlgorithms ecdsa-sha2-nistp256,ecdsa-sha2-nistp256-cert-v01@openssh.com,sk-ecdsa-sha2-nistp256@openssh.com,sk-ecdsa-sha2-nistp256-cert-v01@openssh.com,ecdsa-sha2-nistp384,ecdsa-sha2-nistp384-cert-v01@openssh.com,ecdsa-sha2-nistp521,ecdsa-sha2-nistp521-cert-v01@openssh.com,ssh-ed25519,ssh-ed25519-cert-v01@openssh.com,sk-ssh-ed25519@openssh.com,sk-ssh-ed25519-cert-v01@openssh.com,rsa-sha2-256,rsa-sha2-256-cert-v01@openssh.com,rsa-sha2-512,rsa-sha2-512-cert-v01@openssh.com
+Index: fedora-crypto-policies-20250714.cd6043a/tests/outputs/FEDORA43-openssh.txt
+===================================================================
+--- fedora-crypto-policies-20250714.cd6043a.orig/tests/outputs/FEDORA43-openssh.txt
++++ fedora-crypto-policies-20250714.cd6043a/tests/outputs/FEDORA43-openssh.txt
+@@ -1,5 +1,5 @@
+ Ciphers aes256-gcm@openssh.com,chacha20-poly1305@openssh.com,aes256-ctr,aes128-gcm@openssh.com,aes128-ctr
+-MACs hmac-sha2-256-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha2-256,hmac-sha1,umac-128@openssh.com,hmac-sha2-512
++MACs hmac-sha2-256-etm@openssh.com,hmac-sha1-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha2-256,hmac-sha1,hmac-sha2-512
+ GSSAPIKexAlgorithms gss-curve25519-sha256-,gss-nistp256-sha256-,gss-group14-sha256-,gss-group16-sha512-
+ KexAlgorithms mlkem768x25519-sha256,curve25519-sha256,curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256,diffie-hellman-group14-sha256,diffie-hellman-group16-sha512,diffie-hellman-group18-sha512
+ PubkeyAcceptedAlgorithms ecdsa-sha2-nistp256,ecdsa-sha2-nistp256-cert-v01@openssh.com,sk-ecdsa-sha2-nistp256@openssh.com,sk-ecdsa-sha2-nistp256-cert-v01@openssh.com,ecdsa-sha2-nistp384,ecdsa-sha2-nistp384-cert-v01@openssh.com,ecdsa-sha2-nistp521,ecdsa-sha2-nistp521-cert-v01@openssh.com,ssh-ed25519,ssh-ed25519-cert-v01@openssh.com,sk-ssh-ed25519@openssh.com,sk-ssh-ed25519-cert-v01@openssh.com,rsa-sha2-256,rsa-sha2-256-cert-v01@openssh.com,rsa-sha2-512,rsa-sha2-512-cert-v01@openssh.com
+Index: fedora-crypto-policies-20250714.cd6043a/tests/outputs/FEDORA43-opensshserver.txt
+===================================================================
+--- fedora-crypto-policies-20250714.cd6043a.orig/tests/outputs/FEDORA43-opensshserver.txt
++++ fedora-crypto-policies-20250714.cd6043a/tests/outputs/FEDORA43-opensshserver.txt
+@@ -1,5 +1,5 @@
+ Ciphers aes256-gcm@openssh.com,chacha20-poly1305@openssh.com,aes256-ctr,aes128-gcm@openssh.com,aes128-ctr
+-MACs hmac-sha2-256-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha2-256,hmac-sha1,umac-128@openssh.com,hmac-sha2-512
++MACs hmac-sha2-256-etm@openssh.com,hmac-sha1-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha2-256,hmac-sha1,hmac-sha2-512
+ GSSAPIKexAlgorithms gss-curve25519-sha256-,gss-nistp256-sha256-,gss-group14-sha256-,gss-group16-sha512-
+ KexAlgorithms mlkem768x25519-sha256,curve25519-sha256,curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256,diffie-hellman-group14-sha256,diffie-hellman-group16-sha512,diffie-hellman-group18-sha512
+ HostKeyAlgorithms ecdsa-sha2-nistp256,ecdsa-sha2-nistp256-cert-v01@openssh.com,sk-ecdsa-sha2-nistp256@openssh.com,sk-ecdsa-sha2-nistp256-cert-v01@openssh.com,ecdsa-sha2-nistp384,ecdsa-sha2-nistp384-cert-v01@openssh.com,ecdsa-sha2-nistp521,ecdsa-sha2-nistp521-cert-v01@openssh.com,ssh-ed25519,ssh-ed25519-cert-v01@openssh.com,sk-ssh-ed25519@openssh.com,sk-ssh-ed25519-cert-v01@openssh.com,rsa-sha2-256,rsa-sha2-256-cert-v01@openssh.com,rsa-sha2-512,rsa-sha2-512-cert-v01@openssh.com
+Index: fedora-crypto-policies-20250714.cd6043a/tests/outputs/FUTURE-openssh.txt
+===================================================================
+--- fedora-crypto-policies-20250714.cd6043a.orig/tests/outputs/FUTURE-openssh.txt
++++ fedora-crypto-policies-20250714.cd6043a/tests/outputs/FUTURE-openssh.txt
+@@ -1,5 +1,5 @@
+ Ciphers aes256-gcm@openssh.com,chacha20-poly1305@openssh.com,aes256-ctr
+-MACs hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha2-256,umac-128@openssh.com,hmac-sha2-512
++MACs hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha2-256,hmac-sha2-512
+ GSSAPIKexAlgorithms gss-curve25519-sha256-,gss-nistp256-sha256-,gss-group16-sha512-
+ KexAlgorithms mlkem768x25519-sha256,curve25519-sha256,curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256,diffie-hellman-group16-sha512,diffie-hellman-group18-sha512
+ PubkeyAcceptedAlgorithms ecdsa-sha2-nistp256,ecdsa-sha2-nistp256-cert-v01@openssh.com,sk-ecdsa-sha2-nistp256@openssh.com,sk-ecdsa-sha2-nistp256-cert-v01@openssh.com,ecdsa-sha2-nistp384,ecdsa-sha2-nistp384-cert-v01@openssh.com,ecdsa-sha2-nistp521,ecdsa-sha2-nistp521-cert-v01@openssh.com,ssh-ed25519,ssh-ed25519-cert-v01@openssh.com,sk-ssh-ed25519@openssh.com,sk-ssh-ed25519-cert-v01@openssh.com,rsa-sha2-256,rsa-sha2-256-cert-v01@openssh.com,rsa-sha2-512,rsa-sha2-512-cert-v01@openssh.com
+Index: fedora-crypto-policies-20250714.cd6043a/tests/outputs/FUTURE-opensshserver.txt
+===================================================================
+--- fedora-crypto-policies-20250714.cd6043a.orig/tests/outputs/FUTURE-opensshserver.txt
++++ fedora-crypto-policies-20250714.cd6043a/tests/outputs/FUTURE-opensshserver.txt
+@@ -1,5 +1,5 @@
+ Ciphers aes256-gcm@openssh.com,chacha20-poly1305@openssh.com,aes256-ctr
+-MACs hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha2-256,umac-128@openssh.com,hmac-sha2-512
++MACs hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha2-256,hmac-sha2-512
+ GSSAPIKexAlgorithms gss-curve25519-sha256-,gss-nistp256-sha256-,gss-group16-sha512-
+ KexAlgorithms mlkem768x25519-sha256,curve25519-sha256,curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256,diffie-hellman-group16-sha512,diffie-hellman-group18-sha512
+ HostKeyAlgorithms ecdsa-sha2-nistp256,ecdsa-sha2-nistp256-cert-v01@openssh.com,sk-ecdsa-sha2-nistp256@openssh.com,sk-ecdsa-sha2-nistp256-cert-v01@openssh.com,ecdsa-sha2-nistp384,ecdsa-sha2-nistp384-cert-v01@openssh.com,ecdsa-sha2-nistp521,ecdsa-sha2-nistp521-cert-v01@openssh.com,ssh-ed25519,ssh-ed25519-cert-v01@openssh.com,sk-ssh-ed25519@openssh.com,sk-ssh-ed25519-cert-v01@openssh.com,rsa-sha2-256,rsa-sha2-256-cert-v01@openssh.com,rsa-sha2-512,rsa-sha2-512-cert-v01@openssh.com

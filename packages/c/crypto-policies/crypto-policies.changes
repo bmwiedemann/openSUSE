@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 31 00:58:13 UTC 2026 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Disable umac-128* in DEFAULT, FUTURE and BSI openssh policies (bsc#1259515)
+  * Add patch:
+    crypto-policies-Disable-umac-128-in-DEFAULT-FUTURE-and-BSI-openssh-policies.patch
+
+-------------------------------------------------------------------
 Wed May 20 09:26:21 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
 
 - Remove crypto-policies-Allow-sshd-in-FIPS-mode-using-DEFAULT.patch

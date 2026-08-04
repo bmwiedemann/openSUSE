@@ -57,6 +57,8 @@ Patch6:         crypto-policies-SUSE-manpages.patch
 Patch7:         crypto-policies-Allow-openssl-other-policies-in-FIPS-mode.patch
 #PATCH-FIX-UPSTREAM Add PQC support for OpenSSH (bsc#1258311, bsc#1259825)
 Patch8:         crypto-policies-OpenSSH-PQC.patch
+#PATCH-FIX-UPSTREAM Disable umac-128 (bsc#1259515)
+Patch9:         crypto-policies-Disable-umac-128-in-DEFAULT-FUTURE-and-BSI-openssh-policies.patch
 BuildRequires:  python3-base >= 3.11
 %if %{with manbuild}
 BuildRequires:  asciidoc
