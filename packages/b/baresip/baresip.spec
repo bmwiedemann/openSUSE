@@ -20,7 +20,7 @@
 %global sover   28
 %global libname lib%{name}%{sover}
 Name:           baresip
-Version:        4.9.0
+Version:        4.10.0
 Release:        0
 Summary:        Modular SIP useragent
 License:        BSD-3-Clause

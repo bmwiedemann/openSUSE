@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jul 22 14:48:20 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.10.0
+  * directfb: remove deprecated module.
+  * menu: fix limit early media.
+  * modules: use secure snprintf() instead of insecure sprintf().
+  * modules: print not found reason for deprecated modules.
+  * test: fix a ruff warning in ccheck.
+  * aaudio: support device selection via config.
+  * test: call - increase timeout for mediaenc.
+  * rtprecv: avoid processing of telev events.
+
+-------------------------------------------------------------------
 Wed Jun 17 12:31:50 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to versoin 4.9.0
