@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Fri Jul 31 19:22:07 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.22.2:
+  * Fixed 6yr old typos in USE_6BY9RPI 8- and 16- bit
+    decoders
+  * trimSpaces: Improved handling of zero-length strings
+    and strings consisting only of spaces
+  * Misc fixups
+  * Fix links to license files in contributing document
+  * removeExcessiveSpaces: handle zero-length strings
+    the right way
+  * contributing rules updated
+  * Zero read buffers before fread
+  * FP DNG loader: check for tile index;
+    convertFloatToInt: avoid possible integer overflow
+  * open_bayer(): reject images with raw size/visible
+    size less than 22 (as in open_file/identify);
+    vng_interpolate: do not interpolate images less than 8x8
+  * PPM16 thumb: check against LIBRAW_MAX_THUMBNAIL_MB
+  * open_bayer(): additional input data checks
+  * Olympus/14bit: refuse incorrect wbits metadata
+  * X3F decoder: initialise raw storage if
+    LIBRAW_CALLOC_RAWSTORE defined
+  * crx decoder: check plane size agains
+    imgdata.rawparams.max_raw_memory_mb
+  * Crx decoder: avoid possible int32 overflow on
+    allocation size calculations
+  * check for ifd->bps values in FP DNG decoder
+  * fixed stack memory/previous image metadata exposure
+    (reported by DMSAN)
+  * LibRaw_memmgr: allow malloc to fail on local pointer
+    array small allocation. It will definitely fall later on
+    large-buffer allocation
+  * rotated fuji: stricter image size limits;
+    raw2image(ex): avoid possible 32-bit overflow on alloc size
+    calculations
+  * width/height and iwidth/height values documented
+  * width/height and iwidth/height values documented
+  * wavelet denoise: ensure allocation size not exceed
+    4GB
+  * unpack_thumb:  check JPEG thumbnail size before
+    performing allocation;  Remove all allocation test results
+    because LibRaw::calloc/malloc will raise exception if
+    allocation fails
+  * removed row_stride signed/unsigned mix; check
+    row_stride value against buffer size
+  * fixed possible next struct item override in
+    x3f_parse
+  * parse_phase_one: prevent buffer overrun if incorrect
+    flat field data provided
+  * Limit parse_mos recursion depth; parse_qt: raise
+    exception, do not hide too depth nesting error
+  * parse_qt: avoid too deep recursion
+
+-------------------------------------------------------------------
 Tue Apr  7 10:01:34 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - version update to 0.22.1
@@ -31,7 +86,7 @@ Tue Apr  7 10:01:34 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
   * Use LIBRAW_EXCEPTION instead of own internal in losslessjpeg.h
   * zero input string to avoid compare random stack garbage with tag names
   * Check for eof in Pentax tag search loop
-  * Fuji decoder: initialize allocated buffers 
+  * Fuji decoder: initialize allocated buffers
   * fixes CVE-2026-5342 [bsc#1261499]
 - version update to 0.22.0
   Raw format support
@@ -55,7 +110,7 @@ Tue Apr  7 10:01:34 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
   * Pentax KF, K III Monochrome
   * Sony ZV-E10M2, UMC-R10C, A9-III, ILX-LR1, A7C-II, A7CR, ILCE-6700, ZV-1M2, ZV-E1, ILCE-7RM5 (A7R-V), ILME-FX30
   * Multiple DJI and Skydio drones
-  Preview format support 
+  Preview format support
   * JPEG-XL previews (DNG 1.7) support:
   * H265 (Canon) and JPEG-XL thumbnail support for dcraw_make_mem_thumb
   * Note: libraw_processed_image_t.type is set to LIBRAW_IMAGE_H265 or LIBRAW_IMAGE_JPEGXL respectively
@@ -88,7 +143,7 @@ Tue Apr  7 10:01:34 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 - version update to 0.21.5
   * Accurate exception handling in fuji compressed decoder/openmp case
   * Update libraw_types.h to fix calling C++ files in external C/Swift
-  * Cannon AFData: read/data size fix and check AFInfo2/3 data against tag size 
+  * Cannon AFData: read/data size fix and check AFInfo2/3 data against tag size
 - remove superfluous libraw-CVE-2020-22628.patch
 - remove supoerfluous export hacks
 - fixes CVE-2026-20884 [bsc#1261671]
@@ -108,11 +163,11 @@ Wed Apr 23 08:32:35 UTC 2025 - pgajdos@suse.com
   * fix: remove duplicated supported camera
   * check split_col/split_row values in phase_one_correct
   * Prevent out-of-bounds read in fuji 0xf00c tag parser
-  * prevent OOB reads in phase_one_correct 
+  * prevent OOB reads in phase_one_correct
 - modified sources
   % baselibs.conf
 - fixes:
-  * CVE-2025-43964 [bsc#1241584] 
+  * CVE-2025-43964 [bsc#1241584]
   * CVE-2025-43962 [bsc#1241585]
   * CVE-2025-43961 [bsc#1241643]
   * CVE-2025-43963 [bsc#1241642]

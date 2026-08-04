@@ -788,4 +788,41 @@ The only dup reported was for /usr/lib64/libraw.a and libraw_r.a (forwarded requ
     <comment>CVE-2026-20884, [bsc#1261671], CVE-2026-20889, [bsc#1261672], CVE-2026-20911, [bsc#1261673], CVE-2026-21413, [bsc#1261674], CVE-2026-24450, [bsc#1261675], CVE-2026-24660, [bsc#1261676]</comment>
     <requestid>1346435</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>5a00bcab3e2f0381fbd1c0018d352aeb</srcmd5>
+    <version>0.22.2</version>
+    <time>1785871684</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.22.2:
+  * Fixed 6yr old typos in USE_6BY9RPI 8- and 16- bit
+    decoders
+  * trimSpaces: Improved handling of zero-length strings
+    and strings consisting only of spaces
+  * Misc fixups
+  * Fix links to license files in contributing document
+  * removeExcessiveSpaces: handle zero-length strings
+    the right way
+  * contributing rules updated
+  * Zero read buffers before fread
+  * FP DNG loader: check for tile index;
+    convertFloatToInt: avoid possible integer overflow
+  * open_bayer(): reject images with raw size/visible
+    size less than 22 (as in open_file/identify);
+    vng_interpolate: do not interpolate images less than 8x8
+  * PPM16 thumb: check against LIBRAW_MAX_THUMBNAIL_MB
+  * open_bayer(): additional input data checks
+  * Olympus/14bit: refuse incorrect wbits metadata
+  * X3F decoder: initialise raw storage if
+    LIBRAW_CALLOC_RAWSTORE defined
+  * crx decoder: check plane size agains
+    imgdata.rawparams.max_raw_memory_mb
+  * Crx decoder: avoid possible int32 overflow on
+    allocation size calculations
+  * check for ifd-&gt;bps values in FP DNG decoder
+  * fixed stack memory/previous image metadata exposure
+    (reported by DMSAN)
+  * LibRaw_memmgr: allow malloc to fail on local pointer
+    array small allocation. It will definitely fall later on (forwarded request 1368910 from dirkmueller)</comment>
+    <requestid>1369222</requestid>
+  </revision>
 </revisionlist>

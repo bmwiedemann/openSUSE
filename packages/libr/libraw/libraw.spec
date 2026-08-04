@@ -23,7 +23,7 @@
 %define lver    25
 %define lname	libraw%{lver}
 Name:           libraw
-Version:        0.22.1
+Version:        0.22.2
 Release:        0
 Summary:        Library for reading RAW files obtained from digital photo cameras
 License:        CDDL-1.0 OR LGPL-2.1-only
