@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jul 30 08:54:36 UTC 2026 - Alice Brooks <alice.brooks@suse.com>
+
+- Update to version 16.3
+  * Dependency updates fixes bsc#1259010/CVE-2026-27904
+
+-------------------------------------------------------------------
+Wed Apr 29 11:25:02 UTC 2026 - Alice Brooks <alice.brooks@suse.com>
+
+- Update to version 16.2
+  * Changes since 16.2
+    - 16.2
+      * Translation updates
+      * Dependency updates fixes bsc#1257840/CVE-2026-25547
+    - 16.1
+      * Translation updates
+      * Dependency updates
+
+-------------------------------------------------------------------
 Tue Mar 10 14:26:00 UTC 2026 - Alice Brooks <alice.brooks@suse.com>
 
 - Update to version 16
@@ -15,7 +33,7 @@ Tue Mar 10 14:26:00 UTC 2026 - Alice Brooks <alice.brooks@suse.com>
 -------------------------------------------------------------------
 Wed Feb 25 08:29:10 UTC 2026 - Alice Brooks <alice.brooks@suse.com>
 
-- Update dependencies bsc#1257836/CVE-2026-25547, bsc#1258637/CVE-2026-26996
+- Update dependencies bsc#1257836/CVE-2026-25547, bsc#1258637/CVE-2026-26996, bsc#1259010/CVE-2026-27904
 
 -------------------------------------------------------------------
 Wed Feb 11 17:23:37 UTC 2026 - Miika Alikirri <miika.alikirri@suse.com>

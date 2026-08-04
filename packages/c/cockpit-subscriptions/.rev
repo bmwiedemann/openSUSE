@@ -147,4 +147,24 @@ outside of Factory
       * Rework error handling</comment>
     <requestid>1341522</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>bce7aa6128eb8418cf6f2fde282b6d6d</srcmd5>
+    <version>16.3</version>
+    <time>1785872060</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 16.3
+  * Dependency updates fixes bsc#1259010/CVE-2026-27904
+
+- Update to version 16.2
+  * Changes since 16.2
+    - 16.2
+      * Translation updates
+      * Dependency updates fixes bsc#1257840/CVE-2026-25547
+    - 16.1
+      * Translation updates
+      * Dependency updates
+
+- Update dependencies bsc#1257836/CVE-2026-25547, bsc#1258637/CVE-2026-26996, bsc#1259010/CVE-2026-27904</comment>
+    <requestid>1369279</requestid>
+  </revision>
 </revisionlist>
