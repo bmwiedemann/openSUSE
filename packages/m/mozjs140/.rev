@@ -128,4 +128,14 @@
     https://www.firefox.com/en-US/firefox/140.11.0/releasenotes/</comment>
     <requestid>1361061</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>cbd89e2543c386f7a28be21298f696f6</srcmd5>
+    <version>140.13.0</version>
+    <time>1785871649</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 140.13.0:
+  + Various security fixes
+  + See https://www.firefox.com/en-US/firefox/140.13.0/releasenotes/</comment>
+    <requestid>1369094</requestid>
+  </revision>
 </revisionlist>
