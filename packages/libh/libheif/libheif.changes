@@ -26,6 +26,11 @@ Thu Jul 30 06:58:39 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
   + (GHSA-46rp-pcq2-rpmr) Heap out-of-bounds write in the
     uncompressed encoder for RRGGBB images with interleaved
     bit-depth ≤ 8
+- fixes CVE-2026-62289 [bsc#1273079]
+        CVE-2026-62291 [bsc#1273080]
+        CVE-2026-62292 [bsc#1273081]
+        CVE-2026-62377 [bsc#1273082]
+        GHSA-46rp-pcq2-rpmr) [bsc#1273083]
 
 -------------------------------------------------------------------
 Tue Jun  2 06:19:35 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
