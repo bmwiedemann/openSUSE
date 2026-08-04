@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Mon Aug  3 20:35:47 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package (version 0.6.7)
+- Memory-safe implementation of the zlib compression algorithms in
+  Rust, exposing the standard zlib C API as libz_rs so existing C
+  programs can link against it
+- Build only the libz-rs-sys-cdylib C dynamic library via cargo-c:
+  the Rust crates themselves are consumed from crates.io and are not
+  packaged separately
+- Enable the gz feature so the gz* entry points are present, but not
+  gzprintf: it is gated on the unstable c_variadic language feature
+  and cannot be built with the stable Rust toolchain
+- Ship no headers of our own, so that the package cannot collide with
+  zlib-devel; consumers build against the system zlib.h and link with
+  -lz_rs
+- Exclude the Silesia benchmark corpus and the fuzzing harness from
+  the source tarball, neither of which is used to build or test what
+  is shipped
+

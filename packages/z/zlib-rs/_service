@@ -1,0 +1,32 @@
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="url">https://github.com/trifectatechfoundation/zlib-rs.git</param>
+    <param name="scm">git</param>
+    <param name="revision">v0.6.7</param>
+    <param name="version">0.6.7</param>
+    <param name="changesgenerate">disable</param>
+    <!-- 21 MB of the 24 MB checkout is the Silesia benchmark corpus, used only
+         by "cargo bench", plus the fuzzing harness and CI config. None of it is
+         needed to build or test what we ship. -->
+    <param name="exclude">silesia-small.tar</param>
+    <param name="exclude">silesia-small.tar.gz</param>
+    <param name="exclude">zlib_benchmarks.json</param>
+    <param name="exclude">fuzz</param>
+    <param name="exclude">.github</param>
+  </service>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">zst</param>
+  </service>
+  <service name="set_version" mode="manual"/>
+  <!-- Vendor from the repository root so the cdylib's "path = ../libz-rs-sys"
+       dependencies resolve, and sync the cdylib manifest explicitly: it is
+       listed under [workspace] exclude, so a plain root vendor would miss it. -->
+  <service name="cargo_vendor" mode="manual">
+    <param name="srcdir">zlib-rs</param>
+    <param name="manifest-path">libz-rs-sys-cdylib/Cargo.toml</param>
+    <param name="compression">zst</param>
+    <param name="update">true</param>
+  </service>
+</services>

@@ -1,0 +1,4 @@
+<package name="zlib-rs" project="openSUSE:Factory">
+  <title>Memory-safe zlib implementation written in Rust</title>
+  <description>zlib-rs is an implementation of the zlib compression algorithms written in Rust, exposing the standard zlib C API as libz_rs.</description>
+</package>

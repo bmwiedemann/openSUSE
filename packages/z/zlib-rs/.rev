@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7b45c652f1235653c81c2d67f87dd36b</srcmd5>
+    <version>0.6.7</version>
+    <time>1785872129</time>
+    <user>dimstar_suse</user>
+    <comment>New package: zlib-rs 0.6.7
+
+Memory-safe implementation of the zlib compression algorithms in Rust,
+exposing the standard zlib C API as libz_rs. Installed alongside the system
+zlib rather than replacing it; consumers opt in by linking -lz_rs.
+
+Only the libz-rs-sys-cdylib C dynamic library is built, via cargo-c. The gz*
+entry points are enabled; gzprintf is not, as it requires the unstable
+c_variadic feature. No headers are shipped, so the package cannot collide
+with zlib-devel.</comment>
+    <requestid>1369334</requestid>
+  </revision>
+</revisionlist>
