@@ -16,7 +16,7 @@
 #
 
 Name: cockpit-packages
-Version: 4.1
+Version: 5
 Release: 0%{?dist}
 Summary: A cockpit module for (un)installing packages
 License: LGPL-2.1-or-later

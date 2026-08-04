@@ -1,7 +1,22 @@
 -------------------------------------------------------------------
+Tue Jul 14 06:10:16 UTC 2026 - Miika Alikirri <miika.alikirri@suse.com>
+
+- Update to version 5:
+  * Support transactional systems
+  * Improve error/success messages
+  * Translation updates
+
+-------------------------------------------------------------------
+Wed Apr 29 12:34:59 UTC 2026 - Alice Brooks <alice.brooks@suse.com>
+
+- Update to version 4.2:
+  * Translation updates
+  * Dependency updates fixes bsc#1257838/CVE-2026-25547
+
+-------------------------------------------------------------------
 Wed Feb 25 09:11:35 UTC 2026 - Alice Brooks <alice.brooks@suse.com>
 
-- Update dependencies bsc#1257836/CVE-2026-25547, bsc#1258640/CVE-2026-26996
+- Update dependencies bsc#1257836/CVE-2026-25547, bsc#1258640/CVE-2026-26996, bsc#1259015/CVE-2026-27904
 
 -------------------------------------------------------------------
 Wed Feb 11 17:19:13 UTC 2026 - Miika Alikirri <miika.alikirri@suse.com>
