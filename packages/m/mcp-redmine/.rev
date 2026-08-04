@@ -1,0 +1,16 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>58426022bb65d8a0f3dffb343d04c457</srcmd5>
+    <version>2026.1.13.152335</version>
+    <time>1785871973</time>
+    <user>dimstar_suse</user>
+    <comment>Rename redmine-mcp to mcp-redmine to match upstream, with Provides and
+Obsoletes for the old name.
+
+Supersedes SR 1369198: identical sources, plus the missing blank line
+before the changelog separator (changes-lint clean, source_validator
+clean). The matching delete request for openSUSE:Factory/redmine-mcp is
+SR 1369199.</comment>
+    <requestid>1369214</requestid>
+  </revision>
+</revisionlist>

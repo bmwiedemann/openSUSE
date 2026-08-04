@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Mon Aug  3 07:50:06 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Rename the package from redmine-mcp to mcp-redmine, which is what
+  upstream calls the project, the sdist, the Python module and the
+  installed binary; the old package name was the only thing that did
+  not match
+- Add Provides and Obsoletes for redmine-mcp so installed systems
+  migrate to the renamed package automatically
+
+-------------------------------------------------------------------
+Tue Jun 30 11:48:36 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package (version 2026.1.13.152335)
+
