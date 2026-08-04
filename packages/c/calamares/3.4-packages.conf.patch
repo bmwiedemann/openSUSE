@@ -2,10 +2,9 @@ Adjust some default settings (default shipped .conf files) for openSUSE and open
 Updating databases during installation may cause problems, thus allow to install system as is.
 Calamares packages is no longer needed after installation.
 
-diff --git a/src/modules/packages/packages.conf b/src/modules/packages/packages.conf
 --- a/src/modules/packages/packages.conf
 +++ b/src/modules/packages/packages.conf
-@@ -35,7 +35,7 @@
+@@ -36,7 +36,7 @@
  # Not actually a package manager, but suitable for testing:
  #  - dummy       - Dummy manager, only logs
  #
@@ -14,7 +13,7 @@ diff --git a/src/modules/packages/packages.conf b/src/modules/packages/packages.
  
  #
  # Often package installation needs an internet connection.
-@@ -59,7 +59,7 @@ backend: dummy
+@@ -60,7 +60,7 @@
  # Therefore set also "update_system" to 'true'.
  #
  skip_if_no_internet: false
@@ -23,7 +22,7 @@ diff --git a/src/modules/packages/packages.conf b/src/modules/packages/packages.
  update_system: false
  
  # pacman specific options
-@@ -202,12 +202,6 @@ pacman:
+@@ -203,12 +203,6 @@
  # of packages, this can lead to a considerable time savings.
  #
  operations:

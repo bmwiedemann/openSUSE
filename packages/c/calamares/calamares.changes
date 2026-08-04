@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sun Aug  2 09:08:53 UTC 2026 - Mindaugas Baranauskas <opensuse.lietuviu.kalba@gmail.com>
+
+- Update calamares.keyring
+
+-------------------------------------------------------------------
+Tue May  6 21:00:00 UTC 2026 - Don Clermont <DonX@users.noreply.github.com>
+
+- 3.4-bootloader.conf.patch: The efiBootloaderId is kept pinned to
+  "opensuse" so the EFI directory layout still matches what the
+  openSUSE shim expects when it is added back later.
+- Add 3.4-partition.conf.patch to enable SWAP partition.
+- 3.2.15-unpackfs.conf_Leap15.patch renamed to 3.4-unpackfs.conf_Leap15.patch
+
+-------------------------------------------------------------------
+Tue Jan 13 16:16:31 UTC 2026 - Luan C. Adão <carluad@proton.me>
+
+- Update to 3.4.0.
+- Drop webview module.
+- Use Qt6 instead of Qt5.
+- Update and rename patch files:
+  * 3.2-bootloader.conf.patch renamed to 3.4-bootloader.conf.patch
+  * 3.2-networkcfg.patch renamed to 3.4-networkcfg.patch
+  * 3.2-packages.conf.patch renamed to 3.4-packages.conf.patch
+  * 3.2-removeuser.conf.patch renamed to 3.4-removeuser.conf.patch
+  * 3.2-settings.conf.patch renamed to 3.4-settings.conf.patch
+  * 3.2-show.qml.patch renamed to 3.4-show.qml.patch
+  * 3.2-welcome.conf.patch renamed to 3.4-welcome.conf.patch
+  * 3.2.15-configuring_autologin_in_sysconfig.patch renamed to
+    3.4-configuring_autologin_in_sysconfig.patch
+- Add 3.4-dracut.conf.patch not to use initramfs-freebsd.img name
+  for initram
+
+-------------------------------------------------------------------
 Fri Mar 21 01:09:44 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to fix FTBFS with cmake4

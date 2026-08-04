@@ -20,11 +20,11 @@ diff -ur a/src/modules/welcome/welcome.conf b/src/modules/welcome/welcome.conf
  
  # Requirements checking. These are general, generic, things
  # that are checked. They may not match with the actual requirements
-@@ -68,7 +68,6 @@ requirements:
+@@ -83,7 +83,6 @@
          - storage
          - ram
          - power
 -        - internet
          - root
          - screen
-     # List conditions that **must** be satisfied (from the list
+         - "false"

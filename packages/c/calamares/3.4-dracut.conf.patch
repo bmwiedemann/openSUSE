@@ -1,0 +1,11 @@
+--- a/src/modules/dracut/dracut.conf
++++ b/src/modules/dracut/dracut.conf
+@@ -7,7 +7,7 @@
+ # If you want to specify another filename for the resulting image,
+ # set a custom name, including the path
+ #
+-initramfsName: /boot/initramfs-freebsd.img
++# initramfsName: /boot/initramfs-freebsd.img
+ 
+ # Optional: define a list of strings to be passed as arguments to Dracut
+ # By default, -f is always included

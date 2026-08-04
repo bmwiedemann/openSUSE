@@ -4,7 +4,7 @@ GRUB2 is default bootloader in openSUSE and openSUSE based appliances.
 diff --git a/src/modules/bootloader/bootloader.conf b/src/modules/bootloader/bootloader.conf
 --- a/src/modules/bootloader/bootloader.conf
 +++ b/src/modules/bootloader/bootloader.conf
-@@ -33,10 +33,10 @@ timeout: "10"
+@@ -41,11 +41,11 @@
  # GRUB functionality (notably grub-probe) to work. As needed, you may use
  # complete paths like `/usr/bin/efibootmgr` for the executables.
  #
@@ -12,10 +12,21 @@ diff --git a/src/modules/bootloader/bootloader.conf b/src/modules/bootloader/boo
 -grubMkconfig: "grub-mkconfig"
 -grubCfg: "/boot/grub/grub.cfg"
 -grubProbe: "grub-probe"
-+grubInstall: "grub2-install"
-+grubMkconfig: "grub2-mkconfig"
+-efiBootMgr: "efibootmgr"
++grubInstall: "/usr/sbin/grub2-install"
++grubMkconfig: "/usr/sbin/grub2-mkconfig"
 +grubCfg: "/boot/grub2/grub.cfg"
-+grubProbe: "grub2-probe"
- efiBootMgr: "efibootmgr"
++grubProbe: "/usr/sbin/grub2-probe"
++efiBootMgr: "/usr/sbin/efibootmgr"
  
  # Optionally set the bootloader ID to use for EFI. This is passed to
+ # grub-install --bootloader-id.
+@@ -72,7 +72,7 @@
+ #       packages may need to set this to "debian" because that is
+ #       hard-coded in `grubx64.efi`.
+ #
+-# efiBootloaderId: "dirname"
++efiBootloaderId: "opensuse"
+ 
+ # Optionally install a copy of the GRUB EFI bootloader as the EFI
+ # fallback loader (either bootia32.efi or bootx64.efi depending on

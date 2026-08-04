@@ -1,0 +1,11 @@
+--- a/src/modules/partition/partition.conf
++++ b/src/modules/partition/partition.conf
+@@ -154,7 +154,7 @@
+ #
+ # The default is "none" (no swap) if that is one of the enabled options, otherwise
+ # one of the items from the options.
+-initialSwapChoice: none
++initialSwapChoice: small
+
+ # armInstall
+ #
