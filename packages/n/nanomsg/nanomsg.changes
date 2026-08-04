@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug  3 07:35:26 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.4
+  * Fix for unsignaling. #1131
+- Update to version 1.2.3
+  * Fixed an error that caused a seg fault when there were not
+    enough bind ports.
+  * Fix ws handshake overflow. #1130
+
+-------------------------------------------------------------------
 Thu Jan  8 21:04:40 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.2.2:

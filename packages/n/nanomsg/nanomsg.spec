@@ -1,7 +1,7 @@
 #
 # spec file for package nanomsg
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define sover 6
 Name:           nanomsg
-Version:        1.2.2
+Version:        1.2.3
 Release:        0
 Summary:        Socket library providing several common communication patterns
 License:        MIT
