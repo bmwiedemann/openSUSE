@@ -15,15 +15,16 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define service_name zot
 %define system_user_name zot
 %define executable_name zot
 
 # https://github.com/project-zot/zot/blob/main/Makefile#L28
-%define zui_version commit-89a04ea
+%define zui_version commit-a446689
 
 Name:           zot-registry
-Version:        2.1.18
+Version:        2.1.19
 Release:        0
 Summary:        Scale-out production-ready vendor-neutral OCI-native container image registry
 License:        Apache-2.0
@@ -45,9 +46,9 @@ BuildRequires:  bash-completion
 BuildRequires:  coreutils
 BuildRequires:  fish
 BuildRequires:  git-core
-BuildRequires:  golang(API) >= 1.26
 BuildRequires:  sysuser-tools
 BuildRequires:  zsh
+BuildRequires:  golang(API) >= 1.26
 #
 BuildRequires:  dos2unix
 BuildRequires:  fdupes

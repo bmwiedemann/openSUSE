@@ -1,4 +1,122 @@
 -------------------------------------------------------------------
+Tue Aug 04 07:45:57 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.1.19:
+  * fix(meta): don't 500 a manifest delete once metaDB signature
+    cleanup … (#4289)
+  * ci: don't double checkout in the nightly job (#4294)
+  * chore(deps): bump the github-actions group with 8 updates
+    (#4293)
+  * refactor: CVE models cleanup (#4287)
+  * fix(sync): surface the rejected media type in manifest sync
+    failures (#4292)
+  * fix: dedupe digests before DynamoDB BatchGetItem (#4280)
+  * test(gql): add more unit tests (#4283)
+  * chore(deps): bump the go-dependencies group with 12 updates
+    (#4282)
+  * test: migrate pkg/cli tests from GetFreePort to port "0"
+    (#4281)
+  * test: migrate pkg/api tests from GetFreePort to port "0"
+    (#4278)
+  * fix(events): apply default HTTP sink timeout when unset (#4277)
+  * feat(sync): add a Google Artifact Registry credential helper
+    (#4276)
+  * feat: restrict periodic storage GC to a configurable
+    gcTimeWindow (#4223)
+  * feat(sync): support RFC 8693 token exchange in oauth2 helper
+    (#4269)
+  * fix: mask event headers when event config is present (#4274)
+  * fix(sync): refresh helper credentials on every sync entry point
+    (#4270)
+  * fix(api): require update for digest multi-tag overwrites
+    (#4266)
+  * fix(gql): fix Vulnerabilities skip key (#4273)
+  * fix(sync): guard credential refresh under clientLock (#4272)
+  * fix(ci): stabilize blackbox NATS events subscriber wait (#4265)
+  * chore(deps): bump the github-actions group across 1 directory
+    with 5 updates (#4264)
+  * feat: send an http event when an image has been scanned (#4257)
+  * fix(storage): check table existence before CreateTable in
+    dynamodb cache (#4260)
+  * feat: add ztsd layer support for cve scans (#4258)
+  * fix(ci): stabilize blackbox GC and HTTP events tests (#4261)
+  * chore: fix dependabot alerts (#4253)
+  * chore(deps): bump google.golang.org/grpc from 1.81.1 to 1.82.1
+    (#4249)
+  * chore(deps): bump oras-go to v2.6.2 (#4247)
+  * chore(deps): bump the github-actions group with 6 updates
+    (#4242)
+  * fix(api): reject backslash in OIDC callback redirect to prevent
+    open redirect (#4238)
+  * sync: prime auth before catalog lookup (#4186)
+  * chore(deps): bump the go-dependencies group with 8 updates
+    (#4237)
+  * fix(meta): derive push timestamp from blob mod time on storage
+    parse (#4234)
+  * chore(deps): bump the github-actions group across 1 directory
+    with 2 updates (#4225)
+  * ci: relax dco check for dependabot alerts (#4232)
+  * fix(storage): skip reserved dirs in GetNextRepository walk
+    (#4227)
+  * test(sync): query zot over kind network in on-demand E2E
+    (#4231)
+  * ci(nightly): increase sync timeout (#4230)
+  * chore: bump zui version (#4222)
+  * fix(search): use index descriptor platform when config platform
+    is empty (#4221)
+  * test: migrate extensions and pkg/test from GetFreePort to port
+    "0" (#4220)
+  * fix(storage): verify manifest and config blob digests during
+    scrub (#4212)
+  * fix(sync): predict post-OCI digest for on-demand skip checks
+    (#4185)
+  * feat(sync): add oauth2 credential helper for JWT assertion
+    exchange #4146 (#4147)
+  * fix(meta): guard GetReferrersInfo against a missing referrer
+    entry (#4213)
+  * test: fix flaky server port binding in integration tests
+    (#4216)
+  * test: fix flaky test (#4218)
+  * ci: raise zb bench HTTP timeouts and wait for zot shutdown
+    (#4219)
+  * chore: fix dependabot alerts (#4208)
+  * ci: use more powerful runner to run unit tests (#4207)
+  * fix(zb): record benchmark errors in stats instead of aborting
+    with log.Fatal (#4205)
+  * fix(storage): defer blob deletes for cache-unknown blobs until
+    dedupe rebuild completes (#4195)
+  * fix(imagetrust): bind cosign signature verification to the
+    manifest digest (#4202)
+  * fix(meta): avoid panic on malformed cosign signature tag
+    (#4204)
+  * fix(gc): resolve subject digest for cosign .sbom tags, not only
+    .sig (#4203)
+  * fix(storage): only promote dedupe origin when the deleted blob
+    is the origin (boltdb) (#4201)
+  * chore: fix dependabot alerts (#4200)
+  * test(sync): stabilize file deletion in some of the tests
+    (#4197)
+  * chore: fix dependabot alerts (#4192)
+  * feat(retention): add untagged retention configuration (#4191)
+  * fix(storage): normalize repository names to '/' separators on
+    Windows (#4188)
+  * feat(oidc): support login flow for OIDC tokens (#4171)
+  * fix(notation): Decouple Signature trust UI processing from
+    scanning (#4178)
+  * fix(gc): break orphan cycle when manifest blobs are missing
+    from storage (#4180)
+  * chore: fix dependabot alerts (#4181)
+  * fix(sync): enable exponential HTTP retry backoff via
+    maxRetryDelay (#4175)
+  * feat: expose ArtifactType in ImageSummary GraphQL type (#4177)
+  * feat(notation): Add TSA truststore support to notation policy
+    (#4168)
+  * fix: update OCI conformance workflow and improve blob upload
+    handling (#4170)
+  * fix(api): align blob, manifest, and referrers handling with OCI
+    conformance (#4165)
+
+-------------------------------------------------------------------
 Sun Jun 28 07:08:47 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.1.18:
