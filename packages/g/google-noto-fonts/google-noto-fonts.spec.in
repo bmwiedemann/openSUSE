@@ -17,7 +17,7 @@
 
 
 %define hyear     2026
-%define hmonth    07
+%define hmonth    08
 %define hday      01
 
 %define src_name  NotoFonts

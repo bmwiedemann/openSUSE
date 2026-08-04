@@ -334,4 +334,12 @@ add: README.FAQ to answer some questions about Noto Fonts packaging
    - Sunuwar Fonts (google-noto-sans-sunuwar-fonts)</comment>
     <requestid>1366698</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>b2afdde8c0ce990424743bafd0f7821b</srcmd5>
+    <version>20260801</version>
+    <time>1785871695</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1369239</requestid>
+  </revision>
 </revisionlist>
