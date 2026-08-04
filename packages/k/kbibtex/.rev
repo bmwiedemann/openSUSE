@@ -128,4 +128,12 @@
   fix-icu-75.patch</comment>
     <requestid>1177182</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>31da065d4d6c5a93d68c70c06c916c0e</srcmd5>
+    <version>0.10.50git.20260801T020758~7ee937e1</version>
+    <time>1785872104</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1369312</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package kbibtex
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,49 +16,44 @@
 #
 
 
-%bcond_without lang
+%define kf6_version 6.0.0
+%define qt6_version 6.6.0
+
+%bcond_without released
 Name:           kbibtex
-Version:        0.10.0
+Version:        0.10.50git.20260801T020758~7ee937e1
 Release:        0
 Summary:        The BibTeX (Latex) bibliography manager by KDE
 License:        GPL-2.0-only
-Group:          Productivity/Publishing/TeX/Utilities
-URL:            https://apps.kde.org/nl/kbibtex/
-Source:         https://download.kde.org/stable/KBibTeX/%{version}/%{name}-%{version}.tar.xz
-Patch0:         fix-icu-75.patch
-BuildRequires:  extra-cmake-modules
-BuildRequires:  libicu-devel
-BuildRequires:  libpoppler-qt5-devel
-BuildRequires:  libqca-qt5-devel
-BuildRequires:  qoauth-qt5-devel
-BuildRequires:  update-desktop-files
-BuildRequires:  cmake(KF5Completion)
-BuildRequires:  cmake(KF5CoreAddons) >= 5.51.0
-BuildRequires:  cmake(KF5Crash)
-BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5IconThemes)
-BuildRequires:  cmake(KF5ItemViews)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5Parts)
-BuildRequires:  cmake(KF5Service)
-BuildRequires:  cmake(KF5TextEditor)
-BuildRequires:  cmake(KF5Wallet)
-BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(Qt5Concurrent)
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5NetworkAuth)
-BuildRequires:  cmake(Qt5Test)
-# Only include WebEngine for platforms that support it
-%ifarch %{ix86} x86_64 %{arm} aarch64 mips mips64
-BuildRequires:  cmake(Qt5WebEngineWidgets)
+URL:            https://apps.kde.org/kbibtex/
+Source0:        %{name}-%{version}.tar.xz
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  pkgconfig
+BuildRequires:  shared-mime-info
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
+BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6Parts) >= %{kf6_version}
+BuildRequires:  cmake(KF6TextEditor) >= %{kf6_version}
+BuildRequires:  cmake(KF6Wallet) >= %{kf6_version}
+BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(Qt6Concurrent) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
+BuildRequires:  cmake(Qt6NetworkAuth) >= %{qt6_version}
+%ifarch x86_64 aarch64 riscv64
+BuildRequires:  cmake(Qt6WebEngineWidgets) >= %{qt6_version}
 %endif
-BuildRequires:  cmake(Qt5Widgets)
-BuildRequires:  cmake(Qt5XmlPatterns)
-Requires(post): desktop-file-utils
-Requires(post): shared-mime-info
-Requires(postun): desktop-file-utils
-Requires(postun): shared-mime-info
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+BuildRequires:  pkgconfig(icu-i18n)
+BuildRequires:  pkgconfig(icu-uc)
+BuildRequires:  pkgconfig(poppler-qt6)
 
 %description
 KBibTeX is a BibTeX editor by KDE to edit bibliographies used with
@@ -67,53 +62,52 @@ LaTeX. Features include comfortable input masks, starting web queries
 XML/HTML. As KBibTeX is using KDE's KParts technology, KBibTeX can be
 embedded into Kile or Konqueror.
 
+%package        devel
+Summary:        Development files for kbibtex
+Requires:       kbibtex = %{version}
+
+%description    devel
+This package contains the development files for kbibtex.
+
 %lang_package
 
 %prep
-%autosetup -n %{name}-%{version}
+%autosetup -p1
 
 %build
-%cmake_kf5 -d build -- -DCMAKE_SKIP_RPATH=FALSE -DCMAKE_SKIP_INSTALL_RPATH=TRUE
-%cmake_build
+%cmake_kf6 -DBUILD_WITH_QT6:BOOL=TRUE
+
+%kf6_build
 
 %install
-%make_install -C build
-%suse_update_desktop_file -r org.kde.kbibtex Qt KDE Office Database Science DataVisualization Education
+%kf6_install
 
-# Remove all devel files, they are not needed
-rm -rf %{buildroot}/%{_includedir}/KBibTeX
-rm -rf %{buildroot}/%{_kf5_libdir}/libkbibtex*.so
-rm -rf %{buildroot}/%{_kf5_libdir}/cmake/KBibTeX
+%find_lang %{name} --with-man --with-html
 
-%if %{with lang}
-%find_lang %{name}
-%endif
-
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets
 
 %files
+%license LICENSES/*
 %doc ChangeLog
-%license LICENSE
-%dir %{_kf5_appstreamdir}
-%{_kf5_applicationsdir}/org.kde.kbibtex.desktop
-%{_kf5_appstreamdir}/org.kde.kbibtex.appdata.xml
-%{_kf5_bindir}/kbibtex
-%{_kf5_htmldir}/*/kbibtex/
-%{_kf5_iconsdir}/hicolor/*/apps/kbibtex.png
-%{_kf5_kxmlguidir}/kbibtex/
-%{_kf5_kxmlguidir}/kbibtexpart/
-%{_kf5_libdir}/libkbibtex*.so.*
-%{_kf5_plugindir}/kbibtexpart.so*
-%{_kf5_servicesdir}/kbibtexpart.desktop
-%{_kf5_sharedir}/kbibtex/
-%{_kf5_sharedir}/man/man1/kbibtex.1.gz
-%{_kf5_sharedir}/man/*/man1/kbibtex.1.gz
-%{_kf5_sharedir}/mime/packages/bibliography.xml
-%{_kf5_sharedir}/qlogging-categories5/kbibtex.categories
+%doc %lang(en) %{_kf6_htmldir}/en/kbibtex
+%{_kf6_applicationsdir}/org.kde.kbibtex.desktop
+%{_kf6_appstreamdir}/org.kde.kbibtex.appdata.xml
+%{_kf6_bindir}/kbibtex
+%{_kf6_bindir}/kbibtex-cli
+%{_kf6_debugdir}/kbibtex.categories
+%{_kf6_iconsdir}/hicolor/*/apps/kbibtex.png
+%{_kf6_libdir}/libkbibtex*.so.*
+%{_kf6_mandir}/man1/kbibtex.1%{?ext_man}
+%{_kf6_plugindir}/kf6/parts/kbibtexpart.so
+%{_kf6_sharedir}/kbibtex/
+%{_kf6_sharedir}/mime/packages/bibliography.xml
 
-%if %{with lang}
+%files devel
+%{_includedir}/KBibTeX/
+%{_kf6_cmakedir}/KBibTeX/
+%{_kf6_libdir}/libkbibtex*.so
+
 %files lang -f %{name}.lang
-%endif
+%exclude %{_kf6_htmldir}/en
 
 %changelog
