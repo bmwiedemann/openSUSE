@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug  3 04:59:14 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Correct numpy requirements to match the current release.
+
+-------------------------------------------------------------------
 Thu Jul 16 23:23:54 UTC 2026 - Markus Ebner <info@ebner-markus.de>
 
 - Add required runtime library/driver dependencies to
