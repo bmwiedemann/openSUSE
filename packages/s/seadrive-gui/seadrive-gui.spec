@@ -18,7 +18,7 @@
 
 
 Name:           seadrive-gui
-Version:        3.0.23
+Version:        3.0.24
 Release:        0
 Summary:        GUI part of seafile drive
 License:        GPL-3.0-only
@@ -30,32 +30,37 @@ Patch1:         fix-cmake-exec-name.patch
 Patch2:         fix-return-value.patch
 # PATCH-FIX-UPSTREAM
 Patch3:         issue446.patch
+# PATCH-FIX-UPSTREAM
+Patch4:         fix-cmake-link-signature.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  libsearpc-devel
 BuildRequires:  libtool
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5DBus)
-BuildRequires:  cmake(Qt5Designer)
-BuildRequires:  cmake(Qt5Gui)
-BuildRequires:  cmake(Qt5Help)
-BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  cmake(Qt5Network)
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5UiTools)
-BuildRequires:  cmake(Qt5WebEngineCore)
-BuildRequires:  cmake(Qt5WebEngineWidgets)
+BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6Core5Compat)
+BuildRequires:  cmake(Qt6DBus)
+BuildRequires:  cmake(Qt6Gui)
+BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  cmake(Qt6Network)
+BuildRequires:  cmake(Qt6Test)
+BuildRequires:  cmake(Qt6WebEngineCore)
+BuildRequires:  cmake(Qt6WebEngineWidgets)
+BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(jansson)
 BuildRequires:  pkgconfig(libevent)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(uuid)
+Requires:       hicolor-icon-theme
 Requires:       seadrive-fuse >= 3.0.18
+# Qt6 WebEngine is not available on 32-bit architectures
+ExcludeArch:    %{ix86} %{arm}
 
 %description
 This package provides a graphical user interface for seadrive-fuse
@@ -84,20 +89,6 @@ export CXXFLAGS="%{optflags} -fPIE -pie"
 %{_bindir}/seadrive-gui
 %{_datadir}/applications/seadrive.desktop
 
-%dir %{_datadir}/icons/hicolor/16x16/
-%dir %{_datadir}/icons/hicolor/16x16/apps
-%dir %{_datadir}/icons/hicolor/22x22/
-%dir %{_datadir}/icons/hicolor/22x22/apps
-%dir %{_datadir}/icons/hicolor/24x24/
-%dir %{_datadir}/icons/hicolor/24x24/apps
-%dir %{_datadir}/icons/hicolor/32x32/
-%dir %{_datadir}/icons/hicolor/32x32/apps
-%dir %{_datadir}/icons/hicolor/48x48/
-%dir %{_datadir}/icons/hicolor/48x48/apps
-%dir %{_datadir}/icons/hicolor/128x128/
-%dir %{_datadir}/icons/hicolor/128x128/apps
-%dir %{_datadir}/icons/hicolor/scalable/
-%dir %{_datadir}/icons/hicolor/scalable/apps
 %{_datadir}/icons/hicolor/16x16/apps/seadrive.png
 %{_datadir}/icons/hicolor/22x22/apps/seadrive.png
 %{_datadir}/icons/hicolor/24x24/apps/seadrive.png

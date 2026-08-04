@@ -1,0 +1,22 @@
+Do not mix the plain and keyword signatures of target_link_libraries on
+the seadrive-gui target. All other calls for this target use the plain
+signature, so drop the lone PRIVATE keyword on the Qt6::DBus link.
+Otherwise CMake fails with:
+
+  The plain signature for target_link_libraries has already been used
+  with the target "seadrive-gui".  All uses of target_link_libraries
+  with a target must be either all-keyword or all-plain.
+
+Index: seadrive-gui-3.0.24/CMakeLists.txt
+===================================================================
+--- seadrive-gui-3.0.24.orig/CMakeLists.txt
++++ seadrive-gui-3.0.24/CMakeLists.txt
+@@ -583,7 +583,7 @@ ENDIF()
+ IF (${CMAKE_SYSTEM_NAME} MATCHES "Linux" OR ${CMAKE_SYSTEM_NAME} MATCHES "BSD")
+ IF(QT_VERSION_MAJOR EQUAL 6)
+     FIND_PACKAGE(Qt6 COMPONENTS DBus REQUIRED)
+-    TARGET_LINK_LIBRARIES(seadrive-gui PRIVATE Qt6::DBus)
++    TARGET_LINK_LIBRARIES(seadrive-gui Qt6::DBus)
+ ELSE()
+     TARGET_LINK_LIBRARIES(seadrive-gui ${QT_QTDBUS_LIBRARIES})
+     QT5_USE_MODULES(seadrive-gui ${USE_QT_LIBRARIES})

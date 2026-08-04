@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Aug  4 09:08:03 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- add fix-cmake-link-signature.patch: do not mix the plain and
+  keyword signatures of target_link_libraries, which broke the
+  build now that the Qt6 code paths are active
+- require hicolor-icon-theme for the hicolor icon directories
+  instead of owning them, fixing an unowned /usr/share/icons/hicolor
+
+-------------------------------------------------------------------
+Tue Aug  4 08:15:20 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- update to 3.0.24:
+  * Update Qt version to 6.8 (#496)
+  * Upgrade openssl to 3.5.4 (#495)
+  * Support file searching on Windows (#500)
+  * Set network errors for different domain (#501)
+  * Fix language disagreement (#502)
+  * Add space between user and server (#503)
+  * Fix the UI style of Sync Errors Dialog (#504)
+- build against Qt6 instead of Qt5
+- rebase fix-cmake-exec-name.patch to pick the Qt6 qmake
+- do not build on 32-bit architectures, Qt6 WebEngine is not
+  available there
+
+-------------------------------------------------------------------
 Mon Jun  8 09:09:58 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - update to 3.0.23 (no changelog).
