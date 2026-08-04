@@ -27,4 +27,12 @@
     - Improved security of decode to prevent timing side-channel attacks in symmetric signatures</comment>
     <requestid>1358714</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>abd11a96a9eb529a6774680ce2404b68</srcmd5>
+    <version>1.20.0</version>
+    <time>1785872113</time>
+    <user>dimstar_suse</user>
+    <comment>      CVE-2026-9537 bsc#1271935</comment>
+    <requestid>1369318</requestid>
+  </revision>
 </revisionlist>

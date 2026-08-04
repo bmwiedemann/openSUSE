@@ -7,6 +7,7 @@ Sun Jun  7 00:39:10 UTC 2026 - Tina Müller <timueller+perl@suse.de>
   1.02 2026-06-03
     - This release contains fixes for security issues, everybody should upgrade!
     - Improved security of decode to prevent timing side-channel attacks in symmetric signatures
+      CVE-2026-9537 bsc#1271935
 
 -------------------------------------------------------------------
 Wed Oct 16 05:34:42 UTC 2024 - Tina Müller <timueller+perl@suse.de>
