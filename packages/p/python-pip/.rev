@@ -1134,4 +1134,41 @@
     entry deserialization failed warning. (#14012)</comment>
     <requestid>1356352</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>0859fc7508b8e6de4af4c15a92c9a87a</srcmd5>
+    <version>26.2</version>
+    <time>1785871691</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 26.2 (bsc#1273090, CVE-2026-13346):
+  # Deprecations and Removals
+  - Newly published packages will no longer be immediately visible to
+    pip if the index uses caching. To install a newly published
+    package, use ``--refresh-package``.
+  - Drop support for detecting legacy, non-:pep:`405`, ``virtualenv``
+    (&lt; 20) environments.
+  - Constraints files, including ``PIP_CONSTRAINT``, no longer affect
+    isolated build environments. Use ``--build-constraint`` or the
+    ``PIP_BUILD_CONSTRAINT`` environment variable to constrain build
+    dependencies instead.
+    The ``--use-feature=build-constraint`` flag is now always enabled
+    and has no effect.
+  # Features
+  - Declare support for Python 3.15
+  - Support self-referential extras officially. pip has supported this
+    by accident since version 21.2.
+  - Add ``--only-deps`` flag to instruct pip to select only the
+    dependencies of supplied packages. It cannot be used with
+    ``--no-deps``, ``-r``, ``--group``, or
+    ``--requirements-from-script``.
+  - Cache simple responses in accordance to their ``Cache-Control``
+    header instead of always revalidating on every request. To refresh
+    cached package index responses and ensure newly published packages
+    are found, use ``--refresh-package &lt;package&gt;``.
+  - Add ``--no-require-hashes`` to disable automatic enablement of
+    ``--require-hashes`` when encountering a requirement with hashes.
+  - Honor ``--only-final`` when sourcing requirements with ``-r
+    pylock.toml``.
+  - Add support for ``pylock.toml`` ``upload-time`` field, so</comment>
+    <requestid>1369235</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,148 @@
 -------------------------------------------------------------------
+Mon Aug  3 10:58:33 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 26.2 (bsc#1273090, CVE-2026-13346):
+  # Deprecations and Removals
+  - Newly published packages will no longer be immediately visible to
+    pip if the index uses caching. To install a newly published
+    package, use ``--refresh-package``.
+  - Drop support for detecting legacy, non-:pep:`405`, ``virtualenv``
+    (< 20) environments.
+  - Constraints files, including ``PIP_CONSTRAINT``, no longer affect
+    isolated build environments. Use ``--build-constraint`` or the
+    ``PIP_BUILD_CONSTRAINT`` environment variable to constrain build
+    dependencies instead.
+    The ``--use-feature=build-constraint`` flag is now always enabled
+    and has no effect.
+
+  # Features
+  - Declare support for Python 3.15
+  - Support self-referential extras officially. pip has supported this
+    by accident since version 21.2.
+  - Add ``--only-deps`` flag to instruct pip to select only the
+    dependencies of supplied packages. It cannot be used with
+    ``--no-deps``, ``-r``, ``--group``, or
+    ``--requirements-from-script``.
+  - Cache simple responses in accordance to their ``Cache-Control``
+    header instead of always revalidating on every request. To refresh
+    cached package index responses and ensure newly published packages
+    are found, use ``--refresh-package <package>``.
+  - Add ``--no-require-hashes`` to disable automatic enablement of
+    ``--require-hashes`` when encountering a requirement with hashes.
+  - Honor ``--only-final`` when sourcing requirements with ``-r
+    pylock.toml``.
+  - Add support for ``pylock.toml`` ``upload-time`` field, so
+    ``--uploaded-prior-to`` works with ``-r pylock.toml``.
+  - Better error messages in case of conflicts with requirements from
+    ``-r pylock.toml``.
+  - Add experimental support for isolating build subprocesses by
+    creating standard virtual environments. This will fix most (if not
+    all) subtle isolation issues that can lead to broken builds
+    exclusive to pip. The feature can be enabled via
+    ``--use-feature=venv-isolation`` and will be enabled by default in
+    a future release.
+    Note that the feature has limited compatibility with
+    ``--use-feature=inprocess-build-deps``.  While most builds should
+    work with both features enabled, there are known edge cases.
+    ``inprocess-build-deps`` will not be enabled by default until they
+    are fixed.
+  - Present more informative diagnostic errors on uncaught network
+    errors.
+  - Allow opting out of Git partial clones with
+    ``PIP_NO_PARTIAL_CLONE_FOR_BROKEN_GIT_SERVER``.
+  - Add a ``--no-proxy-env`` (or ``--proxy ""``) option to ignore
+    proxies configured via non-pip environment variables or
+    configuration files.  A proxy set with ``--proxy`` is still used.
+  - Add support for pulling username from keyring subprocess provider
+  - Speedup tab autocompletion by lazy-importing certain modules.
+  - Improve cached wheel lookup performance when many cached wheels
+    are checked for compatibility.
+  - Speed up path compaction when displaying uninstall changes.
+
+  # Bug Fixes
+  - Only emit the invalid-metadata warning once per location per run,
+    instead of repeating it during the same command.
+  - Handle ``BrokenPipeError`` when pip output is piped to a command
+    that closes early.
+  - Follow symlinks while checking if installed scripts are on PATH.
+  - Stop dropping extras from messages about candidates with
+    inconsistent metadata.
+  - Stop animating progress bars and status spinners when running on
+    CI, even if ``FORCE_COLOR`` is set.
+  - Ensure truststore feature remains active while initially
+    connecting to a HTTPS proxy.
+  - Address encoding warnings emitted when Python's UTF-8 Mode is
+    enabled by continuing to use the configured locale.
+  - Raise an error when the :pep:`658` ``.metadata`` file used during
+    dependency resolution disagrees with the downloaded wheel's
+    ``METADATA`` on ``Name``, ``Version``, ``Requires-Dist``,
+    ``Requires-Python`` or ``Provides-Extra``.
+  - Prevent system packages from leaking into isolated build
+    environments on Python 3.15
+  - Never use persistent wheel cache for local directory requirements
+    even if there is a matching entry.
+  - Avoid re-fetching a pinned Git commit that is already present
+    locally.
+  - Report the correct configuration level for ``cert`` in ``pip
+    debug`` output.
+  - Fix ``pip show`` crash when a distribution has no
+    ``Metadata-Version``.
+  - Remove empty ``http-v2`` cache directories when running ``pip
+    cache purge``.
+  - Report a copy failure in ``pip wheel`` instead of a misleading
+    build failure.
+  - Make ``pip install`` conflict checks independent of installed
+    distribution iteration order.
+  - Fix ``ProtocolError`` exceptions raised after an incomplete
+    download from bypassing download resume logic and leading to a
+    crash.
+  - Fix caching bug where local directory requirements would be cached
+    if the directory name contains a dash.
+  - Avoid reparsing distribution metadata when formatting the default
+    ``pip list`` columns output with the importlib backend.
+  - Fix decoding the URL path twice while determining a link filename
+    (CVE-2026-13346).
+  - Avoid reading installed file lists in ``pip show`` unless
+    ``--files`` is used.
+  - Additional rejection of tar archives that write outside the target
+    directory through symlink traversal when extracting on Python
+    versions pre-PEP 706.
+  - Fix ``pip list --not-required`` listing dependencies of packages
+    excluded with ``--exclude``.
+  - Fail an interrupted download instead of corrupting the saved file
+    when the server resumes a range request from a different offset
+    than was requested.
+  - Fix option errors printing the usage message with raw Rich markup.
+  - platformdirs 4.6.0+ adds support for ``XDG_*`` environment
+    variables on macOS, so some directory locations may change if any
+    of these are set:
+    - ``XDG_CACHE_HOME``: The `pip cache directory
+      <https://pip.pypa.io/en/stable/cli/pip_cache/>`_ will be at
+      ``$XDG_CACHE_HOME/pip``.
+    - ``XDG_DATA_DIRS``: The `global configuration file
+      <https://pip.pypa.io/en/stable/topics/configuration/#config-file>`_
+      will be inside ``$XDG_DATA_DIRS/pip``
+    - ``XDG_DATA_HOME``: The `user configuration file
+      <https://pip.pypa.io/en/stable/topics/configuration/#config-file>`_
+      will be inside ``$XDG_DATA_HOME/pip``, if the directory exists
+  - Recover credentials embedded in a redirect ``Location`` URL when
+    handling a ``401`` response, even under ``--no-input``. Previously
+    this extraction was gated behind keyring being enabled, so
+    ``--no-input`` (with the default keyring provider) caused
+    downloads that rely on a cross-origin redirect with embedded
+    credentials to fail with ``401``.
+  - Reject a package ``path`` in a ``pylock.toml`` fetched from a URL
+    when it resolves outside the lock file's own location, so a remote
+    lock file can no longer point at the local filesystem or another
+    host.
+  - Respect ``--uploaded-prior-to``, ``--no-binary``,
+    ``--only-binary``, and ``--prefer-binary`` in ``pip list
+    --outdated`` and ``pip list --uptodate`` when determining the
+    latest available version.
+  - Show a clear error instead of a traceback for an invalid
+    requirement marker.
+
+-------------------------------------------------------------------
 Mon Jun  1 12:18:51 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 26.1.2 (bsc#1266669, CVE-2026-8643):
