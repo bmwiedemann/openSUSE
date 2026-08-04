@@ -23,4 +23,20 @@
     <comment>Update to 0.10.2 (version from project metadata, mypy fixes); drop obsolete fix-version-info.patch</comment>
     <requestid>1363978</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b626fe3ad5d4251d68dd299f26ec6f92</srcmd5>
+    <version>0.11.1</version>
+    <time>1785872224</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.11.1
+
+Upstream fixes a segfault, a hang and around thirty further bugs across all
+four I/O backends.
+
+Packaging: switched to the PyPI sdist because upstream did not bump the
+version in pyproject.toml for 0.11.0/0.11.1, so a build from the git tag
+produced caio-0.10.2.dist-info. Also drops the top-level tests package that
+upstream's wheel now installs into site-packages.</comment>
+    <requestid>1369386</requestid>
+  </revision>
 </revisionlist>

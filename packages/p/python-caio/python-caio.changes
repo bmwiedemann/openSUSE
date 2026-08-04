@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Aug  4 05:37:37 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.11.1:
+  * Fix a segfault, a hang and around thirty further bugs across all
+    four I/O backends (linux-aio, io_uring, POSIX AIO and the thread
+    pool fallback)
+  * Ship the complete tests directory in the source distribution
+  * Add musllinux wheels
+- Switch the source to the PyPI sdist: upstream did not bump "version"
+  in pyproject.toml for 0.11.0 or 0.11.1, so a build from the git tag
+  installed caio-0.10.2.dist-info. The sdist carries the correct
+  version and, since 0.11.0, the tests as well
+- Do not install the top-level tests package that upstream's wheel now
+  contains, rather than claim the generic "tests" name in the
+  site-packages directory
+- Skip the new tests that cannot work in a build chroot: those that
+  re-exec "python -c" pick up the uninstalled source tree instead of
+  the built extensions, and those asserting linux-aio and io_uring
+  timing are not reproducible under a parallel build
+
+-------------------------------------------------------------------
 Mon Jul  6 07:40:06 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.10.2:
