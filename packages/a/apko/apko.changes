@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Aug 04 08:33:39 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.2.32:
+  * Evict superseded index generations from the derived caches
+    (#2360)
+  * apk/installed: guard ParseInstalled against short lines (#2328)
+  * build(deps): bump github.com/go-git/go-git/v5 from 5.19.1 to
+    5.19.2 (#2364)
+  * build(deps): bump go.step.sm/crypto from 0.86.0 to 0.87.0
+    (#2365)
+  * build(deps): bump google.golang.org/api from 0.290.0 to 0.291.0
+    (#2366)
+  * build(deps): bump github/codeql-action/analyze from 4.37.3 to
+    4.37.4 (#2367)
+  * build(deps): bump github/codeql-action/init from 4.37.3 to
+    4.37.4 (#2368)
+  * build(deps): bump chainguard.dev/sdk from 0.1.158 to 0.1.163
+    (#2363)
+
+-------------------------------------------------------------------
 Mon Aug 03 05:55:40 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.2.31:
