@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug  4 08:11:08 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Make it build ewven with latest chkstat, which does not accept
+  ownerships like root:<anygroup> with special access permissions
+
+-------------------------------------------------------------------
 Thu Jun  5 09:27:15 UTC 2025 - pgajdos@suse.com
 
 - added patches

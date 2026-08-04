@@ -93,4 +93,13 @@
   + uucp-gcc15.patch (forwarded request 1283031 from pgajdos)</comment>
     <requestid>1283334</requestid>
   </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>50e708c1ebf4383926aae39c40a54bbc</srcmd5>
+    <version>1.07</version>
+    <time>1785872233</time>
+    <user>dimstar_suse</user>
+    <comment>- Make it build ewven with latest chkstat, which does not accept
+  ownerships like root:&lt;anygroup&gt; with special access permissions</comment>
+    <requestid>1369416</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package uucp
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -61,7 +61,10 @@ BuildRequires:  automake
 BuildRequires:  makeinfo
 BuildRequires:  ncurses-devel
 BuildRequires:  pam-devel
+BuildRequires:  permissions
 BuildRequires:  pkgconfig
+BuildRequires:  group(uucp)
+BuildRequires:  user(uucp)
 Requires:       ca-certificates
 Requires:       filesystem
 Requires:       logrotate
@@ -69,11 +72,8 @@ Requires:       netcfg
 Requires:       openssl
 Requires:       rmail
 Requires:       stunnel
-%if 0%{?suse_version} >= 1330
-Requires(pre):  user(uucp) group(uucp)
-%else
-Requires(pre):  shadow
-%endif
+Requires(pre):  user(uucp)
+Requires(pre):  group(uucp)
 Requires(post): %{install_info_prereq}
 Requires(post): fileutils
 Requires(post): permissions
@@ -204,7 +204,6 @@ do
 done
 
 %verifyscript
-%verify_permissions -e %{_localstatedir}/spool/uucp/
 %verify_permissions -e %{_localstatedir}/spool/uucppublic/
 %verify_permissions -e %{_bindir}/uucp
 %verify_permissions -e %{_bindir}/uuname
@@ -245,7 +244,6 @@ for log in Log Stats Debug ; do
 done
 chown root:root %{_localstatedir}/log/uucp
 chmod 1755      %{_localstatedir}/log/uucp
-%set_permissions %{_localstatedir}/spool/uucp/
 %set_permissions %{_localstatedir}/spool/uucppublic/
 %set_permissions %{_bindir}/uucp
 %set_permissions %{_bindir}/uuname
@@ -286,10 +284,11 @@ test -x /usr/bin/systemd-tmpfiles && /usr/bin/systemd-tmpfiles --create %{_tmpfi
 %config %attr(0640,uucp,uucp) %{_sysconfdir}/%{name}/suucp-server.conf.systemd
 %config %attr(0640,uucp,uucp) %{_sysconfdir}/%{name}/suucp-client.conf.example
 %config(noreplace) %attr(0640,uucp,uucp) %{_sysconfdir}/%{name}/.bashrc
-%dir %attr(0750,uucp,uucp) %{_sysconfdir}/uucp/hdb_config
-%dir %{_libexecdir}/uucp
-%dir %attr(1755,root,root) %{_localstatedir}/log/uucp
-%verify(not mode group) %dir %attr(1770,root,uucp) %{_localstatedir}/spool/uucppublic
+%dir %attr(0750,uucp,uucp) %{_sysconfdir}/uucp/hdb_config/
+%dir %{_libexecdir}/uucp/
+%dir %attr(1755,root,root) %{_localstatedir}/log/uucp/
+%dir %attr(0750,uucp,uucp) %{_localstatedir}/spool/uucp/
+%dir %verify(not mode group) %attr(1770,uucp,uucp) %{_localstatedir}/spool/uucppublic/
 %attr(755,root,root) %{_bindir}/cu
 %verify(not mode) %attr(6555,uucp,uucp) %{_bindir}/uucp
 %verify(not mode) %attr(6555,uucp,uucp) %{_bindir}/uuname
