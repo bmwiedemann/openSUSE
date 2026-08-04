@@ -136,4 +136,12 @@
   * Updated trivy depdency to known safe version (#3421) (forwarded request 1364726 from glaubitz)</comment>
     <requestid>1365366</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>474c6892ca8b79d42cd97680f7d0e7a8</srcmd5>
+    <version>10.32.6</version>
+    <time>1785872066</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1369285</requestid>
+  </revision>
 </revisionlist>

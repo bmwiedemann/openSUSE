@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Aug  3 06:56:52 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 10.32.6
+  * Bump Version
+  * Update Changelog
+  * Run go mod tidy
+  * Merge tag 'v10.32.4' into release/fips
+  * Merge remote-tracking branch 'origin/wendi/10.32.5' into release/fips
+  * Merge branch 'main' into wendi/10.32.5
+  * TASK 38260338: Updated the release pipeline to produce Linux builds
+    capable of complying with the FIPS 140-3 standard. (#3488)
+  * Merge branch 'main' into wendi/10.32.5
+  * Bump Go toolchain and security-relevant dependencies (#3486)
+  * stylistic changes from copilot :)
+- Update golang.org/x/text to v0.40.0 (bsc#1272123, CVE-2026-56852)
+
+-------------------------------------------------------------------
 Thu Jul  9 13:39:43 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 10.32.5
