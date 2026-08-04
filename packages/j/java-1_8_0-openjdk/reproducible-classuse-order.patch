@@ -1,0 +1,62 @@
+# Give the javadoc class-use tables a total ordering
+#
+# ClassUseWriter.pkgDivide sorts each list of uses with Collections.sort, i.e.
+# by Doc.compareTo, whose key is the member's own name plus its signature
+# (ExecutableMemberDocImpl.generateKey). The declaring class is not part of
+# that key, so every _Dyn*Stub.get_val() in org.omg.DynamicAny has the
+# identical key "get_val()", all the comparisons return 0, and the stable sort
+# leaves those rows in the order they were inserted.
+#
+# That insertion order is the order of RootDoc.classes(), which comes from the
+# package Scope and ultimately from the order javac's file manager listed the
+# source directory, so it varies between builds. Thirteen class-use pages
+# differed between two builds this way - the same rows, rotated.
+#
+# Break the tie on the qualified name, which does include the declaring class.
+# Entries that already compared unequal keep their position, so nothing else in
+# the generated documentation moves. IndexBuilder.DocComparator already breaks
+# its ties the same way, which is why the index pages were unaffected.
+#
+# JDK-8039410 fixed this upstream in 9 by routing the sort through
+# Util.makeComparatorForClassUse(); that change also rewrites IndexBuilder and
+# adds 160 lines of comparator plumbing to Util.java, none of which JDK 8 needs.
+#
+# Diffed against the icedtea8 drop rather than exported from the jdk8u tree:
+# icedtea's langtools has a newer ClassUseWriter.java than jdk8u492-ga, so a
+# patch generated from git does not apply here.
+#
+
+--- a/openjdk/langtools/src/share/classes/com/sun/tools/doclets/formats/html/ClassUseWriter.java	2026-07-29 21:17:30.204172822 +0200
++++ b/openjdk/langtools/src/share/classes/com/sun/tools/doclets/formats/html/ClassUseWriter.java	2026-07-29 21:17:41.462022551 +0200
+@@ -28,6 +28,7 @@
+ import java.io.IOException;
+ import java.util.ArrayList;
+ import java.util.Collections;
++import java.util.Comparator;
+ import java.util.HashMap;
+ import java.util.Iterator;
+ import java.util.List;
+@@ -176,11 +177,22 @@
+         }
+     }
+ 
++    private static final Comparator<ProgramElementDoc> useComparator =
++            new Comparator<ProgramElementDoc>() {
++        public int compare(ProgramElementDoc a, ProgramElementDoc b) {
++            int result = a.compareTo(b);
++            if (result == 0) {
++                result = a.qualifiedName().compareTo(b.qualifiedName());
++            }
++            return result;
++        }
++    };
++
+     private Map<String,List<ProgramElementDoc>> pkgDivide(Map<String,? extends List<? extends ProgramElementDoc>> classMap) {
+         Map<String,List<ProgramElementDoc>> map = new HashMap<String,List<ProgramElementDoc>>();
+         List<? extends ProgramElementDoc> list= classMap.get(classdoc.qualifiedName());
+         if (list != null) {
+-            Collections.sort(list);
++            Collections.sort(list, useComparator);
+             for (ProgramElementDoc doc : list) {
+                 PackageDoc pkg = doc.containingPackage();
+                 pkgSet.add(pkg);

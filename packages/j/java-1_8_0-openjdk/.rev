@@ -922,4 +922,12 @@
     <comment>Require at least gcc 7 for aarch64 builds</comment>
     <requestid>1358223</requestid>
   </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>3bcd4b78923fd7863b302d33b04e4629</srcmd5>
+    <version>1.8.0.502</version>
+    <time>1785878896</time>
+    <user>dimstar_suse</user>
+    <comment>July 2026 CPU fixes</comment>
+    <requestid>1369432</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,38 @@
+# Take the build identification date from SOURCE_DATE_EPOCH
+#
+# IT_GET_LSB_DATA builds DIST_ID from the wall clock. In the OBS build root
+# lsb_release is not installed, so it takes the fallback branch and yields
+# "Custom build (Tue Jun  9 15:33:30 UTC 2026)". That string is compiled into
+# libjvm.so, and libjvm.so's version string is in turn recorded in the CDS
+# archive, so both files differ between two builds.
+#
+# Compute the date once, honouring SOURCE_DATE_EPOCH, and use it in both
+# branches that need one. The shape of the string is unchanged.
+#
+
+--- icedtea-3.39.0/acinclude.m4	2026-04-28 23:59:50.418989522 +0200
++++ icedtea-3.39.0/acinclude.m4	2026-07-29 16:44:55.559633336 +0200
+@@ -1242,16 +1242,21 @@
+ [
+ AC_REQUIRE([IT_GET_PKGVERSION])
+ AC_MSG_CHECKING([build identification])
++if test -n "$SOURCE_DATE_EPOCH"; then
++  it_build_date="$(date --utc --date=@$SOURCE_DATE_EPOCH)"
++else
++  it_build_date="$(date)"
++fi
+ if test -n "$LSB_RELEASE"; then
+   lsb_info="$($LSB_RELEASE -ds | sed 's/^"//;s/"$//')"
+   if test "x$PKGVERSION" = "xnone"; then
+-    DIST_ID="Built on $lsb_info ($(date))"
++    DIST_ID="Built on $lsb_info ($it_build_date)"
+   else
+     DIST_ID="$lsb_info, package $PKGVERSION"
+   fi
+   DIST_NAME="$($LSB_RELEASE -is | sed 's/^"//;s/"$//')"
+ else
+-  DIST_ID="Custom build ($(date))"
++  DIST_ID="Custom build ($it_build_date)"
+   DIST_NAME="$build_os"
+ fi
+ AC_MSG_RESULT([${DIST_ID}])

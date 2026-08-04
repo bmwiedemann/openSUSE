@@ -1,0 +1,52 @@
+# Append the extra VM entries to jvm.cfg in a fixed order
+#
+# stamps/add-cacao, stamps/add-jamvm and stamps/add-zero each append a line to
+# the same $(BUILD_JRE_ARCH_DIR)/jvm.cfg, and all three are independent
+# prerequisites of stamps/icedtea-stage2. Under a parallel make they run in
+# whatever order the recipes finish in, so the shipped jvm.cfg differs between
+# a 1-core and a many-core build - "-jamvm ERROR" showed up after "-shark
+# ERROR" in one build and before "-zero ERROR" in the other.
+#
+# Chain the three stamps so the order is fixed at cacao, jamvm, zero (which
+# also emits the shark line). Same for the -debug variants, which have the
+# identical race on the debug image's jvm.cfg.
+#
+
+--- icedtea-3.39.0/Makefile.am	2026-04-28 23:59:50.409989500 +0200
++++ icedtea-3.39.0/Makefile.am	2026-07-29 16:46:01.460571158 +0200
+@@ -1944,7 +1944,7 @@
+ 
+ # Targets for additional VMs
+ 
+-stamps/add-jamvm.stamp: stamps/icedtea.stamp stamps/jamvm.stamp
++stamps/add-jamvm.stamp: stamps/icedtea.stamp stamps/jamvm.stamp stamps/add-cacao.stamp
+ if ADD_JAMVM_BUILD
+ 	mkdir -p $(BUILD_JRE_ARCH_DIR)/jamvm
+ 	install -m 644 jamvm/install/lib/libjvm.so \
+@@ -1962,7 +1962,7 @@
+ 	fi
+ 	rm -f stamps/add-jamvm.stamp
+ 
+-stamps/add-jamvm-debug.stamp: stamps/icedtea-debug.stamp stamps/jamvm.stamp
++stamps/add-jamvm-debug.stamp: stamps/icedtea-debug.stamp stamps/jamvm.stamp stamps/add-cacao-debug.stamp
+ if ADD_JAMVM_BUILD
+ 	mkdir -p $(BUILD_DEBUG_JRE_ARCH_DIR)/jamvm
+ 	install -m 644 jamvm/install/lib/libjvm.so \
+@@ -2115,7 +2115,7 @@
+ 	BUILD_JDK=false \
+ 	DISTRIBUTION_PATCHES='$(foreach p,$(DISTRIBUTION_PATCHES),$(if $(findstring cacao,$(p)),,$(if $(findstring jamvm,$(p)),,$(p))))'
+ 
+-stamps/add-zero.stamp: stamps/icedtea.stamp
++stamps/add-zero.stamp: stamps/icedtea.stamp stamps/add-jamvm.stamp
+ 	mkdir -p stamps
+ if ADD_ZERO_BUILD
+ 	mkdir -p zerovm
+@@ -2156,7 +2156,7 @@
+ 	fi
+ 	rm -f stamps/add-zero.stamp
+ 
+-stamps/add-zero-debug.stamp: stamps/icedtea-debug.stamp
++stamps/add-zero-debug.stamp: stamps/icedtea-debug.stamp stamps/add-jamvm-debug.stamp
+ 	mkdir -p stamps
+ if ADD_ZERO_BUILD
+ 	mkdir -p zerovm

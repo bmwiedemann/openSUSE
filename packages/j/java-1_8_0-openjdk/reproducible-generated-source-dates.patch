@@ -1,0 +1,102 @@
+# Use SOURCE_DATE_EPOCH for dates written into generated sources
+#
+# Three build tools stamp the current date into the sources they generate, so
+# the result depends on when the build runs, and all three end up in the
+# shipped src.zip.
+#
+#   - CopyrightHeaders.getYear() in the CLDR converter used the current year,
+#     which puts "Copyright (c) 2012, 2026" into one build and "2012, 2027"
+#     into the next.
+#
+#   - GenerateCharacter wrote "This file was generated AUTOMATICALLY from a
+#     template file <full timestamp>" into the CharacterData*.java files.
+#
+#   - EquivMapsGenerator did the same as the CLDR converter for the copyright
+#     header of sun/util/locale/LocaleEquivalentMaps.java.
+#
+# Take the date from SOURCE_DATE_EPOCH when it is set, and keep the current
+# time otherwise. The year is still computed in America/Los_Angeles, as
+# before, so only the instant changes.
+#
+# Backported from the same fix made for java-11-openjdk.
+#
+
+diff --git a/openjdk/jdk/make/src/classes/build/tools/cldrconverter/CopyrightHeaders.java b/openjdk/jdk/make/src/classes/build/tools/cldrconverter/CopyrightHeaders.java
+index 1ea0186bc03..7c349ec0c07 100644
+--- a/openjdk/jdk/make/src/classes/build/tools/cldrconverter/CopyrightHeaders.java
++++ b/openjdk/jdk/make/src/classes/build/tools/cldrconverter/CopyrightHeaders.java
+@@ -145,8 +145,17 @@ class CopyrightHeaders {
+     }
+ 
+     private static int getYear() {
+-        return new GregorianCalendar(TimeZone.getTimeZone("America/Los_Angeles"),
+-                                         Locale.US).get(Calendar.YEAR);
++        GregorianCalendar cal =
++            new GregorianCalendar(TimeZone.getTimeZone("America/Los_Angeles"),
++                                  Locale.US);
++        String sourceDateEpoch = System.getenv("SOURCE_DATE_EPOCH");
++        if (sourceDateEpoch != null && !sourceDateEpoch.isEmpty()) {
++            try {
++                cal.setTimeInMillis(Long.parseLong(sourceDateEpoch.trim()) * 1000L);
++            } catch (NumberFormatException e) {
++            }
++        }
++        return cal.get(Calendar.YEAR);
+     }
+ 
+     // no instantiation
+diff --git a/openjdk/jdk/make/src/classes/build/tools/generatecharacter/GenerateCharacter.java b/openjdk/jdk/make/src/classes/build/tools/generatecharacter/GenerateCharacter.java
+index 83973ef07c4..dbc4230fb51 100644
+--- a/openjdk/jdk/make/src/classes/build/tools/generatecharacter/GenerateCharacter.java
++++ b/openjdk/jdk/make/src/classes/build/tools/generatecharacter/GenerateCharacter.java
+@@ -686,6 +686,17 @@ OUTER:  for (int i = 0; i < n; i += m) {
+     *     @see GenerateCharacter#replaceCommand
+     */
+ 
++    static java.util.Date generationDate() {
++        String sourceDateEpoch = System.getenv("SOURCE_DATE_EPOCH");
++        if (sourceDateEpoch != null && !sourceDateEpoch.isEmpty()) {
++            try {
++                return new java.util.Date(Long.parseLong(sourceDateEpoch.trim()) * 1000L);
++            } catch (NumberFormatException e) {
++            }
++        }
++        return new java.util.Date();
++    }
++
+     static void generateCharacterClass(String theTemplateFileName,
+                                        String theOutputFileName)
+         throws FileNotFoundException, IOException {
+@@ -693,7 +704,7 @@ OUTER:  for (int i = 0; i < n; i += m) {
+         PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(theOutputFileName)));
+         out.println(commentStart +
+             " This file was generated AUTOMATICALLY from a template file " +
+-            new java.util.Date() + commentEnd);
++            generationDate() + commentEnd);
+         int marklen = commandMarker.length();
+         LOOP: while(true) {
+             try {
+diff --git a/openjdk/jdk/make/src/classes/build/tools/generatelsrequivmaps/EquivMapsGenerator.java b/openjdk/jdk/make/src/classes/build/tools/generatelsrequivmaps/EquivMapsGenerator.java
+index ba83f92a183..7e732752697 100644
+--- a/openjdk/jdk/make/src/classes/build/tools/generatelsrequivmaps/EquivMapsGenerator.java
++++ b/openjdk/jdk/make/src/classes/build/tools/generatelsrequivmaps/EquivMapsGenerator.java
+@@ -226,9 +226,16 @@ public class EquivMapsGenerator {
+         + "}";
+ 
+     private static String getOpenJDKCopyright() {
+-        int year = Calendar.getInstance(TimeZone
+-                .getTimeZone("America/Los_Angeles")).get(Calendar.YEAR);
+-        return String.format(Locale.US, COPYRIGHT, year);
++        Calendar cal = Calendar.getInstance(TimeZone
++                .getTimeZone("America/Los_Angeles"));
++        String sourceDateEpoch = System.getenv("SOURCE_DATE_EPOCH");
++        if (sourceDateEpoch != null && !sourceDateEpoch.isEmpty()) {
++            try {
++                cal.setTimeInMillis(Long.parseLong(sourceDateEpoch.trim()) * 1000L);
++            } catch (NumberFormatException e) {
++            }
++        }
++        return String.format(Locale.US, COPYRIGHT, cal.get(Calendar.YEAR));
+     }
+ 
+     /**

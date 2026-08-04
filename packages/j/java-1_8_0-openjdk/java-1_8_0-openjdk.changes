@@ -1,4 +1,107 @@
 -------------------------------------------------------------------
+Tue Aug  4 07:40:34 UTC 2026 - Andreas Schwab <schwab@suse.de>
+
+- Modified patch:
+  * riscv64-zero.patch
+    + rebase and drop integrated hunks
+
+-------------------------------------------------------------------
+Tue Aug  4 05:35:32 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version jdk8u502 (icedtea 3.40.0)
+  * CVEs
+    + CVE-2026-46968, bsc#1272224
+    + CVE-2026-47010, bsc#1272225
+    + CVE-2026-47021, bsc#1272227
+    + CVE-2026-47027, bsc#1272228
+    + CVE-2026-60147, bsc#1272237
+    + CVE-2026-47059, bsc#1272235
+    + CVE-2026-47063, bsc#1272236
+    + CVE-2026-47057, bsc#1272233
+    + CVE-2026-47058, bsc#1272234
+    + CVE-2026-41254, bsc#1272459
+  * Import of OpenJDK 8 u502 build 07
+    + JDK-6815126: intermittent SimulResumerTest.java failure
+    + JDK-8199138: Add RISC-V support to Zero
+    + JDK-8209362: sun/security/ssl/SSLSocketImpl/ReuseAddr.java
+      failed due to "BindException: Address already in use (Bind
+      failed)"
+    + JDK-8246330: Add TLS Tests for Legacy ECDSA curves
+    + JDK-8249159: Downport test rework for SSLSocketTemplate from
+      JDK-8224650
+    + JDK-8261235: C1 compilation fails with
+      assert(res->vreg_number() == index) failed: conversion check
+    + JDK-8273135: java/awt/color/ICC_ColorSpace/
+      /MTTransformReplacedProfile.java crashes in liblcms.dylib with
+       NULLSeek+0x7
+    + JDK-8274736: Concurrent read/close of SSLSockets causes
+      SSLSessions to be invalidated unnecessarily
+    + JDK-8280158: New test from JDK-8274736 failed with/without
+      patch in JDK11u
+    + JDK-8298873: Update IllegalRecordVersion.java for changes to
+      TLS implementation
+    + JDK-8301189: validate-source fails after JDK-8298873
+    + JDK-8314730: GHA: Drop libfreetype6-dev transitional package
+      in favor of libfreetype-dev
+    + JDK-8321489: Update LCMS to 2.16
+    + JDK-8336451: [11u] GHA macos-13 and macos-15 builders are
+      unable to resolve local hostname
+    + JDK-8348110: Update LCMS to 2.17
+    + JDK-8351359: OperatingSystemMXBean: values from getCpuLoad and
+      getProcessCpuLoad are stale after 24.8 days (Windows)
+    + JDK-8363966: GHA: Switch cross-compiling sysroots to Debian
+      trixie
+    + JDK-8368041: Enhance TLS certificate handling
+    + JDK-8369996: Testcase java/net/Socket/B8312065.java fails on
+      Mac, AIX and Solaris
+    + JDK-8372351: Add 2 WISeKey roots
+    + JDK-8374058: Enhance JPEG handling
+    + JDK-8374888: Implement internal test cache to help
+      UserIterCount test performance
+    + JDK-8375065: Update LCMS to 2.18
+    + JDK-8377158: Enhance XBM image support
+    + JDK-8377498: Improve HttpServer handling
+    + JDK-8377833: Enhance Jar file processing
+    + JDK-8378631: Update Zlib Data Compression Library to Version
+      1.3.2
+    + JDK-8378687: Improve delegation of HttpURLConnection
+    + JDK-8379684: Bump update version of OpenJDK: 8u502
+    + JDK-8380377: [8u] Problem list CAInterop.java#teliarootcav2
+    + JDK-8380672: Improve certification checking
+    + JDK-8380689: distrust/Chunghwa.java test fails with a
+      compilation error
+    + JDK-8380947: Add pull request template
+    + JDK-8381039: Enhance AWT ImagingLib
+    + JDK-8381049: Enhance Jar handling
+    + JDK-8381185: Improve Nashorn index handling
+    + JDK-8381195: Enhance Dataview Implementation
+    + JDK-8381519: Enhance Der Value Handling
+    + JDK-8381796: Enhance Certificate parsing
+    + JDK-8383175: (tz) Update Timezone Data to 2026b
+    + JDK-8383354: Update LCMS to 2.19.1
+    + JDK-8383473: Follow on from tzdata2026b time change to include
+      temporary hack BC time change
+    + JDK-8384158: GHA: Downgrade Windows GHA runners to
+      windows-2022 temporarily
+  * AArch32 port
+    + JDK-8385332: aarch32 started to crash after 8261235
+
+-------------------------------------------------------------------
+Wed Jul 29 17:32:30 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.de>
+
+- Add patches for reproducible builds
+  * reproducible-copyright-year.patch
+  * java-40y.patch
+  * reproducible-zip-extra-fields.patch
+  * reproducible-dist-id.patch
+  * reproducible-generated-source-dates.patch
+  * reproducible-jvm-cfg-order.patch
+  * reproducible-generated-timestamps.patch
+  * reproducible-classuse-order.patch
+- Drop broken classes.jsa (embedded build path failed java -Xshare:on -version)
+- Unset CFLAGS/CXXFLAGS after configure to avoid warnings
+
+-------------------------------------------------------------------
 Tue Jun  9 13:45:17 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Require at least gcc 7 on aarch64 since with gcc < 5 is considered

@@ -20,7 +20,7 @@
 %global make make
 %{!?aarch64:%global aarch64 aarch64 arm64 armv8}
 %global jit_arches %{ix86} x86_64 ppc64 ppc64le %{aarch64} %{arm}
-%global icedtea_version 3.39.0
+%global icedtea_version 3.40.0
 %global buildoutputdir openjdk.build/
 %global headless_binaries java keytool orbd policytool rmid rmiregistry servertool tnameserv
 %global headless_binaries_comma %(echo %{headless_binaries} | sed 's#\ #,#g')
@@ -41,10 +41,10 @@
 # Standard JPackage naming and versioning defines.
 # priority must be 6 digits in total
 %global priority        1805
-%global javaver         1.8.0
-%global updatever       492
-%global buildver        09
 %global featurever      8
+%global javaver         1.%{featurever}.0
+%global updatever       502
+%global buildver        07
 # Standard JPackage directories and symbolic links.
 %global sdklnk          java-%{javaver}-openjdk
 %global archname        %{sdklnk}
@@ -146,6 +146,11 @@
 %global with_shenandoah 0
 #endif
 %global NSS_LIBDIR %(pkg-config --variable=libdir nss)
+%ifarch %{aarch64}
+%if 0%{?gcc_version} < 7 || 0%{?suse_version} < 1500
+%define with_gcc 7
+%endif
+%endif
 %bcond_without bootstrap
 %bcond_with zero
 # Turn on/off some features depending on openSUSE version
@@ -169,11 +174,6 @@
 # aka build_cpu as architecture specific directory name.
 %global tapsetroot %{_datadir}/systemtap
 %global tapsetdir %{tapsetroot}/tapset/%{_build_cpu}
-%endif
-%ifarch %{aarch64}
-%if 0%{?gcc_version} < 7 || 0%{?suse_version} < 1500
-%define with_gcc 7
-%endif
 %endif
 Name:           java-1_8_0-openjdk
 Version:        %{javaver}.%{updatever}
@@ -209,11 +209,29 @@ Patch15:        make-jobserver-detection.patch
 Patch20:        reproducible-directory-mtime.patch
 Patch21:        reproducible-javadoc-timestamp.patch
 Patch22:        reproducible-properties.patch
+# Derive the copyright year in the javadoc footer from SOURCE_DATE_EPOCH
+Patch23:        reproducible-copyright-year.patch
+# Use SOURCE_DATE_EPOCH for the dates the CLDR converter and GenerateCharacter
+# write into the sources they generate
+Patch24:        reproducible-generated-source-dates.patch
+# Do not fail the build when the clock is far from the currency data's epoch
+Patch25:        java-40y.patch
+# Drop build timestamps from generated javadoc and CORBA sources
+Patch26:        reproducible-generated-timestamps.patch
+# Build zip archives without the UT extra field, which carries access times
+Patch27:        reproducible-zip-extra-fields.patch
+# Sort the javadoc class-use tables on a key that distinguishes same-named
+# members of different classes
+Patch28:        reproducible-classuse-order.patch
 #
 # Patch for PPC
 Patch103:       ppc-zero-hotspot.patch
 Patch1001:      java-1_8_0-openjdk-suse-desktop-files.patch
 Patch1002:      icedtea-3.8.0-s390.patch
+# IcedTea-level reproducibility fixes - these patch the icedtea build itself,
+# so unlike the openjdk ones above they are applied in %%prep
+Patch1003:      reproducible-jvm-cfg-order.patch
+Patch1004:      reproducible-dist-id.patch
 Patch2001:      disable-doclint-by-default.patch
 Patch2002:      JDK_1_8_0-8208602.patch
 Patch3000:      tls13extensions.patch
@@ -239,6 +257,9 @@ BuildRequires:  libpng-devel
 BuildRequires:  libxslt
 BuildRequires:  mozilla-nss-devel >= 3.53
 BuildRequires:  pkgconfig
+%if 0%{?suse_version} >= 1500
+BuildRequires:  strip-nondeterminism
+%endif
 BuildRequires:  unzip
 BuildRequires:  xorg-x11-proto-devel
 BuildRequires:  xz
@@ -439,6 +460,11 @@ this package unless you really need to.
 %patch -P 1002 -p1
 %endif
 
+# Reproducibility fixes to the icedtea build itself. These must be applied
+# before %%build runs autogen.sh, which regenerates configure and Makefile.in.
+%patch -P 1003 -p1
+%patch -P 1004 -p1
+
 # Setup nss.fips.cfg
 sed -e "s:@NSS_LIBDIR@:%{NSS_LIBDIR}:g" %{SOURCE17} > nss.fips.cfg
 sed -i -e "s:@NSS_SECMOD@:sql\:%{_sysconfdir}/pki/nssdb:g" nss.fips.cfg
@@ -481,7 +507,7 @@ sh autogen.sh
 %configure \
         --disable-downloading \
         --with-tzdata-dir=%{_datadir}/javazi \
-        --with-pkgversion="build %{javaver}_%{updatever}-b%{buildver} suse-%{suse_version}-%{_arch}" \
+        --with-pkgversion="build %{javaver}_%{updatever}-b%{buildver} suse-0%{?suse_version}-%{_arch}" \
         --disable-nss \
         --enable-sysconf-nss \
         --enable-non-nss-curves \
@@ -539,6 +565,13 @@ sh autogen.sh
 %endif
         --with-openjdk-src-zip=%{SOURCE1}
 
+# configure has captured CFLAGS/CXXFLAGS and passes them on as
+# --with-extra-cflags/--with-extra-cxxflags, so they must not stay in the
+# environment: hotspot's makefiles only ever do "CFLAGS +=" and compile C++
+# with "$(CXX) $(CXXFLAGS) $(CFLAGS)", so an inherited CFLAGS puts -std=gnu99
+# on every g++ command line ("valid for C/ObjC but not for C++").
+unset CFLAGS CXXFLAGS
+
 %make patch %{?_smp_mflags}
 
 patch -p0 -i %{PATCH1}
@@ -555,6 +588,12 @@ patch -p0 -i %{PATCH15}
 patch -p0 -i %{PATCH20}
 patch -p0 -i %{PATCH21}
 patch -p0 -i %{PATCH22}
+patch -p1 -i %{PATCH23}
+patch -p1 -i %{PATCH24}
+patch -p1 -i %{PATCH25}
+patch -p1 -i %{PATCH26}
+patch -p1 -i %{PATCH27}
+patch -p1 -i %{PATCH28}
 
 %ifarch ppc ppc64 ppc64le
 # PPC fixes
@@ -574,7 +613,7 @@ patch -p0 -i %{PATCH5001}
  bash ./autogen.sh
 )
 
-%make %{?_smp_mflags}
+%{make} %{?_smp_mflags}
 
 export JAVA_HOME=$(pwd)/%{buildoutputdir}images/j2sdk-image
 
@@ -721,6 +760,8 @@ for d in jconsole policytool; do
     install -m 0644 $d.desktop %{buildroot}/%{_jvmdir}/%{jredir}/lib/desktop/
 done
 
+rm -f %{buildroot}%{_jvmdir}/%{jredir}/lib/*/server/classes.jsa # broken and builds vary
+
 # Find JRE directories.
 find %{buildroot}%{_jvmdir}/%{jredir} -type d \
   | grep -v jre/lib/security \
@@ -793,6 +834,13 @@ find %{buildroot}%{_jvmdir}/%{sdkdir}/demo \
     echo "" >> accessibility.properties
   popd
 
+%if 0%?have_strip_nondeterminism > 0
+strip-all-nondeterminism %{buildroot}/%{_jvmdir}
+# ct.sym is a jar, but strip-all-nondeterminism only looks at *.jar, *.zip and
+# a few other suffixes, so it has to be normalised by name.
+strip-nondeterminism --type zip --timestamp=${SOURCE_DATE_EPOCH:-1494270000} \
+    --clamp-timestamp %{buildroot}%{_jvmdir}/%{sdkdir}/lib/ct.sym
+%endif
 # fdupes links the files from JDK to JRE, so it breaks a JRE
 # use it carefully :))
 %fdupes -s %{buildroot}/%{_jvmdir}/%{jredir}/

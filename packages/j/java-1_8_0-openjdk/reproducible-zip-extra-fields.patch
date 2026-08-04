@@ -1,0 +1,25 @@
+# Pass -X to zip so archives carry no access times
+#
+# SetupZipArchive builds the demo src.zip files with InfoZIP zip, which by
+# default records a "UT" extra field per entry holding the file's mtime and
+# its access time. The access time differs between builds, and
+# strip-nondeterminism does not normalise it - it only rewrites the mtime,
+# which is why two demo src.zip files still differed after everything else
+# had been fixed.
+#
+# -X drops the extra attributes entirely.
+#
+
+diff --git a/openjdk/make/common/JavaCompilation.gmk b/openjdk/make/common/JavaCompilation.gmk
+index bc34720245e..ba46b2b0c52 100644
+--- a/openjdk/make/common/JavaCompilation.gmk
++++ b/openjdk/make/common/JavaCompilation.gmk
+@@ -305,7 +305,7 @@ define SetupZipArchive
+   $$($1_ZIP) : $$($1_ALL_SRCS) $$($1_EXTRA_DEPS)
+ 	$(MKDIR) -p $$(@D)
+ 	$(ECHO) Updating $$($1_NAME)
+-	$$(foreach i,$$($1_SRC),(cd $$i && $(ZIP) -qru $$@ . $$($1_ZIP_INCLUDES) $$($1_ZIP_EXCLUDES) -x \*_the.\* $$(addprefix -x$(SPACE),$$(patsubst $$i/%,%,$$($1_EXCLUDE_FILES))) || test "$$$$?" = "12" )$$(NEWLINE)) true
++	$$(foreach i,$$($1_SRC),(cd $$i && $(ZIP) -qruX $$@ . $$($1_ZIP_INCLUDES) $$($1_ZIP_EXCLUDES) -x \*_the.\* $$(addprefix -x$(SPACE),$$(patsubst $$i/%,%,$$($1_EXCLUDE_FILES))) || test "$$$$?" = "12" )$$(NEWLINE)) true
+ 	$(TOUCH) $$@
+ endef
+ 
