@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Aug 03 19:34:37 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 1.27.1:
+  * *: v1.27.1 (#4403)
+  * proc: fix arm64 crosscall2 SP restore for cgo stacktraces (#4399)
+  * service/dap: set type in SetVariable response (#4397)
+  * teamcity: use Debian for linux/386 CI images (#4400)
+  * service/dap,terminal: add option to display expanded/raw strings (#4395)
+  * Teamcity: update Ubuntu version (#4396)
+  * dwarf/frame: check the error after executing an opcode (#4391)
+  * dwarf/frame: add DW_CFA_GNU_args_size opcode (#4392)
+  * service/test: skip waitreason test on development versions (#4394)
+  * proc/core: handle UTF-16LE output from procdump64 in TestMinidump (#4393)
+  * terminal: fix watch documentation
+  * terminal: extend frame pointer unwinding blocking branch to fix TestScopePrefix index panic on windows/arm64 (#4388)
+  * pkg/terminal: add exit -d to detach without killing the process (#4387)
+  * go.mod: update disassembler (#4379)
+  * pkg/proc: cleanup stepping tests (#4382)
+  * dap: make variable load limits configurable (#4385)
+  * proc: flush instruction cache after writing memory on Windows
+  * proc: fix panic on follow-exec process exit
+  * service/dap: send InvalidatedEvent after SetVariable and WriteMemory (#4384)
+  * misc: Go 1.27 compatibility and windows/arm64 test fixes (#4377)
+  * proc: fix range-over-func stepping tests for 1.27 on arm64 (#4378)
+  * build: ignore unsupported windows/arm64 architecture in goreleaser (#4381)
+  * proc: fix C frame attribution for noreturn calls in stack unwinding (#4374)
+
+-------------------------------------------------------------------
 Wed Jun 24 19:59:04 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 1.27.0:

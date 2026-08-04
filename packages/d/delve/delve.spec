@@ -19,7 +19,7 @@
 %define shortname dlv
 
 Name:           delve
-Version:        1.27.0
+Version:        1.27.1
 Release:        0
 Summary:        Debugger for the Go Programming Language
 License:        MIT
