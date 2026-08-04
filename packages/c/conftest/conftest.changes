@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Mon Aug 03 10:48:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.69.0:
+  * update oras-go to v2.6.2 (fix bsc#1271667)
+  * New Features
+    - 55d9a7b: feat(verify): Add --var-values flag (#1288)
+      (@jalseth)
+    - 81f1ce4: feat: support glob wildcards in --namespace (#1343)
+      (@arpitjain099)
+  * Bug Fixes
+    - cd348b8: fix(ci): update setup-regal action to
+      open-policy-agent org (#1368) (@boranx)
+    - 0e38a95: fix(verify): default --show-builtin-errors to false
+      (#1325) (@dgeorgievski)
+  * OPA Changes
+    - c0aceef: build(deps): bump github.com/open-policy-agent/opa
+      from 1.15.2 to 1.17.1 (#1346) (@dependabot[bot])
+    - a41c3a9: build(deps): bump github.com/open-policy-agent/opa
+      from 1.17.1 to 1.18.2 (#1363) (@dependabot[bot])
+    - 4130398: build(deps): bump github.com/open-policy-agent/opa
+      to v1.19.0 (#1385) (@johanfylling)
+  * Other Changes
+    - 6b381ad: Pre commit conftest docs integration (#1263)
+      (@jrottenberg)
+    - 107ec8e: build(deps): bump actions/checkout from 6.0.1 to
+      6.0.3 (#1352) (@dependabot[bot])
+    - 0b9a9be: build(deps): bump actions/checkout from 6.0.3 to
+      7.0.0 (#1358) (@dependabot[bot])
+    - a2ddb01: build(deps): bump alpine from 3.23.3 to 3.23.4
+      (#1316) (@dependabot[bot])
+    - cbe17f2: build(deps): bump alpine from 3.23.4 to 3.24.0
+      (#1351) (@dependabot[bot])
+    - 15ddb9d: build(deps): bump alpine from 3.24.0 to 3.24.1
+      (#1357) (@dependabot[bot])
+    - 313bf0a: build(deps): bump cachix/install-nix-action from
+      31.10.1 to 31.10.6 (#1329) (@dependabot[bot])
+    - cab3aa1: build(deps): bump cuelang.org/go from 0.16.0 to
+      0.16.1 (#1310) (@dependabot[bot])
+    - bee01de: build(deps): bump cuelang.org/go from 0.16.1 to
+      0.17.0 (#1362) (@dependabot[bot])
+    - 7797f79: build(deps): bump cuelang.org/go from 0.17.0 to
+      0.17.1 (#1373) (@dependabot[bot])
+    - 8cd5347: build(deps): bump docker/build-push-action from
+      7.0.0 to 7.1.0 (#1314) (@dependabot[bot])
+    - 92db984: build(deps): bump docker/build-push-action from
+      7.1.0 to 7.2.0 (#1337) (@dependabot[bot])
+    - 55eeab0: build(deps): bump docker/login-action from 4.0.0 to
+      4.1.0 (#1309) (@dependabot[bot])
+    - 8d864f0: build(deps): bump docker/login-action from 4.1.0 to
+      4.2.0 (#1339) (@dependabot[bot])
+    - 9f57449: build(deps): bump docker/login-action from 4.2.0 to
+      4.4.0 (#1370) (@dependabot[bot])
+    - 026dc0d: build(deps): bump github.com/CycloneDX/cyclonedx-go
+      (#1333) (@dependabot[bot])
+    - 8293d77: build(deps): bump github.com/moby/buildkit from
+      0.29.0 to 0.30.0 (#1331) (@dependabot[bot])
+    - 2f126ef: build(deps): bump golang from 1.26.1-alpine to
+      1.26.2-alpine (#1312) (@dependabot[bot])
+    - 1f45387: build(deps): bump golang from 1.26.2-alpine to
+      1.26.4-alpine (#1344) (@dependabot[bot])
+    - fb6fbdd: build(deps): bump golang from 1.26.4-alpine to
+      1.26.5-alpine (#1371) (@dependabot[bot])
+    - 30ed475: build(deps): bump golangci/golangci-lint-action from
+      9.2.1 to 9.3.0 (#1364) (@dependabot[bot])
+    - d099ca1: build(deps): bump goreleaser/goreleaser-action from
+      7.0.0 to 7.2.2 (#1334) (@dependabot[bot])
+    - eb7ca3e: build(deps): bump goreleaser/goreleaser-action from
+      7.2.2 to 7.2.3 (#1366) (@dependabot[bot])
+    - d07ab51: build(deps): bump js-yaml from 3.13.1 to 4.2.0 in
+      /examples/ts (#1353) (@dependabot[bot])
+    - 8314227: build(deps): bump sethvargo/ratchet from 0.11.4 to
+      0.12.0 (#1374) (@dependabot[bot])
+    - 9abd9c4: ci: Use only-new-issues to prevent existing lint
+      violations from blocking CI (#1340) (@boranx)
+    - 169a2e4: perf(engine): Move Input AST conversion to occur
+      before rule loop (#1348) (@brittandeyoung)
+
+-------------------------------------------------------------------
 Fri Apr 17 20:14:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.68.2:
