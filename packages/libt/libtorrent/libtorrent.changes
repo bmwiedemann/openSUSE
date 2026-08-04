@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Aug  4 08:26:02 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.16.19
+  * Added a least active cache to FileManager
+  * Limit queued upload requests per peer
+  * Reject over-budget socket allocations with input_error instead
+    of internal_error
+  * Reject truncated magnet URI parameters
+
+-------------------------------------------------------------------
 Fri Jul 17 12:51:21 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.16.18

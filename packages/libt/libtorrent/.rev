@@ -308,4 +308,12 @@
     <comment>- Update to release 0.16.18</comment>
     <requestid>1366409</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>c8e798942bb342a505a1cf5b0afa0e3f</srcmd5>
+    <version>0.16.19</version>
+    <time>1785872257</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 0.16.19</comment>
+    <requestid>1369439</requestid>
+  </revision>
 </revisionlist>
