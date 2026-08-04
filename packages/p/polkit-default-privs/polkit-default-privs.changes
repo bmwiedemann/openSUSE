@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 03 15:03:07 UTC 2026 - Mislav Bozicevic <mislav.bozicevic@suse.com>
+
+- Update to version 1550+20260803.90784eb:
+  * profiles: renamed calamares (bsc#1273196)
+  * build(deps): bump actions/checkout from 6.0.2 to 7.0.1
+
+-------------------------------------------------------------------
 Tue Jun 23 11:42:40 UTC 2026 - Mislav Bozicevic <mislav.bozicevic@suse.com>
 
 - Update to version 1550+20260623.563df94:
