@@ -523,4 +523,12 @@ Thi should also go to 12.2 IMHO. Please tell me if you will forward this or if I
     <comment>New snapshot</comment>
     <requestid>1242122</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>6ee643ca34c023ff2a9ad991acf90d01</srcmd5>
+    <version>2.9.95git.20260802T020133~eeeb6da4</version>
+    <time>1785872084</time>
+    <user>dimstar_suse</user>
+    <comment>Update snapshot</comment>
+    <requestid>1369306</requestid>
+  </revision>
 </revisionlist>
