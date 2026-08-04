@@ -1,0 +1,11 @@
+diff -rubN chrono-1.0.0/lib/meson.build chrono-1.0.0-patched/lib/meson.build
+--- chrono-1.0.0/lib/meson.build	2026-05-23 13:11:49.000000000 +0200
++++ chrono-1.0.0-patched/lib/meson.build	2026-08-04 07:48:10.712367643 +0200
+@@ -31,6 +31,7 @@
+ libchrono_lib = shared_library(
+   'chrono',
+   libchrono_sources,
++  soversion: 0,
+   dependencies: libchrono_deps,
+   vala_header: 'chrono.h',
+   vala_vapi: 'chrono.vapi',
