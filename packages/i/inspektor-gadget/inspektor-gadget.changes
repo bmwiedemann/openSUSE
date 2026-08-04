@@ -1,4 +1,128 @@
 -------------------------------------------------------------------
+Tue Aug 04 05:19:56 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.55.0:
+  * Welcome to the v0.55.0 of Inspektor Gadget. These are the most
+    important changes:
+    - GPU telemetry support — Inspektor Gadget now ships an initial
+      design and a userspace daemon (gpu-ebpf-bridge) that
+      publishes GPU telemetry through pinned BPF maps, laying the
+      groundwork for GPU observability from gadgets.
+    - Expanded eBPF program and map support — the eBPF operator now
+      supports map pinning and non-destructive map iteration, and
+      adds support for ebpf.SockOps, ebpf.SkSKB and ebpf.SkMsg
+      program types. perf_event-based gadgets can additionally
+      symbolize OTel/Python stacks.
+    - Stability and correctness fixes on busy nodes — several fixes
+      improve reliability at scale: tracers are now removed under
+      the id they were registered with, the lost-samples poller is
+      stopped on tracer close, snapshot_file works on older
+      kernels, trace_exec reports the correct controlling-terminal
+      device, and container-utils correctly detects the cgroup v2
+      mountpoint.
+  * Breaking Changes
+    - go: bump the k8s group across 2 directories with 7 updates
+      (k8s.io/* 0.35.4 → 0.36.2) by @dependabot in #5570
+  * General Improvements
+    - design: GPU telemetry support in Inspektor Gadget by @alban
+      in #5604
+    - cmd,pkg/gpu-ebpf-bridge: userspace daemon publishing GPU
+      telemetry via pinned BPF maps by @alban in #5622
+    - ebpf: support map pinning and non-destructive map iteration
+      by @alban in #5603
+    - add support for ebpf.SockOps, ebpf.SkSKB and ebpf.SkMsg by
+      @flyth in #5625
+    - Support OTel/Python stacks from perf_event gadgets by @alban
+      in #5678
+    - gadgets/snapshot_{process,file}: Read __rcu fields with
+      BPF_CORE_READ by @burak-ok in #5623
+    - gadgets/snapshot_file: Support older kernel version by
+      @mqasimsarfraz in #5663
+    - pkg/gadget-context: Match paramDefaults keys
+      case-insensitively by @mqasimsarfraz in #5624
+    - Ignore topology.kubernetes.io labels in tests and
+      networkpolicy advisor by @burak-ok in #5616
+    - charts: point the Prometheus scrape annotation to the
+      otel-metrics listener port by @farhanashrafdev in #5721
+    - skills: add Inspektor Gadget agent skills for troubleshooting
+      by @vfalico in #5650
+    - Remove dead code (snapshotcombiner and parser) by @burak-ok
+      in #5675
+  * Bug Fixes
+    - localmanager: remove tracer with the id it was registered
+      under by @flyth in #5659
+    - pkg/operators/ebpf: Stop lost-samples poller on tracer close
+      by @flyth in #5657
+    - oci: Ensure oci-store dir exists before locking by
+      @mqasimsarfraz in #5643
+    - fix(trace_exec): report the device number of the controlling
+      terminal by @slashben in #5714
+    - pkg/symbolizer/otel: Fix ustack symbolization drops and add
+      profiler debug logging by @mqasimsarfraz in #5715
+    - container-utils: Fix cgroup v2 mountpoint lookup by
+      @mqasimsarfraz in #5727
+  * Documentation Improvements
+    - docs: Remove traces for legacy way to run gadgets by
+      @mqasimsarfraz in #5672
+    - gadgets/trace_fsslower: add kubectl-gadget examples and fix
+      image tag typo by @krishpinto in #5644
+    - docs(trace_signal): add Guide section with signal tracing
+      example by @Goutham-Annem in #5690
+    - Update maintainers by @mauriciovasquezbernal in #5705
+    - Add Veaceslav Falico to MAINTAINERS list by @mqasimsarfraz in
+      #5706
+  * Testing and Continuous Integration
+    - golang: Update to 1.26.5 by @mqasimsarfraz in #5661
+    - ci: Disable benchmark comment by @burak-ok in #5658
+    - pkg/testing: Gate StartAndStop gadget tests on readiness by
+      @burak-ok in #5638
+    - .github: Mirror python:3.13-slim image for CI tests by @alban
+      in #5703
+    - Makefile: Upgrade Minikube/Kubernetes by @mqasimsarfraz in
+      #5717
+    - TestTraceDNS: container image name validation for cri-o by
+      @mqasimsarfraz in #5720
+    - Artifact Hub: Update gadgets version to v0.54.0 by
+      @github-actions in #5615
+    - Artifact Hub: Update gadgets version to v0.54.1 by
+      @github-actions in #5674
+  * Dependencies updates
+    - go: bump the golang-x group across 2 directories with 4
+      updates by @dependabot in #5566
+    - go: bump the aws-sdk group across 1 directory with 3 updates
+      by @dependabot in #5620
+    - go: bump the docker group across 1 directory with 3 updates
+      by @dependabot in #5618
+    - go: bump golang.org/x/text from 0.38.0 to 0.39.0 in the
+      golang-x group by @dependabot in #5617
+    - go: bump the aws-sdk group across 1 directory with 2 updates
+      by @dependabot in #5627
+    - go: bump the golang-x group across 2 directories with 4
+      updates by @dependabot in #5626
+    - go: bump github.com/aws/aws-sdk-go-v2/service/ec2 from
+      1.314.0 to 1.315.0 (aws-sdk) by @dependabot in #5640
+    - go: bump the aws-sdk group across 1 directory with 3 updates
+      by @dependabot in #5670
+    - go: bump github.com/florianl/go-tc from 0.4.7 to 0.4.8 by
+      @dependabot in #5669
+    - go: bump github.com/sigstore/sigstore from 1.10.4 to 1.10.8
+      by @dependabot in #5641
+    - go: bump github.com/gopacket/gopacket from 1.5.0 to 1.7.0 by
+      @dependabot in #5677
+    - go: bump github.com/tetratelabs/wazero from 1.11.0 to 1.12.0
+      by @dependabot in #5676
+    - go: bump oras.land/oras-go/v2 from 2.6.1 to 2.6.2 by
+      @dependabot in #5681
+    - go: bump github.com/fsnotify/fsnotify from 1.9.0 to 1.10.1 by
+      @dependabot in #5680
+    - go: bump github.com/docker/cli from 29.6.1 to 29.6.2 (docker
+      group) by @dependabot in #5682
+    - go: bump github.com/tklauser/numcpus from 0.11.0 to 0.12.0 by
+      @dependabot in #5699
+    - go: bump google.golang.org/grpc from 1.80.0 to 1.82.1 by
+      @dependabot in #5683
+
+-------------------------------------------------------------------
 Tue Jul 14 13:01:57 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.54.1:
