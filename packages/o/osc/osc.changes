@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Aug  3 14:59:29 UTC 2026 - Daniel Mach <daniel.mach@suse.com>
+
+- 1.27.3
+  - Command-line:
+    - Fix 'osc lbl' to work with git based packages
+  - Library:
+    - Fix gitea api IssueTimelineEntry parsing by skipping None values
+    - Fix store.get_store() to work better with check=False
+    - Fix gitea exception init (MovedPermanently)
+    - Add a few type hints
+
+-------------------------------------------------------------------
 Wed Jul  1 11:26:16 UTC 2026 - Daniel Mach <daniel.mach@suse.com>
 
 - 1.27.2
