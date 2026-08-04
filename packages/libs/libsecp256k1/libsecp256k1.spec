@@ -16,9 +16,9 @@
 #
 
 
-%define soname 6
+%define soname 7
 Name:           libsecp256k1
-Version:        0.7.1
+Version:        0.8.0
 Release:        0
 Summary:        Optimized C library for EC operations on curve secp256k1
 License:        MIT

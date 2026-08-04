@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Aug  4 06:18:47 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.8.0:
+  * Addition of a new Silent Payments (BIP-352) module with support for
+    sending and scanning on full nodes.
+  * Addition of a function for overriding the internal SHA256 compression,
+    useful for plugging in hardware-optimized SHA256 implementations.
+  * Performance improvements in the 64-bit field element implementation,
+    leading to significant speedups for many library functions on GCC and MSVC
+    builds (e.g., up to ~11% for ECDSA and Schnorr signature verification).
+  * Removal of the previously deprecated symbols secp256k1_schnorrsig_sign (in
+    favor of secp256k1_schnorrsig_sign32) and secp256k1_context_no_precomp (in
+    favor of secp256k1_context_static).
+
+-------------------------------------------------------------------
 Mon Jan 26 20:00:10 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.7.1:
