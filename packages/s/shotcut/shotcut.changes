@@ -1,4 +1,119 @@
 -------------------------------------------------------------------
+Mon Aug  3 07:29:11 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 26.8.1:
+  * Added Elements panel to the File > New and View menus and the Generate buttons
+  * Added Settings > Graphics Adapter for Windows and Linux (only if multiple GPUs).
+  * Added Shake video filter. First generated UI to be shared and officially adopted.
+  * The --experimental UI generator now also generates a meta.qml. (See View >
+    Application Log to get the temp file names to copy and share these files.)
+  * Improved appearance of tabs and Subtitles in Fusion Dark and Fusion Light themes.
+  * Fixed opening a .mlt project file from a file manager on macOS (broke in v26.6).
+  * Fixed corrupt color in dissolve transitions with Settings > Processing Mode > Linear 10-bit CPU.
+  * Fixed the new Reduce Noise: Audio (RNNoise) when the export audio sample rate is not 48000 Hz.
+  * Fixed off-by-one frame errors in subtitle bar in Timeline and Subtitle Burn In video filter.
+  * Fixed all builds missing support for VST2 and LV2 audio plugins. Now
+    install and try the Valhalla Supermassive VST plugin.
+  * Fixed a libGLESv2.dll warning on startup on some Windows systems.
+  * Fixed Motion Tracker keyframes not applying after save/reload.
+  * Fixed manual override QSG_RHI_BACKEND environment variable on Windows.
+  * Fixed Properties > Convert & View > Resources > Convert to keep 10-bit
+    video as 10-bit when using 10-bit processing modes.
+  * Fixed the Crop: Source filter with Preview Scaling and hardware decoder.
+  * Fixed proxy video generated for rotated video (Properties > Rotation) not preserving rotation.
+
+-------------------------------------------------------------------
+Sun Jun 28 17:49:33 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 26.6.25:
+  * Three years ago, when we upgraded our UI library to a major
+    new version, we lost support for using an additional system
+    display as an external monitor. Many people were disappointed
+    to lose that feature. Now, after a major change to the video
+    plumbing, it is back!
+  * The **External Monitor** submenu is moved from **Settings**
+    to the top of the **Player** menu. It is incompatible with
+    newly added **Settings > Player > Use Old Video Output**
+    (provided just in case the new plumbing does not work).
+  * The new plumbing also provides a way to preview HDR video
+    except, for technology reasons, it must be shown in a
+    separate window...
+  * As a quick reminder for those unfamiliar: "HDR" means high
+    dynamic range, not high definition resolution. It is about
+    expanded color and light. A lot of phones and cameras are
+    recording with this today, and many people are not aware
+    until they try to edit and run into problems. Also, HDR game
+    captures on computers is increasingly common. A year ago, we
+    added very limited, hidden support for editing HDR video
+    because, basically, we had no way to display it without a
+    device from Blackmagic Design. Now, there is a way.
+  * Added **Player > External Monitor > Preview Window (HDR)**
+    that can be made fullscreen.
+  * It also works for SDR.
+  * HDR requires a display properly configured with HDR, **Native
+    10-bit CPU** or **Linear 10-bit GPU/CPU** processing modes,
+    and HDR video sources.
+  * For HDR, only use filters tagged with `#gpu` or `#10bit`.
+  * It does not appear to work on Linux, at least I have not been
+    able to get it working.
+  * Switching between PQ HDR (HDR10) and HLG HDR requires
+    restarting the app.
+  * The default shortcut to open or *raise* the preview window is
+    Ctrl+`. It does not toggle between open and close because
+    *raise* is more convenient.
+  * You can move the window by clicking anywhere inside except
+    the controls bar and dragging.
+  * F toggles fullscreen and Esc also leaves fullscreen.
+  * Incompatible with **Use Old Video Output**.
+  * Added **Dynamic range** to custom **Video Mode** and
+    **Timeline Properties**.
+  * This offers **SDR**, which follows the colorspace, **HLG
+    HDR**, and **PQ HDR**.
+  * At this time, Shotcut only supports converting log profile
+    video to HDR with **GPU** processing mode and **HLG HDR**
+    video mode.
+  * And it cannot convert between HDR formats or combine multiple
+    HDR formats within a project.
+  * Added support for PQ HDR (HDR10) to **External Monitor >
+    DeckLink**.
+  * Added support for HDR to **Export** (based on Video Mode and
+    10-bit processing mode).
+  * Added HDR10 metadata dialogs for **External Monitor >
+    DeckLink** and **Export > Codec**.
+  * **Export** only embeds HDR10 metadata for the `libx265` and
+    `libsvtav1` video codecs and no hardware encoders.
+  * TODO: **Properties > Convert** and **View > Resources >
+    Convert** do not support 10-bit yet; that will be added in
+    the next release.
+  * ### External Plugins
+  * We added limited support for external audio and video
+    plugins.
+  * "Limited" means it does not support a plugin's included UI,
+    and our UI generator is new and experimental. That means you
+    can only try it if you are an advanced user who knows how to
+    supply a command line option to reveal the new UI generator.
+    There are many mysterious effects, and uncertainty if things
+    are working correctly. As a result, the user experience is
+    not yet good enough with an increased risk of crash.
+  * "External" means both effects included with Shotcut but not
+    yet available in the UI or plugins that you install yourself
+    to the standard, expected location for your OS.
+  * #### OpenFX Image Effect Plugins
+  * Added a UI (`--experimental` not required) for **NTSC-rs**.
+  * Limited compatibility: not available, seems to do nothing, or
+    makes the video black.
+  * No support for plugins that operate temporally or require
+    multiple image/video inputs.
+  * No support for generators, transitions, or retimers.
+  * No support for the UI embedded in the plugin.
+  * No support for GPU technologies but multi-threaded CPU does
+    work.
+  * Very limited testing. There are many plugins we have not
+    tested especially commercial ones, and we know there are some
+    that do not work.
+  * None are included with Shotcut.
+
+-------------------------------------------------------------------
 Mon May  4 15:41:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 26.4.30:
