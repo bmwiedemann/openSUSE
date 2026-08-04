@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Mon Aug 03 10:48:37 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.68.0:
+  * fix(sqlserver): support pagination when listing flavors (#1508)
+  * feat(ske): bump sdk version and add load balancer extension
+    support (#1515)
+  * chore(release): remove broken winget configuration (#1500)
+  * fix(auth): update links after successful login (#1512)
+  * chore(deps): bump actions/checkout from 7.0.0 to 7.0.1 (#1502)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/postgresflex
+    (#1510)
+  * chore(serviceaccount): migrate to new sdk structure (#1489)
+  * fix(network): fix nil pointer dereference when dns name servers
+    are n… (#1507)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/sqlserverflex
+    (#1482)
+  * chore(deps): bump github.com/mattn/go-colorable from 0.1.14 to
+    0.1.15 (#1499)
+  * feat(sqlserverflex): migrate to v3 API (#1492)
+  * feature(vpn): onboard gateway (#1417)
+  * fix(objectstorage): check service enablement only if initial
+    service call fails (#1479)
+  * chore(authorization): migrate to new sdk structure (#1488)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/rabbitmq
+    (#1498)
+  * fix(iaas): safely check resp.NetworkInterface for nil (#1497)
+  * chore(deps): bump k8s.io/client-go from 0.35.1 to 0.36.2
+    (#1493)
+  * chore(deps): bump actions/setup-go from 6.5.0 to 7.0.0 (#1496)
+  * chore(serverbackup): switch to new sdk structure (#1485)
+  * chore(logs): sdk migration (#1444)
+  * chore(serviceenablement): switch to new sdk structure (#1487)
+  * chore(serverupdate): switch to new sdk structure (#1486)
+  * chore(runcommand): switch to new sdk structure (#1484)
+  * chore(iaas): remove deprecated SNA region flags from SNA cmds
+    (#1483)
+  * chore(deps): bump golang.org/x/text from 0.36.0 to 0.40.0
+    (#1491)
+  * feat(auth): add Workload Identity Federation (OIDC) support
+    (#1424)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/iaas (#1481)
+  * feat(postgresflex): migrate to V2 api (#1476)
+
+-------------------------------------------------------------------
 Mon Jul 20 12:04:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.67.0:
