@@ -16,14 +16,14 @@
 #
 
 Name:           goshs
-Version:        2.1.4
+Version:        2.1.5
 Release:        0
 Summary:        A simple HTTP server
 License:        MIT
 Group:          Productivity/Networking/Web/Servers
 URL:            https://goshs.de/
-#Git-Clone:     https://github.com/patrickhener/goshs.git
-Source:         https://github.com/patrickhener/goshs/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+#Git-Clone:     https://github.com/goshs-labs/goshs.git
+Source:         https://github.com/goshs-labs/goshs/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  zsh
@@ -54,6 +54,7 @@ install -Dm 0755 goshs.bin %{buildroot}%{_bindir}/goshs
 
 for shell in bash fish zsh; do
   %{buildroot}%{_bindir}/goshs --completion "$shell"
+  sleep 1;
 done
 install -Dm 0644 /home/abuild/.local/share/bash-completion/completions/goshs %{buildroot}/%{_datadir}/bash-completion/completions/%{name}.bash
 install -Dm 0644 /home/abuild/.config/fish/completions/goshs.fish %{buildroot}%{_datadir}/fish/vendor_completions.d/%{name}.fish

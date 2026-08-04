@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Aug  3 07:24:50 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.1.5
+  Security
+  * HTTP/WebDAV --no-delete/--upload-only overwrite bypass
+    (GHSA-966r-mw4j-rv64, Critical).
+  * ConPtyShell.ps1 unauthenticated exemption bypass
+    (GHSA-6m5c-fv2q-jrj2, Critical).
+  * WebDAV POST returns file contents, bypassing --upload-only
+    (GHSA-rc9g-fmpg-c6pp, High).
+  * Trailing-slash ACL and hidden-file bypass in sendFile
+    (GHSA-964w-f6gj-5236, Medium).
+  * Single-file ?share redemption served with an empty ACL
+    (GHSA-mqvv-v9g7-4h3j, Medium).
+  * SFTP server ignored --no-delete (GHSA-4wh5-87mw-whxf, Medium).
+  New Features
+  * Password reveal popup in the TUI — The --tui status bar shows
+    the basic-auth user but never the password. Pressing p (in any
+    pane except the generator, where p edits LPORT) now opens a
+    modal overlay with the credentials — masked until u toggles
+    plaintext, y/c copy, esc/q close. Handy when the password was
+    generated inline at launch (e.g. -b "user:$(xkcdpass ...)").
+    A bcrypt-hashed secret is shown but flagged as unrecoverable.
+- Added a 1 second sleep to the shell completion generation to
+  workaround timing issues.
+
+-------------------------------------------------------------------
 Fri Jul  3 14:21:39 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.1.4
