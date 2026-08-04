@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug 04 08:33:40 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.0.25:
+  * feat: add logout command (#1016)
+  * fix: set XIsResourceName for immutable rule APIs so numeric
+    project names resolve correctly during force delete (#990)
+  * Update harbor-cli manifest
+
+-------------------------------------------------------------------
 Wed Jul 08 05:11:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.0.24:
