@@ -6,7 +6,7 @@
     <param name="exclude">.git</param>
     <param name="exclude">docs/*</param>
     <param name="exclude">server/meshmodel/*</param>
-    <param name="revision">v1.0.63</param>
+    <param name="revision">v1.0.64</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="changesgenerate">disable</param>
@@ -15,6 +15,7 @@
   <service name="set_version" mode="manual">
   </service>
   <service name="go_modules" mode="manual">
+    <param name="replace">oras.land/oras-go/v2=oras.land/oras-go/v2@v2.6.2</param>
   </service>
   <!-- services below are running at buildtime -->
   <service name="tar" mode="buildtime">

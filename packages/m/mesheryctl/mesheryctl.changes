@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Tue Aug  4 05:28:02 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.0.64 (bsc#1271807):
+  * update oras-go to v2.6.2 to fix bsc#1271807
+  * General
+    - chore(skills): hard-rename iterate-pr --full mode to --merge
+      @hamza-mohd (#21111)
+    - Bump brace-expansion from 1.1.13 to 1.1.18 in
+      /install/docker-extension/ui @dependabot[bot] (#21110)
+    - [Server] Fix more response body leaks in remote auth and
+      local provid… @KushagraB424 (#21107)
+    - fix(server): add REGISTERED -> NOTFOUND transition for
+      Kubernetes FSM @Om-Beast (#21030)
+    - chore(agents): consolidate skills into .agents/skills as
+      single source of truth @leecalcote (#20985)
+  * Meshery CLI
+    - fix connection tests @aabidsofi19 (#21093)
+    - [mesheryctl][UI] Link Connection Lifecycle tests to Test Plan
+      rows + capture run output @marblom007 (#21091)
+    - [mesheryctl][UI] Emit testGroup Allure label from Test Plan
+      Test Group (col B) @marblom007 (#21089)
+    - [mesheryctl] K8s Connection e2e coverage + TAP->Allure skip
+      fix + Test-Plan traceability @hamza-mohd (#21064)
+    - test(mesheryctl): add e2e test for design view
+      @dhruveshmishra (#21039)
+  * Maintenance
+    - [server] Replace log.Fatal with regexp.MustCompile in filler
+      @KushagraB424 (#21088)
+    - fix connection tests @aabidsofi19 (#21093)
+    - [mesheryctl][UI] Link Connection Lifecycle tests to Test Plan
+      rows + capture run output @marblom007 (#21091)
+    - [mesheryctl][UI] Emit testGroup Allure label from Test Plan
+      Test Group (col B) @marblom007 (#21089)
+    - [mesheryctl] K8s Connection e2e coverage + TAP->Allure skip
+      fix + Test-Plan traceability @hamza-mohd (#21064)
+    - test(mesheryctl): add e2e test for design view
+      @dhruveshmishra (#21039)
+    - Bump @vitest/coverage-v8 from 4.1.9 to 4.1.10 in /ui
+      @dependabot[bot] (#21059)
+    - Bump react-grid-layout from 2.2.3 to 2.2.4 in /ui
+      @dependabot[bot] (#21056)
+    - Bump eslint from 10.6.0 to 10.8.0 in /provider-ui
+      @dependabot[bot] (#21058)
+    - Bump @rjsf/mui from 6.6.2 to 6.7.1 in /provider-ui
+      @dependabot[bot] (#21060)
+    - Bump @mui/material from 9.1.2 to 9.2.0 in /provider-ui
+      @dependabot[bot] (#21057)
+    - Bump eslint from 10.7.0 to 10.8.0 in /ui @dependabot[bot]
+      (#21054)
+    - [bug]: Fix docs preview URL not being commented on PRs
+      @banana-three-join (#20996)
+  * Documentation
+    - Bump postcss from 8.5.12 to 8.5.25 in /docs @dependabot[bot]
+      (#21109)
+    - [Docs] Remove stale Examples link from Sistent docs TOC
+      @hiyach28 (#21103)
+    - [mesheryctl][UI] Link Connection Lifecycle tests to Test Plan
+      rows + capture run output @marblom007 (#21091)
+    - [mesheryctl][UI] Emit testGroup Allure label from Test Plan
+      Test Group (col B) @marblom007 (#21089)
+    - [UI] Kubernetes Connection e2e: rewrite against wizard +
+      Test-Plan traceability @fitzergerald (#21065)
+    - [CI] Split mesheryctl QA results dirs; document Kubernetes
+      Connections tagging contract @marblom007 (#21063)
+    - [mesheryctl] K8s Connection e2e coverage + TAP->Allure skip
+      fix + Test-Plan traceability @hamza-mohd (#21064)
+    - [Docs][Server] Sparse-clone guidance + make
+      connection-seeding tests sparse-clone-safe @miacycle (#21062)
+    - [Docs] Fix Codespaces image link redirection in lightbox
+      @hiyach28 (#21003)
+    - [Docs] Fix inconsistent formatting of Overview of Steps
+      section @rid325 (#20569)
+    - [Docs] Fix broken image paths on contributing pages
+      @Appleple47 (#21019)
+    - fix(docs): correct broken installation image references
+      @Bhavesh189 (#20702)
+    - fix: add tabpanes to design docs @Sbragul26 (#20998)
+    - [Docs] Hide images and SVGs in Table of Contents sidebar
+      @IshanKale (#20857)
+    - [Docs] Add missing Bookinfo descriptions to adapter
+      documentation pages @11yashiagrawal (#20433)
+
+-------------------------------------------------------------------
 Mon Jul 27 05:10:55 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.0.63:
