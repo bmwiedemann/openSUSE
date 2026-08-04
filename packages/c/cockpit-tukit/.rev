@@ -194,4 +194,16 @@
     <comment>- Update dependencies bsc#1257836/CVE-2026-25547, bsc#1258641/CVE-2026-26996</comment>
     <requestid>1335040</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>2b5e833c0fa10c243768aab5413a711f</srcmd5>
+    <version>0.1.8~git0.0c769f8</version>
+    <time>1785872056</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.1.8~git0.0c769f8:
+  * Dependency updates
+  * Translation updates
+
+- Update dependencies bsc#1257836/CVE-2026-25547, bsc#1258641/CVE-2026-26996, bsc#1259013/CVE-2026-27904</comment>
+    <requestid>1369277</requestid>
+  </revision>
 </revisionlist>

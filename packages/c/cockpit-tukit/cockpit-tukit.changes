@@ -1,7 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul 30 12:39:26 UTC 2026 - Alice Brooks <alice.brooks@suse.com>
+
+- Update to 0.1.8~git0.0c769f8:
+  * Dependency updates
+  * Translation updates
+
+-------------------------------------------------------------------
 Tue Feb 24 13:52:53 UTC 2026 - Alice Brooks <alice.brooks@suse.com>
 
-- Update dependencies bsc#1257836/CVE-2026-25547, bsc#1258641/CVE-2026-26996
+- Update dependencies bsc#1257836/CVE-2026-25547, bsc#1258641/CVE-2026-26996, bsc#1259013/CVE-2026-27904
 
 -------------------------------------------------------------------
 Wed Feb 11 17:59:39 UTC 2026 - Miika Alikirri <miika.alikirri@suse.com>
