@@ -1,4 +1,123 @@
 -------------------------------------------------------------------
+Mon Jul 27 17:40:56 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 6.5.2:
+  * 🔧 Platforms, build and packaging:
+    - Cython fails to compile on arm64
+    - python fido 2.2.1
+    - DEB unwanted dependencies on libdav1d
+    - Cython 3.2.9
+    - missing xpra-server-wayland DEB package, with full support on
+      Debian Sid and Ubuntu Resolute
+  * Major:
+    - macOS client crash with audio enabled or speaker state changes
+    - Gtk X11 clients OpenGL errors
+    - missing wheel events with MS Windows clients
+    - shadow sessions can hang with VNC connections
+    - parsing of bind options using legacy form
+    - incomplete asynchronous keyboard initialization always apply
+      initial settings
+    - X11 atom-name typos
+    - power events not used
+    - nvenc: choose a profile matching the chroma format
+  * Clipboard:
+    - some default targets missing
+    - prevent stale emission
+    - target ownership confusion
+  * Minor:
+    - tray and system-tray are independent
+    - webcam does not restart following suspend + resume
+    - missing window raise / restack
+    - don't request OpenGL contexts with depth or stencil buffers
+    - ssh agent symlink not cleaned up, update properly
+    - Cython CSC module validation
+    - ensure we never use dialogs from secondary threads
+    - validate port numbers ourselves
+    - record forwards compatibility
+    - example clients now usable: handle more base packet types
+    - wheel events may land in the wrong location
+    - audio: unnecessary restarts
+    - peercred wrongly queried on all stream sockets
+    - IPv6 socket warnings
+  * Stricter Types:
+    - full cythonization fixes
+    - SSL CA data is binary
+    - ensure types compared are always the same
+    - keyboard option parsing type mismatch
+    - minor annotation fixes, more
+  * Cosmetic:
+    - skip notification warnings during cleanup
+    - system tray does not detect mmap
+    - clipboard type hint
+    - webcam suspend test failure
+    - invalid type used in unreachable runtime path
+    - X11 client tests for all display bit depths
+    - cleanup unavailable server log requests
+    - simplify: env values have a non-None default
+    - stray commas
+    - silence macOS legacy SSL warnings
+- Update to version 6.5.1:
+  * 🔧 Platforms, build and packaging:
+    - pynvml 13.610.43
+    - pytools 2026.1.1
+    - torch-vision 0.27.1
+    - torch 2.12.1
+    - cython 3.2.8
+    - cython 3.3 build warnings: use stricter types
+  * Security:
+    - RCE: URL parsing subversion
+    - don't download to $HOME as fallback
+    - never download to a dot file
+    - restrict which types of URLs can be opened
+    - verify download path stays within the download directory
+    - ensure auto-accepted file download matches the request
+    - harden requested file response validation
+    - only load pillow if needed
+    - ensure that the server only uses one of the allowed encodings
+    - no longer enable control channel on clients by default
+    - validate untrusted mDNS record fields before building connection URIs
+  * Major:
+    - xpra info fails to connect + better limit
+    - ssh connection failures, launcher also fails
+    - html5 client clipboard is disabled
+    - cairo backend fails to paint in 30 bit per pixel mode
+  * Minor:
+    - gsettings lookup always failed in desktop servers
+    - ssh proxied connections used the wrong config
+    - error handling in fdproxy
+    - encode client fails to use mmap transfers
+    - keyboard errors with X11 servers missing the Xkb extension
+    - internal errors updating av-sync delay
+    - mmap write errors should fall through
+    - safer network capability parsing
+    - don't send raw xpm icons
+    - workarea calculations could fail
+    - experimental client backends failed to use jpeg
+    - monitor mode is desktop-like for clients
+  * 📁 File-transfers:
+    - better parsing compatibility
+    - legacy packet names, preserve printer and title, etc
+    - tighten file transfer authorization
+    - reject malformed file transfer input
+  * 🌈 Encodings:
+    - buffer overflow in fallback Cython CSC module
+    - codec module availability detection
+    - avif can be used for lossless and grayscale
+  * 💄 Cosmetic:
+    - no need to try to use invalid displayfd values
+    - socket directory double-quoted in runner script
+    - message shows incorrect mmap limit
+    - logging error when notification icon parsing fails
+    - notification theme icon default size + fixup test
+    - remove legacy unused file
+    - remove bogus statements
+    - match method signature
+    - planar data debug logging errors
+    - remove duplicated keys, add missing one
+    - incorrect metadata used for debug logging
+    - webcam handshake function
+
+-------------------------------------------------------------------
 Tue Jun 16 17:08:41 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to version 6.5:
