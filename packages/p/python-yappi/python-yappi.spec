@@ -56,10 +56,6 @@ export CFLAGS="%{optflags}"
 export PYTHONPATH="tests/"
 # Skip two flaky tests
 skip_tests="not test_basic_old_style and not test_basic"
-%if %{python3_version_nodots} < 37
-    # this test relies on asyncio.run method
-    skip_tests="$skip_tests and not test_asyncio_context_vars"
-%endif
 %if 0%{?qemu_user_space_build}
 # qemu linux-user emulation always creates an additional thread
 skip_tests="$skip_tests and not test_context_cbks_reset_to_default"
