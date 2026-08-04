@@ -51,7 +51,7 @@
 %define pyver 3
 %endif
 Name:           cmake%{?psuffix}
-Version:        4.4.0
+Version:        4.4.2
 Release:        0
 Summary:        Cross-platform make system
 License:        BSD-3-Clause
@@ -70,8 +70,6 @@ Source50:       FindLua.cmake
 Source99:       README.SUSE
 # Search for python interpreters from newest to oldest rather then picking up /usr/bin/python as first choice
 Patch1:         feature-suse-python-interp-search-order.patch
-#FIX-UPSTREAM compatibility with meson - cmake-4.4.0-meson-compatibility.patch
-Patch2:         cmake-4.4.0-meson-compatibility.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig

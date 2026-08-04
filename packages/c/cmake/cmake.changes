@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Aug  2 11:00:53 UTC 2026 - Christoph G <foss@grueninger.de>
+
+- update to CMake 4.4.2
+  * This version made no changes to documented features or interfaces.
+    Some implementation updates were made to support ecosystem
+    changes and/or fix regressions.
+- update to CMake 4.4.1
+  * The FindPython, FindPython3 modules learned to manage, on
+    Windows systems, the pydebug ABI flag.
+- drop cmake-4.4.0-meson-compatibility.patch which is part of
+  upstream
+-------------------------------------------------------------------
 Tue Jul 21 18:18:47 UTC 2026 - Christoph G <foss@grueninger.de>
 
 - Include upstream patch cmake-4.4.0-meson-compatibility.patch for
