@@ -1,0 +1,104 @@
+From d9d1ae6400a7f8a12068bdd37ecda62f07e52bce Mon Sep 17 00:00:00 2001
+From: Qizhi Hu <836744285@qq.com>
+Date: Fri, 26 Jan 2024 14:26:53 +0800
+Subject: [PATCH] [Clang][Sema] fix crash of attribute transform (#78088)
+
+Try to fix [issue](https://github.com/llvm/llvm-project/issues/73619)
+
+1. During transforming `FunctionProtoType`, if `ThisContext` is
+`nullptr` and `CurrentContext` is `ClassTemplateSpecializationDecl`,
+Constructor of `CXXThisScopeRAII` and `Sema::getCurrentThisType` won't
+set `CXXThisTypeOverride` of Sema. This will lead to building `this` in
+`RebuildCXXThisExpr` with a invalid type(NULL type) and cause crash.
+2. During transforming attribute type, if `modifiedType` of attribute
+type is changed, `EquivalentType` need to be transformed. If
+`EquivalentType` is `FunctionProtoType`, its `ParamVarDecl` will not be
+copyed(but parameter num does) and will not be instanced in
+`TransformFunctionTypeParams` since `ParamVarDecl` is `nullptr`. This
+will lead to crash in `findInstantiationOf`(can't find the instance of
+`ParamVarDecl`).
+
+This patch tries to fix these issues above.
+
+1. If `CurrentContext` is `ClassTemplateSpecializationDecl`, Use it.
+2. Use `EquivalentTypeLoc` instead of `EquivalentType` since it has
+parameter info. But, if use current `TypeLocBuilder`, it will crash in
+`TypeLocBuilder::push` since `LastType` is mismatch. Use an auxiliary
+`TypeLocBuilder` instead and get transformed `EquivalentType`.
+
+Co-authored-by: huqizhi <836744285@qq.com>
+---
+ clang/include/clang/AST/TypeLoc.h               |  4 ++++
+ clang/lib/Sema/TreeTransform.h                  | 12 +++++++-----
+ clang/test/Sema/attr-lifetimebound-no-crash.cpp | 17 +++++++++++++++++
+ 4 files changed, 31 insertions(+), 5 deletions(-)
+ create mode 100644 clang/test/Sema/attr-lifetimebound-no-crash.cpp
+
+diff --git a/clang/include/clang/AST/TypeLoc.h b/clang/include/clang/AST/TypeLoc.h
+index 471deb14aba51..04780fdeae3bc 100644
+--- a/clang/include/clang/AST/TypeLoc.h
++++ b/clang/include/clang/AST/TypeLoc.h
+@@ -884,6 +884,10 @@ class AttributedTypeLoc : public ConcreteTypeLoc<UnqualTypeLoc,
+     return getInnerTypeLoc();
+   }
+ 
++  TypeLoc getEquivalentTypeLoc() const {
++    return TypeLoc(getTypePtr()->getEquivalentType(), getNonLocalData());
++  }
++
+   /// The type attribute.
+   const Attr *getAttr() const {
+     return getLocalData()->TypeAttr;
+diff --git a/clang/lib/Sema/TreeTransform.h b/clang/lib/Sema/TreeTransform.h
+index e55e752b9cc35..40028544e23c8 100644
+--- a/clang/lib/Sema/TreeTransform.h
++++ b/clang/lib/Sema/TreeTransform.h
+@@ -6131,7 +6131,9 @@ QualType TreeTransform<Derived>::TransformFunctionProtoType(
+       //   "pointer to cv-qualifier-seq X" between the optional cv-qualifer-seq
+       //   and the end of the function-definition, member-declarator, or
+       //   declarator.
+-      Sema::CXXThisScopeRAII ThisScope(SemaRef, ThisContext, ThisTypeQuals);
++      auto *RD = dyn_cast<CXXRecordDecl>(SemaRef.getCurLexicalContext());
++      Sema::CXXThisScopeRAII ThisScope(
++          SemaRef, !ThisContext && RD ? RD : ThisContext, ThisTypeQuals);
+ 
+       ResultType = getDerived().TransformType(TLB, TL.getReturnLoc());
+       if (ResultType.isNull())
+@@ -7088,10 +7090,10 @@ QualType TreeTransform<Derived>::TransformAttributedType(
+   // FIXME: dependent operand expressions?
+   if (getDerived().AlwaysRebuild() ||
+       modifiedType != oldType->getModifiedType()) {
+-    // TODO: this is really lame; we should really be rebuilding the
+-    // equivalent type from first principles.
+-    QualType equivalentType
+-      = getDerived().TransformType(oldType->getEquivalentType());
++    TypeLocBuilder AuxiliaryTLB;
++    AuxiliaryTLB.reserve(TL.getFullDataSize());
++    QualType equivalentType =
++        getDerived().TransformType(AuxiliaryTLB, TL.getEquivalentTypeLoc());
+     if (equivalentType.isNull())
+       return QualType();
+ 
+diff --git a/clang/test/Sema/attr-lifetimebound-no-crash.cpp b/clang/test/Sema/attr-lifetimebound-no-crash.cpp
+new file mode 100644
+index 0000000000000..e668a78790def
+--- /dev/null
++++ b/clang/test/Sema/attr-lifetimebound-no-crash.cpp
+@@ -0,0 +1,17 @@
++// RUN: %clang_cc1 %s -verify -fsyntax-only
++
++// expected-no-diagnostics
++
++template<typename T>
++struct Bar {
++    int* data;
++
++    auto operator[](const int index) const [[clang::lifetimebound]] -> decltype(data[index]) {
++        return data[index];
++    }
++};
++
++int main() {
++    Bar<int> b;
++    (void)b[2];
++}
