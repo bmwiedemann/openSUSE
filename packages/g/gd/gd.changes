@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug  3 07:29:56 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- modified patches [bsc#1273101]
+  * gd-CVE-2026-9672.patch (fix wrong backport)
+
+-------------------------------------------------------------------
 Fri Jul 31 10:50:47 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - added patches

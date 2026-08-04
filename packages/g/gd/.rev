@@ -575,4 +575,12 @@
     <comment>[bsc#1273101], CVE-2026-9672</comment>
     <requestid>1368829</requestid>
   </revision>
+  <revision rev="61" vrev="6">
+    <srcmd5>68793477ff8f5870dcfd3a37c6202b5f</srcmd5>
+    <version>2.3.3</version>
+    <time>1785871676</time>
+    <user>dimstar_suse</user>
+    <comment>[bsc#1273101]</comment>
+    <requestid>1369181</requestid>
+  </revision>
 </revisionlist>
