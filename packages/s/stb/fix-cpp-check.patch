@@ -1,0 +1,10 @@
+--- a/tests/Makefile	2026-07-09 17:24:06.448318234 +0700
++++ b/tests/Makefile-patch	2026-07-09 17:33:45.772545008 +0700
+@@ -7,6 +7,6 @@
+ 
+ all:
+ 	$(CC) $(INCLUDES) $(CFLAGS) ../stb_vorbis.c test_c_compilation.c test_c_lexer.c test_dxt.c test_easyfont.c test_image.c test_image_write.c test_perlin.c test_sprintf.c test_truetype.c test_voxel.c -lm
+-	$(CC) $(INCLUDES) $(CPPFLAGS) -std=c++0x test_cpp_compilation.cpp -lm -lstdc++
++	$(CXX) $(INCLUDES) $(CPPFLAGS) -std=c++0x -c test_cpp_compilation.cpp
+ 	$(CC) $(INCLUDES) $(CFLAGS) -DIWT_TEST image_write_test.c -lm -o image_write_test
+ 	$(CC) $(INCLUDES) $(CFLAGS) fuzz_main.c stbi_read_fuzzer.c -lm -o image_fuzzer

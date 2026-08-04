@@ -1,16 +1,15 @@
 <services>
-  <service name="obs_scm" mode="manual">
-    <param name="url">https://github.com/nothings/stb.git</param>
-    <param name="scm">git</param>
+	<service name="obs_scm" mode="manual">
+		<param name="url">https://github.com/nothings/stb.git</param>
+		<param name="scm">git</param>
 <!-- every header has an own version meanwhile. so using last commit time. -->
-    <param name="revision">af1a5bc352164740c1cc1354942b1c6b72eacb8a</param>
-    <param name="version">20240910</param>
-  </service>
-  <service mode="manual" name="set_version" />
-
-  <service mode="buildtime" name="tar" />
-  <service mode="buildtime" name="recompress">
-    <param name="file">*.tar</param>
-    <param name="compression">xz</param>
-  </service>
+		<param name="revision">31c1ad37456438565541f4919958214b6e762fb4</param>
+		<param name="version">20260416</param>
+	</service>
+	<service name="set_version" mode="manual"/>
+	<service name="tar" mode="buildtime"/>
+	<service name="recompress" mode="buildtime">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
 </services>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul  9 10:44:11 UTC 2026 - Khang Lê <neyfua@proton.me>
+
+- Update to latest git version
+- Added fix-cpp-check.patch to fix C++ test compilation in %check
+- Removed fix-compile.patch file since it's not needed in latest
+  git version anymore
+
+-------------------------------------------------------------------
 Wed May 13 12:32:04 UTC 2026 - Andreas Schwab <schwab@suse.de>
 
 - lp64.patch: Properly handle all LP64 platforms

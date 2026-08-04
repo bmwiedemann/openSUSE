@@ -17,7 +17,7 @@
 
 
 Name:           stb
-Version:        20240910
+Version:        20260416
 Release:        0
 Summary:        Single-File Public Domain Libraries for C/C++
 License:        MIT OR Unlicense
@@ -25,11 +25,13 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/nothings/stb
 Source0:        stb-%{version}.tar.xz
 Source1:        stb.pc.in
-# perlin.h got removed in git, breaking build
-Patch1:         fix-compile.patch
+# Fix C++ test compilation in %check
+Patch1:         fix-cpp-check.patch
 # Properly handle all LP64 platforms
 Patch2:         lp64.patch
+
 BuildRequires:  c++_compiler
+
 BuildArch:      noarch
 
 # to create version list for changelog
