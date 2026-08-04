@@ -1,7 +1,20 @@
 -------------------------------------------------------------------
+Thu Jul 30 10:54:39 UTC 2026 - Alice Brooks <alice.brooks@suse.com>
+
+- Update to 4.9
+  * Dependency updates fixes bsc#1259010/CVE-2026-27904
+
+-------------------------------------------------------------------
+Wed Apr 29 08:38:18 UTC 2026 - Alice Brooks <alice.brooks@suse.com>
+
+- Update to 4.8
+  * Translation updates
+  * Dependency updates fixes bsc#1257840/CVE-2026-25547
+
+-------------------------------------------------------------------
 Wed Feb 25 08:14:23 UTC 2026 - Alice Brooks <alice.brooks@suse.com>
 
-- Update dependencies bsc#1257836/CVE-2026-25547, bsc#1258637/CVE-2026-26996
+- Update dependencies bsc#1257836/CVE-2026-25547, bsc#1258637/CVE-2026-26996, bsc#1259010/CVE-2026-27904
 
 -------------------------------------------------------------------
 Tue Feb 10 19:10:42 UTC 2026 - Miika Alikirri <miika.alikirri@suse.com>
