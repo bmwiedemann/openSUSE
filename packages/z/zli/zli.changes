@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Aug 04 07:45:30 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.1.19:
+  * chore(deps): bump the github-actions group with 8 updates
+    (#4293)
+  * chore(deps): bump the go-dependencies group with 12 updates
+    (#4282)
+  * chore(deps): bump the github-actions group across 1 directory
+    with 5 updates (#4264)
+  * chore(deps): bump google.golang.org/grpc from 1.81.1 to 1.82.1
+    (#4249)
+  * chore(deps): bump oras-go to v2.6.2 (#4247)
+  * chore(deps): bump the github-actions group with 6 updates
+    (#4242)
+  * chore(deps): bump the go-dependencies group with 8 updates
+    (#4237)
+  * chore(deps): bump the github-actions group across 1 directory
+    with 2 updates (#4225)
+
+-------------------------------------------------------------------
 Sun Jun 28 07:08:39 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.1.18:
