@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sun Aug  2 18:35:04 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Build with the default compiler again, pinning the language standard
+  instead: GCC 16 moved its default dialect to gnu++20, where u8""
+  literals stop converting to std::string -- 77 of them across 29
+  files, so the right fix is upstream's own --cxx17 switch, which
+  Debian, Arch and Gentoo already pass. Drops force_gcc_version and
+  the gcc15-c++ dependency (boo#1261794)
+- Hand the distribution flags to waf via --arch: they were discarded
+  wholesale, so packages shipped without -g (near-empty debuginfo),
+  without any hardening, and with upstream's -O3 -ffast-math instead
+  of -O2. -ffast-math is nothing to ship in a DAW by default
+- Pass --dist-target=aarch64 on aarch64: the wscript's autodetection
+  does not recognise the machine, silently losing ARM_NEON_SUPPORT.
+  Keep the explanatory comment outside the configure invocation's
+  backslash continuation chain -- a comment line inside it terminates
+  the command mid-way and broke the aarch64 build outright
+- Build the ardour-lang subpackage the declared %lang_package always
+  promised: the translations were being swallowed by the main package
+- Enable Xinerama support, which was silently off for want of the
+  header, and correct the AudioEditing desktop-file category to the
+  registered AudioVideoEditing
+- Drop the deprecated %suse_update_desktop_file and update-desktop-files,
+  the never-used ldconfig-era Requires(post/postun) pairs and the bogus
+  runtime dependency on graphviz
+- Correct dependency floors: libcurl >= 7.55.0 (what configure checks),
+  itstool >= 2.0.0, and drop the over-broad libhidapi-devel for the
+  pkgconfig(hidapi-hidraw) the build actually probes
+
+-------------------------------------------------------------------
 Fri Jul 31 00:32:55 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Force gcc 15 until Ardour builds with >= 16

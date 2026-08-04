@@ -1,2 +1,6 @@
 addFilter("devel-file-in-non-devel-package")
+# x86 only: the SSE assembler sources carry no .note.GNU-stack section, so the
+# linker marks the stack executable there. The spec deliberately does not pass
+# --no-execstack (see the comment in %build); on other architectures no such
+# asm is built and this filter is reported as unused, which is harmless.
 addFilter("E: executable-stack")

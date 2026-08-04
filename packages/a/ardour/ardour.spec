@@ -16,10 +16,6 @@
 #
 
 
-%if 0%{?suse_version} >= 1699
-%global force_gcc_version 15
-%endif
-
 %define dirbase ardour9
 Name:           ardour
 Version:        9.7.0
@@ -37,21 +33,19 @@ BuildRequires:  boost-devel >= 1.68.0
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  fftw3-threads-devel
-BuildRequires:  gcc%{?force_gcc_version}-c++
+BuildRequires:  gcc-c++
 BuildRequires:  gettext-devel
 BuildRequires:  glibc-devel
 BuildRequires:  graphviz
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  itstool > 2.0.0
+BuildRequires:  itstool >= 2.0.0
 BuildRequires:  jack-devel
 BuildRequires:  libcppunit-devel
-BuildRequires:  libhidapi-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  readline-devel
 BuildRequires:  rubberband-vamp
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(atkmm-1.6) >= 2.22.6
 BuildRequires:  pkgconfig(aubio) >= 0.3.2
@@ -67,9 +61,10 @@ BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(glibmm-2.4) >= 2.32.0
 BuildRequires:  pkgconfig(gtk+-2.0) >= 2.24.18
 BuildRequires:  pkgconfig(gtkmm-2.4) >= 2.24.2
+BuildRequires:  pkgconfig(hidapi-hidraw)
 BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(libarchive)
-BuildRequires:  pkgconfig(libcurl) >= 7.25.0
+BuildRequires:  pkgconfig(libcurl) >= 7.55.0
 BuildRequires:  pkgconfig(libexslt)
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(liblo) >= 0.26
@@ -102,13 +97,9 @@ BuildRequires:  pkgconfig(vamp)
 BuildRequires:  pkgconfig(vorbis) >= 1.3.2
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(x11-xcb)
-Requires:       graphviz
+BuildRequires:  pkgconfig(xinerama)
 Requires:       lv2
 %requires_ge    liblilv-0-0
-Requires(post): desktop-file-utils
-Requires(post): shared-mime-info
-Requires(postun): desktop-file-utils
-Requires(postun): shared-mime-info
 Recommends:     a2jmidid
 Recommends:     gtk2-engine-clearlooks
 Recommends:     libcanberra-gtk2-module
@@ -148,23 +139,41 @@ chmod -x doc/mainpage.md
 
 # don't use python2
 find . -name wscript -o -name waf -o -name '*.py' \
-  | xargs sed -i -e '1{s|^#!.*python$|#!/usr/bin/python3|}'
+  | xargs sed -i -e '1{s|^#!.*python$|#!%{_bindir}/python3|}'
+
+# AudioEditing is not a registered freedesktop menu category; the registered
+# one is AudioVideoEditing. The deprecated %%suse_update_desktop_file used to
+# paper over this, and rpmlint rejects the file without it.
+sed -i 's/;AudioEditing;/;AudioVideoEditing;/' gtk2_ardour/ardour.desktop.in
 
 # Also search vst3 plugins from /usr/lib64 on relevant archs
 %ifnarch %{ix86} %{arm}
-sed -i 's#/usr/local/lib/vst3:/usr/lib/vst3#/usr/local/lib64/vst3:/usr/local/lib/vst3:/usr/lib64/vst3:/usr/lib/vst3#' libs/ardour/plugin_manager.cc
-sed -i 's#/usr/local/lib/vst:/usr/lib/vst#/usr/local/lib64/vst:/usr/local/lib/vst:/usr/lib64/vst:/usr/lib/vst#' libs/ardour/search_paths.cc
+sed -i 's#%{_prefix}/local/lib/vst3:%{_prefix}/lib/vst3#%{_prefix}/local/lib64/vst3:%{_prefix}/local/lib/vst3:%{_libdir}/vst3:%{_prefix}/lib/vst3#' libs/ardour/plugin_manager.cc
+sed -i 's#%{_prefix}/local/lib/vst:%{_prefix}/lib/vst#%{_prefix}/local/lib64/vst:%{_prefix}/local/lib/vst:%{_libdir}/vst:%{_prefix}/lib/vst#' libs/ardour/search_paths.cc
 %endif
 
 # --no-execstack will avoid linter errors but prevent loading of external plugins
 # see https://discourse.ardour.org/t/tls-1295-lea-so-linux-vers-doesnt-work/111778/21
 # selinux would prevent this anyway, the gaming policy is necessary for this to work
 %build
-%if 0%{?force_gcc_version}
-export CC="gcc-%{?force_gcc_version}"
-export CXX="g++-%{?force_gcc_version}"
-%endif
+# waf ignores the distribution flags unless they are handed to it explicitly.
+# --arch replaces the optimization flag list wholesale ("ARCH=... overrides
+# all", wscript:709), which is both how %%{optflags} gets in -- the build shipped
+# without -g, so its debuginfo was nearly empty -- and what stops upstream
+# prepending its own -O3 -ffast-math -fomit-frame-pointer -fstrength-reduce:
+# that set is only added when no -O flag is present yet (wscript:721-729) and
+# %%{optflags} carries -O2. -ffast-math is not something to ship in a DAW.
+#
+# --dist-target on aarch64 only: the wscript's autodetect regex knows only
+# i[0-6]86/x86_64/powerpc/ppc/ppc64/arm/s390x, so on aarch64 build_target
+# becomes 'none' and ARM_NEON_SUPPORT is silently never defined. Do NOT widen
+# this to other architectures -- they autodetect correctly, and an explicit
+# value would bypass the i[0-5]86 -> i386 normalisation that the 32-bit x86
+# SSE handling depends on. The comment lives up here because a # line inside
+# the backslash continuation chain would terminate the command mid-way (rpm
+# keeps shell comments in %%build, so the continuation joins onto the '#').
 ./waf configure \
+   --arch="%{optflags}" \
    --prefix=%{_prefix} \
    --libdir=%{_libdir} \
    --includedir=%{_includedir} \
@@ -178,6 +187,10 @@ export CXX="g++-%{?force_gcc_version}"
    --noconfirm \
    --no-phone-home \
    --optimize \
+   --cxx17 \
+%ifarch aarch64
+   --dist-target=aarch64 \
+%endif
    --ptformat
 
 ./waf i18n
@@ -190,7 +203,6 @@ export CXX="g++-%{?force_gcc_version}"
 install -D -m 644 -t %{buildroot}%{_datadir}/metainfo %{buildroot}%{_datadir}/appdata/ardour9.appdata.xml
 rm -r %{buildroot}%{_datadir}/appdata
 
-%suse_update_desktop_file -i ardour9 AudioVideo Recorder
 %find_lang ardour9
 %find_lang gtk2_ardour9
 %find_lang gtkmm2ext3
@@ -199,7 +211,7 @@ rm -r %{buildroot}%{_datadir}/appdata
 # remove dupes
 %fdupes -s %{buildroot}%{_datadir}
 
-%files -f ardour9.lang -f gtk2_ardour9.lang -f gtkmm2ext3.lang -f ytk9.lang
+%files
 %license COPYING
 %doc doc README
 %dir %{_sysconfdir}/%{dirbase}
@@ -215,7 +227,16 @@ rm -r %{buildroot}%{_datadir}/appdata
 %{_datadir}/metainfo/ardour9.appdata.xml
 %{_datadir}/mime/packages/ardour.xml
 %{_libdir}/%{dirbase}/
+# the .mo files below here belong to the lang subpackage, not the main one
+%exclude %{_datadir}/%{dirbase}/locale
 %exclude %{_datadir}/%{dirbase}/templates/.stub
 %exclude %{_libdir}/%{dirbase}/libhidapi.a
+
+%files lang -f ardour9.lang -f gtk2_ardour9.lang -f gtkmm2ext3.lang -f ytk9.lang
+# %%find_lang lists only the .mo files; in a private locale tree it does not
+# emit directory ownership, so own the hierarchy here.
+%dir %{_datadir}/%{dirbase}/locale
+%dir %{_datadir}/%{dirbase}/locale/*
+%dir %{_datadir}/%{dirbase}/locale/*/LC_MESSAGES
 
 %changelog
