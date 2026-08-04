@@ -103,6 +103,12 @@ Patch2:         gimp-2.99.19-external-help-browser.patch
 Patch3:         gimp-2.99.19-no-phone-home-default.patch
 Patch4:         gimp-CVE-2026-58379.patch
 Patch5:         gimp-CVE-2026-59089.patch
+# PATCH-FIX-UPSTREAM gimp-CVE-2026-66757.patch bsc#1273151 mgorse@suse.com -- fix a signed integer overflow processing SGI images.
+Patch6:         gimp-CVE-2026-66757.patch
+# PATCH-FIX-UPSTREAM gimp-CVE-2026-66758.patch bsc#1273152 mgorse@suse.com -- mitigate overflow in FITS import.
+Patch7:         gimp-CVE-2026-66758.patch
+# PATCH-FIX-UPSTREAM gimp-CVE-2026-66759.patch bsc#1273153 mgorse@suse.com -- mitigate OOB write on ICNS mask data
+Patch8:         gimp-CVE-2026-66759.patch
 %if %{with debug_in_build_gimp}
 BuildRequires:  gdb
 %endif
