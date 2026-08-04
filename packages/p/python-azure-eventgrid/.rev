@@ -325,4 +325,15 @@
     CHANGELOG.md file provided with this package (forwarded request 1277531 from glaubitz)</comment>
     <requestid>1277715</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>959ff1cc68b7e77a4b3fbe4cdea3450b</srcmd5>
+    <version>4.22.1</version>
+    <time>1785872116</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 4.22.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1369286 from glaubitz)</comment>
+    <requestid>1369319</requestid>
+  </revision>
 </revisionlist>
