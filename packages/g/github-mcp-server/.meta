@@ -1,0 +1,4 @@
+<package name="github-mcp-server" project="openSUSE:Factory">
+  <title>GitHub's official MCP server</title>
+  <description>Model Context Protocol server for GitHub, plus the mcpcurl developer tool.</description>
+</package>

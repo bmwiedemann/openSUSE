@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Mon Aug  3 13:22:27 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package
+- GitHub's official Model Context Protocol server, exposing the GitHub
+  API (repositories, issues, pull requests, Actions, code scanning,
+  discussions and more) as MCP tools over both the stdio and streamable
+  HTTP transports, plus the mcpcurl developer tool in a subpackage
+- Add github-mcp-server-root-command-name.patch: the cobra root command
+  was named "server" rather than after the installed binary, so the
+  generated shell completions defined a dispatcher for a command that
+  does not exist and never fired, and --help advertised a "server"
+  command. Sent upstream as gh#github/github-mcp-server#2998
+- Do not build the bundled MCP App UI: it is a Vite/TypeScript tree
+  needing several hundred npm packages that the distribution does not
+  carry. Upstream ships a committed placeholder so the embedded
+  filesystem still resolves and guards every call site, so the server
+  runs normally without the optional HTML app resources
+- Do not pass upstream's "-s -w" link flags, which would strip the
+  symbol table and leave the debuginfo subpackage empty
+- Build without OAuth client credentials: those are upstream's own and
+  are absent from the source, so the zero-configuration OAuth login is
+  unavailable and a personal access token is used instead. Recorded in
+  the package description rather than left to surprise users
+

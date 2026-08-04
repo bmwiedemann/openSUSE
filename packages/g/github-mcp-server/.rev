@@ -1,0 +1,33 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>49c739dcc035aae42cfd592ba64b6899</srcmd5>
+    <version>1.8.0</version>
+    <time>1785872051</time>
+    <user>dimstar_suse</user>
+    <comment>New package: github-mcp-server 1.8.0.
+
+GitHub's official Model Context Protocol server, exposing the GitHub API as
+MCP tools over stdio and streamable HTTP. Ships the mcpcurl developer tool as
+a subpackage and bash/zsh/fish completions.
+
+Deliberate packaging decisions, all documented in the spec and changelog:
+ * The bundled MCP App UI (a Vite/TypeScript tree needing several hundred npm
+   packages) is not built. Upstream ships a committed placeholder so the
+   go:embed directive resolves, and every call site is guarded by
+   UIAssetsAvailable(), so the server runs normally without it.
+ * Upstream's '-s -w' link flags are dropped so debuginfo is usable.
+ * No OAuth client credentials are injected -- those are upstream's own and
+   are absent from the source. Disclosed in %description rather than hidden.
+ * One patch, sent upstream as github/github-mcp-server#2998: the cobra root
+   command was named 'server' instead of after the installed binary, so
+   generated shell completions bound to a nonexistent command and never
+   fired.
+
+Verified with a local osc build for openSUSE_Tumbleweed/aarch64: green,
+%check runs the full offline unit suite (28 packages, 0 failures, no network
+or token needed), rpmlint 0 errors 0 badness, source_validator clean. The
+remaining rpmlint warnings are files-duplicate among the vendored license
+texts shipped under %license, which are kept per-dependency on purpose.</comment>
+    <requestid>1369275</requestid>
+  </revision>
+</revisionlist>

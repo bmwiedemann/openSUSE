@@ -1,0 +1,18 @@
+<services>
+  <service name="tar_scm" mode="manual">
+    <param name="url">https://github.com/github/github-mcp-server</param>
+    <param name="scm">git</param>
+    <param name="exclude">.git</param>
+    <param name="revision">v1.8.0</param>
+    <param name="version">1.8.0</param>
+    <param name="changesgenerate">disable</param>
+  </service>
+  <service name="recompress" mode="manual">
+    <param name="file">*.tar</param>
+    <param name="compression">zst</param>
+  </service>
+  <service name="go_modules" mode="manual">
+    <param name="compression">zst</param>
+    <param name="archive">github-mcp-server-1.8.0.tar.zst</param>
+  </service>
+</services>
