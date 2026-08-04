@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Aug  3 18:58:45 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to logging-parent 12.1.1
+  * Main changes
+    + Update to the latest upstream release (includes major updates
+      from versions 10, 11, and 12).
+    + Better Security Tracking: Added tools (CycloneDX) to
+      automatically list all software ingredients (SBOM) used in the
+      build.
+    + Updated Java Module Building: Swapped the old
+      maven-bundle-plugin for bnd-maven-plugin to better handle OSGi
+      and modern Java modules.
+    + Stricter Code Quality: Added spotless-maven-plugin to enforce
+      a standard code style, and grouped bug-catching tools (Error
+      Prone, SpotBugs) into one place.
+    + New Changelog System: Replaced the old Maven changes plugin
+      with a custom log4j-changelog-maven-plugin for managing
+      release notes.
+    + Standardized Automation: Centralized GitHub Actions workflows
+      to make testing, building, and deploying more consistent
+      across projects.
+    + Reliable Builds: Updated core Maven plugins and enforced
+      strict timestamp settings so that the same source code always
+      produces the exact same final files (reproducible builds).
+
+-------------------------------------------------------------------
 Wed Jan 19 07:34:34 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to logging-parent 5
