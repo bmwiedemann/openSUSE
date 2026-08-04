@@ -15,4 +15,26 @@
     <comment>Relax three over-strict runtime dependency floors that upstream set at initial release as uv-lock pin-inflation (never touched in 18 later commits), not real API requirements: pydantic &gt;=2.12.0-&gt;2.11.7, rich &gt;=14.3.0-&gt;14.0.0, typer &gt;=0.23.0-&gt;0.16.0. The code uses only long-stable APIs of each; verified against Leap 16.0's shipped versions (pydantic 2.11.7 / rich 14.0.0 / typer 0.16.0 / click 8.2.1, Python 3.13) with the full offline unit suite green (1249 passed) plus a CLI smoke test. The typer &lt;0.24 cap (click/semgrep clash) is unchanged. No functional change on Factory/TW (which ship newer). Lets the package install on Leap 16.0.</comment>
     <requestid>1363651</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d4f90b35e6e8f991879bca010134c4a5</srcmd5>
+    <version>2.5.1</version>
+    <time>1785878930</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 2.5.1
+
+Upstream's first tagged releases; the package moves from a pinned git snapshot
+to the release tags.
+
+Notable: JSON and SARIF reports now carry a canonical inspection ledger, so a
+consumer can tell a clean zero-finding scan apart from one that did not execute
+reliably. Also adds SKILLSPECTOR_MAX_LLM_CONCURRENCY for rate-limited providers,
+exact-version reads from Python lockfiles for OSV, and an OMS signature fix.
+
+The full offline suite runs: 1555 passed, 12 skipped. One new upstream test is
+deselected -- it re-execs the CLI with PYTHONPATH replaced by the source tree,
+so the child has no .dist-info and dies with PackageNotFoundError; it assumes an
+editable dev install. Its assertion is covered in-process by
+test_build_server_registers_scan_skill, which does run.</comment>
+    <requestid>1369456</requestid>
+  </revision>
 </revisionlist>

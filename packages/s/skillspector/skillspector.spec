@@ -21,7 +21,7 @@
 # %%{primary_python} so it stays correct as the primary interpreter moves.
 %define pythons %{primary_python}
 Name:           skillspector
-Version:        2.3.9~git20260701.326a2b48
+Version:        2.5.1
 Release:        0
 Summary:        Security scanner for AI agent skills
 License:        Apache-2.0
@@ -115,16 +115,23 @@ cp -a .skillspector-baseline.example.yaml skillspector-baseline.example.yaml
 # they are deselected here (not skillspector bugs): the four in
 # test_input_handler_ssrf.py plus three equivalents added upstream in
 # test_input_handler.py.
-%pytest --deselect tests/unit/test_input_handler_ssrf.py::TestGitCloneSSRF::test_github_url_allowed --deselect tests/unit/test_input_handler_ssrf.py::TestGitCloneSSRF::test_gitlab_url_allowed --deselect tests/unit/test_input_handler_ssrf.py::TestDownloadSSRF::test_raw_githubusercontent_allowed --deselect tests/unit/test_input_handler_ssrf.py::TestDownloadSSRF::test_download_does_not_follow_redirects --deselect tests/unit/test_input_handler.py::test_validate_url_host_scp_extracts_github --deselect tests/unit/test_input_handler.py::test_scp_valid_host_clones --deselect tests/unit/test_input_handler.py::test_https_url_unchanged
+#
+# test_mcp_stdio_initialize_registers_scan_skill re-execs "python -m
+# skillspector.cli mcp" with PYTHONPATH *replaced* by the source src/ directory.
+# The child therefore imports the module from the source tree, which carries no
+# .dist-info, and dies with "PackageNotFoundError: No package metadata was found
+# for skillspector" before the server ever speaks; the harness assumes an
+# editable dev install, while we install into the buildroot. Its assertion --
+# that the server registers the scan_skill tool -- is covered in-process by
+# test_build_server_registers_scan_skill, which does run here.
+%pytest --deselect tests/unit/test_mcp_server.py::test_mcp_stdio_initialize_registers_scan_skill --deselect tests/unit/test_input_handler_ssrf.py::TestGitCloneSSRF::test_github_url_allowed --deselect tests/unit/test_input_handler_ssrf.py::TestGitCloneSSRF::test_gitlab_url_allowed --deselect tests/unit/test_input_handler_ssrf.py::TestDownloadSSRF::test_raw_githubusercontent_allowed --deselect tests/unit/test_input_handler_ssrf.py::TestDownloadSSRF::test_download_does_not_follow_redirects --deselect tests/unit/test_input_handler.py::test_validate_url_host_scp_extracts_github --deselect tests/unit/test_input_handler.py::test_scp_valid_host_clones --deselect tests/unit/test_input_handler.py::test_https_url_unchanged
 
 %files
 %license LICENSE
 %doc README.md skillspector-baseline.example.yaml
 %{_bindir}/skillspector
 %{python_sitelib}/skillspector
-# Upstream pyproject pins a static version = 2.3.9, so the wheel dist-info
-# keeps the release version, not the ~git snapshot RPM %%{version}.
-%{python_sitelib}/skillspector-2.3.9.dist-info
+%{python_sitelib}/skillspector-%{version}.dist-info
 
 %files mcp
 

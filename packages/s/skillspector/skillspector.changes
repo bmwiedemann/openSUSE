@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Aug  4 08:41:57 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.5.1 (first tagged releases; switches the package
+  from a pinned git snapshot to the upstream release tags):
+  * Canonical inspection-ledger reporting: JSON and SARIF reports now
+    carry execution-completeness and analyzer status, so a consumer
+    can distinguish a clean zero-finding scan from one that did not
+    execute reliably
+  * SKILLSPECTOR_MAX_LLM_CONCURRENCY serializes or bounds asynchronous
+    LLM analyzer batches for rate-limited providers
+  * Read exact versions from Python lockfiles for OSV lookups
+  * Exclude valid OMS signatures from content analysis
+- Ship the wheel metadata under the release version again: upstream's
+  pyproject version now matches the tag, so the dist-info glob follows
+  the package version
+
+-------------------------------------------------------------------
 Fri Jul  3 09:15:11 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Relax over-strict dependency floors set by upstream at initial
