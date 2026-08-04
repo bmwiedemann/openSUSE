@@ -411,4 +411,12 @@
     <comment>Automatic update from systemsmanagement:Agama:Release</comment>
     <requestid>1366760</requestid>
   </revision>
+  <revision rev="37" vrev="37">
+    <srcmd5>c698a2f85aca7814f64362ce08c58fc7</srcmd5>
+    <version>0</version>
+    <time>1785871765</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1369253</requestid>
+  </revision>
 </revisionlist>
