@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Jul 31 05:36:40 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 4.19.5:
+  + Fixed missed automatic backup on startup
+  + Fixed completing a recurring task from a notification
+  + Fixed keyboard navigation UX
+  + Fixed attachment file_size integer overflow
+  + Fixed drag and drop reliability and visual feedback in ReorderChild
+  + Fixed CalDAV related-to parsing
+  + Fixed reading X-PINNED and X-APPLE-SORT-ORDER from CalDAV
+  + Added "Date Modified" sort option
+  + Added subtitle support for context menu items
+  + Added toast notification when automatic backup fails
+  + Added last day of month recurrency support
+  + Improved Todoist recurring tasks integration
+  + Fixed zombie tasks with reminders created while offline
+
+-------------------------------------------------------------------
 Fri May 29 20:16:55 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 4.19.4:

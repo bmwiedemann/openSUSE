@@ -209,4 +209,25 @@
   + Fixed double sync triggered when adding a new source (forwarded request 1355967 from rrahl0)</comment>
     <requestid>1355968</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3b4851ac3e61eb0e6a67569dcf3e91cc</srcmd5>
+    <version>4.19.5</version>
+    <time>1785878892</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.19.5:
+  + Fixed missed automatic backup on startup
+  + Fixed completing a recurring task from a notification
+  + Fixed keyboard navigation UX
+  + Fixed attachment file_size integer overflow
+  + Fixed drag and drop reliability and visual feedback in ReorderChild
+  + Fixed CalDAV related-to parsing
+  + Fixed reading X-PINNED and X-APPLE-SORT-ORDER from CalDAV
+  + Added &quot;Date Modified&quot; sort option
+  + Added subtitle support for context menu items
+  + Added toast notification when automatic backup fails
+  + Added last day of month recurrency support
+  + Improved Todoist recurring tasks integration
+  + Fixed zombie tasks with reminders created while offline (forwarded request 1368824 from rrahl0)</comment>
+    <requestid>1368827</requestid>
+  </revision>
 </revisionlist>

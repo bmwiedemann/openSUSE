@@ -19,7 +19,7 @@
 %define         sover 0
 %define         appid io.github.alainm23.planify
 Name:           planify
-Version:        4.19.4
+Version:        4.19.5
 Release:        0
 Summary:        Task and project manager
 License:        GPL-3.0-or-later
@@ -33,6 +33,7 @@ BuildRequires:  intltool
 BuildRequires:  meson >= 0.56
 BuildRequires:  pkgconfig
 BuildRequires:  vala >= 0.48.0
+BuildRequires:  pkgconfig(chrono)
 BuildRequires:  pkgconfig(gee-0.8) >= 0.20.6
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk4) >= 4.14.4
