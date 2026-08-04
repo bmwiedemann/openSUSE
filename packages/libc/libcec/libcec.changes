@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug  4 05:37:28 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 8.1.4:
+  * Windows-only release: the Windows install tree now follows
+    GNUInstallDirs, and the static library no longer overwrites the
+    DLL import library. There are no library or protocol changes,
+    so nothing changes for the Linux build
+
+-------------------------------------------------------------------
 Fri Jul 31 19:39:48 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 8.1.3 (includes the never-published 8.1.2):
