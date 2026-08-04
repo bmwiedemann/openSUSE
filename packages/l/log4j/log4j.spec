@@ -42,8 +42,10 @@ BuildRequires:  mvn(jakarta.activation:jakarta.activation-api)
 BuildRequires:  mvn(jakarta.jms:jakarta.jms-api)
 BuildRequires:  mvn(jakarta.mail:jakarta.mail-api)
 BuildRequires:  mvn(jakarta.servlet:jakarta.servlet-api)
+BuildRequires:  mvn(org.apache.logging:logging-parent:pom:)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-assembly-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-dependency-plugin)
+BuildRequires:  mvn(org.apache.maven.plugins:maven-javadoc-plugin)
 BuildRequires:  mvn(org.codehaus.mojo:build-helper-maven-plugin)
 BuildRequires:  mvn(org.jctools:jctools-core)
 BuildRequires:  mvn(org.jspecify:jspecify)
@@ -125,9 +127,8 @@ Obsoletes:      %{name}-manual < %{version}
 %{summary}.
 
 %prep
-%setup -q -c -n apache-%{name}-%{version}-src
+%setup -q -c
 
-find . -name .log4j-plugin-processing-activator -print -delete
 find . -name package-info.java -print -delete
 
 %pom_remove_plugin -r :apache-rat-plugin
@@ -139,10 +140,8 @@ find . -name package-info.java -print -delete
 %pom_remove_plugin -r org.gradlex:gradle-module-metadata-maven-plugin
 %pom_remove_plugin -r org.apache.maven.plugins:maven-clean-plugin
 %pom_remove_plugin -r org.apache.logging.log4j:log4j-docgen-maven-plugin
-
-# remove all the stuff we'll build ourselves
-find -name "*.jar" -o -name "*.class" -delete
-rm -rf docs/api
+%pom_xpath_remove "pom:path[pom:artifactId='log4j-docgen']" log4j-parent
+%pom_xpath_remove "pom:processor[text()='org.apache.logging.log4j.docgen.processor.DescriptorGenerator']" log4j-parent
 
 # artifact for upstream testing of log4j itself, shouldn't be distributed
 %pom_disable_module %{name}-perf-test
@@ -169,7 +168,7 @@ rm -r log4j-core/src/main/java/org/apache/logging/log4j/core/appender/mom/kafka
 %pom_disable_module %{name}-mongodb
 %pom_disable_module %{name}-mongodb4
 
-# old AID is provided by felix, we want osgi-core
+# old artifactId is provided by felix, we want osgi-core
 %pom_change_dep -r org.osgi:org.osgi.core org.osgi:osgi.core
 %pom_change_dep -r org.osgi:org.osgi.annotation.bundle org.osgi:osgi.annotation
 %pom_remove_dep -r org.osgi:org.osgi.annotation.versioning
@@ -179,8 +178,6 @@ rm -r log4j-core/src/main/java/org/apache/logging/log4j/core/appender/mom/kafka
 # tests are disabled
 %pom_remove_plugin -r :maven-failsafe-plugin
 %pom_remove_plugin -r :maven-surefire-plugin
-
-%pom_remove_parent
 
 %pom_disable_module %{name}-api-test
 %pom_disable_module %{name}-core-test
@@ -228,21 +225,6 @@ rm log4j-core/src/main/java/org/apache/logging/log4j/core/filter/MutableThreadCo
 %pom_remove_dep org.eclipse.angus:angus-activation log4j-jakarta-smtp
 %pom_remove_dep org.eclipse.angus:jakarta.mail log4j-jakarta-smtp
 
-%pom_add_plugin biz.aQute.bnd:bnd-maven-plugin:6.4.1 log4j-parent '
-    <executions>
-        <execution>
-            <goals>
-                <goal>bnd-process</goal>
-            </goals>
-        </execution>
-    </executions>
-    <configuration>
-        <bnd><![CDATA[
-            # Enable automatic META-INF/services generation from SPI annotations
-            -serviceloader: *
-        ]]></bnd>
-    </configuration>'
-
 %if %{?pkg_vcmp:%pkg_vcmp slf4j >= 2}%{!?pkg_vcmp:0}
 %pom_disable_module %{name}-slf4j-impl
 %{mvn_alias} :%{name}-slf4j2-impl :%{name}-slf4j-impl
@@ -265,7 +247,11 @@ rm log4j-core/src/main/java/org/apache/logging/log4j/core/filter/MutableThreadCo
 %{mvn_package} ::zip: __noinstall
 
 %build
-%{mvn_build} -f -- -Dsource=8
+%{mvn_build} -fj -- org.apache.maven.plugins:maven-javadoc-plugin:aggregate \
+    -Dmaven.javadoc.skip=false \
+    -Ddoclint="none" \
+    -Dsource=8 \
+    -DlegacyMode=true
 
 %install
 %mvn_install
