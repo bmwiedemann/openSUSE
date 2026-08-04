@@ -47,6 +47,7 @@ Requires:       (cockpit-selinux if selinux-tools)
 Requires:       (cockpit-packages if PackageKit)
 Requires:       (cockpit-packagekit if PackageKit)
 Requires:       cockpit-repos
+Requires:       cockpit-bootloader
 Requires:       (cockpit-subscriptions if suseconnect-ng)
 Requires:       (cockpit-firewalld if firewalld)
 Requires:       sudo
