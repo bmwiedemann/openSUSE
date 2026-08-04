@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Aug  3 05:49:01 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.3.0:
+  * The server can hold the Bugzilla API key itself via
+    --api-key-file (container secret, systemd LoadCredential), so
+    over HTTP clients no longer have to present the real key
+  * New policy matcher created_by_me matches the bug-caller
+    relationship, letting a policy treat the requesting account's
+    own reports differently from everyone else's
+  * Policy rules are scoped by operation, fixing a rule granting
+    only create silently deciding - and denying - read access to
+    existing bugs in its products
+  * update_bug_fields gained named parameters for summary, url,
+    whiteboard, version, target_milestone and add/remove lists for
+    keywords and see_also, all under the existing fields capability
+  * Audit records adopt the W3C trace context from a client-supplied
+    traceparent, and bugs_quicksearch records how many rows the
+    search-window scan examined and how many it withheld
+  * The example policy installed as /etc/bugwarden/policy.toml was
+    reworked to demonstrate the new matchers; installs that edited
+    theirs keep it (the file is config noreplace)
+- Add ca-certificates-mozilla to BuildRequires: the HTTP transport
+  tests new in this release refuse to construct their client while
+  the system CA store is empty
+
+-------------------------------------------------------------------
 Tue Jul 28 13:08:09 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.2.0:

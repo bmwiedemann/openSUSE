@@ -32,4 +32,12 @@ License: is the aggregate over the crates statically linked into the binary
 (unchanged from 0.1.0; recomputed against the new vendor set).</comment>
     <requestid>1368198</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ad7bad58256480b2aed19266b6d987f7</srcmd5>
+    <version>0.3.0</version>
+    <time>1785871972</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.3.0: server-held Bugzilla API key custody over HTTP, created_by_me policy matcher, operation-scoped policy rules, widened update_bug_fields, audit trace context and search-window drop accounting</comment>
+    <requestid>1369194</requestid>
+  </revision>
 </revisionlist>

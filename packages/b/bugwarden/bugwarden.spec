@@ -17,7 +17,7 @@
 
 
 Name:           bugwarden
-Version:        0.2.0
+Version:        0.3.0
 Release:        0
 Summary:        MCP server for Bugzilla with operator-controlled security guards
 # Upstream is Apache-2.0; the rest is the aggregate of the crates statically
@@ -26,6 +26,10 @@ License:        (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR ISC OR MIT) AND (Apac
 URL:            https://github.com/plusky/bugwarden
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
+# The HTTP transport tests in %%check construct a reqwest client, which
+# refuses to build when the system CA store is empty — even though the
+# tests themselves only ever speak plain HTTP to localhost.
+BuildRequires:  ca-certificates-mozilla
 BuildRequires:  cargo-packaging
 # Workspace MSRV; the pinned toolchain upstream uses for its own checks is
 # dropped in %%prep so the distribution compiler is used instead.
