@@ -19,26 +19,26 @@
 %define is_ltr 0
 
 %bcond_without grass
-%if %is_ltr
+%if %{is_ltr}
 Name:           qgis-ltr
 %else
 Name:           qgis
 %endif
 
-%if 0%{suse_version} >= 1600
 %define pythons python3
-%else
-%define gccver 13
-%{?sle15_python_module_pythons}
-%endif
-%define mypython %pythons
+%define mypython %{pythons}
 %define __mypython %{expand:%%__%{mypython}}
 
-Version:        3.44.11
+# QGIS links a very large number of C++ libraries and LTO regularly runs the
+# builders out of memory here; the build is slow enough without it.
+%define _lto_cflags %{nil}
+
+Version:        4.2.1
 Release:        0
 Summary:        A Geographic Information System (GIS)
-License:        GPL-2.0-only
-Group:          Productivity/Graphics/Visualization/Other
+# The COPYING file carries the GPL-2.0 text, but the source headers throughout
+# grant "version 2 of the License, or (at your option) any later version".
+License:        GPL-2.0-or-later
 URL:            https://qgis.org/
 Source:         https://qgis.org/downloads/qgis-%{version}.tar.bz2
 Source1:        https://qgis.org/downloads/qgis-%{version}.tar.bz2.sha256
@@ -46,114 +46,127 @@ Source2:        %{name}.rpmlintrc
 Source3:        https://download.qgis.org/downloads/data/qgis_sample_data.zip
 # PATCH-FIX-OPENSUSE - adapt include path of fastcgi
 Patch1:         fix-fastcgi-include.patch
-# PATCH-FIX-UPSTREAM - scan for pdal-config instead of pdal in cmake
+# PATCH-FIX-OPENSUSE - upstream looks for the pdal binary, which lives in the
+# runtime package; only PDAL-devel (and thus pdal-config) is available here
 Patch2:         qgis-fix-cmake-findpdal.patch
-BuildRequires:  FastCGI-devel
-BuildRequires:  PDAL-devel
-BuildRequires:  bison >= 2.4
-BuildRequires:  cmake >= 3.12.0
-BuildRequires:  fdupes
-BuildRequires:  filesystem
-BuildRequires:  flex >= 2.5.6
-BuildRequires:  gcc%{?gccver}-c++
-BuildRequires:  geos-devel >= 3.9
-BuildRequires:  libQt5Sql-private-headers-devel
-BuildRequires:  libQt5Sql5-mysql
-BuildRequires:  libQt5Sql5-postgresql
-# Add the 3 main db we should access
-# also have them in requires
-BuildRequires:  libQt5Sql5-sqlite
 BuildRequires:  %{mypython}-GDAL
 BuildRequires:  %{mypython}-Jinja2
 BuildRequires:  %{mypython}-OWSLib
+BuildRequires:  %{mypython}-PyQt6-QScintilla
+BuildRequires:  %{mypython}-PyQt6-devel
 BuildRequires:  %{mypython}-PyYAML
 BuildRequires:  %{mypython}-devel >= 3.7
 BuildRequires:  %{mypython}-psycopg2
 BuildRequires:  %{mypython}-pygments
 BuildRequires:  %{mypython}-pyqt-builder
-BuildRequires:  %{mypython}-qscintilla-qt5
-BuildRequires:  %{mypython}-qscintilla-qt5-sip
-BuildRequires:  %{mypython}-qt5-devel
 BuildRequires:  %{mypython}-sip-devel
 BuildRequires:  %{mypython}-termcolor
-BuildRequires:  libexiv2-devel
-BuildRequires:  libqscintilla_qt5-devel
+BuildRequires:  FastCGI-devel
+BuildRequires:  PDAL-devel
+BuildRequires:  bison >= 2.4
+BuildRequires:  cmake >= 3.12.0
+# %%build runs crssync, which loads libgdal and through it, via libarmadillo
+# and libarpack, libopenblas.so.0. That path is a %%ghost created by
+# update-alternatives from compatlibopenblas_serial0, and openblas advertises
+# that package only via Supplements -- which OBS does not honour when it
+# assembles a build root. So the soname is absent and crssync dies with
+# "libopenblas.so.0: cannot open shared object file". Requiring it explicitly
+# is a workaround for a defect in openblas, where the flavour package claims a
+# soname it cannot make loadable; drop this once science/openblas#8 is in.
+BuildRequires:  compatlibopenblas_serial0
+BuildRequires:  fdupes
+BuildRequires:  flex >= 2.5.6
+BuildRequires:  gcc-c++
+BuildRequires:  geos-devel >= 3.9
 BuildRequires:  libspatialindex-devel
-BuildRequires:  libzstd-devel
-BuildRequires:  ocl-icd-devel
+BuildRequires:  memory-constraints
 BuildRequires:  opencl-cpp-headers
 BuildRequires:  pkgconfig
 BuildRequires:  poppler-tools
-BuildRequires:  protobuf-devel
+BuildRequires:  qscintilla-qt6-devel
+# WITH_DESKTOP pulls in Qml/Quick unconditionally since 4.0; the devel package
+# carries the Qt6Qml and Qt6Quick cmake configs but generates no cmake() provides
+BuildRequires:  qt6-declarative-devel
+BuildRequires:  qt6-sql-mysql
+BuildRequires:  qt6-sql-postgresql
+BuildRequires:  qt6-sql-private-devel
+# Add the 3 main db we should access
+# also have them in requires
+BuildRequires:  qt6-sql-sqlite
+BuildRequires:  qwt6-qt6-devel
 BuildRequires:  sqlite-devel >= 3.12.0
 BuildRequires:  unzip
-BuildRequires:  (qwt6-devel or qwt6-qt5-devel)
-BuildRequires:  cmake(Qt53DAnimation)
-BuildRequires:  cmake(Qt53DCore)
-BuildRequires:  cmake(Qt53DExtras)
-BuildRequires:  cmake(Qt53DInput)
-BuildRequires:  cmake(Qt53DLogic)
-BuildRequires:  cmake(Qt53DQuick)
-BuildRequires:  cmake(Qt53DQuickAnimation)
-BuildRequires:  cmake(Qt53DQuickExtras)
-BuildRequires:  cmake(Qt53DQuickInput)
-BuildRequires:  cmake(Qt53DQuickRender)
-BuildRequires:  cmake(Qt53DQuickScene2D)
-BuildRequires:  cmake(Qt53DRender)
-BuildRequires:  cmake(Qt5Concurrent)
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5DBus)
-BuildRequires:  cmake(Qt5Gui)
-BuildRequires:  cmake(Qt5Keychain) >= 0.5
-BuildRequires:  cmake(Qt5Network)
-BuildRequires:  cmake(Qt5Positioning)
-BuildRequires:  cmake(Qt5PrintSupport)
-BuildRequires:  cmake(Qt5Script)
-BuildRequires:  cmake(Qt5SerialPort)
-BuildRequires:  cmake(Qt5Sql)
-BuildRequires:  cmake(Qt5Svg)
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5UiTools)
-BuildRequires:  cmake(Qt5Widgets)
-BuildRequires:  cmake(Qt5Xml)
+BuildRequires:  cmake(Qca-qt6)
+BuildRequires:  cmake(Qt63DCore)
+BuildRequires:  cmake(Qt63DExtras)
+BuildRequires:  cmake(Qt63DInput)
+BuildRequires:  cmake(Qt63DLogic)
+BuildRequires:  cmake(Qt63DRender)
+BuildRequires:  cmake(Qt6Concurrent)
+BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6Core5Compat)
+BuildRequires:  cmake(Qt6DBus)
+BuildRequires:  cmake(Qt6Gui)
+BuildRequires:  cmake(Qt6Keychain) >= 0.5
+BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  cmake(Qt6Multimedia)
+BuildRequires:  cmake(Qt6MultimediaWidgets)
+BuildRequires:  cmake(Qt6Network)
+BuildRequires:  cmake(Qt6Positioning)
+BuildRequires:  cmake(Qt6PrintSupport)
+BuildRequires:  cmake(Qt6QuickControls2)
+BuildRequires:  cmake(Qt6SerialPort)
+BuildRequires:  cmake(Qt6Sql)
+BuildRequires:  cmake(Qt6Svg)
+BuildRequires:  cmake(Qt6SvgWidgets)
+BuildRequires:  cmake(Qt6Test)
+BuildRequires:  cmake(Qt6UiTools)
+BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  cmake(Qt6Xml)
+BuildRequires:  pkgconfig(Qt6Qwt6)
 BuildRequires:  pkgconfig(draco)
+BuildRequires:  pkgconfig(exiv2)
 BuildRequires:  pkgconfig(expat) >= 1.95
 # Requires at least gdal 3.1 for GeoTIFF and Proj >= 6 - https://github.com/qgis/QGIS/issues/36699#issuecomment-633539864
 BuildRequires:  pkgconfig(gdal) >= 3.2.0
-BuildRequires:  pkgconfig(Qt5Qwt6)
 BuildRequires:  pkgconfig(gsl) >= 1.8
 BuildRequires:  pkgconfig(libpq) > 9.4
+BuildRequires:  pkgconfig(libtasn1)
 BuildRequires:  pkgconfig(libzip)
+BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(netcdf)
+BuildRequires:  pkgconfig(nlohmann_json)
+BuildRequires:  pkgconfig(ocl-icd)
 BuildRequires:  pkgconfig(pdal) >= 2.2.0
 BuildRequires:  pkgconfig(proj) >= 7.2.0
-BuildRequires:  pkgconfig(qca2-qt5)
+BuildRequires:  pkgconfig(protobuf)
+BuildRequires:  pkgconfig(protobuf-lite)
 BuildRequires:  pkgconfig(spatialite) >= 4.2.0
-# Force requires of those 3 main component.
-Requires:       libQt5Sql5-mysql
-Requires:       libQt5Sql5-postgresql
-Requires:       libQt5Sql5-sqlite
-# proj.db is required
-Requires:       proj
 Requires:       %{mypython}-GDAL
 Requires:       %{mypython}-Jinja2
 Requires:       %{mypython}-OWSLib
+# Those are not picked by obs
+Requires:       %{mypython}-PyQt6-QScintilla
 Requires:       %{mypython}-PyYAML
 Requires:       %{mypython}-Pygments
 Requires:       %{mypython}-numpy
 Requires:       %{mypython}-packaging
 Requires:       %{mypython}-psycopg2
-Requires:       pdal
-# Those are not picked by obs
-Requires:       %{mypython}-qscintilla-qt5
 Requires:       %{mypython}-termcolor
+Requires:       pdal
+# proj.db is required
+Requires:       proj
+# Force requires of those 3 main component.
+Requires:       qt6-sql-mysql
+Requires:       qt6-sql-postgresql
+Requires:       qt6-sql-sqlite
 Recommends:     %{name}-sample-data
 Recommends:     apache2-mod_fcgid
 Recommends:     gpsbabel
 Recommends:     mod_spatialite
 # It's in Application:Geo, but not in Factory
 Suggests:       saga-gis
-%if %is_ltr
+%if %{is_ltr}
 Conflicts:      qgis
 %else
 Conflicts:      qgis-ltr
@@ -163,23 +176,29 @@ Obsoletes:      qgis2 < %{version}
 %if %{with grass}
 BuildRequires:  grass-devel >= 7.2
 %endif
-%ifarch ppc64le
-BuildRequires:  memory-constraints
-%endif
 %ifarch aarch64
 # Picked up by x86_64 and ppc64le, but not aarch64
-BuildRequires:  Mesa-libGL-devel
+BuildRequires:  pkgconfig(gl)
 %endif
+
+%description
+QGIS is a Geographic Information System (GIS). QGIS supports vector,
+raster, OWS and database formats. QGIS can be used to browse and
+create map data on the computer. It supports many common spatial data
+formats (e.g. ESRI ShapeFile, geotiff). QGIS supports plugins to do
+things like display tracks from a GPS.
 
 %package devel
 Summary:        Development Libraries for QGIS
-Group:          Development/Libraries/C and C++
-Requires:       %{mypython}-qt5-devel
+Requires:       %{mypython}-PyQt6-devel
 Requires:       %{name} = %{version}
+
+%description devel
+Development packages for QGIS, including the C header files.
+
 %if %{with grass}
 %package plugin-grass
 Summary:        GRASS Support Libraries for QGIS
-Group:          Productivity/Graphics/Visualization/Other
 Requires:       %{name} = %{version}
 Requires:       grass > 7.0
 Requires:       grass-doc
@@ -192,18 +211,7 @@ GRASS plugin for QGIS required to interface with GRASS system.
 %package sample-data
 %define sampledir sample-data
 Summary:        QGIS sample data
-Group:          Productivity/Graphics/Visualization/Other
 BuildArch:      noarch
-
-%description
-QGIS is a Geographic Information System (GIS). QGIS supports vector,
-raster, OWS and database formats. QGIS can be used to browse and
-create map data on the computer. It supports many common spatial data
-formats (e.g. ESRI ShapeFile, geotiff). QGIS supports plugins to do
-things like display tracks from a GPS.
-
-%description devel
-Development packages for QGIS, including the C header files.
 
 %description sample-data
 QGIS sample data with raster, vector, gps files and a GRASS location from the Alaska area.
@@ -217,11 +225,6 @@ sed -i 's,^#!%{_bindir}/env python$,#!%{__mypython},g' src/plugins/grass/scripts
 sed -i 's,^#!%{_bindir}/env python3$,#!%{__mypython},g' src/plugins/grass/scripts/*.py
 
 %build
-%define _lto_cflags %{nil}
-%{?gccver:export CC=gcc-%{gccver}}
-%{?gccver:export CXX=g++-%{gccver}}
-
-export CFLAGS="%{optflags}"
 export QTDIR=%{_prefix}
 export PATH=$PATH:$QTDIR/bin
 
@@ -233,38 +236,34 @@ export PATH=$PATH:$QTDIR/bin
   -DWITH_GRASS=TRUE \
   -DWITH_GRASS7=TRUE \
   -DWITH_GRASS8=TRUE \
-%if 0%{?suse_version} > 1500
-  -DGRASS_PREFIX7=`cat %{_sysconfdir}/GRASSDIR` \
-  -DGRASS_PREFIX8=`cat %{_sysconfdir}/GRASSDIR` \
-%else
-  -DGRASS_PREFIX7=%{_libdir}/grass78 \
-  -DGRASS_PREFIX8=%{_libdir}/grass82 \
-%endif
+  -DGRASS_PREFIX7=$(cat %{_sysconfdir}/GRASSDIR) \
+  -DGRASS_PREFIX8=$(cat %{_sysconfdir}/GRASSDIR) \
 %endif
   -DWITH_QSPATIALITE=TRUE \
   -DWITH_SERVER=TRUE \
   -DWITH_SERVER_PLUGINS=TRUE \
   -DWITH_POSTGRESQL=TRUE \
   -DWITH_PDAL=TRUE \
-  -DWITH_QTWEBKIT=FALSE \
+  -DWITH_INTERNAL_NLOHMANN_JSON=FALSE \
+  -DWITH_QTWEBENGINE=FALSE \
   -DFCGI_INCLUDE_DIR=%{_includedir}/fastcgi \
   -DPOSTGRES_LIBRARY=%{_libdir}/libpq.so \
   -DPOSTGRES_INCLUDE_DIR=%{_includedir}/pgsql \
   -DQGIS_PLUGIN_SUBDIR=%{_lib}/qgis \
   -DQGIS_MANUAL_SUBDIR=share/man \
-  -DQWT_INCLUDE_DIR=%{_includedir}/qt5/qwt6 \
-  -DQCA_INCLUDE_DIR=%{_includedir}/qt5/Qca-qt5/QtCrypto \
+  -DQGIS_CGIBIN_SUBDIR=bin \
+  -DQWT_INCLUDE_DIR=%{_includedir}/qt6/qwt6 \
+  -DQCA_INCLUDE_DIR=%{_includedir}/qt6/Qca-qt6/QtCrypto \
   -DCMAKE_SKIP_RPATH=OFF \
   -DOpenCL_INCLUDE_DIR=%{_includedir} \
   -Wno-dev
 
-export QTDIR=%{_prefix}
-export PATH=$PATH:$QTDIR/bin
-%ifarch ppc64le
-# avoid OOM failure on power8-01 builder
-%limit_build -m 1300
-%endif
-%make_jobs
+# The SIP-generated Python binding translation units (sip_corepart*.cpp) are
+# enormous and each cc1plus on them peaks well past 3 GB, so an unrestricted
+# job count runs any builder out of memory -- this used to be capped for
+# ppc64le only, but QGIS 4 needs it everywhere.
+%limit_build -m 4000
+%cmake_build
 
 %install
 %cmake_install
@@ -286,16 +285,16 @@ popd
 
 %fdupes -s %{buildroot}
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets
 
-%post plugin-grass -p /sbin/ldconfig
-%postun plugin-grass -p /sbin/ldconfig
+%if %{with grass}
+%ldconfig_scriptlets plugin-grass
+%endif
 
 %files
 %{_bindir}/*
 %{_libdir}/libqgis*so*
-%{_libdir}/qt5/plugins/sqldrivers/libqsqlspatialite.so
+%{_libdir}/qt6/plugins/sqldrivers/libqsqlspatialite.so
 %{_mandir}/man1/*
 %{_datadir}/qgis
 %exclude %{_datadir}/qgis/i18n/*

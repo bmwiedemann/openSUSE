@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Sun Aug  2 18:21:36 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 4.2.1:
+  * QGIS 4 is the current upstream series and is Qt 6 only, so this
+    replaces the Qt 5 based 3.44 LTR line that was packaged before
+  * No LTR release of the 4.x series exists yet
+- Port the packaging from Qt 5 to Qt 6:
+  * switch every Qt 5 build dependency to its Qt 6 counterpart, including
+    the SQL drivers, QScintilla, Qwt, QCA and qtkeychain
+  * add the modules that QGIS 4 newly requires: Core5Compat, SvgWidgets,
+    DBus, Multimedia, MultimediaWidgets, UiTools, LinguistTools and the
+    Qml, Quick and QuickControls2 stack, which WITH_DESKTOP now pulls in
+    unconditionally
+  * drop Qt5Script and the Qt53DQuick modules, which Qt 6 no longer ships
+  * replace WITH_QTWEBKIT with WITH_QTWEBENGINE=FALSE
+  * build against the system nlohmann-json instead of the bundled copy
+- Keep installing the server FastCGI binary into the bindir: QGIS 4
+  defaults QGIS_CGIBIN_SUBDIR to www/cgi-bin here, which is not a path
+  openSUSE uses, and relocating the binary would break existing web
+  server configuration
+- Limit the number of parallel build jobs on every architecture instead
+  of only ppc64le: each of the SIP generated binding sources needs
+  several gigabytes of memory to compile, so an unrestricted job count
+  runs the builders out of memory
+- Drop the rpmlintrc filter for the Qt 5 SQL driver dependencies, which
+  no longer matches anything
+
+-------------------------------------------------------------------
+Sun Aug  2 09:45:49 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 3.44.13:
+  * Bug fix releases 3.44.12 and 3.44.13 in the 3.44 LTR series, no
+    new features and no API changes
+- Add compatlibopenblas_serial0 to BuildRequires to fix the build:
+  crssync, which %build runs, loads libgdal and through it, via
+  libarmadillo and libarpack, libopenblas.so.0; that path is an
+  update-alternatives ghost owned by compatlibopenblas_serial0, which
+  openblas advertises only via Supplements, and OBS does not honour
+  Supplements when it assembles a build root
+- Drop the SLE 15 / Leap 15 conditionals along with the forced gcc 13
+  and the hardcoded GRASS prefixes: Application:Geo builds only
+  Tumbleweed, Slowroll and 16.0
+- Correct the license tag to GPL-2.0-or-later, which is what the source
+  headers grant
+- Drop the four rpmlintrc filters for admin.sld and wms_metadata.xml,
+  which upstream no longer ships, so rpmlint flagged them as unused
+- Modernise the spec file:
+  * use pkgconfig() build dependencies where a module exists
+  * use %cmake_build and %ldconfig_scriptlets
+  * drop the Group tags and the CFLAGS export already done by %cmake
+  * move each %description next to the %package it documents
+  * retag the FindPDAL patch as PATCH-FIX-OPENSUSE, which is what it is
+
+-------------------------------------------------------------------
 Mon Jun  8 06:51:59 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 3.44.11
