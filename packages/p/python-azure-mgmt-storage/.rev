@@ -380,4 +380,15 @@
     CHANGELOG.md file provided with this package (forwarded request 1355144 from glaubitz)</comment>
     <requestid>1355231</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>e0eb9358b48827b8afd84d42cebecc79</srcmd5>
+    <version>25.1.0</version>
+    <time>1785872038</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 25.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1369262 from glaubitz)</comment>
+    <requestid>1369267</requestid>
+  </revision>
 </revisionlist>
