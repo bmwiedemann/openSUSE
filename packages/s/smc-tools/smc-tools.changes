@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug  4 05:18:18 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Fixed the build errors with:
+  * `%verify(not mode) %{_libdir}/libsmc-preload.so` 
+
+-------------------------------------------------------------------
 Wed Feb 18 12:35:00 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Upgrade smc-tools to version 1.8.7 (jsc#PED-14601)

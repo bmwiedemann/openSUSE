@@ -1,7 +1,7 @@
 #
 # spec file for package smc-tools
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -89,7 +89,7 @@ rm -Rf "%{buildroot}%{_prefix}/lib64"
 %{_bindir}/smc_rnics
 %endif
 %{_bindir}/smcss
-%{_libdir}/libsmc-preload.so
+%verify(not mode) %{_libdir}/libsmc-preload.so
 %{_mandir}/man7/af_smc.7%{?ext_man}
 %{_mandir}/man8/smc_pnet.8%{?ext_man}
 %ifarch s390 s390x
