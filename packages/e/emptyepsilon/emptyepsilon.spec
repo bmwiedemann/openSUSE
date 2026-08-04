@@ -1,7 +1,7 @@
 #
 # spec file for package emptyepsilon
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,7 @@ Patch2:         lua_add_getCurrentWarpSpeed.patch
 Patch3:         lua_fix_multivar.patch
 Patch4:         lua_add_commandBypassSelfDestruct.patch
 Patch5:         lua_fix_commandCombatManeuver.patch
+Patch101:       force_cxx_17.patch
 BuildRequires:  bsdtar
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -58,9 +59,10 @@ Each officer fills a unique role: Captain, Helms, Weapons, Relay, Science, and E
 %prep
 # extract EE and SP inside the EE dir
 %setup -q -a1 -n EmptyEpsilon-EE-%{version}
+%autopatch -p1 -m100
 find -name .gitignore -delete
 patch -d SeriousProton-EE-%{version} -p1 < %{S:6}
-%autopatch -p1
+%autopatch -p1 -M99
 
 # extract bundled dependencies
 mkdir -p SeriousProton/externals/basis

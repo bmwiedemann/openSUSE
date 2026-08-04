@@ -1,0 +1,21 @@
+From de3d6d8e93ebf9986f9f77bd66e9c6671194572f Mon Sep 17 00:00:00 2001
+From: oznogon <oznogon@users.noreply.github.com>
+Date: Sat, 9 May 2026 08:33:16 -0700
+Subject: [PATCH] Add CXX_STANDARD to force C++17
+
+---
+ CMakeLists.txt | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ddb7430e31..4bf481b41e 100644
+@@ -11,6 +11,9 @@
+ 
+ cmake_minimum_required(VERSION 3.8 FATAL_ERROR)
+ 
++# Force C++17 across all compilers
++set(CMAKE_CXX_STANDARD 17)
++
+ set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
+ 
+ # Set a default version.

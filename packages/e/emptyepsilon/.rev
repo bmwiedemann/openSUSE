@@ -74,4 +74,12 @@
     <comment>- Fix GLM build errors (https://github.com/daid/EmptyEpsilon/issues/2111)</comment>
     <requestid>1298909</requestid>
   </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>b914a2332759f8d065d9cf3f14f34040</srcmd5>
+    <version>2024.12.08</version>
+    <time>1785872285</time>
+    <user>dimstar_suse</user>
+    <comment>- Add force_cxx_17.patch: Add CXX_STANDARD to force C++17</comment>
+    <requestid>1369454</requestid>
+  </revision>
 </revisionlist>
