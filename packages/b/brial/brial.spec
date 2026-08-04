@@ -75,7 +75,7 @@ developing with polybori/brial libraries.
 
 %build
 autoreconf -fi
-%configure --disable-static
+%configure --disable-static CXXFLAGS=-std=c++17
 %make_build
 
 %install
