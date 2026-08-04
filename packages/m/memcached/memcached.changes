@@ -1,7 +1,41 @@
 -------------------------------------------------------------------
+Mon Aug  3 13:22:24 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- update to 1.6.45:
+  * proxy: extra warning for user config error
+  * proto: convert more strto calls
+  * proto: meta preparse F flag fix
+  * proxy: fix res:line() returning wrong response
+  * proxy: fix overread of spaces for large gets
+  * ascii: safely convert flag args to numerics
+  * ascii: fix unlocked refcount-- on error path
+  * proxy: key filter null byte written to wrong place
+  * proxy: fix detail len clamp in request logging
+  * proxy: enforce minimum rate limit
+  * ascii: fix refcount leak on ms parse error
+  * proxy: reserve enough log space for proxy BE_EVENT
+  * network: fix segfault on OOM during net read
+  * proxy: fix missing default handler in resnull
+  * stats: cap stats prefix count at 2^16
+  * binprot: GETK against extstore internal miss can hang worker
+  * proxy: fix memory leak after failed request render
+  * proxy: fix underflow in key hash filters
+  * logger: closed worker fix again
+  * ascii: fix crash with invalid automove windows
+  * proxy: fix footgun when excessive backend labels
+  * slabs: fix off by one in slab picker loop
+  * ascii: fix potential overrun when given all spaces
+  * proxy: fix mutator crash in flagcopyall
+  * restart: avoid runaway read with corrupt file
+  * proxy: fix ring hash default mode
+  * tls: uninitialized string can be used in error
+  * proxy: fix off by one in request_append
+  * logger: fix use-after-free of closed watcher
+
+-------------------------------------------------------------------
 Tue Jul  7 15:27:51 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
-- update to 1.6.44:
+- update to 1.6.44: [bsc#1270716]
   https://github.com/memcached/memcached/wiki/ReleaseNotes1644
   https://github.com/memcached/memcached/wiki/ReleaseNotes1643
 

@@ -732,4 +732,14 @@ CVE-2026-47783, [bsc#1265873], CVE-2026-47784, [bsc#1265881]</comment>
   https://github.com/memcached/memcached/wiki/ReleaseNotes1643</comment>
     <requestid>1364335</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>b9fc6e8ac1ee1a68c682b0852e7e7e55</srcmd5>
+    <version>1.6.45</version>
+    <time>1785871797</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1369289 from pgajdos
+
+- update to 1.6.44: [bsc#1270716]</comment>
+    <requestid>1369291</requestid>
+  </revision>
 </revisionlist>
