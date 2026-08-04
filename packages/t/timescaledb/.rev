@@ -708,4 +708,41 @@ Stop storing build machine kernel version (boo#1101107)</comment>
     - #10126 Fix bgw_job_stat_history migration for 2.28.1</comment>
     <requestid>1366252</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>527198a2c42eb18127f5ef6662b2cd1e</srcmd5>
+    <version>2.29.1</version>
+    <time>1785878931</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.29.1
+  This release contains performance improvements and bug fixes
+  since the 2.29.0 release and fixes for security vulnerabilities
+  (#10360, #10379, #10386). You can check the security advisory for
+  more information on the vulnerability and the platforms that are
+  affected. We recommend that you upgrade at the next available
+  opportunity.
+  https://github.com/timescale/timescaledb/security/advisories/GHSA-hcfx-29v5-2rcw
+  - Bugfixes
+    - #10327 Assertion failure in add_dimension() when the
+      hypertable argument is NULL
+    - #10339 Fix crash when deleting from a compressed continuous
+      aggregate source
+    - #10340 Validate max_batches in compact_chunk()
+    - #10352 Reset inherited column and constraint flags on chunks
+      during attach_chunk()
+    - #10360 Fix decompressor crashes with malformed compressed
+      data
+    - #10369 Fix typo in error message about MERGE support on
+      compressed hypertables
+    - #10379 Read hypertable max time value with an ordered scan
+    - #10386 Add missing permission checks to internal chunk
+      functions
+
+- Update to 2.29.0
+  This release contains performance improvements and bug fixes
+  since the 2.28.3 release. We recommend that you upgrade at the
+  next available opportunity.
+  Release Highlights
+  - Chunk exclusion for DML operations drastically improves the</comment>
+    <requestid>1369451</requestid>
+  </revision>
 </revisionlist>

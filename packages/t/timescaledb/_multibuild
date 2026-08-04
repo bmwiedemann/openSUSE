@@ -1,5 +1,4 @@
 <multibuild>
-  <package>postgresql15</package>
   <package>postgresql16</package>
   <package>postgresql17</package>
   <package>postgresql18</package>
