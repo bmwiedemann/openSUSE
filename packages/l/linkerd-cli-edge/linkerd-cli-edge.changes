@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Aug 04 05:19:04 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 26.8.1:
+  * proxy: v2.364.0 (#15538)
+  * build(deps): bump libc from 0.2.186 to 0.2.189 (#15534)
+  * build(deps): bump either from 1.16.0 to 1.17.0 (#15535)
+  * build(deps): bump proc-macro2 from 1.0.106 to 1.0.107 (#15536)
+  * build(deps): bump docker/login-action from 4.5.1 to 4.6.0
+    (#15541)
+  * build(deps-dev): bump sinon from 22.0.0 to 22.1.0 in /web/app
+    (#15524)
+  * build(deps): bump github.com/prometheus/client_golang (#15528)
+  * build(deps-dev): bump html-webpack-plugin in /web/app (#15525)
+  * build(deps): bump anyhow from 1.0.103 to 1.0.104 (#15529)
+  * build(deps): bump tokio from 1.52.3 to 1.53.1 (#15530)
+  * build(deps): bump cc from 1.3.0 to 1.4.0 (#15531)
+  * build(deps): bump docker/login-action from 4.5.0 to 4.5.1
+    (#15533)
+
+-------------------------------------------------------------------
 Mon Jul 27 05:09:40 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 26.7.2:
