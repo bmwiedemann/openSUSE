@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Mon Aug 03 12:25:24 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.4.12:
+  * Enhancements
+    - Add --require-group for hook group intersections (#2472)
+    - Align fast-path and builtin pre-commit hooks (#2433)
+    - Do not shuffle file list for verbose output (#2431)
+    - Improve top-level command descriptions (#2429)
+    - Install uv from Astral CDN and drop source racing (#2455)
+    - Make prek install --force bypass external hooks paths (#2437)
+    - Show builtin hook flags in verbose list output (#2427)
+    - Verify uv release archive checksums (#2456)
+  * Performance
+    - Precompute file tags in parallel (#2440)
+    - Skip diffs after known hook modifications (#2447)
+    - Skip worktree diffs for read-only languages (#2432)
+    - Track builtin hook file changes directly (#2404)
+  * Bug fixes
+    - Use full object IDs in diff snapshots (#2448)
+  * Documentation
+    - Add a multi-repository configuration example (#2434)
+    - Rewrite benchmark documentation (#2469)
+  * Dependencies
+    - Update Rust crate anyhow to v1.0.104 (#2409)
+    - Update Rust crate async-trait to v0.1.91
+    - Update Rust crate aws-lc-rs to v1.17.3 (#2411)
+    - Update Rust crate clap to v4.6.2 (#2412)
+    - Update Rust crate clap to v4.6.4 (#2458)
+    - Update Rust crate fastrand to v2.5.0 (#2423)
+    - Update Rust crate futures-util to v0.3.33 (#2413)
+    - Update Rust crate globset to v0.4.19 (#2414)
+    - Update Rust crate ignore to v0.4.30 (#2415)
+    - Update Rust crate ignore to v0.4.31 (#2459)
+    - Update Rust crate libc to v0.2.189 (#2460)
+    - Update Rust crate regex to v1.13.1 (#2416)
+    - Update Rust crate serde to v1.0.229 (#2418)
+    - Update Rust crate serde_json to v1.0.151 (#2461)
+    - Update Rust crate thiserror to v2.0.19 (#2419)
+    - Update Rust crate tokio to v1.53.0 (#2424)
+    - Update Rust crate tokio to v1.53.1 (#2462)
+    - Update Rust crate tokio-util to v0.7.19 (#2463)
+    - Update Rust crate webpki-root-certs to v1.0.9 (#2420)
+    - Update Rust crate which to v8.0.5 (#2421)
+    - Update astral-sh/setup-uv action to v9 (#2465)
+    - Update dependency uv to v0.11.29 (#2407)
+    - Update dependency uv to v0.11.32 (#2457)
+    - Update pre-commit hook tombi-toml/tombi-pre-commit to v1.2.4
+      (#2408)
+    - Update taiki-e/install-action action to v2.85.2 (#2464)
+
+-------------------------------------------------------------------
 Mon Jul 27 04:58:34 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.4.11:
