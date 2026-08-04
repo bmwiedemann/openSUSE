@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-polymorphic
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,27 +17,26 @@
 
 
 Name:           python-django-polymorphic
-Version:        3.1
-%define twodotsversion 3.1.0
+Version:        4.11.7
 Release:        0
 Summary:        Polymorphic inheritance for Django models
 License:        BSD-3-Clause
-URL:            https://github.com/jazzband/django-polymorphic
-Source:         https://github.com/jazzband/django-polymorphic/archive/v%{version}.tar.gz#/django-polymorphic-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#jazzband/django-polymorphic#63d291f8771847e716a37652f239e3966a3360e1
-Patch0:         support-new-django.patch
-# PATCH-FIX-OPENSUSE Skip two broken tests -- remove when upgrading to 4.0
-Patch1:         skip-two-lookup-tests.patch
+URL:            https://github.com/django-commons/django-polymorphic
+Source:         https://github.com/django-commons/django-polymorphic/archive/v%{version}.tar.gz#/django-polymorphic-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.10}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Django >= 2.1
+Requires:       python-Django >= 4.2
+Requires:       python-typing-extensions >= 4.12
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module Django >= 2.1}
-BuildRequires:  %{python_module dj-database-url}
+BuildRequires:  %{python_module Django >= 4.2}
+BuildRequires:  %{python_module django-test-migrations}
+BuildRequires:  %{python_module pytest-django}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module typing-extensions >= 4.12}
 # /SECTION
 %python_subpackages
 
@@ -46,6 +45,10 @@ Seamless polymorphic inheritance for Django models.
 
 %prep
 %autosetup -p1 -n django-polymorphic-%{version}
+# Remove after hatchling adds this classifier
+sed -i '/Django :: 6.1/d' pyproject.toml
+# No --headed option, added by pytest-playwright, not packaged
+sed -i 's/not config.getoption("--headed")/True/' conftest.py
 
 %build
 %pyproject_wheel
@@ -55,12 +58,21 @@ Seamless polymorphic inheritance for Django models.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec runtests.py -v 2
+export DJANGO_SETTINGS_MODULE="polymorphic.tests.debug"
+export SQLITE_DATABASES="test1.db,test2.db"
+# Requires pytest-playwright
+ignore="--ignore src/polymorphic/tests/examples/integrations/extra_views/test.py "
+ignore+="--ignore src/polymorphic/tests/examples/integrations/reversion/test.py "
+ignore+="--ignore src/polymorphic/tests/examples/views/test.py "
+ignore+="--ignore src/polymorphic/tests/test_admin.py "
+ignore+="--ignore src/polymorphic/tests/test_migrations/test_on_delete.py "
+ignore+="--ignore src/polymorphic/tests/test_serialization.py"
+%pytest $ignore
 
 %files %{python_files}
-%doc README.rst docs/*.rst
+%doc README.md docs/*.rst
 %license LICENSE
 %{python_sitelib}/polymorphic
-%{python_sitelib}/django_polymorphic-%{twodotsversion}.dist-info
+%{python_sitelib}/django_polymorphic-%{version}.dist-info
 
 %changelog

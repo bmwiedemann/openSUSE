@@ -37,4 +37,37 @@
   * Skip two tests that are currently broken</comment>
     <requestid>1223824</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>da5f34e0aeb77ddf83f6319e408b0d84</srcmd5>
+    <version>4.11.7</version>
+    <time>1785872192</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.11.7:
+  * fix: add kwargs to save method to keep compatability with other tools
+  * fix: KeyError when accessing fields deferred by base manager
+  * jazzband -&gt; django-commons updates
+  * fix: remove get_preserved_filters and add AdminPreservedFiltersTests
+  * fix annotate with F
+  * Fix show_in_index=False visibility in admin sites and sidebar
+  * Fix migration state check false negative
+  * fix: AttributeError Using .alias() On Polymorphic Querysets
+  * Fix infinite recursion bug when using only()
+  * Test abstract base model custom manager specification
+  * Replace deepcopy of the Q object
+  * Support Q expressions that contain subquery expressions
+  * Make related polymorphic object manager selection more robust to multiple
+    inheritance scenarios
+  * Caching in inheritance accessor functions
+  * Fix use of is and is not vs. ==
+  * Check for None on real_model in get_real_instance
+  * Move from rst to markdown for repo level docs
+  * PolymorphicQuerySet: Prevent NoneType error in test___lookup
+  * Removed usage of deprecated pkg_resources
+  * Drop support for non-supported versions of Django and Python
+  * Use pytest for testing &amp; modernize assertions
+- Drop patches, included upstream:
+  * support-new-django.patch
+  * skip-two-lookup-tests.patch</comment>
+    <requestid>1369346</requestid>
+  </revision>
 </revisionlist>
