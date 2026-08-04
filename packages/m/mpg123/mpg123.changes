@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Mon Aug  3 11:05:06 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.33.7
+  mpg123:
+  * Fix information disclosure of uninitialied memory for
+    --auth-file without line endings.
+  * Fix out-of-bounds read/write when combining --continue
+    --random --listentry <n> where n is larger than the playlist
+    size.
+  * Fix a harmless valgrind memory leak report by not nulling
+    playlist name.
+  * Fix a mostly harmless OOB read of 1 byte when printing USLT
+    lyrics.
+  * Fix leaking file descriptor on read error from --equalizer
+    file.
+  * Hardening of loading HTTP(S) via curl or wget against funky
+    URLs by including the -- separator. No actual vulnerability,
+    tough, just extra care.
+  out123:
+  * Fix heap overrun on --endian conversion with differing input
+    and output channel counts.
+  * Fix parsing of filter specs with whitespace before commas,
+    which resulted in out-of-bounds writes before.
+  libmpg123, mpg123: Harden memory realloc calls against
+    multiplication overflow of size_t in arguments.
+    Specifically, this addresses part of bug 389 with possible
+    application abuse of mpg123_set_index64().
+  libmpg123:
+  * Fix possible use of uninitialized values in layer III
+    dequantization.
+    III_dequantize_sample() for consistent output also for
+    strange input. The new code seems to be slightly faster
+    after some rearrangements.
+  * Fix a double free when deleting a handle after failed
+    mpg123_decoder() call
+    (possibly among others).
+  * More strong wording in API that ID3 text convenience links
+    are short-lived, but safeguard against ignorant use by
+    nulling them early.
+  * Prevent double free in mpg123_set_index() 32 bit wrapper
+    being called with index size 0.
+  * Harden against an application wielding a foot gun by handing
+    in an undersized decoding buffer betwee seek and read
+    (return error before trying to decode and discard frames in
+    that case).
+  * Do properly terminate ID3v2 texts coming in UTF16 encoding
+    when they overwrite previous frames, like with other
+    encodings. The symptom was a shorter second frame resulting
+    in a combined text with the earlier longer frame.
+  * Check and properly handle null source buffer and zero size
+    in mpg123_store_utf8() instead of reading past (before)
+    buffers.
+  * Ensure clients get ID3v1 data with (unmotivated)
+    mpg123_id3_raw() only if the parser decided that it is there,
+    not possibly the last 128 bytes of a seekable stream without
+    ID3v1 tag.
+  * Prevent impossible NtoM resampling with too low target rate
+    (like 1 Hz) which would trgger endless looping.
+  libout123:
+  * Fix deadlock in buffer mode when combined with (stereo) 24
+    bit output. Now also mpg123 --buffer 4096 -e s24 shall
+    actuallly work. Sorry.
+  * Abort early on zero/negative rate and channel count in
+    out123_start().
+  * Fix divide by zero in WAV writing by catching channel counts
+    that go zero in the 16 bit WAV header field.
+  libsyn123:
+  * Explictly reject mismatched format for appending filters with
+    syn123_setup_filter(), preventing memory errors from that
+    API-violating use.
+  * Harden the dirty resampling interpolator against extreme
+    rates (around 1e18 Hz)
+    by fixing a sample offset check to not do the exact
+    overflowing addition that it is supposed to guard against.
+    The fine resampler was… fine.
+  * Error out on trying to create a filter of order 0 instead of
+    dividing by zero later.
+
+-------------------------------------------------------------------
 Sat Jun  6 10:33:16 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.33.6
