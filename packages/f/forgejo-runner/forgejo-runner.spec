@@ -18,7 +18,7 @@
 
 %define services %{name}.service
 Name:           forgejo-runner
-Version:        12.13.2
+Version:        13.0.0
 Release:        0
 Summary:        Daemon that connects to a Forgejo instance and runs CI jobs
 License:        GPL-3.0-or-later
@@ -80,7 +80,7 @@ go build \
    -mod=vendor \
    -buildmode=pie \
    -tags="netgo osusergo" \
-   -ldflags="-X code.forgejo.org/forgejo/runner/v12/internal/pkg/ver.version=v%{version}" \
+   -ldflags="-X code.forgejo.org/forgejo/runner/v13/internal/pkg/ver.version=v%{version}" \
    -o bin/%{name}
 
 bin/%{name} generate-config > config.yaml

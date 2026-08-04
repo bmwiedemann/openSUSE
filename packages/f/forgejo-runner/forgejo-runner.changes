@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Mon Aug  3 16:24:25 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 13.0.0:
+  - 1a633ad5 chore: prepare for runner v13 release (#1645)
+  - 23712b10 Update dependency buildx to v0.36.0 (#1660)
+  - bcff722a Update module github.com/moby/moby/client to v0.5.1
+    (#1657)
+  - c328ffac Update module github.com/docker/go-connections to
+    v0.8.1 (#1653)
+  - 8d09dd6c Update go.opentelemetry.io/otel (indirect) to v1.44.0
+    [SECURITY] (#1652)
+  - f8d2a80e fix: interpolate uses key of Docker actions (#1656)
+  - b720a8fe fix: do not log error if runs-on is absent (#1655)
+  - 6a600499 fix: turn invalid matrices into a hard error (#1654)
+  - e077c395 fix: fail jobs, steps if expression interpolation
+    fails (#1646)
+  - fc5db606 Update module github.com/moby/go-archive to v0.2.1
+    (#1649)
+  - 8c75ace1 Update module github.com/vektra/mockery/v3 to v3.7.2
+    (#1650)
+  - ba315f27 Update forgejo-runner to v12.13.2 (#1647)
+  - 973d8334 Update module github.com/mattn/go-isatty to v0.0.24
+    (#1648)
+  - a5d3e90c Update module github.com/powerman/fileuri to v0.3.0
+    (#1617)
+  - 620f116a fix: EvaluateIf() loses ${{ inputs.x }} on reusable
+    workflow expansion (#1643)
+  - 07526bac Update module github.com/moby/moby/client to v0.5.0
+    (#1642)
+  - a32287b3 Update module github.com/moby/moby/api to v1.55.0
+    (#1641)
+  - 3a00245b Update actions/checkout (#1638)
+  - 4eec6bc4 Update module github.com/docker/cli to
+    v29.6.2+incompatible (#1637)
+  - 2d49b8ff Update https://data.forgejo.org/actions/setup-forgejo
+    action to v3.2.4 (#1636)
+  - b5a3bf90 fix: prevent commit impersonation via `refs/replace/*`
+    during action checkout (#1635)
+  - 9ffa1858 chore: upgrade github.com/docker/cli to v29 (#1547)
+  - 0e63f61f Update forgejo-runner to v12.13.1 (#1634)
+  - a36e6529 Update module github.com/mattn/go-isatty to v0.0.23
+    (#1632)
+  - 0cc27a99 fix: nil dereference when EvaluateIf is called w/
+    cancelled() expr (#1633)
+  - 9009e09c chore: remove workflow command set-output (#1631)
+  - 5293db20 ci: add 'apt-get update' before setup-forgejo steps
+    (#1630)
+  - 1738c981 chore: update hashfiles (#1629)
+  - 3efb66d7 chore: remove workflow command set-env (#1627)
+  - 13c755a1 Update module golang.org/x/sys to v0.47.0 (#1626)
+  - 670ee994 test: refresh apt cache before installing packages
+    (#1628)
+  - befeb7f2 chore: remove workflow command add-path (#1616)
+  - 020eed98 Update module go.etcd.io/bbolt to v1.5.0 (#1618)
+  - 2736a4ef fix: run git subprocesses in a process group (#1623)
+  - c5ba75ed fix: run forgejo-runner under dumb-init in its
+    container (#1625)
+  - dcc77ddd fix: read gitea_* variables sent by Forgejo again
+    (#1624)
+  - d7fb87c9 test: increase timeout of Podman tests (#1622)
+  - 3f73a86e fix: potential nil dereference in
+    (*SingleWorkflow).HasPermissions() (#1620)
+  - e0988248 test: fix tests that accidentally require Docker, skip
+    rest (#1619)
+  - 8a55ecb2 Update module github.com/opencontainers/selinux to
+    v1.15.1 (#1614)
+  - a76e3da5 chore: remove support for deprecated GITEA_
+    environment variables (#1607)
+  - 16b85024 chore: remove Gitea compatibility (#1611)
+  - 04be7a79 fix: bind workspace into actions container in host
+    mode (#1606)
+  - 3874a608 Update module
+    github.com/golangci/golangci-lint/v2/cmd/golangci-lint to
+    v2.12.2 (#1613)
+  - 5a7dd2dd chore: remove ability to use secrets for registry
+    authentication (#1610)
+  - b04ce67d chore: remove lowercasing of cron, timezone attributes
+    (#1609)
+  - bc73b1fc chore: remove deprecated config variable NetworkMode
+    (#1608)
+  - cb20fd95 Update data.forgejo.org/forgejo/forgejo Docker tag to
+    v11.0.16 (#1612)
+  - 58583f63 Update forgejo-runner to v12.13.0 (#1604)
+  - 43102f74 Update https://data.forgejo.org/actions/setup-go
+    action to v6.5.0 (#1605)
+  - 4086a27b Update module github.com/vektra/mockery/v3 to v3.7.1
+    (#1602)
+
+-------------------------------------------------------------------
 Thu Jul 23 21:10:34 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 12.13.2:

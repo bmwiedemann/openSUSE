@@ -706,4 +706,12 @@
     - PR: Update go toolchain directive to v1.25.12 (forwarded request 1367549 from darix)</comment>
     <requestid>1367690</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>d604d7b8a3548be366e24fd6c2e43ddb</srcmd5>
+    <version>13.0.0</version>
+    <time>1785872124</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 13.0.0: (forwarded request 1369304 from darix)</comment>
+    <requestid>1369330</requestid>
+  </revision>
 </revisionlist>
