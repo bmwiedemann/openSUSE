@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug  4 07:19:33 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Build with -std=c++17 to bypass a build failure
+
+-------------------------------------------------------------------
 Thu Sep 11 20:29:22 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Add autoconf.diff

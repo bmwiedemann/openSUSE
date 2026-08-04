@@ -7,4 +7,12 @@
     <comment></comment>
     <requestid>1304167</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2c39a3b970a210f166a31303d25d1554</srcmd5>
+    <version>1.7.6</version>
+    <time>1785876512</time>
+    <user>dimstar_suse</user>
+    <comment>- Build with -std=c++17 to bypass a build failure</comment>
+    <requestid>1369397</requestid>
+  </revision>
 </revisionlist>

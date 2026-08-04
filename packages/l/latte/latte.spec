@@ -48,7 +48,7 @@ polytopes. LattE contains an implementation of Barvinok's algorithm.
 %build
 autoreconf -fi
 # explicitly select CDD variant (https://github.com/cddlib/cddlib/issues/49)
-%configure --disable-static CDDLIB_LIBS=-lcddgmp
+%configure --disable-static CXXFLAGS=-std=c++17 CDDLIB_LIBS=-lcddgmp
 %make_build
 
 %install
