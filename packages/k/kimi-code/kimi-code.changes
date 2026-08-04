@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Mon Aug  3 12:12:50 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.31.1:
+  * Replace the "kimi server" command tree with "kimi web": servers run
+    in the foreground and stop with Ctrl+C, the background daemon and
+    OS-service lifecycle commands are gone, and any "kimi server"
+    invocation now prints a deprecation notice and exits 1
+  * Add Markdown-defined custom agents with frontmatter, usable as the
+    main agent or a sub-agent and discoverable from plugins, together
+    with global tool gating, per-agent delegation restrictions and a
+    user-level override of the main system prompt
+  * Add the /secondary_model command and secondary-model bindings so
+    subagents can run on a different model than the main session
+  * Let plugins contribute agent system-prompt instructions and custom
+    agents through kimi.plugin.json
+  * Add a customizable footer status line, configured via the
+    [status_line] section of tui.toml
+  * Select a thinking effort level from ACP clients instead of only an
+    on/off toggle, and take the offered levels from each model's
+    declared capabilities so unsupported ones are no longer shown
+  * Import many more providers from the models.dev catalog, honour
+    per-model gateway protocol and endpoint overrides, filter out
+    deprecated and alpha models, and detect the reasoning field per
+    endpoint so thinking content is no longer lost with newer vLLM
+  * Deliver videos attached to a prompt together with the prompt
+    instead of through an extra tool round trip, falling back to
+    inline delivery when the provider has no upload channel
+  * Add environment overrides for the agent loop and background task
+    limits, global default MCP server timeouts, and web search and
+    fetch configuration without an OAuth login
+  * Reconnect a dropped MCP server automatically when one of its tools
+    is called, and retry that call once
+  * Fix a range of session and turn failures: interrupted requests
+    being silently retried, sessions wedged after a content-filtered
+    response, goal turns broken by the per-turn step limit, messages
+    rejected while a goal was running, /undo not restoring todo lists
+    and plan mode, and invalid tool calls being retried indefinitely
+  * Fail fast when the account quota or balance is exhausted instead
+    of retrying for about three minutes
+  * Improve TUI performance and resume speed on long sessions, and cut
+    down full-screen redraws
+  * Rework the bundled web dashboard: Monaco based code highlighting,
+    corrected code block sizing and line numbers, a checkerboard
+    backdrop for transparent images, and permission modes ordered from
+    safest to most permissive
+  * Remove the never-functional [platforms] configuration section and
+    the provider.platformId field
+
+-------------------------------------------------------------------
 Sat Jul 18 07:13:46 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Initial package (version 0.27.0):

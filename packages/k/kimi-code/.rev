@@ -15,4 +15,24 @@ Built for Leap 16.0/aarch64 with 0 rpmlint badness, source_validator clean,
 %check (kimi --version) passes. ExclusiveArch x86_64 aarch64 (native addon).</comment>
     <requestid>1366481</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4336d4d74f6c7c52edc2bc9dea007e21</srcmd5>
+    <version>0.31.1</version>
+    <time>1785872011</time>
+    <user>dimstar_suse</user>
+    <comment>Update to kimi-code 0.31.1.
+
+Eight upstream releases since 0.27.0 (0.28.0 through 0.31.1). Headline
+change is the removal of the 'kimi server' command tree in favour of a
+foreground-only 'kimi web'; the rest is custom agents, model catalog
+imports and a large batch of session/turn fixes -- see the changelog.
+
+The vendored node-pty (1.1.0) and node-addon-api (7.1.1) are unchanged:
+upstream still declares node-pty ^1.1.0 as an optional dependency and
+1.1.0 is still the newest release. Verified with a local osc build for
+openSUSE_Tumbleweed/aarch64: green, %check runs the installed binary and
+reports 0.31.1, rpmlint 0 errors 0 warnings 0 badness, source_validator
+clean.</comment>
+    <requestid>1369256</requestid>
+  </revision>
 </revisionlist>
