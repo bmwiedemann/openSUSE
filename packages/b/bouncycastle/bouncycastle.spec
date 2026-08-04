@@ -17,7 +17,7 @@
 
 
 %global ver_major 1
-%global ver_minor 84
+%global ver_minor 85
 #%%global ver_micro 1
 %global gittag r%{ver_major}rv%{ver_minor}%{?ver_micro:v%{ver_micro}}
 %global archivever jdk18on-%{ver_major}.%{ver_minor}%{?ver_micro:0%{ver_micro}}

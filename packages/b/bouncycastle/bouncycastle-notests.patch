@@ -1,8 +1,8 @@
-Index: bc-java-r1rv79/ant/bc+-build.xml
+Index: bc-java-r1rv85/ant/bc+-build.xml
 ===================================================================
---- bc-java-r1rv79.orig/ant/bc+-build.xml
-+++ bc-java-r1rv79/ant/bc+-build.xml
-@@ -280,7 +280,7 @@
+--- bc-java-r1rv85.orig/ant/bc+-build.xml
++++ bc-java-r1rv85/ant/bc+-build.xml
+@@ -299,7 +299,7 @@
  
      </target>
  
@@ -11,7 +11,7 @@ Index: bc-java-r1rv79/ant/bc+-build.xml
  
      <target name="build-lw" depends="initMacros">
          <!--
-@@ -964,148 +964,6 @@
+@@ -993,153 +993,6 @@
  
      </target>
  
@@ -39,10 +39,13 @@ Index: bc-java-r1rv79/ant/bc+-build.xml
 -             <fileset dir="${src.dir}" includes="**/utiltest/*Test.java" />
 -             <fileset dir="${src.dir}" includes="**/util/io/pem/*Test.java" />
 -             <fileset dir="${src.dir}" includes="**/keybox/*Test.java" />
+-             <fileset dir="${src.dir}" includes="**/jce/provider/*Test.java" />
+-             <fileset dir="${src.dir}" includes="**/est/*Test.java" />
 -             <fileset dir="${src.dir}" includes="**/test/*.java" />
 -             <fileset dir="${src.dir}" includes="**/test/*/*.java" />
 -             <fileset dir="${src.dir}" includes="**/*.asc" />
 -             <fileset dir="${src.dir}" includes="**/*.pem" />
+-             <fileset dir="${src.dir}" includes="**/*.p12" />
 -             <fileset dir="${src.dir}" includes="**/*.p7m" />
 -             <fileset dir="${src.dir}" includes="**/*.eml" />
 -             <fileset dir="${src.dir}" includes="**/*.sig" />
@@ -69,6 +72,8 @@ Index: bc-java-r1rv79/ant/bc+-build.xml
 -        </copy>
 -
 -        <delete file="${test.target.src.dir}/org/bouncycastle/pqc/crypto/lms/AllTests.java" />
+-        <delete file="${test.target.src.dir}/org/bouncycastle/pqc/crypto/mayo/AllTests.java" />
+-        <delete file="${test.target.src.dir}/org/bouncycastle/est/AllTests.java" />
 -        <delete file="${test.target.src.dir}/org/bouncycastle/gpg/keybox/AllTests.java" />
 -        <delete file="${test.target.src.dir}/org/bouncycastle/x509/CertPathReviewerMessages_de.properties" />
 -        <delete file="${test.target.src.dir}/org/bouncycastle/x509/CertPathReviewerMessages.properties" />
@@ -107,7 +112,6 @@ Index: bc-java-r1rv79/ant/bc+-build.xml
 -                    <exclude name="**/bcjmail-jdk*.jar" />
 -                </fileset>
 -            </classpath>
--            <sysproperty key="bc.test.data.home" value="../../core/src/test/data" />
 -            <sysproperty key="test.java.version.prefix" value="${env.JAVA_VERSION_PREFIX}" />
 -
 -            <formatter type="xml" />
@@ -157,6 +161,7 @@ Index: bc-java-r1rv79/ant/bc+-build.xml
 -            <report format="frames" todir="${artifacts.reports.html.dir}" />
 -        </junitreport>
 -    </target>
- 
+-
      <target name="javadoc-libraries" depends="javadoc-util, javadoc-pkix, javadoc-mail, javadoc-jmail, javadoc-pg" />
  
+     <!--

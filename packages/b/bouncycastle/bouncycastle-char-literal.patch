@@ -1,11 +1,13 @@
---- bc-java-r1v81/pg/src/main/java/org/bouncycastle/bcpg/ArmoredOutputStream.java	2025-06-18 16:53:17.839002101 +0200
-+++ bc-java-r1v81/pg/src/main/java/org/bouncycastle/bcpg/ArmoredOutputStream.java	2025-06-18 16:53:25.752560133 +0200
-@@ -619,7 +619,7 @@
+Index: bc-java-r1rv85/pg/src/main/java/org/bouncycastle/bcpg/ArmoredOutputStream.java
+===================================================================
+--- bc-java-r1rv85.orig/pg/src/main/java/org/bouncycastle/bcpg/ArmoredOutputStream.java
++++ bc-java-r1rv85/pg/src/main/java/org/bouncycastle/bcpg/ArmoredOutputStream.java
+@@ -633,7 +633,7 @@ public class ArmoredOutputStream
  
              if (comment.length() > availableCommentCharsPerLine)
              {
 -                comment = comment.substring(0, availableCommentCharsPerLine - 1) + '…';
 +                comment = comment.substring(0, availableCommentCharsPerLine - "…".length()) + "…";
              }
-             addComment(comment);
-             return this;
+             return addComment(comment);
+         }
