@@ -711,4 +711,12 @@ Updated oiio-detectplatform-others.patch to handle armv6l
   https://github.com/AcademySoftwareFoundation/OpenImageIO/pull/5305</comment>
     <requestid>1366217</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>eb40df4aa60a211e986a6517e31d7d48</srcmd5>
+    <version>3.1.16.0</version>
+    <time>1785871976</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1369201</requestid>
+  </revision>
 </revisionlist>
