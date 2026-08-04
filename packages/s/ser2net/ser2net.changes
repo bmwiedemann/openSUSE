@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Aug  4 08:22:27 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.6.8
+  This release fixes some security issues.
+  * A path traversal bug could let an adversary be authenticated
+    without proper credentials. It's a semi-local exploit and hard
+    to do, but it's an issue. I should get a CVE for this at some
+    point, but github is taking forever.
+  * Passwords are now expected to be in a different filename and
+    hashed. There is an option to allow older plain text passwords,
+    but I should have never done plain text passwords.
+
+-------------------------------------------------------------------
 Sun Apr 12 17:29:21 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.6.7
