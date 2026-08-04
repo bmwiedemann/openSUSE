@@ -1,8 +1,8 @@
 #
 # spec file for package mcds
 #
-# Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2019-2024, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2019-2026, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           mcds
-Version:        1.9
+Version:        1.10
 Release:        0
 Summary:        Mutt Carddav search program
 License:        GPL-3.0-or-later
