@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Aug  3 06:40:07 UTC 2026 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to 0.7.6
+  + More tpm inspect fixes
+  + Change the default SRK setting
+  + uefi: use the default boot path if no EFI FILE path
+    (bsc#1246464)
+  + tpm: Use authorized policy in tpm_test
+  + fdectl: Report specific error when lsblk fails in chroot
+  + tpm: Support persistent SRK (bsc#1248516)
+  + tpm: Always add PCR4 when comparing events
+  + firstboot: remove the dracut conf for the key file
+    (bsc#1243877)
+  + firstboot: use the real path to initrd (bsc#1244323)
+  + tpm: Create the log directory
+  + Improve tpm-snapshot and tpm-inspect
+  + tpm: Fix the file path for the predicted PCR
+  + tpm: Fix the output format of tpm-inspect
+  + tpm: skip event comparison
+- Drop merged patches
+  + fde-tools-bsc1243877-firstboot-remove-key-conf.patch
+  + fde-tools-bsc1244323-firstboot-fix-lsinitrd.patch
+  + fde-tools-bsc1246464-use-default-uefi-boot-path.patch
+  + fde-tools-bsc1248516-tpm-Support-persistent-SRK.patch
+
+-------------------------------------------------------------------
 Fri Jan 30 06:38:56 UTC 2026 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add fde-tools-bsc1248516-tpm-Support-persistent-SRK.patch to

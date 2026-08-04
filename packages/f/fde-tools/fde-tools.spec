@@ -1,7 +1,7 @@
 #
 # spec file for package fde-tools
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %endif
 
 Name:           fde-tools
-Version:        0.7.3
+Version:        0.7.6
 Release:        0
 Summary:        Tools required for Full Disk Encryption
 License:        GPL-2.0-only
@@ -31,10 +31,6 @@ Source:         https://github.com/openSUSE/%{name}/releases/download/%{version}
 Source1:        fde-tools.service
 Source2:        fde-tools.conf
 Patch0:         fde-tools-firstboot-alp-snapshot.patch
-Patch1:         fde-tools-bsc1243877-firstboot-remove-key-conf.patch
-Patch2:         fde-tools-bsc1244323-firstboot-fix-lsinitrd.patch
-Patch3:         fde-tools-bsc1246464-use-default-uefi-boot-path.patch
-Patch4:         fde-tools-bsc1248516-tpm-Support-persistent-SRK.patch
 BuildRequires:  help2man
 BuildRequires:  pkgconfig(json-c)
 BuildRequires:  pkgconfig(libcryptsetup)
