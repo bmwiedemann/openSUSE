@@ -201,7 +201,8 @@ find %{buildroot} -type f -size 0 -delete
 %files kf6
 %dir %{_datadir}/kio
 %dir %{_datadir}/kio/servicemenus
-%{_datadir}/kio/servicemenus/*.desktop
+%{_datadir}/kio/servicemenus/peazip-kde6.desktop
+%exclude %{_datadir}/kio/servicemenus/peazip-kde6-minimal.desktop
 %endif
 
 %changelog
