@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug  3 05:54:32 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.15.1:
+  * f34697c5ed chore(config): replace authgate SDK with signet
+    (#1081)
+  * a613a344de fix(test): disable gpg signing in worktree test repo
+    (#1072)
+  * 6435b12202 chore(deps): pin dependencies (#1064)
+
+-------------------------------------------------------------------
 Tue Jul 28 05:01:32 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.15.0:

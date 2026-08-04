@@ -229,4 +229,12 @@
     <comment>update to 0.15.0 (forwarded request 1368118 from ojkastl_buildservice)</comment>
     <requestid>1368426</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>85ce2cc14443ff26ba934d5c99eed8b2</srcmd5>
+    <version>0.15.1</version>
+    <time>1785872000</time>
+    <user>dimstar_suse</user>
+    <comment>update to 0.15.1 (forwarded request 1369132 from ojkastl_buildservice)</comment>
+    <requestid>1369225</requestid>
+  </revision>
 </revisionlist>
