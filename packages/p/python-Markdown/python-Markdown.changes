@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jul 30 20:55:00 UTC 2026 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 3.10.3:
+  * Fix SetextHeaderProcessor regex to prevent mixed = and - chars
+    in setext-style headers (#1606).
+  * Add AI Policy to Contributing Guide.
+  * Officially document all included extensions as being in
+    maintenance mode.
+  * Link the Extension API documentation to the API Reference
+   (#1612).
+
+-------------------------------------------------------------------
 Mon Feb  9 19:12:02 UTC 2026 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 3.10.2:
