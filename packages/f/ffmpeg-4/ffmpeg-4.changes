@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul 30 02:39:03 UTC 2026 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Add CVE patches:
+  ffmpeg-4-CVE-2026-64835.patch: (CVE-2026-64835, bsc#1272758)
+  ffmpeg-4-CVE-2026-64832.patch: (CVE-2026-64832, bsc#1272754)
+  ffmpeg-4-CVE-2026-64830.patch: (CVE-2026-64830, bsc#1272752)
+  ffmpeg-4-CVE-2026-66038.patch: (CVE-2026-66038, bsc#1272768)
+  ffmpeg-4-CVE-2026-66039.patch: (CVE-2026-66039, bsc#1272765)
+
+-------------------------------------------------------------------
 Fri Jun 26 08:19:18 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Add pcmbluray-bigendian.patch to address a build failure on s390x

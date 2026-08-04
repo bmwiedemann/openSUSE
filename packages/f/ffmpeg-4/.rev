@@ -891,4 +891,17 @@
     <comment>add bugrefs</comment>
     <requestid>1367511</requestid>
   </revision>
+  <revision rev="98" vrev="3">
+    <srcmd5>98129ae6436567c4eb8cdc6f8de8b9c4</srcmd5>
+    <version>4.4.8</version>
+    <time>1785872230</time>
+    <user>dimstar_suse</user>
+    <comment>- Add CVE patches:
+  ffmpeg-4-CVE-2026-64835.patch: (CVE-2026-64835, bsc#1272758)
+  ffmpeg-4-CVE-2026-64832.patch: (CVE-2026-64832, bsc#1272754)
+  ffmpeg-4-CVE-2026-64830.patch: (CVE-2026-64830, bsc#1272752)
+  ffmpeg-4-CVE-2026-66038.patch: (CVE-2026-66038, bsc#1272768)
+  ffmpeg-4-CVE-2026-66039.patch: (CVE-2026-66039, bsc#1272765)</comment>
+    <requestid>1369399</requestid>
+  </revision>
 </revisionlist>

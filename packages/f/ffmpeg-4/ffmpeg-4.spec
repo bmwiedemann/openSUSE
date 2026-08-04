@@ -150,6 +150,11 @@ Patch40:        ffmpeg-4-CVE-2025-63757.patch
 Patch41:        ffmpeg-4-CVE-2026-40962.patch
 Patch42:        ffmpeg-4-CVE-2025-10256.patch
 Patch43:        pcmbluray-bigendian.patch
+Patch44:        ffmpeg-4-CVE-2026-64835.patch
+Patch45:        ffmpeg-4-CVE-2026-64832.patch
+Patch46:        ffmpeg-4-CVE-2026-64830.patch
+Patch47:        ffmpeg-4-CVE-2026-66038.patch
+Patch48:        ffmpeg-4-CVE-2026-66039.patch
 BuildRequires:  ladspa-devel
 BuildRequires:  libgsm-devel
 BuildRequires:  libmp3lame-devel
