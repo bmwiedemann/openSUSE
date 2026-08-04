@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Aug  3 12:43:01 UTC 2026 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
+
+- Update to 0.21.04:
+  * New stressors
+    * gamma - lgamma and tgamma libm function stessors
+    * ovpn - exercise the ovpn Linux kernel driver and its netlink API.
+    * pagescatter - scattered virtual address page mapping stressor
+    * sigstop - SIGSTOP/SIGCONT killing/signalling
+  * New options
+    * buddystat - periodic Linux buddy allocator statistics (with fragmentation
+      estimate)
+    * ios - show I/O read/write statistics
+    * exercise-feature - select stressors by specifying a list of one or more
+      features to exercise
+    * exercise-syscall - select stressors by specifying a list of one or more
+      system calls to exercise
+    * exercise-library - select stressors by specifying a list of one or more
+      libraries to exercise
+    * exercised - show the features, syscalls and libraries exercised by
+      executed stressors
+  * Performance feaures:
+    * memrate stressor: use sse4.1 movntdqa for x86 128 non-temporal loads
+
+-------------------------------------------------------------------
 Wed Jun 17 08:03:30 UTC 2026 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
 
 - Update to 0.21.03:
