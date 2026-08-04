@@ -108,13 +108,13 @@ make check
 %{_bindir}/smtp
 %dir %{_libexecdir}/%{name_lowercase}
 %{_libexecdir}/%{name_lowercase}/encrypt
-%attr(4755,-,-) %{_libexecdir}/%{name_lowercase}/lockspool
+%verify(not mode) %attr(4755,-,-) %{_libexecdir}/%{name_lowercase}/lockspool
 %{_libexecdir}/%{name_lowercase}/mail.lmtp
 %{_libexecdir}/%{name_lowercase}/mail.local
 %{_libexecdir}/%{name_lowercase}/mail.maildir
 %{_libexecdir}/%{name_lowercase}/mail.mboxfile
 %{_libexecdir}/%{name_lowercase}/mail.mda
-%attr(2755,-,_smtpq) %{_sbindir}/smtpctl
+%verify(not mode) %attr(2755,-,_smtpq) %{_sbindir}/smtpctl
 %{_sbindir}/smtpd
 %dir %{_localstatedir}/spool/smtpd
 # We leave it to the administrator to create a group for users that need to
