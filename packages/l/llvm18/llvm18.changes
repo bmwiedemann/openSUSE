@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Aug  2 21:30:32 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Fix build with libstdc++ 16:
+  * Add clang-Sema-fix-crash-of-attribute-transform.patch to fix
+    instantiation of trailing return type using `decltype`.
+  * Define _GLIBCXX_USE_OLD_GENERATE_CANONICAL for C++ because
+    Clang 18 doesn't know __builtin_popcountg. (This doesn't help
+    users, but allows us to build LLVM/Clang. Not sure if we should
+    port back the builtin.)
+
+-------------------------------------------------------------------
+Sun Jul 26 13:47:48 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Add compiler-rt-Remove-linux-scc-h.patch to remove <linux/scc.h>
+  include that was removed in Linux 7.1 (boo#1271641).
+
+-------------------------------------------------------------------
 Sun Jun  7 21:34:50 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Migrate away from update-alternatives. The packages only provide

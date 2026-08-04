@@ -437,6 +437,12 @@ Patch32:        libcxx-use-shlex-quote.patch
 Patch33:        gcc15-add-necessary-includes.patch
 # PATCH-FIX-UPSTREAM: Remove interceptors for deprecated struct termio
 Patch34:        compiler-rt-remove-termio-interceptors.patch
+# PATCH-FIX-UPSTREAM: https://github.com/llvm/llvm-project/commit/3dc4fd6dd41100f051a63642f449b16324389c96
+# Fixes build with Linux 7.1.
+Patch35:        compiler-rt-Remove-linux-scc-h.patch
+# PATCH-FIX-UPSTREAM: https://github.com/llvm/llvm-project/commit/d9d1ae6400a7f8a12068bdd37ecda62f07e52bce
+# Fixes build with libstdc++ 16.
+Patch36:        clang-Sema-fix-crash-of-attribute-transform.patch
 BuildRequires:  binutils-devel >= 2.21.90
 BuildRequires:  cmake >= 3.13.4
 BuildRequires:  fdupes
@@ -896,6 +902,7 @@ pushd clang-%{_version}.src
 %patch -P 29 -p2
 %patch -P 30 -p2
 %patch -P 31 -p2
+%patch -P 36 -p2
 
 # We hardcode openSUSE
 rm unittests/Driver/DistroTest.cpp
@@ -911,6 +918,7 @@ popd
 
 pushd compiler-rt-%{_version}.src
 %patch -P 34 -p2
+%patch -P 35 -p2
 popd
 
 pushd openmp-%{_version}.src
@@ -1078,7 +1086,8 @@ else
 fi
 
 CFLAGS=$flags
-CXXFLAGS=$flags
+# 5) Define _GLIBCXX_USE_OLD_GENERATE_CANONICAL for C++ because Clang 18 doesn't know __builtin_popcountg.
+CXXFLAGS="$flags -D_GLIBCXX_USE_OLD_GENERATE_CANONICAL"
 
 # Clang uses a bit less memory.
 mem_per_compile_job=700000

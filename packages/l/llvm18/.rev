@@ -305,4 +305,21 @@
 </comment>
     <requestid>1358707</requestid>
   </revision>
+  <revision rev="19" vrev="13">
+    <srcmd5>a12ac8c39efcc567634e892eea42d55f</srcmd5>
+    <version>18.1.8</version>
+    <time>1785871812</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build with libstdc++ 16:
+  * Add clang-Sema-fix-crash-of-attribute-transform.patch to fix
+    instantiation of trailing return type using `decltype`.
+  * Define _GLIBCXX_USE_OLD_GENERATE_CANONICAL for C++ because
+    Clang 18 doesn't know __builtin_popcountg. (This doesn't help
+    users, but allows us to build LLVM/Clang. Not sure if we should
+    port back the builtin.)
+- Add compiler-rt-Remove-linux-scc-h.patch to remove &lt;linux/scc.h&gt;
+  include that was removed in Linux 7.1 (boo#1271641).
+</comment>
+    <requestid>1369232</requestid>
+  </revision>
 </revisionlist>
