@@ -232,4 +232,18 @@
 </comment>
     <requestid>1362583</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>d90a973ad0d838fbd50e4c00923db40f</srcmd5>
+    <version>9.0.20</version>
+    <time>1785878907</time>
+    <user>dimstar_suse</user>
+    <comment>- build against Qt6 instead of Qt5
+- add hicolor-icon-theme (Build)Requires and stop claiming ownership
+  of its directories, fixes &quot;directories not owned by a package&quot;
+- rebase fix-cmake-name.patch to pick the Qt6 qmake
+- do not build on 32-bit architectures, Qt6 WebEngine is not
+  available there
+</comment>
+    <requestid>1369442</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Aug  4 08:15:20 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- build against Qt6 instead of Qt5
+- add hicolor-icon-theme (Build)Requires and stop claiming ownership
+  of its directories, fixes "directories not owned by a package"
+- rebase fix-cmake-name.patch to pick the Qt6 qmake
+- do not build on 32-bit architectures, Qt6 WebEngine is not
+  available there
+
+-------------------------------------------------------------------
 Tue Jun 30 07:16:22 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 9.0.20 (no changelog)

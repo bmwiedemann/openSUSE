@@ -32,6 +32,7 @@ BuildRequires:  automake
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  libsearpc-devel
 BuildRequires:  libtool
 BuildRequires:  openssl-devel
@@ -43,21 +44,22 @@ BuildRequires:  pkgconfig(libevent_extra)
 BuildRequires:  pkgconfig(libevent_openssl)
 BuildRequires:  pkgconfig(libevent_pthreads)
 BuildRequires:  pkgconfig(uuid)
+Requires:       hicolor-icon-theme
 Requires:       python3-pysearpc
 Requires:       seafile = %{version}
-BuildRequires:  cmake(Qt5Core) >= 5.15.1
-BuildRequires:  cmake(Qt5DBus) >= 5.15.1
-BuildRequires:  cmake(Qt5Designer) >= 5.15.1
-BuildRequires:  cmake(Qt5Gui) >= 5.15.1
-BuildRequires:  cmake(Qt5Help) >= 5.15.1
-BuildRequires:  cmake(Qt5LinguistTools) >= 5.15.1
-BuildRequires:  cmake(Qt5Network) >= 5.15.1
-BuildRequires:  cmake(Qt5Test) >= 5.15.1
-BuildRequires:  cmake(Qt5UiTools) >= 5.15.1
-BuildRequires:  cmake(Qt5WebEngineCore) >= 5.15.1
-BuildRequires:  cmake(Qt5WebEngineWidgets) >= 5.15.1
+BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6Core5Compat)
+BuildRequires:  cmake(Qt6DBus)
+BuildRequires:  cmake(Qt6Gui)
+BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  cmake(Qt6Network)
+BuildRequires:  cmake(Qt6WebEngineCore)
+BuildRequires:  cmake(Qt6WebEngineWidgets)
+BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  pkgconfig(jansson)
 BuildRequires:  pkgconfig(sqlite3)
+# Qt6 WebEngine is not available on 32-bit architectures
+ExcludeArch:    %{ix86} %{arm}
 
 %description
 Seafile is an open source cloud storage system with features on privacy protection and teamwork. Collections of files are
@@ -86,26 +88,7 @@ install -m 644 %{SOURCE1} %{buildroot}%{_datadir}/appdata/seafile.appdata.xml
 %license LICENSE
 %{_bindir}/seafile-applet
 %{_datadir}/applications/com.seafile.seafile-applet.desktop
-%{_datadir}/icons/hicolor/128x128
-%{_datadir}/icons/hicolor/128x128/apps
-%{_datadir}/icons/hicolor/128x128/apps/seafile.png
-%{_datadir}/icons/hicolor/16x16
-%{_datadir}/icons/hicolor/16x16/apps
-%{_datadir}/icons/hicolor/16x16/apps/seafile.png
-%{_datadir}/icons/hicolor/22x22
-%{_datadir}/icons/hicolor/22x22/apps
-%{_datadir}/icons/hicolor/22x22/apps/seafile.png
-%{_datadir}/icons/hicolor/24x24
-%{_datadir}/icons/hicolor/24x24/apps
-%{_datadir}/icons/hicolor/24x24/apps/seafile.png
-%{_datadir}/icons/hicolor/32x32
-%{_datadir}/icons/hicolor/32x32/apps
-%{_datadir}/icons/hicolor/32x32/apps/seafile.png
-%{_datadir}/icons/hicolor/48x48
-%{_datadir}/icons/hicolor/48x48/apps
-%{_datadir}/icons/hicolor/48x48/apps/seafile.png
-%{_datadir}/icons/hicolor/scalable
-%{_datadir}/icons/hicolor/scalable/apps
+%{_datadir}/icons/hicolor/*/apps/seafile.png
 %{_datadir}/icons/hicolor/scalable/apps/seafile.svg
 %{_datadir}/pixmaps/seafile.png
 %{_datadir}/appdata/seafile.appdata.xml
