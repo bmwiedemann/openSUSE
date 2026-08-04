@@ -1,6 +1,6 @@
-diff '--color=auto' -rub goverlay-1.8.4.orig/goverlay.lpi goverlay-1.8.4/goverlay.lpi
---- goverlay-1.8.4.orig/goverlay.lpi	2026-06-20 14:54:09.000000000 -0300
-+++ goverlay-1.8.4/goverlay.lpi	2026-06-27 15:50:59.105131790 -0300
+diff --color -rub goverlay-1.8.10.orig/goverlay.lpi goverlay-1.8.10/goverlay.lpi
+--- goverlay-1.8.10.orig/goverlay.lpi	2026-07-28 22:52:10.000000000 -0300
++++ goverlay-1.8.10/goverlay.lpi	2026-07-30 23:39:28.337520450 -0300
 @@ -51,8 +51,8 @@
            </CodeGeneration>
            <Linking>
@@ -18,7 +18,38 @@ diff '--color=auto' -rub goverlay-1.8.4.orig/goverlay.lpi goverlay-1.8.4/goverla
            <Other>
 -            <CustomOptions Value="-fPIC
 --Cg"/>
-+            <CustomOptions Value="-k-pie"/>
++            <CustomOptions Value="-fPIC -Cg -k-pie -k-znow"/>
            </Other>
          </CompilerOptions>
        </Item2>
+diff --color -rub goverlay-1.8.10.orig/Makefile goverlay-1.8.10/Makefile
+--- goverlay-1.8.10.orig/Makefile	2026-07-28 22:52:10.000000000 -0300
++++ goverlay-1.8.10/Makefile	2026-07-30 23:54:35.301597432 -0300
+@@ -13,13 +13,13 @@
+ 	cp pascube_src/pascube ./pascube
+ 
+ bgmod: bgmod.lpr
+-	fpc -O3 bgmod.lpr
++	fpc -O3 -Cg -k-pie bgmod.lpr
+ 	mkdir -p data/bgmod
+ 	cp bgmod data/bgmod/bgmod
+ 	cp bgmod.conf data/bgmod/bgmod.conf
+ 
+ bgmod-uninstaller: bgmod-uninstaller.lpr
+-	fpc -O3 bgmod-uninstaller.lpr
++	fpc -O3 -Cg -k-pie bgmod-uninstaller.lpr
+ 	mkdir -p data/bgmod
+ 	cp bgmod-uninstaller data/bgmod/bgmod-uninstaller
+ 
+diff --color -rub goverlay-1.8.10.orig/pascube_src/pascube.lpi goverlay-1.8.10/pascube_src/pascube.lpi
+--- goverlay-1.8.10.orig/pascube_src/pascube.lpi	2026-07-28 22:52:10.000000000 -0300
++++ goverlay-1.8.10/pascube_src/pascube.lpi	2026-07-30 23:59:31.022488248 -0300
+@@ -73,7 +73,7 @@
+       </Debugging>
+     </Linking>
+     <Other>
+-      <CustomOptions Value="-dDEBUG -dPasVulkanUseSDL2"/>
++      <CustomOptions Value="-dDEBUG -dPasVulkanUseSDL2 -fPIC -Cg -k-pie -k-znow"/>
+     </Other>
+   </CompilerOptions>
+   <Debugging>

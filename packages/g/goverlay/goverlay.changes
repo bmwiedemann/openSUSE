@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Mon Aug  3 23:53:56 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Add Provides and Obsoletes for pascube (slated for deletion)
+  to prevent file conflicts during system updates.
+- Fix Source0 URL to avoid comparison conflicts with tar_scm service. 
+
+-------------------------------------------------------------------
+Fri Jul 31 03:01:06 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Re-add goverlay-flags.patch:
+  * Pass PIE (-k-pie) and full RELRO (-k-znow) flags in pascube.lpi,
+    goverlay.lpi, and Makefile (bgmod) to fix rpmlint PIE warning.
+  * Enable debug information generation in project files for debuginfo
+    package creation. 
+
+-------------------------------------------------------------------
+Fri Jul 31 01:15:01 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Fix version in spec. 
+
+-------------------------------------------------------------------
+Fri Jul 31 01:10:43 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Add missing source file 
+
+-------------------------------------------------------------------
+Fri Jul 31 00:53:07 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to version 1.8.10:
+  * chore(release): set release channel to stable for v1.8.10
+  * fix(pascube): synchronize hardware comparison hover scores with live benchmark database
+  * fix(appimage): add cmem and guard thread creation
+  * feat(ui): add tooltips to game cards, sidebar toggle toasts, and reposition vkBasalt
+    restore defaults button
+  * fix(ui): synchronize vkBasalt and vkSumi config paths on game card selection
+  * fix(ui): reset tab controls unconditionally before checking file existence
+  * fix(ui): synchronize tab config paths, tweaks, and preset cards
+  * fix(optiscaler): resolve driver controls, global sync, ini seeding, and update fallback bugs
+  * fix(ui): restore 32x32 OptiScaler icon size and update EnvVars icon from env.png
+  * fix(ui): hide sidebar tool toggles when viewing Home tab
+  * Switch back to bundled pascube binary, Upstream archived the standalone pascube
+    repository to maintain it exclusively within the GOverlay repository.
+  * Drop disable-passcube-build.patch as standalone builds are no
+    longer maintained upstream.
+  * Remove standalone pascube Requires/BuildRequires dependencies.
+  * Drop goverlay-build-flags.patch. Pass build options directly via LAZBUILDOPTS
+    and FPCOPTS in the spec file to ensure PIE hardening (-Cg -k-pie) across all binaries.
+
+-------------------------------------------------------------------
 Fri Jul 10 01:03:24 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
 
 - Update to version 1.8.6:

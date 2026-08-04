@@ -17,28 +17,26 @@
 
 
 Name:           goverlay
-Version:        1.8.6
+Version:        1.8.10
 Release:        0
 Summary:        Graphical UI to help manage overlays
 License:        GPL-3.0-or-later
 URL:            https://github.com/benjamimgois/goverlay
-Source0:        https://github.com/benjamimgois/goverlay/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE goverlay-build-flags.patch - Adjust build flags for RPM packaging (debuginfo and PIE)
 Patch0:         goverlay-build-flags.patch
-# PATCH disable-passcube-build.patch - The factory has a package for pascube; there is no need to use the built-in version.
-Patch1:         disable-passcube-build.patch
 BuildRequires:  appstream-glib
 BuildRequires:  fdupes
 BuildRequires:  lazarus
 BuildRequires:  libQt6Pas-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(sdl2)
 ExclusiveArch:  x86_64 aarch64
 Requires:       7zip
 Requires:       mangohud
 # Nerd symbols is necessary to show icons in goverlay interface
 Requires:       symbols-only-nerd-fonts
-Requires:       pascube
 Requires:       wget
 Recommends:     Mesa-demo
 Recommends:     vkSumi
@@ -47,6 +45,8 @@ Recommends:     vulkan-tools
 %if 0%{?suse_version} > 1500
 BuildRequires:  lazarus-lcl-qt6
 %endif
+Provides:       pascube = %{version}
+Obsoletes:      pascube <= 1.7.0
 
 %description
 GOverlay is a graphical UI to manage Vulkan/OpenGL overlays.
@@ -54,6 +54,7 @@ GOverlay is a graphical UI to manage Vulkan/OpenGL overlays.
 %prep
 %autosetup -p1
 chmod -x LICENSE README.md
+sed -i '1s|^#!/usr/bin/env python3|#!/usr/bin/python3|' assets/goverlay-steam-shortcut.py
 
 %build
 %{set_build_flags}
@@ -65,7 +66,10 @@ install -d %{buildroot}%{_libexecdir}/goverlay
 sed -i \
     -e 's/^StartupWMClass=.*/StartupWMClass=goverlay/' \
     %{buildroot}%{_datadir}/applications/io.github.benjamimgois.goverlay.desktop
-%{__strip} %{buildroot}/usr/lib64/goverlay
+strip -s %{buildroot}%{_bindir}/goverlay 2>/dev/null || strip -s %{buildroot}%{_libdir}/goverlay 2>/dev/null || true
+strip -s %{buildroot}%{_libdir}/bgmod/bgmod 2>/dev/null || true
+strip -s %{buildroot}%{_libdir}/bgmod/bgmod-uninstaller 2>/dev/null || true
+strip -s %{buildroot}%{_libdir}/pascube 2>/dev/null || true
 rm -rf %{buildroot}%{_datadir}/goverlay/data/icons/{128x128,256x256,512x512}
 ln -sf %{_datadir}/icons/hicolor/128x128/apps/io.github.benjamimgois.goverlay.png \
        %{buildroot}%{_datadir}/goverlay/assets/icons/goverlay.png
@@ -81,6 +85,7 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.xml
 %{_libdir}/%{name}
 %{_libdir}/bgmod
 %{_libdir}/bgmod-uninstaller
+%{_libdir}/pascube
 %{_mandir}/man1/%{name}.1%{?ext_man}
 %{_datadir}/%{name}
 %{_datadir}/applications/*.desktop
