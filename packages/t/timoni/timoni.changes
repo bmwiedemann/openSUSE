@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Mon Aug 03 12:25:12 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.29.0:
+  * Highlights
+    - Timoni module now supports defining health checks for
+      Kubernetes custom resources
+  * build(deps): bump the ci group with 4 updates
+  * feat(api): Improve the Gateway API health checks in the library
+  * fix: Sync the Job status reader with fluxcd/pkg/runtime
+  * feat: Enable the health check library in the starter blueprint
+  * test: Cover the vendored health check schemas import path
+  * build: Add make sync-schemas target
+  * docs: Document the health check library
+  * feat(api): Add health check library for Gateway API and Cluster
+    API
+  * docs: Document custom health checks
+  * feat: Add CUE-based custom health checks for custom resources
+  * feat(api): Add custom health check schemas to core/v1alpha1
+  * fix(oci): Forward Cosign registry credentials
+  * fix(oci): Forward insecure registry transport
+  * fix(oci): Cancel Git metadata commands
+  * fix(cli): Preserve command cancellation
+  * fix(oci): Bound layer extraction
+  * fix(oci): Report image build cleanup errors
+  * fix(cli): Bound and secure CRD downloads
+  * fix(oci): Tolerate large Cosign output
+  * fix(oci): Preflight Cosign executable
+  * fix(oci): Bound Cosign subprocesses
+  * fix(oci): Validate provider companion flags
+  * fix(cli): Validate CRD version entries
+  * fix(mod): Clean up failed initialization
+  * fix(oci): Return artifact file open errors
+  * fix(cli): Clean up failed stdin files
+  * fix(cli): Mark required operands in usage
+  * fix(oci): Validate pulls before output
+  * fix(cli): Validate output formats early
+  * fix: Propagate input scanner errors
+
+-------------------------------------------------------------------
 Mon Aug 03 05:58:16 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.28.0:
