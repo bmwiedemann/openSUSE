@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug  4 08:28:34 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.16.19
+  * Add log.print and enum.log_group methods
+
+-------------------------------------------------------------------
 Fri Jul 17 13:04:34 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.16.18
