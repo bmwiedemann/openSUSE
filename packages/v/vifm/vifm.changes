@@ -42,7 +42,7 @@ Mon Jun  1 07:14:23 UTC 2026 - Michael Vetter <mvetter@suse.com>
   * Fixed :yank and :delete not handling optional count parameter correctly (a regression since v0.11-beta).
   * Fixed completion of :highlight truncating long custom column names.
   * Fixed a Lua column disabling search highlighting for all columns to its right.
-  * Fixed a buffer overflow in trie implementation (CVE-2026-8997).
+  * Fixed a buffer overflow in trie implementation (CVE-2026-8997) (bsc#1273413)
   * Fixed Lua modules written in C not being loaded on Unix-like systems.
 
 -------------------------------------------------------------------

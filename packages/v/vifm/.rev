@@ -359,4 +359,12 @@ for menus;
   * Fixed a small memory leak on trying to display a map menu which doesn't show up because it would be empty.</comment>
     <requestid>1356289</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>58f90c3b96232036e77e541428b99389</srcmd5>
+    <version>0.14.4</version>
+    <time>1785872247</time>
+    <user>dimstar_suse</user>
+    <comment>  * Fixed a buffer overflow in trie implementation (CVE-2026-8997) (bsc#1273413)</comment>
+    <requestid>1369404</requestid>
+  </revision>
 </revisionlist>
