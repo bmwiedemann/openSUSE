@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Aug  3 01:48:39 UTC 2026 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to 0.6.5
+  + Add replay tests
+  + Add ecc-test to check for ECC P-256 support
+  + Make .dir_list optional
+  + Update help message and man page
+  + Skip PCR 7 authority event synthesis for shim (bsc#1272350)
+- Remove test-authorized.sh from doc
+
+-------------------------------------------------------------------
 Wed Jul 15 02:05:48 UTC 2026 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Update to 0.6.4

@@ -18,7 +18,7 @@
 
 
 Name:           pcr-oracle
-Version:        0.6.4
+Version:        0.6.5
 Release:        0
 Summary:        Predict TPM PCR values
 License:        GPL-2.0-or-later
@@ -54,7 +54,6 @@ rmdir %{buildroot}/bin
 %files
 %defattr(-,root,root)
 %doc README.md
-%doc test-authorized.sh
 %{_bindir}/pcr-oracle
 %{_mandir}/man8/pcr-oracle.8*
 
