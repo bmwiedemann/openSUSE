@@ -1,0 +1,36 @@
+Author: Paolo Stivanin <info@paolostivanin.com>
+Subject: Only use the lws SOCKS5 proxy fields when libwebsockets provides them
+
+struct lws_context_creation_info only has the socks_proxy_address and
+socks_proxy_port members when libwebsockets is built with LWS_WITH_SOCKS5.
+openSUSE's libwebsockets is built without it, so compilation fails with:
+
+    notif-mgr.c:901:22: error: 'struct lws_context_creation_info' has no
+    member named 'socks_proxy_address'; did you mean 'ss_proxy_address'?
+
+Guard the SOCKS branch with the macro (defined by the installed
+lws_config.h, which libwebsockets.h includes) and warn at runtime instead.
+The HTTP proxy branch is unaffected.
+
+Index: seadrive-fuse-3.0.24/src/notif-mgr.c
+===================================================================
+--- seadrive-fuse-3.0.24.orig/src/notif-mgr.c
++++ seadrive-fuse-3.0.24/src/notif-mgr.c
+@@ -896,12 +896,17 @@ lws_context_new (gboolean use_ssl)
+             info.http_proxy_port = has_auth ? 0 :
+                                    (seaf->http_proxy_port > 0 ? seaf->http_proxy_port : 80);
+         } else if (g_strcmp0 (seaf->http_proxy_type, PROXY_TYPE_SOCKS) == 0) {
++#if defined(LWS_WITH_SOCKS5)
+             if (seaf->http_proxy_port >= 0) {
+                 socks_proxy_addr = has_auth ? build_proxy_address (1080) : g_strdup (seaf->http_proxy_addr);
+                 info.socks_proxy_address = socks_proxy_addr;
+                 info.socks_proxy_port = has_auth ? 0 :
+                                     (seaf->http_proxy_port > 0 ? seaf->http_proxy_port : 1080);
+             }
++#else
++            seaf_warning ("libwebsockets was built without SOCKS5 support, "
++                          "not using SOCKS proxy for notifications.\n");
++#endif
+         }
+     }
+

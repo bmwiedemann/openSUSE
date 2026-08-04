@@ -17,13 +17,14 @@
 
 
 Name:           seadrive-fuse
-Version:        3.0.23
+Version:        3.0.24
 Release:        0
 Summary:        SeaDrive daemon with FUSE interface
 License:        GPL-2.0-only
 URL:            https://github.com/haiwen/seadrive-fuse/
 Source0:        https://github.com/haiwen/seadrive-fuse/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         fuse3.patch
+Patch1:         lws-socks5.patch
 BuildRequires:  argon2-devel
 BuildRequires:  autoconf
 BuildRequires:  automake

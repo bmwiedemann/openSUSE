@@ -101,4 +101,20 @@
 </comment>
     <requestid>1357904</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>94d6a7d52d31a9560c810487beef27a3</srcmd5>
+    <version>3.0.24</version>
+    <time>1785878910</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.24:
+  * Skip lock file when flock is not implemented (#40)
+  * fuse-ops.c: populate st_blocks (#41)
+  * Use queue to update mount path xattr (#38)
+  * Set proxy to websockets (#42)
+  * Fix set ca path error (#43)
+- add lws-socks5.patch: only use the lws SOCKS5 proxy fields when
+  libwebsockets is built with LWS_WITH_SOCKS5.
+</comment>
+    <requestid>1369443</requestid>
+  </revision>
 </revisionlist>
