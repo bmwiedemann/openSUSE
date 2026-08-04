@@ -35,7 +35,7 @@
     %define prefer_nftables 0
 %endif
 Name:           criu
-Version:        4.2
+Version:        4.2.1
 Release:        0
 Summary:        Checkpoint/Restore In Userspace Tools
 License:        GPL-2.0-only
@@ -45,15 +45,10 @@ Source0:        http://github.com/checkpoint-restore/criu/archive/v%{version}.ta
 # To be generated; we keep a static one for building without pip
 Source1:        crit.py
 # upstream fixes:
-Patch1:         0001-net-Route-veth-restore-through-usernsd-for-userns-mo.patch
-Patch2:         0002-zdtm-Fix-rseq01-test-for-kernel-7.0-rseq-changes.patch
-Patch3:         0003-zdtm-Skip-socket_udplite-test-when-kernel-lacks-UDPL.patch
-Patch4:         0004-sockets-Treat-UDPLITE-as-optional-in-collect_err.patch
 Patch101:       criu-py-install-fix.diff
 Patch102:       0002-Fix-build-with-nftables-installed-in-different-direc.patch
 Patch104:       plugin-dir-path.patch
 Patch105:       criu-ns-python3-shebang.patch
-Patch106:       criu-rseq-feature-test-fix-for-TW.patch
 BuildRequires:  libcap-devel
 BuildRequires:  libgnutls-devel
 BuildRequires:  libnet-devel

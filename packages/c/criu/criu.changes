@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Aug  3 11:12:40 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to criu 4.2.1:
+  a bunch of bug fixes and simplifaction of downstream packaging
+  https://github.com/checkpoint-restore/criu/compare/v4.2...v4.2.1
+
+- Drop obsoleted patches:
+  0001-net-Route-veth-restore-through-usernsd-for-userns-mo.patch
+  0002-zdtm-Fix-rseq01-test-for-kernel-7.0-rseq-changes.patch
+  0003-zdtm-Skip-socket_udplite-test-when-kernel-lacks-UDPL.patch
+  0004-sockets-Treat-UDPLITE-as-optional-in-collect_err.patch
+  criu-rseq-feature-test-fix-for-TW.patch
+
+-------------------------------------------------------------------
 Tue Jul  7 09:20:07 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Backport the fixes from criu-devel branch for the recent 7.x kernels
