@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug  3 08:36:09 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Add drop-qtwebengine.patch: make the built-in help browser (and
+  with it Qt5WebEngine and Qt5PrintSupport) optional, and build with
+  -DWITH_HELPBROWSER=OFF. libqt5-qtwebengine is EOL, no longer gets
+  security fixes and is being dropped from openSUSE (boo#1273168).
+  Based on Gentoo's patch, see https://bugs.gentoo.org/926664
+- Drop no longer needed BuildRequires: cmake(Qt5WebEngine).
+
+-------------------------------------------------------------------
 Tue Feb  3 15:29:13 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Add eigen-cmake.patch to fix build with newer Eigen libraries.

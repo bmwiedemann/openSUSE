@@ -40,6 +40,8 @@ Patch2:         clamp.patch
 Patch3:         fix-version.patch
 Patch4:         fix-boost-1.87.0.patch
 Patch5:         eigen-cmake.patch
+# PATCH-FIX-OPENSUSE drop-qtwebengine.patch boo#1273168 -- make the help browser (and Qt5WebEngine) optional
+Patch6:         drop-qtwebengine.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  fftw3-devel
@@ -65,7 +67,6 @@ BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5Sql)
 BuildRequires:  cmake(Qt5Svg)
-BuildRequires:  cmake(Qt5WebEngine)
 BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(cfitsio)
@@ -114,7 +115,8 @@ This package contains the documentation for Luminance HDR.
 
 %build
 %cmake \
-    -DCMAKE_CXX_COMPILER=%{_bindir}/g++%{?force_gcc_version:-%force_gcc_version}
+    -DCMAKE_CXX_COMPILER=%{_bindir}/g++%{?force_gcc_version:-%force_gcc_version} \
+    -DWITH_HELPBROWSER:BOOL=OFF
 %cmake_build
 
 %install

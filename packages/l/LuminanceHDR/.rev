@@ -49,4 +49,18 @@
     <comment></comment>
     <requestid>1330863</requestid>
   </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>f0bd20550955e61428a89835ae382d4d</srcmd5>
+    <version>2.6.0+git313.634b489</version>
+    <time>1785872014</time>
+    <user>dimstar_suse</user>
+    <comment>- Add drop-qtwebengine.patch: make the built-in help browser (and
+  with it Qt5WebEngine and Qt5PrintSupport) optional, and build with
+  -DWITH_HELPBROWSER=OFF. libqt5-qtwebengine is EOL, no longer gets
+  security fixes and is being dropped from openSUSE (boo#1273168).
+  Based on Gentoo's patch, see https://bugs.gentoo.org/926664
+- Drop no longer needed BuildRequires: cmake(Qt5WebEngine).
+</comment>
+    <requestid>1369255</requestid>
+  </revision>
 </revisionlist>
