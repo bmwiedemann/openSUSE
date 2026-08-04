@@ -1,0 +1,34 @@
+-------------------------------------------------------------------
+Mon Aug  3 12:56:35 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.0:
+  * jump to entered offset (go/gO).
+  * search (/).
+    + ASCII search (A-/).
+  * fixed a nasty bug with undoing multi-cursor deletes.
+  * reverse-till T (Tm/T0/Tf).
+
+-------------------------------------------------------------------
+Tue Jun 09 07:21:40 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.2.4:
+  * clicking a tab with the mouse now opens that buffer.
+  * C-j/C-l to switch buffers now works in select mode.
+  * color555 translation to hex color codes in the inspector is
+    now more precise.
+  * inspector can now be closed with escape.
+  * OSC 6 (current document) is now set when opening/switching
+    files.
+  * UX when running without arguments is now more clear.
+
+-------------------------------------------------------------------
+Wed May 06 05:56:04 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.2.3:
+  * add gn/gp next/previous buffer keybinds.
+  * update unsaved changes alert.
+
+-------------------------------------------------------------------
+Sat May 02 15:27:36 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package for hexapoda, version 0.2.1
