@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Aug 03 14:55:39 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1785768930.71d56f4:
+  * feat: Clean up empty serial terminal boxes
+  * test: Enable statement coverage in `tools/invoke-tests`
+  * test: Allow specifying test files in `invoke-tests` as documented
+  * test: Cover all statements of test files
+  * test: Cover all statements of `testapi.pm`
+  * test: Cover all statements of `myjsonrpc.pm`
+  * fix: Avoid unreachable condition in `consoles/video_stream.pm`
+  * feat: Add stack traces to module step failures
+
+-------------------------------------------------------------------
 Wed Jul 22 10:16:07 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1784715353.1b58686:
