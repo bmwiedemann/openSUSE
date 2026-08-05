@@ -2,6 +2,7 @@
 <group name="NON_FTP_PACKAGES">
   <conditional name="drop_from_ftp"/>
   <packagelist relationship="requires">
+    <package name="baseiso-agama-installer-openSUSE"/>
     <package name="openSUSE-images"/>
     <package name="openSUSE-driverupdate"/>
     <package name="openSUSE-release-mini"/>

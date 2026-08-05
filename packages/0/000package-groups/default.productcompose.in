@@ -18,27 +18,14 @@ debug: split
 
 # will be extended with architecture and flavor string
 flavors:
-  tw_dvd5_x86_64:
+  dvd:
     architectures: [ x86_64 ]
     product_directory_name: TW-offline-installer
-    name: Tumbleweed
+    name: openSUSE
     summary: openSUSE Tumbleweed offline installer
     iso:
       volume_id: Install-Tumbleweed-x86_64
-      base: agama-installer-Tumbleweed
-      tree: drop
-    source: drop
-    debug: drop
-  tw_mini_x86_64:
-    architectures: [ x86_64 ]
-    product_directory_name: TW-online-installer
-    name: Tumbleweed
-    summary: openSUSE Tumbleweed online installer
-    build_options:
-      - base_skip_packages
-    iso:
-      volume_id: Install-Tumbleweed-x86_64
-      base: agama-installer-Tumbleweed
+      base: agama-installer-openSUSE
       tree: drop
     source: drop
     debug: drop
