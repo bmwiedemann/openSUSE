@@ -1,7 +1,7 @@
 #
 # spec file for package libperseus-sdr
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,11 +21,10 @@
 %define libname %{name}%{sover}
 %define perseussdr_group perseususb
 Name:           libperseus-sdr
-Version:        0.8.1
+Version:        0.8.2
 Release:        0
 Summary:        Perseus Software Defined Radio Control Library
 License:        GPL-3.0-only
-Group:          Productivity/Hamradio/Other
 URL:            https://github.com/Microtelecom/libperseus-sdr
 #Git-Clone:     https://github.com/Microtelecom/libperseus-sdr.git
 Source:         https://github.com/Microtelecom/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -44,7 +43,6 @@ Perseus Software Defined Radio Control Library.
 
 %package devel
 Summary:        Development files for libperseus-sdr
-Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
 
 %description devel
@@ -53,7 +51,6 @@ make use of libperseus-sdr.
 
 %package -n %{libname}
 Summary:        Library for Perseus SDR
-Group:          System/Libraries
 Requires:       %{name}-udev
 
 %description -n %{libname}
@@ -61,28 +58,28 @@ Perseus Software Defined Radio Control Library.
 
 %package -n perseus-sdr-tools
 Summary:        Tools for Perseus SDR
-Group:          Hardware/Other
 
 %description -n perseus-sdr-tools
 Tools for Perseus SDR devices.
 
 %package udev
 Summary:        Udev rules for Perseus SDR
-Group:          Hardware/Other
-Requires(pre):  pwdutils
+Requires(pre):  shadow
 
 %description udev
 Udev rules for Perseus SDR hardware
 
 %prep
 %setup -q
+
 #
 %build
 # Do not optimize for current cpu
 sed -i "s|-march=native||g" configure.ac
 autoreconf -iv
 %configure
-make #%{?_smp_mflags} # parallel build is broken
+# NOT %make_build: upstream's parallel build is broken, so no _smp_mflags
+make
 
 %install
 %make_install
@@ -117,6 +114,8 @@ getent group %{perseussdr_group} >/dev/null || groupadd -r %{perseussdr_group}
 
 %files devel
 %{_libdir}/libperseus-sdr.so
+# new in 0.8.2
+%{_libdir}/pkgconfig/libperseus-sdr.pc
 %{_includedir}/perseus-sdr.h
 #%%{_includedir}/perseus-in.h
 #%%{_includedir}/perseus-sdr.h

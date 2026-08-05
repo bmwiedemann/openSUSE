@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Aug  4 13:54:04 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.8.2:
+  * Add command line options to perseustest so that all hardware
+    features of the Perseus receiver can be exercised from the
+    command line
+- Drop the obsolete Group tags
+- Require shadow rather than the long-removed pwdutils
+
+-------------------------------------------------------------------
 Sat May 11 20:49:51 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.8.1

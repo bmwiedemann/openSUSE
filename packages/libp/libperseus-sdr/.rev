@@ -15,4 +15,20 @@
     <comment></comment>
     <requestid>704061</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>303d49ce6739af572292ed5b35a404bb</srcmd5>
+    <version>0.8.2</version>
+    <time>1785944940</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 0.8.2
+
+Upstream adds command line options to perseustest so all Perseus hardware
+features can be exercised from the command line.
+
+Packaging: 0.8.2 newly installs libperseus-sdr.pc, now packaged in -devel;
+obsolete Group tags dropped; Requires(pre) moved from the long-removed pwdutils
+to shadow. The two rpmlint errors (no-binary on the udev subpackage,
+explicit-lib-dependency) are pre-existing and unchanged by this update.</comment>
+    <requestid>1369551</requestid>
+  </revision>
 </revisionlist>
