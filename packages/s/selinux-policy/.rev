@@ -2464,4 +2464,12 @@ Needs to go together with libsemanage change</comment>
     <comment>bugfixes</comment>
     <requestid>1367954</requestid>
   </revision>
+  <revision rev="170" vrev="1">
+    <srcmd5>ccc6c5c309d62d5ad31f4054684211c9</srcmd5>
+    <version>20260804</version>
+    <time>1785944787</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1369476</requestid>
+  </revision>
 </revisionlist>

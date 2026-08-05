@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Aug 04 09:41:45 UTC 2026 - Robert Frohl <rfrohl@suse.com>
+
+- Update to version 20260804:
+  * Use NetworkManager_t instead of networkmanager_t
+  * Changes adapting to bind packages with suffixes
+  * Dontaudit unconfined_t map its private directories
+  * Support cronie create crontab backups
+  * Allow nfsidmapd read virt lib files
+  * Allow sysadm_t run and read/write networkmanager bpf programs
+  * Allow dhcpc_hook_t connect to init_t over a unix stream socket
+  * Allow unconfined_t mounton its lnk_files
+  * Allow wireguard read cgroup files
+  * Label /usr/local/share/man with man_t
+  * Allow pcscd get attributes of a pty filesystem
+  * Allow geoclue read cgroup files
+  * Allow init_t nnp domain transition to postgresql_t
+  * Move bootupd systemd interface to 2 optional blocks
+  * Allow net_admin to the nfsd_t domain
+  * Allow kernel write to unconfined and sysadm users' keys
+  * Allow staff user ioctl cockpit-session stream sockets
+  * Allow the staff user mount on tmpfs directories
+  * Allow staff user the dac_override capability in the user namespace
+  * Allow aide get attributes of all filesystems
+  * Make insights_client_t accessible from the system cronjob
+  * Support systemtap on a UEFI+SecureBoot system
+  * Allow systemd-coredump signull spc container
+  * Allow dhcpcd hook scripts read generic files in /proc
+- Syncing with upstream rawhide selinux-policy up to:
+  * 5c9bff8fbdaeb41b724b68937c706dc5e42a490a
+
+-------------------------------------------------------------------
 Mon Jul 27 08:50:17 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
 
 - Update to version 20260727:
