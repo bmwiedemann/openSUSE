@@ -1,7 +1,7 @@
 #
 # spec file for package nss-pam-ldapd
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,7 @@ Source2:        nslcd.service
 Source100:      nss-pam-ldapd-rpmlintrc
 Patch0:         nss-pam-ldapd-c23.patch
 BuildRequires:  automake
+BuildRequires:  cyrus-sasl-devel
 BuildRequires:  krb5-devel
 BuildRequires:  openldap2-devel
 BuildRequires:  pam-devel

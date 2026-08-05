@@ -7,4 +7,12 @@
     <comment>Re-add recently dropped package</comment>
     <requestid>1347950</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>bb30a7fb1b48f994ba685a91cb8a21ff</srcmd5>
+    <version>0.9.13</version>
+    <time>1785944916</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1272826</comment>
+    <requestid>1369526</requestid>
+  </revision>
 </revisionlist>
