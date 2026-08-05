@@ -413,4 +413,12 @@ CVE-2026-7598 (boo#1263890)
 CVE-2025-15661 (boo#1268546) (forwarded request 1361138 from AndreasStieger)</comment>
     <requestid>1361144</requestid>
   </revision>
+  <revision rev="49" vrev="4">
+    <srcmd5>8bbc7cf95b6a9a97e21a57a558b0eb24</srcmd5>
+    <version>1.11.1</version>
+    <time>1785944806</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1369562</requestid>
+  </revision>
 </revisionlist>

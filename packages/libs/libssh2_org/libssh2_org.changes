@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Aug  4 08:13:35 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- Security fixes:
+  * CVE-2026-58050: Attacker controlled attribute count from a
+    publickey-subsystem response is used without bounds checking
+    and can cause to a heap buffer overflow in a connecting libssh2
+    client (bsc#1269568)
+  * CVE-2026-58051: Public key list is increased and does not
+    zero-initialized new entries, which can cause an uninitialized
+    pointer to be freed when a malformed response is sent by an SSH
+    server (bsc#1269567)
+  * Add patches
+    - libssh2-CVE-2026-58050.patch
+    - libssh2-CVE-2026-58051.patch
+
+-------------------------------------------------------------------
+Mon Aug  3 20:28:54 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- Security fixes:
+  * CVE-2026-66032: Arbitrary code execution via double-free in
+    SFTP session (bsc#1272737)
+  * CVE-2026-66033: Denial of Service via integer underflow in
+    AES-GCM cipher negotiation (bsc#1272736)
+  * CVE-2026-66034: Information disclosure and potential arbitrary
+    code execution via heap out-of-bounds read (bsc#1272735)
+  * CVE-2026-66035: Arbitrary code execution via heap buffer
+    overflow during SSH negotiation (bsc#1272734)
+  * Add patches:
+    - libssh2-CVE-2026-66032.patch
+    - libssh2-CVE-2026-66033.patch
+    - libssh2-CVE-2026-66034.patch
+    - libssh2-CVE-2026-66035.patch
+
+-------------------------------------------------------------------
 Mon Jun 22 10:12:39 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - CVE-2026-55199: pre-Authentication DoS via SSH_MSG_EXT_INFO
