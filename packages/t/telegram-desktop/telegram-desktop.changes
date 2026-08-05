@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Aug  4 22:34:01 UTC 2026 - Илья Индиго <ilya@ilya.top>
+
+- increased RAM to 24 GB.
+- Updated tg_owt to git20260725.
+  * Added openssl 4 support.
+  * Checked for GL/gl.h and EGL/egl.h instead of gl.pc and egl.pc.
+- Updated telegram-desktop to 7.0.8
+  * https://github.com/telegramdesktop/tdesktop/releases/tag/v7.0.8
+
+-------------------------------------------------------------------
 Sat Aug  1 04:15:48 UTC 2026 - Илья Индиго <ilya@ilya.top>
 
 - Updated telegram-desktop to 7.0.7

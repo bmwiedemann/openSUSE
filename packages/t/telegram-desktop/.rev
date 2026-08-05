@@ -1731,4 +1731,17 @@
   * https://github.com/telegramdesktop/tdesktop/releases/tag/v7.0.7</comment>
     <requestid>1368953</requestid>
   </revision>
+  <revision rev="164" vrev="1">
+    <srcmd5>6ecfd689aeca66a5f6b70fb72896d106</srcmd5>
+    <version>7.0.8</version>
+    <time>1785944996</time>
+    <user>dimstar_suse</user>
+    <comment>- increased RAM to 24 GB.
+- Updated tg_owt to git20260725.
+  * Added openssl 4 support.
+  * Checked for GL/gl.h and EGL/egl.h instead of gl.pc and egl.pc.
+- Updated telegram-desktop to 7.0.8
+  * https://github.com/telegramdesktop/tdesktop/releases/tag/v7.0.8</comment>
+    <requestid>1369608</requestid>
+  </revision>
 </revisionlist>

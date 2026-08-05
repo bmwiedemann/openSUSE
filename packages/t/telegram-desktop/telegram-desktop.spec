@@ -21,10 +21,10 @@
 %define api_id    611335
 %define api_hash  d524b414d21f4d37f08684c1df41ac9c
 %define ada_ver   4.0.0
-%define owt_ver   git20250512
+%define owt_ver   git20260725
 %define td_ver    git20260717
 Name:           telegram-desktop
-Version:        7.0.7
+Version:        7.0.8
 Release:        0
 Summary:        Messaging application with a focus on speed and security
 License:        GPL-3.0-only
@@ -45,7 +45,6 @@ BuildRequires:  libboost_program_options-devel
 BuildRequires:  libboost_regex-devel
 BuildRequires:  mold
 BuildRequires:  ninja
-BuildRequires:  noopenh264-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  qt6-shadertools
@@ -91,6 +90,7 @@ BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(libxxhash)
 BuildRequires:  pkgconfig(minizip)
 BuildRequires:  pkgconfig(openal)
+BuildRequires:  pkgconfig(openh264)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(opus)
 BuildRequires:  pkgconfig(protobuf)
