@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Aug  4 13:27:22 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Refresh javascript dependencies to update axios
+  (CVE-2026-67312, bsc#1273561)
+
+-------------------------------------------------------------------
+Sat Apr 11 20:08:23 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0.4:
+  * Debounce `isGit` queries #806 (@Carreau, @krassowski)
+  * Add binder config, drop pytest-tornado #807 (@Carreau,
+    @krassowski)
+  * Bump min Python to reflect CI + clean install instructions +
+    test up to 3.14 #802 (@Carreau, @krassowski)
+  * Support `next` as a version spec #798 (@jtpio, @krassowski)
+  * Cleanup unused mathjax components #779 (@bluestealth,
+    @Carreau, @krassowski)
+  * Use `serverSettings` for API requests #793 (@jtpio,
+    @krassowski)
+  * Update snapshots bot checkout and permission check #795
+  * Fix CI #794 (@jtpio, @krassowski)
+
+-------------------------------------------------------------------
 Fri Aug 29 10:32:13 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Refresh javascript dependencies to update tmp
@@ -24,7 +47,7 @@ Fri Feb 28 16:26:14 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 Thu Dec  5 16:33:30 UTC 2024 - Nico Krapp <nico.krapp@suse.com>
 
 - refresh node modules
-  * update cross-spawn module to 7.0.6 - CVE-2024-21538 (bsc#1233852) 
+  * update cross-spawn module to 7.0.6 - CVE-2024-21538 (bsc#1233852)
 
 -------------------------------------------------------------------
 Thu Sep  5 17:52:00 UTC 2024 - Ben Greiner <code@bnavigator.de>
@@ -141,7 +164,7 @@ Thu Feb  4 11:03:23 UTC 2021 - Ben Greiner <code@bnavigator.de>
 - Update to 2.1.0 / jupyterlab extension 2.0.1
   * Dropped Python 3.5 support.
   * Optimize comparison of large stream outputs.
-  * Fixed an error when merging a file that were concurrently added 
+  * Fixed an error when merging a file that were concurrently added
     in two branches with git.
   * Fixed a config bug where ignore configs written in a file was
     not taken into account.

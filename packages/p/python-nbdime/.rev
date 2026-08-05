@@ -241,4 +241,30 @@
   (CVE-2025-54798, bsc#1247788)</comment>
     <requestid>1301908</requestid>
   </revision>
+  <revision rev="24" vrev="24">
+    <srcmd5>593eab6504bcee6c99b486a8b33d9645</srcmd5>
+    <version>unknown</version>
+    <time>1785944930</time>
+    <user>dimstar_suse</user>
+    <comment>- Refresh javascript dependencies to update axios
+  (CVE-2026-67312, bsc#1273561)
+
+- update to 4.0.4:
+  * Debounce `isGit` queries #806 (@Carreau, @krassowski)
+  * Add binder config, drop pytest-tornado #807 (@Carreau,
+    @krassowski)
+  * Bump min Python to reflect CI + clean install instructions +
+    test up to 3.14 #802 (@Carreau, @krassowski)
+  * Support `next` as a version spec #798 (@jtpio, @krassowski)
+  * Cleanup unused mathjax components #779 (@bluestealth,
+    @Carreau, @krassowski)
+  * Use `serverSettings` for API requests #793 (@jtpio,
+    @krassowski)
+  * Update snapshots bot checkout and permission check #795
+  * Fix CI #794 (@jtpio, @krassowski)
+
+  * update cross-spawn module to 7.0.6 - CVE-2024-21538 (bsc#1233852)
+  * Fixed an error when merging a file that were concurrently added</comment>
+    <requestid>1369540</requestid>
+  </revision>
 </revisionlist>

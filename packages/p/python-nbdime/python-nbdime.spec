@@ -1,7 +1,7 @@
 #
 # spec file for package python-nbdime
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,11 +22,11 @@
 %bcond_with libalternatives
 %endif
 
-%define pyver 4.0.2
-%define labver 3.0.2
-%define jupver  7.0.2
+%define pyver 4.0.4
+%define labver 3.0.4
+%define jupver  7.0.4
 # always cut trailing .0
-%define pyverdist 4.0.2
+%define pyverdist 4.0.4
 %define mainbins nbdime nbshow nbdiff nbdiff-web nbmerge nbmerge-web
 %define gitbins  git-nbdifftool git-nbmergetool git-nbdiffdriver git-nbmergedriver
 %define hgbins   hg-nbdiff hg-nbdiffweb hg-nbmerge hg-nbmergeweb
@@ -52,7 +52,6 @@ BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module colorama}
 BuildRequires:  %{python_module hatch-jupyter-builder >= 0.5}
 BuildRequires:  %{python_module hatchling >= 1.5.0}
-BuildRequires:  %{python_module jupyter-server-mathjax >= 0.2.2}
 BuildRequires:  %{python_module jupyter-server}
 BuildRequires:  %{python_module nbformat}
 BuildRequires:  %{python_module pip}
@@ -66,10 +65,8 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module jupyter-server-test if %python-base >= 3.10}
 BuildRequires:  %{python_module jsonschema}
 BuildRequires:  %{python_module notebook if %python-base >= 3.10}
-BuildRequires:  %{python_module pytest >= 3.6}
-BuildRequires:  %{python_module pytest-mock}
+BuildRequires:  %{python_module pytest >= 6.0}
 BuildRequires:  %{python_module pytest-timeout}
-BuildRequires:  %{python_module pytest-tornado}
 # /SECTION
 Requires:       jupyter-nbdime = %{jupver}
 Requires:       python-GitPython >= 2.1.6
@@ -77,7 +74,6 @@ Requires:       python-Jinja2 >= 2.9
 Requires:       python-Pygments
 Requires:       python-colorama
 Requires:       python-jupyter-server
-Requires:       python-jupyter-server-mathjax >= 0.2.2
 Requires:       python-nbformat
 Requires:       python-requests
 Requires:       python-tornado
