@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Aug  4 10:39:19 UTC 2026 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to 4.2.13:
+  * flrig-i-o-segfault
+    + xmlrpc_rig faults on mingw builds when LSB type mode is selected
+    + actual bug is in waterfall reverse setting, only showed up when
+      a LSB type of mode was invoked at the xcvr or flrig.
+  * Special debug file, use if you need to trace method calls.
+  * Combo data string: check for trailing '|' character and erase
+    before processing multi entry string
+  * KISS I/O buffer: correct potential character array overflow
+
+-------------------------------------------------------------------
 Sun Jul 12 13:24:57 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 4.2.12:
