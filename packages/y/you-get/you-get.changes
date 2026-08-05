@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug  4 11:56:47 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Fixed installation path for fish completions
+
+-------------------------------------------------------------------
 Wed Jun 17 05:29:13 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Use pyproject macros to build and install the module.

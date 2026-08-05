@@ -16,6 +16,11 @@
 #
 
 
+%if 0%{?suse_version} <= 1600
+%define _fish_completions %{_datadir}/fish/completions
+%else
+%define _fish_completions %{_datadir}/fish/vendor_completions.d
+%endif
 Name:           you-get
 Version:        0.4.1743
 Release:        0
@@ -84,7 +89,7 @@ sed -i 's|^#!/usr/bin/env python3|#!%{_bindir}/python3|' you-get
 install -m0755 you-get %{buildroot}%{_bindir}
 %fdupes -s %{buildroot}%{python3_sitelib}
 install -Dm644 contrib/completion/you-get-completion.bash %{buildroot}%{_datadir}/bash-completion/completions/you-get
-install -Dm644 contrib/completion/you-get.fish %{buildroot}%{_datadir}/fish/completions/you-get.fish
+install -Dm644 contrib/completion/you-get.fish %{buildroot}%{_fish_completions}/you-get.fish
 install -Dm644 contrib/completion/_you-get %{buildroot}%{_datadir}/zsh/site-functions/_you-get
 
 %check
@@ -100,7 +105,7 @@ install -Dm644 contrib/completion/_you-get %{buildroot}%{_datadir}/zsh/site-func
 %{_datadir}/bash-completion/completions/you-get
 
 %files fish-completion
-%{_datadir}/fish/completions/you-get.fish
+%{_fish_completions}/you-get.fish
 
 %files zsh-completion
 %{_datadir}/zsh/site-functions/_you-get
