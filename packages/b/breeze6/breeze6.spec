@@ -108,10 +108,21 @@ Requires:       kconf_update6
 Provides:       breeze5-style = %{version}
 Obsoletes:      breeze5-style < %{version}
 Obsoletes:      breeze5-style-lang < %{version}
+%if %{with plasma5}
+Requires:       (breeze6-style-qt5 if libQt5Widgets5)
+%endif
 
 %description -n breeze6-style
 Artwork, styles and assets for the Breeze visual style for the Plasma Desktop.
-This package provides Breeze style, color-scheme and aditional assets.
+This package provides Breeze style for Qt 6, color-scheme and aditional assets.
+
+%package -n breeze6-style-qt5
+Summary:        Plasma Desktop artwork, styles and assets
+Requires:       breeze6-style = %{version}
+
+%description -n breeze6-style-qt5
+Artwork, styles and assets for the Breeze visual style for the Plasma Desktop.
+This package provides Breeze style for Qt 5, color-scheme and aditional assets.
 
 %package -n breeze6-wallpapers
 Summary:        Plasma Desktop artwork, styles and assets
@@ -130,13 +141,6 @@ Obsoletes:      breeze5-decoration < %{version}
 %description -n breeze6-decoration
 Artwork, styles and assets for the Breeze visual style for the Plasma Desktop.
 This package provides Breeze KWin decoration.
-
-
-
-
-
-
-
 
 # NOTE: The CMake files were split from breeze*-style and don't require anything on purpose.
 # Otherwise, BuildRequires: cmake(Breeze) would pull some Qt5 and KF5 packages.
@@ -195,10 +199,6 @@ mv %{buildroot}%{_kf6_applicationsdir}/kcm_breezedecoration.desktop %{buildroot}
 %dir %{_kf6_plugindir}/kstyle_config
 %{_kf6_plugindir}/kstyle_config/breezestyleconfig.so
 %dir %{_kf6_plugindir}/styles
-%if %{with plasma5}
-%dir %{_kf5_plugindir}/styles
-%{_kf5_plugindir}/styles/breeze5.so
-%endif
 %{_kf6_plugindir}/styles/breeze6.so
 %dir %{_kf6_sharedir}/QtCurve
 %{_kf6_sharedir}/QtCurve/Breeze.qtcurve
@@ -209,6 +209,13 @@ mv %{buildroot}%{_kf6_applicationsdir}/kcm_breezedecoration.desktop %{buildroot}
 %dir %{_kf6_sharedir}/kstyle
 %dir %{_kf6_sharedir}/kstyle/themes
 %{_kf6_sharedir}/kstyle/themes/breeze.themerc
+
+%if %{with plasma5}
+%files -n breeze6-style-qt5
+%license LICENSES/*
+%dir %{_kf5_plugindir}/styles
+%{_kf5_plugindir}/styles/breeze5.so
+%endif
 
 %files -n breeze6-wallpapers
 %license LICENSES/*
