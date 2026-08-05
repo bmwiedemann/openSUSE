@@ -71,6 +71,7 @@ touch tests/__init__.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+export PYTHONDONTWRITEBYTECODE=1
 %{python_expand  #
 export PYTHONPATH=%{buildroot}%{$python_sitelib}
 $python -m pytest -v tests/unit

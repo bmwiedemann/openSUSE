@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug  4 09:16:10 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Set PYTHONDONTWRITEBYTECODE during tests to avoid variations
+  in build results from %check (boo#1227364)
+
+-------------------------------------------------------------------
 Wed Jul  8 13:44:01 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Update test requirements in spec file from pyproject.toml.
