@@ -214,4 +214,12 @@ update descriptions and categories</comment>
 - Regenerate built-in PSL and test DAFSA files from the system publicsuffix at build time (fixes test-is-public-all on version skew)</comment>
     <requestid>1365225</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>b86e6d7df0527bc823f0fdcd4f4a9d5c</srcmd5>
+    <version>0.23.1</version>
+    <time>1785944872</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.23.1: fixes the reproducible-builds regression from 0.23.0</comment>
+    <requestid>1369050</requestid>
+  </revision>
 </revisionlist>

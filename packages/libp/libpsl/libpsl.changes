@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Aug  2 05:42:21 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.23.1:
+  * Fix reproducible builds, a regression introduced in 0.23.0
+  * psl-make-dafsa embeds only the basename of the input file
+  * Allow explicitly disabling fuzzing at configure time
+
+-------------------------------------------------------------------
 Mon Jul 13 06:14:36 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.23.0:
