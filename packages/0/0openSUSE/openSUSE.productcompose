@@ -81,6 +81,7 @@ packagesets:
   - yast2-trans-ms
   - yast2-trans-my
   - yast2-trans-tk
+  - baseiso-agama-installer-openSUSE
 
 # our main entry
 - add:
