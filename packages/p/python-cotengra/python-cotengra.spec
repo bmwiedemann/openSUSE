@@ -17,7 +17,7 @@
 
 
 Name:           python-cotengra
-Version:        0.8.1
+Version:        0.8.2
 Release:        0
 Summary:        Hyper optimized contraction trees for large tensor networks and einsums
 License:        Apache-2.0
