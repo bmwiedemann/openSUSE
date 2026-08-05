@@ -19,7 +19,7 @@
 
 %{?sle15allpythons}
 Name:           python-discid
-Version:        1.4.0
+Version:        1.4.2
 Release:        0
 Summary:        Python binding of Libdiscid
 License:        LGPL-3.0-or-later

@@ -91,4 +91,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1344801</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3307e6f44d50c6ff280ccd1dbd82e8ba</srcmd5>
+    <version>1.4.2</version>
+    <time>1785944962</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.4.2:
+  * Provide Python wheel on PyPI.
+  * Removed remaining Python 2 specific code from util.py.
+  * Mark package as typed by adding a py.typed marker file.
+  * Added type hints to the public API for better IDE support and
+    type checking.
+  * Added :attr:`Disc.pregap` property.
+  * Fixed: mutable default arguments in function signatures.
+  * Accept any Sequence[int] for offsets in :func:`put`.
+  * Removed Python 2 specific code and comments.
+  * Improved code consistency with ruff formatting and linting.
+  * Minimum supported Python version is now 3.10 (previously
+    3.9).
+  * Enhanced documentation with type hints using sphinx-autodoc-
+    typehints.
+  * Fixed typos and broken links in documentation.
+  * Modernized, PEP 518 compatible, build system using
+    pyproject.toml.
+  * Minimum supported Python version is now 3.9.
+  * :issue:`51` tests requiring a physical disc are not run by
+    default anymore. Set the environment variable
+    PYTHON_DISCID_TEST_DEVICE to enable them or run make
+    disccheck.
+  * Fixed :func:`put` to work with first track number greater
+    than 1.
+  * Add :attr:`Disc.cddb_query_string` property.
+  * improve install with pip
+  * add Makefile
+  * workaround :issue:`43` for py2app problems
+  * :issue:`41` improve windows example</comment>
+    <requestid>1369589</requestid>
+  </revision>
 </revisionlist>
