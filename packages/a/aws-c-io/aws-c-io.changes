@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug  4 08:58:04 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.27.5
+  * log the negotiated TLS version by @azkrishpy in (#815)
+  * Expose option to set TCP_NODELAY on sockets by @DmitriyMusatkin in (#816)
+- from version 0.27.4
+  * Handle optional s2n-tls in the install CMake config by @sfod in (#814)
+
+-------------------------------------------------------------------
 Fri Jul 10 07:33:59 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.27.3
