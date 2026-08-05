@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Aug  5 03:13:23 UTC 2026 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.8.4:
+  * Fix one dialog for unmounting repositories opens per quit action.
+  * Fix orphaned browsing states are ignored instead of deleted.
+  * Fix questions being suppressed when running from UI.
+  * Fix repository configurations can be deleted while browsing 
+    or active operations.
+  * Change to no longer using deprecated CSS features.
+
+-------------------------------------------------------------------
 Wed Jun 24 03:17:03 UTC 2026 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 0.8.3:
