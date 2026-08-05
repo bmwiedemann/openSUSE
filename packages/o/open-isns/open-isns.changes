@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 28 18:17:34 UTC 2026 - Lee Duncan <lduncan@suse.com>
+
+- Update to version 0.103+4.60de8b5:
+  * Fix issue in error path causing double-free.
+    Fixes issue CVE-2026-55995 bsc#1268685
+
+-------------------------------------------------------------------
 Wed Jan 22 16:02:04 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop rcFOO symlinks for CODE16 (PED-266).
@@ -281,5 +288,3 @@ Tue Dec  8 17:10:52 UTC 2015 - lduncan@suse.com
 
 - Initial creation of Build Service project, using version
   0.95 of open-isns from github.com/gonzoleeman/open-isns
-
--------------------------------------------------------------------

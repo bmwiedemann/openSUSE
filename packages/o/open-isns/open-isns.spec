@@ -1,7 +1,7 @@
 #
 # spec file for package open-isns
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@ Name:           open-isns
 Summary:        Partial Implementation of iSNS iSCSI registration
 License:        LGPL-2.1-or-later
 Group:          System/Kernel
-Version:        0.103+2.296d533bd52a
+Version:        0.103+4.60de8b5
 Release:        0
 Source:         %{name}-%{version}.tar.xz
 URL:            https://github.com/open-iscsi/%{name}
