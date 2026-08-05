@@ -16,7 +16,10 @@
 #
 
 
-# Stateful hypervisor drivers that run in daemons
+# The monolithic libvirtd
+%define with_libvirtd      0%{!?_without_libvirtd:1}
+
+# The hypervisor drivers that run in monolithic libvirtd, or a modular daemon
 %define with_qemu          0%{!?_without_qemu:1}
 %define with_lxc           0%{!?_without_lxc:1}
 %define with_libxl         0%{!?_without_libxl:1}
@@ -152,12 +155,16 @@
 
 Name:           libvirt
 URL:            https://libvirt.org/
-Version:        12.5.0
+Version:        12.6.0
 Release:        0
 Summary:        Library providing a virtualization API
 License:        LGPL-2.1-or-later
 
+%if %{with_libvirtd}
 Requires:       %{name}-daemon = %{version}-%{release}
+%else
+Obsoletes:      %{name}-daemon < %{version}-%{release}
+%endif
 Requires:       %{name}-daemon-config-network = %{version}-%{release}
 %if %{with_nwfilter}
 Requires:       %{name}-daemon-config-nwfilter = %{version}-%{release}
@@ -852,6 +859,11 @@ Allows SSH into domains via VSOCK without need for network.
 %autosetup -p1
 
 %build
+%if %{with_libvirtd}
+    %define arg_libvirtd -Dlibvirtd=enabled
+%else
+    %define arg_libvirtd -Dlibvirtd=disabled
+%endif
 %if %{with_qemu}
     %define arg_qemu -Ddriver_qemu=enabled
 %else
@@ -1022,6 +1034,7 @@ Allows SSH into domains via VSOCK without need for network.
            -Dsasl=enabled \
            -Dpolkit=enabled \
            -Ddriver_libvirtd=enabled \
+           %{?arg_libvirtd} \
            -Ddriver_remote=enabled \
            -Ddriver_test=enabled \
            %{?arg_esx} \
@@ -1445,6 +1458,7 @@ fi
 
 %files
 
+%if %{with_libvirtd}
 %files daemon
 %{_sbindir}/libvirtd
 %{_unitdir}/libvirtd.service
@@ -1464,6 +1478,7 @@ fi
 %{_datadir}/augeas/lenses/libvirtd.aug
 %{_datadir}/augeas/lenses/tests/test_libvirtd.aug
 %doc %{_mandir}/man8/libvirtd.8*
+%endif
 
 %files daemon-common
 %dir %{_libdir}/%{name}

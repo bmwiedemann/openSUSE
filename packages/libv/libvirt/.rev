@@ -5117,4 +5117,20 @@ https://build.opensuse.org/requests/1354518
     https://libvirt.org/news.html#v12-5-0-2026-07-01</comment>
     <requestid>1363067</requestid>
   </revision>
+  <revision rev="445" vrev="1">
+    <srcmd5>5747332fa2977004154879fefc6f46cd</srcmd5>
+    <version>12.6.0</version>
+    <time>1785944863</time>
+    <user>dimstar_suse</user>
+    <comment>- virsh: Fix potential NULL pointer dereference crash
+  bsc#1272852
+
+- Update to libvirt 12.6.0
+  - CVE-2026-15268, CVE-2026-61477, CVE-2026-61478, CVE-2026-63622,
+    CVE-2026-63623
+  - jsc#PED-14588
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v12-6-0-2026-08-03</comment>
+    <requestid>1369584</requestid>
+  </revision>
 </revisionlist>

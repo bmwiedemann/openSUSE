@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Aug  4 20:34:28 UTC 2026 - James Fehlig <jfehlig@suse.com>
+
+- virsh: Fix potential NULL pointer dereference crash
+  bsc#1272852
+
+-------------------------------------------------------------------
+Mon Aug  3 17:23:07 UTC 2026 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 12.6.0
+  - CVE-2026-15268, CVE-2026-61477, CVE-2026-61478, CVE-2026-63622,
+    CVE-2026-63623
+  - jsc#PED-14588
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v12-6-0-2026-08-03
+
+-------------------------------------------------------------------
 Wed Jul  1 20:24:14 UTC 2026 - James Fehlig <jfehlig@suse.com>
 
 - Update to libvirt 12.5.0
