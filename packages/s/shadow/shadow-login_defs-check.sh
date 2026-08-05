@@ -208,6 +208,10 @@ function falsematch() {
 	ISSUE_FILE ) return 0 ;;
 # PREVENT_NO_AUTH us used only by login.c and su.c that are deleted in the spec.
 	PREVENT_NO_AUTH ) return 0 ;;
+# Deprecated and removed upstream in 4.20.0
+	PASS_MAX_DAYS | PASS_MIN_LEN | PASS_WARN_AGE ) return 0 ;;
+# Unused due to PAM handling
+	OBSCURE_CHECKS_ENAB | PASS_ALWAYS_WARN | PASS_CHANGE_TRIES ) return 0 ;;
 	* ) return 1 ;;
 	esac
 }

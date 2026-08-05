@@ -22,7 +22,7 @@
   %define no_config 1
 %endif
 Name:           shadow
-Version:        4.19.4
+Version:        4.20.0
 Release:        0
 Summary:        Utilities to Manage User and Group Accounts
 License:        BSD-3-Clause AND GPL-2.0-or-later
@@ -50,6 +50,8 @@ Patch3:         shadow-login_defs-comments.patch
 Patch4:         shadow-login_defs-suse.patch
 # PATCH-FIX-SUSE disable_new_audit_function.patch adam.majer@suse.de -- Disable newer libaudit functionality for older distributions.
 Patch5:         disable_new_audit_function.patch
+# PATCH-FIX-UPSTREAM shadow-4.20-stdint.patch mvetter@suse.com -- gh/shadow-maint/shadow#1699
+Patch6:         shadow-4.20-stdint.patch
 BuildRequires:  audit-devel > 2.3
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -99,20 +101,20 @@ BuildArch:      noarch
 This package contains the default login.defs configuration file
 as used by util-linux, pam and shadow.
 
-%package -n libsubid5
+%package -n libsubid6
 Summary:        A library to manage subordinate uid and gid ranges
 Group:          System/Base
 
-%description -n libsubid5
+%description -n libsubid6
 Utility library that provides a way to manage subid ranges.
 
 %package -n libsubid-devel
-Summary:        Development files for libsubid5
+Summary:        Development files for libsubid6
 Group:          System/Base
-Requires:       libsubid5 = %{version}
+Requires:       libsubid6 = %{version}
 
 %description -n libsubid-devel
-Development files for libsubid5.
+Development files for libsubid6.
 
 %package pw-mgmt
 Summary:        Tools to manage user account data
@@ -122,7 +124,7 @@ Requires(pre):  permissions
 
 %description pw-mgmt
 This sub-package contains utilities to manage user account
-information like chage, chfn, chsh, expiry and passwd. This
+information like chage, chfn, chsh and passwd. This
 binaries all need setuid rights to work correct.
 
 %prep
@@ -135,6 +137,7 @@ binaries all need setuid rights to work correct.
 %if 0%{?suse_version} < 1330
 %patch -P 5 -p1
 %endif
+%patch -P 6 -p1
 
 iconv -c -f ISO88591 -t utf-8 doc/HOWTO > doc/HOWTO.utf8
 mv -v doc/HOWTO.utf8 doc/HOWTO
@@ -186,11 +189,6 @@ rm %{buildroot}/%{_sbindir}/grpunconv
 rm %{buildroot}/%{_mandir}/man8/grpunconv.*
 rm %{buildroot}/%{_mandir}/*/man8/grpunconv.*
 
-rm %{buildroot}/%{_sbindir}/groupmems
-rm %{buildroot}/%{_mandir}/man8/groupmems.*
-rm %{buildroot}/%{_mandir}/*/man8/groupmems.*
-rm %{buildroot}%{_sysconfdir}/pam.d/groupmems
-
 rm %{buildroot}/%{_bindir}/login
 rm %{buildroot}/%{_mandir}/man1/login.*
 rm %{buildroot}/%{_mandir}/*/man1/login.*
@@ -207,9 +205,6 @@ rm %{buildroot}/%{_mandir}/*/man5/faillog.*
 rm %{buildroot}/%{_mandir}/man8/faillog.*
 rm %{buildroot}/%{_mandir}/*/man8/faillog.*
 
-rm %{buildroot}/%{_sbindir}/logoutd
-rm %{buildroot}/%{_mandir}/man8/logoutd.*
-rm %{buildroot}/%{_mandir}/*/man8/logoutd.*
 rm %{buildroot}/%{_sbindir}/nologin
 rm %{buildroot}/%{_mandir}/man8/nologin.*
 rm %{buildroot}/%{_mandir}/*/man8/nologin.*
@@ -257,7 +252,6 @@ test -f %{_sysconfdir}/login.defs.rpmsave && mv -v %{_sysconfdir}/login.defs.rpm
 %set_permissions %{_bindir}/chage
 %set_permissions %{_bindir}/chfn
 %set_permissions %{_bindir}/chsh
-%set_permissions %{_bindir}/expiry
 %set_permissions %{_bindir}/newgidmap
 %set_permissions %{_bindir}/newuidmap
 %set_permissions %{_bindir}/passwd
@@ -272,7 +266,6 @@ test -f %{_sysconfdir}/login.defs.rpmsave && mv -v %{_sysconfdir}/login.defs.rpm
 %verify_permissions %{_bindir}/chage
 %verify_permissions %{_bindir}/chfn
 %verify_permissions %{_bindir}/chsh
-%verify_permissions %{_bindir}/expiry
 %verify_permissions %{_bindir}/newgrp
 %verify_permissions %{_bindir}/newgidmap
 %verify_permissions %{_bindir}/newuidmap
@@ -298,8 +291,8 @@ done
 # - Migration to /usr/etc (after SLE15 and Leap 15)
 test -f %{_sysconfdir}/login.defs.rpmsave && mv -v %{_sysconfdir}/login.defs.rpmsave %{_sysconfdir}/login.defs ||:
 
-%post -n libsubid5 -p /sbin/ldconfig
-%postun -n libsubid5 -p /sbin/ldconfig
+%post -n libsubid6 -p /sbin/ldconfig
+%postun -n libsubid6 -p /sbin/ldconfig
 
 %files -f shadow.lang
 %license COPYING
@@ -370,7 +363,6 @@ test -f %{_sysconfdir}/login.defs.rpmsave && mv -v %{_sysconfdir}/login.defs.rpm
 %verify(not mode) %attr(2755,root,shadow) %{_bindir}/chage
 %verify(not mode) %attr(4755,root,shadow) %{_bindir}/chfn
 %verify(not mode) %attr(4755,root,shadow) %{_bindir}/chsh
-%verify(not mode) %attr(4755,root,shadow) %{_bindir}/expiry
 %verify(not mode caps) %attr(0755,root,root) %{_bindir}/newgidmap
 %verify(not mode caps) %attr(0755,root,root) %{_bindir}/newuidmap
 %verify(not mode) %attr(4755,root,shadow) %{_bindir}/passwd
@@ -379,7 +371,6 @@ test -f %{_sysconfdir}/login.defs.rpmsave && mv -v %{_sysconfdir}/login.defs.rpm
 %{_mandir}/man1/chage.1%{?ext_man}
 %{_mandir}/man1/chfn.1%{?ext_man}
 %{_mandir}/man1/chsh.1%{?ext_man}
-%{_mandir}/man1/expiry.1%{?ext_man}
 %{_mandir}/man1/newgidmap.1%{?ext_man}
 %{_mandir}/man1/newuidmap.1%{?ext_man}
 %{_mandir}/man1/passwd.1%{?ext_man}
@@ -393,7 +384,7 @@ test -f %{_sysconfdir}/login.defs.rpmsave && mv -v %{_sysconfdir}/login.defs.rpm
 %endif
 %{_mandir}/man5/login.defs.5%{?ext_man}
 
-%files -n libsubid5
+%files -n libsubid6
 %{_libdir}/libsubid.so.*
 
 %files -n libsubid-devel

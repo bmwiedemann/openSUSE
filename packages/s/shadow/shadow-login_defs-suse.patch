@@ -75,8 +75,8 @@ Index: etc/login.defs
 +HOME_MODE	0700
  
  #
- # Password aging controls:
-@@ -157,8 +160,8 @@ PASS_WARN_AGE	7
+ # Min/max values for automatic uid selection in useradd(8)
+@@ -146,8 +149,8 @@ UMASK		022
  UID_MIN			 1000
  UID_MAX			60000
  # System accounts
@@ -87,7 +87,7 @@ Index: etc/login.defs
  # Extra per user uids
  SUB_UID_MIN		   100000
  SUB_UID_MAX		600100000
-@@ -175,8 +178,8 @@ SUB_UID_COUNT		    65536
+@@ -199,8 +202,8 @@ SUB_UID_COUNT		    65536
  GID_MIN			 1000
  GID_MAX			60000
  # System accounts
@@ -98,7 +98,7 @@ Index: etc/login.defs
  # Extra per user group ids
  SUB_GID_MIN		   100000
  SUB_GID_MAX		600100000
-@@ -185,7 +188,7 @@ SUB_GID_COUNT		    65536
+@@ -244,7 +247,7 @@ SUB_GID_COUNT		    65536
  #
  # Max number of login(1) retries if password is bad
  #
@@ -107,37 +107,16 @@ Index: etc/login.defs
  
  #
  # Tell login to only re-prompt for the password if authentication
-@@ -207,20 +210,6 @@ LOGIN_TIMEOUT		60
- CHFN_RESTRICT		rwh
- 
- #
--# If set to "yes", new passwords will be encrypted using the MD5-based
--# algorithm compatible with the one used by recent releases of FreeBSD.
--# It supports passwords of unlimited length and longer salt strings.
--# Set to "no" if you need to copy encrypted passwords to other systems
--# which don't understand the new algorithm.  Default is "no".
--#
--# Note: if you use PAM, it is recommended to use a value consistent with
--# the PAM modules configuration.
--#
--# This variable is deprecated. You should use ENCRYPT_METHOD instead.
--#
--#MD5_CRYPT_ENAB	no
--
--#
- # If set to MD5, MD5-based algorithm will be used for encrypting password
- # If set to SHA256, SHA256-based algorithm will be used for encrypting password
- # If set to SHA512, SHA512-based algorithm will be used for encrypting password
-@@ -233,7 +222,7 @@ CHFN_RESTRICT		rwh
+@@ -274,7 +277,7 @@ CHFN_RESTRICT		rwh
  # Note: if you use PAM, it is recommended to use a value consistent with
  # the PAM modules configuration.
  #
--#ENCRYPT_METHOD DES
+-#ENCRYPT_METHOD SHA512
 +ENCRYPT_METHOD SHA512
  
  #
  # Only works if ENCRYPT_METHOD is set to SHA256 or SHA512.
-@@ -299,7 +288,7 @@ USERGROUPS_ENAB yes
+@@ -340,7 +343,7 @@ USERGROUPS_ENAB yes
  # This option is overridden with the -M or -m flags on the useradd(8)
  # command-line.
  #

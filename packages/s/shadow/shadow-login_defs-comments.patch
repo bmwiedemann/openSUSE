@@ -30,7 +30,7 @@ Index: etc/login.defs
  ALWAYS_SET_PATH	no
  
  #
-@@ -148,6 +149,11 @@ PASS_WARN_AGE	7
+@@ -137,6 +138,11 @@ UMASK		022
  #
  # Min/max values for automatic uid selection in useradd(8)
  #
@@ -42,7 +42,7 @@ Index: etc/login.defs
  UID_MIN			 1000
  UID_MAX			60000
  # System accounts
-@@ -161,6 +167,11 @@ SUB_UID_COUNT		    65536
+@@ -185,6 +191,11 @@ SUB_UID_COUNT		    65536
  #
  # Min/max values for automatic gid selection in groupadd(8)
  #
@@ -54,19 +54,11 @@ Index: etc/login.defs
  GID_MIN			 1000
  GID_MAX			60000
  # System accounts
-@@ -196,7 +207,6 @@ LOGIN_TIMEOUT		60
+@@ -255,7 +266,6 @@ LOGIN_TIMEOUT		60
  CHFN_RESTRICT		rwh
  
  #
--# Only works if compiled with MD5_CRYPT defined:
- # If set to "yes", new passwords will be encrypted using the MD5-based
- # algorithm compatible with the one used by recent releases of FreeBSD.
- # It supports passwords of unlimited length and longer salt strings.
-@@ -211,7 +221,6 @@ CHFN_RESTRICT		rwh
- #MD5_CRYPT_ENAB	no
- 
- #
 -# Only works if compiled with ENCRYPTMETHOD_SELECT defined:
- # If set to MD5, MD5-based algorithm will be used for encrypting password
  # If set to SHA256, SHA256-based algorithm will be used for encrypting password
  # If set to SHA512, SHA512-based algorithm will be used for encrypting password
+ # If set to BCRYPT, BCRYPT-based algorithm will be used for encrypting password

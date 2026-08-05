@@ -1394,4 +1394,41 @@
     <comment></comment>
     <requestid>1350938</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>531213dbd75907578d114c89d68ba609</srcmd5>
+    <version>4.20.0</version>
+    <time>1785944757</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.20.0:
+  * Removals:
+    The following programs and features were deprecated in 4.19
+    or earlier, and have been removed in 4.20.
+    + expiry(1) (deprecated in 4.19). See #1481 and #1432.
+    + login.defs(5): ENCRYPT_METHOD: DES (deprecated in 4.19). See #1456.
+    + login.defs(5): ENCRYPT_METHOD: MD5 (deprecated in 4.19). See #1457.
+    + login.defs(5): MD5_CRPYT_ENAB (deprecated since the dinosaurs were around). See #1455.
+    + shadow(5): .sp_min (deprecated in 4.19). See #1482.
+      This also includes the following removals:
+      - chage(1): -m,--mindays (also the interactive version)
+      - passwd(1): -n,--mindays
+      - login.defs(5): PASS_MIN_DAYS
+      This feature is considered a vulnerability, and was removed without replacement.
+      Programs will now fail when any of those flags or variable are specified.
+      This is intentional, and should help identify any scripts that rely on
+      these.
+    + groupmems(8) (deprecated in 4.19). See #1343 and #1601. Use usermod(8) instead.
+    + logoutd(8) (deprecated in 4.19). See #999 and #1344.
+  * Defaults:
+    The following default values were changed.
+    + login.defs(5): Remove defaults for password expiration (PASS_MAX_DAYS, PASS_WARN_AGE). See #1428.
+    + login.defs(5): ENCRYPT_METHOD: Default to SHA512 (previously, it was DES). See #1278 and #1454.
+      Users should still explicitly specify it, since other programs that read login.defs(5) may still default to DES.
+  * Features:
+    The following features that were optional in 4.19 are now unconditionally supported in 4.20.
+    + SHA256, SHA512 See #1278 and #1452.
+  * Regressions:
+    Some regressions have been introduced (as side effects of bug fixes) and they're here to stay. Users must adapt.
+    + `su - &lt;USERNAME&gt;` as root brings inappropriate ioctl for device #1704</comment>
+    <requestid>1369407</requestid>
+  </revision>
 </revisionlist>

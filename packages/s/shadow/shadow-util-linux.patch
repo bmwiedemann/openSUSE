@@ -109,7 +109,7 @@ Index: etc/login.defs
  # Default initial "umask" value used by login(1) on non-PAM enabled systems.
  # Default "umask" value for pam_umask(8) on PAM enabled systems.
  # UMASK is also used by useradd(8) and newusers(8) to set the mode for new
-@@ -163,6 +177,12 @@ SUB_GID_COUNT		    65536
+@@ -222,6 +236,12 @@ SUB_GID_COUNT		    65536
  LOGIN_RETRIES		5
  
  #
@@ -122,7 +122,7 @@ Index: etc/login.defs
  # Max time in seconds for login(1)
  #
  LOGIN_TIMEOUT		60
-@@ -285,14 +305,6 @@ USERGROUPS_ENAB yes
+@@ -325,14 +345,6 @@ USERGROUPS_ENAB yes
  #GRANT_AUX_GROUP_SUBIDS yes
  
  #
@@ -137,7 +137,7 @@ Index: etc/login.defs
  # Select the HMAC cryptography algorithm.
  # Used in pam_timestamp module to calculate the keyed-hash message
  # authentication code.
-@@ -301,3 +313,19 @@ PREVENT_NO_AUTH superuser
+@@ -341,3 +353,19 @@ PREVENT_NO_AUTH superuser
  # that are available in your system.
  #
  #HMAC_CRYPTO_ALGO SHA512
@@ -157,15 +157,3 @@ Index: etc/login.defs
 +#
 +#LOGIN_SHELL_FALLBACK no
 +
-Index: lib/getdef.c
-===================================================================
---- lib/getdef.c.orig
-+++ lib/getdef.c
-@@ -79,6 +79,7 @@ struct itemdef {
- 	{"LOGIN_ENV_SAFELIST", NULL},		\
- 	{"LOGIN_KEEP_USERNAME", NULL},		\
- 	{"LOGIN_PLAIN_PROMPT", NULL},		\
-+	{"LOGIN_SHELL_FALLBACK", NULL},		\
- 	{"MOTD_FIRSTONLY", NULL},		\
- 
- 
