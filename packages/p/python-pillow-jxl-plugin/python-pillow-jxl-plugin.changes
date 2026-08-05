@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Tue Aug  4 14:42:52 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- remove puccinialin dependency, as it was only needed because
+  cargo was missing in the build env
+
+-------------------------------------------------------------------
+Sun Mar  1 13:07:56 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Initial packaging

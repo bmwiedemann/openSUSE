@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<services>
+  <service name="download_files" mode="manual" />
+  <service name="cargo_vendor" mode="manual">
+    <param name="src">python-pillow-jxl-plugin-*.tar.gz</param>
+    <param name="compression">gz</param>
+  </service>
+</services>
