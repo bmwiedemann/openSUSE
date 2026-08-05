@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug  5 01:35:17 UTC 2026 - Michael Hamilton <michael@actrix.gen.nz>
+
+- Version 2.6.8
+  * Fix Qt session restoration state - set executable to be wrapper-script.
+  * Fix gnome QTextBrowser external http link following.
+  * Remove current working directory from python path (prevent accidental imports).
+
+-------------------------------------------------------------------
 Sun Aug  2 22:38:30 UTC 2026 - Michael Hamilton <michael@actrix.gen.nz>
 
 - Version 2.6.7
