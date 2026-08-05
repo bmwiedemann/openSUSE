@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-mgmt-mysqlflexibleservers
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%define realversion 1.1.0b2
+%define realversion 1.1.0b3
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-mysqlflexibleservers
-Version:        1.1.0~b2
+Version:        1.1.0~b3
 Release:        0
 Summary:        Microsoft Azure Mysqlflexibleservers Management Client Library for Python
 License:        MIT

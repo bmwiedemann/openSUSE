@@ -42,4 +42,15 @@
 - Update Requires from pyproject.toml (forwarded request 1327027 from glaubitz)</comment>
     <requestid>1327037</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ab6ba07b60678306e79bb419c1601c72</srcmd5>
+    <version>1.1.0~b3</version>
+    <time>1785944928</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.1.0b3
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1369532 from glaubitz)</comment>
+    <requestid>1369546</requestid>
+  </revision>
 </revisionlist>
