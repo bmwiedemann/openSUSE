@@ -17,7 +17,7 @@
 
 
 Name:           python-altcha
-Version:        2.0.2
+Version:        2.1.0
 Release:        0
 Summary:        A library for creating and verifying challenges for ALTCHA
 License:        MIT
@@ -32,8 +32,9 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-The ALTCHA Python Library is a lightweight, zero-dependency library designed for creating and verifying
-[ALTCHA](https://altcha.org) challenges, specifically tailored for Python applications.
+The ALTCHA Python Library is a lightweight, zero-dependency library designed
+for creating and verifying [ALTCHA](https://altcha.org) challenges,
+specifically tailored for Python applications.
 
 %prep
 %autosetup -p1 -n altcha-%{version}

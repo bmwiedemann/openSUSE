@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug  4 22:10:18 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.0:
+  * feat: verify_server function for remote server verification
+  * fix: enforce key_prefix in PoW v2 fallback verification
+
+-------------------------------------------------------------------
 Mon Jun 29 20:33:23 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.2:

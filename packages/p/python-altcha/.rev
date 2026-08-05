@@ -61,4 +61,14 @@
   * feat: payload.from_base64 and from_dict</comment>
     <requestid>1362529</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f349f6d64bae7a84713d80cead574b6c</srcmd5>
+    <version>2.1.0</version>
+    <time>1785944980</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.1.0:
+  * feat: verify_server function for remote server verification
+  * fix: enforce key_prefix in PoW v2 fallback verification</comment>
+    <requestid>1369601</requestid>
+  </revision>
 </revisionlist>
