@@ -1,7 +1,7 @@
 product_compose_schema: 0.2
 
-vendor: opensuse
-name: opensuse
+vendor: openSUSE
+name: openSUSE
 version_from_package: openSUSE-release
 product-type: base
 summary: openSUSE Tumbleweed
