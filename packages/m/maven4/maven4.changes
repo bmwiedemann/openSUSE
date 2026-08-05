@@ -1,4 +1,158 @@
 -------------------------------------------------------------------
+Tue Aug  4 05:12:02 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 4.0.0-rc-6
+  * New features and improvements
+    + Backport the use of hardlink instead of file copy
+    + Accept Java module names as attached artifactId even if they
+      differ from the project's artifactId
+    + Add module-aware resource handling for modular sources
+    + MNG-8507: Reduce allocation pressure in model building
+      pipeline
+    + Fix #12530: add mvnup upgrade strategies for Maven 4 known
+      compatibility issues
+    + Introduce validation control
+    + Backport #12505: mvnup: widen exact Maven version pins to
+      allow Maven 4
+    + MNG-5913:  Allow defining aliases for existing server
+      configurations in settings.xml
+    + Backport #12454: mvnup upgrade strategies and compatibility
+      improvements
+    + In failed build limit reactor summary to only failed modules
+    + Add mvnup SourceStrategy for migrating to <source> elements
+    + Add jaxb2-maven-plugin to mvnup plugin upgrade list
+    + Switch default resolver transport from JDK/methanol to Apache
+      HttpClient
+    + Pull out maven-executor into its own project
+    + Add maven-surefire-report-plugin to PluginUpgradeStrategy
+    + Fix #12087: add surefire and failsafe plugins to
+      PluginUpgradeStrategy
+    + Promote java version in JavaToolchain
+    + Add time zone to Maven startup banner
+    + Update formatting of prerequisites-requirements error to
+      improve readability
+  * Bug Fixes
+    + Remove an optimization on PathSelector producing false
+      negatives
+    + Remove erroneous path normalization optimization + regression
+      test
+    + Fix #12583: Inverted file existence check in
+      DefaultTransport.put()
+    + MNG-8507: mvnup: skip dedup inside plugin <configuration>
+      elements
+    + Fix BOM consumer POM leaving property references unresolved
+    + MNG-8425: Fix mvnenc init saving invalid master source
+      configuration
+    + Consumer POM of multi-module project should exclude <build>
+      and <dependencies> elements
+    + Fix #12045: fix mvnup plugin upgrade strategy for inherited
+      plugins from remote parent POMs
+    + Handle Ctrl+C on Windows terminals
+    + Fix #12531: filter NO_REPOSITORY sentinel from mapped
+      exceptions in ArtifactResolverResult
+    + Fix #12534: Wire up @After annotation processing in Maven core
+    + Fix #12427: Reject path-traversal segments in coordinate ids
+      and versions
+    + MNG-11147: Fix BOM version inference for sibling modules in
+      dependencyManagement
+    + Preserve unresolved ${...} in CLI -D values
+    + Avoid IllegalStateException on duplicate profile ids in
+      DefaultModelBuilder
+    + Fix deadlock in AbstractRequestCache
+    + Fix #12464: Skip MAVEN_ARGS for non-default main classes
+    + Bugfix: use GAV and not GAPV in source labels for profiles
+    + Install JUL-to-SLF4J bridge to route java.util.logging through
+      Maven logging
+    + Fix CI-friendly ${revision} not interpolated for non-build POM
+      reads
+    + Fix mvn.cmd jvm.config read failing silently on Windows CI
+    + Fix mvnup spurious pluginManagement injection for remote
+      parent plugins
+    + MNG-8650: Fix MAVEN_ARGS backslash stripping on Windows
+    + Do not force metadata download for plugin prefix resolution
+    + Fix NPE in DefaultLookup.lookupOptional() when container
+      returns null
+    + Use stack-passed Set for activeModelReads cycle detection
+    + Sync DefaultTypeProvider and dependency-types docs across impl
+      and compat
+    + Fix StackOverflowError with internal parent and CI-friendly
+      revision
+    + Add -P !profile deactivation regression guard
+    + Fix #12305: filter uninterpolated deps in
+      ArtifactDescriptorReaderDelegate
+    + Fix #12304: replace deprecated property expressions in mvnup
+    + Fix #12306: normalize targetPath in DefaultSourceRoot
+    + Pass settings.xml profile properties to LRM
+    + Fix thread-safety in DefaultModelValidator
+    + Fix MojoExtension.beforeEach to use merged model instead of
+      raw parsed model
+    + Fix BUILD_CONSUMER profile activation for locally-resolved
+      parent POMs
+    + Fix NPE in DefaultModelBuilder when POM resolved from
+      repository
+    + Tokenize arithmetic operators as delimiters in ConditionParser
+    + Support sealed parameter implementation hints
+    + Fix ConditionParser to handle newlines before && operator
+    + Handle missing package metadata in model ids
+    + Fix #11715: preserve 4.1.0 namespace/schema in
+      help:effective-pom
+    + Add XmlService classloader fallback for ServiceLoader
+      discovery
+    + Avoid reflective InputSource modelId mutation
+    + Fix reportSet inheritance in Maven 4 model building
+    + Fail-fast consumer POM validation for non-4.0.0 model versions
+    + Fix Source.targetPath incorrectly aligned to basedir
+    + Fix #11856: Improve error message for prefix-based remote
+      repository filtering errors
+    + Fix #11796: Preserve default-phases bindings for standard
+      lifecycle phases
+    + Fix @PreDestroy ClassNotFoundException from premature
+      ClassRealm disposal
+    + Re-enable integration test for nested import scope repository
+      override
+    + Fix deadlocks in request cache
+    + Fix logging setup/teardown order
+    + Fix domtrip API breakage after 1.5.1 upgrade
+    + Update binary distribution LICENSE with complete Apache
+      License 2.0 text
+    + Fix #11899: Default addLocationInformation to false in
+      Settings and Toolchains XML writers
+    + Fix mvn script expanding ${...} in CLI arguments
+    + Fix consumer POM serialization of prefixed XML attributes
+    + Fix #11885: Disable ANSI colors when stdout is piped on JDK
+      22+
+    + Fix #12085: regression tests for version inheritance from
+      remote parent
+    + Fix #12074: prevent false parent cycle with shade plugin's
+      dependency-reduced-pom.xml
+    + Fix #12075: skip expression validation for
+      distributionManagement repository IDs
+    + Restore buildConfiguration() callback in deprecated build()
+      methods
+    + Propagate addResource() to model Build for Maven 3 compat
+    + Filter transitive repositories with uninterpolated IDs
+    + Downgrade plexus-classworlds from 2.11.0 to 2.9.0
+    + Fix #11920: skip expression validation for profile repository
+      URLs
+    + Remove extracted Mac OS JLine binaries from Maven distro
+    + Fix issue #11827 - Maven DI crashes if the file
+      org.apache.maven.api.di.Inject contains empty lines
+    + Backport the simplification and fixes of PathSelector
+    + Fix special characters in .mvn/jvm.config
+    + Improve DefaultModelProcessor error reporting for alternative
+      parsers
+    + Allow ${project.basedir} in profile activation.condition
+    + Fix profile source tracking in multi-module projects
+    + Fix BOM packaging in consumer POMs
+    + Fix field accessibility leak in EnhancedCompositeBeanHelper
+    + Fix a ConcurrentModificationException
+- Modified patches:
+  * 0001-Adapt-mvn-script.patch
+  * 0002-Invoke-logback-via-reflection.patch
+  * jline-3.30.x.patch
+    + rebase
+
+-------------------------------------------------------------------
 Fri Jul 24 10:07:35 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Update to git revision 2b1209f9a38fb3e0f069efa39fd372871cc830f9

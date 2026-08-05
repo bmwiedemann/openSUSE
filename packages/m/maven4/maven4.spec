@@ -18,11 +18,11 @@
 
 %global maven_version_suffix 4
 %global base_name maven
-%global file_version 4.0.0-SNAPSHOT
+%global file_version 4.0.0-rc-6
 %global homedir %{_datadir}/%{base_name}%{?maven_version_suffix}
 %global confdir %{_sysconfdir}/%{base_name}%{?maven_version_suffix}
 Name:           %{base_name}%{?maven_version_suffix}
-Version:        4.0.0~20260724.2b1209f9a3
+Version:        4.0.0~rc6
 Release:        0
 Summary:        Java project management and project comprehension tool
 # maven itself is ASL 2.0
@@ -30,10 +30,10 @@ Summary:        Java project management and project comprehension tool
 License:        Apache-2.0 AND MIT
 Group:          Development/Tools/Building
 URL:            https://maven.apache.org/
-Source0:        %{base_name}-%{version}.tar.xz
+Source0:        https://archive.apache.org/dist/%{base_name}/%{base_name}-4/%{file_version}/source/apache-%{base_name}-%{file_version}-src.tar.gz
 Source1:        maven-bash-completion
 Source2:        mvn.1
-Source10:       %{base_name}-build.tar.xz
+Source10:       apache-%{base_name}-build.tar.xz
 Source100:      pom_properties.py
 Patch1:         0001-Adapt-mvn-script.patch
 Patch2:         0002-Invoke-logback-via-reflection.patch
@@ -187,7 +187,7 @@ BuildArch:      noarch
 %{summary}.
 
 %prep
-%setup -q -n %{base_name}-%{version} -a10
+%setup -q -n apache-%{base_name}-%{file_version} -a10
 
 %patch -P 1 -p1
 %patch -P 2 -p1

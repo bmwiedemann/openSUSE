@@ -1,4 +1,4 @@
-From caa6ee4f707d4f0b664257e4c7cbcbe17aee95fa Mon Sep 17 00:00:00 2001
+From 4752681f4facc61a76b1cf0f542abf3de2dd401e Mon Sep 17 00:00:00 2001
 From: Fridrich Strba <fridrich.strba@bluewin.ch>
 Date: Tue, 21 Jul 2026 08:40:10 +0200
 Subject: [PATCH] Build with jline < 4.1
@@ -33,7 +33,7 @@ index 996a7d71eb..0506278684 100644
      public int getWidth() {
          return getTerminal().getWidth();
 diff --git a/pom.xml b/pom.xml
-index 6ec6c9c1b3..15e1ad4e47 100644
+index a9e08b8a89..a602a04217 100644
 --- a/pom.xml
 +++ b/pom.xml
 @@ -154,7 +154,7 @@ under the License.
