@@ -1,0 +1,20 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c0d4560fa9c989fe5d98376cea893b41</srcmd5>
+    <version>1.3.0</version>
+    <time>1785944882</time>
+    <user>dimstar_suse</user>
+    <comment>New package: slack-mcp-server 1.3.0
+
+Model Context Protocol server for Slack (MIT). Exposes conversations, channel
+and user directories, message history and search to MCP-capable clients over the
+stdio and SSE transports. Authenticates with existing Slack session tokens or an
+OAuth user token, so it needs no workspace app installation.
+
+Go, vendored via the go_modules service. Upstream's &quot;-s -w&quot; link flags are not
+used, so debuginfo is real. %check runs the suite with the TestIntegration cases
+skipped -- they drive a live Slack workspace and an OpenAI endpoint and fail
+rather than skip when credentials are absent; everything else passes.</comment>
+    <requestid>1369466</requestid>
+  </revision>
+</revisionlist>

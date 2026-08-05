@@ -1,0 +1,28 @@
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="url">https://github.com/korotovsky/slack-mcp-server.git</param>
+    <param name="scm">git</param>
+    <param name="revision">v1.3.0</param>
+    <param name="version">1.3.0</param>
+    <param name="changesgenerate">disable</param>
+    <!-- Container, editor and npm-redistribution plumbing: none of it is used
+         to build or run what we ship. -->
+    <param name="exclude">.github</param>
+    <param name="exclude">.vscode</param>
+    <param name="exclude">npm</param>
+    <param name="exclude">images</param>
+    <param name="exclude">docker-compose.yml</param>
+    <param name="exclude">docker-compose.dev.yml</param>
+    <param name="exclude">docker-compose.toolkit.yml</param>
+    <param name="exclude">Dockerfile</param>
+  </service>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">zst</param>
+  </service>
+  <service name="set_version" mode="buildtime"/>
+  <service name="go_modules" mode="manual">
+    <param name="compression">zst</param>
+  </service>
+</services>

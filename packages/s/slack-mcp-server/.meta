@@ -1,0 +1,4 @@
+<package name="slack-mcp-server" project="openSUSE:Factory">
+  <title>Model Context Protocol server for Slack</title>
+  <description>MCP server exposing Slack conversations, channels and search to MCP-capable AI clients.</description>
+</package>

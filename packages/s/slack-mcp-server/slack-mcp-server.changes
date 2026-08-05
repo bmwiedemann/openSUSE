@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Tue Aug  4 10:02:49 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package (version 1.3.0)
+- Model Context Protocol server for Slack, exposing conversations,
+  channel and user directories, message history and search to MCP
+  capable clients over the stdio and server-sent-events transports
+- Authenticates with existing Slack session tokens or an OAuth user
+  token, so no workspace app installation is required
+- Do not pass upstream's "-s -w" link flags, which would strip the
+  symbol table and leave the debuginfo subpackage empty
+- Skip the TestIntegration cases in %%check: they drive a live Slack
+  workspace and an OpenAI endpoint, and fail rather than skip when
+  the credentials are absent
+- Exclude the container, editor and npm redistribution plumbing from
+  the source tarball, none of which is used to build or run the server
+
