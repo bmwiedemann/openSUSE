@@ -8,4 +8,39 @@
   * Version 0.2.1</comment>
     <requestid>1208562</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9dc5ad10e57b8292dcad0499f3eed6f6</srcmd5>
+    <version>0.3.0</version>
+    <time>1785944975</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.3.0:
+  * `asv_runner.__version__` is now defined for source-tree and
+    editable imports, resolving the installed distribution version
+    with a `0.0.0.dev0` fallback; built artifacts keep the static
+    build-time string.
+  * Releases publish the sdist alongside wheels again: the wheel and
+    sdist jobs uploaded artifacts under the same default name and the
+    publish step picked up only the wheel, which is why 0.2.5 reached
+    PyPI wheel-only and downstream rebuilds from GitHub tarballs
+    shipped wrong version metadata.
+  * Timing benchmarks with `setup` hooks now observe freshly set-up
+    state on every timed call
+    re-runs `setup` between calls, auto-calibrated `number` resolves
+    to 1, and an explicitly set `number &gt; 1` batches with `setup`
+    interleaved between individually timed calls (only the calls are
+    timed, at the cost of two clock reads per call).
+    Benchmarks without `setup` hooks are unchanged, `setup_cache`
+    remains the batching path for input-building setups, and
+    `timeraw_*` benchmarks (one fresh subprocess per sample) are
+    exempt. Timings for fast benchmarks that define `setup` will
+    shift relative to earlier releases because samples are no longer
+    amortized over auto-calibrated batches.
+  * Benchmark `version` remains SHA-256 of source text for full
+    backwards compatibility with asv and historical results.
+    Token-stable `code_fingerprint()` is exposed via `version_alts`
+    (and still used where helpful) so tooling can backfill/accept
+    both identities across releases.  Timeraw `env` identity also
+    uses SHA-256 of code+env payload on the wire.</comment>
+    <requestid>1369597</requestid>
+  </revision>
 </revisionlist>

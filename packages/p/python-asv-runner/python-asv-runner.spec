@@ -1,7 +1,7 @@
 #
-# spec file for package python-asv_runner
+# spec file for package python-asv-runner
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,18 +15,19 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?sle15_python_module_pythons}
 Name:           python-asv-runner
-Version:        0.2.1
+Version:        0.3.0
 Release:        0
 Summary:        Core Python benchmark code for ASV
 License:        BSD-3-Clause
-URL:            https://asv.readthedocs.io/projects/asv-runner/en/latest/
+URL:            https://github.com/airspeed-velocity/asv_runner
 Source:         https://files.pythonhosted.org/packages/source/a/asv_runner/asv_runner-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pdm-backend}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module importlib-metadata}
 # /SECTION
