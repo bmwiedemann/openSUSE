@@ -17,11 +17,10 @@
 
 
 Name:           gpredict
-Version:        2.5.1
+Version:        2.5.2
 Release:        0
 Summary:        Realtime satellite tracking and orbit prediction application
 License:        GPL-2.0-only
-Group:          Productivity/Hamradio/Other
 URL:            https://gpredict.oz9aec.net/
 Source:         https://github.com/csete/gpredict/releases/download/v%{version}/gpredict-%{version}.tar.bz2
 BuildRequires:  fdupes

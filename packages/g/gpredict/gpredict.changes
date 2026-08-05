@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Aug  4 13:54:04 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.5.2:
+  * Add support for more recent versions of gpsd (gh#csete/gpredict#404)
+  * Fix a second rig not connecting (gh#csete/gpredict#407)
+  * Fix a data race by reloading satellites in the main thread
+    (gh#csete/gpredict#409)
+  * Fix some warning messages at program exit
+  * Fix a compilation error on Windows (MSYS64)
+- Drop the obsolete Group tag
+
+-------------------------------------------------------------------
 Sun Apr 26 19:43:20 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 2.5.1:
