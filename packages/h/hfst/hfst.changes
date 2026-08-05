@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug  4 11:56:05 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.17.2
+  * Added JSONL format for tokeniser and some WASM support
+  * Fixed Lst optimisations in hfst-tokenise
+  * Fixed versioning of plain C bindings
+
+-------------------------------------------------------------------
 Tue Apr 28 11:17:01 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.17.1
