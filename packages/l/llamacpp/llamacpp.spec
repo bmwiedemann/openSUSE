@@ -35,7 +35,7 @@
 %endif
 
 Name:           llamacpp
-Version:        10078
+Version:        10154
 Release:        0
 Summary:        Inference of Meta's LLaMA model (and others) in pure C/C++
 License:        MIT
@@ -43,7 +43,12 @@ URL:            https://github.com/ggml-org/llama.cpp
 Source:         %{URL}/archive/b%{version}/%{name}-%{version}.tar.gz
 Source1:        %{URL}/releases/download/b%{version}/llama-b%{version}-ui.tar.gz
 BuildRequires:  cmake >= 3.14
+# Newer llama.cpp enables SME, found in ARMv9.2. Only gcc>=16 knows about SME
+%ifarch aarch64
+BuildRequires:  gcc16-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  git
 BuildRequires:  ninja
 BuildRequires:  pkgconfig

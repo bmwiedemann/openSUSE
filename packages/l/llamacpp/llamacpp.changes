@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Tue Jul 28 07:02:44 UTC 2026 - Robert Munteanu <rombert@apache.org>
+
+- Update to version 10154
+  * New model support: Nanbeige 4.2, MiniMax-M3 (MSA sparse attention),
+    GLM-5.2-Vision, Laguna XS.2 and M.1.
+  * CUDA: GET_ROWS for quantized types, improved NVFP4 W4A4 activation
+    quantization, sqrt_softplus in top-k MoE for DeepSeek v4, and a
+    fix for external compilation of Q1_0 MMQ.
+  * HIP: remove rocWMMA FlashAttention path.
+  * Metal: add f16 support to leaky relu.
+  * Hexagon: core pipeline improvements (L2, DMA, MM, FA), partial
+    im2col support, activation ops update, and Windows crash fix when
+    op_poll is enabled.
+  * OpenCL: cache compiled cl_program binaries on disk, fix fused RMS
+    norm mul view offset, and do not treat NULL-mask flash attention
+    as causal.
+  * WebGPU: add CONV_2D_DW (depthwise conv2d) kernel and fix WASM
+    compilation with OpenMP.
+  * SYCL: parallelize ocloc invocations.
+  * CPU/ggml: enable BF16 tiled GEMM on PowerPC, fix offloading logic
+    for weight backend, update PowerPC backend variants on AIX.
+  * Server/API: support MCP stdio tool transport, add format argument
+    to datetime tool, support "reasoning_effort": "none" in OAI API,
+    improve error handling for null context and conversation IDs, fix
+    stream routes for model names containing a slash, and add missing
+    task parameters in generation_settings.
+  * Common: add common_print_available_devices(), add subproc.h
+    wrapper, support multiple end sequences in the reasoning budget
+    sampler, infer speculative type from draft repo sidecars, refactor
+    mlock/mmap/directio into load-mode, and add -lm mlock option.
+  * UI: symbolic math support via nerdamer in JS sandbox, fix symbolic
+    math tool prompt, fix system message edit box, detect conversation
+    import format from file contents, reduce per-token render cost,
+    remove render effects, fix MCP server display name conflicts, add
+    "Default" option for reasoning selector, and fix context gauge
+    regressions.
+  * MTMD (multimodal): add vision support for MiniMax-M3 and
+    GLM-5.2-Vision, add GLM 5.2 Indexer support, fix Android build, use
+    align_corners for Qwen3-VL interpolation, and use RAII for
+    non-causal attention handling.
+  * Fixes: DeepSeek v4 crafted template and APE tensor op, non-MoE
+    NomicBert GGUF conversion, HunyuanVL XD-RoPE config, use-after-free
+    when loading LoRA adapter fails, and various llama bugs.
+  * Full commit log:
+    https://github.com/ggml-org/llama.cpp/compare/b10078...b10154
+
+-------------------------------------------------------------------
+Tue Jul 28 00:00:00 UTC 2026 - Torsten Duwe <duwe@suse.com>
+
+- llama.cpp now enables SME, found in ARMv9.2. Only gcc>=16 knows about SME,
+  so require it on arm64.
+
+-------------------------------------------------------------------
 Wed Jul 22 08:06:55 UTC 2026 - Andreas Schwab <schwab@suse.de>
 
 - Enable OpenVINO backend only on x86_64 and aarch64
