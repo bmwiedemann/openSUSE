@@ -18,13 +18,14 @@
 
 
 Name:           wild
-Version:        0.8.0
+Version:        0.10.0
 Release:        0
 Summary:        A very fast linker for Linux
 License:        Apache-2.0 OR MIT
 URL:            https://github.com/wild-linker/wild
 Source0:        https://github.com/wild-linker/wild/archive/%{version}/wild-%{version}.tar.gz
 Source1:        vendor.tar.zst
+Patch0:         disable-tidy-tests.patch
 BuildRequires:  binutils-devel
 BuildRequires:  cargo
 BuildRequires:  cargo-packaging
@@ -36,7 +37,9 @@ ExclusiveArch:  %{rust_tier1_arches}
 
 %description
 Wild is a linker with the goal of being very fast for iterative
-development.
+development. It supports the linker plugin API originally part of the
+Gold linker (also supported by GNU ld and Mold), and offers extensive
+linker-script features.
 
 The plan is to eventually make it incremental, however that isn't
 yet implemented.
@@ -57,6 +60,7 @@ export WILD_TEST_IGNORE_FORMAT=1
 %{cargo_test} --lib --bins
 
 %files
+%doc README.md CHANGELOG.md
 %license LICENSE-APACHE LICENSE-MIT
 %{_bindir}/wild
 %{_bindir}/ld.wild

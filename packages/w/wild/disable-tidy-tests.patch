@@ -1,0 +1,12 @@
+--- a/libwild/src/tidy_tests.rs
++++ b/libwild/src/tidy_tests.rs
+@@ -137,6 +137,9 @@ fn check_toml_format() -> Result {
+ 
+ #[test]
+ fn check_text_files() -> Result {
++    if std::env::var_os("WILD_TEST_IGNORE_FORMAT").is_some() {
++        return Ok(());
++    }
+     const EXCLUDE_DIR: &[&str] = &[
+         "target",
+         "build",

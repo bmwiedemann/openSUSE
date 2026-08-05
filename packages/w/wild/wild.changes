@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Aug  4 16:02:57 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 0.10.0:
+  * Add support for --gdb-index and more linker script arguments
+  * Drop unused flag --debug-address
+  * Much porting work has been done
+  * We now avoid using mmap on the output file if it's on a btrfs
+    or vfat filesystem
+  * See full changelog at /usr/share/doc/packages/wild/CHANGELOG.md
+
+-------------------------------------------------------------------
+Sat May 30 14:30:00 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Expand %description to highlight Gold linker plugin API support
+  and linker-script features.
+- Add disable-tidy-tests.patch to honor WILD_TEST_IGNORE_FORMAT
+  in check_text_files test, allowing it to be disabled during
+  packaging.
+
+-------------------------------------------------------------------
+Fri May 29 00:15:09 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Upgrade to version 0.9.0:
+  * Lot of refactoring work to port to other platforms
+  * Wild now supports the linker plugin API that was originally
+    part of the Gold linker, but which is also supported by GNU ld
+    and Mold.
+  * Lots more linker-script features were implemented during this
+    release.
+
+-------------------------------------------------------------------
 Sat May  2 15:51:20 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
 
-- Initial packaging at version 0.8.0 
+- Initial packaging at version 0.8.0

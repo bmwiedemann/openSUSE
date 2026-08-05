@@ -4,7 +4,7 @@
     <service name="cargo_vendor" mode="manual">
         <param name="srcdir">wild-*.tar.gz</param>
         <param name="compression">zst</param>
-        <param name="update">false</param>
+        <param name="update">true</param>
 
         <!--
         Fixed by an update to the `perf-event` crate, but wild is still
