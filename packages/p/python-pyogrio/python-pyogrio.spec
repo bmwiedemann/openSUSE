@@ -25,7 +25,7 @@
 %bcond_with test
 %endif
 Name:           python-pyogrio%{psuffix}
-Version:        0.12.1
+Version:        0.13.0
 Release:        0
 Summary:        Vectorized spatial vector file format I/O using GDAL/OGR
 License:        MIT
