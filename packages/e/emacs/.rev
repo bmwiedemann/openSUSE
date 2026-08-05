@@ -2344,4 +2344,13 @@ Now one could consider building emacs with gsettings support (both debian and fe
     changed to :eq?</comment>
     <requestid>1349130</requestid>
   </revision>
+  <revision rev="219" vrev="9">
+    <srcmd5>6fbfef996864e0656e59059240734680</srcmd5>
+    <version>30.2</version>
+    <time>1785944773</time>
+    <user>dimstar_suse</user>
+    <comment>- Configure wayland the compilation support native with
+  ahead of time (aot) to avoid compiling threads (boo#1271643)</comment>
+    <requestid>1369389</requestid>
+  </revision>
 </revisionlist>

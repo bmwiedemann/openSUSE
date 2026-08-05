@@ -591,27 +591,28 @@ DESKTOP_SHARED="
 %if %{with cairo}
 	 --with-cairo \
 %endif
-     --with-tree-sitter \
+	 --with-tree-sitter \
 	 --with-libotf \
 	 --with-m17n-flt \
 	 --with-imagemagick \
+	 --with-harfbuzz \
 "
 
 DESKTOP_X11="${DESKTOP_SHARED}
-      --with-x \
+	 --with-x \
 	  --with-xim \
 	  --with-xft \
 	  --without-gpm \
 "
 
 GTK_X11="${DESKTOP_X11} \
-     --with-x-toolkit=gtk \
-     --without-pgtk \
+	 --with-x-toolkit=gtk \
+	 --without-pgtk \
 	 --with-toolkit-scroll-bars \
 	 --x-includes=%{_x11inc} \
 	 --x-libraries=%{_x11lib} \
 %if %{with webkit}
-     --with-xwidgets \
+	 --with-xwidgets \
 %endif
 "
 
@@ -621,14 +622,16 @@ GTK_X11="${DESKTOP_X11} \
 # maybe the libs of imagemagick can not????
 #
 DESKTOP_WAYLAND="${DESKTOP_SHARED}
-    --without-x \
-    --without-xim \
-	--without-xft \
+	 --without-x \
+	 --without-xim \
+	 --without-xft \
+	 --without-x-toolkit \
 "
 
 GTK_PURE="${DESKTOP_WAYLAND}
-      --with-pgtk \
-      --with-toolkit-scroll-bars \
+	 --with-pgtk \
+	 --with-toolkit-scroll-bars \
+	 --with-native-compilation=aot \
 "
 
 LUCID_X11="${DESKTOP_SHARED} \
