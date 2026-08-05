@@ -97,6 +97,10 @@ chmod -x examples/pubsub/topics_pub.py examples/pubsub/topics_sub.py
 
 %build
 export CFLAGS="%{optflags}"
+# scikit-build-core defaults to a random tempdir for the CMake build tree,
+# which leaks into the embedded compile-dir debug info and makes the
+# GNU build-id of the (later stripped) _zmq*.so non-reproducible.
+export SKBUILD_BUILD_DIR="%{_builddir}/skbuild-build-{cache_tag}"
 %pyproject_wheel
 
 %install

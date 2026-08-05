@@ -557,4 +557,12 @@ update to latest version</comment>
 - Drop pytest.ini, it is now shipped in the tarball.</comment>
     <requestid>1317471</requestid>
   </revision>
+  <revision rev="62" vrev="3">
+    <srcmd5>c02e7b285022f507beac36872a22d5f8</srcmd5>
+    <version>27.1.0</version>
+    <time>1785944792</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1369529</requestid>
+  </revision>
 </revisionlist>

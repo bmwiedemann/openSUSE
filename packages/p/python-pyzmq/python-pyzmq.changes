@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug  4 11:42:49 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Pin scikit-build-core's CMake build directory for reproducible builds.
+  Otherwise it uses a random tempdir whose path leaks into the
+  debug info that the linker hashes into the GNU build-id note of
+  the later-stripped _zmq*.so, making the build non-reproducible
+  even though the actual code is identical.
+
+-------------------------------------------------------------------
 Thu Nov 13 02:59:50 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Copy tests to a temporary directory so they can be imported.
