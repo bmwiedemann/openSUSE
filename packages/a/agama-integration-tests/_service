@@ -1,9 +1,5 @@
 <services>
   <service name="obs_scm" mode="manual">
-    <!-- FIXME: there is no version tag yet, update the versioning after
-    creating the first version tag -->
-    <!--  -->
-    <!-- <param name="versionrewrite-pattern">v(.*)</param> -->
     
     <!-- the URL is modified by the
     https://github.com/agama-project/agama/.github/workflows/obs-staging-shared.yml
@@ -14,7 +10,7 @@
     https://github.com/agama-project/agama/.github/workflows/obs-staging-shared.yml
     action when submitting to OBS -->
     <param name="revision">main</param>
-    <param name="filename">agama-integration-tests</param>
+    <param name="filename">agama</param>
     <param name="without-version">enable</param>
     <param name="extract">package-lock.json</param>
     <param name="extract">package/agama-integration-tests.changes</param>
@@ -26,10 +22,10 @@
     <param name="source-offset">1000</param>
   </service>
   <service mode="buildtime" name="tar">
-    <param name="obsinfo">agama-integration-tests.obsinfo</param>
-    <param name="filename">agama-integration-tests</param>
+    <param name="obsinfo">agama.obsinfo</param>
+    <param name="filename">agama</param>
   </service>
   <service mode="buildtime" name="set_version">
-    <param name="basename">agama-integration-tests</param>
+    <param name="basename">agama</param>
   </service>
 </services>

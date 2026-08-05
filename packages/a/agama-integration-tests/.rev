@@ -25,4 +25,43 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1240487</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>85d015ca81fb1da3305fa739189c954c</srcmd5>
+    <version>0</version>
+    <time>1785944802</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic update from systemsmanagement:Agama:Release
+
+--- agama-integration-tests.changes (revision 3)
++++ agama-integration-tests.changes (revision 5)
+@@ -1,4 +1,27 @@
+ -------------------------------------------------------------------
++Thu Jul 30 08:00:00 UTC 2026 - Ladislav Slezák &lt;lslezak@suse.com&gt;
++
++- Update Puppeteer to version 24.14.0
++  (gh#agama-project/integration-tests#17)
++
++-------------------------------------------------------------------
++Tue Jul 28 16:09:43 UTC 2026 - Martin Vidner &lt;mvidner@suse.com&gt;
++
++- update runtime dependencies:
++  - ws 8.21.1, CVE-2026-48779 (bsc#1268961)
++- update development dependencies:
++  - js-yaml 4.3.0, CVE-2026-53550 (bsc#1268851)
++  - brace-expansion 5.0.8, CVE-2026-13149 CVE-2025-5889 (bsc#1269927 bsc#1244366)
++- updated on Jun 3 already, listing its references for tracking:
++  - basic-ftp 5.3.1, CVE-2026-27699 (bsc#1258911)
++
++-------------------------------------------------------------------
++Wed Jun  3 15:26:21 UTC 2026 - Ladislav Slezák &lt;lslezak@suse.com&gt;
++
++- Update to the latest Agama web UI
++- Updated NPM dependencies
++
++-------------------------------------------------------------------
+ Wed Jan 15 09:14:32 UTC 2025 - Ladislav Slezák &lt;lslezak@suse.com&gt;
+ 
+ - Code refactoring (gh#agama-project/integration-tests#1)</comment>
+    <requestid>1369556</requestid>
+  </revision>
 </revisionlist>
