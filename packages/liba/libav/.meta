@@ -1,5 +1,0 @@
-<package name="libav" project="openSUSE:Factory">
-  <title></title>
-  <description>libav is a C library that works with various multimedia formats.</description>
-  <devel project="multimedia:libs" package="libav"/>
-</package>
