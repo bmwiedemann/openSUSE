@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Aug  1 08:31:18 UTC 2026 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 1.8.34:
+  * This release fixes a few bugs, including a build failure in
+    msmtp, a failure under load in msmtpd, and compatibility issues
+    in msmtpq.
+  * Also, the translations were updated. Thanks again to the
+    translators at translationproject.org! 
+- drop fix_base64_build.patch: fixed upstream
+
+-------------------------------------------------------------------
 Sun Jul 12 12:28:21 UTC 2026 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 1.8.33:

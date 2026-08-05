@@ -17,7 +17,7 @@
 
 
 Name:           msmtp
-Version:        1.8.33
+Version:        1.8.34
 Release:        0
 BuildRequires:  gnutls-devel >= 3.4
 BuildRequires:  libidn2-devel
@@ -51,8 +51,6 @@ URL:            https://marlam.de/msmtp/
 Source:         https://marlam.de/msmtp/releases/msmtp-%{version}.tar.xz
 Source1:        https://marlam.de/msmtp/releases/msmtp-%{version}.tar.xz.sig
 Source2:        %{name}.keyring
-# PATCH-FIX-UPSTREAM https://patch-diff.githubusercontent.com/raw/marlam/msmtp/pull/226.patch
-Patch1:         fix_base64_build.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description

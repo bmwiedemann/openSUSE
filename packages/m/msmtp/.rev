@@ -580,4 +580,15 @@ update to version 1.8.32</comment>
 - add fix_base64_build.patch from pull request 226: fix build with older gcc versions</comment>
     <requestid>1366454</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>0457e830d0c56ccd0607543cd93cdd1f</srcmd5>
+    <version>1.8.34</version>
+    <time>1785944994</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1368980 from benoit_monin
+
+- update to version 1.8.34
+- drop fix_base64_build.patch: fixed upstream</comment>
+    <requestid>1369612</requestid>
+  </revision>
 </revisionlist>
