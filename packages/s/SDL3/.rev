@@ -240,4 +240,12 @@
     <comment>- Update to release 3.4.12</comment>
     <requestid>1363057</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>948f4bba6c3fc47c058f5096cf8f864b</srcmd5>
+    <version>3.4.14</version>
+    <time>1785944782</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.4.14</comment>
+    <requestid>1369429</requestid>
+  </revision>
 </revisionlist>
