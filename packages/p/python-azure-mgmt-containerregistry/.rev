@@ -326,4 +326,15 @@
 - Override upstream version with 15.1.0~b1 (forwarded request 1344924 from glaubitz)</comment>
     <requestid>1345000</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>9218fdb43c8b68175e445116436d5de0</srcmd5>
+    <version>15.1.0~b2</version>
+    <time>1785944928</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 15.1.0b2
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1369530 from glaubitz)</comment>
+    <requestid>1369545</requestid>
+  </revision>
 </revisionlist>
