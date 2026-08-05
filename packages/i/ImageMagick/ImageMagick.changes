@@ -1,7 +1,19 @@
 -------------------------------------------------------------------
+Tue Aug  4 07:53:29 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- version update to 7.1.2.29
+  * Updated the dependencies. 90f5b91
+  * add WEBP compress case when writing f35294e
+  * Removed unnecessary include. 1e2f64f
+  * Removed checks for values from tif_config.h that are not included, libtiff will report errors itself now. 7cf1988
+  * Only set the TIFFTAG_WEBP_LEVEL when the quality is not undefined. 02ac849
+  * Make sure we read the bits_per_sample before using it. 0af4ede
+  * Added missing typecast. b919b37
+
+-------------------------------------------------------------------
 Mon Jul 27 08:19:33 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
-- versn update to 7.1.2.28
+- version update to 7.1.2.28
   * build(deps): bump ubuntu from b7f4819 to 3131b4c in /.devcontainer #8876
   * build(deps): bump actions/checkout from 7.0.0 to 7.0.1 #8882
   * Fixes for PTIF writer to re-enable default creation of pyramid levels #8884
