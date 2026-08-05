@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Aug  4 08:10:28 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20260731.00
+  * Restore Makefiles, .gitignore, and repository metadata
+  * No public description
+- from version 20260626.00
+  * Check and properly pad the buffer used for usernames in the
+    NSS module, properly support buffer size negotiation. (#184)
+- from version 20260605.00
+  * Add two new types to the SELinux policy: sshd_session_t, and
+    systemd_userdbd_t, both added in newer EL versions. (#186)
+
+-------------------------------------------------------------------
 Mon May  4 11:45:26 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20260430.00

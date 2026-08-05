@@ -401,4 +401,12 @@
   * URLEncode request parameters sent to the metadata server. (#182) (forwarded request 1350669 from glaubitz)</comment>
     <requestid>1350678</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>a15b5acbef427db9aa10669483f8ed04</srcmd5>
+    <version>20260731.00</version>
+    <time>1785944895</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1369489</requestid>
+  </revision>
 </revisionlist>
