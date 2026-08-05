@@ -75,3 +75,18 @@ build_ignore:
   - .collection
   - .gitlab-*
   - .fmf
+
+  # VCS metadata, any depth
+  - ".git*"
+  - "*/.git*"
+
+  # Upstream CI / dev tooling
+  - "*packit*"
+  - .coderabbit-*
+  - .codespellrc-*
+  - .codespell_ignores-*
+  - .mdlrc-*
+  - .mdl_style-*
+  - mypy-*.ini
+  - pyproject-*.toml
+  - tmt

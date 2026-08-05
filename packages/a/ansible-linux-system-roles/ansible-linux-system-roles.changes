@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Aug  3 15:26:32 UTC 2026 - Harshvardhan Sharma <harshvardhan.sharma@suse.com>
+
+- Update to version 1.4.1: fix HA cluster deployment on pacemaker 3.x (bsc#1271113)
+- Update ha_cluster role 1.29.1 -> 1.31.3:
+  - crmsh: replace 'crm_verify' with 'crm configure verify' so pacemaker 3.x
+    deprecation warnings no longer abort the "Verify shadow CIB" task with rc=78
+    (bsc#1271113, gh#linux-system-roles/ha_cluster#403)
+  - crmsh: add support for QDevice, Qnet and Diskless SBD
+  - export node attributes utilization and stonith levels
+- Exclude upstream CI and dev tooling files from the collection
+
+-------------------------------------------------------------------
 Thu Jul 16 10:33:12 UTC 2026 - Harshvardhan Sharma <harshvardhan.sharma@suse.com>
 
 - Update suseconnect role 1.0.1 -> 1.0.2

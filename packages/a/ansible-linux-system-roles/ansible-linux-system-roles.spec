@@ -23,7 +23,7 @@
 %global ssh_version 1.7.1
 %global crypto_policies_version 1.5.2
 %global systemd_version 1.3.7
-%global ha_cluster_version 1.29.1
+%global ha_cluster_version 1.31.3
 %global mssql_version 2.6.6
 %global suseconnect_version 1.0.2
 %global auto_maintenance_version 1.120.5
@@ -50,7 +50,7 @@
 %define ansible_collection_path %{_datadir}/ansible/collections/ansible_collections/suse/%{ansible_collection_name}
 
 Name:           ansible-linux-system-roles
-Version:        1.4.0
+Version:        1.4.1
 Release:        0
 Summary:        Collection of Ansible roles for Linux system management
 License:        GPL-3.0-or-later
