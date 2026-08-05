@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jul 18 16:43:43 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- sddm.conf: Set plasmawayland.desktop as default session
+- No longer recommend plasma6-session-x11
+
+-------------------------------------------------------------------
 Tue Jul 14 12:23:35 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.7.3:

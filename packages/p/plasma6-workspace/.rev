@@ -467,4 +467,13 @@
     <comment>Plasma 6.7.3 (forwarded request 1365832 from Vogtinator)</comment>
     <requestid>1365892</requestid>
   </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>95f2e737b23a490c5bb9048e1284eb46</srcmd5>
+    <version>6.7.3</version>
+    <time>1785944870</time>
+    <user>dimstar_suse</user>
+    <comment>- sddm.conf: Set plasmawayland.desktop as default session
+- No longer recommend plasma6-session-x11 (forwarded request 1366542 from Vogtinator)</comment>
+    <requestid>1369040</requestid>
+  </revision>
 </revisionlist>

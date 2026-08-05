@@ -308,8 +308,6 @@ Provides:       plasma5-session = %{version}
 Obsoletes:      plasma5-session < %{version}
 Provides:       plasma5-session-wayland = %{version}
 Obsoletes:      plasma5-session-wayland < %{version}
-# People may want the X11 session
-Recommends:     plasma6-session-x11 = %{version}
 BuildArch:      noarch
 
 %description -n plasma6-session
