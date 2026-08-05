@@ -28,6 +28,10 @@ URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/S/SB/SBECK/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 Source100:      README.md
+# PATCH-FIX-UPSTREAM https://security.metacpan.org/patches/D/Date-Manip/6.99/CVE-2026-60074-r1.patch
+Patch0:         CVE-2026-60074-r1.patch
+# PATCH-FIX-UPSTREAM https://security.metacpan.org/patches/D/Date-Manip/6.99/CVE-2026-60075-r1.patch
+Patch1:         CVE-2026-60075-r1.patch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.67

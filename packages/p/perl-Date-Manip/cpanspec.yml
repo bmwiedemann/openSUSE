@@ -4,8 +4,9 @@
 #sources:
 #  - source1
 #  - source2
-#patches:
-#  foo.patch: -p1
+patches:
+  CVE-2026-60074-r1.patch: -p1 PATCH-FIX-UPSTREAM https://security.metacpan.org/patches/D/Date-Manip/6.99/CVE-2026-60074-r1.patch
+  CVE-2026-60075-r1.patch: -p1 PATCH-FIX-UPSTREAM https://security.metacpan.org/patches/D/Date-Manip/6.99/CVE-2026-60075-r1.patch
 #  bar.patch:
 #preamble: |-
 #  ExcludeArch:    %arm %ix86 ppc s390

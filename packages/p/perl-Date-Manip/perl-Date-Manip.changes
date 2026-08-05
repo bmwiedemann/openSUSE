@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug  3 20:31:08 UTC 2026 - Tina Müller <tina.mueller@suse.com>
+
+- Add patches CVE-2026-60074-r1.patch, CVE-2026-60075-r1.patch
+  CVE-2026-60074 bsc#1273063
+  CVE-2026-60075 bsc#1273062
+
+-------------------------------------------------------------------
 Tue Mar  3 06:06:23 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.990.0 (6.99)

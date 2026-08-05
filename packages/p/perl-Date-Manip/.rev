@@ -653,4 +653,14 @@
            Newest zoneinfo data (tzdata 2026a).</comment>
     <requestid>1338071</requestid>
   </revision>
+  <revision rev="76" vrev="2">
+    <srcmd5>c0153520d76e99d681b4f3fab5c373ee</srcmd5>
+    <version>6.990.0</version>
+    <time>1785944804</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patches CVE-2026-60074-r1.patch, CVE-2026-60075-r1.patch
+  CVE-2026-60074 bsc#1273063
+  CVE-2026-60075 bsc#1273062</comment>
+    <requestid>1369560</requestid>
+  </revision>
 </revisionlist>
