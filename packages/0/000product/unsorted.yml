@@ -884,6 +884,7 @@ unsorted:
   - arch-install-scripts 
   - archivemount-ng 
   - ardour 
+  - ardour-lang 
   - argocd-autopilot 
   - argocd-autopilot-bash-completion 
   - argocd-autopilot-fish-completion 
@@ -1986,7 +1987,6 @@ unsorted:
   - calamares 
   - calamares-branding-upstream 
   - calamares-lang 
-  - calamares-webview 
   - calamaris 
   - calc 
   - calc-devel 
@@ -2218,6 +2218,7 @@ unsorted:
   - chromium 
   - chromium-bsu 
   - chronic 
+  - chrono-devel 
   - chronos 
   - chrony-pool-empty 
   - chrony-pool-suse 
@@ -7195,6 +7196,11 @@ unsorted:
   - gitea-tea-zsh-completion 
   - gitg 
   - gitg-lang 
+  - github-mcp-server 
+  - github-mcp-server-bash-completion 
+  - github-mcp-server-fish-completion 
+  - github-mcp-server-mcpcurl 
+  - github-mcp-server-zsh-completion 
   - gitlab-container-registry 
   - gitleaks 
   - gitleaks-bash-completion 
@@ -8589,6 +8595,7 @@ unsorted:
   - hevea 
   - hex 
   - hex2bin 
+  - hexapoda 
   - hexchat 
   - hexchat-devel 
   - hexchat-lang 
@@ -10004,6 +10011,7 @@ unsorted:
   - kbfs-git 
   - kbfs-tool 
   - kbibtex 
+  - kbibtex-devel 
   - kbibtex-lang 
   - kblackbox 
   - kblackbox-lang 
@@ -12742,6 +12750,7 @@ unsorted:
   - libchipcard6 
   - libchm0 
   - libchromaprint1-32bit 
+  - libchrono0 
   - libcilkrts5 
   - libcilkrts5-32bit 
   - libcimcClientXML0 
@@ -16300,7 +16309,7 @@ unsorted:
   - libseccomp-devel 
   - libseccomp-tools 
   - libseccomp2-32bit 
-  - libsecp256k1-6 
+  - libsecp256k1-7 
   - libsecp256k1-devel 
   - libsecprog-devel 
   - libsecprog0 
@@ -16821,7 +16830,7 @@ unsorted:
   - libtorrent-rasterbar-devel 
   - libtorrent-rasterbar-doc 
   - libtorrent-rasterbar2_0 
-  - libtorrent48 
+  - libtorrent49 
   - libtoxcore2 
   - libtpl-extensions3 
   - libtpm2-totp0 
@@ -17573,6 +17582,7 @@ unsorted:
   - libz-ng2 
   - libz-ng2-32bit 
   - libz3-4_15 
+  - libz_rs1 
   - libzarchive0_1 
   - libzbar-devel 
   - libzbar0-32bit 
@@ -18891,6 +18901,7 @@ unsorted:
   - mcomix 
   - mcp-bugzilla 
   - mcp-dap-server 
+  - mcp-redmine 
   - mcp-server-managesw 
   - mcp-server-snapper 
   - mcp-server-snapper-testsuite 
@@ -21367,7 +21378,6 @@ unsorted:
   - partio-doc 
   - partitionmanager-lang 
   - parzip 
-  - pascube 
   - pass-import 
   - pass-otp 
   - passwdqc 
@@ -23589,7 +23599,6 @@ unsorted:
   - postgresql15-server 
   - postgresql15-server-devel 
   - postgresql15-test 
-  - postgresql15-timescaledb 
   - postgresql16 
   - postgresql16-contrib 
   - postgresql16-devel 
@@ -25393,7 +25402,6 @@ unsorted:
   - python313-cairocffi 
   - python313-cairocffi-pixbuf 
   - python313-caldav 
-  - python313-calmjs 
   - python313-calmjs.parse 
   - python313-calmjs.types 
   - python313-calver 
@@ -29390,7 +29398,6 @@ unsorted:
   - python314-cairocffi 
   - python314-cairocffi-pixbuf 
   - python314-caldav 
-  - python314-calmjs 
   - python314-calmjs.parse 
   - python314-calmjs.types 
   - python314-calver 
@@ -47719,6 +47726,7 @@ unsorted:
   - zlib-devel-static-32bit 
   - zlib-ng-compat-devel 
   - zlib-ng-devel 
+  - zlib-rs-devel 
   - zlib-testsuite 
   - zlibrary-data 
   - zlibrary-devel 
