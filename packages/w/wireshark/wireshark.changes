@@ -11,18 +11,20 @@ Mon Jul 27 10:31:41 UTC 2026 - Matthias Gerstner <matthias.gerstner@suse.com>
 Thu Jul  9 07:44:55 UTC 2026 - Robert Frohl <rfrohl@suse.com>
 
 - Wireshark 4.6.7
-  * Catapult DCT2000 protocol dissector crash.
-  * pcapng file parser crash.
-  * FMP/NOTIFY protocol dissector large loop.
-  * SSH protocol dissector crash.
-  * TLS ECH decryption crash.
-  * IEEE 802.11 protocol dissector crash.
-  * Z39.50 protocol dissector crash.
-  * UMTS FP protocol dissector crash.
-  * BLF file parser information disclosure.
-  * Multiple protocol dissector infinite loops.
-  * DBS Etherwatch file parser crash.
-  * Ciscodump extcap crash.
+  * CVE-2026-15174: Denial of Service via Catapult DCT2000 protocol dissector
+    crash (bsc#1271144)
+  * CVE-2026-15173: Denial of Service via pcapng file parser crash (bsc#1271143)
+  * CVE-2026-15169: Denial of Service via UMTS FP protocol dissector crash (bsc#1271139)
+  * CVE-2026-15172: Denial of service via FMP/NOTIFY protocol dissector crash (bsc#1271142)
+  * CVE-2026-15166: Denial of Service via IEEE 802.11 protocol dissector crash (bsc#1271136)
+  * CVE-2026-15165: Denial of Service via TLS ECH decryptor crash (bsc#1271135)
+  * CVE-2026-15168: BLF file parser allows possible information disclosure (bsc#1271138)
+  * CVE-2026-15171: Denial of service via SSH protocol dissector crash (bsc#1271141)
+  * CVE-2026-15170: Denial of service via Z39.50 protocol dissector crash (bsc#1271140)
+  * CVE-2026-15167: Denial of Service via DBS Etherwatch file parser crash (bsc#1271137)
+  * CVE-2026-15163: Denial of Service via multiple protocol dissector infinite
+    loops (bsc#1271133)
+  * CVE-2026-15164: Denial of Service vulnerability in ciscodump (bsc#1271134)
 - Many more features, bug fixes and updated protocol support as listed in:
   https://www.wireshark.org/docs/relnotes/wireshark-4.6.7.html
 
@@ -35,7 +37,7 @@ Tue Jun 16 16:18:46 UTC 2026 - Robert Frohl <rfrohl@suse.com>
 Wed May 20 07:17:31 UTC 2026 - Robert Frohl <rfrohl@suse.com>
 
 - Wireshark 4.6.6
-  * ROHC protocol dissector crash.
+  * CVE-2026-9759: ROHC protocol dissector crash (bsc#1266670)
 - Many more features, bug fixes and updated protocol support as listed in:
   https://www.wireshark.org/docs/relnotes/wireshark-4.6.6.html
 
