@@ -24,7 +24,7 @@
 %endif
 
 Name:           s390-tools
-Version:        2.43.1
+Version:        2.44.0
 Release:        0
 Summary:        S/390 tools like zipl and dasdfmt for s390x (plus selected tools for x86_64)
 License:        MIT
@@ -113,6 +113,7 @@ BuildRequires:  glibc-devel-static
 BuildRequires:  libcryptsetup-devel >= 2.8.2
 BuildRequires:  libjson-c-devel
 BuildRequires:  libnl3-devel
+BuildRequires:  libnvme-devel
 BuildRequires:  libudev-devel
 BuildRequires:  libxml2-devel
 BuildRequires:  mdevctl
@@ -345,7 +346,8 @@ export KERNELIMAGE_MAKEFLAGS="%%{?_smp_mflags}"
      UDEVRUNDIR=/run/udev \
      HAVE_CARGO=1 \
      HAVE_DRACUT=1 \
-     HAVE_LIBNL3=1
+     HAVE_LIBNL3=1 \
+     HAVE_LIBNVME=1
 ###     all
 gcc -static -o read_values ${OPT_FLAGS} %{SOURCE86} -lqc
 
@@ -372,7 +374,8 @@ mkdir -p %{buildroot}%{_sysconfdir}/zkey/repository
      UDEVRUNDIR=/run/udev \
      HAVE_CARGO=1 \
      HAVE_DRACUT=1 \
-     HAVE_LIBNL3=1
+     HAVE_LIBNL3=1 \
+     HAVE_LIBNVME=1
 
 # Move sysconfig files to the fillup-templates directory
 mkdir -p %{buildroot}%{_fillupdir}
