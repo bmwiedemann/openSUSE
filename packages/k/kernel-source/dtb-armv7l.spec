@@ -17,7 +17,7 @@
 
 
 %define srcversion 7.1
-%define patchversion 7.1.5
+%define patchversion 7.1.6
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -25,9 +25,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,arch-symbols,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           dtb-armv7l
-Version:        7.1.5
+Version:        7.1.6
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g862e13e
+Release:        <RELEASE>.gae5c1b5
 %else
 Release:        0
 %endif
@@ -38,7 +38,7 @@ URL:            https://www.kernel.org/
 BuildRequires:  cpp
 BuildRequires:  dtc >= 1.4.3
 BuildRequires:  xz
-ExclusiveArch:  armv7l armv7hl
+ExclusiveArch:  armv7hl
 
 %define dtbdir /boot/dtb-%kernelrelease
 
@@ -1054,60 +1054,6 @@ cd /boot
 %dir %{dtbdir}/allwinner
 %{dtbdir}/allwinner/sun9i-*.dtb
 
-%package -n dtb-tegra2
-Summary:        NVidia Tegra2 based systems
-Group:          System/Boot
-Provides:       multiversion(dtb)
-Requires(post): coreutils
-
-%description -n dtb-tegra2
-Device Tree files for NVidia Tegra2 based systems.
-
-%post -n dtb-tegra2
-cd /boot
-# If /boot/dtb is a symlink, remove it, so that we can replace it.
-[ -d dtb ] && [ -L dtb ] && rm -f dtb
-# Unless /boot/dtb exists as real directory, create a symlink.
-[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
-
-%ifarch %arm aarch64 riscv64
-%files -n dtb-tegra2 -f dtb-tegra2.list
-%else
-%files -n dtb-tegra2
-%endif
-%defattr(-,root,root)
-%ghost /boot/dtb
-%dir %{dtbdir}
-%dir %{dtbdir}/nvidia
-%{dtbdir}/nvidia/tegra20-*.dtb
-
-%package -n dtb-tegra3
-Summary:        NVidia Tegra3 based systems
-Group:          System/Boot
-Provides:       multiversion(dtb)
-Requires(post): coreutils
-
-%description -n dtb-tegra3
-Device Tree files for NVidia Tegra3 based systems.
-
-%post -n dtb-tegra3
-cd /boot
-# If /boot/dtb is a symlink, remove it, so that we can replace it.
-[ -d dtb ] && [ -L dtb ] && rm -f dtb
-# Unless /boot/dtb exists as real directory, create a symlink.
-[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
-
-%ifarch %arm aarch64 riscv64
-%files -n dtb-tegra3 -f dtb-tegra3.list
-%else
-%files -n dtb-tegra3
-%endif
-%defattr(-,root,root)
-%ghost /boot/dtb
-%dir %{dtbdir}
-%dir %{dtbdir}/nvidia
-%{dtbdir}/nvidia/tegra30-*.dtb
-
 %package -n dtb-tegra114
 Summary:        NVidia Tegra4 based systems
 Group:          System/Boot
@@ -1161,6 +1107,60 @@ cd /boot
 %dir %{dtbdir}
 %dir %{dtbdir}/nvidia
 %{dtbdir}/nvidia/tegra124-*.dtb
+
+%package -n dtb-tegra2
+Summary:        NVidia Tegra2 based systems
+Group:          System/Boot
+Provides:       multiversion(dtb)
+Requires(post): coreutils
+
+%description -n dtb-tegra2
+Device Tree files for NVidia Tegra2 based systems.
+
+%post -n dtb-tegra2
+cd /boot
+# If /boot/dtb is a symlink, remove it, so that we can replace it.
+[ -d dtb ] && [ -L dtb ] && rm -f dtb
+# Unless /boot/dtb exists as real directory, create a symlink.
+[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
+
+%ifarch %arm aarch64 riscv64
+%files -n dtb-tegra2 -f dtb-tegra2.list
+%else
+%files -n dtb-tegra2
+%endif
+%defattr(-,root,root)
+%ghost /boot/dtb
+%dir %{dtbdir}
+%dir %{dtbdir}/nvidia
+%{dtbdir}/nvidia/tegra20-*.dtb
+
+%package -n dtb-tegra3
+Summary:        NVidia Tegra3 based systems
+Group:          System/Boot
+Provides:       multiversion(dtb)
+Requires(post): coreutils
+
+%description -n dtb-tegra3
+Device Tree files for NVidia Tegra3 based systems.
+
+%post -n dtb-tegra3
+cd /boot
+# If /boot/dtb is a symlink, remove it, so that we can replace it.
+[ -d dtb ] && [ -L dtb ] && rm -f dtb
+# Unless /boot/dtb exists as real directory, create a symlink.
+[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
+
+%ifarch %arm aarch64 riscv64
+%files -n dtb-tegra3 -f dtb-tegra3.list
+%else
+%files -n dtb-tegra3
+%endif
+%defattr(-,root,root)
+%ghost /boot/dtb
+%dir %{dtbdir}
+%dir %{dtbdir}/nvidia
+%{dtbdir}/nvidia/tegra30-*.dtb
 
 %package -n dtb-vexpress
 Summary:        ARM Versatile Express machines
@@ -1317,7 +1317,7 @@ export DTC_FLAGS="-R 4 -p 0x1000"
 DTC_FLAGS="$DTC_FLAGS -@"
 
 cd $source/arch/arm/boot/dts
-for dts in ti/omap/am335x-*.dts ti/omap/am3517*.dts ti/omap/am57xx-*.dts marvell/armada-370-*.dts marvell/armada-375-*.dts marvell/armada-385-*.dts marvell/armada-388-*.dts marvell/armada-398-*.dts marvell/armada-xp-*.dts broadcom/bcm2836*.dts marvell/dove-*.dts samsung/exynos4*.dts samsung/exynos5*.dts nxp/imx/imx5*.dts nxp/imx/imx6*.dts nxp/imx/imx7*.dts ti/keystone/keystone-*.dts amlogic/meson8-*.dts amlogic/meson8b-*.dts mediatek/mt76*.dts ti/omap/omap3*.dts ti/omap/omap4*.dts ti/omap/omap5*.dts qcom/qcom-*.dts rockchip/rk3*.dts intel/socfpga/socfpga_*.dts st/ste-*.dts allwinner/sun4i-*.dts allwinner/sun5i-*.dts allwinner/sun6i-*.dts allwinner/sun7i-*.dts allwinner/sun8i-*.dts allwinner/sun9i-*.dts nvidia/tegra20-*.dts nvidia/tegra30-*.dts nvidia/tegra114-*.dts nvidia/tegra124-*.dts arm/vexpress-*.dts nxp/vf/vf500-*.dts nxp/vf/vf610-*.dts xen/xenvm-*.dts xilinx/zynq-*.dts ; do
+for dts in ti/omap/am335x-*.dts ti/omap/am3517*.dts ti/omap/am57xx-*.dts marvell/armada-370-*.dts marvell/armada-375-*.dts marvell/armada-385-*.dts marvell/armada-388-*.dts marvell/armada-398-*.dts marvell/armada-xp-*.dts broadcom/bcm2836*.dts marvell/dove-*.dts samsung/exynos4*.dts samsung/exynos5*.dts nxp/imx/imx5*.dts nxp/imx/imx6*.dts nxp/imx/imx7*.dts ti/keystone/keystone-*.dts amlogic/meson8-*.dts amlogic/meson8b-*.dts mediatek/mt76*.dts ti/omap/omap3*.dts ti/omap/omap4*.dts ti/omap/omap5*.dts qcom/qcom-*.dts rockchip/rk3*.dts intel/socfpga/socfpga_*.dts st/ste-*.dts allwinner/sun4i-*.dts allwinner/sun5i-*.dts allwinner/sun6i-*.dts allwinner/sun7i-*.dts allwinner/sun8i-*.dts allwinner/sun9i-*.dts nvidia/tegra114-*.dts nvidia/tegra124-*.dts nvidia/tegra20-*.dts nvidia/tegra30-*.dts arm/vexpress-*.dts nxp/vf/vf500-*.dts nxp/vf/vf610-*.dts xen/xenvm-*.dts xilinx/zynq-*.dts ; do
     target=${dts%*.dts}
     mkdir -p $PPDIR/$(dirname $target)
     cpp -x assembler-with-cpp -undef -D__DTS__ -nostdinc -I. -I$SRCDIR/include/ -I$SRCDIR/scripts/dtc/include-prefixes/ -P $target.dts -o $PPDIR/$target.dts
@@ -1326,7 +1326,7 @@ done
 
 %install
 cd pp
-for dts in ti/omap/am335x-*.dts ti/omap/am3517*.dts ti/omap/am57xx-*.dts marvell/armada-370-*.dts marvell/armada-375-*.dts marvell/armada-385-*.dts marvell/armada-388-*.dts marvell/armada-398-*.dts marvell/armada-xp-*.dts broadcom/bcm2836*.dts marvell/dove-*.dts samsung/exynos4*.dts samsung/exynos5*.dts nxp/imx/imx5*.dts nxp/imx/imx6*.dts nxp/imx/imx7*.dts ti/keystone/keystone-*.dts amlogic/meson8-*.dts amlogic/meson8b-*.dts mediatek/mt76*.dts ti/omap/omap3*.dts ti/omap/omap4*.dts ti/omap/omap5*.dts qcom/qcom-*.dts rockchip/rk3*.dts intel/socfpga/socfpga_*.dts st/ste-*.dts allwinner/sun4i-*.dts allwinner/sun5i-*.dts allwinner/sun6i-*.dts allwinner/sun7i-*.dts allwinner/sun8i-*.dts allwinner/sun9i-*.dts nvidia/tegra20-*.dts nvidia/tegra30-*.dts nvidia/tegra114-*.dts nvidia/tegra124-*.dts arm/vexpress-*.dts nxp/vf/vf500-*.dts nxp/vf/vf610-*.dts xen/xenvm-*.dts xilinx/zynq-*.dts ; do
+for dts in ti/omap/am335x-*.dts ti/omap/am3517*.dts ti/omap/am57xx-*.dts marvell/armada-370-*.dts marvell/armada-375-*.dts marvell/armada-385-*.dts marvell/armada-388-*.dts marvell/armada-398-*.dts marvell/armada-xp-*.dts broadcom/bcm2836*.dts marvell/dove-*.dts samsung/exynos4*.dts samsung/exynos5*.dts nxp/imx/imx5*.dts nxp/imx/imx6*.dts nxp/imx/imx7*.dts ti/keystone/keystone-*.dts amlogic/meson8-*.dts amlogic/meson8b-*.dts mediatek/mt76*.dts ti/omap/omap3*.dts ti/omap/omap4*.dts ti/omap/omap5*.dts qcom/qcom-*.dts rockchip/rk3*.dts intel/socfpga/socfpga_*.dts st/ste-*.dts allwinner/sun4i-*.dts allwinner/sun5i-*.dts allwinner/sun6i-*.dts allwinner/sun7i-*.dts allwinner/sun8i-*.dts allwinner/sun9i-*.dts nvidia/tegra114-*.dts nvidia/tegra124-*.dts nvidia/tegra20-*.dts nvidia/tegra30-*.dts arm/vexpress-*.dts nxp/vf/vf500-*.dts nxp/vf/vf610-*.dts xen/xenvm-*.dts xilinx/zynq-*.dts ; do
     target=${dts%*.dts}
     install -m 755 -d %{buildroot}%{dtbdir}/$(dirname $target)
     # install -m 644 COPYING %{buildroot}%{dtbdir}/$(dirname $target)
@@ -1370,10 +1370,10 @@ for dts in ti/omap/am335x-*.dts ti/omap/am3517*.dts ti/omap/am57xx-*.dts marvell
       allwinner/sun7i-*.dts) pkgname=dtb-sun7i;;
       allwinner/sun8i-*.dts) pkgname=dtb-sun8i;;
       allwinner/sun9i-*.dts) pkgname=dtb-sun9i;;
-      nvidia/tegra20-*.dts) pkgname=dtb-tegra2;;
-      nvidia/tegra30-*.dts) pkgname=dtb-tegra3;;
       nvidia/tegra114-*.dts) pkgname=dtb-tegra114;;
       nvidia/tegra124-*.dts) pkgname=dtb-tegra124;;
+      nvidia/tegra20-*.dts) pkgname=dtb-tegra2;;
+      nvidia/tegra30-*.dts) pkgname=dtb-tegra3;;
       arm/vexpress-*.dts) pkgname=dtb-vexpress;;
       nxp/vf/vf500-*.dts) pkgname=dtb-vf500;;
       nxp/vf/vf610-*.dts) pkgname=dtb-vf6;;

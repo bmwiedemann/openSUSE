@@ -7567,4 +7567,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>7.1.5 -- fixed sources; bugs: bsc#1012628 bsc#1264698 bsc#1271264 bsc#1272261</comment>
     <requestid>1368180</requestid>
   </revision>
+  <revision rev="852" vrev="1">
+    <srcmd5>3c8901debc8d6d4337ee2f7b03650948</srcmd5>
+    <version>7.1.6</version>
+    <time>1785944877</time>
+    <user>dimstar_suse</user>
+    <comment>7.1.6 &amp; crasher removal; bugs: bsc#1012628 bsc#1273084</comment>
+    <requestid>1369227</requestid>
+  </revision>
 </revisionlist>

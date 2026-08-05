@@ -17,7 +17,7 @@
 
 
 %define srcversion 7.1
-%define patchversion 7.1.5
+%define patchversion 7.1.6
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -25,9 +25,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,arch-symbols,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           dtb-armv6l
-Version:        7.1.5
+Version:        7.1.6
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g862e13e
+Release:        <RELEASE>.gae5c1b5
 %else
 Release:        0
 %endif
@@ -38,7 +38,7 @@ URL:            https://www.kernel.org/
 BuildRequires:  cpp
 BuildRequires:  dtc >= 1.4.3
 BuildRequires:  xz
-ExclusiveArch:  armv6l armv6hl
+ExclusiveArch:  armv6hl
 
 %define dtbdir /boot/dtb-%kernelrelease
 
