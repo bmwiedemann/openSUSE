@@ -29,7 +29,7 @@
 %{?!primary_python:%define primary_python python3}
 
 Name:           xen
-ExclusiveArch:  %ix86 x86_64
+ExclusiveArch:  %ix86 x86_64 aarch64
 %define xen_build_dir xen-4.22.0-testing
 #
 %define with_gdbsx 0
@@ -960,7 +960,9 @@ rm -f  %{buildroot}/usr/lib/systemd/system-sleep/xen-watchdog-sleep.sh
 /usr/sbin/xenlockprof
 /usr/sbin/xenmon
 /usr/sbin/xenperf
+%ifnarch aarch64
 /usr/sbin/xenpm
+%endif
 /usr/sbin/xenpmd
 /usr/sbin/xenstored
 /usr/sbin/xentop

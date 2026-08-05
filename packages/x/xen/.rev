@@ -3190,4 +3190,12 @@
     <comment>Security and Maintenance Update. Update to Xen to version 4.22.0 which includes several security fixes and features. Also fixed dropped changelog spec file change.</comment>
     <requestid>1368922</requestid>
   </revision>
+  <revision rev="377" vrev="2">
+    <srcmd5>1a749c1de5e1fc3c268c208177d9ddef</srcmd5>
+    <version>4.22.0_02</version>
+    <time>1785944797</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1369538</requestid>
+  </revision>
 </revisionlist>
