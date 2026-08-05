@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Tue Aug  4 08:20:49 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20260803.00
+  * Bump cloud.google.com/go/auth from 0.18.0 to 0.22.0 (#1032)
+- from version 20260730.00
+  * Bump golang.org/x/crypto from 0.52.0 to 0.54.0 (#1028)
+- from version 20260729.02
+  * authenticate cloud build to use docker registry (#1030)
+- from version 20260729.01
+  * Migrate e2e build to internal image (#1024)
+- from version 20260728.04
+  * Upgrade google.golang.org/grpc to new version. (#1023)
+- from version 20260728.02
+  * Improve unit tests for ospatch/yum_update.go (#1012)
+- from version 20260728.01
+  * Improve unit tests for ospatch/updates.go (#1011)
+- from version 20260728.00
+  * Add unit tests for config/package_resource.go PART 2 (#1005)
+- from version 20260722.01
+  * Add unit tests for config/package_resource.go PART 1 (#1003)
+- from version 20260722.00
+  * Add unit tests for policies/local.go (#1015)
+- from version 20260721.01
+  * Add unit tests for repository_resource.go (#1002)
+- from version 20260721.00
+  * Add unit tests for installrecipe.go part 2 (#993)
+- from version 20260717.02
+  * Add unit tests for scalibr.go (#1019)
+- from version 20260717.01
+  * Add unit tests for installrecipe.go part 1 (#992)
+- from version 20260717.00
+  * Add test cases for policies/recipes/recipedb.go (#989)
+- from version 20260714.00
+  * Bump golang.org/x/crypto (#1021)
+- from version 20260709.00
+  * Add unit tests for policies/recipes/steps.go PART 3 (#976)
+- Drop CVE-2026-56852.patch, merged upstream
+
+-------------------------------------------------------------------
 Thu Jul 23 14:55:42 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - CVE-2026-56852: golang.org/x/text/unicode/norm: infinite loop on
