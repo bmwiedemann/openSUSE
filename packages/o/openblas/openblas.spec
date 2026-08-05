@@ -147,6 +147,21 @@ ExclusiveArch:  do_not_build
 %define p_cmakedir %{p_libdir}/cmake/%{pname}
 %define num_threads 64
 
+%if %{with alternatives}
+# Every flavour carries the SONAME libopenblas.so.0, but the libraries
+# themselves live in the private flavour directory, which the dynamic linker
+# does not search. The only thing that makes that SONAME loadable is the
+# update-alternatives link owned by the matching compatlib package. So drop
+# the automatic provide from the flavour packages -- they advertise a SONAME
+# they cannot satisfy -- and let the compat package provide it explicitly
+# instead. Otherwise a consumer such as libarpack2 resolves its
+# libopenblas.so.0 requirement against the flavour package alone and then dies
+# at load time with "libopenblas.so.0: cannot open shared object file".
+# Installed systems get away with it because zypper honours the Supplements
+# below, but OBS build roots and --no-recommends installations do not.
+%global __provides_exclude ^libopenblas\\.so\\.%{so_v}
+%endif
+
 %if 0%{?sha1:1}
 %define v_string %{sha1}
 %else
@@ -224,6 +239,15 @@ Enhances:       update-alternatives
 Obsoletes:      lib%{name}%{so_a} <= 0.3.30
 # Automatically install compatlib when upgrading from >= 0.3.30
 Supplements:    (lib%{name}%{so_a} and update-alternatives)
+# This package owns the update-alternatives link, so it -- and not the flavour
+# package -- is what actually satisfies a libopenblas.so.0 dependency. The link
+# is a %%ghost, so the provide has to be spelled out by hand; see the
+# __provides_exclude comment above.
+ %if "%{__isa_bits}" == "64"
+Provides:       libopenblas.so.%{so_a}()(64bit)
+ %else
+Provides:       libopenblas.so.%{so_a}
+ %endif
 
  %if "%flavor" == "serial"
 Obsoletes:      lib%{pname}%{so_v} < %{version}

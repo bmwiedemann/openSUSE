@@ -966,4 +966,22 @@ Currently, openSUSE:Factory:Staging:E.
   libopenblas_FLAVOUR packages conflict with each other.</comment>
     <requestid>1368371</requestid>
   </revision>
+  <revision rev="80" vrev="4">
+    <srcmd5>d7469f2e88fef4a0be002a7dd9e58751</srcmd5>
+    <version>0.3.33</version>
+    <time>1785944777</time>
+    <user>dimstar_suse</user>
+    <comment>Let the compat package provide libopenblas.so.0 instead of the flavour package
+
+Every flavour carries the SONAME libopenblas.so.0 but keeps its libraries in a
+private flavour directory, so the automatic provide advertised a SONAME the
+dynamic linker could not resolve. The update-alternatives link that does make it
+resolvable belongs to the compatlib package, reachable only through Supplements,
+which OBS build roots do not honour. Consumers resolved against the flavour
+package and failed at load time -- for example libarpack2, which broke every
+gdal-linked package in Application:Geo.
+
+Merged as science/openblas#8.</comment>
+    <requestid>1369393</requestid>
+  </revision>
 </revisionlist>

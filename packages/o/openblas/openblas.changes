@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Aug  2 09:59:47 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Let the compat package provide libopenblas.so.0 instead of the
+  flavour package:
+  * every flavour carries the SONAME libopenblas.so.0, but the
+    libraries live in the private flavour directory, so the automatic
+    provide advertises a SONAME the dynamic linker cannot resolve
+  * the update-alternatives link that does make it resolvable belongs
+    to the compatlib package, which was only reachable through
+    Supplements, and OBS build roots do not honour Supplements
+  * consumers therefore resolved against the flavour package alone and
+    then failed at load time, for example libarpack2, which broke
+    every gdal-linked package in Application:Geo
+  * filter the generated provide and declare it on the compat package
+
+-------------------------------------------------------------------
 Wed Jul 29 10:15:31 UTC 2026 - Eugenio Paolantonio <eugenio.paolantonio@suse.com>
 
 - Keep building the devel libraries on the "serial" flavour
