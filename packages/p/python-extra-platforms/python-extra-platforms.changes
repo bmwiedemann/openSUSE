@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Aug  4 07:44:06 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 13.6.0:
+  * Add AlmaLinux platform detection: ALMALINUX / is_almalinux()
+    (via ID=almalinux in os-release).
+  * Add EndeavourOS platform detection: ENDEAVOUROS /
+    is_endeavouros() (via ID=endeavouros in os-release). Closes
+    #658.
+  * Unrecognized shell, terminal, CI and agent warnings now report
+    the environment variables (SHELL, TERM, CI, LLM, ...) each is
+    detected from, not just the architecture/platform primitives.
+
+-------------------------------------------------------------------
 Mon Aug  3 07:28:20 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 13.5.3:
