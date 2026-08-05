@@ -19,4 +19,17 @@
     <time>1785933039</time>
     <user>dimstar_suse</user>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>03ab9968dba01485ba2cd87e4de5d8f1</srcmd5>
+    <version>unknown</version>
+    <time>1785933185</time>
+    <user>dimstar_suse</user>
+    <comment>Not proper CPEID yet</comment>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>a8ac8ea9f625baae587ea0a76071fc63</srcmd5>
+    <version>unknown</version>
+    <time>1785933321</time>
+    <user>dimstar_suse</user>
+  </revision>
 </revisionlist>
