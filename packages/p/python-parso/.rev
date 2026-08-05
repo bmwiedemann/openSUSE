@@ -238,4 +238,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1352316</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>8777189341772bb278d96ea50385a333</srcmd5>
+    <version>0.8.7</version>
+    <time>1785944771</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch support-python-315.patch:
+  * Support exception and parsing changes for Python 3.15.</comment>
+    <requestid>1369347</requestid>
+  </revision>
 </revisionlist>

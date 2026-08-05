@@ -1,0 +1,109 @@
+From 979bc48bc0cb456d4437ace3fe7f6a36b4777fb5 Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Wed, 29 Jul 2026 10:16:15 +1000
+Subject: [PATCH] Support Python 3.15 exception message changes
+
+Python 3.15 changed the wording of some SyntaxError exceptions to make
+it clearer.
+
+Closes #239
+---
+ parso/python/errors.py | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/parso/python/errors.py b/parso/python/errors.py
+index 09c5047..0916fb3 100644
+--- a/parso/python/errors.py
++++ b/parso/python/errors.py
+@@ -973,7 +973,10 @@ def is_issue(self, node):
+                 continue
+ 
+             if p.name.value in param_names:
+-                message = "duplicate argument '%s' in function definition"
++                if sys.version_info[:2] < (3, 15):
++                    message = "duplicate argument '%s' in function definition"
++                else:
++                    message = "duplicate parameter '%s' in function definition"
+                 self.add_issue(p.name, message=message % p.name.value)
+             param_names.add(p.name.value)
+ 
+From e5f0d8ca31fbcf252a29a451ddf79b0659a8f8ba Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Thu, 30 Jul 2026 11:17:59 +1000
+Subject: [PATCH] Support more Python 3.15 exception changes
+
+Python 3.15 changed the wording of some SyntaxError exceptions to make
+it clearer. The previous PR only fixed one instance.
+---
+ parso/python/errors.py     | 5 ++++-
+ test/failing_examples.py   | 9 +++++++--
+ test/test_python_errors.py | 8 ++++++--
+ 3 files changed, 17 insertions(+), 5 deletions(-)
+
+diff --git a/parso/python/errors.py b/parso/python/errors.py
+index 0916fb3..c51a36d 100644
+--- a/parso/python/errors.py
++++ b/parso/python/errors.py
+@@ -659,7 +659,10 @@ def is_issue(self, leaf):
+ 
+ @ErrorFinder.register_rule(value='*')
+ class _StarCheck(SyntaxRule):
+-    message = "named arguments must follow bare *"
++    if sys.version_info[:2] < (3, 15):
++        message = "named arguments must follow bare *"
++    else:
++        message = "named parameters must follow bare *"
+ 
+     def is_issue(self, leaf):
+         params = leaf.parent
+diff --git a/test/failing_examples.py b/test/failing_examples.py
+index a555fde..af0c711 100644
+--- a/test/failing_examples.py
++++ b/test/failing_examples.py
+@@ -139,7 +139,6 @@ def build_nested(code, depth, base='def f():\n'):
+     'del *a, b',
+     'def x(*): pass',
+     '(%s *d) = x' % ('a,' * 256),
+-    '{**{} for a in [1]}',
+     '(True,) = x',
+     '([False], a) = x',
+     'def x(): from math import *',
+@@ -229,7 +228,6 @@ def build_nested(code, depth, base='def f():\n'):
+     'async def foo():\n yield x\n return 1',
+     'async def foo():\n yield x\n return 1',
+ 
+-    '[*[] for a in [1]]',
+     'async def bla():\n def x():  await bla()',
+     'del None',
+     'del True',
+@@ -423,3 +421,10 @@ def y():
+     FAILING_EXAMPLES += [
+         'from .__future__ import whatever',
+     ]
++
++if sys.version_info[:2] < (3, 15):
++    # these nested expression successfully evaluate with 3.15
++    FAILING_EXAMPLES += [
++        '[*[] for a in [1]]',
++        '{**{} for a in [1]}',
++    ]
+diff --git a/test/test_python_errors.py b/test/test_python_errors.py
+index 0c89016..a3fdaa1 100644
+--- a/test/test_python_errors.py
++++ b/test/test_python_errors.py
+@@ -275,9 +275,13 @@ def test_named_argument_issues(works_not_in_py):
+     message = works_not_in_py.get_error_message('def foo(*, **dict): pass')
+     message = works_not_in_py.get_error_message('def foo(*): pass')
+     if works_not_in_py.version.startswith('2'):
+-        assert message == 'SyntaxError: invalid syntax'
++        wanted = 'SyntaxError: invalid syntax'
+     else:
+-        assert message == 'SyntaxError: named arguments must follow bare *'
++        if sys.version_info[:2] < (3, 15):
++            wanted = 'SyntaxError: named arguments must follow bare *'
++        else:
++            wanted = 'SyntaxError: named parameters must follow bare *'
++    assert message == wanted
+ 
+     works_not_in_py.assert_no_error_in_passing('def foo(*, name): pass')
+     works_not_in_py.assert_no_error_in_passing('def foo(bar, *, name=1): pass')

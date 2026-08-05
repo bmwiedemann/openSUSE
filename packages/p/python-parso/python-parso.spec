@@ -24,6 +24,8 @@ Summary:        An autocompletion tool for Python
 License:        MIT AND Python-2.0
 URL:            https://github.com/davidhalter/parso
 Source0:        https://files.pythonhosted.org/packages/source/p/parso/parso-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#davidhalter/parso#240 & gh#davidhalter/parso#241
+Patch0:         support-python-315.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 3.0.7}
 BuildRequires:  %{python_module setuptools}
