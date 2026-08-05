@@ -29,7 +29,7 @@
 %if %{with use_poetry_for_dependencies}
 %global Twisted_version               24.7.0
 %global Jinja2_version                3.1.5
-%global Pillow_version                12.2.0
+%global Pillow_version                12.3.0
 %global PyYAML_version                6.0.3
 %global attrs_version                 26.1.0
 %global bcrypt_version                5.0.0
@@ -231,7 +231,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.157.2
+Version:        1.158.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        AGPL-3.0-or-later

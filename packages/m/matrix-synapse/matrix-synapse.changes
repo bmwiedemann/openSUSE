@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Tue Aug  4 21:56:49 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.158.0
+  - Features
+    - Change default room version to 11, implementing MSC4239 as
+      part of Matrix v1.14. (#18680)
+    - Add animation support to the media thumbnailer, gated behind
+      the animated query parameter on the thumbnail endpoint
+      (defaults to off). (#18831)
+    - Return M_USER_LIMIT_EXCEEDED error code for media upload
+      limits from MSC4335. (#18876)
+    - Add Synapse Module API hook that notifies modules when events
+      are delivered over federation
+      (register_federation_callbacks(...)). (#20019)
+  - Bugfixes
+    - Fix third-party (3pid) invites over federation failing
+      intermittently in version 12 rooms, whose room IDs no longer
+      encode a server name. (#19898)
+    - Fix /createRoom intermittently failing with a 500 error in
+      version 12 rooms when the same user creates several rooms at
+      once, due to colliding room IDs. (#19898)
+    - Fix server key cache invalidations being silently dropped on
+      workers. (#19966)
+    - Fix HomeServer.shutdown() not being able to cleanly shutdown
+      the homeserver (caused by Rust code referencing Python
+      DatabasePool). (#20009)
+  - Improved Documentation
+    - Clarify the usage of the guests parameter when using the List
+      Accounts (V2) admin API with the Matrix Authentication
+      Service integration enabled. (#19963)
+  - Deprecations and Removals
+    - Remove package build targets for Ubuntu 25.10 'Questing
+      Quokka' (end-of-life 2026-07-01). (#20039)
+  - Internal Changes
+    - Add package build targets for Ubuntu 26.04 'Resolute
+      Raccoon'. (#20039)
+    - Update release script JSON schema find/replace task to be
+      compatible with macOS. (#19962)
+    - Remove alert silencing deploy step from release script
+      instructions as it's no longer necessary. (#19968)
+    - Link to changelog instead of duplicating content in the
+      tag/release. (#19984)
+    - Fix RemoteJoinHelper test helper signing events with the
+      default room version (room version mismatch). (#20015)
+    - Fix assertIncludes printing None at the end of the message.
+      (#20020)
+
+-------------------------------------------------------------------
 Sun Aug  2 08:26:28 UTC 2026 - Oliver Kurz <okurz@suse.com>
 
 - Add python-devel to BuildRequires for rust abi3 linking

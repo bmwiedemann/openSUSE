@@ -1854,4 +1854,14 @@ mostly-working synapse than nothing at all) and the package has been update to
     <comment>Add python-devel to BuildRequires for rust abi3 linking</comment>
     <requestid>1369070</requestid>
   </revision>
+  <revision rev="167" vrev="1">
+    <srcmd5>0c3c222909d3a04107d8602afc790a9e</srcmd5>
+    <version>1.158.0</version>
+    <time>1785944982</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1369602 from darix
+
+- Update to 1.158.0</comment>
+    <requestid>1369603</requestid>
+  </revision>
 </revisionlist>
