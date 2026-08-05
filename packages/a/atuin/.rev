@@ -1607,4 +1607,14 @@
     <comment>Update to version 18.18.1: (forwarded request 1368193 from develop7)</comment>
     <requestid>1368194</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>bdad7638fe1c24f021c2bbc85f956428</srcmd5>
+    <version>18.19.0</version>
+    <time>1785944888</time>
+    <user>dimstar_suse</user>
+    <comment>- add BuildRequires: openssl-devel
+- add a vendor tag to work around pre-existing vendor dir in upstream tarball
+- Update to version 18.19.0: (forwarded request 1369481 from develop7)</comment>
+    <requestid>1369482</requestid>
+  </revision>
 </revisionlist>

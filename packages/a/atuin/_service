@@ -3,7 +3,8 @@
   <service name="cargo_vendor" mode="manual">
     <param name="src">https://github.com/atuinsh/atuin</param>
     <param name="update">true</param>
-    <param name="revision">v18.18.1</param>
+    <param name="revision">v18.19.0</param>
+    <param name="tag">deps</param>
     <param name="versionrewriteregex">^v?(.*)</param>
     <param name="versionrewritepattern">${1}</param>
     <param name="changesgenerate">false</param>
