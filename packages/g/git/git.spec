@@ -57,7 +57,7 @@ Source5:        usr.share.git-web.gitweb.cgi
 Source6:        susefirewall-git-daemon
 Source7:        https://www.kernel.org/pub/software/scm/git/%{name}-%{version}.tar.sign
 Source8:        %{name}.keyring
-Source9:        %{name}-gui.desktop
+Source9:        %{name}-gui.desktop.in
 Source10:       %{name}-gui.png
 Source11:       git-daemon.conf
 Source12:       git-prompt
@@ -85,7 +85,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  tcsh
-BuildRequires:  update-desktop-files
+BuildRequires:  translate-suse-desktop
 BuildRequires:  xz
 %if 0%{?suse_version} > 1600
 BuildRequires:  cargo-packaging
@@ -329,6 +329,7 @@ directory /git/ that calls the cgi script.
 
 %prep
 %autosetup -p1
+cp %{SOURCE9} .
 
 %build
 # update shebang to use python3
@@ -372,6 +373,8 @@ chmod 755 .make
 ./.make -C contrib/credential/libsecret
 %endif
 ./.make -C contrib/subtree/
+
+%translate_suse_desktop %{name}-gui.desktop
 
 %if 0%{?suse_version} >= 1500
 %sysusers_generate_pre %{SOURCE11} git-daemon git-daemon.conf
@@ -450,10 +453,9 @@ cp -a Documentation/technical/*.adoc "%{buildroot}/%{_docdir}/git/technical/"
 %{!?_without_docs: cp -a Documentation/technical/*.html "%{buildroot}/%{_docdir}/git/technical/"}
 
 install -d -m 755 %{buildroot}%{_datadir}/applications
-install -m 644 %{SOURCE9} %{buildroot}%{_datadir}/applications
+install -D -m 0644 %{name}-gui.desktop %{buildroot}%{_datadir}/applications/%{name}-gui.desktop
 install -d -m 755 %{buildroot}%{_datadir}/pixmaps
 install -m 644 %{SOURCE10} %{buildroot}%{_datadir}/pixmaps
-%suse_update_desktop_file %{buildroot}%{_datadir}/applications/%{name}-gui.desktop
 
 %if 0%{?suse_version} >= 1500
 mkdir -p %{buildroot}%{_sysusersdir}
