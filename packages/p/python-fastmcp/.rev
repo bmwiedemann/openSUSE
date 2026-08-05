@@ -39,4 +39,30 @@
     <comment>Update to 3.4.5 (metapackage, locked to python-fastmcp-slim 3.4.5 submitted as SR 1368132 — please co-stage)</comment>
     <requestid>1368136</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>c3850eadae234812db3c5259d269665b</srcmd5>
+    <version>3.4.5</version>
+    <time>1785944951</time>
+    <user>dimstar_suse</user>
+    <comment>Build the whole fastmcp monorepo from one source package.
+
+python-fastmcp now produces python3NN-fastmcp, python3NN-fastmcp-slim and the
+newly packaged python3NN-fastmcp-remote from the single upstream fastmcp sdist,
+which already contains all three distributions.
+
+MUST BE ACCEPTED TOGETHER WITH the delete request for python-fastmcp-slim: that
+source package built python3NN-fastmcp-slim until now, and accepting this
+request alone would leave Factory with two sources producing the same binary.
+
+The slim binary package is unchanged. Diffed against the currently published
+python313-fastmcp-slim: 891 site-packages files identical, 39 requires
+identical - so nothing consuming it breaks. Binary names are unchanged too;
+python3NN-fastmcp-remote is the only addition.
+
+This retires the release lockstep between the two source packages, which had to
+be bumped and staged together for every upstream release. It also lets the slim
+subpackage ship a license file, which the standalone fastmcp_slim sdist does not
+contain at all.</comment>
+    <requestid>1369572</requestid>
+  </revision>
 </revisionlist>

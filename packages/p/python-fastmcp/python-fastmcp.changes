@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Aug  4 17:55:58 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Build all three fastmcp distributions from this one source package:
+  * the fastmcp-slim subpackage is now produced here instead of from
+    a separate python-fastmcp-slim source package; its file list and
+    its dependencies are unchanged, so nothing consuming it breaks
+  * retires the lockstep that required bumping and staging both
+    source packages together for every upstream release
+  * slim now ships a license file, which the upstream fastmcp_slim
+    sdist does not contain at all
+- Package fastmcp-remote: the standalone stdio bridge that lets MCP
+  clients which spawn local processes reach servers hosted over
+  Streamable HTTP or SSE
+- Set UV_DYNAMIC_VERSIONING_BYPASS so the subprojects are versioned
+  correctly instead of falling back to 0.0.0 outside a git checkout
+- Update URL to the current upstream project location
+
+-------------------------------------------------------------------
 Tue Jul 28 06:05:18 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 3.4.5:
