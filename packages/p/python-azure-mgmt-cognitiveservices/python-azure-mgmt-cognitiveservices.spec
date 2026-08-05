@@ -16,11 +16,11 @@
 #
 
 
-%define realversion 15.0.0b2
+%define realversion 15.0.0b4
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-cognitiveservices
-Version:        15.0.0~b2
+Version:        15.0.0~b4
 Release:        0
 Summary:        Microsoft Azure Cognitive Services Management Client Library
 License:        MIT
