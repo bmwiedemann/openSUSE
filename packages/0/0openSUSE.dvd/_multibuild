@@ -1,10 +1,4 @@
 <multibuild>
-  <flavor>leap_dvd5_aarch64</flavor>
-  <flavor>leap_dvd5_ppc64le</flavor>
-  <flavor>leap_dvd5_s390x</flavor>
-  <flavor>leap_dvd5_x86_64</flavor>
-  <flavor>leap_mini_aarch64</flavor>
-  <flavor>leap_mini_ppc64le</flavor>
-  <flavor>leap_mini_s390x</flavor>
-  <flavor>leap_mini_x86_64</flavor>
+  <flavor>tw_dvd5_x86_64</flavor>
+  <flavor>tw_mini_x86_64</flavor>
 </multibuild>

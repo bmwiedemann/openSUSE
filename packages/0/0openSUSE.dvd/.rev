@@ -6,4 +6,17 @@
     <user>dimstar_suse</user>
     <comment>osc copypac from project:openSUSE:Leap:16.1:Products package:000productcompose.dvd revision:129, using expand</comment>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8f2aaac07507aa5f4dd655761b32de85</srcmd5>
+    <version>unknown</version>
+    <time>1785932735</time>
+    <user>dimstar_suse</user>
+    <comment>Initial hack for offline medium</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>76df612b1d170f7e9b057e289425a596</srcmd5>
+    <version>unknown</version>
+    <time>1785933039</time>
+    <user>dimstar_suse</user>
+  </revision>
 </revisionlist>
