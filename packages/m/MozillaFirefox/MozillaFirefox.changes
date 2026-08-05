@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Aug  4 15:49:19 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Firefox 153.0.3
+  https://www.firefox.com/en-US/firefox/153.0.3/releasenotes/
+  * The smart window suggestion list now shows more results, making
+    it easier to find history and switch to open tabs. (bmo#2019042)
+  * The smart window assistant can now answer questions directly
+    using web search results from Exa, instead of handing off to a
+    search engine. (bmo#2046183, bmo#2044385)
+  * Fixed audio and video failing to play, or hanging when seeking,
+    on websites that load media from a Blob URL. (bmo#2056444)
+  * Fixed the Bookmarks, History, and other sidebars failing to
+    open when the sidebar is hidden and the password manager has
+    been turned off by an enterprise policy. (bmo#2056857)
+  * Fixed a Mozilla VPN upgrade offer appearing for people in
+    regions where Mozilla VPN is not sold. (bmo#2058264)
+  * Fixed frequent Inspector crashes in the Developer Tools on
+    pages where an extension content script had added event
+    listeners. (bmo#2042101)
+- refresh upstream signing key
+
+-------------------------------------------------------------------
 Wed Jul 29 15:43:57 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Mozilla Firefox 153.0.1
