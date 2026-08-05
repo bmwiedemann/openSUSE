@@ -97,7 +97,7 @@ applications when running on a KDE Plasma workspace.
 Applications do not need to link to this directly.
 
 %package plugin
-Summary:        Plugins responsible for better integration of Qt applications in KDE Workspace
+Summary:        Plugins responsible for better integration of Qt 6 applications in KDE Workspace
 Requires:       hack-fonts
 Requires:       noto-sans
 Requires:       xdg-desktop-portal-kde6
@@ -107,12 +107,22 @@ Requires:       qqc2-breeze-style6
 Provides:       plasma5-integration-plugin < %{version}
 Obsoletes:      plasma5-integration-plugin < %{version}
 Obsoletes:      plasma5-integration-plugin-lang < %{version}
+%if %{with plasma5}
+Requires:       (%{name}-plugin-qt5 if libQt5Core5)
+%endif
 
 %description plugin
 Plasma Integration is a set of plugins responsible for better integration of Qt
 applications when running on a KDE Plasma workspace.
 
 Applications do not need to link to this directly.
+
+%package plugin-qt5
+Summary:        Plugins responsible for better integration of Qt 5 applications in KDE Workspace
+Requires:       %{name}-plugin = %{version}
+
+%description plugin-qt5
+%{name}-plugin, but for Qt 5 applications.
 
 %lang_package -n plasma6-integration-plugin
 
@@ -137,12 +147,15 @@ Applications do not need to link to this directly.
 
 %files plugin
 %license LICENSES/*
+%dir %{_kf6_plugindir}/platformthemes
+%{_kf6_plugindir}/platformthemes/KDEPlasmaPlatformTheme6.so
+
 %if %{with plasma5}
+%files plugin-qt5
+%license LICENSES/*
 %{_kf5_plugindir}/platformthemes
 %{_kf5_plugindir}/platformthemes/KDEPlasmaPlatformTheme5.so
 %endif
-%dir %{_kf6_plugindir}/platformthemes
-%{_kf6_plugindir}/platformthemes/KDEPlasmaPlatformTheme6.so
 
 %files -n plasma6-integration-plugin-lang -f plasmaintegration5.lang
 
