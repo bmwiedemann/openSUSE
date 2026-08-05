@@ -184,6 +184,7 @@
     <package name="breeze6-decoration" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="breeze6-style" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="breeze6-style-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="breeze6-style-qt5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="brltty" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="brltty-driver-at-spi2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="brltty-driver-brlapi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2677,7 +2678,7 @@
     <package name="libstorage-ng-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libstorage-ng-ruby" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libstorage-ng1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libsubid5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libsubid6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libsuitesparseconfig7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libsvrcore0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="libswresample6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -3397,6 +3398,7 @@
     <package name="plasma6-disks-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="plasma6-integration-plugin" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="plasma6-integration-plugin-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="plasma6-integration-plugin-qt5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="plasma6-kimpanel-ibus" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="plasma6-nm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="plasma6-nm-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->

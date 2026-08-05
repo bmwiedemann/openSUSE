@@ -12240,7 +12240,6 @@ unsorted:
   - libaugeas0-32bit 
   - libauparse0-32bit 
   - libautotrace3 
-  - libav-tools 
   - libavahi-devel 
   - libavahi-glib-devel 
   - libavahi-glib1-32bit 
@@ -12725,7 +12724,7 @@ unsorted:
   - libcfile1 
   - libcg3-1 
   - libcglm0 
-  - libcgmic3 
+  - libcgmic4 
   - libcgns4_4 
   - libcgroup-devel 
   - libcgroup-pam 
@@ -13746,7 +13745,7 @@ unsorted:
   - libgme-devel 
   - libgme0-32bit 
   - libgmic-devel 
-  - libgmic3 
+  - libgmic4 
   - libgmime-3_0-0 
   - libgmobile0 
   - libgmodule-2_0-0-32bit 
@@ -14112,8 +14111,8 @@ unsorted:
   - libheif-devel 
   - libheif1-32bit 
   - libheinz-devel 
-  - libhfst56 
-  - libhfst_c0 
+  - libhfst57 
+  - libhfst_c57 
   - libhfstospell11 
   - libhfstospell11-32bit 
   - libhibr-devel 
@@ -20105,6 +20104,7 @@ unsorted:
   - nfpm-bash-completion 
   - nfpm-fish-completion 
   - nfpm-zsh-completion 
+  - nfs-tools-extra 
   - nfs4-acl-tools 
   - nfsidmap-devel 
   - nfswatch 
@@ -24486,7 +24486,6 @@ unsorted:
   - python313-Django 
   - python313-Django4 
   - python313-Django5 
-  - python313-Django6 
   - python313-Dumper 
   - python313-Durus 
   - python313-EasyProcess 
@@ -25903,6 +25902,7 @@ unsorted:
   - python313-fastimport 
   - python313-fastjsonschema 
   - python313-fastmcp 
+  - python313-fastmcp-remote 
   - python313-fastmcp-slim 
   - python313-fastnumbers 
   - python313-fastparquet 
@@ -27017,6 +27017,7 @@ unsorted:
   - python313-pikepdf 
   - python313-pilkit 
   - python313-pillow-heif 
+  - python313-pillow-jxl-plugin 
   - python313-pims 
   - python313-pingparsing 
   - python313-pip-api 
@@ -27219,6 +27220,7 @@ unsorted:
   - python313-pyemd 
   - python313-pyenchant 
   - python313-pyerfa 
+  - python313-pyexiv2 
   - python313-pyexmdb 
   - python313-pyface 
   - python313-pyfakefs 
@@ -28460,7 +28462,6 @@ unsorted:
   - python314-Django 
   - python314-Django4 
   - python314-Django5 
-  - python314-Django6 
   - python314-Dumper 
   - python314-Durus 
   - python314-EasyProcess 
@@ -29912,6 +29913,7 @@ unsorted:
   - python314-fastimport 
   - python314-fastjsonschema 
   - python314-fastmcp 
+  - python314-fastmcp-remote 
   - python314-fastmcp-slim 
   - python314-fastnumbers 
   - python314-fastparquet 
@@ -31050,6 +31052,7 @@ unsorted:
   - python314-pikepdf 
   - python314-pilkit 
   - python314-pillow-heif 
+  - python314-pillow-jxl-plugin 
   - python314-pims 
   - python314-pingparsing 
   - python314-pip 
@@ -31265,6 +31268,7 @@ unsorted:
   - python314-pyemd 
   - python314-pyenchant 
   - python314-pyerfa 
+  - python314-pyexiv2 
   - python314-pyexmdb 
   - python314-pyface 
   - python314-pyfakefs 
@@ -34551,6 +34555,7 @@ unsorted:
   - skupper-fish-completion 
   - skupper-zsh-completion 
   - sl 
+  - slack-mcp-server 
   - slade 
   - slang-devel 
   - slang-slsh 
