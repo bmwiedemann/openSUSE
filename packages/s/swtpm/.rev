@@ -384,4 +384,22 @@ As discussed before we are going to move SELinux modules from /var/lib/selinux t
   - Add patch: 1271417-drop-tunable-requires.patch (forwarded request 1365931 from cahu)</comment>
     <requestid>1365938</requestid>
   </revision>
+  <revision rev="27" vrev="5">
+    <srcmd5>7b565a4d362ac5eee36c7418d68c5264</srcmd5>
+    <version>0.10.1</version>
+    <time>1785944795</time>
+    <user>dimstar_suse</user>
+    <comment>Backported patch.
+
+- Fix SELinux policy for virtqemud_t swtpm_t setsched
+  process and unix socket interactions. Allows virtqemud_t to: Signal and
+  control swtpm_t processes (noatsecure, rlimitinh, siginh, signull, setsched),
+  create and listen on Unix stream sockets with swtpm_t processes (bsc#1266339).
+  Already accepted on upstream:
+  https://github.com/stefanberger/swtpm/pull/1132
+- Add patch: 1132.patch
+
+You can proceed with the version bump for Leap 16.0 described in https://bugzilla.suse.com/show_bug.cgi?id=1266339 (forwarded request 1368441 from JMarcosHP01)</comment>
+    <requestid>1369535</requestid>
+  </revision>
 </revisionlist>

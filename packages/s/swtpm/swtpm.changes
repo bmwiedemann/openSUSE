@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jul 30 04:37:06 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Fix SELinux policy for virtqemud_t swtpm_t setsched
+  process and unix socket interactions. Allows virtqemud_t to: Signal and
+  control swtpm_t processes (noatsecure, rlimitinh, siginh, signull, setsched),
+  create and listen on Unix stream sockets with swtpm_t processes (bsc#1266339).
+  Already accepted on upstream:
+  https://github.com/stefanberger/swtpm/pull/1132
+- Add patch: 1132.patch
+
+-------------------------------------------------------------------
 Wed Jul 15 10:12:51 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
 
 - Drop tunable in require to avoid policy loading issues

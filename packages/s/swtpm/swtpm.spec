@@ -44,6 +44,8 @@ Patch0:         swtpm-fix-build.patch
 Patch1:         https://patch-diff.githubusercontent.com/raw/stefanberger/swtpm/pull/1027.patch
 # PATCH-FIX-UPSTREAM - cahu@suse.de bsc#1271417 drop tunable requires as it overrides booleanif
 Patch2:         1271417-drop-tunable-requires.patch
+# PATCH-FIX-UPSTREAM - jehuherrerap@hotmail.com bsc#1266339 allow unix_stream_socket and setsched for virtqemud
+Patch3:         https://patch-diff.githubusercontent.com/raw/stefanberger/swtpm/pull/1132.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  expect
