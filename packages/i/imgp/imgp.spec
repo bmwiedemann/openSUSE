@@ -1,7 +1,7 @@
 #
 # spec file for package imgp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,11 @@
 #
 
 
+%if 0%{?suse_version} <= 1600
+%define _fish_completions %{_datadir}/fish/completions
+%else
+%define _fish_completions %{_datadir}/fish/vendor_completions.d
+%endif
 Name:           imgp
 Version:        2.9
 Release:        0
@@ -71,7 +76,8 @@ BuildArch:      noarch
 ZSH command line completion support for %{name}.
 
 %prep
-%setup -q
+%autosetup -p1
+sed -e 's|/usr/bin/env |/usr/bin/|' -i imgp imgp.1
 
 %build
 # not required
@@ -79,10 +85,10 @@ ZSH command line completion support for %{name}.
 %install
 %make_install PREFIX=%{_prefix} DOCDIR=%{buildroot}%{_defaultdocdir}/%{name}
 mkdir -pv %{buildroot}%{_datadir}/bash-completion/completions \
-          %{buildroot}%{_datadir}/fish/completions \
+          %{buildroot}%{_fish_completions} \
           %{buildroot}%{_datadir}/zsh/site-functions
 install -m0644 auto-completion/bash/%{name}-completion.bash -t %{buildroot}%{_datadir}/bash-completion/completions
-install -m0644 auto-completion/fish/%{name}.fish -t %{buildroot}%{_datadir}/fish/completions
+install -m0644 auto-completion/fish/%{name}.fish -t %{buildroot}%{_fish_completions}
 install -m0644 auto-completion/zsh/_%{name} -t %{buildroot}%{_datadir}/zsh/site-functions
 
 %files
@@ -95,7 +101,7 @@ install -m0644 auto-completion/zsh/_%{name} -t %{buildroot}%{_datadir}/zsh/site-
 %{_datadir}/bash-completion/completions/%{name}-completion.bash
 
 %files fish-completion
-%{_datadir}/fish/completions/%{name}.fish
+%{_fish_completions}/%{name}.fish
 
 %files zsh-completion
 %{_datadir}/zsh/site-functions/_%{name}
