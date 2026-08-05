@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Aug  4 08:50:56 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.43.3
+  * Use AWS_WARNINGS_ARE_ERRORS to restrict -Werror by @xiazhvera in (#891)
+  * Remove unused API by @xiazhvera in (#890)
+- from version 0.43.2
+  * Use latest version of aws-crt-builder by @sfod in (#895)
+  * bind out encoded and decoded length for base 64 encodings
+    by @sbiscigl in (#896)
+- from version 0.43.1
+  * Add tcp nodelay option to socket options by @DmitriyMusatkin in (#893)
+- from version 0.43.0
+  * IoT Metrics Support by @xiazhvera in (#868)
+- from version 0.42.3
+  * Update Submodules by @sbSteveK in (#886)
+- from version 0.42.2
+  * bump version of c-common by @sbiscigl in (#884)
+- from version 0.42.1
+  * Bump crt c-s3 by @DmitriyMusatkin in (#882)
+
+-------------------------------------------------------------------
 Fri Jul 17 08:24:45 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.42.0
