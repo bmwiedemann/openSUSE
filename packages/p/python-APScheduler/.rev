@@ -314,4 +314,19 @@
     <comment></comment>
     <requestid>1343534</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>d87daca10187f5e5d62e28eda28f2422</srcmd5>
+    <version>3.11.3</version>
+    <time>1785944963</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.11.3:
+  * Fixed sub-minute interval jobs stalling for the duration of a
+    DST spring-forward gap when the scheduler was configured with
+    a ZoneInfo time zone, caused by the wakeup delay being
+    computed from the naive wall-clock difference instead of the
+    actual UTC difference
+  * Fixed imported jobs missing their scheduler and job store
+    links</comment>
+    <requestid>1369591</requestid>
+  </revision>
 </revisionlist>

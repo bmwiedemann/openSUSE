@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Aug  4 21:13:50 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.11.3:
+  * Fixed sub-minute interval jobs stalling for the duration of a
+    DST spring-forward gap when the scheduler was configured with
+    a ZoneInfo time zone, caused by the wakeup delay being
+    computed from the naive wall-clock difference instead of the
+    actual UTC difference
+  * Fixed imported jobs missing their scheduler and job store
+    links
+
+-------------------------------------------------------------------
 Sun Mar 29 17:58:01 UTC 2026 - Tim Neujahr <timnjr.opensuse.reference660@passmail.net>
 
 - Skip test_broken_pool in %check: the test is flaky due to PID reuse
