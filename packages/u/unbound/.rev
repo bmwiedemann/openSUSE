@@ -876,4 +876,12 @@ Features
     [bsc#1271890]</comment>
     <requestid>1367379</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>c01bbb4f6404a4d9283a554a02ff6f90</srcmd5>
+    <version>1.26.0</version>
+    <time>1785944785</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.26.0</comment>
+    <requestid>1369459</requestid>
+  </revision>
 </revisionlist>

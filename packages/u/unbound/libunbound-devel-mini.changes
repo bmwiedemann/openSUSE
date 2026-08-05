@@ -1,4 +1,184 @@
 -------------------------------------------------------------------
+Tue Aug  4 09:13:53 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to 1.26.0:
+  * Update icannbundle.pem certificates in unbound-anchor, valid
+    for 2009-2029 and 2025-2045
+  * Add max-transfer-size and max-transfer-time options to limit
+    auth-zone and rpz transfer size and time, default disabled
+  * Overload local_data_remove in unbound-control to also remove
+    specific records
+  * Add local-zone types block_aaaa, block_a_wdata and
+    block_aaaa_wdata; fix respip+dns64 to use original A records
+    instead of ones already modified by respip
+  * ipsecmod hook script now needs to start with '#!/bin/sh', it
+    is executed with execv instead of system for security
+  * Server now continues to start if a secondary zone fails to
+    load from its zonefile, or if a primary zonefile is missing;
+    $INCLUDE is no longer allowed in secondary zone zonefiles
+  * Auth-zone and RPZ zones now drop out-of-zone content on load
+  * Primary hostname for zone transfers can now use CNAME(s)
+  * Fix windows 64bit build for libssp dependency
+  * Update IANA portlist
+  * Fix heap out-of-bounds write via size_t-to-int truncation in
+    setup_if()/outside_network_create() for large num_ports values
+  * Fix to clean up log ids after a failure to start a worker
+    thread
+  * Relax assertions after the TTL 0 handling change in cachedb
+    and packet_rrset_copy_region
+  * Fix val_find_DS to check the result of packet_rrset_copy_region
+    before using it
+  * Fix that dns64 answers check the AAAA query is DNSSEC
+    validated, improving RFC6147 conformance
+  * Fix allocation-failure hardening of rrset cache wildcard
+    storage and canonical NSEC owner replacement
+  * Fix DNSSEC validation and DNSKEY size calculation for
+    noncanonical RSA DNSKEYs with leading zeroes
+  * Fix mixed class referrals to use the query class
+  * Fix serve-expired responses from cachedb to not store bogus
+    data
+  * Fix lame server detection for selfpointed glue records
+  * Fix cleanup of DoH sessions when the same query is on multiple
+    streams
+  * Fix for signed same-owner CNAME and ordinary RRset responses
+  * Fix mesh new client/callback to roll back added address, tcp
+    mesh state and callback on initialization failure
+  * Fix autotrust state-file line overflow that could give a
+    hold-down bypass
+  * Fix to limit the DSNS per-label walk in the iterator
+  * Fix that the ratelimit is decremented on successful referrals
+  * Fix msgencode insert_query assertion for a local_alias
+  * Fix to reset the tcp-timeout before applying a load based
+    reduction
+  * Fix to correctly decrement per-netblock tcp connection limits
+  * Fix, in depth, for respip rewrite of dns64 responses
+  * Fix that dns64 with subnetcache does not write ECS scoped
+    answers to the global cache
+  * Fix ipset module name-too-long checks and race conditions on
+    the local name buffer and socket close
+  * Fix validator to cap the number of ANY RRsets it validates and
+    shorten the wait timer
+  * Fix race condition causing segfault when starting threads
+  * Fix header_seen detection for trust anchor files to detect the
+    id line
+  * Fix heap use-after-free in class response processing when at
+    least two distinct classes are configured
+  * Fix negative cache to work with NSEC3 records without salt
+  * Fix parse of svcbparam ech, it had an incorrect length
+  * Fix that quotation and escaping works the same in auth-zone
+    url content as in zonefile reads
+  * Fix ipset module to use larger domain name buffers and check
+    buffer lengths
+  * Fix PROXYv2 header read and consume to check the header size
+  * Fix negative cache NSEC3 nodata proof to use the correct
+    message size
+  * Fix fast_reload for when a ZONEMD lookup is in progress
+  * Fix that validation canonicalization of domain names in rdata
+    checks buffer bounds
+  * Fix dump_cache to use a larger record buffer and check that an
+    owner name does not collide with BADRR
+  * Fix that dns64 cleans up the allocated message if the adjust
+    routines fail, and checks for malformed A/AAAA in auth-zones
+  * Fix pythonmod script read for numeric overflow
+  * Fix configure to detect the correct QUIC early-data function
+    and to check for the ngtcp2_crypto_ossl header
+  * Fix compile with OpenSSL 4.0.1, and with OpenSSL 1.0.2 and
+    earlier in server cleanup
+  * Fix that auth-zone/rpz allow-notify addresses and netblocks
+    are available from start, and fix the probe step skip
+  * Fix to perform a full transfer periodically to stop increasing
+    memory usage for rpz zones
+  * Fix assertion failure for a long HTTP header that fills the
+    buffer, and buffer overflow with lower than default size and
+    http transfer
+  * Fix that misconfigured iter-scrub-ns: 0 causes request failures
+  * Fix fast_reload handling of in-progress ZONEMD lookups and of
+    removing an auth zone while its lookups are in progress
+  * Fix integer overflow in infra-cache-max-rtt calculation and for
+    very high values of sock-queue-timeout
+  * Fix erroneous DNS error report values after a bogus AAAA query
+  * Fix fast_reload to not terminate the server on config errors
+    for key files
+  * Fix log of an aliased qname to not use freed region memory
+  * Fix DNAME synthesis from cache to keep using 0TTL entries
+    within a sliding window without surpassing RRSIG expiry
+  * Fix that dns64 bypasses the rpz-passthru rule during synthesis
+  * Fix to disallow $INCLUDE for secondary zones; failed loads now
+    clear the zone data so there is no partial zone
+  * Fix zone read to allow SVCB records in unknown format that
+    cannot be written out
+  * Fix that a half-written trust anchor file does not crash the
+    server at runtime
+  * Fix that auth-zone and RPZ zones drop out-of-zone records
+  * Fix that dns64 honors the forward-no-cache and stub-no-cache
+    options
+  * Fix that a signed wildcard NSEC is checked before use, so it
+    does not allow insecure DS proofs inappropriately
+  * Fix several crashes after malloc failure: half-built
+    local_alias, RPZ list, delegation point cleanup,
+    dns64_inform_super, new_local_rrset for RPZ qname trigger, doq
+    connection setup, ngtcp2_conn_server_new, TCP accept handling,
+    rpz_strip_nsdname, edns subnet addrtree insert, and rpz
+    response create
+  * Fix that a zonefile-only zone continues server startup with a
+    warning if the file is missing on start
+  * Fix that dnscrypt configuration does not crash on a
+    secret/public key mismatch, and duplicate files are skipped
+  * Fix locking in libunbound ub_ctx_set_event
+  * Fix that libunbound pipe functions fail with an error after an
+    event base is set
+  * Fix incorrect cleanup after an allocation failure for a
+    delegation point
+  * Fix that the server does not crash if shared memory cannot be
+    created for shm-enable
+  * Fix auth primary host name lookup to allow CNAMEs
+  * Fix memory leak on DNAME 0TTL records
+  * Fix that fast_reload disown of the auth zone transfer task
+    cleans up the chunk list
+  * Fix unbound-checkconf to check for auth-zone download filename
+    collisions
+  * Fix malloc failure in auth-zone insert rr to avoid an empty
+    node and infinite loop
+  * Fix that unbound-control auth_zone_reload stops answering from
+    the zone after a read failure
+  * Fix stats pipe draining after a malloc failure so internal
+    messaging stays correct, and the server no longer exits on
+    stats pipe communication failure
+  * Fix that fast_reload does not terminate the server if random
+    init for DNS cookies fails
+  * Fix thread setname for dnstap and fast_reload thread start
+  * Add libunbound/remote.h, a shared header with prototypes for
+    remote control connections
+  * Fix DEREF_AFTER_NULL on worker_init when stat_timer allocation
+    fails with an out of memory error
+  * Fix DoH POST requests missing content-length causing :status
+    400 from strict resolvers like Cloudflare and Mullvad
+  * Fix randomness generation on macOS/iOS under chroot
+  * Fix ipsecmod deref on null in ipsecmod-whitelist after OOM, and
+    possible deref on null after reply_find_answer_rrset()
+  * Fix that DoQ responses were never padded; pad-responses now
+    applies to comm_doq per RFC 9250 section 5.4
+  * Fix log printout error in the fix for CVE-2026-50248 when the
+    primary name is bogus
+  * Fix NSEC3 proofs to check the b32 name matches the signer name;
+    RRSIGs are no longer valid when this does not match
+  * Fix aggressive negative cache to not insert NSEC records with
+    an overreaching next owner name outside the trust anchor's
+    bailiwick
+  * Fix mesh cycle detection for respip CNAME loop with tagged
+    clients
+  * Fix unbound-anchor to check the return value of
+    X509_NAME_get_text_by_NID for the emailaddress
+  * Fix locking of the shared_ports structure during
+    initialisation, and of the anchor structure when a file is set
+    during header parsing
+  * Fix memory leak in xfer_set_masters() error path in authzone
+  * Fix to use tls-port after a referral when tls-upstream is set
+  * Fix pthread detection on Solaris 11.4
+  * Fix to call OPENSSL_cleanup on exit when it is defined
+  * pythonmod: check the return value after ftell()
+
+-------------------------------------------------------------------
 Thu Jul 23 10:10:09 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Update to 1.25.2:
