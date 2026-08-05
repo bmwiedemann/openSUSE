@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %ifnarch ppc64le
 %bcond_without krita_plugin
 %endif
@@ -50,7 +51,7 @@
 %define gmic_datadir %{_datadir}/gmic
 
 Name:           gmic
-Version:        3.6.6
+Version:        4.0.3
 Release:        0
 Summary:        GREYC's Magick for Image Computing (denoise and others)
 # gmic-qt is GPL-3.0-or-later, zart is CECILL-2.0, libgmic and cli program are
@@ -124,25 +125,25 @@ several different user interfaces to convert/manipulate/filter/visualize
 generic image datasets, from 1d scalar signals to 3d+t sequences of
 multi-spectral volumetric images.
 
-%package -n libgmic3
+%package -n libgmic4
 Summary:        Shared library that belongs to gmic
 License:        CECILL-2.1
 
-%package -n libcgmic3
+%package -n libcgmic4
 Summary:        Shared library that belongs to gmic
 License:        CECILL-2.1
 
 %package -n libgmic-devel
 Summary:        Header and library from gmic for use in other C++ projects
 License:        CECILL-2.1
-Requires:       libcgmic3 = %{version}
-Requires:       libgmic3 = %{version}
+Requires:       libcgmic4 = %{version}
+Requires:       libgmic4 = %{version}
 
-%description -n libgmic3
+%description -n libgmic4
 This shared library allows using gmic functionality from other
 programs.
 
-%description -n libcgmic3
+%description -n libcgmic4
 This shared library allows using gmic functionality from other
 programs.
 
@@ -280,8 +281,8 @@ install -D -m 0755 build/gmic_gimp_qt %{buildroot}%{_gimpplugindir}/gmic_gimp_qt
 %endif
 popd
 
-%ldconfig_scriptlets -n libgmic3
-%ldconfig_scriptlets -n libcgmic3
+%ldconfig_scriptlets -n libgmic4
+%ldconfig_scriptlets -n libcgmic4
 
 %files
 %doc README gmic-qt/README.md
@@ -309,11 +310,11 @@ popd
 %endif
 %endif
 
-%files -n libgmic3
+%files -n libgmic4
 %license COPYING
 %{_libdir}/libgmic.so.*
 
-%files -n libcgmic3
+%files -n libcgmic4
 %license COPYING
 %{_libdir}/libcgmic.so.*
 
