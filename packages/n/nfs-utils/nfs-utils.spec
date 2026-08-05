@@ -1,7 +1,6 @@
 #
 # spec file for package nfs-utils
 #
-# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,7 +22,7 @@
 %endif
 
 Name:           nfs-utils
-Version:        2.9.1
+Version:        2.9.2
 Release:        0
 Summary:        Support Utilities for Kernel nfsd
 License:        GPL-2.0-or-later
@@ -63,7 +62,7 @@ BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(mount)
 BuildRequires:  pkgconfig(readline)
 BuildRequires:  pkgconfig(sqlite3)
-Suggests:       python-base
+Suggests:       nfs-tools-extra
 %{?systemd_ordering}
 
 %description
@@ -105,6 +104,15 @@ This package contains support for the kernel based NFS server. You can
 tune the number of server threads via the sysconfig variable
 USE_KERNEL_NFSD_NUMBER. For quota over NFS support, install the quota
 package.
+
+%package -n nfs-tools-extra
+Summary:        Extra support utils for NFS
+Group:          Productivity/Networking/NFS
+Requires:       python3-PyYAML
+
+%description -n nfs-tools-extra
+This package contains optional utilities for the client and kernel based
+server.
 
 %package -n libnfsidmap1
 Summary:        NFSv4 ID Mapping Library
@@ -259,15 +267,12 @@ fi
 %{_sbindir}/mount.nfs4
 %{_sbindir}/umount.nfs
 %{_sbindir}/umount.nfs4
-%attr(0755,root,root) %{_sbindir}/mountstats
-%attr(0755,root,root) %{_sbindir}/nfsiostat
 %{_sbindir}/nfsdcld
 %{_sbindir}/nfsidmap
 %{_sbindir}/nfsstat
 %{_sbindir}/rpc.gssd
 %{_sbindir}/rpc.idmapd
 %{_sbindir}/rpc.statd
-%{_sbindir}/rpcctl
 %{_sbindir}/rpcdebug
 %{_sbindir}/showmount
 %{_sbindir}/sm-notify
@@ -308,20 +313,15 @@ fi
 %{_mandir}/man8/gssd.8%{ext_man}
 %{_mandir}/man8/idmapd.8%{ext_man}
 %{_mandir}/man8/mount.nfs.8%{ext_man}
-%{_mandir}/man8/mountstats.8%{ext_man}
 %{_mandir}/man8/nfsconf.8%{ext_man}
 %{_mandir}/man8/nfsdcld.8%{ext_man}
-%{_mandir}/man8/nfsdclddb.8%{ext_man}
-%{_mandir}/man8/nfsdclnts.8%{ext_man}
 %{_mandir}/man8/nfsidmap.8%{ext_man}
-%{_mandir}/man8/nfsiostat.8%{ext_man}
 %{_mandir}/man8/nfsstat.8%{ext_man}
 %{_mandir}/man8/rpc.gssd.8%{ext_man}
 %{_mandir}/man8/rpc.idmapd.8%{ext_man}
 %{_mandir}/man8/rpc.sm-notify.8%{ext_man}
 %{_mandir}/man8/rpc.statd.8%{ext_man}
 %{_mandir}/man8/rpc.svcgssd.8%{ext_man}
-%{_mandir}/man8/rpcctl.8%{ext_man}
 %{_mandir}/man8/rpcdebug.8%{ext_man}
 %{_mandir}/man8/showmount.8%{ext_man}
 %{_mandir}/man8/sm-notify.8%{ext_man}
@@ -354,8 +354,6 @@ fi
 %{_sbindir}/nfsdcltrack
 %{_sbindir}/nfsdctl
 %{_sbindir}/nfsref
-%attr(0755,root,root) %{_sbindir}/nfsdclddb
-%attr(0755,root,root) %{_sbindir}/nfsdclnts
 %{_mandir}/man5/exports.5%{ext_man}
 %{_mandir}/man7/nfsd.7%{ext_man}
 %{_mandir}/man8/exportfs.8%{ext_man}
@@ -366,6 +364,19 @@ fi
 %{_mandir}/man8/rpc.nfsd.8%{ext_man}
 %{_mandir}/man8/nfsdctl.8%{ext_man}
 %{_mandir}/man8/nfsdcltrack.8%{ext_man}
+
+%files -n nfs-tools-extra
+%attr(0755,root,root) %{_sbindir}/mountstats
+%attr(0755,root,root) %{_sbindir}/nfsdclddb
+%attr(0755,root,root) %{_sbindir}/nfsdclnts
+%attr(0755,root,root) %{_sbindir}/nfsiostat
+%attr(0755,root,root) %{_sbindir}/rpcctl
+%{_sbindir}/rpcctl
+%{_mandir}/man8/mountstats.8%{ext_man}
+%{_mandir}/man8/nfsdclddb.8%{ext_man}
+%{_mandir}/man8/nfsdclnts.8%{ext_man}
+%{_mandir}/man8/nfsiostat.8%{ext_man}
+%{_mandir}/man8/rpcctl.8%{ext_man}
 
 %files -n libnfsidmap1
 %{_libdir}/libnfsidmap-1.0.0/

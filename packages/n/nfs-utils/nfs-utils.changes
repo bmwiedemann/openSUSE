@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Mon Aug  3 15:33:21 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Require python3-PyYAML on openSUSE and SLE: the python-* symbol
+  is valid in both cases. On openSUSE, this is provided by the
+  module targetting the primary interpreter, which matches the
+  shebang of the python scripts lines being /usr/bin/python3.
+
+-------------------------------------------------------------------
+Mon Aug  3 09:57:15 UTC 2026 - Anthony Iliopoulos <ailiop@suse.com>
+
+- nfs-client: make the rpcctl util executable (bsc#1273197)
+
+  The specfile intentionally clears the execute bit for all python-based
+  utilities during the build, in order to prevent generating a package
+  dependency to the python interpreter. It subsequently restores the
+  execute bit explicitly for every single script. In the case of rpcctl
+  this was overlooked when the utility was introduced, and therefore it
+  was packaged without execute permissions. Fix this by restoring the
+  permissions.
+
+-------------------------------------------------------------------
+Mon Aug  3 02:36:59 UTC 2026 - Lidong Zhong <lidong.zhong@suse.com>
+
+- Introduce new sub-package nfs-tools-extra, and move all python-based
+  tools into that (bsc#1268167).
+
+  The nfs-utils base packages previously suggested python-base as a soft
+  dependency, as some of the less used tools rely on that. Some of those
+  have further specific python dependencies (such as nfsdclnts which
+  needs pyyaml).
+
+  We do not want to pull in python as a strict requirement to any of the
+  base nfs-utils packages to keep the base as minimal as possible. Thus
+  we introduce a new package (nfs-tools-extra) that includes all those
+  optional python-based tools, and make that package require pyyaml and
+  python transitively.
+
+  Also, the base packages now suggest nfs-tools-extra, instead of
+  python.
+
+-------------------------------------------------------------------
+Fri Jul 31 20:59:19 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.9.2:
+  * nfsd: fix memory overflow for haddr
+  * gssd: fix memory leak in gssd_free_client
+  * Pass ignore_hosts to export_create() in export_read()
+  * mountd/exportd: disable netlink when falling back to /proc
+  * nfs.conf: add no-netlink option to exportd and mountd stanzas
+  * nfsstat: display NFSv4 callback operation statistics
+  * libnfsidmap: avoid malloc(0) for empty Local-Realms
+  * exportfs: drop unused is_export parameter from xtab_read() and xtab_write()
+  * support/backend_sqlite.c: fix getrandom() fallback
+  * nfs-iostat: add option to display throughput in MB/s
+  * exportfs: release NFSv4 state when last client is unexported
+
+-------------------------------------------------------------------
 Mon Jun  1 06:46:46 UTC 2026 - Petr Vorel <pvorel@suse.cz>
 
 - Update to 2.9.1:
