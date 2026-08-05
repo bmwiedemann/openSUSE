@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Aug  4 07:43:52 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.4.11
+  * feat(openapi): extend --estimate-cost coverage (pricing context,
+    SLS/openapi path, oss bridge, by-triple) and scripting contract
+    by @api-tool-agent in (#1399)
+- from version 3.4.10
+  (no changes)
+- from version 3.4.9
+  * fix(maxc): fall back when symlink creation fails on Windows
+    by @yndu13 in (#1390)
+  * fix: quote-aware External process_command parsing by @yndu13 in (#1391)
+  * fix: POSIX line-continuation in External process_command splitting
+    by @yndu13 in (#1392)
+  * Improve invalid flag error with did-you-mean hints by @yndu13 in (#1394)
+  * fix: atomically write config.json via temp+rename by @yndu13 in (#1387)
+  * fix: detect throttling by x-acs-retry-after header by @yndu13 in (#1395)
+  * feat: add aliyun ecctl for Elastic Compute Control CLI by @yndu13 in (#1397)
+  * fix: allow --profile with aliyun oss subcommands by @yndu13 in (#1398)
+
+-------------------------------------------------------------------
 Fri Jul 17 09:09:08 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.4.8
