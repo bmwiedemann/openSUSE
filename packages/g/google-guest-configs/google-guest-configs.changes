@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug  4 06:43:57 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20260729.00 (bsc#1273385)
+  * set_multiqueue: extend x4-specific configs to future x series
+
+-------------------------------------------------------------------
 Thu Jul  9 13:48:03 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20260707.00

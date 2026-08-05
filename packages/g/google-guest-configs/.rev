@@ -518,4 +518,12 @@
   * Set max queue count for IDPF devices; remove broken virtio logic (forwarded request 1364729 from glaubitz)</comment>
     <requestid>1365367</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>0d05497d16da1b4d69c63af8a6c2fde3</srcmd5>
+    <version>20260729.00</version>
+    <time>1785944893</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1369486</requestid>
+  </revision>
 </revisionlist>
