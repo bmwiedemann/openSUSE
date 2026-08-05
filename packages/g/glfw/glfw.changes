@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Sat Aug  1 08:50:37 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.5.1
+  * Added GLFW_UNLIMITED_MOUSE_BUTTONS input mode that allows
+    mouse buttons beyond the limit of the mouse button tokens to be
+    reported.
+  * Added glfwGetEGLConfig function to query the EGLConfig of a
+    window.
+  * Added glfwGetGLXFBConfig function to query the GLXFBConfig of
+    a window.
+  * Updated minimum CMake version to 3.16 (#2541).
+  [Wayland] Bugfix:
+    + The fractional scaling related objects were not destroyed.
+    + glfwInit would segfault on compositor with no seat.
+    + A drag entering a non-GLFW surface could cause a segfault
+    + Ignore key repeat events when no window has keyboard focus.
+    + Reset key repeat timer when window destroyed (#2741,#2727).
+    + Memory would leak if reading a data offer failed midway.
+    + Retrieved cursor position would be incorrect when hovering
+      over fallback decorations.
+    + Fallback decorations would report scroll events.
+    + Keyboard repeat events halted when any key is released.
+    + Fallback decorations would show menu at wrong position.
+    + The cursor was not updated when clicking through from a modal
+      to a fallback decoration.
+    + The cursor position was not updated when clicking through
+      from a modal to the content area.
+    + free modules at end of terminate function to resolve
+      potential segmentation fault.
+    + Confining or disabling the cursor could segfault on
+      compositors without pointer-constraints-unstable-v1.
+    + Key repeat did not function on very old compositors.
+    + The libwayland-client library was not unloaded at termination
+    + Scroll events were sent twice on some versions of GNOME.
+    + Two-dimensional scroll input was emitted as separate axes.
+    + Mouse wheel scroll distance was incorrect on some compositors
+    + glfwSwapBuffers would halt with nonzero swap interval when
+      window was suspended (#1350,#2582,#2640,#2719,#2723,#2800,
+      #2827).
+    + glfwPostEmptyEvent would leak a callback proxy (#2836).
+    + glfwHideWindow did not always send its request immediately.
+    + Some event types were not always processed by glfwPollEvents
+      or glfwWait*Events (#2793,#2795)
+    + Scaled framebuffer size was sometimes incorect (#2713,#2810).
+  [X11] Bugfix:
+    * Running without a WM could trigger an assert (#2593,#2601,
+      #2631).
+    * Occasional crash when an idle display awakes (#2766).
+    * Prevent BadWindow when creating small windows with a content
+      scale less than 1 (#2754).
+    * Clamp width and height to >= 1 to prevent BadValue error and
+      app exit.
+    * Floating windows silently became non-floating when hidden.
+    * The libXext library was not unloaded at termination.
+  * [Linux] Bugfix: The header for ioctl was only implicitly
+    included (#2778)
+  * [Null] Added Vulkan ‘window’ surface creation via
+    VK_EXT_headless_surface.
+  * [Null] Added EGL context creation on Mesa via
+    EGL_MESA_platform_surfaceless
+  * [EGL] Allowed native access on Wayland with
+    GLFW_CONTEXT_CREATION_API set to GLFW_NATIVE_CONTEXT_API.
+
+-------------------------------------------------------------------
 Thu Feb 26 19:14:29 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Don't build with geany for SLES 16.x future releases. Keep it for TW.
