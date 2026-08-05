@@ -181,4 +181,20 @@
     release</comment>
     <requestid>1304680</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>718696738073520ccd5597f822ea5049</srcmd5>
+    <version>0.6.6</version>
+    <time>1785944973</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.6.6:
+  * Install failures due to missing/extra wheels now logged in
+    verbose mode Read 'HEAD' as branchname to run
+  * Require asv-runner&gt;=0.2.5 so environments get timeraw stderr
+    capture, SHA-256-compatible default benchmark versions with
+    optional token version_alts backfill, and
+    setup_cache/skip/env fixes. Avoids 0.2.2–0.2.4 regressions
+    (swallowed timeraw stderr; token-only version breaking
+    discovery tests / result identity).</comment>
+    <requestid>1369595</requestid>
+  </revision>
 </revisionlist>

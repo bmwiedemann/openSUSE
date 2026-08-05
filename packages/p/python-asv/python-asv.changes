@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Aug  4 21:15:25 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.6:
+  * Install failures due to missing/extra wheels now logged in
+    verbose mode Read 'HEAD' as branchname to run
+  * Require asv-runner>=0.2.5 so environments get timeraw stderr
+    capture, SHA-256-compatible default benchmark versions with
+    optional token version_alts backfill, and
+    setup_cache/skip/env fixes. Avoids 0.2.2–0.2.4 regressions
+    (swallowed timeraw stderr; token-only version breaking
+    discovery tests / result identity).
+
+-------------------------------------------------------------------
 Sun Sep 14 20:37:24 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.6.5:
