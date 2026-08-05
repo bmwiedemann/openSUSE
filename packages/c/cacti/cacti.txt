@@ -1,0 +1,83 @@
+Deploy cacti on a fresh SUSE host
+
+* Disable SELinux
+Edit /etc/default/grub and change selinux=1 to selinux=0 
+   (or set selinux=0 at the end)
+ # grub2-mkconfig -o /boot/grub2/grub.cfg OR
+   grub2-mkconfig -o /boot/efi/EFI/opensuse/grub.cfg
+ # systemctl reboot
+ # Alternately set SELINUX=permissive in /etc/selinux/config  & reboot
+
+* Install cacti-spine to use it instead of cmd.php poller
+ # zypper in cacti-spine
+
+* For updated recommendations see https://docs.cacti.net/Requirements.md
+
+* Prepare MariaDB
+Edit /etc/my.cnf
+ [mysqld]
+ innodb_doublewrite = OFF  #could cause data loss in power failure, is faster. use with caution.
+ collation_server = utf8mb4_unicode_520_ci
+ character-set-server=utf8mb4
+ collation-server=utf8mb4_unicode_ci
+ max_connection = 100  #total_connections = total_processes * (total_threads + script_servers + 1)
+
+Set a database password in the first invocation of 'mariadb',
+prepare a cacti database.
+ # systemctl enable --now mariadb.socket
+ # mariadb -u root -p < /usr/share/doc/packages/cacti/create-cacti-db.sql
+ # mariadb -u root -p
+   > CREATE DATABASE cacti DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ;
+   > CREATE USER 'cactiuser'@'localhost' IDENTIFIED BY 'MAKE-A-PASSWORD-HERE';
+   > GRANT ALL ON cacti.* TO 'cactiuser'@'localhost';
+   > GRANT SELECT ON mysql.time_zone_name TO 'cactiuser'@'localhost';
+   > FLUSH PRIVILEGES;
+   > EXIT;
+ # mariadb -u root cacti < /srv/www/cacti/cacti.sql
+ # mariadb-tzinfo-to-sql /usr/share/zoneinfo/ | mysql -u root -p mysql
+
+
+* Prepare PHP
+ # NOTE: memory_limit recommendations:
+ # Small (<500 Cacti Datasources) 400M-512M
+ # Medium (1000+ Data Sources) 1024M
+ # Enterprise  2048M to 4096M
+ # memory_limit = Total Data Sources X 32KB
+ 
+Edit /etc/php8/apache2/php.ini
+ memory_limit = 512M
+ max_execution_time = 66  # Set to 60-300 seconds
+Edit /etc/php8/cli/php.ini
+ memory_limit = 512M
+
+
+* Prepare Apache HTTP Server
+Edit /etc/apache2/conf.d/cacti.conf and /etc/apache2/vhosts.d/conf.d/cacti.conf
+Change all 'Require all denied' to 'Require all granted', unless you access this cacti instance from localhost.
+Enable cacti and start apache2
+ # a2enflag CACTI
+ # systemctl enable --now apache2
+ 
+
+* Prepare cacti
+Edit /srv/www/cacti/include/config.php, review the database_* settings at the beginning of the file.
+The provided defaults will likely work - set password from 'Prepare MariaDB' step
+If using cacti-spine also rename /etc/spine.conf.dist to /etc/spine.conf and update database password.
+Enable and start cacti
+ # systemctl enable --now cactid
+
+
+* Configure cacti
+Open http://FQDN/cacti
+Log in as admin/admin.
+Change admin password.
+Log in as admin with new password.
+Follow installation instructions.
+Review output in Pre-installation Checks, fix any reported errors, reload check with reload button.
+Install at minimum the Generic_SNMP_Device template. (for more templates see https://forums.cacti.net/viewforum.php?f=12 )
+Proceed and finish installation.
+
+Suggested changes:
+- Make graph templates larger: Configuration/Settings/General: Graph Template Defaults  like 300x900
+- If using Spine for poller: Configuration/Settings/Poller:: Poller Type spine, instead of cmd.php
+

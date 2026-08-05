@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Jul 28 20:27:15 UTC 2026 - Joel Baltazor <obs@mtlfab.com>
+
+- Update to version 1.2.31+git14.396480d3:
+  * fix: memoize db_get_table_column_types to cut redundant SHOW COLUMNS (1.2.x backport) (#7382)
+  * fix: #7245 raise execution time limit for bulk graph creation (#7378)
+  * FEAT:Allow admin to pass csv of hosts and changes for bulk edits (#7387)
+  * feature: Allow users to hide Graph Templates sub-branch on Site Trees (#7365)
+  * fix: Align update with the develop branch (#7361)
+  * fix: #7359 Undefined variables with legacy plugins (#7360)
+  * fix: explain missing special type for host fields (#7321)
+  * fix: allow configured external script root in script server (#7320)
+  * Fix aggregate totalling legend showing untotalled values (#7267)
+- Refined changes from olh <olaf@aepfle.de>
+- cacti >= 1.2.31 requires PHP > =8.1
+
+-------------------------------------------------------------------
+Wed Jul 22 22:22:22 UTC 2026 - olaf@aepfle.de
+
+- Remove recompression and compressed archive, the cpio is enough
+- Remove stale suse_version blocks, drop non-SUSE blocks
+- Remove stale cron files cacti.cron
+- Remove stale service handling from post install
+- Remove stale cacti-httpd.conf
+- Remove stale doc subpackage
+- Adjust requires to apache2 and mariadb
+- Adjust wording in description
+- Provide guidance for fresh deployment via cacti.txt
+- Simplify file list
+
+-------------------------------------------------------------------
 Thu Jul  9 13:14:00 UTC 2026 - Joel Baltazor <obs@mtlfab.com>
 
 - Update to version 1.2.31+git5.48d9fdd3:

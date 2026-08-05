@@ -581,4 +581,12 @@ CVE-2023-51448 boo#1218381
     <comment></comment>
     <requestid>1364733</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>6419d2b58ae358392dd922b125e638c4</srcmd5>
+    <version>1.2.31+git14.396480d3</version>
+    <time>1785944966</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1369586</requestid>
+  </revision>
 </revisionlist>
