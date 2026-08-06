@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Aug  5 10:45:57 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Fix required library name.
+
+-------------------------------------------------------------------
+Tue Aug  4 16:51:26 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Revert library naming. 
+- Re-enable compiler warnings.
+
+-------------------------------------------------------------------
+Tue May 26 04:39:55 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.9.18.1
+  * Removed unused variables.
+
+-------------------------------------------------------------------
+Fri Nov 15 12:32:57 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
+
+- Ignore warnings during compilation to fix Factory build
+
+-------------------------------------------------------------------
+Fri Feb 10 08:48:37 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.9.18
+  * Issue #89, test XSD validity.
+  * Issue #56, fixed XPath query search building.
+  * Propose the same folder of parent when saving an inner XML.
+  * New algorithm to anonymize data.
+  * Issue #84, added options for metadata installation folders.
+  * Issue #86, show license dialog at first startup.
+  * Issue #79, added quit to tray menu.
+
+-------------------------------------------------------------------
 Thu May 26 03:49:39 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.9.17

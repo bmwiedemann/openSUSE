@@ -191,4 +191,26 @@
     <comment></comment>
     <requestid>979270</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>a3fe7b006c452d7599286787d355d56c</srcmd5>
+    <version>0.9.18.1</version>
+    <time>1786026020</time>
+    <user>anag_factory</user>
+    <comment>- Fix required library name.
+- Revert library naming. 
+- Re-enable compiler warnings.
+- Update to version 0.9.18.1
+  * Removed unused variables.
+- Ignore warnings during compilation to fix Factory build
+- Update to version 0.9.18
+  * Issue #89, test XSD validity.
+  * Issue #56, fixed XPath query search building.
+  * Propose the same folder of parent when saving an inner XML.
+  * New algorithm to anonymize data.
+  * Issue #84, added options for metadata installation folders.
+  * Issue #86, show license dialog at first startup.
+  * Issue #79, added quit to tray menu.
+</comment>
+    <requestid>1369725</requestid>
+  </revision>
 </revisionlist>

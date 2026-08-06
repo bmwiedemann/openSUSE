@@ -1,7 +1,7 @@
 #
 # spec file for package qxmledit
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,10 @@
 #
 
 
-%define major   -0_9_17-0
+%define major   -0_9_18-1
+%define sover   0
 Name:           qxmledit
-Version:        0.9.17
+Version:        0.9.18.1
 Release:        0
 Summary:        XML Editor and XSD Viewer
 License:        LGPL-2.0-or-later AND LGPL-3.0-or-later
@@ -66,12 +67,12 @@ compare XML files. It can also few XSD files.
 * XSL specialized mode.
 * Element display via user customizable rules.
 
-%package -n libqxmledit%{major}
+%package -n libqxmledit%{sover}
 Summary:        XML Editor Shared Libraries
-# It actually contained libqxmledit-0.9.16.so.0.9.16
-Conflicts:      libqxmledit0
+Obsoletes:      libqxmledit%{major} <= %{version}
+Provides:       libqxmledit%{major} = %{version}
 
-%description -n libqxmledit%{major}
+%description -n libqxmledit%{sover}
 QXmlEdit is a XML editor written in Qt. It uses a tree-based
 interface to ease the edit of long files.
 
@@ -79,7 +80,7 @@ This package includes QXmlEdit shared libraries.
 
 %package devel
 Summary:        XML Editor Development Files
-Requires:       libqxmledit%{major} = %{version}-%{release}
+Requires:       libqxmledit%{sover} = %{version}-%{release}
 
 %description devel
 QXmlEdit is a XML editor written in Qt. It uses a tree-based
@@ -88,17 +89,20 @@ interface to ease the edit of long files.
 This package includes QXmlEdit development files.
 
 %prep
-%autosetup
+%autosetup -p0
 
 %build
 export QXMLEDIT_INST_DATA_DIR=%{_datadir}/%{name}/
 export QXMLEDIT_INST_DIR=%{_bindir}/
 export QXMLEDIT_INST_DOC_DIR=%{_defaultdocdir}/%{name}/
+export QXMLEDIT_INST_DESKTOPINFO_DIR=%{_datadir}/applications/
 export QXMLEDIT_INST_INCLUDE_DIR=%{_includedir}/%{name}/
 export QXMLEDIT_INST_LIB_DIR=%{_libdir}/
+export QXMLEDIT_INST_METAINFO_DIR=%{_datadir}/metainfo/
 export QXMLEDIT_INST_TRANSLATIONSDIR=%{_datadir}/%{name}/translations/
 export QXMLEDIT_INST_USE_C11=y
 export QXMLEDIT_NO_QWTPLOT=y
+
 %qmake5
 %make_jobs
 
@@ -111,26 +115,14 @@ install -Dm 0644 install_scripts/environment/icon/qxmledit_48x48.png \
 install -Dm 0644 src/images/icon.svg \
     %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 
-# Install an appdata file.
-install -Dm 0644 install_scripts/environment/desktop/QXmlEdit.appdata.xml \
-    %{buildroot}%{_datadir}/appdata/QXmlEdit.appdata.xml
-
-# Install a desktop file.
-install -Dm 0644 install_scripts/environment/desktop/QXmlEdit.desktop \
-    %{buildroot}%{_datadir}/applications/QXmlEdit.desktop
-
 # Install a manual page.
 install -Dm 0644 install_scripts/environment/man/%{name}.1 \
     %{buildroot}%{_mandir}/man1/%{name}.1
 
-# Remove redundant files.
-rm -f \
-    %{buildroot}%{_datadir}/%{name}/{QXmlEdit.appdata.xml,QXmlEdit.desktop}
-
 %suse_update_desktop_file QXmlEdit TextEditor Development Documentation Qt
 
-%post -n libqxmledit%{major} -p /sbin/ldconfig
-%postun -n libqxmledit%{major} -p /sbin/ldconfig
+%post -n libqxmledit%{sover} -p /sbin/ldconfig
+%postun -n libqxmledit%{sover} -p /sbin/ldconfig
 
 %files
 %license COPYING GPLV3.txt LGPLV3.txt
@@ -138,18 +130,18 @@ rm -f \
 %doc doc/QXmlEdit_manual.pdf
 %{_bindir}/%{name}
 %{_datadir}/%{name}/
-%{_datadir}/appdata/QXmlEdit.appdata.xml
+%{_datadir}/metainfo/QXmlEdit.appdata.xml
 %{_datadir}/applications/QXmlEdit.desktop
-%{_datadir}/icons/hicolor/*/*/%{name}.*
-%{_mandir}/man?/*
+%{_datadir}/icons/hicolor/*/apps/%{name}.*
+%{_mandir}/man1/%{name}.1%{?ext_man}
 
-%files -n libqxmledit%{major}
-%{_libdir}/libQXmlEdit*.so.*
+%files -n libqxmledit%{sover}
+%{_libdir}/libQXmlEdit{Sessions,Widget}.so.%{sover}*
 
 %files devel
 %license COPYING GPLV3.txt LGPLV3.txt
 %doc AUTHORS NEWS README ROADMAP TODO
 %{_includedir}/%{name}/
-%{_libdir}/libQXmlEdit*.so
+%{_libdir}/libQXmlEdit{Sessions,Widget}.so
 
 %changelog
