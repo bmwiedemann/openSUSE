@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Wed Aug  5 10:22:43 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package (version 0.44.2):
+  * Command line proxy that runs a wrapped command, filters and
+    compresses its output, and prints only the informative part, to
+    cut the number of tokens the result costs in an LLM context
+  * Ships output filters for build systems, linters, test runners,
+    version control and cloud tooling, and passes unrecognised
+    commands through unchanged
+  * Telemetry is opt-in only and stays off unless enabled explicitly
+- Add rtk-unbundle-sqlite.patch: build against the system SQLite
+  instead of the copy statically linked in from libsqlite3-sys, so
+  the binary is covered by the distribution SQLite updates; submitted
+  upstream as PR 3446
+- Add rtk-no-deny-warnings.patch: do not promote rustc warnings to
+  errors, the distribution rustc moves independently of the version
+  floor upstream builds against; submitted upstream as PR 3447

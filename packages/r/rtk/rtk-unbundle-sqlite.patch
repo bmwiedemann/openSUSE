@@ -1,0 +1,18 @@
+Link against the system SQLite instead of the copy bundled inside
+libsqlite3-sys. openSUSE packages must not ship bundled libraries: a
+statically linked SQLite would have to be tracked and patched separately
+for every SQLite CVE.
+
+Index: rtk-0.44.2/Cargo.toml
+===================================================================
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -22,7 +22,7 @@
+ serde_json = { version = "1", features = ["preserve_order"] }
+ colored = "3"
+ dirs = "5"
+-rusqlite = { version = "0.31", features = ["bundled"] }
++rusqlite = { version = "0.31" }
+ toml = "0.8"
+ chrono = "0.4"
+ tempfile = "3"

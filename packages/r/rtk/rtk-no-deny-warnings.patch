@@ -1,0 +1,17 @@
+Do not turn every rustc warning into a hard error.
+
+"warnings = deny" is a useful policy for upstream CI, which pins its own
+toolchain, but it makes the package fail to build the moment the distribution
+rustc (which moves independently of upstream's rust-version floor) grows a new
+lint. The unsafe_code deny is kept -- that one is a deliberate design
+constraint, not a lint-drift hazard.
+
+Index: rtk-0.44.2/Cargo.toml
+===================================================================
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -68,4 +68,3 @@
+
+ [lints.rust]
+ unsafe_code = "deny"
+-warnings = "deny"

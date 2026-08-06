@@ -1,0 +1,32 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0dcb593cdea7783d61c3f019b65c7e62</srcmd5>
+    <version>0.44.2</version>
+    <time>1786026325</time>
+    <user>anag_factory</user>
+    <comment>New package: rtk 0.44.2 (Rust Token Killer)
+
+Command line proxy for the shell commands coding agents run most often. It
+executes the wrapped command, filters and compresses the output, and prints
+only the informative part, cutting the tokens the result costs in an LLM
+context window. Ships filters for build systems, linters, test runners,
+version control and cloud tooling, and passes unrecognised commands through
+unchanged.
+
+Apache-2.0, single Rust binary, upstream https://github.com/rtk-ai/rtk
+
+Two downstream patches, both submitted upstream:
+- rtk-unbundle-sqlite.patch links the system SQLite instead of the copy
+  statically linked in from libsqlite3-sys, so the binary is covered by the
+  distribution SQLite updates (upstream PR 3446).
+- rtk-no-deny-warnings.patch stops rustc warnings being promoted to errors;
+  the distribution rustc moves independently of the version floor upstream
+  builds against (upstream PR 3447).
+
+Telemetry is opt-in only and stays off unless explicitly enabled.
+
+Verified on aarch64 (local) and x86_64 (OBS): builds green, test suite
+2584 passed / 0 failed, rpmlint 0 errors 0 warnings 0 badness.</comment>
+    <requestid>1369751</requestid>
+  </revision>
+</revisionlist>
