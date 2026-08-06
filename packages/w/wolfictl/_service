@@ -3,8 +3,8 @@
     <param name="url">https://github.com/wolfi-dev/wolfictl.git</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">main</param>
-    <param name="versionformat">v0.39.22</param>
+    <param name="revision">refs/tags/v0.39.24</param>
+    <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="changesgenerate">enable</param>
   </service>

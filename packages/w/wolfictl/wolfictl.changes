@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Aug 05 05:18:12 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.39.24:
+  * add release doc by @cpanato in #1697
+  * feat(dag): add WithDependenciesOnly option; sort the local
+    index's order by @egibs in #2033
+- Update to version 0.39.23:
+  * build(deps): bump zizmorcore/zizmor-action from 0.5.7 to 0.6.2
+    by @dependabot[bot] in #2019
+  * build(deps): bump chainguard-dev/actions/git-tag from 1.6.25 to
+    1.6.29 by @dependabot[bot] in #2020
+  * build(deps): bump actions/checkout from 7.0.0 to 7.0.1 by
+    @dependabot[bot] in #2021
+  * build(deps): bump goreleaser/goreleaser-action from 7.2.2 to
+    7.2.3 by @dependabot[bot] in #2022
+  * build(deps): bump chainguard-dev/actions/goimports from 1.6.25
+    to 1.6.29 by @dependabot[bot] in #2023
+  * build(deps): bump github.com/anchore/go-logger from 0.1.0 to
+    0.1.1 by @dependabot[bot] in #2029
+  * build(deps): bump golang.org/x/term from 0.44.0 to 0.45.0 by
+    @dependabot[bot] in #2028
+  * build(deps): bump actions/checkout from 6.0.3 to 7.0.1 in
+    /.github/actions by @dependabot[bot] in #2024
+  * build(deps): bump the chainguard group across 1 directory with
+    3 updates by @dependabot[bot] in #2025
+  * build(deps): bump actions/setup-go from 6.5.0 to 7.0.0 in
+    /.github/actions by @dependabot[bot] in #2031
+  * build(deps): bump actions/setup-go from 6.5.0 to 7.0.0 by
+    @dependabot[bot] in #2030
+  * fix(release): keep persist-credentials by @egibs in #2032
+
+-------------------------------------------------------------------
 Mon Jul 13 05:57:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.39.22:
