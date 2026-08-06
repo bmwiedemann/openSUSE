@@ -1,7 +1,7 @@
 #
 # spec file for package xdg-terminal-exec
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           xdg-terminal-exec
-Version:        20240120+git.efc3517
+Version:        20260729+git.065925d
 Release:        0
 Summary:        XDG terminal execution utility and default terminal specification
-# FIXME: Select a correct license from https://github.com/openSUSE/spec-cleaner#spdx-licenses
 License:        GPL-3.0-or-later
 URL:            https://github.com/Vladimir-csp/xdg-terminal-exec/
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  bats
+BuildRequires:  scdoc
 
 %description
 Utility for XDG terminal execution and defining a systems default graphical terminal emulator.
@@ -36,14 +36,15 @@ Utility for XDG terminal execution and defining a systems default graphical term
 :
 
 %install
-mkdir -p %{buildroot}%{_bindir}
-install -m 0755 xdg-terminal-exec %{buildroot}%{_bindir}
+%make_install prefix=%{_prefix}
 
 %check
 bats test
 
 %files
 %license LICENSE
-%{_bindir}/xdg-terminal-exec
+%{_bindir}/%{name}
+%{_datadir}/%{name}/
+%{_mandir}/man1/*
 
 %changelog

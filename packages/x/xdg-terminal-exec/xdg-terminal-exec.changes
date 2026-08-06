@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Wed Aug 05 08:32:54 UTC 2026 - zeus <dunning1kruger@mailfence.com>
+
+- Update to version 20260729+git.065925d:
+  * style: normalize function comments to be inside
+  * fix: Avoid locale-dependent pattern matching
+  * docs: start referencing implementations
+  * fix: fix blackbox default exec arg, fixes
+  * build: add DESTDIR support to makefile rules, remove gzipping 
+    step, prefix failable rule lines with -
+  * fix: add foot-server and footclient to fallback exclusions
+  * fix: fallback exclusion should not prevent registering entry 
+    alias, WIP 
+  * docs: meniton XTE_DEBUG var in manpage
+  * refactor: add xte__ prefix to all lower case vars
+  * refactor: add XTE__ prefix to all internal upper case vars
+  * build: add test for --print* options
+  * style: shfmt, spaces in usage
+  * refactor: Re-check all IFS assignments and drop IFS masking, 
+    normalize most assignments
+  * refactor: reduce number of forks on primary codepaths
+  * Change dir for unsupported --dir= arg, wip
+  * Configurable delimiter, help message
+  * Implement scripting options
+  * Add output options intended for scripting/parsing
+  * Exclude kitty-open.desktop from fallback selection
+  * Fix debug message when setting title option
+  * Preserve timestamps when installing
+  * Add test target to Makefile
+  * Fix TITLEARG checking
+  * Update readme
+  * Release v0.12.0
+  * Update readme
+  * Modify "quoting" test in accordance to expander/tokenizer rules
+  * String escape expander and Exec tokenizer
+  * Update manpage
+  * Drop X-TerminalArgClass, X-TerminalArgIdFallback, options, 
+    fallback logic
+  * Drop X-TerminalArgClass, X-TerminalArgIdFallback
+  * Fix config placement
+  * Release v0.11.0
+  * Enforce action listing in Actions
+  * add makefile
+  * Fix alias name typo
+  * Update manpage
+  * New keys, extend compat mode, update tests
+  * Update readme
+  * Compat mode, fix "first encounter" logic for directives
+  * Drop transition exception from spec (wip)
+  * Custom ExecArg defaults for various terminals
+  * Mandatory ExecArg with early adoption exclusion.
+  * Implement options
+  * Low priority config with fallback exclusions
+  * Discard options
+  * Fallback exclusion and low priority configuration.
+  * update specifications.freedesktop.org links
+  * update specifications.freedesktop.org links
+  * Add comment about scdoc
+  * revert options and release fix for empty exec arg + no 
+    command case
+  * proposed state notice and pending implementation
+  * Discard options
+  * Latest spec
+  * Enable cache by default, closes
+  * Add manpage
+  * Remove leftovers of alternative data dirs, misc
+  * Add tests for custom actions and comments
+  * Extend ExecArg paragraph
+  * Mention spec PR
+  * Stricter naming of the spec and implementation. Some misc 
+    elaborations.
+  * Reformat README.md
+  * expression always returned 1 for Hidden
+  * rename TERMINAL var, init global vars before use
+
+-------------------------------------------------------------------
 Sat Jan 20 22:59:49 UTC 2024 - mcepl@cepl.eu
 
 - Update to version 20240120+git.efc3517:
