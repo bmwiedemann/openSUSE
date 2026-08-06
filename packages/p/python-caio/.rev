@@ -39,4 +39,27 @@ produced caio-0.10.2.dist-info. Also drops the top-level tests package that
 upstream's wheel now installs into site-packages.</comment>
     <requestid>1369386</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>24a8e4b282a6cab0966caea59cde7b4a</srcmd5>
+    <version>0.12.2</version>
+    <time>1786026111</time>
+    <user>anag_factory</user>
+    <comment>Update python-caio to 0.12.2.
+
+- 0.11.2 adds io_uring SQPOLL support (on by default where the kernel offers it)
+  plus deferred submission batching
+- 0.12.0 makes all four backends safe under free-threaded CPython
+- 0.12.1 fixes the broken 0.12.0 Linux wheels (cp313-cp313t tag does not exist)
+- 0.12.2 stops thread_aio's thread pool on close() and moves the free-threading
+  classifier to Beta
+
+Built from the PyPI sdist as before. All seven tests the spec deselects still
+exist in 0.12.2, so the %check skip list is unchanged; the one new test file
+(test_free_threading.py) needs no additional build dependency.
+
+Verified locally on aarch64/openSUSE_Tumbleweed: 135 passed, 503 skipped,
+27 deselected; rpmlint 0 errors, 0 warnings; spec-cleaner diff empty;
+source_validator clean.</comment>
+    <requestid>1369632</requestid>
+  </revision>
 </revisionlist>

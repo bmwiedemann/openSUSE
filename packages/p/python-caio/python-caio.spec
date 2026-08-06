@@ -17,7 +17,7 @@
 
 
 Name:           python-caio
-Version:        0.11.1
+Version:        0.12.2
 Release:        0
 Summary:        Asynchronous file IO for Linux MacOS or Windows
 License:        Apache-2.0

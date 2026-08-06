@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Aug  5 05:29:56 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.12.2:
+  * thread_aio now stops its thread pool on close(), and the free
+    threading classifier moves to Beta
+- Changes from 0.12.1:
+  * Fix the broken 0.12.0 Linux wheels, which were built for a
+    cp313-cp313t tag that does not exist
+- Changes from 0.12.0:
+  * Make all four backends safe under free-threaded CPython
+- Changes from 0.11.2:
+  * Add io_uring SQPOLL support, enabled by default where the kernel
+    offers it, together with deferred submission batching
+
+-------------------------------------------------------------------
 Tue Aug  4 05:37:37 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.11.1:
