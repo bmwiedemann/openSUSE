@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug  4 21:27:08 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 50.0.0:
+  * Update test vectors to match python-cryptography 50.0.0
+
+-------------------------------------------------------------------
 Sun Jun 14 09:03:02 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 49.0.0:

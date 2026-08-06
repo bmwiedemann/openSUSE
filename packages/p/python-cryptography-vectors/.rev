@@ -507,4 +507,13 @@
   * Update test vectors to match python-cryptography 49.0.0</comment>
     <requestid>1359213</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>5ddfda3e25115034b38d2501ecf4a035</srcmd5>
+    <version>50.0.0</version>
+    <time>1786025876</time>
+    <user>anag_factory</user>
+    <comment>- update to 50.0.0:
+  * Update test vectors to match python-cryptography 50.0.0</comment>
+    <requestid>1369598</requestid>
+  </revision>
 </revisionlist>
