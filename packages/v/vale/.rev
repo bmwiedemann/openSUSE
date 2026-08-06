@@ -1077,4 +1077,28 @@
   * feat: allow a setting to be given for a whole style (forwarded request 1368914 from jfkw)</comment>
     <requestid>1368915</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>6d806d0cd7800b727b657ac0a5819431</srcmd5>
+    <version>3.17.1</version>
+    <time>1786027077</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.17.1:
+  * tests: add case for block change
+  * perf: spend fewer cores on startup and more on large blocks
+  * perf: hoist a lookaround shared by every swap key
+  * perf: skip compiling rules the config can never run
+  * fix: give each Org file its own HTML writer
+  * chore: bump regexp2
+  * feat: build for Windows on ARM
+  * refactor: Warn on unrecognized core options
+  * fix: pin the comment fixtures to LF
+  * docs: stop pinning a version in the security policy
+  * test: replace the Cucumber suite with YAML-driven Go tests
+  * fix: resolve the default config during a dry run
+  * perf: size the converter pools to the run, not the host
+  * Update SECURITY.md
+  * docs: fix old links
+  * fix: bound and validate rule-embedded scripts (forwarded request 1369929 from jfkw)</comment>
+    <requestid>1369930</requestid>
+  </revision>
 </revisionlist>

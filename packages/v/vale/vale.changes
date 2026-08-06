@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Aug 05 20:17:58 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 3.17.1:
+  * tests: add case for block change
+  * perf: spend fewer cores on startup and more on large blocks
+  * perf: hoist a lookaround shared by every swap key
+  * perf: skip compiling rules the config can never run
+  * fix: give each Org file its own HTML writer
+  * chore: bump regexp2
+  * feat: build for Windows on ARM
+  * refactor: Warn on unrecognized core options
+  * fix: pin the comment fixtures to LF
+  * docs: stop pinning a version in the security policy
+  * test: replace the Cucumber suite with YAML-driven Go tests
+  * fix: resolve the default config during a dry run
+  * perf: size the converter pools to the run, not the host
+  * Update SECURITY.md
+  * docs: fix old links
+  * fix: bound and validate rule-embedded scripts
+
+-------------------------------------------------------------------
 Fri Jul 31 19:05:45 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 3.17.0:
