@@ -55,4 +55,15 @@
     <comment></comment>
     <requestid>1354667</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2e706c1a15d1d8b316eec339fbddfb94</srcmd5>
+    <version>2.0.0</version>
+    <time>1786026306</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 2.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1369749 from glaubitz)</comment>
+    <requestid>1369754</requestid>
+  </revision>
 </revisionlist>
