@@ -135,8 +135,8 @@ BuildRequires:  perl-Bootloader >= 0.4.15
 BuildRequires:  qclib-devel-static
 %endif
 ### Cargo
-BuildRequires:  rust
-BuildRequires:  cargo
+BuildRequires:  rust  >= 1.85.0
+BuildRequires:  cargo >= 1.85.0
 BuildRequires:  cargo-packaging
 BuildRequires:  clang-devel
 BuildRequires:  llvm-devel
@@ -156,6 +156,7 @@ Requires:       perl-base
 Requires:       rsync
 Requires:       s390-tools-genprotimg-data
 Requires:       tar
+Requires:       (%{name}-chreipl-fcp-mpath if multipath-tools)
 Provides:       group(cpacfstats)
 Provides:       group(ts-shell)
 Provides:       group(zkeyadm)
@@ -441,7 +442,7 @@ install -D -m 755 %{SOURCE33} %{buildroot}%{_sbindir}/lgr_check
 install -D -m 644 %{SOURCE34} %{buildroot}%{_fillupdir}/sysconfig.virtsetup
 
 # Create rc symlinks in _sbindir
-for svc in appldata hsnc vmlogrdr xpram cio_ignore cpacfstatsd cpi cpuplugd dumpconf mon_fsstatd mon_procd virtsetup opticsmon; do
+for svc in appldata hsnc vmlogrdr xpram cio_ignore cpacfstatsd cpi cpuplugd dumpconf mon_fsstatd mon_procd virtsetup opticsmon zpcimon; do
     ln -s service %{buildroot}%{_sbindir}/rc${svc}
 done
 
@@ -458,10 +459,6 @@ install -m 755 -t %{buildroot}%{_sbindir}/ %{SOURCE88} %{SOURCE91} %{SOURCE92} %
 install %{SOURCE89} %{buildroot}%{_sbindir}/dasd_configure
 install %{SOURCE90} %{buildroot}%{_sbindir}/iucv_configure
 install -m 644 -t %{buildroot}/%{_mandir}/man8 %{SOURCE94} %{SOURCE95} %{SOURCE96} %{SOURCE97} %{SOURCE98} %{SOURCE99}
-
-### lsmem/chmem have been added to util-linux
-rm -fv %{buildroot}%{_mandir}/man8/lsmem.8* %{buildroot}%{_mandir}/man8/chmem.8*
-rm -fv %{buildroot}%{_sbindir}/lsmem %{buildroot}%{_sbindir}/chmem
 
 touch boot/zipl/active_devices.txt
 
@@ -485,11 +482,11 @@ export BRP_PESIGN_FILES='/lib/s390-tools/stage3.bin'
 
 %pre -f s390-tools.pre
 # Consolidated service addition
-%service_add_pre appldata.service cio_ignore.service cpacfstatsd.service cpi.service cpuplugd.service dumpconf.service hsnc.service mon_fsstatd.service mon_procd.service opticsmon.service virtsetup.service vmlogrdr.service xpram.service sel-ebc-boot-mount.service sel-ebc-override-crypttab.service sel-ebc-paes-enforce.service sel-ebc-pvebc.service
+%service_add_pre appldata.service cio_ignore.service cpacfstatsd.service cpi.service cpuplugd.service dumpconf.service hsnc.service mon_fsstatd.service mon_procd.service opticsmon.service zpcimon.service virtsetup.service vmlogrdr.service xpram.service sel-ebc-boot-mount.service sel-ebc-override-crypttab.service sel-ebc-paes-enforce.service sel-ebc-pvebc.service
 
 %post
 # Consolidated service addition
-%service_add_post appldata.service cio_ignore.service cpacfstatsd.service cpi.service cpuplugd.service dumpconf.service hsnc.service mon_fsstatd.service mon_procd.service opticsmon.service virtsetup.service vmlogrdr.service xpram.service sel-ebc-boot-mount.service sel-ebc-override-crypttab.service sel-ebc-paes-enforce.service sel-ebc-pvebc.service
+%service_add_post appldata.service cio_ignore.service cpacfstatsd.service cpi.service cpuplugd.service dumpconf.service hsnc.service mon_fsstatd.service mon_procd.service opticsmon.service zpcimon.service virtsetup.service vmlogrdr.service xpram.service sel-ebc-boot-mount.service sel-ebc-override-crypttab.service sel-ebc-paes-enforce.service sel-ebc-pvebc.service
 
 # Apply tmpfiles setup for /var/log permissions
 %tmpfiles_create %{_tmpfilesdir}/%{name}.conf
@@ -502,6 +499,7 @@ export BRP_PESIGN_FILES='/lib/s390-tools/stage3.bin'
 %{fillup_only -n mon_procd}
 %{fillup_only -n mon_statd}
 %{fillup_only -n opticsmon}
+%{fillup_only -n zpcimon}
 %{fillup_only -n virtsetup}
 %{fillup_only -n xpram}
 
@@ -517,13 +515,13 @@ export BRP_PESIGN_FILES='/lib/s390-tools/stage3.bin'
 %udev_rules_update
 
 %preun
-%service_del_preun appldata.service cio_ignore.service cpacfstatsd.service cpi.service cpuplugd.service dumpconf.service hsnc.service mon_fsstatd.service mon_procd.service opticsmon.service virtsetup.service vmlogrdr.service xpram.service sel-ebc-boot-mount.service sel-ebc-override-crypttab.service sel-ebc-paes-enforce.service sel-ebc-pvebc.service
+%service_del_preun appldata.service cio_ignore.service cpacfstatsd.service cpi.service cpuplugd.service dumpconf.service hsnc.service mon_fsstatd.service mon_procd.service opticsmon.service zpcimon.service virtsetup.service vmlogrdr.service xpram.service sel-ebc-boot-mount.service sel-ebc-override-crypttab.service sel-ebc-paes-enforce.service sel-ebc-pvebc.service
 
 %preun -n osasnmpd
 %{stop_on_removal osasnmpd}
 
 %postun
-%service_del_postun appldata.service cio_ignore.service cpacfstatsd.service cpi.service cpuplugd.service dumpconf.service hsnc.service mon_fsstatd.service mon_procd.service opticsmon.service virtsetup.service vmlogrdr.service xpram.service sel-ebc-boot-mount.service sel-ebc-override-crypttab.service sel-ebc-paes-enforce.service sel-ebc-pvebc.service
+%service_del_postun appldata.service cio_ignore.service cpacfstatsd.service cpi.service cpuplugd.service dumpconf.service hsnc.service mon_fsstatd.service mon_procd.service opticsmon.service zpcimon.service virtsetup.service vmlogrdr.service xpram.service sel-ebc-boot-mount.service sel-ebc-override-crypttab.service sel-ebc-paes-enforce.service sel-ebc-pvebc.service
 
 if [ ! -x /boot/zipl ]; then
 	echo "Attention: After uninstalling this package, you will NOT be able to IPL from DASD anymore!"
@@ -635,8 +633,6 @@ fi
 %exclude %{_datadir}/s390-tools/pvimg/stage3a.bin
 %exclude %{_datadir}/s390-tools/pvimg/stage3b_reloc.bin
 %exclude %{_prefix}/lib/udev/rules.d/70-chreipl-fcp-mpath.rules
-### %%exclude /lib/s390-tools/chreipl_helper.device-mapper
-### %%exclude /lib/s390-tools/chreipl_helper.md
 
 %files -n osasnmpd
 %{_sbindir}/osasnmpd
@@ -679,8 +675,6 @@ fi
 %dir %{_prefix}/lib/chreipl-fcp-mpath/
 %{_prefix}/lib/chreipl-fcp-mpath/*
 %{_prefix}/lib/dracut/dracut.conf.d/70-chreipl-fcp-mpath.conf
-### /lib/s390-tools/chreipl_helper.device-mapper
-### /lib/s390-tools/chreipl_helper.md
 %{_prefix}/lib/udev/chreipl-fcp-mpath-is-ipl-tgt
 %{_prefix}/lib/udev/chreipl-fcp-mpath-is-ipl-vol
 %{_prefix}/lib/udev/chreipl-fcp-mpath-is-reipl-zfcp

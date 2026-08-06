@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Aug  6 07:17:36 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Amended the .spec file dependencies and systemd scripts:
+  * Added zpcimon.service to systemd pre, post, preun, and postun RPM macros.
+  * Added zpcimon to the %_sbindir rc symlinks creation loop (providing rczpcimon).
+  * Removed dead BuildRequires: libica-devel-static.
+  * Removed obsolete rm cleanups for lsmem and chmem.
+  * Added version constraints to BuildRequires:
+    rust >= 1.85.0 and cargo >= 1.85.0 to safely align with MSRV. 
+- Re-vendor-ed vendor.tar.zst
+
+-------------------------------------------------------------------
 Tue Aug  4 09:48:53 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Upgrade s390-tools to version 2.44.0 (jsc#PED-14586)
