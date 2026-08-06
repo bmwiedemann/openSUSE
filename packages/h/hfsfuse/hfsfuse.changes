@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug  4 08:05:56 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.430
+  * Fixes a mutex leak when closing files or in case of an open failure.
+  * Fixes a memleak on file open error.
+
+-------------------------------------------------------------------
 Fri Jul  3 12:53:29 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.425
