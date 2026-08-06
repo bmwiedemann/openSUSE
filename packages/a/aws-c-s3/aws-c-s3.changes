@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Aug  4 11:03:15 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.13.4
+  * Use latest as aws-crt-builder version by @sfod in (#660)
+  * fix resume token build by @TingDaoK in (#661)
+  * Fixing a typo that breaks a public API, but it only released
+    2 days ago and no downstream picks up the latest change.
+- from version 0.13.3
+  * [feat.] async pause and on_error_resume_token by @TingDaoK in (#649)
+- from version 0.13.2
+  * Turn nagle off by @DmitriyMusatkin in (#659)
+
+-------------------------------------------------------------------
 Fri Jul 17 08:47:51 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.13.1
