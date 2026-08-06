@@ -1,13 +1,12 @@
-From 68a3b6cc5cda1c3b8e22a503f007e6b021498a80 Mon Sep 17 00:00:00 2001
+From ef9df100ef525225efbd99c6cc678a722af0807d Mon Sep 17 00:00:00 2001
 From: Jiri Slaby <jslaby@suse.cz>
 Date: Mon, 30 Sep 2024 08:42:26 +0200
-Subject: [PATCH] third-party: use libraries from system
+Subject: [PATCH 5/6] third-party: use libraries from system
 
 ---
- third-party/CMakeLists.txt                       |  2 +-
- third-party/realsense-file/CMakeLists.txt        | 16 +++++-----------
- .../cmake/check_c_compiler_uses_glibc.cmake      |  2 +-
- 3 files changed, 7 insertions(+), 13 deletions(-)
+ third-party/CMakeLists.txt                |  2 +-
+ third-party/realsense-file/CMakeLists.txt | 16 +++++-----------
+ 2 files changed, 6 insertions(+), 12 deletions(-)
 
 diff --git a/third-party/CMakeLists.txt b/third-party/CMakeLists.txt
 index e8add9ae4f92..49ae87d75f52 100644
@@ -65,19 +64,6 @@ index c44c931d0573..31f9d535b857 100644
  install(TARGETS ${_install_targets}
      EXPORT realsense2Targets
      RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-diff --git a/third-party/realsense-file/rosbag2/rcutils/cmake/check_c_compiler_uses_glibc.cmake b/third-party/realsense-file/rosbag2/rcutils/cmake/check_c_compiler_uses_glibc.cmake
-index 9958f9e74d82..6e518ec9f16e 100644
---- a/third-party/realsense-file/rosbag2/rcutils/cmake/check_c_compiler_uses_glibc.cmake
-+++ b/third-party/realsense-file/rosbag2/rcutils/cmake/check_c_compiler_uses_glibc.cmake
-@@ -26,7 +26,7 @@ function(check_c_compiler_uses_glibc result_variable)
-     int main() {
-       void * buffer[1];
-       int size = sizeof(buffer) / sizeof(void *);
--      backtrace(&buffer, size);
-+      backtrace(buffer, size);
-       return 0;
-     }
-   ]====])
 -- 
-2.54.0
+2.55.0
 

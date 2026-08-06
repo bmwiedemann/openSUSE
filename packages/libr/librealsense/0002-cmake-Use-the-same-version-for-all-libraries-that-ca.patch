@@ -1,7 +1,7 @@
-From bb96f387ea7518a0bd01a4a6743fb7b35671ba79 Mon Sep 17 00:00:00 2001
+From daf58b272a89620c81963c2ad3e29d9be820b720 Mon Sep 17 00:00:00 2001
 From: Ralf Habacker <ralf.habacker@freenet.de>
 Date: Wed, 9 Jul 2025 15:10:41 +0200
-Subject: [PATCH 2/2] cmake: Use the same version for all libraries that can be
+Subject: [PATCH 2/6] cmake: Use the same version for all libraries that can be
  created in shared mode
 
 ---
@@ -23,11 +23,11 @@ index 6ecfcd1a5cef..c44c931d0573 100644
  set_target_properties (${REALSENSE_FILE_TARGET} PROPERTIES FOLDER Library)
  
 diff --git a/third-party/rsutils/CMakeLists.txt b/third-party/rsutils/CMakeLists.txt
-index 21fb27a23fdd..86541306fad9 100644
+index 9a277479ee6f..e1b8c2000bf6 100644
 --- a/third-party/rsutils/CMakeLists.txt
 +++ b/third-party/rsutils/CMakeLists.txt
-@@ -8,6 +8,7 @@ add_library( ${PROJECT_NAME} "" )
- #target_link_libraries( ${PROJECT_NAME} PUBLIC nlohmann_json )
+@@ -12,6 +12,7 @@ add_library( ${PROJECT_NAME} "" )
+ target_link_libraries( ${PROJECT_NAME} PUBLIC ${CMAKE_DL_LIBS} )
  target_compile_features( ${PROJECT_NAME} PUBLIC cxx_std_14 )
  set_target_properties( ${PROJECT_NAME} PROPERTIES FOLDER Library )
 +set_target_properties( ${PROJECT_NAME} PROPERTIES VERSION ${REALSENSE_VERSION_STRING} SOVERSION "${REALSENSE_VERSION_MAJOR}.${REALSENSE_VERSION_MINOR}")
@@ -35,5 +35,5 @@ index 21fb27a23fdd..86541306fad9 100644
  target_include_directories( ${PROJECT_NAME}
      PUBLIC
 -- 
-2.54.0
+2.55.0
 

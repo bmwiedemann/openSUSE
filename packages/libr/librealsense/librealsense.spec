@@ -20,7 +20,7 @@
 %define libver %(echo %version|sed 's@^\\([0-9]*\\)\\.\\([0-9]*\\).*@\\1_\\2@')
 
 Name:           librealsense
-Version:        2.58.1
+Version:        2.58.3
 Release:        0
 Summary:        Library for Intel RealSense depth cameras
 License:        Apache-2.0
@@ -31,10 +31,10 @@ Source1:        fastcdr-1.0.25.tar.xz
 # see https://github.com/IntelRealSense/librealsense/pull/14125
 Patch0:         0001-cmake-add-support-to-build-shared-libraries.patch
 Patch1:         0002-cmake-Use-the-same-version-for-all-libraries-that-ca.patch
-Patch2:         presets_path.patch
-Patch3:         disable-pedantic.patch
-Patch4:         0001-third-party-use-libraries-from-system.patch
-Patch5:         rsutils.patch
+Patch2:         0003-Install-presets-to-usr-share.patch
+Patch3:         0004-disable-pedantic.patch
+Patch4:         0005-third-party-use-libraries-from-system.patch
+Patch5:         0006-rsutils-build-as-shared.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++

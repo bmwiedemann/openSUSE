@@ -1,20 +1,25 @@
+From 90723bcd399b22c1a03f8b5dbf69b8b421a0df7a Mon Sep 17 00:00:00 2001
 From: Alessandro de Oliveira Faria <cabelo@opensuse.org>
-Subject: rsutils: build as shared
-Patch-mainline: never
+Date: Tue, 30 Jun 2026 09:20:54 +0200
+Subject: [PATCH 6/6] rsutils: build as shared
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 
 > I added two patches which fix the issue with the installation of
 > static .a libs by forcing their build as shared library
 > Thanks  David Lanzendörfer (leviathanch)
-
 ---
- src/gl/rs-gl.cpp                   |    2 +-
- src/log.cpp                        |    2 +-
- third-party/rsutils/CMakeLists.txt |    5 +++--
- 3 files changed, 5 insertions(+), 4 deletions(-)
+ src/gl/rs-gl.cpp                   | 2 +-
+ src/log.cpp                        | 2 +-
+ third-party/rsutils/CMakeLists.txt | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
 
+diff --git a/src/gl/rs-gl.cpp b/src/gl/rs-gl.cpp
+index 2a0d97495dda..6ffbc70bc378 100644
 --- a/src/gl/rs-gl.cpp
 +++ b/src/gl/rs-gl.cpp
-@@ -270,7 +270,7 @@ HANDLE_EXCEPTIONS_AND_RETURN(nullptr, ap
+@@ -298,7 +298,7 @@ HANDLE_EXCEPTIONS_AND_RETURN(nullptr, api_version)
  
  #ifdef BUILD_EASYLOGGINGPP
  #ifdef SHARED_LIBS
@@ -23,6 +28,8 @@ Patch-mainline: never
  #endif
  char log_gl_name[] = LIBREALSENSE_ELPP_ID;
  static logger_type<log_gl_name> logger_gl;
+diff --git a/src/log.cpp b/src/log.cpp
+index 1bc02d6a001a..91f508a50b37 100644
 --- a/src/log.cpp
 +++ b/src/log.cpp
 @@ -5,7 +5,7 @@
@@ -34,9 +41,11 @@ Patch-mainline: never
  
  namespace librealsense
  {
+diff --git a/third-party/rsutils/CMakeLists.txt b/third-party/rsutils/CMakeLists.txt
+index e1b8c2000bf6..f2e8d9548e10 100644
 --- a/third-party/rsutils/CMakeLists.txt
 +++ b/third-party/rsutils/CMakeLists.txt
-@@ -47,7 +48,7 @@ if( BUILD_EASYLOGGINGPP )
+@@ -52,7 +52,7 @@ if( BUILD_EASYLOGGINGPP )
          PRIVATE "${REPO_ROOT}/third-party/easyloggingpp/src/easylogging++.cc" )
      # We want to disable any default ELPP log-file!
      target_compile_definitions( ${PROJECT_NAME}
@@ -45,3 +54,6 @@ Patch-mainline: never
  endif()
  target_sources( ${PROJECT_NAME} PRIVATE ${UTILITIES_SOURCE_FILES} )
  source_group(
+-- 
+2.55.0
+

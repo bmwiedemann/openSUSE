@@ -177,4 +177,24 @@ D435.</comment>
     https://github.com/IntelRealSense/librealsense/releases/tag/v2.57.7</comment>
     <requestid>1362617</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>888a368e45ff11b4eae4a42b54922941</srcmd5>
+    <version>2.58.3</version>
+    <time>1786026180</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.58.3
+  * see release notes here:
+    https://github.com/realsenseai/librealsense/releases/tag/v2.58.3
+
+- Update to 2.58.2
+  * see release notes here:
+    https://github.com/IntelRealSense/librealsense/releases/tag/v2.58.2
+- Renamed:
+  * presets_path.patch -&gt; 0003-Install-presets-to-usr-share.patch
+  * disable-pedantic.patch -&gt; 0004-disable-pedantic.patch
+  * 0001-third-party-use-libraries-from-system.patch -&gt;
+    0005-third-party-use-libraries-from-system.patch
+  * rsutils.patch -&gt; 0006-rsutils-build-as-shared.patch</comment>
+    <requestid>1369670</requestid>
+  </revision>
 </revisionlist>

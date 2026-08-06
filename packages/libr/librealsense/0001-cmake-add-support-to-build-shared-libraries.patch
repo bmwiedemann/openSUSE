@@ -1,7 +1,7 @@
-From 2ffb267f81f986798eeff68eef349ea94ecc198f Mon Sep 17 00:00:00 2001
+From 15c513738b62c1ac69303927dc16a667def0e295 Mon Sep 17 00:00:00 2001
 From: Ralf Habacker <ralf.habacker@freenet.de>
 Date: Wed, 9 Jul 2025 14:46:16 +0200
-Subject: [PATCH 1/2] cmake: add support to build shared libraries
+Subject: [PATCH 1/6] cmake: add support to build shared libraries
 
 Shared libraries can be build by adding -DCMAKE_SHARED_LIBS=ON to the
 cmake configure line.
@@ -38,7 +38,7 @@ index 6abff374006b..6ecfcd1a5cef 100644
      ${HEADER_FILES_ROSBAG}
      ${SOURCE_FILES_ROSBAG}
 diff --git a/third-party/rsutils/CMakeLists.txt b/third-party/rsutils/CMakeLists.txt
-index 943dc1766c0b..21fb27a23fdd 100644
+index 7c4e11e719bc..9a277479ee6f 100644
 --- a/third-party/rsutils/CMakeLists.txt
 +++ b/third-party/rsutils/CMakeLists.txt
 @@ -3,7 +3,7 @@
@@ -49,7 +49,7 @@ index 943dc1766c0b..21fb27a23fdd 100644
 +add_library( ${PROJECT_NAME} "" )
  # We cannot directly interface with nlohmann_json (doesn't work on bionic)
  #target_link_libraries( ${PROJECT_NAME} PUBLIC nlohmann_json )
- target_compile_features( ${PROJECT_NAME} PUBLIC cxx_std_14 )
+ # rsutilgpu.cpp uses dlopen on POSIX / LoadLibrary on Windows to probe for CUDA at
 -- 
-2.54.0
+2.55.0
 

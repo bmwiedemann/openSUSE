@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Aug  5 07:04:00 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
+
+- Update to 2.58.3
+  * see release notes here:
+    https://github.com/realsenseai/librealsense/releases/tag/v2.58.3
+
+-------------------------------------------------------------------
+Tue Jun 30 07:25:23 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
+
+- Update to 2.58.2
+  * see release notes here:
+    https://github.com/IntelRealSense/librealsense/releases/tag/v2.58.2
+- Renamed:
+  * presets_path.patch -> 0003-Install-presets-to-usr-share.patch
+  * disable-pedantic.patch -> 0004-disable-pedantic.patch
+  * 0001-third-party-use-libraries-from-system.patch ->
+    0005-third-party-use-libraries-from-system.patch
+  * rsutils.patch -> 0006-rsutils-build-as-shared.patch
+
+-------------------------------------------------------------------
 Wed May 27 07:53:10 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
 
 - Update to 2.58.1
