@@ -19,14 +19,12 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-patatt
-Version:        0.7.0
+Version:        0.8.0
 Release:        0
 Summary:        Cryptographic patch attestation for the masses
 License:        MIT-0
 URL:            https://git.kernel.org/pub/scm/utils/patatt/patatt.git/
 Source0:        https://git.kernel.org/pub/scm/utils/patatt/patatt.git/snapshot/patatt-%{version}.tar.gz
-Source1:        https://git.kernel.org/pub/scm/utils/patatt/patatt.git/snapshot/patatt-%{version}.tar.asc
-Source2:        python-patatt.keyring
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -38,6 +36,7 @@ BuildArch:      noarch
 BuildRequires:  %{python_module PyNaCl}
 BuildRequires:  git-core
 # /SECTION
+Requires:       python-PyNaCl
 %python_subpackages
 
 %description

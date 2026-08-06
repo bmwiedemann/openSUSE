@@ -123,4 +123,20 @@
     with non-writable GNUPGHOME.</comment>
     <requestid>1329247</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>7a2f5ba611285da6a9bd782c3a84d41b</srcmd5>
+    <version>0.8.0</version>
+    <time>1786026398</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.8.0
+  * Add ci.sh local gate suite script and ci-matrix.sh multi-python test runner
+  * Adopt ruff formatting and expand linting ruleset
+  * Add ty and pyright (strict mode) to type-checking gates alongside mypy
+  * Fix patatt.gpg-bin configuration variable assertion in set_bin_paths()
+  * Fix multi-value git config key handling in get_config_from_git()
+  * Fix gpg subprocess hangs caused by lingering daemon processes holding
+    output pipes open
+- drop keyring + asc (no longer available)</comment>
+    <requestid>1369964</requestid>
+  </revision>
 </revisionlist>
