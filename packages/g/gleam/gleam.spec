@@ -17,7 +17,7 @@
 
 
 Name:           gleam
-Version:        1.17.0
+Version:        1.18.1
 Release:        0
 Summary:        A friendly language for building type-safe, scalable systems!
 License:        Apache-2.0
@@ -29,9 +29,9 @@ BuildRequires:  cargo-packaging
 # https://github.com/rust-lang/rust/issues/120301
 BuildRequires:  cargo >= 1.91.0
 # For tests
-BuildRequires:  erlang
+BuildRequires:  erlang >= 26
 BuildRequires:  git-core
-Requires:       erlang
+Requires:       erlang >= 26
 Requires:       erlang-rebar3
 ExclusiveArch:  %{rust_tier1_arches}
 
@@ -53,7 +53,11 @@ install -m 0755 %{_builddir}/%{name}-%{version}/target/release/gleam %{buildroot
 %check
 # tests::echo requires JavaScript engines that aren't packaged on openSUSE
 # tests::escript_success_with_dependency requires network access
-%{cargo_test} -- --skip tests::echo --skip tests::escript_success_with_dependency
+# tests::all_files_have_copyright_notice has a bug where id doesn't handle gleam.lock files
+%{cargo_test} -- \
+	--skip tests::echo \
+	--skip tests::escript_success_with_dependency \
+	--skip tests::all_files_have_copyright_notice
 
 %files
 %license LICENCE

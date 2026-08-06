@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Aug  3 12:58:42 UTC 2026 - Jan Fooken <jan.fooken@suse.com>
+
+- Update to 1.18.1:
+  * CVE-2026-59247: insufficient verification of data authenticity
+    allows a MITM adversary to substitute forged Hex package
+    contents during dependency resolution (bsc#1272992)
+  * Set minimum required Erlang version to 26
+  * All features and bug fixes are extensively highlighted with
+    examples in upstream's blog post at
+    https://gleam.run/news/a-field-day-for-gleams-language-server/
+    and changelog at
+    https://github.com/gleam-lang/gleam/blob/v1.18.1/CHANGELOG.md .
+    Some of the highlights include:
+      - A lot of new features for the LSP
+      - Faster JavaScript using singletons
+      - Deprecation of ambiguous pipe syntax
+      - Path support in Git dependencies
+      - Up to 13% faster compilation
+      - Fixed various bugs in Erlang and JavaScript code
+        generation.
+      - Fixed several bugs in the float handling for the JavaScript
+        target.
+      - Fixed a bug in the generation of Erlang .app files.
+      - Fixed a bug where the formatter would produce invalid code.
+      - Fixed a bug in the TypeScript type definition generation.
+      - Fixed a bug where the compiler would evaluate the numerator
+        and denominator of a division in the wrong order.
+      - Fixed a bug where gleam docs would not be generated.
+
+-------------------------------------------------------------------
 Wed Jun  3 10:40:39 UTC 2026 - Jan Fooken <jan.fooken@suse.com>
 
 - Update to 1.17.0:
