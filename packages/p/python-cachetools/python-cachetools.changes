@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Aug  4 21:14:43 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.1.7:
+  * Improve Cache.__setitem__ behavior when replacing an existing
+    cache item with a larger value.
+  * Update CI environment.
+  * Minor style improvements to keep ruff happy.
+  * Fix TLRUCache silently keeping stale values on expired
+    overwrites.
+  * Reject negative cache item getsizeof values.
+
+-------------------------------------------------------------------
 Sun Jun 14 09:45:30 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.1.4:

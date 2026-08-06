@@ -358,4 +358,19 @@
   * Various type stub improvements.</comment>
     <requestid>1359221</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>c658e08d9c0ce9d9fb4d8d7d43d22cd6</srcmd5>
+    <version>7.1.7</version>
+    <time>1786025872</time>
+    <user>anag_factory</user>
+    <comment>- update to 7.1.7:
+  * Improve Cache.__setitem__ behavior when replacing an existing
+    cache item with a larger value.
+  * Update CI environment.
+  * Minor style improvements to keep ruff happy.
+  * Fix TLRUCache silently keeping stale values on expired
+    overwrites.
+  * Reject negative cache item getsizeof values.</comment>
+    <requestid>1369592</requestid>
+  </revision>
 </revisionlist>
