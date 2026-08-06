@@ -17,7 +17,7 @@
 
 
 Name:           gemini-cli
-Version:        0.53.1
+Version:        0.54.0
 Release:        0
 Summary:        An AI agent that brings the power of Gemini directly into your terminal
 License:        Apache-2.0

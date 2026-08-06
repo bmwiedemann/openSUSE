@@ -917,4 +917,39 @@
     response guidance</comment>
     <requestid>1369433</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>cfc6a0f55d74251952f295667bae430b</srcmd5>
+    <version>0.54.0</version>
+    <time>1786027092</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.54.0:
+  * fix(caretaker): sanitize and wrap issue title in
+    untrusted_context
+  * chore(caretaker): update vitest to v3.2.4 and add package-
+    lock.json files
+  * fix(core): rotate session ID on model fallback to prevent
+    stateful API errors
+  * feat(caretaker-triage): post comment before auto-closing
+    issues
+  * fix(core): enforce HTTPS for GoogleCredentialsAuthProvider to
+    prevent cleartext leakage
+  * fix(core): filter out thought parts from getHistoryTurns when
+    context management is disabled
+  * fix(a2a-server): normalize CRLF line endings to LF in
+    getProposedContent
+  * fix(core): enforce explicit tag length and validation in file
+    keychain
+  * chore/release: bump version to
+    0.54.0-nightly.20260728.gbef611950
+  * feat(pr-generator-db): implement Firestore concurrency dual-
+    locking and test ingestion utilities
+  * feat(pr-generator-agent): implement Antigravity agent runner
+    and prompt templates …
+  * fix(core): skip merged function-response turns when finding
+    the active loop
+  * fix(patch): cherry-pick f47d6c6 to
+    release/v0.54.0-preview.0-pr-28566 to patch version
+    v0.54.0-preview.0 and create version 0.54.0-preview.1</comment>
+    <requestid>1370012</requestid>
+  </revision>
 </revisionlist>
