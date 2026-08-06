@@ -2442,4 +2442,11 @@ See https://build.opensuse.org/request/show/1286046</comment>
     <time>1786010183</time>
     <user>dimstar_suse</user>
   </revision>
+  <revision rev="343" vrev="341">
+    <srcmd5>31431ca2564c32d932f1db56a3aaa93e</srcmd5>
+    <version>unknown</version>
+    <time>1786011150</time>
+    <user>dimstar_suse</user>
+    <comment>Back to &quot;dvd&quot; for agama offline; the combo did not work</comment>
+  </revision>
 </revisionlist>

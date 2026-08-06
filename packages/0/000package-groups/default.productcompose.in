@@ -22,7 +22,7 @@ debug: split
 
 # will be extended with architecture and flavor string
 flavors:
-  tw_agama_offline:
+  dvd:
     architectures: [ x86_64 ]
     product_directory_name: TW-offline-installer
     name: openSUSE
