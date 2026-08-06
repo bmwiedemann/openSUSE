@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug  4 11:08:42 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.9.15
+  * Regression Labeler Fix by @azkrishpy in (#249)
+  * Update deprecated OpenBSD CI job by @sfod in (#250)
+  * Swap fatal for soft error by @DmitriyMusatkin in (#251)
+
+-------------------------------------------------------------------
 Fri May 22 07:53:24 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.9.14
