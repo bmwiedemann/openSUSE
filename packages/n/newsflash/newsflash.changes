@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Aug  5 08:41:16 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 5.2.5:
+  + allow opening urls
+  + article list rows: fix root/unroot
+  + make glibc dependency optional
+  + fix setting 'keep articles duration' preference
+
+-------------------------------------------------------------------
 Thu Jul 30 04:13:52 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 5.2.4:

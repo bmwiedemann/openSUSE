@@ -292,4 +292,16 @@
   + UI state restore: fix visual glitch when sidebar is collapsed (forwarded request 1368439 from rrahl0)</comment>
     <requestid>1368440</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>80b7ec42055f1abfa7998975b42dbbe1</srcmd5>
+    <version>5.2.5</version>
+    <time>1786026268</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 5.2.5:
+  + allow opening urls
+  + article list rows: fix root/unroot
+  + make glibc dependency optional
+  + fix setting 'keep articles duration' preference (forwarded request 1369703 from rrahl0)</comment>
+    <requestid>1369704</requestid>
+  </revision>
 </revisionlist>
