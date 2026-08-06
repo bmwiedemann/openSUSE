@@ -1,4 +1,373 @@
 -------------------------------------------------------------------
+Wed Aug  5 10:11:26 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Fix version 1.0.3 in _service file
+
+-------------------------------------------------------------------
+Sun Aug 02 10:07:04 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Update to version v1.0.3:
+  * Release v1.0.3
+  * Update external test commits
+  * Update external testing CI with libbet's new way of running Python
+  * Fix CI testing of installing RGBDS on Cygwin (#2038)
+  * CI testing in Cygwin 64-bit now uses CMake and runs external tests (#2037)
+  * Edit some comments and formatting in testing.yml for consistency
+  * Use Ninja as the generator for CMake on FreeBSD
+  * Run external tests for FreeBSD (#2035)
+  * Support the `COLUMNS` environment variable for help/usage output
+  * Fixed-point `FMOD` and `LOG` explicitly return 0 for some invalid inputs
+  * Fix palette-packing `decant` logic to avoid UB from invalid iterator (#2031)
+  * Handle `-Wtruncation` for link-time `jr` values
+  * Use `_fseeki64`/`_ftelli64` on Windows since `fseek`/`fell` are limited by 32-bit `long`
+  * Use `std::optional<uint64_t>` instead of `long` with a special -1 sentinel for `seekSize`
+  * Assume that `InsertionOrderedMap` never `add`s duplicate keys
+  * Zero-initialize `Png` struct `width` and `height` just in case
+  * Assume `clz`/`ctz` argument is nonzero in our fallback implementations
+  * Avoid redundant "Unexpected text" error message after "Unknown" error
+  * Fix an SDAS object error message to use the valid section name variable
+  * Set binary or text mode on stdout as well as stdin
+  * Fix handling of at-files containing `--` followed by positional arguments
+  * Fix reading value of relocations symbol/section index from SDAS objects
+  * Explicitly allow `JR` offsets to wrap around in RGBLINK
+
+-------------------------------------------------------------------
+Tue Jul 21 10:39:14 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Update to version v1.0.2:
+  * Fix typo'd APT option in release workflow
+  * Release v1.0.2
+  * Update libpng to 1.6.58
+  * Output negative values with correct with in .sym files
+  * Avoid UB from `FileStackNodeType(type)` on an invalid `type`
+  * Avoid truncating too-large JR offset from an invalid object file
+  * Fix assertion failure on nonzero base palette ID without an attribute map or palette map
+  * Use `rpnErrorAt` wrapper to ensure setting `isError` on all RPN errors
+  * `uint16_t tileIdx` type matches `options.baseTileIDs`
+  * Use `Procedure` concept to type-check `decantOn` lambda
+  * Addresses are 16-bit in .map files, consistent with .sym files
+  * Avoid overflow for very large ROMs (e.g. TPP1)
+  * Explicitly assume what was verified earlier by `readSection`
+  * Fail-safe treat 16-bit alignment as a fixed address even in RGBLINK
+  * Comment on how overflow to 0 is explicitly allowed for tile and palette IDs
+  * Correct grammar "is" vs "are" in RGBGFX reverse mode error messages
+  * Consistency check the palette map, not just the attribute map
+  * Correct condition to completely print both `palettes` and `options.palSpec`
+  * Fix the same shifting UB for SDAS objects as for RGBDS ones
+  * Add issue template
+  * Reorganize the readme
+  * Use `transparent` instead of repeating `0x8000`
+  * Mask blue for consistency (avoids transparent bit bugs)
+  * Format CGB colors in error/verbose messages as "GB:rr,gg,bb"
+  * Encapsulate `fseek`+`ftell` idiom in `seekSize`
+  * Fix reverse mode with `-s/--palette-size` too small for the tile data
+  * Fix large `ds` in linker script overflowing the PC
+  * Fix reverse palette offsets when base palette ID wraps around to 0
+  * RGBGFX reverse mode checks for too-low palette IDs, not just too-high
+  * Fix RGBLINK scrambling algorithm to work for SRAM
+  * Add `XXX:` comment tag to working but fragile test cases
+  * Fix a flaky/random-seed `rgbgfx_test` test failure
+  * Run `make format`
+  * Factor out `verboseDo` to encapsulate magenta output color
+  * Use magenta color for some verbose output which was missing it
+  * More guards against invalid object file patch data
+  * Avoid overflow in counting tiles for unrealistically large images
+  * Explicitly encode assumption that an overlapping section exists
+  * Fix OOM for too-small overlay files in 32K mode (`rgblink -t`)
+  * Avoid unsigned overflow/truncation from bad offset values in invalid object files
+  * Fix a `>` to `>=`, and avoid underflow in some sanity checks
+  * Avoid closing stdin/stdout/stderr standard streams
+  * Fix relative links in Markdown docs
+  * Enable automatic generation of `compile_flags.txt` for `clang-tidy` via `make tidy` (#2008)
+  * Add test case for local labels that superficially look like keywords
+  * Fix crash on image without any colors (all transparent)
+  * Fix a crash and a limitation in RGBGFX unoptimized output
+  * Update external test commits
+  * Upgrade FreeBSD testing from 14.3 to 15.1
+  * Group the two dep install commands together in Dockerfile
+  * Use `set -u` too
+  * Rename `install_deps.sh` to `install-deps.sh` for consistency
+  * Use `#!/usr/bin/env bash`, not `#!/bin/bash`
+  * Move CI-only `check-diff` script to `.github/`
+  * Move CI-only `check-format` script to `.github/`
+  * Add CI job to check syntax of `contrib` scripts
+  * Fix RGBGFX crash when trimming more tiles than exist after deduplication
+  * Use correct `PRIu32` format spec for `uint32_t usedTotal`
+  * Correct option letter in error message
+  * Remove dead `return` after no-return `fatal` call
+  * Refactor expression for clarity
+  * Fix a typo in a comment
+  * Correct assumption to avoid UB with 1 << 31
+  * Print correct color set limit value in error message
+  * Fix RGBGFX crash on deduplicating transparent tiles
+  * Use trailing return type for `begin()`/`end()`
+  * Use `[[nodiscard]]` instead of `[[gnu::warn_unused_result]]`
+  * Use `const_cast` more precisely to remove `const` without changing type
+  * Use more structured bindings
+  * Use `[[fallthrough]];` attribute instead of `// fallthrough` comment
+  * Prevent 32-bit multiplication overflow
+  * Make explicit the assumption that `targetFileName` is checked before ever calling `printDep`
+  * Reset `errno = 0` before `parseWholeNumber` calls and `errno == ERANGE` checks
+  * Add fail-safe for invalid RPN commands in bad object files
+  * Fix CRLF check in parsing SDAS objects
+  * Fix condition for invalid bank range check (#2016)
+  * Consistently use `sudo apt install -Uyq` in workflows (two other cases)
+  * Consistently handle negative shifted macro args (#2014)
+  * Disallow minus sign before symbol name in bracketed macro arguments (#2015)
+  * Remove impossible condition (`uint64_t > UINT64_MAX`)
+  * Safeguard against `localtime` or `gmtime` failure
+  * Reuse `scrambleLimit` instead of its equivalent expression
+  * Clarify comment about `-Wno-*` behavior with parametric warnings
+  * Guard against undefined behavior in `double2fix`
+  * Do not allow defining labels outside sections (#2013)
+  * Fix `$8000_0000 % -1` to warn with `-Wdiv` like `$8000_0000 / -1` does (#2012)
+  * Fix included linker scripts with no newline at EOF (#2011)
+  * Same-line shellcheck comment explanations
+  * Use Bash arrays instead of POSIX splitting when possible
+  * Let tests know they are being run under Cygwin
+  * Parallelize build jobs according to CPU count
+  * Remove `CMAKE_INSTALL_PARALLEL_LEVEL`
+  * Use `git clean -fdx` instead of `make clean` in external projects
+  * Refactor warning diagnostic code to reduce repeated output logic
+  * Prevent `rgblink -Wno-*` disabled warnings from printing a location trace anyway
+  * Add `[[gnu::format(printf, 1, 2)]]` attribute to variadic function `sectError`
+  * Remove unnecessary default constructor for `Token`
+  * Remove unnecessary `const_cast`ing methods
+  * Encapuslate UTF-8 decoder state in a struct
+  * Explain why we do not use `file(GLOB ext_projects CONFIGURE_DEPENDS "external/*.cfg")`
+  * Remove pointless `std::move` from non-move constructor
+  * Fix error message when an rgbgfx output file cannot be created
+  * Fix `rgbasm -Werror=...` not adding to the final error count
+  * Describe how to patch external projects
+  * Remove redundant labels from tests
+  * Try to automatically determine the test OS name
+  * Point out an ordering dep isn't a success one
+  * Avoid fetching some repos twice
+  * Move external tests files to `tests/external/`
+  * Remove the need to explicitly list external tests
+  * Shorten external test prop names slightly
+  * Tell Dependabot to ignore minor and patch releases (#2001)
+  * Updates `actions/checkout` from 6 to 7 (#1999)
+  * Generate install.sh with `make -n install` (#1996)
+  * Revert "Remove static compile flags"
+  * Remove static compile flags
+  * Remove unused variables
+  * Refactor the test harness for external repo tests (#1994)
+  * Comment why we use Ninja as the generator for CMake
+  * Explicitly test installation with Make and CMake (#1992)
+  * Install Pillow together with the rest of our CI deps (#1952)
+  * Warn about CMake <3.27 for Windows-targeted builds (#1989)
+  * Handle more numeric literal syntax errors in linker scripts
+  * Rename `BaseV` to `ValidBaseV`
+  * Fix off-by-one error with INCLUDEd linker script line numbers
+  * Add `-Wlarge-constant` to RGBLINK as it is for RGBASM
+  * Fix `rgbgfx -Z` palette overgeneration on merged color sets (#1912)
+  * Use a smaller `unordered_map` just for looking up line-leading keywords
+  * Do not build up a `std::string` when skipping leading keywords
+  * Use `std::string_view` keys for `UpperMap`
+  * Intern identifier strings only after checking for keywords
+  * Update .gitattributes for test/asm/crlf.asm
+  * Ensure CRLF line endings are preserved when necessary
+  * Simplify the lexer by removing `BufferedContent` and inlining `ViewedContent` (#1981)
+  * Intern strings used as identifiers (for labels, constants, macros, charmaps, etc) (#1980)
+  * Don't hard-code `std::string` as the key type for `InsertionOrderedMap`
+  * Factor out repeated `expandedSymName` logic
+  * Use the `name` of `sym_GetPC()` instead of hard-coding "@" again
+  * Add `assume` checks for expected `Token` types, like `RPNValue` has for `RPNCommand`s
+  * Correct comment `SIZE_MAX` to `UINT16_MAX`
+  * Encapsulate `charmap_Init`, like `sym_Init`
+  * Some `Expansion` references can be `const`
+  * Pass `-Wno-unused-but-set-variable` by default, not just in `make develop`
+  * Optimize `skipToLeadingKeyword` for the common `ViewedContent` case (#1968)
+  * Simplify `sectError` handling, without the need for an empty-string sentinel
+  * Use C++20 concepts to require constraints on template parameters (#1977)
+  * Do not support GCC 9 (#1978)
+  * Use templates to reduce the redundant number-lexing functions (#1963)
+  * Use Windows git for checkout's post-job cleanup, not Cygwin's git (#1953)
+  * Refactor section creation errors, and simplify output for single errors (#1964)
+  * Consistently use `-std=c++2a`, not `-std=c++20`
+  * Docu-comment an implicit correctness assumption
+  * Link against (non-debug) MSVC runtime statically
+  * Link zlib and libpng statically by default
+  * Comment the commands to use for profiling and code coverage
+  * Add more tests of lexer's `skipToLeadingKeyword` behavior (#1971)
+  * Verbose tracing shows lexed and captured values (#1969)
+  * Describe the `wine-shim` Makefile target (#1967)
+  * Format `getopt` errors more like others (sentence case, quoted options) (#1966)
+  * Have CMake put RGBDS executables in our own dir
+  * Use `type` instead of `which` in shell scripts
+  * Update `readHexNumber` for consistency with other routines
+  * Refactor and rename some numeric literal lexing for asm and linkerscript consistency
+  * Use `std::move` when relevant in `Token` constructor
+  * Avoid UB if `new` OOMs by removing `std:nothrow`
+  * Some refactoring, renaming, and debug assertions for clarity and safety
+  * Fix invalid character in bracketed macro argument
+  * Add two `assume` calls to verify lexer arguments
+  * Consistently lex local labels after keywords, even when skipping/capturing
+  * Add test case for local labels after block-ending keywords
+  * Small optimization to `skipToLeadingKeyword`
+  * Build using GCC 9 in CI
+  * Fix compilation with GCC 9
+  * Revert "Derive `operator!=` from `operator==` (#1660)"
+  * Let parallelism be determined automatically
+  * Pass C++ compiler to CMake via env var
+  * Imply CMake source dir
+  * Avoid libpng compilation on Windows spamming the Microsoft banner
+  * Use Ninja on Unix platforms
+  * Correct naming of MSBuild CMake presets
+  * Use Ninja on Windows
+  * Pass convenience options to Make invoked via CMake
+  * Replace a FIXME comment with an explanation of why we can't/won't "fix" it
+  * Target an even older version of Mac OS X
+  * Update libpng to 1.6.57 (#1958)
+  * Consolidate, refactor, and bugfix the lexer's handling of captures and skips (#1957)
+  * Keep more non-declaration initialization within the `for` loop clause
+  * Use `charmapEntry` to simplify `charmap_HasChar`
+  * Keep trie edges sorted for O(log N) lookup
+  * Replace charmaps' fixed-size 256-value array with a vector of pairs
+  * Set the Cygwin `shell` once as a `default` for its job
+  * Revert "Set up Cygwin before cloning our repo"
+  * Set up Cygwin before cloning our repo
+  * Cache downloaded dependencies for MinGW build also
+  * Fix a Fix typo ;)
+  * Use a separate CI step to install clang-format before running it
+  * Add necessary flags to `apt install` for checkformat
+  * Touch up `checkformat.bash`
+  * Install clang-format on ubuntu-slim runner
+  * Fix two warnings on MinGW
+  * Make `-Wformat` non-fatal on MinGW
+  * Fix some warnings raised by MSVC
+  * Decouple `-Werror` from `MORE_WARNINGS`
+  * Set some flags only for our own code
+  * Switch MinGW building to CMake
+  * Stop trying to install `md5sha1sum`
+  * Tidy up system info
+  * Avoid hardcoding Brew's prefix
+  * Bump our macOS CI runners
+  * Delete GCC static analyzer workflow (#1950)
+  * Run patch format check on `ubuntu-slim`
+  * Run macos-static tests using CTest (#1947)
+  * Fix macOS static build
+  * Transition CI from pkg-config to pkgconf (#1942)
+  * Enable color output in our Linux and macOS CI tests (#1939)
+  * Add `.git-blame-ignore-revs` as a `blame.ignoreRevsFile`
+  * Fix internal link to docs/CONTRIBUTING.md
+  * Print a GitHub Actions error annotation if install_deps.sh fails
+  * Update our Dockerfile to base on Debian 13 slim
+  * Revert "Stop trying to explicitly install `pkg-config` in CI (#1940)"
+  * Switch macOS static build to CMake (#1938)
+  * Stop trying to explicitly install `pkg-config` in CI (#1940)
+  * Break down CTest cases into each test suite (#1931)
+  * Remove a duplicate warning flag
+  * Fix MSVC dependent option syntax
+  * Bump the maximum version of CMake tested with
+  * Move documentation outside of the root directory (#1936)
+  * Stop trying to run version test on Cygwin and FreeBSD
+  * Overhaul `checkdiff` CI (#1930)
+  * Avoid copying RGBFIX binary when testing it (#1933)
+  * Don't allow invalid interpolations to occur (#1925)
+  * Avoid repeatedly specifying bash as the command shell in CI (#1926)
+  * Generate Bison output in CMake build tree (#1929)
+  * Revert "Generate Bison output in CMake build tree"
+  * Generate Bison output in CMake build tree
+  * Note why we are not using a CMake list to pass Bison flags
+  * Copy DLLs to appropriate dir for install-less Windows testing
+  * Use CPack for Windows packaging
+  * Remove the claim that only exported symbols appear in sym and map files
+  * Add examples for using character literals instead of strings as numbers
+  * Update libpng to 1.6.56 (#1922)
+  * Use C++-sryle `static_cast`, not C-style explicit cast
+  * Document why lib src cache is cross-OS
+  * Switch release process to a lightweight runner
+  * Switch from an Action to `gh release`
+  * Remove dead code checking for version tag
+  * Avoid caching in our release workflow
+  * Build Windows release in, well, Release mode
+  * Fix installing Windows build deps on release
+  * Avoid CMake looking at test dir if testing is disabled
+  * Check for overflow in fixed-point precision suffix (#1918)
+  * Clean up docs workflows
+  * Refactor lexing of fixed-point numbers (#1915)
+  * Fix some fixed-point literal lexing issues (#1914)
+  * `SOURCE_DATE_EPOCH` must be in base 10
+  * Bump the actions group with 6 updates (#1910)
+  * A little .yml cleanup
+  * Fix `rgbasm -s` not overriding a previous `-s`
+  * Add a key that turns out to be required
+  * Fix some YAML syntax
+  * Enable GH Actions to be automatically bumped
+  * Check for a SDAS "Def" or "Ref" line before reading a subsequent integer
+  * Correct list numbering
+  * Require uploaded artifacts to be non-empty
+  * Simplify CTest pre-run test command
+  * Suppress status messages when fetching test deps
+  * Avoid passing a C++-only flag when compiling C files
+  * Fix name of test repo cache used by `macos-static` (#1909)
+  * Enable Git colours in CI
+  * Correct CONTRIBUTING.md to accurately describe test/fetch-test-deps.sh
+  * Always clone deps with `--depth=1` (#1908)
+  * Factor out common error-handling functions for lexing numbers of different bases (#1888)
+  * Avoid passing irrelevant flags to our deps
+  * Cache library deps on Windows
+  * Specify MSVC architecture using presets
+  * Specify build type implicitly
+  * Use `develop` preset on FreeBSD
+  * Indicate more clearly that LTO is not used in debug mode
+  * Enable CMake parallelism in a central place
+  * Invoke CTest directly
+  * Enable colour diagnostics in CI
+  * Seek lib deps via CMake FetchContent
+  * Add CMake and YAML files to EditorConfig
+  * Use a modern GNU Make for CMake CI on macOS
+  * Reorder CMakeLists commands by topic
+  * Remove call to configuring version file
+  * Improve documentation of CMake bin output dir
+  * Tidy up CMake sanitizer flags
+  * Silence the same warning as in the Makefile
+  * Harmonise passing build version
+  * Sync Windows release steps with new CI
+  * Fix debug-mode building on Windows
+  * Avoid passing sanitizer options to MSVC linker
+  * Use imported targets for linking to libpng
+  * Disable exceptions and RTTI when building with CMake
+  * Handle project version better in CMake
+  * Harmonise naming of CMake test knobs
+  * Simplify include directory directive
+  * Stop overriding the binaries' install dir
+  * Enable LTO even for multi-config CMake generators
+  * Install our man pages in a more standard-configurable manner
+  * Remove enforced CTest verbosity
+  * Improve CMake-in-tree fatal error message
+  * Skip trying to link to libm explicitly
+  * Add a CMake preset for maintainer flags
+  * Run CI tests using CTest when possible
+  * Remove useless MSVC flag
+  * Remove a warning triggered by MSVC's own standard library
+  * Remove an outdated comment
+  * Refactor the source file listing
+  * Move FreeBSD deps install to common CI script
+  * Print a more graceful error message for `run-tests.sh --unk`
+  * Document `run-tests.sh --os`
+  * Make sure to init all variables involved in CMake tests
+  * Add a few details to the project() call
+  * Ignore a CMake file that is not intended to be checked in
+  * Correct minimum CMake version required
+  * Reformat some long warning-flag-setting lines
+  * Remove obsolete CMake version comment
+  * Avoid showing the "more warnings" option for MSVC
+  * Log with sanitizers are enabled under CMake
+  * Properly specify our max CMake version supported
+  * Fix some truncation warnings
+  * Update zlib to 1.3.2
+  * Pass `-Wdangling-alias` to Bison 3.5 or newer
+  * Explicitly clarify that `SECTION(@)` returns the name of the current section
+  * Reference the file that actually provides the linker script lexer
+  * Avoid writing "XXX" since it's a conventional "TODO/FIXME" comment
+  * List `-B` in rgbgfx options
+  * Refactor to combine similar functions into one
+  * Fix `SECTION UNION` alignment depending on piece order
+
+-------------------------------------------------------------------
 Tue Feb 24 09:28:07 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
 
 - Update to version 1.0.1:

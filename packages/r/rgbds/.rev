@@ -7,4 +7,12 @@
     <comment>New package: see https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/3PT2AA47N4S5EP7QPN67QA4P36O456IO/ </comment>
     <requestid>1337350</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>36b65977161f4ace714e229028301d8a</srcmd5>
+    <version>1.0.3</version>
+    <time>1786026287</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1369716</requestid>
+  </revision>
 </revisionlist>

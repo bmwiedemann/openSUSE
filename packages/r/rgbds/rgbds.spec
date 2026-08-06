@@ -17,7 +17,7 @@
 
 
 Name:           rgbds
-Version:        1.0.1
+Version:        1.0.3
 Release:        0
 Summary:        An assembly toolchain for the Nintendo Game Boy & Game Boy Color
 License:        MIT
