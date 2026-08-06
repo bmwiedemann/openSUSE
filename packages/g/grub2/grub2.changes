@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 29 02:40:42 UTC 2026 - Michael Chang <mchang@suse.com>
+
+- Fix crash in booting kernel on some AMD systems (bsc#1271980)
+  * 0001-linux-allocate-EFI-kernel-buffer-as-GRUB_EFI_LOADER_.patch
+
+-------------------------------------------------------------------
 Mon Jul 27 07:14:43 UTC 2026 - Michael Chang <mchang@suse.com>
 
 - Fix KVM and Xen VM images taking too long to boot (bsc#1266384)
