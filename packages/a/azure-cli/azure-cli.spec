@@ -33,7 +33,7 @@
 %endif
 
 Name:           azure-cli%{?psuffix}
-Version:        2.88.0
+Version:        2.89.0
 Release:        0
 Summary:        Microsoft Azure CLI 2.0
 License:        MIT
@@ -55,12 +55,12 @@ Requires:       %{pythons}-PyNaCl >= 1.6.2
 Requires:       %{pythons}-PyYAML >= 5.1
 Requires:       %{pythons}-antlr4-python3-runtime >= 4.13.1
 Requires:       %{pythons}-azure-ai-projects >= 1.0.0
-Requires:       %{pythons}-azure-appconfiguration >= 1.7.2
+Requires:       %{pythons}-azure-appconfiguration >= 1.8.0
 Requires:       %{pythons}-azure-batch >= 15.0.0~b1
 Requires:       %{pythons}-azure-cosmos >= 3.0.2
 Requires:       %{pythons}-azure-data-tables >= 12.4.0
 Requires:       %{pythons}-azure-datalake-store >= 1.0.1
-Requires:       %{pythons}-azure-keyvault-administration >= 4.8.0~b1
+Requires:       %{pythons}-azure-keyvault-administration >= 4.8.0~b2
 Requires:       %{pythons}-azure-keyvault-certificates >= 4.7.0
 Requires:       %{pythons}-azure-keyvault-keys >= 4.12.0~b2
 Requires:       %{pythons}-azure-keyvault-secrets >= 4.7.0
@@ -76,12 +76,12 @@ Requires:       %{pythons}-azure-mgmt-batchai >= 7.0.0b1
 Requires:       %{pythons}-azure-mgmt-billing >= 6.0.0
 Requires:       %{pythons}-azure-mgmt-botservice >= 2.0.0b3
 Requires:       %{pythons}-azure-mgmt-cdn >= 12.0.0
-Requires:       %{pythons}-azure-mgmt-cognitiveservices >= 15.0.0~b2
+Requires:       %{pythons}-azure-mgmt-cognitiveservices >= 15.0.0~b4
 Requires:       %{pythons}-azure-mgmt-compute >= 34.1.0
 Requires:       %{pythons}-azure-mgmt-containerinstance >= 10.2.0~b1
-Requires:       %{pythons}-azure-mgmt-containerregistry >= 15.1.0~b1
+Requires:       %{pythons}-azure-mgmt-containerregistry >= 15.1.0~b2
 Requires:       %{pythons}-azure-mgmt-containerregistrytasks >= 1.0.0~b1
-Requires:       %{pythons}-azure-mgmt-containerservice >= 41.3.0
+Requires:       %{pythons}-azure-mgmt-containerservice >= 41.5.0
 Requires:       %{pythons}-azure-mgmt-cosmosdb >= 9.9.0
 Requires:       %{pythons}-azure-mgmt-datalake-store >= 1.1.0~b1
 Requires:       %{pythons}-azure-mgmt-datamigration >= 10.0.0
@@ -103,13 +103,13 @@ Requires:       %{pythons}-azure-mgmt-marketplaceordering >= 1.1.0
 Requires:       %{pythons}-azure-mgmt-media >= 9.0
 Requires:       %{pythons}-azure-mgmt-monitor >= 7.0.0~b1
 Requires:       %{pythons}-azure-mgmt-msi >= 7.1.0
-Requires:       %{pythons}-azure-mgmt-mysqlflexibleservers >= 1.1.0~b2
+Requires:       %{pythons}-azure-mgmt-mysqlflexibleservers >= 1.1.0~b3
 Requires:       %{pythons}-azure-mgmt-netapp >= 10.1.0
 Requires:       %{pythons}-azure-mgmt-policyinsights >= 1.1.0b4
 Requires:       %{pythons}-azure-mgmt-postgresqlflexibleservers >= 3.0.0~b2
 Requires:       %{pythons}-azure-mgmt-privatedns >= 1.0.0
 Requires:       %{pythons}-azure-mgmt-rdbms >= 10.2.0b17
-Requires:       %{pythons}-azure-mgmt-recoveryservices >= 4.0.0
+Requires:       %{pythons}-azure-mgmt-recoveryservices >= 4.1.0
 Requires:       %{pythons}-azure-mgmt-recoveryservicesbackup >= 9.2.0
 Requires:       %{pythons}-azure-mgmt-redhatopenshift >= 3.0.0
 Requires:       %{pythons}-azure-mgmt-redis >= 14.5.0
