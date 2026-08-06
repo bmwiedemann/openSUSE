@@ -54,4 +54,19 @@
 - Use modern RPM macros to express version dependencies (forwarded request 1164783 from glaubitz)</comment>
     <requestid>1165179</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fbef1cef133e30a245e249fc6a88c519</srcmd5>
+    <version>3.0.0</version>
+    <time>1786026310</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 3.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Drop extra LICENSE.txt as upstream now ships its own
+- Rename LICENSE.txt to LICENSE in %files section
+- Update Requires from pyproject.toml (forwarded request 1369759 from glaubitz)</comment>
+    <requestid>1369766</requestid>
+  </revision>
 </revisionlist>
