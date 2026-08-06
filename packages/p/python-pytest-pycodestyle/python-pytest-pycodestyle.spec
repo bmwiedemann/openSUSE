@@ -30,15 +30,14 @@ Patch0:         support-old-pyproject.patch
 BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pycodestyle}
-BuildRequires:  %{python_module pytest >= 5.4}
+BuildRequires:  %{python_module pytest >= 7.0}
 BuildRequires:  %{python_module pytest-isort}
-BuildRequires:  %{python_module py}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pycodestyle
-Requires:       python-pytest
+Requires:       python-pytest >= 7.0
 Provides:       python-pytest-codestyle = %{version}
 Obsoletes:      python-pytest-codestyle < %{version}
 BuildArch:      noarch

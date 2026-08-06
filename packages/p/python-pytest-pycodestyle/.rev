@@ -101,4 +101,12 @@
   old license format in pyproject.toml</comment>
     <requestid>1317317</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>61d5fcb807983d74546f48271dd28ecf</srcmd5>
+    <version>2.5.0</version>
+    <time>1786026384</time>
+    <user>anag_factory</user>
+    <comment>- Remove unneeded py BuildRequires.</comment>
+    <requestid>1369934</requestid>
+  </revision>
 </revisionlist>

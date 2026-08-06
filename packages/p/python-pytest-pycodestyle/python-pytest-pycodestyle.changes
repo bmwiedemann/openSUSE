@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug  6 02:06:50 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove unneeded py BuildRequires.
+
+-------------------------------------------------------------------
 Wed Nov 12 09:49:16 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add support-old-pyproject.patch instead of sed command to support
