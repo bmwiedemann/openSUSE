@@ -1,4 +1,258 @@
 -------------------------------------------------------------------
+Wed Aug 05 06:28:57 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.158.0:
+  * Update module gitlab.com/gitlab-org/api/client-go/v2 to v2.55.1
+    (#50036)
+  * Update module google.golang.org/grpc to v1.83.0 (#50037)
+  * Update module modernc.org/sqlite to v1.55.0 (#50039)
+  * Update prom/prometheus Docker tag to v3.13.2 (#50023)
+  * Update module github.com/modelcontextprotocol/go-sdk to v1.7.0
+    (#50031)
+  * Update module github.com/SAP/go-hdb to v1.17.2 (#50032)
+  * Update module github.com/shirou/gopsutil/v4 to v4.26.7 (#50021)
+  * Update github-actions deps (#50024)
+  * Update module
+    github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common
+    to v1.3.149 (#50022)
+  * Update module github.com/buger/jsonparser to v1.6.1 (#50028)
+  * Update module github.com/aerospike/aerospike-client-go/v8 to
+    v8.8.0 (#50027)
+  * Update module github.com/scaleway/scaleway-sdk-go to
+    v1.0.0-beta.37 (#50019)
+  * Update module github.com/prometheus/prometheus to v0.313.2
+    (#50018)
+  * Update dependency js-yaml to v5.2.3 (#50014)
+  * Update module
+    github.com/Arize-ai/openinference/go/openinference-semantic-conventions
+    to v0.1.2 (#50015)
+  * Update module github.com/moby/moby/client to v0.5.1 (#50016)
+  * Update All github.com/aws packages (#50013)
+  * [chore] Update core dependencies (#50010)
+  * [chore] Update core dependencies (#49986)
+  * [chore] Updated metadata.yaml to reflect sem conv 1.40 (#49588)
+  * [chore] Update core dependencies (#49971)
+  * Revert "Update module github.com/sijms/go-ora/v2 to v3"
+    (#49942)
+  * Update module github.com/sijms/go-ora/v2 to v3 (#49931)
+  * Update module
+    github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common
+    to v1.3.143 (#49939)
+  * Update module github.com/klauspost/compress to v1.19.1 -
+    abandoned (#49890)
+  * Update module go.yaml.in/yaml/v3 to v3.0.5 (#49930)
+  * Update All github.com/googlecloudplatform packages (#49901)
+  * Update module
+    go.opentelemetry.io/proto/otlp/profiles/v1development to v0.4.0
+    (#49921)
+  * Update module golang.org/x/net to v0.57.0 (#49926)
+  * Update module github.com/relvacode/iso8601 to v1.8.0 (#49917)
+  * Update All github.com/aws packages (#49900)
+  * Update module github.com/prometheus/common to v0.70.1 (#49895)
+  * Update module go.opentelemetry.io/proto/otlp to v1.11.0
+    (#49920)
+  * Update github-actions deps (#49887)
+  * Update module github.com/oklog/ulid/v2 to v2.1.2 (#49891)
+  * Update module github.com/open-telemetry/otel-arrow/go to
+    v0.50.0 (#49911)
+  * [chore][govuln] Replace vulnerable github.com/hamba/avro/v2
+    with maintained fork in pulsar components (#49918)
+  * Update module github.com/antchfx/xpath to v1.3.8 (#49888)
+  * Update module github.com/prometheus/client_golang to v1.24.1
+    (#49894)
+  * Update module github.com/linode/go-metadata to v0.3.0 (#49910)
+  * Update module
+    github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common
+    to v1.3.142 (#49896)
+  * [chore][internal/aws] Bump grpc version on internal/aws
+    (#49903)
+  * Update redis Docker tag to v8.8.1 (#49897)
+  * Update docker-compose deps to v0.157.0 (#49904)
+  * Update dependency js-yaml to v5.2.2 [SECURITY] (#49882)
+  * Update module github.com/google/go-github/v88 to v89 (#49521)
+  * chore: update prometheus from v0.312.0 to v0.313.1 (#49880)
+  * [chore] Update core dependencies (#49864)
+  * Bump google.golang.org/grpc from 1.82.0 to 1.82.1 in
+    /exporter/syslogexporter (#49855)
+  * Bump google.golang.org/grpc from 1.82.0 to 1.82.1 in
+    /internal/splunk (#49853)
+  * Bump google.golang.org/grpc from 1.82.0 to 1.82.1 in
+    /receiver/awscontainerinsightreceiver (#49852)
+  * Bump google.golang.org/grpc from 1.82.0 to 1.82.1 in
+    /receiver/carbonreceiver (#49850)
+  * Bump google.golang.org/grpc from 1.82.0 to 1.82.1 in
+    /receiver/googlecloudpubsubpushreceiver (#49849)
+  * Bump google.golang.org/grpc from 1.82.0 to 1.82.1 in
+    /receiver/googlecloudmonitoringreceiver (#49848)
+  * Bump google.golang.org/grpc from 1.82.0 to 1.82.1 in
+    /receiver/kubeletstatsreceiver (#49847)
+  * Bump google.golang.org/grpc from 1.82.0 to 1.82.1 in
+    /receiver/podmanreceiver (#49846)
+  * Bump google.golang.org/grpc from 1.82.0 to 1.82.1 in
+    /receiver/riakreceiver (#49844)
+  * Bump google.golang.org/grpc from 1.82.0 to 1.82.1 in
+    /receiver/saphanareceiver (#49843)
+  * Bump google.golang.org/grpc from 1.82.0 to 1.82.1 in
+    /receiver/snmpreceiver (#49841)
+  * Bump google.golang.org/grpc from 1.82.0 to 1.82.1 in
+    /receiver/snowflakereceiver (#49838)
+  * Bump google.golang.org/grpc from 1.82.0 to 1.82.1 in
+    /receiver/splunkenterprisereceiver (#49835)
+  * Bump google.golang.org/grpc from 1.82.0 to 1.82.1 in
+    /receiver/windowsperfcountersreceiver (#49831)
+  * Bump google.golang.org/grpc from 1.82.0 to 1.82.1 in
+    /receiver/vcrreceiver (#49830)
+  * Update module github.com/prometheus/client_golang to
+    v1.24.0-rc.0 (#49806)
+  * Update module
+    github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common
+    to v1.3.138 (#49810)
+  * [chore] Update golang.org/x/text to v0.40.0 to fix GO-2026-5970
+    (#49811)
+  * [chore] Update core dependencies (#49809)
+  * Update module github.com/aws/aws-sdk-go-v2/config to v1.32.30
+    (#49805)
+  * Update All github.com/aws packages (#49778)
+  * Update module
+    github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common
+    to v1.3.137 (#49783)
+  * Update module github.com/gosnmp/gosnmp to v1.44.0 (#49790)
+  * Update module gitlab.com/gitlab-org/api/client-go/v2 to v2.51.0
+    (#49793)
+  * Update module modernc.org/sqlite to v1.54.0 (#49799)
+  * Update github/codeql-action digest to e064762 (#49803)
+  * Update module github.com/antchfx/xpath to v1.3.7 (#49779)
+
+-------------------------------------------------------------------
+Wed Aug 05 06:06:06 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.157.0:
+  * Bump github.com/go-git/go-billy/v5 from 5.8.0 to 5.9.0 in
+    /internal/tools (#49512)
+  * Bump github.com/go-git/go-git/v5 from 5.18.0 to 5.19.1 in
+    /internal/tools (#49513)
+  * Update All github.com/aws packages (#49639)
+  * Update All github.com/datadog packages (#49640)
+  * Update All github.com/googlecloudplatform packages (#49645)
+  * Update All golang.org/x packages (#49646)
+  * Update dependency js-yaml to v5.2.1 (#49492)
+  * Update docker-compose deps to v0.156.0 (#49535)
+  * Update dockerfile deps (#49775)
+  * Update module
+    github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/monitor/armmonitor
+    to v0.13.0 (#49787)
+  * Update module github.com/apache/pulsar-client-go to v0.21.0
+    (#49786)
+  * Update module github.com/apache/thrift to v0.24.0 (#49647)
+  * Update module github.com/aws/aws-sdk-go-v2/service/ec2 to
+    v1.313.0 (#49539)
+  * Update module github.com/cloudfoundry/go-cfclient/v3 to
+    v3.0.0-beta.1 (#49780)
+  * Update module github.com/coreos/go-oidc/v3 to v3.20.0 (#49648)
+  * Update module github.com/getsentry/sentry-go to v0.48.0
+    (#49788)
+  * Update module github.com/go-ldap/ldap/v3 to v3.4.14 (#49781)
+  * Update module github.com/googleapis/gax-go/v2 to v2.23.0
+    (#49540)
+  * Update module github.com/klauspost/compress to v1.19.0 (#49505)
+  * Update module github.com/klauspost/compress to v1.19.0 (#49536)
+  * Update module github.com/leodido/go-syslog/v4 to v4.6.0
+    (#49649)
+  * Update module github.com/pkg/sftp to v1.13.11 (#49663)
+  * Update module github.com/prometheus/common to v0.70.0 (#49650)
+  * Update module github.com/prometheus/exporter-toolkit to v0.17.1
+    (#49495)
+  * Update module github.com/shirou/gopsutil/v4 to v4.26.6 (#49497)
+  * Update module github.com/shirou/gopsutil/v4 to v4.26.6 (#49527)
+  * Update module
+    github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common
+    to v1.3.129 (#49501)
+  * Update module
+    github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common
+    to v1.3.129 (#49522)
+  * Update module
+    github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common
+    to v1.3.130 (#49542)
+  * Update module
+    github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common
+    to v1.3.131 (#49641)
+  * Update module
+    github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common
+    to v1.3.132 (#49670)
+  * Update module github.com/twmb/franz-go to v1.21.5 (#49502)
+  * Update module github.com/twmb/franz-go to v1.21.5 (#49523)
+  * Update module github.com/vmware/govmomi to v0.55.1 (#49503)
+  * Update module github.com/vmware/govmomi to v0.55.1 (#49524)
+  * Update module gitlab.com/gitlab-org/api/client-go/v2 to v2.46.0
+    (#49514)
+  * Update module gitlab.com/gitlab-org/api/client-go/v2 to v2.47.0
+    (#49672)
+  * Update module go.mongodb.org/mongo-driver/v2 to v2.8.0 (#49651)
+  * Update module go.opentelemetry.io/ebpf-profiler to v0.0.202627
+    (#49504)
+  * Update module go.opentelemetry.io/ebpf-profiler to v0.0.202627
+    (#49529)
+  * Update module golang.org/x/text to v0.39.0 (#49515)
+  * Update module google.golang.org/grpc to v1.82.1 (#49784)
+  * Update otelbot token workflows to use client IDs (#49614)
+  * Update prom/prometheus Docker tag to v3.13.0 (#49518)
+  * Update prom/prometheus Docker tag to v3.13.1 (#49642)
+  * [chore] Update core dependencies (#49600)
+  * [chore] Update core dependencies (#49712)
+  * [chore] Update core dependencies (#49764)
+  * [chore] Update core dependencies (#49774)
+
+-------------------------------------------------------------------
+Wed Aug 05 05:39:15 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.156.0:
+  * Update All github.com/datadog packages (#49490)
+  * Update All github.com/aws packages (#49489)
+  * [chore] Update core dependencies (#49484)
+  * Update module
+    github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common
+    to v1.3.128 (#48685)
+  * Update All github.com/azure packages (major) (#49401)
+  * [chore] Update core dependencies (#49455)
+  * [chore] Update core dependencies (#49434)
+  * Update All github.com/aws packages (#49408)
+  * Update module google.golang.org/grpc to v1.82.0 (#49400)
+  * Update module github.com/vmware/govmomi to v0.55.0 (#49388)
+  * Update module gitlab.com/gitlab-org/api/client-go/v2 to v2.44.0
+    (#49389)
+  * Update module github.com/prometheus/procfs to v0.21.1 (#49393)
+  * Update module golang.org/x/tools to v0.47.0 (#49394)
+  * [chore]: bump githubgen to latest main to test fix (#49390)
+  * Update module github.com/ClickHouse/clickhouse-go/v2 to v2.47.0
+    (#49381)
+  * Update module github.com/prometheus/procfs to v0.21.0 (#49382)
+  * Update module github.com/DataDog/datadog-api-client-go/v2 to
+    v2.62.0 (#49385)
+  * Update module github.com/prometheus/exporter-toolkit to v0.17.0
+    (#49386)
+  * Update module github.com/twmb/franz-go to v1.21.4 (#49372)
+  * Update module github.com/klauspost/compress to v1.18.7 (#49374)
+  * Update module software.sslmate.com/src/go-pkcs12 to v0.7.3
+    (#49375)
+  * Update dependency js-yaml to v5.2.0 (#49377)
+  * Update docker-compose deps to v0.155.0 (#49378)
+  * Update module github.com/cloudfoundry/go-cfclient/v3 to
+    v3.0.0-alpha.21 (#49368)
+  * Update module github.com/huaweicloud/huaweicloud-sdk-go-v3 to
+    v0.1.202 (#49369)
+  * Update module github.com/prometheus-community/pro-bing to
+    v0.9.1 (#49371)
+  * Update All github.com/aws packages (#49366)
+  * Update All github.com/datadog packages (#49367)
+  * Update golang:1.26 Docker digest to f96cc55 (#49364)
+  * Update actions/setup-go digest to 924ae3a (#49363)
+  * [chore] Update core dependencies (#49338)
+  * Update module gitlab.com/gitlab-org/api/client-go/v2 to v2.41.0
+    (#49299)
+  * [chore] Pin github.com/twmb/franz-go/pkg/kmsg below v2 in
+    Renovate (#49309)
+
+-------------------------------------------------------------------
 Sun Jun 28 15:34:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.155.0:
