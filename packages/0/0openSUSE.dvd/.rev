@@ -93,4 +93,18 @@
     <user>maxlin_factory</user>
     <comment>ignore missing package</comment>
   </revision>
+  <revision rev="16" vrev="16">
+    <srcmd5>020d78c51a2637558335568930096e80</srcmd5>
+    <version>unknown</version>
+    <time>1786004159</time>
+    <user>maxlin_factory</user>
+    <comment>correspond to dracut live root option 'live:LABEL=Install-openSUSE-x86_64'</comment>
+  </revision>
+  <revision rev="17" vrev="17">
+    <srcmd5>4e5b2a792810bc9c42af825938b90d6f</srcmd5>
+    <version>unknown</version>
+    <time>1786004324</time>
+    <user>maxlin_factory</user>
+    <comment>libsubid6</comment>
+  </revision>
 </revisionlist>

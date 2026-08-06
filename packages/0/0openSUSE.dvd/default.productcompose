@@ -29,7 +29,7 @@ flavors:
     name: openSUSE
     summary: openSUSE Tumbleweed offline installer
     iso:
-      volume_id: Install-Tumbleweed-x86_64
+      volume_id: Install-openSUSE-x86_64
       base: agama-installer-openSUSE
       tree: drop
     source: drop
@@ -2726,7 +2726,7 @@ packagesets:
    - libstorage-ng-lang # reason: dvd:patterns-kde-kde
    - libstorage-ng-ruby # reason: dvd:patterns-kde-kde
    - libstorage-ng1 # reason: dvd:patterns-kde-kde
-   - libsubid5 # reason: dvd:patterns-gnome-gnome
+   - libsubid6 # reason: dvd:patterns-gnome-gnome
    - libsuitesparseconfig7 # reason: dvd:patterns-gnome-gnome
    - libsvrcore0 # reason: dvd:patterns-server-directory_server
    - libswresample6 # reason: dvd:openSUSE-release
@@ -5737,7 +5737,7 @@ packagesets:
    - libstdc++6 # reason: opensuse_microos:patterns-microos-base
    - libstemmer1d # reason: opensuse_microos:patterns-microos-base-packagekit
    - libstoken1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libsubid5 # reason: opensuse_microos:patterns-microos-base
+   - libsubid6 # reason: opensuse_microos:patterns-microos-base
    - libswresample6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libswscale9 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libsystemd0 # reason: opensuse_microos:patterns-microos-base
@@ -7529,7 +7529,7 @@ packagesets:
    - libstdc++6 # reason: opensuse_kalpa:patterns-kalpa-base
    - libstemmer1d # reason: opensuse_kalpa:patterns-kalpa-base
    - libstoken1 # reason: opensuse_kalpa:patterns-kalpa-base
-   - libsubid5 # reason: opensuse_kalpa:patterns-kalpa-base
+   - libsubid6 # reason: opensuse_kalpa:patterns-kalpa-base
    - libswresample6 # reason: opensuse_kalpa:patterns-kalpa-base
    - libswscale9 # reason: opensuse_kalpa:patterns-kalpa-base
    - libsystemd0 # reason: opensuse_kalpa:patterns-kalpa-base
