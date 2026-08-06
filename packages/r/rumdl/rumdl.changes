@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Thu Aug 06 05:08:20 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.52:
+  * Fixed
+    - md012: report blank lines before a code block that ends the
+      document (#791) (e897556)
+    - rules: treat a template shortcode tag as opaque markup
+      (6962184)
+    - cli: report a piped document's findings on stdout like every
+      other run (47f8a50)
+
+-------------------------------------------------------------------
+Wed Aug 05 11:53:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.51:
+  * Added
+    - md088: normalize quotes and dashes to ASCII (#763) (52e9844)
+  * Fixed
+    - config: keep a file's per-file-ignores out of the workspace
+      index it feeds (2bb0ce7)
+    - md051: validate cross-file link fragments for a document read
+      from stdin (e215c65)
+    - md051: report a broken fragment on a query-string destination
+      once (7c8390f)
+    - md088: leave modifier letters and math notation alone
+      (56dbf0f)
+    - config: report the effective rule lists from config get
+      global.* (5db8f0c)
+    - config: answer config get for every key rumdl accepts
+      (ecce820)
+    - md035: publish the horizontal rule style the rule enforces
+      (77c8c65)
+    - config: accept every config key a rule actually reads
+      (8ec7bba)
+    - lsp: identify documents by the same resolved path as the
+      index (78f4aa0)
+    - lsp: keep frontmatter values out of find-references results
+      (499b005)
+    - md051: index cross-file links independently of frontmatter
+      config (ca7b93e)
+    - lsp: build the workspace index from the rules the CLI uses
+      (b7a293c)
+    - md051,md080: resolve the anchor style per file, not once from
+      the global flavor (8e09304)
+
+-------------------------------------------------------------------
+Tue Aug 04 11:56:01 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.50:
+  * Added
+    - md077: support fixed continuation indent config (#786)
+      (fea6322)
+  * Fixed
+    - md065: leave markers alone inside a block that hides its
+      content (2654364)
+    - md065: report thematic breaks written with spaces between
+      markers (1d29236)
+    - md076: ask the parser whether a list item's block is really
+      fenced (fd616c2)
+    - md022: require a blank line below a heading above a spaced
+      thematic break (27120f2)
+    - MD076: preserve fenced list item spacing (#788) (2d60067)
+    - md022: use the same list test below a heading in check and
+      fix (#790) (ef926b7)
+    - md040: locate the fence a list marker holds instead of
+      assuming the indent (6099a6c)
+    - md077: keep the strict-flavor minimum as a floor under a
+      configured indent (cfaad2e)
+    - md077: reject a configured indent of 0 (1ac97a3)
+    - md077: accept the indent option instead of reporting it as
+      unknown (cba175c)
+    - md013: stop exempting a complete link followed by a
+      parenthesized aside (722fad6)
+    - md013: keep nested links intact when reflowing emphasis spans
+      (#779) (cb65237)
+    - md013: exempt standalone links with nested markup or
+      unresolved references (#781) (2c52283)
+
+-------------------------------------------------------------------
 Mon Aug 03 05:51:49 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.49:
