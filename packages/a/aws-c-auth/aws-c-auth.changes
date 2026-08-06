@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug  4 11:24:31 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.10.4
+  * Support s2n-tls on macOS by @sfod in (#296)
+  * Regression Labeler Fix by @azkrishpy in (#297)
+  * profile credentials provider should support sts web identity
+    as well by @TingDaoK in (#298)
+
+-------------------------------------------------------------------
 Fri May 22 07:34:10 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.10.3
