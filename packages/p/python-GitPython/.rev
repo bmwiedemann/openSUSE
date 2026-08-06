@@ -1077,4 +1077,37 @@
 </comment>
     <requestid>1367761</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>2a9286422ebad08b11b46649818a5ab1</srcmd5>
+    <version>3.1.58</version>
+    <time>1786025988</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.1.58 (fixes VUL-0: bsc#1273775, bsc#1273779,
+bsc#1273781, bsc#1273783, bsc#1273785, bsc#1278787):
+* test: allow Python startup before timeout
+* Resolve Windows hook Bash through PATH
+* Revert &quot;Resolve Windows hook Bash through PATH&quot;
+* test: focus pytest summary on unexpected failures
+* Validate submodule names before filesystem operations
+* Handle invalid submodule names during recursive updates
+* Fix Windows path handling on Python 3.13+
+* fixup 2202
+* Correct Windows hook Bash precedence
+* Harden config and Git option validation
+* Skip tests that need symlink privileges instead of erroring
+- Add testsuite.patch to skip tests that fail in our environment
+- Update to version 3.1.57 (fixes VUL-0: bsc#1273547, bsc#1273546):
+* Merge gitdb and smmap into the GitPython repository
+* build(deps): bump actions/setup-python from 6 to 7
+* build(deps): bump the pre-commit group with 2 updates
+* Bump Vampire/setup-wsl from 6.0.0 to 7.0.0
+* Render protected Traversable methods in the reference
+* Use standard prefixes for parsed patch diffs
+* Honor kill_after_timeout with output streams
+* Redact Authorization extra headers from command errors
+* Improve RemoteProgress parse return typing
+* Adopt basedpyright with a legacy baseline
+* Block unsafe Git file and URL options</comment>
+    <requestid>1370040</requestid>
+  </revision>
 </revisionlist>
