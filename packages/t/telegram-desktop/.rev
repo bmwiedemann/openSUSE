@@ -1744,4 +1744,13 @@
   * https://github.com/telegramdesktop/tdesktop/releases/tag/v7.0.8</comment>
     <requestid>1369608</requestid>
   </revision>
+  <revision rev="165" vrev="1">
+    <srcmd5>22661490001dcc1c7b0a9e645d72859a</srcmd5>
+    <version>7.0.9</version>
+    <time>1786027096</time>
+    <user>anag_factory</user>
+    <comment>- Updated telegram-desktop to 7.0.9
+  * https://github.com/telegramdesktop/tdesktop/releases/tag/v7.0.9</comment>
+    <requestid>1370003</requestid>
+  </revision>
 </revisionlist>
