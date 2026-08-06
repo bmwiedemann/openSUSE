@@ -733,4 +733,19 @@
   to fix the build against quazip 1.7.2</comment>
     <requestid>1363398</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>057628abfde1415abb282fe7fb31df7a</srcmd5>
+    <version>4.29.3</version>
+    <time>1786026182</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.29.3
+  * Sharing code for generating correspondence overviews with mobile app.
+  * Updated application logo and icon.
+  * Disabled donations dialogue when having more than 5 production accounts or
+    when having records management configured.
+  * Added more explanatory texts into the change password dialogue.
+  * Fixed disappearing dock icon in Gnome 49. Fixed organisation domain an
+    renamed desktop and metainfo files.</comment>
+    <requestid>1369666</requestid>
+  </revision>
 </revisionlist>

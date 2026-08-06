@@ -26,7 +26,7 @@
 %define lrelease lrelease-qt5
 %endif
 Name:           datovka
-Version:        4.29.2
+Version:        4.29.3
 Release:        0
 Summary:        Library to access Czech eGov system "Datove schranky"
 License:        GPL-3.0-or-later
@@ -96,16 +96,16 @@ export CXXFLAGS="%{optflags}"
 # fix desktop file
 sed -i \
     -e 's:Office;:Office;Network;Email;:g' \
-    %{buildroot}%{_datadir}/applications/datovka.desktop
+    %{buildroot}%{_datadir}/applications/cz.nic.datovka.desktop
 rm -rf %{buildroot}%{_datadir}/datovka/doc
 
 %files
 %license COPYING
 %doc AUTHORS ChangeLog
 %{_bindir}/datovka
-%{_datadir}/applications/datovka.desktop
+%{_datadir}/applications/cz.nic.datovka.desktop
 %dir %{_datadir}/metainfo
-%{_datadir}/metainfo/datovka.metainfo.xml
+%{_datadir}/metainfo/cz.nic.datovka.metainfo.xml
 %dir %{_datadir}/datovka
 %dir %{_datadir}/datovka/localisations/
 %{_datadir}/datovka/localisations/datovka_cs.qm
