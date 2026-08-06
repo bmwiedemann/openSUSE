@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug  5 02:53:27 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch remove-six.patch:
+  * Remove six usage from the testsuite.
+- Use python_module devel in the BuildRequires, rather than %pythons.
+- Skip two threading tests on 32 bit.
+
+-------------------------------------------------------------------
 Mon Sep 15 11:23:03 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.9.0

@@ -1,7 +1,7 @@
 #
 # spec file for package python-hunter
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?sle15_python_module_pythons}
 Name:           python-hunter
 Version:        3.9.0
@@ -23,16 +24,16 @@ Summary:        Pytest plugin for coverage reporting
 License:        BSD-2-Clause
 URL:            https://github.com/ionelmc/python-hunter
 Source:         https://files.pythonhosted.org/packages/source/h/hunter/hunter-%{version}.tar.gz
-BuildRequires:  %pythons
+# PATCH-FIX-UPSTREAM gh#ionelmc/python-hunter#130
+Patch0:         remove-six.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module aspectlib}
+BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module process-tests}
 BuildRequires:  %{python_module pytest-benchmark}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module py}
 BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module tzdata}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
@@ -62,8 +63,8 @@ EOF
 export PYTHONDONTWRITEBYTECODE=1
 pushd src
 %python_exec build_tests.py build_ext
-find . -name 'eviltracer.cpython-*-linux-gnu.so' -exec mv "{}" ../tests \;
-find . -name 'sample5.cpython-*-linux-gnu.so' -exec mv "{}" ../tests \;
+find . -name 'eviltracer.cpython-*-linux*.so' -exec mv "{}" ../tests \;
+find . -name 'sample5.cpython-*-linux*.so' -exec mv "{}" ../tests \;
 rm build_tests.py
 popd
 
@@ -78,7 +79,13 @@ popd
 
 %check
 export PYTHONPATH=tests
-%pytest_arch -k 'not (test_pdb and (postmortem-ipdb or settrace-ipdb or debugger-ipdb) or test_fullsource_cython or test_source_cython or test_safe_repr or test_profile or test_errorsnooper)' --ignore tests/test_remote.py --ignore tests/test_integration.py
+donttest="test_pdb and (postmortem-ipdb or settrace-ipdb or debugger-ipdb)"
+donttest+=" or test_fullsource_cython or test_source_cython or test_safe_repr"
+donttest+=" or test_profile or test_errorsnooper"
+if [ $(getconf LONG_BIT) -eq 32 ]; then
+    donttest+=" or test_threading_support or test_thread_filtering"
+fi
+%pytest_arch --ignore tests/test_remote.py --ignore tests/test_integration.py -k "not ($donttest)"
 
 %post
 %python_install_alternative hunter-trace

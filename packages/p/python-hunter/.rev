@@ -85,4 +85,15 @@
     <comment></comment>
     <requestid>1304797</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>d60e1b335ffd97f02c4907e56cb4ef6a</srcmd5>
+    <version>3.9.0</version>
+    <time>1786026401</time>
+    <user>anag_factory</user>
+    <comment>- Add patch remove-six.patch:
+  * Remove six usage from the testsuite.
+- Use python_module devel in the BuildRequires, rather than %pythons.
+- Skip two threading tests on 32 bit.</comment>
+    <requestid>1369965</requestid>
+  </revision>
 </revisionlist>

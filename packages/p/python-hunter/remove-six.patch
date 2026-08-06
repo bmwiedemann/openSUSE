@@ -1,0 +1,54 @@
+From 0399e4424bb81314f5c5a875a3abaa3e76619b30 Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Wed, 5 Aug 2026 12:23:25 +1000
+Subject: [PATCH] Remove use of six from the testsuite
+
+Since Python 3.9 is the lowest version of Python we test with, we can
+comfortably remove six from the testsuite, and stop installing it.
+---
+ tests/test_util.py | 5 ++---
+ tox.ini            | 1 -
+ 2 files changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/tests/test_util.py b/tests/test_util.py
+index b2d74f5..faf4103 100644
+--- a/tests/test_util.py
++++ b/tests/test_util.py
+@@ -14,7 +14,6 @@
+ 
+ import py
+ import pytest
+-import six
+ 
+ from hunter.util import safe_repr
+ 
+@@ -178,7 +177,7 @@ def __instancecheck__(self, instance):
+             side_effects.append('MetaMeta.__instancecheck__')
+             return True
+ 
+-    class Meta(six.with_metaclass(MetaMeta, type)):
++    class Meta(type, metaclass=MetaMeta):
+         @property
+         def __mro__(self):
+             side_effects.append('Meta.__mro__')
+@@ -202,7 +201,7 @@ def __dict__(self, _={}):
+             side_effects.append('Meta.__dict__')
+             return _
+ 
+-    class Foobar(six.with_metaclass(Meta, object)):
++    class Foobar(metaclass=Meta):
+         @property
+         def __mro__(self):
+             side_effects.append('Foobar.__mro__')
+diff --git a/tox.ini b/tox.ini
+index f8b6465..acb27ac 100644
+--- a/tox.ini
++++ b/tox.ini
+@@ -46,7 +46,6 @@ deps =
+     setuptools>=80
+     setuptools_scm>=8
+     aspectlib
+-    six
+     py
+     tzdata
+     ipdb
