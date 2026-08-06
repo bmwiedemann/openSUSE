@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug  4 21:17:06 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 151.0.7922.75:
+  * stability fix
+  * pull in SKIA updates
+
+-------------------------------------------------------------------
 Thu Jul 30 08:29:46 UTC 2026 - Ruediger Oertel <ro@suse.com>
 
 - Chromium 151.0.7922.71 (boo#1272936):
