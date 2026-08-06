@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Wed Aug 05 05:19:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.22.0:
+  * Breaking Change
+    - chore(buildkit): bump buildkit fork to v0.31.0-okteto1 by
+      @pchico83 in #5067
+  * New Feature
+    - feat(compose): allow disabling kubernetes service links per
+      service by @jLopezbarb in #5093
+  * Bug Fix
+    - Fix "okteto destroy --all" hanging on sleeping namespaces by
+      @pchico83 in #5072
+    - fix(build): prevent deadlock on buildkit port forward failure
+      by @ifbyol in #5083
+  * Dependencies
+    - fix: update vulnerable dependencies (#5109) (#5111)
+    - fix: remediate CVEs (Go 1.26.5, kubectl, helm, syncthing)
+      (#5098) (#5100)
+    - build(deps): bump brace-expansion in /samples/node.js (#5094)
+    - build(deps): bump body-parser from 1.20.4 to 1.20.6 in
+      /samples/node.js (#5095)
+    - build(deps): bump google.golang.org/grpc from 1.81.1 to
+      1.82.1 (#5096)
+    - build(deps): bump renovatebot/github-action from 46.1.19 to
+      46.1.20 (#5091)
+    - build(deps): bump actions/setup-python from 6 to 7 (#5090)
+    - chore(deps): Update module github.com/pkg/sftp to v1.13.10
+      (#5089)
+    - chore(deps): Update module github.com/docker/cli to
+      v29.6.0+incompatible (#5092)
+    - build(deps): bump renovatebot/github-action from 46.1.18 to
+      46.1.19 (#5087)
+    - chore(deps): Update module golang.org/x/crypto to v0.53.0
+      (#5088)
+    - chore(deps): Update module github.com/mholt/archives to
+      v0.1.5 (#5084)
+    - build(deps): bump renovatebot/github-action from 46.1.16 to
+      46.1.18 (#5080)
+    - chore(deps): Update module golang.org/x/crypto to v0.52.0
+      (#5074)
+    - fix(security): update vulnerable dependencies and binaries
+      (#5070)
+    - chore(deps): Update module github.com/Masterminds/semver/v3
+      to v3.5.0 (#5068)
+
+-------------------------------------------------------------------
 Thu Jul 02 12:39:52 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.21.0:
