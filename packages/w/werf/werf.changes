@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Aug 06 12:07:42 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.75.3:
+  * Bug Fixes
+    - host-cleanup: stop wiping other werf versions' live git cache
+      (#7699) (3e43c28)
+- Update to version 2.75.2:
+  * Miscellaneous Chores
+    - release 2.75.2 (def3a23)
+- Update to version 2.75.1:
+  * Bug Fixes
+    - deploy: don't block deploy when Helm managed fields
+      reconstruction hits incompatible historical manifest (#7673)
+      (c7f3677)
+- Update to version 2.75.0:
+  * Features
+    - deploy: add --lookup-resources flag for offline lookup in
+      render/lint commands (#7666) (3b0f422)
+  * Bug Fixes
+    - werf.io/deploy-dependency didn't work if no readiness
+      operation in plan or if namespace=releasens (284d18d)
+    - deploy: create release namespace under strict RBAC,
+      --no-create-namespace flag (#7668) (5c9d62a)
+
+-------------------------------------------------------------------
 Thu Jul 30 05:35:05 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.74.0:
