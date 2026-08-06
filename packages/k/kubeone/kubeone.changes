@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Aug 06 05:07:44 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.14.1:
+  * Updates
+    - Update Machine-controller to v1.66.1 by @archups in #4157
+    - Update cilium to v1.19.6 by @kron4eg in #4163
+  * Bug or Regression
+    - Update Helm dry run strategy on release upgrade by @kron4eg
+      in #4168
+
+-------------------------------------------------------------------
 Tue Jul 28 05:07:43 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.14.0:
