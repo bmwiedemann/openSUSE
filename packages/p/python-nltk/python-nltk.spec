@@ -17,10 +17,9 @@
 
 
 %define modname nltk
-%define distversion 3.10.0
 %{?sle15_python_module_pythons}
 Name:           python-nltk
-Version:        3.10.0rc1
+Version:        3.10.1
 Release:        0
 Summary:        Natural Language Toolkit
 License:        Apache-2.0
@@ -187,7 +186,7 @@ chmod -x %{buildroot}%{$python_sitelib}/nltk/test/dependency.doctest
 %doc README.md
 %license LICENSE.txt
 %{python_sitelib}/nltk/
-%{python_sitelib}/nltk-%{distversion}.dist-info/
+%{python_sitelib}/nltk-%{version}.dist-info/
 %python_alternative %{_bindir}/nltk
 
 %changelog

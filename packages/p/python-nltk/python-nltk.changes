@@ -1,7 +1,25 @@
 -------------------------------------------------------------------
+Mon Aug  3 15:39:07 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 3.10.1
+  * fix ReDoS in TweetTokenizer url and email regexes
+  * Prevent module hijacking in inline imports
+  * use exact thirds in masi_distance
+  * Fix uncontrolled search path in HunposTagger
+  * Fix word_tokenize: pad opening single quote before multi-letter words
+  * Avoid retaining bllip import exceptions
+  * Implement Tree.pformat_latex_forest
+  * fix(security): validate types after wordnet_app pickle deserialization
+  * Expand ~ in env-var paths (NLTK_DATA, find_file_iter)
+  * Add custom import hook to prevent module hijacking from CWD
+  * detokenize periods mid-string, not just the last one
+  * don't collapse repeated non-Latin letters in TweetTokenizer
+
+-------------------------------------------------------------------
 Thu Jun 18 14:02:15 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
-- Update to 3.10.0rc1 (CVE-2026-54293, bsc#1268526)
+- Update to 3.10.0rc1 (CVE-2026-54293, bsc#1268526, bsc#1273252, CVE-2026-12061,
+  bsc#1273254, CVE-2026-12072, bsc#1273255, CVE-2026-12074, bsc#1273256, CVE-2026-12075)
   * Let TextCat.guess_language return Unknown for ties (optional)
   * fix(security): block XML entity expansion in downloader index parsing
   * Fix FunctionalCategory.substitute() ignoring substituted direction
