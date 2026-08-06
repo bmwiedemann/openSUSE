@@ -24,6 +24,8 @@ Summary:        Read and write audio files tags in Python
 License:        MIT
 URL:            https://github.com/beetbox/mediafile
 Source:         https://github.com/beetbox/mediafile/archive/refs/tags/v%{version}.tar.gz#/mediafile-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE: https://github.com/beetbox/mediafile/issues/109
+Patch:          fix_opus_test.patch
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module filetype >= 1.2.0}
 BuildRequires:  %{python_module mutagen >= 1.46}

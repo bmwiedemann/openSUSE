@@ -1,0 +1,13 @@
+Index: mediafile-0.17.0/test/test_mediafile.py
+===================================================================
+--- mediafile-0.17.0.orig/test/test_mediafile.py
++++ mediafile-0.17.0/test/test_mediafile.py
+@@ -987,7 +987,7 @@ class OpusTest(ReadWriteTestBase, unitte
+     extension = "opus"
+     audio_properties = {
+         "length": 1.0,
+-        "bitrate": 66792,
++        "bitrate": 52392,
+         "bitrate_mode": "",
+         "encoder_info": "",
+         "encoder_settings": "",

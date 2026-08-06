@@ -123,4 +123,12 @@
     files. Non-ID3 formats return None.</comment>
     <requestid>1349216</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>fd062198997c1213a44441341bc7f6ee</srcmd5>
+    <version>0.17.0</version>
+    <time>1786026432</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1370062</requestid>
+  </revision>
 </revisionlist>
