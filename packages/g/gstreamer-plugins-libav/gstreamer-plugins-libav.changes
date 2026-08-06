@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Aug  5 16:01:55 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.28.6:
+  + Fix build failure with FFmpeg 9.0
+  + libav: FFmpeg 9.0 Build Failure
+  + avdemux: Close demuxer on pad deactivation instead of state
+    change and don't use uninitialized audio channel positions
+  + avdemux: Use a dynamic-sized array for the AVStreams
+
+-------------------------------------------------------------------
 Tue Jul 14 15:29:23 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 1.28.5:
