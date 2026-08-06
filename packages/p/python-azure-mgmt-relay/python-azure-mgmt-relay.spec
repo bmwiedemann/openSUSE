@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-relay
-Version:        1.1.1
+Version:        2.0.0
 Release:        0
 Summary:        Microsoft Azure Relay Client Library
 License:        MIT

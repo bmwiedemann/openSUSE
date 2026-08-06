@@ -100,4 +100,15 @@
 - Update Requires from pyproject.toml (forwarded request 1352377 from glaubitz)</comment>
     <requestid>1352456</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a603c8c4802fe8d69c2fabcea4e198d1</srcmd5>
+    <version>2.0.0</version>
+    <time>1786026303</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 2.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1369734 from glaubitz)</comment>
+    <requestid>1369738</requestid>
+  </revision>
 </revisionlist>
