@@ -6,6 +6,10 @@ version_from_package: openSUSE-release
 product-type: base
 summary: openSUSE Tumbleweed
 
+build_options:
+- hide_flavor_in_product_directory_name
+- skip_updateinfos
+
 # enable iso file generation
 iso:
   publisher: openSUSE
@@ -18,13 +22,13 @@ debug: split
 
 # will be extended with architecture and flavor string
 flavors:
-  dvd:
+  tw_agama_offline:
     architectures: [ x86_64 ]
     product_directory_name: TW-offline-installer
     name: openSUSE
     summary: openSUSE Tumbleweed offline installer
     iso:
-      volume_id: Install-Tumbleweed-x86_64
+      volume_id: Install-openSUSE-x86_64
       base: agama-installer-openSUSE
       tree: drop
     source: drop

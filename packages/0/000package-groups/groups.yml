@@ -30,6 +30,13 @@ OUTPUT:
       includes:
         - common_locks
         - opensuse_kalpa
+  - tw_agama_offline:
+      recommends: true
+      includes:
+        - common_locks
+        - dvd
+        - opensuse_microos
+        - opensuse_microos_desktop
 
 common_locks:
   - dummy-release: [locked]
@@ -450,3 +457,6 @@ opensuse_kalpa:
   - Kalpa-release: [x86_64]
   - patterns-kalpa-base: [x86_64]
   - suse-module-tools-scriptlets
+
+tw_agama_offline:
+  - openSUSE-release-dvd
