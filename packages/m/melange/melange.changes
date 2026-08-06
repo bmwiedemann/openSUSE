@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Aug 05 05:22:17 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.57.0:
+  * build(deps): bump the gomod group with 3 updates (#2609)
+  * feat(build): cache `uses:` pipeline definitions; allow script
+    normalization to be skipped (#2608)
+  * build(deps): bump the gomod group with 3 updates (#2606)
+
+-------------------------------------------------------------------
 Mon Aug 03 05:56:32 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.56.5:
