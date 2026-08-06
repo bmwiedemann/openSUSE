@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Thu Aug  6 07:23:16 UTC 2026 - Detlef Steuer <detlef.steuer@gmx.de>
+
+* VERSION 06.02.10 - 2026-08-05
+
+- IMPROVEMENT: TkRemind: Theme *all* dialogs and popups according to
+  the selected color scheme.  No more surprisingly-bright popups when
+  you go to create a new reminder in Dark Mode.
+
+  Note that to fully support this, two new color options have been
+  added.  If you've customized your colors (ie, are using something
+  other than the built-in Light and Dark themes) you will need to set
+  the new options "Active entry background" and "Disabled entry
+  background".  TkRemind will warn you if your options file was
+  created by an older version of TkRemind, and will prompt you to
+  update and save the options.
+
+- IMPROVEMENT: TkRemind: If you resize the "Help" window, the man page
+  text is re-flowed to adjust to the new size.
+
+- DOCUMENTATION FIX: TkRemind: The tkremind man page has been updated
+  and some inaccuracies corrected.
+
+- IMPROVEMENT: Remind: Better reporting of "too many arguments" error
+  when parsing expressions.
+
+- BUG FIX: TkRemind: If the date rolls over from one month to the
+  next, properly update the calendar display to the new month.
+
+-------------------------------------------------------------------
+Mon Aug  3 09:15:27 UTC 2026 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- VERSION 06.02.09 - 2026-07-28
+
+- IMPROVEMENT: remind: When compiling an expression, keep pointers to
+  system variables instead of storing names.  This avoids having to
+  look up the system variable by name each time it is evaluated.  This
+  improves efficiency, though probably not by a noticeable amount.
+
+- IMPROVEMENT: remind: In several places, replace a series of
+  "if ... else if ... else ..." sequences with "switch ... case ..."
+  Again, this probably improves efficiency, and again, probably not
+  noticeably.
+
+- IMPROVEMENT: remind: Emit more helpful error messages if Remind is
+  unable to open a file.
+
+- IMPROVEMENT: remind: Add three new system variables to limit Remind
+  from consuming all of memory if you feed it pathological input.  If
+  you set the variables to zero, then Remind falls back to its
+  previous behavior of trusting that you know what you are doing.
+
+  The three new variables are:
+
+  o $MaxIncludeCmdLines - default 10000.  Limit the output of an
+    INCLUDECMD command to this many lines.  Prevents Remind from
+    consuming all memory if you do something like: INCLUDECMD yes
+
+  o $MaxLineLength - default 10485760 (10MB).  Limit the total length
+    of an input line, including continuations, to this many bytes.  If
+    you have a script with a line larger than 10MB, you should adjust
+    this system variable and re-think your life choices.  Prevents Remind
+    from consuming all memory if you do something like:
+
+        perl -e 'print "REM foo foo foo foo" x 10000000000' | remind -
+
+  o $MaxCachedLines - default 1000000 (1 million).  Limits the number
+    of lines per file that will be cached in memory during a calendar
+    run.  If a file is longer than this many lines, it will be re-read
+    from disk for each run.  Prevents Remind from consuming all memory
+    if you do something like:  remind -c /dev/urandom
+
+- CHANGE: rem2ps: Print a note that rem2ps is deprecated and that
+  rem2pdf should be used instead.
+
+-------------------------------------------------------------------
 Mon Jul  6 18:58:24 UTC 2026 - Detlef Steuer <detlef.steuer@gmx.de>
 
 - VERSION 06.02.08 - 2026-07-06

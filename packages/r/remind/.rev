@@ -1105,4 +1105,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1365437</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>17b01ad1c3bfec188f244689d637998a</srcmd5>
+    <version>6.2.10</version>
+    <time>1786027086</time>
+    <user>anag_factory</user>
+    <comment>* VERSION 06.02.10 - 2026-08-05
+- IMPROVEMENT: TkRemind: Theme *all* dialogs and popups according to
+  the selected color scheme.  No more surprisingly-bright popups when
+  you go to create a new reminder in Dark Mode.
+  Note that to fully support this, two new color options have been
+  added.  If you've customized your colors (ie, are using something
+  other than the built-in Light and Dark themes) you will need to set
+  the new options &quot;Active entry background&quot; and &quot;Disabled entry
+  background&quot;.  TkRemind will warn you if your options file was
+  created by an older version of TkRemind, and will prompt you to
+  update and save the options.
+- IMPROVEMENT: TkRemind: If you resize the &quot;Help&quot; window, the man page
+  text is re-flowed to adjust to the new size.
+- DOCUMENTATION FIX: TkRemind: The tkremind man page has been updated
+  and some inaccuracies corrected.
+- IMPROVEMENT: Remind: Better reporting of &quot;too many arguments&quot; error
+  when parsing expressions.
+- BUG FIX: TkRemind: If the date rolls over from one month to the
+  next, properly update the calendar display to the new month.
+
+- VERSION 06.02.09 - 2026-07-28
+- IMPROVEMENT: remind: When compiling an expression, keep pointers to
+  system variables instead of storing names.  This avoids having to
+  look up the system variable by name each time it is evaluated.  This
+  improves efficiency, though probably not by a noticeable amount.
+- IMPROVEMENT: remind: In several places, replace a series of
+  &quot;if ... else if ... else ...&quot; sequences with &quot;switch ... case ...&quot;
+  Again, this probably improves efficiency, and again, probably not
+  noticeably.
+- IMPROVEMENT: remind: Emit more helpful error messages if Remind is</comment>
+    <requestid>1369969</requestid>
+  </revision>
 </revisionlist>
