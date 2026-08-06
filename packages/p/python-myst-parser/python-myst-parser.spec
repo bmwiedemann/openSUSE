@@ -23,7 +23,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-myst-parser
-Version:        5.0.0
+Version:        5.1.0
 Release:        0
 Summary:        An extended commonmark compliant parser, with bridges to docutils & sphinx
 License:        MIT
@@ -31,15 +31,17 @@ URL:            https://myst-parser.readthedocs.io/
 Source:         https://github.com/executablebooks/MyST-Parser/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PyPI tarball does not contain tests
 #Source:         https://files.pythonhosted.org/packages/source/m/myst-parser/myst-parser-%%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.11}
+# PATCH-FIX-OPENSUSE Support docutils 0.23
+Patch0:         support-docutils-0.23.patch
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module Sphinx}
-BuildRequires:  %{python_module docutils >= 0.20 with %python-docutils < 0.23}
+BuildRequires:  %{python_module base >= 3.11}
+BuildRequires:  %{python_module docutils >= 0.20 with %python-docutils < 0.24}
 BuildRequires:  %{python_module flit-core >= 3.4}
 BuildRequires:  %{python_module linkify-it-py}
-BuildRequires:  %{python_module markdown-it-py >= 4}
-BuildRequires:  %{python_module mdit-py-plugins >= 0.5}
+BuildRequires:  %{python_module markdown-it-py >= 4.2}
+BuildRequires:  %{python_module mdit-py-plugins >= 0.6.1}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -47,8 +49,8 @@ Requires:       python-Jinja2
 Requires:       python-PyYAML
 Requires:       python-Sphinx
 Requires:       python-docutils >= 0.20
-Requires:       python-markdown-it-py >= 4
-Requires:       python-mdit-py-plugins >= 0.5
+Requires:       python-markdown-it-py >= 4.2
+Requires:       python-mdit-py-plugins >= 0.6.1
 BuildArch:      noarch
 %if %{with libalternatives}
 BuildRequires:  alts

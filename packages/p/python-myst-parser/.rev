@@ -143,4 +143,34 @@
 - Drop patch support-docutils-0.22.patch, no longer required.</comment>
     <requestid>1339201</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>0e7aaa23536e144ebacf4c6c97ca1a19</srcmd5>
+    <version>5.1.0</version>
+    <time>1786026117</time>
+    <user>anag_factory</user>
+    <comment>- Update to 5.1.0:
+  ## New Features
+  * Add &quot;alert&quot; syntax extension for GFM alerts (e.g. &gt; [!NOTE]), see docs
+  * Add &quot;gfm_autolink&quot; syntax extension for GFM autolinks, see docs
+  * Add myst_strikethrough_single_tilde config option to allow single tilde
+    (~) for strikethrough
+  * Add myst_colon_fence_exact_match config option to require the closing
+    colon fence to have exactly the same number of colons as the opening, see
+    docs
+  ## Improvements
+  * Update myst_gfm_only mode to use the unified gfm_plugin, which now
+    includes GFM autolinks, alerts, and improved strikethrough/tasklist
+    handling
+  * Improve MathJax 4 compatibility for Sphinx 9
+  * Stop directive-option parsing at colon fences, fixing nested colon fence
+    directives
+  ## Bug Fixes
+  * Use docname instead of source path in warning locations
+  * Correctly encode &amp; in Markdown URLs
+  * Fix RemovedInSphinx10Warning for inventory item iteration
+  * Pin mdit-py-plugins&gt;=0.6.1 for nested field list fix
+- Add patch support-docutils-0.23.patch:
+  * Support changes required for docutils 0.23.</comment>
+    <requestid>1369648</requestid>
+  </revision>
 </revisionlist>

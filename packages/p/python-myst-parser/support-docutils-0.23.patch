@@ -1,0 +1,27 @@
+Index: MyST-Parser-5.1.0/pyproject.toml
+===================================================================
+--- MyST-Parser-5.1.0.orig/pyproject.toml
++++ MyST-Parser-5.1.0/pyproject.toml
+@@ -34,7 +34,7 @@ keywords = [
+ ]
+ requires-python = ">=3.11"
+ dependencies = [
+-    "docutils>=0.20,<0.23",
++    "docutils>=0.20,<0.24",
+     "jinja2", # required for substitutions, but let sphinx choose version
+     "markdown-it-py~=4.2",
+     "mdit-py-plugins~=0.6,>=0.6.1",
+Index: MyST-Parser-5.1.0/tests/test_renderers/fixtures/docutil_link_resolution.md
+===================================================================
+--- MyST-Parser-5.1.0.orig/tests/test_renderers/fixtures/docutil_link_resolution.md
++++ MyST-Parser-5.1.0/tests/test_renderers/fixtures/docutil_link_resolution.md
+@@ -132,6 +132,9 @@
+         Test
+     <subtitle ids="other test-1" names="other test">
+         Other
++    <system_message level="1" line="3" source="<src>/index.md" type="INFO">
++        <paragraph>
++            Target name overrides implicit target name "test".
+     <target refid="test-1">
+     <paragraph>
+         <reference id_link="True" refid="test-1">
