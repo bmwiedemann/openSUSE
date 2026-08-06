@@ -72,4 +72,22 @@
     <comment></comment>
     <requestid>1317055</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9a816a2325f93908fd82798185736ce5</srcmd5>
+    <version>1.11</version>
+    <time>1786026366</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.11:
+  * Change secret key bits to be 160 instead of 128 bits.
+  * Add support for black &amp; white terminals (#268 / #270).
+  * Fix `grace_period` for IPv6 link-local addresses (#265).
+  * Fix potential memory leaks and malloc failure logging.
+- Clean up spec file using spec-cleaner:
+  * Use %make_build, %make_install, and modern
+    %make_build test macros.
+  * Convert libselinux-devel to pkgconfig(libselinux).
+  * Remove redundant BuildRoot and %defattr tags.
+</comment>
+    <requestid>1369832</requestid>
+  </revision>
 </revisionlist>

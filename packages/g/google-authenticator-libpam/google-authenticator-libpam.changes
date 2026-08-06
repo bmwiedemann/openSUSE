@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Aug  5 16:46:18 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.11:
+  * Change secret key bits to be 160 instead of 128 bits.
+  * Add support for black & white terminals (#268 / #270).
+  * Fix `grace_period` for IPv6 link-local addresses (#265).
+  * Fix potential memory leaks and malloc failure logging.
+- Clean up spec file using spec-cleaner:
+  * Use %make_build, %make_install, and modern
+    %make_build test macros.
+  * Convert libselinux-devel to pkgconfig(libselinux).
+  * Remove redundant BuildRoot and %defattr tags.
+
+-------------------------------------------------------------------
 Tue Nov 11 09:26:21 UTC 2025 - Johannes Segitz <jsegitz@suse.com>
 
 - Added
