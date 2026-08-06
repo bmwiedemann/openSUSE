@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Aug  6 08:56:35 UTC 2026 - Florian "sp1rit" <sp1rit@disroot.org>
+
+- Updated to version 0.56.2:
+  + A standard patch release backporting some fixes from main on top
+    of 0.56.2.
+  + Fixes backported:
+    - algo/scrolling: fix unFSing window sticking to the left corner
+      instead of respecting focus_fit_method
+    - config: fix duplicate config value crash
+    - core/fullscreen: allow layout managed fullscreens to not block
+      seeking window in direction, and other fixes
+    - core/fullscreen: fix floating window rendering order when one
+      of them is FSed
+    - desktop/rules: fix gaps_out rule overriding float_gaps
+    - hyprctl: fix wiki strings
+    - screenshare: fix toplevel capture missing software cursor
+    - algo/scrolling: bring back old behavior of fs
+    - bindings/dispatchers: Don't inherit key state modmask during
+      key sym lookup
+    - config/monitorRuleManager: recheck mirrors on ensure
+    - desktop/hitTest: exclusive layer popup event handling
+    - desktop: render IME above all desktop components
+    - feat: add missing lua stub
+    - ipc/socket1: don't round/truncate hyprctl monitors scale
+    - layout/scrolling/fullscreen: minor improvements ontop of 15660
+    - opengl: invalidate depth too
+
+-------------------------------------------------------------------
 Mon Jul 27 21:56:20 UTC 2026 - Florian "spirit" <sp1rit@disroot.org>
 
 - Updated to version 0.56.1:
