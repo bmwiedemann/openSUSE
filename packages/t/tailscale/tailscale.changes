@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Wed Aug  5 00:45:30 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update 1.102.2
+  - Fixed: A regression causing incoming Tailscale Funnel
+    connections to fail is resolved.
+
+-------------------------------------------------------------------
+Mon Aug  3 23:11:21 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update 1.102.1
+  - All Platforms
+    - tailscaled_serve_outbound_bytes_total and
+      tailscaled_serve_inbound_bytes_total client metrics report
+      bytes sent to and received from peers on Tailscale Serve
+      connections for Tailscale Services.
+    - The tailscale get CLI command returns the current node's
+      preferences.
+    - The tailscale whoami CLI command displays information about
+      the current user and device.
+    - The tailscale service list CLI command displays Tailscale
+      Services visible to the current node.
+    - Node additions and removals are processed in constant time,
+      significantly reducing CPU usage on large tailnets.
+    - Tailscale Funnel domains use TLS-ALPN-01 for faster HTTPS
+      certificate renewals.
+    - Deprecated formats for 4via6 MagicDNS names are no longer
+      available to use.
+    - TLS certificates on idle servers proactively auto-renew in
+      the absence of traffic. Warnings are issued when there is no
+      valid cached certificate.
+    - Dials to dual-stack DNS names through an IPv4-only exit node
+      connect to the correct address when using tailscaled in
+      userspace mode.
+    - Certificate issuance for multiple domains runs in parallel.
+      Provisioning multiple domains does not stall each certificate
+      behind the previous one.
+    - Resolved an issue causing connectivity issues from the
+      operating system waking from sleep in wireguard-go.
+    - A node's home DERP region is reported to the coordination
+      server after a profile switch or login, allowing for peers to
+      immediately connect to the node.
+    - A memory leak that occurred after a failed WireGuard
+      handshake has been resolved.
+    - tailscale status --peers=false command shows the current
+      device name in the output.
+    - Resolved an issue that prevented connectivity via Tailscale
+      Peer Relays after a client restart.
+  - Linux
+    - Assembly crypto routines for 32-bit ARM are available,
+      improving performance on these platforms.
+    - Userspace TUN optimizations improve throughput and
+      performance.
+    - Resolved an issue impacting performance of UDP GSO on Linux
+      v7.0.x through v7.1.4.
+
+-------------------------------------------------------------------
 Tue Jul 28 23:57:09 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 1.98.10: (boo#1272825)

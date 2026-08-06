@@ -635,4 +635,16 @@
     <comment></comment>
     <requestid>1368365</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>951f7123ec55e6dd0ec97ce790c992c6</srcmd5>
+    <version>1.102.2</version>
+    <time>1786025996</time>
+    <user>anag_factory</user>
+    <comment>- Update 1.102.2
+  - Fixed: A regression causing incoming Tailscale Funnel
+    connections to fail is resolved.
+
+- Update 1.102.1 (forwarded request 1369611 from darix)</comment>
+    <requestid>1369673</requestid>
+  </revision>
 </revisionlist>
