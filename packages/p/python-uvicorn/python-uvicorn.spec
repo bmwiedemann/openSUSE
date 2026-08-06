@@ -23,14 +23,12 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-uvicorn
-Version:        0.41.0
+Version:        0.51.0
 Release:        0
 Summary:        An Asynchronous Server Gateway Interface server
 License:        BSD-3-Clause
 URL:            https://github.com/encode/uvicorn
 Source:         https://github.com/encode/uvicorn/archive/%{version}.tar.gz#/uvicorn-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE Ignore the large amount of DeprecationWarnings that websockets 14 gave us
-Patch0:         support-websockets-14+.patch
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
@@ -103,6 +101,8 @@ It supports HTTP/1.1 and WebSockets only.
 %python_exec -m uvicorn --version
 # No module python-a2wsgi
 ignore="--ignore tests/middleware/test_wsgi.py"
+# benchmarks require `codspeed`, which has limited platform availability
+ignore+=" --ignore tests/benchmarks"
 # Disable flacky test in s390x with current python-websockets
 %if "%{_arch}" == "s390x"
 ignore+=" --ignore tests/protocols/test_websocket.py"
