@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Aug  5 04:40:17 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.7.3:
+  * build(deps): bump docker/login-action from 4 to 4.5.2 by
+    @dependabot[bot] in #2723
+  * fix: skip chartification when chart renders zero resources by
+    @ankit090701 in #2724
+  * feat: add --skip-diff-validation-on-install CLI flag by
+    @henrichter-sap in #2728
+  * bump helm-diff to v3.15.11 by @yxxhero with @Copilot in #2725
+  * fix: update helm plugins via uninstall+reinstall to honor
+    pinned version by @yxxhero in #2727
+  * build(deps): bump docker/login-action from 4.5.2 to 4.6.0 by
+    @dependabot[bot] in #2729
+  * build(deps): bump gitpython from 3.1.54 to 3.1.57 in /docs by
+    @dependabot[bot] in #2730
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/service/s3 from
+    1.106.2 to 1.106.3 by @dependabot[bot] in #2731
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/config from
+    1.32.31 to 1.32.34 by @dependabot[bot] in #2732
+  * build(deps): bump github.com/helmfile/chartify from v0.28.0 to
+    v0.28.1 by @yxxhero in #2733
+
+-------------------------------------------------------------------
 Sat Aug  1 08:02:34 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 1.7.2:
