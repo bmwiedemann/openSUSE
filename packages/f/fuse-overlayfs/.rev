@@ -201,4 +201,15 @@
     <comment></comment>
     <requestid>1324854</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>8b44578c983c545ffcc62d7326ae9170</srcmd5>
+    <version>1.17</version>
+    <time>1786025920</time>
+    <user>anag_factory</user>
+    <comment>- Update to v1.17 (bsc#1273100, CVE-2026-52791)
+  * main: clear SUID/SGID bits on truncate (CVE-2026-52791).
+  * main: make sure st_ino needs is unique for all inodes on a device.
+  * man: uniformly apply bold attributes.</comment>
+    <requestid>1369698</requestid>
+  </revision>
 </revisionlist>

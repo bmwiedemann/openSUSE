@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 31 18:07:54 UTC 2026 - Goldwyn Rodrigues <rgoldwyn@suse.com>
+
+- Update to v1.17 (bsc#1273100, CVE-2026-52791)
+  * main: clear SUID/SGID bits on truncate (CVE-2026-52791).
+  * main: make sure st_ino needs is unique for all inodes on a device.
+  * man: uniformly apply bold attributes.
+
+-------------------------------------------------------------------
 Wed Dec 24 10:51:23 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 0.16:
