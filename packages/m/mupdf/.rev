@@ -841,4 +841,31 @@
     <comment>Update to 1.28.1. Supersedes sr#1368767, adding the fix dimstar asked for there: the libmupdf.so.28 symlink is dropped, since the SONAME is libmupdf.so.28.1 and the short link only made libmupdf28_0 and libmupdf28_1 conflict on that path.</comment>
     <requestid>1368800</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>7c04c1b6ab1e3df5344a608b8d0d54c3</srcmd5>
+    <version>1.28.2</version>
+    <time>1786026041</time>
+    <user>anag_factory</user>
+    <comment>Update mupdf to 1.28.2.
+
+SONAME BUMP: libmupdf28_1 -&gt; libmupdf28_2. Two packages link it and will need
+rebuilding: netperfmeter and zathura-plugin-pdf-mupdf.
+
+Worth being explicit about what this release is, because the SONAME move
+overstates it: diffing the two source tarballs, 1.28.2 changes seven files and
+NONE of them are library or tool source. The delta is a new scripts/autovenv.py
+so that building the C++/Python/C# bindings creates its own virtualenv rather
+than requiring pipcl to be pip-installed by hand, plus the matching CHANGES,
+release-test.make, scripts/wrap/__main__.py, a CI workflow and version.h. The
+SONAME still moves because upstream derives it from the release version, so the
+rebuild is unavoidable even though the ABI is byte-identical.
+
+It fixes no CVEs -- the open mupdf security bugs (boo#1263162, boo#1262224,
+boo#1257944, boo#1250443) are untouched by it, so none are being closed here.
+
+Verified locally on aarch64/openSUSE_Factory: build green, rpmlint 0 errors,
+0 badness, 5 warnings all unchanged from the previous revision; spec-cleaner
+diff empty; source_validator clean.</comment>
+    <requestid>1369653</requestid>
+  </revision>
 </revisionlist>

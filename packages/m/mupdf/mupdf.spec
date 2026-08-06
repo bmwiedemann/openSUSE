@@ -19,10 +19,10 @@
 
 # mupdf sets the shared-library SONAME to libmupdf.so.<minor>.<patch>, so it
 # changes on every upstream release; keep %%sover in sync with the version.
-%define sover 28_1
-%define soversion 28.1
+%define sover 28_2
+%define soversion 28.2
 Name:           mupdf
-Version:        1.28.1
+Version:        1.28.2
 Release:        0
 Summary:        PDF and XPS Viewer and Parser and Rendering Library
 License:        AGPL-3.0-or-later

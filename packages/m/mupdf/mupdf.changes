@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Aug  5 05:57:53 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.28.2:
+  * Build tooling only -- no library or tool source changed between
+    1.28.1 and 1.28.2. Upstream added scripts/autovenv.py so that
+    building the C++, Python and C# bindings sets up its own virtual
+    environment instead of requiring pipcl to be installed by hand
+- Rename the shared library subpackage to libmupdf28_2, following the
+  SONAME which upstream derives from the release version
+
+-------------------------------------------------------------------
 Fri Jul 31 08:35:36 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Stop packaging the libmupdf.so.28 symlink: the SONAME is
