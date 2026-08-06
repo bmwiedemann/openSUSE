@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Aug 06 05:08:34 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.69.0:
+  * feat(postgresflex): migrate to v3 API (#1505)
+  * fix: fix auth flow when creating project with access token
+    (#1521)
+  * feat(mariadb): region adjustments (#1516)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/mariadb (#1522)
+  * feat(logme): region adjustments (#1517)
+  * feat(goreleaser): enable shell completions for APT (#1518)
+  * chore(deps): bump golang.org/x/mod from 0.37.0 to 0.38.0
+    (#1519)
+  * chore(deps): bump actions/stale from 10.4.0 to 11.0.0 (#1520)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/loadbalancer
+    (#1514)
+
+-------------------------------------------------------------------
 Mon Aug 03 10:48:37 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.68.0:
