@@ -1,4 +1,135 @@
 -------------------------------------------------------------------
+Thu Jul 23 10:24:45 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
+
+- update to 5.0.0:
+  * see: https://github.com/Z3Prover/z3/releases/tag/z3-5.0.0
+
+-------------------------------------------------------------------
+Thu Mar 12 17:56:50 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 4.16.0:
+     - Add Go bindings to supported APIs
+- Update to 4.15.8:
+     - Fix release pipeline to publish all supported python
+       wheels properly.
+     - Re-enable npm tokens for publishing npm pacages.
+- Update to 4.15.7:
+     - Bug fix release
+- Update to 4.15.6:
+     - Optimize mpz (multi-precision integer) implementation
+       using pointer tagging to reduce memory footprint and
+       improve performance. #8447, thanks to Nuno Lopes.
+     - Fix macOS install_name_tool issue by adding
+       -Wl,-headerpad_max_install_names linker flag to all dylib
+       builds. Resolves "larger updated load commands do not fit"
+       errors when modifying library install names on macOS.
+       #8535, fixes #7623
+     - Optimize parameter storage by storing rational values
+       directly in variant instead of using pointers. Thanks to
+       Nuno Lopes. #8518
+- Update to 4.15.5:
+     - NLSAT now uses the Level wise algorithm for projection.
+       https://arxiv.org/abs/2212.09309
+     - Add RCF (Real Closed Field) API to TypeScript bindings,
+       achieving feature parity with Python, Java, C++, and C#
+       implementations. The API includes 38 functions for exact
+       real arithmetic with support for π, e, algebraic roots,
+       and infinitesimals. #8225
+     - Add sequence higher-order functions (map, fold) to Java,
+       C#, and TypeScript APIs. Functions include SeqMap,
+       SeqMapi, SeqFoldl, and SeqFoldli for functional
+       programming patterns over sequences.
+        Java API: #8226
+        C# API: #8227
+        TypeScript API included in #8228
+     - Add benchmark export functionality to C# and TypeScript
+       APIs for exporting solver problems as SMTLIB2 benchmarks.
+       #8228
+     - Fix UNKNOWN bug in search tree with inconsistent end state
+       during nonchronological backjumping. The fix ensures all
+       node closing occurs in backtrack to maintain consistency
+       between search tree and batch manager state. Thanks to
+       Ilana Shapiro. #8214
+     - Fix segmentation fault in dioph_eq.cpp when processing
+       UFNIRA problems without explicit set-logic declarations.
+       Added bounds checks before accessing empty column vectors.
+       #8218, fixes #8208
+     - Migrate build and release infrastructure from Azure
+       Pipelines to GitHub Actions, including CI workflows,
+       nightly builds, and release packaging.
+     - Bug fixes including #8195
+     - Add functional datatype update operation to language
+       bindings. The datatype_update_field function enables
+       immutable updates to datatype fields, returning a modified
+       copy while preserving the original datatype value. #8500
+     - Add comprehensive regex support to TypeScript API with 21
+       functions including Re, Loop, Range, Union, Intersect,
+       Complement, and character class operations. Enables
+       pattern matching and regular expression constraints in
+       TypeScript applications. #8499
+     - Add move constructor and move assignment operator to
+       z3::context class for efficient resource transfer. Enables
+       move semantics for context objects while maintaining
+       safety with explicit checks against moved-from usage.
+       #8508
+     - Add solve_for and import_model_converter functions to C++
+       solver API, achieving parity with Python API for LRA
+       variable solving. #8465
+     - Add missing solver APIs to Java and C# bindings including
+       add_string, set_phase, get_units, get_non_units, and
+       get_levels methods. #8464
+     - Add polymorphic datatype APIs to Java and ML bindings for
+       creating and manipulating parameterized datatypes. #8438,
+       #8378 #8507, #8467, #8494
+     - Add SLS (Stochastic Local Search) tactic as a separate
+       worker thread for parallel solving. Thanks to Ilana
+       Shapiro. #8263
+     - Add Windows ARM64 platform support for Python wheels,
+       expanding platform coverage for ARM-based Windows systems.
+       #8280
+     - Optimize bitvector operations for large bitwidths by
+       avoiding unnecessary power-of-two computations in
+       has_sign_bit and mod2k operations. Thanks to Nuno Lopes.
+     - Optimize linear arithmetic solver with throttled
+       patch_basic_columns() calls, especially beneficial for
+       unsatisfiable cases. Thanks to Lev Nachmanson.
+     - Fix memory leak in undo_fixed_column when handling big
+       number cleanup. Thanks to Lev Nachmanson.
+     - Fix assertion violation in mpzzp_manager::eq from
+       non-normalized values during fresh variable peeking. #8439
+     - Fix memory corruption in Z3_polynomial_subresultants API
+       where allocating result vector corrupted internal
+       converter mappings. Restructured to complete polynomial
+       computation before allocation. #8264, thanks to Lev
+       Nachmanson.
+     - Fix missing newline after attributes in
+       benchmark_to_smtlib_string output formatting. Thanks to
+       Josh Berdine. #8276
+     - Fix NuGet packaging to handle dynamic glibc versions
+       across different Linux distributions. #8474
+     - Preserve initial solver state with push/pop operations for
+       multiple objectives optimization. Thanks to Lev
+       Nachmanson. #8264
+
+-------------------------------------------------------------------
+Wed Mar 11 22:27:30 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Add support for generating of multiple versions of Python
+  subpackages (using %python_subpackage_only).
+- Add python-z3-pyproject.toml and python-z3-setup.py for that.
+
+-------------------------------------------------------------------
+Tue Feb 24 08:05:44 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
+
+- add _constraints as ppc64le failed with "No space left on device"
+
+-------------------------------------------------------------------
+Sat Jan  3 20:34:28 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.15.4:
+  * see: https://github.com/Z3Prover/z3/releases/tag/z3-4.15.4
+
+-------------------------------------------------------------------
 Fri May 30 08:22:16 UTC 2025 - Jiri Slaby <jslaby@suse.cz>
 
 - add python-use-non-devel-so.patch (bsc#1243028)
@@ -38,14 +169,14 @@ Sat Oct 12 15:35:21 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
   * Fix paths to Java binaries in release
   * Remove internal build names from pypi wheels
   * Performance regression fix. #7404
-  * single-sample cell projection in nlsat 
-  * using simple-checker together with and variable ordering 
-    The projection is described in paper by Haokun Li and Bican Xia, 
-    Solving Satisfiability of Polynomial Formulas By Sample - Cell Projection. 
+  * single-sample cell projection in nlsat
+  * using simple-checker together with and variable ordering
+    The projection is described in paper by Haokun Li and Bican Xia,
+    Solving Satisfiability of Polynomial Formulas By Sample - Cell Projection.
     The code ported from https://github.com/hybridSMT/hybridSMT.git
-  * Add API for providing hints for the solver/optimize contexts for which 
-    initial values to attempt to use for variables. The new API function are 
-    Z3_solver_set_initial_value and Z3_optimize_set_initial_value, respectively. 
+  * Add API for providing hints for the solver/optimize contexts for which
+    initial values to attempt to use for variables. The new API function are
+    Z3_solver_set_initial_value and Z3_optimize_set_initial_value, respectively.
 
 -------------------------------------------------------------------
 Fri Apr 12 19:53:36 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
@@ -111,7 +242,7 @@ Tue Jan 17 15:42:03 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 - update to 4.12.0
   * move bound_manager to simplifiers, add bound manager to extract_eqs for solve-eqs
   * fix memory leak on proof justifications
-  * expose parameters to control behavior for 
+  * expose parameters to control behavior for
   * many bugfixes, see https://github.com/Z3Prover/z3/releases
 
 -------------------------------------------------------------------
@@ -151,7 +282,7 @@ Sun Aug 28 12:09:42 UTC 2022 - Matthias Eliasson <elimat@opensuse.org>
     - prints lemmas to the console.
   * remove option smt.arith.dump_lemmas. It is replaced by solver.axioms2files
   * add option smt.bv.reduce_size.
-    - it allows to apply incremental pre-processing of bit-vectors by identifying ranges that are known to be constant. 
+    - it allows to apply incremental pre-processing of bit-vectors by identifying ranges that are known to be constant.
 	  This rewrite is beneficial, for instance, when bit-vectors are constrained to have many high-level bits set to 0.
   * add feature to model-based projection for arithmetic to handle integer division.
   * add fromString method to JavaScript solver object.
@@ -196,15 +327,15 @@ Wed Aug  3 21:27:44 UTC 2022 - Dirk Müller <dmueller@suse.com>
     - thanks to Isabel Garcia Contreras and Arie Gurfinkel for testing and fixes
   * API for incremental parsing of assertions.
     A description of the feature is given by example here: https://github.com/Z3Prover/z3/commit/815518dc026e900392bf0d08ed859e5ec42d1e43
-    It also allows incrementality at the level of adding assertions to the 
-    solver object. 
+    It also allows incrementality at the level of adding assertions to the
+    solver object.
   * Fold/map for sequences:
     https://microsoft.github.io/z3guide/docs/guide/Sequences#map-and-fold
     At this point these functions are only exposed over the SMTLIB2 interface (and not programmatic API)
     maxdiff/mindiff on arrays are more likely to be deprecated
-  * User Propagator: 
+  * User Propagator:
     - Add functions and callbacks for external control over branching thanks to Clemens Eisenhofer
-    - A functioning dotnet API for the User Propagator 
+    - A functioning dotnet API for the User Propagator
       https://github.com/Z3Prover/z3/blob/master/src/api/dotnet/UserPropagator.cs
   * Java Script API
     - higher level object wrappers are available thanks to Kevin Gibbons and Olaf Tomalka
@@ -220,7 +351,7 @@ Wed Aug  3 21:27:44 UTC 2022 - Dirk Müller <dmueller@suse.com>
     - The interface `Z3_optimize_register_model_eh` allows to monitor incremental results during optimization.
       It is now possible to also add constraints to the optimization context during search.
       You have to set the option opt.incremental=true to be able to add constraints. The option
-      disables some pre-processing functionality that removes variables from the constraints. 
+      disables some pre-processing functionality that removes variables from the constraints.
 
 -------------------------------------------------------------------
 Fri May  6 09:24:23 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
@@ -260,19 +391,19 @@ Fri Jan 21 15:56:05 UTC 2022 - Avinesh Kumar <avinesh.kumar@suse.com>
  * fixes Antimirov derivatives for intersections and unions required
    required for solving non-emptiness constraints.
  * includes x86 dll in nuget package for Windows.
- * exposes additional user propagator functionality 
+ * exposes additional user propagator functionality
 
 -------------------------------------------------------------------
 Sun Nov 28 19:01:14 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.8.13:
-  The release integrates various bug fixes and tuning. 
+  The release integrates various bug fixes and tuning.
 
 -------------------------------------------------------------------
 Sat Oct 16 18:37:42 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.8.12:
-  Release provided to fix git tag discrepancy issues with 4.8.11 
+  Release provided to fix git tag discrepancy issues with 4.8.11
 
 -------------------------------------------------------------------
 Fri Jun 11 06:04:29 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>

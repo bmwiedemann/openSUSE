@@ -412,4 +412,41 @@
   * see: https://github.com/Z3Prover/z3/releases/tag/z3-4.15.0</comment>
     <requestid>1281304</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>acffa96b7f40024c95b6147aae8e88ec</srcmd5>
+    <version>5.0.0</version>
+    <time>1786026178</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.0.0:
+  * see: https://github.com/Z3Prover/z3/releases/tag/z3-5.0.0
+
+- Update to 4.16.0:
+     - Add Go bindings to supported APIs
+- Update to 4.15.8:
+     - Fix release pipeline to publish all supported python
+       wheels properly.
+     - Re-enable npm tokens for publishing npm pacages.
+- Update to 4.15.7:
+     - Bug fix release
+- Update to 4.15.6:
+     - Optimize mpz (multi-precision integer) implementation
+       using pointer tagging to reduce memory footprint and
+       improve performance. #8447, thanks to Nuno Lopes.
+     - Fix macOS install_name_tool issue by adding
+       -Wl,-headerpad_max_install_names linker flag to all dylib
+       builds. Resolves &quot;larger updated load commands do not fit&quot;
+       errors when modifying library install names on macOS.
+       #8535, fixes #7623
+     - Optimize parameter storage by storing rational values
+       directly in variant instead of using pointers. Thanks to
+       Nuno Lopes. #8518
+- Update to 4.15.5:
+     - NLSAT now uses the Level wise algorithm for projection.
+       https://arxiv.org/abs/2212.09309
+     - Add RCF (Real Closed Field) API to TypeScript bindings,
+       achieving feature parity with Python, Java, C++, and C#
+       implementations. The API includes 38 functions for exact
+       real arithmetic with support for π, e, algebraic roots,</comment>
+    <requestid>1369669</requestid>
+  </revision>
 </revisionlist>
