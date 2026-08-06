@@ -1,4 +1,110 @@
 -------------------------------------------------------------------
+Wed Aug 05 12:29:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.120.0:
+  * Features
+    - feat(core): add function to validate manifest @olblak (#9721)
+    - feat(core): Add flag to enable/disable report @olblak (#9715)
+    - feat(csv/json/toml): add Dasel v3 support @olblak (#9704)
+    - feat(gitcommit): add Git commit source resource @ihopenre-eng
+      (#9609)
+    - feat: add opt-in singleBranch option to speed up git scm
+      checkout @kuisathaverat (#9590)
+  * Bug Fixes
+    - fix(autodiscovery/dockercompose): skip images whose tag is
+      not a version @jouve (#9760)
+    - fix: flux OCIRepository autodiscovery with digest
+      @rowan-walsh (#9744)
+    - fix(autodiscovery/updatecli): correctly use relative file
+      path @olblak (#9759)
+    - fix(terragrunt): support source including git username
+      @dexner-jambit (#9731)
+    - fix: updatecli pipeline prepare --clean @olblak (#9716)
+    - fix: add username/password auth to helm/argocd autodiscovery
+      @itsteddyyo (#9706)
+    - fix: guard against short paths in changelog GitHub URL
+      redirect @AruneshDwivedi (#9688)
+    - Fix YAML quoted scalar reads @ahfoysal (#9385)
+    - fix: don't use action info to generate report ID @olblak
+      (#9612)
+  * Maintenance
+    - deps(go): bump module github.com/go-git/go-git/v5 to v5.19.2
+      @updateclibot[bot] (#9816)
+    - deps(go): bump module github.com/getsops/sops/v3 to v3.13.3
+      @updateclibot[bot] (#9809)
+    - deps(go): bump module github.com/drone/go-scm to v1.42.13
+      @updateclibot[bot] (#9805)
+    - deps(go): bump module
+      github.com/hashicorp/terraform-registry-address to v0.5.0
+      @updateclibot[bot] (#9799)
+    - chore(ci): upgrade uv version @updateclibot[bot] (#9783)
+    - deps(go): bump module github.com/moby/buildkit to v0.32.0
+      @updateclibot[bot] (#9780)
+    - deps(go): bump module go.yaml.in/yaml/v3 to v3.0.5
+      @updateclibot[bot] (#9771)
+    - deps(go): bump module github.com/google/go-containerregistry
+      to v0.21.8 @updateclibot[bot] (#9770)
+    - deps(go): bump module github.com/fluxcd/helm-controller/api
+      to v1.6.3 @updateclibot[bot] (#9755)
+    - deps(go): bump module github.com/yuin/goldmark to v1.8.5
+      @updateclibot[bot] (#9752)
+    - chore: various cleanup @olblak (#9757)
+    - chore(dockerfile): upgrade node version @updateclibot[bot]
+      (#9741)
+    - chore(deps): bump google.golang.org/grpc from 1.81.1 to
+      1.82.1 in the go_modules group across 1 directory
+      @dependabot[bot] (#9722)
+    - deps(go): bump module
+      github.com/testcontainers/testcontainers-go to v0.43.0
+      @updateclibot[bot] (#9687)
+    - deps(go): bump module github.com/fluxcd/helm-controller/api
+      to v1.6.2 @updateclibot[bot] (#9677)
+    - deps(go): bump module github.com/moby/buildkit to v0.31.2
+      @updateclibot[bot] (#9674)
+    - deps(go): bump module github.com/zclconf/go-cty to v1.19.0
+      @updateclibot[bot] (#9671)
+    - deps(go): bump module cuelang.org/go to v0.17.1
+      @updateclibot[bot] (#9663)
+    - deps(go): bump module github.com/fluxcd/source-controller/api
+      to v1.9.3 @updateclibot[bot] (#9636)
+    - deps(updatecli/policies): bump all policies
+      @updateclibot[bot] (#9637)
+    - deps(go): bump module github.com/jferrl/go-githubauth to
+      v1.7.0 @updateclibot[bot] (#9625)
+    - deps(go): bump module github.com/beevik/etree to v1.7.0
+      @updateclibot[bot] (#9601)
+    - deps(go): bump module github.com/drone/go-scm to v1.42.10
+      @updateclibot[bot] (#9602)
+    - deps(go): bump module github.com/yuin/goldmark to v1.8.4
+      @updateclibot[bot] (#9605)
+    - fix(shell): function typo @olblak (#9608)
+    - chore(dockerfile): upgrade node version @updateclibot[bot]
+      (#9591)
+    - deps(github/action): bump all dependencies @updateclibot[bot]
+      (#9565)
+    - deps(go): bump module oras.land/oras-go/v2 to v2.6.2
+      @updateclibot[bot] (#9583)
+    - deps(go): bump module github.com/google/go-containerregistry
+      to v0.21.7 @updateclibot[bot] (#9585)
+    - deps(golang): Bump minor version for github.com/shurcooL
+      module @updateclibot[bot] (#9587)
+    - deps(golang): Bump minor version for github.com/aws module
+      @updateclibot[bot] (#9588)
+    - deps(golang): Bump minor version for go.opentelemetry.io
+      module @updateclibot[bot] (#9589)
+    - chore(ci): upgrade uv version @updateclibot[bot] (#9562)
+    - fix: golang dependencies update @olblak (#9560)
+    - deps(go): bump module github.com/getsops/sops/v3 to v3.13.2
+      @updateclibot[bot] (#9559)
+    - deps(go): bump module helm.sh/helm/v3 to v3.21.3
+      @updateclibot[bot] (#9558)
+  * Documentation
+    - doc: update contributing.adoc @olblak (#9758)
+    - chore: various cleanup @olblak (#9757)
+    - doc: update pyproject documentation @olblak (#9736)
+    - chore: cleanup autodiscovery spec comment @olblak (#9699)
+
+-------------------------------------------------------------------
 Fri Jul 10 05:24:42 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.119.0:
