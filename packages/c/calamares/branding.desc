@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: no
+# SPDX-License-Identifier: CC0-1.0
+#
 # Product branding information. This influences some global
 # user-visible aspects of Calamares, such as the product
 # name, window behavior, and the slideshow during installation.
@@ -7,6 +10,11 @@
 ---
 componentName:  default
 
+
+### WELCOME / OVERALL WORDING
+#
+# These settings affect some overall phrasing and looks,
+# which are most visible in the welcome page.
 
 # This selects between different welcome texts. When false, uses
 # the traditional "Welcome to the %1 installer.", and when true,
@@ -20,6 +28,12 @@ welcomeStyleCalamares:   false
 # with the window but remains the same size throughout (this
 # may have surprising effects on HiDPI monitors).
 welcomeExpandingLogo:   true
+
+### WINDOW CONFIGURATION
+#
+# The settings here affect the placement of the Calamares
+# window through hints to the window manager and initial
+# sizing of the Calamares window.
 
 # Size and expansion policy for Calamares.
 #  - "normal" or unset, expand as needed, use *windowSize*
@@ -41,6 +55,14 @@ windowSize: 800px,520px
 # manager in use (and only makes sense if you're not using
 # *windowExpanding* set to "fullscreen").
 windowPlacement: center
+
+### PANELS CONFIGURATION
+#
+# Calamares has a main content area, and two panels (navigation
+# and progress / sidebar). The panels can be controlled individually,
+# or switched off. If both panels are switched off, the layout of
+# the main content area loses its margins, on the assumption that
+# you're doing something special.
 
 # Kind of sidebar (panel on the left, showing progress).
 #  - "widget" or unset, use traditional sidebar (logo, items)
@@ -67,6 +89,12 @@ sidebar: widget
 # except the default is *bottom*.
 navigation: widget
 
+
+### STRINGS, IMAGES AND COLORS
+#
+# This section contains the "branding proper" of names
+# and images, rather than global-look settings.
+
 # These are strings shown to the user in the user interface.
 # There is no provision for translating them -- since they
 # are names, the string is included as-is.
@@ -81,7 +109,7 @@ navigation: widget
 #
 # These strings support substitution from /etc/os-release
 # if KDE Frameworks 5.58 are available at build-time. When
-# enabled, @{var-name} is replaced by the equivalent value
+# enabled, ${varname} is replaced by the equivalent value
 # from os-release. All the supported var-names are in all-caps,
 # and are listed on the FreeDesktop.org site,
 #       https://www.freedesktop.org/software/systemd/man/os-release.html
@@ -112,32 +140,32 @@ strings:
     shortProductName:    Linux
 # Uncomment to define full version
 #    version:             1.0 LTS
-#    version:             42.3
+#    version:             Leap 16.0
 # Uncomment to define short version
 #    shortVersion:        1.0
-#    shortVersion:        42.3
+#    shortVersion:        16.0
 # $versionedName appears
 #  in welcome screen header "Welcome to the $versionedName installer."
 #    versionedName:       Generic GNU/Linux 1.0 LTS "Rusty Trombone"
-#    versionedName:       openSUSE Leap 42.3
+#    versionedName:       openSUSE Leap 16.0
     versionedName:       Linux
 # $shortVersionedName appears:
 #  in partitioner,
 #  in summary before installation,
 #  in confirmation dialog for installation
 #    shortVersionedName:  Generic 1.0
-#    shortVersionedName:  openSUSE 42.3
+#    shortVersionedName:  openSUSE 16.0
     shortVersionedName:  Linux
 # $bootloaderEntryName appears:
 #  in partitioner,
 #  in bootloader menu after installation
-#    bootloaderEntryName: openSUSE Leap 42.3
+#    bootloaderEntryName: openSUSE Leap 16.0
     bootloaderEntryName: Linux
-#    productUrl:          http://calamares.io/
-#    supportUrl:          http://calamares.io/bugs/
-#    knownIssuesUrl:      http://calamares.io/about/
-#    releaseNotesUrl:     http://calamares.io/about/
-#    donateUrl:           https://kde.org/community/donations/index.php
+#    productUrl:          https://calamares.codeberg.page/
+#    supportUrl:          https://calamares.codeberg.page/docs/documentation/
+#    knownIssuesUrl:      https://calamares.codeberg.page/issues/
+#    releaseNotesUrl:     https://codeberg.org/Calamares/calamares/releases
+#    donateUrl:           https://kde.org/donate/
 
 
 
@@ -176,11 +204,43 @@ images:
 # $productWelcome appears in center of welcome screen
     productWelcome:      "languages.png"
 
+# Colors for text and background components.
+#
+#  - SidebarBackground is the background of the sidebar
+#  - SidebarText is the (foreground) text color
+#  - SidebarBackgroundCurrent sets the background of the current step.
+#    Optional, and defaults to the application palette.
+#  - SidebarTextCurrent is the text color of the current step.
+#
+# These colors can **also** be set through the stylesheet, if the
+# branding component also ships a stylesheet.qss. Then they are
+# the corresponding CSS attributes of #sidebarApp.
+style:
+   SidebarBackground:        "#292F34"
+   SidebarText:              "#FFFFFF"
+   SidebarTextCurrent:       "#292F34"
+   SidebarBackgroundCurrent: "#D35400"
 
+### SLIDESHOW
+#
 # The slideshow is displayed during execution steps (e.g. when the
 # installer is actually writing to disk and doing other slow things).
+# The slideshow can be a QML file (recommended) which can display
+# arbitrary things -- text, images, animations, or even play a game --
+# during the execution step. The QML **is** abruptly stopped when the
+# execution step is done, though, so maybe a game isn't a great idea.
+#
+# The slideshow can also be a sequence of images (not recommended unless
+# you don't want QML at all in your Calamares). The images are displayed
+# at a rate of 1 every 2 seconds during the execution step.
+#
+# To configure a QML file, list a single filename:
+#   slideshow:               "show.qml"
+
+# To configure images, like the filenames (here, as an inline list):
+#   slideshow: [ "/etc/calamares/slideshow/0.png", "/etc/logo.png" ]
 slideshow:               "show.qml"
-# There are two available APIs for the slideshow:
+# There are two available APIs for a QML slideshow:
 #  - 1 (the default) loads the entire slideshow when the installation-
 #      slideshow page is shown and starts the QML then. The QML
 #      is never stopped (after installation is done, times etc.
@@ -189,22 +249,6 @@ slideshow:               "show.qml"
 #      onLeave() in the root object. After the installation is done,
 #      the show is stopped (first by calling onLeave(), then destroying
 #      the QML components).
+#
+# An image slideshow does not need to have the API defined.
 slideshowAPI: 2
-
-
-# Colors for text and background components.
-#
-#  - sidebarBackground is the background of the sidebar
-#  - sidebarText is the (foreground) text color
-#  - sidebarTextHighlight sets the background of the selected (current) step.
-#    Optional, and defaults to the application palette.
-#  - sidebarSelect is the text color of the selected step.
-#
-# These colors can **also** be set through the stylesheet, if the
-# branding component also ships a stylesheet.qss. Then they are
-# the corresponding CSS attributes of #sidebarApp.
-style:
-   sidebarBackground:    "#292F34"
-   sidebarText:          "#FFFFFF"
-   sidebarTextSelect:    "#292F34"
-   sidebarTextHighlight: "#D35400"

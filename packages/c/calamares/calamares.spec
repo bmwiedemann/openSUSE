@@ -21,7 +21,7 @@
 
 %define _sover  3
 Name:           calamares
-Version:        3.4.0
+Version:        3.4.2
 Release:        0
 Summary:        Installer from a live CD/DVD/USB to disk
 License:        GPL-3.0-or-later
@@ -107,7 +107,6 @@ BuildRequires:  libatasmart-devel
 BuildRequires:  parted-devel
 BuildRequires:  pkg-config
 BuildRequires:  solid-devel
-BuildRequires:  update-desktop-files
 BuildRequires:  yaml-cpp-devel >= 0.5.1
 Requires:       %name-branding >= 3
 Requires:       NetworkManager
@@ -155,7 +154,7 @@ Requires:       grub2-efi
 %description
 Calamares is a distribution-independent installer framework, designed to install
 from a live CD/DVD/USB environment to a hard disk. It includes a graphical
-installation program based on Qt 5. Calamares can replace YaST2 Live Installer.
+installation program based on Qt. Calamares can replace YaST2 Live Installer.
 
 %package branding-upstream
 Summary:        Branding for %{name}

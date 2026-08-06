@@ -13,16 +13,16 @@ Calamares packages is no longer needed after installation.
  
  #
  # Often package installation needs an internet connection.
-@@ -60,7 +60,7 @@
- # Therefore set also "update_system" to 'true'.
+@@ -63,7 +63,7 @@
+ # "ignore_update_db_error" to 'true'.
  #
  skip_if_no_internet: false
 -update_db: true
 +update_db: false
+ ignore_update_db_error: false
  update_system: false
  
- # pacman specific options
-@@ -203,12 +203,6 @@
+@@ -207,12 +207,6 @@
  # of packages, this can lead to a considerable time savings.
  #
  operations:

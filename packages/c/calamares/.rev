@@ -191,4 +191,12 @@
 - Update calamares.keyring</comment>
     <requestid>1369085</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>c81b06160b921bfb2cd7f2a85214c77b</srcmd5>
+    <version>3.4.2</version>
+    <time>1786026341</time>
+    <user>anag_factory</user>
+    <comment>- Update to Calamares v3.4.2</comment>
+    <requestid>1369829</requestid>
+  </revision>
 </revisionlist>

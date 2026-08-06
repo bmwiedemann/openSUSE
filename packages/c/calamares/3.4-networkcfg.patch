@@ -3,7 +3,7 @@ Author: Lorenzo "Palinuro" Faletra <palinuro@parrotsec.org>
 Updated by Mindaugas <opensuse.lietuviu.kalba@gmail.com>
 
 After copying /etc/resolv.conf, it will be a regular file,
-but in openSUSE it should be to /var/run/netconfig/resolv.conf
+but in openSUSE it should link to /var/run/netconfig/resolv.conf
 and created automatically anyway.
 
 --- a/src/modules/networkcfg/main.py
