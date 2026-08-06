@@ -67,8 +67,10 @@
 %global force_gcc_version 14
 %endif
 
+%define __builder ninja
+
 Name:           rspamd
-Version:        4.1.2
+Version:        4.1.4
 Release:        0
 Summary:        Spam filtering system
 License:        Apache-2.0
@@ -104,6 +106,7 @@ BuildRequires:  lua%{?lua_abi_version}-devel
 BuildRequires:  lua%{?lua_abi_version}-lpeg
 Requires:       lua%{?lua_abi_version}-lpeg
 %if %{with openblas}
+BuildRequires:  ninja
 BuildRequires:  openblas-devel
 %endif
 BuildRequires:  pcre2-devel
@@ -679,6 +682,7 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %{_datadir}/rspamd/lualib/rspamadm/mapstats.lua
 %{_datadir}/rspamd/lualib/rspamadm/neural_export.lua
 %{_datadir}/rspamd/lualib/rspamadm/memstat.lua
+%{_datadir}/rspamd/lualib/rspamadm/fuzzy_hash.lua
 
 %dir %{_datadir}/rspamd/lualib/plugins
 %{_datadir}/rspamd/lualib/plugins/dmarc.lua
@@ -754,6 +758,7 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %{_wwwdir}/%{name}/img/desc.png
 %{_wwwdir}/%{name}/img/rspamd_logo_navbar.png
 %{_wwwdir}/%{name}/img/drop-area.svg
+%{_wwwdir}/%{name}/img/icons.svg
 
 %dir %{_wwwdir}/%{name}/js
 %{_wwwdir}/%{name}/js/main.js
@@ -770,6 +775,7 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %{_wwwdir}/%{name}/js/app/common.js
 %{_wwwdir}/%{name}/js/app/libft.js
 %{_wwwdir}/%{name}/js/app/tab-utils.js
+%{_wwwdir}/%{name}/js/app/icons.js
 
 %{_wwwdir}/%{name}/js/lib
 

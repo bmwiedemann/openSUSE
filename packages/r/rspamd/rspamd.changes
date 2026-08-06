@@ -1,4 +1,118 @@
 -------------------------------------------------------------------
+Wed Jul 29 11:23:24 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 4.1.4
+  - Incompatible changes
+    - Build: rspamd now links a single shared jemalloc instance per
+      process and refuses a static-only jemalloc — duplicated
+      allocators caused segfaults at startup
+  - Features
+    - WebUI: read-only users can now access the Selectors tab and
+      the Errors history
+  - Bug fixes
+    - Controller (critical): fail closed on a malformed password
+      hash — previously any password was accepted
+    - Regexp engine: fix a PCRE2 match-data leak on invalid UTF
+      input, bound the heap a single match can use, stop
+      re:matchn() looping forever on empty matches, avoid reading
+      past the end of a bounded pattern when generating ids, and
+      propagate the regexp data limit to named scopes
+    - Message processing: consult the Lua URL filter at most twice
+      per user field instead of once per byte, and bound the words
+      retained per message with a message-wide budget
+    - CSS: skip comments iteratively in the tokeniser, avoiding a
+      stack overflow on many sequential comments
+    - Startup: release actrie GLib allocations with g_free, fixing
+      a startup segfault with jemalloc
+    - rspamadm: resolve SRV-based upstreams and wait for storages
+      in fuzzy_ping and fuzzy_hash
+
+-------------------------------------------------------------------
+Sat Jul 25 19:30:09 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 4.1.3
+  - Incompatible changes
+    - WebUI: jQuery has been dropped entirely — all modules are
+      migrated to native DOM and XMLHttpRequest. Font Awesome is
+      also gone, replaced by a local subset SVG sprite.
+    - DKIM: HAVE_ED25519 is now scoped to OpenSSL key parsing, so
+      ed25519 verification works on OpenSSL builds without it.
+  - Features
+    - Fuzzy check: structured match results with a diagnostics API
+      and task:get_fuzzy_results(), plus a probability weight curve
+      anchored at the match threshold (prob_bias, prob_power).
+    - Fuzzy storage: shingle sets are persisted with digests in
+      Redis, fixing orphaned slots on DEL and decay on REFRESH.
+      Unkeyed clients are now tracked in fuzzystat, and per-hash
+      introspection is available via rspamadm control fuzzyhash.
+    - rspamadm: new fuzzy_hash command.
+    - Reporting: ClickHouse exports fuzzy match details (schema
+      version 11), and milter_headers annotates the X-Rspamd-Fuzzy
+      header with rule, flag, probability and timestamp.
+    - lua_http: new forbid_local option blocks requests to local
+      networks, enabled by default in url_redirector.
+    - lua_feedback_parsers: sparse ARF reports are enriched from
+      the original message headers.
+  - Bug fixes
+    - Critical: bound bh= length before the DKIM body hash
+      comparison (out-of-bounds read via ed25519 signatures);
+      release fuzzy TCP session ownership exactly once
+      (use-after-free on aborted connections); validate shared
+      memory segment bounds and reject non-regular segments in the
+      protocol; fix the shared HTTP body storage lifecycle (double
+      free, descriptor 0 leak, and closing an unrelated socket).
+    - DKIM: bound public key size and modulus width from DNS, bound
+      the number of h= header list items, apply max_sigs before any
+      work while counting every signature header, and stop reading
+      before the body slice when skipping empty lines.
+    - SPF: return permerror when a DNS limit is hit, enforce the
+      include/redirect nesting limit, bound address lookups spawned
+      by mx/ptr expansion (max_dns_expansions), and use the
+      enclosing element for exists.
+    - Fuzzy: check admission before parsing UDP commands and rate
+      limit PING and STAT, fix a stack overread in the sqlite
+      backend id, and log the rule and the server for error
+      replies.
+    - MIME parsing: resource bounds throughout the header and body
+      parsers — nested comment depth in ragel, mime_parser,
+      mime_headers, parameters per header in content_type (with RFC
+      2231 continuation ordering fixed), and task-global per-part
+      newline metadata.
+    - HTML: DOM recursion eliminated so deeply nested messages
+      survive, attributes bounded per tag and per task, synthetic
+      tags capped with the balance loop fixed, and image style
+      dimension parsing corrected.
+    - Message structure: plain text parts are linked to their HTML
+      alternative, with alt-part linking and fasttext langdet cost
+      bounded; Content-ID image linking is no longer quadratic.
+    - Archives: metadata resource usage bounded, and 7zip folder
+      count bounded with guaranteed parser progress.
+    - URLs: max_urls is enforced at the central insertion boundary;
+      url_suspect skips mailto URLs and drops a dead branch in the
+      user field check.
+    - HTTP and maps: request bodies bounded on the controller,
+      proxy and control sockets; the read deadline is enforced when
+      data is pending at timer expiry; remote HTTP map sizes
+      bounded both compressed and decompressed (max_map_size);
+      signature files mapped as files rather than shmem;
+      credentials redacted from map error logs; shared memory
+      mapping helpers hardened.
+    - Compression: a single bounded zstd decompression helper is
+      shared across HTTP, proxy and maps, and task decompression is
+      bounded by max_message with an error-path leak plugged.
+    - Lua: lua_http bounds responses by default
+      (max_lua_http_response) and delivers errors to coroutine
+      callers, the lua_tcp connection ref release is one-shot to
+      avoid a double free, and lua_content/pdf emits newlines for
+      Td/TD line breaks.
+    - Configuration: warn when a module section is defined multiple
+      times.
+    - WebUI: route a malformed /stat response to the login dialog,
+      restore smooth scroll on the Scan tab, stop the refresh
+      spinner restarting mid fan-out, and guard the optional
+      fuzzy_hashes key along with other jQuery-removal regressions.
+
+-------------------------------------------------------------------
 Tue Jul 21 18:00:25 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 4.1.2
