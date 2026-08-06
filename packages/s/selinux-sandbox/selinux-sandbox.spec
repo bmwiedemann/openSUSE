@@ -35,11 +35,16 @@ Patch2:         man_correct_package_name.patch
 Patch10:        sandbox-fix-cleanup.patch
 BuildRequires:  libcap-ng-devel
 BuildRequires:  libselinux-devel
+Requires:       python3-policycoreutils = %{version}
+Requires:       python3-selinux = %{version}
 Requires:       selinux-policy-sandbox
+Requires:       rsync
+Requires:       xmodmap
 Requires(pre):  permissions
 Requires(post): %fillup_prereq
 Recommends:     (xwayland or xorg-x11-server-extra)
 Suggests:       xwayland
+Suggests:       openbox
 Provides:       policycoreutils-sandbox = %{version}
 Obsoletes:      policycoreutils-sandbox < %{version}
 

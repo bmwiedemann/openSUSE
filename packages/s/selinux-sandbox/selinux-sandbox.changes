@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug  5 09:23:10 UTC 2026 - Robert Frohl <rfrohl@suse.com>
+
+- Improved tracked dependencies to cover more functionality (bsc#1273772)
+
+-------------------------------------------------------------------
 Thu Jul 30 09:54:41 UTC 2026 - Robert Frohl <rfrohl@suse.com>
 
 - Fix package name in manpage (bsc#1272976)
