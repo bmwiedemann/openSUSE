@@ -94,4 +94,12 @@
   * computeProps Property Buffer Heap Buffer Overflow (CVE-2026-56003, bsc#1269020)</comment>
     <requestid>1364445</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>39f7ca5f01d82ab2ebc642cf6bfa574e</srcmd5>
+    <version>2.0.7</version>
+    <time>1786025932</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1369722</requestid>
+  </revision>
 </revisionlist>

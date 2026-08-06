@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul 28 11:43:09 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- bsc1272660_CVE-2026-59679_0001-fserve-validate-num_chars-against-encoding-array-siz.patch
+  * libXfont2 fs_read_glyphs() heap OOB read/write via encoding array index mismatch
+    (CVE-2026-59679, bsc#1272660)
+- bsc1272661_CVE-2026-44950-0002-fserve-bounds-check-cumulative-glyph-data-writes-in-.patch
+  * libXfont2 fs_read_glyphs() heap buffer overflow via cumulative glyph data overflow
+    (CVE-2026-44950, bsc#1272661)
+
+-------------------------------------------------------------------
 Wed Jul  1 13:33:57 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - bsc1269018_CVE-2026-56001_0001-bitscale-fix-integer-overflow-in-BitmapScaleBitmaps-.patch

@@ -32,6 +32,8 @@ Source1:        baselibs.conf
 Patch1269018:   bsc1269018_CVE-2026-56001_0001-bitscale-fix-integer-overflow-in-BitmapScaleBitmaps-.patch
 Patch1269019:   bsc1269019_CVE-2026-56002_0002-pcfread-validate-bitmap-sizes-and-offsets-against-pe.patch
 Patch1269020:   bsc1269020_CVE-2026-56003_0003-bitscale-add-bounds-check-to-computeProps-for-proper.patch
+Patch1272660:   bsc1272660_CVE-2026-59679_0001-fserve-validate-num_chars-against-encoding-array-siz.patch
+Patch1272661:   bsc1272661_CVE-2026-44950-0002-fserve-bounds-check-cumulative-glyph-data-writes-in-.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #git#BuildRequires:	autoconf >= 2.60, automake, libtool
 BuildRequires:  pkgconfig
