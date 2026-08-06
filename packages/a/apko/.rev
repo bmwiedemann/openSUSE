@@ -1055,4 +1055,27 @@
     <comment></comment>
     <requestid>1369445</requestid>
   </revision>
+  <revision rev="133" vrev="1">
+    <srcmd5>5514241fd462a624e12d58b4d3ab014f</srcmd5>
+    <version>1.2.35</version>
+    <time>1786027278</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.2.35:
+  * fix(apk): honour offline mode in InitDB key discovery without a
+    cache (#2377)
+  * test: set source date epoch to `0` (#2372)
+  * Disable Go module caching in goreleaser workflows (#2375)
+- Update to version 1.2.34:
+  * apk: handle Alpine key fetches without a cache (#2374)
+  * build: add a disk cache opt-out (#2373)
+- Update to version 1.2.33:
+  * build(deps): bump github.com/google/go-containerregistry from
+    0.21.7 to 0.21.8 (#2371)
+  * build(deps): bump chainguard.dev/sdk from 0.1.163 to 0.1.164
+    (#2370)
+  * build(deps): bump zizmorcore/zizmor-action from 0.6.1 to 0.6.2
+    (#2369)
+</comment>
+    <requestid>1370055</requestid>
+  </revision>
 </revisionlist>
