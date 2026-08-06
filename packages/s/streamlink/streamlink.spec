@@ -24,7 +24,7 @@
 %endif
 %{?sle15_python_module_pythons}%{!?sle15_python_module_pythons:%define pythons python3}
 Name:           streamlink%{psuffix}
-Version:        8.4.0
+Version:        8.5.0
 Release:        0
 Summary:        Program to pipe streams from services into a video player
 License:        Apache-2.0 AND BSD-2-Clause
@@ -112,8 +112,11 @@ enjoy various streamed content.
 %doc AUTHORS CHANGELOG.md MANIFEST.in README.md
 %dir %{_datadir}/zsh
 %dir %{_datadir}/zsh/site-functions
+%dir %{_datadir}/fish
+%dir %{_datadir}/fish/vendor_completions.d
 %{_bindir}/%{name}
 %{_datadir}/bash-completion/completions/%{name}
+%{_datadir}/fish/vendor_completions.d/%{name}.fish
 %{_datadir}/zsh/site-functions/_%{name}
 %{_mandir}/man?/%{name}.?%{?ext_man}
 %{python3_sitelib}/%{name}

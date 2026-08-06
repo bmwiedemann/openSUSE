@@ -282,4 +282,28 @@
     - twitcasting: improved ad segment filtering (forwarded request 1351485 from rrahl0)</comment>
     <requestid>1351486</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>4e7c9a287ea6b7e3387c48c2912ca586</srcmd5>
+    <version>8.5.0</version>
+    <time>1786026262</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 8.5.0:
+  + Fixed: named-pipe player inputs not being cleaned up on pre-open failure
+  + Fixed: stream start offsets being incorrectly cast to int in HLS
+  + Fixed: hls-playlist-reload-time not accepting floats
+  + Refactored: HTTPSession and fixed many typing issues
+  + Refactored: MPDNode in DASH manifest parser to allow attribute namespaces
+  + Docs: clarified requirements of Twitch high quality streams
+  + Tests: fixed test failures since Python 3.15 beta 1
+  + Misc: added pre-built FISH shell completions to release tarballs and wheels
+  + Updated plugins:
+    - douyin: fixed validation schema
+    - douyu: re-introduced plugin with new implementation
+    - mdstrm: added support for VODs / embedded streams with access tokens
+    - nos: rewritten and fixed plugin
+    - radiko: fixed live_url value
+    - trovo: removed plugin
+    - tvazteca: added new plugin (forwarded request 1369690 from rrahl0)</comment>
+    <requestid>1369691</requestid>
+  </revision>
 </revisionlist>

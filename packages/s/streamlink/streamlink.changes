@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Aug  5 08:25:55 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 8.5.0:
+  + Fixed: named-pipe player inputs not being cleaned up on pre-open failure
+  + Fixed: stream start offsets being incorrectly cast to int in HLS
+  + Fixed: hls-playlist-reload-time not accepting floats
+  + Refactored: HTTPSession and fixed many typing issues
+  + Refactored: MPDNode in DASH manifest parser to allow attribute namespaces
+  + Docs: clarified requirements of Twitch high quality streams
+  + Tests: fixed test failures since Python 3.15 beta 1
+  + Misc: added pre-built FISH shell completions to release tarballs and wheels
+  + Updated plugins:
+    - douyin: fixed validation schema
+    - douyu: re-introduced plugin with new implementation
+    - mdstrm: added support for VODs / embedded streams with access tokens
+    - nos: rewritten and fixed plugin
+    - radiko: fixed live_url value
+    - trovo: removed plugin
+    - tvazteca: added new plugin
+
+-------------------------------------------------------------------
 Thu May  7 19:04:28 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 8.4.0:
