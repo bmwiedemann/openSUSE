@@ -1490,4 +1490,41 @@
     fail during cross-compilations for embedded systems, on hosts</comment>
     <requestid>1359212</requestid>
   </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>04dec0f1c1429c132053f13c39710997</srcmd5>
+    <version>50.0.0</version>
+    <time>1786025883</time>
+    <user>anag_factory</user>
+    <comment>- update to 50.0.0 (bsc#1273551, CVE-2026-69247):
+  * SECURITY ISSUE: :func:`~cryptography.hazmat.primitives.serial
+    ization.pkcs7.pkcs7_decrypt_der` and its PEM and S/MIME
+    variants no longer expose distinguishable errors or timing
+    when unwrapping a RecipientInfo's encryptedKey, which could
+    act as a Bleichenbacher oracle for callers that decrypt
+    untrusted messages. A random key is now substituted on
+    failure, as described in RFC 3218. Credit to @X1AOxiang for
+    reporting the issue
+  * Deprecated Diffie-Hellman key exchange over finite fields
+    (FFDH). Everything FFDH is deprecated, including the types in
+    cryptography.hazmat.primitives.asymmetric.dh and loading FFDH
+    keys or parameters with the key loading APIs. Users should
+    migrate to a more modern key exchange algorithm.
+  * Added xof() class methods to
+    :class:`~cryptography.hazmat.primitives.hashes.SHAKE128` and
+    :class:`~cryptography.hazmat.primitives.hashes.SHAKE256` for
+    constructing algorithm instances configured for use with
+    :class:`~cryptography.hazmat.primitives.hashes.XOFHash`.
+  * The :mod:`X.509 verification
+    &lt;cryptography.x509.verification&gt;` APIs are now considered
+    stable and are subject to our API stability policy.
+  * Added the :doc:`/cobblestone` recipe, an implementation of
+    the Cobblestone-128 and Cobblestone-256 instantiations of the
+    C2SP chunked-encryption specification for streaming
+    authenticated encryption of large messages.
+  * Parsing a Signed Certificate Timestamp list now rejects
+    encodings that carry trailing bytes after the list or after
+    an individual SCT, instead of silently ignoring them.
+  * Added support for using :class:`~cryptography.x509.Name` as a</comment>
+    <requestid>1369600</requestid>
+  </revision>
 </revisionlist>

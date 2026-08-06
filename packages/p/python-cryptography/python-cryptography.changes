@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Tue Aug  4 21:28:10 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 50.0.0 (bsc#1273551, CVE-2026-69247):
+  * SECURITY ISSUE: :func:`~cryptography.hazmat.primitives.serial
+    ization.pkcs7.pkcs7_decrypt_der` and its PEM and S/MIME
+    variants no longer expose distinguishable errors or timing
+    when unwrapping a RecipientInfo's encryptedKey, which could
+    act as a Bleichenbacher oracle for callers that decrypt
+    untrusted messages. A random key is now substituted on
+    failure, as described in RFC 3218. Credit to @X1AOxiang for
+    reporting the issue
+  * Deprecated Diffie-Hellman key exchange over finite fields
+    (FFDH). Everything FFDH is deprecated, including the types in
+    cryptography.hazmat.primitives.asymmetric.dh and loading FFDH
+    keys or parameters with the key loading APIs. Users should
+    migrate to a more modern key exchange algorithm.
+  * Added xof() class methods to
+    :class:`~cryptography.hazmat.primitives.hashes.SHAKE128` and
+    :class:`~cryptography.hazmat.primitives.hashes.SHAKE256` for
+    constructing algorithm instances configured for use with
+    :class:`~cryptography.hazmat.primitives.hashes.XOFHash`.
+  * The :mod:`X.509 verification
+    <cryptography.x509.verification>` APIs are now considered
+    stable and are subject to our API stability policy.
+  * Added the :doc:`/cobblestone` recipe, an implementation of
+    the Cobblestone-128 and Cobblestone-256 instantiations of the
+    C2SP chunked-encryption specification for streaming
+    authenticated encryption of large messages.
+  * Parsing a Signed Certificate Timestamp list now rejects
+    encodings that carry trailing bytes after the list or after
+    an individual SCT, instead of silently ignoring them.
+  * Added support for using :class:`~cryptography.x509.Name` as a
+    field type in the :doc:`/hazmat/asn1/index` module.
+  * Loading a public key or an EC private key now rejects DER
+    where the subjectPublicKey (or EC publicKey) BIT STRING
+    declares a non-zero number of unused bits, instead of
+    silently ignoring it.
+  * Parsing a CRL entry's InvalidityDate extension now rejects a
+    GeneralizedTime that carries fractional seconds or another
+    non-DER form, matching the strict encoding already required
+    for every other X.509 time field.
+  * :func:`~cryptography.x509.ocsp.load_der_ocsp_request` and
+    :func:`~cryptography.x509.ocsp.load_der_ocsp_response` now
+    reject a request or response whose version field is not v1,
+    the only version defined by RFC 6960, matching the version
+    validation already performed when loading certificates, CSRs
+    and CRLs.
+  * :class:`~cryptography.hazmat.primitives.hashes.XOFHash` is
+    now supported when building against AWS-LC.
+  * HMAC (and therefore PBKDF2-HMAC) with SHA-3 hashes is now
+    supported when building against AWS-LC.
+  * Diffie-Hellman (:doc:`/hazmat/primitives/asymmetric/dh`) is
+    now supported when building against AWS-LC.
+  * :func:`~cryptography.hazmat.primitives.serialization.load_der
+    _public_key` and :func:`~cryptography.hazmat.primitives.seria
+    lization.load_pem_public_key` now reject Diffie-Hellman
+    public keys whose modulus is smaller than 512 bits, matching
+    the minimum already enforced when loading DH private keys and
+    when constructing :class:`~cryptography.hazmat.primitives.asy
+    mmetric.dh.DHParameterNumbers`.
+  * Added :class:`~cryptography.hazmat.primitives.asymmetric.mlds
+    a.MLDSAMuHasher` for incrementally computing the ML-DSA mu
+    (message representative) used by the external-mu signing and
+    verification APIs.
+  * The builtin
+    :class:`~cryptography.hazmat.primitives.hashes.HashAlgorithm`
+    classes and the classes in
+    :mod:`~cryptography.hazmat.primitives.asymmetric.padding` can
+    now be compared with ==.
+  * :class:`~cryptography.x509.CertificateBuilder` now supports
+    creating unsigned certificates (RFC 9925) with the
+    create_unsigned method.
+  * The :mod:`X.509 verification
+    <cryptography.x509.verification>` APIs now permit ML-DSA-44,
+    ML-DSA-65, and ML-DSA-87 (RFC 9881) public keys and
+    signatures by default.
+
+-------------------------------------------------------------------
 Sun Jun 14 09:04:15 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 49.0.0:
