@@ -71,4 +71,21 @@
     <comment>update to 4.22.4</comment>
     <requestid>1369212</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8f3c8ed23bbe1fd0e8a7d25488ad52bc</srcmd5>
+    <version>4.22.5</version>
+    <time>1786026113</time>
+    <user>anag_factory</user>
+    <comment>Update python-cyclopts to 4.22.5.
+
+Bug fixes around abstract collection types:
+- Fix a TypeError raised when an abstract collection parameter is given no values
+- Support the Collection, Container and Reversible type hints
+- Add --empty-* flags for abstract collection hints
+
+Verified locally on aarch64/openSUSE_Tumbleweed: build green, rpmlint 0 errors
+0 warnings, spec-cleaner diff empty, source_validator clean. The sdist ships no
+tests, so %check remains the import smoke test.</comment>
+    <requestid>1369633</requestid>
+  </revision>
 </revisionlist>

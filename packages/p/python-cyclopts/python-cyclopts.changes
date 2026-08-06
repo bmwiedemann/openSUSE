@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Aug  5 05:33:56 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 4.22.5:
+  * Fix a TypeError raised when an abstract collection parameter is
+    given no values
+  * Support the Collection, Container and Reversible type hints
+  * Add --empty-* flags for abstract collection hints
+
+-------------------------------------------------------------------
 Mon Aug  3 05:36:08 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 4.22.4:
