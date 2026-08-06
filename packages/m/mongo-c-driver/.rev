@@ -63,4 +63,26 @@
     <comment></comment>
     <requestid>1366086</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8944c6b8d6589ff42755fef0cde2df79</srcmd5>
+    <version>2.4.0</version>
+    <time>1786026335</time>
+    <user>anag_factory</user>
+    <comment>Update to version 2.4.0
+
+libbson: no changes since 2.3.3, version incremented to match libmongoc.
+
+libmongoc:
+- The Queryable Encryption &quot;String&quot; algorithm is now generally available,
+  supporting prefix, suffix and substring query types.
+- Snapshot sessions expose APIs to get and set snapshot times.
+- Support AWS STS regional endpoints.
+- Fix handling of verbose results in bulkWrite replies.
+- Fix handling of SCRAM replies.
+- The Queryable Encryption &quot;Text&quot; APIs are deprecated in favour of the
+  &quot;String&quot; APIs.
+
+Submitted to the devel project by Martin Hauke.</comment>
+    <requestid>1369747</requestid>
+  </revision>
 </revisionlist>
