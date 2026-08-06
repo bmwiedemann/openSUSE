@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug  4 11:05:31 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.2.8
+  * fix bdd header encoding by @sbiscigl in (#69)
+
+-------------------------------------------------------------------
 Wed Jul  8 12:50:40 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.2.7
