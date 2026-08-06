@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Thu Aug 06 05:43:57 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.118.0:
+  * New Features
+    - [jfrog-cli] Add jf api docs describe for OpenAPI operation
+      detail lookup #3630 (@ehl-jf)
+    - [jfrog-cli] RTECO-1564 - Add apt command support for JFrog
+      Artifactory #3596 (@fluxxBot)
+    - [jfrog-cli] Added Post Failure Run support for pipenv #3640
+      (@Phavya-jfrog)
+    - [jfrog-cli-artifactory] RTECO-1564 - APT auth command command
+      support #503 (@fluxxBot)
+    - [jfrog-cli-core] RTECO-1564 - Add Apt to ProjectTypes and
+      ProjectType constants #1581 (@fluxxBot)
+    - [jfrog-cli-security] XRAY-145929 - Onboard hugging face for
+      jf curation-audit #786 (@gauriy-tech)
+    - [jfrog-cli-security] XRAY-146488 - Onboarding pip env #802
+      (@gauriy-tech)
+    - [jfrog-cli-security] Add support to get UI route for git scan
+      results #810 (@attiasas)
+    - [jfrog-cli-security] XRAY-156190 - Implement all packages
+      blocked in packument fallback logic for npm #819
+      (@gauriy-tech)
+  * Bug Fixes
+    - [jfrog-cli] fix nuget and dotnet flaky tests #3639
+      (@reshmifrog)
+    - [jfrog-cli-artifactory] Harden jf setup credential files to
+      0600 (pip, uv, Maven, Gradle, Go, Yarn, pnpm) #523
+      (@igalsi-t)
+    - [jfrog-cli-artifactory] RTECO-1723 - Fix windows plugins
+      publish #519 (@udaykb2)
+    - [jfrog-cli-artifactory] RTECO-1597 - Huggingface download
+      should not go to local #516 (@naveenku-jfrog)
+    - [jfrog-cli-security] XRAY-156516 - Add workspace to the Git
+      Info #813 (@VidrevichMichael)
+    - [jfrog-cli-security] XRAY-156858 - Fix workspace description
+      message #816 (@VidrevichMichael)
+    - [jfrog-cli-security] XRAY-156792 Hugging face text updates jf
+      ca #822 (@Phavya-jfrog)
+  * Internal Changes
+    - [jfrog-cli] RTECO-1651 - Update agent plugins tests #3618
+      (@udaykb2)
+    - [jfrog-cli-security] Update dependencies #823 (@attiasas)
+  * Other Changes
+    - [build-info-go] XRAY-135041 slnx support added for dotnet
+      #404 (@Phavya-jfrog)
+    - [jfrog-cli] Surface the invoking AI agent on the CLI's
+      User-Agent #3632 (@noamshemesh)
+    - [jfrog-cli-artifactory] Limit jf setup go GOPROXY fallback to
+      404/410, state which configuration jf setup changed, and mask
+      every GOPROXY entry #520 (@sverdlov93)
+    - [jfrog-cli-security] XRAY-135041 slnx support added for
+      dotnet #808 (@Phavya-jfrog)
+    - [jfrog-client-go] XRAY-156301 Add generic bounded-redirect
+      boundary validation #1366 (@Phavya-jfrog)
+
+-------------------------------------------------------------------
 Fri Jul 31 06:07:22 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.117.0:
