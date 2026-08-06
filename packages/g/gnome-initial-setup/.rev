@@ -365,4 +365,13 @@ Resub it :-)</comment>
     <comment>Push GNOME 50</comment>
     <requestid>1345345</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>5c8d97e0b8c501af1f794445a08805a4</srcmd5>
+    <version>50.1</version>
+    <time>1786026381</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 50.1:
+  + Updated translations.</comment>
+    <requestid>1369845</requestid>
+  </revision>
 </revisionlist>
