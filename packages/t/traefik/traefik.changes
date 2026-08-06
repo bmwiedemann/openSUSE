@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Aug  5 08:24:48 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Version 3.7.10
+
+  CVEs fixed
+  * Advisory GHSA-fgjj-px3w-67xx
+  * Advisory GHSA-62fc-8686-hfmq
+  * Advisory GHSA-6765-c87h-8mrf
+
+  Bugs fixed
+  * acme
+    - Bump github.com/go-acme/lego/v5 to v5.3.1
+  * Bump golang.org/x/text to v0.40.0 and golang.org/x/net v0.57.0
+  * k8s/crd
+    - Fix cross-namespace service reference check in Kubernetes CRD provider
+  * k8s/gatewayapi
+    - Avoid router name collisions in Kubernetes Gateway API provider
+    - Bump sigs.k8s.io/gateway-api to v1.6.1
+  * middleware, authentication
+    - Fix auth singleflight key collision
+  * middleware
+    - Bump github.com/klauspost/compress to v1.18.7
+  * tracing
+    - Bump github.com/DataDog/dd-trace-go/v2 to 2.8.1
+
+
+-------------------------------------------------------------------
 Mon Jul 27 08:20:17 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Version 3.7.9
