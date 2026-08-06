@@ -1,0 +1,38 @@
+---
+ tests/test_taskgroups.py |    9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
+
+Index: anyio-4.14.2/tests/test_taskgroups.py
+===================================================================
+--- anyio-4.14.2.orig/tests/test_taskgroups.py	2026-07-12 22:28:36.000000000 +0200
++++ anyio-4.14.2/tests/test_taskgroups.py	2026-08-05 10:37:25.510309863 +0200
+@@ -1436,7 +1436,8 @@
+ 
+     """
+     event = anyio.Event()
+-    hang_time = 0.2
++    sleep_time = 0.5
++    hang_time = 0.6
+ 
+     async def set_event() -> None:
+         await sleep(hang_time)
+@@ -1444,7 +1445,7 @@
+ 
+     async def never_cancel_task() -> None:
+         with CancelScope(shield=True):
+-            await sleep(0.2)
++            await sleep(sleep_time)
+             await event.wait()
+ 
+     async with create_task_group() as tg:
+@@ -1455,7 +1456,9 @@
+             tg.cancel_scope.cancel()
+             process_time = time.process_time()
+ 
+-        assert (time.process_time() - process_time) < hang_time
++        # We allow a buffer for architectural overhead.
++        # A spinning loop would consume ~hang_time CPU time.
++        assert (time.process_time() - process_time) < hang_time * 1.5
+ 
+ 
+ async def test_cancelscope_wrong_exit_order() -> None:

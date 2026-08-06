@@ -560,4 +560,136 @@ SR for python stack proposal</comment>
     terminated</comment>
     <requestid>1349435</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>0e8891d1b1802965c54c5deb2d512814</srcmd5>
+    <version>4.14.2</version>
+    <time>1786025940</time>
+    <user>anag_factory</user>
+    <comment>- Instead of using sed make a proper patch extend_timeouts.patch
+  to increase timeout in test_pytest_plugin module
+- Add robust_test_shielded_cancel_sleep_time.patch making that
+  test more robust (gh#agronholm/anyio!1264).
+- Add fix-uvloop-closed-loop-race.patch to protect against a race
+  condition in the test_cancel_worker_thread test
+  (gh#agronholm/anyio!1266).
+- Update to 4.14.2:
+    - Changed ByteReceiveStream.receive() implementations to
+      raise a ValueError when max_bytes is not a positive integer
+    - Fixed CapacityLimiter.total_tokens rejecting float(&quot;inf&quot;)
+      when the limiter was instantiated outside of an event loop.
+      The adapter setter checked for infinity by identity (value
+      is math.inf), so only the exact math.inf singleton was
+      accepted, while every backend setter (using math.isinf())
+      accepts any positive infinity
+    - Fixed to_process.run_sync() deadlocking when the worker
+      function writes enough data to sys.stderr to fill the
+      (undrained) pipe buffer. The worker process now redirects
+      sys.stderr to os.devnull as well, matching the documented
+      behavior
+    - Fixed TLSStream.wrap() matching an internationalized
+      (unicode) host name against the peer certificate using IDNA
+      2003 (via the standard library) instead of IDNA 2008, which
+      could cause the host name to be matched against the wrong
+      certificate
+    - Fixed anyio.open_process() (and run_process()) ignoring the
+      extra_groups argument, as it mistakenly passed the value of
+      the group argument instead
+    - Fixed CapacityLimiter.acquire_nowait() and
+      CapacityLimiter.acquire_nowait_on_behalf_of() raising
+      trio.WouldBlock instead of anyio.WouldBlock on the trio
+      backend when there are no tokens available
+    - Fixed CapacityLimiter on the asyncio backend over-granting
+      tokens (borrowed_tokens exceeding total_tokens and
+      available_tokens going negative) when a non-blocking
+      acquire was made in the window between a token being
+      released and the notified waiter resuming. The freed token
+      is now reserved for the woken waiter right away, so the
+      non-blocking acquire correctly raises WouldBlock
+    - Fixed unnecessary CPU spin when delivering cancellation
+      from CancelScope on asyncio under certain conditions,
+      including improper cancel scope nesting
+- Update to 4.14.1:
+    - Fixed teardown of higher-scoped async fixtures failing on
+      asyncio with RuntimeError: Attempted to exit cancel scope
+      in a different task than it was entered in when an async
+      test raise an outcome exception (e.g., pytest.skip(),
+      pytest.xfail(), or pytest.fail())
+    - Fixed CapacityLimiter.total_tokens rejecting a value of
+      0 when the limiter was instantiated outside of an event
+      loop, contradicting the documented behavior of allowing
+      0 total tokens
+- Update to 4.14.0:
+    - Added support for Python 3.15
+    - Added an asynchronous implementation of the itertools
+      module
+    - Added the local_port parameter to connect_tcp() to allow
+      binding to a specific local port before connecting
+    - Added support for custom capacity limiters in async path
+      and file I/O functions and classes
+    - Added the create_task() task group method for easier
+      asyncio migration (returns a TaskHandle)
+    - Changed TaskGroup.start_soon() to return a TaskHandle
+    - Added an option for TaskGroup.start() to return
+      a TaskHandle
+    - Added the cancel() convenience method to TaskGroup as
+      a shortcut for cancelling the task group's cancel scope
+    - Improved the error message when a known backend is not
+      installed to suggest the install command
+    - Improved anyio.Path to preserve subclass types by returning
+      Self in methods that return path objects
+    - Changed the parameter type annotation in
+      anyio.Path.write_bytes() to accept any ReadableBuffer, thus
+      allowing it to accept bytearray and memoryview to match
+      pathlib.Path.write_bytes()
+    - Changed several type annotations to only accept callables
+      returning coroutine-like objects instead of arbitrary
+      awaitables:
+          TaskGroup.start_soon()
+          TaskGroup.start()
+          anyio.from_thread.run()
+    - This reverts an earlier change from v3.7.0 which was made
+      in error.
+    - Changed anyio.run to support callables returning arbitrary
+      awaitables at runtime on all backends. Previously, this
+      only worked on asyncio
+    - Changed several classes (and their subclasses) to have
+      __slots__ (with __weakref__):
+          anyio.CancelScope
+          anyio.CapacityLimiter
+          anyio.Condition
+          anyio.Event
+          anyio.Lock
+          anyio.ResourceGuard
+          anyio.Semaphore
+    - Fixed cancellation exception escaping a cancel scope when
+      triggered via check_cancelled() in a worker thread
+    - Fixed TaskGroup raising AttributeError instead of a clear
+      error when entered more than once
+    - Fixed lost type information when passing arguments to
+      lru_cache
+    - Fixed test resumption after KeyboardInterrupt in async
+      generator fixtures on the asyncio backend
+    - Fixed import of __main__ in to_process workers when
+      entrypoint script doesn't end in .py, such as when using
+      console_script entrypoints.
+    - Fixed SocketListener.from_socket() returning a TCP listener
+      for AF_UNIX listening sockets, causing accept() to fail
+      with ENOTSUP
+    - Fixed UDPSocket.aclose() and ConnectedUDPSocket.aclose() on
+      asyncio returning before the underlying socket FD was
+      actually released
+    - Fixed trio backend test runner hanging indefinitely instead
+      of raising an error when dynamically accessing an async
+      fixture via request.getfixturevalue
+    - Fixed cancelling tasks started through a BlockingPortal
+      after the portal has been stopped
+    - Fixed backend_options being ignored when running the Trio
+      backend via anyio.run(); the options are now passed as
+      keyword arguments to trio.run() again, as documented (a
+      regression from AnyIO 3)
+    - Fixed asyncio Lock and Semaphore deadlocks caused by
+      cancelled waiters left queued during release
+</comment>
+    <requestid>1369748</requestid>
+  </revision>
 </revisionlist>

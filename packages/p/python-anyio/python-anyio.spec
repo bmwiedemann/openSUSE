@@ -26,12 +26,21 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-anyio%{psuffix}
-Version:        4.13.0
+Version:        4.14.2
 Release:        0
 Summary:        High level compatibility layer for asynchronous event loop implementations
 License:        MIT
 URL:            https://github.com/agronholm/anyio
 Source:         https://files.pythonhosted.org/packages/source/a/anyio/anyio-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM robust_test_shielded_cancel_sleep_time.patch gh#agronholm/anyio!1264 mcepl@suse.com
+# improve robustness of test_shielded_cancel_sleep_time
+Patch0:         robust_test_shielded_cancel_sleep_time.patch
+# PATCH-FIX-UPSTREAM fix-uvloop-closed-loop-race.patch gh#agronholm/anyio!1266 mcepl@suse.com
+# protect against a race condition in the test_cancel_worker_thread test
+Patch1:         fix-uvloop-closed-loop-race.patch
+# PATCH-FIX-OPENSUSE extend_timeouts.patch mcepl@suse.com
+# increase timeout in test_pytest_plugin module
+Patch2:         extend_timeouts.patch
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 77}
@@ -47,6 +56,7 @@ BuildRequires:  %{python_module hypothesis >= 4.18.2}
 BuildRequires:  %{python_module psutil >= 5.9}
 BuildRequires:  %{python_module pytest >= 8.4}
 BuildRequires:  %{python_module pytest-mock >= 3.14}
+BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module trio >= 0.32.0}
 BuildRequires:  %{python_module trustme >= 1.0.0}
 BuildRequires:  %{python_module truststore >= 0.9.1}
@@ -55,12 +65,8 @@ BuildRequires:  %{python_module uvloop >= 0.22.1}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-idna >= 2.8
-%if 0%{?python_version_nodots} < 313
-Requires:       python-typing_extensions >= 4.5
-%endif
-%if 0%{?python_version_nodots} < 311
-Requires:       python-exceptiongroup >= 1.0.2
-%endif
+Requires:       (python-exceptiongroup >= 1.0.2 if python-base < 3.11)
+Requires:       (python-typing_extensions >= 4.5 if python-base < 3.13)
 Suggests:       python-trio >= 0.32.0
 BuildArch:      noarch
 %python_subpackages
@@ -87,10 +93,6 @@ sed -i 's/license = "MIT"/license = { text = "MIT" }/' pyproject.toml
 
 %if %{with test}
 %check
-# increase timeout in test_keyboardinterrupt_during_test
-sed -i 's/timeout=3/timeout=8/' tests/test_pytest_plugin.py
-
-sed -i '/filterwarnings/,/^]/ { /"error"/ d}' pyproject.toml
 # bind and resolution failures inside OBS
 donttest+=" or (TestTCPStream and (ipv4 or ipv6))"
 donttest+=" or (TestTCPListener and (ipv4 or ipv6))"

@@ -1,0 +1,25 @@
+---
+ src/anyio/_backends/_asyncio.py |   10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+
+Index: anyio-4.14.2/src/anyio/_backends/_asyncio.py
+===================================================================
+--- anyio-4.14.2.orig/src/anyio/_backends/_asyncio.py	2026-07-12 22:28:36.000000000 +0200
++++ anyio-4.14.2/src/anyio/_backends/_asyncio.py	2026-08-05 10:37:29.592800077 +0200
+@@ -1037,9 +1037,13 @@
+                         del threadlocals.current_cancel_scope
+ 
+                     if not self.loop.is_closed():
+-                        self.loop.call_soon_threadsafe(
+-                            self._report_result, future, result, exception
+-                        )
++                        try:
++                            self.loop.call_soon_threadsafe(
++                                self._report_result, future, result, exception
++                            )
++                        except RuntimeError:
++                            # Event loop was closed just after the is_closed() check
++                            pass
+ 
+                     del result, exception
+ 

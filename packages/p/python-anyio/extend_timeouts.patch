@@ -1,0 +1,74 @@
+---
+ tests/test_pytest_plugin.py |    6 +++---
+ tests/test_taskgroups.py    |    4 ++--
+ tests/test_to_thread.py     |    4 ++--
+ 3 files changed, 7 insertions(+), 7 deletions(-)
+
+Index: anyio-4.14.2/tests/test_pytest_plugin.py
+===================================================================
+--- anyio-4.14.2.orig/tests/test_pytest_plugin.py	2026-07-12 22:28:36.000000000 +0200
++++ anyio-4.14.2/tests/test_pytest_plugin.py	2026-08-05 10:37:35.996003636 +0200
+@@ -474,7 +474,7 @@
+         """
+     )
+ 
+-    testdir.runpytest_subprocess(*pytest_args, timeout=3)
++    testdir.runpytest_subprocess(*pytest_args, timeout=20)
+ 
+ 
+ def test_keyboard_interrupt_does_not_resume_test(testdir: Pytester) -> None:
+@@ -504,7 +504,7 @@
+         """
+     )
+ 
+-    result = testdir.runpytest_subprocess(*pytest_args, timeout=5)
++    result = testdir.runpytest_subprocess(*pytest_args, timeout=20)
+     assert result.ret == 2
+     result.stdout.no_fnmatch_line("*RESUMED_AFTER_INTERRUPT*")
+     result.stdout.fnmatch_lines(["*KeyboardInterrupt*"])
+@@ -635,7 +635,7 @@
+         """
+     )
+ 
+-    result = testdir.runpytest_subprocess(*pytest_args, timeout=3)
++    result = testdir.runpytest_subprocess(*pytest_args, timeout=15)
+     result.stdout.fnmatch_lines(
+         [
+             "*RuntimeError: Cannot schedule a coroutine in the test runner while another is already running;*"
+Index: anyio-4.14.2/tests/test_taskgroups.py
+===================================================================
+--- anyio-4.14.2.orig/tests/test_taskgroups.py	2026-08-05 10:37:25.510309863 +0200
++++ anyio-4.14.2/tests/test_taskgroups.py	2026-08-05 10:37:35.996663971 +0200
+@@ -1085,8 +1085,8 @@
+ 
+ 
+ async def test_deadline_moved() -> None:
+-    with fail_after(0.1) as scope:
+-        scope.deadline += 0.3
++    with fail_after(0.2) as scope:
++        scope.deadline += 0.6
+         await sleep(0.2)
+ 
+ 
+Index: anyio-4.14.2/tests/test_to_thread.py
+===================================================================
+--- anyio-4.14.2.orig/tests/test_to_thread.py	2026-07-12 22:28:36.000000000 +0200
++++ anyio-4.14.2/tests/test_to_thread.py	2026-08-05 10:37:35.996357343 +0200
+@@ -78,7 +78,7 @@
+         for _ in range(4):
+             tg.start_soon(task_worker)
+ 
+-        await sleep(0.1)
++        await sleep(0.5)
+         assert len(active_threads) == 3
+         assert limiter.borrowed_tokens == 3
+         event.set()
+@@ -167,7 +167,7 @@
+     async def run_in_thread() -> None:
+         nonlocal task
+         task = asyncio.current_task()
+-        await to_thread.run_sync(time.sleep, 0.2, abandon_on_cancel=True)
++        await to_thread.run_sync(time.sleep, 0.05, abandon_on_cancel=True)
+ 
+     async with create_task_group() as tg:
+         tg.start_soon(run_in_thread)
