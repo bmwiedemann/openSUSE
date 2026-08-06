@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Aug  5 12:50:13 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Add security patches:
+  * CVE-2026-15307: server-side file-write and request forgery via
+    spatial lookups (bsc#1272997)
+    * CVE-2026-15307.patch
+  * CVE-2026-15337: potential denial-of-service vulnerability in
+    `check_for_language()` (bsc#1272998)
+    * CVE-2026-15337.patch
+  * CVE-2026-15830: potential denial-of-service vulnerability via
+    nested geometry collections (bsc#1272999)
+    * CVE-2026-15830.patch
+  * CVE-2026-15920: potential cross-site scripting via `URLField`
+    values in the admin (bsc#1273000)
+    * CVE-2026-15920.patch
+
+-------------------------------------------------------------------
 Thu Jul  9 07:43:29 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Add security patches:

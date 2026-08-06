@@ -95,4 +95,24 @@
     * CVE-2026-53877.patch</comment>
     <requestid>1364676</requestid>
   </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>c60821cdd93aa14907309da0fbc92066</srcmd5>
+    <version>4.2.30</version>
+    <time>1786026320</time>
+    <user>anag_factory</user>
+    <comment>- Add security patches:
+  * CVE-2026-15307: server-side file-write and request forgery via
+    spatial lookups (bsc#1272997)
+    * CVE-2026-15307.patch
+  * CVE-2026-15337: potential denial-of-service vulnerability in
+    `check_for_language()` (bsc#1272998)
+    * CVE-2026-15337.patch
+  * CVE-2026-15830: potential denial-of-service vulnerability via
+    nested geometry collections (bsc#1272999)
+    * CVE-2026-15830.patch
+  * CVE-2026-15920: potential cross-site scripting via `URLField`
+    values in the admin (bsc#1273000)
+    * CVE-2026-15920.patch</comment>
+    <requestid>1369756</requestid>
+  </revision>
 </revisionlist>
