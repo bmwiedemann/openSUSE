@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Aug  4 21:13:06 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.4.9:
+  * Regression in our fallback path leading to a decode error.
+  * We've yanked 3.4.8 as a result of that bug.
+  * Wall import time due to cascade codec imports for our
+    multibyte first sort of iana supported codecs
+  * Unnecessary json import at runtime
+  * Inverse capitalization not seen by noise detector
+  * No longer holding a global cache for our noise / coherence
+    measurements. Relax RSS memory usage.
+  * Micro-optimizations in our noise / coherence measurements.
+  * No longer using regex search by default for our preemptive
+    charset mark algorithm.
+  * Raised upperbound of setuptools to v83.
+  * Raised upperbound of mypy(c) to v2.1.
+
+-------------------------------------------------------------------
 Mon Apr  6 21:42:02 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.4.7:

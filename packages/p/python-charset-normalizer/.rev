@@ -443,4 +443,25 @@
   * Correctly remove SIG remnant in utf-7 decoded string. (#718)</comment>
     <requestid>1344812</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>101b1df68939f89a512f403820df6d06</srcmd5>
+    <version>3.4.9</version>
+    <time>1786025870</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.4.9:
+  * Regression in our fallback path leading to a decode error.
+  * We've yanked 3.4.8 as a result of that bug.
+  * Wall import time due to cascade codec imports for our
+    multibyte first sort of iana supported codecs
+  * Unnecessary json import at runtime
+  * Inverse capitalization not seen by noise detector
+  * No longer holding a global cache for our noise / coherence
+    measurements. Relax RSS memory usage.
+  * Micro-optimizations in our noise / coherence measurements.
+  * No longer using regex search by default for our preemptive
+    charset mark algorithm.
+  * Raised upperbound of setuptools to v83.
+  * Raised upperbound of mypy(c) to v2.1.</comment>
+    <requestid>1369590</requestid>
+  </revision>
 </revisionlist>
