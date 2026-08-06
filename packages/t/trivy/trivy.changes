@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Wed Aug 05 08:21:21 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 0.73.0:
+  * release: v0.73.0 [main] (#11012)
+  * docs: clarify debug logs when version check or telemetry is disabled (#10984)
+  * feat(java): support user-defined Maven mirrors in trivy.yaml (#11006)
+  * chore(deps): bump the common group across 1 directory with 17 updates (#11025)
+  * chore(deps): bump the docker group across 1 directory with 2 updates (#10991)
+  * chore(deps): bump the aws group across 1 directory with 6 updates (#10947)
+  * refactor(alpine): remove type assertion when reading the APKINDEX archive (#11013)
+  * chore(deps): bump google.golang.org/grpc from 1.81.1 to 1.82.1 (#10995)
+  * feat(vex): discover OpenVEX in generic in-toto OCI referrers (#10986)
+  * refactor(vuln): add OS.Supplier field and unify supplier terminology (#11007)
+  * chore(deps): bump github.com/google/cel-go from 0.28.1 to 0.30.0 (#11009)
+  * fix(vex): reject non-local VEX repository names (#10987)
+  * fix(vex): handle 304 status code (#10307)
+  * fix(vuln): don't skip packages covered by a driver's own advisory feed (#10980)
+  * fix(conda): avoid panic on an all-operator dependency line (#10955)
+  * chore: add schema id (#10969)
+  * feat(vex): native discovery of VEX documents stored as OCI artifacts (#10932)
+  * feat: add bounded read helpers (#10974)
+  * fix(dotnet): identify deps.json root project from dependency graph (#10954)
+  * feat(java): read Jenkins plugin manifest licenses (#10939)
+  * docs: ask contributors to coordinate before starting on an issue (#10940)
+  * fix(nodejs): support pnpm workspaces with overlapping packages (#10894)
+  * ci: create release branch with the App token to bypass the merge queue rule (#10931)
+  * chore(deps): bump the common group across 1 directory with 15 updates (#10892)
+  * feat(seal): detect no-prefix packages by version suffix (#10911)
+  * chore(deps): bump the testcontainers group with 2 updates (#10918)
+  * chore(deps): bump the docker group across 1 directory with 4 updates (#10919)
+  * fix(java): set per-file digest for nested JARs (#10855)
+  * fix(misconf): guard nil Healthcheck when building Dockerfile from history (#10899)
+  * ci(helm): bump Trivy version to 0.72.0 for Trivy Helm Chart 0.24.0 (#10908)
+  * ci(helm): allow trivy team to approve Chart.yaml bumps (#10912)
+
+-------------------------------------------------------------------
 Fri Jul 17 13:57:04 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update x/net to 0.57.0 (bsc#1266495, CVE-2026-39821)
