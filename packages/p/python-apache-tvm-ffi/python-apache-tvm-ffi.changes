@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Aug  5 05:48:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.1.13.post2:
+  * Keep object optionals pointer-sized
+- Changes from 0.1.13.post1:
+  * Mark type-info lookup as pure and make ModuleObj stable
+  * Add Rust structural_visit and structural_walk
+  * Keep the source patch version ahead of post releases
+
+-------------------------------------------------------------------
 Sat Aug  1 18:32:49 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.1.13.post0:

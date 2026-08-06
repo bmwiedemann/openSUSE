@@ -29,4 +29,22 @@ loads on both python313 and python314.</comment>
     <comment>Update to 0.1.13.post0</comment>
     <requestid>1369031</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>edcc1e17ca77c786f836c5934da14386</srcmd5>
+    <version>0.1.13.post2</version>
+    <time>1786026184</time>
+    <user>anag_factory</user>
+    <comment>Update python-apache-tvm-ffi to 0.1.13.post2.
+
+- post2 keeps object optionals pointer-sized
+- post1 marks type-info lookup as pure, makes ModuleObj stable, adds Rust
+  structural_visit/structural_walk, and keeps the source patch version ahead of
+  post releases
+
+Verified locally on aarch64/openSUSE_Tumbleweed: build green, rpmlint 0 errors
+0 badness (the 6 potential-bashisms warnings are in the bundled libbacktrace and
+are unchanged from the previous revision), spec-cleaner diff empty,
+source_validator clean.</comment>
+    <requestid>1369641</requestid>
+  </revision>
 </revisionlist>
