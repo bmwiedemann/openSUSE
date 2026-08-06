@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Aug  4 11:55:52 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20260803.00
+  * Exclude irrelevant tests on FreeBSD (#625)
+- from version 20260723.00
+  * Replace abandoned serial dependency (#624)
+  * Add build rules for MWLID extension
+- from version 20260720.00
+  * Replace abandoned serial dependency (#624)
+- from version 20260718.00
+  * Add build rules for MWLID extension
+- from version 20260717.00
+  * Support basic account management on FreeBSD (#619)
+- from version 20260715.00
+  * fix dependency between sshd and google-guest-agent-manager.service (#621)
+  * Update go.mod dependencies (#622)
+  * Fallback to shebang execution when running scripts (#618)
+  * Update go dependencies (#620)
+  * Make guest-agent buildable on FreeBSD (#617)
+
+-------------------------------------------------------------------
 Thu Jul 23 14:55:42 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - CVE-2026-56852: golang.org/x/text/unicode/norm: infinite loop on

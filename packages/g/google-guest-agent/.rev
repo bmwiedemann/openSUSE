@@ -1119,4 +1119,12 @@
   * CVE-2026-56852.patch (forwarded request 1367484 from mcalabkova)</comment>
     <requestid>1367486</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>97b9c76931eade8595e4995112c053f5</srcmd5>
+    <version>20260803.00</version>
+    <time>1786026377</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1369835</requestid>
+  </revision>
 </revisionlist>
