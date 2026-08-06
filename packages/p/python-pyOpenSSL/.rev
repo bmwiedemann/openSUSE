@@ -785,4 +785,13 @@
     OpenSSL.crypto.X509.get_issuer,</comment>
     <requestid>1359292</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>bbbc390fcc08e6aa13221ea213a1ad0d</srcmd5>
+    <version>26.4.0</version>
+    <time>1786025889</time>
+    <user>anag_factory</user>
+    <comment>- Update to 26.4.0:
+  * Maximum supported cryptography version is now 50.x.</comment>
+    <requestid>1369615</requestid>
+  </revision>
 </revisionlist>

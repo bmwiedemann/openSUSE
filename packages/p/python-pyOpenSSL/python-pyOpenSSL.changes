@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug  5 00:32:01 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 26.4.0:
+  * Maximum supported cryptography version is now 50.x.
+
+-------------------------------------------------------------------
 Sun Jun 14 09:18:38 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 26.3.0:
