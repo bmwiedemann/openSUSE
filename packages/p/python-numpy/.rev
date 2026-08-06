@@ -1487,4 +1487,12 @@ This was now merged upstream, so I added relevant metadata
     <comment></comment>
     <requestid>1366906</requestid>
   </revision>
+  <revision rev="148" vrev="2">
+    <srcmd5>62e9784b05532628bc97e3004369aec1</srcmd5>
+    <version>2.4.6</version>
+    <time>1786025893</time>
+    <user>anag_factory</user>
+    <comment>- Skip a test to unblock Python 3.15 until new upstream release.</comment>
+    <requestid>1369618</requestid>
+  </revision>
 </revisionlist>

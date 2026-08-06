@@ -234,6 +234,8 @@ test_failok+=" or (test_umath and test_fp_noncontiguous)"
 test_failok+=" or test_limited_api"
 # gh#numpy/numpy#27531
 test_failok+=" or test_api_importable"
+# raises a warning as an error, remove when upgrading to 2.5.0.
+test_failok+=" or test_xerbla_override"
 
 echo "
 import sys
