@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug  5 16:26:39 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.28.6:
+  + meson: use dependency('dl') instead of cc.find_library('dl')
+- Update to version 1.28.5:
+  + No changes, stable bump only.
+
+-------------------------------------------------------------------
 Fri Jun 12 16:28:30 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 1.28.4:
