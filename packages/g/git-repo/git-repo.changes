@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Aug 05 16:32:25 UTC 2026 - Benoît Monin <benoit.monin@gmx.fr>
+
+- Update to version 2.66:
+  * project: preserve -c optimization when revision is a SHA-1
+  * command: Respect smart sync override declaratively by default
+  * project: derive HEAD fallback from git's own default branch
+  * project: make GetHead file-read fallback reftable-aware
+  * sync: allow syncing groups with repo sync -g group
+  * git_superproject: don't filter rewritten manifest
+  * sync: Deprecate fetch-submodules flag names
+  * hooks: pass yes flag when available
+  * project: Skip superproject upstream check for MetaProjects
+  * sync: Add CLI flag for globally disabling submodule fetch
+  * color: Replace anonymous sentinel with named class
+  * rebase: Resolve revisionExpr to tracking branch for --onto-manifest
+
+-------------------------------------------------------------------
 Tue Jul 07 08:57:04 UTC 2026 - Benoît Monin <benoit.monin@gmx.fr>
 
 - Update to version 2.65:
