@@ -746,4 +746,12 @@
     <comment>ugrep 7.8.3 (forwarded request 1368671 from AndreasStieger)</comment>
     <requestid>1368672</requestid>
   </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>f58a438cc07725f86fd9ccca08bf2e4e</srcmd5>
+    <version>7.8.4</version>
+    <time>1786026370</time>
+    <user>anag_factory</user>
+    <comment>ugrep 7.8.4 (forwarded request 1369830 from AndreasStieger)</comment>
+    <requestid>1369831</requestid>
+  </revision>
 </revisionlist>

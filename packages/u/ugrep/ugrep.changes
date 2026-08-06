@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug  5 16:45:36 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 7.8.4:
+  * portability fixes
+  * fail fast when DFA position sets exceed complexity limits
+
+-------------------------------------------------------------------
 Thu Jul 30 17:39:35 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 7.8.3:
