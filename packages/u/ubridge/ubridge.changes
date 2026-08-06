@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Aug  6 12:28:13 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Udpate to version 1.2.0
+  * Real delay line (fixes #114).
+  * Secure control socket — AF_UNIX + SO_PEERCRED auth;
+    TCP hypervisor defaults to loopback.
+  * Marker enhancements - direction in match signals, directional
+    dir keyword, pause/resume, and mark-filter survival across
+    reset_packet_filters.
+
+-------------------------------------------------------------------
 Tue Jul  7 15:47:58 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.1.0
