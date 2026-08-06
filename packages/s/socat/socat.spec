@@ -93,12 +93,12 @@ cp %{SOURCE2} testcert.dh
 export TERM=ansi
 # use a small but safe subset of all tests
 sotests="filan consistency stdio fd pipe pipes exec gopen noatime system"
-%ifnarch armv6l armv6hl aarch64
+%ifnarch %{arm} aarch64
 # add some more tests for fast machines only
 sotests="$sotests unix"
 %endif
 # increase socket shutdown timeout, default 0.1 or 0.5 caused sometimes
-# random failures on slow machines (armv6l, aarch64)
+# random failures on slow machines (armv6/7, aarch64)
 export OPTS="-t 2"
 ./test.sh $sotests
 

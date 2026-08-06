@@ -489,4 +489,12 @@ See README (forwarded request 157221 from babelworx)</comment>
 - Add fix-linux-errqueue.h-not-found.patch</comment>
     <requestid>1362235</requestid>
   </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>3cd133ff0a57d456d7be21ce30e807a0</srcmd5>
+    <version>1.8.1.3</version>
+    <time>1786025923</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1369702</requestid>
+  </revision>
 </revisionlist>
