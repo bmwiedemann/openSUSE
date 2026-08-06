@@ -1,4 +1,164 @@
 -------------------------------------------------------------------
+Wed Aug 05 10:35:26 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.46.0:
+  This release internalizes Hub CLI functionality directly into
+  tkn, adds the --log-failed flag to the pipelinerun logs command
+  for filtering failed task logs, replaces cosign with sigstore and
+  blang/semver with Masterminds/semver, removes the unused
+  tektoncd/chains dependency, migrates from gotest.tools v2 to v3.
+  Updates Tekton Pipelines support to v1.14.1, enables Codecov
+  coverage reporting in CI, and includes dependency updates to
+  address CVE-2026-42505 and other critical security fixes.
+  * Deprecated
+    - [Hub CLI Migration] Hub is deprecated and internalize Hub CLI
+      functionality into tkn by @divyansh42 in #2876
+  * Features
+    - Add --log-failed flag to pipelinerun logs command by @chmouel
+      in #2920
+  * Refactoring & Cleanup
+    - chore(deps): replace gotest.tools v2 with v3 to reduce
+      dependency by @arvindk-softwaredev in #3060
+    - chore(deps): replaced cosign with sigstore and replaced
+      blang/semver … by @anwesha-palit-redhat in
+    - cleanup: removed chains dead code by @arvindk-softwaredev in
+      #3039
+  * Dependency Updates
+    - Bump github.com/sigstore/sigstore from 1.10.5 to 1.10.6 by
+      @dependabot[bot] in #2866
+    - Bump google.golang.org/grpc from 1.81.0 to 1.81.1 by
+      @dependabot[bot] in #2867
+    - Bump github.com/google/go-containerregistry from 0.21.5 to
+      0.21.6 by @dependabot[bot] in #2873
+    - Bump step-security/harden-runner from 2.19.1 to 2.19.3 by
+      @dependabot[bot] in #2874
+    - Bump github/codeql-action from 4.35.3 to 4.35.5 by
+      @dependabot[bot] in #2875
+    - Bump github/codeql-action from 4.35.5 to 4.36.0 by
+      @dependabot[bot] in #2885
+    - Bump golang.org/x/crypto from 0.51.0 to 0.52.0 by
+      @dependabot[bot] in #2882
+    - Bump golangci/golangci-lint-action from 9.2.0 to 9.2.1 by
+      @dependabot[bot] in #2884
+    - Add agentic workflow context files by @ngelman1 in #2890
+    - Bump actions/checkout from 6.0.2 to 6.0.3 by @dependabot[bot]
+      in #2891
+    - Bump chainguard-dev/actions from 1.6.19 to 1.6.22 by
+      @dependabot[bot] in #2898
+    - Bump github/codeql-action from 4.36.0 to 4.36.2 by
+      @dependabot[bot] in #2899
+    - Bump the go-k8s-dependencies group across 1 directory with 3
+      updates by @dependabot[bot] in #2862
+    - Bump github.com/docker/cli from 29.4.3+incompatible to
+      29.5.3+incompatible in the go-docker-dependencies group
+      across 1 directory by @dependabot[bot] in #2865
+    - Bump github.com/sigstore/sigstore from 1.10.6 to 1.10.8 by
+      @dependabot[bot] in #2901
+    - Bump goa.design/goa/v3 from 3.26.0 to 3.28.0 by
+      @dependabot[bot] in #2902
+    - Bump chainguard-dev/actions from 1.6.22 to 1.6.23 by
+      @dependabot[bot] in #2906
+    - Bump go.mongodb.org/mongo-driver from 1.17.6 to 1.17.7 by
+      @dependabot[bot] in #2910
+    - Bump ko-build/setup-ko from 0.9 to 0.10 by @dependabot[bot]
+      in #2926
+    - Bump actions/setup-go from 6.4.0 to 6.5.0 by @dependabot[bot]
+      in #2927
+    - Bump actions/checkout from 6.0.3 to 7.0.0 by @dependabot[bot]
+      in #2918
+    - Bump github.com/docker/cli from 29.5.3+incompatible to
+      29.6.1+incompatible in the go-docker-dependencies group
+      across 1 directory by @dependabot[bot] in #2914
+    - Bump the go-k8s-dependencies group across 1 directory with 3
+      updates by @dependabot[bot] in #2915
+    - Bump chainguard-dev/actions from 1.6.23 to 1.6.25 by
+      @dependabot[bot] in #2917
+    - Bump github.com/sigstore/timestamp-authority/v2 from 2.0.6 to
+      2.1.0 by @dependabot[bot] in #2928
+    - fix(cve): bump Go stdlib to 1.25.11 and golang.org/x/net to
+      v0.55.0 by @divyansh42 in #2911
+    - chore(deps): add dependabot config for active release
+      branches by @jkhelil in #2907
+    - Bump github.com/Masterminds/semver/v3 from 3.4.0 to 3.5.0 by
+      @dependabot[bot] in #2881
+    - chore(deps): bump github.com/tektoncd/triggers from
+      0.35.1-0.20260401091813-1aad8a1898ec to 0.36.0 by
+      @dependabot[bot] in #2991
+    - chore(deps): bump the all group with 5 updates by
+      @dependabot[bot] in #2995
+    - CI: Use goinstall mode for golangci-lint action by
+      @vdemeester in #2984
+    - chore(deps): bump golang.org/x/term from 0.43.0 to 0.44.0 by
+      @dependabot[bot] in #3008
+    - chore(deps): bump google.golang.org/grpc from 1.81.1 to
+      1.82.0 by @dependabot[bot] in #2931
+    - refactor(release): use .x branches for releases by
+      @divyansh42 in #3011
+    - Add branch prefix to Dependabot PR titles for release
+      branches by @divyansh42 in #3017
+    - chore(deps): bump the all group with 2 updates by
+      @dependabot[bot] in #3023
+    - chore(deps): bump golang.org/x/text from 0.37.0 to 0.39.0 by
+      @dependabot[bot] in #3021
+    - chore(deps): bump github.com/google/go-containerregistry from
+      0.21.6 to 0.21.7 by @dependabot[bot] in #2929
+    - chore(deps): bump go.opentelemetry.io/otel from 1.43.0 to
+      1.44.0 by @dependabot[bot] in #3022
+    - chore(deps): bump github.com/tektoncd/chains from 0.26.3 to
+      0.27.2 and fix test failures by @dependabot[bot] in #2930
+    - chore(deps): bump github.com/letsencrypt/boulder from
+      0.20260420.0 to 0.20260630.0 by @dependabot[bot] in #2953
+    - docs: update README Tekton logo URL to CNCF artwork location
+      by @afrittoli with @Copilot in #3025
+    - chore(deps): bump golang.org/x/crypto from 0.52.0 to 0.53.0
+      by @dependabot[bot] in #3027
+    - chore(deps): bump github.com/tektoncd/pipeline from 1.12.0 to
+      1.14.0 by @dependabot[bot] in #3028
+    - chore(deps): bump step-security/harden-runner from 2.19.4 to
+      2.20.0 in the all group by @dependabot[bot] in #3030
+    - chore(deps): bump github.com/tektoncd/chains from 0.27.2 to
+      0.27.3 by @dependabot[bot] in #3029
+    - chore(deps): bump the go-k8s-dependencies group across 1
+      directory with 2 updates by @dependabot[bot] in #3038
+    - chore(deps): bump github.com/jackc/pgx/v5 from 5.7.6 to 5.9.2
+      by @dependabot[bot] in #3041
+    - ci(.github/workflows): enable Codecov coverage reporting by
+      @enarha in #3040
+    - chore(deps): bump github.com/docker/cli from
+      29.6.1+incompatible to 29.6.2+incompatible in the
+      go-docker-dependencies group by @dependabot[bot] in #3042
+    - chore(deps): bump github.com/letsencrypt/boulder from
+      0.20260630.0 to 0.20260713.0 by @dependabot[bot] in #3044
+    - chore(deps): bump golang.org/x/term from 0.44.0 to 0.45.0 by
+      @dependabot[bot] in #3046
+    - chore(deps): bump google.golang.org/grpc from 1.82.0 to
+      1.82.1 by @dependabot[bot] in #3045
+    - fix(releaes): fix release script to fetch the correct
+      previous tag by @pratap0007 in #3064 #3062
+    - Security: Fix CVE-2026-42505 - update Go to 1.26.5
+      (crypto/tls ECH privacy leak) by @divyansh42 in #3065
+    - chore(deps): bump golang.org/x/crypto from 0.53.0 to 0.54.0
+      by @dependabot[bot] in #3043
+    - chore(deps): bump github.com/google/cel-go from 0.28.1 to
+      0.29.0 by @dependabot[bot] in #3069
+    - chore(deps): bump the go-k8s-dependencies group with 3
+      updates by @dependabot[bot] in #3071
+    - chore(deps): bump github.com/tektoncd/pipeline from 1.14.0 to
+      1.14.1 by @dependabot[bot] in #3072
+    - chore(deps): bump github.com/letsencrypt/boulder from
+      0.20260713.0 to 0.20260720.0 by @dependabot[bot] in #3073
+    - chore(deps): bump the all group across 1 directory with 5
+      updates by @dependabot[bot] in #3075
+    - chore(deps): bump the all group with 3 updates by
+      @dependabot[bot] in #3105
+    - chore(deps): bump github.com/sigstore/sigstore from 1.10.8 to
+      1.10.9 by @dependabot[bot] in #3087
+    - chore(deps): bump github.com/google/go-containerregistry from
+      0.21.7 to 0.21.8 by @dependabot[bot] in #3089
+    - chore(deps): bump github.com/letsencrypt/boulder from
+      0.20260720.0 to 0.20260728.0 by @dependabot[bot] in #3088
+
+-------------------------------------------------------------------
 Mon Jul 27 05:41:19 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.45.1:
