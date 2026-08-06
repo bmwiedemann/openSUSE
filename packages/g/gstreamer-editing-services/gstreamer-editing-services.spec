@@ -21,7 +21,7 @@
 %define _baseversion 1.28.0
 
 Name:           gstreamer-editing-services
-Version:        1.28.5
+Version:        1.28.6
 Release:        0
 Summary:        GStreamer Editing Services
 License:        LGPL-2.0-or-later AND LGPL-2.1-or-later
