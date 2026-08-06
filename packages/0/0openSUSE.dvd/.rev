@@ -86,4 +86,11 @@
     <time>1785940711</time>
     <user>dimstar_suse</user>
   </revision>
+  <revision rev="15" vrev="15">
+    <srcmd5>ed50555271dfc474d5a30646fa0b1226</srcmd5>
+    <version>unknown</version>
+    <time>1786002943</time>
+    <user>maxlin_factory</user>
+    <comment>ignore missing package</comment>
+  </revision>
 </revisionlist>

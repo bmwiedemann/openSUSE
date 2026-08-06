@@ -6,6 +6,11 @@ version_from_package: openSUSE-release
 product-type: base
 summary: openSUSE Tumbleweed
 
+build_options:
+- hide_flavor_in_product_directory_name
+- ignore_missing_packages
+- skip_updateinfos
+
 # enable iso file generation
 iso:
   publisher: openSUSE
