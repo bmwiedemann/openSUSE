@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 05 05:50:53 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.1.20:
+  * fix(ci): pin zot release ver to v2.1.18 (#4297)
+  * chore: bump zui version (#4296)
+
+-------------------------------------------------------------------
 Tue Aug 04 07:45:57 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.1.19:
