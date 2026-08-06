@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Wed Aug  5 05:48:38 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.23.1:
+  ## Features:
+  * Add Donut chart
+  * Add Waterfall chart
+  * Add categorical_agg operation for linked selections with categorical Bars
+  * Removal of HoloViews IPython magic, deprecated since 1.21.0
+  ## Enhancements:
+  * Add baseline opt to Bars for floating bar charts
+  * Handle xarray Dataset for rolling_outliers_std
+  * Support selector and ds.summary for geom_aggregator
+  ## Bug Fixes:
+  * Avoid memory leak from hv.streams when using partial.functools with
+    methods
+  * Allow dictionary as an cmap input for categorical data with the Plotly
+    backend
+  * Fix rasterize on hv.Spread swapped order of positive and negative error
+    bars
+  * Support stacked hv.Bars with narwhals backend
+  * Remove extra space in some warnings of irregular sampling
+  * Allow image coordinate irregularity equal to the tolerance
+  * Handle undeclared aggregator column in _resolve_agg_column_name
+  * Prevent exponential custom-option id growth on re-customization
+  * Interpolation curves crash on empty input
+  * Add exception logging to Stream.trigger
+  * Norm and vmin/vmax in raster.py
+  * Datetime with HeatMap
+  * Memory leak in Stream._subscribers
+  * Missing Interface import
+  * Add timezone handling for xarray backend
+  * Check narwhals.Series is also arraylike
+  * Fix Bars crash with datetime x-axis for single or duplicate values
+  * Raise error if RGB getitem uses Ellipsis with bad name
+  * Prevent Matplotlib from overriding Cycle.default_cycles with RGB tuples
+  * BoxEdit stream data not initialized for Rectangles
+  * Support pandas dtypes for interpolation
+  * Handle NdMapping with explicit tuple set slicing with dimension values
+  * Check for zero height in get_aspect to prevent ZeroDivisionError
+  * Fix extra hover tooltips for labels
+  * Categorical color mapping for Polygons in mpl backend
+  * Categorical color error for Scatter plotly plot
+  * Handle datetime with timezone in rasterize
+  * isdatetime check for arraylike
+  * Seed range streams on initial draw of overlay plots
+- Refresh patch holoviews-opensuse-pyproject.patch
+- Drop patch support-new-pyparsing.patch, no longer required
+- Remove no longer required skip_python311.
+
+-------------------------------------------------------------------
 Thu May 28 14:57:05 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
 
 - Drop support for Python 3.11: added %global skip_python311 1 in spec file 

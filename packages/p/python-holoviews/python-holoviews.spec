@@ -17,7 +17,6 @@
 
 
 %global flavor @BUILD_FLAVOR@%{nil}
-%global skip_python311 1
 %if "%{flavor}" == "test"
 %define psuffix -test
 %bcond_without test
@@ -27,7 +26,7 @@
 %endif
 
 Name:           python-holoviews%{psuffix}
-Version:        1.22.1
+Version:        1.23.1
 Release:        0
 Summary:        Composable, declarative visualizations for Python
 License:        BSD-3-Clause
@@ -35,8 +34,6 @@ URL:            https://github.com/holoviz/holoviews
 Source0:        https://files.pythonhosted.org/packages/source/h/holoviews/holoviews-%{version}.tar.gz
 # PATCH-FEATURE-OPENSUSE holoviews-opensuse-pyproject.patch -- for obs builds, code@bnavigator.de
 Patch0:         holoviews-opensuse-pyproject.patch
-# PATCH-FIX-OPENSUSE Ignore pyparsing deprecation warnings
-Patch1:         support-new-pyparsing.patch
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module hatchling}
@@ -47,7 +44,6 @@ Requires:       python-bokeh >= 3.1
 Requires:       python-colorcet
 Requires:       python-narwhals >= 2
 Requires:       python-numpy >= 1.21
-Requires:       python-packaging
 Requires:       python-pandas >= 1.3
 Requires:       python-panel >= 1.0
 Requires:       python-python-dateutil > 2.8.2
@@ -55,7 +51,6 @@ Requires:       python-pyviz-comms >= 2.1
 Requires:       (python-param >= 2.0 with python-param < 3)
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-Recommends:     python-ipython >= 5.4.0
 Recommends:     python-matplotlib >= 3
 Recommends:     python-notebook
 Suggests:       python-networkx
@@ -81,11 +76,11 @@ BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module contourpy}
 ## Requires plotly (see below)
 #BuildRequires:  %%{python_module dash >= 1.16}
+BuildRequires:  %{python_module dask-dataframe}
 BuildRequires:  %{python_module dask}
 BuildRequires:  %{python_module datashader >= 0.11.1}
 BuildRequires:  %{python_module deepdiff}
 BuildRequires:  %{python_module ffmpeg-python}
-BuildRequires:  %{python_module ipython >= 5.4.0}
 BuildRequires:  %{python_module keyring}
 BuildRequires:  %{python_module matplotlib >= 3}
 BuildRequires:  %{python_module nbconvert}
@@ -144,6 +139,9 @@ $python -O -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/ho
 donttest="test_cell_opts_plot_float_division or test_cell_opts_style"
 # tool not available in obs setup (?)
 donttest+=" or test_span_not_cloned_crosshair"
+# blocks importing of modules during the test
+donttest+=" or (TestSelection2DExpr and test_points_selection_geom)"
+donttest+=" or test_dataset_transform_by_spatial_select_expr_index_not_0_based"
 # These fail on 32-bit -- gh#holoviz/holoviews#4778
 if [[ $(getconf LONG_BIT) -eq 32 ]]; then
     donttest+=" or (DatashaderAggregateTests and test_rasterize_regrid_and_spikes_overlay)"

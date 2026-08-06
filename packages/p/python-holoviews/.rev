@@ -554,4 +554,41 @@
     (bsc#1263906)</comment>
     <requestid>1355677</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>103e61954db38b474d8d18f3427e2eae</srcmd5>
+    <version>1.23.1</version>
+    <time>1786026122</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.23.1:
+  ## Features:
+  * Add Donut chart
+  * Add Waterfall chart
+  * Add categorical_agg operation for linked selections with categorical Bars
+  * Removal of HoloViews IPython magic, deprecated since 1.21.0
+  ## Enhancements:
+  * Add baseline opt to Bars for floating bar charts
+  * Handle xarray Dataset for rolling_outliers_std
+  * Support selector and ds.summary for geom_aggregator
+  ## Bug Fixes:
+  * Avoid memory leak from hv.streams when using partial.functools with
+    methods
+  * Allow dictionary as an cmap input for categorical data with the Plotly
+    backend
+  * Fix rasterize on hv.Spread swapped order of positive and negative error
+    bars
+  * Support stacked hv.Bars with narwhals backend
+  * Remove extra space in some warnings of irregular sampling
+  * Allow image coordinate irregularity equal to the tolerance
+  * Handle undeclared aggregator column in _resolve_agg_column_name
+  * Prevent exponential custom-option id growth on re-customization
+  * Interpolation curves crash on empty input
+  * Add exception logging to Stream.trigger
+  * Norm and vmin/vmax in raster.py
+  * Datetime with HeatMap
+  * Memory leak in Stream._subscribers
+  * Missing Interface import
+  * Add timezone handling for xarray backend
+  * Check narwhals.Series is also arraylike</comment>
+    <requestid>1369650</requestid>
+  </revision>
 </revisionlist>
