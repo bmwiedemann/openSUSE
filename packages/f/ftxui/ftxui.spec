@@ -18,7 +18,7 @@
 
 %define         c_lib libftxui7
 Name:           ftxui
-Version:        7.0.2
+Version:        7.0.3
 Release:        0
 Summary:        A C++ library for terminal based user interfaces
 License:        MIT

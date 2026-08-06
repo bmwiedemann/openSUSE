@@ -127,4 +127,22 @@
     text on every frame.</comment>
     <requestid>1369177</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a323a64309e763714eb89582b87e29a9</srcmd5>
+    <version>7.0.3</version>
+    <time>1786026409</time>
+    <user>anag_factory</user>
+    <comment>- Update to 7.0.3:
+  Bugfix:
+  * Fix incorrect mouse position in non-alternate-screen modes. The cursor
+    position request (used to convert mouse coordinates from screen space to
+    frame space) could be sent asynchronously, after the cursor had already
+    moved away from the frame's origin, causing the terminal's reply to be
+    misread as the wrong offset. Regressed by the 7.0.2 throttle fix, which
+    made the request's 500ms throttle actually engage for the first time. See
+    #1310.
+
+- Update to 7.0.2:</comment>
+    <requestid>1369977</requestid>
+  </revision>
 </revisionlist>
