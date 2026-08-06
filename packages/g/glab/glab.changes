@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Wed Aug 05 05:18:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.112.0:
+  * Features
+    - a102d691: feat(auth): warn when env token overrides stored
+      credentials (Stan Hu stanhu@gmail.com)
+    - c9b64657: feat(df): add CI verdict log and summary renderer
+      (Michael Eddington meddington@gitlab.com)
+    - 1b77d060: feat(df): add df parent command with npm-config and
+      ci-summary (Michael Eddington meddington@gitlab.com)
+  * Bug Fixes
+    - 78e5651f: fix(auth): avoid dumping HTML error pages in auth
+      status (Stan Hu stanhu@gmail.com)
+    - 7c627d05: fix(auth): handle nil Response in oauth2 error
+      sanitization (Stan Hu stanhu@gmail.com)
+    - 334c6841: fix(auth): preserve wrapper context when sanitizing
+      auth errors (Stan Hu stanhu@gmail.com)
+    - cd0a8301: fix(issue-8220): show system notes in text output
+      when --type all (Syed Saif Ali Alvi saifalialvi@gmail.com)
+    - e80134a1: fix(mr-close): fixed the ci pipeline must pass
+      error on closing the MR (Parth Sharma dankparth@gmail.com)
+  * Documentation
+    - c049b9aa: docs: document forcing an off-cycle release (Jay
+      McCure jmccure@gitlab.com)
+  * Dependencies
+    - 7386a64c: chore(deps): update module
+      github.com/mattn/go-runewidth to v0.0.27 (GitLab Renovate Bot
+      gitlab-bot@gitlab.com)
+    - e60e805f: chore(deps): update module
+      github.com/modelcontextprotocol/go-sdk to v1.7.0 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+    - 607d7b97: chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go/v2 to v2.53.0 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+    - 93117d1b: chore(deps): update module go.yaml.in/yaml/v3 to
+      v3.0.5 (GitLab Renovate Bot gitlab-bot@gitlab.com)
+  * Maintenance
+    - 2c9133c9: chore(duo): remove ask deprecation notice (Kai
+      Armstrong karmstrong@gitlab.com)
+    - c3c8f397: refactor(utils): simplify EnsureDestinationRoot and
+      consolidate securefile copy (Kai Armstrong
+      karmstrong@gitlab.com)
+  * Others
+    - 93219c74: perf(issue): fetch board issues in parallel (Parth
+      Sharma dankparth@gmail.com)
+
+-------------------------------------------------------------------
 Fri Jul 31 05:53:07 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.111.0:
