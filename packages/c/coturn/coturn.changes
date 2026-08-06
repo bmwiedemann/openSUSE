@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Aug  5 08:14:08 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Update to version 4.16.0
+
+Please read the release notes at https://github.com/coturn/coturn/releases/tag/4.17.0
+Three defaults changed in this release. Read these before upgrading.
+  * DTLS listeners are now opt-in
+  * Stateless nonce is on by default
+  * The default log line changed
+
+Security fixes
+  * Allocation quotas could be bypassed under --mobility
+  * DTLS allocated per-peer state before the cookie was verified
+  * EVEN-PORT with the R bit clear leaked relay ports
+
+Changes
+  * free the secrets list on the get_user_key error paths
+    gh#coturn/coturn#2019
+  * Binding stateless fastpath gh#coturn/coturn#2024
+  * Worktree stateless nonce mi fastpath gh#coturn/coturn#2025
+  * Start the DTLS listeners only when --dtls is given gh#coturn/coturn#2026
+  * Do not ask the kernel for an outgoing IP TTL of zeroi
+    gh#coturn/coturn#2027
+  * Drop --simple-log where it is a no-op alongside --log-file=stdout
+    gh#coturn/coturn#2028
+  * Remove syslog from the Docker Compose turnserver.conf
+    gh#coturn/coturn#2029
+  * Fix localtime() data race in the logger gh#coturn/coturn#2030
+  * Log format: ISO-8601 timestamp by default, no thread id, 
+    space delimiter gh#coturn/coturn#2031
+  * Keep the legacy random nonce at 16 chars gh#coturn/coturn#2032
+  * Emit exactly one log line per record gh#coturn/coturn#2033
+  * Enable stateless nonce by default gh#coturn/coturn#2036
+
+-------------------------------------------------------------------
 Wed Jul 22 10:11:27 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Update to version 4.15.0
