@@ -128,4 +128,12 @@ https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/S4HJD
     <comment></comment>
     <requestid>1363008</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>37fbe09324aa455cc8e18c8622c5269f</srcmd5>
+    <version>0.6.4+git.4863.9c68545add5d</version>
+    <time>1786026387</time>
+    <user>anag_factory</user>
+    <comment>- Merge opensuse-kernel/SLE15-SP6-LTSS 26d5bc0a4bd189</comment>
+    <requestid>1369933</requestid>
+  </revision>
 </revisionlist>

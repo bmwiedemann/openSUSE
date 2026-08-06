@@ -1,7 +1,7 @@
 #
-# spec file for the Linux Kernel Library
+# spec file for package lkl
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -11,21 +11,22 @@
 # case the license is the MIT License). An "Open Source License" is a
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
-#
+
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           lkl
 # Downstream made-up version number, reflects corrseponding kernel version.
-Version:        0.6.4+git.4658.84ece412351
+Version:        0.6.4+git.4863.9c68545add5d
 Release:        0
 Summary:        EXPERIMENTAL: Linux Kernel Library (LKL) utilities
 License:        GPL-2.0-only
 Group:          System/Kernel
-Url:            https://lkl.github.io
+URL:            https://lkl.github.io
 Source:         %{name}-%{version}.tar.zst
 # mainline:
-Patch1:		0001-tools-build-Fix-s-detection-code-in-tools-build-Make.patch
+Patch1:         0001-tools-build-Fix-s-detection-code-in-tools-build-Make.patch
 # regular Linux kernel build dependencies
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150300
 BuildRequires:  bash-sh
@@ -33,12 +34,12 @@ BuildRequires:  bash-sh
 BuildRequires:  bc
 BuildRequires:  bison
 BuildRequires:  coreutils
+BuildRequires:  elfutils
 BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  hmaccalc
-BuildRequires:  libopenssl-devel
 BuildRequires:  libelf-devel
-BuildRequires:  elfutils
+BuildRequires:  libopenssl-devel
 # install target invokes arch/lkl/scripts/headers_install.py
 BuildRequires:  python3
 # lkl binary dependencies
@@ -66,11 +67,11 @@ interface.
 WARNING: LKL is EXPERIMENTAL; using it could cause data corruption!
 
 %package -n lklfuse
-Summary:	EXPERIMENTAL: Access storage via an unprivileged user process
-Requires:	shadow
-BuildRequires:	shadow
-Provides:	group(lklfuse)
-Provides:	user(lklfuse)
+Summary:        EXPERIMENTAL: Access storage via an unprivileged user process
+Requires:       shadow
+BuildRequires:  shadow
+Provides:       group(lklfuse)
+Provides:       user(lklfuse)
 
 %description -n lklfuse
 WARNING: lklfuse is EXPERIMENTAL; using it could cause data corruption!
@@ -82,7 +83,7 @@ A udev rule and corresponding systemd user service are provided to
 automatically mount connected USB block devices.
 
 %package -n liblkl0
-Summary:	EXPERIMENTAL: Library package for the Linux Kernel Library
+Summary:        EXPERIMENTAL: Library package for the Linux Kernel Library
 
 %description -n liblkl0
 Shared-object dependencies for the Linux Kernel Library (LKL).
@@ -90,8 +91,8 @@ Shared-object dependencies for the Linux Kernel Library (LKL).
 WARNING: LKL is EXPERIMENTAL; using it could cause data corruption!
 
 %package devel
-Summary:	EXPERIMENTAL: Development package for the Linux Kernel Library
-Requires:	liblkl0 = %{version}-%{release}
+Summary:        EXPERIMENTAL: Development package for the Linux Kernel Library
+Requires:       liblkl0 = %{version}-%{release}
 
 %description devel
 Development package for the Linux Kernel Library (LKL). With LKL, the kernel
@@ -102,7 +103,7 @@ interface.
 WARNING: LKL is EXPERIMENTAL; using it could cause data corruption!
 
 %package test
-Summary:	Various test binaries for the Linux Kernel Library (LKL)
+Summary:        Various test binaries for the Linux Kernel Library (LKL)
 
 %description test
 Boot, network and disk I/O test binaries for the Linux Kernel Library (LKL).
