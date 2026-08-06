@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Aug  1 13:59:10 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.0.9:
+  * Enfoce a minimal size on the PSK
+  * Fix support for red zones in memorypool
+  * Fix rare over-writing of HTTP version string with network data
+    after parsing header
+  * Fix rare crash from adding connection manually followed by
+    immediate daemon shutdown.
+- includes changes from 1.0.8:
+  * Fix vulnerabilities found during code review
+
+-------------------------------------------------------------------
+Mon Jul 27 19:25:12 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.0.7:
+  * Fixing various vulnerabilities resulting in possible crashes
+    or out-of-bounds stack writes for certain requests in specific
+    configurations
+
+-------------------------------------------------------------------
 Thu Jul  9 14:48:06 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.0.6:
