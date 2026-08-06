@@ -1259,4 +1259,30 @@
     <comment>Update cvise (2.12.0+git.20260624.82a22c61) and fix aarch64 FTBFS: -Werror=sign-compare in bundled tree-sitter-cpp scanner.c (wchar_t is unsigned on aarch64; cast the raw-string delimiter to int32_t for the lookahead comparison). Upstream: tree-sitter/tree-sitter-cpp#338.</comment>
     <requestid>1362033</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>cba7392da41f22ea6d066d5b5b0de951</srcmd5>
+    <version>2.12.0+git.20260702.78bba5d</version>
+    <time>1786026279</time>
+    <user>anag_factory</user>
+    <comment>Update to 2.12.0+git.20260702.78bba5d.
+
+Fixes the Leap 16.x build failure boo#1273590. Two causes, both handled:
+
+- The reported error (clang::DependentTemplateSpecializationType has no
+  member getIdentifier) is already guarded upstream for LLVM &gt; 20; the Leap
+  branches were simply never synced and still carry a 2024 snapshot. This
+  update carries the guard to Factory so the Leap sync can follow.
+- test_interleaving_lines_passes has two admissible reductions on GCC &lt;= 13
+  (which both Leap 16.0 and 16.1 ship) and the interleaved passes race
+  between them, so it fails intermittently there while Tumbleweed passes.
+  Fixed by cvise-test-interleaving-deterministic-reduction.patch, submitted
+  upstream as https://github.com/marxin/cvise/pull/513.
+
+Also drops the workaround patch for boo#1268265 (fixed upstream by #512),
+the dead suse_version &lt; 1550 gcc11 conditionals (cvise needs python3 &gt;= 3.8
+and SLE-15/Leap 15.x ship 3.6) and an unused ncurses-devel BuildRequires.
+
+Verified locally on aarch64: openSUSE_Tumbleweed, 16.1 and 16.0.</comment>
+    <requestid>1369707</requestid>
+  </revision>
 </revisionlist>

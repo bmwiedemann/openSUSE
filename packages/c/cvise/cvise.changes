@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Aug  5 06:45:03 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.12.0+git.20260702.78bba5d:
+  * test_manager: fix empty-jobs deadlock on state exhaustion, which
+    made test_dir_linker_duplicate_var_error hang on single-core
+    machines (boo#1268265)
+- Drop test_dir_linker_duplicate_2threads.patch: the single-core hang
+  it worked around is fixed upstream
+- Add cvise-test-interleaving-deterministic-reduction.patch: pin the
+  interestingness test of test_interleaving_lines_passes to
+  -Werror=implicit-function-declaration. Without it the test has two
+  admissible reductions on GCC <= 13, which both Leap 16.0 and 16.1
+  ship, and the interleaved passes race between them (boo#1273590)
+- Drop the obsolete suse_version < 1550 conditionals: cvise needs
+  python3 >= 3.8 while SLE-15/Leap 15.x ship python 3.6, so it cannot
+  build there at all and the gcc11 fallback was dead code
+- Drop unused ncurses-devel BuildRequires: nothing in the tree
+  references curses and the build links neither -lncurses nor -ltinfo
+- Use %autosetup
+
+-------------------------------------------------------------------
 Sat Jun 27 18:50:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Add cvise-tree-sitter-cpp-aarch64-sign-compare.patch: fix a

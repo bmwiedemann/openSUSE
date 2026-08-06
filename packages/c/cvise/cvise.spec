@@ -17,25 +17,24 @@
 
 
 Name:           cvise
-Version:        2.12.0+git.20260624.82a22c61
+Version:        2.12.0+git.20260702.78bba5d
 Release:        0
 Summary:        Super-parallel Python port of the C-Reduce
 License:        BSD-3-Clause
 URL:            https://github.com/marxin/cvise
 Source:         %{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM cvise-tree-sitter-cpp-aarch64-sign-compare.patch mpluskal@suse.com -- fix -Werror=sign-compare in the bundled tree-sitter-cpp scanner on aarch64 (wchar_t is unsigned there), https://github.com/tree-sitter/tree-sitter-cpp/issues/338
+Patch1:         cvise-tree-sitter-cpp-aarch64-sign-compare.patch
+# PATCH-FIX-UPSTREAM cvise-test-interleaving-deterministic-reduction.patch mpluskal@suse.com -- test_interleaving_lines_passes has two admissible reductions on GCC <= 13 (Leap 16.x) and races between them, https://github.com/marxin/cvise/pull/513
+Patch2:         cvise-test-interleaving-deterministic-reduction.patch
 BuildRequires:  astyle
 BuildRequires:  clang-devel
 BuildRequires:  cmake
 BuildRequires:  flex
-%if %{suse_version} < 1550
-BuildRequires:  gcc11-c++
-%else
 BuildRequires:  gcc-c++
-BuildRequires:  mold
-%endif
 BuildRequires:  indent
 BuildRequires:  llvm-devel
-BuildRequires:  ncurses-devel
+BuildRequires:  mold
 BuildRequires:  procps
 BuildRequires:  python3 >= 3.8
 BuildRequires:  python3-Pebble
@@ -61,13 +60,7 @@ Requires:       python3-psutil
 Requires:       python3-zstandard
 Requires:       unifdef
 
-# Workaround bsc#1268265
-Patch1:         test_dir_linker_duplicate_2threads.patch
-# Fix -Werror=sign-compare in bundled tree-sitter-cpp scanner on aarch64 (wchar_t is unsigned there); https://github.com/tree-sitter/tree-sitter-cpp/issues/338
-Patch2:         cvise-tree-sitter-cpp-aarch64-sign-compare.patch
-
 %description
-
 C-Vise is a super-parallel Python port of the C-Reduce. The port is fully
 compatible to the C-Reduce and uses the same efficient
 LLVM-based C/C++ reduction tool named clang_delta.
@@ -79,17 +72,10 @@ has the same property. It is intended for use by people who discover
 and report bugs in compilers and other tools that process C/C++ or OpenCL code.
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
-%if %{suse_version} < 1550
-export CC=gcc-11
-export CXX=g++-11
-%else
 %global optflags %{optflags} -fuse-ld=mold
-%endif
-
 %cmake -DCMAKE_INSTALL_LIBEXECDIR=%{_libexecdir}
 %cmake_build
 

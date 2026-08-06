@@ -1,0 +1,59 @@
+From 36217c0edce8afe940ec818f5d89a61b9f09bf03 Mon Sep 17 00:00:00 2001
+From: Martin Pluskal <martin@pluskal.org>
+Date: Wed, 5 Aug 2026 10:51:26 +0200
+Subject: [PATCH] tests: make test_interleaving_lines_passes reduction unique
+
+test_interleaving_lines_passes asserts one exact reduced output:
+
+    int foo() {
+    }
+
+but its interestingness test is `gcc -c test.c && grep foo test.c`, which on
+GCC <= 13 also accepts
+
+    int main() {
+      return foo();
+    }
+
+because an implicit declaration of foo() is merely a warning there. GCC 14
+turned -Wimplicit-function-declaration into an error by default, so on a newer
+compiler only the expected form survives.
+
+With two admissible reductions the outcome is decided by which of the three
+interleaved 'lines' passes happens to win the race, so the test fails
+intermittently on any distribution still shipping GCC 13. openSUSE Leap 16.0 and
+16.1 both do, and both fail this test, while Tumbleweed (GCC 16) passes. CI runs
+on Tumbleweed, which is why this is not seen upstream.
+
+Pin the interestingness test to the stricter behaviour so the reduction is
+unique on every compiler.
+
+Note -Wall -Werror (as used by the neighbouring tests) is not usable here: it
+would also reject the expected result, whose non-void foo() falls off the end
+and trips -Wreturn-type. Verified with both GCC 13 and GCC 15 that the expected
+reduction compiles and the alternative one does not.
+
+Upstream: https://github.com/marxin/cvise/pull/513
+---
+ tests/test_cvise.py | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/tests/test_cvise.py b/tests/test_cvise.py
+index 7cacb7c..b900f7e 100644
+--- a/tests/test_cvise.py
++++ b/tests/test_cvise.py
+@@ -168,7 +168,13 @@ def test_interleaving_lines_passes(tmp_path: Path, overridden_subprocess_tmpdir:
+         """)
+ 
+     proc = start_cvise(
+-        ['-c', 'gcc -c test.c && grep foo test.c', '--pass-group-file', str(config_path), testcase_path.name],
++        [
++            '-c',
++            'gcc -c -Werror=implicit-function-declaration test.c && grep foo test.c',
++            '--pass-group-file',
++            str(config_path),
++            testcase_path.name,
++        ],
+         tmp_path,
+         overridden_subprocess_tmpdir,
+     )
