@@ -18,14 +18,14 @@
 
 %define cpan_name Cavil-Matcher
 Name:           perl-Cavil-Matcher
-Version:        1.0.0
+Version:        1.10.0
 Release:        0
-# 1.00 -> normalize -> 1.0.0
-%define cpan_version 1.00
+# 1.01 -> normalize -> 1.10.0
+%define cpan_version 1.01
 License:        GPL-1.0-or-later
 Summary:        Next-generation license pattern matcher for Cavil
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        Cavil-Matcher-1.00.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/K/KR/KRAIH/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 Source100:      README.md
 BuildRequires:  perl
