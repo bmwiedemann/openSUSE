@@ -898,4 +898,41 @@
     <comment></comment>
     <requestid>1360555</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>60b7700b3e21c0639c7af307a08120d7</srcmd5>
+    <version>3.14.3</version>
+    <time>1786025905</time>
+    <user>anag_factory</user>
+    <comment>Fixes:
+ - CVE-2026-59881, bsc#1273125
+ - CVE-2026-69244, bsc#1273552
+ - CVE-2026-69243, bsc#1273553
+- Update to 3.14.3
+  # Bug fixes
+  - Fixed the client dropping only the first Authorization, Cookie and
+    Proxy-Authorization header when a redirect crossed an origin
+  - Fixed error message construction in the C HTTP parser
+- 3.14.2
+  # Bug fixes
+  - Fixed :py:attr:`~aiohttp.web.StreamResponse.last_modified`
+    rounding a :class:`datetime.datetime` with a fractional second
+    down.
+  - Fixed resolving localhost on Windows to fall back without
+    AI_ADDRCONFIG when the first lookup fails, so localhost still
+    works without an active network.
+  - Rejected multipart body parts whose Content-Length header is not a
+    plain sequence of digits (e.g. +5, -1, 1_0), matching the
+    strictness of the main request parser per RFC 9110
+  - Fixed GunicornWebWorker endlessly reloading when app fails during
+    startup
+  - Fixed some inconsistent case sensitivity on request methods
+  - Fixed IndexError: string index out of range in
+    parse_content_disposition when a header parameter has an empty
+    value (e.g. filename=).
+  - Fixed the sock_read timeout being re-armed on a keep-alive
+    connection after it had been returned to the pool. An idle pooled
+    connection could be left with a pending read timeout that fired
+    and poisoned it, so the next request reusing the connection failed</comment>
+    <requestid>1369672</requestid>
+  </revision>
 </revisionlist>

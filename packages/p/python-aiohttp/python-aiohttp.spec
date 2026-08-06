@@ -19,7 +19,7 @@
 %bcond_with docs
 %{?sle15_python_module_pythons}
 Name:           python-aiohttp
-Version:        3.14.1
+Version:        3.14.3
 Release:        0
 Summary:        Asynchronous HTTP client/server framework
 License:        Apache-2.0
@@ -130,7 +130,6 @@ popd
 %pyproject_install
 %{python_expand %fdupes %{buildroot}%{$python_sitearch}
 find %{buildroot}%{$python_sitearch} -name '*.[ch]' -delete
-rm -r %{buildroot}%{$python_sitearch}/aiohttp/.hash
 }
 
 %check
