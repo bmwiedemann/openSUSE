@@ -1,4 +1,4 @@
-From 7a71046921c19f79009b4f7b854bbe2fdec3c194 Mon Sep 17 00:00:00 2001
+From 770fb39808f5dc98807b603e30a281ca468fd785 Mon Sep 17 00:00:00 2001
 From: Andreas Schwab <schwab@suse.de>
 Date: Wed, 26 Mar 2025 13:01:18 +0100
 Subject: [PATCH] Kconfig: add btrfs to standard boot
@@ -9,13 +9,13 @@ Distro boot is deprecated, add btrfs command also to standard boot.
  1 file changed, 1 insertion(+)
 
 diff --git a/boot/Kconfig b/boot/Kconfig
-index 93d333f6be0..2c597bfc8a7 100644
+index 3599705a475..349ef010dd0 100644
 --- a/boot/Kconfig
 +++ b/boot/Kconfig
-@@ -446,6 +446,7 @@ config BOOT_DEFAULTS_CMDS
- 	select CMD_BOOTI if ARM64
- 	select CMD_BOOTZ if ARM && !ARM64
- 	imply CMD_MII if NET
+@@ -437,6 +437,7 @@ config BOOT_DEFAULTS_CMDS
+ 	select CMD_BOOTI if ARM64 && LMB
+ 	select CMD_BOOTZ if ARM && !ARM64 && LMB
+ 	imply CMD_MII if CMD_NET && NET
 +	imply CMD_BTRFS
  
  config BOOT_DEFAULTS

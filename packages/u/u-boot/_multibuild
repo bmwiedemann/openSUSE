@@ -72,6 +72,7 @@
   <flavor>pineh64</flavor>
   <flavor>pinephone</flavor>
   <flavor>poplar</flavor>
+  <flavor>qemu-arm64</flavor>
   <flavor>qemu-ppce500</flavor>
   <flavor>qemu-riscv64</flavor>
   <flavor>qemu-riscv64smode</flavor>

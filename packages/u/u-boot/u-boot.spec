@@ -18,6 +18,8 @@
 #
 
 
+%bcond_with atf_optee
+
 %define target @BUILD_FLAVOR@
 %define mvebu_spl 0
 %define x_loader 0
@@ -35,8 +37,6 @@
 %define is_armv8 0
 %define is_ppc 0
 %define is_riscv64 0
-%define is_zynq 0
-%define is_zynqmp 0
 %define tools_only 0
 %if "%target" == "rpi" || "%target" == "rpi2" || "%target" == "rpi3" || "%target" == "rpi4" || "%target" == "rpiarm64"
 %define is_rpi 1
@@ -168,7 +168,7 @@
 %define is_armv8 1
 %endif
 %if "%target" == "avnetultra96rev1" || "%target" == "xilinxzynqmpvirt" || "%target" == "xilinxzynqmpzcu102rev10"
-%define is_zynqmp 1
+%define confname xilinx_zynqmp_virt_defconfig
 %define is_armv8 1
 %define binext .elf
 %endif
@@ -183,7 +183,7 @@
 %define binext .img
 %endif
 %if "%target" == "zynqzturnv5" || "%target" == "xilinxzynqvirt"
-%define is_zynq 1
+%define confname xilinx_zynq_virt_defconfig
 %define is_armv7 1
 %define binext .img
 %endif
@@ -196,8 +196,13 @@
 %if "%target" == "qemu-ppce500"
 %define is_ppc 1
 %endif
+%if "%target" == "qemu-arm64"
+%define is_armv8 1
+%define confname qemu_arm64_defconfig
+%define shared_uboot 1
+%endif
 # archive_version differs from version for RC version only
-%define archive_version 2026.01
+%define archive_version 2026.07
 %if "%{target}" == ""
 ExclusiveArch:  do_not_build
 %else
@@ -227,7 +232,7 @@ ExclusiveArch:  do_not_build
 %endif
 %endif
 %endif
-Version:        2026.01
+Version:        2026.07
 Release:        0
 Summary:        The U-Boot firmware for the %target platform
 License:        GPL-2.0-only
@@ -259,9 +264,8 @@ Patch0010:      0010-Disable-CONFIG_CMD_BTRFS-in-xilinx_.patch
 Patch0011:      0011-smbios-Fix-table-when-no-string-is-.patch
 Patch0012:      0012-riscv-enable-CMD_BTRFS.patch
 Patch0013:      0013-Disable-timer-check-in-file-loading.patch
-Patch0014:      0014-Enable-EFI-and-ISO-partitions-suppo.patch
-Patch0015:      0015-cmd-boot-add-brom-cmd-to-reboot-to-.patch
-Patch0016:      0016-Kconfig-add-btrfs-to-standard-boot.patch
+Patch0014:      0014-cmd-boot-add-brom-cmd-to-reboot-to-.patch
+Patch0015:      0015-Kconfig-add-btrfs-to-standard-boot.patch
 # Patches: end
 BuildRequires:  bc
 BuildRequires:  bison
@@ -280,7 +284,7 @@ BuildRequires:  python3-setuptools
 BuildRequires:  swig
 Conflicts:      u-boot-loader
 Provides:       u-boot-loader
-%if "%_project" == "hardware:boot" || "%_project" == "hardware:boot:staging" || "%_project" == "openSUSE:Factory" || "%_project" == "openSUSE:Factory:ARM" || "%_project" == "openSUSE:Factory:PowerPC" || "%_project" == "openSUSE:Factory:RISCV" || "%_project" == "openSUSE:Leap:15.2" || "%_project" == "openSUSE:Leap:15.2:ARM" || "%_project" == "openSUSE:Leap:15.2:PowerPC"
+%if "%_project" == "hardware:boot" || "%_project" == "hardware:boot:staging" || "%_project" == "openSUSE:Factory" || "%_project" == "openSUSE:Factory:ARM" || "%_project" == "openSUSE:Factory:LegacyARM" || "%_project" == "openSUSE:Factory:PowerPC" || "%_project" == "openSUSE:Factory:RISCV"
 # A complete multibuild-flavoured package is only built in above projects.
 # In order to build a defined subset in forked projects, add the
 # following to the respective project config (without the "#|"):
@@ -330,6 +334,13 @@ BuildRequires:  arm-trusted-firmware-sun50i_h6
 %endif
 %if 0%{?is_h616}
 BuildRequires:  arm-trusted-firmware-sun50i_h616
+%endif
+%if "%target" == "qemu-arm64"
+BuildRequires:  arm-trusted-firmware-qemu
+BuildRequires:  arm-trusted-firmware-tools
+%if %{with atf_optee}
+BuildRequires:  optee-qemu-armv8a
+%endif
 %endif
 %if "%target" == "tools" || "%target" == "avnetultra96rev1" || "%target" == "clearfog" || "%target" == "mvebudb-88f3720" || "%target" == "mvebudbarmada8k" || "%target" == "mvebudbarmada8k3" || "%target" == "mvebuespressobin-88f3720" || "%target" == "mvebumcbin-88f8040" || "%target" == "turrisomnia"
 # Fixes ld: cannot find -ltinfo: No such file or directory
@@ -417,8 +428,7 @@ This package contains documentation for U-Boot firmware.
 
 %build
 %if %tools_only
-# needed for include/config/auto.conf
-make sandbox_defconfig
+make tools-only_defconfig
 make syncconfig
 make %{?_smp_mflags} CFLAGS="%{optflags}" tools-only NO_SDL=y
 
@@ -458,14 +468,10 @@ cp %{S:5} ./atf-bl31
 cp %{S:6} ./rockchip-tpl
 %endif
 
-%if %{is_zynq}
-confname="xilinx_zynq_virt_defconfig"
-%else
-%if %{is_zynqmp}
-confname="xilinx_zynqmp_virt_defconfig"
+%if "%{?confname}" != ""
+confname="%{confname}"
 %else
 confname=$(ls configs | perl -ne '$l=lc; $l=~ s,_,,g; $l eq "%{target}defconfig\n" && print;')
-%endif
 %endif
 
 %if "%target" == "avnetultra96rev1"
@@ -510,7 +516,6 @@ done
 %install
 %if %tools_only
 install -D -m 0755 tools/mkenvimage %{buildroot}%{_bindir}/mkenvimage
-install -D -m 0755 tools/gen_ethaddr_crc %{buildroot}%{_bindir}/gen_ethaddr_crc
 install -D -m 0755 tools/dumpimage %{buildroot}%{_bindir}/dumpimage
 install -D -m 0755 tools/fit_info %{buildroot}%{_bindir}/fit_info
 install -D -m 0755 tools/fit_check_sign %{buildroot}%{_bindir}/fit_check_sign
@@ -522,9 +527,12 @@ install -D -m 0644 doc/mkimage.1 %{buildroot}%{_mandir}/man1/mkimage.1
 %else
 export NO_BRP_STRIP_DEBUG=true
 export NO_DEBUGINFO_STRIP_DEBUG=true
-%define uboot_dir /boot
-%if 0%{?is_rpi}
+%if 0%{?shared_uboot}
+%define uboot_dir %{_prefix}/lib/u-boot
+%elif 0%{?is_rpi}
 %define uboot_dir /boot/vc
+%else
+%define uboot_dir /boot
 %endif
 %if "%{name}" == "u-boot-qemu-ppce500"
 %define uboot_dir %{_datadir}/qemu
@@ -541,7 +549,21 @@ for f in u-boot u-boot.bin u-boot.dtb u-boot-dtb.bin; do
     install -D -m 0644 $f %{buildroot}%{uboot_dir}/$f
 done
 %else
-install -D -m 0644 u-boot%{binext} %{buildroot}%{uboot_dir}/u-boot%{binext}
+install -D -m 0644 u-boot%{binext} %{buildroot}%{uboot_dir}/%{?shared_uboot:%{target}/}u-boot%{binext}
+%if "%target" == "qemu-arm64"
+atfdir=/usr/share/arm-trusted-firmware-qemu
+opteedir=/usr/lib/optee/qemu-armv8a
+fiptool create --tb-fw $atfdir/bl2.bin \
+	--soc-fw $atfdir/bl31.bin \
+%if %{with atf_optee}
+	--tos-fw $opteedir/tee-header_v2.bin \
+	--tos-fw-extra1 $opteedir/tee-pager_v2.bin \
+%endif
+	--nt-fw u-boot%{binext}  fip.bin
+cp $atfdir/bl1.bin qemu_fw.bios
+dd if=fip.bin of=qemu_fw.bios bs=64k seek=4 status=none
+install -D -m 0644 qemu_fw.bios %{buildroot}%{uboot_dir}/%{?shared_uboot:%{target}/}qemu_fw.bios
+%endif
 %if 0%{?rockchip_spl}
 install -D -m 0644 u-boot.itb %{buildroot}%{uboot_dir}/u-boot.itb
 %endif
@@ -638,7 +660,6 @@ fi
 
 %if %tools_only
 %{_bindir}/mkenvimage
-%{_bindir}/gen_ethaddr_crc
 %{_bindir}/dumpimage
 %{_bindir}/fit_info
 %{_bindir}/fit_check_sign
@@ -648,6 +669,9 @@ fi
 %{_mandir}/man1/mkimage.1.gz
 %else
 %doc README
+%if 0%{?shared_uboot}
+%dir %{uboot_dir}
+%endif
 %{uboot_dir}/*
 
 %files doc

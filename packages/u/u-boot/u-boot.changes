@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Aug  5 09:01:55 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 2026.07:
+  * Full changelog available at:
+    https://source.denx.de/u-boot/u-boot/-/compare/v2026.04...v2026.07
+- Use tools-only config instead of sandbox for u-boot-tools
+
+-------------------------------------------------------------------
+Wed Aug  5 06:48:46 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Handle openSUSE:Factory:LegacyARM and remove old Leap:15.2
+
+-------------------------------------------------------------------
+Wed May 20 09:21:23 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 2026.04:
+  * Full changelog available at:
+    https://source.denx.de/u-boot/u-boot/-/compare/v2026.01...v2026.04
+- Patch queue updated from https://github.com/openSUSE/u-boot.git tumbleweed-2026.04
+* Patches dropped:
+  0014-Enable-EFI-and-ISO-partitions-suppo.patch
+  0015-cmd-boot-add-brom-cmd-to-reboot-to-.patch
+  0016-Kconfig-add-btrfs-to-standard-boot.patch
+* Patches added:
+  0014-cmd-boot-add-brom-cmd-to-reboot-to-.patch
+  0015-Kconfig-add-btrfs-to-standard-boot.patch
+
+-------------------------------------------------------------------
 Wed Feb 25 13:23:44 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 2026.01:
@@ -9,6 +37,12 @@ Wed Feb 25 13:23:44 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 Wed Feb 25 13:19:51 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Disable build of 'p3450-0000' as it fails to build for a while now
+
+-------------------------------------------------------------------
+Sat Feb 21 15:46:36 UTC 2026 - Z. Wieback <zwieback66@yahoo.com>
+
+- Build qemu-arm64 incl atf and optee support
+- Introduce shared_uboot macro for installing multiple u-boot flavors in /usr
 
 -------------------------------------------------------------------
 Tue Dec  9 14:42:55 UTC 2025 - Andreas Schwab <schwab@suse.de>
