@@ -270,4 +270,41 @@
   * build(deps): bump the go-deps group across 3 directories with</comment>
     <requestid>1362462</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>800650a7d0be0d7f7f30f4a5b202b5e0</srcmd5>
+    <version>0.21.8</version>
+    <time>1786026229</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.21.8:
+  * The artifacts attached to this release are missing SLSA
+    provenance, see #2390.
+  * build(deps): bump the go-deps group across 1 directory with 3
+    updates
+  * build(deps): bump golang.org/x/crypto from 0.45.0 to 0.52.0
+    in /cmd/krane
+  * build(deps): bump golang.org/x/crypto from 0.50.0 to 0.52.0
+    in /pkg/authn/k8schain
+  * build(deps): bump golang.org/x/net from 0.49.0 to 0.55.0 in
+    /pkg/authn/kubernetes
+  * build(deps): bump the go-deps group across 3 directories with
+    7 updates
+  * build(deps): bump the actions group across 1 directory with 5
+    updates
+  * Reject unsafe Windows archive paths in Extract
+  * feat(goreleaser): add loong64 build support for
+    crane/gcrane/krane
+  * Document tag and digest reference semantics
+  * remote: release pull limiter slot when body is read to EOF
+  * tarball: bounds-check layer index in uncompressed
+    LayerByDiffID
+  * authn: read Podman auth from XDG config
+  * transport: per-host bearer token exchange on cross-host
+    redirect
+  * mutate: bounds-check layer index when building rebase
+    addendums
+  * fix(daemon): copy ExposedPorts from source config in
+    computeImageConfig
+  * feat(remote): add WithReferrersTagFallback option</comment>
+    <requestid>1369688</requestid>
+  </revision>
 </revisionlist>
