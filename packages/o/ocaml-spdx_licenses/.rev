@@ -39,4 +39,12 @@
     <comment>Remove 32bit architectures</comment>
     <requestid>1365582</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d0b9761d694dea92c7faf17282a71d95</srcmd5>
+    <version>1.5.0</version>
+    <time>1786026227</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1369677</requestid>
+  </revision>
 </revisionlist>

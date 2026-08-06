@@ -32,7 +32,7 @@ ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
 
 %define     pkg ocaml-spdx_licenses
 Name:           %pkg%nsuffix
-Version:        1.4.0
+Version:        1.5.0
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        A library providing a strict SPDX License Expression parser
