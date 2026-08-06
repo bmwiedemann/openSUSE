@@ -16,9 +16,9 @@
 #
 
 
-%define sover 2_3
+%define sover %(echo %{version} | sed 's@\\([0-9]*\\)\.\\([0-9]*\\).*@\\1_\\2@')
 Name:           stp
-Version:        2.3.4+20260728
+Version:        2.4.1
 Release:        0
 Summary:        Constraint Solver
 License:        MIT

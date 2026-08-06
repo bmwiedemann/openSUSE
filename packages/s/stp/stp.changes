@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Aug 05 06:51:57 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
+
+- Update to version 2.4.1:
+  * release: bump the version to 2.4.1 (#703)
+  * Seed the ground-path square root without overflowing (#702)
+  * Guard the multiplication column bounds against a shrunken column (#699)
+  * release: bump the version to 2.4.0 (#701)
+  * release: build the release binary in CI, and document the procedure (#700)
+  * cbitp: write derived constants back into the formula (#698)
+  * Build deps MiniSat static so installed stp is self-contained (#697)
+  * README: remove the readthedocs links
+  * README: generator-agnostic build and test commands in the testing section
+  * README: build in parallel, make the python example copy-pasteable (#694)
+  * Construct models for split extracts via the substitution map (#690)
+  * and a lot more
+
+-------------------------------------------------------------------
 Tue Jul 28 04:10:13 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
 
 - Update to version 2.3.4+20260728:

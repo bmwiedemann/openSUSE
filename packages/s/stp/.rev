@@ -244,4 +244,24 @@
   * 0001-CMakeLists.txt-do-not-apply-patches-using-git.patch</comment>
     <requestid>1368135</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>bf350ca8a71e97347b3236dc69ed548e</srcmd5>
+    <version>2.4.1</version>
+    <time>1786026176</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.4.1:
+  * release: bump the version to 2.4.1 (#703)
+  * Seed the ground-path square root without overflowing (#702)
+  * Guard the multiplication column bounds against a shrunken column (#699)
+  * release: bump the version to 2.4.0 (#701)
+  * release: build the release binary in CI, and document the procedure (#700)
+  * cbitp: write derived constants back into the formula (#698)
+  * Build deps MiniSat static so installed stp is self-contained (#697)
+  * README: remove the readthedocs links
+  * README: generator-agnostic build and test commands in the testing section
+  * README: build in parallel, make the python example copy-pasteable (#694)
+  * Construct models for split extracts via the substitution map (#690)
+  * and a lot more</comment>
+    <requestid>1369667</requestid>
+  </revision>
 </revisionlist>

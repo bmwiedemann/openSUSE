@@ -3,7 +3,8 @@
     <param name="url">https://github.com/stp/stp</param>
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
-    <param name="versionformat">@PARENT_TAG@+%cd</param>
+    <param name="revision">@PARENT_TAG@</param>
+    <param name="versionformat">@PARENT_TAG@</param>
     <param name="match-tag">[0-9]*</param>
   </service>
   <service name="set_version" mode="manual" />
