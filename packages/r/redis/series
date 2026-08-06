@@ -1,3 +1,6 @@
 redis-conf.patch
 reproducible.patch
 ppc-atomic.patch
+vectorsimilarity-guard-svs-include.patch
+scripting-test-disable-aof-after-use.patch
+lazyfree-test-explicit-stream-ids.patch

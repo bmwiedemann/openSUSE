@@ -1,7 +1,7 @@
-Index: redis-7.4.2/redis.conf
+Index: redis-8.10.0/redis.conf
 ===================================================================
---- redis-7.4.2.orig/redis.conf
-+++ redis-7.4.2/redis.conf
+--- redis-8.10.0.orig/redis.conf
++++ redis-8.10.0/redis.conf
 @@ -136,7 +136,7 @@ protected-mode yes
  
  # Accept connections on the specified port, default is 6379 (IANA #815344).
@@ -11,7 +11,7 @@ Index: redis-7.4.2/redis.conf
  
  # TCP listen() backlog.
  #
-@@ -307,7 +307,7 @@ tcp-keepalive 300
+@@ -359,7 +359,7 @@ tcp-keepalive 300
  # By default Redis does not run as a daemon. Use 'yes' if you need it.
  # Note that Redis will write a pid file in /var/run/redis.pid when daemonized.
  # When Redis is supervised by upstart or systemd, this parameter has no impact.
@@ -20,7 +20,7 @@ Index: redis-7.4.2/redis.conf
  
  # If you run Redis from upstart or systemd, Redis can interact with your
  # supervision tree. Options:
-@@ -325,7 +325,7 @@ daemonize no
+@@ -377,7 +377,7 @@ daemonize no
  # The default is "no". To run under upstart/systemd, you can simply uncomment
  # the line below:
  #
@@ -29,7 +29,7 @@ Index: redis-7.4.2/redis.conf
  
  # If a pid file is specified, Redis writes it where specified at startup
  # and removes it at exit.
-@@ -339,7 +339,7 @@ daemonize no
+@@ -391,7 +391,7 @@ daemonize no
  #
  # Note that on modern Linux systems "/run/redis.pid" is more conforming
  # and should be used instead.
@@ -38,7 +38,7 @@ Index: redis-7.4.2/redis.conf
  
  # Specify the server verbosity level.
  # This can be one of:
-@@ -353,7 +353,8 @@ loglevel notice
+@@ -405,7 +405,8 @@ loglevel notice
  # Specify the log file name. Also the empty string can be used to force
  # Redis to log on the standard output. Note that if you use standard
  # output for logging but daemonize, logs will be sent to /dev/null
@@ -48,7 +48,7 @@ Index: redis-7.4.2/redis.conf
  
  # To enable logging to the system logger, just set 'syslog-enabled' to yes,
  # and optionally update the other syslog parameters to suit your needs.
-@@ -513,7 +514,7 @@ rdb-del-sync-files no
+@@ -565,7 +566,7 @@ rdb-del-sync-files no
  # The Append Only File will also be created inside this directory.
  #
  # Note that you must specify a directory here, not a file name.
@@ -57,10 +57,25 @@ Index: redis-7.4.2/redis.conf
  
  ################################# REPLICATION #################################
  
-Index: redis-7.4.2/sentinel.conf
+@@ -2715,10 +2716,10 @@ jemalloc-bg-thread yes
+ # Bad manifest: <none>
+ 
+ # >>> BEGIN: loadmodule paths (replaced by make deploy) <<<
+-loadmodule ./modules/redisbloom/redisbloom.so
+-loadmodule ./modules/redisearch/redisearch.so
+-loadmodule ./modules/redisjson/rejson.so
+-loadmodule ./modules/redistimeseries/redistimeseries.so
++# loadmodule ./modules/redisbloom/redisbloom.so
++# loadmodule ./modules/redisearch/redisearch.so
++# loadmodule ./modules/redisjson/rejson.so
++# loadmodule ./modules/redistimeseries/redistimeseries.so
+ # <<< END: loadmodule paths <<<
+ 
+ # >>> BEGIN module: redisbloom <<<
+Index: redis-8.10.0/sentinel.conf
 ===================================================================
---- redis-7.4.2.orig/sentinel.conf
-+++ redis-7.4.2/sentinel.conf
+--- redis-8.10.0.orig/sentinel.conf
++++ redis-8.10.0/sentinel.conf
 @@ -7,17 +7,18 @@ protected-mode no
  
  # port <sentinel-port>
@@ -91,22 +106,30 @@ Index: redis-7.4.2/sentinel.conf
  
  # To enable logging to the system logger, just set 'syslog-enabled' to yes,
  # and optionally update the other syslog parameters to suit your needs.
-Index: redis-7.4.2/redis.default.conf
+Index: redis-8.10.0/redis.default.conf
 ===================================================================
 --- /dev/null
-+++ redis-7.4.2/redis.default.conf
-@@ -0,0 +1,7 @@
++++ redis-8.10.0/redis.default.conf
+@@ -0,0 +1,15 @@
 +include /etc/redis/includes/redis.defaults.conf
++
++# modules loaded by default before. But since we got the modules split out into packages,
++# we removed them in the default config and you need to enable them here.
++#
++# loadmodule ./modules/redisbloom/redisbloom.so
++# loadmodule ./modules/redisearch/redisearch.so
++# loadmodule ./modules/redisjson/rejson.so
++# loadmodule ./modules/redistimeseries/redistimeseries.so
 +
 +port 6379
 +dir /var/lib/redis/default/
 +pidfile /run/redis/default.pid
 +logfile /var/log/redis/default.log
 +
-Index: redis-7.4.2/sentinel.default.conf
+Index: redis-8.10.0/sentinel.default.conf
 ===================================================================
 --- /dev/null
-+++ redis-7.4.2/sentinel.default.conf
++++ redis-8.10.0/sentinel.default.conf
 @@ -0,0 +1,6 @@
 +include /etc/redis/includes/sentinel.defaults.conf
 +

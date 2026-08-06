@@ -1,4 +1,127 @@
 -------------------------------------------------------------------
+Tue Aug  4 18:57:49 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Add lazyfree-test-explicit-stream-ids.patch: "lazy free a stream with
+  all types of metadata" builds its stream with server-generated IDs, so
+  the number of nodes in the stream's radix tree is the number of
+  distinct milliseconds the 1000 XADDs happened to span -- entries
+  sharing a millisecond share an ID prefix and collapse into one
+  compressed node. That node count is what lazyfreeGetFreeEffort()
+  weighs against LAZYFREE_THRESHOLD, so a builder quick enough to run
+  the loop in well under 64ms frees the stream inline instead of lazily
+  and the test's lazyfreed_objects stays 0. It measured how fast the
+  worker was rather than lazyfree, and duly failed on the faster
+  aarch64 workers while passing on the slower ones. Adding the entries
+  with explicit IDs gives the radix tree the same shape everywhere
+
+-------------------------------------------------------------------
+Fri Jul 31 18:36:51 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update redis-conf.patch
+  Do not load modules which we split out into subpackages in the
+  default config
+
+-------------------------------------------------------------------
+Fri Jul 31 17:54:00 UTC 2026 - Andreas Schneider <asn@cryptomilk.org>
+
+- Fix building for Leap
+
+-------------------------------------------------------------------
+Fri Jul 31 13:06:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Run the test suite with four clients instead of the default sixteen:
+  each of those starts several servers, which oversubscribes an OBS
+  worker badly enough that a run whose per-unit times sum to about
+  2900s finishes in 600s of wall clock. What then fails is whatever has
+  a fixed deadline -- a cluster MEET handshake that must complete
+  inside cluster-node-timeout, an AOF child that must be reaped before
+  a shutdown -- and each architecture lost a different one, which is
+  contention rather than a bug in any of them
+- Add scripting-test-disable-aof-after-use.patch: a test switches
+  appendonly on and never switches it back, leaving an AOF rewrite
+  child that serverCron cannot reap while a busy script runs, so the
+  next test's SHUTDOWN NOSAVE is refused and the server it expects to
+  die stays up. Same fix valkey made, which redis has not picked up
+- Skip the "Active defrag IDMP streams" tests on 32-bit x86, where
+  residual small-bin waste settles just above the thresholds the test
+  itself sets, so the defrag cycle never reaches its stop condition
+
+-------------------------------------------------------------------
+Fri Jul 31 10:47:04 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Restrict the "modules" flavour to x86_64 and aarch64 -- RedisBloom and
+  RedisTimeSeries abort on anything else with "only supports 64-bit
+  architectures (x64, arm64v8)", redisjson's vendored redis-module is
+  64-bit only, and modules/common.mk maps no other architecture at all
+- Do not build the "test" flavour on s390x -- hash field TTLs do not
+  survive an RDB reload and a cluster test aborts the run there, both
+  upstream big-endian bugs on a platform upstream does not support
+- Invoke the test suite directly rather than through "make test", which
+  hardcodes a bare runtest, so it can be given --no-latency and skips for
+  the tests that measure the build worker rather than redis:
+  * two tests bounding wall-clock time that --no-latency does not cover
+  * the crash-report tests (integration/logging, unit/moduleapi/crash) on
+    architectures upstream never gated them on
+  * the active-defrag replicaof test on ppc64le, which does not converge
+    there
+
+-------------------------------------------------------------------
+Thu Jul 30 13:42:15 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Split the build into three multibuild flavours:
+  * The default flavour builds and packages only the server, and no longer
+    runs the test suite -- a rebuild is down from about 24 minutes to a
+    little over two, which is the wait everything that build-depends on
+    redis pays. tcl and procps are no longer build dependencies of it, and
+    %%check now does a cheap smoke test instead of the suite
+  * New "test" flavour runs the tcl test suite, and runs it for real: it
+    used to be invoked with "|| true" because it kept failing to start a
+    server with 'child process exited abnormally', which turns out to be
+    servers leaked by an earlier run of the suite still sitting on ports
+    handed to the test clients. In a fresh build root there are none and
+    all 6054 tests pass. The flavour packages nothing, so a red test run
+    blocks no rebuild
+  * New "modules" flavour builds the four modules upstream vendors under
+    modules/ since 8.x and ships them as redis-bloom, redis-search,
+    redis-json and redis-timeseries, installed below
+    %%{_libdir}/redis/modules. It needs cmake, rust, autotools, boost and a
+    python3 with pip on top of the server's own dependencies, which is
+    exactly why it has to be kept out of the server flavour
+- Add _service with two cargo_vendor runs, plus the resulting
+  vendor-redisearch.tar.zst and vendor-redisjson.tar.zst: the Rust parts of
+  redisearch and redisjson fetch from crates.io and from three git
+  repositories, which cannot work in an offline build root
+- Build the modules with IGNORE_MISSING_DEPS=1, upstream's own escape hatch:
+  redisearch refuses to build unless it recognises the distribution, and its
+  checker only knows dpkg, rpm-on-rhel, apk and tdnf systems
+- Do not let the module build reach the network for its own dependencies:
+  * point redisearch at the system boost headers rather than the boost
+    release it downloads from github; everything it uses is header-only
+  * build with USE_SVS=OFF, which drops the eve, fmt, spdlog, tomlplusplus
+    and robin-map git clones and the pre-compiled ScalableVectorSearch
+    shared library redisearch would otherwise download from Intel;
+    VectorSimilarity then uses its own HNSW and flat indexes
+  * add cpu_features 0.10.1 as a source, the one dependency VectorSimilarity
+    still clones once SVS is off
+- Add vectorsimilarity-guard-svs-include.patch: USE_SVS=OFF does not compile,
+  because two translation units reach for the SVS headers unconditionally
+  (upstream pull request 1006)
+- Disable LTO for the modules: modules.yaml asks redisearch for it, which
+  there means clang driving ld.bfd through LLVMgold.so, a plugin that is not
+  shipped, so every compiler probe failed before a line was compiled
+- Build the modules with -Wno-error=return-type and -fPIC: a function in the
+  redismodule.h of the vendored redismodule-rs falls off the end, and
+  redistimeseries links a bundled libevent whose own build produces a
+  non-PIC static library, which on aarch64 is a hard relocation error
+- Build redisjson without --all-targets: that includes its test executables,
+  which reference the RedisModule_* API the server only provides at load time
+  and so cannot link
+- Let rpm extract the debug info of the Rust modules: both split it out into
+  a .so.debug sibling themselves and leave a dangling .gnu_debuglink, which
+  made find-debuginfo skip the module altogether
+- Drop the openSUSE Leap 15.x conditionals, 15.6 is out of support
+
+-------------------------------------------------------------------
 Thu Jul 30 09:26:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Build the server only, restoring the build: since 8.x upstream vendors
@@ -23,7 +146,7 @@ Thu Jul 30 09:26:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 -------------------------------------------------------------------
 Wed Jul 29 17:52:06 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
-- Update to 8.10.1
+- Update to 8.10.0
   Major changes compared to 8.8
   - Compact hashes - a new hash encoding that reduces memory usage
     by storing hash field names just once for keys that share a

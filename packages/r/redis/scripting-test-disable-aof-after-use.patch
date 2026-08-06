@@ -1,0 +1,30 @@
+From: Martin Pluskal <mpluskal@suse.com>
+Subject: tests: turn AOF back off after "Timedout scripts and unblocked command"
+
+That test switches appendonly on and never switches it back, so it leaves an
+initial AOF rewrite child behind. The child is only reaped by checkChildrenDone()
+from serverCron, and serverCron does not run while a busy Lua script is
+executing -- whileBlockedCron() does not reap children.
+
+The next test in the file leaves an unkillable infinite script running and then
+expects SHUTDOWN NOSAVE to kill the server. If the AOF child has not been reaped
+by then, finishShutdown() takes the "Writing initial AOF, can't exit." path and
+refuses, so the server survives and the test sees a BUSY reply where it expected
+the connection to be refused. Whether that happens is purely a matter of how
+much CPU the fork got, which makes the test flaky on loaded build workers.
+
+Turn appendonly back off at the end of the test that enabled it.
+
+This is the same fix valkey made in valkey-io/valkey#1156; redis has not picked
+it up.
+
+--- a/tests/unit/scripting.tcl
++++ b/tests/unit/scripting.tcl
+@@ -1476,6 +1476,7 @@
+         $rd close
+         $rd2 close
+         $r3 close
++        r config set appendonly no
+         r DEBUG set-disable-deny-scripts 0
+     } {OK} {external:skip needs:debug}
+ 

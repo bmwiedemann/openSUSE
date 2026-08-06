@@ -1,0 +1,85 @@
+From: Martin Pluskal <mpluskal@suse.com>
+Subject: VectorSimilarity: guard the SVS code paths so USE_SVS=OFF builds
+Upstream PR: https://github.com/RedisAI/VectorSimilarity/pull/1006
+
+Building redisearch with -DUSE_SVS=OFF -- an option VectorSimilarity offers
+itself, via cmake_dependent_option(USE_SVS ...) in cmake/svs.cmake -- does not
+compile. HAVE_SVS is then 0 and the ScalableVectorSearch sources are never
+fetched, but two translation units still reach for SVS unconditionally:
+
+  src/VecSim/algorithms/svs/svs.h:21:10: fatal error:
+      svs/index/vamana/dynamic_index.h: No such file or directory
+    (via tiered_factory.h -> svs_tiered.h -> svs.h)
+
+  src/VecSim/algorithms/svs/svs_utils.h:16:10: fatal error:
+      svs/core/distance.h: No such file or directory
+    (via vec_sim.cpp)
+
+tiered_factory.h needs nothing from svs_tiered.h -- none of its declarations
+mention an SVS type -- so that include is simply guarded, the way
+tiered_factory.cpp and svs_factory.cpp already guard the same headers.
+
+vec_sim.cpp does use VecSimSVSThreadPool, in two functions that are part of the
+public C API and so have to keep existing either way: with no SVS there is no
+shared pool for VecSim_UpdateThreadPoolSize() to resize, and no shared
+allocation for VecSim_GetSharedMemory() to report.
+
+diff --git a/modules/redisearch/src/deps/VectorSimilarity/src/VecSim/index_factories/tiered_factory.h b/modules/redisearch/src/deps/VectorSimilarity/src/VecSim/index_factories/tiered_factory.h
+index fbb55d3..3cf0d5d 100644
+--- a/modules/redisearch/src/deps/VectorSimilarity/src/VecSim/index_factories/tiered_factory.h
++++ b/modules/redisearch/src/deps/VectorSimilarity/src/VecSim/index_factories/tiered_factory.h
+@@ -13,7 +13,9 @@
+ #include "VecSim/memory/vecsim_malloc.h"
+ #include "VecSim/vec_sim_index.h"
+ #include "VecSim/algorithms/hnsw/hnsw_tiered.h"
++#if HAVE_SVS
+ #include "VecSim/algorithms/svs/svs_tiered.h"
++#endif
+ #include "VecSim/algorithms/brute_force/brute_force.h"
+ #include "VecSim/index_factories/factory_utils.h"
+ 
+diff --git a/modules/redisearch/src/deps/VectorSimilarity/src/VecSim/vec_sim.cpp b/modules/redisearch/src/deps/VectorSimilarity/src/VecSim/vec_sim.cpp
+index 4fed53a..9da4eb3 100644
+--- a/modules/redisearch/src/deps/VectorSimilarity/src/VecSim/vec_sim.cpp
++++ b/modules/redisearch/src/deps/VectorSimilarity/src/VecSim/vec_sim.cpp
+@@ -15,7 +15,9 @@
+ #include "VecSim/vec_sim_index.h"
+ #include "VecSim/vec_sim_adhoc_bf_ctx.h"
+ #include "VecSim/types/bfloat16.h"
++#if HAVE_SVS
+ #include "VecSim/algorithms/svs/svs_utils.h"
++#endif
+ #include <cassert>
+ #include "memory.h"
+ 
+@@ -41,10 +43,16 @@ extern "C" void VecSim_UpdateThreadPoolSize(size_t new_size) {
+     } else {
+         VecSimIndex::setWriteMode(VecSim_WriteAsync);
+     }
++#if HAVE_SVS
+     // Resize the shared SVS pool. Clamped to a minimum of 1. OS threads are spawned
+     // lazily on first SVS index creation; once an index exists this resizes the
+     // shared pool immediately (cooperating with the deferred-shrink protocol).
+     VecSimSVSThreadPool::resize(new_size);
++#else
++    // No SVS, so there is no shared pool to resize; the write mode set above is
++    // all this call has to do.
++    (void)new_size;
++#endif
+ }
+ 
+ static VecSimResolveCode _ResolveParams_EFRuntime(VecSimAlgo index_type, VecSimRawParam rparam,
+@@ -392,7 +400,13 @@ extern "C" VecSimDebugInfoIterator *VecSimIndex_DebugInfoIterator(VecSimIndex *i
+ }
+ 
+ extern "C" size_t VecSim_GetSharedMemory(void) {
++#if HAVE_SVS
+     return VecSimSVSThreadPool::getSharedAllocationSize();
++#else
++    // The shared pool is an SVS construct; without it no memory is held outside
++    // the individual indexes, which already report their own.
++    return 0;
++#endif
+ }
+ 
+ extern "C" VecSimIndexBasicInfo VecSimIndex_BasicInfo(VecSimIndex *index) {

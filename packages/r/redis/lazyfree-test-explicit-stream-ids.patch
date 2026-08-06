@@ -1,0 +1,62 @@
+From: Martin Pluskal <mpluskal@suse.com>
+Subject: tests: give the lazyfree stream test explicit IDs
+
+"lazy free a stream with all types of metadata" builds a 1000-entry stream with
+stream-node-max-entries 5, UNLINKs it and asserts it was freed by the lazyfree
+thread rather than inline. Whether that happens is decided by
+lazyfreeGetFreeEffort(), which for a stream is
+
+    effort = s->rax->numnodes + raxSize(cgroups) * (1 + raxSize(pel))
+
+and is freed asynchronously only when it exceeds LAZYFREE_THRESHOLD, 64. With
+one consumer group holding a two-entry PEL the second term contributes 3, so
+the test rests entirely on the stream's radix tree having more than 61 nodes.
+
+It does not have a fixed number of nodes. The keys are the 200 master entry IDs,
+and with server-generated IDs their high 8 bytes are the wall-clock millisecond:
+entries added inside the same millisecond share that prefix and collapse into a
+single compressed node. So numnodes is not the number of entries, it is roughly
+the number of distinct milliseconds the XADD loop spanned -- i.e. how long the
+loop took. Measured on one aarch64 machine:
+
+    loop spans ~200ms (200 distinct ms)   numnodes = 204   -> lazy freed, passes
+    loop spans a few ms  (pipelined)      numnodes =  18   -> freed inline, fails
+    loop spans one ms    (inside EVAL)    numnodes =   6   -> freed inline, fails
+
+Any host that gets through 1000 XADD round trips in appreciably less than 64ms
+fails the test, and one just fast enough sits on the boundary and fails
+intermittently. That is what it does on the faster of openSUSE's aarch64 build
+workers: the same source passes on one worker and fails on another.
+
+Add the entries with explicit IDs a millisecond apart instead. The radix tree
+then has the same shape everywhere, 206 nodes, and the test measures lazyfree
+rather than the speed of the machine it runs on.
+
+Nothing in the test's intent changes -- the stream still carries a consumer
+group, a PEL, an acknowledged entry and a tombstone.
+
+--- a/tests/unit/lazyfree.tcl
++++ b/tests/unit/lazyfree.tcl
+@@ -50,11 +50,20 @@
+ 
+         r config resetstat
+         r config set stream-node-max-entries 5
++        # Use explicit IDs one millisecond apart. What decides whether UNLINK
++        # frees the stream lazily is lazyfreeGetFreeEffort(), which for a stream
++        # is dominated by the number of nodes in its radix tree, and with
++        # server-generated IDs that is the number of distinct milliseconds these
++        # 1000 XADDs happen to span -- keys sharing a millisecond share a prefix
++        # and collapse into one compressed node. On a machine fast enough to run
++        # the loop in well under 64ms the whole stream fits in a handful of
++        # nodes, the effort falls below LAZYFREE_THRESHOLD, the stream is freed
++        # synchronously and lazyfreed_objects stays 0.
+         for {set j 0} {$j < 1000} {incr j} {
+             if {rand() < 0.9} {
+-                r xadd stream * foo $j
++                r xadd stream $j-1 foo $j
+             } else {
+-                r xadd stream * bar $j
++                r xadd stream $j-1 bar $j
+             }
+         }
+         r xgroup create stream mygroup 0

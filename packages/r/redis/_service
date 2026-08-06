@@ -1,0 +1,27 @@
+<services>
+  <!-- Only the "modules" multibuild flavour needs these: two of the modules
+       upstream vendors under modules/ are (partly) written in Rust and would
+       otherwise reach out to crates.io and to three git repositories at build
+       time. They are separate workspaces, hence two runs distinguished by
+       "tag"; each produces vendor-<tag>.tar.zst plus a merged .cargo config
+       already rooted at the right directory inside the source tree, so %prep
+       only has to unpack them.
+
+       Both are mode="manual" (they need network access): after a version bump
+       run "osc service manualrun" and remember to update the tarball name in
+       the "src" parameter below. -->
+  <service name="cargo_vendor" mode="manual">
+    <param name="src">redis-8.10.0.tar.gz</param>
+    <param name="custom-root">modules/redisjson/src</param>
+    <param name="tag">redisjson</param>
+    <param name="update">false</param>
+    <param name="respect-lockfile">true</param>
+  </service>
+  <service name="cargo_vendor" mode="manual">
+    <param name="src">redis-8.10.0.tar.gz</param>
+    <param name="custom-root">modules/redisearch/src/src/redisearch_rs</param>
+    <param name="tag">redisearch</param>
+    <param name="update">false</param>
+    <param name="respect-lockfile">true</param>
+  </service>
+</services>
