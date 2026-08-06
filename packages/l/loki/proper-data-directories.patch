@@ -1,7 +1,7 @@
-diff --git a/cmd/loki/loki-local-config.yaml b/cmd/loki/loki-local-config.yaml
-index c3b8052335..11de68cafa 100644
---- a/cmd/loki/loki-local-config.yaml
-+++ b/cmd/loki/loki-local-config.yaml
+Index: loki/cmd/loki/loki-local-config.yaml
+===================================================================
+--- loki.orig/cmd/loki/loki-local-config.yaml
++++ loki/cmd/loki/loki-local-config.yaml
 @@ -8,11 +8,11 @@ server:
  
  common:
@@ -17,10 +17,10 @@ index c3b8052335..11de68cafa 100644
    replication_factor: 1
    ring:
      kvstore:
-diff --git a/cmd/loki/loki-local-multi-tenant-config.yaml b/cmd/loki/loki-local-multi-tenant-config.yaml
-index 065a7a0ed7..c287d1abf5 100644
---- a/cmd/loki/loki-local-multi-tenant-config.yaml
-+++ b/cmd/loki/loki-local-multi-tenant-config.yaml
+Index: loki/cmd/loki/loki-local-multi-tenant-config.yaml
+===================================================================
+--- loki.orig/cmd/loki/loki-local-multi-tenant-config.yaml
++++ loki/cmd/loki/loki-local-multi-tenant-config.yaml
 @@ -9,11 +9,11 @@ server:
  
  common:
@@ -36,10 +36,10 @@ index 065a7a0ed7..c287d1abf5 100644
    replication_factor: 1
    ring:
      kvstore:
-diff --git a/cmd/loki/loki-local-with-memcached.yaml b/cmd/loki/loki-local-with-memcached.yaml
-index d69a983d61..405ca231ce 100644
---- a/cmd/loki/loki-local-with-memcached.yaml
-+++ b/cmd/loki/loki-local-with-memcached.yaml
+Index: loki/cmd/loki/loki-local-with-memcached.yaml
+===================================================================
+--- loki.orig/cmd/loki/loki-local-with-memcached.yaml
++++ loki/cmd/loki/loki-local-with-memcached.yaml
 @@ -6,11 +6,11 @@ server:
  
  common:
@@ -55,11 +55,11 @@ index d69a983d61..405ca231ce 100644
    replication_factor: 1
    ring:
      kvstore:
-diff --git a/docs/sources/alert/_index.md b/docs/sources/alert/_index.md
-index b0ef346d94..e1de29930c 100644
---- a/docs/sources/alert/_index.md
-+++ b/docs/sources/alert/_index.md
-@@ -375,13 +375,13 @@ A typical local configuration might look something like:
+Index: loki/docs/sources/alert/_index.md
+===================================================================
+--- loki.orig/docs/sources/alert/_index.md
++++ loki/docs/sources/alert/_index.md
+@@ -405,13 +405,13 @@ A typical local configuration might look
  
  ```yaml
    -ruler.storage.type=local
@@ -75,10 +75,10 @@ index b0ef346d94..e1de29930c 100644
                             /rules2.yaml
  ```
  
-diff --git a/docs/sources/configure/examples/configuration-examples.md b/docs/sources/configure/examples/configuration-examples.md
-index 9ab9921509..f7386187bd 100644
---- a/docs/sources/configure/examples/configuration-examples.md
-+++ b/docs/sources/configure/examples/configuration-examples.md
+Index: loki/docs/sources/configure/examples/configuration-examples.md
+===================================================================
+--- loki.orig/docs/sources/configure/examples/configuration-examples.md
++++ loki/docs/sources/configure/examples/configuration-examples.md
 @@ -23,7 +23,7 @@ common:
      kvstore:
        store: inmemory
@@ -160,10 +160,10 @@ index 9ab9921509..f7386187bd 100644
  
  schema_config:
    configs:
-diff --git a/docs/sources/configure/examples/yaml/1-Local-Configuration-Example.yaml b/docs/sources/configure/examples/yaml/1-Local-Configuration-Example.yaml
-index 5d575922d3..c7c21ec6b8 100644
---- a/docs/sources/configure/examples/yaml/1-Local-Configuration-Example.yaml
-+++ b/docs/sources/configure/examples/yaml/1-Local-Configuration-Example.yaml
+Index: loki/docs/sources/configure/examples/yaml/1-Local-Configuration-Example.yaml
+===================================================================
+--- loki.orig/docs/sources/configure/examples/yaml/1-Local-Configuration-Example.yaml
++++ loki/docs/sources/configure/examples/yaml/1-Local-Configuration-Example.yaml
 @@ -12,7 +12,7 @@ common:
      kvstore:
        store: inmemory
@@ -179,10 +179,10 @@ index 5d575922d3..c7c21ec6b8 100644
    filesystem:
 -    directory: /tmp/loki/chunks
 +    directory: /var/lib/loki/chunks
-diff --git a/docs/sources/configure/examples/yaml/11-COS-HMAC-Example.yaml b/docs/sources/configure/examples/yaml/11-COS-HMAC-Example.yaml
-index a246d0e491..c0d138c40a 100644
---- a/docs/sources/configure/examples/yaml/11-COS-HMAC-Example.yaml
-+++ b/docs/sources/configure/examples/yaml/11-COS-HMAC-Example.yaml
+Index: loki/docs/sources/configure/examples/yaml/11-COS-HMAC-Example.yaml
+===================================================================
+--- loki.orig/docs/sources/configure/examples/yaml/11-COS-HMAC-Example.yaml
++++ loki/docs/sources/configure/examples/yaml/11-COS-HMAC-Example.yaml
 @@ -1,6 +1,6 @@
  # This partial configuration uses IBM Cloud Object Storage (COS) for chunk storage. HMAC will be used for authenticating with COS.
  common:
@@ -191,10 +191,10 @@ index a246d0e491..c0d138c40a 100644
  
  schema_config:
    configs:
-diff --git a/docs/sources/configure/examples/yaml/12-COS-APIKey-Example.yaml b/docs/sources/configure/examples/yaml/12-COS-APIKey-Example.yaml
-index 2247d96d5d..b2e62bf120 100644
---- a/docs/sources/configure/examples/yaml/12-COS-APIKey-Example.yaml
-+++ b/docs/sources/configure/examples/yaml/12-COS-APIKey-Example.yaml
+Index: loki/docs/sources/configure/examples/yaml/12-COS-APIKey-Example.yaml
+===================================================================
+--- loki.orig/docs/sources/configure/examples/yaml/12-COS-APIKey-Example.yaml
++++ loki/docs/sources/configure/examples/yaml/12-COS-APIKey-Example.yaml
 @@ -1,6 +1,6 @@
  # This partial configuration uses IBM Cloud Object Storage (COS) for chunk storage. APIKey will be used for authenticating with COS.
  common:
@@ -203,10 +203,10 @@ index 2247d96d5d..b2e62bf120 100644
  
  schema_config:
    configs:
-diff --git a/docs/sources/configure/examples/yaml/13-COS-Trusted-Profile-Example.yaml b/docs/sources/configure/examples/yaml/13-COS-Trusted-Profile-Example.yaml
-index 5f3651f4d0..276c33d61e 100644
---- a/docs/sources/configure/examples/yaml/13-COS-Trusted-Profile-Example.yaml
-+++ b/docs/sources/configure/examples/yaml/13-COS-Trusted-Profile-Example.yaml
+Index: loki/docs/sources/configure/examples/yaml/13-COS-Trusted-Profile-Example.yaml
+===================================================================
+--- loki.orig/docs/sources/configure/examples/yaml/13-COS-Trusted-Profile-Example.yaml
++++ loki/docs/sources/configure/examples/yaml/13-COS-Trusted-Profile-Example.yaml
 @@ -6,7 +6,7 @@
  # In order to use trusted profile authentication we need to follow an additional step to create a trusted profile.
  # For more details about creating a trusted profile, see https://cloud.ibm.com/docs/account?topic=account-create-trusted-profile&interface=ui.
@@ -216,10 +216,10 @@ index 5f3651f4d0..276c33d61e 100644
  
  schema_config:
    configs:
-diff --git a/docs/sources/configure/examples/yaml/5-BOS-Example.yaml b/docs/sources/configure/examples/yaml/5-BOS-Example.yaml
-index 5367106ed4..d650305bc6 100644
---- a/docs/sources/configure/examples/yaml/5-BOS-Example.yaml
-+++ b/docs/sources/configure/examples/yaml/5-BOS-Example.yaml
+Index: loki/docs/sources/configure/examples/yaml/5-BOS-Example.yaml
+===================================================================
+--- loki.orig/docs/sources/configure/examples/yaml/5-BOS-Example.yaml
++++ loki/docs/sources/configure/examples/yaml/5-BOS-Example.yaml
 @@ -1,7 +1,7 @@
  # This is a partial configuration to deploy Loki backed by Baidu Object Storage (BOS).
  # The index will be shipped to the storage via tsdb-shipper.
@@ -229,10 +229,10 @@ index 5367106ed4..d650305bc6 100644
  
  schema_config:
    configs:
-diff --git a/docs/sources/configure/examples/yaml/6-Compactor-Snippet.yaml b/docs/sources/configure/examples/yaml/6-Compactor-Snippet.yaml
-index 3b5d5df075..ede17890c6 100644
---- a/docs/sources/configure/examples/yaml/6-Compactor-Snippet.yaml
-+++ b/docs/sources/configure/examples/yaml/6-Compactor-Snippet.yaml
+Index: loki/docs/sources/configure/examples/yaml/6-Compactor-Snippet.yaml
+===================================================================
+--- loki.orig/docs/sources/configure/examples/yaml/6-Compactor-Snippet.yaml
++++ loki/docs/sources/configure/examples/yaml/6-Compactor-Snippet.yaml
 @@ -3,5 +3,5 @@
  # Downloaded index files for compaction are stored in /loki/compactor.
  
@@ -240,10 +240,10 @@ index 3b5d5df075..ede17890c6 100644
 -  working_directory: /tmp/loki/compactor
 +  working_directory: /var/lib/loki/compactor
    compaction_interval: 5m
-diff --git a/docs/sources/configure/examples/yaml/7-Schema-Migration-Snippet.yaml b/docs/sources/configure/examples/yaml/7-Schema-Migration-Snippet.yaml
-index 0c59e40807..23edd4128f 100644
---- a/docs/sources/configure/examples/yaml/7-Schema-Migration-Snippet.yaml
-+++ b/docs/sources/configure/examples/yaml/7-Schema-Migration-Snippet.yaml
+Index: loki/docs/sources/configure/examples/yaml/7-Schema-Migration-Snippet.yaml
+===================================================================
+--- loki.orig/docs/sources/configure/examples/yaml/7-Schema-Migration-Snippet.yaml
++++ loki/docs/sources/configure/examples/yaml/7-Schema-Migration-Snippet.yaml
 @@ -1,5 +1,5 @@
  common:
 -  path_prefix: /tmp/loki
@@ -251,10 +251,10 @@ index 0c59e40807..23edd4128f 100644
  
  schema_config:
    configs:
-diff --git a/docs/sources/configure/examples/yaml/8-alibaba-cloud-storage-Snippet.yaml b/docs/sources/configure/examples/yaml/8-alibaba-cloud-storage-Snippet.yaml
-index 7d48a54fe8..078b347e6b 100644
---- a/docs/sources/configure/examples/yaml/8-alibaba-cloud-storage-Snippet.yaml
-+++ b/docs/sources/configure/examples/yaml/8-alibaba-cloud-storage-Snippet.yaml
+Index: loki/docs/sources/configure/examples/yaml/8-alibaba-cloud-storage-Snippet.yaml
+===================================================================
+--- loki.orig/docs/sources/configure/examples/yaml/8-alibaba-cloud-storage-Snippet.yaml
++++ loki/docs/sources/configure/examples/yaml/8-alibaba-cloud-storage-Snippet.yaml
 @@ -1,6 +1,6 @@
  # This partial configuration uses Alibaba for chunk storage.
  common:
@@ -263,11 +263,11 @@ index 7d48a54fe8..078b347e6b 100644
  
  schema_config:
    configs:
-diff --git a/docs/sources/get-started/quick-start/tutorial.md b/docs/sources/get-started/quick-start/tutorial.md
-index 57bf7a1dbd..8f13f347f2 100644
---- a/docs/sources/get-started/quick-start/tutorial.md
-+++ b/docs/sources/get-started/quick-start/tutorial.md
-@@ -379,11 +379,11 @@ server:
+Index: loki/docs/sources/get-started/quick-start/tutorial.md
+===================================================================
+--- loki.orig/docs/sources/get-started/quick-start/tutorial.md
++++ loki/docs/sources/get-started/quick-start/tutorial.md
+@@ -389,11 +389,11 @@ server:
  
  common:
    instance_addr: 127.0.0.1
@@ -282,7 +282,7 @@ index 57bf7a1dbd..8f13f347f2 100644
    replication_factor: 1
    ring:
      kvstore:
-@@ -425,7 +425,7 @@ frontend:
+@@ -435,7 +435,7 @@ frontend:
    encoding: protobuf
  
  compactor:
@@ -291,11 +291,11 @@ index 57bf7a1dbd..8f13f347f2 100644
    delete_request_store: filesystem
    retention_enabled: true
  ```
-diff --git a/docs/sources/operations/storage/filesystem.md b/docs/sources/operations/storage/filesystem.md
-index 68ca759caf..5d74469556 100644
---- a/docs/sources/operations/storage/filesystem.md
-+++ b/docs/sources/operations/storage/filesystem.md
-@@ -13,7 +13,7 @@ Very simply it stores all the objects (chunks) in the specified directory:
+Index: loki/docs/sources/operations/storage/filesystem.md
+===================================================================
+--- loki.orig/docs/sources/operations/storage/filesystem.md
++++ loki/docs/sources/operations/storage/filesystem.md
+@@ -13,7 +13,7 @@ Very simply it stores all the objects (c
  ```yaml
  storage_config:
    filesystem:
@@ -304,37 +304,10 @@ index 68ca759caf..5d74469556 100644
  ```
  
  A folder is created for every tenant all the chunks for one tenant are stored in that directory.
-diff --git a/docs/sources/setup/upgrade/_index.md b/docs/sources/setup/upgrade/_index.md
-index 22762b33e4..09b1e28fb0 100644
---- a/docs/sources/setup/upgrade/_index.md
-+++ b/docs/sources/setup/upgrade/_index.md
-@@ -1698,8 +1698,8 @@ The location Loki is looking for files with the provided config in the docker im
- In 1.4.0 and earlier the included config file in the docker container was using directories:
- 
- ```shell
--/tmp/loki/index
--/tmp/loki/chunks
-+/var/lib/loki/index
-+/var/lib/loki/chunks
- ```
- 
- In 1.5.0 this has changed:
-@@ -1715,9 +1715,9 @@ This will mostly affect anyone using docker-compose or docker to run Loki and ar
- 
- One possible upgrade path would look like this:
- 
--If I were running Loki with this command `docker run -d --name=loki --mount source=loki-data,target=/tmp/loki -p 3100:3100 grafana/loki:1.4.0`
-+If I were running Loki with this command `docker run -d --name=loki --mount source=loki-data,target=/var/lib/loki -p 3100:3100 grafana/loki:1.4.0`
- 
--This would mount a docker volume named `loki-data` to the `/tmp/loki` folder which is where Loki will persist the `index` and `chunks` folder in 1.4.0
-+This would mount a docker volume named `loki-data` to the `/var/lib/loki` folder which is where Loki will persist the `index` and `chunks` folder in 1.4.0
- 
- To move to 1.5.0 I can do the following (note that your container names and paths and volumes etc may be different):
- 
-diff --git a/production/helm/loki/templates/ruler/statefulset-ruler.yaml b/production/helm/loki/templates/ruler/statefulset-ruler.yaml
-index 06fe6185d6..86c217e797 100644
---- a/production/helm/loki/templates/ruler/statefulset-ruler.yaml
-+++ b/production/helm/loki/templates/ruler/statefulset-ruler.yaml
+Index: loki/production/helm/loki/templates/ruler/statefulset-ruler.yaml
+===================================================================
+--- loki.orig/production/helm/loki/templates/ruler/statefulset-ruler.yaml
++++ loki/production/helm/loki/templates/ruler/statefulset-ruler.yaml
 @@ -113,7 +113,7 @@ spec:
              - name: data
                mountPath: /var/loki
@@ -344,10 +317,10 @@ index 06fe6185d6..86c217e797 100644
              {{- if .Values.enterprise.enabled }}
              - name: license
                mountPath: /etc/loki/license
-diff --git a/tools/deprecated-config-checker/test-fixtures/config.yaml b/tools/deprecated-config-checker/test-fixtures/config.yaml
-index be875f3ac1..b84b65a3e9 100644
---- a/tools/deprecated-config-checker/test-fixtures/config.yaml
-+++ b/tools/deprecated-config-checker/test-fixtures/config.yaml
+Index: loki/tools/deprecated-config-checker/test-fixtures/config.yaml
+===================================================================
+--- loki.orig/tools/deprecated-config-checker/test-fixtures/config.yaml
++++ loki/tools/deprecated-config-checker/test-fixtures/config.yaml
 @@ -5,11 +5,11 @@ server:
    http_listen_port: 3100
  
@@ -388,11 +361,11 @@ index be875f3ac1..b84b65a3e9 100644
      use_boltdb_shipper_as_backup: true # DELETED
    tsdb_shipper:
      shared_store: gcs # DELETED
-diff --git a/tools/dev/kafka/README.md b/tools/dev/kafka/README.md
-index e2d60e549c..c0afa0b8c7 100644
---- a/tools/dev/kafka/README.md
-+++ b/tools/dev/kafka/README.md
-@@ -49,7 +49,7 @@ This directory contains the development environment for testing Loki with Kafka
+Index: loki/tools/dev/kafka/README.md
+===================================================================
+--- loki.orig/tools/dev/kafka/README.md
++++ loki/tools/dev/kafka/README.md
+@@ -49,7 +49,7 @@ This directory contains the development
  - `docker-compose.yaml`: Service definitions and configuration
  - `loki-local-config.debug.yaml`: Loki configuration with Kafka enabled
    - Kafka ingestion enabled
@@ -410,10 +383,10 @@ index e2d60e549c..c0afa0b8c7 100644
  
  # Start fresh
  docker-compose up -d
-diff --git a/tools/dev/kafka/loki-local-config.debug.yaml b/tools/dev/kafka/loki-local-config.debug.yaml
-index bb65fac2f7..a05cd6dfdb 100644
---- a/tools/dev/kafka/loki-local-config.debug.yaml
-+++ b/tools/dev/kafka/loki-local-config.debug.yaml
+Index: loki/tools/dev/kafka/loki-local-config.debug.yaml
+===================================================================
+--- loki.orig/tools/dev/kafka/loki-local-config.debug.yaml
++++ loki/tools/dev/kafka/loki-local-config.debug.yaml
 @@ -8,11 +8,11 @@ server:
  
  common:
@@ -429,10 +402,10 @@ index bb65fac2f7..a05cd6dfdb 100644
    replication_factor: 1
    ring:
      kvstore:
-diff --git a/tools/stream-generator/docker-compose.yaml b/tools/stream-generator/docker-compose.yaml
-index 4dac82f2d9..4d3b724e6e 100644
---- a/tools/stream-generator/docker-compose.yaml
-+++ b/tools/stream-generator/docker-compose.yaml
+Index: loki/tools/stream-generator/docker-compose.yaml
+===================================================================
+--- loki.orig/tools/stream-generator/docker-compose.yaml
++++ loki/tools/stream-generator/docker-compose.yaml
 @@ -58,7 +58,7 @@ services:
      volumes:
        - ./loki-local-config.debug.yaml:/etc/loki/local-config.yaml
@@ -442,10 +415,10 @@ index 4dac82f2d9..4d3b724e6e 100644
      entrypoint: ["/entrypoint.sh"]
      depends_on:
        - broker
-diff --git a/tools/stream-generator/loki-local-config.debug.yaml b/tools/stream-generator/loki-local-config.debug.yaml
-index 5c23483b51..d6f50af95a 100644
---- a/tools/stream-generator/loki-local-config.debug.yaml
-+++ b/tools/stream-generator/loki-local-config.debug.yaml
+Index: loki/tools/stream-generator/loki-local-config.debug.yaml
+===================================================================
+--- loki.orig/tools/stream-generator/loki-local-config.debug.yaml
++++ loki/tools/stream-generator/loki-local-config.debug.yaml
 @@ -8,11 +8,11 @@ server:
  
  common:
@@ -461,3 +434,30 @@ index 5c23483b51..d6f50af95a 100644
    replication_factor: 1
    ring:
      instance_id: local
+Index: loki/docs/sources/setup/upgrade/upgrade-1.x.md
+===================================================================
+--- loki.orig/docs/sources/setup/upgrade/upgrade-1.x.md
++++ loki/docs/sources/setup/upgrade/upgrade-1.x.md
+@@ -238,8 +238,8 @@ The location Loki is looking for files w
+ In 1.4.0 and earlier the included config file in the docker container was using directories:
+ 
+ ```shell
+-/tmp/loki/index
+-/tmp/loki/chunks
++/var/lib/loki/index
++/var/lib/loki/chunks
+ ```
+ 
+ In 1.5.0 this has changed:
+@@ -255,9 +255,9 @@ This will mostly affect anyone using doc
+ 
+ One possible upgrade path would look like this:
+ 
+-If I were running Loki with this command `docker run -d --name=loki --mount source=loki-data,target=/tmp/loki -p 3100:3100 grafana/loki:1.4.0`
++If I were running Loki with this command `docker run -d --name=loki --mount source=loki-data,target=/var/lib/loki -p 3100:3100 grafana/loki:1.4.0`
+ 
+-This would mount a docker volume named `loki-data` to the `/tmp/loki` folder which is where Loki will persist the `index` and `chunks` folder in 1.4.0
++This would mount a docker volume named `loki-data` to the `/var/lib/loki` folder which is where Loki will persist the `index` and `chunks` folder in 1.4.0
+ 
+ To move to 1.5.0 I can do the following (note that your container names and paths and volumes etc may be different):
+ 

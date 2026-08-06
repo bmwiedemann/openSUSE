@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Aug 05 09:16:28 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 3.7.5:
+  * chore(operator): Remove the Loki Operator from release-3.7.x (#23748)
+  * docs: Add note re: rate limits (#23647) (#23756)
+  * chore: [v3.7.x] Add AEO FAQ sections (#23737)
+  * chore: Run lint in docker [release-3.7.x] (#23749)
+  * refactor(cmd): Fold the inspect tools into the root Go module (#23746)
+  * fix(security/UNKNOWN/operator): Update module github.com/klauspost/compress to v1.18.7 [SECURITY] (release-3.7.x) (#23613)
+  * docs: Explain structured metadata limits and large OTel attributes such as stack traces 🤖🤖🤖 [release-3.7.x] (#23699)
+  * fix(ingester): Fix flush race in ingester [release-3.7.x] (#23682)
+  * fix(security/UNKNOWN/cmd/chunks-inspect): Update module github.com/klauspost/compress to v1.18.7 [SECURITY] (release-3.7.x) (#23611)
+  * fix(security/UNKNOWN/cmd/dataobj-inspect): Update module github.com/klauspost/compress to v1.18.7 [SECURITY] (release-3.7.x) (#23612)
+  * fix(security/UNKNOWN/): Update module golang.org/x/text to v0.39.0 [SECURITY] (release-3.7.x) (#23418)
+  * fix(security/UNKNOWN/cmd/dataobj-inspect): Update module golang.org/x/text to v0.39.0 [SECURITY] (release-3.7.x) (#23419)
+  * fix(security/UNKNOWN/cmd/dataobj-inspect): Update module go.opentelemetry.io/otel to v1.42.0 [SECURITY] (release-3.7.x) (#23518)
+  * fix(security/UNKNOWN/): Update module google.golang.org/grpc to v1.82.1 [SECURITY] (release-3.7.x) (#23405)
+  * fix(security/UNKNOWN/): Update module github.com/klauspost/compress to v1.18.7 [SECURITY] (release-3.7.x) (#23610)
+  * docs: Metric query result ordering is not guaranteed [release-3.7.x] (#23669)
+  * chore(renovate): Backport renovate config from main to release-3.7.x (#23446)
+  * docs: Add one troubleshooting message [release-3.7.x] (#23628)
+  * docs: Update RN for 3.6.13 [release-3.7.x] (#23604)
+  * docs: Split Upgrade topic (#23475) (#23513)
+  * docs: Remove Promtail from topic (#23599) (#23601)
+  * docs: Release Notes 3.7.4 [release-3.7.x] (#23594)
+  * fix: Build deb/rpm packages again in the release workflow (#23598)
+  * docs: Remove one FAQ [release-3.7.x] (#23511)
+  * fix(ci): Disable docker plugin publishing on release-3.7.x (#23440)
+  * chore(release-3.7.x): Release 3.7.4 (#22778)
+- refresh proper-data-directories.patch to apply cleanly again
+
+-------------------------------------------------------------------
 Fri Jul 24 10:28:12 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.7.4:
