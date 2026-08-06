@@ -17,19 +17,19 @@
 
 
 Name:           python-aiofile
-Version:        3.11.1
+Version:        3.12.3
 Release:        0
 Summary:        Asynchronous file operations interface for Python
 License:        Apache-2.0
 URL:            https://github.com/mosquito/aiofile
 Source:         https://files.pythonhosted.org/packages/source/a/aiofile/aiofile-%{version}.tar.gz
-BuildRequires:  %{python_module caio >= 0.9.0}
+BuildRequires:  %{python_module caio >= 0.12.0}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-caio >= 0.9.0
+Requires:       python-caio >= 0.12.0
 BuildArch:      noarch
 %python_subpackages
 
@@ -54,6 +54,7 @@ caio (Linux libaio / POSIX AIO / thread-pool backends).
 
 %files %{python_files}
 %doc README.md
+%license LICENCE
 %{python_sitelib}/aiofile
 %{python_sitelib}/aiofile-%{version}.dist-info
 

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Aug  5 05:37:06 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 3.12.3:
+  * Fix a double close(), fix TextFileWrapper.read() reading past the
+    requested length, and add a "closed" attribute
+  * Require caio ~= 0.12.0, so the dependency floor moves to 0.12.0
+  * Remaining changes are a throughput benchmark and README updates
+- Package the licence file, which was not installed before
+
+-------------------------------------------------------------------
 Fri Jun 19 06:12:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Initial package (version 3.11.1)
