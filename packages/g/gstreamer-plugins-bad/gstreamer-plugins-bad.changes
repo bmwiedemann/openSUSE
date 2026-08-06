@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Wed Aug  5 15:50:21 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.28.6:
+  + adpcmdec: Fix IMA ADPCM input size check to match with the
+    actual code
+  + baseparse: Don't reset infer_ts/pts_interpolate subclass
+    configuration in reset() and related fixes
+  + d3d11winrtcapture: Fix incorrect capture height
+  + dtls: make BIO read signal retry instead of EOF when no data
+  + dtls: New DTLS test failure with OpenSSL 4.0.0
+  + dvdspu: Fix too strict off-by-one bounds check in a couple of
+    places
+  + h263parse: diracparse: Sync baseparse configuration with other
+    compressed video parsers
+  + h265parser: Fix out-of-bounds writes in RPS parsing
+  + h265seiinserter: Fix HEVC with alpha stream handling
+  + h266parser: fix SEI parsing error handler
+  + meson: Make the g-ir-scanner init section consistent across
+    modules
+  + mpegpsdemux: Use byte readers for parsing data and make sure
+    enough data is available
+  + openjpegdec: Various issues related to striped mode and image
+    origins, plus memory leaks
+  + pnmdec: Don't assert if creating the output state fails and
+    don't flush more data than is available
+  + tfliteinference: fix leaks
+  + tsdemux: Don't assert if stream pad was not yet created
+  + vabaseenc: clamp driver-reported coded size to the coded buffer
+    size
+  + vtdec: Don't register the hw-only variant on simulators
+  + vulkantrash: avoid reinitializing trash objects multiple times
+  + waylandsink: Omit reporting drop frame on preroll
+  + webrtcbin: fix possible floating leak for post-aux
+  + wlvideobufferpool: Fix memory leak in
+    gst_wl_video_buffer_pool_alloc_buffer
+  + docs: Fix build when mse library is disabled
+  + Remove incorrect G_GNUC_CONST annotation for _get_type()
+    functions and some other functions
+
+-------------------------------------------------------------------
 Thu Jul  9 17:50:27 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.28.5:
