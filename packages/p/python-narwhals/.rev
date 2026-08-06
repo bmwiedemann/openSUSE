@@ -201,4 +201,12 @@
   * fix: pandas-like `quantile` in group-by context</comment>
     <requestid>1352315</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>dbea14506a7e02e989ba912a7904e365</srcmd5>
+    <version>2.24.0</version>
+    <time>1786026245</time>
+    <user>anag_factory</user>
+    <comment>update &amp; staging maintenance</comment>
+    <requestid>1370039</requestid>
+  </revision>
 </revisionlist>

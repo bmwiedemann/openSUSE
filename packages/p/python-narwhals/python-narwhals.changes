@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Aug  6 12:00:22 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Avoid too many dependencies in lettered stagings for Factory
+
+-------------------------------------------------------------------
+Mon Aug  3 13:38:37 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- update to 2.24.0
+  * Add is_into_lazyframe, export missing functionalities, fix
+    SQLFrame bug
+  * Adopt uv as package manager
+  * Move to src/ layout
+  * Add selectors.enum
+  * Add support for Float16 datatype
+  * add top-level covariance expression
+  * Add scikit-learn to downstream tests
+  * Widen IntoSchema to accept IntoDType values and (name, dtype)
+    pair sequences
+  * add nw.list
+  * Adapt for pyarrow v25.0.0
+
+-------------------------------------------------------------------
 Sun May 10 19:56:50 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.21.0:
