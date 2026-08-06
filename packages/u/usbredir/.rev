@@ -164,4 +164,21 @@ Tested the build localy (forwarded request 114808 from worldcitizen)</comment>
     <comment></comment>
     <requestid>1158906</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>83e5e68fdff558b460c8ab4f687df332</srcmd5>
+    <version>0.15.0</version>
+    <time>1786025946</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.15.0
+
+- Update to version 0.15.0:
+  * Fix server crash on second incoming connection (closes #38).
+  * usbredirtestclient: fix memory leak.
+  * Fix -Wincompatible-pointer-types on mingw32.
+- Clean up spec file using spec-cleaner:
+  * Prune over-expanded pkgconfig GLib requirements.
+  * Use %?ext_man macro for manpage compression.
+- Enable test suite run during build in %check.</comment>
+    <requestid>1369814</requestid>
+  </revision>
 </revisionlist>

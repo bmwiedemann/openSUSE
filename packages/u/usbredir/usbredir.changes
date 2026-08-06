@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Aug  5 16:33:04 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.15.0:
+  * Fix server crash on second incoming connection (closes #38).
+  * usbredirtestclient: fix memory leak.
+  * Fix -Wincompatible-pointer-types on mingw32.
+- Clean up spec file using spec-cleaner:
+  * Prune over-expanded pkgconfig GLib requirements.
+  * Use %?ext_man macro for manpage compression.
+- Enable test suite run during build in %check.
+
+-------------------------------------------------------------------
 Sun Mar 17 10:10:17 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.14.0:

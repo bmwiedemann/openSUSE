@@ -1,7 +1,7 @@
 #
 # spec file for package usbredir
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2011 Dominique Leuenberger, Amsterdam, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,20 +18,20 @@
 
 
 Name:           usbredir
-Version:        0.14.0
+Version:        0.15.0
 Release:        0
 Summary:        A protocol for redirecting USB traffic
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
-Group:          System/Libraries
 URL:            https://www.spice-space.org/usbredir.html
 Source:         https://www.spice-space.org/download/usbredir/%{name}-%{version}.tar.xz
-Source1:        https://www.spice-space.org/download/usbredir/%{name}-%{version}.tar.xz.sig
+Source1:        https://www.spice-space.org/download/usbredir/%{name}-%{version}.tar.xz.asc
 Source99:       %{name}.keyring
 BuildRequires:  gcc-c++
-BuildRequires:  glib2-devel >= 2.44
-BuildRequires:  meson >= 0.48
+BuildRequires:  meson >= 0.53
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(gio-2.0) >= 2.44
+BuildRequires:  pkgconfig(glib-2.0) >= 2.44
 BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.22
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 usbredir is a protocol for redirecting USB traffic from a single USB device,
@@ -41,7 +41,6 @@ of this protocol.
 
 %package -n libusbredirhost1
 Summary:        A protocol for redirecting USB traffic - Host-side library
-Group:          System/Libraries
 
 %description -n libusbredirhost1
 usbredir is a protocol for redirecting USB traffic from a single USB device,
@@ -51,7 +50,6 @@ of this protocol.
 
 %package -n libusbredirparser1
 Summary:        A protocol for redirecting USB traffic - Client-side library
-Group:          System/Libraries
 Obsoletes:      libusbredirparser0 < %{version}
 Provides:       libusbredirparser0 = %{version}
 
@@ -63,7 +61,6 @@ of this protocol.
 
 %package devel
 Summary:        A protocol for redirecting USB traffic - Development files
-Group:          Development/Languages/C and C++
 Requires:       libusbredirhost1 = %{version}
 Requires:       libusbredirparser1 = %{version}
 
@@ -83,28 +80,27 @@ of this protocol.
 %install
 %meson_install
 
+%check
+%meson_test
+
 %post -n libusbredirhost1 -p /sbin/ldconfig
 %postun -n libusbredirhost1 -p /sbin/ldconfig
 %post -n libusbredirparser1 -p /sbin/ldconfig
 %postun -n libusbredirparser1 -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
 %doc ChangeLog.md README.md
 %license COPYING
 %{_bindir}/usbredirect
-%{_mandir}/man1/usbredirect.1.gz
+%{_mandir}/man1/usbredirect.1%{?ext_man}
 
 %files -n libusbredirhost1
-%defattr(-, root, root)
 %{_libdir}/libusbredirhost.so.*
 
 %files -n libusbredirparser1
-%defattr(-, root, root)
 %{_libdir}/libusbredirparser.so.*
 
 %files devel
-%defattr(-, root, root)
 %doc docs/multi-thread.md docs/usb-redirection-protocol.md
 %{_includedir}/usbredirhost.h
 %{_includedir}/usbredirfilter.h
