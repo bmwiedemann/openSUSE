@@ -13054,7 +13054,6 @@ unsorted:
   - libdispatch1_3 
   - libdisplay-info-devel 
   - libdisplay-info3-32bit 
-  - libdisplaydevice0_0_0 
   - libdjinterop-devel 
   - libdjinterop0 
   - libdjvulibre-devel 
@@ -14997,7 +14996,7 @@ unsorted:
   - libmunge2 
   - libmuparser2_3_5 
   - libmuparserx4_0_12 
-  - libmupdf28_1 
+  - libmupdf28_2 
   - libmupen64plus-devel 
   - libmupen64plus2 
   - libmusicbrainz-devel 
@@ -15970,7 +15969,7 @@ unsorted:
   - libqwt6-qt5-6_3 
   - libqwt6-qt6-6_3 
   - libqwtplot3d-qt5-0 
-  - libqxmledit-0_9_17-0 
+  - libqxmledit0 
   - libqxp-devel 
   - libqxp-doc 
   - libqxp-tools 
@@ -16595,7 +16594,7 @@ unsorted:
   - libstoragemgmt-targetd-plugin 
   - libstoragemgmt-udev 
   - libstoragemgmt1 
-  - libstp2_3 
+  - libstp2_4 
   - libstroke-devel 
   - libstroke0 
   - libstrophe-devel 
@@ -17580,7 +17579,7 @@ unsorted:
   - libz-ng-compat1-32bit 
   - libz-ng2 
   - libz-ng2-32bit 
-  - libz3-4_15 
+  - libz3-5_0 
   - libz_rs1 
   - libzarchive0_1 
   - libzbar-devel 
@@ -24358,7 +24357,6 @@ unsorted:
   - python3-vtk-openmpi4 
   - python3-xcb-proto-devel 
   - python3-yui 
-  - python3-z3 
   - python3-zbar 
   - python310 
   - python310-base 
@@ -24395,7 +24393,6 @@ unsorted:
   - python311-igwn-auth-utils 
   - python311-ipdb 
   - python311-keystonemiddleware 
-  - python311-mediafile 
   - python311-onnxruntime 
   - python311-oslo.cache 
   - python311-packaging 
@@ -26796,8 +26793,6 @@ unsorted:
   - python313-numericalunits 
   - python313-numexpr 
   - python313-numpy-devel 
-  - python313-numpy1 
-  - python313-numpy1-devel 
   - python313-numpydoc 
   - python313-nvim-remote 
   - python313-nwdiag 
@@ -27241,6 +27236,7 @@ unsorted:
   - python313-pygments-ansi-color 
   - python313-pygments-pytest 
   - python313-pygn 
+  - python313-pygount 
   - python313-pygraphviz 
   - python313-pygtkspellcheck 
   - python313-pyham_ax25 
@@ -28388,6 +28384,7 @@ unsorted:
   - python313-yt 
   - python313-yt-dlp 
   - python313-ytmusicapi 
+  - python313-z3 
   - python313-zarr 
   - python313-zc.buildout 
   - python313-zc.customdoctests 
@@ -30829,8 +30826,6 @@ unsorted:
   - python314-numexpr 
   - python314-numpy 
   - python314-numpy-devel 
-  - python314-numpy1 
-  - python314-numpy1-devel 
   - python314-numpydoc 
   - python314-nvim-remote 
   - python314-nwdiag 
@@ -31291,6 +31286,7 @@ unsorted:
   - python314-pygments-ansi-color 
   - python314-pygments-pytest 
   - python314-pygn 
+  - python314-pygount 
   - python314-pygraphviz 
   - python314-pygtkspellcheck 
   - python314-pyham_ax25 
@@ -32461,6 +32457,7 @@ unsorted:
   - python314-yq 
   - python314-yt 
   - python314-ytmusicapi 
+  - python314-z3 
   - python314-zarr 
   - python314-zc.buildout 
   - python314-zc.customdoctests 
@@ -33315,6 +33312,10 @@ unsorted:
   - redhat-overpass-mono-fonts 
   - redis 
   - redis++-devel 
+  - redis-bloom 
+  - redis-json 
+  - redis-search 
+  - redis-timeseries 
   - redland 
   - redland-storage-postgresql 
   - redminecli 
@@ -33675,6 +33676,7 @@ unsorted:
   - rt-tests 
   - rtags 
   - rtaudio-devel 
+  - rtk 
   - rtl-sdr 
   - rtl-sdr-devel 
   - rtl-sdr-udev 
