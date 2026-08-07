@@ -725,7 +725,7 @@ packagesets:
    - gvfs # reason: dvd:openSUSE-release
    - gvfs-backend-afc # reason: dvd:patterns-kde-kde
    - gvfs-backend-goa # reason: dvd:patterns-gnome-gnome
-   - gvfs-backend-gphoto # reason: dvd:patterns-kde-kde_imaging
+   - gvfs-backend-gphoto # reason: dvd:patterns-media-rest_dvd
    - gvfs-backend-samba # reason: dvd:patterns-kde-kde
    - gvfs-backends # reason: dvd:grub2
    - gvfs-fuse # reason: dvd:openSUSE-release
@@ -851,8 +851,8 @@ packagesets:
    - kbd # reason: dvd:openSUSE-release
    - kbruch # reason: dvd:patterns-kde-kde_edutainment
    - kbruch-lang # reason: dvd:patterns-kde-kde_edutainment
-   - kcachegrind # reason: dvd:patterns-kde-kde_ide
-   - kcachegrind-lang # reason: dvd:patterns-kde-kde_ide
+   - kcachegrind # reason: dvd:patterns-media-rest_dvd
+   - kcachegrind-lang # reason: dvd:patterns-media-rest_dvd
    - kcalc # reason: dvd:patterns-kde-kde
    - kcalc-lang # reason: dvd:patterns-kde-kde
    - kcalutils # reason: dvd:patterns-kde-kde
@@ -1029,7 +1029,7 @@ packagesets:
    - kgamma6-lang # reason: dvd:patterns-kde-kde
    - kgeography # reason: dvd:patterns-kde-kde_edutainment
    - kgeography-lang # reason: dvd:patterns-kde-kde_edutainment
-   - kglobalaccel5 # reason: dvd:patterns-kde-kde_office
+   - kglobalaccel5 # reason: dvd:patterns-kde-kde_ide
    - kglobalacceld6 # reason: dvd:patterns-kde-kde
    - khangman # reason: dvd:patterns-kde-kde_edutainment
    - khangman-lang # reason: dvd:patterns-kde-kde_edutainment
@@ -1053,8 +1053,8 @@ packagesets:
    - kio-lang # reason: dvd:patterns-kde-kde
    - kio_audiocd # reason: dvd:patterns-kde-kde
    - kio_audiocd-lang # reason: dvd:patterns-kde-kde
-   - kio_kamera # reason: dvd:patterns-kde-kde_imaging
-   - kio_kamera-lang # reason: dvd:patterns-kde-kde_imaging
+   - kio_kamera # reason: dvd:patterns-media-rest_dvd
+   - kio_kamera-lang # reason: dvd:patterns-media-rest_dvd
    - kirigami-addons6 # reason: dvd:patterns-kde-kde
    - kirigami-addons6-lang # reason: dvd:patterns-kde-kde
    - kiten # reason: dvd:patterns-kde-kde_edutainment
@@ -1213,7 +1213,7 @@ packagesets:
    - libKF5DocTools5 # reason: dvd:patterns-kde-kde
    - libKF5GlobalAccel5 # reason: dvd:patterns-kde-kde
    - libKF5GlobalAccel5-lang # reason: dvd:patterns-kde-kde
-   - libKF5GlobalAccelPrivate5 # reason: dvd:patterns-kde-kde_office
+   - libKF5GlobalAccelPrivate5 # reason: dvd:patterns-kde-kde_ide
    - libKF5GuiAddons5 # reason: dvd:patterns-kde-kde
    - libKF5I18n5 # reason: dvd:patterns-kde-kde
    - libKF5I18n5-lang # reason: dvd:patterns-kde-kde
@@ -2065,9 +2065,9 @@ packagesets:
    - libgpg-error0-32bit # reason: dvd:patterns-media-rest_dvd
    - libgpgme45 # reason: dvd:openSUSE-release
    - libgpgmepp7 # reason: dvd:openSUSE-release
-   - libgphoto2-6 # reason: dvd:patterns-kde-kde_imaging
-   - libgphoto2-6-lang # reason: dvd:patterns-kde-kde_imaging
-   - libgphoto2_port12 # reason: dvd:patterns-kde-kde_imaging
+   - libgphoto2-6 # reason: dvd:patterns-media-rest_dvd
+   - libgphoto2-6-lang # reason: dvd:patterns-media-rest_dvd
+   - libgphoto2_port12 # reason: dvd:patterns-media-rest_dvd
    - libgpm2 # reason: dvd:patterns-gnome-gnome
    - libgpod-lang # reason: dvd:amarok
    - libgpod-tools # reason: dvd:amarok
@@ -3004,8 +3004,8 @@ packagesets:
    - localsearch-lang # reason: dvd:patterns-gnome-gnome
    - login_defs # reason: dvd:openSUSE-release
    - logrotate # reason: dvd:openSUSE-release
-   - lokalize # reason: dvd:patterns-kde-kde_ide
-   - lokalize-lang # reason: dvd:patterns-kde-kde_ide
+   - lokalize # reason: dvd:patterns-media-rest_dvd
+   - lokalize-lang # reason: dvd:patterns-media-rest_dvd
    - lomoco # reason: dvd:patterns-media-rest_cd_core
    - loupe # reason: dvd:patterns-gnome-gnome
    - loupe-lang # reason: dvd:patterns-gnome-gnome

@@ -12240,7 +12240,6 @@ unsorted:
   - libaugeas0-32bit 
   - libauparse0-32bit 
   - libautotrace3 
-  - libav-tools 
   - libavahi-devel 
   - libavahi-glib-devel 
   - libavahi-glib1-32bit 
@@ -12725,7 +12724,7 @@ unsorted:
   - libcfile1 
   - libcg3-1 
   - libcglm0 
-  - libcgmic3 
+  - libcgmic4 
   - libcgns4_4 
   - libcgroup-devel 
   - libcgroup-pam 
@@ -13055,7 +13054,6 @@ unsorted:
   - libdispatch1_3 
   - libdisplay-info-devel 
   - libdisplay-info3-32bit 
-  - libdisplaydevice0_0_0 
   - libdjinterop-devel 
   - libdjinterop0 
   - libdjvulibre-devel 
@@ -13746,7 +13744,7 @@ unsorted:
   - libgme-devel 
   - libgme0-32bit 
   - libgmic-devel 
-  - libgmic3 
+  - libgmic4 
   - libgmime-3_0-0 
   - libgmobile0 
   - libgmodule-2_0-0-32bit 
@@ -14112,8 +14110,8 @@ unsorted:
   - libheif-devel 
   - libheif1-32bit 
   - libheinz-devel 
-  - libhfst56 
-  - libhfst_c0 
+  - libhfst57 
+  - libhfst_c57 
   - libhfstospell11 
   - libhfstospell11-32bit 
   - libhibr-devel 
@@ -14998,7 +14996,7 @@ unsorted:
   - libmunge2 
   - libmuparser2_3_5 
   - libmuparserx4_0_12 
-  - libmupdf28_1 
+  - libmupdf28_2 
   - libmupen64plus-devel 
   - libmupen64plus2 
   - libmusicbrainz-devel 
@@ -15971,7 +15969,7 @@ unsorted:
   - libqwt6-qt5-6_3 
   - libqwt6-qt6-6_3 
   - libqwtplot3d-qt5-0 
-  - libqxmledit-0_9_17-0 
+  - libqxmledit0 
   - libqxp-devel 
   - libqxp-doc 
   - libqxp-tools 
@@ -16596,7 +16594,7 @@ unsorted:
   - libstoragemgmt-targetd-plugin 
   - libstoragemgmt-udev 
   - libstoragemgmt1 
-  - libstp2_3 
+  - libstp2_4 
   - libstroke-devel 
   - libstroke0 
   - libstrophe-devel 
@@ -17581,7 +17579,7 @@ unsorted:
   - libz-ng-compat1-32bit 
   - libz-ng2 
   - libz-ng2-32bit 
-  - libz3-4_15 
+  - libz3-5_0 
   - libz_rs1 
   - libzarchive0_1 
   - libzbar-devel 
@@ -20105,6 +20103,7 @@ unsorted:
   - nfpm-bash-completion 
   - nfpm-fish-completion 
   - nfpm-zsh-completion 
+  - nfs-tools-extra 
   - nfs4-acl-tools 
   - nfsidmap-devel 
   - nfswatch 
@@ -24358,7 +24357,6 @@ unsorted:
   - python3-vtk-openmpi4 
   - python3-xcb-proto-devel 
   - python3-yui 
-  - python3-z3 
   - python3-zbar 
   - python310 
   - python310-base 
@@ -24395,7 +24393,6 @@ unsorted:
   - python311-igwn-auth-utils 
   - python311-ipdb 
   - python311-keystonemiddleware 
-  - python311-mediafile 
   - python311-onnxruntime 
   - python311-oslo.cache 
   - python311-packaging 
@@ -24486,7 +24483,6 @@ unsorted:
   - python313-Django 
   - python313-Django4 
   - python313-Django5 
-  - python313-Django6 
   - python313-Dumper 
   - python313-Durus 
   - python313-EasyProcess 
@@ -25903,6 +25899,7 @@ unsorted:
   - python313-fastimport 
   - python313-fastjsonschema 
   - python313-fastmcp 
+  - python313-fastmcp-remote 
   - python313-fastmcp-slim 
   - python313-fastnumbers 
   - python313-fastparquet 
@@ -26796,8 +26793,6 @@ unsorted:
   - python313-numericalunits 
   - python313-numexpr 
   - python313-numpy-devel 
-  - python313-numpy1 
-  - python313-numpy1-devel 
   - python313-numpydoc 
   - python313-nvim-remote 
   - python313-nwdiag 
@@ -27017,6 +27012,7 @@ unsorted:
   - python313-pikepdf 
   - python313-pilkit 
   - python313-pillow-heif 
+  - python313-pillow-jxl-plugin 
   - python313-pims 
   - python313-pingparsing 
   - python313-pip-api 
@@ -27219,6 +27215,7 @@ unsorted:
   - python313-pyemd 
   - python313-pyenchant 
   - python313-pyerfa 
+  - python313-pyexiv2 
   - python313-pyexmdb 
   - python313-pyface 
   - python313-pyfakefs 
@@ -27239,6 +27236,7 @@ unsorted:
   - python313-pygments-ansi-color 
   - python313-pygments-pytest 
   - python313-pygn 
+  - python313-pygount 
   - python313-pygraphviz 
   - python313-pygtkspellcheck 
   - python313-pyham_ax25 
@@ -28386,6 +28384,7 @@ unsorted:
   - python313-yt 
   - python313-yt-dlp 
   - python313-ytmusicapi 
+  - python313-z3 
   - python313-zarr 
   - python313-zc.buildout 
   - python313-zc.customdoctests 
@@ -28460,7 +28459,6 @@ unsorted:
   - python314-Django 
   - python314-Django4 
   - python314-Django5 
-  - python314-Django6 
   - python314-Dumper 
   - python314-Durus 
   - python314-EasyProcess 
@@ -29912,6 +29910,7 @@ unsorted:
   - python314-fastimport 
   - python314-fastjsonschema 
   - python314-fastmcp 
+  - python314-fastmcp-remote 
   - python314-fastmcp-slim 
   - python314-fastnumbers 
   - python314-fastparquet 
@@ -30827,8 +30826,6 @@ unsorted:
   - python314-numexpr 
   - python314-numpy 
   - python314-numpy-devel 
-  - python314-numpy1 
-  - python314-numpy1-devel 
   - python314-numpydoc 
   - python314-nvim-remote 
   - python314-nwdiag 
@@ -31050,6 +31047,7 @@ unsorted:
   - python314-pikepdf 
   - python314-pilkit 
   - python314-pillow-heif 
+  - python314-pillow-jxl-plugin 
   - python314-pims 
   - python314-pingparsing 
   - python314-pip 
@@ -31265,6 +31263,7 @@ unsorted:
   - python314-pyemd 
   - python314-pyenchant 
   - python314-pyerfa 
+  - python314-pyexiv2 
   - python314-pyexmdb 
   - python314-pyface 
   - python314-pyfakefs 
@@ -31287,6 +31286,7 @@ unsorted:
   - python314-pygments-ansi-color 
   - python314-pygments-pytest 
   - python314-pygn 
+  - python314-pygount 
   - python314-pygraphviz 
   - python314-pygtkspellcheck 
   - python314-pyham_ax25 
@@ -32457,6 +32457,7 @@ unsorted:
   - python314-yq 
   - python314-yt 
   - python314-ytmusicapi 
+  - python314-z3 
   - python314-zarr 
   - python314-zc.buildout 
   - python314-zc.customdoctests 
@@ -33311,6 +33312,10 @@ unsorted:
   - redhat-overpass-mono-fonts 
   - redis 
   - redis++-devel 
+  - redis-bloom 
+  - redis-json 
+  - redis-search 
+  - redis-timeseries 
   - redland 
   - redland-storage-postgresql 
   - redminecli 
@@ -33671,6 +33676,7 @@ unsorted:
   - rt-tests 
   - rtags 
   - rtaudio-devel 
+  - rtk 
   - rtl-sdr 
   - rtl-sdr-devel 
   - rtl-sdr-udev 
@@ -34551,6 +34557,7 @@ unsorted:
   - skupper-fish-completion 
   - skupper-zsh-completion 
   - sl 
+  - slack-mcp-server 
   - slade 
   - slang-devel 
   - slang-slsh 
