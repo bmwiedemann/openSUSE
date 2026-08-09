@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Aug  7 22:30:05 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.72.0:
+  - Features
+    * feat: Fix multiple security vulns thanks to secur0.com
+    * feat: Add shellQuote and shellQuoteList template funcs
+    * feat: Add gopassCat template function
+    * feat: Add debugf template function
+  - Fixes
+    * fix: Tighten permissions on temporary files
+    * fix: Ensure HTTP cache dir is private
+    * fix: Disallow relative paths with /.. suffix
+    * fix: Disallow .. in ignore and remove patterns
+    * fix: Disallow .. paths in mackup files
+    * fix: Disallow filenames that resolve to .
+    * fix: Improve handling of untrusted relative paths
+    * fix: Disallow .. paths in .chezmoiroot
+    * fix: Reject negative format-indent-width template directives
+    * fix: Ensure that secret keyring get command always writes a private file
+    * fix: Ensure that age-keygen always writes a private file
+    * fix: Make persistent state directory private by default
+    * fix: Prevent directory escape in tar and rar archives
+    * fix: Disallow file and dir names that resolve to ..
+  - Documentation
+    * docs: Use more robust quoting functions in examples
+
+-------------------------------------------------------------------
 Tue Jul 21 16:35:21 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.71.1:
