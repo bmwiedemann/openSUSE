@@ -92,7 +92,7 @@
 %bcond_with system_curl
 %endif
 Name:           libreoffice
-Version:        26.2.5.1
+Version:        26.2.5.2
 Release:        0
 Summary:        A Free Office Suite (Framework)
 License:        LGPL-3.0-or-later AND MPL-2.0+
