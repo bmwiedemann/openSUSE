@@ -63,4 +63,20 @@
     <comment></comment>
     <requestid>1335243</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1c601a662d8a3a87735b0989d7b14b31</srcmd5>
+    <version>0.56.0</version>
+    <time>1786304677</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.56.0 (from 0.50.0). Supersedes SR 1370351, which carried the identical tree; the only change is the changelog, which now also records CVE-2025-22620 (boo#1236139) as a bug this version is not affected by (gix-worktree-state is 0.33.0, far above the 0.17.0 that fixed the world-writable checkout of executable files).
+
+Security: this pulls in the fixes released with gitoxide 0.52.1 and gix 0.83.0, most notably CVE-2026-40034 (boo#1266434), where the CommandForbiddenInModules trust check could be bypassed in gix_submodule::File::update(), allowing arbitrary command execution from a crafted .gitmodules file. Also fixed: a submodule name validation bypass allowing traversal out of .git/modules with credential disclosure, symlinked .gitmodules being followed from outside the repository, several DoS vectors in gix-pack, and HTTP credentials leaking to a redirected host in the curl transport.
+
+NOTE FOR LEGAL REVIEW: License changes from 'Apache-2.0 OR MIT' to '(Apache-2.0 OR MIT) AND MPL-2.0'. This is a correction, not a new obligation - uluru (MPL-2.0) was already statically linked in 0.50.0, reached via gix-pack. The derivation is recorded in a Legal-Review-Notice comment above the tag, re-derived with 'cargo tree --offline -p gitoxide -e normal' over the 500-crate vendored tree (254 in the linked graph). r-efi is absent from the Linux graph. MPL-2.0 section 3.2 is satisfied because vendor.tar.zst ships in the src.rpm.
+
+Also: require rust &gt;= 1.85 as upstream declares (edition 2024), build against pkgconfig(openssl), drop the Group tag, and follow the upstream repository move to the GitoxideLabs organisation.
+
+Built and verified on aarch64: rpmlint 0 errors / 0 warnings / 0 badness, %check green, source_validator clean.</comment>
+    <requestid>1370355</requestid>
+  </revision>
 </revisionlist>

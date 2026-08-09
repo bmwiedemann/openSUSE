@@ -17,18 +17,30 @@
 
 
 Name:           gitoxide
-Version:        0.50.0
+Version:        0.56.0
 Release:        0
 Summary:        An idiomatic & safe pure-Rust implementation of Git
-License:        Apache-2.0 OR MIT
-Group:          Development/Tools/Version Control
-URL:            https://github.com/Byron/gitoxide
-Source0:        https://github.com/Byron/gitoxide/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# Legal-Review-Notice: gitoxide itself is "Apache-2.0 OR MIT", but the
+# binaries statically link the vendored Rust dependencies. Derived on this
+# re-vendor with "cargo tree --offline -p gitoxide -e normal" over the
+# vendored tree (500 crates, 254 in the linked graph): the only copyleft
+# licence in the graph is MPL-2.0, from uluru, an LRU cache pulled in via
+# gix-pack (itself reached through gitoxide-core, gix and gix-odb).
+# Everything else is permissive (MIT, Apache-2.0, Unicode-3.0, BSD, ISC,
+# Zlib, Unlicense, 0BSD, CC0-1.0, BSL-1.0, CDLA-Permissive-2.0). r-efi
+# offers an LGPL-2.1-or-later option but is UEFI-target-only and is absent
+# from the Linux graph. MPL-2.0 section 3.2 is satisfied because the
+# complete vendor.tar.zst ships in the src.rpm.
+License:        (Apache-2.0 OR MIT) AND MPL-2.0
+URL:            https://github.com/GitoxideLabs/gitoxide
+Source0:        https://github.com/GitoxideLabs/gitoxide/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
 BuildRequires:  cmake
-BuildRequires:  openssl-devel
-BuildRequires:  rust >= 1.82.0
+BuildRequires:  pkgconfig
+# Upstream Cargo.toml: rust-version = "1.85" (edition 2024)
+BuildRequires:  rust >= 1.85
+BuildRequires:  pkgconfig(openssl)
 ExclusiveArch:  %{rust_arches}
 
 %description
@@ -42,7 +54,7 @@ and unsurprising developer experience.
 %{cargo_build}
 
 %install
-%{cargo_install}
+%cargo_install
 
 %check
 %{cargo_test}
