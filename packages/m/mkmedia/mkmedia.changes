@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Fri Aug 7 11:09:40 UTC 2026 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/mkmedia#103
+- integrate parti update: fix iso9660 detection issues with latest
+  libblkid (bsc#1274273)
+- 6.1
+
+--------------------------------------------------------------------
 Tue Mar 31 14:02:05 UTC 2026 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/mksusecd#102
