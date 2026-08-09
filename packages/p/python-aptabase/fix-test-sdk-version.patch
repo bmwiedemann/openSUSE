@@ -1,0 +1,45 @@
+From f41eec5c809c08862b71903dee77266eb341c92f Mon Sep 17 00:00:00 2001
+From: Cristian Pufu <cristian.pufu@uipath.com>
+Date: Fri, 12 Dec 2025 19:15:13 +0200
+Subject: [PATCH] fix: sdk version in tests
+
+---
+ tests/test_client.py | 2 +-
+ tests/test_models.py | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/tests/test_client.py b/tests/test_client.py
+index 26fd0ad..270a332 100644
+--- a/tests/test_client.py
++++ b/tests/test_client.py
+@@ -604,7 +604,7 @@ def test_system_properties_defaults(self):
+         assert props.device_model is not None
+         assert props.is_debug is False
+         assert props.app_version == "1.0.0"
+-        assert props.sdk_version == "0.0.1"
++        assert props.sdk_version == "aptabase-python@0.1.0"
+ 
+     def test_system_properties_custom(self):
+         """Test SystemProperties with custom values."""
+diff --git a/tests/test_models.py b/tests/test_models.py
+index d58e1c6..54f935a 100644
+--- a/tests/test_models.py
++++ b/tests/test_models.py
+@@ -22,7 +22,7 @@ def test_default_initialization(self):
+         assert props.device_model == platform.machine()
+         assert props.is_debug is False
+         assert props.app_version == "1.0.0"
+-        assert props.sdk_version == "0.0.1"
++        assert props.sdk_version == "aptabase-python@0.1.0"
+ 
+     def test_custom_initialization(self):
+         """Test SystemProperties with custom values."""
+@@ -52,7 +52,7 @@ def test_partial_initialization(self):
+         assert props.is_debug is True
+         # Defaults should still apply
+         assert props.locale == "en-US"
+-        assert props.sdk_version == "0.0.1"
++        assert props.sdk_version == "aptabase-python@0.1.0"
+ 
+     def test_to_dict_structure(self):
+         """Test to_dict returns correct structure."""
