@@ -1,0 +1,6 @@
+<package name="python-ezgb" project="openSUSE:Factory">
+  <title>python-ezgb</title>
+  <description>A standalone Python library for working with https://github.com/git-bug/git-bug repositories. It lets you list, create, query, and update bugs that are stored as native git objects -- no external database required.
+	</description>
+  <url>https://git.kernel.org/pub/scm/utils/ezgb/ezgb.git/</url>
+</package>
