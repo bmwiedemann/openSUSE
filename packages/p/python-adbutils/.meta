@@ -1,0 +1,4 @@
+<package name="python-adbutils" project="openSUSE:Factory">
+  <title>Python adb library for adb service</title>
+  <description>pure python adb library for google adb service.</description>
+</package>

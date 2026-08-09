@@ -1,0 +1,151 @@
+From 68cc0f3f0ca29b9601c75a1aebbb11126d705a72 Mon Sep 17 00:00:00 2001
+From: Guo Yunhe <i@guoyunhe.me>
+Date: Sun, 2 Aug 2026 12:17:30 +0800
+Subject: [PATCH 1/2] refactor: remove useless shebang
+
+---
+ adbutils/_adb.py         | 1 -
+ adbutils/_deprecated.py  | 1 -
+ adbutils/_device.py      | 1 -
+ adbutils/_device_base.py | 1 -
+ adbutils/_proto.py       | 1 -
+ adbutils/_version.py     | 1 -
+ adbutils/errors.py       | 1 -
+ adbutils/install.py      | 1 -
+ adbutils/screenrecord.py | 1 -
+ adbutils/screenshot.py   | 1 -
+ adbutils/shell.py        | 1 -
+ adbutils/sync.py         | 1 -
+ 12 files changed, 12 deletions(-)
+
+diff --git a/adbutils/_adb.py b/adbutils/_adb.py
+index 2b263d7..85d57bd 100644
+--- a/adbutils/_adb.py
++++ b/adbutils/_adb.py
+@@ -1,4 +1,3 @@
+-#!/usr/bin/env python3
+ # -*- coding: utf-8 -*-
+ 
+ """Created on Fri May 06 2022 10:58:29 by codeskyblue
+diff --git a/adbutils/_deprecated.py b/adbutils/_deprecated.py
+index aa8aed8..0c53b47 100644
+--- a/adbutils/_deprecated.py
++++ b/adbutils/_deprecated.py
+@@ -1,4 +1,3 @@
+-#!/usr/bin/env python3
+ # -*- coding: utf-8 -*-
+ 
+ """Created on Mon Apr 08 2024 12:21:30 by codeskyblue
+diff --git a/adbutils/_device.py b/adbutils/_device.py
+index 0c39a3a..38bf34c 100644
+--- a/adbutils/_device.py
++++ b/adbutils/_device.py
+@@ -1,4 +1,3 @@
+-#!/usr/bin/env python3
+ # -*- coding: utf-8 -*-
+ """Created on Fri May 06 2022 10:33:39 by codeskyblue
+ """
+diff --git a/adbutils/_device_base.py b/adbutils/_device_base.py
+index 908839a..1f8dd01 100644
+--- a/adbutils/_device_base.py
++++ b/adbutils/_device_base.py
+@@ -1,4 +1,3 @@
+-#!/usr/bin/env python3
+ # -*- coding: utf-8 -*-
+ 
+ from __future__ import annotations
+diff --git a/adbutils/_proto.py b/adbutils/_proto.py
+index 1a4ed32..09bae4c 100644
+--- a/adbutils/_proto.py
++++ b/adbutils/_proto.py
+@@ -1,4 +1,3 @@
+-#!/usr/bin/env python3
+ # -*- coding: utf-8 -*-
+ """Created on Fri May 06 2022 11:39:40 by codeskyblue
+ """
+diff --git a/adbutils/_version.py b/adbutils/_version.py
+index 5a9cb99..b8acdf9 100644
+--- a/adbutils/_version.py
++++ b/adbutils/_version.py
+@@ -1,4 +1,3 @@
+-#!/usr/bin/env python3
+ # -*- coding: utf-8 -*-
+ 
+ """Created on Fri May 06 2022 10:54:04 by codeskyblue
+diff --git a/adbutils/errors.py b/adbutils/errors.py
+index f6c5872..a67743f 100644
+--- a/adbutils/errors.py
++++ b/adbutils/errors.py
+@@ -1,4 +1,3 @@
+-#!/usr/bin/env python3
+ # -*- coding: utf-8 -*-
+ 
+ """Created on Fri May 06 2022 19:04:40 by codeskyblue
+diff --git a/adbutils/install.py b/adbutils/install.py
+index 2f3afeb..79700eb 100644
+--- a/adbutils/install.py
++++ b/adbutils/install.py
+@@ -1,4 +1,3 @@
+-#!/usr/bin/env python3
+ # -*- coding: utf-8 -*-
+ 
+ """Created on Sun Apr 07 2024 20:07:44 by codeskyblue
+diff --git a/adbutils/screenrecord.py b/adbutils/screenrecord.py
+index e283f99..5102007 100644
+--- a/adbutils/screenrecord.py
++++ b/adbutils/screenrecord.py
+@@ -1,4 +1,3 @@
+-#!/usr/bin/env python3
+ # -*- coding: utf-8 -*-
+ 
+ """Created on Sun Apr 07 2024 19:29:55 by codeskyblue
+diff --git a/adbutils/screenshot.py b/adbutils/screenshot.py
+index c94d3aa..b571a15 100644
+--- a/adbutils/screenshot.py
++++ b/adbutils/screenshot.py
+@@ -1,4 +1,3 @@
+-#!/usr/bin/env python3
+ # -*- coding: utf-8 -*-
+ 
+ """Created on Sun Apr 07 2024 19:52:19 by codeskyblue
+diff --git a/adbutils/shell.py b/adbutils/shell.py
+index c184f3b..ff71d75 100644
+--- a/adbutils/shell.py
++++ b/adbutils/shell.py
+@@ -1,4 +1,3 @@
+-#!/usr/bin/env python3
+ # -*- coding: utf-8 -*-
+ 
+ """Created on Sun Apr 07 2024 18:44:52 by codeskyblue
+diff --git a/adbutils/sync.py b/adbutils/sync.py
+index 021a427..ebdfb19 100644
+--- a/adbutils/sync.py
++++ b/adbutils/sync.py
+@@ -1,4 +1,3 @@
+-#!/usr/bin/env python3
+ # -*- coding: utf-8 -*-
+ 
+ """Created on Sun Apr 07 2024 19:38:48 by codeskyblue
+
+From 8f731c6fd86916d6e44b26d2d58e2eed06ff6fe1 Mon Sep 17 00:00:00 2001
+From: Guo Yunhe <i@guoyunhe.me>
+Date: Sun, 2 Aug 2026 12:30:24 +0800
+Subject: [PATCH 2/2] fix: python3 shebang and executeable bit
+
+---
+ adbutils/pidcat.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+ mode change 100644 => 100755 adbutils/pidcat.py
+
+diff --git a/adbutils/pidcat.py b/adbutils/pidcat.py
+old mode 100644
+new mode 100755
+index 9162e91..160d882
+--- a/adbutils/pidcat.py
++++ b/adbutils/pidcat.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python -u
++#!/usr/bin/python3 -u
+ '''
+ Copyright 2009, The Android Open Source Project
+ 
