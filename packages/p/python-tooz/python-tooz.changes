@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Wed Aug  5 14:47:16 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 9.0.1:
+  * retry: Don't treat bool as a numeric stop_max_delay
+  * zookeeper: Fix wrong member used by get_member_capabilities
+  * Remove consul driver
+  * Deprecate PostgreSQL driver
+  * Deprecate Kubernetes driver
+  * Improve get_coordinator annotations
+  * Remove redundant type docstrings
+  * Remove unnecessary debtcollector dependency
+  * zuul: Use openstack-python3-next-jobs template
+  * pre-commit: Bump versions
+  * Add Python 3.14 support
+  * tests: Fix ProcessPoolExecutor race on Python 3.14+
+  * Drop Python 3.10
+  * Fix mypy errors
+  * trivial: Add explanation to test scripts
+  * typing: Enable strict checking
+  * typing: Add py.typed, Typed classifier
+  * tox: Use new constraints option
+  * typing: Add type hints to tooz.driver.redis
+  * redis: Flatten py3-only logic
+  * redis: Use bytes lock name
+  * typing: Add type hints to tooz.driver.file
+  * typing: Add type hints to tooz.driver.zookeeper
+  * zookeeper: Normalize path generation
+  * zookeeper: Remove unnecessary staticmethod wrappers
+  * typing: Add type hints to tooz.driver.kubernetes
+  * typing: Add type hints to tooz.driver.memcached
+  * typing: Add type hints to tooz.driver.ipc
+  * typing: Add type hints to tooz.driver.pgsql
+  * typing: Add type hints to tooz.driver.mysql
+  * typing: Add type hints to tooz.driver.etcd3gw
+  * typing: Add type hints to tooz.coordination, tooz.partitioner
+  * coordination: Change join_group capabilities default
+  * typing: Add type hints to tooz.hashring
+  * typing: Add type hints to tooz.locking
+  * typing: Add type hints to tooz._retry
+  * typing: Add type hints to tooz.utils
+  * Remove etcd driver
+  * zookeeper: Inline handler methods
+  * zookeeper: Track joined groups to fix leave-on-stop race
+  * typing: Normalize instance and static methods
+  * gitignore: Ignore pifpaf artifacts
+  * Decode provided IDs for exceptions, event repr
+  * typing: Add missing dependency
+  * tests: Add test for str IDs
+  * tests: Validate behavior of file driver with str IDs
+  * Fix descriptions of Etcd3GW driver
+  * typing: Add argument to tooz.NotImplementedError
+  * Add initial typing
+  * ruff: Configure hacking as external linter
+
+-------------------------------------------------------------------
 Wed Mar  4 08:39:45 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.1.0:

@@ -17,7 +17,7 @@
 
 
 Name:           python-tooz
-Version:        8.1.0
+Version:        9.0.1
 Release:        0
 Summary:        Coordination library for distributed systems
 License:        Apache-2.0

@@ -334,4 +334,41 @@
   * Allow overriding etcd version in tests</comment>
     <requestid>1336292</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>a17651367f4d38a3841568eaac1b6961</srcmd5>
+    <version>9.0.1</version>
+    <time>1786304096</time>
+    <user>anag_factory</user>
+    <comment>- update to 9.0.1:
+  * retry: Don't treat bool as a numeric stop_max_delay
+  * zookeeper: Fix wrong member used by get_member_capabilities
+  * Remove consul driver
+  * Deprecate PostgreSQL driver
+  * Deprecate Kubernetes driver
+  * Improve get_coordinator annotations
+  * Remove redundant type docstrings
+  * Remove unnecessary debtcollector dependency
+  * zuul: Use openstack-python3-next-jobs template
+  * pre-commit: Bump versions
+  * Add Python 3.14 support
+  * tests: Fix ProcessPoolExecutor race on Python 3.14+
+  * Drop Python 3.10
+  * Fix mypy errors
+  * trivial: Add explanation to test scripts
+  * typing: Enable strict checking
+  * typing: Add py.typed, Typed classifier
+  * tox: Use new constraints option
+  * typing: Add type hints to tooz.driver.redis
+  * redis: Flatten py3-only logic
+  * redis: Use bytes lock name
+  * typing: Add type hints to tooz.driver.file
+  * typing: Add type hints to tooz.driver.zookeeper
+  * zookeeper: Normalize path generation
+  * zookeeper: Remove unnecessary staticmethod wrappers
+  * typing: Add type hints to tooz.driver.kubernetes
+  * typing: Add type hints to tooz.driver.memcached
+  * typing: Add type hints to tooz.driver.ipc
+  * typing: Add type hints to tooz.driver.pgsql</comment>
+    <requestid>1369789</requestid>
+  </revision>
 </revisionlist>
