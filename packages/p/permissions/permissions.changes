@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 05 13:10:00 UTC 2026 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Update to version 1699_20260805:
+  * profiles: Make uucp work even with latest chkstat (bsc#1273735)
+
+-------------------------------------------------------------------
 Tue Jul 28 10:45:25 UTC 2026 - Wolfgang Frisch <wolfgang.frisch@suse.com>
 
 - Update to version 1699_20260728:
