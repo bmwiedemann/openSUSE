@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Aug  6 21:51:50 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.5.4:
+  * Trace list packing optimization and improvement
+  * Resolve year and month in ms_gmtime64_r() with closed-form
+    arithmetic
+  * Return MS_ENDOFFILE instead of MS_NOTSEED when selections skip
+    every record in a stream
+
+-------------------------------------------------------------------
 Thu Jul 30 18:12:18 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.5.3:
