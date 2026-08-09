@@ -12,3 +12,4 @@ EnvironmentFile=-/etc/sysconfig/ollama
 
 [Install]
 WantedBy=default.target
+

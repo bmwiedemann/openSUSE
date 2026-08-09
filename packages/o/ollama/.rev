@@ -878,4 +878,41 @@ because we don't need git-web and the other stuff here (forwarded request 125417
   * llm: ignore llama-server SSE ping comments</comment>
     <requestid>1358173</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>45ee95ecf0771fa7e6e1e59d4b7f547e</srcmd5>
+    <version>0.32.3</version>
+    <time>1786304537</time>
+    <user>anag_factory</user>
+    <comment>- Add missing service_del_postun call for ollama.service
+
+- Add the empty %changelog section openSUSE:Factory requires: without it
+  factory-auto declines the submission outright
+- Reference AGENTS.md as a source: factory-auto also declines any file
+  in the package that the spec does not mention
+
+- Update to version 0.32.3
+  * Fixed model downloads that stall before sending data.
+  * Improved integrations: restored Claude Code Channels,
+    fixed Anthropic thinking streams, and made Hermes Desktop
+    respect --force-build.
+  * Expanded GPU support with CUDA on Windows ARM64, B200 support
+    through CUDA 12, and lower memory use on Linux CUDA/ROCm iGPUs.
+  * Added chat, thinking, and tool calling support for Laguna 2.1
+    models, including a Metal inference fix.
+  * Fixed GLM tool calls being silently dropped at the end of generation.
+  * Updated the MLX and llama.cpp engines.
+
+- Update to version 0.32.1
+  * Improved Gemma 4 tool calling and multi-turn reasoning,
+    including more reliable tool-response continuations
+  * Fixed a recurrent MLX model cache leak that could increase
+    memory use across requests, and improved cache snapshot performance
+  * MLX text model loading now respects OLLAMA_LOAD_TIMEOUT
+  * Agent web search and fetch now tell users to run ollama
+    signin when authentication is required
+  * The interactive agent now receives the current working directory
+    for better project context
+  * Fixed ollama launch so choosing Pick another model for a</comment>
+    <requestid>1370283</requestid>
+  </revision>
 </revisionlist>

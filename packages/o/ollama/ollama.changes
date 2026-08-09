@@ -1,4 +1,154 @@
 -------------------------------------------------------------------
+Tue Aug  4 12:48:11 UTC 2026 - VaiTon <eyadlorenzo@gmail.com>
+
+- Add missing service_del_postun call for ollama.service
+
+-------------------------------------------------------------------
+Sat Aug  1 19:55:48 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Add the empty %changelog section openSUSE:Factory requires: without it
+  factory-auto declines the submission outright
+- Reference AGENTS.md as a source: factory-auto also declines any file
+  in the package that the spec does not mention
+
+-------------------------------------------------------------------
+Sat Jul 25 12:38:55 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Update to version 0.32.3
+  * Fixed model downloads that stall before sending data.
+  * Improved integrations: restored Claude Code Channels,
+    fixed Anthropic thinking streams, and made Hermes Desktop
+    respect --force-build.
+  * Expanded GPU support with CUDA on Windows ARM64, B200 support
+    through CUDA 12, and lower memory use on Linux CUDA/ROCm iGPUs.
+  * Added chat, thinking, and tool calling support for Laguna 2.1
+    models, including a Metal inference fix.
+  * Fixed GLM tool calls being silently dropped at the end of generation.
+  * Updated the MLX and llama.cpp engines.
+
+-------------------------------------------------------------------
+Fri Jul 17 06:26:35 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Update to version 0.32.1
+  * Improved Gemma 4 tool calling and multi-turn reasoning,
+    including more reliable tool-response continuations
+  * Fixed a recurrent MLX model cache leak that could increase
+    memory use across requests, and improved cache snapshot performance
+  * MLX text model loading now respects OLLAMA_LOAD_TIMEOUT
+  * Agent web search and fetch now tell users to run ollama
+    signin when authentication is required
+  * The interactive agent now receives the current working directory
+    for better project context
+  * Fixed ollama launch so choosing Pick another model for a
+    deprecated model passed with --model opens the model picker
+  * Updated VS Code setup documentation for the official Ollama extension
+
+-------------------------------------------------------------------
+Tue Jul 14 09:31:00 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Update to version 0.32.0
+  * New interactive agent experience: running ollama now launches
+    an agent to help you code and delegate work
+  * Renamed the Codex App integration to ChatGPT: use ollama launch
+    chatgpt (and --restore to return to your usual ChatGPT profile)
+  * Simplified integration selection: the ollama launch menu now
+    only offers the most popular integrations (other integrations
+    can be accessed through ollama launch
+  * Warns before launching older agent models: CodeLlama, Qwen2.5(-coder),
+    Llama 3.x, Mistral, StarCoder, and the base DeepSeek-R1 tags now
+    prompt a deprecation warning before ollama launch continues
+
+-------------------------------------------------------------------
+Thu Jul  9 05:53:42 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Update to version 0.31.2
+  * Enabled flash attention on older NVIDIA GPUs (compute capability 6.x)
+  * iGPU can now offload vision models with padding to fit available memory
+  * Fixed structured output for thinking models when thinking is disabled
+  * Hardened GGUF model creation
+  * ollama launch for Claude Code now disables telemetry by default
+  * Fixed loading models on paths with non-UTF-8 characters
+  * Updated the MLX and llama.cpp engines
+
+-------------------------------------------------------------------
+Tue Jul  7 15:20:44 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Define a build counter sync tag, to ensure all flavors have
+  the same build number
+
+-------------------------------------------------------------------
+Tue Jul  7 15:20:44 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Define a build counter sync tag, to ensure all flavors have
+  the same build number
+
+-------------------------------------------------------------------
+Thu Jul  2 06:38:48 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Updated to version 0.31.1
+  * Tightened Gemma 4 MoE model loading in the MLX engine
+  * Updated the MLX engine to the latest version, including a new small-batch matmul kernel
+  * Updated the underlying llama.cpp engine to build 9840
+  * Improved Gemma 4 multi-token prediction (MTP) performance
+  * new versions of llama.cpp and mlx
+
+-------------------------------------------------------------------
+Sat Jun 27 08:59:05 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Update to 0.30.11:
+  * launch: add thinking capability detection to opencode
+  * launch: auto-install Claude Code
+  * launch: auto-install opencode when missing
+  * discover: fix inverted iGPU/dGPU Vulkan classification on Windows hybrid graphics
+  * mlxrunner: unify and tune speculative decoding
+  * launch/codex: detect model drift when Codex App UI switches
+  * llama: add sm_86 architecture to cuda_v13_windows preset
+  * llm: size mmproj offload
+  * docs: document max think level
+  * llm: preserve generation headroom for shifted prompts
+  * llama: default qwen2.5vl window attention metadata
+  * llm: use host Vulkan loader on Windows
+  * mlx: update and fix CUDA JIT packaging
+  * llm: fix ollama ps double-counting mmap'd weights on partial offload
+  * docs: redesign docs landing and integrations overview
+  * server: align generate with native chat templates
+  * jetson: add CC 87 for CUDA v13
+  * llama.cpp version update
+
+- Updated generated using pbuild-ai
+  * Helper script provided in tool-scripts/ directory
+    Use    pbuild-ai --allow-tool-scripts     to enable it.
+
+-------------------------------------------------------------------
+Fri Jun 19 07:18:20 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Update to 0.30.10:
+  * Updated the underlying llama.cpp engine to build 9672
+
+-------------------------------------------------------------------
+Wed Jun 17 09:46:46 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Update to 0.30.9:
+  * Support for Cohere2Moe architecture
+  * Fixed LFM2 parser/render for cases where thinking was not emitted
+  * Fixed issue where ollama launch claude and other coding agent or assistant use cases would only output one token
+  * Ollama will now return an error if a single message is larger than the current context window
+- switch to tar balls because we use git lfs now
+
+-------------------------------------------------------------------
+Sun Jun 14 12:54:45 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Update to 0.30.8:
+  * Fixed ollama launch selecting the wrong provider in some cases
+  * Improved prompt caching by decoupling it from context shift
+    for better KV cache reuse
+  * More stable MLX inference with hardened linear and embedding layers
+  * MLX runner now creates snapshots during prompt processing and
+    speculative decoding for improved reliability
+  * Improved recurrent model support with per-boundary states from
+    the gated-delta kernels
+
+-------------------------------------------------------------------
 Sun Jun  7 07:35:13 UTC 2026 - Adrian Schröter <adrian@suse.de>
 
 - Update to 0.30.6:
@@ -46,7 +196,7 @@ Wed Jun  3 05:08:57 UTC 2026 - Adrian Schröter <adrian@suse.de>
 Fri May 22 09:08:55 UTC 2026 - Adrian Schröter <adrian@suse.de>
 
 - Update to version 0.30.0
-  NOTE: quite some models are currently unsupported due to 
+  NOTE: quite some models are currently unsupported due to
         format changes.
 - llama.cpp source is not bundled anymore. Instead a git url
   and tag is used. We vendor these sources via a _service.

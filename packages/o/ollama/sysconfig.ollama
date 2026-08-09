@@ -45,8 +45,8 @@ OLLAMA_RUNNERS_DIR=
 OLLAMA_TMPDIR=
 
 ## Type:           string
-## Description:    Models to be loaded by default
-## Default:        ""
+## Description:    Storage loction of the models
+## Default:        "/var/lib/ollama"
 ## ServiceRestart: ollama
 OLLAMA_MODELS=
 
@@ -55,4 +55,13 @@ OLLAMA_MODELS=
 ## Default:        ""
 ## ServiceRestart: ollama
 OLLAMA_ORIGINS=
+
+## Type:           int
+## Description:    Maximal context length ollama can handle
+## Default:
+##                 < 24 GiB VRAM: 4k context
+##                 24-48 GiB VRAM: 32k context
+##                 >= 48 GiB VRAM: 256k context
+## ServiceRestart: ollama
+OLLAMA_CONTEXT_LENGTH=
 
