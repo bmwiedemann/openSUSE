@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug  6 07:19:40 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.18.0
+  * regenerate google-cloud-s packages (#17086)
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Fri Mar 27 13:51:52 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.17.0
