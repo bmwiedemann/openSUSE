@@ -228,4 +228,16 @@ the list of changes is still too long to enumerate here.
   the list of changes is still too long to enumerate here.</comment>
     <requestid>1368479</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>91f3be72a79a7b15ac1365debf693eb0</srcmd5>
+    <version>10.1.13</version>
+    <time>1786304513</time>
+    <user>anag_factory</user>
+    <comment>- Update to 10.1.13:
+  Complete changelog is
+  https://www.swi-prolog.org/ChangeLog?branch=development&amp;from=10.1.12&amp;to=10.1.13
+  and upstream still doesn’t provide any abbreviated version, and
+  the list of changes is still too long to enumerate here.</comment>
+    <requestid>1370254</requestid>
+  </revision>
 </revisionlist>
