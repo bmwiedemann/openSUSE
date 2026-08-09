@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Aug  4 11:25:16 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.4:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.4
+- Changes since 6.7.3:
+  * applets/diskquota: Properly set ItemDelegate content (kde#523618)
+  * [Vietnamese Lunar Calendar] Fix month offset after leap month
+  * applets/kickerdash: add BugReportUrl
+  * applets/colorpicker: correct bug report URL (kde#522459)
+  * applets/mediaframe: Fix media not updating when watched file changes on disk (kde#521538)
+  * Update version for new release 6.7.4
+
+-------------------------------------------------------------------
 Tue Jul 14 12:22:21 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.7.3:
