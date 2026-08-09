@@ -1,7 +1,7 @@
 #
 # spec file for package gap-factint
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,16 @@
 
 
 Name:           gap-factint
-Version:        1.6.3
+Version:        1.7.0
 Release:        0
 Summary:        GAP: Advanced Methods for Factoring Integers
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://gap-packages.github.io/FactInt/
-
 Source:         https://github.com/gap-packages/FactInt/releases/download/v%version/FactInt-%version.tar.gz
 BuildArch:      noarch
 BuildRequires:  gap-rpm-devel
-Requires:       gap-core >= 4.8.8
-Requires:       gap-gapdoc >= 1.6
+Requires:       gap-core >= 4.10
 
 %description
 FactInt is a GAP 4 package which provides routines for factoring

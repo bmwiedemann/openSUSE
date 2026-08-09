@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Aug  9 06:59:26 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.7.0
+  * Update Brent's tables of factors of `b^k +/- 1`. maintained by
+    Jonathan Crombie. The full collection has grown to over 280 MB,
+    which is too much to distribute; the tables shipped with
+    FactInt are therefore restricted to those `(b,k)` with `b <=
+    100`, or `b` a prime below 1000, or `(b,k)` already covered by
+    FactInt 1.6.3. Use the `FetchBrentFactors` function to install
+    the full collection.
+
+-------------------------------------------------------------------
 Sat Jul 30 01:00:25 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.6.3
