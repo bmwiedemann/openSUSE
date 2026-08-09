@@ -616,4 +616,21 @@
   + Updated translations.</comment>
     <requestid>1362912</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>78e829b11e48534533bcadb0d34681e3</srcmd5>
+    <version>1.9.3</version>
+    <time>1786303906</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.9.3:
+  + AdwAboutDialog: Fix a bug with deselecting text in the legal
+    section
+  + AdwSidebar: Fix item suffixes ending up after the arrow in page
+    mode
+  + AdwTabOverview: Make sure we don't round corners in adaptive
+    preview
+  + AdwWindow/AdwApplicationWindow: Fix false minimum size warnings
+    in adaptive preview
+  + Updated translations.</comment>
+    <requestid>1369843</requestid>
+  </revision>
 </revisionlist>
