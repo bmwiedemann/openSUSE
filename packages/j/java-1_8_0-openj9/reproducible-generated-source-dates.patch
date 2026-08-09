@@ -1,0 +1,65 @@
+From: Bernhard M. Wiedemann <bwiedemann@suse.de>
+Subject: Use SOURCE_DATE_EPOCH for dates written into generated sources
+
+Two build tools stamp the current year into the copyright header of
+the sources they generate, all of which end up in the shipped src.zip:
+CopyrightHeaders in the CLDR converter (sun/util/resources/cldr/**)
+and EquivMapsGenerator (sun/util/locale/LocaleEquivalentMaps.java).
+Take the date from SOURCE_DATE_EPOCH when it is set and keep the
+current time otherwise. The year is still computed in
+America/Los_Angeles, as before, so only the instant changes.
+
+Same fix as in the java-1_8_0-openjdk package. The matching
+GenerateCharacter fix is the separate backport of JDK-8243985.
+
+Signed-off-by: Bernhard M. Wiedemann <bwiedemann@suse.de>
+
+
+diff --git a/jdk/make/src/classes/build/tools/cldrconverter/CopyrightHeaders.java b/jdk/make/src/classes/build/tools/cldrconverter/CopyrightHeaders.java
+index 1ea0186b..7c349ec0 100644
+--- a/jdk/make/src/classes/build/tools/cldrconverter/CopyrightHeaders.java
++++ b/jdk/make/src/classes/build/tools/cldrconverter/CopyrightHeaders.java
+@@ -145,8 +145,17 @@ class CopyrightHeaders {
+     }
+ 
+     private static int getYear() {
+-        return new GregorianCalendar(TimeZone.getTimeZone("America/Los_Angeles"),
+-                                         Locale.US).get(Calendar.YEAR);
++        GregorianCalendar cal =
++            new GregorianCalendar(TimeZone.getTimeZone("America/Los_Angeles"),
++                                  Locale.US);
++        String sourceDateEpoch = System.getenv("SOURCE_DATE_EPOCH");
++        if (sourceDateEpoch != null && !sourceDateEpoch.isEmpty()) {
++            try {
++                cal.setTimeInMillis(Long.parseLong(sourceDateEpoch.trim()) * 1000L);
++            } catch (NumberFormatException e) {
++            }
++        }
++        return cal.get(Calendar.YEAR);
+     }
+ 
+     // no instantiation
+diff --git a/jdk/make/src/classes/build/tools/generatelsrequivmaps/EquivMapsGenerator.java b/jdk/make/src/classes/build/tools/generatelsrequivmaps/EquivMapsGenerator.java
+index ba83f92a..7e732752 100644
+--- a/jdk/make/src/classes/build/tools/generatelsrequivmaps/EquivMapsGenerator.java
++++ b/jdk/make/src/classes/build/tools/generatelsrequivmaps/EquivMapsGenerator.java
+@@ -226,9 +226,16 @@ public class EquivMapsGenerator {
+         + "}";
+ 
+     private static String getOpenJDKCopyright() {
+-        int year = Calendar.getInstance(TimeZone
+-                .getTimeZone("America/Los_Angeles")).get(Calendar.YEAR);
+-        return String.format(Locale.US, COPYRIGHT, year);
++        Calendar cal = Calendar.getInstance(TimeZone
++                .getTimeZone("America/Los_Angeles"));
++        String sourceDateEpoch = System.getenv("SOURCE_DATE_EPOCH");
++        if (sourceDateEpoch != null && !sourceDateEpoch.isEmpty()) {
++            try {
++                cal.setTimeInMillis(Long.parseLong(sourceDateEpoch.trim()) * 1000L);
++            } catch (NumberFormatException e) {
++            }
++        }
++        return String.format(Locale.US, COPYRIGHT, cal.get(Calendar.YEAR));
+     }
+ 
+     /**

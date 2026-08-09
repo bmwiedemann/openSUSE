@@ -1,0 +1,97 @@
+From: Bernhard M. Wiedemann <bwiedemann@suse.de>
+Subject: Order OpenJ9 javadoc after the core API javadoc
+
+The openj9-only-* javadoc targets depend on OPENJ9_JAVADOC_MARKER,
+whose stated purpose is to make sure the core API javadoc - and with
+it the package-list file consumed by their -linkoffline options - is
+generated first. The corresponding non-"only" targets pass the same
+-linkoffline $(COREAPI_DOCSDIR)/ but carry no such dependency, so
+under parallel make they can run before package-list exists. javadoc
+then silently drops the external references, and whether e.g.
+java.lang.String renders as a link or as plain text in the platform
+docs depends on build scheduling.
+
+Add the core API index file as a prerequisite of those eight targets.
+The MGMT target gets the index file rather than the marker because the
+marker itself depends on OPENJ9_MGMT_INDEXALL_FILE, which would form a
+dependency cycle.
+
+Signed-off-by: Bernhard M. Wiedemann <bwiedemann@suse.de>
+
+
+diff --git a/closed/make/Javadoc.gmk b/closed/make/Javadoc.gmk
+index f26b1893..3ae3d4d5 100644
+--- a/closed/make/Javadoc.gmk
++++ b/closed/make/Javadoc.gmk
+@@ -88,7 +88,7 @@ openj9-sharedclassesdocs : $(OPENJ9_SHAREDCLASSES_INDEX_FILE)
+ $(OPENJ9_SHAREDCLASSES_INDEX_FILE): GET2DOCSDIR := $(PLATFORM_DOCSDIR)/..
+ 
+ # Run javadoc if the index file is out of date or missing
+-$(OPENJ9_SHAREDCLASSES_INDEX_FILE) : $(OPENJ9_SHAREDCLASSES_OPTIONS_FILE) $(OPENJ9_SHAREDCLASSES_PACKAGES_FILE)
++$(OPENJ9_SHAREDCLASSES_INDEX_FILE) : $(COREAPI_DOCSDIR)/index.html $(OPENJ9_SHAREDCLASSES_OPTIONS_FILE) $(OPENJ9_SHAREDCLASSES_PACKAGES_FILE)
+ 	$(prep-javadoc)
+ 	$(call JavadocSummary,$(OPENJ9_SHAREDCLASSES_OPTIONS_FILE),$(OPENJ9_SHAREDCLASSES_PACKAGES_FILE))
+ 	$(JAVADOC_CMD) -d $(@D) \
+@@ -138,7 +138,7 @@ openj9-gpudocs: $(OPENJ9_GPU_INDEX_FILE)
+ $(OPENJ9_GPU_INDEX_FILE) : GET2DOCSDIR := $(PLATFORM_DOCSDIR)/..
+ 
+ # Run javadoc if the index file is out of date or missing
+-$(OPENJ9_GPU_INDEX_FILE) : $(OPENJ9_GPU_OPTIONS_FILE) $(OPENJ9_GPU_PACKAGES_FILE)
++$(OPENJ9_GPU_INDEX_FILE) : $(COREAPI_DOCSDIR)/index.html $(OPENJ9_GPU_OPTIONS_FILE) $(OPENJ9_GPU_PACKAGES_FILE)
+ 	$(prep-javadoc)
+ 	$(call JavadocSummary,$(OPENJ9_GPU_OPTIONS_FILE),$(OPENJ9_GPU_PACKAGES_FILE))
+ 	$(JAVADOC_CMD) -d $(@D) \
+@@ -188,7 +188,7 @@ openj9-cudadocs : $(OPENJ9_CUDA_INDEX_FILE)
+ $(OPENJ9_CUDA_INDEX_FILE) : GET2DOCSDIR := $(PLATFORM_DOCSDIR)/..
+ 
+ # Run javadoc if the index file is out of date or missing
+-$(OPENJ9_CUDA_INDEX_FILE) : $(OPENJ9_CUDA_OPTIONS_FILE) $(OPENJ9_CUDA_PACKAGES_FILE)
++$(OPENJ9_CUDA_INDEX_FILE) : $(COREAPI_DOCSDIR)/index.html $(OPENJ9_CUDA_OPTIONS_FILE) $(OPENJ9_CUDA_PACKAGES_FILE)
+ 	$(prep-javadoc)
+ 	$(call JavadocSummary,$(OPENJ9_CUDA_OPTIONS_FILE),$(OPENJ9_CUDA_PACKAGES_FILE))
+ 	$(JAVADOC_CMD) -d $(@D) \
+@@ -238,7 +238,7 @@ openj9-dataaccessdocs : $(OPENJ9_DATAACCESS_INDEX_FILE)
+ $(OPENJ9_DATAACCESS_INDEX_FILE) : GET2DOCSDIR := $(PLATFORM_DOCSDIR)/..
+ 
+ # Run javadoc if the index file is out of date or missing
+-$(OPENJ9_DATAACCESS_INDEX_FILE) : $(OPENJ9_DATAACCESS_OPTIONS_FILE) $(OPENJ9_DATAACCESS_PACKAGES_FILE)
++$(OPENJ9_DATAACCESS_INDEX_FILE) : $(COREAPI_DOCSDIR)/index.html $(OPENJ9_DATAACCESS_OPTIONS_FILE) $(OPENJ9_DATAACCESS_PACKAGES_FILE)
+ 	$(prep-javadoc)
+ 	$(call JavadocSummary,$(OPENJ9_DATAACCESS_OPTIONS_FILE),$(OPENJ9_DATAACCESS_PACKAGES_FILE))
+ 	$(JAVADOC_CMD) -d $(@D) \
+@@ -288,7 +288,7 @@ openj9-jvmdocs : $(OPENJ9_JVM_INDEX_FILE)
+ $(OPENJ9_JVM_INDEX_FILE) : GET2DOCSDIR := $(PLATFORM_DOCSDIR)/..
+ 
+ # Run javadoc if the index file is out of date or missing
+-$(OPENJ9_JVM_INDEX_FILE) : $(OPENJ9_JVM_OPTIONS_FILE) $(OPENJ9_JVM_PACKAGES_FILE)
++$(OPENJ9_JVM_INDEX_FILE) : $(COREAPI_DOCSDIR)/index.html $(OPENJ9_JVM_OPTIONS_FILE) $(OPENJ9_JVM_PACKAGES_FILE)
+ 	$(prep-javadoc)
+ 	$(call JavadocSummary,$(OPENJ9_JVM_OPTIONS_FILE),$(OPENJ9_JVM_PACKAGES_FILE))
+ 	$(JAVADOC_CMD) -d $(@D) \
+@@ -339,7 +339,7 @@ openj9-dtfjdocs : $(OPENJ9_DTFJ_INDEX_FILE)
+ $(OPENJ9_DTFJ_INDEX_FILE) : GET2DOCSDIR := $(PLATFORM_DOCSDIR)/..
+ 
+ # Run javadoc if the index file is out of date or missing
+-$(OPENJ9_DTFJ_INDEX_FILE) : $(OPENJ9_DTFJ_OPTIONS_FILE) $(OPENJ9_DTFJ_PACKAGES_FILE)
++$(OPENJ9_DTFJ_INDEX_FILE) : $(COREAPI_DOCSDIR)/index.html $(OPENJ9_DTFJ_OPTIONS_FILE) $(OPENJ9_DTFJ_PACKAGES_FILE)
+ 	$(prep-javadoc)
+ 	$(call JavadocSummary,$(OPENJ9_DTFJ_OPTIONS_FILE),$(OPENJ9_DTFJ_PACKAGES_FILE))
+ 	$(JAVADOC_CMD) -d $(@D) \
+@@ -390,7 +390,7 @@ openj9-zosconditionhandlingdocs : $(OPENJ9_ZOSCONDITIONHANDLING_INDEX_FILE)
+ $(OPENJ9_ZOSCONDITIONHANDLING_INDEX_FILE) : GET2DOCSDIR := $(PLATFORM_DOCSDIR)/..
+ 
+ # Run javadoc if the index file is out of date or missing
+-$(OPENJ9_ZOSCONDITIONHANDLING_INDEX_FILE) : $(OPENJ9_ZOSCONDITIONHANDLING_OPTIONS_FILE) $(OPENJ9_ZOSCONDITIONHANDLING_PACKAGES_FILE)
++$(OPENJ9_ZOSCONDITIONHANDLING_INDEX_FILE) : $(COREAPI_DOCSDIR)/index.html $(OPENJ9_ZOSCONDITIONHANDLING_OPTIONS_FILE) $(OPENJ9_ZOSCONDITIONHANDLING_PACKAGES_FILE)
+ 	$(prep-javadoc)
+ 	$(call JavadocSummary,$(OPENJ9_ZOSCONDITIONHANDLING_OPTIONS_FILE),$(OPENJ9_ZOSCONDITIONHANDLING_PACKAGES_FILE))
+ 	$(JAVADOC_CMD) -d $(@D) \
+@@ -470,7 +470,7 @@ OPENJ9_MGMT_SRCPATH := $(OPENJ9_DOCS_SRCDIR)$(PATH_SEP)$(TEMP_SUN_MGMT_PKGDIR)
+ # The dependency on the index.html file ensures this javadoc
+ # generation will replace the openjdk javadoc generation.
+ $(OPENJ9_MGMT_INDEXALL_FILE) : FIRST_COPYRIGHT_YEAR := $(OPENJ9_MGMT_FIRST_COPYRIGHT_YEAR)
+-$(OPENJ9_MGMT_INDEXALL_FILE) : $(OPENJ9_MGMT_INDEX_FILE) $(OPENJ9_MGMT_OPTIONS_FILE) $(OPENJ9_MGMT_PACKAGES_FILE)
++$(OPENJ9_MGMT_INDEXALL_FILE) : $(COREAPI_DOCSDIR)/index.html $(OPENJ9_MGMT_INDEX_FILE) $(OPENJ9_MGMT_OPTIONS_FILE) $(OPENJ9_MGMT_PACKAGES_FILE)
+ 	$(MKDIR) -p $(TEMP_SUN_MGMT_SRCDIR)
+ 	$(CP) $(SUN_MGMT_SRCDIR)/GarbageCollectorMXBean.java $(TEMP_SUN_MGMT_SRCDIR)
+ 	$(CP) $(SUN_MGMT_SRCDIR)/OperatingSystemMXBean.java $(TEMP_SUN_MGMT_SRCDIR)

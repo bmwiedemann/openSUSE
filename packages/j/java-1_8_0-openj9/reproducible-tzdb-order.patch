@@ -1,0 +1,50 @@
+From: Bernhard M. Wiedemann <bwiedemann@suse.de>
+Subject: 8209880: tzdb.dat is not reproducibly built
+
+Backport of OpenJDK commit e71557a2d9e3a3d84fb2d4cea02c4364258f0249
+(JDK 12, by Naoto Sato), which postdates this jdk8 branch.
+
+The list of deduplicated ZoneRules was built by round-tripping the
+sorted zone map through a HashSet, so its order depended on HashSet
+iteration order. That order is not part of any contract and in fact
+changed between JDK releases, so tzdb.dat differed depending on which
+JVM ran the compiler: with this tree's tzdata2026a, the original code
+produces different files under JDK 17 and JDK 26, while the fixed
+version is byte-identical across both.
+
+Deduplicate with an explicit loop that keeps the sorted encounter
+order instead. The upstream fix uses stream().distinct(), which is
+equivalent, but the javac 8 used as boot compiler here rejects its
+type inference, so spell it out.
+
+Signed-off-by: Bernhard M. Wiedemann <bwiedemann@suse.de>
+
+
+diff --git a/jdk/make/src/classes/build/tools/tzdb/TzdbZoneRulesCompiler.java b/jdk/make/src/classes/build/tools/tzdb/TzdbZoneRulesCompiler.java
+index a4747c3d..26d9b908 100644
+--- a/jdk/make/src/classes/build/tools/tzdb/TzdbZoneRulesCompiler.java
++++ b/jdk/make/src/classes/build/tools/tzdb/TzdbZoneRulesCompiler.java
+@@ -68,7 +68,6 @@ import java.text.ParsePosition;
+ import java.util.ArrayList;
+ import java.util.Arrays;
+ import java.util.HashMap;
+-import java.util.HashSet;
+ import java.util.List;
+ import java.util.Map;
+ import java.util.NoSuchElementException;
+@@ -232,8 +231,13 @@ public final class TzdbZoneRulesCompiler {
+             for (String regionId : regionArray) {
+                 out.writeUTF(regionId);
+             }
+-            // rules  -- hashset -> remove the dup
+-            List<ZoneRules> rulesList = new ArrayList<>(new HashSet<>(builtZones.values()));
++            // rules  -- remove the dup, keeping the sorted encounter order
++            List<ZoneRules> rulesList = new ArrayList<>();
++            for (ZoneRules rules : builtZones.values()) {
++                if (!rulesList.contains(rules)) {
++                    rulesList.add(rules);
++                }
++            }
+             out.writeShort(rulesList.size());
+             ByteArrayOutputStream baos = new ByteArrayOutputStream(1024);
+             for (ZoneRules rules : rulesList) {

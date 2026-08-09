@@ -1,0 +1,20 @@
+From: Magnus Ihse Bursie <ihse@openjdk.org>
+Subject: 8243985: Make source generation by generatecharacter reproducible
+
+Backported from upstream OpenJDK commit 09e8b7ca4d614ed05a22e0544b17c68b5c7b00db,
+which postdates this jdk8 branch point. GenerateCharacter embedded the
+current wall-clock time in every generated source file's header comment,
+so the CharacterData*.java shipped in src.zip differed between otherwise
+identical builds.
+
+--- a/jdk/make/src/classes/build/tools/generatecharacter/GenerateCharacter.java
++++ b/jdk/make/src/classes/build/tools/generatecharacter/GenerateCharacter.java
+@@ -692,7 +692,7 @@
+         PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(theOutputFileName)));
+         out.println(commentStart +
+             " This file was generated AUTOMATICALLY from a template file " +
+-            new java.util.Date() + commentEnd);
++            commentEnd);
+         int marklen = commandMarker.length();
+         LOOP: while(true) {
+             try {

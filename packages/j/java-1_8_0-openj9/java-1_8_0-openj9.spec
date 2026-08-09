@@ -32,22 +32,22 @@
 %global abs2rel perl -e %{script}
 %global syslibdir       %{_libdir}
 # Standard JPackage naming and versioning defines.
-%global updatever       492
-%global buildver        b09
+%global updatever       502
+%global buildver        b07
 %global root_repository https://github.com/ibmruntimes/openj9-openjdk-jdk8/archive
-%global root_revision   0a800bff022b59d6f7e9da4afe99d212f0654c6c
-%global root_branch     v0.59.0-release
-%global omr_repository  https://github.com/eclipse/openj9-omr/archive
-%global omr_revision    6426f03fa087b257a7e58f363ef61526c896fea3
-%global omr_branch      v0.59.0-release
-%global openj9_repository https://github.com/eclipse/openj9/archive
-%global openj9_revision c53b6b93f422b77b3395a3464d5578b706e9a618
-%global openj9_branch   v0.59.0-release
-%global openj9_tag      openj9-0.59.0
+%global root_revision   f2b70d560f68e4c66e046b713fd78c58bbecc402
+%global root_branch     v0.60.0-release
+%global omr_repository  https://github.com/eclipse-openj9/openj9-omr/archive
+%global omr_revision    2e3166f7afc61f577ccaa63b85444b63b82491f7
+%global omr_branch      v0.60.0-release
+%global openj9_repository https://github.com/eclipse-openj9/openj9/archive
+%global openj9_revision 396c827fb365c53b26586f55ec09d4727b37d9be
+%global openj9_branch   v0.60.0-release
+%global openj9_tag      openj9-0.60.0
 # priority must be 6 digits in total
 %global priority        1801
 %global featurever      8
-%global javaver         1.8.0
+%global javaver         1.%{featurever}.0
 %if 0%{?suse_version} > 1500
 %bcond_without libalternatives
 %else
@@ -123,6 +123,22 @@ Patch2:         multiple-pkcs11-library-init.patch
 # Disable doclint for compatibility
 Patch3:         disable-doclint-by-default.patch
 Patch4:         reproducible-version.patch
+# Fixes for build with gcc 16
+Patch6:         omr-gcc16.patch
+Patch7:         openj9-gcc16.patch
+# Fixes for reproducible builds
+Patch8:         java-40y.patch
+Patch9:         reproducible-generatecharacter.patch
+Patch10:        reproducible-tzdb-order.patch
+Patch11:        javadoc-linkoffline-order.patch
+# Use SOURCE_DATE_EPOCH for the dates the CLDR converter and
+# EquivMapsGenerator write into the sources they generate
+Patch12:        reproducible-generated-source-dates.patch
+# Drop build timestamps from generated javadoc and CORBA sources
+Patch13:        reproducible-generated-timestamps.patch
+Patch14:        javadoc-classuse-order.patch
+Patch15:        reproducible-nls.patch
+Patch16:        reproducible-tracemerge-order.patch
 # Patches for system libraries
 Patch201:       system-libjpeg.patch
 Patch202:       system-libpng.patch
@@ -160,6 +176,9 @@ BuildRequires:  libxslt
 BuildRequires:  nasm >= 2.11
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
+%if 0%{?suse_version} >= 1500
+BuildRequires:  strip-nondeterminism
+%endif
 BuildRequires:  unzip
 BuildRequires:  xorg-x11-proto-devel
 BuildRequires:  zip
@@ -365,6 +384,17 @@ rm -rvf jdk/src/share/native/sun/java2d/cmm/lcms/lcms2*
 %patch -P 2 -p1
 %patch -P 3 -p1
 %patch -P 4 -p1
+%patch -P 6 -p1
+%patch -P 7 -p1
+%patch -P 8 -p1
+%patch -P 9 -p1
+%patch -P 10 -p1
+%patch -P 11 -p1
+%patch -P 12 -p1
+%patch -P 13 -p1
+%patch -P 14 -p1
+%patch -P 15 -p1
+%patch -P 16 -p1
 
 cat %{SOURCE100} \
     | sed "s/@OPENJ9_SHA@/`expr substr '%{openj9_revision}' 1 7`/g" \
@@ -435,7 +465,8 @@ bash configure \
     --with-lcms=system \
 	--with-openssl=system \
     --with-stdc++lib=dynamic \
-    --with-native-debug-symbols=internal
+    --with-native-debug-symbols=internal \
+    --with-copyright-year="$(date -u -d "@${SOURCE_DATE_EPOCH:-$(date +%%s)}" +%%Y)"
 
 %{make} \
     JAVAC_FLAGS=-g \
@@ -649,6 +680,13 @@ find %{buildroot}%{_jvmdir}/%{sdkdir}/demo \
     echo "" >> accessibility.properties
   popd
 
+%if 0%?have_strip_nondeterminism > 0
+strip-all-nondeterminism %{buildroot}/%{_jvmdir}
+# ct.sym is a jar, but strip-all-nondeterminism only looks at *.jar, *.zip and
+# a few other suffixes, so it has to be normalised by name.
+strip-nondeterminism --type zip --timestamp=${SOURCE_DATE_EPOCH:-1494270000} \
+    --clamp-timestamp %{buildroot}%{_jvmdir}/%{sdkdir}/lib/ct.sym
+%endif
 # fdupes links the files from JDK to JRE, so it breaks a JRE
 # use it carefully :))
 %fdupes -s %{buildroot}/%{_jvmdir}/%{jredir}/

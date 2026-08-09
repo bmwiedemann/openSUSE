@@ -1,0 +1,15 @@
+diff --git a/jdk/make/src/classes/build/tools/generatecurrencydata/GenerateCurrencyData.java b/jdk/make/src/classes/build/tools/generatecurrencydata/GenerateCurrencyData.java
+index d599d974..b544701f 100644
+--- a/jdk/make/src/classes/build/tools/generatecurrencydata/GenerateCurrencyData.java
++++ b/jdk/make/src/classes/build/tools/generatecurrencydata/GenerateCurrencyData.java
+@@ -283,8 +283,8 @@ public class GenerateCurrencyData {
+             checkCurrencyCode(newCurrency);
+             String timeString = currencyInfo.substring(4, length - 4);
+             long time = format.parse(timeString).getTime();
+-            if (Math.abs(time - System.currentTimeMillis()) > ((long) 10) * 365 * 24 * 60 * 60 * 1000) {
+-                throw new RuntimeException("time is more than 10 years from present: " + time);
++            if (Math.abs(time - System.currentTimeMillis()) > ((long) 40) * 365 * 24 * 60 * 60 * 1000) {
++                throw new RuntimeException("time is more than 40 years from present: " + time);
+             }
+             specialCaseCutOverTimes[specialCaseCount] = time;
+             specialCaseOldCurrencies[specialCaseCount] = oldCurrency;
