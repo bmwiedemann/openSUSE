@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Aug  5 19:15:06 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 34.0.1:
+  * [stable-34.0] fix: Prevent DiscoverySingleLocalDirectoryJob
+    from hanging when target is file
+    (gh#nextcloud/desktop#10462)
+  * [stable-34.0] Eliminate O(N²) Realm work in large-folder
+    enumeration
+    (gh#nextcloud/desktop#10469)
+  * [stable-34.0] fix(macOS): Verify ability to access Local
+    Network
+    (gh#nextcloud/desktop#10484)
+  * [stable-34.0] chore(common): print filename if error occurs
+    in file locking check. 
+    (gh#nextcloud/desktop#10482)
+  * [stable-34.0] fix(activity): File details menu fixes
+    (gh#nextcloud/desktop#10490)
+  * [stable-34.0] fix(tray): simplify disconnected account menu
+    (gh#nextcloud/desktop#10497)
+  * [stable-34.0] fix(propagateupload): ensure file size stays
+    the same for new uploads
+    (gh#nextcloud/desktop#10494)
+  * [stable-34.0] fix(filesystem): do not attempt to lock
+    directories on Windows
+    (gh#nextcloud/desktop#10504)
+  * [stable-34.0] fix(discovery): move file lock state off the
+    GUI thread.
+    (gh#nextcloud/desktop#10514)
+  * [stable-34.0] Refactored XPC for FinderSync Extension
+    (gh#nextcloud/desktop#10518)
+  * [stable-34.0] fix(macOS): use tag to pass menu command to
+    Finder extension.
+    (gh#nextcloud/desktop#10531)
+
+-------------------------------------------------------------------
 Fri Jul 31 20:58:55 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 34.0.0:
