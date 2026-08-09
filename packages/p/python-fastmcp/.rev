@@ -65,4 +65,22 @@ subpackage ship a license file, which the standalone fastmcp_slim sdist does not
 contain at all.</comment>
     <requestid>1369572</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>251026a5f8cacf5c21e23febf39129ce</srcmd5>
+    <version>3.4.6</version>
+    <time>1786304478</time>
+    <user>anag_factory</user>
+    <comment>Update to 3.4.6
+
+Backports trusted-proxy support for the SSRF-protected OAuth metadata and
+JWKS fetches: deployments can route these through a mandated corporate proxy
+while preserving custom CA certificates, and FastMCP now refuses the fetch
+when no proxy is configured rather than performing an unprotected direct
+request.
+
+Built and verified on aarch64: 7 subpackages, rpmlint 2 errors / 46 warnings /
+2 badness -- identical to the current baseline (the two errors are the known
+no-dependency-on python-base false positives). source_validator clean.</comment>
+    <requestid>1370144</requestid>
+  </revision>
 </revisionlist>
