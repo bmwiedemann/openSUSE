@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Aug  5 06:42:46 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 5.1.7:
+  * FIX: with minimize-to-tray enabled on a desktop that has no
+    system tray (stock GNOME without the AppIndicator extension,
+    i3bar, polybar), closing the window hid it with no icon to
+    restore it, leaving an invisible process holding a decrypted
+    database that only killall could stop. The window is now hidden
+    only once a tray host has accepted the icon, and if the tray
+    disappears while the window is hidden the window comes back
+    (#405)
+
+-------------------------------------------------------------------
 Thu Jul 23 06:34:10 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 5.1.6:

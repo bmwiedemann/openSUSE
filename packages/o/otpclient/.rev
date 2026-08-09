@@ -683,4 +683,20 @@
     explicit Quit button remains on the prompt (#467)</comment>
     <requestid>1369095</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>08e172d7f0d76677381c2df406e63fce</srcmd5>
+    <version>5.1.7</version>
+    <time>1786304019</time>
+    <user>anag_factory</user>
+    <comment>- Update to 5.1.7:
+  * FIX: with minimize-to-tray enabled on a desktop that has no
+    system tray (stock GNOME without the AppIndicator extension,
+    i3bar, polybar), closing the window hid it with no icon to
+    restore it, leaving an invisible process holding a decrypted
+    database that only killall could stop. The window is now hidden
+    only once a tray host has accepted the icon, and if the tray
+    disappears while the window is hidden the window comes back
+    (#405)</comment>
+    <requestid>1369985</requestid>
+  </revision>
 </revisionlist>
