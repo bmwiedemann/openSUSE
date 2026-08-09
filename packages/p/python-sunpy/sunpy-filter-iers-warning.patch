@@ -1,0 +1,10 @@
+Index: sunpy-8.0.0/pytest.ini
+===================================================================
+--- sunpy-8.0.0.orig/pytest.ini
++++ sunpy-8.0.0/pytest.ini
+@@ -83,3 +83,5 @@ filterwarnings =
+     ignore:Passing \(type, 1\) or \'1type\' as a synonym of type is deprecated:FutureWarning
+     # oldest deps
+     ignore:Animation was deleted without rendering anything:UserWarning
++    # openSUSE: offline build
++    ignore:leap-second auto-update failed.*:astropy.utils.exceptions.AstropyWarning

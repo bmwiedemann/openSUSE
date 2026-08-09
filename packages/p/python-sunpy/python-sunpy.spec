@@ -25,6 +25,8 @@ URL:            https://github.com/sunpy/sunpy
 Source0:        https://files.pythonhosted.org/packages/source/s/sunpy/sunpy-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE use custom hypothesis profile for slow OBS executions
 Patch1:         sunpy-obs-profile.patch
+# PATCH-FIX-OPENSUSE ignore download fail for leap second update during tests
+Patch2:         sunpy-filter-iers-warning.patch
 BuildRequires:  %{python_module aioftp}
 BuildRequires:  %{python_module astropy >= 7}
 BuildRequires:  %{python_module devel >= 3.12}
@@ -154,7 +156,6 @@ chmod +x %{buildroot}%{$python_sitearch}/sunpy/extern/distro.py
 }
 
 %check
-rm -rf $HOME/.astropy
 mkdir testdir
 pushd testdir
 %{python_expand # no opencv for non-primary python3

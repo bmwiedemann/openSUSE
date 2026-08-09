@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Aug  8 15:18:41 UTC 2026 - Ben Greiner <code@bnavigator.de>
+
+- Add sunpy-filter-iers-warning.patch
+  * ignore download fail for leap second update during tests
+
+-------------------------------------------------------------------
 Wed Jul 29 14:58:52 UTC 2026 - Ben Greiner <code@bnavigator.de>
 
 - Update to 8.0.0

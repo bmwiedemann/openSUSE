@@ -581,4 +581,13 @@
   * Update sunpy.util.io.is_url() to use urllib.parse.urlparse</comment>
     <requestid>1368380</requestid>
   </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>e2cd3ee690386b31f0368e7b08f134b3</srcmd5>
+    <version>8.0.0</version>
+    <time>1786304661</time>
+    <user>anag_factory</user>
+    <comment>- Add sunpy-filter-iers-warning.patch
+  * ignore download fail for leap second update during tests</comment>
+    <requestid>1370345</requestid>
+  </revision>
 </revisionlist>
