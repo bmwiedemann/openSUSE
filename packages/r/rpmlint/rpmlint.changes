@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 06 15:21:16 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.9.0+git20260806.9feb8bb9:
+  * polkit-rules-whitelist: whitelist gnome-initial-setup changes (bsc#1273685)
+  * polkit-rules-whitelist: drop outdated gnome-initial-setup entry
+
+-------------------------------------------------------------------
 Fri Jul 31 12:04:42 UTC 2026 - Mislav Bozicevic <mislav.bozicevic@suse.com>
 
 - Update to version 2.9.0+git20260731.cace0392:
