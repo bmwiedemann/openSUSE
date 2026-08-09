@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Aug  1 08:13:12 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 5.4.1: 
+  * improve: better detection of maximum texture limit
+  * improve: code structure of C++20+ code
+  * fix: prevent crash when certain formats are not write-supported
+    by local ImageMagick/GraphicsMagick
+  * fix: compilation with ReSVG with Qt-specific headers not
+    available
+  * fix: don't skip over any ImageMagick/GraphicsMagick suffixes
+  * fix: proper remembering position/scale/mirror of images
+  * fix: orientation handling of motion photos
+  * fix: setting up of PhotoQt when passed-on image takes slightly
+    longer to load
+
+-------------------------------------------------------------------
 Sun Jun 28 19:33:06 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to 5.4:
