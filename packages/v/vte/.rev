@@ -1448,4 +1448,20 @@ New upstream release</comment>
     <comment>Push GNOME 50</comment>
     <requestid>1345389</requestid>
   </revision>
+  <revision rev="176" vrev="1">
+    <srcmd5>97e3bce1380902e0feeeec2796100e8a</srcmd5>
+    <version>0.84.1</version>
+    <time>1786303904</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.84.1:
+  * vte.sh: Unify the escape character's notation
+  * vte.sh: Preserve the previous value of PS0
+  * vte.sh: Fix improper escaping in PS0
+  * lib: Unify erase/backspace binding handling
+  * lib: Fix typo in comment
+  * app: Try a XTERM_RQTCAP query when --no-pty
+  * build: simdutf: Update to 8.2.0
+  * app: Add preset option</comment>
+    <requestid>1369841</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Aug  2 07:22:24 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.84.1:
+  * vte.sh: Unify the escape character's notation
+  * vte.sh: Preserve the previous value of PS0
+  * vte.sh: Fix improper escaping in PS0
+  * lib: Unify erase/backspace binding handling
+  * lib: Fix typo in comment
+  * app: Try a XTERM_RQTCAP query when --no-pty
+  * build: simdutf: Update to 8.2.0
+  * app: Add preset option
+
+-------------------------------------------------------------------
 Fri Mar 20 15:33:13 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run
