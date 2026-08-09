@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 30 07:35:00 UTC 2026 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add librest-CVE-2026-16615.patch: Fix weak random number
+  generation (bsc#1272399, glgo#GNOME/librest!44).
+
+-------------------------------------------------------------------
 Fri Aug  8 18:19:09 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.10.2:

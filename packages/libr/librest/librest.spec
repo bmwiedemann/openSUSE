@@ -29,6 +29,8 @@ Group:          Development/Libraries/GNOME
 URL:            https://gitlab.gnome.org/GNOME/librest
 Source0:        http://download.gnome.org/sources/%{name}/0.10/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM librest-CVE-2026-16615.patch bsc#1272399, glgo#GNOME/librest!44 alynx.zhou@suse.com -- Fix weak random number generation
+Patch0:         librest-CVE-2026-16615.patch
 
 BuildRequires:  gtk-doc
 BuildRequires:  meson

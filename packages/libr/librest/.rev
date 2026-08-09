@@ -272,4 +272,13 @@
 - Update URL and Source following upstream name changes. (forwarded request 1298433 from iznogood)</comment>
     <requestid>1298875</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>6d269e7734cccca2cc6f4037397e06d5</srcmd5>
+    <version>0.10.2</version>
+    <time>1786303916</time>
+    <user>anag_factory</user>
+    <comment>- Add librest-CVE-2026-16615.patch: Fix weak random number
+  generation (bsc#1272399, glgo#GNOME/librest!44).</comment>
+    <requestid>1369984</requestid>
+  </revision>
 </revisionlist>
