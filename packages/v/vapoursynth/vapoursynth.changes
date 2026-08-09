@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Aug  8 05:00:48 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version R79:
+  * Implement uncompressed mkv output in vspipe, mainly to pass
+    audio, video and timestamps together into ffmpeg
+  * Improve caching for scripts using long cyclical request
+    patterns, such as looping clips of 20 frames or more
+  * Fix the zimg api version check
+- Rebase vapoursynth-fhs-install.patch
+
+-------------------------------------------------------------------
 Sat Jul 25 19:11:29 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version R78:

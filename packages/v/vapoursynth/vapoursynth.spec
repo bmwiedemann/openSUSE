@@ -18,7 +18,7 @@
 
 %define sover 4
 Name:           vapoursynth
-Version:        78
+Version:        79
 Release:        0
 Summary:        A video processing framework
 License:        LGPL-2.1-only

@@ -378,4 +378,12 @@ Note: SONAME change rebuilds consumers (ffmpeg, mpv, ...)</comment>
     <comment>Update to version R78: C++20 required, AudioResample filter, threading deadlock fixes, avx512 CPU level, chromatic_adaptation resize argument. NOTE: needs the zimg update submitted as SR 1367777 (multimedia:libs) - the new chromatic_adaptation field. FHS patch rebased.</comment>
     <requestid>1367779</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>6351e107cecb8f9c12adb4e332f7fe8a</srcmd5>
+    <version>79</version>
+    <time>1786304654</time>
+    <user>anag_factory</user>
+    <comment>Update to R79: uncompressed mkv output in vspipe, adaptive caching for long cyclical request patterns, zimg api version check fixed. sonames unchanged (libvapoursynth4, libvsscript0); the existing zimg-devel &gt;= 3.0.6+20260720 floor still holds. Built and verified on aarch64 (openSUSE_Factory_ARM): rpmlint 0 errors / 1 warning (no-%check-section, baseline) / 0 badness, source_validator clean, vapoursynth-fhs-install.patch rebased.</comment>
+    <requestid>1370305</requestid>
+  </revision>
 </revisionlist>
