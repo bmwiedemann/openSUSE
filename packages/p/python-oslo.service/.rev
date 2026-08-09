@@ -492,4 +492,27 @@
   * Restore ThreadGroup.max\_threads for backward compatibility</comment>
     <requestid>1343867</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>d729f334793116e713600408f6661034</srcmd5>
+    <version>4.8.0</version>
+    <time>1786304100</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.8.0:
+  * Keep fork as the default multiprocessing method
+  * Ensure extra dependency for bandit to use toml
+  * zuul: Use openstack-python3-next-jobs template
+  * pre-commit: Bump versions
+  * Do not install code to build release notes
+  * Add fork-safety regression tests and CI job for spawn
+    multiprocessing
+  * Remove Python 3.10 support
+  * Poll parallel periodic results with AsyncResult.ready()
+  * Deprecate version module
+  * Remove unused environment variables
+  * tox: Use new constraints option
+  * Support running periodic tasks in parallel
+  * Add pickle support for threading backend Service
+  * Update master for stable/2026.1</comment>
+    <requestid>1370103</requestid>
+  </revision>
 </revisionlist>

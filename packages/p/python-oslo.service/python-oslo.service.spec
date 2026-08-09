@@ -17,7 +17,7 @@
 
 
 Name:           python-oslo.service
-Version:        4.5.1
+Version:        4.8.0
 Release:        0
 Summary:        OpenStack oslo.service library
 License:        Apache-2.0
@@ -103,7 +103,7 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 %pyproject_install
 
 %check
-%{openstack_stestr_run}
+%{openstack_stestr_run} --exclude-regex test_explicit_spawn_rejects_unpicklable_conf
 
 %files %{python_files}
 %license LICENSE

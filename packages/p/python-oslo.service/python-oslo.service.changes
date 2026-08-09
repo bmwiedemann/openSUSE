@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Aug  5 14:40:14 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.8.0:
+  * Keep fork as the default multiprocessing method
+  * Ensure extra dependency for bandit to use toml
+  * zuul: Use openstack-python3-next-jobs template
+  * pre-commit: Bump versions
+  * Do not install code to build release notes
+  * Add fork-safety regression tests and CI job for spawn
+    multiprocessing
+  * Remove Python 3.10 support
+  * Poll parallel periodic results with AsyncResult.ready()
+  * Deprecate version module
+  * Remove unused environment variables
+  * tox: Use new constraints option
+  * Support running periodic tasks in parallel
+  * Add pickle support for threading backend Service
+  * Update master for stable/2026.1
+
+-------------------------------------------------------------------
 Wed Mar 25 20:40:57 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update dependency versions
