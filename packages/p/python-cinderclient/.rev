@@ -890,4 +890,20 @@
     <comment>switch to singlespec</comment>
     <requestid>1316753</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>89c50b8354e821ba339de6c9c9daeec0</srcmd5>
+    <version>9.9.0</version>
+    <time>1786304079</time>
+    <user>anag_factory</user>
+    <comment>- update to 9.9.0:
+  * Migrate setup configuration to pyproject.toml
+  * Fix pylint job
+  * Add pyproject.toml file
+  * Update classifiers for Gazpacho
+  * Update CI for Gazpacho
+  * Remove unused Makefile for doc
+  * reno: Update master for unmaintained/2024.1
+  * Update master for stable/2025.2</comment>
+    <requestid>1370106</requestid>
+  </revision>
 </revisionlist>

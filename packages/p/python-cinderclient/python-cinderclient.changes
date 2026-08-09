@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Mar  9 15:28:38 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 9.9.0:
+  * Migrate setup configuration to pyproject.toml
+  * Fix pylint job
+  * Add pyproject.toml file
+  * Update classifiers for Gazpacho
+  * Update CI for Gazpacho
+  * Remove unused Makefile for doc
+  * reno: Update master for unmaintained/2024.1
+  * Update master for stable/2025.2
+
+-------------------------------------------------------------------
 Sun Nov  9 12:50:43 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 9.8.0:
