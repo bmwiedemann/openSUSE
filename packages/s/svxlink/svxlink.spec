@@ -1,7 +1,7 @@
 #
 # spec file for package svxlink
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,48 +16,54 @@
 #
 
 
-%define QTEL			1.2.2
+%define QTEL			1.3.0
 # Version for the EchoLib library
-%define ECHOLIB			1.3.2
+%define ECHOLIB			1.3.7
 # Version for the Async library
-%define LIBASYNC		1.4.0
+%define LIBASYNC		1.9.1
 # SvxLink versions
-%define SVXLINK			1.5.0
-%define REMOTERX		1.2.0
+%define SVXLINK			1.10.1
+%define REMOTERX		1.6.1
 # Sounds version
-%define SOUNDS			19.09
+%define SOUNDS			25.05
 Name:           svxlink
-Version:        19.09.2
+Version:        26.05.1
 Release:        0
 Summary:        Multi purpose voice services system for ham radio
 License:        GPL-2.0-only
-Group:          Productivity/Hamradio/Other
 URL:            https://www.svxlink.org/
 Source:         https://github.com/sm0svx/svxlink/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        https://github.com/sm0svx/svxlink-sounds-en_US-heather/releases/download/%{SOUNDS}/svxlink-sounds-en_US-heather-16k-%{SOUNDS}.tar.bz2
+# PATCH-FIX-UPSTREAM svxlink-sigc-cxx17.patch gh#sm0svx/svxlink#825 mpluskal@suse.com -- the sigc++-2 find modules force --std=c++11, which overrides CMAKE_CXX_STANDARD and breaks the Qt 6 targets
+Patch0:         svxlink-sigc-cxx17.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  groff-full
 BuildRequires:  gzip
+# qtel installs into the hicolor theme; owns the directory chain
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  libgcrypt-devel
 BuildRequires:  libgsm-devel
 BuildRequires:  pkgconfig
-BuildRequires:  tcl-devel
 BuildRequires:  update-desktop-files
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5Gui)
-BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  cmake(Qt5Network)
-BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6Core5Compat)
+BuildRequires:  cmake(Qt6Gui)
+BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  cmake(Qt6Network)
+BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  pkgconfig(alsa)
+BuildRequires:  pkgconfig(jsoncpp)
 BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(libgpiod)
 BuildRequires:  pkgconfig(librtlsdr)
 BuildRequires:  pkgconfig(opus)
 BuildRequires:  pkgconfig(popt)
 BuildRequires:  pkgconfig(sigc++-2.0)
 BuildRequires:  pkgconfig(speex)
+BuildRequires:  pkgconfig(tcl)
 
 %description
 The SvxLink project is a multi purpose voice services system for
@@ -70,7 +76,6 @@ Author Tobias Blomberg (SM0SVX)
 Version:        %{SVXLINK}
 Release:        0
 Summary:        SvxLink - A general purpose voice services system
-Group:          Productivity/Hamradio/Other
 Requires:       logrotate
 Requires:       shadow
 
@@ -86,7 +91,6 @@ It can act both as a simplex node and as a repeater controller.
 Version:        %{QTEL}
 Release:        0
 Summary:        The QT EchoLink Client
-Group:          Productivity/Hamradio/Other
 
 %description -n qtel
 This package contains Qtel, the Qt EchoLink client. It is an implementation of
@@ -98,7 +102,6 @@ want, install the svxlink-server package.
 Version:        %{ECHOLIB}
 Release:        0
 Summary:        EchoLink library
-Group:          Productivity/Hamradio/Other
 
 %description -n libecholib1_3
 EchoLink communications library
@@ -107,35 +110,35 @@ EchoLink communications library
 Version:        %{ECHOLIB}
 Release:        0
 Summary:        Development files for the EchoLink
-Group:          Development/Libraries/Other
 Requires:       libecholib1_3 = %{version}
 Obsoletes:      libecholib1_3-devel < %{version}-%{release}
 
 %description -n libecholib-devel
 Development files for the EchoLink communications library
 
-%package -n libasync1_6
+%package -n libasync1_9
 Version:        %{LIBASYNC}
 Release:        0
 Summary:        SvxLink Async libs
-Group:          Productivity/Hamradio/Other
 Conflicts:      libasync
+# soname moved 1.6 -> 1.9 with the 26.05 release
+Obsoletes:      libasync1_6 < %{version}-%{release}
+Provides:       libasync1_6 = %{version}-%{release}
 
-%description -n libasync1_6
+%description -n libasync1_9
 The Async library files.
 
 %package -n libasync-devel
 Version:        %{LIBASYNC}
 Release:        0
 Summary:        SvxLink Async development files
-Group:          Development/Libraries/Other
-Requires:       libasync1_6 = %{version}
+Requires:       libasync1_9 = %{version}
 
 %description -n libasync-devel
 The Async library development files
 
 %prep
-%autosetup
+%autosetup -p1
 tar -xjvf %{_sourcedir}/svxlink-sounds-en_US-heather-16k-%{SOUNDS}.tar.bz2
 
 %build
@@ -151,13 +154,19 @@ cd src
 %cmake_install
 cp -r ../en_US-heather-16k/* %{buildroot}%{_datadir}/svxlink/sounds
 rm -f %{buildroot}/%{_libdir}/libsvxmisc.a
-%suse_update_desktop_file -c qtel Qtel "EchoLink Client" qtel "%{_datadir}/icons/link.xpm" "Network;HamRadio"
+# 26.05 adds python helpers with "#!/usr/bin/env python3", which rpmlint rejects
+for f in %{buildroot}%{_bindir}/svxreflector-status \
+         %{buildroot}%{_datadir}/svxlink/ca-hook.py; do
+    [ -e "$f" ] && sed -i '1s|^#!%{_bindir}/env python3$|#!%{_bindir}/python3|' "$f"
+done
+
+%suse_update_desktop_file -c qtel Qtel "EchoLink Client" qtel qtel "Network;HamRadio"
 %fdupes -s %{buildroot}
 
 %post -n libecholib1_3 -p /sbin/ldconfig
 %postun -n libecholib1_3 -p /sbin/ldconfig
-%post -n libasync1_6 -p /sbin/ldconfig
-%postun -n libasync1_6 -p /sbin/ldconfig
+%post -n libasync1_9 -p /sbin/ldconfig
+%postun -n libasync1_9 -p /sbin/ldconfig
 
 %files -n svxlink-server
 %doc src/svxlink/ChangeLog
@@ -166,13 +175,15 @@ rm -f %{buildroot}/%{_libdir}/libsvxmisc.a
 %{_bindir}/siglevdetcal
 %{_bindir}/devcal
 %{_bindir}/svxreflector
+%{_bindir}/svxreflector-status
 %{_sbindir}/svxlink_gpio_down
 %{_sbindir}/svxlink_gpio_up
 %{_datadir}/svxlink
 %{_docdir}/svxlink
 %config(noreplace) %{_sysconfdir}/svxlink
 %dir %{_libdir}/svxlink
-%{_libdir}/svxlink/Module*.so
+# 26.05 splits the logic cores out as plugins alongside the modules
+%{_libdir}/svxlink/*.so
 %{_mandir}/man1/devcal.1%{?ext_man}
 %{_mandir}/man1/svxreflector.1%{?ext_man}
 %{_mandir}/man1/remotetrx.1%{?ext_man}
@@ -196,8 +207,12 @@ rm -f %{buildroot}/%{_libdir}/libsvxmisc.a
 %doc src/qtel/ChangeLog
 %{_bindir}/qtel
 %{_datadir}/qtel
-%{_datadir}/icons/link.xpm
+%dir %{_datadir}/icons/hicolor
+%dir %{_datadir}/icons/hicolor/128x128
+%dir %{_datadir}/icons/hicolor/128x128/apps
+%{_datadir}/icons/hicolor/128x128/apps/qtel.png
 %{_datadir}/applications/qtel.desktop
+%{_datadir}/metainfo/org.svxlink.Qtel.metainfo.xml
 %{_mandir}/man1/qtel.1%{?ext_man}
 
 %files -n libecholib1_3
@@ -210,7 +225,7 @@ rm -f %{buildroot}/%{_libdir}/libsvxmisc.a
 %{_includedir}/svxlink/EchoLink*
 %{_libdir}/libecholib.so
 
-%files -n libasync1_6
+%files -n libasync1_9
 %doc src/async/ChangeLog
 %{_libdir}/libasyncaudio.so.*
 %{_libdir}/libasynccore.so.*

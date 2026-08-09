@@ -1,0 +1,45 @@
+From: Martin Pluskal <mpluskal@suse.com>
+Subject: Do not pin the sigc++-2 code path to C++11
+Upstream: https://github.com/sm0svx/svxlink/pull/825
+
+FindSIGC.cmake and FindSIGC2.cmake put "--std=c++11" into the compile flags of
+every target that links libsigc++-2.0. That flag lands last on the command line,
+so it overrides CMAKE_CXX_STANDARD and the level cannot be raised from outside
+the project.
+
+Qt 6 headers no longer compile as C++11: <QtCore/qnumeric.h> pulls in
+qcheckedint_impl.h, which needs constexpr lambdas, three-way comparison and the
+qSubOverflow overloads introduced in C++17. The Qt-linked targets (async/qt and
+qtel) therefore fail:
+
+  qcheckedint_impl.h:301:5: error: the type '...::<lambda()>' of 'constexpr'
+      variable 'f' is not literal
+  qcheckedint_impl.h:292:35: error: no matching function for call to
+      'compareThreeWay(int&, int&)'
+
+libsigc++-2.0 builds fine at any level from C++11 upwards, and the sigc++-3.0
+branch right above already asks for C++17, so aligning the 2.x branch on C++17
+costs nothing and unblocks Qt 6.
+
+--- svxlink-26.05.1.orig/src/cmake/Modules/FindSIGC.cmake	2026-07-26 13:22:42.000000000 +0200
++++ svxlink-26.05.1/src/cmake/Modules/FindSIGC.cmake	2026-08-04 16:29:46.240064517 +0200
+@@ -14,7 +14,7 @@
+   if(${PC_SIGC_VERSION} VERSION_GREATER "3.0.0")
+     set(SIGC_CXX_FLAGS "--std=c++17")
+   elseif(${PC_SIGC_VERSION} VERSION_GREATER "2.5.0")
+-    set(SIGC_CXX_FLAGS "--std=c++11")
++    set(SIGC_CXX_FLAGS "--std=c++17")
+   endif()
+ 
+   find_path(SIGC_CONFIG_INCLUDE_DIR sigc++config.h
+--- svxlink-26.05.1.orig/src/cmake/Modules/FindSIGC2.cmake	2026-07-26 13:22:42.000000000 +0200
++++ svxlink-26.05.1/src/cmake/Modules/FindSIGC2.cmake	2026-08-04 16:29:46.244064964 +0200
+@@ -11,7 +11,7 @@
+ #set(SIGC2_DEFINITIONS ${PC_SIGC2_CFLAGS_OTHER})
+ 
+ if(${PC_SIGC2_VERSION} VERSION_GREATER "2.5.0")
+-  set(SIGC2_CXX_FLAGS "--std=c++11")
++  set(SIGC2_CXX_FLAGS "--std=c++17")
+ endif()
+ 
+ find_path(SIGC2_CONFIG_INCLUDE_DIR sigc++config.h

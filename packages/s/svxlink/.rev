@@ -47,4 +47,37 @@
     <comment></comment>
     <requestid>1153498</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>fd38d24b3e5bfd68ac22b6c9fdb7b6a7</srcmd5>
+    <version>unknown</version>
+    <time>1786304244</time>
+    <user>anag_factory</user>
+    <comment>Update to version 26.05.1 (from 19.09.2)
+
+Resubmission of SR 1370142, which factory-auto declined on:
+
+  ERROR: INVALID DATE &quot; Sat Apr 14 2007 Tobias Blomberg (SM0SVX)&quot; (svxlink/svxlink.changes:113)
+
+NOTE the diff therefore contains one change BELOW the top changelog entry, which
+is deliberate. The 2007-04-14 header was missing the canonical &quot; - &quot; separator
+before the author. check_dates_in_changes accumulates the header tokens into the
+date string and stops at the first token containing '-' or '@', so without that
+separator the author name was folded into the date and date(1) rejected it. The
+identical line is already present in openSUSE:Factory/svxlink (line 88), so this
+predates the update -- but the file cannot pass the validator in any form until
+the header parses, hence the in-place fix. Only the separator is added; the date,
+the author and every line of entry text are byte-identical, and the entry count
+is unchanged. The helpers/fix_changelog remedy the decline suggests is a no-op on
+this file, verified on a copy.
+
+Package contents otherwise as in 1370142: 26.05.1 with Async 1.9.1, EchoLib
+1.3.7, Qtel 1.3.0, SvxLink 1.10.1, RemoteTrx 1.6.1; libasync1_6 -&gt; libasync1_9
+soname rename with an upgrade path; Qtel ported to Qt 6; svxlink-sigc-cxx17.patch
+(sent upstream as gh#sm0svx/svxlink#825); jsoncpp + libgpiod added; the 26.05
+logic cores packaged as plugins.
+
+Built and verified on aarch64: 13 RPMs, rpmlint 0 errors / 4 warnings / 0
+badness, source_validator now clean.</comment>
+    <requestid>1370181</requestid>
+  </revision>
 </revisionlist>
