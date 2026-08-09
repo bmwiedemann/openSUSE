@@ -19,7 +19,7 @@
 %define upstream_name google_cloud_dns
 %{?sle15_python_module_pythons}
 Name:           python-google-cloud-dns
-Version:        0.36.1
+Version:        0.37.0
 Release:        0
 Summary:        Google Cloud DNS API access
 License:        Apache-2.0

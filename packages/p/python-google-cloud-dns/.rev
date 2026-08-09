@@ -39,4 +39,13 @@
   * Allow Protobuf 7.x, require Python 3.9</comment>
     <requestid>1344788</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>327d03ff2a384e7bd558a0f50c85516a</srcmd5>
+    <version>0.37.0</version>
+    <time>1786304034</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.37.0
+  * Drop support for Python 3.9 (#16954) (forwarded request 1370182 from glaubitz)</comment>
+    <requestid>1370219</requestid>
+  </revision>
 </revisionlist>
