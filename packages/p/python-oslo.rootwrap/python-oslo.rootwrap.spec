@@ -17,7 +17,7 @@
 
 
 Name:           python-oslo.rootwrap
-Version:        7.9.0
+Version:        7.10.0
 Release:        0
 Summary:        Filtering shell commands to run as root from OpenStack services
 License:        Apache-2.0

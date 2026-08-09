@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Aug  5 14:38:30 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.10.0:
+  * zuul: Use openstack-python3-next-jobs template
+  * pre-commit: Bump versions
+  * Do not install code to build release notes
+  * Remove Python 3.10 support
+  * Import eventlet conditionally
+  * Deprecate version module
+  * tox: Use new constraints option
+  * Filter warning from eventlet
+  * Update packaging configuration
+  * ruff: Configure hacking as external linter
+  * Update master for stable/2026.1
+  * Add support for testtools 2.8.x
+
+-------------------------------------------------------------------
 Fri Apr 17 16:44:54 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - skip functional/eventlet tests that are less stable

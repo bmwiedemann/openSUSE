@@ -323,4 +323,24 @@
     <comment>- skip functional/eventlet tests that are less stable</comment>
     <requestid>1347763</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>5005cadd8a6bc157cda20da6b0d368d3</srcmd5>
+    <version>7.10.0</version>
+    <time>1786304091</time>
+    <user>anag_factory</user>
+    <comment>- update to 7.10.0:
+  * zuul: Use openstack-python3-next-jobs template
+  * pre-commit: Bump versions
+  * Do not install code to build release notes
+  * Remove Python 3.10 support
+  * Import eventlet conditionally
+  * Deprecate version module
+  * tox: Use new constraints option
+  * Filter warning from eventlet
+  * Update packaging configuration
+  * ruff: Configure hacking as external linter
+  * Update master for stable/2026.1
+  * Add support for testtools 2.8.x</comment>
+    <requestid>1369784</requestid>
+  </revision>
 </revisionlist>
