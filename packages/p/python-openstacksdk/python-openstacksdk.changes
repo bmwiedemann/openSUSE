@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Aug  6 20:50:20 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.18.0:
+  * [DNS] Increase the zones quota before creating a new one
+  * Fix typo
+  * Network: Add fields filtering option to Networking resources
+  * share: Add missing query-string parameters
+  * share: Add support for the ensure-services action
+  * Add support for passing image size to Glance API
+  * zuul: Use openstack-python3-next-jobs template
+  * pre-commit: Bump versions
+  * Implement resource_provider_trait method in Proxy class
+  * Add Resource Provider Trait resource class
+
+-------------------------------------------------------------------
 Sun Jun 28 10:48:24 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.17.0:
