@@ -348,4 +348,12 @@
   * reno: Update master for unmaintained/2024.1</comment>
     <requestid>1342253</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>ec0ba766bb09b604bb5fcddf6d626106</srcmd5>
+    <version>6.2.0</version>
+    <time>1786304118</time>
+    <user>anag_factory</user>
+    <comment>- add 0001-Fix-unit-test-failure-caused-by-osprofiler-4.4.0.patch</comment>
+    <requestid>1370133</requestid>
+  </revision>
 </revisionlist>

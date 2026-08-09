@@ -1,0 +1,41 @@
+From 4cee2bb25a4d15e7dd1802f3e7e75520177446db Mon Sep 17 00:00:00 2001
+From: Takashi Kajinami <kajinamit@oss.nttdata.com>
+Date: Tue, 30 Jun 2026 03:07:44 +0900
+Subject: [PATCH] Fix unit test failure caused by osprofiler 4.4.0
+
+osprofiler 4.4.0 fixed the X-Trace-Info header value and now it sends
+a string rather than a byte string[1].
+
+[1] https://review.opendev.org/c/openstack/osprofiler/+/979501
+
+Change-Id: If44df628878c6079f063fdd37ed17f94ae92cb9c
+Signed-off-by: Takashi Kajinami <kajinamit@oss.nttdata.com>
+---
+ mistralclient/tests/unit/test_httpclient.py | 7 +------
+ 1 file changed, 1 insertion(+), 6 deletions(-)
+
+diff --git a/mistralclient/tests/unit/test_httpclient.py b/mistralclient/tests/unit/test_httpclient.py
+index 78b5ab9..46ee2e4 100644
+--- a/mistralclient/tests/unit/test_httpclient.py
++++ b/mistralclient/tests/unit/test_httpclient.py
+@@ -112,16 +112,11 @@ class HTTPClientTest(base.BaseClientTest):
+         data = {'base_id': PROFILER_TRACE_ID, 'parent_id': PROFILER_TRACE_ID}
+         signed_data = osprofiler_utils.signed_pack(data, PROFILER_HMAC_KEY)
+ 
+-        headers = {
+-            'X-Trace-Info': signed_data[0],
+-            'X-Trace-HMAC': signed_data[1]
+-        }
+-
+         self.client.get(API_URL)
+ 
+         self.assertTrue(m.called_once)
+         headers = self.assertExpectedAuthHeaders()
+-        self.assertEqual(signed_data[0], headers['X-Trace-Info'])
++        self.assertEqual(signed_data[0].decode(), headers['X-Trace-Info'])
+         self.assertEqual(signed_data[1], headers['X-Trace-HMAC'])
+ 
+     def test_get_request_options_with_headers_for_get(self):
+-- 
+2.55.0
+
