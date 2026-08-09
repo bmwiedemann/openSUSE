@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Aug  7 18:44:42 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.58.0:
+  + Surround interoplation expressions with spaces when formatting
+  + Accept multiple ,-separated values in --justfile-name
+  + Add format argument to [timestamp] attribute
+  + Add [timestamp] recipe attribute
+  + Note that no-cd only affects recipe working directory
+
+-------------------------------------------------------------------
 Wed Jul 29 06:51:56 UTC 2026 - Kyle Scheuing <kyle@kylescheuing.com>
 
 - Update to version 1.57.0:

@@ -873,4 +873,17 @@
   + Remove generic argument from Count (forwarded request 1368313 from Oppzippy)</comment>
     <requestid>1368425</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>d2a2119f90cd41b2d3aecfb11f9bde86</srcmd5>
+    <version>1.58.0</version>
+    <time>1786304520</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.58.0:
+  + Surround interoplation expressions with spaces when formatting
+  + Accept multiple ,-separated values in --justfile-name
+  + Add format argument to [timestamp] attribute
+  + Add [timestamp] recipe attribute
+  + Note that no-cd only affects recipe working directory (forwarded request 1370265 from rrahl0)</comment>
+    <requestid>1370266</requestid>
+  </revision>
 </revisionlist>
