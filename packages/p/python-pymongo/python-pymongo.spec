@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pymongo
-Version:        4.16.0
+Version:        4.17.0
 Release:        0
 Summary:        Python driver for MongoDB
 License:        Apache-2.0

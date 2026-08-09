@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Aug  6 20:26:17 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.17.0:
+  * has_key, iterkeys and itervalues in :class:`bson.son.SON`
+    have been deprecated and will be removed in PyMongo 5.0.
+    These methods were deprecated in favor of the standard
+    dictionary containment operator in and the keys() and
+    values() methods, respectively.
+  * Added the :meth:`~pymongo.asynchronous.client_session.AsyncCl
+    ientSession.bind` and
+    :meth:`~pymongo.client_session.ClientSession.bind` methods
+    that allow users to bind a session to all database operations
+    within the scope of a context manager instead of having to
+    explicitly pass the session to each individual operation. See
+    the Transactions docs for examples and more information.
+  * Added support for MongoDB's Intelligent Workload Management
+    (IWM) and ingress connection rate limiting features. The
+    driver now gracefully handles write-blocking scenarios and
+    optimizes connection establishment during high-load
+    conditions to maintain application availability. See the IWM
+    or Overload Errors docs for more information.
+
+-------------------------------------------------------------------
 Thu Mar 19 08:36:39 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - rely on backports.zstd only on 313 or older
