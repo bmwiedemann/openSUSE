@@ -1,0 +1,22 @@
+Index: Molsketch-0.8.4/libmolsketch/CMakeLists.txt
+===================================================================
+--- Molsketch-0.8.4.orig/libmolsketch/CMakeLists.txt
++++ Molsketch-0.8.4/libmolsketch/CMakeLists.txt
+@@ -19,7 +19,7 @@ if(MSK_QT6)
+   else(MSK_STATIC_LIB)
+     qt_add_library(libmolsketch SHARED ${libmolsketch_SRCS} ${libmolsketch_UIS_H} ${libmolsketch_QM})
+   endif(MSK_STATIC_LIB)
+-  target_link_libraries(libmolsketch ${QT_LIBRARIES})
++  target_link_libraries(libmolsketch mskcore ${QT_LIBRARIES})
+ else(MSK_QT6)
+   message(STATUS "Building Qt5")
+   if(MSK_STATIC_LIB)
+@@ -28,7 +28,7 @@ else(MSK_QT6)
+     add_library(libmolsketch SHARED ${libmolsketch_SRCS} ${libmolsketch_UIS_H} ${libmolsketch_QM})
+   endif(MSK_STATIC_LIB)
+   # target_link_libraries(libmolsketch ${package})
+-  target_link_libraries(libmolsketch ${QT_LIBRARIES})
++  target_link_libraries(libmolsketch mskcore ${QT_LIBRARIES})
+ endif(MSK_QT6)
+ set_target_properties(libmolsketch PROPERTIES OUTPUT_NAME "molsketch")
+ 

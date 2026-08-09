@@ -1,7 +1,7 @@
 #
 # spec file for package molsketch
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,13 +26,14 @@
 %define sover 1
 %define soname %{sover}
 Name:           molsketch
-Version:        0.8.1
+Version:        0.8.4
 Release:        0
 Summary:        2D molecular structures editor
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Chemistry
 URL:            https://molsketch.sourceforge.net
 Source0:        https://downloads.sourceforge.net/molsketch/Molsketch-%{version}-src.tar.gz
+Patch0:         molsketch-link-mskcore.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc%{?gcc_ver}-c++
@@ -121,6 +122,7 @@ done
 
 %files devel
 %{_includedir}/lib%{name}/
+%{_includedir}/libmskcore/
 
 %files doc
 %{_docdir}/%{name}/

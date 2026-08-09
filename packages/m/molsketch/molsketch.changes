@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Jul 31 19:13:22 UTC 2026 - andy great <andythe_great@pm.me>
+
+- Update to version 0.8.4:
+  * Fix vector normalization (led to crashes when drawing arrows).
+  * Initialize arrows with scene default color.
+  * Initialize frames/brackets with scene default color.
+  * Use grid color for hint points during drawing and default color
+    for lines.
+  * Fix export via OpenBabel, including crashes when trying to open
+    or save.
+- Add molsketch-link-mskcore.patch: Link libmolsketch against the
+  new libmskcore library.
+- Changes from version 0.8.3:
+  * Fix accidental color change, e.g. when inserting fused rings.
+- Changes from version 0.8.2:
+  * Fix placement of icons in settings dialog sidebar.
+
+-------------------------------------------------------------------
 Sat Dec 21 14:32:29 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.8.1:
@@ -200,4 +218,3 @@ Tue Feb 21 14:53:33 UTC 2012 - mailaender@opensuse.org
 
 - initial packaging, added QtAssistant include path to CMakeLists.txt
 - added BuildRequires: -post-build-checks because of compiler warnings
-

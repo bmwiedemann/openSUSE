@@ -79,4 +79,148 @@
     <comment></comment>
     <requestid>1233301</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9d184b5efb701c52066b11f6f48d47f0</srcmd5>
+    <version>0.8.4</version>
+    <time>1786304460</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.8.4:
+  * Fix vector normalization (led to crashes when drawing arrows).
+  * Initialize arrows with scene default color.
+  * Initialize frames/brackets with scene default color.
+  * Use grid color for hint points during drawing and default color
+    for lines.
+  * Fix export via OpenBabel, including crashes when trying to open
+    or save.
+- Add molsketch-link-mskcore.patch: Link libmolsketch against the
+  new libmskcore library.
+- Changes from version 0.8.3:
+  * Fix accidental color change, e.g. when inserting fused rings.
+- Changes from version 0.8.2:
+  * Fix placement of icons in settings dialog sidebar.
+- Update to version 0.8.1:
+  * Fix color of newly inserted atoms and bonds.
+  * Fix color of radical electrons.
+  * Fix color of lone pairs.
+- Drop no longer needed patches:
+  * molsketch-cmake-qt5-add-translation.patch
+  * molsketch-include-numeric-header.patch
+- Switch to Qt6 for builds on openSUSE Tumbleweed.
+- Drop use of deprecated %suse_update_desktop_files.
+- Update to version 0.8.0:
+  * Reimplemented rendering of atom labels (should also fix
+    bounding box issues for charges)
+  * Enable build with Qt 6
+  * Dark mode icons
+- Add molsketch-include-numeric-header.patch: add numeric header
+  and ensure std=c++17 is used during compilation.
+- Use gcc9 for openSUSE Leap 15.x to use transform_reduce.
+- update to 0.7.3:
+  * New bond types 
+- Allow build against Open Babel 3: It is supported since 0.7.0.
+- Add molsketch-cmake-qt5-add-translation.patch: Use
+  qt5_add_translation instead of qt_add_translation with cmake.
+- Update to version 0.7.2:
+  * Update location of OpenBabel adapter when updating Molsketch.
+  * Minor fixes in translations build (cmake).
+- Changes from version 0.7.1:
+  * Copy and cut actions also copy SVG image.
+  * Fixed compilation with Qt 5 versions before Qt 5.14.
+  * Fixed inclusion of translations for library part for qmake
+    build.
+  * Fixed inclusion of all translations for cmake build.
+  * Fixed crashes/errors during copy/cut/paste and when opening
+    files.
+  * Removed support for Qt 4; filenames changed.
+- Drop fix-compilation.patch: fixed upstream.
+- New BuildRequires: cmake(Qt5LinguistTools).
+- Adapt to upstream file name changes.
+- Put essential libraries in the main package
+- Update to version 0.7.0
+  * New localizations: Greek, German, and Chinese
+  * Direction of attached hydrogen atoms can be set explicitly by user
+  * Atom shape can also be a circle instead of a rectangle
+  * Bitmap export with adjustable resolution
+  * Support OpenBabel 3
+  * Fixes for sum formula and molecule tooltip
+  * Fix clipping of bonds
+  * Fixed OpenBabel support
+- Add fix-compilation.patch
+- Update to version 0.6.0:
+  * Levels on which items are drawn are accessible; bonds are
+    indicated to cover other bonds if on higher level
+  * Broken bond indicator with same color as rest of bond
+  * Show sum formula of molecule during hover and after selection
+  * Closable wiki query
+  * Improved performance for drag-and-drop insertion of molecules
+  * Associated *.msm files with Molsketch
+  * Fixed crashes after undo/redo (changed linkage between
+    molecule, bonds, atoms)
+  * Fixed global preferences (accidentally had no effect)
+  * Fixed number of hydrogens and charge in saving/loading
+    molecules
+- Update options passed to cmake to keep up with upstream changes;
+  omit MSK_INSTALL_LIBS specification entrirely since specifying
+  it leads to installation of *.so into a subdir for x86_64 and
+  directly into %{_lib} for i586.
+- Force ascii mode when using dos2unix.
+- Drop conditionals for obsolete openSUSE versions.
+- Drop shared lib package: versioned shared libraries are no
+  longer installed, so everything is packaged in -devel.
+- Leap 15.2 and SLE15 SP2 has newer librsvg, extend the conditional
+  for &quot;BuildRequires: rsvg-convert&quot;
+- fix build-requires for factory/tumbleweed
+  rsvg-convert tool is now in rsvg-convert package 
+- Update to version 0.5.1.
+  * Newman radius of atom to draw Newman-type projections.
+  * New tools for aligning, spacing, and cleaning up molecules.
+  * Better encapsulate calls to OpenBabel to avoid crashes.
+  * Several fixes to qmake/cmake installation of files (including
+    MIME types).
+- Drop molsketch-cmake-incorrect-file-loc.patch: incorporated
+  upstream.
+- Use rsvg-convert instead of inkscape for the svg-to-png
+  conversion of icons; reduces the large number of build
+  dependencies otherwise required for inkscape alone.
+- Only run post(un) scriptlets for openSUSE &lt;= 1320; for newer
+  openSUSE these are automatically taken care of by rpm triggers;
+  where applicable also run mime_database_post(un) as part of
+  these scriptlets since molsketch now installs a mime file.
+- Trim (tm) symbol. Trim filler wording from description.
+- Update to version 0.5.0:
+  * Change log displayed on startup.
+  * Lone pairs and radical electrons.
+  * Selection by type (not yet really useful as properties are
+    usually edited only for single items).
+  * Querying Wikidata for chemical structures (requires
+    OpenBabel and InChI support).
+- Add molsketch-cmake-incorrect-file-loc.patch: Fix cmake install
+  command looking for files in molsketch/src/* whereas they have
+  been moved to molsketch/* already
+- Build against Qt5 unconditionally (the minimum Qt5 is available
+  across all supported openSUSE versions).
+- Adapt file list for update: include files no longer installed
+- Update to 0.4.1:
+  * A new text tool.
+  * Cmake build now offers the option to turn off OpenBabel
+    support, which was previously only possible with qmake.
+  * Legacy stereo bonds (from files created with versions prior to
+    Lithium) are now imported correctly.
+- Use inkscape to build hicolor png icons from bundled svg image
+  and install then all.
+- Run post install scripts to update desktop database and hicolor
+  icon theme.
+- Run spec-cleaner for a clean-up.
+- Update to 0.3.0:
+  * see: /usr/share/doc/packages/molsketch/CHANGELOG
+- Create a new spec file for building RPM
+- Use qmake instead of cmake
+- Add new packages: libmolsketch, molsketch-doc, molsketch-devel
+- fix build on SLE 11 
+- fix openbabel dependency according to package name changes 
+- update to version 2.0.0 with fixes from git by the developer
+- initial packaging, added QtAssistant include path to CMakeLists.txt
+- added BuildRequires: -post-build-checks because of compiler warnings (forwarded request 1368926 from andythe_great)</comment>
+    <requestid>1370207</requestid>
+  </revision>
 </revisionlist>
