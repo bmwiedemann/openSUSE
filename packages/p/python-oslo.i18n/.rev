@@ -405,4 +405,20 @@
   * Update master for stable/2026.1</comment>
     <requestid>1353867</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>68913b85cc43c35de9aa49216334d05c</srcmd5>
+    <version>6.9.0</version>
+    <time>1786304084</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.9.0:
+  * zuul: Use openstack-python3-next-jobs template
+  * pre-commit: Bump versions
+  * gettextutils: deduplicate Babel alias languages
+  * Fix tox config option
+  * Do not install code to build release notes
+  * Replace whitelist_externals
+  * Remove Python 3.10 support
+  * tests: fix TypeError message for Python 3.15</comment>
+    <requestid>1369775</requestid>
+  </revision>
 </revisionlist>

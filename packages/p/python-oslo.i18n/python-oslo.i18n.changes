@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Aug  5 14:10:50 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.9.0:
+  * zuul: Use openstack-python3-next-jobs template
+  * pre-commit: Bump versions
+  * gettextutils: deduplicate Babel alias languages
+  * Fix tox config option
+  * Do not install code to build release notes
+  * Replace whitelist_externals
+  * Remove Python 3.10 support
+  * tests: fix TypeError message for Python 3.15
+
+-------------------------------------------------------------------
 Mon May 18 16:35:00 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.8.0:
