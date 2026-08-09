@@ -15,8 +15,8 @@ index 74a5af01e..a59cbafe1 100644
 +++ b/src/Mod/CAM/PathSimulator/AppGL/DlgCAMSimulator.cpp
 @@ -25,6 +25,7 @@
  #include "DlgCAMSimulator.h"
- #include "MillSimulation.h"
  #include "Gui/View3DInventorViewer.h"
+ #include "MillSimulation.h"  // Must be *after* View3DInventorViewer.h -- See PR #28950
 +#include <GL/gl.h>
  #include <Mod/Part/App/BRepMesh.h>
  #include <QDateTime>

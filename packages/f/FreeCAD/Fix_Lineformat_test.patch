@@ -11,7 +11,7 @@ for more information, see https://pre-commit.ci
  1 file changed, 39 insertions(+), 15 deletions(-)
 
 diff --git a/tests/src/Mod/TechDraw/App/LineFormat.cpp b/tests/src/Mod/TechDraw/App/LineFormat.cpp
-index b84cd377b2c4..3b005b60b6d0 100644
+index b84cd377b2c41..3b005b60b6d0d 100644
 --- a/tests/src/Mod/TechDraw/App/LineFormat.cpp
 +++ b/tests/src/Mod/TechDraw/App/LineFormat.cpp
 @@ -4,43 +4,67 @@
