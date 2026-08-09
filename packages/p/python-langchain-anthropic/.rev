@@ -33,4 +33,19 @@
 Requires langchain-core &gt;= 1.5.2, submitted as SR#1368295 -- please co-stage.</comment>
     <requestid>1368300</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c7d5b6d272996fbc26dea15c325d331b</srcmd5>
+    <version>1.5.4</version>
+    <time>1786304494</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.5.4
+
+- Handle tool schemas with unsupported top-level composition
+- Preserve caller tool_choice
+- Add user_profile_id convenience attribute
+
+Built and verified on aarch64: 190 tests pass on both python313 and python314,
+rpmlint 0 errors / 0 warnings / 0 badness, source_validator clean.</comment>
+    <requestid>1370145</requestid>
+  </revision>
 </revisionlist>

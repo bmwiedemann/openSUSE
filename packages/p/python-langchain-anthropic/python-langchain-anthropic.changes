@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Aug  7 05:04:55 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.5.4:
+  * Handle tool schemas with unsupported top-level composition
+  * Preserve caller tool_choice
+  * Add user_profile_id convenience attribute
+
+-------------------------------------------------------------------
 Wed Jul 29 06:30:23 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.5.3:
