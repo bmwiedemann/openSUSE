@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Aug  4 11:25:04 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.4:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.4
+- Changes since 6.7.3:
+  * Update version for new release 6.7.4
+  * Submit usefulness for the right review regardless of how the list is sorted
+  * ui: Only keep a state saver around when we are visible
+  * UpdateModel: Do not pass a lambda to a unique connect
+  * UpdatesModel: Remove destroyed resources (kde#522255)
+  * ApplicationDelegate: relocate "non-default backend" badge with size
+  * ApplicationDelegate: align icons when delegate is showing size
+  * Update version for new release 6.7.4
+
+-------------------------------------------------------------------
 Tue Jul 14 12:22:10 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.7.3:
