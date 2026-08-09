@@ -26,7 +26,7 @@
 %endif
 
 Name:           dracut
-Version:        110+suse.45.geaec47e4
+Version:        112+suse.28.g84b3ea7
 Release:        0
 Summary:        Event driven initramfs infrastructure
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -412,6 +412,7 @@ rm -f /var/adm/fillup-templates/sysconfig.kernel-mkinitrd
 %{dracutlibdir}/modules.d/70bluetooth
 %{dracutlibdir}/modules.d/70btrfs
 %{dracutlibdir}/modules.d/70crypt
+%{dracutlibdir}/modules.d/70crypt-lib
 %{dracutlibdir}/modules.d/70devicetree-firmware
 %{dracutlibdir}/modules.d/70dm
 %{dracutlibdir}/modules.d/70dmraid
@@ -440,6 +441,7 @@ rm -f /var/adm/fillup-templates/sysconfig.kernel-mkinitrd
 %{dracutlibdir}/modules.d/70qemu-net
 %{dracutlibdir}/modules.d/70uefi-lib
 %{dracutlibdir}/modules.d/71systemd-cryptsetup
+%{dracutlibdir}/modules.d/71overlayfs-crypt
 %{dracutlibdir}/modules.d/73crypt-gpg
 %{dracutlibdir}/modules.d/73crypt-loop
 %{dracutlibdir}/modules.d/73fido2

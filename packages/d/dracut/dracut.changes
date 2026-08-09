@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri Aug 07 08:00:13 UTC 2026 - antonio.feijoo@suse.com
+
+- Update to version 112+suse.28.g84b3ea7:
+
+  Full list of changes:
+  * https://github.com/dracut-ng/dracut-ng/releases/tag/112
+  * https://github.com/dracut-ng/dracut-ng/releases/tag/111
+
+  Additional openSUSE-specific changes and post-release fixes:
+  * fix(net-lib): validate iSCSI port parameters
+  * refactor(net-lib): use strip_non_digits() to validate iSCSI LUN parameters
+  * fix(net-lib): source dracut-lib.sh in net-lib.sh
+  * fix(hwdb): always install this module, except in strict hostonly mode
+  * fix(dracut): --remove allows to remove files from the host filesystem
+  * fix(dracut): --remove globbing does not work
+  * fix(shell-completion): add missing --remove option
+  * style(dracut): correct indentation in help text
+  * fix(dracut-functions): typo in log function
+  * fix(iscsi): normalize the target name in the generated netroot=
+  * fix(iscsi): do not source the boot-time net-lib.sh into module-setup.sh
+  * fix(net-lib): normalize iSCSI target names on the iqn./eui./naa. path
+  * fix(systemd-sysusers): do not run systemd-sysusers as part of the build process
+  * feat(systemd-coredump): save coredumps to journal
+  * fix(dracut): remove wrong auto-detection logic for output file
+  * feat(dracut-install): do not return non-zero if a dependency cannot be resolved
+  * feat(dracut-systemd): add back and fix printing fs help in the emergency shell
+  * feat(resume): add openSUSE-specific sanity check
+  * fix(rngd): revert changes that removed the custom systemd service
+  * fix(systemd-pcrextend): revert changes related to inclusion and dependencies
+  * fix(lsinitrd, dracut-initramfs-restore): detect initrd for BLS Type #1 entries
+  * fix(dracut.sh): improve detection of installed kernel versions
+  * feat: add openSUSE-specific code related to networking
+  * feat(convertfs): add openSUSE-specific code
+  * fix(fips): handle zipl
+  * feat(fips): add openSUSE-specific code
+  * chore(suse): add openSUSE-specific modules
+  * ci: change openSUSE code owners
+
+-------------------------------------------------------------------
 Wed Jul 22 06:10:56 UTC 2026 - antonio.feijoo@suse.com
 
 - Update to version 110+suse.45.geaec47e4:
