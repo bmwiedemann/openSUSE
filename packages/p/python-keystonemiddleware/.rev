@@ -426,4 +426,17 @@ update to version 4.9.0
   (upstream)</comment>
     <requestid>1337889</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>ac53e125fd0d2816e5de69119e2d2764</srcmd5>
+    <version>13.0.0</version>
+    <time>1786304117</time>
+    <user>anag_factory</user>
+    <comment>- update to 13.0.0:
+  * Update master for stable/2026.1
+  * Imported Translations from Zanata
+  * Remove unused Makefile for doc
+  * Remove url tags from README
+- add 0001-Replace-deprecated-timeutils.set_time_override.patch</comment>
+    <requestid>1370132</requestid>
+  </revision>
 </revisionlist>

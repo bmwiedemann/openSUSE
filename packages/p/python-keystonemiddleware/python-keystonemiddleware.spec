@@ -17,20 +17,22 @@
 
 
 Name:           python-keystonemiddleware
-Version:        12.0.0
+Version:        13.0.0
 Release:        0
 Summary:        Middleware for OpenStack Identity
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/keystonemiddleware
 Source0:        https://files.pythonhosted.org/packages/source/k/keystonemiddleware/keystonemiddleware-%{version}.tar.gz
+Patch1:         0001-Replace-deprecated-timeutils.set_time_override.patch
+BuildRequires:  %{python_module PyJWT >= 2.4.0}
 BuildRequires:  %{python_module WebOb >= 1.7.1}
 BuildRequires:  %{python_module WebTest}
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module fixtures}
 BuildRequires:  %{python_module keystoneauth1 >= 3.12.0}
 BuildRequires:  %{python_module keystoneclient >= 3.20.0}
-BuildRequires:  %{python_module oslo.cache >= 1.26.0}
+BuildRequires:  %{python_module oslo.cache >= 3.11.0}
 BuildRequires:  %{python_module oslo.config >= 5.2.0}
 BuildRequires:  %{python_module oslo.context >= 2.19.2}
 BuildRequires:  %{python_module oslo.i18n >= 3.15.3}
@@ -38,6 +40,7 @@ BuildRequires:  %{python_module oslo.messaging}
 BuildRequires:  %{python_module oslo.serialization >= 2.18.0}
 BuildRequires:  %{python_module oslo.utils >= 3.33.0}
 BuildRequires:  %{python_module oslotest}
+BuildRequires:  %{python_module pbr >= 6.1.1}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pycadf >= 1.1.0}
 BuildRequires:  %{python_module python-memcached}
@@ -49,10 +52,11 @@ BuildRequires:  %{python_module testresources}
 BuildRequires:  %{python_module testtools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  openstack-macros
+Requires:       python-PyJWT >= 2.4.0
 Requires:       python-WebOb >= 1.7.1
 Requires:       python-keystoneauth1 >= 3.12.0
 Requires:       python-keystoneclient >= 3.20.0
-Requires:       python-oslo.cache >= 1.26.0
+Requires:       python-oslo.cache >= 3.11.0
 Requires:       python-oslo.config >= 5.2.0
 Requires:       python-oslo.context >= 2.19.2
 Requires:       python-oslo.i18n >= 3.15.3
