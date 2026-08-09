@@ -1,0 +1,36 @@
+From: Bernhard M. Wiedemann <bwiedemann@suse.de>
+Subject: Normalize jars before they are archived into jmods
+
+jrt-fs.jar and ct.sym are created with the boot JDK's jar tool, which
+hardcodes the current time into the META-INF entries, so the copies
+archived into java.base.jmod and jdk.compiler.jmod differ between
+builds even though the standalone copies get normalized during
+packaging. Run strip-nondeterminism on them right before jmod picks
+them up; normalizing them later is not possible because java.base
+records hashes over the other .jmod files.
+
+Not upstreamable in this form (it relies on strip-nondeterminism being
+installed and is a no-op without it); upstream fixed this in JDK 19 by
+teaching jar and jmod a --date option (JDK-8276766).
+
+Signed-off-by: Bernhard M. Wiedemann <bwiedemann@suse.de>
+
+--- a/make/CreateJmods.gmk
++++ b/make/CreateJmods.gmk
+@@ -222,6 +222,16 @@
+ 	$(call LogWarn, Creating $(patsubst $(OUTPUTDIR)/%, %, $@))
+ 	$(call MakeDir, $(JMODS_DIR) $(JMODS_TEMPDIR))
+ 	$(RM) $@ $(JMODS_TEMPDIR)/$(notdir $@)
++        # The boot JDK's jar tool stamps the current time into the META-INF
++        # entries of jrt-fs.jar and ct.sym, and jmod archives those bytes, so
++        # they have to be normalized before packaging - afterwards is too late
++        # because of the module hashes recorded in java.base.
++	$(if $(filter-out updated, $(SOURCE_DATE)), \
++	  if [ -d "$(LIBS_DIR)" ] && command -v strip-nondeterminism > /dev/null 2>&1; then \
++	    $(FIND) $(LIBS_DIR) -type f \( -name '*.jar' -o -name 'ct.sym' \) \
++	        -exec strip-nondeterminism --type zip --timestamp=$(SOURCE_DATE) \
++	            --clamp-timestamp {} + ; \
++	  fi)
+ 	$(call ExecuteWithLog, $(SUPPORT_OUTPUTDIR)/jmods/$(MODULE).jmod, \
+ 	    $(JMOD) create \
+ 	        --module-version $(VERSION_SHORT) \

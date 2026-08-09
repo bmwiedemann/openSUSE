@@ -34,19 +34,19 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      11
 %global interimver      0
-%global updatever       31
+%global updatever       32
 %global patchver        0
-%global buildver        11
+%global buildver        9
 %global root_repository https://github.com/ibmruntimes/openj9-openjdk-jdk%{featurever}/archive
-%global root_revision   a8e14054ef30e8468055458c15503d5857e8c837
-%global root_branch     v0.59.0-release
-%global omr_repository  https://github.com/eclipse/openj9-omr/archive
-%global omr_revision    6426f03fa087b257a7e58f363ef61526c896fea3
-%global omr_branch      v0.59.0-release
-%global openj9_repository https://github.com/eclipse/openj9/archive
-%global openj9_revision c53b6b93f422b77b3395a3464d5578b706e9a618
-%global openj9_branch   v0.59.0-release
-%global openj9_tag      openj9-0.59.0
+%global root_revision   cb00718c9bc24aa94fa99dc4214f641b66cd492c
+%global root_branch     v0.60.0-release
+%global omr_repository  https://github.com/eclipse-openj9/openj9-omr/archive
+%global omr_revision    2e3166f7afc61f577ccaa63b85444b63b82491f7
+%global omr_branch      v0.60.0-release
+%global openj9_repository https://github.com/eclipse-openj9/openj9/archive
+%global openj9_revision 396c827fb365c53b26586f55ec09d4727b37d9be
+%global openj9_branch   v0.60.0-release
+%global openj9_tag      openj9-0.60.0
 %if 0%{?suse_version} > 1500
 %bcond_without libalternatives
 %else
@@ -116,6 +116,9 @@ Patch3:         openssl-OSSL_LIB_CTX.patch
 Patch4:         openj9-openssl.patch
 # Fix: implicit-pointer-decl
 Patch5:         implicit-pointer-decl.patch
+# Fixes for build with gcc 16
+Patch6:         omr-gcc16.patch
+Patch7:         openj9-gcc16.patch
 #
 Patch10:        system-pcsclite.patch
 #
@@ -124,6 +127,16 @@ Patch20:        loadAssistiveTechnologies.patch
 Patch30:        JDK-8208602.patch
 Patch31:        aarch64.patch
 Patch32:        reproducible-version.patch
+Patch33:        reproducible-nls.patch
+Patch34:        reproducible-tracemerge-order.patch
+Patch35:        reproducible-generatecharacter.patch
+Patch36:        reproducible-generated-source-dates.patch
+Patch37:        reproducible-jmod-mtime.patch
+Patch38:        reproducible-search-index-files.patch
+Patch39:        java-40y.patch
+Patch40:        reproducible-tznames-order.patch
+Patch41:        reproducible-nested-jars.patch
+
 #
 # OpenJDK specific patches
 #
@@ -163,6 +176,9 @@ BuildRequires:  libxslt
 BuildRequires:  nasm
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
+%if 0%{?suse_version} >= 1500
+BuildRequires:  strip-nondeterminism
+%endif
 BuildRequires:  unzip
 BuildRequires:  xprop
 BuildRequires:  zip
@@ -360,6 +376,8 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %patch -P 3 -p1
 %patch -P 4 -p1
 %patch -P 5 -p1
+%patch -P 6 -p1
+%patch -P 7 -p1
 
 %if %{with_system_pcsc}
 %patch -P 10 -p1
@@ -370,6 +388,15 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %patch -P 30 -p1
 %patch -P 31 -p1
 %patch -P 32 -p1
+%patch -P 33 -p1
+%patch -P 34 -p1
+%patch -P 35 -p1
+%patch -P 36 -p1
+%patch -P 37 -p1
+%patch -P 38 -p1
+%patch -P 39 -p1
+%patch -P 40 -p1
+%patch -P 41 -p1
 
 %patch -P 300 -p1
 
@@ -411,34 +438,35 @@ bash configure \
     CC=gcc-%{with_gcc} \
     NM=gcc-nm-%{with_gcc} \
 %endif
-    --with-extra-cflags="$EXTRA_CFLAGS" \
-    --with-extra-cxxflags="$EXTRA_CPP_FLAGS" \
-    --with-version-pre="" \
-    --with-version-opt="suse-0%{?suse_version}-%{_arch}" \
-    --disable-warnings-as-errors \
-    --disable-warnings-as-errors-omr \
-    --disable-warnings-as-errors-openj9 \
-    --disable-keep-packaged-modules \
-    --enable-jfr \
-    --with-debug-level=%{debugbuild} \
-    --with-conf-name=%{debugbuild} \
-    --with-zlib=system \
-    --with-libjpeg=system \
-    --with-giflib=system \
-    --with-libpng=system \
-    --with-lcms=system \
-	--with-openssl=system \
 %if %{with_system_pcsc}
     --with-pcsclite=system \
 %endif
 %if %{with_system_harfbuzz}
     --with-harfbuzz=system \
 %endif
-    --with-stdc++lib=dynamic \
-    --with-extra-cxxflags="$EXTRA_CPP_FLAGS" \
     --with-extra-cflags="$EXTRA_CFLAGS" \
+    --with-extra-cxxflags="$EXTRA_CPP_FLAGS" \
+    --with-version-pre="" \
+    --with-version-opt="suse-0%{?suse_version}-%{_arch}" \
+    --with-debug-level=%{debugbuild} \
+    --with-conf-name=%{debugbuild} \
+    --disable-warnings-as-errors \
+    --disable-warnings-as-errors-omr \
+    --disable-warnings-as-errors-openj9 \
+    --disable-keep-packaged-modules \
+    --enable-jfr \
+    --with-zlib=system \
+    --with-libjpeg=system \
+    --with-giflib=system \
+    --with-libpng=system \
+    --with-lcms=system \
+	--with-openssl=system \
+    --with-stdc++lib=dynamic \
     --disable-javac-server \
-    --enable-demos
+    --enable-demos \
+    --enable-reproducible-build \
+    --with-source-date="${SOURCE_DATE_EPOCH:-$(date +%%s)}" \
+    --with-copyright-year="$(date -u -d "@${SOURCE_DATE_EPOCH:-$(date +%%s)}" +%%Y)"
 
 %{make} \
     LOG=trace \
@@ -563,6 +591,16 @@ find %{buildroot}%{_jvmdir}/%{sdkdir}/demo \
   | sed 's|'%{buildroot}'||' \
   | sed 's|^|%doc |' \
   >> %{name}-demo.files
+
+%if 0%?have_strip_nondeterminism > 0
+# normalizes the zip timestamps in the demo jars, jrt-fs.jar and src.zip;
+# ct.sym is a jar too, but only matched by name. The jmod archives are
+# already normalized at build time (reproducible-jmod-mtime.patch) and
+# must not be touched, or the ModuleHashes recorded in java.base go stale.
+strip-all-nondeterminism %{buildroot}/%{_jvmdir}
+strip-nondeterminism --type zip --timestamp=${SOURCE_DATE_EPOCH:-1494270000} \
+    --clamp-timestamp %{buildroot}%{_jvmdir}/%{sdkdir}/lib/ct.sym
+%endif
 
 # fdupes links the files from JDK to JRE, so it breaks a JRE
 # use it carefully :))

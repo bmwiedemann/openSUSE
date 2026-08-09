@@ -1,0 +1,46 @@
+diff --git a/openj9/sourcetools/j9nls/com/ibm/oti/NLSTool/J9NLS.java b/openj9/sourcetools/j9nls/com/ibm/oti/NLSTool/J9NLS.java
+index 25aa5c221..2fea566e0 100644
+--- a/openj9/sourcetools/j9nls/com/ibm/oti/NLSTool/J9NLS.java
++++ b/openj9/sourcetools/j9nls/com/ibm/oti/NLSTool/J9NLS.java
+@@ -22,6 +22,7 @@
+ package com.ibm.oti.NLSTool;
+ 
+ import java.io.BufferedReader;
++import java.io.ByteArrayOutputStream;
+ import java.io.File;
+ import java.io.FileInputStream;
+ import java.io.FileNotFoundException;
+@@ -291,8 +292,8 @@ public class J9NLS implements NLSConstants {
+ 			} else {
+ 					String fileName = getNameWithLocale(outFileName, locale);
+ 					if (propertiesDifferentFromCopyOnDisk(fileName)) {
+-						out = new FileOutputStream(fileName);	
+-						outputProperties.store(out, null);
++						out = new FileOutputStream(fileName);
++						storeOutputProperties(out);
+ 						out.flush();
+ 						dp("** Generated " + fileName + "\n");
+ 						totalPropertiesFilesCreated++;
+@@ -308,6 +309,22 @@ public class J9NLS implements NLSConstants {
+ 		}
+ 	}
+ 
++	/**
++	 * Writes the generated properties, dropping the leading comment line in
++	 * which Properties.store() records the current time: it would make the
++	 * generated files differ between otherwise identical builds.
++	 *
++	 * @param out
++	 * @throws IOException
++	 */
++	private void storeOutputProperties(OutputStream out) throws IOException {
++		ByteArrayOutputStream buffer = new ByteArrayOutputStream();
++		outputProperties.store(buffer, null);
++		/* Properties.store(OutputStream, String) writes ISO 8859-1. */
++		String stored = buffer.toString("ISO-8859-1");
++		out.write(stored.substring(stored.indexOf('\n') + 1).getBytes("ISO-8859-1"));
++	}
++
+ 	private MsgInfo createMsgInfo(String macro, String key, String msg, Properties nlsProperties) {
+ 		MsgInfo msgInfo = new MsgInfo();
+ 		msgInfo.setMacro(macro);

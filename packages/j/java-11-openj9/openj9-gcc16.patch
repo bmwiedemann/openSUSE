@@ -1,0 +1,10 @@
+--- a/openj9/runtime/compiler/control/CompilationThread.cpp
++++ b/openj9/runtime/compiler/control/CompilationThread.cpp
+@@ -778,6 +778,7 @@ bool TR::CompilationInfo::createCompilationInfo(J9JITConfig *jitConfig)
+         /* Note: there are embedded objects in TR::CompilationInfo that rely on the fact
+            that we do memset this object to 0 */
+         memset(alloc, 0, sizeof(TR::CompilationInfo));
++        __asm__("" : : : "memory");
+         _compilationRuntime = new (alloc) TR::CompilationInfo(jitConfig);
+         jitConfig->compilationRuntime = (void *)_compilationRuntime;
+ #ifdef DEBUG

@@ -1,0 +1,13 @@
+--- a/src/jdk.javadoc/share/classes/jdk/javadoc/internal/doclets/formats/html/AbstractIndexWriter.java
++++ b/src/jdk.javadoc/share/classes/jdk/javadoc/internal/doclets/formats/html/AbstractIndexWriter.java
+@@ -497,6 +497,10 @@ public class AbstractIndexWriter extends HtmlDocletWriter {
+                     ZipOutputStream zos = new ZipOutputStream(fos)) {
+                 try {
+                     ZipEntry ze = new ZipEntry(searchIndexFile.getPath());
++                    String sde = System.getenv("SOURCE_DATE_EPOCH");
++                    if (sde != null) {
++                        ze.setTime(1000 * Long.parseLong(sde));
++                    }
+                     zos.putNextEntry(ze);
+                     zos.write(searchVar.toString().getBytes());
+                 } finally {

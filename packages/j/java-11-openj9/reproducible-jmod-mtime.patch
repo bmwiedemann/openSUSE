@@ -1,0 +1,96 @@
+From: Bernhard M. Wiedemann <bwiedemann@suse.de>
+Subject: Make jmod content deterministic
+
+jmod stores each entry with the current time and packages the files of
+a section in the order the filesystem returns directory entries, so
+every .jmod archive can differ between two builds - seen both in the
+legal notices ("legal/ADDITIONAL_LICENSE_INFO" vs
+"legal/ASSEMBLY_EXCEPTION" first) and in the classes section.
+
+Clamp the entry time to SOURCE_DATE_EPOCH when it is set and sort each
+section's file list. jmod gained a --date option and sorted content for
+the same purpose in JDK 19 (JDK-8276766).
+
+Signed-off-by: Bernhard M. Wiedemann <bwiedemann@suse.de>
+
+--- a/src/jdk.jlink/share/classes/jdk/tools/jmod/JmodOutputStream.java
++++ b/src/jdk.jlink/share/classes/jdk/tools/jmod/JmodOutputStream.java
+@@ -101,7 +101,15 @@
+         String prefix = section.jmodDir();
+         String name = Paths.get(prefix, path).toString()
+                            .replace(File.separatorChar, '/');
+-        return new ZipEntry(name);
++        ZipEntry entry = new ZipEntry(name);
++        String sourceDateEpoch = System.getenv("SOURCE_DATE_EPOCH");
++        if (sourceDateEpoch != null && !sourceDateEpoch.isEmpty()) {
++            try {
++                entry.setTime(Long.parseLong(sourceDateEpoch.trim()) * 1000L);
++            } catch (NumberFormatException e) {
++            }
++        }
++        return entry;
+     }
+ 
+     @Override
+--- a/src/jdk.jlink/share/classes/jdk/tools/jmod/JmodTask.java
++++ b/src/jdk.jlink/share/classes/jdk/tools/jmod/JmodTask.java
+@@ -773,33 +773,41 @@
+         void processSection(JmodOutputStream out, Section section, Path path)
+             throws IOException
+         {
++            // Collect and sort the files so that the archive does not depend
++            // on the order the filesystem returns directory entries in.
++            List<Path> files = new ArrayList<>();
+             Files.walkFileTree(path, Set.of(FileVisitOption.FOLLOW_LINKS),
+                 Integer.MAX_VALUE, new SimpleFileVisitor<Path>() {
+                     @Override
+                     public FileVisitResult visitFile(Path file, BasicFileAttributes attrs)
+                         throws IOException
+                     {
+-                        Path relPath = path.relativize(file);
+-                        if (relPath.toString().equals(MODULE_INFO)
+-                                && !Section.CLASSES.equals(section))
+-                            warning("warn.ignore.entry", MODULE_INFO, section);
+-
+-                        if (!relPath.toString().equals(MODULE_INFO)
+-                                && !matches(relPath, excludes)) {
+-                            try (InputStream in = Files.newInputStream(file)) {
+-                                out.writeEntry(in, section, relPath.toString());
+-                            } catch (IOException x) {
+-                                if (x.getMessage().contains("duplicate entry")) {
+-                                    warning("warn.ignore.duplicate.entry",
+-                                            relPath.toString(), section);
+-                                    return FileVisitResult.CONTINUE;
+-                                }
+-                                throw x;
+-                            }
+-                        }
++                        files.add(file);
+                         return FileVisitResult.CONTINUE;
+                     }
+                 });
++            Collections.sort(files);
++
++            for (Path file : files) {
++                Path relPath = path.relativize(file);
++                if (relPath.toString().equals(MODULE_INFO)
++                        && !Section.CLASSES.equals(section))
++                    warning("warn.ignore.entry", MODULE_INFO, section);
++
++                if (!relPath.toString().equals(MODULE_INFO)
++                        && !matches(relPath, excludes)) {
++                    try (InputStream in = Files.newInputStream(file)) {
++                        out.writeEntry(in, section, relPath.toString());
++                    } catch (IOException x) {
++                        if (x.getMessage().contains("duplicate entry")) {
++                            warning("warn.ignore.duplicate.entry",
++                                    relPath.toString(), section);
++                            continue;
++                        }
++                        throw x;
++                    }
++                }
++            }
+         }
+ 
+         boolean matches(Path path, List<PathMatcher> matchers) {

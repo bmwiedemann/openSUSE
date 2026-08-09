@@ -1,0 +1,28 @@
+From: Bernhard M. Wiedemann <bwiedemann@suse.de>
+Subject: Emit CLDR short timezone aliases in deterministic order
+
+ZoneId.SHORT_IDS is an immutable Map.of() map, and iteration order of
+those is randomized per JVM run. extractZoneNames inserts the alias
+entries into the bundle map in that iteration order, and aliases whose
+keys land in the same hash bucket ("PST" and "AET") keep their
+insertion order in the bucket chain, so the entry order in a generated
+TimeZoneNames_*.java flips between builds. Sort the aliases before
+inserting them.
+
+Signed-off-by: Bernhard M. Wiedemann <bwiedemann@suse.de>
+
+--- a/make/jdk/src/classes/build/tools/cldrconverter/CLDRConverter.java
++++ b/make/jdk/src/classes/build/tools/cldrconverter/CLDRConverter.java
+@@ -719,8 +719,12 @@
+         }
+ 
+         // Finally some compatibility stuff
++        // ZoneId.SHORT_IDS is an immutable map whose iteration order changes
++        // from run to run; sort so that same-bucket keys always end up in the
++        // same chain order in the generated TimeZoneNames maps.
+         ZoneId.SHORT_IDS.entrySet().stream()
+             .filter(e -> !names.containsKey(e.getKey()) && names.containsKey(e.getValue()))
++            .sorted(Map.Entry.comparingByKey())
+             .forEach(e -> {
+                 names.put(e.getKey(), names.get(e.getValue()));
+             });
