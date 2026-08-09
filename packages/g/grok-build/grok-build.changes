@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Aug  7 12:11:17 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to git snapshot 0+git20260806.393430e:
+  * New "grok du" subcommand reporting how much disk space the grok
+    home uses, broken down over the worktree pool, registry and
+    databases
+  * Work inside tmux by wrapping terminal queries in DCS passthrough
+    sequences, so theme and capability detection no longer break in a
+    multiplexer
+  * Detect the terminal light/dark appearance from the process
+    environment when desktop APIs are unavailable, using the
+    SSH-surviving LC_GROK_APPEARANCE alias with a COLORFGBG fallback
+  * Detect and report version mismatches on the agent-client-protocol
+    connection instead of failing opaquely
+  * Redact sensitive protobuf fields from debug output
+  * Notice git checkouts in the filesystem watcher and add
+    provider-specific error types for the sampling backends
+  * Drop the interactive project picker
+- Set License to "Apache-2.0 AND MPL-2.0" and document the audit of the
+  statically linked crate licences in the spec (boo#1273104):
+  * pdf_oxide is shipped, pulled with its "rendering" feature, but it
+    is MIT OR Apache-2.0 and carries no GPL code - its jbig2.rs is a
+    pass-through stub whose only GPL-3.0 string is a comment naming
+    the jbig2dec crate as an option upstream did not take
+  * the JBIG2 decoder that "rendering" really pulls in is hayro-jbig2,
+    which is Apache-2.0 OR MIT
+  * MPL-2.0 covers the eight linked MPL-2.0 crates: cssparser,
+    cssparser-macros, dtoa-short, nucleo, nucleo-matcher, option-ext,
+    selectors and smartstring
+  * colored_json (EPL-2.0) is not in the shipped binary's dependency
+    graph, only in an unbuilt workspace crate
+- Stop tracking the generated grok-build-*.obscpio: the spec builds from
+  the .tar.zst, so it only duplicated 62 MB of sources per revision
+
+-------------------------------------------------------------------
 Mon Aug  3 05:42:28 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to git snapshot 0+git20260731.a422116:

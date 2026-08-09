@@ -17,10 +17,25 @@
 
 
 Name:           grok-build
-Version:        0+git20260731.a422116
+Version:        0+git20260806.393430e
 Release:        0
 Summary:        Terminal AI coding agent by xAI
-License:        Apache-2.0
+# Legal-Review-Notice (boo#1273104): licences of the statically linked Rust
+# dependencies, verified against the vendored tree with
+# "cargo tree -p xai-grok-pager-bin -e normal" (1003 vendored crates):
+#  - pdf_oxide IS shipped (pulled with its "rendering" feature), but it is
+#    "MIT OR Apache-2.0" and carries no GPL code. Its src/decoders/jbig2.rs is
+#    a pass-through stub ("no actual decoding performed"); its sole GPL-3.0
+#    string is a doc comment naming the jbig2dec crate as an implementation
+#    option upstream deliberately did NOT take.
+#  - The JBIG2 decoder that "rendering" really pulls in is hayro-jbig2, which
+#    is "Apache-2.0 OR MIT".
+#  - MPL-2.0 below covers the 8 statically linked MPL-2.0 crates: cssparser,
+#    cssparser-macros, dtoa-short, nucleo, nucleo-matcher, option-ext,
+#    selectors and smartstring (MPL-2.0+).
+#  - colored_json (EPL-2.0) is NOT in this binary's dependency graph; it is
+#    reachable only from xai-ratatui-inline, which this package does not build.
+License:        Apache-2.0 AND MPL-2.0
 URL:            https://github.com/xai-org/grok-build
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst

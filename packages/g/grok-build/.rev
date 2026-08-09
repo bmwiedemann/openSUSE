@@ -39,4 +39,16 @@ before the changelog separator (changes-lint clean, source_validator
 clean).</comment>
     <requestid>1369213</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>81fe42f806718f2cab03a55bbd0ecb3e</srcmd5>
+    <version>0+git20260806.393430e</version>
+    <time>1786304490</time>
+    <user>anag_factory</user>
+    <comment>Update to git snapshot 0+git20260806.393430e: new 'grok du' subcommand, tmux DCS passthrough so theme/capability detection works in a multiplexer, environment-based terminal light/dark detection, ACP version-mismatch reporting, protobuf debug redaction; project picker dropped.
+
+Also answers the legal review in boo#1273104: License is corrected to 'Apache-2.0 AND MPL-2.0' and a Legal-Review-Notice comment records the audit of the statically linked crates. pdf_oxide is shipped but is MIT OR Apache-2.0 with no GPL code (its jbig2.rs is a pass-through stub whose only GPL-3.0 string is a comment naming the jbig2dec crate as a rejected option); the real JBIG2 decoder pulled in is hayro-jbig2 (Apache-2.0 OR MIT); MPL-2.0 covers cssparser and seven further linked crates; colored_json (EPL-2.0) is not in the shipped binary's dependency graph.
+
+The generated grok-build-*.obscpio is no longer tracked - the spec builds from the .tar.zst, so it only duplicated 62 MB of sources per revision.</comment>
+    <requestid>1370236</requestid>
+  </revision>
 </revisionlist>
