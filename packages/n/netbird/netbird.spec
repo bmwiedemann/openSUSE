@@ -32,7 +32,7 @@
 %bcond_with stub_config
 
 Name:           netbird
-Version:        0.76.1
+Version:        0.76.3
 Release:        0
 Summary:        Mesh VPN based on WireGuard
 License:        AGPL-3.0-only AND BSD-3-Clause
@@ -42,6 +42,7 @@ Source1:        vendor.tar.zst
 Source2:        %{name}.service
 Source3:        %{name}-management.service
 Source4:        %{name}-signal.service
+Source5:        series
 Patch0:         service-install-cli-change.patch
 Patch1:         skip-ui.patch
 BuildRequires:  fdupes
