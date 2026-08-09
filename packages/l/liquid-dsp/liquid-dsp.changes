@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Aug  8 07:17:47 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.8.2
+  * cleaned up old instances of assert statements in code which
+    would cause the program to exit on failure; instead log error
+    and gracefully return.
+  * added option to disable building timestamps etc. for
+    reproducibility in automated builds.
+  * fixed issue with resolving SIMD selection between build,
+    runtime, and implementation.
+
+-------------------------------------------------------------------
 Tue Jul 28 08:56:36 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.8.1
