@@ -1,0 +1,16 @@
+Index: himmelblau-3.1.11+git0.6f728d85/src/o365/tests/url_handler.rs
+===================================================================
+--- himmelblau-3.1.11+git0.6f728d85.orig/src/o365/tests/url_handler.rs
++++ himmelblau-3.1.11+git0.6f728d85/src/o365/tests/url_handler.rs
+@@ -77,8 +77,9 @@ impl Harness {
+         let log = self.dir.join("calls.log");
+         let _ = fs::remove_file(&log);
+ 
+-        let out = Command::new(self.dir.join("o365-url-handler"))
+-            .args(args)
++        let out = Command::new("bash")
++            .arg(self.dir.join("o365-url-handler"))
++            .args(args)
+             // The stubs shadow anything of the same name on the real PATH.
+             .env(
+                 "PATH",

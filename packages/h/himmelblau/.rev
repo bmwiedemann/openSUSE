@@ -1745,4 +1745,24 @@ on leap 15.6, selinux-policy-devel doesn't exist
     <comment></comment>
     <requestid>1368055</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>6da855812bb41dbb85121b6c93d6acf1</srcmd5>
+    <version>3.1.11+git0.6f728d85</version>
+    <time>1786304015</time>
+    <user>anag_factory</user>
+    <comment>- Add o365-url-handler-test-etxtbsy.patch to avoid intermittent
+  ETXTBSY failures when OBS executes a freshly-written test script.
+- Update to version 3.1.11+git0.6f728d85:
+  * security: gate the o365 URL handler on a Microsoft 365 origin allowlist
+  * Version 3.1.11
+  * fix(pam): make account denials terminal
+  * debian: make the pam_allow_groups denial terminal in the account phase
+  * chore(deps): refresh Cargo lockfile
+  * security: reject RFC2307 ids in systemd's dynamic user range
+  * security: reject subid account names containing ':' or control characters
+  * security: bind PamChangeAuthToken to the connecting peer
+  * Add himmelblau-selinux package split and improve selinux handling w/ macros.
+</comment>
+    <requestid>1370093</requestid>
+  </revision>
 </revisionlist>

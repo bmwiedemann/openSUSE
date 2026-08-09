@@ -30,7 +30,7 @@
 %endif
 
 Name:           himmelblau
-Version:        3.1.10+git0.5d5bca33
+Version:        3.1.11+git0.6f728d85
 Release:        0
 Summary:        Interoperability suite for Microsoft Azure Entra Id
 License:        GPL-3.0-or-later
@@ -41,6 +41,7 @@ Source1:        vendor.tar.zst
 Source2:        cargo_config
 Patch0:         python311-build.patch
 Patch1:         conf_example.patch
+Patch2:         o365-url-handler-test-etxtbsy.patch
 BuildRequires:  binutils
 BuildRequires:  cargo
 BuildRequires:  cargo-packaging
@@ -89,11 +90,6 @@ BuildRequires:  selinux-policy-devel
 BuildRequires:  selinux-tools
 %endif
 ExclusiveArch:  %{rust_tier1_arches}
-%if 0%{?suse_version} >= 1600
-Requires:       make
-Requires:       policycoreutils
-Requires:       selinux-policy-devel
-%endif
 Recommends:     cron
 Recommends:     krb5
 Recommends:     libnss_himmelblau2
@@ -101,11 +97,31 @@ Recommends:     pam-himmelblau
 Recommends:     system-user-tss
 Recommends:     tpm2.0-tools
 Suggests:       himmelblau-sso
+%if 0%{?suse_version} >= 1600
+Requires:       (%{name}-selinux if selinux-policy-targeted)
+%endif
 
 %description
 Himmelblau is an interoperability suite for Microsoft Azure Entra Id
 and Intune, which allows users to sign into a Linux machine using Azure
 Entra Id credentials.
+
+%if 0%{?suse_version} >= 1600
+%package -n himmelblau-selinux
+Summary:        Himmelblau SELinux config
+Requires:       %{name} = %{version}
+# The `selinux_requires_min` macro doesn't exist on SLE16.0
+%if 0%{?suse_version} > 1600
+%{selinux_requires_min}
+%else
+Requires:       policycoreutils
+%endif
+
+%description -n himmelblau-selinux
+Himmelblau is an interoperability suite for Microsoft Azure Entra Id
+and Intune, which allows users to sign into a Linux machine using Azure
+Entra Id credentials.
+%endif
 
 %package -n pam-himmelblau
 Summary:        Azure Entra Id authentication PAM module
@@ -257,6 +273,15 @@ install -m 0644 man/man8/himmelblaud.8 %{buildroot}/%{_mandir}/man8/
 install -m 0644 man/man8/himmelblaud_tasks.8 %{buildroot}/%{_mandir}/man8/
 install -m 0644 src/daemon/src/himmelblau-policies.tmpfiles.conf %{buildroot}/%{_tmpfilesdir}/himmelblau-policies.conf
 install -m 0644 src/daemon/src/himmelblaud.tmpfiles.conf %{buildroot}/%{_tmpfilesdir}/himmelblaud.conf
+%if 0%{?suse_version} < 1600
+pushd %{buildroot}%{_sbindir}
+ln -s himmelblaud rchimmelblaud
+ln -s himmelblaud_tasks rchimmelblaud_tasks
+ln -s broker rcbroker
+popd
+%endif
+
+# SELinux
 %if 0%{?suse_version} >= 1600
 install -D -d -m 0755 %{buildroot}/%{_selinux_pkgdir}/himmelblaud
 install -D -d -m 0755 %{buildroot}/%{_selinux_docdir}
@@ -264,15 +289,10 @@ install -m 0644 src/selinux/src/himmelblaud.pp %{buildroot}/%{_selinux_pkgdir}/h
 install -m 0644 src/selinux/src/himmelblaud.te %{buildroot}/%{_selinux_pkgdir}/himmelblaud/himmelblaud.te
 install -m 0644 src/selinux/src/himmelblaud.fc %{buildroot}/%{_selinux_pkgdir}/himmelblaud/himmelblaud.fc
 %endif
-pushd %{buildroot}%{_sbindir}
-ln -s himmelblaud rchimmelblaud
-ln -s himmelblaud_tasks rchimmelblaud_tasks
-ln -s broker rcbroker
-popd
 
 # SSHD Config
 install -D -d -m 0755 %{buildroot}%{_sysconfdir}/ssh/sshd_config.d
-install -m 0644 platform/el/sshd_config %{buildroot}/%{_sysconfdir}/ssh/sshd_config.d/himmelblau.conf
+install -m 0644 platform/el/sshd_config %{buildroot}/%{_sysconfdir}/ssh/sshd_config.d/30-himmelblau.conf
 
 # Single Sign On
 strip --strip-unneeded target/release/linux-entra-sso
@@ -333,6 +353,7 @@ systemd-tmpfiles --create /usr/lib/tmpfiles.d/himmelblaud.conf 2>/dev/null || tr
 %service_del_postun himmelblaud.service himmelblaud-tasks.service
 
 %if 0%{?suse_version} >= 1600
+%postun -n himmelblau-selinux
 %selinux_modules_uninstall himmelblaud
 %endif
 
@@ -342,8 +363,8 @@ systemd-tmpfiles --create /usr/lib/tmpfiles.d/himmelblaud.conf 2>/dev/null || tr
 %preun
 %service_del_preun himmelblaud.service himmelblaud-tasks.service
 
-%posttrans
 %if 0%{?suse_version} >= 1600
+%posttrans -n himmelblau-selinux
 %selinux_modules_install %{_selinux_pkgdir}/himmelblaud.pp
 
 if command -v selinuxenabled >/dev/null 2>&1 && selinuxenabled && command -v restorecon >/dev/null 2>&1; then
@@ -390,7 +411,18 @@ if [ -d /usr/share/icons/hicolor ] && command -v gtk-update-icon-cache >/dev/nul
 %{_mandir}/man8/himmelblaud_tasks.8*
 %{_tmpfilesdir}/himmelblau-policies.conf
 %{_tmpfilesdir}/himmelblaud.conf
+%if 0%{?suse_version} < 1600
+%{_sbindir}/rchimmelblaud
+%{_sbindir}/rchimmelblaud_tasks
+%endif
+%{_datadir}/dbus-1/services/com.microsoft.identity.broker1.service
+%{_sbindir}/broker
+%if 0%{?suse_version} < 1600
+%{_sbindir}/rcbroker
+%endif
+
 %if 0%{?suse_version} >= 1600
+%files -n himmelblau-selinux
 %dir %{_docdir}/himmelblau-selinux
 %dir %{_selinux_docdir}
 %dir %{_selinux_pkgdir}
@@ -399,8 +431,6 @@ if [ -d /usr/share/icons/hicolor ] && command -v gtk-update-icon-cache >/dev/nul
 %{_selinux_pkgdir}/himmelblaud/himmelblaud.te
 %{_selinux_pkgdir}/himmelblaud/himmelblaud.fc
 %endif
-%{_sbindir}/rchimmelblaud
-%{_sbindir}/rchimmelblaud_tasks
 
 %files -n libnss_himmelblau2
 %dir %{_tmpfilesdir}
@@ -420,7 +450,7 @@ if [ -d /usr/share/icons/hicolor ] && command -v gtk-update-icon-cache >/dev/nul
 %endif
 
 %files -n himmelblau-sshd-config
-%config %{_sysconfdir}/ssh/sshd_config.d/himmelblau.conf
+%config %{_sysconfdir}/ssh/sshd_config.d/30-himmelblau.conf
 %if 0%{?sle_version} <= 150500
 %dir %{_sysconfdir}/ssh/sshd_config.d
 %endif
@@ -460,9 +490,6 @@ if [ -d /usr/share/icons/hicolor ] && command -v gtk-update-icon-cache >/dev/nul
 %{chrome_ext_dir}/jlnfnnolkbjieggibinobhkjdfbpcohn.json
 %{chrome_policy_dir}/himmelblau.json
 %{chromium_policy_dir}/himmelblau.json
-%{_datadir}/dbus-1/services/com.microsoft.identity.broker1.service
-%{_sbindir}/broker
-%{_sbindir}/rcbroker
 
 %files -n himmelblau-qr-greeter
 %dir %{_datarootdir}/gnome-shell

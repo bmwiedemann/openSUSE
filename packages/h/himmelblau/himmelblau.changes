@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Aug  6 15:26:38 UTC 2026 - David Mulder <david.mulder@suse.com>
+
+- Add o365-url-handler-test-etxtbsy.patch to avoid intermittent
+  ETXTBSY failures when OBS executes a freshly-written test script.
+
+-------------------------------------------------------------------
+Wed Aug 05 17:23:23 UTC 2026 - David Mulder <david.mulder@suse.com>
+
+- Update to version 3.1.11+git0.6f728d85:
+  * security: gate the o365 URL handler on a Microsoft 365 origin allowlist
+  * Version 3.1.11
+  * fix(pam): make account denials terminal
+  * debian: make the pam_allow_groups denial terminal in the account phase
+  * chore(deps): refresh Cargo lockfile
+  * security: reject RFC2307 ids in systemd's dynamic user range
+  * security: reject subid account names containing ':' or control characters
+  * security: bind PamChangeAuthToken to the connecting peer
+  * Add himmelblau-selinux package split and improve selinux handling w/ macros.
+
+-------------------------------------------------------------------
 Thu Jul 23 22:40:27 UTC 2026 - David Mulder <david.mulder@suse.com>
 
 - Update to version 3.1.10+git0.5d5bca33:
