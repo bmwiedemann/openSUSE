@@ -86,4 +86,12 @@ smoke test passes for both python313 and python314, source_validator clean.</com
     <comment>Update to 1.26.0</comment>
     <requestid>1368761</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ce26f7df28e722ebf8f5e1db11a7dc01</srcmd5>
+    <version>1.27.0</version>
+    <time>1786304273</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.27.0 (supersedes SR 1370148, which carried 1.26.1): hf-cli agent skill install/refresh, engine flags for Inference Endpoints without --custom-image and updatable after deploy, Baseten inference provider, region on space_info/list_spaces. Built and verified on aarch64: %check import smoke test passes for python 3.13 and 3.14, rpmlint 0 errors / 0 warnings / 0 badness, source_validator clean.</comment>
+    <requestid>1370303</requestid>
+  </revision>
 </revisionlist>
