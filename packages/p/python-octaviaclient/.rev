@@ -219,4 +219,17 @@
 - fix filelist</comment>
     <requestid>1342255</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>288d28ec4a8eeb47bce8a4b743977e11</srcmd5>
+    <version>3.14.0</version>
+    <time>1786304107</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.14.0:
+  * reno: Update master for unmaintained/2024.1
+  * Remove url tags from README
+  * Move tests to use osc_lib.test
+  * Bump requirement for osc-lib
+  * Update master for stable/2026.1</comment>
+    <requestid>1370112</requestid>
+  </revision>
 </revisionlist>

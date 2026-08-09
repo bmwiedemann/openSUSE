@@ -18,7 +18,7 @@
 
 %global pythons %{primary_python}
 Name:           python-octaviaclient
-Version:        3.13.0
+Version:        3.14.0
 Release:        0
 Summary:        Octavia Plugin for the OpenStack Command-line Client
 License:        Apache-2.0
