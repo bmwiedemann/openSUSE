@@ -47,11 +47,25 @@
 # are not found in other distributions.
 # Do not build test flavor for distributions which cannot run tests.
 ExclusiveArch:  do_not_build
+%else
+# python-fastmcp is needed to run the tests, but this is not available on other
+# archs
+ExclusiveArch:  x86_64
 %endif
 %endif
 
+%if 0%{?suse_version} >= 1600 && %{suse_version} < 1699
+# Do not build setools-console-analyses for SLE16.x
+# as networkx is not included as of 2026-08-04 (bsc#1273200)
+# which is needed for graph-based analysis
+%bcond_with setools_console_analyses
+%else
+# Tumbleweed and SLE 15.x ship networkx
+%bcond_without setools_console_analyses
+%endif
+
 Name:           setools%{name_suffix}
-Version:        4.7.0
+Version:        4.7.1
 Release:        0
 URL:            https://github.com/SELinuxProject/setools
 Summary:        Policy analysis tools for SELinux
@@ -72,6 +86,7 @@ BuildRequires:  libsepol-devel >= 3.2
 BuildRequires:  python-rpm-macros
 %if "%{flavor}" == "test"
 BuildRequires:  %{python_module PyQt6}
+BuildRequires:  %{python_module fastmcp}
 BuildRequires:  %{python_module mcp}
 BuildRequires:  %{python_module networkx >= 2.6}
 BuildRequires:  %{python_module pytest-qt}
@@ -79,8 +94,11 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module tox}
 BuildRequires:  checkpolicy
 %endif
-%if "%{flavor}" != "test"
+%if "%{flavor}" == ""
 Requires:       setools-console = %{version}-%{release}
+%if %{with setools_console_analyses}
+Requires:       setools-console-analyses = %{version}-%{release}
+%endif
 Requires:       setools-gui = %{version}-%{release}
 # needed since setools is not a python-main package, see
 # https://github.com/openSUSE/python-rpm-macros
@@ -95,7 +113,7 @@ libraries designed to facilitate SELinux policy analysis.
 This meta-package depends upon the main packages necessary to run
 SETools.
 
-%if "%{flavor}" != "test"
+%if "%{flavor}" == ""
 %package console
 Summary:        Policy analysis command-line tools for SELinux
 License:        GPL-2.0-only
@@ -110,9 +128,24 @@ This package includes the following console tools:
 
   seinfo          Provide information about policies
   sesearch        Tool to query policies
-  sedta           Domain transition analysis tool
-  seinfoflow      Information flow analysis tool
   sediff          Semantic policy difference tool
+
+%if %{with setools_console_analyses}
+%package	console-analyses
+Summary:        Policy analysis command-line tools for SELinux
+License:        GPL-2.0-only
+Requires:       %{python_for_executables}-networkx
+Requires:       %{python_for_executables}-setools = %{version}
+
+%description	console-analyses
+SETools is a collection of graphical tools, command-line tools, and
+libraries designed to facilitate SELinux policy analysis.
+
+This package includes the following console tools:
+
+  sedta        Perform domain transition analyses.
+  seinfoflow   Perform information flow analyses.
+%endif
 
 %package -n python-setools
 Summary:        Python bindings for SELinux policy analysis
@@ -148,20 +181,23 @@ libraries designed to facilitate SELinux policy analysis.
 This package includes the following graphical tools:
 
   apol          policy analysis tool
+%endif
 
-%package mcp
+%if "%{flavor}" == "mcp-multibuild"
+%package -n setools-mcp
 Summary:        MCP server for SELinux
 License:        GPL-2.0-only
+Requires:       %{python_for_executables}-fastmcp
 Requires:       %{python_for_executables}-mcp
 Requires:       %{python_for_executables}-setools = %{version}
 
-%description mcp
+%description -n setools-mcp
 SETools is a collection of graphical tools, command-line tools, and
 libraries designed to facilitate SELinux policy analysis.
 
 This package includes the following console tools:
 
-  mcp           A model context protocol server providing analysis tools to LLMs.
+mcp: A model context protocol server providing analysis tools to LLMs.
 
 %endif
 
@@ -174,9 +210,26 @@ This package includes the following console tools:
 
 %install
 %pyproject_install
-%if "%{flavor}" != "test"
+%if "%{flavor}" == ""
 install -m 644 -D %{SOURCE2} %{buildroot}%{_docdir}/%{software_name}/README.SUSE
 %python_expand %fdupes -s %{buildroot}%{$python_sitearch}
+
+%if %{without setools_console_analyses}
+rm %{buildroot}%{_bindir}/sedta
+rm %{buildroot}%{_bindir}/seinfoflow
+rm %{buildroot}%{_mandir}/man1/sedta.1
+rm %{buildroot}%{_mandir}/man1/seinfoflow.1
+rm %{buildroot}%{_mandir}/ru/man1/sedta.1
+rm %{buildroot}%{_mandir}/ru/man1/seinfoflow.1
+%endif
+
+rm -f %{buildroot}%{_bindir}/setools-mcp
+%endif
+
+%if "%{flavor}" == "mcp-multibuild"
+# Keep ONLY setools-mcp in the mcp flavor buildroot and delete everything else
+find %{buildroot} -type f -not -path "%{buildroot}%{_bindir}/setools-mcp" -delete
+find %{buildroot} -type d -empty -delete
 %endif
 
 %check
@@ -190,7 +243,7 @@ rm -rf setools setoolsgui
 rm -rf %{buildroot}
 %endif
 
-%if "%{flavor}" != "test"
+%if "%{flavor}" == ""
 %files %{python_files setools}
 %defattr(-,root,root,-)
 %{python_sitearch}/setools
@@ -201,33 +254,39 @@ rm -rf %{buildroot}
 %defattr(-,root,root,-)
 %{_bindir}/seinfo
 %{_bindir}/sesearch
-%{_bindir}/sedta
-%{_bindir}/seinfoflow
 %{_bindir}/sediff
 %{_bindir}/sechecker
 %{_mandir}/man1/sechecker.1.gz
-%{_mandir}/man1/sedta.1.gz
-%{_mandir}/man1/seinfoflow.1.gz
 %{_mandir}/man1/sediff.1.gz
 %{_mandir}/man1/seinfo.1.gz
 %{_mandir}/man1/sesearch.1.gz
 %{_mandir}/ru/man1/apol.1.gz
 %{_mandir}/ru/man1/sediff.1.gz
-%{_mandir}/ru/man1/sedta.1.gz
 %{_mandir}/ru/man1/seinfo.1.gz
-%{_mandir}/ru/man1/seinfoflow.1.gz
 %{_mandir}/ru/man1/sesearch.1.gz
 %dir %{_docdir}/%{software_name}/
 %{_docdir}/%{software_name}/*
+
+%if %{with setools_console_analyses}
+%files console-analyses
+%defattr(-,root,root,-)
+%{_bindir}/sedta
+%{_bindir}/seinfoflow
+%{_mandir}/man1/sedta.1.gz
+%{_mandir}/man1/seinfoflow.1.gz
+%{_mandir}/ru/man1/sedta.1.gz
+%{_mandir}/ru/man1/seinfoflow.1.gz
+%endif
 
 %files gui
 %defattr(-,root,root,-)
 %{_bindir}/apol
 %{_mandir}/man1/apol.1.gz
+%endif
 
-%files mcp
+%if "%{flavor}" == "mcp-multibuild"
+%files -n setools-mcp
 %{_bindir}/setools-mcp
-
 %endif
 
 %changelog
