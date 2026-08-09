@@ -46,4 +46,14 @@
 </comment>
     <requestid>1270007</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>22ae939e60cea31f5c6c83b693719963</srcmd5>
+    <version>3.3.15</version>
+    <time>1786303916</time>
+    <user>anag_factory</user>
+    <comment>- remove residual dependency on python-six by remove-python-six.patch
+  (fixes boo#1261289)
+</comment>
+    <requestid>1369991</requestid>
+  </revision>
 </revisionlist>

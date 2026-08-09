@@ -1,7 +1,7 @@
 #
 # spec file for package setroubleshoot-plugins
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ URL:            https://gitlab.com/setroubleshoot/plugins/
 # download url has different package name, add "plugins-" before last occurence of name macro
 #source         https://gitlab.com/setroubleshoot/plugins/-/archive/setroubleshoot-plugins-3.3.15/plugins-setroubleshoot-plugins-3.3.15.tar.gz
 Source:         setroubleshoot-plugins-3.3.15.tar.gz
+Patch0:         remove-python-six.patch
 BuildRequires:  fdupes
 BuildRequires:  gettext
 BuildRequires:  intltool

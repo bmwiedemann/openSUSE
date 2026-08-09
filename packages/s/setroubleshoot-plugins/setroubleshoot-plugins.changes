@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 27 08:36:12 UTC 2026 - Zdenek Kubala <zkubala@suse.com>
+
+- remove residual dependency on python-six by remove-python-six.patch
+  (fixes boo#1261289)
+
+-------------------------------------------------------------------
 Fri Apr  4 12:22:24 UTC 2025 - Zdenek Kubala <zkubala@suse.cz>
 
 - Update to 3.3.15
