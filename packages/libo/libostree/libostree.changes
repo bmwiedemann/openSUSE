@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug  6 20:27:52 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 2026.3:
+  * Unbounded LZMA decompression in static delta processing allows
+    denial of service via decompression (boo#1273918)
+  * Heap buffer overflow via integer truncation in static delta
+    bspatch on 32-bit systems (boo#1273917)
+
+-------------------------------------------------------------------
 Sun Jul 26 07:22:40 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 2026.2:

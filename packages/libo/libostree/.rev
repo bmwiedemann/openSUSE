@@ -554,4 +554,16 @@ CVE-2014-9862 boo#1201770 (forwarded request 991255 from AndreasStieger)</commen
     options across re-staging</comment>
     <requestid>1367816</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>85bcd7a4da1bbf785b0a48e3d82475a6</srcmd5>
+    <version>2026.3</version>
+    <time>1786303971</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2026.3:
+  * Unbounded LZMA decompression in static delta processing allows
+    denial of service via decompression (boo#1273918)
+  * Heap buffer overflow via integer truncation in static delta
+    bspatch on 32-bit systems (boo#1273917)</comment>
+    <requestid>1370183</requestid>
+  </revision>
 </revisionlist>
