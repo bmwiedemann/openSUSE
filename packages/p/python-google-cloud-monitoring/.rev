@@ -60,4 +60,14 @@
 - Update BuildRequires and Requires from setup.py (forwarded request 1343159 from glaubitz)</comment>
     <requestid>1343167</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0698a91d73758a758c48e8fe7aa574c0</srcmd5>
+    <version>2.31.0</version>
+    <time>1786304021</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.31.0
+  * regenerate monitoring using generator v1.32.0 (#17165)
+- Update BuildRequires and Requires from setup.py (forwarded request 1369961 from glaubitz)</comment>
+    <requestid>1370017</requestid>
+  </revision>
 </revisionlist>
