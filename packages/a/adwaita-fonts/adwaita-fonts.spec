@@ -17,12 +17,12 @@
 
 
 Name:           adwaita-fonts
-Version:        50.0
+Version:        51.0
 Release:        0
 Summary:        Adwaita Fonts
 License:        OFL-1.1
 URL:            https://gitlab.gnome.org/GNOME/adwaita-fonts
-Source:         https://download.gnome.org/sources/adwaita-fonts/50/%{name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/adwaita-fonts/51/%{name}-%{version}.tar.xz
 
 # needed for directory ownership
 BuildRequires:  fontconfig
