@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Fri Aug 7 10:55:37 UTC 2026 - wfeldt@opensuse.org
+
+- merge gh#wfeldt/parti#26
+- increase data read for file system probing to 256 kiB
+  (bsc#1274273)
+- 2.13
+
+--------------------------------------------------------------------
 Fri Mar 27 11:13:08 UTC 2026 - wfeldt@opensuse.org
 
 - merge gh#wfeldt/parti#25
