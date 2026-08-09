@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Thu Jul 30 14:07:16 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Conver to obs_scm source service. Same packaging variant as the
+  rest of GNOME packages.
+
+-------------------------------------------------------------------
+Mon Jul 27 13:13:02 UTC 2026 - Zoltan Balogh <zbalogh@suse.com>
+
+- New package: gnome-desktop-testing 2021.1
+  Provides gnome-desktop-testing-runner and ginsttest-runner, the
+  standard runner for the GNOME installed-tests infrastructure.
+  Required to execute installed test suites for GNOME-stack packages
+  such as libxmlb, graphene, libjcat, gcab, librsvg, gdk-pixbuf,
+  libfprint, upower, xdg-dbus-proxy, and others.
+- Add missing BuildRequires: make; sort BuildRequires alphabetically.
+
