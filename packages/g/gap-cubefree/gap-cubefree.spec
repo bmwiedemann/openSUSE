@@ -1,7 +1,7 @@
 #
 # spec file for package gap-cubefree
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-cubefree
-Version:        1.21
+Version:        1.22
 Release:        0
 Summary:        GAP: Construction of groups of a given cubefree order
 License:        GPL-2.0-or-later
@@ -28,7 +28,7 @@ Source:         https://github.com/gap-packages/cubefree/releases/download/v%ver
 BuildArch:      noarch
 BuildRequires:  gap-rpm-devel
 BuildRequires:  xz
-Requires:       gap-core >= 4.8
+Requires:       gap-core >= 4.9
 Requires:       gap-grpconst >= 2.5
 Requires:       gap-polycyclic >= 2.11
 Requires:       gap-smallgrp >= 1.3

@@ -1,38 +1,50 @@
 -------------------------------------------------------------------
+Sat Aug  8 15:03:48 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.22
+  * Sped up `NumberCFGroups` and `NumberCFSolvableGroups` by two
+    orders of magnitude, and cache their data across calls
+  * Converted the manual to GAPDoc/AutoDoc
+
+-------------------------------------------------------------------
 Sat Oct 11 17:53:32 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.21
-  * No changelog was provided
+  * Declared the SmallGrp package dependency explicitly
 
 -------------------------------------------------------------------
 Mon Dec 30 20:33:44 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.20
-  * No changelog was provided
+  * Speed up the cubefree isomorphism test by comparing polynomials
+    instead of their companion matrices
 
 -------------------------------------------------------------------
 Tue Jul  5 09:49:43 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.19
-  * No changelog was provided as usual
+  * Fixed building the manual with recent GAP versions
 
 -------------------------------------------------------------------
 Fri Sep  7 12:29:44 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to new upstream release 1.17
-  * No changelog was provided
+  * Added `IsomorphismCubefreeGroupsNC` and
+    `IsIsomorphismCubefreeGroups`
+  * Reworked and sped up the isomorphism test for cubefree groups
 
 -------------------------------------------------------------------
 Sun Oct 16 18:42:48 UTC 2016 - jengelh@inai.de
 
 - Update to new upstream release 1.16
-* No changelog was provided again
+  * Added `IsomorphismCubefreeGroups` to construct an isomorphism
+    between two cubefree groups
 
 -------------------------------------------------------------------
 Sun Jun 19 10:25:05 UTC 2016 - jengelh@inai.de
 
 - Update to new upstream release 1.15
-* No changelog was provided
+  * Various janitorial changes
 
 -------------------------------------------------------------------
 Fri May 10 13:47:02 UTC 2013 - jengelh@inai.de
