@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug  5 14:03:17 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.3:
+  + appwin: Fix GError memory leaks
+
+-------------------------------------------------------------------
 Thu May 28 07:10:29 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 50.2:

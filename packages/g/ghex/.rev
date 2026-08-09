@@ -671,4 +671,13 @@ Proposed for 12.3, as having a patch addressing the same fix as was done in anot
   + This release includes libgtkhex 4.12.1</comment>
     <requestid>1355875</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>19f3e9f391d16f713bb00f3cb9665974</srcmd5>
+    <version>50.3</version>
+    <time>1786304018</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 50.3:
+  + appwin: Fix GError memory leaks</comment>
+    <requestid>1369970</requestid>
+  </revision>
 </revisionlist>
