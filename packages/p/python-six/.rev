@@ -449,4 +449,12 @@
     <comment></comment>
     <requestid>1230762</requestid>
   </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>ebac35fb27998f509d753fa1b055e8f8</srcmd5>
+    <version>1.17.0</version>
+    <time>1786303965</time>
+    <user>anag_factory</user>
+    <comment>- Do not install the py module to run the testsuite.</comment>
+    <requestid>1370139</requestid>
+  </revision>
 </revisionlist>

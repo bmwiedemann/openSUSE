@@ -1,7 +1,7 @@
 #
 # spec file for package python-six
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,7 +47,6 @@ BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module dbm}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module py}
 BuildRequires:  python3-Sphinx
 %endif
 # work around boo#1186870
@@ -111,7 +110,7 @@ fi
 %doc README.rst CHANGES
 %{python_sitelib}/six.py
 %pycache_only %{python_sitelib}/__pycache__/six*.pyc
-%{python_sitelib}/six-%{version}*-info
+%{python_sitelib}/six-%{version}.dist-info
 %else
 
 %if 0%{?suse_version} > 1500
