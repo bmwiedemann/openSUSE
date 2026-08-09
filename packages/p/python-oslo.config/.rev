@@ -984,4 +984,21 @@ all changed Requires/Buildrequires seem to be available
   * Deprecate version module</comment>
     <requestid>1359321</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>9dfa50aa77d1870facce00da56ccff3e</srcmd5>
+    <version>10.6.0</version>
+    <time>1786304086</time>
+    <user>anag_factory</user>
+    <comment>- update to 10.6.0:
+  * Name ConfigOpts serialized state version
+  * ruff: Enable log-related checks
+  * Support ConfigOpts state snapshots for spawn workers
+  * zuul: Use openstack-python3-next-jobs template
+  * pre-commit: Bump versions
+  * Run doc8
+  * Do not install code to build release notes
+  * Loose validation for schemes
+  * Better support Sphinx doc generation with custom option types</comment>
+    <requestid>1369779</requestid>
+  </revision>
 </revisionlist>

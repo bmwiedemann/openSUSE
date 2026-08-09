@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Aug  5 14:25:20 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 10.6.0:
+  * Name ConfigOpts serialized state version
+  * ruff: Enable log-related checks
+  * Support ConfigOpts state snapshots for spawn workers
+  * zuul: Use openstack-python3-next-jobs template
+  * pre-commit: Bump versions
+  * Run doc8
+  * Do not install code to build release notes
+  * Loose validation for schemes
+  * Better support Sphinx doc generation with custom option types
+
+-------------------------------------------------------------------
 Sun Jun 14 20:50:47 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 10.5.0:
