@@ -574,4 +574,18 @@
   * Fix new mypy errors</comment>
     <requestid>1353864</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>7d345b7bf231d327c8e78cf875fe692e</srcmd5>
+    <version>8.3.0</version>
+    <time>1786304088</time>
+    <user>anag_factory</user>
+    <comment>- update to 8.3.0:
+  * zuul: Use openstack-python3-next-jobs template
+  * pre-commit: Bump versions
+  * Do not install code to build release notes
+  * Remove Python 3.10 support
+  * Don't import eventletutils
+  * Fix mypy type checking errors</comment>
+    <requestid>1369781</requestid>
+  </revision>
 </revisionlist>

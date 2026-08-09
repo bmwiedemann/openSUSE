@@ -17,7 +17,7 @@
 
 
 Name:           python-oslo.log
-Version:        8.2.0
+Version:        8.3.0
 Release:        0
 Summary:        OpenStack log library
 License:        Apache-2.0
