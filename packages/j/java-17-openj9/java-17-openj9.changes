@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Aug  6 12:59:48 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add patches for reproducible builds:
+  * reproducible-nls.patch
+  * reproducible-tracemerge-order.patch
+  * java-40y.patch
+
+-------------------------------------------------------------------
+Thu Aug  6 05:54:52 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to OpenJDK 17.0.20 with OpenJ9 0.60.0 virtual
+  machine
+- Including Oracle July 2026 CPU changes
+  * CVE-2026-46968 (bsc#1272224), CVE-2026-46917 (bsc#1272223),
+    CVE-2026-47010 (bsc#1272225), CVE-2026-47021 (bsc#1272227),
+    CVE-2026-47027 (bsc#1272228), CVE-2026-60147 (bsc#1272237),
+    CVE-2026-47059 (bsc#1272235), CVE-2026-47063 (bsc#1272236),
+    CVE-2026-41254 (bsc#1264994)
+- OpenJ9 specific security fixes
+  * CVE-2026-16439 (bsc#1272250)
+  * CVE-2026-16441 (bsc#1272248)
+  * OpenJ9 changes, see
+    https://www.eclipse.org/openj9/docs/version0.60/
+- Modified patch:
+  * openj9-openssl.patch
+    + rebase
+- Added patches:
+  * omr-gcc16.patch
+    + remove inlining annotation that compiler cannot honour
+      and that is fatal with gcc16
+  * openj9-gcc16.patch
+    + add memory barrier between zeroing a memory by memset and
+      constructing an object into it, since gcc16 was optimizing
+      out the zeroing and OpenJ9 VM heavily relies on it
+
+-------------------------------------------------------------------
 Thu Jun  4 07:19:45 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Make post scripts less noisy (bsc#1267355)

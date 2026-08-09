@@ -1,0 +1,11 @@
+--- a/omr/gc/base/MemorySubSpaceGenerational.hpp
++++ b/omr/gc/base/MemorySubSpaceGenerational.hpp
+@@ -107,7 +107,7 @@ class MM_MemorySubSpaceGenerational : public MM_MemorySubSpace
+ 
+ 	virtual uintptr_t releaseFreeMemoryPages(MM_EnvironmentBase* env, uintptr_t memoryType);
+ 
+-	virtual MMINLINE uintptr_t getContractionSize() const { return _memorySubSpaceOld->getContractionSize(); }
++	virtual uintptr_t getContractionSize() const { return _memorySubSpaceOld->getContractionSize(); }
+ 
+ 	/**
+ 	 * Create a MemorySubSpaceGenerational object.

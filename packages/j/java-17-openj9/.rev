@@ -223,4 +223,12 @@
     <comment>Make post scripts less noisy (bsc#1267355)</comment>
     <requestid>1357134</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>9c6cd66fd00400ce7fb64ec96b185542</srcmd5>
+    <version>17.0.20.0</version>
+    <time>1786304053</time>
+    <user>anag_factory</user>
+    <comment>OpenJ9 0.60.0 with July 2026 CPU fixes</comment>
+    <requestid>1370086</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,27 @@
+# Widen the currency cut-over sanity check from 10 to 40 years
+#
+# GenerateCurrencyData rejects any special-case cut-over time that is more
+# than 10 years away from the current time. That guard is about catching
+# typos in CurrencyData.properties, but it also makes the build fail when it
+# is run with a clock far from the data's epoch - which is what happens when
+# testing reproducibility with a shifted clock, and will happen anyway as
+# the data ages.
+#
+# Same change as java-40y.patch carries for java-17-openjdk.
+#
+
+diff --git a/openjdk/jdk/make/src/classes/build/tools/generatecurrencydata/GenerateCurrencyData.java b/openjdk/jdk/make/src/classes/build/tools/generatecurrencydata/GenerateCurrencyData.java
+index d599d9744fd..b544701fe66 100644
+--- ./make/jdk/src/classes/build/tools/generatecurrencydata/GenerateCurrencyData.java
++++ ./make/jdk/src/classes/build/tools/generatecurrencydata/GenerateCurrencyData.java
+@@ -283,8 +283,8 @@ public class GenerateCurrencyData {
+             checkCurrencyCode(newCurrency);
+             String timeString = currencyInfo.substring(4, length - 4);
+             long time = format.parse(timeString).getTime();
+-            if (Math.abs(time - System.currentTimeMillis()) > ((long) 10) * 365 * 24 * 60 * 60 * 1000) {
+-                throw new RuntimeException("time is more than 10 years from present: " + time);
++            if (Math.abs(time - System.currentTimeMillis()) > ((long) 40) * 365 * 24 * 60 * 60 * 1000) {
++                throw new RuntimeException("time is more than 40 years from present: " + time);
+             }
+             specialCaseCutOverTimes[specialCaseCount] = time;
+             specialCaseOldCurrencies[specialCaseCount] = oldCurrency;
