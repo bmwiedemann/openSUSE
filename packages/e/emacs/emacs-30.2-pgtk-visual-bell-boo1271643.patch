@@ -1,0 +1,29 @@
+From upstream https://lists.gnu.org/archive/html/bug-gnu-emacs/2025-03/msg01939.html
+
+bug#77128: 29.4; Memory leak in visual bell (pgtk_flash) on pure GTK Wayland builds
+
+---
+ src/pgtkterm.c |   12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+--- src/pgtkterm.c
++++ src/pgtkterm.c	2026-08-07 07:07:48.771524828 +0000
+@@ -3832,6 +3832,18 @@ pgtk_flash (struct frame *f)
+       cairo_fill (cr);
+     }
+ 
++  if (FRAME_X_OUTPUT (f)->cr_surface_visible_bell != NULL)
++    {
++      cairo_surface_destroy (FRAME_X_OUTPUT (f)->cr_surface_visible_bell);
++      FRAME_X_OUTPUT (f)->cr_surface_visible_bell = NULL;
++    }
++
++  if (FRAME_X_OUTPUT (f)->atimer_visible_bell != NULL)
++    {
++      cancel_atimer (FRAME_X_OUTPUT (f)->atimer_visible_bell);
++      FRAME_X_OUTPUT (f)->atimer_visible_bell = NULL;
++    }
++
+   FRAME_X_OUTPUT (f)->cr_surface_visible_bell = surface;
+ 
+   delay = make_timespec (0, 50 * 1000 * 1000);

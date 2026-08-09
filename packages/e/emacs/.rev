@@ -2353,4 +2353,13 @@ Now one could consider building emacs with gsettings support (both debian and fe
   ahead of time (aot) to avoid compiling threads (boo#1271643)</comment>
     <requestid>1369389</requestid>
   </revision>
+  <revision rev="220" vrev="10">
+    <srcmd5>e5da593b9276e5459025b107ed226052</srcmd5>
+    <version>30.2</version>
+    <time>1786303975</time>
+    <user>anag_factory</user>
+    <comment>- Add patch emacs-30.2-pgtk-visual-bell-boo1271643.patch from upstream
+  mailing list to fix memory leak in wayland port (boo#1271643)</comment>
+    <requestid>1370206</requestid>
+  </revision>
 </revisionlist>

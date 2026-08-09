@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug  7 07:11:58 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch emacs-30.2-pgtk-visual-bell-boo1271643.patch from upstream
+  mailing list to fix memory leak in wayland port (boo#1271643)
+
+-------------------------------------------------------------------
 Mon Aug  3 12:39:27 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Configure wayland the compilation support native with

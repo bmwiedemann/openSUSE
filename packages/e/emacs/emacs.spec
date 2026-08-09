@@ -252,6 +252,7 @@ Patch25:        emacs-26.1-xft4x11.patch
 Patch26:        emacs-27.1-pdftex.patch
 Patch27:        emacs-30.1-seccomp.patch
 Patch49:        0009-pdumper-set-DUMP_RELOC_ALIGNMENT_BITS-1-for-m68k.patch
+Patch50:        emacs-30.2-pgtk-visual-bell-boo1271643.patch
 Patch52:        0012-Add-inhibit-native-compilation.patch
 Patch53:        0013-Rename-to-inhibit-automatic-native-compilation.patch
 Patch55:        0015-Change-native-comp-async-jobs-number-default-to-1.patch
@@ -432,6 +433,7 @@ and most assembler-like syntaxes.
 %prep
 %setup -q -b 2
 %patch -P49 -p1
+%patch -P50 -p0
 %patch -P52 -p1
 %patch -P53 -p1
 %patch -P55 -p1
