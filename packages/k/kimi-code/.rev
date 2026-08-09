@@ -35,4 +35,12 @@ reports 0.31.1, rpmlint 0 errors 0 warnings 0 badness, source_validator
 clean.</comment>
     <requestid>1369256</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>94acad792d5d59a2750e3e1c3ca2367e</srcmd5>
+    <version>0.34.0</version>
+    <time>1786304648</time>
+    <user>anag_factory</user>
+    <comment>Update to version 0.34.0 (0.32.0, 0.33.0, 0.34.0): the CLI surfaces now run on the agent-core-v2 engine by default (KIMI_CODE_LEGACY_FLAG=1 falls back), new hook events, a [token_counting] config section, MCP OAuth re-authorization and structuredContent fixes, and 'kimi -p' now waits for background tasks. node-pty stays at 1.1.0 (upstream still asks for ^1.1.0; 1.2.0 is beta-only) and node-addon-api at 7.1.1. Built and verified on aarch64: %check runs 'kimi --version' successfully, rpmlint 0 errors / 0 warnings / 0 badness, source_validator clean.</comment>
+    <requestid>1370306</requestid>
+  </revision>
 </revisionlist>

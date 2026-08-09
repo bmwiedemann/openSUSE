@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Sat Aug  8 05:20:33 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.34.0:
+  * Show a cache-expiry reminder when resuming a long-idle session
+    or submitting after a long idle stretch
+  * Restore how the last turn ended (completed, cancelled or failed)
+    when a session is resumed after a server restart, and keep it in
+    session listings
+  * Fix "kimi -p" exiting right after the main turn instead of
+    waiting for background tasks and subagents to finish
+  * Keep live sessions stable when an MCP server is removed from the
+    workspace config or uninstalled with its plugin: its tools stay
+    registered but calls fail with a removal notice; servers added
+    mid-session take effect only in new sessions or after /new or
+    /reload
+  * Read UTF-16 LE/BE text files by transcoding them to UTF-8
+    instead of refusing them as binary
+  * Show retry progress (attempt N of M) during automatic retries
+    after a failed model request
+  * /feedback now works for any signed-in user regardless of the
+    active model
+- Changes from version 0.33.0:
+  * Run the CLI surfaces (interactive TUI, kimi -p, kimi acp,
+    kimi export, kimi provider) on the agent-core-v2 engine by
+    default; set KIMI_CODE_LEGACY_FLAG=1 to fall back to the legacy
+    engine
+  * Add Kimi Computer Use and Kimi WebBridge as built-in official
+    marketplace entries in the v2 CLI
+  * Ask whether to trust the current folder on startup
+  * /fork no longer switches to the forked session; the current
+    session stays active with its background tasks running
+  * Fix MCP OAuth re-authorization always failing with "Invalid
+    redirect URI" because a stale dynamic client registration
+    recorded the first flow's callback port
+  * Surface the MCP structuredContent field and _meta server
+    metadata to the model instead of dropping them silently
+  * Wait for MCP startup to finish before the first request while
+    still opening the interface immediately
+  * Start the interactive TUI without creating a session
+  * Add /bug as an alias for /feedback
+- Changes from version 0.32.0:
+  * Add the TurnStarted, UserPromptQueued, TaskStarted and
+    SessionHeartbeat hook events, enrich hook payloads with the
+    session title and client type, include the model and profile in
+    SessionStart, and report SessionEnd as archive for archived
+    sessions
+  * Add a [token_counting] config section to choose how context
+    token counts are derived: measured+estimated (default),
+    measured or estimated
+  * Rename [loop_control] max_retries_per_step to
+    max_attempts_per_step and max_steps_per_run to
+    max_steps_per_turn; the old keys no longer take effect on the v2
+    engine and warn at startup
+  * Fall back to the built-in models.dev catalog snapshot when the
+    public catalog is unreachable
+  * Fix submitting answers to interactive question prompts when the
+    provider returns tool call IDs containing colons
+  * Drop the KIMI_SNAPSHOT_READER, KIMI_SNAPSHOT_TIMEOUT_MS and
+    KIMI_SNAPSHOT_CACHE_LIMIT environment knobs
+
+-------------------------------------------------------------------
 Mon Aug  3 12:12:50 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.31.1:

@@ -23,7 +23,7 @@
 %define node_pty_version 1.1.0
 %define node_addon_api_version 7.1.1
 Name:           kimi-code
-Version:        0.31.1
+Version:        0.34.0
 Release:        0
 Summary:        Command-line agentic coding assistant powered by Kimi models
 License:        MIT
