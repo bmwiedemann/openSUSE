@@ -63,4 +63,24 @@
     <comment></comment>
     <requestid>1274344</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>fea923a2b41f05e3efe77f0cb841ffa0</srcmd5>
+    <version>64.8</version>
+    <time>1786304683</time>
+    <user>anag_factory</user>
+    <comment>Update to 64.8 (from 62.2). Supersedes SR 1370360, which I created with a placeholder message by accident; the tree is identical.
+
+Upstream highlights: a new -turbo algorithm for the add command (explicitly experimental upstream), a new -recover extraction mode that reads the archive randomly and writes files sequentially - aimed at high-latency destinations and often recovering more from damaged archives, a rewritten dump command that handles archives of any size, SFTP bandwidth limiting via -bandwidth, new work fc / work crc32 / work ispasswordok commands, -stdinsize for accurate ETAs, dir -nodir, hash -norecursion and -always, better local time handling including negative UTC offsets, and a fix for deprecated streamed ZPAQ files being misdetected. The experimental FRANZEN encrypted format was added; upstream states it is not suitable for anything beyond experimentation.
+
+CVE note: boo#1272902 / CVE-2025-50327 is open against this package but does not apply to a Linux build. The flaw is a failure to propagate the Windows Mark-of-the-Web to extracted files, and MotW is an NTFS Zone.Identifier alternate data stream that has no equivalent on Linux; the report also covers only 61.3 and earlier, while Factory has shipped 62.2 since May 2025. The changelog records this as a not-affected note.
+
+NOTE FOR LEGAL REVIEW: License changes from 'MIT AND SUSE-Public-Domain' to 'Apache-2.0 AND BSD-2-Clause AND MIT AND SUSE-Public-Domain AND Zlib AND Unlicense AND Ferguson-Twofish'. This is a correction, not a new obligation - nothing new entered the source. zpaqfranz is a single translation unit embedding 25 third-party components, which upstream enumerates in the 'Credits and copyrights and licenses' block of zpaqfranz.cpp; the old tag named two of them. The per-component derivation is recorded in a Legal-Review-Notice comment above the tag. Two duals are elected: BLAKE3 is 'CC0-1.0 OR Apache-2.0' -&gt; Apache-2.0 (already required by HighwayHash), and the libtomcrypt AES is 'public domain OR WTFPL' -&gt; public domain. The bundled curl.h carries the curl licence but only the header is present - libcurl and libssh are dlopened at run time and neither is linked - so it is not in the tag.
+
+Packaging cleanup: added a %check running upstream's own autotest plus an archive create/verify round trip (there was no %check at all); installed the man page upstream ships in man/; passed the distribution LDFLAGS, which were previously not passed at all so the binary got none of the standard link hardening; built with -DIPV6 so IPv4 is no longer forced; replaced 'Suggests: libcurl' (no such package exists in openSUSE) with Recommends on libcurl4 and libssh4, the libraries actually dlopened by name; declared the bundled blake3, highwayhash, libdivsufsort-lite, lz4 and xxhash copies with bundled() Provides; and normalised the CRLF line endings of CHANGELOG.md and COPYING.
+
+The arch-specific compile flags are carried over unchanged and deliberately: x86_64 currently gets -DNOJIT and no -DHWSHA2 while i586 gets -DHWSHA2, which looks inverted and which Fedora handles differently, but I could not confirm that the SHA-NI code path is cpuid-gated and did not want to risk SIGILL on older hardware. Worth a follow-up by someone who can test it.
+
+Built and verified on x86_64: rpmlint 0 errors / 0 warnings / 0 badness, %check autotest 'OK 16 ERROR 0' plus the round trip, source_validator clean.</comment>
+    <requestid>1370361</requestid>
+  </revision>
 </revisionlist>

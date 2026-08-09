@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Sat Aug  8 20:29:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 64.8:
+  * New -turbo switch for the add command, using a different
+    algorithm that can be up to 50% faster in favourable cases.
+    Upstream marks it as under active development and it has to be
+    requested explicitly
+  * New -recover extraction mode, which reads the archive in random
+    order and writes the extracted files strictly sequentially. This
+    is aimed at extracting onto high-latency media and often recovers
+    more files from a damaged archive
+  * New -recover switch for the consolidate command, which
+    regenerates the .index and .txt files of a multipart backup
+  * The dump command was rewritten and now handles archives of any
+    size
+  * SFTP transfers can be bandwidth-limited across threads with the
+    new -bandwidth switch
+  * New -huge switch, an alternative file preparation algorithm for
+    very large files on filesystems without sparse file support
+  * New work fc command for a binary comparison of two files, and
+    new work crc32 and work ispasswordok commands
+  * New -stdinsize switch to give an accurate ETA when creating an
+    archive from -stdin
+  * The dir command gained -nodir to list files only, the hash
+    command gained -norecursion, and the new -always switch forces
+    adding files whose timestamp has not changed
+  * Improved handling of local time, including negative UTC offsets
+  * Fixed deprecated streamed ZPAQ files being misdetected as
+    standard ZPAQ files
+  * The autotest command now runs a quick hash check by default and
+    reports more detail under -all
+  * Added the experimental FRANZEN encrypted format, enabled with
+    -franzen. Upstream states it is not suitable for anything beyond
+    experimentation and has no backward compatibility
+  * Source changes to avoid heuristic false positives from some
+    antivirus products
+  * The jump from the 61.x to the 62.x numbering was made by
+    upstream to unstick Homebrew users, not to mark a large change
+- Add a %check section running the upstream autotest command
+  followed by an archive create and verify round trip.
+- Install the man page that upstream ships in man/.
+- Pass the distribution linker flags: the compiler was invoked with
+  the optflags but never with LDFLAGS, so the binary was built
+  without the standard link hardening.
+- Build with -DIPV6 so IPv4 is no longer forced.
+- Replace the unsatisfiable "Suggests: libcurl" with Recommends on
+  libcurl4 and libssh4, which are the libraries the binary actually
+  dlopens by name at run time.
+- Declare the bundled blake3, highwayhash, libdivsufsort-lite, lz4
+  and xxhash copies with bundled() Provides.
+- Correct the License tag to
+  Apache-2.0 AND BSD-2-Clause AND MIT AND SUSE-Public-Domain AND Zlib
+  AND Unlicense AND Ferguson-Twofish, derived from the credits block
+  that upstream maintains in zpaqfranz.cpp. The previous tag named
+  only two of the licences of the 25 bundled components. The
+  derivation is recorded in a Legal-Review-Notice comment above the
+  tag.
+- Normalise the CRLF line endings of CHANGELOG.md and COPYING.
+- This version is not affected by CVE-2025-50327 (boo#1272902): the
+  flaw is a failure to propagate the Windows Mark-of-the-Web to
+  extracted files, a mechanism that does not exist on Linux, and the
+  report covers 61.3 and earlier in any case.
+
+-------------------------------------------------------------------
 Fri May  2 08:01:23 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 61.3:
