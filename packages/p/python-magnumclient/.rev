@@ -299,4 +299,17 @@
 </comment>
     <requestid>1356315</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>6d5703cccd800e7aeba27ecc18f76962</srcmd5>
+    <version>4.11.0</version>
+    <time>1786304105</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.11.0:
+  * Add --hidden/--visible flags to cluster template update
+    command
+  * Fix tox releasenotes job
+  * Add requests-mock to test-requirements.txt
+  * Update master for stable/2026.1</comment>
+    <requestid>1370111</requestid>
+  </revision>
 </revisionlist>

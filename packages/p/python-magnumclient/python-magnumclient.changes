@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Aug  6 20:14:37 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.11.0:
+  * Add --hidden/--visible flags to cluster template update
+    command
+  * Fix tox releasenotes job
+  * Add requests-mock to test-requirements.txt
+  * Update master for stable/2026.1
+
+-------------------------------------------------------------------
 Mon Mar  9 15:27:30 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.10.0:

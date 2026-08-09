@@ -18,7 +18,7 @@
 
 %global pythons %{primary_python}
 Name:           python-magnumclient
-Version:        4.10.0
+Version:        4.11.0
 Release:        0
 Summary:        Python API and CLI for OpenStack Magnum
 License:        Apache-2.0
