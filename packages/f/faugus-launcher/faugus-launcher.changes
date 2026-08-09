@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Jul 30 16:05:27 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Bump to version 2.0.4:
+  * Updated screenshots
+  * Fixed filechooser header bar
+  * Apply theme to splash and shortcut window
+  * System theme detect color scheme
+  * Some visuals fine tuning
+  * Disable color scheme for non adwaita themes
+  * Color scheme for non adwaita themes
+  * Removed combobox label background
+  * Fixed combobox row background for non adwaita
+  * Adapt label color
+  * Missed main screen cover placeholder
+  * Fixed accent color for non Adwaita
+  * Update translation template (faugus-launcher.pot)
+  * Added header option
+  * Update translation template (faugus-launcher.pot)
+  * Added Theme support
+  * Fixed AppImage not saving images
+  * Only show languages 90%+ translated
+  * Menus use the background color instead of accent
+  * Fixed flowbox child zoom out visual
+
+-------------------------------------------------------------------
 Wed Jul 29 21:47:33 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
 
 - Bump to version 2.0.3:
