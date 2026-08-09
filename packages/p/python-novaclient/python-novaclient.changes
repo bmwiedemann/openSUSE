@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug  6 20:48:50 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 18.13.0:
+  * Remove deprecation warning workaround
+  * Update master for stable/2026.1
+  * Add version foot protector
+
+-------------------------------------------------------------------
 Mon May 18 13:07:18 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - remove os-client-config dependency

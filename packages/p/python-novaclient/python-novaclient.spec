@@ -18,7 +18,7 @@
 
 %global pythons %{primary_python}
 Name:           python-novaclient
-Version:        18.12.0
+Version:        18.13.0
 Release:        0
 Summary:        Python API and CLI for OpenStack Nova
 License:        Apache-2.0
