@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-anthropic
-Version:        0.120.2
+Version:        0.121.0
 Release:        0
 Summary:        The official Python library for the Anthropic API
 License:        MIT
@@ -35,7 +35,7 @@ Requires:       python-docstring-parser >= 0.15
 Requires:       python-httpx >= 0.25.0
 Requires:       python-jiter >= 0.4.0
 Requires:       python-pydantic >= 1.9.0
-Requires:       python-sniffio
+Requires:       python-sniffio >= 1
 Requires:       python-typing_extensions >= 4.14
 BuildArch:      noarch
 # SECTION test requirements
@@ -46,7 +46,7 @@ BuildRequires:  %{python_module httpx >= 0.25.0}
 BuildRequires:  %{python_module jiter >= 0.4.0}
 BuildRequires:  %{python_module pydantic >= 1.9.0}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module sniffio}
+BuildRequires:  %{python_module sniffio >= 1}
 BuildRequires:  %{python_module typing_extensions >= 4.14}
 # /SECTION
 %python_subpackages

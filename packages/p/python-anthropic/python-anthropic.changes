@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Aug  8 04:31:59 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.121.0:
+  * Add the mid-conversation-tool-changes-2026-07-01 beta
+  * Add support for session budgets, the advisor tool, pinned
+    inference location and skills auto-loading from GitHub
+  * Remove the retired Claude Opus 4.1 models
+  * Constrain every dependency to a major version
+- Follow upstream and set a sniffio >= 1 requirement floor
+
+-------------------------------------------------------------------
 Wed Jul 29 06:21:11 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.120.2:

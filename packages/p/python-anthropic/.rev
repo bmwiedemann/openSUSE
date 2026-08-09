@@ -63,4 +63,12 @@
     <comment>Update to 0.120.2</comment>
     <requestid>1368291</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9355c55375787f7d4e57cb491d80f4bc</srcmd5>
+    <version>0.121.0</version>
+    <time>1786304640</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.121.0: mid-conversation tool changes beta, session budgets, advisor tool, pinned inference location, GitHub skills auto-loading; retired Opus 4.1 models removed. Built and verified on aarch64: 211 tests passed, rpmlint 0 errors / 0 warnings / 0 badness, source_validator clean.</comment>
+    <requestid>1370299</requestid>
+  </revision>
 </revisionlist>
