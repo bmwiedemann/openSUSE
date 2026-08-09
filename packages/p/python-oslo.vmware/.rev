@@ -500,4 +500,20 @@
   * Update master for stable/2025.2</comment>
     <requestid>1337829</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>77a3d8d47f0da9e998db917a20fb58ee</srcmd5>
+    <version>4.10.0</version>
+    <time>1786304092</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.10.0:
+  * zuul: Use openstack-python3-next-jobs template
+  * pre-commit: Bump versions
+  * Do not install code to build release notes
+  * Remove Python 3.10 support
+  * tox: Use new constraints option
+  * Remove eventlet from the requirements
+  * rw_handles: fix NFC hang with urllib3 &gt;= 2.0
+  * Update master for stable/2026.1</comment>
+    <requestid>1369787</requestid>
+  </revision>
 </revisionlist>
