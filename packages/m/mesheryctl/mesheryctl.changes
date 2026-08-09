@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Fri Aug  7 05:20:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.0.65:
+  * General
+    - [Docs] Update governance document for repository support
+      process @yi-nuo426 (#21192)
+    - [mesheryctl] Fix broken doc links in organization commands
+      @KushagraB424 (#21186)
+    - [skills] iterate-pr 2.4.0: never report an unfetched PR as a
+      clean one @arjunmehta-git (#21176)
+  * Meshery CLI
+    - [CLI] Make golden test failures readable, and fix the two
+      defects that were hiding behind them @CodeAhmedJamil (#21168)
+    - [Server][CLI][UI] Fix master's red Go tests and the silent
+      schemas-rename bug behind them @hamza-mohd (#21170)
+    - [UI][CLI][Server] Complete the design-import
+      canonical-sourcing audit @hamza-mohd (#21166)
+    - [CLI] Fix 63 mesheryctl documentation links that 404
+      @CodeAhmedJamil (#21147)
+    - [Server][CLI][CI] Fix Connection Lifecycle e2e failures:
+      unknown-id delete, non-interactive listing, broker name
+      drift, provider auth @hamza-mohd (#21120)
+  * Maintenance
+    - [Server] Separate the explicit MeshSync deployment mode from
+      its cache @CodeAhmedJamil (#21146)
+    - Fix: Update Notification Center docs with correct TSX
+      references and.... @Sohamsig (#18943)
+    - [Docs] Map the Operator, MeshSync and Broker settings surface
+      @CodeAhmedJamil (#21144)
+    - [Docs] Add rendered shortcode examples to Contributing docs
+      @smishraa30 (#20498)
+    - chore: add language matrix for actions in codeql analysis
+      workflow @ianrwhitney (#21174)
+    - chore: update CodeQL analysis workflow to include build modes
+      for lan… @ianrwhitney (#21152)
+    - [Server][CLI][CI] Fix Connection Lifecycle e2e failures:
+      unknown-id delete, non-interactive listing, broker name
+      drift, provider auth @hamza-mohd (#21120)
+  * Documentation
+    - [Server] Separate the explicit MeshSync deployment mode from
+      its cache @CodeAhmedJamil (#21146)
+    - Fix: Update Notification Center docs with correct TSX
+      references and.... @Sohamsig (#18943)
+    - [Docs] Map the Operator, MeshSync and Broker settings surface
+      @CodeAhmedJamil (#21144)
+    - [Docs] Add rendered shortcode examples to Contributing docs
+      @smishraa30 (#20498)
+    - [Docs] Fix broken image references in notification-center.md
+      and models @kanishksingh23 (#21177)
+    - [Server][CLI][UI] Fix master's red Go tests and the silent
+      schemas-rename bug behind them @hamza-mohd (#21170)
+    - [Server][CLI][CI] Fix Connection Lifecycle e2e failures:
+      unknown-id delete, non-interactive listing, broker name
+      drift, provider auth @hamza-mohd (#21120)
+    - Partly Fix inconsistent 'Related' section heading in docs
+      @RaIyAn90 (#21100)
+    - [Docs] Remove unused empty space above documentation content
+      on mobil… @debkarma (#21050)
+
+-------------------------------------------------------------------
 Tue Aug  4 05:28:02 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.0.64 (bsc#1271807):
