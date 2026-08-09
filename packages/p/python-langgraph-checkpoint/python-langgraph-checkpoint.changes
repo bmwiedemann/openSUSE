@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Aug  8 04:41:37 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 4.2.0:
+  * Add an opt-in omit_expired option to skip expired rows on read
+  * Collect writes at the plain-value seed in delta channel history
+
+-------------------------------------------------------------------
 Sun Jun 28 21:50:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Initial package python-langgraph-checkpoint 4.1.1

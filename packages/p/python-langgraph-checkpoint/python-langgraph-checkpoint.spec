@@ -1,7 +1,7 @@
 #
 # spec file for package python-langgraph-checkpoint
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-langgraph-checkpoint
-Version:        4.1.1
+Version:        4.2.0
 Release:        0
 Summary:        Library with base interfaces for LangGraph checkpoint savers
 License:        MIT
