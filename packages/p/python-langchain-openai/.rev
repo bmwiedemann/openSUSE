@@ -39,4 +39,12 @@
     <comment>Update to version 1.4.1: langsmith gateway env var support, gpt-5.3-chat-latest profile fix; langchain-core floor 1.5.1</comment>
     <requestid>1367771</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>994439aa02bfb978bb6e9e30d63b165f</srcmd5>
+    <version>1.4.2</version>
+    <time>1786304642</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.4.2: handle ContextWindowExceededError, filter langchain-generated content block IDs, preserve Responses text options, redact the MCP authorization header; langchain-core floor raised to 1.5.3 (already in Factory). Built and verified on aarch64: 261 tests passed, rpmlint 0 errors / 0 warnings / 0 badness, source_validator clean.</comment>
+    <requestid>1370300</requestid>
+  </revision>
 </revisionlist>

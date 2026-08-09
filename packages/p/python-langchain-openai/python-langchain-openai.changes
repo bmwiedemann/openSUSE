@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Aug  8 04:38:01 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.4.2:
+  * Handle ContextWindowExceededError
+  * Filter langchain-generated content block IDs
+  * Preserve Responses text options
+  * Redact the MCP authorization header
+  * Refresh the bundled model profile data
+- Follow upstream and raise the langchain-core requirement floor to
+  1.5.3
+
+-------------------------------------------------------------------
 Sat Jul 25 19:03:50 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.4.1:
