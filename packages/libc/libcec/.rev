@@ -210,4 +210,12 @@ library no longer overwrites the DLL import library. No library or protocol
 changes.</comment>
     <requestid>1369366</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>2d94d73dd436a1edd79e541c5b9c0be9</srcmd5>
+    <version>8.1.6</version>
+    <time>1786304646</time>
+    <user>anag_factory</user>
+    <comment>Update to version 8.1.6 (8.1.5 + 8.1.6): SendPlay() in every binding and as a cec-client play command, Open() without a port picks the first usable adapter, three physical-address regressions fixed. soname unchanged (libcec.so.8). Built and verified on aarch64 (openSUSE_Factory_ARM): rpmlint 0 errors / 5 warnings / 0 badness - byte-identical to the 8.1.4 baseline in hardware - source_validator clean.</comment>
+    <requestid>1370304</requestid>
+  </revision>
 </revisionlist>

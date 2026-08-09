@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Aug  8 04:57:47 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 8.1.6:
+  * Publish the Node.js, .NET and Rust bindings to npm, NuGet and
+    crates.io; the library itself is unchanged from 8.1.5
+- Changes from version 8.1.5:
+  * Add a Rust binding behind the ENABLE_RUST_LIB cmake option, not
+    built here
+  * Add SendPlay() to send <play> to a device, exposed in every
+    binding and as a new cec-client play command
+  * Open() without a port now opens the first adapter that can be
+    opened instead of failing
+  * Keep a configured physical address when another device reports
+    the same address
+  * Re-derive the physical address once a configured base device
+    reports one, instead of keeping the eeprom or default address
+  * Honour a base device and HDMI port configured alongside an
+    explicit physical address
+
+-------------------------------------------------------------------
 Tue Aug  4 05:37:28 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 8.1.4:
