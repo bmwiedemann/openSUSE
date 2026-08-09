@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="manual">
     <param name="filename">goverlay</param>
-    <param name="revision">1.8.10</param>
+    <param name="revision">1.8.11</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/benjamimgois/goverlay.git</param>
