@@ -31,4 +31,29 @@
     <comment>Update to 1.6.4</comment>
     <requestid>1368302</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b1f72c88019dcc3196d2280d39cfd257</srcmd5>
+    <version>1.7.0</version>
+    <time>1786304497</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.7.0
+
+- Add ChatOpenAIMantle for the Bedrock Mantle OpenAI-compatible API
+- Support the reasoning_effort parameter for ChatBedrockConverse
+- Use Anthropic simplified prompt cache management in ChatBedrockConverse
+- Include the model name in invocation_params for Bedrock chat models
+
+1.7.0 adds tests/unit_tests/chat_models/test_openai.py, which drives the new
+ChatOpenAIMantle model through the python-langchain-tests ChatModel unit-test
+bridge. That bridge is not packaged in Factory, so the module is added to the
+existing --ignore list rather than the whole %check being dropped. Note the
+langchain-aws[openai] extra itself IS satisfiable (python-langchain-openai
+1.4.1 + python-openai 2.45.0); langchain-tests is the only blocker. No runtime
+dependency is needed either way -- upstream defers the langchain_openai import
+via __getattr__, so ChatOpenAIMantle only pulls it in on attribute access.
+
+Built and verified on aarch64: 545 tests pass on both python313 and python314,
+rpmlint 0 errors / 0 warnings / 0 badness, source_validator clean.</comment>
+    <requestid>1370149</requestid>
+  </revision>
 </revisionlist>

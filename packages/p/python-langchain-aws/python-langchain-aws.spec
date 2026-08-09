@@ -17,7 +17,7 @@
 
 
 Name:           python-langchain-aws
-Version:        1.6.4
+Version:        1.7.0
 Release:        0
 Summary:        LangChain integrations for AWS
 License:        MIT
@@ -64,13 +64,15 @@ rm tests/conftest.py
 
 %check
 # Ignored modules pull in packages not available in Factory:
-# - test_standard / chat_models test_anthropic / test_bedrock_converse use the
-#   python-langchain-tests ChatModel unit-test bridge;
+# - test_standard / chat_models test_anthropic / test_bedrock_converse /
+#   chat_models test_openai use the python-langchain-tests ChatModel unit-test
+#   bridge (test_openai also needs the langchain-aws[openai] extra, which IS in
+#   Factory -- langchain-tests is the blocker);
 # - middleware/test_prompt_caching needs the full python-langchain meta package;
 # - test_versioning exercises ChatAnthropicBedrock (the langchain-aws[anthropic]
 #   extra: anthropic + python-langchain-anthropic).
 # The ToolNode compatibility tests need langgraph (not in Factory).
-%pytest tests/unit_tests --ignore tests/unit_tests/test_standard.py --ignore tests/unit_tests/chat_models/test_anthropic.py --ignore tests/unit_tests/chat_models/test_bedrock_converse.py --ignore tests/unit_tests/middleware/test_prompt_caching.py --ignore tests/unit_tests/test_versioning.py --deselect tests/unit_tests/tools/test_nova_tools.py::TestToolNodeCompatibility
+%pytest tests/unit_tests --ignore tests/unit_tests/test_standard.py --ignore tests/unit_tests/chat_models/test_anthropic.py --ignore tests/unit_tests/chat_models/test_bedrock_converse.py --ignore tests/unit_tests/chat_models/test_openai.py --ignore tests/unit_tests/middleware/test_prompt_caching.py --ignore tests/unit_tests/test_versioning.py --deselect tests/unit_tests/tools/test_nova_tools.py::TestToolNodeCompatibility
 # Recompile the installed modules as hash-based bytecode so the
 # timestamp-clamped .pyc do not trip python-bytecode-inconsistent-mtime.
 %python_expand $python -m compileall -q -f --invalidation-mode=unchecked-hash -o 0 -o 1 -s %{buildroot} %{buildroot}%{$python_sitelib}/langchain_aws
