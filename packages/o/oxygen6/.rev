@@ -400,4 +400,12 @@
     <comment>Make Qt 5 optional during runtime as well (forwarded request 1369026 from Vogtinator)</comment>
     <requestid>1369036</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>01a16cd4f3c312a80ab44a842f73ad63</srcmd5>
+    <version>6.7.4</version>
+    <time>1786303994</time>
+    <user>anag_factory</user>
+    <comment>Plasma 6.7.4, untested (forwarded request 1369583 from Vogtinator)</comment>
+    <requestid>1369886</requestid>
+  </revision>
 </revisionlist>
