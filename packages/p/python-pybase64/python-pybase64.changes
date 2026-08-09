@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun Aug  9 04:48:42 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.5.0:
+  * Fix invalid data being decoded successfully when using altchars
+    and the slice ends with padding
+  * Fix a thread safety issue when selecting the codec
+  * Speed up translation on aarch64
+  * Add padded and wrapcol parameters to b64encode, and a padded
+    parameter to urlsafe_b64encode, b64decode and urlsafe_b64decode
+  * Add ignorechars and canonical parameters to b64decode
+  * urlsafe_b64decode now defaults to padded=False, aligning it with
+    the Python 3.15 behaviour
+  * Handle excess padding the same way CPython 3.15 does
+  * Reject non-ASCII strings in b64decode when validate is false
+  * Deprecate accepting the + and / characters with an alternative
+    alphabet when decoding
+  * Raise ValueError instead of AssertionError when validating the
+    altchars length
+  * Drop support for Python 3.8
+- Run the parts of the upstream pytest suite that the sdist supports in
+  %check, alongside the existing round-trip smoke test. The sdist omits
+  the tests/utils.py helper, so tests/test_pybase64.py and
+  tests/test_benchmark.py cannot be imported, but test_main.py and
+  test_packaging.py are self-contained and now run; test_sbom is
+  deselected because it asserts a CycloneDX SBOM that only the official
+  PyPI wheels carry.
+- Add a setuptools >= 77 build requirement, as upstream declares. The
+  floor is real: the PEP 639 License-Expression metadata that the test
+  suite asserts on is only emitted from setuptools 77 onwards.
+
+-------------------------------------------------------------------
 Sun Jul 12 19:09:26 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Initial package python-pybase64 1.4.3

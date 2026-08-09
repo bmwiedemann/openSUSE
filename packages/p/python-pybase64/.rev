@@ -7,4 +7,20 @@
     <comment>New package, forwarded from devel:languages:python (dependency for vllm).</comment>
     <requestid>1365270</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>313bc716e8669c9ae987c0ae409e177d</srcmd5>
+    <version>1.5.0</version>
+    <time>1786304688</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.5.0 (from 1.4.3).
+
+Notable correctness fixes: invalid data could be decoded successfully when using altchars and the slice ended with padding, and a thread-safety issue when selecting the codec is fixed. Translation is faster on aarch64.
+
+API additions and behaviour changes: b64encode gains padded and wrapcol parameters, urlsafe_b64encode / b64decode / urlsafe_b64decode gain padded, and b64decode gains ignorechars and canonical. urlsafe_b64decode now defaults to padded=False and excess padding is handled as CPython 3.15 does, both to align with Python 3.15; b64decode now rejects non-ASCII strings when validate is false; accepting the + and / characters with an alternative alphabet is deprecated; and altchars length validation now raises ValueError instead of AssertionError. Python 3.8 support was dropped upstream.
+
+Packaging: %check now runs the parts of the upstream pytest suite the sdist supports (20 passed, 1 deselected per flavour) in addition to the round-trip smoke test. The sdist omits the tests/utils.py helper that exists only in the git tree, so tests/test_pybase64.py and tests/test_benchmark.py cannot be imported at all - both begin with 'from . import utils' - while test_main.py and test_packaging.py are self-contained and run; test_sbom is deselected because it asserts a CycloneDX SBOM that only the official PyPI wheels carry. Also added the setuptools &gt;= 77 build requirement upstream declares, which is load-bearing here: the PEP 639 License-Expression metadata that test_packaging asserts on is only emitted from setuptools 77 onwards.
+
+Built and verified on x86_64: rpmlint 0 errors / 0 warnings / 0 badness, %check 20 passed / 1 deselected on each Python flavour, source_validator clean.</comment>
+    <requestid>1370370</requestid>
+  </revision>
 </revisionlist>
