@@ -317,4 +317,33 @@
     <comment>switch to singlespec</comment>
     <requestid>1316796</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>797e2648e46ca48c8862dccf71d0f9d7</srcmd5>
+    <version>4.1.0</version>
+    <time>1786304108</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.1.0:
+  * zuul: Use openstack-python3-next-jobs template
+  * Remove Python 3.10 support
+  * pre-commit: Bump versions
+  * tox: Use new constraints option
+  * Remove unused Makefile for doc
+  * Enable logging related ruff checks
+  * Drop redundant basepython
+  * ruff: Enable missing E5 check
+  * Remove reference to tag framework
+  * ruff: Use more specific name to enable pyupgrade rule
+  * Add ruff
+  * Migrate setup configuration to pyproject.toml
+  * Drop Python 3.9 support
+  * setup.cfg: Replace dashes with underscores
+  * Remove cruft from docs config file
+  * Run pyupgrade to clean up Python 2 syntaxes
+  * Use pre-commit to run pep8 checks
+  * Declare support for Python 3.12
+  * Drop explicit dependency on python-subunit
+  * add pyproject.toml to support pip 23.1
+  * Replace UPPER_CONSTRAINTS_FILE</comment>
+    <requestid>1370113</requestid>
+  </revision>
 </revisionlist>

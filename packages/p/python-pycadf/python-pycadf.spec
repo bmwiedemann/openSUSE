@@ -1,7 +1,7 @@
 #
 # spec file for package python-pycadf
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %global oldpython python
 Name:           python-pycadf
-Version:        4.0.1
+Version:        4.1.0
 Release:        0
 Summary:        DMTF Cloud Audit (CADF) data model
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/pycadf
-Source0:        https://files.pythonhosted.org/packages/source/p/pycadf/pycadf-4.0.1.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/pycadf/pycadf-%{version}.tar.gz
 BuildRequires:  %{python_module fixtures}
 BuildRequires:  %{python_module oslo.config >= 5.2.0}
 BuildRequires:  %{python_module oslo.serialization >= 2.18.0}
