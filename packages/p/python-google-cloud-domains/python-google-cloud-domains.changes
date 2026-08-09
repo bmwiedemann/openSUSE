@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug  7 07:55:03 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.14.0
+  * regenerate google-cloud-d packages (#17092)
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Tue Apr  7 08:49:21 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.13.0:
