@@ -17,7 +17,7 @@
 
 
 Name:           ashell
-Version:        0.9.0
+Version:        0.9.0+175
 Release:        0
 Summary:        A Wayland status bar for Hyprland and Niri
 License:        GPL-3.0-or-later
@@ -26,6 +26,7 @@ Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 ## See https://malpenzibo.github.io/ashell/docs/configuration/full_config
 Source2:        config.toml
+BuildRequires:  cargo
 BuildRequires:  cargo-packaging
 BuildRequires:  clang
 BuildRequires:  wayland-devel
@@ -50,7 +51,9 @@ cp %{S:2} .
 %{cargo_build}
 
 %install
-%{cargo_install}
+## MANUAL Install ##
+install -D -d -m 0755 %{buildroot}%{_bindir}
+install -m 0755 %{_builddir}/%{name}-%{version}/target/release/%{name} %{buildroot}%{_bindir}/%{name}
 
 %files
 %license LICENSE
