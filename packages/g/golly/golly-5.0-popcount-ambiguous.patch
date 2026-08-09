@@ -1,0 +1,37 @@
+From b485e7459ac6a1884cf25d19fa0a6bbe5a0e3996 Mon Sep 17 00:00:00 2001
+From: Maks Verver <maks@verver.ch>
+Date: Thu, 2 Jul 2026 21:10:43 +0200
+Subject: [PATCH] =?UTF-8?q?Fix=20error:=20reference=20to=20=E2=80=98popcou?=
+ =?UTF-8?q?nt=E2=80=99=20is=20ambiguous?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ cmdline/bgolly.cpp | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
+
+diff --git a/cmdline/bgolly.cpp b/cmdline/bgolly.cpp
+index 9c189232..c6d32318 100644
+--- a/cmdline/bgolly.cpp
++++ b/cmdline/bgolly.cpp
+@@ -13,13 +13,12 @@
+ #include "viewport.h"
+ #include "liferender.h"
+ #include "writepattern.h"
+-#include <stdlib.h>
+ #include <iostream>
+-#include <cstdio>
++#include <stdlib.h>
++#include <stdio.h>
+ #include <string.h>
+-#include <cstdlib>
+ 
+-using namespace std ;
++using std::cerr, std::cout, std::flush, std::endl ;
+ 
+ double start ;
+ int maxtime = 0 ;
+-- 
+2.51.1
+

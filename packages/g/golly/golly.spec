@@ -1,7 +1,7 @@
 #
 # spec file for package golly
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ Group:          Amusements/Toys/Graphics
 URL:            https://golly.sourceforge.io
 Source0:        https://downloads.sourceforge.net/%{name}/%{name}-%{version}-src.tar.gz
 Source1:        %{name}.desktop
+# PATCH-FIX-UPSTREAM golly-5.0-popcount-ambiguous.patch -- fix compilation with recent gcc
+Patch0:         golly-5.0-popcount-ambiguous.patch
 BuildRequires:  SDL2-devel
 BuildRequires:  c++_compiler
 BuildRequires:  chrpath
@@ -79,7 +81,7 @@ This package contains header files and libraries needed to develop applications
 that use %{name}.
 
 %prep
-%setup -q -n %{name}-%{version}-src
+%autosetup -n %{name}-%{version}-src -p1
 rm -v {Help/Lexicon/modify.pl,docs/Build.html}
 
 %build

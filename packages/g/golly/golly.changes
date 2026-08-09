@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug  7 11:03:21 UTC 2026 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Add golly-5.0-popcount-ambiguous.patch: Fix build with recent gcc.
+
+-------------------------------------------------------------------
 Sat Nov 22 11:06:51 UTC 2025 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to version 5.0:
