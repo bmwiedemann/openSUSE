@@ -370,4 +370,17 @@
   * Parse domain_name header</comment>
     <requestid>1353905</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>65ec4df3b176af8937c106bc210b1e76</srcmd5>
+    <version>6.5.0</version>
+    <time>1786304087</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.5.0:
+  * zuul: Use openstack-python3-next-jobs template
+  * pre-commit: Bump versions
+  * Do not install code to build release notes
+  * Remove Python 3.10 support
+  * Deprecate version module</comment>
+    <requestid>1369780</requestid>
+  </revision>
 </revisionlist>

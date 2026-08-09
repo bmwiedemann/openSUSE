@@ -18,7 +18,7 @@
 
 %bcond_without test
 Name:           python-oslo.context
-Version:        6.4.0
+Version:        6.5.0
 Release:        0
 Summary:        OpenStack Oslo context library
 License:        Apache-2.0

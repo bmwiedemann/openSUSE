@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Aug  5 14:26:36 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.5.0:
+  * zuul: Use openstack-python3-next-jobs template
+  * pre-commit: Bump versions
+  * Do not install code to build release notes
+  * Remove Python 3.10 support
+  * Deprecate version module
+
+-------------------------------------------------------------------
 Mon May 18 22:12:28 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.4.0:
