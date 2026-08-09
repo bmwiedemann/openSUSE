@@ -1,0 +1,143 @@
+diff --git a/omr/tools/tracegen/FileUtils.cpp b/omr/tools/tracegen/FileUtils.cpp
+index 7db9723f8..b015970fb 100644
+--- a/omr/tools/tracegen/FileUtils.cpp
++++ b/omr/tools/tracegen/FileUtils.cpp
+@@ -120,44 +120,106 @@ FileUtils::getMtime(const char *filePath)
+ 	return statbuf.st_mtime;
+ }
+ 
++/*
++ * Compare two directory entry names. strcmp() is used rather than strcoll()
++ * so that the ordering is a plain byte comparison, and hence does not depend
++ * on the locale the build happens to run in.
++ */
++static int
++compareEntryNames(const void *left, const void *right)
++{
++	return strcmp(*(const char *const *)left, *(const char *const *)right);
++}
++
++static void
++freeEntryNames(char ***entries, size_t entryCount)
++{
++	if (NULL != *entries) {
++		size_t index = 0;
++		for (index = 0; index < entryCount; index += 1) {
++			Port::omrmem_free((void **)&(*entries)[index]);
++		}
++		Port::omrmem_free((void **)entries);
++	}
++}
++
+ RCType
+ FileUtils::visitDirectory(J9TDFOptions *options, const char *dirName, const char *fileExtFilter, void *targetObject, VisitFileCallBack callback)
+ {
+ 	char *resultBuffer = NULL;
+ 	RCType rc = RC_OK;
+ 	intptr_t handle = PORT_INVALID_FIND_FILE_HANDLE;
++	char **entries = NULL;
++	size_t entryCount = 0;
++	size_t entryCapacity = 0;
++	size_t index = 0;
+ 
+ 	rc = Port::omrfile_findfirst(dirName, &resultBuffer, &handle);
+ 	if (RC_OK != rc) {
+ 		printError("Failed to open directory %s\n", dirName);
+-		goto failed;
++		/* findfirst leaves no handle open when it fails, so there is nothing to close. */
++		return RC_FAILED;
+ 	}
+ 
++	/*
++	 * Collect the entries before visiting any of them. The order in which the
++	 * filesystem reports directory entries is not stable, and that order used
++	 * to reach the merged trace data, so otherwise identical builds produced
++	 * different output.
++	 */
+ 	while (RC_FAILED != rc) {
+-		char *nextEntry = NULL;
+-		size_t nextEntrySize = 0;
+ 		/* skip current and parent dir */
+ 		if ((0 == strcmp(resultBuffer, ".")) || (0 == strcmp(resultBuffer, ".."))) {
+-			goto next;
++			Port::omrmem_free((void **)&resultBuffer);
++		} else {
++			if (entryCount == entryCapacity) {
++				size_t newCapacity = (0 == entryCapacity) ? 16 : (entryCapacity * 2);
++				char **newEntries = (char **)Port::omrmem_calloc(newCapacity, sizeof(char *));
++				if (NULL == newEntries) {
++					goto failed;
++				}
++				if (NULL != entries) {
++					memcpy(newEntries, entries, entryCount * sizeof(char *));
++					Port::omrmem_free((void **)&entries);
++				}
++				entries = newEntries;
++				entryCapacity = newCapacity;
++			}
++			/* the array takes ownership of the name allocated by findfirst/findnext */
++			entries[entryCount] = resultBuffer;
++			entryCount += 1;
++			resultBuffer = NULL;
+ 		}
++		rc = Port::omrfile_findnext(handle, &resultBuffer);
++	}
++	Port::omrfile_findclose(handle);
++	handle = PORT_INVALID_FIND_FILE_HANDLE;
++
++	if (0 != entryCount) {
++		qsort(entries, entryCount, sizeof(char *), compareEntryNames);
++	}
++
++	for (index = 0; index < entryCount; index += 1) {
++		const char *entryName = entries[index];
++		size_t nextEntrySize = strlen(dirName) + strlen(PATH_SEP) + strlen(entryName) + 1;
++		char *nextEntry = (char *)Port::omrmem_calloc(1, nextEntrySize);
++		struct J9FileStat buf;
+ 
+-		nextEntrySize = strlen(dirName) + 1 /* PATH_SEP */ + strlen(resultBuffer) + 1;
+-		nextEntry = (char *)Port::omrmem_calloc(1, nextEntrySize);
+ 		if (NULL == nextEntry) {
+ 			goto failed;
+ 		}
+-		snprintf(nextEntry, nextEntrySize, "%s" PATH_SEP "%s", dirName, resultBuffer);
++		snprintf(nextEntry, nextEntrySize, "%s" PATH_SEP "%s", dirName, entryName);
+ 
+-		struct J9FileStat buf;
+ 		if (RC_OK != Port::omrfile_stat(nextEntry, 0, &buf)) {
+ 			if (options->statErrorsAreFatal) {
+ 				printError("stat failed %s\n", nextEntry);
++				Port::omrmem_free((void **)&nextEntry);
+ 				goto failed;
+ 			}
+ 		} else if (buf.isDir) {
+ 			visitDirectory(options, nextEntry, fileExtFilter, targetObject, callback);
+ 		} else {
+-			const char *ext = FileUtils::getFileExt(resultBuffer);
++			const char *ext = FileUtils::getFileExt(entryName);
+ 			if (NULL != ext) {
+ 				if (0 == strcmp(ext, fileExtFilter)) {
+ 					callback(targetObject, options, nextEntry);
+@@ -165,17 +227,17 @@ FileUtils::visitDirectory(J9TDFOptions *options, const char *dirName, const char
+ 			}
+ 		}
+ 		Port::omrmem_free((void **)&nextEntry);
+-next:
+-		Port::omrmem_free((void **)&resultBuffer);
+-		rc = Port::omrfile_findnext(handle, &resultBuffer);
+ 	}
+-	Port::omrfile_findclose(handle);
+ 
++	freeEntryNames(&entries, entryCount);
+ 	return RC_OK;
+ 
+ failed:
+-	Port::omrfile_findclose(handle);
++	if (PORT_INVALID_FIND_FILE_HANDLE != handle) {
++		Port::omrfile_findclose(handle);
++	}
+ 	Port::omrmem_free((void **)&resultBuffer);
++	freeEntryNames(&entries, entryCount);
+ 	return RC_FAILED;
+ }
+ 
