@@ -158,4 +158,12 @@ Built for openSUSE_Tumbleweed/aarch64 with 0 rpmlint badness; %check passes
     <comment>Update to 0.10.15</comment>
     <requestid>1368959</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>f823d66faf4550bca849cecb95995d7a</srcmd5>
+    <version>0.10.17</version>
+    <time>1786304270</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.10.17 (supersedes SR 1370169, which carried 0.10.16): adds replicas to RunTrees created from headers or dotted order, sanitizes credentials in git remote URLs. The python314 iscoroutinefunction patch is still needed (upstream PR 3347 remains open) and still applies cleanly. Built and verified on aarch64: 421 tests passed per flavour, rpmlint 0 errors / 0 warnings / 0 badness, source_validator clean.</comment>
+    <requestid>1370302</requestid>
+  </revision>
 </revisionlist>

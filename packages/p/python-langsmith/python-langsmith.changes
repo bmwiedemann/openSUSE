@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Aug  8 04:45:50 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.10.17:
+  * Add replicas to RunTrees created from headers or dotted order
+  * Sanitize credentials in git remote URLs
+
+-------------------------------------------------------------------
+Fri Aug  7 06:41:35 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Reference the upstream submission for
+  langsmith-python314-iscoroutinefunction.patch
+  (gh#langchain-ai/langsmith-sdk#3347); drop the patch once it is
+  merged and released
+
+-------------------------------------------------------------------
+Fri Aug  7 05:05:22 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.10.16:
+  * Mask metadata after the runtime env merge and via the
+    anonymizer
+  * Stamp ls_agent_type on wrap_openai LLM runs
+  * Preserve user-supplied ls_agent_type in the openai-agents-sdk
+    integration
+  * Resolve the OAuth token endpoint from deployment metadata
+  * Avoid resetting compression threads
+
+-------------------------------------------------------------------
 Sat Aug  1 06:35:59 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.10.15:
