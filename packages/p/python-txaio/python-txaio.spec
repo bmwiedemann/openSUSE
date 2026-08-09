@@ -17,7 +17,7 @@
 
 
 Name:           python-txaio
-Version:        25.12.2
+Version:        26.6.1
 Release:        0
 Summary:        WebSocket and WAMP in Python for Twisted and asyncio
 License:        MIT
@@ -25,7 +25,7 @@ URL:            https://github.com/crossbario/txaio
 Source:         https://files.pythonhosted.org/packages/source/t/txaio/txaio-%{version}.tar.gz
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module wheel}
+BuildRequires:  %{python_module wheel >= 0.42.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Recommends:     python-Twisted >= 22.10.0
@@ -33,7 +33,7 @@ Recommends:     python-zope.interface >= 5.2.0
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Twisted >= 22.10.0}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest >= 8.0.0}
 BuildRequires:  %{python_module zope.interface >= 5.2.0}
 # /SECTION
 %python_subpackages

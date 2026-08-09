@@ -156,4 +156,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1344813</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>8b2457e09def6b6e5e1497fc30a3694b</srcmd5>
+    <version>26.6.1</version>
+    <time>1786304122</time>
+    <user>anag_factory</user>
+    <comment>- update to 26.6.1:
+  * Logging at warn level on the asyncio backend no longer
+    triggers a DeprecationWarning from the standard library:
+    txaio now dispatches the warn level to logging.Logger.warning
+    instead of the deprecated .warn alias
+  * Preserve verified artifact chain-of-custody in the release
+    pipeline, aligning txaio with the rest of the WAMP group. The
+    wheel, source distribution and documentation are now built
+    once in the main workflow and uploaded with upload-artifact-
+    verified; the release workflow download-artifact-verifieds
+    those exact, checksum-verified artifacts (by main run id) and
+    publishes them, instead of rebuilding from source. This
+    guarantees that what is tested is what is shipped
+  * Auto-publish a GitHub Discussions announcement for nightly
+    and stable releases: a new release-post-comment.yml workflow
+    runs after the release workflow, finds the freshly-created
+    GitHub Release and posts its notes into the Discussions ci-cd
+    category. The category is resolved by name (case-
+    insensitive), so no repo-specific category id is hard-coded.
+    Requires GitHub Discussions enabled on the repository with a
+    ci-cd category
+  * Align artifact handling with the rest of the WAMP group: CI
+    now uploads build, coverage and documentation artifacts via
+    the shared upload-artifact-verified action (SHA256 chain-of-
+    custody), and the release workflow validates the exact PyPI
+    payload — the universal py3-none-any wheel plus the source
+    distribution — with the shared, fail-closed check-release-
+    fileset action before publishing
+  * Remove three permanently-skipped legacy tests that exercised
+    the @asyncio.coroutine decorator. That decorator was removed</comment>
+    <requestid>1370118</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Thu Aug  6 20:29:05 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 26.6.1:
+  * Logging at warn level on the asyncio backend no longer
+    triggers a DeprecationWarning from the standard library:
+    txaio now dispatches the warn level to logging.Logger.warning
+    instead of the deprecated .warn alias
+  * Preserve verified artifact chain-of-custody in the release
+    pipeline, aligning txaio with the rest of the WAMP group. The
+    wheel, source distribution and documentation are now built
+    once in the main workflow and uploaded with upload-artifact-
+    verified; the release workflow download-artifact-verifieds
+    those exact, checksum-verified artifacts (by main run id) and
+    publishes them, instead of rebuilding from source. This
+    guarantees that what is tested is what is shipped
+  * Auto-publish a GitHub Discussions announcement for nightly
+    and stable releases: a new release-post-comment.yml workflow
+    runs after the release workflow, finds the freshly-created
+    GitHub Release and posts its notes into the Discussions ci-cd
+    category. The category is resolved by name (case-
+    insensitive), so no repo-specific category id is hard-coded.
+    Requires GitHub Discussions enabled on the repository with a
+    ci-cd category
+  * Align artifact handling with the rest of the WAMP group: CI
+    now uploads build, coverage and documentation artifacts via
+    the shared upload-artifact-verified action (SHA256 chain-of-
+    custody), and the release workflow validates the exact PyPI
+    payload — the universal py3-none-any wheel plus the source
+    distribution — with the shared, fail-closed check-release-
+    fileset action before publishing
+  * Remove three permanently-skipped legacy tests that exercised
+    the @asyncio.coroutine decorator. That decorator was removed
+    in Python 3.11 (txaio's minimum supported version), so the
+    tests could no longer run on any supported interpreter and
+    only emitted skips
+  * Bumped the shared wamp-ai and wamp-cicd Git submodules to
+    match the rest of the WAMP project group (zlmdb / autobahn-
+    python 26.6.1) for the coordinated release. The wamp-cicd
+    bump picks up the GHSA-6658 shell-injection hardening in the
+    shared identifiers.yml reusable workflow (untrusted GitHub
+    event fields are now passed via env: as quoted data with a
+    fail-closed branch-name allowlist)
+  * Declare the ty type checker in the dev extra and run it from
+    the project venv (dropping the separate global uv tool
+    install ty step), so local and CI resolve the same latest ty.
+    Fixed a newly-reported ty invalid-argument-type diagnostic in
+    tx.py (the Twisted ILogObserver is provided via
+    zope.interface @provider, which static checkers cannot
+    follow) with a localized cast rather than a blanket rule
+    ignore. Excluded the .ai / .cicd submodules from ruff (they
+    carry their own linting/CI)
+
+-------------------------------------------------------------------
 Mon Mar 30 21:35:54 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 25.12.2:
