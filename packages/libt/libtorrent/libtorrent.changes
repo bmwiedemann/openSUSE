@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Aug  6 16:06:54 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update o release 0.16.20
+  * Added the `system::SpawnProcess` class.
+  * Bound HTTP tracker scrape responses.
+  * system: keep the pipe fds SpawnProcess::execute() creates for
+    capture.
+  * Expose the socket allocation budget through SocketManager.
+  * Bound DHT packet processing.
+
+-------------------------------------------------------------------
 Tue Aug  4 08:26:02 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.16.19
