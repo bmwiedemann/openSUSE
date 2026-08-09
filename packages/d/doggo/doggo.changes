@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Aug 07 11:06:22 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.3.0:
+  * feat(doh): add explicit HTTP/3 transport (#249)
+  * feat(edns): report extended DNS errors (#248)
+  * feat(cli): support numeric DNS record types (#247)
+  * feat(release): add 32-bit ARM artifacts (#246)
+
+-------------------------------------------------------------------
+Fri Aug 07 05:21:35 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.2.1:
+  * New Features
+    - 408b893: feat(cli): add config file and DOGGO env support
+      (#245) (@mr-karan)
+  * Bug fixes
+    - 8e91e23: fix(nameservers): let internal strategy find
+      VPN/Tailscale resolvers on macOS (#242) (@sylr)
+  * Others
+    - 8583205: Added Gentoo Portage package manager to list (#244)
+      (@triode3)
+
+-------------------------------------------------------------------
 Tue Jun 23 08:02:44 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.2.0:

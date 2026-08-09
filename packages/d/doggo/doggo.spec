@@ -17,7 +17,7 @@
 
 
 Name:           doggo
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        CLI tool and API server DNS client implemented in Go
 License:        GPL-3.0-only
