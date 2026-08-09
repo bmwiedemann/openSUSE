@@ -888,4 +888,14 @@ New stable release</comment>
   + Updated translations.</comment>
     <requestid>1355925</requestid>
   </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>c5091e8332c969f8847a78001eb80988</srcmd5>
+    <version>50.4</version>
+    <time>1786303909</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 50.4:
+  + Updates to GNOME Help
+  + Updated translations.</comment>
+    <requestid>1369846</requestid>
+  </revision>
 </revisionlist>
