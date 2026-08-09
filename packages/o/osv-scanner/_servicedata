@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/google/osv-scanner</param>
-              <param name="changesrevision">b56b5191101d5f27d4787d5583d8d01e9518a7af</param></service></servicedata>
+              <param name="changesrevision">b56b5191101d5f27d4787d5583d8d01e9518a7af</param></service><service name="tar_scm">
+                <param name="url">https://github.com/google/osv-scanner.git</param>
+              <param name="changesrevision">a258868211a57052da6bd323f758b8388dee02bb</param></service></servicedata>
