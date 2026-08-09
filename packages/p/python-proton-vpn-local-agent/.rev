@@ -56,4 +56,15 @@
   + Fix lint (forwarded request 1368435 from rrahl0)</comment>
     <requestid>1368436</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>b0ceebb9fb8998438842bef4c005baad</srcmd5>
+    <version>1.6.3</version>
+    <time>1786304485</time>
+    <user>anag_factory</user>
+    <comment>- The package is now a proper Python package with the Rust .so file shipped in its correct directory
+  -  proton-vpn-local-agent sub-package got removed (because the .so file is the Python package)
+- Build is done via maturin, without manual cargo calls, symlinking, or copying for installation
+- Tests are enabled (forwarded request 1370230 from rrahl0)</comment>
+    <requestid>1370231</requestid>
+  </revision>
 </revisionlist>

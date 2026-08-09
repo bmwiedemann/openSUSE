@@ -16,62 +16,91 @@
 #
 
 
-%{?sle15_python_module_pythons}
 %define         _name python-proton-vpn-local-agent
+%{?sle15_python_module_pythons}
 Name:           python-proton-vpn-local-agent
 Version:        1.6.3
 Release:        0
 Summary:        Proton VPN local agent written in Rust
 License:        GPL-3.0-only
 URL:            https://github.com/ProtonVPN/local-agent-rs
-Source0:        %{url}/archive/refs/tags/%{version}.tar.gz
+Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 BuildRequires:  %{python_module base}
+BuildRequires:  %{python_module cryptography}
+BuildRequires:  %{python_module maturin}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  cargo-packaging
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       proton-vpn-local-agent = %{version}
+Requires:       python-cryptography
 %python_subpackages
 
 %description
-This repo contains a rust crate for communicating with a proton LocalAgent,
-server, and python bindings for that crate.
-
-%package -n proton-vpn-local-agent
-Summary:        The library file for the local agent
-
-%description -n proton-vpn-local-agent
-%{summary}.
+It is a rust crate for communicating with the Proton LocalAgent, and Python bindings for that crate.
 
 %prep
 %autosetup -a1 -n local-agent-rs-%{version}
-# See https://github.com/ProtonVPN/local-agent-rs/pull/11
+
+# https://github.com/ProtonVPN/local-agent-rs/pull/11
 pushd local_agent_rs
 sed -i 's/socket2 = "0.5.7"/socket2 = { version = "0.5.7", features = ["all"] }/' Cargo.toml
 popd
 
+# https://github.com/ProtonVPN/local-agent-rs/issues/18
+cat > %{_name}/pyproject.toml <<'EOF'
+[build-system]
+requires = ["maturin>=1.0,<2.0"]
+build-backend = "maturin"
+
+[project]
+name = "proton-vpn-local-agent"
+version = "1.6.3"
+requires-python = ">=3.9"
+description = "Proton VPN local agent written in Rust"
+classifiers = [
+    "Programming Language :: Rust",
+    "Programming Language :: Python :: Implementation :: CPython",
+]
+
+[tool.maturin]
+manifest-path = "Cargo.toml"
+module-name = "proton.vpn.local_agent"
+python-source = "."
+bindings = "pyo3"
+EOF
+
+pushd %{_name}
+# https://github.com/ProtonVPN/local-agent-rs/issues/16
+sed -i '/^\[lib\]/a name = "local_agent"' Cargo.toml
+
+# https://github.com/ProtonVPN/local-agent-rs/issues/17
+install -d proton/vpn
+popd
+
 %build
 pushd %{_name}
-%{cargo_build}
+%pyproject_wheel
 popd
 
 %install
-%if 0%{?suse_version} >= 1600 && 0%{?suse_version} < 1650
 pushd %{_name}
-%endif
-for p in $(echo "%{pythons}" | sed s/python31/python3.1/g); do
-install -d %{buildroot}%{_libdir}/$p/site-packages/{proton,proton/vpn};
-ln -sr %{buildroot}%{_libdir}/proton/local_agent.so  %{buildroot}%{_libdir}/$p/site-packages/proton/vpn/local_agent.so;
-done
-install -Dm0644 target/release/libpython_proton_vpn_local_agent.so %{buildroot}%{_libdir}/proton/local_agent.so
+%pyproject_install
+%python_expand %fdupes %{buildroot}%{$python_sitearch}/proton
+popd
+
+%check
+pushd %{_name}
+export PYTHONPATH=%{buildroot}%{python_sitearch}
+%pytest
+popd
 
 %files %{python_files}
 %doc README.md
-%dir %{python_sitearch}/proton
-%dir %{python_sitearch}/proton/vpn
-%{python_sitearch}/proton/vpn/local_agent.so
-
-%files -n proton-vpn-local-agent
-%dir %{_libdir}/proton
-%{_libdir}/proton/local_agent.so
+%{python_sitearch}/proton
+%{python_sitearch}/proton_vpn_local_agent*.dist-info
 
 %changelog

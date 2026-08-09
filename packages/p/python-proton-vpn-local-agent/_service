@@ -2,7 +2,8 @@
 <services>
   <service name="download_files" mode="manual" />
   <service name="cargo_vendor" mode="manual">
-    <param name="src">*.tar.gz</param>
+    <param name="src">python-proton-vpn-local-agent-*.tar.gz</param>
     <param name="cargotoml">python-proton-vpn-local-agent/Cargo.toml</param>
+    <param name="update">true</param>
   </service>
 </services>

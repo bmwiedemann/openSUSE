@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 31 19:25:45 UTC 2026 - Ákos Szőts <akos@szots.dev>
+
+- The package is now a proper Python package with the Rust .so file shipped in its correct directory
+  -  proton-vpn-local-agent sub-package got removed (because the .so file is the Python package)
+- Build is done via maturin, without manual cargo calls, symlinking, or copying for installation
+- Tests are enabled
+
+-------------------------------------------------------------------
 Thu Jul 30 04:11:04 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.6.3:
