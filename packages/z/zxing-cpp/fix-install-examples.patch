@@ -1,0 +1,10 @@
+--- a/example/CMakeLists.txt
++++ b/example/CMakeLists.txt
+@@ -29,6 +29,7 @@ if (ZXING_READERS)
+         add_executable (ZXingOpenCV ZXingOpenCV.cpp)
+         target_include_directories (ZXingOpenCV PRIVATE ${OpenCV_INCLUDE_DIRS})
+         target_link_libraries (ZXingOpenCV ZXing::ZXing ${OpenCV_LIBS})
++        install(TARGETS ZXingOpenCV DESTINATION ${CMAKE_INSTALL_BINDIR})
+     else ()
+         message("INFO: OpenCV not found, skipping ZXingOpenCV example")
+     endif()

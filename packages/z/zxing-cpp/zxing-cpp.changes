@@ -1,4 +1,189 @@
 -------------------------------------------------------------------
+Wed Jul 29 08:30:44 UTC 2026 - munix9@googlemail.com
+
+- Update to 3.1.1
+  * QRCode: improve Version 1 detection rate
+  * QRCode: fix detection regression in 3.1.0
+  * python: fix use of 'None' keyword usage and wrong '**kwargs' tag
+  * MicroPDF417: fix out of bounds access
+  * MultiFormatWriter: fix BarcodeFormat::Aztec and QRCodeModel2 support
+  * Android: make binary a little smaller (hidden symbols)
+  * PDF417: match codewords using integer arithmetic by @nyluke in #1138
+  * ReedSolomon: add missing header for GCC-16 by @parona-source in #1137
+
+-------------------------------------------------------------------
+Fri Jul 10 11:46:06 UTC 2026 - munix9@googlemail.com
+
+- Update to 3.1.0
+  * New/Improved Symbologies
+    - Added decoder support for Telepen symbology
+    - Added decoder support for MicroPDF417 (sponsored by Allied
+      Vision Konstanz GmbH)
+    - Greatly improved Aztec detector for large, non-flat symbols
+      by evaluating internal timing patterns
+    - Greatly improved DataMatrix detector for large, non-flat
+      symbols by evaluating internal alignment patterns
+    - Major improvement in QRCode detection of many small symbols
+      in a single image
+  * New/Improved wrappers
+    - Added a Go wrapper
+    - Switched from pybind11 to nanobind in Python wrapper code
+      (enhanced IDE support, faster build times, smaller binaries,
+      free-threaded Python support)
+  * General
+    - Improved API documentation, now published under
+      https://zxing-cpp.github.io/zxing-cpp/docs/latest
+    - Considerable performance improvements, especially on ARM
+      chips (10%-40% in specific scenarios)
+    - ReedSolomon: generic implementation for prime and extended
+      Galois Fields with improved performance
+    - Added support for "Unused Error Correction" meta data
+      (Barcode::extra("UEC"))
+    - Optional support for WebP in ZXingReader
+    - Sifted and partly recoded set of sample images into WebP
+      with 95% size reduction of the sample_images.zip
+  * Minor Improvements and Bug Fixes
+    - AZHighLevelEncoder: fix mixed table '}' (0x7d) -> '~' (0x7e)
+      by @gitlost in #1065
+    - Silence deprecated-declarations warnings on Windows too by
+      @x1sc0 in #1066
+    - fix test/fuzz build by @kcwu in #1071
+    - oned: DataBar: catch std::out_of_range in DecodeExpandedBits
+      by @kcwu in #1080
+    - [ODCode39Reader] Fix crash in DecodeCode32 due to unhandled
+      exception by @kcwu in #1083
+    - DMDetector: guard empty DataMatrix gap list by @markusfisch
+      in #1100
+    - Fix constructor parameter names in PointT by
+      @MonkeybreadSoftware in #1097
+    - iOS: add formats getter/setter to ZXIReaderOptions by
+      @hrasnam in #1094
+    - Add Windows resource file for version information by
+      @davidhsing in #1101
+    - Fix #include bug by @KangLin in #1103
+    - ODCode128Reader: only process 1st/2nd position FNC1 once by
+      @gitlost in #1113
+    - AZDecoder: allow lowercase AIM id (2nd position FNC1) per
+      spec by @gitlost in #1114
+    - DMDecoder: restrict AIM id (2nd position FNC1) to alpha/2
+      digits by @gitlost in #1117
+    - Rust: add define in build.rs to set CMAKE_INSTALL_LIBDIR to
+      lib by @demondave in #1119
+    - Fix missing iterator header on Android by @umerov1999 in #1121
+    - iOS Wrapper: Add stacked DataBar format support and fix
+      format enum mismatches by @brian-telintelo-kr in #1125
+    - Fix (at least substantially reduce) false positive
+      DataBarStacked detections
+    - Fix out-of-bounds access bugs in PDF417 decoder
+    - Fixed an endless loop in the QRDetector
+    - Fixed regression in BarcodeFormat based filtering during
+      ReadBarcodes operation
+    - "Save frame" feature + cosmetic improvements to
+      ZXingQtCamReader demo app
+    - modernized Android Demo App code
+
+-------------------------------------------------------------------
+Fri Jun  5 06:20:13 UTC 2026 - munix9@googlemail.com
+
+- Update to 3.0.2
+  * Workaround for missing <format> C++20 header in GCC 11 and GCC 12
+  * Zint Header Detection Fix
+  * Typo Fix in ReaderOptions API
+
+- Update to 3.0.1
+  * This is a patch release, fixing a critical error (compile
+    regression, see #1051) for people relying on the "old"
+    (MultiFormatWriter) API. All wrapper code is unaffected and
+    will not be released as 3.0.1.
+  * The old writer API is disabled by default, to enable it, you
+    need to configure zxing-cpp with -DZXING_WRITERS=BOTH (or OLD).
+    It is generally advised for package maintainers to use the BOTH
+    config option during the 3.0 release cycle to allow client
+    applications (like e.g. LibreOffice) to work until they switch
+    to the new API.
+  * The new API is backed by libzint. The default config will
+    statically link a bundled 2.16 version of libzint. If your
+    distribution has a libzint v2.16 available, you might want to
+    configure zxing-cpp to link against that:
+    -DZXING_USE_BUNDLED_ZINT=OFF
+
+- Update to 3.0.0
+  Major changes:
+  * New creator/writer API (moved out of experimental state) with
+    lots of improvements and fine-tuning
+  * New BarcodeFormat and BarcodeFormats implementation, with minor
+    changes in API
+    - New meta barcode formats like All, AllReadable, AllRetail,
+      etc.
+    - New human readable names from ToString(format), e.g. EAN-13
+      instead of EAN13
+    - Added concept of Symbology to Barcode, e.g. QRCode ==
+      QRCodeModel2, MicroQRCode, RMQRCode
+    - The C-API suffered a hard break to accommodate the bit-field
+      to array switch of the BarcodeFormats
+  * CreatorOptions now has a JSON (key-value pair) pair based
+    options parameter
+  * C++20 is now a build requirement for the library, the client
+    side API is still c++17 compatible
+  * Cleaned up number of included headers, new single source
+    ZXingCpp.h header
+  * MultiFormatWriter: deprecate use of old writer API
+  * New Barcode::extra() API that returns symbology specific extra
+    information as JSON string, e.g. "EcLevel"
+  * Add cmake flags to remove individual barcode formats from the
+    build (smaller lib for wasm or embedded applications)
+  * publish native ARM python wrapper binaries
+  * New header only Qt6 API (ZXingQt.h) with support for multiple
+    barcodes and new writer API
+  * New ZXingQtCamReader demo based on QWidgets with proper macOS
+    support
+
+  Minor improvements and bug fixes
+  * QRCode: improve detection rate for circular finder patterns
+  * DataBar: fix inconsistency / plain spec violation (missing
+    "(01)" prefix)
+  * EAN/UPC: return 13-digit numbers for UPC-A/E as required by
+    standard
+  * Improved quiet zone handling for ITF
+  * QRCode: fix decoding of Model 1 symbols with more than 1 data
+    block
+  * Content: modify bytesECI() to behave like a standard reader
+    w.r.t. ECIs
+  * WriteBarcode: automatic GS1PARENS_MODE
+  * python: add ImageView class and ImageFormat enum as custom
+    memoryview
+  * python: add experimental support to read_barcodes from
+    QtGui.QImage
+  * ZXingReader: add experimental -denoise command line option
+  * Code39: improve detection for 4x difference between wide and
+    narrow and lower quiet-zone requirements
+  * python: remove 3.9 and add 3.14 packages
+  * Content: improve auto-detection of charaset/eci info
+  * make installed binaries relocatable on macOS and Linux
+  * dotnet: implement IDisposable for the Barcode and Options
+    classes and add XML documentation
+  * ReaderOptions: new validateOptionalCheckSum property
+    replacing the Code39 and ITF specific ones
+  * ReaderOptions: deprecated the tryCode39ExtendedMode property
+    (use new BarcodeFormat::Code39Ext)
+  * Expose structure append metadata via C API by @magethle in #950
+  * Add experimental tryDenoise to C API by @magethle in #952
+  * AZDecoder: minor fixes by @gitlost in #917
+  * Use 16 KB page size alignment on 64-bit Androids by
+    @markusfisch in #1001
+  * Remove ZXing path from include path by @fnadeau in #924
+  * try denoise for android wrapper by @toktarov84 in #1035
+  * Improvements to Qt/QML interface by @m7913d in #945
+
+- Add fix-install-examples.patch to install ZXingOpenCV
+- Add test_samples.tar.gz to run all the tests
+- Add examples subpackage with ZXingOpenCV, ZXingReader and ZXingWriter
+- Add examples-qt6 subpackage with ZXingQtCamReader (optional)
+- Add %check/tests section
+- Use system zint library for Factory/TW
+- Clean up spec file
+
+-------------------------------------------------------------------
 Mon Feb 24 08:43:16 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 2.3.0
