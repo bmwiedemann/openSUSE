@@ -667,4 +667,17 @@
     <comment>- remove os-client-config dependency</comment>
     <requestid>1353833</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>12546eb0d36f03d8510340ad46c05d23</srcmd5>
+    <version>13.0.0</version>
+    <time>1786304114</time>
+    <user>anag_factory</user>
+    <comment>- update to 13.0.0:
+  * Remove Dynamic Routing client code
+  * Remove bgpvpn client code
+  * Remove fwaas client code
+  * Update master for stable/2026.1
+  * [fwaas] Don't ignore missing fw related resources</comment>
+    <requestid>1370129</requestid>
+  </revision>
 </revisionlist>

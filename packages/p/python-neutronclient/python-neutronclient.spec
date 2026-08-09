@@ -18,7 +18,7 @@
 
 %global pythons %{primary_python}
 Name:           python-neutronclient
-Version:        11.8.0
+Version:        13.0.0
 Release:        0
 Summary:        Python API and CLI for OpenStack Neutron
 License:        Apache-2.0
