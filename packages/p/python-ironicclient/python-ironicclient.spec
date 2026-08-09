@@ -1,7 +1,7 @@
 #
 # spec file for package python-ironicclient
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global pythons %{primary_python}
 Name:           python-ironicclient
-Version:        5.13.0
+Version:        6.2.0
 Release:        0
 Summary:        Python API and CLI for OpenStack Ironic
 License:        Apache-2.0
@@ -27,34 +27,40 @@ URL:            https://docs.openstack.org/python-ironicclient
 Source0:        https://files.pythonhosted.org/packages/source/p/python-ironicclient/python_ironicclient-%{version}.tar.gz
 BuildRequires:  %{python_module Babel}
 BuildRequires:  %{python_module PyYAML >= 3.13}
-BuildRequires:  %{python_module appdirs}
+BuildRequires:  %{python_module cliff >= 2.8.0}
+BuildRequires:  %{python_module ddt >= 1.0.1}
 BuildRequires:  %{python_module dogpile.cache >= 0.8.0}
-BuildRequires:  %{python_module fixtures}
+BuildRequires:  %{python_module fixtures >= 3.0.0}
 BuildRequires:  %{python_module jsonschema >= 3.2.0}
-BuildRequires:  %{python_module openstacksdk}
+BuildRequires:  %{python_module openstacksdk >= 0.18.0}
 BuildRequires:  %{python_module osc-lib >= 2.0.0}
 BuildRequires:  %{python_module oslo.i18n}
 BuildRequires:  %{python_module oslo.utils >= 3.33.0}
-BuildRequires:  %{python_module oslotest}
+BuildRequires:  %{python_module oslotest >= 3.2.0}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module platformdirs >= 3}
 BuildRequires:  %{python_module python-subunit}
 BuildRequires:  %{python_module requests >= 2.14.2}
-BuildRequires:  %{python_module requests-mock}
-BuildRequires:  %{python_module stestr}
-BuildRequires:  %{python_module testtools}
+BuildRequires:  %{python_module requests-mock >= 1.2.0}
+BuildRequires:  %{python_module stestr >= 1.0.0}
+BuildRequires:  %{python_module stevedore >= 1.20.0}
+BuildRequires:  %{python_module testtools >= 2.2.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  openstack-macros
 Requires:       python-PyYAML >= 3.13
-Requires:       python-appdirs
+Requires:       python-cliff >= 2.8.0
 Requires:       python-dogpile.cache >= 0.8.0
 Requires:       python-jsonschema >= 3.2.0
 Requires:       python-keystoneauth1 >= 3.11.0
+Requires:       python-openstacksdk >= 0.18.0
 Requires:       python-osc-lib >= 2.0.0
 Requires:       python-oslo.i18n
 Requires:       python-oslo.serialization
 Requires:       python-oslo.utils >= 3.33.0
 Requires:       python-pbr >= 6.0.0
+Requires:       python-platformdirs >= 3
 Requires:       python-requests >= 2.14.2
+Requires:       python-stevedore >= 1.20.0
 BuildArch:      noarch
 %python_subpackages
 
@@ -98,8 +104,8 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python3_sitelib}/ironicclient
-%{python3_sitelib}/python_ironicclient-%{version}.dist-info
+%{python_sitelib}/ironicclient
+%{python_sitelib}/python_ironicclient-%{version}.dist-info
 %{_bindir}/baremetal
 
 %files -n python-ironicclient-doc

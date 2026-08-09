@@ -553,4 +553,41 @@
     <comment>switch to singlespec</comment>
     <requestid>1316760</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>3ea90a0c2d4083f7b3aabd25c12197f4</srcmd5>
+    <version>6.2.0</version>
+    <time>1786304102</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.2.0:
+  * Treat the API version cache as best-effort
+  * Bump openstacksdk lower bound
+  * clean up pyproject.toml deprecated and missing entries
+  * Stop ignoring override in tests
+  * Stop ignoring list-item in tests
+  * Stop ignoring func-returns-value in tests
+  * Stop ignoring dict-item in tests
+  * Stop ignoring index in tests
+  * remove pbr as runtime dependency
+  * Remove dead code in apiclient module
+  * fix incorrect annotation for list_ports method
+  * trivial: fix author in latex doc output
+  * remove separate codespell job
+  * switch to using pre-commit for lint checks
+  * remove unused script which does not pep8
+  * fix codespell config
+  * simplify is not None check
+  * switch to new tox constraints syntax
+  * Stop ignoring `assignment` in tests
+  * create more specific update method for typing
+
+- update to 6.1.0:
+  * feat: add support for new runbook traits API
+  * Add missing py.typed file, typing classifier
+  * Drop unnecessary import_exceptions
+  * Fix node test and turn on name-defined for tests
+  * fix: make it possible to unset local-link-connection on
+    baremetal port
+  * Add type annotations to `ironicclient/tests/unit/osc`</comment>
+    <requestid>1370110</requestid>
+  </revision>
 </revisionlist>

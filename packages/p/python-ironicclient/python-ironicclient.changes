@@ -1,4 +1,136 @@
 -------------------------------------------------------------------
+Thu Aug  6 20:11:54 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.2.0:
+  * Treat the API version cache as best-effort
+  * Bump openstacksdk lower bound
+  * clean up pyproject.toml deprecated and missing entries
+  * Stop ignoring override in tests
+  * Stop ignoring list-item in tests
+  * Stop ignoring func-returns-value in tests
+  * Stop ignoring dict-item in tests
+  * Stop ignoring index in tests
+  * remove pbr as runtime dependency
+  * Remove dead code in apiclient module
+  * fix incorrect annotation for list_ports method
+  * trivial: fix author in latex doc output
+  * remove separate codespell job
+  * switch to using pre-commit for lint checks
+  * remove unused script which does not pep8
+  * fix codespell config
+  * simplify is not None check
+  * switch to new tox constraints syntax
+  * Stop ignoring `assignment` in tests
+  * create more specific update method for typing
+
+-------------------------------------------------------------------
+Tue Jun  2 15:56:46 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.1.0:
+  * feat: add support for new runbook traits API
+  * Add missing py.typed file, typing classifier
+  * Drop unnecessary import_exceptions
+  * Fix node test and turn on name-defined for tests
+  * fix: make it possible to unset local-link-connection on
+    baremetal port
+  * Add type annotations to `ironicclient/tests/unit/osc`
+  * Add type annotations to `ironicclient/tests/unit/v1`
+  * Add type annotations to `tests/unit` directory-level test
+    files
+  * Add type annotations to `tests/unit/common/` and
+    `tests/unit/utils.py`
+  * Pre-test typing cleanup
+  * Add typing to many `ironicclient/osc/v1/` modules
+  * trivial: move to hacking 7.0
+  * Migrate coverage configuration to pyproject
+  * Migrate setup configuration to pyproject.toml
+  * Enable mypy for `ironicclient/osc/command.py`
+  * add node trait add/remove commands for consistent UX
+  * Add type annotations to
+    `ironicclient/osc/v1/baremetal_inspection_rule.py`
+  * Add type annotations to
+    `ironicclient/osc/v1/baremetal_allocation.py`
+  * Add type annotations to
+    `ironicclient/osc/v1/baremetal_volume_connector.py`
+  * Add type annotations to
+    `ironicclient/osc/v1/baremetal_deploy_template.py`
+  * Add type annotations to
+    `ironicclient/osc/v1/baremetal_chassis.py`
+  * Add type annotations to
+    `ironicclient/osc/v1/baremetal_driver.py`
+  * Add type annotations to
+    `ironicclient/osc/v1/baremetal_conductor.py`
+  * Add type annotations to
+    `ironicclient/osc/v1/baremetal_create.py`
+  * Add type annotations to
+    `ironicclient/osc/v1/baremetal_shard.py`
+  * Add typed base command classes for OSC commands
+  * Add type annotations to `ironicclient/osc/plugin.py`
+  * Add type annotations to `ironicclient/__init__.py`
+  * Add type annotations to `ironicclient/shell.py`
+  * Add type annotations to `ironicclient/client.py`
+  * Add type annotations to `ironicclient/v1/node.py`
+  * Make Manager/CreateManager generic with ResourceT TypeVar
+  * Add type annotations to `ironicclient/v1/create_resources.py`
+  * Add type annotations to `ironicclient/v1/resource_fields.py`
+  * Add type annotations to `ironicclient/v1/portgroup.py`
+  * remove dangling functional test
+  * Add type annotations to `ironicclient/v1/chassis.py`
+  * Add type annotations to `ironicclient/v1/allocation.py`
+  * Add type annotations to `ironicclient/v1/driver.py`
+  * Add type annotations to `ironicclient/v1/port.py`
+  * Add type annotations to `ironicclient/v1/client.py`
+  * Add type annotations to `ironicclient/v1/volume_target.py`
+  * Add type annotations to `ironicclient/v1/volume_connector.py`
+  * Add type annotations to `ironicclient/v1/runbook.py`
+  * Add type annotations to `ironicclient/v1/inspection_rule.py`
+  * Add type annotations to `ironicclient/v1/deploy_template.py`
+  * Add type annotations to `ironicclient/v1/conductor.py`
+  * Add type annotations to `ironicclient/v1/utils.py`
+  * Add type annotations to `ironicclient/v1/shard.py`
+  * Add type annotations to `ironicclient/v1/events.py`
+  * Add type annotations to `ironicclient/common/http.py`
+  * Add type annotations to `ironicclient/common/utils.py`
+  * Remove dead code: define_command,
+    define_commands_from_module, HelpFormatter
+  * Add type annotations to `ironicclient/exc.py`
+  * Update bug tracker location
+  * Update master for stable/2026.1
+  * Add type annotations to `ironicclient/common/base.py`
+
+-------------------------------------------------------------------
+Mon Mar  9 15:36:51 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.0.0:
+  * Add type annotations to
+    \`ironicclient/common/apiclient/base.py\`
+  * Add type annotations to
+    \`ironicclient/common/apiclient/exceptions.py\`
+  * Add type annotations to \`ironicclient/common/filecache.py\`
+  * Add type annotations to \`ironicclient/common/i18n.py\`
+  * Add mypy infrastructure for type annotation migration
+  * Fix field names for selection and json
+  * Remove health from default node list columns
+  * Filter portgroups by shard
+  * Add support for node health status field
+  * feat: add 'physical\_network' and 'category' to portgroup
+    object
+  * fix: test determining latest API version
+  * feat: add 'vendor' and 'category' for port object
+  * Remove integration for python-ironic-inspector-client
+  * A new \`instance\_name\` field to the node object
+  * Remove deprecated option
+  * reno: Update master for unmaintained/2024.1
+  * Update master for stable/2025.2
+  * Fix parallel initial version negotiation
+  * Replace CLA with DCO
+
+-------------------------------------------------------------------
+Mon Nov 10 13:04:37 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- fix filelist
+
+-------------------------------------------------------------------
 Sun Nov  9 17:31:19 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.13.0:
