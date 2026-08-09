@@ -97,6 +97,19 @@ Patch6:         0006-pmsnap-control-var-www-srv-www.patch
 Patch7:         0001-selinux-add-permissions-allowing-proc_psi_t-access.patch
 # PATCH-FIX-OPENSUSE, jsegitz@suse.de
 Patch8:         0008-selinux-additional-labeling-rules.patch
+Patch9:         pcp-bsc-1272928.patch
+Patch10:        pcp-bsc-1272930.patch
+Patch11:        pcp-CVE-2026-16524.patch
+Patch12:        pcp-CVE-2026-16526.patch
+Patch13:        pcp-CVE-2026-16527.patch
+Patch14:        pcp-CVE-2026-16529.patch
+Patch15:        pcp-CVE-2026-16530-1.patch
+Patch16:        pcp-CVE-2026-16530-2.patch
+Patch17:        pcp-CVE-2026-16530-3.patch
+Patch18:        pcp-CVE-2026-16530-4.patch
+Patch19:        pcp-CVE-2026-16530-5.patch
+Patch20:        pcp-CVE-2026-16530-6.patch
+Patch21:        pcp-CVE-2026-16531.patch
 
 %global disable_selinux 0
 %if 0%{?suse_version} < 1600

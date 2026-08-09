@@ -1,0 +1,51 @@
+References: no CVE assigned (runs as the invoking user; no privilege boundary crossed)
+Description: pmieconf: fix command injection via $HOME and -f (CWE-78)
+ The write_pmiefile() function constructed a shell command via
+ pmsprintf("/bin/mkdir -p %s", fname) and passed it to system().
+ The fname value derives from either $HOME or the -f command-line
+ argument without sanitization, enabling command injection through
+ shell metacharacters in the path.
+ .
+ Fix: replace system("/bin/mkdir -p ...") with __pmMakePath() which
+ creates directories recursively using mkdir() syscalls directly,
+ with no shell involvement.
+ .
+ Add qa/2103 verifying that legitimate directory creation works and
+ that shell metacharacters in -f and $HOME paths do not result in
+ command execution.
+ .
+ Reported-by: Francisco Alisson Bezerra, TIM Security Red Team
+ Reported-by: Lucas Gabriel Alves, TIM Security Red Team
+ Reported-by: Massimiliano Brolli, TIM Security Red Team
+ .
+ Co-Authored-By: Claude Opus 4.6 (1M context) <noreply@anthropic.com>
+ .
+Author: Nathan Scott <nathans@redhat.com>
+Origin: upstream, https://github.com/performancecopilot/pcp/commit/cdc9676ab60176476a23f323c145d8d0fc71e165
+Last-Update: 2026-07-25
+ Backport-Note:
+ Backported to PCP 6.3.8 (applies unchanged).
+
+
+--- a/src/pmieconf/rules.c
++++ b/src/pmieconf/rules.c
+@@ -1805,7 +1805,6 @@
+ {
+     time_t	now = time(NULL);
+     char	*p, *msg = NULL;
+-    char	buf[MAXPATHLEN+10];
+     char	*fname = get_pmiefile();
+     FILE	*fp;
+     int		i;
+@@ -1816,9 +1815,8 @@
+ 
+ 	*p = '\0';	/* p is the dirname of fname */
+ 	if (stat(fname, &sbuf) < 0) {
+-	    pmsprintf(buf, sizeof(buf), "/bin/mkdir -p %s", fname);
+-	    if (system(buf) < 0) {
+-		pmsprintf(errmsg, sizeof(errmsg), "failed to create directory \"%s\"", p);
++	    if (__pmMakePath(fname, 0755) < 0) {
++		pmsprintf(errmsg, sizeof(errmsg), "failed to create directory \"%s\"", fname);
+ 		return errmsg;
+ 	    }
+ 	}

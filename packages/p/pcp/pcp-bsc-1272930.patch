@@ -1,0 +1,61 @@
+References: no CVE assigned (runs as the invoking user; no privilege boundary crossed)
+Description: pmlogmv: fix command injection in pmlogcp/pmlogmv (CWE-78)
+ The do_link() function used system("cp src dst") to copy archive files
+ when link() fails with EXDEV.  The source filename was not validated by
+ check_name() and was embedded directly into the shell command, enabling
+ command injection via crafted archive filenames.  The do_checksum()
+ function similarly used system() for command detection and popen() for
+ checksum execution.
+ .
+ Fix:
+ - Replace system("cp ...") with copy_file() using open/read/write
+   syscalls directly, eliminating shell involvement entirely
+ - Replace system("if which ...") checksum detection with access() checks
+ - Replace popen("md5sum <file") with __pmProcessPipe() which uses
+   execvp() internally, passing filenames as argv not shell words
+ - Expand check_name() blocklist to include backtick, braces, backslash,
+   bang, newline and tab (defense-in-depth, no longer the security
+   boundary)
+ - Apply check_name() to source names as well as destination names
+ - Add qa/2102 verifying metacharacter rejection and normal copy
+ .
+ Reported-by: Francisco Alisson Bezerra, TIM Security Red Team
+ Reported-by: Lucas Gabriel Alves, TIM Security Red Team
+ Reported-by: Massimiliano Brolli, TIM Security Red Team
+ .
+ Co-Authored-By: Claude Opus 4.6 (1M context) <noreply@anthropic.com>
+ .
+Author: Nathan Scott <nathans@redhat.com>
+Origin: upstream, https://github.com/performancecopilot/pcp/commit/dc73ec0f579028620e408114427d27ad0afd24a8 https://github.com/performancecopilot/pcp/commit/3ae202a08b680944add196a30fe5fdc6f247e711
+Last-Update: 2026-07-25
+ Backport-Note:
+ Minimal backport for PCP 6.3.8. pmlogmv.c differs structurally from the 7.x tree;
+  rather than the full open/read/write copy + __pmProcessPipe rewrite, this closes the
+  injection by validating the source name (oldname) as well as the destination and by
+  hardening the check_name() blocklist (adds backtick, braces, backslash). This report
+  item carries no CVE - pmlogmv runs as the invoking user, crossing no privilege boundary.
+
+
+--- a/src/pmlogmv/pmlogmv.c
++++ b/src/pmlogmv/pmlogmv.c
+@@ -73,7 +73,7 @@
+ static int
+ check_name(char *name)
+ {
+-    char	*meta = " $?*[(|;&<>";
++    char	*meta = " $?*[(|;&<>`{}\\";
+     char	*p;
+ 
+     for (p = meta; *p; p++) {
+@@ -481,6 +481,11 @@
+ 	/* error reported in check_name() */
+ 	exit(1);
+     }
++
++    if (!force && check_name(oldname) < 0) {
++	/* error reported in check_name() */
++	exit(1);
++    }
+ 
+     if (setup_sufftab() < 0) {
+ 	/* error reported in setup_sufftab() */

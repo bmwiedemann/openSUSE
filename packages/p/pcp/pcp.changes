@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Jul 30 18:47:41 UTC 2026 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Fix bsc#1272922 / CVE-2026-16524.
+- Fix bsc#1272923 / CVE-2026-16526.
+- Fix bsc#1272924 / CVE-2026-16527.
+- Fix bsc#1272925 / CVE-2026-16529.
+- Fix bsc#1272926 / CVE-2026-16530.
+- Fix bsc#1272927 / CVE-2026-16531.
+- Fix bsc#1272928.
+- Fix bsc#1272930.
+- Add patches:
+  * pcp-CVE-2026-16524.patch
+  * pcp-CVE-2026-16526.patch
+  * pcp-CVE-2026-16527.patch
+  * pcp-CVE-2026-16529.patch
+  * pcp-CVE-2026-16530-1.patch
+  * pcp-CVE-2026-16530-2.patch
+  * pcp-CVE-2026-16530-3.patch
+  * pcp-CVE-2026-16530-4.patch
+  * pcp-CVE-2026-16530-5.patch
+  * pcp-CVE-2026-16530-6.patch
+  * pcp-CVE-2026-16531.patch
+  * pcp-bsc-1272928.patch
+  * pcp-bsc-1272930.patch
+
+-------------------------------------------------------------------
 Tue May  5 13:11:16 UTC 2026 - Martin Schreiner <martin.schreiner@suse.com>
 
 - relocate /var/lib/pcp content for transactional-update targets
