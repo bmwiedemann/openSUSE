@@ -479,4 +479,19 @@
   * Replace usage of undocumented logging.WARN</comment>
     <requestid>1359322</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>4895694f2da62e586adfc386a8bffbd3</srcmd5>
+    <version>6.0.0</version>
+    <time>1786304096</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.0.0:
+  * Remove support of configuring scope enforcement
+  * zuul: Use openstack-python3-next-jobs template
+  * pre-commit: Bump versions
+  * Do not install code to build release notes
+  * Remove Python 3.10 support
+  * typing: Fix compatibility with typed oslo.config
+  * Deprecate version module</comment>
+    <requestid>1369790</requestid>
+  </revision>
 </revisionlist>
