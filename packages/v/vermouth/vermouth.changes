@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Aug 06 20:32:42 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Bump to version 2.0.1 Rip and Tear:
+  * fix: Fix edge cases in refreshing artwork workflow
+  * Add UZDOOM details to README
+  * feat: Default runtime
+  * feat: Add UZDOOM runner
+  * Updated pot/po files
+  * feat(ui): QoL improvements
+  * Add nix flake with devshell and package definitions (#51)
+  * desktopfilewriter: use binary name only when generating desktop files (#65)
+  * Update SHAs
+
+-------------------------------------------------------------------
 Sat Jul 18 01:57:56 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
 
 - Bump to version 1.9.7:

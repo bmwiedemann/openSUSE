@@ -335,4 +335,21 @@ It works like Lutris, Heroic, Faugus or Bottles, but is KDE first
   * Update sums and commits</comment>
     <requestid>1366465</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>d62cb38c00fe3a4c2063317fa8f78f0d</srcmd5>
+    <version>2.0.1</version>
+    <time>1786304124</time>
+    <user>anag_factory</user>
+    <comment>- Bump to version 2.0.1 Rip and Tear:
+  * fix: Fix edge cases in refreshing artwork workflow
+  * Add UZDOOM details to README
+  * feat: Default runtime
+  * feat: Add UZDOOM runner
+  * Updated pot/po files
+  * feat(ui): QoL improvements
+  * Add nix flake with devshell and package definitions (#51)
+  * desktopfilewriter: use binary name only when generating desktop files (#65)
+  * Update SHAs</comment>
+    <requestid>1370131</requestid>
+  </revision>
 </revisionlist>
