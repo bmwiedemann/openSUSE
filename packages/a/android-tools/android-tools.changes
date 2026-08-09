@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Aug  1 05:29:35 UTC 2026 - munix9@googlemail.com
+
+- Update to version 37.0.0
+  * Update to 37.0.0 (android-17.0.0_r1)
+  * README.md, CI: Remove golang usage
+  * Revert "Add missing includes for GCC 16 Fedora"
+  * cmake: Disable and remove boringssl tests from source archive
+  * patches: Add support for powerpc architecture
+  * CI: Upload artifact without zipping it
+  * Provide completions for Zsh
+
+- Adjust fix-mdns-references.patch
+- Remove fix-install-completion.patch (obsolete)
+
+-------------------------------------------------------------------
 Wed Jul  8 10:48:10 UTC 2026 - munix9@googlemail.com
 
 - Update to version 36.0.1

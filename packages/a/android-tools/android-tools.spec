@@ -25,17 +25,15 @@
 %endif
 
 Name:           android-tools
-Version:        36.0.1
+Version:        37.0.0
 Release:        0
 Summary:        Android platform tools
 License:        Apache-2.0 AND MIT
 # https://developer.android.com/tools/releases/platform-tools
 URL:            https://github.com/nmeum/android-tools
 Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
-# PATCH-FIX-OPENSUSE fix-install-completion.patch boo#1185883 munix9@googlemail.com -- Simplify completion
-Patch0:         fix-install-completion.patch
 # PATCH-FIX-OPENSUSE fix-mdns-references.patch munix9@googlemail.com -- Remove all references to mDNS from the man page
-Patch1:         fix-mdns-references.patch
+Patch0:         fix-mdns-references.patch
 BuildRequires:  cmake >= 3.12
 BuildRequires:  llvm-gold
 BuildRequires:  ninja
@@ -57,10 +55,10 @@ Obsoletes:      %{name}-bash-completion < %{version}
 Provides:       %{name}-python3 = %{version}
 Obsoletes:      %{name}-python3 < %{version}
 Provides:       adb = 1.0.41
-Provides:       avbtool = 1.3.0
+Provides:       avbtool = 1.4.0
 Provides:       sload_f2fs = 1.16.0
 Provides:       bundled(boringssl)
-ExcludeArch:    ppc ppc64 ppc64le s390x
+ExcludeArch:    ppc ppc64 s390x
 %if 0%{?suse_version} < 1600
 BuildRequires:  clang15
 BuildRequires:  gcc11-c++
@@ -72,7 +70,7 @@ BuildRequires:  python3-base
 Requires:       python3-base
 %endif
 %if %{with bundled_libfmt}
-Provides:       bundled(fmt) = 11.0.2
+Provides:       bundled(fmt) = 12.0.0
 %else
 BuildRequires:  pkgconfig(fmt) >= 11.0.2
 %endif
@@ -80,7 +78,7 @@ BuildRequires:  pkgconfig(fmt) >= 11.0.2
 BuildRequires:  pkgconfig(libudev)
 Provides:       bundled(libusb-1_0) = 1.0.29
 %else
-BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.29
+BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.28
 %endif
 
 %description
@@ -177,6 +175,8 @@ mkbootimg --help
 %{_bindir}/mke2fs.android
 %{_bindir}/simg2img
 %{_bindir}/sload_f2fs
+%dir %{_datadir}/%{name}
+%{_datadir}/%{name}/completions
 %dir %{_datadir}/bash-completion
 %dir %{_datadir}/bash-completion/completions
 %if 0%{?suse_version} < 1600
@@ -185,6 +185,11 @@ mkbootimg --help
 %{_datadir}/bash-completion/completions/adb
 %endif
 %{_datadir}/bash-completion/completions/fastboot
+%dir %{_datadir}/zsh
+%dir %{_datadir}/zsh/site-functions
+# prefer the _adb that comes with zsh
+%exclude %{_datadir}/zsh/site-functions/_adb
+%{_datadir}/zsh/site-functions/_fastboot
 %{_mandir}/man1/adb.1%{?ext_man}
 
 %files mkbootimg
