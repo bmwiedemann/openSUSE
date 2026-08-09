@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Sun Aug  9 09:17:52 UTC 2026 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Update to 2.2.1
+  * Added ProviderIndex module
+  * Added ProviderIndexUtil module
+  * Util added with:
+    - Util::is_ip_private()
+    - Util::is_ip_private_ex()
+    - Util::ip_address_type()
+    - Util::ip_address_type_ex() 
+  * Class objects from the reflection module are now serializable
+  * new functions: 
+    - get_module_context_name()
+    - get_module_context_name_ex()
+    - get_module_context_path()
+    - get_module_context_path_ex()
+  * fix ConnectionProvider module
+  * fix DataProvider module
+  * fix GmailDataProvider module
+  * fix DiscordWebSocketClient
+  * fix HttpServer module
+  * fix HttpServerUtil
+  * fix RestClient module
+  * fix RestClientDataProvider module
+  * fix RestHandler module
+  * fix ServerSentEventHandler module
+  * fix SqlUtil module
+  * fix WeSocketClient module
+  * fix WebSocketHandler module
+  * fix WebUtil module
+  * fixed descriptor leak in non-blocking Socket connector operations
+  * check functional domains of method calls on constant objects in sandboxed containers
+  * fixed parse_url() logic for paths with chars
+  * fixed memory error handling typed hash data exported from deleted containers
+  * fixed memory leak in static class variable declarations
+  * fixed bug calling static method references
+  * fixed deadlock in a complex condition
+  * fixed crash when destroying uninitialized thread-local storage on AlpineLinux
+  * fixed inifinite loop with a memory leak caused by missing break statement in interal Socket SSL
+    error handling code
+  * fix a scanner macro collision that prevented Qore from compiling with gcc16
+- Move in stdlib license related docs from %docs to %license
+-------------------------------------------------------------------
 Sun May 11 18:45:14 UTC 2025 - Sarah Kriesch <sarah.kriesch@opensuse.org>
 
 - Fix build failure with BuildArch

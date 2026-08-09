@@ -1,7 +1,7 @@
 #
 # spec file for package qore
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2014 David Nichols <david@qore.org>
 # Copyright (c) 2014 Petr Vanek <petr@yarpen.cz>
 #
@@ -42,7 +42,7 @@
 %global user_module_dir %{mydatarootdir}/qore-modules/
 %global libname libqore12
 Name:           qore
-Version:        2.1.1
+Version:        2.2.1
 Release:        1%{dist}
 Summary:        Multithreaded Programming Language
 License:        GPL-2.0-or-later OR LGPL-2.1-or-later OR MIT
@@ -55,7 +55,6 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  bzip2
-BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  flex >= 2.5.31
 BuildRequires:  gcc-c++ >= 4.8.1
@@ -84,10 +83,9 @@ Group:          Development/Languages/Other
 Provides:       qore-module(abi)%{?_isa} = 1.3
 Provides:       qore-module(abi)%{?_isa} = 1.4
 %if "%{libname}" == "libqore"
-Provides: libqore12 = %{version}
-Obsoletes: libqore12 < %{version}
+Provides:       libqore12 = %{version}
+Obsoletes:      libqore12 < %{version}
 %endif
-
 
 %description -n libqore12
 Qore is a scripting language supporting threading and embedded logic.
@@ -124,7 +122,7 @@ modules.
 %defattr(-,root,root,-)
 %{user_module_dir}
 %{module_dir}
-%doc COPYING.MIT README-LICENSE
+%license COPYING.MIT README-LICENSE
 
 %package doc
 Summary:        API documentation, programming language reference, and Qore example programs
