@@ -1,4 +1,106 @@
 -------------------------------------------------------------------
+Fri Aug  7 05:24:03 UTC 2026 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
+
+- Update to 2026.3.0
+- Summary of major features and improvements  
+  * More GenAI coverage and framework integrations to minimize
+    code changes
+    + New models supported:
+      - On CPU, GPU, and NPU: SmolLM3-3B, LFM2-1.2B, LFM2.5-1.2B
+      - On CPU and GPU: Harrier OSS-v1-0.6B, Qwen3-8B with 
+        EAGLE-3, MiniCPM5-1B, FLUX.2-klein-4B
+      - Extended to GPU and NPU: YOLO26
+      - Additional models available as early releases on CPU and 
+        GPU: Qwen3-ASR, Qwen3-Omni, Gemma-3n, Qwen3-VL-Embedding-8B,
+        Kokoro-82M
+    + Support for Hugging Face Transformers v5.5, ensuring
+      compatibility with the latest model architectures on
+      Hugging Face
+
+- Broader LLM model support and more model compression techniques
+  * OpenVINO™ GenAI extends the EAGLE-3 speculative decoding
+    pipeline to LLMs and VLMs, enhancing existing continuous
+    batching and adding Top-K sampling to deliver additional
+    token-generation speedups on CPUs, GPUs, and NPUs.
+  * Added GroupedMatMul to accelerate native execution of
+    Mixture-of-Experts (MoE) models, enabling faster support
+    for new MoE architectures and improving their out-of-the-box
+    performance.
+  * Lazy weight loading is enabled for IR and ONNX models to
+    automatically select an optimal loading and compilation path,
+    minimizing peak memory usage during model initialization.
+  * Neural Network Compression Framework (NNCF) now supports FP8
+    quantization for ONNX models, helping developers realize FP8
+    performance, accuracy, and memory gains while expanding
+    low-precision inference options for production deployments.
+  * OpenVINO™ GenAI now supports three additional pipelines:
+    Omni for multimodal workloads, ASR for speech recognition,
+    and Embedding for multimodal embedding generation.
+
+- More portability and performance to run AI at the edge, in
+  the cloud, or locally.
+  * Introducing support for Intel® Xeon® 6+ processors 
+    (formerly codenamed Clearwater Forest)
+  * MoE offloading to disk enabled, allowing 30B MoE models
+    like Qwen3-30B-A3B to run even on devices with 16 GB of
+    memory while maintaining acceptable tokens-per-second
+    (TPS) generation rates.
+  * OpenVINO™ Model Server simplifies model deployment and
+    unifies REST API endpoints, reducing command complexity
+    while providing standard v1/chat/completions support
+    for easier integration with other serving frameworks.
+  * OpenVINO™ Model Server adds support for audio models,
+    including Kokoro TTS and Qwen3-ASR, enabling speech
+    generation and transcription workflows.
+  * OpenVINO™ Model Server further improves stability,
+    performance, and accuracy for LLMs such as Qwen3.5/3.6
+    with linear attention and extends tool-parser support
+    to MiniCPM5-1B and LFM2.5, improving accuracy and
+    reliability.
+
+- Support Change and Deprecation Notices
+  * Discontinued in 2026.0:
+    + The deprecated openvino.runtime namespace has been
+      removed. Please use the openvino namespace directly.
+    + The deprecated openvino.Type.undefined has been removed.
+      Please use openvino.Type.dynamic instead.
+    + Support for Debian 10 has been discontinued due to the
+      end of its standard support.
+    + The PostponedConstant constructor signature has been
+      updated for improved usability:
+      - Old (removed): Callable[[Tensor], None]
+      - New: Callable[[], Tensor]
+    + The deprecated OpenVINO™ GenAI predefined generation
+      configs were removed.
+    + The deprecated OpenVINO GenAI support for whisper
+      stateless decoder model has been removed. Please use a
+      stateful model.
+    + The deprecated OpenVINO GenAI StreamerBase put method,
+      bool return type for callbacks, and ChunkStreamer class
+      has been removed.
+    + NNCF create_compressed_model() method is now deprecated
+      and removed in 2026. Please use nncf.prune() method for
+      unstructured pruning and nncf.quantize() for INT8
+      quantization.
+    + NNCF optimization methods for TensorFlow models and
+      TensorFlow backend in NNCF are deprecated and removed
+      in 2026. It is recommended to use PyTorch analogous
+      models for training-aware optimization methods and
+      OpenVINO™ IR, PyTorch, and ONNX models for post-training
+      optimization methods from NNCF.
+    + The following experimental NNCF methods are deprecated
+      and removed: NAS, Structural Pruning, AutoML, Knowledge
+      Distillation, Mixed-Precision Quantization, Movement
+      Sparsity.
+    + CPU plugin now requires support for the AVX2 instruction
+      set as a minimum system requirement. The SSE instruction
+      set will no longer be supported.
+    + OpenVINO™ migrated builds based on RHEL 8 to RHEL 9.
+    + Dropped support for the TensorFlow Serving (TFS) API in
+      OpenVINO Model Server 2026.3. KServe API is recommended
+      for classic model deployments.
+
+-------------------------------------------------------------------
 Mon Aug  3 04:59:14 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Correct numpy requirements to match the current release.
