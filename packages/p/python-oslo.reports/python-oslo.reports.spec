@@ -17,7 +17,7 @@
 
 
 Name:           python-oslo.reports
-Version:        3.8.0
+Version:        3.9.0
 Release:        0
 Summary:        OpenStack oslo.reports library
 License:        Apache-2.0

@@ -269,4 +269,17 @@
   * Update master for stable/2026.1</comment>
     <requestid>1353773</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>9a7ad2e4cd7f785e5eb1985ae889f919</srcmd5>
+    <version>3.9.0</version>
+    <time>1786304091</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.9.0:
+  * zuul: Use openstack-python3-next-jobs template
+  * pre-commit: Bump versions
+  * Do not install code to build release notes
+  * Remove Python 3.10 support
+  * typing: Fixes for typed oslo.config</comment>
+    <requestid>1369783</requestid>
+  </revision>
 </revisionlist>
