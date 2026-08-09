@@ -187,7 +187,7 @@
 %define is_armv7 1
 %define binext .img
 %endif
-%if "%target" == "qemu-riscv64" || "%target" == "qemu-riscv64smode" || "%target" == "qemu-riscv64smodeacpi" || "%target" == "sifiveunleashed" || "%target" == "sifiveunmatched" || "%target" == "starfivevisionfive2" || "%target" == "microchipmpfsgeneric" || "%target" == "milkvduo"
+%if "%target" == "qemu-riscv64" || "%target" == "qemu-riscv64smode" || "%target" == "qemu-riscv64smodeacpi" || "%target" == "sifiveunleashed" || "%target" == "sifiveunmatched" || "%target" == "starfivevisionfive2" || "%target" == "microchipmpfsgeneric" || "%target" == "milkvduo" || "%target" == "beaglevfire"
 %define is_riscv64 1
 %if "%target" == "sifiveunleashed" || "%target" == "sifiveunmatched" || "%target" == "starfivevisionfive2"
 %define binext .itb
