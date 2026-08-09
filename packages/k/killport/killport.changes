@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Aug  9 14:47:49 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 2.0.2:
+  * bump deps
+  * Minimum supported Rust version corrected from 1.74 to 1.86
+  * Killing multiple ports no longer stops at the first port that errors
+  * port lookup scans /proc once for all matching socket inodes instead of once
+    per inode, and no longer returns duplicate entries when several fds match the port
+  * processes with unreadable command lines fall back to the short process name
+    instead of being skipped
+  * Container runtime detection and kills honor DOCKER_HOST (colima, podman, 
+    remote docker)
+  * Container kills reuse the shared tokio runtime instead of building a new 
+    one per container
+
+-------------------------------------------------------------------
 Sat Jul 11 14:22:06 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 2.0.1:

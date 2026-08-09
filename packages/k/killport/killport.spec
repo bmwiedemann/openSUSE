@@ -17,7 +17,7 @@
 
 
 Name:           killport
-Version:        2.0.1
+Version:        2.0.2
 Release:        0
 Summary:        A tool to easily kill processes running on a specified port
 License:        MIT
