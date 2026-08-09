@@ -2421,4 +2421,29 @@
   XDG_DATA_DIRS construction.</comment>
     <requestid>1355922</requestid>
   </revision>
+  <revision rev="303" vrev="1">
+    <srcmd5>91ec8e11e374e31e555085f4e2f53b64</srcmd5>
+    <version>50.2</version>
+    <time>1786303914</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 50.2:
+  + Fixed path traversal vulnerability where a compromised greeter
+    could load arbitrary .desktop files via SelectSession,
+    potentially executing attacker-controlled commands as the
+    authenticated user
+  + Fixed autologin bypass where a compromised greeter could
+    request autologin for any local account by sending arbitrary
+    usernames via BeginAutoLogin
+  + Fixed denial of service where an invalid session name from the
+    greeter would cause the entire daemon to exit, terminating all
+    active sessions
+  + Fixed passphrase handling in pam_gdm to wipe cached plaintext
+    passwords before freeing and to bound the keyring buffer walk
+    preventing out-of-bounds reads
+  + Fixed crashes, memory leaks and wrong hash key type in
+    reauthentication channel handler, session worker and dynamic
+    user store
+  + Updated translations.</comment>
+    <requestid>1369983</requestid>
+  </revision>
 </revisionlist>
