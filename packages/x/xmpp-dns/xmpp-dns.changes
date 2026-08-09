@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug  7 07:19:14 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.4:
+  * Drop privileges when running as root.
+
+-------------------------------------------------------------------
 Mon Jun 15 06:01:30 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.6.3:

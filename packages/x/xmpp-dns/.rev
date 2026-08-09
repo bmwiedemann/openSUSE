@@ -261,4 +261,13 @@
   * Add support for NO_COLOR environment variable (see https://no-color.org/).</comment>
     <requestid>1361359</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>344602d3e5969dfd4750b70d8a1462a6</srcmd5>
+    <version>0.6.4</version>
+    <time>1786304251</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.6.4:
+  * Drop privileges when running as root.</comment>
+    <requestid>1370176</requestid>
+  </revision>
 </revisionlist>
