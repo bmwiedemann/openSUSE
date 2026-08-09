@@ -1,7 +1,7 @@
 #
 # spec file for package gap-idrel
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-idrel
-Version:        2.49
+Version:        2.51
 Release:        0
 Summary:        GAP: Identities among relations
 License:        GPL-2.0-or-later
@@ -27,7 +27,7 @@ URL:            https://gap-packages.github.io/idrel/
 Source:         https://github.com/gap-packages/idrel/releases/download/v%version/idrel-%version.tar.gz
 BuildArch:      noarch
 BuildRequires:  gap-rpm-devel
-Requires:       gap-core >= 4.11.1
+Requires:       gap-core >= 4.12
 
 %description
 The IdRel package is designed for computing the identities among
