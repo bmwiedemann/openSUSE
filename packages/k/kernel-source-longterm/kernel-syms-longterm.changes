@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Aug  6 23:50:33 CEST 2026 - rfrohl@suse.com
+
+- Linux 6.18.43 (bsc#1258210).
+- x86/bugs: Make Safe-RET robust against interrupt injection
+  (bsc#1258210).
+- commit eeb7cc8
+
+-------------------------------------------------------------------
+Wed Aug  5 14:46:48 CEST 2026 - petr.pavlu@suse.com
+
+- rpm/modversions: Allow unpacking consolidated data created by ksymtypes
+  `scripts/sequence-patch --kabi` currently uses rpm/modversions to unpack
+  consolidated symtypes data. This doesn't work in SL-16.1 where the data is
+  created by ksymtypes (from suse-kabi-tools).
+  The problem is that when ksymtypes packs individual symtypes files into
+  a consolidated file, it uses the original '<path>/<basename>.symtypes'
+  filename in file separators. However, rpm/modversions expects the format to
+  use '<path>/<basename>.o' instead.
+  Update rpm/modversions to recognize the '.symtypes' suffix as well.
+- commit 585bfaf
+
+-------------------------------------------------------------------
 Mon Aug  3 18:27:19 CEST 2026 - rfrohl@suse.com
 
 - Update config files for v6.18.42.
