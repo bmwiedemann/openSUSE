@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Aug  7 20:01:37 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- CVE-2026-67201: vlang: server-side request forgery bypass flaw
+  allows circumvention of host-based allowlists due to a parser
+  differential between `net.urllib` and `net.http` (bsc#1273139)
+  * 0006-net-urllib-reject-backslashes.patch
+
+-------------------------------------------------------------------
 Sat Jul 18 13:37:02 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to version 0.5.2:

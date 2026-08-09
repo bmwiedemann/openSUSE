@@ -40,6 +40,7 @@ Patch2:         0002-Disable-vdoc-testing.patch
 Patch3:         0003-Unbundle-cJSON-and-zstd.patch
 Patch4:         0004-Fix-cJSON_GetErrorPos-undefined-reference.patch
 Patch5:         0005-Force-system-libgc-on-Linux.patch
+Patch6:         0006-net-urllib-reject-backslashes.patch
 
 BuildRequires:  (c_compiler or gcc)
 BuildRequires:  diffutils

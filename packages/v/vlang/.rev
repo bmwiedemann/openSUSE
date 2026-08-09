@@ -132,4 +132,15 @@ focus on simplicity and maintainability</comment>
   after the generated C source.</comment>
     <requestid>1366528</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>a04292452969120ad46397c392db38c0</srcmd5>
+    <version>0.5.2</version>
+    <time>1786304529</time>
+    <user>anag_factory</user>
+    <comment>- CVE-2026-67201: vlang: server-side request forgery bypass flaw
+  allows circumvention of host-based allowlists due to a parser
+  differential between `net.urllib` and `net.http` (bsc#1273139)
+  * 0006-net-urllib-reject-backslashes.patch</comment>
+    <requestid>1370279</requestid>
+  </revision>
 </revisionlist>
