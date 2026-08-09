@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Aug  8 14:20:52 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.3.1
+  * Fix printing of Lie algebra collections in a GAP where GAPDoc
+    is not loaded (e.g. one started with `gap --bare`).
+
+-------------------------------------------------------------------
 Sat Oct 11 18:05:12 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.3.0
