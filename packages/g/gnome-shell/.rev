@@ -2722,4 +2722,21 @@ Upstream applied and then reverted gnome-shell-animations-speedup.patch for the 
   + Updated translations.</comment>
     <requestid>1362910</requestid>
   </revision>
+  <revision rev="292" vrev="1">
+    <srcmd5>266d95c6c2e303c9e6d75246f41fcefb</srcmd5>
+    <version>50.4</version>
+    <time>1786303913</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 50.4:
+  + Fix some menu animations
+  + Fix glitch when switching to minimized window on another
+    workspace
+  + Fix miscaled magnified cursor on HiDPI
+  + Fix sound glitch when pushing redundant volume changes
+  + Fix removing arbitrary provider when removing unregistered
+    search provider
+  + Misc. bug fixes and cleanups
+  + Updated translations.</comment>
+    <requestid>1369982</requestid>
+  </revision>
 </revisionlist>

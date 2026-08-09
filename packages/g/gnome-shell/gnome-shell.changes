@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Aug  5 06:22:07 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.4:
+  + Fix some menu animations
+  + Fix glitch when switching to minimized window on another
+    workspace
+  + Fix miscaled magnified cursor on HiDPI
+  + Fix sound glitch when pushing redundant volume changes
+  + Fix removing arbitrary provider when removing unregistered
+    search provider
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Jun 30 06:46:10 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 50.3:
