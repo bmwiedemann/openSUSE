@@ -17,7 +17,7 @@
 
 
 Name:           python-osc-lib
-Version:        4.6.0
+Version:        4.7.0
 Release:        0
 Summary:        OpenStackClient Library
 License:        Apache-2.0

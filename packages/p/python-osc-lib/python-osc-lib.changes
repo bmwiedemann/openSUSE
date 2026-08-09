@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Aug  5 14:50:12 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.7.0:
+  * zuul: Use openstack-python3-next-jobs template
+  * pre-commit: Bump versions
+  * Add assertIsSubset helper
+  * tox: update to newer constraints syntax
+  * fix setuptools package find syntax
+  * Drop support for Python 3.10
+  * Remove oslotest
+  * Drop unused testrepository
+  * Deprecate version attribute
+  * Deprecate version module
+  * test: Set mock on FakeClientManager.auth_ref
+  * Update packaging configuration
+
+-------------------------------------------------------------------
 Mon May 18 13:23:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.6.0:

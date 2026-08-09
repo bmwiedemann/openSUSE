@@ -404,4 +404,24 @@
   * Update master for stable/2026.1</comment>
     <requestid>1353845</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>1e5e59574bcbf05031c7fa30ee217c7a</srcmd5>
+    <version>4.7.0</version>
+    <time>1786304097</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.7.0:
+  * zuul: Use openstack-python3-next-jobs template
+  * pre-commit: Bump versions
+  * Add assertIsSubset helper
+  * tox: update to newer constraints syntax
+  * fix setuptools package find syntax
+  * Drop support for Python 3.10
+  * Remove oslotest
+  * Drop unused testrepository
+  * Deprecate version attribute
+  * Deprecate version module
+  * test: Set mock on FakeClientManager.auth_ref
+  * Update packaging configuration</comment>
+    <requestid>1369791</requestid>
+  </revision>
 </revisionlist>
