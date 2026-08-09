@@ -1,7 +1,7 @@
 #
 # spec file for package python-URLObject
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,12 @@
 
 
 Name:           python-URLObject
-Version:        2.4.3
+Version:        3.0.0
 Release:        0
 Summary:        Python library for manipulating URLs (and some URIs) in a more natural way
-License:        SUSE-Public-Domain
+License:        LicenseRef-SUSE-Public-Domain
 URL:            https://github.com/zacharyvoase/urlobject
-Source:         https://files.pythonhosted.org/packages/source/U/URLObject/URLObject-%{version}.tar.gz
-# patch-feature-upstream remove_nose.patch gh#zacharyvoase/urlobject#42 mcepl@suse.com
-# Remove the need for nose and use the standard library.
-Patch0:         remove_nose.patch
+Source:         https://files.pythonhosted.org/packages/source/U/URLObject/urlobject-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -38,15 +35,14 @@ BuildRequires:  %{python_module pytest}
 %python_subpackages
 
 %description
-URLObject is a utility class for manipulating URLs. The latest
-incarnation of this library builds upon the ideas of its predecessor,
-but aims for a clearer API, focusing on proper method names over
-operator overrides. It's also being developed from the ground up in a
-test-driven manner, and has full Sphinx documentation.
+URLObject is a utility class for manipulating URLs. The latest incarnation of
+this library builds upon the ideas of its predecessor, but aims for a clearer
+API, focusing on proper method names over operator overrides. It's also being
+developed from the ground up in a test-driven manner, and has full Sphinx
+documentation.
 
 %prep
-%setup -q -n URLObject-%{version}
-%autopatch -p1
+%autosetup -p1 -n urlobject-%{version}
 
 %build
 %pyproject_wheel

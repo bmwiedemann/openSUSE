@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug  6 19:57:05 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.0:
+  * tests fixes
+  * switchc to pyproject.toml
+- drop remove_nose.patch (upstream)
+
+-------------------------------------------------------------------
 Mon May 12 15:44:38 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build

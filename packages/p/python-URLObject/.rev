@@ -41,4 +41,15 @@
     <comment></comment>
     <requestid>1276926</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b0c26be168d8498c79461c8244d4a2c1</srcmd5>
+    <version>3.0.0</version>
+    <time>1786304081</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.0.0:
+  * tests fixes
+  * switchc to pyproject.toml
+- drop remove_nose.patch (upstream)</comment>
+    <requestid>1370104</requestid>
+  </revision>
 </revisionlist>
