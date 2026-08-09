@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Aug  5 14:29:25 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.12.0:
+  * zuul: Use openstack-python3-next-jobs template
+  * pre-commit: Bump versions
+  * Do not install code to build release notes
+  * Remove Python 3.10 support
+  * typing: Fixes for typed oslo.config
+  * Deprecate version module
+
+-------------------------------------------------------------------
 Sun May  3 19:19:54 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.11.0:

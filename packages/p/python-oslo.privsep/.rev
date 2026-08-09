@@ -382,4 +382,18 @@
   * Update master for stable/2026.1</comment>
     <requestid>1350572</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>8d787fa86466f8f8564a6124b4118d8d</srcmd5>
+    <version>3.12.0</version>
+    <time>1786304089</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.12.0:
+  * zuul: Use openstack-python3-next-jobs template
+  * pre-commit: Bump versions
+  * Do not install code to build release notes
+  * Remove Python 3.10 support
+  * typing: Fixes for typed oslo.config
+  * Deprecate version module</comment>
+    <requestid>1369782</requestid>
+  </revision>
 </revisionlist>
