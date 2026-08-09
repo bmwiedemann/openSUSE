@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Aug  4 11:26:17 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.4:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.4
+- Changes since 6.7.3:
+  * Update version for new release 6.7.4
+  * Fix dragging onto grouped tasks when floating applets are enabled (kde#510643)
+  * applets/kimpanel: Avoid unrefing a null engine descriptor
+  * applets/{folder,showdesktop,minimizeall,kickoff,showActivityManager}: fix BugReportUrl
+  * emojier: Focus emojiView on downPressed when using search (kde#523254)
+  * kcms/gamecontroller: Fix std::out_of_range exception (kde#522886)
+  * Update version for new release 6.7.4
+
+-------------------------------------------------------------------
 Tue Jul 14 12:23:10 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.7.3:
