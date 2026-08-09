@@ -5,6 +5,6 @@
    </service>
    <service name="tar_scm">
       <param name="url">https://github.com/grafana/loki.git</param>
-      <param name="changesrevision">052f8ee967b7ea30f1e79eddbc756fc5ddae418e</param>
+      <param name="changesrevision">5003600d7c787b5f047c8d1b0198559471b0caa5</param>
     </service>
 </servicedata>

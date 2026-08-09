@@ -27,7 +27,7 @@
 %global promtail_binaries promtail
 
 Name:           loki
-Version:        3.7.5
+Version:        3.7.6
 Release:        0
 Summary:        Loki: like Prometheus, but for logs
 License:        Apache-2.0
