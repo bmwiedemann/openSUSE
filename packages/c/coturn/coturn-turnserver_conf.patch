@@ -1,7 +1,8 @@
-diff -ur coturn-4.6.3/examples/etc/turnserver.conf coturn-4.6.3-new/examples/etc/turnserver.conf
---- coturn-4.6.3/examples/etc/turnserver.conf	2024-12-11 19:13:38.000000000 +0100
-+++ coturn-4.6.3-new/examples/etc/turnserver.conf	2025-05-12 15:50:25.607946160 +0200
-@@ -265,6 +265,7 @@
+Index: coturn-4.17.0/examples/etc/turnserver.conf
+===================================================================
+--- coturn-4.17.0.orig/examples/etc/turnserver.conf
++++ coturn-4.17.0/examples/etc/turnserver.conf
+@@ -351,6 +351,7 @@
  # will try to use the 'dynamic' value in the turn_secret table
  # in the user database (if present). The database-stored  value can be changed on-the-fly
  # by a separate program, so this is why that mode is considered 'dynamic'.
@@ -9,7 +10,7 @@ diff -ur coturn-4.6.3/examples/etc/turnserver.conf coturn-4.6.3-new/examples/etc
  #
  #static-auth-secret=north
  
-@@ -399,7 +400,7 @@
+@@ -491,7 +492,7 @@
  # default value is 0 (no quota).
  # This option can also be set through the database, for a particular realm.
  #
@@ -18,7 +19,7 @@ diff -ur coturn-4.6.3/examples/etc/turnserver.conf coturn-4.6.3-new/examples/etc
  
  # Max bytes-per-second bandwidth a TURN session is allowed to handle
  # (input and output network streams are treated separately). Anything above
-@@ -481,14 +482,14 @@
+@@ -577,14 +578,14 @@
  # configuration file.
  # Use PEM file format.
  #
@@ -35,7 +36,7 @@ diff -ur coturn-4.6.3/examples/etc/turnserver.conf coturn-4.6.3-new/examples/etc
  
  # Raw public keys support.
  # On/off switch for RFC-7250 aka raw public keys.
-@@ -554,7 +555,7 @@
+@@ -650,7 +651,7 @@
  # In the runtime, the logfile can be reset with the SIGHUP signal
  # to the turnserver process.
  #
@@ -44,4 +45,3 @@ diff -ur coturn-4.6.3/examples/etc/turnserver.conf coturn-4.6.3-new/examples/etc
  
  # Option to redirect all log output into system log (syslog).
  #
-Nur in coturn-4.6.3-new/examples/etc: turnserver.conf.orig.

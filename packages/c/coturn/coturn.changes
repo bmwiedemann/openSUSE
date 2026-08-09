@@ -1,7 +1,14 @@
 -------------------------------------------------------------------
+Fri Aug  7 13:22:24 UTC 2026 - chris@computersalat.de
+
+- fix ChangeLog
+  * Update Sources to 4.17.0 as previous changes refer to 4.17.0
+- rebase coturn-turnserver_conf.patch
+
+-------------------------------------------------------------------
 Wed Aug  5 08:14:08 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
-- Update to version 4.16.0
+- Update to version 4.17.0
 
 Please read the release notes at https://github.com/coturn/coturn/releases/tag/4.17.0
 Three defaults changed in this release. Read these before upgrading.

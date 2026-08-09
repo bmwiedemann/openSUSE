@@ -24,7 +24,7 @@
 %endif
 %bcond_without  apparmor
 Name:           coturn
-Version:        4.16.0
+Version:        4.17.0
 Release:        0
 Summary:        TURN and STUN server for VoIP
 License:        BSD-3-Clause
@@ -230,7 +230,7 @@ systemd-tmpfiles --create %{_prefix}/lib/tmpfiles.d/%{name}.conf
 %dir %{_docdir}/%{name}/scripts
 %dir %{_docdir}/%{name}/scripts/*
 %{_docdir}/%{name}/scripts/*.sh
-%{_docdir}/%{name}/scripts/mobility_resume_flood.py
+%{_docdir}/%{name}/scripts/*.py
 %{_docdir}/%{name}/scripts/readme.txt
 %doc %{_docdir}/%{name}/scripts/*/*
 
