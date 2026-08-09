@@ -1,6 +1,5 @@
 ---
  pyproject.toml                          |    3 +++
- tests/acp/test_acp.py                   |    1 +
  tests/acp/test_acp_entrypoint_smoke.py  |    2 ++
  tests/e2e/test_cli_tui_fresh_install.py |    1 +
  tests/e2e/test_cli_tui_hooks.py         |    2 ++
@@ -9,13 +8,13 @@
  tests/e2e/test_cli_tui_streaming.py     |    2 ++
  tests/e2e/test_cli_tui_tool_approval.py |    2 ++
  tests/test_install_script.py            |    3 +++
- 10 files changed, 20 insertions(+)
+ 9 files changed, 19 insertions(+)
 
-Index: mistral-vibe-2.19.1/pyproject.toml
+Index: mistral-vibe-2.23.3/pyproject.toml
 ===================================================================
---- mistral-vibe-2.19.1.orig/pyproject.toml	2026-07-10 11:00:30.903033305 +0200
-+++ mistral-vibe-2.19.1/pyproject.toml	2026-07-10 11:01:08.002266091 +0200
-@@ -256,6 +256,9 @@
+--- mistral-vibe-2.23.3.orig/pyproject.toml	2026-08-03 14:57:51.000000000 +0200
++++ mistral-vibe-2.23.3/pyproject.toml	2026-08-05 16:37:57.369355543 +0200
+@@ -260,6 +260,9 @@
  [tool.pytest.ini_options]
  addopts = "-vvvv -q -n auto --durations=10 --import-mode=importlib --maxschedchunk=1"
  timeout = 10
@@ -25,23 +24,11 @@ Index: mistral-vibe-2.19.1/pyproject.toml
  filterwarnings = [
      # (e2e) streaming mock server is started in a thread; and the cli is spawn in a fork
      "ignore:This process \\(pid=.*\\) is multi-threaded, use of forkpty\\(\\) may lead to deadlocks in the child\\.:DeprecationWarning",
-Index: mistral-vibe-2.19.1/tests/acp/test_acp.py
+Index: mistral-vibe-2.23.3/tests/acp/test_acp_entrypoint_smoke.py
 ===================================================================
---- mistral-vibe-2.19.1.orig/tests/acp/test_acp.py	2026-07-10 11:00:30.903033305 +0200
-+++ mistral-vibe-2.19.1/tests/acp/test_acp.py	2026-07-10 11:01:08.002682103 +0200
-@@ -39,6 +39,7 @@
- RESPONSE_TIMEOUT = 2.0
- MOCK_ENTRYPOINT_PATH = "tests/mock/mock_entrypoint.py"
- PLAYGROUND_DIR = TESTS_ROOT / "playground"
-+pytestmark = pytest.mark.network
- 
- 
- def deep_merge(target: dict, source: dict) -> None:
-Index: mistral-vibe-2.19.1/tests/acp/test_acp_entrypoint_smoke.py
-===================================================================
---- mistral-vibe-2.19.1.orig/tests/acp/test_acp_entrypoint_smoke.py	2026-07-10 11:00:30.903033305 +0200
-+++ mistral-vibe-2.19.1/tests/acp/test_acp_entrypoint_smoke.py	2026-07-10 11:01:08.003064061 +0200
-@@ -21,6 +21,8 @@
+--- mistral-vibe-2.23.3.orig/tests/acp/test_acp_entrypoint_smoke.py	2026-08-03 14:57:51.000000000 +0200
++++ mistral-vibe-2.23.3/tests/acp/test_acp_entrypoint_smoke.py	2026-08-05 16:37:57.369762110 +0200
+@@ -29,6 +29,8 @@
      "Sign into Mistral Vibe through your Mistral AI Studio account."
  )
  
@@ -50,10 +37,10 @@ Index: mistral-vibe-2.19.1/tests/acp/test_acp_entrypoint_smoke.py
  
  class _AcpSmokeClient(Client):
      def on_connect(self, conn: Any) -> None:
-Index: mistral-vibe-2.19.1/tests/e2e/test_cli_tui_fresh_install.py
+Index: mistral-vibe-2.23.3/tests/e2e/test_cli_tui_fresh_install.py
 ===================================================================
---- mistral-vibe-2.19.1.orig/tests/e2e/test_cli_tui_fresh_install.py	2026-07-10 11:00:30.903033305 +0200
-+++ mistral-vibe-2.19.1/tests/e2e/test_cli_tui_fresh_install.py	2026-07-10 11:01:08.003302930 +0200
+--- mistral-vibe-2.23.3.orig/tests/e2e/test_cli_tui_fresh_install.py	2026-08-03 14:57:51.000000000 +0200
++++ mistral-vibe-2.23.3/tests/e2e/test_cli_tui_fresh_install.py	2026-08-05 16:37:57.370054282 +0200
 @@ -62,6 +62,7 @@
      return _venv_executable(venv_path, "vibe")
  
@@ -62,23 +49,23 @@ Index: mistral-vibe-2.19.1/tests/e2e/test_cli_tui_fresh_install.py
  @pytest.mark.timeout(90)
  def test_fresh_wheel_install_can_spawn_cli_and_complete_happy_path(
      streaming_mock_server: StreamingMockServer,
-Index: mistral-vibe-2.19.1/tests/e2e/test_cli_tui_hooks.py
+Index: mistral-vibe-2.23.3/tests/e2e/test_cli_tui_hooks.py
 ===================================================================
---- mistral-vibe-2.19.1.orig/tests/e2e/test_cli_tui_hooks.py	2026-07-10 11:00:30.903033305 +0200
-+++ mistral-vibe-2.19.1/tests/e2e/test_cli_tui_hooks.py	2026-07-10 11:01:08.003529235 +0200
-@@ -19,6 +19,8 @@
+--- mistral-vibe-2.23.3.orig/tests/e2e/test_cli_tui_hooks.py	2026-08-03 14:57:51.000000000 +0200
++++ mistral-vibe-2.23.3/tests/e2e/test_cli_tui_hooks.py	2026-08-05 16:37:57.370280969 +0200
+@@ -18,6 +18,8 @@
  )
  from tests.e2e.mock_server import StreamingMockServer
  
 +pytestmark = pytest.mark.network
 +
  
- def _enable_hooks(vibe_home: Path, invocation_path: Path) -> None:
-     config_path = vibe_home / "config.toml"
-Index: mistral-vibe-2.19.1/tests/e2e/test_cli_tui_onboarding.py
+ def _setup_recording_hook(vibe_home: Path, invocation_path: Path) -> None:
+     script = vibe_home / "_record_hook.py"
+Index: mistral-vibe-2.23.3/tests/e2e/test_cli_tui_onboarding.py
 ===================================================================
---- mistral-vibe-2.19.1.orig/tests/e2e/test_cli_tui_onboarding.py	2026-07-10 11:00:30.903033305 +0200
-+++ mistral-vibe-2.19.1/tests/e2e/test_cli_tui_onboarding.py	2026-07-10 11:01:08.003718882 +0200
+--- mistral-vibe-2.23.3.orig/tests/e2e/test_cli_tui_onboarding.py	2026-08-03 14:57:51.000000000 +0200
++++ mistral-vibe-2.23.3/tests/e2e/test_cli_tui_onboarding.py	2026-08-05 16:37:57.370458103 +0200
 @@ -7,6 +7,8 @@
  
  from tests.e2e.common import SpawnedVibeProcessFixture, ansi_tolerant_pattern
@@ -88,23 +75,23 @@ Index: mistral-vibe-2.19.1/tests/e2e/test_cli_tui_onboarding.py
  
  @pytest.mark.timeout(15)
  def test_spawn_cli_shows_onboarding_when_api_key_missing(
-Index: mistral-vibe-2.19.1/tests/e2e/test_cli_tui_session_exit.py
+Index: mistral-vibe-2.23.3/tests/e2e/test_cli_tui_session_exit.py
 ===================================================================
---- mistral-vibe-2.19.1.orig/tests/e2e/test_cli_tui_session_exit.py	2026-07-10 11:00:30.903033305 +0200
-+++ mistral-vibe-2.19.1/tests/e2e/test_cli_tui_session_exit.py	2026-07-10 11:01:08.004215636 +0200
+--- mistral-vibe-2.23.3.orig/tests/e2e/test_cli_tui_session_exit.py	2026-08-03 14:57:51.000000000 +0200
++++ mistral-vibe-2.23.3/tests/e2e/test_cli_tui_session_exit.py	2026-08-05 16:37:57.370644184 +0200
 @@ -23,6 +23,8 @@
  from tests.e2e.mock_server import StreamingMockServer
- from vibe.core.utils.io import read_safe
+ from vibe.utils.io import read_safe
  
 +pytestmark = pytest.mark.network
 +
  
  def _usage_by_run_factory(
      request_index: int, _payload: object
-Index: mistral-vibe-2.19.1/tests/e2e/test_cli_tui_streaming.py
+Index: mistral-vibe-2.23.3/tests/e2e/test_cli_tui_streaming.py
 ===================================================================
---- mistral-vibe-2.19.1.orig/tests/e2e/test_cli_tui_streaming.py	2026-07-10 11:00:30.903033305 +0200
-+++ mistral-vibe-2.19.1/tests/e2e/test_cli_tui_streaming.py	2026-07-10 11:01:08.004683576 +0200
+--- mistral-vibe-2.23.3.orig/tests/e2e/test_cli_tui_streaming.py	2026-08-03 14:57:51.000000000 +0200
++++ mistral-vibe-2.23.3/tests/e2e/test_cli_tui_streaming.py	2026-08-05 16:37:57.370822861 +0200
 @@ -14,6 +14,8 @@
  )
  from tests.e2e.mock_server import StreamingMockServer
@@ -114,10 +101,10 @@ Index: mistral-vibe-2.19.1/tests/e2e/test_cli_tui_streaming.py
  
  @pytest.mark.timeout(15)
  def test_spawn_cli_to_send_and_receive_message(
-Index: mistral-vibe-2.19.1/tests/e2e/test_cli_tui_tool_approval.py
+Index: mistral-vibe-2.23.3/tests/e2e/test_cli_tui_tool_approval.py
 ===================================================================
---- mistral-vibe-2.19.1.orig/tests/e2e/test_cli_tui_tool_approval.py	2026-07-10 11:00:30.903033305 +0200
-+++ mistral-vibe-2.19.1/tests/e2e/test_cli_tui_tool_approval.py	2026-07-10 11:01:08.005107553 +0200
+--- mistral-vibe-2.23.3.orig/tests/e2e/test_cli_tui_tool_approval.py	2026-08-03 14:57:51.000000000 +0200
++++ mistral-vibe-2.23.3/tests/e2e/test_cli_tui_tool_approval.py	2026-08-05 16:37:57.370994816 +0200
 @@ -14,6 +14,8 @@
  )
  from tests.e2e.mock_server import ChatCompletionsRequestPayload, StreamingMockServer
@@ -127,10 +114,10 @@ Index: mistral-vibe-2.19.1/tests/e2e/test_cli_tui_tool_approval.py
  PREDICTABLE_OUTPUT = "__E2E_BASH_OK__"
  TOOL_ARGUMENTS = f'{{"command":"printf \\"{PREDICTABLE_OUTPUT}\\\\n\\""}}'
  
-Index: mistral-vibe-2.19.1/tests/test_install_script.py
+Index: mistral-vibe-2.23.3/tests/test_install_script.py
 ===================================================================
---- mistral-vibe-2.19.1.orig/tests/test_install_script.py	2026-07-10 11:00:30.903033305 +0200
-+++ mistral-vibe-2.19.1/tests/test_install_script.py	2026-07-10 11:01:08.005417756 +0200
+--- mistral-vibe-2.23.3.orig/tests/test_install_script.py	2026-08-03 14:57:51.000000000 +0200
++++ mistral-vibe-2.23.3/tests/test_install_script.py	2026-08-05 16:37:57.371193400 +0200
 @@ -7,6 +7,8 @@
  import subprocess
  from textwrap import dedent

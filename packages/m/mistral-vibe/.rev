@@ -370,4 +370,41 @@
       reports</comment>
     <requestid>1364917</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>35a0a4544e63568b55ae3f406e992c11</srcmd5>
+    <version>2.24.0</version>
+    <time>1786304634</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.24.0:
+  - Added
+    - Admin config layer for shared/enforced config that applies
+      over user config
+    - &quot;Default&quot; (unpinned) model option in /model and /config to
+      track the recommended model without pinning a specific
+      alias
+    - Server-side default model routing via experiment, never
+      overriding explicit pins
+    - LLM retries surfaced in ACP/VS Code conversations via
+      _session/retrying notification
+    - Explore subagent can load skills
+    - Local sessions start in the selected worktree
+    - User and project config layers compose; trusted project
+      config overlays user config instead of replacing it
+    - Startup duration telemetry (vibe.startup)
+  - Changed
+    - Experiment variants routed through the config schema;
+      TOML/env/overrides now take precedence over GrowthBook
+      assignments
+    - Autocopy: keyboard copy shortcuts give feedback,
+      double/triple-click drag improved, and
+      autocopy_to_clipboard documented
+  - Fixed
+    - Drag-and-drop of files into the terminal when unfocused
+      (iTerm2, Ghostty)
+    - Subagent session handoff after compaction
+    - Stale devstral-small thinking setting migrated to off
+    - Noisy non-Vibe events dropped from Sentry
+    - ACP returns max_turn_requests stop reason instead of</comment>
+    <requestid>1370290</requestid>
+  </revision>
 </revisionlist>

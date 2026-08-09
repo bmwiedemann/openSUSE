@@ -1,25 +1,12 @@
 ---
- tests/core/test_build_ssl_context.py |    1 +
- vibe/core/tools/builtins/grep.py     |    4 ++--
- 2 files changed, 3 insertions(+), 2 deletions(-)
+ vibe/core/tools/builtins/grep.py |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-Index: mistral-vibe-2.19.1/tests/core/test_build_ssl_context.py
+Index: mistral-vibe-2.23.3/vibe/core/tools/builtins/grep.py
 ===================================================================
---- mistral-vibe-2.19.1.orig/tests/core/test_build_ssl_context.py	2026-07-10 10:51:57.894515544 +0200
-+++ mistral-vibe-2.19.1/tests/core/test_build_ssl_context.py	2026-07-10 11:08:30.677026067 +0200
-@@ -28,6 +28,7 @@
- 
-     mock_ctx = MagicMock(spec=ssl.SSLContext)
-     with (
-+        patch("vibe.core.utils.http.os.path.exists", return_value=True),
-         patch("vibe.core.utils.http.certifi.where", return_value="/certifi.pem"),
-         patch(
-             "vibe.core.utils.http.ssl.create_default_context", return_value=mock_ctx
-Index: mistral-vibe-2.19.1/vibe/core/tools/builtins/grep.py
-===================================================================
---- mistral-vibe-2.19.1.orig/vibe/core/tools/builtins/grep.py	2026-07-10 10:51:57.894515544 +0200
-+++ mistral-vibe-2.19.1/vibe/core/tools/builtins/grep.py	2026-07-10 11:08:30.678069433 +0200
-@@ -239,7 +239,7 @@
+--- mistral-vibe-2.23.3.orig/vibe/core/tools/builtins/grep.py	2026-08-03 14:57:51.000000000 +0200
++++ mistral-vibe-2.23.3/vibe/core/tools/builtins/grep.py	2026-08-05 16:38:09.218266522 +0200
+@@ -270,7 +270,7 @@
              "--no-heading",
              "--with-filename",
              "--smart-case",
@@ -28,7 +15,7 @@ Index: mistral-vibe-2.19.1/vibe/core/tools/builtins/grep.py
              # Request one extra to detect truncation
              "--max-count",
              str(max_matches + 1),
-@@ -260,7 +260,7 @@
+@@ -291,7 +291,7 @@
      ) -> list[str]:
          max_matches = args.max_matches or self.config.default_max_matches
  

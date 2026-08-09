@@ -1,0 +1,97 @@
+Index: mistral-vibe-2.24.0/tests/cli/test_connector_auth_app.py
+===================================================================
+--- mistral-vibe-2.24.0.orig/tests/cli/test_connector_auth_app.py	2026-08-06 23:21:42.407878128 +0200
++++ mistral-vibe-2.24.0/tests/cli/test_connector_auth_app.py	2026-08-06 23:21:42.749881578 +0200
+@@ -259,7 +259,7 @@
+ 
+         assert app._status_message == "Refreshing connector..."
+         app.run_worker.assert_called_once()
+-        _, kwargs = app.run_worker.call_args
++        args, kwargs = app.run_worker.call_args
+         assert kwargs["group"] == "connector_refresh"
+ 
+ 
+Index: mistral-vibe-2.24.0/vibe/cli/textual_ui/widgets/connector_auth_app.py
+===================================================================
+--- mistral-vibe-2.24.0.orig/vibe/cli/textual_ui/widgets/connector_auth_app.py	2026-08-06 23:21:42.407878128 +0200
++++ mistral-vibe-2.24.0/vibe/cli/textual_ui/widgets/connector_auth_app.py	2026-08-06 23:21:42.750432704 +0200
+@@ -98,7 +98,7 @@
+         self._status_message = "Refreshing connector..."
+         self._set_help_text(_HELP)
+         self.run_worker(
+-            self._refresh_connector(), exclusive=True, group="connector_refresh"
++            self._refresh_connector, exclusive=True, group="connector_refresh"
+         )
+ 
+     # ── workers ──────────────────────────────────────────────────────
+Index: mistral-vibe-2.24.0/vibe/cli/textual_ui/widgets/mcp_app.py
+===================================================================
+--- mistral-vibe-2.24.0.orig/vibe/cli/textual_ui/widgets/mcp_app.py	2026-08-06 23:21:42.407878128 +0200
++++ mistral-vibe-2.24.0/vibe/cli/textual_ui/widgets/mcp_app.py	2026-08-06 23:21:42.750728732 +0200
+@@ -160,7 +160,7 @@
+         if self._refresh_callback is None or self._refreshing:
+             return
+         self._refreshing = True
+-        self.run_worker(self._run_refresh(), exclusive=True, group="refresh")
++        self.run_worker(self._run_refresh, exclusive=True, group="refresh")
+ 
+     async def _run_refresh(self) -> None:
+         if self._refresh_callback is not None:
+Index: mistral-vibe-2.24.0/vibe/cli/textual_ui/widgets/question_app.py
+===================================================================
+--- mistral-vibe-2.24.0.orig/vibe/cli/textual_ui/widgets/question_app.py	2026-08-06 23:21:42.407878128 +0200
++++ mistral-vibe-2.24.0/vibe/cli/textual_ui/widgets/question_app.py	2026-08-06 23:21:42.750919141 +0200
+@@ -1,6 +1,5 @@
+ from __future__ import annotations
+ 
+-import itertools
+ import time
+ from typing import TYPE_CHECKING, ClassVar
+ 
+@@ -424,10 +423,10 @@
+         else:
+             new_idx = next(
+                 i
+-                for i in itertools.chain(
+-                    range(self.current_question_idx + 1, len(self.questions)),
+-                    range(self.current_question_idx),
+-                )
++                for i in [
++                    *range(self.current_question_idx + 1, len(self.questions)),
++                    *range(self.current_question_idx),
++                ]
+                 if i not in self.answers
+             )
+             self._switch_question(new_idx)
+Index: mistral-vibe-2.24.0/vibe/core/config/event_bus.py
+===================================================================
+--- mistral-vibe-2.24.0.orig/vibe/core/config/event_bus.py	2026-08-06 23:21:42.407878128 +0200
++++ mistral-vibe-2.24.0/vibe/core/config/event_bus.py	2026-08-06 23:21:42.751133806 +0200
+@@ -2,8 +2,6 @@
+ 
+ from collections.abc import Callable
+ from dataclasses import dataclass
+-from itertools import count
+-
+ from vibe.core.config.types import ConfigChangeCallback, ConfigChangeEvent
+ 
+ 
+@@ -18,7 +16,7 @@
+ class EventBus:
+     def __init__(self) -> None:
+         self._subscribers: dict[int, Subscription] = {}
+-        self._subscription_ids = count()
++        self._next_subscription_id = 0
+ 
+     def subscribe(
+         self, callback: ConfigChangeCallback, *, keys: set[str] | None = None
+@@ -28,7 +26,8 @@
+         keys filters delivery to slash-separated config paths (ancestor and
+         descendant paths match); None subscribes to every change (wildcard).
+         """
+-        subscription_id = next(self._subscription_ids)
++        subscription_id = self._next_subscription_id
++        self._next_subscription_id += 1
+         frozen_keys = frozenset(keys) if keys is not None else None
+         self._subscribers[subscription_id] = Subscription(
+             callback=callback, keys=frozen_keys

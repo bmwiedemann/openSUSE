@@ -1,373 +1,237 @@
+# PATCH-FIX-OPENSUSE no_terminal.patch mcepl@suse.com
+# mark tests requiring a terminal or PTY so they are skipped in OBS builds
 ---
- pyproject.toml                                                 |    1 
- tests/cli/test_ui_clipboard_notifications.py                   |    1 
- tests/cli/test_ui_session_incremental_renderer.py              |    4 
- tests/cli/test_ui_skill_dispatch.py                            |    2 
- tests/cli/textual_ui/test_manual_command_output_cap.py         |    6 
- tests/cli/textual_ui/test_message_queue_ui.py                  |    1 
- tests/e2e/agent_loop_characterization/test_resume.py           |    1 
- tests/e2e/agent_loop_characterization/test_subagents.py        |    1 
- tests/e2e/agent_loop_characterization/test_tool_execution.py   |    3 
- tests/e2e/agent_loop_characterization/test_tool_permissions.py |    2 
- tests/e2e/agent_loop_characterization/test_user_interaction.py |    1 
- tests/onboarding/test_ui_onboarding.py                         |   76 ++++++----
- tests/tools/test_ui_bash_execution.py                          |    2 
- tests/vscode_extension_promo/test_ui_vscode_extension_promo.py |    2 
- 14 files changed, 71 insertions(+), 32 deletions(-)
-
-Index: mistral-vibe-2.19.1/pyproject.toml
+ 18 files changed, 36 insertions(+)
+Index: mistral-vibe-2.24.0/tests/cli/test_switching_mode.py
 ===================================================================
---- mistral-vibe-2.19.1.orig/pyproject.toml	2026-07-10 11:01:08.002266091 +0200
-+++ mistral-vibe-2.19.1/pyproject.toml	2026-07-10 11:08:52.225954517 +0200
-@@ -258,6 +258,7 @@
+--- mistral-vibe-2.24.0.orig/tests/cli/test_switching_mode.py	2026-08-07 21:30:20.430004398 +0200
++++ mistral-vibe-2.24.0/tests/cli/test_switching_mode.py	2026-08-07 21:30:20.704731219 +0200
+@@ -5,6 +5,8 @@
+ 
+ import pytest
+ 
++pytestmark = pytest.mark.terminal
++
+ from tests.conftest import build_test_agent_loop, build_test_vibe_app
+ from tests.mock.utils import mock_llm_chunk
+ from tests.stubs.fake_backend import FakeBackend
+Index: mistral-vibe-2.24.0/tests/cli/test_ui_config_screen.py
+===================================================================
+--- mistral-vibe-2.24.0.orig/tests/cli/test_ui_config_screen.py	2026-08-07 21:30:20.430004398 +0200
++++ mistral-vibe-2.24.0/tests/cli/test_ui_config_screen.py	2026-08-07 21:30:20.705006900 +0200
+@@ -4,6 +4,8 @@
+ import tomllib
+ 
+ import pytest
++
++pytestmark = pytest.mark.terminal
+ import tomli_w
+ 
+ from tests.conftest import (
+Index: mistral-vibe-2.24.0/tests/cli/test_ui_exit_command.py
+===================================================================
+--- mistral-vibe-2.24.0.orig/tests/cli/test_ui_exit_command.py	2026-08-07 21:30:20.430004398 +0200
++++ mistral-vibe-2.24.0/tests/cli/test_ui_exit_command.py	2026-08-07 21:30:20.705373810 +0200
+@@ -4,6 +4,8 @@
+ 
+ import pytest
+ 
++pytestmark = pytest.mark.terminal
++
+ from tests.conftest import build_test_vibe_app
+ from vibe.cli.textual_ui.widgets.chat_input.container import ChatInputContainer
+ from vibe.cli.textual_ui.widgets.messages import SlashCommandMessage, UserMessage
+Index: mistral-vibe-2.24.0/tests/cli/test_ui_theme_picker.py
+===================================================================
+--- mistral-vibe-2.24.0.orig/tests/cli/test_ui_theme_picker.py	2026-08-07 21:30:20.430004398 +0200
++++ mistral-vibe-2.24.0/tests/cli/test_ui_theme_picker.py	2026-08-07 21:30:20.705629081 +0200
+@@ -4,6 +4,8 @@
+ 
+ import pytest
+ 
++pytestmark = pytest.mark.terminal
++
+ from tests.conftest import build_test_vibe_app, build_test_vibe_config
+ from vibe.cli.textual_ui.app import BottomApp
+ from vibe.cli.textual_ui.widgets.theme_picker import ThemePickerApp
+Index: mistral-vibe-2.24.0/tests/cli/test_whoami_command.py
+===================================================================
+--- mistral-vibe-2.24.0.orig/tests/cli/test_whoami_command.py	2026-08-07 21:30:20.430004398 +0200
++++ mistral-vibe-2.24.0/tests/cli/test_whoami_command.py	2026-08-07 21:30:20.705923986 +0200
+@@ -4,6 +4,8 @@
+ 
+ import pytest
+ 
++pytestmark = pytest.mark.terminal
++
+ from tests.conftest import build_test_vibe_app
+ from tests.stubs.fake_account_gateway import FakeAccountGateway
+ from tests.stubs.fake_identity_gateway import FakeIdentityGateway
+Index: mistral-vibe-2.24.0/tests/cli/test_word_selection.py
+===================================================================
+--- mistral-vibe-2.24.0.orig/tests/cli/test_word_selection.py	2026-08-07 21:30:20.430004398 +0200
++++ mistral-vibe-2.24.0/tests/cli/test_word_selection.py	2026-08-07 21:30:20.706364627 +0200
+@@ -3,6 +3,8 @@
+ from typing import Any, ClassVar, cast
+ 
+ import pytest
++
++pytestmark = pytest.mark.terminal
+ from textual import events
+ from textual.geometry import Offset, Region
+ from textual.screen import Screen
+Index: mistral-vibe-2.24.0/tests/cli/textual_ui/test_chat_input_word_drag.py
+===================================================================
+--- mistral-vibe-2.24.0.orig/tests/cli/textual_ui/test_chat_input_word_drag.py	2026-08-07 21:30:20.430004398 +0200
++++ mistral-vibe-2.24.0/tests/cli/textual_ui/test_chat_input_word_drag.py	2026-08-07 21:30:20.706764210 +0200
+@@ -1,6 +1,8 @@
+ from __future__ import annotations
+ 
+ import pytest
++
++pytestmark = pytest.mark.terminal
+ from textual import events
+ from textual.widgets.text_area import Selection
+ 
+Index: mistral-vibe-2.24.0/pyproject.toml
+===================================================================
+--- mistral-vibe-2.24.0.orig/pyproject.toml	2026-08-07 21:30:20.674363428 +0200
++++ mistral-vibe-2.24.0/pyproject.toml	2026-08-07 21:30:55.143663870 +0200
+@@ -262,6 +262,7 @@
  timeout = 10
  markers = [
      "network: tests that require network-capable execution environment",
-+    "terminal: tests that require /dev/tty",
++    "terminal: tests that require terminal-capable execution environment",
  ]
  filterwarnings = [
      # (e2e) streaming mock server is started in a thread; and the cli is spawn in a fork
-Index: mistral-vibe-2.19.1/tests/cli/test_ui_clipboard_notifications.py
+Index: mistral-vibe-2.24.0/tests/cli/test_ui_clipboard_notifications.py
 ===================================================================
---- mistral-vibe-2.19.1.orig/tests/cli/test_ui_clipboard_notifications.py	2026-07-10 10:51:54.837457093 +0200
-+++ mistral-vibe-2.19.1/tests/cli/test_ui_clipboard_notifications.py	2026-07-10 11:08:52.226360823 +0200
-@@ -23,6 +23,7 @@
-         return (self._selected_text, "\n")
+--- mistral-vibe-2.24.0.orig/tests/cli/test_ui_clipboard_notifications.py	2026-08-07 21:30:20.285003079 +0200
++++ mistral-vibe-2.24.0/tests/cli/test_ui_clipboard_notifications.py	2026-08-07 21:30:55.140580821 +0200
+@@ -3,6 +3,8 @@
+ from unittest.mock import patch
  
+ import pytest
++
++pytestmark = pytest.mark.terminal
+ from textual.selection import Selection
+ from textual.widget import Widget
  
-+@pytest.mark.terminal
- @pytest.mark.asyncio
- async def test_ui_clipboard_notification_does_not_crash_on_markup_text(
-     monkeypatch: pytest.MonkeyPatch, vibe_app: VibeApp
-Index: mistral-vibe-2.19.1/tests/cli/test_ui_session_incremental_renderer.py
+Index: mistral-vibe-2.24.0/tests/cli/textual_ui/test_message_queue_ui.py
 ===================================================================
---- mistral-vibe-2.19.1.orig/tests/cli/test_ui_session_incremental_renderer.py	2026-07-10 10:51:54.837457093 +0200
-+++ mistral-vibe-2.19.1/tests/cli/test_ui_session_incremental_renderer.py	2026-07-10 11:08:52.226693960 +0200
-@@ -63,6 +63,7 @@
-     return int(remainder.rstrip(")"))
+--- mistral-vibe-2.24.0.orig/tests/cli/textual_ui/test_message_queue_ui.py	2026-08-07 21:30:20.285003079 +0200
++++ mistral-vibe-2.24.0/tests/cli/textual_ui/test_message_queue_ui.py	2026-08-07 21:30:55.140805935 +0200
+@@ -4,6 +4,8 @@
  
- 
-+@pytest.mark.terminal
- @pytest.mark.asyncio
- async def test_ui_mount_defers_history_resume(
-     vibe_config: VibeConfig, monkeypatch: pytest.MonkeyPatch
-@@ -132,6 +133,7 @@
-         assert "(" in str(label)
- 
- 
-+@pytest.mark.terminal
- @pytest.mark.asyncio
- async def test_ui_session_incremental_loader_load_more_shows_remaining_count(
-     vibe_config: VibeConfig,
-@@ -165,6 +167,7 @@
-         )
- 
- 
-+@pytest.mark.terminal
- @pytest.mark.asyncio
- async def test_ui_session_incremental_loader_load_more_batches_until_done(
-     vibe_config: VibeConfig,
-@@ -227,6 +230,7 @@
-         assert chat.scroll_y == 0
- 
- 
-+@pytest.mark.terminal
- @pytest.mark.asyncio
- async def test_chat_scroll_does_not_reanchor_during_text_selection(
-     vibe_config: VibeConfig,
-Index: mistral-vibe-2.19.1/tests/cli/test_ui_skill_dispatch.py
-===================================================================
---- mistral-vibe-2.19.1.orig/tests/cli/test_ui_skill_dispatch.py	2026-07-10 10:51:54.837457093 +0200
-+++ mistral-vibe-2.19.1/tests/cli/test_ui_skill_dispatch.py	2026-07-10 11:08:52.227204191 +0200
-@@ -189,6 +189,7 @@
-             vibe_app_with_skills._agent_running = False
- 
- 
-+@pytest.mark.terminal
- @pytest.mark.asyncio
- async def test_queued_head_skill_injects_skill_tool_message(
-     vibe_app_with_skills: VibeApp,
-@@ -231,6 +232,7 @@
-         )
- 
- 
-+@pytest.mark.terminal
- @pytest.mark.asyncio
- async def test_skill_prompt_flushed_before_bash_injects_skill_tool_message(
-     vibe_app_with_skills: VibeApp,
-Index: mistral-vibe-2.19.1/tests/cli/textual_ui/test_manual_command_output_cap.py
-===================================================================
---- mistral-vibe-2.19.1.orig/tests/cli/textual_ui/test_manual_command_output_cap.py	2026-07-10 10:51:54.837457093 +0200
-+++ mistral-vibe-2.19.1/tests/cli/textual_ui/test_manual_command_output_cap.py	2026-07-10 11:08:52.227852943 +0200
-@@ -116,13 +116,13 @@
-         chat_input.value = cmd
-         await pilot.press("enter")
- 
--        deadline = time.monotonic() + 2.0
-+        deadline = time.monotonic() + 5.0
-         while time.monotonic() < deadline:
--            if next(iter(app.query(BashOutputMessage)), None):
-+            if (msg := next(iter(app.query(BashOutputMessage)), None)) and not msg._pending:
-                 break
-             await pilot.pause(0.05)
- 
--        injected = app.agent_loop.messages[-1]
-+        injected = next(m for m in reversed(app.agent_loop.messages) if m.injected and m.role == Role.user)
-         assert injected.role == Role.user
-         assert injected.injected is True
-         assert injected.content is not None
-Index: mistral-vibe-2.19.1/tests/cli/textual_ui/test_message_queue_ui.py
-===================================================================
---- mistral-vibe-2.19.1.orig/tests/cli/textual_ui/test_message_queue_ui.py	2026-07-10 10:51:54.837457093 +0200
-+++ mistral-vibe-2.19.1/tests/cli/textual_ui/test_message_queue_ui.py	2026-07-10 11:08:52.228379245 +0200
-@@ -13,6 +13,7 @@
-     WarningMessage,
- )
+ import pytest
  
 +pytestmark = pytest.mark.terminal
- 
- @pytest.fixture
- def vibe_app() -> VibeApp:
-Index: mistral-vibe-2.19.1/tests/e2e/agent_loop_characterization/test_resume.py
++
+ from tests.conftest import build_test_vibe_app
+ from vibe.cli.textual_ui.app import VibeApp
+ from vibe.cli.textual_ui.widgets.chat_input.container import ChatInputContainer
+Index: mistral-vibe-2.24.0/tests/e2e/agent_loop_characterization/test_resume.py
 ===================================================================
---- mistral-vibe-2.19.1.orig/tests/e2e/agent_loop_characterization/test_resume.py	2026-07-10 10:51:54.837457093 +0200
-+++ mistral-vibe-2.19.1/tests/e2e/agent_loop_characterization/test_resume.py	2026-07-10 11:08:52.228691713 +0200
-@@ -138,6 +138,7 @@
-     return assistant_text_chunks(RESUME_RESUMED_TURN_RESPONSE, created=60)
+--- mistral-vibe-2.24.0.orig/tests/e2e/agent_loop_characterization/test_resume.py	2026-08-07 21:30:20.285003079 +0200
++++ mistral-vibe-2.24.0/tests/e2e/agent_loop_characterization/test_resume.py	2026-08-07 21:30:55.140969703 +0200
+@@ -8,6 +8,8 @@
+ import pexpect
+ import pytest
  
- 
-+@pytest.mark.terminal
- @pytest.mark.timeout(35)
- @pytest.mark.parametrize(
-     "streaming_mock_server",
-Index: mistral-vibe-2.19.1/tests/e2e/agent_loop_characterization/test_subagents.py
++pytestmark = pytest.mark.terminal
++
+ from tests.e2e.agent_loop_characterization.support import (
+     assert_assistant_tool_call_present,
+     assert_message_content_present,
+Index: mistral-vibe-2.24.0/tests/e2e/agent_loop_characterization/test_subagents.py
 ===================================================================
---- mistral-vibe-2.19.1.orig/tests/e2e/agent_loop_characterization/test_subagents.py	2026-07-10 10:51:54.837457093 +0200
-+++ mistral-vibe-2.19.1/tests/e2e/agent_loop_characterization/test_subagents.py	2026-07-10 11:08:52.229340706 +0200
-@@ -43,6 +43,7 @@
-     return assistant_text_chunks("Parent used the subagent result.", created=110)
+--- mistral-vibe-2.24.0.orig/tests/e2e/agent_loop_characterization/test_subagents.py	2026-08-07 21:30:20.285003079 +0200
++++ mistral-vibe-2.24.0/tests/e2e/agent_loop_characterization/test_subagents.py	2026-08-07 21:30:55.141132941 +0200
+@@ -5,6 +5,8 @@
+ import pexpect
+ import pytest
  
- 
-+@pytest.mark.terminal
- @pytest.mark.timeout(30)
- @pytest.mark.parametrize(
-     "streaming_mock_server",
-Index: mistral-vibe-2.19.1/tests/e2e/agent_loop_characterization/test_tool_execution.py
++pytestmark = pytest.mark.terminal
++
+ from tests.e2e.agent_loop_characterization.support import (
+     assert_message_content_present,
+     assert_tool_result_contains,
+Index: mistral-vibe-2.24.0/tests/e2e/agent_loop_characterization/test_tool_execution.py
 ===================================================================
---- mistral-vibe-2.19.1.orig/tests/e2e/agent_loop_characterization/test_tool_execution.py	2026-07-10 10:51:54.837457093 +0200
-+++ mistral-vibe-2.19.1/tests/e2e/agent_loop_characterization/test_tool_execution.py	2026-07-10 11:08:52.229725511 +0200
-@@ -74,6 +74,7 @@
-     return assistant_text_chunks("Both todo reads completed.", created=170)
+--- mistral-vibe-2.24.0.orig/tests/e2e/agent_loop_characterization/test_tool_execution.py	2026-08-07 21:30:20.285003079 +0200
++++ mistral-vibe-2.24.0/tests/e2e/agent_loop_characterization/test_tool_execution.py	2026-08-07 21:30:55.141275540 +0200
+@@ -6,6 +6,8 @@
+ import pexpect
+ import pytest
  
- 
-+@pytest.mark.terminal
- @pytest.mark.timeout(25)
- @pytest.mark.parametrize(
-     "streaming_mock_server",
-@@ -119,6 +120,7 @@
-     )
- 
- 
-+@pytest.mark.terminal
- @pytest.mark.timeout(40)
- @pytest.mark.parametrize(
-     "streaming_mock_server",
-@@ -166,6 +168,7 @@
-     )
- 
- 
-+@pytest.mark.terminal
- @pytest.mark.timeout(25)
- @pytest.mark.parametrize(
-     "streaming_mock_server",
-Index: mistral-vibe-2.19.1/tests/e2e/agent_loop_characterization/test_tool_permissions.py
++pytestmark = pytest.mark.terminal
++
+ from tests.e2e.agent_loop_characterization.support import (
+     answer_approval,
+     assert_assistant_tool_call_present,
+Index: mistral-vibe-2.24.0/tests/e2e/agent_loop_characterization/test_tool_permissions.py
 ===================================================================
---- mistral-vibe-2.19.1.orig/tests/e2e/agent_loop_characterization/test_tool_permissions.py	2026-07-10 10:51:54.837457093 +0200
-+++ mistral-vibe-2.19.1/tests/e2e/agent_loop_characterization/test_tool_permissions.py	2026-07-10 11:08:52.229973137 +0200
-@@ -81,6 +81,7 @@
-     )
+--- mistral-vibe-2.24.0.orig/tests/e2e/agent_loop_characterization/test_tool_permissions.py	2026-08-07 21:30:20.285003079 +0200
++++ mistral-vibe-2.24.0/tests/e2e/agent_loop_characterization/test_tool_permissions.py	2026-08-07 21:30:55.141422236 +0200
+@@ -6,6 +6,8 @@
+ import pexpect
+ import pytest
  
- 
-+@pytest.mark.terminal
- @pytest.mark.timeout(35)
- @pytest.mark.parametrize(
-     "streaming_mock_server",
-@@ -151,6 +152,7 @@
-     )
- 
- 
-+@pytest.mark.terminal
- @pytest.mark.timeout(40)
- @pytest.mark.parametrize(
-     "streaming_mock_server",
-Index: mistral-vibe-2.19.1/tests/e2e/agent_loop_characterization/test_user_interaction.py
++pytestmark = pytest.mark.terminal
++
+ from tests.e2e.agent_loop_characterization.support import (
+     answer_approval,
+     assert_tool_result_contains,
+Index: mistral-vibe-2.24.0/tests/e2e/agent_loop_characterization/test_user_interaction.py
 ===================================================================
---- mistral-vibe-2.19.1.orig/tests/e2e/agent_loop_characterization/test_user_interaction.py	2026-07-10 10:51:54.837457093 +0200
-+++ mistral-vibe-2.19.1/tests/e2e/agent_loop_characterization/test_user_interaction.py	2026-07-10 11:08:52.230180628 +0200
-@@ -60,6 +60,7 @@
-     return assistant_text_chunks("The selected mode was Fast.", created=80)
+--- mistral-vibe-2.24.0.orig/tests/e2e/agent_loop_characterization/test_user_interaction.py	2026-08-07 21:30:20.285003079 +0200
++++ mistral-vibe-2.24.0/tests/e2e/agent_loop_characterization/test_user_interaction.py	2026-08-07 21:30:55.141567851 +0200
+@@ -7,6 +7,8 @@
+ import pexpect
+ import pytest
  
- 
-+@pytest.mark.terminal
- @pytest.mark.timeout(25)
- @pytest.mark.parametrize(
-     "streaming_mock_server",
-Index: mistral-vibe-2.19.1/tests/onboarding/test_ui_onboarding.py
++pytestmark = pytest.mark.terminal
++
+ from tests.e2e.agent_loop_characterization.support import (
+     APPROVAL_INPUT_GRACE_PERIOD_S,
+     assert_tool_result_contains,
+Index: mistral-vibe-2.24.0/tests/onboarding/test_ui_onboarding.py
 ===================================================================
---- mistral-vibe-2.19.1.orig/tests/onboarding/test_ui_onboarding.py	2026-07-10 10:51:54.837457093 +0200
-+++ mistral-vibe-2.19.1/tests/onboarding/test_ui_onboarding.py	2026-07-10 11:08:52.230477577 +0200
-@@ -7,6 +7,7 @@
- import tomllib
- from typing import cast
- 
-+from unittest.mock import patch
+--- mistral-vibe-2.24.0.orig/tests/onboarding/test_ui_onboarding.py	2026-08-07 21:30:20.285003079 +0200
++++ mistral-vibe-2.24.0/tests/onboarding/test_ui_onboarding.py	2026-08-07 21:30:55.141802042 +0200
+@@ -10,6 +10,8 @@
  import keyring
  from keyring.errors import KeyringError
  import pytest
-@@ -308,9 +309,9 @@
-         await _pass_welcome_screen(pilot)
-         await _pass_theme_selection_screen(pilot)
-         await _wait_for(lambda: isinstance(pilot.app.screen, ApiKeyScreen), pilot)
-+        # Directly set the input widget's value to avoid typing 30 individual keys
-         input_widget = app.screen.query_one("#key", Input)
--        await pilot.press(*api_key_value)
--        assert input_widget.value == api_key_value
-+        input_widget.value = api_key_value
-         await pilot.press("enter")
-         await _wait_for(lambda: app.return_value is not None, pilot, timeout=2.0)
- 
-@@ -363,8 +364,9 @@
-         await _show_auth_method(pilot)
-         await pilot.press("down", "enter")
-         await _wait_for(lambda: isinstance(pilot.app.screen, ApiKeyScreen), pilot)
-+        # Directly set the input widget's value to avoid typing 30 individual keys
-         input_widget = app.screen.query_one("#key", Input)
--        await pilot.press(*api_key_value)
-+        input_widget.value = api_key_value
-         await pilot.press("enter")
-         await _wait_for(lambda: app.return_value is not None, pilot, timeout=2.0)
-         assert input_widget.value == api_key_value
-@@ -477,7 +479,7 @@
-     )
-     app = _build_browser_onboarding_app(
-         browser_sign_in_service_factory=browser_sign_in_service_factory,
--        browser_sign_in_url_help_delay=0.3,
-+        browser_sign_in_url_help_delay=10.0,
-     )
- 
-     async with app.run_test() as pilot:
-@@ -493,6 +495,10 @@
-         )
-         assert _browser_sign_in_url_text(app.screen) == ""
- 
-+        # Manually trigger the helper timer to display the sign-in URL help
-+        screen = app.screen
-+        screen._show_sign_in_url_help(screen._attempt_number, screen.state.sign_in_url)
 +
-         await _wait_for(
-             lambda: "copy this URL" in _browser_sign_in_url_text(app.screen), pilot
-         )
-@@ -745,31 +751,43 @@
-     )
-     app = _build_browser_onboarding_app(
-         browser_sign_in_service_factory=browser_sign_in_service_factory,
--        browser_sign_in_success_delay=0.5,
-+        browser_sign_in_success_delay=10.0,
-     )
- 
--    async with app.run_test() as pilot:
--        await _show_browser_sign_in(pilot)
--        await _wait_for(
--            lambda: (
--                "Sign-in complete"
--                in _browser_sign_in_step_text(
--                    _active_browser_sign_in_step_card(app.screen)
--                )
--            ),
--            pilot,
--        )
--        assert isinstance(app.screen, BrowserSignInScreen)
--        assert app.screen.state.variant == "success"
--        hint = str(app.screen.query_one("#browser-sign-in-hint").render())
--        assert "Finishing setup..." in hint
--        assert "Press m to enter API key manually - Esc to cancel" not in hint
--        assert app.return_value is None
--        assert "sk-browser-onboarding-test-key" in _saved_env_contents()
--        await pilot.press("m", "escape")
--        assert isinstance(app.screen, BrowserSignInScreen)
--        assert app.return_value is None
--        await _wait_for(lambda: app.return_value is not None, pilot, timeout=2.0)
-+    sleep_event = asyncio.Event()
-+    real_sleep = asyncio.sleep
-+
-+    async def mock_sleep(delay, *args, **kwargs):
-+        if delay == 10.0:
-+            await sleep_event.wait()
-+        else:
-+            await real_sleep(delay, *args, **kwargs)
-+
-+    with patch("vibe.setup.onboarding.screens.browser_sign_in.asyncio.sleep", new=mock_sleep):
-+        async with app.run_test() as pilot:
-+            await _show_browser_sign_in(pilot)
-+            await _wait_for(
-+                lambda: (
-+                    "Sign-in complete"
-+                    in _browser_sign_in_step_text(
-+                        _active_browser_sign_in_step_card(app.screen)
-+                    )
-+                ),
-+                pilot,
-+            )
-+            assert isinstance(app.screen, BrowserSignInScreen)
-+            assert app.screen.state.variant == "success"
-+            hint = str(app.screen.query_one("#browser-sign-in-hint").render())
-+            assert "Finishing setup..." in hint
-+            assert "Press m to enter API key manually - Esc to cancel" not in hint
-+            assert app.return_value is None
-+            assert "sk-browser-onboarding-test-key" in _saved_env_contents()
-+            await pilot.press("m", "escape")
-+            assert isinstance(app.screen, BrowserSignInScreen)
-+            assert app.return_value is None
-+
-+            sleep_event.set()
-+            await _wait_for(lambda: app.return_value is not None, pilot, timeout=2.0)
- 
-     assert app.return_value == "completed"
-     assert "sk-browser-onboarding-test-key" in _saved_env_contents()
-@@ -1055,7 +1073,9 @@
-         assert "Finished setup" in _browser_sign_in_step_text(step_cards[2])
-         await pilot.press("m")
-         await _wait_for(lambda: isinstance(pilot.app.screen, ApiKeyScreen), pilot)
--        await pilot.press(*api_key_value)
-+        # Directly set the input widget's value to avoid typing 30 individual keys
-+        input_widget = app.screen.query_one("#key", Input)
-+        input_widget.value = api_key_value
-         await pilot.press("enter")
-         await _wait_for(lambda: app.return_value is not None, pilot, timeout=2.0)
- 
-Index: mistral-vibe-2.19.1/tests/tools/test_ui_bash_execution.py
-===================================================================
---- mistral-vibe-2.19.1.orig/tests/tools/test_ui_bash_execution.py	2026-07-10 10:51:54.837457093 +0200
-+++ mistral-vibe-2.19.1/tests/tools/test_ui_bash_execution.py	2026-07-10 11:08:52.231113816 +0200
-@@ -13,6 +13,8 @@
- from vibe.cli.textual_ui.widgets.messages import BashOutputMessage, ErrorMessage
- from vibe.core.types import Role
- 
-+# Failing in OBS
 +pytestmark = pytest.mark.terminal
- 
- async def _wait_for_bash_output_message(
-     vibe_app: VibeApp, pilot, timeout: float = 1.0
-Index: mistral-vibe-2.19.1/tests/vscode_extension_promo/test_ui_vscode_extension_promo.py
+ from textual.content import Content
+ from textual.events import Resize
+ from textual.geometry import Size
+Index: mistral-vibe-2.24.0/tests/tools/test_ui_bash_execution.py
 ===================================================================
---- mistral-vibe-2.19.1.orig/tests/vscode_extension_promo/test_ui_vscode_extension_promo.py	2026-07-10 10:51:54.837457093 +0200
-+++ mistral-vibe-2.19.1/tests/vscode_extension_promo/test_ui_vscode_extension_promo.py	2026-07-10 11:08:52.231828432 +0200
-@@ -51,7 +51,7 @@
-     )
+--- mistral-vibe-2.24.0.orig/tests/tools/test_ui_bash_execution.py	2026-08-07 21:30:20.285003079 +0200
++++ mistral-vibe-2.24.0/tests/tools/test_ui_bash_execution.py	2026-08-07 21:30:55.142038257 +0200
+@@ -5,6 +5,8 @@
+ from pydantic import JsonValue
+ import pytest
  
++pytestmark = pytest.mark.terminal
++
+ from tests.conftest import build_test_agent_loop, build_test_vibe_app
+ from tests.mock.utils import mock_llm_chunk
+ from tests.stubs.fake_backend import FakeBackend
+Index: mistral-vibe-2.24.0/tests/vscode_extension_promo/test_ui_vscode_extension_promo.py
+===================================================================
+--- mistral-vibe-2.24.0.orig/tests/vscode_extension_promo/test_ui_vscode_extension_promo.py	2026-08-07 21:30:20.285003079 +0200
++++ mistral-vibe-2.24.0/tests/vscode_extension_promo/test_ui_vscode_extension_promo.py	2026-08-07 21:30:55.143455267 +0200
+@@ -8,6 +8,8 @@
  
--async def _wait_for(predicate: Callable[[], bool], pilot, timeout: float = 1.0) -> None:
-+async def _wait_for(predicate: Callable[[], bool], pilot, timeout: float = 10.0) -> None:
-     loop = asyncio.get_running_loop()
-     deadline = loop.time() + timeout
-     while loop.time() < deadline:
+ import pytest
+ 
++pytestmark = pytest.mark.terminal
++
+ from tests.conftest import build_test_vibe_app, build_test_vibe_config
+ from tests.update_notifier.adapters.fake_update_cache_repository import (
+     FakeUpdateCacheRepository,

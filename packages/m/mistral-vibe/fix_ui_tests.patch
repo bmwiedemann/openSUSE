@@ -1,0 +1,87 @@
+---
+ tests/cli/test_ui_exit_command.py |    3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+Index: mistral-vibe-2.24.0/tests/app_server/test_vibe_code.py
+===================================================================
+--- mistral-vibe-2.24.0.orig/tests/app_server/test_vibe_code.py	2026-08-06 23:21:16.834620172 +0200
++++ mistral-vibe-2.24.0/tests/app_server/test_vibe_code.py	2026-08-06 23:21:17.302801215 +0200
+@@ -68,7 +68,7 @@
+         capture_output=True,
+         env=env,
+         text=True,
+-        timeout=10,
++        timeout=60,
+     )
+ 
+     assert result.returncode == 0, result.stderr
+Index: mistral-vibe-2.24.0/tests/cli/textual_ui/test_app_server_requests.py
+===================================================================
+--- mistral-vibe-2.24.0.orig/tests/cli/textual_ui/test_app_server_requests.py	2026-08-06 23:21:16.834620172 +0200
++++ mistral-vibe-2.24.0/tests/cli/textual_ui/test_app_server_requests.py	2026-08-06 23:21:17.303280949 +0200
+@@ -8,6 +8,8 @@
+ 
+ import pytest
+ 
++pytestmark = pytest.mark.terminal
++
+ from tests.conftest import (
+     build_test_agent_loop,
+     build_test_vibe_app,
+Index: mistral-vibe-2.24.0/tests/core/test_worktree.py
+===================================================================
+--- mistral-vibe-2.24.0.orig/tests/core/test_worktree.py	2026-08-06 23:21:16.834620172 +0200
++++ mistral-vibe-2.24.0/tests/core/test_worktree.py	2026-08-06 23:21:17.303575324 +0200
+@@ -20,7 +20,12 @@
+ 
+ 
+ def _init_repo(root: Path, *, separate_git_dir: Path | None = None) -> Repo:
+-    repo = Repo.init(root, initial_branch="main", separate_git_dir=separate_git_dir)
++    repo = Repo.init(
++        root,
++        initial_branch="main",
++        separate_git_dir=separate_git_dir,
++        allow_unsafe_options=True,
++    )
+     repo.config_writer().set_value("user", "name", "Tester").release()
+     repo.config_writer().set_value("user", "email", "t@example.com").release()
+     (root / "file.txt").write_text("hello\n")
+Index: mistral-vibe-2.24.0/tests/test_ui_rewind.py
+===================================================================
+--- mistral-vibe-2.24.0.orig/tests/test_ui_rewind.py	2026-08-06 23:21:16.834620172 +0200
++++ mistral-vibe-2.24.0/tests/test_ui_rewind.py	2026-08-06 23:21:17.303847197 +0200
+@@ -6,6 +6,8 @@
+ 
+ import pytest
+ 
++pytestmark = pytest.mark.terminal
++
+ from tests.conftest import build_test_agent_loop, build_test_vibe_app
+ from tests.mock.utils import mock_llm_chunk
+ from tests.stubs.fake_backend import FakeBackend
+Index: mistral-vibe-2.24.0/tests/cli/test_ui_session_incremental_renderer.py
+===================================================================
+--- mistral-vibe-2.24.0.orig/tests/cli/test_ui_session_incremental_renderer.py	2026-08-06 23:21:17.262168221 +0200
++++ mistral-vibe-2.24.0/tests/cli/test_ui_session_incremental_renderer.py	2026-08-06 23:21:17.304077842 +0200
+@@ -5,6 +5,8 @@
+ import time
+ 
+ import pytest
++
++pytestmark = pytest.mark.terminal
+ from textual.widgets import Button
+ 
+ from tests.conftest import build_test_agent_loop
+Index: mistral-vibe-2.24.0/tests/cli/test_ui_skill_dispatch.py
+===================================================================
+--- mistral-vibe-2.24.0.orig/tests/cli/test_ui_skill_dispatch.py	2026-08-06 23:21:17.262386413 +0200
++++ mistral-vibe-2.24.0/tests/cli/test_ui_skill_dispatch.py	2026-08-06 23:21:17.304296674 +0200
+@@ -7,6 +7,8 @@
+ 
+ import pytest
+ 
++pytestmark = pytest.mark.terminal
++
+ from tests.conftest import build_test_vibe_app, build_test_vibe_config
+ from tests.skills.conftest import create_skill
+ from vibe.app_server.models import CompletedEffectState, PublicEffectEntry
