@@ -1818,7 +1818,11 @@ amdgcn-amdhsa,\
 %endif
 %if "%{TARGET_ARCH}" == "x86_64"
 %ifnarch %{disable_multilib_arch}
+%if 0%{?gcc_target_arch:1} && 0%{!?gcc_libc_bootstrap:1}
+	--disable-multilib \
+%else
 	--enable-multilib \
+%endif
 %if %{suse_version} >= 1600 && !0%{?is_opensuse}
 	--with-arch-32=x86-64-v2 \
 %else

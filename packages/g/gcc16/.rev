@@ -127,4 +127,15 @@ builds significantly due to switching to release checking.
     <comment>- Update to gcc-16.1.1+git9481, GCC 16.2 RC1</comment>
     <requestid>1368864</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a93c4ebb22d63006aa0db023217226fb</srcmd5>
+    <version>16.2.0+git9497</version>
+    <time>1786303820</time>
+    <user>anag_factory</user>
+    <comment>- Update to GCC 16.2 release (gcc-16.2.0+git9497)
+  * accumulated bugfixes from the gcc-16 release branch
+
+- Disable multilibs for cross-x86_64-gcc</comment>
+    <requestid>1370229</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Aug  7 08:05:41 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- Update to GCC 16.2 release (gcc-16.2.0+git9497)
+  * accumulated bugfixes from the gcc-16 release branch
+
+-------------------------------------------------------------------
+Mon Aug  3 07:33:17 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- Disable multilibs for cross-x86_64-gcc 
+
+-------------------------------------------------------------------
 Fri Jul 31 15:11:05 UTC 2026 - Richard Biener <rguenther@suse.com>
 
 - Update to gcc-16.1.1+git9481, GCC 16.2 RC1 
