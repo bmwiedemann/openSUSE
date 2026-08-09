@@ -35,18 +35,18 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      21
 %global interimver      0
-%global updatever       11
-%global buildver        10
+%global updatever       12
+%global buildver        8
 %global root_repository https://github.com/ibmruntimes/openj9-openjdk-jdk21/archive
-%global root_revision   4c4f297fe6ef13c9460981c7f4daa5c85051bd89
-%global root_branch     v0.59.0-release
-%global omr_repository  https://github.com/eclipse/openj9-omr/archive
-%global omr_revision    6426f03fa087b257a7e58f363ef61526c896fea3
-%global omr_branch      v0.59.0-release
-%global openj9_repository https://github.com/eclipse/openj9/archive
-%global openj9_revision c53b6b93f422b77b3395a3464d5578b706e9a618
-%global openj9_branch   v0.59.0-release
-%global openj9_tag      openj9-0.59.0
+%global root_revision   4a6e2c21da33e5986902123ba99a431264821aef
+%global root_branch     v0.60.0-release
+%global omr_repository  https://github.com/eclipse-openj9/openj9-omr/archive
+%global omr_revision    2e3166f7afc61f577ccaa63b85444b63b82491f7
+%global omr_branch      v0.60.0-release
+%global openj9_repository https://github.com/eclipse-openj9/openj9/archive
+%global openj9_revision 396c827fb365c53b26586f55ec09d4727b37d9be
+%global openj9_branch   v0.60.0-release
+%global openj9_tag      openj9-0.60.0
 %if 0%{?suse_version} > 1500
 %bcond_without libalternatives
 %else
@@ -125,6 +125,9 @@ Patch3:         openssl-OSSL_LIB_CTX.patch
 Patch4:         openj9-openssl.patch
 # Fix: implicit-pointer-decl
 Patch5:         implicit-pointer-decl.patch
+# Fixes for build with gcc 16
+Patch6:         omr-gcc16.patch
+Patch7:         openj9-gcc16.patch
 #
 Patch10:        system-pcsclite.patch
 #
@@ -133,6 +136,12 @@ Patch20:        loadAssistiveTechnologies.patch
 Patch30:        aarch64.patch
 #
 Patch31:        reproducible-version.patch
+#
+Patch32:        reproducible-nls.patch
+#
+Patch33:        reproducible-tracemerge-order.patch
+#
+Patch34:        java-40y.patch
 #
 # OpenJDK specific patches
 #
@@ -375,6 +384,8 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %patch -P 3 -p1
 %patch -P 4 -p1
 %patch -P 5 -p1
+%patch -P 6 -p1
+%patch -P 7 -p1
 
 %if %{with_system_pcsc}
 %patch -P 10 -p1
@@ -384,6 +395,9 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 
 %patch -P 30 -p1
 %patch -P 31 -p1
+%patch -P 32 -p1
+%patch -P 33 -p1
+%patch -P 34 -p1
 
 %patch -P 300 -p1
 
@@ -425,17 +439,24 @@ bash configure \
     CC=gcc-%{with_gcc} \
     NM=gcc-nm-%{with_gcc} \
 %endif
+%if %{with_system_pcsc}
+    --with-pcsclite=system \
+%endif
+%if %{with_system_harfbuzz}
+    --with-harfbuzz=system \
+%endif
     --with-extra-cflags="$EXTRA_CFLAGS" \
     --with-extra-cxxflags="$EXTRA_CPP_FLAGS" \
     --with-version-pre="" \
     --with-version-opt="suse-0%{?suse_version}-%{_arch}" \
+    --with-debug-level=%{debugbuild} \
+    --with-conf-name=%{debugbuild} \
+    --with-source-date="${SOURCE_DATE_EPOCH:-$(date +%%s)}" \
     --disable-warnings-as-errors \
     --disable-warnings-as-errors-omr \
     --disable-warnings-as-errors-openj9 \
     --disable-keep-packaged-modules \
     --enable-jfr \
-    --with-debug-level=%{debugbuild} \
-    --with-conf-name=%{debugbuild} \
     --with-libjpeg=system \
     --with-giflib=system \
     --with-libpng=system \
@@ -443,15 +464,7 @@ bash configure \
     --with-lcms=system \
     --with-freetype=system \
 	--with-openssl=system \
-%if %{with_system_pcsc}
-    --with-pcsclite=system \
-%endif
-%if %{with_system_harfbuzz}
-    --with-harfbuzz=system \
-%endif
     --with-stdc++lib=dynamic \
-    --with-extra-cxxflags="$EXTRA_CPP_FLAGS" \
-    --with-extra-cflags="$EXTRA_CFLAGS" \
     --disable-javac-server \
     --enable-demos
 
