@@ -7,4 +7,14 @@
     <comment></comment>
     <requestid>1354676</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3e526c3c32501231487a026608efcd04</srcmd5>
+    <version>0.4.1+git20260806.19775bc</version>
+    <time>1786304037</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.4.1+git20260806.19775bc:
+  * Release version 0.4.1
+  * Add and document userwall-bcst-gateway.service</comment>
+    <requestid>1370054</requestid>
+  </revision>
 </revisionlist>

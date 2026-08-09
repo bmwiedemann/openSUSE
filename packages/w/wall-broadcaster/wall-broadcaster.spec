@@ -17,7 +17,7 @@
 
 
 Name:           wall-broadcaster
-Version:        0.4.0+git20260513.fc6c03a
+Version:        0.4.1+git20260806.19775bc
 Release:        0
 Summary:        Service to broadcast wall messages via dbus
 License:        GPL-2.0-or-later
@@ -80,6 +80,7 @@ messages from wall-broadcaster and displays them.
 %{_mandir}/man1/wall-bcst-watcher.1%{?ext_man}
 %{_mandir}/man8/wall-broadcaster.8%{?ext_man}
 %{_prefix}/lib/systemd/system/wall-broadcaster.service
+%{_prefix}/lib/systemd/user/wall-bcst-gateway.service
 
 %files gtk4
 %license LICENSE
