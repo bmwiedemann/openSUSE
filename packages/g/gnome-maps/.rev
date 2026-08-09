@@ -977,4 +977,16 @@
   + Updated translations.</comment>
     <requestid>1361966</requestid>
   </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>c0a7ab20c9a1ed1026138700cb7c1939</srcmd5>
+    <version>50.3</version>
+    <time>1786303903</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 50.3:
+  + Allow public transit routing to places further from a routable
+    walking path (increased distance from 25 to 250 meters, to
+    match behavior in MOTIS web app)
+  + Updated translations.</comment>
+    <requestid>1369840</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Aug  1 11:59:12 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.3:
+  + Allow public transit routing to places further from a routable
+    walking path (increased distance from 25 to 250 meters, to
+    match behavior in MOTIS web app)
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Jun 26 21:41:48 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 50.2:
