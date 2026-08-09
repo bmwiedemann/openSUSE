@@ -1687,4 +1687,19 @@ New stable rel</comment>
   assigned during %post.</comment>
     <requestid>1367736</requestid>
   </revision>
+  <revision rev="211" vrev="1">
+    <srcmd5>e02e72be787adca19a0cce316bc7479b</srcmd5>
+    <version>1.60.2</version>
+    <time>1786303901</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.60.2:
+  + build: Drop G_GNUC_PURE from *_get_type() functions
+  + afp/dav/ftp/mtp/sftp: Harden input validation
+  + common: Clear password strings from memory before freeing
+  + mtp/onedrive/smb: Fix crashes in onedrive, mtp, and smb
+    backends
+  + Some other fixes
+  + Updated translations.</comment>
+    <requestid>1369837</requestid>
+  </revision>
 </revisionlist>

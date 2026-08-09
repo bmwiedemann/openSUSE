@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jul 31 13:41:12 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.60.2:
+  + build: Drop G_GNUC_PURE from *_get_type() functions
+  + afp/dav/ftp/mtp/sftp: Harden input validation
+  + common: Clear password strings from memory before freeing
+  + mtp/onedrive/smb: Fix crashes in onedrive, mtp, and smb
+    backends
+  + Some other fixes
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Jul 23 08:46:22 UTC 2026 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - don't package capabilities in RPM but rely on permissions profiles instead
