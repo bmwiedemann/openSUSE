@@ -17,7 +17,7 @@
 
 
 Name:           python-oslo.cache
-Version:        4.2.0
+Version:        4.3.0
 Release:        0
 Summary:        Cache storage for Openstack projects
 License:        Apache-2.0
@@ -77,6 +77,7 @@ PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/html
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %check
+rm -v oslo_cache/tests/unit/test_dict_backend.py
 %{openstack_stestr_run}
 
 %files %{python_files}

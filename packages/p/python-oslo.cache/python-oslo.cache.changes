@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Aug  5 14:14:20 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.3.0:
+  * Deprecate version module
+  * Fix docs build
+  * zuul: Use openstack-python3-next-jobs template
+  * pre-commit: Bump versions
+  * Use base functional job template
+  * Do not install code to build release notes
+  * Refactor opts module
+  * Fix broken set_defaults
+
+-------------------------------------------------------------------
 Tue Jun  2 14:46:02 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.2.0:

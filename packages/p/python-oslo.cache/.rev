@@ -386,4 +386,20 @@
   * Stop passing down tls_enabled argument</comment>
     <requestid>1359324</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>5806f2e127ddff2d4da4146024f20ca4</srcmd5>
+    <version>4.3.0</version>
+    <time>1786304099</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.3.0:
+  * Deprecate version module
+  * Fix docs build
+  * zuul: Use openstack-python3-next-jobs template
+  * pre-commit: Bump versions
+  * Use base functional job template
+  * Do not install code to build release notes
+  * Refactor opts module
+  * Fix broken set_defaults</comment>
+    <requestid>1369794</requestid>
+  </revision>
 </revisionlist>
