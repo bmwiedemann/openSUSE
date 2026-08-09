@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Aug 07 05:20:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.5.5:
+  * Features
+    - add validation to the TextBox UI control
+    - show downloaded / uploaded bytes for file transfers
+    - allow opening the transfer file dialog in shell and attach
+      views
+  * Bug fixes
+    - fix modal dialog for ephemeral container injection
+    - fix input validator behaviour
+    - do not propagate key events to shell or attach views that are
+      consumed to enable shell escape mode
+  * Compatibility
+    - theme YAML files must be recreated or updated to match the
+      current schema
+
+-------------------------------------------------------------------
 Fri Jul 31 06:01:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.5.4:
