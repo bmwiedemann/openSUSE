@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Sat Aug  8 14:49:44 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.6.0
+  RTL-TCP Client Rework
+  * The RTL-TCP client was refactored in depth. Connection handling
+    is now stable and self-reporting.
+    + The device window got a new layout. It shows a clear
+      connection state.
+    + One Connect / Disconnect toggle button replaces the two
+      former buttons.
+    + The address field accepts host or host:port. Without a port,
+      1234 is used.
+    + Pressing Return after entering the address is no longer
+      necessary.
+    + A lost connection is detected and reported. Formerly the
+      reader stayed silently "connected".
+    + Socket errors are logged. The tuner type display is reset on
+      disconnect.
+    + Input ring buffer overflows are detected and logged. Dropped
+      sample counts are reported.
+    + An odd byte count from the server is flagged, as it would
+      silently destroy the I/Q alignment.
+    + The channel restarts itself as soon as the server connection
+      is established. The connection may come up long after the
+      device was created.
+   Reception Robustness
+   * The tuner settle time after a (re-)tune no longer blocks the
+     GUI thread. Samples are discarded sample-wise in the processor
+     thread instead. Devices that read in the GUI thread (rtl_tcp)
+     delivered nothing during the former sleep.
+   * The FIB decoder now validates the sub-channel organization
+     (FIG 0/1). A sub-channel may not exceed the 864 CUs of a CIF
+     and may not overlap another one.
+   * If an impossible content is found, the whole collected FIB
+     data is discarded and the collection restarts. This removes
+     corrupted ensemble data caused by stale samples at channel
+     start.
+   * FIB decoder timers are no longer touched across thread
+     boundaries.
+   TII Database
+   * The TII handler now supports multiple channels per ensemble.
+     One ensemble (EId) can be transmitted on several channels,
+     e.g. regional windows of a nationwide multiplex.
+   * The lookup first tries the current channel. It falls back to
+     the first matching EId/TII entry otherwise.
+   * Channel mismatch warnings are reported only once per key. The
+     log is no longer flooded.
+   * Ignored tunnel entries are counted in the load statistics.
+   Removed Devices
+   * The following unmaintained device handlers were removed:
+     + Elad S1
+     + Colibri
+     + ExtIO
+
+-------------------------------------------------------------------
 Mon Jul 27 07:03:49 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 5.5.0
