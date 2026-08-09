@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Aug  9 08:43:26 UTC 2026 - Илья Индиго <ilya@ilya.top>
+
+- Migrated to cmake/ninja build.
+- Updated to 0.9.8
+  * https://github.com/3proxy/3proxy/releases/tag/0.9.8
+  * Multiple fixes.
+
+-------------------------------------------------------------------
 Sat Jul  4 21:35:25 UTC 2026 - Илья Индиго <ilya@ilya.top>
 
 - Moved configuration from /var/lib/3proxy to /etc/3proxy.

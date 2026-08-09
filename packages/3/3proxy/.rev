@@ -83,4 +83,15 @@
   * Fixed multiple minor bugfixes and code cleanup.</comment>
     <requestid>1363795</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5f53a2a9aa3fe5094bb393c2d5280c7a</srcmd5>
+    <version>0.9.8</version>
+    <time>1786304699</time>
+    <user>anag_factory</user>
+    <comment>- Migrated to cmake/ninja build.
+- Updated to 0.9.8
+  * https://github.com/3proxy/3proxy/releases/tag/0.9.8
+  * Multiple fixes.</comment>
+    <requestid>1370393</requestid>
+  </revision>
 </revisionlist>
