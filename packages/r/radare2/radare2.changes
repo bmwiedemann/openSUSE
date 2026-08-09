@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Fri Aug  7 20:44:11 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 6.2.0:
+  * ABI: reduce struct padding and unify type member models
+  * Analysis: improve conventions, types, propagation, and ESIL
+  * Analysis: add stack argument APIs, reguse hints, PIC seeding
+  * API: add formatted SDB getters and setters
+  * Arch: add stateful sessions and improve PPC, MIPS, ARM, and x86
+  * Bin: add generic resource extraction and demangler plugins
+  * Bin: harden PE, ELF, DEX, Java, Mach-O, NE, and QNX parsing
+  * Build/CI: add MiKNix, Android, JSLinux, and ReactOS support
+  * Console/Core: isolate tasks; improve grep, themes, and pdc
+  * Crash: fix OOB, UAF, overflow, injection, and OOM bugs
+  * Debug: improve cross-platform debugging, ptrace, regs, and dcut
+  * Disasm/ESIL: improve backward walks, call comments, and flags
+  * Graph/HTTP/IO: fix graph targets, auth, WebUI, and io.gprobe
+  * Magic/Port: improve matching and add browser NetBSD support
+  * Projects/Pseudo: improve persistence and structured pdc
+  * Search/Shell: overhaul contexts, parsing, substitution, APIs
+  * Sync/Tests: add Windows timeouts and eliminate test races
+  * Tools: improve Android toolchains, r2 flags, rax2, and rasm2
+  * Types: expand signatures, pointers, structs, unions, and sizes
+  * Util: improve base64, math, locks, paths, tries, and strbufs
+  * Visual/Windows: fix scrolling, prompts, debugger, ANSI support
+  * Security: harden GDB, HTTP auth, shell, and loaders
+
+-------------------------------------------------------------------
+Fri Jun 26 13:36:50 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 6.1.8:
+  * ABI: deprecate sdb_remove in favor of sdb_unset
+  * Analysis: improve trampolines, variables, DWARF, SDB, and tests
+  * Arch: harden PPC64 TOC tracking and improve endian handling
+  * Arch: update Capstone, CPU validation, and disassembly support
+  * ASM: apply the pseudo filter once and pad rasm2 output
+  * Bin: harden loaders; improve dyldcache, strings, relocations
+  * Bin: add FTAB extraction and C++, Rust, D, XL, ARM demanglers
+  * Build: add Nix support; improve SDB, Zydis, Meson, Capstone
+  * Console: fix task races, UAFs, marks, grep, and reset
+  * Core: fix numvar reference math state handling
+  * Crash: fix parser overflows, OOB reads, UAFs, null derefs
+  * Debug: fix profile leaks and GDB cache ownership checks
+  * Disasm: improve address bases, overlaps, comments, and pseudo
+  * ESIL: improve PPC, local state, stepping, traps, and step-back
+  * FS/IO: fix HFS+, NTFS, io.self leaks, and Windows block devices
+  * Print/Pseudo: improve JWT, JSON, markdown, pdc, and bounds
+  * Search/Shell: improve ESIL, gadgets, aliases, and parsing
+  * Socket: fix PTY dynapi initialization during redirection
+  * Tests/Tools: improve requirements, parsing, and rafs2 packaging
+  * Types/Util: improve lookups, unions, strings, and markdown
+  * Windows: port r2preload support
+- CVE-2026-8696: radare2: version 6.1.5 contains a use-after-free
+  vulnerability in the gdbr_pids_list() function within the GDB
+  client core that allows remote attackers to cause a denial of
+  service or potentially execute arbitrary code
+- Drop CVE-2026-8695.patch: upstreamed in 6.1.6
+
+-------------------------------------------------------------------
 Tue Jun 16 15:20:52 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - switch to python311 for sle15 build

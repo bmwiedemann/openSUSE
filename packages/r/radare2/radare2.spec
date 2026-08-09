@@ -16,15 +16,17 @@
 #
 
 
-%global sdb_rev    2.4.2
-%global sdb_soname 2_4_2
+%global sdb_rev    2.5.0
+%global sdb_soname 2_5_0
 
-%global qjs_rev 3087a2ce5bcb66cc1fcd9f34d3e5ce3bd43a67d9
+%global zydis_rev  4.1.0
+
+%global qjs_rev 9d15fb60b67c45fd0de413bb49e48f8dacebac16
 
 %global tests_rev d6a4529fd6c8439a309abbcf00bb7a9efc9e8271
 
 Name:           radare2
-Version:        6.1.4
+Version:        6.2.0
 Release:        0
 Summary:        Reverse Engineering Framework
 License:        GPL-3.0-only AND LGPL-3.0-only
@@ -34,8 +36,8 @@ Source0:        https://github.com/radareorg/radare2/archive/%{version}/%{name}-
 Source1:        https://github.com/radareorg/sdb/archive/%{sdb_rev}/sdb-%{sdb_rev}.tar.gz
 Source2:        https://github.com/quickjs-ng/quickjs/archive/%{qjs_rev}/quickjs-%{qjs_rev}.tar.gz
 Source3:        https://github.com/radareorg/radare2-testbins/archive/%{tests_rev}/radare2-testbins-%{tests_rev}.tar.gz
+Source4:        https://github.com/zyantific/zydis/releases/download/v%{zydis_rev}/zydis-amalgamated.tar.gz#/zydis-%{zydis_rev}.tar.gz
 Patch0:         pkgconfig.patch
-Patch1:         https://github.com/radareorg/radare2/commit/c213ad6894a1eb9086ac8bf5fae35757e9e1683c.patch#/CVE-2026-8695.patch
 BuildRequires:  chrpath
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
@@ -106,6 +108,9 @@ tar   -C subprojects/sdb --strip-components=1 -x -f %{SOURCE1}
 # Extract quickjs
 mkdir -p subprojects/qjs
 tar   -C subprojects/qjs --strip-components=1 -x -f %{SOURCE2}
+
+mkdir -p subprojects/zydis
+tar   -C subprojects/zydis -x -f %{SOURCE4}
 
 mkdir -p test/bins
 tar   -C test/bins --strip-components=1 -x -f %{SOURCE3}

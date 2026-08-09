@@ -163,4 +163,15 @@
 - Add CVE-2026-8695.patch (bsc#1265403)</comment>
     <requestid>1359803</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>be43b026b9134ee749a89f2407be3783</srcmd5>
+    <version>6.2.0</version>
+    <time>1786304664</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 6.2.0:
+- Update to version 6.1.8:
+- CVE-2026-8696: radare2: version 6.1.5 contains a use-after-free
+- Drop CVE-2026-8695.patch: upstreamed in 6.1.6</comment>
+    <requestid>1370348</requestid>
+  </revision>
 </revisionlist>
