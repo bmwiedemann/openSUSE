@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug  6 21:04:53 UTC 2026 - Michael Hamilton <michael@actrix.gen.nz>
+
+- Version 2.6.9
+  * Fix Qt session restoration state (X11 only feature) - really fix this time.
+
+-------------------------------------------------------------------
 Wed Aug  5 01:35:17 UTC 2026 - Michael Hamilton <michael@actrix.gen.nz>
 
 - Version 2.6.8
