@@ -74,8 +74,9 @@ fi
 # jeos-firstboot, use systemd-firstboot as minimal alternative.
 if [[ "$kiwi_profiles" =~ s390x-(dasd|fba|fcp) ]]; then
 	systemctl enable systemd-firstboot
-	# Enable prompting for the root password
-	echo 'root:!unprovisioned' | chpasswd -e
+	# Enable prompting for the root password.
+	# Can't use chpasswd -e here, it tries to validate the hash
+	gawk -i inplace -F: -vOFS=: '$1 == "root" { $2 = "!unprovisioned"; } 1' /etc/shadow
 elif rpm -q --whatprovides jeos-firstboot >/dev/null; then
         mkdir -p /var/lib/YaST2
         touch /var/lib/YaST2/reconfig_system

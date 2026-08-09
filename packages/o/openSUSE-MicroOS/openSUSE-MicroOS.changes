@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug  7 13:04:28 UTC 2026 - Fabian Vogt <fvogt@suse.com>
+
+- config.sh: Use gawk instead of chpasswd -e for setting root to
+  "!unprovisioned". chpasswd from shadow >= 4.20 rejects it.
+
+-------------------------------------------------------------------
 Mon Jul 20 12:08:13 UTC 2026 - Fabian Vogt <fvogt@suse.com>
 
 - disk.sh: Simplify snapper configuration and add assertion for the
