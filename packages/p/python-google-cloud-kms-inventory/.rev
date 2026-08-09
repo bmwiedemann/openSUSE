@@ -59,4 +59,14 @@
   * Improve type checking</comment>
     <requestid>1343875</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1ddb79ea1d76704e88f616b179d3514c</srcmd5>
+    <version>0.6.1</version>
+    <time>1786304027</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.6.1
+  * regenerate google-cloud-[k-n] packages (#17074)
+- Update BuildRequires and Requires from setup.py (forwarded request 1369999 from glaubitz)</comment>
+    <requestid>1370047</requestid>
+  </revision>
 </revisionlist>
