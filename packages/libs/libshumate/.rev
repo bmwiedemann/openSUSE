@@ -216,4 +216,13 @@
     gestures on touch.</comment>
     <requestid>1361963</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>538f54160dfe4e3bb54f3c5f64f2d94c</srcmd5>
+    <version>1.6.3</version>
+    <time>1786303903</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.6.3:
+  + Deselect markers before removing from layer</comment>
+    <requestid>1369838</requestid>
+  </revision>
 </revisionlist>
