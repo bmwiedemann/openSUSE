@@ -31,4 +31,12 @@
     <comment>Plasma 6.7.3 (forwarded request 1365832 from Vogtinator)</comment>
     <requestid>1365901</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>edaabf97f2e325ba2b56de84c285a3d6</srcmd5>
+    <version>6.7.4</version>
+    <time>1786304012</time>
+    <user>anag_factory</user>
+    <comment>Plasma 6.7.4, untested (forwarded request 1369583 from Vogtinator)</comment>
+    <requestid>1369918</requestid>
+  </revision>
 </revisionlist>

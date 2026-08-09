@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Aug  4 11:27:10 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.4:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.4
+- Changes since 6.7.3:
+  * output/quick: Align icon to device pixels
+  * output/quick: Limit maximum width of text in tooltips to 70 characters (kde#521855)
+  * input/css/breeze: Add focus outline to delegates (kde#522860)
+  * Check path exists when loading StyleCache data (kde#523013)
+  * output/quick: Handle some more undefined values in MenuItem
+  * output/quick: Don't crash if Icon doesn't have a control assigned yet
+  * input/css: Add padding to pane/frame/groupbox
+  * output/quick: Ensure TabBar doesn't try to squeeze TabButton too small
+  * input/css: Add some padding around tab buttons
+  * output/quick: Don't produce an error if SpinBox text color is not set
+  * output/quick: Don't crash in Positioner if an element has no matching rules
+  * output/quick: Complete incompleted ancestors on QuickElement completion
+  * output/widgets: Guard unguarded background/text property access
+  * Install missing headers for core library so things can actually use it (kde#522925)
+  * input/css: Look for files rather than directories in CssLoader
+  * output/kirigami: Use animationSpeedMultiplier to adjust Units animation speeds
+  * platform/plasma: Implement animationSpeedMultiplier to return Plasma's value
+  * platform/plasma: Refactor KDE globals reading to use KConfig(Watcher)
+  * Add a smoothScrollChanged signal to PlatformPlugin
+  * Add animationSpeedMultiplier() to PlatformPlugin
+  * output/quick: Set smooth to true for BusyIndicator icon
+  * output/quick: Use linear filtering for icons when smooth is enabled
+  * Update version for new release 6.7.4
+
+-------------------------------------------------------------------
 Tue Jul 14 12:23:55 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.7.3:
