@@ -18,7 +18,7 @@
 # NOTE: This logic must come from the latest go1.x package specfile.
 # We only build go-race on supported systems.
 %if 0%{suse_version} >= 1500 || 0%{?sle_version} >= 150000
-%define tsan_arch x86_64 aarch64 s390x ppc64le
+%define tsan_arch x86_64 aarch64 s390x ppc64le riscv64
 %else
 # Cannot use {nil} here (ifarch doesn't like it) so just make up a fake
 # architecture that no build will ever match.

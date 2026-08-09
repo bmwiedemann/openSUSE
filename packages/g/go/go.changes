@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug  6 09:06:14 UTC 2026 - Andreas Schwab <schwab@suse.de>
+
+- Enable go-race on riscv64
+
+-------------------------------------------------------------------
 Sat Mar 14 18:21:20 UTC 2026 - Simon Westlin Green <simon@simonwg.com>
 
 - Update to current stable go1.26
