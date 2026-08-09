@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Aug  6 21:38:38 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.36.1
+  * update submodules by @sbSteveK in (#756)
+- from version 0.36.0
+  * Regression Labeler Fix by @azkrishpy in (#751)
+  * fix doc on direct_io with outdated behavior by @TingDaoK in (#752)
+  * Add test for auto-PUBACK on QoS 1 publish received by @sfod in (#753)
+  * Update deprecated OpenBSD CI job by @sfod in (#754)
+  * CRT version bump by @DmitriyMusatkin in (#755)
+
+-------------------------------------------------------------------
 Fri Jul  3 06:08:33 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.35.0
