@@ -116,4 +116,14 @@
   * add DIRSUM_SHA256 hash type</comment>
     <requestid>1344928</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9537c424cb402bebe61c9f8d0a343113</srcmd5>
+    <version>1.22.0</version>
+    <time>1786304023</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.22.0
+  * regenerate google-cloud-a packages (#17089)
+- Update BuildRequires and Requires from setup.py (forwarded request 1370018 from glaubitz)</comment>
+    <requestid>1370042</requestid>
+  </revision>
 </revisionlist>
