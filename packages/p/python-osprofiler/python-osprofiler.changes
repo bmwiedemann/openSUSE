@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Jun  2 14:50:27 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.4.0:
+  * tox: Use new constraints option
+  * Remove compatibility with SQLAlchemy<2.0
+  * Fix OSProfiler compatibility issues with SQLAlchemy 2.0 and
+    Rally
+  * redis: Drop support for unused db parameter
+  * typing: Update for typed oslotest, debtcollector
+  * Create root span in the otlp driver
+  * Remove hacking checks about assertion methods
+  * Use built-in noqa check
+  * Remove old check for Python 2-3 compatibility
+  * Add typing
+  * Add ruff
+  * Replace deprecated datetime.datetime.utcnow
+  * Migrate upper functional job to Python 3.13
+  * Fix KeyError in notifying db errors
+  * Replace remaining py39 target
+  * Exclude tests directory from bandit check
+  * Replace own hacking checks by built-in ones
+  * Remove tox target for lower-constraints check
+  * pre-commit: Bump dependencies
+  * Migrate setup configuration to pyproject.toml
+  * Drop Python 3.9 support
+  * Cleanup jaeger backend from devstack and examples
+  * Retire Jaeger driver
+  * add pyproject.toml to support pip 23.1
+  * Explicitly add six to unblock unit tests
+
+-------------------------------------------------------------------
 Sun Nov  9 15:50:14 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.3.0:

@@ -1,7 +1,7 @@
 #
 # spec file for package python-osprofiler
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-osprofiler
-Version:        4.3.0
+Version:        4.4.0
 Release:        0
 Summary:        OpenStack Profiler Library
 License:        Apache-2.0
@@ -26,29 +26,38 @@ URL:            https://docs.openstack.org/osprofiler
 Source0:        https://files.pythonhosted.org/packages/source/o/osprofiler/osprofiler-%{version}.tar.gz
 BuildRequires:  %{python_module PrettyTable >= 0.7.2}
 BuildRequires:  %{python_module WebOb >= 1.7.1}
-BuildRequires:  %{python_module ddt}
-BuildRequires:  %{python_module docutils}
-BuildRequires:  %{python_module elasticsearch}
+BuildRequires:  %{python_module ddt >= 1.0.1}
+BuildRequires:  %{python_module docutils >= 0.14}
+BuildRequires:  %{python_module elasticsearch >= 2.0.0}
 BuildRequires:  %{python_module importlib-metadata}
-BuildRequires:  %{python_module opentelemetry-exporter-otlp}
+BuildRequires:  %{python_module netaddr >= 0.7.18}
+BuildRequires:  %{python_module opentelemetry-exporter-otlp >= 1.16.0}
+BuildRequires:  %{python_module opentelemetry-sdk >= 1.16.0}
 BuildRequires:  %{python_module oslo.concurrency >= 3.26.0}
 BuildRequires:  %{python_module oslo.config >= 5.2.0}
 BuildRequires:  %{python_module oslo.log}
+BuildRequires:  %{python_module oslo.serialization >= 2.18.0}
 BuildRequires:  %{python_module oslo.utils >= 3.33.0}
+BuildRequires:  %{python_module pbr >= 6.1.1}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pymongo}
+BuildRequires:  %{python_module pymongo >= 3.0.2}
 BuildRequires:  %{python_module python-subunit}
-BuildRequires:  %{python_module redis}
-BuildRequires:  %{python_module stestr}
+BuildRequires:  %{python_module redis >= 2.10.0}
+BuildRequires:  %{python_module requests >= 2.14.2}
+BuildRequires:  %{python_module stestr >= 2.0.0}
+BuildRequires:  %{python_module testtools >= 2.2.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  openstack-macros
 Requires:       python-PrettyTable >= 0.7.2
 Requires:       python-WebOb >= 1.7.1
 Requires:       python-importlib-metadata
+Requires:       python-netaddr >= 0.7.18
 Requires:       python-oslo.concurrency >= 3.26.0
 Requires:       python-oslo.config >= 5.2.0
 Requires:       python-oslo.log
+Requires:       python-oslo.serialization >= 2.18.0
 Requires:       python-oslo.utils >= 3.33.0
+Requires:       python-requests >= 2.14.2
 BuildArch:      noarch
 %if "python%{python_nodots_ver}" == "%{primary_python}"
 Obsoletes:      python3-osprofiler < %{version}
@@ -100,7 +109,6 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %check
 # otherwise causes import error
-rm osprofiler/tests/unit/drivers/test_jaeger.py
 rm -rf osprofiler/tests/functional
 %{openstack_stestr_run}
 
