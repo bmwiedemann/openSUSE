@@ -305,4 +305,17 @@
   * no changelog available</comment>
     <requestid>1342254</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>d84626a9411df2f0157c5ff5ecea211f</srcmd5>
+    <version>7.5.0</version>
+    <time>1786304102</time>
+    <user>anag_factory</user>
+    <comment>- update to 7.5.0:
+  * Accept uuid as a ref in ACLManager
+  * Handle new secrets delete microversion
+
+- update to 7.4.0:
+  * Fix uuid ref support in ACL Manager</comment>
+    <requestid>1370108</requestid>
+  </revision>
 </revisionlist>

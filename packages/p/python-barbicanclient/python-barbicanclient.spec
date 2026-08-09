@@ -18,7 +18,7 @@
 
 %global pythons %{primary_python}
 Name:           python-barbicanclient
-Version:        7.3.0
+Version:        7.5.0
 Release:        0
 Summary:        Client for the Barbican Key Management API
 License:        Apache-2.0
