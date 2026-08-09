@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Aug  7 18:05:48 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.4.1
+  [psgplay/sndh]
+  * Try to make it compile on m68k target.
+  [configure]
+  * AC_MSG_ERROR calls should contain message inside [], not "".
+    Failing to do so causes syntax error when running the configure
+    script and it wants to display an error message.
+  * if libspeex was not detected, auto vs forced logic was swapped
+    around.
+  [flac/mpX/ogg/wavpack]
+  * Ensure that PictureViewer initializes to "NotVisible", avoid
+    de-referencing invalid memory playing a file without a picture,
+    after playing a file with a picture.
+  [timidity/midi]
+  * Library messages should not depend on compile-time flag.
+  * cpiTimiditySetupInit() should be called before loading a MIDI
+    song, so that reverb and chorus are initialized to wanted
+    settings as early as possible.
+  * Update Timidity, protect against roomsize reaching zero,
+    causing inf math and assertion/abort on certain systems.
+
+-------------------------------------------------------------------
 Wed Aug  5 06:46:20 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.4.0
