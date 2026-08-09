@@ -94,12 +94,12 @@ export CMAKE_POLICY_VERSION_MINIMUM=3.5
 
 [ -f .tag ] && echo ".tag file exists in tarball." || echo "%{version}" > .tag
 
-%cmake_qt6
+%cmake_kf6
 
-%qt6_build
+%kf6_build
 
 %install
-%{qt6_install}
+%{kf6_install}
 
 %if 0%{?suse_version}
 %suse_update_desktop_file -G kraft de.volle_kraft_voraus.kraft Office Finance
