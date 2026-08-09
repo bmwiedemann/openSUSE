@@ -23,7 +23,7 @@
 %endif
 
 Name:           python-PyECLib
-Version:        1.7.0
+Version:        1.8.0
 Release:        0
 Summary:        Simple interface for implementing erasure codes
 License:        BSD-3-Clause
@@ -83,6 +83,7 @@ reconstruction (think XOR-based LRC code).
 %license LICENSE
 %python_alternative %{_bindir}/pyeclib-backend
 %{python_sitearch}/pyeclib
+%{python_sitearch}/pyeclib_c
 %{python_sitearch}/pyeclib_c.abi3.so
 %{python_sitearch}/[Pp]y[Ee][Cc][Ll]ib-%{version}.dist-info
 

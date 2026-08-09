@@ -105,4 +105,30 @@
     <comment>- reset-alternative for TW</comment>
     <requestid>1349412</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>98e45c4cfc512d09e68a7b6c2c523117</srcmd5>
+    <version>1.8.0</version>
+    <time>1786304082</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.8.0:
+  * Added support for a new isa_l_rs_lrc backend. This provides
+    support for LRC (locally-recoverable code) schemes, where local
+    fragments reconstruction is possible with fewer than k other
+    fragments.
+  * The version subcommand of pyeclib-backend now indicates whether
+    liberasurecode has been bundled and whether python is
+    free-threaded.
+  * The verify subcommand now takes a --reconstruct option to test
+    reconstruction rather than decoding.
+  * The verify subcommand now takes an --iterations option to test a number
+    of random combinations rather than all possible combinations.
+    This is useful when verifying schemes with large numbers of
+    fragments.
+  * Added type hints.
+  * Test against Python 3.14.
+  * When running with liberasurecode 1.8.0 or later and
+    free-threaded Python, the GIL is disabled.
+  * Various other minor bugs fixes and improvements</comment>
+    <requestid>1370105</requestid>
+  </revision>
 </revisionlist>
