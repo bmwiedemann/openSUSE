@@ -18,21 +18,18 @@
 
 
 Name:           spice-gtk
-Version:        0.42
+Version:        0.43
 Release:        0
 Summary:        Gtk client and libraries for SPICE remote desktop servers
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://spice-space.org
-Source0:        https://spice-space.org/download/gtk/%{name}-%{version}.tar.xz
-Source1:        https://spice-space.org/download/gtk/%{name}-%{version}.tar.xz.sig
-Source2:        %{name}.keyring
+Source0:        %{name}-%{version}.tar.xz
 Source3:        README.SUSE
 # PATCH-FIX-OPENSUSE spice-gtk-polkit-privs.patch bnc#804184 dimstar@opensuse.org -- Set the polkit defaults to auth_admin
 Patch0:         spice-gtk-polkit-privs.patch
-# https://gitlab.freedesktop.org/spice/spice-common/-/commit/29dacb5f53f5183fb089a3fb02d081dd08bde8a1
-Patch1:         spice-gtk-no-six.patch
 BuildRequires:  cyrus-sasl-devel
+BuildRequires:  gi-docgen
 BuildRequires:  gstreamer-plugins-bad
 BuildRequires:  gstreamer-plugins-good
 BuildRequires:  intltool
@@ -40,7 +37,7 @@ BuildRequires:  json-glib-devel
 BuildRequires:  libacl-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libtool
-BuildRequires:  meson >= 0.53
+BuildRequires:  meson >= 0.58
 BuildRequires:  pkgconfig
 BuildRequires:  python3-pyparsing
 BuildRequires:  vala
@@ -56,7 +53,6 @@ BuildRequires:  pkgconfig(gstreamer-audio-1.0)
 BuildRequires:  pkgconfig(gstreamer-base-1.0)
 BuildRequires:  pkgconfig(gthread-2.0) >= 2.0.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
-BuildRequires:  pkgconfig(gtk-doc)
 BuildRequires:  pkgconfig(gudev-1.0)
 BuildRequires:  pkgconfig(libcap-ng)
 BuildRequires:  pkgconfig(libdrm)
@@ -141,6 +137,7 @@ A Gtk client and libraries for SPICE remote desktop servers, (Linux and Windows)
 %setup -q
 %autopatch -p1
 cp %{SOURCE3} .
+echo "%{version}" > .tarball-version
 
 %build
 %meson \
@@ -170,6 +167,9 @@ cp %{SOURCE3} .
 %install
 %meson_install
 %find_lang %{name}
+
+%check
+%meson_test
 
 %post -n libspice-client-glib-helper
 %set_permissions %{_bindir}/spice-client-glib-usb-acl-helper
@@ -215,7 +215,7 @@ cp %{SOURCE3} .
 %{_libdir}/libspice-client-gtk-3.0.so
 %{_datadir}/gir-1.0/SpiceClientGLib-2.0.gir
 %{_datadir}/gir-1.0/SpiceClientGtk-3.0.gir
-%doc %{_datadir}/gtk-doc/html/spice-gtk/
+%doc %{_datadir}/doc/SpiceClient*/
 %{_datadir}/vala/vapi/*
 %{_libdir}/pkgconfig/spice-client-glib-2.0.pc
 %{_libdir}/pkgconfig/spice-client-gtk-3.0.pc

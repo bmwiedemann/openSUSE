@@ -609,4 +609,12 @@ a new setuid binary.
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1364765</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>0b2fd53e61c70a835e91e8ec5808f40f</srcmd5>
+    <version>0.43</version>
+    <time>1786303980</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1370243</requestid>
+  </revision>
 </revisionlist>

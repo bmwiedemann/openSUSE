@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri Aug  7 10:40:21 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.43:
+  + Add multi-plane scanout support (SpiceGlScanout2), deprecate
+    spice_display_channel_get_gl_scanout().
+  + Add EGL direct scanout support on X11
+  + Add Windows certificate store support for TLS
+  + Add partial chain verification for TLS certificates GStreamer:
+    prefer playbin3, use h/w decoders with Intel GPUs, fallback to
+    s/w decoder if h/w fails
+  + spice-widget: use nearest scaling for integral scaling factors
+  + spicy: add command line option to hide menu bar
+  + Migrate documentation from gtk-doc to gi-docgen
+  + wayland: fix mouse ungrab in server mode
+  + wayland: use separate event queue thread for widgets
+  + gstaudio: fix race replacing existing channels on connect
+  + spice-channel: read all available data from OpenSSL buffer
+  + usb-backend: fix missing refcount increase when allocating device from fd
+  + usb-backend: fix compiling with i686 clang in mingw
+  + channel-display: fix wrong macro expansion
+  + gstreamer: fix leak using GstBus watch
+  + Fix symbol visibility and export handling
+- Convert package to source service, reference
+  https://gitlab.freedesktop.org/spice/spice-gtk, where there is a
+  0.43 tag. No tarballs have been published.
+- Follow upstreams port to gi-docgen:
+  + Drop pkgconfig(gtk-doc) BuildRequires
+  + Add gi-docgen BuildRequires.
+- Drop spice-gtk-no-six.patch: fixed upstream.
+- Enable test suite in %check section.
+- Drop spice-gtk.keyring and signature file: as we clone a git tree
+  now using _service, there is no gpg signature.
+
+-------------------------------------------------------------------
 Thu Jul  2 10:26:17 MDT 2026 - carnold@suse.com
 
 - Add BuildRequires for python3-base
