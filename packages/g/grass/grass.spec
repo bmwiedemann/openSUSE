@@ -1,7 +1,7 @@
 #
 # spec file for package grass
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,84 +17,75 @@
 
 
 # Notice to maintainer : move this package to real lfhs
-%define	shortver 84
-%if 0%{?suse_version} >= 1550
-BuildRequires:  python3-wxPython
-%else
-BuildRequires:  python-wxWidgets-devel >= 3.0
-%endif
+%define         shortver 85
 
 Name:           grass
-Version:        8.4.2
+Version:        8.5.0
 Release:        0
 Summary:        Geographic Resources Analysis Support System
 License:        GPL-2.0-or-later
-Group:          Productivity/Scientific/Other
 URL:            https://grass.osgeo.org/
-Source0:         https://github.com/OSGeo/grass/releases/download/%{version}/%{name}-%{version}.tar.gz
-Source1:         https://github.com/OSGeo/grass/releases/download/%{version}/%{name}-%{version}.tar.gz.sha256
-BuildRequires:  -post-build-checks
-BuildRequires:  PDAL-devel
+Source0:        https://github.com/OSGeo/grass/releases/download/%{version}/%{name}-%{version}.tar.gz
+Source1:        https://github.com/OSGeo/grass/releases/download/%{version}/%{name}-%{version}.tar.gz.sha256
+BuildRequires:  PDAL-devel >= 1.7.1
 BuildRequires:  bison
 BuildRequires:  blas-devel
 BuildRequires:  fdupes
-BuildRequires:  fftw3-devel
 BuildRequires:  flex
-BuildRequires:  freetype2-devel
 BuildRequires:  gcc-c++
 BuildRequires:  lapack-devel
-BuildRequires:  libXmu-devel
-BuildRequires:  libbz2-devel
-BuildRequires:  libgdal-devel >= 3
+BuildRequires:  libgdal-devel >= 3.7
 BuildRequires:  libgeos-devel >= 3
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
-BuildRequires:  libtiff-devel
-BuildRequires:  libzstd-devel
 BuildRequires:  man
 BuildRequires:  mysql-devel
-BuildRequires:  ncurses-devel >= 5.5
-BuildRequires:  netcdf-devel
 BuildRequires:  perl
-BuildRequires:  postgresql-devel
-BuildRequires:  proj >= 6
-BuildRequires:  proj-devel >= 6
+BuildRequires:  pkgconfig
+BuildRequires:  proj >= 9
 BuildRequires:  python3-dateutil
-BuildRequires:  python3-devel
 BuildRequires:  python3-numpy
 BuildRequires:  python3-opengl
+BuildRequires:  python3-wxPython
 BuildRequires:  python3-xml
 BuildRequires:  readline-devel
 BuildRequires:  sqlite-devel
-BuildRequires:  unixODBC-devel
-BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(cairo)
+BuildRequires:  pkgconfig(cblas)
+BuildRequires:  pkgconfig(fftw3)
+BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glu)
+BuildRequires:  pkgconfig(lapack)
+BuildRequires:  pkgconfig(libpq)
+BuildRequires:  pkgconfig(libtiff-4)
+BuildRequires:  pkgconfig(libzstd)
+BuildRequires:  pkgconfig(ncurses) >= 5.5
+BuildRequires:  pkgconfig(netcdf)
+BuildRequires:  pkgconfig(odbc)
+BuildRequires:  pkgconfig(openblas)
+BuildRequires:  pkgconfig(proj) >= 9
+BuildRequires:  pkgconfig(python3)
+BuildRequires:  pkgconfig(xmu)
+BuildRequires:  pkgconfig(zlib)
 # proj contains the required common data files
-Requires:       proj >= 6
+Requires:       proj >= 9
 Requires:       python3-dateutil
 Requires:       python3-numpy
 Requires:       python3-opengl
+Requires:       python3-wxPython
 Requires:       python3-xml
 Requires:       sqlite >= 3
 Requires:       unixODBC
 Requires:       xterm
 Recommends:     grass-doc
-Obsoletes:      grass7
-%if 0%{?suse_version} >= 1550
-Requires:       python3-wxPython
-%else
-Requires:       python-wxWidgets >= 2.8
-%endif
 
 %package doc
-Summary:        Documentation for GRASS GIS 7
-Group:          Documentation/Other
+Summary:        Documentation for GRASS GIS
 
 %package devel
-Summary:        Development files for GRASS GIS 7
-Group:          Development/Libraries/C and C++
+Summary:        Development files for GRASS GIS
 Requires:       grass = %{version}
 
 %description
@@ -113,7 +104,7 @@ This package contains the development files for GRASS GIS
 This package contains the HTML documentation files for GRASS GIS
 
 %prep
-%setup -q -n grass-%{version}
+%autosetup -n grass-%{version}
 
 %define grasver -@GRASS_VERSION_MAJOR@.@GRASS_VERSION_MINOR@.@GRASS_VERSION_RELEASE@
 %define grasver2 '-${GRASS_VERSION_MAJOR}.${GRASS_VERSION_MINOR}.${GRASS_VERSION_RELEASE}'
@@ -122,7 +113,7 @@ sed -i s/%{grasver}//g include/Make/Platform.make.in
 sed -i s/%{grasver}//g grass.pc.in
 sed -i s/%{grasver2}//g configure
 sed -i s/%{grasver2}//g Makefile
-sed -i -e "/GRASS_HEADERS_/ s/@GRASS_HEADERS_GIT_.*@/"$(date -d @${SOURCE_DATE_EPOCH} -u +%FT%T%:z)"/" include/grass/version.h.in
+sed -i -e "/GRASS_HEADERS_/ s/@GRASS_HEADERS_GIT_.*@/"$(date -d @${SOURCE_DATE_EPOCH} -u +%%FT%%T%%:z)"/" include/grass/version.h.in
 cat include/grass/version.h.in
 
 %define grassprefix %{_libdir}
@@ -130,8 +121,8 @@ cat include/grass/version.h.in
 %define grasslib %{grassprefix}/%{name}%{shortver}/lib
 
 # configure with shared libs:
-# Pick for upstream travis, normal optflags are not supported
-export CFLAGS="-O2 -Werror=implicit-function-declaration"
+export CFLAGS="%{optflags} -Werror=implicit-function-declaration"
+export CXXFLAGS="%{optflags} -std=c++17"
 
 ./configure \
 	--prefix=%{grassprefix} \
@@ -175,14 +166,10 @@ find . -type f -exec sed -i -e 's:#!%{_bindir}/env python3:#!%{_bindir}/python3:
 %build
 # Make builds reproducible (e.g. "random" colortable example in documentation)
 export GRASS_RANDOM_SEED=1234
-make prefix=%{grassprefix} PREFIX=%{grassprefix} %{?_smp_mflags}
+%make_build prefix=%{grassprefix} PREFIX=%{grassprefix}
 
 %install
 make prefix=%{buildroot}%{grassprefix} PREFIX=%{buildroot}%{grassprefix} install
-
-# Program sets LD_LIBRARY_PATH pointing to in-source path
-# resulting in wrong requires, prevent that
-rm -rf dist.*
 
 # don't create a non-standard-directory for a single file
 mkdir -p %{buildroot}%{_bindir}
@@ -194,6 +181,7 @@ sed -i s:%{buildroot}::g %{buildroot}%{_bindir}/grass
 sed -i s:%{buildroot}::g %{buildroot}%{grassdir}/include/Make/Grass.make
 sed -i s:%{buildroot}::g %{buildroot}%{grassdir}/include/Make/Platform.make
 sed -i s:%{buildroot}::g %{buildroot}%{grassdir}%{_sysconfdir}/fontcap
+sed -i s:%{buildroot}::g %{buildroot}%{grassdir}%{_sysconfdir}/python/grass/app/resource_paths.py
 
 # make grass libraries available on the system
 install -d %{buildroot}%{_sysconfdir}/ld.so.conf.d
@@ -204,67 +192,96 @@ cp  %{buildroot}%{grassdir}/share/applications/grass.desktop %{buildroot}%{_data
 mkdir -p %{buildroot}%{_datadir}/pixmaps
 ln -s %{grassdir}/share/icons/hicolor/192x192/apps/grass.png %{buildroot}%{_datadir}/pixmaps/grass.png
 
+# The blanket shebang rewrite in %%prep lands #!/usr/bin/python3 on library
+# modules that are not executable and are never run directly
+# (rpmlint: non-executable-script). This must come BEFORE byte-compiling:
+# editing the sources afterwards would invalidate the fresh bytecode again.
+find %{buildroot}%{grassdir} -name '*.py' ! -perm -u+x -exec sed -i '1{/^#!\/usr\/bin\/python3$/d}' {} +
+
+# Byte-compile with hash-based invalidation (PEP 552). Timestamp-based .pyc
+# cannot work here: the mtimes of the installed sources are clamped to
+# SOURCE_DATE_EPOCH for reproducibility after %%install has run, so any
+# timestamp we record is stale by the time the package is assembled
+# (rpmlint: python-bytecode-inconsistent-mtime).
+find %{buildroot}%{grassdir} -name __pycache__ -type d -prune -exec rm -rf {} +
+python3 -m compileall -q --invalidation-mode checked-hash \
+    -s %{buildroot} %{buildroot}%{grassdir} >/dev/null || :
+
 rm -rf %{buildroot}%{_libdir}/grass%{shortver}/utils/__pycache__
 
 echo %{grassdir} >%{buildroot}/%{_sysconfdir}/GRASSDIR
 
 %fdupes -s %{buildroot}%{grassdir}
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+# Generate the translation file list instead of hardcoding it: the .mo files
+# are compiled from locale/po/ at build time, so a hand-maintained list rots
+# silently as upstream adds languages -- si and uk were both mistagged as
+# %%lang(sl), and hi and sv were missing entirely.
+: > %{_builddir}/grass.lang
+for _mo in %{buildroot}%{grassdir}/locale/*/LC_MESSAGES; do
+    [ -d "$_mo" ] || continue
+    _lang=$(basename "$(dirname "$_mo")")
+    {
+      echo "%%lang($_lang) %%dir %{grassdir}/locale/$_lang"
+      echo "%%lang($_lang) %%dir %{grassdir}/locale/$_lang/LC_MESSAGES"
+      echo "%%lang($_lang) %{grassdir}/locale/$_lang/LC_MESSAGES/*.mo"
+    } >> %{_builddir}/grass.lang
+done
+
+%check
+# Exercise what was built. Use the in-source build tree, NOT the buildroot copy:
+# %%install rewrites the buildroot's paths to the final install location, and
+# GRASS's launcher deliberately ignores $GISBASE (RuntimePaths sets it with
+# use_env_values=False). It only falls back to locating itself when
+# %{grassdir} does not exist, so a buildroot-based check silently depends on no
+# GRASS being installed on the build host. The in-source tree is self-consistent.
+_grass="$(echo bin.*)/grass"
+
+# core: version reporting, region handling, and the Python scripting API
+$_grass --tmp-project XY --exec g.version -rge
+$_grass --tmp-project XY --exec g.region -p
+$_grass --tmp-project EPSG:4326 --exec python3 -c \
+    'import grass.script as gs; assert gs.parse_command("g.version", flags="g")["version"].startswith("%{version}")'
+
+# The installed programs embed LD_LIBRARY_PATH pointing at this in-source tree;
+# drop it now that the tests are done, so it cannot leak into the generated
+# requires at packaging time.
+rm -rf dist.* bin.*
+
+%ldconfig_scriptlets
 
 %files devel
+%dir %{grassdir}
 %{grassdir}/include
 %{_sysconfdir}/GRASSDIR
 
 %files doc
+%dir %{grassdir}
 %{grassdir}/docs
 
-%files
+%files -f %{_builddir}/grass.lang
 %config %{_sysconfdir}/ld.so.conf.d/grass-%{version}.conf
 %{_bindir}/%{name}
-%{grassdir}/bin/*
-%{grassdir}%{_sysconfdir}/*
-%{grassdir}/gui/*
-%{grassdir}/scripts/*
+%dir %{grassdir}
+%{grassdir}/bin
+%{grassdir}%{_sysconfdir}
+%{grassdir}/gui
+%{grassdir}/scripts
+%dir %{grassdir}/share
+%dir %{grassdir}/share/applications
 %{grassdir}/share/applications/grass.desktop
-%{grassdir}/share/icons/hicolor/*
+%{grassdir}/share/icons
+%dir %{grassdir}/share/metainfo
 %{grassdir}/share/metainfo/org.osgeo.grass.appdata.xml
 %{_datadir}/applications/grass.desktop
 %{_datadir}/pixmaps/grass.png
-%lang(ar) %{grassdir}/locale/ar/LC_MESSAGES/*.mo
-%lang(bn) %{grassdir}/locale/bn/LC_MESSAGES/*.mo
-%lang(cs) %{grassdir}/locale/cs/LC_MESSAGES/*.mo
-%lang(de) %{grassdir}/locale/de/LC_MESSAGES/*.mo
-%lang(el) %{grassdir}/locale/el/LC_MESSAGES/*.mo
-%lang(es) %{grassdir}/locale/es/LC_MESSAGES/*.mo
-%lang(fr) %{grassdir}/locale/fr/LC_MESSAGES/*.mo
-%lang(fi) %{grassdir}/locale/fi/LC_MESSAGES/*.mo
-%lang(hu) %{grassdir}/locale/hu/LC_MESSAGES/*.mo
-%lang(id) %{grassdir}/locale/id_ID/LC_MESSAGES/*.mo
-%lang(it) %{grassdir}/locale/it/LC_MESSAGES/*.mo
-%lang(ja) %{grassdir}/locale/ja/LC_MESSAGES/*.mo
-%lang(ko) %{grassdir}/locale/ko/LC_MESSAGES/*.mo
-%lang(lv) %{grassdir}/locale/lv/LC_MESSAGES/*.mo
-%lang(ml) %{grassdir}/locale/ml/LC_MESSAGES/*.mo
-%lang(pl) %{grassdir}/locale/pl/LC_MESSAGES/*.mo
-%lang(pt) %{grassdir}/locale/pt/LC_MESSAGES/*.mo
-%lang(pt_br) %{grassdir}/locale/pt_BR/LC_MESSAGES/*.mo
-%lang(ru) %{grassdir}/locale/ru/LC_MESSAGES/*.mo
-%lang(ro) %{grassdir}/locale/ro/LC_MESSAGES/*.mo
-%lang(sl) %{grassdir}/locale/sl/LC_MESSAGES/*.mo
-%lang(sl) %{grassdir}/locale/si/LC_MESSAGES/*.mo
-%lang(ta) %{grassdir}/locale/ta/LC_MESSAGES/*.mo
-%lang(th) %{grassdir}/locale/th/LC_MESSAGES/*.mo
-%lang(tr) %{grassdir}/locale/tr/LC_MESSAGES/*.mo
-%lang(sl) %{grassdir}/locale/uk/LC_MESSAGES/*.mo
-%lang(vi) %{grassdir}/locale/vi/LC_MESSAGES/*.mo
-%lang(zh) %{grassdir}/locale/zh/LC_MESSAGES/*.mo
-%lang(zh_cn) %{grassdir}/locale/zh_CN/LC_MESSAGES/*.mo
+%dir %{grassdir}/locale
+%dir %{grassdir}/utils
 %{grassdir}/utils/*.py*
 %{grassdir}/utils/g.echo
-%{grassdir}/driver/*
-%{grassdir}/fonts/*
+%{grassdir}/driver
+%{grassdir}/fonts
+%dir %{grasslib}
 %{grasslib}/*.so
 %{grassdir}/AUTHORS
 %{grassdir}/translators.csv

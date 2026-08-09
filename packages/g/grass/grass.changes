@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Thu Aug  6 09:18:58 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 8.5.0:
+  * New grass.tools Python API to call GRASS tools as functions
+  * Documentation rewritten in Markdown and rendered with MkDocs
+  * Parallelisation added to r.mapcalc, r.texture, r.horizon and
+    v.surf.rst cross-validation
+  * JSON output added across dozens of tools
+  * New r.smooth.edgepreserve tool for edge-preserving smoothing
+  * Multiple masks per mapset, with a new r.mask.status tool
+  * RegionManager and MaskManager context managers in grass.script
+  * More than 500 security issues reported by Coverity were fixed
+  * Raised minimum requirements to GDAL 3.7, PROJ 9.0, C++17 and
+    Python 3.10, and switched to the CBLAS and LAPACKE interfaces
+- Stop disabling the post-build checks. The package carried
+  "BuildRequires: -post-build-checks", which switched off
+  check-filelist, check-buildroot, check-rpaths, check-prereqs and the
+  rpmlint gate wholesale, hiding every problem listed below. It was
+  masking 79 directories owned by no package, so the file lists now
+  own their directories instead of only their contents
+- Build with the distribution optflags: CFLAGS discarded them
+  entirely, so all C code was built without the mandatory hardening
+  options and without debug information
+- Add a %check section that creates a temporary project and runs
+  modules and the Python scripting API through the freshly built
+  tree. It runs against the in-source build tree, because the
+  launcher ignores GISBASE and resolves itself from the compiled-in
+  prefix
+- Generate the translation file list at install time instead of
+  maintaining it by hand: the si and uk catalogues were both tagged
+  as %lang(sl), and hi and sv were not packaged at all
+- Byte-compile with hash-based invalidation and strip the shebang
+  from modules that are not executable: rpmlint errors drop from 440
+  to 4, the remainder being upstream issues
+- Add build dependencies on cblas, lapack and openblas, now required
+  directly by the C interfaces (boo#1273592)
+- Raise the minimum versions of gdal and proj to match upstream
+- Convert dependencies to their pkgconfig() form and escape the
+  strftime format in the reproducible-build timestamp, so that
+  spec-cleaner no longer rewrites either of them incorrectly
+- Replace the hand-written ldconfig scriptlets with
+  %ldconfig_scriptlets
+- Fix summaries of the doc and devel subpackages, which still
+  referred to GRASS GIS 7
+- Drop the conditionals for suse_version < 1550, no longer built
+
+-------------------------------------------------------------------
+Tue Aug  4 06:03:18 UTC 2026 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- Drop old obsoletes statement
+
+-------------------------------------------------------------------
 Sat Jan 31 16:13:38 UTC 2026 - Enno Tensing <tenno+suse@suij.in>
 
 - Update to 8.4.2
@@ -525,4 +577,3 @@ Wed Aug 17 07:13:30 UTC 2011 - dassau@gbd-consult.de
 Wed Mar  9 00:00:00 UTC 2011 - dassau@gbd-consult.de
 
 - package GRASS7 development packages for testing
-
