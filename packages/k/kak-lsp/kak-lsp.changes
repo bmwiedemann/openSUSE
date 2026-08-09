@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sat Aug  8 18:59:33 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 21.0.2:
+  * Fix a regression that broke compatibility with Kakoune versions
+    older than 2026.05.21
+  * Add a default configuration for Hare, using hare-lsp
+  * Fix hangs after editing a file without a trailing newline, such
+    as an empty file
+  * Use nixd instead of nil as the default language server for nix
+  * Fix buffer-sync corruption when .editorconfig sets
+    insert_final_newline = false
+- Correct the License tag to
+  CC0-1.0 AND ISC AND MIT AND (MIT OR Unlicense) AND MPL-2.0 AND
+  Unicode-3.0 AND Zlib, re-derived from the vendored registry on this
+  update. The previous tag enumerated the vendored OR-groups but
+  omitted Unicode-3.0, ISC, CC0-1.0 and the bare MPL-2.0 of
+  option-ext, which is linked through dirs and dirs-sys. The
+  derivation is recorded in a Legal-Review-Notice comment above the
+  tag.
+- Drop the CARGO_TARGET_DIR exports: they referred to the undefined
+  macro %{_buildir}, so the value expanded literally and cargo wrote
+  its target directory to an oddly named path inside the build
+  directory. The packaging default is correct.
+- Build against pkgconfig(openssl) instead of openssl-devel.
+- Drop the obsolete %defattr from %files.
+- Run the upstream unit tests in a %check section.
+- Refresh the vendored registry. Recording the state of the open
+  vendored-crate CVEs against it, none of which this package is
+  affected by:
+  * CVE-2026-25541 (boo#1274502): bytes is 1.12.1, above the 1.11.1
+    fix
+  * CVE-2025-3416 (boo#1242654): the openssl crate is 0.10.81, above
+    the 0.10.72 fix; it was already 0.10.80 before this update
+  * CVE-2025-55159 (boo#1248048): slab is 0.4.12, above the 0.4.11
+    fix; only 0.4.10 was ever affected and this package never
+    shipped it
+
+-------------------------------------------------------------------
 Sun Jun 07 01:39:40 UTC 2026 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 20.0.0:

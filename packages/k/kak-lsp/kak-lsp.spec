@@ -17,19 +17,35 @@
 
 
 Name:           kak-lsp
-Version:        20.0.0
+Version:        21.0.2
 Release:        0
 Summary:        Language Server Protocol client for Kakoune
-License:        (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR BSL-1.0 OR MIT) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT) AND (Apache-2.0 OR MIT OR Zlib) AND (Apache-2.0 OR MIT OR MPL-2.0) AND (MIT OR Unlicense) AND (Apache-2.0 OR Zlib OR MIT) AND MIT AND Zlib AND Unlicense
+# Legal-Review-Notice: kak-lsp itself is "Unlicense OR MIT", but the binary
+# statically links the vendored Rust dependencies. Re-derived on this
+# re-vendor with "cargo tree --offline -e normal" over the vendored registry
+# (337 crates vendored, 167 in the linked graph). Only the licences that
+# cannot be satisfied by electing a permissive alternative are listed:
+#  - MPL-2.0 from option-ext, reached through dirs -> dirs-sys,
+#  - Unicode-3.0 (18 crates), MIT (20 crates), Zlib, ISC and CC0-1.0, each
+#    of which is the sole licence offered by the crate carrying it.
+# The slog family is "MPL-2.0 OR MIT OR Apache-2.0" and r-efi offers an
+# LGPL-2.1-or-later option; we elect the permissive alternative for the
+# former, and the latter is UEFI-target-only and absent from the Linux
+# graph. The previous tag enumerated the vendored OR-groups but omitted
+# Unicode-3.0, ISC, CC0-1.0 and the bare MPL-2.0 of option-ext.
+# MPL-2.0 section 3.2 is satisfied because the complete registry.tar.zst
+# ships in the src.rpm.
+License:        CC0-1.0 AND ISC AND MIT AND (MIT OR Unlicense) AND MPL-2.0 AND Unicode-3.0 AND Zlib
 URL:            https://github.com/kakoune-lsp/kakoune-lsp
 Source0:        %{name}-%{version}.tar.zst
 Source1:        registry.tar.zst
 BuildRequires:  cargo
 BuildRequires:  cargo-packaging
-BuildRequires:  openssl-devel
+BuildRequires:  pkgconfig
 BuildRequires:  zstd
-ExclusiveArch:  %{rust_tier1_arches}
+BuildRequires:  pkgconfig(openssl)
 Provides:       kakoune-lsp = %{version}
+ExclusiveArch:  %{rust_tier1_arches}
 
 %description
 kak-lsp is a Language Server Protocol client for Kakoune written in Rust.
@@ -39,20 +55,23 @@ kak-lsp is a Language Server Protocol client for Kakoune written in Rust.
 
 %build
 export CARGO_HOME="$PWD/.cargo"
-export CARGO_TARGET_DIR="%{_buildir}/%{buildsubdir}/target"
 %{cargo_build} --all-features
 
 %install
 export CARGO_HOME="$PWD/.cargo"
-export CARGO_TARGET_DIR="%{_buildir}/%{buildsubdir}/target"
+# Keep the braced form: the bare %%cargo_install parses --all-features as a
+# macro option and fails with "Unknown option - in cargo_install(p:)".
 %{cargo_install} --all-features
 mkdir -p %{buildroot}%{_datadir}/%{name}/rc
 install -Dm644 rc/lsp.kak %{buildroot}%{_datadir}/%{name}/rc/
 
+%check
+export CARGO_HOME="$PWD/.cargo"
+%{cargo_test} --all-features
+
 %files
-%defattr(-,root,root,-)
 %license UNLICENSE COPYING MIT
-%doc     README.asciidoc CHANGELOG.md
+%doc README.asciidoc CHANGELOG.md
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/rc
 %{_datadir}/%{name}/*

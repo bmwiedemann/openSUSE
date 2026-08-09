@@ -749,4 +749,20 @@
 </comment>
     <requestid>1357721</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>65030494340d6b285b8f79e2c8db4932</srcmd5>
+    <version>21.0.2</version>
+    <time>1786304684</time>
+    <user>anag_factory</user>
+    <comment>Update to 21.0.2 (from 20.0.0).
+
+Upstream: fixes a regression that broke compatibility with Kakoune older than 2026.05.21, fixes hangs after editing a file without a trailing newline, fixes buffer-sync corruption when .editorconfig sets insert_final_newline = false, switches the default nix language server from nil to nixd, and adds a default Hare configuration.
+
+NOTE FOR LEGAL REVIEW: the License tag changes from a long enumeration of the vendored OR-groups to 'CC0-1.0 AND ISC AND MIT AND (MIT OR Unlicense) AND MPL-2.0 AND Unicode-3.0 AND Zlib'. This is a correction of a pre-existing condition, not a new obligation: the old tag omitted Unicode-3.0 (18 crates), ISC, CC0-1.0 and the bare MPL-2.0 of option-ext, which reaches the binary through dirs -&gt; dirs-sys and was already linked before this update. Re-derived with 'cargo tree --offline -e normal' over the vendored registry: 337 crates vendored, 167 in the linked graph. Only licences with no permissive alternative to elect are listed; the slog family is 'MPL-2.0 OR MIT OR Apache-2.0' and we elect the permissive side, and r-efi is UEFI-target-only and absent from the Linux graph. The derivation is recorded in a Legal-Review-Notice comment above the tag. MPL-2.0 section 3.2 is satisfied because registry.tar.zst ships in the src.rpm.
+
+Packaging cleanup: dropped two CARGO_TARGET_DIR exports that referenced the undefined macro %{_buildir} (it expanded literally, so cargo wrote its target directory to a path named after the unexpanded macro); switched to pkgconfig(openssl); dropped the obsolete %defattr; and added a %check running the upstream unit tests.
+
+Built and verified on aarch64: rpmlint 0 errors / 0 warnings / 0 badness, %check 16 passed / 0 failed, source_validator clean.</comment>
+    <requestid>1370358</requestid>
+  </revision>
 </revisionlist>
