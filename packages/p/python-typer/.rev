@@ -604,4 +604,14 @@
   *  Update metavar printing.</comment>
     <requestid>1366239</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>011956ee0cc916f0cccbe21112cf2ad0</srcmd5>
+    <version>0.27.1</version>
+    <time>1786303953</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.27.1
+  * Fix showing fast button as external link in animated terminals
+    in docs.</comment>
+    <requestid>1370101</requestid>
+  </revision>
 </revisionlist>
