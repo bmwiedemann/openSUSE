@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Wed Aug  5 14:51:18 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.11.0:
+  * trivial: Fix docstrings
+  * tests: Use isolated cache dirs for mypy integration tests
+  * zuul: Use openstack-python3-next-jobs template
+  * pre-commit: Bump versions
+  * Do not install code to build release notes
+  * tests: Add mypy plugin integration tests
+  * Drop support for Python 3.10
+  * typing: Correct return type of obj_make_list
+  * mypy: Fix cross-module field inheritance for mixin classes
+  * mypy: Resolve ObjectField types in a second pass
+  * mypy: Drop field caching
+  * mypy: Derive field types from generic parameter
+  * tests: De-dupe AST generation
+  * trivial: Remove unnecessary quotes
+  * Replace tabs with spaces
+  * tox: Use new constraints option
+
+-------------------------------------------------------------------
+Sun Jun 28 10:38:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.10.2:
+  * Remove abstractmethod from deprecated object_backport method
+  * Accept context passed by kwarg
+  * typing: Resolve ObjectField and ListOfObjectsField to
+    concrete types
+  * Rename args -> kwargs
+  * Remove unecessary try-except login in mypy plugin
+  * Remove some duplication in the mypy plugin
+  * Remove webob dependency
+  * Add strict typing
+  * Drop useless override of assertNotIsInstance
+  * typing: Add type hints to oslo_versionedobjects.base
+  * typing: Add type hints to oslo_versionedobjects.test
+  * typing: Add type hints to oslo_versionedobjects._utils
+  * typing: Add type hints to oslo_versionedobjects._options
+  * typing: Add type hints to oslo_versionedobjects.exception
+  * typing: Add type hints to oslo_versionedobjects.fixtures
+  * typing: Add type hints to oslo_versionedobjects.fields
+  * Add initial typing
+  * Add support for nested types
+  * Add tests for mypy plugin
+  * Add mypy plugin
+  * tests: Remove dead code
+  * exceptions: Remove unused attribute
+  * Remove eventlet monkey-patch from test base class
+  * trivial: Split up remoteable decorator
+  * trivial: Disable H904 check
+  * base: Deprecate remotable_classmethod
+  * base: Swap location of remoteable decorators
+  * fields: Move Coerced* helpers
+  * fields: Remove unnecessary indentation
+  * fields: Remove use of staticmethod
+  * Update master for stable/2026.1
+  * tests: Fix tz-naive test
+  * tests: Replace reference to invalid field
+  * tests: Add usedforsecurity
+  * tests: Correct attribute type
+  * trivial: Fix logging issues
+  * tests: Rewrap strings
+  * Add ruff
+  * pre-commit: Bump dependencies
+  * docs: Expand usage guide with worked example
+  * docs: Rework reference, usage docs
+
+-------------------------------------------------------------------
 Sun Mar  8 21:01:28 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.9.0:

@@ -297,4 +297,41 @@
   * Update master for stable/2025.2</comment>
     <requestid>1338421</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>49eec752dc929835894e9004b3304204</srcmd5>
+    <version>3.11.0</version>
+    <time>1786304098</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.11.0:
+  * trivial: Fix docstrings
+  * tests: Use isolated cache dirs for mypy integration tests
+  * zuul: Use openstack-python3-next-jobs template
+  * pre-commit: Bump versions
+  * Do not install code to build release notes
+  * tests: Add mypy plugin integration tests
+  * Drop support for Python 3.10
+  * typing: Correct return type of obj_make_list
+  * mypy: Fix cross-module field inheritance for mixin classes
+  * mypy: Resolve ObjectField types in a second pass
+  * mypy: Drop field caching
+  * mypy: Derive field types from generic parameter
+  * tests: De-dupe AST generation
+  * trivial: Remove unnecessary quotes
+  * Replace tabs with spaces
+  * tox: Use new constraints option
+
+- update to 3.10.2:
+  * Remove abstractmethod from deprecated object_backport method
+  * Accept context passed by kwarg
+  * typing: Resolve ObjectField and ListOfObjectsField to
+    concrete types
+  * Rename args -&gt; kwargs
+  * Remove unecessary try-except login in mypy plugin
+  * Remove some duplication in the mypy plugin
+  * Remove webob dependency
+  * Add strict typing
+  * Drop useless override of assertNotIsInstance
+  * typing: Add type hints to oslo_versionedobjects.base</comment>
+    <requestid>1369792</requestid>
+  </revision>
 </revisionlist>
