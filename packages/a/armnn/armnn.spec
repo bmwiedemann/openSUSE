@@ -54,7 +54,7 @@
 %bcond_with armnn_onnx
 %endif
 %define version_major 26
-%define version_minor 01
+%define version_minor 07
 %define version_lib 36
 %define version_lib_testutils 3
 %define version_lib_tfliteparser 24
