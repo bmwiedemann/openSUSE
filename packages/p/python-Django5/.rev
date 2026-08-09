@@ -7,4 +7,20 @@
     <comment>Backport of soon-to-be-old Django 5.2</comment>
     <requestid>1365352</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d21df1cb7870ea225745ffc1350e9aed</srcmd5>
+    <version>5.2.17</version>
+    <time>1786304456</time>
+    <user>anag_factory</user>
+    <comment>- Update to 5.2.17
+  * CVE-2026-15307: Server-side file-write and request forgery via
+    spatial lookups (bsc#1272997)
+  * CVE-2026-15337: Potential denial-of-service vulnerability in
+    check_for_language() (bsc#1272998)
+  * CVE-2026-15830: Potential denial-of-service vulnerability via
+    nested geometry collections (bsc#1272999)
+  * CVE-2026-15920: Potential cross-site scripting via URLField
+    values in the admin (bsc#1273000)</comment>
+    <requestid>1370202</requestid>
+  </revision>
 </revisionlist>

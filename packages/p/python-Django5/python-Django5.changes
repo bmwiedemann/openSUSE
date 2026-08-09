@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Aug  5 12:09:37 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 5.2.17
+  * CVE-2026-15307: Server-side file-write and request forgery via
+    spatial lookups (bsc#1272997)
+  * CVE-2026-15337: Potential denial-of-service vulnerability in
+    check_for_language() (bsc#1272998)
+  * CVE-2026-15830: Potential denial-of-service vulnerability via
+    nested geometry collections (bsc#1272999)
+  * CVE-2026-15920: Potential cross-site scripting via URLField
+    values in the admin (bsc#1273000)
+
+-------------------------------------------------------------------
 Thu Jul  9 06:45:37 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Update to 5.2.16
