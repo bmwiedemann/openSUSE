@@ -61,4 +61,24 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1345253</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>518f8df18857a386e351349cfa9bc81f</srcmd5>
+    <version>2.24.1</version>
+    <time>1786304025</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.24.1
+  * require Protobuf 6.33.5+ (#17743)
+- from version 2.24.0
+  * regenerate google-cloud-[e-i] packages (#17079)
+- from version 2.23.0
+  * (no changes)
+- from version 2.22.0
+  * Allow Protobuf 7.x
+  * update image
+  * Require Python 3.9
+  * Require google-api-core &gt;= 2.11.0
+  * Improve type checking
+- Update BuildRequires and Requires from setup.py (forwarded request 1370006 from glaubitz)</comment>
+    <requestid>1370044</requestid>
+  </revision>
 </revisionlist>
