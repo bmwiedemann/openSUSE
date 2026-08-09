@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug  7 19:00:00 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Remove the obsolete RustSec risk waiver
+
+-------------------------------------------------------------------
 Tue Aug  4 16:02:57 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to version 0.10.0:
@@ -8,6 +13,8 @@ Tue Aug  4 16:02:57 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
   * We now avoid using mmap on the output file if it's on a btrfs
     or vfat filesystem
   * See full changelog at /usr/share/doc/packages/wild/CHANGELOG.md
+* CVE-2026-25541: integer overflow in 'BytesMut:reserve' can lead
+  to undefined behavior and crashes (bsc#1274104)
 
 -------------------------------------------------------------------
 Sat May 30 14:30:00 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>

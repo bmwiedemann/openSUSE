@@ -37,4 +37,15 @@
 - Initial packaging at version 0.8.0</comment>
     <requestid>1369568</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>c297f20e63a61fe78e7653bbb2472e79</srcmd5>
+    <version>0.10.0</version>
+    <time>1786304531</time>
+    <user>anag_factory</user>
+    <comment>- Remove the obsolete RustSec risk waiver
+
+* CVE-2026-25541: integer overflow in 'BytesMut:reserve' can lead
+  to undefined behavior and crashes (bsc#1274104)</comment>
+    <requestid>1370278</requestid>
+  </revision>
 </revisionlist>
