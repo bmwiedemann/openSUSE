@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug  7 07:48:30 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.27.0
+  * regenerate google-cloud-[t-w] packages (#17076)
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Sat Apr 11 00:11:23 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.26.0:

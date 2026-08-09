@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-cloud-translate
-Version:        3.26.0
+Version:        3.27.0
 Release:        0
 Summary:        Google Cloud Translation API client library
 License:        Apache-2.0
@@ -28,7 +28,7 @@ BuildRequires:  %{python_module google-api-core >= 2.11.0}
 BuildRequires:  %{python_module google-auth >= 2.14.1}
 BuildRequires:  %{python_module google-cloud-core >= 2.0.0}
 BuildRequires:  %{python_module grpc-google-iam-v1 >= 0.14.0}
-BuildRequires:  %{python_module grpcio >= 1.33.2 if %python-base < 3.14}
+BuildRequires:  %{python_module grpcio >= 1.59.0 if %python-base < 3.14}
 BuildRequires:  %{python_module grpcio >= 1.75.1 if %python-base >= 3.14}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module proto-plus >= 1.22.3 if %python-base < 3.13}
@@ -42,7 +42,7 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %if %python_version_nodots < 314
-Requires:       python-grpcio >= 1.33.2
+Requires:       python-grpcio >= 1.59.0
 %else
 Requires:       python-grpcio >= 1.75.1
 %endif
