@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Aug  7 18:39:00 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 5.5.0:
+  + Restore ADX/AVX2 code paths under OPENSSL_SMALL via new
+    MY_ASSEMBLER_IS_TOO_OLD_FOR_ADX_AVX2 flag
+  + Include <openssl/cipher.h> from <openssl/hmac.h> for OpenSSL compat
+  + Fix flaky s_client cipher tests by using better ciphers
+  + Add tests for RSASSA-PSS with SHA-3 digest and MGF1
+  + Link header documentation from README
+  + Rename autofix reasoning role to AwsLcGitHubActionsBedrockRole
+  + delocate: Drop redundant -dI flag
+  + Add Neoverse-V3 (Graviton5) detection and dispatch
+  + Update FIPS.md
+  + Update concurrency in security-review
+  + Enable linker garbage collection for non-FIPS static builds
+
+-------------------------------------------------------------------
 Thu Jul 30 07:31:04 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 5.4.0:
