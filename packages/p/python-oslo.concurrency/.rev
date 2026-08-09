@@ -452,4 +452,23 @@
   * ruff: Configure hacking as external linter</comment>
     <requestid>1359325</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>19c5b19e91ea8d729685b088885a12e7</srcmd5>
+    <version>7.6.1</version>
+    <time>1786304085</time>
+    <user>anag_factory</user>
+    <comment>- update to 7.6.1:
+  * Add basic ReaderWriterLock tests
+  * Restore ReadWriterLock writer exclusiveness in eventlet
+  * Reproduce bug/2160596
+  * zuul: Use openstack-python3-next-jobs template
+  * pre-commit: Bump versions
+  * Do not install code to build release notes
+  * Remove Python 3.10 support
+  * Imported Translations from Zanata
+  * Fix bug with oslo.config
+  * Don't import eventlet until needed
+  * Deprecate version module</comment>
+    <requestid>1369778</requestid>
+  </revision>
 </revisionlist>

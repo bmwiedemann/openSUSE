@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Aug  5 14:19:11 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.6.1:
+  * Add basic ReaderWriterLock tests
+  * Restore ReadWriterLock writer exclusiveness in eventlet
+  * Reproduce bug/2160596
+  * zuul: Use openstack-python3-next-jobs template
+  * pre-commit: Bump versions
+  * Do not install code to build release notes
+  * Remove Python 3.10 support
+  * Imported Translations from Zanata
+  * Fix bug with oslo.config
+  * Don't import eventlet until needed
+  * Deprecate version module
+
+-------------------------------------------------------------------
 Mon May 18 22:10:58 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.5.0:
