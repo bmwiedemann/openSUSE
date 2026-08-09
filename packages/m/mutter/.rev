@@ -2485,4 +2485,19 @@ New stable rel</comment>
   + 5096.patch</comment>
     <requestid>1363715</requestid>
   </revision>
+  <revision rev="269" vrev="1">
+    <srcmd5>811c74f5e984364d2d33cb88cf02991c</srcmd5>
+    <version>50.4</version>
+    <time>1786303912</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 50.4:
+  + Fix blurred rendering with non-pixel-aligned monitors
+  + Do not add unsupported fallback monitor modes
+  + Fill in mastering display metadata for HDR output
+  + Fix invalid redraw clips on rotated monitors
+  + Fixed crashes
+  + Misc. bug fixes and cleanups
+  + Updated translations.</comment>
+    <requestid>1369981</requestid>
+  </revision>
 </revisionlist>

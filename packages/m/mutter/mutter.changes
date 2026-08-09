@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Aug  4 17:41:12 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.4:
+  + Fix blurred rendering with non-pixel-aligned monitors
+  + Do not add unsupported fallback monitor modes
+  + Fill in mastering display metadata for HDR output
+  + Fix invalid redraw clips on rotated monitors
+  + Fixed crashes
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Jul  3 12:36:13 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 50.3:
