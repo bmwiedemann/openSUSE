@@ -639,4 +639,41 @@
     <comment></comment>
     <requestid>1349063</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>8f3e5ba6c419bf2f5591c2f2ddcf79d5</srcmd5>
+    <version>4.45.0</version>
+    <time>1786303960</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.45.0:
+  * Support CDP versions: v147, v148, v149
+  * Allow MAX_WS_MESSAGE_SIZE to be configurable (#17581)
+  * Extract feature-specific modules from //py:common  (#17606)
+  * [build] use pinned browser and driver for starting grid in
+    python and ruby tests (#17610)
+  * Extract alert and color into dedicated libraries  (#17611)
+  * [bidi]: close BiDi websocket on `quit()` (#17663)
+  * terminate driver service process when start() fails to
+    connect (#17651)
+  * Use generated Bidi files instead of hand curated ones
+    (#17266)
+  * Fix race condition in WebSocketConnection.execute() causing
+    KeyError (#17381)
+  * Implement high level APIs for script (#17371)
+  * Add edge service arg to inherit browser i/o streams (#17415)
+  * Update dev dependencies and fix type annotation (#17434)
+
+- Update vendor tarball to fix CVE-2024-12224 (bsc#1243866)
+  + Improved WebExtension support
+  * [py] Fix doc of URL-related ExpectedCondition (#6236)
+    * firefox extension extraction fixes
+    and therefore there may be no HKEY_LOCAL_MACHINE entry.
+  * UnexpectedAlertPresentException should contain the alert text
+  * don't mutate the global 'ignored exceptions', take a copy of
+    the globally specified ones, change the global to be a tuple
+  * raise exception when the firefox binary isn't actually found,
+    which usually implies the upgrade failed (on windows)
+  * Redirect Firefox output to /dev/null by default
+  * More flexible management of http timeouts in Selenium RC python</comment>
+    <requestid>1370120</requestid>
+  </revision>
 </revisionlist>

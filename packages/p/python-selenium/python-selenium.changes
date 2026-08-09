@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Aug  6 20:41:25 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.45.0:
+  * Support CDP versions: v147, v148, v149
+  * Allow MAX_WS_MESSAGE_SIZE to be configurable (#17581)
+  * Extract feature-specific modules from //py:common  (#17606)
+  * [build] use pinned browser and driver for starting grid in
+    python and ruby tests (#17610)
+  * Extract alert and color into dedicated libraries  (#17611)
+  * [bidi]: close BiDi websocket on `quit()` (#17663)
+  * terminate driver service process when start() fails to
+    connect (#17651)
+  * Use generated Bidi files instead of hand curated ones
+    (#17266)
+  * Fix race condition in WebSocketConnection.execute() causing
+    KeyError (#17381)
+  * Implement high level APIs for script (#17371)
+  * Add edge service arg to inherit browser i/o streams (#17415)
+  * Update dev dependencies and fix type annotation (#17434)
+
+-------------------------------------------------------------------
 Fri Apr 17 13:22:35 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Update to 4.43.0
@@ -16,7 +37,7 @@ Fri Apr 17 13:22:35 UTC 2026 - Markéta Machová <mmachova@suse.com>
 -------------------------------------------------------------------
 Mon Jun  2 15:32:37 UTC 2025 - Felix Stegmeier <felix.stegmeier@suse.com>
 
-- Update vendor tarball to fix CVE-2024-12224 (bsc#1243866) 
+- Update vendor tarball to fix CVE-2024-12224 (bsc#1243866)
 
 -------------------------------------------------------------------
 Sun Apr 20 21:37:53 UTC 2025 - Christian Boltz <suse-beta@cboltz.de>
@@ -165,7 +186,7 @@ Fri May 17 18:42:59 UTC 2019 - Meera Belur <mbelur@suse.com>
   + Update ctor docstrings to explain that a directory passed in is cloned. Fixes #6542
   + Allow passing of service_args to Safari. Fixes #6459
   + Remove element equals url
-  + Improved WebExtension support 
+  + Improved WebExtension support
 
 -------------------------------------------------------------------
 Fri Sep 21 07:49:59 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
@@ -194,7 +215,7 @@ Fri Aug  3 11:55:47 UTC 2018 - tchvatal@suse.com
 Fri Aug  3 08:44:01 UTC 2018 - idonmez@suse.com
 
 - Update to version 3.14.0
-  * [py] Fix doc of URL-related ExpectedCondition (#6236) 
+  * [py] Fix doc of URL-related ExpectedCondition (#6236)
 
 -------------------------------------------------------------------
 Sun Jul  1 19:18:04 UTC 2018 - arun@gmx.de
@@ -497,7 +518,7 @@ Thu Jul 16 07:57:32 UTC 2015 - mcihar@suse.cz
     * Firefox support up to 38
     * BlackBerry browser support
     * remove Presto-Opera support
-    * firefox extension extraction fixes 
+    * firefox extension extraction fixes
     * process management fixes with phantomjs
     * Comparing remote web element for equality does not require a remote command
     * Issues Fixed: (gcode) 8493, 8521, 8498, 8274, 8497, 5923
@@ -523,25 +544,25 @@ Thu Sep 11 12:24:55 UTC 2014 - toddrme2178@gmail.com
 - Update to version 2.43
   * Expand WebElement.get_attribute API docs
   * firefox may be installed without admininstrator privileges
-    and therefore there may be no HKEY_LOCAL_MACHINE entry. 
+    and therefore there may be no HKEY_LOCAL_MACHINE entry.
     Issue #7784
-  * UnexpectedAlertPresentException should contain the alert text 
+  * UnexpectedAlertPresentException should contain the alert text
     in python too. Issue #7745
-  * don't mutate the global 'ignored exceptions', take a copy of 
-    the globally specified ones, change the global to be a tuple 
+  * don't mutate the global 'ignored exceptions', take a copy of
+    the globally specified ones, change the global to be a tuple
     instead. Issue #7725
-  * raise exception when the firefox binary isn't actually found, 
-    which usually implies the upgrade failed (on windows) 
+  * raise exception when the firefox binary isn't actually found,
+    which usually implies the upgrade failed (on windows)
     Issue #6092 ,#6847
   * Fixing NameError: global name 'options' is not defined.
   * Remove unused import subprocess.PIPE
-  * Redirect Firefox output to /dev/null by default 
+  * Redirect Firefox output to /dev/null by default
     Fixes Issue #7677
-  * More flexible management of http timeouts in Selenium RC python 
+  * More flexible management of http timeouts in Selenium RC python
     client
-  * Generate Python API docs for selenium.webdriver.chrome.options. 
+  * Generate Python API docs for selenium.webdriver.chrome.options.
     Fixes issue #7471
-  * Use 127.0.0.1 as localhost name resolving might fail on some 
+  * Use 127.0.0.1 as localhost name resolving might fail on some
     systems
 
 -------------------------------------------------------------------
@@ -750,7 +771,7 @@ Thu Apr 12 01:44:29 UTC 2012 - alexandre@exatati.com.br
 - Update to 2.21.1:
   * focusmanager.testmode messes with native events, removing it.
 - Aditional changes from 2.21:
-  * Local File upload capabilities for non-remote browser 
+  * Local File upload capabilities for non-remote browser
   * Adding maximize_window api call
   * Updating default firefox profile to set focusmanager.testmode to
     true see https://bugzilla.mozilla.org/show_bug.cgi?id=704583
@@ -925,7 +946,7 @@ Wed Mar  3 12:59:09 CET 2010 - boris@steki.net
 
 - Changed default installation path as x86_64 system was installing
   libraries into /usr/lib/python2.6 which is wrong and is not pythons
-  default search path 
+  default search path
 
 -------------------------------------------------------------------
 Wed Sep 16 19:08:22 UTC 2009 - alexandre@exatati.com.br

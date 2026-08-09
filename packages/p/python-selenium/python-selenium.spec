@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-selenium
-Version:        4.43.0
+Version:        4.45.0
 Release:        0
 Summary:        Python bindings for Selenium
 License:        Apache-2.0
