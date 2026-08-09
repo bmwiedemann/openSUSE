@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Aug  2 07:52:56 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.60.6:
+  + atk-bridge: Attempt to fix a crash in
+    get_registered_event_listeners
+  + AtspiDevice: Avoid assigning 0 as a grab id
+  + Remove G_GNUC_CONST from *_get_type_declarations
+
+-------------------------------------------------------------------
 Sun Jun 28 08:22:42 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.60.5:

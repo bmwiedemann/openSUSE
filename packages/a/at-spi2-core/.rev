@@ -2855,4 +2855,16 @@
     in some cases.</comment>
     <requestid>1362492</requestid>
   </revision>
+  <revision rev="128" vrev="1">
+    <srcmd5>b3444e6c530a695d9c2e02aa6489be65</srcmd5>
+    <version>2.60.6</version>
+    <time>1786303906</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.60.6:
+  + atk-bridge: Attempt to fix a crash in
+    get_registered_event_listeners
+  + AtspiDevice: Avoid assigning 0 as a grab id
+  + Remove G_GNUC_CONST from *_get_type_declarations</comment>
+    <requestid>1369842</requestid>
+  </revision>
 </revisionlist>
