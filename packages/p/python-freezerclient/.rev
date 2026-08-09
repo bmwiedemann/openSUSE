@@ -234,4 +234,18 @@
 - fix filelist</comment>
     <requestid>1356774</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>cece4e65276e83108e968a71c1249f92</srcmd5>
+    <version>6.4.0</version>
+    <time>1786304115</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.4.0:
+  * Migrate setup to pyprojects.toml
+  * Add osc plugin compatability for the client
+  * Remove v1 API support
+  * Introduce client manager base class
+  * Add trust ID support for client auth
+  * Update master for stable/2025.2</comment>
+    <requestid>1370130</requestid>
+  </revision>
 </revisionlist>

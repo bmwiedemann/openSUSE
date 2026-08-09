@@ -18,7 +18,7 @@
 
 %global pythons %{primary_python}
 Name:           python-freezerclient
-Version:        6.3.0
+Version:        6.4.0
 Release:        0
 Summary:        Python API and CLI for OpenStack Freezer
 License:        Apache-2.0
@@ -28,17 +28,20 @@ Source0:        https://files.pythonhosted.org/packages/source/p/python-freezerc
 BuildRequires:  %{python_module cliff >= 2.8.0}
 BuildRequires:  %{python_module fixtures}
 BuildRequires:  %{python_module keystoneauth1 >= 3.4.0}
+BuildRequires:  %{python_module osc-lib >= 1.14.0}
 BuildRequires:  %{python_module oslo.serialization >= 2.25.0}
 BuildRequires:  %{python_module oslo.utils >= 3.33.0}
 BuildRequires:  %{python_module oslotest}
+BuildRequires:  %{python_module pbr >= 6.1.1}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module python-subunit}
-BuildRequires:  %{python_module stestr}
-BuildRequires:  %{python_module testtools}
+BuildRequires:  %{python_module stestr >= 2.0.0}
+BuildRequires:  %{python_module testtools >= 2.2.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  openstack-macros
 Requires:       python-cliff >= 2.8.0
 Requires:       python-keystoneauth1 >= 3.4.0
+Requires:       python-osc-lib >= 1.14.0
 Requires:       python-oslo.serialization >= 2.25.0
 Requires:       python-oslo.utils >= 3.33.0
 Requires:       python-pbr >= 2.0.0

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Aug  6 20:45:16 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.4.0:
+  * Migrate setup to pyprojects.toml
+  * Add osc plugin compatability for the client
+  * Remove v1 API support
+  * Introduce client manager base class
+  * Add trust ID support for client auth
+  * Update master for stable/2025.2
+
+-------------------------------------------------------------------
 Tue Jun  2 15:55:16 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.3.0:
