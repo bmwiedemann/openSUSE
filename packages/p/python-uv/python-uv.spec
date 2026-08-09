@@ -26,10 +26,23 @@
 %global build_rustflags -C linker=clang -C link-arg=-fuse-ld=%{_bindir}/mold -C link-arg=-Wl,-z,relro,-z,now -C debuginfo=2 -C incremental=false -C strip=none
 %endif
 Name:           python-uv
-Version:        0.12.1
+Version:        0.12.3
 Release:        0
 Summary:        A Python package installer and resolver, written in Rust
-License:        Apache-2.0 OR MIT
+# Legal-Review-Notice: uv itself is "Apache-2.0 OR MIT", but the binary
+# statically links the vendored Rust dependencies. Re-derived on this
+# re-vendor with "cargo tree --offline -p uv -e normal" over the vendored
+# tree (672 crates); the copyleft licences in the linked graph are:
+#  - MPL-2.0 from astral-pubgrub, astral-version-ranges and option-ext
+#    (the last via shellexpand -> dirs -> dirs-sys),
+#  - priority-queue, which is "LGPL-3.0-or-later OR MPL-2.0" - we elect
+#    MPL-2.0, so no LGPL obligation is taken on.
+# configparser is "MIT OR LGPL-3.0-or-later" and we elect MIT; r-efi
+# offers an LGPL-2.1-or-later option but is UEFI-target-only and absent
+# from the Linux graph; colored is not in this binary's graph at all.
+# Everything else is permissive. MPL-2.0 section 3.2 is satisfied because
+# the complete vendor.tar.zst ships in the src.rpm.
+License:        (Apache-2.0 OR MIT) AND MPL-2.0
 URL:            https://github.com/astral-sh/uv
 Source0:        https://github.com/astral-sh/uv/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst

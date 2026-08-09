@@ -2931,4 +2931,12 @@
     <comment>Update to 0.12.1</comment>
     <requestid>1368963</requestid>
   </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>30bbbacca9dfe610520628058ca3eb8f</srcmd5>
+    <version>0.12.3</version>
+    <time>1786304276</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.12.3 (supersedes SR 1370151, which carried 0.12.2): CPython 3.13.15 added, several resolver and startup performance improvements, and preview --output-format for uv cache size. NOTE FOR LEGAL REVIEW: License changes from 'Apache-2.0 OR MIT' to '(Apache-2.0 OR MIT) AND MPL-2.0'. This is a correction, not a new obligation - astral-pubgrub, astral-version-ranges and option-ext were already statically linked in 0.12.2. Derivation is recorded in a Legal-Review-Notice comment above the tag; re-derived with 'cargo tree --offline -p uv -e normal' over the 672-crate vendored tree. priority-queue is dual LGPL-3.0-or-later OR MPL-2.0 and we elect MPL-2.0; configparser is dual MIT OR LGPL-3.0-or-later and we elect MIT. MPL-2.0 section 3.2 is satisfied because vendor.tar.zst ships in the src.rpm. Built and verified on aarch64: rpmlint 0 errors / 2 warnings / 0 badness (both warnings pre-existing), cargo_audit clean apart from the already-accepted RUSTSEC-2023-0071, source_validator clean.</comment>
+    <requestid>1370317</requestid>
+  </revision>
 </revisionlist>

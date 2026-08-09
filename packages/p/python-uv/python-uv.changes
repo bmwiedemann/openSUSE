@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Sat Aug  8 05:16:54 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.12.3:
+  * Add CPython 3.13.15
+  * Add --output-format to uv cache size, selecting automatic,
+    human-readable or raw-byte output (preview)
+  * Preserve JSON output from uv workspace metadata --quiet while
+    suppressing diagnostics, and stream it to cut memory use on
+    large workspaces (preview)
+  * Reduce Linux startup latency by initialising the workspace cache
+    before spawning another thread
+  * Reuse compiled workspace exclusion patterns during workspace
+    discovery
+  * Speed up conflict-heavy resolutions by avoiding materialised
+    range complements
+  * Avoid slow procfs reads during Python interpreter discovery on
+    Linux
+- Re-vendor the Rust dependencies and re-derive the licence set of
+  the statically linked crates; correct License to
+  (Apache-2.0 OR MIT) AND MPL-2.0 and record the derivation in a
+  Legal-Review-Notice comment. The MPL-2.0 crates were already
+  linked before this update, so the tag was incomplete rather than
+  newly wrong
+
+-------------------------------------------------------------------
+Fri Aug  7 04:54:41 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.12.2:
+  * Add CPython 3.15.0rc1 and CPython 3.14.7
+  * Ensure diagnostic hints end with a newline to prevent
+    malformed terminal output
+  * Audit one or all installed tools with uv tool audit (preview)
+  * Report physically reclaimed disk space during cache cleanup
+    with the cache-physical-space preview feature
+  * Add UV_RUN_RLIMIT_NOFILE to set the open-file limit for
+    commands launched by uv run
+  * Speed up uv.lock parsing and filename extraction from
+    distribution URLs
+  * Reduce filesystem metadata lookups during bytecode compilation
+    and reuse file metadata when building source distributions
+  * Preserve compatibility with older uv versions when recording
+    artifact sizes in cached wheels and source distributions
+  * Avoid including workspace-root default dependency groups when
+    syncing or exporting a selected workspace member unless
+    explicitly requested
+
+-------------------------------------------------------------------
 Sat Aug  1 06:31:12 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.12.1:
