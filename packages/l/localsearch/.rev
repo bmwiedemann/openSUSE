@@ -105,4 +105,13 @@
     <comment>Update version</comment>
     <requestid>1348436</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>c762c59e519685cf1d93ac7a323edaa1</srcmd5>
+    <version>3.11.1</version>
+    <time>1786303899</time>
+    <user>anag_factory</user>
+    <comment>- Replace pkgconfig(gexiv2) with pkgconfig(gexiv2-0.16)
+  BuildRequires: Use the new stable branch of gexiv.</comment>
+    <requestid>1369833</requestid>
+  </revision>
 </revisionlist>

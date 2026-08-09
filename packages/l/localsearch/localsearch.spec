@@ -39,7 +39,7 @@ BuildRequires:  vala
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(enca) >= 1.9
 BuildRequires:  pkgconfig(exempi-2.0) >= 2.1.0
-BuildRequires:  pkgconfig(gexiv2)
+BuildRequires:  pkgconfig(gexiv2-0.16)
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.76.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.76.0
 BuildRequires:  pkgconfig(gmodule-2.0) >= 2.76.0

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug  5 08:29:09 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Replace pkgconfig(gexiv2) with pkgconfig(gexiv2-0.16)
+  BuildRequires: Use the new stable branch of gexiv.
+
+-------------------------------------------------------------------
 Thu Apr 16 06:26:10 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.11.1:
