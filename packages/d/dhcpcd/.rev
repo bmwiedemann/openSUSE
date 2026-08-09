@@ -138,4 +138,20 @@
   * DHCP: free the state when dropping on state NONE</comment>
     <requestid>1351403</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b396744aff5afe7ff060a924b85a6eec</srcmd5>
+    <version>10.5.0</version>
+    <time>1786303946</time>
+    <user>anag_factory</user>
+    <comment>- Update to 10.5.0
+  (CVE-2026-56113)
+  [bsc#1268980]
+  (CVE-2026-56115)
+  [bsc#1268976]
+  (CVE-2026-56116)
+  [bsc#1268974]
+  (CVE-2026-56117)
+  [bsc#1268968]</comment>
+    <requestid>1370032</requestid>
+  </revision>
 </revisionlist>

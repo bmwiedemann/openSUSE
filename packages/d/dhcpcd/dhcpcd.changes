@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Thu Aug  6 10:56:17 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to 10.5.0
+  * DHCPv6: When deprecating addresses, restart on prefix deletions
+    (CVE-2026-56113)
+    [bsc#1268980]
+  * DHCPv6: Prefix exclude option can be 17 octets
+    (CVE-2026-56115)
+    [bsc#1268976]
+  * IPv6ND: Free routeinfo when it expires
+    (CVE-2026-56116)
+    [bsc#1268974]
+  * control: Avoid hangup in the recvdata path
+    (CVE-2026-56117)
+    [bsc#1268968]
+  * Add missing SPDX-License tags
+  * Format code with clang-format v19
+  * privsep: Change IPC to use SOCK_STREAM
+  * BPF: Split OS specific code out into own files and add libpcap
+    support
+  * hooks: Escape interface names and use printf
+  * Delete DHCPv6 IA FD from the loop before closing it
+  * eloop: Use kqueue or epoll to wait for a fd to become ready
+  * Darwin: Add initial support for macOS
+  * Import latest pidfile from NetBSD
+  * BPF: Improve headers
+  * compat: Add support for getprogname(3)
+  * route: Rework rt structure so sockaddrs are pointers
+  * dhcp-common: Escape ifname for lease file
+  * privsep: smaller buffer size without INET6
+  * script: add ifxname as the escaped string
+  * time.h always pulls in struct timespec
+  * route: Use HAVE_RT_MISSFILTER rather than a generic BSD define
+  * privsep: Test defines for all ioctls
+  * if: if_init inits the interface from the kernel
+  * privsep: Add ps_root_gethostname
+  * DHCP: Don't really expire the lease when testing
+  * DHCP: Don't add a trailing : on vendor if no machine arch
+  * privsep: guard setproctitle and only use compat on linux
+  * options: Remove some const to fix compile warnings
+  * privsep: Don't open PF_INET socket for each ioctl
+  * sun: Enable building for privsep
+  * script: Use correct buffer length variable
+  * privsep: Remove PS_BUFLEN
+  * privsep: Simplify readerror
+  * timezone: disallow directory traversal
+  * privsep: ps_root_readfile should return the real file size
+  * linux: Ensure NLA data boundaries are valid
+  * options: Fix userclass boundary
+  * ND6: fix OOB reject mask for an undefined option.
+  * DHCP6: Ensure IA_PD Prefix Lenth is valid
+  * ND: Enforce require and reject policy
+  * ARP: check we have enough to read the frame header
+  * hooks: Quote assignment of compat vars correctly
+  * udev: Ensure we have a subsystem, action and ifname
+  * Fix CI build
+  * DHCP: Santize messages from servers for output
+  * ARP: Iterate over states safely as the cb could remove ours
+  * privsep: Check data is terminated when a string
+  * auth: clear keys with memset_explicit
+  * auth: Ensure remaining dlen matches hash digest length
+  * hooks: don't read past truncated ip6 address starting fe
+  * ipv6: Only regen temp addrs with sufficent pltime
+  * eloop: Improve timespecdiff
+  * eloop: Fix compile warning where UTIME_MAX is a calculation
+  * vsio: Allow zero length options
+  * DHCP6: Fix configuring the suffix to delegated prefixes
+  * IPv6: Fix numerous issues extending temporary address times
+  * capsicum: Avoid some overflow issues in privsep sysctl
+  * script: Fix buffer over and under flows in script_buftoenv
+  * IPv4: uset old_ia when adding an address causes early removal
+  * dhcp: add configurable backoff parameters for DHCPv4
+  * options: Introdce policy groups
+  * Build all the targets on macos
+  * control: remove unprivileged socket
+  * DHCP: deconfigure even when state is NULL or NONE
+
+-------------------------------------------------------------------
 Thu May  7 11:26:27 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Update to 10.3.2
