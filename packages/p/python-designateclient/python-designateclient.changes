@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Aug  6 20:01:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.0.0:
+  * Add --status filter option to zone transfer request list
+  * Add Zone nameserver request to client
+  * Add dns limit list CLI command
+  * Add --attributes flag to zone import create command
+  * Add pagination support to zone task list methods
+  * Fix tld list command filters not being applied
+  * Add support for GET /v2/quotas/ endpoint
+  * Update packaging configuration
+  * Migrate setup configuration to pyproject.toml
+  * Include status code and body in non-JSON error responses
+  * Add missing filter options to list commands
+  * Fix "floatingip" to "floating IP" in ptr record help text
+  * Make email optional when creating zone
+  * Update master for stable/2026.1
+  * Drop redundant type/attribute check
+  * Remove old checks for Python 2-3 compatibility
+
+-------------------------------------------------------------------
 Mon Mar  9 21:35:17 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.4.0:

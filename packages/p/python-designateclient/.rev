@@ -392,4 +392,28 @@
 - fix filelist</comment>
     <requestid>1337830</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>6a17fcffe2fb53d175570df4fd39f744</srcmd5>
+    <version>7.0.0</version>
+    <time>1786304080</time>
+    <user>anag_factory</user>
+    <comment>- update to 7.0.0:
+  * Add --status filter option to zone transfer request list
+  * Add Zone nameserver request to client
+  * Add dns limit list CLI command
+  * Add --attributes flag to zone import create command
+  * Add pagination support to zone task list methods
+  * Fix tld list command filters not being applied
+  * Add support for GET /v2/quotas/ endpoint
+  * Update packaging configuration
+  * Migrate setup configuration to pyproject.toml
+  * Include status code and body in non-JSON error responses
+  * Add missing filter options to list commands
+  * Fix &quot;floatingip&quot; to &quot;floating IP&quot; in ptr record help text
+  * Make email optional when creating zone
+  * Update master for stable/2026.1
+  * Drop redundant type/attribute check
+  * Remove old checks for Python 2-3 compatibility</comment>
+    <requestid>1370107</requestid>
+  </revision>
 </revisionlist>

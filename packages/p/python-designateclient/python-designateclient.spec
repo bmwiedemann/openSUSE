@@ -18,7 +18,7 @@
 
 %global pythons %{primary_python}
 Name:           python-designateclient
-Version:        6.4.0
+Version:        7.0.0
 Release:        0
 Summary:        OpenStack DNS as a Service - Client
 License:        Apache-2.0
