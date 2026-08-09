@@ -323,4 +323,17 @@
 - Update Requires from pyproject.toml (forwarded request 1311648 from glaubitz)</comment>
     <requestid>1311672</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>cf5cf9ed3bc1facb98a47e72921c19c3</srcmd5>
+    <version>9.2.0</version>
+    <time>1786304071</time>
+    <user>anag_factory</user>
+    <comment>- Downgrade to previous upstream release (bsc#1274062)
+  + Version 9.2.0
+  + Required to unbreak Azure CLI packages
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1370079 from glaubitz)</comment>
+    <requestid>1370087</requestid>
+  </revision>
 </revisionlist>
