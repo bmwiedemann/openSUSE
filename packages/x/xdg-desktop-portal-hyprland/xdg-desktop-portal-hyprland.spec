@@ -1,7 +1,7 @@
 #
 # spec file for package xdg-desktop-portal-hyprland
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global __builder ninja
 
 Name:           xdg-desktop-portal-hyprland
-Version:        1.3.10
+Version:        1.4.1
 Release:        0
 Summary:        Extended xdg-desktop-portal backend for Hyprland
 License:        MIT
@@ -30,9 +30,9 @@ BuildRequires:  cmake
 # Seems some of the C and CXX flags are CLANG specific
 BuildRequires:  clang
 BuildRequires:  clang-devel
-BuildRequires:  hyprland-protocols-devel
+BuildRequires:  hyprland-protocols-devel >= 0.7.0
 BuildRequires:  ninja
-BuildRequires:  pipewire-devel
+BuildRequires:  pipewire-devel >= 1.1.82
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-base-devel
 BuildRequires:  qt6-wayland
@@ -43,8 +43,8 @@ BuildRequires:  scdoc >= 1.9.7
 BuildRequires:  util-linux
 BuildRequires:  pkgconfig(gbm) >= 21.3
 BuildRequires:  pkgconfig(hyprland-protocols)
-BuildRequires:  pkgconfig(hyprlang)
-BuildRequires:  pkgconfig(hyprutils)
+BuildRequires:  pkgconfig(hyprlang) >= 0.2.0
+BuildRequires:  pkgconfig(hyprutils) >= 0.2.6
 BuildRequires:  pkgconfig(hyprwayland-scanner) >= 0.4.2
 BuildRequires:  pkgconfig(inih)
 BuildRequires:  pkgconfig(libdrm) >= 2.4.109

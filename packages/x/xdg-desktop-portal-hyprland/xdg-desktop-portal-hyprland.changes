@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Jul 30 07:13:32 UTC 2026 - Florian "spirit" <sp1rit@disroot.org>
+
+- Update to version 1.4.1:
+  - Small patch release to fix loop shenanigans eating cpu
+  - screencopy: add option to override default cursor_mode
+- Changes from version 1.4.0:
+  - New stuff :)
+  - Changes
+    - fix: SToplevelHandle accesses member after freeing itself
+    - globalshortcuts: race-safe session lifetimes
+    - screencast: bump backend to v6 (version property + mapping_id +
+      pipewire-serial)
+    - helpers: run hyprctl notify through argv instead of a shell
+    - fix: use explicit cast
+    - shared: include vector header
+    - Implement Input Capture Desktop Portal
+- Changes from version 1.3.12:
+  - A new round of fixes.
+  - Changes
+    - screencopy: fix invalid usage of sc flags
+    - screencopy: fix cursor handling
+    - screencopy: add DMA-BUF to SHM fallback
+    - screencopy: save and restore geometry for region sharing
+    - portals: Add missing buffer data flags SPA_DATA_FLAG_READABLE
+      and SPA_DATA_FLAG_MAPPABLE.
+- Changes from version 1.3.11:
+  - Minor update with a few fixes
+  - Changes:
+    - portals: Fix use of a potentially destroyed session
+    - screencopy: fix callback resetting
+
+-------------------------------------------------------------------
 Wed Sep 10 20:18:22 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 1.3.10:
