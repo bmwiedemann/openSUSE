@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Aug  6 20:30:29 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.8.1:
+  * Improved corrections tables
+- update to 0.8.0:
+  * **New** support for Variation Selector 15 Emojis as narrow,
+    #211.
+  * **New** argument, ``term_program`` for `wcstwidth()`_,
+    `width()`_, `clip()`_, `wrap()`_, `ljust()`_, `rjust()`_, and
+    `center()`_.  ``False`` disables corrections; ``True`` auto-
+    detects by ``TERM_PROGRAM`` or ``TERM``; string values accept
+    canonical names matching `list_term_programs()`_.
+    `wcstwidth()`_ defaults to ``True``; all other functions
+    default to ``False``.
+  * **Improved** performance on Python 3.15 using standard
+    library iter_graphemes() #206.
+  * **Improved** memory usage and import time for Python 3.15
+    using lazy imports #221.
+  * **Bugfix** Invisible_Stacker viramas now form conjuncts
+    (Burmese, Khmer, etc.) and change some Virama width
+    calculations to match `jacobsandlund/uucode`_ (ghostty) #223.
+  * **Updated** graphemes width maximum now 2, matching Ghostty,
+    foot, and Windows Terminal #224.
+
+-------------------------------------------------------------------
 Tue May 19 20:39:37 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.7.0:
