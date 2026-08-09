@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Aug  7 07:39:42 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Provide GjsPrivate-by-GNOME by typelib-1_0-GjsPrivate-1 and
+  require this symbol by libgjs0: ensure libgjs0 gets the own
+  typelib installed, without risking the variant from cjs to be
+  considered (could not happen so far as cjf marked a conflict with
+  gjs, but that seems not actually to be true).
+
+-------------------------------------------------------------------
 Tue Jun 30 09:49:17 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.88.1:

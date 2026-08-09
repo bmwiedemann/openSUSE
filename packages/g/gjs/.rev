@@ -1890,4 +1890,16 @@ New stable rel</comment>
     - maint: Check for NULL before dereferencing error_out pointer</comment>
     <requestid>1362907</requestid>
   </revision>
+  <revision rev="126" vrev="2">
+    <srcmd5>1c8593df9d1bd6921ac4e1c222b0a632</srcmd5>
+    <version>1.88.1</version>
+    <time>1786303975</time>
+    <user>anag_factory</user>
+    <comment>- Provide GjsPrivate-by-GNOME by typelib-1_0-GjsPrivate-1 and
+  require this symbol by libgjs0: ensure libgjs0 gets the own
+  typelib installed, without risking the variant from cjs to be
+  considered (could not happen so far as cjf marked a conflict with
+  gjs, but that seems not actually to be true).</comment>
+    <requestid>1370198</requestid>
+  </revision>
 </revisionlist>

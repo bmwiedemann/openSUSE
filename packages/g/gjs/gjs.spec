@@ -68,6 +68,7 @@ Mozilla SpiderMonkey JavaScript engine.
 Summary:        JavaScript bindings based on gobject-introspection and Mozilla
 License:        LGPL-2.0-or-later
 Group:          System/Libraries
+Requires:       GjsPrivate-by-GNOME >= %{version}
 Provides:       libgjs-0 = %{version}
 Obsoletes:      libgjs-0 < %{version}
 
@@ -80,6 +81,10 @@ Summary:        Introspection bindings for the GJS library
 # The tyeplib was renamed in gnome 3.6, to reflect it is a private lib.
 License:        LGPL-2.0-or-later AND MIT
 Group:          System/Libraries
+# CJS, as fork of GJS for Cinnamon, provides the same namespace (but in a different
+# directory. We want to ensure that libgjs0 actually get's the correct typelib through
+# dep solver.Achieve this  by an additional provides
+Provides:       GjsPrivate-by-GNOME = %{version}
 Obsoletes:      typelib-1_0-GjsDBus-1_0 < %{version}
 
 %description -n typelib-1_0-GjsPrivate-1_0
