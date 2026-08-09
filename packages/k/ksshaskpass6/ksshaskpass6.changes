@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Aug  4 11:25:34 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.4:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.4
+- Changes since 6.7.3:
+  * Handle when unknown host prompt has no period after the finger print
+  * Support unknown RSA when it has a colon (kde#444862)
+  * Don't offer to remember password without identifier
+  * prompt: Fix password change prompts
+  * Update version for new release 6.7.4
+
+-------------------------------------------------------------------
 Tue Jul 14 12:22:37 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.7.3:
