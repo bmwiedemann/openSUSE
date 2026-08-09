@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Aug  6 11:03:09 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.6.1
+  * bump grpcio to 1.59.0; require Python 3.10+ (#17351)
+  * require Protobuf 6.33.5+ (#17743)
+- from version 2.6.0
+  * Drop support for Python 3.9 (#16953)
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Mon Apr  6 20:24:47 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.5.1:

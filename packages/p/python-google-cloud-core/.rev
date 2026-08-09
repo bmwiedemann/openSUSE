@@ -190,4 +190,17 @@
   * Allow Protobuf 7.x, require Python 3.9</comment>
     <requestid>1344787</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>e4217b530cf8f36873e1676d5a026a12</srcmd5>
+    <version>2.6.1</version>
+    <time>1786304022</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.6.1
+  * bump grpcio to 1.59.0; require Python 3.10+ (#17351)
+  * require Protobuf 6.33.5+ (#17743)
+- from version 2.6.0
+  * Drop support for Python 3.9 (#16953)
+- Update BuildRequires and Requires from setup.py (forwarded request 1370028 from glaubitz)</comment>
+    <requestid>1370029</requestid>
+  </revision>
 </revisionlist>
