@@ -31,4 +31,29 @@
     <comment>Update to version 0.26.0: Inkling model family, DeepSeek-V4 perf work, per-KV-cache-group attention backends, KV offloading maturation; diskcache requirement dropped, relax-cpu-requirements patch rebased</comment>
     <requestid>1367774</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>e0d60723bab57a3c51878e49e153e75c</srcmd5>
+    <version>0.26.0</version>
+    <time>1786303989</time>
+    <user>anag_factory</user>
+    <comment>Add a cpu multibuild flavour with vLLM's compiled CPU kernels
+
+python-vllm keeps building exactly as before as the default flavour (noarch,
+VLLM_TARGET_DEVICE=empty, inference through torch's native CPU operators). This
+adds a second flavour, python-vllm-cpu, built with VLLM_TARGET_DEVICE=cpu so
+vLLM's own optimised C++ CPU kernels are available.
+
+The two install the same importable vllm module, so python-vllm-cpu Provides and
+Conflicts python-vllm -- exactly one is installable.
+
+upstream's cmake/cpu_extension.cmake builds oneDNN from source at an exact pin
+and, on aarch64, the Arm Compute Library as oneDNN's backend, both fetched from
+git at configure time. That cannot work in an offline build root, so both are
+shipped as Sources and wired up through the FETCHCONTENT_SOURCE_DIR_ONEDNN and
+ACL_ROOT_DIR environment overrides upstream already honours. The two oneDNN pins
+are upstream's own and genuinely differ per arch.
+
+Verified on x86_64 and aarch64.</comment>
+    <requestid>1369851</requestid>
+  </revision>
 </revisionlist>

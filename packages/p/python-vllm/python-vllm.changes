@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Aug  5 18:26:03 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Link the CPU kernels with -Wl,-z,noexecstack: the x86 variants
+  (_C, _C_AVX2, _C_AVX512) pull in assembler objects that carry no
+  .note.GNU-stack, so the linker marked the whole shared object's
+  stack executable and rpmlint failed the build on it
+
+-------------------------------------------------------------------
+Wed Aug  5 17:17:38 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Build vLLM's optimised C++ CPU kernels as a new "cpu" multibuild
+  flavour (python-vllm-cpu, VLLM_TARGET_DEVICE=cpu), alongside the
+  existing pure-Python default flavour:
+  * The two flavours install the same importable vllm module, so the
+    cpu one Conflicts with the default; install one or the other
+  * The default flavour stays noarch and unchanged
+- Bundle the sources the CPU kernels build from, since upstream's
+  cmake/cpu_extension.cmake fetches them over the network at configure
+  time, which an offline build root cannot do:
+  * oneDNN, built statically, at upstream's two exact pins (a post-3.10
+    snapshot on the aarch64/ACL path, the 3.10 tag on x86_64)
+  * Arm Compute Library 52.6.0 as oneDNN's aarch64 backend, which
+    upstream enables unconditionally when ASIMD is detected
+  * Both are wired up through the FETCHCONTENT_SOURCE_DIR_ONEDNN and
+    ACL_ROOT_DIR environment overrides upstream already honours
+- Add protobuf to BuildRequires: torch's Caffe2Config.cmake calls
+  find_package(Protobuf) and hard-fails without it
+
+-------------------------------------------------------------------
 Sat Jul 25 19:30:45 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.26.0:

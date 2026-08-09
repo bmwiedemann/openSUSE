@@ -19,22 +19,50 @@
 # vllm is intentionally NOT built as a python-singlespec package: it is tied to
 # the flavour python-torch is built for.  Bind to the single primary python3.
 %define pythons python313
-# CPU variant.  We build with VLLM_TARGET_DEVICE=empty: no CUDA/GPU kernels and
-# no compiled CPU C++ kernels either -- inference runs through torch's native
-# CPU operators.  vLLM's own optimised aarch64/x86 CPU kernels additionally need
-# a from-source oneDNN build and a working libtorch CMake config; the latter is
-# currently broken in Factory's python-torch (its Caffe2Targets.cmake points at
-# the in-tree lib/ paths that the package moves to the system libdir), so
-# find_package(Torch) fails for any downstream C++ consumer.  Enabling the
-# compiled kernels is tracked as a follow-up once that is resolved.
-%define vllm_target_device empty
-Name:           python-vllm
+#
+# Two multibuild flavours, differing only in VLLM_TARGET_DEVICE:
+#
+#   (default)  VLLM_TARGET_DEVICE=empty -- pure Python, no compiled extension.
+#              Inference runs through torch's native CPU operators.  noarch.
+#   cpu        VLLM_TARGET_DEVICE=cpu   -- vLLM's own optimised C++ CPU kernels,
+#              which need a from-source static oneDNN (plus the Arm Compute
+#              Library as oneDNN's backend on aarch64).  Arch-specific.
+#
+# The two are mutually exclusive: both provide the same importable vllm module,
+# so the cpu flavour Conflicts with the default one and users pick exactly one.
+%global         flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "cpu"
+%define         psuffix -cpu
+%define         vllm_target_device cpu
+%bcond_without  cpu_kernels
+%else
+%define         psuffix %{nil}
+%define         vllm_target_device empty
+%bcond_with     cpu_kernels
+%endif
+# Upstream's exact pins from cmake/cpu_extension.cmake -- bump these together
+# with any vllm update, they are version-locked to the kernel sources.
+%define         onednn_aarch64_commit 9c5be1cc59e368aebf0909e6cf20f981ea61462a
+%define         onednn_aarch64_commit_short 9c5be1cc
+%define         onednn_x86_version 3.10
+%define         acl_version 52.6.0
+Name:           python-vllm%{psuffix}
 Version:        0.26.0
 Release:        0
 Summary:        A high-throughput and memory-efficient inference and serving engine for LLMs
 License:        Apache-2.0
 URL:            https://github.com/vllm-project/vllm
 Source0:        https://files.pythonhosted.org/packages/source/v/vllm/vllm-%{version}.tar.gz
+# cmake/cpu_extension.cmake builds oneDNN from source at an exact pin and, on
+# aarch64, the Arm Compute Library as oneDNN's backend -- both via FetchContent
+# straight from git, which the offline build root cannot do.  Ship them as
+# Sources and point vLLM at the unpacked trees with the environment overrides
+# it already honours (FETCHCONTENT_SOURCE_DIR_ONEDNN and ACL_ROOT_DIR).
+# The two oneDNN pins are upstream's, and they genuinely differ per arch: the
+# aarch64/ACL path needs a post-3.10 snapshot, x86_64 uses the 3.10 tag.
+Source10:       https://github.com/oneapi-src/oneDNN/archive/%{onednn_aarch64_commit}.tar.gz#/oneDNN-%{onednn_aarch64_commit_short}.tar.gz
+Source11:       https://github.com/oneapi-src/oneDNN/archive/refs/tags/v%{onednn_x86_version}.tar.gz#/oneDNN-%{onednn_x86_version}.tar.gz
+Source12:       https://github.com/ARM-software/ComputeLibrary/archive/refs/tags/v%{acl_version}.tar.gz#/ComputeLibrary-%{acl_version}.tar.gz
 # PATCH-FIX-OPENSUSE vllm-relax-cpu-requirements.patch -- relax exact pins to what Factory ships and drop optional torchvision/torchaudio/torchcodec/intel-openmp
 Patch0:         vllm-relax-cpu-requirements.patch
 # PATCH-FIX-OPENSUSE vllm-cpu-disable-rust-frontend.patch -- do not build the ~575-crate Rust frontend (unvendorable offline; runtime-optional)
@@ -121,22 +149,61 @@ Requires:       python-watchfiles
 Requires:       python-xgrammar >= 0.2.1
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-# Pure-Python content (VLLM_TARGET_DEVICE=empty builds no compiled extension).
-BuildArch:      noarch
 # Limited to the arches python-torch is built for.
 ExclusiveArch:  x86_64 aarch64
+%if %{with cpu_kernels}
+# The compiled kernels need a C++ toolchain and torch's CMake package config,
+# which ships in the -devel subpackage (find_package(Torch)).
+BuildRequires:  %{python_module torch-devel = 2.12.0}
+BuildRequires:  cmake >= 3.26
+BuildRequires:  gcc-c++
+BuildRequires:  libnuma-devel
+BuildRequires:  ninja
+# torch's own Caffe2Config.cmake does find_package(Protobuf) and hard-fails
+# without it, so find_package(Torch) needs protobuf present at build time.
+BuildRequires:  pkgconfig(protobuf)
+BuildRequires:  pkgconfig(zlib)
+Conflicts:      python-vllm
+# Both flavours install the same importable vllm module, so exactly one of them
+# may be installed at a time.
+Provides:       python-vllm = %{version}-%{release}
+%endif
+%if %{without cpu_kernels}
+# Pure-Python content (VLLM_TARGET_DEVICE=empty builds no compiled extension).
+BuildArch:      noarch
+%endif
 %python_subpackages
 
 %description
 vLLM is a fast and easy-to-use library for LLM inference and serving.
 
+%if %{with cpu_kernels}
+This build includes vLLM's optimised C++ CPU kernels (VLLM_TARGET_DEVICE=cpu),
+backed by a statically linked oneDNN -- and, on aarch64, the Arm Compute
+Library. The CUDA/GPU kernels, the audio/video (torchaudio/torchcodec/
+torchvision) helpers and the optional Rust-accelerated tool parser are not
+included. It conflicts with the plain python-vllm package; install one or the
+other.
+%else
 This build runs CPU inference through PyTorch's native CPU operators
 (VLLM_TARGET_DEVICE=empty): the CUDA/GPU kernels, vLLM's optional compiled
 CPU kernels, the audio/video (torchaudio/torchcodec/torchvision) helpers and
-the optional Rust-accelerated tool parser are not included.
+the optional Rust-accelerated tool parser are not included. For the compiled
+CPU kernels install python-vllm-cpu instead.
+%endif
 
 %prep
 %autosetup -p1 -n vllm-%{version}
+%if %{with cpu_kernels}
+# Unpack the pinned oneDNN (and ACL, its aarch64 backend) beside the source
+# tree; %%build points vLLM's FetchContent at them instead of letting it clone.
+%ifarch aarch64
+tar -xf %{SOURCE10} -C ..
+tar -xf %{SOURCE12} -C ..
+%else
+tar -xf %{SOURCE11} -C ..
+%endif
+%endif
 
 # Use the torch already installed in the build root (2.12.0) instead of the
 # exact 2.11.0 pin, via vLLM's own helper.  Strips torch/torchvision/torchaudio
@@ -145,6 +212,30 @@ the optional Rust-accelerated tool parser are not included.
 
 %build
 export VLLM_TARGET_DEVICE=%{vllm_target_device}
+%if %{with cpu_kernels}
+# Point cpu_extension.cmake at the unpacked trees (both overrides are upstream's
+# own, see cmake/cpu_extension.cmake) so no FetchContent clone is attempted.
+%ifarch aarch64
+export FETCHCONTENT_SOURCE_DIR_ONEDNN="$(readlink -f ../oneDNN-%{onednn_aarch64_commit})"
+export ACL_ROOT_DIR="$(readlink -f ../ComputeLibrary-%{acl_version})"
+%else
+export FETCHCONTENT_SOURCE_DIR_ONEDNN="$(readlink -f ../oneDNN-%{onednn_x86_version})"
+%endif
+export CMAKE_GENERATOR=Ninja
+export MAX_JOBS=%{?jobs:%{jobs}}%{!?jobs:4}
+# cpu_extension.cmake does a bare find_library(OPEN_MP NAMES gomp REQUIRED),
+# but only libgomp.so.1 lives in the default library path -- the unversioned
+# link ships inside gcc's own version directory.  Ask gcc where it is instead
+# of hardcoding a compiler version into the path.
+export CMAKE_LIBRARY_PATH="$(dirname "$(gcc -print-file-name=libgomp.so)")${CMAKE_LIBRARY_PATH:+:$CMAKE_LIBRARY_PATH}"
+# The x86 kernel variants (_C, _C_AVX2, _C_AVX512) link assembler objects that
+# carry no .note.GNU-stack, so the linker conservatively marks the whole shared
+# object's stack executable -- rpmlint scores that 10000 badness each and fails
+# the build. Force a non-executable stack at link time; CMake seeds
+# CMAKE_*_LINKER_FLAGS from $LDFLAGS on the first configure, and setup.py has no
+# CMAKE_ARGS hook to pass it through instead.
+export LDFLAGS="${LDFLAGS:-} -Wl,-z,noexecstack"
+%endif
 # Keep the wheel/dist-info version exactly the upstream version (setup.py
 # otherwise appends a local-version tag, which would not match the files list).
 export VLLM_VERSION_OVERRIDE=%{version}
@@ -159,15 +250,22 @@ export VLLM_TARGET_DEVICE=%{vllm_target_device}
 export VLLM_VERSION_OVERRIDE=%{version}
 export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
 %pyproject_install
+# The default flavour is pure Python and lands in sitelib; the cpu flavour
+# builds a compiled extension and lands in sitearch.  Detect which one
+# %%pyproject_install actually used rather than branching every line below.
+%{python_expand # post-install cleanup
+sd=%{buildroot}%{$python_sitelib}
+[ -d "$sd/vllm" ] || sd=%{buildroot}%{$python_sitearch}
 # Drop non-runtime data files that upstream ships inside the package tree.
-%python_expand rm -f %{buildroot}%{$python_sitelib}/vllm/distributed/kv_transfer/kv_connector/v1/hf3fs/utils/hf3fs_utils.cpp
-%python_expand rm -f %{buildroot}%{$python_sitelib}/vllm/distributed/kv_transfer/disagg_prefill_workflow.jpg
-%python_expand rm -f %{buildroot}%{$python_sitelib}/vllm/vllm_flash_attn/.gitkeep
+rm -f $sd/vllm/distributed/kv_transfer/kv_connector/v1/hf3fs/utils/hf3fs_utils.cpp
+rm -f $sd/vllm/distributed/kv_transfer/disagg_prefill_workflow.jpg
+rm -f $sd/vllm/vllm_flash_attn/.gitkeep
 # These modules carry a #!/usr/bin/env python shebang but are imported, not run.
-%python_expand sed -i '1{/^#!/d}' %{buildroot}%{$python_sitelib}/vllm/entrypoints/grpc_server.py
-%python_expand sed -i '1{/^#!/d}' %{buildroot}%{$python_sitelib}/vllm/entrypoints/openai/dp_supervisor.py
+sed -i '1{/^#!/d}' $sd/vllm/entrypoints/grpc_server.py
+sed -i '1{/^#!/d}' $sd/vllm/entrypoints/openai/dp_supervisor.py
+%fdupes $sd
+}
 %python_clone -a %{buildroot}%{_bindir}/vllm
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export VLLM_TARGET_DEVICE=%{vllm_target_device}
@@ -185,7 +283,12 @@ export VLLM_TARGET_DEVICE=%{vllm_target_device}
 %doc README.md
 %license LICENSE
 %python_alternative %{_bindir}/vllm
+%if %{with cpu_kernels}
+%{python_sitearch}/vllm
+%{python_sitearch}/vllm-%{version}.dist-info
+%else
 %{python_sitelib}/vllm
 %{python_sitelib}/vllm-%{version}.dist-info
+%endif
 
 %changelog
