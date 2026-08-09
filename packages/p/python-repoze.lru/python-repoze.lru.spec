@@ -1,7 +1,7 @@
 #
 # spec file for package python-repoze.lru
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,16 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-repoze.lru
-Version:        0.7
+Version:        0.8
 Release:        0
 Summary:        A tiny LRU cache implementation and decorator
 License:        SUSE-Repoze
 Group:          Development/Languages/Python
 URL:            http://www.repoze.org
-Source:         https://files.pythonhosted.org/packages/source/r/repoze.lru/repoze.lru-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/r/repoze.lru/repoze_lru-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest-cov}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
@@ -39,7 +41,7 @@ than keys and values that are used frequently.  It works under Python 2.5,
 Python 2.6, Python 2.7, and Python 3.2.
 
 %prep
-%setup -q -n repoze.lru-%{version}
+%setup -q -n repoze_lru-%{version}
 
 %build
 %pyproject_wheel
@@ -47,11 +49,13 @@ Python 2.6, Python 2.7, and Python 3.2.
 %install
 %pyproject_install
 
+%check
+%pytest -k "not (test_decorator_expiry or test_expiring_lru_cache_w_different_timeouts)"
+
 %files %{python_files}
 %license LICENSE.txt
 %dir %{python_sitelib}/repoze
 %{python_sitelib}/repoze/lru
 %{python_sitelib}/repoze[._]lru-%{version}*-info
-%{python_sitelib}/repoze[._]lru-%{version}*nspkg.pth
 
 %changelog
