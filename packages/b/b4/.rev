@@ -704,4 +704,29 @@
     content being silently discarded when encountering a &quot;---&quot; marker)</comment>
     <requestid>1345761</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>c1ac1fd12309ab6e47693f65b8ce8c95</srcmd5>
+    <version>0.16.0</version>
+    <time>1786304238</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.16.0
+  * Add b4 bugs command with git-bug integration (technology preview/alpha)
+  * b4 review: add manual revision linking, reworked upgrade flow, thank &amp;
+    archive automation, and partial-series state
+  * b4 review: update send keybinding to Ctrl-y and quit keybinding to Shift-Q
+  * b4 trailers: add interactive review (-i) and fuzzy matching (--fuzzy)
+  * b4 ty: add interactive review mode (-i) before sending thank-you notes
+  * b4 review track: add --rethread support for unthreaded patch submissions
+  * b4 shazam: overhaul --resolve to handle git am conflicts inline via
+    sub-shells
+  * Replace git-filter-repo dependency with native pygit2 history rewriting and
+    git notes migration
+  * Enforce committer identity integrity and add b4 prep --claim command
+  * Include syntax highlighting and editing plugins for Vim and Emacs in misc/
+  * Improve dependency compatibility (lower pygit2 requirement to 1.14)
+
+
+Depends on sr#1370170 and sr#1370171.</comment>
+    <requestid>1370172</requestid>
+  </revision>
 </revisionlist>
