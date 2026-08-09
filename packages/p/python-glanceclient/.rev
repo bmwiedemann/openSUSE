@@ -764,4 +764,18 @@ update to version 2.3.0
     <comment>- remove os-client-config dependency</comment>
     <requestid>1353829</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>21c0b0d1a789bbea3b68b8031cd1676c</srcmd5>
+    <version>4.12.0</version>
+    <time>1786304110</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.12.0:
+  * Remove useless glanceclient/common/https.py
+  * Support for downloading image from preferred stores
+  * Fix unit tests with urllib3 2.x
+  * Update master for stable/2026.1
+- drop 0001-Fix-bytes-related-test-failures-with-urllib-3.patch
+  (upstream)</comment>
+    <requestid>1370119</requestid>
+  </revision>
 </revisionlist>

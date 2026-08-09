@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Aug  6 20:40:24 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.12.0:
+  * Remove useless glanceclient/common/https.py
+  * Support for downloading image from preferred stores
+  * Fix unit tests with urllib3 2.x
+  * Update master for stable/2026.1
+- drop 0001-Fix-bytes-related-test-failures-with-urllib-3.patch
+  (upstream)
+
+-------------------------------------------------------------------
 Mon May 18 13:05:22 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - remove os-client-config dependency
