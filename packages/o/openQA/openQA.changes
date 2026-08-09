@@ -1,4 +1,89 @@
 -------------------------------------------------------------------
+Thu Aug 06 09:25:44 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1786008335.2d518cd9:
+  * fix(CacheService): Ensure that /var/lib/openqa/cache/tmp exists
+  * chore(deps): Dependency cron 2026-08-06
+  * chore(deps): bump fast-uri from 3.1.4 to 3.1.5 (#7720)
+  * fix: set client_body_buffer_size 12m everywhere
+  * docs: Document osado container test requirements
+  * chore(deps-dev): bump @types/estree from 1.0.8 to 1.0.9 (#7705)
+  * chore(deps-dev): bump prettier from 3.8.3 to 3.9.6 (#7704)
+  * test: Fix include paths in `t/api/18-jobtokens.t`
+  * feat: Add specific limits for admin table API routes
+  * fix: Correct comments for `generic_…_limit` in config file
+  * perf: Tweak generic limits to avoid high response times and RAM usage
+  * chore(deps): Dependency cron 2026-08-01
+  * chore(deps-dev): bump stylelint from 17.6.0 to 17.14.1 (#7701)
+  * test: simplify status badge copy test
+  * feat(ui): copy button for status badges
+  * fix: Check for pages greater than 1
+  * chore(deps): Dependency cron 2026-07-31
+  * perf: Only show builds on first group_overview page
+  * chore(deps-dev): bump @eslint-community/eslint-utils (#7691)
+  * feat: Add reserved SUBMISSION_ID default history isolation key
+  * fix(dockerfile): Use preferred JSON notation
+  * chore(deps-dev): bump synckit from 0.11.12 to 0.11.13 (#7692)
+  * docs(Contributing): remove  ca-certificates-suse from opensuse docs
+  * chore(deps): Dependency cron 2026-07-30
+  * fix: Add forge.fedoraproject.org to the bugurl/bugref complex
+  * chore(deps-dev): bump @eslint/plugin-kit from 0.7.1 to 0.7.2 (#7687)
+  * chore(deps-dev): bump @csstools/css-syntax-patches-for-csstree (#7686)
+  * feat: Allow unsetting lock for individual worker slots
+  * feat: Skip download of unnecessary assets in clone_job
+  * chore(deps): Dependency cron 2026-07-29
+  * chore(deps-dev): bump @cacheable/utils from 2.4.0 to 2.5.0 (#7678)
+  * chore(deps-dev): bump globby from 16.1.1 to 16.2.2 (#7677)
+  * chore(deps): bump fast-uri from 3.1.2 to 3.1.4
+  * chore(deps): Dependency cron 2026-07-28
+  * chore(deps): bump postcss from 8.5.12 to 8.5.23 (#7675)
+  * feat: Ensure a consistent order in the throttling notice
+  * fix: Remove accidentally added flash message when adding a comment
+  * chore(deps): bump the all-actions group with 2 updates
+  * ci: Rebuild Perl XS module on Perl version update
+  * chore: Update `pyproject.toml` to use named ignores
+  * test: Update ruff `noqa` comments to use new `ruff:ignore` format
+  * docs: Fix explanation of `prio_throttling_patterns` in config file
+  * feat: Avoid warning when computing diff times out
+  * chore(deps): Dependency cron 2026-07-24
+  * feat: Add agama jsonnet profile for unattended worker OS installation
+  * feat: Persist "Next & Previous" strict toggle in the URL
+  * perf: Isolate "Next & Previous" via EXISTS in CTE instead of id-IN
+  * docs: Document _HISTORY_ISOLATION_KEYS and related migration
+  * feat: Add strict/generalized history toggle to "Next & Previous"
+  * feat(cli): improve connection error reporting
+  * refactor: Deduplicate post-processing of job settings
+  * fix: Apply global test settings when scheduling from YAML
+  * feat: Isolate investigation last-good by history isolation keys
+  * feat: Isolate bugref carry-over by history isolation keys
+  * feat: Add history-isolation primitive to separate scenario histories
+  * test: Ensure `t/full-stack.t` is considered fully covered with Perl 5.44
+  * fix: Escape `@` sign in strings and regexes
+  * ci: Fix failures because os-autoinst is not rebuilt after Perl update
+  * fix(worker): enable rootless podman execution
+  * feat: extend API timestamp mismatch error message with diagnostic info
+  * feat: Turn job restart dropdown into a distinct button
+  * feat: Limit dependency tree
+  * refactor: Remove unused variable
+  * refactor: Simplify grep statement
+  * fix: Escape `@` sign in strings and regexes
+  * chore(deps): Dependency cron 2026-07-21
+  * chore(deps-dev): bump brace-expansion from 5.0.5 to 5.0.7 (#7647)
+  * feat: Use stateful round-robin for group cleanup
+  * feat(admin): show exact timestamp on hover in product log
+  * feat(admin): query parameter search in product log
+  * feat(admin): search in settings in product log
+  * chore(deps): bump actions/setup-node in the all-actions group (#7645)
+  * fix: filter out md files when collecting python files
+  * feat(BCI): dedicated report template for BCI
+  * ci: Replace check-line-coverage with link to common repo
+  * chore: Update external/os-autoinst-common subrepo
+  * chore(deps): Dependency cron 2026-07-19
+  * chore(deps-dev): bump @csstools/css-calc from 3.1.1 to 3.2.1
+  * docs: remove blank lines from variable precedence list
+  * feat: support global instance-wide test settings
+
+-------------------------------------------------------------------
 Mon Aug 03 13:35:10 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1785764079.67eec5ca:
