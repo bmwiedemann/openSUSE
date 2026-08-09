@@ -201,4 +201,13 @@
     load/loads is ignore</comment>
     <requestid>1170447</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>5c5939380aebd33097469a1692ac0c39</srcmd5>
+    <version>2.1.2</version>
+    <time>1786303957</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.1.2:
+  * fix artifact building - pin minimal version of hatch.</comment>
+    <requestid>1370109</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug  6 20:10:19 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.2:
+  * fix artifact building - pin minimal version of hatch.
+
+-------------------------------------------------------------------
 Sat Apr 27 09:00:31 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.1.1:

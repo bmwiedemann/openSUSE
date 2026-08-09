@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-execnet
-Version:        2.1.1
+Version:        2.1.2
 Release:        0
 Summary:        Rapid multi-Python deployment
 License:        MIT
