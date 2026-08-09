@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Jul 31 15:14:32 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 14.3.0:
+  + Changes affecting shaping output:
+    - Lookup order is now respected for mark positioning in the
+      cross-direction (y in horizontal text, x in vertical text):
+      marks no longer follow a cross-direction shift that a later
+      lookup applies to the base. This improves compatibility with
+      DirectWrite and Core Text.
+    - Fix mark attachment to ligatures formed from decomposed
+      glyphs.
+    - The `calt` feature in Hangul text is now disabled only for
+      the Jamos, not the whole buffer.
+  + Support for partially instancing version of `avar` table, as
+    well as `CFF2` table.
+  + New fill-glyph paint operation and APIs for the common case of
+    filling a glyph with a solid color.
+  + New API to fetch assorted raw values from the `OS/2`, `head`,
+    and `post` tables.
+  + New experimental API to extract a font’s glyph dependency
+    graph, that applications can use to compute glyph closures
+    themselves without running the subsetter.
+  + New subset flag to convert the charset of a subsetted CID-keyed
+    `CFF` fonts into identity charset, and a matching `hb-subset`
+    option. Useful for embedding fonts in PDF.
+  + Command-line utilities now handle non-ASCII arguments correctly
+    on Windows.
+  + Various instancing and subsetting fixes.
+  + Various fixes to the experimental `harfbuzz-vector`,
+    `harfbuzz-raster` and `harfbuzz-gpu` libraries.
+  + Various improvements to the HarfRust integration shaper.
+  + Various build, CI, portability, and fuzzing fixes.
+  + Various new APIs.
+
+-------------------------------------------------------------------
 Tue Jun  2 15:43:13 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 14.2.1:
