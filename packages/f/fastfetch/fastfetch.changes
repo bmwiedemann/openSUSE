@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Aug 06 15:08:31 UTC 2026 - RN <R_Nik_C@proton.me>
+
+- Update to version 2.67.0:
+  * CI: Bump the github-actions group with 2 updates
+  * CI: adds `dependabot.yml`
+  * CI: declares least-privilege token permissions
+  * CI: passes only the secret each reusable workflow needs
+  * CI: pins actions to commit SHAs
+  * GenConfig: simplifes code
+  * CI: fixes building
+  * GenConfig: optimises code
+  * Presets (neofetch): shows board name as host name
+
+-------------------------------------------------------------------
 Tue Jul 14 17:21:57 UTC 2026 - RN <R_Nik_C@proton.me>
 
 - Update to version 2.66.0:
