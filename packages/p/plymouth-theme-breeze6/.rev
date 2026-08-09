@@ -380,4 +380,12 @@ Without this, the theme can't be selected:
     <comment>Plasma 6.7.3 (forwarded request 1365832 from Vogtinator)</comment>
     <requestid>1365894</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>9e772b1872243f042f9eeb122bd3e50d</srcmd5>
+    <version>6.7.4</version>
+    <time>1786304011</time>
+    <user>anag_factory</user>
+    <comment>Plasma 6.7.4, untested (forwarded request 1369583 from Vogtinator)</comment>
+    <requestid>1369911</requestid>
+  </revision>
 </revisionlist>
