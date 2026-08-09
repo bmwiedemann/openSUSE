@@ -1,0 +1,4 @@
+<package name="python-liblore" project="openSUSE:Factory">
+  <title>python-liblore</title>
+  <description>A Python library for working with https://public-inbox.org/ servers, particularly https://lore.kernel.org/. It fetches email threads, parses mbox files, and provides utilities for working with email messages from mailing list archives.</description>
+</package>
