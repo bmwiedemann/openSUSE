@@ -1552,7 +1552,7 @@
     <package name="libXvnc1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libXxf86dga1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libXxf86vm1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libZXing3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libZXing4" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="liba52-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libaa1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libabsl_base2601_0_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
