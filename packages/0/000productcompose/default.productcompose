@@ -1600,7 +1600,7 @@ packagesets:
    - libXvnc1 # reason: dvd:patterns-kde-kde
    - libXxf86dga1 # reason: dvd:patterns-kde-kde
    - libXxf86vm1 # reason: dvd:openSUSE-release
-   - libZXing3 # reason: dvd:openSUSE-release
+   - libZXing4 # reason: dvd:openSUSE-release
    - liba52-0 # reason: dvd:patterns-gnome-gnome
    - libaa1 # reason: dvd:patterns-kde-kde
    - libabsl_base2601_0_0 # reason: dvd:patterns-gnome-gnome
@@ -5231,7 +5231,7 @@ packagesets:
    - libXv1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libXxf86dga1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libXxf86vm1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libZXing3 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
+   - libZXing4 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libaa1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libabsl_base2601_0_0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libabsl_borrowed_fixup_buffer2601_0_0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -7048,7 +7048,7 @@ packagesets:
    - libXv1 # reason: opensuse_kalpa:patterns-kalpa-base
    - libXxf86dga1 # reason: opensuse_kalpa:patterns-kalpa-base
    - libXxf86vm1 # reason: opensuse_kalpa:patterns-kalpa-base
-   - libZXing3 # reason: opensuse_kalpa:patterns-kalpa-base
+   - libZXing4 # reason: opensuse_kalpa:patterns-kalpa-base
    - libaa1 # reason: opensuse_kalpa:patterns-kalpa-base
    - libabsl_base2601_0_0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libabsl_borrowed_fixup_buffer2601_0_0 # reason: opensuse_kalpa:patterns-kalpa-base

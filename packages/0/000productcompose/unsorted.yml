@@ -7412,6 +7412,7 @@ unsorted:
   - gnome-commander-lang 
   - gnome-common 
   - gnome-control-center-devel 
+  - gnome-desktop-testing 
   - gnome-devel-docs 
   - gnome-devel-docs-lang 
   - gnome-dictionary 
@@ -8631,6 +8632,7 @@ unsorted:
   - himeno 
   - himmelblau 
   - himmelblau-qr-greeter 
+  - himmelblau-selinux 
   - himmelblau-sshd-config 
   - himmelblau-sso 
   - hipcc 
@@ -11868,7 +11870,7 @@ unsorted:
   - libXxf86vm-devel-32bit 
   - libXxf86vm1-32bit 
   - libYODA-2_1_2 
-  - libZXing3-32bit 
+  - libZXing4-32bit 
   - liba2ps1 
   - liba52-0-32bit 
   - liba52-devel 
@@ -12202,7 +12204,7 @@ unsorted:
   - libastro1 
   - libastylej3 
   - libasync-devel 
-  - libasync1_6 
+  - libasync1_9 
   - libatasmart-devel 
   - libathemecore1 
   - libatk-1_0-0-32bit 
@@ -15329,14 +15331,14 @@ unsorted:
   - libopentimelineio18 
   - libopentracing-cpp1 
   - libopenvdb13_0 
-  - libopenvino2621 
-  - libopenvino_c2621 
-  - libopenvino_ir_frontend2621 
-  - libopenvino_onnx_frontend2621 
-  - libopenvino_paddle_frontend2621 
-  - libopenvino_pytorch_frontend2621 
-  - libopenvino_tensorflow_frontend2621 
-  - libopenvino_tensorflow_lite_frontend2621 
+  - libopenvino2630 
+  - libopenvino_c2630 
+  - libopenvino_ir_frontend2630 
+  - libopenvino_onnx_frontend2630 
+  - libopenvino_paddle_frontend2630 
+  - libopenvino_pytorch_frontend2630 
+  - libopenvino_tensorflow_frontend2630 
+  - libopenvino_tensorflow_lite_frontend2630 
   - libopenvswitch-3_7-0 
   - liboping-devel 
   - liboping0 
@@ -16298,7 +16300,7 @@ unsorted:
   - libscrypt-devel 
   - libscrypt0 
   - libscrypt0-x86-64-v3 
-  - libsdb2_4_2 
+  - libsdb2_5_0 
   - libseafile0 
   - libseagull0 
   - libsearpc-devel 
@@ -23849,7 +23851,6 @@ unsorted:
   - protoc-gen-go 
   - proton-vpn 
   - proton-vpn-cli 
-  - proton-vpn-local-agent 
   - protontricks 
   - proxychains-ng 
   - prun-ohpc 
@@ -24392,9 +24393,7 @@ unsorted:
   - python311-idle 
   - python311-igwn-auth-utils 
   - python311-ipdb 
-  - python311-keystonemiddleware 
   - python311-onnxruntime 
-  - python311-oslo.cache 
   - python311-packaging 
   - python311-pathspec 
   - python311-pip 
@@ -24709,6 +24708,7 @@ unsorted:
   - python313-adal 
   - python313-adapt-parser 
   - python313-adblock 
+  - python313-adbutils 
   - python313-addict 
   - python313-aeidon 
   - python313-aenum 
@@ -24790,6 +24790,7 @@ unsorted:
   - python313-apprise 
   - python313-apptools 
   - python313-apsw 
+  - python313-aptabase 
   - python313-arabic-reshaper 
   - python313-archmage 
   - python313-arf 
@@ -25884,6 +25885,7 @@ unsorted:
   - python313-extratools 
   - python313-eyed3 
   - python313-ezdxf 
+  - python313-ezgb 
   - python313-fabio 
   - python313-factory_boy 
   - python313-faiss 
@@ -26488,6 +26490,7 @@ unsorted:
   - python313-liblarch 
   - python313-liblarch-gtk 
   - python313-liblnk 
+  - python313-liblore 
   - python313-libluksde 
   - python313-libmodi 
   - python313-libmodulemd 
@@ -28263,6 +28266,7 @@ unsorted:
   - python313-vistir 
   - python313-visvis 
   - python313-vllm 
+  - python313-vllm-cpu 
   - python313-vncdotool 
   - python313-vobject 
   - python313-volatile 
@@ -28695,6 +28699,7 @@ unsorted:
   - python314-adal 
   - python314-adapt-parser 
   - python314-adblock 
+  - python314-adbutils 
   - python314-addict 
   - python314-aeidon 
   - python314-aenum 
@@ -28780,6 +28785,7 @@ unsorted:
   - python314-apprise 
   - python314-apptools 
   - python314-apsw 
+  - python314-aptabase 
   - python314-arabic-reshaper 
   - python314-archmage 
   - python314-arf 
@@ -29895,6 +29901,7 @@ unsorted:
   - python314-extratools 
   - python314-eyed3 
   - python314-ezdxf 
+  - python314-ezgb 
   - python314-fabio 
   - python314-factory_boy 
   - python314-faiss 
@@ -30519,6 +30526,7 @@ unsorted:
   - python314-liblarch 
   - python314-liblarch-gtk 
   - python314-liblnk 
+  - python314-liblore 
   - python314-libluksde 
   - python314-libmodi 
   - python314-libmodulemd 
@@ -34385,6 +34393,7 @@ unsorted:
   - servletapi5 
   - setconf 
   - sethdlc 
+  - setools-console-analyses 
   - setools-gui 
   - setools-mcp 
   - setroubleshoot 
@@ -47782,6 +47791,7 @@ unsorted:
   - zvm 
   - zxcvbn-devel 
   - zxing-cpp-devel 
+  - zxing-cpp-examples 
   - zynaddsubfx 
   - zynaddsubfx-bash-completion 
   - zynaddsubfx-common 
