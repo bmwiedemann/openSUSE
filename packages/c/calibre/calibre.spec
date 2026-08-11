@@ -30,7 +30,7 @@
 %{?sle15_python_module_pythons}
 
 Name:           calibre
-Version:        9.12.0
+Version:        9.13.0
 Release:        0
 Summary:        EBook Management Application
 License:        GPL-3.0-only
@@ -192,6 +192,7 @@ BuildRequires:  %{python_module dateutil >= 2.9.0}
 BuildRequires:  %{python_module devel >= %{my_pyver}}
 BuildRequires:  %{python_module dnspython >= 2.8.0}
 BuildRequires:  %{python_module feedparser >= 6.0.12}
+BuildRequires:  %{python_module feedparser-sgmllib >= 2.0.1}
 BuildRequires:  %{python_module html2text >= 2025.4.15}
 BuildRequires:  %{python_module html5-parser >= 0.4.12}
 BuildRequires:  %{python_module html5lib >= 1.1}
@@ -282,6 +283,7 @@ Requires:       %{python_flavor}-css-parser >= 1.0.10
 Requires:       %{python_flavor}-dateutil >= 2.9.0
 Requires:       %{python_flavor}-dnspython >= 2.8.0
 Requires:       %{python_flavor}-feedparser >= 6.0.12
+Requires:       %{python_flavor}-feedparser-sgmllib >= 2.0.2
 Requires:       %{python_flavor}-html2text >= 2025.4.15
 Requires:       %{python_flavor}-html5-parser >= 0.4.12
 Requires:       %{python_flavor}-html5lib >= 1.1
