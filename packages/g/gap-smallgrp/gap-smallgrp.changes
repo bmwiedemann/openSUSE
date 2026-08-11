@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Aug 10 16:11:44 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.6.0
+  * `NumberSmallGroups` now accepts a list of orders and the
+    selection criteria of `AllSmallGroups`, as in
+    `NumberSmallGroups(96, IsAbelian)`. It counts by listing the
+    ids, so it costs what `IdsOfAllSmallGroups` costs.
+  * Selection by `IsAbelian`, `IsNilpotentGroup`,
+    `IsSupersolvableGroup`, `IsSolvableGroup`, `RankPGroup` and
+    `PClassPGroup` now avoids constructing the groups for most
+    orders which had no precomputed data.
+  * A selection criterion now means the same for every order.
+  * Fix a list of group numbers being ignored when every criterion
+    was indexed.
+  * Correct the permutation for order 11^7 documented under
+    `SMALL_GROUPS_OLD_ORDER`.
+
+-------------------------------------------------------------------
 Tue Jul 28 22:14:29 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.5.5

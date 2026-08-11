@@ -17,7 +17,7 @@
 
 
 Name:           gap-smallgrp
-Version:        1.5.5
+Version:        1.6.0
 Release:        0
 Summary:        GAP: Small Groups Library
 License:        Artistic-2.0
@@ -27,7 +27,7 @@ URL:            https://gap-packages.github.io/smallgrp/
 Source:         https://github.com/gap-packages/SmallGrp/releases/download/v%version/SmallGrp-%version.tar.gz
 BuildArch:      noarch
 BuildRequires:  gap-rpm-devel
-Requires:       gap-core >= 4.9
+Requires:       gap-core >= 4.12
 
 %description
 The SmallGrp package provides the library of groups of certain
