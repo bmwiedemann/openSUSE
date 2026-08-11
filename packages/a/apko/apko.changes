@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Aug 10 05:01:28 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.2.36:
+  * apk: refuse to record a package with an empty name (#2390)
+  * apk: terminate the orphan walk at the filesystem root (#2389)
+  * build(deps): bump chainguard.dev/sdk from 0.1.164 to 0.1.170
+    (#2385)
+  * build(deps): bump go.opentelemetry.io/otel from 1.44.0 to
+    1.45.0 (#2384)
+  * build(deps): bump the codeql group across 1 directory with 2
+    updates (#2386)
+  * Group codeql-action bumps in dependabot config (#2382)
+
+-------------------------------------------------------------------
 Thu Aug 06 11:00:52 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.2.35:
