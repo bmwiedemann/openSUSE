@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug 10 20:22:27 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.1.13.post3:
+  * Build release wheels for the GIL-enabled CPython 3.14 build,
+    which previously only got a free-threaded cp314t wheel
+  * Relax the shared-DAG hash scaling threshold in the test suite
+    from 4x to 10x to stop microsecond-scale timing noise failing it
+
+-------------------------------------------------------------------
 Wed Aug  5 05:48:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.1.13.post2:

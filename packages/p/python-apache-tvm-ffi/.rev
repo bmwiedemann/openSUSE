@@ -47,4 +47,12 @@ are unchanged from the previous revision), spec-cleaner diff empty,
 source_validator clean.</comment>
     <requestid>1369641</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d15a962190ee8a5a5b243501d2fd9975</srcmd5>
+    <version>0.1.13.post3</version>
+    <time>1786461299</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.1.13.post3: build release wheels for the GIL-enabled CPython 3.14 build (previously only the free-threaded cp314t wheel), and relax the shared-DAG hash scaling threshold in the test suite from 4x to 10x so microsecond-scale timing noise no longer fails it. Built green locally for openSUSE_Tumbleweed/aarch64 (0 rpmlint errors, 0 badness); import smoke test passes for both python313 and python314 flavours.</comment>
+    <requestid>1370577</requestid>
+  </revision>
 </revisionlist>
