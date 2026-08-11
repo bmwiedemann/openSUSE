@@ -17,10 +17,22 @@
 
 
 Name:           rtk
-Version:        0.44.2
+Version:        0.45.0
 Release:        0
 Summary:        CLI proxy that reduces LLM token consumption of dev commands
-License:        Apache-2.0
+# Legal-Review-Notice: rtk itself is Apache-2.0, but the binary statically links
+# the vendored Rust dependencies, so the tag below covers the whole linked set.
+# Derived on this re-vendor with "cargo tree --offline -p rtk -e normal" over the
+# vendored tree (186 crates vendored, 127 in the linked graph): MPL-2.0 comes
+# from colored and option-ext, Unicode-3.0 from the 18 ICU/zerovec crates, ISC
+# from rustls-webpki and untrusted (and from ring, "Apache-2.0 AND ISC"),
+# CDLA-Permissive-2.0 from webpki-roots, BSD-3-Clause from subtle, and MIT from
+# ten MIT-only crates (rusqlite, libsqlite3-sys, which, quick-xml, ...). Every
+# dual/triple "OR" expression in the graph is satisfied by Apache-2.0 or MIT,
+# both already named. r-efi offers an LGPL-2.1-or-later option but is
+# UEFI-target-only and absent from the Linux graph. MPL-2.0 section 3.2 is
+# satisfied because the complete vendor.tar.zst ships in the src.rpm.
+License:        Apache-2.0 AND BSD-3-Clause AND CDLA-Permissive-2.0 AND ISC AND MIT AND MPL-2.0 AND Unicode-3.0
 URL:            https://github.com/rtk-ai/rtk
 Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst

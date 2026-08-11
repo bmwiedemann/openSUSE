@@ -29,4 +29,30 @@ Verified on aarch64 (local) and x86_64 (OBS): builds green, test suite
 2584 passed / 0 failed, rpmlint 0 errors 0 warnings 0 badness.</comment>
     <requestid>1369751</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d01345493a7983c023408f37bf7e2788</srcmd5>
+    <version>0.45.0</version>
+    <time>1786461018</time>
+    <user>anag_factory</user>
+    <comment>Update to version 0.45.0.
+
+Upstream adds transparent hook support for the Mistral Vibe CLI and
+multiline block rewriting, and fixes the Copilot hook handling: rtk no
+longer lets Copilot silently decide permission on unconfigured commands,
+and it self-heals a stale dual-schema hook config while touching only its
+own legacy camelCase entry.
+
+Also corrects the License tag. The binary statically links the vendored
+crates, and the linked graph (127 of the 186 vendored crates, per
+cargo tree --offline -p rtk -e normal) carries MPL-2.0 (colored,
+option-ext), Unicode-3.0 (the ICU/zerovec crates), ISC (rustls-webpki,
+untrusted, ring), CDLA-Permissive-2.0 (webpki-roots), BSD-3-Clause
+(subtle) and MIT on top of rtk's own Apache-2.0. The reasoning is recorded
+in a Legal-Review-Notice comment above the tag.
+
+Built locally on aarch64: 2655 tests pass, rpmlint 0 errors / 0 warnings /
+0 badness. Both downstream patches still apply unchanged; upstream PRs
+3446 and 3447 are still open.</comment>
+    <requestid>1370422</requestid>
+  </revision>
 </revisionlist>

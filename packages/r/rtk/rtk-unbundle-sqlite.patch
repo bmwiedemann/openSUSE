@@ -3,7 +3,7 @@ libsqlite3-sys. openSUSE packages must not ship bundled libraries: a
 statically linked SQLite would have to be tracked and patched separately
 for every SQLite CVE.
 
-Index: rtk-0.44.2/Cargo.toml
+Index: rtk-0.45.0/Cargo.toml
 ===================================================================
 --- a/Cargo.toml
 +++ b/Cargo.toml

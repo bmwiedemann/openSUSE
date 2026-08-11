@@ -6,7 +6,7 @@ rustc (which moves independently of upstream's rust-version floor) grows a new
 lint. The unsafe_code deny is kept -- that one is a deliberate design
 constraint, not a lint-drift hazard.
 
-Index: rtk-0.44.2/Cargo.toml
+Index: rtk-0.45.0/Cargo.toml
 ===================================================================
 --- a/Cargo.toml
 +++ b/Cargo.toml

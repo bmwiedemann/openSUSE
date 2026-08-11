@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Aug  9 18:57:46 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.45.0:
+  * Add transparent hook support for the Mistral Vibe CLI
+  * Rewrite multiline blocks
+  * Stop Copilot from silently deciding permission on commands that
+    are not configured
+  * Self-heal stale dual-schema Copilot hook configuration, and heal
+    only rtk's own legacy camelCase entry so user configuration is
+    left alone
+- Correct the License tag: the binary statically links the vendored
+  crates, and their linked graph adds BSD-3-Clause,
+  CDLA-Permissive-2.0, ISC, MIT, MPL-2.0 and Unicode-3.0 to rtk's own
+  Apache-2.0
+
+-------------------------------------------------------------------
 Wed Aug  5 10:22:43 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Initial package (version 0.44.2):
