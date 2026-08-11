@@ -1,0 +1,54 @@
+From 820f0115b97458196b90eb1967024cf0f4e474bd Mon Sep 17 00:00:00 2001
+From: "Bernhard M. Wiedemann" <bwiedemann@suse.de>
+Date: Tue, 4 Aug 2026 09:36:21 +0200
+Subject: [PATCH] Do not redefine the standard placement new/delete operators
+
+tools.h defined the placement forms of operator new/delete itself
+instead of pulling them in from <new>.  That only works as long as no
+standard library header defining them has been included before.
+
+As of GCC 16, libstdc++ includes <new> from <bits/stl_iterator.h>,
+which cube.h drags in via <math.h> -> <cmath>, so the definitions in
+tools.h now collide with the ones from the standard library and the
+build fails:
+
+  In file included from shared/cube.h:55:
+  shared/tools.h:39:14: error: redefinition of 'void* operator new(size_t, void*)'
+     39 | inline void *operator new(size_t, void *p) { return p; }
+        |              ^~~~~~~~
+  /usr/include/c++/16/new:168:7: note: 'void* operator new(std::size_t, void*)' previously defined here
+
+Include <new> and drop the hand-written definitions.  The standard
+ones are inline and behave identically - and, unlike ours, are
+constexpr where the standard requires it.  The custom
+operator new(size_t, bool) overloads are not affected.
+
+Tested with GCC 13 and GCC 16.
+---
+ src/shared/tools.h | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/src/shared/tools.h b/src/shared/tools.h
+index 4cbe103..26edd61 100644
+--- a/src/shared/tools.h
++++ b/src/shared/tools.h
+@@ -3,6 +3,8 @@
+ #ifndef _TOOLS_H
+ #define _TOOLS_H
+ 
++#include <new> // for the placement forms of operator new/delete
++
+ #ifdef NULL
+ #undef NULL
+ #endif
+@@ -36,10 +38,6 @@ typedef unsigned long long int ullong;
+ 
+ void *operator new(size_t, bool);
+ void *operator new[](size_t, bool);
+-inline void *operator new(size_t, void *p) { return p; }
+-inline void *operator new[](size_t, void *p) { return p; }
+-inline void operator delete(void *, void *) {}
+-inline void operator delete[](void *, void *) {}
+ 
+ #ifdef swap
+ #undef swap

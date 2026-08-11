@@ -27,6 +27,8 @@ Source:         %{name}-%{version}.tar.xz
 Source1:        tesseract.desktop
 Source2:        tesseract.png
 Source3:        update.sh
+# PATCH-FIX-UPSTREAM tesseract-gcc16-placement-new.patch -- do not redefine the standard placement new/delete operators, which breaks the build with gcc16
+Patch0:         tesseract-gcc16-placement-new.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -62,7 +64,7 @@ BuildArch:      noarch
 This package provides the data files for the Tesseract game.
 
 %prep
-%setup -q -n %{name}
+%autosetup -p1 -n %{name}
 
 %build
 rm -r bin_unix

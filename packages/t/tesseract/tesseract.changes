@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug  4 07:46:40 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add tesseract-gcc16-placement-new.patch to fix compilation with gcc16
+
+-------------------------------------------------------------------
 Sat Jun 15 11:14:41 UTC 2024 - hui <sturm-fr@web.de>
 
 - update to current SVN (no change log available)
