@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Aug 10 05:06:42 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.9.2:
+  * Fixes
+    - fix(color): restore fraction coloring on READY column by
+      @PixiBixi in #250
+  * Updates
+    - Bump k8s.io/kubectl from 0.36.1 to 0.36.3 (#245)
+    - Bump k8s.io/client-go from 0.36.1 to 0.36.3 (#244)
+    - Bump k8s.io/apimachinery from 0.36.1 to 0.36.3 (#243)
+    - Bump github.com/knadh/koanf/v2 from 2.3.4 to 2.3.5 (#241)
+    - Bump github.com/mattn/go-colorable from 0.1.14 to 0.1.15
+      (#240)
+    - Update Go to v1.26.4 and some golang.org/x deps (#252)
+    - Bump markdownlint-cli2 from 0.22.1 to 0.23.0 in the all group
+      (#248)
+    - Bump golang.org/x/net from 0.54.0 to 0.55.0 (#247)
+
+-------------------------------------------------------------------
 Fri May 29 05:56:10 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.9.1:
