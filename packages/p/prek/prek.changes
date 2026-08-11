@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Mon Aug 10 11:59:38 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.4.13:
+  * Highlights
+    - Manage hook tools with mise
+      The new language: mise support lets hooks install tools using
+      mise in an isolated environment:
+
+      repos:
+        - repo: local
+          hooks:
+            - id: golangci-lint
+              name: golangci-lint
+              language: mise
+              additional_dependencies: ["aqua:golangci/golangci-lint@2"]
+              entry: golangci-lint run --fast-only ./...
+              pass_filenames: false
+
+    - Run commands in hook environments
+      The new prek exec subcommand can run an explicit command in a
+      configured hook's prepared environment. For example, the hook
+      above makes its managed binary available to this command:
+
+        $ prek exec golangci-lint -- golangci-lint --version
+
+  * Enhancements
+    - Add mise language support (#2540)
+    - Add deny-filename-pattern and require-filename-pattern hooks
+      (#2488)
+    - Add prek exec for running commands in a hook environment
+      (#2478)
+    - Add yaml-language-server: comment to YAML sample config
+      (#2486)
+    - Make prek cache size output terminal-aware (#2508)
+    - Match file regexes against path bytes (#2541)
+    - Show hook aliases in run output (#2497)
+    - Show hook descriptions in run output (#2490)
+  * Performance
+    - Avoid env cache scans for skipped hooks (#2502)
+    - Cache Node version queries (#2500)
+  * Bug fixes
+    - Fix Node hook installation with npm 11 (#2487)
+    - Isolate dependency installs from inherited Git repository
+      state (#2506)
+  * Documentation
+    - Document combined group filtering (#2495)
+    - Explain what prek does in README (#2507)
+    - Refresh "Why prek" highlights (#2474)
+
+-------------------------------------------------------------------
 Mon Aug 03 12:25:24 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.4.12:
