@@ -144,4 +144,15 @@
     <comment></comment>
     <requestid>1369285</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>2c729dec6706225fef212c35cc8dd75a</srcmd5>
+    <version>10.32.6</version>
+    <time>1786461229</time>
+    <user>anag_factory</user>
+    <comment>- Update golang.org/x/net to v0.57.0 (bsc#1266657, CVE-2026-39821)
+
+- Add CVE-2026-33186.patch to fix authorization bypass in grpc-go due to improper
+  validation of the HTTP/2 :path pseudo-header (bsc#1260307, CVE-2026-33186) (forwarded request 1370529 from glaubitz)</comment>
+    <requestid>1370535</requestid>
+  </revision>
 </revisionlist>

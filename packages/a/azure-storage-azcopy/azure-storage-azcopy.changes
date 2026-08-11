@@ -16,6 +16,11 @@ Mon Aug  3 06:56:52 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.c
 - Update golang.org/x/text to v0.40.0 (bsc#1272123, CVE-2026-56852)
 
 -------------------------------------------------------------------
+Sat Jul 18 15:16:19 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update golang.org/x/net to v0.57.0 (bsc#1266657, CVE-2026-39821)
+
+-------------------------------------------------------------------
 Thu Jul  9 13:39:43 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 10.32.5
@@ -64,6 +69,12 @@ Mon Apr 27 11:04:57 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.c
 
 - Add CVE-2026-34986.patch to fix crafted JWE input with a missing encrypted
   key can lead to a denial of service (bsc#1262962, CVE-2026-34986)
+
+-------------------------------------------------------------------
+Wed Mar 25 08:42:04 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add CVE-2026-33186.patch to fix authorization bypass in grpc-go due to improper
+  validation of the HTTP/2 :path pseudo-header (bsc#1260307, CVE-2026-33186)
 
 -------------------------------------------------------------------
 Mon Mar 23 12:51:41 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
