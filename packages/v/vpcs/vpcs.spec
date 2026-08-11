@@ -17,13 +17,13 @@
 
 
 Name:           vpcs
-Version:        0.8.2
+Version:        0.8.4
 Release:        0
 Summary:        Virtual PC Simulator
 License:        BSD-2-Clause
 Group:          System/Emulators/Other
 URL:            https://github.com/GNS3/vpcs
-Source0:        https://github.com/GNS3/vpcs/archive/v%{version}.tar.gz
+Source0:        https://github.com/GNS3/vpcs/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 
 %description
 The VPCS can simulate up to 9 PCs. You can ping/traceroute them, or ping/traceroute

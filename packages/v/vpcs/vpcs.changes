@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Aug  6 12:15:15 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.8.4
+  * Refactor DHCP implementation to comply with RFC 2131.
+  * Fix keyboard input latency (~100ms per keystroke) from
+    VMIN=3/VTIME=1
+
+-------------------------------------------------------------------
+Mon Oct 16 16:23:41 UTC 2023 - andrea florio <andrea@opensuse.org>
+
+- update to 0.8.3:
+  * Fix improper locking
+  * Honor MTU and DF bit settings
+
+-------------------------------------------------------------------
 Fri Jan 28 04:55:38 UTC 2022 - Avinesh Kumar <avinesh.kumar@suse.com>
 
 - update to 0.8.2:
