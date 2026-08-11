@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Aug 11 07:22:23 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.18.19:
+  https://github.com/ansible/ansible/blob/v2.18.19/changelogs/CHANGELOG-v2.18.rst
+  * Minor Changes
+    - parallel fact gathering - the async wrapper now considers the
+      timeout when determining whether to kill the process running the
+      module. Previously, a 5 second sleep occurred twice before
+      checking if the job had remaining time.
+  * Bugfixes
+    - ansible-test - Fix target filtering to preserve user-specified
+      versions that are not in the completion configuration.
+    - parallel fact gathering - fix hang caused by corrupt async job
+      files.
+
+-------------------------------------------------------------------
 Fri Jun 19 05:42:54 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 2.18.18:
