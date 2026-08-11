@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Aug 10 20:21:58 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.4.0:
+  * Add a call-scoped frame mechanism in a new uncalled_for.frames
+    module: it maps the outer function's parameter names to
+    caller-supplied values or to unresolved dependencies, memoizes
+    both results and failures, and detects reference cycles
+  * Add CallArgument("name"), resolving to the value the outer
+    function received for that parameter - whether the caller
+    passed it or another dependency on the signature produced it.
+    It works both as a factory parameter default (the bare form
+    takes the parameter's own name) and as a keyword binding in
+    Depends(factory, **bindings), which wires up an ordinary
+    function without changing it. Previously a dependency factory
+    could only receive values that were themselves dependencies,
+    and making an outer call value a dependency hid it from the
+    outer signature
+  * New public API: CallArgument, CycleError, Frame, current_frame
+    and frame_scope
+  * resolved_dependencies now routes its resolution loop through
+    the frame, and external resolvers can enter frame_scope()
+    themselves
+  * Existing resolution paths are deliberately unchanged: a bare
+    Depends(f) keeps its cache key exactly f, _resolve_parameters
+    keeps its signature, and the stack ContextVar moved into
+    frames.py behind an unchanged _Depends.stack alias
+  * Fix five errors reported by a bare pyright run, four of which
+    predate this release
+- Run the upstream test suite during build instead of only a bare
+  import smoke test:
+  * New BuildRequires: pytest >= 9.0.2, pytest-asyncio >= 0.24.0
+  * Upstream's coverage and per-test-timeout pytest options are
+    CI-only gates and are not applied
+- Package the LICENSE file
+
+-------------------------------------------------------------------
 Thu Jun 18 21:06:22 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Initial package (version 0.3.2)

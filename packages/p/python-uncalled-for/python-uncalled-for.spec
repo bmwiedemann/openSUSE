@@ -17,15 +17,17 @@
 
 
 Name:           python-uncalled-for
-Version:        0.3.2
+Version:        0.4.0
 Release:        0
 Summary:        Async-friendly dependency injection for Python
 License:        MIT
 URL:            https://github.com/chrisguidry/uncalled-for
-Source:         https://files.pythonhosted.org/packages/source/u/uncalled-for/uncalled_for-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/u/uncalled_for/uncalled_for-%{version}.tar.gz
 BuildRequires:  %{python_module hatch-vcs}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest >= 9.0.2}
+BuildRequires:  %{python_module pytest-asyncio >= 0.24.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -49,9 +51,15 @@ function parameters as dependencies and have them resolved automatically.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -B -c "import uncalled_for"
+# Upstream's addopts are CI-only gates: --cov*/--cov-fail-under=100 need
+# pytest-cov and enforce a coverage target, and --timeout=30 needs
+# pytest-timeout and is flaky on loaded OBS workers. Drop both and keep
+# upstream's import mode so the full suite still runs against the installed
+# package (asyncio_mode=auto stays in effect from pyproject.toml).
+%pytest -o addopts="--import-mode=importlib"
 
 %files %{python_files}
+%license LICENSE
 %doc README.md
 %{python_sitelib}/uncalled_for
 %{python_sitelib}/uncalled_for-%{version}.dist-info
