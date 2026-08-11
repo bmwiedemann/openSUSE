@@ -1,0 +1,20 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7125d56021fd5028dc025d25fd82c71a</srcmd5>
+    <version>2.3</version>
+    <time>1786461400</time>
+    <user>anag_factory</user>
+    <comment>New package: gpscorrelate 2.3
+
+GPS Correlate stamps the location from a GPX track into the EXIF GPS tags of
+digital photos taken at the same time. It has been maintained in Application:Geo
+and is submitted to Factory now that it is on a current upstream release with a
+working regression test suite (203 cases, run in %check).
+
+The package is split into the command line tool (gpscorrelate), the GTK
+interface (gpscorrelate-gui) and the HTML manual (gpscorrelate-doc), matching
+Debian's layout, so the CLI does not pull in GTK. Licence is GPL-2.0-or-later
+per the source headers. Builds clean on x86_64 and aarch64, rpmlint 0/0/0.</comment>
+    <requestid>1370627</requestid>
+  </revision>
+</revisionlist>

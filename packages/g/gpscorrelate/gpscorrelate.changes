@@ -1,0 +1,35 @@
+-------------------------------------------------------------------
+Tue Aug 11 07:35:51 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Correct the license to GPL-2.0-or-later, which is what the source
+  headers and the upstream AppStream metadata state
+- Split off gpscorrelate-gui and gpscorrelate-doc subpackages so that
+  the command line tool no longer pulls in GTK
+- Pass prefix and docdir when building and not only when installing:
+  both are compiled into the binaries, so the graphical interface
+  looked for its help files under /usr/local
+- Correct the documentation path in the shipped manual page, which was
+  generated with the upstream default of /usr/local
+- Build with native language support enabled and install the German,
+  French and Russian message catalogs
+- Install the upstream AppStream metadata
+- Run the regression test suite in check
+- Modernise the specfile:
+  * drop the obsolete norootforbuild marker and the Group tag
+  * use pkgconfig() build requires
+  * drop libxslt-devel, the documentation is not regenerated
+  * drop the explicit manual page compression, rpm already does that
+
+-------------------------------------------------------------------
+Sun Aug  2 13:21:13 UTC 2026 - Libor Pechacek <lpechacek@gmx.com>
+
+- Update to 2.3
+- Link to the new upstream
+- Clean up the .spec file
+
+-------------------------------------------------------------------
+Wed Mar 13 00:00:00 UTC 2009 - Radomir Cernoch <radomir.cernoch@gmail.com>
+
+- new package - 1.5.8
+- patch taken from debian package
+- man-files not produced, they need access to internet
