@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Aug  9 12:00:00 UTC 2026 - cunix@mail.de
+
+- Update to 4.7.1
+  * animation folding access cfg only at save/load project time
+  * Fix asset store zoom mode crash in project manager
+  * Set the Asset Store's default sorting to highest scored
+  * Fix broken icons when moving the FileSystem dock to the bottom
+  * Add empty icons for file dialog menu to the default theme
+  * and more: https://godotengine.github.io/godot-interactive-changelog/#4.7.1
+
+-------------------------------------------------------------------
 Wed Jun 24 19:26:08 UTC 2026 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Unbundle mbedtls by dependening on mbedtls-devel < 4 since newer versions are not supported

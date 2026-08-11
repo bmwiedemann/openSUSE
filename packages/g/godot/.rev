@@ -502,4 +502,19 @@
     <comment>- Unbundle mbedtls by dependening on mbedtls-devel &lt; 4 since newer versions are not supported</comment>
     <requestid>1362508</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>727ba147cb182deb90ec15320695615b</srcmd5>
+    <version>4.7.1</version>
+    <time>1786461309</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.7.1
+  * animation folding access cfg only at save/load project time
+  * Fix asset store zoom mode crash in project manager
+  * Set the Asset Store's default sorting to highest scored
+  * Fix broken icons when moving the FileSystem dock to the bottom
+  * Add empty icons for file dialog menu to the default theme
+  * and more: https://godotengine.github.io/godot-interactive-changelog/#4.7.1
+</comment>
+    <requestid>1370595</requestid>
+  </revision>
 </revisionlist>

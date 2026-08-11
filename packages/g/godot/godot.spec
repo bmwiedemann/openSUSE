@@ -29,7 +29,7 @@
 %define compiler_version_leap 13
 
 Name:           godot
-Version:        4.7
+Version:        4.7.1
 Release:        0
 Summary:        Cross-Platform Game Engine with an Integrated Editor
 License:        MIT
@@ -163,7 +163,7 @@ Provides:       bundled(jolt_physics) = 5.5.0
 Provides:       bundled(libbacktrace)
 Provides:       bundled(libktx) = 4.4.2
 Provides:       bundled(manifold) = 3.3.2
-Provides:       bundled(meshoptimizer) = 1.1
+Provides:       bundled(meshoptimizer) = 1.1.1
 Provides:       bundled(mingw-std-threads)
 Provides:       bundled(msdfgen) = 1.13
 Provides:       bundled(noto-sans-fonts)
