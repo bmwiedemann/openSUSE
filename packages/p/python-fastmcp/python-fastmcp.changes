@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Aug 11 05:27:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 3.4.7:
+  * Fix CIMD private_key_jwt authentication for OAuthProxy
+    deployments mounted at a bare origin: the expected client
+    assertion audience is now derived from the same normalised
+    token endpoint URL that is advertised in the authorization
+    server metadata
+  * Previously Pydantic appended a trailing slash to a bare origin
+    base_url, so the proxy advertised the token endpoint with a
+    single slash but validated assertions against a doubled-slash
+    variant of it; the mismatched audience made spec-following
+    clients fail authentication with invalid_client
+  * Path-mounted proxy deployments keep their previous behaviour
+  * No API, dependency or packaging changes in this release
+
+-------------------------------------------------------------------
 Fri Aug  7 05:04:55 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 3.4.6:

@@ -83,4 +83,12 @@ Built and verified on aarch64: 7 subpackages, rpmlint 2 errors / 46 warnings /
 no-dependency-on python-base false positives). source_validator clean.</comment>
     <requestid>1370144</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e1c831f3e7ff2e500a0ce9d66977df61</srcmd5>
+    <version>3.4.7</version>
+    <time>1786461532</time>
+    <user>anag_factory</user>
+    <comment>Update to 3.4.7: fix CIMD private_key_jwt authentication for OAuthProxy deployments mounted at a bare origin (client assertion audience now derived from the normalised token endpoint advertised in authorization server metadata). No API or dependency changes. Built green locally on aarch64 against openSUSE_Tumbleweed; rpmlint 2 errors / 46 warnings / 2 badness (leftover-require warnings are the known uv-backend false positive); %check import smoke tests pass on python313 and python314.</comment>
+    <requestid>1370601</requestid>
+  </revision>
 </revisionlist>
