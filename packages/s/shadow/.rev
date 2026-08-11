@@ -1431,4 +1431,15 @@
     + `su - &lt;USERNAME&gt;` as root brings inappropriate ioctl for device #1704</comment>
     <requestid>1369407</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>2fd21bc6a76eaa903b898798f7dcdac6</srcmd5>
+    <version>4.20.2</version>
+    <time>1786461010</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.20.2:
+  * lib/: Add missing include.
+  * Remove unused build flag
+- Drop upstreamed shadow-4.20-stdint.patch</comment>
+    <requestid>1370478</requestid>
+  </revision>
 </revisionlist>

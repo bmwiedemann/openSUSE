@@ -22,7 +22,7 @@
   %define no_config 1
 %endif
 Name:           shadow
-Version:        4.20.0
+Version:        4.20.2
 Release:        0
 Summary:        Utilities to Manage User and Group Accounts
 License:        BSD-3-Clause AND GPL-2.0-or-later
@@ -50,8 +50,6 @@ Patch3:         shadow-login_defs-comments.patch
 Patch4:         shadow-login_defs-suse.patch
 # PATCH-FIX-SUSE disable_new_audit_function.patch adam.majer@suse.de -- Disable newer libaudit functionality for older distributions.
 Patch5:         disable_new_audit_function.patch
-# PATCH-FIX-UPSTREAM shadow-4.20-stdint.patch mvetter@suse.com -- gh/shadow-maint/shadow#1699
-Patch6:         shadow-4.20-stdint.patch
 BuildRequires:  audit-devel > 2.3
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -137,7 +135,6 @@ binaries all need setuid rights to work correct.
 %if 0%{?suse_version} < 1330
 %patch -P 5 -p1
 %endif
-%patch -P 6 -p1
 
 iconv -c -f ISO88591 -t utf-8 doc/HOWTO > doc/HOWTO.utf8
 mv -v doc/HOWTO.utf8 doc/HOWTO

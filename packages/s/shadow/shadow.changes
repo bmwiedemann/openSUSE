@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 10 06:57:03 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.20.2:
+  * lib/: Add missing include.
+  * Remove unused build flag
+- Drop upstreamed shadow-4.20-stdint.patch
+
+-------------------------------------------------------------------
 Thu Jul 30 07:55:32 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.20.0:
