@@ -17,7 +17,7 @@
 
 
 Name:           zola
-Version:        0.22.1
+Version:        0.23.2
 Release:        0
 Summary:        Fast static site generator
 License:        MIT
@@ -26,6 +26,7 @@ Source0:        https://github.com/getzola/zola/archive/refs/tags/v%{version}.ta
 Source1:        vendor.tar.zst
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
+BuildRequires:  ca-certificates-mozilla
 BuildRequires:  cargo >= 1.82
 BuildRequires:  cargo-packaging
 BuildRequires:  libgcc_s1

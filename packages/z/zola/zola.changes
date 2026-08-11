@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Fri Aug  7 11:18:11 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.23.2:
+  * docs: run the Cloudflare Workers build script with bash in
+    #3209
+  * docs: fix incorrectly escaped code blocks in docs in #3218
+
+-------------------------------------------------------------------
+Wed Aug  5 12:36:46 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.23.1:
+  Release-only changes, no actual code changes
+- update to 0.23.0:
+  * Docs: Add instructions for deployment with Cloudflare Workers
+    in #3090
+  * fix: multi-language search index configuration mismatch in
+    #3099
+  * Tera2 + refactoring in #3105
+  * docs: Update Gentoo documentation in #3106
+  * docs: Add link to TextMate themes in highlighting and config
+    docs in #3110
+  * Fix cloudflare-workers build script in #3115
+  * register missing num_format and markdown filters in tera in
+    #3117
+  * docs: Change config.toml to zola.toml in #3135
+  * Remove troubleshooting section from cloudflare-pages docs, as
+    zola is now supported by them in #3140
+  * feat(content): use language-specific reading speeds for
+    reading_time in #3145
+  * Add text_direction() Tera function in #3149
+  * docs(docker): bump example to 0.22.1 and use uppercase AS in
+    #3150
+  * Fix frontmatter detection in #3148
+  * feat: get_page optional param allow_missing in #3153
+  * fix(templates): match get_taxonomy_term by slug as fallback in
+    #3154
+  * fix: reject unknown fields in highlighting config in #3131
+  * Improve file creation and removal detection, especially on
+    Windows in #3156
+  * docs: Fix docs for higher / lower when sorting by date in #3164
+  * Add fields to get_image_metadata result in #3059
+  * Update themes overview for clarity in #3178
+  * feat(container): restructure Containerfile with three build
+    targets in #3163
+  * docs: fix inconsistent whitespace in shortcode template in
+    #3179
+  * Fix link for extending templates in theme documentation in
+    #3182
+  * docs(syntax-highlighting): fix typo and make theme link
+    clickable in #3189
+  * Adds C compiler requirement to "From source" instructions. in
+    #3190
+  * docs: note hard_link_static also applies to colocated assets in
+    #3194
+  * docs(vercel): shorten custom install command to fit Vercel's
+    256-char limit in #3196
+  * feat: exclude individual pages from RSS/Atom feeds in #3128
+  * Image filter in #3197
+  * Sorted subsections in #3198
+  * Resolve colocated assets in @/ links in #3199
+  * Add hidden property to page/section in #3201
+  * fix(serve): rebuild the whole site when anchor-link.html
+    changes in #3184
+  * Expose page aliases to templates in #3177
+  * Fix all the tera docs links by removing docs from the URL in
+    #3207
+  * Next version in #3089
+- update to 0.22.1:
+  * Use new github action for deploys in #3072
+  * Update themes gallery in #3074
+  * Describe how to enable 'class' syntax highlighting in #3080
+
+-------------------------------------------------------------------
 Sun Jan 11 13:18:04 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.22.0:
