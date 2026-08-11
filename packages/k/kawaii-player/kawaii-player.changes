@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Aug 10 08:59:33 UTC 2026 - Daniel Donisa <daniel.donisa@suse.com>
+
+- Update to version 8.0.0-1:
+  * Fully new web UI for admin, browse, details and player-control
+  * New /admin endpoint with CMS for local video management
+  * New /browse endpoint for browsing the collection with
+    search, filter, sort, pagination and thumbnail grid view
+- Fix Source0 URL: switch from v-prefix to refs/tags path
+- Replace python3-devel BuildRequires with pkgconfig(python3)
+
+-------------------------------------------------------------------
 Mon Aug  3 14:13:26 UTC 2026 - Daniel Donisa <daniel.donisa@suse.com>
 
 - Update to version 7.1.0-1-beta
