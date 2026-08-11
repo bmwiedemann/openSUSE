@@ -1,8 +1,7 @@
 #
 # spec file for package openvpn
 #
-# Copyright (c) 2025 SUSE LLC and contributors
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +21,7 @@
 %define _rundir %{_localstatedir}/run
 %endif
 Name:           openvpn
-Version:        2.6.14
+Version:        2.7.5
 Release:        0
 Summary:        Full-featured SSL VPN solution using a TUN/TAP Interface
 License:        GPL-2.0-only WITH openvpn-openssl-exception
@@ -38,15 +37,14 @@ Source8:        %{name}.service
 Source9:        %{name}.target
 Source10:       %{name}-tmpfile.conf
 Source11:       rc%{name}
+Source12:       debian.control
+Source13:       debian.rules
+Source14:       debian.tar.xz
+Source15:       %{name}.dsc
+Source16:       %{name}-Debian_11.dsc
+Source17:       %{name}-Debian_12.dsc
+Source18:       %{name}-xUbuntu_22.04.dsc
 Patch1:         %{name}-2.3-plugin-man.dif
-Patch2:         0001-dco-better-naming-for-function-parameters.patch
-Patch3:         0001-dco_linux-extend-netlink-error-cb-with-extra-info.patch
-Patch4:         0001-Handle-missing-DCO-peer-by-restarting-the-session.patch
-Patch5:         0001-dco_linux-Introduce-new-uAPIs.patch
-Patch6:         0001-Implement-ovpn-version-detection.patch
-Patch7:         0001-dco_linux-fix-peer-stats-parsing-with-new-ovpn-kerne.patch
-Patch8:         0001-dco_linux-avoid-bogus-text-when-netlink-message-is-n.patch
-Patch9:         0001-dco-linux-avoid-redefining-ovpn-enums.patch
 BuildRequires:  iproute2
 BuildRequires:  libcap-ng-devel
 BuildRequires:  liblz4-devel
@@ -58,14 +56,15 @@ BuildRequires:  p11-kit-devel
 BuildRequires:  pam-devel
 BuildRequires:  pkcs11-helper-devel >= 1.11
 BuildRequires:  pkgconfig
+BuildRequires:  python3-docutils
 BuildRequires:  xz
+BuildRequires:  pkgconfig(cmocka)
 BuildRequires:  pkgconfig(libnl-genl-3.0)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(systemd)
 Requires:       iproute2
 Requires:       pkcs11-helper >= 1.11
-# the former is KMP (for older distros), the latter is kernel-default
-Recommends:     (kmod(ovpn_dco_v2.ko) or kmod(ovpn.ko))
+Recommends:     ovpn-kmp
 %systemd_ordering
 
 %description
@@ -129,20 +128,17 @@ Requires:       %{name} = %{version}
 This package provides the header file to build external plugins.
 
 %prep
-%autosetup -p1
+%autosetup -p0
 
 sed -e "s|\" __DATE__|$(date '+%%b %%e %%Y' -r version.m4)\"|g" \
     -i src/openvpn/options.c
-sed -e "s|@PLUGIN_LIBDIR@|%{_libdir}/openvpn/plugins|g" \
-    -e "s|@PLUGIN_DOCDIR@|%{_defaultdocdir}/%{name}|g" \
-    -i doc/openvpn.8
 sed -e "s|%{_localstatedir}/run|%{_rundir}|g" < %{SOURCE8} > %{name}.service
 
 # %%doc items shouldn't be executable.
 find contrib sample -type f -exec chmod a-x \{\} +
 
 %build
-export CFLAGS="%{optflags} $(getconf LFS_CFLAGS) -W -Wall -fno-strict-aliasing"
+export CFLAGS="%{optflags} $(getconf LFS_CFLAGS) -W -Wall -Wno-unused -fno-strict-aliasing"
 export LDFLAGS
 %if 0%{?suse_version} >= 1550
 # usrmerge
@@ -154,6 +150,7 @@ if [[ $libnlversion == 3.[0-3].* ]] ; then
 else
   confopt=--enable-dco
 fi
+# Note: -fno-lto used so that the Unit-tests work
 %configure \
 	$confopt			\
 	--enable-x509-alt-username	\
@@ -162,9 +159,12 @@ fi
 	--enable-plugins		\
 	--enable-plugin-down-root	\
 	--enable-plugin-auth-pam	\
-	CFLAGS="$CFLAGS $(getconf LFS_CFLAGS) -fPIE $PLUGIN_DEFS"	\
-	LDFLAGS="$LDFLAGS -pie -lpam -rdynamic -Wl,-rpath,%{_libdir}/%{name}/plugins"
+	CFLAGS="$CFLAGS $(getconf LFS_CFLAGS) -fno-lto -fPIE $PLUGIN_DEFS"	\
+	LDFLAGS="$LDFLAGS -fno-lto -pie -lpam -rdynamic -Wl,-rpath,%{_libdir}/%{name}/plugins"
 %make_build
+sed -e "s|@PLUGIN_LIBDIR@|%{_libdir}/openvpn/plugins|g" \
+    -e "s|@PLUGIN_DOCDIR@|%{_defaultdocdir}/%{name}|g" \
+    -i doc/openvpn.8
 
 %install
 %make_install
@@ -191,6 +191,9 @@ install -m 755 %{SOURCE5} sample/sample-scripts/client-netconfig.down
 # we install docs via spec into _defaultdocdir/name/management-notes.txt
 rm -rf %{buildroot}%{_datadir}/doc/{OpenVPN,%{name}}
 find sample -name .gitignore -delete
+
+%check
+make check
 
 %pre
 %service_add_pre %{name}.target
@@ -227,6 +230,8 @@ find sample -name .gitignore -delete
 %{_sbindir}/rcopenvpn
 %endif
 %{_sbindir}/openvpn
+%dir %{_libexecdir}/%{name}
+%{_libexecdir}/%{name}/dns-updown
 
 %files down-root-plugin
 %dir %{_libdir}/%{name}
