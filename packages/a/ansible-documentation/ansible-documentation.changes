@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Aug 11 07:23:06 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.21.3:
+  * ci: refresh dev dependencies (#3882)
+  * vault_guide: Update vault example script (#3753) (#3878)
+  * [stable-2.21] ci: refresh dev dependencies (#3836)
+  * Pin the alls-green action to hash (#3869) (#3873)
+  * fix(ruff.toml): specify the correct target python version
+    (#3870)
+  * [stable 2.21]: Bump actions and pin to hash (#3848)
+  * Add basic ruff config to disable problematic rules (#3862)
+    (#3868)
+  * chore: ignore ruff warnings about blind exception handlers in
+    yamllint checker (#3857) (#3865)
+  * chore: update pr_labeler to use type keyword (#3858)
+  * chore: remove porting guide workflow from stable (#3849)
+  * Document soft deprecation of rc failure inference (#3605)
+    (#3854)
+  * Document register projections (#3752) (#3853)
+  * chore: fix ruff checks in docs/bin/ (#3841) (#3845)
+  * update Galaxy token URL (#3825) (#3835)
+  * Fix duplicate word in cli_parsing docs (#3820) (#3832)
+  * Fix duplicate word in testing_running_locally docs (#3817)
+    (#3830)
+  * Remove outdated UTF-8 encoding comment recommendation (#3821)
+    (#3822)
+  * ci: refresh dev dependencies (#3815)
+  * Add the Ansible community 14.2.0 porting guide (#3811) (#3812)
+
+-------------------------------------------------------------------
 Tue Jul 14 05:17:56 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.21.2:
