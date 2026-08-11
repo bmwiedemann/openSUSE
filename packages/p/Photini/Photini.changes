@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Jul 31 17:16:42 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2026.3.4:
+  * Fix bug in image regions with Apple face information metadata.
+    (This was fixed in v2025.10.0 but recent changes allowed it to
+    reappear).
+- Changes from version 2026.3.3:
+  * Fix problem pasting single address data with PySide6.
+  * Fix problem pasting all address data.
+- Changes from 2026.3.2:
+  * Fix problems editing address and image region data with
+    PySide6.
+  * Fix invisible "multiple values" with recent Qt6.
+- Changes from 2026.3.1:
+  * Fix missing context menu headers on some platforms.
+- Changes from 2026.3.0:
+  * Remove Google Photos uploader.
+  * Add cut & paste context menu to many widget groups.
+  * Fix bug with GPSAltitudeRef in location address data.
+  * Changed how alternative languages are set.
+  * Changed how "crop factor" is set.
+  * Changed how image regions are created.
+  * Other minor improvements and bug fixes.
+- Replace python3-qtwebengine-qt5/python3dist(pyqtwebengine) with
+  python3-qtwebengine-qt6/python3dist(pyqt6-webengine)
+  BuildRequires/Requires: Build with a upstream supported
+  qtwebengine.
+- Following the above, add ExclusiveArch: %x86_64 aarch64 riscv64.
+  python3-qtwebengine-qt6 is not available on other arches.
+
+-------------------------------------------------------------------
 Mon Nov 17 13:32:22 UTC 2025 - Ignaz Forster <iforster@suse.com>
 
 - Update to version 2025.10.0

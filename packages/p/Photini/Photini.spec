@@ -1,7 +1,7 @@
 #
 # spec file for package Photini
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,19 @@
 
 
 Name:           Photini
-Version:        2025.10.0
+Version:        2026.3.4
 Release:        0
 Summary:        Digital photograph metadata (EXIF, IPTC, XMP) editing application
 License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Other
 URL:            https://github.com/jim-easterbrook/Photini
-Source0:        https://github.com/jim-easterbrook/Photini/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  python3-pip
 BuildRequires:  python3-platformdirs
-BuildRequires:  python3-qtwebengine-qt5
+BuildRequires:  python3-qtwebengine-qt6
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-setuptools_scm
 BuildRequires:  python3-wheel
@@ -41,7 +41,7 @@ Requires:       python3-filetype
 Requires:       python3-platformdirs
 Requires:       python3-requests >= 2.4.0
 Requires:       python3-requests-oauthlib
-Requires:       python3dist(pyqtwebengine)
+Requires:       python3dist(pyqt6-webengine)
 Requires:       typelib(GExiv2)
 # For the flickr, Google Photos, Ipernity and Pixelfed/Mastodon plugins
 Recommends:     python3-keyring
@@ -55,6 +55,7 @@ Recommends:     python3-gpxpy
 # For the camera import plugin
 Recommends:     python3-gphoto2
 BuildArch:      noarch
+ExclusiveArch:  %x86_64 aarch64 riscv64
 
 %description
 A digital photograph metadata (EXIF, IPTC, XMP) editing application.
