@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Wed Aug  5 09:45:59 UTC 2026 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Update to version 8.18.5:
+  * maplut: fix possible OOB read with complex images 
+  * measure: verify image region is larger than patch count 
+  * matload: more specific Matlab detection
+  * reduceh: fix potential incorrect output with Highway < 1.1.0 
+  * jxlsave: ensure EXIF data is freed on error 
+  * icc_ac2rc: ensure ICC profile is closed on error 
+  * buildlut: guard against NaN values 
+  * tiffsave: better xyz handling 
+  * more use of vips_image_decode() 
+  * quantise: better conversion to rgba 
+  * jp2kload: support palette images 
+  * buildlut: better final write calculation 
+  * heifload: raise security limits on references 
+  * tiffload: squash out read errors in openin_source_read 
+  * jxlsave: convert CMYK images to sRGB 
+  * heifload: fix `-Winteger-overflow` warning on 32-bit platforms 
+  * object: guard against non-input arguments 
+  * enumtypes: avoid misuse of `G_GNUC_CONST` for GCC 17 compat 
+  * invertlut: verify input mask positions 
+  * bandjoin_const: fix possible OOB read with RAD/LABQ images 
+  * edge: ensure parent object is built 
+  * object: guard against invalid interpolators 
+  * foreign: guard against NULL filenames 
+  * stdif: expand input by one column 
+  * dcrawload: add support for non-square pixels 
+  * image_sanity: ensure scanlines fit in INT_MAX 
+  * rank: expand input by one column 
+  * hist_local: expand input by one column 
+  * fix possible null-pointer dereference in quantizr backend 
+  * jp2ksave: fix OOB read during chroma subsampling 
+  * jp2ksave: prevent heap buffer overflow on non-RGB images 
+  * heifload: tighten limits on memory use 
+  * boolean: fix heap-buffer-overflow in lshift 
+  * magickload: check animation height 
+  * source: fix max/min confusion 
+  * uhdrsave: use macro to size buffer 
+  * draw_mask: fix support for packed LABQ images 
+  * reduceh: fix possible OOB read in Highway path 
+  * buildlut: check upper bound of x range 
+  * jxl: ensure status codes are propagated 
+  * archive: fix compatibility with MSVC 
+  * ppmload: check image dimensions 
+  * thumbnail: better pyr detection 
+  * jpegsave: fix scrgb save with uhdr disabled 
+
+-------------------------------------------------------------------
 Mon May  4 20:37:35 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.18.2:

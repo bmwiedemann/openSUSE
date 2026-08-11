@@ -23,12 +23,12 @@
 %define short_version_ 8.0
 %define somajor 42
 Name:           vips
-Version:        8.18.2
+Version:        8.18.5
 Release:        0
 Summary:        C/C++ library for processing large images
 License:        LGPL-2.1-only
 Group:          Development/Libraries/C and C++
-URL:            https://www.libvips.org/
+URL:            https://www.libvips.org
 Source0:        https://github.com/libvips/libvips/releases/download/v%{version}/%{name}-%{version}.tar.xz
 BuildRequires:  cmake
 BuildRequires:  fdupes
