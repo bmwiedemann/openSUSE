@@ -17,7 +17,7 @@
 
 
 Name:           gap-crisp
-Version:        1.4.9
+Version:        1.4.11
 Release:        0
 Summary:        GAP: Computing with Radicals, Injectors, Schunck classes and Projectors
 License:        BSD-2-Clause
