@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Aug  3 17:48:43 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 2.1.1 (boo#1273174)
+  Highlights:
+  * Migrated the project build system from qmake to CMake.
+  * Completed the move to Qt 6 across the application.
+  * Fixed several long-standing stability issues in autosave,
+    backup, session restore, and command handling.
+  * Added a handful of editor and UX improvements, including
+    transpose-line support and RTL/LTR direction support.
+  User-facing improvements:
+  * Added transpose-line support.
+  * Added RTL/LTR direction switching support.
+  * Fixed visible close buttons in Advanced Search under Qt 6.
+  * Fixed a shortcut conflict involving Duplicate Line.
+  * Updated and expanded translations, including Dutch and
+    several translation fixes.
+  Stability and bug fixes:
+  * Fixed session-restore encoding issues that could cause
+    unsaved tabs to reopen with the wrong encoding.
+  * Fixed a crash in BackupService::executeBackup().
+  * Fixed an autosave-related segfault.
+  * Fixed special placeholder handling for running commands.
+  * Added additional null-pointer and defensive fixes in a few
+    crash-prone paths.
+  * Cleaned up a range of build warnings and Qt 6 compatibility
+    issues.
+
+-------------------------------------------------------------------
 Thu Jul 01 07:16:33 UTC 2021 - christophe@krop.fr
 
 - Update to version 2.0.0~20201022T180930.03cdde0.
