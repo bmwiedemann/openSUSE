@@ -45,4 +45,20 @@
     <comment></comment>
     <requestid>1349765</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>bbba9bc5fac0489748343e84ce728e56</srcmd5>
+    <version>1.8.6</version>
+    <time>1786460959</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.8.6:
+  * Use seek rather than metadata to get the length of files and
+    mappings in update_mmap and update_mmap_rayon, and tolerate
+    mmap failures. This allows b3sum to memory-map Linux block
+    devices and makes hashing NUL files on Windows work without
+    --no-mmap or &lt;.
+- Update to version 1.8.5:
+  * Forcibly disable LTO when compiling C intrinsics from the Rust
+    build, fixing a build failure on Arch Linux ARM.</comment>
+    <requestid>1370282</requestid>
+  </revision>
 </revisionlist>
