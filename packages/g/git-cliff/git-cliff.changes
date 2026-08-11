@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Aug  8 00:40:20 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 2.13.1:
+  * Support more configuration file locations
+  * Add per-commit statistics
+  * Expose determined bump type in release context
+  * Add configurable commit processing order
+  * Add environment variable for offline execution
+  * Migrate logging to tracing
+  * Add caching where applicable
+- CVE-2026-25541: bytes: integer overflow in 'BytesMut:reserve' can
+  lead to undefined behavior and crashes (boo#1274523)
+
+-------------------------------------------------------------------
 Mon Apr  6 14:10:09 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 2.12.0:
