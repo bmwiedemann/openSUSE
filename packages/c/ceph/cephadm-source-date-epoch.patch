@@ -1,0 +1,51 @@
+From 6ccf662807337ef314a5e8a714bfb7fed4880cfd Mon Sep 17 00:00:00 2001
+From: "Bernhard M. Wiedemann" <bwiedemann@suse.de>
+Date: Thu, 6 Aug 2026 08:27:38 +0200
+Subject: [PATCH] cephadm: honor SOURCE_DATE_EPOCH for zipapp timestamps
+
+zipapp.create_archive stores the mtime of each file in the zip
+entries, so the cephadm binary differed between builds.
+Clamp the mtimes of the freshly generated files to SOURCE_DATE_EPOCH
+when it is set, as described in
+https://reproducible-builds.org/specs/source-date-epoch/
+
+This patch was done while working on reproducible builds for openSUSE.
+
+Signed-off-by: Bernhard M. Wiedemann <bwiedemann@suse.de>
+---
+ src/cephadm/build.py | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
+
+diff --git a/src/cephadm/build.py b/src/cephadm/build.py
+index 6f359ec560..c611662fc5 100755
+--- a/src/cephadm/build.py
++++ b/src/cephadm/build.py
+@@ -89,6 +89,7 @@ def _compile(dest, tempdir):
+         # do not embed the random tempdir path in the pyc files
+         ddir="",
+     )
++    _clamp_mtimes(tempdir)
+     # TODO we could explicitly pass a python version here
+     log.info("Constructing the zipapp file")
+     try:
+@@ -109,6 +110,20 @@ def _compile(dest, tempdir):
+         log.info("Zipapp created without compression")
+ 
+ 
++def _clamp_mtimes(tempdir):
++    """Clamp file mtimes to SOURCE_DATE_EPOCH so that the timestamps
++    stored in the zipapp are reproducible.
++    https://reproducible-builds.org/specs/source-date-epoch/
++    """
++    epoch = os.environ.get("SOURCE_DATE_EPOCH")
++    if not epoch:
++        return
++    clamp = int(epoch)
++    for path in [tempdir, *tempdir.rglob("*")]:
++        if path.stat().st_mtime > clamp:
++            os.utime(path, (clamp, clamp))
++
++
+ def _install_deps(tempdir):
+     """Install dependencies with pip."""
+     # TODO we could explicitly pass a python version here

@@ -226,6 +226,8 @@ Patch15:        cephadm-reproducible.patch
 Patch16:        ceph-liburing-build-fix.patch
 # PATCH-FIX-OPENSUSE ceph-gcc16-build-fix.patch -- fix build with gcc 16
 Patch17:        ceph-gcc16-build-fix.patch
+# PATCH-FIX-OPENSUSE cephadm-source-date-epoch.patch -- reproducible zip timestamps in cephadm
+Patch18:        cephadm-source-date-epoch.patch
 %if 0%{?suse_version}
 # _insert_obs_source_lines_here
 ExclusiveArch:  x86_64 aarch64 ppc64le s390x riscv64

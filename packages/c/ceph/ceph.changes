@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug  6 14:16:58 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Achieve reproducible builds (boo#1274069)
+  * Simplify cephadm-reproducible.patch
+  * Add cephadm-source-date-epoch.patch
+
+-------------------------------------------------------------------
 Tue Jun  2 12:53:01 UTC 2026 - Josef Melcr <josef.melcr@suse.com>
 
 - Add ceph-gcc16-build-fix.patch to fix build with gcc 16 
