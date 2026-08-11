@@ -1,4 +1,85 @@
 -------------------------------------------------------------------
+Tue Aug 11 11:21:46 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.31.0:
+  * Highlights
+    - Apps installed with Helm or kubectl can now be migrated to
+      Timoni without downtime, see taking ownership of existing
+      resources.
+      https://timoni.sh/cue/module/apply-behavior/#taking-ownership-of-existing-resources
+    - The timoni.sh/core package offers standard security context
+      schemas hardened by default.
+      https://github.com/stefanprodan/timoni/blob/main/schemas/README.md#security-contexts
+    - The OCI archive produced by timoni mod build can be pushed to
+      a registry with timoni mod push without re-packaging the
+      source module, see building modules without a registry.
+      https://timoni.sh/cue/module/publishing/#building-modules-without-a-registry
+    - The timoni artifact list has been improved for AI Agents and
+      CI automation: tags can be filtered with --filter-regex and
+      --filter-semver, and the result can be printed as JSON with
+      the --output flag.
+      https://timoni.sh/bundle-distribution/#list-pull-and-apply-example
+  * What's Changed
+    - feat(oci): Push pre-built module OCI archives in #612
+    - feat(cli): Add workdir flag for resolving CUE imports in
+      bundles in #613
+    - feat(cli): Add JSON and YAML output to list and push commands
+      in #614
+    - feat(runtime): Take ownership of existing resources in #617
+    - build(deps): bump the ci group with 4 updates in #616
+    - feat(api): Add restricted security context schemas in #619
+    - fix(cli): Propagate bundle render output errors in #618
+    - feat(cli): Add tag filtering to artifact list command in #620
+
+-------------------------------------------------------------------
+Mon Aug 10 05:01:11 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.30.0:
+  * Highlights
+    - Bundle builds are up to 6.5x faster and use up to 80% less
+      memory, and local modules are now built in place for a faster
+      dev loop.
+    - Timoni modules now support embedding files using the CUE
+      @embed() attribute.
+    - The new timoni fmt command formats the CUE files of modules,
+      bundles and runtimes.
+    - Local modules now support symbolic links, allowing monorepos
+      to share files between modules.
+    - The metadata of the generated objects is now validated using
+      the Kubernetes API rules, and the Cosign signing and
+      verification flows have been hardened.
+    For a detailed overview of what's new in this release, see the
+    announcement:
+    https://github.com/stefanprodan/timoni/discussions/609
+  * What's Changed
+    - fix(engine): Validate the metadata of objects in apply sets
+    - feat(cli): Add fmt command for formatting CUE files
+    - refactor(cli): Derive the CUE version from the linked library
+    - ci(release): Migrate to GoReleaser v2 and attest release
+      assets
+    - feat(oci): opt-in symlink resolution when pushing artifacts
+    - perf(mod): Build local modules in place without copying
+    - feat(bundle): Build bundle and runtime workspaces in memory
+    - docs: Document the bundle build concurrency flag
+    - perf(bundle): Build bundle instances concurrently
+    - perf(bundle): Fetch modules once and inject instance settings
+      in-memory
+    - perf(bundle): Build each instance in a dedicated CUE context
+    - perf(engine): Optimize CUE values to Kubernetes objects
+      conversion
+    - fix(oci): Verify and pull by digest when using Cosign
+    - fix(oci): Compute the module digest from the pulled manifest
+    - fix: Validate runtime values before injecting them into CUE
+    - docs: Document embedding files in modules
+    - refactor: Use an embedded immutable ConfigMap in the redis
+      example
+    - refactor: Embed the nginx config files in the minimal example
+    - docs: add homebrew-core and mise to install guide
+    - refactor: Vendor the CUE schemas in modules via symlinks
+    - docs: Document symlink resolution for local modules
+    - feat: Support symlinks in local modules
+
+-------------------------------------------------------------------
 Mon Aug 03 12:25:12 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.29.0:
