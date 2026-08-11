@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Aug 11 06:34:30 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 10.2.2:
+  * 06ef2d3 Bump k8s.io/apimachinery from 0.36.2 to 0.36.3 (#1216)
+  * 292a1c2 Bump k8s.io/client-go from 0.35.4 to 0.36.3 (#1217)
+  * dafa0b7 Managed by Terraform
+  * 31bc0fd Managed by Terraform
+  * b65142e Pin dependency rok8s to 14.4.0 (#1218)
+  * cb741e3 Update all non-major dependencies (#1219)
+  * f0a370c Update dependency rok8s to v16 (#1221)
+
+-------------------------------------------------------------------
 Wed Jul 22 06:39:26 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 10.2.1:
