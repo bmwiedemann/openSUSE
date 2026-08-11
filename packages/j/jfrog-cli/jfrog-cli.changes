@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Aug 10 05:02:35 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.119.0:
+  * New Features
+    - [jfrog-cli] RTECO-1651 - Add agent skills e2e tests #3634
+      (@udaykb2)
+    - [jfrog-cli-security] XRAY-140550 - Onboarding uv for jf
+      curation-audit #798 (@Phavya-jfrog)
+  * Bug Fixes
+    - [build-info-go] Remove deprecated
+      .jfrog/jfrog-apps-config.yml #409 (@naveenku-jfrog)
+    - [jfrog-cli] Fix apispec parser crashing on OpenAPI 3.1
+      nullable type unions #3647 (@ehl-jf)
+    - [jfrog-cli-security] XRAY-156485 - Match violation component
+      ids to SBOM refs case-insensitively #830 (@Jordanh1996)
+    - [jfrog-cli-security] XRAY-157176 - Honor SAST changed files
+      mode in the config profile scan flow #831 (@Jordanh1996)
+  * Internal Changes
+    - [jfrog-cli-security] Update dependencies for 1.33.0 #836
+      (@Jordanh1996)
+  * Other Changes
+    - [jfrog-cli] Run Alpine APK tests inside real Alpine Docker
+      containers #3646 (@naveenku-jfrog)
+    - [jfrog-cli-security] Docker Package Updater #820 (@orto17)
+
+-------------------------------------------------------------------
 Thu Aug 06 05:43:57 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.118.0:
