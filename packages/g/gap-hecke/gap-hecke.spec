@@ -1,7 +1,7 @@
 #
 # spec file for package gap-hecke
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,16 @@
 
 
 Name:           gap-hecke
-Version:        1.5.4
+Version:        1.6.0
 Release:        0
 Summary:        GAP: Hecke - Specht 2.4 ported to GAP 4
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://gap-packages.github.io/hecke/
-
 Source:         https://github.com/gap-packages/hecke/releases/download/v%version/hecke-%version.tar.gz
 BuildArch:      noarch
 BuildRequires:  gap-rpm-devel
-Requires:       gap-core >= 4.8
+Requires:       gap-core >= 4.13
 
 %description
 The Hecke package provides functions for calculating decomposition
