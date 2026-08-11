@@ -1,7 +1,7 @@
 #
 # spec file for package borgmatic
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,7 +41,6 @@ BuildRequires:  %{python_module pycodestyle}
 BuildRequires:  %{python_module pyflakes}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module py}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module ruamel.yaml}
 BuildRequires:  %{python_module setuptools}
