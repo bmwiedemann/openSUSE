@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Aug  8 16:23:32 UTC 2026 - Marcus Meissner <meissner@suse.com>
+
+- updated to 11.15 release
+  - More KDF algorithms in BCrypt.
+  - Support for ARM64EC build in Mingw mode.
+  - More format conversions in WindowsCodecs.
+  - Support for local NTLM authentication.
+  - Various bug fixes.
+- update staging to 11.15 release
+
+-------------------------------------------------------------------
 Sat Jul 25 15:35:42 UTC 2026 - Marcus Meissner <meissner@suse.com>
 
 - updated to 11.14 release
