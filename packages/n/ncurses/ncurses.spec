@@ -399,9 +399,9 @@ rm -fr tack
 mv tack-* tack
 %patch -P1 -p0 -b .327x
 %patch -P2 -p0 -b .hs
-%patch -P0 -p0 -b .p0
 %patch -P3 -p1
 %patch -P4 -p0
+%patch -P0 -p0 -b .p0
 
 %build
 LANG=C.UTF-8

@@ -1,4 +1,102 @@
 -------------------------------------------------------------------
+Mon Aug 10 06:51:59 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20260808
+  + various improvements/fixes to test/dup_field.c
+  + correct a check for FORM* in test/tracemunch
+  + correct an ifdef in delscreen when using --enable-reentrant (report
+    by Vassili Courzakis).
+  + modify dup_field to allocate buffers needed for wide-character
+    configuration of dup_field (report by Serhiy Storchaka).
+  + correct masking of wide characters into chtype in winch (report by
+    Serhiy Storchaka).
+
+-------------------------------------------------------------------
+Mon Aug  3 07:31:51 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20260801
+  + use ansi+csr in aaa+dec -TD
+  + use ansi+idc in hurd, tw100, vt420 -TD
+  + use ansi+erase in tw100 -TD
+  + add vt100+tabs -TD
+  + fix unbounded recursion in winsch if given a parameter which is not a 
+    valid character in the current encoding (report/analysis by Serhiy
+    Storchaka).
+- Add ncurses patch 20260725
+  + use ansi+cpr in beterm -TD
+  + use ansi+csr in aixterm, att6386, hirez100, iris-ansi -TD
+  + use ansi+idc in vt220-base -TD
+  + add ansi+sc -TD
+  + fixes for compiler warnings/cppcheck.
+  + amend 20260307 change to read_entry.c, to allow reading terminfo
+    compiled in ncurses 6.1 and earlier (reports by Todd Richmond, Sven
+    Joachim, cf: 20180331).
+- Add ncurses patch 20260718
+  + drop kbs from vt100+arrows and vt100+apparrows to increase usage -TD
+  + add xterm+24fkeys -TD
+  + fixes to escape comma and backslash consistently with infocmp for
+    -g/-G options.
+
+-------------------------------------------------------------------
+Tue Jul 14 07:56:18 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+ 
+- Add ncurses patch 20260711
+  + add otty -TD
+  + add vt100+arrows, vt100+apparrows -TD
+
+-------------------------------------------------------------------
+Mon Jul  6 07:16:07 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20260704
+  + add zutty -TD
+  + modify winch() and winsch() to use wcstombs() to convert 8-bit codes
+    to Unicode when ncurses is configured to support Unicode but is not
+    using UTF-8 encoding (report/analysis by Serhiy Storchaka).
+  + fixes for compiler warnings/cppcheck.
+  + fixes for scan-build, valgrind build/testing.
+  + fix a memory leak in _nc_resolve_uses2 (report/testcase by
+    Yufeng Wu, Zhijie Zhang, Qizhen Xu)
+  + add a check for escaped nul in fmt_complex (report/testcase by
+    Yufeng Wu, Zhijie Zhang, Qizhen Xu).
+  + add a limit-check in _nc_tgetent (report by Utku Yildirim).
+  + add a buffer-limit check in tgetstr.
+- Port ncurses-6.6.dif, ncurses-5.9-ibm327x.dif, and ncurses-6.5-ghostty.dif
+
+-------------------------------------------------------------------
+Mon Jun 29 10:30:38 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20260627
+  + add a makefile symbol for the names of the installed libraries to
+    simplify parallel build of more than one configuration (patch by
+    Luca Fancellu).
+  + change misc/Makefile to eliminate "pc-files" stamp target (report
+    by Luca Fancellu).
+  + change internal type for file-descriptor to int, eliminate cast
+    (report by Antonio Nino Diaz).
+  + add xon to several entries, based on manuals and product
+    descriptions -TD
+  + revise adm36, based on manual -TD
+  + add u6, u7, kdch1 to vp3a+ based on manual -TD
+  + add u6, u7, home, cbt to adm20 based on manual -TD
+
+-------------------------------------------------------------------
+Mon Jun 22 08:41:21 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20260620
+  + add il1 to ibcs2 -TD
+  + add ich1 to several entries, providing for support of non-curses
+    applications via termcap only -TD
+  + add ich/ich1 to teraterm2.3 based on ttsrcp23.zip source-code -TD
+  + add ich/ich1 to x10term based on X.V10R4/xterm source-code -TD
+  + add ich/ich1 to xterm-r6 based on source-code -TD
+  + add ich/ich1 to mterm-ansi and decansi based on source-code -TD
+  + add ich/ich1 to tek4025a, tek4105a, tek4106brl from manual -TD
+  + modify infocmp, tic, and tgetent to omit ich1 (termcap "ic") while
+    providing termcap data when smir/rmir (termcap "im/ei") are given.
+  + reduce warning in tic regarding termcap applications which do not
+    work with smir/rmir combined with ich1.
+
+-------------------------------------------------------------------
 Fri Jun 19 17:57:27 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Mark build recipe as requiring bash

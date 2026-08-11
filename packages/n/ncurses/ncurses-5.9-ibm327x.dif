@@ -9,8 +9,8 @@ terminal or the shell or any other program therein (no keys).
  1 file changed, 15 insertions(+), 3 deletions(-)
 
 --- misc/terminfo.src
-+++ misc/terminfo.src	2025-05-05 07:10:18.639838164 +0000
-@@ -1270,7 +1270,7 @@ sclp|IBM s390 driver for Linux,
++++ misc/terminfo.src	2026-08-10 07:31:54.553434710 +0000
+@@ -1281,7 +1281,7 @@ sclp|IBM s390 driver for Linux,
  	cols#80, lines#24,
  	acsc=``aaffggjjkkllmmnnooppqqrrssttuuvvwwxxyyzz{{||}}~~,
  	bel=^G, blink=\E[5m, cr=\r, cub1=^H, cud1=\n,
@@ -18,17 +18,17 @@ terminal or the shell or any other program therein (no keys).
 +	dch=\E[%p1%dP, dch1=\E[P,
  	dl=\E[%p1%dM, dl1=\E[M, ech=\E[%p1%dX, el1=\E[1K,
  	enacs=\E)0, ht=^I, ich=\E[%p1%d@, ind=\ED, is2=\Ec,
- 	kf5=\E[15~, khome=\E[1~, nel=\EE, rc=\E8, rev=\E[7m, ri=\EM,
-@@ -1279,7 +1279,7 @@ sclp|IBM s390 driver for Linux,
+ 	kf5=\E[15~, khome=\E[1~, nel=\EE, rev=\E[7m, ri=\EM,
+@@ -1290,7 +1290,7 @@ sclp|IBM s390 driver for Linux,
  	    \E(B%;$<2>,
- 	sgr0=\E[m\E(B, smacs=\E(0$<2>, smul=\E[4m,
- 	use=ecma+underline, use=ecma+standout, use=klone+color,
--	use=ansi+arrows, use=ansi+cpr, use=ansi+erase,
-+	use=ansi+arrows, use=ansi+cpr, use=ansi+cup, use=ansi+erase,
- 	use=ansi+local, use=ansi+rca, use=linux+sfkeys,
+ 	sgr0=\E[m\E(B, smacs=\E(0$<2>, use=ecma+underline,
+ 	use=ecma+standout, use=klone+color, use=ansi+arrows,
+-	use=ansi+cpr, use=ansi+erase, use=ansi+local,
++	use=ansi+cpr, use=ansi+cup, use=ansi+erase, use=ansi+local,
+ 	use=ansi+rca, use=ansi+sc, use=linux+sfkeys,
  	use=vt100+pf1-pf4, use=vt220+ufkeys, use=vt220+pcedit,
  
-@@ -18568,7 +18568,19 @@ hazel|exec80|h80|he80|Hazeltine Executiv
+@@ -18693,7 +18693,19 @@ hazel|exec80|h80|he80|Hazeltine Executiv
  
  ibm327x|line mode IBM 3270 style,
  	gn,

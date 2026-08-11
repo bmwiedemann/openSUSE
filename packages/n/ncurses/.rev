@@ -5776,4 +5776,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1361957</requestid>
   </revision>
+  <revision rev="337" vrev="110">
+    <srcmd5>050831aab5ba452c25b8eeaf1a05e2a9</srcmd5>
+    <version>unknown</version>
+    <time>1786460939</time>
+    <user>anag_factory</user>
+    <comment>- Add ncurses patch 20260808
+  + various improvements/fixes to test/dup_field.c
+  + correct a check for FORM* in test/tracemunch
+  + correct an ifdef in delscreen when using --enable-reentrant (report
+    by Vassili Courzakis).
+  + modify dup_field to allocate buffers needed for wide-character
+    configuration of dup_field (report by Serhiy Storchaka).
+  + correct masking of wide characters into chtype in winch (report by
+    Serhiy Storchaka).
+
+- Add ncurses patch 20260801
+  + use ansi+csr in aaa+dec -TD
+  + use ansi+idc in hurd, tw100, vt420 -TD
+  + use ansi+erase in tw100 -TD
+  + add vt100+tabs -TD
+  + fix unbounded recursion in winsch if given a parameter which is not a 
+    valid character in the current encoding (report/analysis by Serhiy
+    Storchaka).
+- Add ncurses patch 20260725
+  + use ansi+cpr in beterm -TD
+  + use ansi+csr in aixterm, att6386, hirez100, iris-ansi -TD
+  + use ansi+idc in vt220-base -TD
+  + add ansi+sc -TD
+  + fixes for compiler warnings/cppcheck.
+  + amend 20260307 change to read_entry.c, to allow reading terminfo
+    compiled in ncurses 6.1 and earlier (reports by Todd Richmond, Sven
+    Joachim, cf: 20180331).
+- Add ncurses patch 20260718
+  + drop kbs from vt100+arrows and vt100+apparrows to increase usage -TD
+  + add xterm+24fkeys -TD</comment>
+    <requestid>1370523</requestid>
+  </revision>
 </revisionlist>
