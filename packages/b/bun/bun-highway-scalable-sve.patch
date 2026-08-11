@@ -1,0 +1,69 @@
+diff --git a/scripts/build/deps/highway.ts b/scripts/build/deps/highway.ts
+index 7a23f5ba..7ce39888 100644
+--- a/scripts/build/deps/highway.ts
++++ b/scripts/build/deps/highway.ts
+@@ -14,6 +14,31 @@ import type { Dependency, DirectBuild } from "../source.ts";
+ 
+ const HIGHWAY_COMMIT = "2607d3b5b0113992fe84d3848859eae13b3b52c1";
+ 
++// (1 << 23) | (1 << 24) — HWY_SVE2 | HWY_SVE, the length-agnostic SVE targets.
++//
++// Highway only implements BitsFromMask for the fixed-length SVE targets
++// (arm_sve-inl.h: "required if HWY_MAX_BYTES <= 64, which is true for the
++// fixed-size SVE targets"), because a one-bit-per-lane uint64_t is not
++// well-defined when the vector length is unknown until run time. highway_xml,
++// highway_json and highway_sourcemap all call it unconditionally, so those
++// three fail to compile for the scalable targets. They are attainable on
++// aarch64 Linux whenever the compiler knows SVE and highway has runtime
++// dispatch, which is every clang recent enough to build bun.
++//
++// Disabling them leaves NEON plus HWY_SVE_256 and HWY_SVE2_128, the
++// fixed-length targets that Neoverse V1/V2/N2 select and that do define
++// BitsFromMask - so no SVE hardware loses its SVE path.
++//
++// This has to be the same value in every translation unit that includes
++// highway: HWY_TARGETS is derived from it, and this file disagreeing with the
++// dispatch tables in bun's own objects would misdispatch at run time. Dep
++// builds do not get the global define table, and bun's objects do not get a
++// dep's defines, so the value is repeated in flags.ts - keep the two in step.
++//
++// A number, not a string: DirectBuild.defines emits a string value as a
++// quoted C string literal, which the preprocessor cannot evaluate.
++const HWY_DISABLED_TARGETS = 0x1800000;
++
+ export const highway: Dependency = {
+   name: "highway",
+ 
+@@ -42,7 +67,7 @@ export const highway: Dependency = {
+         "hwy/timer.cc",
+       ],
+       includes: ["."],
+-      defines: { HWY_STATIC_DEFINE: true },
++      defines: { HWY_STATIC_DEFINE: true, HWY_DISABLED_TARGETS },
+       // -fno-exceptions / -fmath-errno aren't CLOptions (clang-cl warns
+       // "unknown argument ignored"). globalFlags supplies /EHs-c- and /GR-
+       // on Windows; upstream's MSVC branch additionally sets the STL macro.
+diff --git a/scripts/build/flags.ts b/scripts/build/flags.ts
+index 59e199b6..aa0d5211 100644
+--- a/scripts/build/flags.ts
++++ b/scripts/build/flags.ts
+@@ -782,6 +782,19 @@ export const defines: Flag[] = [
+   },
+ 
+   // ─── Feature toggles ───
++  {
++    // HWY_SVE2 | HWY_SVE — highway's length-agnostic SVE targets. It defines
++    // BitsFromMask only for the fixed-length ones (a uint64_t with one bit per
++    // lane means nothing when the vector length is a run-time property), and
++    // highway_xml, highway_json and highway_sourcemap all call it
++    // unconditionally. The fixed-length HWY_SVE_256 and HWY_SVE2_128 that
++    // Neoverse V1/V2/N2 select stay enabled, so no SVE hardware falls back to
++    // NEON. Must match deps/highway.ts, which sets the same value for
++    // highway's own objects — HWY_TARGETS derives from it, and a mismatch
++    // between the two would misdispatch at run time rather than fail to build.
++    flag: "HWY_DISABLED_TARGETS=0x1800000",
++    desc: "Skip highway's scalable SVE targets (no BitsFromMask there)",
++  },
+   {
+     flag: "LAZY_LOAD_SQLITE=0",
+     when: c => c.staticSqlite,

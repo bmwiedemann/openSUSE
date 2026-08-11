@@ -1,0 +1,56 @@
+diff --git a/scripts/build/rust.ts b/scripts/build/rust.ts
+index 4e3a41ae..47c344f5 100644
+--- a/scripts/build/rust.ts
++++ b/scripts/build/rust.ts
+@@ -347,20 +347,25 @@ export function cargoBuildInvocation(cfg: Config): CargoInvocation {
+     triple,
+     "--profile",
+     profile.name,
++    // Distribution builds have no network and a pre-vendored crate tree.
++    "--locked",
++    "--offline",
+   ];
+-  if (tier3 || cfg.release || cfg.asan) {
++  if (tier3 || cfg.asan) {
+     // Build std/core/alloc from source instead of linking the rustup prebuilt.
+     //
+     // tier3:   no prebuilt `rust-std` exists.
+-    // release: prebuilt std is native code built for generic x86-64 with no
+-    //          `.llvm_addrsig`. Rebuilding with our RUSTFLAGS gets it
+-    //          `-Ctarget-cpu=` (AVX2/BMI in core::str / hashbrown), and under
+-    //          `cfg.lto` it becomes bitcode that joins the cross-language LTO
+-    //          unit + safe ICF instead of being an opaque blob in the link.
+     // asan:    prebuilt std is uninstrumented; rebuilding applies
+     //          `-Zsanitizer=address` so OOB/UAF inside Vec/String/HashMap are
+     //          visible instead of stopping at the std boundary.
+     //
++    // Release builds used to rebuild std here too, to get `-Ctarget-cpu=` into
++    // it and to feed cross-language LTO. That is dropped when packaging for a
++    // distribution: rebuilding std means resolving its own dependencies from
++    // crates.io, which a build environment cannot reach, and the distribution
++    // compiler's prebuilt std is the one the rest of the system links against
++    // anyway. Cross-language LTO is off for the same build (--lto=off).
++    //
+     // The workspace is `panic = "abort"` (see Cargo.toml). `proc_macro` is
+     // needed because `cargo build --target` still resolves proc-macro crates
+     // for the host through the same `-Zbuild-std` flag set. Requires the
+--- a/scripts/build/codegen.ts
++++ b/scripts/build/codegen.ts
+@@ -148,11 +148,14 @@
+   //
+   // CMake only tracked package.json as input; we add bun.lock so lockfile
+   // version bumps actually reinstall.
++  //
++  // Distribution builds do not run the install: node_modules is supplied
++  // already populated and there is no network to reach the registry. Ninja
++  // treats every edge as dirty on a fresh build directory, so this edge always
++  // fires however up to date the tree is - only stamping it keeps it offline.
+   const touch = hostWin ? "type nul >" : "touch";
+   n.rule("bun_install", {
+-    command: hostWin
+-      ? `cmd /c "cd /d $dir && ${bun} install --frozen-lockfile && ${touch} $stamp"`
+-      : `cd $dir && ${bun} install --frozen-lockfile && ${touch} $stamp`,
++    command: hostWin ? `cmd /c "cd /d $dir && ${touch} $stamp"` : `cd $dir && ${touch} $stamp`,
+     description: "install $dir",
+     restat: true,
+     // bun install can be memory-hungry and grabs a lockfile; serialize.

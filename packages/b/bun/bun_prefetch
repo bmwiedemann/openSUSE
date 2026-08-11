@@ -1,0 +1,269 @@
+#!/bin/bash
+# Prepare everything Bun's build would otherwise download.
+#
+# Run by the maintainer on a version bump, from the package directory. This is
+# not an OBS source service: it needs network access, a working Bun and a lot
+# of disk, none of which belong in a build.
+#
+# Bun fetches its dependencies while building, from three separate places, so
+# this service produces three archives:
+#
+#   bun-prefetch-*.tar.zst      C/C++ dependencies, in the content-addressed
+#                               layout Bun's own build reads (see below)
+#   bun-vendor-*.tar.zst        Rust crates, from `cargo vendor`
+#   bun-node-modules-*.tar.zst  npm packages needed by the code generators
+#
+# For the C/C++ dependencies upstream supports running fully offline through a
+# "prefetch cache" (scripts/build/download.ts): every download is looked up
+# first at
+#
+#     $BUN_BUILD_PREFETCH_DIR/by-url/<sha256(url) truncated to 32 hex chars>
+#
+# and copied from there on a hit. Populating exactly that layout means the
+# upstream build system does not have to be patched to build offline.
+#
+# The dependency list is not hardcoded here. It is produced by bun-deps.mjs,
+# which imports Bun's own dependency definitions out of the unpacked source
+# tree, so a version bump picks up added, removed and re-pinned dependencies
+# automatically.
+#
+# Rust crates are vendored here rather than by obs-service-cargo because the
+# workspace has a path dependency on vendor/lolhtml, which is one of the
+# downloads above: cargo cannot even read the manifest until it is unpacked,
+# which has to happen between the two steps.
+#
+# Run after a version bump:
+#     ./bun_prefetch
+# then commit the regenerated archives and manifest alongside the new tarball.
+
+set -euo pipefail
+
+outdir="."
+source_archive=""
+version=""
+
+while [ $# -gt 0 ]; do
+    case "$1" in
+        --source)   source_archive="$2"; shift 2 ;;
+        --version)  version="$2"; shift 2 ;;
+        --outdir)   outdir="$2"; shift 2 ;;
+        *) echo "$0: unknown option: $1" >&2; exit 1 ;;
+    esac
+done
+
+# Locate the upstream source archive if it was not named explicitly.
+if [ -z "$source_archive" ]; then
+    source_archive=$(ls -1 bun-*.tar.gz 2>/dev/null | head -1) || true
+fi
+[ -n "$source_archive" ] && [ -f "$source_archive" ] || {
+    echo "$0: upstream source archive not found; pass --source <file>" >&2
+    exit 1
+}
+if [ -z "$version" ]; then
+    version=$(basename "$source_archive" .tar.gz)
+    version=${version#bun-}
+fi
+
+# bun-deps.mjs is committed next to this script.
+deps_script="$(dirname "$0")/bun-deps.mjs"
+[ -f "$deps_script" ] || { echo "$0: bun-deps.mjs not found next to $0" >&2; exit 1; }
+deps_script=$(readlink -f "$deps_script")
+
+workdir=$(mktemp -d)
+trap 'rm -rf "$workdir"' EXIT
+
+echo "unpacking $source_archive"
+tar -xf "$source_archive" -C "$workdir"
+srcdir=$(find "$workdir" -maxdepth 1 -mindepth 1 -type d | head -1)
+[ -d "$srcdir/scripts/build/deps" ] || {
+    echo "$0: $srcdir/scripts/build/deps missing; upstream layout changed" >&2
+    exit 1
+}
+
+byurl="$workdir/cache/by-url"
+mkdir -p "$byurl"
+manifest="$workdir/manifest"
+: >"$manifest"
+
+# by-url key: sha256 of the URL, first 32 hex characters. Must stay in sync
+# with prefetchPathForUrl() in scripts/build/download.ts.
+url_key() {
+    printf '%s' "$1" | sha256sum | cut -c1-32
+}
+
+fetch() {
+    local url="$1" key dest
+    key=$(url_key "$url")
+    dest="$byurl/$key"
+    if [ ! -f "$dest" ]; then
+        echo "  fetch $url"
+        curl -fsSL --retry 3 -o "$dest.part" "$url"
+        mv "$dest.part" "$dest"
+    fi
+    printf '%s  %s  %s\n' "$key" "$(sha256sum <"$dest" | cut -d' ' -f1)" "$url" >>"$manifest"
+}
+
+# ---------------------------------------------------------------------------
+# 1. C/C++ dependencies
+# ---------------------------------------------------------------------------
+echo "enumerating dependencies from scripts/build/deps/"
+cp "$deps_script" "$srcdir/bun-deps.mjs"
+lolhtml_url=""
+while IFS=$'\t' read -r kind name url; do
+    case "$kind" in
+        archive|prebuilt)
+            echo "  $name"
+            fetch "$url"
+            [ "$name" = "lolhtml" ] && lolhtml_url="$url"
+            ;;
+        *)
+            # SQLite is committed to Bun's tree as an amalgamation and WebKit
+            # is supplied as a separate source; neither is downloaded.
+            echo "  $name: $kind, not downloaded"
+            ;;
+    esac
+done < <(cd "$srcdir" && node --experimental-strip-types --no-warnings bun-deps.mjs)
+rm -f "$srcdir/bun-deps.mjs"
+
+sort -o "$manifest" "$manifest"
+cp "$manifest" "$workdir/cache/manifest.sha256"
+
+# ---------------------------------------------------------------------------
+# 2. Rust crates
+#
+# The workspace has `lol_html = { path = "vendor/lolhtml" }`, so the lolhtml
+# archive fetched above has to be unpacked before cargo will read the manifest.
+# ---------------------------------------------------------------------------
+[ -n "$lolhtml_url" ] || { echo "$0: lolhtml not in the dependency list" >&2; exit 1; }
+echo "unpacking lolhtml for the cargo workspace"
+mkdir -p "$srcdir/vendor/lolhtml"
+tar -xzf "$byurl/$(url_key "$lolhtml_url")" -C "$srcdir/vendor/lolhtml" --strip-components=1
+
+echo "vendoring Rust crates"
+# Bun pins a Rust nightly it expects rustup to install. There is no rustup in
+# a build environment and vendoring does not compile anything, so keep cargo
+# from trying to honour the pin.
+#
+# The crates go in cargo-vendor/ rather than vendor/, which already holds
+# WebKit and lol-html: cargo expects every entry of its vendor directory to be
+# a crate and rejects the ones that are not. The [source] configuration cargo
+# prints here is not kept - it records an absolute path from this machine, so
+# the spec writes its own.
+mv "$srcdir/rust-toolchain.toml" "$srcdir/rust-toolchain.toml.orig"
+(cd "$srcdir" && cargo vendor --locked --versioned-dirs "$workdir/cargo-vendor" >/dev/null)
+mv "$srcdir/rust-toolchain.toml.orig" "$srcdir/rust-toolchain.toml"
+
+# ---------------------------------------------------------------------------
+# 3. npm packages for the code generators
+# ---------------------------------------------------------------------------
+echo "installing npm dependencies"
+install_dirs=(. packages/bun-error src/node-fallbacks)
+for dir in "${install_dirs[@]}"; do
+    [ -f "$srcdir/$dir/package.json" ] || continue
+    echo "  $dir"
+    (cd "$srcdir/$dir" && bun install --frozen-lockfile >/dev/null)
+done
+# Several of those packages ship a prebuilt binary per platform, as an
+# optional dependency picked by CPU. bun install only unpacks the one for the
+# machine this runs on, so an archive made here would be short exactly those
+# files on the other architecture, and the build would go to the network for
+# them - which is what all of this exists to avoid. Add the variants for every
+# architecture the package is built for, so one archive serves both.
+#
+# They go in the top level node_modules rather than into bun's store layout
+# under node_modules/.bun. Everything that loads one of these does so through
+# require(), and the top level directory is the last place Node's resolution
+# looks on the way up from anywhere below it, so a package sitting there is
+# found from any depth without having to reproduce bun's symlink farm. The
+# consumers are all launchers that choose by process.arch at run time, so the
+# unused architecture is simply never opened. The one place an architecture is
+# baked in instead of chosen is node_modules/.bin/esbuild, which bun points
+# straight at the native binary; the spec repoints it in %prep.
+#
+# Done for both architectures unconditionally, including the one bun installed
+# here, so the archive does not depend on which machine generated it.
+#
+# The list is the lockfile's, not ours: every entry it marks `"os": "linux"`
+# with a cpu of x64 or arm64. Keep the cpu filter in step with ExclusiveArch
+# in the spec.
+echo "adding Linux platform packages for every supported architecture"
+add_linux_platform_packages() {
+    local dir="$1" lock nm name version integrity base url tmp actual
+    lock="$srcdir/$dir/bun.lock"
+    nm="$srcdir/$dir/node_modules"
+    [ -f "$lock" ] && [ -d "$nm" ] || return 0
+    tmp="$workdir/npm-package.tgz"
+    while IFS=$'\t' read -r name version integrity; do
+        [ -f "$nm/$name/package.json" ] && continue
+        base="${name##*/}"
+        url="https://registry.npmjs.org/$name/-/$base-$version.tgz"
+        echo "  $name@$version"
+        curl -fsSL --retry 3 -o "$tmp" "$url"
+        # The lockfile carries an integrity hash for every package; check it,
+        # since these are being fetched outside bun's own install.
+        actual="sha512-$(openssl dgst -sha512 -binary "$tmp" | base64 -w0)"
+        [ "$actual" = "$integrity" ] || {
+            echo "$0: $name@$version: integrity mismatch" >&2
+            echo "  lockfile: $integrity" >&2
+            echo "  download: $actual" >&2
+            exit 1
+        }
+        mkdir -p "$nm/$name"
+        tar -xzf "$tmp" -C "$nm/$name" --strip-components=1
+        rm -f "$tmp"
+    done < <(node --input-type=module -e '
+      import { readFileSync } from "node:fs";
+      // bun writes its lockfile as JSONC. Nothing in it is a string that could
+      // contain a comma before a closing brace, so dropping trailing commas is
+      // enough to make it JSON.
+      const text = readFileSync(process.argv[1], "utf8").replace(/,(\s*[}\]])/g, "$1");
+      const packages = JSON.parse(text).packages ?? {};
+      for (const [name, entry] of Object.entries(packages)) {
+        const meta = entry[2];
+        if (!meta || typeof meta !== "object" || Array.isArray(meta)) continue;
+        if (![meta.os ?? []].flat().includes("linux")) continue;
+        const cpu = [meta.cpu ?? []].flat();
+        if (!cpu.includes("x64") && !cpu.includes("arm64")) continue;
+        const ident = entry[0];
+        const integrity = entry[3];
+        if (typeof integrity !== "string") continue;
+        process.stdout.write(name + "\t" + ident.slice(ident.lastIndexOf("@") + 1) + "\t" + integrity + "\n");
+      }
+    ' "$lock")
+}
+for dir in "${install_dirs[@]}"; do
+    add_linux_platform_packages "$dir"
+done
+
+nm_list="$workdir/node-modules-dirs"
+: >"$nm_list"
+for dir in "${install_dirs[@]}"; do
+    [ -d "$srcdir/$dir/node_modules" ] && printf '%s\n' "${dir#./}" >>"$nm_list"
+done
+
+# ---------------------------------------------------------------------------
+# Pack. Reproducible: fixed order, fixed mtimes, no owner names.
+# ---------------------------------------------------------------------------
+: "${SOURCE_DATE_EPOCH:=$(stat -c %Y "$source_archive")}"
+pack() {
+    local archive="$1" dir="$2"; shift 2
+    echo "packing $archive"
+    tar --sort=name --format=gnu --mtime="@$SOURCE_DATE_EPOCH" \
+        --owner=0 --group=0 --numeric-owner \
+        -C "$dir" -cf - "$@" |
+        zstd -19 -T0 -q -o "$outdir/$archive.tmp"
+    mv "$outdir/$archive.tmp" "$outdir/$archive"
+    echo "wrote $outdir/$archive ($(du -h "$outdir/$archive" | cut -f1))"
+}
+
+pack "bun-prefetch-$version.tar.zst" "$workdir/cache" .
+pack "bun-vendor-$version.tar.zst" "$workdir" cargo-vendor
+
+nm_paths=()
+while read -r dir; do
+    [ "$dir" = "." ] && nm_paths+=("node_modules") || nm_paths+=("$dir/node_modules")
+done <"$nm_list"
+pack "bun-node-modules-$version.tar.zst" "$srcdir" "${nm_paths[@]}"
+
+cp "$manifest" "$outdir/bun-prefetch.manifest"
+echo "wrote $outdir/bun-prefetch.manifest ($(wc -l <"$manifest") entries)"

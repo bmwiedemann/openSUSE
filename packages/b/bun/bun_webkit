@@ -1,0 +1,96 @@
+#!/bin/bash
+# Produce the JavaScriptCore source tarball Bun builds against.
+#
+# Run by the maintainer on a version bump, from the package directory. This is
+# not an OBS source service: it clones about 6 GB.
+#
+# WebKit is Bun's JavaScript engine. It is the one dependency Bun's build
+# system does not fetch itself - scripts/build/deps/webkit.ts expects either a
+# prebuilt engine downloaded from upstream's releases, or a checkout the user
+# made by hand. This service makes that checkout and packs it, so the engine is
+# built from source rather than shipped as a foreign binary.
+#
+# GitHub refuses to generate archives for a repository this large, so the tree
+# has to be cloned. The clone is shallow, and the parts of WebKit that a
+# JavaScriptCore build never reads are dropped:
+#
+#   LayoutTests PerformanceTests WebDriverTests ManualTests   test suites
+#   JSTests                                                   JSC's own tests
+#   Websites                                                  webkit.org content
+#
+# Together those are about five times the size of everything the build uses.
+# Nothing outside Source/ and Tools/ is referenced by the JSCOnly port.
+#
+# The pinned revision is read out of the Bun source tree, so a version bump
+# cannot leave the engine behind.
+#
+# Run after a version bump:
+#     ./bun_webkit
+# then commit the regenerated archive alongside the new tarball.
+
+set -euo pipefail
+
+outdir="."
+source_archive=""
+version=""
+repo="https://github.com/oven-sh/WebKit.git"
+
+while [ $# -gt 0 ]; do
+    case "$1" in
+        --source)   source_archive="$2"; shift 2 ;;
+        --version)  version="$2"; shift 2 ;;
+        --outdir)   outdir="$2"; shift 2 ;;
+        --repo)     repo="$2"; shift 2 ;;
+        *) echo "$0: unknown option: $1" >&2; exit 1 ;;
+    esac
+done
+
+if [ -z "$source_archive" ]; then
+    source_archive=$(ls -1 bun-*.tar.gz 2>/dev/null | head -1) || true
+fi
+[ -n "$source_archive" ] && [ -f "$source_archive" ] || {
+    echo "$0: upstream source archive not found; pass --source <file>" >&2
+    exit 1
+}
+if [ -z "$version" ]; then
+    version=$(basename "$source_archive" .tar.gz)
+    version=${version#bun-}
+fi
+
+workdir=$(mktemp -d)
+trap 'rm -rf "$workdir"' EXIT
+
+echo "reading the pinned WebKit revision from $source_archive"
+tar -xf "$source_archive" -C "$workdir" --wildcards '*/scripts/build/deps/webkit.ts'
+webkit_ts=$(find "$workdir" -name webkit.ts -path '*/scripts/build/deps/*' | head -1)
+[ -n "$webkit_ts" ] || { echo "$0: scripts/build/deps/webkit.ts not found" >&2; exit 1; }
+commit=$(grep -oE 'WEBKIT_VERSION[[:space:]]*=[[:space:]]*"[0-9a-f]{40}"' "$webkit_ts" |
+         grep -oE '[0-9a-f]{40}')
+[ -n "$commit" ] || { echo "$0: could not read WEBKIT_VERSION" >&2; exit 1; }
+echo "  $commit"
+
+src="$workdir/WebKit"
+git init -q "$src"
+git -C "$src" remote add origin "$repo"
+echo "cloning $repo at $commit (shallow)"
+git -C "$src" fetch -q --depth=1 --no-tags origin "$commit"
+git -C "$src" checkout -q FETCH_HEAD
+[ "$(git -C "$src" rev-parse HEAD)" = "$commit" ] || {
+    echo "$0: checked out revision does not match the pin" >&2; exit 1
+}
+
+echo "dropping test suites and website content"
+rm -rf "$src/.git" "$src/LayoutTests" "$src/JSTests" "$src/PerformanceTests" \
+       "$src/WebDriverTests" "$src/ManualTests" "$src/Websites"
+
+archive="webkit-$version.tar.zst"
+echo "packing $archive ($(du -sh "$src" | cut -f1))"
+: "${SOURCE_DATE_EPOCH:=$(stat -c %Y "$source_archive")}"
+tar --sort=name --format=gnu --mtime="@$SOURCE_DATE_EPOCH" \
+    --owner=0 --group=0 --numeric-owner \
+    -C "$workdir" -cf - WebKit |
+    zstd -19 -T0 -q -o "$outdir/$archive.tmp"
+mv "$outdir/$archive.tmp" "$outdir/$archive"
+
+echo "wrote $outdir/$archive ($(du -h "$outdir/$archive" | cut -f1))"
+echo "$commit  $archive" >"$outdir/webkit.revision"

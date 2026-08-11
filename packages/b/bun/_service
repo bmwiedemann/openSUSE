@@ -1,0 +1,7 @@
+<services>
+  <!-- The generated sources (WebKit, the dependency cache, the crates and the
+       npm packages) are produced by the bun_webkit and bun_prefetch scripts
+       committed alongside this file, run by hand on a version bump - they are
+       not source services. See README.SUSE-maint. -->
+  <service name="download_files" mode="manual"/>
+</services>

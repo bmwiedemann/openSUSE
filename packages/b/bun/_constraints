@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Bun builds JavaScriptCore from source and links one ~400 MB executable with
+  full debug information. A local aarch64 build reached 10 GB of build root
+  before the final link, so the disk figure has headroom for that link plus the
+  debuginfo extraction.
+
+  The build driver has no job limit - ninja uses the worker's core count - so
+  memory scales with the machine it lands on. Raise this, or add
+  <memoryperjob/>, if an OBS worker gets OOM-killed during the C++ or Rust
+  compile.
+-->
+<constraints>
+  <hardware>
+    <disk>
+      <size unit="G">35</size>
+    </disk>
+    <memory>
+      <size unit="G">16</size>
+    </memory>
+  </hardware>
+</constraints>

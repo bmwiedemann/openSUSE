@@ -1,0 +1,326 @@
+Maintaining this package
+========================
+
+Bun downloads a great deal while it builds, and one of its inputs is a copy of
+itself. Neither is possible in a build environment, so several sources here are
+generated rather than fetched by download_files. This file records how to
+regenerate each of them.
+
+
+What is being packaged
+----------------------
+
+Bun is being rewritten from Zig to Rust. 1.3.14 is the last release written in
+Zig; the first written in Rust will be 1.4.0, which upstream has not tagged
+yet. The Zig branch is no longer developed - there will be no 1.3.15 - so this
+packages a snapshot of the Rust rewrite instead.
+
+The snapshot is not an arbitrary commit. Upstream's CI publishes a "canary"
+build for every commit that passes the full matrix, and %{git_commit} is the
+commit today's canary was built from. Picking the tip of main instead would
+pick up a red build roughly one time in ten.
+
+Once 1.4.0 is tagged, point Source0 at the release tarball and drop the
+git_commit / git_date defines.
+
+
+Regenerating the sources
+------------------------
+
+After changing git_commit, in order:
+
+  1. osc service manualrun download_files      Source0, the Bun tarball
+  2. ./bun_webkit                              Source1
+  3. ./bun_prefetch                            Source2, Source3, Source4
+
+The two scripts are ordinary generators run from this directory, not source
+services: they need network access, a lot of disk and a working Bun, none of
+which belong in a build. Both read their inputs out of the Bun tarball - the
+dependency list, the pinned WebKit revision, the crate lockfile - so neither
+has to be edited when a dependency is added, removed or re-pinned. Each finds
+the tarball by itself; pass --source to override.
+
+Commit the regenerated archives together with the new tarball. They are only
+valid as a set: every one of them is pinned to the commit in Source0.
+
+bun_prefetch needs `bun` on PATH (it runs `bun install`), plus cargo, curl,
+openssl and Node.js. bun_webkit checks out about 6 GB before pruning, so point TMPDIR
+somewhere with room - and at a real disk, not at /tmp if that is a tmpfs.
+
+
+Source1 - WebKit
+----------------
+
+WebKit is Bun's JavaScript engine. It is the one dependency Bun's build system
+does not fetch: scripts/build/deps/webkit.ts expects either a prebuilt engine
+downloaded from upstream's releases, or a checkout made by hand. Building it
+from source is much slower than taking the prebuilt engine, but it keeps the
+package free of foreign binaries.
+
+GitHub refuses to generate archives for a repository this large, so bun_webkit
+clones the tree and prunes what a JavaScriptCore build never reads:
+
+    LayoutTests PerformanceTests WebDriverTests ManualTests   test suites
+    JSTests                                                   JSC's own tests
+    Websites                                                  webkit.org content
+
+Together those are about five times the size of everything the build uses.
+
+The revision is read out of the Bun tarball and written to webkit.revision
+next to the archive, so a version bump cannot leave the engine behind.
+
+
+Source2 - the C and C++ dependencies
+------------------------------------
+
+Bun's build downloads about twenty C and C++ dependencies. Upstream supports
+running that offline: every download is looked up first in a content-addressed
+cache, at
+
+    $BUN_BUILD_PREFETCH_DIR/by-url/<sha256(url) truncated to 32 hex chars>
+
+and copied from there on a hit (scripts/build/download.ts). Source2 is exactly
+that layout, so the build system does not have to be patched to build offline.
+
+The URLs are not hardcoded here. bun-deps.mjs imports Bun's own dependency
+definitions out of the unpacked tree and asks each one for its source, so a
+version bump picks up changes automatically. It runs under plain Node.js with
+--experimental-strip-types - deliberately, so that regenerating the sources
+does not itself need a Bun or a C++ toolchain.
+
+bun-prefetch.manifest lists every entry as `key  sha256  url` and is committed
+alongside, so the contents of the archive can be audited without unpacking it.
+
+
+Source3 - the Rust crates
+-------------------------
+
+Plain `cargo vendor`, not obs-service-cargo: the workspace has a path
+dependency on vendor/lolhtml, which is one of the downloads in Source2, so
+cargo cannot even read the manifest until that has been unpacked. bun_prefetch
+does the two steps in the right order.
+
+The crates unpack to cargo-vendor/ rather than vendor/, which in Bun's tree
+already holds WebKit and lol-html; cargo requires every entry of its vendor
+directory to be a crate and rejects the ones that are not. The [source]
+configuration cargo prints is not kept - it records an absolute path from the
+machine that ran the generator - so %prep writes its own into CARGO_HOME. It has
+to go there rather than into .cargo/config.toml, which Bun's build regenerates
+on every configure.
+
+
+Source4 - the npm packages
+--------------------------
+
+Bun's code generators run `bun install` in three directories. The packages are
+installed by bun_prefetch and unpacked in %prep, and bun-offline-build.patch
+reduces the install steps to touching their ninja stamps, so nothing in the
+build reaches the registry.
+
+Patching the rule is what it takes. Pre-creating those stamp files from %build
+does not work: on a fresh build directory ninja has no .ninja_log entry for any
+edge, reports "command line not found in log" and runs every one of them
+regardless of how up to date its outputs are.
+
+The archive is architecture-neutral, which does not come for free. Several of
+these packages - esbuild, oxlint, lightningcss - ship their real payload as a
+prebuilt binary in a separate npm package per platform, listed as an optional
+dependency and selected by CPU. `bun install` unpacks only the one matching the
+machine it runs on, so an archive generated on aarch64 is missing exactly the
+x86_64 binaries, and vice versa. bun_prefetch therefore downloads the packages
+for every architecture in ExclusiveArch itself, reading the names, versions and
+integrity hashes out of bun.lock - which needs curl, openssl and node besides
+bun.
+
+Those extra packages are placed in the top level node_modules rather than in
+bun's store layout under node_modules/.bun. Every consumer reaches them through
+require(), and the top level directory is the last place Node's resolution looks
+walking up from anywhere below it, so one copy there is found from any depth
+without reproducing bun's symlink farm. Each consumer is a launcher that picks
+by process.arch at run time, so the architecture that is not being built is
+never opened.
+
+One thing does not choose at run time: node_modules/.bin/esbuild, which bun
+links straight at the native binary rather than at the package's own launcher,
+and which is the path the build invokes (scripts/build/configure.ts). %prep
+repoints every .bin/esbuild at ../esbuild/bin/esbuild - the node script npm
+links there - which then resolves the platform package normally.
+
+
+Source100, Source101 - the bootstrap binaries
+---------------------------------------------
+
+Building Bun requires an existing Bun. Not to drive the build - that is a
+TypeScript program which runs on plain Node, and upstream's own CI runs it that
+way (.buildkite/ci.mjs), which is why %build invokes it with node rather than
+with the bootstrap binary. But 24 of the ninja edges it generates do need Bun -
+the code-generation steps. (Upstream has three `bun install` edges as well;
+bun-offline-build.patch stamps those out.) The code generators use
+Bun.build and Bun.Transpiler, and it is Bun's own bundler that emits the
+JavaScript builtins with JavaScriptCore private-name intrinsics; esbuild cannot
+substitute for it. Two further calls happen at configure time
+(scripts/build/codegen.ts, bindgenv2 output listing).
+
+So, as for ghc, rust and sbcl, the first build starts from an upstream binary.
+Upstream tracks removing the dependency entirely (scripts/build/CLAUDE.md, "TODO
+- remaining cfg.bun usage"); until then, turn %bcond bootstrap off once the
+package is in the distribution and it will build with the Bun already there.
+
+1.3.14 is old - it is the last Zig release, while the source here is the Rust
+rewrite - but it does the job: it was verified to complete configure and all 24
+code-generation edges against this snapshot. The
+build applies no minimum Bun version, and upstream's own CI bootstraps this
+tree with 1.3.13 (scripts/bootstrap.sh).
+
+Do not be tempted to bootstrap from a 1.4.0 canary instead. The canary tag's
+assets are replaced in place - they carry no version in the name and no stable
+checksum - and there is no per-commit artifact with a permanent URL.
+
+The binaries are NoSource: uploaded to the build service but not shipped in the
+src.rpm, and used during %build only - never installed.
+
+    bun-v1.3.14/bun-linux-x64-baseline.zip
+      a063908ae08b7852ca10939bbdc6ceed3ddabce8fb9402dce83d65d73b36e6c7
+    bun-v1.3.14/bun-linux-aarch64.zip
+      a27ffb63a8310375836e0d6f668ae17fa8d8d18b88c37c821c65331973a19a3b
+
+Verify against
+https://github.com/oven-sh/bun/releases/download/bun-v1.3.14/SHASUMS256.txt
+
+
+The Rust toolchain
+------------------
+
+Bun pins a Rust nightly in rust-toolchain.toml and expects rustup to install
+it. Every unstable feature it uses is present in the Rust that Factory ships;
+only the nightly gate is missing. So %prep deletes the pin and %build sets
+RUSTC_BOOTSTRAP=1, which opens that gate on the distribution compiler - the
+same mechanism rustc's own bootstrap uses. No nightly toolchain is downloaded
+or packaged.
+
+If a future snapshot does need a genuine nightly, %bcond rust_nightly leaves
+the pin in place; a nightly would then have to be provided some other way.
+
+
+Patches
+-------
+
+bun-offline-build.patch stops release builds from rebuilding the Rust standard
+library. Upstream rebuilds it to get -Ctarget-cpu into it and to feed
+cross-language LTO, but doing so resolves std's own dependencies from crates.io,
+which a build environment cannot reach. The distribution compiler's prebuilt
+std is what the rest of the system links against anyway, and cross-language LTO
+is off in this build. The patch also passes --locked --offline to cargo, and
+reduces the `bun install` ninja rule to touching its stamp - see "Source4 - the
+npm packages".
+
+bun-unknown-lint.patch adds unknown_lints to two allow() attributes that name a
+lint newer than the released compiler. The workspace denies warnings, so an
+unknown lint name is fatal; allowing unknown_lints alongside it is correct on
+both the released compiler and the nightly upstream pins.
+
+bun-highway-scalable-sve.patch sets HWY_DISABLED_TARGETS so that Highway's
+length-agnostic SVE targets are not compiled. Highway implements BitsFromMask
+only for the fixed-length SVE targets - a uint64_t with one bit per lane is not
+well-defined when the vector length is not known until run time - but
+highway_xml.cpp, highway_json.cpp and highway_sourcemap.cpp call it
+unconditionally, so all three fail to compile for HWY_SVE and HWY_SVE2. Those
+targets become attainable on aarch64 whenever the compiler knows SVE and
+Highway has runtime dispatch, which is every clang new enough to build bun.
+
+What is left is NEON plus HWY_SVE_256 and HWY_SVE2_128, the fixed-length
+targets that Neoverse V1, V2 and N2 select, and those do define BitsFromMask -
+so no SVE hardware ends up on the NEON path. The define is applied both to
+Highway's own translation units and to bun's, because HWY_TARGETS is derived
+from it and the two disagreeing would misdispatch at run time.
+
+Worth reporting upstream: it is a portability bug, not a packaging workaround.
+
+bun-uniform-dwarf.patch makes the debug information something debugedit can
+process, which rpm needs before it can extract a debuginfo package. Both of its
+rustflags are there for that; the second only becomes necessary because of the
+first.
+
+It passes -Cdwarf-version=5 to rustc. Clang 21 and the
+distribution's prebuilt Rust standard library both emit DWARF 5; rustc itself
+still defaults to 4. Linking the two together produces one executable holding
+.debug_ranges (the version 4 form) and .debug_rnglists plus .debug_str_offsets
+(the version 5 form) at once, and debugedit cannot read that - it aborts with
+
+    debugedit: tools/debugedit.c:1199: string_find_entry:
+    Assertion `ret != NULL' failed.
+
+which fails the build in %install, before rpm can extract anything. Going the
+other way, -Cdwarf-version=4, does not help: the standard library is shipped
+already compiled, so its version 5 sections stay whatever rustc is told.
+
+Asking for version 5 is also what makes rustc emit .debug_names, the version 5
+accelerator table, and debugedit has no support for that section at all:
+
+    debugedit: .../usr/bin/bun: Unknown debugging section .debug_names
+
+followed by the same assertion. So the patch turns it back off with
+-Cllvm-args=-accel-tables=Disable. Nothing depends on the table - it is a name
+index a debugger may use to avoid scanning .debug_info - and the alternative is
+to generate a section the distribution's toolchain cannot process.
+
+Both flags are rustc's, and only rustc's. Clang is not involved: 21 emits no
+.debug_names under either debugger tuning, so upstream's -glldb
+(scripts/build/flags.ts) is not the source, however much the section name
+suggests LLDB. Checking the objects is what settles it - of the 1905 objects
+and archives in a release build, the two that carry .debug_names are
+libbun_rust.a and its deps/ copy.
+
+bun-webkit-no-type-units.patch adds -fno-debug-types-section to the flags bun
+passes to WebKit's cmake. It is the second thing that stopped rpm extracting a
+debuginfo package, and it presents as the same assertion as above, with none of
+the preceding messages - which is why it only became visible once the two
+rustflags were in place.
+
+Type units are comdat: the same type compiled into several translation units
+produces the same unit in each object, and the linker keeps one copy and drops
+the rest. Their strings are not comdat, so the .debug_str_offsets slots for the
+strings that only a dropped unit named stay in the table with nothing pointing
+at them. debugedit rewrites that table entry by entry, looking each old offset
+up in the set it collected while walking the units, and asserts on the first
+one it does not find. In an aarch64 release build 17 of the 13.4 million
+entries are orphaned this way, all of them names of templates instantiated on a
+lambda - the one case -gsimple-template-names cannot shorten, so the full name
+with the build path in it is the only place those strings appear.
+
+WebKit turns type units on itself, in Source/cmake/WebKitCompilerFlags.cmake,
+and the comment there already says they break Linux distribution debuginfo
+generation - it disables them for gcc for exactly that reason and leaves them
+on for clang. WebKit's flags are prepended to CMAKE_CXX_FLAGS and bun's are
+appended, so adding the negative form on bun's side is enough. The cost is
+small: the type units are 14 MB of the 437 MB of .debug_info in a release
+build.
+
+
+Debuginfo and bun-profile
+-------------------------
+
+%install installs build/release/bun-profile, not build/release/bun. This is not
+a debug build. A release build links bun-profile with full DWARF and then runs
+the linker again with --strip-all --strip-debug --discard-all to produce bun
+(scripts/build/flags.ts stripFlags, scripts/build/bun.ts emitPostLink /
+emitStrip). The two are the same binary either side of that strip, so
+installing bun leaves rpm nothing to extract: bun-debugsource comes out empty
+and is deleted by the post-build check, and rpmlint then reports the shipped
+file as unstripped anyway. rpm does its own stripping, so handing it the
+unstripped one is both correct and what every other package does.
+
+
+SQLite
+------
+
+bun:sqlite and node:sqlite are built against the SQLite amalgamation in bun's
+own tree (src/jsc/bindings/sqlite/sqlite3.c), hence Provides: bundled(sqlite3).
+
+This is not a free choice. bun's other mode, LAZY_LOAD_SQLITE=1, is written for
+macOS: lazy_sqlite3.h dlopens a hardcoded "libsqlite3.dylib" and NodeSqlite.cpp
+works around quirks specific to Apple's build. On Linux it compiles against the
+system sqlite3.h and then finds nothing at run time. There is no configuration
+in which bun links or loads the distribution's libsqlite3, so the bundled
+amalgamation is the only working option; keep the version in the Provides in
+step with SQLITE_VERSION in sqlite3_local.h on every bump.

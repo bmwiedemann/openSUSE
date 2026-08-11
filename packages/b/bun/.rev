@@ -1,0 +1,68 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fb09614e0e18c97b75332d581546480d</srcmd5>
+    <version>1.4.0~git20260808.52bf09cb</version>
+    <time>1786461182</time>
+    <user>anag_factory</user>
+    <comment>New package: bun 1.4.0~git20260808.52bf09cb
+
+Bun is an all-in-one JavaScript runtime and toolkit with a bundler, test
+runner and Node.js-compatible package manager. Requested as a dependency of
+opencode and OpenTUI, which cannot be packaged without it.
+
+This is a snapshot of the Rust rewrite rather than the 1.3.14 release.
+1.3.14 is the last release written in Zig, that branch is no longer
+developed, and packaging it would mean shipping a prebuilt Zig compiler.
+The commit is the one upstream's CI published as a canary build, not the
+tip of main. It will be switched to a release tarball once 1.4.0 is tagged.
+
+Everything is built from source with what Factory ships:
+
+- The Rust that Factory ships (&gt;= 1.97), not the nightly upstream pins.
+  Every unstable feature bun uses is present in it and RUSTC_BOOTSTRAP=1
+  opens the gate, as rustc's own bootstrap does.
+- JavaScriptCore is compiled from the WebKit source in Source1 rather than
+  taken as upstream's prebuilt engine.
+- The build is fully offline: the npm dependencies and the WebKit and LLVM
+  inputs the build would otherwise fetch are prepared by two generators
+  (bun_prefetch, bun_webkit) that the maintainer runs on a version bump,
+  documented in README.SUSE-maint.
+
+The one thing not built from source is the bootstrap bun. 24 code-generation
+steps in the build need an existing bun to run, so a bun binary is needed to
+compile bun, exactly as for rust, ghc, sbcl and deno. It is Source100/101,
+marked NoSource, used only at build time, and nothing from it ends up in the
+binary. A %bcond bootstrap is already in the spec to retire it as soon as
+Factory has a bun to build the next one with; the spec carries the mandatory
+&quot;#KEEP NOSOURCE DEBUGINFO&quot; comment.
+
+ExclusiveArch: x86_64 aarch64 — upstream supports no other architecture.
+Both are green in devel:tools:building.
+
+rpmlint: 0 errors, 1 warning —
+  W: position-independent-executable-suggested /usr/bin/bun
+This is deliberate upstream: bun builds itself and JavaScriptCore with
+-fno-pic -fno-pie -no-pie, because the JIT depends on it. It cannot be
+turned on without patching out the JIT.
+
+The license is a compound expression covering the whole statically linked
+executable, not just bun's MIT code: it embeds JavaScriptCore and tinycc
+(LGPL-2.1), the Servo CSS crates (MPL-2.0), libjpeg-turbo (IJG), the SQLite
+amalgamation (blessing) and unicode-ident (Unicode-3.0), among others.
+LGPL-2.1 section 6 is satisfied because the WebKit source is Source1 and
+ships in the src.rpm. Every statically linked C/C++ library is declared with
+Provides: bundled(); the vendored Rust crates are left to the automatic
+generator. None of the C/C++ ones can be unbundled: each is pinned to an
+exact commit, several are upstream forks, and the JavaScript engine is a
+fork of WebKit.
+
+Six patches, all local build fixes, described one by one in the changelog
+and in README.SUSE-maint. Three of them are what it took to get rpm to
+extract a debuginfo package from the ~400 MB executable; the resulting
+bun-debuginfo and bun-debugsource are complete.
+
+_constraints are included: the build reaches 10 GB of build root before the
+final link.</comment>
+    <requestid>1370367</requestid>
+  </revision>
+</revisionlist>

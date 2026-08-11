@@ -1,0 +1,96 @@
+-------------------------------------------------------------------
+Sat Aug  8 15:35:15 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- New package: bun 1.4.0~git20260808.52bf09cb, an all-in-one
+  JavaScript runtime and toolkit with a bundler, test runner and
+  Node.js-compatible package manager
+- Package a snapshot of the Rust rewrite rather than the 1.3.14
+  release: 1.3.14 is the last release written in Zig, that branch is
+  no longer developed, and packaging it would mean shipping a
+  prebuilt Zig compiler. The snapshot is the commit upstream's CI
+  published as a canary build, not the tip of main. Switch to a
+  release tarball once 1.4.0 is tagged
+- Build with the Rust that Factory ships instead of the nightly
+  upstream pins: every unstable feature bun uses is present in it,
+  and RUSTC_BOOTSTRAP=1 opens the gate, as rustc's own bootstrap does
+- Build JavaScriptCore from source rather than taking upstream's
+  prebuilt engine
+- Add bun-offline-build.patch: do not rebuild the Rust standard
+  library for release builds, which would resolve its dependencies
+  from crates.io; the distribution compiler's std is what the rest of
+  the system links against, and cross-language LTO is off here
+- Add bun-unknown-lint.patch: two allow() attributes name a lint that
+  is newer than the released compiler, and the workspace denies
+  warnings, so the unknown lint is fatal
+- Extend bun-offline-build.patch to stop the build running `bun
+  install`. node_modules is supplied unpacked, but ninja treats every
+  edge as dirty on a fresh build directory, so the install ran anyway
+  and went to the registry; only stamping the step keeps the build
+  offline
+- Put the prebuilt npm packages for every supported architecture in
+  the node_modules archive, not just the one the archive was generated
+  on. They are optional dependencies chosen by CPU, and bun install
+  unpacks only the running machine's, so an archive made on one
+  architecture sent the build to the registry on the other. They go in
+  the top level node_modules, the last place Node's resolution looks,
+  and each consumer picks its own at run time. The exception is
+  node_modules/.bin/esbuild, which bun links straight at a native
+  binary; %prep repoints it at esbuild's own launcher
+- Add bun-highway-scalable-sve.patch: do not compile Highway's
+  length-agnostic SVE targets. Highway defines BitsFromMask only for
+  the fixed-length SVE targets, because a one-bit-per-lane mask is
+  not well-defined when the vector length is only known at run time,
+  and three of bun's SIMD helpers call it unconditionally. The
+  fixed-length HWY_SVE_256 and HWY_SVE2_128 targets that Neoverse
+  V1/V2/N2 select are kept, so no SVE hardware loses its SVE path
+- Add bun-uniform-dwarf.patch: emit debug information debugedit can
+  read, so rpm can split a debuginfo package off the binary. Two rustc
+  settings were needed. rustc still defaults to DWARF 4 while clang and
+  the prebuilt standard library emit 5, so the executable carried
+  .debug_ranges and .debug_rnglists at the same time, which debugedit
+  cannot read. Asking rustc for DWARF 5 then brought in .debug_names,
+  the version 5 accelerator table, which debugedit does not know at
+  all; it is a debugger name index that nothing depends on, so turn it
+  off rather than generate something the toolchain cannot process
+- Add bun-webkit-no-type-units.patch: do not let WebKit put types in
+  their own units, which is the second thing that stopped rpm
+  splitting a debuginfo package off the binary. Type units are comdat,
+  the linker keeps one copy of each and drops the rest, and the
+  .debug_str_offsets slots for the strings only a dropped unit named
+  stay behind. debugedit rewrites that table entry by entry and
+  asserts on the first slot nothing refers to any more. WebKit's cmake
+  already disables type units for gcc, saying they break Linux
+  distribution debuginfo generation; they break it for clang as well.
+  Here they are 14 MB of 437 MB of .debug_info, so little is lost
+- Install build/release/bun-profile as /usr/bin/bun. A release
+  build links bun-profile and then strips it into bun, so installing
+  the latter would leave rpm nothing to extract and yield no
+  debuginfo package; the two are the same binary either side of that
+  strip
+- Build bun:sqlite and node:sqlite against the SQLite amalgamation in
+  bun's tree, declared as bundled(sqlite3). The alternative bun
+  offers is a macOS-only path that dlopens a hardcoded
+  libsqlite3.dylib, so on Linux nothing links the system library
+- Tag the license as the compound expression covering the whole
+  statically linked executable, not just bun's own MIT code: it
+  embeds JavaScriptCore and tinycc (LGPL-2.1), the Servo CSS crates
+  (MPL-2.0), libjpeg-turbo (IJG), the SQLite amalgamation (blessing)
+  and unicode-ident (Unicode-3.0), among others. LGPL-2.1 section 6
+  is satisfied because WebKit's source is Source1 and ships in the
+  src.rpm
+- Ship /usr/bin/bunx as a symlink to bun. Bun dispatches on argv[0]
+  and runs the package runner when it is called bunx, which is how
+  upstream's own installer sets it up
+- Declare every statically linked C and C++ library with Provides:
+  bundled(); the vendored Rust crates are left to the automatic
+  generator. None of the C and C++ ones can be unbundled: each is
+  pinned to an exact commit, several are upstream forks, and the
+  JavaScript engine is a fork of WebKit
+- Require rust >= 1.97, the oldest release this was built with
+- Add _constraints. A local build reaches 10 GB of build root before
+  the final link, and JavaScriptCore plus a ~400 MB executable with
+  debug information needs the memory to match
+- Add the bun_prefetch and bun_webkit generators, which prepare
+  everything the build would otherwise download; they are run by the
+  maintainer on a version bump, not by the package. See
+  README.SUSE-maint

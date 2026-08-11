@@ -1,0 +1,30 @@
+diff --git a/src/bun_core/Global.rs b/src/bun_core/Global.rs
+index 56cff6a2..80c4ea94 100644
+--- a/src/bun_core/Global.rs
++++ b/src/bun_core/Global.rs
+@@ -680,7 +680,9 @@ fn is_exiting() -> bool {
+ // args and are `noreturn`/kernel-validated — no memory-safety preconditions,
+ // so `safe fn` discharges the link-time proof and the call sites are plain
+ // calls. `#[link_name]` avoids colliding with this module's own `pub fn exit`.
+-#[allow(suspicious_runtime_symbol_definitions)] // signatures are ABI-identical; `safe fn` is intentional (above)
++// `unknown_lints`: the lint below is newer than the released compilers this
++// is built with, and the workspace denies warnings.
++#[allow(unknown_lints, suspicious_runtime_symbol_definitions)] // signatures are ABI-identical; `safe fn` is intentional (above)
+ unsafe extern "C" {
+     #[link_name = "abort"]
+     safe fn libc_abort() -> !;
+diff --git a/src/sys/lib.rs b/src/sys/lib.rs
+index cf908fe8..649c06c2 100644
+--- a/src/sys/lib.rs
++++ b/src/sys/lib.rs
+@@ -1566,7 +1566,9 @@ mod safe_libc {
+     use core::ffi::c_int;
+     // `close` is a libc symbol std relies on; this is an FFI import (not a
+     // competing definition) with the canonical signature.
+-    #[allow(suspicious_runtime_symbol_definitions)]
++    // `unknown_lints`: the lint below is newer than the released compilers
++    // this is built with, and the workspace denies warnings.
++    #[allow(unknown_lints, suspicious_runtime_symbol_definitions)]
+     unsafe extern "C" {
+         #[cfg(not(any(target_os = "linux", target_os = "android")))]
+         pub(crate) safe fn close(fd: c_int) -> c_int;

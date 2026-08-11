@@ -1,0 +1,22 @@
+--- a/scripts/build/deps/webkit.ts
++++ b/scripts/build/deps/webkit.ts
+@@ -252,5 +252,19 @@
+     // -fno-pic probe object fails R_X86_64_32S relocation, killing FindThreads.
+     if (cfg.unix && cfg.abi !== "android") optFlags.push("-fno-pic", "-fno-pie", "-no-pie");
++    // Do not put types in their own units. WebKit's cmake turns them on for
++    // clang (Source/cmake/WebKitCompilerFlags.cmake) and notes right there
++    // that they break Linux distribution debuginfo generation - it already
++    // disables them for gcc for that reason. They break it for clang too:
++    // type units are comdat, the linker keeps one copy of each and drops the
++    // rest, but the .debug_str_offsets slots for the strings only a dropped
++    // unit named stay behind. debugedit rewrites that table entry by entry
++    // and asserts on the first slot no unit refers to any more
++    // ("string_find_entry: Assertion `ret != NULL' failed"), so rpm cannot
++    // split a debuginfo package off the executable at all. In a release
++    // build the type units are 14 MB of 437 MB of .debug_info, so this costs
++    // very little. WebKit prepends its own flags to CMAKE_CXX_FLAGS and
++    // these are appended, so this one wins.
++    if (cfg.unix && !cfg.darwin) optFlags.push("-fno-debug-types-section");
+     if (cfg.lto) optFlags.push("-flto=thin");
+     if (cfg.pgoGenerate) optFlags.push(`-fprofile-generate=${cfg.pgoGenerate}`);
+     if (cfg.pgoUse) {
