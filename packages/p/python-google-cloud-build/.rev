@@ -118,4 +118,18 @@
 - Update BuildRequires and Requires from setup.py</comment>
     <requestid>1346054</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2e298b3489f70a8b344360d3699bc7a0</srcmd5>
+    <version>3.38.1</version>
+    <time>1786461564</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.38.1
+  * require Protobuf 6.33.5+ (#17743)
+- from version 3.38.0
+  * update googleapis and regenerate (#17554)
+- from version 3.37.0
+  * regenerate google-cloud-b packages (#17090)
+- Update BuildRequires and Requires from setup.py (forwarded request 1370674 from glaubitz)</comment>
+    <requestid>1370688</requestid>
+  </revision>
 </revisionlist>
