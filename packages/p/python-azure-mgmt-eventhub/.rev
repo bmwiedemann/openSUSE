@@ -176,4 +176,17 @@
 - Update Requires from setup.py (forwarded request 1297674 from glaubitz)</comment>
     <requestid>1297699</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>6ad0fa8b408e81136cd7df979790bdfa</srcmd5>
+    <version>12.0.0</version>
+    <time>1786461561</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 12.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove temporary version override
+- Update Requires from pyproject.toml (forwarded request 1370656 from glaubitz)</comment>
+    <requestid>1370689</requestid>
+  </revision>
 </revisionlist>
