@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug  5 11:54:45 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Workaround for armv6 build (leancrypto assumes 32-bit is armv7)
+
+-------------------------------------------------------------------
 Mon Jul  6 08:33:46 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 1.8.0:

@@ -133,6 +133,10 @@ each other. Neither requires the presence of the other for full operation.
 
 %prep
 %autosetup -p1 -n %{pkgname}-%{version}
+%ifarch armv6l armv6hl
+# Fix build on armv6
+sed -i "s/'arm'/'none'/" meson.build
+%endif
 
 %if %{with kmp}
 set -- *
