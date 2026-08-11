@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Mon Aug 10 05:18:05 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.11.1:
+  * feat(immutable-release): tell goreleaser to use the existing
+    draft release
+
+-------------------------------------------------------------------
+Mon Aug 10 05:16:02 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.11.0:
+  * feat(immutable-release): goreleaser should publish its release
+  * chore: replace deprecated goreleaser option with its current
+    form
+
+-------------------------------------------------------------------
+Mon Aug 10 05:06:58 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.10.0:
+  * feat(immutable-releases): ensure that despite the release being
+    a draft the tag is created
+  * chore: allow triggering release-please manually
+  * feat(immutable-release): tell release-please to create draft
+    releases
+  * Revert "feat(immutable-releases): set release-please to create
+    draft releases"
+  * chore(deps): bump docker/login-action from 4.5.2 to 4.6.0
+    (#590)
+  * feat(immutable-releases): set release-please to create draft
+    releases
+
+-------------------------------------------------------------------
+Mon Aug 10 05:02:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.9.0:
+  * feat: enable immutable releases
+  * chore(deps): bump github.com/gabriel-vasile/mimetype (#584)
+  * chore(deps): bump github.com/gabriel-vasile/mimetype (#583)
+  * chore(deps): bump github.com/gkampitakis/go-snaps from 0.5.22
+    to 0.5.23 (#579)
+  * chore(deps): bump golang.org/x/text from 0.38.0 to 0.40.0
+    (#581)
+
+-------------------------------------------------------------------
 Sun Jun 28 15:30:42 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.8.0:
