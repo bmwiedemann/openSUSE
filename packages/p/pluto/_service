@@ -1,9 +1,9 @@
 <services>
   <service name="obs_scm" mode="manual">
-    <param name="url">https://github.com/FairwindsOps/pluto</param>
+    <param name="url">https://github.com/FairwindsOps/pluto.git</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">v5.24.1</param>
+    <param name="revision">refs/tags/v5.24.3</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="changesgenerate">enable</param>
