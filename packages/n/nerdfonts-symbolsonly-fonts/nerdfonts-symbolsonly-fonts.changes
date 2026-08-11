@@ -1,0 +1,155 @@
+-------------------------------------------------------------------
+Mon Aug  3 04:20:42 UTC 2026 - pallas wept <pallaswept@proton.me>
+
+- update to 3.5.0
+  * D2Coding is renamed to D2Koding #2052
+  * Flatten font subdirs #2054
+  * Add Annotation Mono #2049
+  * Add Google Sans Code #2050
+  * Update 0xProto to 2.502 @my4ng #1873
+  * Update AdwaitaMono to 34.1 #2048
+  * Update Agave to v38 #2048
+  * Update Arimo to 1.33-autohint #2048
+  * Update Cousine to 1.241 #2048
+  * Update DaddyTimeMono to 1.2.3 17-9-2025 #2048
+  * Update Departure Mono to v1.500 @rektdeckard #1874
+  * Update GeistMono to 1.8.0 @Tejakshaya #2013
+  * Update Inconsolata-LGC to 3.201 #2048
+  * Update Iosevka to 34.8.0 #2048
+  * Update Iosevka Term to 34.8.0 #2048
+  * Update Iosevka Term Slab to 34.8.0 #2048
+  * Update Lilex to 2.700 #2048
+  * Update Monaspice to v1.400 @injust #1938
+  * Update MPlus to 1.100 #2048
+  * Update SpaceMono to 1.003 #2048
+  * Update Ubuntu Sans Mono to 1.100 #2048
+  * Fix ComicShannsMono: Flip questiondown #1963
+  * Fix DejaVuSansMono: Fix monospaced #1865
+  * Fix SpaceMono: Remove arrow-calts #1960
+  * Fix SymbolsOnly 2 cell wide #1992
+  * Add Braille icons (with generator) #1980
+  * Add FontAwesome fa-volume #2030
+  * Add Obsidian icon #2031
+  * Add Wireshark icon #2031
+  * Add zsh icon #1979
+  * Update Codicons to 0.0.45 #2027
+  * Update Devicons to v2.17.0 @joeriddles #1900
+  * Update Font Logos to 1.4.0 #2029
+  * Add MDI scale-groups #2033
+  * Make progress bars more compact #2022
+  * Expand --has-no-italic to other slanted styles than Oblique #2032
+  * Optionally center most icons in 2 cell space #2034
+  * Optionally scale non-mono icons to be at least as large as mono @danielwe #1926
+  * Downgrade install.sh to bash 3 #1866
+  * font-patcher: Fix patching of fonts with slashes in name #1881
+  * font-patcher: Fix removal of For Powerline #1882
+  * font-patcher: Implement rounding in scale_bounding_box() @GoldPigg #1974
+  * font-patcher: Obey two-cell scale rule with c alignment #2020
+  * Fix Material Design icon names #2023
+  * Fix symbolfont handling if glyphs have multiple codepoints #2024
+  * Fix some glyph are not visually centered when patching monospaced variation @OzelotVanilla #1998
+  * Casks: Switch to tar.xz archives #2041
+  * MacOS compatibility for gotta-patch-em-all!.sh @shaunchokshi #1976
+  * Update outdated GitHub Actions @pgoslatara #1981
+  * Allow more detailed information in config.cfg #2053
+  * gotta-patch-em: Add flag to enforce patched-fonts/ subdir purging (for rename on releases) 1372be5 730af09
+  * Improve font preview #2038
+  * Fix cheatsheet footer @sliva0 #1855
+  * Fix link in README @injust #1916
+  * Fix broken emoji key link in contributing.md @NaufalK25 #2016
+  * Again a lot has been done by various people, thank you all!
+
+-------------------------------------------------------------------
+Wed Jul  8 14:58:31 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Rename SRPM to nerdfonts-symbolsonly-fonts to fit openSUSE's
+  general naming scheme of <project>-<name>-fonts.
+
+-------------------------------------------------------------------
+Tue Mar 24 21:33:46 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.4.0:
+  * Remove patcher option `--use-single-width-glyphs` (use `-s`
+    or `--mono` instead)
+  * Add Adwaita Mono @badlydrawnface #1819
+  * Add Atkinson Hyperlegible Mono @joshestein #1802
+  * Update 0xProto to 2.300 @my4ng #1803
+  * Update Cascadia Code to 2407.24 #1844
+  * Update Geist Mono to 1.401 #1838
+  * Update InconsolataLGC to 1.13 #1839
+  * Update Iosevka to 33.2.1 #1845
+  * Update Lilex to 2.600 #1840
+  * Update Martian Mono to 1.1.0 #1841
+  * Update Monaspace to 1.200 #1846
+  * Update MPlus to 1.007 #1842
+  * Update Noto (Sans and Serif) to 2.015 #1843
+  * Update Ubuntu Sans to 1.006 #1836
+  * Add new CSS icon @skoch13 #1762
+  * Manually optimize many Devicon icons #1779
+  * Add possibility to create single width icons without touching
+    existing glyphs #1773
+  * Add possibility to manually set target cell size (`--cell`)
+    #1773
+  * The patched fonts in `otf` format are now much smaller
+    (comparable to `ttf`) #1851
+  * Intermediate icon storage is not rounded anymore #1849
+  * Fix few missing new Devicons @hasecilu #1768
+  * Fix glitches in Devicon icons #1779
+  * Fix self-patching on Windows #1761
+  * Fix handling of some glyphs in `Nerd Font Propo` and
+    `SymbolsOnly` #1852
+
+-------------------------------------------------------------------
+Wed Nov 20 07:59:51 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to 3.3.0
+  * Devicons are updated so some old icons were dropped/replaced
+  * Switch to devicons/devicon
+  * Update Font Logos to 1.3.0
+  * Add Chuck and Vitruvian Man
+  * Add Progress Indicators a la Fira Code
+  * FontAwesome: Scale glyphs a bit smaller
+  * Improve Bazel icon
+  * Improve Ruby and Firebase icons
+
+-------------------------------------------------------------------
+Sat Apr 13 02:07:18 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Fix URL for license-audit.md
+- Update to 3.2.1
+  * Reorder some FontAwesome glyphs
+    - EE00 - EE0B shifted to EFC3 - EFCE
+    - F0E6 shifted to EFC2
+    - swap F219 with F29F and F167 with F16A
+
+-------------------------------------------------------------------
+Sun Apr  7 01:35:16 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Install license-audit.md and obtain as source.
+- Fix licenses to those mentioned in upstream's license-audit.md
+- Update to 3.2.0
+  * Add Ada icon
+  * Add Astro icon
+  * Add inverse Powerline arrow heads
+  * Add Prettier icon
+  * Update Codicons to 0.0.35
+  * Update Font Awesome to 6.5.1
+  * Update Font Logos to 1.2.0
+
+-------------------------------------------------------------------
+Mon Jan 29 17:05:57 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
+
+- Update to 3.1.1
+ * New icons
+  - Add Common Lisp and Scheme icon
+  - Add Fennel icon @Grazfather
+  - Add Neovim icon @georgeguimaraes
+  - Add TOML icon @cpea2506
+  - Update Font Logos to v1.1.1
+ * Features
+  - Update Windows icon to Windows 11
+
+-------------------------------------------------------------------
+Tue Jun  6 04:40:20 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Initial package of Symbols-only Nerd Fonts v3.0.2 for openSUSE.
