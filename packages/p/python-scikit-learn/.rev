@@ -765,4 +765,12 @@
   * _more_tags, _get_tags, and _safe_tags are now raising a `DeprecationWarning`</comment>
     <requestid>1304679</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>21d38ce3e52df5c5cdb90dd46bbc0828</srcmd5>
+    <version>1.9.0</version>
+    <time>1786460943</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1369686</requestid>
+  </revision>
 </revisionlist>

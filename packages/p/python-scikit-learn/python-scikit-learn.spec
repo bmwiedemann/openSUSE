@@ -1,7 +1,7 @@
 #
 # spec file for package python-scikit-learn
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,21 +46,19 @@ ExclusiveArch:  donotbuild
 %bcond_with extratest
 
 Name:           python-scikit-learn%{psuffix}
-Version:        1.7.2
+Version:        1.9.0
 Release:        0
 Summary:        Python modules for machine learning and data mining
 License:        BSD-3-Clause
 URL:            https://scikit-learn.org/
 Source0:        https://files.pythonhosted.org/packages/source/s/scikit-learn/scikit_learn-%{version}.tar.gz
-BuildRequires:  %{python_module Cython >= 3.0.10}
-BuildRequires:  %{python_module devel >= 3.8}
-BuildRequires:  %{python_module joblib >= 1.2.0}
+BuildRequires:  %{python_module Cython >= 3.1.2}
+BuildRequires:  %{python_module devel >= 3.11}
 BuildRequires:  %{python_module meson-python}
-BuildRequires:  %{python_module numpy-devel >= 1.19.5}
+BuildRequires:  %{python_module numpy-devel >= 1.24.1}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module scipy >= 1.6.0}
+BuildRequires:  %{python_module scipy >= 1.10.0}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module threadpoolctl >= 2.0.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 # Default gcc in leap is gcc 7
@@ -74,10 +72,11 @@ BuildRequires:  gcc-fortran
 BuildRequires:  openblas-devel
 BuildRequires:  python-rpm-macros
 # Check sklearn/_min_dependencies.py for dependencies
-Requires:       python-joblib >= 1.2.0
-Requires:       python-numpy >= 1.19.5
-Requires:       python-scipy >= 1.6.0
-Requires:       python-threadpoolctl >= 2.0.0
+Requires:       python-joblib >= 1.4.0
+Requires:       python-narwhals >= 2.0.1
+Requires:       python-numpy >= 1.24.1
+Requires:       python-scipy >= 1.10.0
+Requires:       python-threadpoolctl >= 3.5.0
 Suggests:       python-matplotlib >= 3.3.4
 Suggests:       python-pandas
 Suggests:       python-seaborn
@@ -125,7 +124,7 @@ export CFLAGS="%{optflags}"
 # Remove shebang from non executable
 sed -i '/#!.*env python/d' %{buildroot}%{$python_sitearch}/sklearn/_build_utils/version.py
 # Remove empty file
-rm %{buildroot}%{$python_sitearch}/sklearn/_built_with_meson.py
+rm -f %{buildroot}%{$python_sitearch}/sklearn/_built_with_meson.py
 # Fix file permissions
 chmod 0644 %{buildroot}%{$python_sitearch}/sklearn/cluster/_optics.py
 chmod 0644 %{buildroot}%{$python_sitearch}/sklearn/ensemble/tests/test_weight_boosting.py
@@ -155,7 +154,7 @@ NO_TESTS+=" or test_imputation_missing_value_in_test_array"
 NO_TESTS+=" or test_graphviz_toy"
 NO_TESTS+=" or test_forest_classifier_oob"
 %endif
-%pytest_arch -v --pyargs sklearn -n auto -k "not ($NO_TESTS)"
+%pytest_arch -v --pyargs sklearn -n auto -m "not thread_unsafe" -k "not ($NO_TESTS)"
 popd
 %endif
 

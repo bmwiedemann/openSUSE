@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Aug  3 11:30:10 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- update to 1.9.0
+  * Array API support (enables GPU computations)
+  * Free-threaded CPython 3.14 support
+  * Temperature scaling in CalibratedClassifierCV
+  * Efficiency improvements in linear models
+  * HTML representation of estimators
+  * DecisionTreeRegressor with criterion="absolute_error"
+  * ClassicalMDS now available within sklearn.manifold
+  * experimental support for callbacks
+  * Computing metrics across thresholds
+  * Sparse array configuration with "sparse_interface"
+  * Full changelog:
+    https://scikit-learn.org/stable/whats_new/v1.8.html
+    https://scikit-learn.org/stable/whats_new/v1.9.html
+
+-------------------------------------------------------------------
 Sun Sep 14 18:19:43 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.7.2:
