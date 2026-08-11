@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Tue Aug 11 04:25:50 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.0.0:
+  Added:
+  * FEATURE_NO_TABS in src/config.h to allow the user to compile vimb without
+    tab support - which is useful in when the tabs are handles by the
+    windowmanager
+  * Native tab support within a single window. New normal mode commands:
+    + gt - go to next tab
+    + gT - go to previous tab
+    + g0 - go to first tab
+    + g$ - go to last tab
+  * New ex commands for tab management:
+    + :tabclose - close current tab
+    + :tabnext - switch to next tab
+    + :tabprev / :tabprevious - switch to previous tab
+    + :tabfirst - switch to first tab
+    + :tablast - switch to last tab
+  * New :quitall (:quita) command to close all tabs and quit the browser.
+    Supports ! bang to force quit even with running downloads.
+  * Setting media to enable/disable all media support. Useful on systems where
+    GStreamer is not fully configured or to prevent crashes from missing plugins.
+  Changed:
+  * Migrated from GTK3 to GTK4
+  * Migrated from WebKitGTK 4.1 to WebKitGTK 6.0
+  * Replaced D-Bus IPC by WebKit provided IPC (WebKitUserMessage)
+  * Replaced deprecated GtkListStore/GtkTreeView completion with
+    GListStore/GtkListView for GTK4 compatibility
+  * :tabopen now opens in a new tab instead of a new window
+  * gH, U, P commands now open in a new tab instead of a new window
+  * ;t and ;I hint modes now open in a new tab instead of a new window
+  * Ctrl-Click and Middle-Click now open links in a new tab instead of a new window
+  * Applied smooth scrolling to all scroll commands too - thanks to Doxnit
+  Fixed:
+  * Fixed memory leaks in various functions
+  * Fixed JavaScript error "Can't find variable: vimb_input_mode_element" when
+    pressing i in normal mode before entering input mode
+  * Fixed deprecated webkit_web_page_get_main_frame() usage in webextension by
+    using WebKitScriptWorld "window-object-cleared" signal to cache frame references
+  Removed:
+  * Removed X-Embed support as this is not supported by GTK4
+  * Following settings were removed from the man page documentation as they are
+    deprecated and removed in WebKitGTK 6.0.
+    + accelerated-2d-canvas (bool) enable-accelerated-2d-canvas deprecated in WebKitGTK 6.0
+    + dns-prefetching (bool) enable-dns-prefetching deprecated and does nothing
+    + frame-flattening (bool) enable-frame-flattening deprecated in WebKitGTK 6.0
+    + hyperlink-auditing (bool) enable-hyperlink-auditing deprecated and does nothing
+    + offline-cache (bool) enable-offline-web-application-cache deprecated and does nothing
+    + plugins (bool) enable-plugins deprecated and removed in WebKitGTK 6.0
+    + xss-auditor (bool) enable-xss-auditor deprecated and removed in WebKitGTK 6.0
+
+-------------------------------------------------------------------
 Thu Feb 19 06:45:03 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Upate to 3.7.1:

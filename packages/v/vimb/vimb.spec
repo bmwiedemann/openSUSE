@@ -17,7 +17,7 @@
 
 
 Name:           vimb
-Version:        3.7.1
+Version:        4.0.0
 Release:        0
 Summary:        The vim-like browser
 License:        GPL-3.0-or-later
@@ -27,7 +27,7 @@ Source:         https://github.com/fanglingsu/vimb/archive/%{version}.tar.gz
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(webkit2gtk-4.1)
+BuildRequires:  webkitgtk4-devel
 
 %description
 vimb is a WebKit-based web browser that behaves like the vimperator
@@ -43,7 +43,7 @@ plugin for Firefox, and has usage paradigms from the editor vim.
 %make_install PREFIX=%{_prefix}
 
 %check
-make test
+%make_build test
 desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/vimb.metainfo.xml
 

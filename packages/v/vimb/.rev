@@ -112,4 +112,41 @@
     <comment></comment>
     <requestid>1333861</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d4a01e6ba09e99ede62866c280a9f487</srcmd5>
+    <version>4.0.0</version>
+    <time>1786461329</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.0.0:
+  Added:
+  * FEATURE_NO_TABS in src/config.h to allow the user to compile vimb without
+    tab support - which is useful in when the tabs are handles by the
+    windowmanager
+  * Native tab support within a single window. New normal mode commands:
+    + gt - go to next tab
+    + gT - go to previous tab
+    + g0 - go to first tab
+    + g$ - go to last tab
+  * New ex commands for tab management:
+    + :tabclose - close current tab
+    + :tabnext - switch to next tab
+    + :tabprev / :tabprevious - switch to previous tab
+    + :tabfirst - switch to first tab
+    + :tablast - switch to last tab
+  * New :quitall (:quita) command to close all tabs and quit the browser.
+    Supports ! bang to force quit even with running downloads.
+  * Setting media to enable/disable all media support. Useful on systems where
+    GStreamer is not fully configured or to prevent crashes from missing plugins.
+  Changed:
+  * Migrated from GTK3 to GTK4
+  * Migrated from WebKitGTK 4.1 to WebKitGTK 6.0
+  * Replaced D-Bus IPC by WebKit provided IPC (WebKitUserMessage)
+  * Replaced deprecated GtkListStore/GtkTreeView completion with
+    GListStore/GtkListView for GTK4 compatibility
+  * :tabopen now opens in a new tab instead of a new window
+  * gH, U, P commands now open in a new tab instead of a new window
+  * ;t and ;I hint modes now open in a new tab instead of a new window
+  * Ctrl-Click and Middle-Click now open links in a new tab instead of a new window</comment>
+    <requestid>1370594</requestid>
+  </revision>
 </revisionlist>
