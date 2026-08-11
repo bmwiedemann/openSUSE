@@ -15,7 +15,7 @@
         <profile name="VMware" description="Minimal Image for VMware" arch="x86_64"/>
         <profile name="MS-HyperV" description="Minimal Image for Hyper-V" arch="aarch64,x86_64"/>
         <profile name="Cloud" description="Minimal Image for Cloud" arch="aarch64,x86_64"/>
-        <profile name="KubeVirt-Cloud" description="Minimal Image for KubeVirt containerdisk" arch="aarch64,x86_64"/>
+        <profile name="KubeVirt-Cloud" description="Minimal Image for KubeVirt containerdisk" arch="aarch64,s390x,x86_64"/>
         <profile name="RaspberryPi" description="Minimal Image for the Raspberry Pi" arch="aarch64"/>
         <profile name="s390x-Cloud" description="Minimal Image for Cloud" arch="s390x"/>
         <profile name="s390x-dasd" description="Minimal Image for DASD on z Systems" arch="s390x"/>
@@ -220,7 +220,7 @@
         </type>
     </preferences>
 
-    <preferences profiles="KubeVirt-Cloud">
+    <preferences profiles="KubeVirt-Cloud" arch="aarch64,x86_64">
         <version>1.0.0</version>
         <packagemanager>zypper</packagemanager>
         <bootloader-theme>openSUSE</bootloader-theme>
@@ -243,6 +243,33 @@
             </oemconfig>
             <containerconfig name="opensuse/tumbleweed-kubevirt-minimal" tag="latest"/>
             <bootloader name="grub2" timeout="1"/>
+            <size unit="G">2</size>
+        </type>
+    </preferences>
+
+    <preferences profiles="KubeVirt-Cloud" arch="s390x">
+        <version>1.0.0</version>
+        <packagemanager>zypper</packagemanager>
+        <bootloader-theme>openSUSE</bootloader-theme>
+        <rpm-excludedocs>true</rpm-excludedocs>
+        <locale>en_US</locale>
+        <type
+            image="oem"
+            filesystem="xfs"
+            bootpartition="true"
+            bootpartsize="300"
+            bootfilesystem="ext4"
+            bootkernel="custom"
+            devicepersistency="by-uuid"
+            format="docker:qcow2"
+            editbootinstall="containerdisk.sh"
+            bundle_format="%N-KubeVirt.%A-%M.%m.%p"
+        >
+            <oemconfig>
+                <oem-resize>false</oem-resize>
+            </oemconfig>
+            <containerconfig name="opensuse/tumbleweed-kubevirt-minimal" tag="latest"/>
+            <bootloader name="grub2_s390x_emu" timeout="1"/>
             <size unit="G">2</size>
         </type>
     </preferences>
@@ -562,7 +589,9 @@
         <package name="xfsprogs"/>
     </packages>
     <packages type="image" profiles="Cloud,KubeVirt-Cloud">
-        <package name="kernel-default-base"/>
+        <package name="kernel-default-base" arch="aarch64,riscv64,x86_64"/>
+        <!-- No kernel-default-base for s390x -->
+        <package name="kernel-default" arch="s390x"/>
     </packages>
     <packages type="image" profiles="MS-HyperV">
         <package name="hyper-v"/>
