@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Aug 10 20:32:53 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.4.3:
+  * Filter invalid tool calls out of message content: blocks of type
+    invalid_tool_call are now dropped when converting v1 content back
+    to the Chat Completions format, alongside reasoning and tool_call
+    blocks, so a malformed tool call no longer leaks into the message
+    content while remaining reachable through the message's
+    invalid_tool_calls attribute
+  * Document that the choice between the Chat Completions API and the
+    Responses API is inferred in part from the model name and is
+    independent of base_url, so use_responses_api should be set
+    explicitly when talking to OpenAI-compatible providers
+  * Note in the include_response_headers documentation that some
+    inference providers return additional metadata, such as the
+    served model name, in their response headers
+
+-------------------------------------------------------------------
 Sat Aug  8 04:38:01 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.4.2:

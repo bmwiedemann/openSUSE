@@ -17,7 +17,7 @@
 
 
 Name:           python-langchain-openai
-Version:        1.4.2
+Version:        1.4.3
 Release:        0
 Summary:        An integration package connecting OpenAI and LangChain
 License:        MIT

@@ -47,4 +47,12 @@
     <comment>Update to 1.4.2: handle ContextWindowExceededError, filter langchain-generated content block IDs, preserve Responses text options, redact the MCP authorization header; langchain-core floor raised to 1.5.3 (already in Factory). Built and verified on aarch64: 261 tests passed, rpmlint 0 errors / 0 warnings / 0 badness, source_validator clean.</comment>
     <requestid>1370300</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>430750f5b7e2009f483ac3c8f94b1b9f</srcmd5>
+    <version>1.4.3</version>
+    <time>1786461293</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.4.3: invalid_tool_call content blocks are now filtered out when converting v1 content back to the Chat Completions format, so a malformed tool call no longer leaks into the message content (it stays reachable via invalid_tool_calls). Also documents that Chat-Completions-vs-Responses API routing is inferred partly from the model name independent of base_url, and that some providers return extra metadata in response headers. No dependency floor changes. Built and tested locally for aarch64: 261 tests pass per Python flavour (3.13/3.14), rpmlint 0 errors 0 warnings 0 badness.</comment>
+    <requestid>1370578</requestid>
+  </revision>
 </revisionlist>
