@@ -27,6 +27,8 @@ Source:         https://github.com/redeclipse/base/releases/download/v%{version}
 
 Patch0:         windowed-by-default.patch
 Patch1:         system_sqlite.patch
+# PATCH-FIX-UPSTREAM redeclipse-gcc16-placement-new.patch -- do not redefine the standard placement new/delete operators, which breaks the build with gcc16
+Patch2:         redeclipse-gcc16-placement-new.patch
 
 BuildRequires:  discord-rpc-devel
 BuildRequires:  ed

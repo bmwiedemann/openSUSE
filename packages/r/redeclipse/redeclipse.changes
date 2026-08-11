@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug  4 08:11:00 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add redeclipse-gcc16-placement-new.patch to fix build with gcc16
+
+-------------------------------------------------------------------
 Wed Jul 27 23:20:54 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Use system discord-rpc library instead of bundled copy
