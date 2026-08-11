@@ -379,4 +379,13 @@
   * Fix spelling mistakes and add typos to pre-commit</comment>
     <requestid>1362049</requestid>
   </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>3e824894d17c093d5f7267a9b4080ce7</srcmd5>
+    <version>2.4.1</version>
+    <time>1786461332</time>
+    <user>anag_factory</user>
+    <comment>- Add patch no-more-commonprefix.patch:
+  * Replace os.path.commonprefix usage with os.path.commonpath.</comment>
+    <requestid>1370598</requestid>
+  </revision>
 </revisionlist>

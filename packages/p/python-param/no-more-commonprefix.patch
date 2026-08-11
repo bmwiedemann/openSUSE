@@ -1,0 +1,88 @@
+From e124cb97a0f94977103247b619e4e22fcc83f0ea Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Tue, 11 Aug 2026 15:03:16 +1000
+Subject: [PATCH] Switch to os.path.commonpath
+
+os.path.commonprefix has been deprecated for a few Python releases, and
+finally removed as of Python 3.15. os.path.commonpath is the
+replacement, switch to using it, and write a test to make certain there
+was no behavior changes.
+---
+ param/_utils.py     |  6 +++---
+ param/parameters.py |  2 +-
+ tests/testutils.py  | 15 +++++++++++++++
+ 3 files changed, 19 insertions(+), 4 deletions(-)
+
+diff --git a/param/_utils.py b/param/_utils.py
+index ff4dade77..4ff58f652 100644
+--- a/param/_utils.py
++++ b/param/_utils.py
+@@ -544,10 +544,10 @@ def _abbreviate_paths(pathspec,named_paths):
+     Given a dict of (pathname,path) pairs, removes any prefix shared by all pathnames.
+     Helps keep menu items short yet unambiguous.
+     """
+-    from os.path import commonprefix, dirname, sep
++    from os.path import commonpath, dirname, sep
+ 
+-    prefix = commonprefix([dirname(name)+sep for name in named_paths.keys()]+[pathspec])
+-    return OrderedDict([(name[len(prefix):],path) for name,path in named_paths.items()])
++    prefix = commonpath([dirname(name)+sep for name in named_paths.keys()]+[pathspec])
++    return OrderedDict([(name[len(prefix)+1:],path) for name,path in named_paths.items()])
+ 
+ 
+ def _to_datetime(x):
+diff --git a/param/parameters.py b/param/parameters.py
+index 504cab358..a7a3fcfdd 100644
+--- a/param/parameters.py
++++ b/param/parameters.py
+@@ -2846,7 +2846,7 @@ def update(self, path: str | PathLike[str] = t.cast("str | PathLike[str]", Undef
+         self.default = self.objects[0] if self.objects else None
+ 
+     def get_range(self) -> dict[str, str | PathLike]:
+-        return _abbreviate_paths(self.path,super().get_range())
++        return _abbreviate_paths(self.path, super().get_range())
+ 
+ 
+ class ListSelector(Selector):
+diff --git a/tests/testutils.py b/tests/testutils.py
+index 8012e8691..75014640a 100644
+--- a/tests/testutils.py
++++ b/tests/testutils.py
+@@ -1,8 +1,10 @@
+ import datetime as dt
+ import os
+ 
++from collections import OrderedDict
+ from collections.abc import Iterable
+ from functools import partial
++from tempfile import TemporaryDirectory
+ 
+ import param
+ import pytest
+@@ -11,6 +13,7 @@
+ from param.parameterized import bothmethod, Parameterized, ParameterizedABC
+ from param._utils import (
+     # ParamWarning,
++    _abbreviate_paths,
+     _is_abstract,
+     _is_mutable_container,
+     concrete_descendents,
+@@ -547,6 +550,18 @@ def test_concrete_descendents():
+     }
+ 
+ 
++def test_abbreviate_paths():
++    ranges = OrderedDict()
++    expected = OrderedDict()
++    with TemporaryDirectory() as tempdir:
++        path = f"{tempdir}/*"
++        for filename in ("a.txt", "f.txt"):
++            fullpath = f"{tempdir}/{filename}"
++            ranges[fullpath] = fullpath
++            expected[filename] = fullpath
++    assert _abbreviate_paths(path, ranges) == expected
++
++
+ # def test_concrete_descendents_same_name_warns():
+ #     class X: pass
+ #     class Y(X): pass

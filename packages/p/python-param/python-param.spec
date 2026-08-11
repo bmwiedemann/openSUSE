@@ -27,6 +27,8 @@ Source:         https://files.pythonhosted.org/packages/source/p/param/param-%{v
 Source100:      python-param-rpmlintrc
 # PATCH-FIX-OPENSUSE Ignore FutureWarning from pandas itself
 Patch0:         ignore-pandas-assignment-futurewarning.patch
+# PATCH-FIX-UPSTREAM gh#holoviz/param#1165
+Patch1:         no-more-commonprefix.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module hatchling}
@@ -36,7 +38,6 @@ BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Recommends:     python-jsonschema

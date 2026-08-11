@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 11 05:09:31 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch no-more-commonprefix.patch:
+  * Replace os.path.commonprefix usage with os.path.commonpath.
+
+-------------------------------------------------------------------
 Sat Jun 27 21:02:24 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.4.1:
