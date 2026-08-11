@@ -18,10 +18,26 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-llguidance
-Version:        1.7.6
+Version:        1.8.0
 Release:        0
 Summary:        Low-level Guidance (llguidance) bindings for constrained decoding
-License:        Apache-2.0 AND BSD-3-Clause AND CDLA-Permissive-2.0 AND ISC AND MIT AND MPL-2.0 AND Unicode-3.0
+# Legal-Review-Notice: re-derived for 1.8.0 against the regenerated
+# registry.tar.zst. maturin builds only python_ext/Cargo.toml, so the tag
+# covers the 111 crates the build actually compiles (the 108 normal
+# dependencies of llguidance_py plus the build-only pyo3-build-config,
+# target-lexicon and version_check). None of them is copyleft or weak
+# copyleft. Mandatory terms: MIT (upstream llguidance itself plus 20 crates),
+# Apache-2.0 (tokenizers, esaxx-rs, spm_precompiled), MIT-0 (borrow-or-share)
+# and Unicode-3.0 (unicode-ident, "(MIT OR Apache-2.0) AND Unicode-3.0");
+# every remaining crate offers MIT or Apache-2.0 among its choices.
+# target-lexicon is "Apache-2.0 WITH LLVM-exception", build-time only and
+# covered by the declared Apache-2.0.
+# The MPL-2.0, BSD-3-Clause, CDLA-Permissive-2.0 and ISC crates that appear
+# in the workspace lockfile are never compiled here: they belong to the
+# HTTP/TLS stack of the toktrie_hf_downloader member (reqwest, ureq, rustls,
+# webpki-roots, dirs) and to serde-json-fmt, a dev-dependency of the parser
+# crate. They impose no obligation on the shipped extension module.
+License:        Apache-2.0 AND MIT AND MIT-0 AND Unicode-3.0
 URL:            https://github.com/guidance-ai/llguidance
 Source0:        https://github.com/guidance-ai/llguidance/archive/refs/tags/v%{version}.tar.gz#/llguidance-%{version}.tar.gz
 Source1:        registry.tar.zst
@@ -33,6 +49,7 @@ BuildRequires:  cargo-packaging
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
+BuildRequires:  rust >= 1.87
 BuildRequires:  zstd
 ExclusiveArch:  %{rust_tier1_arches} riscv64
 %python_subpackages

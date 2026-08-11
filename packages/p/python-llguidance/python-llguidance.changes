@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Aug 11 05:34:17 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.8.0:
+  * Allow general Unicode escapes in JSON strings and object keys
+  * Support \xHH escapes in Lark string literals
+  * Add single-match skip lexemes
+  * Preserve the exclusiveMinimum/exclusiveMaximum names in JSON
+    Schema errors instead of reporting them as minimum/maximum
+  * Accept negative numbers in multipleOf, which previously rejected
+    every negative value, including valid negative multiples
+  * Treat max_tokens=0 as an empty string instead of compiling a
+    token-limited lexeme that never terminates at runtime
+  * Harden the C FFI layer: catch_unwind guards on the extern "C"
+    entry points, null tolerance in all llg_free_* functions, a
+    fixed buffer-sizing bug and a new C++ FFI test suite
+  * Add CI support for Windows ARM64 Python wheels
+  * Update pyo3 to 0.29.0
+- Re-generate registry.tar.zst for 1.8.0 via the cargo_vendor service
+- Narrow License to Apache-2.0 AND MIT AND MIT-0 AND Unicode-3.0:
+  the tag is now derived from the 111 crates maturin actually
+  compiles into the extension module rather than from the whole
+  workspace lockfile. The previously declared BSD-3-Clause,
+  CDLA-Permissive-2.0, ISC and MPL-2.0 come solely from the HTTP and
+  TLS stack of the toktrie_hf_downloader workspace member and from a
+  dev-dependency of the parser crate, neither of which is built
+  here; the derivation is recorded as a Legal-Review-Notice in the
+  spec file
+- Declare the rust-version floor the workspace manifest sets by
+  adding BuildRequires on rust >= 1.87
+
+-------------------------------------------------------------------
 Sun Jul 12 19:13:36 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Initial package python-llguidance 1.7.6

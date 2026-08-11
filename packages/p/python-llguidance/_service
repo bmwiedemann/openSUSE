@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <services>
   <service name="cargo_vendor" mode="manual">
-     <param name="src">llguidance-1.7.6.tar.gz</param>
+     <param name="src">llguidance-1.8.0.tar.gz</param>
      <param name="method">registry</param>
      <param name="update">true</param>
      <param name="compression">zst</param>

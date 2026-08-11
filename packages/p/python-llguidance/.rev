@@ -7,4 +7,12 @@
     <comment>New package: low-level constrained-decoding/guidance library; dependency for python-vllm.</comment>
     <requestid>1365518</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0a4a01115d16e7928f2564d3dff92335</srcmd5>
+    <version>1.8.0</version>
+    <time>1786461338</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.8.0: general Unicode escapes in JSON strings and object keys, \xHH escapes in Lark string literals, single-match skip lexemes, exclusiveMinimum/exclusiveMaximum names preserved in JSON Schema errors, negative numbers accepted in multipleOf, max_tokens=0 treated as the empty string, and a hardened C FFI layer (catch_unwind guards, null-tolerant llg_free_*, buffer-sizing fix). Vendored crate registry regenerated through the cargo_vendor service; pyo3 updated to 0.29.0. License narrowed to Apache-2.0 AND MIT AND MIT-0 AND Unicode-3.0, re-derived from the 111 crates maturin actually compiles into the extension module - the previously declared BSD-3-Clause, CDLA-Permissive-2.0, ISC and MPL-2.0 come only from the toktrie_hf_downloader HTTP/TLS stack and a parser dev-dependency, neither of which is built here (derivation recorded as a Legal-Review-Notice in the spec). Also declares the rust &gt;= 1.87 floor the workspace manifest sets. Built and rpmlint-clean on openSUSE_Tumbleweed/aarch64.</comment>
+    <requestid>1370604</requestid>
+  </revision>
 </revisionlist>
