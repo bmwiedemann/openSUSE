@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Aug 10 05:05:25 UTC 2026 - Yash Maurya <yash.maurya@suse.com>
+
+- Update to version 3.1.0:
+  * v3.1.0
+  * feat: support --port-driver=pesto for IPv4
+  * docs: refresh network driver benchmark table
+  * fix: benchmark pasta, not slirp4netns
+  * fix: correct field names in ParsePortSpec error messages
+  * fix(pasta): block host loopback access from the namespace when `--disable-host-loopback` is set
+  * Build(deps): Bump actions/setup-go from 6 to 7
+  * chore: update error message when the pasta binary dosen't exist
+  * v3.0.2+dev
+
+-------------------------------------------------------------------
 Tue Jul 14 12:30:31 UTC 2026 - Yash Maurya <yash.maurya@suse.com>
 
 - Update to version 3.0.2:
