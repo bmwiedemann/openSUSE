@@ -485,4 +485,13 @@
 </comment>
     <requestid>1357809</requestid>
   </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>604b3652406bbd337cea300040a26846</srcmd5>
+    <version>15.0.0</version>
+    <time>1786460969</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-python-315.patch:
+  * Support signature changes for Python 3.15.</comment>
+    <requestid>1370432</requestid>
+  </revision>
 </revisionlist>

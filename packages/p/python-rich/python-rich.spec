@@ -25,11 +25,11 @@ Summary:        A Python library for rich text and beautiful formatting in the t
 License:        MIT
 URL:            https://github.com/Textualize/rich
 Source:         https://github.com/Textualize/rich/archive/refs/tags/v%{version}.tar.gz#/rich-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM Based on gh#Textualize/rich#4082
+Patch0:         support-python-315.patch
 BuildRequires:  %{python_module base >= 3.9}
-BuildRequires:  %{python_module markdown-it-py >= 2.2.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
-BuildRequires:  %{python_module pygments >= 2.13.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-markdown-it-py >= 2.2.0
@@ -37,8 +37,10 @@ Requires:       python-pygments >= 2.13.0
 Suggests:       python-ipywidgets >= 7.5.1
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module attrs}
+BuildRequires:  %{python_module markdown-it-py >= 2.2.0}
+BuildRequires:  %{python_module pygments >= 2.13.0}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
 
