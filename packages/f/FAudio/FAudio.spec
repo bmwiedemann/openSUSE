@@ -1,7 +1,7 @@
 #
 # spec file for package FAudio
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,77 +16,78 @@
 #
 
 
+%define sover 0
 Name:           FAudio
-Version:        24.06
+Version:        26.08
 Release:        0
-Summary:        A reimplementation of the XNA Game Studio libraries
+Summary:        Accuracy-focused XAudio reimplementation
 License:        Zlib
-Group:          Development/Libraries/C and C++
 URL:            https://fna-xna.github.io
 Source0:        https://github.com/FNA-XNA/FAudio/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
-Patch0:         faudio-older-sdl2.patch
 BuildRequires:  cmake
-BuildRequires:  gcc-c++
+BuildRequires:  gcc
 BuildRequires:  pkgconfig
-BuildRequires:  unzip
-BuildRequires:  cmake(sdl2)
+# Upstream README: "FAudio depends solely on SDL 3.2.0 or newer"
+BuildRequires:  cmake(SDL3) >= 3.2.0
 
 %description
-FNA is a reimplementation of the Microsoft XNA Game Studio 4.0 Refresh libraries.
+FAudio is an XAudio reimplementation that focuses solely on developing
+fully accurate DirectX Audio runtime libraries for the FNA project,
+including XAudio2, X3DAudio, XAPO and XACT3.
 
-%package -n libFAudio0
-Summary:        A reimplementation of the XNA Game Studio libraries
-Group:          System/Libraries
+%package -n libFAudio%{sover}
+Summary:        Accuracy-focused XAudio reimplementation
 
-%description -n libFAudio0
-FNA is a reimplementation of the Microsoft XNA Game Studio 4.0 Refresh libraries.
+%description -n libFAudio%{sover}
+FAudio is an XAudio reimplementation that focuses solely on developing
+fully accurate DirectX Audio runtime libraries for the FNA project,
+including XAudio2, X3DAudio, XAPO and XACT3.
 
 %package devel
-Summary:        FAudio Development Libraries
-Group:          Development/Languages/C and C++
-Requires:       libFAudio0 = %{version}
+Summary:        Development files for FAudio
+Requires:       libFAudio%{sover} = %{version}
 
 %description devel
-FNA is a reimplementation of the Microsoft XNA Game Studio 4.0 Refresh libraries.
+Header files, pkg-config and CMake package files needed to build
+applications against FAudio.
 
 %prep
-%setup -q
-%if 0%{?suse_version} < 1550
-%autopatch -p1
-%endif
+%autosetup -p1
 
 %build
 %cmake \
-  -DCMAKE_BUILD_TYPE=Release
+  -DBUILD_TESTS:BOOL=ON
 %cmake_build
 
 %install
 %cmake_install
 
-%post -n libFAudio0 -p /sbin/ldconfig
-%postun -n libFAudio0 -p /sbin/ldconfig
+%check
+# The unit tests exercise the XAudio2 API surface and only need an audio
+# device to open, not to produce sound - the SDL dummy driver is enough.
+SDL_AUDIODRIVER=dummy build/faudio_tests
 
-%files -n libFAudio0
+%ldconfig_scriptlets -n libFAudio%{sover}
+
+%files -n libFAudio%{sover}
 %license LICENSE
-%{_libdir}/libFAudio.so.0*
+%{_libdir}/libFAudio.so.%{sover}
+%{_libdir}/libFAudio.so.%{sover}.*
 
 %files devel
 %license LICENSE
-%{_includedir}/FAudio.h
-%{_includedir}/FAPOFX.h
-%{_includedir}/FACT3D.h
 %{_includedir}/F3DAudio.h
 %{_includedir}/FACT.h
+%{_includedir}/FACT3D.h
 %{_includedir}/FAPO.h
-%{_includedir}/FAudioFX.h
 %{_includedir}/FAPOBase.h
+%{_includedir}/FAPOFX.h
+%{_includedir}/FAudio.h
+%{_includedir}/FAudioFX.h
 %{_libdir}/libFAudio.so
 %dir %{_libdir}/cmake
-%dir %{_libdir}/cmake/FAudio
-%{_libdir}/cmake/FAudio/FAudio-targets.cmake
-%{_libdir}/cmake/FAudio/FAudioConfig.cmake
-%{_libdir}/cmake/FAudio/FAudio-targets-release.cmake
+%{_libdir}/cmake/FAudio/
 %{_libdir}/pkgconfig/FAudio.pc
 
 %changelog

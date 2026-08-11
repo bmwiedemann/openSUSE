@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Sat Aug  8 11:01:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to release 26.08:
+  * SDL3 support was declared production ready in 25.02 and
+    became the default CMake configuration in 25.03
+  * Added a NEON implementation of the sample mixing routine
+    for AArch64
+  * Reworked resampling to use a proper "taps" system
+  * Added the CollectorEXT extension
+  * Added support for FAudioBuffer ADPCM/WMA data with
+    misaligned AudioBytes sizes
+  * WMA support is now a CMake toggle separate from the
+    Wine/Win32 target, still off by default
+  * Extensive FACT rework: input validation across the
+    user-facing API calls, human-readable constants in place
+    of magic numbers, proper error return codes and a
+    reworked WaveBank notification strategy
+  * FACT: fixed crashes with Waves that have no parent Cue,
+    with Cues hitting the max instance limit, and a
+    write-to-null when initialising the first WaveBank
+  * Fixed a crash when setting effect parameters on a voice
+    with no effect chain
+  * Fixed possible crashes in the SIMD routines when resample
+    requests are smaller than 16 bytes
+  * Fixed effects memory being leaked when a voice's effect
+    chain was freed
+  * Fixed a use-after-free when logging API exits in
+    DestroyVoice
+  * Several ADPCM/MSADPCM decoder offset and block boundary
+    fixes, and timing fixes for OnBufferStart, OnBufferEnd
+    and pCurrentBufferContext state
+  * Fixed the default channel mask for 7.1 audio to match the
+    OS and SDL defaults
+  * Voices no longer refcount the FAudio context; FAudio_Release
+    destroys all voices once the refcount reaches 0
+  * CMake: fixed errors introduced with CMake 4.0 and fixed
+    the pkg-config libdir and includedir
+- Build against SDL3 rather than SDL2, following upstream,
+  which now documents SDL 3.2.0 as its sole dependency and
+  treats the SDL2 backend as legacy. libFAudio0 now links
+  libSDL3.so.0 and FAudio-devel requires pkgconfig(sdl3).
+- Drop faudio-older-sdl2.patch: it was only applied for
+  suse_version < 1550, which no repository of the devel
+  project targets any more, it patches the unused SDL2
+  backend, and its second hunk defined FAudio_exp() as
+  SDL_log() instead of SDL_exp().
+- Require gcc rather than gcc-c++: FAudio is declared as a pure
+  C project and the only C++ sources live under utils/, which is
+  not built.
+- Drop the unused unzip BuildRequires.
+- Run the upstream unit tests in %check with BUILD_TESTS=ON
+  and the SDL dummy audio driver.
+- Drop -DCMAKE_BUILD_TYPE=Release so that the openSUSE default
+  of RelWithDebInfo applies and the debuginfo is usable.
+- Install the CMake package directory as a whole, as upstream
+  renamed the exported target files to
+  FAudio-targets-shared*.cmake.
+
+-------------------------------------------------------------------
 Fri Jun  7 14:12:00 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 24.06:
