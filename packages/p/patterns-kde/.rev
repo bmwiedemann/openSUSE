@@ -391,4 +391,12 @@ This also handles TW properly. (forwarded request 653860 from lslezak)</comment>
   (bsc#1267854) (forwarded request 1361010 from epaolantonio)</comment>
     <requestid>1361612</requestid>
   </revision>
+  <revision rev="47" vrev="3">
+    <srcmd5>7d6062bfcc899b15557065c60d6acebb</srcmd5>
+    <version>20260428</version>
+    <time>1786460984</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1370488</requestid>
+  </revision>
 </revisionlist>

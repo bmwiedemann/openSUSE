@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Aug  8 07:10:35 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Remove plasma6-session-x11 from the plasma 6 pattern (boo#1274552)
+
+-------------------------------------------------------------------
 Mon Jun 22 09:01:33 UTC 2026 - Eugenio Paolantonio <eugenio.paolantonio@suse.com>
 
 - Disambiguate kde_utilities and kde_utilities_opt pattern summaries

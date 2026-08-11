@@ -524,7 +524,6 @@ Requires:       (plasma6-nm if NetworkManager)
 Requires:       (plasma6-pa if (pulseaudio or pipewire-alsa))
 
 # X11 session
-Recommends:     plasma6-session-x11
 Requires:       (pattern() = x11 if plasma6-session-x11)
 
 # We have a theme for this, so prefer it
