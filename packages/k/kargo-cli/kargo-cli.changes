@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Aug 11 06:32:38 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.11.1 (bsc#1271768):
+  * chore(backport release-1.11): docs: add Kargo CLI usage guide
+    (#6778)
+  * chore(backport release-1.11): docs: document automated
+    rollbacks (#6731)
+  * chore(backport release-1.11): fix(docs): correct frontmatter
+    key casing in roadmap.md (#6620)
+  * chore(backport release-1.11): docs: fix stray apostrophe in
+    v1.1.0 release notes (#6642)
+  * update oras.land/oras-go/v2 to v2.6.2 (bsc#1271768)
+
+-------------------------------------------------------------------
 Mon Jul 27 05:34:15 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.11.0:
