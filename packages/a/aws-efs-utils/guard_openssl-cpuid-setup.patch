@@ -1,0 +1,58 @@
+From e76db6c9523d6125fff2d115a7c6bafec2b369d5 Mon Sep 17 00:00:00 2001
+From: Justin W Smith <103147162+justsmth@users.noreply.github.com>
+Date: Tue, 14 Jan 2025 13:36:31 -0500
+Subject: [PATCH] Align guard macros for OPENSSL_cpuid_setup (#2111)
+
+### Issues:
+Addresses aws/aws-lc-rs#655
+
+### Description of changes:
+* The criteria for invoking `OPENSSL_cpuid_setup` should align with the
+criteria for defining `OPENSSL_cpuid_setup`.
+
+### Call-outs:
+Consumers building `aws-lc-fips-sys` for `s390x` were seeing the
+following failure:
+```
+.../boringssl_prefix_symbols.h:20:26: error: implicit declaration of function 'aws_lc_fips_0_13_1_OPENSSL_cpuid_setup'; did you mean 'aws_lc_fips_0_13_1_OPENSSL_sk_set'? [-Werror=implicit-function-declaration]
+```
+
+### Testing:
+I verified this fix works for the `aws-lc-fips-sys` build for
+`s390x-unknown-linux-gnu`.
+
+By submitting this pull request, I confirm that my contribution is made
+under the terms of the Apache 2.0 license and the ISC license.
+---
+ crypto/fipsmodule/bcm.c             | 2 +-
+ crypto/fipsmodule/cpucap/internal.h | 1 +
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/crypto/fipsmodule/bcm.c b/crypto/fipsmodule/bcm.c
+index ce8a3462d..6c610cbf3 100644
+--- a/crypto/fipsmodule/bcm.c
++++ b/crypto/fipsmodule/bcm.c
+@@ -258,7 +258,7 @@ static void BORINGSSL_bcm_power_on_self_test(void) {
+ // TODO: remove !defined(OPENSSL_PPC64BE) from the check below when starting to support
+ // PPC64BE that has VCRYPTO capability. In that case, add `|| defined(OPENSSL_PPC64BE)`
+ // to `#if defined(OPENSSL_PPC64LE)` wherever it occurs.
+-#if !defined(OPENSSL_NO_ASM) && !defined(OPENSSL_PPC32BE) && !defined(OPENSSL_PPC64BE)
++#if defined(HAS_OPENSSL_CPUID_SETUP) && !defined(OPENSSL_NO_ASM)
+   OPENSSL_cpuid_setup();
+ #endif
+ 
+diff --git a/crypto/fipsmodule/cpucap/internal.h b/crypto/fipsmodule/cpucap/internal.h
+index a8f295913..21aa35163 100644
+--- a/crypto/fipsmodule/cpucap/internal.h
++++ b/crypto/fipsmodule/cpucap/internal.h
+@@ -9,6 +9,7 @@ extern "C" {
+ 
+ #if defined(OPENSSL_X86) || defined(OPENSSL_X86_64) || defined(OPENSSL_ARM) || \
+     defined(OPENSSL_AARCH64) || defined(OPENSSL_PPC64LE)
++#define HAS_OPENSSL_CPUID_SETUP
+ // OPENSSL_cpuid_setup initializes the platform-specific feature cache.
+ void OPENSSL_cpuid_setup(void);
+ #endif
+-- 
+2.55.0
+

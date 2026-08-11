@@ -1,0 +1,49 @@
+From 3019cf2c8d924e846312b36f2ef3a943889e6d02 Mon Sep 17 00:00:00 2001
+From: John Paul Adrian Glaubitz <glaubitz@physik.fu-berlin.de>
+Date: Sat, 8 Aug 2026 08:12:25 +0200
+Subject: [PATCH] Define max_align_t for s390x-linux
+
+The proper value for max_align_t was determined with the help of
+a small C program which yielded a size of 24 for max_align_t with
+an alignment of 8 bytes when compiled and run on s390x-linux:
+
+glaubitz@zelenka:~$ cat max_align_t.c
+#include <stdio.h>
+#include <stddef.h>
+
+int main() {
+
+        printf("sizeof(max_align_t): %d\n", sizeof(max_align_t));
+        printf("_Alignof(max_align_t): %d\n", _Alignof(max_align_t));
+        return 0;
+}
+glaubitz@zelenka:~$ gcc max_align_t.c -o max_align_t
+glaubitz@zelenka:~$ ./max_align_t
+sizeof(max_align_t): 24
+_Alignof(max_align_t): 8
+glaubitz@zelenka:~$
+---
+ src/unix/linux_like/linux/gnu/b64/s390x.rs | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/src/unix/linux_like/linux/gnu/b64/s390x.rs b/src/unix/linux_like/linux/gnu/b64/s390x.rs
+index 06b99f210..d6b802bd2 100644
+--- a/src/unix/linux_like/linux/gnu/b64/s390x.rs
++++ b/src/unix/linux_like/linux/gnu/b64/s390x.rs
+@@ -237,6 +237,13 @@ cfg_if! {
+     }
+ }
+ 
++s_no_extra_traits! {
++    #[repr(align(8))]
++    pub struct max_align_t {
++        priv_: [i64; 3],
++    }
++}
++
+ pub const POSIX_FADV_DONTNEED: c_int = 6;
+ pub const POSIX_FADV_NOREUSE: c_int = 7;
+ 
+-- 
+2.55.0
+

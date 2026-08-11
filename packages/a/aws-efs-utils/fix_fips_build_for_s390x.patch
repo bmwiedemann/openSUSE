@@ -1,0 +1,45 @@
+From 3fda904ddae778eb2d5c22622a75799edb71b6a0 Mon Sep 17 00:00:00 2001
+From: Justin W Smith <103147162+justsmth@users.noreply.github.com>
+Date: Wed, 15 Jan 2025 13:58:28 -0500
+Subject: [PATCH] Fix fips build for s390x (#656)
+
+---
+ aws-lc-fips-sys/builder/cmake_builder.rs | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
+
+diff --git a/aws-lc-fips-sys/builder/cmake_builder.rs b/aws-lc-fips-sys/builder/cmake_builder.rs
+index 97a99836e2a..56794a8aee6 100644
+--- a/aws-lc-fips-sys/builder/cmake_builder.rs
++++ b/aws-lc-fips-sys/builder/cmake_builder.rs
+@@ -60,6 +60,13 @@ fn find_cmake_command() -> Option<OsString> {
+     }
+ }
+ 
++fn has_target_cpu_optimization() -> bool {
++    matches!(
++        target_arch().as_str(),
++        "x86_64" | "x86" | "aarch64" | "arm" | "powerpc64"
++    )
++}
++
+ impl CmakeBuilder {
+     pub(crate) fn new(
+         manifest_dir: PathBuf,
+@@ -166,6 +173,14 @@ impl CmakeBuilder {
+             } else {
+                 panic!("AWS_LC_SYS_NO_ASM only allowed for debug builds!")
+             }
++        } else if !has_target_cpu_optimization() {
++            emit_warning(&format!(
++                "Assembly optimizations not available for target arch: {}.",
++                target_arch()
++            ));
++            // TODO: This should not be needed once resolved upstream
++            // See: https://github.com/aws/aws-lc-rs/issues/655
++            cmake_cfg.define("OPENSSL_NO_ASM", "1");
+         }
+ 
+         if cfg!(feature = "asan") {
+-- 
+2.55.0
+

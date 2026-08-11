@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Aug  9 10:38:31 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.2.0
+  * Use partition-aware DNS suffix for S3 Files for aws-cn
+  * Add regex for region mount option
+- Add missing Bugzilla reference for CVE in "bytes" crate
+- Add guard_openssl-cpuid-setup.patch to guard OPENSSL_cpuid_setup()
+- Add fix_fips_build_for_s390x.patch to fix FIPS build on s390x
+- Add fix_missing_max-align-t_s390x.patch to fix missing definition
+  of max_align_t in libc crate on s390x
+- Exclude build on %{arm32} and %{ix86}
+- Increase allowed patch fuzz level to 2
+- Refresh support-relro-in-delocator.patch
+- Refresh fix-cargo-checksums.patch
+- Update vendored s2n-tls-sys crate to 0.3.41 to fix two CVEs
+  * CVE-2026-16318: s2n-tls: Denial of Service due to memory
+    leak in QUIC transport parameters handler (bsc#1272349)
+  * CVE-2026-16317: s2n-tls: man-in-the-middle attack can silently
+    discard individual application data records (bsc#1272354)
+- Replace gcc13 and gcc13-c++ with version 15 in BuildRequires
+- Set CC=gcc-15 and CXX=g++-15 for all SLE-15 distributions
+- Set RUSTFLAGS=" -C linker=/usr/bin/gcc-15" for all SLE-15
+  distributions
+
+-------------------------------------------------------------------
 Wed May 27 14:16:22 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Enable support for mounting S3 buckets
@@ -31,6 +56,7 @@ Tue Apr 14 11:08:29 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.c
   * Fix proxy crash on NFS error in READ_BYPASS response
 - from version 3.0.0
   * Add support for s3files
+  * This updates the "bytes" crate to 1.12.1 (bsc#1274202, CVE-2026-25541)
 - Refresh support-relro-in-delocator.patch
 - Refresh fix-cargo-checksums.patch
 
@@ -272,6 +298,11 @@ Wed Apr 27 06:39:41 UTC 2022 - pgajdos@suse.com
   https://trello.com/c/S6eADbii/64-remove-python-mock
 
 -------------------------------------------------------------------
+Mon Mar 14 10:53:28 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update in SLE-15 (bsc#1195916, bsc#1196696, jsc#PM-3356, jsc#SLE-23972)
+
+-------------------------------------------------------------------
 Wed Mar  9 11:47:22 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Remove redundant python3 dependency from Requires
@@ -436,6 +467,11 @@ Thu Dec  5 11:42:38 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.c
 - Drop patches merged upstream
   + efs-switchparser.patch
 - Update BuildRequires from requirements.txt
+
+-------------------------------------------------------------------
+Tue Apr 23 11:45:49 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Include in SLE-15 (FATE#327220, bsc#1101451)
 
 -------------------------------------------------------------------
 Tue Apr  9 22:29:17 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>

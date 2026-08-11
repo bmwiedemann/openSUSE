@@ -16,6 +16,8 @@
 #
 
 
+%global _default_patch_fuzz 2
+
 %if 0%{?suse_version} >= 1600
 %define pythons %{primary_python}
 %else
@@ -23,7 +25,7 @@
 %endif
 %global _sitelibdir %{%{pythons}_sitelib}
 Name:           aws-efs-utils
-Version:        3.1.1
+Version:        3.2.0
 Release:        0
 Summary:        Utilities for using the EFS file systems
 License:        MIT
@@ -37,8 +39,14 @@ Patch2:         skip-styletest.patch
 Patch3:         use_mock_from_unittest.patch
 # PATCH-FIX-UPSTREAM - Support relro in delocator - https://github.com/aws/aws-lc/pull/2455
 Patch4:         support-relro-in-delocator.patch
+# PATCH-FIX-UPSTREAM - Align guard macros for OPENSSL_cpuid_setup - https://github.com/aws/aws-lc/pull/2111
+Patch5:         guard_openssl-cpuid-setup.patch
+# PATCH-FIX-UPSTREAM - Fix fips build for s390x - https://github.com/aws/aws-lc-rs/pull/656
+Patch6:         fix_fips_build_for_s390x.patch
+# PATCH-FIX-UPSTREAM - Fix missing max_align_t for s390x - https://github.com/rust-lang/libc/pull/5389
+Patch7:         fix_missing_max-align-t_s390x.patch
 # PATCH-FIX-OPENSUSE - fix cargo checksums after patching
-Patch5:         fix-cargo-checksums.patch
+Patch8:         fix-cargo-checksums.patch
 BuildRequires:  %{pythons}-botocore >= 1.34.140
 BuildRequires:  %{pythons}-coverage >= 7.6.0
 BuildRequires:  %{pythons}-pbr >= 3.1.1
@@ -53,9 +61,9 @@ BuildRequires:  cargo
 BuildRequires:  cargo-packaging
 BuildRequires:  clang-devel
 BuildRequires:  cmake
-%if 0%{?suse_version} <= 1500
-BuildRequires:  gcc13
-BuildRequires:  gcc13-c++
+%if 0%{?suse_version} < 1600
+BuildRequires:  gcc15
+BuildRequires:  gcc15-c++
 %endif
 BuildRequires:  libopenssl-devel
 BuildRequires:  openssl
@@ -66,6 +74,7 @@ BuildRequires:  golang(API) >= 1.24
 BuildRequires:  pkgconfig(systemd)
 Requires:       nfs-utils
 Requires:       stunnel >= 4.56
+ExcludeArch:    %{arm32} %{ix86}
 
 %description
 This package provides utilities for using the EFS file systems.
@@ -77,11 +86,22 @@ This package provides utilities for using the EFS file systems.
 %patch -P 2
 %patch -P 3 -p1
 %patch -P 4 -p1
+pushd src/proxy/vendor/aws-lc-fips-sys-0.13.16/aws-lc
 %patch -P 5 -p1
+popd
+pushd src/proxy/vendor/aws-lc-fips-sys-0.13.16
+%patch -P 6 -p2
+popd
+pushd src/proxy/vendor/libc-0.2.189
+%patch -P 7 -p1
+popd
+%patch -P 8 -p1
 
 %build
-%if 0%{?suse_version} <= 1500
-export RUSTFLAGS=" -C linker=/usr/bin/gcc-13"
+%if 0%{?suse_version} < 1600
+export CC=gcc-15
+export CXX=g++-15
+export RUSTFLAGS=" -C linker=/usr/bin/gcc-15"
 %endif
 cd src/proxy
 %{cargo_build} --verbose
@@ -119,8 +139,10 @@ rm -f %{buildroot}%{python_sitelib}/mount_{efs,s3files}/__init__.py
 
 find %{buildroot}%{python_sitelib}/{efs_utils_common,mount_efs,mount_s3files} -name "*.py" -exec sed -i '/#\!\/usr\/bin\/env python3/d' {} +
 
-%if 0%{?suse_version} <= 1500
-export RUSTFLAGS=" -C linker=/usr/bin/gcc-13"
+%if 0%{?suse_version} < 1600
+export CC=gcc-15
+export CXX=g++-15
+export RUSTFLAGS=" -C linker=/usr/bin/gcc-15"
 %endif
 cd src/proxy
 %cargo_install
