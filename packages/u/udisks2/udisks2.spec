@@ -20,7 +20,7 @@
 %define libblockdev_version 3.4
 
 Name:           udisks2
-Version:        2.11.1
+Version:        2.11.2
 Release:        0
 Summary:        Disk Manager
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
