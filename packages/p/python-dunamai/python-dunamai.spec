@@ -17,24 +17,27 @@
 
 
 %{?sle15_python_module_pythons}
+%bcond_without  libalternatives
+%define         modname dunamai
 Name:           python-dunamai
-Version:        1.26.1
+Version:        1.26.2
 Release:        0
 Summary:        Dynamic version generation
 License:        MIT
-Group:          Development/Libraries/Python
 URL:            https://github.com/mtkennerly/dunamai
 Source0:        https://files.pythonhosted.org/packages/source/d/dunamai/dunamai-%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core >= 1.0.0}
-BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
-BuildArch:      noarch
-## needed for tests
 BuildRequires:  %{python_module pytest}
-BuildRequires:  git
+BuildRequires:  alts
+BuildRequires:  dos2unix
+BuildRequires:  fdupes
+BuildRequires:  git-core
+BuildRequires:  python-rpm-macros
+Requires:       alts
+Requires:       python-packaging
+BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -45,22 +48,16 @@ builds in continuous integration and releasing new versions of your software
 simply by creating a tag.
 
 %prep
-%autosetup -p1 -n dunamai-%{version}
+%autosetup -p1 -n %{modname}-%{version}
+dos2unix CHANGELOG.md
 
 %build
 %pyproject_wheel
 
 %install
 %pyproject_install
-%python_clone -a %{buildroot}%{_bindir}/dunamai
+%python_clone -a %{buildroot}%{_bindir}/%{modname}
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-%prepare_alternative dunamai
-
-%post
-%python_install_alternative dunamai
-
-%postun
-%python_uninstall_alternative dunamai
 
 %check
 donttest="git"
@@ -69,8 +66,8 @@ donttest="git"
 %files %{python_files}
 %doc CHANGELOG.md README.md
 %license LICENSE
-%python_alternative %{_bindir}/dunamai
-%{python_sitelib}/dunamai
-%{python_sitelib}/dunamai-%{version}.dist-info
+%python_alternative %{_bindir}/%{modname}
+%{python_sitelib}/%{modname}
+%{python_sitelib}/%{modname}-%{version}.dist-info
 
 %changelog
