@@ -17,39 +17,41 @@
 
 
 Name:           whatsie
-Version:        4.16.3
+Version:        5.1.0
 Release:        0
 Summary:        Feature rich WhatsApp Client for Desktop Linux
 License:        MIT
 URL:            https://github.com/keshavbhatt/whatsie
-Source:         https://github.com/keshavbhatt/whatsie/archive/refs/tags/v%{version}.tar.gz
+Source:         %{name}-%{version}.tar.xz
+
+BuildRequires:  cmake
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libqt5-qtbase-devel
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5Location)
-BuildRequires:  pkgconfig(Qt5Positioning)
-BuildRequires:  pkgconfig(Qt5PositioningQuick)
-BuildRequires:  pkgconfig(Qt5Qml)
-BuildRequires:  pkgconfig(Qt5Quick)
-BuildRequires:  pkgconfig(Qt5QuickTest)
-BuildRequires:  pkgconfig(Qt5QuickWidgets)
-BuildRequires:  pkgconfig(Qt5WebChannel)
-BuildRequires:  pkgconfig(Qt5WebEngine)
-BuildRequires:  pkgconfig(Qt5WebEngineCore)
-BuildRequires:  pkgconfig(Qt5WebEngineWidgets)
+BuildRequires:  qt6-base-devel >= 6.10
+BuildRequires:  qt6-webenginecore-devel
+BuildRequires:  pkgconfig(Qt6Location)
+BuildRequires:  pkgconfig(Qt6Positioning)
+BuildRequires:  pkgconfig(Qt6PositioningQuick)
+BuildRequires:  pkgconfig(Qt6Qml)
+BuildRequires:  pkgconfig(Qt6Quick)
+BuildRequires:  pkgconfig(Qt6QuickTest)
+BuildRequires:  pkgconfig(Qt6QuickWidgets)
+BuildRequires:  pkgconfig(Qt6WebChannel)
+BuildRequires:  pkgconfig(Qt6WebEngineCore)
+BuildRequires:  pkgconfig(Qt6WebEngineWidgets)
+ExcludeArch:    %{ix86}
 
 %description
 Feature rich WhatsApp Client for Desktop Linux.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
-%qmake5 src
-%make_build
+%cmake
 
 %install
-make install INSTALL_ROOT=%{buildroot}
+%cmake_install
 
 %files
 %license LICENSE
@@ -61,9 +63,5 @@ make install INSTALL_ROOT=%{buildroot}
 %{_datadir}/icons/hicolor/scalable/apps/com.ktechpit.whatsie.svg
 %{_datadir}/icons/hicolor/symbolic/apps/com.ktechpit.whatsie-symbolic.svg
 %{_datadir}/metainfo/com.ktechpit.whatsie.appdata.xml
-%dir %{_datadir}/org.keshavnrj.ubuntu
-%dir %{_datadir}/org.keshavnrj.ubuntu/WhatSie/
-%dir %{_datadir}/org.keshavnrj.ubuntu/WhatSie/qtwebengine_dictionaries
-%{_datadir}/org.keshavnrj.ubuntu/WhatSie/qtwebengine_dictionaries/*.bdic
 
 %changelog

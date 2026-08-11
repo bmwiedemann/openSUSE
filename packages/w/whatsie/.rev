@@ -118,4 +118,24 @@
   * prevent crashes due to custom notification (dde6e02)</comment>
     <requestid>1226805</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>2c7db74b57fca19511025769c21bf88e</srcmd5>
+    <version>5.1.0</version>
+    <time>1786461180</time>
+    <user>anag_factory</user>
+    <comment>- Switch to source service for tarball, and enable submodules,
+  vendor in the needed notify-qt6 module.
+- Add %{ix86} ExcludeArch, Qt6WebEngineCore is not available for
+  that arch.
+
+- Update to 5.1.0:
+  * Fix typo for Fedora #299
+  * Show notification using org.freedesktop.Notifications directly (Qt6) #295
+
+- Update to 5.0.0:
+  * Fix capitalization of Qt #265
+  * Add support for Debian packages #224
+  * feat: migrate to Qt6.10 witth cmake build system #294</comment>
+    <requestid>1370487</requestid>
+  </revision>
 </revisionlist>

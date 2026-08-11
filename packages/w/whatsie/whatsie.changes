@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Jul 31 16:19:15 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Switch to source service for tarball, and enable submodules,
+  vendor in the needed notify-qt6 module.
+- Add %{ix86} ExcludeArch, Qt6WebEngineCore is not available for
+  that arch.
+
+-------------------------------------------------------------------
+Tue Apr  7 09:55:26 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 5.1.0:
+  * Fix typo for Fedora #299
+  * Show notification using org.freedesktop.Notifications directly (Qt6) #295
+
+-------------------------------------------------------------------
+Tue Mar 31 07:23:56 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 5.0.0:
+  * Fix capitalization of Qt #265
+  * Add support for Debian packages #224
+  * feat: migrate to Qt6.10 witth cmake build system #294
+
+-------------------------------------------------------------------
 Wed Nov 27 08:06:19 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.16.3:
