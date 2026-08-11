@@ -18,10 +18,24 @@
 
 %bcond_without libalternatives
 Name:           python-ruff
-Version:        0.16.1
+Version:        0.16.2
 Release:        0
 Summary:        An extremely fast Python linter, written in Rust
-License:        MIT
+# Legal-Review-Notice: ruff itself is MIT, but the binary statically links
+# the vendored Rust dependencies. Re-derived on this re-vendor with
+# "cargo tree --offline -p ruff -e normal" over the vendored tree (381
+# crates): the only copyleft licence in the linked graph is MPL-2.0, from
+# three crates -
+#  - colored, a direct dependency of ruff and ruff_linter,
+#  - option-ext, pulled in through shellexpand -> dirs -> dirs-sys,
+#  - version-ranges, pulled in through pyproject-toml -> pep508_rs ->
+#    pep440_rs.
+# r-efi offers an LGPL-2.1-or-later option but is UEFI-target-only and is
+# absent from the Linux graph. Everything else is permissive (MIT,
+# Apache-2.0, Unicode-3.0, BSD, ISC, Zlib, Unlicense, 0BSD, CC0-1.0,
+# WTFPL, BSL-1.0). MPL-2.0 section 3.2 is satisfied because the complete
+# vendor.tar.zst ships in the src.rpm.
+License:        MIT AND MPL-2.0
 URL:            https://github.com/astral-sh/ruff
 Source:         https://files.pythonhosted.org/packages/source/r/ruff/ruff-%{version}.tar.gz
 Source1:        vendor.tar.zst

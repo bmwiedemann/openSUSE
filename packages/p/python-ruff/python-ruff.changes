@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Aug  8 05:10:53 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.16.2:
+  * Avoid false positives on singledispatch functions (PYI041)
+  * Register formatting capabilities dynamically in the server so
+    TOML files are excluded
+- Re-vendor the Rust dependencies and re-derive the licence set of
+  the statically linked crates; correct License to MIT AND MPL-2.0
+  and record the derivation in a Legal-Review-Notice comment. The
+  three MPL-2.0 crates (colored, option-ext, version-ranges) were
+  already linked before this update, so the tag was incomplete
+  rather than newly wrong
+
+-------------------------------------------------------------------
 Fri Jul 31 06:49:45 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.16.1:

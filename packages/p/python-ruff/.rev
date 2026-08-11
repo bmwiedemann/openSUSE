@@ -3559,4 +3559,12 @@
     <comment>Update to 0.16.1. Supersedes sr#1367767 (0.16.0), which is still in Staging:F — this carries 0.16.0 plus the 0.16.1 point release.</comment>
     <requestid>1368791</requestid>
   </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>0503e8fb9fd6d2b418418de0021d75e6</srcmd5>
+    <version>0.16.2</version>
+    <time>1786460962</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.16.2: PYI041 no longer false-positives on singledispatch functions, and the server registers formatting capabilities dynamically so TOML files are excluded. NOTE FOR LEGAL REVIEW: License changes from MIT to MIT AND MPL-2.0. This is a correction, not a new obligation - the three MPL-2.0 crates (colored, option-ext, version-ranges) were already statically linked in 0.16.1. Derivation is recorded in a Legal-Review-Notice comment above the tag; it was re-derived with 'cargo tree --offline -p ruff -e normal' over the 381-crate vendored tree, and MPL-2.0 section 3.2 is satisfied because vendor.tar.zst ships in the src.rpm. Built and verified on aarch64: rpmlint 0 errors / 1 warning (no-%check-section, baseline) / 0 badness, cargo_audit clean, source_validator clean.</comment>
+    <requestid>1370307</requestid>
+  </revision>
 </revisionlist>
