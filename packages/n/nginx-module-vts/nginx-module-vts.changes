@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Aug 11 06:07:35 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.2.7
+  * Fixed buffer overflow in display_handler_default when writing
+    HTML
+  * Fixed a heap buffer overflow in the status display for long
+    node names
+  * Fixed a null pointer reference in
+    ngx_http_vhost_traffic_status_display_encode_uri
+  * Added React frontend dashboard for VTS status
+  * Support nginx 1.30.2
+
+-------------------------------------------------------------------
 Fri Apr 17 18:28:42 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.2.5
