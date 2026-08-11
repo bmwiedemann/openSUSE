@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Aug 11 07:25:48 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.21.3:
+  https://github.com/ansible/ansible/blob/v2.21.3/changelogs/CHANGELOG-v2.21.rst
+  * Bugfixes
+    - Add deprecation status to the tree and oneline callback
+      DOCUMENTATION. (#87020)
+    - ansible-galaxy - Fix attempting to download the collection
+      again if the response from the server is shorter than
+      expected, instead of failing due to the mismatched artifact
+      hash on the first attempt. (#86025)
+    - ansible-test - Fix target filtering to preserve
+      user-specified versions that are not in the completion
+      configuration.
+    - collection loader - Fix the collection loader logic to
+      correctly return Python module when calling
+      pkgutil.iter_modules with a package that is inside a
+      collection path and contains compiled Python extension
+      modules.
+    - powershell exec_wrapper - fix handling when multiple pwsh
+      executables match by selecting the first result (#87228).
+    - rpm_key - ensure a trailing newline is present on PGP armor
+      data before passing it to librpm for parsing, fixing failures
+      on systems where pgpParsePkts requires it (#87303).
+
+-------------------------------------------------------------------
 Tue Jul 14 05:15:55 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 2.21.2:
