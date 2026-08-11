@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Aug 10 06:34:31 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.12.2
+  Features:
+  * get_library_playlists: expose owned for library/grid playlist cards
+  * get_artist: support twoColumnBrowseResultsRenderer layout
+  * add subscribe_artist, deprecate subscribe_artists(list)
+  Fixes:
+  * fix: tolerate missing thumbnails when parsing playlist items
+  * fix: skip unexpected renderer types in parse_content_list
+  * fix(parsers): parse localized view counts in non-English locales
+  * Raise FileNotFoundError from OAuthToken.from_json on missing path
+  * fix: tolerate searchEndpoint (hashtag) runs in artist description
+  * fix(charts): classify chart carousels by contents
+  * fix: adapt parsing to YT server changes and stabilize flaky tests
+  * fix: adapt tests and parsing to YT server changes
+
+-------------------------------------------------------------------
 Tue Jun  9 07:30:47 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.12.1
