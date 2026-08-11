@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug 11 06:33:04 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.10.2:
+  * docs: remove broken insights link
+- Update to version 1.10.1:
+  * docs: remove goreportcard
+  * docs: remove slack link
+
+-------------------------------------------------------------------
 Thu Apr 30 05:52:08 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.10.0:

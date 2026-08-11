@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/FairwindsOps/rbac-manager</param>
-              <param name="changesrevision">14c1018f2b8e8af03b11d2e31a76b8b6835dc977</param></service></servicedata>
+              <param name="changesrevision">14c1018f2b8e8af03b11d2e31a76b8b6835dc977</param></service><service name="tar_scm">
+                <param name="url">https://github.com/FairwindsOps/rbac-manager.git</param>
+              <param name="changesrevision">ea9e59f729aa301d250ee6e5502257120438dd0e</param></service></servicedata>
