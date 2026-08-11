@@ -47,7 +47,7 @@
 %define         onednn_x86_version 3.10
 %define         acl_version 52.6.0
 Name:           python-vllm%{psuffix}
-Version:        0.26.0
+Version:        0.27.0
 Release:        0
 Summary:        A high-throughput and memory-efficient inference and serving engine for LLMs
 License:        Apache-2.0
@@ -108,7 +108,7 @@ Requires:       python-lark >= 1.2.2
 Requires:       python-llguidance >= 1.7.0
 Requires:       python-lm-format-enforcer = 0.11.3
 Requires:       python-mcp
-Requires:       python-mistral-common >= 1.11.5
+Requires:       python-mistral-common >= 1.11.6
 Requires:       python-model-hosting-container-standards >= 0.1.14
 Requires:       python-msgspec
 Requires:       python-numba >= 0.65.0
@@ -206,7 +206,7 @@ tar -xf %{SOURCE11} -C ..
 %endif
 
 # Use the torch already installed in the build root (2.12.0) instead of the
-# exact 2.11.0 pin, via vLLM's own helper.  Strips torch/torchvision/torchaudio
+# exact 2.13.0 pin, via vLLM's own helper.  Strips torch/torchvision/torchaudio
 # pins from requirements/*.txt and pyproject.toml.
 %python_expand $python use_existing_torch.py --prefix
 

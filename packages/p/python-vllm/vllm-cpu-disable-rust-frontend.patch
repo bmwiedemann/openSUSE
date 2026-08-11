@@ -1,6 +1,6 @@
---- a/setup.py	2026-07-13 08:06:59.849797035 +0200
-+++ b/setup.py	2026-07-13 08:12:53.729680498 +0200
-@@ -1231,9 +1231,16 @@
+--- a/setup.py
++++ b/setup.py
+@@ -1257,9 +1257,16 @@
  
  # Rust artifacts, built via setuptools-rust and installed into the package
  # directory alongside the Python modules.

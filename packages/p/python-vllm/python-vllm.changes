@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Tue Aug 11 05:49:32 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.27.0:
+  * Kimi K3 support landing as a complete stack: model files and
+    kernels, Python and Rust frontends, AttnRes kernels, DeepGEMM
+    support, compressed-tensors quantized checkpoints and an option
+    to shard the shared expert instead of replicating it
+  * Further new models: Qwen3.5 text-only dense and MoE with EVS
+    video token pruning, K-EXAONE-2.0-750B-A37B, VaultGemma through
+    the Transformers modeling backend, jina-embeddings-v5-text-nano
+  * FlashAttention 4 on SM100 gains FP8 KV cache and headdim-256
+    support, backed by new JIT and runner-owned Triton warmup
+    infrastructure that removes first-request compilation stalls
+  * DeepSeek-V4 performance work: sequence parallelism, roughly 2x
+    kernel improvement from skipping empty c128 launches, workspace
+    reuse, adaptive topk width, a compact MXFP4 indexer KV cache and
+    448 MiB less GPU memory in the pipeline-parallel buffer
+  * Model Runner V2 extends to non-generative workloads: encoder-only
+    attention, sequence pooling for embedding and classification,
+    encoder token classification and embedding, BGE-M3 pooling and
+    multimodal on CPU
+  * Simplified fault tolerance framework for data-parallel and
+    expert-parallel deployments behind an external load balancer,
+    plus async preparation for elastic expert-parallel scaling
+  * Prefill/decode disaggregation for hybrid models: NIXL support for
+    hybrid MLA+SSM models, heterogeneous block sizes, and MoRIIO
+    heterogeneous read routing
+  * The Rust frontend grows a gRPC control plane covering health
+    reporting, abort control, server/model discovery and KV event
+    source discovery, and integrates vllm-bench into the vllm CLI
+  * CPU backend: INT8 fused MoE kernel for Arm CPUs, s390x oneDNN
+    INT8 GEMM, optimised GDN conv path for speculative decoding,
+    granite-4 enabled, and the CPU kernels bumped to the latest
+    version
+  * Quantization: FP4 Qutlass for compressed-tensors, CuTeDSL MoE for
+    ReLU2 NVFP4, MXFP8 linear in INC, AutoRound W4A16 MoE, and a KV
+    quant mode for TurboQuant
+  * API and frontend: Cohere chat v2, cache_salt in the Anthropic
+    Messages API, strict tool calling for GPT-OSS Harmony, a
+    per-request stream_interval sampling parameter and a standardised
+    VLLMError hierarchy
+  * Early enablement for NVIDIA Rubin (sm_107) and ROCm gfx1250
+  * Removed the Plamo2 and Ouro models, and the no longer supported
+    max_num_partial_prefills and max_long_partial_prefills arguments
+  * Upstream moved its pinned build environment to PyTorch 2.13.0;
+    this package keeps building against the 2.12.0 that Factory ships
+- Raise the python-mistral-common requirement to >= 1.11.6, matching
+  upstream's own floor for this release
+- Rebase vllm-relax-cpu-requirements.patch and
+  vllm-cpu-disable-rust-frontend.patch onto 0.27.0:
+  * vllm-relax-cpu-requirements.patch now relaxes the torch pin to
+    >= 2.12.0, tracking what Factory ships rather than upstream's
+    exact 2.13.0
+
+-------------------------------------------------------------------
 Wed Aug  5 18:26:03 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Link the CPU kernels with -Wl,-z,noexecstack: the x86 variants
