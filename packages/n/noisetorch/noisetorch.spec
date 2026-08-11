@@ -27,6 +27,7 @@ Source0:        NoiseTorch-%{version}.tar.gz
 # osc service disabledrun
 Source1:        vendor.tar.gz
 Patch0:         remove-self-cap-assignment.patch
+Requires(pre):  permissions
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  git-core
@@ -62,10 +63,16 @@ install -D -m 644 assets/icon/noisetorch.png %{buildroot}/%{_datadir}/icons/hico
 install -D -m 644 assets/noisetorch.desktop %{buildroot}/%{_datadir}/applications/noisetorch.desktop
 install -D -m 755 noisetorch %{buildroot}/%{_bindir}/noisetorch
 
+%post
+%set_permissions %{_bindir}/noisetorch
+
+%verifyscript
+%verify_permissions -e %{_bindir}/noisetorch
+
 %files
 %license LICENSE
 %doc README.md
-%caps(cap_sys_resource+ep) %{_bindir}/noisetorch
+%verify(not caps mode) %{_bindir}/noisetorch
 %{_datadir}/applications/noisetorch.desktop
 %{_datadir}/icons/hicolor/256x256/apps/noisetorch.png
 

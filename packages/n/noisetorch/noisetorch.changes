@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Aug 10 08:21:17 UTC 2026 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- make the package work with the permissions package capability assignment:
+  - add %set_permissions / %verify_permissions to apply capability settings
+    during %post.
+  - have %verify ignore caps/mode differences for the noisetorch binary.
+  - drop explicit capability assignment from spec file. This is no longer
+    allowed.
+  - add permissions preqrequisite.
+
+-------------------------------------------------------------------
 Fri Jul 17 10:06:40 UTC 2026 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - add remove-self-cap-assignment.patch (bsc#1270715): capabilities are
