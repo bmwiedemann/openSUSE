@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Tue Aug 11 12:17:44 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.54:
+  * Added
+    - action: add a command input to run rumdl fmt (9b59bff)
+    - action: add install-only input to skip linting (aa0c604)
+    - MD010: add ignore-code-languages to exempt fence languages
+      from tab checks (21b56d0)
+  * Fixed
+    - config: honor the markdown attribute on every block-level
+      element (6f88d71)
+    - links: stop parsing reference links and images inside HTML
+      blocks (8829f6b)
+    - html-blocks: keep a nested raw-text element from opening its
+      own block (27d96bb)
+    - code-block-tools: stop a linter in a format slot from
+      overwriting the block (a40d7da)
+    - code-block-tools: report findings at the line they belong to
+      (31cc6cb)
+    - code-block-tools: bound a hanging tool by its timeout and
+      stop respawning it (6ce8a1d)
+    - action: add rumdl to PATH so later workflow steps can call it
+      (98baf60)
+
+-------------------------------------------------------------------
+Mon Aug 10 06:38:47 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.53:
+  * Fixed
+    - tables: find a table's extent in the document's flavor
+      (ad139af)
+    - tables: quoted brackets and a blank target are not a wikilink
+      (a8aed70)
+    - lsp: a rescan keeps an open buffer only where a file still is
+      (8e16303)
+    - lsp: keep an open document indexed from its buffer (ea30cca)
+    - lsp: index what an editor is showing when the workspace is
+      rescanned (0d8eacc)
+    - lsp: stop an evicted file from being put back by a waiting
+      disk read (5644516)
+    - md075: ignore Obsidian wikilink aliases in prose after tables
+      (dda35d5)
+    - md084: stop deleting line endings as invisible characters
+      (e6ca26e)
+    - rules: report a multi-line link's range on the line it ends
+      on (2e1fde5)
+    - config: break "did you mean" ties by name instead of by key
+      order (23fafd9)
+    - lsp: keep a pending edit when a file is only evicted from the
+      index (1e34c47)
+    - lsp: drop a pending edit when its file is deleted (f718eca)
+    - md038: include the closing backtick in the reported range
+      (128b9a1)
+    - md038: stop deleting a line when trimming a multi-line code
+      span (e2e27ac)
+    - md018: recognize tags that start with a digit (6237384)
+    - lsp: stop publishing diagnostics for files that were never
+      opened (8b89584)
+    - lsp: refresh cross-file diagnostics when the workspace index
+      changes (eecda03)
+
+-------------------------------------------------------------------
 Thu Aug 06 05:08:20 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.52:
