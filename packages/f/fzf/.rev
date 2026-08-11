@@ -1299,4 +1299,51 @@ varienvironment able.
 </comment>
     <requestid>1364623</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>32fcd63f228a2c290658fd341293e81e</srcmd5>
+    <version>0.74.2</version>
+    <time>1786461302</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.74.2:
+  * Performance optimizations for short queries
+    - Short queries scan the largest candidate sets, and the
+      first keystroke scans the whole input
+    - Single-character queries are up to 2.4x faster
+    - Two-character queries are up to 1.4x faster
+  * Faster sorting of search results, skipping redundant radix passes
+  * change-border-label and transform-border-label now work on
+    the native border of a tmux or Zellij floating pane
+  * Fixed Kitty graphics sequences from a preview command being
+    taken by tmux as pane title requests
+  * Fixed an image at the top of the preview being torn by --preview-window ~N
+  * Fixed nondeterministic match highlight positions
+  * Fixed signal and resize handlers persisting after Run()
+    returns when fzf is used as a library
+  * fzf now detects terminal resize on Windows in --height mode (#4790)
+  * fish: fixed history command being affected by user
+    initialization scripts, and improved timestamp colors in CTRL-R (#4862)
+  * zsh: fixed CTRL-R not propagating the exit status of fzf when
+    perl is available (#4871)
+  * zsh: fixed chpwd hook functions being called twice by ALT-C (#4879)
+- Changes from 0.74.1:
+  * The default separator on the info line is no longer shown
+    when the input section is already visually separated from the
+    list section by a border line
+  * Rendering improvements
+    - Each frame is now wrapped in synchronized update mode (mode
+      2026) to reduce flickering on supported terminals
+    - Reduced rendering output by 10-23% by skipping redundant
+      SGR sequences
+    - Fixed ghost characters and misplaced colors inside Zellij
+      by using CHA instead of CR + CUF for horizontal cursor
+      movement (#4858, zellij-org/zellij#5370)
+    - Fixed cursor restoration on exit with --height --no-clear
+      inside Neovim terminal by using DECSC/DECRC instead of CSI s/CSI u
+  * nushell: fixed deprecation error of str downcase on nushell 0.
+    114.0 or above (#4857) (@sim590)
+  * Each release now includes .deb packages for easy installation
+    on Debian-based distros (#4859)
+</comment>
+    <requestid>1370586</requestid>
+  </revision>
 </revisionlist>
