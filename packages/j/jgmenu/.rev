@@ -402,4 +402,22 @@
     release if pointer has moved outside widget area since pressed (#189)</comment>
     <requestid>1231387</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>666547126cf0416306fbd5d9b77a4c51</srcmd5>
+    <version>4.6.0</version>
+    <time>1786461164</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.6.0:
+  * Validate .desktop filename better by checking that the filename ends with
+    &quot;.desktop&quot; rather than just contains &quot;.desktop&quot; #251
+  * Add search_markup config option #258
+  * Add keybinds listed below #254
+    + Ctrl+n and Ctrl+p to select next/previous item
+    + Ctrl+c and Ctrl+[ to abort
+    + Ctrl+u as an alternative to Escape
+    + Ctrl+w to delete last word
+  * jgmenu: add --override command-line option to override config file options #247
+  * jgmenu-ob: support xml !ENTITY definitions #236</comment>
+    <requestid>1370480</requestid>
+  </revision>
 </revisionlist>
