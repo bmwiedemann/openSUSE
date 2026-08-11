@@ -1,0 +1,41 @@
+Build for the architecture baseline, not for the build machine's CPU
+
+build.zig hands the -Dtarget string straight to std.Target.Query.parse, and
+the string "native" leaves cpu_model at .determined_by_arch_os, which for a
+native query means "detect this CPU and enable everything it has".
+
+That is right for a developer building for themselves and wrong for a
+distribution, where the build worker and the user are different machines. On
+an aarch64 worker with FEAT_LRCPC (ARMv8.3) the C++ in yoga compiles down to
+ldapr/stlur, and libopentui.so then dies with SIGILL on any older aarch64 -
+ThunderX2, Cortex-A72 and friends - the moment yoga lays out its first node.
+The x86_64 side has the same shape: whatever the worker happens to support
+gets baked in.
+
+Pin the CPU model to the architecture baseline instead. This only affects
+which instructions the code generator may use; the libc and libstdc++ the
+library links against still come from the host, so the rest of the native
+build is unchanged. It also matches how upstream builds the artifacts it
+publishes to npm, since every entry in SUPPORTED_TARGETS is an explicit
+triple and an explicit triple already resolves to the baseline model.
+
+Not sent upstream: -Dtarget=native meaning "this exact machine" is a
+reasonable default for the audience upstream is building for.
+
+Index: opentui-0.4.5/packages/core/src/zig/build.zig
+===================================================================
+--- opentui-0.4.5.orig/packages/core/src/zig/build.zig
++++ opentui-0.4.5/packages/core/src/zig/build.zig
+@@ -466,7 +466,11 @@ fn buildTarget(
+     build_options: *std.Build.Step.Options,
+     macos_sdk_path: ?[]const u8,
+ ) !void {
+-    const target_query = try std.Target.Query.parse(.{ .arch_os_abi = zig_target });
++    var target_query = try std.Target.Query.parse(.{ .arch_os_abi = zig_target });
++    // Never generate for the build machine's CPU: a shipped library has to
++    // run on the oldest CPU the architecture defines, not on the newest one
++    // that happened to compile it.
++    target_query.cpu_model = .baseline;
+     const target = b.resolveTargetQuery(target_query);
+
+     if (target.result.os.tag == .macos and macos_sdk_path == null) {

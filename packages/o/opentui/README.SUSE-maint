@@ -1,0 +1,150 @@
+Maintaining the opentui package
+==============================
+
+Which version to package
+------------------------
+
+Not necessarily the newest one. OpenTUI's TypeScript and its libopentui.so
+talk over a private FFI ABI with no versioning of its own, so the two halves
+have to come from the same release, and every consumer in the distribution
+has to be built against that same release as well.
+
+Today the only consumer is opencode, which pins the version in the catalog
+block of its top level package.json:
+
+    "@opentui/core": "0.4.5",
+    "@opentui/keymap": "0.4.5",
+    "@opentui/solid": "0.4.5",
+
+So this package tracks that pin, not the newest tag. Bumping ahead of
+opencode produces a library nothing in the distribution can load. When
+opencode moves, bump both together and rebuild opencode.
+
+Upstream moved from github.com/sst/opentui to github.com/anomalyco/opentui.
+The old URL still redirects, but Source0 uses the new one.
+
+
+Bumping the version
+-------------------
+
+1. Fetch the release tarball next to the spec:
+
+       curl -L -o opentui-<version>.tar.gz \
+           https://github.com/anomalyco/opentui/archive/refs/tags/v<version>.tar.gz
+
+2. Regenerate the offline Zig dependency bundle:
+
+       ./opentui_zigdeps <version>
+
+   This writes opentui-zig-deps-<version>.tar.zst. See below for what it is
+   and why the package cannot do without it.
+
+3. Check that the Zig version upstream demands is still the one Factory
+   ships. It is a hard equality check in
+   packages/core/src/zig/build.zig:
+
+       const SUPPORTED_ZIG_VERSIONS = [_]SupportedZigVersion{
+           .{ .major = 0, .minor = 15, .patch = 2 },
+       };
+
+   and the spec mirrors it in the zig_version global. The check is not
+   over-caution on upstream's part: Zig is not source compatible across
+   releases. If Factory's zig has moved past what upstream supports, the
+   package has to be rebased onto a newer OpenTUI, not relaxed to a range.
+
+   Note that Factory also has versioned zig0.NN packages. This package does
+   not use them: zig0.15 currently fails to build on aarch64, while the
+   unversioned zig is green on both architectures and is 0.15.2 as well.
+   Revisit if that changes.
+
+4. Drop the old tarballs, osc addremove, build, submit.
+
+
+The offline Zig dependency bundle
+---------------------------------
+
+packages/core/src/zig/build.zig.zon names two dependencies that Zig would
+otherwise fetch over the network during the build:
+
+    uucode   a tarball, Unicode character data
+    yoga     a git checkout of facebook/yoga at v3.2.1, the flexbox layout
+             engine, whose C++ sources are compiled straight into the library
+
+Neither has dependencies of its own, so the closure is exactly those two.
+
+`zig build --system <dir>` turns fetching off and looks each dependency up as
+<dir>/<hash>, where <hash> is the string already written in build.zig.zon. In
+that mode Zig does not recompute the hash - the distribution is trusted to
+have put the right tree there - which is what makes the bundle possible to
+build without Zig at all. That matters, because the Zig this package needs is
+newer than the one the maintainer's own machine is likely to have.
+
+opentui_zigdeps parses the dependency table out of the release tarball rather
+than hardcoding it, so a bump that changes a URL or a hash is picked up
+instead of silently ignored.
+
+
+What gets installed, and why it is shaped that way
+--------------------------------------------------
+
+OpenTUI is published to npm as a set of pure TypeScript packages plus one
+prebuilt native package per platform, chosen through optionalDependencies:
+
+    @opentui/core                 the TypeScript
+    @opentui/core-linux-x64       libopentui.so for that platform
+    @opentui/core-linux-arm64     ... and so on
+
+packages/core/src/platform/runtime-assets.bun.ts imports the matching one by
+name to find the library. So the native half is installed under exactly the
+name that import expects:
+
+    %{_libdir}/opentui/@opentui/core-linux-<arch>/libopentui.so
+
+together with the small index.js / index.bun.js / package.json shims that
+make the directory resolvable as an npm package. Upstream writes those in
+packages/core/scripts/build.ts, which needs bun to run; the spec writes them
+directly instead, because nothing else in that script applies here.
+
+The TypeScript goes next to it:
+
+    %{_libdir}/opentui/@opentui/core
+    %{_libdir}/opentui/@opentui/keymap
+    %{_libdir}/opentui/@opentui/solid
+
+This layout serves both ways a consumer can find OpenTUI:
+
+  - symlink or copy %{_libdir}/opentui/@opentui into a node_modules
+    directory and ordinary resolution finds both the TypeScript and the
+    native package;
+
+  - or set OTUI_ASSET_ROOT=%{_libdir}/opentui and the library is found
+    directly. OTUI_ASSET_ROOT is upstream's own supported way to relocate
+    runtime assets (packages/core/src/platform/assets.ts); it is consulted
+    before the optionalDependency import, so it wins.
+
+The TypeScript is in %{_libdir} rather than %{_datadir}, and opentui-devel is
+not noarch, because it sits in the same tree as the native package it has to
+resolve alongside.
+
+
+The build does not need bun
+---------------------------
+
+Worth knowing, because it is not obvious from upstream's scripts. Upstream
+builds the native library with `bun run build:native`, but all that does is
+shell out to
+
+    cd packages/core/src/zig && zig build -Doptimize=ReleaseFast
+
+and then copy the result into a generated npm package directory. The spec
+does both of those directly, so opentui does not build-depend on bun and is
+not blocked on bun reaching Factory.
+
+`-Dtarget=native` is passed deliberately. Upstream's default for a native
+build is the first entry in SUPPORTED_TARGETS matching the host, which for
+Linux is a glibc-2.17-pinned cross target - Zig would then compile against
+its own bundled libc headers and link against synthesised stubs rather than
+the system glibc. buildSingleTarget passes any unrecognised target string
+straight to std.Target.Query.parse, so "native" is accepted and gives an
+ordinary system build. This also matches openSUSE's own zig macros, whose
+_zig_target defaults to native.

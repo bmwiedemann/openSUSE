@@ -1,0 +1,49 @@
+-------------------------------------------------------------------
+Sun Aug  9 18:47:55 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- New package: opentui 0.4.5, a library for building terminal user
+  interfaces whose layout, text shaping and rendering are done by a
+  native core written in Zig that TypeScript programs drive over FFI
+- Split into two subpackages: opentui with the native library, and
+  opentui-devel with the TypeScript that calls it (@opentui/core,
+  @opentui/keymap and @opentui/solid), which is consumed as sources
+  and bundled by the program using it rather than linked against
+- Not the newest release: the TypeScript and the native library talk
+  over a private, unversioned FFI ABI, so both halves and every
+  consumer have to come from the same release, and opencode - the
+  only consumer in the distribution - pins 0.4.5. See
+  README.SUSE-maint before bumping
+- Install the native library as @opentui/core-linux-<node arch>/
+  libopentui.so under the opentui directory in the library path,
+  which is both the name the optionalDependency import resolves and
+  the layout upstream's OTUI_ASSET_ROOT expects, so a consumer can
+  use either way of finding it
+- Rewrite the workspace:* specifiers the three packages use for each
+  other to the concrete version, which is what npm publish does and
+  what makes them resolvable outside upstream's monorepo
+- Verify at install time that every path in the packages' exports
+  maps is actually shipped, so pruning upstream's build plumbing
+  cannot silently remove an entry point (@opentui/solid keeps four
+  modules under scripts/ that are exported API)
+- Add opentui_zigdeps, which prepares the two Zig dependencies (yoga
+  and uucode) as an offline bundle for zig build --system, as the
+  build would otherwise fetch them over the network
+- Build with -Dtarget=native rather than upstream's default, which
+  is a glibc 2.17 cross target built against Zig's own bundled libc
+  instead of the system one
+- Build the native library for the architecture baseline instead of
+  for whatever CPU the build worker happens to have
+  (opentui-baseline-cpu.patch): build.zig passes -Dtarget=native
+  straight to std.Target.Query.parse, which leaves the CPU model at
+  host detection, so a worker with FEAT_LRCPC turned the C++ in yoga
+  into ldapr/stlur and the resulting libopentui.so died with SIGILL
+  on every older aarch64 - ThunderX2, Cortex-A72 and the like - as
+  soon as yoga laid out its first node. Only the code generator is
+  affected; the library still links the host libc and libstdc++
+- Fail the build if the aarch64 library still contains those
+  instructions, so a rebase cannot quietly reintroduce it
+- Require zig = 0.15.2: upstream's build.zig hard-checks for exactly
+  that version, and Zig is not source compatible across releases
+- Add opentui-build-id.patch to ask the linker for a build ID, which
+  Zig does not emit by default and without which rpm cannot split a
+  debuginfo package off the library

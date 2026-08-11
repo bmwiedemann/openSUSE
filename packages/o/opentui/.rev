@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>12013b46cfddc7b06c200dca90683611</srcmd5>
+    <version>0.4.5</version>
+    <time>1786461185</time>
+    <user>anag_factory</user>
+    <comment>New package: opentui 0.4.5, the native core of the OpenTUI terminal UI library.
+
+Supersedes SR#1370385, which shipped a libopentui.so built for the OBS
+worker's CPU: zig build -Dtarget=native leaves the CPU model at host
+detection, so on an aarch64 worker with FEAT_LRCPC (ARMv8.3) yoga's C++
+compiled down to ldapr/stlur and the library died with SIGILL on any older
+aarch64 - ThunderX2, Cortex-A72 - the moment yoga laid out its first node.
+Reproduced with opencode in a Tumbleweed container on an affected machine.
+
+opentui-baseline-cpu.patch pins cpu_model to .baseline. -Dtarget=native is
+kept, so the host libc and libstdc++ are still what the library links
+against; only the code generator changes. An objdump check at %install fails
+the build if the instructions ever reappear after a rebase.
+
+Everything else is unchanged from #1370385. Builds on x86_64 and aarch64,
+%check green, rpmlint clean. The same container that crashed now renders and
+drives the full TUI.</comment>
+    <requestid>1370419</requestid>
+  </revision>
+</revisionlist>

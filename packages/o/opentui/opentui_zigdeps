@@ -1,0 +1,70 @@
+#!/bin/bash
+# Build the offline Zig dependency bundle for the opentui package.
+#
+# Zig resolves the two entries in packages/core/src/zig/build.zig.zon over the
+# network. `zig build --system <dir>` turns fetching off and looks each package
+# up as <dir>/<hash>, where <hash> is the string already written in the .zon --
+# in that mode Zig does not recompute it, the distribution is trusted. So the
+# bundle is just those trees under their hash names; no Zig is needed to make
+# it, which matters because the version this package needs (0.15.2) is newer
+# than the one the maintainer's own machine may have.
+#
+# Run on a version bump, not by the package build:
+#
+#     ./opentui_zigdeps 0.4.5
+#
+# It writes opentui-zig-deps-<version>.tar.zst next to itself and prints what
+# went in. Check the result into the package with the new tarball.
+
+set -euo pipefail
+
+version="${1:?usage: opentui_zigdeps <opentui-version>}"
+here="$(cd "$(dirname "$0")" && pwd)"
+src="$here/opentui-$version.tar.gz"
+out="$here/opentui-zig-deps-$version.tar.zst"
+
+[[ -f $src ]] || { echo "$src is missing; fetch the release tarball first" >&2; exit 1; }
+
+work="$(mktemp -d)"
+trap 'rm -rf "$work"' EXIT
+deps="$work/deps"
+mkdir -p "$deps"
+
+# Read the dependency table out of the release rather than hardcoding it, so a
+# bump that changes a URL or a hash is picked up instead of silently ignored.
+tar xzOf "$src" "opentui-$version/packages/core/src/zig/build.zig.zon" > "$work/build.zig.zon"
+
+python3 - "$deps" "$work/build.zig.zon" <<'PY'
+import re, subprocess, sys, os, urllib.request, tarfile, io, shutil
+deps = sys.argv[1]
+zon = open(sys.argv[2]).read()
+entries = re.findall(
+    r'\.(\w+)\s*=\s*\.\{\s*\.url\s*=\s*"([^"]+)"\s*,\s*\.hash\s*=\s*"([^"]+)"', zon)
+if not entries:
+    sys.exit("no dependencies parsed out of build.zig.zon -- did the format change?")
+for name, url, h in entries:
+    dest = os.path.join(deps, h)
+    print(f"{name}: {url}\n  -> {h}")
+    if url.startswith("git+"):
+        repo, _, ref = url[4:].partition("#")
+        subprocess.run(["git", "clone", "--quiet", "--depth", "1",
+                        "--branch", ref, repo, dest], check=True)
+        shutil.rmtree(os.path.join(dest, ".git"))
+    else:
+        with urllib.request.urlopen(url) as r:
+            blob = r.read()
+        with tarfile.open(fileobj=io.BytesIO(blob)) as t:
+            root = os.path.commonprefix([m.name for m in t.getmembers() if m.name != "."])
+            root = root.rstrip("/").split("/")[0]
+            t.extractall(os.path.join(deps, "_x"), filter="data")
+        os.rename(os.path.join(deps, "_x", root), dest)
+        shutil.rmtree(os.path.join(deps, "_x"))
+PY
+
+# Sort and zero the metadata so the same inputs give the same bytes.
+tar --sort=name --mtime="@0" --owner=0 --group=0 --numeric-owner \
+    -C "$work" -cf - deps | zstd -19 -T0 -q -o "$out" -f
+
+echo
+echo "wrote $out"
+du -h "$out" | cut -f1

@@ -1,0 +1,6 @@
+<package name="opentui" project="openSUSE:Factory">
+  <title>Library for building terminal user interfaces</title>
+  <description>OpenTUI is a library for building terminal user interfaces. Layout, text
+shaping, buffer diffing and rendering are done by a native core written in
+Zig, which TypeScript programs drive over FFI.</description>
+</package>

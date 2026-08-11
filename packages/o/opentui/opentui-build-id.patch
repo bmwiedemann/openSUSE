@@ -1,0 +1,15 @@
+--- a/packages/core/src/zig/build.zig
++++ b/packages/core/src/zig/build.zig
+@@ -491,6 +491,12 @@
+         .linkage = .dynamic,
+     });
+ 
++    // Ask the linker for a build ID. Without one there is no
++    // .note.gnu.build-id section, and a distribution cannot split a
++    // debuginfo package off the library: debuginfo is keyed by build ID,
++    // so rpm skips the file and reports only "Missing build-id".
++    lib.build_id = .fast;
++
+     addNativeAudioDependencies(b, lib, target, macos_sdk_path);
+     addYogaDependencies(b, lib);
+ 
