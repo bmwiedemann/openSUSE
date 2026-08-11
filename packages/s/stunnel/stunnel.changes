@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Aug 10 08:44:40 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 5.80:
+  * Security bugfixes
+    - CVE-2026-70368: Fixed an out-of-bounds memory access triggered
+      by logging attacker-controlled protocol messages longer than 1,024
+      bytes (thanks to AISLE Research and Clemens Lang) (bsc#1274206).
+    - CVE-2026-70367: Fixed a SOCKS server mode bypass of the localhost
+      destination filter using alternate local-address encodings and
+      interface-scoped IPv6 destinations (thanks to AISLE Research and
+      Clemens Lang) (bsc#1274207).
+    - Restricted Windows GUI/service control pipes to local clients.
+  * Bugfixes
+    - Fixed concurrent DTLS handshakes from clients sharing an IP address.
+    - Fixed version reporting in builds from source.
+    - Rejected stream-oriented protocol negotiation with the UDP transport
+      during configuration validation.
+  * Features
+    - Added the "CRLcheckChain" service-level option for opt-in
+      full-chain CRL verification.
+
+-------------------------------------------------------------------
 Mon Jul  6 09:35:01 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 5.79:
