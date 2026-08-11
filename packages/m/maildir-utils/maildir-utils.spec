@@ -17,7 +17,7 @@
 
 
 Name:           maildir-utils
-Version:        1.14.2
+Version:        1.14.3
 Release:        0
 Summary:        Maildir indexer and searcher
 License:        GPL-3.0-or-later
@@ -35,6 +35,7 @@ BuildRequires:  pkgconfig(gmime-3.0) >= 3.0
 BuildRequires:  pkgconfig(guile-3.0)
 # Optional: for outputting of messages in json
 BuildRequires:  pkgconfig(json-glib-1.0)
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig(xapian-core) >= 1.4.22
 
 %description
@@ -85,5 +86,8 @@ mu4e is an emacs-based e-mail client. It is based on the mu e-mail indexer/searc
 %{_datadir}/mu/scm/*.scm
 %{_infodir}/mu4e.info%{?ext_info}
 %{_infodir}/mu-scm.info%{?ext_info}
+%{_datadir}/icons/hicolor/scalable/apps/mu-icon.svg
+%{_datadir}/bash-completion/completions/mu
+%{_datadir}/zsh/site-functions/_mu
 
 %changelog

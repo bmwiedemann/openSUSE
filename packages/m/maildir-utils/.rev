@@ -1011,4 +1011,26 @@
     re-index your message</comment>
     <requestid>1359794</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>d8a690376eb13d1395abb38dd202c19b</srcmd5>
+    <version>1.14.3</version>
+    <time>1786461168</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.14.3:
+  mu:
+  * better handling of html parts
+  * fall back to most recent 'Received' for 'Date:'-less messages
+  * record the time-zone offset
+  * command-line completion for bash &amp; zsh
+  mu4e:
+  * improved mime-handling
+  * improved HTML view (generate HTML view for pure text as well)
+  * hide &quot;clickables&quot; until requested (but see
+    mu4e-view-always-show-url-indicators)
+  scm:
+  * performance improvements
+  * new methods for querying system configuration&quot; and querying database
+    fields, and getting timezone information (for 'date' and 'changed')</comment>
+    <requestid>1370483</requestid>
+  </revision>
 </revisionlist>

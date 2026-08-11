@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Aug 10 07:06:15 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.14.3:
+  mu:
+  * better handling of html parts
+  * fall back to most recent 'Received' for 'Date:'-less messages
+  * record the time-zone offset
+  * command-line completion for bash & zsh
+  mu4e:
+  * improved mime-handling
+  * improved HTML view (generate HTML view for pure text as well)
+  * hide "clickables" until requested (but see
+    mu4e-view-always-show-url-indicators)
+  scm:
+  * performance improvements
+  * new methods for querying system configuration" and querying database
+    fields, and getting timezone information (for 'date' and 'changed')
+
+-------------------------------------------------------------------
 Tue Jun 16 13:37:25 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.14.2:
