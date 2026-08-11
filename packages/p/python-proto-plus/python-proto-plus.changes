@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 11 08:20:08 UTC 2026 - Matthias Fehring <buschmann23@opensuse.org> - 1.28.3
+
+- update to 1.28.3
+  * add context to TypeErrors during message manipulation
+  * require Protobuf 6.33.5+
+
+-------------------------------------------------------------------
 Wed Jul 29 11:06:00 UTC 2026 - Matthias Fehring <buschmann23@opensuse.org> - 1.28.2
 
 - update to 1.28.2

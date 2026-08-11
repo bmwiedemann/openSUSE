@@ -27,27 +27,27 @@
 %define modname proto_plus
 %{?sle15_python_module_pythons}
 Name:           python-proto-plus%{psuffix}
-Version:        1.28.2
+Version:        1.28.3
 Release:        0
 Summary:        Pythonic Protocol Buffers
 License:        Apache-2.0
 URL:            https://github.com/googleapis/google-cloud-python
 Source0:        https://files.pythonhosted.org/packages/source/p/%{modname}/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module protobuf >= 3.19.0}
+BuildRequires:  %{python_module protobuf >= 6.33.5}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 %if %{with test}
-BuildRequires:  %{python_module google-api-core >= 1.31.5}
+BuildRequires:  %{python_module google-api-core >= 2.25.0}
 BuildRequires:  %{python_module proto-plus}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
 %endif
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-protobuf >= 3.19.0
+Requires:       python-protobuf >= 6.33.5
 BuildArch:      noarch
 %python_subpackages
 
