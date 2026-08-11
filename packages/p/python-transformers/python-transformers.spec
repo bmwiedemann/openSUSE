@@ -17,12 +17,15 @@
 
 
 Name:           python-transformers
-Version:        5.14.1
+Version:        5.15.0
 Release:        0
 Summary:        State-of-the-art Machine Learning for JAX, PyTorch and TensorFlow
 License:        Apache-2.0
 URL:            https://github.com/huggingface/transformers
 Source:         https://files.pythonhosted.org/packages/source/t/transformers/transformers-%{version}.tar.gz
+# Upstream caps tokenizers at <=0.23.0, but the only stable 0.23.x release is
+# 0.23.1 - the cap makes "import transformers" fail outright.
+Patch0:         transformers-allow-tokenizers-0.23.1.patch
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -35,6 +38,9 @@ Requires:       python-numpy >= 1.17
 Requires:       python-packaging >= 20.0
 Requires:       python-regex >= 2025.10.22
 Requires:       python-safetensors >= 0.8.0
+# dependency_versions_check.py enforces the upper bound at import time, so an
+# undeclared 0.24 would install fine and then fail on "import transformers".
+Requires:       python-tokenizers < 0.24.0
 Requires:       python-tokenizers >= 0.22.0
 Requires:       python-tqdm >= 4.60
 Requires:       python-typer

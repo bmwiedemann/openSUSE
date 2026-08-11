@@ -19,4 +19,38 @@
   * Bump FP8 kernels and fix DeepGEMM on multiple devices</comment>
     <requestid>1366861</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3804708ddafbe942b12fb847ef833dc8</srcmd5>
+    <version>5.15.0</version>
+    <time>1786461242</time>
+    <user>anag_factory</user>
+    <comment>Update to 5.15.0.
+
+Also fixes the FTBFS/import breakage the package has had in Factory since
+python-tokenizers 0.23.1 landed (it currently fails to build on all arches):
+upstream transformers pins tokenizers to &lt;=0.23.0, but 0.23.0 was never
+published as a stable release, so the only 0.23.x on PyPI - and the one in
+Factory - is 0.23.1. The pin is enforced at import time by
+dependency_versions_check.py, so 'import transformers' raised
+
+  ImportError: tokenizers&gt;=0.22.0,&lt;=0.23.0 is required for a normal
+  functioning of this module, but found tokenizers==0.23.1.
+
+transformers-allow-tokenizers-0.23.1.patch widens the bound to &lt;0.24.0,
+keeping the intent of the cap, and the Requires now declares that ceiling so
+a future tokenizers 0.24 shows up as unresolvable rather than installing
+cleanly and dying on import.
+
+Upstream is aware (huggingface/transformers#47429, #45736) but has closed the
+community PRs proposing exactly this change ('We'll handle tokenizers version
+bumps internally'), so the fix stays downstream for now.
+
+CVE-2025-6921 (boo#1250447): not affected, that ReDoS was fixed upstream in
+4.53.0.
+
+Built green locally for aarch64 against openSUSE:Factory:ARM/standard; rpmlint
+4 badness (4x non-executable-script on upstream's shebanged library modules,
+pre-existing and untouched to keep this update scoped to the fix).</comment>
+    <requestid>1370545</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Mon Aug 10 13:20:07 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Make the package importable again with the tokenizers we ship
+  (transformers-allow-tokenizers-0.23.1.patch): upstream caps
+  tokenizers at <=0.23.0, but 0.23.0 was never released as a
+  stable version, so the only 0.23.x on PyPI - and the one in
+  Factory - is 0.23.1. The cap is enforced at import time, so
+  "import transformers" raised ImportError and the build's own
+  import test failed. Widened to <0.24.0, keeping the intent of
+  the bound. Upstream is aware but has closed the community
+  fixes for it, so this stays downstream for now
+- Declare the tokenizers upper bound as a Requires too, so a
+  future 0.24 shows up as an unresolvable dependency rather than
+  installing cleanly and failing on import
+- Update to 5.15.0:
+  * Add Meta Muse Glimmer, a 30B dense multimodal model for
+    agentic use, plus Granite-swa, GraniteMoe-swa, A.X-K1,
+    A.X-K2 and Cosmos3 Edge
+  * Kernels are now opt-in for the linear attention models
+    (Mamba, GDN, convolution-only); enable them explicitly to
+    keep the previous automatic selection
+  * T5 and its family (MT5, LongT5, ...) gained SDPA and the
+    other attention backends, so the default attention
+    implementation changes - pass attn_implementation="eager"
+    for the old behaviour
+  * Cache cropping now takes only negative (relative) offsets
+    instead of absolute sizes
+  * Drop several private processor helpers such as _is_url and
+    _build_image_tokens
+  * Fix multi-head latent attention cache compression, and stop
+    keeping the static cache on the model across generate()
+    calls, which held memory needlessly
+  * Speed up image preprocessing for the vision-language models
+    by dropping redundant tensor copies
+- CVE-2025-6921 (boo#1250447): not affected, the ReDoS in
+  AdamWeightDecay._do_use_weight_decay was fixed upstream in
+  4.53.0 and we are far above that floor
+
+-------------------------------------------------------------------
 Tue Jul 21 05:52:34 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 5.14.1:

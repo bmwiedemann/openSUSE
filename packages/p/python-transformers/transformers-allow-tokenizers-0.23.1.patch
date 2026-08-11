@@ -1,0 +1,44 @@
+transformers pins tokenizers to >=0.22.0,<=0.23.0, but 0.23.0 was never
+published as a stable release - the only 0.23.x on PyPI is 0.23.1, which is
+what openSUSE ships. The pin is enforced at import time by
+dependency_versions_check.py, so with tokenizers 0.23.1 installed a plain
+"import transformers" raises
+
+  ImportError: tokenizers>=0.22.0,<=0.23.0 is required for a normal
+  functioning of this module, but found tokenizers==0.23.1.
+
+which fails the build and would leave the package unusable at runtime.
+
+Upstream is aware - see huggingface/transformers#47429 and #45736 - and has
+closed the community pull requests that proposed exactly this change with
+"We'll handle tokenizers version bumps internally! They need to be kept in
+sync", so the fix has to be carried here until they act. Widening to <0.24.0
+keeps the intent of the bound (the 0.23 series is supported, 0.24 is not) and
+happens to also unblock the EncodingVisualizer XSS fix that 0.23.1 carries.
+
+Both files need it: setup.py is the source of truth, and
+dependency_versions_table.py is the generated copy that the runtime check
+actually reads.
+
+--- a/setup.py
++++ b/setup.py
+@@ -146,7 +146,7 @@
+     "tomli",
+     "tiktoken",
+     "timm>=1.0.23",
+-    "tokenizers>=0.22.0,<=0.23.0",
++    "tokenizers>=0.22.0,<0.24.0",
+     "torch>=2.5",
+     "torchaudio",
+     "torchvision",
+--- a/src/transformers/dependency_versions_table.py
++++ b/src/transformers/dependency_versions_table.py
+@@ -73,7 +73,7 @@
+     "tomli": "tomli",
+     "tiktoken": "tiktoken",
+     "timm": "timm>=1.0.23",
+-    "tokenizers": "tokenizers>=0.22.0,<=0.23.0",
++    "tokenizers": "tokenizers>=0.22.0,<0.24.0",
+     "torch": "torch>=2.5",
+     "torchaudio": "torchaudio",
+     "torchvision": "torchvision",
