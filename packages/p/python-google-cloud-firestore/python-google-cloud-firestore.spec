@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-cloud-firestore
-Version:        2.27.0
+Version:        2.28.1
 Release:        0
 Summary:        Google Cloud Firestore API client library
 License:        Apache-2.0
@@ -29,17 +29,23 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module google-api-core >= 1.34.0}
-BuildRequires:  %{python_module google-cloud-core >= 1.4.1}
-BuildRequires:  %{python_module proto-plus >= 1.22.0}
-BuildRequires:  %{python_module protobuf >= 3.20.2}
+BuildRequires:  %{python_module google-api-core >= 2.25.0}
+BuildRequires:  %{python_module google-cloud-core >= 2.0.0}
+BuildRequires:  %{python_module grpcio >= 1.59.0}
+BuildRequires:  %{python_module proto-plus >= 1.26.1}
+BuildRequires:  %{python_module protobuf >= 6.33.5}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-google-api-core >= 1.34.0
-Requires:       python-google-cloud-core >= 1.4.1
-Requires:       python-proto-plus >= 1.22.0
-Requires:       python-protobuf >= 3.20.2
-Suggests:       python-proto-plus >= 1.22.2
+%if %python_version_nodots < 314
+Requires:       python-grpcio >= 1.59.0
+%else
+Requires:       python-grpcio >= 1.75.1
+%endif
+Requires:       python-google-api-core >= 2.25.0
+Requires:       python-google-cloud-core >= 2.0.0
+Requires:       python-proto-plus >= 1.25.0
+Requires:       python-protobuf >= 6.33.5
+Suggests:       python-proto-plus >= 1.26.1
 BuildArch:      noarch
 %python_subpackages
 

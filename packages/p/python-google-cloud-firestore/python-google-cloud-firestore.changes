@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Aug 11 12:32:59 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.28.1
+  * **firestore:** BulkWriter pop from an empty deque (#17490)
+  * **firestore:** preserve async limit_to_last ordering (#17879)
+- from version 2.28.0
+  * **firestore:** drop Python 3.7-3.9 support and regenerate (#17247)
+  * regenerate google-cloud-[e-i] packages (#17079)
+  * regenerate google-cloud-firestore (#17577)
+  * **firestore:** Imropve improper pipeline aliases (#16651)
+  * **firestore:** remove usage of typing_extensions (#17357)
+  * make test_utils unique_resource_id parallel-safe (#17440)
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Sun Apr 19 19:01:41 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.27.0:
