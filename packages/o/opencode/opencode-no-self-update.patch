@@ -1,0 +1,47 @@
+opencode updates itself in place: one second after the TUI starts it asks
+GitHub for the newest release and, if it recognises how it was installed,
+overwrites its own executable. For a packaged build that is rpm's file, and
+the check contacts the network on every single start.
+
+Setting "autoupdate": false in the system configuration directory does not
+help. upgrade() reads cfg.getGlobal(), which loads only
+~/.config/opencode/*.json; the /etc/opencode merge happens on a different
+code path (loadInstanceState). So the guard has to be here.
+
+The explicit `opencode upgrade` command needs the same treatment, for a
+second reason. Installation.method() already returns "unknown" for a file in
+/usr/bin, and upstream handles that by asking whether to install anyway - so
+with no terminal attached the command blocks on the prompt and never
+returns. `opencode upgrade` in a script or a CI job hangs forever.
+
+OPENCODE_ENABLE_AUTOUPDATE=1 restores upstream behaviour for both.
+
+--- a/packages/opencode/src/cli/upgrade.ts
++++ b/packages/opencode/src/cli/upgrade.ts
+@@ -6,6 +6,9 @@
+ import { GlobalBus } from "@/bus/global"
+
+ export async function upgrade() {
++  // openSUSE: opencode is updated by zypper. Self-updating would overwrite an
++  // rpm-owned file behind the package manager's back.
++  if (process.env["OPENCODE_ENABLE_AUTOUPDATE"] !== "1") return
+   const config = await AppRuntime.runPromise(Config.Service.use((cfg) => cfg.getGlobal()))
+   if (config.autoupdate === false || Flag.OPENCODE_DISABLE_AUTOUPDATE) return
+   const method = await Installation.method()
+--- a/packages/opencode/src/cli/cmd/upgrade.ts
++++ b/packages/opencode/src/cli/cmd/upgrade.ts
+@@ -21,6 +21,14 @@
+       })
+   },
+   handler: async (args: { target?: string; method?: string }) => {
++    // openSUSE: this build is rpm's file. Upstream detects that much on its
++    // own - Installation.method() returns "unknown" - but then stops to ask
++    // whether to install anyway, which never returns when nothing is attached
++    // to answer it, so `opencode upgrade` in a script hangs forever.
++    if (process.env["OPENCODE_ENABLE_AUTOUPDATE"] !== "1") {
++      UI.println("opencode was installed from a package; upgrade it with your package manager.")
++      return
++    }
+     UI.empty()
+     UI.println(UI.logo("  "))
+     UI.empty()

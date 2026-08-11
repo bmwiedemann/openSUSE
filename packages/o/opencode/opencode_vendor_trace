@@ -1,0 +1,100 @@
+#!/bin/bash
+# Regenerate opencode-vendor-keep.txt by watching which npm packages the build
+# actually opens. Called by `opencode_vendor <version> --retrace`; not useful
+# on its own.
+#
+# The keep list is the reason the vendor tarball is 37 MB rather than 93 MB,
+# and half as many packages for legal to look at. It is derived, not curated:
+# run the real build under strace, resolve every path it touched back to the
+# package that owns it, and keep exactly those.
+#
+# Two things the trace cannot see, both handled below:
+#
+#   - bun opens most modules through the per-workspace symlink farm
+#     (packages/opencode/node_modules/@scope/name), not through the store, so
+#     the paths have to be resolved before they can be attributed;
+#   - the trace runs on one architecture, so every package that exists only
+#     for the other one looks unused. Their counterparts are added back by
+#     name.
+#
+# Needs strace and a bun that can run the build.
+
+set -euo pipefail
+
+tree="${1:?usage: opencode_vendor_trace <source-tree> <keep-file>}"
+keep="${2:?usage: opencode_vendor_trace <source-tree> <keep-file>}"
+here="$(cd "$(dirname "$0")" && pwd)"
+
+command -v strace >/dev/null || { echo "strace is required for --retrace" >&2; exit 1; }
+
+# The build refuses to run under a bun it does not recognise, and reads the
+# models catalogue and the version over the network. Same neutralisation the
+# spec applies, so the trace matches what the package will do.
+( cd "$tree" && patch -p1 -s < "$here/opencode-relax-bun-version.patch" )
+
+models="$here/models.dev-api.tmp.json"
+curl -fsSL -o "$models" https://models.dev/api.json
+
+trace="$(mktemp)"
+trap 'rm -f "$trace" "$models"' EXIT
+
+echo "    running the build under strace"
+( cd "$tree/packages/opencode"
+  MODELS_DEV_API_JSON="$models" OPENCODE_CHANNEL=latest OPENCODE_VERSION=0.0.0 \
+  strace -f -qq -e trace=openat,stat,statx,readlink -o "$trace" \
+      bun run ./script/build.ts --single --skip-install --skip-embed-web-ui \
+      >/dev/null )
+
+python3 - "$tree" "$trace" "$keep" <<'PY'
+import os, re, sys
+tree, tracefile, keepfile = sys.argv[1], sys.argv[2], sys.argv[3]
+tree = os.path.realpath(tree)
+store = os.path.join(tree, "node_modules", ".bun")
+
+paths = set(re.findall(re.escape(tree) + r'/[^"\s]*',
+                       open(tracefile, errors="replace").read()))
+used = set()
+for p in paths:
+    parts = [x for x in p[len(tree) + 1:].split("/") if x]
+    if "node_modules" not in parts:
+        continue
+    if parts[:2] == ["node_modules", ".bun"] and len(parts) > 2:
+        used.add(parts[2])
+        continue
+    i = parts.index("node_modules")
+    tail = parts[i + 1:]
+    if not tail:
+        continue
+    name = "/".join(tail[:2]) if tail[0].startswith("@") and len(tail) > 1 else tail[0]
+    m = re.search(r'/node_modules/\.bun/([^/]+)',
+                  os.path.realpath(os.path.join(tree, *parts[:i + 1], name)))
+    if m:
+        used.add(m.group(1))
+
+have = set(os.listdir(store))
+keep = set(used)
+for entry in used:
+    for a, b in (("arm64", "x64"), ("aarch64", "x86_64")):
+        if a in entry and entry.replace(a, b) in have:
+            keep.add(entry.replace(a, b))
+
+keep &= have
+with open(keepfile, "w") as fh:
+    fh.write("\n".join(sorted(keep)) + "\n")
+print(f"    traced {len(used)}, kept {len(keep)} of {len(have)}")
+PY
+
+# The pruned tree has to still build, or the list is wrong. Cheap to check
+# here and expensive to discover in OBS.
+python3 - "$tree/node_modules/.bun" "$keep" <<'PY'
+import os, shutil, sys
+store, keepfile = sys.argv[1], sys.argv[2]
+keep = set(open(keepfile).read().split())
+for name in sorted(set(os.listdir(store)) - keep):
+    shutil.rmtree(os.path.join(store, name))
+PY
+echo "    rebuilding against the pruned tree"
+( cd "$tree/packages/opencode"
+  MODELS_DEV_API_JSON="$models" OPENCODE_CHANNEL=latest OPENCODE_VERSION=0.0.0 \
+  bun run ./script/build.ts --single --skip-install --skip-embed-web-ui >/dev/null )
+echo "    pruned tree builds"

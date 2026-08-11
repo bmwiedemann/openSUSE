@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Sun Aug  9 18:52:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- New package: an AI coding agent for the terminal, built with bun
+  build --compile into a single executable.
+- Ship the command line client only. --skip-embed-web-ui leaves out the
+  browser interface, which needs another 101 npm packages and embeds the
+  Inter and JetBrains Mono fonts, neither of which carries a licence.
+- The npm dependency tree and a slimmed source tree are vendored, since
+  bun build --compile needs the whole tree on disk and OBS has no network.
+  opencode_vendor regenerates both; see README.SUSE-maint.
+- Build the OpenTUI native library from the distribution's own opentui
+  package rather than using the prebuilt one from npm.
+- Add opencode-relax-bun-version.patch: upstream's build script refuses to
+  run on any bun but the exact one it pins, and a distribution ships one bun.
+- Add opencode-no-self-update.patch: opencode overwrites its own executable
+  on startup if it detects how it was installed. Updates come from zypper.
+  The patch also covers the explicit `opencode upgrade` command, which for
+  a file in /usr/bin stops to ask whether to install anyway and so never
+  returns when no terminal is attached to answer.
+  Set OPENCODE_ENABLE_AUTOUPDATE=1 for upstream behaviour.
+- Add opencode-no-runtime-npm-install.patch: opencode installs npm packages
+  into the user's home directory, unprompted, on every start. Set
+  OPENCODE_ALLOW_NPM_INSTALL=1 for upstream behaviour.
+- Add opencode-no-grammar-download.patch: 29 of the 34 syntax highlighting
+  grammars are downloaded from GitHub on first use and loaded as code. The
+  five shipped as real assets still work. Set
+  OPENCODE_ALLOW_GRAMMAR_DOWNLOAD=1 for upstream behaviour.
+

@@ -1,0 +1,35 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>708eddac2f06a832d1eefc54c72b7fe1</srcmd5>
+    <version>1.18.15</version>
+    <time>1786461188</time>
+    <user>anag_factory</user>
+    <comment>New package: opencode, an AI coding agent for the terminal.
+
+Supersedes SR#1370389 for two fixes found while verifying the built package
+in a Tumbleweed container:
+
+* opencode-no-self-update.patch now also covers the explicit `opencode
+  upgrade` command. Patch1 only guarded the automatic on-startup path; the
+  CLI command reaches upstream's &quot;Install anyways?&quot; prompt (method() is
+  &quot;unknown&quot; for an rpm-owned /usr/bin file) and blocks there, so the command
+  never returns without a TTY. It now prints a pointer at the package manager
+  and exits 0. OPENCODE_ENABLE_AUTOUPDATE=1 still restores upstream
+  behaviour.
+
+* The SIGILL in the bundled opentui core is fixed by SR#1370419, which
+  supersedes #1370385 - opencode links libopentui.so and crashed on older
+  aarch64 before that.
+
+Verified in a Tumbleweed container: deps resolve, --version/--help/models/
+providers/agent/stats/debug all work, models resolves offline from the
+embedded catalogue, the HTTP API serves /doc, /config, /session and /agent,
+uninstall is a no-op on a packaged install, and the TUI renders and takes
+keyboard input. Local build green on aarch64; rpmlint 0 errors, 1 warning
+(position-independent-executable-suggested, inherent to bun --compile),
+0 badness.
+
+Still needs bun (SR#1370367) and opentui (SR#1370419) staged alongside it.</comment>
+    <requestid>1370420</requestid>
+  </revision>
+</revisionlist>

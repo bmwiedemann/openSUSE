@@ -1,0 +1,39 @@
+The syntax highlighting table in packages/tui/src/parsers-config.ts is 34
+entries, and 29 of them are plain https URLs: the tree-sitter grammar is a
+.wasm fetched from a GitHub release and the highlight queries come from
+raw.githubusercontent.com. opentui downloads and caches them under
+~/.local/share/opentui/tree-sitter the first time a file of that type is
+rendered, then loads the .wasm into the process. There is no env var and no
+configuration key to turn that off.
+
+Two problems for a packaged build: it is unreviewed third party code executed
+at runtime, and the query URLs point at the master branch of
+nvim-treesitter rather than a tag, so what is fetched changes over time.
+
+The five grammars @opentui/core ships as real assets - javascript,
+typescript, markdown, markdown_inline, zig - are local paths and are kept.
+Everything else renders as unhighlighted text, which is what
+loadFiletypeParser already does when a download fails, so this is a path
+upstream handles rather than a new one.
+
+The filter tests the URL rather than listing filetypes, so a grammar upstream
+starts shipping locally is picked up on the next bump without touching this.
+
+OPENCODE_ALLOW_GRAMMAR_DOWNLOAD=1 restores upstream behaviour.
+
+--- a/packages/tui/src/routes/session/index.tsx
++++ b/packages/tui/src/routes/session/index.tsx
+@@ -83,7 +83,12 @@
+ import { usePathFormatter } from "../../context/path-format"
+ import { LocationProvider } from "../../context/location"
+
+-addDefaultParsers(parsers.parsers)
++// openSUSE: register only the parsers backed by assets we ship. The rest are
++// downloaded from GitHub on first use, which a distribution package must not do.
++const allowGrammarDownload = process.env["OPENCODE_ALLOW_GRAMMAR_DOWNLOAD"] === "1"
++addDefaultParsers(
++  allowGrammarDownload ? parsers.parsers : parsers.parsers.filter((p) => !/^https?:\/\//.test(p.wasm)),
++)
+
+ const GO_UPSELL_FREE_TIER_LAST_SEEN_AT = "go_upsell_last_seen_at"
+ const GO_UPSELL_FREE_TIER_DONT_SHOW = "go_upsell_dont_show"

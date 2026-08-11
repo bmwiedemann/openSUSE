@@ -1,0 +1,252 @@
+Maintaining the opencode package
+================================
+
+Read this before a version bump. The package is unusual in three ways: the
+sources are generated rather than downloaded, the whole npm dependency tree is
+compiled into one executable, and three of the four patches exist only to stop
+the program reaching the network at runtime. None of that is obvious from the
+spec alone.
+
+
+Bumping the version
+-------------------
+
+    ./opencode_vendor 1.18.16 --retrace
+
+That one command produces every source the spec consumes:
+
+    opencode-<version>.tar.zst          upstream source, slimmed
+    opencode-vendor-<version>.tar.zst   the npm dependency tree
+    models.dev-api-<version>.json       the model catalogue snapshot
+
+It needs bun, zstd, curl and - for --retrace - strace, and it goes to the
+network. Drop --retrace only if you already know the dependency closure has
+not moved; see "The keep list" below for what it costs to get that wrong.
+
+Then, in order:
+
+1. Check the @opentui/core pin. The spec has a hard equality check in %prep,
+   so a moved pin fails the build with an explanatory message rather than
+   producing something subtly broken - see "OpenTUI" below. If it moved, bump
+   the opentui package first and update opentui_version here.
+
+2. Rebase the four patches. They are small and all of them sit in code
+   upstream changes rarely, but the grammar patch in particular is a single
+   line in a large file.
+
+3. Build locally, then read %check. It runs the compiled binary, which is the
+   only thing that proves the payload survived packaging.
+
+4. Re-run the licence check described under "Licensing".
+
+
+Why the sources are generated
+-----------------------------
+
+opencode is built by `bun build --compile`, which needs the complete npm
+dependency tree present on disk. There is no way to build it from a release
+tarball, and OBS has no network during a build, so the tree has to be a
+source.
+
+The upstream tarball is not shipped as-is either. The repository holds the
+web console, the desktop app and the marketing site alongside the CLI: about
+48 MB of mp4, plus the Inter and JetBrains Mono fonts, which come with no
+licence text at all. None of it is reachable from the CLI build.
+opencode_vendor keeps the thirteen workspace packages the build reads and
+drops the rest, taking Source0 from 78 MB to 7.4 MB.
+
+`--skip-embed-web-ui` is what makes that possible: the browser interface
+would pull in another 101 npm packages and embed those two fonts.
+
+
+The keep list
+-------------
+
+opencode-vendor-keep.txt names the 508 store entries the vendor tarball
+keeps, out of the 999 a filtered install produces. It is derived, not
+curated. `--retrace` runs the real build under strace, resolves every path it
+touched back to the package that owns it, prunes to that set and rebuilds to
+prove the result still links.
+
+Two things a trace cannot see, both handled by opencode_vendor_trace:
+
+  - bun opens most modules through the per-workspace symlink farms
+    (packages/opencode/node_modules/...), not through node_modules/.bun, so
+    the paths are resolved before they are attributed;
+
+  - the trace runs on one architecture, so every package that exists only for
+    the other one looks unused. Their counterparts are added back by name.
+
+Getting the list wrong cannot ship a broken binary. A missing module is a
+hard resolution error from bun, and OBS builds both architectures. It can
+only fail the build.
+
+The pruning was verified content-neutral when it was introduced: the binary
+built from the pruned tree was byte-for-byte the same size, and the only
+differing strings were chunk filenames and embedded build paths.
+
+
+OpenTUI
+-------
+
+opencode renders its interface with OpenTUI, which is TypeScript plus a
+native libopentui.so talking over a private FFI ABI with no versioning of its
+own. The two halves must come from the same release, so opencode has to be
+built against exactly the version it pins in the catalog block of the
+top-level package.json. %prep checks that and fails loudly if it moved.
+
+The dependency tree still uses npm's @opentui/core TypeScript. Only the
+native library is replaced, in %prep, with the one the opentui package built
+from source. That split is deliberate: npm publishes @opentui/core in built
+form (index.node.js, lib/, renderables/, assets/), while the opentui package
+installs the source-tree form, whose exports point at TypeScript and which
+has no assets/ directory. Swapping the whole package therefore does not work
+- swapping just the .so does, and it is the .so that matters, because it is
+the only part that is compiled code.
+
+
+Runtime network access
+----------------------
+
+Upstream opencode reaches the network on its own initiative in several ways
+that are not appropriate for a distribution package. Three patches change
+that. Each restores upstream behaviour through an environment variable, so
+nothing is taken away permanently, and each patch's header records what it
+found and why the behaviour could not simply be configured off.
+
+  opencode-no-self-update.patch
+        One second after start it asks GitHub for the latest release and, if
+        it recognises how it was installed, overwrites its own executable.
+        OPENCODE_ENABLE_AUTOUPDATE=1
+
+        Note that "autoupdate": false in /etc/opencode/opencode.json does
+        NOT disable this, which is easy to get wrong. upgrade() reads
+        cfg.getGlobal(), which loads only ~/.config/opencode; the /etc merge
+        happens in loadInstanceState, a different path.
+
+  opencode-no-runtime-npm-install.patch
+        It installs npm packages into the user's home: @opencode-ai/plugin on
+        every start, unprompted, plus formatters, language servers and
+        provider SDKs on demand. Npm.reify is the single choke point.
+        OPENCODE_ALLOW_NPM_INSTALL=1
+
+  opencode-no-grammar-download.patch
+        29 of the 34 syntax highlighting grammars in
+        packages/tui/src/parsers-config.ts are https URLs; the .wasm comes
+        from a GitHub release and the highlight queries from the master
+        branch of nvim-treesitter, so what gets fetched changes over time.
+        The five grammars @opentui/core ships as real assets - javascript,
+        typescript, markdown, markdown_inline, zig - still work; other
+        filetypes render unhighlighted, which is what upstream already does
+        when a download fails.
+        OPENCODE_ALLOW_GRAMMAR_DOWNLOAD=1
+
+The fourth patch, opencode-relax-bun-version.patch, is unrelated: upstream's
+build script refuses to run on any bun but the one it pins, and a
+distribution ships one bun.
+
+Two things are deliberately left alone:
+
+  - the model catalogue at models.opencode.ai, refreshed hourly. It is data,
+    not code, and a stale baked-in catalogue would be worse than a fetch.
+    OPENCODE_DISABLE_MODELS_FETCH=1 or OPENCODE_MODELS_PATH turn it off.
+
+  - ripgrep. opencode downloads its own if `rg` is not on PATH, so the
+    Requires: ripgrep in the spec removes the download entirely - which()
+    searches PATH first and wins.
+
+There is no telemetry, no Sentry and no analytics anywhere in the CLI.
+OpenTelemetry exists but returns empty layers unless
+OTEL_EXPORTER_OTLP_ENDPOINT is set.
+
+Language servers and formatters are disabled by default upstream in this
+version, so no configuration is shipped in /etc/opencode. That directory is
+still read, and merged at the highest precedence of any file source, if an
+administrator wants to put something there.
+
+
+Licensing
+---------
+
+The dependency tree is compiled into the executable, so its licences are part
+of the binary and the License: tag has to cover all of them. As of 1.18.15,
+across the 507 shipped packages:
+
+    MIT 295, Apache-2.0 108, ISC 75, BSD-2-Clause 9, BlueOak-1.0.0 9,
+    BSD-3-Clause 6, 0BSD 1, CC0-1.0 1, CC-BY-3.0 1, CC-BY-4.0 1
+
+No copyleft, nothing non-free. Two declarations are inconsistent and neither
+matters: @npmcli/redact says ISC and ships MIT text, abbrev says ISC and its
+LICENSE says "ISC OR MIT".
+
+poe-oauth 0.0.8 needs a note, because it looks like a problem and is not. Its
+package.json has no license field and the npm tarball has no LICENSE file,
+which reads as all-rights-reserved. It is packages/poe-oauth of
+github.com/poe-platform/poe-code, and that repository carries an MIT LICENSE
+at its root. The omission is upstream's packaging, not the terms.
+
+caniuse-lite is CC-BY-4.0 and requires attribution, so its LICENSE is
+installed alongside the package's own. spdx-exceptions (CC-BY-3.0) and
+spdx-license-ids (CC0-1.0) ship no licence text; both are lists of licence
+identifiers, and the declaration in their package.json is the notice.
+
+To recheck on a bump, read the license field of every
+node_modules/.bun/*/node_modules/*/package.json in the vendor tarball and
+diff the set against the list above.
+
+
+Prebuilt binaries
+-----------------
+
+Some dependencies ship compiled code with no source in the tree, and it ends
+up inside the executable. This is the part of the package a reviewer should
+look at hardest. On aarch64 the embedded blobs are:
+
+    @ff-labs/fff-bin-linux-arm64-gnu  libfff_c.so       4.7 MB  no source
+    @silvia-odwyer/photon-node        photon_rs_bg.wasm 1.8 MB  no source
+    bun-pty                           librust_pty.so    0.5 MB  no source
+    tree-sitter-bash                  .node and .wasm   2.7 MB  parser.c present
+    tree-sitter-powershell            .wasm             0.9 MB  parser.c present
+    @parcel/watcher-linux-arm64-glibc watcher.node      0.4 MB  C++ in sibling
+    @opentui/core                     5 grammar .wasm   3.1 MB  no source
+    web-tree-sitter                   tree-sitter.wasm  0.2 MB  no source
+
+What they do: fff is the fast file finder (OPENCODE_DISABLE_FFF falls back to
+an internal walk), photon resizes images for vision models, bun-pty is the
+pty behind the shell tool, and the tree-sitter pieces parse shell commands
+for the permission system as well as highlighting.
+
+opencode_vendor removes everything of this kind that the two supported
+architectures cannot run - foreign prebuilds/ directories, .dylib, .dll,
+.exe, the Windows and x86_64 clipboardy fallbacks, web-tree-sitter's debug
+build, and the .tgz copies some packages keep of themselves inside dist/.
+That is 10.8 MB and it changes nothing about the result. What is listed above
+is what remains after that, and it is genuinely used.
+
+Reducing it further means building those artefacts from source: the
+tree-sitter grammars have their parser.c and could be compiled, though the
+.wasm form needs emscripten; fff, bun-pty and photon are Rust with no source
+in the tree at all and would each need their crate closure vendored
+separately.
+
+
+Things that will surprise you
+-----------------------------
+
+  - No debuginfo, on purpose. `bun build --compile` appends its payload past
+    everything the ELF headers describe. eu-strip rewrites the file, drops
+    the payload, and the result aborts at startup. Hence
+    %global debug_package %{nil} and %global __strip /bin/true.
+
+  - The lockfile is regenerated rather than frozen. bun rewrites the key
+    order of trustedDependencies and patchedDependencies, so any bun newer
+    than the one upstream pins reports the lockfile as changed. When this was
+    checked against 1.3.14 the only content difference was @vitest/coverage-v8
+    and its closure - test tooling this build does not use.
+
+  - --production does not work. @opencode-ai/core is a devDependency of
+    packages/opencode and is compiled into the binary anyway.
+
+  - bun --compile needs to find a .bun section in /proc/self/exe. Running bun
+    through an explicit ld-linux wrapper breaks it with a confusing
+    BunSectionNotFound.

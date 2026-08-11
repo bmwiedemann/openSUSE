@@ -1,0 +1,33 @@
+opencode installs npm packages into the user's home at runtime. reify() is
+the single place any of it happens; the callers are
+
+  - the plugin loader, which runs on every start, unprompted, and installs
+    @opencode-ai/plugin into ~/.config/opencode/node_modules;
+  - the formatter and LSP integrations, which fetch prettier, biome,
+    typescript-language-server and friends on demand;
+  - the provider loader, for model SDKs that are not already bundled.
+
+A distribution package must not fetch and execute code from a third party
+registry. All three call sites already handle a failed install: the plugin
+loader logs a warning, Npm.which falls back to Option.none, and Npm.add
+surfaces InstallFailedError as an ordinary provider error. So refusing here
+degrades rather than breaks, and a tool the user installed themselves is
+still found on PATH.
+
+OPENCODE_ALLOW_NPM_INSTALL=1 restores upstream behaviour.
+
+--- a/packages/core/src/npm.ts
++++ b/packages/core/src/npm.ts
+@@ -79,6 +79,12 @@
+     const directory = (pkg: string) => path.join(global.cache, "packages", sanitize(pkg))
+     const reify = (input: { dir: string; add?: string[] }) =>
+       Effect.gen(function* () {
++        // openSUSE: do not download executable code from the npm registry at
++        // runtime. Every caller treats a failed install as a soft failure.
++        if (process.env["OPENCODE_ALLOW_NPM_INSTALL"] !== "1") {
++          yield* Effect.logDebug("npm install disabled by distribution policy", { dir: input.dir })
++          return yield* new InstallFailedError({ add: input.add ?? [], dir: input.dir })
++        }
+         yield* flock.acquire(`npm-install:${input.dir}`)
+         const { Arborist } = yield* Effect.promise(() => import("@npmcli/arborist"))
+         const add = input.add ?? []

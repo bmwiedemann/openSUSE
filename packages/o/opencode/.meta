@@ -1,0 +1,9 @@
+<package name="opencode" project="openSUSE:Factory">
+  <title>AI coding agent for the terminal</title>
+  <description>opencode is an AI coding agent that runs in the terminal. It works with a
+range of model providers, reads and edits files in a project, runs commands,
+and keeps a session history.
+
+This build is the command line client only. The optional web interface is not
+included.</description>
+</package>

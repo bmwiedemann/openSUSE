@@ -1,0 +1,200 @@
+#!/bin/bash
+# Prepare the opencode sources for an offline RPM build.
+#
+# opencode is built by `bun build --compile`, which needs the whole npm
+# dependency tree present on disk; there is no way to build it from a plain
+# release tarball. This script produces the two tarballs the spec consumes:
+#
+#     opencode-<version>.tar.zst          upstream source, slimmed
+#     opencode-vendor-<version>.tar.zst   the npm dependency tree
+#
+# plus a snapshot of the models.dev catalogue, which the build otherwise
+# fetches over the network.
+#
+# Run it on a version bump, not by the package build:
+#
+#     ./opencode_vendor 1.18.15
+#
+# It needs bun (the same one the package builds with), zstd and curl. See
+# README.SUSE-maint for what each step is for and how to review the result.
+
+set -euo pipefail
+
+version="${1:?usage: opencode_vendor <opencode-version> [--retrace]}"
+retrace=""
+[[ "${2:-}" == "--retrace" ]] && retrace=1
+
+here="$(cd "$(dirname "$0")" && pwd)"
+src="$here/opencode-$version.orig.tar.gz"
+keep="$here/opencode-vendor-keep.txt"
+
+# The workspace packages `bun build` actually reads. Everything else in
+# packages/ is the web console, the desktop app, the marketing site and their
+# assets: ~48 MB of mp4 plus the Inter and JetBrains Mono fonts, which ship
+# with no licence text. None of it is reachable from the CLI build, so it is
+# dropped rather than shipped and explained.
+workspace_packages=(
+    codemode core effect-drizzle-sqlite llm opencode plugin protocol
+    schema script sdk server tui ui
+)
+# Root files the build or the licence audit needs.
+# .github/TEAM_MEMBERS is not documentation: packages/script/src/index.ts
+# reads it at build time and fails without it.
+root_files=(package.json bunfig.toml bun.lock tsconfig.json LICENSE README.md
+            .github/TEAM_MEMBERS)
+
+need() { command -v "$1" >/dev/null || { echo "$1 is required" >&2; exit 1; }; }
+need bun; need zstd; need curl; need tar
+
+if [[ ! -f $src ]]; then
+    echo "==> fetching upstream tarball"
+    curl -fsSL -o "$src" \
+        "https://github.com/anomalyco/opencode/archive/refs/tags/v$version.tar.gz"
+fi
+
+work="$(mktemp -d)"
+trap 'rm -rf "$work"' EXIT
+tar xzf "$src" -C "$work"
+tree="$work/opencode-$version"
+[[ -d $tree ]] || { echo "unexpected tarball layout" >&2; exit 1; }
+
+echo "==> installing npm dependencies"
+# --filter restricts the install to the CLI and its build script. Without it
+# bun resolves the whole monorepo -- 4626 packages, 2.3 GB -- and drags in the
+# web and desktop trees, which is where the licence problems live (@sentry/cli
+# is FSL-1.1-MIT, @img/sharp-libvips-* are LGPL prebuilt binaries).
+#
+# The lockfile is deliberately not frozen: bun rewrites the key order of
+# trustedDependencies and patchedDependencies, so a bun newer than the one
+# upstream pins always reports the lockfile as changed. The resolution itself
+# is unaffected -- see README.SUSE-maint, which records how to check that.
+( cd "$tree" && bun install --ignore-scripts --no-progress \
+      --filter './packages/opencode' --filter './packages/script' >/dev/null )
+
+store="$tree/node_modules/.bun"
+
+echo "==> dropping foreign platforms"
+# bun installs optionalDependencies for every platform it knows about. Keep
+# linux x86_64 and aarch64 against glibc, which is what openSUSE builds, so
+# that one tarball serves both architectures -- the alternative is a per-arch
+# source, and the maintainer can only build one of them locally.
+python3 - "$store" <<'PY'
+import os, re, shutil, sys
+store = sys.argv[1]
+foreign = re.compile(r'(darwin|win32|windows|freebsd|openbsd|sunos|netbsd|android'
+                     r'|musleabihf|-musl|linux-arm-|linux-arm@|linux-ia32'
+                     r'|ppc64|s390x|riscv64|loong)')
+n = 0
+for name in sorted(os.listdir(store)):
+    if foreign.search(name):
+        shutil.rmtree(os.path.join(store, name)); n += 1
+print(f"    dropped {n} entries")
+PY
+
+echo "==> dropping foreign platform files inside the packages we keep"
+# The pass above works on package names, which only catches the packages that
+# exist per platform. Several packages that are themselves portable carry a
+# prebuilt binary for every platform in one directory -- tree-sitter-bash has
+# six .node files, bun-pty ships .dylib and .dll next to its .so -- and none of
+# that can run on the two architectures this package builds for. Also drop the
+# .tgz copies some packages keep of themselves inside dist/, which are
+# unreachable by module resolution and just duplicate the directory next to
+# them.
+python3 - "$store" <<'PY'
+import os, shutil, sys
+store = sys.argv[1]
+foreign_dir = ('win32-', 'darwin-', 'android-', 'freebsd-', 'linux-arm-',
+               'linux-ia32-', 'linux-x64-musl', 'linux-arm64-musl')
+freed = 0
+for root, dirs, files in os.walk(store, topdown=True):
+    for d in list(dirs):
+        p = os.path.join(root, d)
+        drop = (os.path.basename(root) == 'prebuilds' and d.startswith(foreign_dir)) \
+            or p.endswith(('clipboardy/fallbacks/windows', 'web-tree-sitter/debug'))
+        if drop:
+            freed += sum(os.path.getsize(os.path.join(r, f))
+                         for r, _, fs in os.walk(p) for f in fs)
+            shutil.rmtree(p); dirs.remove(d)
+    for f in files:
+        p = os.path.join(root, f)
+        # xsel is an x86_64 ELF clipboardy falls back to when no system
+        # clipboard tool is found. There is no aarch64 counterpart, so that
+        # fallback never existed on half our architectures anyway; the package
+        # recommends xsel instead.
+        if f.endswith(('.dylib', '.dll', '.exe')) or f.endswith('.tgz') \
+                or p.endswith('clipboardy/fallbacks/linux/xsel'):
+            freed += os.path.getsize(p); os.remove(p)
+print(f"    freed {freed / 1048576:.1f} MB")
+PY
+
+if [[ -n $retrace ]]; then
+    echo "==> retracing the build to regenerate $(basename "$keep")"
+    "$here/opencode_vendor_trace" "$tree" "$keep"
+fi
+
+echo "==> pruning to the packages the build reads"
+# Everything left is still the full dependency closure of the CLI workspace,
+# but `bun build` only ever opens about half of it: the rest is tooling for
+# the web UI we do not build (drizzle-kit, esbuild, rollup, lightningcss,
+# tailwind, tsgo) and unreached branches of the graph. The keep list is that
+# traced set, plus the x86_64 counterpart of every aarch64-specific package,
+# which a trace taken on one architecture can never see.
+#
+# This cannot silently ship a broken binary: a missing module is a hard
+# resolution error from bun, and OBS builds both architectures. Regenerate the
+# list with --retrace on a version bump.
+[[ -f $keep ]] || { echo "$keep is missing; run with --retrace" >&2; exit 1; }
+python3 - "$store" "$keep" <<'PY'
+import os, shutil, sys
+store, keepfile = sys.argv[1], sys.argv[2]
+keep = set(open(keepfile).read().split())
+have = set(os.listdir(store))
+stale = keep - have
+if stale:
+    sys.exit("keep list names packages the install did not produce; it is out "
+             "of date for this version, rerun with --retrace:\n  "
+             + "\n  ".join(sorted(stale)[:20]))
+for name in sorted(have - keep):
+    shutil.rmtree(os.path.join(store, name))
+print(f"    kept {len(keep)}, dropped {len(have - keep)}")
+PY
+
+echo "==> removing prebuilt binaries that the distribution builds itself"
+# libopentui.so is the one native library in the tree we have a real package
+# for. Drop the npm prebuilt; the spec copies the opentui package's own build
+# into its place in %prep, so the .so inside the shipped executable is built
+# from source. The shims next to it (index.js, package.json) stay, because
+# that is how @opentui/core locates the library.
+find "$store" -name 'libopentui.so' -delete -printf '    removed %P\n'
+
+echo "==> packing the dependency tree"
+# The per-workspace node_modules are symlink farms into node_modules/.bun and
+# are not reconstructible without rerunning the install, so they are part of
+# the tarball.
+farms=$(cd "$tree" && find packages -maxdepth 3 -name node_modules -type d | sort)
+tar --sort=name --mtime="@0" --owner=0 --group=0 --numeric-owner \
+    -C "$tree" -cf - node_modules $farms \
+  | zstd -19 -T0 -q -o "$here/opencode-vendor-$version.tar.zst" -f
+
+echo "==> packing the slimmed source"
+slim="$work/opencode-$version-slim/opencode-$version"
+mkdir -p "$slim/packages"
+for f in "${root_files[@]}"; do install -Dpm 0644 "$tree/$f" "$slim/$f"; done
+for p in "${workspace_packages[@]}"; do
+    cp -a "$tree/packages/$p" "$slim/packages/$p"
+    rm -rf "$slim/packages/$p/node_modules"
+done
+tar --sort=name --mtime="@0" --owner=0 --group=0 --numeric-owner \
+    -C "$work/opencode-$version-slim" -cf - "opencode-$version" \
+  | zstd -19 -T0 -q -o "$here/opencode-$version.tar.zst" -f
+
+echo "==> snapshotting the models.dev catalogue"
+# packages/opencode/script/generate.ts fetches this and bakes it into the
+# binary. MODELS_DEV_API_JSON points it at a file instead.
+curl -fsSL -o "$here/models.dev-api-$version.json" https://models.dev/api.json
+
+echo
+for f in "opencode-$version.tar.zst" "opencode-vendor-$version.tar.zst" \
+         "models.dev-api-$version.json"; do
+    printf '%10s  %s\n' "$(du -h "$here/$f" | cut -f1)" "$f"
+done
