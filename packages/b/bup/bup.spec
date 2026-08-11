@@ -19,9 +19,8 @@
 # See also http://en.opensuse.org/openSUSE:Specfile_guidelines
 
 %define with_test 0
-%if 0%{?suse_version} < 1600
-%define pythons python311
-%endif
+%define pythons python3
+
 Name:           bup
 Version:        0.33.10
 Release:        0

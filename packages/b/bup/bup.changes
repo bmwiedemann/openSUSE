@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 10 16:59:30 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Fix boo#1273588
+  Fix build error under Leap.
+
+-------------------------------------------------------------------
 Tue Mar 24 12:46:47 UTC 2026 - ecsos <ecsos@opensuse.org> - 0.33.10
 
 - Update to 0.33.10
