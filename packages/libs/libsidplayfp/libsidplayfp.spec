@@ -19,7 +19,7 @@
 %define soname 7
 %define stilview_soname 0
 Name:           libsidplayfp
-Version:        3.0.2
+Version:        3.1.0
 Release:        0
 Summary:        A library to play Commodore 64 music
 License:        GPL-2.0-or-later
