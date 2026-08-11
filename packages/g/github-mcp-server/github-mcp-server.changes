@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon Aug 10 20:22:55 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.9.0:
+  * search_issues now performs semantic search by default; the tool
+    description is initialised according to the host it runs on.
+  * issue_read "get" additionally returns the pull requests that close
+    the issue, as a closed_by_pull_requests object carrying a
+    total_count plus at most five references (open ones first), so the
+    answer no longer requires listing pull requests and grepping their
+    bodies. An issue with no closing pull request serialises an
+    explicit empty list. Lockdown mode filters references whose author
+    cannot be verified.
+  * issue_write (and the granular issue tool) can now clear an issue's
+    type, and validates duplicate closures before applying updates.
+  * projects_write gained update_project_items, a batch engine that
+    resolves and validates shared field updates before executing
+    ordered, chunked GraphQL writes for up to 50 items at a time, and
+    reports ambiguous outcomes explicitly; singular name-based Issue
+    Field updates are supported, and iteration fields are preserved.
+  * New non-default find_duplicate tool, gated behind the
+    duplicate_detection feature flag, with a repo-visibility label on
+    its results.
+  * list_label results are ordered by issue count, most used first.
+  * create_or_update_file documents its content parameter as plain
+    text that the server base64-encodes itself, resolving a conflict
+    with the underlying REST endpoint's own docs that made models
+    encode the content a second time and commit base64 into the file.
+  * Generated tool documentation renders union types.
+- Vendored Go dependency set is unchanged from 1.8.0 (identical
+  go.mod/go.sum, same 41 modules), so the licence audit stands: all
+  vendored modules are MIT, BSD-3-Clause or Apache-2.0 and no copyleft
+  code is linked into the binaries.
+- Keep github-mcp-server-root-command-name.patch: upstream pull request
+  2998 is still open, and the cobra root command is still declared as
+  "server" in this release.
+
+-------------------------------------------------------------------
 Mon Aug  3 13:22:27 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Initial package

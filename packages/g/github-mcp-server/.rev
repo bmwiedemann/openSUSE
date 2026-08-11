@@ -30,4 +30,12 @@ remaining rpmlint warnings are files-duplicate among the vendored license
 texts shipped under %license, which are kept per-dependency on purpose.</comment>
     <requestid>1369275</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>abb208499e7fd28927249aa6e0523bc1</srcmd5>
+    <version>1.9.0</version>
+    <time>1786461296</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.9.0: search_issues is semantic by default, issue_read now reports the pull requests that close an issue, issue types can be cleared, projects_write gained batched update_project_items plus singular Issue Field updates, a new non-default find_duplicate tool behind the duplicate_detection flag, list_label ordered by issue count, and create_or_update_file's content parameter is documented as plain text. Vendored Go dependency set is unchanged from 1.8.0 (identical go.mod/go.sum, 41 modules, all MIT/BSD-3-Clause/Apache-2.0), so License: MIT still holds. github-mcp-server-root-command-name.patch is kept - upstream PR gh#github/github-mcp-server#2998 is still open and the cobra root command is still named 'server'. Built locally for openSUSE_Tumbleweed/aarch64: green, rpmlint 0 errors / 0 badness, go test 28 packages ok / 0 failures.</comment>
+    <requestid>1370576</requestid>
+  </revision>
 </revisionlist>

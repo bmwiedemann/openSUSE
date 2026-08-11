@@ -23,14 +23,14 @@
 #   -modcacherw     leave the module cache writable so cleanup cannot fail
 %define goflags "-buildmode=pie -mod=vendor -modcacherw"
 Name:           github-mcp-server
-Version:        1.8.0
+Version:        1.9.0
 Release:        0
 Summary:        Model Context Protocol server for GitHub
 License:        MIT
 URL:            https://github.com/github/github-mcp-server
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
-# PATCH-FIX-UPSTREAM github-mcp-server-root-command-name.patch mpluskal@suse.com -- name the cobra root command after the installed binary so generated shell completions actually fire
+# PATCH-FIX-UPSTREAM github-mcp-server-root-command-name.patch gh#github/github-mcp-server#2998 mpluskal@suse.com -- name the cobra root command after the installed binary so generated shell completions actually fire
 Patch0:         %{name}-root-command-name.patch
 # cgo stays enabled so -buildmode=pie links through the system linker, which is
 # what emits the GNU build-id that debuginfo extraction needs. go1.26 pulls gcc
