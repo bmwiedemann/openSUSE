@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Thu Aug 06 20:22:50 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Bump to version 2.0.6:
+  * chore(l10n): update translation files
+  * Update translation template (faugus-launcher.pot)
+  * Translation file updates for many languages
+  * Added version link
+  * Forgot to remove the import
+  * In utils.py
+  * Minor visual improvements
+  * Fixed icon extraction from exe
+  * Revert "Detect GPU"
+  * Detect GPU
+  * Added console argument
+  * Update README.md
+  * Fixed translation tokens
+  * Added token to steamgriddb api key
+  * Added translation token to Latest
+  * Refactored comboboxes
+  * Apply theme to virtual keyboard
+  * Removed border around games with gamepad
+  * GTK Filichooser only when gamepad navigation
+  * Removed Bazzite instructions
+- For version 2.0.5:
+  * chore(l10n): update translation files
+  * Update metainfo screenshot commit refs
+  * Updated screenshots
+  * Dynamic label color
+  * Added screenshots workflow
+  * Fixed context menu with gamepad
+  * Update translation template (faugus-launcher.pot)
+  * Replaced system title bar with header bar
+  * Update main screen banner when editing
+  * Gamepad navigation fixes
+  * Fixed gamepad stuck on Add screen
+  * Fixed accent color not being applied on adwaita
+  * Improved asset picker window visual
+  * Some visual fine tuning
+  * Visual improvements
+  * Do not reload game list
+  * Select the same game after editing
+  * Fix the layer issue with LSFG-VK 2.0.
+
+-------------------------------------------------------------------
 Thu Jul 30 16:05:27 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
 
 - Bump to version 2.0.4:
