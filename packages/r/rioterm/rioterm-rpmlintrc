@@ -2,3 +2,8 @@
 #     at present.
 #addFilter("useless-provides");
 #####
+#
+### 20260610, smb - I ran `desktop-file-validate` on rio.desktop and it returned
+###   with no output
+addFilter("invalid-desktopfile /usr/share/applications/rio.desktop");
+#####

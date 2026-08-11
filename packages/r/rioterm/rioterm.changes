@@ -1,4 +1,325 @@
 -------------------------------------------------------------------
+Sun Aug  2 21:58:17 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 0.5.5:
+  * Fixed typing echo in synchronized-output TUIs arriving ~150-200 ms late
+    through Windows ConPTY. ConPTY coalesces output, so a frame's begin/end
+    synchronized-update pair (mode 2026) often arrives inside one chunk; the
+    begin armed Rio's 150 ms timeout but the inline end never disarmed it, so
+    every following frame waited out the timer. An inline end now disarms the
+    timeout, and replaying a buffered update re-arms it when a new begin is
+    still pending (closes #1753 — thanks to @cmoron for the original diagnosis
+    and fix in #1754, ported to `rio-vt` by @marc2332 in #1788, landed
+    via #1789).
+  * `rio-vt`: synchronized updates whose 150 ms deadline has passed now flush
+    on the next `advance()` call. Rio's event loop already flushed at the
+    deadline, but embedders that drive the processor straight from a read
+    loop had no timeout driver at all — a client that armed mode 2026 and
+    stalled could freeze their screen until 2 MB of output accumulated. The
+    latency cap now works out of the box for every embedder.
+- Update to version 0.5.4:
+  * `rio-vt`: inserting a sixel/iTerm2 image with unset cell dimensions no
+    longer panics. Headless embedders never report a cell size, so arbitrary
+    input containing image sequences could hit a `step_by(0)` panic in the
+    row-fill loop; it is now a no-op, matching the existing guard on the
+    kitty placement path. Found by atuin's property tests during its
+    vt100 → `rio-vt` migration.
+
+-------------------------------------------------------------------
+Fri Jul 31 20:52:57 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 0.5.3:
+  * The terminal engine (`rio-vt`) is substantially faster across the board.
+    Plain text and scrolling-heavy output parse ~2.7x faster (865 → 2305 MiB/s
+    on plain ASCII, 266 → 725 MiB/s on scroll-dominated streams), CJK and
+    emoji text 3x (243 → 723 MiB/s), color-change-heavy streams 1.6x, and
+    full-screen TUI redraws 1.5x. Under the hood: scrolling no longer pays
+    per-row dirty and damage bookkeeping (a full-screen scroll marks damage
+    once), recycled rows reset only their occupied cells, printable runs and
+    CSI parameters are scanned a word at a time instead of a byte at a time,
+    SGR dispatch no longer heap-allocates per sequence, wide characters are
+    written as bulk cell pairs the way ASCII runs already were, UTF-8 decodes
+    in large chunks instead of per-fragment, and the character width table
+    covers emoji directly. Measured with rio-vt-benchmark.
+    - https://github.com/raphamorim/rio-vt-benchmark
+  * `rio-vt` now exposes its VT parser and the `Perform` trait, so embedders
+    can drive the escape-sequence parser with their own handler instead of the
+    built-in grid. The `Handler` trait also gained a provided
+    `input_ascii_str` method that carries the parser's printable-ASCII
+    guarantee, letting implementations skip revalidating the bytes.
+  * macOS: quake mode now opens with the right size and position on setups
+    with mixed-DPI monitors. The window geometry was computed in physical
+    pixels for the monitor under the cursor but applied using the window's
+    own backing scale, so the dropdown came out mis-sized when the two
+    differed; it is now converted through the target monitor's scale factor.
+
+-------------------------------------------------------------------
+Tue Jul 28 15:40:32 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 0.5.2:
+  * Maintenance release fixing the release pipeline: the `rio-vt` crate
+    publish and the macOS dmg artifact were both missing from the 0.5.1
+    release.
+- Update to version 0.5.1:
+  * Windows: resizing the window while the terminal sat idle could leave the
+    newly exposed area unpainted — the desktop showed through behind Rio —
+    until the next keystroke or output. A resize reflows the grid, but
+    presenting a frame was gated on terminal damage, so an idle resize
+    produced no repaint into the freshly reconfigured swapchain; the resize
+    path now marks the grid dirty so it always presents (closes #1773, and
+    the resize symptom in #1759).
+  * The bundled `corcovado` event-loop crate now uses `socket2` in place of
+    the unmaintained `net2`, clearing the RUSTSEC-2020-0016 advisory for every
+    project that depends on `rio-vt` or `teletypewriter`.
+
+-------------------------------------------------------------------
+Mon Jul 27 15:35:21 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 0.5.0:
+  * Rio's terminal core is now an embeddable library, split out of the app.
+    `rio-vt` is a standalone, dependency-light Rust crate: the VT state
+    machine, ANSI/escape parser, grid with scrollback, selection, search,
+    PTY driver, and the sixel / Kitty / iTerm2 image protocols, with no
+    renderer, GPU, or font-shaping code, so building it with no features is
+    just the terminal. `librio` wraps that same core behind a C ABI for Swift,
+    C, and any language that speaks C, shipped as a `RioKit.xcframework` plus
+    a bare `librio.a` + `librio.h` on each release rather than a published
+    crate. Rio's own frontend and other products now run the same engine;
+    `rio-vt` is already in production at Lovable. Full write-up in the
+    announcement post.
+  * Glyph Protocol registrations accept a `width` parameter again (`1` or `2`),
+    honored purely at render time: a wide glyph paints across two cells while
+    the codepoint's logical width stays at one cell (its `wcwidth`), so cursor
+    position, wrapping and selection never desync from width-unaware
+    applications like shells and line editors. Authors of wide glyphs emit a
+    trailing space so the overflow lands on an empty cell. Registrations and
+    clears now also repaint cells already showing the codepoint, and glyph
+    rasterization is hardened against hostile payloads (a bounding-box contain
+    guard plus a hard raster dimension ceiling make degenerate `upm` values
+    harmless). This settles #1649 by keeping `width` in the spec at render
+    level only (#1650).
+  * Fixed the mouse wheel needing two notches per scrolled line with notched
+    mice: wheel ticks were converted to pixels with the font size but consumed
+    in cell-height units, so a single notch floored to zero lines. One notch
+    is now exactly one line before the configured `scroll.multiplier`, so the
+    default scrolls the conventional three lines per notch (closes #1350).
+  * macOS: clicking the dock icon while every Rio window is minimized now
+    restores and focuses one, instead of doing nothing (closes #1151).
+  * Fixed a stale selection surviving panel switches: clicking into an
+    unfocused split never reached the click handler that resets selections,
+    so the next drag in that panel extended a leftover anchor instead of
+    starting fresh (closes #1638).
+  * Fixed `copy-on-select` silently doing nothing when a selection ends on top
+    of a hyperlink or hint: the hint fired first and its early return skipped
+    the copy. Finishing a selection now copies it and no longer activates
+    whatever sits under the release point, so sweeping a selection across a
+    URL doesn't open it; plain clicks trigger hints exactly as before
+    (closes #1494).
+  * Hints rules now accept the TOML shapes the docs always showed.
+    `[hints.rules.action]` with `command = "open"` parses (it previously
+    failed with "missing field action" and silently reverted the whole
+    `[hints]` table to defaults), and both keys can be written inline on the
+    rule: `action = "Copy"` or
+    `command = { program = "code", args = ["--goto"] }`. Misconfigured rules
+    produce a clear error message (closes #1407, #1618).
+  * Fixed dead `ctrl+c` and `ctrl+\` in shells when Rio was launched as a
+    background job (`rio &` from a script, some desktop launchers): ignored
+    signal dispositions survive exec and the fork pty child never reset them.
+    The child now resets the full set before exec, which also restores
+    default `SIGPIPE` handling (the Rust runtime ignores it in the parent),
+    fixing pipeline semantics like `yes | head` for every shell spawned
+    through the default Linux/BSD fork path (closes #1120).
+  * Windows: hyperlinks open through `ShellExecuteW` instead of `cmd /c start`,
+    whose argument re-quoting corrupted URLs (`https://` became `tps://`) or
+    made clicks silently do nothing (closes #1457, #1278).
+  * OSC 52 clipboard support is now advertised in the primary device
+    attributes response, so applications that probe DA1 before enabling
+    remote clipboard writes (tcell-based tools over ssh, for example) will
+    use it (closes #1398).
+
+-------------------------------------------------------------------
+Wed Jul 22 21:02:41 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 0.4.12:
+  * Quake mode: bind `ToggleQuake` and a dropdown terminal slides in from the
+    top of the monitor under your cursor. The binding also works as a system
+    wide hotkey while Rio is unfocused (no accessibility permission needed on
+    macOS), hiding it restores focus to the app you were in, and the size is
+    configurable via `window.quake-width-percentage` and
+    `window.quake-height-percentage`. Binding changes live reload (closes #89).
+
+    [bindings]
+    keys = [{ key = "'", with = "super", action = "ToggleQuake" }]
+
+  * Shell integration: OSC 133 semantic prompt zones are now tracked (closes
+    #975), with two new binding actions, `ScrollToPrevPrompt` and
+    `ScrollToNextPrompt`, that jump between shell prompts in the scrollback.
+    OSC 1337 `SetUserVar` is parsed and stored per terminal (closes #976);
+    these sequences were previously dropped by the image protocol parser.
+
+    [bindings]
+    keys = [
+      { key = "up", with = "super | shift", action = "ScrollToPrevPrompt" },
+      { key = "down", with = "super | shift", action = "ScrollToNextPrompt" },
+    ]
+
+  * Sixel and iTerm2 inline images are back (broken across 0.4.x, closes
+    #1591), rebuilt so images behave as grid content: they scroll with the
+    text including inside scroll regions, are clipped by characters printed
+    over them and by erase/delete sequences, survive in scrollback until their
+    rows scroll off, and stay inside their split panel. Cursor movement after
+    an image follows each protocol: sixel lands on the image's last row (with
+    mode 8452 and DECSDM honored), iTerm2 moves right of the image and
+    supports `doNotMoveCursor`.
+  * Kitty graphics protocol fixes: images no longer drift once scrollback
+    saturates, they expire when their rows leave scrollback instead of
+    lingering forever, deletions repaint immediately, and images no longer
+    bleed across split panel borders. Images also render on the CPU fallback
+    renderer now, and GPU image textures are bounded by a least recently used
+    budget instead of growing without limit.
+  * Fixed `[shell] args` being silently dropped on Linux and BSD: the fork pty
+    path (the default there via `use-fork = true`) never passed the configured
+    arguments to the shell. This also fixes `OpenConfigEditor` launching the
+    editor without the config file (closes #1016, #1423).
+  * Fixed two crashes: the rich text atlas textures now respect the GPU's
+    texture size limit instead of hardcoding 4096 (startup crash on Raspberry
+    Pi class GPUs, closes #1641), and the grid iterator no longer panics on
+    positions stale relative to the live grid, such as during tiling window
+    manager resizes (closes #1713).
+  * Fixed the tab bar overlapping the last terminal lines after opening a tab
+    (and the leftover gap after closing back to one tab). Margin changes from
+    the tab bar appearing or disappearing never reached the layout engine
+    until a window resize; they now trigger a full relayout of every tab
+    (closes #1495, #1528).
+  * Tabs grow up to 240px wide (was 180px) so titles crop later, and the cap
+    is now configurable via `navigation.max-tab-width`.
+  * Dropped file paths are now shell escaped: paths containing spaces,
+    parentheses, quotes or other shell metacharacters get each sensitive
+    character prefixed with a backslash instead of being pasted raw
+    (closes #1730).
+  * Fixed `[shell] args` containing spaces being word split on macOS: custom
+    commands are now passed directly to `login(1)` instead of going through
+    an intermediate shell string, so arguments like
+    `args = ["-c", "tmux attach || tmux"]` survive intact.
+
+-------------------------------------------------------------------
+Tue Jul 21 14:15:02 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 0.4.11:
+  * Font caches and glyph atlases are now cleared when the font library
+    changes. Stale entries could serve the old font's shaping, metrics and
+    bitmaps after a config reload, or crash on font ids past the new library's
+    length (closes #1639, #1110, #818).
+  * Glyph atlases recover when full: instead of silently dropping characters
+    once the atlas hit its size limit, it is cleared and every row re-emitted
+    against the fresh atlas.
+  * Fonts inside TrueType collections (.ttc) load the right face. The face
+    index was ignored when loading configured fonts, so families like Sarasa
+    rendered whichever face sat first in the file (closes #1302).
+  * The configured bold/italic/bold-italic font wins over weight metadata, so
+    families that ship their bold at weight 600 (Nerd Font patches, Operator
+    Mono) no longer render bold cells with the regular face or stack faux
+    bold on a real bold face.
+  * `fonts.features` works again and now live reloads. Features reach both
+    shapers (swash and CoreText), and can be disabled with a `-` prefix:
+    `features = ["-calt", "-liga"]` turns ligatures off
+    (closes #1125, #1032, #1258).
+  * `fonts.hinting` now applies to the terminal grid; it was previously
+    hardcoded on.
+  * Per-slot font `weight` is back: `[fonts.bold] weight = 600` steers face
+    selection and pins the `wght` axis on variable fonts, which also fixes
+    variable-font weights never being applied on Linux and Windows
+    (closes #1577).
+  * Font families are matched by any of their names, so CJK fonts like
+    "Source Han Mono SC" or "LXGW WenKai Mono" are found by their English
+    alias, not only the localized name listed first in the file
+    (closes #1466, thanks @qiuzhiqian for the analysis).
+  * ctrl+digit and ctrl+punctuation combos reach the terminal: Rio computes
+    the C0 control byte itself (ctrl+6 sends 0x1E, ctrl+/ sends 0x1F, same
+    table kitty uses) instead of relying on inconsistent platform behavior.
+    The kitty keyboard protocol encoding is untouched (closes #863, #1328).
+  * `[bindings]` edits live reload instead of requiring a new window, unknown
+    binding actions are rejected loudly instead of silently unbinding the
+    default, and f1 through f20 can be used as binding keys (plus `enter`,
+    `escape` and `backspace` aliases).
+  * Fixed font size changing by two steps per keypress: the increase/decrease
+    defaults were registered twice on every platform.
+  * Updated `swash` to 0.2.10, which fixes a hinting cache regression that
+    rebuilt hinting state per glyph.
+
+-------------------------------------------------------------------
+Mon Jul 13 14:35:56 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 0.4.10:
+  * New `SelectAll` action: selects the entire terminal content, including
+    the scrollback history, so it can be copied. Bound to `Command + A` on
+    macOS by default, and available on every platform for custom key bindings
+    via `action = "SelectAll"`.
+    - https://rioterm.com/docs/key-bindings
+  * Fixed hint label rendering: keyboard hint labels (hyperlink hints) are
+    now drawn as proper grid overlays using the configured hint
+    foreground/background colors, with the leading character of each
+    label highlighted.
+  * Tab strip refresh: tab island backgrounds are now derived automatically
+    from the window background color. `colors.tabs` and `colors.tabs-active`
+    now set the inactive and active tab title colors, and the `bar`,
+    `tab-border`, `tabs-foreground`, `tabs-active-foreground` and
+    `tabs-active-highlight` color options were removed.
+- Update to version 0.4.9:
+  * Updated `wgpu` to 30.0.0 and the `librashader` filter chain to 0.12 (the
+    wgpu path used for RetroArch shaders on Windows/WASM and behind the `wgpu`
+    feature flag elsewhere). librashader 0.12 brings a smarter framebuffer
+    pool that only allocates intermediate framebuffers for the shader passes
+    that actually need them.
+- Update to version 0.4.8:
+  * Adaptive theme on Linux: Rio now follows the system light/dark preference
+    on Wayland and X11. With adaptive-theme configured, Rio watches the XDG
+    Desktop Portal `color-scheme` setting (the same one Firefox and GNOME/KDE
+    use) and switches between your light and dark themes live when the system
+    appearance changes, no restart required. This previously worked only on
+    macOS and Windows (#408; based on #1358 by @pinpox).
+    - https://rioterm.com/docs/config#adaptive-theme
+
+-------------------------------------------------------------------
+Wed Jun 10 14:12:53 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 0.4.7:
+  * Requires cargo/rust >= v1.96
+  * https://rioterm.com/changelog#047
+
+-------------------------------------------------------------------
+Sun Jun  7 01:07:59 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 0.4.6:
+  * https://rioterm.com/changelog#046
+
+-------------------------------------------------------------------
+Wed May 20 17:13:42 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 0.4.5:
+  * https://rioterm.com/changelog#045
+  * https://rioterm.com/changelog#044
+  * https://rioterm.com/changelog#043
+
+-------------------------------------------------------------------
+Sun May  3 17:46:31 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 0.4.2:
+  * https://rioterm.com/changelog#042
+
+-------------------------------------------------------------------
+Sat May  2 23:34:43 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 0.4.1:
+  * https://rioterm.com/changelog#041
+- Update to version 0.4.0:
+  * https://rioterm.com/changelog#040
+  * This version has issues and wasn't a good idea to push out, for me -
+    sbradnick - it would dump a core file when closing (Tumbleweed).
+    - Even with a70b774 some features that were working in v0.3.11 still
+      aren't with >= 0.4.0 ; namely `fonts.features`.
+
+-------------------------------------------------------------------
 Fri Apr 17 16:40:27 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to version 0.3.11:

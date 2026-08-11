@@ -21,7 +21,7 @@
 # %%global build_rustflags %%build_rustflags -C lto=off -C codegen-units=16
 
 Name:           rioterm
-Version:        0.3.11
+Version:        0.5.5
 Release:        0
 Summary:        A hardware-accelerated GPU terminal emulator powered by WebGPU
 License:        MIT
@@ -31,12 +31,12 @@ Source1:        vendor.tar.zst
 Source99:       %{name}-rpmlintrc
 %if 0%{?suse_version} <= 1500 || 0%{?suse_version} <= 1600
 Group:          System/X11/Terminals
-BuildRequires:  cargo-vendor >= 1.90
+BuildRequires:  cargo-vendor >= 1.96
 BuildRequires:  gcc15
 BuildRequires:  gcc15-c++
 BuildRequires:  libstdc++-devel
 BuildRequires:  libstdc++6-devel-gcc15
-BuildRequires:  rust-std >= 1.90
+BuildRequires:  rust-std >= 1.96
 %else
 BuildRequires:  gcc-c++
 %endif
@@ -44,6 +44,7 @@ BuildRequires:  cargo-packaging
 BuildRequires:  cmake
 BuildRequires:  make
 BuildRequires:  pkgconfig
+BuildRequires:  shaderc
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(ncurses)
