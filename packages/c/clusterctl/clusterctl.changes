@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Tue Aug 11 11:24:11 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.14.0:
+  clusterctl-related changes
+  * Add configuration `ExternallyProvisioned` for clusterctl
+    (#13739)
+  * Make it easier to debug cert issues in clusterctl upgrade &
+    self-hosted tests
+  * Increase clusterctl and e2e test dry-run cluster-template
+    timeouts
+  * Harden clusterctl move
+  * fix(clusterctl): reject incomplete GitHub release asset URLs
+  * fix: reject whitespace in clusterctl show-conditions filters
+  * clusterctl: detect cert-manager image changes during upgrade
+    (#13850)
+  * fix: show clusterctl help for argument validation errors
+  * clusterctl: raise management cluster client QPS and Burst
+  * Use in-memory template for clusterctl upgrade tests (#13866)
+  * Adjust clusterctl convert
+  * Make the clusterctl upgrade management cluster control plane
+    count configurable
+  * Improve clusterctl describe
+  * Skip update check for clusterctl completion
+  * feat: add experimental `clusterctl migrate` command
+  Dependencies
+  * fix CVE-2026-39883
+  * fix: bump cel-go to v0.29.0 and grpc to v1.82.1 to address
+    security advisories
+  * Bump the all-go-mod-patch-and-minor group across 3 directories
+    with 3 updates
+  * Bump the all-go-mod-patch-and-minor group across 2 directories
+    with 4 updates
+  * Bump Go toolchain to 1.26.5
+  * Bump cert-manager to v1.21.0
+  * Bump the all-go-mod-patch-and-minor group across 3 directories
+    with 5 updates
+  * Bump the all-go-mod-patch-and-minor group across 3 directories
+    with 2 updates
+  * Bump the all-go-mod-patch-and-minor group across 3 directories
+    with 4 updates
+  * Bump the all-go-mod-patch-and-minor group across 2 directories
+    with 3 updates
+  * Bump the all-go-mod-patch-and-minor group across 3 directories
+    with 11 updates
+  * Bump the all-go-mod-patch-and-minor group across 3 directories
+    with 4 updates
+  * bump golang/x/net to 0.55.0
+  * Bump the all-go-mod-patch-and-minor group across 3 directories
+    with 13 updates
+  * Bump the all-go-mod-patch-and-minor group across 3 directories
+    with 3 updates (#13676)
+  * Bumping golang:1.26.3
+  * Bump controller-gen to v0.21
+  * Bump conversion-gen to v0.36
+  * Bump to controller-runtime v0.24 & controller-tools v0.21
+  * bump envtest 1.36
+  * Bump Go 1.26
+  * Bump the all-go-mod-patch-and-minor group across 3 directories
+    with 4 updates
+  * Bump the all-go-mod-patch-and-minor group across 3 directories
+    with 4 updates
+  * Bump the all-go-mod-patch-and-minor group across 3 directories
+    with 11 updates
+  * cert-manager v1.20.2
+  * Bump the all-go-mod-patch-and-minor group across 3 directories
+    with 4 updates
+
+-------------------------------------------------------------------
 Thu Jul 16 05:23:04 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.13.4:
