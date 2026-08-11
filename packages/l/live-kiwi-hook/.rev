@@ -51,4 +51,12 @@
     far, but that implies a 2G drive anyway. Not jumping right away
     to 2GB to force ourselves to limit the content.</comment>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>084924ba3163c14743767e7f2162e9ff</srcmd5>
+    <version>1.0</version>
+    <time>1786429508</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump maxsize for Rescue image to 1.1GB. This is not really an
+  issue for x86_64, but aarch64 goes well over the limit.</comment>
+  </revision>
 </revisionlist>

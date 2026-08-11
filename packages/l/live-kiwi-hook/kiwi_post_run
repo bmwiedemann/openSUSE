@@ -49,7 +49,7 @@ case "${flavor}" in
 		msize=1500000000
 		;;
 	Rescue)
-		msize=1000000000
+		msize=1100000000
 		;;
 	*)
 		echo "Unknown flavor ${flavor}" >&2
