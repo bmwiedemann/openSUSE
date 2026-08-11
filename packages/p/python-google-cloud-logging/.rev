@@ -62,4 +62,15 @@
     name (#17625) (32862f0), closes #17604</comment>
     <requestid>1365757</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6d4bd06d90208c36394a83a31d9856bc</srcmd5>
+    <version>3.16.2</version>
+    <time>1786461571</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.16.2
+  * bump grpcio to 1.59.0; require Python 3.10+ (#17351)
+  * require Protobuf 6.33.5+ (#17743)
+- Update BuildRequires and Requires from setup.py (forwarded request 1370706 from glaubitz)</comment>
+    <requestid>1370707</requestid>
+  </revision>
 </revisionlist>

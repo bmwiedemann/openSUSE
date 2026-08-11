@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-cloud-logging
-Version:        3.16.1
+Version:        3.16.2
 Release:        0
 Summary:        Stackdriver Logging API client library
 License:        Apache-2.0
@@ -29,9 +29,9 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module google-api-core >= 2.11.0}
+BuildRequires:  %{python_module google-api-core >= 2.25.0}
 BuildRequires:  %{python_module google-auth >= 2.14.1}
-BuildRequires:  %{python_module google-cloud-appengine-logging >= 0.1.3}
+BuildRequires:  %{python_module google-cloud-appengine-logging >= 1.6.1}
 BuildRequires:  %{python_module google-cloud-audit-log >= 0.3.1}
 BuildRequires:  %{python_module google-cloud-core >= 2.0.0}
 BuildRequires:  %{python_module grpc-google-iam-v1 >= 0.12.4}
@@ -41,9 +41,9 @@ BuildRequires:  %{python_module proto-plus >= 1.22.3}
 BuildRequires:  %{python_module protobuf >= 4.25.8}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-google-api-core >= 2.11.0
+Requires:       python-google-api-core >= 2.25.0
 Requires:       python-google-auth >= 2.14.1
-Requires:       python-google-cloud-appengine-logging >= 0.1.3
+Requires:       python-google-cloud-appengine-logging >= 1.6.1
 Requires:       python-google-cloud-audit-log >= 0.3.1
 Requires:       python-google-cloud-core >= 2.0.0
 Requires:       python-grpc-google-iam-v1 >= 0.12.4
