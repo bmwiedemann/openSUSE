@@ -1753,4 +1753,13 @@ https://lists.opensuse.org/archives/list/packaging@lists.opensuse.org/message/5F
     <comment></comment>
     <requestid>1369765</requestid>
   </revision>
+  <revision rev="179" vrev="1">
+    <srcmd5>4bf62d9ee5d5f6d7e2179660e75ec198</srcmd5>
+    <version>1699_20260806</version>
+    <time>1786460933</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1699_20260806:
+  * profiles: add spine cap_net_raw (bsc#1273300)</comment>
+    <requestid>1370518</requestid>
+  </revision>
 </revisionlist>
