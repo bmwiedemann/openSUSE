@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Aug  8 09:54:16 UTC 2026 - Andrei Dziahel <develop7@develop7.info>
+
+- update to 0.70.0:
+  * Diffing
+    + Improved diffing performance, particularly when diffing directories.
+  * Parsing
+    + Files with parse errors now report the position of the first error, to
+      help investigate issues.
+    + Added support for Dockerfiles and Fish shell.
+    + Improved support for Dart, Emacs Lisp, Erlang, Java, OCaml, PHP,
+      Protocol Buffers and TOML.
+    + Removed support for Elvish and SCSS (upstream parsers are no longer
+      maintained).
+  * Display
+    + Fixed an issue where files with tabs were not always aligned correctly
+      in some build configurations.
+    + Fixed an alignment issue with line numbers in side-by-side mode.
+  * Release
+    + Fixed an issue where prebuilt binaries on GitHub did not respect
+      Cargo.lock, so they used newer library versions than tested on CI. This
+      caused rendering bugs in source code with tabs.
+
+-------------------------------------------------------------------
 Sat May  2 17:57:20 UTC 2026 - Andrei Dziahel <develop7@develop7.info>
 
 - bump MSRV to 1.85

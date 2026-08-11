@@ -196,4 +196,12 @@
     + Difftastic now requires Rust 1.85 or later to build. (forwarded request 1350484 from develop7)</comment>
     <requestid>1350485</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>647124670436a10426c55501f5ed3d85</srcmd5>
+    <version>0.70.0</version>
+    <time>1786461133</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1370473</requestid>
+  </revision>
 </revisionlist>
