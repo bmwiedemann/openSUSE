@@ -23,11 +23,11 @@
 # Workaround boo#1189991
 %define _lto_cflags %{nil}
 %define rname   mscore
-%define version_lesser 4.6
+%define version_lesser 4.7
 %define fontdir %{_datadir}/fonts/%{name}
 %define docdir  %{_docdir}/%{name}
 Name:           musescore
-Version:        4.6.5
+Version:        4.7.4
 Release:        0
 Summary:        A WYSIWYG music score typesetter
 # Licenses in MuseScore are a mess. To help other maintainers I give the following overview:
@@ -62,6 +62,8 @@ Source2:        https://ftp.osuosl.org/pub/musescore/soundfont/MuseScore_General
 Source3:        https://ftp.osuosl.org/pub/musescore/soundfont/MuseScore_General/MuseScore_General_Readme.md
 Source4:        https://ftp.osuosl.org/pub/musescore/soundfont/MuseScore_General/MuseScore_General.sf3
 Source5:        README.SUSE
+# Patch for CVE-2025-56225
+Patch0:         musescore-CVE-2025-56225.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 %if 0%{?suse_version} < 1560 && 0%{?sle_version} <= 150600
@@ -90,7 +92,6 @@ BuildRequires:  cmake(Qt6GuiPrivate)
 BuildRequires:  cmake(Qt6LinguistTools)
 BuildRequires:  cmake(Qt6Network)
 BuildRequires:  cmake(Qt6NetworkAuth)
-BuildRequires:  cmake(Qt6OpenGL)
 BuildRequires:  cmake(Qt6PrintSupport)
 BuildRequires:  cmake(Qt6Qml)
 BuildRequires:  cmake(Qt6Quick)
@@ -102,28 +103,26 @@ BuildRequires:  cmake(Qt6ShaderTools)
 BuildRequires:  cmake(Qt6StateMachine)
 BuildRequires:  cmake(Qt6Svg)
 BuildRequires:  cmake(Qt6Test)
+BuildRequires:  cmake(Qt6WebSockets)
 BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  cmake(Qt6Xml)
 BuildRequires:  cmake(tinyxml2)
 BuildRequires:  pkgconfig(alsa)
-# it could use this but our flac doesnt provide the cmake file and the finder in MuseScore does not find it just via pkgconfig
-# BuildRequires:  pkgconfig(flac)
-# it looks for it but then doesnt find it.
-# BuildRequires:  pkgconfig(fluidsynth)
+BuildRequires:  pkgconfig(flac)
+# TODO: check if cmake config line is necessary for this
+BuildRequires:  pkgconfig(fluidsynth)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(harfbuzz)
-BuildRequires:  pkgconfig(jack)
-# it looks for it but then doesnt find it.
-# BuildRequires:  pkgconfig(lame)
-BuildRequires:  pkgconfig(libpulse)
+BuildRequires:  pkgconfig(lame)
 BuildRequires:  pkgconfig(libopusenc)
+BuildRequires:  pkgconfig(libpipewire-0.3)
+BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libpulse-mainloop-glib)
 BuildRequires:  pkgconfig(libpulse-simple)
 BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(opus)
 BuildRequires:  pkgconfig(portaudio-2.0)
 BuildRequires:  pkgconfig(portaudiocpp)
-BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  pkgconfig(vorbisenc)
 BuildRequires:  pkgconfig(vorbisfile)
@@ -200,14 +199,18 @@ export CXX=g++-12
        -DMUSESCORE_BUILD_CONFIGURATION=app \
        -DMUSE_APP_BUILD_MODE=release \
        -DMUE_BUILD_UNIT_TESTS=OFF \
+       -DMUE_COMPILE_USE_SYSTEM_FLAC:BOOL=ON \
        -DMUE_COMPILE_USE_SYSTEM_FREETYPE:BOOL=ON \
        -DMUE_COMPILE_USE_SYSTEM_HARFBUZZ:BOOL=ON \
+       -DMUE_COMPILE_USE_SYSTEM_LAME:BOOL=ON \
        -DMUE_COMPILE_USE_SYSTEM_OPUS:BOOL=ON \
        -DMUE_COMPILE_USE_SYSTEM_OPUSENC:BOOL=ON \
        -DMUE_COMPILE_USE_SYSTEM_TINYXML:BOOL=ON \
-       -DMUE_ENABLE_AUDIO_JACK=OFF \
+       -DMUSE_MODULE_AUDIO_PIPEWIRE:BOOL=ON \
+       -DMUSE_MODULE_NETWORK_WEBSOCKET:BOOL=ON \
        -DMUE_BUILD_UPDATE_MODULE=OFF \
        -DMUE_BUILD_CRASHPAD_CLIENT=OFF \
+       -DMUE_BUILD_IMPEXP_MNX_MODULE=OFF \
        -Wno-dev
 %cmake_build
 
@@ -238,10 +241,8 @@ install -p -m 644 demos/*.mscz %{buildroot}%{_datadir}/%{rname}-%{version_lesser
 # collect doc files
 install -d -m 755 %{buildroot}%docdir
 install -p -m 644 README.SUSE                         %{buildroot}%docdir/
-install -p -m 644 thirdparty/beatroot/COPYING         %{buildroot}%docdir/COPYING.beatroot
-install -p -m 644 thirdparty/beatroot/README.txt      %{buildroot}%docdir/README.txt.beatroot
 install -p -m 644 thirdparty/dtl/COPYING              %{buildroot}%docdir/COPYING.BSD.dtl
-install -p -m 644 src/framework/draw/thirdparty/freetype/freetype-2.13.1/README          %{buildroot}%docdir/README.freetype
+install -p -m 644 src/framework/draw/thirdparty/freetype/freetype-2.14.1/README          %{buildroot}%docdir/README.freetype
 install -p -m 644 thirdparty/intervaltree/README      %{buildroot}%docdir/README.intervaltree
 install -p -m 644 thirdparty/rtf2html/ChangeLog       %{buildroot}%docdir/ChangeLog.rtf2html
 install -p -m 644 thirdparty/rtf2html/COPYING.LESSER  %{buildroot}%docdir/COPYING.LESSER.rtf2html

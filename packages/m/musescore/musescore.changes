@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Sun Aug  9 02:41:26 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 4.7.4:
+  This update adds new East-Asian instruments and fixes several
+  minor engraving issues, accessibility bugs, and crashes.
+
+  To learn more, see the full announcements for 4.7.4 at
+  https://musescore.org/en/4.7.4
+
+-------------------------------------------------------------------
+Mon Jun 15 13:20:24 UTC 2026 - Cor Blom <cornelis@solcon.nl>
+
+- Remove sndfile BuildRequires, no longer needed.
+
+-------------------------------------------------------------------
+Sat Jun 13 19:45:51 UTC 2026 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 4.7.3:
+  * This update contains fixes for several crashes as well as the
+    total page count variable in headers & footers. We also added
+    an option to disable the low pass filter for MS Basic, which
+    should help if you found certain instruments to be too quiet
+    in 4.7.
+- Build with flac, lame and pipewire
+- Build without pulse and jack
+
+-------------------------------------------------------------------
+Wed Jun 10 07:37:16 UTC 2026 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 4,7,2:
+  * 4.7 is a feature release. For details about what is new, see:
+    https://musescore.org/en/4.7
+  * 4.7.1 mainly has stability fixes
+  * 4.7.2 has further stability improvements during startup. It
+    also contains a number of minor fixes for page numbers, bends,
+    piano pedal line hooks, and chord symbols, as well as various
+    musicxml import/export enhancements
+- Add musescore-CVE-2025-56225.patch for included Fluidsynth 
+  (from Fedora) (CVE-2025-56225)
+
+-------------------------------------------------------------------
 Mon Jan 19 19:51:37 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.6.5:
@@ -90,7 +131,7 @@ Fri Oct 10 15:29:56 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 - Update to 4.6.2:
   - This update includes critical fixes to improve app stability
     and performance.
-  For all details see https://musescore.org/en/4.6
+  For all details see https://musescore.org/en/4.6.2
 
 -------------------------------------------------------------------
 Wed Oct  8 15:36:35 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
