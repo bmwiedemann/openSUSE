@@ -99,4 +99,15 @@
 - Update Requires from pyproject.toml (forwarded request 1344306 from glaubitz)</comment>
     <requestid>1344343</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1eb56ebd579e79fe8028a22f0aa9c9fb</srcmd5>
+    <version>8.1.0</version>
+    <time>1786461223</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 8.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1370521 from glaubitz)</comment>
+    <requestid>1370537</requestid>
+  </revision>
 </revisionlist>
