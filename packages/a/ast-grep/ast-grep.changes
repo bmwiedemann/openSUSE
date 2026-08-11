@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Aug 10 07:10:53 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to version 0.45.1:
+  * 0.45.1 bump version
+  * chore: bump deps
+  * fix: match root metavariables against comments (#2868)
+  * feat(outline): add C# multiline member signatures (#2861)
+  * chore(deps): update rust crate ignore to v0.4.32 (#2864)
+  * chore(deps): update dependency oxlint to v1.77.0 (#2865)
+  * chore(deps): update dependency typescript to v7 (#2833)
+  * chore(deps): update astral-sh/setup-uv action to v9 (#2839)
+  * chore(deps): update dependency smol-toml to v1.7.1 (#2848)
+  * chore(deps): update dependency @napi-rs/cli to v3.8.2 (#2854)
+  * chore(deps): update dependency chalk to v6 (#2849)
+  * chore(deps): update rust crate clap to v4.6.5 (#2860)
+  * chore(deps): update rust crate clap_complete to v4.6.8 (#2850)
+  * chore(deps): update rust crate schemars to v1.2.2 (#2851)
+  * chore(deps): update dependency oxlint to v1.76.0 (#2852)
+  * chore(deps): update rust crate napi to v3.12.0 (#2855)
+  * chore(deps): update rust crate napi-derive to v3.6.2 (#2853)
+  * Use `std::io::IsTerminal` over `atty` (#2857)
+  * chore(deps): update dependency @ast-grep/napi to v0.45.0 (#2844)
+
+-------------------------------------------------------------------
 Fri Jul 24 06:37:46 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to version 0.45.0:
