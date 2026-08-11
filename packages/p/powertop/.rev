@@ -528,4 +528,41 @@ A powertop_libc++_fix.patch</comment>
     <comment>Fix for immutable mode</comment>
     <requestid>1325811</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>7c9cb8db1596a209169f1bbfd0d4908f</srcmd5>
+    <version>2.16</version>
+    <time>1786461306</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.16:
+  * The following sysfs tunables have been added:
+    + VM dirty ratio /proc/sys/vm/dirty_ratio 50
+    + Transparent hugepage scan sleep /sys/kernel/mm/transparent_hugepage/khugepaged/scan_sleep_millisecs 30000
+    + Framebuffer cursor blink /sys/devices/virtual/graphics/fbcon/cursor_blink 0
+    + KSM sleep interval /sys/kernel/mm/ksm/sleep_millisecs 4000
+    + KSM batch size /sys/kernel/mm/ksm/pages_to_scan 1000
+    + Autogroup scheduling /proc/sys/kernel/sched_autogroup_enabled 0
+    + Intel P-state minimum performance /sys/devices/system/cpu/intel_pstate/min_perf_pct 50
+    + Network default qdisc /proc/sys/net/core/default_qdisc fq
+    + Intel ITMT (Turbo Boost Max 3.0) /proc/sys/kernel/sched_itmt_enabled 1
+    + Intel energy performance bias /sys/devices/system/cpu/cpu*/power/energy_perf_bias balance-performance
+    + Intel energy performance preference
+      /sys/devices/system/cpu/cpufreq/policy*/energy_performance_preference balance_performance
+    + Intel Xe GPU power profile /sys/class/drm/card*/device/tile*/gt*/freq0/power_profile power_saving
+    + Enable Audio codec power management /sys/module/snd_hda_intel/parameters/power_save 1
+    + AMD GPU panel power savings /sys/class/drm/*/amdgpu/panel_power_savings 2
+  * Wildcard sysfs paths (e.g. cpu*) are now handled natively
+  * GPU tab (Intel Xe): progress bar scale now always shows the true maximum
+    value right-aligned, suppressing any overlapping tick label
+  * GPU tab: frequency bars now start at 0 instead of the hardware minimum,
+    giving a correct visual baseline
+  * GPU tab: replaced &gt; / &lt; policy markers with a four-segment colour bar (bold
+    green = floor, green = active, yellow = headroom, dim = beyond policy)
+  * GPU tab: C0/C6 idle bars merged into a single two-colour bar (red =
+    busy/C0, bright green = idle/C6) since C0 is derived from C6
+  * GPU tab: active xe power profile displayed on the Power Overview section
+  * GPU tab: only shown on systems with Intel Xe GPU and xe hwmon present
+  * CPU Frequency Stats tab: redesigned with progress bars, corrected bar width
+    and spacing, and fixed C0 active column misalignment in Idle stats</comment>
+    <requestid>1370597</requestid>
+  </revision>
 </revisionlist>
