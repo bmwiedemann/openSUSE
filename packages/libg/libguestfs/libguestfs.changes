@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug  3 13:24:12 MDT 2026 - carnold@suse.com
+
+- Update to version 1.60.1
+  lib/command.c: Ensure fds 0, 1, 2 are open in the subcommand
+  Various updates in support of Arch Linux
+  Updated translations for several languages
+- Drop patch contained in new tarball
+  Ensure-fds-0-1-2-are-open-in-the-subcommand.patch
+
+-------------------------------------------------------------------
 Tue Jul 14 13:01:08 MDT 2026 - carnold@suse.com
 
 - bsc#1271111 - guestfish initrd-list can't list our initrd due to

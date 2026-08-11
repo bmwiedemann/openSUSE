@@ -18,7 +18,7 @@
 
 Name:           libguestfs
 ExclusiveArch:  x86_64 ppc64 ppc64le s390x aarch64 riscv64
-Version:        1.60.0
+Version:        1.60.1
 Release:        0
 Summary:        Access and modify virtual machine disk images
 License:        GPL-2.0-or-later
@@ -34,8 +34,7 @@ Source101:      README
 # Patches
 Patch1:         reproducible-builds.patch
 Patch2:         drop-initviocons-from-package-list.patch
-Patch3:         Ensure-fds-0-1-2-are-open-in-the-subcommand.patch
-Patch4:         add-support-for-initrd-compression-formats.patch
+Patch3:         add-support-for-initrd-compression-formats.patch
 Patch100:       use-fuse3-for-build.patch
 
 BuildRequires:  bison
