@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 10 05:56:46 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.2.43:
+  * fix: route push completion output through logger in #249
+
+-------------------------------------------------------------------
 Mon Mar 23 12:51:39 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.2.42:
