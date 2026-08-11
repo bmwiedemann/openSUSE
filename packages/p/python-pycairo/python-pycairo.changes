@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Aug  8 07:30:27 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to 1.29.1:
+  * Update dependencies (libpng, zlib) for the Windows wheels
+  * Fix documentation build with Python 3.15
+  * Build wheels for Python 3.15 (except for 32bit Windows)
+  * Fix a memory leak in ScaledFont.text_to_glyphs()
+  * Fix some minor reference leaks
+
+-------------------------------------------------------------------
 Mon Jan 26 08:19:39 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.29.0:
