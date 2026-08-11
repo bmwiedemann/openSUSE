@@ -308,7 +308,7 @@ packagesets:
    - crypto-policies # reason: dvd:openSUSE-release
    - crypto-policies-scripts # reason: dvd:openSUSE-release
    - cryptsetup # reason: dvd:grub2
-   - cryptsetup-doc # reason: dvd:patterns-kde-kde_plasma
+   - cryptsetup-doc # reason: dvd:patterns-base-console
    - cryptsetup-lang # reason: dvd:grub2
    - ctags # reason: dvd:patterns-kde-kde
    - cups # reason: dvd:patterns-gnome-gnome
@@ -504,7 +504,7 @@ packagesets:
    - geocode-glib # reason: dvd:patterns-gnome-gnome
    - gettext-runtime # reason: dvd:grub2
    - ghostscript # reason: dvd:patterns-gnome-gnome
-   - ghostscript-fonts-grops # reason: dvd:patterns-kde-kde_plasma
+   - ghostscript-fonts-grops # reason: dvd:patterns-base-console
    - ghostscript-fonts-std # reason: dvd:openSUSE-release
    - ghostscript-x11 # reason: dvd:patterns-gnome-gnome
    - gigolo # reason: dvd:patterns-xfce-xfce
@@ -650,8 +650,8 @@ packagesets:
    - grilo-plugin-tracker # reason: dvd:patterns-gnome-gnome
    - grilo-plugins # reason: dvd:patterns-gnome-gnome
    - grilo-plugins-lang # reason: dvd:patterns-gnome-gnome
-   - groff # reason: dvd:patterns-kde-kde_plasma
-   - groff-full # reason: dvd:patterns-kde-kde_plasma
+   - groff # reason: dvd:patterns-base-console
+   - groff-full # reason: dvd:patterns-base-console
    - grub2 # reason: dvd:grub2
    - grub2-branding-openSUSE # reason: dvd:grub2-branding-openSUSE
    - grub2-common # reason: dvd:grub2
@@ -735,7 +735,7 @@ packagesets:
    - gweather4-data # reason: dvd:patterns-gnome-gnome
    - gwenview # reason: dvd:patterns-kde-kde
    - gwenview-lang # reason: dvd:patterns-kde-kde
-   - gxditview # reason: dvd:patterns-kde-kde_plasma
+   - gxditview # reason: dvd:patterns-base-console
    - gzip # reason: dvd:patterns-kde-kde
    - hack-fonts # reason: dvd:patterns-kde-kde
    - hdparm # reason: dvd:patterns-kde-kde
@@ -889,7 +889,7 @@ packagesets:
    - kdoctools # reason: dvd:patterns-kde-kde
    - kdoctools-lang # reason: dvd:patterns-kde-kde
    - kdump # reason: dvd:kdump
-   - kernel-default # reason: dvd:patterns-gnome-gnome
+   - kernel-default # reason: dvd:patterns-media-rest_cd_core
    - kernel-firmware-amdgpu # reason: dvd:patterns-media-rest_cd_core
    - kernel-firmware-ath10k # reason: dvd:patterns-media-rest_cd_core
    - kernel-firmware-ath11k # reason: dvd:patterns-media-rest_cd_core
@@ -1152,8 +1152,6 @@ packagesets:
    - kwayland6 # reason: dvd:patterns-kde-kde
    - kwin6 # reason: dvd:patterns-kde-kde
    - kwin6-lang # reason: dvd:patterns-kde-kde
-   - kwin6-x11 # reason: dvd:patterns-kde-kde
-   - kwin6-x11-lang # reason: dvd:patterns-kde-kde
    - kwordquiz # reason: dvd:patterns-kde-kde_edutainment
    - kwordquiz-lang # reason: dvd:patterns-kde-kde_edutainment
    - lastlog2 # reason: dvd:patterns-gnome-gnome
@@ -1539,7 +1537,6 @@ packagesets:
    - libQt6QuickTimeline6 # reason: dvd:patterns-kde-kde
    - libQt6QuickVectorImage6 # reason: dvd:openSUSE-release
    - libQt6QuickWidgets6 # reason: dvd:patterns-kde-kde
-   - libQt6Sensors6 # reason: dvd:patterns-kde-kde
    - libQt6ShaderTools6 # reason: dvd:patterns-kde-kde
    - libQt6SpatialAudio6 # reason: dvd:patterns-kde-kde
    - libQt6Sql6 # reason: dvd:openSUSE-release
@@ -2275,7 +2272,6 @@ packagesets:
    - libksysguard6-lang # reason: dvd:patterns-kde-kde
    - libksysguard6-plugins # reason: dvd:patterns-kde-kde
    - libkwalletbackend5-5 # reason: common_locks:expansion
-   - libkwin-x11-6 # reason: dvd:patterns-kde-kde
    - libkwin6 # reason: dvd:patterns-kde-kde
    - libkyotocabinet16 # reason: dvd:openSUSE-release
    - liblangtag1 # reason: dvd:openSUSE-release
@@ -2394,7 +2390,7 @@ packagesets:
    - libndp0 # reason: dvd:patterns-gnome-gnome
    - libneon27 # reason: dvd:patterns-gnome-gnome
    - libnetfilter_conntrack3 # reason: dvd:patterns-gnome-gnome
-   - libnetpbm11 # reason: dvd:patterns-kde-kde_plasma
+   - libnetpbm11 # reason: dvd:patterns-base-console
    - libnettle8 # reason: dvd:openSUSE-release
    - libnettle8-32bit # reason: dvd:patterns-media-rest_dvd
    - libnettle8-x86-64-v3 # reason: dvd:patterns-media-rest_dvd
@@ -2475,9 +2471,9 @@ packagesets:
    - libpango-1_0-0 # reason: dvd:openSUSE-release
    - libpangomm-1_4-1 # reason: dvd:patterns-media-rest_cd_core
    - libpangomm-2_48-1 # reason: dvd:patterns-gnome-gnome
-   - libpaper # reason: dvd:patterns-kde-kde_plasma
-   - libpaper-tools # reason: dvd:patterns-kde-kde_plasma
-   - libpaper2 # reason: dvd:patterns-kde-kde_plasma
+   - libpaper # reason: dvd:patterns-base-console
+   - libpaper-tools # reason: dvd:patterns-base-console
+   - libpaper2 # reason: dvd:patterns-base-console
    - libparted-fs-resize0 # reason: dvd:grub2
    - libparted2 # reason: dvd:grub2
    - libpathplan4 # reason: dvd:patterns-gnome-gnome_yast
@@ -3035,9 +3031,9 @@ packagesets:
    - malcontent # reason: dvd:patterns-gnome-gnome
    - malcontent-control # reason: dvd:patterns-gnome-gnome
    - malcontent-lang # reason: dvd:patterns-gnome-gnome
-   - man # reason: dvd:patterns-kde-kde_plasma
-   - man-pages-ja # reason: dvd:patterns-kde-kde_plasma
-   - man-pages-zh_CN # reason: dvd:patterns-kde-kde_plasma
+   - man # reason: dvd:patterns-base-console
+   - man-pages-ja # reason: dvd:patterns-base-console
+   - man-pages-zh_CN # reason: dvd:patterns-base-console
    - manufacturer-PPDs # reason: dvd:patterns-server-printing
    - mariadb # reason: dvd:patterns-kde-kde
    - mariadb-client # reason: dvd:patterns-kde-kde
@@ -3130,7 +3126,7 @@ packagesets:
    - net-tools-lang # reason: dvd:patterns-media-rest_cd_core
    - netcat-openbsd # reason: dvd:patterns-kde-kde
    - netcfg # reason: dvd:openSUSE-release
-   - netpbm # reason: dvd:patterns-kde-kde_plasma
+   - netpbm # reason: dvd:patterns-base-console
    - nfs-client # reason: dvd:patterns-server-file_server
    - nfs-kernel-server # reason: dvd:patterns-server-file_server
    - nftables # reason: dvd:patterns-gnome-gnome
@@ -3334,7 +3330,7 @@ packagesets:
    - perl-IO-Tty # reason: dvd:patterns-base-console
    - perl-IO-stringy # reason: dvd:patterns-server-mail_server
    - perl-IP-Country # reason: dvd:patterns-server-mail_server
-   - perl-IPC-Run3 # reason: dvd:patterns-kde-kde_plasma
+   - perl-IPC-Run3 # reason: dvd:patterns-base-console
    - perl-JSON # reason: dvd:patterns-server-mail_server
    - perl-JSON-XS # reason: dvd:patterns-server-mail_server
    - perl-LWP-MediaTypes # reason: dvd:patterns-gnome-gnome
@@ -3460,7 +3456,6 @@ packagesets:
    - plasma6-print-manager-lang # reason: dvd:patterns-kde-kde
    - plasma6-sddm-theme-openSUSE # reason: dvd:patterns-kde-kde
    - plasma6-session # reason: dvd:patterns-kde-kde
-   - plasma6-session-x11 # reason: dvd:patterns-kde-kde
    - plasma6-systemmonitor # reason: dvd:patterns-kde-kde
    - plasma6-systemmonitor-lang # reason: dvd:patterns-kde-kde
    - plasma6-theme-openSUSE # reason: dvd:patterns-kde-kde
@@ -3519,7 +3514,7 @@ packagesets:
    - procps-lang # reason: dvd:patterns-gnome-gnome
    - psmisc # reason: dvd:patterns-kde-kde
    - psmisc-lang # reason: dvd:patterns-kde-kde
-   - psutils # reason: dvd:patterns-kde-kde_plasma
+   - psutils # reason: dvd:patterns-base-console
    - ptools # reason: dvd:patterns-kde-kde
    - publicsuffix # reason: dvd:openSUSE-release
    - pullin-bcm43xx-firmware # reason: dvd:patterns-media-rest_cd_core
@@ -3722,7 +3717,6 @@ packagesets:
    - qt6-printsupport-cups # reason: dvd:patterns-kde-kde
    - qt6-qt5compat-imports # reason: dvd:patterns-kde-kde
    - qt6-quick3d-imports # reason: dvd:patterns-kde-kde
-   - qt6-sensors # reason: dvd:patterns-kde-kde
    - qt6-sql-mysql # reason: dvd:patterns-kde-kde
    - qt6-sql-sqlite # reason: dvd:patterns-kde-kde
    - qt6-texttospeech # reason: dvd:patterns-kde-kde
@@ -3861,7 +3855,7 @@ packagesets:
    - snapshot-lang # reason: dvd:patterns-gnome-gnome
    - snmp-mibs # reason: dvd:patterns-gnome-gnome
    - socat # reason: dvd:patterns-kde-kde
-   - soelim-common # reason: dvd:patterns-kde-kde_plasma
+   - soelim-common # reason: dvd:patterns-base-console
    - solid-imports # reason: dvd:patterns-kde-kde
    - solid-tools # reason: dvd:patterns-kde-kde
    - sonnet # reason: dvd:patterns-kde-kde
@@ -3927,7 +3921,7 @@ packagesets:
    - system-user-ftp # reason: dvd:patterns-server-file_server
    - system-user-lp # reason: dvd:openSUSE-release
    - system-user-mail # reason: dvd:patterns-base-console
-   - system-user-man # reason: dvd:patterns-kde-kde_plasma
+   - system-user-man # reason: dvd:patterns-base-console
    - system-user-news # reason: dvd:patterns-server-mail_server
    - system-user-nobody # reason: dvd:patterns-gnome-gnome
    - system-user-pulse # reason: dvd:patterns-gnome-gnome

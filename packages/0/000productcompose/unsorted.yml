@@ -1711,15 +1711,10 @@ unsorted:
   - bubblewrap-zsh-completion 
   - bucklespring 
   - buckygen 
-  - budgie-app-launcher-applet 
-  - budgie-applications-menu-applet 
   - budgie-backgrounds 
-  - budgie-brightness-controller-applet 
-  - budgie-clockworks-applet 
   - budgie-control-center 
   - budgie-control-center-bash-completion 
   - budgie-control-center-lang 
-  - budgie-countdown-applet 
   - budgie-desktop 
   - budgie-desktop-branding-openSUSE 
   - budgie-desktop-branding-upstream 
@@ -1729,32 +1724,10 @@ unsorted:
   - budgie-desktop-services 
   - budgie-desktop-view 
   - budgie-desktop-view-lang 
-  - budgie-dropby-applet 
-  - budgie-extras 
-  - budgie-extras-daemon 
-  - budgie-extras-lang 
-  - budgie-fuzzyclock-applet 
-  - budgie-hotcorners-applet 
-  - budgie-kangaroo-applet 
-  - budgie-keyboard-autoswitch-applet 
-  - budgie-network-manager-applet 
-  - budgie-previews 
-  - budgie-quickchar 
-  - budgie-quicknote-applet 
-  - budgie-recentlyused-applet 
-  - budgie-rotation-lock-applet 
   - budgie-screensaver 
   - budgie-screensaver-lang 
   - budgie-session 
   - budgie-session-lang 
-  - budgie-showtime-applet 
-  - budgie-takeabreak-applet 
-  - budgie-visualspace-applet 
-  - budgie-wallstreet 
-  - budgie-weathershow-applet 
-  - budgie-window-shuffler 
-  - budgie-workspace-stopwatch-applet 
-  - budgie-workspace-wallpaper-applet 
   - buffer 
   - bugwarden 
   - bugzilla 
@@ -1825,6 +1798,7 @@ unsorted:
   - bumblebee-status-module-yubikey 
   - bumblebee-status-module-zfs 
   - bumblebee-status-theme-powerline 
+  - bun 
   - bup 
   - busybox-adduser 
   - busybox-attr 
@@ -7512,7 +7486,6 @@ unsorted:
   - gnote-lang 
   - gns3-gui 
   - gns3-server 
-  - gnu-cobol 
   - gnu-efi-apps 
   - gnu-efi-devel 
   - gnu-free-fonts 
@@ -7986,6 +7959,9 @@ unsorted:
   - gprompter 
   - gpsbabel 
   - gpsbabel-gui 
+  - gpscorrelate 
+  - gpscorrelate-doc 
+  - gpscorrelate-gui 
   - gpsd 
   - gpsd-clients 
   - gpsd-devel 
@@ -10884,7 +10860,9 @@ unsorted:
   - kwidgetsaddons-devel 
   - kwikdisk 
   - kwin6-devel 
+  - kwin6-x11 
   - kwin6-x11-devel 
+  - kwin6-x11-lang 
   - kwindowsystem-devel 
   - kwrite 
   - kxml 
@@ -11675,6 +11653,7 @@ unsorted:
   - libQt6RemoteObjectsQml6 
   - libQt6Scxml6 
   - libQt6ScxmlQml6 
+  - libQt6Sensors6 
   - libQt6SensorsQuick6 
   - libQt6SerialBus6 
   - libQt6SerialPort6 
@@ -14389,10 +14368,6 @@ unsorted:
   - libkdcraw-qt5 
   - libkdcraw-qt5-devel 
   - libkddockwidgets-qt6-3 
-  - libkdecoration2-devel 
-  - libkdecorations2-5 
-  - libkdecorations2-5-lang 
-  - libkdecorations2private10 
   - libkdegames-devel 
   - libkdepim-devel 
   - libkdevplatform65 
@@ -14492,6 +14467,7 @@ unsorted:
   - libksysguard6-devel 
   - libktoblzcheck1 
   - libktorrent-devel 
+  - libkwin-x11-6 
   - libkyotocabinet-devel 
   - liblagraph1 
   - liblagraphx1 
@@ -20001,6 +19977,7 @@ unsorted:
   - neovim-lang 
   - neowofetch 
   - nerdctl 
+  - nerdfonts-symbolsonly-fonts 
   - nestopia 
   - net-snmp-devel 
   - net-snmp-devel-32bit 
@@ -20846,6 +20823,7 @@ unsorted:
   - opencloud-dolphin 
   - opencloud-extensions-resources 
   - opencloud-server 
+  - opencode 
   - openconnect-devel 
   - openconnect-doc 
   - opencsg-devel 
@@ -20988,6 +20966,8 @@ unsorted:
   - openttd-opengfx 
   - openttd-openmsx 
   - openttd-opensfx 
+  - opentui 
+  - opentui-devel 
   - opentyrian 
   - openucx-tools 
   - openvdb-devel 
@@ -23335,6 +23315,7 @@ unsorted:
   - plasma6-nm-strongswan 
   - plasma6-sdk 
   - plasma6-sdk-lang 
+  - plasma6-session-x11 
   - plasma6-vault 
   - plasma6-vault-backend-cryfs 
   - plasma6-vault-backend-encfs 
@@ -24414,7 +24395,6 @@ unsorted:
   - python311-vcs-versioning 
   - python311-wheel 
   - python311-x86-64-v3 
-  - python311-yacron 
   - python312 
   - python312-32bit 
   - python312-argcomplete 
@@ -25914,6 +25894,7 @@ unsorted:
   - python313-feedgen 
   - python313-feedgenerator 
   - python313-feedparser 
+  - python313-feedparser-sgmllib 
   - python313-ffmpeg-python 
   - python313-fido2 
   - python313-fields 
@@ -28368,7 +28349,6 @@ unsorted:
   - python313-xvfbwrapper 
   - python313-xxhash 
   - python313-xyzservices 
-  - python313-yacron 
   - python313-yamale 
   - python313-yamlcore 
   - python313-yamldoc 
@@ -29930,6 +29910,7 @@ unsorted:
   - python314-feedgen 
   - python314-feedgenerator 
   - python314-feedparser 
+  - python314-feedparser-sgmllib 
   - python314-ffmpeg-python 
   - python314-fido2 
   - python314-fields 
@@ -32446,7 +32427,6 @@ unsorted:
   - python314-xvfbwrapper 
   - python314-xxhash 
   - python314-xyzservices 
-  - python314-yacron 
   - python314-yamale 
   - python314-yamlcore 
   - python314-yamldoc 
@@ -33023,6 +33003,7 @@ unsorted:
   - qt6-scxml-private-devel 
   - qt6-scxmlqml-devel 
   - qt6-scxmlqml-private-devel 
+  - qt6-sensors 
   - qt6-sensors-devel 
   - qt6-sensors-docs-html 
   - qt6-sensors-docs-qch 
