@@ -320,4 +320,14 @@
   * Add CHANGELOG.md entry for v2.4.2 (#4984) (forwarded request 1357957 from ph03nix)</comment>
     <requestid>1357963</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>719e571d8408ff4783e432219a361c4a</srcmd5>
+    <version>2.4.5</version>
+    <time>1786461266</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.4.5:
+  * Bump Go to 1.26.5, security-flagged dependencies, and FDW to 2.2.5 for v2.4.5 (#5023)
+  * Fix release workflow homebrew PR title check (#4983) (#5004) (forwarded request 1370548 from ph03nix)</comment>
+    <requestid>1370553</requestid>
+  </revision>
 </revisionlist>

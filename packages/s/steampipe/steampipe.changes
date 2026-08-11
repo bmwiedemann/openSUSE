@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 10 13:52:40 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 2.4.5:
+  * Bump Go to 1.26.5, security-flagged dependencies, and FDW to 2.2.5 for v2.4.5 (#5023)
+  * Fix release workflow homebrew PR title check (#4983) (#5004)
+
+-------------------------------------------------------------------
 Mon Jun 08 11:40:28 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update to version 2.4.4:
