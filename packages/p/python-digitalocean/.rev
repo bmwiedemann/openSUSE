@@ -50,4 +50,16 @@
 </comment>
     <requestid>1127964</requestid>
   </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>ea9179accea7d7585b63aad0c9c4ed81</srcmd5>
+    <version>1.17.0</version>
+    <time>1786543940</time>
+    <user>anag_factory</user>
+    <comment>- Add patch no-body-with-204-status.patch:
+  * Cookie header stripping was a red herring, do not return a body when
+    the status code is 204.
+- Remove upper pin on urllib3.
+- Clean up Requires.</comment>
+    <requestid>1370782</requestid>
+  </revision>
 </revisionlist>

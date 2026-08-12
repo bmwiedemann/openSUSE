@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Aug 12 05:59:39 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch no-body-with-204-status.patch:
+  * Cookie header stripping was a red herring, do not return a body when
+    the status code is 204.
+- Remove upper pin on urllib3.
+- Clean up Requires.
+
+-------------------------------------------------------------------
 Tue Nov 21 16:58:50 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
 
 - Clean up the SPEC file

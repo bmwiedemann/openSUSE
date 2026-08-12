@@ -1,7 +1,7 @@
 #
 # spec file for package python-digitalocean
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,26 +22,22 @@ Version:        1.17.0
 Release:        0
 Summary:        Python module for Digital Ocean droplets
 License:        LGPL-3.0-only
-Group:          Development/Languages/Python
 URL:            https://github.com/koalalorenzo/python-digitalocean/
 Source:         https://github.com/koalalorenzo/python-digitalocean/archive/v%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Do not return a body in the firewall mocks
+Patch0:         no-body-with-204-status.patch
 BuildRequires:  %{python_module jsonpickle}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.2.1}
 BuildRequires:  %{python_module responses}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module urllib3 < 2.0.6}
+BuildRequires:  %{python_module urllib3}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  unzip
 Requires:       python-jsonpickle
-Requires:       python-pytest
 Requires:       python-requests >= 2.2.1
-Requires:       python-responses
-# urllib3 2.0.6 strips Cookies header, which changes the behavior of requests, which in turn breaks the Firewall tests
-Requires:       python-urllib3 < 2.0.6
 BuildArch:      noarch
 %python_subpackages
 
@@ -68,6 +64,6 @@ export LANG=en_US.UTF-8
 %doc README.md
 %license LICENSE.txt
 %{python_sitelib}/digitalocean
-%{python_sitelib}/python_digitalocean-%{version}*-info
+%{python_sitelib}/python_digitalocean-%{version}.dist-info
 
 %changelog
