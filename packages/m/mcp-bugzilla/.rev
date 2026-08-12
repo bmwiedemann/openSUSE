@@ -7,4 +7,51 @@
     <comment>New package mcp-bugzilla: rename of bugzilla-mcp to match the upstream project name (github.com/openSUSE/mcp-bugzilla). Carries Provides/Obsoletes: bugzilla-mcp (and python313-bugzilla-mcp) for clean migration. A separate delete request for the old bugzilla-mcp package accompanies this.</comment>
     <requestid>1367354</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f988fa6c78719c314ff520ac135085c2</srcmd5>
+    <version>0.19.0</version>
+    <time>1786543881</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.19.0
+
+Three upstream releases since 0.16.0. The bulk of the work is output
+control on the read tools, aimed at not flooding an MCP client's context
+on busy bugs: bug_comments, bug_history and list_attachments gained
+filtering and limits, and bug_info gained native include_fields /
+exclude_fields that are forwarded unchanged to the Bug.get API. New
+get_bug_flags and update_bug_flag tools cover reading and setting bug
+flags such as needinfo. Two real fixes: non-JSON Bugzilla responses (a
+proxy or WAF returning HTML) now report the HTTP status, content type
+and a body snippet instead of a bare JSONDecodeError, and Bugzilla's
+integer is_private/is_obsolete flags are coerced to booleans in
+download_attachment results, which was failing FastMCP schema
+validation.
+
+0.17.0 added anonymous access -- the server now runs with no Bugzilla
+API key and sends no credentials -- and renamed the CLI options
+(--api-key-header becomes --mcp-auth-header, --api-key becomes
+--bugzilla-api-key, --use-auth-header becomes --bugzilla-auth-mode
+bearer). The old names still work and log a deprecation warning; I
+verified both sets are present in --help on the built RPM. 0.18.0 is a
+reissue of 0.17.0 after a premature PyPI release.
+
+Packaging: the only spec change is the fastmcp floor, 3.4.2 -&gt; 3.4.6,
+matching upstream's own dependency (upstream pins fastmcp==3.4.6; the
+floor is the usual downstream relaxation, as the previous 3.4.2 floor
+was for upstream's ==3.4.2). Factory already carries fastmcp 3.4.7 and
+the local build was done against it, so this resolves in Factory today.
+
+Verified on aarch64: build green, rpmlint 0 errors / 0 warnings, %check
+(import mcp_bugzilla) passes against fastmcp 3.4.7, and mcp-bugzilla
+--help runs from the installed RPM. spec-cleaner --remove-groups
+--pkgconfig --perl --tex is a no-op.
+
+One note so it is not mistaken for a regression: devel:tools currently
+shows this unresolvable on openSUSE_Tumbleweed because that snapshot
+still serves fastmcp 3.4.5; it clears when the snapshot picks up 3.4.7.
+The Leap 16.0/16.1 repos in devel:tools were already unresolvable before
+this change -- they lack python313-httpx-retries and python313-uv-build
+entirely, which this update does not touch.</comment>
+    <requestid>1370723</requestid>
+  </revision>
 </revisionlist>

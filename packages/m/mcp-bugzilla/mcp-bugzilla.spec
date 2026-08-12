@@ -21,20 +21,20 @@
 # not a multi-flavour module.
 %define pythons %{primary_python}
 Name:           mcp-bugzilla
-Version:        0.16.0
+Version:        0.19.0
 Release:        0
 Summary:        Model Context Protocol server for Bugzilla
 License:        Apache-2.0
 URL:            https://github.com/openSUSE/mcp-bugzilla
 Source:         https://files.pythonhosted.org/packages/source/m/mcp_bugzilla/mcp_bugzilla-%{version}.tar.gz
-BuildRequires:  %{primary_python}-fastmcp >= 3.4.2
+BuildRequires:  %{primary_python}-fastmcp >= 3.4.6
 BuildRequires:  %{primary_python}-httpx-retries >= 0.5.0
 BuildRequires:  %{primary_python}-pip
 BuildRequires:  %{primary_python}-uv-build
 BuildRequires:  %{primary_python}-wheel
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       %{primary_python}-fastmcp >= 3.4.2
+Requires:       %{primary_python}-fastmcp >= 3.4.6
 Requires:       %{primary_python}-httpx-retries >= 0.5.0
 Provides:       bugzilla-mcp = %{version}-%{release}
 Obsoletes:      bugzilla-mcp < %{version}

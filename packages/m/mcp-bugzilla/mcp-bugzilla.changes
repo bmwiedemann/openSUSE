@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Aug 11 15:55:11 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.19.0:
+  * Add get_bug_flags and update_bug_flag tools to list, set, grant,
+    deny or clear bug flags such as needinfo or blocker
+  * bug_comments gained include_fields, exclude_creators and limit to
+    keep large comment threads from flooding the client context; the
+    include_fields default is now a lean field set, pass
+    include_fields=None for the full objects
+  * bug_history gained changed_fields, exclude_authors and limit to
+    drop low-signal churn such as bot edits and cc changes
+  * bug_info gained native include_fields and exclude_fields,
+    forwarded unchanged to the Bug.get API
+  * list_attachments gained exclude_obsolete, patches_only and limit
+  * Surface non-JSON Bugzilla responses with their HTTP status,
+    content type and a body snippet instead of a bare JSONDecodeError
+  * Coerce Bugzilla integer is_private/is_obsolete flags to booleans
+    in download_attachment results, fixing a schema validation error
+  * Split the Bugzilla client and BugzillaAPIError out of mcp_utils
+    into a new lib_bugzilla module, with lazy re-exports for
+    backward compatibility
+- Update to 0.18.0:
+  * Reissue of 0.17.0 after a premature PyPI release
+- Update to 0.17.0:
+  * Support anonymous access, so the server works without a Bugzilla
+    API key and sends no credentials
+  * Rename the CLI options for clarity: --api-key-header becomes
+    --mcp-auth-header, --api-key becomes --bugzilla-api-key and
+    --use-auth-header becomes --bugzilla-auth-mode bearer; the old
+    names still work but log a deprecation warning
+  * Remove the status field from the bugs_quicksearch tool signature
+  * Handle empty status, missing bug ids and uninitialized cli_args
+- Require fastmcp >= 3.4.6 to match the upstream dependency floor
+
+-------------------------------------------------------------------
 Thu Jul 23 08:59:10 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Rename package from bugzilla-mcp to mcp-bugzilla to match the
