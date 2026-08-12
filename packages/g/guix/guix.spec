@@ -1,7 +1,7 @@
 #
 # spec file for package guix
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2023 Jonathan Brielmaier <j.brielmaier@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -86,7 +86,7 @@ Requires:       gzip
 Requires:       libgcrypt-devel
 Requires(pre):  %{install_info_prereq}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-ExclusiveArch:  %{ix86} x86_64 armv7hl aarch64 ppc64le
+ExclusiveArch:  %{ix86} x86_64 armv7hl aarch64 ppc64le riscv64
 Provides:       %{_libexecdir}/guix/guile
 
 %description

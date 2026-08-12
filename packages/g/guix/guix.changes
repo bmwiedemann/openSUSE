@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 28 06:42:17 UTC 2026 - Andreas Schwab <schwab@suse.de>
+
+- Enable riscv64 support
+
+-------------------------------------------------------------------
 Fri Oct  3 09:24:51 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
 
 - Remove the infodir directory if it exists.
