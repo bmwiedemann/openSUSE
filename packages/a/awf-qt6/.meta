@@ -1,0 +1,9 @@
+<package name="awf-qt6" project="openSUSE:Factory">
+  <title></title>
+  <description>A widget factory is a theme preview application for GTK and Qt. It
+displays the various widget types in a single window allowing to see
+the visual effect of the applied theme.
+
+This package provides the program for Qt 6.</description>
+  <url>https://github.com/luigifab/awf-extended</url>
+</package>

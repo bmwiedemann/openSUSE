@@ -1,0 +1,46 @@
+-------------------------------------------------------------------
+Thu Jul 23 15:00:00 UTC 2026 - Fabrice Creuzot <code@luigifab.fr>
+
+- Rename package names in Requires and Recommends
+  this changes nothing for awf-qt5 and qt5-globalqss/qt6-globalqss
+  but this fixes dependency resolution for awf-qt6
+
+-------------------------------------------------------------------
+Tue Jul  7 20:00:00 UTC 2026 - Fabrice Creuzot <code@luigifab.fr>
+
+- New upstream release (4.2.0)
+  * add/use make install
+  * use variables in camelCase (except for some globals variables)
+  * add Less... disabled submenu after More... submenu
+  * add Qt version for dialogs titles
+  * add colors for debug/trace/error messages
+  * update man page and rename the option --list-themes to --list
+  * disable statusbar update on menubar hover
+  * do not use debug dll for windows
+  * fix clear inspector without gqss
+  * fix update shortcuts on hover for More... submenu
+  * prevent assigning the same shortcut to multiple menuitems
+  * add calendar/sliders in calendar/sliders dialogs
+  * set focus on the first toolbar button
+
+-------------------------------------------------------------------
+Tue May  5 20:00:00 UTC 2026 - Fabrice Creuzot <code@luigifab.fr>
+
+- New upstream release (4.1.0)
+  * add statusbar flash on statusbar update
+  * update theme and selected menu on desktop theme change
+  * fix some memory leaks
+  * fix configure.ac
+  * update translations
+  * add windows (xp) support
+  * add toolbar tooltips
+  * add empty calendar/sliders dialogs
+  * add default icons for menu items and toolbar items
+  * enable qtinspector window without globalqss
+     and add 1s delay before applying QSS
+  * fix vertical qslider
+
+-------------------------------------------------------------------
+Tue Mar  3 20:00:00 UTC 2026 - Fabrice Creuzot <code@luigifab.fr>
+
+- Initial openSUSE package release
