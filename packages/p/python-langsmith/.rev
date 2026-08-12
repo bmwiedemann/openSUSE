@@ -166,4 +166,23 @@ Built for openSUSE_Tumbleweed/aarch64 with 0 rpmlint badness; %check passes
     <comment>Update to 0.10.17 (supersedes SR 1370169, which carried 0.10.16): adds replicas to RunTrees created from headers or dotted order, sanitizes credentials in git remote URLs. The python314 iscoroutinefunction patch is still needed (upstream PR 3347 remains open) and still applies cleanly. Built and verified on aarch64: 421 tests passed per flavour, rpmlint 0 errors / 0 warnings / 0 badness, source_validator clean.</comment>
     <requestid>1370302</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>dd7bd094ca28c75222efdd9a4d764654</srcmd5>
+    <version>0.10.18</version>
+    <time>1786543944</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.10.18
+
+Upstream point release covering serialisation performance, project tags and
+an environment-variable flag. No dependency floors changed -- the dependency
+block is byte-identical to 0.10.17.
+
+langsmith-python314-iscoroutinefunction.patch is still required and kept;
+upstream has not fixed the asyncio.iscoroutinefunction use in
+_beta_decorator.py and the issue remains open.
+
+Verified on aarch64: build green, 432 tests passed and 7 deselected on each
+of python313 and python314, rpmlint 0 errors / 0 warnings / 0 badness.</comment>
+    <requestid>1370779</requestid>
+  </revision>
 </revisionlist>

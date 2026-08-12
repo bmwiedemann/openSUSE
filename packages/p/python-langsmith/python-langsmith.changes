@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Aug 12 05:18:46 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.10.18:
+  * Add LANGSMITH_EXCLUDE_INPUTS_ON_PATCH to skip inputs on patch
+  * Support tags when creating datasets and experiments
+  * Do not swallow KeyboardInterrupt/SystemExit in serde
+  * Performance improvements in the JSON serialization path
+  * Documentation clarifications for the serialization helpers
+
+-------------------------------------------------------------------
 Sat Aug  8 04:45:50 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.10.17:
