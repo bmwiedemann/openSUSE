@@ -48,4 +48,25 @@ Built and verified on aarch64: 190 tests pass on both python313 and python314,
 rpmlint 0 errors / 0 warnings / 0 badness, source_validator clean.</comment>
     <requestid>1370145</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3f315e17ae2222d83b68195367672623</srcmd5>
+    <version>1.5.5</version>
+    <time>1786543938</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.5.5
+
+Upstream raises its langchain-core floor from &gt;= 1.5.2 to &gt;= 1.5.4; that is
+the only dependency change. The floor is encoded honestly rather than
+lowered, which makes this a lockstep pair with python-langchain-core 1.5.4,
+submitted alongside it -- please take the two together.
+
+The ordering is a convenience rather than a landmine: 1.5.5 was also built
+and tested against langchain-core 1.5.3 and passed all 194 tests, because
+OutputTokenDetails, the one new import, already exists there. So the floor
+reflects upstream's declared minimum, not a hard runtime requirement.
+
+Verified on aarch64 against langchain-core 1.5.4: 194 tests passed on each of
+python313 and python314, rpmlint 0 errors / 0 warnings.</comment>
+    <requestid>1370781</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Aug 12 05:23:10 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.5.5:
+  * Report reasoning tokens via output_token_details in usage metadata
+  * Raise a clearer error when Anthropic credentials are missing
+  * Fix source path handling for file renames in the Anthropic tools
+    middleware
+  * Refresh bundled model profile data
+- Require langchain-core >= 1.5.4
+
+-------------------------------------------------------------------
 Fri Aug  7 05:04:55 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.5.4:
