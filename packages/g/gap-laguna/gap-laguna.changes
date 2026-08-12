@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 14 10:33:26 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.10.1
+  * Fixed the testsuite to explicitly load the smallgrp module
+    required for testing
+
+-------------------------------------------------------------------
 Tue Aug 11 15:40:49 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.10.0

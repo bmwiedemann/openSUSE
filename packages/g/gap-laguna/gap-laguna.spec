@@ -17,7 +17,7 @@
 
 
 Name:           gap-laguna
-Version:        3.10.0
+Version:        3.10.1
 Release:        0
 Summary:        GAP: Lie AlGebras and UNits of group Algebras
 License:        GPL-2.0-or-later
