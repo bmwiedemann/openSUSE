@@ -253,8 +253,8 @@ DESKTOP_PATH=${DESKTOP_PATH//\/\//\/}
 # desktop files placed to its build directory.
 SUDF_DIR=$RPM_BUILD_DIR
 
-mkdir -p $SUDF_DIR/suse_update_desktop_file/update-desktop-files/$DESKTOP_NAME
-cp -v "$FILE" $SUDF_DIR/suse_update_desktop_file/update-desktop-files/$DESKTOP_NAME/$DESKTOP_NAME-upstream.desktop
+mkdir -p "$SUDF_DIR/suse_update_desktop_file/update-desktop-files/$DESKTOP_NAME"
+cp -v "$FILE" "$SUDF_DIR/suse_update_desktop_file/update-desktop-files/$DESKTOP_NAME/$DESKTOP_NAME-upstream.desktop"
 #END Upstreaming help
 #
 # update Categories
@@ -378,10 +378,10 @@ GENERIC_CHANGES=false
 TRANSLATION_CHANGES=false
 DEADPACKAGE_SUCCESS=false
 shopt -s nullglob
-sed '/^\(Name\|GenericName\|Comment\|Keywords\)\[/d' "$FILE" >$SUDF_DIR/suse_update_desktop_file/update-desktop-files/$DESKTOP_NAME/$DESKTOP_NAME-downstream-no-translation.desktop
+sed '/^\(Name\|GenericName\|Comment\|Keywords\)\[/d' "$FILE" >"$SUDF_DIR/suse_update_desktop_file/update-desktop-files/$DESKTOP_NAME/$DESKTOP_NAME-downstream-no-translation.desktop"
 # Insert translations from the downstream
 ORIG_DIR=$PWD
-cd $SUDF_DIR/suse_update_desktop_file/update-desktop-files/$DESKTOP_NAME
+cd "$SUDF_DIR/suse_update_desktop_file/update-desktop-files/$DESKTOP_NAME"
 sed '/^\(Name\|GenericName\|Comment\|Keywords\)\[/d' $DESKTOP_NAME-upstream.desktop >$DESKTOP_NAME-upstream-no-translation.desktop
 if [ "$I18N" != "no" ]; then
     sed "s@^Name=@_&Name($DESKTOP_NAME.desktop): @;s@^GenericName=@_&GenericName($DESKTOP_NAME.desktop): @;s@^Comment=@_&Comment($DESKTOP_NAME.desktop): @;s@^Keywords=@_&Keywords($DESKTOP_NAME.desktop): @" $FILE >$DESKTOP_NAME-downstream-no-translation-desktop_translations.desktop
@@ -419,21 +419,21 @@ if [ "$I18N" != "no" ]; then
     sed -i "s@\"\(Name\|GenericName\|Comment\|Keywords\)($DESKTOP_NAME.desktop): @\"@" po/$DESKTOP_NAME.pot
     rm $DESKTOP_NAME-downstream-no-translation-desktop_translations.desktop $DESKTOP_NAME-downstream-no-translation-desktop_translations.desktop.h $DESKTOP_NAME-downstream-translated-raw.desktop
     mkdir -p deadpackage/po
-    if test -d $ORIG_DIR/po ; then
+    if test -d "$ORIG_DIR/po" ; then
         echo -n "" >$DESKTOP_NAME-deadpackage-po.diff
         echo -n "" >$DESKTOP_NAME-deadpackage-po-upstreamfirst.diff
         for PO in po/*.po po/$DESKTOP_NAME.pot ; do
-            if test -f $ORIG_DIR/$PO ; then
-                msgcat --use-first $PO $ORIG_DIR/$PO -o deadpackage/$PO
-                diff -u $ORIG_DIR/$PO deadpackage/$PO >>$DESKTOP_NAME-deadpackage-po.diff
-                msgcat --use-first $ORIG_DIR/$PO $PO -o deadpackage/$PO
-                diff -u $ORIG_DIR/$PO deadpackage/$PO >>$DESKTOP_NAME-deadpackage-po-upstreamfirst.diff
+            if test -f "$ORIG_DIR/$PO" ; then
+                msgcat --use-first $PO "$ORIG_DIR/$PO" -o deadpackage/$PO
+                diff -u "$ORIG_DIR/$PO" deadpackage/$PO >>$DESKTOP_NAME-deadpackage-po.diff
+                msgcat --use-first "$ORIG_DIR/$PO" $PO -o deadpackage/$PO
+                diff -u "$ORIG_DIR/$PO" deadpackage/$PO >>$DESKTOP_NAME-deadpackage-po-upstreamfirst.diff
             else
                 diff -u /dev/null $PO >>$DESKTOP_NAME-deadpackage-po.diff
                 diff -u /dev/null $PO >>$DESKTOP_NAME-deadpackage-po-upstreamfirst.diff
             fi
         done
-        sed -i 's:^\(---\|\+\+\+\) deadpackage/:\1 :;s:^\(---\|\+\+\+\) '$ORIG_DIR/':\1 :' $DESKTOP_NAME-deadpackage-po.diff $DESKTOP_NAME-deadpackage-po-upstreamfirst.diff
+        sed -i 's:^\(---\|\+\+\+\) deadpackage/:\1 :;s:^\(---\|\+\+\+\) '"$ORIG_DIR"'/:\1 :' $DESKTOP_NAME-deadpackage-po.diff $DESKTOP_NAME-deadpackage-po-upstreamfirst.diff
         DEADPACKAGE_SUCCESS=true
         rm -rf deadpackage
     fi
@@ -516,7 +516,7 @@ rpm source from $PWD to get translations to older products.
 $EOF
 -===========================================================================
 EOF
-cd $ORIG_DIR
+cd "$ORIG_DIR"
 #END Upstreaming help
 
 if [ "$I18N" = "no" ]; then

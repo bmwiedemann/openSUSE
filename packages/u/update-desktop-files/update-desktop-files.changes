@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug  5 09:36:45 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.de>
+
+- Quote the build directory paths in suse_update_desktop_file.sh, they
+  break the upstreaming helper when they contain whitespace
+
+-------------------------------------------------------------------
 Mon Mar  2 09:15:56 UTC 2026 - Stanislav Brabec <sbrabec@suse.com>
 
 - Add support for upstreaming of desktop files translated by
