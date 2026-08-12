@@ -1911,4 +1911,15 @@ Fixes a critical bug in version 0.6.2, crashes when using internet services.
     <comment></comment>
     <requestid>1368687</requestid>
   </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>2756eb1a6cb197d6501eb8e956cafd4c</srcmd5>
+    <version>1.2.27</version>
+    <time>1786543892</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.2.27
+  + Fixed custom palette colors under appearance settings sometimes not applying to some UI elements, such as the menu bar and playlist tabs, until a further edit or restart
+  + Removed dead RadioBrowser API mirror servers that no longer exist, avoiding failed lookups before falling back when the service is unreachable
+</comment>
+    <requestid>1370738</requestid>
+  </revision>
 </revisionlist>

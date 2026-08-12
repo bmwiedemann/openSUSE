@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 11 20:11:57 UTC 2026 - Jonas Kvinge <jonaski@opensuse.org>
+
+- Update to version 1.2.27
+  + Fixed custom palette colors under appearance settings sometimes not applying to some UI elements, such as the menu bar and playlist tabs, until a further edit or restart
+  + Removed dead RadioBrowser API mirror servers that no longer exist, avoiding failed lookups before falling back when the service is unreachable
+
+-------------------------------------------------------------------
 Thu Jul 30 19:05:08 UTC 2026 - Jonas Kvinge <jonaski@opensuse.org>
 
 - Update to version 1.2.26
