@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Aug 12 00:54:00 UTC 2026 - Armin Seuchter <a.seuchter@gmail.com>
+
+- Update to 0.6.6
+  * Correctly differentiate between RPAD, RSTICK, LPAD, and DPAD
+  * Fix DualShock 4 and DualSense bugging out after Steam Controller (2026) support was added
+  * DualShock 4: Drop support for ancient kernels
+  * Fix moving right stick on DualShock 4 and DualSense causing the controller to rumble by default
+  
+-------------------------------------------------------------------
+Thu Aug 06 21:00:00 UTC 2026 - Armin Seuchter <a.seuchter@gmail.com>
+
+- Update to 0.6.4
+  * Vendor hidraw-pure again for now
+  * Declare dependencies in pyproject.toml
+  * Fully migrate dependencies to pyproject.toml
+
+- Update to 0.6.3
+  * Initial Steam Controller (2026) support
+  * Fix DS5 BT disconnect, fix disconnect for generic evdev controllers too
+  * Get DS5 rumble working over evdev
+  * Stop using deprecated gtk-edit/gtk-save icons
+  * Stop overriding python-hidraw-pure
+  * Stop vendoring python-hidraw-pure
+  * Silence libayatana-appindicator is deprecated warning
+  * Fix when controller profile had a defined icon but it was missing
+  * Fix showing right stick input mapping
+  * Fix showing DPAD in input mapper
+  * Log all errors when failing to handle a new device
+  * Log date and time in the logs too
+  * Fix: Add confirmation dialog when tray icon fails
+
+-------------------------------------------------------------------
 Tue Jul 28 16:27:34 UTC 2026 - Jannik Seiler <seil0@mosad.xyz>
 
 - Update to 0.6.2
@@ -13,10 +45,11 @@ Tue Jul 28 16:27:34 UTC 2026 - Jannik Seiler <seil0@mosad.xyz>
   * Do not attempt to load release notes for dev builds
   * run.sh: Always run sc-controller in debug mode and sleep after killing daemons
   * Check that __package__ actually exists before using it
-  * Fix scc-osd-message doing nothing when run as an entry point by @Michael-Lloyd in #104
-  * Add uaccess tag to the Valve and Sony USB udev rules by @Michael-Lloyd in #105
-  * Add exec field code and keywords to the desktop entry by @Michael-Lloyd in #106
-  * Rework the AppStream metainfo so it passes validation by @Michael-Lloyd in #107
+  * Fix scc-osd-message doing nothing when run as an entry point
+  * Add uaccess tag to the Valve and Sony USB udev rules
+  * Add exec field code and keywords to the desktop entry
+  * Rework the AppStream metainfo so it passes validation
+  
 - Update to 0.6.1
   * Fix OSD entries not generating (regression introduced in 0.6.0)
   * Add hidraw driver for DS4 BT
@@ -30,7 +63,8 @@ Tue Jul 28 16:27:34 UTC 2026 - Jannik Seiler <seil0@mosad.xyz>
   * Fix drawing the radial menu on Wayland
   * Ignore event endpoints that do not start with a number
   * Remove duplicate send_feedback() call for haptic feedback
-
+  
+-------------------------------------------------------------------
 Fri Jul 24 12:42:00 UTC 2026 - Armin Seuchter <a.seuchter@gmail.com>
 
 - Update to 0.6.0

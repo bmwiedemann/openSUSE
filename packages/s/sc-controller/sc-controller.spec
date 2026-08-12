@@ -1,5 +1,5 @@
 #
-# spec file for package sc-controller
+# Spec file for package sc-controller
 #
 # Copyright (c) 2026 SUSE LLC and contributors
 #
@@ -11,15 +11,15 @@
 # case the license is the MIT License). An "Open Source License" is a
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
-
+#
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           sc-controller
-Version:        0.6.2
+Version:        0.6.6
 Release:        0
-Summary:        User-mode driver and GTK3-based GUI for the Steam Controller
+Summary:        User-mode driver, mapper, and GTK3-based GUI for the Steam Controller and many other controllers.
 License:        GPL-2.0-only
 Group:          Hardware/Joystick
 URL:            https://github.com/C0rn3j/sc-controller
@@ -34,7 +34,6 @@ BuildRequires:  shared-mime-info
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(udev)
-Requires:       python3-evdev
 Requires:       python3-gobject-Gdk
 Requires:       python3-ioctl-opt
 Requires:       python3-libusb1
@@ -44,8 +43,8 @@ Requires:       python3-setuptools
 Requires:       python3-vdf
 
 %description
-Application allowing to setup, configure and use the Steam Controller
-without using the Steam client.
+User-mode driver and GTK3-based GUI for game controllers, 
+including but not limited to the Steam Controller (2015 & 2026).
 
 %prep
 %setup -q
