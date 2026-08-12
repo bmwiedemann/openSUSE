@@ -64,4 +64,42 @@ Verified on x86_64 and aarch64.</comment>
     <comment>Update to 0.27.0: Kimi K3 and Qwen3.5 model support, FlashAttention 4 FP8 KV cache on SM100, DeepSeek-V4 performance work, Model Runner V2 for non-generative workloads, Arm INT8 fused MoE CPU kernel, and a gRPC control plane in the Rust frontend. Raises the python-mistral-common floor to &gt;= 1.11.6 per upstream; both patches rebased. Plamo2/Ouro models and max_num_partial_prefills/max_long_partial_prefills removed upstream. Built green locally on aarch64 for both multibuild flavours (default and cpu), import smoke test passes against Factory's torch 2.12.0.</comment>
     <requestid>1370608</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1ffd972f93f26583923fdd2d96bfbf90</srcmd5>
+    <version>0.27.1</version>
+    <time>1786543947</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.27.1
+
+Upstream point release. Only 7 files differ from 0.27.0 -- version strings, a
+Dockerfile, buildkite config and one model file -- and pyproject.toml,
+requirements/ and cmake/cpu_extension.cmake are byte-identical, so no
+dependency floors and no oneDNN or ACL pins needed touching. Both downstream
+patches apply unchanged.
+
+One packaging change beyond the version. The spec carried an exact
+&quot;Requires: python-compressed-tensors = 0.17.1&quot;, which would have made this
+package uninstallable as soon as compressed-tensors 0.18.0 landed. That is
+now a floor, &quot;&gt;= 0.17.1&quot;. A floor rather than &quot;&gt;= 0.18.0&quot; is deliberate:
+vLLM upstream still pins compressed-tensors == 0.17.0, so demanding 0.18.0
+would assert a minimum upstream does not require and would make this
+unresolvable until the companion submission is in. As written, the two are
+order-independent.
+
+The 15 symbols vllm imports from compressed_tensors were checked against both
+0.17.1 and 0.18.0: all present in both, nothing removed, one purely additive
+change. Note compressed-tensors is not a BuildRequires here, so that evidence
+is static rather than exercised by the build.
+
+Verified on aarch64, both multibuild flavours built natively: the default
+flavour (VLLM_TARGET_DEVICE=empty) and the cpu flavour
+(VLLM_TARGET_DEVICE=cpu), each green and each reporting 0.27.1 from the
+import smoke test.
+
+Worth flagging for a future cleanup rather than this submission: the spec
+still carries several other exact pins mirroring upstream's ==, namely depyf,
+lm-format-enforcer, outlines_core and torch. Each is the same latent
+breakage whenever the devel project moves one of them.</comment>
+    <requestid>1370785</requestid>
+  </revision>
 </revisionlist>

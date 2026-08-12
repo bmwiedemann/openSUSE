@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Aug 12 05:21:29 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.27.1:
+  * Patch release on top of 0.27.0
+  * Support quantized DSpark Markov heads
+- Relax the exact python-compressed-tensors requirement to a
+  >= 0.17.1 floor so the package survives compressed-tensors
+  updates in the devel project
+
+-------------------------------------------------------------------
 Tue Aug 11 05:49:32 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.27.0:

@@ -47,7 +47,7 @@
 %define         onednn_x86_version 3.10
 %define         acl_version 52.6.0
 Name:           python-vllm%{psuffix}
-Version:        0.27.0
+Version:        0.27.1
 Release:        0
 Summary:        A high-throughput and memory-efficient inference and serving engine for LLMs
 License:        Apache-2.0
@@ -96,7 +96,11 @@ Requires:       python-blake3
 Requires:       python-cachetools
 Requires:       python-cbor2
 Requires:       python-cloudpickle
-Requires:       python-compressed-tensors = 0.17.1
+# Upstream pins compressed-tensors == 0.17.0, but an exact RPM pin breaks the
+# package every time the devel project moves.  Every symbol vllm imports from
+# compressed_tensors exists unchanged in both 0.17.1 and 0.18.0 (the only delta
+# on that surface is an added TransformConfig.merge()), so carry a floor.
+Requires:       python-compressed-tensors >= 0.17.1
 Requires:       python-depyf = 0.20.0
 Requires:       python-einops
 Requires:       python-fastapi >= 0.133.0
