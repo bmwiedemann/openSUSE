@@ -1,4 +1,235 @@
 -------------------------------------------------------------------
+Wed Aug 12 06:29:35 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.19.7 (no releases between 2.18.29 and this):
+  https://github.com/semaphoreui/semaphore/releases/tag/v2.19.7
+  * Highlights
+    - Workflows — build multi-template pipelines with a graphical
+      editor
+    - JWT / OIDC ID tokens for tasks — keyless auth to Vault, AWS,
+      GCP, Azure
+    - Encryption key rotation with a labelled keyring
+    - Real server-side pagination for task history — projects with
+      millions of tasks no longer choke
+    - BoltDB removed — SQLite/MySQL/Postgres only
+    - A large batch of security hardening across the API
+  * Workflows
+    A workflow is a graph of task templates that run as one unit.
+    - Graphical editor at /workflows/new and /workflows/:id/edit
+      (Drawflow-based), with palette drag-and-drop, edge condition
+      selectors, live cycle/self-edge guards, a validation problems
+      panel, and auto-layout for position-less workflows. Node
+      positions are persisted.
+    - Node kinds: task (runs a template), approval (gates the run,
+      with timeout and message), and note (free-form annotation,
+      never executed).
+    - Per-node task parameters (task_params_id on workflow nodes).
+    - API: /project/{id}/workflows (CRUD), /{workflow_id}/run,
+      /runs, /runs/{run_id}/{stop,artifacts,approvals}, POST
+      /runs/{run_id}/approvals/{node_id}.
+  * Task JWT / OIDC ID tokens
+    Semaphore can now act as an OIDC provider for running tasks, so
+    jobs authenticate to external systems without long-lived
+    credentials.
+    - Short-lived ECDSA-signed JWTs issued per task, published via
+      GET /.well-known/jwks.json.
+    - Per-template JWT options (multiple audiences, per-token TTL)
+      configured in the template form; claims carry IDs only.
+    - Config block jwt: enabled, issuer, default_ttl (1h), max_ttl
+      (24h), with SEMAPHORE_JWT_* env vars.
+    - Template JWT params persisted in
+      project__template.jwt_params.
+  * Secrets & encryption
+    - Encryption key rotation. New encryption config block with a
+      labelled keyring: inline keys (value or file), or a
+      keys_folder where each file is a key named by its filename,
+      plus active.secret_key / active.option_key pointers.
+      Ciphertext now carries a key ID, so keys can be rotated
+      without a big-bang re-encrypt. keys_file + keys_poll_interval
+      (default 15s) allow hot reload. The legacy flat
+      access_key_encryption still works and is used when encryption
+      is unset.
+    - option_encryption — separate key for encrypting DB-stored
+      options.
+    - Survey secret variables now work on remote runners and in HA.
+      Previously a survey secret value lived only in the memory of
+      the node that accepted the task, so it arrived empty on
+      remote runners and was lost across restarts. Secrets are now
+      persisted as task-bound access keys (access_key.task_id,
+      access_key.expire_at, cascade-deleted with the task); TTL is
+      derived from MaxTaskDurationSec (+1h queue allowance, 24h
+      when unlimited).
+    - OpenBao secret storage type (routed through the Vault
+      provider), with its own icon in the UI.
+    - TLS-skip-verify checkbox for Vault/OpenBao storages.
+    - Synchronized and read-only secret fields are no longer wiped
+      on update.
+  * Runners
+    - Online/offline status shown on the Runners page, derived from
+      heartbeat liveness (webhook-driven runners are always
+      dispatch candidates).
+    - Hung-task recovery. Runners report their process start time
+      (X-Runner-Started-At, stored in runner.started_at), which
+      lets the server detect a runner that restarted and silently
+      lost its in-memory job pool. starting tasks are reassigned to
+      a healthy runner; running tasks get a recovery window and are
+      then failed with a clear message. Tunables in the new runners
+      config block: offline_timeout_sec (120),
+      task_fail_timeout_sec (420), reconcile_interval_sec (30).
+    - Tasks reassigned away from a runner are terminated on the old
+      runner.
+    - Per-runner RSA encryption keys removed — secrets are
+      protected by TLS on the wire instead. This removes ~380 lines
+      of key-exchange code from the runner protocol.
+    - Runner registration tokens are stored hashed, with an expiry;
+      invalid registration tokens are rejected with 400, and token
+      prefixes are validated.
+    - Fixed a TCP connection leak in the runner client.
+    - Runner options moved into a dedicated runners config struct
+      (old flat options still read).
+    - The active flag was dropped from runner registration; only
+      registered runners are used.
+  * Performance & scale
+    - Keyset pagination for task history. The history page used to
+      fetch the 200 newest tasks and page through them client-side.
+      The backend now returns one page at a time via a before
+      cursor + count (legacy limit still accepted), with no
+      COUNT(*) and no OFFSET — so page depth no longer degrades on
+      projects with millions of tasks. Applies to project history,
+      template task lists (/templates/{id}/tasks, /tasks/last,
+      /stats) and the dashboard.
+    - Task lists reload at most once every 5 seconds; several
+      redundant UI requests removed.
+    - Git operations are serialized per repository directory
+      (KeyLock). Templates with AllowParallelTasks=true shared one
+      working copy, and concurrent git pull + git checkout could
+      corrupt it. updateRepository() + checkoutRepository() is now
+      one critical section, covering both local and runner
+      execution. Inventory repo operations are serialized the same
+      way.
+    - BoltDB removed. SQLite replaces it everywhere, including
+      session storage; the permanent-connection flag is gone.
+    - Stale HA pool state is released on duplicate finalize.
+  * Templates, tasks & UI
+    - Dynamic playbook picker — the template form lists actual
+      playbook files from the repository (GET
+      /repositories/{repository_id}/playbooks) instead of requiring
+      a hand-typed path. Playbooks reset when the branch changes,
+      and branch-load failures no longer block the playbook list.
+    - Survey variable target — a survey var can now be delivered as
+      a process environment variable (target: "env") instead of the
+      app-specific CLI way (--extra-vars / -var / CLI arg). The env
+      var name is the variable name verbatim, so TF_VAR_foo works.
+      Stored in the existing survey_vars JSON — no migration.
+    - New survey variable types: int, text (multiline), and
+      restyled enum.
+    - Typed variables in variable groups (including int).
+    - Skip Ansible Galaxy install — per-template and per-task
+      option to skip role/collection requirement installation.
+    - Dropdown cards for JWT and schedule sections in the template
+      form; new DropdownCard / HighlightedCard components.
+    - Czech translation added.
+    - Copy-to-clipboard icon is visible in light mode; running-task
+      spinners fixed; template form bottom padding fixed.
+    - Schedules are validated with the server-side cron parser
+      (client and server no longer disagree).
+    - Integration variable extraction preserves JSON objects and
+      arrays instead of stringifying them.
+  * Observability
+    - Prometheus metrics. New metrics config block (enabled,
+      username, password, plus SEMAPHORE_METRICS_*) exposing
+      /api/metrics with Go/process collectors,
+      semaphore_tasks_running (gauge) and
+      semaphore_tasks_total{status} (counter). The endpoint is off
+      by default and can be protected with basic auth.
+    - Namespaced debug logging. A Node.js debug-style filter via
+      --debug-filter / SEMAPHORE_DEBUG_FILTER lets you turn on
+      verbose tracing for one subsystem (runners, LDAP, schedules,
+      git) without the noise from everything else. Applies to
+      syslog hooks too.  SEMAPHORE_LOG_LEVEL / --log-level behave
+      exactly as before.
+    - Many new contextual debug statements across runners, tasks
+      and auth.
+    - SSH host key checking is configurable: ssh.known_hosts_file,
+      ssh.config_path, ssh.strict_host_key_checking (no / yes /
+      accept-new). With no known-hosts file configured,
+    - Semaphore uses a persistent trust-on-first-use file under
+      TmpPath — first connection pinned, later host-key changes
+      rejected.
+  * Security
+    - Changing a password or managing 2FA/TOTP now requires the
+      current password (CWE-620 — unverified password change).
+    - Origin/Referer validation on state-changing requests (CSRF
+      hardening).
+    - Session cookies marked Secure over HTTPS.
+    - Custom role creation now checks the caller's permissions.
+    - Task branch override is only allowed when the template sets
+      AllowOverrideBranchInTask.
+    - Git URL validation; --end-of-options passed to git so a
+      crafted ref cannot be read as a flag; commit hashes
+      format-checked; branches validated before repository
+      browsing; playbook paths validated.
+    - Access key payloads validated; template app validated.
+    - Project/integration ID ownership verified on integration API
+      requests; template_id verified on vault update.
+    - Runner tokens are no longer written into project backups.
+    - API returns after a write error instead of continuing with a
+      partially written response.
+    - Runner per-runner encryption keys removed in favour of
+      transport TLS.
+    - Fixed a nil-pointer panic when closing an uninitialized DB.
+    - CodeQL: potential integer overflow in allocation size
+      computation.
+    - Security SLA published in SECURITY.md; release artifacts
+      signed with the security@semaphoreui.com GPG key.
+  * Upgrade notes - Breaking / behavioural changes
+    - BoltDB is gone. If you are still running a BoltDB
+      installation, migrate to SQLite (or MySQL/Postgres) before
+      upgrading. bolt is no longer a valid dialect.
+    - Runner encryption keys removed. Runners and server must both
+      be on 2.19; the key-exchange step no longer exists. Make sure
+      runner↔server traffic is TLS-protected.
+    - Task list APIs are paginated. GET /project/{id}/tasks and the
+      template task endpoints return one page and take a before
+      cursor plus count. limit is still accepted for backward
+      compatibility, but clients relying on getting the newest 200
+      tasks in one response must page.
+    - Runner active flag removed from registration.
+    - Project backups no longer contain runner tokens — re-register
+      runners rather than expecting a restore to carry credentials.
+  * Upgrade notes - New configuration
+    - encryption, jwt, metrics, runners, ssh,
+      runner.executor.{docker,k8s}, ldap_tls_skip_verify,
+      option_encryption, external_auth_email_matching.
+      All are optional; existing configs keep working.
+      use_remote_runner and the flat runner options are deprecated
+      in favour of runners. The JSON schema (config.schema.yaml)
+      and the config-option reference docs have been regenerated.
+  * Documentation
+    - Docs are now a git submodule and are embedded in the binary,
+      so they ship offline. New/updated pages: Docker & Kubernetes
+      executors, encryption and key rotation, JWT auth during task
+      execution, OpenBao secret storage, IdP-initiated OIDC,
+      PingFederate TLS, license activation, dev setup, logging,
+      runner registration, and regenerated CLI reference.
+  * Dependencies & build
+    - Go 1.26.5; Debian 13 and Alpine 3.24 base images; go-git
+      5.19.2, go-oidc 3.20.0, golang.org/x/crypto 0.54.0, go-ldap
+      3.4.14, modernc.org/sqlite 1.54.0; frontend axios 1.19,
+      cron-parser 5.7, nanoid 6, shell-quote 1.10. MariaDB 12.1
+      migration compatibility fixed.
+      THIRD-PARTY-LICENSES.md regenerated.
+  * Known gaps
+    - Two plans in AGENTS/plans/2_19 did not ship in this line and
+      are still open:
+      password-hash-argon2id (bcrypt → Argon2id) and
+      runner-token-hash (hashing the runner bearer token itself —
+      only registration tokens are hashed today). The
+      runner-version-platform-uptime plan shipped partially: uptime
+      and online/offline status landed, but runner version/OS/arch
+      columns did not.
+
+-------------------------------------------------------------------
 Tue Jul 28 11:25:29 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.18.29:
