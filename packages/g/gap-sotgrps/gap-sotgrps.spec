@@ -1,7 +1,7 @@
 #
 # spec file for package gap-sotgrps
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,19 @@
 
 
 Name:           gap-sotgrps
-Version:        1.3
+Version:        1.3.1
 Release:        0
 Summary:        GAP: Small Order Type group construction and identification
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://gap-packages.github.io/io/
 #Git-Clone:     https://github.com/gap-packages/sotgrps
-Source:       	https://github.com/gap-packages/sotgrps/releases/download/v%version/SOTGrps-%version.tar.gz
+Source:         https://github.com/gap-packages/sotgrps/releases/download/v%version/SOTGrps-%version.tar.gz
 BuildRequires:  fdupes
-BuildRequires:  gap-devel >= 4.10
+BuildRequires:  gap-devel >= 4.11
 BuildRequires:  gap-rpm-devel
-Requires:       gap-core >= 4.10
+Requires:       gap-core >= 4.11
+Requires:       gap-smallgrp >= 1.3
 
 %description
 This package for the GAP computer algebra system is complementary to an MPhil
