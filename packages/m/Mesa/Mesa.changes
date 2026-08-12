@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Aug 10 14:35:25 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Apparently %patch -P 18 -p1 is ignored when the patch does not
+  exist on TW. But seems to fail on older distributions. Remove the
+  line for the dropped patch.
+
+-------------------------------------------------------------------
+Thu Aug  6 00:46:16 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 26.2.0 bugfix release
+  --> https://docs.mesa3d.org/relnotes/26.2.0
+- drop patches
+  u_PR-40161.patch
+- refresh patches
+  n_drirc-disable-rgb10-for-chromium-on-amd.patch
+
+-------------------------------------------------------------------
 Fri Jul 31 13:17:55 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to 26.1.6 bugfix release

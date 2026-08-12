@@ -1,10 +1,10 @@
-Index: mesa-26.1.1/src/util/00-mesa-defaults.conf
+Index: mesa-26.2.0/src/util/00-mesa-defaults.conf
 ===================================================================
---- mesa-26.1.1.orig/src/util/00-mesa-defaults.conf
-+++ mesa-26.1.1/src/util/00-mesa-defaults.conf
-@@ -855,6 +855,14 @@ TODO: document the other workarounds.
-         <application name="Rocket League" executable="RocketLeague">
-             <option name="radeonsi_zerovram" value="true" />
+--- mesa-26.2.0.orig/src/util/00-mesa-defaults.conf
++++ mesa-26.2.0/src/util/00-mesa-defaults.conf
+@@ -728,6 +728,14 @@
+         <application name="Detroit Become Human" application_name_match="DetroitBecomeHuman">
+             <option name="vk_x11_strict_image_count" value="true" />
          </application>
 +        <!-- This is workaround to prevent distorted colors on hardware accelerated video in Chromium. https://bugzilla.opensuse.org/show_bug.cgi?id=1113211 -->
 +        <application name="Chromium" executable="chromium">
@@ -15,5 +15,5 @@ Index: mesa-26.1.1/src/util/00-mesa-defaults.conf
 +            <option name="allow_rgb10_configs" value="false" />
 +        </application>
  
-         <!-- This applies to all apps having "runner" as their executable, but that's OK.
-             Apps where this workaround is needed:
+         <!-- Application exits with an error if contents do not show up to GDI -->
+         <application name="文香白板" executable="WxBoardMain.exe">
