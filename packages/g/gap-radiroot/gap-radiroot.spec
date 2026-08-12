@@ -18,7 +18,7 @@
 
 Name:           gap-radiroot
 Summary:        GAP: Roots of a Polynomial as Radicals
-Version:        2.9
+Version:        2.10
 Release:        0
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
@@ -27,7 +27,8 @@ Source:         https://github.com/gap-packages/radiroot/releases/download/v%{ve
 BuildArch:      noarch
 BuildRequires:  gap-rpm-devel
 Requires:       gap-alnuth >= 3.0
-Requires:       gap-core >= 4.7
+Requires:       gap-transgrp >= 1.0
+Requires:       gap-core >= 4.9
 
 %description
 The package can compute and display an expression by radicals for the

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug 12 04:11:36 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.10
+  * Fixed `GaloisGroupOnRoots` and `RootsOfPolynomialAsRadicals`
+    running into an error when the splitting field of the
+    polynomial had been computed before.
+
+-------------------------------------------------------------------
 Fri Oct 14 17:14:22 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to new upstream release 2.9
