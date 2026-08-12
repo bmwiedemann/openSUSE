@@ -2472,4 +2472,12 @@ Needs to go together with libsemanage change</comment>
     <comment></comment>
     <requestid>1369476</requestid>
   </revision>
+  <revision rev="171" vrev="1">
+    <srcmd5>693939c5502254ae856f5cdb599ed4d1</srcmd5>
+    <version>20260810</version>
+    <time>1786543810</time>
+    <user>anag_factory</user>
+    <comment>fixes</comment>
+    <requestid>1370555</requestid>
+  </revision>
 </revisionlist>
