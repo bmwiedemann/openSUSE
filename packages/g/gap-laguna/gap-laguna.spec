@@ -1,7 +1,7 @@
 #
 # spec file for package gap-laguna
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-laguna
-Version:        3.9.7
+Version:        3.10.0
 Release:        0
 Summary:        GAP: Lie AlGebras and UNits of group Algebras
 License:        GPL-2.0-or-later
@@ -28,7 +28,6 @@ Source:         https://github.com/gap-packages/laguna/releases/download/v%versi
 BuildArch:      noarch
 BuildRequires:  gap-rpm-devel
 Requires:       gap-core >= 4.9
-Requires:       gap-gapdoc >= 1.6.1
 Suggests:       gap-sophus >= 1.24
 
 %description
