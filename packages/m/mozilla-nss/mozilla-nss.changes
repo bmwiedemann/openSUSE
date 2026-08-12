@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Aug 11 14:25:31 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Move the test suite into a separate multibuild flavour:
+  * the test suite is 1465s of a 1586s build, of which only 83s is
+    compiling nss itself, and 1278 packages build depend on nss, so
+    a large part of the distribution waits on it
+  * the default flavour now builds and packages only, the new test
+    flavour runs the same suite completely unchanged
+  * the test flavour ships no packages, so a red run blocks no
+    rebuild
+  * the sqlite3 command line tool is only used by the test suite and
+    is now required by that flavour alone
+- No shipped file changes: the FIPS integrity checksums are produced
+  by shlibsign in build and again in the install post step, both of
+  which run before check, so the test suite only ever consumed them
+
+-------------------------------------------------------------------
 Sat Jul 18 08:34:03 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - update to NSS 3.125

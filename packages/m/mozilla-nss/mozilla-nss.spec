@@ -23,7 +23,23 @@
 %define nssdbdir %{_sysconfdir}/pki/nssdb
 %global crypto_policies_version 20210218
 %define fips 0
-Name:           mozilla-nss
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+# This flavour packages nothing -- it exists only to run the test suite --
+# so do not leave a mozilla-nss-test-debugsource behind either.
+%global debug_package %{nil}
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+# %%{name} carries the flavour suffix, so everything naming the upstream
+# project -- the rpmlintrc, the changes file that %%build reads for the
+# reproducible date -- has to go through %%{origname}.
+%define origname mozilla-nss
+
+Name:           %{origname}%{psuffix}
 Version:        3.125
 Release:        0
 %define underscore_version 3_125
@@ -36,7 +52,7 @@ Source:         https://ftp.mozilla.org/pub/mozilla.org/security/nss/releases/NS
 #Source:         nss-%%{version}.tar.gz
 Source1:        nss.pc.in
 Source3:        nss-config.in
-Source4:        %{name}-rpmlintrc
+Source4:        %{origname}-rpmlintrc
 Source5:        baselibs.conf
 Source6:        setup-nsssysinit.sh
 Source7:        cert9.db
@@ -45,7 +61,7 @@ Source9:        pkcs11.txt
 #Source10:       PayPalEE.cert
 Source11:       nss-util.pc.in
 Source13:       nss-util-config.in
-Source99:       %{name}.changes
+Source99:       %{origname}.changes
 Patch1:         nss-opt.patch
 Patch2:         system-nspr.patch
 Patch3:         nss-no-rpath.patch
@@ -89,7 +105,10 @@ BuildRequires:  gcc9-c++
 BuildRequires:  gcc-c++
 %endif
 BuildRequires:  pkgconfig
+# The sqlite3 command line tool is only used by the test suite
+%if %{with test}
 BuildRequires:  sqlite3
+%endif
 BuildRequires:  pkgconfig(nspr) >= %{NSPR_min_version}
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(zlib)
@@ -110,10 +129,16 @@ Requires:       libnssckbi.so()(64bit)
 %else
 Requires:       libnssckbi.so
 %endif
+%if %{without test}
 Provides:       nss = %{version}
+%endif
+# The suite is skipped on sparc and under qemu user-space emulation, as before;
+# it now also only runs in the test flavour.
+%if %{with test}
 %ifnarch %sparc
 %if ! 0%{?qemu_user_space_build}
 %define run_testsuite 1
+%endif
 %endif
 %endif
 
@@ -124,6 +149,7 @@ applications. Applications built with NSS can support SSL v3,
 TLS v1.0, v1.1, v1.2, PKCS #5, PKCS #7, PKCS #11, PKCS #12, S/MIME, X.509 v3
 certificates, and other security standards.
 
+%if %{without test}
 %package devel
 Summary:        Network (Netscape) Security Services development files
 Group:          Development/Libraries/C and C++
@@ -199,6 +225,7 @@ Group:          Productivity/Networking/Security
 %description certs
 This package contains the integrated CA root certificates from the
 Mozilla project.
+%endif
 
 %prep
 %setup -q -n nss-%{version}
@@ -347,6 +374,7 @@ fi
 %endif
 
 %install
+%if %{without test}
 cd nss
 mkdir -p %{buildroot}%{_libdir}
 mkdir -p %{buildroot}%{_libexecdir}/nss
@@ -546,5 +574,6 @@ update-crypto-policies &> /dev/null || :
 
 %files certs
 %{_libdir}/libnssckbi.so
+%endif
 
 %changelog
