@@ -39,11 +39,11 @@
 
 %bcond_without test
 Name:           molecule
-Version:        26.6.0
+Version:        26.8.0
 Release:        0
 Summary:        Aids in the development and testing of Ansible roles
 License:        MIT
-URL:            https://github.com/ansible-community/molecule
+URL:            https://github.com/ansible/molecule
 Source:         https://files.pythonhosted.org/packages/source/m/molecule/molecule-%{version}.tar.gz
 BuildRequires:  python-rpm-macros
 BuildRequires:  %{ansible_python}-pip
@@ -67,7 +67,7 @@ BuildRequires:  %{ansible_python}-yamllint
 # add runtime dependencies of molecule as BuildRequires
 # https://github.com/ansible/molecule/blob/main/.config/requirements.in
 BuildRequires:  %{ansible_python}-base >= 3.10
-BuildRequires:  ansible-core >= 2.15.0
+BuildRequires:  ansible-core >= 2.18.0
 BuildRequires:  %{ansible_python}-ansible-compat >= 25.1.4
 BuildRequires:  (%{ansible_python}-click >= 8.0 with %{ansible_python}-click < 9)
 BuildRequires:  %{ansible_python}-enrich >= 1.2.7
@@ -82,7 +82,7 @@ BuildRequires:  fdupes
 # https://github.com/ansible/molecule/blob/main/.config/requirements.in
 Requires:       %{ansible_python}-base >= 3.10
 Requires:       %{ansible_python}-ansible-compat >= 25.1.4
-Requires:       ansible-core >= 2.15.0
+Requires:       ansible-core >= 2.18.0
 Requires:       (%{ansible_python}-click >= 8.0 with %{ansible_python}-click < 9)
 Requires:       %{ansible_python}-enrich >= 1.2.7
 Requires:       %{ansible_python}-jsonschema >= 4.9.1
