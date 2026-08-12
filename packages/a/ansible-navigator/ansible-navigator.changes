@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Aug 12 11:12:48 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 26.8.0:
+  * fix(docs): remove unused mkdocstrings plugin causing 429
+    failures (#2158)
+  * fix: drain event queue after runner finishes in stdout mode
+    (#606) (#2153)
+  * chore(deps): update all dependencies (#2151)
+  * fix: reduce cognitive complexity in config, utils, and tests
+    (S3776) (#2148)
+  * fix: reduce cognitive complexity in ui_framework/ modules
+    (S3776) (#2147)
+  * fix: reduce cognitive complexity in actions/ modules (S3776)
+    (#2146)
+  * fix: extract duplicated string literals to constants (S1192)
+    (#2145)
+  * fix: resolve easy SonarCloud issues (S3626, S1854, S108, S1172,
+    etc.) (#2144)
+  * chore(deps): update all dependencies (#2136)
+  * fix: add explicit permissions to GitHub Actions workflows
+    (#2138)
+  * fix(tests): strip ANSI codes from stdout and replace basesystem
+    package (#2137)
+  * chore(deps): update all dependencies (#2120)
+
+-------------------------------------------------------------------
 Wed Jul 01 08:21:45 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 26.6.0:
