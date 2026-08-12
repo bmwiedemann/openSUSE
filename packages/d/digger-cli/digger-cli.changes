@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 12 06:07:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.6.149:
+  * fix: paginate ListReviews in GetApprovals so approvals beyond 30
+    comments in #2674
+
+-------------------------------------------------------------------
 Tue Jul 21 05:38:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.6.148:
