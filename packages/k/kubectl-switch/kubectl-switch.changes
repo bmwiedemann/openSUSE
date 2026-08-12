@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug 12 05:55:17 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.4.25:
+  * Bug Fixes
+    - 8bdd234: fix(go): update charm.land/lipgloss/v2 ( v2.0.5 →
+      v2.0.6 )
+
+-------------------------------------------------------------------
 Fri Jul 24 05:23:02 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.4.24:
