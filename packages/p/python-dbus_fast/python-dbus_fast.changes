@@ -1,5 +1,72 @@
 -------------------------------------------------------------------
-Fri May 22 11:23:29 UTC 2026 - Ana Guerrero <ana.guerrero+factory@suse.com>
+Wed Aug 12 08:52:52 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Update to version 5.0.22:
+  * 5.0.22
+  * perf(proxy): check path first in signal handler guard (#750)
+  * chore(deps-dev): bump pytest-asyncio from 1.3.0 to 1.4.0 (#736)
+  * 5.0.21
+  * perf(proxy): index signals by name to drop per-signal list scan (#748)
+  * 5.0.20
+  * perf(proxy): skip Coroutine ABC check for sync signal handlers (#749)
+  * 5.0.19
+  * perf: skip fd substitution when a received message carries no fds (#747)
+  * 5.0.18
+  * test(benchmarks): add signal dispatch benchmark (#746)
+  * fix(service): log ObjectManager.InterfacesAdded callback exceptions cleanly (#739)
+  * docs(service): show how to define interface members dynamically (#742)
+  * test(benchmarks): add bluez InterfacesRemoved unmarshall benchmark (#741)
+  * test(benchmarks): add bluez ServiceData unmarshall benchmark (#740)
+  * chore(deps-ci): bump the github-actions group with 4 updates (#737)
+  * 5.0.17
+  * fix: gate cython import behind TYPE_CHECKING to avoid bundler bloat (#735)
+  * docs: build installation page so README link resolves (#733)
+  * docs(readme): repair broken CI shields badge (#734)
+  * docs: explain how to install without the Cython extension (#730)
+  * chore(pre-commit.ci): pre-commit autoupdate (#728)
+  * 5.0.16
+  * fix(message_bus): log missing NO_REPLY_EXPECTED handler at debug (#727)
+  * 5.0.15
+  * test: skip blockbuster on python < 3.12 (#726)
+  * fix(message_bus): skip socket shutdown when bus is already finalized (#725)
+  * 5.0.14
+  * fix(introspection): reject annotations missing name or value attribute (#705)
+  * 5.0.13
+  * fix(message): reject outgoing messages over the 128 MiB D-Bus limit (#701)
+  * test: skip blockbuster on the cython matrix leg (#724)
+  * 5.0.12
+  * fix(marshaller): reject arrays larger than the 64 MiB D-Bus limit (#700)
+  * chore(deps-dev): bump pytest-codspeed from 5.0.2 to 5.0.3 (#722)
+  * chore(deps-dev): bump cython from 3.2.4 to 3.2.5 (#723)
+  * 5.0.11
+  * fix(unmarshaller): reject body with a malformed signature field (#704)
+  * chore(pre-commit.ci): pre-commit autoupdate (#720)
+  * ci: enable additional clean ruff lint rule families (#721)
+  * 5.0.10
+  * refactor(service): drop unused _get_handler accessor (#714)
+  * fix(aio): drop stray %s format token from message-reader error log (#715)
+  * docs(validators): allow hyphens in member names (#718)
+  * test(benchmarks): add isolated bluez manufacturer-data unmarshall benchmark (#717)
+  * 5.0.9
+  * fix(unmarshaller): ignore header fields with an unknown field code (#706)
+  * 5.0.8
+  * fix(unmarshaller): reject messages with an unknown type byte (#703)
+  * 5.0.7
+  * perf(marshaller): write dict entries without a throwaway list (#713)
+  * test(benchmarks): add dict-heavy marshall benchmarks (#712)
+  * 5.0.6
+  * perf(unmarshaller): build struct results without a generator object (#710)
+  * perf(unpack): build unpacked tuples without a generator object (#711)
+  * 5.0.5
+  * fix(auth): raise AuthError on unknown server response (#702)
+  * refactor(marshaller): drop unused align() and buffer wrappers (#707)
+  * test(benchmarks): add systemd ListUnits array-of-structs unmarshall benchmark (#708)
+  * test(benchmarks): add unpack_variants benchmark (#709)
+  * 5.0.4
+  * fix(signature): bound container nesting depth during parsing (#699)
+
+-------------------------------------------------------------------
+Fri May 22 11:23:29 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Update to version 5.0.3:
   * 5.0.3
@@ -104,11 +171,6 @@ Fri May 22 11:23:29 UTC 2026 - Ana Guerrero <ana.guerrero+factory@suse.com>
   * chore(deps-ci): bump the github-actions group across 1 directory with 7 updates (#604)
   * chore(deps-dev): bump pytest-codspeed from 4.2.0 to 4.3.0 (#590)
   * docs: fix example imports of decorators in README (#585)
-
--------------------------------------------------------------------
-Fri May 22 11:22:37 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
-
-- Update to version 5.0.3:  
 
 -------------------------------------------------------------------
 Sun Mar  8 13:17:42 UTC 2026 - Enrico Belleri <kilgore.trout@idesmi.eu>

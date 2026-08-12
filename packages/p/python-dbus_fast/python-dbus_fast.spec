@@ -28,7 +28,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           %{pname}%{?psuffix}
-Version:        5.0.3
+Version:        5.0.22
 Release:        0
 Summary:        Python library for DBus
 License:        MIT
@@ -46,11 +46,11 @@ BuildRequires:  %{python_module covdefaults}
 BuildRequires:  %{python_module gobject}
 BuildRequires:  %{python_module pycairo}
 BuildRequires:  %{python_module pytest-asyncio}
-BuildRequires:  %{python_module pytest-codspeed < 5.0.0}
+BuildRequires:  %{python_module pytest-codspeed < 6.0.0}
 BuildRequires:  %{python_module pytest-codspeed >= 3.1.1}
 BuildRequires:  %{python_module pytest-cov < 8.0.0}
 BuildRequires:  %{python_module pytest-cov >= 3.0.0}
-BuildRequires:  %{python_module pytest-timeout}
+BuildRequires:  %{python_module pytest-timeout >= 2.1.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  dbus-1
 %if 0%{?suse_version} && 0%{?suse_version} > 1500
