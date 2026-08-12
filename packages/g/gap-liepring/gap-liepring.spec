@@ -1,7 +1,7 @@
 #
 # spec file for package gap-liepring
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-liepring
-Version:        2.9.1
+Version:        2.9.2
 Release:        0
 Summary:        GAP: Database and algorithms for Lie p-rings
 License:        GPL-2.0-only

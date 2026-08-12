@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 12 04:33:24 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.9.2
+  * Make the SmallGrp package an optional instead of a required
+    test dependency
+
+-------------------------------------------------------------------
 Wed Sep 11 17:37:54 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.9.1
