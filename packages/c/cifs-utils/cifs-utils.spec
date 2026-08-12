@@ -49,6 +49,7 @@ Patch1:         fix-sbin-install-error.patch
 # we need to require either py2 or py3 package
 # some products do not have a py2/py3 versions
 %if 0%{?suse_version} >= 1500
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-docutils
 %else
 BuildRequires:  python-docutils
@@ -87,12 +88,6 @@ BuildRequires:  pkgconfig(wbclient)
 Requires:       cifs-idmap-plugin
 Requires:       keyutils
 Suggests:       wb-cifs-idmap-plugin
-# For modern Python packaging, let's start with SLE-16
-# If there is a request for older versions support, let me know
-# (mcepl@suse.com)
-%if 0%{?suse_version} >= 1600
-BuildRequires:  python-rpm-macros
-%endif
 %if ! %{defined _rundir}
 %define _rundir %{_localstatedir}/run
 %endif
@@ -137,12 +132,6 @@ This package contains the Winbind ID mapping plugin.
 %prep
 %setup -q
 cp -a ${RPM_SOURCE_DIR}/README.cifstab.migration .
-pyscripts="smb2-quota smbinfo"
-for i in $pyscripts; do
-    if [ -e $i ]; then
-        sed -i 's,^#!/usr/bin/env python.*$,#!/usr/bin/python3,' $i
-    fi
-done
 
 %patch -P 1 -p1
 
@@ -190,7 +179,15 @@ touch %{buildroot}/%{_sysconfdir}/sysconfig/network/if-{down,up}.d/${script} \
 %fdupes %{buildroot}
 %endif
 
+%if 0%{?suse_version} >= 1500
 %python3_fix_shebang
+%else
+for i in %{buildroot}%{_bindir}/{smb2-quota,smbinfo}; do
+    if [ -x "$i" ]; then
+        sed -i 's|^#!/usr/bin/env python.*$|#!/usr/bin/python3|' "$i"
+    fi
+done
+%endif
 
 %post
 

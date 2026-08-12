@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Aug  8 14:41:40 UTC 2026 - Matej Cepl <mcepl@suse.com>
+
+- Correctly fix shebangs in Python scripts (bsc#1270134).
+
+-------------------------------------------------------------------
 Fri Jul 10 14:40:35 UTC 2026 - Enzo Matsumiya <ematsumiya@suse.com>
 
 - Update cifs-utils to 7.7:
