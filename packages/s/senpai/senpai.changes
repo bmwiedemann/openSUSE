@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Aug  4 17:02:24 UTC 2026 - John Rowley <suse@johnrowley.me>
+
+- Upgrade to v0.5.0:
+  * Take a /SCREENSHOT from senpai, uploading it to your bouncer
+  * Do an /UPLOAD from your clipboard by pasting an image with Ctrl+Alt+V
+  * Customize your keyboard shortcuts with the shortcuts config directive,
+    see man 5 senpai for details
+  * Enable lightweight spell-check from your config, using harper-ls if
+    installed
+  * Pin/mute channels and users (ignore coming soon), saved across your
+    bouncer
+  * irc:// links are now properly handled everywhere!
+  * Bumped to Go 1.21, should be OK for all modern distributions
+- Pass correct version to the Makefile
+
+-------------------------------------------------------------------
 Fri Aug 22 09:58:41 UTC 2025 - Alessio Biancalana <dottorblaster@popensuse.org>
 
 - Upgrade to v0.4.1:

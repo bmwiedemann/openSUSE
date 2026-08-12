@@ -1,7 +1,7 @@
 #
-# spec file for <package name>
+# spec file for package senpai
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           senpai
-Version:        0.4.1
+Version:        0.5.0
 Release:        0
 Summary:        Your everyday IRC student
 License:        ISC
@@ -42,7 +42,7 @@ senpai is an IRC client that works best with bouncers:
 %autosetup -p1 -a1 -n %{name}-v%{version}
 
 %build
-make GOFLAGS="-mod=vendor -buildmode=pie"
+make GOFLAGS="-mod=vendor -buildmode=pie" VERSION="%{version}"
 
 %install
 install -D -m0755 %{name} %{buildroot}%{_bindir}/%{name}
