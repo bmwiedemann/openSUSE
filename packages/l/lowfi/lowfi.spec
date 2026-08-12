@@ -20,7 +20,7 @@ Name:           lowfi
 Version:        2.0.7
 Release:        0
 Summary:        An extremely simple lofi player
-License:        MIT
+License:        MIT AND MPL-2.0
 URL:            https://github.com/talwat/lowfi
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
