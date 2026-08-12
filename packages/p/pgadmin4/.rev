@@ -305,4 +305,12 @@
 - Fix the dependency on passlib (now called libpass), boo#1271198.</comment>
     <requestid>1366179</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>c19639a805f4a49886a074e70b1554fe</srcmd5>
+    <version>9.17</version>
+    <time>1786544015</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1370838</requestid>
+  </revision>
 </revisionlist>

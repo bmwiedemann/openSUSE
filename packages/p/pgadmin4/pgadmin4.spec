@@ -20,14 +20,18 @@
 %if 0%{?suse_version} > 1500
 %global pythons %primary_python
 %endif
-%global python3_authlib_min_version 1.4.0
-%global python3_azure_identity_min_version 1.19
-%global python3_azure_mgmt_rdbms_min_version 10.1
-%global python3_azure_mgmt_resource_min_version 23.2.0
+
+%bcond_with cloud
+
+%global python3_authlib_min_version 1.7.0
+%global python3_azure_identity_min_version 1.25.3
+%global python3_azure_mgmt_rdbms_min_version 10.1.1
+%global python3_azure_mgmt_resource_min_version 25.0.0
 %global python3_azure_mgmt_subscription_min_version 3.1.1
-%global python3_bcrypt_min_version 4.2
-%global python3_boto3_min_version 1.36
-%global python3_cryptography_min_version 42.0
+%global python3_bcrypt_min_version 5.0
+%global python3_boto3_min_version 1.43
+%global python3_certifi_min_version 2026.6.17
+%global python3_cryptography_min_version 49.0
 %global python3_eventlet_min_version 0.33.3
 %global python3_flask_babel_min_version 4.0.0
 %global python3_flask_compress_min_version 1.4.0
@@ -37,30 +41,31 @@
 %global python3_flask_migrate_min_version 4.0
 %global python3_flask_min_version 3.1
 %global python3_flask_paranoid_min_version 0.2.0
-%global python3_flask_security_min_version 5.5.0
-%global python3_flask_socketio_min_version 5.5.0
+%global python3_flask_security_min_version 5.8.0
+%global python3_flask_socketio_min_version 5.6.0
 %global python3_flask_sqlalchemy_min_version 3.1
-%global python3_flask_wtf_min_version 1.2
-%global python3_httpagentparser_min_version 1.9
-%global python3_jsonformatter_min_version 0.3.4
+%global python3_flask_wtf_min_version 1.3
 %global python3_google_api_python_client_min_version 2.0
-%global python3_google_auth_oauthlib_min_version 1.2.1
-%global python3_gssapi_min_version 1.9
+%global python3_google_auth_oauthlib_min_version 1.4.0
+%global python3_gssapi_min_version 1.11
+%global python3_jsonformatter_min_version 0.3.4
+%global python3_keyring_min_version 25.0
 %global python3_ldap3_min_version 2.5.1
 %global python3_libgravatar_min_version 1.0.0
+%global python3_paramiko_min_version 3.5.1
 %global python3_pillow_min_version 9.0
 %global python3_pyotp_min_version 2.0
-%global python3_keyring_min_version 25.0
 %global python3_libpass_min_version 1.9.0
-%global python3_psutil_min_version 6.1.0
-%global python3_psycopg_min_version 3.2.4
+%global python3_psutil_min_version 7.2.0
+%global python3_psycopg_min_version 3.3.4
 %global python3_python_dateutil_min_version 2.8.0
-%global python3_pytz_min_version 2025.0
+%global python3_pytz_min_version 2026.0
 %global python3_qrcode_min_version 8.0
+%global python3_setuptools_min_version 80.0
 %global python3_sqlalchemy_min_version 2.0
 %global python3_sqlparse_min_version 0.3.0
 %global python3_sshtunnel_min_version 0.1.5
-%global python3_typer_min_version 0.15.0
+%global python3_typer_min_version 0.26.0
 %global python3_user_agents_min_version 2.2
 %global python3_werkzeug_min_version 3.1
 %global python3_wtforms_min_version 3.2
@@ -70,7 +75,7 @@
 %global user_group_name pgadmin
 
 Name:           pgadmin4
-Version:        9.11
+Version:        9.17
 Release:        0
 Summary:        Management tool for PostgreSQL
 License:        PostgreSQL
@@ -119,15 +124,16 @@ BuildRequires:  %{python_module SQLAlchemy >= %{python3_sqlalchemy_min_version}}
 BuildRequires:  %{python_module WTForms >= %{python3_wtforms_min_version}}
 BuildRequires:  %{python_module Werkzeug >= %{python3_werkzeug_min_version}}
 BuildRequires:  %{python_module bcrypt >= %{python3_bcrypt_min_version}}
+BuildRequires:  %{python_module certifi >= %{python3_certifi_min_version}}
 BuildRequires:  %{python_module cryptography >= %{python3_cryptography_min_version}}
 BuildRequires:  %{python_module eventlet >= %{python3_eventlet_min_version}}
 BuildRequires:  %{python_module gssapi >= %{python3_gssapi_min_version}}
-BuildRequires:  %{python_module httpagentparser >= %{python3_httpagentparser_min_version}}
 BuildRequires:  %{python_module jsonformatter >= %{python3_jsonformatter_min_version}}
 BuildRequires:  %{python_module keyring >= %{python3_keyring_min_version}}
 BuildRequires:  %{python_module ldap3 >= %{python3_ldap3_min_version}}
 BuildRequires:  %{python_module libgravatar >= %{python3_libgravatar_min_version}}
 BuildRequires:  %{python_module libpass >= %{python3_libpass_min_version}}
+BuildRequires:  %{python_module paramiko >= %{python3_paramiko_min_version}}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module psutil >= %{python3_psutil_min_version}}
 BuildRequires:  %{python_module psycopg >= %{python3_psycopg_min_version}}
@@ -135,7 +141,7 @@ BuildRequires:  %{python_module pyotp >= %{python3_pyotp_min_version}}
 BuildRequires:  %{python_module python-dateutil >= %{python3_python_dateutil_min_version}}
 BuildRequires:  %{python_module pytz >= %{python3_pytz_min_version}}
 BuildRequires:  %{python_module qrcode >= %{python3_qrcode_min_version}}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= %{python3_setuptools_min_version}}
 BuildRequires:  %{python_module sqlparse >= %{python3_sqlparse_min_version}}
 BuildRequires:  %{python_module sshtunnel >= %{python3_sshtunnel_min_version}}
 BuildRequires:  %{python_module testscenarios}
@@ -143,7 +149,7 @@ BuildRequires:  %{python_module typer >= %{python3_typer_min_version}}
 %if %python_version_nodots < 310
 BuildRequires:  %{python_module urllib3 < 2}
 %else
-BuildRequires:  %{python_module urllib3}
+BuildRequires:  %{python_module urllib3 >= 2.7}
 %endif
 BuildRequires:  %{python_module user-agents >= %{python3_user_agents_min_version}}
 BuildRequires:  %{python_module wheel}
@@ -170,35 +176,39 @@ Requires:       %{python_module SQLAlchemy >= %{python3_sqlalchemy_min_version}}
 Requires:       %{python_module WTForms >= %{python3_wtforms_min_version}}
 Requires:       %{python_module Werkzeug >= %{python3_werkzeug_min_version}}
 Requires:       %{python_module bcrypt >= %{python3_bcrypt_min_version}}
+Requires:       %{python_module certifi >= %{python3_certifi_min_version}}
 Requires:       %{python_module cryptography >= %{python3_cryptography_min_version}}
 Requires:       %{python_module eventlet >= %{python3_eventlet_min_version}}
 Requires:       %{python_module gssapi >= %{python3_gssapi_min_version}}
-Requires:       %{python_module httpagentparser >= %{python3_httpagentparser_min_version}}
 Requires:       %{python_module jsonformatter >= %{python3_jsonformatter_min_version}}
 Requires:       %{python_module keyring >= %{python3_keyring_min_version}}
 Requires:       %{python_module ldap3 >= %{python3_ldap3_min_version}}
 Requires:       %{python_module libgravatar >= %{python3_libgravatar_min_version}}
 Requires:       %{python_module libpass >= %{python3_libpass_min_version}}
+Requires:       %{python_module paramiko >= %{python3_paramiko_min_version}}
 Requires:       %{python_module psutil >= %{python3_psutil_min_version}}
 Requires:       %{python_module psycopg >= %{python3_psycopg_min_version}}
 Requires:       %{python_module pyotp >= %{python3_pyotp_min_version}}
 Requires:       %{python_module python-dateutil >= %{python3_python_dateutil_min_version}}
 Requires:       %{python_module pytz >= %{python3_pytz_min_version}}
 Requires:       %{python_module qrcode >= %{python3_qrcode_min_version}}
+Requires:       %{python_module setuptools >= %{python3_setuptools_min_version}}
 Requires:       %{python_module sqlparse >= %{python3_sqlparse_min_version}}
 Requires:       %{python_module sshtunnel >= %{python3_sshtunnel_min_version}}
 Requires:       %{python_module typer >= %{python3_typer_min_version}}
 %if %python_version_nodots < 310
 Requires:       %{python_module urllib3 < 2}
 %else
-Requires:       %{python_module urllib3}
+Requires:       %{python_module urllib3 >= 2.7}
 %endif
 Requires:       %{python_module user-agents >= %{python3_user_agents_min_version}}
 Requires:       system-user-pgadmin
 Requires(postun): system-user-pgadmin
 Suggests:       %{python_module mod_wsgi}
 Suggests:       %{name}-doc
+%if %{with cloud}
 Recommends:     %{name}-cloud
+%endif
 Recommends:     %{name}-desktop
 Obsoletes:      %{name}-web < %{version}
 %{?systemd_requires}
@@ -261,10 +271,11 @@ BuildArch:      noarch
 %description -n system-user-pgadmin
 System user for pgadmin.
 
+%if %{with cloud}
 %package cloud
 Summary:        Cloud support for pgAdmin4
 Group:          Productivity/Networking/Web/Utilities
-%if 0%{suse_version} > 1550
+%if 0%{suse_version} > 1699
 BuildRequires:  %{python_module azure-identity >= %{python3_azure_identity_min_version}}
 BuildRequires:  %{python_module azure-mgmt-rdbms >= %{python3_azure_mgmt_rdbms_min_version}}
 BuildRequires:  %{python_module azure-mgmt-resource >= %{python3_azure_mgmt_resource_min_version}}
@@ -288,6 +299,7 @@ PostgreSQL database.
 
 This package adds the package requirements neccesary to have cloud
 (azure/google) support in pgadmin4.
+%endif
 
 %prep
 %autosetup -p1
@@ -483,6 +495,8 @@ sed -i "1s|#\!.*python.*|#\!/usr/bin/$python|" %{buildroot}%{_bindir}/pgadmin4-d
 %dir %attr(0755,%{user_group_name},%{user_group_name}) %{pgadmin4homedir}
 %_sysusersdir/pgadmin-user.conf
 
+%if %{with cloud}
 %files cloud
+%endif
 
 %changelog

@@ -1,4 +1,562 @@
 -------------------------------------------------------------------
+Wed Aug 12 08:54:18 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
+
+- Disable building of the cloud package since it can't be currently
+  installed because there's no python-azure-mgmt-resource 25.0.0
+  release available in Factory (and Azure CLI upstream still
+  requires 24.0.0 so the package can't be updated).
+
+-------------------------------------------------------------------
+Tue Aug 11 18:23:33 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 9.17 
+  * Supported Database Servers
+    - PostgreSQL: 14, 15, 16, 17 and 18
+    - EDB Advanced Server: 14, 15, 16, 17 and 18
+  * Bundled PostgreSQL Utilities
+    - psql, pg_dump, pg_dumpall, pg_restore: 18.4
+  * New features
+    - Include the authenticated user's identity in the HTTP access 
+      log.
+    - Add an opt-in Gateway API HTTPRoute template to the Helm
+      chart as an alternative to the existing Ingress.
+    - Add a preference to cap the row count fetched by the plain
+      "View Data" action, so it is usable on large tables without
+      always doing a full SELECT *.
+    - Add support for a custom XYZ tile provider (URL, name, CRS,
+      attribution, max zoom) in the Geometry Viewer, alongside the
+      existing built-in base layers.
+  * Housekeeping
+    - Centralize shared-server-group visibility and access-control
+      logic, and adjust the ServerGroup-to-Server/SharedServer
+      model relationships.
+    - Add a basic starter contributing guide.
+    - Fail the macOS appbundle build if any bundled library links
+      outside the bundle, and scan all Mach-O binaries for bundle
+      linkage rather than only files named .so/.dylib.
+    - Pin the sonarqube-scan-action GitHub workflow to a full
+      commit SHA instead of a mutable branch ref, to harden against
+      supply-chain tampering.
+    - Update the Simplified Chinese (zh_Hans_CN) translation to
+      match the wording used in the interface.
+    - Pin the Yarn version used by the build scripts to the
+      packageManager field, rather than whatever Yarn happens to be
+      on the builder's PATH.
+    - Bump JavaScript and Python third-party dependencies,
+      including axios, webpack, react, electron, and certifi.
+  * Bug fixes
+    - Warn when OAuth2 provider settings are misplaced at the top
+      level of the config instead of under OAUTH2_CONFIG.
+    - Fix Schema Diff's "Generate Script" and the browser tree's
+      CREATE Script view emitting wrong SQL for SERIAL/identity
+      columns, by detecting column-owned sequences via pg_depend
+      instead of guessing the sequence name.
+    - Fix a Schema Diff result-status filter chip showing "No 
+      difference found" after being toggled off and back on, even
+      when real differences exist.
+    - Fix the Object Explorer briefly showing the literal HTML 
+      markup instead of a greyed-out "[Disconnecting...]" label
+      when disconnecting a server or database.
+    - Detect a selected-but-unusable OS keyring and fall back
+      gracefully instead of failing.
+    - Fix ALT+F5 ("Execute query at cursor") doing nothing when the
+      cursor is on or near a statement that is not highlighted, in 
+      a Query Tool tab with multiple statements separated by blank
+      lines.
+    - Stop the googleapiclient cloud-deployment dependency from
+      pulling in the system oauth2client package.
+    - Fix a "'Response' object is not iterable" crash when
+      expanding a Trigger node under a Table to view its trigger
+      function, and report the correct error message on a node.sql
+      failure in that flow.
+    - Honor the selected EOL sequence when copying query text to
+      the clipboard.
+    - Fix the object browser's extension UI breaking under
+      PostgreSQL 19's extension catalog changes.
+    - Fix a tool-permission bypass where a user denied the Query
+      Tool, Grant Wizard, or Schema Diff permission could still
+      drive that tool's backend routes and Socket.IO handlers
+      directly, since the permission check was applied only to a 
+      single "front door" route per tool. Also fixes a non-owner
+      triggering an adhoc connection against another user's shared
+      server persisting a new server record still owned by that
+      other user (CVE-2026-17350). Reported by LXY.
+    - Fix OS command injection in the MASTER_PASSWORD_HOOK feature,
+      where an externally-sourced username (e.g. via OAuth2/OIDC,
+      Kerberos, or webserver authentication) containing shell
+      metacharacters could execute arbitrary commands as the
+      pgAdmin service account when the configured hook string uses
+      %u (CVE-2026-17347). Reported by Thiago Pereira.
+    - Fix a lexer-differential bypass of the AI Assistant's
+      read-only transaction guard, where sqlparse's string-literal
+      lexing disagreed with PostgreSQL's own parser under
+      standard_conforming_strings = on, letting a crafted
+      multi-statement payload smuggle a COMMIT past the intended
+      read-only wrapper, an incomplete fix for CVE-2026-12045
+      (CVE-2026-17351). Reported by Kai Aizen.
+    - Fix SQL injection in the Index Statistics all-indexes listing
+      and the Publications/Subscriptions Dependencies views, where
+      an apostrophe in a table, index, publication, or subscription
+      name broke out of an unescaped template interpolation, an
+      incomplete fix for CVE-2026-12044 (CVE-2026-17346). Reported
+      by Hung Tran Quoc (@rampage0010).
+    - Fix several Constraints, Preferences, Debugger, and Schema
+      Diff routes missing the @pga_login_required decorator, making
+      them reachable without authentication in server mode, an
+      incomplete fix for CVE-2026-12046 (CVE-2026-17348). Reported
+      by Hung Tran Quoc (@rampage0010).
+    - Fix an adhoc server connection cloning another user's stored
+      database credentials (password, save password flag, tunnel
+      password) alongside ownership, letting a non-owner who cloned
+      another user's shared server connect using that user's saved
+      database password (CVE-2026-17349).
+    - Fix OS command injection in the Import/Export Data tool,
+      where a query-based export could pass a crafted query string
+      past the \copy (...) parenthesis-balance guard by exploiting
+      a backslash-escape mismatch with psql's default
+      standard_conforming_strings = on behaviour, exposing a live
+      TO PROGRAM clause for arbitrary command execution
+      (CVE-2026-17566). Reported by Arpit Jain.
+
+- Update to 9.16
+  * Supported Database Servers
+    - PostgreSQL: 14, 15, 16, 17 and 18
+    - EDB Advanced Server: 14, 15, 16, 17 and 18
+  * Bundled PostgreSQL Utilities
+    - psql, pg_dump, pg_dumpall, pg_restore: 18.4
+  * New features
+    - Added an option to colourize panel and tab headers based on
+      the connected server's colour, making it easier to tell which
+      server a tab is connected to at a glance.
+    - Allow the OAuth2 login button icon to use any Font Awesome
+      style (e.g. fas fa-key), not only brand icons.
+    - Added a "Back to login" link to the Forgot Password and Reset
+      Password pages.
+    - Add support for the TOAST tuple target storage parameter in
+      the Materialized View dialog.
+    - Make the init container security context in the Helm chart
+      configurable via containerSecurityContext, consistent with
+      the main container.
+    - Add support for closing a tab with a middle-click on its
+     title.
+  * Housekeeping
+    - Correct the macOS Replace keyboard shortcut documented in the
+      Query Tool toolbar reference.
+    - Fix a typo in the PGPASS_FILE environment-variable
+      documentation and clarify its behaviour.
+    - Update the Italian translation.
+    - Bump Electron in the desktop runtime from 41.5.0 to 42.1.0
+      and pin the packaged Electron version.
+    - Clarify the SSH tunnel "Prompt for identity file password?"
+      switch label and help text to indicate it applies only to 
+      identity-file authentication.
+    - Document the Kubernetes init-container tag-mismatch and
+      RollingUpdate hazards on shared data volumes.
+    - Remove the EDB BigAnimal cloud deployment support.
+    - Bump JavaScript and Python third-party dependencies,
+      including cryptography, axios, shell-quote, and assorted
+      dependabot lockfile updates.
+    - Bump vulnerable transitive dependencies (tar, flatted) to
+      clear security advisories.
+    - Rebase the version-specific SQL templates so the default
+      targets PostgreSQL 14, the oldest supported server version, 
+      dropping the obsolete sub-14 template buckets.
+    - Strip the foreign-architecture slice from the macOS bundle so 
+      single-arch builds no longer ship the universal2 Python
+      framework's unused arm64/x86_64 code.
+    - Update the Italian translation for v9.16.
+  * Bug fixes
+    - Fix the infinite loading spinner after an idle database
+      connection is silently dropped, by detecting stale
+      connections and offering a reconnect dialog.
+    - Fixed an issue where preferences set via the CLI (setup.py
+      set-prefs) were not validated, so invalid values were stored
+      silently; CLI preference values are now validated against the
+      preference type and rejected (and reported) if invalid.
+    - Fix the Query Tool turning into a blank white screen when the
+      runtime has a malformed default locale, by guarding the Query 
+      History date/time formatting against the resulting
+      RangeError.
+    - Fixed an error ("i.default.find(...) is undefined") that
+      prevented deleting a table or relationship link in the ERD
+      tool when a foreign key referenced a column that had been
+      renamed.
+    - Fixed an issue in the Create Table dialog where renaming a
+      column did not update the column references in foreign key
+      and unique constraint definitions for the new table.
+    - Fix the Query Tool re-prompting for an unsaved password in a
+      loop and rejecting the re-entered password, by caching the
+      entered password on the server manager when the primary
+      connection is already established.
+    - Fixed an issue where the object breadcrumbs popup blocked 
+      clicks on the object explorer items beneath it.
+    - Fix missing ALTER ... SET DEFAULT statements for inherited
+      columns in the generated table SQL/EDIT script.
+    - Fix the Unlogged table toggle in table properties not
+      generating any ALTER TABLE ... SET LOGGED/UNLOGGED statement.
+    - Ensure pgAdmin uses psycopg3 rather than psycopg2 when
+      connecting to the configuration database via
+      PGADMIN_CONFIG_CONFIG_DATABASE_URI.
+    - Fix a View/Edit Data crash when the session contains a
+      transaction object that is not filter-capable (e.g. left by 
+      the Query Tool or persisted by an older version), which could
+      prevent the desktop application from loading after an
+      upgrade.
+    - Fix the "Cannot read properties of undefined (reading 'map')"
+      crash in the desktop runtime when a menu refresh is triggered
+      before the application menus have been received.
+    - Fixed an issue where a server's custom foreground colour was
+      not applied to the object counts (children count) and column
+      type labels shown in the object explorer.
+    - Optimise pgAdmin startup time by replacing the fixed
+      server-ping interval with adaptive pinging that backs off
+      when no servers are configured.
+    - Fixed an issue where generated font and image filenames
+      contained a double dot (e.g. Roboto-Bold..ttf) due to the
+      webpack asset filename template.
+    - Fix tool calls failing against OpenAI-compatible providers
+      that emit empty/null name, arguments, or id fields in 
+      streaming continuation deltas.
+    - Fixed installation on Python 3.9 (e.g. RHEL/Rocky/AlmaLinux 8
+      and 9) failing with "No module named 'pkg_resources'" by
+      pinning setuptools below the version that dropped 
+      pkg_resources for Python 3.9.
+    - Fix the JSON editor stripping trailing fractional zeros (e.g.
+      10.00) and rewriting large integers in jsonb values, which
+      corrupted unmodified numbers when saving.
+    - Fixed a regression where the rectangular (block/column) text
+      selection in the code editor stopped working; restored the
+      default Alt+drag selection without re-introducing the
+      crosshair cursor on Alt+F5 (#9570).
+    - Warn before opening a very large JSON/JSONB value in the data
+      grid cell editor, which could freeze pgAdmin, and let the 
+      user choose whether to proceed.
+    - Fixed an issue where EXPLAIN and EXPLAIN ANALYZE failed to
+      execute when blank lines separated clauses in the SQL query.
+    - Use the ServerManager's passfile for the credential gate in
+      connect() so the check matches the passfile actually used for 
+      the connection, and warn on conflicting passfile/passexec
+      settings.
+    - Fix blank difference counts on the top-level group rows in
+      Schema Diff.
+    - Fix invalid DDL reconstruction for SERIAL columns in Schema
+      Diff and the generated SQL/CREATE Script so the output
+      round-trips on a clean target.
+    - Remove the administrator-role bypass from the server-access
+      helpers so the access-control checks added in 9.15
+      (CVE-2026-7813) are enforced uniformly. The Administrator
+      role manages pgAdmin itself, not other users' database
+      connections.
+    - Fix "Illegal instruction" crash on startup of the Linux DEB
+      and RPM packages on older x86_64 CPUs by pinning the psycopg
+      C extension build to the x86-64 baseline.
+    - Fix the AI panel silently falling back to the default
+      provider when a custom LLM API URL or key file was set, and
+      allow self-hosted LLM endpoints on any loopback port.
+    - Fix saving a newly-added row in the Query Tool failing when
+      the result set includes expression or alias columns that are 
+      not real columns of the underlying table.
+    - Ship libpq-oauth-18.so and libcurl in the Docker image so
+      PostgreSQL 18 OAuth connections work out of the box.
+    - Fix a startup migration crash (NoSuchTableError) when an old
+      configuration database contains a stale foreign-key
+      reference.
+    - Fix the Docker entrypoint mishandling a quoted
+      PGADMIN_CONFIG_CONFIG_DATABASE_URI, which caused a SQLAlchemy
+      parse error and silently skipped
+      PGADMIN_DEFAULT_EMAIL/PASSWORD setup.
+    - Make CAP_NET_BIND_SERVICE optional in the Docker image so the
+      container works on restricted runtimes that disable that
+      capability.
+    - Fix "AttributeError: 'PgAdmin' object has no attribute
+      'login_manager'" crash when running setup.py user-management
+      commands (add-user, update-user) from the CLI.
+    - Provide an actionable error when 'openid' is in OAUTH2_SCOPE
+      but OAUTH2_SERVER_METADATA_URL is not set, instead of a
+      cryptic Authlib failure.
+    - Fix pg_attribute filtering by attname returning the wrong
+      attnum when the same column name exists in multiple tables.
+    - Fix AI Assistant read-only transaction bypass that allowed
+      prompt-injected multi-statement payloads to commit out of the
+      READ ONLY wrapper and execute arbitrary SQL, chaining to RCE
+      via COPY ... TO PROGRAM on a superuser connection
+      (CVE-2026-12045). Reported by Isaac Chen.
+    - Fix SQL injection in the named restore point endpoint where
+      the user-supplied restore point name was interpolated into
+      SQL via str.format() instead of being passed as a bound
+      parameter (CVE-2026-12050). Reported by Geo.
+    - Fix the spurious "Crypt key is missing" error and logged
+      traceback in the Query Tool new-connection endpoints after a
+      backend restart, by surfacing it as the standard
+      CRYPTKEY_MISSING response so the client recovers
+      transparently.
+    - Fix open redirect in the multi-factor authentication flow via
+      an unvalidated 'next' parameter that allowed a crafted link
+      to redirect an authenticated victim to an attacker-controlled
+      host (CVE-2026-12049). Reported by Mai Phạm Hiền.
+    - Fixed a regression where the rectangular (block/column) text
+      selection in the code editor stopped working; restored the
+      default Alt+drag selection without re-introducing the
+      crosshair cursor on Alt+F5 (#9570).
+    - Accept prepare and binary keyword arguments in
+      DictCursor.execute() so callers using the modern psycopg API
+      no longer raise TypeError.
+    - Fix the generated SQL for editing a SQL-language
+      function/procedure whose body contains the word "return"
+      (e.g. a RETURNING clause), which was wrongly treated as a
+      SQL-standard body and produced a statement without the AS
+      $BODY$ wrapper.
+    - Fix critical stored cross-site scripting where PostgreSQL 
+      server error text and Explain plan-node content passed 
+      through html-react-parser across notifier toasts, form
+      errors, modal alerts, and the Explain visualiser. Because
+      pgAdmin's default Content-Security-Policy allows inline
+      script and an iframe srcdoc inherits the embedding origin,
+      the injected JavaScript ran same-origin to the victim's
+      authenticated pgAdmin session and could read every saved
+      server connection credential and issue arbitrary SQL against
+      every server the victim was connected to (CVE-2026-12048).
+      Reported by Fernando Bortotti.
+    - Fix HTML injection in the cloud deployment module (RDS,
+      Azure, Google) where SDK exception text was forwarded to the
+      browser unsanitised and rendered through html-react-parser in
+      the Cloud Wizard (CVE-2026-12047). Reported by Fernando
+      Bortotti.
+    - Fix two SQL Editor endpoints (close and update_connection)
+      missing the @pga_login_required decorator, making them 
+      reachable without authentication in server mode and exposing
+      a pickle deserialization sink (CVE-2026-12046). Reported by
+      Fernando Bortotti.
+    - Fix SQL injection across sixteen dialog templates that
+      rendered COMMENT ON ... IS '<description>' and the related
+      pgstattuple/pgstatindex stats sinks, where a low-privilege
+      user could plant a table or index name containing an
+      apostrophe and a superuser viewing statistics on the object
+      would trigger SQL execution under the superuser role. The fix
+      switches the affected templates to the qtLiteral escape
+      filter and rewrites the pgstattuple/pgstatindex calls to
+      address the relation via OID with a ::oid::regclass cast,
+      eliminating the embedded string-literal call form entirely.
+      Also hardens qtLiteral to raise instead of silently returning
+      raw values when conn is falsy (CVE-2026-12044). Reported by
+      Jasser Chebbi.
+- Rebase patch:
+  * package_git_local.patch
+- Update vendored packages
+
+- Update to 9.15
+  * Supported Database Servers
+    - PostgreSQL: 13, 14, 15, 16, 17 and 18
+    - EDB Advanced Server: 13, 14, 15, 16, 17 and 18
+  * Bundled PostgreSQL Utilities
+    - psql, pg_dump, pg_dumpall, pg_restore: 18.2
+  * New features
+    - Allow the container image to run as a non-default user via
+      the PUID and PGID environment variables.
+  * Housekeeping
+    - Update the Swedish translation.
+    - Bump Python and JavaScript dependencies.
+    - Fix the Czech translation for 'Refresh'.
+    - Bump runtime dependencies and upgrade ESLint to v10.
+    - Update the Russian translation.
+    - Bump runtime and development dependencies.
+    - Use an <OWNER> placeholder in resql tests instead of a
+      hardcoded 'postgres' role to support non-default superuser
+      names.
+    - Update the Spanish translation.
+    - Update the Italian translation.
+  * Bug fixes
+    - Use absolute paths for a2enmod and a2enconf in the Debian
+      setup script so it works when /usr/sbin is not on PATH.
+    - Fix cross-user data access and shared-server privilege
+      escalation in server mode (CVE-2026-7813). Also applies the
+      @with_object_filters access-control decorator to
+      ServerNode.list.
+    - Tighten Shared Server feature parity, owner-only field
+      handling, and write guards as a follow-up to the
+      data-isolation hardening.
+    - Fix stored cross-site scripting (XSS) via crafted PostgreSQL
+      object names rendered in the Browser Tree and Explain
+      Visualizer (CVE-2026-7814). Reported by Fahar Abbas.
+    - Fix SQL injection in Maintenance tool option values
+      (CVE-2026-7815). Reported by j3seer.
+    - Fix OS command injection in Import/Export query export
+      (CVE-2026-7816). Reported by Chung Kim (chungkn),
+      OneMount Group.
+    - Fix local-file inclusion and server-side request forgery in 
+      LLM API configuration endpoints (CVE-2026-7817). Reported by
+      j3seer.
+    - Fix unsafe deserialization in the session manager that could 
+      lead to remote code execution (CVE-2026-7818). Also encrypts
+      session files at rest using Fernet, restricts session-file
+      permissions to 0o600, switches the session-digest default
+      from SHA-1 to SHA-256, drops several non-roundtrippable live
+      objects from the session (AuthSourceManager and the Azure,
+      RDS, Google Cloud, and BigAnimal cloud-provider instances),
+      tightens DATA_DIR file and directory permissions at creation,
+      creates pgadmin4.log with mode 0o600, hardens
+      EnhancedRotatingFileHandler._open against rotation failures,
+      and bounds the user_info_server prompt retry loop so a
+      non-interactive caller cannot spin forever. Reported by
+      Fernando Bortotti.
+    - Fix symlink-based path traversal in the file manager
+      (CVE-2026-7819). Reported by Fernando Bortotti.
+    - Fix account-lockout bypass on Flask-Security's default /login
+      view by overriding User.is_active and User.is_locked() so the
+      locked field is honored on every authentication path
+      (CVE-2026-7820). Reported by Fernando Bortotti.
+
+- Update to 9.14
+  * Supported Database Servers
+    - PostgreSQL: 13, 14, 15, 16, 17 and 18
+    - EDB Advanced Server: 13, 14, 15, 16, 17 and 18
+  * Bundled PostgreSQL Utilities
+    - psql, pg_dump, pg_dumpall, pg_restore: 18.2
+  * New features
+    - Added support to download binary data from result grid.
+    - Added support for custom LLM provider URLs for OpenAI and
+      Anthropic, allowing use of OpenAI-compatible providers such
+      as LM Studio, EXO, and LiteLLM.
+    - Fixed an issue where AI features (AI Assistant tab,
+      AI Reports menus, and AI Preferences) were visible in the UI
+      even when LLM_ENABLED is set to False.
+    - Allow copying of text from the AI Assistant chat panel.
+  * Bug fixes
+    - Fixed an issue where selecting all in the Query Tool's
+      Messages tab would select the entire page content.
+    - Fixed an issue where OAuth2 authentication fails with 'object
+      has no attribute' if OAUTH2_AUTO_CREATE_USER is False.
+    - Ensure that the Geometry Viewer refreshes when re-running
+      queries or switching geometry columns, preventing stale data
+      from being displayed.
+    - Fixed Process Watcher garbled text on Windows with non-UTF-8
+      locales.
+    - Fixed an issue where ALT+F5 for executing a query in the
+      Query Tool shows a crosshair cursor icon for rectangular
+      selection.
+    - Fixed an issue where the default fillfactor value for B-tree
+      indexes was incorrect.
+    - Fixed an issue where AI Reports are grayed out after setting
+      an API key by auto-selecting the default provider.
+    - Fixed an issue where AI Assistant does not notify that No API
+      Key or Provider is Set.
+    - Fixed misleading AI activity messages that could be mistaken
+      for actual database operations.
+    - Fixed an issue where AI Reports fail with OpenAI models that
+      do not support the temperature parameter.
+    - Fixed an issue where permissions page is not completely
+      accessible on full scroll.
+    - Fixed an issue where some LLM models would not use database
+      tools in the AI assistant, instead returning text
+      descriptions of tool calls.
+    - Improve the AI Assistant user prompt to be more descriptive
+      of the actual functionality.
+    - Fixed an issue where LLM responses are not streamed or
+      rendered properly in the AI Assistant.
+    - Fix an issue where the AI Assistant was not retaining
+      conversation context between messages, with chat history
+      compaction to manage token budgets.
+    - Fixed an issue where the AI Assistant input textbox
+      sometimes swallows the first character of input.
+    - Clarify where the LLM API key files should be.
+    - Fixed an issue where the Query tool kept prompting for a
+      password when using a shared server.
+    - Support /v1/responses for OpenAI models.
+
+- Update to 9.13
+  * Supported Database Servers
+    - PostgreSQL: 13, 14, 15, 16, 17 and 18
+    - EDB Advanced Server: 13, 14, 15, 16, 17 and 18
+  * Bundled PostgreSQL Utilities
+    - psql, pg_dump, pg_dumpall, pg_restore: 18.0
+  * New features
+    - Allow users to customize "OF TYPE" columns during table
+     creation.
+    - No FK are shown in diagram created from existing tables in
+      the ERD Tool.
+    - Add support for 'ONLY' in Index creation dialog.
+    - Allow "drag-n-drop" for only user chosen tables, and show
+      relations between them.
+    - Load predefined users from a JSON file through command line.
+    - Core LLM integration infrastructure, AI reports for security,
+      schema, and performance, AI chat for the Query Tool, and AI
+      Insights for EXPLAIN.
+  * Bug fixes
+    - Fixed an issue where the 'Quote strings only' configuration
+      was ignored when downloading the result set.
+    - Fixed an issue where tools settings changed by the users were
+      not restored on application relaunch.
+    - Fixed an issue where modifying a shared server incorrectly
+      updated the original server details.
+    - Fixed an issue where a long name in ERD table node was not
+      breaking into multiple lines.
+    - Fixed an issue where column comments were not displayed in
+      the SQL tab for materialised views.
+    - Fix an issue where deployment of helm chart crashing with
+      operation not permitted.
+    - Fix translation compilation.
+    - Fix broken checkbox selection in backup dialog objects tree.
+    - Fixed an issue in file dialog where rename was not working.
+
+- Update to 9.12
+  * Supported Database Servers
+    - PostgreSQL: 13, 14, 15, 16, 17 and 18
+    - EDB Advanced Server: 13, 14, 15, 16, 17 and 18
+  * Bundled PostgreSQL Utilities
+    - psql, pg_dump, pg_dumpall, pg_restore: 18.0
+  * New features
+    - Add new options like INHERIT and SET to the Role's membership
+      tab.
+    - Add a new button in the query tool data output toolbar to get
+      entire range of data.
+    - Enhance OAUTH2 and OIDC authentication support with improved
+      claims handling and configuration options.
+  * Bug fixes
+    - Warn user of unsaved data output edits before page
+      navigation.
+    - Fix Query Tool state restoration for new connections and
+      queries.
+    - Fix pg_restore logs to distinguish UI sync issues from actual
+      failures.
+    - Optimize checkbox selection logic in backup dialog objects 
+      tree.
+    - Fixed an issue where double click to open a file in the file
+      manager is not working.
+    - Upgrade ID column in the database table to BigInteger to
+      support large OID values.
+    - Fixed an issue where "View/Edit Data" shortcut opened "First
+      100 rows" instead of "All Rows".
+    - Ensure saved shared server passwords are re-encrypted on
+      password change.
+    - Fixed an issue where data filter dialog removes newline
+      character when sending SQL to the query tool.
+    - Fixed an issue where the dashboard freezes on initial render
+      when there is a high number of locks.
+    - Fixed the SSL certificate issue while checking for the
+      upgrade.
+    - Fixed a sorting issue in the system stats memory usage table.
+    - Disable Parameters and Membership fields when object is not
+      new for Login and group roles.
+    - Fixed an issue where the Query History panel would
+      auto-scroll to the top and did not preserve the scroll bar
+      position for the selected entry.
+    - Fixed an issue where pgAdmin4 app on macOS cannot auto-update
+      while running on a read-only volume even if present in the
+      Applications folder.
+    - Fixed an issue where connection parameters were using
+      localized values instead of literal values, causing
+      connection failures.
+    - Mask the secret key for restrict option in the process
+      watcher when restoring plain SQL file (CVE-2026-1707).
+    - Ensure the container deployment supports boolean values in
+      yaml format.
+    - Ensure that the tooltip for the password cell is not visible.
+    - Fix pgAdmin fails when performing Backup/Restore on a
+      PostgreSQL connection defined exclusively via
+      pg_service.conf.
+    - Update menu bar documentation.
+
+-------------------------------------------------------------------
 Thu Jul 16 08:09:30 UTC 2026 - Marco Varlese <mvarlese@suse.com>
 
 - Fix the dependency on passlib (now called libpass), boo#1271198.
