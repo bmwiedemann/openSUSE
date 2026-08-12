@@ -1,0 +1,27 @@
+-------------------------------------------------------------------
+Thu Jul 23 15:00:00 UTC 2026 - Fabrice Creuzot <code@luigifab.fr>
+
+- Rename package names in Requires and Recommends
+  this changes nothing for awf-qt5 and qt5-globalqss/qt6-globalqss
+  but this fixes dependency resolution for awf-qt6
+
+-------------------------------------------------------------------
+Tue Jul  7 20:00:00 UTC 2026 - Fabrice Creuzot <code@luigifab.fr>
+
+- New upstream release (1.2.0)
+  * add/use make install
+  * load *-rtl.qss files only in right-to-left mode
+  * fix reload theme on desktop theme change (via dbus) with Qt5
+  * compatibility with windows via msys2
+
+-------------------------------------------------------------------
+Tue May  5 20:00:00 UTC 2026 - Fabrice Creuzot <code@luigifab.fr>
+
+- New upstream release (1.1.0)
+  * reload theme on desktop theme change (via dbus)
+  * fix 32 bits packages
+
+-------------------------------------------------------------------
+Thu Jan  1 20:00:00 UTC 2026 - Fabrice Creuzot <code@luigifab.fr>
+
+- Initial openSUSE package release

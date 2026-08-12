@@ -1,0 +1,8 @@
+<package name="globalqss" project="openSUSE:Factory">
+  <title></title>
+  <description>This engine allows theming of Qt applications using QSS files,
+similar to how GTK applications are themed with CSS files.
+
+This package provides the program for Qt 5 &amp; 6.</description>
+  <url>https://github.com/luigifab/globalqss</url>
+</package>
