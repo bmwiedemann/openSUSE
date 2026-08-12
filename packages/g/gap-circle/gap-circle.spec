@@ -1,7 +1,7 @@
 #
 # spec file for package gap-circle
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,24 +12,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           gap-circle
-Version:        1.6.6
+Version:        1.7.0
 Release:        0
 Summary:        GAP: Adjoint groups of finite rings
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://gap-packages.github.io/circle/
-
+#Git-Clone:     https://github.com/gap-packages/circle
 Source:         https://github.com/gap-packages/circle/releases/download/v%version/circle-%version.tar.gz
 BuildRequires:  gap-rpm-devel
 BuildRequires:  xz
 BuildArch:      noarch
 Requires:       gap-core >= 4.8
-Requires:       gap-gapdoc >= 1.5.1
 
 %description
 The Circle package provides functionality for computations in adjoint
