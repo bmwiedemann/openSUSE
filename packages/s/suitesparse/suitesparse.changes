@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Aug 10 21:43:12 UTC 2026 - Christoph G <foss@grueninger.de>
+
+- Update to 7.13.0
+  * GraphBLAS 10.4.1: memory arenas, faster GhB MATLAB/Octave
+    interface
+  * ParU 1.1.2: backport to gcc 7.5.0
+
+-------------------------------------------------------------------
+Tue Jul 28 17:08:23 UTC 2026 - Christoph G <foss@grueninger.de>
+
+- Update to 7.12.3
+  * ParU 1.1.1: MATLAB mexFunction does not #include mkl.h on
+    Intel systems
+  * GraphBLAS 10.3.2: minor update for recent clang compilers
+  * SuiteSparse_config 7.12.3: version update to match SuiteSparse.
+    Require cmake 3.23 for CUDA -arch="all" parameter to nvcc.
+  * CSparse 4.4.2: minor fix to build system; sync version with
+    CXSparse
+  * UMFPACK 6.3.8: sync definition and declaration of
+    umf_row_search.
+
+-------------------------------------------------------------------
 Mon Jun 15 13:45:03 UTC 2026 - Christian Goll <cgoll@suse.com>
 
 -  Don't build with openblas for SLE 16.1
