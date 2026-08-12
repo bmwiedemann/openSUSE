@@ -17,7 +17,7 @@
 
 
 Name:           gap-browse
-Version:        1.8.22
+Version:        1.8.23
 Release:        0
 Summary:        GAP: ncurses interface and browsing applications
 License:        GPL-3.0-or-later
