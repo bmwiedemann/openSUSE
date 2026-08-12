@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Aug 11 05:27:37 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.23.2:
+  * meson: derive the copyright date with portable C code instead of
+    invoking the external date command
+  * Fix a configure.ac typo that made the copyright year ignore
+    SOURCE_DATE_EPOCH
+  * Drop the empty README file in favour of README.md
+  * No changes to the psl-make-dafsa tool itself in this release
+
+-------------------------------------------------------------------
 Sun Aug  2 05:42:21 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.23.1:

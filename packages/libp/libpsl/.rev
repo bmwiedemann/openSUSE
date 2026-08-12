@@ -222,4 +222,12 @@ update descriptions and categories</comment>
     <comment>Update to 0.23.1: fixes the reproducible-builds regression from 0.23.0</comment>
     <requestid>1369050</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>791d3cf0265555548c9bbbec188d260b</srcmd5>
+    <version>0.23.2</version>
+    <time>1786543821</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.23.2: restore reproducible builds by fixing a configure.ac typo (LC_ALL=Cdate) that made COPYRIGHT_YEAR ignore SOURCE_DATE_EPOCH, so the copyright year embedded in the installed libpsl.h and psl.1 no longer depends on the build date; meson now derives the copyright date with portable C code instead of invoking date; the empty README is dropped in favour of README.md. No soname change (still libpsl.so.5). Signed tarball verified against libpsl.keyring; both multibuild flavours build green on aarch64 with the full test suite passing (3/3 and 5/5) and rpmlint at 0 badness.</comment>
+    <requestid>1370603</requestid>
+  </revision>
 </revisionlist>

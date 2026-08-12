@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Aug 11 05:27:29 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.23.2:
+  * Fix a configure.ac typo (LC_ALL=Cdate) that made COPYRIGHT_YEAR
+    ignore SOURCE_DATE_EPOCH and fall back to the current build date,
+    so the copyright year embedded in the installed libpsl.h and in
+    the psl.1 manual page is reproducible again
+  * meson: derive the copyright date with portable C code instead of
+    invoking the external date command
+  * Drop the empty README file in favour of README.md
+
+-------------------------------------------------------------------
 Sun Aug  2 05:42:21 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.23.1:

@@ -19,7 +19,7 @@
 
 
 Name:           psl-make-dafsa
-Version:        0.23.1
+Version:        0.23.2
 Release:        0
 Summary:        Tool to create a binary DAFSA from a Public Suffix List
 License:        BSD-3-Clause
