@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Aug 11 09:31:47 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.11.0:
+  * rrdgraph: new --vertical-label-angle and --right-axis-label-angle
+    options to rotate the two y axis legends independently
+  * rrdgraph: new --right-axis-range min:max option to suppress right
+    axis labels outside the given range
+  * Fix segfault when --x-grid is given without a trailing date-format
+    field
+  * Fix a one byte heap buffer overflow in checkUnusedValues() that
+    aborted graphing under fortified strcat()
+  * Fix a divide by zero crash in rrdtool dump on files with an RRA
+    whose pdp_cnt or pdp_step is zero
+  * rrdtool dump now writes a numeric UTC offset instead of the locale
+    timezone name, which could break XML parsing in non-UTF-8 locales
+  * libdbi /derive now returns 0 instead of NaN when the counter is
+    constant
+  * The Perl RRDs and RRDp numeric version encoding is now zero padded
+    so two digit minor releases compare monotonically
+  * Y axis labels keep enough fractional precision when the gridstep
+    is fractional after SI scaling
+- Correct the systemd unit name in the rrdcached post scriptlet, it
+  was spelled rrdcached.servicet and so never registered the service
+- Correct the tmpfiles configuration name in the same scriptlet, it
+  was spelled rddcached.conf and so created no runtime directory
+- Brace the rrdcached user and group macros in the Provides
+- Build the documentation subpackage as noarch
+
+-------------------------------------------------------------------
 Tue Jul 28 19:12:54 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to 1.10.3

@@ -17,7 +17,6 @@
 
 
 %define python_subpackage_only 1
-%{?sle15_python_module_pythons}
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
@@ -29,12 +28,12 @@
 %bcond_without  libdbi
 %bcond_without  libwrap
 %bcond_with     rados
+%{?sle15_python_module_pythons}
 Name:           rrdtool
-Version:        1.10.3
+Version:        1.11.0
 Release:        0
 Summary:        Round Robin Database Tool to store and display time-series data
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
-Group:          Productivity/Scientific/Math
 URL:            https://oss.oetiker.ch/rrdtool/
 Source0:        https://github.com/oetiker/%{name}-1.x/releases/download/v%{version}/%{name}-%{version}.tar.gz
 Source2:        sysconfig.rrdcached
@@ -62,6 +61,7 @@ BuildRequires:  libtool
 BuildRequires:  libxml2-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pango-devel >= 1.14
+BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  zlib-devel
@@ -79,10 +79,10 @@ BuildRequires:  lua-devel
 BuildRequires:  ruby-devel
 %endif
 %if %{with tcl}
-BuildRequires:  tcl-devel >= 8.0
+BuildRequires:  pkgconfig(tcl) >= 8.0
 %endif
 %if %{with libdbi}
-BuildRequires:  libdbi-devel
+BuildRequires:  pkgconfig(dbi)
 %endif
 %if %{with libwrap}
 BuildRequires:  tcpd-devel
@@ -102,7 +102,6 @@ put a friendly user interface on it.
 
 %package -n librrd8
 Summary:        Round Robin Database tool library
-Group:          System/Libraries
 
 %description -n librrd8
 RRD stands for Round Robin Database. RRD is a system to store and
@@ -110,7 +109,6 @@ display time-series data.
 
 %package devel
 Summary:        RRDtool header files
-Group:          Development/Libraries/C and C++
 Requires:       librrd8 = %{version}-%{release}
 
 %description devel
@@ -121,7 +119,7 @@ use of the library.
 
 %package doc
 Summary:        Documentation for rrdtool
-Group:          Documentation/Howto
+BuildArch:      noarch
 
 %description doc
 RRD is the Acronym for Round Robin Database. RRD is a system to store and
@@ -130,7 +128,6 @@ server load average). This package contains documentation on using RRD.
 
 %package -n perl-%{name}
 Summary:        Perl bindings for RRDtool
-Group:          Development/Languages/Perl
 Requires:       %{name} = %{version}-%{release}
 Requires:       perl = %{perl_version}
 
@@ -142,7 +139,6 @@ server load average). This package contains the Perl bindings.
 %if %{with lua}
 %package -n lua-%{name}
 Summary:        Lua bindings for RRDtool
-Group:          Development/Languages/Other
 Requires:       %{name} = %{version}-%{release}
 
 %description -n lua-%{name}
@@ -156,7 +152,6 @@ server load average). This package contains the Lua bindings.
 
 %package -n python-%{name}
 Summary:        Python bindings for RRDtool
-Group:          Development/Languages/Python
 Requires:       %{name} = %{version}-%{release}
 
 %description -n python-%{name}
@@ -168,7 +163,6 @@ server load average). This package contains the Python bindings.
 %if %{with ruby}
 %package -n ruby-%{name}
 Summary:        Ruby bindings for RRDtool
-Group:          Development/Languages/Ruby
 Requires:       %{name} = %{version}-%{release}
 Requires:       ruby(abi) >= %{rb_ver}
 
@@ -183,7 +177,6 @@ This package contains the Ruby bindings.
 %if %{with tcl}
 %package -n tcl-%{name}
 Summary:        Tcl bindings for RRDtool
-Group:          Development/Languages/Tcl
 Requires:       %{name} = %{version}-%{release}
 Requires:       tcl >= 8.0
 
@@ -197,12 +190,11 @@ server load average). This package contains the Tcl bindings.
 %define         rrdcached_user  rrdcached
 %define         rrdcached_group rrdcached
 Summary:        Data caching daemon for RRDtool
-Group:          Productivity/Scientific/Math
 Requires:       %{name} = %{version}-%{release}
 Requires(post): %fillup_prereq
 Requires(pre):  shadow
-Provides:       group(%rrdcached_group)
-Provides:       user(%rrdcached_user)
+Provides:       group(%{rrdcached_group})
+Provides:       user(%{rrdcached_user})
 
 %description cached
 rrdcached is a daemon that receives updates to existing RRD files,
@@ -333,8 +325,8 @@ getent passwd %{rrdcached_user} >/dev/null || useradd -s /sbin/nologin -g %{rrdc
 
 %post cached
 %fillup_only rrdcached
-%service_add_post rrdcached.servicet rrdcached.socket
-%tmpfiles_create %{_tmpfilesdir}/rddcached.conf
+%service_add_post rrdcached.service rrdcached.socket
+%tmpfiles_create %{_tmpfilesdir}/rrdcached.conf
 
 %preun cached
 %service_del_preun rrdcached.service rrdcached.socket
