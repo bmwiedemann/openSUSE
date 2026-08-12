@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 12 02:23:30 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch no-dataclasses-missing-type.patch:
+  * Do not use internals to check if fields are undefined.
+
+-------------------------------------------------------------------
 Tue Jun  2 16:37:49 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Add support-marshmallow-4.patch (boo#1266046)

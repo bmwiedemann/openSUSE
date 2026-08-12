@@ -56,4 +56,13 @@
   * Fix tests with marshmallow 4 changes.</comment>
     <requestid>1356785</requestid>
   </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>6e89597fb36e0764a5fd445fb45d3c25</srcmd5>
+    <version>0.6.7</version>
+    <time>1786543903</time>
+    <user>anag_factory</user>
+    <comment>- Add patch no-dataclasses-missing-type.patch:
+  * Do not use internals to check if fields are undefined.</comment>
+    <requestid>1370746</requestid>
+  </revision>
 </revisionlist>

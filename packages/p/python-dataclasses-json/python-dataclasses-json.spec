@@ -30,6 +30,8 @@ Patch0:         support-poetry-core-2.patch
 Patch1:         support-python314.patch
 # PATCH-FIX-UPSTREAM gh#lidatong/dataclasses-json#577
 Patch2:         support-marshmallow-4.patch
+# PATCH-FIX-UPSTREAM gh#lidatong/dataclasses-json#578
+Patch3:         no-dataclasses-missing-type.patch
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module marshmallow}
 BuildRequires:  %{python_module mypy}

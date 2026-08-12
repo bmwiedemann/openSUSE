@@ -1,0 +1,34 @@
+From 89d2659a1b2e2eceabedcfac32fce6f22c8ad609 Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Wed, 12 Aug 2026 12:21:30 +1000
+Subject: [PATCH] Do not use dataclasses._MISSING_TYPE
+
+dataclasses._MISSING_TYPE was always an internal implemenation detail of
+how undefined fields were kept track of, dataclasses.MISSING is the
+correct way to check, and as a bonus, doesn't break with Python 3.15.
+---
+ dataclasses_json/undefined.py | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/dataclasses_json/undefined.py b/dataclasses_json/undefined.py
+index cb8b2cfc..e8f4a5b2 100644
+--- a/dataclasses_json/undefined.py
++++ b/dataclasses_json/undefined.py
+@@ -174,12 +174,12 @@ def _get_default(catch_all_field: Field) -> Any:
+         # https://github.com/python/mypy/issues/6910
+ 
+         # noinspection PyProtectedMember
+-        has_default = not isinstance(catch_all_field.default,
+-                                     dataclasses._MISSING_TYPE)
++        has_default = catch_all_field.default is not dataclasses.MISSING
+         # noinspection PyProtectedMember
+-        has_default_factory = not isinstance(catch_all_field.default_factory,
+-                                             # type: ignore
+-                                             dataclasses._MISSING_TYPE)
++        has_default_factory = (
++            catch_all_field.default_factory
++            is not dataclasses.MISSING
++        )
+         # TODO: black this for proper formatting
+         default_value: Union[
+             Type[_CatchAllUndefinedParameters._SentinelNoDefault], Any] = _CatchAllUndefinedParameters\
