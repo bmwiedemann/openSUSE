@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Wed Aug 12 05:55:28 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.113.0:
+  * Features
+    - 439621c5: feat(api): parse JSON arrays and objects in --field
+    - e8861a0e: feat(artifact-registry): add glab artifact-registry
+      get-token
+    - 6d54bd81: feat(artifact-registry): add glab artifact-registry
+      status
+  * Bug Fixes
+    - f7a6764a: fix(auth): avoid keyring write contention on
+      concurrent OAuth refresh
+    - f6a54bf4: fix(auth): explain the OAuth/PAT scheme mismatch
+      and pin the provenance matrix
+    - 5321bbac: fix(auth): stop configure-docker from replacing
+      other credential helpers
+    - 524e759a: fix(ci): escape square brackets in pipeline view
+      job titles and modals
+    - 6b1db998: fix(ci): highlight the focused modal button
+    - 9523a73c: fix(commands): argument count limiters
+    - 73154c2f: fix(mr): allow create with flag-complete inputs
+      outside a git repo
+  * Documentation
+    - f42c4cfe: docs(skills): warn bare issue refs don't expand in
+      epic notes
+    - 82812dea: docs: Add a commands landing page
+    - 725b2c80: docs: Move authentication documentation from the
+      README to the docs site
+    - 26bbceb1: docs: create release command - clarify example
+      reference for assets-links
+  * Dependencies
+    - b30febac: chore(deps): update module github.com/docker/cli to
+      v29.7.0+incompatible
+    - 57fcf187: chore(deps): update module github.com/docker/cli to
+      v29.7.1+incompatible
+  * Maintenance
+    - 48a15b06: refactor(lazy-loader): add lazy loading package
+
+-------------------------------------------------------------------
 Wed Aug 05 05:18:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.112.0:
