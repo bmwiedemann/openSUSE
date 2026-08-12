@@ -1,7 +1,7 @@
 #
 # spec file for package gap-unitlib
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-unitlib
-Version:        5.0.0
+Version:        5.1.0
 Release:        0
 Summary:        GAP: Library of normalized unit groups of modular group algebras
 License:        GPL-2.0-or-later
@@ -28,10 +28,9 @@ Source:         https://github.com/gap-packages/unitlib/releases/download/v%vers
 BuildArch:      noarch
 BuildRequires:  fdupes
 BuildRequires:  gap-rpm-devel
-Requires:       gap-core >= 4.11
-Requires:       gap-gapdoc >= 1.6
-Requires:       gap-io >= 4.5
+Requires:       gap-core >= 4.12
 Requires:       gap-laguna >= 3.9.4
+Requires:       gap-smallgrp >= 1.0
 Requires:       gzip
 Suggests:       gap-scscp >= 2.2
 
