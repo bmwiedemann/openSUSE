@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Aug 11 12:02:58 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 1.1.0+git20260811.c3fa27f:
+  * Release version 1.1.0
+  * Support images ending with .sysext.raw
+
+-------------------------------------------------------------------
+Wed Apr 29 13:01:53 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 1.0.0+git20260429.975aa83:
+  * remove old link while installation
+
+-------------------------------------------------------------------
 Wed Apr 29 09:28:59 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 1.0.0+git20260429.bf44eec:

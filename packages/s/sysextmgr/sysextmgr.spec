@@ -16,7 +16,7 @@
 #
 
 Name:           sysextmgr
-Version:        1.0.0+git20260429.bf44eec
+Version:        1.1.0+git20260811.c3fa27f
 Release:        0
 Summary:        Tools to manage systemd-sysext images
 License:        GPL-2.0-or-later

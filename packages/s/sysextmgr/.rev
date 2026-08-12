@@ -120,4 +120,17 @@
   * Update help message for cleanup options</comment>
     <requestid>1349960</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>743076cefb4fd42e22493ab6e5d6fa63</srcmd5>
+    <version>1.1.0+git20260811.c3fa27f</version>
+    <time>1786543841</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.1.0+git20260811.c3fa27f:
+  * Release version 1.1.0
+  * Support images ending with .sysext.raw
+
+- Update to version 1.0.0+git20260429.975aa83:
+  * remove old link while installation</comment>
+    <requestid>1370690</requestid>
+  </revision>
 </revisionlist>
