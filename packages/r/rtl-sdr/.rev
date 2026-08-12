@@ -125,4 +125,32 @@
     <comment></comment>
     <requestid>1349256</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>48fd109829c402dae9c5476c99afe5de</srcmd5>
+    <version>2.0.3</version>
+    <time>1786543942</time>
+    <user>anag_factory</user>
+    <comment>Update to 2.0.3
+
+Upstream 2.0.3. Two of the three downstream patches are dropped because
+upstream merged them: the version-number patch (upstream now sets
+VERSION_INFO_PATCH_VERSION 3) and the USB-error hang fix, whose four hunks
+are present verbatim. The udev patch is kept and was verified in the built
+RPM -- all 42 rules carry the rtlsdr group with no unsubstituted placeholder.
+
+SONAME is unchanged (SOVERSION 0 in both releases), so librtlsdr0 stays and
+none of the 13 reverse dependencies need rebuilding.
+
+Note for anyone rebuilding this later: upstream renamed the GitHub repository
+from rtl-sdr to librtlsdr, so the generated archive's top directory is now
+librtlsdr-&lt;version&gt; for every tag, including older ones. %autosetup gained an
+explicit -n for that. The %files glob also no longer embeds %{version} in the
+library filename, which is what made the dropped version-number patch
+necessary in the first place.
+
+Verified on aarch64: build green, testsuite unchanged (upstream ships none),
+rpmlint findings limited to the pre-existing no-binary on the rules-only udev
+subpackage.</comment>
+    <requestid>1370777</requestid>
+  </revision>
 </revisionlist>

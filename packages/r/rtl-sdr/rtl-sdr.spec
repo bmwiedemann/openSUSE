@@ -1,7 +1,7 @@
 #
 # spec file for package rtl-sdr
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,18 +19,15 @@
 %define sover 0
 %define libname librtlsdr%{sover}
 %define rtlsdr_group rtlsdr
-
 Name:           rtl-sdr
-Version:        2.0.2
+Version:        2.0.3
 Release:        0
 Summary:        Support programs for RTL2832
 License:        GPL-2.0-or-later
-URL:            http://sdr.osmocom.org/trac/wiki/rtl-sdr
+URL:            https://sdr.osmocom.org/trac/wiki/rtl-sdr
 #Git-Clone:     https://git.osmocom.org/rtl-sdr
 Source:         https://github.com/steve-m/librtlsdr/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         0001-Better-udev-handling.patch
-Patch1:         0002-Change-version-number.patch
-Patch2:         0003-Fix-application-hang-on-usb-error.patch
 BuildRequires:  cmake >= 3.7.2
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -64,7 +61,9 @@ Requires:       %{libname} = %{version}
 Library headers for rtl-sdr driver.
 
 %prep
-%autosetup -p1
+# Upstream repository was renamed from rtl-sdr to librtlsdr, so the
+# generated GitHub archive now unpacks into librtlsdr-%%{version}
+%autosetup -p1 -n librtlsdr-%{version}
 
 %build
 %cmake \
@@ -103,8 +102,9 @@ getent group %{rtlsdr_group} >/dev/null || groupadd -r %{rtlsdr_group}
 %{_bindir}/rtl_test
 
 %files -n %{libname}
-%{_libdir}/librtlsdr.so.%{sover}*
-%{_libdir}/librtlsdr.so.%{version}
+# Upstream sets the library VERSION from CMakeLists.txt, which has drifted
+# from the release tag before, so do not tie this glob to %%{version}
+%{_libdir}/librtlsdr.so.*
 
 %files udev
 %{_udevrulesdir}/rtl-sdr.rules

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Aug 12 05:22:14 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.0.3:
+  * Add support for the RTL-SDR Blog V4 Lite dongle
+  * Bypass the tracking filter on HF to reduce insertion loss
+  * Fix application hang on USB transfer errors
+  * Correct the release version recorded in CMakeLists.txt
+  * Allow building with CMake 4
+- Drop patches included upstream:
+  * 0002-Change-version-number.patch
+  * 0003-Fix-application-hang-on-usb-error.patch
+- Unpack from librtlsdr-2.0.3 as upstream repository was renamed
+
+-------------------------------------------------------------------
 Sun Apr 12 09:15:58 UTC 2026 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - Add two patches from upstream:
