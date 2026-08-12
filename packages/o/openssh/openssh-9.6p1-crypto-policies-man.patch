@@ -2,7 +2,7 @@ Index: openssh-10.3p1/ssh_config.5
 ===================================================================
 --- openssh-10.3p1.orig/ssh_config.5
 +++ openssh-10.3p1/ssh_config.5
-@@ -441,17 +441,14 @@ A single argument of
+@@ -441,18 +441,14 @@ A single argument of
  causes no CNAMEs to be considered for canonicalization.
  This is the default behaviour.
  .It Cm CASignatureAlgorithms
@@ -20,7 +20,8 @@ Index: openssh-10.3p1/ssh_config.5
 -ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,
 -sk-ssh-ed25519@openssh.com,
 -sk-ecdsa-sha2-nistp256@openssh.com,
--rsa-sha2-512,rsa-sha2-256
+-rsa-sha2-512,rsa-sha2-256,
+-ssh-mldsa44-ed25519@openssh.com
 -.Ed
 -.Pp
  If the specified list begins with a
@@ -96,7 +97,7 @@ Index: openssh-10.3p1/ssh_config.5
  .It Cm HashKnownHosts
  Indicates that
  .Xr ssh 1
-@@ -1061,38 +1061,26 @@ will not be converted automatically,
+@@ -1061,40 +1061,26 @@ will not be converted automatically,
  but may be manually hashed using
  .Xr ssh-keygen 1 .
  .It Cm HostbasedAcceptedAlgorithms
@@ -133,12 +134,14 @@ Index: openssh-10.3p1/ssh_config.5
 -webauthn-sk-ecdsa-sha2-nistp256-cert-v01@openssh.com,
 -rsa-sha2-512-cert-v01@openssh.com,
 -rsa-sha2-256-cert-v01@openssh.com,
+-ssh-mldsa44-ed25519-cert-v01@openssh.com,
 -ssh-ed25519,
 -ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,
 -sk-ssh-ed25519@openssh.com,
 -sk-ecdsa-sha2-nistp256@openssh.com,
 -webauthn-sk-ecdsa-sha2-nistp256@openssh.com,
--rsa-sha2-512,rsa-sha2-256
+-rsa-sha2-512,rsa-sha2-256,
+-ssh-mldsa44-ed25519@openssh.com
 -.Ed
 +at the head of the built-in openssh default set.
  .Pp
@@ -256,7 +259,7 @@ Index: openssh-10.3p1/ssh_config.5
  The list of available MAC algorithms may also be obtained using
  .Qq ssh -Q mac .
  .It Cm NoHostAuthenticationForLocalhost
-@@ -1732,41 +1722,32 @@ instead of continuing to execute and pas
+@@ -1732,43 +1722,32 @@ instead of continuing to execute and pas
  The default is
  .Cm no .
  .It Cm PubkeyAcceptedAlgorithms
@@ -294,12 +297,14 @@ Index: openssh-10.3p1/ssh_config.5
 -webauthn-sk-ecdsa-sha2-nistp256-cert-v01@openssh.com,
 -rsa-sha2-512-cert-v01@openssh.com,
 -rsa-sha2-256-cert-v01@openssh.com,
+-ssh-mldsa44-ed25519-cert-v01@openssh.com,
 -ssh-ed25519,
 -ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,
 -sk-ssh-ed25519@openssh.com,
 -sk-ecdsa-sha2-nistp256@openssh.com,
 -webauthn-sk-ecdsa-sha2-nistp256@openssh.com,
--rsa-sha2-512,rsa-sha2-256
+-rsa-sha2-512,rsa-sha2-256,
+-ssh-mldsa44-ed25519@openssh.com
 -.Ed
 +built-in openssh default set.
  .Pp
@@ -326,7 +331,7 @@ Index: openssh-10.3p1/sshd_config.5
 ===================================================================
 --- openssh-10.3p1.orig/sshd_config.5
 +++ openssh-10.3p1/sshd_config.5
-@@ -385,17 +385,14 @@ If the argument is
+@@ -385,18 +385,14 @@ If the argument is
  then no banner is displayed.
  By default, no banner is displayed.
  .It Cm CASignatureAlgorithms
@@ -344,7 +349,8 @@ Index: openssh-10.3p1/sshd_config.5
 -ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,
 -sk-ssh-ed25519@openssh.com,
 -sk-ecdsa-sha2-nistp256@openssh.com,
--rsa-sha2-512,rsa-sha2-256
+-rsa-sha2-512,rsa-sha2-256,
+-ssh-mldsa44-ed25519@openssh.com
 -.Ed
 -.Pp
  If the specified list begins with a
@@ -395,7 +401,7 @@ Index: openssh-10.3p1/sshd_config.5
  The list of available ciphers may also be obtained using
  .Qq ssh -Q cipher .
  .It Cm ClientAliveCountMax
-@@ -788,55 +784,45 @@ For this to work
+@@ -788,57 +784,45 @@ For this to work
  .Cm GSSAPIKeyExchange
  needs to be enabled in the server and also used by the client.
  .It Cm GSSAPIKexAlgorithms
@@ -461,18 +467,20 @@ Index: openssh-10.3p1/sshd_config.5
 -webauthn-sk-ecdsa-sha2-nistp256-cert-v01@openssh.com,
 -rsa-sha2-512-cert-v01@openssh.com,
 -rsa-sha2-256-cert-v01@openssh.com,
+-ssh-mldsa44-ed25519-cert-v01@openssh.com,
 -ssh-ed25519,
 -ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,
 -sk-ssh-ed25519@openssh.com,
 -sk-ecdsa-sha2-nistp256@openssh.com,
 -webauthn-sk-ecdsa-sha2-nistp256@openssh.com,
--rsa-sha2-512,rsa-sha2-256
+-rsa-sha2-512,rsa-sha2-256,
+-ssh-mldsa44-ed25519@openssh.com
 -.Ed
 +the head of the built-in openssh default set.
  .Pp
  The list of available signature algorithms may also be obtained using
  .Qq ssh -Q HostbasedAcceptedAlgorithms .
-@@ -903,27 +889,15 @@ is specified, the location of the socket
+@@ -903,29 +889,15 @@ is specified, the location of the socket
  .Ev SSH_AUTH_SOCK
  environment variable.
  .It Cm HostKeyAlgorithms
@@ -495,12 +503,14 @@ Index: openssh-10.3p1/sshd_config.5
 -webauthn-sk-ecdsa-sha2-nistp256-cert-v01@openssh.com,
 -rsa-sha2-512-cert-v01@openssh.com,
 -rsa-sha2-256-cert-v01@openssh.com,
+-ssh-mldsa44-ed25519-cert-v01@openssh.com,
 -ssh-ed25519,
 -ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,
 -sk-ssh-ed25519@openssh.com,
 -sk-ecdsa-sha2-nistp256@openssh.com,
 -webauthn-sk-ecdsa-sha2-nistp256@openssh.com,
--rsa-sha2-512,rsa-sha2-256
+-rsa-sha2-512,rsa-sha2-256,
+-ssh-mldsa44-ed25519@openssh.com
 -.Ed
 -.Pp
  The list of available signature algorithms may also be obtained using
@@ -603,7 +613,7 @@ Index: openssh-10.3p1/sshd_config.5
  The list of available MAC algorithms may also be obtained using
  .Qq ssh -Q mac .
  .It Cm Match
-@@ -1765,38 +1734,26 @@ or equivalent.)
+@@ -1765,40 +1734,26 @@ or equivalent.)
  The default is
  .Cm yes .
  .It Cm PubkeyAcceptedAlgorithms
@@ -641,12 +651,14 @@ Index: openssh-10.3p1/sshd_config.5
 -webauthn-sk-ecdsa-sha2-nistp256-cert-v01@openssh.com,
 -rsa-sha2-512-cert-v01@openssh.com,
 -rsa-sha2-256-cert-v01@openssh.com,
+-ssh-mldsa44-ed25519-cert-v01@openssh.com,
 -ssh-ed25519,
 -ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,
 -sk-ssh-ed25519@openssh.com,
 -sk-ecdsa-sha2-nistp256@openssh.com,
 -webauthn-sk-ecdsa-sha2-nistp256@openssh.com,
--rsa-sha2-512,rsa-sha2-256
+-rsa-sha2-512,rsa-sha2-256,
+-ssh-mldsa44-ed25519@openssh.com
 -.Ed
 +built-in openssh default set.
  .Pp

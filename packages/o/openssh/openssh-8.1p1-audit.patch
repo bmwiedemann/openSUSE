@@ -1828,8 +1828,8 @@ Index: openssh-10.3p1/packet.h
 --- openssh-10.3p1.orig/packet.h
 +++ openssh-10.3p1/packet.h
 @@ -226,4 +226,5 @@ char	*connection_info_message(struct ssh
- # undef EC_POINT
- #endif
+ const u_char	*sshpkt_ptr(struct ssh *, size_t *lenp);
+ char	*connection_info_message(struct ssh *ssh);
  
 +void	 packet_destroy_all(struct ssh *, int, int);
  #endif				/* PACKET_H */

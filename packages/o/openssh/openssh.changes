@@ -1,4 +1,91 @@
 -------------------------------------------------------------------
+Tue Aug 11 08:19:07 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to openssh 10.5p1:
+  = Potentially-incompatible changes
+  * Portable OpenSSH now requires ECC (Elliptic Curve 
+    Cryptography) support in libcrypto, including support for the 
+    NISTP521 curve. ECC is included in the default build
+    configurations of all versions of all libcrypto
+    implementations currently supported by OpenSSH, including
+    LibreSSL, OpenSSL, BoringSSL and AWS LC. The --without-openssl
+    build configuration is not affected.
+
+  = Security
+  * ssh-agent(1): fix an interaction between agent locking and the
+    session-bind@openssh.com extension that is used to identify
+    forwarded agents. These binding requests were refused when the
+    agent was locked, with the result that operations that were
+    intended to be limited to local use only could be performed
+    remotely, including the ability to add PKCS#11 tokens and make
+    use of keys that had destination restrictions applied.
+    Reported by sn0x-sharma
+  * ssh(1): avoid potential realloc use-after-free in the client if
+    a remote forwarding is added via the local session multiplexing
+    socket while a remote forwarding open request is pending with
+    the server. Report and fix from Brian Mingus of Cognatory
+  * sshd(8): make the authorized_keys "restrict" keyword apply
+    correctly to tunnel forwarding too (which is administratively
+    disabled by default). Reported by Erichen, Institute of
+    Computing Technology, Chinese Academy of Sciences
+    
+  = New features
+  * ssh-keygen(1): add ability to set or clear the touch-required
+    and verify-required flags on FIDO private keys when resetting a
+    private key's passphrase.
+  * ssh(1): tweak ordering of certificates tried during pubkey
+    authentication to prefer FIDO keys that do not require user
+    presence (touch) first, and FIDO keys that require user
+    verification via PIN or biometrics last. This effectively tries
+    low-friction authenticators before higher friction ones.
+  * ssh(1): add a "ssh -Z user@host" mode that prints the keys that
+    will be tried for public key authentication in the order that
+    they will be used.
+  * sshd(8) use setproctitle(3) to identify sshd-session when its
+    acting as a post-authentication monitor.
+    
+  = Bugfixes
+  * ssh-keyscan(1): make reading the server banner a non-blocking
+    operation to prevent a stuck server from blocking a many-host
+    keyscan from proceeding.
+  * sshd(8): use sshpkt_fatal() instead of plain fatal() for errors
+    in the packet code as this provides context of the failing peer
+    (address, port, user, etc).
+  * sshd(8): when signing hostkey proofs for a client
+    UpdateHostKeys request, allow each hostkey to perform at most
+    one signature operation.
+  * sshd(8) fix GSSAPI option names, that were broken during a
+    servconf.c refactoring in openssh-10.4; bz3974.
+  * ssh-keygen(1): pass back errors from ed25519 key generation,
+    which theoretically can fail. GHPR702.
+  * sshd(8): move check of public key type against allowed
+    algorithms to before parsing of the key sent by the peer. This
+    removes at least some key parsing and verification paths from
+    the pre-auth attack surface. Suggested by Christopher Paul
+    Rohlf of Anthropic.
+  * ssh-keygen(1): fix double frees (impossible to reach outside of 
+    a test harness), and also use freezero where possible. From
+    Christopher Paul Rohlf at Anthropic.
+  * sshd(8): fix ChannelTimeout and RekeyLimit not being applied in
+    sshd_config Match blocks.
+  * sshd(8): in sshd config dump mode, write all directives in
+    mixed case for consistency
+    
+  = Portability
+  * sshd(8): re-allow PAMServiceName inside a Match block, which
+    was incorrectly disabled during a refactoring in openssh-10.4.
+    bz3987
+  
+- Drop patch which is already included upstream:
+  * 0001-Fix-GSSAPI-server-option-names.diff 
+- Rebase patches:
+  * openssh-7.7p1-fips.patch
+  * openssh-7.7p1-pam_check_locks.patch
+  * openssh-8.0p1-gssapi-keyex.patch
+  * openssh-8.1p1-audit.patch
+  * openssh-9.6p1-crypto-policies-man.patch
+
+-------------------------------------------------------------------
 Thu Jul 23 09:33:51 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch submitted to upstream to fix GSSAPI* options not

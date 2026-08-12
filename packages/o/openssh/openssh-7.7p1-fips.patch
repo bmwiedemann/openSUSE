@@ -967,7 +967,7 @@ Index: openssh-10.3p1/ssh-keygen.c
 +	struct Key_types key_types_all[] = {
  #ifdef WITH_OPENSSL
  		{ "rsa", "RSA" ,_PATH_HOST_RSA_KEY_FILE },
- #ifdef OPENSSL_HAS_ECC
+ 		{ "ecdsa", "ECDSA",_PATH_HOST_ECDSA_KEY_FILE },
 @@ -1018,6 +1022,17 @@ do_gen_all_hostkeys(struct passwd *pw)
  		{ NULL, NULL, NULL }
  	};

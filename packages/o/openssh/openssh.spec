@@ -59,7 +59,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           openssh
-Version:        10.4p1
+Version:        10.5p1
 Release:        0
 Summary:        Secure Shell Client and Server (Remote Login Program)
 License:        BSD-2-Clause AND MIT
@@ -83,8 +83,6 @@ Source14:       sysusers-sshd.conf
 Source15:       sshd-sle.pamd
 Source16:       sshd@.service
 Source17:       sshd.socket
-# PATCH-FIX-UPSTREAM 0001-Fix-GSSAPI-server-option-names.diff  https://bugzilla.mindrot.org/show_bug.cgi?id=3974
-Patch0:         0001-Fix-GSSAPI-server-option-names.diff
 # PATCH-FEATURE-SUSE openssh-7.7p1-X11_trusted_forwarding.patch bsc#50836 -- Enable trusted X11 forwarding by default
 Patch1:         openssh-7.7p1-X11_trusted_forwarding.patch
 # PATCH-FEATURE-SUSE openssh-7.7p1-enable_PAM_by_default.patch bsc#46749 -- UsePAM yes in default sshd_config

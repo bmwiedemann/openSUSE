@@ -4,7 +4,7 @@ Index: openssh-10.3p1/Makefile.in
 +++ openssh-10.3p1/Makefile.in
 @@ -110,6 +110,7 @@ LIBSSH_OBJS=${LIBOPENSSH_OBJS} \
  	kex.o kex-names.o kexdh.o kexgex.o kexecdh.o kexc25519.o \
- 	kexgexc.o kexgexs.o \
+ 	kexgexc.o kexgexs.o kexmlkem768ecdh.o \
  	kexsntrup761x25519.o kexmlkem768x25519.o sntrup761.o kexgen.o \
 +	kexgssc.o \
  	sftp-realpath.o platform-pledge.o platform-tracing.o platform-misc.o \
@@ -1317,9 +1317,9 @@ Index: openssh-10.3p1/kex.h
 --- openssh-10.3p1.orig/kex.h
 +++ openssh-10.3p1/kex.h
 @@ -103,6 +103,15 @@ enum kex_exchange {
- 	KEX_C25519_SHA256,
  	KEX_KEM_SNTRUP761X25519_SHA512,
  	KEX_KEM_MLKEM768X25519_SHA256,
+ 	KEX_KEM_MLKEM768ECDH_SHA256,
 +#ifdef GSSAPI
 +	KEX_GSS_GRP1_SHA1,
 +	KEX_GSS_GRP14_SHA1,
@@ -2599,9 +2599,9 @@ Index: openssh-10.3p1/monitor.c
  	if (auth_opts->permit_pty_flag) {
  		monitor_permit(mon_dispatch, MONITOR_REQ_PTY, 1);
 @@ -1891,6 +1915,17 @@ monitor_apply_keystate(struct ssh *ssh,
- # ifdef OPENSSL_HAS_ECC
+ 	kex->kex[KEX_DH_GEX_SHA256] = kexgex_server;
  	kex->kex[KEX_ECDH_SHA2] = kex_gen_server;
- # endif
+ 	kex->kex[KEX_KEM_MLKEM768ECDH_SHA256] = kex_gen_server;
 +# ifdef GSSAPI
 +	if (options.gss_keyex) {
 +		kex->kex[KEX_GSS_GRP1_SHA1] = kexgss_server;
@@ -2613,7 +2613,7 @@ Index: openssh-10.3p1/monitor.c
 +		kex->kex[KEX_GSS_C25519_SHA256] = kexgss_server;
 +	}
 +# endif
- #endif /* WITH_OPENSSL */
+ #endif
  	kex->kex[KEX_C25519_SHA256] = kex_gen_server;
  	kex->kex[KEX_KEM_SNTRUP761X25519_SHA512] = kex_gen_server;
 @@ -1989,8 +2024,8 @@ mm_answer_gss_setup_ctx(struct ssh *ssh,
@@ -3278,20 +3278,6 @@ Index: openssh-10.3p1/ssh.1
 ===================================================================
 --- openssh-10.3p1.orig/ssh.1
 +++ openssh-10.3p1/ssh.1
-@@ -543,7 +543,13 @@ For full details of the options listed b
- .It ForwardX11Timeout
- .It ForwardX11Trusted
- .It GSSAPIAuthentication
-+.It GSSAPIKeyExchange
-+.It GSSAPIClientIdentity
- .It GSSAPIDelegateCredentials
-+.It GSSAPIKexAlgorithms
-+.It GSSAPIRenewalForcesRekey
-+.It GSSAPIServerIdentity
-+.It GSSAPITrustDns
- .It GatewayPorts
- .It GlobalKnownHostsFile
- .It HashKnownHosts
 @@ -640,6 +646,8 @@ flag),
  (supported message integrity codes),
  .Ar kex
@@ -3471,10 +3457,10 @@ Index: openssh-10.3p1/sshconnect2.c
  	free(hkalgs);
  
  	/* start key exchange */
-@@ -272,15 +313,45 @@ ssh_kex2(struct ssh *ssh, char *host, st
- # ifdef OPENSSL_HAS_ECC
+@@ -272,16 +313,46 @@ ssh_kex2(struct ssh *ssh, char *host, st
+ 	ssh->kex->kex[KEX_DH_GEX_SHA1] = kexgex_client;
+ 	ssh->kex->kex[KEX_DH_GEX_SHA256] = kexgex_client;
  	ssh->kex->kex[KEX_ECDH_SHA2] = kex_gen_client;
- # endif
 -#endif
 +# ifdef GSSAPI
 +	if (options.gss_keyex) {
@@ -3491,6 +3477,7 @@ Index: openssh-10.3p1/sshconnect2.c
  	ssh->kex->kex[KEX_C25519_SHA256] = kex_gen_client;
  	ssh->kex->kex[KEX_KEM_SNTRUP761X25519_SHA512] = kex_gen_client;
  	ssh->kex->kex[KEX_KEM_MLKEM768X25519_SHA256] = kex_gen_client;
+ 	ssh->kex->kex[KEX_KEM_MLKEM768ECDH_SHA256] = kex_gen_client;
  	ssh->kex->verify_host_key=&verify_host_key_callback;
  
 +#if defined(GSSAPI) && defined(WITH_OPENSSL)
@@ -3728,9 +3715,9 @@ Index: openssh-10.3p1/sshd-auth.c
  	if ((r = kex_setup(ssh, myproposal)) != 0)
  		fatal_r(r, "kex_setup");
 @@ -836,6 +878,17 @@ do_ssh2_kex(struct ssh *ssh)
- # ifdef OPENSSL_HAS_ECC
+ 	kex->kex[KEX_DH_GEX_SHA256] = kexgex_server;
  	kex->kex[KEX_ECDH_SHA2] = kex_gen_server;
- # endif /* OPENSSL_HAS_ECC */
+ 	kex->kex[KEX_KEM_MLKEM768ECDH_SHA256] = kex_gen_server;
 +# ifdef GSSAPI
 +	if (options.gss_keyex) {
 +		kex->kex[KEX_GSS_GRP1_SHA1] = kexgss_server;
@@ -3742,7 +3729,7 @@ Index: openssh-10.3p1/sshd-auth.c
 +		kex->kex[KEX_GSS_C25519_SHA256] = kexgss_server;
 +	}
 +# endif
- #endif /* WITH_OPENSSL */
+ #endif
  	kex->kex[KEX_C25519_SHA256] = kex_gen_server;
  	kex->kex[KEX_KEM_SNTRUP761X25519_SHA512] = kex_gen_server;
 Index: openssh-10.3p1/sshd_config
