@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Aug 12 06:39:06 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.14.3:
+  No kumactl-related changes or dependency updates
+
+-------------------------------------------------------------------
+Wed Aug 12 06:30:43 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.14.2:
+  * chore(deps): bump kumahq/kuma-gui to
+    b20ea952c0d84208791d37a2cef1b6db49a250d1 (#17726)
+  * chore(deps): security update (#17683)
+    - github.com/klauspost/compress 1.18.5
+  * chore(deps): security update (#17621)
+  * chore(deps): security update (#17521)
+    - golang.org/x/crypto 0.53.0
+    - golang.org/x/net 0.55.0
+  * chore(deps): bump coredns from 1.14.2 to 1.14.6 (backport of
+    #17368) (#17400)
+
+-------------------------------------------------------------------
 Thu Jul 16 07:39:24 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.14.1:
