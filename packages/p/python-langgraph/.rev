@@ -31,4 +31,26 @@
     <comment>Update to 1.2.10</comment>
     <requestid>1368301</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>00339a1bf6b5a5ffa41ff7732750914f</srcmd5>
+    <version>1.2.11</version>
+    <time>1786543934</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.2.11
+
+Small additive upstream release: a new TracePolicy dataclass and omit_payload
+helper in langgraph.types (both added to __all__), a trace_policy argument on
+StateGraph.add_node, and stale noqa cleanup. No API removals and no change to
+execution behaviour.
+
+No dependency floors changed -- the dependency block is byte-identical to
+1.2.10, and the langchain-core floor stays &gt;= 1.4.7 with a &lt; 2 ceiling, so
+this is unaffected by the langchain-core 1.5.4 update submitted separately.
+
+Verified on aarch64: build green, rpmlint 0 errors / 0 warnings. The %check
+remains byte-compilation only, because upstream's tests/conftest.py
+unconditionally imports Postgres and SQLite checkpoint backends that are not
+packaged.</comment>
+    <requestid>1370778</requestid>
+  </revision>
 </revisionlist>
