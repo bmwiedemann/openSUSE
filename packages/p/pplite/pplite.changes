@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Aug 12 05:00:33 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.14
+  * Method `join_assign_if_exact` computes the join of two
+    polyhedra provided it is exact, i.e., it yields the same result
+    as set union; the implementation is based on R. Bagnara, P.M.
+    Hill, E. Zaffanella: Exact Join Detection for Convex Polyhedra
+    and Other Numerical Abstractions, CGTA 2010.
+  * Methods `skel_cons` and `skel_gens` return the skeleton
+    constraints and generators of an NNC polyhedron, respectively.
+  * Method `minkowski_sum` computes the sums of two polyhedra.
+
+-------------------------------------------------------------------
 Wed Feb  4 17:05:16 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.13

@@ -16,15 +16,16 @@
 #
 
 
-%define lname   libpplite6
+%define lname   libpplite7
 Name:           pplite
-Version:        0.13
+Version:        0.14
 Release:        0
 Summary:        Computations with polyhedra
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://github.com/ezaffanella/PPLite/
 Source:         https://github.com/ezaffanella/PPLite/raw/main/releases/%name-%version.tar.gz
+#Changelog:     <git-clone-url>/README.md
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
 BuildRequires:  pkgconfig(flint)
