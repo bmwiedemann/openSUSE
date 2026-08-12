@@ -92,6 +92,10 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
           %else
             %if %sle_version == 150500
               %global suseversion 15.5
+            %else
+              %if %sle_version == 150600
+                %global suseversion 15.6
+              %endif
             %endif
           %endif
         %endif
@@ -100,13 +104,23 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
   %endif
 %endif
 
-%if %suse_version >= 1550
+# %%elif is available in rpm 4.15+. Leap 16.0 has 4.20.
+%if %suse_version >= 1600
+  # SLES 16 currently doesn't use the sle_version macro.
+  %if %suse_version == 1600
+    %global suseversion 16.0
+  %elif %suse_version == 1610
+    %global suseversion 16.1
+  %endif
+%endif
+
+%if %suse_version >= 1699
   # Tumbleweed
   %global suseversion Tumbleweed
 %endif
 
 # Leap or not
-%if 0%{?sle_version}
+%if 0%([[ %{suseversion} =~ ^[0-9]+\.[0-9]+$ ]] && echo 1)
   %global prjname Leap:%{suseversion}
   %global distname openSUSE Leap
 %else

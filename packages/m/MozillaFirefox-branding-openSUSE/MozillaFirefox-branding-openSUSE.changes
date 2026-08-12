@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug  6 10:38:34 UTC 2026 - JS <obs.coke518@passinbox.com>
+
+- recognize Leap 15.6, 16.0 and 16.1
+
+-------------------------------------------------------------------
 Sun Nov 10 13:14:34 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - do not use XDG for mime-handler as it does not handle the default

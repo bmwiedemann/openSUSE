@@ -602,4 +602,12 @@ Index: firefox-esr-branding-openSUSE.changes
  - add sle_version 150500 check</comment>
     <requestid>1223283</requestid>
   </revision>
+  <revision rev="65" vrev="6">
+    <srcmd5>0a063b85e8591b2a8cb70a6633c557cf</srcmd5>
+    <version>68</version>
+    <time>1786543864</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1370725</requestid>
+  </revision>
 </revisionlist>
