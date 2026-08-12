@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug 11 08:51:45 UTC 2026 - antonio.feijoo@suse.com
+
+- Update to version 112+suse.29.gc0c5e1d
+  * fix(base): sanitize message written by die() to the emergency hook
+
+- CVE-2026-15816: root code execution via unescaped error message written to
+  sourced emergency hook script in die() (bsc#1274432)
+
+-------------------------------------------------------------------
 Fri Aug 07 08:00:13 UTC 2026 - antonio.feijoo@suse.com
 
 - Update to version 112+suse.28.g84b3ea7:
