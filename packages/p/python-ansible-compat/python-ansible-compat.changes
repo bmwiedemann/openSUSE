@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Aug 12 06:37:13 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 26.8.0:
+  * fix: reduce cognitive complexity of 5 functions in runtime.py
+    in #602
+  * chore(deps): update all dependencies in #596
+  * Sonar/s3776 s1172 src in #604
+  * fix: annotate mutable class defaults with ClassVar in #606
+  * chore(deps): update pep621 in #597
+  * fix(deps): exclude ansible-core 2.17.x (CVE-2026-11332) in #609
+  * fix: skip collection modules in ANSIBLE_LIBRARY in #612
+
+-------------------------------------------------------------------
 Wed Jul  1 08:16:11 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 26.6.0:
