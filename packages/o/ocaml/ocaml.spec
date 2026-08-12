@@ -54,8 +54,6 @@ License:        QPL-1.0 AND SUSE-LGPL-2.0-with-linking-exception
 License:        MIT
 %endif
 ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
-Group:          Development/Languages/OCaml
-BuildRoot:      %_tmppath/%name-%version-build
 URL:            http://www.ocaml.org
 Source0:        %name-%version.tar.xz
 Source2:        %name-rpmlintrc
@@ -92,7 +90,6 @@ system, Lex&Yacc tools, a replay debugger, and a comprehensive library.
 %package runtime
 Summary:        OCaml runtime environment
 License:        QPL-1.0
-Group:          Development/Languages/OCaml
 Provides:       ocaml(runtime) = %version-%release
 
 %description runtime
@@ -105,7 +102,6 @@ bytecode.
 %package source
 Summary:        Source code for OCaml libraries
 License:        QPL-1.0 AND SUSE-LGPL-2.0-with-linking-exception
-Group:          Development/Languages/OCaml
 
 %description source
 OCaml is a high-level, strongly-typed, functional and object-oriented
@@ -116,7 +112,6 @@ This package contains source code for OCaml libraries.
 %package ocamldoc
 Summary:        Documentation generator for OCaml
 License:        QPL-1.0
-Group:          Development/Languages/OCaml
 Requires:       ocaml = %version
 
 %description ocamldoc
@@ -128,7 +123,6 @@ This package contains a documentation generator for OCaml.
 %package compiler-libs
 Summary:        Libraries used internal to the OCaml Compiler
 License:        QPL-1.0
-Group:          Development/Languages/OCaml
 Requires:       ocaml = %version-%release
 
 %description compiler-libs
@@ -142,7 +136,6 @@ be helpful in the development of certain applications.
 %package compiler-libs-devel
 Summary:        Libraries used internal to the OCaml Compiler
 License:        QPL-1.0
-Group:          Development/Languages/OCaml
 Requires:       ocaml-compiler-libs = %version-%release
 
 %description compiler-libs-devel
@@ -295,7 +288,6 @@ _EOF_
 done
 
 %files -f files.ocaml.META
-%defattr(-,root,root,-)
 %doc Changes
 %if %{with suse_ocaml_use_rpm_license_macro}
 %license LICENSE
@@ -345,13 +337,16 @@ done
 %ocaml_standard_library/expunge
 %ocaml_standard_library/ld.conf
 %dir %ocaml_standard_library/stublibs
-%exclude %_bindir/ocamlrun
+%exclude %_bindir/*-ocamlrun-*
 %exclude %_bindir/ocamldoc*
+%exclude %_bindir/ocamlrun
+%exclude %_bindir/ocamlrun-*
 %exclude %ocaml_standard_library/ocamldoc
 
 %files runtime
-%defattr(-,root,root,-)
+%_bindir/*-ocamlrun-*
 %_bindir/ocamlrun
+%_bindir/ocamlrun-*
 %dir %ocaml_standard_library
 %ocaml_standard_library/runtime-launch-info
 %ocaml_standard_library/*.cmo
@@ -393,16 +388,13 @@ done
 %endif
 
 %files source
-%defattr(-,root,root,-)
 %ocaml_standard_library/*.ml
 
 %files ocamldoc
-%defattr(-,root,root,-)
 %_bindir/ocamldoc*
 %ocaml_standard_library/ocamldoc
 
 %files compiler-libs
-%defattr(-,root,root,-)
 %dir %ocaml_standard_library
 %ocaml_standard_library/compiler-libs/*.cma
 %ocaml_standard_library/compiler-libs/*.cmi
@@ -411,7 +403,6 @@ done
 %ocaml_standard_library/compiler-libs/*.cmti
 
 %files compiler-libs-devel
-%defattr(-,root,root,-)
 %dir %ocaml_standard_library/compiler-libs
 %ocaml_standard_library/compiler-libs/*.a
 %ocaml_standard_library/compiler-libs/*.cmx

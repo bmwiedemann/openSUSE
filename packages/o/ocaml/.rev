@@ -871,4 +871,12 @@ Use SPDX format (http://www.spdx.org/licenses). Where there is no suitable short
     <comment>update to version 5.5</comment>
     <requestid>1365589</requestid>
   </revision>
+  <revision rev="96" vrev="2">
+    <srcmd5>a99703203a287cb083ecc9aafd7ae53c</srcmd5>
+    <version>5.5.0</version>
+    <time>1786543838</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1370676</requestid>
+  </revision>
 </revisionlist>
