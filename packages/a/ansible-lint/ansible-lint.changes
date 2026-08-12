@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Wed Aug 12 07:37:22 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 26.8.0:
+  * Fix/sonarcloud unbounded recursion complexity in #5098
+  * feat: honor ANSIBLE_VAULT_PASSWORD_FILE for vault decryption in
+    #5019
+  * fix: jinja[spacing] rule creating invalid syntax for minus
+    modifiers in #5102
+  * chore(deps): update all dependencies in #5081
+  * chore(deps): update all dependencies pep621 in #5082
+  * fix: remove stale words from cspell dictionary in #5109
+  * chore(deps): bump schemas npm packages for Dependabot CVEs in
+    #5114
+  * fix(security): update dependencies [SECURITY] in #5111
+  * fix: address SonarCloud new code violations in #5116
+  * chore(deps): update all dependencies in #5121
+  * chore(deps): update all dependencies pep621 in #5122
+  * fix(deps): exclude ansible-core 2.17.x (CVE-2026-11332) in
+    #5123
+  * fix: expose ansible-galaxy on the uv tool-install path in #5124
+  * fix: var-naming for register projections in #5110
+  * chore: Adding OpenWrt 25.12 as platform in #5132
+  * chore(deps): update all dependencies pep621 in #5134
+  * chore(deps): update all dependencies in #5133
+  * fix: add timeout to release-check urlopen() call in #5128
+  * fix: respect ANSIBLE_HOME env var for cache dir selection
+    (#5806) in #5105
+  * fix: deduplicate ANSIBLE_HOME isolation check in #5140
+  * fix(security): update dependencies [SECURITY] in #5141
+  * fix: do not require role prefix for ansible_ connection
+    variables in #5130
+  * Adding missing FreeBSD versions. in #5143
+  * chore(deps): update all dependencies pep621 in #5139
+  * fix: prepend runtime cache dir to collections paths (#5137) in
+    #5145
+
+-------------------------------------------------------------------
 Wed Jul  1 08:12:40 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 26.6.0:

@@ -39,7 +39,7 @@
 
 %global lib_name ansiblelint
 Name:           ansible-lint
-Version:        26.6.0
+Version:        26.8.0
 Release:        0%{?dist}
 Summary:        Best practices checker for Ansible
 License:        MIT
@@ -66,8 +66,8 @@ BuildRequires:  %{ansible_python}-flake8
 
 # Add runtime requirements (unless required for tests)
 # to make sure this only builds if they are present
-# https://github.com/ansible/ansible-lint/blob/main/pyproject.toml#L79
-BuildRequires:  ansible-core >= 2.16.14
+# https://github.com/ansible/ansible-lint/blob/main/pyproject.toml#L35
+BuildRequires:  ansible-core >= 2.18
 BuildRequires:  %{ansible_python}-ansible-compat >= 26.3.0
 BuildRequires:  %{ansible_python}-black >= 24.3.0
 # indirect dependency of ruamel-yaml
@@ -88,7 +88,7 @@ BuildRequires:  %{ansible_python}-yamllint >= 1.38.0
 
 #
 # https://github.com/ansible/ansible-lint/blob/main/.config/requirements.in
-Requires:       ansible-core >= 2.16.14
+Requires:       ansible-core >= 2.18
 Requires:       %{ansible_python}-ansible-compat >= 25.8.2
 Requires:       %{ansible_python}-black >= 24.3.0
 # indirect dependency of ruamel-yaml
