@@ -17,7 +17,7 @@
 
 
 Name:           gap-circle
-Version:        1.7.0
+Version:        1.7.1
 Release:        0
 Summary:        GAP: Adjoint groups of finite rings
 License:        GPL-2.0-or-later
