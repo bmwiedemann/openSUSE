@@ -1,8 +1,7 @@
 #
 # spec file for package lapack
 #
-# Copyright (c) 2026 SUSE LLC
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -97,9 +96,9 @@ Summary:        Linear Algebra PACKage: Shared Library
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 %else
-Conflicts:      libopenblas_openmp0
-Conflicts:      libopenblas_pthreads0
-Conflicts:      libopenblas_serial0
+Conflicts:      compatlibopenblas_openmp0
+Conflicts:      compatlibopenblas_pthreads0
+Conflicts:      compatlibopenblas_serial0
 OrderWithRequires(pre): update-alternatives
 Suggests:       update-alternatives
 %endif
@@ -164,9 +163,9 @@ Summary:        Basic Linear Algebra Subprograms: Shared Library
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 %else
-Conflicts:      libopenblas_openmp0
-Conflicts:      libopenblas_pthreads0
-Conflicts:      libopenblas_serial0
+Conflicts:      compatlibopenblas_openmp0
+Conflicts:      compatlibopenblas_pthreads0
+Conflicts:      compatlibopenblas_serial0
 OrderWithRequires(pre): update-alternatives
 Suggests:       update-alternatives
 %endif
@@ -214,9 +213,9 @@ Summary:        Native C Interface to LAPACK: shared library
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 %else
-Conflicts:      libopenblas_openmp0
-Conflicts:      libopenblas_pthreads0
-Conflicts:      libopenblas_serial0
+Conflicts:      compatlibopenblas_openmp0
+Conflicts:      compatlibopenblas_pthreads0
+Conflicts:      compatlibopenblas_serial0
 OrderWithRequires(pre): update-alternatives
 Suggests:       update-alternatives
 %endif
@@ -260,9 +259,9 @@ Summary:        Native C interface to BLAS: Shared Library
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 %else
-Conflicts:      libopenblas_openmp0
-Conflicts:      libopenblas_pthreads0
-Conflicts:      libopenblas_serial0
+Conflicts:      compatlibopenblas_openmp0
+Conflicts:      compatlibopenblas_pthreads0
+Conflicts:      compatlibopenblas_serial0
 OrderWithRequires(pre): update-alternatives
 Suggests:       update-alternatives
 %endif
@@ -355,7 +354,7 @@ ln -s baselibs.conf.no-alternatives %{_sourcedir}/baselibs.conf
 %endif
 %ifarch aarch64
 # https://github.com/scipy/scipy/issues/21475#issuecomment-2454203196
-%global optflags %{optflags} "-ffp-contract=off"  %{_lto_cflags}
+%global optflags %{expand:%{optflags} "-ffp-contract=off"}
 %endif
 %global optflags_f %{optflags}
 

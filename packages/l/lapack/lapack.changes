@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug  3 09:18:18 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- Switch Conflicts with openblas alterative providers from
+  libopenblas_{openmp,pthreads,serial}0 to
+  compatlibopenblas_{openmp,pthreads,serial}0 when not built
+  with alternatives enabled.
+- Fix aarch64 build on 15.x by properly forcing macro expansion
+  and dropping redundant %{_lto_cflags}
+
+-------------------------------------------------------------------
 Wed Mar  4 12:30:02 UTC 2026 - Richard Biener <rguenther@suse.com>
 
 - Add %bcond_with{,out} alternatives and disable by default for SLFO.
