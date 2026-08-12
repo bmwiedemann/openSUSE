@@ -47,4 +47,28 @@
     <comment>Update to version 1.5.3</comment>
     <requestid>1368762</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b59edc2fd1295e1e46b46cfd1fd72631</srcmd5>
+    <version>1.5.4</version>
+    <time>1786543936</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.5.4
+
+Upstream point release; no runtime or build dependency floors changed.
+
+Two packaging fixes came out of the rebuild. Eight test deselects are dropped
+because upstream's pydantic compatibility fix in load/serializable.py makes
+the repr and serialization snapshot tests pass against the pydantic currently
+in Factory -- proven with an A/B build rather than assumed, taking the
+deselect list from 20 to 12. The comment on the three remaining test_graph.py
+deselects was also wrong: they fail for a missing grandalf, not for pydantic.
+
+Please note this is a lockstep pair with python-langchain-anthropic 1.5.5,
+submitted alongside it: that release raises its floor to langchain-core
+&gt;= 1.5.4, so anthropic is unresolvable until this lands.
+
+Verified on aarch64: build green for python313 and python314, rpmlint
+0 errors / 0 warnings / 0 badness.</comment>
+    <requestid>1370780</requestid>
+  </revision>
 </revisionlist>

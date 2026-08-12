@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Aug 12 05:19:58 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.5.4:
+  * Compatibility with pydantic 2.14
+  * Stop StructuredPrompt from mutating caller kwargs
+  * Preserve flat tool args schema for RootModel runnables
+  * Close internally created event loops in streaming tracers
+  * Preserve OpenAI file blocks
+  * Handle injected args for subclasses of BaseTool
+  * Respect include_injected=False with filter_args
+  * Redact streaming callback options
+  * Type text stream projections
+  * Ship the LICENSE file
+- Drop the pydantic repr/serialization test deselects, obsoleted by
+  upstream's pydantic compatibility fix
+
+-------------------------------------------------------------------
 Fri Jul 31 06:49:13 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.5.3:
