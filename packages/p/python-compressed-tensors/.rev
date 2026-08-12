@@ -15,4 +15,36 @@
     <comment>Update to version 0.17.1</comment>
     <requestid>1366537</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>95649480e2feab4860af7b67e8696920</srcmd5>
+    <version>0.18.0</version>
+    <time>1786543946</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.18.0
+
+Upstream minor release. The API surface is purely additive: an AST diff over
+the whole module tree shows no public symbols removed and 18 added. One new
+runtime dependency, psutil, is added to Requires; no existing floor moved.
+
+Please take this together with python-vllm 0.27.1, submitted alongside it.
+python-vllm previously carried an exact &quot;= 0.17.1&quot; requirement on this
+package, which would have made it uninstallable the moment 0.18.0 landed;
+that companion submission replaces the exact pin with a floor, so the two are
+compatible in either order once both are in.
+
+For the record on that pairing: vLLM upstream still pins compressed-tensors
+== 0.17.0 on both v0.27.1 and main, so upstream has not itself adopted
+0.18.0. All 15 symbols vllm imports from compressed_tensors were checked and
+are present in both 0.17.1 and 0.18.0, with no removals, so the mismatch is a
+version string rather than an API break.
+
+There is still no %check. The previous comment justified that by saying
+transformers was absent from Factory, which is no longer true; the real
+reason is that python-torch is disabled on aarch64, so an import smoke test
+would turn this noarch package into a build failure on every other
+architecture. The comment now says so.
+
+Verified on aarch64: build green, rpmlint 0 errors / 0 badness.</comment>
+    <requestid>1370784</requestid>
+  </revision>
 </revisionlist>

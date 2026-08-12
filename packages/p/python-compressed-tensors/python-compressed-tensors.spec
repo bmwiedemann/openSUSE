@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-compressed-tensors
-Version:        0.17.1
+Version:        0.18.0
 Release:        0
 Summary:        Library for utilization of compressed safetensors of neural network models
 License:        Apache-2.0
@@ -31,6 +31,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-loguru
+Requires:       python-psutil
 Requires:       python-pydantic >= 2.0
 Requires:       python-torch >= 2.10.0
 Requires:       python-transformers >= 4.45.0
@@ -56,10 +57,10 @@ export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-# Tests are not run: the test suite requires the transformers Python
-# module (not available in openSUSE:Factory) and most tests additionally
-# require a GPU (upstream states "most tests do require a GPU"), so even
-# an import smoke test fails without transformers in the build root.
+# Tests are not run: importing the module pulls in torch, which is built
+# for x86_64 only in openSUSE:Factory, so even an import smoke test would
+# make this noarch package fail to build on every other architecture.
+# Most of the test suite additionally requires a GPU.
 
 %files %{python_files}
 %license LICENSE

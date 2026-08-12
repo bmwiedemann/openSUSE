@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Aug 12 05:22:58 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.18.0:
+  * Add QuantizationConfig.merge and TransformConfig.merge, allowing
+    compression of models that already carry a quantization config
+  * Only apply quantization schemes to Linear, Embedding and Attention
+    layers, and ignore non-linear MoE gate layers
+  * Add a Triton implementation of cast_to_fp4 and make FP4 packing
+    faster and less memory hungry
+  * Fix NVFP4 packing for float32 inputs
+  * Fix KV cache quantization for composite multimodal models
+  * Several offloading fixes: force offloading of buffers, fix disk
+    distributed module compression, fix tied transform weight
+    detection for offloaded models
+  * Fix MTP tensor copy from indexed checkpoints
+  * Validate block structure dimensions and length
+  * Deprecate actorder group
+- Add Requires on python-psutil, newly required by upstream
+
+-------------------------------------------------------------------
 Sat Jul 18 18:33:14 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.17.1:
