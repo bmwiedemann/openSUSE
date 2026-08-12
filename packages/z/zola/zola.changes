@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Aug 12 06:00:26 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.23.3:
+  * Fix Windows issues
+  * Fix panic in section templating
+  * Fix feed URL for non-default languages
+  * Fix colocated assets for sections not being copied in some
+    cases
+  * Fix config merge errors with multilingual sites
+  * Now error when taxonomies terms slugify to an empty string
+  * Fix language region (eg en-US, zh-Hans) for elasticlunr search
+    backend
+  * Fix search language generation for languages not working if
+    default lang search is disabled
+
+-------------------------------------------------------------------
 Fri Aug  7 11:18:11 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.23.2:
