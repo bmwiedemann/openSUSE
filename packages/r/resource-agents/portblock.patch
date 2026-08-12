@@ -1,5 +1,5 @@
---- heartbeat/portblock.orig	2024-06-07 08:35:56.538587042 +0200
-+++ heartbeat/portblock	2024-06-07 08:36:36.086905689 +0200
+--- a/heartbeat/portblock.orig	2024-06-07 08:35:56.538587042 +0200
++++ b/heartbeat/portblock	2024-06-07 08:36:36.086905689 +0200
 @@ -328,6 +328,8 @@ save_tcp_connections()
  tickle_remote()
  {

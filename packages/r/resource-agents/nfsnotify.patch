@@ -1,5 +1,5 @@
---- heartbeat/nfsnotify.in.orig	2021-12-06 11:36:48.000000000 +0100
-+++ heartbeat/nfsnotify.in	2022-01-19 15:14:17.424694351 +0100
+--- a/heartbeat/nfsnotify.in.orig	2021-12-06 11:36:48.000000000 +0100
++++ b/heartbeat/nfsnotify.in	2022-01-19 15:14:17.424694351 +0100
 @@ -34,9 +34,11 @@
  
  OCF_RESKEY_source_host_default=""

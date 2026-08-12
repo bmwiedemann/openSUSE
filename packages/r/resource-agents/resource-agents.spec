@@ -17,7 +17,7 @@
 
 
 Name:           resource-agents
-Version:        4.18.0+git66.efe7eefd4
+Version:        4.18.0+git81.694408f0
 Release:        0
 Summary:        HA Reusable Cluster Resource Scripts
 License:        GPL-2.0-only AND LGPL-2.1-or-later AND GPL-3.0-or-later
@@ -33,9 +33,6 @@ Patch3:         0003-ldirectord-don-t-create-subsys-lock.patch
 # PATCH-FIX-OPENSUSE: Revert moving binaries to /usr/libexec
 Patch4:         0004-Revert-Low-build-Move-binaries-in-usr-lib-heartbeat-.patch
 ## PATCH-FIX-OPENSUSE:
-%if "%{python_flavor}" == "python311"
-Patch7:         use-python-311.patch
-%endif
 Patch8:         nfsnotify.patch
 Patch9:         portblock.patch
 
@@ -107,17 +104,7 @@ ldirectord is simple to install and works with Pacemaker
 See 'ldirectord -h' and linux-ha/doc/ldirectord for more information.
 
 %prep
-%setup -q
-%patch -P 1 -p1
-%patch -P 2 -p1
-%patch -P 3 -p1
-%patch -P 4 -p1
-%if "%{python_flavor}" == "python311"
-%patch -P 7 -p1
-%endif
-%patch -P 8 -p0
-%patch -P 9 -p0
-%patch -P 10 -p1
+%autosetup -p1
 
 %build
 autoreconf -fvi
@@ -125,6 +112,7 @@ autoreconf -fvi
 # chmod 775 heartbeat/sg_persist
 export BUILD_AZURE_EVENTS=0
 %configure \
+    PYTHON="%{__python3}" \
     --docdir=%{_defaultdocdir}/%{name} \
     --with-ras-set=linux-ha \
     --enable-fatal-warnings=no \

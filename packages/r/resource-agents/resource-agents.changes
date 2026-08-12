@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Aug 11 14:31:51 UTC 2026 - Peter Varkoly <varkoly@suse.com>
+
+- Update to version 4.18.0+git81.694408f0:
+  * OCPBUGS-100303: podman-etcd: add test hooks for FNC race reproduction
+  * OCPBUGS-100303: podman-etcd: resolve force_new_cluster race during simultaneous dual-start
+  * mediationzone: new resource agent (#2191)
+  * ibmmq: new resource agent for IBM MQ queue managers (#2192)
+  * podman-etcd: scope sync to etcd filesystem only
+  * spec: Remove EOL Fedora compatibility blocks from spec file
+  * Route: restore unique="1" for destination and warn on "default"
+  * Route: update destination parameter to non-unique
+  * powervs-move-ip: introduce support for trusted profiles, refine handling of API return codes (bsc#1274582)
+- Remove use-python-311.patch. Use more flexible solution for handling the different python versions.
+
+-------------------------------------------------------------------
 Tue Jul 21 12:59:11 UTC 2026 - varkoly@suse.com
 
 - Update to version 4.18.0+git66.efe7eefd4:

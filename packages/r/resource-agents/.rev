@@ -2125,4 +2125,22 @@
   * podman-etcd: remove cert monitoring infrastructure</comment>
     <requestid>1366968</requestid>
   </revision>
+  <revision rev="151" vrev="1">
+    <srcmd5>d3e4367082a7467e4687b532700abab1</srcmd5>
+    <version>4.18.0+git81.694408f0</version>
+    <time>1786543849</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 4.18.0+git81.694408f0:
+  * OCPBUGS-100303: podman-etcd: add test hooks for FNC race reproduction
+  * OCPBUGS-100303: podman-etcd: resolve force_new_cluster race during simultaneous dual-start
+  * mediationzone: new resource agent (#2191)
+  * ibmmq: new resource agent for IBM MQ queue managers (#2192)
+  * podman-etcd: scope sync to etcd filesystem only
+  * spec: Remove EOL Fedora compatibility blocks from spec file
+  * Route: restore unique=&quot;1&quot; for destination and warn on &quot;default&quot;
+  * Route: update destination parameter to non-unique
+  * powervs-move-ip: introduce support for trusted profiles, refine handling of API return codes (bsc#1274582)
+- Remove use-python-311.patch. Use more flexible solution for handling the different python versions.</comment>
+    <requestid>1370715</requestid>
+  </revision>
 </revisionlist>
