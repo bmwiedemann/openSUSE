@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Aug 11 15:20:22 UTC 2026 - Sean Baggaley <me@drinkybird.net>
+
+- Mercurial 7.2.4
+
+  * Fix the detection of peers with limited query size during discovery (9f732870676c)
+  * rhg: include the path in purge's directory removal errors (94be520c5190)
+  * verify: remove incorrect fncache branch in file index case (f43ea4a964e7)
+  * update: fix status after a flag-only update of symlink into a file, in rust (a491512f1f79)
+  * update: fix status after a flag-only update of a file into a symlink, in rust (5829e64543c3)
+  * rust: respect umask for executable files during update (33bb83b15bdc)
+
+-------------------------------------------------------------------
 Mon Jun 29 18:14:28 UTC 2026 - Sean Baggaley <me@drinkybird.net>
 
 - Mercurial 7.2.3
