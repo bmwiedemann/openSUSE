@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 11 07:18:17 UTC 2026 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to 0.7.7
+  + Enforce standard locale when parsing external program outputs
+    (bsc#1273502)
+
+-------------------------------------------------------------------
 Mon Aug  3 06:40:07 UTC 2026 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Update to 0.7.6
