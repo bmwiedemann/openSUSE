@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 12 06:57:23 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Support new gast and beniget.
+
+-------------------------------------------------------------------
 Wed Apr 15 13:03:07 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Skip two tests failing with xsimd 14.1.0

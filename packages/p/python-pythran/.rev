@@ -285,4 +285,12 @@ now with fixed empty debuginfo extraction</comment>
     <comment></comment>
     <requestid>1347131</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>2e0929f830330e40075cb5c03dece64e</srcmd5>
+    <version>0.18.1</version>
+    <time>1786619720</time>
+    <user>anag_factory</user>
+    <comment>- Support new gast and beniget.</comment>
+    <requestid>1370805</requestid>
+  </revision>
 </revisionlist>

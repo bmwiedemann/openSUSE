@@ -63,8 +63,8 @@ BuildRequires:  python-rpm-macros
 Requires:       python-numpy
 Requires:       python-ply >= 3.4
 Requires:       python-setuptools
-Requires:       (python-beniget >= 0.4.0 with python-beniget < 0.5.0)
-Requires:       (python-gast >= 0.6.0 with python-gast < 0.7.0)
+Requires:       (python-beniget >= 0.5.0 with python-beniget < 0.6.0)
+Requires:       (python-gast >= 0.7.0 with python-gast < 0.8.0)
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 # SECTION This is a package that compiles code, the runtime requires devel packages
