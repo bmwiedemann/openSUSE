@@ -22,7 +22,7 @@
 %endif
 
 Name:           glslang
-Version:        16.4.0
+Version:        16.5.0
 Release:        0
 Summary:        OpenGL and OpenGL ES shader front end and validator
 License:        BSD-3-Clause
@@ -37,7 +37,7 @@ BuildRequires:  fdupes
 BuildRequires:  gcc%{?gcc_version} >= 13
 BuildRequires:  gcc%{?gcc_version}-c++ >= 13
 BuildRequires:  python3-base
-BuildRequires:  spirv-tools-devel >= 2025.4~rc1
+BuildRequires:  spirv-tools-devel >= 2026.3~rc1
 
 %description
 glslang is a compiler front end for the OpenGL ES and OpenGL shading
