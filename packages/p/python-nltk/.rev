@@ -315,4 +315,17 @@
     <comment></comment>
     <requestid>1369684</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>49e75d5180482ba701e32c292e6be528</srcmd5>
+    <version>3.10.2</version>
+    <time>1786619760</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.10.2 (CVE-2026-12372, bsc#1274590):
+  * Remove inisec.py and document PYTHONSAFEPATH instead
+  * Skip draft step in release workflow
+  * Fix symlink escape in FramenetCorpusReader (CWE-59)
+  * Guard tempfile.gettempdir() when building pathsec allowed roots
+  * add tests for transitive_closure</comment>
+    <requestid>1370851</requestid>
+  </revision>
 </revisionlist>

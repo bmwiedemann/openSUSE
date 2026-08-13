@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Aug 12 12:20:02 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 3.10.2 (CVE-2026-12372, bsc#1274590):
+  * Remove inisec.py and document PYTHONSAFEPATH instead
+  * Skip draft step in release workflow
+  * Fix symlink escape in FramenetCorpusReader (CWE-59)
+  * Guard tempfile.gettempdir() when building pathsec allowed roots
+  * add tests for transitive_closure
+
+-------------------------------------------------------------------
 Mon Aug  3 15:39:07 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Update to 3.10.1
