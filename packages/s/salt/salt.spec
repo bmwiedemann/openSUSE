@@ -676,6 +676,9 @@ Patch216:       switch-apache2ctl-to-apachectl-for-suse-oses-bsc-125.patch
 Patch217:       stabilize-testsuite-tests-and-fix-alleventshandler-7.patch
 # PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/773
 Patch218:       stabilize-testsuite-773.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/774
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/69704
+Patch219:       migrate-rest_tornado-saltnado-tests-to-pytest-774.patch
 
 ### IMPORTANT: The line below is used as a snippet marker. Do not touch it.
 ### SALT PATCHES LIST END

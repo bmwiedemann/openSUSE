@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 11 08:37:22 UTC 2026 - Marek Czernek <marek.czernek@suse.com>
+
+- Fix test failures with pytest>=8
+
+- Added:
+  * migrate-rest_tornado-saltnado-tests-to-pytest-774.patch
+
+-------------------------------------------------------------------
 Wed Jul 29 07:50:43 UTC 2026 - Marek Czernek <marek.czernek@suse.com>
 
 - Fix unit tests that fail due to async Tornado usage
