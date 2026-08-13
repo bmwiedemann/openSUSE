@@ -6627,4 +6627,12 @@ boo#1269061 moved to the new release because 149.0.7827.196 did not contain secu
     <comment>Chromium 151.0.7922.108 (boo#1274549)</comment>
     <requestid>1370256</requestid>
   </revision>
+  <revision rev="539" vrev="1">
+    <srcmd5>5179e6a1db86af5fe770a041f614fb50</srcmd5>
+    <version>151.0.7922.137</version>
+    <time>1786619745</time>
+    <user>anag_factory</user>
+    <comment>Chromium 151.0.7922.137 (boo#1274759)</comment>
+    <requestid>1370814</requestid>
+  </revision>
 </revisionlist>
