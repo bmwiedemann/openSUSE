@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Aug  1 09:45:16 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 3.0.0. No changelog provided.
+- Drop patches:
+  * fix-hdf5-include-path.patch
+  * kst-cmake4.patch
+  * kst_netcdf4_compat.patch
+  * 0001-Fix-detection-of-HDF5-CPP-library.patch
+
+-------------------------------------------------------------------
 Mon Jan 26 18:48:14 UTC 2026 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Use correct dependency for non-obsolete version of netcdf-cxx4.

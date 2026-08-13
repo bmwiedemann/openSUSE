@@ -17,45 +17,41 @@
 #
 
 
+%define qt6_version 6.4.0
 Name:           kst
-Version:        2.1.0
+Version:        3.0.0
 Release:        0
 Summary:        Real-Time Data Viewing and Plotting Tool with Basic Data Analysis Functionality
 License:        GPL-2.0-or-later
 URL:            https://kst-plot.kde.org/
-Source:         kst-plot-%{version}.tar.zst
-# PATCH-FIX-OPENSUSE
-Patch0:         fix-hdf5-include-path.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         kst-cmake4.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         https://invent.kde.org/graphics/kst-plot/-/commit/c2b585fbd23e1e7de8f7dba457ca632bb07708da.patch#/kst_netcdf4_compat.patch
-# PATCH-FIX-UPSTREAM
-Patch3:         0001-Fix-detection-of-HDF5-CPP-library.patch
-BuildRequires:  Mesa-devel
-BuildRequires:  cmake
+Source0:        https://sourceforge.net/projects/kst/files/Kst%%20%{version}/kst-plot-%{version}.tar.gz
 BuildRequires:  fdupes
-BuildRequires:  gsl-devel
-BuildRequires:  hdf5-devel
-BuildRequires:  libmatio-devel
-BuildRequires:  libqt5-linguist
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
-BuildRequires:  readline-devel
-BuildRequires:  cmake(Qt5Concurrent)
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5Network)
-BuildRequires:  cmake(Qt5PrintSupport)
-BuildRequires:  cmake(Qt5Svg)
-BuildRequires:  cmake(Qt5Widgets)
-BuildRequires:  cmake(Qt5Xml)
+BuildRequires:  cmake(Qt6Concurrent) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Designer) >= %{qt6_version}
+BuildRequires:  cmake(Qt6LinguistTools) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
+BuildRequires:  cmake(Qt6PrintSupport) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Xml) >= %{qt6_version}
+BuildRequires:  cmake(hdf5)
+BuildRequires:  cmake(tiff)
 BuildRequires:  pkgconfig(cfitsio)
-BuildRequires:  pkgconfig(libtiff-4)
+BuildRequires:  pkgconfig(gsl)
+BuildRequires:  pkgconfig(matio)
+# Not available in Leap 16
+%if 0%{?suse_version} > 1600
+# Not available for all archs
+%ifnarch %arm %ix86 s390x
 BuildRequires:  pkgconfig(netcdf-cxx4)
-Obsoletes:      python-kst < %{version}
+%endif
+%endif
 
 %description
 Kst is a data plotting and viewing program. Some of the features include:
-
 - Robust plotting of live "streaming" data
 - Powerful keyboard and mouse plot manipulation
 - Powerful plug-in and extension support
@@ -67,39 +63,24 @@ Kst is a data plotting and viewing program. Some of the features include:
 - Convenient command line interface
 - Powerful graphical user interface
 
-%package devel
-Summary:        Development files for kst
-Requires:       kst = %{version}
-Requires:       cmake(Qt5Concurrent)
-Requires:       cmake(Qt5Core)
-Requires:       cmake(Qt5Network)
-Requires:       cmake(Qt5PrintSupport)
-Requires:       cmake(Qt5Widgets)
-Requires:       cmake(Qt5Xml)
-
-%description devel
-Development libraries and headers needed to build software
-making use of kst
-
 %prep
 %autosetup -p1 -n kst-plot-%{version}
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-EXTRA_FLAGS="-Dkst_install_prefix=%{_prefix} \
-             -Dkst_rpath=0 \
-             -Dkst_install_libdir=%{_lib} \
-             -Dkst_release=1 \
-             -Dkst_dbgsym=1 \
-             -Dkst_python=0 \
-             -Dkst_qt5=1"
 
-%cmake $EXTRA_FLAGS
+rm -r cmake/3rdparty
 
-%cmake_build
+%cmake_qt6
+
+%qt6_build
 
 %install
-%cmake_install
+%qt6_install
+
+# Useless
+rm -r %{buildroot}%{_includedir}
+rm -r %{buildroot}%{_libdir}/kst/libKst6App.a
 
 %fdupes %{buildroot}
 
@@ -108,21 +89,12 @@ EXTRA_FLAGS="-Dkst_install_prefix=%{_prefix} \
 %files
 %license COPYING*
 %doc AUTHORS NEWS README
-%dir %{_datadir}/icons/hicolor
-%dir %{_datadir}/icons/hicolor/*
-%dir %{_datadir}/icons/hicolor/*/apps
-%dir %{_datadir}/icons/hicolor/*/mimetypes
-%{_bindir}/kst2
-%{_datadir}/applications/kst2.desktop
+%{_bindir}/kst
+%{_datadir}/applications/org.kde.kst.desktop
 %{_datadir}/icons/hicolor/*/*/*kst.*
-%{_libdir}/kst2/
-%{_libdir}/libkst*.so.*
-%{_mandir}/man1/kst2.1%{?ext_man}
+%{_datadir}/metainfo/org.kde.kst.metainfo.xml
 %{_datadir}/mime/packages/x-kst.xml
-
-%files devel
-%license COPYING*
-%{_libdir}/*.so
-%{_libdir}/libkst2app.a
+%{_libdir}/kst/
+%{_mandir}/man1/kst.1%{?ext_man}
 
 %changelog
