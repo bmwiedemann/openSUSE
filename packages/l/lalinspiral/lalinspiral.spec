@@ -84,7 +84,6 @@ BuildRequires:  %{python_module lalmetaio >= 3.0.0}
 BuildRequires:  %{python_module lalsimulation >= 4.0.0}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module py}
 BuildRequires:  pkgconfig(lalinspiral) = %{version}
 %endif
 # /SECTION
