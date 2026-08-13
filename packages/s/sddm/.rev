@@ -838,4 +838,13 @@ https://github.com/sddm/sddm/commit/1bc813d08b8130e458a6550ec47fb2bfbe6de080 (fo
     <comment></comment>
     <requestid>1366623</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>a4eaa943dd5d09a987e4184a6fb872dc</srcmd5>
+    <version>0.21.0+git57</version>
+    <time>1786619717</time>
+    <user>anag_factory</user>
+    <comment>Build from git to ensure the builtin themes support Qt 6 and drop the sddm-greeter-qt5 requirement.
+Allows to drop some patches too. (forwarded request 1370713 from Vogtinator)</comment>
+    <requestid>1370799</requestid>
+  </revision>
 </revisionlist>

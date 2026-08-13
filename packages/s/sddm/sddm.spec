@@ -40,13 +40,13 @@ Name:           sddm
 %else
 Name:           sddm-qt6
 %endif
-Version:        0.21.0
+Version:        0.21.0+git57
 Release:        0
 Summary:        QML-based display manager (Qt%{qtver})
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            https://github.com/sddm/sddm
-Source:         https://github.com/sddm/sddm/archive/v%{version}/sddm-%{version}.tar.gz
+Source:         sddm-%{version}.tar.xz
 Source1:        X11-displaymanagers-sddm
 # Distro configs
 Source10:       00-general.conf
@@ -59,26 +59,14 @@ Source20:       sddm.pam
 Source21:       sddm-autologin.pam
 Source22:       sddm-greeter.pam
 # Patch0-100: PATCH-FIX-UPSTREAM
-Patch0:         0001-CMake-Raise-required-version-to-3.5.patch
-# https://github.com/sddm/sddm/pull/1779
-Patch50:        0001-Redesign-login-shell-use-in-session-scripts.patch
 # Part of https://github.com/sddm/sddm/pull/1896
 Patch51:        0001-Fix-terminal-clearing.patch
-# https://github.com/sddm/sddm/pull/1904
-Patch52:        0001-Use-xrdb-to-set-Xcursor.theme.patch
-# https://github.com/sddm/sddm/pull/1969
-Patch53:        0001-Remove-unused-Display-m_relogin-variable.patch
-Patch54:        0002-Set-Display-m_started-early.patch
-Patch55:        0003-Load-autologin-configuration-in-Display-Display.patch
-Patch56:        0004-Reset-daemonApp-first-in-the-Display-constructor.patch
-Patch57:        0005-If-autologin-is-used-avoid-starting-a-display-server.patch
 # Patch100-?: PATCH-FIX-OPENSUSE
 # Patch100 may be useful for upstream as well
 Patch100:       0001-Introduce-DefaultSession-option-in-sddm.conf.patch
 Patch101:       0001-Write-the-daemon-s-PID-to-a-file-on-startup.patch
 Patch102:       0001-Set-XAUTHLOCALHOSTNAME-in-sessions.patch
 Patch103:       0001-Read-the-DISPLAYMANAGER_AUTOLOGIN-value-from-sysconf.patch
-Patch104:       sddm-service-handle-plymouth.patch
 Patch105:       0002-Migrate-from-default.desktop-to-General-DefaultSessi.patch
 Patch107:       0003-Leave-duplicate-symlinks-out-of-the-SessionModel.patch
 BuildRequires:  cmake
@@ -122,8 +110,8 @@ Requires:       sddm-greeter-qt%{qtver} = %{version}
 Requires:       xdm
 %if %qt6
 Provides:       sddm = %{version}
-# Most themes use Qt 5, just always provide support for now.
-Requires:       sddm-greeter-qt5
+# Some third-party-themes use Qt 5 still
+Suggests:       sddm-greeter-qt5
 Conflicts:      sddm
 %else
 Provides:       sddm-qt5 = %{version}

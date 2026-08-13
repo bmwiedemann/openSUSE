@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Sun Aug 02 10:11:23 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Build from develop branch
+- Update to version 0.21.0+git57:
+  * Fix error checking in XcbKeyboardBackend::initLayouts()
+  * fix(greeter): show dark fallback background when image fails to load
+  * Update Romanian translation
+  * Update Kazakh translation
+  * CI: Install the right package for "dnf builddep" command
+  * sddm.service: conflicts with kmsconvt@ttyX
+  * Display: also reuse session created by sddm-autologin
+  * fixed wrong string literal assignment
+  * Update Arabic Translation (#2067)
+  * Do not manage setCursor with startProcess as latter adds X-specific logic
+  * Delete QProcess objects only after waiting for process termination
+  * xorg-user: Allow overriding -verbose Xorg option
+  * Bump minimal timeout for waitForFinished() to 5 seconds
+  * Remove use of qAsConst which is deprecated
+  * Fix index check for UserModel
+  * Update Traditional Chinese translation
+  * CMake: Raise required version to 3.5
+  * Redesign login shell use in session scripts
+  * Simplify Seat::displayStopped
+  * Less strict [Section Header] parsing for session .desktop files
+  * CI: Replace ubuntu 23.04 with 24.04
+  * Apply suggestions from review
+  * Apply suggestions from code review
+  * Update Japanese translation
+  * Hebrew translation update
+  * Update he.ts
+  * Update es.ts
+  * Updated spanish translation
+  * If autologin is used, avoid starting a display server for the greeter
+  * Reset daemonApp->first in the Display constructor
+  * Load autologin configuration in Display::Display
+  * Set Display::m_started early
+  * Remove unused Display::m_relogin variable
+  * xcb: use xcb_connection_has_error to check for failue
+  * Fix for issue  Suspicious code in PamHandle::end #1990
+  * CI: Drop building with clang on CentOS Stream9
+  * CI: Fix order of arguments for dnf
+  * Update Czech translations
+  * Add translation for Persian
+  * Use xrdb to set Xcursor.theme and Xcursor.size
+  * Introduce utmps support (#1962)
+  * Switch back to greeter when logind emits SecureAttentionKey
+  * Prevent the greeter display server from hanging if SwitchToGreeter() is sent to a seat when the greeter is already active
+  * cmake: remove the final (Arch) PAM modules
+  * cmake: drop Debian specific PAM modules
+  * cmake: drop FreeBSD specific PAM modules
+  * Docs: add QtVersion information to THEMING
+  * Themes: set QtVersion=@QT_MAJOR_VERSION@
+  * Themes: fix deprecated signal handler declarations
+  * Components: use Transitions instead of Behaviors
+  * Themes: explicitly resolve image URLs
+  * Themes: hide LayoutBox when keyboard model is empty or disabled
+  * Mark keyboard backend as disabled on Wayland
+  * UserSession: Only act on the VT when XDG_VTNR is set
+  * Conditionalize more VT related calls
+  * Allow non-root greeters and sessions to start on kernels without VTs
+  * VirtualTerminal: Export defaultVtPath
+- Drop patches, now upstream:
+  * 0001-CMake-Raise-required-version-to-3.5.patch
+  * 0001-Redesign-login-shell-use-in-session-scripts.patch
+  * 0001-Use-xrdb-to-set-Xcursor.theme.patch
+  * 0001-Remove-unused-Display-m_relogin-variable.patch
+  * 0002-Set-Display-m_started-early.patch
+  * 0003-Load-autologin-configuration-in-Display-Display.patch
+  * 0004-Reset-daemonApp-first-in-the-Display-constructor.patch
+  * 0005-If-autologin-is-used-avoid-starting-a-display-server.patch
+- Refresh 0003-Leave-duplicate-symlinks-out-of-the-SessionModel.patch
+- Drop sddm-service-handle-plymouth.patch, plymouth-quit.service is wanted
+  by multi-user.target already
+- Bundled themes use Qt 6 now, soften sddm-greeter-qt5 requirement
+  to a suggests
+
+-------------------------------------------------------------------
 Sat Jul 18 16:54:48 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Introduce patch to make the default session configurable
