@@ -44,6 +44,9 @@ Requires:       suse-module-tools >= 15.0.10
 %ifarch %{ix86} x86_64 ia64 aarch64 %{arm} riscv64 loongarch64
 Requires:       pesign
 %endif
+%ifarch x86_64 aarch64
+Requires:       efitools
+%endif
 
 %description
 This package provides scripts and rpm macros to automate signing of the

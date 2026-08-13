@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Aug 12 05:14:49 UTC 2026 - Joey Lee <jlee@suse.com>
+
+- Add efitools as a runtime requires package on x86_64 and aarch64.
+  For signing the ESL (EFI_SIGNATURE_LIST) format file for pk, kek
+  and db (The *.auth.sig case in pesign-repackage.spec.in). The process
+  needs sign-efi-sig-list tools which is in efitools RPM. So add
+  efitools as a runtime requires package on x86_64 and aarch64 because
+  we only tested the function on x86_64/aarch64 currently.
+
+-------------------------------------------------------------------
 Fri Jul 31 08:03:46 UTC 2026 - jlee@suse.com
 
 - Update to version 10.2+git20260731.2d86941:
