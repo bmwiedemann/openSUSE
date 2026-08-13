@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Wed Aug 12 16:37:44 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.165.0:
+  * releaser: Bump versions for release of 0.165.0
+  * build(deps): bump github.com/bep/imagemeta from 0.17.3 to 1.0.0
+  * build(deps): bump github.com/evanw/esbuild from 0.28.1 to 0.28.2
+  * build(deps): bump github.com/tdewolff/minify/v2 from 2.24.14 to 2.24.16
+  * resources: Resume chained resource transformations
+  * resources/jsconfig: Drop source root mapping for the current source root
+  * Remove Star History from README
+  * Fix resource transformation chaining after content access
+  * Remove tailwindcss from the default security.exec.allow list (note)
+  * circleci: Upgrade to Go 1.26.5
+  * Add Data.Artifacts to css.Build and js.Build
+  * Fix server static file detection for deleted files/directories in the static syncer
+  * Fix server errors when deleting static files or directories
+  * build(deps): bump github.com/getkin/kin-openapi from 0.145.0 to 0.146.0
+  * build(deps): bump github.com/rogpeppe/go-internal from 1.15.0 to 1.16.0
+  * css: Add classDark and classLight options to css.ChromaStyles and gen chromastyles
+  * markup/highlight: Re-emit token colors dropped by Chroma's minifier
+  * Add importContext option to css.Build, js.Build, css.Sass and css.TailwindCSS
+  * Remove some old deprecations
+  * build(deps): bump github.com/mattn/go-isatty from 0.0.22 to 0.0.24
+  * build(deps): bump github.com/yuin/goldmark from 1.8.4 to 1.8.5
+  * Add css.ChromaStyles
+  * build(deps): bump golang.org/x/tools from 0.47.0 to 0.48.0
+  * check.sh: Handle staticcheck not installed/in PATH
+  * build(deps): bump github.com/kyokomi/emoji/v2 from 2.2.13 to 2.2.14
+  * build(deps): bump github.com/getkin/kin-openapi from 0.144.0 to 0.145.0
+  * build(deps): bump golang.org/x/image from 0.43.0 to 0.44.0
+  * build(deps): bump github.com/bep/imagemeta from 0.17.2 to 0.17.3
+  * build(deps): bump github.com/tdewolff/minify/v2 from 2.24.13 to 2.24.14
+  * build(deps): bump github.com/yuin/goldmark from 1.8.2 to 1.8.4
+  * warpc: Improve AVIF error message on memory allocation failure
+  * build(deps): bump golang.org/x/net from 0.56.0 to 0.57.0
+  * Fix panic on server atomic save edits on MacOS
+  * cache/filecache: Don't prune used cache entries with mixed-case dir names
+  * Drop symlinks in parent directories
+  * build(deps): bump golang.org/x/text from 0.38.0 to 0.40.0
+  * build(deps): bump github.com/getkin/kin-openapi from 0.140.0 to 0.144.0
+  * build(deps): bump google.golang.org/grpc from 1.80.0 to 1.82.1
+  * build(deps): bump golang.org/x/mod from 0.37.0 to 0.38.0
+  * Delete .gemini
+  * markup/asciidocext: Fix TOC parsing for asciidoctor-html5s
+  * common/hugo: Include non-go dependencies in go env output
+  * snap: Fix snap home environment
+  * Update README.md
+  * releaser: Prepare repository for 0.165.0-DEV
+
+-------------------------------------------------------------------
 Mon Jul 13 11:39:18 UTC 2026 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Add AND MPL-2.0 to main license tag to cover
