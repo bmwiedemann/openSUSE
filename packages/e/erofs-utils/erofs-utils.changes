@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Aug 12 04:21:30 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.9.3
+  * mkfs: Sort inline xattrs for reproducible builds
+  * mkfs: Fix rebuild mode handling for opaque directories
+  * mkfs: Fix `--incremental=data` functionality
+  * mkfs: Fix raw inline handling with `-Eztailpacking`
+  * mkfs: Harden tar index parsing against invalid sizes
+  * mkfs: Fix memory leaks for small fragments
+
+-------------------------------------------------------------------
 Fri Jul 10 09:19:59 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.9.2
