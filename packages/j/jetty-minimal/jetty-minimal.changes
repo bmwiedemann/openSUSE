@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Aug 12 12:53:58 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * jetty-CVE-2026-10050.patch
+    + backport of upstream patch fixing bsc#1272393
+      (CVE-2026-10050): Digest Authentication: ISO-8859-1 lossy
+      encoding allows authentication bypass via character
+      substitution
+- Modified patch:
+  * jetty-CVE-2026-2332.patch
+    + Add one additional test and missing hunk from the backport of
+      ff9eb742492d6dc3191bcd49668b1bce1e620d57
+
+-------------------------------------------------------------------
 Sat Apr 18 09:18:24 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

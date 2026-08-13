@@ -32,6 +32,7 @@ Patch0:         jetty-port-to-servlet-4.0.patch
 Patch1:         jetty-CVE-2025-11143.patch
 Patch2:         jetty-CVE-2026-2332.patch
 Patch3:         jetty-CVE-2026-5795.patch
+Patch4:         jetty-CVE-2026-10050.patch
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local

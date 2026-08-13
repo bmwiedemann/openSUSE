@@ -255,4 +255,12 @@
     <comment>bsc#1261997, CVE-2026-5795 and bsc#1262115, CVE-2026-2332</comment>
     <requestid>1347974</requestid>
   </revision>
+  <revision rev="33" vrev="5">
+    <srcmd5>12538a61f97acdaa89dc1de4aa1c8cd9</srcmd5>
+    <version>9.4.58</version>
+    <time>1786619768</time>
+    <user>anag_factory</user>
+    <comment>bsc#1272393, CVE-2026-10050</comment>
+    <requestid>1370872</requestid>
+  </revision>
 </revisionlist>
