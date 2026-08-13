@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Aug 11 11:04:45 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Add _constraints asking for eight processors:
+  * the test suite is 580s of a 660s build, and bison is a bootstrap
+    package that most of the distribution waits for
+  * it is 776 near independent tests, each generating a parser and
+    then compiling it, and upstream cfg.mk derives TESTSUITEFLAGS
+    from the make job count, so it scales
+  * measured 1380s at four jobs, 712s at eight and 415s at sixteen,
+    green with identical results at every level
+- Unindent the make invocation in build, it read as a continuation of
+  the configure call above it
+
+-------------------------------------------------------------------
 Sun Jul 31 05:56:31 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 - Remove profiling support. Bison's performance is not really key to 

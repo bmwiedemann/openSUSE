@@ -1,7 +1,7 @@
 #
 # spec file for package bison
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,6 @@ Version:        3.8.2
 Release:        0
 Summary:        The GNU Parser Generator
 License:        GPL-3.0-or-later
-Group:          Development/Languages/C and C++
 URL:            https://www.gnu.org/software/bison/bison.html
 Source0:        https://ftp.gnu.org/gnu/bison/bison-%{version}.tar.xz
 Source1:        https://ftp.gnu.org/gnu/bison/bison-%{version}.tar.xz.sig
@@ -48,7 +47,7 @@ Bison is a parser generator similar to yacc(1).
   --docdir=%{_docdir}/%{name} \
   gl_cv_func_printf_directive_n=yes \
   gl_cv_func_printf_infinite_long_double=yes
-  %make_build CFLAGS="%{optflags}"
+%make_build CFLAGS="%{optflags}"
 
 %check
 %ifnarch armv6hl

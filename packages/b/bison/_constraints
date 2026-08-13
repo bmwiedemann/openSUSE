@@ -1,0 +1,10 @@
+<constraints>
+  <hardware>
+    <!-- The test suite is ~88% of this build and is 776 near-independent
+         tests, each generating a parser and then compiling it. Upstream's
+         cfg.mk derives TESTSUITEFLAGS from $(filter -j%,$(MAKEFLAGS)), so it
+         scales with the job count: measured 1380s at -j4, 712s at -j8 and
+         415s at -j16, green and with identical results at every level. -->
+    <processors>8</processors>
+  </hardware>
+</constraints>

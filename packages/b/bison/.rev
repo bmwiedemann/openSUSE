@@ -556,4 +556,57 @@ Documentation
     <comment></comment>
     <requestid>1011108</requestid>
   </revision>
+  <revision rev="66" vrev="4">
+    <srcmd5>fd09529cd0e3bc6f83cf4b06c388af22</srcmd5>
+    <version>3.8.2</version>
+    <time>1786619702</time>
+    <user>anag_factory</user>
+    <comment>Ask for eight processors so the test suite parallelises
+
+bison's %check is 580s of a 660s build (88%), and bison is a bootstrap
+package: 508 packages build-depend on it directly, and it also gates swig,
+which gates llvm. Its own build time is on the critical path of every
+from-scratch rebuild -- as the changelog already put it in 2022, &quot;as bison is
+a bootstrap package, it's own build time can hurt&quot;.
+
+The suite is 776 near-independent tests, each generating a parser and then
+compiling it, so there is no slow subset to trim. But it already runs in
+parallel: upstream's cfg.mk sets
+
+    TESTSUITEFLAGS = $(filter -j%,$(MAKEFLAGS))
+
+so it inherits the make job count, which today is whatever the worker slot
+provides -- four.
+
+Measured locally on aarch64, full builds, one variable changed:
+
+  -j4    %check 1380s    712 passed, 64 skipped, 0 failed
+  -j8    %check  712s    712 passed, 64 skipped, 0 failed
+  -j16   %check  415s    712 passed, 64 skipped, 0 failed
+
+Near-linear, with identical results at every level. Worth noting given the
+2019 changelog entry &quot;Do not run any tests in parallel - this caused random
+failures&quot;: that did not reproduce, including at four times the current job
+count.
+
+I chose eight rather than sixteen deliberately -- &lt;processors&gt; narrows the
+eligible worker pool, and queue-wait could eat the gain. Sixteen is available
+later if the pool supports it.
+
+This is offered instead of moving %check into a _multibuild flavour, which
+would save more but would publish bison before its tests have run -- a poor
+trade for a package the whole distribution builds against -- and which would
+also need factory-maintainers to add excludebuild: entries in the rings and
+in staging. The constraint keeps the build gate exactly as it is.
+
+Also included: drop the Group tag (project policy; spec-cleaner is clean
+after it) and unindent the %make_build line in %build, which was indented as
+though it continued the %configure call above it, although that line has no
+trailing backslash.
+
+Verified locally on aarch64: green, 712 passed / 64 skipped, and both binary
+packages have file lists byte-identical to the current devel:tools:compiler
+build (116 and 107 files), with rpmlint unchanged. (forwarded request 1370679 from pluskalm)</comment>
+    <requestid>1370686</requestid>
+  </revision>
 </revisionlist>
