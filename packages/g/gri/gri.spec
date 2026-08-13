@@ -24,6 +24,8 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Other
 URL:            http://gri.sourceforge.net
 Source:         %{name}-%{version}.tar.zst
+# PATCH-FIX-UPSTREAM reproducible-refcard.patch -- drop TeX build date from refcard.ps
+Patch0:         reproducible-refcard.patch
 BuildRequires:  ImageMagick
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++

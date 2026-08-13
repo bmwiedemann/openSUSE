@@ -1,0 +1,32 @@
+From c263f73dc9dbecf92a2a9e4e281b8ffabec92e03 Mon Sep 17 00:00:00 2001
+From: "Bernhard M. Wiedemann" <bwiedemann@suse.de>
+Date: Fri, 7 Aug 2026 19:49:46 +0200
+Subject: [PATCH] Make refcard PostScript files reproducible
+
+TeX writes the build date into the DVI comment, dvips copies it into the
+generated PostScript, and refcard.ps and cmdrefcard.ps are installed, so
+two builds of the same source never match.  Unlike pdftex, plain tex does
+not honour SOURCE_DATE_EPOCH, but it offers -output-comment to replace the
+date with a fixed string.
+---
+ doc/Makefile.am | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/doc/Makefile.am b/doc/Makefile.am
+index 20b8285..cee872d 100644
+--- a/doc/Makefile.am
++++ b/doc/Makefile.am
+@@ -47,7 +47,9 @@ endif
+      HTML_LONG_NAME = gri-long
+ #   INFO_DIR_SOLARIS = $(DESTDIR)$(prefix)/info
+ 
+-TEX = ${SHELL} ../missing --run tex
++# -output-comment replaces the build date that TeX stores in the DVI comment
++# and that dvips then copies into the installed PostScript files
++TEX = ${SHELL} ../missing --run tex -output-comment='Gri documentation'
+ TEXINDEX = ${SHELL} ../missing --run texindex
+ 
+ 
+-- 
+2.54.0
+
