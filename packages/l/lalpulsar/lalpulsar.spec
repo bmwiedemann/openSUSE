@@ -84,7 +84,6 @@ BuildRequires:  %{python_module lalframe}
 BuildRequires:  %{python_module lalinference >= 4.0.0}
 BuildRequires:  %{python_module lalsimulation >= 4.0.0}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module py}
 BuildRequires:  bc
 %endif
 # /SECTION
