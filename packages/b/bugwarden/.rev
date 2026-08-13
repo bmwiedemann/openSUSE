@@ -40,4 +40,53 @@ License: is the aggregate over the crates statically linked into the binary
     <comment>Update to 0.3.0: server-held Bugzilla API key custody over HTTP, created_by_me policy matcher, operation-scoped policy rules, widened update_bug_fields, audit trace context and search-window drop accounting</comment>
     <requestid>1369194</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4eb0834ec9796821d0a6535c16041253</srcmd5>
+    <version>0.4.0</version>
+    <time>1786619796</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.4.0
+
+Supersedes SR 1370889, which packaged the new shell completions in the main
+package. They are now split into bugwarden-bash-completion,
+bugwarden-zsh-completion and bugwarden-fish-completion, each noarch, each
+requiring the matching base version and carrying a Supplements so a shell's
+completions are only pulled in where that shell is installed. Nothing else
+changed from that request.
+
+Upstream 0.4.0. The user-visible additions are product and field discovery
+tools, support for custom fields when filing a bug, and --allowed-hosts to
+restrict the inbound Host header on the HTTP transport.
+
+Two changes alter behaviour rather than adding to it. The server now fails
+startup when it cannot resolve an identity, and that identity comes from a
+declared, verified login instead of the local account, so a deployment no
+longer depends on whoami. The server also stops imposing one Bugzilla
+instance's status workflow on every instance.
+
+Correctness fixes worth naming: a capped search page is no longer read as the
+end of results, suppressed_count is no longer under-reported as a maximum,
+the HTTP body cap is derived from the attachment ceiling, and the example
+policy no longer ships a rule that depended on whoami. The guard now reserves
+the rule names it decides under.
+
+Upstream also generates a man page and the three completion scripts from the
+command line definition and ships them prebuilt in the release tarball, so
+they are installed directly with no generation step at build time.
+
+Verified on aarch64: build green, full test suite passes, rpmlint 0 errors /
+0 warnings / 0 badness across all four binary packages, and each completion
+lands in the correct subpackage with the main package carrying none of them.
+
+One thing worth knowing rather than hiding: an earlier build of this version
+hit a flaky unit test,
+config::tests::startup_log_states_mode_and_source_never_key_material_i12,
+which asserts on captured tracing output. Its helper installs a thread-local
+subscriber and then reads a shared buffer, so under parallel test execution
+the buffer can come back empty and the assertion fails with no useful
+message. It passed alone, passed with --test-threads=1, and has passed on
+every rebuild since. Reported upstream as plusky/bugwarden#92. No downstream
+workaround was added, because the fix belongs in the test helper.</comment>
+    <requestid>1370891</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Aug 12 19:19:16 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Move the shell completions into bash-completion, zsh-completion and
+  fish-completion subpackages, so a shell's completions are only
+  pulled in where that shell is installed
+
+-------------------------------------------------------------------
+Wed Aug 12 18:42:27 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.4.0:
+  * Add product and field discovery tools, and accept custom fields
+    when filing a bug
+  * Add --allowed-hosts to restrict the inbound host header
+  * Fail startup when the identity cannot be resolved, and resolve it
+    from a declared, verified login so it no longer depends on the
+    local account
+  * Identify this build to Bugzilla with a User-Agent, and introduce
+    it by name in the MCP handshake
+  * Stop imposing one instance's status workflow on every instance
+  * Stop reading a capped search page as the end of results
+  * Stop shipping the example policy rule that depended on whoami
+  * Reserve the rule names the guard decides under
+  * Stop under-reporting suppressed_count as a maximum
+  * Derive the HTTP body cap from the attachment ceiling
+  * Move the server to rmcp 3.1 and pin what the transport may serve
+  * Move the Bugzilla client to reqwest 0.13
+- Install the man page and the bash, zsh and fish completions, which
+  upstream now generates from the CLI definition and ships prebuilt
+
+-------------------------------------------------------------------
 Mon Aug  3 05:49:01 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.3.0:
