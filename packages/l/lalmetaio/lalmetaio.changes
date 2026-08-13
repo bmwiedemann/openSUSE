@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Aug 11 02:23:24 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove unneeded BuildRequires on python-py.
+
+-------------------------------------------------------------------
+Tue Feb  3 19:41:26 UTC 2026 - Andreas Prittwitz <m4ng4n@gmx.de>
+
+- Update to version 4.0.6
+  * No release notes provided.
+  * Add BuildRequires help2man to build manpage.
+  * Rename metaio_version.1.gz manpage to metaio-%{version}.1.gz
+  * Update version numbers for requirements.
+  * Add %{_datadir}man/man1/%{name}_%{version}.1.gz statement to 
+    %files section for man page.
+
+-------------------------------------------------------------------
 Sun Dec  1 06:41:12 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Fix use of %requires_eq octave-cli

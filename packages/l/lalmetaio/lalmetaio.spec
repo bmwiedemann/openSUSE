@@ -1,7 +1,7 @@
 #
 # spec file for package lalmetaio
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %bcond_with    octave
 
 Name:           lalmetaio
-Version:        4.0.5
+Version:        4.0.6
 Release:        0
 Summary:        LSC Algorithm MetaIO Library
 License:        GPL-2.0-or-later
@@ -34,27 +34,27 @@ URL:            https://wiki.ligo.org/Computing/DASWG/LALSuite
 Source:         https://software.igwn.org/sources/source/lalsuite/%{name}-%{version}.tar.xz
 #Git-Clone:     https://git.ligo.org/lscsoft/lalsuite.git
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module lal >= 7.1.0}
+BuildRequires:  %{python_module lal >= 7.7.0}
 BuildRequires:  %{python_module numpy >= 1.7}
 BuildRequires:  %{python_module numpy-devel >= 1.7}
-BuildRequires:  %{python_module py}
 BuildRequires:  fdupes
-BuildRequires:  pkgconfig
+BuildRequires:  help2man >= 1.37
+BuildRequires:  pkgconfig >= 0.18.0
 BuildRequires:  python-rpm-macros
 %if 0%{?suse_version} < 1550
 BuildRequires:  python-xml
 %endif
-BuildRequires:  swig
-BuildRequires:  pkgconfig(lal) >= 7.1.0
-BuildRequires:  pkgconfig(libmetaio)
+BuildRequires:  swig >= 3.0.11
+BuildRequires:  pkgconfig(lal) >= 7.7.0
+BuildRequires:  pkgconfig(libmetaio) >= 8.4.0
 %if %{with octave}
-BuildRequires:  octave-lal >= 7.1.0
+BuildRequires:  octave-lal >= 7.7.0
 BuildRequires:  pkgconfig(octave)
 %endif
 # SECTION For tests
 BuildRequires:  %{python_module pytest}
 # /SECTION
-Requires:       python-lal >= 7.1.0
+Requires:       python-lal >= 7.7.0
 Requires:       python-numpy >= 1.7
 ExcludeArch:    %{ix86}
 
@@ -75,8 +75,8 @@ that use the LAL MetaIO library.
 Summary:        Development files for LAL metaio
 Group:          Development/Libraries/C and C++
 Requires:       %{shlib} = %{version}
-Requires:       pkgconfig(lal)
-Requires:       pkgconfig(libmetaio)
+Requires:       pkgconfig(lal) >= 7.7.0
+Requires:       pkgconfig(libmetaio) >= 8.4.0
 
 %description  -n %{name}-devel
 This package contains sources and header files needed to build applications
@@ -86,7 +86,7 @@ that use the LAL MetaIO library.
 %package -n octave-lalmetaio
 Summary:        Octave bindings for LAL MetaIO
 Group:          Productivity/Scientific/Physics
-Requires:       octave-lal
+Requires:       octave-lal >= 7.7.0
 %requires_eq    octave-cli
 
 %description -n octave-lalmetaio
@@ -116,6 +116,9 @@ pushd ../${PYTHON}_build
 %make_install
 popd
 }
+
+# Rename man page
+mv %{buildroot}%{_datadir}/man/man1/%{name}_version.1 %{buildroot}%{_datadir}/man/man1/%{name}-%{version}.1
 
 # SECTION EXPORT LAL SPECIFIC ENV VARIABLES
 # We do not use upstream's env files because they also set more generic
@@ -173,6 +176,7 @@ popd
 %{_libdir}/pkgconfig/*.pc
 %{_includedir}/*
 %config %{_sysconfdir}/profile.d/%{name}.*
+%{_datadir}/man/man1/%{name}-%{version}.1.gz
 
 %if %{with octave}
 %files -n octave-%{name}
