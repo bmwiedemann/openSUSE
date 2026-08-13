@@ -1731,6 +1731,9 @@ unsorted:
   - budgie-session-lang 
   - buffer 
   - bugwarden 
+  - bugwarden-bash-completion 
+  - bugwarden-fish-completion 
+  - bugwarden-zsh-completion 
   - bugzilla 
   - bugzilla-apache 
   - bugzilla-lang-de 
@@ -10591,7 +10594,6 @@ unsorted:
   - ksquares-lang 
   - kssl 
   - kst 
-  - kst-devel 
   - kstars 
   - kstars-lang 
   - ksystemlog 
@@ -26362,6 +26364,7 @@ unsorted:
   - python313-jupyterlab-templates 
   - python313-jupyterlab-widgets 
   - python313-jwcrypto 
+  - python313-jxlpy 
   - python313-k5test 
   - python313-kafka-python 
   - python313-kaitaistruct 
@@ -30394,6 +30397,7 @@ unsorted:
   - python314-jupyterlab-templates 
   - python314-jupyterlab-widgets 
   - python314-jwcrypto 
+  - python314-jxlpy 
   - python314-k5test 
   - python314-kafka-python 
   - python314-kaitaistruct 
@@ -33129,6 +33133,7 @@ unsorted:
   - qtcurve-gtk2 
   - qtcurve-qt5 
   - qtcurve-qt5-lang 
+  - qtdeclarative-imports-provides-qt5 
   - qtel 
   - qterm 
   - qterminal 
@@ -34309,6 +34314,7 @@ unsorted:
   - sddm-conf 
   - sddm-conf-lang 
   - sddm-config-wayland 
+  - sddm-greeter-qt5 
   - sddm-wayland-miriway 
   - sdgyrodsu 
   - sdl-asylum 
