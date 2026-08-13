@@ -41,8 +41,6 @@ BuildRequires:  %{python_module lalmetaio >= 3.0.0}
 BuildRequires:  %{python_module lalsimulation >= 4.0.0}
 BuildRequires:  %{python_module numpy >= 1.7}
 BuildRequires:  %{python_module numpy-devel >= 1.7}
-# python-py - remove with next update -- https://git.ligo.org/lscsoft/lalsuite/-/merge_requests/2033
-BuildRequires:  %{python_module py}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig >= 0.18.0
