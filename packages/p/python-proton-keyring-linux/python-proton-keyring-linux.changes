@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 28 08:07:14 UTC 2026 - Ákos Szőts <akos@szots.dev>
+
+- Update to v0.2.3
+- Fixed --cov handling in tests by adding a missing dependency. This allowed
+  to remove patch "fix-tests.patch"
+
+-------------------------------------------------------------------
 Wed Feb 26 00:21:13 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - enable tests

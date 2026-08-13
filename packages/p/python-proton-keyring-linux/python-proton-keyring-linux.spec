@@ -1,7 +1,7 @@
 #
 # spec file for package python-proton-keyring-linux
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,26 +16,27 @@
 #
 
 
-%{?sle15_python_module_pythons}
 %define         _modname proton_keyring_linux
+%{?sle15_python_module_pythons}
 Name:           python-proton-keyring-linux
-Version:        0.2.0
+Version:        0.2.3
 Release:        0
-Summary:        Proton keyring linux library
+Summary:        Proton keyring Linux library
 License:        GPL-3.0-or-later
 URL:            https://github.com/ProtonVPN/python-proton-keyring-linux
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         fix-tests.patch
 BuildRequires:  %{python_module SecretStorage}
 BuildRequires:  %{python_module keyring}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module proton-core}
+BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
-Requires:       python-proton-core
+BuildRequires:  python-rpm-macros
 Requires:       python-keyring
+Requires:       python-proton-core
 Obsoletes:      python-proton-keyring-linux-secretservice <= 0.1.0
 Provides:       python-proton-keyring-linux-secretservice = %{version}
 BuildArch:      noarch
@@ -52,7 +53,7 @@ BuildArch:      noarch
 
 %install
 %pyproject_install
-%python_expand %fdupes %{buildroot}%{python_sitelib}
+%python_expand %fdupes %{buildroot}/%{$python_sitelib}/proton/keyring_linux/
 
 %check
 %pytest
