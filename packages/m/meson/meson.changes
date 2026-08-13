@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Aug 11 13:01:44 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.12.0:
+  + Custom dependency for atomic now works on MSVC
+  + Support for CACHEDIR.TAG specification
+  + New clippy-json Ninja Target For rust-analyzer
+  + Add a new default() function and object
+  + Delay install script errors to install time
+  + find_program() now respects --force-fallback-for
+  + fs.copyfile() now has a build_subdir argument
+  + Added depends kwarg to generator.process()
+  + Added msgfmt_args arg to i18n.gettext()
+  + include_directories object now has a to_list() method
+  + Added integer base conversions to str.to_int() and int.to_string()
+  + Multiple positional arguments for meson wrap install
+  + meson format allows --recursive with --check-diff
+  + New --subprojects option for meson format
+  + OpenHarmony (OHOS) is now recognized as an Android subsystem
+  + External programs as inputs and dependencies to custom targets
+  + External programs as dependencies to tests
+  + Support for Python 3.7, 3.8, and 3.9 dropped
+  + More types of generated files allowed by qt.preprocess()
+  + The Rust module includes a basic wrapper for cbindgen
+  + Non-default members of Cargo workspaces can now be built
+  + subproject() and meson.override_find_program() now support the native keyword argument
+  + meson test now accepts --exclude
+  + Vala cross compilation changes
+  + werror=true now applies to the linker as well
+  + Added win_subsystem to shared_library() and shared_module()
+  + i18n.xgettext() recursive option now includes "private" dependencies
+
+-------------------------------------------------------------------
 Mon Jul 13 07:21:15 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.11.2:

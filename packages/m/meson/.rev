@@ -1234,4 +1234,12 @@ Smoketest in GNOME:Next passed</comment>
     <comment>Update to 1.11.2</comment>
     <requestid>1365643</requestid>
   </revision>
+  <revision rev="145" vrev="1">
+    <srcmd5>9491cb005eb9ff69622a236cc5b67874</srcmd5>
+    <version>1.12.0</version>
+    <time>1786619696</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1370709</requestid>
+  </revision>
 </revisionlist>
