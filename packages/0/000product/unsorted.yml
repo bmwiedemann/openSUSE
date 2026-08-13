@@ -1208,6 +1208,7 @@ unsorted:
   - awf-gtk2 
   - awf-gtk3 
   - awf-gtk4 
+  - awf-qt6 
   - awkward-devel 
   - aws-c-auth-devel 
   - aws-c-cal-devel 
@@ -15610,7 +15611,7 @@ unsorted:
   - libppd-devel 
   - libppl14 
   - libppl_c4 
-  - libpplite6 
+  - libpplite7 
   - libppsdocument4_0-6 
   - libppsview4_0-5 
   - libpq5-32bit 
@@ -23073,7 +23074,6 @@ unsorted:
   - pg_top 
   - pgaccess 
   - pgadmin4 
-  - pgadmin4-cloud 
   - pgadmin4-desktop 
   - pgadmin4-doc 
   - pgadmin4-web-uwsgi 
@@ -32698,6 +32698,7 @@ unsorted:
   - qsynergy 
   - qsynth 
   - qsynth-lang 
+  - qt5-globalqss 
   - qt5ct 
   - qt6-3d-devel 
   - qt6-3d-docs-html 
@@ -32791,6 +32792,7 @@ unsorted:
   - qt6-designer-private-devel 
   - qt6-designercomponents-private-devel 
   - qt6-docs-common 
+  - qt6-globalqss 
   - qt6-graphs-devel 
   - qt6-graphs-docs-html 
   - qt6-graphs-docs-qch 
@@ -35153,7 +35155,6 @@ unsorted:
   - syft-bash-completion 
   - syft-fish-completion 
   - syft-zsh-completion 
-  - symbols-only-nerd-fonts 
   - symmetrica-devel 
   - sympol 
   - sympol-devel 
