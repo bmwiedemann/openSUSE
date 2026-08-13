@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jul 30 10:50:23 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- update non-CUDA variant to 595.91.07 (boo#1271601)
+- update CUDA variant to 610.57.04
+
+-------------------------------------------------------------------
+Fri Jul 24 11:12:06 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- update CUDA variant to 610.57.02
+- supersedes linux-7.0.patch
+
+-------------------------------------------------------------------
+Thu Jul 16 14:10:51 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- update non-CUDA variant to 595.91.05 (boo#1271601)
+
+-------------------------------------------------------------------
 Wed Jul  8 10:50:02 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - preamble:

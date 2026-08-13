@@ -16,14 +16,14 @@
 #
 
 
-%define gfx_aarch64_version 595.84
+%define gfx_aarch64_version 595.91.07
 
 %ifarch aarch64
 %define gfx_version %gfx_aarch64_version
 %else
-%define gfx_version 595.84
+%define gfx_version 595.91.07
 %endif
-%define cuda_version 610.43.02
+%define cuda_version 610.57.04
 
 %global flavor @BUILD_FLAVOR@%{?nil}
 
@@ -98,7 +98,6 @@ Source14:       group-source-files.pl
 Source15:       kmp-trigger.sh
 Source17:       kmp-post.sh
 Source18:       Check4WrongSupplements.sh
-Patch0:         linux-7.0.patch
 %ifnarch aarch64
 Patch2:         fix-objtool-warnings.patch
 %endif
