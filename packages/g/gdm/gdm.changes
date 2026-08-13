@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 12 02:22:31 UTC 2026 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Update solution for switching to tty1 on gdm service stop
+  + Drop gdm-switch-to-tty1.patch
+  + Add /usr/lib/systemd/system/gdm.service.d/10-switch-to-vt1-on-stop.conf
+
+-------------------------------------------------------------------
 Wed Aug  5 06:30:27 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 50.2:

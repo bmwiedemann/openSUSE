@@ -2446,4 +2446,14 @@
   + Updated translations.</comment>
     <requestid>1369983</requestid>
   </revision>
+  <revision rev="304" vrev="2">
+    <srcmd5>326402352b031ab85a2d5a5a22dbaec3</srcmd5>
+    <version>50.2</version>
+    <time>1786619726</time>
+    <user>anag_factory</user>
+    <comment>- Update solution for switching to tty1 on gdm service stop
+  + Drop gdm-switch-to-tty1.patch
+  + Add /usr/lib/systemd/system/gdm.service.d/10-switch-to-vt1-on-stop.conf</comment>
+    <requestid>1370825</requestid>
+  </revision>
 </revisionlist>

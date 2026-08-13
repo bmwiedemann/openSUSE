@@ -58,14 +58,13 @@ Source15:       gdm-smartcard-sle.pamd
 # Configuration for pulseaudio
 Source20:       default.pa
 Source21:       keytable.in
+Source22:       10-switch-to-vt1-on-stop.conf
 # PATCH-FIX-OPENSUSE  gdm-sysconfig-settings.patch bnc432360 bsc#919723 hpj@novell.com -- Read autologin options from /etc/sysconfig/displaymanager; note that accountsservice has a similar patch (accountsservice-sysconfig.patch)
 Patch1:         gdm-sysconfig-settings.patch
-# PATCH-FIX-OPENSUSE gdm-switch-to-tty1.patch bsc#1113700 xwang@suse.com -- switch to tty1 when stopping gdm service
-Patch5:         gdm-switch-to-tty1.patch
 # PATCH-FIX-OPENSUSE gdm-initial-setup-hardening.patch boo#1140851, glgo#GNOME/gnome-initial-setup#76 fezhang@suse.com -- Prevent gnome-initial-setup running if any regular user has perviously logged into the system
-Patch6:         gdm-initial-setup-hardening.patch
+Patch2:         gdm-initial-setup-hardening.patch
 # PATCH-FIX-OPENSUSE gdm-service-keytable.patch bsc#1248831 bsc#1250366 yfjiang@suse.com -- set KEYMAP to XkbLayout for GNOME
-Patch10:        gdm-service-keytable.patch
+Patch3:         gdm-service-keytable.patch
 
 ### NOTE: Keep please SLE-only patches at bottom (starting on 1000).
 # PATCH-FIX-SLE gdm-disable-gnome-initial-setup.patch bnc#1067976 qzhao@suse.com -- Disable gnome-initial-setup runs before gdm, g-i-s will only serve for CJK people to choose the input-method after login.
@@ -309,6 +308,10 @@ install -D -m 644 %{SOURCE20} %{buildroot}%{_prefix}/share/factory/var/lib/gdm/.
 
 install -m 755 %{SOURCE21} %{buildroot}%{_libexecdir}/gdm/keytable
 
+# bsc#1113700 xwang@suse.com -- Switch to tty1 on gdm service stop
+mkdir -p %{buildroot}%{_unitdir}/gdm.service.d
+install -m 644 %{SOURCE22} %{buildroot}%{_unitdir}/gdm.service.d/10-switch-to-vt1-on-stop.conf
+
 %find_lang %{name} %{?no_lang_C}
 %fdupes -s %{buildroot}%{_datadir}/help
 
@@ -423,6 +426,8 @@ fi
 %dir %{_userunitdir}/gnome-session@gnome-login.target.d
 %{_userunitdir}/gnome-session@gnome-login.target.d/gnome-login.session.conf
 %{_unitdir}/gnome-headless-session@.service
+%dir %{_unitdir}/gdm.service.d
+%{_unitdir}/gdm.service.d/10-switch-to-vt1-on-stop.conf
 
 %if %{suse_version} < 1610 || %{suse_version} >= 1699
 %files xdm-integration
