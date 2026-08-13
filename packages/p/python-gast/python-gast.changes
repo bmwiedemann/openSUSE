@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Dec  9 11:25:10 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.7.0
+  * Add missing `type_params` attribute for `ClassDef` node before Python3.12 (#89)
+  * Initialize ast node with known fields to avoid deprecation warning in Python 3.13
+  * [ci] Update python 3.7 validation
+  * Fix gast.get_docstring implementation
+  * Support [g]ast.get_source_segment
+  * Initial oss-fuzz integration
+  * [ci] Normalize testing on 3.13
+  * Only pass existing attributes as keyword parameters in gast_to_ast
+  * [ci] Test python 3.14 compatibility
+  * [ci] Test python 3.14.0
+  * Make gast.dump more generic across python version
+  * Support _field_types field for every AST class
+  * [ci] Upgrade workers for python <= 3.7
+  * Adjust test incompatible with py2
+  * Support t-string from python 3.14
+  * Fix support for TypeVar, TypeVarTupe and ParamSpec
+  * Update unparser to harmonize output across revisions and handle python 3.12+ features
+
+-------------------------------------------------------------------
 Mon Jul 22 09:49:36 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.6.0
