@@ -4,7 +4,7 @@ Fri Jul 17 16:23:04 UTC 2026 - munix9@googlemail.com
 - Update to 26.02:
   * Some bugs and vulnerabilities were fixed.
   * CVE-2026-14266 / ZDI-26-444 : 7-Zip XZ Decompression Heap-based
-    Buffer Overflow Remote Code Execution Vulnerability
+    Buffer Overflow Remote Code Execution Vulnerability (bsc#1273065)
 
 -------------------------------------------------------------------
 Mon Jun  1 06:01:28 UTC 2026 - munix9@googlemail.com
@@ -26,7 +26,14 @@ Mon Jun  1 06:01:28 UTC 2026 - munix9@googlemail.com
             specified in the -o{dir_path} with the archive name.
             This is the default option.
   * some bugs were fixed.
-  * CVE-2026-48095 / GHSL-2026-140 : Heap Buffer Write Overflow
+    bsc#1267858 (CVE-2026-48092)
+    bsc#1267862 (CVE-2026-48104)
+    bsc#1267861 (CVE-2026-48103)
+    bsc#1267860 (CVE-2026-48102)
+    bsc#1267859 (CVE-2026-48101)
+    bsc#1267864 (CVE-2026-48112)
+    bsc#1267863 (CVE-2026-48111)
+    bsc#1267421 (CVE-2026-48095)
 
 -------------------------------------------------------------------
 Sun Mar  1 09:43:33 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>

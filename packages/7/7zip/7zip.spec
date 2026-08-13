@@ -24,7 +24,7 @@ Release:        0
 Summary:        Command-line file archiver with high compression ratio
 # CPP/7zip/Compress/LzfseDecoder.cpp is under the BSD-3-Clause
 # C/Sha1.c and C/Sha256.c are in the public domain
-License:        BSD-3-Clause AND LGPL-2.1-or-later AND SUSE-Public-Domain
+License:        BSD-3-Clause AND LGPL-2.1-or-later AND LicenseRef-SUSE-Public-Domain
 Group:          Productivity/Archiving/Compression
 URL:            https://www.7-zip.org/
 Source:         https://www.7-zip.org/a/7z%{stripped_version}-src.tar.xz
