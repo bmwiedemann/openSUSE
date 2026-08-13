@@ -16,7 +16,7 @@
 #
 
 Name:           mistral-vibe
-Version:        2.24.0
+Version:        2.24.1
 Release:        0
 Summary:        Minimal CLI coding agent by Mistral
 License:        Apache-2.0
@@ -61,7 +61,7 @@ Requires:       python3-certifi >= 2026.7.22
 Requires:       python3-cffi >= 2.0.0
 Requires:       python3-charset-normalizer >= 3.4.7
 Requires:       python3-click >= 8.3.3
-Requires:       python3-cryptography >= 48.0.1
+Requires:       python3-cryptography >= 50.0.0
 Requires:       python3-eval-type-backport >= 0.3.1
 Requires:       python3-gitdb >= 4.0.12
 Requires:       python3-giturlparse >= 0.15.0
@@ -165,7 +165,7 @@ BuildRequires:  python3-certifi >= 2026.7.22
 BuildRequires:  python3-cffi >= 2.0.0
 BuildRequires:  python3-charset-normalizer >= 3.4.7
 BuildRequires:  python3-click >= 8.3.3
-BuildRequires:  python3-cryptography >= 48.0.1
+BuildRequires:  python3-cryptography >= 50.0.0
 BuildRequires:  python3-eval-type-backport >= 0.3.1
 BuildRequires:  python3-gitdb >= 4.0.12
 BuildRequires:  python3-giturlparse >= 0.15.0
