@@ -1,0 +1,255 @@
+---
+ src/pyright/_utils.py |   35 ++--------------
+ src/pyright/node.py   |  108 +++++---------------------------------------------
+ tests/conftest.py     |    8 +++
+ 3 files changed, 23 insertions(+), 128 deletions(-)
+
+Index: pyright-python-1.1.411/src/pyright/_utils.py
+===================================================================
+--- pyright-python-1.1.411.orig/src/pyright/_utils.py	2026-06-25 04:13:32.000000000 +0200
++++ pyright-python-1.1.411/src/pyright/_utils.py	2026-08-12 08:31:38.120365735 +0200
+@@ -1,10 +1,7 @@
+ from __future__ import annotations
+ 
+ import os
+-import sys
+-import json
+ import logging
+-import subprocess
+ from typing import Any
+ from pathlib import Path
+ 
+@@ -49,34 +46,12 @@
+             log.debug('using bundled pyright at %s', bundled_path)
+             return bundled_path
+ 
+-    cache_dir = ROOT_CACHE_DIR / version
+-    cache_dir.mkdir(exist_ok=True, parents=True)
++    for root in (Path('/usr/share/node_modules'), Path('/usr/lib/node_modules')):
++        pkg_dir = root / 'pyright'
++        if node.get_pkg_version(pkg_dir / 'package.json') == version:
++            return pkg_dir
+ 
+-    pkg_dir = cache_dir / 'node_modules' / 'pyright'
+-    package_json = cache_dir / 'package.json'
+-    current_version = node.get_pkg_version(pkg_dir / 'package.json')
+-
+-    if current_version is None or current_version != version:
+-        # We need to create a dummy `package.json` file so that `npm` doesn't try
+-        # and search for it elsewhere.
+-        #
+-        # If it finds a different `package.json` file then the `pyright` package
+-        # will be installed there instead of our cache directory.
+-        if not package_json.exists():
+-            package_json.write_text(json.dumps(DEFAULT_PACKAGE_JSON, indent=2))
+-
+-        silent = '--outputjson' in args
+-        node.run(
+-            'npm',
+-            'install',
+-            f'pyright@{version}',
+-            cwd=str(cache_dir),
+-            check=True,
+-            stdout=subprocess.PIPE if silent else sys.stdout,
+-            stderr=subprocess.PIPE if silent else sys.stderr,
+-        )
+-
+-    return pkg_dir
++    raise RuntimeError(f'System pyright npm package version {version} is not installed; install it from the distribution package')
+ 
+ 
+ def _get_configured_pyright_version() -> str:
+Index: pyright-python-1.1.411/src/pyright/node.py
+===================================================================
+--- pyright-python-1.1.411.orig/src/pyright/node.py	2026-06-25 04:13:32.000000000 +0200
++++ pyright-python-1.1.411/src/pyright/node.py	2026-08-12 08:31:38.120734741 +0200
+@@ -8,11 +8,10 @@
+ import logging
+ import platform
+ import subprocess
+-import importlib.util
+-from typing import Any, Dict, Tuple, Union, Mapping, Optional, NamedTuple, cast
++from typing import Any, Dict, Tuple, Union, Optional, NamedTuple, cast
+ from pathlib import Path
+ from functools import lru_cache
+-from typing_extensions import Literal, assert_never
++from typing_extensions import Literal
+ 
+ from . import errors
+ from .types import Target, check_target
+@@ -23,7 +22,6 @@
+ ENV_DIR: Path = get_env_dir()
+ BINARIES_DIR: Path = get_bin_dir(env_dir=ENV_DIR)
+ USE_GLOBAL_NODE = env_to_bool('PYRIGHT_PYTHON_GLOBAL_NODE', default=True)
+-USE_NODEJS_WHEEL = env_to_bool('PYRIGHT_PYTHON_NODEJS_WHEEL', default=True)
+ NODE_VERSION = os.environ.get('PYRIGHT_PYTHON_NODE_VERSION', default=None)
+ VERSION_RE = re.compile(r'\d+\.\d+\.\d+')
+ 
+@@ -41,27 +39,6 @@
+     return '.cmd'
+ 
+ 
+-def _ensure_node_env(target: Target) -> Path:
+-    log.debug('Checking for nodeenv %s binary', target)
+-
+-    path = _get_nodeenv_path(target)
+-    log.debug('Using %s path for binary', path)
+-
+-    if path.exists() and not NODE_VERSION:
+-        log.debug('Binary at %s exists, skipping nodeenv installation', path)
+-    else:
+-        log.debug('Installing nodeenv as a binary at %s could not be found', path)
+-        _install_node_env()
+-
+-    if not path.exists():
+-        raise errors.BinaryNotFound(path=path, target=target)
+-    return path
+-
+-
+-def _get_nodeenv_path(target: Target) -> Path:
+-    return BINARIES_DIR.joinpath(target + _postfix_for_target(target))
+-
+-
+ def _get_global_binary(target: Target) -> Optional[Path]:
+     log.debug('Checking for global target binary: %s', target)
+ 
+@@ -80,54 +57,20 @@
+     return None
+ 
+ 
+-def _install_node_env() -> None:
+-    log.debug('Installing nodeenv to %s', ENV_DIR)
+-    args = [sys.executable, '-m', 'nodeenv']
+-    if NODE_VERSION:
+-        log.debug(f'Using user specified node version: {NODE_VERSION}')
+-        args += ['--node', NODE_VERSION, '--force']
+-    args.append(str(ENV_DIR))
+-    log.debug('Running command with args: %s', args)
+-
+-    try:
+-        subprocess.run(args, check=True)
+-    except subprocess.CalledProcessError as exc:
+-        raise RuntimeError(
+-            'nodeenv failed; for more reliable node.js binaries try `pip install pyright[nodejs]`'
+-        ) from exc
+-
+-
+ class GlobalStrategy(NamedTuple):
+     type: Literal['global']
+     path: Path
+ 
+ 
+-class NodeJSWheelStrategy(NamedTuple):
+-    type: Literal['nodejs_wheel']
+-
+-
+-class NodeenvStrategy(NamedTuple):
+-    type: Literal['nodeenv']
+-    path: Path
+-
+-
+-Strategy = Union[GlobalStrategy, NodeJSWheelStrategy, NodeenvStrategy]
++Strategy = GlobalStrategy
+ 
+ 
+ def _resolve_strategy(target: Target) -> Strategy:
+-    if USE_NODEJS_WHEEL:
+-        if importlib.util.find_spec('nodejs_wheel') is not None:
+-            log.debug('Using nodejs_wheel package for resolving binaries')
+-            return NodeJSWheelStrategy(type='nodejs_wheel')
+-
+-    if USE_GLOBAL_NODE:
+-        path = _get_global_binary(target)
+-        if path is not None:
+-            log.debug('Using global %s binary', target)
+-            return GlobalStrategy(type='global', path=path)
+-
+-    log.debug('Installing binaries using nodeenv')
+-    return NodeenvStrategy(type='nodeenv', path=_ensure_node_env(target))
++    path = _get_global_binary(target)
++    if path is None:
++        raise errors.BinaryNotFound(path=Path(target), target=target)
++    log.debug('Using system %s binary', target)
++    return GlobalStrategy(type='global', path=path)
+ 
+ 
+ def run(
+@@ -143,37 +86,7 @@
+             'subprocess.CompletedProcess[str] | subprocess.CompletedProcess[bytes]',
+             subprocess.run(node_args, **kwargs),
+         )
+-    elif strategy.type == 'nodejs_wheel':
+-        import nodejs_wheel
+-
+-        if target == 'node':
+-            return cast(
+-                'subprocess.CompletedProcess[str] | subprocess.CompletedProcess[bytes]',
+-                nodejs_wheel.node(args, return_completed_process=True, **kwargs),
+-            )
+-        elif target == 'npm':
+-            return cast(
+-                'subprocess.CompletedProcess[str] | subprocess.CompletedProcess[bytes]',
+-                nodejs_wheel.npm(args, return_completed_process=True, **kwargs),
+-            )
+-        else:
+-            assert_never(target)
+-    elif strategy.type == 'nodeenv':
+-        env = kwargs.pop('env', None) or os.environ.copy()
+-        env.update(get_env_variables())
+-
+-        # If we're using `nodeenv` to resolve the node binary then we also need
+-        # to ensure that `node` is in the PATH so that any install scripts that
+-        # assume it is present will work.
+-        env.update(PATH=_update_path_env(env=env, target_bin=strategy.path.parent))
+-        node_args = [str(strategy.path), *args]
+-        log.debug('Running nodeenv command with args: %s', node_args)
+-        return cast(
+-            'subprocess.CompletedProcess[str] | subprocess.CompletedProcess[bytes]',
+-            subprocess.run(node_args, env=env, **kwargs),
+-        )
+-    else:
+-        assert_never(strategy)
++    raise AssertionError(f'Unsupported node strategy: {strategy.type}')
+ 
+ 
+ def version(target: Target) -> Tuple[int, ...]:
+@@ -245,7 +158,7 @@
+     return data.get('version')
+ 
+ 
+-def _update_path_env(
++'''def _update_path_env(
+     *,
+     env: Mapping[str, str] | None,
+     target_bin: Path,
+@@ -275,3 +188,4 @@
+ 
+     log.debug('Using PATH environment variable: %s', path)
+     return path
++'''
+Index: pyright-python-1.1.411/tests/conftest.py
+===================================================================
+--- pyright-python-1.1.411.orig/tests/conftest.py	2026-06-25 04:13:32.000000000 +0200
++++ pyright-python-1.1.411/tests/conftest.py	2026-08-12 08:17:47.441389908 +0200
+@@ -3,7 +3,10 @@
+ from pathlib import Path
+ 
+ import pytest
+-import nodejs_wheel
++try:
++    import nodejs_wheel
++except ImportError:
++    nodejs_wheel = None
+ 
+ 
+ @pytest.fixture(name='tmp_path')
+@@ -19,6 +22,9 @@
+ 
+ @pytest.fixture(name='node', scope='session')
+ def node_fixture() -> str:
++    if nodejs_wheel is None:
++        pytest.skip('nodejs-wheel-binaries is not installed')
++
+     if os.name == 'nt':
+         return str(Path(nodejs_wheel.__file__).parent / 'node.exe')
+ 

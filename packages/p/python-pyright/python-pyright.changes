@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Aug 12 06:38:16 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 1.1.411:
+  unfortunately, the upstream doesn't provide any type of
+  changelog information (even git log is completely useless).
+- Add system-node.patch making the package to use system NodeJS
+  intepreter instead of downloading its own.
+
+-------------------------------------------------------------------
 Mon Aug 25 11:34:26 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives on SLE-16-based and newer systems

@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyright
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,12 +23,15 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pyright
-Version:        1.1.376
+Version:        1.1.411
 Release:        0
 Summary:        Command line wrapper for pyright
 License:        MIT
 URL:            https://github.com/RobertCraigie/pyright-python
 Source:         https://github.com/RobertCraigie/pyright-python/archive/refs/tags/v%{version}.tar.gz#/pyright-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM system-node.patch bugno mcepl@suse.com
+# make package use system Nodejs
+Patch0:         system-node.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-subprocess}
 BuildRequires:  %{python_module pytest}
@@ -36,10 +39,13 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-nodeenv >= 1.6.0
+# Requires:       python-nodeenv >= 1.6.0
+Requires:       nodejs
+Requires:       nodejs-common
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module nodeenv >= 1.6.0}
+BuildRequires:  %{python_module typing_extensions}
 # /SECTION
 %if %{with libalternatives}
 BuildRequires:  alts

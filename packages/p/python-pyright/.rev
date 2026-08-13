@@ -15,4 +15,16 @@
     <comment>- Convert to libalternatives on SLE-16-based and newer systems</comment>
     <requestid>1301252</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3d0b258976322e19fcd55057db437499</srcmd5>
+    <version>1.1.411</version>
+    <time>1786619763</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.1.411:
+  unfortunately, the upstream doesn't provide any type of
+  changelog information (even git log is completely useless).
+- Add system-node.patch making the package to use system NodeJS
+  intepreter instead of downloading its own.</comment>
+    <requestid>1370858</requestid>
+  </revision>
 </revisionlist>
