@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug 12 13:47:42 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.8+0:
+  * Install the module iff systemd-boot or grub2-bls
+  * Make sure that our sysefi.mount takes precedence
+  * Do not copy old tpm2-pcr-signature files
+
+-------------------------------------------------------------------
 Wed May 06 12:30:45 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to version 0.7+0:
