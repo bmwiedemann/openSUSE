@@ -73,7 +73,6 @@ BuildRequires:  %{python_module lalsimulation >= 4.0.0}
 BuildRequires:  %{python_module matplotlib >= 1.2.0}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module py}
 BuildRequires:  %{python_module scipy >= 0.9.0}
 BuildRequires:  pkgconfig(lalinference) = %{version}
 %endif

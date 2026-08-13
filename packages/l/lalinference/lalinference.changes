@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 11 02:23:23 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove unneeded BuildRequires on python-py.
+
+-------------------------------------------------------------------
 Fri Jun 26 22:43:13 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add lalinference-ptr-const.patch to add const qualifiers to
