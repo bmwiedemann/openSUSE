@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Aug 13 09:30:44 UTC 2026 - Michael Vetter <jubalh@iodoru.org>
+
+- Migrate from automake to meson
+- Move binary manually to sbin to keep it like we have it since a long time
+- Add BuildRequires: pkgconfig(bash-completion) to resolve proper completion
+  directory paths
+- Remove shebang from bash-completion script
+- Declare /var/cache/powertop and files as %ghost
+- Enable unit tests
+- Drop powertop-2.16-fix-missing-sources.patch: sources in meson are complete
+
+-------------------------------------------------------------------
 Mon Aug 10 17:52:05 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.16:

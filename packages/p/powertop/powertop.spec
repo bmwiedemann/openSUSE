@@ -26,21 +26,14 @@ URL:            https://01.org/powertop/
 Source0:        https://github.com/fenrus75/powertop/archive/v%{version}.tar.gz
 Source1:        powertop.service
 Source2:        powertop.conf
-# PATCH-FIX-UPSTREAM https://github.com/fenrus75/powertop/pull/212
-Patch0:         powertop-2.16-fix-missing-sources.patch
-# they repeatedly forget to upload a release tarball and only have the one from
-# GitHub which doesnt contain configure thus adding:
-# autoconf, autoconf-archive, automake, libtool
-BuildRequires:  autoconf
-BuildRequires:  autoconf-archive
-BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  gettext
-BuildRequires:  libtool
 BuildRequires:  libtracefs-devel
+BuildRequires:  meson
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  pkgconfig(bash-completion)
 BuildRequires:  pkgconfig(libnl-3.0)
 BuildRequires:  pkgconfig(libnl-genl-3.0)
 BuildRequires:  pkgconfig(libpci)
@@ -56,26 +49,27 @@ doing in terms of power savings.
 
 %prep
 %setup -q -n powertop-%{version}
-%patch -P 0 -p1
 
 # Delete objects files left in tarball
 find . -name '*.o' -delete
 
 %build
-# workaround for 'error: too many loops' in sle15sp3
-# also see rhbz#1826935
-autoreconf -fi || autoreconf -fi
-export CFLAGS="%{optflags} -D_GNU_SOURCE -pthread"
-export CXXFLAGS="%{optflags} -std=c++20"
-%configure --disable-static
-%make_build
+%meson -Denable-tests=true
+%meson_build
 
 %install
-%make_install
+%meson_install
+mkdir -p %{buildroot}%{_sbindir}
+mv %{buildroot}%{_bindir}/powertop %{buildroot}%{_sbindir}/powertop
 install -D -m 0644 %{SOURCE1} %{buildroot}%{_unitdir}/powertop.service
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 install -D -m 0644 %{SOURCE2} %{buildroot}%{_prefix}/lib/tmpfiles.d/%{name}.conf
 %find_lang %{name}
+# remove shebang from bash completion file
+sed -i '1s/^#!.*//' %{buildroot}%{_datadir}/bash-completion/completions/powertop
+
+%check
+%meson_test
 
 %pre
 %service_add_pre %{name}.service
@@ -99,6 +93,9 @@ install -D -m 0644 %{SOURCE2} %{buildroot}%{_prefix}/lib/tmpfiles.d/%{name}.conf
 %{_unitdir}/%{name}.service
 %{_sbindir}/rc%{name}
 %{_datadir}/bash-completion/completions/powertop
+%ghost %attr(0755,-,-) %dir %{_localstatedir}/cache/%{name}
+%ghost %attr(0644,-,-) %{_localstatedir}/cache/%{name}/saved_parameters.powertop
+%ghost %attr(0644,-,-) %{_localstatedir}/cache/%{name}/saved_results.powertop
 
 %files lang -f %{name}.lang
 

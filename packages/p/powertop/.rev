@@ -565,4 +565,19 @@ A powertop_libc++_fix.patch</comment>
     and spacing, and fixed C0 active column misalignment in Idle stats</comment>
     <requestid>1370597</requestid>
   </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>506ba1ff2cc8291d4b1796581d2a9ec0</srcmd5>
+    <version>2.16</version>
+    <time>1786738010</time>
+    <user>anag_factory</user>
+    <comment>- Migrate from automake to meson
+- Move binary manually to sbin to keep it like we have it since a long time
+- Add BuildRequires: pkgconfig(bash-completion) to resolve proper completion
+  directory paths
+- Remove shebang from bash-completion script
+- Declare /var/cache/powertop and files as %ghost
+- Enable unit tests
+- Drop powertop-2.16-fix-missing-sources.patch: sources in meson are complete</comment>
+    <requestid>1371008</requestid>
+  </revision>
 </revisionlist>
