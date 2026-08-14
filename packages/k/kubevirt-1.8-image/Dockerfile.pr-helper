@@ -14,7 +14,7 @@
 # You can contact the BCI team via https://github.com/SUSE/bci/discussions
 
 #!UseOBSRepositories
-#!ExclusiveArch: x86_64
+#!ExclusiveArch: aarch64 x86_64
 #!BuildTag: opensuse/virt-pr-helper:%%kubevirt_ver%%-%RELEASE%
 #!BuildTag: opensuse/virt-pr-helper:%%kubevirt_ver%%
 #!BuildTag: opensuse/virt-pr-helper:1.8
