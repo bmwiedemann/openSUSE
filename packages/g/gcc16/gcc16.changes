@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 12 14:24:23 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- Disable cross-x86_64-gcc build for SLFO
+
+-------------------------------------------------------------------
 Fri Aug  7 08:05:41 UTC 2026 - Richard Biener <rguenther@suse.com>
 
 - Update to GCC 16.2 release (gcc-16.2.0+git9497)

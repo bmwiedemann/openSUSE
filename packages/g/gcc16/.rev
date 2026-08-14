@@ -138,4 +138,12 @@ builds significantly due to switching to release checking.
 - Disable multilibs for cross-x86_64-gcc</comment>
     <requestid>1370229</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>f78c1d8921e0f0c327c254f4e6c63f4b</srcmd5>
+    <version>16.2.0+git9497</version>
+    <time>1786737868</time>
+    <user>anag_factory</user>
+    <comment>- Disable cross-x86_64-gcc build for SLFO</comment>
+    <requestid>1370868</requestid>
+  </revision>
 </revisionlist>

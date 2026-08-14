@@ -252,6 +252,9 @@ ExcludeArch:    %{cross_arch}
 %ifarch %ix86
 ExclusiveArch:  do-not-build
 %endif
+%if %{suse_version} < 1699
+ExclusiveArch:  do-not-build
+%endif
 %endif
 %endif
 %if 0%{?gcc_libc_bootstrap:1}
