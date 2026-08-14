@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Fri Aug 14 05:34:33 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 53.4.0:
+  Large update, please see the full changelog at
+  https://github.com/kubeshark/kubeshark/releases/tag/v53.4.0
+  * Release Highlights
+    - Breaking change for SSO users. The permissions refactor
+      replaces the per-role action-flag schema. The AUTH_ROLES env
+      and flags such as canDownloadPCAP and scriptingPermissions
+      are gone, replaced by tap.auth.roles (a closed capabilities
+      vocabulary plus a namespaces scope), tap.auth.groupMapping,
+      tap.auth.rolesClaim and tap.auth.defaultRole (chart default
+      kubeshark-viewer). Role names beginning with kubeshark- are
+      reserved. Existing tap.auth.* values must be migrated before
+      upgrading.
+    - Kubeshark 53.4.0 completes the gated-Hub authentication
+      initiative end to end: the Hub now enforces authentication on
+      its APIs, and the CLI, Helm chart, worker and tracer all
+      present a real credential to it. It lands the unified
+      permissions model (capabilities and features, roles and SSO
+      group mapping, capability-gated UI) begun in 53.3.0, and it
+      patches two MCP input-handling vulnerabilities. Alongside
+      that, this release is heavily weighted toward high-throughput
+      live capture: batched UI streaming, cached resolver history
+      that removes an OOM, conditional GETs on worker and tracer
+      hub fetches, parallelized snapshot collection, and visible
+      reporting of dropped traffic instead of silent loss.
+  * Security
+    - MCP start_kubeshark argument injection (high) — a
+      caller-supplied pod_regex could be parsed as a flag rather
+      than as the positional pod regex, allowing deployment
+      arguments to be redirected, including the image registry. The
+      regex is now appended after a literal -- end-of-options
+      separator so cobra always treats it as positional. Affects >=
+      53.1.0, < 53.4.0. GHSA-8vf2-hxg5-crqh (CVSS 7.2, CWE-88)
+    - MCP download_file unvalidated destination (medium) — the
+      caller-supplied dest is now resolved through
+      secureDownloadDest and confined to a base directory (the
+      working directory by default, relocatable with
+      KUBESHARK_MCP_DOWNLOAD_DIR); a dest resolving outside the
+      base is rejected, and Hub API path values containing ..
+      segments are refused. Affects >= 53.1.0, < 53.4.0.
+      GHSA-gj7r-p794-hhq5 (CVSS 5.3, CWE-22)
+    - Build-cache credential leakage — the worker build cache no
+      longer carries credentials or private source, and the front
+      build cache no longer carries the Sentry auth token or
+      sourcemaps.  Both caches moved to private ECR rather than
+      public Docker Hub
+    - CodeQL analysis added to the CLI repository
+    - cilium bumped to v1.17.14 (CVE-2026-49445) in the hub
+  * New Features
+    - Gated Hub authentication — the Hub enforces authentication on
+      its APIs via an internalauth gate. The CLI mints a
+      short-lived kubeshark-cli ServiceAccount token through the
+      kube TokenRequest API (audience kubeshark-hub) and presents
+      it as X-Kubeshark-Authorization, with authorization bounded
+      by Kubernetes RBAC over who may create that token. It falls
+      back to the existing License-Key where minting is not
+      possible, and to anonymous when AUTH_ENABLED is off
+    - CLI access control — tap.auth.cli.enabled with a subjects
+      allowlist controls who may use the CLI against a gated Hub,
+      backed by a kubeshark-cli ServiceAccount and token-minter
+      Role
+
+-------------------------------------------------------------------
 Tue May 19 12:16:27 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 53.3.0:
