@@ -14,7 +14,7 @@
 # You can contact the BCI team via https://github.com/SUSE/bci/discussions
 
 #!UseOBSRepositories
-#!ExclusiveArch: x86_64
+#!ExclusiveArch: aarch64 x86_64
 #!BuildTag: opensuse/cdi-controller:%%cdi_ver%%-%RELEASE%
 #!BuildTag: opensuse/cdi-controller:%%cdi_ver%%
 #!BuildTag: opensuse/cdi-controller:1.65

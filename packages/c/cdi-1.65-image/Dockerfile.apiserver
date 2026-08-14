@@ -14,7 +14,7 @@
 # You can contact the BCI team via https://github.com/SUSE/bci/discussions
 
 #!UseOBSRepositories
-#!ExclusiveArch: x86_64
+#!ExclusiveArch: aarch64 x86_64
 #!BuildTag: opensuse/cdi-apiserver:%%cdi_ver%%-%RELEASE%
 #!BuildTag: opensuse/cdi-apiserver:%%cdi_ver%%
 #!BuildTag: opensuse/cdi-apiserver:1.65
