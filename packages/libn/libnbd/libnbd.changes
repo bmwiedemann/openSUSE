@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Aug 06 21:33:40 UTC 2026 - Charles Arnold <carnold@suse.com>
+
+- Update to version 1.25.7:
+  * Version 1.25.7.
+  * tests/reject-bad-uris.sh: Check ssh is installed before running test
+  * tests/reject-bad-uris.sh: Display output from command
+  * make: force dist file comparison to use C sort ordering
+  * lib/test-fork-safe-execvpe.sh: Check that expr can be copied to bin/f
+  * lib/test-fork-safe-execvpe.sh: Improve debugging
+  * Update TODO
+  * tests: Add a regression test for bad nbd+ssh URIs
+  * lib/uri.c: Don't crash if nbd-port parameter is missing
+  * Version 1.25.6.
+  * docs/libnbd-security.pod: Document security issue in nbd+ssh URIs
+  * lib/uri.c: Reject shell metacharacters in nbd+ssh URIs
+  * ci: refresh with 'lcitool manifest'
+
+-------------------------------------------------------------------
 Tue Jul  7 07:07:07 UTC 2026 - ohering@suse.de
 
 - Remove 32bit architectures
