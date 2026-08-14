@@ -49,4 +49,35 @@
     <comment>Update to version 9.8.1</comment>
     <requestid>1365012</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>714f5dab298ea8da29d6095bc3088d65</srcmd5>
+    <version>9.8.2</version>
+    <time>1786737895</time>
+    <user>anag_factory</user>
+    <comment>Update to 9.8.2
+
+Upstream 9.8.2. One user-visible fix: the reader code no longer writes to
+stdout, which was polluting zimcheck's output. The tag also carries a
+deduplication of the Xapian stemmer initialisation and a move to
+zim-testing-suite 0.10.0 for upstream's own CI.
+
+That test-suite bump does not affect this package: the spec builds with
+-Dtest_data_dir=none, so the external test data is never fetched and
+zim-testing-suite is not a dependency here. The 31 tests that do run are all
+green.
+
+SONAME is unchanged -- meson project version 9.8.2, major still 9 -- so
+libzim9 keeps its name and no reverse dependency needs rebuilding.
+
+Worth noting for anyone checking this against a release feed: upstream tagged
+9.8.2 without attaching a GitHub release object, so release-based trackers
+still report 9.8.1 as newest. The tag is a deliberate release commit (a
+release_9.8.2 pull request with its own ChangeLog entry) and the archive URL
+this package already uses resolves normally, so there is no missing-source
+risk.
+
+Verified on aarch64: build green, 31 tests pass with 0 failures, rpmlint
+0 errors / 0 warnings / 0 badness.</comment>
+    <requestid>1370917</requestid>
+  </revision>
 </revisionlist>
