@@ -23,7 +23,7 @@
 %bcond_with     examples
 %bcond_with     tests
 Name:           libtorrent-rasterbar
-Version:        2.0.13
+Version:        2.0.14
 Release:        0
 Summary:        A C++ implementation of the BitTorrent protocol
 License:        BSD-3-Clause
@@ -38,6 +38,7 @@ BuildRequires:  libboost_chrono-devel
 BuildRequires:  libboost_python3-devel
 BuildRequires:  libboost_random-devel
 %else
+BuildRequires:  gcc15-c++
 BuildRequires:  libboost_chrono1_75_0-devel
 BuildRequires:  libboost_python-py3-1_75_0-devel
 BuildRequires:  libboost_random1_75_0-devel
@@ -115,9 +116,15 @@ Documentation for the libtorrent-rasterbar package.
 
 %prep
 %autosetup -p1
+# fix shebang
+sed -e 's|#!/usr/bin/env python3|#!%__python3|' \
+    -i docs/*.py
 
 %build
 %cmake \
+%if 0%{suse_version} <= 1500
+   -DCMAKE_CXX_COMPILER=g++-15 \
+%endif
 %if %{with tests}
    -Dbuild_tests=ON \
 %endif

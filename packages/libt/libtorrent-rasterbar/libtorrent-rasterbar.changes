@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Thu Aug 13 04:45:14 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2.0.14
+  * fix issue in merkle tree
+  * fix use of a stack buffer past its lifetime when sending i2p
+    SAM commands
+  * fix issues with active_time, seeding_time and finished_time
+  * fix torrent updates for idle torrents
+  * improve dont-count-slow-torrents
+  * fix external_ip_alert not being posted under some conditions
+    when UPnP/NAT-PMP is enabled
+  * fix issue with stuck trackers on session pause
+  * fix windows disk read, possibly causing short-read errors
+  * fix blocking UDP socket in LSD and NAT-PMP
+  * fix web seed requests for single-file torrents in multi-file
+    mode
+  * fix duplicate filenames in magnet links
+  * fix blocking UDP socket in UPnP
+  * fix corruption bug in mmap_storage
+  * fix bug where torrent_status::total was not set for seeds
+
+-------------------------------------------------------------------
+Fri Jul 10 17:58:01 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Add libtorrent-rasterbar_no_vendored_headers.patch to avoid
+  installing unwanted headers/third-party libraries
+
+-------------------------------------------------------------------
+Thu Jul  9 11:53:45 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2.1.0
+  * fix tracker force announce
+  * add max_directory_depth limit to load_torrent_limits to
+    bound file path depth when loading torrents
+  * fix race in wait_for_alert(), and update its return value
+  * optimize torrent_handle::torrent_file()
+  * add option to not validate v1 hashes for hybrid torrents
+  * add post_file_status() to query them asynchronously
+  * add post_file_priorities() to query them asynchronously
+  * fix local service discovery not being correctly staggered
+  * add a multi-threaded, pread()-based, disk I/O backend
+    (pread_disk_io)
+  * make the save path for part files configurable
+  * retry failed SAM connection (for i2p)
+  * deprecated remap_files(), and prevent it from breaking v2
+    torrents
+  * fix peer_info holding an i2p destination
+  * implement i2p_pex, peer exchange support for i2p torrents
+  * deprecate torrent_alert::torrent_name()
+  * requires OpenSSL minimum version 1.1.0 with SNI support
+  * try harder to bind TCP and UDP sockets to the same port
+  * made disk_interface's status_t type a flags type
+  * optimize resume data format to use less space
+  * add a simpler overload to bencode() returning a vector<char>
+  * introduced a new API for creating torrents, enabling
+    file_storage optimizations
+  * default build to not include functions deprecated in
+    libtorrent 1.1 and earlier
+  * add comment, created_by and creation_date to
+    add_torrent_params
+  * move session_flags to session_params
+  * the entry class is now a standard variant type
+  * use std::string_view instead of boost counterpart
+  * libtorrent now requires C++17 to build
+  * added support for WebTorrent
+  * removed support for BEP 17 web seeds (in favor of BEP 19)
+  * fix blocking UDP socket in LSD and NAT-PMP
+  * fix web seed requests for single-file torrents in multi-file
+    mode
+  * fix duplicate filenames in magnet links
+  * fix blocking UDP socket in UPnP
+  * fix corruption bug in mmap_storage
+  * fix bug where torrent_status::total was not set for seeds
+
+-------------------------------------------------------------------
 Tue Jun  9 09:00:46 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 2.0.13
