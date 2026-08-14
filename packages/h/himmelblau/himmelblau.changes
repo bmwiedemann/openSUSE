@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Aug 13 13:16:09 UTC 2026 - David Mulder <david.mulder@suse.com>
+
+- Update to version 3.1.12+git0.bd4adfd7:
+  * Version 3.1.12
+  * Update cargo vet audits for backport
+  * Update make vet from main branch
+  * fix(nix): added `CacheDirectory` and added it to `ReadWritePaths`
+  * Use ok for account stack success.
+  * Skip Entra post-auth tasks for OIDC.
+  * Update event-listener 5.4.0 -> 5.4.2
+  * add qr postrm to fedora
+  * add script to remove qr assets
+  * check debian-gdm user instead of version
+  * use debian-gdm user in qr postinst
+  * fix(auth): retry failed password changes
+  * Update libhimmelblau to latest version
+  * deps(rust): bump the all-cargo-updates group with 23 updates
+
+-------------------------------------------------------------------
 Thu Aug  6 15:26:38 UTC 2026 - David Mulder <david.mulder@suse.com>
 
 - Add o365-url-handler-test-etxtbsy.patch to avoid intermittent
