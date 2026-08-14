@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-auth-httplib2
-Version:        0.4.0
+Version:        0.4.1
 Release:        0
 Summary:        Google Authentication Library: httplib2 transport
 License:        Apache-2.0
@@ -26,7 +26,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/googleapis/google-cloud-python/tree/main/packages/google-auth-httplib2
 Source:         https://files.pythonhosted.org/packages/source/g/google_auth_httplib2/google_auth_httplib2-%{version}.tar.gz
 BuildRequires:  %{python_module Flask}
-BuildRequires:  %{python_module google-auth >= 1.32.0}
+BuildRequires:  %{python_module google-auth >= 2.14.1}
 BuildRequires:  %{python_module httplib2 >= 0.19.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-localserver}

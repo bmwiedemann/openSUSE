@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 13 08:46:33 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.4.1
+  * require Protobuf 6.33.5+ (#17743)
+- Update BuildRequires from setup.py
+
+-------------------------------------------------------------------
 Mon May 11 08:54:59 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.4.0
