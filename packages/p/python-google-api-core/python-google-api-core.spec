@@ -26,11 +26,11 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-google-api-core
-Version:        2.31.0
+Version:        2.34.0
 Release:        0
 Summary:        Google API client core library
 License:        Apache-2.0
-URL:            https://github.com/googleapis/python-api-core
+URL:            https://github.com/googleapis/google-cloud-python/tree/main/packages/google-api-core
 Source:         https://files.pythonhosted.org/packages/source/g/google_api_core/google_api_core-%{version}.tar.gz
 BuildRequires:  %{python_module googleapis-common-protos >= 1.56.2}
 BuildRequires:  %{python_module pip}
@@ -44,6 +44,7 @@ Obsoletes:      python3-google-api-core < %{version}
 BuildRequires:  %{python_module google-api-core = %{version}}
 BuildRequires:  %{python_module proto-plus}
 BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
 %endif
 # END TESTING SECTION

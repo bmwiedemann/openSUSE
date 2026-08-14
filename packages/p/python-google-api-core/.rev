@@ -521,4 +521,12 @@
   * drop support for Python 3.9 (#16980) (forwarded request 1357960 from glaubitz)</comment>
     <requestid>1357982</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>2bd7203085d2d07761aaddd67937d1c3</srcmd5>
+    <version>2.34.0</version>
+    <time>1786738040</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1371204</requestid>
+  </revision>
 </revisionlist>

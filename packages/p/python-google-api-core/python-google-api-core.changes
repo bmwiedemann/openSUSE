@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Aug 14 09:56:21 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add missing python-pytest-mock to BuildRequires for test flavor
+
+-------------------------------------------------------------------
+Thu Aug 13 11:49:27 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.34.0
+  * Add Feature Gating configuration helpers. (#17524)
+  * **api-core:** centralize rest transcoding helpers (#17765)
+  * **api-core:** use truthiness check in setup_request_id to support
+    proto-plus messages (#18000)
+  * bump grpcio to 1.59.0; require Python 3.10+ (#17351)
+  * deduplicate x-goog-api-client headers (#17616)
+  * require Protobuf 6.33.5+ (#17743)
+- from version 2.33.0
+  * **api_core:** add request-id auto-population logic to gapic_v1
+    public helpers (#17738)
+  * **api-core:** add get_universe_domain helper to universe.py (#17799)
+  * **api-core:** prevent overwriting explicit empty strings for optional
+    request_id (#17798)
+- from version 2.32.0
+  * implement PEP 0810 lazy loading in operations_v1 (#17724)
+  * **api_core:** clarify misleading http 404 unimplemented error message (#17681)
+
+-------------------------------------------------------------------
 Mon Jun  8 12:08:31 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.31.0
