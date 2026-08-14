@@ -1,0 +1,1388 @@
+
+# HG changeset patch
+# User Henri Sivonen <hsivonen@hsivonen.fi>
+# Date 1729852895 0
+# Node ID 8ec6ccd6447aa2f8ed175c16b272ac7dd46e946b
+# Parent  a0a53a3fe6b0e4720407a8f7fea85e8cfcbbd093
+Bug 1866191 - Implement GB18030-2022 changes to the Encoding Standard. r=supply-chain-reviewers,emk
+
+Differential Revision: https://phabricator.services.mozilla.com/D222928
+
+diff --git a/Cargo.lock b/Cargo.lock
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -614,19 +614,19 @@ version = "0.1.0"
+ dependencies = [
+  "encoding_rs",
+  "nserror",
+  "nsstring",
+ ]
+ 
+ [[package]]
+ name = "encoding_rs"
+-version = "0.8.34"
++version = "0.8.35"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "b45de904aa0b010bce2ab45264d0631681847fa7b6f2eaa7dab7619943bc4f59"
++checksum = "75030f3c4f45dafd7586dd6780965a8c7e8e285a5ecb86713e63a79c5b2766f3"
+ dependencies = [
+  "any_all_workaround",
+  "cfg-if 1.0.0",
+ ]
+ 
+ [[package]]
+ name = "env_logger"
+ version = "0.5.13"
+diff --git a/third_party/rust/encoding_rs/.cargo-checksum.json b/third_party/rust/encoding_rs/.cargo-checksum.json
+--- a/third_party/rust/encoding_rs/.cargo-checksum.json
++++ b/third_party/rust/encoding_rs/.cargo-checksum.json
+@@ -1,1 +1,1 @@
+-{"files":{"CONTRIBUTING.md":"ca1901f3e8532fb4cec894fd3664f0eaa898c0c4b961d1b992d1ed54eacf362a","COPYRIGHT":"11789f45bb180841cd362a5eee6789c68ddb573a11105e30768c308a6add0190","Cargo.toml":"22a4d210c92dae9f32c6944ef340ee8fdd027f99c081577e8907123e2a93383e","Ideas.md":"b7452893f500163868d8de52c09addaf91e1632454ed02e892c467ed7ec39dbd","LICENSE-APACHE":"cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30","LICENSE-MIT":"3fa4ca83dcc9237839b1bdeb2e6d16bdfb5ec0c5ce42b24694d8bbf0dcbef72c","LICENSE-WHATWG":"838118388fe5c2e7f1dbbaeed13e1c7f3ebf88be91319c7c1d77c18e987d1a50","README.md":"1d08aefcb92afa81b18154049c9abbcad4540a23f7172e9f9bbed5af33f1a087","ci/miri.sh":"43cb8d82f49e3bfe2d2274b6ccd6f0714a4188ccef0cecc040829883cfdbee25","doc/Big5.txt":"f73a2edc5cb6c2d140ba6e07f4542e1c4a234950378acde1df93480f0ca0be0b","doc/EUC-JP.txt":"ee2818b907d0137f40a9ab9fd525fc700a44dbdddb6cf0c157a656566bae4bf1","doc/EUC-KR.txt":"71d9e2ccf3b124e8bdfb433c8cf2773fd878077038d0cec3c7237a50f4a78a30","doc/GBK.txt":"c1b522b5a799884e5001da661f42c5a8f4d0acb9ef1d74b206f22b5f65365606","doc/IBM866.txt":"a5a433e804d0f83af785015179fbc1d9b0eaf1f7960efcd04093e136b51fbd0e","doc/ISO-2022-JP.txt":"af86684f5a8f0e2868d7b2c292860140c3d2e5527530ca091f1b28198e8e2fe6","doc/ISO-8859-10.txt":"6d3949ad7c81ca176895101ed81a1db7df1060d64e262880b94bd31bb344ab4d","doc/ISO-8859-13.txt":"3951dd89cf93f7729148091683cf8511f4529388b7dc8dcd0d62eaed55be93fa","doc/ISO-8859-14.txt":"3d330784a0374fd255a38b47949675cc7168c800530534b0a01cac6edc623adc","doc/ISO-8859-15.txt":"24b1084aab5127a85aab99153f86e24694d0a3615f53b5ce23683f97cf66c47a","doc/ISO-8859-16.txt":"ce0272559b92ba76d7a7e476f6424ae4a5cc72e75b183611b08392e44add4d25","doc/ISO-8859-2.txt":"18ceff88c13d1b5ba455a3919b1e3de489045c4c3d2dd7e8527c125c75d54aad","doc/ISO-8859-3.txt":"21798404c68f4f5db59223362f24999da96968c0628427321fccce7d2849a130","doc/ISO-8859-4.txt":"d27f6520c6c5bfbcc19176b71d081cdb3bccde1622bb3e420d5680e812632d53","doc/ISO-8859-5.txt":"a10ec8d6ea7a78ad15da7275f6cb1a3365118527e28f9af6d0d5830501303f3a","doc/ISO-8859-6.txt":"ccda8a2efc96115336bdd77776637b9712425e44fbcf745353b9057fbef144e7","doc/ISO-8859-7.txt":"17900fa1f27a445958f0a77d7d9056be375a6bd7ee4492aa680c7c1500bab85e","doc/ISO-8859-8-I.txt":"8357555646d54265a9b9ffa3e68b08d132312f1561c60108ff9b8b1167b6ecf2","doc/ISO-8859-8.txt":"72cd6f3afb7b4a9c16a66a362473315770b7755d72c86c870e52fc3eba86c8af","doc/KOI8-R.txt":"839cf19a38da994488004ed7814b1f6151640156a9a2af02bf2efca745fb5966","doc/KOI8-U.txt":"0cc76624ed1f024183e2298b7e019957da2c70c8ca06e0fc4e6f353f50a5054f","doc/Shift_JIS.txt":"34c49141818cb9ddbcf59cc858f78a79be8ad148d563f26415108ae1f148443f","doc/UTF-16BE.txt":"e2e280d8acbaa6d2a6b3569d60e17500a285f2baa0df3363dd85537cd5a1ef8f","doc/UTF-16LE.txt":"70bdc170e3fc5298ba68f10125fb5eeb8b077036cc96bb4416c4de396f6d76c1","doc/UTF-8.txt":"ea7bae742e613010ced002cf4b601a737d2203fad65e115611451bc4428f548a","doc/gb18030.txt":"dc71378a8f07a2d8659f69ee81fb8791fef56ba86f124b429978285237bb4a7b","doc/macintosh.txt":"57491e53866711b4672d9b9ff35380b9dac9e0d8e3d6c20bdd6140603687c023","doc/replacement.txt":"4b6c3bbd7999d9d4108a281594bd02d13607e334a95465afff8c2c08d395f0e4","doc/windows-1250.txt":"61296bb6a21cdab602300d32ecfba434cb82de5ac3bc88d58710d2f125e28d39","doc/windows-1251.txt":"7deea1c61dea1485c8ff02db2c7d578db7a9aab63ab1cfd02ec04b515864689e","doc/windows-1252.txt":"933ef3bdddfce5ee132b9f1a1aa8b47423d2587bbe475b19028d0a6d38e180b6","doc/windows-1253.txt":"1a38748b88e99071a5c7b3d5456ead4caedeabab50d50d658be105bc113714de","doc/windows-1254.txt":"f8372f86c6f8d642563cd6ddc025260553292a39423df1683a98670bd7bf2b47","doc/windows-1255.txt":"4e5852494730054e2da258a74e1b9d780abbcdd8ce22ebc218ca2efe9e90493d","doc/windows-1256.txt":"c0879c5172abedead302a406e8f60d9cd9598694a0ffa4fd288ffe4fef7b8ea1","doc/windows-1257.txt":"c28a0c9f964fcb2b46d21f537c402446501a2800670481d6abf9fd9e9018d523","doc/windows-1258.txt":"5019ae4d61805c79aacbf17c93793342dbb098d65a1837783bc3e2c6d6a23602","doc/windows-874.txt":"4ef0e4501c5feba8b17aee1818602ed44b36ca8475db771ce2fc16d392cabecc","doc/x-mac-cyrillic.txt":"58be154d8a888ca3d484b83b44f749823ef339ab27f14d90ca9a856f5050a8bd","doc/x-user-defined.txt":"f9cd07c4321bf5cfb0be4bdddd251072999b04a6cf7a6f5bc63709a84e2c1ffc","generate-encoding-data.py":"be989dd25c6b946e3e8745fdc8e8a80fcf24b3be99ad0b4b78153ba3f6ab6310","rustfmt.toml":"85c1a3b4382fd89e991cbb81b70fb52780472edc064c963943cdaaa56e0a2030","src/ascii.rs":"588e38b01e666d5e7462617ea7e90a108d608dec9e016f3d273ac0744af2e05d","src/big5.rs":"ec6e2913011a38e9a3e825a1731f139a7ca1d5b264fefae51a3cc1a68a57cef9","src/data.rs":"8a617cc57032092d65850eb27e00de687c80aea3299e839a1f58b42d0b35abf3","src/euc_jp.rs":"32047f5b540188c4cb19c07165f846b9786a09f18e315ed3e9bda1293dae52aa","src/euc_kr.rs":"9b25afc72d9378700eecfac58d55ad1c5946d6cd0ccde2c29c08200ef2de6bb9","src/gb18030.rs":"808587168d73f0c80f8520f0ca9b161866ed2efeb17a05e85fdf3b8efe7ba28a","src/handles.rs":"b08cef1f5785bb6a4822f2e844c6df1b046b737b7a075e4593eaa8c4208e9fe2","src/iso_2022_jp.rs":"9bb485e82574f4b7d4b2364f0ff276acb6a0bc111758420a3b0ec5e04c196652","src/lib.rs":"834f44b670ec48ee82c0e12223d1567313fdd9f88bca5f4b117c82c1828f559f","src/macros.rs":"200997f8870de8bfd8cdc475e92115df42108c0df661e49d3d1cbc32056e1d99","src/mem.rs":"948571137d3b151df8db4fb2c733e74ae595d055cdf0ad83abcab9341d6adabe","src/replacement.rs":"7660b34a53f8c1ca2bdfa0e51e843ec28326950952ad8bc96569feb93ac62308","src/shift_jis.rs":"6951ae67e36b1a12fa3a30734957f444d8b1b4ae0e2bde52060b29bd0f16d9d9","src/simd_funcs.rs":"05c6e77af74bfe73cd39a752067c11425d6b46e5da419910f54bf75a5c02a984","src/single_byte.rs":"3ad87116fb339434a4b58e8f2b15485f2b66b9f7814d708f16194ed08f6d6ccf","src/test_data/big5_in.txt":"4c5a8691f8dc717311889c63894026d2fb62725a86c4208ca274a9cc8d42a503","src/test_data/big5_in_ref.txt":"99d399e17750cf9c7cf30bb253dbfe35b81c4fcbdead93cfa48b1429213473c7","src/test_data/big5_out.txt":"6193ca97c297aa20e09396038d18e938bb7ea331c26f0f2454097296723a0b13","src/test_data/big5_out_ref.txt":"36567691f557df144f6cc520015a87038dfa156f296fcf103b56ae9a718be1fc","src/test_data/euc_kr_in.txt":"c86a7224f3215fa0d04e685622a752fdc72763e8ae076230c7fd62de57ec4074","src/test_data/euc_kr_in_ref.txt":"1f419f4ca47d708b54c73c461545a022ae2e20498fdbf8005a483d752a204883","src/test_data/euc_kr_out.txt":"e7f32e026f70be1e1b58e0047baf7d3d2c520269c4f9b9992e158b4decb0a1a3","src/test_data/euc_kr_out_ref.txt":"c9907857980b20b8e9e3b584482ed6567a2be6185d72237b6322f0404944924e","src/test_data/gb18030_in.txt":"ab7231b2d3e9afacdbd7d7f3b9e5361a7ff9f7e1cfdb4f3bd905b9362b309e53","src/test_data/gb18030_in_ref.txt":"dc5069421adca2043c55f5012b55a76fdff651d22e6e699fd0978f8d5706815c","src/test_data/gb18030_out.txt":"f0208d527f5ca63de7d9a0323be8d5cf12d8a104b2943d92c2701f0c3364dac1","src/test_data/gb18030_out_ref.txt":"6819fe47627e4ea01027003fc514b9f21a1322e732d7f1fb92cc6c5455bc6c07","src/test_data/iso_2022_jp_in.txt":"cd24bbdcb1834e25db54646fbf4c41560a13dc7540f6be3dba4f5d97d44513af","src/test_data/iso_2022_jp_in_ref.txt":"3dc4e6a5e06471942d086b16c9440945e78415f6f3f47e43717e4bc2eac2cdf5","src/test_data/iso_2022_jp_out.txt":"9b6f015329dda6c3f9ee5ce6dbd6fa9c89acc21283e886836c78b8d833480c21","src/test_data/iso_2022_jp_out_ref.txt":"78cb260093a20116ad9a42f43b05d1848c5ab100b6b9a850749809e943884b35","src/test_data/jis0208_in.txt":"6df3030553ffb0a6615bb33dc8ea9dca6d9623a9028e2ffec754ce3c3da824cc","src/test_data/jis0208_in_ref.txt":"3dc4e6a5e06471942d086b16c9440945e78415f6f3f47e43717e4bc2eac2cdf5","src/test_data/jis0208_out.txt":"4ec24477e1675ce750733bdc3c5add1cd27b6bd4ce1f09289564646e9654e857","src/test_data/jis0208_out_ref.txt":"c3e1cef5032b2b1d93a406f31ff940c4e2dfe8859b8b17ca2761fee7a75a0e48","src/test_data/jis0212_in.txt":"c011f0dd72bd7c8cd922df9374ef8d2769a77190514c77f6c62b415852eeb9fe","src/test_data/jis0212_in_ref.txt":"7d9458b3d2f73e7092a7f505c08ce1d233dde18aa679fbcf9889256239cc9e06","src/test_data/shift_jis_in.txt":"02e389ccef0dd2122e63f503899402cb7f797912c2444cc80ab93131116c5524","src/test_data/shift_jis_in_ref.txt":"512f985950ca902e643c88682dba9708b7c38d3c5ec2925168ab00ac94ab19f9","src/test_data/shift_jis_out.txt":"5fbc44da7bf639bf6cfe0fa1fd3eba7102b88f81919c9ea991302712f69426fb","src/test_data/shift_jis_out_ref.txt":"466322c6fed8286c64582731755290c2296508efdd258826e6279686649b481f","src/test_labels_names.rs":"23a2e11b02b3b8d15fb5613a625e3edb2c61e70e3c581abfd638719a4088200d","src/testing.rs":"f59e671e95a98a56f6b573e8c6be4d71e670bf52f7e20eb1605d990aafa1894e","src/utf_16.rs":"c071a147fad38d750c2c247e141b76b929a48007b99f26b2922b9caecdaf2f25","src/utf_8.rs":"7b7d887b347f1aefa03246b028a36a72758a4ce76c28f3b45c19467851aa7839","src/variant.rs":"1fab5363588a1554a7169de8731ea9cded7ac63ea35caabdd1c27a8dde68c27b","src/x_user_defined.rs":"9456ca46168ef86c98399a2536f577ef7be3cdde90c0c51392d8ac48519d3fae"},"package":"b45de904aa0b010bce2ab45264d0631681847fa7b6f2eaa7dab7619943bc4f59"}
+\ No newline at end of file
++{"files":{"CONTRIBUTING.md":"ca1901f3e8532fb4cec894fd3664f0eaa898c0c4b961d1b992d1ed54eacf362a","COPYRIGHT":"11789f45bb180841cd362a5eee6789c68ddb573a11105e30768c308a6add0190","Cargo.toml":"d7405d2bcf99cf9729075473c45f677630f4c1947c8ba9757db607f2025a7da2","Ideas.md":"b7452893f500163868d8de52c09addaf91e1632454ed02e892c467ed7ec39dbd","LICENSE-APACHE":"cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30","LICENSE-MIT":"3fa4ca83dcc9237839b1bdeb2e6d16bdfb5ec0c5ce42b24694d8bbf0dcbef72c","LICENSE-WHATWG":"838118388fe5c2e7f1dbbaeed13e1c7f3ebf88be91319c7c1d77c18e987d1a50","README.md":"9826137ed4297be3b2019b74a8f6111a796ff507bde41df2f20712539704b9e9","ci/miri.sh":"43cb8d82f49e3bfe2d2274b6ccd6f0714a4188ccef0cecc040829883cfdbee25","doc/Big5.txt":"f73a2edc5cb6c2d140ba6e07f4542e1c4a234950378acde1df93480f0ca0be0b","doc/EUC-JP.txt":"ee2818b907d0137f40a9ab9fd525fc700a44dbdddb6cf0c157a656566bae4bf1","doc/EUC-KR.txt":"71d9e2ccf3b124e8bdfb433c8cf2773fd878077038d0cec3c7237a50f4a78a30","doc/GBK.txt":"8229e59076d8bddb01865cdcf6afda3533238d7c23d97f98820f9e3b2d13505d","doc/IBM866.txt":"a5a433e804d0f83af785015179fbc1d9b0eaf1f7960efcd04093e136b51fbd0e","doc/ISO-2022-JP.txt":"af86684f5a8f0e2868d7b2c292860140c3d2e5527530ca091f1b28198e8e2fe6","doc/ISO-8859-10.txt":"6d3949ad7c81ca176895101ed81a1db7df1060d64e262880b94bd31bb344ab4d","doc/ISO-8859-13.txt":"3951dd89cf93f7729148091683cf8511f4529388b7dc8dcd0d62eaed55be93fa","doc/ISO-8859-14.txt":"3d330784a0374fd255a38b47949675cc7168c800530534b0a01cac6edc623adc","doc/ISO-8859-15.txt":"24b1084aab5127a85aab99153f86e24694d0a3615f53b5ce23683f97cf66c47a","doc/ISO-8859-16.txt":"ce0272559b92ba76d7a7e476f6424ae4a5cc72e75b183611b08392e44add4d25","doc/ISO-8859-2.txt":"18ceff88c13d1b5ba455a3919b1e3de489045c4c3d2dd7e8527c125c75d54aad","doc/ISO-8859-3.txt":"21798404c68f4f5db59223362f24999da96968c0628427321fccce7d2849a130","doc/ISO-8859-4.txt":"d27f6520c6c5bfbcc19176b71d081cdb3bccde1622bb3e420d5680e812632d53","doc/ISO-8859-5.txt":"a10ec8d6ea7a78ad15da7275f6cb1a3365118527e28f9af6d0d5830501303f3a","doc/ISO-8859-6.txt":"ccda8a2efc96115336bdd77776637b9712425e44fbcf745353b9057fbef144e7","doc/ISO-8859-7.txt":"17900fa1f27a445958f0a77d7d9056be375a6bd7ee4492aa680c7c1500bab85e","doc/ISO-8859-8-I.txt":"8357555646d54265a9b9ffa3e68b08d132312f1561c60108ff9b8b1167b6ecf2","doc/ISO-8859-8.txt":"72cd6f3afb7b4a9c16a66a362473315770b7755d72c86c870e52fc3eba86c8af","doc/KOI8-R.txt":"839cf19a38da994488004ed7814b1f6151640156a9a2af02bf2efca745fb5966","doc/KOI8-U.txt":"0cc76624ed1f024183e2298b7e019957da2c70c8ca06e0fc4e6f353f50a5054f","doc/Shift_JIS.txt":"34c49141818cb9ddbcf59cc858f78a79be8ad148d563f26415108ae1f148443f","doc/UTF-16BE.txt":"e2e280d8acbaa6d2a6b3569d60e17500a285f2baa0df3363dd85537cd5a1ef8f","doc/UTF-16LE.txt":"70bdc170e3fc5298ba68f10125fb5eeb8b077036cc96bb4416c4de396f6d76c1","doc/UTF-8.txt":"ea7bae742e613010ced002cf4b601a737d2203fad65e115611451bc4428f548a","doc/gb18030.txt":"67a01665c75505330b0fe5b8d88d5873d8ce555a145c77dca04a467fa2680744","doc/macintosh.txt":"57491e53866711b4672d9b9ff35380b9dac9e0d8e3d6c20bdd6140603687c023","doc/replacement.txt":"4b6c3bbd7999d9d4108a281594bd02d13607e334a95465afff8c2c08d395f0e4","doc/windows-1250.txt":"61296bb6a21cdab602300d32ecfba434cb82de5ac3bc88d58710d2f125e28d39","doc/windows-1251.txt":"7deea1c61dea1485c8ff02db2c7d578db7a9aab63ab1cfd02ec04b515864689e","doc/windows-1252.txt":"933ef3bdddfce5ee132b9f1a1aa8b47423d2587bbe475b19028d0a6d38e180b6","doc/windows-1253.txt":"1a38748b88e99071a5c7b3d5456ead4caedeabab50d50d658be105bc113714de","doc/windows-1254.txt":"f8372f86c6f8d642563cd6ddc025260553292a39423df1683a98670bd7bf2b47","doc/windows-1255.txt":"4e5852494730054e2da258a74e1b9d780abbcdd8ce22ebc218ca2efe9e90493d","doc/windows-1256.txt":"c0879c5172abedead302a406e8f60d9cd9598694a0ffa4fd288ffe4fef7b8ea1","doc/windows-1257.txt":"c28a0c9f964fcb2b46d21f537c402446501a2800670481d6abf9fd9e9018d523","doc/windows-1258.txt":"5019ae4d61805c79aacbf17c93793342dbb098d65a1837783bc3e2c6d6a23602","doc/windows-874.txt":"4ef0e4501c5feba8b17aee1818602ed44b36ca8475db771ce2fc16d392cabecc","doc/x-mac-cyrillic.txt":"58be154d8a888ca3d484b83b44f749823ef339ab27f14d90ca9a856f5050a8bd","doc/x-user-defined.txt":"f9cd07c4321bf5cfb0be4bdddd251072999b04a6cf7a6f5bc63709a84e2c1ffc","generate-encoding-data.py":"6f34a845785f53425accf30759edc566873fcb0c2188648e07b09c898f39dddb","rustfmt.toml":"85c1a3b4382fd89e991cbb81b70fb52780472edc064c963943cdaaa56e0a2030","src/ascii.rs":"588e38b01e666d5e7462617ea7e90a108d608dec9e016f3d273ac0744af2e05d","src/big5.rs":"ec6e2913011a38e9a3e825a1731f139a7ca1d5b264fefae51a3cc1a68a57cef9","src/data.rs":"b93f34025fe5c6a85b4b9f0037bf58961352bf19c83f91b09b35eb8495625eec","src/euc_jp.rs":"32047f5b540188c4cb19c07165f846b9786a09f18e315ed3e9bda1293dae52aa","src/euc_kr.rs":"9b25afc72d9378700eecfac58d55ad1c5946d6cd0ccde2c29c08200ef2de6bb9","src/gb18030.rs":"89cd6ae2247add3f3471a699bc12113a9ae2f6b91a5223abbf15b68a13537dcd","src/gb18030_2022.rs":"3c2e06492c5e00fcd39515e4af4c560d8cee5c31e7a7e388db682bc9ee33ee32","src/handles.rs":"b08cef1f5785bb6a4822f2e844c6df1b046b737b7a075e4593eaa8c4208e9fe2","src/iso_2022_jp.rs":"9bb485e82574f4b7d4b2364f0ff276acb6a0bc111758420a3b0ec5e04c196652","src/lib.rs":"c4d9fa1c43105e2310122f1b9197125032e607fe6f79bc22769b340de76e2430","src/macros.rs":"200997f8870de8bfd8cdc475e92115df42108c0df661e49d3d1cbc32056e1d99","src/mem.rs":"948571137d3b151df8db4fb2c733e74ae595d055cdf0ad83abcab9341d6adabe","src/replacement.rs":"7660b34a53f8c1ca2bdfa0e51e843ec28326950952ad8bc96569feb93ac62308","src/shift_jis.rs":"6951ae67e36b1a12fa3a30734957f444d8b1b4ae0e2bde52060b29bd0f16d9d9","src/simd_funcs.rs":"05c6e77af74bfe73cd39a752067c11425d6b46e5da419910f54bf75a5c02a984","src/single_byte.rs":"3ad87116fb339434a4b58e8f2b15485f2b66b9f7814d708f16194ed08f6d6ccf","src/test_data/big5_in.txt":"a5ae290786610c7facdbb1d06be6815e8bb81d68dfa7380edc7ddb6b8c7e412e","src/test_data/big5_in_ref.txt":"52733d9970fb8987f014fa0eac2792250123cf583b363beb2ce7b3c55e3dc555","src/test_data/big5_out.txt":"57420ca41a669c949738c84cab620020959572d2ee97b4e059405bfe26a79b6d","src/test_data/big5_out_ref.txt":"00e5f67c222dd5cd3bb1739276910b8f0032f454cba7cf7c3eaa255a564188d0","src/test_data/euc_kr_in.txt":"21534ec87e82d785d128f980902d13fab6d9dea15c69a991f409d9b0afd1c852","src/test_data/euc_kr_in_ref.txt":"b3009e6a94967df1f1135c66f005610bebad6666d634aec72d2ad77c3211bda3","src/test_data/euc_kr_out.txt":"20205b0b5be4f579271193b5bfbc549a61a9fd5217c33eecfa61784a3ffe2e9d","src/test_data/euc_kr_out_ref.txt":"b5f566237f8d4ef4d03ad26135ca97dfd7398608a82165bd4853b5134ab22cb5","src/test_data/gb18030_in.txt":"0dd1fbf0360930daafdce7e6761852005a8f92f7910180df19a070b6c3c59dee","src/test_data/gb18030_in_ref.txt":"f3eaea1115857054cf30f8ba18219e72377f2a4afd848ccf223770d75aa4251d","src/test_data/gb18030_out.txt":"7184fe9592609597d55c2733606b4c4b1a18b79b24533e1a16a14ff92e7d2b55","src/test_data/gb18030_out_ref.txt":"23bb850ddc69aaf1bdfeabe05a12d93f614e5560dac879d5f02929ee4a7c06c5","src/test_data/iso_2022_jp_in.txt":"98fb823530a30a76eb0ba7ab6ac796959e8869c1ec143f018a1964581ae813aa","src/test_data/iso_2022_jp_in_ref.txt":"df82166d2e01bb446211d7e46f33b47d93ac1bafeae2ed880ee93c4096d11210","src/test_data/iso_2022_jp_out.txt":"bef8eb4804ed0843b9dffdd1d168738635cc77f8d0929beb2532b686318ddae6","src/test_data/iso_2022_jp_out_ref.txt":"b221b36b2bce49d49b620dc8ba80d77bac74e8660a86a11628e79b67f1d98964","src/test_data/jis0208_in.txt":"3c1a7aaada00d6fff41e60bd7589d7ae94afaf562759b116958b1d84711d17b6","src/test_data/jis0208_in_ref.txt":"df82166d2e01bb446211d7e46f33b47d93ac1bafeae2ed880ee93c4096d11210","src/test_data/jis0208_out.txt":"a6188b67eb00ba980cb83056186c89bcdddc1b0210af9afa78ed1c9b7a098950","src/test_data/jis0208_out_ref.txt":"e75a986fe5e78e64bf8fafd7392ae96ee0cb0a4b2e7ef2fe722b3caacf3e2f70","src/test_data/jis0212_in.txt":"9eda766002646a27310457c661832429beff9089d2703355812c4cac30d800b5","src/test_data/jis0212_in_ref.txt":"fcf74c58d2cbe9b3f3db4fa9eff26e09f5e9644097c78614c03177e938988d03","src/test_data/shift_jis_in.txt":"e65df746be90359e70422868522a7aa3e8ed20e0d4c0cf9995d9de248bf93388","src/test_data/shift_jis_in_ref.txt":"13b15aed64e9e7cb35e6a740b67413f0c285fda944f4814d45a7619ea338fb5e","src/test_data/shift_jis_out.txt":"192d0a4a8ce5d0f904c5cb283dfb974577ee667cf1e71955a6dd6aece2b354ef","src/test_data/shift_jis_out_ref.txt":"cb6d50b0c11bad1d1f1fcc02d779672a8b9a2509cbbafdc6392aceb49c8b4268","src/test_labels_names.rs":"23a2e11b02b3b8d15fb5613a625e3edb2c61e70e3c581abfd638719a4088200d","src/testing.rs":"f59e671e95a98a56f6b573e8c6be4d71e670bf52f7e20eb1605d990aafa1894e","src/utf_16.rs":"c071a147fad38d750c2c247e141b76b929a48007b99f26b2922b9caecdaf2f25","src/utf_8.rs":"7b7d887b347f1aefa03246b028a36a72758a4ce76c28f3b45c19467851aa7839","src/variant.rs":"1fab5363588a1554a7169de8731ea9cded7ac63ea35caabdd1c27a8dde68c27b","src/x_user_defined.rs":"9456ca46168ef86c98399a2536f577ef7be3cdde90c0c51392d8ac48519d3fae"},"package":"75030f3c4f45dafd7586dd6780965a8c7e8e285a5ecb86713e63a79c5b2766f3"}
+\ No newline at end of file
+diff --git a/third_party/rust/encoding_rs/Cargo.toml b/third_party/rust/encoding_rs/Cargo.toml
+--- a/third_party/rust/encoding_rs/Cargo.toml
++++ b/third_party/rust/encoding_rs/Cargo.toml
+@@ -8,18 +8,23 @@
+ # If you are reading this file be aware that the original Cargo.toml
+ # will likely look very different (and much more reasonable).
+ # See Cargo.toml.orig for the original contents.
+ 
+ [package]
+ edition = "2018"
+ rust-version = "1.36"
+ name = "encoding_rs"
+-version = "0.8.34"
++version = "0.8.35"
+ authors = ["Henri Sivonen <hsivonen@hsivonen.fi>"]
++build = false
++autobins = false
++autoexamples = false
++autotests = false
++autobenches = false
+ description = "A Gecko-oriented implementation of the Encoding Standard"
+ homepage = "https://docs.rs/encoding_rs/"
+ documentation = "https://docs.rs/encoding_rs/"
+ readme = "README.md"
+ keywords = [
+     "encoding",
+     "web",
+     "unicode",
+@@ -32,16 +37,20 @@ categories = [
+     "internationalization",
+ ]
+ license = "(Apache-2.0 OR MIT) AND BSD-3-Clause"
+ repository = "https://github.com/hsivonen/encoding_rs"
+ 
+ [profile.release]
+ lto = true
+ 
++[lib]
++name = "encoding_rs"
++path = "src/lib.rs"
++
+ [dependencies.any_all_workaround]
+ version = "0.1.0"
+ optional = true
+ 
+ [dependencies.cfg-if]
+ version = "1.0"
+ 
+ [dependencies.serde]
+diff --git a/third_party/rust/encoding_rs/README.md b/third_party/rust/encoding_rs/README.md
+--- a/third_party/rust/encoding_rs/README.md
++++ b/third_party/rust/encoding_rs/README.md
+@@ -103,17 +103,17 @@ For mappings to and from Windows code pa
+ This crate does not support single-byte DOS encodings that aren't required by
+ the Web Platform, but the [`oem_cp`](https://crates.io/crates/oem_cp) crate does.
+ 
+ ## Preparing Text for the Encoders
+ 
+ Normalizing text into Unicode Normalization Form C prior to encoding text into
+ a legacy encoding minimizes unmappable characters. Text can be normalized to
+ Unicode Normalization Form C using the
+-[`unic-normal`](https://crates.io/crates/unic-normal) crate.
++[`icu_normalizer`](https://crates.io/crates/icu_normalizer) crate.
+ 
+ The exception is windows-1258, which after normalizing to Unicode Normalization
+ Form C requires tone marks to be decomposed in order to minimize unmappable
+ characters. Vietnamese tone marks can be decomposed using the
+ [`detone`](https://crates.io/crates/detone) crate.
+ 
+ ## Licensing
+ 
+@@ -386,20 +386,19 @@ To regenerate the generated code:
+ 
+  * Have Python 2 installed.
+  * Clone [`https://github.com/hsivonen/encoding_c`](https://github.com/hsivonen/encoding_c)
+    next to the `encoding_rs` directory.
+  * Clone [`https://github.com/hsivonen/codepage`](https://github.com/hsivonen/codepage)
+    next to the `encoding_rs` directory.
+  * Clone [`https://github.com/whatwg/encoding`](https://github.com/whatwg/encoding)
+    next to the `encoding_rs` directory.
+- * Checkout revision `be3337450e7df1c49dca7872153c4c4670dd8256` of the `encoding` repo.
++ * Checkout revision `1d519bf8e5555cef64cf3a712485f41cd1a6a990` of the `encoding` repo.
+    (Note: `f381389` was the revision of `encoding` used from before the `encoding` repo
+-   license change. So far, only output changed since then has been updated to
+-   the new license legend.)
++   license change.)
+  * With the `encoding_rs` directory as the working directory, run
+    `python generate-encoding-data.py`.
+ 
+ ## Roadmap
+ 
+ - [x] Design the low-level API.
+ - [x] Provide Rust-only convenience features.
+ - [x] Provide an stl/gsl-flavored C++ API.
+@@ -433,16 +432,20 @@ To regenerate the generated code:
+ - [x] Add actually fast CJK encode options.
+ - [ ] ~Investigate [Bob Steagall's lookup table acceleration for UTF-8](https://github.com/BobSteagall/CppNow2018/blob/master/FastConversionFromUTF-8/Fast%20Conversion%20From%20UTF-8%20with%20C%2B%2B%2C%20DFAs%2C%20and%20SSE%20Intrinsics%20-%20Bob%20Steagall%20-%20C%2B%2BNow%202018.pdf).~
+ - [x] Provide a build mode that works without `alloc` (with lesser API surface).
+ - [x] Migrate to `std::simd` ~once it is stable and declare 1.0.~
+ - [ ] Migrate `unsafe` slice access by larger types than `u8`/`u16` to `align_to`.
+ 
+ ## Release Notes
+ 
++### 0.8.35
++
++* Implement changes for GB18030-2022. (Intentionally not treated as a semver break in practice even if this could be argued to be a breaking change in theory.)
++
+ ### 0.8.34
+ 
+ * Use the `portable_simd` nightly feature of the standard library instead of the `packed_simd` crate. Only affects the `simd-accel` optional nightly feature.
+ * Internal documentation improvements and minor code improvements around `unsafe`.
+ * Added `rust-version` to `Cargo.toml`.
+ 
+ ### 0.8.33
+ 
+diff --git a/third_party/rust/encoding_rs/doc/GBK.txt b/third_party/rust/encoding_rs/doc/GBK.txt
+--- a/third_party/rust/encoding_rs/doc/GBK.txt
++++ b/third_party/rust/encoding_rs/doc/GBK.txt
+@@ -1,13 +1,14 @@
+ /// The decoder for this encoding is the same as the decoder for gb18030.
+ /// The encoder side of this encoding is GBK with Windows code page 936 euro
+-/// sign behavior. GBK extends GB2312-80 to cover the CJK Unified Ideographs
+-/// Unicode block as well as a handful of ideographs from the CJK Unified
+-/// Ideographs Extension A and CJK Compatibility Ideographs blocks.
++/// sign behavior and with the changes to two-byte sequences made in GB18030-2022.
++/// GBK extends GB2312-80 to cover the CJK Unified Ideographs Unicode block as
++/// well as a handful of ideographs from the CJK Unified Ideographs Extension A
++/// and CJK Compatibility Ideographs blocks.
+ ///
+ /// Unlike e.g. in the case of ISO-8859-1 and windows-1252, GBK encoder wasn't
+ /// unified with the gb18030 encoder in the Encoding Standard out of concern
+ /// that servers that expect GBK form submissions might not be able to handle
+ /// the four-byte sequences.
+ ///
+ /// [Index visualization for the two-byte sequences](https://encoding.spec.whatwg.org/gb18030.html),
+ /// [Visualization of BMP coverage of the two-byte index](https://encoding.spec.whatwg.org/gb18030-bmp.html)
+diff --git a/third_party/rust/encoding_rs/doc/gb18030.txt b/third_party/rust/encoding_rs/doc/gb18030.txt
+--- a/third_party/rust/encoding_rs/doc/gb18030.txt
++++ b/third_party/rust/encoding_rs/doc/gb18030.txt
+@@ -1,9 +1,10 @@
+-/// This encoding matches GB18030-2005 except the two-byte sequence 0xA3 0xA0
+-/// maps to U+3000 for compatibility with existing Web content. As a result,
+-/// this encoding can represent all of Unicode except for the private-use
+-/// character U+E5E5.
++/// This encoding matches GB18030-2022 except the two-byte sequence 0xA3 0xA0
++/// maps to U+3000 for compatibility with existing Web content and the four-byte
++/// sequences for the non-PUA characters that got two-byte sequences still decode
++/// to the same non-PUA characters as in GB18030-2005. As a result, this encoding
++/// can represent all of Unicode except for 19 private-use characters.
+ ///
+ /// [Index visualization for the two-byte sequences](https://encoding.spec.whatwg.org/gb18030.html),
+ /// [Visualization of BMP coverage of the two-byte index](https://encoding.spec.whatwg.org/gb18030-bmp.html)
+ ///
+ /// This encoding matches the Windows code page 54936.
+diff --git a/third_party/rust/encoding_rs/generate-encoding-data.py b/third_party/rust/encoding_rs/generate-encoding-data.py
+--- a/third_party/rust/encoding_rs/generate-encoding-data.py
++++ b/third_party/rust/encoding_rs/generate-encoding-data.py
+@@ -10,17 +10,17 @@
+ # except according to those terms.
+ 
+ import json
+ import subprocess
+ import sys
+ import os.path
+ 
+ if (not os.path.isfile("../encoding/encodings.json")) or (not os.path.isfile("../encoding/indexes.json")):
+-  sys.stderr.write("This script needs a clone of https://github.com/whatwg/encoding/ (preferably at revision f381389) next to the encoding_rs directory.\n");
++  sys.stderr.write("This script needs a clone of https://github.com/whatwg/encoding/ (preferably at revision 1d519bf8e5555cef64cf3a712485f41cd1a6a990 ) next to the encoding_rs directory.\n");
+   sys.exit(-1)
+ 
+ if not os.path.isfile("../encoding_c/src/lib.rs"):
+   sys.stderr.write("This script also writes the generated parts of the encoding_c crate and needs a clone of https://github.com/hsivonen/encoding_c next to the encoding_rs directory.\n");
+   sys.exit(-1)
+ 
+ if not os.path.isfile("../codepage/src/lib.rs"):
+   sys.stderr.write("This script also writes the generated parts of the codepage crate and needs a clone of https://github.com/hsivonen/codepage next to the encoding_rs directory.\n");
+@@ -1607,18 +1607,17 @@ utf_8_file.write("""
+ 
+ """)
+ 
+ utf_8_file.write(utf_8_rs_end)
+ utf_8_file.close()
+ 
+ # Unit tests
+ 
+-TEST_HEADER = '''Any copyright to the test code below this comment is dedicated to the
+-Public Domain. http://creativecommons.org/publicdomain/zero/1.0/
++TEST_HEADER = '''Generated from WHATWG indexes.json; see LICENSE-WHATWG.
+ 
+ This is a generated file. Please do not edit.
+ Instead, please regenerate using generate-encoding-data.py
+ '''
+ 
+ index = indexes["jis0208"]
+ 
+ jis0208_in_file = open("src/test_data/jis0208_in.txt", "w")
+diff --git a/third_party/rust/encoding_rs/src/data.rs b/third_party/rust/encoding_rs/src/data.rs
+--- a/third_party/rust/encoding_rs/src/data.rs
++++ b/third_party/rust/encoding_rs/src/data.rs
+@@ -2,16 +2,47 @@
+ // file at the top-level directory of this distribution.
+ //
+ // Licensed under the Apache License, Version 2.0 <LICENSE-APACHE or
+ // https://www.apache.org/licenses/LICENSE-2.0> or the MIT license
+ // <LICENSE-MIT or https://opensource.org/licenses/MIT>, at your
+ // option. This file may not be copied, modified, or distributed
+ // except according to those terms.
+ 
++// The above license applies to code in this file. The data in this
++// file is generated from WHATWG's indexes.json, which came under
++// the following license:
++
++// Copyright © WHATWG (Apple, Google, Mozilla, Microsoft).
++//
++// Redistribution and use in source and binary forms, with or without
++// modification, are permitted provided that the following conditions are met:
++//
++// 1. Redistributions of source code must retain the above copyright notice, this
++//    list of conditions and the following disclaimer.
++//
++// 2. Redistributions in binary form must reproduce the above copyright notice,
++//    this list of conditions and the following disclaimer in the documentation
++//    and/or other materials provided with the distribution.
++//
++// 3. Neither the name of the copyright holder nor the names of its
++//    contributors may be used to endorse or promote products derived from
++//    this software without specific prior written permission.
++//
++// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
++// AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
++// IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
++// DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
++// FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
++// DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
++// SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
++// CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
++// OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
++// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
++
+ // BEGIN GENERATED CODE. PLEASE DO NOT EDIT.
+ // Instead, please regenerate using generate-encoding-data.py
+ 
+ #[repr(align(64))] // Align to cache lines
+ pub struct SingleByteData {
+     pub ibm866: [u16; 128],
+     pub iso_8859_2: [u16; 128],
+     pub iso_8859_3: [u16; 128],
+@@ -88056,23 +88087,23 @@ pub static GBK_OTHER_UNSORTED_OFFSETS: [
+     0x2295, 0x3012, 0x301D, 0xE7BC, 0x3021, 0x32A3, 0x338E, 0x339C, 0x33A1, 0x33C4, 0x33CE, 0x33D1,
+     0x33D5, 0xFE30, 0xFFE2, 0xFFE4, 0xE7E2, 0x2121, 0x3231, 0xE7E3, 0x2010, 0xE7E4, 0x30FC, 0x309B,
+     0x30FD, 0x3006, 0x309D, 0xFE49, 0xFE54, 0xFE59, 0xFE68, 0x303E, 0x2FF0, 0x3007, 0xE7F4,
+ ];
+ 
+ pub static GBK_BOTTOM: [u16; 101] = [
+     0xF92C, 0xF979, 0xF995, 0xF9E7, 0xF9F1, 0xFA0C, 0xFA0D, 0xFA0E, 0xFA0F, 0xFA11, 0xFA13, 0xFA14,
+     0xFA18, 0xFA1F, 0xFA20, 0xFA21, 0xFA23, 0xFA24, 0xFA27, 0xFA28, 0xFA29, 0x2E81, 0xE816, 0xE817,
+-    0xE818, 0x2E84, 0x3473, 0x3447, 0x2E88, 0x2E8B, 0xE81E, 0x359E, 0x361A, 0x360E, 0x2E8C, 0x2E97,
+-    0x396E, 0x3918, 0xE826, 0x39CF, 0x39DF, 0x3A73, 0x39D0, 0xE82B, 0xE82C, 0x3B4E, 0x3C6E, 0x3CE0,
+-    0x2EA7, 0xE831, 0xE832, 0x2EAA, 0x4056, 0x415F, 0x2EAE, 0x4337, 0x2EB3, 0x2EB6, 0x2EB7, 0xE83B,
+-    0x43B1, 0x43AC, 0x2EBB, 0x43DD, 0x44D6, 0x4661, 0x464C, 0xE843, 0x4723, 0x4729, 0x477C, 0x478D,
++    0xE818, 0x2E84, 0x3473, 0x3447, 0x2E88, 0x2E8B, 0x9FB4, 0x359E, 0x361A, 0x360E, 0x2E8C, 0x2E97,
++    0x396E, 0x3918, 0x9FB5, 0x39CF, 0x39DF, 0x3A73, 0x39D0, 0x9FB6, 0x9FB7, 0x3B4E, 0x3C6E, 0x3CE0,
++    0x2EA7, 0xE831, 0x9FB8, 0x2EAA, 0x4056, 0x415F, 0x2EAE, 0x4337, 0x2EB3, 0x2EB6, 0x2EB7, 0xE83B,
++    0x43B1, 0x43AC, 0x2EBB, 0x43DD, 0x44D6, 0x4661, 0x464C, 0x9FB9, 0x4723, 0x4729, 0x477C, 0x478D,
+     0x2ECA, 0x4947, 0x497A, 0x497D, 0x4982, 0x4983, 0x4985, 0x4986, 0x499F, 0x499B, 0x49B7, 0x49B6,
+-    0xE854, 0xE855, 0x4CA3, 0x4C9F, 0x4CA0, 0x4CA1, 0x4C77, 0x4CA2, 0x4D13, 0x4D14, 0x4D15, 0x4D16,
+-    0x4D17, 0x4D18, 0x4D19, 0x4DAE, 0xE864,
++    0x9FBA, 0xE855, 0x4CA3, 0x4C9F, 0x4CA0, 0x4CA1, 0x4C77, 0x4CA2, 0x4D13, 0x4D14, 0x4D15, 0x4D16,
++    0x4D17, 0x4D18, 0x4D19, 0x4DAE, 0x9FBB,
+ ];
+ 
+ pub static GB2312_HANZI: [u16; 6768] = [
+     0x554A, 0x963F, 0x57C3, 0x6328, 0x54CE, 0x5509, 0x54C0, 0x7691, 0x764C, 0x853C, 0x77EE, 0x827E,
+     0x788D, 0x7231, 0x9698, 0x978D, 0x6C28, 0x5B89, 0x4FFA, 0x6309, 0x6697, 0x5CB8, 0x80FA, 0x6848,
+     0x80AE, 0x6602, 0x76CE, 0x51F9, 0x6556, 0x71AC, 0x7FF1, 0x8884, 0x50B2, 0x5965, 0x61CA, 0x6FB3,
+     0x82AD, 0x634C, 0x6252, 0x53ED, 0x5427, 0x7B06, 0x516B, 0x75A4, 0x5DF4, 0x62D4, 0x8DCB, 0x9776,
+     0x628A, 0x8019, 0x575D, 0x9738, 0x7F62, 0x7238, 0x767D, 0x67CF, 0x767E, 0x6446, 0x4F70, 0x8D25,
+@@ -88645,37 +88676,37 @@ pub static GB2312_SYMBOLS: [u16; 94] = [
+     0x2299, 0x222B, 0x222E, 0x2261, 0x224C, 0x2248, 0x223D, 0x221D, 0x2260, 0x226E, 0x226F, 0x2264,
+     0x2265, 0x221E, 0x2235, 0x2234, 0x2642, 0x2640, 0x00B0, 0x2032, 0x2033, 0x2103, 0xFF04, 0x00A4,
+     0xFFE0, 0xFFE1, 0x2030, 0x00A7, 0x2116, 0x2606, 0x2605, 0x25CB, 0x25CF, 0x25CE, 0x25C7, 0x25C6,
+     0x25A1, 0x25A0, 0x25B3, 0x25B2, 0x203B, 0x2192, 0x2190, 0x2191, 0x2193, 0x3013,
+ ];
+ 
+ pub static GB2312_SYMBOLS_AFTER_GREEK: [u16; 22] = [
+     0xFE35, 0xFE36, 0xFE39, 0xFE3A, 0xFE3F, 0xFE40, 0xFE3D, 0xFE3E, 0xFE41, 0xFE42, 0xFE43, 0xFE44,
+-    0xE794, 0xE795, 0xFE3B, 0xFE3C, 0xFE37, 0xFE38, 0xFE31, 0xE796, 0xFE33, 0xFE34,
++    0xFE17, 0xFE18, 0xFE3B, 0xFE3C, 0xFE37, 0xFE38, 0xFE31, 0xFE19, 0xFE33, 0xFE34,
+ ];
+ 
+ pub static GB2312_PINYIN: [u16; 32] = [
+     0x0101, 0x00E1, 0x01CE, 0x00E0, 0x0113, 0x00E9, 0x011B, 0x00E8, 0x012B, 0x00ED, 0x01D0, 0x00EC,
+     0x014D, 0x00F3, 0x01D2, 0x00F2, 0x016B, 0x00FA, 0x01D4, 0x00F9, 0x01D6, 0x01D8, 0x01DA, 0x01DC,
+     0x00FC, 0x00EA, 0x0251, 0x1E3F, 0x0144, 0x0148, 0x01F9, 0x0261,
+ ];
+ 
+-pub static GB2312_OTHER_POINTERS: [u16; 44] = [
++pub static GB2312_OTHER_POINTERS: [u16; 47] = [
+     0x0000, 0x000A, 0x0010, 0x0024, 0x0038, 0x0042, 0x0043, 0x0044, 0x004E, 0x0050, 0x005C, 0x005E,
+     0x0061, 0x0062, 0x00BB, 0x00BC, 0x010F, 0x011A, 0x0170, 0x0178, 0x0189, 0x0190, 0x0198, 0x01A9,
+-    0x01B0, 0x01B7, 0x01CD, 0x01D6, 0x01DC, 0x01DD, 0x01F7, 0x0206, 0x020C, 0x020D, 0x0227, 0x0234,
+-    0x0254, 0x0258, 0x027D, 0x0292, 0x0295, 0x02E1, 0x02F0, 0x0524,
++    0x01B0, 0x01B1, 0x01B2, 0x01B3, 0x01B7, 0x01CD, 0x01D6, 0x01DC, 0x01DD, 0x01F7, 0x0206, 0x020C,
++    0x020D, 0x0227, 0x0234, 0x0254, 0x0258, 0x027D, 0x0292, 0x0295, 0x02E1, 0x02F0, 0x0524,
+ ];
+ 
+-pub static GB2312_OTHER_UNSORTED_OFFSETS: [u16; 43] = [
++pub static GB2312_OTHER_UNSORTED_OFFSETS: [u16; 46] = [
+     0x2170, 0xE766, 0x2488, 0x2474, 0x2460, 0x20AC, 0xE76D, 0x3220, 0xE76E, 0x2160, 0xE770, 0xFF01,
+     0xFFE5, 0xFF05, 0xFFE3, 0x3041, 0xE772, 0x30A1, 0xE77D, 0x0391, 0x03A3, 0xE785, 0x03B1, 0x03C3,
+-    0xE78D, 0x0000, 0xE797, 0x0410, 0x0401, 0x0416, 0xE7A0, 0x0430, 0x0451, 0x0436, 0xE7AF, 0x0000,
+-    0xE7C9, 0x3105, 0xE7CD, 0xE7FE, 0x2500, 0xE801, 0xE000,
++    0xFE10, 0xFE12, 0xFE11, 0xFE13, 0x0000, 0xE797, 0x0410, 0x0401, 0x0416, 0xE7A0, 0x0430, 0x0451,
++    0x0436, 0xE7AF, 0x0000, 0xE7C9, 0x3105, 0xE7CD, 0xE7FE, 0x2500, 0xE801, 0xE000,
+ ];
+ 
+ pub static GB18030_RANGE_POINTERS: [u16; 206] = [
+     0x0000, 0x0024, 0x0026, 0x002D, 0x0032, 0x0051, 0x0059, 0x005F, 0x0060, 0x0064, 0x0067, 0x0068,
+     0x0069, 0x006D, 0x007E, 0x0085, 0x0094, 0x00AC, 0x00AF, 0x00B3, 0x00D0, 0x0132, 0x0133, 0x0134,
+     0x0135, 0x0136, 0x0137, 0x0138, 0x0139, 0x0155, 0x01AC, 0x01BB, 0x0220, 0x0221, 0x022E, 0x02E5,
+     0x02E6, 0x02ED, 0x02EE, 0x0325, 0x0333, 0x0334, 0x1EF2, 0x1EF4, 0x1EF5, 0x1EF7, 0x1EFE, 0x1F07,
+     0x1F08, 0x1F09, 0x1F0E, 0x1F7E, 0x1FD4, 0x1FD5, 0x1FD8, 0x1FE4, 0x1FEE, 0x202C, 0x2030, 0x2046,
+diff --git a/third_party/rust/encoding_rs/src/gb18030.rs b/third_party/rust/encoding_rs/src/gb18030.rs
+--- a/third_party/rust/encoding_rs/src/gb18030.rs
++++ b/third_party/rust/encoding_rs/src/gb18030.rs
+@@ -4,16 +4,17 @@
+ // Licensed under the Apache License, Version 2.0 <LICENSE-APACHE or
+ // https://www.apache.org/licenses/LICENSE-2.0> or the MIT license
+ // <LICENSE-MIT or https://opensource.org/licenses/MIT>, at your
+ // option. This file may not be copied, modified, or distributed
+ // except according to those terms.
+ 
+ use super::*;
+ use crate::data::*;
++use crate::gb18030_2022::*;
+ use crate::handles::*;
+ use crate::variant::*;
+ // Rust 1.14.0 requires the following despite the asterisk above.
+ use super::in_inclusive_range16;
+ use super::in_range16;
+ 
+ enum Gb18030Pending {
+     None,
+@@ -342,18 +343,25 @@ fn gbk_encode_non_unified(bmp: u16) -> O
+         {
+             // Diacritics and Latin 1 symbols
+             if let Some(pos) = position(&GB2312_SYMBOLS[3..(0xAC - 0x60)], bmp) {
+                 return Some((0xA1, pos + 0xA1 + 3));
+             }
+         }
+         return None;
+     }
+-    if bmp >= 0xE794 {
+-        // Various brackets, all in PUA or full-width regions
++
++    if in_inclusive_range16(bmp, 0xE78D, 0xE864) {
++        // The array is sorted but short, so let's do linear search.
++        if let Some(pos) = position(&GB18030_2022_OVERRIDE_PUA[..], bmp) {
++            let pair = &GB18030_2022_OVERRIDE_BYTES[pos];
++            return Some((pair[0].into(), pair[1].into()));
++        }
++    } else if bmp >= 0xFE17 {
++        // Various brackets, all in full-width regions
+         if let Some(pos) = position(&GB2312_SYMBOLS_AFTER_GREEK[..], bmp) {
+             return Some((0xA6, pos + (0x9F - 0x60 + 0xA1)));
+         }
+     } else if bmp == 0x1E3F {
+         // The one Pinyin placed elsewhere on the BMP
+         return Some((0xA8, 0x7B - 0x60 + 0xA1));
+     } else if in_range16(bmp, 0xA000, 0xD800) {
+         // Since Korean has usage in China, let's spend a branch to fast-track
+@@ -375,18 +383,21 @@ fn gbk_encode_non_unified(bmp: u16) -> O
+     }
+     // GBK other (except radicals and PUA in GBK_BOTTOM).
+     if let Some(other_pointer) = gbk_other_encode(bmp) {
+         let other_lead = other_pointer as usize / (190 - 94);
+         let other_trail = other_pointer as usize % (190 - 94);
+         let offset = if other_trail < 0x3F { 0x40 } else { 0x41 };
+         return Some((other_lead + (0x81 + 0x20), other_trail + offset));
+     }
+-    // CJK Radicals Supplement or PUA in GBK_BOTTOM
+-    if in_inclusive_range16(bmp, 0x2E81, 0x2ECA) || in_inclusive_range16(bmp, 0xE816, 0xE864) {
++    // CJK Radicals Supplement, PUA, and U+9FBx ideographs in GBK_BOTTOM
++    if in_inclusive_range16(bmp, 0x2E81, 0x2ECA)
++        || in_inclusive_range16(bmp, 0x9FB4, 0x9FBB)
++        || in_inclusive_range16(bmp, 0xE816, 0xE855)
++    {
+         if let Some(pos) = position(&GBK_BOTTOM[21..], bmp) {
+             let trail = pos + 16;
+             let offset = if trail < 0x3F { 0x40 } else { 0x41 };
+             return Some((0xFE, trail + offset));
+         }
+     }
+     // GB2312 bottom PUA
+     let bmp_minus_gb2312_bottom_pua = bmp.wrapping_sub(0xE234);
+@@ -602,21 +613,28 @@ mod tests {
+ 
+         // two bytes
+         decode_gb18030(b"\x81\x40", "\u{4E02}");
+         decode_gb18030(b"\x81\x7E", "\u{4E8A}");
+         decode_gb18030(b"\x81\x7F", "\u{FFFD}\u{007F}");
+         decode_gb18030(b"\x81\x80", "\u{4E90}");
+         decode_gb18030(b"\x81\xFE", "\u{4FA2}");
+         decode_gb18030(b"\xFE\x40", "\u{FA0C}");
+-        decode_gb18030(b"\xFE\x7E", "\u{E843}");
+         decode_gb18030(b"\xFE\x7F", "\u{FFFD}\u{007F}");
+         decode_gb18030(b"\xFE\x80", "\u{4723}");
+         decode_gb18030(b"\xFE\xFE", "\u{E4C5}");
+ 
++        // Changes between GB18030-2005 and GB18030-2022
++        decode_gb18030(b"\xFE\x7E", "\u{9FB9}");
++        decode_gb18030(b"\xA6\xDD", "\u{FE14}");
++
++        // These mappings remain in place the GB18030-2005 way despite GB18030-2022
++        decode_gb18030(b"\x82\x35\x91\x32", "\u{9FB9}");
++        decode_gb18030(b"\x84\x31\x83\x30", "\u{FE14}");
++
+         // The difference from the original GB18030
+         decode_gb18030(b"\xA3\xA0", "\u{3000}");
+         decode_gb18030(b"\xA1\xA1", "\u{3000}");
+ 
+         // 0xFF
+         decode_gb18030(b"\xFF\x40", "\u{FFFD}\u{0040}");
+         decode_gb18030(b"\xE3\xFF\x9A\x33", "\u{FFFD}\u{FFFD}"); // not \u{FFFD}\u{FFFD}\u{0033} !
+         decode_gb18030(b"\xFF\x32\x9A\x33", "\u{FFFD}\u{0032}\u{FFFD}"); // not \u{FFFD}\u{0032}\u{FFFD}\u{0033} !
+@@ -674,16 +692,25 @@ mod tests {
+             // Miri is too slow
+             encode_gb18030("\u{2603}", b"\x81\x37\xA3\x30");
+             encode_gb18030("\u{1F4A9}", b"\x94\x39\xDA\x33");
+             encode_gb18030("\u{10FFFF}", b"\xE3\x32\x9A\x35");
+         }
+ 
+         // Edge cases
+         encode_gb18030("\u{00F7}", b"\xA1\xC2");
++
++        // GB18030-2022
++        encode_gb18030("\u{9FB9}", b"\xFE\x7E");
++        encode_gb18030("\u{FE14}", b"\xA6\xDD");
++        encode_gb18030("\u{E843}", b"\xFE\x7E");
++        encode_gb18030("\u{E791}", b"\xA6\xDD");
++
++        // Non-change in GB18030-2022
++        encode_gb18030("\u{E817}", b"\xFE\x52");
+     }
+ 
+     #[test]
+     fn test_gbk_encode() {
+         // Empty
+         encode_gbk("", b"");
+ 
+         // ASCII
+@@ -716,16 +743,25 @@ mod tests {
+             // Miri is too slow
+             encode_gbk("\u{2603}", b"&#9731;");
+             encode_gbk("\u{1F4A9}", b"&#128169;");
+             encode_gbk("\u{10FFFF}", b"&#1114111;");
+         }
+ 
+         // Edge cases
+         encode_gbk("\u{00F7}", b"\xA1\xC2");
++
++        // GB18030-2022
++        encode_gb18030("\u{9FB9}", b"\xFE\x7E");
++        encode_gb18030("\u{FE14}", b"\xA6\xDD");
++        encode_gb18030("\u{E843}", b"\xFE\x7E");
++        encode_gb18030("\u{E791}", b"\xA6\xDD");
++
++        // Non-change in GB18030-2022
++        encode_gb18030("\u{E817}", b"\xFE\x52");
+     }
+ 
+     #[test]
+     #[cfg_attr(miri, ignore)] // Miri is too slow
+     fn test_gb18030_decode_all() {
+         let input = include_bytes!("test_data/gb18030_in.txt");
+         let expectation = include_str!("test_data/gb18030_in_ref.txt");
+         let (cow, had_errors) = GB18030.decode_without_bom_handling(input);
+diff --git a/third_party/rust/encoding_rs/src/gb18030_2022.rs b/third_party/rust/encoding_rs/src/gb18030_2022.rs
+new file mode 100644
+--- /dev/null
++++ b/third_party/rust/encoding_rs/src/gb18030_2022.rs
+@@ -0,0 +1,54 @@
++// Copyright © WHATWG (Apple, Google, Mozilla, Microsoft).
++//
++// Redistribution and use in source and binary forms, with or without
++// modification, are permitted provided that the following conditions are met:
++//
++// 1. Redistributions of source code must retain the above copyright notice, this
++//    list of conditions and the following disclaimer.
++//
++// 2. Redistributions in binary form must reproduce the above copyright notice,
++//    this list of conditions and the following disclaimer in the documentation
++//    and/or other materials provided with the distribution.
++//
++// 3. Neither the name of the copyright holder nor the names of its
++//    contributors may be used to endorse or promote products derived from
++//    this software without specific prior written permission.
++//
++// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
++// AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
++// IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
++// DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
++// FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
++// DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
++// SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
++// CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
++// OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
++// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
++
++/// The PUA code points special-cased in the GB18030 encoder.
++pub(crate) static GB18030_2022_OVERRIDE_PUA: [u16; 18] = [
++    0xE78D, 0xE78E, 0xE78F, 0xE790, 0xE791, 0xE792, 0xE793, 0xE794, 0xE795, 0xE796, 0xE81E, 0xE826,
++    0xE82B, 0xE82C, 0xE832, 0xE843, 0xE854, 0xE864,
++];
++
++/// The bytes corresponding to the PUA code points special-cased in the GB18030 encoder.
++pub(crate) static GB18030_2022_OVERRIDE_BYTES: [[u8; 2]; 18] = [
++    [0xA6, 0xD9],
++    [0xA6, 0xDA],
++    [0xA6, 0xDB],
++    [0xA6, 0xDC],
++    [0xA6, 0xDD],
++    [0xA6, 0xDE],
++    [0xA6, 0xDF],
++    [0xA6, 0xEC],
++    [0xA6, 0xED],
++    [0xA6, 0xF3],
++    [0xFE, 0x59],
++    [0xFE, 0x61],
++    [0xFE, 0x66],
++    [0xFE, 0x67],
++    [0xFE, 0x6D],
++    [0xFE, 0x7E],
++    [0xFE, 0x90],
++    [0xFE, 0xA0],
++];
+diff --git a/third_party/rust/encoding_rs/src/lib.rs b/third_party/rust/encoding_rs/src/lib.rs
+--- a/third_party/rust/encoding_rs/src/lib.rs
++++ b/third_party/rust/encoding_rs/src/lib.rs
+@@ -2,16 +2,47 @@
+ // file at the top-level directory of this distribution.
+ //
+ // Licensed under the Apache License, Version 2.0 <LICENSE-APACHE or
+ // https://www.apache.org/licenses/LICENSE-2.0> or the MIT license
+ // <LICENSE-MIT or https://opensource.org/licenses/MIT>, at your
+ // option. This file may not be copied, modified, or distributed
+ // except according to those terms.
+ 
++// The above license applies to code in this file. The label data in
++// this file is generated from WHATWG's encodings.json, which came under
++// the following license:
++
++// Copyright © WHATWG (Apple, Google, Mozilla, Microsoft).
++//
++// Redistribution and use in source and binary forms, with or without
++// modification, are permitted provided that the following conditions are met:
++//
++// 1. Redistributions of source code must retain the above copyright notice, this
++//    list of conditions and the following disclaimer.
++//
++// 2. Redistributions in binary form must reproduce the above copyright notice,
++//    this list of conditions and the following disclaimer in the documentation
++//    and/or other materials provided with the distribution.
++//
++// 3. Neither the name of the copyright holder nor the names of its
++//    contributors may be used to endorse or promote products derived from
++//    this software without specific prior written permission.
++//
++// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
++// AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
++// IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
++// DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
++// FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
++// DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
++// SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
++// CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
++// OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
++// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
++
+ #![cfg_attr(
+     feature = "cargo-clippy",
+     allow(doc_markdown, inline_always, new_ret_no_self)
+ )]
+ 
+ //! encoding_rs is a Gecko-oriented Free Software / Open Source implementation
+ //! of the [Encoding Standard](https://encoding.spec.whatwg.org/) in Rust.
+ //! Gecko-oriented means that converting to and from UTF-16 is supported in
+@@ -725,16 +756,17 @@ mod simd_funcs;
+ 
+ #[cfg(all(test, feature = "alloc"))]
+ mod testing;
+ 
+ mod big5;
+ mod euc_jp;
+ mod euc_kr;
+ mod gb18030;
++mod gb18030_2022;
+ mod iso_2022_jp;
+ mod replacement;
+ mod shift_jis;
+ mod single_byte;
+ mod utf_16;
+ mod utf_8;
+ mod x_user_defined;
+ 
+@@ -909,19 +941,20 @@ pub static GBK_INIT: Encoding = Encoding
+     name: "GBK",
+     variant: VariantEncoding::Gbk,
+ };
+ 
+ /// The GBK encoding.
+ ///
+ /// The decoder for this encoding is the same as the decoder for gb18030.
+ /// The encoder side of this encoding is GBK with Windows code page 936 euro
+-/// sign behavior. GBK extends GB2312-80 to cover the CJK Unified Ideographs
+-/// Unicode block as well as a handful of ideographs from the CJK Unified
+-/// Ideographs Extension A and CJK Compatibility Ideographs blocks.
++/// sign behavior and with the changes to two-byte sequences made in GB18030-2022.
++/// GBK extends GB2312-80 to cover the CJK Unified Ideographs Unicode block as
++/// well as a handful of ideographs from the CJK Unified Ideographs Extension A
++/// and CJK Compatibility Ideographs blocks.
+ ///
+ /// Unlike e.g. in the case of ISO-8859-1 and windows-1252, GBK encoder wasn't
+ /// unified with the gb18030 encoder in the Encoding Standard out of concern
+ /// that servers that expect GBK form submissions might not be able to handle
+ /// the four-byte sequences.
+ ///
+ /// [Index visualization for the two-byte sequences](https://encoding.spec.whatwg.org/gb18030.html),
+ /// [Visualization of BMP coverage of the two-byte index](https://encoding.spec.whatwg.org/gb18030-bmp.html)
+@@ -1653,20 +1686,21 @@ pub static UTF_8: &'static Encoding = &U
+ /// items.
+ pub static GB18030_INIT: Encoding = Encoding {
+     name: "gb18030",
+     variant: VariantEncoding::Gb18030,
+ };
+ 
+ /// The gb18030 encoding.
+ ///
+-/// This encoding matches GB18030-2005 except the two-byte sequence 0xA3 0xA0
+-/// maps to U+3000 for compatibility with existing Web content. As a result,
+-/// this encoding can represent all of Unicode except for the private-use
+-/// character U+E5E5.
++/// This encoding matches GB18030-2022 except the two-byte sequence 0xA3 0xA0
++/// maps to U+3000 for compatibility with existing Web content and the four-byte
++/// sequences for the non-PUA characters that got two-byte sequences still decode
++/// to the same non-PUA characters as in GB18030-2005. As a result, this encoding
++/// can represent all of Unicode except for 19 private-use characters.
+ ///
+ /// [Index visualization for the two-byte sequences](https://encoding.spec.whatwg.org/gb18030.html),
+ /// [Visualization of BMP coverage of the two-byte index](https://encoding.spec.whatwg.org/gb18030-bmp.html)
+ ///
+ /// This encoding matches the Windows code page 54936.
+ ///
+ /// This will change from `static` to `const` if Rust changes
+ /// to make the referent of `pub const FOO: &'static Encoding`
+diff --git a/third_party/rust/encoding_rs/src/test_data/big5_in.txt b/third_party/rust/encoding_rs/src/test_data/big5_in.txt
+--- a/third_party/rust/encoding_rs/src/test_data/big5_in.txt
++++ b/third_party/rust/encoding_rs/src/test_data/big5_in.txt
+@@ -1,10 +1,9 @@
+-Any copyright to the test code below this comment is dedicated to the
+-Public Domain. http://creativecommons.org/publicdomain/zero/1.0/
++Generated from WHATWG indexes.json; see LICENSE-WHATWG.
+ 
+ This is a generated file. Please do not edit.
+ Instead, please regenerate using generate-encoding-data.py
+ �@
+ �A
+ �B
+ �C
+ �D
+diff --git a/third_party/rust/encoding_rs/src/test_data/big5_in_ref.txt b/third_party/rust/encoding_rs/src/test_data/big5_in_ref.txt
+--- a/third_party/rust/encoding_rs/src/test_data/big5_in_ref.txt
++++ b/third_party/rust/encoding_rs/src/test_data/big5_in_ref.txt
+@@ -1,10 +1,9 @@
+-Any copyright to the test code below this comment is dedicated to the
+-Public Domain. http://creativecommons.org/publicdomain/zero/1.0/
++Generated from WHATWG indexes.json; see LICENSE-WHATWG.
+ 
+ This is a generated file. Please do not edit.
+ Instead, please regenerate using generate-encoding-data.py
+ �@
+ �A
+ �B
+ �C
+ �D
+diff --git a/third_party/rust/encoding_rs/src/test_data/big5_out.txt b/third_party/rust/encoding_rs/src/test_data/big5_out.txt
+--- a/third_party/rust/encoding_rs/src/test_data/big5_out.txt
++++ b/third_party/rust/encoding_rs/src/test_data/big5_out.txt
+@@ -1,10 +1,9 @@
+-Any copyright to the test code below this comment is dedicated to the
+-Public Domain. http://creativecommons.org/publicdomain/zero/1.0/
++Generated from WHATWG indexes.json; see LICENSE-WHATWG.
+ 
+ This is a generated file. Please do not edit.
+ Instead, please regenerate using generate-encoding-data.py
+ 　
+ ，
+ 、
+ 。
+ ．
+diff --git a/third_party/rust/encoding_rs/src/test_data/big5_out_ref.txt b/third_party/rust/encoding_rs/src/test_data/big5_out_ref.txt
+--- a/third_party/rust/encoding_rs/src/test_data/big5_out_ref.txt
++++ b/third_party/rust/encoding_rs/src/test_data/big5_out_ref.txt
+@@ -1,10 +1,9 @@
+-Any copyright to the test code below this comment is dedicated to the
+-Public Domain. http://creativecommons.org/publicdomain/zero/1.0/
++Generated from WHATWG indexes.json; see LICENSE-WHATWG.
+ 
+ This is a generated file. Please do not edit.
+ Instead, please regenerate using generate-encoding-data.py
+ �@
+ �A
+ �B
+ �C
+ �D
+diff --git a/third_party/rust/encoding_rs/src/test_data/euc_kr_in.txt b/third_party/rust/encoding_rs/src/test_data/euc_kr_in.txt
+--- a/third_party/rust/encoding_rs/src/test_data/euc_kr_in.txt
++++ b/third_party/rust/encoding_rs/src/test_data/euc_kr_in.txt
+@@ -1,10 +1,9 @@
+-Any copyright to the test code below this comment is dedicated to the
+-Public Domain. http://creativecommons.org/publicdomain/zero/1.0/
++Generated from WHATWG indexes.json; see LICENSE-WHATWG.
+ 
+ This is a generated file. Please do not edit.
+ Instead, please regenerate using generate-encoding-data.py
+ �A
+ �B
+ �C
+ �D
+ �E
+diff --git a/third_party/rust/encoding_rs/src/test_data/euc_kr_in_ref.txt b/third_party/rust/encoding_rs/src/test_data/euc_kr_in_ref.txt
+--- a/third_party/rust/encoding_rs/src/test_data/euc_kr_in_ref.txt
++++ b/third_party/rust/encoding_rs/src/test_data/euc_kr_in_ref.txt
+@@ -1,10 +1,9 @@
+-Any copyright to the test code below this comment is dedicated to the
+-Public Domain. http://creativecommons.org/publicdomain/zero/1.0/
++Generated from WHATWG indexes.json; see LICENSE-WHATWG.
+ 
+ This is a generated file. Please do not edit.
+ Instead, please regenerate using generate-encoding-data.py
+ 갂
+ 갃
+ 갅
+ 갆
+ 갋
+diff --git a/third_party/rust/encoding_rs/src/test_data/euc_kr_out.txt b/third_party/rust/encoding_rs/src/test_data/euc_kr_out.txt
+--- a/third_party/rust/encoding_rs/src/test_data/euc_kr_out.txt
++++ b/third_party/rust/encoding_rs/src/test_data/euc_kr_out.txt
+@@ -1,10 +1,9 @@
+-Any copyright to the test code below this comment is dedicated to the
+-Public Domain. http://creativecommons.org/publicdomain/zero/1.0/
++Generated from WHATWG indexes.json; see LICENSE-WHATWG.
+ 
+ This is a generated file. Please do not edit.
+ Instead, please regenerate using generate-encoding-data.py
+ 갂
+ 갃
+ 갅
+ 갆
+ 갋
+diff --git a/third_party/rust/encoding_rs/src/test_data/euc_kr_out_ref.txt b/third_party/rust/encoding_rs/src/test_data/euc_kr_out_ref.txt
+--- a/third_party/rust/encoding_rs/src/test_data/euc_kr_out_ref.txt
++++ b/third_party/rust/encoding_rs/src/test_data/euc_kr_out_ref.txt
+@@ -1,10 +1,9 @@
+-Any copyright to the test code below this comment is dedicated to the
+-Public Domain. http://creativecommons.org/publicdomain/zero/1.0/
++Generated from WHATWG indexes.json; see LICENSE-WHATWG.
+ 
+ This is a generated file. Please do not edit.
+ Instead, please regenerate using generate-encoding-data.py
+ �A
+ �B
+ �C
+ �D
+ �E
+diff --git a/third_party/rust/encoding_rs/src/test_data/gb18030_in.txt b/third_party/rust/encoding_rs/src/test_data/gb18030_in.txt
+--- a/third_party/rust/encoding_rs/src/test_data/gb18030_in.txt
++++ b/third_party/rust/encoding_rs/src/test_data/gb18030_in.txt
+@@ -1,10 +1,9 @@
+-Any copyright to the test code below this comment is dedicated to the
+-Public Domain. http://creativecommons.org/publicdomain/zero/1.0/
++Generated from WHATWG indexes.json; see LICENSE-WHATWG.
+ 
+ This is a generated file. Please do not edit.
+ Instead, please regenerate using generate-encoding-data.py
+ �@
+ �A
+ �B
+ �C
+ �D
+diff --git a/third_party/rust/encoding_rs/src/test_data/gb18030_in_ref.txt b/third_party/rust/encoding_rs/src/test_data/gb18030_in_ref.txt
+--- a/third_party/rust/encoding_rs/src/test_data/gb18030_in_ref.txt
++++ b/third_party/rust/encoding_rs/src/test_data/gb18030_in_ref.txt
+@@ -1,10 +1,9 @@
+-Any copyright to the test code below this comment is dedicated to the
+-Public Domain. http://creativecommons.org/publicdomain/zero/1.0/
++Generated from WHATWG indexes.json; see LICENSE-WHATWG.
+ 
+ This is a generated file. Please do not edit.
+ Instead, please regenerate using generate-encoding-data.py
+ 丂
+ 丄
+ 丅
+ 丆
+ 丏
+@@ -7180,43 +7179,43 @@ Instead, please regenerate using generat
+ ρ
+ σ
+ τ
+ υ
+ φ
+ χ
+ ψ
+ ω
+-
+-
+-
+-
+-
+-
+-
++︐
++︒
++︑
++︓
++︔
++︕
++︖
+ ︵
+ ︶
+ ︹
+ ︺
+ ︿
+ ﹀
+ ︽
+ ︾
+ ﹁
+ ﹂
+ ﹃
+ ﹄
+-
+-
++︗
++︘
+ ︻
+ ︼
+ ︷
+ ︸
+ ︱
+-
++︙
+ ︳
+ ︴
+ 
+ 
+ 
+ 
+ 
+ 
+@@ -23773,87 +23772,87 @@ Instead, please regenerate using generat
+ 
+ 
+ 
+ ⺄
+ 㑳
+ 㑇
+ ⺈
+ ⺋
+-
++龴
+ 㖞
+ 㘚
+ 㘎
+ ⺌
+ ⺗
+ 㥮
+ 㤘
+-
++龵
+ 㧏
+ 㧟
+ 㩳
+ 㧐
+-
+-
++龶
++龷
+ 㭎
+ 㱮
+ 㳠
+ ⺧
+ 
+-
++龸
+ ⺪
+ 䁖
+ 䅟
+ ⺮
+ 䌷
+ ⺳
+ ⺶
+ ⺷
+ 
+ 䎱
+ 䎬
+ ⺻
+ 䏝
+ 䓖
+ 䙡
+ 䙌
+-
++龹
+ 䜣
+ 䜩
+ 䝼
+ 䞍
+ ⻊
+ 䥇
+ 䥺
+ 䥽
+ 䦂
+ 䦃
+ 䦅
+ 䦆
+ 䦟
+ 䦛
+ 䦷
+ 䦶
+-
++龺
+ 
+ 䲣
+ 䲟
+ 䲠
+ 䲡
+ 䱷
+ 䲢
+ 䴓
+ 䴔
+ 䴕
+ 䴖
+ 䴗
+ 䴘
+ 䴙
+ 䶮
+-
++龻
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+diff --git a/third_party/rust/encoding_rs/src/test_data/gb18030_out.txt b/third_party/rust/encoding_rs/src/test_data/gb18030_out.txt
+--- a/third_party/rust/encoding_rs/src/test_data/gb18030_out.txt
++++ b/third_party/rust/encoding_rs/src/test_data/gb18030_out.txt
+@@ -1,10 +1,9 @@
+-Any copyright to the test code below this comment is dedicated to the
+-Public Domain. http://creativecommons.org/publicdomain/zero/1.0/
++Generated from WHATWG indexes.json; see LICENSE-WHATWG.
+ 
+ This is a generated file. Please do not edit.
+ Instead, please regenerate using generate-encoding-data.py
+ 丂
+ 丄
+ 丅
+ 丆
+ 丏
+@@ -7179,43 +7178,43 @@ Instead, please regenerate using generat
+ ρ
+ σ
+ τ
+ υ
+ φ
+ χ
+ ψ
+ ω
+-
+-
+-
+-
+-
+-
+-
++︐
++︒
++︑
++︓
++︔
++︕
++︖
+ ︵
+ ︶
+ ︹
+ ︺
+ ︿
+ ﹀
+ ︽
+ ︾
+ ﹁
+ ﹂
+ ﹃
+ ﹄
+-
+-
++︗
++︘
+ ︻
+ ︼
+ ︷
+ ︸
+ ︱
+-
++︙
+ ︳
+ ︴
+ 
+ 
+ 
+ 
+ 
+ 
+@@ -23772,87 +23771,87 @@ Instead, please regenerate using generat
+ 
+ 
+ 
+ ⺄
+ 㑳
+ 㑇
+ ⺈
+ ⺋
+-
++龴
+ 㖞
+ 㘚
+ 㘎
+ ⺌
+ ⺗
+ 㥮
+ 㤘
+-
++龵
+ 㧏
+ 㧟
+ 㩳
+ 㧐
+-
+-
++龶
++龷
+ 㭎
+ 㱮
+ 㳠
+ ⺧
+ 
+-
++龸
+ ⺪
+ 䁖
+ 䅟
+ ⺮
+ 䌷
+ ⺳
+ ⺶
+ ⺷
+ 
+ 䎱
+ 䎬
+ ⺻
+ 䏝
+ 䓖
+ 䙡
+ 䙌
+-
++龹
+ 䜣
+ 䜩
+ 䝼
+ 䞍
+ ⻊
+ 䥇
+ 䥺
+ 䥽
+ 䦂
+ 䦃
+ 䦅
+ 䦆
+ 䦟
+ 䦛
+ 䦷
+ 䦶
+-
++龺
+ 
+ 䲣
+ 䲟
+ 䲠
+ 䲡
+ 䱷
+ 䲢
+ 䴓
+ 䴔
+ 䴕
+ 䴖
+ 䴗
+ 䴘
+ 䴙
+ 䶮
+-
++龻
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+diff --git a/third_party/rust/encoding_rs/src/test_data/gb18030_out_ref.txt b/third_party/rust/encoding_rs/src/test_data/gb18030_out_ref.txt
+--- a/third_party/rust/encoding_rs/src/test_data/gb18030_out_ref.txt
++++ b/third_party/rust/encoding_rs/src/test_data/gb18030_out_ref.txt
+@@ -1,10 +1,9 @@
+-Any copyright to the test code below this comment is dedicated to the
+-Public Domain. http://creativecommons.org/publicdomain/zero/1.0/
++Generated from WHATWG indexes.json; see LICENSE-WHATWG.
+ 
+ This is a generated file. Please do not edit.
+ Instead, please regenerate using generate-encoding-data.py
+ �@
+ �A
+ �B
+ �C
+ �D
+diff --git a/third_party/rust/encoding_rs/src/test_data/iso_2022_jp_in.txt b/third_party/rust/encoding_rs/src/test_data/iso_2022_jp_in.txt
+--- a/third_party/rust/encoding_rs/src/test_data/iso_2022_jp_in.txt
++++ b/third_party/rust/encoding_rs/src/test_data/iso_2022_jp_in.txt
+@@ -1,10 +1,9 @@
+-Any copyright to the test code below this comment is dedicated to the
+-Public Domain. http://creativecommons.org/publicdomain/zero/1.0/
++Generated from WHATWG indexes.json; see LICENSE-WHATWG.
+ 
+ This is a generated file. Please do not edit.
+ Instead, please regenerate using generate-encoding-data.py
+ $B!!(B
+ $B!"(B
+ $B!#(B
+ $B!$(B
+ $B!%(B
+diff --git a/third_party/rust/encoding_rs/src/test_data/iso_2022_jp_in_ref.txt b/third_party/rust/encoding_rs/src/test_data/iso_2022_jp_in_ref.txt
+--- a/third_party/rust/encoding_rs/src/test_data/iso_2022_jp_in_ref.txt
++++ b/third_party/rust/encoding_rs/src/test_data/iso_2022_jp_in_ref.txt
+@@ -1,10 +1,9 @@
+-Any copyright to the test code below this comment is dedicated to the
+-Public Domain. http://creativecommons.org/publicdomain/zero/1.0/
++Generated from WHATWG indexes.json; see LICENSE-WHATWG.
+ 
+ This is a generated file. Please do not edit.
+ Instead, please regenerate using generate-encoding-data.py
+ 　
+ 、
+ 。
+ ，
+ ．
+diff --git a/third_party/rust/encoding_rs/src/test_data/iso_2022_jp_out.txt b/third_party/rust/encoding_rs/src/test_data/iso_2022_jp_out.txt
+--- a/third_party/rust/encoding_rs/src/test_data/iso_2022_jp_out.txt
++++ b/third_party/rust/encoding_rs/src/test_data/iso_2022_jp_out.txt
+@@ -1,10 +1,9 @@
+-Any copyright to the test code below this comment is dedicated to the
+-Public Domain. http://creativecommons.org/publicdomain/zero/1.0/
++Generated from WHATWG indexes.json; see LICENSE-WHATWG.
+ 
+ This is a generated file. Please do not edit.
+ Instead, please regenerate using generate-encoding-data.py
+ 　
+ 、
+ 。
+ ，
+ ．
+diff --git a/third_party/rust/encoding_rs/src/test_data/iso_2022_jp_out_ref.txt b/third_party/rust/encoding_rs/src/test_data/iso_2022_jp_out_ref.txt
+--- a/third_party/rust/encoding_rs/src/test_data/iso_2022_jp_out_ref.txt
++++ b/third_party/rust/encoding_rs/src/test_data/iso_2022_jp_out_ref.txt
+@@ -1,10 +1,9 @@
+-Any copyright to the test code below this comment is dedicated to the
+-Public Domain. http://creativecommons.org/publicdomain/zero/1.0/
++Generated from WHATWG indexes.json; see LICENSE-WHATWG.
+ 
+ This is a generated file. Please do not edit.
+ Instead, please regenerate using generate-encoding-data.py
+ $B!!(B
+ $B!"(B
+ $B!#(B
+ $B!$(B
+ $B!%(B
+diff --git a/third_party/rust/encoding_rs/src/test_data/jis0208_in.txt b/third_party/rust/encoding_rs/src/test_data/jis0208_in.txt
+--- a/third_party/rust/encoding_rs/src/test_data/jis0208_in.txt
++++ b/third_party/rust/encoding_rs/src/test_data/jis0208_in.txt
+@@ -1,10 +1,9 @@
+-Any copyright to the test code below this comment is dedicated to the
+-Public Domain. http://creativecommons.org/publicdomain/zero/1.0/
++Generated from WHATWG indexes.json; see LICENSE-WHATWG.
+ 
+ This is a generated file. Please do not edit.
+ Instead, please regenerate using generate-encoding-data.py
+ ��
+ ��
+ ��
+ ��
+ ��
+diff --git a/third_party/rust/encoding_rs/src/test_data/jis0208_in_ref.txt b/third_party/rust/encoding_rs/src/test_data/jis0208_in_ref.txt
+--- a/third_party/rust/encoding_rs/src/test_data/jis0208_in_ref.txt
++++ b/third_party/rust/encoding_rs/src/test_data/jis0208_in_ref.txt
+@@ -1,10 +1,9 @@
+-Any copyright to the test code below this comment is dedicated to the
+-Public Domain. http://creativecommons.org/publicdomain/zero/1.0/
++Generated from WHATWG indexes.json; see LICENSE-WHATWG.
+ 
+ This is a generated file. Please do not edit.
+ Instead, please regenerate using generate-encoding-data.py
+ 　
+ 、
+ 。
+ ，
+ ．
+diff --git a/third_party/rust/encoding_rs/src/test_data/jis0208_out.txt b/third_party/rust/encoding_rs/src/test_data/jis0208_out.txt
+--- a/third_party/rust/encoding_rs/src/test_data/jis0208_out.txt
++++ b/third_party/rust/encoding_rs/src/test_data/jis0208_out.txt
+@@ -1,10 +1,9 @@
+-Any copyright to the test code below this comment is dedicated to the
+-Public Domain. http://creativecommons.org/publicdomain/zero/1.0/
++Generated from WHATWG indexes.json; see LICENSE-WHATWG.
+ 
+ This is a generated file. Please do not edit.
+ Instead, please regenerate using generate-encoding-data.py
+ 　
+ 、
+ 。
+ ，
+ ．
+diff --git a/third_party/rust/encoding_rs/src/test_data/jis0208_out_ref.txt b/third_party/rust/encoding_rs/src/test_data/jis0208_out_ref.txt
+--- a/third_party/rust/encoding_rs/src/test_data/jis0208_out_ref.txt
++++ b/third_party/rust/encoding_rs/src/test_data/jis0208_out_ref.txt
+@@ -1,10 +1,9 @@
+-Any copyright to the test code below this comment is dedicated to the
+-Public Domain. http://creativecommons.org/publicdomain/zero/1.0/
++Generated from WHATWG indexes.json; see LICENSE-WHATWG.
+ 
+ This is a generated file. Please do not edit.
+ Instead, please regenerate using generate-encoding-data.py
+ ��
+ ��
+ ��
+ ��
+ ��
+diff --git a/third_party/rust/encoding_rs/src/test_data/jis0212_in.txt b/third_party/rust/encoding_rs/src/test_data/jis0212_in.txt
+--- a/third_party/rust/encoding_rs/src/test_data/jis0212_in.txt
++++ b/third_party/rust/encoding_rs/src/test_data/jis0212_in.txt
+@@ -1,10 +1,9 @@
+-Any copyright to the test code below this comment is dedicated to the
+-Public Domain. http://creativecommons.org/publicdomain/zero/1.0/
++Generated from WHATWG indexes.json; see LICENSE-WHATWG.
+ 
+ This is a generated file. Please do not edit.
+ Instead, please regenerate using generate-encoding-data.py
+ ���
+ ���
+ ���
+ ���
+ ���
+diff --git a/third_party/rust/encoding_rs/src/test_data/jis0212_in_ref.txt b/third_party/rust/encoding_rs/src/test_data/jis0212_in_ref.txt
+--- a/third_party/rust/encoding_rs/src/test_data/jis0212_in_ref.txt
++++ b/third_party/rust/encoding_rs/src/test_data/jis0212_in_ref.txt
+@@ -1,10 +1,9 @@
+-Any copyright to the test code below this comment is dedicated to the
+-Public Domain. http://creativecommons.org/publicdomain/zero/1.0/
++Generated from WHATWG indexes.json; see LICENSE-WHATWG.
+ 
+ This is a generated file. Please do not edit.
+ Instead, please regenerate using generate-encoding-data.py
+ �
+ �
+ �
+ �
+ �
+diff --git a/third_party/rust/encoding_rs/src/test_data/shift_jis_in.txt b/third_party/rust/encoding_rs/src/test_data/shift_jis_in.txt
+--- a/third_party/rust/encoding_rs/src/test_data/shift_jis_in.txt
++++ b/third_party/rust/encoding_rs/src/test_data/shift_jis_in.txt
+@@ -1,10 +1,9 @@
+-Any copyright to the test code below this comment is dedicated to the
+-Public Domain. http://creativecommons.org/publicdomain/zero/1.0/
++Generated from WHATWG indexes.json; see LICENSE-WHATWG.
+ 
+ This is a generated file. Please do not edit.
+ Instead, please regenerate using generate-encoding-data.py
+ �@
+ �A
+ �B
+ �C
+ �D
+diff --git a/third_party/rust/encoding_rs/src/test_data/shift_jis_in_ref.txt b/third_party/rust/encoding_rs/src/test_data/shift_jis_in_ref.txt
+--- a/third_party/rust/encoding_rs/src/test_data/shift_jis_in_ref.txt
++++ b/third_party/rust/encoding_rs/src/test_data/shift_jis_in_ref.txt
+@@ -1,10 +1,9 @@
+-Any copyright to the test code below this comment is dedicated to the
+-Public Domain. http://creativecommons.org/publicdomain/zero/1.0/
++Generated from WHATWG indexes.json; see LICENSE-WHATWG.
+ 
+ This is a generated file. Please do not edit.
+ Instead, please regenerate using generate-encoding-data.py
+ 　
+ 、
+ 。
+ ，
+ ．
+diff --git a/third_party/rust/encoding_rs/src/test_data/shift_jis_out.txt b/third_party/rust/encoding_rs/src/test_data/shift_jis_out.txt
+--- a/third_party/rust/encoding_rs/src/test_data/shift_jis_out.txt
++++ b/third_party/rust/encoding_rs/src/test_data/shift_jis_out.txt
+@@ -1,10 +1,9 @@
+-Any copyright to the test code below this comment is dedicated to the
+-Public Domain. http://creativecommons.org/publicdomain/zero/1.0/
++Generated from WHATWG indexes.json; see LICENSE-WHATWG.
+ 
+ This is a generated file. Please do not edit.
+ Instead, please regenerate using generate-encoding-data.py
+ 　
+ 、
+ 。
+ ，
+ ．
+diff --git a/third_party/rust/encoding_rs/src/test_data/shift_jis_out_ref.txt b/third_party/rust/encoding_rs/src/test_data/shift_jis_out_ref.txt
+--- a/third_party/rust/encoding_rs/src/test_data/shift_jis_out_ref.txt
++++ b/third_party/rust/encoding_rs/src/test_data/shift_jis_out_ref.txt
+@@ -1,10 +1,9 @@
+-Any copyright to the test code below this comment is dedicated to the
+-Public Domain. http://creativecommons.org/publicdomain/zero/1.0/
++Generated from WHATWG indexes.json; see LICENSE-WHATWG.
+ 
+ This is a generated file. Please do not edit.
+ Instead, please regenerate using generate-encoding-data.py
+ �@
+ �A
+ �B
+ �C
+ �D

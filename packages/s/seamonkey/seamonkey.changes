@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Aug 12 22:43:53 UTC 2026 - Tristan Miller <psychonaut@nothingisreal.com>
+
+- update to SeaMonkey 2.53.24
+  * Remove unused method readRDFString bug 1430721.
+  * Cancel Filter edit dialog closes the whole Message Filter dialog
+    too bug 1741049.
+  * Put home button in the SeaMonkey main toolbar bug 2005739.
+  * Calendar "Edit Recurrence"/Weekly doesn't show days bug 2011571.
+  * Fix typo in addon-sdk util.js bug 2014701.
+  * Create README template to use in releases bug 2050435.
+  * Remove use of globalOverlay.xul in DOM Inspector bug 2054602. 
+  * SeaMonkey 2.53.24 uses backend code from Mozilla Firefox and
+    contains relevant Firefox 60.8 security fixes.
+  * SeaMonkey 2.53.24 shares parts of the mail and news code with
+    Thunderbird. Please read the Thunderbird 60.8.0 release notes for
+    specific security fixes in this release.
+  * Additional important security fixes up to Current Firefox 140.13
+    and Thunderbird 140.13 ESR plus many enhancements have been
+    backported. We will continue to enhance SeaMonkey security in
+    subsequent 2.53.x beta and release versions as fast as we are able
+    to.
+- adapt seamonkey-2.53.21-bmo1662867.patch for SeaMonkey 2.53.24
+- remove seamonkey-2.53.19-bmo1896958.patch (superseded by
+  seamonkey-2.53.24-bmo1882209.patch)
+- add seamonkey-2.53.24-bmo1866191.patch,
+  seamonkey-2.53.24-bmo1882209.patch,
+  seamonkey-2.53.24-bmo2033279.patch, and
+  seamonkey-2.53.24-rust_u2fhid.patch,
+  seamonkey-2.53.24-rust_version.patch to fix build issues with
+  SeaMonkey 2.53.24
+- remove obsolete seamonkey-2.53.21-bmo1332139.patch
+
+-------------------------------------------------------------------
 Thu Jan 01 19:27:31 UTC 2026 - Tristan Miller <psychonaut@nothingisreal.com>
 
 - update to SeaMonkey 2.53.23

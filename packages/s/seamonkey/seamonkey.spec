@@ -52,11 +52,11 @@
 %define gnome_dir      %{_prefix}
 ### build options end
 
-%define releasedate 20251231000000
+%define releasedate 20260728000000
 
 Name:           seamonkey
 Summary:        An integrated web browser, composer, mail/news client, and IRC client
-Version:        2.53.23
+Version:        2.53.24
 Release:        0
 License:        MPL-2.0
 Group:          Productivity/Networking/Web/Browsers
@@ -86,13 +86,16 @@ Patch3:         seamonkey-2.53.3-lto.patch
 Patch4:         seamonkey-2.53.7.1-man-page.patch
 Patch5:         seamonkey-2.53.20-boo1237231.patch
 Patch6:         seamonkey-2.53.17.1-bmo531915.patch
-Patch7:         seamonkey-2.53.19-bmo1896958.patch
 Patch8:         seamonkey-2.53.20-mach-use-python-311.patch
 Patch9:         seamonkey-2.53.21-bmo1862601.patch
 Patch10:        seamonkey-2.53.21-bmo1927380.patch
 Patch11:	seamonkey-2.53.20-system-av1.patch
-Patch12:        seamonkey-2.53.21-bmo1332139.patch
 Patch13:        seamonkey-2.53.21-bmo1662867.patch
+Patch14:        seamonkey-2.53.24-bmo1882209.patch
+Patch15:        seamonkey-2.53.24-bmo1866191.patch
+Patch16:        seamonkey-2.53.24-bmo2033279.patch
+Patch17:        seamonkey-2.53.24-rust_version.patch
+Patch18:        seamonkey-2.53.24-rust_u2fhid.patch
 
 BuildRequires:  Mesa-devel
 BuildRequires:  alsa-devel
@@ -108,7 +111,7 @@ BuildRequires:  libiw-devel
 BuildRequires:  libnotify-devel
 BuildRequires:  libproxy-devel
 %if %{with system_libvpx}
-BuildRequires:  libvpx-devel
+BuildRequires:  libvpx-devel >= 1.10.0
 %endif
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200 && 0%{?is_opensuse}
 BuildRequires:  libwebp-devel >= 1.0.0
@@ -295,7 +298,6 @@ cp %{SOURCE7} GNUmakefile
 %patch -P 4 -p1
 %patch -P 5 -p1
 %patch -P 6 -p1
-%patch -P 7 -p1
 %patch -P 8 -p1
 
 %if %{with system_icu}
@@ -309,11 +311,12 @@ cp %{SOURCE7} GNUmakefile
 %patch -P 11 -p1
 %endif
 
-%if %{with system_libvpx}
-%patch -P 12 -p1
-%endif
-
 %patch -P 13 -p1
+%patch -P 14 -p1
+%patch -P 15 -p1
+%patch -P 16 -p1
+%patch -P 17 -p1
+%patch -P 18 -p1
 
 %define with_sys()   ac_add_options --with%%{!?with_system_%1:out}-system-%1
 %define endis_sys()  ac_add_options --%%{?with_system_%1:enable}%%{!?with_system_%1:disable}-system-%1

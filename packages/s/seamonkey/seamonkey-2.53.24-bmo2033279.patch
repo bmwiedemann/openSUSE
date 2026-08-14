@@ -1,0 +1,197 @@
+# HG changeset patch
+# User Henri Sivonen <hsivonen@hsivonen.fi>
+# Date 1776755360 0
+# Node ID ec1dd05fd5785985b7bd9636405688d1d61a95d9
+# Parent  7577c472c3f18ca497ab92b15df7a01e7194ffd6
+Bug 2033279 - Make --enable-rust-simd work with Rust 1.95. r=firefox-build-system-reviewers,supply-chain-reviewers,ahochheiden
+
+Differential Revision: https://phabricator.services.mozilla.com/D295287
+
+diff --git a/.cargo/config.in b/.cargo/config.in
+--- a/.cargo/config.in
++++ b/.cargo/config.in
+@@ -7,10 +7,15 @@ git = "https://github.com/servo/serde"
+ branch = "deserialize_from_enums8"
+ replace-with = "vendored-sources"
+ 
+ [source."git+https://github.com/hsivonen/any_all_workaround?rev=7fb1b7034c9f172aade21ee1c8554e8d8a48af80"]
+ git = "https://github.com/hsivonen/any_all_workaround"
+ rev = "7fb1b7034c9f172aade21ee1c8554e8d8a48af80"
+ replace-with = "vendored-sources"
+ 
++[source."git+https://github.com/hsivonen/encoding_rs?rev=1236d1bc423e6ba35a06485f74a6304db2d703b5"]
++git = "https://github.com/hsivonen/encoding_rs"
++rev = "1236d1bc423e6ba35a06485f74a6304db2d703b5"
++replace-with = "vendored-sources"
++
+ [source.vendored-sources]
+ directory = '@top_srcdir@/third_party/rust'
+diff --git a/Cargo.lock b/Cargo.lock
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -615,21 +615,21 @@ dependencies = [
+  "encoding_rs",
+  "nserror",
+  "nsstring",
+ ]
+ 
+ [[package]]
+ name = "encoding_rs"
+ version = "0.8.35"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "75030f3c4f45dafd7586dd6780965a8c7e8e285a5ecb86713e63a79c5b2766f3"
++source = "git+https://github.com/hsivonen/encoding_rs?rev=1236d1bc423e6ba35a06485f74a6304db2d703b5#1236d1bc423e6ba35a06485f74a6304db2d703b5"
+ dependencies = [
+  "any_all_workaround",
+  "cfg-if 1.0.0",
++ "rustversion",
+ ]
+ 
+ [[package]]
+ name = "env_logger"
+ version = "0.5.13"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "15b0a4d2e39f8420210be8b27eeda28029729e2fd4291019455016c348240c38"
+ dependencies = [
+diff --git a/Cargo.toml b/Cargo.toml
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -49,8 +49,10 @@ rpath = false
+ debug-assertions = false
+ panic = "abort"
+ codegen-units = 1
+ 
+ [patch.crates-io]
+ libudev-sys = { path = "dom/webauthn/libudev-sys" }
+ serde_derive = { git = "https://github.com/servo/serde", branch = "deserialize_from_enums8" }
+ any_all_workaround = { git = "https://github.com/hsivonen/any_all_workaround", rev = "7fb1b7034c9f172aade21ee1c8554e8d8a48af80" }
++# Make --enable-rust-simd compatible with Rust 1.95
++encoding_rs = { git = "https://github.com/hsivonen/encoding_rs", rev = "1236d1bc423e6ba35a06485f74a6304db2d703b5" }
+diff --git a/third_party/rust/encoding_rs/Cargo.toml b/third_party/rust/encoding_rs/Cargo.toml
+--- a/third_party/rust/encoding_rs/Cargo.toml
++++ b/third_party/rust/encoding_rs/Cargo.toml
+@@ -11,16 +11,17 @@
+ 
+ [package]
+ edition = "2018"
+ rust-version = "1.36"
+ name = "encoding_rs"
+ version = "0.8.35"
+ authors = ["Henri Sivonen <hsivonen@hsivonen.fi>"]
+ build = false
++autolib = false
+ autobins = false
+ autoexamples = false
+ autotests = false
+ autobenches = false
+ description = "A Gecko-oriented implementation of the Encoding Standard"
+ homepage = "https://docs.rs/encoding_rs/"
+ documentation = "https://docs.rs/encoding_rs/"
+ readme = "README.md"
+@@ -34,43 +35,16 @@ categories = [
+     "text-processing",
+     "encoding",
+     "web-programming",
+     "internationalization",
+ ]
+ license = "(Apache-2.0 OR MIT) AND BSD-3-Clause"
+ repository = "https://github.com/hsivonen/encoding_rs"
+ 
+-[profile.release]
+-lto = true
+-
+-[lib]
+-name = "encoding_rs"
+-path = "src/lib.rs"
+-
+-[dependencies.any_all_workaround]
+-version = "0.1.0"
+-optional = true
+-
+-[dependencies.cfg-if]
+-version = "1.0"
+-
+-[dependencies.serde]
+-version = "1.0"
+-optional = true
+-
+-[dev-dependencies.bincode]
+-version = "1.0"
+-
+-[dev-dependencies.serde_derive]
+-version = "1.0"
+-
+-[dev-dependencies.serde_json]
+-version = "1.0"
+-
+ [features]
+ alloc = []
+ default = ["alloc"]
+ fast-big5-hanzi-encode = []
+ fast-gb-hanzi-encode = []
+ fast-hangul-encode = []
+ fast-hanja-encode = []
+ fast-kanji-encode = []
+@@ -79,9 +53,39 @@ fast-legacy-encode = [
+     "fast-hanja-encode",
+     "fast-kanji-encode",
+     "fast-gb-hanzi-encode",
+     "fast-big5-hanzi-encode",
+ ]
+ less-slow-big5-hanzi-encode = []
+ less-slow-gb-hanzi-encode = []
+ less-slow-kanji-encode = []
+-simd-accel = ["any_all_workaround"]
++simd-accel = [
++    "any_all_workaround",
++    "rustversion",
++]
++
++[lib]
++name = "encoding_rs"
++path = "src/lib.rs"
++
++[dependencies]
++cfg-if = "1.0"
++
++[dependencies.any_all_workaround]
++version = "0.1.0"
++optional = true
++
++[dependencies.rustversion]
++version = "1.0.19"
++optional = true
++
++[dependencies.serde]
++version = "1.0"
++optional = true
++
++[dev-dependencies]
++bincode = "1.0"
++serde_derive = "1.0"
++serde_json = "1.0"
++
++[profile.release]
++lto = true
+diff --git a/third_party/rust/encoding_rs/src/x_user_defined.rs b/third_party/rust/encoding_rs/src/x_user_defined.rs
+--- a/third_party/rust/encoding_rs/src/x_user_defined.rs
++++ b/third_party/rust/encoding_rs/src/x_user_defined.rs
+@@ -11,16 +11,18 @@ use super::*;
+ use crate::handles::*;
+ use crate::variant::*;
+ 
+ cfg_if! {
+     if #[cfg(feature = "simd-accel")] {
+         use simd_funcs::*;
+         use core::simd::u16x8;
+         use core::simd::cmp::SimdPartialOrd;
++        #[rustversion::since(1.95)]
++        use core::simd::Select;
+ 
+         #[inline(always)]
+         fn shift_upper(unpacked: u16x8) -> u16x8 {
+             let highest_ascii = u16x8::splat(0x7F);
+             unpacked + unpacked.simd_gt(highest_ascii).select(u16x8::splat(0xF700), u16x8::splat(0))        }
+     } else {
+     }
+ }

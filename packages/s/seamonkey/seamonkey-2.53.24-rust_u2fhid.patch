@@ -1,0 +1,25 @@
+# HG changeset patch
+# User Frank-Rainer Grahl <frgrahl@gmx.net>
+# Date 1785108119 -7200
+# Parent  d6c0ff7b0c05a0cbcb0a749a861081dc848539bd
+No Bug - Fix u2fhid for later rust versions. r=me a=me
+
+diff --git a/dom/webauthn/u2f-hid-rs/src/windows/winapi.rs b/dom/webauthn/u2f-hid-rs/src/windows/winapi.rs
+--- a/dom/webauthn/u2f-hid-rs/src/windows/winapi.rs
++++ b/dom/webauthn/u2f-hid-rs/src/windows/winapi.rs
+@@ -1,12 +1,15 @@
+ /* This Source Code Form is subject to the terms of the Mozilla Public
+  * License, v. 2.0. If a copy of the MPL was not distributed with this
+  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+ 
++// Yes it is bad but we don't use webauthn currently anyway.
++#![warn(deref_nullptr)]
++
+ use std::io;
+ use std::mem;
+ use std::ptr;
+ use std::slice;
+ 
+ use std::ffi::OsString;
+ use std::os::windows::ffi::OsStringExt;
+ 

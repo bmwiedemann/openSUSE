@@ -1,0 +1,2276 @@
+# HG changeset patch
+# User Frank-Rainer Grahl <frgrahl@gmx.net>
+# Date 1785108032 -7200
+# Parent  9dffd78611d08034adaba702d208ea8979bd7c40
+No Bug - Add rust version crate. r=me a=me
+
+diff --git a/Cargo.lock b/Cargo.lock
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -1714,16 +1714,22 @@ name = "rustc_version"
+ version = "0.2.1"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "b9743a7670d88d5d52950408ecdb7c71d8986251ab604d4689dd2ca25c9bca69"
+ dependencies = [
+  "semver",
+ ]
+ 
+ [[package]]
++name = "rustversion"
++version = "1.0.23"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "cf54715a573b99ac80df0bc206da022bcd442c974952c7b9720069370852e21f"
++
++[[package]]
+ name = "same-file"
+ version = "1.0.2"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "cfb6eded0b06a0b512c8ddbcf04089138c9b4362c2f696f3c3d76039d68f3637"
+ dependencies = [
+  "winapi 0.3.7",
+ ]
+ 
+diff --git a/third_party/rust/encoding_rs/.cargo-checksum.json b/third_party/rust/encoding_rs/.cargo-checksum.json
+--- a/third_party/rust/encoding_rs/.cargo-checksum.json
++++ b/third_party/rust/encoding_rs/.cargo-checksum.json
+@@ -1,1 +1,1 @@
+-{"files":{"CONTRIBUTING.md":"ca1901f3e8532fb4cec894fd3664f0eaa898c0c4b961d1b992d1ed54eacf362a","COPYRIGHT":"11789f45bb180841cd362a5eee6789c68ddb573a11105e30768c308a6add0190","Cargo.toml":"d7405d2bcf99cf9729075473c45f677630f4c1947c8ba9757db607f2025a7da2","Ideas.md":"b7452893f500163868d8de52c09addaf91e1632454ed02e892c467ed7ec39dbd","LICENSE-APACHE":"cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30","LICENSE-MIT":"3fa4ca83dcc9237839b1bdeb2e6d16bdfb5ec0c5ce42b24694d8bbf0dcbef72c","LICENSE-WHATWG":"838118388fe5c2e7f1dbbaeed13e1c7f3ebf88be91319c7c1d77c18e987d1a50","README.md":"9826137ed4297be3b2019b74a8f6111a796ff507bde41df2f20712539704b9e9","ci/miri.sh":"43cb8d82f49e3bfe2d2274b6ccd6f0714a4188ccef0cecc040829883cfdbee25","doc/Big5.txt":"f73a2edc5cb6c2d140ba6e07f4542e1c4a234950378acde1df93480f0ca0be0b","doc/EUC-JP.txt":"ee2818b907d0137f40a9ab9fd525fc700a44dbdddb6cf0c157a656566bae4bf1","doc/EUC-KR.txt":"71d9e2ccf3b124e8bdfb433c8cf2773fd878077038d0cec3c7237a50f4a78a30","doc/GBK.txt":"8229e59076d8bddb01865cdcf6afda3533238d7c23d97f98820f9e3b2d13505d","doc/IBM866.txt":"a5a433e804d0f83af785015179fbc1d9b0eaf1f7960efcd04093e136b51fbd0e","doc/ISO-2022-JP.txt":"af86684f5a8f0e2868d7b2c292860140c3d2e5527530ca091f1b28198e8e2fe6","doc/ISO-8859-10.txt":"6d3949ad7c81ca176895101ed81a1db7df1060d64e262880b94bd31bb344ab4d","doc/ISO-8859-13.txt":"3951dd89cf93f7729148091683cf8511f4529388b7dc8dcd0d62eaed55be93fa","doc/ISO-8859-14.txt":"3d330784a0374fd255a38b47949675cc7168c800530534b0a01cac6edc623adc","doc/ISO-8859-15.txt":"24b1084aab5127a85aab99153f86e24694d0a3615f53b5ce23683f97cf66c47a","doc/ISO-8859-16.txt":"ce0272559b92ba76d7a7e476f6424ae4a5cc72e75b183611b08392e44add4d25","doc/ISO-8859-2.txt":"18ceff88c13d1b5ba455a3919b1e3de489045c4c3d2dd7e8527c125c75d54aad","doc/ISO-8859-3.txt":"21798404c68f4f5db59223362f24999da96968c0628427321fccce7d2849a130","doc/ISO-8859-4.txt":"d27f6520c6c5bfbcc19176b71d081cdb3bccde1622bb3e420d5680e812632d53","doc/ISO-8859-5.txt":"a10ec8d6ea7a78ad15da7275f6cb1a3365118527e28f9af6d0d5830501303f3a","doc/ISO-8859-6.txt":"ccda8a2efc96115336bdd77776637b9712425e44fbcf745353b9057fbef144e7","doc/ISO-8859-7.txt":"17900fa1f27a445958f0a77d7d9056be375a6bd7ee4492aa680c7c1500bab85e","doc/ISO-8859-8-I.txt":"8357555646d54265a9b9ffa3e68b08d132312f1561c60108ff9b8b1167b6ecf2","doc/ISO-8859-8.txt":"72cd6f3afb7b4a9c16a66a362473315770b7755d72c86c870e52fc3eba86c8af","doc/KOI8-R.txt":"839cf19a38da994488004ed7814b1f6151640156a9a2af02bf2efca745fb5966","doc/KOI8-U.txt":"0cc76624ed1f024183e2298b7e019957da2c70c8ca06e0fc4e6f353f50a5054f","doc/Shift_JIS.txt":"34c49141818cb9ddbcf59cc858f78a79be8ad148d563f26415108ae1f148443f","doc/UTF-16BE.txt":"e2e280d8acbaa6d2a6b3569d60e17500a285f2baa0df3363dd85537cd5a1ef8f","doc/UTF-16LE.txt":"70bdc170e3fc5298ba68f10125fb5eeb8b077036cc96bb4416c4de396f6d76c1","doc/UTF-8.txt":"ea7bae742e613010ced002cf4b601a737d2203fad65e115611451bc4428f548a","doc/gb18030.txt":"67a01665c75505330b0fe5b8d88d5873d8ce555a145c77dca04a467fa2680744","doc/macintosh.txt":"57491e53866711b4672d9b9ff35380b9dac9e0d8e3d6c20bdd6140603687c023","doc/replacement.txt":"4b6c3bbd7999d9d4108a281594bd02d13607e334a95465afff8c2c08d395f0e4","doc/windows-1250.txt":"61296bb6a21cdab602300d32ecfba434cb82de5ac3bc88d58710d2f125e28d39","doc/windows-1251.txt":"7deea1c61dea1485c8ff02db2c7d578db7a9aab63ab1cfd02ec04b515864689e","doc/windows-1252.txt":"933ef3bdddfce5ee132b9f1a1aa8b47423d2587bbe475b19028d0a6d38e180b6","doc/windows-1253.txt":"1a38748b88e99071a5c7b3d5456ead4caedeabab50d50d658be105bc113714de","doc/windows-1254.txt":"f8372f86c6f8d642563cd6ddc025260553292a39423df1683a98670bd7bf2b47","doc/windows-1255.txt":"4e5852494730054e2da258a74e1b9d780abbcdd8ce22ebc218ca2efe9e90493d","doc/windows-1256.txt":"c0879c5172abedead302a406e8f60d9cd9598694a0ffa4fd288ffe4fef7b8ea1","doc/windows-1257.txt":"c28a0c9f964fcb2b46d21f537c402446501a2800670481d6abf9fd9e9018d523","doc/windows-1258.txt":"5019ae4d61805c79aacbf17c93793342dbb098d65a1837783bc3e2c6d6a23602","doc/windows-874.txt":"4ef0e4501c5feba8b17aee1818602ed44b36ca8475db771ce2fc16d392cabecc","doc/x-mac-cyrillic.txt":"58be154d8a888ca3d484b83b44f749823ef339ab27f14d90ca9a856f5050a8bd","doc/x-user-defined.txt":"f9cd07c4321bf5cfb0be4bdddd251072999b04a6cf7a6f5bc63709a84e2c1ffc","generate-encoding-data.py":"6f34a845785f53425accf30759edc566873fcb0c2188648e07b09c898f39dddb","rustfmt.toml":"85c1a3b4382fd89e991cbb81b70fb52780472edc064c963943cdaaa56e0a2030","src/ascii.rs":"588e38b01e666d5e7462617ea7e90a108d608dec9e016f3d273ac0744af2e05d","src/big5.rs":"ec6e2913011a38e9a3e825a1731f139a7ca1d5b264fefae51a3cc1a68a57cef9","src/data.rs":"b93f34025fe5c6a85b4b9f0037bf58961352bf19c83f91b09b35eb8495625eec","src/euc_jp.rs":"32047f5b540188c4cb19c07165f846b9786a09f18e315ed3e9bda1293dae52aa","src/euc_kr.rs":"9b25afc72d9378700eecfac58d55ad1c5946d6cd0ccde2c29c08200ef2de6bb9","src/gb18030.rs":"89cd6ae2247add3f3471a699bc12113a9ae2f6b91a5223abbf15b68a13537dcd","src/gb18030_2022.rs":"3c2e06492c5e00fcd39515e4af4c560d8cee5c31e7a7e388db682bc9ee33ee32","src/handles.rs":"b08cef1f5785bb6a4822f2e844c6df1b046b737b7a075e4593eaa8c4208e9fe2","src/iso_2022_jp.rs":"9bb485e82574f4b7d4b2364f0ff276acb6a0bc111758420a3b0ec5e04c196652","src/lib.rs":"c4d9fa1c43105e2310122f1b9197125032e607fe6f79bc22769b340de76e2430","src/macros.rs":"200997f8870de8bfd8cdc475e92115df42108c0df661e49d3d1cbc32056e1d99","src/mem.rs":"948571137d3b151df8db4fb2c733e74ae595d055cdf0ad83abcab9341d6adabe","src/replacement.rs":"7660b34a53f8c1ca2bdfa0e51e843ec28326950952ad8bc96569feb93ac62308","src/shift_jis.rs":"6951ae67e36b1a12fa3a30734957f444d8b1b4ae0e2bde52060b29bd0f16d9d9","src/simd_funcs.rs":"05c6e77af74bfe73cd39a752067c11425d6b46e5da419910f54bf75a5c02a984","src/single_byte.rs":"3ad87116fb339434a4b58e8f2b15485f2b66b9f7814d708f16194ed08f6d6ccf","src/test_data/big5_in.txt":"a5ae290786610c7facdbb1d06be6815e8bb81d68dfa7380edc7ddb6b8c7e412e","src/test_data/big5_in_ref.txt":"52733d9970fb8987f014fa0eac2792250123cf583b363beb2ce7b3c55e3dc555","src/test_data/big5_out.txt":"57420ca41a669c949738c84cab620020959572d2ee97b4e059405bfe26a79b6d","src/test_data/big5_out_ref.txt":"00e5f67c222dd5cd3bb1739276910b8f0032f454cba7cf7c3eaa255a564188d0","src/test_data/euc_kr_in.txt":"21534ec87e82d785d128f980902d13fab6d9dea15c69a991f409d9b0afd1c852","src/test_data/euc_kr_in_ref.txt":"b3009e6a94967df1f1135c66f005610bebad6666d634aec72d2ad77c3211bda3","src/test_data/euc_kr_out.txt":"20205b0b5be4f579271193b5bfbc549a61a9fd5217c33eecfa61784a3ffe2e9d","src/test_data/euc_kr_out_ref.txt":"b5f566237f8d4ef4d03ad26135ca97dfd7398608a82165bd4853b5134ab22cb5","src/test_data/gb18030_in.txt":"0dd1fbf0360930daafdce7e6761852005a8f92f7910180df19a070b6c3c59dee","src/test_data/gb18030_in_ref.txt":"f3eaea1115857054cf30f8ba18219e72377f2a4afd848ccf223770d75aa4251d","src/test_data/gb18030_out.txt":"7184fe9592609597d55c2733606b4c4b1a18b79b24533e1a16a14ff92e7d2b55","src/test_data/gb18030_out_ref.txt":"23bb850ddc69aaf1bdfeabe05a12d93f614e5560dac879d5f02929ee4a7c06c5","src/test_data/iso_2022_jp_in.txt":"98fb823530a30a76eb0ba7ab6ac796959e8869c1ec143f018a1964581ae813aa","src/test_data/iso_2022_jp_in_ref.txt":"df82166d2e01bb446211d7e46f33b47d93ac1bafeae2ed880ee93c4096d11210","src/test_data/iso_2022_jp_out.txt":"bef8eb4804ed0843b9dffdd1d168738635cc77f8d0929beb2532b686318ddae6","src/test_data/iso_2022_jp_out_ref.txt":"b221b36b2bce49d49b620dc8ba80d77bac74e8660a86a11628e79b67f1d98964","src/test_data/jis0208_in.txt":"3c1a7aaada00d6fff41e60bd7589d7ae94afaf562759b116958b1d84711d17b6","src/test_data/jis0208_in_ref.txt":"df82166d2e01bb446211d7e46f33b47d93ac1bafeae2ed880ee93c4096d11210","src/test_data/jis0208_out.txt":"a6188b67eb00ba980cb83056186c89bcdddc1b0210af9afa78ed1c9b7a098950","src/test_data/jis0208_out_ref.txt":"e75a986fe5e78e64bf8fafd7392ae96ee0cb0a4b2e7ef2fe722b3caacf3e2f70","src/test_data/jis0212_in.txt":"9eda766002646a27310457c661832429beff9089d2703355812c4cac30d800b5","src/test_data/jis0212_in_ref.txt":"fcf74c58d2cbe9b3f3db4fa9eff26e09f5e9644097c78614c03177e938988d03","src/test_data/shift_jis_in.txt":"e65df746be90359e70422868522a7aa3e8ed20e0d4c0cf9995d9de248bf93388","src/test_data/shift_jis_in_ref.txt":"13b15aed64e9e7cb35e6a740b67413f0c285fda944f4814d45a7619ea338fb5e","src/test_data/shift_jis_out.txt":"192d0a4a8ce5d0f904c5cb283dfb974577ee667cf1e71955a6dd6aece2b354ef","src/test_data/shift_jis_out_ref.txt":"cb6d50b0c11bad1d1f1fcc02d779672a8b9a2509cbbafdc6392aceb49c8b4268","src/test_labels_names.rs":"23a2e11b02b3b8d15fb5613a625e3edb2c61e70e3c581abfd638719a4088200d","src/testing.rs":"f59e671e95a98a56f6b573e8c6be4d71e670bf52f7e20eb1605d990aafa1894e","src/utf_16.rs":"c071a147fad38d750c2c247e141b76b929a48007b99f26b2922b9caecdaf2f25","src/utf_8.rs":"7b7d887b347f1aefa03246b028a36a72758a4ce76c28f3b45c19467851aa7839","src/variant.rs":"1fab5363588a1554a7169de8731ea9cded7ac63ea35caabdd1c27a8dde68c27b","src/x_user_defined.rs":"9456ca46168ef86c98399a2536f577ef7be3cdde90c0c51392d8ac48519d3fae"},"package":"75030f3c4f45dafd7586dd6780965a8c7e8e285a5ecb86713e63a79c5b2766f3"}
+\ No newline at end of file
++{"files":{"CONTRIBUTING.md":"ca1901f3e8532fb4cec894fd3664f0eaa898c0c4b961d1b992d1ed54eacf362a","COPYRIGHT":"11789f45bb180841cd362a5eee6789c68ddb573a11105e30768c308a6add0190","Cargo.toml":"bfec06bc62932b629faa578d5fefbc4dc8ddbd6c807e542f6a676dc283e2f716","Ideas.md":"b7452893f500163868d8de52c09addaf91e1632454ed02e892c467ed7ec39dbd","LICENSE-APACHE":"cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30","LICENSE-MIT":"3fa4ca83dcc9237839b1bdeb2e6d16bdfb5ec0c5ce42b24694d8bbf0dcbef72c","LICENSE-WHATWG":"838118388fe5c2e7f1dbbaeed13e1c7f3ebf88be91319c7c1d77c18e987d1a50","README.md":"9826137ed4297be3b2019b74a8f6111a796ff507bde41df2f20712539704b9e9","ci/miri.sh":"43cb8d82f49e3bfe2d2274b6ccd6f0714a4188ccef0cecc040829883cfdbee25","doc/Big5.txt":"f73a2edc5cb6c2d140ba6e07f4542e1c4a234950378acde1df93480f0ca0be0b","doc/EUC-JP.txt":"ee2818b907d0137f40a9ab9fd525fc700a44dbdddb6cf0c157a656566bae4bf1","doc/EUC-KR.txt":"71d9e2ccf3b124e8bdfb433c8cf2773fd878077038d0cec3c7237a50f4a78a30","doc/GBK.txt":"8229e59076d8bddb01865cdcf6afda3533238d7c23d97f98820f9e3b2d13505d","doc/IBM866.txt":"a5a433e804d0f83af785015179fbc1d9b0eaf1f7960efcd04093e136b51fbd0e","doc/ISO-2022-JP.txt":"af86684f5a8f0e2868d7b2c292860140c3d2e5527530ca091f1b28198e8e2fe6","doc/ISO-8859-10.txt":"6d3949ad7c81ca176895101ed81a1db7df1060d64e262880b94bd31bb344ab4d","doc/ISO-8859-13.txt":"3951dd89cf93f7729148091683cf8511f4529388b7dc8dcd0d62eaed55be93fa","doc/ISO-8859-14.txt":"3d330784a0374fd255a38b47949675cc7168c800530534b0a01cac6edc623adc","doc/ISO-8859-15.txt":"24b1084aab5127a85aab99153f86e24694d0a3615f53b5ce23683f97cf66c47a","doc/ISO-8859-16.txt":"ce0272559b92ba76d7a7e476f6424ae4a5cc72e75b183611b08392e44add4d25","doc/ISO-8859-2.txt":"18ceff88c13d1b5ba455a3919b1e3de489045c4c3d2dd7e8527c125c75d54aad","doc/ISO-8859-3.txt":"21798404c68f4f5db59223362f24999da96968c0628427321fccce7d2849a130","doc/ISO-8859-4.txt":"d27f6520c6c5bfbcc19176b71d081cdb3bccde1622bb3e420d5680e812632d53","doc/ISO-8859-5.txt":"a10ec8d6ea7a78ad15da7275f6cb1a3365118527e28f9af6d0d5830501303f3a","doc/ISO-8859-6.txt":"ccda8a2efc96115336bdd77776637b9712425e44fbcf745353b9057fbef144e7","doc/ISO-8859-7.txt":"17900fa1f27a445958f0a77d7d9056be375a6bd7ee4492aa680c7c1500bab85e","doc/ISO-8859-8-I.txt":"8357555646d54265a9b9ffa3e68b08d132312f1561c60108ff9b8b1167b6ecf2","doc/ISO-8859-8.txt":"72cd6f3afb7b4a9c16a66a362473315770b7755d72c86c870e52fc3eba86c8af","doc/KOI8-R.txt":"839cf19a38da994488004ed7814b1f6151640156a9a2af02bf2efca745fb5966","doc/KOI8-U.txt":"0cc76624ed1f024183e2298b7e019957da2c70c8ca06e0fc4e6f353f50a5054f","doc/Shift_JIS.txt":"34c49141818cb9ddbcf59cc858f78a79be8ad148d563f26415108ae1f148443f","doc/UTF-16BE.txt":"e2e280d8acbaa6d2a6b3569d60e17500a285f2baa0df3363dd85537cd5a1ef8f","doc/UTF-16LE.txt":"70bdc170e3fc5298ba68f10125fb5eeb8b077036cc96bb4416c4de396f6d76c1","doc/UTF-8.txt":"ea7bae742e613010ced002cf4b601a737d2203fad65e115611451bc4428f548a","doc/gb18030.txt":"67a01665c75505330b0fe5b8d88d5873d8ce555a145c77dca04a467fa2680744","doc/macintosh.txt":"57491e53866711b4672d9b9ff35380b9dac9e0d8e3d6c20bdd6140603687c023","doc/replacement.txt":"4b6c3bbd7999d9d4108a281594bd02d13607e334a95465afff8c2c08d395f0e4","doc/windows-1250.txt":"61296bb6a21cdab602300d32ecfba434cb82de5ac3bc88d58710d2f125e28d39","doc/windows-1251.txt":"7deea1c61dea1485c8ff02db2c7d578db7a9aab63ab1cfd02ec04b515864689e","doc/windows-1252.txt":"933ef3bdddfce5ee132b9f1a1aa8b47423d2587bbe475b19028d0a6d38e180b6","doc/windows-1253.txt":"1a38748b88e99071a5c7b3d5456ead4caedeabab50d50d658be105bc113714de","doc/windows-1254.txt":"f8372f86c6f8d642563cd6ddc025260553292a39423df1683a98670bd7bf2b47","doc/windows-1255.txt":"4e5852494730054e2da258a74e1b9d780abbcdd8ce22ebc218ca2efe9e90493d","doc/windows-1256.txt":"c0879c5172abedead302a406e8f60d9cd9598694a0ffa4fd288ffe4fef7b8ea1","doc/windows-1257.txt":"c28a0c9f964fcb2b46d21f537c402446501a2800670481d6abf9fd9e9018d523","doc/windows-1258.txt":"5019ae4d61805c79aacbf17c93793342dbb098d65a1837783bc3e2c6d6a23602","doc/windows-874.txt":"4ef0e4501c5feba8b17aee1818602ed44b36ca8475db771ce2fc16d392cabecc","doc/x-mac-cyrillic.txt":"58be154d8a888ca3d484b83b44f749823ef339ab27f14d90ca9a856f5050a8bd","doc/x-user-defined.txt":"f9cd07c4321bf5cfb0be4bdddd251072999b04a6cf7a6f5bc63709a84e2c1ffc","generate-encoding-data.py":"6f34a845785f53425accf30759edc566873fcb0c2188648e07b09c898f39dddb","rustfmt.toml":"85c1a3b4382fd89e991cbb81b70fb52780472edc064c963943cdaaa56e0a2030","src/ascii.rs":"588e38b01e666d5e7462617ea7e90a108d608dec9e016f3d273ac0744af2e05d","src/big5.rs":"ec6e2913011a38e9a3e825a1731f139a7ca1d5b264fefae51a3cc1a68a57cef9","src/data.rs":"b93f34025fe5c6a85b4b9f0037bf58961352bf19c83f91b09b35eb8495625eec","src/euc_jp.rs":"32047f5b540188c4cb19c07165f846b9786a09f18e315ed3e9bda1293dae52aa","src/euc_kr.rs":"9b25afc72d9378700eecfac58d55ad1c5946d6cd0ccde2c29c08200ef2de6bb9","src/gb18030.rs":"89cd6ae2247add3f3471a699bc12113a9ae2f6b91a5223abbf15b68a13537dcd","src/gb18030_2022.rs":"3c2e06492c5e00fcd39515e4af4c560d8cee5c31e7a7e388db682bc9ee33ee32","src/handles.rs":"b08cef1f5785bb6a4822f2e844c6df1b046b737b7a075e4593eaa8c4208e9fe2","src/iso_2022_jp.rs":"9bb485e82574f4b7d4b2364f0ff276acb6a0bc111758420a3b0ec5e04c196652","src/lib.rs":"c4d9fa1c43105e2310122f1b9197125032e607fe6f79bc22769b340de76e2430","src/macros.rs":"200997f8870de8bfd8cdc475e92115df42108c0df661e49d3d1cbc32056e1d99","src/mem.rs":"948571137d3b151df8db4fb2c733e74ae595d055cdf0ad83abcab9341d6adabe","src/replacement.rs":"7660b34a53f8c1ca2bdfa0e51e843ec28326950952ad8bc96569feb93ac62308","src/shift_jis.rs":"6951ae67e36b1a12fa3a30734957f444d8b1b4ae0e2bde52060b29bd0f16d9d9","src/simd_funcs.rs":"05c6e77af74bfe73cd39a752067c11425d6b46e5da419910f54bf75a5c02a984","src/single_byte.rs":"3ad87116fb339434a4b58e8f2b15485f2b66b9f7814d708f16194ed08f6d6ccf","src/test_data/big5_in.txt":"a5ae290786610c7facdbb1d06be6815e8bb81d68dfa7380edc7ddb6b8c7e412e","src/test_data/big5_in_ref.txt":"52733d9970fb8987f014fa0eac2792250123cf583b363beb2ce7b3c55e3dc555","src/test_data/big5_out.txt":"57420ca41a669c949738c84cab620020959572d2ee97b4e059405bfe26a79b6d","src/test_data/big5_out_ref.txt":"00e5f67c222dd5cd3bb1739276910b8f0032f454cba7cf7c3eaa255a564188d0","src/test_data/euc_kr_in.txt":"21534ec87e82d785d128f980902d13fab6d9dea15c69a991f409d9b0afd1c852","src/test_data/euc_kr_in_ref.txt":"b3009e6a94967df1f1135c66f005610bebad6666d634aec72d2ad77c3211bda3","src/test_data/euc_kr_out.txt":"20205b0b5be4f579271193b5bfbc549a61a9fd5217c33eecfa61784a3ffe2e9d","src/test_data/euc_kr_out_ref.txt":"b5f566237f8d4ef4d03ad26135ca97dfd7398608a82165bd4853b5134ab22cb5","src/test_data/gb18030_in.txt":"0dd1fbf0360930daafdce7e6761852005a8f92f7910180df19a070b6c3c59dee","src/test_data/gb18030_in_ref.txt":"f3eaea1115857054cf30f8ba18219e72377f2a4afd848ccf223770d75aa4251d","src/test_data/gb18030_out.txt":"7184fe9592609597d55c2733606b4c4b1a18b79b24533e1a16a14ff92e7d2b55","src/test_data/gb18030_out_ref.txt":"23bb850ddc69aaf1bdfeabe05a12d93f614e5560dac879d5f02929ee4a7c06c5","src/test_data/iso_2022_jp_in.txt":"98fb823530a30a76eb0ba7ab6ac796959e8869c1ec143f018a1964581ae813aa","src/test_data/iso_2022_jp_in_ref.txt":"df82166d2e01bb446211d7e46f33b47d93ac1bafeae2ed880ee93c4096d11210","src/test_data/iso_2022_jp_out.txt":"bef8eb4804ed0843b9dffdd1d168738635cc77f8d0929beb2532b686318ddae6","src/test_data/iso_2022_jp_out_ref.txt":"b221b36b2bce49d49b620dc8ba80d77bac74e8660a86a11628e79b67f1d98964","src/test_data/jis0208_in.txt":"3c1a7aaada00d6fff41e60bd7589d7ae94afaf562759b116958b1d84711d17b6","src/test_data/jis0208_in_ref.txt":"df82166d2e01bb446211d7e46f33b47d93ac1bafeae2ed880ee93c4096d11210","src/test_data/jis0208_out.txt":"a6188b67eb00ba980cb83056186c89bcdddc1b0210af9afa78ed1c9b7a098950","src/test_data/jis0208_out_ref.txt":"e75a986fe5e78e64bf8fafd7392ae96ee0cb0a4b2e7ef2fe722b3caacf3e2f70","src/test_data/jis0212_in.txt":"9eda766002646a27310457c661832429beff9089d2703355812c4cac30d800b5","src/test_data/jis0212_in_ref.txt":"fcf74c58d2cbe9b3f3db4fa9eff26e09f5e9644097c78614c03177e938988d03","src/test_data/shift_jis_in.txt":"e65df746be90359e70422868522a7aa3e8ed20e0d4c0cf9995d9de248bf93388","src/test_data/shift_jis_in_ref.txt":"13b15aed64e9e7cb35e6a740b67413f0c285fda944f4814d45a7619ea338fb5e","src/test_data/shift_jis_out.txt":"192d0a4a8ce5d0f904c5cb283dfb974577ee667cf1e71955a6dd6aece2b354ef","src/test_data/shift_jis_out_ref.txt":"cb6d50b0c11bad1d1f1fcc02d779672a8b9a2509cbbafdc6392aceb49c8b4268","src/test_labels_names.rs":"23a2e11b02b3b8d15fb5613a625e3edb2c61e70e3c581abfd638719a4088200d","src/testing.rs":"f59e671e95a98a56f6b573e8c6be4d71e670bf52f7e20eb1605d990aafa1894e","src/utf_16.rs":"c071a147fad38d750c2c247e141b76b929a48007b99f26b2922b9caecdaf2f25","src/utf_8.rs":"7b7d887b347f1aefa03246b028a36a72758a4ce76c28f3b45c19467851aa7839","src/variant.rs":"1fab5363588a1554a7169de8731ea9cded7ac63ea35caabdd1c27a8dde68c27b","src/x_user_defined.rs":"d733660c7775afa8007cfc80c09057d875d6613aaf98c7dc942e47fb93306feb"},"package":null}
+\ No newline at end of file
+diff --git a/third_party/rust/encoding_rs/Cargo.toml b/third_party/rust/encoding_rs/Cargo.toml
+--- a/third_party/rust/encoding_rs/Cargo.toml
++++ b/third_party/rust/encoding_rs/Cargo.toml
+@@ -10,22 +10,16 @@
+ # See Cargo.toml.orig for the original contents.
+ 
+ [package]
+ edition = "2018"
+ rust-version = "1.36"
+ name = "encoding_rs"
+ version = "0.8.35"
+ authors = ["Henri Sivonen <hsivonen@hsivonen.fi>"]
+-build = false
+-autolib = false
+-autobins = false
+-autoexamples = false
+-autotests = false
+-autobenches = false
+ description = "A Gecko-oriented implementation of the Encoding Standard"
+ homepage = "https://docs.rs/encoding_rs/"
+ documentation = "https://docs.rs/encoding_rs/"
+ readme = "README.md"
+ keywords = [
+     "encoding",
+     "web",
+     "unicode",
+@@ -35,16 +29,39 @@ categories = [
+     "text-processing",
+     "encoding",
+     "web-programming",
+     "internationalization",
+ ]
+ license = "(Apache-2.0 OR MIT) AND BSD-3-Clause"
+ repository = "https://github.com/hsivonen/encoding_rs"
+ 
++[profile.release]
++lto = true
++
++[dependencies]
++cfg-if = "1.0"
++
++[dependencies.any_all_workaround]
++version = "0.1.0"
++optional = true
++
++[dependencies.rustversion]
++version = "1.0.19"
++optional = true
++
++[dependencies.serde]
++version = "1.0"
++optional = true
++
++[dev-dependencies]
++bincode = "1.0"
++serde_derive = "1.0"
++serde_json = "1.0"
++
+ [features]
+ alloc = []
+ default = ["alloc"]
+ fast-big5-hanzi-encode = []
+ fast-gb-hanzi-encode = []
+ fast-hangul-encode = []
+ fast-hanja-encode = []
+ fast-kanji-encode = []
+@@ -57,35 +74,8 @@ fast-legacy-encode = [
+ ]
+ less-slow-big5-hanzi-encode = []
+ less-slow-gb-hanzi-encode = []
+ less-slow-kanji-encode = []
+ simd-accel = [
+     "any_all_workaround",
+     "rustversion",
+ ]
+-
+-[lib]
+-name = "encoding_rs"
+-path = "src/lib.rs"
+-
+-[dependencies]
+-cfg-if = "1.0"
+-
+-[dependencies.any_all_workaround]
+-version = "0.1.0"
+-optional = true
+-
+-[dependencies.rustversion]
+-version = "1.0.19"
+-optional = true
+-
+-[dependencies.serde]
+-version = "1.0"
+-optional = true
+-
+-[dev-dependencies]
+-bincode = "1.0"
+-serde_derive = "1.0"
+-serde_json = "1.0"
+-
+-[profile.release]
+-lto = true
+diff --git a/third_party/rust/rustversion/.cargo-checksum.json b/third_party/rust/rustversion/.cargo-checksum.json
+new file mode 100644
+--- /dev/null
++++ b/third_party/rust/rustversion/.cargo-checksum.json
+@@ -0,0 +1,1 @@
++{"files":{"Cargo.toml":"fc211ccd64d3ad59a0715c1a6f8cbfbbd83045f644194394595d16646eee9947","LICENSE-APACHE":"62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a","LICENSE-MIT":"23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3","README.md":"913d04d158843566991845cc9d76e24610bf31f5a99e55115023ccc0b16ff1e7","build/build.rs":"4438b108d5b198ca43ef0a78509da89861020674abd05166addd1c3058afbfa6","build/rustc.rs":"faf67033ec831d968406f5a66c475df337f7221e9d1ab3477fed3a629e1ec5bc","src/attr.rs":"9301cd4aff5a9648c057d5d8de9eb66921f0c3a715c51ada4459576bd49c8b19","src/bound.rs":"13c35302bd5d96ebe54509477e736a8b720e18cb2474e5805480c4517a20e5b0","src/constfn.rs":"613b8f53b21cc06b4f619fce9000993d3e7873b650701ca01cef1e53bed5b40a","src/date.rs":"f79c55ddcd18e124610cd5c9867b1ebaae1feeb6dfc37e2b7f94e3137aa883b6","src/error.rs":"cb37102f03ebbaca313d80f9714fe08dfef92fe956789ee87d93eb6121705f4f","src/expand.rs":"9c93525a8c4a0e620369ed256a1ee40a0b48f984e0fad8db8c0e2998bc8ecb23","src/expr.rs":"8e8ca76f4f5838436d9d7273f499c698bb41f6c15bc07d32ec5c1cb8bd3dd731","src/iter.rs":"8d4b817b9abc4e817105b673e15f29ef9bb8284a010ce01ac2d83387fe136947","src/lib.rs":"77c732493550b7e7a46ae2d25e89c363a851ba25a9e9a89f1aad67bad4afbb04","src/release.rs":"e0755ed1889b4c6f0faaa5adee5f60f27f9926becff875dbb41b6a65ae756591","src/time.rs":"6fcf3a1ed238a97bd7a39b187c88bdcef0246878424e06aa7eb779f841529b34","src/token.rs":"824ce765f692db73afa02d3ebb0281c750748035efc98fa547be29d3072665ce","src/version.rs":"afdb048bba95bbb885945eba5527b6bf0eca0105642bfc304c2f82a8b7d556df","tests/compiletest.rs":"4e381aa8ca3eabb7ac14d1e0c3700b3223e47640547a6988cfa13ad68255f60f","tests/test_const.rs":"cb1e01479bd579b1b77312a9063ab456fe44abad2243e81873c2bf7ef5f205eb","tests/test_eval.rs":"6f0ee3f49c9a0d0c374a4d0e9a9dce753cd9fc2ca7725e000a435dbd5f4a9ce3","tests/test_parse.rs":"f450e0a7f2391561484abb1b851124b5747755b76f945e121370adc710f2099d","tests/ui/bad-bound.rs":"25bde278fcaabf62868417148a5e5f2006bf589d7ebd7bf6004fb8d78e47594f","tests/ui/bad-bound.stderr":"23b4ca0aa1a7df75b5fb34e553a31faa6a3ccc029ecd7d68b056897c2c9cff9f","tests/ui/bad-date.rs":"6e23714dae8b6346fefe50dacd4abba3265248bbadfdd60c739138aa8a0037ba","tests/ui/bad-date.stderr":"f4aec72ca91ba743cadcdaf5a874c701949add5efce490aaf2bf1248ef578768","tests/ui/bad-not.rs":"f003df8bd245e9dd8edc3a6d94078ee5162fac7a98db881271f0f5b6db98d45d","tests/ui/bad-not.stderr":"1aebb3121d067d432a32dd95ff380ceac15a0531c34f90cee950582558841c56","tests/ui/bad-version.rs":"f4ea2cd038e6c63deb9c2e3ceffce93dbf179d9ce18c16d88f3b6cd7138a8c8e","tests/ui/bad-version.stderr":"e9421586d59cb9135123bd97710655014f95cc5f55b0f9611e1d2e8ce9e29a5d","tests/ui/const-not-fn.rs":"10bbe38f0d89391fff0698756e4cfd4e72a41090360393a0c951b67df14d1c35","tests/ui/const-not-fn.stderr":"1180662fd3b8c4426d46923918a2e58dd9b6259f1a364469ae13d5fc3d69ce6c"},"package":"cf54715a573b99ac80df0bc206da022bcd442c974952c7b9720069370852e21f"}
+\ No newline at end of file
+diff --git a/third_party/rust/rustversion/Cargo.toml b/third_party/rust/rustversion/Cargo.toml
+new file mode 100644
+--- /dev/null
++++ b/third_party/rust/rustversion/Cargo.toml
+@@ -0,0 +1,69 @@
++# THIS FILE IS AUTOMATICALLY GENERATED BY CARGO
++#
++# When uploading crates to the registry Cargo will automatically
++# "normalize" Cargo.toml files for maximal compatibility
++# with all versions of Cargo and also rewrite `path` dependencies
++# to registry (e.g., crates.io) dependencies.
++#
++# If you are reading this file be aware that the original Cargo.toml
++# will likely look very different (and much more reasonable).
++# See Cargo.toml.orig for the original contents.
++
++[package]
++edition = "2018"
++rust-version = "1.31"
++name = "rustversion"
++version = "1.0.23"
++authors = ["David Tolnay <dtolnay@gmail.com>"]
++build = "build/build.rs"
++autolib = false
++autobins = false
++autoexamples = false
++autotests = false
++autobenches = false
++description = "Conditional compilation according to rustc compiler version"
++documentation = "https://docs.rs/rustversion"
++readme = "README.md"
++categories = [
++    "development-tools::build-utils",
++    "no-std",
++    "no-std::no-alloc",
++]
++license = "MIT OR Apache-2.0"
++repository = "https://github.com/dtolnay/rustversion"
++
++[package.metadata.docs.rs]
++targets = ["x86_64-unknown-linux-gnu"]
++rustdoc-args = [
++    "--generate-link-to-definition",
++    "--generate-macro-expansion",
++    "--extern-html-root-url=core=https://doc.rust-lang.org",
++    "--extern-html-root-url=alloc=https://doc.rust-lang.org",
++    "--extern-html-root-url=std=https://doc.rust-lang.org",
++    "--extern-html-root-url=proc_macro=https://doc.rust-lang.org",
++]
++
++[lib]
++name = "rustversion"
++path = "src/lib.rs"
++proc-macro = true
++
++[[test]]
++name = "compiletest"
++path = "tests/compiletest.rs"
++
++[[test]]
++name = "test_const"
++path = "tests/test_const.rs"
++
++[[test]]
++name = "test_eval"
++path = "tests/test_eval.rs"
++
++[[test]]
++name = "test_parse"
++path = "tests/test_parse.rs"
++
++[dev-dependencies.trybuild]
++version = "1.0.49"
++features = ["diff"]
+diff --git a/third_party/rust/rustversion/LICENSE-APACHE b/third_party/rust/rustversion/LICENSE-APACHE
+new file mode 100644
+--- /dev/null
++++ b/third_party/rust/rustversion/LICENSE-APACHE
+@@ -0,0 +1,176 @@
++                              Apache License
++                        Version 2.0, January 2004
++                     http://www.apache.org/licenses/
++
++TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
++
++1. Definitions.
++
++   "License" shall mean the terms and conditions for use, reproduction,
++   and distribution as defined by Sections 1 through 9 of this document.
++
++   "Licensor" shall mean the copyright owner or entity authorized by
++   the copyright owner that is granting the License.
++
++   "Legal Entity" shall mean the union of the acting entity and all
++   other entities that control, are controlled by, or are under common
++   control with that entity. For the purposes of this definition,
++   "control" means (i) the power, direct or indirect, to cause the
++   direction or management of such entity, whether by contract or
++   otherwise, or (ii) ownership of fifty percent (50%) or more of the
++   outstanding shares, or (iii) beneficial ownership of such entity.
++
++   "You" (or "Your") shall mean an individual or Legal Entity
++   exercising permissions granted by this License.
++
++   "Source" form shall mean the preferred form for making modifications,
++   including but not limited to software source code, documentation
++   source, and configuration files.
++
++   "Object" form shall mean any form resulting from mechanical
++   transformation or translation of a Source form, including but
++   not limited to compiled object code, generated documentation,
++   and conversions to other media types.
++
++   "Work" shall mean the work of authorship, whether in Source or
++   Object form, made available under the License, as indicated by a
++   copyright notice that is included in or attached to the work
++   (an example is provided in the Appendix below).
++
++   "Derivative Works" shall mean any work, whether in Source or Object
++   form, that is based on (or derived from) the Work and for which the
++   editorial revisions, annotations, elaborations, or other modifications
++   represent, as a whole, an original work of authorship. For the purposes
++   of this License, Derivative Works shall not include works that remain
++   separable from, or merely link (or bind by name) to the interfaces of,
++   the Work and Derivative Works thereof.
++
++   "Contribution" shall mean any work of authorship, including
++   the original version of the Work and any modifications or additions
++   to that Work or Derivative Works thereof, that is intentionally
++   submitted to Licensor for inclusion in the Work by the copyright owner
++   or by an individual or Legal Entity authorized to submit on behalf of
++   the copyright owner. For the purposes of this definition, "submitted"
++   means any form of electronic, verbal, or written communication sent
++   to the Licensor or its representatives, including but not limited to
++   communication on electronic mailing lists, source code control systems,
++   and issue tracking systems that are managed by, or on behalf of, the
++   Licensor for the purpose of discussing and improving the Work, but
++   excluding communication that is conspicuously marked or otherwise
++   designated in writing by the copyright owner as "Not a Contribution."
++
++   "Contributor" shall mean Licensor and any individual or Legal Entity
++   on behalf of whom a Contribution has been received by Licensor and
++   subsequently incorporated within the Work.
++
++2. Grant of Copyright License. Subject to the terms and conditions of
++   this License, each Contributor hereby grants to You a perpetual,
++   worldwide, non-exclusive, no-charge, royalty-free, irrevocable
++   copyright license to reproduce, prepare Derivative Works of,
++   publicly display, publicly perform, sublicense, and distribute the
++   Work and such Derivative Works in Source or Object form.
++
++3. Grant of Patent License. Subject to the terms and conditions of
++   this License, each Contributor hereby grants to You a perpetual,
++   worldwide, non-exclusive, no-charge, royalty-free, irrevocable
++   (except as stated in this section) patent license to make, have made,
++   use, offer to sell, sell, import, and otherwise transfer the Work,
++   where such license applies only to those patent claims licensable
++   by such Contributor that are necessarily infringed by their
++   Contribution(s) alone or by combination of their Contribution(s)
++   with the Work to which such Contribution(s) was submitted. If You
++   institute patent litigation against any entity (including a
++   cross-claim or counterclaim in a lawsuit) alleging that the Work
++   or a Contribution incorporated within the Work constitutes direct
++   or contributory patent infringement, then any patent licenses
++   granted to You under this License for that Work shall terminate
++   as of the date such litigation is filed.
++
++4. Redistribution. You may reproduce and distribute copies of the
++   Work or Derivative Works thereof in any medium, with or without
++   modifications, and in Source or Object form, provided that You
++   meet the following conditions:
++
++   (a) You must give any other recipients of the Work or
++       Derivative Works a copy of this License; and
++
++   (b) You must cause any modified files to carry prominent notices
++       stating that You changed the files; and
++
++   (c) You must retain, in the Source form of any Derivative Works
++       that You distribute, all copyright, patent, trademark, and
++       attribution notices from the Source form of the Work,
++       excluding those notices that do not pertain to any part of
++       the Derivative Works; and
++
++   (d) If the Work includes a "NOTICE" text file as part of its
++       distribution, then any Derivative Works that You distribute must
++       include a readable copy of the attribution notices contained
++       within such NOTICE file, excluding those notices that do not
++       pertain to any part of the Derivative Works, in at least one
++       of the following places: within a NOTICE text file distributed
++       as part of the Derivative Works; within the Source form or
++       documentation, if provided along with the Derivative Works; or,
++       within a display generated by the Derivative Works, if and
++       wherever such third-party notices normally appear. The contents
++       of the NOTICE file are for informational purposes only and
++       do not modify the License. You may add Your own attribution
++       notices within Derivative Works that You distribute, alongside
++       or as an addendum to the NOTICE text from the Work, provided
++       that such additional attribution notices cannot be construed
++       as modifying the License.
++
++   You may add Your own copyright statement to Your modifications and
++   may provide additional or different license terms and conditions
++   for use, reproduction, or distribution of Your modifications, or
++   for any such Derivative Works as a whole, provided Your use,
++   reproduction, and distribution of the Work otherwise complies with
++   the conditions stated in this License.
++
++5. Submission of Contributions. Unless You explicitly state otherwise,
++   any Contribution intentionally submitted for inclusion in the Work
++   by You to the Licensor shall be under the terms and conditions of
++   this License, without any additional terms or conditions.
++   Notwithstanding the above, nothing herein shall supersede or modify
++   the terms of any separate license agreement you may have executed
++   with Licensor regarding such Contributions.
++
++6. Trademarks. This License does not grant permission to use the trade
++   names, trademarks, service marks, or product names of the Licensor,
++   except as required for reasonable and customary use in describing the
++   origin of the Work and reproducing the content of the NOTICE file.
++
++7. Disclaimer of Warranty. Unless required by applicable law or
++   agreed to in writing, Licensor provides the Work (and each
++   Contributor provides its Contributions) on an "AS IS" BASIS,
++   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
++   implied, including, without limitation, any warranties or conditions
++   of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A
++   PARTICULAR PURPOSE. You are solely responsible for determining the
++   appropriateness of using or redistributing the Work and assume any
++   risks associated with Your exercise of permissions under this License.
++
++8. Limitation of Liability. In no event and under no legal theory,
++   whether in tort (including negligence), contract, or otherwise,
++   unless required by applicable law (such as deliberate and grossly
++   negligent acts) or agreed to in writing, shall any Contributor be
++   liable to You for damages, including any direct, indirect, special,
++   incidental, or consequential damages of any character arising as a
++   result of this License or out of the use or inability to use the
++   Work (including but not limited to damages for loss of goodwill,
++   work stoppage, computer failure or malfunction, or any and all
++   other commercial damages or losses), even if such Contributor
++   has been advised of the possibility of such damages.
++
++9. Accepting Warranty or Additional Liability. While redistributing
++   the Work or Derivative Works thereof, You may choose to offer,
++   and charge a fee for, acceptance of support, warranty, indemnity,
++   or other liability obligations and/or rights consistent with this
++   License. However, in accepting such obligations, You may act only
++   on Your own behalf and on Your sole responsibility, not on behalf
++   of any other Contributor, and only if You agree to indemnify,
++   defend, and hold each Contributor harmless for any liability
++   incurred by, or claims asserted against, such Contributor by reason
++   of your accepting any such warranty or additional liability.
++
++END OF TERMS AND CONDITIONS
+diff --git a/third_party/rust/rustversion/LICENSE-MIT b/third_party/rust/rustversion/LICENSE-MIT
+new file mode 100644
+--- /dev/null
++++ b/third_party/rust/rustversion/LICENSE-MIT
+@@ -0,0 +1,23 @@
++Permission is hereby granted, free of charge, to any
++person obtaining a copy of this software and associated
++documentation files (the "Software"), to deal in the
++Software without restriction, including without
++limitation the rights to use, copy, modify, merge,
++publish, distribute, sublicense, and/or sell copies of
++the Software, and to permit persons to whom the Software
++is furnished to do so, subject to the following
++conditions:
++
++The above copyright notice and this permission notice
++shall be included in all copies or substantial portions
++of the Software.
++
++THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF
++ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
++TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
++PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
++SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
++CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
++IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
++DEALINGS IN THE SOFTWARE.
+diff --git a/third_party/rust/rustversion/README.md b/third_party/rust/rustversion/README.md
+new file mode 100644
+--- /dev/null
++++ b/third_party/rust/rustversion/README.md
+@@ -0,0 +1,167 @@
++Compiler version cfg
++====================
++
++[<img alt="github" src="https://img.shields.io/badge/github-dtolnay/rustversion-8da0cb?style=for-the-badge&labelColor=555555&logo=github" height="20">](https://github.com/dtolnay/rustversion)
++[<img alt="crates.io" src="https://img.shields.io/crates/v/rustversion.svg?style=for-the-badge&color=fc8d62&logo=rust" height="20">](https://crates.io/crates/rustversion)
++[<img alt="docs.rs" src="https://img.shields.io/badge/docs.rs-rustversion-66c2a5?style=for-the-badge&labelColor=555555&logo=docs.rs" height="20">](https://docs.rs/rustversion)
++[<img alt="build status" src="https://img.shields.io/github/actions/workflow/status/dtolnay/rustversion/ci.yml?branch=master&style=for-the-badge" height="20">](https://github.com/dtolnay/rustversion/actions?query=branch%3Amaster)
++
++This crate provides macros for conditional compilation according to rustc
++compiler version, analogous to [`#[cfg(...)]`][cfg] and
++[`#[cfg_attr(...)]`][cfg_attr].
++
++[cfg]: https://doc.rust-lang.org/reference/conditional-compilation.html#the-cfg-attribute
++[cfg_attr]: https://doc.rust-lang.org/reference/conditional-compilation.html#the-cfg_attr-attribute
++
++```toml
++[dependencies]
++rustversion = "1.0"
++```
++
++<br>
++
++## Selectors
++
++- <b>`#[rustversion::stable]`</b>
++  —<br>
++  True on any stable compiler.
++
++- <b>`#[rustversion::stable(1.34)]`</b>
++  —<br>
++  True on exactly the specified stable compiler.
++
++- <b>`#[rustversion::beta]`</b>
++  —<br>
++  True on any beta compiler.
++
++- <b>`#[rustversion::nightly]`</b>
++  —<br>
++  True on any nightly compiler or dev build.
++
++- <b>`#[rustversion::nightly(2025-01-01)]`</b>
++  —<br>
++  True on exactly one nightly.
++
++- <b>`#[rustversion::since(1.34)]`</b>
++  —<br>
++  True on that stable release and any later compiler, including beta and
++  nightly.
++
++- <b>`#[rustversion::since(2025-01-01)]`</b>
++  —<br>
++  True on that nightly and all newer ones.
++
++- <b>`#[rustversion::before(`</b><i>version or date</i><b>`)]`</b>
++  —<br>
++  Negative of *#[rustversion::since(...)]*.
++
++- <b>`#[rustversion::not(`</b><i>selector</i><b>`)]`</b>
++  —<br>
++  Negative of any selector; for example *#[rustversion::not(nightly)]*.
++
++- <b>`#[rustversion::any(`</b><i>selectors...</i><b>`)]`</b>
++  —<br>
++  True if any of the comma-separated selectors is true; for example
++  *#[rustversion::any(stable, beta)]*.
++
++- <b>`#[rustversion::all(`</b><i>selectors...</i><b>`)]`</b>
++  —<br>
++  True if all of the comma-separated selectors are true; for example
++  *#[rustversion::all(since(1.31), before(1.34))]*.
++
++- <b>`#[rustversion::attr(`</b><i>selector</i><b>`, `</b><i>attribute</i><b>`)]`</b>
++  —<br>
++  For conditional inclusion of attributes; analogous to `cfg_attr`.
++
++- <b>`rustversion::cfg!(`</b><i>selector</i><b>`)`</b>
++  —<br>
++  An expression form of any of the above attributes; for example
++  *if rustversion::cfg!(any(stable, beta)) { ... }*.
++
++<br>
++
++## Use cases
++
++Providing additional trait impls as types are stabilized in the standard library
++without breaking compatibility with older compilers; in this case Pin\<P\>
++stabilized in [Rust 1.33][pin]:
++
++[pin]: https://blog.rust-lang.org/2019/02/28/Rust-1.33.0.html#pinning
++
++```rust
++#[rustversion::since(1.33)]
++use std::pin::Pin;
++
++#[rustversion::since(1.33)]
++impl<P: MyTrait> MyTrait for Pin<P> {
++    /* ... */
++}
++```
++
++Similar but for language features; the ability to control alignment greater than
++1 of packed structs was stabilized in [Rust 1.33][packed].
++
++[packed]: https://github.com/rust-lang/rust/blob/master/RELEASES.md#version-1330-2019-02-28
++
++```rust
++#[rustversion::attr(before(1.33), repr(packed))]
++#[rustversion::attr(since(1.33), repr(packed(2)))]
++struct Six(i16, i32);
++
++fn main() {
++    println!("{}", std::mem::align_of::<Six>());
++}
++```
++
++Augmenting code with `const` as const impls are stabilized in the standard
++library. This use of `const` as an attribute is recognized as a special case by
++the rustversion::attr macro.
++
++```rust
++use std::time::Duration;
++
++#[rustversion::attr(since(1.32), const)]
++fn duration_as_days(dur: Duration) -> u64 {
++    dur.as_secs() / 60 / 60 / 24
++}
++```
++
++Emitting Cargo cfg directives from a build script. Note that this requires
++listing `rustversion` under `[build-dependencies]` in Cargo.toml, not
++`[dependencies]`.
++
++```rust
++// build.rs
++
++fn main() {
++    if rustversion::cfg!(since(1.36)) {
++        println!("cargo:rustc-cfg=no_std");
++    }
++}
++```
++
++```rust
++// src/lib.rs
++
++#![cfg_attr(no_std, no_std)]
++
++#[cfg(no_std)]
++extern crate alloc;
++```
++
++<br>
++
++#### License
++
++<sup>
++Licensed under either of <a href="LICENSE-APACHE">Apache License, Version
++2.0</a> or <a href="LICENSE-MIT">MIT license</a> at your option.
++</sup>
++
++<br>
++
++<sub>
++Unless you explicitly state otherwise, any contribution intentionally submitted
++for inclusion in this crate by you, as defined in the Apache-2.0 license, shall
++be dual licensed as above, without any additional terms or conditions.
++</sub>
+diff --git a/third_party/rust/rustversion/build/build.rs b/third_party/rust/rustversion/build/build.rs
+new file mode 100644
+--- /dev/null
++++ b/third_party/rust/rustversion/build/build.rs
+@@ -0,0 +1,119 @@
++#![allow(
++    clippy::elidable_lifetime_names,
++    clippy::enum_glob_use,
++    clippy::must_use_candidate,
++    clippy::single_match_else
++)]
++
++mod rustc;
++
++use std::env;
++use std::ffi::OsString;
++use std::fmt::{self, Debug, Display};
++use std::fs;
++use std::iter;
++use std::path::Path;
++use std::process::{self, Command};
++
++fn main() {
++    println!("cargo:rerun-if-changed=build/build.rs");
++
++    let rustc = env::var_os("RUSTC").unwrap_or_else(|| OsString::from("rustc"));
++    let rustc_wrapper = env::var_os("RUSTC_WRAPPER").filter(|wrapper| !wrapper.is_empty());
++    let wrapped_rustc = rustc_wrapper.iter().chain(iter::once(&rustc));
++
++    let mut is_clippy_driver = false;
++    let mut is_mirai = false;
++    let version = loop {
++        let mut command;
++        if is_mirai {
++            command = Command::new(&rustc);
++        } else {
++            let mut wrapped_rustc = wrapped_rustc.clone();
++            command = Command::new(wrapped_rustc.next().unwrap());
++            command.args(wrapped_rustc);
++        }
++        if is_clippy_driver {
++            command.arg("--rustc");
++        }
++        command.arg("--version");
++
++        // Allow wrapper scripts or alternate compilers to tell that this is
++        // `rustversion` running --version, so that they can stick to rustc's
++        // version format. https://github.com/dtolnay/rustversion/issues/67
++        command.env("RUSTVERSION", "1");
++
++        let output = match command.output() {
++            Ok(output) => output,
++            Err(e) => {
++                let rustc = rustc.to_string_lossy();
++                eprintln!("Error: failed to run `{} --version`: {}", rustc, e);
++                process::exit(1);
++            }
++        };
++
++        let string = match String::from_utf8(output.stdout) {
++            Ok(string) => string,
++            Err(e) => {
++                let rustc = rustc.to_string_lossy();
++                eprintln!(
++                    "Error: failed to parse output of `{} --version`: {}",
++                    rustc, e,
++                );
++                process::exit(1);
++            }
++        };
++
++        break match rustc::parse(&string) {
++            rustc::ParseResult::Success(version) => version,
++            rustc::ParseResult::OopsClippy if !is_clippy_driver => {
++                is_clippy_driver = true;
++                continue;
++            }
++            rustc::ParseResult::OopsMirai if !is_mirai && rustc_wrapper.is_some() => {
++                is_mirai = true;
++                continue;
++            }
++            rustc::ParseResult::Unrecognized
++            | rustc::ParseResult::OopsClippy
++            | rustc::ParseResult::OopsMirai => {
++                eprintln!(
++                    "Error: unexpected output from `rustc --version`: {:?}\n\n\
++                    Please file an issue in https://github.com/dtolnay/rustversion",
++                    string
++                );
++                process::exit(1);
++            }
++        };
++    };
++
++    if version.minor < 38 {
++        // Prior to 1.38, a #[proc_macro] is not allowed to be named `cfg`.
++        println!("cargo:rustc-cfg=cfg_macro_not_allowed");
++    }
++
++    if version.minor >= 80 {
++        println!("cargo:rustc-check-cfg=cfg(cfg_macro_not_allowed)");
++        println!("cargo:rustc-check-cfg=cfg(host_os, values(\"windows\"))");
++    }
++
++    let version = format!("{:#}\n", Render(&version));
++    let out_dir = env::var_os("OUT_DIR").expect("OUT_DIR not set");
++    let out_file = Path::new(&out_dir).join("version.expr");
++    fs::write(out_file, version).expect("failed to write version.expr");
++
++    let host = env::var_os("HOST").expect("HOST not set");
++    if let Some("windows") = host.to_str().unwrap().split('-').nth(2) {
++        println!("cargo:rustc-cfg=host_os=\"windows\"");
++    }
++}
++
++// Shim Version's {:?} format into a {} format, because {:?} is unusable in
++// format strings when building with `-Zfmt-debug=none`.
++struct Render<'a>(&'a rustc::Version);
++
++impl<'a> Display for Render<'a> {
++    fn fmt(&self, formatter: &mut fmt::Formatter) -> fmt::Result {
++        Debug::fmt(self.0, formatter)
++    }
++}
+diff --git a/third_party/rust/rustversion/build/rustc.rs b/third_party/rust/rustversion/build/rustc.rs
+new file mode 100644
+--- /dev/null
++++ b/third_party/rust/rustversion/build/rustc.rs
+@@ -0,0 +1,126 @@
++use self::Channel::*;
++use std::fmt::{self, Debug};
++
++pub enum ParseResult {
++    Success(Version),
++    OopsClippy,
++    OopsMirai,
++    Unrecognized,
++}
++
++#[cfg_attr(test, derive(PartialEq))]
++pub struct Version {
++    pub minor: u16,
++    pub patch: u16,
++    pub channel: Channel,
++}
++
++#[cfg_attr(test, derive(PartialEq))]
++pub enum Channel {
++    Stable,
++    Beta,
++    Nightly(Date),
++    Dev,
++}
++
++#[cfg_attr(test, derive(PartialEq))]
++pub struct Date {
++    pub year: u16,
++    pub month: u8,
++    pub day: u8,
++}
++
++pub fn parse(string: &str) -> ParseResult {
++    let last_line = string.lines().last().unwrap_or(string);
++    let mut words = last_line.trim().split(' ');
++
++    match words.next() {
++        Some("rustc") => {}
++        Some(word) if word.starts_with("clippy") => return ParseResult::OopsClippy,
++        Some("mirai") => return ParseResult::OopsMirai,
++        Some(_) | None => return ParseResult::Unrecognized,
++    }
++
++    parse_words(&mut words).map_or(ParseResult::Unrecognized, ParseResult::Success)
++}
++
++fn parse_words(words: &mut dyn Iterator<Item = &str>) -> Option<Version> {
++    let mut version_channel = words.next()?.split('-');
++    let version = version_channel.next()?;
++    let channel = version_channel.next();
++
++    let mut digits = version.split('.');
++    let major = digits.next()?;
++    if major != "1" {
++        return None;
++    }
++    let minor = digits.next()?.parse().ok()?;
++    let patch = digits.next().unwrap_or("0").parse().ok()?;
++
++    let channel = match channel {
++        None => Stable,
++        Some("dev") => Dev,
++        Some(channel) if channel.starts_with("beta") => Beta,
++        Some("nightly") => match words.next() {
++            Some(hash) if hash.starts_with('(') => match words.next() {
++                None if hash.ends_with(')') => Dev,
++                Some(date) if date.ends_with(')') => {
++                    let mut date = date[..date.len() - 1].split('-');
++                    let year = date.next()?.parse().ok()?;
++                    let month = date.next()?.parse().ok()?;
++                    let day = date.next()?.parse().ok()?;
++                    match date.next() {
++                        None => Nightly(Date { year, month, day }),
++                        Some(_) => return None,
++                    }
++                }
++                None | Some(_) => return None,
++            },
++            Some(_) => return None,
++            None => Dev,
++        },
++        Some(_) => return None,
++    };
++
++    Some(Version {
++        minor,
++        patch,
++        channel,
++    })
++}
++
++impl Debug for Version {
++    fn fmt(&self, formatter: &mut fmt::Formatter) -> fmt::Result {
++        formatter
++            .debug_struct("crate::version::Version")
++            .field("minor", &self.minor)
++            .field("patch", &self.patch)
++            .field("channel", &self.channel)
++            .finish()
++    }
++}
++
++impl Debug for Channel {
++    fn fmt(&self, formatter: &mut fmt::Formatter) -> fmt::Result {
++        match self {
++            Channel::Stable => formatter.write_str("crate::version::Channel::Stable"),
++            Channel::Beta => formatter.write_str("crate::version::Channel::Beta"),
++            Channel::Nightly(date) => formatter
++                .debug_tuple("crate::version::Channel::Nightly")
++                .field(date)
++                .finish(),
++            Channel::Dev => formatter.write_str("crate::version::Channel::Dev"),
++        }
++    }
++}
++
++impl Debug for Date {
++    fn fmt(&self, formatter: &mut fmt::Formatter) -> fmt::Result {
++        formatter
++            .debug_struct("crate::date::Date")
++            .field("year", &self.year)
++            .field("month", &self.month)
++            .field("day", &self.day)
++            .finish()
++    }
++}
+diff --git a/third_party/rust/rustversion/src/attr.rs b/third_party/rust/rustversion/src/attr.rs
+new file mode 100644
+--- /dev/null
++++ b/third_party/rust/rustversion/src/attr.rs
+@@ -0,0 +1,35 @@
++use crate::error::{Error, Result};
++use crate::expr::{self, Expr};
++use crate::{iter, token};
++use proc_macro::{Span, TokenStream};
++
++pub struct Args {
++    pub condition: Expr,
++    pub then: Then,
++}
++
++pub enum Then {
++    Const(Span),
++    Attribute(TokenStream),
++}
++
++pub fn parse(input: TokenStream) -> Result<Args> {
++    let ref mut input = iter::new(input);
++    let condition = expr::parse(input)?;
++
++    token::parse_punct(input, ',')?;
++    if input.peek().is_none() {
++        return Err(Error::new(Span::call_site(), "expected one or more attrs"));
++    }
++
++    let const_span = token::parse_optional_keyword(input, "const");
++    let then = if let Some(const_span) = const_span {
++        token::parse_optional_punct(input, ',');
++        token::parse_end(input)?;
++        Then::Const(const_span)
++    } else {
++        Then::Attribute(input.collect())
++    };
++
++    Ok(Args { condition, then })
++}
+diff --git a/third_party/rust/rustversion/src/bound.rs b/third_party/rust/rustversion/src/bound.rs
+new file mode 100644
+--- /dev/null
++++ b/third_party/rust/rustversion/src/bound.rs
+@@ -0,0 +1,63 @@
++use crate::date::{self, Date};
++use crate::error::{Error, Result};
++use crate::iter::Iter;
++use crate::release::{self, Release};
++use crate::time;
++use crate::version::{Channel::*, Version};
++use proc_macro::{Group, TokenTree};
++use std::cmp::Ordering;
++
++pub enum Bound {
++    Nightly(Date),
++    Stable(Release),
++}
++
++pub fn parse(paren: Group, iter: Iter) -> Result<Bound> {
++    if let Some(TokenTree::Literal(literal)) = iter.peek() {
++        let repr = literal.to_string();
++        if repr.starts_with(|ch: char| ch.is_ascii_digit()) {
++            if repr.contains('.') {
++                return release::parse(paren, iter).map(Bound::Stable);
++            } else {
++                return date::parse(paren, iter).map(Bound::Nightly);
++            }
++        }
++    }
++    let msg = format!(
++        "expected rustc release number like 1.85, or nightly date like {}",
++        time::today(),
++    );
++    Err(Error::group(paren, msg))
++}
++
++impl PartialEq<Bound> for Version {
++    fn eq(&self, rhs: &Bound) -> bool {
++        match rhs {
++            Bound::Nightly(date) => match self.channel {
++                Stable | Beta | Dev => false,
++                Nightly(nightly) => nightly == *date,
++            },
++            Bound::Stable(release) => {
++                self.minor == release.minor
++                    && release.patch.map_or(true, |patch| self.patch == patch)
++            }
++        }
++    }
++}
++
++impl PartialOrd<Bound> for Version {
++    fn partial_cmp(&self, rhs: &Bound) -> Option<Ordering> {
++        match rhs {
++            Bound::Nightly(date) => match self.channel {
++                Stable | Beta => Some(Ordering::Less),
++                Nightly(nightly) => Some(nightly.cmp(date)),
++                Dev => Some(Ordering::Greater),
++            },
++            Bound::Stable(release) => {
++                let version = (self.minor, self.patch);
++                let bound = (release.minor, release.patch.unwrap_or(0));
++                Some(version.cmp(&bound))
++            }
++        }
++    }
++}
+diff --git a/third_party/rust/rustversion/src/constfn.rs b/third_party/rust/rustversion/src/constfn.rs
+new file mode 100644
+--- /dev/null
++++ b/third_party/rust/rustversion/src/constfn.rs
+@@ -0,0 +1,58 @@
++use crate::error::{Error, Result};
++use proc_macro::{Ident, Span, TokenStream, TokenTree};
++use std::iter;
++
++#[derive(PartialOrd, PartialEq)]
++enum Qualifiers {
++    None,
++    Async,
++    Unsafe,
++    Extern,
++    Abi,
++}
++
++impl Qualifiers {
++    fn from_ident(ident: &Ident) -> Self {
++        match ident.to_string().as_str() {
++            "async" => Qualifiers::Async,
++            "unsafe" => Qualifiers::Unsafe,
++            "extern" => Qualifiers::Extern,
++            _ => Qualifiers::None,
++        }
++    }
++}
++
++pub(crate) fn insert_const(input: TokenStream, const_span: Span) -> Result<TokenStream> {
++    let ref mut input = crate::iter::new(input);
++    let mut out = TokenStream::new();
++    let mut qualifiers = Qualifiers::None;
++    let mut pending = Vec::new();
++
++    while let Some(token) = input.next() {
++        match token {
++            TokenTree::Ident(ref ident) if ident.to_string() == "fn" => {
++                let const_ident = Ident::new("const", const_span);
++                out.extend(iter::once(TokenTree::Ident(const_ident)));
++                out.extend(pending);
++                out.extend(iter::once(token));
++                out.extend(input);
++                return Ok(out);
++            }
++            TokenTree::Ident(ref ident) if Qualifiers::from_ident(ident) > qualifiers => {
++                qualifiers = Qualifiers::from_ident(ident);
++                pending.push(token);
++            }
++            TokenTree::Literal(_) if qualifiers == Qualifiers::Extern => {
++                qualifiers = Qualifiers::Abi;
++                pending.push(token);
++            }
++            _ => {
++                qualifiers = Qualifiers::None;
++                out.extend(pending.drain(..));
++                out.extend(iter::once(token));
++            }
++        }
++    }
++
++    Err(Error::new(const_span, "only allowed on a fn item"))
++}
+diff --git a/third_party/rust/rustversion/src/date.rs b/third_party/rust/rustversion/src/date.rs
+new file mode 100644
+--- /dev/null
++++ b/third_party/rust/rustversion/src/date.rs
+@@ -0,0 +1,50 @@
++use crate::error::{Error, Result};
++use crate::iter::Iter;
++use crate::{time, token};
++use proc_macro::Group;
++use std::fmt::{self, Display};
++
++#[derive(Copy, Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
++pub struct Date {
++    pub year: u16,
++    pub month: u8,
++    pub day: u8,
++}
++
++impl Display for Date {
++    fn fmt(&self, formatter: &mut fmt::Formatter) -> fmt::Result {
++        write!(
++            formatter,
++            "{:04}-{:02}-{:02}",
++            self.year, self.month, self.day,
++        )
++    }
++}
++
++pub fn parse(paren: Group, iter: Iter) -> Result<Date> {
++    try_parse(iter).map_err(|()| {
++        let msg = format!("expected nightly date, like {}", time::today());
++        Error::group(paren, msg)
++    })
++}
++
++fn try_parse(iter: Iter) -> Result<Date, ()> {
++    let year = token::parse_literal(iter).map_err(drop)?;
++    token::parse_punct(iter, '-').map_err(drop)?;
++    let month = token::parse_literal(iter).map_err(drop)?;
++    token::parse_punct(iter, '-').map_err(drop)?;
++    let day = token::parse_literal(iter).map_err(drop)?;
++
++    let year = year.to_string().parse::<u64>().map_err(drop)?;
++    let month = month.to_string().parse::<u64>().map_err(drop)?;
++    let day = day.to_string().parse::<u64>().map_err(drop)?;
++    if year >= 3000 || month > 12 || day > 31 {
++        return Err(());
++    }
++
++    Ok(Date {
++        year: year as u16,
++        month: month as u8,
++        day: day as u8,
++    })
++}
+diff --git a/third_party/rust/rustversion/src/error.rs b/third_party/rust/rustversion/src/error.rs
+new file mode 100644
+--- /dev/null
++++ b/third_party/rust/rustversion/src/error.rs
+@@ -0,0 +1,56 @@
++use proc_macro::{Delimiter, Group, Ident, Literal, Punct, Spacing, Span, TokenStream, TokenTree};
++use std::fmt::Display;
++use std::iter::FromIterator;
++
++pub type Result<T, E = Error> = std::result::Result<T, E>;
++
++pub struct Error {
++    begin: Span,
++    end: Span,
++    msg: String,
++}
++
++impl Error {
++    pub fn new(span: Span, msg: impl Display) -> Self {
++        Self::new2(span, span, msg)
++    }
++
++    pub fn new2(begin: Span, end: Span, msg: impl Display) -> Self {
++        Error {
++            begin,
++            end,
++            msg: msg.to_string(),
++        }
++    }
++
++    pub fn group(group: Group, msg: impl Display) -> Self {
++        let mut iter = group.stream().into_iter();
++        let delimiter = group.span();
++        let begin = iter.next().map_or(delimiter, |t| t.span());
++        let end = iter.last().map_or(begin, |t| t.span());
++        Self::new2(begin, end, msg)
++    }
++
++    pub fn into_compile_error(self) -> TokenStream {
++        // compile_error! { $msg }
++        TokenStream::from_iter(vec![
++            TokenTree::Ident(Ident::new("compile_error", self.begin)),
++            TokenTree::Punct({
++                let mut punct = Punct::new('!', Spacing::Alone);
++                punct.set_span(self.begin);
++                punct
++            }),
++            TokenTree::Group({
++                let mut group = Group::new(Delimiter::Brace, {
++                    TokenStream::from_iter(vec![TokenTree::Literal({
++                        let mut string = Literal::string(&self.msg);
++                        string.set_span(self.end);
++                        string
++                    })])
++                });
++                group.set_span(self.end);
++                group
++            }),
++        ])
++    }
++}
+diff --git a/third_party/rust/rustversion/src/expand.rs b/third_party/rust/rustversion/src/expand.rs
+new file mode 100644
+--- /dev/null
++++ b/third_party/rust/rustversion/src/expand.rs
+@@ -0,0 +1,100 @@
++use crate::attr::{self, Then};
++use crate::error::{Error, Result};
++use crate::{constfn, expr, iter, token};
++use proc_macro::{Delimiter, Group, Ident, Punct, Spacing, Span, TokenStream, TokenTree};
++use std::iter::FromIterator;
++
++pub fn cfg(introducer: &str, args: TokenStream, input: TokenStream) -> TokenStream {
++    try_cfg(introducer, args, input).unwrap_or_else(Error::into_compile_error)
++}
++
++fn try_cfg(introducer: &str, args: TokenStream, input: TokenStream) -> Result<TokenStream> {
++    let introducer = Ident::new(introducer, Span::call_site());
++
++    let mut full_args = TokenStream::from(TokenTree::Ident(introducer));
++    if !args.is_empty() {
++        full_args.extend(std::iter::once(TokenTree::Group(Group::new(
++            Delimiter::Parenthesis,
++            args,
++        ))));
++    }
++
++    let ref mut full_args = iter::new(full_args);
++    let expr = expr::parse(full_args)?;
++    token::parse_end(full_args)?;
++
++    if expr.eval(crate::RUSTVERSION) {
++        Ok(allow_incompatible_msrv(input))
++    } else {
++        Ok(TokenStream::new())
++    }
++}
++
++pub fn try_attr(args: attr::Args, input: TokenStream) -> Result<TokenStream> {
++    if !args.condition.eval(crate::RUSTVERSION) {
++        return Ok(input);
++    }
++
++    let output = match args.then {
++        Then::Const(const_token) => constfn::insert_const(input, const_token)?,
++        Then::Attribute(then) => {
++            TokenStream::from_iter(
++                // #[cfg_attr(all(), #then)]
++                vec![
++                    TokenTree::Punct(Punct::new('#', Spacing::Alone)),
++                    TokenTree::Group(Group::new(
++                        Delimiter::Bracket,
++                        TokenStream::from_iter(vec![
++                            TokenTree::Ident(Ident::new("cfg_attr", Span::call_site())),
++                            TokenTree::Group(Group::new(
++                                Delimiter::Parenthesis,
++                                TokenStream::from_iter(
++                                    vec![
++                                        TokenTree::Ident(Ident::new("all", Span::call_site())),
++                                        TokenTree::Group(Group::new(
++                                            Delimiter::Parenthesis,
++                                            TokenStream::new(),
++                                        )),
++                                        TokenTree::Punct(Punct::new(',', Spacing::Alone)),
++                                    ]
++                                    .into_iter()
++                                    .chain(then),
++                                ),
++                            )),
++                        ]),
++                    )),
++                ]
++                .into_iter()
++                .chain(input),
++            )
++        }
++    };
++
++    Ok(allow_incompatible_msrv(output))
++}
++
++fn allow_incompatible_msrv(input: TokenStream) -> TokenStream {
++    TokenStream::from_iter(
++        // #[allow(clippy::incompatible_msrv)]
++        vec![
++            TokenTree::Punct(Punct::new('#', Spacing::Alone)),
++            TokenTree::Group(Group::new(
++                Delimiter::Bracket,
++                TokenStream::from_iter(vec![
++                    TokenTree::Ident(Ident::new("allow", Span::call_site())),
++                    TokenTree::Group(Group::new(
++                        Delimiter::Parenthesis,
++                        TokenStream::from_iter(vec![
++                            TokenTree::Ident(Ident::new("clippy", Span::call_site())),
++                            TokenTree::Punct(Punct::new(':', Spacing::Joint)),
++                            TokenTree::Punct(Punct::new(':', Spacing::Alone)),
++                            TokenTree::Ident(Ident::new("incompatible_msrv", Span::call_site())),
++                        ]),
++                    )),
++                ]),
++            )),
++        ]
++        .into_iter()
++        .chain(input),
++    )
++}
+diff --git a/third_party/rust/rustversion/src/expr.rs b/third_party/rust/rustversion/src/expr.rs
+new file mode 100644
+--- /dev/null
++++ b/third_party/rust/rustversion/src/expr.rs
+@@ -0,0 +1,163 @@
++use crate::bound::{self, Bound};
++use crate::date::{self, Date};
++use crate::error::{Error, Result};
++use crate::iter::{self, Iter};
++use crate::release::{self, Release};
++use crate::token;
++use crate::version::{Channel, Version};
++use proc_macro::{Ident, Span, TokenTree};
++
++pub enum Expr {
++    Stable,
++    Beta,
++    Nightly,
++    Date(Date),
++    Since(Bound),
++    Before(Bound),
++    Release(Release),
++    Not(Box<Expr>),
++    Any(Vec<Expr>),
++    All(Vec<Expr>),
++}
++
++impl Expr {
++    pub fn eval(&self, rustc: Version) -> bool {
++        use self::Expr::*;
++
++        match self {
++            Stable => rustc.channel == Channel::Stable,
++            Beta => rustc.channel == Channel::Beta,
++            Nightly => match rustc.channel {
++                Channel::Nightly(_) | Channel::Dev => true,
++                Channel::Stable | Channel::Beta => false,
++            },
++            Date(date) => match rustc.channel {
++                Channel::Nightly(rustc) => rustc == *date,
++                Channel::Stable | Channel::Beta | Channel::Dev => false,
++            },
++            Since(bound) => rustc >= *bound,
++            Before(bound) => rustc < *bound,
++            Release(release) => {
++                rustc.channel == Channel::Stable
++                    && rustc.minor == release.minor
++                    && release.patch.map_or(true, |patch| rustc.patch == patch)
++            }
++            Not(expr) => !expr.eval(rustc),
++            Any(exprs) => exprs.iter().any(|e| e.eval(rustc)),
++            All(exprs) => exprs.iter().all(|e| e.eval(rustc)),
++        }
++    }
++}
++
++pub fn parse(iter: Iter) -> Result<Expr> {
++    match &iter.next() {
++        Some(TokenTree::Ident(i)) if i.to_string() == "stable" => parse_stable(iter),
++        Some(TokenTree::Ident(i)) if i.to_string() == "beta" => Ok(Expr::Beta),
++        Some(TokenTree::Ident(i)) if i.to_string() == "nightly" => parse_nightly(iter),
++        Some(TokenTree::Ident(i)) if i.to_string() == "since" => parse_since(i, iter),
++        Some(TokenTree::Ident(i)) if i.to_string() == "before" => parse_before(i, iter),
++        Some(TokenTree::Ident(i)) if i.to_string() == "not" => parse_not(i, iter),
++        Some(TokenTree::Ident(i)) if i.to_string() == "any" => parse_any(i, iter),
++        Some(TokenTree::Ident(i)) if i.to_string() == "all" => parse_all(i, iter),
++        unexpected => {
++            let span = unexpected
++                .as_ref()
++                .map_or_else(Span::call_site, TokenTree::span);
++            Err(Error::new(span, "expected one of `stable`, `beta`, `nightly`, `since`, `before`, `not`, `any`, `all`"))
++        }
++    }
++}
++
++fn parse_nightly(iter: Iter) -> Result<Expr> {
++    let paren = match token::parse_optional_paren(iter) {
++        Some(group) => group,
++        None => return Ok(Expr::Nightly),
++    };
++
++    let ref mut inner = iter::new(paren.stream());
++    let date = date::parse(paren, inner)?;
++    token::parse_optional_punct(inner, ',');
++    token::parse_end(inner)?;
++
++    Ok(Expr::Date(date))
++}
++
++fn parse_stable(iter: Iter) -> Result<Expr> {
++    let paren = match token::parse_optional_paren(iter) {
++        Some(group) => group,
++        None => return Ok(Expr::Stable),
++    };
++
++    let ref mut inner = iter::new(paren.stream());
++    let release = release::parse(paren, inner)?;
++    token::parse_optional_punct(inner, ',');
++    token::parse_end(inner)?;
++
++    Ok(Expr::Release(release))
++}
++
++fn parse_since(introducer: &Ident, iter: Iter) -> Result<Expr> {
++    let paren = token::parse_paren(introducer, iter)?;
++
++    let ref mut inner = iter::new(paren.stream());
++    let bound = bound::parse(paren, inner)?;
++    token::parse_optional_punct(inner, ',');
++    token::parse_end(inner)?;
++
++    Ok(Expr::Since(bound))
++}
++
++fn parse_before(introducer: &Ident, iter: Iter) -> Result<Expr> {
++    let paren = token::parse_paren(introducer, iter)?;
++
++    let ref mut inner = iter::new(paren.stream());
++    let bound = bound::parse(paren, inner)?;
++    token::parse_optional_punct(inner, ',');
++    token::parse_end(inner)?;
++
++    Ok(Expr::Before(bound))
++}
++
++fn parse_not(introducer: &Ident, iter: Iter) -> Result<Expr> {
++    let paren = token::parse_paren(introducer, iter)?;
++
++    let ref mut inner = iter::new(paren.stream());
++    let expr = self::parse(inner)?;
++    token::parse_optional_punct(inner, ',');
++    token::parse_end(inner)?;
++
++    Ok(Expr::Not(Box::new(expr)))
++}
++
++fn parse_any(introducer: &Ident, iter: Iter) -> Result<Expr> {
++    let paren = token::parse_paren(introducer, iter)?;
++
++    let ref mut inner = iter::new(paren.stream());
++    let exprs = parse_comma_separated(inner)?;
++
++    Ok(Expr::Any(exprs.into_iter().collect()))
++}
++
++fn parse_all(introducer: &Ident, iter: Iter) -> Result<Expr> {
++    let paren = token::parse_paren(introducer, iter)?;
++
++    let ref mut inner = iter::new(paren.stream());
++    let exprs = parse_comma_separated(inner)?;
++
++    Ok(Expr::All(exprs.into_iter().collect()))
++}
++
++fn parse_comma_separated(iter: Iter) -> Result<Vec<Expr>> {
++    let mut exprs = Vec::new();
++
++    while iter.peek().is_some() {
++        let expr = self::parse(iter)?;
++        exprs.push(expr);
++        if iter.peek().is_none() {
++            break;
++        }
++        token::parse_punct(iter, ',')?;
++    }
++
++    Ok(exprs)
++}
+diff --git a/third_party/rust/rustversion/src/iter.rs b/third_party/rust/rustversion/src/iter.rs
+new file mode 100644
+--- /dev/null
++++ b/third_party/rust/rustversion/src/iter.rs
+@@ -0,0 +1,42 @@
++use proc_macro::{token_stream, Delimiter, TokenStream, TokenTree};
++
++pub type Iter<'a> = &'a mut IterImpl;
++
++pub struct IterImpl {
++    stack: Vec<token_stream::IntoIter>,
++    peeked: Option<TokenTree>,
++}
++
++pub fn new(tokens: TokenStream) -> IterImpl {
++    IterImpl {
++        stack: vec![tokens.into_iter()],
++        peeked: None,
++    }
++}
++
++impl IterImpl {
++    pub fn peek(&mut self) -> Option<&TokenTree> {
++        self.peeked = self.next();
++        self.peeked.as_ref()
++    }
++}
++
++impl Iterator for IterImpl {
++    type Item = TokenTree;
++
++    fn next(&mut self) -> Option<Self::Item> {
++        if let Some(tt) = self.peeked.take() {
++            return Some(tt);
++        }
++        loop {
++            let top = self.stack.last_mut()?;
++            match top.next() {
++                None => drop(self.stack.pop()),
++                Some(TokenTree::Group(ref group)) if group.delimiter() == Delimiter::None => {
++                    self.stack.push(group.stream().into_iter());
++                }
++                Some(tt) => return Some(tt),
++            }
++        }
++    }
++}
+diff --git a/third_party/rust/rustversion/src/lib.rs b/third_party/rust/rustversion/src/lib.rs
+new file mode 100644
+--- /dev/null
++++ b/third_party/rust/rustversion/src/lib.rs
+@@ -0,0 +1,281 @@
++//! [![github]](https://github.com/dtolnay/rustversion)&ensp;[![crates-io]](https://crates.io/crates/rustversion)&ensp;[![docs-rs]](https://docs.rs/rustversion)
++//!
++//! [github]: https://img.shields.io/badge/github-8da0cb?style=for-the-badge&labelColor=555555&logo=github
++//! [crates-io]: https://img.shields.io/badge/crates.io-fc8d62?style=for-the-badge&labelColor=555555&logo=rust
++//! [docs-rs]: https://img.shields.io/badge/docs.rs-66c2a5?style=for-the-badge&labelColor=555555&logo=docs.rs
++//!
++//! <br>
++//!
++//! This crate provides macros for conditional compilation according to rustc
++//! compiler version, analogous to [`#[cfg(...)]`][cfg] and
++//! [`#[cfg_attr(...)]`][cfg_attr].
++//!
++//! [cfg]: https://doc.rust-lang.org/reference/conditional-compilation.html#the-cfg-attribute
++//! [cfg_attr]: https://doc.rust-lang.org/reference/conditional-compilation.html#the-cfg_attr-attribute
++//!
++//! <br>
++//!
++//! # Selectors
++//!
++//! - <p style="margin-left:50px;text-indent:-50px">
++//!   <b><code style="display:inline">#[rustversion::stable]</code></b>
++//!   —<br>
++//!   True on any stable compiler.
++//!   </p>
++//!
++//! - <p style="margin-left:50px;text-indent:-50px">
++//!   <b><code style="display:inline">#[rustversion::stable(1.34)]</code></b>
++//!   —<br>
++//!   True on exactly the specified stable compiler.
++//!   </p>
++//!
++//! - <p style="margin-left:50px;text-indent:-50px">
++//!   <b><code style="display:inline">#[rustversion::beta]</code></b>
++//!   —<br>
++//!   True on any beta compiler.
++//!   </p>
++//!
++//! - <p style="margin-left:50px;text-indent:-50px">
++//!   <b><code style="display:inline">#[rustversion::nightly]</code></b>
++//!   —<br>
++//!   True on any nightly compiler or dev build.
++//!   </p>
++//!
++//! - <p style="margin-left:50px;text-indent:-50px">
++//!   <b><code style="display:inline">#[rustversion::nightly(2025-01-01)]</code></b>
++//!   —<br>
++//!   True on exactly one nightly.
++//!   </p>
++//!
++//! - <p style="margin-left:50px;text-indent:-50px">
++//!   <b><code style="display:inline">#[rustversion::since(1.34)]</code></b>
++//!   —<br>
++//!   True on that stable release and any later compiler, including beta and
++//!   nightly.
++//!   </p>
++//!
++//! - <p style="margin-left:50px;text-indent:-50px">
++//!   <b><code style="display:inline">#[rustversion::since(2025-01-01)]</code></b>
++//!   —<br>
++//!   True on that nightly and all newer ones.
++//!   </p>
++//!
++//! - <p style="margin-left:50px;text-indent:-50px">
++//!   <b><code style="display:inline">#[rustversion::before(</code></b><i>version or date</i><b><code style="display:inline">)]</code></b>
++//!   —<br>
++//!   Negative of <i>#[rustversion::since(...)]</i>.
++//!   </p>
++//!
++//! - <p style="margin-left:50px;text-indent:-50px">
++//!   <b><code style="display:inline">#[rustversion::not(</code></b><i>selector</i><b><code style="display:inline">)]</code></b>
++//!   —<br>
++//!   Negative of any selector; for example <i>#[rustversion::not(nightly)]</i>.
++//!   </p>
++//!
++//! - <p style="margin-left:50px;text-indent:-50px">
++//!   <b><code style="display:inline">#[rustversion::any(</code></b><i>selectors...</i><b><code style="display:inline">)]</code></b>
++//!   —<br>
++//!   True if any of the comma-separated selectors is true; for example
++//!   <i>#[rustversion::any(stable, beta)]</i>.
++//!   </p>
++//!
++//! - <p style="margin-left:50px;text-indent:-50px">
++//!   <b><code style="display:inline">#[rustversion::all(</code></b><i>selectors...</i><b><code style="display:inline">)]</code></b>
++//!   —<br>
++//!   True if all of the comma-separated selectors are true; for example
++//!   <i>#[rustversion::all(since(1.31), before(1.34))]</i>.
++//!   </p>
++//!
++//! - <p style="margin-left:50px;text-indent:-50px">
++//!   <b><code style="display:inline">#[rustversion::attr(</code></b><i>selector</i><b><code style="display:inline">, </code></b><i>attribute</i><b><code style="display:inline">)]</code></b>
++//!   —<br>
++//!   For conditional inclusion of attributes; analogous to
++//!   <code style="display:inline">cfg_attr</code>.
++//!   </p>
++//!
++//! - <p style="margin-left:50px;text-indent:-50px">
++//!   <b><code style="display:inline">rustversion::cfg!(</code></b><i>selector</i><b><code style="display:inline">)</code></b>
++//!   —<br>
++//!   An expression form of any of the above attributes; for example
++//!   <i>if rustversion::cfg!(any(stable, beta)) { ... }</i>.
++//!   </p>
++//!
++//! <br>
++//!
++//! # Use cases
++//!
++//! Providing additional trait impls as types are stabilized in the standard library
++//! without breaking compatibility with older compilers; in this case Pin\<P\>
++//! stabilized in [Rust 1.33][pin]:
++//!
++//! [pin]: https://blog.rust-lang.org/2019/02/28/Rust-1.33.0.html#pinning
++//!
++//! ```
++//! # trait MyTrait {}
++//! #
++//! #[rustversion::since(1.33)]
++//! use std::pin::Pin;
++//!
++//! #[rustversion::since(1.33)]
++//! impl<P: MyTrait> MyTrait for Pin<P> {
++//!     /* ... */
++//! }
++//! ```
++//!
++//! Similar but for language features; the ability to control alignment greater than
++//! 1 of packed structs was stabilized in [Rust 1.33][packed].
++//!
++//! [packed]: https://github.com/rust-lang/rust/blob/master/RELEASES.md#version-1330-2019-02-28
++//!
++//! ```
++//! #[rustversion::attr(before(1.33), repr(packed))]
++//! #[rustversion::attr(since(1.33), repr(packed(2)))]
++//! struct Six(i16, i32);
++//!
++//! fn main() {
++//!     println!("{}", std::mem::align_of::<Six>());
++//! }
++//! ```
++//!
++//! Augmenting code with `const` as const impls are stabilized in the standard
++//! library. This use of `const` as an attribute is recognized as a special case
++//! by the rustversion::attr macro.
++//!
++//! ```
++//! use std::time::Duration;
++//!
++//! #[rustversion::attr(since(1.32), const)]
++//! fn duration_as_days(dur: Duration) -> u64 {
++//!     dur.as_secs() / 60 / 60 / 24
++//! }
++//! ```
++//!
++//! Emitting Cargo cfg directives from a build script. Note that this requires
++//! listing `rustversion` under `[build-dependencies]` in Cargo.toml, not
++//! `[dependencies]`.
++//!
++//! ```
++//! // build.rs
++//!
++//! fn main() {
++//!     if rustversion::cfg!(since(1.36)) {
++//!         println!("cargo:rustc-cfg=no_std");
++//!     }
++//! }
++//! ```
++//!
++//! ```
++//! // src/lib.rs
++//!
++//! #![cfg_attr(no_std, no_std)]
++//!
++//! #[cfg(no_std)]
++//! extern crate alloc;
++//! ```
++//!
++//! <br>
++
++#![doc(html_root_url = "https://docs.rs/rustversion/1.0.23")]
++#![allow(
++    clippy::cast_lossless,
++    clippy::cast_possible_truncation,
++    clippy::derive_partial_eq_without_eq,
++    clippy::doc_markdown,
++    clippy::enum_glob_use,
++    // https://github.com/rust-lang/rust-clippy/issues/8539
++    clippy::iter_with_drain,
++    clippy::module_name_repetitions,
++    clippy::must_use_candidate,
++    clippy::needless_doctest_main,
++    clippy::needless_pass_by_value,
++    clippy::redundant_else,
++    clippy::toplevel_ref_arg,
++    clippy::unreadable_literal
++)]
++
++extern crate proc_macro;
++
++mod attr;
++mod bound;
++mod constfn;
++mod date;
++mod error;
++mod expand;
++mod expr;
++mod iter;
++mod release;
++mod time;
++mod token;
++mod version;
++
++use crate::error::Error;
++use crate::version::Version;
++use proc_macro::TokenStream;
++
++#[cfg(not(host_os = "windows"))]
++const RUSTVERSION: Version = include!(concat!(env!("OUT_DIR"), "/version.expr"));
++
++#[cfg(host_os = "windows")]
++const RUSTVERSION: Version = include!(concat!(env!("OUT_DIR"), "\\version.expr"));
++
++#[proc_macro_attribute]
++pub fn stable(args: TokenStream, input: TokenStream) -> TokenStream {
++    expand::cfg("stable", args, input)
++}
++
++#[proc_macro_attribute]
++pub fn beta(args: TokenStream, input: TokenStream) -> TokenStream {
++    expand::cfg("beta", args, input)
++}
++
++#[proc_macro_attribute]
++pub fn nightly(args: TokenStream, input: TokenStream) -> TokenStream {
++    expand::cfg("nightly", args, input)
++}
++
++#[proc_macro_attribute]
++pub fn since(args: TokenStream, input: TokenStream) -> TokenStream {
++    expand::cfg("since", args, input)
++}
++
++#[proc_macro_attribute]
++pub fn before(args: TokenStream, input: TokenStream) -> TokenStream {
++    expand::cfg("before", args, input)
++}
++
++#[proc_macro_attribute]
++pub fn not(args: TokenStream, input: TokenStream) -> TokenStream {
++    expand::cfg("not", args, input)
++}
++
++#[proc_macro_attribute]
++pub fn any(args: TokenStream, input: TokenStream) -> TokenStream {
++    expand::cfg("any", args, input)
++}
++
++#[proc_macro_attribute]
++pub fn all(args: TokenStream, input: TokenStream) -> TokenStream {
++    expand::cfg("all", args, input)
++}
++
++#[proc_macro_attribute]
++pub fn attr(args: TokenStream, input: TokenStream) -> TokenStream {
++    attr::parse(args)
++        .and_then(|args| expand::try_attr(args, input))
++        .unwrap_or_else(Error::into_compile_error)
++}
++
++#[cfg(not(cfg_macro_not_allowed))]
++#[proc_macro]
++pub fn cfg(input: TokenStream) -> TokenStream {
++    use proc_macro::{Ident, Span, TokenTree};
++    (|| {
++        let ref mut args = iter::new(input);
++        let expr = expr::parse(args)?;
++        token::parse_end(args)?;
++        let boolean = expr.eval(RUSTVERSION);
++        let ident = Ident::new(&boolean.to_string(), Span::call_site());
++        Ok(TokenStream::from(TokenTree::Ident(ident)))
++    })()
++    .unwrap_or_else(Error::into_compile_error)
++}
+diff --git a/third_party/rust/rustversion/src/release.rs b/third_party/rust/rustversion/src/release.rs
+new file mode 100644
+--- /dev/null
++++ b/third_party/rust/rustversion/src/release.rs
+@@ -0,0 +1,34 @@
++use crate::error::{Error, Result};
++use crate::iter::Iter;
++use crate::token;
++use proc_macro::Group;
++
++#[derive(Copy, Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
++pub struct Release {
++    pub minor: u16,
++    pub patch: Option<u16>,
++}
++
++pub fn parse(paren: Group, iter: Iter) -> Result<Release> {
++    try_parse(iter).map_err(|()| Error::group(paren, "expected rustc release number, like 1.31"))
++}
++
++fn try_parse(iter: Iter) -> Result<Release, ()> {
++    let major_minor = token::parse_literal(iter).map_err(drop)?;
++    let string = major_minor.to_string();
++
++    if !string.starts_with("1.") {
++        return Err(());
++    }
++
++    let minor: u16 = string[2..].parse().map_err(drop)?;
++
++    let patch = if token::parse_optional_punct(iter, '.').is_some() {
++        let int = token::parse_literal(iter).map_err(drop)?;
++        Some(int.to_string().parse().map_err(drop)?)
++    } else {
++        None
++    };
++
++    Ok(Release { minor, patch })
++}
+diff --git a/third_party/rust/rustversion/src/time.rs b/third_party/rust/rustversion/src/time.rs
+new file mode 100644
+--- /dev/null
++++ b/third_party/rust/rustversion/src/time.rs
+@@ -0,0 +1,51 @@
++use crate::date::Date;
++use std::env;
++use std::time::{SystemTime, UNIX_EPOCH};
++
++// Timestamp of 2016-03-01 00:00:00 in UTC.
++const BASE: u64 = 1456790400;
++const BASE_YEAR: u16 = 2016;
++const BASE_MONTH: u8 = 3;
++
++// Days between leap days.
++const CYCLE: u64 = 365 * 4 + 1;
++
++const DAYS_BY_MONTH: [u8; 12] = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
++
++pub fn today() -> Date {
++    let default = Date {
++        year: 2025,
++        month: 2,
++        day: 25,
++    };
++    try_today().unwrap_or(default)
++}
++
++fn try_today() -> Option<Date> {
++    if let Some(pkg_name) = env::var_os("CARGO_PKG_NAME") {
++        if pkg_name.to_str() == Some("rustversion-tests") {
++            return None; // Stable date for ui testing.
++        }
++    }
++
++    let now = SystemTime::now();
++    let since_epoch = now.duration_since(UNIX_EPOCH).ok()?;
++    let secs = since_epoch.as_secs();
++
++    let approx_days = secs.checked_sub(BASE)? / 60 / 60 / 24;
++    let cycle = approx_days / CYCLE;
++    let mut rem = approx_days % CYCLE;
++
++    let mut year = BASE_YEAR + cycle as u16 * 4;
++    let mut month = BASE_MONTH;
++    loop {
++        let days_in_month = DAYS_BY_MONTH[month as usize - 1];
++        if rem < days_in_month as u64 {
++            let day = rem as u8 + 1;
++            return Some(Date { year, month, day });
++        }
++        rem -= days_in_month as u64;
++        year += (month == 12) as u16;
++        month = month % 12 + 1;
++    }
++}
+diff --git a/third_party/rust/rustversion/src/token.rs b/third_party/rust/rustversion/src/token.rs
+new file mode 100644
+--- /dev/null
++++ b/third_party/rust/rustversion/src/token.rs
+@@ -0,0 +1,78 @@
++use crate::error::{Error, Result};
++use crate::iter::Iter;
++use proc_macro::{Delimiter, Group, Ident, Literal, Span, TokenTree};
++
++pub fn parse_punct(iter: Iter, ch: char) -> Result<()> {
++    match iter.next() {
++        Some(TokenTree::Punct(ref punct)) if punct.as_char() == ch => Ok(()),
++        unexpected => {
++            let span = unexpected
++                .as_ref()
++                .map_or_else(Span::call_site, TokenTree::span);
++            Err(Error::new(span, format!("expected `{}`", ch)))
++        }
++    }
++}
++
++pub fn parse_optional_punct(iter: Iter, ch: char) -> Option<()> {
++    match iter.peek() {
++        Some(TokenTree::Punct(punct)) if punct.as_char() == ch => iter.next().map(drop),
++        _ => None,
++    }
++}
++
++pub fn parse_optional_keyword(iter: Iter, keyword: &str) -> Option<Span> {
++    match iter.peek() {
++        Some(TokenTree::Ident(ident)) if ident.to_string() == keyword => {
++            Some(iter.next().unwrap().span())
++        }
++        _ => None,
++    }
++}
++
++pub fn parse_literal(iter: Iter) -> Result<Literal> {
++    match iter.next() {
++        Some(TokenTree::Literal(literal)) => Ok(literal),
++        unexpected => {
++            let span = unexpected
++                .as_ref()
++                .map_or_else(Span::call_site, TokenTree::span);
++            Err(Error::new(span, "expected literal"))
++        }
++    }
++}
++
++pub fn parse_paren(introducer: &Ident, iter: Iter) -> Result<Group> {
++    match iter.peek() {
++        Some(TokenTree::Group(group)) if group.delimiter() == Delimiter::Parenthesis => {
++            match iter.next() {
++                Some(TokenTree::Group(group)) => Ok(group),
++                _ => unreachable!(),
++            }
++        }
++        Some(unexpected) => Err(Error::new(unexpected.span(), "expected `(`")),
++        None => Err(Error::new(
++            introducer.span(),
++            format!("expected `(` after `{}`", introducer),
++        )),
++    }
++}
++
++pub fn parse_optional_paren(iter: Iter) -> Option<Group> {
++    match iter.peek() {
++        Some(TokenTree::Group(group)) if group.delimiter() == Delimiter::Parenthesis => {
++            match iter.next() {
++                Some(TokenTree::Group(group)) => Some(group),
++                _ => unreachable!(),
++            }
++        }
++        _ => None,
++    }
++}
++
++pub fn parse_end(iter: Iter) -> Result<()> {
++    match iter.next() {
++        None => Ok(()),
++        Some(unexpected) => Err(Error::new(unexpected.span(), "unexpected token")),
++    }
++}
+diff --git a/third_party/rust/rustversion/src/version.rs b/third_party/rust/rustversion/src/version.rs
+new file mode 100644
+--- /dev/null
++++ b/third_party/rust/rustversion/src/version.rs
+@@ -0,0 +1,18 @@
++#![allow(dead_code)]
++
++use crate::date::Date;
++
++#[derive(Copy, Clone, Debug, PartialEq)]
++pub struct Version {
++    pub minor: u16,
++    pub patch: u16,
++    pub channel: Channel,
++}
++
++#[derive(Copy, Clone, Debug, PartialEq)]
++pub enum Channel {
++    Stable,
++    Beta,
++    Nightly(Date),
++    Dev,
++}
+diff --git a/third_party/rust/rustversion/tests/compiletest.rs b/third_party/rust/rustversion/tests/compiletest.rs
+new file mode 100644
+--- /dev/null
++++ b/third_party/rust/rustversion/tests/compiletest.rs
+@@ -0,0 +1,7 @@
++#[rustversion::attr(not(nightly), ignore = "requires nightly")]
++#[cfg_attr(miri, ignore = "incompatible with miri")]
++#[test]
++fn ui() {
++    let t = trybuild::TestCases::new();
++    t.compile_fail("tests/ui/*.rs");
++}
+diff --git a/third_party/rust/rustversion/tests/test_const.rs b/third_party/rust/rustversion/tests/test_const.rs
+new file mode 100644
+--- /dev/null
++++ b/third_party/rust/rustversion/tests/test_const.rs
+@@ -0,0 +1,42 @@
++#![allow(
++    clippy::semicolon_if_nothing_returned, // https://github.com/rust-lang/rust-clippy/issues/7324
++    clippy::used_underscore_items,
++)]
++
++#[rustversion::attr(all(), const)]
++fn _basic() {}
++const _BASIC: () = _basic();
++
++#[rustversion::attr(all(), const)]
++unsafe fn _unsafe() {}
++const _UNSAFE: () = unsafe { _unsafe() };
++
++macro_rules! item {
++    ($i:item) => {
++        #[rustversion::attr(all(), const)]
++        $i
++    };
++}
++
++item! {fn _item() {}}
++const _ITEM: () = _item();
++
++macro_rules! ident {
++    ($fn:ident) => {
++        #[rustversion::attr(all(), const)]
++        $fn _ident() {}
++    };
++}
++
++ident! {fn}
++const _IDENT: () = _ident();
++
++#[rustversion::attr(all(), const)]
++/// doc
++fn _doc_below() {}
++const _DOC_BELOW: () = _doc_below();
++
++/// doc
++#[rustversion::attr(all(), const)]
++fn _doc_above() {}
++const _DOC_ABOVE: () = _doc_above();
+diff --git a/third_party/rust/rustversion/tests/test_eval.rs b/third_party/rust/rustversion/tests/test_eval.rs
+new file mode 100644
+--- /dev/null
++++ b/third_party/rust/rustversion/tests/test_eval.rs
+@@ -0,0 +1,20 @@
++#[rustversion::any(
++    stable,
++    stable(1.34),
++    stable(1.34.0),
++    beta,
++    nightly,
++    nightly(2020-02-25),
++    since(1.34),
++    since(2020-02-25),
++    before(1.34),
++    before(2020-02-25),
++    not(nightly),
++    all(stable, beta, nightly),
++)]
++fn success() {}
++
++#[test]
++fn test() {
++    success();
++}
+diff --git a/third_party/rust/rustversion/tests/test_parse.rs b/third_party/rust/rustversion/tests/test_parse.rs
+new file mode 100644
+--- /dev/null
++++ b/third_party/rust/rustversion/tests/test_parse.rs
+@@ -0,0 +1,103 @@
++#![allow(
++    clippy::derive_partial_eq_without_eq,
++    clippy::enum_glob_use,
++    clippy::must_use_candidate
++)]
++
++include!("../build/rustc.rs");
++
++#[test]
++fn test_parse() {
++    let cases = &[
++        (
++            "rustc 1.0.0 (a59de37e9 2015-05-13) (built 2015-05-14)",
++            Version {
++                minor: 0,
++                patch: 0,
++                channel: Stable,
++            },
++        ),
++        (
++            "rustc 1.18.0",
++            Version {
++                minor: 18,
++                patch: 0,
++                channel: Stable,
++            },
++        ),
++        (
++            "rustc 1.24.1 (d3ae9a9e0 2018-02-27)",
++            Version {
++                minor: 24,
++                patch: 1,
++                channel: Stable,
++            },
++        ),
++        (
++            "rustc 1.35.0-beta.3 (c13114dc8 2019-04-27)",
++            Version {
++                minor: 35,
++                patch: 0,
++                channel: Beta,
++            },
++        ),
++        (
++            "rustc 1.36.0-nightly (938d4ffe1 2019-04-27)",
++            Version {
++                minor: 36,
++                patch: 0,
++                channel: Nightly(Date {
++                    year: 2019,
++                    month: 4,
++                    day: 27,
++                }),
++            },
++        ),
++        (
++            "rustc 1.36.0-dev",
++            Version {
++                minor: 36,
++                patch: 0,
++                channel: Dev,
++            },
++        ),
++        (
++            "rustc 1.36.0-nightly",
++            Version {
++                minor: 36,
++                patch: 0,
++                channel: Dev,
++            },
++        ),
++        (
++            "warning: invalid logging spec 'warning', ignoring it
++             rustc 1.30.0-nightly (3bc2ca7e4 2018-09-20)",
++            Version {
++                minor: 30,
++                patch: 0,
++                channel: Nightly(Date {
++                    year: 2018,
++                    month: 9,
++                    day: 20,
++                }),
++            },
++        ),
++        (
++            "rustc 1.52.1-nightly (gentoo)",
++            Version {
++                minor: 52,
++                patch: 1,
++                channel: Dev,
++            },
++        ),
++    ];
++
++    for (string, expected) in cases {
++        match parse(string) {
++            ParseResult::Success(version) => assert_eq!(version, *expected),
++            ParseResult::OopsClippy | ParseResult::OopsMirai | ParseResult::Unrecognized => {
++                panic!("unrecognized: {:?}", string);
++            }
++        }
++    }
++}
+diff --git a/third_party/rust/rustversion/tests/ui/bad-bound.rs b/third_party/rust/rustversion/tests/ui/bad-bound.rs
+new file mode 100644
+--- /dev/null
++++ b/third_party/rust/rustversion/tests/ui/bad-bound.rs
+@@ -0,0 +1,7 @@
++#[rustversion::since(stable)]
++struct S;
++
++#[rustversion::any(since(stable))]
++struct S;
++
++fn main() {}
+diff --git a/third_party/rust/rustversion/tests/ui/bad-bound.stderr b/third_party/rust/rustversion/tests/ui/bad-bound.stderr
+new file mode 100644
+--- /dev/null
++++ b/third_party/rust/rustversion/tests/ui/bad-bound.stderr
+@@ -0,0 +1,11 @@
++error: expected rustc release number like 1.85, or nightly date like 2025-02-25
++ --> tests/ui/bad-bound.rs:1:22
++  |
++1 | #[rustversion::since(stable)]
++  |                      ^^^^^^
++
++error: expected rustc release number like 1.85, or nightly date like 2025-02-25
++ --> tests/ui/bad-bound.rs:4:26
++  |
++4 | #[rustversion::any(since(stable))]
++  |                          ^^^^^^
+diff --git a/third_party/rust/rustversion/tests/ui/bad-date.rs b/third_party/rust/rustversion/tests/ui/bad-date.rs
+new file mode 100644
+--- /dev/null
++++ b/third_party/rust/rustversion/tests/ui/bad-date.rs
+@@ -0,0 +1,7 @@
++#[rustversion::nightly(stable)]
++struct S;
++
++#[rustversion::any(nightly(stable))]
++struct S;
++
++fn main() {}
+diff --git a/third_party/rust/rustversion/tests/ui/bad-date.stderr b/third_party/rust/rustversion/tests/ui/bad-date.stderr
+new file mode 100644
+--- /dev/null
++++ b/third_party/rust/rustversion/tests/ui/bad-date.stderr
+@@ -0,0 +1,11 @@
++error: expected nightly date, like 2025-02-25
++ --> tests/ui/bad-date.rs:1:24
++  |
++1 | #[rustversion::nightly(stable)]
++  |                        ^^^^^^
++
++error: expected nightly date, like 2025-02-25
++ --> tests/ui/bad-date.rs:4:28
++  |
++4 | #[rustversion::any(nightly(stable))]
++  |                            ^^^^^^
+diff --git a/third_party/rust/rustversion/tests/ui/bad-not.rs b/third_party/rust/rustversion/tests/ui/bad-not.rs
+new file mode 100644
+--- /dev/null
++++ b/third_party/rust/rustversion/tests/ui/bad-not.rs
+@@ -0,0 +1,7 @@
++#[rustversion::any(not)]
++struct S;
++
++#[rustversion::any(not, not)]
++struct S;
++
++fn main() {}
+diff --git a/third_party/rust/rustversion/tests/ui/bad-not.stderr b/third_party/rust/rustversion/tests/ui/bad-not.stderr
+new file mode 100644
+--- /dev/null
++++ b/third_party/rust/rustversion/tests/ui/bad-not.stderr
+@@ -0,0 +1,11 @@
++error: expected `(` after `not`
++ --> tests/ui/bad-not.rs:1:20
++  |
++1 | #[rustversion::any(not)]
++  |                    ^^^
++
++error: expected `(`
++ --> tests/ui/bad-not.rs:4:23
++  |
++4 | #[rustversion::any(not, not)]
++  |                       ^
+diff --git a/third_party/rust/rustversion/tests/ui/bad-version.rs b/third_party/rust/rustversion/tests/ui/bad-version.rs
+new file mode 100644
+--- /dev/null
++++ b/third_party/rust/rustversion/tests/ui/bad-version.rs
+@@ -0,0 +1,7 @@
++#[rustversion::stable(nightly)]
++struct S;
++
++#[rustversion::any(stable(nightly))]
++struct S;
++
++fn main() {}
+diff --git a/third_party/rust/rustversion/tests/ui/bad-version.stderr b/third_party/rust/rustversion/tests/ui/bad-version.stderr
+new file mode 100644
+--- /dev/null
++++ b/third_party/rust/rustversion/tests/ui/bad-version.stderr
+@@ -0,0 +1,11 @@
++error: expected rustc release number, like 1.31
++ --> tests/ui/bad-version.rs:1:23
++  |
++1 | #[rustversion::stable(nightly)]
++  |                       ^^^^^^^
++
++error: expected rustc release number, like 1.31
++ --> tests/ui/bad-version.rs:4:27
++  |
++4 | #[rustversion::any(stable(nightly))]
++  |                           ^^^^^^^
+diff --git a/third_party/rust/rustversion/tests/ui/const-not-fn.rs b/third_party/rust/rustversion/tests/ui/const-not-fn.rs
+new file mode 100644
+--- /dev/null
++++ b/third_party/rust/rustversion/tests/ui/const-not-fn.rs
+@@ -0,0 +1,4 @@
++#[rustversion::attr(all(), const)]
++pub struct S;
++
++fn main() {}
+diff --git a/third_party/rust/rustversion/tests/ui/const-not-fn.stderr b/third_party/rust/rustversion/tests/ui/const-not-fn.stderr
+new file mode 100644
+--- /dev/null
++++ b/third_party/rust/rustversion/tests/ui/const-not-fn.stderr
+@@ -0,0 +1,5 @@
++error: only allowed on a fn item
++ --> tests/ui/const-not-fn.rs:1:28
++  |
++1 | #[rustversion::attr(all(), const)]
++  |                            ^^^^^

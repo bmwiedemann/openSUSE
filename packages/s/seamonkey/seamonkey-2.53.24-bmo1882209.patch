@@ -2,7 +2,7 @@
 # User Henri Sivonen <hsivonen@hsivonen.fi>
 # Date 1714462184 0
 # Node ID 1db2ef126a6a8555dbf50345e16492c977b42e92
-# Parent  a7389047f07b43b7b86cce8ce4154a6467e6f474
+# Parent  787d9cd062412a42649a8c61619b95ab204ab571
 Bug 1882209 - Update encoding_rs to 0.8.34 to deal with rustc changes. r=glandium,supply-chain-reviewers
 
 Differential Revision: https://phabricator.services.mozilla.com/D207167
@@ -10,7 +10,7 @@ Differential Revision: https://phabricator.services.mozilla.com/D207167
 diff --git a/.cargo/config.in b/.cargo/config.in
 --- a/.cargo/config.in
 +++ b/.cargo/config.in
-@@ -2,17 +2,17 @@
+@@ -2,15 +2,15 @@
  registry = 'https://github.com/rust-lang/crates.io-index'
  replace-with = 'vendored-sources'
  
@@ -29,8 +29,6 @@ diff --git a/.cargo/config.in b/.cargo/config.in
  
  [source.vendored-sources]
  directory = '@top_srcdir@/third_party/rust'
- 
- @WIN64_CARGO_LINKER_CONFIG@
 diff --git a/Cargo.lock b/Cargo.lock
 --- a/Cargo.lock
 +++ b/Cargo.lock
@@ -39,7 +37,7 @@ diff --git a/Cargo.lock b/Cargo.lock
  source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "ee49baf6cb617b853aa8d93bf420db2383fab46d314482ca2803b40d5fde979b"
  dependencies = [
-  "winapi 0.3.4",
+  "winapi 0.3.7",
  ]
  
  [[package]]
@@ -57,10 +55,10 @@ diff --git a/Cargo.lock b/Cargo.lock
  source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "9dadc668390b373e73e4abbfc1f07238b09a25858f2f39c06cebc6d8e141d774"
  dependencies = [
-  "num-traits 0.2.15",
+  "num-traits",
   "serde",
  ]
-@@ -603,22 +612,22 @@ version = "0.1.0"
+@@ -605,22 +614,22 @@ version = "0.1.0"
  dependencies = [
   "encoding_rs",
   "nserror",
@@ -82,14 +80,14 @@ diff --git a/Cargo.lock b/Cargo.lock
  
  [[package]]
  name = "env_logger"
- version = "0.5.6"
+ version = "0.5.13"
  source = "registry+https://github.com/rust-lang/crates.io-index"
- checksum = "0561146661ae44c579e993456bc76d11ce1e0c7d745e57b2fa7146b6e49fa2ad"
+ checksum = "15b0a4d2e39f8420210be8b27eeda28029729e2fd4291019455016c348240c38"
  dependencies = [
-@@ -1301,25 +1310,16 @@ name = "owning_ref"
- version = "0.3.3"
+@@ -1324,25 +1333,16 @@ name = "owning_ref"
+ version = "0.4.0"
  source = "registry+https://github.com/rust-lang/crates.io-index"
- checksum = "cdf84f41639e037b484f93433aa3897863b561ed65c6e59c7073d7c561710f37"
+ checksum = "49a4b8ea2179e6a2e27411d3bca09ca6dd630821cf6894c6c7c8467a8ee7ef13"
  dependencies = [
   "stable_deref_trait",
  ]
@@ -100,19 +98,19 @@ diff --git a/Cargo.lock b/Cargo.lock
 -source = "git+https://github.com/hsivonen/packed_simd?rev=e588ceb568878e1a3156ea9ce551d5b63ef0cdc4#e588ceb568878e1a3156ea9ce551d5b63ef0cdc4"
 -dependencies = [
 - "cfg-if 1.0.0",
-- "num-traits 0.2.15",
+- "num-traits",
 -]
 -
 -[[package]]
  name = "parking_lot"
- version = "0.6.3"
+ version = "0.8.0"
  source = "registry+https://github.com/rust-lang/crates.io-index"
- checksum = "69376b761943787ebd5cc85a5bc95958651a22609c5c1c2b65de21786baec72b"
+ checksum = "fa7767817701cce701d5585b9c4db3cdd02086398322c1d7e8bf5094a96a2ce7"
  dependencies = [
   "lock_api",
   "parking_lot_core",
- ]
-@@ -2235,16 +2235,22 @@ checksum = "025ce40a007e1907e58d5bc1a594
+  "rustc_version",
+@@ -2366,16 +2366,22 @@ checksum = "025ce40a007e1907e58d5bc1a594
  
  [[package]]
  name = "vec_map"
