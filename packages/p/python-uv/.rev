@@ -2939,4 +2939,79 @@
     <comment>Update to 0.12.3 (supersedes SR 1370151, which carried 0.12.2): CPython 3.13.15 added, several resolver and startup performance improvements, and preview --output-format for uv cache size. NOTE FOR LEGAL REVIEW: License changes from 'Apache-2.0 OR MIT' to '(Apache-2.0 OR MIT) AND MPL-2.0'. This is a correction, not a new obligation - astral-pubgrub, astral-version-ranges and option-ext were already statically linked in 0.12.2. Derivation is recorded in a Legal-Review-Notice comment above the tag; re-derived with 'cargo tree --offline -p uv -e normal' over the 672-crate vendored tree. priority-queue is dual LGPL-3.0-or-later OR MPL-2.0 and we elect MPL-2.0; configparser is dual MIT OR LGPL-3.0-or-later and we elect MIT. MPL-2.0 section 3.2 is satisfied because vendor.tar.zst ships in the src.rpm. Built and verified on aarch64: rpmlint 0 errors / 2 warnings / 0 badness (both warnings pre-existing), cargo_audit clean apart from the already-accepted RUSTSEC-2023-0071, source_validator clean.</comment>
     <requestid>1370317</requestid>
   </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>39910af42faf73c740d5097a18ba1e0f</srcmd5>
+    <version>0.12.4</version>
+    <time>1786738159</time>
+    <user>anag_factory</user>
+    <comment>Update python-uv to 0.12.4 and add a _multibuild &quot;test&quot; flavour.
+
+This supersedes SR 1371175 and carries both changes: the 0.12.4 version
+bump that request already contained, plus the new test flavour.
+
+Upstream highlights (unchanged from 1371175): prefer post-quantum key
+exchange with opt-in TLS diagnostics; faster resolutions by coalescing
+gaps in the resolver's version ranges; faster Simple API parsing; uv
+check --no-install-project and UV_NO_INSTALL_PROJECT (preview); fixes for
+interpreter-cache reuse, fork ordering, uv.lock wildcard Python
+exclusions, and uv add comment preservation.
+
+Rust dependencies re-vendored: 15 crates added (cap-std, tar-codec and
+blake3 families), 122 updated, none removed. The licence set of the
+statically linked crates was re-derived over the refreshed vendor tree
+with &quot;cargo tree --offline -p uv -e normal&quot;; all newly linked crates are
+permissive, so License is unchanged at (Apache-2.0 OR MIT) AND MPL-2.0.
+
+New in this request - the test flavour:
+
+python-uv had no %check at all (standing W: no-%check-section). The new
+_multibuild &quot;test&quot; flavour adds one without slowing the main package
+down: the default flavour is byte-for-byte the same build it was, and the
+test flavour builds nothing installable. It skips the singlespec
+machinery entirely - cargo test is a Rust suite and running it once per
+Python flavour would double the cost for no gain - and every %package,
+%python_subpackages, Provides and Obsoletes is guarded, not just %files,
+so OBS's scheduler sees no competing provider of uv from it. It produces
+only a src.rpm.
+
+It runs the workspace suite over 67 of the 70 workspace members. Three
+are excluded, each documented in a spec comment:
+
+  * uv - the CLI integration suite, 78 test files that resolve against
+    the real package index and download managed CPython interpreters.
+  * uv-dev - its generate_sysconfig_mappings test downloads
+    cpython-unix/targets.yml from the python-build-standalone repo.
+  * uv-build-backend - panics inside insta (&quot;does not allow inline
+    snapshot assertions in loops&quot;). Upstream ships .config/nextest.toml
+    and runs the suite under cargo-nextest, which gives every test its
+    own process; insta's duplicate detection is process-global, so a
+    shared inline snapshot trips under the stock harness.
+
+Two further findings that the spec records:
+
+  * The suite runs with one test thread. That is correctness, not
+    tuning: uv-client's tls.rs points SSL_CERT_FILE/SSL_CERT_DIR at
+    bogus paths through temp_env while base_client.rs builds a reqwest
+    Client that reads them, and uv-python's discovery tests rewrite PATH
+    while another test spawns a /bin/sh mock interpreter. Both are
+    process-global; cargo-nextest hides them from upstream.
+  * The test flavour BuildRequires ca-certificates-mozilla. A stock
+    build chroot has no /etc/ssl/certs at all, and reqwest's
+    ClientBuilder errors out with &quot;No CA certificates were loaded from
+    the system&quot; - a constructor error, not a network one, which took
+    out 38 tests across uv-auth, uv-client and uv-test that never touch
+    the network.
+
+One test is skipped: user_agent_version::test_user_agent_has_linehaul,
+which reports the distro from /etc/os-release and finds none in a chroot.
+
+Verified locally on aarch64 against openSUSE_Tumbleweed. The test flavour
+is GREEN: 59 test binaries, 1338 passed, 0 failed, 1 filtered out (the
+skip above), whole flavour built and tested in 400s, and it emits only
+python-uv-test-0.12.4-0.src.rpm - no binary RPMs. The default flavour is
+GREEN and its expanded spec is content-identical to the previous
+revision's. source_validator green, spec-cleaner clean, changes-lint and
+changes-guard green.</comment>
+    <requestid>1371208</requestid>
+  </revision>
 </revisionlist>

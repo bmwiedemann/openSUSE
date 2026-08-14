@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Fri Aug 14 09:16:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Add a _multibuild "test" flavour that runs the Rust test suite:
+  * The package had no check section at all, so this is added
+    coverage; the main flavour is untouched and still builds the
+    same six packages with the same content
+  * The test flavour needs no Python: it skips the singlespec
+    machinery and declares no subpackages, no Provides and no
+    files, so it produces only a src.rpm and advertises nothing
+  * It runs cargo test over 67 of the 70 workspace members
+  * Excluded uv, whose CLI integration suite resolves against the
+    real package index and downloads managed CPython interpreters,
+    neither of which is available in a build chroot
+  * Excluded uv-dev, whose sysconfig-mapping test downloads
+    cpython-unix/targets.yml from the python-build-standalone
+    repository
+  * Excluded uv-build-backend, which panics inside insta with "does
+    not allow inline snapshot assertions in loops"; upstream runs
+    the suite under cargo-nextest, which isolates every test in its
+    own process, while insta's duplicate detection is process-global
+  * uv-client and uv-keyring are kept: the tests of theirs that
+    would need pypi.org or a secret-service daemon sit behind the
+    non-default test-pypi and native-auth features
+  * Runs the suite with one test thread, which is a correctness
+    requirement rather than tuning: several crates set SSL_CERT_FILE
+    or PATH process-wide from one test while another reads them,
+    which upstream avoids by running under cargo-nextest
+  * Pulls in ca-certificates-mozilla for the test flavour; without
+    any trust anchors the reqwest client constructor fails outright
+    and took 38 tests with it, none of them network tests
+  * Skips the linehaul user-agent test, which reads the distro from
+    /etc/os-release and finds none in a build chroot
+
+-------------------------------------------------------------------
+Fri Aug 14 07:42:41 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.12.4:
+  * Prefer post-quantum key exchange and add opt-in TLS diagnostics
+  * Accept whitespace before versions in noncompliant wildcard
+    comparisons such as Requires-Python: >= 3.5.*
+  * Report a specific error when a PEP 723 closing tag contains
+    trailing whitespace or other content
+  * Add uv check --no-install-project and respect
+    UV_NO_INSTALL_PROJECT to install dependencies without building
+    or installing the project (preview)
+  * Make the ty subprocess invoked by uv check honour uv's colour
+    and progress settings, including quiet mode (preview)
+  * Speed up resolutions with long runs of unavailable package
+    versions by coalescing gaps in the resolver's version ranges
+  * Speed up Simple API parsing by deserialising PyPI and Pyx file
+    metadata directly
+  * Allow uv lock to proceed when .venv is an unusable project
+    environment
+  * Respect fork-strategy when ordering forks created from
+    environments or existing lockfile resolution-markers
+  * Preserve consecutive wildcard Python minor-version exclusions
+    such as !=3.11.*, !=3.12.* in uv.lock
+  * Preserve inline comments on the final item in dependency arrays
+    when uv add updates it
+  * Fix interpreter cache reuse: recover from stale base-interpreter
+    metadata on a version mismatch, and do not reuse the cache
+    across differing PYTHONEXECUTABLE / __PYVENV_LAUNCHER__
+    overrides
+- Re-vendor the Rust dependencies: 15 crates added (the cap-std,
+  tar-codec and blake3 families), 122 updated, none removed. All
+  newly linked crates are permissive, so License is unchanged at
+  (Apache-2.0 OR MIT) AND MPL-2.0
+
+-------------------------------------------------------------------
 Sat Aug  8 05:16:54 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.12.3:
