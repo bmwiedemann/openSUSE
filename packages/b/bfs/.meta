@@ -1,0 +1,5 @@
+<package name="bfs" project="openSUSE:Factory">
+  <title>Breadth-first search for your files.</title>
+  <description>bfs is a variant of the UNIX find command that operates breadth-first rather than depth-first. It is otherwise compatible with many versions of find.</description>
+  <url>https://tavianator.com/projects/bfs.html</url>
+</package>
