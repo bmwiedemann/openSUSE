@@ -92,7 +92,7 @@
 %endif
 
 Name:           go1.25
-Version:        1.25.12
+Version:        1.25.13
 Release:        0
 Summary:        A compiled, garbage-collected, concurrent programming language
 License:        BSD-3-Clause
