@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Aug 14 07:29:53 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.122.0:
+  * Add output_behavior to dream creation, selecting whether a new
+    memory store is created or the input store is updated in place
+  * Expose beta.messages.parse, stream and tool_runner on the
+    Bedrock and Vertex clients
+  * Run AWS SigV4 signing off the event loop in async clients
+  * Treat an empty ANTHROPIC_API_KEY or ANTHROPIC_AUTH_TOKEN as
+    unset, and keep the token exchange bound per client across
+    copy()
+  * Read PathLike contents passed inside a file tuple
+  * Fix several streaming accumulator bugs: apply all message_delta
+    fields, keep omitted content block fields unset, emit
+    input_json events for server tool use blocks and add context to
+    malformed tool input JSON errors
+  * Reject symlink loops in tool paths and skip special
+    skill-archive members
+
+-------------------------------------------------------------------
 Sat Aug  8 04:31:59 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.121.0:

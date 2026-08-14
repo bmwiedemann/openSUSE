@@ -71,4 +71,21 @@
     <comment>Update to 0.121.0: mid-conversation tool changes beta, session budgets, advisor tool, pinned inference location, GitHub skills auto-loading; retired Opus 4.1 models removed. Built and verified on aarch64: 211 tests passed, rpmlint 0 errors / 0 warnings / 0 badness, source_validator clean.</comment>
     <requestid>1370299</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>aad65b07e5df2f36239be26f7391f4e5</srcmd5>
+    <version>0.122.0</version>
+    <time>1786738014</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.122.0
+
+- Adds output_behavior to dream creation, exposes beta.messages.parse,
+  stream and tool_runner on the Bedrock and Vertex clients, and fixes a
+  batch of streaming-accumulator and client credential-handling bugs.
+- No patches; runtime dependency metadata is unchanged from 0.121.0.
+- Built locally for aarch64 against openSUSE:Factory:ARM: green,
+  %check 211 tests passed for both python313 and python314 flavours,
+  rpmlint 0 errors, 0 warnings, 0 badness. source_validator clean,
+  spec-cleaner clean pass.</comment>
+    <requestid>1371165</requestid>
+  </revision>
 </revisionlist>
