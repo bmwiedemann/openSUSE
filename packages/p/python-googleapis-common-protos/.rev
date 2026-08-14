@@ -361,4 +361,14 @@
   * chore: librarian release pull request: 20260506T163115Z (#16964) (forwarded request 1352431 from glaubitz)</comment>
     <requestid>1352482</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>0311891b8befd09a7f902b3d52cf17f2</srcmd5>
+    <version>1.75.1</version>
+    <time>1786738038</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.75.1
+  * bump grpcio to 1.59.0; require Python 3.10+ (#17351)
+  * require Protobuf 6.33.5+ (#17743) (forwarded request 1371028 from glaubitz)</comment>
+    <requestid>1371053</requestid>
+  </revision>
 </revisionlist>

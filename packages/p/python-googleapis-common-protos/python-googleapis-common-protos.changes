@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 13 11:26:05 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.75.1
+  * bump grpcio to 1.59.0; require Python 3.10+ (#17351)
+  * require Protobuf 6.33.5+ (#17743)
+
+-------------------------------------------------------------------
 Mon May 11 09:56:35 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.75.0
