@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Aug 14 05:51:58 UTC 2026 - william.brown@suse.com
+
+- Update to version 1.11.1~git0.bfb60b5cb:
+  * Release 1.11.1
+  * Resolve renew-cert timeout issue (#4524)
+  * Resolve a minor possible deadlock in actor tests (#4523)
+  * Resolve incorrect URN in access token type response (#4526)
+  * OAuth2Error return json error response (#4515)
+  * Better JS guard for WebAuthn buttons (#4511)
+  * Fix documented command syntax for credential reset token (#4512)
+  * 20260805 oauth2 scopes (#4506)
+  * Handle existing cache dir (#4502)
+  * Return correct OAuth2 HTTP Code on invalid token responses (#4496)
+
+-------------------------------------------------------------------
 Sun Aug 02 02:59:39 UTC 2026 - william.brown@suse.com
 
 - Update to version 1.11.0~git0.ed10baa49:
