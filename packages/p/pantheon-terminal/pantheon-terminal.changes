@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug 13 08:49:37 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 8.1.0:
+  + Pressing Alt + 0 or holding Alt down now shows the tab number in the tab
+    labels
+  + Foreground processes can now request attention using a DBus method
+  + Translation updates
+
+-------------------------------------------------------------------
 Sat Apr 18 11:15:15 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 8.0.0:

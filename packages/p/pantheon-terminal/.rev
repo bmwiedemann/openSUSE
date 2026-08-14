@@ -57,4 +57,16 @@
   + Translation updates (forwarded request 1347929 from rrahl0)</comment>
     <requestid>1347930</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e35d85679c4a14cdf7d20ba08309f66f</srcmd5>
+    <version>8.1.0</version>
+    <time>1786737990</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 8.1.0:
+  + Pressing Alt + 0 or holding Alt down now shows the tab number in the tab
+    labels
+  + Foreground processes can now request attention using a DBus method
+  + Translation updates (forwarded request 1370993 from rrahl0)</comment>
+    <requestid>1370994</requestid>
+  </revision>
 </revisionlist>
