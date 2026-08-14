@@ -18,8 +18,8 @@
 
 
 %define srcversion 6.18
-%define patchversion 6.18.43
-%define git_commit a17c5b87a1c680f0726d37e50fc8abc98aa4f2b6
+%define patchversion 6.18.44
+%define git_commit 3cf07d34447147ccef153d37f78b08207cdc4eaf
 %define variant -longterm%{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -40,9 +40,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,arch-symbols,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-longterm
-Version:        6.18.43
+Version:        6.18.44
 %if 0%{?is_kotd}
-Release:        <RELEASE>.ga17c5b8
+Release:        <RELEASE>.g3cf07d3
 %else
 Release:        0
 %endif
