@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 13 04:12:42 UTC 2026 - William Brown <william.brown@suse.com>
+
+- bsc#1274339 - CVE-2026-25541 - integer overflow in 'BytesMut:reserve' can lead to undefined behavior and crashes
+
+-------------------------------------------------------------------
 Thu Nov 06 08:12:21 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - remove TAG_OFFSET from version number, as this makes version
