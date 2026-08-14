@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Aug 13 06:25:15 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 7.5.4:
+  * Minor refactor to handle shelve.open and dbm errors
+  * Remove import of deprecated cgi module
+  * Replace deprecated datetime.utcnow() by datetime.now(timezone.utc)
+  * deps: Remove the importlib_metadata dependency
+  * deps: Remove the importlib_resources dependency
+  * Fix prepare_for_negotiated_authenticate to avoid double signing redirect
+    requests
+- Refresh patch use-cryptography.patch
+
+-------------------------------------------------------------------
 Tue Apr  8 07:29:45 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Fix dependencies gh#IdentityPython/pysaml2#984

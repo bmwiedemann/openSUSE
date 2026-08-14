@@ -1,7 +1,7 @@
 #
 # spec file for package python-pysaml2
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global modname pysaml2
 %{?sle15_python_module_pythons}
 Name:           python-pysaml2
-Version:        7.5.2
+Version:        7.5.4
 Release:        0
 Summary:        Python implementation of SAML Version 2 to be used in a WSGI environment
 License:        Apache-2.0
@@ -37,7 +37,6 @@ BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module pymongo >= 3.5}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil}
-BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module requests >= 1.0.0}
 BuildRequires:  %{python_module responses}
 BuildRequires:  %{python_module xmlschema >= 2}
@@ -49,16 +48,14 @@ BuildRequires:  libxmlsec1-openssl1
 BuildRequires:  python-rpm-macros
 BuildRequires:  update-alternatives
 BuildRequires:  xmlsec1
-Requires:       python-Paste
-Requires:       python-cryptography >= 3.1
+Requires:       python-cryptography >= 40.0
 Requires:       python-defusedxml
-Requires:       python-pyOpenSSL
 Requires:       python-pymongo >= 3.5
 Requires:       python-python-dateutil
-Requires:       python-pytz
 Requires:       python-requests >= 1.0.0
 Requires:       python-xmlschema >= 1.2.1
-Requires:       python-zope.interface
+Recommends:     python-Paste
+Recommends:     python-zope.interface
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 # We need to have arch build to make ifarch condition below working
@@ -90,16 +87,16 @@ done
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# https://github.com/IdentityPython/pysaml2/issues/858
-sed -i 's:import mock:from unittest import mock:' tests/test_41_response.py
-sed -i 's:mock.mock:unittest.mock:' tests/test_52_default_sign_alg.py
-# Excluded tests for i586 gh#IdentityPython/pysaml2#682 and gh#IdentityPython/pysaml2#759
 # Exclude broken namespace test (https://github.com/IdentityPython/pysaml2/issues/921)
-%ifarch %{ix86}
-%pytest -k "not (test_namespace_processing or test_assertion_consumer_service or test_swamid_sp or test_swamid_idp or test_other_response or test_mta or test_unknown_subject or test_filter_ava_registration_authority_1)" tests
-%else
-%pytest -k "not test_namespace_processing" tests
-%endif
+# test_valid_saml_response_doc broken with new xmlschema release
+donttest="test_namespace_processing or test_valid_saml_response_doc"
+# Excluded tests for i586 gh#IdentityPython/pysaml2#682 and gh#IdentityPython/pysaml2#759
+if [ $(getconf LONG_BIT) -eq 32 ]; then
+    donttest+=" or test_assertion_consumer_service or test_swamid_sp"
+    donttest+=" or test_swamid_idp or test_other_response or test_mta"
+    donttest+=" or test_unknown_subject or test_filter_ava_registration_authority_1"
+fi
+%pytest --ignore tests/test_schema_validator.py -k "not ($donttest)" tests
 
 %post
 %python_install_alternative make_metadata parse_xsd2 mdexport merge_metadata

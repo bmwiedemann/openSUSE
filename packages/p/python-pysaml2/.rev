@@ -387,4 +387,20 @@
     <comment></comment>
     <requestid>1267842</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>3836c9eeddccb639109a4ce4af062842</srcmd5>
+    <version>7.5.4</version>
+    <time>1786737966</time>
+    <user>anag_factory</user>
+    <comment>- Update to 7.5.4:
+  * Minor refactor to handle shelve.open and dbm errors
+  * Remove import of deprecated cgi module
+  * Replace deprecated datetime.utcnow() by datetime.now(timezone.utc)
+  * deps: Remove the importlib_metadata dependency
+  * deps: Remove the importlib_resources dependency
+  * Fix prepare_for_negotiated_authenticate to avoid double signing redirect
+    requests
+- Refresh patch use-cryptography.patch</comment>
+    <requestid>1370948</requestid>
+  </revision>
 </revisionlist>

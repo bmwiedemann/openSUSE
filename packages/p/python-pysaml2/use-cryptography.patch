@@ -9,31 +9,31 @@ Subject: [PATCH] replace pyopenssl with cryptography
  src/saml2/sigver.py |  12 +--
  3 files changed, 105 insertions(+), 88 deletions(-)
 
-diff --git a/pyproject.toml b/pyproject.toml
-index 985692043..8a7cd9185 100644
---- a/pyproject.toml
-+++ b/pyproject.toml
-@@ -37,12 +37,11 @@ parse_xsd2 = "saml2.tools.parse_xsd2:main"
- 
- [tool.poetry.dependencies]
- python = "^3.9"
--cryptography = ">=3.1"
-+cryptography = ">=40.0"
- defusedxml = "*"
- importlib-metadata = {version = ">=1.7.0", python = "<3.8"}
- importlib-resources = {python = "<3.9", version = "*"}
- paste = {optional = true, version = "*"}
--pyopenssl = "<24.3.0"
- python-dateutil = "*"
- pytz = "*"
- "repoze.who" = {optional = true, version = "*"}
-diff --git a/src/saml2/cert.py b/src/saml2/cert.py
-index c5f626601..1759b9b24 100644
---- a/src/saml2/cert.py
-+++ b/src/saml2/cert.py
-@@ -5,7 +5,11 @@
+Index: pysaml2-7.5.4/pyproject.toml
+===================================================================
+--- pysaml2-7.5.4.orig/pyproject.toml
++++ pysaml2-7.5.4/pyproject.toml
+@@ -23,9 +23,8 @@ classifiers = [
+ ]
+ requires-python = ">= 3.9"
+ dependencies = [
+-  "cryptography >=3.1",
++  "cryptography >=40",
+   "defusedxml",
+-  "pyopenssl <24.3.0",
+   "python-dateutil",
+   "requests >=2.0.0,<3.0.0",  # ^2 means compatible with 2.x
+   "xmlschema >=2.0.0,<3.0.0"
+Index: pysaml2-7.5.4/src/saml2/cert.py
+===================================================================
+--- pysaml2-7.5.4.orig/src/saml2/cert.py
++++ pysaml2-7.5.4/src/saml2/cert.py
+@@ -4,9 +4,14 @@ import base64
  from os import remove
  from os.path import join
+ from datetime import datetime
++from datetime import timedelta
+ from datetime import timezone
  
 -from OpenSSL import crypto
 +from cryptography import x509
@@ -42,9 +42,9 @@ index c5f626601..1759b9b24 100644
 +from cryptography.hazmat.primitives.asymmetric import rsa
 +from cryptography.x509.oid import NameOID
  import dateutil.parser
- import pytz
  
-@@ -36,7 +40,6 @@ def create_certificate(
+ import saml2.cryptography.pki
+@@ -36,7 +41,6 @@ class OpenSSLWrapper:
          valid_to=315360000,
          sn=1,
          key_length=1024,
@@ -52,7 +52,7 @@ index c5f626601..1759b9b24 100644
          write_to_file=False,
          cert_dir="",
          cipher_passphrase=None,
-@@ -87,8 +90,6 @@ def create_certificate(
+@@ -87,8 +91,6 @@ class OpenSSLWrapper:
                                    is 1.
          :param key_length:        Length of the key to be generated. Defaults
                                    to 1024.
@@ -61,7 +61,7 @@ index c5f626601..1759b9b24 100644
          :param write_to_file:     True if you want to write the certificate
                                    to a file. The method will then return
                                    a tuple with path to certificate file and
-@@ -131,49 +132,68 @@ def create_certificate(
+@@ -131,49 +133,68 @@ class OpenSSLWrapper:
              k_f = join(cert_dir, key_file)
  
          # create a key pair
@@ -109,13 +109,13 @@ index c5f626601..1759b9b24 100644
 -            cert.set_issuer(cert.get_subject())
 -        cert.set_pubkey(k)
 -        cert.sign(k, hash_alg)
-+            now = datetime.datetime.now(datetime.UTC)
++            now = datetime.now(timezone.utc)
 +            builder = builder.serial_number(
 +                sn,
 +            ).not_valid_before(
-+                now + datetime.timedelta(seconds=valid_from),
++                now + timedelta(seconds=valid_from),
 +            ).not_valid_after(
-+                now + datetime.timedelta(seconds=valid_to),
++                now + timedelta(seconds=valid_to),
 +            ).issuer_name(
 +                subject_name,
 +            ).public_key(
@@ -157,7 +157,7 @@ index c5f626601..1759b9b24 100644
                  return c_f, k_f
              return tmp_cert, tmp_key
          except Exception as ex:
-@@ -198,7 +218,6 @@ def create_cert_signed_certificate(
+@@ -198,7 +219,6 @@ class OpenSSLWrapper:
          sign_cert_str,
          sign_key_str,
          request_cert_str,
@@ -165,7 +165,7 @@ index c5f626601..1759b9b24 100644
          valid_from=0,
          valid_to=315360000,
          sn=1,
-@@ -222,8 +241,6 @@ def create_cert_signed_certificate(
+@@ -222,8 +242,6 @@ class OpenSSLWrapper:
                                    the requested certificate. If you only have
                                    a file use the method read_str_from_file
                                    to get a string representation.
@@ -174,7 +174,7 @@ index c5f626601..1759b9b24 100644
          :param valid_from:        When the certificate starts to be valid.
                                    Amount of seconds from when the
                                    certificate is generated.
-@@ -237,27 +254,29 @@ def create_cert_signed_certificate(
+@@ -237,27 +255,29 @@ class OpenSSLWrapper:
          :return:                  String representation of the signed
                                    certificate.
          """
@@ -185,7 +185,13 @@ index c5f626601..1759b9b24 100644
 -        else:
 -            ca_key = crypto.load_privatekey(crypto.FILETYPE_PEM, sign_key_str)
 -        req_cert = crypto.load_certificate_request(crypto.FILETYPE_PEM, request_cert_str)
--
++        if isinstance(sign_cert_str, str):
++            sign_cert_str = sign_cert_str.encode("utf-8")
++        ca_cert = x509.load_pem_x509_certificate(sign_cert_str)
++        ca_key = serialization.load_pem_private_key(
++            sign_key_str, password=passphrase)
++        req_cert = x509.load_pem_x509_csr(request_cert_str)
+ 
 -        cert = crypto.X509()
 -        cert.set_subject(req_cert.get_subject())
 -        cert.set_serial_number(sn)
@@ -199,22 +205,15 @@ index c5f626601..1759b9b24 100644
 -        if isinstance(cert_dump, str):
 -            return cert_dump
 -        return cert_dump.decode("utf-8")
-+        if isinstance(sign_cert_str, str):
-+            sign_cert_str = sign_cert_str.encode("utf-8")
-+        ca_cert = x509.load_pem_x509_certificate(sign_cert_str)
-+        ca_key = serialization.load_pem_private_key(
-+            sign_key_str, password=passphrase)
-+        req_cert = x509.load_pem_x509_csr(request_cert_str)
-+
-+        now = datetime.datetime.now(datetime.UTC)
++        now = datetime.now(timezone.utc)
 +        cert = x509.CertificateBuilder().subject_name(
 +            req_cert.subject,
 +        ).serial_number(
 +            sn,
 +        ).not_valid_before(
-+            now + datetime.timedelta(seconds=valid_from),
++            now + timedelta(seconds=valid_from),
 +        ).not_valid_after(
-+            now + datetime.timedelta(seconds=valid_to),
++            now + timedelta(seconds=valid_to),
 +        ).issuer_name(
 +            ca_cert.subject,
 +        ).public_key(
@@ -225,13 +224,13 @@ index c5f626601..1759b9b24 100644
  
      def verify_chain(self, cert_chain_str_list, cert_str):
          """
-@@ -276,13 +295,6 @@ def verify_chain(self, cert_chain_str_list, cert_str):
+@@ -276,13 +296,6 @@ class OpenSSLWrapper:
                  cert_str = tmp_cert_str
              return (True, "Signed certificate is valid and correctly signed by CA " "certificate.")
  
 -    def certificate_not_valid_yet(self, cert):
 -        starts_to_be_valid = dateutil.parser.parse(cert.get_notBefore())
--        now = pytz.UTC.localize(datetime.datetime.utcnow())
+-        now = datetime.now(timezone.utc)
 -        if starts_to_be_valid < now:
 -            return False
 -        return True
@@ -239,22 +238,21 @@ index c5f626601..1759b9b24 100644
      def verify(self, signing_cert_str, cert_str):
          """
          Verifies if a certificate is valid and signed by a given certificate.
-@@ -303,34 +315,34 @@ def verify(self, signing_cert_str, cert_str):
+@@ -303,34 +316,34 @@ class OpenSSLWrapper:
                                   Message = Why the validation failed.
          """
          try:
 -            ca_cert = crypto.load_certificate(crypto.FILETYPE_PEM, signing_cert_str)
 -            cert = crypto.load_certificate(crypto.FILETYPE_PEM, cert_str)
--
--            if self.certificate_not_valid_yet(ca_cert):
 +            if isinstance(signing_cert_str, str):
 +                signing_cert_str = signing_cert_str.encode("utf-8")
 +            if isinstance(cert_str, str):
 +                cert_str = cert_str.encode("utf-8")
 +            ca_cert = x509.load_pem_x509_certificate(signing_cert_str)
 +            cert = x509.load_pem_x509_certificate(cert_str)
-+            now = datetime.datetime.now(datetime.UTC)
-+
++            now = datetime.now(timezone.utc)
+ 
+-            if self.certificate_not_valid_yet(ca_cert):
 +            if ca_cert.not_valid_before_utc >= now:
                  return False, "CA certificate is not valid yet."
  
@@ -290,7 +288,7 @@ index c5f626601..1759b9b24 100644
                  return False, f"Certificate is incorrectly signed: {str(e)}"
          except Exception as e:
              return False, f"Certificate is not valid for an unknown reason. {str(e)}"
-@@ -352,8 +364,14 @@ def read_cert_from_file(cert_file, cert_type="pem"):
+@@ -352,8 +365,14 @@ def read_cert_from_file(cert_file, cert_
          data = fp.read()
  
      try:
@@ -307,20 +305,20 @@ index c5f626601..1759b9b24 100644
      except Exception as e:
          raise CertificateError(e)
  
-diff --git a/src/saml2/sigver.py b/src/saml2/sigver.py
-index f3af1ec99..98d11b1d1 100644
---- a/src/saml2/sigver.py
-+++ b/src/saml2/sigver.py
-@@ -28,7 +28,7 @@
- 
+Index: pysaml2-7.5.4/src/saml2/sigver.py
+===================================================================
+--- pysaml2-7.5.4.orig/src/saml2/sigver.py
++++ pysaml2-7.5.4/src/saml2/sigver.py
+@@ -18,7 +18,7 @@ from time import mktime
  from urllib import parse
+ from uuid import uuid4 as gen_random_key
  
 -from OpenSSL import crypto
 +from cryptography import x509
- import pytz
+ import dateutil
  
  from saml2 import ExtensionElement
-@@ -383,14 +383,14 @@ def active_cert(key):
+@@ -373,14 +373,14 @@ def active_cert(key):
      """
      try:
          cert_str = pem_format(key)
@@ -329,11 +327,10 @@ index f3af1ec99..98d11b1d1 100644
      except AttributeError:
          return False
  
--    now = pytz.UTC.localize(datetime.datetime.utcnow())
+     now = datetime.now(timezone.utc)
 -    valid_from = dateutil.parser.parse(cert.get_notBefore())
 -    valid_to = dateutil.parser.parse(cert.get_notAfter())
 -    active = not cert.has_expired() and valid_from <= now < valid_to
-+    now = datetime.datetime.now(datetime.UTC)
 +    valid_from = cert.not_valid_before_utc
 +    valid_to = cert.not_valid_after_utc
 +    active = valid_from <= now < valid_to
