@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Aug 14 05:34:36 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.14.2:
+  * Bug or Regression
+    - Fixed overridePath handling in #4174
+    - Fix busy loop when pod eviction is blocked during node drain
+      in #4181
+  * Updates
+    - Update OSM version to v1.11.1 in #4180
+
+-------------------------------------------------------------------
 Thu Aug 06 05:07:44 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.14.1:
