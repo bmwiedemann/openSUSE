@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Aug 14 07:15:51 UTC 2026 - nicholas.yang@suse.com
+
+- Update to version 5.1.0+20260814.d9688661:
+  * Dev: migration: Add check and online auto-fix for deprecated cluster properties (bsc#1271223)
+  * Fix: migration: typo in the signature of method `handle_problem`
+
+-------------------------------------------------------------------
+Mon Aug 10 09:11:20 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.1.0+20260810.421dd6c0:
+  * Dev: unittests: Remove noisy unit test output
+  * Dev: doc: Fix typos in crm.8.adoc
+  * Dev: doc: Remove parallax-related expressions from crm.8.adoc
+  * Dev: Remove unused functions
+  * Dev: doc: Remove csync2 from crm.8.adoc
+
+-------------------------------------------------------------------
+Thu Aug 06 07:32:15 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.1.0+20260806.25794c81:
+  * Dev: Avoid hash for content checks
+
+-------------------------------------------------------------------
+Fri Jul 31 09:46:30 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.1.0+20260731.8b5d2b6d:
+  * Dev: qdevice: Move utils.get_qdevice_sync_timeout into QDevice class
+
+-------------------------------------------------------------------
 Thu Jul 30 09:22:12 UTC 2026 - XLiang@suse.com
 
 - Update to version 5.1.0+20260730.157564b0:
