@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Aug 14 05:24:41 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.4.26:
+  * Bug Fixes
+    - 9b1a713: fix(go): update github.com/sirupsen/logrus ( v1.9.4
+      → v1.10.0 ) (@mr-borboto[bot])
+  * Chores
+    - 3fae3be: chore(mise): update go ( 1.26.5 → 1.26.6 )
+      (@mr-borboto[bot])
+
+-------------------------------------------------------------------
 Wed Aug 12 05:55:17 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.4.25:
