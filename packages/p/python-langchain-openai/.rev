@@ -55,4 +55,30 @@
     <comment>Update to 1.4.3: invalid_tool_call content blocks are now filtered out when converting v1 content back to the Chat Completions format, so a malformed tool call no longer leaks into the message content (it stays reachable via invalid_tool_calls). Also documents that Chat-Completions-vs-Responses API routing is inferred partly from the model name independent of base_url, and that some providers return extra metadata in response headers. No dependency floor changes. Built and tested locally for aarch64: 261 tests pass per Python flavour (3.13/3.14), rpmlint 0 errors 0 warnings 0 badness.</comment>
     <requestid>1370578</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>577bac0156a7c9737f17bc1aac73aa9c</srcmd5>
+    <version>1.5.0</version>
+    <time>1786738016</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.5.0
+
+- Support the openai 3.0 SDK: a new internal compatibility module resolves
+  the httpx library the installed SDK is built on (httpx2 on openai 3.x,
+  httpx on 2.x), so transport, connection-limit and proxy objects handed to
+  the client always come from the same library as the client itself. The
+  accepted openai range widens to &lt; 4.0.0 accordingly.
+- Clearer import error when the httpx used by the OpenAI SDK is unavailable
+  while configuring an embeddings proxy.
+
+Dependency floors follow upstream:
+- new explicit certifi requirement, &gt;= 2024.6.2 (Factory has 2026.7.22); it
+  was already imported to build the default SSL context but never declared
+- langchain-core floor raised from &gt;= 1.5.3 to &gt;= 1.5.4 (Factory has 1.5.4)
+- openai and tiktoken floors unchanged
+
+Built locally for openSUSE:Factory:ARM/standard aarch64: green, 276 tests
+passed (up from 261; the new ones are the compatibility-shim tests), same
+7 deselected / 4 xfailed as before, rpmlint 0 errors 0 warnings 0 badness.</comment>
+    <requestid>1371166</requestid>
+  </revision>
 </revisionlist>
