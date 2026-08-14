@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Aug 13 03:51:15 UTC 2026 - william.brown@suse.com
+
+- Update to version 20260813:
+  * Assigned RUSTSEC-2026-0257 to webbrowser
+  * Add advisory for webbrowser argument injection
+  * Assigned RUSTSEC-2026-0254 to sp-sized-chunks, RUSTSEC-2026-0255 to sized-chunks, RUSTSEC-2026-0256 to circular-buffer
+  * Add advisory for sized-chunks: panic-safety UAF/double-free in clear/drop_left/drop_right (#3111)
+  * Add advisory for sp-sized-chunks: panic-safety UAF/double-free in clear/drop_left/drop_right (#3136)
+  * Add advisory for circular-buffer (panic-safety UAF/double-free) (#3137)
+  * Assigned RUSTSEC-2025-0170 to hugepage-rs
+  * Add advisory for hugepage-rs dealloc unsoundness
+  * Assigned RUSTSEC-2026-0253 to lru
+  * Add informational advisory for lru panic safety issue (#2851)
+
+-------------------------------------------------------------------
 Tue Jul 07 04:09:23 UTC 2026 - william.brown@suse.com
 
 - Update to version 20260707:
