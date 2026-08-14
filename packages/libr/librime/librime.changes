@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Aug 13 14:32:01 UTC 2026 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.17.0
+  * syllabifier: trim leading delimiters
+  * navigator: Allows jumping to before the delimiter.
+  * poet: make multiple sentences
+  * script_translator: allow multiple sentence candidates
+  * Fix bugs
+- Add librime-fix-gcc14-cpp20-compat.patch, fix C++20 compilation errors
+
+-------------------------------------------------------------------
 Sun Feb  8 12:49:39 UTC 2026 - Marguerite Su <i@marguerite.su>
 
 - refreshed librime-boost166.patch, fix leap 15.6

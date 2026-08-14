@@ -338,4 +338,18 @@
     <comment></comment>
     <requestid>1331864</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>e77db36ee3e26678c926af0e5931939a</srcmd5>
+    <version>1.17.0</version>
+    <time>1786738053</time>
+    <user>anag_factory</user>
+    <comment>- Update version to 1.17.0
+  * syllabifier: trim leading delimiters
+  * navigator: Allows jumping to before the delimiter.
+  * poet: make multiple sentences
+  * script_translator: allow multiple sentence candidates
+  * Fix bugs
+- Add librime-fix-gcc14-cpp20-compat.patch, fix C++20 compilation errors (forwarded request 1371057 from hillwood)</comment>
+    <requestid>1371059</requestid>
+  </revision>
 </revisionlist>

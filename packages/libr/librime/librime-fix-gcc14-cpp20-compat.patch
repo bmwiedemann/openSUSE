@@ -1,0 +1,30 @@
+diff -Nur librime-1.17.0/src/rime/common.h librime-1.17.0-new/src/rime/common.h
+--- librime-1.17.0/src/rime/common.h	2026-06-05 19:32:44.000000000 +0800
++++ librime-1.17.0-new/src/rime/common.h	2026-08-13 22:07:04.169978790 +0800
+@@ -130,7 +130,7 @@
+   }
+ #ifdef RIME_ENABLE_LOGGING
+   friend std::ostream& operator<<(std::ostream& os, const path& p) {
+-    return os << p.u8string();
++    return os << p.string();
+   }
+ #endif
+ };
+diff -Nur librime-1.17.0/src/rime/dict/vocabulary.h librime-1.17.0-new/src/rime/dict/vocabulary.h
+--- librime-1.17.0/src/rime/dict/vocabulary.h	2026-06-05 19:32:44.000000000 +0800
++++ librime-1.17.0-new/src/rime/dict/vocabulary.h	2026-08-13 22:24:34.889708508 +0800
+@@ -57,7 +57,13 @@
+   int matching_code_size = 0;
+ 
+   DictEntry() = default;
+-  ShortDictEntry ToShort() const { return {text, code, weight}; }
++  ShortDictEntry ToShort() const {
++    ShortDictEntry entry;
++    entry.text = text;
++    entry.code = code;
++    entry.weight = weight;
++    return entry;
++  }
+   bool IsExactMatch() const {
+     return matching_code_size == 0 || matching_code_size == code.size();
+   }

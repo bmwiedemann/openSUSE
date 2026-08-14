@@ -17,15 +17,17 @@
 
 
 Name:           librime
-Version:        1.16.1
+Version:        1.17.0
 Release:        0
 Summary:        Rime Input Method Engine
 License:        BSD-3-Clause
 Group:          System/I18n/Chinese
 URL:            https://github.com/rime/librime
 Source:         https://github.com/rime/%{name}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-#PATCH-FIX-OPENSUSE librime-boost166.patch i@marguerite.su -- leap's gcc7 has no <filesystem>
+# PATCH-FIX-OPENSUSE librime-boost166.patch i@marguerite.su -- leap's gcc7 has no <filesystem>
 Patch0:         librime-boost166.patch
+# PATCH-FIX-UPSTREAM librime-fix-gcc14-cpp20-compat.patch hillwood@opensuse.org -- Fix C++20 compilation errors
+Patch1:         librime-fix-gcc14-cpp20-compat.patch
 BuildRequires:  capnproto >= 0.7.0
 BuildRequires:  cmake >= 3.1.0
 BuildRequires:  gcc-c++
@@ -101,6 +103,7 @@ This package provides private headers of Rime to build plugins.
 %if 0%{?suse_version} == 1500
 %patch -P 0 -p 1
 %endif
+%patch -P 1 -p 1
 
 %build
 %cmake -DCMAKE_BUILD_TYPE=Release \
