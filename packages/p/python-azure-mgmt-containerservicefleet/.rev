@@ -95,4 +95,16 @@
     CHANGELOG.md file provided with this package (forwarded request 1276186 from glaubitz)</comment>
     <requestid>1276196</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2cba64aa754e7d3fa7769cb32a5a4447</srcmd5>
+    <version>4.0.0</version>
+    <time>1786738188</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 4.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from pyproject.toml (forwarded request 1371176 from glaubitz)</comment>
+    <requestid>1371222</requestid>
+  </revision>
 </revisionlist>
