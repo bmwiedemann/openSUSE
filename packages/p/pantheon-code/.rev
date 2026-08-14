@@ -44,4 +44,41 @@
   * Updated translations (forwarded request 1339548 from rrahl0)</comment>
     <requestid>1339549</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fd0ab64abfc7ff1d4e9157eaada1ed93</srcmd5>
+    <version>8.3.2</version>
+    <time>1786737992</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 8.3.2:
+  + Replace Bin with Box as base class for BranchListBox
+  + Gtk4 prep: Avoid using focus event
+  + Remove TemplateManager related code
+  + Use system monospace font not document font
+  + Use scroll controller for zoom
+  + Gtk4 Prep: User EventController and PopoverMenu for Terminal context
+  + Gtk4Prep: Replace dialog.run () and dialog.present () where simple
+  + Gtk4Prep: lose unused New Branch dialog
+  + FormatBar: reduce public API
+- Update to version 8.3.1:
+  + The sidebar can now be focused using a keyboard shortcut
+  + Closing a second window by headerbar or shortcut only closes that window,
+    saving its documents
+  + The system font is shown and can be selected in the Preferences dialog
+  + Improved desktop consistency and contrast by using user accent color for
+    selections
+  + Closing all windows by shortcut now correctly saves all documents
+  + Filetypes excluded from stripping trailing whitespace are shown in the
+    application menu
+  + Stripping trailing whitespace now correctly excludes string literals
+  + Fuzzy searching for project files now correctly searches active project
+  + Updated translations
+- Update to version 8.3.0:
+  + Trailing spaces are now removed when the document focuses out (subject to
+    setting)
+  + Focus following is implemented between textview and terminal pane
+  + A new dialog for branch actions (open, new) is implemented linked to
+    hot-key Ctrl-B
+  + It is now possible to create a new document from a template (forwarded request 1371002 from rrahl0)</comment>
+    <requestid>1371003</requestid>
+  </revision>
 </revisionlist>
