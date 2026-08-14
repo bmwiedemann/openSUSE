@@ -17,7 +17,7 @@
 
 
 Name:           rasdaemon
-Version:        0.8.5+git0.769593b
+Version:        0.8.5+git10.4aec37b
 Release:        0
 Summary:        Utility to receive RAS error tracings
 License:        GPL-2.0-only
@@ -26,8 +26,7 @@ URL:            http://git.infradead.org/users/mchehab/rasdaemon.git
 Source:         %{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM -- based on https://github.com/mchehab/rasdaemon/pull/213
 Patch0:         rasdaemon_ras-mc-ctl_change_no_dimm_label_message_to_info_from_error.patch
-# PATCH-FIX-UPSTREAM -- based on https://github.com/mchehab/rasdaemon/pull/253
-Patch1:         debugfs_service_dependency.patch
+Patch1:         There-must-be-no-shebang-in-bash-completion-scripts.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gettext-devel
@@ -85,6 +84,7 @@ autoreconf -fvi
   --enable-yitian-ns-decode    \
   --disable-signal             \
   --enable-erst                \
+  --sysconfdir=%{_distconfdir} \
   --with-sysconfdefdir=%{_sysconfdir}/sysconfig
 make %{?_smp_mflags} V=1
 
@@ -122,11 +122,12 @@ mv %{buildroot}%{_sysconfdir}/sysconfig/rasdaemon %{buildroot}/%{_fillupdir}/sys
 %{_sbindir}/rcras-mc-ctl
 %{_mandir}/*/*
 %{_unitdir}/*.service
-%dir %{_sysconfdir}/ras
-%dir %{_sysconfdir}/ras/dimm_labels.d
-%dir %{_sysconfdir}/ras/triggers
-%{_sysconfdir}/ras/triggers/mc_event_trigger
-%{_sysconfdir}/ras/triggers/mem_fail_trigger
+%dir %{_distconfdir}/ras
+%dir %{_distconfdir}/ras/dimm_labels.d
+%dir %{_distconfdir}/ras/triggers
+%{_distconfdir}/ras/triggers/mc_event_trigger
+%{_distconfdir}/ras/triggers/mem_fail_trigger
+%{_distconfdir}/ras/dimm_labels.d/*
 %dir %{_localstatedir}/lib/rasdaemon
 %ghost %{_localstatedir}/lib/rasdaemon/ras-mc_event.db
 %attr (644,root,root) %{_fillupdir}/sysconfig.rasdaemon

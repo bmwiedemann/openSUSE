@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri Aug 14 10:34:58 UTC 2026 - Thomas Renninger <trenn@suse.com>
+
+- Remove shebang in bash completions
+A There-must-be-no-shebang-in-bash-completion-scripts.patch
+- Move configs from sysconfig (/etc/rasdaemon) to distconfig
+  (/usr/etc/rasdaemon)
+- Update to version 0.8.5+git10.4aec37b:
+  * util/ras-mc-ctl.in: use "-H" as an alias for --human
+  * ras-mc-ctl: add --human to scale --layout sizes
+  * ras-mc-ctl: fix --layout column alignment with large DIMMs
+  * ras-mc-ctl: use an explicit placeholder for unknown mainboard/product info (bsc#1273190)
+  * ras-mc-ctl: report missing dmidecode instead of an obscure Perl error (bsc#1273190)
+
+-------------------------------------------------------------------
+Fri Aug 07 18:52:38 UTC 2026 - Thomas Renninger <trenn@suse.com>
+
+- Update to version 0.8.5+git5.c551de9:
+  * Fix dangerous stack allocations in ras-report.c
+  * Introduce commit_report_common to consolidate reporting logic
+  * ras-cxl-handler: Handle missing optional DRAM event fields gracefully
+  * rasdaemon requires debugfs - add dependency to rasdaemon.service
+  * Makefile.am: install the DIMM label database
+Remove mainlined patch:
+D debugfs_service_dependency.patch
+
+-------------------------------------------------------------------
+Tue Aug  4 16:21:35 UTC 2026 - Thomas Renninger <trenn@suse.com>
+
+- Handle ras-mc-ctl abortion more gracefully in case dmidecode is
+  not available (bsc#1273190)
+A ras-mc-ctl-report-missing-dmidecode-instead-of-an-obscure-Perl-error.patch
+A ras-mc-ctl-use-an-explicit-placeholder-for-unknown-mainboard-product-info.patch
+
+-------------------------------------------------------------------
 Wed Jul  8 07:54:13 UTC 2026 - Thomas Renninger <trenn@suse.com>
 
 - Use RequiresMountsFor instead of After/Wants in previous
