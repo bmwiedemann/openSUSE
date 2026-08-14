@@ -1,7 +1,7 @@
 #
 # spec file for package rfc-read
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rfc-read
-Version:        1.0.1
+Version:        2.0.1
 Release:        0
 Summary:        Read RFCs from the command-line
 License:        MIT
@@ -26,25 +26,39 @@ Source:         https://github.com/bfontaine/rfc/archive/refs/tags/v%{version}.t
 Requires:       bash
 Requires:       curl
 Requires:       less
+Recommends:     rsync
 BuildArch:      noarch
 
 %description
 A tool written in Bash to read RFCs from the command-line. It fetches RFCs and drafts from the Web and caches them locally.
 
+%package bash-completion
+Summary:        Bash completion for %{name}
+Requires:       bash-completion
+Supplements:    (%{name} and bash-completion)
+BuildArch:      noarch
+
+%description bash-completion
+Bash completion for %{name}.
+
 %prep
 %setup -q -n rfc-%{version}
 
 %build
-sed -i "s|/env bash|/bash|g" rfc
+sed -i '1s|^#! */usr/bin/env bash|#!/bin/bash|' rfc
 
 %install
 install -D -m755 rfc %{buildroot}%{_bindir}/rfc
 install -D -m644 man/rfc.1 %{buildroot}%{_mandir}/man1/rfc.1
+install -D -m644 rfc.bash %{buildroot}%{_datadir}/bash-completion/completions/rfc
 
 %files
 %license LICENSE
 %doc CHANGELOG.md README.md
 %{_bindir}/rfc
 %{_mandir}/man1/rfc.1%{?ext_man}
+
+%files bash-completion
+%{_datadir}/bash-completion/completions/rfc
 
 %changelog
