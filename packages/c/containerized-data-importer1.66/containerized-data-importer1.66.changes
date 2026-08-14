@@ -1,0 +1,63 @@
+-------------------------------------------------------------------
+Thu Aug 13 17:32:41 UTC 2026 - Victor Carvalho <victor.carvalho@suse.com>
+
+- Declare the parallel-minor exclusion: every subpackage now provides
+  and conflicts its unversioned containerized-data-importer-<subpackage>
+  name (containerized-data-importer1.65 already provides these), so
+  co-named binaries are a declared package conflict instead of an
+  undeclared file conflict. Fixes the request 1370732 decline
+  ("conflicts with 1.65": /usr/bin/virt-cdi-* and /usr/bin/cdi-cloner
+  shipped by both minors with no conflict relationship).
+
+-------------------------------------------------------------------
+Thu Aug 13 14:05:10 UTC 2026 - Victor Carvalho <victor.carvalho@suse.com>
+
+- Enable aarch64 on the SLE 16 code stream: widen the 16.x
+  _exclusive_arch define from x86_64 to x86_64 aarch64, matching the
+  SLE 15 and Tumbleweed branches. The x86_64-only define was inherited
+  from the original packaging; the aarch64 build is required for arm64
+  container images on SLE 16.
+
+-------------------------------------------------------------------
+Sat Aug 08 09:29:32 UTC 2026 - Victor Carvalho <victor.carvalho@suse.com>
+
+- Security: re-vendor the bundled Go dependencies (no upstream source
+  changes; tarball rebuilt from v1.66.0 with updated go.mod/vendor) so
+  1.66 does not regress the dependency-CVE state already shipped in
+  containerized-data-importer1.65. v1.66.0's pristine vendor tree
+  predates those bumps:
+  * golang.org/x/net v0.48.0 -> v0.57.0: CVE-2025-47911 (bsc#1251495),
+    CVE-2025-58190 (bsc#1251689), CVE-2026-33814 (bsc#1265799),
+    CVE-2026-39821 (bsc#1266639), CVE-2026-25680, CVE-2026-25681,
+    CVE-2026-27136, CVE-2026-42502, CVE-2026-42506 (bsc#1267176)
+  * golang.org/x/crypto v0.46.0 -> v0.54.0: CVE-2026-39827,
+    CVE-2026-39828, CVE-2026-39829, CVE-2026-39830, CVE-2026-39831,
+    CVE-2026-39832, CVE-2026-39833, CVE-2026-39834, CVE-2026-39835,
+    CVE-2026-42508, CVE-2026-46595, CVE-2026-46597, CVE-2026-46598
+    (bsc#1266179)
+  * golang.org/x/text v0.32.0 -> v0.40.0: CVE-2026-56852 (bsc#1272000)
+  * github.com/moby/spdystream v0.4.0 -> v0.5.1: CVE-2026-35469
+    (bsc#1262269)
+  * github.com/ulikunitz/xz v0.5.12 -> v0.5.15: CVE-2025-58058
+    (bsc#1248946)
+  * github.com/go-jose/go-jose/v3 v3.0.3 -> v3.0.5: CVE-2026-34986
+    (bsc#1262952)
+
+-------------------------------------------------------------------
+Wed Aug 05 21:31:07 UTC 2026 - Victor Toso de Carvalho <victor.carvalho@suse.com>
+
+- Initial package containerized-data-importer1.66: CDI v1.66.0, the
+  versioned fork of the containerized-data-importer1.65 packaging so
+  multiple minor releases are maintained in parallel. Each minor starts
+  its own changelog; the pre-fork history lives in
+  containerized-data-importer1.65.
+  Release notes:
+  https://github.com/kubevirt/containerized-data-importer/releases/tag/v1.66.0
+- Carry 0001-tests-lift-client-qps-burst.patch (test-only, applies to
+  the -tests subpackage e2e suite; not yet upstream).
+- Same binary set as 1.65; manifests and the compiled e2e suite install
+  under the versioned data directory cdi-1.66.
+- Bake the opensuse/ registry path with the plain version tag into the
+  release manifests (bsc#1272604): the kubevirt/ path stopped receiving
+  pushes with the unversioned-package retirement, and the
+  release-suffixed tags are never published.

@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>22cf7f01819249007059717d456d6b69</srcmd5>
+    <version>1.66.0</version>
+    <time>1786737882</time>
+    <user>anag_factory</user>
+    <comment>New package containerized-data-importer1.66: CDI 1.66.0.
+
+Versioned fork of containerized-data-importer1.65, so multiple minor releases are maintained in parallel. The changelog starts fresh here; the pre-fork history stays in containerized-data-importer1.65. Same binary set as 1.65; manifests and the compiled e2e suite install under the versioned data directory cdi-1.66.
+
+Carries 0001-tests-lift-client-qps-burst.patch (test-only, applies to the -tests subpackage e2e suite; not yet upstream).
+
+The release manifests bake the opensuse/ registry path with the plain version tag (bsc#1272604): the kubevirt/ path stopped receiving pushes with the unversioned-package retirement, and the release-suffixed tags are never published.
+
+The bundled Go dependencies are re-vendored so 1.66 does not regress the dependency-CVE state already shipped in containerized-data-importer1.65 (v1.66.0's pristine vendor tree predates those bumps): x/net 0.48.0-&gt;0.57.0, x/crypto 0.46.0-&gt;0.54.0, x/text 0.32.0-&gt;0.40.0, moby/spdystream 0.4.0-&gt;0.5.1, ulikunitz/xz 0.5.12-&gt;0.5.15, go-jose/v3 3.0.3-&gt;3.0.5 (see changelog for the CVE/bsc list).
+</comment>
+    <requestid>1371086</requestid>
+  </revision>
+</revisionlist>
