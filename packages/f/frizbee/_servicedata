@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/stacklok/frizbee</param>
-              <param name="changesrevision">4fda192deaef0aae0efd20bc6d7d913bfc494cc1</param></service></servicedata>
+              <param name="changesrevision">4fda192deaef0aae0efd20bc6d7d913bfc494cc1</param></service><service name="tar_scm">
+                <param name="url">https://github.com/stacklok/frizbee.git</param>
+              <param name="changesrevision">cc384e5c6db86f829a4c6ec4a8c567259c834a1a</param></service></servicedata>

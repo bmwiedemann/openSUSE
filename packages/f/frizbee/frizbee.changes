@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Aug 14 05:24:11 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.1.11:
+  * chore(deps): bump arduino/setup-task from 2.0.0 to 3.0.0 (#447)
+  * chore(deps): batch all pending dependency updates and fix CI
+    (#444)
+  * chore: add needs-triage caller workflow (#426)
+  * fix(deps): update module github.com/google/go-github/v84 to v85
+    (#397)
+  * chore(deps): bump github.com/google/go-containerregistry (#393)
+  * fix(deps): update module github.com/deckarep/golang-set/v2 to
+    v2.9.0 (#398)
+  * fix(deps): update module github.com/moby/buildkit to v0.29.0
+    (#383)
+
+-------------------------------------------------------------------
 Sun Mar 29 18:21:10 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.1.10:

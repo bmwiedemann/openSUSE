@@ -17,7 +17,7 @@
 
 
 Name:           frizbee
-Version:        0.1.10
+Version:        0.1.11
 Release:        0
 Summary:        Throw a tag at and it comes back with a checksum
 License:        Apache-2.0
