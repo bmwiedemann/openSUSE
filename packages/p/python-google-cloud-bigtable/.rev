@@ -26,4 +26,14 @@
 - Use proper upstream homepage in URL field</comment>
     <requestid>1363763</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3fea651c5c1a0a7fb2b443b79fa47a9e</srcmd5>
+    <version>2.41.0</version>
+    <time>1786738030</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.41.0
+  * **bigtable:** support materialized views in the data client (#17676)
+- Update BuildRequires and Requires from setup.py (forwarded request 1370803 from glaubitz)</comment>
+    <requestid>1370856</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 12 06:54:45 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.41.0
+  * **bigtable:** support materialized views in the data client (#17676)
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Sat Jul  4 09:27:10 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.40.0:
