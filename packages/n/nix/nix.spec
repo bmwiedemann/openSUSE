@@ -26,7 +26,7 @@
 %bcond_with docs
 
 Name:           nix
-Version:        2.35.1
+Version:        2.35.2
 Release:        0
 Summary:        The purely functional package manager
 License:        LGPL-2.1-only

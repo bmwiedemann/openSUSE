@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Aug 12 22:36:49 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 2.35.2:
+  - ae5195225 Revert "Drop old hacks for unachhored vtables and
+    exception handling"
+  - 40c627396 libstore: Actually check that hash part is followed
+    by a dash in StorePath
+  - b15a3d003 libutil-tests: Disable
+    sourceToSink.forcedUnwindUcaughtExceptions under ASan
+  - f8d28f3b8 Add boost.context patch for
+    std::uncaught_exceptions() misreporting 0 while abandoning the
+    coroutine
+  - 95cfc5da5 libutil-tests: Add test for sourceToSink
+    boost.context bug
+  - fba3f6e49 libstore: Fix lost waiting for slot goal wakeups
+  - fbd4c3f7e daemon: unlink worker's temproots file on exit
+  - 822e07028 libutil: Use O_PATH when opening parent dirFds
+
+-------------------------------------------------------------------
 Wed Jul 15 01:23:01 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Do not create the update message in %post. package it properly.
