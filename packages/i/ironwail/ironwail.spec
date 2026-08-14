@@ -17,13 +17,13 @@
 
 
 Name:           ironwail
-Version:        0.8.1
+Version:        0.8.2
 Release:        0
 Summary:        High-performance QuakeSpasm fork
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/3D/Shoot
 URL:            https://github.com/andrei-drexler/ironwail
-Source:         %{name}-%{version}.tar.gz
+Source:         https://github.com/andrei-drexler/ironwail/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        ironwail-rpmlintrc
 Patch0:         enginepak.patch
 BuildRequires:  pkgconfig

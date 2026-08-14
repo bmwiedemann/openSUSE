@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Thu Aug 13 09:33:11 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to v0.8.2
+  * Initial compatibility with the 30th anniversary Quake update
+    Setup instructions:
+      - Using an existing Steam installation:
+          * unzip this release in any folder on your system that isn't a
+            Quake installation (for example, on your desktop) and run
+            ironwail; the game directory should be detected automatically
+          * when prompted to choose between Remastered and Original content,
+            choose Remastered
+      - Using a custom Quake installation:
+          * copy steamapps\common\Quake\rerelease\mg3 to your Quake directory,
+            alongside id1
+          * rename mg3\pak0.pak in your custom Quake dir to pak1.pak
+          * copy pak0.pak from steamapps\common\Quake\rerelease\id1 to mg3 in
+            your custom Quake dir
+          * unzip the Ironwail archive into your Quake directory and run
+            ironwail as usual
+      In both cases you should be able to find MG3 - Dawn of the Machine in
+      the Mods menu
+  * Added support for mod-specific entries in the Key setup menu defined in
+    a bindlist.lst file, based on QSS (example from the Keep codebase, used in Mjolnir)
+  * Note: unlike in QSS, the binds in bindlist.lst are merged with the
+    engine-defined ones instead of completely replacing them
+  * Added alt modifier key for gamepads, allowing two binds (regular/alt)
+    on the same button (by @protocultor)
+  * Added automatic map checks for NextBroom and Qrucible
+  * Reduced MD3 VRAM usage by 4x (same size as MDL now) and improved MD3 loading
+    times by decoding vertices on the GPU
+  * Fixed a GPU buffer leak
+  * Added scr_infoscale cvar (default: 2.0), controlling the scale of
+    r_showfields and r_showbboxes text
+  * Made Mods menu work with mods containing spaces (thanks to @andrey-budko)
+  * Changed custom mod descriptions (via descript.ion files) to take priority
+    over add-on server descriptions
+  * Fixed JPEG screenshot saving code to create subdirectories and handle
+    Unicode paths
+  * Fixed camera jitter after using "centerview" during a cutscene
+  * Fixed handling of BSPs with non-NUL-terminated entity lumps
+  * Added r_showskel cvar (for MD5 skeleton visualization)
+  * Changed default cl_confirmquit value to 2 ("Classic") to prevent closing
+    the game by mistake (without any confirmation)
+  * Changed default value for scr_centerprintbg to 2 ("Menu box") to improve
+    readability
+  * Removed legacy -fitz mode
+  * Improved frametime hitch handling for live option previews
+    (e.g. when setting models to "Enhanced")
+  * Added a more informative error message when trying to reference a
+    MD3 model directly, instead of having it as a replacement for a MDL
+    (which should always be referenced by the map/progs)
+
+-------------------------------------------------------------------
 Sun Jan  4 11:16:59 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
 
 - Update to v0.8.1
