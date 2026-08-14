@@ -17,17 +17,16 @@
 
 
 %define library_version 1.0.0
-%define library_soversion 0unstable
+%define library_soversion 1
 Name:           s2n
-Version:        1.7.4
+Version:        1.7.7
 Release:        0
 Summary:        AWS implementation of the TLS/SSL protocols
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/awslabs/s2n
 Source0:        https://github.com/awslabs/%{name}/archive/v%{version}.tar.gz
-Patch1:         s2n_add-so-version.patch
-Patch2:         s2n_fix-cmake-modules-path.patch
+Patch1:         s2n_fix-cmake-modules-path.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  ninja
@@ -39,6 +38,7 @@ s2n is a C99 implementation of the TLS/SSL protocols.
 %package -n lib%{name}%{library_soversion}
 Summary:        AWS implementation of the TLS/SSL protocol
 Group:          System/Libraries
+Obsoletes:      lib%{name}0unstable < %{version}
 
 %description -n lib%{name}%{library_soversion}
 s2n is a C99 implementation of the TLS/SSL protocols.

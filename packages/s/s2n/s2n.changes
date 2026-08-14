@@ -1,4 +1,116 @@
 -------------------------------------------------------------------
+Thu Aug 13 09:43:17 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.7.7
+  * fix: prefer clang for libs2n LTO to work under rust-lld (#5996)
+  * feat: Include the error code in s2n_error Display impl (#5988)
+  * fix: use leaf public key NID for ML-DSA signature scheme matching (#5997)
+  * build(deps): bump the all-gha-updates group across 1 directory with 4 updates (#5994)
+  * ci: update stale patch files for clang-format (#6000)
+  * style(integv2): run latest ruff format & check (#6005)
+  * build(deps): update crabgrind requirement from 0.2 to 0.3 in /tests/regression
+    in the all-cargo-updates group across 1 directory (#5972)
+  * docs: add resources about Coordinated Vulnerability Disclosure to SECURITY.md (#5927)
+  * refactor: use header struct for decryption (#6004)
+  * build(deps): bump actions/stale from 10 to 11 in /.github/workflows
+    in the all-gha-updates group (#6016)
+  * fix: ensure record integrity over header version (#6014)
+  * fix: emit trailing colons for IPv6 addresses ending in a zero run (#5842)
+  * docs: document threading contract on s2n_async_pkey_op_apply and reje… (#5845)
+  * docs(build): clarify OpenSSL FIPS support and shared responsibility (#5856)
+  * feat: add custom CNSA2 interop policies (#6011)
+  * fix(ci): update msrv check to use Cargo.toml (#6021)
+
+-------------------------------------------------------------------
+Wed Aug  5 17:25:58 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Move Obsoletes to library runtime package and drop Provides
+
+-------------------------------------------------------------------
+Tue Aug  4 09:13:44 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.7.6
+  * chore: bindings release 0.3.39 (#5962)
+  * refactor: fork based handshake tests to use in memory io pair (#5940)
+  * refactor: two more self talk tests to use in-memory io pair (#5950)
+  * chore: metrics-subscriber release v0.0.4 (#5965)
+  * feat: enable rust bindings build and tests on Windows (#5958)
+  * build(deps): update openssl-src requirement from 300.5 to 400.0
+    in /bindings/rust/standard (#5971)
+  * feat(bindings): add init feature flag (#5831)
+  * test: client_hello retrieval with HRR (#5975)
+  * refactor(metrics): make record update infallible (#5976)
+  * ci: bump MSRV for extended workspace from 1.89 to 1.91 (#5980)
+  * test: enable rust bindings tests on Windows (#5969)
+  * chore: delete unused functions (#5978)
+  * docs: Windows MinGW support is available (#5970)
+  * refactor: export trait owns MetricRecord (#5981)
+  * feat: add client issue metrics (#5979)
+  * chore: version bump (#5984)
+  * feat: add per-message handshake timing instrumentation (#5903)
+  * ci: add MSRV consumer check (#5986)
+  * ci: upgrade cppcheck from 2.3 to 2.13 via apt (#5943)
+  * feat(docs): Render Cargo feature-gated code in docs (#5967)
+  * fix: guard against underflow in record wipe length (#5973)
+  * Fix silent drop of TLS 1.3 encrypted records (bsc#1272354, CVE-2026-16317)
+  * Fix QUIC transport parameters memory leak during HelloRetryRequest
+    (bsc#1272349, CVE-2026-16318)
+  * fix(duvet): Correct CCS quote attribution to RFC 8446 section 5 (#5999)
+  * chore: s2n-tls rust bindings v0.3.41 release (#5998)
+
+-------------------------------------------------------------------
+Wed Jul  8 12:48:14 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add Provides and Obsoletes for previous shared library version
+
+-------------------------------------------------------------------
+Fri Jul  3 12:44:51 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.7.5
+  * ci: fix OpenBSD CI mirror and bump to 7.9 (#5915)
+  * feat(metrics): add visibility into failures (#5913)
+  * chore: bindings release 0.3.38 (#5916)
+  * feat(metrics): add security policy information (#5908)
+  * ci: remove redundant download in buildspec (#5921)
+  * ci: cache all dev shells (#5925)
+  * build(deps): update s2n-codec requirement from 0.81 to 0.82
+    in /bindings/rust/standard (#5924)
+  * ci(aws-kms-tls-auth): pin time crate version (#5928)
+  * ci: bump MSRV for extended workspace (#5929)
+  * fix: release EVP_PKEY on cert recv error paths (#5926)
+  * fix: perform fallable checks before interting into domain name map (#5813)
+  * test: configure non fork tests to run on Windows (#5904)
+  * feat(metrics): alert visibility (#5920)
+  * ci: update expected status codes (#5936)
+  * ci: delegate cache retrieval to nix (#5934)
+  * fix: initialize *blocked on early-return paths (#5930)
+  * fix: null-check cert_and_key fields in load helpers (#5932)
+  * refactor: avoid IP protocol state (#5935)
+  * feat: s2n_connection_get_mode (#5922)
+  * fix: initialize *blocked on early-return paths (#5931)
+  * refactor: convert 3 fork self talk tests to in memory io pair tests (#5939)
+  * refactor(metrics-schema): centralize metric name
+    definitions for cross-crate reuse (#5937)
+  * ci: remove codeql python analysis (#5933)
+  * feat(metrics): cert usage (#5911)
+  * chore: update doxygen (#5945)
+  * test(metrics): pseudo-stability of event APIs (#5949)
+  * build: fix CMake compilation issue on macOS x64 (#5923)
+  * fix(metrics): correct cert attribution (#5951)
+  * build(deps): bump the all-gha-updates group
+    across 1 directory with 3 updates (#5955)
+  * ci: enable ASAN for Windows tests (#5952)
+  * refactor: additional self talk and memory tests to use in
+    memory io pair (#5944)
+  * build(deps): update s2n-codec requirement from 0.82 to 0.83
+    in /bindings/rust/standard (#5956)
+  * feat: add numbered cnsa2 interop policies (#5905)
+  * fix: add extern "C" guards to unstable API headers (#5954)
+  * feat(s2n-tls-tokio): add TlsStream::into_parts and from_parts (#5957)
+- Drop s2n_add-so-version.patch, fixed upstream
+- Set library_soversion to match upstream
+
+-------------------------------------------------------------------
 Mon Jun 15 09:39:25 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.7.4
