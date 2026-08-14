@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug 13 04:14:42 UTC 2026 - William Brown <william.brown@suse.com>
+
+- bsc#1274146 - CVE-2026-25541 - integer overflow in 'BytesMut:reserve' can lead to undefined behavior and crashes
+- bsc#1273881 - CVE-2026-66746 - rouille: HTTP Response Splitting via Unvalidated Response Header Values
+- bsc#1273888 - CVE-2026-67182 - rouille: HTTP Request Smuggling Enables Front-End Access Control Bypass
+- bsc#1273886 - CVE-2026-67181 - rouille: HTTP Request Smuggling via Transfer-Encoding Desynchronization
+- bsc#1273884 - CVE-2026-66754 - rouille: remove_prefix function that allows remote unauthenticated attackers to crash the server by sending a crafted percent-encoded URL
+
+-------------------------------------------------------------------
 Thu Jul 30 04:06:26 UTC 2026 - william.brown@suse.com
 
 - Update to version 0.17.0~1:
