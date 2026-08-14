@@ -1,0 +1,50 @@
+-------------------------------------------------------------------
+Thu Aug 13 17:32:41 UTC 2026 - Victor Carvalho <victor.carvalho@suse.com>
+
+- Declare the parallel-minor exclusion: every subpackage now provides
+  and conflicts its unversioned kubevirt-<subpackage> name (kubevirt1.8
+  already provides these), so co-named binaries are a declared package
+  conflict instead of an undeclared file conflict. Required by the
+  openSUSE:Factory staging installcheck (the decline class of request
+  1370732).
+
+-------------------------------------------------------------------
+Sun Aug 09 09:42:55 UTC 2026 - Victor Carvalho <victor.carvalho@suse.com>
+
+- Security: re-vendor the bundled Go dependencies (no upstream source
+  changes; tarball rebuilt from v1.9.0 with updated go.mod/vendor) so
+  1.9 does not regress the dependency-CVE state already shipped in
+  kubevirt1.8. v1.9.0's pristine vendor tree predates those bumps:
+  * golang.org/x/net v0.49.0 -> v0.57.0: CVE-2025-47911 (bsc#1251420),
+    CVE-2025-58190 (bsc#1251615), CVE-2026-33814 (bsc#1265736),
+    CVE-2026-39821 (bsc#1266575), CVE-2026-25680, CVE-2026-25681,
+    CVE-2026-27136, CVE-2026-42502, CVE-2026-42506 (bsc#1267120)
+  * golang.org/x/crypto v0.47.0 -> v0.54.0: CVE-2026-39827,
+    CVE-2026-39828, CVE-2026-39829, CVE-2026-39830, CVE-2026-39831,
+    CVE-2026-39832, CVE-2026-39833, CVE-2026-39834, CVE-2026-39835,
+    CVE-2026-42508, CVE-2026-46595, CVE-2026-46597, CVE-2026-46598
+    (bsc#1266151)
+  * golang.org/x/text v0.33.0 -> v0.40.0: CVE-2026-56852 (bsc#1272000)
+
+-------------------------------------------------------------------
+Fri Jul 31 00:16:49 UTC 2026 - Victor Toso de Carvalho <victor.carvalho@suse.com>
+
+- Initial package kubevirt1.9: KubeVirt v1.9.0, the versioned fork of
+  the kubevirt1.8 packaging so multiple minor releases are maintained
+  in parallel (kubernetes1.33-style naming; each minor starts its own
+  changelog — the pre-fork history lives in kubevirt1.8).
+  Release notes: https://github.com/kubevirt/kubevirt/releases/tag/v1.9.0
+- Both patches carried by kubevirt1.8 are contained in v1.9.0 and are
+  not needed here (CVE-2026-13201, bsc#1269093).
+- New libvirt-hook-client binary, shipped in the virt-launcher
+  subpackage; the alpha plugin framework (cmd/plugin-sidecars) is not
+  packaged.
+- BuildRequires golang(API) >= 1.26, following upstream go.mod.
+- Drop the containers_meta OBS service subpackage carried over from
+  kubevirt1.8: its only consumer was the retired virt-*-container
+  image flow; the BCI-built images use replace_using_package_version.
+- Note: upstream enables the virt-template component by default
+  (Template feature gate, Beta) and hardcodes its two images as
+  quay.io/kubevirt/virt-template-*:v0.2.2 — a deployment pulls these
+  from quay.io at runtime; packaging them as distro images is a
+  planned follow-up.

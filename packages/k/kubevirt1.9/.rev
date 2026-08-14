@@ -1,0 +1,23 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>37537cd0117fa981c37e0077e5023037</srcmd5>
+    <version>1.9.0</version>
+    <time>1786737880</time>
+    <user>anag_factory</user>
+    <comment>New package kubevirt1.9: KubeVirt 1.9.0.
+
+The changelog starts fresh here; the pre-fork history stays in kubevirt1.8.
+
+Both patches carried by kubevirt1.8 - safepath symlink detection and console-socket hardening (CVE-2026-13201, bsc#1269093) - are contained in v1.9.0 and are not needed here.
+
+New libvirt-hook-client binary, shipped in the virt-launcher subpackage; the alpha plugin framework (cmd/plugin-sidecars) is not packaged. BuildRequires golang(API) &gt;= 1.26, following upstream go.mod.
+
+The containers_meta OBS build-service subpackage is dropped: its only consumer was the retired virt-*-container image flow; the BCI-built images resolve the version via replace_using_package_version.
+
+The bundled Go dependencies are re-vendored so v1.9.0 does not regress the dependency-CVE state already shipped in kubevirt1.8 (v1.9.0's pristine vendor tree predates those bumps): x/net 0.49.0-&gt;0.57.0, x/crypto 0.47.0-&gt;0.54.0, x/text 0.33.0-&gt;0.40.0 (see changelog for the CVE/bsc list).
+
+Supersedes declined request 1369606; disks-images-provider.yaml now matches the v1.9.0 upstream release asset (the download_files check that declined 1369606).
+</comment>
+    <requestid>1371084</requestid>
+  </revision>
+</revisionlist>
