@@ -290,4 +290,12 @@ Factory, SLE15-SP7:GA, and SLFO:Main.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1364764</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>9887758b3717774d133d72ca9cd32727</srcmd5>
+    <version>1.48.0</version>
+    <time>1786738089</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1371099</requestid>
+  </revision>
 </revisionlist>

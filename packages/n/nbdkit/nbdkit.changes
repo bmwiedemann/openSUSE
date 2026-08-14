@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Aug 06 21:28:06 UTC 2026 - Charles Arnold <carnold@suse.com>
+
+- Update to version 1.48.0:
+  * Version 1.48.0.
+  * docs: Update release notes for release today
+  * server: Fix memory leak in NBD_OPT_SET_META_CONTEXT
+  * docs/nbdkit-security.pod: Link to recent denial of service fixes
+  * tests: Add a regression test for split plugin extents overread bug
+  * split: Don't overread extents causing denial of service
+  * split: Simplify loop and error processing
+  * cow: Document that client authentication is recommended with this filter
+  * cow: Fix leak of handle if next() function fails
+  * split: Fix infinite loop denial-of-service in NBD_CMD_CACHE
+  * docs: Add outline release notes for 1.48
+  * docs/nbdkit.pod: Document LISTEN_FDNAMES in environment
+  * docs/nbdkit.pod: Document how to disable shadow stack support
+  * ci: refresh with 'lcitool manifest'
+  * xor: Add new xor=rand[:SEED] mode
+  * xor: Introduce an internal mode
+  * xor: Only allow xorlen parameter to be set once
+  * xor: Comment and other trivial changes
+  * rust: Add bindings for nbdkit_name and nbdkit_timestamp
+  * python: Add bindings for nbdkit_name and nbdkit_timestamp
+  * golang: Use a mutex to lock concurrent access to connectionMap
+  * common/utils/exit-with-parent.c: Close kevent fd on exit path
+  * xor: Link to map filter in documentation
+
+-------------------------------------------------------------------
 Thu Jul  2 10:26:17 MDT 2026 - carnold@suse.com
 
 - Add BuildRequires for python3-base

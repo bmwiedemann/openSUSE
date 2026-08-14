@@ -27,7 +27,7 @@
 %global broken_test_arches %{arm} aarch64 %{ix86}
 
 Name:           nbdkit
-Version:        1.47.9
+Version:        1.48.0
 Release:        0
 Summary:        Network Block Device server
 License:        BSD-3-Clause
