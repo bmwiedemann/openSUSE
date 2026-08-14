@@ -2923,4 +2923,14 @@ we must have vb7.1.10.</comment>
     <comment>- Update to release 7.2.14</comment>
     <requestid>1367182</requestid>
   </revision>
+  <revision rev="313" vrev="2">
+    <srcmd5>825ff3c9ab587dbc32d3a502c5172ebf</srcmd5>
+    <version>7.2.14</version>
+    <time>1786737865</time>
+    <user>anag_factory</user>
+    <comment>- Fix kmp build against kernel-longterm 6.18.44+, where the
+  EXPORT_SYMBOL for drm_fb_helper_alloc_info() was removed:
+    adding kernel-longterm_6-18-44.patch</comment>
+    <requestid>1371172</requestid>
+  </revision>
 </revisionlist>
