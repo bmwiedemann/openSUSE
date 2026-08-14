@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Aug 13 06:11:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.55:
+  * Fixed
+    - lsp: honor per-directory config across workspace features
+      (2c7670f)
+    - core: align path-aware document processing across adapters
+      (7285b7a)
+  * Performance
+    - lsp: construct workspace index rules directly (864e42a)
+
+-------------------------------------------------------------------
 Tue Aug 11 12:17:44 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.54:
