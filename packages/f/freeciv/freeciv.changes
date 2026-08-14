@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug  6 04:43:42 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.de>
+
+- Update reproducible.patch to sort tolua generated type
+  registrations reproducibly and regenerate toluabind.c with it:
+  the meson build runs the tolua generator embedded in toluabind.c,
+  so patching the .lua sources alone had no effect
+
+-------------------------------------------------------------------
 Fri Jul 10 07:00:27 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - freeciv 3.2.5:
