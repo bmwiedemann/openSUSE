@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 14 05:25:15 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.59.0:
+  * feat: allow operating system parts for CPE (#2616)
+  * build(deps): bump the gomod group with 4 updates (#2612)
+
+-------------------------------------------------------------------
 Mon Aug 10 05:02:20 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.58.0:
