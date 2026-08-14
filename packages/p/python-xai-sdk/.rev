@@ -7,4 +7,31 @@
     <comment>New package: python-xai-sdk 1.17.0, the official Python SDK for the xAI API</comment>
     <requestid>1366181</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6f2436406fb0ffee998946493166e1a9</srcmd5>
+    <version>1.18.0</version>
+    <time>1786737910</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.18.0
+
+Upstream 1.18.0, which also carries 1.17.1. Both releases are model-surface
+additions: reasoning_effort now accepts xhigh, and grok-4.6 and grok-4.5 were
+added to ChatModel. No dependency floors changed -- the requires_dist sets of
+1.17.0 and 1.18.0 are identical.
+
+0001-proto-dispatch-support-protobuf-7-via-v6-gencode.patch is kept. It
+routes protobuf &gt;= 6 to the v6 gencode so the package imports under
+protobuf 7, and the upstream pull request carrying the same fix is still
+open, so the patch is not yet droppable.
+
+Source0 now spells the PyPI project directory xai_sdk rather than xai-sdk,
+which is what spec-cleaner normalises to. Both spellings serve the identical
+tarball (checked: same 453105-byte file), so this is cosmetic. The Requires
+and Recommends block also moves above the test-requirements SECTION, again
+spec-cleaner's ordering; no dependency was added, removed or changed.
+
+Verified on aarch64: build green, 767 tests pass on each of python313 and
+python314, rpmlint 0 errors / 0 warnings / 0 badness.</comment>
+    <requestid>1370918</requestid>
+  </revision>
 </revisionlist>

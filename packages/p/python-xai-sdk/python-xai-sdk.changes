@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug 13 05:00:13 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.18.0:
+  * Accept xhigh as a reasoning_effort value
+  * Add grok-4.6 to ChatModel
+- Includes 1.17.1:
+  * Add grok-4.5 to ChatModel
+
+-------------------------------------------------------------------
 Thu Jul 16 11:23:49 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Initial package (version 1.17.0)
