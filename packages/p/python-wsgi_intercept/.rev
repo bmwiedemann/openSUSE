@@ -277,4 +277,13 @@
   * Update argument processing for modern requests</comment>
     <requestid>1194237</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>0892c0f5fafc726fb9f9f00a3e530870</srcmd5>
+    <version>1.13.1</version>
+    <time>1786737894</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-urllib3-2.patch:
+  * Support changes required by urllib3 2.0 and above.</comment>
+    <requestid>1370911</requestid>
+  </revision>
 </revisionlist>

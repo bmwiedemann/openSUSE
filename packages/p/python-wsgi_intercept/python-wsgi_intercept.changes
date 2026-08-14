@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 13 02:56:42 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-urllib3-2.patch:
+  * Support changes required by urllib3 2.0 and above.
+
+-------------------------------------------------------------------
 Fri Aug 16 06:52:12 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.13.1:

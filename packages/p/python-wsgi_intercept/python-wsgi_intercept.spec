@@ -1,7 +1,7 @@
 #
 # spec file for package python-wsgi_intercept
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,19 +23,17 @@ Summary:        Library for installing a WSGI application in place of a real URI
 License:        MIT
 URL:            https://github.com/cdent/python3-wsgi-intercept
 Source:         https://files.pythonhosted.org/packages/source/w/wsgi_intercept/wsgi_intercept-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
+# PATCH-FIX-UPSTREAM Based on gh#cdent/wsgi-intercept#76
+Patch0:         support-urllib3-2.patch
 BuildRequires:  %{python_module httplib2}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 2.4}
 BuildRequires:  %{python_module requests >= 2.0.1}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
-BuildRequires:  %{python_module urllib3 >= 1.11.0 with %python-urllib3 < 2}
+BuildRequires:  %{python_module urllib3}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-six
-Recommends:     python-requests >= 2.0.1
 BuildArch:      noarch
 %python_subpackages
 
@@ -47,7 +45,7 @@ them into a `WSGI application`_ importable by your test program.  Thus, you
 can avoid spawning multiple processes or threads to test your Web app.
 
 %prep
-%setup -q -n wsgi_intercept-%{version}
+%autosetup -p1 -n wsgi_intercept-%{version}
 
 %build
 %pyproject_wheel

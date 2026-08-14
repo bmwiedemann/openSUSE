@@ -1,0 +1,491 @@
+From 005c8596cb94d2444fafc3be8b6f233ccda75ab4 Mon Sep 17 00:00:00 2001
+From: Chris Dent <cdent@anticdent.org>
+Date: Sat, 16 Mar 2024 16:29:27 +0000
+Subject: [PATCH 1/6] get rid of six and python 2
+
+---
+ README.rst                                    | 18 ++++------
+ setup.py                                      |  8 ++---
+ tox.ini                                       |  4 +--
+ wsgi_intercept/__init__.py                    | 27 +++++----------
+ wsgi_intercept/_urllib3.py                    | 33 ++++++++++++++-----
+ wsgi_intercept/interceptor.py                 |  2 +-
+ wsgi_intercept/tests/test_interceptor.py      | 10 ++----
+ wsgi_intercept/tests/test_response_headers.py |  6 +---
+ wsgi_intercept/urllib3_intercept.py           |  3 --
+ 9 files changed, 48 insertions(+), 63 deletions(-)
+
+Index: wsgi_intercept-1.13.1/setup.py
+===================================================================
+--- wsgi_intercept-1.13.1.orig/setup.py
++++ wsgi_intercept-1.13.1/setup.py
+@@ -8,8 +8,6 @@ Environment :: Web Environment
+ Intended Audience :: Developers
+ License :: OSI Approved :: MIT License
+ Operating System :: OS Independent
+-Programming Language :: Python :: 2
+-Programming Language :: Python :: 2.7
+ Programming Language :: Python :: 3
+ Programming Language :: Python :: 3.7
+ Programming Language :: Python :: 3.8
+@@ -36,15 +34,13 @@ META = {
+     'license': 'MIT License',
+     'classifiers': CLASSIFIERS,
+     'packages': find_packages(),
+-    'install_requires': [
+-        'six',
+-    ],
++    'python_requires': '>=3',
+     'extras_require': {
+         'testing': [
+             'pytest>=2.4',
+             'httplib2',
+             'requests>=2.0.1',
+-            'urllib3>=1.11.0,<2.0.0',
++            'urllib3>=2.0.0',
+         ],
+         'docs': [
+             'sphinx',
+Index: wsgi_intercept-1.13.1/tox.ini
+===================================================================
+--- wsgi_intercept-1.13.1.orig/tox.ini
++++ wsgi_intercept-1.13.1/tox.ini
+@@ -1,11 +1,11 @@
+ [tox]
+ minversion = 1.6
+ skipsdist = True
+-envlist = py27,py35,py36,py37,py38,py39,py310,py311,py312,pypy,pep8,docs,readme
++envlist = py37,py38,py39,py310,py311,py312,pypy,pep8,docs,readme
+ 
+ [testenv]
+ deps = .[testing]
+-commands = py.test --tb=short wsgi_intercept/tests
++commands = py.test --tb=short wsgi_intercept/tests {posargs}
+ passenv = WSGI_INTERCEPT_*
+ 
+ [testenv:pep8]
+Index: wsgi_intercept-1.13.1/wsgi_intercept/__init__.py
+===================================================================
+--- wsgi_intercept-1.13.1.orig/wsgi_intercept/__init__.py
++++ wsgi_intercept-1.13.1/wsgi_intercept/__init__.py
+@@ -13,8 +13,8 @@ threads to test your Web app.
+ Supported Libaries
+ ==================
+ 
+-``wsgi_intercept`` works with a variety of HTTP clients in Python 2.7,
+-3.7 and beyond, and in pypy.
++``wsgi_intercept`` works with a variety of HTTP clients in Python 3.7
++and beyond, and in pypy.
+ 
+ * urllib2
+ * urllib.request
+@@ -22,7 +22,7 @@ Supported Libaries
+ * http.client
+ * httplib2
+ * requests
+-* urllib3 (<2.0.0, urllib3 2 support is in progress)
++* urllib3
+ 
+ How Does It Work?
+ =================
+@@ -88,14 +88,9 @@ Packages Intercepted
+ Unfortunately each of the HTTP client libraries use their own specific
+ mechanism for making HTTP call-outs, so individual implementations are
+ needed. At this time there are implementations for ``httplib2``,
+-``urllib3`` (<2.0.0) and ``requests`` in both Python 2 and 3, ``urllib2`` and
+-``httplib`` in Python 2 and ``urllib.request`` and ``http.client``
++``urllib3``, ``requests``, ``urllib.request`` and ``http.client``
+ in Python 3.
+ 
+-If you are using Python 2 and need support for a different HTTP
+-client, require a version of ``wsgi_intercept<0.6``. Earlier versions
+-include support for ``webtest``, ``webunit`` and ``zope.testbrowser``.
+-
+ The best way to figure out how to use interception is to inspect
+ `the tests`_. More comprehensive documentation available upon
+ request.
+@@ -115,9 +110,9 @@ it into all of the *other* Python Web te
+ The Python 2 version of wsgi-intercept was the result. Kumar McMillan
+ later took over maintenance.
+ 
+-The current version is tested with Python 2.7, 3.5-3.11, and pypy and pypy3.
+-It was assembled by `Chris Dent`_. Testing and documentation improvements
+-from `Sasha Hart`_.
++The current version is tested with Python 3.7-3.12, and pypy3.  It was
++assembled by `Chris Dent`_. Testing and documentation improvements from
++`Sasha Hart`_.
+ 
+ .. _"best Web testing framework":
+      http://blog.ianbicking.org/best-of-the-web-app-test-frameworks.html
+@@ -144,15 +139,9 @@ import sys
+ import traceback
+ from io import BytesIO
+ 
+-# Don't use six here because it is unquote_to_bytes that we want in
+-# Python 3.
+-try:
+-    from urllib.parse import unquote_to_bytes as url_unquote
+-except ImportError:
+-    from urllib import unquote as url_unquote
++from urllib.parse import unquote_to_bytes as url_unquote
+ 
+-import six
+-from six.moves.http_client import HTTPConnection, HTTPSConnection
++from http.client import HTTPConnection, HTTPSConnection
+ 
+ 
+ # Set this to True to cause response headers from the intercepted
+@@ -227,8 +216,7 @@ def make_environ(inp, host, port, script
+     environ = {}
+ 
+     method_line = inp.readline()
+-    if six.PY3:
+-        method_line = method_line.decode('ISO-8859-1')
++    method_line = method_line.decode('ISO-8859-1')
+ 
+     content_type = None
+     content_length = None
+@@ -302,13 +290,11 @@ def make_environ(inp, host, port, script
+     # fill out our dictionary.
+     #
+ 
+-    # In Python3 turn the bytes of the path info into a string of
+-    # latin-1 code points, because that's what the spec says we must
+-    # do to be like a server. Later various libraries will be forced
+-    # to decode and then reencode to get the UTF-8 that everyone
+-    # wants.
+-    if six.PY3:
+-        path_info = path_info.decode('latin-1')
++    # Turn the bytes of the path info into a string of latin-1 code points,
++    # because that's what the spec says we must do to be like a server. Later
++    # various libraries will be forced to decode and then reencode to get the
++    # UTF-8 that everyone wants.
++    path_info = path_info.decode('latin-1')
+ 
+     environ.update({
+         "wsgi.version": (1, 0),
+@@ -535,6 +521,29 @@ class WSGI_HTTPConnection(HTTPConnection
+     Intercept all traffic to certain hosts & redirect into a WSGI
+     application object.
+     """
++
++    def __init__(self, *args, **kwargs):
++        """
++        Do a complex dance to deal with urllib3's method signature
++        constraints.
++        """
++        # TODO: This seems really really fragile but is passing
++        # tests.
++        if 'host' in kwargs:
++            host = kwargs.pop('host')
++            if 'port' in kwargs:
++                port = kwargs.pop('port')
++            else:
++                port = None
++            super().__init__(host, port, *args, **kwargs)
++        else:
++            if len(args) > 2:
++                args = args[0:2]
++            if sys.version_info[:2] >= (3, 15):
++                if 'max_response_headers' in kwargs:
++                    kwargs.pop('max_response_headers')
++            super().__init__(*args, **kwargs)
++
+     def get_app(self, host, port):
+         """
+         Return the app object for the given (host, port).
+@@ -587,6 +596,7 @@ class WSGI_HTTPSConnection(HTTPSConnecti
+     Intercept all traffic to certain hosts & redirect into a WSGI
+     application object.
+     """
++
+     def get_app(self, host, port):
+         """
+         Return the app object for the given (host, port).
+@@ -624,22 +634,31 @@ class WSGI_HTTPSConnection(HTTPSConnecti
+                 try:
+                     import ssl
+                     if hasattr(self, '_context'):
++                        # Extract cert_reqs from requests + urllib3.
++                        # They do some of their own SSL context management
++                        # that wsgi intercept routes around, so we need to
++                        # be careful.
++                        if hasattr(self, '_intercept_cert_reqs'):
++                            cert_reqs = self._intercept_cert_reqs
++                        else:
++                            cert_reqs = self.cert_reqs
++
+                         self._context.check_hostname = self.assert_hostname
+                         self._check_hostname = self.assert_hostname     # Py3.6
+                         if hasattr(ssl, 'VerifyMode'):
+                             # Support for Python3.6 and higher
+-                            if isinstance(self.cert_reqs, ssl.VerifyMode):
+-                                self._context.verify_mode = self.cert_reqs
++                            if isinstance(cert_reqs, ssl.VerifyMode):
++                                self._context.verify_mode = cert_reqs
+                             else:
+                                 self._context.verify_mode = ssl.VerifyMode[
+-                                    self.cert_reqs]
+-                        elif isinstance(self.cert_reqs, six.string_types):
++                                    cert_reqs]
++                        elif isinstance(cert_reqs, str):
+                             # Support for Python3.5 and below
+                             self._context.verify_mode = getattr(ssl,
+-                                    self.cert_reqs,
++                                    cert_reqs,
+                                     self._context.verify_mode)
+                         else:
+-                            self._context.verify_mode = self.cert_reqs
++                            self._context.verify_mode = cert_reqs
+ 
+                     if not hasattr(self, 'key_file'):
+                         self.key_file = None
+@@ -658,7 +677,6 @@ class WSGI_HTTPSConnection(HTTPSConnecti
+                             else:
+                                 self._check_hostname = self.check_hostname
+                 except (ImportError, AttributeError):
+-                    import traceback
+                     traceback.print_exc()
+                 HTTPSConnection.connect(self)
+ 
+Index: wsgi_intercept-1.13.1/wsgi_intercept/_urllib3.py
+===================================================================
+--- wsgi_intercept-1.13.1.orig/wsgi_intercept/_urllib3.py
++++ wsgi_intercept-1.13.1/wsgi_intercept/_urllib3.py
+@@ -8,16 +8,33 @@ from . import WSGI_HTTPConnection, WSGI_
+ 
+ wsgi_fake_socket.settimeout = lambda self, timeout: None
+ 
++HTTP_KEYWORD_POPS = [
++    'strict',
++    'socket_options',
++    'server_hostname',
++]
++
++HTTPS_KEYWORD_POPS = HTTP_KEYWORD_POPS + [
++    'key_password',
++    'server_hostname',
++    'cert_reqs',
++    'ca_certs',
++    'ca_cert_dir',
++    'assert_hostname',
++    'assert_fingerprint',
++    'ssl_version',
++    'ssl_minimum_version',
++    'ssl_maximum_version',
++]
++
+ 
+ def make_urllib3_override(HTTPConnectionPool, HTTPSConnectionPool,
+                           HTTPConnection, HTTPSConnection):
+ 
+     class HTTP_WSGIInterceptor(WSGI_HTTPConnection, HTTPConnection):
+         def __init__(self, *args, **kwargs):
+-            if 'strict' in kwargs and sys.version_info > (3, 0):
+-                kwargs.pop('strict')
+-            kwargs.pop('socket_options', None)
+-            kwargs.pop('server_hostname', None)
++            for kw in HTTP_KEYWORD_POPS:
++                kwargs.pop(kw, None)
+             WSGI_HTTPConnection.__init__(self, *args, **kwargs)
+             HTTPConnection.__init__(self, *args, **kwargs)
+ 
+@@ -25,11 +42,10 @@ def make_urllib3_override(HTTPConnection
+         is_verified = True
+ 
+         def __init__(self, *args, **kwargs):
+-            if 'strict' in kwargs and sys.version_info > (3, 0):
+-                kwargs.pop('strict')
+-            kwargs.pop('socket_options', None)
+-            kwargs.pop('key_password', None)
+-            kwargs.pop('server_hostname', None)
++            if 'cert_reqs' in kwargs and kwargs['cert_reqs'] is not None:
++                self._intercept_cert_reqs = kwargs.pop("cert_reqs")
++            for kw in HTTPS_KEYWORD_POPS:
++                kwargs.pop(kw, None)
+             kwargs.pop('ssl_context', None)
+             if sys.version_info > (3, 12):
+                 kwargs.pop('key_file', None)
+Index: wsgi_intercept-1.13.1/wsgi_intercept/interceptor.py
+===================================================================
+--- wsgi_intercept-1.13.1.orig/wsgi_intercept/interceptor.py
++++ wsgi_intercept-1.13.1/wsgi_intercept/interceptor.py
+@@ -4,7 +4,7 @@
+ from importlib import import_module
+ from uuid import uuid4
+ 
+-from six.moves.urllib import parse as urlparse
++from urllib import parse as urlparse
+ 
+ import wsgi_intercept
+ 
+Index: wsgi_intercept-1.13.1/wsgi_intercept/tests/test_interceptor.py
+===================================================================
+--- wsgi_intercept-1.13.1.orig/wsgi_intercept/tests/test_interceptor.py
++++ wsgi_intercept-1.13.1/wsgi_intercept/tests/test_interceptor.py
+@@ -11,13 +11,9 @@ import pytest
+ import requests
+ import urllib3
+ from httplib2 import Http, ServerNotFoundError
+-# don't use six as the monkey patching gets confused
+-try:
+-    import http.client as http_client
+-except ImportError:
+-    import httplib as http_client
+-from six.moves.urllib.request import urlopen
+-from six.moves.urllib.error import URLError
++import http.client as http_client
++from urllib.request import urlopen
++from urllib.error import URLError
+ 
+ from wsgi_intercept.interceptor import (
+     Interceptor, HttpClientInterceptor, Httplib2Interceptor,
+Index: wsgi_intercept-1.13.1/wsgi_intercept/tests/test_response_headers.py
+===================================================================
+--- wsgi_intercept-1.13.1.orig/wsgi_intercept/tests/test_response_headers.py
++++ wsgi_intercept-1.13.1/wsgi_intercept/tests/test_response_headers.py
+@@ -10,7 +10,6 @@ not the other way round. Let's write som
+ 
+ import pytest
+ import requests
+-import six
+ 
+ import wsgi_intercept
+ from wsgi_intercept.interceptor import RequestsInterceptor
+@@ -56,10 +55,7 @@ def test_header_app():
+ def test_encoding_violation():
+     """If the header is unicode we expect boom."""
+     header_key = 'request-id'
+-    if six.PY2:
+-        header_value = u'alpha'
+-    else:
+-        header_value = b'alpha'
++    header_value = b'alpha'
+     # we expect our http library to give us a str
+     returned_header = 'alpha'
+ 
+Index: wsgi_intercept-1.13.1/wsgi_intercept/urllib3_intercept.py
+===================================================================
+--- wsgi_intercept-1.13.1.orig/wsgi_intercept/urllib3_intercept.py
++++ wsgi_intercept-1.13.1/wsgi_intercept/urllib3_intercept.py
+@@ -1,8 +1,5 @@
+ """Intercept HTTP connections that use
+ `urllib3 <https://urllib3.readthedocs.org/>`_.
+-
+-Note that currently only urllib3 <2.0.0 is supported. 2.0.0 support
+-is in progress.
+ """
+ 
+ from urllib3.connectionpool import HTTPConnectionPool, HTTPSConnectionPool
+Index: wsgi_intercept-1.13.1/wsgi_intercept/http_client_intercept.py
+===================================================================
+--- wsgi_intercept-1.13.1.orig/wsgi_intercept/http_client_intercept.py
++++ wsgi_intercept-1.13.1/wsgi_intercept/http_client_intercept.py
+@@ -1,23 +1,14 @@
+ """Intercept HTTP connections that use httplib (Py2) or http.client (Py3).
+ """
+ 
+-try:
+-    import http.client as http_lib
+-except ImportError:
+-    import httplib as http_lib
++import http.client as http_lib
+ 
+ from . import WSGI_HTTPConnection, WSGI_HTTPSConnection
+ 
+-try:
+-    from http.client import (
+-            HTTPConnection as OriginalHTTPConnection,
+-            HTTPSConnection as OriginalHTTPSConnection
+-    )
+-except ImportError:
+-    from httplib import (
+-            HTTPConnection as OriginalHTTPConnection,
+-            HTTPSConnection as OriginalHTTPSConnection
+-    )
++from http.client import (
++        HTTPConnection as OriginalHTTPConnection,
++        HTTPSConnection as OriginalHTTPSConnection
++)
+ 
+ 
+ class HTTP_WSGIInterceptor(WSGI_HTTPConnection, http_lib.HTTPConnection):
+Index: wsgi_intercept-1.13.1/wsgi_intercept/tests/test_http_client.py
+===================================================================
+--- wsgi_intercept-1.13.1.orig/wsgi_intercept/tests/test_http_client.py
++++ wsgi_intercept-1.13.1/wsgi_intercept/tests/test_http_client.py
+@@ -2,10 +2,7 @@ import pytest
+ from wsgi_intercept import http_client_intercept, WSGIAppError
+ from . import wsgi_app
+ from .install import installer_class, skipnetwork
+-try:
+-    import http.client as http_lib
+-except ImportError:
+-    import httplib as http_lib
++import http.client as http_lib
+ 
+ HOST = 'some_hopefully_nonexistant_domain'
+ 
+Index: wsgi_intercept-1.13.1/wsgi_intercept/tests/test_urllib.py
+===================================================================
+--- wsgi_intercept-1.13.1.orig/wsgi_intercept/tests/test_urllib.py
++++ wsgi_intercept-1.13.1/wsgi_intercept/tests/test_urllib.py
+@@ -3,10 +3,7 @@ import pytest
+ from wsgi_intercept import urllib_intercept, WSGIAppError
+ from . import wsgi_app
+ from .install import installer_class, skipnetwork
+-try:
+-    import urllib.request as url_lib
+-except ImportError:
+-    import urllib2 as url_lib
++import urllib.request as url_lib
+ 
+ HOST = 'some_hopefully_nonexistant_domain'
+ 
+Index: wsgi_intercept-1.13.1/wsgi_intercept/tests/test_wsgi_compliance.py
+===================================================================
+--- wsgi_intercept-1.13.1.orig/wsgi_intercept/tests/test_wsgi_compliance.py
++++ wsgi_intercept-1.13.1/wsgi_intercept/tests/test_wsgi_compliance.py
+@@ -1,9 +1,6 @@
+ import sys
+ import pytest
+-try:
+-    from urllib.parse import unquote
+-except ImportError:
+-    from urllib import unquote
++from urllib.parse import unquote
+ from wsgi_intercept import httplib2_intercept
+ from . import wsgi_app
+ from .install import installer_class
+Index: wsgi_intercept-1.13.1/wsgi_intercept/tests/wsgi_app.py
+===================================================================
+--- wsgi_intercept-1.13.1.orig/wsgi_intercept/tests/wsgi_app.py
++++ wsgi_intercept-1.13.1/wsgi_intercept/tests/wsgi_app.py
+@@ -4,11 +4,6 @@ Simple WSGI applications for testing.
+ 
+ from pprint import pformat
+ 
+-try:
+-    bytes
+-except ImportError:
+-    bytes = str
+-
+ 
+ def simple_app(environ, start_response):
+     """Simplest possible application object"""
+Index: wsgi_intercept-1.13.1/wsgi_intercept/urllib_intercept.py
+===================================================================
+--- wsgi_intercept-1.13.1.orig/wsgi_intercept/urllib_intercept.py
++++ wsgi_intercept-1.13.1/wsgi_intercept/urllib_intercept.py
+@@ -4,10 +4,7 @@ aka urllib2 (Python 2).
+ 
+ import os
+ 
+-try:
+-    import urllib.request as url_lib
+-except ImportError:
+-    import urllib2 as url_lib
++import urllib.request as url_lib
+ 
+ from . import WSGI_HTTPConnection, WSGI_HTTPSConnection
+ 
