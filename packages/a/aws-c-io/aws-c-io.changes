@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug 13 09:10:04 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.27.6
+  * Use latest as aws-crt-builder version by @sfod in (#817)
+  * Automate test cert renewal by @sfod in (#820)
+  * Fix read-window stall by gating window updates on the scarcest
+    slot by @TingDaoK in (#818)
+
+-------------------------------------------------------------------
 Tue Aug  4 08:58:04 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.27.5
