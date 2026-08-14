@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 10 12:17:42 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.2.9
+  * Use latest as aws-crt-builder version by @sfod in (#70)
+  * Relax handling of unmodeled context params in bdd by
+    @DmitriyMusatkin in (#71)
+
+-------------------------------------------------------------------
 Tue Aug  4 11:05:31 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.2.8
