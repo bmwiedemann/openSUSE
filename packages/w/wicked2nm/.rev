@@ -129,4 +129,17 @@
   * Add leap16.1 to CI</comment>
     <requestid>1365675</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1ba4de926604fb1c4c4a07e191a0c4e3</srcmd5>
+    <version>1.5.2</version>
+    <time>1786738178</time>
+    <user>anag_factory</user>
+    <comment>- Update v1.5.2
+  * build(deps): bump serde_with from 3.18.0 to 3.21.0
+    (fixes GHSA-7gcf-g7xr-8hxj)
+    [bsc#1271848]
+  * Fix flaky tests
+  * Fix team_lacp_ethtool test by setting lacp active explicitly</comment>
+    <requestid>1371202</requestid>
+  </revision>
 </revisionlist>

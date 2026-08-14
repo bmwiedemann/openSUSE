@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Aug 14 09:30:58 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update v1.5.2
+  * build(deps): bump serde_with from 3.18.0 to 3.21.0
+    (fixes GHSA-7gcf-g7xr-8hxj)
+    [bsc#1271848]
+  * Fix flaky tests
+  * Fix team_lacp_ethtool test by setting lacp active explicitly
+
+-------------------------------------------------------------------
 Tue Jul 14 13:44:39 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Update v1.5.1
