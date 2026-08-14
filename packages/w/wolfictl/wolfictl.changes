@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Aug 14 05:24:24 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.39.25:
+  * chore: upgrade melange
+  * build(deps): bump step-security/harden-runner from 2.19.4 to
+    2.20.1 (#2034)
+  * build(deps): bump the chainguard group with 2 updates (#2037)
+  * build(deps): bump github.com/anchore/syft from 1.50.0 to 1.51.0
+    (#2038)
+  * build(deps): bump chainguard-dev/actions/git-tag from 1.6.29 to
+    1.6.31 (#2039)
+  * build(deps): bump chainguard-dev/actions/goimports from 1.6.29
+    to 1.6.31 (#2040)
+
+-------------------------------------------------------------------
 Wed Aug 05 05:18:12 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.39.24:
