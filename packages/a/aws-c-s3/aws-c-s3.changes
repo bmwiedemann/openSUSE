@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 10 12:15:02 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version
+  * support opaque etags by @TingDaoK in (#664)
+  * Combine per-part CRCs for whole-object download checksum
+    validation by @TingDaoK in (#663)
+
+-------------------------------------------------------------------
 Tue Aug  4 11:03:15 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.13.4
