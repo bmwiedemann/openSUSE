@@ -1,0 +1,41 @@
+diff -Nur htmlcxx-0.87/html/tree.h htmlcxx-0.87-new/html/tree.h
+--- htmlcxx-0.87/html/tree.h	2018-12-29 11:13:56.000000000 +0800
++++ htmlcxx-0.87-new/html/tree.h	2026-08-13 21:25:02.366222279 +0800
+@@ -416,8 +416,8 @@
+ template <class T, class tree_node_allocator>
+ void tree<T, tree_node_allocator>::head_initialise_() 
+    { 
+-   head = alloc_.allocate(1,0); // MSVC does not have default second argument 
+-   feet = alloc_.allocate(1,0);
++   head = alloc_.allocate(1); // MSVC does not have default second argument 
++   feet = alloc_.allocate(1);
+ 
+    head->parent=0;
+    head->first_child=0;
+@@ -700,7 +700,7 @@
+    // the API change.
+    assert(position.node!=head);
+ 
+-   tree_node* tmp = alloc_.allocate(1,0);
++   tree_node* tmp = alloc_.allocate(1);
+    kp::constructor(&tmp->data, x);
+    tmp->first_child=0;
+    tmp->last_child=0;
+@@ -756,7 +756,7 @@
+       position.node=feet; // Backward compatibility: when calling insert on a null node,
+                           // insert before the feet.
+       }
+-   tree_node* tmp = alloc_.allocate(1,0);
++   tree_node* tmp = alloc_.allocate(1);
+    kp::constructor(&tmp->data, x);
+    tmp->first_child=0;
+    tmp->last_child=0;
+@@ -864,7 +864,7 @@
+ 
+    // replace the node at position with head of the replacement tree at from
+    erase_children(position);  
+-   tree_node* tmp = alloc_.allocate(1,0);
++   tree_node* tmp = alloc_.allocate(1);
+    kp::constructor(&tmp->data, (*from));
+    tmp->first_child=0;
+    tmp->last_child=0;

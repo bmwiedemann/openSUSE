@@ -1,7 +1,7 @@
 #
 # spec file for package htmlcxx
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2014 Klaus Singvogel, Kaierberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,12 +21,13 @@ Name:           htmlcxx
 Version:        0.87
 Release:        0
 Summary:        HTML and CSS APIs for C++
-License:        LGPL-2.0-only AND Apache-2.0
+License:        Apache-2.0 AND LGPL-2.0-only
 Group:          Productivity/File utilities
 URL:            http://htmlcxx.sourceforge.net/
 Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 Patch0:         %{name}-0.84-cstddef.patch
 Patch1:         0001-Remove-throw-specifications.patch
+Patch2:         htmlcxx-fix-c++20-allocator.patch
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 

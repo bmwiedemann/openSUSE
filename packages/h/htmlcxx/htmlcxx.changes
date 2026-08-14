@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 13 13:34:51 UTC 2026 - Hillwood Yang <hillwood@opensuse.org>
+
+- Add htmlcxx-fix-c++20-allocator.patch
+  * Fix C++20 build error caused by obsolete std::allocator::allocate(size, hint)
+    syntax in tree.h.
+
+-------------------------------------------------------------------
 Tue Jun  1 20:00:32 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add GCC 11 compatibility fix:

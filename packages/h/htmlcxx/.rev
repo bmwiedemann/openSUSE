@@ -15,4 +15,14 @@
     <comment> (forwarded request 896786 from susnux)</comment>
     <requestid>897039</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>91b116c2e5f3f8d0e300a612955a5386</srcmd5>
+    <version>0.87</version>
+    <time>1786738027</time>
+    <user>anag_factory</user>
+    <comment>- Add htmlcxx-fix-c++20-allocator.patch
+  * Fix C++20 build error caused by obsolete std::allocator::allocate(size, hint)
+    syntax in tree.h. (forwarded request 1371050 from hillwood)</comment>
+    <requestid>1371051</requestid>
+  </revision>
 </revisionlist>
