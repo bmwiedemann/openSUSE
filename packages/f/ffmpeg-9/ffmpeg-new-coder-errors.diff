@@ -1,0 +1,23 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2016-04-10 23:23:53.138440254 +0200
+
+Improve the error messages a bit to say what's really going on
+(in light of openSUSE's reduced build).
+
+---
+ fftools/ffmpeg_demux.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: ffmpeg-7.0/fftools/ffmpeg_demux.c
+===================================================================
+--- ffmpeg-7.0.orig/fftools/ffmpeg_demux.c
++++ ffmpeg-7.0/fftools/ffmpeg_demux.c
+@@ -884,7 +884,7 @@ static int ist_use(InputStream *ist, int
+ 
+     if (decoding_needed && !ist->dec) {
+         av_log(ist, AV_LOG_ERROR,
+-               "Decoding requested, but no decoder found for: %s\n",
++		"Decoding was requested, but this build of ffmpeg does not include a \"%s\" decoder\n",
+                 avcodec_get_name(ist->par->codec_id));
+         return AVERROR(EINVAL);
+     }

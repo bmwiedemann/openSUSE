@@ -1,0 +1,134 @@
+-------------------------------------------------------------------
+Wed Aug 12 13:52:05 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 9.0.1
+  * Added boundary checks for various input formats, added nullptr
+    checks, cure some integer overflows and underflows
+
+-------------------------------------------------------------------
+Wed Aug  5 17:37:10 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Derive from ffmpeg-8.spec
+- Update to release 9.0
+  * More Vulkan API acceleration work like Vulkan APV video
+    decoding and Apple ProRes RAW Vulkan acceleration, the Vulkan
+    v360 video filter, HE-AAC 960 decoding, a transpose NVIDIA CUDA
+    filter, animated WebP decoding and demuxing, continued AMD AMF
+    enhancements, more AVX-512 optimizations, and more.
+  * Remove CELT decoding support (doesn't affect Opus CELT)
+  * Remove CELT-in-Ogg parsing
+
+-------------------------------------------------------------------
+Tue Jul 21 13:58:03 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Rename the ffmpeg-8 BRPM to ffmpeg. [boo#1271606]
+
+-------------------------------------------------------------------
+Wed Jun 17 18:20:21 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 8.1.2
+  * Fix some buffer overflows, integer overflows, negative
+    indices, off-by-one erros and double frees in various codecs,
+    muxers and filters.
+  * avcodec/magicyuv: Fix 1 line MEDIAN slices
+    avcodec/magicyuv: Expand the s->interlaced slice-height sanity check
+    avcodec/magicyuv: reject slice_height misaligned with chroma vshift
+    (CVE-2026-8461, bsc#1269490)
+
+-------------------------------------------------------------------
+Fri May 15 00:10:11 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Enable glslang filters
+
+-------------------------------------------------------------------
+Sat May  9 09:36:25 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 8.1.1:
+  * Various codec, filter and other changes, stable bugfix update.
+  * avcodec/av1dec: check that primary_ref_frame is within range.
+    (CVE-2026-30997, bsc#1262047)
+  * avcodec/rasc: fix heap use-after-free in decode_move().
+    (CVE-2026-12706, bsc#1268595)
+
+-------------------------------------------------------------------
+Thu Apr 30 19:22:32 UTC 2026 - Mia Herkt <mia@0x0.st>
+
+- Switch back to OpenSSL
+  I do not remember why exactly this was changed, but I believe
+  one of the reasons was that back when EC certificates were new,
+  FFmpeg was only using the SSL 3.0/TLS 1.0 functions of the
+  library, which meant a security downgrade and prevented it from
+  connecting to hosts that restricted clients to newer protocol
+  versions.
+
+  Both libraries are kind of terrible, but at least OpenSSL does
+  not have a start function that unconditionally incurs significant
+  startup delays (200-300ms on an older laptop) for everything that
+  links to it.
+
+-------------------------------------------------------------------
+Thu Apr 16 15:54:50 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Add explicit symbol lists to work-around-abi-break.patch
+  [boo#1261836]
+
+-------------------------------------------------------------------
+Thu Apr  2 08:54:44 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Disable VVC decoders/encoders by default.
+
+-------------------------------------------------------------------
+Mon Mar 16 22:36:37 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 8.1
+  * EXIF metadata parsing support
+
+-------------------------------------------------------------------
+Tue Jan 27 00:01:04 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Enable harfbuzz-based plugins [boo#1256873]
+
+-------------------------------------------------------------------
+Tue Jan 20 12:51:56 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Enable some more codecs based on package availability and
+  based on comparison with Fedora's ffmpeg package.
+
+-------------------------------------------------------------------
+Sat Jan 10 19:47:20 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 8.0.1
+  * avcodec/videotoolboxenc: fix the loss of precision when
+    calculating quality
+  * avcodec/videotoolboxenc: support global_quality without qscale
+  * avformat/http: Handle IPv6 Zone ID in hostname
+  * avfilter/af_whisper: fix broken output for multibyte character
+  * avfilter/f_ebur128: Fix incorrect ebur128 peak calculation
+  * swscale/graph: fix double-free when legacy pass fails
+    initializing
+  * avformat/dhav: Fix off by length of read element error
+  * avcodec/ffv1enc: Consider variation in slice sizes
+
+-------------------------------------------------------------------
+Sun Aug 24 07:09:43 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Derive from ffmpeg-7.spec
+- Update to release 8.0
+  * New features:
+  * Native decoders (Packman builds): APV, ProRes RAW, RealVideo
+    6.0, Sanyo LD-ADPCM, G.728
+  * VVC decoder improvements: IBC, ACT, Palette Mode
+  * Vulkan compute-based codecs: FFv1 (encode and decode), ProRes
+    RAW (decode only)
+  * Hardware accelerated decoding: Vulkan VP9, VAAPI VVC,
+    OpenHarmony H264/5
+  * Hardware accelerated encoding: Vulkan AV1, OpenHarmony H264/5
+  * Filters: colordetect, pad_cuda, scale_d3d11, Whisper, and
+    others
+  * libavfilter/af_firequalizer: Add check for av_malloc_array()
+    (CVE-2025-10256, bsc#1249431)
+  * avcodec/jpeg2000dec: implement cdef remapping during pixel
+    format matching.
+    (CVE-2025-9951, bsc#1249393)
+  * aacenc_tns: clamp filter direction energy measurement
+    (CVE-2025-1594, bsc#1237561)
