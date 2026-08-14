@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 13 14:37:31 UTC 2026 - Hillwood Yang <hillwood@opensuse.org>
+
+- Add librime-lua-cpp20-string-fix.patch, fix C++20 build failure 
+
+-------------------------------------------------------------------
 Sat Feb 14 05:26:51 UTC 2026 - Marguerite Su <i@marguerite.su>
 
 - fix leap 15.6 build

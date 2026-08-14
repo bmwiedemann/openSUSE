@@ -20,12 +20,14 @@ Name:           librime-lua
 Version:        0.0.0+git20250809.68f9c36
 Release:        0
 Summary:        Lua plugin for librime
-License:        SUSE-Permissive
+License:        LicenseRef-SUSE-Permissive
 Group:          System/Libraries
 URL:            https://github.com/hchunhui/librime-lua
 Source:         %{name}-%{version}.tar.gz
 Patch0:         glog.patch
 Patch1:         cmake.patch
+# PATCH-FIX-UPSTREAM librime-lua-cpp20-string-fix.patch hillwood@opensuse.org - Fix C++20 build failure
+Patch2:         librime-lua-cpp20-string-fix.patch
 BuildRequires:  cmake
 BuildRequires:  darts
 %if 0%{?suse_version} < 1600

@@ -56,4 +56,12 @@
     <comment></comment>
     <requestid>1333030</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>7252cde16f9930fc203e08624109c91f</srcmd5>
+    <version>0.0.0+git20250809.68f9c36</version>
+    <time>1786738056</time>
+    <user>anag_factory</user>
+    <comment>- Add librime-lua-cpp20-string-fix.patch, fix C++20 build failure (forwarded request 1371058 from hillwood)</comment>
+    <requestid>1371060</requestid>
+  </revision>
 </revisionlist>

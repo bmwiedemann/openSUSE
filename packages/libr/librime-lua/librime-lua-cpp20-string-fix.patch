@@ -1,0 +1,17 @@
+diff -Nur a/src/opencc.cc b/src/opencc.cc
+--- a/src/opencc.cc	2025-08-09 22:43:24.593351000 +0800
++++ b/src/opencc.cc	2026-08-13 21:44:52.948991377 +0800
+@@ -195,11 +195,11 @@
+       auto user_path = deployer.user_data_dir;
+       auto shared_path = deployer.shared_data_dir;
+       try{
+-        return T((user_path / "opencc" / filename).u8string());
++        return T((user_path / "opencc" / filename).string());
+       }
+       catch(...) {
+         try{
+-          return T((shared_path / "opencc" / filename).u8string());
++          return T((shared_path / "opencc" / filename).string());
+         }
+         catch(...) {
+           LOG(ERROR) << " [" << user_path << "|" << shared_path << "]/opencc/"
