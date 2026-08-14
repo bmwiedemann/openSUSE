@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug 13 15:32:00 UTC 2026 - Mikhail Paulyshka <me@mixaill.net>
+
+- Add explicit Boost component requirements to uhd-devel matching the
+  dependencies exported by UHDConfig.cmake
+- Add boost-1.89-cmake-config.patch: fix the exported CMake config with
+  Boost 1.89 and newer, where Boost.System no longer exists as a
+  separate component
+
+-------------------------------------------------------------------
 Wed Apr 29 22:24:12 UTC 2026 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - Update to version 4.10.0.0

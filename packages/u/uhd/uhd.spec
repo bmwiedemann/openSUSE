@@ -26,12 +26,23 @@ URL:            https://files.ettus.com/manual/
 Source0:        https://github.com/EttusResearch/uhd/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        https://github.com/EttusResearch/uhd/releases/download/v%{version}/uhd-images_%{version}.tar.xz
 Patch0:         reproducible.patch
+# PATCH-FIX-UPSTREAM boost-1.89-cmake-config.patch gh#EttusResearch/uhd#939 -- drop the Boost system component, removed in Boost 1.89
+Patch1:         boost-1.89-cmake-config.patch
 BuildRequires:  cmake >= 3.5
 BuildRequires:  docutils
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gpsd-devel
+BuildRequires:  libboost_chrono-devel >= 1.71
+BuildRequires:  libboost_date_time-devel >= 1.71
+BuildRequires:  libboost_filesystem-devel >= 1.71
+BuildRequires:  libboost_headers-devel >= 1.71
+BuildRequires:  libboost_program_options-devel
+BuildRequires:  libboost_regex-devel
+BuildRequires:  libboost_serialization-devel
+BuildRequires:  libboost_test-devel
+BuildRequires:  libboost_thread-devel
 BuildRequires:  memory-constraints
 BuildRequires:  orc
 BuildRequires:  pkgconfig
@@ -43,12 +54,6 @@ BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(udev)
 Requires:       udev
-BuildRequires:  libboost_filesystem-devel >= 1.71
-BuildRequires:  libboost_program_options-devel
-BuildRequires:  libboost_regex-devel
-BuildRequires:  libboost_serialization-devel
-BuildRequires:  libboost_test-devel
-BuildRequires:  libboost_thread-devel
 
 %description
 The UHD is the "Universal Software Radio Peripheral" hardware driver.
@@ -119,9 +124,11 @@ This package contains udev rules for UHD.
 Summary:        Development files for uhd
 Requires:       %{libname} = %{version}
 Recommends:     %{name}-doc
+Requires:       libboost_chrono-devel
+Requires:       libboost_date_time-devel
 Requires:       libboost_filesystem-devel
+Requires:       libboost_headers-devel
 Requires:       libboost_program_options-devel
-Requires:       libboost_regex-devel
 Requires:       libboost_serialization-devel
 Requires:       libboost_test-devel
 Requires:       libboost_thread-devel

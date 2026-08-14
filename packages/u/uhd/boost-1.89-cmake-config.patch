@@ -1,0 +1,22 @@
+From: Doron Behar <doron.behar@gmail.com>
+Date: Thu, 30 Jul 2026 13:15:25 +0300
+Subject: cmake: Remove Boost::system from UHDConfig.cmake component list
+
+Boost.System has been header-only since Boost 1.69, and as of Boost 1.89
+its CMake package config was removed entirely. This makes find_package(UHD)
+fail for downstream projects using Boost 1.89 or newer.
+
+Upstream: https://github.com/EttusResearch/uhd/pull/939
+
+diff --git a/host/cmake/Modules/UHDConfig.cmake.in b/host/cmake/Modules/UHDConfig.cmake.in
+index e582124..3ae7ec8 100644
+--- a/host/cmake/Modules/UHDConfig.cmake.in
++++ b/host/cmake/Modules/UHDConfig.cmake.in
+@@ -30,7 +30,6 @@ find_dependency(Boost ${UHD_BOOST_MIN_VERSION}
+   date_time
+   filesystem
+   program_options
+-  system
+   serialization
+   thread
+   unit_test_framework
