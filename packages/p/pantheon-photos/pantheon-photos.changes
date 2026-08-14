@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Aug 13 08:46:44 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 8.0.2:
+  + Modernize desktop files, simplify build
+  + MetadataDateTime: Fix crash in fallback scanf code
+  + DirectoryMonitor: Silence hidden file terminal warning
+  + Make Photometadata class more robust
+  + Fix panning zoomed images on Wayland
+
+-------------------------------------------------------------------
 Fri Nov  1 21:11:18 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - rename to pantheon-photos

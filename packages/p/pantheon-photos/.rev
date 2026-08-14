@@ -7,4 +7,17 @@
     <comment></comment>
     <requestid>1223038</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7a183c578756cf3dd5158d8da163c9a0</srcmd5>
+    <version>8.0.2</version>
+    <time>1786737987</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 8.0.2:
+  + Modernize desktop files, simplify build
+  + MetadataDateTime: Fix crash in fallback scanf code
+  + DirectoryMonitor: Silence hidden file terminal warning
+  + Make Photometadata class more robust
+  + Fix panning zoomed images on Wayland (forwarded request 1370991 from rrahl0)</comment>
+    <requestid>1370992</requestid>
+  </revision>
 </revisionlist>

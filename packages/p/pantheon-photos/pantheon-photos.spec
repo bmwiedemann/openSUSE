@@ -1,7 +1,7 @@
 #
 # spec file for package pantheon-photos
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         appid io.elementary.photos
 Name:           pantheon-photos
-Version:        8.0.1
+Version:        8.0.2
 Release:        0
 Summary:        The continuation of Shotwell in Granite
 License:        LGPL-2.1-or-later
@@ -84,7 +84,7 @@ export CFLAGS="%{optflags} -Wno-error=return-type"
 %fdupes %{buildroot}%{_datadir}
 
 %files
-%license COPYING
+%license LICENSE
 %doc README.md
 %{_bindir}/%{appid}
 %{_datadir}/applications/%{appid}{,.viewer}.desktop
