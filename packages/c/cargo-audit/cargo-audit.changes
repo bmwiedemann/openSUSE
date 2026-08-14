@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 13 04:14:16 UTC 2026 - William Brown <william.brown@suse.com>
+
+- bsc#1274304 - CVE-2026-25541 - integer overflow in 'BytesMut:reserve' can lead to undefined behavior and crashes
+
+-------------------------------------------------------------------
 Sat Jun 06 03:19:15 UTC 2026 - william.brown@suse.com
 
 - Update to version 0.22.2~git0.281452c:
