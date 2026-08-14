@@ -1,6 +1,7 @@
 #
 # spec file for package google-guest-agent
 #
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -33,6 +34,8 @@ Patch0:         disable_google_dhclient_script.patch
 Patch1:         CVE-2026-39821.patch
 # PATCH-FIX-UPSTREAM - golang.org/x/text/unicode/norm: infinite loop on truncated/invalid UTF-8 input
 Patch2:         CVE-2026-56852.patch
+# PATCH-FIX-UPSTREAM - https://github.com/GoogleCloudPlatform/guest-agent/pull/628
+Patch3:         guest-agent-micro6.patch
 BuildRequires:  golang(API) = 1.26
 Requires:       google-guest-configs
 Requires:       google-guest-oslogin >= 20231003
@@ -52,6 +55,7 @@ popd
 pushd vendor/golang.org/x/text
 %patch -P 2 -p1
 popd
+%patch -P3
 
 %build
 %ifnarch ppc64

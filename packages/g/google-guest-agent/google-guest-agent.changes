@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug  6 11:10:08 UTC 2026 - Robert Schweikert <rjschwei@suse.com>
+
+- Add guest-agent-micro6.patch (bsc#1253357)
+  + Fix oslogin for Micro 6+
+
+-------------------------------------------------------------------
 Tue Aug  4 11:55:52 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20260803.00
