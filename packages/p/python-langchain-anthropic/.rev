@@ -69,4 +69,22 @@ Verified on aarch64 against langchain-core 1.5.4: 194 tests passed on each of
 python313 and python314, rpmlint 0 errors / 0 warnings.</comment>
     <requestid>1370781</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>83a5d0088da2a6699c55c75d2cfded3a</srcmd5>
+    <version>1.5.6</version>
+    <time>1786738013</time>
+    <user>anag_factory</user>
+    <comment>Update python-langchain-anthropic to 1.5.6
+
+- Normalize tool_search_tool_result blocks so that streaming-only index
+  fields are no longer sent back to the Anthropic API
+- Correct model profile data for Claude Fable 5, Sonnet 5 and Opus 4.1
+
+Dependency floors are unchanged from 1.5.5 (langchain-core &gt;= 1.5.4,
+anthropic &gt;= 0.120.0, pydantic &gt;= 2.7.4).
+
+Built and tested natively on aarch64: 195 tests pass per Python flavour
+(python313, python314), rpmlint clean.</comment>
+    <requestid>1371027</requestid>
+  </revision>
 </revisionlist>

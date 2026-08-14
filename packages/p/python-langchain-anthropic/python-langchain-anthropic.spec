@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-langchain-anthropic
-Version:        1.5.5
+Version:        1.5.6
 Release:        0
 Summary:        Integration package connecting Claude (Anthropic) APIs and LangChain
 License:        MIT

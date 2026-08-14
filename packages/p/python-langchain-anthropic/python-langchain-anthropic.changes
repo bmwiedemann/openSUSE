@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Aug 13 11:13:11 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.5.6:
+  * Normalize tool_search_tool_result blocks so that streaming-only
+    index fields are no longer sent back to the Anthropic API
+  * Correct model profile data for Claude Fable 5, Sonnet 5 and
+    Opus 4.1: structured output is now advertised for Fable 5 and
+    Sonnet 5, Fable 5 gains reasoning-effort levels, and the stale
+    Opus 4.1 profile override was dropped
+
+-------------------------------------------------------------------
 Wed Aug 12 05:23:10 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.5.5:
