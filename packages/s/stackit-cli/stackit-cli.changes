@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Aug 13 06:11:52 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.71.0:
+  * feat(sqlserverflex): support encryption in instance create
+    (#1511)
+  * fix(json): service-account key create now supports json and
+    yaml output (#1529)
+  * chore(edge): refactoring and migration to new SDK structure
+    (#1503)
+
+-------------------------------------------------------------------
 Fri Aug 07 11:06:29 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.70.0:
