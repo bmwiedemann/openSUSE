@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 13 06:52:53 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch add-frozendict.patch:
+  * Support Python 3.15 by adding support for frozendict.
+
+-------------------------------------------------------------------
 Mon Oct 27 15:56:11 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - update to 1.1.0

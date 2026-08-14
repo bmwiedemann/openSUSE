@@ -162,4 +162,13 @@
     <comment></comment>
     <requestid>1313945</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>42ac6668a02e97241dc3560b5f423c1a</srcmd5>
+    <version>1.1.0</version>
+    <time>1786737968</time>
+    <user>anag_factory</user>
+    <comment>- Add patch add-frozendict.patch:
+  * Support Python 3.15 by adding support for frozendict.</comment>
+    <requestid>1370953</requestid>
+  </revision>
 </revisionlist>

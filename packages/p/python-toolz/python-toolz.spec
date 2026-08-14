@@ -1,7 +1,7 @@
 #
 # spec file for package python-toolz
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,9 +22,10 @@ Version:        1.1.0
 Release:        0
 Summary:        List processing tools and functional utilities for python
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/pytoolz/toolz/
 Source:         https://files.pythonhosted.org/packages/source/t/toolz/toolz-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#pytoolz/toolz#624
+Patch0:         add-frozendict.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools-git-versioning}
 BuildRequires:  %{python_module setuptools}
@@ -41,7 +42,7 @@ BuildRequires:  %{python_module pytest}
 A set of python utility functions for iterators, functions, and dictionaries.
 
 %prep
-%setup -q -n toolz-%{version}
+%autosetup -p1 -n toolz-%{version}
 
 %build
 %pyproject_wheel
