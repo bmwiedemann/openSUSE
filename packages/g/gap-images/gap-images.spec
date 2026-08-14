@@ -1,7 +1,7 @@
 #
 # spec file for package gap-images
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-images
-Version:        1.3.3
+Version:        1.4.0
 Release:        0
 Summary:        GAP: Minimal and Canonical images
 License:        MPL-2.0
@@ -28,9 +28,11 @@ Source:         https://github.com/gap-packages/images/releases/download/v%versi
 BuildArch:      noarch
 BuildRequires:  fdupes
 BuildRequires:  gap-rpm-devel
-Requires:       gap-core >= 4.10
-Requires:       gap-gapdoc >= 1.5
+Requires:       gap-core >= 4.13
+Requires:       gap-datastructures >= 0.2.0
+Requires:       gap-digraphs >= 1.0.0
 Suggests:       gap-ferret >= 0.8.0
+Suggests:       gap-vole >= 0.6.0
 
 %description
 A GAP package for finding minimal and canonical images in

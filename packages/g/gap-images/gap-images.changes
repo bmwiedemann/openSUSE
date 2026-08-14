@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Thu Aug 13 17:48:47 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.4.0
+  * New `Fundamental` / `Combinatorial` structures for
+    canonicalising general combinatorial objects via canonical
+    graph labelling.
+  * `MinimalImage` of transformations, permutations and partial
+    permutations is now computed through a pair-action interface
+    which never constructs a permutation group on n^2 points.
+  * Sets of sets are canonicalised through the same unified search,
+    and their stabilizers are seeded with ferret when available.
+  * `MinimalImage`, `IsMinimalImage` and `MinimalImagePerm` of
+    transformations, permutations and partial permutations now
+    answer directly from a bounded enumeration of the object's
+    orbit when that orbit is small.
+  * That enumeration now serves the canonical (non-minimum)
+    orderings as well.
+  * `IsMinimalImage` now stops that enumeration at the first image
+    smaller than the object.
+  * New option `bruteForce` (`true` / `false` / `"auto"`, default
+    `"auto"`) selecting whether that enumeration is tried.
+  * `getStab` now reports the stabilizer the computation arrived
+    at, rather than forcing a computation which produces one.
+  * The position action of a user-supplied `stabilizer` in the
+    transformation/permutation/partial permutation search now
+    inherits the group's order whenever the action is faithful.
+  * Stabilizer discovery during the search is skipped when the
+    stabilizer is already known to be complete.
+  * The default stabilizer for permutations (their centralizer) is
+    now computed only after the small-orbit enumeration has had a
+    chance to answer without it.
+  * Partial permutations are now encoded sparsely.
+  * `MinimalImage`, `CanonicalImage` and their variants now support
+    digraphs.
+  * New action `OnMultiplicationTables`: `MinimalImage`,
+    `CanonicalImage` and their variants now canonicalise
+    multiplication tables.
+  * The pair-action search now transfers a known stabilizer order
+    to the position action whenever the encoded pairs cover every
+    moved point of the stabilizer.
+  * `MinimalImageOrderedPair` and `MinimalImageUnorderedPair` now
+    work for all supported actions.
+
+-------------------------------------------------------------------
 Tue Aug 27 19:31:09 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.3.3
