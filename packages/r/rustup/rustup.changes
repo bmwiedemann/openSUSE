@@ -1,4 +1,551 @@
 -------------------------------------------------------------------
+Thu Aug 13 04:15:05 UTC 2026 - William Brown <william.brown@suse.com>
+
+- bsc#1274144 - CVE-2026-25541 - integer overflow in 'BytesMut:reserve' can lead to undefined behavior and crashes
+
+-------------------------------------------------------------------
+Fri Aug 07 02:12:54 UTC 2026 - william.brown@suse.com
+
+- bsc#1274144 - CVE-2026-25541 - bytes: integer overflow in 'BytesMut:reserve' can lead to undefined behavior and crashes
+- Update to version 1.29.0~0:
+  * chore(deps): update `aws-lc-rs` and `aws-lc-sys`
+  * docs(changelog): update release date for v1.29.0
+  * dist(rustup-init/sh): update commit shasum in help string
+  * docs(dev-guide/release-process): mention the CfT blog post
+  * docs(changelog): update for v1.29.0 stable release
+  * fix(cli): Style CLI errors in init mode
+  * test: Add unknown arg init test
+  * chore(deps): lock file maintenance
+  * chore(deps): update actions/upload-artifact action to v7
+  * refactor(www): simplify instruction css selector
+  * feat(www): make copy button dark mode-aware
+  * feat(www): move feedback text out of copy button
+  * fix(www): apply filter to rust logo
+  * feat(www): add dark mode
+  * refactor(www): extract css variables
+  * fix(cli/self-update): enforce a newline after `check_updates()`
+  * refactor(cli/self-update): extract `has_progress_bars` in `check_updates()`
+  * fix(cli/self-update): unify `check_*update*()`'s message formats
+  * docs(downloads): fix the default number of `RUSTUP_CONCURRENT_DOWNLOADS`
+  * feat(toolchain): add `--override` to override toolchain as soon as installed
+  * fix(toolchain): improve logs when recovering from an interrupted installation
+  * chore(deps): lock file maintenance
+  * chore(deps): downgrade `openssl-src` to 300.5.4+3.5.4
+  * style(download): clean up imports
+  * fix(diskio): fall back to single-threaded unpacking when `ram_budget` < 512MB to avoid OOM on memory-constrained systems
+  * test(downloads): check if an error is thrown if the server does not honor range
+  * fix(downloads): check correct response when resuming from partial (reqwest)
+  * fix(downloads): check correct response when resuming from partial (curl)
+  * fix(deps): update rust crate toml to v1
+  * chore(deps): lock file maintenance
+  * fix(dist/manifest): sort keys when serializing `Manifest`
+  * hack(ci/linux): disable BuildKit when building local images
+  * chore(ci): use more distinctive local image names
+  * Upgrade rand to 0.10
+  * Upgrade snapbox to 1
+  * Upgrade to anstream 1
+  * fix(downloads): adjust error message for partial files in network failures
+  * test(downloads): ensure that partial files are not removed when network fails
+  * feat(downloads): do not delete partial download when network fails
+  * fix(downloads): substitute `DEK` alias for `DownloadError`
+  * chore(deps): lock file maintenance
+  * chore(deps): lock file maintenance
+  * chore(deps): update aws-actions/configure-aws-credentials action to v6
+  * Take semver-compatible dependency updates
+  * cli: introduce semantic exit code constants for rustup check
+  * Add missing Windows SDK instructions
+  * Add winget instructions to MSVC install page
+  * Remove nu-string-interpolation `$`
+  * Replace $nu.home-path with ~
+  * feat(cli/rustup-mode): add "Exit status" section to `rustup check --help`
+  * chore(deps): lock file maintenance
+  * Add common commands section in help text
+  * fix(cli/rustup-mode): improve exit code of `rustup check`
+  * refactor(test)!: pass status code directly to `SanitizedOutput`
+  * chore(deps): lock file maintenance
+  * Add powerpc64-unknown-linux-musl support
+  * fix: add copy_file_symlink_to_source for self-installation
+  * fix: preserve symlinks in copy_dir instead of following them
+  * feat(cli/rustup-mode): add `doc --rustc-docs` to open rustdoc for Rust internals
+  * Remove the mixed singular/plural phrasing as "component(s)" instead, use "components" or "component". In the singular case also add the name of the component for more consistent messaging style with other info! outputs about single components.
+  * fix(cli/rustup-mode): `check` for self updates for `SelfUpdateMode::CheckOnly`
+  * test: Add test for sequential multi-toolchain uninstall
+  * fix: directory removal race condition in toolchain uninstall
+  * chore(deps): lock file maintenance
+  * test(cli_v2): test error when missing many components on install
+  * fix(dist): adjust printed newlines in `components_missing_msg()`
+  * unified nightly disclaimer wording/styling; preserved distinct messages per scenario
+  * chore(deps): lock file maintenance
+  * Upgrade to reqwest 0.13
+  * chore(deps): lock file maintenance
+  * change test name to match new terminology
+  * rename file to match new terminology
+  * change 'target triple' to 'target tuple'
+  * chore(deps): lock file maintenance
+  * fix(toolchain): forbid toolchain names starting with +
+  * cli: add `doc --releases` to open release notes
+  * chore(deps): update actions/upload-artifact action to v6
+  * chore(deps): update actions/cache action to v5
+  * chore(deps): lock file maintenance
+  * dist: use more concise API in helper function
+  * dist: inline more logic into helper function
+  * dist: give helper function a more meaningful name
+  * dist: move helper function closer to usage site
+  * docs(dev-guide): mention snapshot updating in release process
+  * fix(toolchain): avoid unwrapping when parsing a toolchain name
+  * fix(toolchain): change regex to reject leading zeros in toolchain name
+  * dist(rustup-init/sh): update commit shasum in help string
+  * docs(changelog): update for v1.29.0 beta release
+  * dist: bump `rustup` version to v1.29.0
+  * docs(changelog): add missing link references
+  * test(static-roots): use a more compact syntax for raw binaries
+  * test(static-roots): return `Result` from `store_static_roots()`
+  * download: statically bundle relevant trust anchors
+  * chore(deps): lock file maintenance
+  * Added xonsh support
+  * chore(deps): lock file maintenance
+  * refactor(dist/manifestation): remove redundant redeclarations
+  * docs(dist/download): remove outdated note on concurrent download progress reporting
+  * fix(dist/download): align `total_bytes` fields in progress reporting UI
+  * fix: default to GNU host in Cygwin/MSYS/MinGW environments (#4221)
+  * chore(config): remove redundant imports
+  * fix(dist/manifestation): print "downloading component" only on `InstallEvents`
+  * fix(utils): downgrade panic to warning in `delete_dir_contents_following_links()`
+  * chore(deps): update actions/checkout action to v6
+  * chore(deps): lock file maintenance
+  * Prepare for mdbook 0.5 migration
+  * dist: make installation asynchronous
+  * dist: make installations 'static
+  * dist: take ownership of Manifestation
+  * dist: store owned temp::Context in Transaction
+  * dist: store temp::Context in DownloadCfg
+  * dist: align progress bar elements
+  * dist: track progress during unpacking
+  * utils: drop unused reader tracking
+  * process: fix refresh rate for progress bars
+  * process: reduce duplication in ProgressDrawTarget setup
+  * Yield references from Manifest::short_name()
+  * Move Component name helpers to Manifest
+  * chore(deps): lock file maintenance
+  * dist: simplify ComponentBinary construction
+  * dist: hoist creation of io_executor some more
+  * Move unpack_ram() from dist to diskio
+  * dist: hoist Executor creation up
+  * dist: inline effective RAM limit calculation
+  * dist: hoist environment variable extraction
+  * dist: use logging for missing parent warnings
+  * dist: clarify dependency on unpack RAM budget
+  * diskio: clarify dependency on I/O thread count
+  * dist: transfer ownership of component values
+  * dist: take ownership of existing Components
+  * dist: take ownership of toolchain name in update()
+  * dist: take ownership of manifest in update()
+  * dist: derive trivial initialization for Update
+  * dist: rename Update::build_update() to new()
+  * dist: linearize for-loop in Update::build_update()
+  * dist: inline single-use function
+  * dist: inline trivial helper function
+  * dist: inline single-use tranaction change helpers
+  * dist: store specific config bit in Transaction
+  * chore(config): migrate config .github/renovate.json
+  * chore(deps): lock file maintenance
+  * dist: attach manifest download functions to DownloadCfg
+  * rustup: unhide top-level install/uninstall commands
+  * dist: move update_from_dist() to DistOptions::install_into()
+  * Be more consistent about aliases for different subcommands
+  * chore(deps): lock file maintenance
+  * test: add test for `rustup toolchain install --no-update`
+  * feat(rustup-mode): add `no_update` flag to `rustup toolchain install`
+  * cli: prepare DistOptions in advance
+  * dist: inline trivial wrapper function
+  * cli: inline single-use update_all_channels() helper
+  * config: simplify update_all_channels()
+  * dist: deduplicate DistOptions initialization
+  * dist: avoid recomputing dist root URL
+  * dist: simplify tracing instrumentation
+  * install: take ownership in InstallMethod::install()
+  * dist: move DistributableToolchain::install() up
+  * dist: clarify when update_hash is available
+  * cli: avoid dropped temporary
+  * Take semver-compatible dependencies
+  * dist: install while downloading
+  * dist: store more context in ComponentBinary
+  * dist: yield self when download is complete
+  * dist: move URL alteration logic into DownloadCfg method
+  * Apply suggestions from clippy 1.91
+  * refactor(check): Consolidate use_colors checks
+  * fix(check): Use Cargo's colors
+  * refactor(check): Make calls more consistent
+  * dist: drop another layer of abstraction
+  * dist: store package directory once
+  * dist: inline short single-use function
+  * dist: discard unnecessary abstraction layer
+  * chore(deps): update actions/upload-artifact action to v5
+  * chore(deps): lock file maintenance
+  * fix(cli/rustup-mode): add missing self-update in `rustup toolchain install`
+  * refactor(cli/self-update): move `self_update()` to `SelfUpdateMode::update()`
+  * refactor(cli/rustup-mode): pass self-update predicates into `self_update()`
+  * refactor(cli/self-update): import `utils::ExitCode`
+  * rustup: tweak update check output style
+  * fix(list): Match show command's styling
+  * test(list): Add UI test
+  * fix(toolchain): Have 'list' match 'show's styling
+  * refactor(toolchain): Order logic by display order
+  * refactor(toolchain): Use string interpolation
+  * test(toolchain): Show list's behavior
+  * fix(update): Match 'cargo update's colors
+  * refactor(update): Centralize style knowledge
+  * test: Cover different show_channel_update cases
+  * fix(check): Subject check to RUSTUP_TERM_COLOR
+  * test(check): Show current style
+  * fix: Use HEADER styling in 'rustup show'
+  * chore: Update clap-cargo
+  * test: Demonstrate show's behavior
+  * test(process): Allow forcing color on
+  * test(process): Ensure non-locked writes are stripped of ANSI escape codes
+  * cli: update `uninstall_removes_source_from_rcs` to mirror `uninstall_doesnt_modify_rcs_with_no_modify_path`
+  * cli: add tests for `rustup self uninstall --no-modify-path`
+  * cli: add `rustup self uninstall --no-modify-path`
+  * cli: add help text for `rustup self uninstall -y`
+  * fix(cli/help): change indentation of discussions to 2 spaces
+  * fix(cli/help): adjust help text for `rustup install`
+  * feat(cli/help): add toolchain install tips to `rustup update`'s discussion
+  * feat(cli/help): discuss `rustup toolchain install`
+  * style: Remove wildcard imports
+  * progress: modify progress bar's states to be column-aligned
+  * installations: handle installation of components through progress bars
+  * feat(cli): Add a sub-heading style for 'completion' Help Discussion
+  * feat(cli): Have Help Discussions match rest of CLI Help
+  * feat(cli): Add color to clap help/errors
+  * refactor(cli): Switch help text to functions
+  * chore(deps): lock file maintenance
+  * cli: propagate ActiveSource from the top
+  * cli: upgrade error events to ERROR level
+  * cli: inline Cfg::active_rustc_version()
+  * cli: extract display_version() from rustup main()
+  * cli: inline Cfg::resolve_local_toolchain()
+  * cli: inline Cfg::resolve_toolchain()
+  * config: extract setting of toolchain override in rustup help mode
+  * cli: avoid Cfg construction indirection
+  * config: privatize some Cfg fields
+  * config: drop trivial Cfg setters
+  * Expand `RUSTUP_TOOLCHAIN_SOURCE`'s documentation
+  * refactor(installation): extract installation of a component into a separate function
+  * bin: clean up imports
+  * cli: rename CLIError to CliError
+  * config: rename OverrideDB to OverrideDb
+  * dist: clean up unnecessary qualification
+  * test: Replace trycmd with snapbox
+  * chore: Update snapbox
+  * Update the default Windows SDK version
+  * refactor(log): Single source RUSTUP_TERM_COLOR
+  * style: Encourage using existing imports
+  * process: avoid fine-grained locking for logs
+  * process: discard unnecessary layer of synchronization
+  * process: inline TerminalInnerLocked
+  * process: replace unsafe code with safe equivalent
+  * process: extract color_choice() method
+  * process: extract is_a_tty value
+  * process: inline StreamSelector::is_a_tty()
+  * process: inline TestWriterLock
+  * Implement `RUSTUP_TOOLCHAIN_SOURCE` with new `Display` impl
+  * Move `Display` impl to `to_reason()`
+  * Rename `ActiveReason` to `ActiveSource`
+  * dist: simplify DownloadStatus setup
+  * dist: decentralize download status
+  * dist: postpone creation of ComponentBinary values
+  * dist: extract DownloadStatus type
+  * dist: call DownloadTracker methods directly
+  * dist: drop unnecessary Notifier layer
+  * dist: replace PackageContext with DownloadCfg
+  * refactor: Directly apply styling
+  * refactor: Don't bother grabbing lock for tests
+  * refactor: Replace termcolor with anstream
+  * refactor: Move style building out of ColorableTerminal
+  * refactor: Migrate to anstyle for color definitions
+  * fix(www): removes www subdomain from all rust-lang.org urls
+  * chore(deps): lock file maintenance
+  * dist: move Notification into dist::download
+  * notifications: remove unused Display impl
+  * dist: move Notifier into DownloadCfg
+  * cli: build Cfg earlier in setup mode
+  * dist: reuse existing DownloadCfg in update_v1()
+  * dist: move dist_root out of DownloadCfg
+  * dist: drop unused Clone derives
+  * dist: drop Copy derive from DownloadCfg
+  * dist: move Notifier and DownloadTracker into dist::download
+  * dist: inline DownloadCfg test setup
+  * download: move File items down
+  * download: extract DownloadCfg initialization from Cfg
+  * config: discard pointless method argument
+  * cli: rename DownloadTracker::new_with_display_progress() to new()
+  * notifications: log directly from DownloadTracker
+  * notifications: log directly on bad download checksums
+  * notifications: log directly when reusing downloaded files
+  * notifications: log directly on buffer size changes
+  * Update platforms to 3.7.0
+  * notifications: log directly on duplicate toolchain files
+  * notifications: log directly on metadata upgrades that remove toolchains
+  * notifications: log directly when reading metadata version
+  * notifications: log directly when metadata upgrade is not needed
+  * notifications: log directly when upgrading metadata version
+  * notifications: log directly when uninstalling toolchains
+  * notifications: log directly when toolchain is up to date
+  * notifications: log directly when toolchain has been installed
+  * notifications: log directly when installing toolchains
+  * notifications: log the toolchain directory directly
+  * notifications: log directly when using existing toolchains
+  * notifications: log directly when looking for toolchains
+  * notifications: log directly when setting auto-self-update mode
+  * notifications: log directly when setting profile
+  * notifications: log directly when setting overrides
+  * notifications: use human-friendly log format for temp file deletions
+  * notifications: use human-friendly log format for directory deletions
+  * notifications: use human-friendly log format for retrying renames
+  * notifications: use human-friendly log format for path canonicalization
+  * cli: drop unnecessary generics
+  * process: import instead of qualifying ColorableTerminal
+  * process: hide internal structure
+  * process: don't re-export external items
+  * process: rename terminalsource to terminal_source
+  * process: rename filesource to file_source
+  * process: re-order items in terminalsource module
+  * feat(cli/self-update): add support for PowerShell on Unix systems
+  * refactor: Remove unused traits
+  * refactor: Directly use ColorableTerminal
+  * refactor: Simplify working with ColorableTerminal
+  * fix(process): Ensure stdout/stderr lock is held across calls
+  * refactor(process): Centralize Write bookkeeping
+  * docs(changelog): describe default profile change during auto-install
+  * Fix typo in clitools.rs comment
+  * ci(docs): fix local doc branch name
+  * Move the default branch from `master` to `main`
+  * Upgrade opentelemetry dependencies
+  * ci: use macOS Intel runners
+  * notifications: log directly when setting the default toolchain
+  * notifications: log directly when setting auto install mode
+  * notifications: log directly when resuming partial downloads
+  * notifications: log directly when downloading files
+  * notifications: log directly when removing stray hash files
+  * notifications: log directly when skipping components
+  * notifications: log directly on missing components
+  * notifications: log directly when downloading legacy manifests
+  * notifications: log directly for downloaded manifests
+  * notifications: log directly for manifest downloads
+  * notifications: log directly when removing components
+  * notifications: log directly when installing components
+  * notifications: log directly on missing components
+  * notifications: log directly after failing to determine memory limit
+  * notifications: log directly when hash file not found
+  * notifications: log directly when failing to update hash file
+  * notifications: log directly when component is already installed
+  * notifications: log directly for valid checksums
+  * notifications: log directly when using download backends
+  * chore: avoid trailing whitespace in error message
+  * refactor: Switch logging to anstyle
+  * refactor: Remove unused ColorableTerminal::carriage_return
+  * notifications: privatize Notification type
+  * notifications: log directly on creating temp files
+  * notifications: log directly on temp root creation
+  * notifications: log directly on file deletions
+  * notifications: log directly on directory deletions
+  * notifications: log directly about non-fatal errors
+  * notifications: log directly about rolling back changes
+  * notifications: log directly for retrying renames
+  * notifications: log directly when removing directories
+  * notifications: log directly when copying directories
+  * notifications: log directly when linking directories
+  * notifications: log directly when path canonicalization fails
+  * notifications: log directly when creating directories
+  * tests: use DistContext for dist::components tests
+  * tests: move DistContext into library
+  * tests: deduplicate distribution installation tests
+  * notifications: tweak style
+  * Inline utils Notification variants into top-level Notification
+  * Inline dist Notification variants into top-level Notification
+  * Inline dist::temp::Notification variants into top-level Notification
+  * dist: remove temp::Notification variant from dist::Notification
+  * dist: extract URL alteration from download() method
+  * dist: detach download_component() from Manifestation
+  * dist: introduce ComponentBinary type
+  * dist: avoid passing through arguments
+  * dist: avoid unnecessary type annotations
+  * dist: avoid cloning components Vec
+  * refactor: remove redundant references
+  * dist: simpify casting to trait object
+  * dist: deduplicate decompression setup code
+  * cli: move more self update logic into self_update module
+  * chore(deps): lock file maintenance
+  * refactor(dist/manifestation): remove redundant `.to_string()`
+  * Remove unneeded paranthesees
+  * Fix link in the bug reporting template
+  * ci(all-features/windows): update `OPENSSL_LIB_DIR` for OpenSSL v3 compatibility
+  * chore(deps): lock file maintenance
+  * docs(dev-guide): improve suggestion for overriding arg0
+  * docs(dev-guide): mention the arg0 override trick on welcome page
+  * docs(README): link CI status badge to GitHub Actions panel
+  * feat(dist/manifestation): adjust default concurrent downloads when installing toolchains
+  * feat(cli/rustup-mode): check updates for all channels unless `RUSTUP_CONCURRENT_DOWNLOADS` is set to 1
+  * refactor: rename `num_channels` to `concurrent_downloads`
+  * fix: fix hang by preventing `stream.buffered(0)` in concurrent downloads
+  * test(dist/manifestation): extract `TestContext::*with_env()`
+  * refactor(download): use `NonZero` instead of `NonZeroU64`
+  * refactor(process): remove redundant `.context()` in `Process::concurrent_downloads()`
+  * chore(deps/renovate): group version bumps for `windows-rs` crates
+  * Upgrade windows crates
+  * chore(deps): lock file maintenance
+  * fix(cli/rustup_mode): use ASCII-compatible spinner
+  * chore(deps): update aws-actions/configure-aws-credentials action to v5
+  * feat(install): warn if default linker (cc) is missing; add respective test case
+  * Remove hardcoded dependency to the master branch
+  * feat(downloads): delay the reappearance of the progress bar when retrying a download
+  * fix(downloads): correct faulty behavior when a download fails
+  * fix(downloads): correct faulty output when retrying a download
+  * chore(deps): lock file maintenance
+  * feat(self_update): add tcsh shell support to cli #3413
+  * Replace non_empty_env_var() with Process::var_opt()
+  * fix(downloads): report real elapsed time of a component downloads instead of cumulative
+  * Treat empty environment variables as unset
+  * fix(downloads): honor the RUSTUP_CONCURRENT_DOWNLOADS by always having "n" concurrent downloads
+  * chore(deps): lock file maintenance
+  * chore(deps): disable default features for zstd
+  * feat(downloads): introduce `RUSTUP_CONCURRENT_DOWNLOADS` to control concurrency
+  * chore(deps): lock file maintenance
+  * ci(check): make installation of `taplo-cli` faster
+  * fix(notifications): delete unnecessary Download(Pop/Push)Unit notifications
+  * fix(downloads): extract closure for downloading a component into a separate function
+  * feat(downloads): concurrently download components
+  * fix(downloads): add a comment to justify the unwrap on `.get()` of `OnceLock`
+  * chore(deps): update actions/checkout action to v5
+  * fix(download_timeout): introduce RUSTUP_DOWNLOAD_TIMEOUT for overriding download timeout
+  * fix(downloads): substitute the LazyLock for a OnceLock
+  * chore(deps): lock file maintenance
+  * feat(rustup_mode): revise help message
+  * feat: improve error message for `rustup which`
+  * test: detach snapshots from component installation order
+  * chore(deps): lock file maintenance
+  * feat(download_tracker): refactor in favor of `indicatif`
+  * feat(process): create a `ProgressDrawTarget` (for `indicatif`) inside the `Process`
+  * chore(deps): lock file maintenance
+  * fix(rustup-init/sh): avoid `hw.optional.*: 1` stdout in macOS arch check
+  * hack(cli/common): suppress host emulation warnings in rustup's own CI
+  * fix(test/clitools): pass `RUSTUP_CI` to in-process tests
+  * ci(macos): run x64 workflows with Rosetta 2
+  * docs(user-guide/environment-variables): clarify the unit of `RUSTUP_UNPACK_RAM`
+  * docs(user-guide/environment-variables): unify description style
+  * docs(user-guide/environment-variables): update description of `RUSTUP_IO_THREADS`
+  * chore(deps): lock file maintenance
+  * Limit Tokio worker threads to I/O thread count
+  * Use manual Tokio runtime setup
+  * Attach io_thread_count() to Process
+  * Always consider RUSTUP_IO_THREADS as input for thread count
+  * utils: express io_thread_count() in a simpler way
+  * opt(err): show renaming file error source
+  * Set a maximum thread limit for remove_dir_all
+  * fix(toolchain/distributable): refine handling of known targets with no prebuilt artifacts
+  * fix(ci/fetch-rust-docker): update comments
+  * fix(ci/docker): update `CC` name for `powerpc64le-unknown-linux-gnu`
+  * chore(deps): lock file maintenance
+  * Extract self_update() from update_all_channels()
+  * Show channel updates even if self update is not permitted
+  * Remove Cargo feature indirection
+  * Move Cfg::get_self_update_mode() to SelfUpdateMode::from_cfg()
+  * Replace trivial enum with bool
+  * feat(updates): introduce `RUSTUP_TERM_WIDTH` to override terminal width
+  * feat(updates): introduce `RUSTUP_TERM_PROGRESS_WHEN` to toggle the progress bars
+  * Limit the default number of I/O threads
+  * Bump `toml` to 0.9
+  * feat(updates): check for updates concurrently
+  * feat(terminal): implement the `TermLike` trait for `ColorableTerminal`
+  * chore(deps): lock file maintenance
+  * chore(deps): lock file maintenance
+  * chore: use match ergonomics in favor of explicit `ref`s
+  * refactor(download/curl): use early returns in `download()`
+  * chore(cli/rustup_mode): merge `std` imports
+  * chore(cli/rustup-mode): import `std::io`
+  * chore: fix new `clippy` warnings
+  * fix(ci/run): specify target triple for `bindgen-cli` installation
+  * feat(www): improve "copy" button style compatibility with Chromium
+  * ci(run): install `codegen-cli` with `cargo-binstall`
+  * docs: replace Discord links
+  * chore(deps): lock file maintenance
+  * Block broken snap curl
+  * Upgrade to windows-sys 0.60
+  * chore(deps): lock file maintenance
+  * Emphasize that `llvm-tools` dist component is not subject to compiler stability guarantees
+  * docs(README): update CI status badge
+  * Fix rustup-init.sh cputype check for sparcv9
+  * add Solaris support
+  * test(clitools)!: remove all deprecated `.expect_*()` APIs
+  * test(clitools)!: privatize `Config::run()`
+  * test: migrate remaining uses of `.run()` to `.expect()` APIs
+  * test(clitools): extract `Assert::redact()`
+  * test: simplify `.display().to_string()` in `.extend_redactions()`
+  * test(cli_misc): bring back missing assertions
+  * chore(deps): lock file maintenance
+  * Update help.rs: bash completions instructions (#1)
+  * docs(user-guide): fix typo
+  * docs(dev-guide): update the section on `clippy` lints
+  * docs(dev-guide): mention test helpers and `Assert`
+  * docs(test/clitools): add docs for `Assert`
+  * Upgrade to rustls-platform-verifier 0.6
+  * test(cli-v2): migrate to `.expect()` APIs
+  * test(cli-misc): migrate to `.expect()` APIs
+  * fix(toolchain): fix proxy fallback notification format on Windows
+  * test(cli-v1): migrate to `.expect()` APIs
+  * test(download): serialize tests with proxy-sensitive URLs
+  * fix(deps): update opentelemetry
+  * test(cli-rustup): migrate to `.expect()` APIs
+  * test(clitool): add `Assert::remove_redactions()`
+  * test(clitools): allow `OsStr`-like args in `Config::expect*()`
+  * Fix CI image names for downloading ARM and PowerPC artifacts
+  * Update platforms to 3.6
+  * chore(deps): lock file maintenance
+  * test(cli-exact): migrate to `.expect()` APIs
+  * Avoid swallowing errors in show()
+  * Simplify target processing logic
+  * Inline returned bindings
+  * Increase Windows main thread stack size to 2mb
+  * test(cli-inst-interactive): migrate to `.expect()` APIs
+  * Unset RUSTUP_AUTO_INSTALL for tests
+  * test(cli-paths): migrate to `.expect()` APIs
+  * test(cli-exact): use the new `[CURRENT_VERSION]` redaction
+  * test(cli-self-upd): migrate to `.expect()` APIs
+  * Tweak list_items() docstring
+  * Leverage bool::then_some() to simplify some code
+  * Avoid intermediate allocation in listing
+  * test(custom-toolchains): `target list` now can display the installed targets
+  * feat(custom-toolchains): `target` and `component list` working on custom toolchains
+  * Skip manifest loading if there are no components/targets to check
+  * fix(deps): update rust crate opener to 0.8.0
+  * chore(deps): lock file maintenance
+  * rustup check: set exit status based on available updates
+  * rustup check: adopt no-self-update logic
+  * feat(self_update): add proxy sanity checks
+  * style(test): qualify uses of `snapbox::str![]`
+  * refactor(test): migrate some tests to `.expect()` APIs
+  * chore(test): deprecated old APIs overlapping with the new ones
+  * refactor(test): add new `.expect()`-based testing APIs
+  * test(custom-toolchains): using `show` on a custom toolchain without a `components` file
+  * test(custom-toolchains): add test to showcase that the issue was solved
+  * feat(custom-toolchains): `rustup show` now reporting installed targets
+  * tests: print diffs on test failures
+  * Log versions during self updates
+  * chore(deps): lock file maintenance
+  * Fix cargo lints on Windows
+  * toolchain: hoist binary name conditionals out of fallback functions
+  * refactor(test): replace `TempDir::into_path()` with `TempDir::keep()`
+  * refactor(test/clitools): use globally-defined `tempdir_in_with_prefix()`
+  * chore(deps): lock file maintenance
+  * feat(toolchain): notify the user when proxy fallback is activated
+  * feat(toolchain): consider external `rust-analyzer` when calling a proxy
+  * refactor(toolchain): move predicates into `Toolchain::maybe_do_cargo_fallback()`
+  * refactor(toolchain): privatize `Toolchain::maybe_do_cargo_fallback()`
+  * deps: update aws-lc-rs to 1.13.1
+  * docs(changelog): mirror changes from the release announcement, take 2
+  * chore(deps): lock file maintenance
+
+-------------------------------------------------------------------
 Wed Jul  8 02:02:31 UTC 2026 - William Brown <william.brown@suse.com>
 
 - Completely drop openssl to prevent future security issues
