@@ -15,4 +15,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1324523</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0f0b6db218cf2c2fcd57b57c0456b53c</srcmd5>
+    <version>8.0.2</version>
+    <time>1786737985</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 8.0.2:
+  + Improve screen reader support
+  + Improve touch screen support
+  + Updated translations (forwarded request 1370986 from rrahl0)</comment>
+    <requestid>1370987</requestid>
+  </revision>
 </revisionlist>
