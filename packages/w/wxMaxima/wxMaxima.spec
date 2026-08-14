@@ -16,14 +16,14 @@
 #
 
 
-# Tests fail on chroot, but work fine locally
-# https://github.com/wxMaxima-developers/wxmaxima/issues/1699
+# Test fails
+# https://github.com/wxMaxima-developers/wxmaxima/issues/1775
 %bcond_with tests
 %define X_display ":98"
 %define __builder ninja
 %define tarname wxmaxima
 Name:           wxMaxima
-Version:        26.07.1
+Version:        26.08.0
 Release:        0
 Summary:        Graphical User Interface for the maxima Computer Algebra System
 License:        GPL-2.0-or-later
@@ -41,6 +41,7 @@ BuildRequires:  maxima-exec-sbcl
 BuildRequires:  ninja
 BuildRequires:  po4a
 BuildRequires:  wxGTK3-devel >= 3.1.5
+BuildRequires:  pkgconfig(fribidi)
 # gnuplot is needed for plotting
 Requires:       gnuplot
 Requires:       maxima >= 5.30.0
