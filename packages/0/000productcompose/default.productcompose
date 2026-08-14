@@ -3729,7 +3729,6 @@ packagesets:
    - qt6-webchannel-imports # reason: dvd:patterns-kde-kde
    - qt6-webengine # reason: dvd:patterns-kde-kde
    - qt6-webengine-imports # reason: dvd:patterns-kde-kde
-   - qtdeclarative-imports-provides-qt5 # reason: dvd:patterns-kde-kde
    - qtdeclarative-imports-provides-qt6 # reason: dvd:patterns-kde-kde
    - qtkeychain-qt6-lang # reason: dvd:patterns-kde-kde
    - quadrapassel # reason: dvd:patterns-gnome-gnome
@@ -3799,7 +3798,6 @@ packagesets:
    - sdbootutil-dracut-measure-pcr # reason: dvd:patterns-media-rest_cd_core
    - sdbootutil-snapper # reason: dvd:patterns-media-rest_cd_core
    - sddm-branding-openSUSE # reason: dvd:patterns-kde-kde
-   - sddm-greeter-qt5 # reason: dvd:patterns-kde-kde
    - sddm-greeter-qt6 # reason: dvd:patterns-kde-kde
    - sddm-kcm6 # reason: dvd:patterns-kde-kde
    - sddm-kcm6-lang # reason: dvd:patterns-kde-kde
@@ -6089,7 +6087,6 @@ packagesets:
    - qt6-webchannel-imports # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - qt6-webengine # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - qt6-webengine-imports # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - qtdeclarative-imports-provides-qt5 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - qtdeclarative-imports-provides-qt6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - read-only-root-fs # reason: opensuse_microos:patterns-microos-base
    - rebootmgr # reason: opensuse_microos:patterns-microos-base
@@ -6111,7 +6108,6 @@ packagesets:
    - sdbootutil-dracut-measure-pcr # reason: opensuse_microos:patterns-microos-onlyDVD
    - sdbootutil-snapper # reason: opensuse_microos:patterns-microos-onlyDVD
    - sdbootutil-tukit # reason: opensuse_microos_desktop:expansion
-   - sddm-greeter-qt5 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - sddm-greeter-qt6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - sddm-kcm6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - sddm-qt6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -7815,7 +7811,6 @@ packagesets:
    - qt6-webchannel-imports # reason: opensuse_kalpa:patterns-kalpa-base
    - qt6-webengine # reason: opensuse_kalpa:patterns-kalpa-base
    - qt6-webengine-imports # reason: opensuse_kalpa:patterns-kalpa-base
-   - qtdeclarative-imports-provides-qt5 # reason: opensuse_kalpa:patterns-kalpa-base
    - qtdeclarative-imports-provides-qt6 # reason: opensuse_kalpa:patterns-kalpa-base
    - read-only-root-fs # reason: opensuse_kalpa:patterns-kalpa-base
    - registries-conf-default # reason: opensuse_kalpa:patterns-kalpa-base
@@ -7830,7 +7825,6 @@ packagesets:
    - samba-client-libs # reason: opensuse_kalpa:patterns-kalpa-base
    - samba-libs # reason: opensuse_kalpa:patterns-kalpa-base
    - sane-backends # reason: opensuse_kalpa:patterns-kalpa-base
-   - sddm-greeter-qt5 # reason: opensuse_kalpa:patterns-kalpa-base
    - sddm-greeter-qt6 # reason: opensuse_kalpa:patterns-kalpa-base
    - sddm-kcm6 # reason: opensuse_kalpa:patterns-kalpa-base
    - sddm-qt6 # reason: opensuse_kalpa:patterns-kalpa-base
