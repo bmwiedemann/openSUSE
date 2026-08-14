@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Aug 13 04:13:13 UTC 2026 - William Brown <william.brown@suse.com>
+
+- bsc#1274444 - CVE-2026-25541 - integer overflow in 'BytesMut:reserve' can lead to undefined behavior and crashes
+
+-------------------------------------------------------------------
+Thu Aug 13 04:09:36 UTC 2026 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 7.2.2:
+  * Allow custom patching during vendor (#140)
+  * cargo: update lockfile
+  * cargo: update rustsec to 0.32.0
+  * cargo: update lockfile
+  * flakes: add lockfile
+  * chore: add .direnv to gitignore
+  * flakes: add flake definition so i can use it on macos
+  * ci: update actions/checkout to v6
+
+-------------------------------------------------------------------
 Wed Jul 29 07:49:48 UTC 2026 - William Brown <william.brown@suse.com>
 
 - Update to version 7.2.2:
