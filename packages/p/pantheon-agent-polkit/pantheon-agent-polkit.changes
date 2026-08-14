@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug 13 08:56:49 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 8.1.0:
+  + meson: Replace deprecated source_root with project_source_root
+  + Autostart using systemd instead of gnome-session
+  + Implement basic Gcr support
+  + PolkitDialog: use new dialog design from Portals
+
+-------------------------------------------------------------------
 Sun Dec 21 01:21:31 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 8.0.2:

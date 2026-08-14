@@ -31,4 +31,16 @@
   * PolkitDialog: fix Granite CSS deprecations (forwarded request 1323855 from rrahl0)</comment>
     <requestid>1323856</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c2e55c922516ebce0824648b34cc1678</srcmd5>
+    <version>8.1.0</version>
+    <time>1786737983</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 8.1.0:
+  + meson: Replace deprecated source_root with project_source_root
+  + Autostart using systemd instead of gnome-session
+  + Implement basic Gcr support
+  + PolkitDialog: use new dialog design from Portals (forwarded request 1370984 from rrahl0)</comment>
+    <requestid>1370985</requestid>
+  </revision>
 </revisionlist>

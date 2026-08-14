@@ -1,7 +1,7 @@
 #
 # spec file for package pantheon-agent-polkit
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         appid io.elementary.desktop.agent-polkit
 Name:           pantheon-agent-polkit
-Version:        8.0.2
+Version:        8.1.0
 Release:        0
 Summary:        Polkit authorization designed for Pantheon
 License:        LGPL-2.1-or-later
@@ -28,6 +28,7 @@ BuildRequires:  fdupes
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  vala
+BuildRequires:  pkgconfig(gcr-4)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(granite-7) >= 7.7.0
@@ -46,6 +47,7 @@ An agent for Polkit authorization designed for Pantheon desktop environment.
 %autosetup
 
 %build
+export CFLAGS="%{optflags} -Wno-error=return-type"
 %meson
 %meson_build
 
@@ -54,24 +56,13 @@ An agent for Polkit authorization designed for Pantheon desktop environment.
 %find_lang %{appid}
 %fdupes -s %{buildroot}%{_datadir}
 
-%if %{?suse_version} >= 1600
-# move the xdg autostart file into /usr/etc
-mkdir -p %{buildroot}%{_distconfdir}/xdg/autostart
-mv %{buildroot}%{_sysconfdir}/xdg/autostart/%{appid}.desktop \
-   %{buildroot}%{_distconfdir}/xdg/autostart/%{appid}.desktop
-%endif
-
 %files
 %license COPYING
 %doc README.md
 %{_datadir}/applications/%{appid}.desktop
-%{_libexecdir}/policykit-1-pantheon
-%if %{?suse_version} >= 1600
-%{_distconfdir}/xdg/autostart/%{appid}.desktop
-%else
-%{_sysconfdir}/xdg/autostart/%{appid}.desktop
-%endif
 %{_datadir}/metainfo/%{appid}.metainfo.xml
+%{_libexecdir}/policykit-1-pantheon
+%{_userunitdir}/%{appid}.service
 
 %files lang -f %{appid}.lang
 
