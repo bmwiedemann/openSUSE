@@ -1,0 +1,5 @@
+# @earendil-works/pi-ai ships its provider catalogue as a dotfile,
+# dist/providers/data/.manifest.json, and imports it by that exact name at
+# runtime. It cannot be renamed or dropped without breaking provider
+# resolution, so the hidden-file report is inherent rather than packaging junk.
+addFilter("hidden-file-or-dir .*@earendil-works/pi-ai/dist/providers/data/\.manifest\.json")

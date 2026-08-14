@@ -1,0 +1,24 @@
+Disable pi's self-update on distribution installs.
+
+pi is installed under %{nodejs_sitelib}, i.e. inside a node_modules path, so
+detectInstallMethod() returns "npm" and `pi update` would try to run
+`npm install -g` over the RPM-owned tree. Returning upstream's own "unknown"
+sentinel makes getSelfUpdateCommand() return undefined, which takes the
+existing upstream refusal path ("pi cannot self-update this installation.
+Update ... using the package manager ... that provides this installation").
+
+Extension/skill/model management (pi install/remove/list, pi update
+--extensions/--models) is unaffected; those write to ~/.pi and are the
+agent's own tooling, not a self-update.
+
+--- a/dist/config.js	2026-08-11 19:52:24.365730728 +0200
++++ b/dist/config.js	2026-08-11 19:52:24.401734777 +0200
+@@ -39,6 +39,8 @@
+     };
+ }
+ export function detectInstallMethod() {
++    // openSUSE: this is a distribution package; never self-update.
++    return "unknown";
+     if (isBunBinary) {
+         return "bun-binary";
+     }

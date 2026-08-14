@@ -1,0 +1,22 @@
+-------------------------------------------------------------------
+Tue Aug 11 17:56:16 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package (version 0.84.1)
+- Self-updating is disabled via pi-disable-self-update.patch; pi is
+  installed under a node_modules path, so upstream would otherwise
+  detect an npm install and run "npm install -g" over the files owned
+  by this package. Extension, skill and model management (pi install,
+  pi remove, pi list, pi update --extensions/--models) is unaffected
+  and still writes to ~/.pi
+- Drop the doom-overlay example: its doom.wasm and doom.js are built
+  from doomgeneric, derived from the GPL-2.0 id Software Doom sources,
+  and the complete corresponding source is not included; the extension
+  also downloads a non-redistributable shareware WAD on first run
+- Drop prebuilt binaries that carry no corresponding source: the darwin
+  and win32 addons in @earendil-works/pi-tui, which are never loaded on
+  Linux, and the photon-node WebAssembly blob, which is loaded lazily
+  and only powers image conversion
+- Drop source maps, TypeScript declarations and documentation
+  screenshots, none of which are useful at runtime
+- Ship the example extensions in a separate subpackage
+

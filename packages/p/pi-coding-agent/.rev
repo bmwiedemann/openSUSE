@@ -1,0 +1,75 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c06de0363d78efb9d930bc2934072283</srcmd5>
+    <version>0.84.1</version>
+    <time>1786737887</time>
+    <user>anag_factory</user>
+    <comment>New package: pi-coding-agent 0.84.1
+
+pi is a terminal coding agent (https://github.com/earendil-works/pi), MIT,
+published on npm as @earendil-works/pi-coding-agent. It is extended with
+TypeScript extensions, skills, prompt templates and themes rather than by
+forking, and runs in interactive, print/JSON, RPC and SDK modes.
+
+Packaging follows the house node_modules pattern used by gen-ai: the npm
+tarball plus a node_modules source service that pins all 143 runtime
+dependencies as individual Source: lines with SHA512 sums, installed offline
+at build time by local-npm-registry. dist/ is shipped prebuilt by upstream,
+so nothing is compiled and no network is used.
+
+Please note two things a reviewer will want to weigh:
+
+  - Conflicts: cln. Upstream's binary is called &quot;pi&quot;, and /usr/bin/pi is
+    already owned by cln, which compiles an unrelated Archimedes' constant
+    demo from its own pi.cc in %build and installs it next to libcln.so.
+    Upstream cln's &quot;make install&quot; does not ship that binary, so the durable
+    fix is probably for cln to move it into a subpackage -- I am happy to
+    raise that with its maintainer and narrow this to a versioned Conflicts
+    afterwards. cln's only reverse dependencies are ginac/libginac13. Fedora
+    ships this same software alongside cln with no Conflicts declared at all,
+    which I did not want to copy.
+
+  - Self-updating is patched out. pi installs under a node_modules path, so
+    detectInstallMethod() would return &quot;npm&quot; and &quot;pi update&quot; would run
+    &quot;npm install -g&quot; over the files owned by this package. The patch returns
+    upstream's own &quot;unknown&quot; sentinel, which makes getSelfUpdateCommand()
+    return undefined and takes upstream's existing refusal path. Extension,
+    skill and model management (pi install/remove/list, pi update
+    --extensions/--models) is untouched and still writes to ~/.pi.
+
+Content removed, with reasons:
+
+  - examples/extensions/doom-overlay: doom.wasm and doom.js are Emscripten
+    builds of doomgeneric, derived from the GPL-2.0 id Software Doom sources.
+    The complete corresponding source is not in the package, and the
+    extension downloads a non-redistributable shareware WAD on first run.
+  - @earendil-works/pi-tui/native: prebuilt darwin and win32 .node addons,
+    never loaded on Linux, no corresponding source.
+  - @silvia-odwyer/photon-node's WebAssembly blob: prebuilt, no source. It is
+    loaded lazily behind a try/catch and only powers image conversion.
+  - @mariozechner/clipboard: resolves to a per-architecture prebuilt .node
+    addon, which would make a noarch package's payload differ by build host.
+    It is an optionalDependency and pi falls back to xclip and
+    wl-copy/wl-paste, which are Recommends.
+  - Source maps, TypeScript declarations and documentation screenshots.
+
+The License tag is the union over pi itself and all 143 vendored
+dependencies: MIT (69), Apache-2.0 (47), BSD-3-Clause (13), ISC (8),
+BlueOak-1.0.0 (5) and 0BSD (1). Every dependency declares a license. The npm
+tarball ships no license file, so LICENSE is taken from the v0.84.1 git tag.
+
+docs/ stays in the main package rather than a -doc subpackage because pi
+resolves it at runtime via getDocsPath(); the example extensions are split
+into pi-coding-agent-examples.
+
+Verified on aarch64: build green, rpmlint 0 errors / 0 warnings / 0 badness,
+and %check asserts &quot;pi --version&quot; equals the packaged version (--help is
+deliberately not used, as it loads user extensions). Both RPMs were also
+installed in a clean Tumbleweed container, where /usr/bin/pi resolves and
+runs as a non-root user without writing anything under /usr, the examples
+subpackage contains no doom content, and the self-update path was asserted
+dead: detectInstallMethod() returns &quot;unknown&quot; and getSelfUpdateCommand()
+returns undefined.</comment>
+    <requestid>1370734</requestid>
+  </revision>
+</revisionlist>
