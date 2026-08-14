@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Aug 13 07:52:42 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.43.5
+  * support opaque etags by @TingDaoK in (#664)
+  * Combine per-part CRCs for whole-object download checksum
+    validation by @TingDaoK in (#663)
+- from version 0.43.4
+  * Use latest as aws-crt-builder version by @sfod in (#660)
+  * fix resume token build by @TingDaoK in (#661)
+  * Fixing a typo that breaks a public API, but it only released
+    2 days ago and no downstream picks up the latest change.
+
+-------------------------------------------------------------------
 Tue Aug  4 08:50:56 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.43.3
