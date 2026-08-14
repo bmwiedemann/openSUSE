@@ -27,11 +27,11 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-cloud-spanner%{psuffix}
-Version:        3.69.0
+Version:        3.69.1
 Release:        0
 Summary:        Google Cloud Spanner API client library
 License:        Apache-2.0
-URL:            https://github.com/googleapis/python-spanner
+URL:            https://github.com/googleapis/google-cloud-python/tree/main/packages/google-cloud-spanner
 Source:         https://files.pythonhosted.org/packages/source/g/google_cloud_spanner/google_cloud_spanner-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -41,6 +41,8 @@ BuildRequires:  python-rpm-macros
 %if %{with test}
 BuildRequires:  %{python_module google-cloud-monitoring >= 2.16.0}
 BuildRequires:  %{python_module google-cloud-spanner = %{version}}
+BuildRequires:  %{python_module grpcio >= 1.59.0 if %python-base < 3.14}
+BuildRequires:  %{python_module grpcio >= 1.75.1 if %python-base >= 3.14}
 BuildRequires:  %{python_module mmh3 >= 4.1.0}
 BuildRequires:  %{python_module opentelemetry-api >= 1.22.0}
 BuildRequires:  %{python_module opentelemetry-resourcedetector-gcp >= 1.8.0a0}
@@ -51,7 +53,12 @@ BuildRequires:  %{python_module pytest}
 %endif
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-google-api-core >= 1.34.0
+%if %python_version_nodots < 314
+Requires:       python-grpcio >= 1.59.0
+%else
+Requires:       python-grpcio >= 1.75.1
+%endif
+Requires:       python-google-api-core >= 2.25.0
 Requires:       python-google-cloud-core >= 1.4.4
 Requires:       python-grpc-google-iam-v1 >= 0.12.4
 Requires:       python-grpc-interceptor >= 0.15.4
@@ -100,7 +107,8 @@ cat > $HOME/.config/gcloud/application_default_credentials.json <<EOF
 }
 EOF
 export GOOGLE_CLOUD_PROJECT="PROJECT"
-%pytest -x tests/unit
+# see: https://github.com/googleapis/google-cloud-python/issues/18117
+%pytest -x tests/unit -k "not test_spanner_api_experimental_host"
 %endif
 
 %if %{without test}
