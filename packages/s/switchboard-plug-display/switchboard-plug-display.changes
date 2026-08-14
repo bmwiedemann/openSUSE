@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug 13 09:22:43 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 8.0.3:
+  + DisplaysView: fix deprecated Granite style class constant
+  + Update for Meson 0.58.0
+  + Apply scaling to virtual monitor reported size
+  + ScaleDropDown: Provide a Gtk.Expression instead of a custom factory
+
+-------------------------------------------------------------------
 Sat Aug 16 20:57:46 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to version 8.0.2:

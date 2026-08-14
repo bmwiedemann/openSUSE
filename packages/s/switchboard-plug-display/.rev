@@ -23,4 +23,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1301208</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bdea7a0689212ad4c59eb0ecfa963b3a</srcmd5>
+    <version>8.0.3</version>
+    <time>1786738005</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 8.0.3:
+  + DisplaysView: fix deprecated Granite style class constant
+  + Update for Meson 0.58.0
+  + Apply scaling to virtual monitor reported size
+  + ScaleDropDown: Provide a Gtk.Expression instead of a custom factory (forwarded request 1370996 from rrahl0)</comment>
+    <requestid>1370997</requestid>
+  </revision>
 </revisionlist>
