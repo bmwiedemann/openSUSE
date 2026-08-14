@@ -19,13 +19,13 @@
 %global _name openrgb
 
 Name:           OpenRGB
-Version:        1.0~rc2+git32.gda9a96e3
+Version:        1.0~rc3+git13.g1e1fb098
 Release:        0%{?dist}
 Summary:        Open source RGB lighting control
 License:        GPL-2.0-or-later
 URL:            https://gitlab.com/CalcProgrammer1/OpenRGB
 Source0:        %{name}-%{version}.tar.gz
-Source1:        openrgb.conf
+Source1:        openrgb-modules.conf
 Source2:        openrgb-udev.conf
 # Restrict i2c access and remove /dev/port permissions (bsc#1215130)
 Patch0:         OpenRGB-udev-i2c-use-group.patch
@@ -89,8 +89,10 @@ This package contains the systemd unit for OpenRGB.
 
 %install
 %make_install INSTALL_ROOT=%{buildroot}
-install -D -m 0644 %{SOURCE1} %{buildroot}%{_modulesloaddir}/%{_name}.conf
+install -D -m 0644 %{SOURCE1} %{buildroot}%{_modulesloaddir}/%{_name}-modules.conf
 install -D -m 0644 -t %{buildroot}%{_sysusersdir} %{SOURCE2}
+# Create config directory for openrgb.service (--config /etc/openrgb)
+mkdir -p %{buildroot}%{_sysconfdir}/openrgb
 
 %check
 appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.xml
@@ -132,6 +134,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/*.desktop
 %files systemd-unit
 %dir %{_modulesloaddir}
 %{_unitdir}/%{_name}.service
-%{_modulesloaddir}/%{_name}.conf
+%{_modulesloaddir}/%{_name}-modules.conf
+# Config directory used by openrgb.service (--config /etc/openrgb); created via tmpfiles.d
+%{_prefix}/lib/tmpfiles.d/%{_name}.conf
+%dir %{_sysconfdir}/openrgb
 
 %changelog

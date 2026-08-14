@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jul  6 01:49:52 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Update to 1.0~rc3+git13
+  * Commit history can be found at: https://gitlab.com/CalcProgrammer1/OpenRGB/-/commits/release_candidate_1.0rc3?ref_type=tags
+- Fix unpackaged tmpfiles.d file: OpenRGB's qmake build installs
+  %{_prefix}/lib/tmpfiles.d/%{_name}.conf (creates /etc/openrgb),
+  which was not claimed in any %files section
+- Package /etc/openrgb config directory in systemd-unit subpackage,
+  used by openrgb.service via --config /etc/openrgb
+- Rename openrgb.conf modules-load.d file to
+  openrgb-modules.conf for clarity (distinguishes it from
+  upstream's tmpfiles.d openrgb.conf)
+
+-------------------------------------------------------------------
 Thu Jun 18 00:04:42 UTC 2026 - pallas wept <pallaswept@proton.me>
 
 - Build against mbedtls 2.x to avoid build failures with mbedtls 4.x

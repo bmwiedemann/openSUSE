@@ -4,8 +4,8 @@
      <param name="scm">git</param>
      <param name="revision">master</param>
      <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@.g%h</param>
-     <param name="versionrewrite-pattern">release_candidate_1.0rc2?(.*)</param>
-     <param name="versionrewrite-replacement">1.0~rc2\1</param>
+     <param name="versionrewrite-pattern">release_candidate_1.0rc3?(.*)</param>
+     <param name="versionrewrite-replacement">1.0~rc3\1</param>
      <param name="package-meta">yes</param>
   </service>
   <service mode="manual" name="recompress">
