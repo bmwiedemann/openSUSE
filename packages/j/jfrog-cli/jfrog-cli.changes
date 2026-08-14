@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Thu Aug 13 06:11:48 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.120.0:
+  * New Features
+    - [build-info-go] RTECO-945: Add Alpine APK build-info
+      collection support #398
+    - [jfrog-cli] Append Client → Agent → Model tokens to the CLI
+      User-Agent #3645
+    - [jfrog-cli] Added Post Failure Run support for uv #3654
+    - [jfrog-cli] Add QA section to AI descriptions for
+      permission-target, users, groups, transfer, and config
+      commands #3656
+    - [jfrog-cli-artifactory] Add QA section to AI descriptions for
+      repository, build-info, and generic transfer commands #530
+    - [jfrog-cli-artifactory] RTECO-945: Add Alpine APK command
+      support
+    - [jfrog-cli-core] Add Client → Agent → Model identity for
+      telemetry and User-Agent #1602
+    - [jfrog-cli-core] RTECO-945: Add Apk to ProjectType enum for
+      jf setup apk support #1584
+  * Bug Fixes
+    - [build-info-go] XRAY-157605 Use the real package name for
+      aliased npm dependencies #411
+    - [jfrog-cli] fix/setup vscode command failing with url and
+      repo key- #527 #3638
+    - [jfrog-cli-artifactory] fix/setup vscode command failing with
+      url and repo key #527
+    - [jfrog-cli-security] XRAY-157605 Use the real package name
+      for aliased pnpm dependencies #841
+    - [jfrog-cli-security] Fix incorrect WD in rollback mechanism
+      for npm and pnpm #842
+    - [jfrog-cli-security] Fix - audit without gradle test
+      configurations #839
+  * Internal Changes
+    - [jfrog-cli-security] Update dependencies #844
+  * Other Changes
+    - [jfrog-cli] XRAY-157605 Use the real package name for aliased
+      npm dependencies #3653
+    - [jfrog-cli] RTECO-945: Wire jf apk commands and e2e tests
+      #3561
+    - [jfrog-cli-artifactory] Uv update error output handling #506
+    - [jfrog-client-go] Missconfiguration service #1352
+    - [jfrog-client-go] adding fields to
+      XscAnalyticsGeneralEventFinalize #1372
+
+-------------------------------------------------------------------
 Mon Aug 10 05:02:35 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.119.0:
