@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 12 13:27:05 UTC 2026 - Fabian Vogt <fvogt@suse.com>
+
+- Add 8021q (bsc#1274833)
+
+-------------------------------------------------------------------
 Wed Jul 16 14:18:31 UTC 2025 - Fabian Vogt <fvogt@suse.com>
 
 - Add modules for confidential compute (bsc#1246502)

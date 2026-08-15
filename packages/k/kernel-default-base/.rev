@@ -281,4 +281,12 @@
     <comment></comment>
     <requestid>1293835</requestid>
   </revision>
+  <revision rev="36" vrev="36">
+    <srcmd5>617712c32cfe6ab07482a02870c6a3f8</srcmd5>
+    <version>MACRO</version>
+    <time>1786826417</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 8021q (bsc#1274833)</comment>
+    <requestid>1371024</requestid>
+  </revision>
 </revisionlist>
