@@ -81,4 +81,12 @@ passed (up from 261; the new ones are the compatibility-shim tests), same
 7 deselected / 4 xfailed as before, rpmlint 0 errors 0 warnings 0 badness.</comment>
     <requestid>1371166</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>475679f39e96a6c6db5b3ff54d95c139</srcmd5>
+    <version>1.5.1</version>
+    <time>1786826473</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.5.1. Also re-enables the chat-model unit test module that was fully ignored for a single function-level langchain-tests import; 503 tests pass per flavour, rpmlint 0 badness.</comment>
+    <requestid>1371289</requestid>
+  </revision>
 </revisionlist>

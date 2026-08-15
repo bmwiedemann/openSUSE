@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Aug 15 05:46:04 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.5.1:
+  * Preserve streamed encrypted reasoning: the encrypted_content of a
+    reasoning item is now emitted once, from the Responses API
+    response.output_item.done event, instead of being concatenated
+    with the incomplete value carried by the preceding
+    response.output_item.added event, which produced a doubled and
+    therefore unusable string
+  * Stop echoing reasoning blocks back to the Responses API when
+    their encrypted_content is present but empty
+- Run the bulk of the chat-model unit tests during %check: the whole
+  tests/unit_tests/chat_models/test_base.py module was skipped even
+  though only one of its tests needs python-langchain-tests (not in
+  Factory); it is now collected, with that one test and the two
+  token-counting test functions that would download a tiktoken BPE
+  encoding deselected instead
+
+-------------------------------------------------------------------
 Fri Aug 14 07:30:32 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.5.0:

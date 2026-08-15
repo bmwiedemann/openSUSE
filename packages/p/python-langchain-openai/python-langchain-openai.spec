@@ -17,7 +17,7 @@
 
 
 Name:           python-langchain-openai
-Version:        1.5.0
+Version:        1.5.1
 Release:        0
 Summary:        An integration package connecting OpenAI and LangChain
 License:        MIT
@@ -66,15 +66,16 @@ rm tests/conftest.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# The standard-test bridge modules (test_*_standard.py), test_base, the
-# responses streaming tests and the moderation-middleware test need
-# python-langchain-tests / python-langchain (not in Factory); the remaining
+# The standard-test bridge modules (test_*_standard.py), the responses
+# streaming tests and the moderation-middleware test need
+# python-langchain-tests / python-langchain (not in Factory), as does the
+# single deselected test_openai_stream_events_v3_lifecycle; the remaining
 # unit tests run fully offline. addopts is cleared to drop the --cov default
 # (pytest-cov is not needed for the build). The deselected token-counting
 # tests call tiktoken with a model whose BPE encoding is not bundled, so
 # tiktoken tries to download it from openaipublic.blob.core.windows.net,
 # which fails in the offline build.
-%pytest tests/unit_tests -o addopts='' --ignore tests/unit_tests/embeddings/test_azure_standard.py --ignore tests/unit_tests/embeddings/test_base_standard.py --ignore tests/unit_tests/chat_models/test_azure_standard.py --ignore tests/unit_tests/chat_models/test_base.py --ignore tests/unit_tests/chat_models/test_base_standard.py --ignore tests/unit_tests/chat_models/test_responses_standard.py --ignore tests/unit_tests/chat_models/test_responses_stream.py --ignore tests/unit_tests/middleware/test_openai_moderation_middleware.py --deselect tests/unit_tests/embeddings/test_base.py::test_embed_documents_with_custom_chunk_size --deselect tests/unit_tests/embeddings/test_base.py::test_embeddings_respects_token_limit --deselect "tests/unit_tests/llms/test_base.py::test_get_token_ids[gpt-3.5-turbo-instruct]" --deselect "tests/unit_tests/test_token_counts.py::test_chat_openai_get_num_tokens[gpt-5.5]" --deselect "tests/unit_tests/test_token_counts.py::test_chat_openai_get_num_tokens[gpt-5-nano]" --deselect "tests/unit_tests/test_token_counts.py::test_chat_openai_get_num_tokens[o3]"
+%pytest tests/unit_tests -o addopts='' --ignore tests/unit_tests/embeddings/test_azure_standard.py --ignore tests/unit_tests/embeddings/test_base_standard.py --ignore tests/unit_tests/chat_models/test_azure_standard.py --ignore tests/unit_tests/chat_models/test_base_standard.py --ignore tests/unit_tests/chat_models/test_responses_standard.py --ignore tests/unit_tests/chat_models/test_responses_stream.py --ignore tests/unit_tests/middleware/test_openai_moderation_middleware.py --deselect tests/unit_tests/chat_models/test_base.py::test_openai_stream_events_v3_lifecycle --deselect tests/unit_tests/chat_models/test_base.py::test__get_encoding_model --deselect tests/unit_tests/chat_models/test_base.py::test_get_num_tokens_from_messages --deselect tests/unit_tests/embeddings/test_base.py::test_embed_documents_with_custom_chunk_size --deselect tests/unit_tests/embeddings/test_base.py::test_embeddings_respects_token_limit --deselect "tests/unit_tests/llms/test_base.py::test_get_token_ids[gpt-3.5-turbo-instruct]" --deselect "tests/unit_tests/test_token_counts.py::test_chat_openai_get_num_tokens[gpt-5.5]" --deselect "tests/unit_tests/test_token_counts.py::test_chat_openai_get_num_tokens[gpt-5-nano]" --deselect "tests/unit_tests/test_token_counts.py::test_chat_openai_get_num_tokens[o3]"
 # Recompile the installed modules as hash-based bytecode: the timestamp-based
 # .pyc desync from the reproducibility-clamped .py mtimes and trip
 # python-bytecode-inconsistent-mtime.
