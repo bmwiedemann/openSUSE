@@ -46,6 +46,8 @@ Patch8:         CVE-2026-58471.patch
 Patch9:         CVE-2026-58472.patch
 #PATCH-FIX-UPSTREAM commit 4f85853f641863d5915786a8413e1a213726a62b
 Patch10:        CVE-2026-15146.patch
+#PATCH-FIX-UPSTREAM commit aaf77cb98e4c7ba4d775923444e5f0d93ae0e5d3
+Patch11:        Fix-segfault-in-retrieve_from_metalink-when-a-metalink.patch
 BuildRequires:  makeinfo
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  pkgconfig(gpgme) >= 0.4.2

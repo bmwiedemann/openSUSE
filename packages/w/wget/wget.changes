@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 12 14:05:01 UTC 2026 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Fix segmentation fault in metalink4, bsc#1273449
+  * Fix-segfault-in-retrieve_from_metalink-when-a-metalink.patch
+
+-------------------------------------------------------------------
 Wed Jul 22 10:31:44 UTC 2026 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - Fix metalink regression from CVE-2026-58469 fix
