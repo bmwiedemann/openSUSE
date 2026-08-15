@@ -17,7 +17,7 @@
 
 
 Name:           gap-grpconst
-Version:        2.6.6
+Version:        2.7.0
 Release:        0
 Summary:        GAP: Group construction of a given order
 License:        GPL-2.0-only
@@ -27,7 +27,7 @@ URL:            https://gap-packages.github.io/grpconst/
 Source:         https://github.com/gap-packages/grpconst/releases/download/v%version/grpconst-%version.tar.gz
 BuildRequires:  gap-rpm-devel
 Requires:       gap-autpgrp >= 1.6
-Requires:       gap-core >= 4.7
+Requires:       gap-core >= 4.11
 Requires:       gap-irredsol >= 1.2
 Requires:       gap-smallgrp >= 1.4
 
