@@ -1,4 +1,136 @@
 -------------------------------------------------------------------
+Sun Aug  9 22:30:32 UTC 2026 - C Aasted <dezzadk@gmail.com>
+
+- gvim.desktop: Remove deprecated values
+
+-------------------------------------------------------------------
+Mon Aug  3 13:52:16 UTC 2026 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Update to 9.2.0901:
+  9.2.0781: tests: Test_fuzzy_completion_bufname_fullpath() creates unnecessary dir
+  9.2.0782: tests: missing cleanup in test_mksession.vim
+  9.2.0783: tests: personal spell files leak into later tests
+  9.2.0784: crash when borrowing statusline highlight in silent Ex mode
+  9.2.0785: WinResized not triggered when the whole Vim is resized
+  9.2.0786: filetype: Containerfile is not recognized
+  9.2.0787: regexp: code 0x1ecb duplicated for equivalence class
+  9.2.0788: filetype: hip files are not recognized
+  9.2.0789: 'statuslineopt' status line too high after a window is minimized
+  9.2.0790: 'completeslash' breaks :find completion with 'findfunc'
+  9.2.0791: wincol() counts from right side for 'rightleft'
+  9.2.0792: runtime(netrw): Explore without optional dir broken
+  9.2.0793: If session restored a tiny window, restore fails
+  9.2.0794: extend() and extendnew() don't handle NULL expr2 properly
+  9.2.0795: popup menu shadow is not cleared when the menu shrinks
+  9.2.0796: Visual block reselection wrong with 'virtualedit'
+  9.2.0797: Memory leak in get_qfline_items() on alloc failure
+  9.2.0798: Memory leak in compile_expr6() on alloc failure
+  9.2.0799: Memory leak in compile_def_function_body() on alloc failure
+  9.2.0800: Memory leak in call_func() on alloc failure
+  9.2.0801: Memory leak in f_getreginfo() on alloc failure
+  9.2.0802: Memory leak with list_append_dict/dict_add_list on alloc failure
+  9.2.0803: Memory leak on alloc failure with taglist/gettagstack()
+  9.2.0804: wincol() is wrong for a double-wide character with 'rightleft'
+  9.2.0805: screenpos() "curscol" is wrong with 'rightleft'
+  9.2.0806: 'showcmd' may show internal command keys
+  9.2.0807: MS-Windows: ellipsis character is garbled
+  9.2.0808: getregionpos: double-free on alloc failure
+  9.2.0809: getframelayout() uses wrong function to free lists
+  9.2.0810: add_llist_tags() uses wrong function to free dict
+  9.2.0811: mksession writes terminal command unquoted
+  9.2.0812: :argdelete with pattern leads to wrong argidx()
+  9.2.0813: dict_add_func() may corrupt funcref count on failure
+  9.2.0814: Vim9: E1041 when reloading an autoload script with exported variables
+  9.2.0815: deeply nested regexp patterns may cause stack overflow
+  9.2.0816: GTK4: Memory leak in gui_gtk_set_dnd_targets()
+  9.2.0817: crash when building a stacktrace during an autocommand
+  9.2.0818: tests: client-server test fails without X11 server
+  9.2.0819: MS-Windows: sixel image shown as raw text in the console
+  9.2.0820: GUI: hidden popup image is displayed and not erased
+  9.2.0821: filetype: msmtp system-wide rc file not detected
+  9.2.0822: GTK4: crash menu id is null in gui_mch_destroy_menu()
+  9.2.0823: tests: Test_clientserver_servlist_list may fail
+  9.2.0824: Makefile: Make tags depends on configure
+  9.2.0825: regexp: submatch in a look-behind is empty with the NFA engine
+  9.2.0826: highlighting for broken terminals can be improved
+  9.2.0827: :startinsert enters Insert mode in a non-modifiable buffer
+  9.2.0828: GTK4: hardware rendering can be improved
+  9.2.0829: Sessions do not preserve script version for expression options
+  9.2.0830: the completion menu is not used on terminals without colors
+  9.2.0831: diff highlighting hard to read with syntax enabled
+  9.2.0832: socketserver: remote commands can be processed in reverse order
+  9.2.0833: GTK4: menu mnemonics do not work properly
+  9.2.0834: cleared last search pattern is restored from viminfo
+  9.2.0835: features in version.c are not sorted
+  9.2.0836: filetype: .git-blame-ignore-revs file is not recognized
+  9.2.0837: Using wrong colors in hl_blend_attr()
+  9.2.0838: searchcount() returns wrong cached maxcount
+  9.2.0839: [security]: arbitrary code execution via keyword lookup
+  9.2.0840: [security]: code injection in netrw via bookmarks
+  9.2.0841: [security]: heap overflow when adding > 65535 text properties
+  9.2.0842: [security]: stack buffer overflow in socket server
+  9.2.0843: [security]: popup: opacity mask indexed out of bounds
+  9.2.0844: [security]: use-after-free on json decode error
+  9.2.0845: [security]: arbitrary Ex command execution during C omni-completion
+  9.2.0846: [security]: heap buffer overflow in set_sofo()
+  9.2.0847: [security]: vimball: code execution via .VimballRecord file
+  9.2.0848: tagfunc "cmd" with a generic Ex command corrupts the tag entry
+  9.2.0849: filetype: osquery config files are not recognized
+  9.2.0850: MS-Windows: commands from a client can be lost
+  9.2.0851: Focus autocommands triggered inconsistently
+  9.2.0852: GTK: ligatures not correctly displayed
+  9.2.0853: popup: popup images do not support scaling
+  9.2.0854: memory leak when reading a spell file with SN_SAL and SN_SOFO
+  9.2.0855: 'showcmd' not redrawn with empty mapping triggered on timeout
+  9.2.0856: GTK4: undercurl rendering is inefficient
+  9.2.0857: popup: opacity popup over a terminal is not cleared when closed
+  9.2.0858: MS-Windows GUI: white flash when VimEnter is slow
+  9.2.0859: GTK2: Link error
+  9.2.0860: filetype: xilinx design constraint files are not recognized
+  9.2.0861: GTK4: bleed region updates in jumps
+  9.2.0862: Missing test change from v9.2.0857
+  9.2.0863: MS-Windows GUI: window contents can be missing when VimEnter is slow
+  9.2.0864: Using some dead code in Wayland feature
+  9.2.0865: GTK4: non-hardware accelerated UI is too slow
+  9.2.0866: MS-Windows: ":language messages" only works once
+  9.2.0867: MS-Windows: messages are not in the display language
+  9.2.0868: GTK: Window Manager hint prevents giving focus to dialog
+  9.2.0869: buf_copy_options() can lose the P_INSECURE flag
+  9.2.0870: filetype: marko files are not recognized
+  9.2.0871: screen line is lost when splitting a 'winfixheight' window
+  9.2.0872: popup with opacity does not use the font of the highlight group
+  9.2.0873: :redrawstatus does not update the ruler of the last window
+  9.2.0874: fold size is compared against 'foldminlines' of the wrong window
+  9.2.0875: GTK4: GUI does not support command-line arguments
+  9.2.0876: GTK4: compile error with disabled netbeans feat
+  9.2.0877: Vim9: crash when a closure assigns to a variable declared in a loop
+  9.2.0878: Vim9: cannot use a script variable of an enclosing block in a lambda
+  9.2.0879: popup: "maxwidth" is not respected when 'wrap' is off
+  9.2.0880: scroll: window scrolls when using the autocommand window
+  9.2.0881: 'smoothscroll' position is lost when the window height changes
+  9.2.0882: :bwipe crashes if WinLeave wipes all other buffers
+  9.2.0883: scroll: 'smoothscroll' position is lost when using "|"
+  9.2.0884: scroll: unreachable 'smoothscroll' code in cursor_correct()
+  9.2.0885: scroll: 'smoothscroll' position is lost when the window is squeezed
+  9.2.0886: :set completion works for an invalid sub-option name
+  9.2.0887: scroll: jump-scrolling when moving the cursor onto a wrapping line
+  9.2.0888: mapping: modifier is not recognized after a partial mapping
+  9.2.0889: VMS: spurious "INVALID DECC FEATURE VALUE" message at every startup
+  9.2.0890: test: test for patch v9.2.0888 can be clarified
+  9.2.0891: MS-Windows: filename-modifier ":8:t" causes underflow
+  9.2.0892: highlight: wrong column highlighted with 'cursorcolumn'
+  9.2.0893: MS-Windows: "*.vim" also matches files with a longer extension
+  9.2.0894: filetype: ed script files not recognised
+  9.2.0895: test: Test_aucmd_win_scroll_multibyte() is flaky in the GUI
+  9.2.0896: scroll: 'smoothscroll' position is lost when splitting a window
+  9.2.0896: textprop: wrong Tab size in a line with virtual text above it
+  9.2.0897: GTK3 X11 redraws are not coalesced
+  9.2.0898: printing support is lacking
+  9.2.0899: command output temporary files may collide
+  9.2.0900: FocusGained still triggered when closing dialog
+  9.2.0901: textprop: wrong cursor line with truncated virtual text
+
+-------------------------------------------------------------------
 Thu Jul 23 07:15:11 UTC 2026 - Christoffer Aasted <dezzadk@gmail.com>
 
 - Guard suse.vimrc against missing syntax without vim-data
