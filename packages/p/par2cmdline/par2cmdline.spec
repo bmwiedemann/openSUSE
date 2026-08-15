@@ -17,7 +17,7 @@
 
 
 Name:           par2cmdline
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        A PAR 2.0 compatible file creation, verification, and repair tool
 License:        GPL-2.0-or-later

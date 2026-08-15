@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Aug 15 18:15:28 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.3.0:
+  * Add a missing <locale> include in src/utf8.h, which could break
+    the build on standard library implementations that do not pull
+    it in transitively
+  * Printing performance tweaks: progress reporting was reworked
+    into a shared progress meter, reducing output overhead while
+    creating, verifying and repairing
+
+-------------------------------------------------------------------
 Tue Jun 16 20:56:04 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.2.0:
