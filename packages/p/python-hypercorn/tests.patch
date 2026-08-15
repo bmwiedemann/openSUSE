@@ -1,0 +1,35 @@
+From 9c1f350e2637cfa0287aad2ae9a5bfd003a1d248 Mon Sep 17 00:00:00 2001
+From: dongjiao <dongjiao@kylinos.cn>
+Date: Thu, 13 Aug 2026 10:54:51 +0800
+Subject: [PATCH] fix(tests): add :protocol pseudo-header for Extended CONNECT
+ in WebSocket tests
+
+---
+ tests/asyncio/test_sanity.py | 1 +
+ tests/trio/test_sanity.py    | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/tests/asyncio/test_sanity.py b/tests/asyncio/test_sanity.py
+index 0d1d0f9..e77e63f 100644
+--- a/tests/asyncio/test_sanity.py
++++ b/tests/asyncio/test_sanity.py
+@@ -203,6 +203,7 @@ async def test_http2_websocket() -> None:
+         stream_id,
+         [
+             (":method", "CONNECT"),
++            (":protocol", "websocket"),
+             (":path", "/"),
+             (":authority", "hypercorn"),
+             (":scheme", "https"),
+diff --git a/tests/trio/test_sanity.py b/tests/trio/test_sanity.py
+index 98387a2..42d7b39 100644
+--- a/tests/trio/test_sanity.py
++++ b/tests/trio/test_sanity.py
+@@ -175,6 +175,7 @@ async def test_http2_websocket(nursery: trio._core._run.Nursery) -> None:
+         stream_id,
+         [
+             (":method", "CONNECT"),
++            (":protocol", "websocket"),
+             (":path", "/"),
+             (":authority", "hypercorn"),
+             (":scheme", "https"),

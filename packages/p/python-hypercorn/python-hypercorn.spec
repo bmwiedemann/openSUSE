@@ -29,6 +29,8 @@ Summary:        A ASGI Server based on Hyper libraries and inspired by Gunicorn
 License:        MIT
 URL:            https://github.com/pgjones/hypercorn/
 Source:         https://github.com/pgjones/hypercorn/archive/refs/tags/%{version}.tar.gz
+# PATCH-FIX-UPSTREAM tests.patch gh#pgjones/hypercorn/pull/371
+Patch0:         tests.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module h11}
 BuildRequires:  %{python_module h2 >= 3.1.0}
