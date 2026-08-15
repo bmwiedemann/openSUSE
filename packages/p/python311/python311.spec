@@ -261,6 +261,9 @@ Patch56:        CVE-2026-7774-tarfile-data_filter-symlink.patch
 # PATCH-FIX-UPSTREAM CVE-2026-3276-On2-unicodedata-normalize.patch bsc#1267581 mcepl@suse.com
 # gh-149079: Fix O(n^2) canonical ordering in unicodedata.normalize()
 Patch57:        CVE-2026-3276-On2-unicodedata-normalize.patch
+# PATCH-FIX-UPSTREAM bsc1263083-http-cookies-atob-utf8.patch bsc#1263083 mcepl@suse.com
+# Use decodeURIComponent() for UTF-8 support in js_output()
+Patch58:        bsc1263083-http-cookies-atob-utf8.patch
 ### END OF PATCHES
 BuildRequires:  autoconf-archive
 BuildRequires:  automake

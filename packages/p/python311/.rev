@@ -1970,4 +1970,16 @@ CVE-2026-3276-On2-unicodedata-normalize.patch
   gh#python/cpython#149018).</comment>
     <requestid>1368927</requestid>
   </revision>
+  <revision rev="72" vrev="9">
+    <srcmd5>ca8096272f7c0e460ded0a6aecbb8c67</srcmd5>
+    <version>3.11.15</version>
+    <time>1786826430</time>
+    <user>dimstar_suse</user>
+    <comment>- noCVE: CVE-2026-6019 fix does not handle non-ascii chars correctly
+  (bsc#1263083) (internal SUSE bug so far, no CVE yet)
+  bsc1263083-http-cookies-atob-utf8.patch
+
+  CVE-2026-3276-On2-unicodedata-normalize.patch</comment>
+    <requestid>1371242</requestid>
+  </revision>
 </revisionlist>
