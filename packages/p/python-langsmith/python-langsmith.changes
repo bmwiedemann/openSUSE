@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Aug 14 16:23:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.11.0:
+  * Run inputs are no longer re-sent when patching a run: what
+    0.10.18 added as the opt-in LANGSMITH_EXCLUDE_INPUTS_ON_PATCH
+    is now the default. This is the behaviour change behind the
+    minor version bump
+  * Mask MCP server credentials in Anthropic wrapper traces, and
+    stop recording mcp_servers in Anthropic run metadata
+  * Add Context Hub mount helpers to the sandbox helpers
+  * Support proxy rule environment variables in the sandbox helpers
+  * Default zstd compression to a single worker thread
+  * Serialize through the pydantic core serializer directly,
+    skipping the orjson key checks
+  * Fix the default Dockerfile snapshot capacity
+
+-------------------------------------------------------------------
 Wed Aug 12 05:18:46 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.10.18:

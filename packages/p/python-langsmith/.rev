@@ -185,4 +185,38 @@ Verified on aarch64: build green, 432 tests passed and 7 deselected on each
 of python313 and python314, rpmlint 0 errors / 0 warnings / 0 badness.</comment>
     <requestid>1370779</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>7236edf215b861d1917a692edd1a9daa</srcmd5>
+    <version>0.11.0</version>
+    <time>1786826445</time>
+    <user>dimstar_suse</user>
+    <comment>Update python-langsmith to 0.11.0.
+
+The minor version bump is a behaviour change, not just a feature release:
+run inputs are no longer re-sent when patching a run. 0.10.18 added that
+as the opt-in LANGSMITH_EXCLUDE_INPUTS_ON_PATCH; 0.11.0 makes it the
+default.
+
+Also in this release: MCP server credentials are masked in the Anthropic
+wrapper traces and mcp_servers is no longer recorded in Anthropic run
+metadata; Context Hub mount helpers and proxy-rule environment variable
+support in the sandbox helpers; zstd compression defaults to a single
+worker thread; and serialization goes through the pydantic core
+serializer directly.
+
+Dependencies are unchanged - pyproject.toml is byte-identical to 0.10.18.
+The Python 3.14 iscoroutinefunction patch is still required and still
+applies; upstream has not taken gh#langchain-ai/langsmith-sdk#3347 yet.
+
+The three open CVE bugs against this package are already cited in an
+earlier changelog entry, so they are not repeated here. For the record
+they remain not-affected at this version: CVE-2026-41182 is fixed from
+0.7.31, CVE-2026-45134 from 0.8.0, and CVE-2026-40190 has no pip
+component at all - it is an npm-only advisory.
+
+Built locally on aarch64: 432 tests pass on both python313 and python314,
+rpmlint reports 0 errors, 0 warnings and 0 badness.
+</comment>
+    <requestid>1371243</requestid>
+  </revision>
 </revisionlist>
