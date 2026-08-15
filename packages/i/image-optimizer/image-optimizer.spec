@@ -18,7 +18,7 @@
 
 %define         appid com.github.gijsgoudzwaard.image-optimizer
 Name:           image-optimizer
-Version:        0.3.0
+Version:        0.5.0
 Release:        0
 Summary:        Simple lossless image compression
 License:        GPL-3.0-or-later
@@ -62,7 +62,6 @@ chmod -x %{buildroot}%{_datadir}/icons/hicolor/*/apps/%{appid}.svg
 %{_datadir}/applications/%{appid}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{appid}.svg
 %{_datadir}/metainfo/%{appid}.appdata.xml
-
 
 %files lang -f %{appid}.lang
 
