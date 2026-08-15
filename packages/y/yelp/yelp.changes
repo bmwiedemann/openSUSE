@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug 10 10:35:12 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 49.2:
+  + Fixed build issue caused by direct inclusion of a GDK header
+  + Fixed typo in the metainfo data
+  + Fixed compiler warning caused by unused return value
+  + Removed a duplicate key in the Flatpak manifest
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Jun 12 07:59:03 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 49.1+3:

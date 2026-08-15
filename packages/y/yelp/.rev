@@ -990,4 +990,17 @@
   + Updated translations.</comment>
     <requestid>1361063</requestid>
   </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>c0fdba4d964c5a067dc160e8a8ba20d3</srcmd5>
+    <version>49.2</version>
+    <time>1786826409</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 49.2:
+  + Fixed build issue caused by direct inclusion of a GDK header
+  + Fixed typo in the metainfo data
+  + Fixed compiler warning caused by unused return value
+  + Removed a duplicate key in the Flatpak manifest
+  + Updated translations.</comment>
+    <requestid>1370958</requestid>
+  </revision>
 </revisionlist>
