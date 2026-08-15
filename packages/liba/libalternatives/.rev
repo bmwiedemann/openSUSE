@@ -89,4 +89,27 @@
     <comment></comment>
     <requestid>1268418</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6acba16d44e177005c97ecb71a178f17</srcmd5>
+    <version>2.0+0.4f22c01</version>
+    <time>1786826370</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version v2.0+0.4f22c01:
+  * add missing test
+  * Capture saved_errno correctly
+  * Check for null pointer
+  * reset argv0 to original if execve() fails
+  * Clarify value of argv0
+  * Return errno from failed exec()
+  * Use basename for argv[0] resolution
+  * Update unit test
+  * Document behaviour changes - KeepArgv0 is default
+  * Correct pointer in corner case
+  * Add UpdateArgv0 option
+  * Clarify priority as increasing with integer size
+- Functionality change: KeepArgv0 is default option unless 
+  another is specified. Functionality should now be same as with
+  symlinks (bsc#1262785)</comment>
+    <requestid>1371067</requestid>
+  </revision>
 </revisionlist>

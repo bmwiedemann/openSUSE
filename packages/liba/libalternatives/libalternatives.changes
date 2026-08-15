@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Aug 13 16:12:39 UTC 2026 - Adam Majer <adam.majer@suse.de>
+
+- Update to version v2.0+0.4f22c01:
+  * add missing test
+  * Capture saved_errno correctly
+  * Check for null pointer
+  * reset argv0 to original if execve() fails
+  * Clarify value of argv0
+  * Return errno from failed exec()
+  * Use basename for argv[0] resolution
+  * Update unit test
+  * Document behaviour changes - KeepArgv0 is default
+  * Correct pointer in corner case
+  * Add UpdateArgv0 option
+  * Clarify priority as increasing with integer size
+
+- Functionality change: KeepArgv0 is default option unless 
+  another is specified. Functionality should now be same as with
+  symlinks (bsc#1262785)
+
+-------------------------------------------------------------------
 Fri Mar 28 16:54:45 UTC 2025 - dmueller@suse.com
 
 - Update to version v1.2+31.da24cd4:

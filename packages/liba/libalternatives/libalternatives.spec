@@ -1,7 +1,7 @@
 #
 # spec file for package libalternatives
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define sover 1
 
 Name:           libalternatives
-Version:        1.2+31.da24cd4
+Version:        2.0+0.4f22c01
 Release:        0
 Summary:        Helper for executing preferred application based on user preferences
 License:        Apache-2.0
