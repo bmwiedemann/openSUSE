@@ -386,4 +386,31 @@
   * dump.exfat: prevent heap buffer overflow in name parsing.</comment>
     <requestid>1359352</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>61470f826d0313291691177ae0115949</srcmd5>
+    <version>1.4.3</version>
+    <time>1786826380</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.3:
+  Changes:
+  * exfatprogs: honor the user's full locale for diagnostic messages
+    and date formatting.
+  * mkfs.exfat: report final fsync errors and suppress completion
+    messages with &quot;-q&quot;.
+  * fsck.exfat: increase scan speed when scanning large unused
+    directory tails.
+  Bug fixes:
+  * exfatprogs: fix building DOS attribute utilities with non-Bash shells.
+  * dump.exfat and fsck.exfat: ignore reserved allocation-bitmap bits
+    when counting clusters.
+  * fsck.exfat: reject invalid sector sizes without crashing.
+  * mkfs.exfat: notify the kernel after creating partition tables.
+  * mkfs.exfat: generate GUIDs with correct version and variant fields.
+  * mkfs.exfat and tune.exfat: use standard GUID byte order for GUID
+    input and output.
+  * libexfat: fix directory iterator alignment for large offsets.
+  * exfatprogs: prevent allocation bitmap size overflow near the
+    maximum cluster count.</comment>
+    <requestid>1371161</requestid>
+  </revision>
 </revisionlist>
