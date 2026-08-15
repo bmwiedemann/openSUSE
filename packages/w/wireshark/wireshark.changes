@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Aug 13 07:45:34 UTC 2026 - Robert Frohl <rfrohl@suse.com>
+
+- Wireshark 4.6.8
+  * sharkd crash.
+  * sharkd crash.
+  * UMTS FP protocol dissector crash.
+  * RDP protocol dissector crash.
+  * TTX Logger file parser crash.
+  * Dissection engine reassembly crash.
+  * BUSMASTER file parser abnormal exit.
+  * Tektronix K12xx file parser crash.
+  * ERF file parser crash.
+  * Bluetooth Attribute Protocol dissector crash.
+  * Catapult DCT2000 file parser crash.
+  * C12.22 protocol dissector crash.
+  * CMS protocol dissector crash.
+  * H.245 protocol dissector crash.
+  * Kerberos protocol dissector crash.
+  * Bluetooth HFP Profile protocol dissector crash.
+  * Bluetooth BR/EDR FHS protocol dissector crash.
+  * 3gpp phone log file parser crash.
+  * Ixia IxVeriWave and Vector Informatik BLF file parser crashes on Windows.
+  * CMS protocol dissector crash.
+  * Pcapng file parser crash.
+  * SSH protocol dissector crash.
+  * ESS protocol dissector crash.
+  * X.509IF protocol dissector crash.
+  * RRC protocol dissector crash.
+  * C12.22 protocol dissector crash.
+  * Gammu DCT3 trace file parser crash.
+  * Bluetooth AVRCP Profile protocol dissector crash.
+- Many more features, bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-4.6.8.html
+
+-------------------------------------------------------------------
 Mon Jul 27 10:31:41 UTC 2026 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - don't package capabilities in RPM but rely on permissions profiles instead
