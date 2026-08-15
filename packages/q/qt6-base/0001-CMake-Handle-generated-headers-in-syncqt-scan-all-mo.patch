@@ -1,0 +1,177 @@
+From 23d433e121306e85c5d37d8e6ef846be86b931f4 Mon Sep 17 00:00:00 2001
+From: Alexandru Croitor <alexandru.croitor@qt.io>
+Date: Thu, 13 Aug 2026 15:17:13 +0200
+Subject: [PATCH] CMake: Handle generated headers in syncqt scan all mode for
+ docs
+
+Building the docs of the Network module can result in incomplete
+documentation in the following scenario:
+- use an external prebuilt qdoc
+- configure the module with QT_SYNC_HEADERS_AT_CONFIGURE_TIME=OFF
+- call cmake --build . --target html_docs_Network
+
+In this case the qdnslookup.html file is missing the whole block
+for QDnsLookup::finished.
+
+The reason is that the 'prepare_docs_<module>' target only depends on
+'sync_all_public_headers', which runs syncqt with the '-all' option.
+
+In that mode syncqt ignores the header list given via '-headers' and
+scans the module source directory instead. Generated headers are never
+processed, so they don't get a forwarding header. In qtbase that
+doesn't create qt<module>-config.h and qt<module>-config_p.h headers.
+
+Without them qdoc can't find QtNetwork/private/qtnetwork-config_p.h
+which leaves QT_FEATURE_dnslookup undefined, the
+QT_REQUIRE_CONFIG(dnslookup) condition fails, and some of the code is
+not parsed.
+
+To fix this, pass and process the '-generatedHeaders' list in the
+'scan all' mode as well.
+
+The headers that are excluded from docs are filtered out, so doc
+generation still doesn't depend on headers that need a tool to be
+created, like the dbus generated ones.
+
+The issue doesn't show up in a developer build, because
+QT_SYNC_HEADERS_AT_CONFIGURE_TIME defaults to ON there and syncqt has
+already created the forwarding headers at configure time.
+
+In a qt5.git super builds it doesn't happen either because
+'prepare_docs_<module>' depends on the 'qdoc' target, which
+links QtQml and QtNetwork, which in turn pulls in the regular
+'<module>_sync_headers' targets.
+
+Pick-to: 6.11 6.12
+Fixes: QTBUG-149045
+Change-Id: Ib9f827fa13eed83429547ff05db8cf3ff4068118
+---
+ cmake/QtSyncQtHelpers.cmake | 18 +++++++++++-----
+ src/tools/syncqt/main.cpp   | 41 +++++++++++++++++++++++++------------
+ 2 files changed, 41 insertions(+), 18 deletions(-)
+
+diff --git a/cmake/QtSyncQtHelpers.cmake b/cmake/QtSyncQtHelpers.cmake
+index a1ee6a68a27..919789db4b1 100644
+--- a/cmake/QtSyncQtHelpers.cmake
++++ b/cmake/QtSyncQtHelpers.cmake
+@@ -125,7 +125,6 @@ function(qt_internal_target_sync_headers target
+         -qpaIncludeDir "${module_build_interface_qpa_include_dir}"
+         -rhiIncludeDir "${module_build_interface_rhi_include_dir}"
+         -ssgIncludeDir "${module_build_interface_ssg_include_dir}"
+-        -generatedHeaders ${module_headers_generated}
+         ${qpa_filter_argument}
+         ${rhi_filter_argument}
+         ${ssg_filter_argument}
+@@ -155,10 +154,14 @@ function(qt_internal_target_sync_headers target
+         "(.+/(ui_)[^/]+\\.h|${CMAKE_CURRENT_SOURCE_DIR}(/.+)?/doc/+\\.h)")
+ 
+     # Filter out all headers that should be excluded from documentation generation.
+-    # Documentation generation shouldn't depend on headers like the dbus-generated ones.
++    # Documentation generation shouldn't depend on headers like the dbus-generated ones or any
++    # others that invoke tooling to be created.
++    # But it's okay for them to contain file(GENERATE)'d headers which involve no tool calls.
+     set(module_headers_for_docs "${module_headers}")
++    set(module_headers_generated_for_docs "${module_headers_generated}")
+     if(module_headers_exclude_from_docs)
+         list(REMOVE_ITEM module_headers_for_docs ${module_headers_exclude_from_docs})
++        list(REMOVE_ITEM module_headers_generated_for_docs ${module_headers_exclude_from_docs})
+     endif()
+ 
+     set(syncqt_staging_dir "${module_build_interface_include_dir}/.syncqt_staging")
+@@ -168,6 +171,7 @@ function(qt_internal_target_sync_headers target
+         -headers ${module_headers}
+         -stagingDir "${syncqt_staging_dir}"
+         -knownModules ${known_modules}
++        -generatedHeaders ${module_headers_generated}
+         ${version_script_args}
+     )
+     list(JOIN syncqt_args "\n" syncqt_args_string)
+@@ -227,10 +231,13 @@ function(qt_internal_target_sync_headers target
+         add_dependencies(thirdparty_sync_headers ${target}_sync_headers)
+     endif()
+     # This target is required when building docs, to make all header files and their aliases
+-    # available for qdoc.
+-    # ${target}_sync_headers is added as dependency to make sure that
+-    # ${target}_sync_all_public_headers is running after ${target}_sync_headers, when building docs.
++    # available for qdoc, including generated headers that are not created by tools.
+     set(syncqt_all_args "${common_syncqt_arguments};-all")
++    if(module_headers_generated_for_docs)
++        list(APPEND syncqt_all_args
++            -generatedHeaders ${module_headers_generated_for_docs}
++        )
++    endif()
+     list(JOIN syncqt_all_args "\n" syncqt_all_args_string)
+     set(syncqt_all_args_rsp "${binary_dir_real}/${target}_syncqt_all_args")
+     qt_configure_file(OUTPUT "${syncqt_all_args_rsp}" CONTENT "${syncqt_all_args_string}")
+@@ -248,6 +255,7 @@ function(qt_internal_target_sync_headers target
+             # not happen, but it ends up happening, we will have to implement some kind of lock
+             # file mechanism.
+             ${module_headers_for_docs}
++            ${module_headers_generated_for_docs}
+             ${syncqt_all_args_rsp}
+             ${QT_CMAKE_EXPORT_NAMESPACE}::syncqt
+         VERBATIM
+diff --git a/src/tools/syncqt/main.cpp b/src/tools/syncqt/main.cpp
+index 908ed377564..dc36d465da4 100644
+--- a/src/tools/syncqt/main.cpp
++++ b/src/tools/syncqt/main.cpp
+@@ -647,19 +647,17 @@ public:
+         // In the scan all mode we ingore the list of header files that is specified in the
+         // '-headers' argument, and collect header files from the source directory tree.
+         if (m_commandLineArgs->scanAllMode()) {
+-            for (auto const &entry :
+-                 std::filesystem::recursive_directory_iterator(m_commandLineArgs->sourceDir())) {
+-
+-                const bool isRegularFile = entry.is_regular_file();
+-                const bool isHeaderFlag = isHeader(entry);
+-                const bool isDocFileHeuristicFlag =
+-                    isDocFileHeuristic(entry.path().generic_string());
+-                const bool shouldProcessHeader =
+-                    isRegularFile && isHeaderFlag && !isDocFileHeuristicFlag;
+-                const std::string filePath = entry.path().generic_string();
+-
+-                if (shouldProcessHeader) {
+-                    scannerDebug() << "Processing header: " << filePath << std::endl;
++            enum class HeaderOrigin { SourceTree, Generated };
++            const auto scanHeaderFile = [this, &error](const std::filesystem::path &path,
++                                                       bool isRegularFile, HeaderOrigin origin) {
++                const std::string filePath = path.generic_string();
++                const bool isHeaderFlag = isHeader(path);
++                const bool isDocFileHeuristicFlag = isDocFileHeuristic(filePath);
++                const bool isGenerated = origin == HeaderOrigin::Generated;
++
++                if (isRegularFile && isHeaderFlag && !isDocFileHeuristicFlag) {
++                    scannerDebug() << "Processing header: " << filePath
++                                   << " isGenerated: " << isGenerated << std::endl;
+                     if (!processHeader(makeHeaderAbsolute(filePath)))
+                         error = SyncFailed;
+                 } else {
+@@ -668,8 +666,25 @@ public:
+                         << " isRegularFile: " << isRegularFile
+                         << " isHeaderFlag: " << isHeaderFlag
+                         << " isDocFileHeuristicFlag: " << isDocFileHeuristicFlag
++                        << " isGenerated: " << isGenerated
+                         << std::endl;
+                 }
++            };
++
++            for (auto const &entry :
++                 std::filesystem::recursive_directory_iterator(m_commandLineArgs->sourceDir())) {
++                scanHeaderFile(entry.path(), entry.is_regular_file(),
++                               HeaderOrigin::SourceTree);
++            }
++
++            // Headers that are generated into the build directory are not covered by the source
++            // directory scan above, so process them explicitly.
++            for (const auto &header : m_commandLineArgs->generatedHeaders()) {
++                if (header.empty())
++                    continue;
++                const auto headerPath = makeHeaderAbsolute(header);
++                scanHeaderFile(headerPath, std::filesystem::is_regular_file(headerPath),
++                               HeaderOrigin::Generated);
+             }
+         } else {
+             // Since the list of header file is quite big syncqt supports response files to avoid
+-- 
+2.55.0
+

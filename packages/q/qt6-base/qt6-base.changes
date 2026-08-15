@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 14 08:27:36 UTC 2026 - Fabian Vogt <fvogt@suse.com>
+
+- Add patch to fix incomplete docs (QTBUG-149045):
+  * 0001-CMake-Handle-generated-headers-in-syncqt-scan-all-mo.patch
+
+-------------------------------------------------------------------
 Thu May 14 14:54:30 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.11.1
