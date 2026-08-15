@@ -28,15 +28,17 @@ Source:         https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz
 Source2:        https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz.sig
 Source3:        %{name}.keyring
 Patch0:         zgrep.diff
-Patch2:         zmore.diff
-Patch3:         non-exec-stack.diff
-Patch6:         zdiff.diff
+Patch1:         zmore.diff
+Patch2:         non-exec-stack.diff
+Patch3:         zdiff.diff
 # PATCH FIX OPENSUSE BNC#799561 - zgrep silently fails on LZMA compressed files
-Patch7:         xz_lzma_zstd.patch
-Patch8:         manpage-no-date.patch
-Patch9:         gzip-1.14-s390x-errno.patch
+Patch4:         xz_lzma_zstd.patch
+Patch5:         manpage-no-date.patch
+Patch6:         gzip-1.14-s390x-errno.patch
 # PATCH FIX UPSTREAM bsc#1269622 marius.grossu@suse.com CVE-2026-41991
-Patch10:        CVE-2026-41991.patch
+Patch7:         CVE-2026-41991.patch
+# PATCH FIX UPSTREAM bsc#1269623 bsc#1272554 antonio.teixeira@suse.com CVE-2026-41992
+Patch8:         CVE-2026-41992.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  makeinfo
@@ -51,15 +53,7 @@ while keeping the same ownership modes and access and modification
 times.
 
 %prep
-%setup -q
-%patch -P 0
-%patch -P 2 -p1
-%patch -P 3
-%patch -P 6
-%patch -P 7 -p1
-%patch -P 8 -p1
-%patch -P 9 -p1
-%patch -P 10 -p1
+%autosetup -p1
 
 %build
 export CFLAGS="%{optflags} -fomit-frame-pointer \

@@ -1,8 +1,8 @@
-Index: lib/match.c
+Index: b/lib/match.c
 ===================================================================
---- lib/match.c.orig
-+++ lib/match.c
-@@ -772,3 +772,4 @@ match_init:
+--- a/lib/match.c
++++ b/lib/match.c
+@@ -771,3 +771,4 @@ match_init:
  # endif /* __ia64__ */
  #endif /* mc68000 || mc68020 */
  #endif /* i386 || _I386   */

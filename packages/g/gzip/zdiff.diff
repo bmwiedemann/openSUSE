@@ -1,8 +1,8 @@
-Index: zdiff.in
+Index: b/zdiff.in
 ===================================================================
---- zdiff.in.orig
-+++ zdiff.in
-@@ -133,9 +133,9 @@ case $file2 in
+--- a/zdiff.in
++++ b/zdiff.in
+@@ -132,9 +132,9 @@ case $file2 in
                                  5<&0
                      then
                          gzip_status=$(

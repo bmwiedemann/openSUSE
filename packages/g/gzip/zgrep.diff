@@ -1,8 +1,8 @@
-Index: zgrep.in
+Index: b/zgrep.in
 ===================================================================
---- zgrep.in.orig
-+++ zgrep.in
-@@ -211,10 +211,18 @@ res=1
+--- a/zgrep.in
++++ b/zgrep.in
+@@ -210,10 +210,18 @@ res=1
  
  for i
  do
