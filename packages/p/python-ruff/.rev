@@ -3567,4 +3567,55 @@
     <comment>Update to 0.16.2: PYI041 no longer false-positives on singledispatch functions, and the server registers formatting capabilities dynamically so TOML files are excluded. NOTE FOR LEGAL REVIEW: License changes from MIT to MIT AND MPL-2.0. This is a correction, not a new obligation - the three MPL-2.0 crates (colored, option-ext, version-ranges) were already statically linked in 0.16.1. Derivation is recorded in a Legal-Review-Notice comment above the tag; it was re-derived with 'cargo tree --offline -p ruff -e normal' over the 381-crate vendored tree, and MPL-2.0 section 3.2 is satisfied because vendor.tar.zst ships in the src.rpm. Built and verified on aarch64: rpmlint 0 errors / 1 warning (no-%check-section, baseline) / 0 badness, cargo_audit clean, source_validator clean.</comment>
     <requestid>1370307</requestid>
   </revision>
+  <revision rev="123" vrev="1">
+    <srcmd5>718ff7001b9b1aed6e2cc8c9b4059e0d</srcmd5>
+    <version>0.16.3</version>
+    <time>1786826386</time>
+    <user>dimstar_suse</user>
+    <comment>Supersedes SR#1371174 and carries its content plus one addition, since it
+submits the current devel:languages:python state:
+
+1) Update to 0.16.3 - unchanged from the superseded request.
+
+2) New _multibuild &quot;test&quot; flavour that runs upstream's Rust test suite.
+
+python-ruff has never had a %check at all (standing W: no-%check-section).
+Rather than bolt the suite onto the main build - where the singlespec loop
+would run &quot;cargo test&quot; once per Python flavour and roughly double a ~1500 s
+build - it goes into a separate &quot;test&quot; flavour.
+
+The main flavour is unchanged. &quot;rpmspec -P&quot; of the new spec against the old
+one differs only in the position of a single BuildRequires line; the produced
+subpackages, provides, files and scriptlets are identical.
+
+The test flavour needs no Python, so it skips the singlespec machinery
+entirely: %python_subpackages, the %{python_module} BuildRequires, the
+preamble &quot;Provides: ruff&quot;, %install, %pre and %files are all guarded off. It
+declares no subpackages and no %files, so it builds a src.rpm only and
+publishes nothing.
+
+Scope of the suite: cargo test --workspace --exclude ruff_linter.
+ruff_linter is excluded because the PyPI sdist does not ship
+crates/ruff_linter/resources/test/fixtures/ - without those inputs 2209 of
+its 2807 tests fail on a missing path. The single ruff test that walks the
+same fixture tree is skipped by name. A smaller suite that genuinely runs
+seemed better than a full one that has to be disabled. (Fedora runs the full
+suite because it builds from the GitHub archive, which does carry the
+fixtures; switching tarballs here was out of scope.)
+
+What remains is substantial and entirely offline against the vendored
+dev-dependencies - parser, formatter, semantic model, notebooks, CLI, LSP
+server, plus doctests. Measured locally on aarch64:
+
+  61 test binaries, 2947 passed, 0 failed, 7 ignored
+  test flavour total build time 416 s, of which ~354 s is %check
+  no rpmlint E:/W: lines
+
+Note for the release team: python-ruff builds in Factory:Rings:1-MinimalX,
+where 165 other :test flavours already build, so no ring change looks
+necessary. If you would rather the flavour not build in stagings, it needs
+an &quot;excludebuild:python-ruff:test&quot; line in openSUSE:Factory:Staging.
+</comment>
+    <requestid>1371200</requestid>
+  </revision>
 </revisionlist>

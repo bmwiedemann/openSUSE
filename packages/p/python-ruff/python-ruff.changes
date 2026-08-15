@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Aug 14 08:57:37 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Add a _multibuild "test" flavour running upstream's Rust test suite:
+  * the package had no %check at all; the tests now build and run in
+    a separate flavour, so the main build stays as fast as before and
+    still publishes the only binaries
+  * the flavour needs no Python, so it skips the singlespec machinery
+    and produces a src.rpm only
+  * the suite runs fully offline against the vendored dev-dependencies
+  * ruff_linter is excluded because the PyPI sdist does not ship
+    crates/ruff_linter/resources/test/fixtures/, without which its
+    rule tests cannot load their input files
+
+-------------------------------------------------------------------
+Fri Aug 14 07:36:38 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.16.3:
+  * New preview rule UP048 rewrites "while 1" to "while True"
+  * PLR6104 no longer misses negative numbers (preview)
+  * S602, S603, S607 and S609 now also check keyword arguments
+  * PLE1300 and PLE1307 no longer report false positives or
+    negatives around the %b format character, bools and
+    concatenated strings
+  * "continue" in a "finally" block is now allowed on Python 3.8
+  * NPY201 autofix for np.chararray is now backwards-compatible
+  * RUF006 documentation now also suggests asyncio.TaskGroup
+  * ruff check --statistics now hyperlinks rule codes
+  * Shrink the Expr AST node to 64 bytes for lower memory use
+- Re-vendor the Rust dependencies; the statically linked crate
+  graph is unchanged, so License stays MIT AND MPL-2.0
+
+-------------------------------------------------------------------
 Sat Aug  8 05:10:53 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.16.2:
