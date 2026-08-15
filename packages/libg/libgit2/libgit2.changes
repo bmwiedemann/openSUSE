@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 14 07:37:18 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.9.7:
+  * CVE-2026-5917: Escape remote repository paths in libssh2
+    (boo#1274971)
+
+-------------------------------------------------------------------
 Sun Jul 19 09:38:43 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.9.6:

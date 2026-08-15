@@ -717,4 +717,13 @@ CVE-2026-53584 (boo#1271697)
 CVE-2026-53583 (boo#1271698) (forwarded request 1366583 from AndreasStieger)</comment>
     <requestid>1366584</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>25eb42181b9118d3460159bd6c27cd0c</srcmd5>
+    <version>1.9.7</version>
+    <time>1786826382</time>
+    <user>dimstar_suse</user>
+    <comment>libgit2 1.9.7 CVE-2026-5917 boo#1274971
+</comment>
+    <requestid>1371171</requestid>
+  </revision>
 </revisionlist>
