@@ -1499,4 +1499,12 @@
     <comment>submit new version 5.0.49</comment>
     <requestid>1361171</requestid>
   </revision>
+  <revision rev="188" vrev="1">
+    <srcmd5>97f42fb98e92894cc5cb1a1e8a6ff604</srcmd5>
+    <version>5.0.50</version>
+    <time>1786826404</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 5.0.50</comment>
+    <requestid>1370952</requestid>
+  </revision>
 </revisionlist>

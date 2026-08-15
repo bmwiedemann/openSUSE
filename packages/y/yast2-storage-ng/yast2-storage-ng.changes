@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 12 10:09:27 UTC 2026 - José Iván López González <jlopez@suse.com>
+
+- Fix automatic generation of crypt names (bsc#1247173).
+- 5.0.50
+
+-------------------------------------------------------------------
 Fri Jun 19 13:25:53 UTC 2026 - José Iván López González <jlopez@suse.com>
 
 - Add method to get the required package objects (needed for
