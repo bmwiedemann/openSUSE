@@ -1326,4 +1326,12 @@
     <comment>3.8.3 update</comment>
     <requestid>1357916</requestid>
   </revision>
+  <revision rev="155" vrev="1">
+    <srcmd5>22986193c162ca4661c92a45bb5309ab</srcmd5>
+    <version>3.8.4.1</version>
+    <time>1786826495</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1371304</requestid>
+  </revision>
 </revisionlist>
