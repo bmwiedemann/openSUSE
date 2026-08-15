@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Aug 14 21:46:23 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Bump to version 2.0.2:
+  * fix(runtime): Fixes for missing runtimes and download
+  * feat: Playtime
+  * Update KDE runtime on the flatpack
+  * Update sha/commits
+
+-------------------------------------------------------------------
 Thu Aug 06 20:32:42 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
 
 - Bump to version 2.0.1 Rip and Tear:

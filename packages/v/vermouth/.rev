@@ -352,4 +352,16 @@ It works like Lutris, Heroic, Faugus or Bottles, but is KDE first
   * Update SHAs</comment>
     <requestid>1370131</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>839a85c1c70ce41140da5e1befae371e</srcmd5>
+    <version>2.0.2</version>
+    <time>1786826455</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump to version 2.0.2:
+  * fix(runtime): Fixes for missing runtimes and download
+  * feat: Playtime
+  * Update KDE runtime on the flatpack
+  * Update sha/commits</comment>
+    <requestid>1371264</requestid>
+  </revision>
 </revisionlist>
