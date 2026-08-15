@@ -1884,4 +1884,12 @@ Now with build cycle removed.</comment>
     <comment>Update to Public Suffix List snapshot 20260708</comment>
     <requestid>1364970</requestid>
   </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>9514dbb7d35c5dcb4419e463bed5fc00</srcmd5>
+    <version>20260725</version>
+    <time>1786826415</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1371022</requestid>
+  </revision>
 </revisionlist>

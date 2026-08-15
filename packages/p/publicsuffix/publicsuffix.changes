@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Aug 06 09:14:31 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 20260725:
+  * Remove Acorn Labs on-acorn.io entries from public_suffix_list.dat (#3093)
+  * util: gTLD data autopull updates for 2026-07-24T16:40:16 UTC (#3090)
+  * Add playcode.site to PRIVATE section (#3072)
+  * Remove deta.dev, deta.app entries from public_suffix_list.dat (#3066)
+  * Add a workflow that checks the PR template is filled out (#3077)
+  * Remove onfabrica.com Fabrica Technologies entry (#3065)
+  * Remove Bytemark Hosting entries: uk0.bigv.io dh.bytemark.co.uk vm.bytemark.co.uk (#3053)
+  * Update `.it` (#3049)
+  * Remove cryptonomic.net Cryptonomic entries from public_suffix_list.dat (#3050)
+  * Remove api.stdlib.com from public suffix list (#3051)
+  * Remove hzc.io RethinkDB entries from public_suffix_list.dat (#3052)
+  * AI Agent notice about not modifying the repo PR template (#3043)
+  * Delete protonet.io and Protonet GmbH entry (#3048)
+  * Remove Storj Labs entries from public_suffix_list.dat (#3063)
+  * util: gTLD data autopull updates for 2026-07-15T16:20:56 UTC (#3042)
+  * remove ac.tj from public_suffix_list.dat (#3001)
+  * Adding aero.in, alumni.in, school.in and ub.in (#2988)
+  * Update `.no` (#3029)
+  * Add cyb.ge, llc.ge, online.ge and tnx.ge (#2963)
+  * Add mygov.scot (#2900)
+  * Add IPv64.net dynamic DNS domains (#3009)
+
+-------------------------------------------------------------------
 Sat Jul 11 05:35:43 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20260708:
@@ -132,7 +158,7 @@ Fri May 22 08:21:12 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
   * Remove `obl.ong` (#2368)
   * Brave Submissions to the Public Suffix List - Q4 2025 (#2668)
   * Add grebedoc.dev (#2664)
-  * add sld ᬩᬮᬶ.id (#2673)
+  * add sld xn--9tfky.id (#2673)
   * Add xtooldevice.com (#2613)
   * Add prvw.eu (#2658)
   * remove `wdh.app` and `hrsn.au` (#2665)
@@ -2183,7 +2209,7 @@ Fri Feb 19 13:15:26 UTC 2016 - astieger@suse.com
   * Add xenapponazure.com to the PSL
   * Add dynv6 dynamic DNS service
   * Add new .pro suffixes
-  * Update AWS domains 
+  * Update AWS domains
 
 -------------------------------------------------------------------
 Tue Feb  2 14:05:36 UTC 2016 - psimons@suse.com

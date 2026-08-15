@@ -1,6 +1,4 @@
 <servicedata>
-  <service name="tar_scm">
-    <param name="url">https://github.com/publicsuffix/list.git</param>
-    <param name="changesrevision">b9a86cf0cd115f1e60b5815533f3fcfd2f9e8f4b</param>
-  </service>
-</servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/publicsuffix/list.git</param>
+              <param name="changesrevision">e1b8015c3b2f0f4f8c18659c2480fc1a22c07b20</param></service></servicedata>
