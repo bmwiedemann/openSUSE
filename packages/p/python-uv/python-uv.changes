@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Aug 15 05:58:55 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.12.5:
+  * Add CPython 3.10.21, 3.11.16 and 3.12.14 to the managed
+    interpreter list
+  * Prefer newer versions and standard variants when choosing
+    between equally prioritised Python interpreters
+  * Simplify the errors and hints for invalid editable
+    requirements, and redact credentials in requirement URLs
+  * Resolve relative package index paths in PEP 723 scripts
+    against the script directory instead of the working
+    directory
+  * Allow --index and --default-index to select a configured
+    index by name under the index-by-name preview feature
+  * Include distribution artifact URLs and hashes in CycloneDX
+    SBOM exports by default (preview)
+  * Fall back to logical file sizes when cache-physical-space is
+    used on a filesystem without physical-space accounting
+    (preview)
+- Re-vendor the Rust dependencies: no crates added or removed,
+  five updated (cc, find-msvc-tools, libredox, pkg-config and
+  uuid). Re-derived the licence set over the 512 crates linked
+  into the uv binary; the copyleft set is unchanged, so License
+  stays (Apache-2.0 OR MIT) AND MPL-2.0
+
+-------------------------------------------------------------------
 Fri Aug 14 09:16:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Add a _multibuild "test" flavour that runs the Rust test suite:

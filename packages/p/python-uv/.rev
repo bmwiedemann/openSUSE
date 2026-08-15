@@ -3014,4 +3014,12 @@ revision's. source_validator green, spec-cleaner clean, changes-lint and
 changes-guard green.</comment>
     <requestid>1371208</requestid>
   </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>35f000d4eef88ec98dafbb59322f372a</srcmd5>
+    <version>0.12.5</version>
+    <time>1786826474</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.12.5. Re-vendored Rust deps (0 crates added/removed, 5 updated); licence set re-derived over the 512 linked crates and unchanged. Both multibuild flavours green, 1343 tests pass, rpmlint 0 badness.</comment>
+    <requestid>1371292</requestid>
+  </revision>
 </revisionlist>
