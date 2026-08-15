@@ -68,7 +68,19 @@ echo "==> installing npm dependencies"
 # trustedDependencies and patchedDependencies, so a bun newer than the one
 # upstream pins always reports the lockfile as changed. The resolution itself
 # is unaffected -- see README.SUSE-maint, which records how to check that.
+#
+# --cpu/--os '*' makes the install platform-independent, which matters to
+# --retrace. Bun 1.4 resolves optionalDependencies for the host platform only,
+# so an install run on aarch64 has no @opentui/core-linux-x64,
+# @ff-labs/fff-bin-linux-x64-gnu or @parcel/watcher-linux-x64-glibc to find.
+# A plain run then stops on the keep list check below, which is loud and
+# harmless -- but --retrace regenerates that list, and the step in
+# opencode_vendor_trace that adds each package's other-architecture
+# counterpart can only add what the install produced. It would quietly write a
+# 505-entry list and the next x86_64 build would be the one to find out. The
+# step after this one prunes the platforms we do not build for back out.
 ( cd "$tree" && bun install --ignore-scripts --no-progress \
+      --cpu '*' --os '*' \
       --filter './packages/opencode' --filter './packages/script' >/dev/null )
 
 store="$tree/node_modules/.bun"
@@ -180,9 +192,23 @@ echo "==> packing the slimmed source"
 slim="$work/opencode-$version-slim/opencode-$version"
 mkdir -p "$slim/packages"
 for f in "${root_files[@]}"; do install -Dpm 0644 "$tree/$f" "$slim/$f"; done
+# patches/ holds the 17 files package.json's patchedDependencies and bun.lock
+# name by path. The build never reads them -- the dependency tarball already
+# carries the patched result -- but a source tree that references patch files
+# it does not ship is not reviewable, and these are the only record of how the
+# third-party code inside the executable was modified.
+if [[ -d $tree/patches ]]; then cp -a "$tree/patches" "$slim/patches"; fi
 for p in "${workspace_packages[@]}"; do
     cp -a "$tree/packages/$p" "$slim/packages/$p"
-    rm -rf "$slim/packages/$p/node_modules"
+    # node_modules is the install; dist/ts-dist is build output. Upstream
+    # gitignores all three and the release tarball has none of them, but
+    # --retrace runs the real build in this tree first, which leaves a
+    # 118 MB compiled executable in packages/opencode/dist. The symlink
+    # farms are nested arbitrarily deep (packages/sdk/js/node_modules) and
+    # belong to the vendor tarball, which packs them itself.
+    find "$slim/packages/$p" -depth \
+         \( -name node_modules -o -name dist -o -name ts-dist \) -type d \
+         -exec rm -rf {} +
 done
 tar --sort=name --mtime="@0" --owner=0 --group=0 --numeric-owner \
     -C "$work/opencode-$version-slim" -cf - "opencode-$version" \

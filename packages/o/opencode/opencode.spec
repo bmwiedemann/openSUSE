@@ -35,12 +35,19 @@
 %global node_arch arm64
 %endif
 Name:           opencode
-Version:        1.18.15
+Version:        1.18.18
 Release:        0
 Summary:        AI coding agent for the terminal
 # opencode itself is MIT. The npm dependency tree is compiled into the
 # executable, so its licences are part of the binary; see README.SUSE-maint
 # for how the expression below is derived and rechecked on a bump.
+# Legal-Review-Notice: rederived for 1.18.18 from the declared license field
+# of all 507 packages in the vendor tarball. No copyleft of any kind, and the
+# closure is unchanged from 1.18.15 down to name@version. Two conclusions are
+# not visible from the packages themselves: poe-oauth 0.0.8 declares no
+# licence and ships no text, its MIT grant comes from the upstream repository
+# root; caniuse-lite is CC-BY-4.0, whose attribution clause is why %%prep
+# installs its LICENSE separately.
 License:        0BSD AND Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND BlueOak-1.0.0 AND CC-BY-3.0 AND CC-BY-4.0 AND CC0-1.0 AND ISC AND MIT
 URL:            https://opencode.ai
 # Not the upstream tarball. Upstream ships the web console, the desktop app
@@ -58,8 +65,11 @@ Source3:        %{name}_vendor
 Source4:        %{name}_vendor_trace
 Source5:        %{name}-vendor-keep.txt
 Source6:        README.SUSE-maint
-# Upstream's build script refuses to run on any bun but the one it pins. A
-# distribution ships one bun; make it a warning.
+# Upstream's build script fails unless bun satisfies a caret range around the
+# version it pins. It pins 1.3.14 and Factory has 1.4.0, so the check passes
+# and this patch is inert today; it stays because both versions float, and a
+# major bump on either side would otherwise stop the build over upstream's
+# convenience rather than a real incompatibility. See README.SUSE-maint.
 Patch0:         %{name}-relax-bun-version.patch
 # The next three stop the binary fetching code over the network at runtime.
 # Each patch's header says what it stops, why it cannot be configured away,
@@ -67,17 +77,18 @@ Patch0:         %{name}-relax-bun-version.patch
 Patch1:         %{name}-no-self-update.patch
 Patch2:         %{name}-no-runtime-npm-install.patch
 Patch3:         %{name}-no-grammar-download.patch
-# No floor. Upstream pins one exact bun and Patch0 turns that into a warning;
-# a floor here would be a guess at which older bun still works, and the
-# package is a git snapshot anyway, so 1.4.0~git sorts below 1.4.0.
+# No floor. Which bun upstream wants changes with every release and Patch0
+# turns a mismatch into a warning; a floor here would be a guess at which
+# older bun still works, and the package is a git snapshot anyway, so
+# 1.4.0~git sorts below 1.4.0.
 BuildRequires:  bun
 BuildRequires:  opentui = %{opentui_version}
 # %%prep reads the @opentui/core pin out of package.json.
 BuildRequires:  python3-base
 BuildRequires:  zstd
+Requires:       git-core
 # Downloaded on first use otherwise; opencode shells out to it for grep.
 Requires:       ripgrep
-Requires:       git-core
 # bun only supports these two, and so do the prebuilt native modules left in
 # the dependency tree.
 ExclusiveArch:  x86_64 aarch64

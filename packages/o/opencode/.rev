@@ -32,4 +32,35 @@ keyboard input. Local build green on aarch64; rpmlint 0 errors, 1 warning
 Still needs bun (SR#1370367) and opentui (SR#1370419) staged alongside it.</comment>
     <requestid>1370420</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9810785777b0cbcf7af115428bb4b219</srcmd5>
+    <version>1.18.18</version>
+    <time>1786826481</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 1.18.18
+
+Model/provider handling fixes (Kimi and Muse system prompt routing, xai
+xhigh reasoning effort, reasoning effort passthrough for groq/mistral/xai,
+DeepSeek V4 Flash sampling defaults, Merge Gateway reasoning effort),
+compaction that keeps recent turns whole, capped and jittered automatic
+retries, PDF attachments for Copilot models advertising PDF vision, and
+unknown top-level config fields no longer failing the whole config file.
+
+Also hardens the shipped opencode_vendor helper - none of it changes the
+binary that gets built: install with --cpu/--os set to all platforms so the
+x86_64 natives survive a vendor regeneration done on aarch64, keep
+node_modules/dist/ts-dist out of the slimmed tarball at any nesting depth,
+and ship patches/ which package.json and bun.lock reference by path for 17
+patched dependencies.
+
+Licence audit redone for this version: 506 of 507 vendored packages declare
+a licence, none copyleft; poe-oauth 0.0.8 declares none. Recorded in the
+Legal-Review-Notice in the spec.
+
+Built locally on aarch64 and on OBS for x86_64; %check reports 1.18.18 on
+both. rpmlint: 0 errors, 0 badness, 1 warning
+(position-independent-executable-suggested, unavoidable for a
+bun build --compile executable).</comment>
+    <requestid>1371300</requestid>
+  </revision>
 </revisionlist>

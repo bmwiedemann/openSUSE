@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sat Aug 15 06:48:52 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.18.18:
+  * Model and provider handling: pick the Kimi system prompt for
+    the official Moonshot and Kimi providers, route the Muse family
+    to the Meta system prompt, fix the xhigh reasoning effort for
+    xai models, pass reasoning effort through for groq, mistral and
+    xai, correct the sampling defaults for DeepSeek V4 Flash and
+    add reasoning effort support for the Merge Gateway provider.
+  * Sessions: compaction keeps recent turns whole and writes
+    summaries that smaller models follow, and automatic retries are
+    now capped and jittered rather than repeated immediately.
+  * Attachments: PDFs can be sent to GitHub Copilot models that
+    advertise PDF vision.
+  * Configuration: unknown top-level fields are ignored instead of
+    failing the whole configuration file.
+- Harden opencode_vendor, which is shipped as a source. None of the
+  three changes the binary that gets built:
+  * Install with bun --cpu and --os set to all platforms. Bun 1.4
+    resolves optionalDependencies for the host alone, so on aarch64
+    the x86_64 native packages are missing. A plain run stops on
+    the keep list check, but --retrace rewrites that list from what
+    the install produced, so it would have quietly written 505
+    entries instead of 508 and left the x86_64 build to find out.
+  * Keep node_modules, dist and ts-dist out of the slimmed source
+    tarball wherever they are nested, not only at the top of each
+    workspace package; a --retrace run leaves a compiled executable
+    in packages/opencode/dist.
+  * Ship the patches/ directory, which the root package.json and
+    bun.lock reference by path for 17 patched dependencies. The
+    build never reads it, since the dependency tarball already
+    carries the patched result, but it is the record of how
+    third-party code inside the executable was changed.
+- Bring README.SUSE-maint up to date: the licence audit is recorded
+  as redone for this version, the patched dependencies are
+  described, and opencode-relax-bun-version.patch is described as
+  what it is, a forward guard that the bun in Factory does not
+  currently trip.
+
+-------------------------------------------------------------------
 Sun Aug  9 18:52:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - New package: an AI coding agent for the terminal, built with bun

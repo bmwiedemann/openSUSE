@@ -6,4 +6,5 @@ and keeps a session history.
 
 This build is the command line client only. The optional web interface is not
 included.</description>
+  <devel project="devel:tools" package="opencode"/>
 </package>
