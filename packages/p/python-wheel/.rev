@@ -429,4 +429,24 @@
   minimal stack for different python versions.</comment>
     <requestid>1331994</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>5c9bb490e0a6f9c31061bcd158edccf6</srcmd5>
+    <version>0.48.0</version>
+    <time>1786826432</time>
+    <user>dimstar_suse</user>
+    <comment>* Update to 0.48.0:
+  - Added --local-version option to wheel pack to add, replace,
+    or remove a PEP 440 local version identifier from a wheel
+    file.
+  - Fixed wheel convert unnecessarily upgrading compatible core
+    metadata versions.
+* Update to 0.47.0:
+  - Added wheel info subcommand to display metadata about wheel
+    files without needing to unpack them.
+  - Fixed WheelFile raising Missing RECORD file when the wheel
+    filename contains uppercase characters (e.g.,
+    Django-3.2.5.whl) while the internal .dist-info directory
+    uses normalized lowercase naming</comment>
+    <requestid>1371244</requestid>
+  </revision>
 </revisionlist>

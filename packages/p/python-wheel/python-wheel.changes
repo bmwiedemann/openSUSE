@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Aug 14 16:41:36 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+* Update to 0.48.0:
+  - Added --local-version option to wheel pack to add, replace,
+    or remove a PEP 440 local version identifier from a wheel
+    file.
+  - Fixed wheel convert unnecessarily upgrading compatible core
+    metadata versions.
+* Update to 0.47.0:
+  - Added wheel info subcommand to display metadata about wheel
+    files without needing to unpack them.
+  - Fixed WheelFile raising Missing RECORD file when the wheel
+    filename contains uppercase characters (e.g.,
+    Django-3.2.5.whl) while the internal .dist-info directory
+    uses normalized lowercase naming
+
+-------------------------------------------------------------------
 Mon Feb  9 11:01:06 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add pythons_for_pypi macro. This macro will help to build the python

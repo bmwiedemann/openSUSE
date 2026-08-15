@@ -34,7 +34,7 @@
 %{?pythons_for_pypi}
 %{?sle15_python_module_pythons}
 Name:           python-wheel%{psuffix}
-Version:        0.46.3
+Version:        0.48.0
 Release:        0
 Summary:        A built-package format for Python
 License:        MIT
