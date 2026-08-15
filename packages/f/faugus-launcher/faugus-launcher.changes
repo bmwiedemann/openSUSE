@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Aug 14 21:41:09 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Bump to version 2.1.0:
+  * chore(l10n): update translation files
+  * Update update-pot.yml
+  * Update translation template (faugus-launcher.pot)
+  * Updated umu string
+  * Fixed case sensitive sort
+  * png icon prefered
+  * Reinforced games.json handling
+  * Update translation template (faugus-launcher.pot)
+  * Added Disable UMU option
+  * Fixed migration location
+  * Allow both compatibilitytools folders
+  * Added Flatpak Steam compatibilitytools folder
+  * Update translation template (faugus-launcher.pot)
+  * Added an option to toggle the zoom slider
+  * Tray icon in a separate process
+  * Update tray menu
+  * Removed rpm source from assets
+  * Fixed AppImage not extracting icons
+  * Fixed shortcuts.vdf ordering
+  * Added Amazon Games
+  * Update release-packages.yml
+
+-------------------------------------------------------------------
 Thu Aug 06 20:22:50 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
 
 - Bump to version 2.0.6:

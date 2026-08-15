@@ -828,4 +828,33 @@
 ...</comment>
     <requestid>1370430</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>8d92bbe9f9fccbaf1a756d9464ed4395</srcmd5>
+    <version>2.1.0</version>
+    <time>1786826454</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump to version 2.1.0:
+  * chore(l10n): update translation files
+  * Update update-pot.yml
+  * Update translation template (faugus-launcher.pot)
+  * Updated umu string
+  * Fixed case sensitive sort
+  * png icon prefered
+  * Reinforced games.json handling
+  * Update translation template (faugus-launcher.pot)
+  * Added Disable UMU option
+  * Fixed migration location
+  * Allow both compatibilitytools folders
+  * Added Flatpak Steam compatibilitytools folder
+  * Update translation template (faugus-launcher.pot)
+  * Added an option to toggle the zoom slider
+  * Tray icon in a separate process
+  * Update tray menu
+  * Removed rpm source from assets
+  * Fixed AppImage not extracting icons
+  * Fixed shortcuts.vdf ordering
+  * Added Amazon Games
+  * Update release-packages.yml</comment>
+    <requestid>1371263</requestid>
+  </revision>
 </revisionlist>
