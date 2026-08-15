@@ -296,4 +296,41 @@
     gofmt symlinks is intentional. (forwarded request 1366819 from jfkw)</comment>
     <requestid>1366820</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>8aef286d9e05ef39c6004a443c4a99f4</srcmd5>
+    <version>1.26.6</version>
+    <time>1786826378</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.26.6 (released 2026-08-13) includes security fixes to the go
+  command, and the crypto/tls, encoding/asn1, encoding/xml,
+  html/template, net, net/http, and net/url packages, as well as
+  bug fixes to the compiler, the linker, the runtime, and the
+  crypto/tls and os packages.
+  Refs boo#1255111 go1.26 release tracking
+  CVE-2026-56853 CVE-2026-39821 CVE-2026-56862 CVE-2026-56859 CVE-2026-56860 CVE-2026-56865 CVE-2026-56864 CVE-2026-33818 CVE-2026-56858
+  * go#80224 go#80205 boo#1275028 security: fix CVE-2026-56853 net/http: apply ReadHeaderTimeout when doing unencrypted HTTP/2 check
+  * go#80298 go#78760 boo#1266609 security: fix CVE-2026-39821 x/net/idna: failure to reject ASCII-only Punycode-encoded labels
+  * go#80531 go#80528 boo#1275032 security: fix CVE-2026-56862 crypto/tls: limit handshake messages we are willing to accept post-handshake
+  * go#80628 go#80481 boo#1275026 security: fix CVE-2026-56859 encoding/xml: add recursion depth guard during decode
+  * go#80630 go#80494 boo#1275029 security: fix CVE-2026-56860 net/url: avoid quadratic complexity in resolvePath
+  * go#80765 go#80744 boo#1275024 security: fix CVE-2026-56865 x/mod/sumdb/tlog: fix transparency log tile verification bypass
+  * go#80767 go#80745 boo#1275025 security: fix CVE-2026-56864 x/mod/sumdb: ignore unrelated, unauthenticated hashes in Lookup
+  * go#80769 go#80405 boo#1275034 security: fix CVE-2026-33818 encoding/asn1: enforce maximum recursion depth
+  * go#80867 go#80435 boo#1275033 security: fix CVE-2026-56858 html/template: fix Javascript regexp context tracking
+  * go#79876 cmd/compile: prove misscompilation in slicemask folding leaves garbage in the upper bits
+  * go#80099 cmd/compile: internal compiler error invalid heap allocated var without Heapaddr
+  * go#80131 cmd/link: peCreateExportFile generates invalid .def file when output name has trailing dot (c-shared on Windows)
+  * go#80365 os: Root's MkdirAll can't create paths ending in forward slashes
+  * go#80367 os: TestRootMultiReadFile fails on netbsd/arm64 after CL 797880
+  * go#80369 os: TestRootConsistencyRemoveAll fails on Plan 9 after CL 797880
+  * go#80394 runtime: arm64 found pointer to free object with safe code
+  * go#80441 runtime: uninitialized register due to wrong ABI in mach_vm_region_trampoline leads to libc following garbage stack data as a pointer
+  * go#80478 cmd/compile: riscv64 miscompiles struct copy, corrupting a []byte slice field
+  * go#80499 runtime: js/wasm: &quot;found bad pointer in Go heap&quot; — link-layout-constant value recorded as a pointer in the write-barrier buffer
+  * go#80579 cmd/compile: regalloc uses unreliable type data (like v.Type.IsSigned()) to choose the restore of spills
+  * go#80606 crypto/tls: escape hatch for FIPS 140-3 mode Extended Master Secret enforcement
+  * go#80609 net, x/net/dns/dnsmessage: panic when parsing invalid SVCB record
+  * go#80615 cmd/compile: mips64le misscompile OffPtr by a const which doesn't fit 32bits resulting in panic (forwarded request 1371105 from jfkw)</comment>
+    <requestid>1371108</requestid>
+  </revision>
 </revisionlist>
