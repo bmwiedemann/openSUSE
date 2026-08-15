@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sat Jul 25 15:15:41 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- FIPS: Deprecate ECDSA siggen with less than 128-bit (bsc#1265613)
+  * NIST SP 800-131Arev3 marked ECDSA siggen < 128-bit of security
+    strength as deprecated after the deadline of 31 dic 2030.
+  * Add gnutls-FIPS-Deprecate-ECDSA-with-less-that-128-bit.patch
+
+-------------------------------------------------------------------
+Sat Jul 25 15:12:18 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- FIPS: Mark SHA-224 and SHA3-224 as legacy (bsc#1265609, bsc#1265611)
+  * NIST SP 800-131Arev3 has marked SHA-224 and SHA3-224 as legacy
+    after the deadline of 31 dic 2030.
+  * Add gnutls-FIPS-SHA224-SHA3224-Legacy-Status.patch
+
+-------------------------------------------------------------------
+Sat Jul 25 15:10:25 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- FIPS: Deprecate HMAC with keys less than 128-bit (bsc#1265610)
+  * NIST SP 800-131Arev3 marked HMAC with keys less than 128-bits
+    as disallowed after the deadline of 31 dic 2030.
+  * Add gnutls-FIPS-Deprecate-HMAC-with-less-that-128-bit-keys.patch
+
+-------------------------------------------------------------------
+Sat Jul 25 14:50:16 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- FIPS: Deprecate RSA Signatures with less than 128-bit (bsc#1265612)
+  * NIST SP 800-131Arev3 has marked RSA Signatures with less than
+    128-bit as deprecated after the deadline of 31 dic 2030.
+  * Add gnutls-FIPS-Deprecate-RSAsig-with-less-that-128-bit.patch
+
+-------------------------------------------------------------------
 Fri May 15 12:23:28 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
 
 - FIPS: Add NIST SP800-56Brev2 6.4.2.2 check:
@@ -263,7 +295,7 @@ Mon Jul 14 17:00:21 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
     to specify path and pin to the module (see system-wide config Documentation).
   * libgnutls: Linux kernel version 6.14 brings a Kernel TLS (kTLS) key update
     support. The library running on the aforementioned version now utilizes the
-    kernel’s key update mechanism when kTLS is enabled, allowing uninterrupted
+    kernel's key update mechanism when kTLS is enabled, allowing uninterrupted
     TLS session. The --enable-ktls configure option as well as the system-wide
     kTLS configuration(see GnuTLS Documentation) are still required to enable
     this feature.
@@ -691,7 +723,7 @@ Tue Feb 21 10:17:00 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
     --enable-srp-authentication option to configure script.
   * libgnutls: All code has been indented using "indent -ppi1 -linux".
     CI/CD has been adjusted to catch regressions. This is implemented
-    through devel/indent-gnutls, devel/indent-maybe and .gitlab-ci.yml’s
+    through devel/indent-gnutls, devel/indent-maybe and .gitlab-ci.yml's
     commit-check. You may run devel/indent-gnutls to fix any
     indentation issues if you make code modifications.
   * guile: Guile-bindings removed. They have been extracted into a

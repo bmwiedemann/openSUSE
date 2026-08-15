@@ -1,0 +1,69 @@
+FIPS: mark ECDSA signature generation below 128-bit security strength as non-approved in the service indicator
+
+Index: gnutls-3.8.10/lib/nettle/pk.c
+===================================================================
+--- gnutls-3.8.10.orig/lib/nettle/pk.c
++++ gnutls-3.8.10/lib/nettle/pk.c
+@@ -1983,8 +1983,10 @@ static int _wrap_nettle_pk_sign(gnutls_p
+ 			goto cleanup;
+ 		}
+ 
+-		/* P-192 is not supported in FIPS 140-3 */
+-		if (curve_id == GNUTLS_ECC_CURVE_SECP192R1) {
++		/* P-192 (FIPS 140-3) and P-224 (< 128-bit security, NIST
++		 * SP 800-131A rev3, after 2030-12-31) are not approved */
++		if (curve_id == GNUTLS_ECC_CURVE_SECP192R1 ||
++		    curve_id == GNUTLS_ECC_CURVE_SECP224R1) {
+ 			not_approved = true;
+ 		}
+ 
+Index: gnutls-3.8.10/tests/privkey-keygen.c
+===================================================================
+--- gnutls-3.8.10.orig/tests/privkey-keygen.c
++++ gnutls-3.8.10/tests/privkey-keygen.c
+@@ -134,6 +134,18 @@ static bool is_supported_pk_algo(gnutls_
+ 	return false;
+ }
+ 
++static bool is_approved_sig_pkey(gnutls_pk_algorithm_t algorithm,
++				 gnutls_x509_privkey_t pkey, unsigned bits)
++{
++	if (!is_approved_pk_algo(algorithm, bits))
++		return false;
++
++	if (algorithm != GNUTLS_PK_EC)
++		return true;
++
++	return gnutls_x509_privkey_sec_param(pkey) >= GNUTLS_SEC_PARAM_HIGH;
++}
++
+ void doit(void)
+ {
+ 	gnutls_x509_privkey_t pkey, dst;
+@@ -211,7 +223,7 @@ void doit(void)
+ 					gnutls_pk_algorithm_get_name(algorithm),
+ 					ret);
+ 			}
+-			if (is_approved_pk_algo(algorithm,
++			if (is_approved_sig_pkey(algorithm, pkey,
+ 				gnutls_sec_param_to_pk_bits(algorithm, sec_param[i]))) {
+ 				FIPS_POP_CONTEXT(APPROVED);
+ 			} else {
+@@ -247,7 +259,7 @@ void doit(void)
+ 
+ 			FIPS_PUSH_CONTEXT();
+ 			sign_verify_data(algorithm, pkey);
+-			if (is_approved_pk_algo(algorithm,
++			if (is_approved_sig_pkey(algorithm, pkey,
+ 				gnutls_sec_param_to_pk_bits(algorithm, sec_param[i]))) {
+ 				FIPS_POP_CONTEXT(APPROVED);
+ 			} else {
+@@ -256,7 +268,7 @@ void doit(void)
+ 
+ 			FIPS_PUSH_CONTEXT();
+ 			sign_verify_data(algorithm, dst);
+-			if (is_approved_pk_algo(algorithm,
++			if (is_approved_sig_pkey(algorithm, dst,
+ 				gnutls_sec_param_to_pk_bits(algorithm, sec_param[i]))) {
+ 				FIPS_POP_CONTEXT(APPROVED);
+ 			} else {

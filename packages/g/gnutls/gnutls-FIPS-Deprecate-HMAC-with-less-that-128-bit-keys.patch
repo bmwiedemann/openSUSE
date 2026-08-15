@@ -1,0 +1,71 @@
+FIPS: mark HMAC with keys shorter than 128 bits as non-approved in the service indicator
+
+--- a/lib/crypto-api.c
++++ b/lib/crypto-api.c
+@@ -607,8 +607,9 @@
+ 		not_approved = true;
+ 	}
+ 
+-	/* Key lengths of less than 112 bits are not approved */
+-	if (keylen < 14) {
++	/* Key lengths of less than 128 bits are not approved
++	 * (NIST SP 800-131A rev3, after 2030-12-31) */
++	if (keylen < 16) {
+ 		not_approved = true;
+ 	}
+ 
+@@ -769,8 +770,9 @@
+ 		not_approved = true;
+ 	}
+ 
+-	/* Key lengths of less than 112 bits are not approved */
+-	if (keylen < 14) {
++	/* Key lengths of less than 128 bits are not approved
++	 * (NIST SP 800-131A rev3, after 2030-12-31) */
++	if (keylen < 16) {
+ 		not_approved = true;
+ 	}
+ 
+--- a/tests/fips-test.c
++++ b/tests/fips-test.c
+@@ -409,7 +409,7 @@
+ 		fail("gnutls_hmac_init succeeded for md5\n");
+ 	}
+ 
+-	/* HMAC with key equal to or longer than 112 bits: approved */
++	/* HMAC with key equal to or longer than 128 bits: approved */
+ 	FIPS_PUSH_CONTEXT();
+ 	ret = gnutls_hmac_init(&mh, GNUTLS_MAC_SHA256, key.data, key.size);
+ 	if (ret < 0) {
+@@ -418,16 +418,16 @@
+ 	gnutls_hmac_deinit(mh, NULL);
+ 	FIPS_POP_CONTEXT(APPROVED);
+ 
+-	/* HMAC with key shorter than 112 bits: not approved */
++	/* HMAC with key shorter than 128 bits: not approved */
+ 	FIPS_PUSH_CONTEXT();
+-	ret = gnutls_hmac_init(&mh, GNUTLS_MAC_SHA256, key.data, 13);
++	ret = gnutls_hmac_init(&mh, GNUTLS_MAC_SHA256, key.data, 15);
+ 	if (ret < 0) {
+ 		fail("gnutls_hmac_init failed\n");
+ 	}
+ 	gnutls_hmac_deinit(mh, NULL);
+ 	FIPS_POP_CONTEXT(NOT_APPROVED);
+ 
+-	/* HMAC with key equal to or longer than 112 bits: approved */
++	/* HMAC with key equal to or longer than 128 bits: approved */
+ 	FIPS_PUSH_CONTEXT();
+ 	ret = gnutls_hmac_fast(GNUTLS_MAC_SHA256, key.data, key.size, data.data,
+ 			       data.size, hmac);
+@@ -436,9 +436,9 @@
+ 	}
+ 	FIPS_POP_CONTEXT(APPROVED);
+ 
+-	/* HMAC with key shorter than 112 bits: not approved */
++	/* HMAC with key shorter than 128 bits: not approved */
+ 	FIPS_PUSH_CONTEXT();
+-	ret = gnutls_hmac_fast(GNUTLS_MAC_SHA256, key.data, 13, data.data,
++	ret = gnutls_hmac_fast(GNUTLS_MAC_SHA256, key.data, 15, data.data,
+ 			       data.size, hmac);
+ 	if (ret < 0) {
+ 		fail("gnutls_hmac_fast failed\n");

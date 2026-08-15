@@ -76,6 +76,14 @@ Patch7:         gnutls-FIPS-Remove-SHA1-self-test.patch
 Patch8:         gnutls-FIPS-HMAC-leancrypto.patch
 #PATCH-FIX-SUSE bsc#1262397 Add NIST SP800-56Brev2 6.4.2.2 check: Partial public-key validation for RSA OAEP
 Patch9:         gnutls-FIPS-RSA-OAEP-PK-validation.patch
+# PATCH-FIX-SUSE bsc#1265612 FIPS: Deprecate RSA Signatures with less than 128-bit
+Patch10:        gnutls-FIPS-Deprecate-RSAsig-with-less-that-128-bit.patch
+# PATCH-FIX-SUSE bsc#1265610 FIPS: Deprecate HMAC with keys less than 128-bit
+Patch11:        gnutls-FIPS-Deprecate-HMAC-with-less-that-128-bit-keys.patch
+# PATCH-FIX-SUSE bsc#1265609 bsc#1265611 FIPS: Mark SHA-224 and SHA3-224 as legacy
+Patch12:        gnutls-FIPS-SHA224-SHA3224-Legacy-Status.patch
+# PATCH-FIX-SUSE bsc#1265613 FIPS: Deprecate ECDSA siggen with less than 128-bit
+Patch13:        gnutls-FIPS-Deprecate-ECDSA-with-less-that-128-bit.patch
 
 BuildRequires:  autogen
 BuildRequires:  automake

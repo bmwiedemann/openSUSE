@@ -1,0 +1,179 @@
+FIPS: mark SHA-224 and SHA3-224 as non-approved in the service indicator
+
+Index: gnutls-3.8.10/lib/fips.h
+===================================================================
+--- gnutls-3.8.10.orig/lib/fips.h
++++ gnutls-3.8.10/lib/fips.h
+@@ -82,8 +82,6 @@ is_mac_algo_hmac_approved_in_fips(gnutls
+ 	case GNUTLS_MAC_SHA256:
+ 	case GNUTLS_MAC_SHA384:
+ 	case GNUTLS_MAC_SHA512:
+-	case GNUTLS_MAC_SHA224:
+-	case GNUTLS_MAC_SHA3_224:
+ 	case GNUTLS_MAC_SHA3_256:
+ 	case GNUTLS_MAC_SHA3_384:
+ 	case GNUTLS_MAC_SHA3_512:
+@@ -116,7 +114,19 @@ inline static bool is_mac_algo_approved_
+ 
+ inline static bool is_mac_algo_allowed_in_fips(gnutls_mac_algorithm_t algo)
+ {
+-	return is_mac_algo_approved_in_fips(algo);
++	if (is_mac_algo_approved_in_fips(algo)) {
++		return true;
++	}
++
++	/* SHA-224 and SHA3-224 are usable but not approved
++	 * (NIST SP 800-131A rev3, after 2030-12-31) */
++	switch (algo) {
++	case GNUTLS_MAC_SHA224:
++	case GNUTLS_MAC_SHA3_224:
++		return true;
++	default:
++		return false;
++	}
+ }
+ 
+ inline static bool
+Index: gnutls-3.8.10/lib/crypto-selftests.c
+===================================================================
+--- gnutls-3.8.10.orig/lib/crypto-selftests.c
++++ gnutls-3.8.10/lib/crypto-selftests.c
+@@ -2893,7 +2893,7 @@ int gnutls_mac_self_test(unsigned flags,
+ 		FALLTHROUGH;
+ 		NON_FIPS_CASE(GNUTLS_MAC_SHA1, test_mac, hmac_sha1_vectors);
+ 		FALLTHROUGH;
+-		CASE(GNUTLS_MAC_SHA224, test_mac, hmac_sha224_vectors);
++		NON_FIPS_CASE(GNUTLS_MAC_SHA224, test_mac, hmac_sha224_vectors);
+ 		FALLTHROUGH;
+ 		CASE(GNUTLS_MAC_SHA256, test_mac, hmac_sha256_vectors);
+ 		FALLTHROUGH;
+@@ -2965,7 +2965,7 @@ int gnutls_digest_self_test(unsigned fla
+ 		FALLTHROUGH;
+ 		CASE(GNUTLS_DIG_SHA1, test_digest, sha1_vectors);
+ 		FALLTHROUGH;
+-		CASE(GNUTLS_DIG_SHA224, test_digest, sha224_vectors);
++		NON_FIPS_CASE(GNUTLS_DIG_SHA224, test_digest, sha224_vectors);
+ 		FALLTHROUGH;
+ 		CASE(GNUTLS_DIG_SHA256, test_digest, sha256_vectors);
+ 		FALLTHROUGH;
+@@ -2974,7 +2974,7 @@ int gnutls_digest_self_test(unsigned fla
+ 		CASE(GNUTLS_DIG_SHA512, test_digest, sha512_vectors);
+ #ifdef NETTLE_SHA3_FIPS202
+ 		FALLTHROUGH;
+-		CASE(GNUTLS_DIG_SHA3_224, test_digest, sha3_224_vectors);
++		NON_FIPS_CASE(GNUTLS_DIG_SHA3_224, test_digest, sha3_224_vectors);
+ 		FALLTHROUGH;
+ 		CASE(GNUTLS_DIG_SHA3_256, test_digest, sha3_256_vectors);
+ 		FALLTHROUGH;
+Index: gnutls-3.8.10/lib/fips.c
+===================================================================
+--- gnutls-3.8.10.orig/lib/fips.c
++++ gnutls-3.8.10/lib/fips.c
+@@ -696,11 +696,6 @@ int _gnutls_fips_perform_self_checks2(vo
+ 	}
+ 
+ 	/* Digest tests */
+-	ret = gnutls_digest_self_test(0, GNUTLS_DIG_SHA3_224);
+-	if (ret < 0) {
+-		return gnutls_assert_val(GNUTLS_E_SELF_TEST_ERROR);
+-	}
+-
+ 	ret = gnutls_digest_self_test(0, GNUTLS_DIG_SHA3_256);
+ 	if (ret < 0) {
+ 		return gnutls_assert_val(GNUTLS_E_SELF_TEST_ERROR);
+@@ -727,11 +722,6 @@ int _gnutls_fips_perform_self_checks2(vo
+ 	}
+ 
+ 	/* MAC (includes message digest test) */
+-	ret = gnutls_mac_self_test(0, GNUTLS_MAC_SHA224);
+-	if (ret < 0) {
+-		return gnutls_assert_val(GNUTLS_E_SELF_TEST_ERROR);
+-	}
+-
+ 	ret = gnutls_mac_self_test(0, GNUTLS_MAC_SHA256);
+ 	if (ret < 0) {
+ 		return gnutls_assert_val(GNUTLS_E_SELF_TEST_ERROR);
+Index: gnutls-3.8.10/lib/nettle/pk.c
+===================================================================
+--- gnutls-3.8.10.orig/lib/nettle/pk.c
++++ gnutls-3.8.10/lib/nettle/pk.c
+@@ -2011,7 +2011,6 @@ static int _wrap_nettle_pk_sign(gnutls_p
+ 		case GNUTLS_MAC_SHA256:
+ 		case GNUTLS_MAC_SHA384:
+ 		case GNUTLS_MAC_SHA512:
+-		case GNUTLS_MAC_SHA224:
+ 			break;
+ 		default:
+ 			not_approved = true;
+@@ -2485,7 +2484,6 @@ static int _wrap_nettle_pk_verify(gnutls
+ 		case GNUTLS_MAC_SHA256:
+ 		case GNUTLS_MAC_SHA384:
+ 		case GNUTLS_MAC_SHA512:
+-		case GNUTLS_MAC_SHA224:
+ 			break;
+ 		default:
+ 			not_approved = true;
+Index: gnutls-3.8.10/lib/pubkey.c
+===================================================================
+--- gnutls-3.8.10.orig/lib/pubkey.c
++++ gnutls-3.8.10/lib/pubkey.c
+@@ -2520,7 +2520,6 @@ static int _pkcs1_rsa_verify_sig(gnutls_
+ 		case GNUTLS_MAC_SHA256:
+ 		case GNUTLS_MAC_SHA384:
+ 		case GNUTLS_MAC_SHA512:
+-		case GNUTLS_MAC_SHA224:
+ 			break;
+ 		default:
+ 			_gnutls_switch_fips_state(
+Index: gnutls-3.8.10/tests/fips-test.c
+===================================================================
+--- gnutls-3.8.10.orig/tests/fips-test.c
++++ gnutls-3.8.10/tests/fips-test.c
+@@ -445,6 +445,15 @@ void doit(void)
+ 	}
+ 	FIPS_POP_CONTEXT(NOT_APPROVED);
+ 
++	/* HMAC with SHA-224 is not approved */
++	FIPS_PUSH_CONTEXT();
++	ret = gnutls_hmac_init(&mh, GNUTLS_MAC_SHA224, key.data, key.size);
++	if (ret < 0) {
++		fail("gnutls_hmac_init failed for sha224\n");
++	}
++	gnutls_hmac_deinit(mh, NULL);
++	FIPS_POP_CONTEXT(NOT_APPROVED);
++
+ 	/* PBKDF2 with key equal to or longer than 112 bits: approved */
+ 	FIPS_PUSH_CONTEXT();
+ 	ret = gnutls_pbkdf2(GNUTLS_MAC_SHA256, &key, &iv, 1000, &pbkdf2,
+@@ -493,6 +502,31 @@ void doit(void)
+ 	}
+ 	FIPS_POP_CONTEXT(NOT_APPROVED);
+ 
++	/* PBKDF2 with SHA-224 is not approved */
++	FIPS_PUSH_CONTEXT();
++	ret = gnutls_pbkdf2(GNUTLS_MAC_SHA224, &key, &iv, 1000, &pbkdf2,
++			    sizeof(pbkdf2));
++	if (ret < 0) {
++		fail("gnutls_pbkdf2 failed\n");
++	}
++	FIPS_POP_CONTEXT(NOT_APPROVED);
++
++	/* Message digest with SHA-224 is not approved */
++	FIPS_PUSH_CONTEXT();
++	ret = gnutls_hash_fast(GNUTLS_DIG_SHA224, data.data, data.size, hash);
++	if (ret < 0) {
++		fail("gnutls_hash_fast failed for sha224\n");
++	}
++	FIPS_POP_CONTEXT(NOT_APPROVED);
++
++	/* Message digest with SHA3-224 is not approved */
++	FIPS_PUSH_CONTEXT();
++	ret = gnutls_hash_fast(GNUTLS_DIG_SHA3_224, data.data, data.size, hash);
++	if (ret < 0) {
++		fail("gnutls_hash_fast failed for sha3-224\n");
++	}
++	FIPS_POP_CONTEXT(NOT_APPROVED);
++
+ 	ret = gnutls_rnd(GNUTLS_RND_NONCE, key16, sizeof(key16));
+ 	if (ret < 0) {
+ 		fail("gnutls_rnd failed\n");
