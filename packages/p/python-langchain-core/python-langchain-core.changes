@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Aug 15 05:46:56 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.5.5:
+  * Guard against malformed Anthropic content blocks
+  * Respect pydantic field aliases when validating tool inputs
+  * Fix chunk merging: merge_dicts now raises TypeError for
+    differing boolean values instead of silently summing them to
+    an int, AddableDict addition raises TypeError on
+    type-incompatible keys instead of dropping data, and
+    merge_lists no longer misidentifies non-dict elements as
+    index-keyed
+  * Handle v1 base model validation in the async path
+  * Handle tool descriptions when infer_schema=False
+  * Clear the usage metadata callback on exceptions in the
+    context manager
+  * Handle falsy LLM and chat model caches
+  * Preserve non-str/non-dict items in DictPromptTemplate list
+    values
+  * Raise ValueError when the explicit tool_outputs length does
+    not match tool_calls in tool_example_to_messages
+  * Make abatch_iterate consistent with batch_iterate for a None
+    or zero batch size
+- Add python-httpx >= 0.23.0 dependency: upstream now declares
+  httpx as an explicit runtime requirement
+
+-------------------------------------------------------------------
 Wed Aug 12 05:19:58 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.5.4:

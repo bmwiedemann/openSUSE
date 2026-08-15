@@ -17,7 +17,7 @@
 
 
 Name:           python-langchain-core
-Version:        1.5.4
+Version:        1.5.5
 Release:        0
 Summary:        Building applications with LLMs through composability
 License:        MIT
@@ -30,6 +30,7 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML >= 5.3
+Requires:       python-httpx >= 0.23.0
 Requires:       python-jsonpatch >= 1.33
 Requires:       python-langchain-protocol >= 0.0.17
 Requires:       python-langsmith >= 0.3.45
@@ -43,6 +44,7 @@ BuildArch:      noarch
 BuildRequires:  %{python_module PyYAML >= 5.3}
 BuildRequires:  %{python_module blockbuster}
 BuildRequires:  %{python_module freezegun}
+BuildRequires:  %{python_module httpx >= 0.23.0}
 BuildRequires:  %{python_module jsonpatch >= 1.33}
 BuildRequires:  %{python_module langchain-protocol >= 0.0.17}
 BuildRequires:  %{python_module langsmith >= 0.3.45}

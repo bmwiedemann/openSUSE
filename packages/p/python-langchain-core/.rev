@@ -71,4 +71,12 @@ Verified on aarch64: build green for python313 and python314, rpmlint
 0 errors / 0 warnings / 0 badness.</comment>
     <requestid>1370780</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5911146b540637b7ff8f5a5c8687c353</srcmd5>
+    <version>1.5.5</version>
+    <time>1786826472</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.5.5. Upstream adds httpx as an explicit runtime dependency (declared in the spec). %check green: 1987 tests (py313) / 2010 (py314), rpmlint 0 badness.</comment>
+    <requestid>1371288</requestid>
+  </revision>
 </revisionlist>
