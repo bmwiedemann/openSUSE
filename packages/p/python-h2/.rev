@@ -155,4 +155,43 @@
     <comment></comment>
     <requestid>1301436</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>8dab102dd3919cc88ffda5b6190da24d</srcmd5>
+    <version>4.4.1</version>
+    <time>1786826396</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.4.1 (fixes CVE-2026-71554, bsc#1274386)
+  * Performance improvement: remove consumed frames in-place from data buffer.
+  * Reject duplicate Host headers in request headers. Thanks to Sunand Mohan
+    for the report.
+- Update to 4.4.0
+  * Support for Python 3.9 has been removed.
+  * Support for PyPy 3.9 has been removed.
+  * Stream.end_stream() now raises NoSuchStreamError or StreamClosedError
+    exceptions, instead of a generic KeyError.
+  * Duplicate content-length headers with different values now raise
+    ProtocolError. Previously, the first content-length header was accepted
+    and later conflicting values were ignored. Thanks to Harshal Parekh for
+    the report.
+  * Parse content-length headers according to RFC9110 grammar for numbers
+    (1*DIGIT). Thanks to Arkadiusz Marta for the report.
+  * backfill from v4.3.0 Convert emitted events into Python dataclass, which
+    introduces new constructors with required arguments. Instantiating these
+    events without arguments, as previously commonly used API pattern, will no
+    longer work.
+  * Support for Python 3.14 has been added.
+  * H2Connection.receive_data now accepts any byte-like object that implements
+    the buffer protocol, such as bytes, bytearray, and memoryview. Existing
+    bytes callers are unaffected.
+  * Align CONNECT pseudo-header validation with RFC 9113 s8.3 and RFC 8441 s4.
+    Ordinary CONNECT now requires :method=CONNECT and :authority, and forbids
+    :scheme/:path. Extended CONNECT (e.g., WebSocket) requires :scheme, :path,
+    :authority plus :protocol.
+  * Fix incorrect substring matching of secure header in cookie and :method.
+  * Fix to allow sending 0 bytes on a stream even if the flow control window is
+    negative.
+  * Reject non-zero SETTINGS_ENABLE_PUSH values received from servers.
+</comment>
+    <requestid>1370827</requestid>
+  </revision>
 </revisionlist>
