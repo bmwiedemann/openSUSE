@@ -1,7 +1,7 @@
 #
 # spec file for package sndiff
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 Name:           sndiff
-Version:        0.2.2~2
+Version:        v0.3~0
 Release:        0
 Summary:        Tool for diffing packages and files from snapshots
 License:        MIT
