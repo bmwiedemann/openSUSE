@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Aug 15 05:45:47 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.46:
+  * Bump the on-disk database format to version 136; rdm now tries
+    to restore existing projects across the format bump instead of
+    discarding them
+  * Do not add implicit clang include paths when the project is
+    already built with clang
+  * Handle make_shared/make_unique as function templates
+  * Watch the parent directory for compile_commands.json changes
+  * Add a wasm32 target flag for Emscripten sources
+  * Nicer progress bars
+  * Emacs: mouse click bindings moved behind the new
+    rtags-mouse-enabled option and are off by default
+  * Emacs: save each modified buffer only once after a rename
+  * Add an experimental TypeScript MCP server in mcp-server/,
+    which is neither built nor packaged
+  * Bundled rct: handle atomic file replacement in the inotify
+    watcher, refresh the vendored nlohmann/json
+- Upstream published no release tarball for 2.45 and 2.46, so the
+  sources are now taken from the git tag archive plus a separate
+  tarball for the src/rct submodule at its pinned revision
+- Drop the -DCURSES_CURSES_LIBRARY cmake option and the
+  pkgconfig(ncurses) BuildRequires - neither rtags nor rct refers
+  to curses any more
+- Raise the cmake BuildRequires floor to 3.8.2, matching
+  cmake_minimum_required in CMakeLists.txt
+
+-------------------------------------------------------------------
 Wed Jun  3 13:49:51 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.44:

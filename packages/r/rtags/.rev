@@ -107,4 +107,12 @@
 - Drop emacs-28 patch (merged upstream) and the now-unneeded CMAKE_POLICY_VERSION_MINIMUM workaround</comment>
     <requestid>1356993</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ff1681641ae81ec69137ad88aa8fd867</srcmd5>
+    <version>2.46</version>
+    <time>1786826477</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2.46. Upstream published no release tarball for 2.45/2.46, so sources are now the git tag archive plus a pinned src/rct submodule tarball. Drops the dead ncurses BuildRequires and corrects the cmake floor to 3.8.2. Build green, rpmlint 0 badness.</comment>
+    <requestid>1371290</requestid>
+  </revision>
 </revisionlist>

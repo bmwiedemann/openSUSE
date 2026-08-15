@@ -16,20 +16,24 @@
 #
 
 
+%define rct_commit f9b32c837c4c6a58d8f071ffd4f87078ab6f2cdf
 Name:           rtags
-Version:        2.44
+Version:        2.46
 Release:        0
 Summary:        Clang based source code indexer
 License:        GPL-3.0-or-later
 URL:            https://github.com/Andersbakken/rtags
-Source0:        https://github.com/Andersbakken/rtags/releases/download/v%{version}/rtags-%{version}.tar.bz2
+# Upstream published no release tarball for 2.45/2.46, so the sources are taken
+# from the git tag. src/rct is a git submodule and therefore has to be fetched
+# separately; rct_commit is the submodule revision recorded for tag v%%{version}.
+Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:        https://github.com/Andersbakken/rct/archive/%{rct_commit}.tar.gz#/rct-%{rct_commit}.tar.gz
 BuildRequires:  clang-devel
-BuildRequires:  cmake >= 3.5
+BuildRequires:  cmake >= 3.8.2
 BuildRequires:  emacs-nox
 BuildRequires:  gcc-c++
 BuildRequires:  llvm-devel
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(zlib)
 
@@ -41,10 +45,11 @@ Rtags is Clang based source file indexer supporting C/C++/Objective-C(++) code.
 
 %prep
 %autosetup -p1
+mkdir -p src/rct
+tar -xf %{SOURCE1} --strip-components=1 -C src/rct
 
 %build
-%cmake \
-  -DCURSES_CURSES_LIBRARY:FILEPATH="%{_libdir}/libncurses.so"
+%cmake
 %cmake_build
 
 %install
