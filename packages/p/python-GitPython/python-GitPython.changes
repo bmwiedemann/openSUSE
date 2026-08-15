@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Aug 12 13:15:02 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to version 3.1.59 (fixes VUL-0: bsc#1274825,
+  bsc#1274826, bsc#1274827, bsc#1274828, bsc#1274829):
+  * prepare changelog prior to release
+  * fix: ignore includes in submodule configuration
+  * fix: preserve multiline config values when writing
+  * Block separate git directories during clone
+  * fix: `index.add()` now supports filters (#2021)
+  * prepare next release
+  * Block file-reading Git options
+
+-------------------------------------------------------------------
 Wed Aug  5 08:19:15 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 3.1.58 (fixes VUL-0: bsc#1273775, bsc#1273779,

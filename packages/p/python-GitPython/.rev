@@ -1110,4 +1110,21 @@ bsc#1273781, bsc#1273783, bsc#1273785, bsc#1278787):
 * Block unsafe Git file and URL options</comment>
     <requestid>1370040</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>0f58541e5a6341037a422556e1a6db2e</srcmd5>
+    <version>3.1.59</version>
+    <time>1786826372</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.1.59 (fixes VUL-0: bsc#1274825,
+  bsc#1274826, bsc#1274827, bsc#1274828, bsc#1274829):
+  * prepare changelog prior to release
+  * fix: ignore includes in submodule configuration
+  * fix: preserve multiline config values when writing
+  * Block separate git directories during clone
+  * fix: `index.add()` now supports filters (#2021)
+  * prepare next release
+  * Block file-reading Git options
+</comment>
+    <requestid>1371034</requestid>
+  </revision>
 </revisionlist>
