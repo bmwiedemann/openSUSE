@@ -408,4 +408,12 @@
     <comment>- Update to release 22.0.4</comment>
     <requestid>1366243</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>5b614b40b12fa6ff78c0781d966de911</srcmd5>
+    <version>22.0.6</version>
+    <time>1786826411</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 22.0.6</comment>
+    <requestid>1370965</requestid>
+  </revision>
 </revisionlist>

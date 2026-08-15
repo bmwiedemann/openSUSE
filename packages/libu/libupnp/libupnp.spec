@@ -19,7 +19,7 @@
 
 %define pnpver 22
 Name:           libupnp
-Version:        22.0.4
+Version:        22.0.6
 Release:        0
 Summary:        An implementation of Universal Plug and Play (UPnP)
 License:        BSD-3-Clause
