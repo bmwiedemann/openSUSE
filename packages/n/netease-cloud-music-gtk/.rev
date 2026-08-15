@@ -271,4 +271,20 @@
 </comment>
     <requestid>1349484</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>89e7ea9a021ebaba12f4bd582c947505</srcmd5>
+    <version>2.5.4</version>
+    <time>1786826467</time>
+    <user>dimstar_suse</user>
+    <comment>- Release version 2.5.4 
+ + Fix and improve the heartbeat mode
+ + Add an exit button
+ + Add system tray support
+ + Add playlist persistence
+ + Optimize lyrics display
+ + Replace the audio interface
+ + Update dependency version 
+</comment>
+    <requestid>1371271</requestid>
+  </revision>
 </revisionlist>
