@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 16 15:02:27 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Switch from mbedtls to gnutls
+
+-------------------------------------------------------------------
 Wed Mar 18 12:59:20 UTC 2026 - Richard Biener <rguenther@suse.com>
 
 - Add librist-const-correctness.patch to fix build with new glibc

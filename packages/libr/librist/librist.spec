@@ -19,8 +19,6 @@
 
 %define sover   4
 %define libname %{name}%{sover}
-# BRs would expand rings
-%bcond_with unbundle
 Name:           librist
 Version:        0.2.11
 Release:        0
@@ -34,10 +32,9 @@ Group:          Development/Libraries/C and C++
 BuildRequires:  meson >= 0.47
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
-%if %{with unbundle}
-BuildRequires:  mbedtls-devel
+BuildRequires:  gnutls-devel
+BuildRequires:  libnettle-devel
 BuildRequires:  pkgconfig(libcjson)
-%endif
 
 %description
 A library that can be used to speak the RIST protocol (as defined by Video
@@ -71,7 +68,7 @@ This package contains the user tools for the RIST protocol library.
 %autosetup -n %{name}-v%{version} -p1
 
 %build
-%meson
+%meson -Duse_nettle=true -Duse_mbedtls=false
 %meson_build
 
 %install
