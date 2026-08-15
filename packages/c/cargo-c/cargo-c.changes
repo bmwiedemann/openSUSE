@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 13 04:13:47 UTC 2026 - William Brown <william.brown@suse.com>
+
+- bsc#1274305 - CVE-2026-25541 - integer overflow in 'BytesMut:reserve' can lead to undefined behavior and crashes
+
+-------------------------------------------------------------------
 Wed Jul  8 02:00:38 UTC 2026 - William Brown <william.brown@suse.com>
 
 - bsc#1270996 - CVE-2026-45784 - AES-KW incorrect buffer sizing in openssl
