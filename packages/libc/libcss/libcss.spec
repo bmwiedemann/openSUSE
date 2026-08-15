@@ -1,7 +1,7 @@
 #
 # spec file for package libcss
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ URL:            https://www.netsurf-browser.org/projects/libcss/
 Source:         http://download.netsurf-browser.org/libs/releases/%{name}-%{version}-src.tar.gz
 Patch0:         libcss-buildopts.patch
 Patch1:         fix-test-includes.patch
+Patch2:         fix-32-bit.patch
 BuildRequires:  netsurf-buildsystem >= 1.1
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(check)
