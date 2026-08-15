@@ -889,4 +889,13 @@ ProxyCommand parsing in ssh configuration files:
     <comment></comment>
     <requestid>1367382</requestid>
   </revision>
+  <revision rev="84" vrev="2">
+    <srcmd5>818042bb519e03ca8c0fcafce2ddc90a</srcmd5>
+    <version>0.11.5</version>
+    <time>1786826428</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix libssh ignores system wide crypto policies (bsc#1272547)
+  * Add patch: libssh-cmake-Add-option-WITH_HERMETIC_USR.patch (forwarded request 1370900 from lmulling)</comment>
+    <requestid>1370901</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 12 21:56:01 UTC 2026 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Fix libssh ignores system wide crypto policies (bsc#1272547)
+  * Add patch: libssh-cmake-Add-option-WITH_HERMETIC_USR.patch
+
+-------------------------------------------------------------------
 Wed Jul 22 08:10:14 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 0.11.5:

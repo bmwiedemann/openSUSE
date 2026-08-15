@@ -46,6 +46,8 @@ Source4:        libssh_server.config
 Source99:       baselibs.conf
 # PATCH-FIX-SUSE: fix hang in torture_channel tests (bsc#1243799)
 Patch1:         libssh-tests-Fix-an-issue-where-torture_session-request-a-SIGTERM-too-early.patch
+# PATCH-FIX-UPSTREAM: /usr/etc support (bsc#1272547)
+Patch2:         libssh-cmake-Add-option-WITH_HERMETIC_USR.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  krb5-devel
