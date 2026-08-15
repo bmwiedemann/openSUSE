@@ -1,7 +1,7 @@
 #
 # spec file for package callaudiod
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ Summary:        Daemon for audio calls
 License:        GPL-3.0-or-later AND MIT
 URL:            https://gitlab.com/mobian1/callaudiod
 Source0:        %{name}-%{version}.tar.zst
+Patch0:         %{url}/-/commit/fe87a9267f1e074d19055d7a236e6b6f759af11d.patch
 
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
@@ -74,7 +75,7 @@ A daemon for audio calls.
 This package contains API documentation for %{name}.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %meson \

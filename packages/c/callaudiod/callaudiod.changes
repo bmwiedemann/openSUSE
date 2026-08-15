@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 29 17:34:42 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add fe87a9267f1e074d19055d7a236e6b6f759af11d.patch: Check if sink
+  has an active port before accessing it. This fixes a crash on
+  logout.
+
+-------------------------------------------------------------------
 Thu Sep 04 12:19:25 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.1.99:

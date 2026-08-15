@@ -1,0 +1,37 @@
+From fe87a9267f1e074d19055d7a236e6b6f759af11d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Thu, 13 Nov 2025 07:58:18 +0100
+Subject: [PATCH] Check if sink has an active port before accessing it
+
+This fixes a crash on logout.
+
+Closes: https://gitlab.com/mobian1/callaudiod/-/issues/36
+---
+ src/cad-pulse.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/cad-pulse.c b/src/cad-pulse.c
+index ba6f624..6ea4ea6 100644
+--- a/src/cad-pulse.c
++++ b/src/cad-pulse.c
+@@ -383,7 +383,7 @@ static void init_sink_info(pa_context *ctx, const pa_sink_info *info, int eol, v
+ 
+         switch (self->audio_mode) {
+         case CALL_AUDIO_MODE_CALL:
+-            if (g_strcmp0(info->active_port->name, self->speaker_port) == 0) {
++            if (info->active_port && g_strcmp0(info->active_port->name, self->speaker_port) == 0) {
+                 self->speaker_state = CALL_AUDIO_SPEAKER_ON;
+                 g_object_set(self->manager, "speaker-state", self->speaker_state, NULL);
+                 /*
+@@ -406,7 +406,7 @@ static void init_sink_info(pa_context *ctx, const pa_sink_info *info, int eol, v
+              * Note: this code path is only used when the card doesn't have a
+              * voice profile, otherwise things are easier to deal with.
+              */
+-            if (g_strcmp0(info->active_port->name, self->earpiece_port) == 0) {
++            if (info->active_port && g_strcmp0(info->active_port->name, self->earpiece_port) == 0) {
+                 self->audio_mode = CALL_AUDIO_MODE_CALL;
+                 g_object_set(self->manager, "audio-mode", self->audio_mode, NULL);
+                 /*
+-- 
+GitLab
+
