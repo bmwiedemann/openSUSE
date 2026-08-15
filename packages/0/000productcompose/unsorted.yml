@@ -1445,6 +1445,10 @@ unsorted:
   - bff 
   - bff-samples 
   - bff4 
+  - bfs 
+  - bfs-completion-bash 
+  - bfs-completion-fish 
+  - bfs-completion-zsh 
   - bgzip 
   - biabam 
   - biblesync-devel 
@@ -2613,6 +2617,15 @@ unsorted:
   - containerized-data-importer1.65-tests 
   - containerized-data-importer1.65-uploadproxy 
   - containerized-data-importer1.65-uploadserver 
+  - containerized-data-importer1.66-api 
+  - containerized-data-importer1.66-cloner 
+  - containerized-data-importer1.66-controller 
+  - containerized-data-importer1.66-importer 
+  - containerized-data-importer1.66-manifests 
+  - containerized-data-importer1.66-operator 
+  - containerized-data-importer1.66-tests 
+  - containerized-data-importer1.66-uploadproxy 
+  - containerized-data-importer1.66-uploadserver 
   - containers-systemd 
   - containment-rpm 
   - containment-tik-img-to-rpm 
@@ -4185,6 +4198,7 @@ unsorted:
   - ffcall 
   - fflas-ffpack-devel 
   - fflas-ffpack-doc 
+  - ffmpeg 
   - ffmpeg-4 
   - ffmpeg-4-libavcodec-devel 
   - ffmpeg-4-libavdevice-devel 
@@ -4217,6 +4231,15 @@ unsorted:
   - ffmpeg-8-libswscale-devel 
   - ffmpeg-8-mini-devel 
   - ffmpeg-8-mini-libs 
+  - ffmpeg-9-libavcodec-devel 
+  - ffmpeg-9-libavdevice-devel 
+  - ffmpeg-9-libavfilter-devel 
+  - ffmpeg-9-libavformat-devel 
+  - ffmpeg-9-libavutil-devel 
+  - ffmpeg-9-libswresample-devel 
+  - ffmpeg-9-libswscale-devel 
+  - ffmpeg-9-mini-devel 
+  - ffmpeg-9-mini-libs 
   - ffmsindex 
   - ffnvcodec-devel 
   - fftw3-devel 
@@ -7639,7 +7662,6 @@ unsorted:
   - golly-assets 
   - golly-devel 
   - gom-devel 
-  - gomuks 
   - gontributions 
   - goobox 
   - goobox-lang 
@@ -10811,6 +10833,21 @@ unsorted:
   - kubevirt1.8-virt-operator 
   - kubevirt1.8-virt-synchronization-controller 
   - kubevirt1.8-virtctl 
+  - kubevirt1.9-container-disk 
+  - kubevirt1.9-libguestfs-tools 
+  - kubevirt1.9-manifests 
+  - kubevirt1.9-pr-helper-conf 
+  - kubevirt1.9-sidecar-shim 
+  - kubevirt1.9-tests 
+  - kubevirt1.9-virt-api 
+  - kubevirt1.9-virt-controller 
+  - kubevirt1.9-virt-exportproxy 
+  - kubevirt1.9-virt-exportserver 
+  - kubevirt1.9-virt-handler 
+  - kubevirt1.9-virt-launcher 
+  - kubevirt1.9-virt-operator 
+  - kubevirt1.9-virt-synchronization-controller 
+  - kubevirt1.9-virtctl 
   - kubic-locale-archive 
   - kubic-pause 
   - kubie 
@@ -10958,6 +10995,10 @@ unsorted:
   - lash 
   - lash-devel 
   - last-resort-font 
+  - lastpass-cli 
+  - lastpass-cli-bash-completion 
+  - lastpass-cli-fish-completion 
+  - lastpass-cli-zsh-completion 
   - laszip-devel 
   - latencytop 
   - latex2html 
@@ -12243,16 +12284,20 @@ unsorted:
   - libavcodec58_134 
   - libavcodec61 
   - libavcodec62-32bit 
+  - libavcodec63 
   - libavdevice58_13 
   - libavdevice61 
   - libavdevice62 
   - libavdevice62-32bit 
+  - libavdevice63 
   - libavfilter10 
   - libavfilter11-32bit 
+  - libavfilter12 
   - libavfilter7_110 
   - libavformat58_76 
   - libavformat61 
   - libavformat62-32bit 
+  - libavformat63 
   - libavfs1 
   - libavif-devel 
   - libavif16-32bit 
@@ -12263,6 +12308,7 @@ unsorted:
   - libavutil56_70 
   - libavutil59 
   - libavutil60-32bit 
+  - libavutil61 
   - libaws-c-auth1_0_0 
   - libaws-c-cal0unstable 
   - libaws-c-common1 
@@ -16236,7 +16282,7 @@ unsorted:
   - librygel-server-2_8-0 
   - libryml0_8_0 
   - libryokucha0 
-  - libs2n0unstable 
+  - libs2n1 
   - libs3-4 
   - libs3-devel 
   - libs3-tools 
@@ -16656,6 +16702,8 @@ unsorted:
   - libswresample3_9 
   - libswresample5 
   - libswresample6-32bit 
+  - libswresample7 
+  - libswscale10 
   - libswscale5_9 
   - libswscale8 
   - libswscale9-32bit 
@@ -20345,6 +20393,7 @@ unsorted:
   - obs-service-appimage 
   - obs-service-cargo 
   - obs-service-cdi1.65_containers_meta 
+  - obs-service-cdi1.66_containers_meta 
   - obs-service-compose_kiwi_description 
   - obs-service-docker_label_helper 
   - obs-service-download_assets 
@@ -23178,6 +23227,8 @@ unsorted:
   - phpPgAdmin-apache 
   - phraze 
   - physlock 
+  - pi-coding-agent 
+  - pi-coding-agent-examples 
   - pia 
   - pianobar 
   - picard 
@@ -24385,7 +24436,6 @@ unsorted:
   - python311-platformdirs 
   - python311-pluggy 
   - python311-pymathics-graph 
-  - python311-pysaml2 
   - python311-setuptools 
   - python311-setuptools-wheel 
   - python311-setuptools_scm 
@@ -32698,7 +32748,6 @@ unsorted:
   - qsnapper 
   - qsnapper-selinux 
   - qsstv 
-  - qsyncthingtray 
   - qsynergy 
   - qsynth 
   - qsynth-lang 
@@ -33439,6 +33488,7 @@ unsorted:
   - rfbplaymacro 
   - rfbproxy 
   - rfc-read 
+  - rfc-read-bash-completion 
   - rfcdiff 
   - rgbds 
   - rhash 
