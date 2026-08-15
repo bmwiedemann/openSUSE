@@ -1406,4 +1406,14 @@ CVE-2026-3276-On2-unicodedata-normalize.patch
   * Support changes required for Sphinx 9.</comment>
     <requestid>1368874</requestid>
   </revision>
+  <revision rev="80" vrev="9">
+    <srcmd5>98c217a7a8b368bd26e1358430ff9687</srcmd5>
+    <version>3.10.20</version>
+    <time>1786826448</time>
+    <user>dimstar_suse</user>
+    <comment>- noCVE: CVE-2026-6019 fix does not handle non-ascii chars correctly
+  (bsc#1263083) (internal SUSE bug so far, no CVE yet)
+  bsc1263083-http-cookies-atob-utf8.patch</comment>
+    <requestid>1371250</requestid>
+  </revision>
 </revisionlist>
