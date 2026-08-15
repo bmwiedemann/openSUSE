@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 13 06:54:14 UTC 2026 - YI HSIN Lyu <richard.lyu@suse.com>
+
+- Remove ovmf-UefiCpuPkg-Disable-EFI-memory-attributes-protocol.patch (bsc#1240771)
+  because GRUB2 already supports the EFI Memory Attributes Protocol.
+   
+-------------------------------------------------------------------
 Tue Jun  2 10:13:24 UTC 2026 - Richad Lyu <richard.lyu@suse.com>
 
 - Update to edk2-stable202605

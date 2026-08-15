@@ -75,8 +75,6 @@ Patch10:        %{name}-Revert-Add-Stack-Cookie-Support-to-MSVC-and-GCC.patch
 Patch11:        %{name}-BaseTools-Using-gcc12-for-building-image.patch
 %endif
 %endif
-# Bug 1240420 - UEFI boot breaks: X64 Exception Type - 0E(#PF - Page-Fault) CPU Apic ID - 00000000
-Patch13:        %{name}-UefiCpuPkg-Disable-EFI-memory-attributes-protocol.patch
 # Bug 1244218 - ovmf: non-deterministic .bin files (about unreproducible)
 Patch14:        %{name}-OvmfPkg-ArmVirtPkg-Keep-JSON-stack-cookie-files.patch
 # Bug 1260358 - [SLES][16.1][Build33.1][x86_64][kvm] Fail to install uefi 15-SP7 vm
