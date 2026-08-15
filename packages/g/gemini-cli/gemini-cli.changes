@@ -1,4 +1,167 @@
 -------------------------------------------------------------------
+Fri Aug 14 19:03:37 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.55.1:
+  * fix/verify release npm ci ignore scripts
+  * fix(ci): prevent workspace binary shadowing in release
+    verification
+  * Feat/tool registry discovery
+  * fix(ci): prevent bad NPM releases and promote job crashes
+  * Changelog for v0.50.0-preview.1
+  * Fix no_proxy test
+  * chore(release): bump version to
+    0.51.0-nightly.20260625.g3fbf93e26
+  * Vertex base url update
+  * fix(security): enforce case-insensitive sensitive path
+    blocklist and vscode hitl
+  * fix(core-tools): resolve defensive path resolution for at-
+    reference files and fix macOS tests
+  * feat(caretaker): implement Cloud Run webhook ingestion
+    service
+  * fix(core): resolve symbolic link directory escape in memory
+    import processor
+  * feat(caretaker): egress cloud run service skeleton
+  * fix(sandbox): make ~/.gitconfig read-only in the macOS
+    sandbox
+  * fix(core): preserve escape sequences in string literals for
+    modern models
+  * fix(core): strip thoughts from scrubbed history turns and
+    resolve thought leakage
+  * Refactor: exclude transient CI configuration files from
+    workspace context
+  * feat(caretaker-triage): add triage worker core foundational
+    modules
+  * feat(caretaker-egress): implement octokit github action
+    handler for egress service
+  * chore(release): bump version to
+    0.52.0-nightly.20260707.g27a3da3e8
+  * Changelog for v0.51.0-preview.0
+  * Changelog for v0.50.0
+  * fix(core-tools): bypass LLM correction for JSON and IPYNB
+    files in write_file and replace
+  * fix(core): use unambiguous previous intent label in fallback
+    summary
+  * feat(caretaker-triage): implement main worker execution loop
+    and egress action publisher
+  * fix(privacy): show a clear message when the account has no
+    Code Assist tier
+  * fix(core): enrich shared project quota limit errors with
+    setup hint
+  * fix(a2a-server): ensure task cancellation aborts execution
+    loop
+  * fix(core): simplify plan mode write policy to support
+    relative paths
+  * feat(core): Bump node google-auth-library version to 10.9.0
+  * chore/release: bump version to
+    0.52.0-nightly.20260715.gfa975395b
+  * fix(core,a2a): group cancelled tool responses and coalesce
+    consecutive roles to prevent 400 Bad Request
+  * feat(caretaker-triage): implement LLM triage orchestrator and
+    container build
+  * refactor(cli): align macOS permissive Seatbelt profiles with
+    deny-default model
+  * fix(core): mitigate infinite ReAct loops and prompt injection
+    loops
+  * fix(a2a-server): enforce workspace trust and task isolation
+    to prevent RCE
+  * fix(core): sequentially verify cached credentials and restore
+    GOOGLE_APPLICATION_CREDENTIALS fallback
+  * feat(evals): add eval coverage report command
+  * Changelog for v0.53.0-preview.0
+  * Changelog for v0.52.0
+  * chore(release): bump version to
+    0.54.0-nightly.20260722.gf743ab579
+  * fix(caretaker): sanitize and wrap issue title in
+    untrusted_context
+  * chore(caretaker): update vitest to v3.2.4 and add package-
+    lock.json files
+  * fix(core): rotate session ID on model fallback to prevent
+    stateful API errors
+  * feat(caretaker-triage): post comment before auto-closing
+    issues
+  * fix(core): enforce HTTPS for GoogleCredentialsAuthProvider to
+    prevent cleartext leakage
+  * fix(core): filter out thought parts from getHistoryTurns when
+    context management is disabled
+  * fix(a2a-server): normalize CRLF line endings to LF in
+    getProposedContent
+  * fix(core): enforce explicit tag length and validation in file
+    keychain
+  * chore/release: bump version to
+    0.54.0-nightly.20260728.gbef611950
+  * feat(pr-generator-db): implement Firestore concurrency dual-
+    locking and test ingestion utilities
+  * feat(pr-generator-agent): implement Antigravity agent runner
+    and prompt templates …
+  * fix(core): skip merged function-response turns when finding
+    the active loop
+  * chore(release): bump version to
+    0.55.0-nightly.20260728.gd29268d36
+  * Changelog for v0.54.0-preview.0
+  * Changelog for v0.53.0
+  * chore/release: bump version to
+    0.55.0-nightly.20260729.g3499c84f7
+  * fix(core): classify capacity exhaustion as terminal to
+    prevent retry hangs
+  * fix(core,cli): propagate InvalidStreamError details to UI for
+    specific empty response guidance
+  * fix(cli): fall back to embedded macOS seatbelt profiles if
+    missing
+  * feat(pr-generator-core): add environment config parser,
+    command executor, GitHub R…
+  * feat(pr-generator-orchestrator): implement iterative bug-
+    fixing state machine and container worker entrypoint
+  * feat(pr-generator-infra): configure Cloud Run job, Workflows
+    definition, and Dockerfile
+  * fix(release): handle npm dist-tag deletion failures on
+    registries that forbid it
+  * fix(core): stop a new user message fusing into an unanswered
+    tool response
+  * fix(core,cli): repair /compress session reload and quota-
+    fallback tool response loss
+  * fix(core): preserve functionCall thoughtSignature when
+    stripping thought parts
+  * fix(core): unwrap and parse nested gaxios streaming errors
+    from cause message
+  * Changelog for v0.55.0-preview.1
+  * chore(release): bump version to
+    0.56.0-nightly.20260806.g761f604c1
+  * Changelog for v0.54.0
+  * Reclassifying Capacity Exhaustion as Terminal Error
+  * feat(caretaker): update Firestore schema with error, and
+    pr_number fields
+  * feat(caretaker-triage): prompt hill-climbing & orchestrator
+    updates
+  * feat(caretaker): add triage Cloud Run job workflow
+  * feat(caretaker-evals): add triage evaluation framework and
+    judge runner
+  * feat(caretaker-evals): add local golden issue collection and
+    firestore sync tools
+  * feat(caretaker): publish workable spec event to ready-for-
+    code Pub/Sub topic
+  * feat(caretaker): add GCP deployment script for caretaker
+    agent services
+  * feat(caretaker-evals): add Cloud Run job entrypoint for eval
+    runner
+  * fix(caretaker): clear lock on NEEDS_HUMAN transition
+  * feat(ingestion): add issue comment handling and re-triage
+    workflow
+  * fix(core): refresh MCP OAuth tokens with the stored client ID
+  * fix(core,cli): resolve false model capacity exhaustion and
+    fix core quota lookup model mapping
+  * feat(evals): add local report command and developer
+    documentation
+  * fix(core): dynamically resolve Cloud Workstations proxy
+    redirect URI for OAuth flows
+- update to 0.54.4:
+  * fix(patch): cherry-pick 56f9688 to release/v0.54.0-pr-28700
+    to patch version v0.54.0 and create version 0.54.1
+  * chore: bump version to 0.54.2
+  * Fix/revert version bump
+  * **Full Changelog**: https://github.com/google-gemini/gemini-
+    cli/compare/v0.54.0...v0.54.4
+
+-------------------------------------------------------------------
 Thu Aug  6 07:55:04 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.54.0:

@@ -952,4 +952,41 @@
     v0.54.0-preview.0 and create version 0.54.0-preview.1</comment>
     <requestid>1370012</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>2c4fbacc08c261cadc4e895ab16a5da4</srcmd5>
+    <version>0.55.1</version>
+    <time>1786826451</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.55.1:
+  * fix/verify release npm ci ignore scripts
+  * fix(ci): prevent workspace binary shadowing in release
+    verification
+  * Feat/tool registry discovery
+  * fix(ci): prevent bad NPM releases and promote job crashes
+  * Changelog for v0.50.0-preview.1
+  * Fix no_proxy test
+  * chore(release): bump version to
+    0.51.0-nightly.20260625.g3fbf93e26
+  * Vertex base url update
+  * fix(security): enforce case-insensitive sensitive path
+    blocklist and vscode hitl
+  * fix(core-tools): resolve defensive path resolution for at-
+    reference files and fix macOS tests
+  * feat(caretaker): implement Cloud Run webhook ingestion
+    service
+  * fix(core): resolve symbolic link directory escape in memory
+    import processor
+  * feat(caretaker): egress cloud run service skeleton
+  * fix(sandbox): make ~/.gitconfig read-only in the macOS
+    sandbox
+  * fix(core): preserve escape sequences in string literals for
+    modern models
+  * fix(core): strip thoughts from scrubbed history turns and
+    resolve thought leakage
+  * Refactor: exclude transient CI configuration files from
+    workspace context
+  * feat(caretaker-triage): add triage worker core foundational
+    modules</comment>
+    <requestid>1371257</requestid>
+  </revision>
 </revisionlist>
