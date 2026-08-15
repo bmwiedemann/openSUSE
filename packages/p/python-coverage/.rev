@@ -1023,4 +1023,12 @@ update to latest version</comment>
 </comment>
     <requestid>1358988</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>a95f03f4d8854d350c884d4ce1813ac8</srcmd5>
+    <version>7.14.3</version>
+    <time>1786826377</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1371095</requestid>
+  </revision>
 </revisionlist>

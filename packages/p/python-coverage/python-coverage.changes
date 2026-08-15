@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Thu Aug  6 19:59:15 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.14.3:
+  * Fix: the default ... exclusion rule now also matches function
+    bodies whose closing return-type bracket is on its own line
+    (for example, after a long -> dict[ ... ] annotation that a
+    formatter has split over multiple lines). Closes issue 2185,
+    thanks Mengjia Shang.
+  * Fix: On 3.13t, we incorrectly issued Couldn't import C tracer
+    errors. We can't import the C tracer because in 7.14.2 we
+    stopped shipping compiled wheels for 3.13t. Thanks, Hugo van
+    Kemenade.
+  * Fix: some messages were being written to stdout, making
+    coverage json -o - useless for capturing JSON output. Now
+    messages are written to stderr, fixing issue 2197.
+  * Fix: CoverageData kept one SQLite connection per thread that
+    recorded coverage, but never closed them when those threads
+    terminated. On long runs with many short-lived threads this
+    leaked one file descriptor per dead thread, eventually
+    failing with OSError: [Errno 24] Too many open files.
+    Connections belonging to terminated threads are now closed
+    and dropped. Fixes issue 2192.  Thanks, Matthew Lloyd.
+  * Fix: when using sys.monitoring, we were assuming we could use
+    the COVERAGE_ID tool id.  But other tools might also assume
+    they could use that id.  Pre-allocated ids don't really make
+    sense, so now we search for a usable one instead. Fixes issue
+    2187.
+  * Following the advice of cibuildwheel, we no longer distribute
+    wheels for Python 3.13 free-threaded.
+  * Fix: the HTML report used typographic niceties to make file
+    paths more readable by adding a small amount of space around
+    slashes. Those spaces interfered with searching the page for
+    file paths of interest. Now the report uses CSS to accomplish
+    the same visual tweak so that searches with slashes work
+    correctly. Closes issue 2170.
+  * Add a 3.16 PyPI classifier since we test on the 3.16 main
+    branch.
+  * Feature: now when running one of the reporting commands, if
+    there are parallel data files that need combining, they will
+    be implicitly combined before creating the report. There is
+    no option to avoid the combination; let us know if you have a
+    use case that requires it.  Thanks, Tim Hatch. Closes issue
+    1781.
+  * Fix: the output from combine was too verbose, listing each
+    file considered. Now it shows a single line with the counts
+    of files combined, files skipped, and files with errors. The
+    -q flag suppresses this line. The old detailed lines are
+    available with the new --debug=combine option.
+  * Fix: running a Python file through a symlink now sets the
+    sys.path correctly, matching regular Python behavior. Fixes
+    issue 2157.
+  * Fix: Collector.flush_data could fail with "RuntimeError: Set
+    changed size during iteration" when a tracer in another
+    thread added a line to the per-file set that add_lines (or
+    add_arcs) was iterating. The values passed to CoverageData
+    are now snapshotted via dict.copy() and set.copy(), which are
+    atomic under the GIL. Thanks, Alex Vandiver.
+  * Fix: the soft keyword lazy is now bolded in HTML reports.
+  * We are no longer testing eventlet support. Eventlet started
+    issuing stern deprecation warnings that break our tests. Our
+    support code is still there.
+- drop fix-set-sys.path-correctly-when-running-through-a-sy.patch
+  (upstream)
+
+-------------------------------------------------------------------
 Fri Apr 17 13:44:19 UTC 2026 - Michal Suchanek <msuchanek@suse.de>
 
 - Fix sys.path when running through a symlink
