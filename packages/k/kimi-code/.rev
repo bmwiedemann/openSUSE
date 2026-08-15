@@ -43,4 +43,33 @@ clean.</comment>
     <comment>Update to version 0.34.0 (0.32.0, 0.33.0, 0.34.0): the CLI surfaces now run on the agent-core-v2 engine by default (KIMI_CODE_LEGACY_FLAG=1 falls back), new hook events, a [token_counting] config section, MCP OAuth re-authorization and structuredContent fixes, and 'kimi -p' now waits for background tasks. node-pty stays at 1.1.0 (upstream still asks for ^1.1.0; 1.2.0 is beta-only) and node-addon-api at 7.1.1. Built and verified on aarch64: %check runs 'kimi --version' successfully, rpmlint 0 errors / 0 warnings / 0 badness, source_validator clean.</comment>
     <requestid>1370306</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c09ff66686d15cd22cb00b07878226cd</srcmd5>
+    <version>0.36.1</version>
+    <time>1786826503</time>
+    <user>dimstar_suse</user>
+    <comment>Update kimi-code to 0.36.1 (npm @moonshot-ai/kimi-code, published 2026-08-14).
+
+Covers upstream releases 0.35.0, 0.36.0 and 0.36.1:
+- new experimental fullscreen TUI mode (KIMI_CODE_TUI_FULL_SCREEN=1) and a
+  configurable secondary-model pool for spawned subagents
+- live subagent progress in /tasks, LaTeX formula rendering, MCP OAuth
+  auto-detection and connection refresh after credential changes
+- workspace-trust hardening: project MCP launch targets are shown, trust
+  defaults to declined, and fd/stty/git/gh are resolved to absolute paths so
+  an untrusted workspace cannot plant bare-name executables
+- numerous session/provider fixes (tool-call id renumbering, interrupted
+  thinking turns, post-compaction token counts, startup freezes) and a
+  reworked web UI
+
+Packaging is unchanged apart from Version:. The vendored node-pty (1.1.0) and
+node-addon-api (7.1.1) pins were re-checked against the ranges upstream
+declares (node-pty ^1.1.0, node-addon-api ^7.1.0) and both remain the newest
+matching stable releases. License is still MIT (LICENSE file byte-identical).
+
+Built locally against openSUSE_Tumbleweed/aarch64: green, rpmlint 0 errors,
+0 warnings, 0 badness (11 filtered), and %check ran `kimi --version` which
+printed 0.36.1.</comment>
+    <requestid>1371320</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Sat Aug 15 18:22:01 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.36.1:
+  * Cancel an in-flight /init run together with the turn instead of
+    letting it run to completion
+  * Show a clear error when forking a session while its turn is
+    still running, instead of copying a partially written turn
+  * Remove the 64 MiB limit on web session exports
+  * Fix sessions hanging on the second approval prompt, and tool
+    call results being dropped or mixed up in history, with
+    self-hosted OpenAI-compatible endpoints that renumber tool call
+    ids on every response
+  * Fix MCP OAuth cancellation leaving an in-flight authorization
+    waiting for its callback timeout
+  * Fix bare URLs in chat output absorbing the CJK characters that
+    follow them
+  * Fix startup banner text wrapping on narrow terminals
+  * Prevent background task output from disrupting terminal pane
+    borders
+  * Web UI: reworked composer with removable plan/goal pills, new
+    plan viewer and subagent card grid, fuzzy slash-command search,
+    filterable background Bash panel and experimental automatic
+    session titles, plus assorted rendering and performance fixes
+- Changes from version 0.36.0:
+  * Add an experimental fullscreen TUI mode, enabled with
+    KIMI_CODE_TUI_FULL_SCREEN=1
+  * Add a configurable model pool for spawned subagents behind the
+    secondary-model experiment, set with /secondary-model or the
+    [secondary_model] section of config.toml
+  * Render LaTeX math formulas in messages as Unicode formulas
+  * Show project MCP launch targets in the workspace trust prompt,
+    default to declining trust, and resolve the fd and stty binaries
+    to absolute paths so an untrusted workspace cannot plant
+    bare-name executables before confirmation
+  * Refresh active MCP connections after OAuth credentials are added
+    or reset
+  * Fix Ctrl+C being ignored during automatic retries of failed API
+    requests
+  * Fix follow-up requests failing with a provider 400 error after a
+    turn is interrupted while the model is still thinking, on strict
+    OpenAI-compatible providers
+  * Fix plain Markdown files in an installed plugin's root directory
+    being misidentified as skills
+- Changes from version 0.35.0:
+  * Show the live work progress of background subagents in the
+    /tasks panel
+  * Detect MCP servers that require OAuth without needing
+    auth: "oauth" in the config
+  * Remove the Agent and AgentSwarm tools from the built-in coder
+    subagent profile, so coder subagents no longer delegate further
+    by default
+  * Add the Modern Web Guidance plugin to the bundled plugin
+    marketplace
+  * Fix token counts reported after compaction reading far below the
+    real context size
+  * Fix multi-second freezes at startup or while idle when a large
+    search index loads, replays or rebuilds
+  * Fix subagent tool changes in one session leaking into builtin
+    profiles in later sessions
+  * Fix a spurious "Failed to steer" error when sending a message
+    while a goal run is between turns
+  * Fix the web UI losing its realtime connection every ~30 seconds
+    behind a reverse proxy or gateway with an idle timeout
+  * Harden against Windows binary planting: commands launched before
+    the workspace trust prompt, and the git/gh commands behind the
+    footer status badge, now resolve to absolute PATH locations
+
+-------------------------------------------------------------------
 Sat Aug  8 05:20:33 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.34.0:
