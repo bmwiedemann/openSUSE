@@ -1798,7 +1798,7 @@ packagesets:
    - libcheese8 # reason: dvd:patterns-xfce-xfce
    - libcholmod5 # reason: dvd:patterns-gnome-gnome
    - libchromaprint1 # reason: dvd:patterns-kde-kde
-   - libcjson1 # reason: dvd:patterns-gnome-gnome
+   - libcjson1 # reason: dvd:openSUSE-release
    - libclamav12 # reason: dvd:patterns-server-mail_server
    - libclammspack0 # reason: dvd:patterns-server-mail_server
    - libclastfm0 # reason: dvd:patterns-media-rest_dvd
@@ -5347,6 +5347,7 @@ packagesets:
    - libcbor0_14 # reason: opensuse_microos:patterns-microos-base
    - libcddb2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libchromaprint1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
+   - libcjson1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libcodec2-1_2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libcolord2 # reason: opensuse_microos:patterns-microos-onlyDVD
    - libcom_err2 # reason: opensuse_microos:patterns-microos-base
@@ -7160,6 +7161,7 @@ packagesets:
    - libcbor0_14 # reason: opensuse_kalpa:patterns-kalpa-base
    - libcddb2 # reason: opensuse_kalpa:patterns-kalpa-base
    - libchromaprint1 # reason: opensuse_kalpa:patterns-kalpa-base
+   - libcjson1 # reason: opensuse_kalpa:patterns-kalpa-base
    - libcodec2-1_2 # reason: opensuse_kalpa:patterns-kalpa-base
    - libcolord2 # reason: opensuse_kalpa:patterns-kalpa-base
    - libcom_err2 # reason: opensuse_kalpa:patterns-kalpa-base
