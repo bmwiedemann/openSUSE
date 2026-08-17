@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Aug  9 10:38:48 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.29.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.29.0
+- Changes since 6.28.0:
+  * Update dependency version to 6.29.0
+  * Drop kwalletmanager launching from kwalletd
+  * Move org.freedesktop.secrets group to KConfigXT
+  * ksecretd: Drop unused functions
+  * ksecretd: Drop registering KWallet interface
+  * Use correct internal function to query local wallet
+  * Port to KConfigXT
+  * Drop code for writing default wallet in kwalletd
+  * Query NetworkWallet and LocalWallet from backend
+  * Fix localWallet with external backend
+  * kwalletd: Remove config fallback for networkWallet()
+  * Actually set ok to true when defaultCollection succeeds
+  * Drop unused internal pamOpen from kwalletd
+  * Drop dead screensaver integration
+  * kwalletd: fix use-after-move in retrieveCollection() returning null on first lookup (kde#522847)
+  * kwallet-query: persist writes to new entries (kde#491898)
+  * Update version to 6.29.0
+
+-------------------------------------------------------------------
 Fri Jul 10 12:16:06 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.28.0
