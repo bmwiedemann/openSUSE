@@ -18,12 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-grpc-google-iam-v1
-Version:        0.14.4
+Version:        0.14.5
 Release:        0
 Summary:        GRPC library for the google-iam-v1 service
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            https://github.com/googleapis/python-grpc-google-iam-v1
+URL:            https://github.com/googleapis/google-cloud-python/tree/main/packages/grpc-google-iam-v1
 Source:         https://files.pythonhosted.org/packages/source/g/grpc_google_iam_v1/grpc_google_iam_v1-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
