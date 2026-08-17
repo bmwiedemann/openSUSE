@@ -125,4 +125,42 @@
     AES/SHA crypto, string and UTF-8 validation kernels)</comment>
     <requestid>1365244</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>20a64bfe9e7b94cd14ee5941159bcd24</srcmd5>
+    <version>2.0.19</version>
+    <time>1786978748</time>
+    <user>anag_factory</user>
+    <comment>Update clpeak to 2.0.19.
+
+Upstream fixes:
+- OpenCL: the fp32/fp64/fp16 compute kernels now use a contracted
+  (y*x)+y expression instead of the mad() builtin, which the spec only
+  permits (not requires) to fuse into a hardware FMA; Apple's
+  CL-on-Metal compiler never lowered it and halved the reported fp32
+  throughput. Other platforms already fused it and are unaffected.
+- CUDA/ROCm: the global-bandwidth kernel in/out pointers are marked
+  __restrict__ so loads can be batched ahead of the trailing store.
+- CPU backend: fixes the GCC build failure on the AArch64 crypto ISA
+  extensions (upstream issue #189) -- GCC exposes the AES/SHA-256 NEON
+  intrinsics only under the umbrella +crypto target attribute, so a TU
+  built with just +aes or +sha2 failed to inline them. GCC now gets
+  +crypto (+crypto+sha3 for the SHA-512 unit); clang keeps the granular
+  flags.
+
+Packaging:
+- License corrected to Apache-2.0. Upstream relicensed away from the
+  Unlicense in December 2023 (commit 65e57245) and the bundled LICENSE
+  has carried the Apache License 2.0 ever since, but the spec still
+  declared LicenseRef-SUSE-Public-Domain. LICENSE is the only licence
+  file in the tree, there is no bundled third-party code and no source
+  file carries a divergent SPDX header. Fedora declares Apache-2.0 too.
+  A Legal-Review-Notice comment above the tag records the evidence.
+
+No patches are carried by this package.
+
+Verified: local osc build against openSUSE_Factory/aarch64 green,
+%check 1/1 ctest passed, rpmlint 0 errors / 0 badness, source_validator
+clean.</comment>
+    <requestid>1371494</requestid>
+  </revision>
 </revisionlist>

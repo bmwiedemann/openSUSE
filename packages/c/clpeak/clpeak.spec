@@ -18,10 +18,14 @@
 
 
 Name:           clpeak
-Version:        2.0.18
+Version:        2.0.19
 Release:        0
 Summary:        Find peak OpenCL capacities like bandwidth & compute
-License:        LicenseRef-SUSE-Public-Domain
+# Legal-Review-Notice: upstream relicensed from the Unlicense to Apache-2.0
+# in commit 65e57245 (2023-12-22); LICENSE is the sole licence file in the
+# tree, there is no bundled third-party code and no source carries a
+# divergent SPDX header. Fedora declares Apache-2.0 as well.
+License:        Apache-2.0
 URL:            https://github.com/krrishnarraj/clpeak
 Source:         https://github.com/krrishnarraj/clpeak/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake

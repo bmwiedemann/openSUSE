@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Aug 17 05:38:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2.0.19:
+  * OpenCL: replace the mad() builtin with a contracted (y*x)+y
+    expression in the fp32/fp64/fp16 compute kernels. The spec only
+    permits, but does not require, mad() to fuse into a hardware
+    FMA, and Apple's CL-on-Metal compiler never lowered it, halving
+    the reported fp32 throughput there; other platforms are
+    unaffected because they already fused it.
+  * CUDA/ROCm: mark the global-bandwidth kernel in/out pointers
+    __restrict__, so the compiler may batch the loads ahead of the
+    trailing store and NVIDIA can take the read-only ld.global.nc
+    path.
+  * CPU backend: fix the GCC build failure on the AArch64 crypto ISA
+    extensions (gh#krrishnarraj/clpeak#189). GCC exposes the
+    AES/SHA-256 NEON intrinsics only under the umbrella +crypto
+    target attribute, so a translation unit compiled with just +aes
+    or +sha2 failed to inline them; GCC now gets +crypto
+    (+crypto+sha3 for the SHA-512 unit) while clang keeps the
+    granular flags.
+- Correct License to Apache-2.0: upstream relicensed away from the
+  Unlicense in December 2023 and the bundled LICENSE has shipped the
+  Apache License 2.0 ever since, but the spec still declared
+  LicenseRef-SUSE-Public-Domain.
+
+-------------------------------------------------------------------
 Mon Jul 13 06:48:29 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 2.0.18:
