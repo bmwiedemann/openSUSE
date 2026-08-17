@@ -51,4 +51,60 @@ Also answers the legal review in boo#1273104: License is corrected to 'Apache-2.
 The generated grok-build-*.obscpio is no longer tracked - the spec builds from the .tar.zst, so it only duplicated 62 MB of sources per revision.</comment>
     <requestid>1370236</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ddbb887305fa6c9524804637d4f8cef1</srcmd5>
+    <version>0+git20260815.d6a22a1</version>
+    <time>1786978675</time>
+    <user>anag_factory</user>
+    <comment>Update grok-build to git snapshot 0+git20260815.d6a22a1
+
+Upstream has no tags, so the package tracks a pinned git snapshot via
+_service (obs_scm, versionformat 0+git%cd.%h). This re-pins from
+393430e (2026-08-06) to d6a22a1 (2026-08-15), 8 commits.
+
+All 8 upstream commits carry the same &quot;Synced from monorepo&quot; subject;
+the changelog entry is condensed from their message bodies. Highlights:
+grok-4.6 becomes the bundled default model, GROK_CONFIG/GROK_CONFIG_PATH
+override the config location, session directories are now owner-only,
+managed-MCP allow/deny matching and the auth straddle are hardened, and
+two panics (list-pane out-of-bounds, &quot;grok inspect&quot; on a closed pipe)
+are fixed.
+
+Both downstream patches still apply (context offsets only) and were
+re-verified against the new sources:
+  * 0001-disable-self-updater.patch - get_installer() is still the sole
+    source of the installer identity for all six update call sites
+  * 0002-disable-telemetry-by-default.patch - resolve_telemetry_mode()
+    is still the sole telemetry-mode resolver
+
+Vendored crates were re-generated (cargo_vendor update=true, 1250
+crates, 75 added / 71 removed). The licences of every newly added crate
+were re-derived: all permissive (MIT / Apache-2.0 / ISC / BSL-1.0 /
+Unicode-3.0 / BSD-3-Clause / Zlib), no new copyleft, so the License tag
+is unchanged.
+
+No change to boo#1271921 (CVE-2026-47128, nono sandbox escape): the
+re-vendor did NOT lift nono, because upstream pins it exactly
+(&quot;nono = { version = \&quot;=0.53.0\&quot; }&quot; in crates/codegen/xai-grok-sandbox/
+Cargo.toml). The vendored crate is still nono 0.53.0, below the 0.55.0
+fix. The bug remains open and untouched.
+
+Heads-up on the License tag, which this request carries to Factory for
+the first time: Factory currently has &quot;Apache-2.0 AND MPL-2.0&quot;, while
+devel:tools has carried &quot;Apache-2.0 AND MPL-2.0 AND GPL-2.0 WITH
+Linking-exception AND LGPL-2.1-or-later&quot; since rev 10 (Lubos Kocman,
+2026-08-10, for the statically linked libgit2). I verified the substance
+still holds - libgit2-sys 0.18.7+1.9.6 does bundle the full libgit2 C
+sources, and all eight MPL-2.0 crates are still linked - and left the tag
+untouched. Note only that rpmlint warns &quot;invalid-license-exception
+Linking-exception&quot; (0 badness); Factory's own libgit2 package spells the
+same exception &quot;GPL-2.0-only WITH GCC-exception-2.0&quot;. I did not change
+it, since the identifier is the original author's call, not mine.
+
+Built locally against devel:tools/openSUSE_Tumbleweed aarch64:
+finished &quot;build grok-build.spec&quot;, rpmlint 2 packages checked, 0 errors,
+3 warnings, 0 badness. No %check section (pre-existing; the upstream
+workspace test suite needs network access).</comment>
+    <requestid>1371325</requestid>
+  </revision>
 </revisionlist>

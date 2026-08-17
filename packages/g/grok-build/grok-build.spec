@@ -17,7 +17,7 @@
 
 
 Name:           grok-build
-Version:        0+git20260806.393430e
+Version:        0+git20260815.d6a22a1
 Release:        0
 Summary:        Terminal AI coding agent by xAI
 # Legal-Review-Notice (boo#1273104): licences of the statically linked Rust
@@ -35,7 +35,7 @@ Summary:        Terminal AI coding agent by xAI
 #    selectors and smartstring (MPL-2.0+).
 #  - colored_json (EPL-2.0) is NOT in this binary's dependency graph; it is
 #    reachable only from xai-ratatui-inline, which this package does not build.
-License:        Apache-2.0 AND MPL-2.0
+License:        Apache-2.0 AND MPL-2.0 AND GPL-2.0 WITH Linking-exception AND LGPL-2.1-or-later
 URL:            https://github.com/xai-org/grok-build
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst

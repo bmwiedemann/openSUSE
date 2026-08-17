@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Sat Aug 15 18:55:28 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to git snapshot 0+git20260815.d6a22a1:
+  * Make grok-4.6 the bundled default model
+  * Add GROK_CONFIG and GROK_CONFIG_PATH to override where the
+    configuration is read from, and export GROK_SESSION_ID to tool
+    commands and MCP servers
+  * Reorder Arabic and Persian text correctly in the TUI (Unicode
+    bidi) and write session recaps in the session language instead
+    of always English
+  * Restrict session directories to owner-only permissions
+  * Harden the managed-MCP allow and deny URL and name matching,
+    honour explicit user grants and narrow allow rules in auto
+    permission mode, and strip a trailing "/**" from sandbox allow
+    paths
+  * Harden the auth straddle with a consumed-token sentinel and
+    failure poisoning
+  * Add allowed and excluded domain configuration for web_search
+  * Support updatedInput on the PreToolUse hook, notify hooks when
+    the user stops a turn, and report a hook-denied turn as blocked
+    by a hook rather than cancelled by the user
+  * Kill and reap ripgrep children when a tool call is cancelled,
+    drain subagents and live children on session teardown, and
+    shield the tools server from the OOM killer
+  * Cap and pre-warm the tokio blocking pools so thread exhaustion
+    no longer aborts, bound .envrc evaluation so a blocked read
+    cannot freeze session load, and make a requested quit always
+    exit the process
+  * Fix an out-of-bounds panic in the list pane and a panic when
+    "grok inspect" writes to a closed pipe
+  * Advertise MCP protocol version 2025-11-25 and carry the
+    reasoning effort over ACP session/new and session/load
+  * Raise the doom-loop maximum threshold default to 64
+  * Add a tabbed /usage, /session-info and /context modal with
+    click-to-copy rows; word select is now the default text
+    selection and triple-click selects a paragraph
+  * Speed up /resume on large session transcripts, evict finished
+    subagent transcripts and enable display-refresh auto-cadence by
+    default
+  * Add the workspace binding commands (EnsureBinding, MergeToMain,
+    Push) and mTLS plus managed settings for external OTEL export
+- Refresh the vendored Rust crate dependencies
+
+-------------------------------------------------------------------
+Mon Aug 10 09:36:10 UTC 2026 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Update license tag with LGPL-2.1-or-later for libgit2 components
+  and GPL-2.0 WITH Linking-exception
+  
+
+-------------------------------------------------------------------
 Fri Aug  7 12:11:17 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to git snapshot 0+git20260806.393430e:

@@ -1,4 +1,5 @@
 <package name="grok-build" project="openSUSE:Factory">
   <title>Terminal AI coding agent by xAI</title>
   <description>Grok is xAI's terminal-based AI coding agent (the grok CLI/TUI).</description>
+  <devel project="devel:tools" package="grok-build"/>
 </package>
