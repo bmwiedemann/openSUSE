@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Aug  9 10:38:25 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.29.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.29.0
+- Changes since 6.28.0:
+  * Update dependency version to 6.29.0
+  * [KEncodingProber] Improve const-correctness
+  * [KEncodingProber] Explicitly initialize some structs
+  * [KEncodingProber] Replace pointer to SMModel with reference
+  * [KEncodingProber] Fix broken UTF16 filtering for MBCS
+  * [KEncodingProber] Fix GB18030 false positive
+  * [KEncodingProber] Extend unit tests, notably for japanese text
+  * [KEncodingProber] Shortcut no longer active group probers
+  * [KEncodingProber] Refactor UnicodeGroupProber
+  * [KEncodingProber] Refactor Unicode/UTF prober
+  * [KEncodingProber] Clean up comments and naming for MB mapping
+  * [KEncodingProber] Make one virtual base method pure virtual
+  * [KEncodingProber] Remove obsolete padding in state tables
+  * [KEncodingProber] Replace debug printf with categorized logging output
+  * [KEncodingProber] Add dedicated logging category
+  * Remove obsolete doxygen file
+  * Update version to 6.29.0
+
+-------------------------------------------------------------------
 Fri Jul 10 12:15:43 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.28.0
