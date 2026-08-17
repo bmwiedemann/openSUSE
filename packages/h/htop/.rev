@@ -742,4 +742,50 @@
     <comment>Update to 3.5.2: new M_EPSS column, stable tree view, sticky_follow, hot-add vCPU segfault fix, zram/systemd/Flatpak fixes; switch to official release tarball</comment>
     <requestid>1366667</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>8b7876ce8acd3dc63e9e08fd00940e22</srcmd5>
+    <version>3.5.3</version>
+    <time>1786978746</time>
+    <user>anag_factory</user>
+    <comment>Update htop to 3.5.3 (released 2026-08-16).
+
+Upstream highlights:
+- htoprc settings parser hardened against tampered configuration files
+  (sanitised sort keys, validated configuration invariants, NULL safety
+  for header columns and screens)
+- New zswap pool usage meters
+- Linux: fixed out-of-bounds access when parsing the power supply type;
+  a CPU unplugged from the middle is now marked offline and its data
+  released on hot-unplug
+- Fixed a Clang MemorySanitizer-reported issue
+- Follow mode is now exited when a search or filter is cancelled
+- Darwin: fixed blank STARTTIME and wrong ELAPSED for threads
+- Man page: CPU meter segments documented, new External Libraries
+  section covering libnl-3/libnl-genl-3
+
+Upstream lists the parser hardening as also covering CVE-2024-37676
+(out-of-bounds access in Header_populateFromSettings reachable from a
+tampered htoprc). openSUSE is assessed not affected (boo#1226729,
+&quot;does not affect SUSE products&quot;), so the changelog records that verdict
+rather than claiming a new fix. Note the fix is caller-side: 3.5.3
+leaves Header_populateFromSettings byte-identical and instead validates
+the parsed settings in Settings.c.
+
+No patches in this package, so nothing to rebase or drop. No new build
+requirements, no new or removed installed files. Upstream ships no GPG
+signature; the tarball SHA-256 matches the published
+htop-3.5.3.tar.xz.sha256
+(a8b164386494cb85bb255a415a3f5f80afe7a0c4491da5d113b3a0f951087e65).
+
+Verified locally on aarch64: openSUSE_Factory green (rpmlint 1 error /
+1 warning / 1 badness, identical to the currently published 3.5.2 build,
+so no regression), Leap 16.0 base green (0 errors, 0 badness) and
+openSUSE:Leap:16.1/standard green (0 errors, 0 badness). spec-cleaner
+--remove-groups --pkgconfig --perl --tex diff is empty and
+source_validator is clean.
+
+Leap 16.0 and 16.1 sync PRs against pool/htop are filed alongside this
+request.</comment>
+    <requestid>1371506</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Aug 17 05:59:52 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 3.5.3:
+  * Improve the htoprc settings parser to avoid segfaults on
+    tampered configuration files (sanitised sort keys, validated
+    configuration invariants, NULL safety for header columns and
+    screens)
+  * Add zswap pool usage meters
+  * Fix out-of-bounds access when parsing the power supply type
+    (Linux)
+  * Mark a CPU offline when it is unplugged from the middle and
+    release its data on hot-unplug (Linux)
+  * Fix a Clang MemorySanitizer-reported issue
+  * Exit follow mode when a search or filter is cancelled
+  * Fix blank STARTTIME and wrong ELAPSED for threads (Darwin)
+  * Use strchr instead of strstr in XUtils
+  * Document the CPU meter segments in the man page and add an
+    External Libraries section covering libnl-3/libnl-genl-3
+- CVE-2024-37676: out-of-bounds access in
+  Header_populateFromSettings reachable from a tampered htoprc;
+  the settings parser hardening above is what upstream lists as
+  covering it. openSUSE is assessed not affected (boo#1226729)
+
+-------------------------------------------------------------------
 Mon Jul 20 05:48:59 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 3.5.2:
