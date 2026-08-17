@@ -7,4 +7,17 @@
     <comment>- New component package of the Python Azure SDK</comment>
     <requestid>1267503</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e05f150f7303f75f1797bdda92d66527</srcmd5>
+    <version>1.0.0~b4</version>
+    <time>1786978782</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 1.0.0b4
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Update Requires from setup.py (forwarded request 1371543 from glaubitz)</comment>
+    <requestid>1371553</requestid>
+  </revision>
 </revisionlist>
