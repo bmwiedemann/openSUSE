@@ -1,0 +1,452 @@
+-------------------------------------------------------------------
+Sun Aug  9 10:38:22 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.29.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.29.0
+- Changes since 6.28.0:
+  * Update dependency version to 6.29.0
+  * kzip: write data in chunks
+  * Documentation fixes
+  * kzip: zip64 write support (kde#514117)
+  * kzip: use qToLittleEndian
+  * kzip: change some ints to qint64 to allow writing zip64 archives
+  * kzip: fix opening zip64 archives
+  * Update version to 6.29.0
+
+-------------------------------------------------------------------
+Fri Jul 10 12:15:40 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.28.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.28.0
+- Changes since 6.27.0:
+  * Update dependency version to 6.28.0
+  * Update version to 6.28.0
+
+-------------------------------------------------------------------
+Sat Jun  6 11:42:02 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.27.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.27.0
+- Changes since 6.26.0:
+  * Update dependency version to 6.27.0
+  * Allow to set CMake modules path outside additionally.
+  * Use default DEFAULT_SEVERITY for logging
+  * Update version to 6.27.0
+
+-------------------------------------------------------------------
+Sat May  2 07:52:28 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.26.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.26.0
+- Changes since 6.25.0:
+  * Update dependency version to 6.26.0
+  * autotests: Remove adult content from test data
+  * Update version to 6.26.0
+
+-------------------------------------------------------------------
+Tue Apr  7 19:18:47 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.25.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.25.0
+- Changes since 6.24.0:
+  * Update dependency version to 6.25.0
+  * Fix int overflow + QList assert on broken files
+  * Generate a pkgconfig file
+  * Update version to 6.25.0
+
+-------------------------------------------------------------------
+Mon Mar  9 08:07:25 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.24.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.24.0
+- Changes since 6.23.0:
+  * Update dependency version to 6.24.0
+  * 7zip: insert al the values at once instead of one by one
+  * KCompressionDevice: avoid asserting on using unbuffered open
+  * Update version to 6.24.0
+
+-------------------------------------------------------------------
+Fri Feb  6 14:25:43 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.23.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.23.0
+- Changes since 6.22.0:
+  * Update dependency version to 6.23.0
+  * K7ZipPrivate::folderItem: Limit the amount of folderInfos to a "reasonable" amount
+  * 7zip: defines to constexpr (or commented out if unused)
+  * 7zip: make it clear we only support an int number of files
+  * 7zip: convert a bunch of int to qsizetype
+  * 7zip: Remove unused defines
+  * 7zip: Add names to function parameters
+  * 7zip: Use ranges::any_of
+  * 7zip: Convert loops into range-for loops
+  * 7zip: Add [[nodiscard]]
+  * 7zip: Mark 3 qlist parameters as const
+  * 7zip: Mark sngle argument constructors as explicit
+  * 7zip: Use "proper" C++ include
+  * 7zip: Remove unused BUFFER_SIZE
+  * 7zip: Use default member initializer
+  * Enable LSAN in CI
+  * KLimitedIODevice: mark two member variables as const
+  * kzip: Bail out if the reported size of the file is negative
+  * Fix OSS-Fuzz AFL builds
+  * Update version to 6.23.0
+
+-------------------------------------------------------------------
+Sun Jan  4 14:47:04 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.22.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.22.0
+- Changes since 6.21.0:
+  * Update dependency version to 6.22.0
+  * 7z: Fix infinite loop in broken files
+  * 7z: Fix infinite loop in malformed file
+  * Update version to 6.22.0
+
+-------------------------------------------------------------------
+Fri Dec 12 20:17:19 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.21.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.21.0
+- Changes since 6.20.0:
+  * Update dependency version to 6.21.0
+  * Update version to 6.21.0
+
+-------------------------------------------------------------------
+Thu Nov 13 20:58:44 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.20.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.20.0
+- Changes since 6.19.0:
+  * Update dependency version to 6.20.0
+  * Use CamelCase Qt include
+  * 7z: Change for{if{}} to if{for{}}
+  * autotests/kcompressiondevicetest.cpp spell check
+  * 7z: Fix infinite loop in malformed file
+  * ktar: Fix/Tweak the skip error condition
+  * Add nodiscard attribute to open(...) declarations
+  * ktar: Optimize memory allocations
+  * KTar: Use skip instead of seek for skipping
+  * testTarReadWrite: Also test with KCompressionDevice
+  * Add some const
+  * 7z: Fix assert/crash in malformed file
+  * Explicitly convert enum to int for QString::arg
+  * 7z: Break early on failure in K7ZipPrivate::folderItem
+  * Update version to 6.20.0
+
+-------------------------------------------------------------------
+Tue Oct  7 17:06:11 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.19.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.19.0
+- Too many changes to list here.
+
+-------------------------------------------------------------------
+Mon Sep  8 13:32:57 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.18.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.18.0
+- Changes since 6.17.0:
+  * Update dependency version to 6.18.0
+  * tests: Merge ossfuzz test functions into one
+  * 7z: Make sure seqInStream/coderIndex are initialized
+  * kzip: Add another test for extra headers
+  * kzip: Replace open coded 16bit uint reading with common method
+  * kzip: Replace last occurences of open coded 32bit uint reading
+  * 7z: Fix index out of range in QList::at on malformed files
+  * KZipFileEntry::data: Don't try to extract data of files that are too big
+  * 7z: Return false instead of assert in malformed files
+  * Move fuzz target and build script into KArchive repository
+  * 7zip: Fix crash in malformed files
+  * Update version to 6.18.0
+
+-------------------------------------------------------------------
+Mon Aug  4 06:57:20 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.17.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.17.0
+- Changes since 6.16.0:
+  * Update dependency version to 6.17.0
+  * It compiles fine without qt 6.10 deprecated methods
+  * autotests/CMakeLists.txt the function is called for multiple extensions
+  * Update version to 6.17.0
+
+-------------------------------------------------------------------
+Mon Jul  7 07:24:33 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.16.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.16.0
+- Changes since 6.15.0:
+  * Update dependency version to 6.16.0
+  * Add missing qhp project
+  * Allow giving the KCompressionDevice the size we know it has
+  * kzip: Prevent integer-overflow found by oss-fuzz
+  * Update version to 6.16.0
+
+-------------------------------------------------------------------
+Mon Jun  9 20:29:31 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.15.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.15.0
+- Changes since 6.14.0:
+  * Update dependency version to 6.15.0
+  * k7zip: Fix infinite loop on malformed file
+  * k7zip: Fix crash on malformed file
+  * Add tags file to documentation
+  * Reuse KCompressionDevice constructor
+  * Turn assert into warning
+  * Add landing page for QDoc
+  * Add LZIP compression support to KArchive (kde#447421)
+  * kzip: Fix crash on malformed files
+  * Port API documentation to QDoc syntax
+  * Update version to 6.15.0
+- Replace _kf6_bugfix_version usage
+
+-------------------------------------------------------------------
+Sun May  4 19:05:15 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.14.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.14.0
+- Changes since 6.13.0:
+  * Update dependency version to 6.14.0
+  * Fix heap buffer overflow
+  * kzip: Fix position calculation for archives with prepended arbitrary data (kde#329579)
+  * Skip two bytes on invalid header signature in `seekToNextHeaderToken()`
+  * Avoid searching uninitialized bytes in `header.indexOf("PK")`
+  * Update version to 6.14.0
+  * kzip: Fix crash on malformed files
+
+-------------------------------------------------------------------
+Sat Apr  5 12:32:30 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.13.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.13.0
+- Changes since 6.12.0:
+  * Remove duplicate deprecation attribute
+  * Silence nodiscard warning
+  * Add missing since information
+  * Properly deprecate addEntry/removeEntry
+  * Handle Zip64 extra field in central directory
+  * kzip: Remove repeated code for header detection
+  * kzip: Fix misdetection of nested signatures, handle Zip64 data descriptors (kde#450597)
+  * kzip: Detect Zip64 end of central directory records
+  * kzip: Add various test cases
+  * Add support for reading encrypted 7z archives
+  * Mark addEntry as deprecated, replaced with addEntryV2
+  * Add test files
+  * Fix QIODevice double deletion in KArchive::close()
+  * Introduce and use KArchiveDirectory::removeEntryV2
+  * It compiles fine without qt6.9 deprecated methods
+  * Fix buffer boundary check in K7ZipPrivate::readNumber
+  * Update dependency version to 6.13.0
+
+-------------------------------------------------------------------
+Tue Mar 11 09:29:07 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.12.0
+- Changes since 6.11.0:
+  * Update dependency version to 6.12.0
+  * KF6 TODOs are now KF7 TODOs
+  * kgzipfilter.cpp use nullptr instead of zero
+  * Use 'const QString' declarations for test filenames
+  * Move all test data files to data directory
+  * 7zip: Add default naming for files without a name (kde#496175)
+  * Add error checking for writing back temp files in KTar
+  * Handle errors in KTar::writeLonglink
+  * Remove stale TODO
+  * Refactor KXzFilter::init to use QScopeGuard
+  * Update version to 6.12.0
+
+-------------------------------------------------------------------
+Sat Feb  8 12:16:41 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.11.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.11.0
+- Changes since 6.10.0:
+  * Update dependency version to 6.11.0
+  * Add xml/yaml linting
+  * CI: Add linux-qt6-next build
+  * Update version to 6.11.0
+
+-------------------------------------------------------------------
+Tue Jan  7 18:17:20 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.10.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.10.0
+- Changes since 6.9.0:
+  * Update dependency version to 6.10.0
+  * Update version to 6.10.0
+
+-------------------------------------------------------------------
+Sun Dec  8 10:09:06 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.9.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.9.0
+- Changes since 6.8.0:
+  * Update dependency version to 6.9.0
+  * kzip: fix reading of ZIP64 fields on certain architectures
+  * k7zip: fix/simplify GetUi*() functions
+  * It compiles fine without deprecated methods
+  * Handle device open error
+  * Remove usage of QMutableListIterator
+  * Update version to 6.9.0
+
+-------------------------------------------------------------------
+Mon Nov  4 11:17:57 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.8.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.8.0
+- Changes since 6.7.0:
+  * Update dependency version to 6.8.0
+  * Add CI for static builds on Linux
+  * Update version to 6.8.0
+  * [k7zip] Correctly handle pack sizes > INT_MAX
+
+-------------------------------------------------------------------
+Mon Oct  7 09:59:47 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.7.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.7.0
+- Changes since 6.6.0:
+  * Update dependency version to 6.7.0
+  * k7zip: prevent crash when archive has no modification times for files
+  * Update version to 6.7.0
+
+-------------------------------------------------------------------
+Sat Sep  7 09:03:05 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.6.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.6.0
+- Changes since 6.5.0:
+  * ci: add Alpine/musl job
+  * Update version to 6.6.0
+
+-------------------------------------------------------------------
+Mon Aug  5 10:47:30 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.5.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.5.0
+- Changes since 6.4.0:
+  * Update dependency version to 6.5.0
+  * Allow passing QIODevice::Truncate in open mode
+  * Update version to 6.5.0
+
+-------------------------------------------------------------------
+Tue Jul  9 09:41:34 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.4.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.4.0
+- Changes since 6.3.0:
+  * Don't accept tar files with sizes < 0
+  * Fix crash with malformed files
+
+-------------------------------------------------------------------
+Wed Jun  5 10:11:20 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.3.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.3.0/
+- Changes since 6.2.0:
+  * require unit tests to pass on Windows
+  * It compiles fine without qt6.7 deprecated methods
+  * Add missing includes
+
+-------------------------------------------------------------------
+Mon May  6 12:22:17 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.2.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/6.2.0/
+- Changes since 6.1.0:
+  * gitignore: add VS Code dir
+
+-------------------------------------------------------------------
+Fri Apr  5 12:52:21 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.1.0
+  * New feature release
+- Changes since 6.0.0:
+  * update version for new release
+
+-------------------------------------------------------------------
+Wed Feb 21 19:27:42 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.0.0
+  * New bugfix release
+  * Release announcement not available yet
+- Changes since 5.249.0:
+  * update version for new release
+
+-------------------------------------------------------------------
+Wed Jan 31 17:49:47 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.249.0 (6.0 RC 2):
+  * New bugfix release
+  * For more details see https://kde.org/announcements/megarelease/6/rc2/
+
+-------------------------------------------------------------------
+Mon Jan 15 20:00:30 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.248.0 (6.0 RC 1)
+  * For more details please see:
+    https://kde.org/announcements/megarelease/6/rc1/
+
+-------------------------------------------------------------------
+Sat May 27 11:18:12 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Init kf6-karchive

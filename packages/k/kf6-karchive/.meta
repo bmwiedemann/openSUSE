@@ -1,0 +1,12 @@
+<package name="kf6-karchive" project="openSUSE:Factory">
+  <title>Qt 6 addon providing access to numerous types of archives</title>
+  <description>KArchive provides classes for easy reading, creation and manipulation of
+&quot;archive&quot; formats like ZIP and TAR.
+
+If also provides transparent compression and decompression of data, like the
+GZip format, via a subclass of QIODevice.
+
+</description>
+  <devel project="KDE:Frameworks" package="kf6-karchive"/>
+  <url>https://www.kde.org</url>
+</package>
