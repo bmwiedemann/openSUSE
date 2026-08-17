@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 12 14:46:01 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to improve issues after unplugging outputs:
+  * 0001-wayland-Increase-global-removal-timer-timeout-to-1-d.patch
+
+-------------------------------------------------------------------
 Tue Aug  4 11:25:44 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.7.4:
