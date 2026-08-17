@@ -256,3 +256,24 @@ Index: rssguard-5.2.0/src/cmake_plugins.cmake
    )
  
    target_compile_definitions(${plugin_target_name}
+Index: rssguard-5.2.0/tests/CMakeLists.txt
+===================================================================
+--- rssguard-5.2.0.orig/tests/CMakeLists.txt
++++ rssguard-5.2.0/tests/CMakeLists.txt
+@@ -9,14 +9,14 @@ function(add_rssguard_test TEST_TARGET)
+   target_link_libraries(${TEST_TARGET}
+     PRIVATE
+     Qt${QT_VERSION_MAJOR}::Test
+-    rssguard
++    rssguard-${APP_VERSION}
+   )
+ 
+   if(WIN32)
+     add_test(NAME ${TEST_TARGET}
+       COMMAND ${CMAKE_COMMAND} -E env
+         "QT_QPA_PLATFORM=offscreen"
+-        "PATH=$<TARGET_FILE_DIR:rssguard>$<SEMICOLON>$<TARGET_FILE_DIR:Qt${QT_VERSION_MAJOR}::Core>$<SEMICOLON>$ENV{PATH}"
++        "PATH=$<TARGET_FILE_DIR:rssguard-${APP_VERSION}>$<SEMICOLON>$<TARGET_FILE_DIR:Qt${QT_VERSION_MAJOR}::Core>$<SEMICOLON>$ENV{PATH}"
+         $<TARGET_FILE:${TEST_TARGET}>
+     )
+   else()

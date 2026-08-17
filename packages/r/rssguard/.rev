@@ -635,4 +635,157 @@ version is under development
     <comment></comment>
     <requestid>1367385</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>60e6a0398a762ff367ba7c6dd7e37f0f</srcmd5>
+    <version>5.2.4</version>
+    <time>1786978787</time>
+    <user>anag_factory</user>
+    <comment>Forwards the 5.2.4 update that was stranded in X11:Utilities (packaged by
+ecsos, X11:Utilities rev 127) and adds a spec cleanup on top.  Supersedes
+SR 1371557, which carried the same 5.2.4 sources but no description and
+none of the changes below.
+
+Two things a reviewer will want to look at specifically: the new
+Requires on qt6-sql-sqlite, and the completed License tag.  Details at
+the bottom.
+
+Cleanup
+=======
+
+* Dropped the dead gcc12 / gcc12-c++ fallback and its
+  &quot;suse_version &lt; 1600&quot; guard -- Leap 15.6 is EOL and 16.0's default gcc
+  is new enough.
+* Dropped &quot;Source2: %{name}.changes&quot;.  Declared since rev 118 and never
+  used: no %{SOURCE2}/%{S:2} anywhere, not installed as %doc, and not
+  needed to keep the source validator quiet either
+  (source_validators/20-files-present-and-referenced skips *.changes in
+  its unmentioned-files list).
+* Dropped three BuildRequires this build never consults:
+  cmake(Qt6Core5Compat) -- nothing in the tree references Core5Compat or
+  Qt5Compat at all; cmake(Qt6GuiPrivate) -- linked only under if(WIN32);
+  pkgconfig(zlib) -- its find_package(ZLIB) lives inside
+  if(ENABLE_COMPRESSED_SITEMAP), which is off, and the built RPM has no
+  libz dependency.  Note for whoever maintains this next: switching
+  ENABLE_COMPRESSED_SITEMAP on would give users gzipped-sitemap feed
+  support and would need zlib back.  That is a feature decision, so I
+  did not fold it into a cleanup.
+* Group tags removed, License declared on both subpackages, hand-written
+  ldconfig %post/%postun replaced by %ldconfig_scriptlets, &quot;%files -n
+  librssguard-devel&quot; now uses the same macro form as its %package, and
+  the vendor untar in %prep no longer prints 626 lines.
+* spec-cleaner --remove-groups --pkgconfig --perl --tex is a no-op on the
+  result.
+
+libmpv on Leap 16.0
+===================
+
+The media player was gated on
+&quot;suse_version &gt; 1600 || sle_version &gt;= 150600&quot;.  That is false on 16.0
+itself (1600 is not &gt; 1600) and otherwise only matched EOL Leap 15.6, so
+the 16.0 build shipped with no media player -- even though
+pkgconfig(mpv) was already an unconditional BuildRequires and libmpv2
+was being pulled into the buildroot anyway.  Confirmed in the current
+X11:Utilities 16.0/aarch64 build log, which configures
+-DENABLE_MEDIAPLAYER_LIBMPV:BOOL=OFF.  Now unconditionally ON.
+
+Test suite (there was no %check at all)
+=======================================
+
+Upstream ships tests/ with 11 Qt test binaries, and every add_test()
+already sets QT_QPA_PLATFORM=offscreen itself, so they need no display.
+They were unreachable for two reasons: ENABLE_TESTING was off, and
+tests/CMakeLists.txt links the CMake target &quot;rssguard&quot;, which
+rssguard-add_library_version.patch renames to rssguard-${APP_VERSION}.
+That patch now covers tests/CMakeLists.txt too.
+
+Ten of the eleven run and pass.  test_textfactory is excluded: its
+benchmarksDateTimeParsing() QBENCHMARK parses 10000 dates per iteration,
+which takes about five minutes even with -iterations 1, so it runs into
+QtTest's own 300 s per-function watchdog and the binary gets killed.  It
+is a benchmark rather than a correctness check; the reason is recorded in
+an in-spec comment.
+
+The bundled Go article-extractor also has main_test.go with three tests
+that only talk to net/http/httptest servers on loopback, so those run in
+the offline build too.
+
+Missing runtime dependency, found by that test suite
+====================================================
+
+test_databasequeries aborted with SIGABRT and no output.  Cause:
+src/librssguard/database/databasefactory.cpp:46 does
+
+    qFatal(&quot;DB driver for '%s' was not found.&quot;, ...)
+
+and the Qt6 QSQLITE driver plugin is in a separate package
+(qt6-sql-sqlite), which was in neither the buildroot nor the package's
+Requires.  Proved by dropping libqsqlite.so into the preserved build root
+and re-running the same binary: 5 passed, 0 failed instead of the abort.
+
+So this is not merely a test-environment gap -- SQLite is RSS Guard's
+default and only mandatory backend (APP_DB_SQLITE_DRIVER &quot;QSQLITE&quot;;
+MariaDB is feature-detected via isDriverAvailable()), so on a system
+without qt6-sql-sqlite the application aborts at startup.  rpm cannot
+derive the dependency because the driver is a plugin that is loaded, not
+linked.  Added as both BuildRequires (for the test) and Requires (the
+actual fix).  qt6-sql-sqlite exists in Factory and in Leap 16.0.
+
+Hardening
+=========
+
+The article-extractor is built by upstream's own CMake custom command,
+which forwards no flags on Linux.  The spec's separate
+&quot;go build -buildmode=pie&quot; in %build wrote its output into the source
+directory and that output was thrown away, so the *shipped* binary was
+not PIE (rpmlint: position-independent-executable-suggested).  Replaced
+that dead step with GOFLAGS=&quot;-buildmode=pie -mod=vendor&quot;, which the CMake
+invocation picks up.
+
+License tag -- please review
+============================
+
+&quot;AGPL-3.0-or-later AND GPL-3.0-only&quot; was incomplete.  Both existing
+identifiers are right: AGPL from src/librssguard/network-web/
+oauth2service.{h,cpp}, taken from QOAuth2 (Jacob Dawid); GPL-3.0-only
+from LICENSE.md, the AppStream project_license and the bundled
+qtlinq / qt-publicsuffix.  But the shipped librssguard-gmail.so also
+compiles src/librssguard-gmail/src/3rd-party/mimesis
+(LGPL-3.0-or-later) and .../3rd-party/richtexteditor, i.e.
+MRichTextEditor (LGPL-2.1 plus a Digia Qt LGPL Exception 1.1).  Both are
+weak copyleft, so both are now in the tag.
+
+Deliberately NOT in the tag, and recorded as Legal-Review-Notice
+comments above it so nobody has to re-derive this:
+
+* Permissive-only bundled code is not itemised -- gumbo is Apache-2.0,
+  sc/simplecrypt is BSD-3-Clause, and the 22 Go modules statically
+  linked into rssguard-article-extractor are MIT, BSD and Apache-2.0
+  only, with no copyleft anywhere in that set.
+* The Digia exception is not spelled out with a WITH clause, to avoid an
+  identifier that may not be on the accepted list.
+* qxmpp (LGPL-2.1-or-later) is in the tarball but is not shipped:
+  BUILD_XMPP_PLUGIN defaults to OFF and is not enabled, and the built
+  RPM contains no librssguard-xmpp.so (only feedly, gmail, greader,
+  nextcloud, standard and ttrss).
+
+Verification
+============
+
+* osc build --clean openSUSE_Tumbleweed aarch64: green before and after.
+* Shipped content otherwise unchanged: the file lists of all four binary
+  RPMs, and their Provides, are byte-identical to the pre-cleanup build.
+  The two intended metadata deltas are the License tag and the new
+  Requires on qt6-sql-sqlite.
+* Vendored Go set re-checked against 5.2.4's go.mod: all 22 modules match
+  exactly, and go.mod declares &quot;go 1.25.0&quot;, so the existing
+  &quot;BuildRequires: golang(API) &gt;= 1.25&quot; floor is real rather than
+  inherited.
+* Both patches still apply and are both still needed; rssguard-go.patch
+  exists only because rssguard-add_library_version.patch renames the
+  target it refers to.  Neither is upstreamable -- they encode the
+  openSUSE library layout -- and the PatchN comments now say so.
+* No open openSUSE bug applies.  The single Bugzilla hit for &quot;rssguard&quot;
+  is a Plasma session-restore report that merely mentions the app.</comment>
+    <requestid>1371572</requestid>
+  </revision>
 </revisionlist>

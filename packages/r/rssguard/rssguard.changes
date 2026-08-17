@@ -1,4 +1,228 @@
 -------------------------------------------------------------------
+Mon Aug 17 12:07:35 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Spec cleanup:
+  * Drop the dead gcc12 fallback, the Group tags and the
+    unreferenced Source2 (the package's own .changes file)
+  * Drop the unused cmake(Qt6Core5Compat), cmake(Qt6GuiPrivate)
+    and pkgconfig(zlib) build requirements
+  * Switch to the ldconfig scriptlet macro and declare a license
+    on every subpackage
+- Add the missing runtime dependency on qt6-sql-sqlite: SQLite is
+  the default storage backend, and the application aborts right
+  at startup when the QSQLITE driver plugin is absent - rpm
+  cannot derive this because the plugin is loaded, not linked
+- Enable the libmpv media player backend on Leap 16.0 as well - it
+  was switched off by a conditional that only ever matched EOL
+  Leap 15.x, even though pkgconfig(mpv) was already required
+  unconditionally
+- Run the test suites during the build: ten of upstream's eleven
+  Qt unit test binaries via ctest, plus the tests of the bundled
+  Go article-extractor
+  * Extend rssguard-add_library_version.patch so the renamed
+    library target is picked up by tests/CMakeLists.txt too
+  * test_textfactory stays out, because its date parsing
+    benchmark runs into QtTest's own 300 s per-function watchdog
+- Build the bundled Go article-extractor as a position
+  independent executable
+- Complete the License tag with the copyleft licenses of the
+  bundled code that is really shipped: LGPL-2.1-only
+  (MRichTextEditor) and LGPL-3.0-or-later (mimesis), both linked
+  into librssguard-gmail.so
+
+-------------------------------------------------------------------
+Mon Aug 17 08:25:33 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to version 5.2.4:
+  * changelog
+  * changelog
+  * better js highlighting
+  * tighten double-unescaping of HTML literals inside potentially plain-text RSS descriptions
+  * tighten double-unescaping of HTML literals inside potentially plain-text RSS descriptions
+  * Dutch translation for rssguard_en.ts [skip ci] (#2405)
+  * work on filtering!
+  * article custom_data is now readable via article filtering
+  * missed custom_data update in messages table
+  * New Crowdin updates (#2404)
+  * forgotten files
+  * fixed #1955
+  * added a method for getting whole data of duplicate article inside article filter
+  * Bump richardsimko/update-tag from 2 to 3 (#2402)
+  * Spanish translation for rssguard_en.ts
+  * Update FUNDING.yml
+  * funding
+  * fixed #2396
+  * fixed #2399
+  * de-facto fix #2397
+  * filtering refactor
+  * refactored and sped-up updateMessages, greatly speeding up feed fetching
+  * work on aritlce label menu
+  * fixed label assignment caching speed
+  * making labelsmenu faster, much faster
+  * fixed #2392
+  * fix annoying statusbar info on app startup
+  * fix test
+  * fixed #2277
+  * refactoring of some classes to not have hard dependency on qApp
+  * Spanish translation for rssguard_en.ts [skip ci] (#2393)
+  * save
+  * save
+  * apply pragmas only when needed
+  * performance fixups
+  * improved O complexity for filtering in feed list
+  * fix warning
+  * fixed #2365
+  * fixed #2320
+  * Spanish translation for rssguard_en.ts [skip ci] (#2388)
+  * fix #2390
+  * streamlined and fixed several problematic things in cookie handling and UA handling, helps with #2351
+  * refactoring
+  * refactoring
+  * build system fixes
+  * build system fixes
+  * build system fixes
+  * build system fixes
+  * New Crowdin updates (#2386)
+  * fixed #2385
+  * refactoring
+  * refactoring
+  * refactoring, clearing sensitive data from logs
+  * qApp refactoring for filtering
+  * refactoring
+  * Dutch translation for rssguard_en.ts [skip ci] (#2382)
+  * refactoring
+  * bit better and more robust datetime parsing
+  * refactoring
+  * refactoring
+  * refactoring
+  * refactoring
+  * refactoring
+  * add qt tests
+  * add qt tests
+  * add qt tests
+  * add qt tests
+  * icons
+  * fixed #2375
+  * fixed #2375
+  * New Crowdin updates (#2377)
+  * fixed #2373
+  * New Crowdin updates (#2372)
+  * Bump actions/setup-python from 6 to 7 (#2368)
+  * workaround qtwebengine flashing
+  * lang
+  * refactor
+
+-------------------------------------------------------------------
+Mon Aug 17 08:22:49 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to version 5.2.3:
+  * changelog
+  * fixed #2155
+  * fixed #2367
+  * changes related to #2367
+  * fix column saving
+  * fix column saving
+  * try to fix column weird glitching
+  * fix articlie viewer not visible when it should be
+  * taskbar flashinh switchable
+  * fixed problem when Processing feeds with filters and settings article as read which was not properly saved into DB
+  * separate cmd handler
+  * better progress in taskbar
+  * Application class breakdown
+  * refactor
+  * work on windows taskbar features
+  * work on windows taskbar features
+  * pause fetching added to tray icon menu and taskbar
+  * pause fetching added to tray icon menu
+  * improved default state of columns in article and feed views
+  * build fix
+  * fixed #2361
+  * New Crowdin updates (#2366)
+  * performance, UX fixing
+  * performance, UX fixing
+  * fixed #930
+  * performance, UX fixing
+  * New Crowdin updates (#2364)
+  * DB test generator
+  * performance, UX fixing
+  * can cycle articles in article list notification with mouse wheel now
+  * refactoring services/abstract APIs
+  * refactoring services/abstract APIs
+  * performance, UX fixing
+  * performance, UX fixing
+  * performance, UX fixing
+  * performance, UX fixing
+  * Russian translation for rssguard_en.ts [skip ci] (#2362)
+  * performance, UX fixing
+  * New Crowdin updates (#2360)
+  * performance, UX fixing
+  * performance, UX fixing
+  * performance, UX fixing
+  * add account dialog now closes only after the acc is actually added
+  * add account dialog now closes only after the acc is actually added
+  * performance, UX fixing
+  * deal with highlight, highlightedText being too contrast or too unreadable
+  * performance, UX fixing
+  * performance, UX fixing
+  * bug fixing, performance tweaks, code cleaning
+  * bug fixing, performance tweaks, code cleaning
+  * bug fixing, performance tweaks, code cleaning
+  * bug fixing, performance tweaks, code cleaning
+  * bug fixing, performance tweaks, code cleaning
+  * New Crowdin updates (#2358)
+  * bug fixing, performance tweaks, code cleaning
+  * bug fixing, performance tweaks, code cleaning
+  * bug fixing, performance tweaks, code cleaning
+  * bug fixing, performance tweaks, code cleaning
+  * bug fixing, performance tweaks, code cleaning
+  * bug fixing, performance tweaks, code cleaning
+  * jaro-winkler enhancements, overall filtering speedups
+  * bug fixing, performance tweaks, code cleaning
+  * bug fixing, performance tweaks, code cleaning
+  * bug fixing, performance tweaks, code cleaning
+  * bug fixing, performance tweaks, code cleaning
+  * bug fixing, performance tweaks, code cleaning
+  * bug fixing, performance tweaks, code cleaning
+  * bug fixing, performance tweaks, code cleaning
+  * bug fixing, performance tweaks, code cleaning
+  * bug fixing, performance tweaks, code cleaning
+  * bug fixing, performance tweaks, code cleaning
+  * bug fixing, performance tweaks, code cleaning
+  * fixed unguarded behavior in article list model for notifications
+  * filtering behavior change when there is error
+  * bug hunting
+  * performance enhancing, some bug fixes and little qol stuff
+  * New Crowdin updates (#2356)
+  * fixed #2355
+  * bug hunting
+  * performance increase in article filters
+  * bug hunting
+  * bug hunting
+  * bug hunting
+  * gmail fixes
+  * bug hunting
+  * bug hunting
+  * fix weird drag/drop behavior when in manual sorting and descending order
+  * bug hunting
+  * bug hunting
+  * bug hunting
+  * bug hunting
+  * bug hunting
+  * bug hunting
+  * bit faster xmpp discoevry
+  * Fix #2354
+  * fixed #2339
+  * fix #2341
+  * fix #2346
+  * maybe better CSS for hr
+  * Fix #2352
+  * fixed #2350 and other fixes
+  * fixed #2344
+  * fixed #2345
+  * fixed #2347
+  * Chinese Simplified translation for rssguard_en.ts
+
+-------------------------------------------------------------------
 Mon Jul 06 16:22:22 UTC 2026 - ecsos <ecsos@opensuse.org>
 
 - Update to version 5.2.2:

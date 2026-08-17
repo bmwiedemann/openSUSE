@@ -16,36 +16,53 @@
 #
 
 
-%define libver  5_2_2
+%define libver  5_2_4
 Name:           rssguard
-Version:        5.2.2
+Version:        5.2.4
 Release:        0
 Summary:        RSS/ATOM/RDF feed reader
-Group:          Productivity/Networking/News/Clients
-License:        AGPL-3.0-or-later AND GPL-3.0-only
+# Legal-Review-Notice: the shipped binaries bundle third-party code; every
+# copyleft licence involved is listed in the License tag below.
+#  * AGPL-3.0-or-later - src/librssguard/network-web/oauth2service.{h,cpp},
+#    taken from QOAuth2 (Jacob Dawid), built into librssguard-%%{version}.so
+#  * GPL-3.0-only - RSS Guard itself (LICENSE.md, AppStream project_license)
+#    plus the bundled 3rd-party/qtlinq and 3rd-party/qt-publicsuffix
+#  * LGPL-2.1-only - 3rd-party/richtexteditor (MRichTextEditor; it also grants
+#    the Digia Qt LGPL Exception 1.1), built into librssguard-gmail.so
+#  * LGPL-3.0-or-later - 3rd-party/mimesis, built into librssguard-gmail.so
+# Legal-Review-Notice: permissive-only bundled code is not itemised above -
+# 3rd-party/gumbo is Apache-2.0, 3rd-party/sc/simplecrypt is BSD-3-Clause, and
+# the Go modules statically linked into rssguard-article-extractor are MIT,
+# BSD-2/3-Clause and Apache-2.0 only (no copyleft in that set).
+# Legal-Review-Notice: src/librssguard-xmpp/src/3rd-party/qxmpp
+# (LGPL-2.1-or-later) is present in the tarball but is not shipped, because
+# BUILD_XMPP_PLUGIN defaults to OFF and is not enabled here.
+License:        AGPL-3.0-or-later AND GPL-3.0-only AND LGPL-2.1-only AND LGPL-3.0-or-later
 URL:            https://github.com/martinrotter/rssguard
 #Source0:        https://github.com/martinrotter/rssguard/archive/%%{version}.tar.gz#/%%{name}-%%{version}.tar.gz
 Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.gz
-Source2:        %{name}.changes
-# PATCH-FIX-OPENSUSE rssguard-4.7.2-add_library_version.patch aloisio@gmx.com -- add version to shared library
+# PATCH-FIX-OPENSUSE rssguard-add_library_version.patch aloisio@gmx.com -- Rename
+# the CMake library target to rssguard-${APP_VERSION} so the shared library is
+# installed as librssguard-%%{version}.so. Deliberate downstream-only carry: it
+# encodes the openSUSE package layout, so there is nothing to send upstream.
 Patch0:         rssguard-add_library_version.patch
-# PATCH-FIX-OPENSUSE  rssguard-go.patch -- To build article-extractor
+# PATCH-FIX-OPENSUSE rssguard-go.patch -- Drop add_dependencies() on the
+# "rssguard" target, which rssguard-add_library_version.patch renames; without
+# this CMake aborts on a non-existent target. Downstream-only follow-up to that
+# patch, so likewise not upstreamable.
 Patch1:         rssguard-go.patch
 BuildRequires:  fdupes
-%if 0%{?suse_version} < 1600
-BuildRequires:  gcc12
-BuildRequires:  gcc12-c++
-%else
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
-%endif
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  pkgconfig
+BuildRequires:  golang(API) >= 1.25
+# The QSQLITE driver plugin, needed by the test_databasequeries unit test
+BuildRequires:  qt6-sql-sqlite
 BuildRequires:  cmake(Qt6Concurrent)
 BuildRequires:  cmake(Qt6Core) >= 6.5.0
-BuildRequires:  cmake(Qt6Core5Compat)
 BuildRequires:  cmake(Qt6DBus)
-BuildRequires:  cmake(Qt6GuiPrivate)
 BuildRequires:  cmake(Qt6LinguistTools)
 BuildRequires:  cmake(Qt6Multimedia)
 BuildRequires:  cmake(Qt6Network)
@@ -53,13 +70,16 @@ BuildRequires:  cmake(Qt6OpenGL)
 BuildRequires:  cmake(Qt6OpenGLWidgets)
 BuildRequires:  cmake(Qt6Qml)
 BuildRequires:  cmake(Qt6Sql)
+BuildRequires:  cmake(Qt6Test)
 BuildRequires:  cmake(Qt6WebEngineWidgets)
 BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  cmake(Qt6Xml)
-BuildRequires:  golang(API)
 BuildRequires:  pkgconfig(mpv)
 BuildRequires:  pkgconfig(sqlite3)
-BuildRequires:  pkgconfig(zlib)
+# DatabaseFactory qFatal()s when the QSQLITE driver plugin is missing, and
+# SQLite is the default (and only mandatory) storage backend, so this is a hard
+# runtime dependency rpm cannot derive - the plugin is loaded, not linked.
+Requires:       qt6-sql-sqlite
 Recommends:     nodejs
 Recommends:     npm
 Obsoletes:      %{name}-lang < %{version}
@@ -71,7 +91,7 @@ It supports online feed synchronization.
 
 %package -n lib%{name}-devel
 Summary:        Development headers for lib%{name}-%{libver}
-Group:          Development/Libraries/C and C++
+License:        AGPL-3.0-or-later AND GPL-3.0-only
 Requires:       lib%{name}-%{libver}
 
 %description -n lib%{name}-devel
@@ -79,6 +99,7 @@ Development headers to be used with lib%{name}-%{libver}.
 
 %package -n lib%{name}-%{libver}
 Summary:        Shared library for %{name}
+License:        AGPL-3.0-or-later AND GPL-3.0-only
 
 %description -n lib%{name}-%{libver}
 Shared library for %{name} to be used by external plugins.
@@ -86,29 +107,20 @@ Shared library for %{name} to be used by external plugins.
 %prep
 %autosetup -p1
 # remove executable bit
-find src/librssguard -name "*.h" -exec chmod -x {} \;
+find src/librssguard -name "*.h" -exec chmod -x {} +
 # extract go vendor for article-extractor
-tar -xvzf %{SOURCE1} -C resources/scripts/standalone/article-extractor
+tar -xzf %{SOURCE1} -C resources/scripts/standalone/article-extractor
 
 %build
-%if 0%{?suse_version} < 1600
-export CC=gcc-12
-export CXX=g++-12
-%endif
-
-# first bild article-extractor
-pushd resources/scripts/standalone/article-extractor
-go build \
-   -mod=vendor \
-   -buildmode=pie
-popd
+# The article-extractor Go binary is built by upstream's own CMake custom
+# command, which forwards no build flags on Linux - hand them over through
+# GOFLAGS instead, so the shipped binary is PIE and the vendor tree above is
+# used rather than the (unreachable) module proxy.
+export GOFLAGS="-buildmode=pie -mod=vendor"
 
 %cmake -DBUILD_WITH_QT6:BOOL=ON \
-%if 0%{?suse_version} > 1600 || 0%{?sle_version} >= 150600
     -DENABLE_MEDIAPLAYER_LIBMPV:BOOL=ON \
-%else
-    -DENABLE_MEDIAPLAYER_LIBMPV:BOOL=OFF \
-%endif
+    -DENABLE_TESTING:BOOL=ON \
     -DUSE_SYSTEM_SQLITE:BOOL=ON \
     -DNO_UPDATE_CHECK=1
 %cmake_build
@@ -119,8 +131,23 @@ popd
 mkdir -pv %{buildroot}%{_datadir}/autostart
 %fdupes -s %{buildroot}
 
-%post -n lib%{name}-%{libver} -p /sbin/ldconfig
-%postun -n lib%{name}-%{libver} -p /sbin/ldconfig
+%check
+# The bundled Go article-extractor ships its own tests; they only talk to
+# net/http/httptest servers on loopback, so they run in the offline build.
+pushd resources/scripts/standalone/article-extractor
+go test -mod=vendor ./...
+popd
+# Upstream's Qt unit tests set QT_QPA_PLATFORM=offscreen themselves (see
+# tests/CMakeLists.txt), so no display or Xvfb wrapper is needed here.
+# test_textfactory is skipped: its benchmarksDateTimeParsing() QBENCHMARK parses
+# 10000 dates per iteration, which needs ~5 minutes and therefore runs into
+# QtTest's own 300 s per-function watchdog. It is a benchmark, not a
+# correctness check, so the remaining ten test binaries gate the build.
+# Spelled --exclude-regex because the %%ctest macro's option string rejects
+# the short form.
+%ctest --exclude-regex test_textfactory
+
+%ldconfig_scriptlets -n lib%{name}-%{libver}
 
 %files
 %license LICENSE.md
@@ -135,7 +162,7 @@ mkdir -pv %{buildroot}%{_datadir}/autostart
 %{_datadir}/metainfo/io.github.martinrotter.%{name}.metainfo.xml
 %{_libdir}/%{name}/lib%{name}-*.so
 
-%files -n librssguard-devel
+%files -n lib%{name}-devel
 %{_includedir}/lib%{name}
 
 %files -n lib%{name}-%{libver}
