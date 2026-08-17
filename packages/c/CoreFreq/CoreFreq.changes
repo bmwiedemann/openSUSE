@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Sun Aug 16 07:22:16 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to 2.1.4
+  * [aarch64]
+    -  Build patch to the version 2.1.3
+- Update to 2.1.3
+  * [aarch64]
+    - Aggregate the Turbo Boost from per CPU collect
+    - [CPPC] Derive capability frequencies from nominal performance
+    - [CPPC] Query/Compute the ACPI-CPPC frequencies and EPP registers
+    - [CPPC] Promote ACPI-CPPC capabilities to COF number
+    - Gate PMU paths on per-CPU PMUSERENR_EL0 sampled each hrtimer tick
+    - Make use of kelvin to Celsius conversion kernel helpers
+    - Fallback to soc-thermal if RK3588 Core is not hybrid
+    - Improve the Hybrid topology and the big.LITTLE detection
+    - Rename and fix Query_DeviceTree for ACPI/CPPC
+    - [armv9] Move out FEAT_FGT from registers access conditions
+    - Don't query DeviceTree on ACPI machine to avoid a crash
+  * [Spark]
+    - Refactor platform detection and thermal path resolution
+    - Query and reports the activation state of AMU counters
+    - Route base clock probing by detected Arm v9 platform
+    - Map ACPI thermal zones per cluster
+    - Add temperature support for Cortex-A725 and Cortex-X925
+    - Access the AMU activity monitor on ASUS GX10 DGX
+  * [riscv64]
+    - Preview of the base ISA single-letter extensions
+  * [AMD]
+    - CPUID feature: Nested Paging (NP)
+    - [Zen5] Introducing the Gorgon Halo architecture codename
+  * [x86_64]
+    - [AMD][Intel] Display the CPUID features PKS and PKU
+  * [Kernel]
+    - smp_call_on_cpu(): now force to run on physical cpu
+    - [aarch64] Dispatch PMU event mnemonics and counter assignment by platform
+    - [ppc64][riscv64] Guard cpufreq_for_each_valid_entry against NULL freq_table
+    - cpufreq: initialize boost_supported at policy init
+  * [CR]
+    - Reduce CPU usage within the Child manager loop
+    - [aarch64] Optimize CPPC: cleanup HWP concept from CLI output and JSON export
+    - [aarch64] Replace SMBIOS string checks with PLATFORM enum dispatch tables
+    - [aarch64] Add explicit return at Skip_Normalization label
+    - [aarch64] Disable PMU-dependent counters when PMU access is lost
+    - [aarch64] Fix the ACPI Thermal Zone namespace path
+    - Improve __builtin_strnlen() usage
+  * [UI]
+    - [aach64] Right aligned the CPPC ratios
+    - [aarch64] Extend BaseClock field to 10 digits for 1GHz resolution
+    - [aarch64] FormatFixedFloat: adaptive fixed-width float formatter
+  * [Doc]
+    - [Intel] Complete the VMX-BASIC register bit-fields
+
+-------------------------------------------------------------------
 Fri Jun 19 11:44:24 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
 
 - removed upstream fix-leap16-compilation.patch

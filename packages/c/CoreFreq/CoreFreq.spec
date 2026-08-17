@@ -17,7 +17,7 @@
 
 
 Name:           CoreFreq
-Version:        2.1.2
+Version:        2.1.4
 Release:        0
 Summary:        CPU monitoring software for 64-bit processors
 License:        GPL-2.0-or-later
@@ -42,6 +42,13 @@ Arm A64; RISC-V RV64; PowerPC64 (LE)
 
 %prep
 %autosetup -p1
+%if 0%{?suse_version} == 1610
+# for Leap 16.1 because of its older Kernel patched with some recent stuff backported
+sed -i \
+    -e 's:amd_nb.h:amd/nb.h:' \
+    -e 's/x86_spec_ctrl_base = Spec_Ctrl.value;/this_cpu_write(x86_spec_ctrl_current, Spec_Ctrl.value);/' \
+    x86_64/corefreqk.c
+%endif
 
 %build
 %make_build
