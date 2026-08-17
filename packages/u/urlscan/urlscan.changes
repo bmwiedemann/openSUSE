@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 17 06:34:41 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Update to urlscan 1.1.2:
+  * Fix bug in flake version regex
+  * Hardcode the version in __init__.py instead of deriving it
+    from git tags with hatch-vcs.
+
+-------------------------------------------------------------------
 Tue Jun 30 09:02:56 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.9:

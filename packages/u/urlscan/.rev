@@ -250,4 +250,15 @@
     <comment></comment>
     <requestid>1364541</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>ea3f0311c2f8bb9903885693192cbe10</srcmd5>
+    <version>1.1.2</version>
+    <time>1786978771</time>
+    <user>anag_factory</user>
+    <comment>- Update to urlscan 1.1.2:
+  * Fix bug in flake version regex
+  * Hardcode the version in __init__.py instead of deriving it
+    from git tags with hatch-vcs.</comment>
+    <requestid>1371522</requestid>
+  </revision>
 </revisionlist>
