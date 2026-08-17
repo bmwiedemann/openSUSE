@@ -23,4 +23,49 @@
     <comment>Update to version 1.19.29</comment>
     <requestid>1366536</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>15cdc967cb5fec642a582aa619db45da</srcmd5>
+    <version>1.19.30</version>
+    <time>1786978755</time>
+    <user>anag_factory</user>
+    <comment>Update mihomo to 1.19.30 (upstream release 2026-08-16).
+
+Highlights:
+- CVE-2026-56862 (boo#1275032): post-handshake TLS handshake messages such
+  as KeyUpdate were always treated as state-advancing, so a malicious client
+  could force unbounded key derivation on the server. mihomo statically links
+  its own crypto/tls fork, so a fixed system Go would not have covered it;
+  1.19.30 bumps that fork to metacubex/tls 0.1.8, which carries the fix.
+- New ZeroTier outbound and a new &quot;mipstack&quot; userspace network stack
+  (selectable via a new &quot;ip-stack&quot; option), AmneziaWG v3.0/v3.1 support,
+  a substantially reworked sniffer, and DNS/OpenVPN/Tailscale fixes.
+
+Packaging changes:
+- License widened to &quot;GPL-3.0-only AND MPL-2.0&quot;. The Go binary statically
+  links its vendored module set; the two new modules (metacubex/zerotier-go,
+  metacubex/mipstack) are MPL-2.0, as are the already-linked
+  metacubex/yamux and hashicorp/golang-lru. The linked set was derived with
+  &quot;go list -deps&quot; for linux/amd64+arm64 with -tags with_gvisor and mapped
+  onto vendor/modules.txt; the reasoning is recorded as a
+  Legal-Review-Notice above the License tag. All other linked copyleft is
+  GPL-3.0-or-later and is absorbed by GPL-3.0-only.
+- %check now runs the upstream in-module unit test suite (55 packages &quot;ok&quot;)
+  instead of only a version smoke test. The three listener/inbound
+  *V2RayInterop tests are skipped because they shell out to
+  &quot;go get github.com/v2fly/v2ray-core/v5&quot; to build a v2ray binary at test
+  time, which cannot work in the offline build root; the separate test/
+  directory is its own module driving docker and is never reached by ./... .
+  The check asserts a minimum number of passing packages, because a suite
+  that collects nothing also exits 0.
+- golang(API) BuildRequires floor raised 1.20 -&gt; 1.21, which is what
+  &quot;go test -skip&quot; needs.
+
+Vendored Go modules regenerated via the go_modules source service:
+138 -&gt; 135 modules (2 added, 5 removed, 17 updated).
+
+No patches in this package, so none to rebase or drop.
+
+Built and tested locally against openSUSE_Factory/aarch64.</comment>
+    <requestid>1371504</requestid>
+  </revision>
 </revisionlist>

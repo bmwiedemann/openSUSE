@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Mon Aug 17 05:52:22 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.19.30:
+  * CVE-2026-56862: post-handshake TLS handshake messages such as
+    KeyUpdate were always treated as state-advancing, letting a
+    malicious client force unbounded key derivation on the server;
+    fixed by the vendored crypto/tls fork metacubex/tls 0.1.8
+    (boo#1275032)
+  * Add a ZeroTier outbound, plus follow-up work on its network
+    lifecycle events, domain resolution, runtime synchronisation,
+    multicast/link state, equal-quality path selection and
+    packet-bridge throughput
+  * Add mipstack, a second userspace network stack alongside
+    gVisor, with BBR3, datagram and raw IP socket support; expose
+    it through a new "ip-stack" option on the openvpn, masque,
+    wireguard and ZeroTier outbounds
+  * Support AmneziaWG v3.0 and v3.1
+  * Overhaul the sniffer: H2C and QUICv2 sniffing (#3036),
+    multi-round reads, ClientHello reassembly across TLS records,
+    HTTP/2 header blocks across continuation frames and coalesced
+    QUIC packets; keep connections open after an initial sniffing
+    failure and drop unnecessary sniffing waits
+  * Fix DNS handling: initialise DNS before NTP (#3103), truncate
+    UDP replies to the client's advertised buffer size (#3043),
+    echo the EDNS0 option when the request carries one (#3041) and
+    fix a panic when UDP is unsupported in dns_dialer
+  * Improve OpenVPN: survive server-initiated soft reset and rekey
+    (#3109) and allow overriding IV_VER through peer-info
+  * Harden ShadowQUIC/JLS: enforce JLS authentication in the QUIC
+    layer, avoid reserved TLS suffixes in JLS FakeRandom and
+    harden JLS camouflage forwarding
+  * Add "client-metadata" to anytls (not sent by default),
+    "handshake-timeout" to hysteria2 and "rate-limit" to the
+    restls listener
+  * Fix Tailscale not recovering after the network was restored,
+    and report the upstream Tailscale version (#3074, #3079)
+  * Apply the default uplink chunk size for xhttp (#3061) and
+    strictly verify Clash-style domain wildcard syntax
+  * Update bundled quic-go to 0.61.0, tailscale to v1.102.2, and
+    refresh gvisor, bart and mieru
+- Widen License to "GPL-3.0-only AND MPL-2.0": the Go binary
+  statically links its vendored modules, and the new ZeroTier and
+  mipstack stacks are MPL-2.0 (as are the already-linked
+  metacubex/yamux and hashicorp/golang-lru)
+- Run the upstream unit test suite in %check instead of only a
+  version smoke test, skipping the three listener/inbound
+  V2RayInterop tests that download and build v2ray-core at test
+  time; this needs "go test -skip", so raise the golang(API)
+  BuildRequires floor to 1.21
+
+-------------------------------------------------------------------
 Sat Jul 18 18:30:18 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.19.29:
