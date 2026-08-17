@@ -39,4 +39,26 @@
   * Initial implementation of PR checkout (#97)</comment>
     <requestid>1366428</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8167801293019d5035a1c87e9f1fe51d</srcmd5>
+    <version>0.9.0</version>
+    <time>1786983305</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.0:
+  * Add GitHub commit resolver (#150)
+  * Bump github.com/git-pkgs/purl from 0.1.15 to 0.1.16 (#149)
+  * Bump golang.org/x/crypto from 0.54.0 to 0.55.0 (#148)
+  * Support plain-HTTP self-hosted forges (#147)
+  * Add Gerrit forge adapter (#119)
+  * Add Tangled forge support (#120)
+  * fix(repo): stop List pagination early once Limit is reached (#143)
+  * fix(gitlab): support setting assignees and reviewers on issues and MRs (#146)
+  * fix forge api base url construction (#141)
+  * Consolidate git config helpers (#132)
+  * fix(repo): make --limit cap total results (#135)
+  * Bump golang.org/x/term from 0.44.0 to 0.45.0 (#138)
+  * Normalize forge statuses (#121)
+  * command to retrieve token (#124)</comment>
+    <requestid>1371579</requestid>
+  </revision>
 </revisionlist>
