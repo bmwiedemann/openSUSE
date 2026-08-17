@@ -113,4 +113,12 @@
 - Add BuildRequires pkgconfig(rtmidi) (forwarded request 1364998 from Kieltux)</comment>
     <requestid>1365280</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>4e9a787d4fa637b9e45c5efe5dacfb38</srcmd5>
+    <version>0.70.0</version>
+    <time>1786978743</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1371470</requestid>
+  </revision>
 </revisionlist>

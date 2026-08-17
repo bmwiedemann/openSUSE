@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Aug  9 21:30:00 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.de>
+
+- Drop pkgconfig(libpostproc) BuildRequires: the build asks
+  find_package(FFmpeg) for AVFORMAT, AVCODEC, SWSCALE, SWRESAMPLE and
+  AVUTIL only -- postproc is probed but never used.  ffmpeg-8 does not
+  ship libpostproc at all, so requiring it dragged in ffmpeg-4 or
+  ffmpeg-7, which conflict with the ffmpeg-8 devel packages, and the
+  whole thing became unresolvable.
+
+-------------------------------------------------------------------
 Sat Jul 11 19:33:26 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 0.70.0:
