@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Aug 17 01:54:40 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1786788019.aa348157:
+  * refactor(ui): remove jQuery from core utility scripts
+  * fix(layout): Avoid horizontal scrollbar on the whole page
+  * chore(deps): Dependency cron 2026-08-14
+  * refactor: remove deprecated job templates table view
+  * fix(storage): correct MD RAID0 setup and Agama schema validation
+  * feat: Add experimental log view mode to test details
+  * refactor(css): Use classes for preview containers
+
+-------------------------------------------------------------------
 Thu Aug 13 16:02:41 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1786629850.d1bdb83d:
