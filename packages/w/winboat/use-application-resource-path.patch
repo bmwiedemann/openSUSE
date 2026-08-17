@@ -1,0 +1,49 @@
+From: openSUSE Packaging <packages@opensuse.org>
+Date: Tue, 11 Aug 2026 00:00:00 +0000
+Subject: Resolve extra resources relative to the application
+
+The distribution Electron executable has its own resources directory. The
+WinBoat-specific data and guest server are installed alongside the unpacked
+application instead.
+
+diff --git a/src/renderer/lib/install.ts b/src/renderer/lib/install.ts
+--- a/src/renderer/lib/install.ts
++++ b/src/renderer/lib/install.ts
+@@ -133,7 +133,7 @@
+ 
+         // Determine the source path based on whether the app is bundled
+-        const appPath = remote.app.isPackaged
+-            ? path.join(process.resourcesPath, "guest_server") // For packaged app
+-            : path.join(remote.app.getAppPath(), "..", "..", "guest_server"); // For dev mode
++        // System Electron treats an application directory as unpackaged, so
++        // app.isPackaged cannot distinguish this RPM from a development run.
++        const appPath = path.join(remote.app.getAppPath(), "..", "guest_server");
+ 
+         logger.info(`Guest server source path: ${appPath}`);
+diff --git a/src/renderer/lib/usbmanager.ts b/src/renderer/lib/usbmanager.ts
+--- a/src/renderer/lib/usbmanager.ts
++++ b/src/renderer/lib/usbmanager.ts
+@@ -432,8 +432,7 @@
+     // Fallback to static file if the distro doesn't ship with usb.ids
+     if (!fs.existsSync(dbFilePath)) {
+-        dbFilePath = remote.app.isPackaged
+-            ? path.join(process.resourcesPath, "data", "usb.ids") // For packaged app
+-            : path.join(remote.app.getAppPath(), "..", "..", "data", "usb.ids"); // For dev mode
++        // See install.ts: system Electron reports app.isPackaged as false.
++        dbFilePath = path.join(remote.app.getAppPath(), "..", "data", "usb.ids");
+     }
+ 
+     logger.info(`Final USB database file path: ${dbFilePath}`);
+diff --git a/src/renderer/lib/winboat.ts b/src/renderer/lib/winboat.ts
+--- a/src/renderer/lib/winboat.ts
++++ b/src/renderer/lib/winboat.ts
+@@ -709,7 +709,6 @@
+         // 3. Set update flag & grab winboat_guest_server.zip from Electron assets
+         this.isUpdatingGuestServer.value = true;
+-        const zipPath = remote.app.isPackaged
+-            ? path.join(process.resourcesPath, "guest_server", "winboat_guest_server.zip")
+-            : path.join(remote.app.getAppPath(), "..", "..", "guest_server", "winboat_guest_server.zip");
++        // See install.ts: system Electron reports app.isPackaged as false.
++        const zipPath = path.join(remote.app.getAppPath(), "..", "guest_server", "winboat_guest_server.zip");
+ 
+         logger.info("ZIP Path", zipPath);

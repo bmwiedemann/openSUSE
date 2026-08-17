@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3037c31e621b4a40791b9e67a7d43f1c</srcmd5>
+    <version>0.9.0</version>
+    <time>1786978674</time>
+    <user>anag_factory</user>
+    <comment>WinBoat is an Electron app which allows you to run Windows apps on Linux using a containerized approach. Windows runs as a VM inside a Docker/Podman container, they communicate with it using the WinBoat Guest Server to retrieve data they need from Windows. For compositing applications as native OS-level windows, they use FreeRDP together with Windows's RemoteApp protocol.</comment>
+    <requestid>1371157</requestid>
+  </revision>
+</revisionlist>

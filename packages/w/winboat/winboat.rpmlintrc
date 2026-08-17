@@ -1,0 +1,6 @@
+# The application uses a private, production-only npm dependency tree. npm
+# packages commonly contain empty module stubs, type declarations, upstream
+# test metadata and helper scripts. They are data consumed by Electron/Node,
+# not system executables or development files exposed by this RPM.
+addFilter("winboat.*: E: (zero-length|wrong-script-end-of-line-encoding|version-control-internal-file|script-without-shebang|non-executable-script|env-script-interpreter|devel-file-in-non-devel-package).*node_modules")
+addFilter("winboat.*: W: (hidden-file-or-dir|potential-bashisms).*node_modules")

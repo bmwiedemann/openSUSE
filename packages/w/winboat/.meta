@@ -1,0 +1,8 @@
+<package name="winboat" project="openSUSE:Factory">
+  <title>Run Windows apps on Linux with seamless integration</title>
+  <description>WinBoat is a tool that allows you to run Windows applications on Linux
+without complicated configurations. Through a graphical wizard, it
+automatically completes image pulling, container creation, and RDP
+configuration.</description>
+  <url>https://github.com/TibixDev/winboat</url>
+</package>

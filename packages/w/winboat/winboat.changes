@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Tue Aug 11 10:04:24 UTC 2026 - Tobias Görgens <suse.snooper541@passmail.net>
+
+- Initial version 0.9.0:
+  * chore: Add loading animation in place of novnc while the container is starting (#513)
+  * feat: Better auto migrations, feat: Added migration for pre-0.9.0 (#512)
+  * feat: Add version tracking in config (#508)
+  * fix: Networking under podman (#507)
+  * fix: Add default homebrew bin directory to process.env.PATH (#506)
+  * chore: Improve Podman compose preset and minor refactors
+  * chore: Remove rollupOptions, since it is no longer required
