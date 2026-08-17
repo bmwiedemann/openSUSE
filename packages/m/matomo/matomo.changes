@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Mon Aug 17 08:04:16 UTC 2026 - ecsos <ecsos@opensuse.org> - 5.13.0
+
+- Update to 5.13.0
+  * Core improvements
+    - #24844 Fix archive aggregation across multiple sites for the same period.
+    - #24879 Name the reportTotal metric keys in Referrers.getAll.
+    - #24775 Require password confirmation when granting the admin role.
+    - #24791 Move submodule markers back to 5.x-dev
+    - #24797 Add no-data banner to the AI Chatbot Real-time page.
+    - #24824 Fix unreadable Display options label in Dark Mode on scheduled reports.
+    - #24828 Show a clear error for empty patterns on non-manual goals.
+    - #24831 Cap Ecommerce money values and handle extreme amounts safely.
+    - #24834, #24803 Add opt-in SSRF-safe HTTP fetch for user-configured URLs.
+    - #24837 Improve Row Evolution modal text contrast in Dark Mode.
+    - #24838, #21944 Persist ViewDataTable settings per container across reloads.
+    - #24842 Serve flat Actions reports from the pre-flattened archive.
+    - #24851, #24786 Add DateAtom sparkline-card component.
+    - #24852, #24787 Add the Date Comparison mode card.
+    - #24853, #24816 Backport Segment and Date Comparison mode to 5.x.
+    - #24862 Apply table search filter after combining multi-dimension labels
+    - #24870, #21812 Show small Referrers channel-type shares precisely instead of 0%.
+    - #24871 Add What’s New entry for Cohorts and Funnels dashboard widgets.
+    - #24876 Migrate the widget header to a Vue component.
+    - #24883, #24881 Differentiate EOL for MariaDB Community and Enterprise Server.
+    - #24892 Improve help icon position on card hover.
+    - #24900 Scale metric value font to container size to prevent overflow.
+    - #24903 Prevent stale idsite from persisting in marketplace links.
+    - #24909 Correctly override trust_visitors_cookies for intranet sites.
+    - #24911, #20297 Allow pending invitees to recover account access.
+    - #24913 Detect Google-GeminiNotebook as Google-NotebookLM.
+    - #24920 Harden Page Overlay API request handling.
+    - #24922 Render the sparklines grid using CSS grid.
+    - #24926 Fix mismatched Ecommerce metric labels on sparkline cards.
+    - #24930 Fix metric selector spacing on bar and pie charts.
+    - #24938 Show metric forecast on evolution graphs for incomplete periods.
+    - #24939 Fix value substitution in sparkline description placeholders.
+    - #24941 Fix oversized sparklines on the Segment Management page.
+    - #24950 Fix rendering of sparkline description placeholders
+    - #24962 Scope goal-name segment matching to the correct site.
+    - #24965 Encode comparison series suffix in comparison labels.
+    - #24992 Update sparkline UI screenshots and specs for the redesign.
+    - #24993 Enable the sparklines redesign for all users.
+    - #25037 Add AIProviders plugin.
+    - #24849, #21789 Improve error message for users using a Secure Only token in the API.
+  * Matomo Tag Manager
+    - #1148 Improve help icon positioning on card hover
+
+-------------------------------------------------------------------
 Tue Jul 14 09:32:48 UTC 2026 - ecsos <ecsos@opensuse.org> - 5.12.0
 
 - Update to 5.12.0
