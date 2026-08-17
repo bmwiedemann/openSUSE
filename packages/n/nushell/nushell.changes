@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Aug 16 16:09:36 UTC 2026 - Andrei Dziahel <develop7@develop7.info>
+
+- Update to version 0.115.0:
+  + Major YAML rework:
+    * Default to YAML 1.2; supports YAML 1.1 via `--spec 1.1`
+    * Proper tag support, multi-document streams, anchors, and merge keys
+    * Better round-tripping with Nushell-specific tags (`!filesize`, `!duration`, etc.)
+    * Stricter mapping keys; use `--key-resolution verbatim` for old behavior
+  + New `$ans` REPL variable for inspecting the last result (output, duration, exit code)
+  + Added `helix` edit mode (`$env.config.edit_mode = helix`)
+  + Breaking changes:
+    * YAML 1.1 scalar magic (like octal numbers starting with 0) now requires `--spec 1.1`
+    * `from yaml` rejects keys that resolve to booleans, numbers, or null by default
+    * `nu --testbin` removed
+    * `idx import` and `idx export` removed
+  + Additions:
+    * `drop` now supports `binary` inputs
+    * `chunks`, `first`, `last`, `take`, `skip`, and `drop` now support `filesize` arguments
+  + Other changes:
+    * Parser keywords (e.g., `def`) can no longer be shadowed as command names
+  + For a full list of changes with detailed descriptions, see:
+    https://www.nushell.sh/blog/2026-08-15-nushell_v0_115_0.html
+-------------------------------------------------------------------
 Mon Jul 13 11:41:42 UTC 2026 - Andrei Dziahel <develop7@develop7.info>
 
 - Update MSRV to 1.85 (first of edition2024)
