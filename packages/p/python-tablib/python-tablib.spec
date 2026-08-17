@@ -1,7 +1,7 @@
 #
 # spec file for package python-tablib
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-tablib
-Version:        3.9.0
+Version:        3.10.0
 Release:        0
 Summary:        Format agnostic tabular data library (XLS, JSON, YAML, CSV)
 License:        MIT

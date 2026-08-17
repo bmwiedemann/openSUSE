@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Aug 14 11:23:40 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 3.10.0 (fixes CVE-2026-9318, bsc#1274960)
+  * Escape dataset title in HTML serialization (#668) @claudep
+  * Add support for Python 3.15 (#667) @hugovk
+  * Use lazy imports on Python 3.15 to improve startup speed (#645) @hugovk
+  * Remove #yaml tag from generic error message URL (#641) @mgrdcm
+  * Drop support for Python 3.9 (#629) @hugovk
+  * Convert XLS cell values when importing a Databook (#665) @vineethsaivs
+  * Fix TypeError when stacking two headerless Datasets with stack_cols
+    (#651) @vineethsaivs
+  * Fix ODS export of boolean values crashing on re-import (#656) @vineethsaivs
+  * Only strip the leading '=' when escaping XLSX formulae (#658) @vidigoat
+  * Raise TypeError for invalid Dataset instance (#649) @koteshyelamati
+  * Raise HeadersNeeded instead of TypeError when subscripting a headerless
+    Dataset by column name (#648) @gaoflow
+  * Preserve column order in YAML export (#287) (#644) @vineethsaivs
+
+-------------------------------------------------------------------
 Wed Oct 29 14:05:15 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.9.0
