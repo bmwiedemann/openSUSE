@@ -126,4 +126,12 @@
     <comment>update to 0.6.0 (forwarded request 1366647 from ojkastl_buildservice)</comment>
     <requestid>1367689</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>3ce94432df585dc240d2d18c1096bc6f</srcmd5>
+    <version>0.6.0</version>
+    <time>1786978801</time>
+    <user>anag_factory</user>
+    <comment>Bump vendored bytes crate to 1.12.1, fixing CVE-2026-25541 (boo#1274529) (forwarded request 1371518 from pdostal)</comment>
+    <requestid>1371569</requestid>
+  </revision>
 </revisionlist>

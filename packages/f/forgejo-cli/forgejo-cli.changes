@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Aug 17 07:18:23 UTC 2026 - Pavel Dostál <pdostal@suse.com>
+
+- Update vendored bytes crate to 1.12.1, fixing an integer overflow
+  in BytesMut::reserve that could corrupt the tracked capacity and
+  lead to out-of-bounds slices (boo#1274529, CVE-2026-25541, fixed
+  upstream in bytes 1.11.1). Refreshed Cargo.lock/vendor.tar.zst
+  together via the package's cargo_vendor service so both stay
+  consistent; also refreshed several other lockfile pins the service
+  had drifted from since the last update.
+
+-------------------------------------------------------------------
 Mon Jul 20 05:12:51 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.6.0:
