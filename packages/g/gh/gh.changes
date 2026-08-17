@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Aug 17 06:31:33 UTC 2026 - Pavel Dostál <pdostal@suse.com>
+
+- Update to version 2.97.0, fixing four security issues (CVE-2026-64654,
+  CVE-2026-64653, CVE-2026-64652, CVE-2026-64655):
+  * CVE-2026-64654: terminal escape sequence injection in gist view, api,
+    pr diff, release download --output -, codespace logs, skills preview
+    and agent-task view/create
+  * CVE-2026-64653: unescaped variable path components in request URLs
+    could redirect gh to a different resource than intended
+  * CVE-2026-64652: gh auth status could print part of the auth token in
+    plaintext for token types with an underscore after the prefix
+  * CVE-2026-64655: gh attestation verify built its --signer-repo/
+    --signer-workflow matcher without escaping regex metacharacters,
+    allowing a lookalike signer to pass verification
+  * Add named field columns to gh project item-list and item-edit
+- Verified gh-CVE-2026-39821-idna-punycode.patch is still required: gh
+  2.97.0 still vendors golang.org/x/net v0.56.0 (the unicode16 gate is
+  only removed unconditionally in x/net >= v0.57.0), and Factory's go
+  package is still 1.26, whose unicode.Version stays 15.0.0 (the gate
+  only flips true at go1.27). Keep the patch until either lands.
+
+-------------------------------------------------------------------
 Fri Jul 17 13:56:05 UTC 2026 - Pavel Dostál <pdostal@suse.com>
 
 - Add gh-CVE-2026-39821-idna-punycode.patch: reject all-ASCII xn--
