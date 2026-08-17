@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 17 09:12:23 UTC 2026 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Legal review Change main license to LGPL-2.0-or-later from GPL-2.0-only
+  * LICENSE.txt confirms it
+  * Correct Legal-Review-Notice usage
+
+-------------------------------------------------------------------
 Tue Aug 11 09:40:31 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update dependencies (bsc#1274437)

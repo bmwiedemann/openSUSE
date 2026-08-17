@@ -21,8 +21,8 @@ Version:        1.4.0
 Release:        0
 Summary:        Command-line frontend for Sequoia
 Group:          Productivity/Security
-# for legal: vendor packages are not shipped the tool itself is GPL-v2-only
-License:        GPL-2.0-only
+# Legal-Review-Notice:  vendor packages are not shipped the tool itself is GPL-v2-only
+License:        LGPL-2.0-or-later
 URL:            https://sequoia-pgp.org/
 Source0:        sequoia-sq-%{version}.tar.xz
 Source1:        vendor.tar.xz
