@@ -110,6 +110,7 @@ BuildRequires:  pkgconfig(freetype2) >= 2.10
 #!BuildConflicts: ffmpeg-6-mini-devel
 #!BuildConflicts: ffmpeg-7-mini-devel
 #!BuildConflicts: ffmpeg-8-mini-devel
+#!BuildConflicts: ffmpeg-9-mini-devel
 BuildRequires:  pkgconfig(libavdevice)
 BuildRequires:  pkgconfig(libjxl)
 %if %{with libheif}

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 17 11:16:44 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add buildConflict for newly appearing ffmpeg-9-mini-devel.
+
+-------------------------------------------------------------------
 Sat Aug  1 20:30:35 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Skip openexr-partialtile imagebufalgo-opencv: it seems they
