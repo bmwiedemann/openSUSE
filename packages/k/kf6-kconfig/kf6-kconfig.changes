@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Aug  9 10:38:26 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.29.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.29.0
+- Changes since 6.28.0:
+  * Update dependency version to 6.29.0
+  * Remove unused variables in KConfig implementation
+  * Revert "kwindowstatesaverquick: Do not force-show windows" (kde#522205)
+  * Add test for KConfigLoader ctor that takes KConfigGroup
+  * Use Qt for ASCII && alphanumeric detection
+  * Read config files in system locations before user-writable config files
+  * Add tests to document status quo
+  * kreadconfig: Add option to dump default values
+  * kreadconfig: Dump entries sorted by group name/entry key
+  * Don't change immutable non-default entry when setting default entry
+  * Add failing tests demonstrating wrong behavior
+  * Add helper to set/override an environment variable for a test
+  * Remove obsolete doxygen file
+  * Always insert deleted key into internal map (kde#519481)
+  * Ensure that deleted default entries are deleted
+  * Fix generated setters for enum options with UseEnumTypes
+  * Export StandardAction as Q_ENUM_NS
+  * Update version to 6.29.0
+
+-------------------------------------------------------------------
 Fri Jul 10 12:15:44 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.28.0
