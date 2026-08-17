@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Aug 15 05:40:20 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.23.3:
+  * meson: compile and run the copyright-year helper program with
+    the native (build machine) compiler, so that cross builds no
+    longer abort at configure time
+  * No change to the library code itself - this package is built
+    with the autotools build system, which is unaffected
+
+-------------------------------------------------------------------
 Tue Aug 11 05:27:29 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.23.2:

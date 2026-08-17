@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Aug 15 05:40:27 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.23.3:
+  * meson: compile and run the copyright-year helper program with
+    the native (build machine) compiler, so that cross builds no
+    longer abort at configure time
+  * No changes to the psl-make-dafsa tool itself in this release
+
+-------------------------------------------------------------------
 Tue Aug 11 05:27:37 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.23.2:

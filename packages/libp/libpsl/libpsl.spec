@@ -20,7 +20,7 @@
 
 %define somajor 5
 Name:           libpsl
-Version:        0.23.2
+Version:        0.23.3
 Release:        0
 Summary:        C library for the Publix Suffix List
 License:        BSD-3-Clause AND MIT AND MPL-2.0
