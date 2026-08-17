@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Aug 17 05:01:20 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.7.4:
+  * build(deps): bump github.com/sashabaranov/go-openai from 1.41.2
+    to 1.42.0 by @dependabot[bot] in #2735
+  * build(deps): bump gitpython from 3.1.57 to 3.1.58 in /docs by
+    @dependabot[bot] in #2737
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/service/s3 from
+    1.106.3 to 1.106.4 by @dependabot[bot] in #2736
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/service/s3 from
+    1.106.4 to 1.107.0 by @dependabot[bot] in #2740
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/config from
+    1.32.34 to 1.32.35 by @dependabot[bot] in #2739
+  * fix(#2741): prefetch shared remote charts instead of serializing
+    sync by @toms-place in #2743
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/service/s3 from
+    1.107.0 to 1.107.1 by @dependabot[bot] in #2744
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/config from
+    1.32.35 to 1.32.36 by @dependabot[bot] in #2745
+  * Bumping Helm versions to 3.21.4 and 4.2.4 by @yxxhero with
+    @Copilot in #2746
+  * refactor: drop empty-render workaround now that chartify
+    handles it natively by @yxxhero in #2747
+
+-------------------------------------------------------------------
 Wed Aug  5 04:40:17 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 1.7.3:
