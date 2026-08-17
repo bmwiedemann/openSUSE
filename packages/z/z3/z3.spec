@@ -19,37 +19,25 @@
 %define python_subpackage_only 1
 %define sover %(echo %{version} | sed 's@\\([0-9]*\\)\\.\\([0-9]*\\)\\..*@\\1_\\2@')
 Name:           z3
-Version:        5.0.0
+Version:        5.1.0
 Release:        0
 Summary:        Theorem prover from Microsoft Research
 License:        MIT
-Group:          Productivity/Scientific/Other
 URL:            https://github.com/Z3Prover/z3/wiki
 Source0:        https://github.com/Z3Prover/z3/archive/refs/tags/%{name}-%{version}.tar.gz
 Source1:        python-z3-pyproject.toml
 Source2:        python-z3-setup.py
-# PATCH-FIX-UPSTREAM python-use-non-devel-so.patch bsc#1243028 mcepl@suse.com
-# load libz3 with soversion (from gh#Z3Prover/z3#7518)
-Patch0:         python-use-non-devel-so.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 44}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  cmake
-BuildRequires:  doxygen
+BuildRequires:  c++_compiler
+BuildRequires:  cmake >= 3.16
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
-BuildRequires:  graphviz
-BuildRequires:  help2man
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 %{?python_enable_dependency_generator}
-%if 0%{?suse_version} < 1600
-BuildRequires:  gcc13-c++
-%else
-BuildRequires:  c++_compiler
-%endif
 %if 0%{?suse_version} > 1600
 BuildRequires:  pkgconfig(gmpxx)
 %else
@@ -67,7 +55,6 @@ uninterpreted functions, and quantifiers.
 
 %package -n libz3-%{sover}
 Summary:        Library for the Z3 SMT theorem prover
-Group:          System/Libraries
 
 %description -n libz3-%{sover}
 Z3 is a Satisfiability Modulo Theories (SMT) solver and integrates
@@ -78,7 +65,6 @@ other projects.
 
 %package devel
 Summary:        Development files for Z3
-Group:          Development/Languages/C and C++
 Requires:       libz3-%{sover} = %{version}
 
 %description devel
@@ -86,7 +72,6 @@ Development files for the Z3 library.
 
 %package -n python-%{name}
 Summary:        Python bindings for %{name}
-Group:          Development/Languages/Python
 Requires:       libz3-%{sover} = %{version}
 Provides:       python3-z3 = %{version}-%{release}
 Obsoletes:      python3-z3 < %{version}-%{release}
@@ -102,21 +87,13 @@ Python bindings for the module.
 
 %build
 %define __builder ninja
-%if 0%{?suse_version} < 1600
-export CXX=g++-13
-%endif
-
 %cmake \
   -DZ3_BUILD_LIBZ3_SHARED=true \
   -DZ3_USE_LIB_GMP=true \
   -DZ3_BUILD_PYTHON_BINDINGS=true \
   -DZ3_INSTALL_PYTHON_BINDINGS=false \
   -DZ3_ENABLE_EXAMPLE_TARGETS=false \
-%if 0%{?suse_version} >= 1550
   -DZ3_LINK_TIME_OPTIMIZATION=true
-%else
-  -DZ3_LINK_TIME_OPTIMIZATION=false
-%endif
 
 %cmake_build
 
@@ -139,7 +116,16 @@ popd
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%ctest
+# Upstream calls neither enable_testing() nor add_test(), so %%ctest finds no
+# tests at all. The unit tests live in the EXCLUDE_FROM_ALL target test-z3,
+# which has to be built and invoked explicitly ("/a" = run all of them).
+# The Python singlespec macros stash the CMake build directory away as
+# _build.tmp while they switch flavours in %%install, so restore it first.
+[ -d %{__builddir} ] || mv _build.tmp %{__builddir}
+pushd %{__builddir}
+%cmake_build test-z3
+./test-z3 /a
+popd
 
 %ldconfig_scriptlets -n libz3-%{sover}
 

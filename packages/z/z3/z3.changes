@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Mon Aug 17 07:39:34 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 5.1.0:
+  * New monadic regex solver, enabled by default
+    (smt.seq.regex_monadic=true): live-state traversal and
+    interval-refinement products, with semilinear length
+    abstraction for regular expressions
+  * seq_monadic gained a configurable read orientation for regex
+    memberships, a light Antimirov cofactor mode, depth-first
+    DNF replacement and unsat-core extraction
+  * Soundness fixes for intblast on array-derived bit-vector
+    equalities (smt.bv.solver=2), str.at inside regular
+    expressions, ill-sorted UF rewriting in fpa2bv for
+    quantified Float32 arrays, and the elim-term-ite simplifier
+  * Arithmetic: LP-based nonlinear bound optimization for
+    cross-nested conflicts, re-linearization of violated
+    monomials at final check, fixes to mod divisibility lemmas
+    and to algebraic root accessors
+  * Fixed strict optimization objectives losing strict-real
+    suprema on the LRA path, smtlib2_compliant mode answering
+    unknown instead of unsat, and parallel mode giving up
+    immediately on QF_BV
+  * Performance: cheaper per-cell bignum allocation in HNF
+    pivoting, no full-column rescan per delta halving in
+    lar_solver model init, object-local arithmetic parameters
+    in Optimize
+  * Python bindings now load the versioned libz3 and fall back
+    to the unversioned name
+- Rename the library subpackage libz3-5_0 to libz3-5_1,
+  following the upstream SONAME change from libz3.so.5.0 to
+  libz3.so.5.1; PrusaSlicer links libz3 and needs a rebuild
+- Drop python-use-non-devel-so.patch: upstream 5.1.0 implements
+  the same soversion-aware library loading in the generated
+  Python bindings (bsc#1243028)
+- Run the upstream unit test suite in the check section - it
+  registers no ctest tests, so the previous ctest call tested
+  nothing
+- Spec cleanup:
+  * Drop the dead suse_version < 1600 conditionals - Leap 15.6
+    is EOL and its repository is disabled for this package
+  * Drop the unused doxygen, graphviz and help2man
+    BuildRequires - no documentation target is built
+  * Declare the cmake >= 3.16 floor that upstream requires
+
+-------------------------------------------------------------------
 Thu Jul 23 10:24:45 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
 
 - update to 5.0.0:

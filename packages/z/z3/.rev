@@ -449,4 +449,78 @@
        real arithmetic with support for π, e, algebraic roots,</comment>
     <requestid>1369669</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>37be72f6e27178e807fc75fdd581c4ee</srcmd5>
+    <version>5.1.0</version>
+    <time>1786978772</time>
+    <user>anag_factory</user>
+    <comment>Update z3 to 5.1.0.
+
+This forwards the change merged into devel:tools:statica by jirislaby earlier
+today (jirislaby/d-t-s-z3 PR #4). The spec and changelog in devel are
+byte-identical to what was built and tested locally, so the build evidence below
+describes exactly what is being submitted.
+
+STAGING COORDINATION - please read
+
+The library subpackage is renamed: libz3-5_0 -&gt; libz3-5_1. This is a genuine
+SONAME change, not a macro artefact - upstream sets SOVERSION to MAJOR.MINOR,
+and reading the binaries directly with both readelf -d and objdump -p gives
+libz3.so.5.0 for the published 5.0.0 RPM and libz3.so.5.1 for this build.
+
+PrusaSlicer must be rebuilt in the same staging. Its current binary carries
+Requires: libz3.so.5.0()(64bit) (verified with rpm -qpR against Factory's
+PrusaSlicer-2.9.6-1.3.x86_64.rpm), so it becomes uninstallable the moment
+libz3-5_0 is replaced. No spec change is needed anywhere: z3-devel's
+Requires: libz3-%{sover} follows the rename automatically, and neither
+PrusaSlicer (BuildRequires: cmake(Z3)) nor cppcheck (BuildRequires: z3-devel)
+names the versioned library literally.
+
+cppcheck is not affected - no cppcheck binary requires any libz3 SONAME.
+No Provides/Obsoletes were added for the rename, deliberately: the two library
+packages must remain co-installable.
+
+Two defects fixed alongside the version bump
+
+- python-use-non-devel-so.patch is dropped as obsolete. Upstream 5.1.0
+  implements it natively via update_api.py --z3py-soversion; 8 of its 9 hunks no
+  longer apply and the CMake hunk would add the argument twice. Verified
+  functionally in a Tumbleweed container: with only libz3-5_1 and python313-z3
+  installed and no z3-devel, &quot;import z3&quot; works and solves, which is what
+  bsc#1243028 asked for.
+- %check was testing nothing, in two independent ways. Upstream registers no
+  add_test()/enable_testing() at all, and %ctest's &quot;cd build&quot; was failing
+  because the Python singlespec macros rename build to _build.tmp during
+  %install, with the trailing &quot;cd ..&quot; making the section exit 0 regardless.
+  This is visible in the currently published 5.0.0 build log as
+  &quot;cd: build: No such file or directory&quot; followed by RPM_EC=0. The section now
+  builds and runs upstream's test-z3 target: 96 passed, 0 failed. That adds
+  roughly 4 minutes to a 13 minute build; say the word and it can go behind a
+  %bcond instead.
+
+Spec cleanup
+
+Dropped dead suse_version &lt; 1600 blocks (15.6 is EOL and the repository is
+disabled for this package), the always-true &gt;= 1550 LTO guard, unused doxygen /
+graphviz / help2man BuildRequires (documentation is gated off and help2man is
+not referenced anywhere in the tree), redundant gcc-c++, and Group: tags. Added
+a cmake &gt;= 3.16 floor. The &gt; 1600 gmpxx/gmp-devel split was deliberately left
+alone - it guards live Leap 16.0 and there was no evidence it is stale.
+
+Verification and its limits
+
+Built green locally on aarch64: %check 96/96, rpmlint 0 errors, 0 warnings,
+0 badness with no E:/W: lines, spec-cleaner clean on the first pass,
+source_validator clean, changes-guard insertion-only. No CVEs appear in any of
+the 247 commits between z3-5.0.0 and z3-5.1.0, and there are no open openSUSE
+z3 bugs.
+
+Being honest about coverage: the devel package is scmsync from a Gitea repo with
+no OBS pull-request build integration, so nothing was built server-side before
+the merge. Only aarch64 has been verified. x86_64, s390x, ppc64le, armv7l and
+Leap 16.0 are unverified here; armv7l is the one I would watch, given the
+test-z3 link against a 6 GB disk constraint.
+</comment>
+    <requestid>1371532</requestid>
+  </revision>
 </revisionlist>
