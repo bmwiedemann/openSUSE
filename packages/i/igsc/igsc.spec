@@ -1,7 +1,7 @@
 #
-# spec file for package intel-metee
+# spec file for package igsc
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,18 +15,19 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           igsc
-Version:        1.0.0
+Version:        1.3.1
 Release:        0
 Summary:        Intel Graphics System Controller Firmware Update Utility
 License:        Apache-2.0
 URL:            https://github.com/intel/igsc
-Source:         https://github.com/intel/igsc/archive/refs/tags/V%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  gcc
-BuildRequires:  gcc-c++
+Source:         https://github.com/intel/igsc/archive/V%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
-BuildRequires:  intel-metee-devel 
+BuildRequires:  gcc-c++
+BuildRequires:  intel-metee-devel
 BuildRequires:  systemd-devel
+BuildRequires:  cmake(cmocka)
 
 %description
 Intel Graphics System Controller (igsc) Firmware Update Utility and
@@ -50,6 +51,9 @@ Headers and cmake files for the igsc library.
 
 %ldconfig_scriptlets
 
+%check
+%ctest
+
 %files
 %{_bindir}/igsc
 %{_libdir}/libigsc.so.1*
@@ -60,4 +64,3 @@ Headers and cmake files for the igsc library.
 %{_libdir}/libigsc.so
 
 %changelog
-

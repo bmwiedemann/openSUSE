@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Aug 13 20:32:35 UTC 2026 - Markus Ebner <info@ebner-markus.de>
+
+- Update to version 1.0.1
+  * lib: fix metee logs
+- Update to version 1.0.2
+  * CMake: Linux: overwrite FORTIFY_SOURCE from distribution
+- Update to version 1.1.0
+  * cli: use signed variable
+  * cli: reject non-hex flags in late-binding
+  * cli: drop unneeded status print
+  * enum: find device with separate bdf
+  * enum: udev: detect more gfx classes
+  * lib: add new late bind APIs
+  * test: add new late bind tests
+  * cli: add new late bind commands
+  * test: add tests for new late bind cli commands
+- Update to version 1.2.0
+  * add OEM serial number API
+  * test: add CLI bad input tests for oem
+- Update to version 1.3.0
+  * lib: add igsc_library_version API for runtime version query
+  * test: add unit tests for library version
+- Update to version 1.3.1
+  * lib: check buffer and number of entries
+  * lib: limit sizes in manifest header
+  * lib: use internal buffer in igsc_image_fwdata_init
+  * ifr: fix input buffer size check
+  * test: fix uninitialized buffer_len in fwdata parser tests
+  * lib: validate fwdata INFO partition minimum size
+  * lib: validate fwdata extension header bounds
+  * test: cover undersized fwdata INFO partition
+  * test: cover fwdata extension partial header tail
+  * move to Visual Studio 2022
+  * cli: drop unused MAX_UPDATE_IMAGE_SIZE macro
+
+-------------------------------------------------------------------
 Fri Sep 26 12:37:25 UTC 2025 - Patrik Jakobsson <patrik.jakobsson@suse.com>
 
 - Update to version 1.0.0
