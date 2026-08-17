@@ -70,4 +70,107 @@
   * fix: automatically run non-interactive when related flag set (gh#dundee/gdu #418) (forwarded request 1324602 from RN)</comment>
     <requestid>1324629</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>adf30dcfd6000aa09d40f8e7ec565a57</srcmd5>
+    <version>5.36.1</version>
+    <time>1786978733</time>
+    <user>anag_factory</user>
+    <comment>- Version 5.36.1
+  * perf: top dir analyzer optimizations (gh#dundee/gdu#562)
+  * perf: replace progress channel with atomic counters and ticker 
+    polling in all analyzers (gh#dundee/gdu#563)
+  * refactor: analyzers and improve SQLite backend 
+    (gh#dundee/gdu#549)
+  * fix: improve SQLite storage and analyzer implementation 
+    (gh#dundee/gdu#541)
+  * test: fix flaky test (gh#dundee/gdu#561)
+- Version 5.36.0
+  * feat: top-dir analyzer for non-interactive mode 
+    (gh#dundee/gdu#557)
+  * feat: implement deletion, JSON encoding, and query 
+    optimizations for SQLite storage (gh#dundee/gdu#536)
+  * test: cover internal packages (gh#dundee/gdu#535)
+  * chore(deps): bump github.com/mattn/go-isatty from 0.0.20 to 
+    0.0.21 (gh#dundee/gdu#546)
+  * chore(deps): bump golang.org/x/sys from 0.42.0 to 0.43.0 
+    (gh#dundee/gdu#545)
+  * chore(deps): bump modernc.org/sqlite from 1.48.0 to 1.48.2 
+    (gh#dundee/gdu#548)
+  * chore(deps): bump golang.org/x/text from 0.34.0 to 0.36.0 
+    (gh#dundee/gdu#547)
+  * chore(deps): bump softprops/action-gh-release from 2 to 3 
+    (gh#dundee/gdu#552)
+  * chore(deps): bump modernc.org/sqlite from 1.48.2 to 1.49.1 
+    (gh#dundee/gdu#553)
+  * chore(deps): bump github.com/gdamore/tcell/v2 from 2.13.8 to 
+    2.13.9 (gh#dundee/gdu#554)
+- Version 5.35.0
+  * feat: show progress bar when analysing the whole disk/partition 
+    (gh#dundee/gdu#523)
+  * feat: print marked items to stdout (gh#dundee/gdu#528)
+  * feat: add support for browsing tar archives (gh#dundee/gdu#513)
+  * feat: force interactive mode (gh#dundee/gdu#533)
+  * fix: create parent dir for sqlite db (gh#dundee/gdu#511)
+  * fix: use smaller value log file size for 32bit systems 
+    (gh#dundee/gdu#519)
+  * fix: make itemCount 64bit (gh#dundee/gdu#520)
+  * ci: use Golang 1.26 (gh#dundee/gdu#508)
+  * ci: drop support for golang 1.24 (gh#dundee/gdu#521)
+  * ci: release gh action (gh#dundee/gdu#527)
+  * test: move coverage for app package (gh#dundee/gdu#534)
+  * chore(deps): bump modernc.org/sqlite from 1.46.1 to 1.47.0 
+    (gh#dundee/gdu#515)
+  * chore(deps): bump github.com/fatih/color from 1.18.0 to 1.19.0 
+    (gh#dundee/gdu#524)
+  * chore(deps): bump codecov/codecov-action from 5 to 6 
+    (gh#dundee/gdu#529)
+  * chore(deps): bump modernc.org/sqlite from 1.47.0 to 1.48.0 
+    (gh#dundee/gdu#531)
+- Version 5.34.2
+  * fix: run sqlite test only on supported platforms
+- Version 5.34.1
+  * fix: make itemCount 64bit (gh#dundee/gdu#520)
+  * fix: use smaller value log file size for 32bit systems 
+    (gh#dundee/gdu#519)
+  * fix: create parent dir for sqlite db (gh#dundee/gdu#511)
+- Version 5.34.0
+  * feat: add interactive file type filtering via -T key 
+    (gh#dundee/gdu#493)
+  * feat: allow navigating above launch directory 
+    (gh#dundee/gdu#494)
+  * feat: add --no-view-file flag for interactive viewer 
+    (gh#dundee/gdu#496)
+  * fix: enable --show-item-count in non-interactive mode 
+    (gh#dundee/gdu#495)
+  * fix: align columns in non-interactive mode (gh#dundee/gdu#500)
+  * fix: support for sqlite db on all platforms (gh#dundee/gdu#507)
+  * chore(deps): bump modernc.org/sqlite from 1.45.0 to 1.46.1 
+    (gh#dundee/gdu#499)
+  * chore(deps): bump docker/build-push-action from 6 to 7 
+    (gh#dundee/gdu#505)
+  * chore(deps): bump docker/login-action from 3 to 4 
+    (gh#dundee/gdu#503)
+  * chore(deps): bump docker/metadata-action from 5 to 6 
+    (gh#dundee/gdu#506)
+- Version 5.33.0
+  * feat: add SQLite analyzer and some assorted changes 
+    (gh#dundee/gdu#484)
+  * feat: add --archive-browsing flag to show zip/jar files as 
+    dirs, add --collapse-path flag to for collapsing single-child 
+    directory
+  * feat: add --depth flag (gh#dundee/gdu#485)
+  * feat: add options to force output units (gh#dundee/gdu#464)
+  * feat: allow excluding file(s) by their type (gh#dundee/gdu#472)
+  * feat: bump version of go and badger (gh#dundee/gdu#438)
+  * feat: time filters (gh#dundee/gdu#425)
+  * feat: bump versions of dependencies (gh#dundee/gdu#450)
+  * chains (gh#dundee/gdu#434)
+  * fix: non-deterministic ordering in ParallelAnalyzer 
+    (gh#dundee/gdu#445)
+  * docs: add mise alternative method installation 
+    (gh#dundee/gdu#465)
+  * chore: bump Go to 1.25.5 to fix crypto/x509 CVEs 
+    (gh#dundee/gdu#471) (forwarded request 1371462 from RN)</comment>
+    <requestid>1371463</requestid>
+  </revision>
 </revisionlist>
