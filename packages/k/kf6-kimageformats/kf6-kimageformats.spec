@@ -20,11 +20,11 @@
 
 %define rname kimageformats
 
-# Full KF6 version (e.g. 6.28.0)
+# Full KF6 version (e.g. 6.29.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 %bcond_without released
 Name:           kf6-kimageformats
-Version:        6.28.0
+Version:        6.29.0
 Release:        0
 Summary:        Image format plugins for Qt
 License:        LGPL-2.1-or-later
@@ -34,8 +34,6 @@ Source:         %{rname}-%{version}.tar.xz
 Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-HEIF-keep-reader-callback-table-alive.patch
 BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_version}
 BuildRequires:  openexr-devel
@@ -43,7 +41,7 @@ BuildRequires:  cmake(KF6Archive) >= %{_kf6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
 BuildRequires:  cmake(Qt6PrintSupport) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
-BuildRequires:  cmake(libavif) >= 0.8.2
+BuildRequires:  cmake(libavif) >= 1.0
 BuildRequires:  cmake(libheif) >= 1.10.0
 BuildRequires:  cmake(OpenJPEG)
 BuildRequires:  pkgconfig(libjxl) >= 0.9.4
@@ -104,7 +102,6 @@ to provide additional image format plugins for QtGui.
 %{_kf6_plugindir}/imageformats/kimg_jp2.so
 %{_kf6_plugindir}/imageformats/kimg_kra.so
 %{_kf6_plugindir}/imageformats/kimg_iff.so
-%{_kf6_plugindir}/imageformats/kimg_ora.so
 %{_kf6_plugindir}/imageformats/kimg_pcx.so
 %{_kf6_plugindir}/imageformats/kimg_pfm.so
 %{_kf6_plugindir}/imageformats/kimg_pic.so

@@ -240,4 +240,12 @@
   * 0001-HEIF-keep-reader-callback-table-alive.patch</comment>
     <requestid>1366839</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>cc5ecb38beda8d2f339496bb9530f477</srcmd5>
+    <version>6.29.0</version>
+    <time>1786978605</time>
+    <user>anag_factory</user>
+    <comment>KDE Frameworks 6.29 (forwarded request 1370409 from krop)</comment>
+    <requestid>1371386</requestid>
+  </revision>
 </revisionlist>
