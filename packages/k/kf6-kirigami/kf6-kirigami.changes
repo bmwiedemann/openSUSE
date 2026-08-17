@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sun Aug  9 10:38:36 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.29.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.29.0
+- Changes since 6.28.0:
+  * Update dependency version to 6.29.0
+  * Clickable link OverlaySheet QML type (kde#522348)
+  * FormEntry/FormAction (cards): fix items alignments
+  * FormGroup/flat: Consider also invisible items for implicitWidth
+  * Fix tst_menudialog not actually doing anything
+  * Make the GlobalDrawer correctly size to its contents again
+  * Sensible height for license sheet
+  * FormEntry: don't show invalid leading ind trailing icons
+  * FormEntry: fix the subtitle when the contentITem doesn't have an indicator
+  * Default to small size in FormAction
+  * Same default width that kirigami-addons form has
+  * Port AboutItem to the new form layout
+  * FormEntry: items don't fill the width by default
+  * ScrollablePage: Fix enter animation running when changing focus (kde#515811)
+  * Work around missing support for QKeyShortcut in shortcut
+  * Icon: use QUrl::toLocalFile() for file: URL sources
+  * Icon: keep the aspect ratio of portrait images with roundToIconSize
+  * PlatformTheme: Only emit color changes if color actually changes
+  * Icon: snap the aspect-preserving painted size to device pixels
+  * autotests: fix flaky keyboard list navigation test
+  * autotests: fix flaky test_defaultFocusInScrollablePage
+  * NavigationTabBar: add scrolling/shortcuts for tab switching
+  * ToolBarPageHeader: Rephrase page.actions check to make more sense
+  * Make qml generation deterministic by adding explicit dependencies
+  * Port application template away from deprecated ki18n API
+  * controls: Guard against re-setting the global header with the same URL in Page
+  * Update version to 6.29.0
+
+-------------------------------------------------------------------
 Fri Jul 10 12:15:55 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.28.0
