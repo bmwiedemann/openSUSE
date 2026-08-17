@@ -19,11 +19,11 @@
 %define qt6_version 6.9.0
 
 %define rname baloo
-# Full KF6 version (e.g. 6.28.0)
+# Full KF6 version (e.g. 6.29.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 %bcond_without released
 Name:           kf6-baloo
-Version:        6.28.0
+Version:        6.29.0
 Release:        0
 Summary:        Framework for searching and managing metadata
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-only
@@ -158,6 +158,7 @@ package contains aditional command line utilities. Development files.
 %files file
 %{_kf6_bindir}/balooctl6
 %{_kf6_configdir}/autostart/baloo_file.desktop
+%{_kf6_configkcfgdir}/baloosettings.kcfg
 %{_kf6_debugdir}/baloo.categories
 %{_kf6_debugdir}/baloo.renamecategories
 %{_kf6_libexecdir}/baloo_file
