@@ -248,6 +248,21 @@ Patch55:        CVE-2025-15366-pop3-ctrl-chars.patch
 # PATCH-FIX-UPSTREAM CVE-2026-11940-tarfile-escape.patch bsc#1268977 mcepl@suse.com
 # Fix symlink escape via tarfile hardlink-extraction fallback
 Patch56:        CVE-2026-11940-tarfile-escape.patch
+# PATCH-FIX-UPSTREAM reproducible_stencils.patch gh#python/cpython!154988 mcepl@suse.com
+# make jit_stencils.h reproducible
+Patch57:        reproducible_stencils.patch
+# PATCH-FIX-UPSTREAM CVE-2026-0864-normalize-LFTAB-configparser.patch bsc#1269066 mcepl@suse.com
+# Normalize all line endings (CR, CRLF, and LF) in configparser
+Patch58:        CVE-2026-0864-normalize-LFTAB-configparser.patch
+# PATCH-FIX-UPSTREAM CVE-2026-11972-tarfile-Stream-seek-EOF.patch bsc#1269788 mcepl@suse.com
+# Make tarfile._Stream.seek break at EOF
+Patch59:        CVE-2026-11972-tarfile-Stream-seek-EOF.patch
+# PATCH-FIX-UPSTREAM CVE-2026-4360-filter_function-TarFile-extractone.patch bsc#1269959 mcepl@suse.com
+# Pass filter_function to TarFile._extract_one() during .extract()
+Patch60:        CVE-2026-4360-filter_function-TarFile-extractone.patch
+# PATCH-FIX-UPSTREAM CVE-2026-15308-HTMLParser-CPU-exhaust.patch bsc#1271192 mcepl@suse.com
+# Fix quadratic complexity in incremental parsing in HTMLParser
+Patch61:        CVE-2026-15308-HTMLParser-CPU-exhaust.patch
 #### END OF PATCHES
 BuildRequires:  autoconf-archive
 BuildRequires:  automake

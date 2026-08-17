@@ -1,9 +1,43 @@
 -------------------------------------------------------------------
+Fri Aug  7 07:23:53 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Add reproducible_stencils.patch from gh#python/cpython!154988
+
+-------------------------------------------------------------------
+Fri Jul 31 13:35:09 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- CVE-2026-0864: Normalize all line endings (CR, CRLF, and LF) in
+  configparser (bsc#1269066, gh#python/cpython#143927)
+  CVE-2026-0864-normalize-LFTAB-configparser.patch
+
+-------------------------------------------------------------------
+Fri Jul 31 13:22:45 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- CVE-2026-11972: Make tarfile._Stream.seek break at EOF
+  (bsc#1269788, gh-151981)
+  CVE-2026-11972-tarfile-Stream-seek-EOF.patch
+
+-------------------------------------------------------------------
+Fri Jul 31 13:07:50 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- CVE-2026-4360: Pass filter_function to TarFile._extract_one()
+  during .extract() (bsc#1269959, gh#python/cpython#151987)
+  CVE-2026-4360-filter_function-TarFile-extractone.patch
+
+-------------------------------------------------------------------
+Fri Jul 31 12:54:51 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- CVE-2026-15308: Fix quadratic complexity in incremental parsing
+  in HTMLParser (bsc#1271192, gh#python/cpython#153030)
+  CVE-2026-15308-HTMLParser-CPU-exhaust.patch
+
+-------------------------------------------------------------------
 Fri Jul 17 10:06:01 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - CVE-2026-11940: fix the symlink escape via tarfile
-  hardlink-extraction fallback (bsc#1268977)
-  CVE-2026-11940-tarfile-escape.patch 
+  hardlink-extraction fallback (bsc#1268977,
+  gh#python/cpython#151558)
+  CVE-2026-11940-tarfile-escape.patch
 
 -------------------------------------------------------------------
 Thu Jul  2 23:25:00 CEST 2026 - Matej Cepl <mcepl@suse.com>
@@ -49,14 +83,15 @@ Wed Jun 17 13:00:34 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
       resolving a symlink’s directory, and rejects link members
       that would replace the destination directory itself. This
       closes several path-traversal bypasses of the data
-      extraction filter.
+      extraction filter (bsc#1267821, CVE-2026-7774).
     - gh-149079: Fix a potential denial of service in
       unicodedata.normalize(). The canonical ordering step of
       Unicode normalization used a quadratic-time insertion sort
       for reordering combining characters, which could be
       exploited with crafted input containing many combining
       characters in non-canonical order. Replaced with
-      a linear-time counting sort for long runs.
+      a linear-time counting sort for long runs (bsc#1267581,
+      CVE-2026-3276).
     - gh-149018: Improved protection against XML hash-flooding
       attacks in xml.parsers.expat and xml.etree.ElementTree when
       Python is compiled with libExpat 2.8.0 or later
@@ -94,6 +129,11 @@ Wed Jun 17 13:00:34 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
     - gh-146211: Reject CR/LF characters in tunnel request
       headers for the HTTPConnection.set_tunnel() method.
       (bsc#1261969, CVE-2026-1502)
+    - gh-149144: Fixes an issue introduced by CVE-2026-6019
+      patch. atob() in JavaScript processes bytes as 'latin-1',
+      switches the encoding algorithm from base64 to percent
+      encoding and uses the decodeURIComponent() JavaScript API
+      (bsc#1263083).
   - Core and Builtins
     - gh-151112: Fix a crash in the compiler that could occur
       when running out of memory.

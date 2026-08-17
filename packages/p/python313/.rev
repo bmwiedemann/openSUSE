@@ -1319,4 +1319,40 @@
     <comment>Resubmit proper HEAD</comment>
     <requestid>1366438</requestid>
   </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>5d48e96341cd845f6aaa622fcd24c3dc</srcmd5>
+    <version>3.13.14</version>
+    <time>1786978528</time>
+    <user>anag_factory</user>
+    <comment>- Add reproducible_stencils.patch from gh#python/cpython!154988
+
+- CVE-2026-0864: Normalize all line endings (CR, CRLF, and LF) in
+  configparser (bsc#1269066, gh#python/cpython#143927)
+  CVE-2026-0864-normalize-LFTAB-configparser.patch
+
+- CVE-2026-11972: Make tarfile._Stream.seek break at EOF
+  (bsc#1269788, gh-151981)
+  CVE-2026-11972-tarfile-Stream-seek-EOF.patch
+
+- CVE-2026-4360: Pass filter_function to TarFile._extract_one()
+  during .extract() (bsc#1269959, gh#python/cpython#151987)
+  CVE-2026-4360-filter_function-TarFile-extractone.patch
+
+- CVE-2026-15308: Fix quadratic complexity in incremental parsing
+  in HTMLParser (bsc#1271192, gh#python/cpython#153030)
+  CVE-2026-15308-HTMLParser-CPU-exhaust.patch
+
+  hardlink-extraction fallback (bsc#1268977,
+  gh#python/cpython#151558)
+  CVE-2026-11940-tarfile-escape.patch
+      extraction filter (bsc#1267821, CVE-2026-7774).
+      a linear-time counting sort for long runs (bsc#1267581,
+      CVE-2026-3276).
+    - gh-149144: Fixes an issue introduced by CVE-2026-6019
+      patch. atob() in JavaScript processes bytes as 'latin-1',
+      switches the encoding algorithm from base64 to percent
+      encoding and uses the decodeURIComponent() JavaScript API
+      (bsc#1263083).</comment>
+    <requestid>1371267</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,54 @@
+From eb1d1079dcf13fa601bf95b40f65a0b0dee5f5ff Mon Sep 17 00:00:00 2001
+From: "Bernhard M. Wiedemann" <bwiedemann@suse.de>
+Date: Thu, 30 Jul 2026 21:27:28 +0200
+Subject: [PATCH] [3.13] GH-115869: Make jit_stencils.h reproducible
+ (GH-127166)
+
+Keep the build tmpdir out of jit_stencils.h
+
+llvm-objdump prints the path of the object file it disassembles, and the
+JIT builds every stencil in a fresh tempfile.TemporaryDirectory().  That
+random path ended up verbatim in the disassembly comments of the
+generated jit_stencils.h, so two builds of the same source never produced
+the same header:
+
+     // /tmp/tmp164olvmi/_BINARY_OP.o:  file format elf64-x86-64
+    +// /tmp/tmpmufvewt2/_BINARY_OP.o:  file format elf64-x86-64
+
+Replace the full path with the bare file name.
+
+Only the _parse() hunk of that commit is taken here; the rest of it
+depends on refactorings that are not in 3.13.
+
+(cherry picked from commit 17c16aea66b606d66f71ae9af381bc34d0ef3f5f)
+
+Co-authored-by: Brandt Bucher <brandtbucher@microsoft.com>
+---
+ .../next/Build/2024-11-22-08-46-46.gh-issue-115869.UVLSKd.rst | 1 +
+ Tools/jit/_targets.py                                         | 4 +++-
+ 2 files changed, 4 insertions(+), 1 deletion(-)
+ create mode 100644 Misc/NEWS.d/next/Build/2024-11-22-08-46-46.gh-issue-115869.UVLSKd.rst
+
+diff --git a/Misc/NEWS.d/next/Build/2024-11-22-08-46-46.gh-issue-115869.UVLSKd.rst b/Misc/NEWS.d/next/Build/2024-11-22-08-46-46.gh-issue-115869.UVLSKd.rst
+new file mode 100644
+index 000000000000000..9e8a078983f20b5
+--- /dev/null
++++ b/Misc/NEWS.d/next/Build/2024-11-22-08-46-46.gh-issue-115869.UVLSKd.rst
+@@ -0,0 +1 @@
++Make ``jit_stencils.h`` (which is produced during JIT builds) reproducible.
+diff --git a/Tools/jit/_targets.py b/Tools/jit/_targets.py
+index c50bd63545c2fe4..55f2332136cba92 100644
+--- a/Tools/jit/_targets.py
++++ b/Tools/jit/_targets.py
+@@ -65,8 +65,10 @@ async def _parse(self, path: pathlib.Path) -> _stencils.StencilGroup:
+         args = ["--disassemble", "--reloc", f"{path}"]
+         output = await _llvm.maybe_run("llvm-objdump", args, echo=self.verbose)
+         if output is not None:
++            # Make sure that full paths don't leak out (for reproducibility):
++            long, short = str(path), str(path.name)
+             group.code.disassembly.extend(
+-                line.expandtabs().strip()
++                line.expandtabs().strip().replace(long, short)
+                 for line in output.splitlines()
+                 if not line.isspace()
+             )
