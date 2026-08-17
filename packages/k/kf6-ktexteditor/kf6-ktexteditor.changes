@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sun Aug  9 10:38:45 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.29.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.29.0
+- Changes since 6.28.0:
+  * Update dependency version to 6.29.0
+  * vi-mode: Avoid redundant BLOCK in the status bar
+  * vi-mode: Fix synchronization of the view block selection
+  * vi-mode: Fix block insert with tabs (kde#488801)
+  * Drag pixmap: use devicePixelRatio of highest screen device pixel ratio
+  * Drag pixmap: adapt hotspot to pixmap scaling
+  * vi-mode: Add Ctrl-A command to insert mode
+  * vi-mode: Implement column cursor swap for v-block mode
+  * vi-mode: Update view selection when switching modes
+  * vi-mode: Fix switching to vblock mode from another visual mode
+  * vi-mode: Simplify switching to visual modes
+  * vi-mode: Add the Date command
+  * vi-mode: Fix cursor position after paste in insert mode
+  * vi-mode: Fix cursor position after pasting block
+  * vi-mode: Fix AltGr detection on Windows
+  * renderer: Small refactoring of paintCaret method
+  * renderer: Fix drawing of all the cursor styles
+  * Change icon for search plugin display options
+  * fix animation artifact during animation run
+  * avoid initial draw
+  * cleanup more painting
+  * cleanup render hint setting
+  * ensure we abort completion on config changes (kde#521492)
+  * vi-mode: Fix count-paste of a block
+  * Update version to 6.29.0
+
+-------------------------------------------------------------------
 Fri Jul 10 12:16:04 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.28.0
