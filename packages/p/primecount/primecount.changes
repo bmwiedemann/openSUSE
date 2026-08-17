@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sun Aug 16 06:50:00 UTC 2026 - Kim Walisch <kim.walisch@gmail.com>
+
+- Update to primecount-8.7 (API & ABI are backwards compatible).
+- primecount now requires C++14 or later (only for building, linking still works with C++11).
+- nth_prime_sieve.cpp: Fix rare OpenMP multi-threading bug.
+- Fix GCC/Clang -Wundef warnings.
+- PiTable.cpp: Add multi-threaded primes vector initialization, GitHub#134.
+- FactorTableD.hpp: Reduce Gourdon D memory using 16-bit prime factor ordinals, GitHub#133.
+- primecount.pc.in: Add missing libatomic and libquadmath dependencies, GitHub#132.
+- primecountConfig.cmake.in: Only find OpenMP when required.
+- ci.yml: Add pkg-config and CMake find_package() CI tests.
+- D_arm_sve.hpp: Fix GCC ARM SVE failed auto-vectorization, GitHub#130.
+- Fix get_max_x() for x > 10^31.
+- CmdOptions.cpp: Detect too many input numbers.
+- P2.cpp: Fix potential 64-bit integer overflow.
+- phi.cpp: Fix phi(x, a) for x >= 4611686065672028281 which requires primes > INT32_MAX.
+- lmo/*.cpp: Fix int32_t primes overflow, GitHub#129.
+- api.cpp: Fix nth_prime() error message.
+- api.cpp: Fix 128-bit nth_prime() for negative inputs.
+- main.cpp: Validate 128-bit to 64-bit integer conversions.
+- LoadBalancerS2.cpp: Fix Clang scaling issue.
+- AC.cpp: Improve clustered easy leaves algorithm using Gourdon's inversion equality.
+- AC.cpp: Implement segmented C1 algorithm to improve cache efficiency.
+- AC.cpp: Use multi-threading to initialize the libdivide vector.
+- util.cpp: Retune Gourdon alpha factors due to improved C algorithm.
+- test.cpp: Improve test coverage using alternate alpha_z values.
+- doc/Easy-Special-Leaves.pdf: Add description of new C algorithm.
+- doc/alpha-factor-gourdon.pdf: Retune Gourdon alpha factors.
+
+-------------------------------------------------------------------
 Fri Jul 17 12:05:00 UTC 2026 - Kim Walisch <kim.walisch@gmail.com>
 
 - Update to primecount-8.6 (API & ABI are backwards compatible).
