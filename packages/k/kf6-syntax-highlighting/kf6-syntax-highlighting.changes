@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Aug  9 10:38:54 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.29.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.29.0
+- Changes since 6.28.0:
+  * Update dependency version to 6.29.0
+  * don't do a reload on language change (kde#523233)
+  * Slint: Include upstream changes
+  * RTF: Fix unbounded context stack growth
+  * cmake.xml: update syntax for CMake 4.4
+  * Fix listening for language changes, just react on the app instance event
+  * Update MIME types for shell scripts
+  * Meson: add meson.options to recognized extensions
+  * m3u: add m3u8 as one possible extension
+  * cpp: Add qmqlintegration macros from Qt 6.5
+  * Update version to 6.29.0
+- Drop patch:
+  * 0001-Fix-listening-for-language-changes-just-react-on-the.patch
+
+-------------------------------------------------------------------
 Sun Jul 19 12:14:04 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream fix:
