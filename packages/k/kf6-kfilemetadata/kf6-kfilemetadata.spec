@@ -19,12 +19,12 @@
 %define qt6_version 6.9.0
 
 %define rname kfilemetadata
-# Full KF6 version (e.g. 6.28.0)
+# Full KF6 version (e.g. 6.29.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 %bcond_without ffmpeg
 %bcond_without released
 Name:           kf6-kfilemetadata
-Version:        6.28.0
+Version:        6.29.0
 Release:        0
 Summary:        Library for extracting Metadata
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-only
@@ -34,6 +34,8 @@ Source:         %{rname}-%{version}.tar.xz
 Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
+# Packaging bug (still present in Leap 16): libzip cmake files defines libzip::zipcmp which needs the executable
+BuildRequires:  libzip-tools
 BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_version}
 BuildRequires:  libattr-devel
 BuildRequires:  libepub-devel
@@ -51,6 +53,9 @@ BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Xml) >= %{qt6_version}
 BuildRequires:  pkgconfig(poppler-qt6)
 BuildRequires:  pkgconfig(taglib)
+# EPub support (boo#1271358)
+BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(libzip)
 %if %{with ffmpeg}
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavformat)
