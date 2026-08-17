@@ -1,4 +1,96 @@
 -------------------------------------------------------------------
+Mon Aug 17 06:03:47 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.1.0:
+  * Added the pimdir storage backend, Himalaya over the local store the sync engine populates.
+    Reads build envelopes from the stored meta and report a body that is not
+    local as "body not fetched"; writes are staged as replica mutations
+    attributed to pimdir.source, auto-detected when the store has a single
+    source.
+  * Added back the email and display-name config fields, at the global and the account level (#721).
+    They fill the From header of messages compose, reply and forward when
+    --from is not passed, and are also read as from and from-name, the
+    spellings himalaya-tui writes.
+  * Added back the signature and signature-delim config fields, at the global and the account level.
+    The composers append the signature when neither --signature nor
+    --signature-file is passed, signature-delim defaulting to the RFC 3676 §4.3
+    "-- \n" and written verbatim.
+  * Added in_reply_to to the shared envelope (#734).
+    A list of ids stripped of their angle brackets like message_id, riding the
+    JSON output only, left empty by Microsoft Graph.
+  * Added the shared message delete <ids> command (alias del).
+    Trash-first: messages are moved to the trash mailbox, resolved from the
+    backend role then from mailbox.alias.trash, or permanently removed when
+    already in it.
+  * Added the maildir.keywords.dovecot and maildir.keywords.header config fields.
+    Surface custom Maildir keywords as flags, read from each mailbox's
+    dovecot-keywords file or from X-Keywords / X-Label; reading only, both off
+    by default.
+ * Added the imap.sasl-ir config field, forcing the RFC 4959 initial response on or off (#729).
+    Unset follows the advertised SASL-IR capability; false is needed by
+    Coremail (126.com, 163.com), which advertises it then rejects the inline
+    form.
+  * Added a --seen flag to message read, marking the message as seen while reading it.
+  * Added the configure command (alias wizard), running the account wizard by name.
+    The first-run offer is now a hook rather than a gate: the command carries
+    on afterwards, and nothing prompts when stdin is not a terminal or --json
+    is set.
+  * Added back the HIMALAYA_CONFIG environment variable, read like -c and taking the same :-delimited list.
+  * Added the shared Pimalaya --help footer, naming the bug tracker and the sponsoring page.
+  Changed:
+  * Made the configuration wizard discovery-only, removing the hand-entry flow.
+    An email, a domain, a scheme:// URL or a local folder path all run
+    discovery, and the wizard stops when nothing is found rather than guessing
+    an SMTP host.
+  * Reworked message read's plain-text output into a concise reading view.
+    A header block (Date, From, To, Cc, Subject), then one summary line per
+    MIME part with plain-text parts inlined; --raw and --json are unchanged.
+  * Aligned the ID of message read, attachments list and attachments download
+    on the MIME part's 1-based position, making attachment ids a sparse subset
+    of it.
+  * Right-aligned the SIZE column of the envelope listing table (#723).
+  * Made the wizard write the account to the configuration file rather than only print it.
+    The file is where -c or HIMALAYA_CONFIG pointed, or the XDG default; an
+    existing one gets a plain text append, so comments and formatting survive.
+  * Made the first-run offer open with a welcome banner on stderr, naming the
+    configuration file it looked for; himalaya configure skips it.
+    Changed bare himalaya --account <NAME> to show the help instead of running the account wizard.
+  * Made the wizard offer only the IMAP authentication mechanisms an
+    unauthenticated CAPABILITY advertises, falling back to the full list on any
+    probe failure.
+  * Time-bounded the wizard's service discovery, so one unreachable endpoint no
+    longer stalls it for the operating-system connect timeout.
+  * Made the wizard offer to reuse the IMAP credentials for SMTP, prompting
+    only the SMTP endpoint on accept.
+  * Changed gmail messages get --header and gmail threads get --header to
+    narrow the rendered headers under every format, not only --format metadata.
+  * Changed imap raw to send a byte-verbatim batch of tagged commands.
+  * Literal \r / \n escapes decode to CRLF and the reply is read until every
+    command is acknowledged; smtp raw decodes the same escapes but stays a
+    single command.
+  Fixed:
+  * Fixed configure --json emitting a payload no schema described: json-schema <DIR> now writes himalaya-configure.json.
+  * Fixed --from carrying a display name composing a From: <Alice <alice@example.org>> no SMTP server accepts (#727).
+    The value is parsed as a mailbox, the name reaching the MIME builder apart from the address.
+  * Fixed commands dying mid-exchange with a bare Resource temporarily unavailable (os error 35) (#731, #732).
+    The transport now retries a stream reporting it is not ready, for a minute,
+    and arms a socket read deadline at connect time.
+  * Fixed lean cargo feature combinations failing to compile.
+    The config schema no longer reaches for disabled backends' ALPN defaults,
+    and every shared command is gated on the storage or send backend it needs.
+  * Fixed message read --raw --json erroring: the two now combine, emitting the raw RFC 5322 bytes as a JSON string.
+  * Fixed the Gmail and Microsoft Graph get commands wrapping their data in a message string under --json (#730).
+    Gmail messages get, drafts get, threads get, history list and the settings
+    readers now serialize their data, as does Microsoft Graph message get, each
+    with a published JSON Schema.
+  * Fixed gmail drafts get --format raw printing the draft summary instead of the raw message it had fetched.
+  Removed:
+  * Removed the assets/himalaya.desktop entry and the Nix line installing it.
+    Every functional line of it had stopped working, Exec=himalaya %U answering
+    a mailto: link with unrecognized subcommand; handling mailto: is left to a
+    wrapper of your own, as MIGRATION.md describes.
+
+-------------------------------------------------------------------
 Tue Jul 28 13:11:56 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.0.0:

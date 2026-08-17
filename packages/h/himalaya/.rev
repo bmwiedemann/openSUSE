@@ -178,4 +178,41 @@
     sentitems, …). IMAP pins the reserved INBOX only. The other special-use</comment>
     <requestid>1368199</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>7741dec4e07f06729de241c6d5e17258</srcmd5>
+    <version>2.1.0</version>
+    <time>1786978762</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.1.0:
+  * Added the pimdir storage backend, Himalaya over the local store the sync engine populates.
+    Reads build envelopes from the stored meta and report a body that is not
+    local as &quot;body not fetched&quot;; writes are staged as replica mutations
+    attributed to pimdir.source, auto-detected when the store has a single
+    source.
+  * Added back the email and display-name config fields, at the global and the account level (#721).
+    They fill the From header of messages compose, reply and forward when
+    --from is not passed, and are also read as from and from-name, the
+    spellings himalaya-tui writes.
+  * Added back the signature and signature-delim config fields, at the global and the account level.
+    The composers append the signature when neither --signature nor
+    --signature-file is passed, signature-delim defaulting to the RFC 3676 §4.3
+    &quot;-- \n&quot; and written verbatim.
+  * Added in_reply_to to the shared envelope (#734).
+    A list of ids stripped of their angle brackets like message_id, riding the
+    JSON output only, left empty by Microsoft Graph.
+  * Added the shared message delete &lt;ids&gt; command (alias del).
+    Trash-first: messages are moved to the trash mailbox, resolved from the
+    backend role then from mailbox.alias.trash, or permanently removed when
+    already in it.
+  * Added the maildir.keywords.dovecot and maildir.keywords.header config fields.
+    Surface custom Maildir keywords as flags, read from each mailbox's
+    dovecot-keywords file or from X-Keywords / X-Label; reading only, both off
+    by default.
+ * Added the imap.sasl-ir config field, forcing the RFC 4959 initial response on or off (#729).
+    Unset follows the advertised SASL-IR capability; false is needed by
+    Coremail (126.com, 163.com), which advertises it then rejects the inline
+    form.
+  * Added a --seen flag to message read, marking the message as seen while reading it.</comment>
+    <requestid>1371507</requestid>
+  </revision>
 </revisionlist>

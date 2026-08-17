@@ -1,7 +1,7 @@
 <services>
   <service name="cargo_vendor" mode="manual">
     <param name="src">https://github.com/pimalaya/himalaya.git</param>
-    <param name="revision">v2.0.0</param>
+    <param name="revision">v2.1.0</param>
     <param name="versionrewriteregex">^v?(.*)</param>
     <param name="versionrewritepattern">$1</param>
     <param name="update">false</param>

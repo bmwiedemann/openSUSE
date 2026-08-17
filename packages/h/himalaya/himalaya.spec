@@ -21,7 +21,7 @@
 %global himalaya_features maildir
 
 Name:           himalaya
-Version:        2.0.0
+Version:        2.1.0
 Release:        0
 Summary:        Command-line interface for email management
 #SourceLicense:  MIT
@@ -30,7 +30,6 @@ URL:            https://github.com/pimalaya/himalaya
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
-BuildRequires:  desktop-file-utils
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  notmuch-devel
 BuildRequires:  pkgconfig
@@ -45,15 +44,11 @@ Command-line interface for email management.
 %prep
 %autosetup -a1 -p1
 
-desktop-file-edit --remove-category=Application --add-category=Email \
-	--set-icon=%{name} --remove-key=DesktopName assets/%{name}.desktop
-
 %build
 %{cargo_build} --features "%{himalaya_features}"
 
 %install
 install -D -m 0755 -t %{buildroot}%{_bindir} target/release/%{name}
-install -D -m 0644 -t %{buildroot}%{_datadir}/applications assets/%{name}.desktop
 install -D -m 0644 logo.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 
 install -d -m 0755 %{buildroot}%{_datadir}/bash-completion/completions \
@@ -67,13 +62,11 @@ install -d -m 0755 %{buildroot}%{_datadir}/bash-completion/completions \
 %check
 # there are currently no tests available (v1.2.0)
 #%%{cargo_test} --features "%%{himalaya_features}"
-desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 %files
 %license LICENSE-MIT LICENSE-APACHE
 %doc CHANGELOG.md README.md config.sample.toml
 %{_bindir}/%{name}
-%{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 %{_mandir}/man1/%{name}*.1%{?ext_man}
 %dir %{_datadir}/bash-completion
