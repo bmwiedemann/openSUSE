@@ -46,7 +46,9 @@ Patch0007:  0001-compat-test-for-pfn_t.patch
 
 # suse special patch
 Patch1001:  bsc-1025089_fix-resync-finished-with-syncs-have-bits-set.patch
-Patch1002:  suse-coccinelle.patch
+Patch1002:  bsc-1271076-drbd-consider-resync-after-peer-forced-Primary-from-.patch
+Patch1003:  suse-coccinelle.patch
+
 ########################
 
 #https://github.com/openSUSE/rpmlint-checks/blob/master/KMPPolicyCheck.py
