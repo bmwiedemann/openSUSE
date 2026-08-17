@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Aug  9 10:38:29 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.29.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.29.0
+- Changes since 6.28.0:
+  * Update dependency version to 6.29.0
+  * Use CardDAV allprop in multiget address-data
+  * Make sure network replies are parented to the corresponding job
+  * Add some debug to DavPrincipalSearchJob
+  * Add a DavSslUiProxy to allow plugging user interaction for SSL errors
+  * network: Setup more strict network policy
+  * davitemmodifyjob: Fix redirection
+  * davmanager: Add missing doctype to sent XML
+  * Adapt tests
+  * Port network management from KIO to QNAM
+  * Add fetching DavPush data in DavCollectionsFetchJob
+  * enums.h: provide version macros to consumers
+  * Update version to 6.29.0
+
+-------------------------------------------------------------------
 Fri Jul 10 12:15:47 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.28.0
