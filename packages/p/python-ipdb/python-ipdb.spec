@@ -1,7 +1,7 @@
 #
 # spec file for package python-ipdb
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,6 +20,9 @@
 # gh#gotcha/ipdb#279
 %define skip_python313 1
 %define skip_python314 1
+%if "%{shrink:%pythons}" == ""
+ExclusiveArch:  do-not-build
+%endif
 Name:           python-ipdb
 Version:        0.13.13
 Release:        0

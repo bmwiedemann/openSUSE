@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 17 09:28:10 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Exclude Build when all python flavors are skipped.
+
+-------------------------------------------------------------------
 Sat Mar 14 13:14:17 UTC 2026 - Benjamin Greiner <code@bnavigator.de>
 
 - Skip python314: Still no progess  gh#gotcha/ipdb#279
