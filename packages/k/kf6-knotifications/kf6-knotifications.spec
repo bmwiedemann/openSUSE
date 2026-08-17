@@ -28,11 +28,11 @@
 %define mypython_sitearch %{expand:%%%{mypython}_sitearch}
 %endif
 
-# Full KF6 version (e.g. 6.28.0)
+# Full KF6 version (e.g. 6.29.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 %bcond_without released
 Name:           kf6-knotifications
-Version:        6.28.0
+Version:        6.29.0
 Release:        0
 Summary:        KDE Desktop notifications
 License:        LGPL-2.1-or-later
@@ -104,8 +104,6 @@ Summary:        Python interface for kf6-knotifications
 This package provides a python interface for kf6-knotifications.
 %endif
 
-%lang_package -n libKF6Notifications6
-
 %prep
 %autosetup -p1 -n %{rname}-%{version}
 
@@ -123,11 +121,7 @@ This package provides a python interface for kf6-knotifications.
 
 %fdupes %{buildroot}
 
-%find_lang knotifications6 --with-qt --without-mo
-
 %ldconfig_scriptlets -n libKF6Notifications6
-
-%files -n libKF6Notifications6-lang -f knotifications6.lang
 
 %files
 %{_kf6_debugdir}/knotifications.categories
