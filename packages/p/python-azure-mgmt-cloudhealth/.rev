@@ -19,4 +19,15 @@
 - Update Requires from pyproject.toml (forwarded request 1359383 from glaubitz)</comment>
     <requestid>1359530</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a0b803185b993edc29fe04a7f0f9975a</srcmd5>
+    <version>1.0.0~b3</version>
+    <time>1786978786</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 1.0.0b3
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1371521 from glaubitz)</comment>
+    <requestid>1371558</requestid>
+  </revision>
 </revisionlist>
