@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 17 06:22:45 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.6.2:
+  * The file header hyperlink pointed to the first line of the file.
+    Now it points to the first change in the file.
+
+-------------------------------------------------------------------
 Mon Jan 19 08:23:41 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 3.6.1:

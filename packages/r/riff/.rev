@@ -336,4 +336,14 @@
     output is not a terminal.</comment>
     <requestid>1328026</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>73aed3a13a1a95f961dca160b5f954fc</srcmd5>
+    <version>3.6.2</version>
+    <time>1786978768</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.6.2:
+  * The file header hyperlink pointed to the first line of the file.
+    Now it points to the first change in the file.</comment>
+    <requestid>1371510</requestid>
+  </revision>
 </revisionlist>
