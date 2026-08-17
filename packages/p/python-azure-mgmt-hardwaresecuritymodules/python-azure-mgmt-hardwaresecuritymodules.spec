@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-mgmt-hardwaresecuritymodules
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,15 @@
 #
 
 
-%define realversion 1.0.0b2
-
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-hardwaresecuritymodules
-Version:        1.0.0~b2
+Version:        1.0.0
 Release:        0
 Summary:        Microsoft Azure Hardwaresecuritymodules Management Client Library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure_mgmt_hardwaresecuritymodules/azure_mgmt_hardwaresecuritymodules-%{realversion}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/a/azure_mgmt_hardwaresecuritymodules/azure_mgmt_hardwaresecuritymodules-%{version}.tar.gz
 BuildRequires:  %{python_module azure-mgmt-nspkg >= 3.0.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module pip}
@@ -54,7 +52,7 @@ This is the Microsoft Azure Hardwaresecuritymodules Management Client Library.
 This package has been tested with Python 3.8+.
 
 %prep
-%setup -q -n azure_mgmt_hardwaresecuritymodules-%{realversion}
+%setup -q -n azure_mgmt_hardwaresecuritymodules-%{version}
 
 %build
 %pyproject_wheel

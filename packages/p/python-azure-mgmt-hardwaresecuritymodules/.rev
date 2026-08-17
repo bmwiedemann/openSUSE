@@ -40,4 +40,16 @@
 - Update Requires from setup.py (forwarded request 1243581 from glaubitz)</comment>
     <requestid>1243621</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7a9fbc16c4ab695a6c042be9bbc98bae</srcmd5>
+    <version>1.0.0</version>
+    <time>1786978783</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 1.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove temporary version override (forwarded request 1371526 from glaubitz)</comment>
+    <requestid>1371554</requestid>
+  </revision>
 </revisionlist>
