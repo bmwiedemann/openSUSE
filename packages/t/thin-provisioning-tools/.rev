@@ -433,4 +433,165 @@
     <comment>Update to 1.3.3: thin_explore empty-tree/btree panic fixes, era_invalidate fix, thin_metadata_pack/unpack flush fixes, dependency refresh.</comment>
     <requestid>1361377</requestid>
   </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>6047e07596daea4e856ee698b69b74ee</srcmd5>
+    <version>1.3.3</version>
+    <time>1786978533</time>
+    <user>anag_factory</user>
+    <comment>thin-provisioning-tools: vendored-dependency refresh, licence re-derivation, and a test multibuild flavour
+
+No version bump - this is 1.3.3 throughout. Three packaging changes.
+
+1. Vendored dependency refresh
+-----------------------------
+Re-ran the source services, so cargo_vendor re-resolved. The upstream
+source tarball is byte-identical (md5 e476697bbe99b50b5bcbb8e84441f222
+before and after); only vendor.tar.zst changed. Note the _service sets
+update=&quot;true&quot; on cargo_vendor, so the vendored tree deliberately does
+not match upstream's committed Cargo.lock - that is intended and is not
+something to &quot;correct&quot;.
+
+The tree stayed at 212 crate directories, 66 of which were replaced:
+62 crates changed version in place, two were added (jiff-core 0.1.0,
+&quot;Unlicense OR MIT&quot;; palette_math 0.7.7, &quot;MIT OR Apache-2.0&quot;) and three
+dropped (fast-srgb8, proc-macro-error2, proc-macro-error-attr2). Five
+crossed a major boundary: darling, darling_core and darling_macro
+0.23.0 -&gt; 0.24.0, env_filter 1.0.1 -&gt; 2.0.0, and syn 2.0.118 -&gt; 3.0.3
+(syn 2.x stays in the tree alongside 3.x). No new licence identifier
+entered the tree, and neither added crate contributes one that was not
+already present; CC0-1.0 left the tree with fast-srgb8.
+
+The refresh broke two tests, which is worth spelling out because it is
+the whole point of auditing a re-vendor rather than trusting it. clap
+went 4.6.1 -&gt; 4.6.6, and clap 4.6.2 changed its help renderer to say
+&quot;alias&quot; instead of &quot;aliases&quot; when an option has exactly one alias (clap
+changelog, under Fixes: &quot;(help) Say `alias` when there is only one&quot;).
+tests/thin_delta.rs hardcodes the expected --help text, so accepts_h and
+accepts_help both failed. Upstream CI never sees this because it builds
+from the committed Cargo.lock; we re-resolve, so we do.
+
+Fixed by thin-provisioning-tools-tests-clap-single-alias.patch, which
+touches nothing but the two expected strings in that test file - no
+non-test code, so the shipped binary is unaffected. Sent upstream as
+gh#jthornber/thin-provisioning-tools#328 and referenced from the Patch0
+comment; drop the patch once it is merged and released.
+
+2. Licence re-derivation
+------------------------
+The tag was a bare GPL-3.0-only, which described upstream's own code but
+not the shipped artifact: every tool in %files is a symlink to one
+statically linked Rust binary (pdata_tools), so the binary also contains
+the vendored crates.
+
+Method, reproducible from the tree in this request:
+  - Enumerated the licence of all 212 crate directories in the refreshed
+    vendor.tar.zst by reading each crate's Cargo.toml. All 212 declare a
+    license field; none is license-file-only, so no file had to be
+    identified by hand.
+  - Scoped to what is actually linked with
+    &quot;cargo tree --offline -p thinp -e normal&quot; - 77 of the 212. The build
+    is default-features (upstream's Makefile does a plain
+    &quot;cargo build --release&quot;), so ratatui/termion/io-uring are out.
+  - Elected MIT wherever a crate offers a choice. MIT is on offer from
+    every dual/multi-licensed crate in the linked set, so one election
+    covers all of them and no Zlib, 0BSD, BSD-2-Clause, Unlicense or
+    BSL-1.0 obligation is taken on. Only the elected branch is declared.
+
+What is left mandatory, and therefore declared:
+  GPL-3.0-only  upstream itself (COPYING)
+  MIT           12 crates that offer nothing else - console,
+                data-encoding, indicatif, libudev-sys, nix, nom,
+                quick-xml, retry, simd-adler32, strsim, udev,
+                unit-prefix - plus every crate where MIT was elected
+  Apache-2.0    exitcode 1.1.2, which offers no alternative
+  MPL-2.0       devicemapper 0.34.8 and devicemapper-sys 0.3.3, reached
+                through thin_migrate
+  Unicode-3.0   unicode-ident 1.0.24, whose expression is an AND
+
+  License: Apache-2.0 AND GPL-3.0-only AND MIT AND MPL-2.0 AND Unicode-3.0
+
+Deliberately excluded, and why: build-only and dev-only crates are not in
+the binary. That drops bindgen (BSD-3-Clause), clang-sys (Apache-2.0) and
+libloading (ISC), which devicemapper-sys uses only to generate FFI
+bindings at build time, and r-efi, whose LGPL-2.1-or-later option is
+UEFI-target-only and absent from the Linux graph. Every identifier used
+was checked against the openSUSE accepted-licence list, so nothing had to
+be omitted for validity.
+
+Compatibility, raised rather than silently assumed: GPL-3.0-only combined
+with Apache-2.0 vendored code is a real question, so to be explicit -
+Apache-2.0 and MPL-2.0 are each one-way compatible with GPLv3, so the
+combined binary is distributable and is effectively GPL-3.0-only as a
+whole. The reverse direction is not claimed. MPL-2.0 section 3.2 source
+availability is satisfied because the complete vendor.tar.zst ships in
+the src.rpm.
+
+The derivation is recorded as a # Legal-Review-Notice block above the
+License: tag so a reviewer can re-run it without redoing the audit.
+
+Because MIT and Apache-2.0 both require their notice to travel with the
+binary, and upstream's COPYING covers only the GPL-3.0 part, the licence
+text of each linked crate that ships one is now installed under
+%{_defaultlicensedir} (149 files, 722 KiB). The list is derived at build
+time from cargo tree, so it cannot go stale across a re-vendor. crc32c
+0.6.8 declares MIT OR Apache-2.0 but ships no licence file of its own.
+
+3. %check split into a &quot;test&quot; multibuild flavour
+------------------------------------------------
+Measured on this package: %check was 267s of a 376s build - 71% of the
+total. cargo test spends 50s recompiling in the test profile and one test
+block alone takes 186s. 88 packages build-depend on thin-provisioning-tools,
+so a test flake stalls a large fan-out.
+
+Mechanics follow the ruff / uv / zig precedent, keeping ONE spec file:
+_multibuild with a single &lt;flavor&gt;test&lt;/flavor&gt;; %global flavor
+@BUILD_FLAVOR@%{nil} with the %else branch defining the suffix as %{nil},
+since obs-build substitutes @BUILD_FLAVOR@ textually. The %package-level
+declarations are guarded, not just %files - OBS reads them when it
+schedules. The test flavour therefore produces only a src.rpm and runs
+%{cargo_test}; the main flavour no longer has a %check.
+
+The test flavour also has no %build: cargo test compiles in the test
+profile anyway, so running %{cargo_build} first would only add a
+throwaway release compile.
+
+Staging will need an excludebuild:thin-provisioning-tools:test line. That
+is a release-team action; this request does not carry it.
+
+Gates
+-----
+Both flavours built green locally on aarch64 (native) against
+Base:System/openSUSE_Factory.
+
+  main flavour: finished &quot;build thin-provisioning-tools.spec&quot;; rpmlint
+                2 packages checked, 0 errors, 0 warnings, 0 badness.
+  test flavour: finished; 25 test blocks, 598 tests passed, 0 failed -
+                the same 25/598 the pre-split OBS build produced, so the
+                suite really ran and nothing was silently skipped. It
+                emits only thin-provisioning-tools-test-1.3.3-0.src.rpm
+                and no binary package, and the log shows zero
+                target/release compiles, confirming the release build is
+                genuinely skipped there.
+
+Main-flavour RPM content proven unchanged by the restructure, against the
+published thin-provisioning-tools-1.3.3-88.9.aarch64.rpm:
+  - file list, excluding the newly added vendored licence texts:
+    IDENTICAL, all 49 paths byte for byte. 226 paths were added, every
+    one under /usr/share/licenses/thin-provisioning-tools/vendor; 0
+    added anywhere else, 0 removed.
+  - provides, excluding bundled(rust-crate:*): identical apart from the
+    release number (1.3.3-88.9 published vs 1.3.3-0 for a local build).
+    The bundled(rust-crate:*) set is the vendor refresh itself.
+  - requires: identical except for one added
+    rpmlib(PartialHardlinkSets), which is %fdupes hardlinking the
+    duplicate licence texts.
+  So the restructure itself changes nothing; both deltas belong to
+  changes 1 and 2 and are individually accounted for.
+
+source_validator clean; changes-lint and changes-guard clean;
+spec-cleaner --remove-groups --pkgconfig --perl --tex diff empty.
+
+No open openSUSE bugs reference this package, so nothing is cited.</comment>
+    <requestid>1371324</requestid>
+  </revision>
 </revisionlist>

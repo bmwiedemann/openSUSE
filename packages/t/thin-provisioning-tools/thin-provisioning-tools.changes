@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Aug 15 20:08:48 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Refresh the vendored Rust crates: 62 changed version, two
+  added (jiff-core, palette_math), three dropped (fast-srgb8 and
+  the proc-macro-error2 pair); upstream sources are unchanged.
+- Re-derive License from the crates actually linked into the
+  shipped binary: Apache-2.0 AND GPL-3.0-only AND MIT AND
+  MPL-2.0 AND Unicode-3.0, and install each linked crate's
+  licence text next to COPYING.
+- Move %check into a separate "test" multibuild flavour, so a
+  test failure no longer blocks the binaries that the 88
+  dependent packages build against.
+- Add thin-provisioning-tools-tests-clap-single-alias.patch: the
+  refreshed clap renders "alias" instead of "aliases" for a single
+  alias, which broke two hardcoded thin_delta help assertions
+  (gh#jthornber/thin-provisioning-tools#328).
+
+-------------------------------------------------------------------
 Tue Jun 23 13:39:55 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.3.3:
