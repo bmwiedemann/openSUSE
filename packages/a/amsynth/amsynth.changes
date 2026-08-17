@@ -1,7 +1,13 @@
 -------------------------------------------------------------------
+Fri Aug 14 09:10:34 UTC 2026 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to version 2.0.0
+  * Added support for accessibility (screan readers).
+
+-------------------------------------------------------------------
 Tue Apr 28 02:20:14 UTC 2026 - Konstantin Voinov <kv@kott.no-ip.biz>
 
-- Update to version 2.0b1<
+- Update to version 2.0b1
   * Ported the GUI from GTK2 to JUCE.
     PACKAGERS TAKE NOTE: build dependencies have changed!
   * Added preset selection, saving, and main menu to plug-ins GUIs.

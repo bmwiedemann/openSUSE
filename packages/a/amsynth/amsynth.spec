@@ -17,7 +17,7 @@
 
 
 Name:           amsynth
-Version:        2.0b1
+Version:        2.0.0
 Release:        0
 Summary:        Analog modelling (a.k.a virtual analog) software synthesizer
 License:        GPL-2.0-or-later
