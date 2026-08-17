@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-feedparser
-Version:        6.0.12
+Version:        6.0.14
 Release:        0
 Summary:        Universal Feed Parser Module for Python
 License:        BSD-2-Clause
@@ -27,14 +27,15 @@ URL:            https://github.com/kurtmckee/feedparser
 Source:         https://files.pythonhosted.org/packages/source/f/feedparser/feedparser-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM inspired by https://github.com/kurtmckee/feedparser/issues/318 and the linked patches
 Patch:          chardet6.patch
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module chardet}
+BuildRequires:  %{python_module feedparser-sgmllib >= 2}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module sgmllib3k}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-sgmllib3k
+Requires:       python-feedparser-sgmllib >= 2
 Recommends:     python-chardet
 BuildArch:      noarch
 %python_subpackages

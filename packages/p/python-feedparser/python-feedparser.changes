@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jul 28 18:07:23 UTC 2026 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 6.0.14:
+  * Upgrade to feedparser-sgmllib 2.0.0. (#585)
+- additional changes from version 6.0.13:
+  * Drop support for Python 3.9 and lower.
+  * Migrate from sgmllib3k to feedparser-sgmllib.
+  * Resolve package build warnings.
+- set the minimum python version to 3.10
+- drop python-sgmllib3k dependency
+- add python-feedparser-sgmllib dependency
+
+-------------------------------------------------------------------
 Thu Mar 19 12:04:29 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Add upstream-issue-inspired chardet6.patch to fix tests
