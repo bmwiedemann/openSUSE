@@ -347,4 +347,145 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
      the game detects an Nvidia GPU. (PR gh#doitsujin/dxvk#5055) (forwarded request 1324727 from Thaodan)</comment>
     <requestid>1324809</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>fd312de83ac3e3a8c405b39e9281294d</srcmd5>
+    <version>3.0.2</version>
+    <time>1786978684</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.0.2:
+  * Hang debugging
+  In case of a GPU hang or driver crash resulting in VK_ERROR_DEVICE_LOST errors,
+  the environment variable DXVK_DEBUG=hang can now be used to help narrow down the crash location.
+  Resulting log files may provide useful information in bug reports. This works best on AMD and Nvidia GPUs.
+  See PR gh#doitsujin/dxvk#5790 for details.
+  * Bug fixes and Improvements
+  
+  * Worked around a performance regression in games that create a new DXGI factory every single frame.
+  * This affects Dying Light: The Beast with FSR enabled, and potentially other D3D12 games.
+  * Granblue Fantasy Relink: Fixed spurious GPU hangs on Nvidia, may affect other games. (gh#doitsujin/dxvk#5785)
+  * Halo CE: Worked around a game bug causing rendering issues. (PR gh#doitsujin/dxvk#5783)
+  * Overwatch: Fixed potential swapchain issue when running at non-native resolutions. (PR gh#doitsujin/dxvk#5794)
+  * Splinter Cell: Chaos Theory: Worked around a game bug that would cause night vision to misrender. (gh#doitsujin/dxvk#5780)
+- Changes from 3.0.1
+  * Bug fixes and Improvements
+  * Disabled secondary command buffer usage on all desktop GPUs.
+    This may slightly impact performance in a small number of games with suboptimal MSAA resolve patterns,
+    but has been a constant source of hard-to-debug rendering issues and GPU hangs, and the main benefits are only seen on tiling GPUs anyway.
+  * Fixed a rendering regression affecting numerous D3D9 games (including Black Mesa, Gothic 3 and GTA IV) on some drivers. (gh#doitsujin/dxvk#5732, gh#doitsujin/dxvk#5768)
+  * Fixed a crash when games unload D3D libraries while the D3D device is still alive. (gh#doitsujin/dxvk#5743)
+  * Fixed an issue that would cause stuttering on 32-bit Nvidia drivers with descriptor heaps enabled.
+  * Improved GPU synchronization around stream output. This may affect older Unity Engine games using D3D11.
+  * Worked around a Windows-specific issue where sampler creation would fail on Nvidia. (gh#doitsujin/dxvk#5744)
+  * Note: The root cause is not known, but may be linked to external overlays.
+  * Worked around a Windows-specific Intel driver bug that would cause all games to hang after
+    a short time with graphics pipeline libraries enabled. (gh#doitsujin/dxvk#5742, gh#doitsujin/dxvk#5756, PR gh#doitsujin/dxvk#5757)
+  * Empire Earth 2: Fixed a regression where certain fixed-function setups were not handled correctly. (gh#doitsujin/dxvk#5730)
+  * Fallout 3: Fixed shader compiler regression that would cause rendering issues with MSAA. (gh#doitsujin/dxvk#5758)
+  * Fruit Ninja: Fixed long-standing lighting issue. (gh#doitsujin/dxvk#2480, PR gh#doitsujin/dxvk#5765)
+  * Kane &amp; Lynch: Dead Men: Fixed severe performance regression. (gh#doitsujin/dxvk#5638, PR gh#doitsujin/dxvk#5764)
+  * King's Bounty: The Legend: Fixed performance regression. (PR gh#doitsujin/dxvk#5764)
+  * Manhunt: Enabled 60 FPS limit to work around game issues. (PR gh#doitsujin/dxvk#5760)
+  * Splinter Cell 3: Fixed a rendering regression when enabling the Shader Model 3.0 option. (gh#doitsujin/dxvk#5754)
+  * Total War: Medieval II: Fixed a water rendering regression. (gh#doitsujin/dxvk#5763)
+  Note: An ANV driver issue was discovered that may lead to GPU hangs in some D3D9 games on Intel Alchemist GPUs and older
+  (see Mesa issue and MR). As a workaround, DXVK now enables descriptor buffers on those GPUs by default,
+  however this will negatively performance. Affected users are advised to keep graphics drivers up to date.
+  
+- Changes from 3.0
+  * Shader compiler changes
+  DXVK now uses dxbc-spirv for shader compilation,
+  replacing the legacy shader translation code for all supported shader models.
+  This fixes a number of issues that were previously impossible to address:
+  * Rendering issues in games that are caused either by games relying on undefined behaviour,
+    or by FXC generating invalid code in some cases,
+    as seen in Postal: Brain Damaged (gh#doitsujin/dxvk#3488) and Snowrunner (see Mesa issue glfo#mesa/mesa#13251).
+  * The generated code is more compact than naively translated SPIR-V,
+    which substantially reduces DXVK's memory footprint.
+    In games such as Overwatch or God of War, this can save around 1 GiB of system memory.
+  * Shader compilation is now fully offloaded to worker threads,
+    which can reduce the start-up time in games such as Days Gone and Final Fantasy XIV,
+    or reduce stutter in some cases. Previously,
+  * DXVK would perform the SPIR-V translation on the application thread
+    and only compile the actual Vulkan pipelines on workers.
+    DXVK's own intermediate representation of compiled shaders is now cached on disk inside
+    the AppData/Local directory of the current Wine prefix.
+    This is necessary because compile times have increased compared to the old compiler.
+    The cache path can be changed with the environment variable DXVK_SHADER_CACHE_PATH.
+  Shader Model 1-3 support for D3D9 was implemented by @K0bin.
+  Note: Outside of specific edge cases, the new compiler is not expected to improve overall performance.
+  For developers: When making changes to the shader compiler, set DXVK_SHADER_CACHE=0 to avoid loading stale shaders.
+  * Descriptor heaps
+  The new Vulkan extension VK_EXT_descriptor_heap is now used by default on drivers that support it.
+  Compared to the older binding model implementation based on VK_EXT_descriptor_buffer,
+  this new model is expected to achieve roughly the same level of CPU-bound performance,
+  while reducing the GPU-bound performance penalty observed on Nvidia GPUs.
+  The descriptor buffer path introduced in DXVK 2.7 is thus deprecated and will be removed in a future release.
+  Note: For Nvidia drivers, version 595.84 or newer is required for this feature to work.
+  The feature is disabled on older drivers due to performance regressions.
+  DXVK will print the log message info:  Binding model: Descriptor heap if the extension is used.
+  * D3D9 changes
+  * Fixed-function pipeline
+    In order to emulate the legacy fixed-function pipeline that allows D3D8 and D3D9 games to perform rendering without shaders,
+    DXVK previously generated its own shaders code on the fly based on pipeline state.
+    In some games, such as Unreal Tournament 2004,
+    this could lead to noticeable stuttering even after prolonged periods of gameplay.
+    To fix this, DXVK now implements the fixed-function pipeline as a pair of ubershaders,
+    for which optimized variants are compiled in the background as the game sets up different fixed-function setups.
+    For more details, see PR gh#doitsujin/dxvk#5192.
+  * Buffer upload optimizations
+    In order to more closely match Windows behaviour,
+    various types of buffers that were previously placed directly in VRAM are now uploaded on demand,
+    and a strategy was implemented to limit the amount of memory in flight,
+    which fixes address space-related crashes in a number of 32-bit D3D9 games. See PR gh#doitsujin/dxvk#5350 for details.
+    Note: These changees may also improve performance on systems without Resizeable BAR in games such as GTA IV.
+  * Other changes
+  * Shared resources
+    Shared resources now work on Wine's upstream implementation, and no longer require Proton-specific patches. (PR gh#doitsujin/dxvk#5257).
+    The legacy path will continue to work for the time being to not unnecessarily break older Proton versions,
+    but will likely be dropped in a future release.
+  * Frame rate limiter
+    The environment variable DXVK_FRAME_RATE to enable the built-in frame rate limiter was removed.
+    Users are encouraged to use external limiters such as those of Gamescope or Mangohud instead,
+    which will usually provide a smoother experience.
+    Users that wish to keep using the built-in limiter can use the configuration option dxvk.maxFrameRate = n.
+  * Bug fixes and Improvements
+  * Fixed a number of minor Vulkan validation errors.
+  * Fixed various issues with software vertex processing in D3D8/9,
+    including games such as Vietcong or The I of the Dragon. (PR gh#doitsujin/dxvk#5656)
+  * Fixed incorrect D3D8/9 fixed-function fog calculations in some cases. This affects Sea Dogs. (gh#doitsujin/dxvk#5165)
+  * If supported by the driver, VK_EXT_border_color_swizzle is now used to fix border color behaviour
+    for various emulated D3D9 texture formats. (gh#doitsujin/dxvk#5388, PR gh#doitsujin/dxvk#5390)
+  * Reduced unnecessary GPU synchronization to allow overlapping mutliple independent render passes,
+    as well as render passes with compute shaders. This is especially effective on systems that support VK_KHR_unified_image_layouts,
+    and can improve GPU-bound performance in games such as Dirt Rally 2.
+  * The asynchronous transfer queue is now used more aggressively to perform resource uploads into VRAM. (PR gh#doitsujin/dxvk#5713)
+  * The D3D11 Class Linkage feature is now supported.
+    No games are known to use this feature, but some demo applications that do use it should work now.
+  * Optimized various common D3D9 code paths to reduce CPU overhead. This helps games such as Resident Evil 6.
+  * Optimized D3D9 shader constant uploads to reduce memory usage and improve performance. (PR gh#doitsujin/dxvk#5686, gh#doitsujin/dxvk#5689)
+  * DXVK will no longer spoof the vendor ID of Intel GPUs via DXGI for games shipping with XeSS 2.
+    This spoofing was only necessary with older XeSS versions, but started causing issues with various D3D12 titles.
+  * Bioshock Infinite: Fixed a long-standing issue where the game would exhaust the sampler pool and start flickering. (PR gh#doitsujin/dxvk#5376)
+  * Borderlands 2: Fix flickering grass when enabling anisotropic filtering. (gh#doitsujin/dxvk#5441, PR gh#doitsujin/dxvk#5549)
+  * Colin McRae Rally 3: Fix broken rendering with SilentPatch. (gh#doitsujin/dxvk#4803, PR gh#doitsujin/dxvk#5213)
+  * Fallout New Vegas: Fixed depth resolve issue with certain mods. (gh#doitsujin/dxvk#5665)
+  * Insurgency &amp; Counter-Strike: Global Offensive: Worked around engine bug causing missing textures. (PR gh#doitsujin/dxvk#5602)
+  * Jump Space: Worked around a case of undefined behaviour that would lead to artifacting around objects in certain scenes.
+  * Max Payne: Fixed a crash when launching the game with more than one monitor connected. (PR gh#doitsujin/dxvk#5221)
+  * Railroad Tycoon 3: Fixed Z-fighting issues on terrain. (gh#doitsujin/dxvk#4114)
+  * Sang-Froid: Tales of Werewolves: Fixed various issues with fixed-function lighting.
+  * Splinter Cell 4: Worked around an issue where the game does not render correctly when it detects AMD GPUs. (gh#doitsujin/dxvk#5729)
+  * The Sims 3: Worked around an issue where the game would deliberately lower shadow quality on AMD cards.
+  * Total War: Pharaoh: Worked around a game bug that would cause the main menu to flicker,
+    and worked around a major performance issue that is caused by questionable shader code when MSAA is enabled. (PR gh#doitsujin/dxvk#5517)
+  * Witch on the Holy Night: Fixed drop-down shadows in the gallery not displaying properly. (gh#doitsujin/dxvk#3785)
+  * World of Final Fantasy: Worked around an issue where the game deliberately decides not to render water
+    and certain character hair when detecting an AMD GPU.
+  * Driver support
+  Many of the features and extensions added in Vulkan 1.4 are now required.
+  In practice, this means that a driver recent enough to support Vulkan 1.4 is now also needed to run DXVK.
+  The Driver Support page was updated accordingly.
+  This is not scary, just make sure your drivers aren't several years out of date. (forwarded request 1371321 from Thaodan)</comment>
+    <requestid>1371428</requestid>
+  </revision>
 </revisionlist>
