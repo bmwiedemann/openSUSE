@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Aug  9 10:38:20 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.29.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.29.0
+- Changes since 6.28.0:
+  * Update dependency version to 6.29.0
+  * Add im-matrix icon
+  * Rename icons for typst mimetype
+  * Add tab icons for KWin Options KCM
+  * add Android App Bundle icons
+  * remove inkscape cruft from Android Package Archive icons
+  * Update version to 6.29.0
+
+-------------------------------------------------------------------
 Fri Jul 10 12:15:38 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.28.0
