@@ -7,4 +7,12 @@
     <comment>New package python-langgraph-prebuilt. Completes the langchain/langgraph cone (skillspector) in Factory — co-stage with the sibling devel:languages:python SRs by pluskalm + the langsmith update (sr#1362384 via science:machinelearning).</comment>
     <requestid>1362411</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>700b05723d4da223912aefed22959d5d</srcmd5>
+    <version>1.1.0</version>
+    <time>1787063842</time>
+    <user>anag_factory</user>
+    <comment>Reproducibility fix: move the hash-based bytecode recompilation and fdupes from %check to %install, so the package content no longer varies when built with --nocheck (boo#1227364). Same fix bmwiedemann applied to python-langgraph in sr#1371636.</comment>
+    <requestid>1371669</requestid>
+  </revision>
 </revisionlist>

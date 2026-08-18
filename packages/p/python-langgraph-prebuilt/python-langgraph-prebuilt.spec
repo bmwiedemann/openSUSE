@@ -1,7 +1,7 @@
 #
 # spec file for package python-langgraph-prebuilt
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -48,17 +48,16 @@ InjectedState/InjectedStore annotations used to pass graph state into tools.
 
 %install
 %pyproject_install
+# Recompile as hash-based bytecode: this namespace package ships modules whose
+# timestamp-based .pyc desync from the reproducibility-clamped .py mtimes and
+# trip python-bytecode-inconsistent-mtime.
+%python_expand $python -m compileall -q -f --invalidation-mode=unchecked-hash -o 0 -o 1 -s %{buildroot} %{buildroot}%{$python_sitelib}/langgraph
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 # The test suite imports the top-level "langgraph" package, which depends on
 # this package (circular dependency on the consumer), so it cannot run during
-# this build; only byte-compilation is exercised.
-# Recompile as hash-based bytecode: this namespace package ships modules whose
-# timestamp-based .pyc desync from the reproducibility-clamped .py mtimes and
-# trip python-bytecode-inconsistent-mtime.
-%python_expand $python -m compileall -q -f --invalidation-mode=unchecked-hash -o 0 -o 1 -s %{buildroot} %{buildroot}%{$python_sitelib}/langgraph
-%python_expand %fdupes %{buildroot}%{$python_sitelib}/langgraph
+# this build.
 
 %files %{python_files}
 %doc README.md
