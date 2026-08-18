@@ -17,9 +17,16 @@
 #   LayoutTests PerformanceTests WebDriverTests ManualTests   test suites
 #   JSTests                                                   JSC's own tests
 #   Websites                                                  webkit.org content
+#   Tools/WebKitBot                                           Apple's CI bot
 #
 # Together those are about five times the size of everything the build uses.
 # Nothing outside Source/ and Tools/ is referenced by the JSCOnly port.
+#
+# Tools/WebKitBot is different from the rest of the list: it is dropped not
+# for size but because it is a Node.js service whose npm lockfile pins
+# packages with published CVEs (browserslist 4.28.2, CVE-2026-73088,
+# boo#1275410), which security scanners report as packages embedded in bun.
+# No code from it is built or shipped - nothing in a JSCOnly build reads it.
 #
 # The pinned revision is read out of the Bun source tree, so a version bump
 # cannot leave the engine behind.
@@ -79,9 +86,10 @@ git -C "$src" checkout -q FETCH_HEAD
     echo "$0: checked out revision does not match the pin" >&2; exit 1
 }
 
-echo "dropping test suites and website content"
+echo "dropping test suites, website content and CI bot tooling"
 rm -rf "$src/.git" "$src/LayoutTests" "$src/JSTests" "$src/PerformanceTests" \
-       "$src/WebDriverTests" "$src/ManualTests" "$src/Websites"
+       "$src/WebDriverTests" "$src/ManualTests" "$src/Websites" \
+       "$src/Tools/WebKitBot"
 
 archive="webkit-$version.tar.zst"
 echo "packing $archive ($(du -sh "$src" | cut -f1))"

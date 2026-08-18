@@ -63,8 +63,20 @@ clones the tree and prunes what a JavaScriptCore build never reads:
     LayoutTests PerformanceTests WebDriverTests ManualTests   test suites
     JSTests                                                   JSC's own tests
     Websites                                                  webkit.org content
+    Tools/WebKitBot                                           Apple's CI bot
 
-Together those are about five times the size of everything the build uses.
+Together the test suites and website content are about five times the size of
+everything the build uses.
+
+Tools/WebKitBot is pruned for a different reason: it is a Node.js service -
+Apple's commit/CI bot - whose npm lockfile pins packages with published CVEs
+(browserslist 4.28.2, CVE-2026-73088, boo#1275410), and security scanners
+report anything named in a shipped lockfile as a package embedded in bun. No
+code from it is built or shipped - nothing in a JSCOnly build reads Tools/
+beyond the build scripts - so dropping it removes the finding at the source.
+The archive can be re-checked at any time with
+
+    tar --zstd -tf webkit-*.tar.zst | grep -i browserslist
 
 The revision is read out of the Bun tarball and written to webkit.revision
 next to the archive, so a version bump cannot leave the engine behind.

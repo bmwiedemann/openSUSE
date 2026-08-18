@@ -65,4 +65,12 @@ _constraints are included: the build reaches 10 GB of build root before the
 final link.</comment>
     <requestid>1370367</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>fdedf2fb630ed713a0e36083668c6772</srcmd5>
+    <version>1.4.0~git20260808.52bf09cb</version>
+    <time>1787063859</time>
+    <user>anag_factory</user>
+    <comment>Fix CVE-2026-73088 (boo#1275410): the embedded browserslist 4.28.2 flagged by the security scanner lives solely in WebKit/Tools/WebKitBot/package-lock.json inside the WebKit source archive - Apple's CI bot tooling, never read by a JSCOnly build, never compiled or shipped, and upstream bun main still pins the same vulnerable revision, so a version bump would not help. Pruned Tools/WebKitBot from the archive and extended the bun_webkit generator prune list; repacked archive verified to contain zero browserslist references, full local aarch64 build green including %check smoke tests.</comment>
+    <requestid>1371686</requestid>
+  </revision>
 </revisionlist>

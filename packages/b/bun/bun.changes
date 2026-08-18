@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Aug 18 07:24:13 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- CVE-2026-73088: prototype pollution via unguarded for...in in
+  embedded browserslist normalizeStats() (boo#1275410)
+  * Prune Tools/WebKitBot from the WebKit source archive: Apple's
+    CI bot, a Node.js service never read by a JSCOnly build, whose
+    npm lockfile was the only place the vulnerable browserslist
+    4.28.2 appeared - no browserslist code was ever compiled in
+    or shipped
+  * Extend the bun_webkit generator's prune list accordingly so
+    regenerated archives stay clean
+
+-------------------------------------------------------------------
 Sat Aug  8 15:35:15 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - New package: bun 1.4.0~git20260808.52bf09cb, an all-in-one
