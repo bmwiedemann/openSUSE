@@ -17,7 +17,7 @@
 
 
 Name:           gap-images
-Version:        1.4.0
+Version:        1.4.2
 Release:        0
 Summary:        GAP: Minimal and Canonical images
 License:        MPL-2.0

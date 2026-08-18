@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Aug 18 10:30:54 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.4.2
+  * Fix an error in `MinimalImage` and friends for a group given by
+    an empty list of generators, such as `Group([], ())`.
+
+-------------------------------------------------------------------
+Mon Aug 17 18:43:49 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.4.1
+  * Fix accidental error in test suite when `vole` is not present.
+
+-------------------------------------------------------------------
 Thu Aug 13 17:48:47 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.4.0
