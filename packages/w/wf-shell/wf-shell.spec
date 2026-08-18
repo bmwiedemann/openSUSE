@@ -16,31 +16,37 @@
 #
 
 
-%define major_ver 0.10
-%define minor_ver 0
 Name:           wf-shell
-Version:        %{major_ver}.%{minor_ver}
+Version:        0.11.0
 Release:        0
-Summary:        A GTK3-based panel for wayfire
+Summary:        A GTK4-based panel for wayfire
 License:        MIT
 URL:            https://wayfire.org/
-Source0:        https://github.com/WayfireWM/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.xz
-Source1:        https://github.com/WayfireWM/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.xz.sha256sum
+Source0:        %{name}-%{version}.tar.gz
+BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(alsa)
-BuildRequires:  pkgconfig(dbusmenu-gtk3-0.4)
-BuildRequires:  pkgconfig(gtk-layer-shell-0)
-BuildRequires:  pkgconfig(gtkmm-3.0)
+BuildRequires:  pkgconfig(dbusmenu-glib-0.4)
+BuildRequires:  pkgconfig(ddcutil)
+BuildRequires:  pkgconfig(epoxy)
+BuildRequires:  pkgconfig(gtk4-layer-shell-0)
+BuildRequires:  pkgconfig(gtkmm-4.0)
+BuildRequires:  pkgconfig(libpipewire-0.3)
 BuildRequires:  pkgconfig(libpulse)
+BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(pam)
 BuildRequires:  pkgconfig(wayfire)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-protocols)
-BuildRequires:  pkgconfig(wf-config) >= %{major_ver}
-BuildRequires:  pkgconfig(wlroots-0.19)
+BuildRequires:  pkgconfig(wf-config)
+BuildRequires:  pkgconfig(wireplumber-0.5)
+BuildRequires:  pkgconfig(wlroots-0.20)
+BuildRequires:  pkgconfig(xkbregistry)
+BuildRequires:  pkgconfig(yyjson)
 
 %description
 wf-shell is a repository which contains the various components needed to built a fully functional DE based around wayfire. Currently it has only a GTK-based panel and background client.
@@ -53,7 +59,6 @@ Requires:       %{name} = %{version}
 Development libraries for %{name}
 
 %prep
-echo "`grep %{name}-%{version}.tar.xz %{SOURCE1} | grep -Eo '^[0-9a-f]+'`  %{SOURCE0}" | sha256sum -c
 %autosetup
 
 %build
@@ -72,7 +77,12 @@ install -D -m 0644 wf-shell.ini.example %{buildroot}%{_datadir}/wayfire/wf-shell
 %{_bindir}/wf-*
 %{_bindir}/wayland-logout
 %{_datadir}/wayfire/
+%{_sysconfdir}/pam.d/wf-locker
+%dir %{_sysconfdir}/xdg/xdg-desktop-portal-wlr
+%{_sysconfdir}/xdg/xdg-desktop-portal-wlr/wayfire
+%{_datadir}/applications/wf-locker-pin.desktop
 %{_datadir}/wayfire/wf-shell.ini.example
+%{_datadir}/wf-shell/
 %dir %{_datadir}/icons/hicolor/160x160
 %dir %{_datadir}/icons/hicolor/160x160/apps
 %{_datadir}/icons/*/*/*/*.png

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Aug 03 04:41:48 UTC 2026 - dead_mozay@opensuse.org
+
+- Update to version 0.11.0:
+  * panel: css rule to control fallback icon sizes depending 
+    on position
+  * panel: workspace-switcher: fix 0.11 use of doubles
+  * panel : switcher : fix broken row mode
+  * panel : window-list/workspace-switcher : renamed options
+  * xpdw: escape key closes chooser
+  * util : autohide window : silence compilation warnings
+  * panel: fix menu direction for PopoverMenu too
+
+-------------------------------------------------------------------
 Fri Apr 10 02:54:51 UTC 2026 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Change from wlroot-devel to pkgconfig(wlroots-0.19). 

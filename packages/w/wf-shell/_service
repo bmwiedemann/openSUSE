@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="filename">wf-shell</param>
+    <param name="url">https://github.com/WayfireWM/wf-shell.git</param>
+    <param name="scm">git</param>
+    <param name="version">git-master</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="revision">v0.11.0</param>
+    <param name="changesgenerate">enable</param>
+    <param name="changesauthor">dead_mozay@opensuse.org</param>
+  </service>
+  <service mode="manual" name="set_version"/>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="compression">gz</param>
+    <param name="file">*.tar</param>
+  </service>
+</services>
