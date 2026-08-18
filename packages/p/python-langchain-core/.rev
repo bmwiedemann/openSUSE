@@ -79,4 +79,12 @@ Verified on aarch64: build green for python313 and python314, rpmlint
     <comment>Update to 1.5.5. Upstream adds httpx as an explicit runtime dependency (declared in the spec). %check green: 1987 tests (py313) / 2010 (py314), rpmlint 0 badness.</comment>
     <requestid>1371288</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>a02e84be4700aad1d4e0f49747dc012c</srcmd5>
+    <version>1.5.5</version>
+    <time>1787063841</time>
+    <user>anag_factory</user>
+    <comment>Reproducibility fix: move the hash-based bytecode recompilation and fdupes from %check to %install, so the package content no longer varies when built with --nocheck (boo#1227364). Same fix bmwiedemann applied to python-langgraph in sr#1371636.</comment>
+    <requestid>1371668</requestid>
+  </revision>
 </revisionlist>
