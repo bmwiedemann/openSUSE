@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Aug  4 04:02:42 UTC 2026 - pallas wept <pallaswept@proton.me>
+
+- Update to version 5.12
+  * LaTeX input and output (using latex() function, "$...$" syntax,
+    and "to latex" or "-latex" in qalc)
+  * Solve ax^b+cd^x=0 for real x
+  * Solve equations with absolute value and complex x (xabs(x)=a,
+    x^2abs(x)=a, and af(x)+babs(x)=c)
+  * Improve simplification of a^(c/d)/b^(c/d) in exact mode (e.g.
+    cbrt(12)/cbrt(4)=cbrt(3))
+  * Apply logical and bitwise operation entrywise to vectors and matrices
+  * Allow symbols with suffix when input using backslash (e.g. \x_n
+    = "x_n", with n shown as subscript in output)
+  * Add argument for reverse conversion to roman(), bijective()
+    and bcd() functions
+  * Add tsp and tbsp abbreviations, change cup to exactly 240 mL
+    (U.S. legal), and add U.S. customary cup, tablespoon, and teaspoon
+  * Mixed units conversion improvements/fixes
+  * Fix conversion of feet and inches when using ' and " (e.g. 5'2" to cm)
+  * Fix ax+bln(x)=c where sgn(a)!=sgn(b) (only one solution were found)
+  * Fix segfault when calculating limit for expression with sinh or cosh
+    (also affects integrals with infinite lower or upper limit)
+  * Fix RPN syntax for expressions with multiple functions
+  * Add max history option to configure maximum number of expressions
+    saved in history
+  * Minor bug fixes and feature enhancements
+
+-------------------------------------------------------------------
 Tue Jun  2 05:45:26 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - Update to version 5.11
