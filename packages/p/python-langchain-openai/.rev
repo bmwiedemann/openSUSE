@@ -89,4 +89,12 @@ passed (up from 261; the new ones are the compatibility-shim tests), same
     <comment>Update to 1.5.1. Also re-enables the chat-model unit test module that was fully ignored for a single function-level langchain-tests import; 503 tests pass per flavour, rpmlint 0 badness.</comment>
     <requestid>1371289</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>f0496e2f26164f5c4eb04e4545d59a23</srcmd5>
+    <version>1.5.1</version>
+    <time>1787063839</time>
+    <user>anag_factory</user>
+    <comment>Reproducibility fix: move the hash-based bytecode recompilation and fdupes from %check to %install, so the package content no longer varies when built with --nocheck (boo#1227364). Same fix bmwiedemann applied to python-langgraph in sr#1371636.</comment>
+    <requestid>1371666</requestid>
+  </revision>
 </revisionlist>
