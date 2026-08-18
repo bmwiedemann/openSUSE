@@ -61,6 +61,9 @@ runs, crons and the persistent store.
 
 %install
 %pyproject_install
+# Recompile the installed modules as hash-based bytecode to avoid
+# python-bytecode-inconsistent-mtime from the reproducibility-clamped .py mtimes.
+%python_expand $python -m compileall -q -f --invalidation-mode=unchecked-hash -o 0 -o 1 -s %{buildroot} %{buildroot}%{$python_sitelib}/langgraph_sdk
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -69,10 +72,6 @@ runs, crons and the persistent store.
 # langgraph package); it is excluded upstream via the "integration" marker but
 # still imported at collection time, so skip the directory outright.
 %pytest tests --ignore=tests/integration
-# Recompile the installed modules as hash-based bytecode to avoid
-# python-bytecode-inconsistent-mtime from the reproducibility-clamped .py mtimes.
-%python_expand $python -m compileall -q -f --invalidation-mode=unchecked-hash -o 0 -o 1 -s %{buildroot} %{buildroot}%{$python_sitelib}/langgraph_sdk
-%python_expand %fdupes %{buildroot}%{$python_sitelib}/langgraph_sdk
 
 %files %{python_files}
 %doc README.md

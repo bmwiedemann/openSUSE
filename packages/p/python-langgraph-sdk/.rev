@@ -7,4 +7,12 @@
     <comment>New package python-langgraph-sdk. Part of the langchain/langgraph stack (dependency cone for skillspector): interdependent NEW packages + the langsmith bump that must be co-staged together — please stage with the sibling devel:languages:python SRs by pluskalm or builds go unresolvable.</comment>
     <requestid>1362382</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>59c737984bdfec8c039148e1de16b067</srcmd5>
+    <version>0.4.2</version>
+    <time>1787063845</time>
+    <user>anag_factory</user>
+    <comment>Reproducibility fix: move the hash-based bytecode recompilation and fdupes from %check to %install, so the package content no longer varies when built with --nocheck (boo#1227364). Same fix bmwiedemann applied to python-langgraph in sr#1371636.</comment>
+    <requestid>1371671</requestid>
+  </revision>
 </revisionlist>
