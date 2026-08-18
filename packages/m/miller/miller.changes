@@ -1,4 +1,143 @@
 -------------------------------------------------------------------
+Mon Aug 10 14:33:31 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 6.21.0+git20260810.375a0af47:
+  * Post-6.21.0 release: back to 6.21.0-dev
+  * tools/release.sh: drop --notes-file, use gh's auto-generated release notes
+  * Prepare 6.21.0 release
+  * Bump github.com/klauspost/compress from 1.19.1 to 1.19.2 (#2229)
+  * Bump the codeql-action group with 3 updates (#2227)
+  * Bump the codeql-action group with 3 updates (#2226)
+  * Bump the codeql-action group with 3 updates (#2225)
+  * Bump github.com/modelcontextprotocol/go-sdk from 1.6.1 to 1.7.0 (#2224)
+  * Bump github.com/mattn/go-isatty from 0.0.23 to 0.0.24 (#2222)
+  * Bump the codeql-action group with 3 updates (#2220)
+  * Bump actions/checkout from 7.0.0 to 7.0.1 (#2219)
+  * Bump github.com/klauspost/compress from 1.19.0 to 1.19.1 (#2218)
+  * Document mkstan/unstan JSON-array-column recipe (#2216)
+  * Bump the codeql-action group with 3 updates (#2217)
+  * update to plans/json-accessors.md
+  * plans/json-accessors.md (#2214)
+  * Bump github.com/mattn/go-isatty from 0.0.22 to 0.0.23 (#2212)
+  * Bump actions/setup-go from 6.5.0 to 7.0.0 (#2213)
+  * Fix mid-stream error-loss race (flaky exit codes on transformer errors) (#2211)
+  * join: add --ignore-empty to skip pairing on empty-string join keys (#1194) (#2210)
+  * Plan for auto-inferring input format from file extension (#1188) (#2208)
+  * plans/exit.md: record final status; defer phase 5; convert stragglers (#2207)
+  * Remove os.Exit callsites below the entrypoint: phase 4 (plans/exit.md) (#2205)
+  * Plan for r-strings (#2206)
+  * Remove os.Exit callsites below the entrypoint: phase 3 (plans/exit.md) (#2204)
+  * Fix recutils parser for empty-valued fields with "+"-continuation (#2203)
+  * Remove `os.Exit` callsites below the entrypoint: phase 2 (#2202)
+  * Add GNU recutils (.rec) as a Miller I/O format (#2201)
+  * Remove `os.Exit` callsites below the entrypoint: phase 1 (#2198)
+  * Update exit.md with issue reference
+  * plans/recutils.md (#2199)
+  * neaten
+  * Treat YAML like JSON for auto-flatten/auto-unflatten (#2196)
+  * plans/exit.md (#2197)
+  * Remove stale checked-in docs/src/mlr.1 (#2194)
+  * Document that NF is dynamic within a record (#2192) (#2193)
+  * Add bootstrap-ci verb for bootstrap-resampling confidence intervals (#1670) (#2189)
+  * Add named profile sections to .mlrrc, selected via --profile / -P (#358) (#2191)
+  * Allow more `step -a` options to specify the number of records back (#1002) (#2190)
+  * Add sliding-window mode to `mlr stats1` via `-w {n}` (#1017) (#2186)
+  * Add docs recipe: updating a CSV database file from a partial download (#826) (#2153)
+  * Add docs recipe for transposing very wide CSV data (#321) (#2141)
+  * Group codeql-action Dependabot bumps to keep init/autobuild/analyze in sync
+  * Bump github/codeql-action/analyze from 4.36.3 to 4.37.0 (#2185)
+  * Bump github/codeql-action/autobuild from 4.36.3 to 4.37.0 (#2184)
+  * Bump github/codeql-action/init from 4.36.3 to 4.37.0 (#2181)
+  * Bump golang.org/x/text from 0.39.0 to 0.40.0 (#2180)
+  * Bump golang.org/x/term from 0.44.0 to 0.45.0 (#2182)
+  * Bump golang.org/x/sys from 0.46.0 to 0.47.0 (#2183)
+  * Support %a %A %e %h %c %x %X in strptime (#1518) (#2179)
+  * README.md
+  * Add `mlr rank` verb (#2178)
+  * Add sparkline DSL function and mlr sparkline verb (#166) (#2177)
+  * Note that CI lint cache can go stale independent of local make lint (#2176)
+  * Bump golang.org/x/crypto from 0.45.0 to 0.52.0 (#2174)
+  * Add how-to-lint rules to `README-dev.md` and `CLAUDE.md` (#2175)
+  * Publish an epub of the docs on Read the Docs (#1835) (#2166)
+  * Bump golang.org/x/text from 0.38.0 to 0.39.0 (#2173)
+  * DKVPX reader: honor --ifs and --ips instead of hard-coding comma and equals (#2172)
+  * join: exit nonzero when the left file cannot be read (#2169) (#2171)
+  * Document --lazy-quotes semantics for unmatched opening quotes (#999) (#2165)
+  * Docs: recipe for merging several files on a common key when column names collide (#2156)
+  * Docs: worked example for combining CSV files with different headers (#1200) (#2148)
+  * Docs: add SQL-style left/right/inner/full-outer join examples (#2142)
+  * Document how to preprocess the left file of a join (#347) (#2157)
+  * docs: add timezone-troubleshooting section for TZ/tzdata errors (#2154)
+  * Right-align headers over all-numeric columns with --right-align-numeric (#380) (#2167)
+  * Cross-reference head -n 1 -g from uniq for keep-all-columns dedupe (#1075) (#2158)
+  * Exit 0 when skip-trivial-records is used and CSV/TSV ends with blank lines (#1535) (#2146)
+  * Fix dedupe-field-names clobbering values on ragged short rows (#1997) (#2144)
+  * DSL format function: support 1-based positional placeholders like {1} (#1650) (#2160)
+  * reorder -r: group matched fields by regex order, not record order (#2159)
+  * Add --right-align-numeric for PPRINT and Markdown output (#1503) (#2161)
+
+-------------------------------------------------------------------
+Mon Jul 06 15:40:24 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 6.20.2+git20260705.ac08b072d:
+  * Honor `--ors crlf` for CSV output (#1810) (#2150)
+  * Document meaning of hyphenated field_type values in mlr summary (#1082) (#2149)
+  * Emit valid JSON numbers for floats like 004.56; document CSV quoting vs. type inference (#2151)
+  * Copy records handed to async file-writers in tee and split verbs (#1671) (#2152)
+  * join: document --icsv etc. as accepted left-file format flags (#444) (#2143)
+  * uniq: document that -g/-f output-field order follows the command line (#962) (#2145)
+  * CONTRIBUTING.md
+  * tools/release.sh + how-to-release.md.in: guard against tag-before-bump ordering bug (#2137)
+  * Post-6.20.2 release: back to 6.20.2-dev
+  * fix timing issue in tools/release.sh preflight step
+  * Prepare 6.20.2 release
+  * 6.20.1-dev
+  * glossary entries for AI
+  * More AI skill/MCP docs (#2140)
+  * Update to MCP docs (#2139)
+  * Miller 6.20.1 (#2138)
+  * tools/release.sh: fix idempotency gaps in branch checks, SRPM reuse, release notes (#2136)
+  * Post-6.20.0 release: back to 6.20.0-dev
+  * Prepare 6.20.0 release
+  * docs: add "Miller and AI" page (#2098) (#2134)
+  * Add `mlr mcp` MCP server + agent playbook, with a `--no-shell` gate (#2098 PR7) (#2133)
+  * Add mlr describe schema/shape introspection verb (#2098 PR6) (#2132)
+  * Add DSL validate/dry-run: put/filter --explain (#2098 PR5) (#2131)
+  * Add `--errors-json` structured error output (#2098) (#2113)
+  * Tier-2 structured verb options: OptionSpec, initial migration (#2098) (#2111)
+  * Add a first-class bytes type to the DSL, with `b"..."` literals and base64/hex codecs (#2122)
+  * Lint round 5+6: staticcheck and errcheck to zero (#2130)
+  * Fix govet lint findings; fix masked unset-on-array error path (#2129)
+  * typofix
+  * Page-refactor for CSV/JSON troubleshooting (#2128)
+  * docs: add CSV and JSON troubleshooting tips (#2123)
+  * Enable windows-arm64 releases. (#2127)
+  * Bump github/codeql-action/autobuild from 4.36.2 to 4.36.3 (#2126)
+  * Bump github/codeql-action/analyze from 4.36.2 to 4.36.3 (#2125)
+  * Bump github/codeql-action/init from 4.36.2 to 4.36.3 (#2124)
+  * Strip dead code from pkg/ (#2121)
+  * docs: document time conversion thread safety (#2115)
+  * Bump github.com/klauspost/compress from 1.18.7 to 1.19.0 (#2120)
+  * Update snapcore/action-build to node24 SHA, drop unused matrix (#2119)
+  * Bump goreleaser/goreleaser-action from 7.2.2 to 7.2.3 (#2116)
+  * Bump github.com/klauspost/compress from 1.18.6 to 1.18.7 (#2117)
+  * Bump golangci/golangci-lint-action from 9.2.1 to 9.3.0 (#2118)
+  * Bump actions/cache from 6.0.0 to 6.1.0 (#2114)
+  * Convert if/else-if chains to typed switch statements (staticcheck QF1003) (#2112)
+  * Next batch of lint fixes (#2110)
+  * Add JSON index and `mlr which` capability router (#2098) (#2107)
+  * Next batch of lint fixes (#2108)
+  * Switch to `--as-json` (#2106)
+  * Add machine-readable help catalog: mlr help --json (#2098) (#2099)
+  * Bump actions/checkout from 6.0.1 to 7.0.0 (#2104)
+  * Bump actions/setup-go from 6.4.0 to 6.5.0 (#2105)
+  * Add roadmap doc for making Miller AI-friendly (#2098) (#2103)
+  * ci: add golangci-lint workflow (#2076)
+  * Add long-over `--md` flag (#2100)
+  * Bump actions/cache from 5.0.5 to 6.0.0 (#2101)
+  * Bump actions/setup-go from 6.4.0 to 6.5.0 (#2102)
+
+-------------------------------------------------------------------
 Sun Jun 21 19:23:58 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to version 6.19.0+git20260621.299636038:

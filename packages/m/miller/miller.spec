@@ -17,7 +17,7 @@
 
 
 Name:           miller
-Version:        6.19.0+git20260621.299636038
+Version:        6.21.0+git20260810.375a0af47
 Release:        0
 Summary:        Name-indexed data processing tool
 # c/lib/netbsd_strptime.c is BSD-4-Clause
