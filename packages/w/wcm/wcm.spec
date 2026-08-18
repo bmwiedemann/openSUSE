@@ -1,7 +1,7 @@
 #
 # spec file for package wcm
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define major_ver 0.10
+%define major_ver 0.11
 %define minor_ver 0
 Name:           wcm
 Version:        %{major_ver}.%{minor_ver}
@@ -29,7 +29,7 @@ Source1:        https://github.com/WayfireWM/%{name}/releases/download/v%{versio
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  meson
-BuildRequires:  pkgconfig(wlroots-0.19) 
+BuildRequires:  pkgconfig(fmt)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(gtkmm-3.0)
 BuildRequires:  pkgconfig(libevdev)
@@ -39,12 +39,15 @@ BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(wf-config) >= %{major_ver}
 BuildRequires:  pkgconfig(wf-shell) >= %{major_ver}
+BuildRequires:  pkgconfig(wlroots-0.20)
 BuildRequires:  pkgconfig(xkbregistry)
 Requires:       wayfire >= %{major_ver}
 Requires:       wdisplays >= %{major_ver}
 
 %description
 Wayfire Config Manager https://wayfire.org/.
+
+%lang_package
 
 %prep
 echo "`grep %{name}-%{version}.tar.xz %{SOURCE1} | grep -Eo '^[0-9a-f]+'`  %{SOURCE0}" | sha256sum -c
@@ -57,6 +60,7 @@ echo "`grep %{name}-%{version}.tar.xz %{SOURCE1} | grep -Eo '^[0-9a-f]+'`  %{SOU
 %install
 %meson_install
 %fdupes %{buildroot}/%{_datadir}
+%find_lang %{name}
 
 %check
 %meson_test
@@ -64,9 +68,9 @@ echo "`grep %{name}-%{version}.tar.xz %{SOURCE1} | grep -Eo '^[0-9a-f]+'`  %{SOU
 %files
 %license LICENSE
 %{_bindir}/%{name}
-%dir %{_datadir}/wcm/
-%{_datadir}/wcm/icons
-%{_datadir}/icons/wcm.svg
 %{_datadir}/applications/*.desktop
+%{_datadir}/icons/*/*/*/*.svg
+
+%files lang -f %{name}.lang
 
 %changelog

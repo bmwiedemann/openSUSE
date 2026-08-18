@@ -37,4 +37,12 @@ in the LXQt environment</comment>
   * Don't show 'not found' icon for plugins without an icon.</comment>
     <requestid>1345715</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d5c617c1bc36c8e368ff18fd13110a5e</srcmd5>
+    <version>0.11.0</version>
+    <time>1787063880</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1371737</requestid>
+  </revision>
 </revisionlist>

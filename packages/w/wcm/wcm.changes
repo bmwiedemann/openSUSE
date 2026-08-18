@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Aug 18 08:34:11 UTC 2026 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.11.0:
+  * Fix typo in desktop file.
+  * Patch to add cli option for launching wcm directly to plugins.
+  * Use default app-id for .desktop file name.
+  * Make wcm single instance.
+  * Do not bundle wdisplays by default for packaging reasons.
+  * Get rid of redundant wdisplays subproject.
+  * Don't show 'not found' icon for plugins without an icon.
+  * add internationalisation.
+
+-------------------------------------------------------------------
 Thu Apr  9 23:35:10 UTC 2026 - Shawn Dunn <sfalken@opensuse.org>
 
 - Change from wlroot-devel to pkgconfig(wlroots-0.19)
