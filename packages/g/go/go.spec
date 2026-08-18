@@ -26,7 +26,7 @@
 %endif
 
 Name:           go
-Version:        1.26
+Version:        1.27
 # Version must always be a valid golang(API) version
 %define api_version %{version}
 Release:        0

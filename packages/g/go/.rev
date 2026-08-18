@@ -1058,4 +1058,13 @@ go#29903 crypto/elliptic: CPU DoS vulnerability affecting P-521 and P-384 (forwa
     <comment>- Enable go-race on riscv64 (forwarded request 1370000 from Andreas_Schwab)</comment>
     <requestid>1370074</requestid>
   </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>74d0aa7a051809f66b4e72b88e597318</srcmd5>
+    <version>1.27</version>
+    <time>1787063745</time>
+    <user>anag_factory</user>
+    <comment>- Update to current stable go1.27
+  Refs boo#1272545 go1.27 release tracking (forwarded request 1371246 from jfkw)</comment>
+    <requestid>1371247</requestid>
+  </revision>
 </revisionlist>

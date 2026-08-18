@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 14 14:06:31 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to current stable go1.27
+  Refs boo#1272545 go1.27 release tracking
+
+-------------------------------------------------------------------
 Thu Aug  6 09:06:14 UTC 2026 - Andreas Schwab <schwab@suse.de>
 
 - Enable go-race on riscv64
