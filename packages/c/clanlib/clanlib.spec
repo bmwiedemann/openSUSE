@@ -67,6 +67,7 @@ Requires:       pkgconfig(alsa)
 Requires:       pkgconfig(fontconfig)
 Requires:       pkgconfig(gl)
 Requires:       pkgconfig(x11)
+Requires:       pkgconfig(xinerama)
 
 %description    devel
 ClanLib delivers a platform independent interface to write games with.

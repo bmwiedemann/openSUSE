@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 10 17:31:56 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- clanlib-devel requires pkgconfig(xinerama). clanDisplay.pc names
+  -lXinerama in Libs:, so anything that links against clanDisplay needs
+  libXinerama-devel present; methane failed to link without it.
+
+-------------------------------------------------------------------
 Wed Nov  5 00:26:14 UTC 2025 - Cristian Rodríguez <crrodriguez@opensuse.org>
 
 - Fix build failure, skip running buggy ./autogen.sh, run autoreconf 
