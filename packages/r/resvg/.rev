@@ -7,4 +7,12 @@
     <comment>Hi. I would like to add this package to openSUSE:Factory. Fuzzel will default to this backend in the next release and will remove other backends. </comment>
     <requestid>1334660</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>17821e49db2ecb03ce42f8680d13c343</srcmd5>
+    <version>0.48.1</version>
+    <time>1787063776</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1371610</requestid>
+  </revision>
 </revisionlist>

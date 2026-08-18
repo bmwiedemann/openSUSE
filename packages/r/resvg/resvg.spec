@@ -1,7 +1,7 @@
 #
 # spec file for package resvg
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,17 +15,17 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define soname  0
+%define soname  0_48
 %bcond_without check
 Name:           resvg
-Version:        0.47.0
+Version:        0.48.1
 Release:        0
 Summary:        SVG rendering library
 License:        Apache-2.0 OR MIT
 Group:          Productivity/Graphics/Convertors
 URL:            https://github.com/linebender/resvg
-Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        vendor.tar.zst
+Source0:        %{url}/releases/download/v%{version}/%{name}-%{version}.tar.xz
+BuildRequires:  cargo-c
 BuildRequires:  cargo-packaging
 BuildRequires:  zstd
 ExclusiveArch:  %{rust_arches}
@@ -91,21 +91,22 @@ This package contains development files for %{name}.
 It contains static libraries for -static linking which is highly discouraged.
 
 %prep
-%autosetup -p1 -a1
+%autosetup -p1
+# 'config' is deprecated in favor of 'config.toml'
+mv .cargo/config{,.toml} || :
 
 %build
-%global build_rustflags  -Clink-arg=-Wl,-z,relro,-z,now,-soname,libresvg.so.%{soname} -C debuginfo=2 -C strip=none
-%{cargo_build} --all
+%{cargo_build} --all-features -p resvg -p usvg
+cargo cbuild %{?_smp_mflags} --offline --release --all-features -p resvg-capi
 
 %install
-#%%{cargo_install}
 install -Dm 0755 ./target/release/%{name} %{buildroot}%{_bindir}/%{name}
 install -Dm 0755 ./target/release/usvg %{buildroot}%{_bindir}/usvg
-install -Dm 0755 ./target/release/lib%{name}.so %{buildroot}%{_libdir}/lib%{name}.so.%{version}
-ln -sf lib%{name}.so.%{version} %{buildroot}%{_libdir}/lib%{name}.so.%{soname}
-ln -sf lib%{name}.so.%{version} %{buildroot}%{_libdir}/lib%{name}.so
-install -Dm 0644 ./target/release/lib%{name}.a %{buildroot}%{_libdir}/lib%{name}.a
-install -Dm 0644 ./crates/c-api/*.h -t %{buildroot}%{_includedir}/
+cargo cinstall --offline --all-features --verbose -p resvg-capi \
+    --destdir=%{buildroot} --prefix=%{_prefix}
+install -Dm 0644 ./crates/c-api/ResvgQt.h -t %{buildroot}%{_includedir}/%{name}/
+ln -sf %{name}/%{name}.h %{buildroot}%{_includedir}/%{name}.h
+ln -sf %{name}/ResvgQt.h %{buildroot}%{_includedir}/ResvgQt.h
 
 %if %{with check}
 %check
@@ -127,8 +128,12 @@ install -Dm 0644 ./crates/c-api/*.h -t %{buildroot}%{_includedir}/
 
 %files devel
 %{_libdir}/lib%{name}.so
+%dir %{_includedir}/%{name}
+%{_includedir}/%{name}/%{name}.h
+%{_includedir}/%{name}/ResvgQt.h
 %{_includedir}/%{name}.h
 %{_includedir}/ResvgQt.h
+%{_libdir}/pkgconfig/%{name}.pc
 
 %files devel-static
 %{_libdir}/lib%{name}.a

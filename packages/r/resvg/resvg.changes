@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug  7 07:32:23 UTC 2026 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to version 0.48.1
+  * resvg-0.*.0.tar.xz is a sources archive with vendored Rust dependencies
+  * resvg-explorer-extension.exe is an SVG thumbnailer for Windows Explorer
+
+-------------------------------------------------------------------
 Tue Feb 24 06:28:03 UTC 2026 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Cleanup specfile:
