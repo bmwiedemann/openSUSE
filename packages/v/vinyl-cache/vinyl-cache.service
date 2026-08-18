@@ -1,5 +1,5 @@
 [Unit]
-Description=Varnish HTTP accelerator/reverse proxy
+Description=Vinyl HTTP accelerator/reverse proxy
 After=network.target
 
 [Service]
@@ -16,10 +16,9 @@ ProtectKernelLogs=true
 ProtectControlGroups=true
 RestrictRealtime=true
 # end of automatic additions 
-EnvironmentFile=/etc/sysconfig/varnish
-PIDFile=/var/run/varnishd.pid
-ExecStart=/usr/sbin/varnishd -P /var/run/varnishd.pid -F $VARNISHD_PARAMS
-ExecReload=/usr/sbin/varnish_reload_vcl
+EnvironmentFile=/etc/sysconfig/vinyl-cache
+ExecStart=/usr/sbin/vinyld -F $VC_PARAMS
+ExecReload=/usr/sbin/vinyl-cache_reload_vcl
 KillMode=mixed
 TasksMax=16384
 

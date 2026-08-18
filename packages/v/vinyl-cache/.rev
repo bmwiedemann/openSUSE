@@ -23,4 +23,13 @@
     <comment>- Add more build requirements to fix a build failure on Leap 16.x.</comment>
     <requestid>1369004</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>626b5e8e137706d89e48384b447ab2dd</srcmd5>
+    <version>9.0.1</version>
+    <time>1787063910</time>
+    <user>anag_factory</user>
+    <comment>- Make systemd units and sysconfig fragment point to the right
+  executables names. [boo#1275151]</comment>
+    <requestid>1371774</requestid>
+  </revision>
 </revisionlist>

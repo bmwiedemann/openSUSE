@@ -1,11 +1,14 @@
 #!/bin/bash -e
 
+cf="/etc/sysconfig/vinyl-cache"
+if [ -f "$cf" ]; then
+	. "$cf"
+fi
 # Generate a unique timestamp ID for this version of the VCL
 TIME=$(date +%s)
 
-vadm="varnishadm -S /var/cache/varnish/varnishd/_.secret -T 127.0.0.1:6082"
+vadm="/usr/sbin/vinyladm -S /var/lib/vinyl-cache/vinyld/_.secret -T [::1]:6082"
 # Load the file into memory
-$vadm vcl.load varnish_$TIME /etc/varnish/vcl.conf
-
-# Active this Varnish config
-$vadm vcl.use varnish_$TIME
+$vadm vcl.load "vc_$TIME" /etc/vinyl-cache/vcl.conf
+# Active this config
+$vadm vcl.use "vc_$TIME"

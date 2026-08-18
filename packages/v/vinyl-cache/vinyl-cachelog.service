@@ -1,6 +1,6 @@
 [Unit]
-Description=Varnish log generator
-Requires=varnish.service
+Description=vinyl-cache log generator
+Requires=vinyl-cache.service
 #After= is not required
 
 [Service]
@@ -17,9 +17,9 @@ ProtectKernelLogs=true
 ProtectControlGroups=true
 RestrictRealtime=true
 # end of automatic additions 
-EnvironmentFile=/etc/sysconfig/varnish
-PIDFile=/var/run/varnishlog.pid
-ExecStart=/usr/sbin/varnishncsa -P /var/run/varnishlog.pid $VARNISHLOG_PARAMS
+User=vinyl-cache
+EnvironmentFile=/etc/sysconfig/vinyl-cache
+ExecStart=/usr/sbin/vinylncsa $VL_PARAMS
 
 [Install]
 WantedBy=multi-user.target
