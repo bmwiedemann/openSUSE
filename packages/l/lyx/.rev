@@ -1003,4 +1003,22 @@
   ANNOUNCE or https://www.lyx.org/announce/2_5_1.txt</comment>
     <requestid>1349031</requestid>
   </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>6b7fc3829c0dca5cd537077a5a877666</srcmd5>
+    <version>2.5.2</version>
+    <time>1787063761</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.5.2:
+  * Most important are security fixes, among which:
+    + New consent authorization gate for unpatched external tools
+      processing gate prompts before running a code-capable bib/index tools
+           (biber/xindy/xindex) on an untrusted document,
+           The real fixes are upstream (biber 2.22, xindex 1.07, xindy from up-to-date
+           TL tree), while the gate is LyX's interim guard.
+           For biber 2.22 the gate automatically relaxes to no-op.
+      xindex version check relaxing the gate above.
+  * Details about this and other fixes can be found in the included
+    ANNOUNCE or https://www.lyx.org/announce/2_5_2.txt</comment>
+    <requestid>1371594</requestid>
+  </revision>
 </revisionlist>
