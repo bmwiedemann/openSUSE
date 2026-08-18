@@ -1,7 +1,7 @@
 #
 # spec file for package python-typing_extensions
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,13 +27,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-typing_extensions%{psuffix}
-Version:        4.15.0
+Version:        4.16.0
 Release:        0
 Summary:        Backported and Experimental Type Hints for Python 3.8+
 License:        Python-2.0
 URL:            https://github.com/python/typing_extensions
 Source0:        https://files.pythonhosted.org/packages/source/t/typing_extensions/typing_extensions-%{version}.tar.gz
-Patch1:         py314-fix-tests.patch
+# PATCH-FIX-UPSTREAM remove-obsolete-literal-deduplication-assertion.patch gh#python/typing_extensions#785
+Patch1:         remove-obsolete-literal-deduplication-assertion.patch
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module flit-core >= 3.4 with %python-flit-core < 4}
 BuildRequires:  %{python_module pip}

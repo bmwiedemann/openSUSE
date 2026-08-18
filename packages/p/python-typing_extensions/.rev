@@ -380,4 +380,41 @@
     <comment>- add py314-fix-tests.patch to fix tests with python 3.14</comment>
     <requestid>1320781</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>7c2be1e897c5f5a81857debb625d6a1c</srcmd5>
+    <version>4.16.0</version>
+    <time>1787063719</time>
+    <user>anag_factory</user>
+    <comment>- Drop not needed patch py314-fix-tests.patch
+- Add upstream patch
+  remove-obsolete-literal-deduplication-assertion.patch
+  (gh#python/typing_extensions#785, bsc#1274786)
+- Update to 4.16.0:
+  * Avoid a DeprecationWarning when deprecated is applied to a
+    coroutine function on Python 3.14.0.
+  * Make `typing_extensions.TypeAliasType`'s `__module__` attribute
+    writable.  Backport of CPython PR [#149172](https://github.com/python/cpython/pull/149172).
+  * Fix setting of `__required_keys__` and `__optional_keys__` when
+    inheriting keys with the same name.
+  * Add support for `AsyncIterator`, `io.Reader`, `io.Writer` and
+    `os.PathLike` protocols as bases for other protocols.
+  * Fix incorrect behaviour on Python 3.9 and Python 3.10 that meant
+    that calling `isinstance` with
+    `typing_extensions.Concatenate[...]` or
+    `typing_extensions.Unpack[...]` as the first argument could have a
+    different result in some situations depending on whether or not a
+    profiling function had been set using `sys.setprofile`. This
+    affected both CPython and PyPy implementations.  Patch by Brian
+    Schubert.
+  * Fix `__init_subclass__()` behavior in the presence of multiple
+    inheritance involving an `@deprecated`*decorated base class.
+    Backport of CPython PR [#138210](https://github.com/python/cpython/pull/138210)
+    by Brian Schubert.
+  * Raise `TypeError` when attempting to subclass
+    `typing_extensions.ParamSpec` on Python 3.9. The `typing`
+    implementation has always raised an error, and the
+    `typing_extensions` implementation has raised an error on Python
+    3.10+ since `typing_extensions` v4.6.0. Patch by Brian Schubert.</comment>
+    <requestid>1370852</requestid>
+  </revision>
 </revisionlist>
