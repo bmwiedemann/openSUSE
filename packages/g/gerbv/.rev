@@ -137,4 +137,13 @@ http://lists.opensuse.org/opensuse-factory/2012-12/msg00538.html</comment>
     <comment></comment>
     <requestid>1350660</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>f82a53827fdf112b78e0b2edf0bfbbb0</srcmd5>
+    <version>2.13.0</version>
+    <time>1787063905</time>
+    <user>anag_factory</user>
+    <comment>- Patch gerbv-remove-unused-code.patch added to fix build for
+  Tumbleweed (forwarded request 1370356 from wkazubski)</comment>
+    <requestid>1371767</requestid>
+  </revision>
 </revisionlist>

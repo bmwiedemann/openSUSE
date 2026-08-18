@@ -27,6 +27,7 @@ Group:          Productivity/Scientific/Electronics
 URL:            http://gerbv.geda-project.org/
 Source0:        https://github.com/gerbv/gerbv/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch1:         gerbv-build-with-g++-13.patch
+Patch2:         gerbv-remove-unused-code.patch
 BuildRequires:  cmake
 %if 0%{?suse_version} >= 1600
 BuildRequires:  gcc-c++
@@ -71,6 +72,9 @@ that use gerbv library.
 %setup -q
 %if 0%{?suse_version} < 1600
 %patch -P 1 -p1
+%endif
+%if 0%{?suse_version} > 1690
+%patch -P 2 -p1
 %endif
 
 %build

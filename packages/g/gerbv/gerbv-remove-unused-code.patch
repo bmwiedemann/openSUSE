@@ -1,0 +1,39 @@
+diff -up gerbv-2.13.0/thirdparty/dxflib/dl_dxf.cpp.aaaa gerbv-2.13.0/thirdparty/dxflib/dl_dxf.cpp
+--- gerbv-2.13.0/thirdparty/dxflib/dl_dxf.cpp.aaaa	2026-08-08 17:20:22.966948995 +0200
++++ gerbv-2.13.0/thirdparty/dxflib/dl_dxf.cpp	2026-08-08 17:21:15.223089071 +0200
+@@ -182,7 +182,7 @@ bool DL_Dxf::in(std::istream& stream,
+  */
+ bool DL_Dxf::readDxfGroups(FILE *fp, DL_CreationInterface* creationInterface) {
+ 
+-    static int line = 1;
++//    static int line = 1;
+ 
+     // Read one group of the DXF file and strip the lines:
+     if (DL_Dxf::getStrippedLine(groupCodeTmp, fp) &&
+@@ -191,7 +191,7 @@ bool DL_Dxf::readDxfGroups(FILE *fp, DL_
+         groupCode = (unsigned int)toInt(groupCodeTmp);
+ 
+         creationInterface->processCodeValuePair(groupCode, groupValue);
+-        line+=2;
++//        line+=2;
+         processDXFGroup(creationInterface, groupCode, groupValue);
+     }
+ 
+@@ -212,7 +212,7 @@ bool DL_Dxf::readDxfGroups(FILE *fp, DL_
+ bool DL_Dxf::readDxfGroups(std::istream& stream,
+                            DL_CreationInterface* creationInterface) {
+ 
+-    static int line = 1;
++//    static int line = 1;
+ 
+     // Read one group of the DXF file and chop the lines:
+     if (DL_Dxf::getStrippedLine(groupCodeTmp, DL_DXF_MAXLINE, stream) &&
+@@ -220,7 +220,7 @@ bool DL_Dxf::readDxfGroups(std::istream&
+ 
+         groupCode = (unsigned int)toInt(groupCodeTmp);
+ 
+-        line+=2;
++//        line+=2;
+         processDXFGroup(creationInterface, groupCode, groupValue);
+     }
+     return !stream.eof();

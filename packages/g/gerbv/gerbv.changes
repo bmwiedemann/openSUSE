@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Aug  8 16:07:23 UTC 2026 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Patch gerbv-remove-unused-code.patch added to fix build for
+  Tumbleweed
+
+-------------------------------------------------------------------
 Sat Mar 21 14:14:01 UTC 2026 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - Update to 2.13.0:
