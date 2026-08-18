@@ -1346,4 +1346,30 @@ varienvironment able.
 </comment>
     <requestid>1370586</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>e613e604af59c8dc9e25e74cb52b903c</srcmd5>
+    <version>0.74.3</version>
+    <time>1787063816</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.74.3:
+  * Performance optimizations for non-ASCII input
+    - ASCII queries are up to 16x faster
+    - Non-ASCII queries are up to 12x faster
+    - Reading accented Latin input is up to 37% faster
+    - Reading CJK input reduces memory use by up to 29%
+    - ASCII input is unaffected
+  * Fixed an image from a preview command being torn apart when
+    its rows are separated by IND instead of newlines, as chafa
+    does under tmux (#4885)
+  * Fixed replace-query corrupting the item text when the query
+    is edited afterwards
+  * fzf no longer turns bracketed paste mode off on exit when the
+    terminal already had it on, which broke pasting in shells
+    that run fzf from a line editor widget (#4887)
+  * Fixed startup blocking on terminals that never answer escape
+    sequences, such as FreeBSD virtual terminals. fzf waited for
+    a reply until a key was pressed, then dropped that keystroke (#2860, #976)
+</comment>
+    <requestid>1371625</requestid>
+  </revision>
 </revisionlist>

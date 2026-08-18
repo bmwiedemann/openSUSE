@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Aug 17 21:27:12 UTC 2026 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to version 0.74.3:
+  * Performance optimizations for non-ASCII input
+    - ASCII queries are up to 16x faster
+    - Non-ASCII queries are up to 12x faster
+    - Reading accented Latin input is up to 37% faster
+    - Reading CJK input reduces memory use by up to 29%
+    - ASCII input is unaffected
+  * Fixed an image from a preview command being torn apart when
+    its rows are separated by IND instead of newlines, as chafa
+    does under tmux (#4885)
+  * Fixed replace-query corrupting the item text when the query
+    is edited afterwards
+  * fzf no longer turns bracketed paste mode off on exit when the
+    terminal already had it on, which broke pasting in shells
+    that run fzf from a line editor widget (#4887)
+  * Fixed startup blocking on terminals that never answer escape
+    sequences, such as FreeBSD virtual terminals. fzf waited for
+    a reply until a key was pressed, then dropped that keystroke (#2860, #976)
+
+-------------------------------------------------------------------
 Tue Aug 11 01:08:27 UTC 2026 - Avindra Goolcharan <avindra@opensuse.org>
 
 - Update to version 0.74.2:
