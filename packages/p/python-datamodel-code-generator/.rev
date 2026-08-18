@@ -7,4 +7,12 @@
     <comment>Required by `python-agent-client-protocol`, which is in turn one of dependencies of `python-mistral-vibe`.</comment>
     <requestid>1327304</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>87aca1d9e198fc241560de7302047a6c</srcmd5>
+    <version>0.72.3</version>
+    <time>1787063854</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1371685</requestid>
+  </revision>
 </revisionlist>
