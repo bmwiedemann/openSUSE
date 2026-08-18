@@ -3159,6 +3159,7 @@ packagesets:
    - openSUSE-release # reason: dvd:openSUSE-release
    - openSUSE-release-appliance-custom # reason: dvd:openSUSE-release
    - openSUSE-release-dvd # reason: dvd:openSUSE-release-dvd
+   - openSUSE-repos-Tumbleweed # reason: dvd:patterns-media-rest_dvd
    - openal-soft-data # reason: dvd:patterns-gnome-gnome
    - opencc-data # reason: dvd:openSUSE-release
    - openconnect # reason: dvd:patterns-gnome-gnome
@@ -3882,6 +3883,7 @@ packagesets:
    - strace # reason: dvd:patterns-kde-kde
    - sudo # reason: dvd:patterns-kde-kde
    - sudo-plugin-python # reason: dvd:patterns-kde-kde
+   - sudo-policy-wheel-auth-self # reason: dvd:patterns-media-rest_dvd
    - suse-fonts # reason: dvd:patterns-gnome-gnome
    - suse-module-tools # reason: dvd:grub2
    - suse-module-tools-scriptlets # reason: dvd:suse-module-tools-scriptlets
@@ -4541,19 +4543,19 @@ packagesets:
    - Mesa-vulkan-device-select # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - MicroOS-release # reason: opensuse_microos:MicroOS-release
    - MicroOS-release-appliance # reason: opensuse_microos:MicroOS-release
-   - ModemManager # reason: opensuse_microos:patterns-microos-base
-   - NetworkManager # reason: opensuse_microos:patterns-microos-base
-   - NetworkManager-bluetooth # reason: opensuse_microos:patterns-microos-base
-   - NetworkManager-branding-openSUSE # reason: opensuse_microos:patterns-microos-base
+   - ModemManager # reason: opensuse_microos:patterns-containers-runtime_podman
+   - NetworkManager # reason: opensuse_microos:patterns-containers-runtime_podman
+   - NetworkManager-bluetooth # reason: opensuse_microos:patterns-containers-runtime_podman
+   - NetworkManager-branding-openSUSE # reason: opensuse_microos:patterns-containers-runtime_podman
    - NetworkManager-openconnect # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - NetworkManager-openvpn # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - NetworkManager-tui # reason: opensuse_microos:patterns-microos-alt_onlyDVD
-   - NetworkManager-wwan # reason: opensuse_microos:patterns-microos-base
+   - NetworkManager-wwan # reason: opensuse_microos:patterns-containers-runtime_podman
    - OpenPrintingPPDs # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - PackageKit # reason: opensuse_microos:patterns-microos-base-packagekit
    - PackageKit-backend-dnf5 # reason: opensuse_microos:patterns-microos-base-packagekit
    - PackageKit-branding-openSUSE # reason: opensuse_microos:patterns-microos-base-packagekit
-   - aaa_base # reason: opensuse_microos:patterns-microos-base
+   - aaa_base # reason: opensuse_microos:patterns-base-hardware
    - aardvark-dns # reason: opensuse_microos:patterns-containers-runtime_podman
    - accounts-qml-module # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - accountsservice # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -4563,11 +4565,11 @@ packagesets:
    - adobe-sourceserifpro-fonts # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - adwaita-fonts # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - aha # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - alts # reason: opensuse_microos:patterns-microos-base
+   - alts # reason: opensuse_microos:patterns-containers-runtime_podman
    - apparmor-parser # reason: opensuse_microos:docker
    - appstream-glib # reason: opensuse_microos_desktop:expansion
    - at-spi2-core # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - attr # reason: opensuse_microos:patterns-microos-ima_evm
+   - attr # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - audit # reason: opensuse_microos:patterns-microos-defaults
    - audit-rules # reason: opensuse_microos:patterns-microos-defaults
    - aurorae6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -4584,34 +4586,34 @@ packagesets:
    - bluez-cups # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - bluez-firmware # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - bolt # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - boost-license1_91_0 # reason: opensuse_microos:patterns-microos-base
-   - branding-openSUSE # reason: opensuse_microos:patterns-microos-base
+   - boost-license1_91_0 # reason: opensuse_microos:patterns-containers-runtime_podman
+   - branding-openSUSE # reason: opensuse_microos:patterns-containers-runtime_podman
    - breeze6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - breeze6-cursors # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - breeze6-decoration # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - breeze6-style # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - breeze6-style-qt5 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - breeze6-wallpapers # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - btrfsmaintenance # reason: opensuse_microos:patterns-microos-base
-   - btrfsprogs # reason: opensuse_microos:patterns-microos-base
-   - btrfsprogs-udev-rules # reason: opensuse_microos:patterns-microos-base
+   - btrfsmaintenance # reason: opensuse_microos:patterns-containers-runtime_podman
+   - btrfsprogs # reason: opensuse_microos:patterns-containers-runtime_podman
+   - btrfsprogs-udev-rules # reason: opensuse_microos:patterns-containers-runtime_podman
    - bubblewrap # reason: opensuse_microos:patterns-microos-onlyDVD
-   - busybox # reason: opensuse_microos:patterns-microos-base
+   - busybox # reason: opensuse_microos:patterns-base-hardware
    - busybox-coreutils # reason: opensuse_microos:patterns-microos-sssd_ldap
    - busybox-grep # reason: opensuse_microos:kernel-default-base
-   - busybox-gzip # reason: opensuse_microos:patterns-microos-base
-   - busybox-hostname # reason: opensuse_microos:patterns-microos-base
-   - busybox-sed # reason: opensuse_microos:patterns-microos-selinux
+   - busybox-gzip # reason: opensuse_microos:patterns-base-hardware
+   - busybox-hostname # reason: opensuse_microos:patterns-containers-runtime_podman
+   - busybox-sed # reason: opensuse_microos:patterns-microos-cloud
    - busybox-xz # reason: opensuse_microos:patterns-microos-cloud
-   - ca-certificates # reason: opensuse_microos:patterns-microos-base
-   - ca-certificates-mozilla # reason: opensuse_microos:patterns-microos-base
+   - ca-certificates # reason: opensuse_microos:patterns-containers-runtime_podman
+   - ca-certificates-mozilla # reason: opensuse_microos:patterns-containers-runtime_podman
    - cantarell-fonts # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - catatonit # reason: opensuse_microos:patterns-containers-runtime_podman
-   - checkpolicy # reason: opensuse_microos:patterns-microos-onlyDVD
-   - chrony # reason: opensuse_microos:patterns-microos-base
-   - chrony-pool-openSUSE # reason: opensuse_microos:patterns-microos-base
-   - cloud-init # reason: opensuse_microos:patterns-microos-cloud
-   - cloud-init-config-MicroOS # reason: opensuse_microos:patterns-microos-cloud
+   - checkpolicy # reason: opensuse_microos:patterns-microos-alt_onlyDVD
+   - chrony # reason: opensuse_microos:patterns-containers-runtime_podman
+   - chrony-pool-openSUSE # reason: opensuse_microos:patterns-containers-runtime_podman
+   - cloud-init # reason: opensuse_microos:patterns-microos-alt_onlyDVD
+   - cloud-init-config-MicroOS # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - cockpit-bridge # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - cockpit-networkmanager # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - cockpit-packagekit # reason: opensuse_microos_desktop:expansion
@@ -4622,38 +4624,38 @@ packagesets:
    - cockpit-ws-selinux # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - compat-usrmerge-tools # reason: opensuse_microos:MicroOS-release
    - conmon # reason: opensuse_microos:patterns-containers-runtime_podman
-   - container-selinux # reason: opensuse_microos:patterns-microos-selinux
+   - container-selinux # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - containerd # reason: opensuse_microos:docker
    - coreutils # reason: opensuse_microos:MicroOS-release
-   - coreutils-systemd # reason: opensuse_microos:patterns-microos-base
-   - cpio # reason: opensuse_microos:patterns-microos-base
+   - coreutils-systemd # reason: opensuse_microos:patterns-containers-runtime_podman
+   - cpio # reason: opensuse_microos:patterns-base-hardware
    - cpp # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - cpp16 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - cracklib # reason: opensuse_microos:patterns-microos-onlyDVD
-   - cracklib-dict-full # reason: opensuse_microos:patterns-microos-onlyDVD
-   - crypto-policies # reason: opensuse_microos:patterns-microos-base
+   - cracklib # reason: opensuse_microos:patterns-microos-alt_onlyDVD
+   - cracklib-dict-full # reason: opensuse_microos:patterns-microos-alt_onlyDVD
+   - crypto-policies # reason: opensuse_microos:patterns-base-hardware
    - cryptsetup # reason: opensuse_microos:patterns-microos-onlyDVD
    - cups # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - cups-client # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - cups-config # reason: opensuse_microos:patterns-microos-onlyDVD
    - cups-filters2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - cups-pk-helper # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - curl # reason: opensuse_microos:patterns-microos-base
-   - cyrus-sasl # reason: opensuse_microos:patterns-microos-sssd_ldap
-   - cyrus-sasl-gssapi # reason: opensuse_microos:patterns-microos-sssd_ldap
+   - curl # reason: opensuse_microos:patterns-containers-runtime_podman
+   - cyrus-sasl # reason: opensuse_microos:patterns-microos-alt_onlyDVD
+   - cyrus-sasl-gssapi # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - dbus-1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - dbus-1-common # reason: opensuse_microos:patterns-microos-base
+   - dbus-1-common # reason: opensuse_microos:patterns-base-hardware
    - dbus-1-tools # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - dbus-broker # reason: opensuse_microos:patterns-microos-base
-   - dbus-broker-block-restart # reason: opensuse_microos:patterns-microos-base
+   - dbus-broker # reason: opensuse_microos:patterns-base-hardware
+   - dbus-broker-block-restart # reason: opensuse_microos:patterns-base-hardware
    - dconf # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - dejavu-fonts # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - desktop-data-openSUSE # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - device-mapper # reason: opensuse_microos:patterns-microos-hardware
-   - dhcp # reason: opensuse_microos:patterns-microos-cloud
-   - dhcp-client # reason: opensuse_microos:patterns-microos-cloud
+   - device-mapper # reason: opensuse_microos:patterns-base-hardware
+   - dhcp # reason: opensuse_microos:patterns-microos-alt_onlyDVD
+   - dhcp-client # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - dialog # reason: opensuse_microos:patterns-microos-alt_onlyDVD
-   - diffutils # reason: opensuse_microos:patterns-microos-base
+   - diffutils # reason: opensuse_microos:patterns-containers-runtime_podman
    - discover6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - discover6-backend-flatpak # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - discover6-backend-fwupd # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -4664,7 +4666,7 @@ packagesets:
    - distrobox # reason: opensuse_microos_desktop:expansion
    - distrobox-bash-completion # reason: opensuse_microos_desktop:expansion
    - distrobox-branding-openSUSE # reason: opensuse_microos_desktop:expansion
-   - dmidecode # reason: opensuse_microos:patterns-microos-cloud
+   - dmidecode # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - dnf-data # reason: opensuse_microos:patterns-microos-base-packagekit
    - docbook-xsl-stylesheets # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - docbook_4 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -4673,27 +4675,27 @@ packagesets:
    - docker-rootless-extras # reason: opensuse_microos:docker-rootless-extras
    - dolphin # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - dolphin-part # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - dosfstools # reason: opensuse_microos:patterns-microos-base
-   - dracut # reason: opensuse_microos:patterns-microos-base
-   - dracut-ima # reason: opensuse_microos:patterns-microos-ima_evm
+   - dosfstools # reason: opensuse_microos:patterns-containers-runtime_podman
+   - dracut # reason: opensuse_microos:patterns-base-hardware
+   - dracut-ima # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - dracut-pcr-signature # reason: opensuse_microos:patterns-microos-onlyDVD
    - dracut-transactional-update # reason: opensuse_microos:patterns-microos-base-packagekit
-   - e2fsprogs # reason: opensuse_microos:patterns-microos-cloud
-   - efibootmgr # reason: opensuse_microos:patterns-microos-onlyDVD
-   - elfutils # reason: opensuse_microos:patterns-microos-base
+   - e2fsprogs # reason: opensuse_microos:patterns-microos-alt_onlyDVD
+   - efibootmgr # reason: opensuse_microos:patterns-microos-alt_onlyDVD
+   - elfutils # reason: opensuse_microos:patterns-base-hardware
    - envsubst # reason: opensuse_microos:patterns-microos-alt_onlyDVD
-   - ethtool # reason: opensuse_microos:patterns-microos-base
-   - evmctl # reason: opensuse_microos:patterns-microos-ima_evm
+   - ethtool # reason: opensuse_microos:patterns-base-hardware
+   - evmctl # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - exfatprogs # reason: opensuse_microos:patterns-microos-onlyDVD
    - falkon # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - falkon-kde # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - fcoe-utils # reason: opensuse_microos:patterns-microos-hardware
+   - fcoe-utils # reason: opensuse_microos:patterns-base-hardware
    - ffmpegthumbs # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - file # reason: opensuse_microos:patterns-microos-base
-   - file-magic # reason: opensuse_microos:patterns-microos-base
+   - file # reason: opensuse_microos:patterns-base-hardware
+   - file-magic # reason: opensuse_microos:patterns-base-hardware
    - filesystem # reason: opensuse_microos:MicroOS-release
-   - fillup # reason: opensuse_microos:patterns-microos-base
-   - findutils # reason: opensuse_microos:patterns-microos-base
+   - fillup # reason: opensuse_microos:patterns-base-hardware
+   - findutils # reason: opensuse_microos:patterns-base-hardware
    - firewalld # reason: opensuse_microos:patterns-microos-onlyDVD
    - flatpak # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - flatpak-kcm6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -4701,22 +4703,22 @@ packagesets:
    - fontconfig # reason: opensuse_microos:patterns-microos-onlyDVD
    - fonts-config # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - fuse-overlayfs # reason: opensuse_microos:patterns-containers-runtime_podman
-   - fuse3 # reason: opensuse_microos:patterns-microos-onlyDVD
+   - fuse3 # reason: opensuse_microos:patterns-containers-runtime_podman
    - fwupd # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - fwupd-efi # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - gawk # reason: opensuse_microos:patterns-microos-base
+   - gawk # reason: opensuse_microos:patterns-base-hardware
    - gcab # reason: opensuse_microos_desktop:expansion
    - gdk-pixbuf-query-loaders # reason: opensuse_microos:patterns-microos-onlyDVD
    - gettext-runtime # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - ghostscript # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - ghostscript-fonts-std # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - gio-branding-openSUSE # reason: opensuse_microos:patterns-microos-base
+   - gio-branding-openSUSE # reason: opensuse_microos:patterns-containers-runtime_podman
    - girepository-1_0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - glib-networking # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - glib2-tools # reason: opensuse_microos:patterns-microos-base
+   - glib2-tools # reason: opensuse_microos:patterns-containers-runtime_podman
    - glibc # reason: opensuse_microos:MicroOS-release
    - glibc-locale # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - glibc-locale-base # reason: opensuse_microos:patterns-microos-base
+   - glibc-locale-base # reason: opensuse_microos:patterns-containers-runtime_podman
    - glycin-loaders # reason: opensuse_microos:patterns-microos-onlyDVD
    - google-carlito-fonts # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - google-noto-coloremoji-fonts # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -4730,10 +4732,10 @@ packagesets:
    - google-noto-sans-tc-fonts # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - google-opensans-fonts # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - google-roboto-fonts # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - gpg2 # reason: opensuse_microos:patterns-microos-base
-   - gptfdisk # reason: opensuse_microos:patterns-microos-cloud
-   - grep # reason: opensuse_microos:patterns-microos-base
-   - growpart # reason: opensuse_microos:patterns-microos-cloud
+   - gpg2 # reason: opensuse_microos:patterns-containers-runtime_podman
+   - gptfdisk # reason: opensuse_microos:patterns-microos-alt_onlyDVD
+   - grep # reason: opensuse_microos:patterns-base-hardware
+   - growpart # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - grub2 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - grub2-branding-openSUSE # reason: opensuse_microos_desktop:expansion
    - grub2-common # reason: opensuse_microos:patterns-microos-alt_onlyDVD
@@ -4755,33 +4757,33 @@ packagesets:
    - gvfs-backends # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - gzip # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - hack-fonts # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - health-checker # reason: opensuse_microos:patterns-microos-base
-   - health-checker-plugins-MicroOS # reason: opensuse_microos:patterns-microos-base
-   - hicolor-icon-theme # reason: opensuse_microos:patterns-microos-base
+   - health-checker # reason: opensuse_microos:patterns-containers-runtime_podman
+   - health-checker-plugins-MicroOS # reason: opensuse_microos:patterns-containers-runtime_podman
+   - hicolor-icon-theme # reason: opensuse_microos:patterns-containers-runtime_podman
    - hicolor-icon-theme-branding-openSUSE # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - hostname # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - hplip-common # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - hplip-cups # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - hplip-driver-hpcups # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - hwdata # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - hwinfo # reason: opensuse_microos:patterns-microos-hardware
+   - hwinfo # reason: opensuse_microos:patterns-base-hardware
    - hyper-v # reason: opensuse_microos:patterns-microos-onlyDVD
    - ibm-plex-mono-fonts # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - iproute2 # reason: opensuse_microos:patterns-microos-base
+   - iproute2 # reason: opensuse_microos:patterns-base-hardware
    - iptables # reason: opensuse_microos:docker
-   - iputils # reason: opensuse_microos:patterns-microos-base
-   - irqbalance # reason: opensuse_microos:patterns-microos-hardware
+   - iputils # reason: opensuse_microos:patterns-containers-runtime_podman
+   - irqbalance # reason: opensuse_microos:patterns-base-hardware
    - iscsiuio # reason: opensuse_microos:patterns-microos-onlyDVD
    - iso-codes # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - iso_ent # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - jeos-firstboot # reason: opensuse_microos:patterns-microos-alt_onlyDVD
-   - jq # reason: opensuse_microos:patterns-microos-onlyDVD
+   - jq # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - kaccounts-integration # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - kaccounts-providers # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - kactivitymanagerd6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - kate # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - kate-plugins # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - kbd # reason: opensuse_microos:patterns-microos-base
+   - kbd # reason: opensuse_microos:patterns-base-hardware
    - kconf_update6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - kde-cli-tools6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - kde-gtk-config6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -4791,44 +4793,44 @@ packagesets:
    - kdenetwork-filesharing # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - kdeplasma6-addons # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - kdialog # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - kdump # reason: opensuse_microos:patterns-microos-base
+   - kdump # reason: opensuse_microos:patterns-containers-runtime_podman
    - kernel-default # reason: opensuse_microos:patterns-microos-onlyDVD
    - kernel-default-base # reason: opensuse_microos:patterns-microos-alt_onlyDVD
-   - kernel-firmware-all # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - kernel-firmware-amdgpu # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - kernel-firmware-ath10k # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - kernel-firmware-ath11k # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - kernel-firmware-ath12k # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - kernel-firmware-atheros # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - kernel-firmware-bluetooth # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - kernel-firmware-bnx2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - kernel-firmware-brcm # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - kernel-firmware-chelsio # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - kernel-firmware-dpaa2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - kernel-firmware-i915 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - kernel-firmware-intel # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - kernel-firmware-iwlwifi # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - kernel-firmware-liquidio # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - kernel-firmware-marvell # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - kernel-firmware-media # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - kernel-firmware-mediatek # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - kernel-firmware-mellanox # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - kernel-firmware-mwifiex # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - kernel-firmware-network # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - kernel-firmware-nfp # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - kernel-firmware-nvidia # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - kernel-firmware-platform # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - kernel-firmware-prestera # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - kernel-firmware-qcom # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - kernel-firmware-qlogic # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - kernel-firmware-radeon # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - kernel-firmware-realtek # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - kernel-firmware-serial # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - kernel-firmware-sound # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - kernel-firmware-ti # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - kernel-firmware-ueagle # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - kernel-firmware-usb-network # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - kexec-tools # reason: opensuse_microos:patterns-microos-base
+   - kernel-firmware-all # reason: opensuse_microos:patterns-base-hardware
+   - kernel-firmware-amdgpu # reason: opensuse_microos:patterns-base-hardware
+   - kernel-firmware-ath10k # reason: opensuse_microos:patterns-base-hardware
+   - kernel-firmware-ath11k # reason: opensuse_microos:patterns-base-hardware
+   - kernel-firmware-ath12k # reason: opensuse_microos:patterns-base-hardware
+   - kernel-firmware-atheros # reason: opensuse_microos:patterns-base-hardware
+   - kernel-firmware-bluetooth # reason: opensuse_microos:patterns-base-hardware
+   - kernel-firmware-bnx2 # reason: opensuse_microos:patterns-base-hardware
+   - kernel-firmware-brcm # reason: opensuse_microos:patterns-base-hardware
+   - kernel-firmware-chelsio # reason: opensuse_microos:patterns-base-hardware
+   - kernel-firmware-dpaa2 # reason: opensuse_microos:patterns-base-hardware
+   - kernel-firmware-i915 # reason: opensuse_microos:patterns-base-hardware
+   - kernel-firmware-intel # reason: opensuse_microos:patterns-base-hardware
+   - kernel-firmware-iwlwifi # reason: opensuse_microos:patterns-base-hardware
+   - kernel-firmware-liquidio # reason: opensuse_microos:patterns-base-hardware
+   - kernel-firmware-marvell # reason: opensuse_microos:patterns-base-hardware
+   - kernel-firmware-media # reason: opensuse_microos:patterns-base-hardware
+   - kernel-firmware-mediatek # reason: opensuse_microos:patterns-base-hardware
+   - kernel-firmware-mellanox # reason: opensuse_microos:patterns-base-hardware
+   - kernel-firmware-mwifiex # reason: opensuse_microos:patterns-base-hardware
+   - kernel-firmware-network # reason: opensuse_microos:patterns-base-hardware
+   - kernel-firmware-nfp # reason: opensuse_microos:patterns-base-hardware
+   - kernel-firmware-nvidia # reason: opensuse_microos:patterns-base-hardware
+   - kernel-firmware-platform # reason: opensuse_microos:patterns-base-hardware
+   - kernel-firmware-prestera # reason: opensuse_microos:patterns-base-hardware
+   - kernel-firmware-qcom # reason: opensuse_microos:patterns-base-hardware
+   - kernel-firmware-qlogic # reason: opensuse_microos:patterns-base-hardware
+   - kernel-firmware-radeon # reason: opensuse_microos:patterns-base-hardware
+   - kernel-firmware-realtek # reason: opensuse_microos:patterns-base-hardware
+   - kernel-firmware-serial # reason: opensuse_microos:patterns-base-hardware
+   - kernel-firmware-sound # reason: opensuse_microos:patterns-base-hardware
+   - kernel-firmware-ti # reason: opensuse_microos:patterns-base-hardware
+   - kernel-firmware-ueagle # reason: opensuse_microos:patterns-base-hardware
+   - kernel-firmware-usb-network # reason: opensuse_microos:patterns-base-hardware
+   - kexec-tools # reason: opensuse_microos:patterns-containers-runtime_podman
    - keylime-config # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - keylime-firewalld # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - keylime-logrotate # reason: opensuse_microos:patterns-microos-alt_onlyDVD
@@ -4836,7 +4838,7 @@ packagesets:
    - keylime-tenant # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - keylime-tpm_cert_store # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - keylime-verifier # reason: opensuse_microos:patterns-microos-alt_onlyDVD
-   - keyutils # reason: opensuse_microos:patterns-microos-ima_evm
+   - keyutils # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - kf6-attica # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - kf6-baloo-file # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - kf6-baloo-imports # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -4930,7 +4932,7 @@ packagesets:
    - kio-gdrive # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - kirigami-addons6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - kmenuedit6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - kmod # reason: opensuse_microos:patterns-microos-base
+   - kmod # reason: opensuse_microos:patterns-base-hardware
    - knighttime6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - konsole # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - konsole-part # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -4938,7 +4940,7 @@ packagesets:
    - kpipewire6-imports # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - kpmcore # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - kquickimageeditor6-imports # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - krb5 # reason: opensuse_microos:patterns-microos-base
+   - krb5 # reason: opensuse_microos:patterns-containers-runtime_podman
    - kscreen6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - kscreenlocker6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - kservice # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -4951,9 +4953,9 @@ packagesets:
    - kwayland-integration6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - kwayland6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - kwin6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - lastlog2 # reason: opensuse_microos:patterns-microos-base
+   - lastlog2 # reason: opensuse_microos:patterns-containers-runtime_podman
    - layer-shell-qt6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - less # reason: opensuse_microos:patterns-microos-base
+   - less # reason: opensuse_microos:patterns-containers-runtime_podman
    - libAppStreamQt3 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libBasicUsageEnvironment2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libFLAC14 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -5277,27 +5279,27 @@ packagesets:
    - libaccounts-qt6-1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libacl1 # reason: opensuse_microos:MicroOS-release
    - libaio1 # reason: opensuse_microos:patterns-microos-onlyDVD
-   - libalternatives1 # reason: opensuse_microos:patterns-microos-base
+   - libalternatives1 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libaom3 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libapparmor1 # reason: opensuse_microos:docker
    - libappstream-glib8 # reason: opensuse_microos_desktop:expansion
    - libappstream5 # reason: opensuse_microos:patterns-microos-base-packagekit
-   - libarchive13 # reason: opensuse_microos:patterns-microos-base
-   - libasm1 # reason: opensuse_microos:patterns-microos-base
+   - libarchive13 # reason: opensuse_microos:patterns-containers-runtime_podman
+   - libasm1 # reason: opensuse_microos:patterns-base-hardware
    - libasound2 # reason: opensuse_microos:patterns-microos-onlyDVD
    - libass9 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libassuan9 # reason: opensuse_microos:patterns-microos-base
+   - libassuan9 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libatasmart-utils # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libatasmart4 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libatk-1_0-0 # reason: opensuse_microos:patterns-microos-onlyDVD
    - libatk-bridge-2_0-0 # reason: opensuse_microos:patterns-microos-onlyDVD
    - libatspi0 # reason: opensuse_microos:patterns-microos-onlyDVD
    - libattr1 # reason: opensuse_microos:MicroOS-release
-   - libaudit1 # reason: opensuse_microos:patterns-microos-base
+   - libaudit1 # reason: opensuse_microos:patterns-base-hardware
    - libaugeas0 # reason: opensuse_microos:patterns-microos-base-zypper
-   - libauparse0 # reason: opensuse_microos:patterns-microos-defaults
-   - libavahi-client3 # reason: opensuse_microos:patterns-microos-sssd_ldap
-   - libavahi-common3 # reason: opensuse_microos:patterns-microos-sssd_ldap
+   - libauparse0 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
+   - libavahi-client3 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
+   - libavahi-common3 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - libavahi-core7 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libavahi-glib1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libavc1394-0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -5317,57 +5319,57 @@ packagesets:
    - libbd_smart3 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libbd_swap3 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libbd_utils3 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libblkid1 # reason: opensuse_microos:patterns-microos-base
+   - libblkid1 # reason: opensuse_microos:patterns-base-hardware
    - libblockdev # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libblockdev3 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libblogger2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libbluetooth3 # reason: opensuse_microos:patterns-microos-base
+   - libbluetooth3 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libbluray3 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libboost_filesystem1_91_0 # reason: opensuse_microos:patterns-microos-base-zypper
-   - libboost_thread1_91_0 # reason: opensuse_microos:patterns-microos-base
-   - libbpf1 # reason: opensuse_microos:patterns-microos-base
-   - libbrotlicommon1 # reason: opensuse_microos:patterns-microos-base
-   - libbrotlidec1 # reason: opensuse_microos:patterns-microos-base
+   - libboost_thread1_91_0 # reason: opensuse_microos:patterns-containers-runtime_podman
+   - libbpf1 # reason: opensuse_microos:patterns-base-hardware
+   - libbrotlicommon1 # reason: opensuse_microos:patterns-containers-runtime_podman
+   - libbrotlidec1 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libbrotlienc1 # reason: opensuse_microos:patterns-microos-onlyDVD
    - libbs2b0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libbtrfs0 # reason: opensuse_microos:patterns-microos-base
-   - libbtrfsutil1 # reason: opensuse_microos:patterns-microos-base
+   - libbtrfs0 # reason: opensuse_microos:patterns-containers-runtime_podman
+   - libbtrfsutil1 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libbytesize1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libbz2-1 # reason: opensuse_microos:patterns-microos-base
+   - libbz2-1 # reason: opensuse_microos:patterns-base-hardware
    - libcaca0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libcairo-gobject2 # reason: opensuse_microos:patterns-microos-onlyDVD
    - libcairo2 # reason: opensuse_microos:patterns-microos-onlyDVD
    - libcamera-base0_7 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libcamera0_7 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libcanberra0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libcap-ng0 # reason: opensuse_microos:patterns-microos-base
+   - libcap-ng0 # reason: opensuse_microos:patterns-base-hardware
    - libcap2 # reason: opensuse_microos:MicroOS-release
-   - libcares2 # reason: opensuse_microos:patterns-microos-sssd_ldap
-   - libcbor0_14 # reason: opensuse_microos:patterns-microos-base
+   - libcares2 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
+   - libcbor0_14 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libcddb2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libchromaprint1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libcjson1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libcodec2-1_2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libcolord2 # reason: opensuse_microos:patterns-microos-onlyDVD
-   - libcom_err2 # reason: opensuse_microos:patterns-microos-base
+   - libcom_err2 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libcomposefs1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libconfig++15 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libconfig15 # reason: opensuse_microos:patterns-microos-hardware
+   - libconfig15 # reason: opensuse_microos:patterns-base-hardware
    - libcontainers-common # reason: opensuse_microos:patterns-containers-runtime_podman
    - libcontainers-default-policy # reason: opensuse_microos:patterns-containers-runtime_podman
-   - libcrack2 # reason: opensuse_microos:patterns-microos-onlyDVD
+   - libcrack2 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - libcreaterepo_c1 # reason: opensuse_microos_desktop:expansion
-   - libcrypt1 # reason: opensuse_microos:patterns-microos-base
+   - libcrypt1 # reason: opensuse_microos:patterns-base-hardware
    - libcryptsetup12 # reason: opensuse_microos:patterns-microos-onlyDVD
    - libcups2 # reason: opensuse_microos:patterns-microos-onlyDVD
    - libcupsfilters # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libcupsfilters2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libcupsimage2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libcurl4 # reason: opensuse_microos:patterns-microos-base
+   - libcurl4 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libdaemon0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libdatrie1 # reason: opensuse_microos:patterns-microos-onlyDVD
    - libdav1d7 # reason: opensuse_microos:patterns-microos-onlyDVD
-   - libdbus-1-3 # reason: opensuse_microos:patterns-microos-base
+   - libdbus-1-3 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libdbusmenu-qt5-2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libdc1394-26 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libdconf1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -5375,9 +5377,9 @@ packagesets:
    - libdecor # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libdecor-0-0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libdeflate0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libdevmapper-event1_03 # reason: opensuse_microos:patterns-microos-hardware
-   - libdevmapper1_03 # reason: opensuse_microos:patterns-microos-hardware
-   - libdhash1 # reason: opensuse_microos:patterns-microos-sssd_ldap
+   - libdevmapper-event1_03 # reason: opensuse_microos:patterns-base-hardware
+   - libdevmapper1_03 # reason: opensuse_microos:patterns-base-hardware
+   - libdhash1 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - libdialog15 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - libdisplay-info3 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libdmtx0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -5391,19 +5393,19 @@ packagesets:
    - libdrm2 # reason: opensuse_microos:patterns-microos-onlyDVD
    - libdrm_amdgpu1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libdrm_intel1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libduktape207 # reason: opensuse_microos:patterns-microos-base
+   - libduktape207 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libdvbpsi10 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libdvdnav4 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libdvdread8 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libdw1 # reason: opensuse_microos:patterns-microos-base
+   - libdw1 # reason: opensuse_microos:patterns-base-hardware
    - libebml5 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libebur128-1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libeconf0 # reason: opensuse_microos:patterns-microos-base
-   - libedit0 # reason: opensuse_microos:patterns-microos-base
+   - libeconf0 # reason: opensuse_microos:patterns-base-hardware
+   - libedit0 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libeditorconfig0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libefivar1 # reason: opensuse_microos:patterns-microos-base
+   - libefivar1 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libei1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libelf1 # reason: opensuse_microos:patterns-microos-base
+   - libelf1 # reason: opensuse_microos:patterns-base-hardware
    - libell0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libepoxy0 # reason: opensuse_microos:patterns-microos-onlyDVD
    - libepub0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -5411,55 +5413,55 @@ packagesets:
    - libevdev2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libexif12 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libexiv2-28 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libexpat1 # reason: opensuse_microos:patterns-microos-base
+   - libexpat1 # reason: opensuse_microos:patterns-base-hardware
    - libexslt0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libext2fs2 # reason: opensuse_microos:patterns-microos-base
+   - libext2fs2 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libfa1 # reason: opensuse_microos:patterns-microos-base-zypper
    - libfaad2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libfdisk1 # reason: opensuse_microos:patterns-microos-base
+   - libfdisk1 # reason: opensuse_microos:patterns-base-hardware
    - libfdk-aac2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libffado2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libffi8 # reason: opensuse_microos:patterns-microos-base
+   - libffi8 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libfftw3-3 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libfido2-1 # reason: opensuse_microos:patterns-microos-base
+   - libfido2-1 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libflatpak0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libflite1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libfmt12 # reason: opensuse_microos:patterns-microos-base-packagekit
    - libfontconfig1 # reason: opensuse_microos:patterns-microos-onlyDVD
    - libfontenc1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libfreebl3 # reason: opensuse_microos:patterns-microos-base
-   - libfreetype6 # reason: opensuse_microos:patterns-microos-onlyDVD
+   - libfreebl3 # reason: opensuse_microos:patterns-containers-runtime_podman
+   - libfreetype6 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - libfribidi0 # reason: opensuse_microos:patterns-microos-onlyDVD
    - libfuse2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libfuse3-4 # reason: opensuse_microos:patterns-microos-onlyDVD
+   - libfuse3-4 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libfwupd3 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libfyaml0 # reason: opensuse_microos:patterns-microos-base-packagekit
    - libgbm1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libgcab-1_0-0 # reason: opensuse_microos_desktop:expansion
-   - libgcc_s1 # reason: opensuse_microos:patterns-microos-base
+   - libgcc_s1 # reason: opensuse_microos:patterns-base-hardware
    - libgck-2-2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libgcr-4-4 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libgcrypt20 # reason: opensuse_microos:patterns-microos-base
-   - libgdbm6 # reason: opensuse_microos:patterns-microos-sssd_ldap
+   - libgcrypt20 # reason: opensuse_microos:patterns-base-hardware
+   - libgdbm6 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - libgdbm_compat4 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libgdk_pixbuf-2_0-0 # reason: opensuse_microos:patterns-microos-onlyDVD
    - libgif7 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libgio-2_0-0 # reason: opensuse_microos:patterns-microos-base
+   - libgio-2_0-0 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libgirepository-1_0-1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libgirepository-2_0-0 # reason: opensuse_microos:patterns-microos-onlyDVD
-   - libglib-2_0-0 # reason: opensuse_microos:patterns-microos-base
+   - libglib-2_0-0 # reason: opensuse_microos:patterns-base-hardware
    - libglibmm-2_4-1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libglslang16 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libglvnd # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libglycin-2-0 # reason: opensuse_microos:patterns-microos-onlyDVD
    - libgme0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libgmodule-2_0-0 # reason: opensuse_microos:patterns-microos-base
+   - libgmodule-2_0-0 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libgmp10 # reason: opensuse_microos:MicroOS-release
-   - libgnutls30 # reason: opensuse_microos:patterns-microos-base
-   - libgobject-2_0-0 # reason: opensuse_microos:patterns-microos-base
+   - libgnutls30 # reason: opensuse_microos:patterns-containers-runtime_podman
+   - libgobject-2_0-0 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libgomp1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libgpg-error0 # reason: opensuse_microos:patterns-microos-base
-   - libgpgme45 # reason: opensuse_microos:patterns-microos-base
+   - libgpg-error0 # reason: opensuse_microos:patterns-base-hardware
+   - libgpgme45 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libgpgmepp7 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libgpm2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libgps32 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -5479,101 +5481,101 @@ packagesets:
    - libgsttag-1_0-0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libgstvideo-1_0-0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libgtk-3-0 # reason: opensuse_microos:patterns-microos-onlyDVD
-   - libgudev-1_0-0 # reason: opensuse_microos:patterns-microos-base
+   - libgudev-1_0-0 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libhandy-1-0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libharfbuzz-gobject0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libharfbuzz-subset0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libharfbuzz0 # reason: opensuse_microos:patterns-microos-onlyDVD
-   - libhd25 # reason: opensuse_microos:patterns-microos-hardware
+   - libhd25 # reason: opensuse_microos:patterns-base-hardware
    - libheif1 # reason: opensuse_microos:patterns-microos-onlyDVD
-   - libhidapi-hidraw0 # reason: opensuse_microos:patterns-microos-base
-   - libhogweed6 # reason: opensuse_microos:patterns-microos-base
+   - libhidapi-hidraw0 # reason: opensuse_microos:patterns-containers-runtime_podman
+   - libhogweed6 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libhplip0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libhunspell-1_7-0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libhwy1 # reason: opensuse_microos:patterns-microos-onlyDVD
    - libicu78 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libicu78-ledata # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libidn12 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libidn2-0 # reason: opensuse_microos:patterns-microos-base
+   - libidn2-0 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libiec61883-0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libimaevm5 # reason: opensuse_microos:patterns-microos-ima_evm
+   - libimaevm5 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - libimobiledevice-1_0-6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libimobiledevice-glue-1_0-0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libini_config8 # reason: opensuse_microos:patterns-microos-sssd_ldap
+   - libini_config8 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - libinih0 # reason: opensuse_microos:patterns-microos-onlyDVD
    - libinput10 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libip4tc2 # reason: opensuse_microos:docker
    - libip6tc2 # reason: opensuse_microos:docker
    - libisl23 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libixml22 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libjansson4 # reason: opensuse_microos:patterns-microos-base-packagekit
+   - libjansson4 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libjasper7 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libjbig2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libjitterentropy3 # reason: opensuse_microos:patterns-microos-base
+   - libjitterentropy3 # reason: opensuse_microos:patterns-base-hardware
    - libjpeg8 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libjq1 # reason: opensuse_microos:patterns-microos-onlyDVD
-   - libjson-c5 # reason: opensuse_microos:patterns-microos-base
+   - libjq1 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
+   - libjson-c5 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libjson-glib-1_0-0 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - libjxl0_12 # reason: opensuse_microos:patterns-microos-onlyDVD
    - libkaccounts6-2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libkate1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libkbdfile1 # reason: opensuse_microos:patterns-microos-base
+   - libkbdfile1 # reason: opensuse_microos:patterns-base-hardware
    - libkdcraw-qt6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libkdecorations3-6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libkdecorations3private2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libkdsoap-qt6-2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libkexiv2-qt6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libkeymap1 # reason: opensuse_microos:patterns-microos-base
-   - libkeyutils1 # reason: opensuse_microos:patterns-microos-base
-   - libkfont0 # reason: opensuse_microos:patterns-microos-base
+   - libkeymap1 # reason: opensuse_microos:patterns-base-hardware
+   - libkeyutils1 # reason: opensuse_microos:patterns-containers-runtime_podman
+   - libkfont0 # reason: opensuse_microos:patterns-base-hardware
    - libkgapi6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libkgapi6-sasl2-kdexoauth2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libkioarchive6-6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libkmod2 # reason: opensuse_microos:patterns-microos-base
+   - libkmod2 # reason: opensuse_microos:patterns-base-hardware
    - libkpmcore13 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libksba8 # reason: opensuse_microos:patterns-microos-base
+   - libksba8 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libkscreen6-plugin # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libksysguard6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libksysguard6-imports # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libkwin6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - liblastlog2-2 # reason: opensuse_microos:patterns-microos-base
+   - liblastlog2-2 # reason: opensuse_microos:patterns-base-hardware
    - liblc3-1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - liblcms2-2 # reason: opensuse_microos:patterns-microos-onlyDVD
    - libldac2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libldap2 # reason: opensuse_microos:patterns-microos-base
-   - libldb2 # reason: opensuse_microos:patterns-microos-sssd_ldap
-   - libleancrypto1 # reason: opensuse_microos:patterns-microos-base
+   - libldap2 # reason: opensuse_microos:patterns-containers-runtime_podman
+   - libldb2 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
+   - libleancrypto1 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libleptonica6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - liblilv-0-0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - liblirc_client0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libliveMedia119 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - liblldp_clif1 # reason: opensuse_microos:patterns-microos-hardware
-   - liblmdb-0_9_35 # reason: opensuse_microos:patterns-microos-sssd_ldap
-   - libltdl7 # reason: opensuse_microos:patterns-microos-onlyDVD
+   - liblldp_clif1 # reason: opensuse_microos:patterns-base-hardware
+   - liblmdb-0_9_35 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
+   - libltdl7 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - liblua5_3-5 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - liblua5_4-5 # reason: opensuse_microos:patterns-microos-base
+   - liblua5_4-5 # reason: opensuse_microos:patterns-base-hardware
    - liblvm2cmd2_03 # reason: opensuse_microos:patterns-microos-onlyDVD
-   - liblz1 # reason: opensuse_microos:patterns-microos-base
-   - liblz4-1 # reason: opensuse_microos:patterns-microos-base
-   - liblzma5 # reason: opensuse_microos:patterns-microos-base
-   - liblzo2-2 # reason: opensuse_microos:patterns-microos-base
+   - liblz1 # reason: opensuse_microos:patterns-base-hardware
+   - liblz4-1 # reason: opensuse_microos:patterns-containers-runtime_podman
+   - liblzma5 # reason: opensuse_microos:patterns-base-hardware
+   - liblzo2-2 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libmad0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libmagic1 # reason: opensuse_microos:patterns-microos-base
+   - libmagic1 # reason: opensuse_microos:patterns-base-hardware
    - libmatroska7 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libmbim-glib4 # reason: opensuse_microos:patterns-microos-base
+   - libmbim-glib4 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libmd4c0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libmetalink3 # reason: opensuse_microos:patterns-microos-cloud
+   - libmetalink3 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - libminizip1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libmm-glib0 # reason: opensuse_microos:patterns-microos-base
+   - libmm-glib0 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libmng2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libmnl0 # reason: opensuse_microos:patterns-microos-base
+   - libmnl0 # reason: opensuse_microos:patterns-base-hardware
    - libmodulemd2 # reason: opensuse_microos:patterns-microos-base-packagekit
-   - libmount1 # reason: opensuse_microos:patterns-microos-base
+   - libmount1 # reason: opensuse_microos:patterns-base-hardware
    - libmp3lame0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libmpath0 # reason: opensuse_microos:patterns-microos-onlyDVD
    - libmpc3 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libmpdec4 # reason: opensuse_microos:patterns-microos-cloud
-   - libmpfr6 # reason: opensuse_microos:patterns-microos-base
+   - libmpdec4 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
+   - libmpfr6 # reason: opensuse_microos:patterns-base-hardware
    - libmpg123-0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libmspack0 # reason: opensuse_microos:patterns-microos-onlyDVD
    - libmtdev1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -5581,32 +5583,32 @@ packagesets:
    - libmtp9 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libmysofa1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libncurses6 # reason: opensuse_microos:MicroOS-release
-   - libndp0 # reason: opensuse_microos:patterns-microos-base
+   - libndp0 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libnetfilter_conntrack3 # reason: opensuse_microos:docker
-   - libnettle8 # reason: opensuse_microos:patterns-microos-base
+   - libnettle8 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libnewt0_52 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - libnfnetlink0 # reason: opensuse_microos:docker
    - libnfs16 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libnftables1 # reason: opensuse_microos:patterns-microos-onlyDVD
-   - libnftnl11 # reason: opensuse_microos:patterns-microos-onlyDVD
-   - libnghttp2-14 # reason: opensuse_microos:patterns-microos-base
-   - libnghttp3-9 # reason: opensuse_microos:patterns-microos-base
-   - libngtcp2-16 # reason: opensuse_microos:patterns-microos-base
-   - libngtcp2_crypto_gnutls8 # reason: opensuse_microos:patterns-microos-sssd_ldap
-   - libngtcp2_crypto_ossl0 # reason: opensuse_microos:patterns-microos-base
-   - libnl-config # reason: opensuse_microos:patterns-microos-base
-   - libnl3-200 # reason: opensuse_microos:patterns-microos-base
-   - libnm0 # reason: opensuse_microos:patterns-microos-base
+   - libnftables1 # reason: opensuse_microos:patterns-containers-runtime_podman
+   - libnftnl11 # reason: opensuse_microos:patterns-containers-runtime_podman
+   - libnghttp2-14 # reason: opensuse_microos:patterns-containers-runtime_podman
+   - libnghttp3-9 # reason: opensuse_microos:patterns-containers-runtime_podman
+   - libngtcp2-16 # reason: opensuse_microos:patterns-containers-runtime_podman
+   - libngtcp2_crypto_gnutls8 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
+   - libngtcp2_crypto_ossl0 # reason: opensuse_microos:patterns-containers-runtime_podman
+   - libnl-config # reason: opensuse_microos:patterns-base-hardware
+   - libnl3-200 # reason: opensuse_microos:patterns-base-hardware
+   - libnm0 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libnotify4 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libnpth0 # reason: opensuse_microos:patterns-microos-base
-   - libnss_usrfiles2 # reason: opensuse_microos:patterns-microos-base
+   - libnpth0 # reason: opensuse_microos:patterns-containers-runtime_podman
+   - libnss_usrfiles2 # reason: opensuse_microos:patterns-base-hardware
    - libntfs-3g90 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libnuma1 # reason: opensuse_microos:patterns-microos-hardware
+   - libnuma1 # reason: opensuse_microos:patterns-base-hardware
    - libnvme1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libnvme3-1 # reason: opensuse_microos:patterns-microos-onlyDVD
    - liboath0 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - libogg0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libonig5 # reason: opensuse_microos:patterns-microos-onlyDVD
+   - libonig5 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - libopenconnect5 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libopencore-amrnb0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libopencore-amrwb0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -5616,19 +5618,19 @@ packagesets:
    - libopenjp2-7 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libopenjph0_31 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libopenmpt0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libopenssl3 # reason: opensuse_microos:patterns-microos-base
+   - libopenssl3 # reason: opensuse_microos:patterns-base-hardware
    - libopus0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - liborc-0_4-0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libostree # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libostree-1-1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libp11-kit0 # reason: opensuse_microos:patterns-microos-base
+   - libp11-kit0 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libpackagekit-glib2-18 # reason: opensuse_microos:patterns-microos-base-packagekit
    - libpackagekitqt6-2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libpango-1_0-0 # reason: opensuse_microos:patterns-microos-onlyDVD
    - libparted-fs-resize0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libparted2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libpci3 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libpciaccess0 # reason: opensuse_microos:patterns-microos-hardware
+   - libpciaccess0 # reason: opensuse_microos:patterns-base-hardware
    - libpcre2-16-0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libpcre2-8-0 # reason: opensuse_microos:MicroOS-release
    - libpcsclite1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -5637,42 +5639,42 @@ packagesets:
    - libpipewire-0_3-0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libpixman-1-0 # reason: opensuse_microos:patterns-microos-onlyDVD
    - libpkcs11-helper1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libpkgconf7 # reason: opensuse_microos:patterns-microos-base
+   - libpkgconf7 # reason: opensuse_microos:patterns-base-hardware
    - libplacebo264 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libplacebo360 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libplasma6-components # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libplasma6-desktoptheme # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libplist-2_0-4 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libpng16-16 # reason: opensuse_microos:patterns-microos-onlyDVD
-   - libpolkit-agent-1-0 # reason: opensuse_microos:patterns-microos-base
-   - libpolkit-gobject-1-0 # reason: opensuse_microos:patterns-microos-base
+   - libpng16-16 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
+   - libpolkit-agent-1-0 # reason: opensuse_microos:patterns-containers-runtime_podman
+   - libpolkit-gobject-1-0 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libpolkit-qt6-1-1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libpoppler-cpp3 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libpoppler-qt6-3 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libpoppler162 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libpopt0 # reason: opensuse_microos:patterns-microos-base
+   - libpopt0 # reason: opensuse_microos:patterns-base-hardware
    - libppd # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libppd2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libproc2-1 # reason: opensuse_microos:patterns-microos-base
+   - libproc2-1 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libprojectM3 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libprotobuf-lite34_2_0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libproxy1 # reason: opensuse_microos:patterns-microos-cloud
+   - libproxy1 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - libpskc0 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
-   - libpsl5 # reason: opensuse_microos:patterns-microos-base
+   - libpsl5 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libpulse-mainloop-glib0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libpulse0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libpwquality-tools # reason: opensuse_microos:patterns-microos-alt_onlyDVD
-   - libpwquality1 # reason: opensuse_microos:patterns-microos-onlyDVD
-   - libpxbackend-1_0 # reason: opensuse_microos:patterns-microos-cloud
-   - libpython3_13-1_0 # reason: opensuse_microos:patterns-microos-cloud
+   - libpwquality1 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
+   - libpxbackend-1_0 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
+   - libpython3_13-1_0 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - libqaccessibilityclient-qt6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libqaccessibilityclient-qt6-0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libqalculate23 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libqca-qt6-2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libqmi-glib5 # reason: opensuse_microos:patterns-microos-base
+   - libqmi-glib5 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libqpdf30 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libqrencode4 # reason: opensuse_microos:patterns-microos-onlyDVD
-   - libqrtr-glib0 # reason: opensuse_microos:patterns-microos-base
+   - libqrencode4 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
+   - libqrtr-glib0 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libqt5-qtimageformats # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libqt5-qtwayland # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libqt6keychain1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -5685,34 +5687,34 @@ packagesets:
    - librsvg-2-2 # reason: opensuse_microos:patterns-microos-onlyDVD
    - librubberband3 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libsamplerate0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libsasl2-3 # reason: opensuse_microos:patterns-microos-base
+   - libsasl2-3 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libsbc1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libschroedinger-1_0-0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libsdbus-c++2 # reason: opensuse_microos:patterns-microos-base-packagekit
-   - libseccomp2 # reason: opensuse_microos:patterns-microos-base
+   - libseccomp2 # reason: opensuse_microos:patterns-base-hardware
    - libsecret-1-0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libselinux1 # reason: opensuse_microos:MicroOS-release
-   - libsemanage-conf # reason: opensuse_microos:patterns-microos-base
-   - libsemanage2 # reason: opensuse_microos:patterns-microos-base
+   - libsemanage-conf # reason: opensuse_microos:patterns-containers-runtime_podman
+   - libsemanage2 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libsensors4 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libsepol2 # reason: opensuse_microos:patterns-microos-base
+   - libsepol2 # reason: opensuse_microos:patterns-base-hardware
    - libserd-0-0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libsgutils2-1_48-2 # reason: opensuse_microos:patterns-microos-onlyDVD
    - libshaderc_shared1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libsharpyuv0 # reason: opensuse_microos:patterns-microos-onlyDVD
    - libshout3 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libsigc-2_0-0 # reason: opensuse_microos:patterns-microos-base
+   - libsigc-2_0-0 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libsignon-qt6-1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libslang2 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - libslirp0 # reason: opensuse_microos:docker-rootless-extras
-   - libsmartcols1 # reason: opensuse_microos:patterns-microos-base
-   - libsnapper8 # reason: opensuse_microos:patterns-microos-base
-   - libsnappy1 # reason: opensuse_microos:patterns-microos-base
+   - libsmartcols1 # reason: opensuse_microos:patterns-base-hardware
+   - libsnapper8 # reason: opensuse_microos:patterns-containers-runtime_podman
+   - libsnappy1 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libsndfile1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libsnmp45 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libsodium26 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
-   - libsoftokn3 # reason: opensuse_microos:patterns-microos-base
-   - libsolv-tools-base # reason: opensuse_microos:patterns-microos-base
+   - libsoftokn3 # reason: opensuse_microos:patterns-containers-runtime_podman
+   - libsolv-tools-base # reason: opensuse_microos:patterns-containers-runtime_podman
    - libsolv1 # reason: opensuse_microos:patterns-microos-base-packagekit
    - libsord-0-0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libsoup-3_0-0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -5721,28 +5723,28 @@ packagesets:
    - libspeechd2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libspeex1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libspeexdsp1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libsqlite3-0 # reason: opensuse_microos:patterns-microos-base
+   - libsqlite3-0 # reason: opensuse_microos:patterns-base-hardware
    - libsratom-0-0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libsrt1_5 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libssh-config # reason: opensuse_microos:patterns-microos-base
+   - libssh-config # reason: opensuse_microos:patterns-containers-runtime_podman
    - libssh2-1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libssh4 # reason: opensuse_microos:patterns-microos-base
-   - libsss_certmap0 # reason: opensuse_microos:patterns-microos-sssd_ldap
-   - libsss_idmap0 # reason: opensuse_microos:patterns-microos-sssd_ldap
-   - libstdc++6 # reason: opensuse_microos:patterns-microos-base
+   - libssh4 # reason: opensuse_microos:patterns-containers-runtime_podman
+   - libsss_certmap0 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
+   - libsss_idmap0 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
+   - libstdc++6 # reason: opensuse_microos:patterns-base-hardware
    - libstemmer1d # reason: opensuse_microos:patterns-microos-base-packagekit
    - libstoken1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libsubid6 # reason: opensuse_microos:patterns-microos-base
+   - libsubid6 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libswresample6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libswscale9 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libsystemd0 # reason: opensuse_microos:patterns-microos-base
+   - libsystemd0 # reason: opensuse_microos:patterns-base-hardware
    - libtag2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libtalloc2 # reason: opensuse_microos:patterns-microos-sssd_ldap
-   - libtasn1-6 # reason: opensuse_microos:patterns-microos-base
+   - libtalloc2 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
+   - libtasn1-6 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libtbb12 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libtdb1 # reason: opensuse_microos:patterns-microos-sssd_ldap
+   - libtdb1 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - libtesseract5 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libtevent0 # reason: opensuse_microos:patterns-microos-sssd_ldap
+   - libtevent0 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - libtextstyle0 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - libthai-data # reason: opensuse_microos:patterns-microos-onlyDVD
    - libthai0 # reason: opensuse_microos:patterns-microos-onlyDVD
@@ -5755,37 +5757,37 @@ packagesets:
    - libtomcrypt1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libtommath1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libts0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libtss2-esys0 # reason: opensuse_microos:patterns-microos-base
-   - libtss2-fapi-common # reason: opensuse_microos:patterns-microos-base
-   - libtss2-fapi1 # reason: opensuse_microos:patterns-microos-base
-   - libtss2-mu0 # reason: opensuse_microos:patterns-microos-base
-   - libtss2-rc0 # reason: opensuse_microos:patterns-microos-base
-   - libtss2-sys1 # reason: opensuse_microos:patterns-microos-base
-   - libtss2-tcti-device0 # reason: opensuse_microos:patterns-microos-base
-   - libtss2-tcti-tabrmd0 # reason: opensuse_microos:patterns-microos-onlyDVD
-   - libtss2-tctildr0 # reason: opensuse_microos:patterns-microos-base
+   - libtss2-esys0 # reason: opensuse_microos:patterns-containers-runtime_podman
+   - libtss2-fapi-common # reason: opensuse_microos:patterns-containers-runtime_podman
+   - libtss2-fapi1 # reason: opensuse_microos:patterns-containers-runtime_podman
+   - libtss2-mu0 # reason: opensuse_microos:patterns-containers-runtime_podman
+   - libtss2-rc0 # reason: opensuse_microos:patterns-containers-runtime_podman
+   - libtss2-sys1 # reason: opensuse_microos:patterns-containers-runtime_podman
+   - libtss2-tcti-device0 # reason: opensuse_microos:patterns-containers-runtime_podman
+   - libtss2-tcti-tabrmd0 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
+   - libtss2-tctildr0 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libtukit8 # reason: opensuse_microos:patterns-microos-base-packagekit
    - libtwolame0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libudev1 # reason: opensuse_microos:patterns-microos-base
+   - libudev1 # reason: opensuse_microos:patterns-base-hardware
    - libudfread3 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libudisks2-0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libunibreak6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libunistring5 # reason: opensuse_microos:patterns-microos-base
+   - libunistring5 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libunwind8 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - libupnp22 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libupower-glib3 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - liburcu8 # reason: opensuse_microos:patterns-microos-onlyDVD
    - liburing2 # reason: opensuse_microos:patterns-microos-onlyDVD
-   - libusb-1_0-0 # reason: opensuse_microos:patterns-microos-base
+   - libusb-1_0-0 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libusbmuxd-2_0-7 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libutf8_range-34_2_0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libuuid1 # reason: opensuse_microos:patterns-microos-base
+   - libuuid1 # reason: opensuse_microos:patterns-base-hardware
    - libva-drm2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libva-wayland2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libva-x11-2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libva2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libvdpau1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libverto1 # reason: opensuse_microos:patterns-microos-base
+   - libverto1 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libvidstab1_2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libvlc5 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libvlccore9 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -5811,8 +5813,8 @@ packagesets:
    - libwebrtc-audio-processing-1-3 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libwireplumber-0_5-0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libwrap0 # reason: opensuse_microos:patterns-microos-defaults
-   - libwtmpdb0 # reason: opensuse_microos:patterns-microos-base
-   - libx86emu3 # reason: opensuse_microos:patterns-microos-hardware
+   - libwtmpdb0 # reason: opensuse_microos:patterns-containers-runtime_podman
+   - libx86emu3 # reason: opensuse_microos:patterns-base-hardware
    - libxcb-composite0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libxcb-cursor0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libxcb-damage0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -5844,55 +5846,56 @@ packagesets:
    - libxkbfile1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libxkbregistry0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libxml++-3_0-1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libxml2-16 # reason: opensuse_microos:patterns-microos-base
+   - libxml2-16 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libxml2-tools # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libxmlb2 # reason: opensuse_microos:patterns-microos-base-packagekit
-   - libxmlsec1-1 # reason: opensuse_microos:patterns-microos-onlyDVD
+   - libxmlsec1-1 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - libxmlsec1-openssl1 # reason: opensuse_microos:patterns-microos-onlyDVD
    - libxshmfence1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libxslt-tools # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libxslt1 # reason: opensuse_microos:patterns-microos-onlyDVD
-   - libxtables12 # reason: opensuse_microos:patterns-microos-base
+   - libxslt1 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
+   - libxtables12 # reason: opensuse_microos:patterns-base-hardware
    - libxvidcore4 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libxxhash0 # reason: opensuse_microos:patterns-microos-base
-   - libyajl2 # reason: opensuse_microos:patterns-microos-base
-   - libyaml-0-2 # reason: opensuse_microos:patterns-microos-base-packagekit
-   - libyaml-cpp0_9 # reason: opensuse_microos:patterns-microos-base
+   - libxxhash0 # reason: opensuse_microos:patterns-containers-runtime_podman
+   - libyajl2 # reason: opensuse_microos:patterns-containers-runtime_podman
+   - libyaml-0-2 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
+   - libyaml-cpp0_9 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libyuv0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libz-ng-compat1 # reason: opensuse_microos:patterns-microos-hardware
-   - libz1 # reason: opensuse_microos:patterns-microos-base
-   - libzck1 # reason: opensuse_microos:patterns-microos-base
+   - libz-ng-compat1 # reason: opensuse_microos:patterns-base-hardware
+   - libz1 # reason: opensuse_microos:patterns-containers-runtime_podman
+   - libzck1 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libzimg2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libzio1 # reason: opensuse_microos:patterns-microos-base
+   - libzio1 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libzip5 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libzix-0-0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libzmq5 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - libzopfli1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libzstd1 # reason: opensuse_microos:patterns-microos-base
+   - libzstd1 # reason: opensuse_microos:patterns-base-hardware
    - libzvbi0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libzypp # reason: opensuse_microos:patterns-microos-base
+   - libzypp # reason: opensuse_microos:patterns-containers-runtime_podman
    - libzypp-plugin-appdata # reason: opensuse_microos_desktop:expansion
    - live-langset-data # reason: opensuse_microos:patterns-microos-alt_onlyDVD
-   - login_defs # reason: opensuse_microos:patterns-microos-base
-   - logrotate # reason: opensuse_microos:patterns-microos-base
+   - login_defs # reason: opensuse_microos:patterns-containers-runtime_podman
+   - logrotate # reason: opensuse_microos:patterns-containers-runtime_podman
    - lsof # reason: opensuse_microos:patterns-microos-base-zypper
    - lvm2 # reason: opensuse_microos:patterns-microos-onlyDVD
-   - makedumpfile # reason: opensuse_microos:patterns-microos-base
-   - mandoc-bin # reason: opensuse_microos:patterns-microos-base
+   - makedumpfile # reason: opensuse_microos:patterns-containers-runtime_podman
+   - man-online # reason: opensuse_microos:patterns-containers-runtime_podman
+   - mandoc-bin # reason: opensuse_microos:patterns-containers-runtime_podman
    - mdadm # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - metatheme-breeze6-common # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - microos-tools # reason: opensuse_microos:patterns-microos-base
+   - microos-tools # reason: opensuse_microos:patterns-containers-runtime_podman
    - milou6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - mokutil # reason: opensuse_microos:patterns-microos-onlyDVD
-   - mozilla-nspr # reason: opensuse_microos:patterns-microos-base
-   - mozilla-nss # reason: opensuse_microos:patterns-microos-base
-   - mozilla-nss-certs # reason: opensuse_microos:patterns-microos-base
+   - mokutil # reason: opensuse_microos:patterns-microos-alt_onlyDVD
+   - mozilla-nspr # reason: opensuse_microos:patterns-containers-runtime_podman
+   - mozilla-nss # reason: opensuse_microos:patterns-containers-runtime_podman
+   - mozilla-nss-certs # reason: opensuse_microos:patterns-containers-runtime_podman
    - multipath-tools # reason: opensuse_microos:patterns-microos-onlyDVD
-   - ncurses-utils # reason: opensuse_microos:patterns-microos-base
-   - net-tools # reason: opensuse_microos:patterns-microos-cloud
+   - ncurses-utils # reason: opensuse_microos:patterns-base-hardware
+   - net-tools # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - netavark # reason: opensuse_microos:patterns-containers-runtime_podman
-   - netcfg # reason: opensuse_microos:patterns-microos-base
-   - nftables # reason: opensuse_microos:patterns-microos-onlyDVD
+   - netcfg # reason: opensuse_microos:patterns-base-hardware
+   - nftables # reason: opensuse_microos:patterns-containers-runtime_podman
    - nss-mdns # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - nsswitch-config # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - ntfs-3g # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -5902,24 +5905,24 @@ packagesets:
    - oath-toolkit-xml # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - open-iscsi # reason: opensuse_microos:patterns-microos-onlyDVD
    - open-isns # reason: opensuse_microos:patterns-microos-onlyDVD
-   - open-lldp # reason: opensuse_microos:patterns-microos-hardware
+   - open-lldp # reason: opensuse_microos:patterns-base-hardware
    - open-vm-tools # reason: opensuse_microos:patterns-microos-onlyDVD
-   - openSUSE-build-key # reason: opensuse_microos:patterns-microos-base
+   - openSUSE-build-key # reason: opensuse_microos:patterns-containers-runtime_podman
    - openconnect # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - openssh # reason: opensuse_microos:patterns-microos-base
-   - openssh-clients # reason: opensuse_microos:patterns-microos-base
-   - openssh-common # reason: opensuse_microos:patterns-microos-base
-   - openssh-server # reason: opensuse_microos:patterns-microos-base
-   - openssl # reason: opensuse_microos:patterns-microos-cloud
-   - openssl-3 # reason: opensuse_microos:patterns-microos-cloud
+   - openssh # reason: opensuse_microos:patterns-containers-runtime_podman
+   - openssh-clients # reason: opensuse_microos:patterns-containers-runtime_podman
+   - openssh-common # reason: opensuse_microos:patterns-containers-runtime_podman
+   - openssh-server # reason: opensuse_microos:patterns-containers-runtime_podman
+   - openssl # reason: opensuse_microos:patterns-microos-alt_onlyDVD
+   - openssl-3 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - openvpn # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - openvpn-auth-pam-plugin # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - oxygen6-sounds # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - p11-kit # reason: opensuse_microos:patterns-microos-base
-   - p11-kit-tools # reason: opensuse_microos:patterns-microos-base
-   - pam # reason: opensuse_microos:patterns-microos-base
-   - pam-config # reason: opensuse_microos:patterns-microos-base
-   - pam-extra # reason: opensuse_microos:patterns-microos-base
+   - p11-kit # reason: opensuse_microos:patterns-containers-runtime_podman
+   - p11-kit-tools # reason: opensuse_microos:patterns-containers-runtime_podman
+   - pam # reason: opensuse_microos:patterns-base-hardware
+   - pam-config # reason: opensuse_microos:patterns-base-hardware
+   - pam-extra # reason: opensuse_microos:patterns-base-hardware
    - pam_oath # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - pam_pwquality # reason: opensuse_microos:patterns-microos-onlyDVD
    - partitionmanager # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -5927,36 +5930,36 @@ packagesets:
    - passt-selinux # reason: opensuse_microos_desktop:expansion
    - patterns-base-base # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - patterns-base-bootloader # reason: opensuse_microos:patterns-microos-alt_onlyDVD
-   - patterns-base-minimal_base # reason: opensuse_microos:patterns-microos-base
+   - patterns-base-hardware # reason: opensuse_microos:patterns-base-hardware
+   - patterns-base-minimal_base # reason: opensuse_microos:patterns-containers-runtime_podman
    - patterns-base-x11 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - patterns-containers-runtime_podman # reason: opensuse_microos:patterns-containers-runtime_podman
    - patterns-kde-kde_plasma # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - patterns-microos-alt_onlyDVD # reason: opensuse_microos:patterns-microos-alt_onlyDVD
-   - patterns-microos-base # reason: opensuse_microos:patterns-microos-base
+   - patterns-microos-base # reason: opensuse_microos:patterns-containers-runtime_podman
    - patterns-microos-base-packagekit # reason: opensuse_microos:patterns-microos-base-packagekit
    - patterns-microos-base-zypper # reason: opensuse_microos:patterns-microos-base-zypper
    - patterns-microos-basesystem # reason: opensuse_microos:patterns-containers-runtime_podman
-   - patterns-microos-cloud # reason: opensuse_microos:patterns-microos-cloud
+   - patterns-microos-cloud # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - patterns-microos-cockpit # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - patterns-microos-defaults # reason: opensuse_microos:patterns-microos-defaults
    - patterns-microos-desktop-common # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - patterns-microos-desktop-kde # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - patterns-microos-hardware # reason: opensuse_microos:patterns-microos-hardware
-   - patterns-microos-ima_evm # reason: opensuse_microos:patterns-microos-ima_evm
+   - patterns-microos-ima_evm # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - patterns-microos-onlyDVD # reason: opensuse_microos:patterns-microos-onlyDVD
    - patterns-microos-ra_agent # reason: opensuse_microos:patterns-microos-onlyDVD
    - patterns-microos-ra_verifier # reason: opensuse_microos:patterns-microos-alt_onlyDVD
-   - patterns-microos-selinux # reason: opensuse_microos:patterns-microos-selinux
-   - patterns-microos-sssd_ldap # reason: opensuse_microos:patterns-microos-sssd_ldap
+   - patterns-microos-selinux # reason: opensuse_microos:patterns-microos-alt_onlyDVD
+   - patterns-microos-sssd_ldap # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - pciutils # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - perl # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - perl-base # reason: opensuse_microos:patterns-microos-alt_onlyDVD
-   - permctl # reason: opensuse_microos:patterns-microos-base
-   - permissions # reason: opensuse_microos:patterns-microos-base
-   - permissions-config # reason: opensuse_microos:patterns-microos-base
+   - permctl # reason: opensuse_microos:patterns-base-hardware
+   - permissions # reason: opensuse_microos:patterns-base-hardware
+   - permissions-config # reason: opensuse_microos:patterns-base-hardware
    - phonon-vlc-qt6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - pigz # reason: opensuse_microos:patterns-microos-base
-   - pinentry # reason: opensuse_microos:patterns-microos-base
+   - pigz # reason: opensuse_microos:patterns-base-hardware
+   - pinentry # reason: opensuse_microos:patterns-containers-runtime_podman
    - pinentry-qt6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - pipewire # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - pipewire-alsa # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -5965,9 +5968,9 @@ packagesets:
    - pipewire-spa-plugins-0_2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - pipewire-spa-tools # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - pipewire-tools # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - pkgconf # reason: opensuse_microos:patterns-microos-base
-   - pkgconf-m4 # reason: opensuse_microos:patterns-microos-base
-   - pkgconf-pkg-config # reason: opensuse_microos:patterns-microos-base
+   - pkgconf # reason: opensuse_microos:patterns-base-hardware
+   - pkgconf-m4 # reason: opensuse_microos:patterns-base-hardware
+   - pkgconf-pkg-config # reason: opensuse_microos:patterns-base-hardware
    - plasma-branding-Kalpa # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - plasma5support6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - plasma6-activities # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -5990,37 +5993,37 @@ packagesets:
    - plasma6-workspace-libs # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - pngquant # reason: opensuse_microos_desktop:expansion
    - podman # reason: opensuse_microos:patterns-containers-runtime_podman
-   - policycoreutils # reason: opensuse_microos:patterns-microos-base
-   - policycoreutils-python-utils # reason: opensuse_microos:patterns-microos-onlyDVD
-   - polkit # reason: opensuse_microos:patterns-microos-base
+   - policycoreutils # reason: opensuse_microos:patterns-containers-runtime_podman
+   - policycoreutils-python-utils # reason: opensuse_microos:patterns-microos-alt_onlyDVD
+   - polkit # reason: opensuse_microos:patterns-containers-runtime_podman
    - polkit-default-privs # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - polkit-kde-agent-6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - power-profiles-daemon # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - powerdevil6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - procps # reason: opensuse_microos:patterns-microos-base
+   - procps # reason: opensuse_microos:patterns-containers-runtime_podman
    - psmisc # reason: opensuse_microos:patterns-microos-base-zypper
    - pulseaudio-utils # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - python3-audit # reason: opensuse_microos:patterns-microos-onlyDVD
+   - python3-audit # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - python3-createrepo_c # reason: opensuse_microos_desktop:expansion
    - python3-cupshelpers # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - python313 # reason: opensuse_microos:patterns-microos-cloud
-   - python313-Jinja2 # reason: opensuse_microos:patterns-microos-cloud
+   - python313 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
+   - python313-Jinja2 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - python313-Mako # reason: opensuse_microos:patterns-microos-alt_onlyDVD
-   - python313-MarkupSafe # reason: opensuse_microos:patterns-microos-cloud
-   - python313-PyJWT # reason: opensuse_microos:patterns-microos-cloud
-   - python313-PyYAML # reason: opensuse_microos:patterns-microos-cloud
+   - python313-MarkupSafe # reason: opensuse_microos:patterns-microos-alt_onlyDVD
+   - python313-PyJWT # reason: opensuse_microos:patterns-microos-alt_onlyDVD
+   - python313-PyYAML # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - python313-SQLAlchemy # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - python313-alembic # reason: opensuse_microos:patterns-microos-alt_onlyDVD
-   - python313-attrs # reason: opensuse_microos:patterns-microos-cloud
-   - python313-base # reason: opensuse_microos:patterns-microos-cloud
-   - python313-bcrypt # reason: opensuse_microos:patterns-microos-cloud
-   - python313-blinker # reason: opensuse_microos:patterns-microos-cloud
-   - python313-certifi # reason: opensuse_microos:patterns-microos-cloud
-   - python313-cffi # reason: opensuse_microos:patterns-microos-cloud
-   - python313-charset-normalizer # reason: opensuse_microos:patterns-microos-cloud
+   - python313-attrs # reason: opensuse_microos:patterns-microos-alt_onlyDVD
+   - python313-base # reason: opensuse_microos:patterns-microos-alt_onlyDVD
+   - python313-bcrypt # reason: opensuse_microos:patterns-microos-alt_onlyDVD
+   - python313-blinker # reason: opensuse_microos:patterns-microos-alt_onlyDVD
+   - python313-certifi # reason: opensuse_microos:patterns-microos-alt_onlyDVD
+   - python313-cffi # reason: opensuse_microos:patterns-microos-alt_onlyDVD
+   - python313-charset-normalizer # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - python313-cmdln # reason: opensuse_microos_desktop:expansion
-   - python313-configobj # reason: opensuse_microos:patterns-microos-cloud
-   - python313-cryptography # reason: opensuse_microos:patterns-microos-cloud
+   - python313-configobj # reason: opensuse_microos:patterns-microos-alt_onlyDVD
+   - python313-cryptography # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - python313-dbus-python # reason: opensuse_microos:patterns-microos-onlyDVD
    - python313-decorator # reason: opensuse_microos:patterns-microos-onlyDVD
    - python313-firewall # reason: opensuse_microos:patterns-microos-onlyDVD
@@ -6029,44 +6032,44 @@ packagesets:
    - python313-gobject-cairo # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - python313-gpg # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - python313-greenlet # reason: opensuse_microos:patterns-microos-alt_onlyDVD
-   - python313-idna # reason: opensuse_microos:patterns-microos-cloud
-   - python313-jsonpatch # reason: opensuse_microos:patterns-microos-cloud
-   - python313-jsonpointer # reason: opensuse_microos:patterns-microos-cloud
-   - python313-jsonschema # reason: opensuse_microos:patterns-microos-cloud
-   - python313-jsonschema-specifications # reason: opensuse_microos:patterns-microos-cloud
+   - python313-idna # reason: opensuse_microos:patterns-microos-alt_onlyDVD
+   - python313-jsonpatch # reason: opensuse_microos:patterns-microos-alt_onlyDVD
+   - python313-jsonpointer # reason: opensuse_microos:patterns-microos-alt_onlyDVD
+   - python313-jsonschema # reason: opensuse_microos:patterns-microos-alt_onlyDVD
+   - python313-jsonschema-specifications # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - python313-keylime # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - python313-lark # reason: opensuse_microos:patterns-microos-alt_onlyDVD
-   - python313-maturin # reason: opensuse_microos:patterns-microos-cloud
+   - python313-maturin # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - python313-nftables # reason: opensuse_microos:patterns-microos-onlyDVD
-   - python313-oauthlib # reason: opensuse_microos:patterns-microos-cloud
+   - python313-oauthlib # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - python313-packaging # reason: opensuse_microos:patterns-microos-alt_onlyDVD
-   - python313-passlib # reason: opensuse_microos:patterns-microos-cloud
-   - python313-policycoreutils # reason: opensuse_microos:patterns-microos-onlyDVD
+   - python313-passlib # reason: opensuse_microos:patterns-microos-alt_onlyDVD
+   - python313-policycoreutils # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - python313-psutil # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - python313-pyasn1 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - python313-pyasn1-modules # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - python313-pycairo # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - python313-pycparser # reason: opensuse_microos:patterns-microos-cloud
+   - python313-pycparser # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - python313-pycups # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - python313-pycurl # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - python313-pyserial # reason: opensuse_microos:patterns-microos-cloud
+   - python313-pyserial # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - python313-pysmbc # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - python313-pyzmq # reason: opensuse_microos:patterns-microos-alt_onlyDVD
-   - python313-referencing # reason: opensuse_microos:patterns-microos-cloud
-   - python313-requests # reason: opensuse_microos:patterns-microos-cloud
-   - python313-rpds-py # reason: opensuse_microos:patterns-microos-cloud
-   - python313-selinux # reason: opensuse_microos:patterns-microos-onlyDVD
-   - python313-semanage # reason: opensuse_microos:patterns-microos-onlyDVD
-   - python313-setools # reason: opensuse_microos:patterns-microos-onlyDVD
-   - python313-setuptools # reason: opensuse_microos:patterns-microos-cloud
+   - python313-referencing # reason: opensuse_microos:patterns-microos-alt_onlyDVD
+   - python313-requests # reason: opensuse_microos:patterns-microos-alt_onlyDVD
+   - python313-rpds-py # reason: opensuse_microos:patterns-microos-alt_onlyDVD
+   - python313-selinux # reason: opensuse_microos:patterns-microos-alt_onlyDVD
+   - python313-semanage # reason: opensuse_microos:patterns-microos-alt_onlyDVD
+   - python313-setools # reason: opensuse_microos:patterns-microos-alt_onlyDVD
+   - python313-setuptools # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - python313-tornado6 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
-   - python313-typing_extensions # reason: opensuse_microos:patterns-microos-cloud
-   - python313-urllib3 # reason: opensuse_microos:patterns-microos-cloud
+   - python313-typing_extensions # reason: opensuse_microos:patterns-microos-alt_onlyDVD
+   - python313-urllib3 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - qca-qt6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - qemu-guest-agent # reason: opensuse_microos:patterns-microos-onlyDVD
    - qqc2-breeze-style6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - qrca # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - qrencode # reason: opensuse_microos:patterns-microos-onlyDVD
+   - qrencode # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - qt6-declarative-imports # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - qt6-imageformats # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - qt6-location # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -6090,22 +6093,22 @@ packagesets:
    - qt6-webengine # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - qt6-webengine-imports # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - qtdeclarative-imports-provides-qt6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - read-only-root-fs # reason: opensuse_microos:patterns-microos-base
-   - rebootmgr # reason: opensuse_microos:patterns-microos-base
+   - read-only-root-fs # reason: opensuse_microos:patterns-containers-runtime_podman
+   - rebootmgr # reason: opensuse_microos:patterns-containers-runtime_podman
    - registries-conf-default # reason: opensuse_microos:patterns-containers-runtime_podman
    - rootlesskit # reason: opensuse_microos:docker-rootless-extras
-   - rpm # reason: opensuse_microos:patterns-microos-base
-   - rpm-config-SUSE # reason: opensuse_microos:patterns-microos-base
-   - rpm-plugin-selinux # reason: opensuse_microos:patterns-microos-selinux
-   - rsync # reason: opensuse_microos:patterns-microos-base
+   - rpm # reason: opensuse_microos:patterns-base-hardware
+   - rpm-config-SUSE # reason: opensuse_microos:patterns-base-hardware
+   - rpm-plugin-selinux # reason: opensuse_microos:patterns-microos-alt_onlyDVD
+   - rsync # reason: opensuse_microos:patterns-containers-runtime_podman
    - rtkit # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - run0-wrappers # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - runc # reason: opensuse_microos:patterns-containers-runtime_podman
    - rust-keylime # reason: opensuse_microos:patterns-microos-onlyDVD
-   - samba-ad-dc-libs # reason: opensuse_microos:patterns-microos-sssd_ldap
+   - samba-ad-dc-libs # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - samba-client # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - samba-client-libs # reason: opensuse_microos:patterns-microos-sssd_ldap
-   - samba-libs # reason: opensuse_microos:patterns-microos-sssd_ldap
+   - samba-client-libs # reason: opensuse_microos:patterns-microos-alt_onlyDVD
+   - samba-libs # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - sdbootutil # reason: opensuse_microos:patterns-microos-onlyDVD
    - sdbootutil-dracut-measure-pcr # reason: opensuse_microos:patterns-microos-onlyDVD
    - sdbootutil-snapper # reason: opensuse_microos:patterns-microos-onlyDVD
@@ -6113,18 +6116,18 @@ packagesets:
    - sddm-greeter-qt6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - sddm-kcm6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - sddm-qt6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - sed # reason: opensuse_microos:patterns-microos-base
-   - selinux-autorelabel # reason: opensuse_microos:patterns-microos-base
-   - selinux-policy # reason: opensuse_microos:patterns-microos-selinux
-   - selinux-policy-targeted # reason: opensuse_microos:patterns-microos-selinux
+   - sed # reason: opensuse_microos:patterns-base-hardware
+   - selinux-autorelabel # reason: opensuse_microos:patterns-containers-runtime_podman
+   - selinux-policy # reason: opensuse_microos:patterns-microos-alt_onlyDVD
+   - selinux-policy-targeted # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - selinux-policy-targeted-gaming # reason: opensuse_microos_desktop:expansion
-   - selinux-tools # reason: opensuse_microos:patterns-microos-base
+   - selinux-tools # reason: opensuse_microos:patterns-containers-runtime_podman
    - sessreg # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - sg3_utils # reason: opensuse_microos:patterns-microos-onlyDVD
    - sgml-skel # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - shadow # reason: opensuse_microos:patterns-microos-base
-   - shadow-pw-mgmt # reason: opensuse_microos:patterns-microos-base
-   - shared-mime-info # reason: opensuse_microos:patterns-microos-base
+   - shadow # reason: opensuse_microos:patterns-containers-runtime_podman
+   - shadow-pw-mgmt # reason: opensuse_microos:patterns-containers-runtime_podman
+   - shared-mime-info # reason: opensuse_microos:patterns-containers-runtime_podman
    - shim # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - signon-kwallet-extension # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - signon-plugin-oauth2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -6134,7 +6137,7 @@ packagesets:
    - signond-libs # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - skopeo # reason: opensuse_microos:skopeo
    - slirp4netns # reason: opensuse_microos:docker-rootless-extras
-   - snapper # reason: opensuse_microos:patterns-microos-base
+   - snapper # reason: opensuse_microos:patterns-containers-runtime_podman
    - sndiff # reason: opensuse_microos:patterns-microos-defaults
    - snmp-mibs # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - sof-firmware # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -6143,50 +6146,50 @@ packagesets:
    - spectacle # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - spice-vdagent # reason: opensuse_microos:patterns-microos-onlyDVD
    - ssh-pairing # reason: opensuse_microos:patterns-microos-alt_onlyDVD
-   - sssd # reason: opensuse_microos:patterns-microos-sssd_ldap
-   - sssd-krb5-common # reason: opensuse_microos:patterns-microos-sssd_ldap
-   - sssd-ldap # reason: opensuse_microos:patterns-microos-sssd_ldap
+   - sssd # reason: opensuse_microos:patterns-microos-alt_onlyDVD
+   - sssd-krb5-common # reason: opensuse_microos:patterns-microos-alt_onlyDVD
+   - sssd-ldap # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - steam-devices # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - sudo # reason: opensuse_microos:patterns-microos-base
+   - sudo # reason: opensuse_microos:patterns-containers-runtime_podman
    - suse-fonts # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - suse-module-tools # reason: opensuse_microos:patterns-microos-base
-   - suse-module-tools-scriptlets # reason: opensuse_microos:patterns-microos-onlyDVD
-   - sysextmgr # reason: opensuse_microos:patterns-microos-base
+   - suse-module-tools # reason: opensuse_microos:patterns-base-hardware
+   - suse-module-tools-scriptlets # reason: opensuse_microos:patterns-microos-alt_onlyDVD
+   - sysextmgr # reason: opensuse_microos:patterns-containers-runtime_podman
    - system-config-printer-common # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - system-config-printer-dbus-service # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - system-group-audit # reason: opensuse_microos:patterns-microos-defaults
-   - system-group-hardware # reason: opensuse_microos:patterns-microos-base
-   - system-group-kvm # reason: opensuse_microos:patterns-microos-base
+   - system-group-hardware # reason: opensuse_microos:patterns-base-hardware
+   - system-group-kvm # reason: opensuse_microos:patterns-base-hardware
    - system-user-flatpak # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - system-user-lp # reason: opensuse_microos:patterns-microos-base
-   - system-user-nobody # reason: opensuse_microos:patterns-microos-base
+   - system-user-lp # reason: opensuse_microos:patterns-base-hardware
+   - system-user-nobody # reason: opensuse_microos:patterns-containers-runtime_podman
    - system-user-root # reason: opensuse_microos:MicroOS-release
-   - system-user-tss # reason: opensuse_microos:patterns-microos-base
-   - systemd # reason: opensuse_microos:patterns-microos-base
+   - system-user-tss # reason: opensuse_microos:patterns-containers-runtime_podman
+   - systemd # reason: opensuse_microos:patterns-base-hardware
    - systemd-boot # reason: opensuse_microos:patterns-microos-onlyDVD
-   - systemd-container # reason: opensuse_microos:patterns-microos-base
-   - systemd-default-settings # reason: opensuse_microos:patterns-microos-base
-   - systemd-default-settings-branding-SLE # reason: opensuse_microos:patterns-microos-hardware
-   - systemd-default-settings-branding-openSUSE # reason: opensuse_microos:patterns-microos-base
-   - systemd-presets-branding-Aeon # reason: opensuse_microos:patterns-microos-hardware
-   - systemd-presets-branding-MicroOS # reason: opensuse_microos:patterns-microos-base
-   - systemd-presets-common-SUSE # reason: opensuse_microos:patterns-microos-base
-   - systemd-rpm-macros # reason: opensuse_microos:patterns-microos-base
+   - systemd-container # reason: opensuse_microos:patterns-containers-runtime_podman
+   - systemd-default-settings # reason: opensuse_microos:patterns-base-hardware
+   - systemd-default-settings-branding-SLE # reason: opensuse_microos:patterns-base-hardware
+   - systemd-default-settings-branding-openSUSE # reason: opensuse_microos:patterns-containers-runtime_podman
+   - systemd-presets-branding-Aeon # reason: opensuse_microos:patterns-base-hardware
+   - systemd-presets-branding-MicroOS # reason: opensuse_microos:patterns-containers-runtime_podman
+   - systemd-presets-common-SUSE # reason: opensuse_microos:patterns-base-hardware
+   - systemd-rpm-macros # reason: opensuse_microos:patterns-base-hardware
    - systemd-zram-service # reason: opensuse_microos:patterns-microos-onlyDVD
    - systemsettings6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - sysuser-shadow # reason: opensuse_microos:patterns-microos-base
+   - sysuser-shadow # reason: opensuse_microos:patterns-base-hardware
    - sysvinit-tools # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - tar # reason: opensuse_microos:patterns-microos-base
+   - tar # reason: opensuse_microos:patterns-containers-runtime_podman
    - terminfo-base # reason: opensuse_microos:MicroOS-release
    - tesseract-ocr-common # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - tesseract-ocr-traineddata-ces # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - thin-provisioning-tools # reason: opensuse_microos:patterns-microos-hardware
-   - timezone # reason: opensuse_microos:patterns-microos-base
+   - thin-provisioning-tools # reason: opensuse_microos:patterns-base-hardware
+   - timezone # reason: opensuse_microos:patterns-containers-runtime_podman
    - toolbox # reason: opensuse_microos:patterns-containers-runtime_podman
-   - tpm2-0-tss # reason: opensuse_microos:patterns-microos-base
-   - tpm2.0-abrmd # reason: opensuse_microos:patterns-microos-onlyDVD
+   - tpm2-0-tss # reason: opensuse_microos:patterns-containers-runtime_podman
+   - tpm2.0-abrmd # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - tpm2.0-abrmd-selinux # reason: opensuse_microos:patterns-microos-alt_onlyDVD
-   - tpm2.0-tools # reason: opensuse_microos:patterns-microos-base
+   - tpm2.0-tools # reason: opensuse_microos:patterns-containers-runtime_podman
    - transactional-update # reason: opensuse_microos:patterns-microos-base-zypper
    - transactional-update-notifier # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - transactional-update-zypp-config # reason: opensuse_microos:patterns-microos-base-zypper
@@ -6212,14 +6215,14 @@ packagesets:
    - typelib-1_0-Pango-1_0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - typelib-1_0-Polkit-1_0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - typelib-1_0-Secret-1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - ucode-amd # reason: opensuse_microos:patterns-microos-hardware
-   - ucode-intel # reason: opensuse_microos:patterns-microos-hardware
-   - udev # reason: opensuse_microos:patterns-microos-base
+   - ucode-amd # reason: opensuse_microos:patterns-base-hardware
+   - ucode-intel # reason: opensuse_microos:patterns-base-hardware
+   - udev # reason: opensuse_microos:patterns-base-hardware
    - udev-configure-printer # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - udisks2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - unzip # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - update-alternatives # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - update-bootloader # reason: opensuse_microos:patterns-microos-base
+   - update-bootloader # reason: opensuse_microos:patterns-containers-runtime_podman
    - upower # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - urw-base35-fonts # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - urw-base35-fonts-C059 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -6232,21 +6235,21 @@ packagesets:
    - urw-base35-fonts-URWBookman # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - urw-base35-fonts-URWGothic # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - urw-base35-fonts-Z003 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - util-linux # reason: opensuse_microos:patterns-microos-base
-   - util-linux-systemd # reason: opensuse_microos:patterns-microos-base
-   - vim-data-common # reason: opensuse_microos:patterns-microos-base
-   - vim-small # reason: opensuse_microos:patterns-microos-base
+   - util-linux # reason: opensuse_microos:patterns-base-hardware
+   - util-linux-systemd # reason: opensuse_microos:patterns-base-hardware
+   - vim-data-common # reason: opensuse_microos:patterns-containers-runtime_podman
+   - vim-small # reason: opensuse_microos:patterns-containers-runtime_podman
    - vlc # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - vlc-noX # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - vlc-qt # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - vulkan-tools # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - wallpaper-branding-openSUSE # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - wayland-utils # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - wget # reason: opensuse_microos:patterns-microos-cloud
+   - wget # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - which # reason: opensuse_microos:patterns-microos-onlyDVD
    - wireplumber # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - wpa_supplicant # reason: opensuse_microos:patterns-microos-base
-   - wtmpdb # reason: opensuse_microos:patterns-microos-base
+   - wpa_supplicant # reason: opensuse_microos:patterns-containers-runtime_podman
+   - wtmpdb # reason: opensuse_microos:patterns-containers-runtime_podman
    - xbitmaps # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - xconsole # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - xdg-dbus-proxy # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -6257,7 +6260,7 @@ packagesets:
    - xdg-utils # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - xdm # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - xdpyinfo # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - xen-libs # reason: opensuse_microos:patterns-microos-base
+   - xen-libs # reason: opensuse_microos:patterns-containers-runtime_podman
    - xf86-input-libinput # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - xfsprogs # reason: opensuse_microos:patterns-microos-onlyDVD
    - xkbcomp # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -6276,14 +6279,14 @@ packagesets:
    - xterm-bin # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - xterm-resize # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - xwayland # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - xz # reason: opensuse_microos:patterns-microos-base
-   - yast2-logs # reason: opensuse_microos:patterns-microos-base
-   - zstd # reason: opensuse_microos:patterns-microos-base
+   - xz # reason: opensuse_microos:patterns-base-hardware
+   - yast2-logs # reason: opensuse_microos:patterns-containers-runtime_podman
+   - zstd # reason: opensuse_microos:patterns-base-hardware
    - zypp-boot-plugin # reason: opensuse_microos:patterns-microos-base-zypper
    - zypp-excludedocs # reason: opensuse_microos:patterns-microos-base-zypper
    - zypp-no-multiversion # reason: opensuse_microos:patterns-microos-base-zypper
    - zypp-no-recommends # reason: opensuse_microos:patterns-microos-base-zypper
-   - zypp-single-rpmtrans # reason: opensuse_microos:patterns-microos-base
+   - zypp-single-rpmtrans # reason: opensuse_microos:patterns-containers-runtime_podman
    - zypper # reason: opensuse_microos:patterns-microos-base-zypper
    - zypper-needs-restarting # reason: opensuse_microos:patterns-microos-base-zypper
 
@@ -7673,6 +7676,7 @@ packagesets:
    - lsof # reason: opensuse_kalpa:patterns-kalpa-base
    - lvm2 # reason: opensuse_kalpa:patterns-kalpa-base
    - makedumpfile # reason: opensuse_kalpa:patterns-kalpa-base
+   - man-online # reason: opensuse_kalpa:patterns-kalpa-base
    - mandoc-bin # reason: opensuse_kalpa:patterns-kalpa-base
    - mdadm # reason: opensuse_kalpa:patterns-kalpa-base
    - metatheme-breeze6-common # reason: opensuse_kalpa:patterns-kalpa-base
