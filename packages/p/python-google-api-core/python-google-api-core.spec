@@ -32,7 +32,7 @@ Summary:        Google API client core library
 License:        Apache-2.0
 URL:            https://github.com/googleapis/google-cloud-python/tree/main/packages/google-api-core
 Source:         https://files.pythonhosted.org/packages/source/g/google_api_core/google_api_core-%{version}.tar.gz
-BuildRequires:  %{python_module googleapis-common-protos >= 1.56.2}
+BuildRequires:  %{python_module googleapis-common-protos >= 1.69.2}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 40.3.0}
 BuildRequires:  %{python_module wheel}
@@ -42,7 +42,11 @@ Obsoletes:      python3-google-api-core < %{version}
 # START TESTING SECTION
 %if %{with test}
 BuildRequires:  %{python_module google-api-core = %{version}}
-BuildRequires:  %{python_module proto-plus}
+BuildRequires:  %{python_module grpcio >= 1.59.0 if %python-base < 3.14}
+BuildRequires:  %{python_module grpcio >= 1.75.1 if %python-base >= 3.14}
+BuildRequires:  %{python_module grpcio-status >= 1.59.0 if %python-base < 3.14}
+BuildRequires:  %{python_module grpcio-status >= 1.75.1 if %python-base >= 3.14}
+BuildRequires:  %{python_module proto-plus >= 1.26.1}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
@@ -51,12 +55,20 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-google-auth >= 2.14.1
-Requires:       python-googleapis-common-protos >= 1.56.2
-Requires:       python-grpcio >= 1.49.1
-Requires:       python-grpcio-status >= 1.49.1
-Requires:       python-requests >= 2.18.0
-Requires:       (python-proto-plus >= 1.25.0 with python-proto-plus < 2.0.0)
-Requires:       (python-protobuf >= 4.25.8 with python-protobuf < 8.0.0)
+Requires:       (python-googleapis-common-protos >= 1.69.2 with python-googleapis-common-protos < 2.0.0)
+%if %python_version_nodots < 314
+Requires:       python-grpcio >= 1.59.0
+%else
+Requires:       python-grpcio >= 1.75.1
+%endif
+%if %python_version_nodots < 314
+Requires:       python-grpcio-status >= 1.59.0
+%else
+Requires:       python-grpcio-status >= 1.75.1
+%endif
+Requires:       python-requests >= 2.33.0
+Requires:       (python-proto-plus >= 1.26.1 with python-proto-plus < 2.0.0)
+Requires:       (python-protobuf >= 6.33.5 with python-protobuf < 8.0.0)
 BuildArch:      noarch
 %python_subpackages
 

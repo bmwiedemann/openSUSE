@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 18 13:53:02 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update BuildRequires and Requires from pyproject.toml
+
+-------------------------------------------------------------------
 Fri Aug 14 09:56:21 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Add missing python-pytest-mock to BuildRequires for test flavor

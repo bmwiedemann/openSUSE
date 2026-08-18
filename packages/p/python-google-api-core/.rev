@@ -529,4 +529,12 @@
     <comment></comment>
     <requestid>1371204</requestid>
   </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>a4b1f0fbcf73985e3e618ea06f437c81</srcmd5>
+    <version>2.34.0</version>
+    <time>1787063916</time>
+    <user>anag_factory</user>
+    <comment>- Update BuildRequires and Requires from pyproject.toml (forwarded request 1371777 from glaubitz)</comment>
+    <requestid>1371794</requestid>
+  </revision>
 </revisionlist>
