@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Aug 13 17:38:53 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.27rc3 (released 2026-08-13) is a release candidate version of
+  go1.27 cut from the master branch at the revision tagged
+  go1.27rc3.
+  Refs boo#1272545 go1.27 release tracking
+  CVE-2026-56853 CVE-2026-39821 CVE-2026-56862 CVE-2026-56859 CVE-2026-56860 CVE-2026-56865 CVE-2026-56864 CVE-2026-33818 CVE-2026-56858
+  * go#80205 boo#1275028 security: fix CVE-2026-56853 net/http: apply ReadHeaderTimeout when doing unencrypted HTTP/2 check
+  * go#78760 boo#1266609 security: fix CVE-2026-39821 x/net/idna: failure to reject ASCII-only Punycode-encoded labels
+  * go#80528 boo#1275032 security: fix CVE-2026-56862 crypto/tls: limit handshake messages we are willing to accept post-handshake
+  * go#80481 boo#1275026 security: fix CVE-2026-56859 encoding/xml: add recursion depth guard during decode
+  * go#80494 boo#1275029 security: fix CVE-2026-56860 net/url: avoid quadratic complexity in resolvePath
+  * go#80744 boo#1275024 security: fix CVE-2026-56865 x/mod/sumdb/tlog: fix transparency log tile verification bypass
+  * go#80745 boo#1275025 security: fix CVE-2026-56864 x/mod/sumdb: ignore unrelated, unauthenticated hashes in Lookup
+  * go#80405 boo#1275034 security: fix CVE-2026-33818 encoding/asn1: enforce maximum recursion depth
+  * go#80435 boo#1275033 security: fix CVE-2026-56858 html/template: fix Javascript regexp context tracking
+
+-------------------------------------------------------------------
 Tue Jul  7 19:42:34 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.27rc2 (released 2026-07-07) is a release candidate version of
