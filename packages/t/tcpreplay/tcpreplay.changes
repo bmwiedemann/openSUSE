@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sat Aug 15 18:25:33 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 4.6.1:
+  * Three new security advisories, none with a CVE assigned yet:
+    heap out-of-bounds reads in tcpliveplay's pcap parsing, one
+    of which could leak adjacent heap memory onto the live
+    network (GHSA-4hqm-8v2c-9pwj); an inverted bounds check in
+    the dlt_radiotap plugin, reachable only by third-party code
+    linking libtcpedit directly (GHSA-pmmx-m8p5-969j); and a
+    heap out-of-bounds read in tcpprep cache-file parsing
+    (GHSA-p3f2-88rg-9mch)
+  * Nine defects found by a new OSS-Fuzz pipeline, mostly in
+    fragroute: a heap overflow write and a pointer corruption in
+    ip_chaff_apply(), unbounded packet growth from stacked
+    duplicating rules, a leaked rule chain and leaked rand_t
+    handles, null dereferences in delay_apply() and
+    raw_ip_opt_parse(), and exit() calls on two error paths
+  * Fix an out-of-bounds write from an undersized struct
+    bpf_program stub on libbpf builds, reached through tcpprep's
+    and tcpbridge's -f option
+  * Fix a use-after-free in fragroute's pkt_close() and an
+    uninitialised-stack read in its --dbug logging
+  * Fix TX_RING failing outright on interfaces with an MTU of
+    about 1365 or less, such as the IPv6 minimum of 1280
+  * Mark the wire-format header structs packed, fixing systemic
+    misaligned access found by UBSan
+  * Remove --xdp-batch-size: raising it above the default of 1
+    showed no benefit on 100GigE
+  * Ship a dependency-free unit test suite and a fuzz corpus
+    replay, both wired into make check
+- Run the new test suite in %check
+- Drop the -std=gnu11 pin on the bundled libopts: it compiles
+  clean under gcc 16's C23 default, and the build still detects
+  Linux TX_RING support
+
+-------------------------------------------------------------------
 Wed Jul 29 06:57:54 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 4.6.0:

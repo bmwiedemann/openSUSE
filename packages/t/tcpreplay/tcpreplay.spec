@@ -17,7 +17,7 @@
 
 
 Name:           tcpreplay
-Version:        4.6.0
+Version:        4.6.1
 Release:        0
 Summary:        Network analysis and testing tools
 License:        GPL-3.0-only
@@ -47,13 +47,6 @@ supports switches, routers and IP Flow/NetFlow appliances.
 %build
 %configure \
   --enable-dynamic-link
-# The bundled libopts (autoopts) is not C23-clean, so it needs an older
-# language level than gcc >= 15's -std=gnu23 default.  Pin it for that
-# directory only: pinning the whole tree also drags configure's TX_RING
-# probe below C23, where <netpacket/packet.h> and <linux/if_packet.h>
-# cannot be included together, which silently disabled HAVE_TX_RING and
-# left tcpreplay on the slower PF_PACKET send() path.
-%make_build -C libopts CFLAGS="%{optflags} -std=gnu11"
 %make_build
 
 %install
@@ -67,6 +60,13 @@ supports switches, routers and IP Flow/NetFlow appliances.
 rm -r %{buildroot}%{_includedir}/%{name}
 rm %{buildroot}%{_libdir}/lib%{name}.a
 rm %{buildroot}%{_libdir}/pkgconfig/lib%{name}.pc
+
+%check
+# 4.6.1 added a dependency-free unit suite plus a fuzz-corpus replay, both
+# wired into "make check".  The integration suite under test/ is deliberately
+# not part of it -- that one needs root and a live NIC -- so this stays
+# runnable in the build root.
+%make_build check
 
 %files
 %license docs/LICENSE
