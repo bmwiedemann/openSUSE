@@ -373,4 +373,13 @@
     version (CVE-2026-13149, bsc#1269923)</comment>
     <requestid>1364443</requestid>
   </revision>
+  <revision rev="26" vrev="5">
+    <srcmd5>d3181dbabeb6e6a58538bd4237c68001</srcmd5>
+    <version>4.2.0</version>
+    <time>1787063848</time>
+    <user>anag_factory</user>
+    <comment>- Revendor updating browserslist:
+  (CVE-2026-73088, CVE-2026-73089, bsc#1275374, bsc#1275437)</comment>
+    <requestid>1371659</requestid>
+  </revision>
 </revisionlist>

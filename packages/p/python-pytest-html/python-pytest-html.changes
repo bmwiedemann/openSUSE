@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 18 06:09:30 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Revendor updating browserslist:
+  (CVE-2026-73088, CVE-2026-73089, bsc#1275374, bsc#1275437)
+
+-------------------------------------------------------------------
 Wed Jul  8 08:12:16 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Revendor updating brace-expansion:
