@@ -1,7 +1,7 @@
 #
 # spec file for package mgetty
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -254,7 +254,7 @@ chmod 664 %{_localstatedir}/log/sendfax.log
 %{_libexecdir}/mgetty+sendfax
 %attr(755,fax,root) %dir %{_localstatedir}/spool/fax
 %dir %{_localstatedir}/spool/fax/incoming
-%attr(755,fax,root) %verify(not mode) %dir %{_localstatedir}/spool/fax/outgoing
+%attr(755,fax,root) %verify(not mode group) %dir %{_localstatedir}/spool/fax/outgoing
 %config(noreplace) %{_sysconfdir}/mgetty+sendfax/faxheader
 %config(noreplace) %{_sysconfdir}/mgetty+sendfax/faxrunq.config
 %config(noreplace) %{_sysconfdir}/mgetty+sendfax/sendfax.config
