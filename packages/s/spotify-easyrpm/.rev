@@ -92,4 +92,23 @@
 - Do not run scheduled task on metered networks @stanislav-brabec</comment>
     <requestid>1308829</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>555297d936d76628ffe1299a8245bb2a</srcmd5>
+    <version>4.0.1</version>
+    <time>1787063813</time>
+    <user>anag_factory</user>
+    <comment>Update to 4.0.1
+
+- Verify the downloaded snap against the sha3-384 digest published by snapcraft.io, and query the API over https
+- Local repo is owned by the invoking user at 755/644 instead of world writable
+- Timestamped release on the generated spotify-client RPM, so rebuilding an unchanged Spotify version yields an installable package
+- Disable the debug package, so no empty debugsource RPMs are produced
+- --clean-repo keeps the newest build rather than deleting every RPM
+- Prompts exit on EOF instead of looping forever
+- Do not force X11 in the desktop launcher, and drop the unmaintained Mageia support
+- Drop the obsolete update-desktop-files requirement, add curl, wget and openssl which the script calls at runtime
+
+Full details in spotify-easyrpm.changes</comment>
+    <requestid>1371626</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Aug 17 21:52:43 UTC 2026 - David Mace <david@macemail.co.uk>
+
+- Update to 4.0.1
+  * Give the built spotify-client RPM a timestamped release, so rebuilding
+    an unchanged Spotify version produces an installable package instead of
+    colliding with the installed version-release
+  * Verify the downloaded snap against the sha3-384 digest published by
+    snapcraft.io, and query the API over https
+  * Fail with an error when the snapcraft.io lookup fails, instead of
+    reporting the installed version as up to date
+  * Own the local repo as the invoking user at 755/644 rather than making it
+    world writable, which combined with gpgcheck=0 let any local user stage
+    a package for zypper to install as root
+  * Exit the prompts on EOF instead of looping forever, and reject answers
+    that are not understood
+  * --clean-repo keeps the newest build instead of deleting every RPM, and
+    clears out stale debuginfo / debugsource packages
+  * Disable the debug package, so no empty debugsource RPMs reach the local
+    repo and rpmbuild no longer warns
+  * Show a progress bar while downloading, and extract the snap quietly
+  * Validate the --set-channel argument
+  * Do not force X11 in the desktop launcher. Spotify selects it by default
+    again, and forcing it breaks startup on a session without Xwayland
+  * Leave /usr/bin/spotify-easyrpm alone when a package owns it
+  * Check dependencies on scheduled runs, where sudo cannot prompt
+  * Drop the unmaintained Mageia support, the tool is openSUSE / SLE only
+  * zypper ar: disable the package cache for the local repo @stanislav-brabec
+- Drop the obsolete update-desktop-files requirement
+- Require curl, wget and openssl, which the script calls at runtime
+
+-------------------------------------------------------------------
 Thu Oct  2 15:48:39 UTC 2025 - David Mace <david@macemail.co.uk>
 
 - Remove support for obsolete update-desktop-files (broken anyway) @stanislav-brabec
