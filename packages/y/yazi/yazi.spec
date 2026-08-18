@@ -17,7 +17,7 @@
 
 
 Name:           yazi
-Version:        26.5.6
+Version:        26.8.15
 Release:        0
 Summary:        Blazing fast terminal file manager written in Rust, based on async I/O
 License:        MIT
@@ -28,6 +28,7 @@ Source1:        vendor.tar.zst
 Requires:       file
 BuildRequires:  cargo-packaging
 BuildRequires:  lua54-devel
+BuildRequires:  memory-constraints
 
 Suggests:       ffmpegthumbnailer
 Suggests:       7zip
@@ -97,6 +98,8 @@ sed -i '/codegen-units = 1/d' Cargo.toml
 %build
 export YAZI_GEN_COMPLETIONS=true
 export VERGEN_GIT_SHA='openSUSE'
+%limit_build -m 3072
+export CARGO_BUILD_JOBS=%{?jobs}
 %{cargo_build}
 
 %install
@@ -111,6 +114,7 @@ install -Dm 0644 assets/yazi.desktop %{buildroot}/%{_datadir}/applications/yazi.
 install -Dm 0644 assets/logo.png %{buildroot}/%{_datadir}/pixmaps/yazi.png
 
 %check
+export VERGEN_GIT_SHA='openSUSE'
 %{cargo_test}
 
 %files
