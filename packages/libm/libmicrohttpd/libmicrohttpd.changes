@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Aug  7 20:46:21 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.0.10:
+  * Fix race in thread-per-connection mode on wake-up signal
+    between daemon and thread that could result in lost wake-ups
+    and thus connections that did not finish processing
+  * Fix rare assertion failure in relation to suspend-and-resume
+    processing (harmless if assertions were turned off)
+
+-------------------------------------------------------------------
 Sat Aug  1 13:59:10 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.0.9:
