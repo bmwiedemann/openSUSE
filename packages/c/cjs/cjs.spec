@@ -46,7 +46,6 @@ BuildRequires:  readline-devel
 %endif
 BuildRequires:  pkgconfig(sysprof-6)
 BuildRequires:  pkgconfig(sysprof-capture-4)
-Conflicts:      gjs
 
 %description
 JavaScript bindings based on GObject Introspection for the
