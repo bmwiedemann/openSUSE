@@ -54,7 +54,8 @@ software framework.
 %autosetup
 
 %build
-%meson
+%meson \
+	-Dinstall-tests=true \
 %meson_build
 
 %check
@@ -67,6 +68,17 @@ software framework.
 # meaning on SUSE based distros
 mkdir -p %{buildroot}/%{_docdir}/bolt/
 mv %{buildroot}%{_datadir}/polkit-1/rules.d/org.freedesktop.bolt.rules %{buildroot}/%{_docdir}/bolt/
+
+# Generate gnome-desktop-testing .test metadata files for bolt
+# (bolt meson does not install these, so we create them here)
+install -d %{buildroot}%{_datadir}/installed-tests/%{name}
+find %{buildroot}%{_libexecdir}/installed-tests/%{name} -name "test-*" -type f | while read t; do
+    tname=$(basename "$t")
+    [ -x "$t" ] || continue
+    printf '[Test]\nType=session\nExec=%{_libexecdir}/installed-tests/%{name}/%s\n' \
+        "$tname" > \
+        %{buildroot}%{_datadir}/installed-tests/%{name}/${tname}.test
+done
 
 %preun
 %service_del_preun bolt.service
@@ -96,5 +108,21 @@ mv %{buildroot}%{_datadir}/polkit-1/rules.d/org.freedesktop.bolt.rules %{buildro
 %files tools
 %{_bindir}/boltctl
 %{_mandir}/man1/boltctl.1%{?ext_man}
+
+%package tests
+Summary:        Installed tests for %{name}
+Requires:       %{name} = %{version}
+Requires:       gnome-desktop-testing
+Requires:       python3-dbusmock
+Requires:       umockdev
+
+%description tests
+Installed tests for bolt, compatible with gnome-desktop-testing-runner.
+
+%files tests
+%dir %{_libexecdir}/installed-tests
+%{_libexecdir}/installed-tests/%{name}/
+%dir %{_datadir}/installed-tests
+%{_datadir}/installed-tests/%{name}/
 
 %changelog

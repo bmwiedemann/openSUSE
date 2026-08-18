@@ -190,4 +190,12 @@ privileges and the file did not have any effect. (boo#1125425)</comment>
     <comment></comment>
     <requestid>1343649</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>64ce3ef550a873ce49fbb0f8ddfb888d</srcmd5>
+    <version>0.9.11</version>
+    <time>1787063732</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1371566</requestid>
+  </revision>
 </revisionlist>
