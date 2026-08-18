@@ -1,7 +1,7 @@
 #
 # spec file for package gap-crypting
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           gap-crypting
-Version:        0.10.6
+Version:        0.10.7
 Release:        0
 Summary:        GAP: Support for hashes and crypto
 License:        BSD-3-Clause
@@ -27,8 +27,7 @@ URL:            https://gap-packages.github.io/crypting/
 Source:         https://github.com/gap-packages/crypting/releases/download/v%version/crypting-%version.tar.gz
 BuildRequires:  gap-devel
 BuildRequires:  gap-rpm-devel
-Requires:       gap-core >= 4.10
-Requires:       gap-gapdoc >= 1.5
+Requires:       gap-core >= 4.12
 
 %description
 This GAP module implements some cryptographic primitives. At the
