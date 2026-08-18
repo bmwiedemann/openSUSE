@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Aug 18 10:50:16 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Applied patches (bsc#1275475, bsc#1275476)
+  Fixes for Security vulnerabilities for zkey and friends
+  * s390-tools-zkey-Harden-KMS-config-directory-handling.patch
+    - zkey: Harden KMS config directory handling - Commit `0eef784`
+  * s390-tools-zkey-Harden-zkey-kms-unbind-command.patch
+    - zkey: Harden 'zkey kms unbind' command - Commit `1b90d15`
+  * s390-tools-zkey-ekmfweb-zkey-kmip-Harden-KMS-plugin-file-handling.patch
+    - zkey/ekmfweb, zkey/kmip: Harden KMS plugin file handling - Commit `bc81c32`
+- Re-vendor-ed vendor.tar.zst
+
+-------------------------------------------------------------------
 Thu Aug  6 07:17:36 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Amended the .spec file dependencies and systemd scripts:

@@ -1,0 +1,136 @@
+From 0eef7846bd9d29546877edd1368b5b0d7162132a Mon Sep 17 00:00:00 2001
+From: Ingo Franzki <ifranzki@linux.ibm.com>
+Date: Fri, 31 Jul 2026 10:48:35 +0200
+Subject: [PATCH] zkey: Harden KMS config directory handling
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+When the zkey repository is bound to a KMS, a KMS config directory is
+created inside the zkey repository. The path of this config directory is
+stored in the kms.conf properties file.
+
+The properties file could be manipulated by a malicious user (which must
+be a member of the 'zkeyadm' user group) and the config directory path
+could be changed to point to a path outside of the zkey repository.
+
+Whenever using the config directory, make sure that it is inside the
+zkey repository and fail early if not.
+
+Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+Reviewed-by: Finn Callies <fcallies@linux.ibm.com>
+Signed-off-by: Jan Höppner <hoeppner@linux.ibm.com>
+---
+ zkey/kms.c  | 48 +++++++++++++++++++++++++++++++++++++++++++++++-
+ zkey/kms.h  |  3 ++-
+ zkey/zkey.c |  2 +-
+ 3 files changed, 50 insertions(+), 3 deletions(-)
+
+diff --git a/zkey/kms.c b/zkey/kms.c
+index 548ffba6..464f5293 100644
+--- a/zkey/kms.c
++++ b/zkey/kms.c
+@@ -479,15 +479,54 @@ int check_for_kms_plugin(struct kms_info *kms_info, bool verbose)
+ 	return rc;
+ }
+ 
++/*
++ * Returns true if the specified path is within the base path.
++ * It canonicalizes both, the base path and the path, and compares that
++ * the path starts with the base path followed by a '/'.
++ */
++static bool is_path_within_base_path(const char *base_path, const char *path)
++{
++	char *real_base_path, *real_path;
++	size_t base_len;
++	bool ret = false;
++
++	real_base_path = canonicalize_file_name(base_path);
++	real_path = canonicalize_file_name(path);
++
++	if (real_base_path == NULL || real_path == NULL) {
++		warnx("Failed to resolve path for safety check: %s",
++		      strerror(errno));
++		goto out;
++	}
++
++	/* Require path to be strictly inside the base path */
++	base_len = strlen(real_base_path);
++	if (strncmp(real_path, real_base_path, base_len) != 0 ||
++	    real_path[base_len] != '/') {
++		warnx("'%s' is not inside '%s'", path, base_path);
++		goto out;
++	}
++
++	ret = true;
++
++out:
++	free(real_base_path);
++	free(real_path);
++
++	return ret;
++}
++
+ /**
+  * Initializes the KMS plugin.
+  *
+  * @param[in] kms_info        The KMS Plugin info
++ * @param[in] keystore        the keystore to bind to the plugin
+  * @param[in] verbose         if true, verbose messages are printed
+  *
+  * @returns 0 for success or a negative errno in case of an error.
+  */
+-int init_kms_plugin(struct kms_info *kms_info, bool verbose)
++int init_kms_plugin(struct kms_info *kms_info, struct keystore *keystore,
++		    bool verbose)
+ {
+ 	char *config_path = NULL;
+ 	char **apqn_list = NULL;
+@@ -495,6 +534,7 @@ int init_kms_plugin(struct kms_info *kms_info, bool verbose)
+ 	int i, rc = 0;
+ 
+ 	util_assert(kms_info != NULL, "Internal error: kms_info is NULL");
++	util_assert(keystore != NULL, "Internal error: keystore is NULL");
+ 
+ 	config_path = properties_get(kms_info->props,
+ 				     KMS_CONFIG_PROP_KMS_CONFIG);
+@@ -504,6 +544,12 @@ int init_kms_plugin(struct kms_info *kms_info, bool verbose)
+ 		goto out;
+ 	}
+ 
++	if (!is_path_within_base_path(keystore->directory, config_path)) {
++		warnx("Invalid KMS config directory: '%s'", config_path);
++		rc = -EIO;
++		goto out;
++	}
++
+ 	if (kms_info->funcs->kms_initialize != NULL) {
+ 		kms_info->handle = kms_info->funcs->kms_initialize(config_path,
+ 								   verbose);
+diff --git a/zkey/kms.h b/zkey/kms.h
+index 336e935f..7bed94a5 100644
+--- a/zkey/kms.h
++++ b/zkey/kms.h
+@@ -33,7 +33,8 @@ int list_kms_plugins(bool verbose);
+ 
+ int check_for_kms_plugin(struct kms_info *kms_info, bool verbose);
+ 
+-int init_kms_plugin(struct kms_info *kms_info, bool verbose);
++int init_kms_plugin(struct kms_info *kms_info, struct keystore *keystore,
++		    bool verbose);
+ 
+ void free_kms_plugin(struct kms_info *kms_info);
+ 
+diff --git a/zkey/zkey.c b/zkey/zkey.c
+index a2b94789..f82e7e64 100644
+--- a/zkey/zkey.c
++++ b/zkey/zkey.c
+@@ -3798,7 +3798,7 @@ int main(int argc, char *argv[])
+ 	}
+ 
+ 	if (g.kms_info.plugin_lib != NULL) {
+-		rc = init_kms_plugin(&g.kms_info, g.verbose);
++		rc = init_kms_plugin(&g.kms_info, g.keystore, g.verbose);
+ 		if (rc != 0) {
+ 			rc = EXIT_FAILURE;
+ 			goto out;

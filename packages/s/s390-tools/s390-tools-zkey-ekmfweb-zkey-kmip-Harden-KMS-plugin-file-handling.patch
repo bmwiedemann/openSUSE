@@ -1,0 +1,529 @@
+From bc81c3221872e465bbed29ba9092f822b514ae2c Mon Sep 17 00:00:00 2001
+From: Ingo Franzki <ifranzki@linux.ibm.com>
+Date: Mon, 3 Aug 2026 11:29:18 +0200
+Subject: [PATCH] zkey/ekmfweb, zkey/kmip: Harden KMS plugin file handling
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Update the plugin file handling helpers to always operate relative
+to the plugin config directory and thus avoid following symlinks.
+
+Open the config directory at plugin initialization time (with
+O_DIRECTORY and O_NOFOLLOW) and then perform the file operations
+relative to that directory handle, i.e. via openat(..., O_NOFOLLOW),
+unlinkat(), and renameat().
+
+For file paths read from a properties file, make sure that they are
+inside the plugin configuration directory and fail early if not.
+
+Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+Reviewed-by: Finn Callies <fcallies@linux.ibm.com>
+Signed-off-by: Jan Höppner <hoeppner@linux.ibm.com>
+---
+ zkey/ekmfweb/zkey-ekmfweb.c |  35 +++++++-----
+ zkey/kmip/zkey-kmip.c       |  47 ++++++++++------
+ zkey/plugin-utils.c         | 108 ++++++++++++++++++++++++++++++++----
+ zkey/plugin-utils.h         |  13 +++++
+ 4 files changed, 163 insertions(+), 40 deletions(-)
+
+diff --git a/zkey/ekmfweb/zkey-ekmfweb.c b/zkey/ekmfweb/zkey-ekmfweb.c
+index 6fa3a5ddd..0cbc332c9 100644
+--- a/zkey/ekmfweb/zkey-ekmfweb.c
++++ b/zkey/ekmfweb/zkey-ekmfweb.c
+@@ -218,6 +218,10 @@ static int _get_ekmf_config(struct plugin_handle *ph)
+ 
+ 	ph->ekmf_config.identity_secure_key = properties_get(ph->pd.properties,
+ 						EKMFWEB_CONFIG_IDENTITY_KEY);
++	if (ph->ekmf_config.identity_secure_key != NULL &&
++	    !plugin_path_is_within_config(&ph->pd,
++					  ph->ekmf_config.identity_secure_key))
++		return -EINVAL;
+ 
+ 	ph->ekmf_config.base_url = properties_get(ph->pd.properties,
+ 						  EKMFWEB_CONFIG_URL);
+@@ -305,7 +309,7 @@ static void _remove_login_token_if_error(struct plugin_handle *ph, int error)
+ 	switch (error) {
+ 	case -EACCES:
+ 	case -EPERM:
+-		remove(ph->ekmf_config.login_token);
++		plugin_remove_config_file(&ph->pd, ph->ekmf_config.login_token);
+ 		FREE_AND_SET_NULL(ph->ekmf_config.login_token);
+ 		break;
+ 	default:
+@@ -1712,7 +1716,7 @@ static int _get_ekmfweb_settings(struct plugin_handle *ph)
+ 	_check_config_complete(ph);
+ 
+ 	if (ph->ekmf_config.login_token != NULL) {
+-		remove(ph->ekmf_config.login_token);
++		plugin_remove_config_file(&ph->pd, ph->ekmf_config.login_token);
+ 		FREE_AND_SET_NULL(ph->ekmf_config.login_token);
+ 	}
+ 	rc = plugin_set_or_remove_property(&ph->pd, EKMFWEB_CONFIG_LOGIN_TOKEN,
+@@ -1743,7 +1747,8 @@ static int _get_ekmfweb_settings(struct plugin_handle *ph)
+ 		goto out;
+ 
+ 	if (ph->ekmf_config.ekmf_server_pubkey != NULL)
+-		remove(ph->ekmf_config.ekmf_server_pubkey);
++		plugin_remove_config_file(&ph->pd,
++					  ph->ekmf_config.ekmf_server_pubkey);
+ 	FREE_AND_SET_NULL(ph->ekmf_config.ekmf_server_pubkey);
+ 
+ 	util_asprintf((char **)&ph->ekmf_config.ekmf_server_pubkey,
+@@ -2048,7 +2053,7 @@ static int _configure_connection(struct plugin_handle *ph,
+ 		if (rc != 0)
+ 			goto out;
+ 	} else {
+-		remove(server_cert_file);
++		plugin_remove_config_file(&ph->pd, server_cert_file);
+ 	}
+ 	rc = plugin_set_or_remove_property(&ph->pd, EKMFWEB_CONFIG_SERVER_CERT,
+ 					   tls_trust_server_cert ?
+@@ -2067,7 +2072,7 @@ static int _configure_connection(struct plugin_handle *ph,
+ 		if (rc != 0)
+ 			goto out;
+ 	} else {
+-		remove(server_pubkey_file);
++		plugin_remove_config_file(&ph->pd, server_pubkey_file);
+ 	}
+ 	rc = plugin_set_or_remove_property(&ph->pd,
+ 					   EKMFWEB_CONFIG_SERVER_PUBKEY,
+@@ -2078,13 +2083,13 @@ static int _configure_connection(struct plugin_handle *ph,
+ 
+ out:
+ 	if (server_cert_temp != NULL) {
+-		remove(server_cert_temp);
++		plugin_remove_config_file(&ph->pd, server_cert_temp);
+ 		free(server_cert_temp);
+ 	}
+ 	if (server_cert_file != NULL)
+ 		free(server_cert_file);
+ 	if (server_pubkey_temp != NULL) {
+-		remove(server_pubkey_temp);
++		plugin_remove_config_file(&ph->pd, server_pubkey_temp);
+ 		free(server_pubkey_temp);
+ 	}
+ 	if (server_pubkey_file != NULL)
+@@ -2350,7 +2355,7 @@ static int _generate_identity_key(struct plugin_handle *ph)
+ 	reenc_file = properties_get(ph->pd.properties,
+ 				    EKMFWEB_CONFIG_IDENTITY_KEY_REENC);
+ 	if (reenc_file != NULL) {
+-		remove(reenc_file);
++		plugin_remove_config_file(&ph->pd, reenc_file);
+ 		free(reenc_file);
+ 		properties_remove(ph->pd.properties,
+ 				  EKMFWEB_CONFIG_IDENTITY_KEY_REENC);
+@@ -3487,7 +3492,7 @@ int kms_login(const kms_handle_t handle)
+ 		if (rc == 0 && valid)
+ 			return 0;
+ 
+-		remove(ph->ekmf_config.login_token);
++		plugin_remove_config_file(&ph->pd, ph->ekmf_config.login_token);
+ 		FREE_AND_SET_NULL(ph->ekmf_config.login_token);
+ 
+ 		rc = plugin_set_or_remove_property(&ph->pd,
+@@ -3662,16 +3667,20 @@ int kms_reenciper(const kms_handle_t handle, enum kms_reencipher_mode mode,
+ 
+ 		printf("Completing re-enciphering of identity key.\n");
+ 
+-		rc = remove(ph->ekmf_config.identity_secure_key);
++		rc = plugin_remove_config_file(&ph->pd,
++					       ph->ekmf_config.identity_secure_key);
+ 		if (rc != 0) {
+-			rc = -errno;
+ 			_set_error(ph, "Failed to remove file '%s': %s",
+ 				   ph->ekmf_config.identity_secure_key,
+ 				   strerror(-rc));
+ 			goto out;
+ 		}
+ 
+-		rc = rename(reenc_file, ph->ekmf_config.identity_secure_key);
++		rc = renameat(ph->pd.config_path_fd,
++			      plugin_basename(reenc_file),
++			      ph->pd.config_path_fd,
++			      plugin_basename(
++					ph->ekmf_config.identity_secure_key));
+ 		if (rc != 0) {
+ 			rc = -errno;
+ 			_set_error(ph, "Failed to rename file '%s' to '%s': %s",
+@@ -3851,7 +3860,7 @@ int kms_reenciper(const kms_handle_t handle, enum kms_reencipher_mode mode,
+ 
+ out:
+ 	if (rc != 0 && reenc_file != NULL)
+-		remove(reenc_file);
++		plugin_remove_config_file(&ph->pd, reenc_file);
+ 	if (reenc_file != NULL)
+ 		free(reenc_file);
+ 
+diff --git a/zkey/kmip/zkey-kmip.c b/zkey/kmip/zkey-kmip.c
+index 0038fc984..91647282f 100644
+--- a/zkey/kmip/zkey-kmip.c
++++ b/zkey/kmip/zkey-kmip.c
+@@ -799,6 +799,12 @@ kms_handle_t kms_initialize(const char *config_path, bool verbose)
+ 
+ 	ph->identity_secure_key = properties_get(ph->pd.properties,
+ 						 KMIP_CONFIG_IDENTITY_KEY);
++	if (ph->identity_secure_key != NULL &&
++	    !plugin_path_is_within_config(&ph->pd, ph->identity_secure_key)) {
++		rc = -EINVAL;
++		goto error;
++	}
++
+ 	ph->server = properties_get(ph->pd.properties, KMIP_CONFIG_SERVER);
+ 
+ 	tmp = properties_get(ph->pd.properties, KMIP_CONFIG_PROFILE);
+@@ -1797,7 +1803,7 @@ static int _generate_identity_key(struct plugin_handle *ph,
+ 	reenc_file = properties_get(ph->pd.properties,
+ 				    KMIP_CONFIG_IDENTITY_KEY_REENC);
+ 	if (reenc_file != NULL) {
+-		remove(reenc_file);
++		plugin_remove_config_file(&ph->pd, reenc_file);
+ 		free(reenc_file);
+ 		properties_remove(ph->pd.properties,
+ 				  KMIP_CONFIG_IDENTITY_KEY_REENC);
+@@ -1806,7 +1812,7 @@ static int _generate_identity_key(struct plugin_handle *ph,
+ 	client_cert = properties_get(ph->pd.properties,
+ 				     KMIP_CONFIG_CLIENT_CERTIFICATE);
+ 	if (client_cert != NULL) {
+-		remove(client_cert);
++		plugin_remove_config_file(&ph->pd, client_cert);
+ 		free(client_cert);
+ 		properties_remove(ph->pd.properties,
+ 				  KMIP_CONFIG_CLIENT_CERTIFICATE);
+@@ -2994,7 +3000,7 @@ static int _configure_connection(struct plugin_handle *ph,
+ 		if (rc != 0)
+ 			goto out;
+ 	} else {
+-		remove(server_cert_file);
++		plugin_remove_config_file(&ph->pd, server_cert_file);
+ 	}
+ 	rc = plugin_set_or_remove_property(&ph->pd, KMIP_CONFIG_SERVER_CERT,
+ 					   tls_trust_server_cert ?
+@@ -3013,7 +3019,7 @@ static int _configure_connection(struct plugin_handle *ph,
+ 		if (rc != 0)
+ 			goto out;
+ 	} else {
+-		remove(server_pubkey_file);
++		plugin_remove_config_file(&ph->pd, server_pubkey_file);
+ 	}
+ 	rc = plugin_set_or_remove_property(&ph->pd,
+ 					   KMIP_CONFIG_SERVER_PUBKEY,
+@@ -3025,13 +3031,13 @@ static int _configure_connection(struct plugin_handle *ph,
+ 	/* Remove any wrapping key properties from previous configuration */
+ 	file_name = properties_get(ph->pd.properties, KMIP_CONFIG_WRAPPING_KEY);
+ 	if (file_name != NULL) {
+-		remove(file_name);
++		plugin_remove_config_file(&ph->pd, file_name);
+ 		free(file_name);
+ 	}
+ 	file_name = properties_get(ph->pd.properties,
+ 				   KMIP_CONFIG_WRAPPING_KEY_REENC);
+ 	if (file_name != NULL) {
+-		remove(file_name);
++		plugin_remove_config_file(&ph->pd, file_name);
+ 		free(file_name);
+ 	}
+ 	rc = plugin_set_or_remove_property(&ph->pd, KMIP_CONFIG_WRAPPING_KEY,
+@@ -3066,13 +3072,13 @@ static int _configure_connection(struct plugin_handle *ph,
+ 
+ out:
+ 	if (server_cert_temp != NULL) {
+-		remove(server_cert_temp);
++		plugin_remove_config_file(&ph->pd, server_cert_temp);
+ 		free(server_cert_temp);
+ 	}
+ 	if (server_cert_file != NULL)
+ 		free(server_cert_file);
+ 	if (server_pubkey_temp != NULL) {
+-		remove(server_pubkey_temp);
++		plugin_remove_config_file(&ph->pd, server_pubkey_temp);
+ 		free(server_pubkey_temp);
+ 	}
+ 	if (server_pubkey_file != NULL)
+@@ -3961,7 +3967,7 @@ static int _generate_wrapping_key(struct plugin_handle *ph,
+ 	reenc_file = properties_get(ph->pd.properties,
+ 				    KMIP_CONFIG_WRAPPING_KEY_REENC);
+ 	if (reenc_file != NULL) {
+-		remove(reenc_file);
++		plugin_remove_config_file(&ph->pd, reenc_file);
+ 		free(reenc_file);
+ 		properties_remove(ph->pd.properties,
+ 				  KMIP_CONFIG_WRAPPING_KEY_REENC);
+@@ -3997,7 +4003,7 @@ static int _generate_wrapping_key(struct plugin_handle *ph,
+ 
+ out:
+ 	if (wrapping_key_file_tmp != NULL) {
+-		remove(wrapping_key_file_tmp);
++		plugin_remove_config_file(&ph->pd, wrapping_key_file_tmp);
+ 		free(wrapping_key_file_tmp);
+ 	}
+ 	if (wrapping_key_file != NULL)
+@@ -4360,15 +4366,15 @@ static int _complete_reencipher(struct plugin_handle *ph,
+ 	if (key_file == NULL || reenc_file == NULL)
+ 		goto out;
+ 
+-	rc = remove(key_file);
++	rc = plugin_remove_config_file(&ph->pd, key_file);
+ 	if (rc != 0) {
+-		rc = -errno;
+ 		_set_error(ph, "Failed to remove file '%s': %s",
+-			   key_file,  strerror(-rc));
++			   key_file, strerror(-rc));
+ 		goto out;
+ 	}
+ 
+-	rc = rename(reenc_file, key_file);
++	rc = renameat(ph->pd.config_path_fd, plugin_basename(reenc_file),
++		      ph->pd.config_path_fd, plugin_basename(key_file));
+ 	if (rc != 0) {
+ 		rc = -errno;
+ 		_set_error(ph, "Failed to rename file '%s' to '%s': %s",
+@@ -4604,9 +4610,18 @@ int kms_reenciper(const kms_handle_t handle, enum kms_reencipher_mode mode,
+ 					KMIP_CONFIG_IDENTITY_KEY);
+ 	if (ident_key_file == NULL)
+ 		goto out;
++	if (!plugin_path_is_within_config(&ph->pd, ident_key_file)) {
++		rc = -EINVAL;
++		goto out;
++	}
+ 
+ 	wrap_key_file = properties_get(ph->pd.properties,
+ 				       KMIP_CONFIG_WRAPPING_KEY);
++	if (wrap_key_file != NULL &&
++	    !plugin_path_is_within_config(&ph->pd, wrap_key_file)) {
++		rc = -EINVAL;
++		goto out;
++	}
+ 	if (mode == KMS_REENC_MODE_STAGED) {
+ 		util_asprintf(&ident_reenc_file, "%s/%s",
+ 			      ph->pd.config_path,
+@@ -4709,14 +4724,14 @@ int kms_reenciper(const kms_handle_t handle, enum kms_reencipher_mode mode,
+ 
+ out:
+ 	if (rc != 0 && ident_reenc_file != NULL)
+-		remove(ident_reenc_file);
++		plugin_remove_config_file(&ph->pd, ident_reenc_file);
+ 	if (ident_reenc_file != NULL)
+ 		free(ident_reenc_file);
+ 	if (ident_key_file != NULL)
+ 		free(ident_key_file);
+ 
+ 	if (rc != 0 && wrap_reenc_file != NULL)
+-		remove(wrap_reenc_file);
++		plugin_remove_config_file(&ph->pd, wrap_reenc_file);
+ 	if (wrap_reenc_file != NULL)
+ 		free(wrap_reenc_file);
+ 	if (wrap_key_file != NULL)
+diff --git a/zkey/plugin-utils.c b/zkey/plugin-utils.c
+index 2c9a7c4d0..9fc09581a 100644
+--- a/zkey/plugin-utils.c
++++ b/zkey/plugin-utils.c
+@@ -65,6 +65,7 @@ int plugin_init(struct plugin_data *pd, const char *plugin_name,
+ 	util_assert(config_file != NULL, "Internal error: config_file is NULL");
+ 
+ 	memset(pd, 0, sizeof(struct plugin_data));
++	pd->config_path_fd = -1;
+ 
+ 	pd->plugin_name = util_strdup(plugin_name);
+ 	pd->config_path = util_strdup(config_path);
+@@ -101,6 +102,15 @@ int plugin_init(struct plugin_data *pd, const char *plugin_name,
+ 					     S_IRGRP  | S_IWGRP |
+ 					     S_IROTH);
+ 
++	pd->config_path_fd = open(config_path,
++				  O_RDONLY | O_DIRECTORY | O_NOFOLLOW);
++	if (pd->config_path_fd < 0) {
++		rc = -errno;
++		warnx("Failed to open directory '%s': %s", config_path,
++		      strerror(-rc));
++		goto error;
++	}
++
+ 	pd->properties = properties_new();
+ 	rc = plugin_load_config(pd);
+ 	if (rc != 0 && rc != -EIO) {
+@@ -126,6 +136,10 @@ void plugin_term(struct plugin_data *pd)
+ 
+ 	pr_verbose(pd, "Plugin terminated");
+ 
++	if (pd->config_path_fd >= 0) {
++		close(pd->config_path_fd);
++		pd->config_path_fd = -1;
++	}
+ 	if (pd->plugin_name != NULL)
+ 		free((void *)pd->plugin_name);
+ 	if (pd->config_path != NULL)
+@@ -233,7 +247,8 @@ int plugin_set_file_permission(struct plugin_data *pd, const char *filename)
+ {
+ 	int fd, rc = 0;
+ 
+-	fd = open(filename, O_RDONLY | O_NOFOLLOW);
++	fd = openat(pd->config_path_fd, plugin_basename(filename),
++		    O_RDONLY | O_NOFOLLOW);
+ 	if (fd < 0) {
+ 		rc = -errno;
+ 		plugin_set_error(pd, "Failed to open '%s': %s", filename,
+@@ -327,6 +342,8 @@ int plugin_set_or_remove_property(struct plugin_data *pd, const char *name,
+  * file (if existent), and then renaming the temporary file to the active file.
+  * The active file permissions are also set to the permissions and the group of
+  * configuration directory.
++ * All operations are descriptor-relative to config_path_fd so that no
++ * intermediate symlink can redirect them outside the config directory.
+  *
+  * @param pd                the plugin data
+  * @param temp_file         the name of the temporary file
+@@ -337,20 +354,22 @@ int plugin_set_or_remove_property(struct plugin_data *pd, const char *name,
+ int plugin_activate_temp_file(struct plugin_data *pd, const char *temp_file,
+ 			      const char *active_file)
+ {
++	const char *active_base, *temp_base;
+ 	int rc;
+ 
+-	if (util_path_exists(active_file)) {
+-		rc = remove(active_file);
+-		if (rc != 0) {
+-			rc = -errno;
+-			plugin_set_error(pd, "remove failed on file '%s': %s",
+-					 active_file, strerror(-rc));
+-			return rc;
+-		}
++	active_base = plugin_basename(active_file);
++	temp_base = plugin_basename(temp_file);
++
++	if (unlinkat(pd->config_path_fd, active_base, 0) != 0 &&
++	    errno != ENOENT) {
++		rc = -errno;
++		plugin_set_error(pd, "remove failed on file '%s': %s",
++				 active_file, strerror(-rc));
++		return rc;
+ 	}
+ 
+-	rc = rename(temp_file, active_file);
+-	if (rc != 0) {
++	if (renameat(pd->config_path_fd, temp_base,
++		     pd->config_path_fd, active_base) != 0) {
+ 		rc = -errno;
+ 		plugin_set_error(pd, "rename failed on file '%s': %s",
+ 				 temp_file, strerror(-rc));
+@@ -360,6 +379,73 @@ int plugin_activate_temp_file(struct plugin_data *pd, const char *temp_file,
+ 	return plugin_set_file_permission(pd, active_file);
+ }
+ 
++/**
++ * Removes a file that resides directly inside the plugin config directory.
++ * Uses unlinkat(config_path_fd) so no intermediate symlink can redirect the
++ * operation outside the config directory. Only the basename of 'filename'
++ * is used; any directory prefix is ignored.
++ *
++ * @param pd                the plugin data
++ * @param filename          full path of the file to remove (only basename used)
++ *
++ * @returns 0 on success, or a negative errno value on failure
++ */
++int plugin_remove_config_file(struct plugin_data *pd, const char *filename)
++{
++	int rc = 0;
++
++	if (filename == NULL)
++		return 0;
++
++	if (unlinkat(pd->config_path_fd, plugin_basename(filename), 0) != 0)
++		rc = -errno;
++
++	return rc;
++}
++
++/**
++ * Checks whether 'path' resolves to a location strictly inside the plugin's
++ * config directory. Both the config directory and 'path' are canonicalized
++ * via canonicalize_file_name() so that symlinks and '..' components in
++ * 'path' cannot escape the config directory.
++ *
++ * @param pd                the plugin data
++ * @param path              the path to validate
++ *
++ * @returns true if path is inside the config directory, false otherwise.
++ *          On failure (path cannot be resolved) false is returned and the
++ *          plugin error message is set.
++ */
++bool plugin_path_is_within_config(struct plugin_data *pd, const char *path)
++{
++	char *real_config, *real_path;
++	size_t config_len;
++	bool ok = false;
++
++	real_config = canonicalize_file_name(pd->config_path);
++	real_path = canonicalize_file_name(path);
++
++	if (real_config == NULL || real_path == NULL) {
++		plugin_set_error(pd, "Failed to resolve path '%s': %s",
++				 path, strerror(errno));
++		goto out;
++	}
++
++	config_len = strlen(real_config);
++	if (strncmp(real_path, real_config, config_len) == 0 &&
++	    real_path[config_len] == '/')
++		ok = true;
++	else
++		plugin_set_error(pd,
++				 "'%s' is not inside the plugin config "
++				 "directory '%s'", path, pd->config_path);
++
++out:
++	free(real_config);
++	free(real_path);
++	return ok;
++}
++
+ /**
+  * Check if the certificate is a self signed certificate, and if it is expired
+  * or not yet valid.
+diff --git a/zkey/plugin-utils.h b/zkey/plugin-utils.h
+index 1454971e2..af501be39 100644
+--- a/zkey/plugin-utils.h
++++ b/zkey/plugin-utils.h
+@@ -15,9 +15,11 @@
+ #include <stdio.h>
+ #include <errno.h>
+ #include <err.h>
++#include <fcntl.h>
+ #include <stddef.h>
+ #include <stdbool.h>
+ #include <sys/stat.h>
++#include <unistd.h>
+ 
+ #include "kms-plugin.h"
+ #include "cca.h"
+@@ -25,6 +27,7 @@
+ struct plugin_data {
+ 	const char *plugin_name;
+ 	const char *config_path;
++	int config_path_fd;
+ 	mode_t config_path_mode;
+ 	gid_t config_path_owner;
+ 	const char *config_file;
+@@ -42,6 +45,14 @@ struct plugin_data {
+ 		}							\
+ 	} while (0)
+ 
++static inline const char *plugin_basename(const char *path)
++{
++	const char *base;
++
++	base = strrchr(path, '/');
++	return base != NULL ? base + 1 : path;
++}
++
+ int plugin_init(struct plugin_data *pd, const char *plugin_name,
+ 		const char *config_path, const char *config_file,
+ 		bool verbose);
+@@ -53,6 +64,8 @@ void plugin_set_error(struct plugin_data *pd, const char *fmt, ...);
+ int plugin_load_config(struct plugin_data *pd);
+ int plugin_save_config(struct plugin_data *pd);
+ int plugin_set_file_permission(struct plugin_data *pd, const char *filename);
++int plugin_remove_config_file(struct plugin_data *pd, const char *filename);
++bool plugin_path_is_within_config(struct plugin_data *pd, const char *path);
+ 
+ bool plugin_check_property(struct plugin_data *pd, const char *name);
+ int plugin_set_or_remove_property(struct plugin_data *pd, const char *name,

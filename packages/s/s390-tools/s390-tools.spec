@@ -92,6 +92,9 @@ Source200:      vendor.tar.zst
 
 ###
 # IBM patches
+Patch101:       s390-tools-zkey-Harden-KMS-config-directory-handling.patch
+Patch102:       s390-tools-zkey-Harden-zkey-kms-unbind-command.patch
+Patch103:       s390-tools-zkey-ekmfweb-zkey-kmip-Harden-KMS-plugin-file-handling.patch
 ###
 # SUSE patches
 Patch900:       s390-tools-combined.patch
