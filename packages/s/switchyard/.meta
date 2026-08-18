@@ -1,0 +1,8 @@
+<package name="switchyard" project="openSUSE:Factory">
+  <title>Routing and translating proxy for LLM traffic</title>
+  <description>Switchyard is NVIDIA's Rust proxy and library for LLM traffic. It routes
+requests across providers, translates between the OpenAI Chat, Anthropic
+Messages and OpenAI Responses wire formats, and exports Prometheus metrics.
+
+This package ships the standalone switchyard-server proxy.</description>
+</package>

@@ -1,0 +1,50 @@
+[Unit]
+Description=Switchyard LLM routing proxy
+Documentation=https://github.com/NVIDIA-NeMo/Switchyard
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=exec
+User=switchyard
+Group=switchyard
+# switchyard-server has no built-in configuration: the admin must provide
+# /etc/switchyard/config.toml before the service can start. See the example in
+# /usr/share/doc/packages/switchyard/config.toml and docs/reference/toml_schema.md.
+ExecStart=/usr/bin/switchyard-server --config /etc/switchyard/config.toml
+# Provider credentials are read from the environment by the variable names the
+# configuration's api_key_env settings refer to. Keep them here, mode 0600.
+EnvironmentFile=-/etc/sysconfig/switchyard
+Restart=on-failure
+RestartSec=5
+StateDirectory=switchyard
+
+# Hardening. Upstream's dev-server/switchyard.service runs as root; a packaged
+# daemon does not need to, so the static system user replaces that and the
+# capability set is emptied.
+NoNewPrivileges=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectSystem=strict
+ProtectHome=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+ProtectClock=yes
+ProtectHostname=yes
+ProtectProc=invisible
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+RestrictNamespaces=yes
+RestrictSUIDSGID=yes
+RestrictRealtime=yes
+LockPersonality=yes
+SystemCallArchitectures=native
+CapabilityBoundingSet=
+AmbientCapabilities=
+# The default listen port is 4000. To bind a port below 1024, add a drop-in
+# (systemctl edit switchyard.service) setting:
+#   CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+#   AmbientCapabilities=CAP_NET_BIND_SERVICE
+
+[Install]
+WantedBy=multi-user.target

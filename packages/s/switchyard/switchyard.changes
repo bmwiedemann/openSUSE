@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Mon Aug 17 08:22:45 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package (version 0.2.0):
+  * Rust proxy that routes LLM traffic across providers and
+    translates between the OpenAI Chat, Anthropic Messages and
+    OpenAI Responses wire formats.
+  * Ships the daemon as switchyard-server together with a systemd
+    service, a switchyard system user and /etc/switchyard for the
+    required config.toml.
+  * Ships upstream's nemo-switchyard Python distribution as
+    python-switchyard: the switchyard command line client and the
+    importable switchyard and switchyard_rust modules with their
+    pyo3 extension, built with maturin.

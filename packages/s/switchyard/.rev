@@ -1,0 +1,129 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>15e77d78851a08fd160d6e9774fffb54</srcmd5>
+    <version>0.2.0</version>
+    <time>1787063754</time>
+    <user>anag_factory</user>
+    <comment>New package: switchyard - NVIDIA's routing and translating proxy for LLM traffic.
+
+Upstream: https://github.com/NVIDIA-NeMo/Switchyard, Apache-2.0, Rust + Python.
+Packaged at the stable v0.2.0 tag (2026-08-10), not the v0.2.0-rc.* tags.
+
+This SUPERSEDES sr#1371515, which was incomplete: it shipped only the Rust
+daemon and left out the command upstream's own README documents. That package
+installed /usr/bin/switchyard-server and nothing else, so
+&quot;switchyard launch claude --model switchyard&quot; - the documented workflow - could
+not be run at all. The `switchyard` command is a console script of upstream's
+Python distribution (nemo-switchyard), which the first submission deliberately
+excluded. This revision brings it in.
+
+WHAT IS SHIPPED NOW
+
+  switchyard                    the standalone daemon
+    /usr/bin/switchyard-server
+    /usr/lib/systemd/system/switchyard.service
+    /usr/lib/sysusers.d/system-user-switchyard.conf
+    /etc/switchyard/            0750 root:switchyard, for config.toml
+
+  python3NN-switchyard          the CLI and the importable library
+    /usr/bin/switchyard         via update-alternatives
+    .../site-packages/switchyard/          the Python library
+    .../site-packages/switchyard_rust/     wrappers + _switchyard_rust.abi3.so
+    .../site-packages/nemo_switchyard-0.2.0.dist-info/
+
+WHY THE CLI IS IN THE PYTHON SUBPACKAGE AND WHY THE LINK IS Recommends
+
+/usr/bin/switchyard is a [project.scripts] console script whose import graph is
+the Python package itself, so it belongs with that package; with more than one
+Python flavour it also has to go through update-alternatives, which only the
+flavoured subpackage can drive.
+
+Neither half needs the other, so neither hard-requires the other:
+
+  - switchyard-server is a self-contained Rust daemon that embeds no Python. A
+    hard Requires would drag openai, anthropic, fastapi, pydantic, uvicorn and
+    the extension module onto a minimal proxy host for nothing.
+  - the CLI never execs switchyard-server. There is not one reference to that
+    binary anywhere in the Python tree; &quot;switchyard launch&quot; hosts the router
+    in-process through the pyo3 binding (switchyard/cli/launchers/
+    native_server.py: &quot;from switchyard_rust.server import Server&quot;), and
+    docs/cli_reference.md says so explicitly.
+
+They are two independent front ends over the same Rust core. So the main
+package carries &quot;Recommends: python3-switchyard&quot;: zypper honours recommends by
+default, so &quot;zypper in switchyard&quot; now yields a working `switchyard` command -
+the defect is fixed - while --no-recommends and container/appliance builds keep
+the daemon free of the Python stack.
+
+HOW THE EXTENSION IS BUILT
+
+maturin, upstream's declared PEP 517 backend, driven through
+%pyproject_wheel/%pyproject_install. It is genuinely required rather than a
+convenience: `import switchyard` fails closed without the compiled extension
+(switchyard_rust/core.py raises when
+importlib.import_module(&quot;switchyard_rust._switchyard_rust&quot;) is unavailable), and
+the root pyproject.toml's [tool.maturin] manifest-path/module-name/
+python-packages keys are what place the cdylib inside the switchyard_rust
+package and emit the console script and the nemo-switchyard dist-info that
+three modules read through importlib.metadata.version(). A hand-rolled
+cargo-build-plus-cp path would have to fabricate all three. The crate builds
+from the existing vendor tree with no extra vendoring; it is pyo3
+abi3-py312 + extension-module, so the stable-ABI object serves every supported
+interpreter.
+
+The ISA-baseline guard is unchanged and now covers maturin too. Upstream's
+.cargo/config.toml raises the baseline to x86-64-v3/AVX2 and neoverse-n1;
+%cargo_build only neutralises config-file rustflags as a side effect of
+exporting a non-empty RUSTFLAGS, and maturin gets no such protection, so %prep
+strips any [target.*] table and then asserts that no rustflags survive anywhere
+under .cargo/ (a .cargo/config would otherwise shadow .cargo/config.toml), and
+%build exports RUSTFLAGS around the maturin call as well.
+
+DEPENDENCIES
+
+The wheel metadata gives openai, anthropic, httpx and pydantic to openSUSE's
+Python dependency generator. Declared by hand on top of that:
+
+  fastapi &gt;= 0.136.1, uvicorn &gt;= 0.46.0 - upstream files these under the
+      optional &quot;server&quot; extra, but the console script imports
+      switchyard.server.server_util at module level and both `serve` and
+      `launch` serve over HTTP, so they are mandatory here.
+  PyYAML - required and *undeclared upstream*: route bundles are YAML and
+      switchyard/cli/route_bundle.py reaches the module through
+      import_module(&quot;yaml&quot;), which no metadata scanner can see.
+
+Deliberately not required, with the reasoning recorded in the spec so it is not
+&quot;fixed&quot; later: sse-starlette and prompt-toolkit are named in upstream's extras
+but nothing in the tree imports either (SSE goes through
+fastapi.responses.StreamingResponse; the terminal UI is stdlib pty/termios).
+ddtrace is not in Factory at all and redis is pinned &lt;6 while Factory ships
+7.0.1 - both are lazily imported behind feature checks that no-op when the
+module is absent, so neither blocks anything. The claude/codex/openclaw launch
+targets are not dependencies; a missing binary exits with an install hint.
+
+LICENCE
+
+Re-derived over the *two* built targets, since the extension has its own link
+closure: switchyard-server 222 crates, switchyard-py 232 (a strict superset).
+The ten extra crates are the pyo3 family, pythonize, target-lexicon and two
+workspace members - no new identifier, so the tag is unchanged. target-lexicon
+is &quot;Apache-2.0 WITH LLVM-exception&quot; and is not declared, because it is
+reachable only beneath the pyo3-macros proc-macro crate (a build-time rustc
+plugin, never linked into either artifact) and that expression is in any case a
+strict subset of the Apache-2.0 obligations already declared. Full method and
+the per-identifier accounting are in the spec's Legal-Review-Notice. Each
+package that ships a statically linked artifact carries its own deduplicated
+copy of the per-crate notice texts, so no symlink crosses a package boundary.
+
+PROJECT MATURITY - please read
+
+The repository was created on 2026-05-19 and the project is at 0.2.0, i.e.
+young and pre-1.0. Expect API and configuration churn: the TOML configuration
+file carries an explicit &quot;schema_version = 1&quot; field, upstream tags roughly
+weekly, and the crates were first published to crates.io on 2026-08-10. I am
+submitting it anyway because it is a self-contained daemon plus a leaf Python
+package with no reverse dependencies, but a reviewer should know the version
+cadence up front.</comment>
+    <requestid>1371536</requestid>
+  </revision>
+</revisionlist>
