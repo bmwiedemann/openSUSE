@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Aug 18 10:56:55 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 0.18.3 (fixes CVE-2026-73030 (bsc#1275440))
+  * cli: Download packages without unpacking
+  * Update actions/checkout and setup actions to v6
+  * Support packaging 26.0 changes
+  * Prevent tar-slip via path traversal and symlink escape in _untar_archive
+  * Complete path traversal protection by replacing os.makedirs with
+    safe_makedirs (CVE-2026-73030)
+- drop support-packaging-26.patch, merged upstream
+
+-------------------------------------------------------------------
 Mon Feb  9 05:17:29 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.18.2:

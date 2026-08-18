@@ -18,14 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-unearth
-Version:        0.18.2
+Version:        0.18.3
 Release:        0
 Summary:        A utility to fetch and download python packages
 License:        MIT
 URL:            https://unearth.readthedocs.io/
 Source:         https://files.pythonhosted.org/packages/source/u/unearth/unearth-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#frostming/unearth#176
-Patch0:         support-packaging-26.patch
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module packaging >= 20}
 BuildRequires:  %{python_module pdm-backend}

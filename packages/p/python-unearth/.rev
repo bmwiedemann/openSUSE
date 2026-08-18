@@ -150,4 +150,20 @@
   * Support changes required by packaging 26.0.</comment>
     <requestid>1331928</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e5c85fd525c120bcfa12a2fd0432a4d5</srcmd5>
+    <version>0.18.3</version>
+    <time>1787063908</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.18.3 (fixes CVE-2026-73030 (bsc#1275440))
+  * cli: Download packages without unpacking
+  * Update actions/checkout and setup actions to v6
+  * Support packaging 26.0 changes
+  * Prevent tar-slip via path traversal and symlink escape in _untar_archive
+  * Complete path traversal protection by replacing os.makedirs with
+    safe_makedirs (CVE-2026-73030)
+- drop support-packaging-26.patch, merged upstream
+</comment>
+    <requestid>1371773</requestid>
+  </revision>
 </revisionlist>
