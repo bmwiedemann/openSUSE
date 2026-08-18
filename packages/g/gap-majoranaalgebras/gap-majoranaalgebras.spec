@@ -1,7 +1,7 @@
 #
 # spec file for package gap-majoranaalgebras
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-majoranaalgebras
-Version:        1.5.2
+Version:        1.5.3
 Release:        0
 Summary:        GAP: Majorana algebra and representation construction
 License:        GPL-2.0-or-later
@@ -27,7 +27,7 @@ URL:            https://gap-packages.github.io/MajoranaAlgebras/
 Source:         https://github.com/gap-packages/MajoranaAlgebras/releases/download/v%version/MajoranaAlgebras-%version.tar.gz
 BuildRequires:  gap-rpm-devel
 Requires:       gap-automata >= 1.13
-Requires:       gap-core >= 4.8
+Requires:       gap-core >= 4.10
 Requires:       gap-datastructures >= 0.2.2
 Requires:       gap-gapdoc >= 1.5
 Requires:       gap-gauss
