@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<constraints>
+  <!-- Around 850 crates are compiled and linked into one binary, with the
+       distribution's -C debuginfo=2 on top, so both the peak rustc and the
+       vendored-sources-plus-target tree are large. (Upstream's thin LTO is
+       turned off in %build precisely because its single link step needed far
+       more memory than any worker has - see the comment there.) -->
+  <hardware>
+    <physicalmemory>
+      <size unit="G">16</size>
+    </physicalmemory>
+    <disk>
+      <size unit="G">30</size>
+    </disk>
+  </hardware>
+</constraints>

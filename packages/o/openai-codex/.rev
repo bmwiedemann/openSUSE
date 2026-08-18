@@ -1,0 +1,139 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e090f8162bdf0eae64e26d918174cad1</srcmd5>
+    <version>0.147.0</version>
+    <time>1787063751</time>
+    <user>anag_factory</user>
+    <comment>New package: openai-codex 0.147.0 - OpenAI's Codex coding agent for the terminal.
+
+Upstream: https://github.com/openai/codex (Apache-2.0), stable tag rust-v0.147.0.
+Built from the codex-rs/ Cargo workspace; the npm distribution is not used
+because it ships prebuilt binaries.
+
+Naming
+------
+The package is openai-codex and installs /usr/bin/codex. A bare &quot;codex&quot; source
+name would be ambiguous: Debian ships this project as rust-codex, OBS already
+has R-codexcopd, and Arch - the only other distribution that packages it -
+settled on openai-codex/codex for exactly this reason. No other RPM
+distribution packages it yet, and there is no prior openSUSE attempt.
+
+Only codex-cli is built
+-----------------------
+A workspace-wide build reaches the v8-poc, code-mode-runtime and code-mode-host
+members, which depend on the v8 crate whose build script downloads a prebuilt
+librusty_v8 archive from the network (the alternative path clones chromium) -
+a hard failure in the offline build. codex-drop-v8-code-mode.patch removes
+those three members from the workspace and %build asks for
+&quot;-p codex-cli --bin codex&quot; explicitly. They implement the &quot;code_mode&quot; feature,
+which upstream ships as Stage::UnderDevelopment with default_enabled = false,
+so nothing a default user reaches is lost. Dropping them also keeps ~213 MB of
+never-compiled V8 sources out of vendor.tar.zst.
+
+Bundled bubblewrap removed
+--------------------------
+codex-rs/vendor/ carries a complete bubblewrap 0.11.2 C tree
+(LGPL-2.0-or-later) which the bwrap crate's build script compiles and bundles.
+%prep deletes it so it can be neither built nor shipped; %build additionally
+exports CODEX_SKIP_BWRAP_BUILD=1 as a guard (the bwrap crate is not in
+codex-cli's dependency graph today). codex-rs/linux-sandbox/src/launcher.rs
+looks bwrap up in PATH first, falls back to a bundled codex-resources/bwrap we
+do not ship, and panics when neither is available - hence Requires: bubblewrap
+rather than Recommends.
+
+One binary
+----------
+/usr/bin/codex is a multicall executable: codex-rs/arg0/ re-execs itself as
+apply_patch, codex-linux-sandbox and codex-execve-wrapper from a private temp
+directory and dispatches on argv[0]; everything else (exec, mcp-server,
+app-server, execpolicy, sandbox, responses-api-proxy, completion, doctor) is a
+subcommand. The other [[bin]] targets in the workspace exist for the npm
+layout, so only codex is shipped.
+
+License tag
+-----------
+Apache-2.0 is upstream's own licence; the rest covers the crates statically
+linked into the binary. The set was derived offline from the vendored tree with
+&quot;cargo tree --offline -p codex-cli -e normal&quot; - 853 crates on aarch64, 856 on
+x86_64, every one of them declaring a licence. Electing Apache-2.0 where offered
+and MIT otherwise: Apache-2.0 583, MIT 213, Unicode-3.0 24, MPL-2.0 12, ISC 10,
+BSD-3-Clause 10, Zlib 6, BSD-2-Clause 2, CC0-1.0 1, CDLA-Permissive-2.0 1. Every
+identifier was checked against openSUSE's accepted-licence list.
+
+Two points worth recording, both repeated in a Legal-Review-Notice above the
+tag so they do not have to be re-derived:
+
+ * self_cell is &quot;Apache-2.0 OR GPL-2.0-only&quot; and is the only crate anywhere in
+   the graph that offers GPL. Apache-2.0 is elected, so there is no GPL
+   obligation here.
+ * Unicode-DFS-2016 (finl_unicode, wezterm-bidi) and WTFPL (terminfo) are
+   present in vendor.tar.zst but deliberately not in the tag: they are
+   reachable only through ratatui's optional termina/termwiz backends, and the
+   workspace builds ratatui with default-features = false and only the
+   crossterm, layout-cache and underline-color features, so they are never
+   compiled.
+
+Bundled C libraries are declared with Provides: bundled(...) - aws-lc 1.71.0
+(a BoringSSL fork reached through rama-tls-rustls; there is no crate-level
+switch to unbundle it), bzip2 1.0.8, libzstd 1.5.7, oniguruma 6.9.10 and
+sqlite 3.51.3. These are what BuildRequires: cmake and gcc-c++ are for. The
+binary does link the system libssl/libcrypto/liblzma - openssl-sys only turns
+on its vendored feature for musl targets. There is no libz-sys at all;
+compression comes from the pure-Rust zlib-rs, so no zlib BuildRequires.
+
+cargo_vendor update=false
+-------------------------
+source_validator emits an advisory note asking for update=true. It is set to
+false on purpose and the reason is recorded in _service: cargo_vendor's own
+cargo-audit pass reports the upstream lockfile clean, so there is no advisory to
+fix, while &quot;cargo update&quot; moves 383 of the ~1190 locked crates including 0.x to
+1.0 jumps (anstream, anstyle-parse) and aws-lc-sys 0.39 to 0.44 - a wholesale
+untested re-resolution rather than a security update. A future advisory should
+be handled with cargo_vendor's update-crate parameter.
+
+Other notes
+-----------
+ * codex-no-startup-update-check.patch flips check_for_update_on_startup to
+   default off. Unpatched, the TUI queries api.github.com on every start and
+   then offers an npm/brew/standalone upgrade action that cannot update an RPM
+   install. Users can still opt back in via ~/.codex/config.toml. This is
+   distribution policy, not an upstream bug, so no upstream PR is owed.
+ * Shell completions are generated from the built binary and split into
+   bash/fish/zsh subpackages with the usual Supplements.
+ * There is no man page anywhere upstream or downstream, so none is invented.
+   docs/ ships as %doc.
+ * Build resources. Upstream's release profile uses thin LTO with
+   codegen-units = 4; together with the -C debuginfo=2 the distribution adds so
+   find-debuginfo.sh can split out -debuginfo, the single LTO rustc was
+   measured locally at 43 GB RSS - far past what any worker offers (chromium,
+   the largest package in Factory, requests 14 GB). %build therefore exports
+   CARGO_PROFILE_RELEASE_LTO=off and CARGO_PROFILE_RELEASE_CODEGEN_UNITS=16,
+   which costs some binary size and a little run-time performance and brings
+   the package inside a 16 GB / 30 GB _constraints request. %limit_build is
+   -m 4000 rather than the usual 2000 because a single rustc still wants 4-5 GB:
+   at 2000 an aarch64 worker with 22 GB picked -j8 and the kernel OOM-killed
+   rustc during codex-tui, while -j4 on a 16 GB x86_64 worker (3.9 GB per job)
+   was fine.
+ * ExclusiveArch is %{rust_tier1_arches} (x86_64 aarch64 here) - i586 is known
+   to OOM rustc on a workspace this size, and the other distributions restrict
+   similarly.
+ * %check is an allowlist (codex-protocol, codex-apply-patch, codex-execpolicy,
+   codex-file-search, codex-config) rather than --workspace. --workspace cannot
+   be used at all - it reaches the members Patch0 removes - and beyond that the
+   choice is build cost: compiling the test harnesses of core, tui and
+   app-server would roughly double a build that already runs well over an hour,
+   for tests that exercise upstream's logic rather than anything packaging can
+   get wrong. The allowlisted crates need no network, container or terminal.
+   The suite's genuinely environment-bound tests are #[ignore]d upstream anyway
+   (a live API key for core/tests/suite/live_cli.rs, tmux for
+   tui/tests/suite/resize_reflow.rs) and the landlock tests self-skip.
+
+Build results in devel:tools
+----------------------------
+openSUSE_Tumbleweed x86_64 and aarch64 both succeeded, each running 645 tests
+across 10 test binaries with 0 failures, and each finishing rpmlint at
+&quot;0 errors, 0 warnings, 20 filtered, 0 badness&quot;. openSUSE_Slowroll, Leap 16.1
+and 15.7 build as well.</comment>
+    <requestid>1371460</requestid>
+  </revision>
+</revisionlist>

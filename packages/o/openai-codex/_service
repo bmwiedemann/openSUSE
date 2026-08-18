@@ -1,0 +1,35 @@
+<services>
+  <!--
+    NOTE: srcdir below names the unpacked directory of this exact release, so
+    it has to be bumped together with Version: in the spec.
+
+    vendor.tar.zst is generated from the upstream tarball with
+    codex-drop-v8-code-mode.patch applied, so that the V8 bindings pulled in by
+    the v8-poc/code-mode-runtime/code-mode-host workspace members (~213 MB of
+    sources that are never compiled) stay out of the bundle.  To regenerate:
+
+      tar xf codex-rust-v0.147.0.tar.gz
+      patch -p1 -d codex-rust-v0.147.0 < codex-drop-v8-code-mode.patch
+      rm -rf codex-rust-v0.147.0/codex-rs/vendor
+      osc service manualrun
+      rm -rf codex-rust-v0.147.0
+
+    The codex-rs/vendor removal drops the bundled bubblewrap 0.11.2 C sources,
+    which %prep removes as well - codex uses the system bubblewrap instead.
+  -->
+  <!--
+    update=false is deliberate, not an oversight.  source_validator suggests
+    update=true "to apply security updates", but cargo_vendor's own cargo-audit
+    pass reports the upstream lockfile clean - there is no advisory to fix - and
+    "cargo update" moves 383 of the ~1190 locked crates, including 0.x -> 1.0
+    jumps (anstream, anstyle-parse) and an aws-lc-sys 0.39 -> 0.44 bump, i.e. a
+    wholesale untested re-resolution of an 850-crate link graph rather than a
+    security update.  When an advisory does land, re-vendor the affected crate
+    with the cargo_vendor "update-crate" parameter instead.
+  -->
+  <service name="cargo_vendor" mode="manual">
+    <param name="srcdir">codex-rust-v0.147.0/codex-rs</param>
+    <param name="compression">zst</param>
+    <param name="update">false</param>
+  </service>
+</services>

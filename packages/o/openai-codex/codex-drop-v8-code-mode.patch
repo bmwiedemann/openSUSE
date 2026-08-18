@@ -1,0 +1,65 @@
+From: Martin Pluskal <martin@pluskal.org>
+Subject: Drop the V8-based code-mode workspace members
+
+The v8-poc, code-mode-runtime and code-mode-host workspace members depend on
+the v8 crate, whose build script downloads a prebuilt librusty_v8 archive from
+the network (or clones chromium) and therefore cannot be built in an offline
+build environment.  They implement the "code_mode" feature, which upstream
+ships as Stage::UnderDevelopment with default_enabled = false, so removing them
+does not change the behaviour of the shipped codex binary.  Dropping them also
+keeps ~213 MB of unbuilt V8 sources out of the vendor bundle.
+
+Downstream-only distribution policy, not suitable for upstream submission.
+
+--- a/codex-rs/Cargo.toml	2026-08-16 18:52:16.891827938 +0200
++++ b/codex-rs/Cargo.toml	2026-08-16 18:52:16.895828387 +0200
+@@ -22,9 +22,7 @@
+     "install-context",
+     "codex-backend-openapi-models",
+     "code-mode",
+-    "code-mode-host",
+     "code-mode-protocol",
+-    "code-mode-runtime",
+     "codex-home",
+     "cloud-config",
+     "cloud-tasks",
+@@ -91,7 +89,6 @@
+     "otel",
+     "tui",
+     "tools",
+-    "v8-poc",
+     "websocket-client",
+     "utils/absolute-path",
+     "utils/audio",
+@@ -170,7 +167,6 @@
+ codex-cloud-tasks-mock-client = { path = "cloud-tasks-mock-client" }
+ codex-code-mode = { path = "code-mode" }
+ codex-code-mode-protocol = { path = "code-mode-protocol" }
+-codex-code-mode-runtime = { path = "code-mode-runtime" }
+ codex-home = { path = "codex-home" }
+ codex-http-client = { path = "http-client" }
+ codex-websocket-client = { path = "websocket-client" }
+@@ -268,7 +264,6 @@
+ codex-utils-stream-parser = { path = "utils/stream-parser" }
+ codex-utils-string = { path = "utils/string" }
+ codex-utils-template = { path = "utils/template" }
+-codex-v8-poc = { path = "v8-poc" }
+ codex-windows-sandbox = { path = "windows-sandbox-rs" }
+ core_test_support = { path = "core/tests/common" }
+ mcp_test_support = { path = "mcp-server/tests/common" }
+@@ -474,7 +469,6 @@
+ url = "2"
+ urlencoding = "2.1"
+ uuid = "1"
+-v8 = "=150.4.0"
+ vt100 = "0.16.2"
+ walkdir = "2.5.0"
+ webbrowser = "1.0"
+@@ -535,7 +529,6 @@
+ ignored = [
+     "icu_provider",
+     "openssl-sys",
+-    "codex-v8-poc",
+ ]
+ 
+ [profile.dev]

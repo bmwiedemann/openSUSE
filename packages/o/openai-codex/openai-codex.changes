@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Sun Aug 16 17:07:41 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package (0.147.0)
+- Build only the codex-cli crate: the v8-poc, code-mode-runtime and
+  code-mode-host workspace members pull in the v8 crate, whose build
+  script downloads a prebuilt library from the network
+  (codex-drop-v8-code-mode.patch)
+- Drop the bundled bubblewrap 0.11.2 C sources and use the system
+  bubblewrap instead
+- Ship only the multicall codex binary; the helper programs are
+  dispatched from argv[0] or reachable as subcommands
+- Do not query github.com for updates on startup
+  (codex-no-startup-update-check.patch)
+- Ship bash, fish and zsh completions as subpackages
+- Run the test suite for the self-contained crates only
+  (protocol, apply-patch, execpolicy, file-search, config); the
+  remaining crates' test harnesses roughly double a build that
+  already takes over an hour
+- Build with LTO off and codegen-units 16: upstream's thin LTO plus
+  the distribution's -C debuginfo=2 needs 43 GB RSS in a single
+  rustc, more than any build worker provides
+
