@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Aug 18 10:16:57 UTC 2026 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.11.2:
+  * extra-animations: Fix melt clipping.
+  * extra-animations: Randomize melt animation.
+  * Add dodge focus effect.
+  * Dodge update.
+  * extra-animations: dodge: Add rotate option.
+  * extra-animations: dodge: More fixes
+  * extra-animations: use provided duration instead of hardcoding 
+    option.
+  * showtouch: bind dest buffer.
+  * add fisheye.
+  * extra-animations: Add burn animation.
+  * extra-animations: Add magic carpet animation.
+  * workspace-names: Fix up.
+  * Track wayfire plugin API changes.
+  * fix: autorotate-iio: fix D-Bus events not processed when 
+    display is idle.
+
+-------------------------------------------------------------------
 Fri Apr 10 03:01:59 UTC 2026 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Change from wlroot-devel to pkgconfig(wlroots-0.19). 
