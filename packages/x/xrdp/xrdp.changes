@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jul 21 08:35:50 UTC 2026 - Yifan Jiang <yfjiang@suse.com>
+
+- Update to version 0.10.6.1:
+  + Security fixes
+    CVE-2026-41252 (bsc#1271926)
+    CVE-2026-41521 (bsc#1271927)
+    CVE-2026-44178 (bsc#1271929)
+    CVE-2026-42218 (bsc#1271928)
+    CVE-2026-44978 (bsc#1271943)
+    CVE-2026-54538 (bsc#1271938)
+    CVE-2026-55238 (bsc#1271939)
+    CVE-2026-55626 (bsc#1271940)
+    CVE-2026-55639 (bsc#1271941)
+    CVE-2026-55645 (bsc#1271942)
+  + Bug fixes
+    regression: Fix SEGV in xrdp when running over TLS (#3793)
+
+-------------------------------------------------------------------
 Thu Jun 18 01:28:47 UTC 2026 - Yifan Jiang <yfjiang@suse.com>
 
 - Recommend pipewire-module-xrdp to bridge pipewire audio.

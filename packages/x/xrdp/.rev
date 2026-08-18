@@ -526,4 +526,12 @@
     * xrdp-CVE-2026-32105-4-nonfips-fastpath.patch (forwarded request 1361568 from yfjiang)</comment>
     <requestid>1361569</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>46c882221e33a229fdce5f7ccaf78f11</srcmd5>
+    <version>0.10.6.1</version>
+    <time>1787063822</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1371632</requestid>
+  </revision>
 </revisionlist>
