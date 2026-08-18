@@ -38,7 +38,7 @@ if [[ -v RUN_SINGLE ]]; then
 	esac
 	echo extracting debug info from $f
 	# grep all listed source files belonging to this package into temporary source file list.
-	"$OBJDUMP" -Wi "$f" | "$SRCFILES" | grep $srcdir >>"$SOURCEFILE.tmp"
+	"$OBJDUMP" -Wi "$f" | "$SRCFILES" | grep $srcdir >>"$SOURCEFILE.tmp.$$"
 	"$OBJCOPY" --only-keep-debug "$f" "$f.debug" || :
 	pushd `dirname $f`
 	"$OBJCOPY" --add-gnu-debuglink=`basename "$f.debug"` --strip-unneeded `basename "$f"` || :
@@ -88,7 +88,7 @@ done
 
 SOURCEFILE="$BUILDDIR/$target-debugsources.list"
 > "$SOURCEFILE"
-> $SOURCEFILE.tmp
+rm -f "$SOURCEFILE".tmp*
 
 srcdir=`realpath $PWD`
 
@@ -107,6 +107,8 @@ find $RPM_BUILD_ROOT -type f -name "*.exe" -or -name "*.dll" | sort | \
 	SRCFILES=$SRCFILES \
 	srcdir=$srcdir \
 	xargs --max-args=1 --max-procs=0 bash -x $0
+
+cat "$SOURCEFILE".tmp.* >"$SOURCEFILE.tmp" 2>/dev/null || :
 
 # generate debug info file list
 find $RPM_BUILD_ROOT -type f \
@@ -148,7 +150,7 @@ do
 	echo copying $f to $o
 	install -m 644 $f $o
 done
-rm $SOURCEFILE.tmp
+rm -f "$SOURCEFILE".tmp*
 
 # add package source directory to list of files
 if [ -e "$RPM_BUILD_ROOT/$DEBUGSOURCE_DIR" ]; then
