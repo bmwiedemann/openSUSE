@@ -18,13 +18,17 @@
 
 %define modname openvino_telemetry
 # Consistent with openvino
-%if 0%{?suse_version} < 1600
+%if 0%{?suse_version} == 1600 || 0%{?sle_version} == 150600
+%if 0%{?sle_version} == 150600
 %define pythons python311
+%else
+%define pythons python313
+%endif
 %else
 %define pythons python3
 %endif
 Name:           python-openvino-telemetry
-Version:        2026.2.1
+Version:        2026.3.0
 Release:        0
 Summary:        Module for use with openVINO toolkit to send usage statistics with user consent
 License:        Apache-2.0
