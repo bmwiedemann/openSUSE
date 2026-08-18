@@ -203,6 +203,16 @@ BuildArch:      noarch
 This package contain the fish completion command for the device firmware updater daemon.
 %endif
 
+%package tests
+Summary:        Installed tests for %{name}
+Requires:       %{name} = %{version}
+Requires:       gnome-desktop-testing
+
+%description tests
+Data files for installed tests. Tests use the GNOME installed-tests
+framework and can be run with gnome-desktop-testing-runner.
+Device emulation data is included so tests run without real hardware.
+
 %lang_package
 
 %prep
@@ -224,7 +234,7 @@ export CFLAGS="%{optflags} -D_GNU_SOURCE"
 %endif
   -Ddocs=enabled \
   -Dsupported_build=enabled \
-  -Dtests=false \
+  -Dtests=true \
   -Dumockdev_tests=disabled \
   -Dvalgrind=disabled \
   -Dvendor_ids_dir=/usr/share/hwdata \
@@ -246,8 +256,7 @@ rm -f %{buildroot}%{_modulesloaddir}/fwupd-i2c.conf
 # Do not ship default polkit .rules - openSUSE overrides them anyway - boo#1125428
 rm %{buildroot}%{_datadir}/polkit-1/rules.d/org.freedesktop.fwupd.rules
 
-# do not package tests
-rm -fr %{buildroot}%{_datadir}/installed-tests
+# installed-tests are packaged in fwupd-tests subpackage
 
 %if %{without fish_support}
 rm -fr %{buildroot}%{_datadir}/fish
@@ -375,5 +384,13 @@ rm -fr %{buildroot}%{_datadir}/fish
 %endif
 
 %files lang -f %{name}.lang
+
+%files tests
+%dir %{_datadir}/installed-tests
+%{_datadir}/installed-tests/%{name}/
+%dir %{_libexecdir}/installed-tests
+%{_libexecdir}/installed-tests/%{name}/
+%{_datadir}/%{name}/host-emulate.d/
+%{_datadir}/%{name}/remotes.d/fwupd-tests.conf
 
 %changelog

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Aug 17 14:33:41 UTC 2026 - Zoltan Balogh <zbalogh@suse.com>
+
+- Add Requires: gnome-desktop-testing to fwupd-tests subpackage
+
+-------------------------------------------------------------------
+Mon Aug 17 05:01:01 UTC 2026 - Zoltan Balogh <zbalogh@suse.com>
+
+- Add fwupd-tests subpackage with installed tests for
+  gnome-desktop-testing-runner.
+
+-------------------------------------------------------------------
 Tue Jul 28 06:46:40 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.1.7:
