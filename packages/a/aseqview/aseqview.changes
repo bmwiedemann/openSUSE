@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Aug 18 08:26:22 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to v0.3.1:
+  * Support of Gtk-4
+
+-------------------------------------------------------------------
+Mon Aug 17 16:12:45 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to v0.3.0:
+  * Migrate to Gtk3
+  * including previous fixes
+- Drop obsoleted patches:
+  aseqview-gcc14-fixes.patch
+  aseqview-piano-segfault-fix.patch
+  aseqview-quote-macros.patch
+  aseqview-0.2.2.dif
+- Drop obsoleted update-desktop-files
+
+-------------------------------------------------------------------
 Wed Aug 21 15:54:20 UTC 2024 - Takashi Iwai <tiwai@suse.com>
 
 - Fix gcc14 build errors:
