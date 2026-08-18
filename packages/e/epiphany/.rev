@@ -1949,4 +1949,34 @@ New stable rel</comment>
   + Updated translations.</comment>
     <requestid>1349695</requestid>
   </revision>
+  <revision rev="229" vrev="1">
+    <srcmd5>2f2daa6266e96e3802a66dc9359a492b</srcmd5>
+    <version>50.6</version>
+    <time>1787063915</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 50.6:
+  + Bugs fixed:
+    - Invalid bookmark import crashes browser
+    - Autofill JS Code Injection via CSS Selector
+    - WebExtension XPI Path Traversal ZIPSLIP
+
+- Update to version 50.5:
+  + Bugs fixed:
+    - Crash when opening preferences dialog after deleting default
+      search engine
+    - Addressbar URL prettification does not understand IPv6
+      addresses
+    - Editing password username creates duplicate entries
+    - Memory leak in the core string utility function
+      ephy_string_shorten()
+    - password-manager: fix crash when deleting password record
+    - Quote command line input before passing to shell
+    - password-manager: avoid duplicate record when changing
+      username
+    - Fix crash when opening preferences dialog after deleting a
+      search engine
+    - Fix crash after adding a new OpenSearch engine
+  + Updated translations.</comment>
+    <requestid>1371796</requestid>
+  </revision>
 </revisionlist>
