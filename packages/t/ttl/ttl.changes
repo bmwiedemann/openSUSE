@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 10 13:56:01 UTC 2026 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- don't assign capabilities in the spec file anymore, the permissions package
+  takes care of this (bsc#1268674).
+
+-------------------------------------------------------------------
 Wed Jul 15 10:55:33 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Drop cap_net_admin, only cap_net_raw is needed (boo#1270714)

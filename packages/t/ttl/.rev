@@ -79,4 +79,12 @@
     <comment></comment>
     <requestid>1365991</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>b15ba73e8b7f6064107daedf5025cd1d</srcmd5>
+    <version>0.21.0</version>
+    <time>1787066219</time>
+    <user>anag_factory</user>
+    <comment>Fix build</comment>
+    <requestid>1371770</requestid>
+  </revision>
 </revisionlist>
