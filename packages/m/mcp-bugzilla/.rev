@@ -54,4 +54,12 @@ this change -- they lack python313-httpx-retries and python313-uv-build
 entirely, which this update does not touch.</comment>
     <requestid>1370723</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fb2cf2c16bbc01771856f46ac8920fb6</srcmd5>
+    <version>0.20.0</version>
+    <time>1787063857</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.20.0: adds get_component_defaults tool, reset_qa_contact/reset_assigned_to in update_bug_fields, and a --tool-search BM25 meta-tool mode; fastmcp floor raised to 3.4.7 (already in Factory). Local aarch64 build green, %check import test passes, rpmlint clean.</comment>
+    <requestid>1371682</requestid>
+  </revision>
 </revisionlist>

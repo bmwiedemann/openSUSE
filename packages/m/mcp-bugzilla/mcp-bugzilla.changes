@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Aug 18 07:40:07 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.20.0:
+  * Add get_component_defaults tool to look up a component's
+    default assignee and QA contact, either by product/component
+    or resolved from a bug id
+  * update_bug_fields gained reset_qa_contact and
+    reset_assigned_to to reset those fields to the component's
+    defaults
+  * Add --tool-search flag (MCP_TOOL_SEARCH env) to collapse all
+    tools into search_tools + call_tool meta-tools using BM25
+    relevance ranking
+  * Bump fastmcp requirement accordingly
+
+-------------------------------------------------------------------
 Tue Aug 11 15:55:11 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.19.0:
