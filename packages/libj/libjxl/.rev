@@ -226,4 +226,12 @@ Leap 15.5
   checking required PNM inmput length (bsc#1266460 CVE-2025-70103).</comment>
     <requestid>1355840</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>a259d7418108e84990d4170c7bbefb85</srcmd5>
+    <version>0.12.0</version>
+    <time>1787063737</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 0.12</comment>
+    <requestid>1371580</requestid>
+  </revision>
 </revisionlist>

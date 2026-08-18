@@ -16,7 +16,7 @@
 #
 
 
-%define lname   libjxl0_11
+%define lname   libjxl0_12
 %if "@BUILD_FLAVOR@" == "gtk"
 Name:           libjxl-gtk
 %bcond_without gtk
@@ -24,7 +24,7 @@ Name:           libjxl-gtk
 Name:           libjxl
 %bcond_with gtk
 %endif
-Version:        0.11.2
+Version:        0.12.0
 Release:        0
 Summary:        JPEG XL reference implementation
 License:        BSD-3-Clause
@@ -33,11 +33,10 @@ URL:            https://jpegxl.info/
 Source:         https://github.com/libjxl/libjxl/archive/refs/tags/v%version.tar.gz
 Source1:        baselibs.conf
 # `git ls-tree <jxl_tag> third_party/skcms` gives the SKCMS revision needed for a particular libjxl release
-%define skcms_commit b2e692629c1fb19342517d7fb61f1cf83d075492
-#changes-too-damn-often: https://skia.googlesource.com/skcms/+archive/%skcms_commit.tar.gz
+%define skcms_commit 96d9171c94b937a1b5f0293de7309ac16311b722
+#changes-too-damn-often: https://skia.googlesource.com/skcms/+archive/%%skcms_commit.tar.gz
 Source2:        %skcms_commit.tar.gz
-Patch1:         system-jpeg.diff
-Patch2:         libjxl-CVE-2025-70103.patch
+Patch1:         notail.patch
 BuildRequires:  asciidoc
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
@@ -115,10 +114,11 @@ This package provides a thumbnailer to render for JPEG XL file thumbnails,
 for example, on file-browsers.
 
 %prep
-%autosetup -n libjxl-%version -p1
+%setup -n libjxl-%version
 # can't use %%autosetup -a2 because archive has no leading path
 mkdir -p third_party/skcms/
 tar -xf %{SOURCE2} -C third_party/skcms/
+%autopatch -p1
 
 %build
 %if 0%{?sle_version} == 150700
@@ -158,7 +158,6 @@ rm -Rf "$b/%_libdir"/libjxl* "$b/%_bindir" "$b/%_includedir" "$b/%_libdir/pkgcon
 %_libdir/libjxl*.so.*
 
 %files tools
-%_bindir/?jpegli
 %_bindir/*xl*
 %_mandir/man*/*xl*
 

@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Jul  2 08:40:54 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.12
+  * A new buffering flag is now available in the CLI, alongside
+    support for streaming input with buffered output.
+  * Introduced the new `jxltran` tool, which supports extracting
+    codestreams from `jxlp` boxes and packing raw codestreams into
+    `jxlc` boxes.
+  * Added the `--reconstruct_jpeg flag` to the `djxl` utility to
+    losslessly reconstruct a JPEG and fail if impossible.
+  * tools: added support for `ProPhoto`, and `Adobe98`/`AdobeRGB`
+    color space names in CLI arguments (cjxl / djxl).
+  * decoder API: support for out-of-order `jxlp` boxes (ftyp minor
+    version 1).
+- jpegli tools were removed by release 0.12
+- Delete libjxl-CVE-2025-70103.patch (merged),
+  libjxl-CVE-2026-52584.patch (merged),
+  system-jpeg.diff (obsolete)
+- Add notail.patch
+
+-------------------------------------------------------------------
+Wed Jul  2 00:59:43 UTC 2026 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add libjxl-CVE-2026-52584.patch: Fix possible overflow in APNG
+  decoder (bsc#1271810, CVE-2026-52584).
+
+-------------------------------------------------------------------
 Thu May 28 16:41:28 UTC 2026 - Michael Gorse <mgorse@suse.com>
 
 - Add libjxl-CVE-2025-70103.patch: take EC into accound when
