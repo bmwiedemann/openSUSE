@@ -222,4 +222,15 @@
     <comment></comment>
     <requestid>1364349</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>2814fef7a51cb1520593262448d74e6a</srcmd5>
+    <version>4.2.0</version>
+    <time>1787063918</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 4.2.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1371707 from glaubitz)</comment>
+    <requestid>1371791</requestid>
+  </revision>
 </revisionlist>
