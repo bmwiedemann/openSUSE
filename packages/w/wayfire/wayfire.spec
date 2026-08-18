@@ -16,8 +16,8 @@
 #
 
 
-%define major_ver 0.10
-%define minor_ver 1
+%define major_ver 0.11
+%define minor_ver 0
 %define libname libwf-utils0
 Name:           wayfire
 Version:        %{major_ver}.%{minor_ver}
@@ -57,7 +57,7 @@ BuildRequires:  pkgconfig(wayland-cursor)
 BuildRequires:  pkgconfig(wayland-protocols) >= 1.12
 BuildRequires:  pkgconfig(wayland-server)
 BuildRequires:  pkgconfig(wf-config) >= %{major_ver}
-BuildRequires:  pkgconfig(wlroots-0.19)
+BuildRequires:  pkgconfig(wlroots-0.20)
 BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(xwayland)
 BuildRequires:  pkgconfig(yyjson)
@@ -83,6 +83,16 @@ Requires:       %{name} = %{version}
 %description    devel
 Development files for %{name}.
 
+%lang_package -n %{name}-plugin
+
+%package plugin
+Summary:        Plugin management utility for %{name}
+Requires:       %{name} = %{version}
+BuildArch:      noarch
+
+%description plugin
+%{summary}.
+
 %prep
 echo "`grep %{name}-%{version}.tar.xz %{SOURCE1} | grep -Eo '^[0-9a-f]+'`  %{SOURCE0}" | sha256sum -c
 %autosetup -p1
@@ -99,7 +109,8 @@ echo "`grep %{name}-%{version}.tar.xz %{SOURCE1} | grep -Eo '^[0-9a-f]+'`  %{SOU
 rm -rf %{buildroot}/%{_prefix}/man/wayfire.1
 install -Dpm0644 wayfire.desktop %{buildroot}%{_datadir}/wayland-sessions/%{name}.desktop
 find %{buildroot} -type f -name "*.a" -delete -print0
-
+%find_lang %{name}-plugin --all-name
+%python3_fix_shebang_path %{buildroot}%{_bindir}/%{name}-plugin
 %fdupes %{buildroot}/%{_prefix}
 
 %post -n %{libname} -p /sbin/ldconfig
@@ -114,7 +125,6 @@ find %{buildroot} -type f -name "*.a" -delete -print0
 %{_bindir}/%{name}
 %{_datadir}/%{name}
 %{_datadir}/wayland-sessions/
-%{_datadir}/wayland-sessions/*.desktop
 %dir %{_datadir}/xdg-desktop-portal/
 %{_datadir}/xdg-desktop-portal/wayfire-portals.conf
 %{_mandir}/man1/wayfire.1%{?ext_man}
@@ -123,6 +133,11 @@ find %{buildroot} -type f -name "*.a" -delete -print0
 %{_libdir}/*.so.*
 %{_libdir}/libwayfire-blur-base.so
 %{_libdir}/%{name}/
+
+%files plugin
+%{_bindir}/%{name}-plugin
+
+%files -n %{name}-plugin-lang -f %{name}-plugin.lang
 
 %files devel
 %{_libdir}/libwf-utils.so

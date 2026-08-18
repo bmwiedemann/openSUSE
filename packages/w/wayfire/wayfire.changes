@@ -1,4 +1,111 @@
 -------------------------------------------------------------------
+Tue Jul 28 08:37:11 UTC 2026 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.11.0:
+  * Fix black screen on DPMS-on: Emit config change before damage.
+  * wobbly: add glesv2 as dependency for wobbly.c.
+  * Add keybind for maximizing tiled views.
+  * remove unnecessary log from _set_alpha.
+  * Prevent use-after-free in auxilliary_buffer_t.
+  * IPC method to list all config options.
+  * core: load input/output options with section+option name.
+  * LOG: change new unmanaged xwayland surface to LOGC.
+  * fix typo: 'Minimze' → 'Minimize'.
+  * output-layout: zero-initialize output mode.
+  * Add support for security-context-v1.
+  * Fix add/remove output events.
+  * Add support for ext-copy-capture and ext-foreign-toplevel-list 
+    protocols.
+  * Add support for ext-data-control-v1 protocol.
+  * Fix scale deactivate refocus.
+  * Ensure proper error exit for unknown CLI options.
+  * feat: support cursor-shape-v1 protocol.
+  * Send view to back / bring forward.
+  * Decoration plugin - fix touchscreen window move.
+  * seat: ensure activated state does not remain on minimized 
+    toplevel.
+  * Fix 2866 grid layer shell restore crash.
+  * Add view properties.
+  * fix musl compilation.
+  * ipc-rules: add custom events and get-view-property.
+  * Implement ext-toplevel-list plugin.
+  * alpha: allow setting alpha for unmapped views.
+  * pointer-constraints: add support for cursor warp hints.
+  * core: move json.hpp to a subproject.
+  * Keyboard: do not rely on global config changed signal.
+  * tile: keep fullscreen and maximized on adjacent focus and new 
+    floating views.
+  * xdg-popup: fix focus_main_surface_instead_of_popup for 
+    non-focusable parents.
+  * view-impl: do not set deprecated is_positioned in view-mapped.
+  * surface-node: fix infinite region calculation.
+  * core: transfer views to same workspace as on destroyed output.
+  * enhance configure view.
+  * place: add "pointer" mode.
+  * window-rules: allow using X11-style geometry.
+  * plugins: move fisheye to wayfire-plugins-extra.
+  * Use partial_dependency for wf-json library.
+  * layer-shell: fix crash with too large margins.
+  * IPC: send info about the "above" state of views.
+  * Move detection and calculation of grid snapping to grid plugin 
+    from move plugin.
+  * zoom: sanitize x/y values before blitting.
+  * xwayland: allow clients to move their windows within their 
+    workspace.
+  * xwayland: downgrade surface logging from LOGE to LOGC.
+  * Global menu support.
+  * output-layout: Add different automatic modes.
+  * Inhibit output rendering from wayfire directly instead of 
+    relying on clients.
+  * window-rules: fix view-action-interface output detection logic.
+  * input method: make sure down edge is inside screen even the 
+    submitted coordinates aren't.
+  * render: clarify render_pass run and run_partial functions.
+  * plugins: fix cairo text transparency.
+  * Support for custom vulkan effects.
+  * Render: add additional documentation for texture_t.
+  * switcher: render in stacking order.
+  * grid: fix tiling and fullscreening for dialogs.
+  * xwayland: fix workarea calculation for workspaces other than 0,0.
+  * xwayland: add support for disabling compositor-side scaling.
+  * Fix: guard against negative output scale values.
+  * xwayland: set cursor scale.
+  * HDR support.
+  * seat: allow transferring implicit grabs to other nodes.
+  * make sure old input-method-popup is destroyed or they can 
+    accumulate quite a lot.
+  * Hdr fixes.
+  * seat: select drag-and-drop action from keyboard modifiers.
+  * ext-toplevel: Assign toplevel data to the corresponding.
+  * Add support for vertical/horizontal maximization.
+  * wraparound by desktop numeric id mode in vswitch.
+  * allow to customize button and title size.
+  * seat: update last_cursor_name when client sets cursor.
+  * window-rules: make assign_workspace work with simple-tile.
+  * Extending the wayfire-shell-unstable-v2 protocol.
+  * command: fix ipc deregistration for repeatable bindings.
+  * wayfire-shell: Allow clients to use < version 3 without crashing.
+  * API: move logical geometry to floating point.
+  * render: add APIs for aligning rendering to pixel borders.
+  * workarounds: add use_native_buffer_size option 
+    for fractional scaling.
+  * layer-shell: include margin in exclusive zone.
+  * xwayland-unmanaged-view: fix DnD offset calculation.
+  * xwayland: fix resize with transaction_timeout=0.
+  * switcher: change render order comparator to be deterministic.
+  * touch improvements.
+  * grid improvements.
+  * fix floating precision.
+  * simple-tile: fix damage when dragging views.
+  * render-manager: prevent infinite commit loop in direct scanout.
+  * wayfire-plugin: introduce tool for installing and managing plugins.
+  * api: standardize floating-point rendering helpers.
+  * explicit sync.
+  * wayfire-plugin: make json file optional.
+  * blur blending coeff.
+  * Translation support added.
+
+-------------------------------------------------------------------
 Fri Apr 10 03:06:43 UTC 2026 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Change from wlroot-devel to pkgconfig(wlroots-0.19). 
@@ -343,4 +450,4 @@ Thu Oct 03 11:02:21 UTC 2019 - dead_mozay@opensuse.org
 -------------------------------------------------------------------
 Thu Oct  3 09:43:09 UTC 2019 - Dead Mozay <dead_mozay@opensuse.org>
 
-- Initial package
+- Initil package
