@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Aug 17 08:46:47 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.5.5
+  * Link the C++ runtime statically into the Windows wheels again, as the
+    Appveyor builds did through 3.3.0. Since 3.3.1 ``_greenlet.pyd``
+    imported ``MSVCP140.dll``, which no Windows CPython distribution ships,
+    so importing greenlet failed on machines without the Visual C++
+    redistributable. See issue 525. Issue and pull request by Daniel Sticker.
+- from version 3.5.4
+  * Fix a crash (segfault) on free-threaded builds of Python 3.14 and
+    later when the garbage collector runs while a greenlet that was
+    started from a non-empty C-stack-reference state is active.
+    See issue 515. Thanks to ddorian and Kumar Aditya.
+  * Fix a potential use-after-free on free-threaded builds of Python 3.14
+    and later when the garbage collector runs while a greenlet is
+    suspended holding a ``_PyCStackRef`` (for example, mid attribute
+    resolution). See issue 515. Thanks to ddorian and Kumar Aditya.
+  - Fix a deadlock on free-threaded builds when a greenlet switch happened
+    while a ``PyCriticalSection`` was held -- for example inside asyncio's
+    ``Task.__step``, which holds one on the running task for the duration of
+    the step. See PR 519. Thanks to ddorian and Kumar Aditya.
+
+-------------------------------------------------------------------
 Sat Jun 27 16:08:02 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.5.3:
