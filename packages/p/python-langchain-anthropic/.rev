@@ -87,4 +87,12 @@ Built and tested natively on aarch64: 195 tests pass per Python flavour
 (python313, python314), rpmlint clean.</comment>
     <requestid>1371027</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>151c3d4eaed20a6a28ea7a77a67da8c9</srcmd5>
+    <version>1.5.6</version>
+    <time>1787063840</time>
+    <user>anag_factory</user>
+    <comment>Reproducibility fix: move the hash-based bytecode recompilation and fdupes from %check to %install, so the package content no longer varies when built with --nocheck (boo#1227364). Same fix bmwiedemann applied to python-langgraph in sr#1371636.</comment>
+    <requestid>1371667</requestid>
+  </revision>
 </revisionlist>

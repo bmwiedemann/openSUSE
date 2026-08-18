@@ -63,6 +63,10 @@ rm -f tests/conftest.py
 
 %install
 %pyproject_install
+# Recompile the installed modules as hash-based bytecode: this package ships
+# many modules, so timestamp-based .pyc desync from the reproducibility-clamped
+# .py mtimes and trip python-bytecode-inconsistent-mtime.
+%python_expand $python -m compileall -q -f --invalidation-mode=unchecked-hash -o 0 -o 1 -s %{buildroot} %{buildroot}%{$python_sitelib}/langchain_anthropic
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -71,13 +75,6 @@ rm -f tests/conftest.py
 # langgraph / langchain, not in Factory); both also require network providers.
 # Deselect the one chat-model test that imports langchain-tests as well.
 %pytest tests/unit_tests --ignore tests/unit_tests/test_standard.py --ignore tests/unit_tests/middleware --deselect tests/unit_tests/test_chat_models.py::test_anthropic_stream_events_v3_lifecycle
-# Recompile the installed modules as hash-based bytecode: this package ships
-# many modules, so timestamp-based .pyc desync from the reproducibility-clamped
-# .py mtimes and trip python-bytecode-inconsistent-mtime.
-%python_expand $python -m compileall -q -f --invalidation-mode=unchecked-hash -o 0 -o 1 -s %{buildroot} %{buildroot}%{$python_sitelib}/langchain_anthropic
-# Re-link the freshly compiled identical .pyc/.opt-1.pyc (brp-python-hardlink
-# already ran before %%check).
-%python_expand %fdupes %{buildroot}%{$python_sitelib}/langchain_anthropic
 
 %files %{python_files}
 %doc README.md
