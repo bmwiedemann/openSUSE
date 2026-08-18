@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Aug 16 22:39:30 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.0.2:
+  * The dependancy to Qt Core private has been removed
+  * The wrong detection of the devicepixelratio on linux/wayland
+    (wayland trouble) has been fixed
+  * A trouble about the color of selected text has been fixed
+  * CMakeLists.txt has been updated
+  * Mouse wheel event has been added in the pdf presentation mode
+    (next and previous page only)
+  * Updated translations.
+
+-------------------------------------------------------------------
 Tue Oct 14 11:21:09 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Add patch:

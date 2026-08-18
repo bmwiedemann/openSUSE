@@ -1,7 +1,7 @@
 #
 # spec file for package texmaker
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,9 +20,8 @@
 %define gcc_ver 13
 %endif
 
-
 Name:           texmaker
-Version:        6.0.1
+Version:        6.0.2
 Release:        0
 Summary:        LaTeX editor
 License:        BSD-3-Clause AND GPL-2.0-or-later
@@ -38,7 +37,6 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc%{?gcc_ver}-c++
 BuildRequires:  pkgconfig
-BuildRequires:  qt6-base-private-devel
 BuildRequires:  pkgconfig(Qt6Concurrent)
 BuildRequires:  pkgconfig(Qt6Core)
 BuildRequires:  pkgconfig(Qt6Core5Compat)
