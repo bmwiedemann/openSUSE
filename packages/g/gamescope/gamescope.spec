@@ -18,7 +18,7 @@
 
 %bcond_without  intree_libs
 Name:           gamescope
-Version:        3.16.22
+Version:        3.16.25
 Release:        0
 Summary:        Micro-compositor optimized for running video games on Wayland
 License:        BSD-2-Clause
@@ -27,7 +27,6 @@ URL:            https://github.com/Plagman/gamescope
 Source:         %{name}-%{version}.tar.xz
 Source1:        stb-1675018027.5736b15.tar.xz
 Source2:        glm-1.0.1.tar.xz
-Patch0:         wlroots-fix-build-with-libinput-1.31.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  glslang-devel
@@ -48,6 +47,7 @@ BuildRequires:  pkgconfig(libliftoff)
 BuildRequires:  pkgconfig(openvr)
 %endif
 BuildRequires:  pkgconfig(benchmark)
+BuildRequires:  pkgconfig(catch2-with-main)
 BuildRequires:  pkgconfig(hwdata)
 BuildRequires:  pkgconfig(libavif)
 BuildRequires:  pkgconfig(libcap)

@@ -12,8 +12,8 @@
     <param name="versionformat">@PARENT_TAG@</param>
   </service>
   <service name="tar_scm" mode="disabled">
-    <param name="url">https://github.com/Plagman/gamescope.git</param>
-    <param name="revision">refs/tags/3.16.22</param>
+    <param name="url">https://github.com/ValveSoftware/gamescope.git</param>
+    <param name="revision">refs/tags/3.16.25</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="scm">git</param>
     <param name="versionrewrite-pattern">([\.\d]+)</param>

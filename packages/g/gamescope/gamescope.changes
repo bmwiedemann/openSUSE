@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Aug 15 09:31:59 UTC 2026 - Jon Brightwell <jon@moozaad.co.uk>
+
+- Update to version 3.16.25:
+  * steamcompmgr: capture screenshots at render size, not output size
+  * steamcompmgr: consistently use the texture dimensions to write a screenshot to file
+  * steamcompmgr: fix the detection of the .nv12.bin extension for screenshot requests
+  * steamcompmgr: fix the error message when a screenshot is requested with an unsupported file extension
+  * steamcompmgr: drive pipewire capture off vblank
+  * pipewire: round capture size to an even number
+  * layer: perform present queue operations for retired swapchains
+  * Use a backing surface for letter-boxing
+  * rendervulkan: Fix FD leak when vkAllocateMemory fails to import a DMABuf handle
+  * steamcompmgr: Fix crash when wayland buffer fails to import
+- Removed wlroots-fix-build-with-libinput-1.31.patch
+- Updated buildreqs to include catch2
+
+-------------------------------------------------------------------
 Thu Mar 26 13:53:24 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to version 3.16.22:
