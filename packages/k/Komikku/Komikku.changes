@@ -1,4 +1,144 @@
 -------------------------------------------------------------------
+Tue Aug  4 14:54:03 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 50.11.0:
+  + [Servers] Added Death Toll Reader (EN)
+  + [Servers] Added Juin Jutsu Team (IT)
+  + [Servers] Added NIF Team (IT)
+  + [Servers] JManga (JA): Update
+  + [Servers] MangaFire (EN/ES/FR/JA/PT/pt_BR): Update
+  + [L10n] Updated Georgian, Spanish and Ukrainian translations
+- require python runtime dependencies as build dependencies, so
+  it's easier to find out if the software should run on target
+  product
+- exclude %{ix86}, as some dependencies are not building
+
+-------------------------------------------------------------------
+Thu Jul 30 06:46:54 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 50.10.0:
+  + [Preferences] Reader: Added White Borders Cropping Threshold
+  + [Reader] Settings: Added White Borders Cropping Threshold
+  + [Servers] Added BDplus (FR)
+  + [Servers] Anime-Sama (FR): Update
+  + [Servers] JManga (JA): Re-enabled
+  + [Servers] MangaFire (multi): Disabled
+  + [Servers] Mangalek (AR): Update
+  + [Servers] Mangas Origines (FR): Update
+  + [Servers] RF Dragon Scan (pt_BR): Disabled
+  + [L10n] Added Bengali and Georgian translations
+  + [L10n] Updated Cornish, German and Russian translations
+- Update to version 50.9.0:
+  + [Card] Chapters list: Improved ordering by Title
+  + [Trackers] Fixed authentication bug
+  + [Servers] Added Rncalation (ES)
+  + [Servers] 3asq (AR): Re-enabled
+  + [Servers] Anime-Sama (FR): Update
+  + [Servers] Dynasty Reader (EN): Update
+  + [Servers] MangaCrab (ES): Disabled
+  + [Servers] Raiki Scan (ES): Disabled
+  + [Servers] Webtoon TR (TR): Disabled
+  + [L10n] Updated German, Spanish, Swedish and Ukrainian translations
+- Update to version 50.8.0:
+  + [Servers] Added MangaK (EN)
+  + [Servers] Lovers Toon (pt_BR): Disabled
+  + [Servers] MangaBuddy (EN): Disabled
+  + [L10n] Updated Korean and Ukrainian translations
+
+-------------------------------------------------------------------
+Fri Jun 19 21:42:43 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 50.7.0:
+  + [Servers] MangaDex (multi): Update
+  + [Servers] Nine Manga (multi): Disabled
+  + [Servers] Qi Scans (EN): Update
+  + [Servers] Raijin Scan (FR): Update
+  + [Servers] Read Comics Online (EN): Update
+  + Fixed memory leaks
+  + [L10n] Updated Ukrainian translation
+
+-------------------------------------------------------------------
+Wed Jun 10 19:47:31 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 50.6.0:
+  + [Preferences] General: Added Random Colors to Progress bars themes
+  + [Preferences] Advanced: Added a setting to be prompted to submit a bug
+    report if a server error occurs
+  + [Servers] Anime-Sama (FR): Update
+  + [Servers] LanorTrad (FR): Update
+  + [Servers] MangaHub (EN): Update
+  + [L10n] Updated French, German, Portuguese, Russian and Ukrainian translations
+
+-------------------------------------------------------------------
+Fri Jun  5 18:00:39 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 50.5.0:
+  + [Card] Info: Long Synopsis truncation With Show More/Less button
+  + [Preferences] General: Added Progress Bars Theme setting (Happy Pride Month!)
+  + [Servers] Added MangaTown (EN)
+  + [Servers] Asura Scans (EN): Update
+  + [Servers] Raijin Scan (FR): Update
+  + [L10n] Updated French, German and Russian translations
+
+-------------------------------------------------------------------
+Sun May 31 00:57:43 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 50.4.0:
+  + [Servers] Dango Scan (pt_BR): Disabled
+  + [Servers] Dragon Ball Multiverse (multi): Fixed pages not showing text on
+    balloon speech bubbles
+  + [Servers] MangaFire (multi): Fixed chapter dates
+  + [Servers] Mangas Origines (FR): Disabled
+  + [Servers] Raijin Scan (FR): Update
+  + [Servers] Read Comic Online (EN): Update
+  + [Servers] Webtoon Hatti (TR): Update
+  + [Servers] Weeb Central (EN): Update
+  + [L10n] Updated Croatian, Russian, Ukrainian and Vietnamese translations
+- Update to version 50.3.0:
+  + [Library] Selection mode: Added Clear action (clears cached pages)
+  + [Servers] Added Shadow Manga (ES)
+  + [Servers] Kenscans (EN): Update
+  + [Servers] Manga/in/ua (UK): Update
+  + [Servers] Pepper&Carrot: Update miniFantasyTheater
+  + [Servers] ShadowMangas (ES): Disabled
+  + [L10n] Updated Finnish, French and Ukrainian translations
+- Update to version 50.2.0:
+  + Fixed an issue with unidentified cover files
+  + [Servers] Added Kenscans (EN)
+  + [Servers] Hijala Scans (EN): Update
+  + [Servers] Hive Toons (EN): Update
+  + [Servers] WeebDex (EN): Disabled
+  + [L10n] Updated German, Korean, Ukrainian and Vietnamese translations
+- Update to version 50.1.0:
+  + [Card] Improved Blurred covers backdrop
+  + [Card] Info: Added the time to Last Update
+  + [Reader] Improved notification message when an image fails to load (unidentified)
+  + [Reader] Improved saving of reading progress
+  + [Servers] Added Suwayomi
+  + [Servers] Comix (EN): Update
+  + [Servers] EZmanga (EN): Update
+  + [Servers] MangaDex: Get manga chapters regardless of content rating
+  + [Servers] MangaNato (EN): Update
+  + [Servers] Qi Scans (EN): Update
+  + [Servers] WeebDex (multi): Update
+  + [L10n] Updated Croatian, French, German, Korean and Ukrainian translations
+- Update to version 50.0.1:
+  + [Card] Fixed crash on opening chapters filtering
+  + [L10n] Updated Tamil translation
+- Update to version 50.0.0:
+  + Update to GNOME 50
+  + [Database] Optimize disk accesses on queries
+  + [Servers] Add KaliScan (EN)
+  + [Servers] Add LanorTrad (FR)
+  + [Servers] Add MangaBuddy (EN)
+  + [Servers] Asura Scans (EN): Update
+  + [Servers] Local: Fix support for PDF files
+  + [Servers] MangaBall (multi): Update
+  + [Servers] Pepper & Carrot (multi): Add MiniFantasyTheater webcomic
+  + [Servers] Qi Scans (EN): Update
+  + [L10n] Updated French, Italian, Russian and Ukrainian translations
+
+-------------------------------------------------------------------
 Mon Feb 23 13:31:00 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.103.0:

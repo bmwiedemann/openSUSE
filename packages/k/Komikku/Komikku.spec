@@ -18,7 +18,7 @@
 
 %define         appid info.febvre.Komikku
 Name:           Komikku
-Version:        1.103.0
+Version:        50.11.0
 Release:        0
 Summary:        A manga reader for GNOME
 # appdata.xml is CC-BY-4.0
@@ -26,19 +26,54 @@ License:        CC-BY-4.0 AND GPL-3.0-or-later
 URL:            https://codeberg.org/valos/Komikku
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         convert-to-modern-colorthief.patch
+BuildRequires:  WebKitGTK-6.0
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gettext
 BuildRequires:  intltool
-BuildRequires:  meson >= 0.59.0
+BuildRequires:  meson >= 1.0.0
+BuildRequires:  python3-Brotli >= 1.1.0
+BuildRequires:  python3-Pillow >= 10.3.0
+BuildRequires:  python3-PyJWT
+BuildRequires:  python3-Unidecode
+BuildRequires:  python3-beautifulsoup4
+BuildRequires:  python3-cffi
+BuildRequires:  python3-cloudscraper
+BuildRequires:  python3-cryptography
+BuildRequires:  python3-dateparser >= 1.1.6
 BuildRequires:  python3-devel
+BuildRequires:  python3-ebooklib >= 0.20
+BuildRequires:  python3-emoji
 BuildRequires:  python3-gobject
+BuildRequires:  python3-gobject
+BuildRequires:  python3-jxlpy
+BuildRequires:  python3-keyring >= 21.6.0
+BuildRequires:  python3-lxml >= 5.2.1
+BuildRequires:  python3-modern-colorthief >= 0.1.3
+BuildRequires:  python3-natsort >= 7.1.1
+BuildRequires:  python3-piexif
+BuildRequires:  python3-pillow-jxl-plugin
+BuildRequires:  python3-pure-protobuf >= 3.0.0
+BuildRequires:  python3-pycairo
+BuildRequires:  python3-pypdf
+BuildRequires:  python3-python-magic
+BuildRequires:  python3-pytz
+BuildRequires:  python3-rarfile
+BuildRequires:  python3-regex
+BuildRequires:  python3-requests >= 2.32.2
+BuildRequires:  python3-setuptools-gettext
+BuildRequires:  python3-typing_extensions
+BuildRequires:  python3-tzlocal
+BuildRequires:  python3-urllib3
+BuildRequires:  python3-wheel
+BuildRequires:  unrar_wrapper
 BuildRequires:  pkgconfig(appstream-glib)
 BuildRequires:  pkgconfig(blueprint-compiler)
+BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.44.3
 BuildRequires:  pkgconfig(glycin-gtk4-2) >= 2.0.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.35.9
-BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  pkgconfig(gtk4) >= 4.18
 BuildRequires:  pkgconfig(libadwaita-1) >= 1.8
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(python3)
@@ -52,14 +87,16 @@ Requires:       python3-cffi
 Requires:       python3-cloudscraper
 Requires:       python3-cryptography
 Requires:       python3-dateparser >= 1.1.6
-Requires:       python3-ebooklib
+Requires:       python3-ebooklib >= 0.20
 Requires:       python3-emoji
 Requires:       python3-gobject
+Requires:       python3-jxlpy
 Requires:       python3-keyring >= 21.6.0
 Requires:       python3-lxml >= 5.2.1
 Requires:       python3-modern-colorthief >= 0.1.3
 Requires:       python3-natsort >= 7.1.1
 Requires:       python3-piexif
+Requires:       python3-pillow-jxl-plugin
 Requires:       python3-pure-protobuf >= 3.0.0
 Requires:       python3-pycairo
 Requires:       python3-pypdf
@@ -75,6 +112,7 @@ Requires:       python3-urllib3
 Requires:       python3-wheel
 Requires:       unrar_wrapper
 BuildArch:      noarch
+ExcludeArch:    %{ix86}
 
 %description
 Komikku is a manga reader for GNOME. It focuses on providing a clean, intuitive

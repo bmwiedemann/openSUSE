@@ -1,6 +1,6 @@
 diff -rubN komikku/komikku/models/database/mangas.py komikku-patched/komikku/models/database/mangas.py
---- komikku/komikku/models/database/mangas.py	2026-01-16 00:20:03.000000000 +0100
-+++ komikku-patched/komikku/models/database/mangas.py	2026-01-21 01:15:21.471552212 +0100
+--- komikku/komikku/models/database/mangas.py	2026-07-31 23:10:40.000000000 +0200
++++ komikku-patched/komikku/models/database/mangas.py	2026-08-05 13:24:31.114005061 +0200
 @@ -13,7 +13,7 @@
  import shutil
  import time
@@ -10,7 +10,7 @@ diff -rubN komikku/komikku/models/database/mangas.py komikku-patched/komikku/mod
  from PIL import Image
  from PIL import ImageFilter
  from PIL import ImageStat
-@@ -143,7 +143,7 @@
+@@ -135,7 +135,7 @@
                  if '@define-color' not in data:
                      return data
  
@@ -19,9 +19,21 @@ diff -rubN komikku/komikku/models/database/mangas.py komikku-patched/komikku/mod
          if len(palette) != 2:
              # Single color image?
              return None
+diff -rubN komikku/komikku/utils.py komikku-patched/komikku/utils.py
+--- komikku/komikku/utils.py	2026-07-31 23:10:40.000000000 +0200
++++ komikku-patched/komikku/utils.py	2026-08-05 13:27:05.372290806 +0200
+@@ -18,7 +18,7 @@
+ import subprocess
+ import traceback
+
+-from colorthief import ColorThief
++from modern_colorthief import get_palette
+ import gi
+ from jxlpy import JXLImagePlugin  # noqa: F401
+ import magic
 diff -rubN komikku/requirements.txt komikku-patched/requirements.txt
---- komikku/requirements.txt	2026-01-16 00:20:03.000000000 +0100
-+++ komikku-patched/requirements.txt	2026-01-21 01:16:00.134027904 +0100
+--- komikku/requirements.txt	2026-07-31 23:10:40.000000000 +0200
++++ komikku-patched/requirements.txt	2026-08-05 13:24:31.114005061 +0200
 @@ -4,7 +4,7 @@
  
  beautifulsoup4
@@ -29,5 +41,5 @@ diff -rubN komikku/requirements.txt komikku-patched/requirements.txt
 -colorthief
 +modern_colorthief
  dateparser >= 1.1.6
- ebooklib
+ ebooklib >= 0.20
  emoji
