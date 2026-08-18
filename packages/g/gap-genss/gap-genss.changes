@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 18 10:06:48 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.6.10
+  * Correct an incorrect claim in the manual about what can happen
+    if a randomized stabilizer chain is incorrect.
+
+-------------------------------------------------------------------
 Sun Feb  9 20:47:58 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.6.9

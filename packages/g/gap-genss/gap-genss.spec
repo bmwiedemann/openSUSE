@@ -1,7 +1,7 @@
 #
 # spec file for package gap-genss
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-genss
-Version:        1.6.9
+Version:        1.6.10
 Release:        0
 Summary:        GAP: generic Schreier-Sims
 License:        GPL-3.0-or-later
@@ -28,7 +28,6 @@ Source:         https://github.com/gap-packages/genss/releases/download/v%versio
 BuildArch:      noarch
 BuildRequires:  gap-rpm-devel
 Requires:       gap-core >= 4.9
-Requires:       gap-gapdoc >= 1.5
 Requires:       gap-orb >= 4.5
 Recommends:     gap-io >= 4.2
 
