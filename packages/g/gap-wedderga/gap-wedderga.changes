@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 18 10:39:29 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.12.1
+  * Use TrivialGroup instead of SmallGroup(1,1)
+
+-------------------------------------------------------------------
 Tue Aug 11 14:31:57 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.12.0
