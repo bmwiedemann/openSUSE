@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Aug 17 16:57:53 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.85
+  * Fixed a remotely triggerable use-after-free in Pageant.
+  * Fixed a remotely triggerable buffer overflow if the OpenSSH
+    encrypt-then-MAC cipher modes are in use. (Only used if a
+    server supports nothing else.)
+  * Fixed a buffer overflow in private key decryption, if the
+    private key is constructed maliciously. (Only triggerable on
+    purpose if you let somebody else generate a key for you.)
+  * Denial-of-service security fixes for where a server could
+    trigger a tight loop in PuTTY, and even a MITM can make it
+    consume unlimited memory at startup.
+
+-------------------------------------------------------------------
 Mon May 25 15:33:44 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.84
