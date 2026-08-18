@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Aug 13 07:22:47 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.16.14:
+  + Fixes: Strange message "Account login for 'root' has not yet
+    started" on all feeds
+
+-------------------------------------------------------------------
+Tue Aug  4 15:57:12 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.16.13:
+  + Fix Serialize feed item document as HTML not XML
+  + Removes some unnecessary duplicate processing when marking all
+    items read
+  + Fix Reedah login (invalid auth token)
+  + Fix node source update state after login for Reedah,
+    TheOldReader, GoogleReader
+  + Update Javascript dependency DomPurify
+  + Remove incorrect lastPoll resetting on startup when "Update all
+    feeds on startup" preference is disabled
+  + Fixes a dummy source handling regression
+  + Feed view now renders a HTTP 410 discontinued warning
+  + Improve liferea-add-feed helper script to work without already
+    running instance
+  + Fixed outdated section in documentation about subscriptions,
+    removed dead FAQ link
+ +  Improve documentation CSS with auto margin and max-width
+ +  Updated manpage
+
+-------------------------------------------------------------------
 Wed Jun 17 09:09:05 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.16.12:

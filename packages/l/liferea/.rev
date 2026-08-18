@@ -289,4 +289,33 @@
       Content-Encoding header not indicating JSON</comment>
     <requestid>1360018</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>3d3638eabad0f158dae6679ae912c118</srcmd5>
+    <version>1.16.14</version>
+    <time>1787063913</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.16.14:
+  + Fixes: Strange message &quot;Account login for 'root' has not yet
+    started&quot; on all feeds
+
+- Update to version 1.16.13:
+  + Fix Serialize feed item document as HTML not XML
+  + Removes some unnecessary duplicate processing when marking all
+    items read
+  + Fix Reedah login (invalid auth token)
+  + Fix node source update state after login for Reedah,
+    TheOldReader, GoogleReader
+  + Update Javascript dependency DomPurify
+  + Remove incorrect lastPoll resetting on startup when &quot;Update all
+    feeds on startup&quot; preference is disabled
+  + Fixes a dummy source handling regression
+  + Feed view now renders a HTTP 410 discontinued warning
+  + Improve liferea-add-feed helper script to work without already
+    running instance
+  + Fixed outdated section in documentation about subscriptions,
+    removed dead FAQ link
+ +  Improve documentation CSS with auto margin and max-width
+ +  Updated manpage</comment>
+    <requestid>1371790</requestid>
+  </revision>
 </revisionlist>
