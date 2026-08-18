@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Aug 18 09:35:19 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 2.29.2
+  This release contains bug fixes since the 2.29.1 release. We
+  recommend that you upgrade at the next available opportunity.
+
+  - Bugfixes
+    - #10189 Fix user-defined functions named time_bucket causing
+      SQLSTATE XX000
+    - #10363 Fix time_bucket_gapfill() with window aggregates over
+      constants
+    - #10416 Repair mismatched dimensional CHECK constraints
+    - #10423 Fix compressed SkipScan dropping uncompressed rows
+      when sort keys do not match distinct keys
+    - #10430 Do not attach SkipScan to mismatched IndexScan paths
+      under MergeAppend
+    - #9921 Fix wrong results for IS NULL predicates with min/max
+      sparse-index pushdown
+  - Thanks
+    - @borisborelly for reporting incorrect results with
+      COUNT(DISTINCT) due to SkipScan dropping uncompressed rows.
+
+-------------------------------------------------------------------
 Tue Aug  4 09:22:39 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 2.29.1
