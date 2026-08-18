@@ -133,4 +133,20 @@
   * remove old link while installation</comment>
     <requestid>1370690</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b8106a7230e5e89c254dd8329809a29a</srcmd5>
+    <version>1.2.0+git20260817.3f4cd50</version>
+    <time>1787063739</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.2.0+git20260817.3f4cd50:
+  * Release version 1.2.0
+  * Remove .sysext for extension-release, too.
+  * Ignore dangling symlinks in /etc/extensions
+  * Fix manifest name for .sysext.raw images
+  * Unlink meta data file in cache on error
+  * Relax sysextmgr.service so that dissect does not need mountfsd
+  * sysextmgr.service: Add CacheDirectory so it's writeable
+  * Add bash completion for sysextmgrcli</comment>
+    <requestid>1371592</requestid>
+  </revision>
 </revisionlist>

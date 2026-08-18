@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Aug 17 14:47:29 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 1.2.0+git20260817.3f4cd50:
+  * Release version 1.2.0
+  * Remove .sysext for extension-release, too.
+  * Ignore dangling symlinks in /etc/extensions
+  * Fix manifest name for .sysext.raw images
+  * Unlink meta data file in cache on error
+  * Relax sysextmgr.service so that dissect does not need mountfsd
+  * sysextmgr.service: Add CacheDirectory so it's writeable
+  * Add bash completion for sysextmgrcli
+
+-------------------------------------------------------------------
 Tue Aug 11 12:02:58 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 1.1.0+git20260811.c3fa27f:

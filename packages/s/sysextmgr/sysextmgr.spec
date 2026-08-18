@@ -16,7 +16,7 @@
 #
 
 Name:           sysextmgr
-Version:        1.1.0+git20260811.c3fa27f
+Version:        1.2.0+git20260817.3f4cd50
 Release:        0
 Summary:        Tools to manage systemd-sysext images
 License:        GPL-2.0-or-later
@@ -91,6 +91,7 @@ echo -e "[default]\nurl=https://download.opensuse.org/tumbleweed/appliances/" > 
 %{_mandir}/man1/sysextmgrcli.1%{?ext_man}
 %{_mandir}/man5/sysextmgr.conf.5%{?ext_man}
 %{_mandir}/man8/sysextmgrd.8%{?ext_man}
+%{_datadir}/bash-completion/completions/sysextmgrcli
 
 %files -n sysextmgr-tukit-plugin
 %dir %{_prefix}/lib/tukit
