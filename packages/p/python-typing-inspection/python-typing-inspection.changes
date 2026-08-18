@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug 12 09:55:13 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 0.4.3:
+  * Drop support for Python 3.9
+  * Avoid module getattr() calls in typing_objects functions
+  * Add Python 3.15 support
+
+-------------------------------------------------------------------
 Fri Dec 12 09:37:22 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 0.4.2
@@ -22,4 +30,4 @@ Tue Jul 29 14:35:39 UTC 2025 - Elisei Roca <eroca@suse.com>
 -------------------------------------------------------------------
 Fri Apr  4 04:38:50 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Initial release of 0.4.0. 
+- Initial release of 0.4.0.
