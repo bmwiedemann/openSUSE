@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Mon Aug 17 15:24:06 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 1.24.0:
+  * Bump Skopeo to v1.24.0
+  * Bump c/storage 1.64.0, c/image 5.41.0, c/common 0.69.0
+  * Update actions/stale action to v11
+  * ci: drop redundant make vendor from test_skopeo
+  * Update module go.yaml.in/yaml/v3 to v3.0.5
+  * integration: use our own pause image
+  * Update dependency podman-container-tools/automation to v20260722
+  * Update module github.com/containers/ocicrypt to v1.3.2
+  * Update actions/checkout action to v7.0.1
+  * .github/workflows/stale.yml: pin actions/stale
+  * .github/workflows/issue_pr_lock.yml: update org name
+  * .github/workflows: do not run cron jobs at midnight
+  * remove .github/workflows/check_cirrus_cron.yml
+  * Update actions/setup-go action to v7
+  * Update dependency podman-container-tools/automation to v20260707
+  * renovate: point config to new repo
+  * ci: make the automation release renovate managed
+  * Update module go.podman.io/common to v0.68.1
+  * Add support for selective signature removal and sparse manifest list stripping
+  * Update module golang.org/x/term to v0.45.0
+  * Use go.yaml.in/yaml/v3 instead of gopkg.in/yaml.v3
+  * Update module github.com/containers/ocicrypt to v1.3.1
+  * Update module golang.org/x/crypto to v0.52.0 [SECURITY]
+  * Update module golang.org/x/net to v0.55.0 [SECURITY]
+  * Update dorny/paths-filter action to v4.0.2
+  * docs: include examples for --command-timeout duration format
+  * Fix minor grammar error in skopeo.1.md
+  * Update actions/setup-go action to v6.5.0
+  * Update actions/checkout action to v7
+  * Use correct SEE ALSO heading level in man pages
+  * Fix the docker-archive: transport entry in skopeo-list-tags(1)
+  * Drop a trailing period in skopeo-sync --help documentation
+  * Remove a misplaced signatures sentence in skopeo-copy(1)
+  * Update module golang.org/x/term to v0.44.0
+  * ci: pull skopeo_cidev image from ghcr instead of quay
+  * [skip-ci] Update actions/checkout action to v6.0.3
+  * ci: switch self-hosted runners from Oracle to CNCF Ubuntu
+  * Define IMAGE_TAG in the workflow
+  * ci: add path-filter, Total Success, drop Cirrus leftovers
+  * ci: address review feedback on workflow
+  * ci: migrate PR-blocking checks from Cirrus to GitHub Actions
+  * Bump to the next dev, v1.24.0-dev
+
+-------------------------------------------------------------------
 Wed May 27 07:26:56 UTC 2026 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
 
 - Update to version 1.23.0:

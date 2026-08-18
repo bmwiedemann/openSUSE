@@ -19,7 +19,7 @@
 
 %global project        github.com/podman-container-tools/skopeo
 Name:           skopeo
-Version:        1.23.0
+Version:        1.24.0
 Release:        0
 Summary:        Container image repository tool
 License:        Apache-2.0
