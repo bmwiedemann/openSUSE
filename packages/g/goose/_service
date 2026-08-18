@@ -1,0 +1,32 @@
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="url">https://github.com/aaif-goose/goose.git</param>
+    <param name="scm">git</param>
+    <param name="revision">v1.46.0</param>
+    <param name="match-tag">*</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
+    <param name="versionrewrite-replacement">\1</param>
+    <param name="changesgenerate">disable</param>
+    <!-- 311 MB Docusaurus web site (blog posts, videos, screenshots); not
+         referenced by any crate and not needed to build the CLI. -->
+    <param name="exclude">documentation</param>
+    <param name="exclude">documentation/*</param>
+  </service>
+  <service name="tar" mode="manual">
+    <param name="exclude">documentation</param>
+  </service>
+  <service name="recompress" mode="manual">
+    <param name="file">*.tar</param>
+    <param name="compression">zst</param>
+  </service>
+  <service name="set_version" mode="manual"/>
+  <service name="cargo_vendor" mode="manual">
+    <param name="src">goose</param>
+    <param name="compression">zst</param>
+    <param name="update">true</param>
+    <!-- upstream ships a stub crate in vendor/v8, so the vendored crates need
+         a tag to keep them out of its way -->
+    <param name="tag">crates</param>
+  </service>
+</services>
