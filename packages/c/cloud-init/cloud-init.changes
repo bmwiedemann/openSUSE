@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 10 18:24:58 UTC 2026 - Robert Schweikert <rjschwei@suse.com>
+
+- Add cloud-init-tsync.patch (bsc#1274554)
+
+-------------------------------------------------------------------
 Wed Jun 24 12:45:55 UTC 2026 - Robert Schweikert <rjschwei@suse.com>
 
 - Re-add cloud-init-write-routes.patch (bsc#1267422) incorrectly dropped

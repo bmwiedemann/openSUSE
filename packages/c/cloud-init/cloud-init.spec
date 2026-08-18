@@ -60,6 +60,7 @@ Patch11:      cloud-init-no-single-process.patch
 # FIXME https://github.com/canonical/cloud-init/pull/6214
 Patch12:      cloud-init-needs-action.patch
 Patch13:      cloud-init-write-routes.patch
+Patch14:      cloud-init-tsync.patch
 
 BuildRequires:  fdupes
 BuildRequires:  filesystem
@@ -174,6 +175,7 @@ Documentation and examples for cloud-init tools
 %patch -P 11
 %patch -P 12
 %patch -P 13
+%patch -P 14
 
 # patch in the full version to version.py
 version_pys=$(find . -name version.py -type f)
