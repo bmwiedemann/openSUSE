@@ -65,4 +65,16 @@
     <comment></comment>
     <requestid>1355098</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0de7ce7c882073f46f429878fb431cf8</srcmd5>
+    <version>0.4.0</version>
+    <time>1787063824</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.4.0:
+  * feat: ula random ipv6
+  * keepdata option
+  * tidyup function definitions
+</comment>
+    <requestid>1371631</requestid>
+  </revision>
 </revisionlist>
