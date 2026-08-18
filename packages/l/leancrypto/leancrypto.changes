@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 17 11:40:39 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- Add to the devel subpackage leancrypto-devel also a requires on
+  libleancrypto-fips. (bsc#1273211)
+
+-------------------------------------------------------------------
 Wed Aug  5 11:54:45 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Workaround for armv6 build (leancrypto assumes 32-bit is armv7)

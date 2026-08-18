@@ -70,6 +70,7 @@ enabled if possible.
 %package devel
 Summary:        Development files for leancrypto, a cryptographic library
 Requires:       %{libname}%{sover} = %{version}
+Requires:       %{libname}-fips%{sover} = %{version}
 Requires:       glibc-devel
 
 %description devel
