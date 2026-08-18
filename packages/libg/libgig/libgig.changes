@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Tue Aug 18 12:07:25 UTC 2026 - Edgar Aichinger <edogawa@aon.at>
+
+- Update to version 4.6.0 (05 Aug 2026)
+
+  * general changes:
+    - Require at least a C++14 compliant compiler.
+
+  * autoconf / automake:
+    - Replace deprecated AC_PROG_LIBTOOL and AC_LIBTOOL_WIN32_DLL by
+      LT_INIT([win32-dll]).
+
+  * src/gig.cpp, src/gig.h:
+    - Fix potential STL exception in Script::GetScriptAsText().
+    - Fix potential STL exception in Script::SetScriptAsText().
+
+  * src/Serialization.cpp, src/Serialization.h:
+    - Move "Srx" file format coder / decoder out to separate source files
+      SrxFormat.cpp and SrxFormat.h.
+    - Add DataType::isNumber() method.
+    - Add "Srx-JSON" file format, which now can be used as user-friendly
+      alternative to the already existing "Srx" file format.
+    - Add enum Archive::format_t which can be used to select the desired
+      encoding format for serialized raw data streams (defaults to
+      automatic encoding format handling).
+    - Distinguish between 'char', 'unsigned char' and 'signed char' types
+      (as these are defined by the C++ standard as 3 distinctive types).
+    - Add DataType::isChar() method.
+    - Add Archive::setCharValue() method.
+    - Add Archive::valueAsChar() method.
+    - Trigger assertion fault if native data type could not be resolved.
+    - Fix unnecessary need of explicit registration of polymorphic C++ classes
+      (by applications) by auto registering those native C++ types earlier.
+    - Move Serialization implementation specific (not public API) source
+      files into a new subdirectory src/srx/.
+    - Fix unnecessary need of explicit registration (by applications) of C++
+      classes being used as strong pointers, by auto registering the
+      dereferenced types as well.
+    - Fix order of type and version compatibility checks when syncing objects
+      (type compatibility must be checked before version compatibility).
+
+  * src/helper.h:
+    - Fix external linkage of helper functions (fixes helper tests from having
+      failed with certain compiler optimization settings on non-Windows
+      systems, as we are poking with defining _WIN32 to test behaviour of
+      helper function on Windows, which fails if the compiler decided to not
+      inline the helper functions).
+
+- Update to version 4.5.2 (17 Dec 2025)
+
+  * packaging changes:
+    - RPM packaging: fix libgig.spec file format (remove leading white line
+      and fix date format of changelog entries).
+
+
+
+-------------------------------------------------------------------
 Thu Nov 13 18:41:02 UTC 2025 - Edgar Aichinger <edogawa@aon.at>
 
 - Update to version 4.5.1 (07 Nov 2025)
