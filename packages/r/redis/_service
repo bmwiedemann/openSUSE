@@ -10,15 +10,16 @@
        Both are mode="manual" (they need network access): after a version bump
        run "osc service manualrun" and remember to update the tarball name in
        the "src" parameter below. -->
+  <service name="download_files" mode="manual" />
   <service name="cargo_vendor" mode="manual">
-    <param name="src">redis-8.10.0.tar.gz</param>
+    <param name="src">redis-8.10.1.tar.gz</param>
     <param name="custom-root">modules/redisjson/src</param>
     <param name="tag">redisjson</param>
     <param name="update">false</param>
     <param name="respect-lockfile">true</param>
   </service>
   <service name="cargo_vendor" mode="manual">
-    <param name="src">redis-8.10.0.tar.gz</param>
+    <param name="src">redis-8.10.1.tar.gz</param>
     <param name="custom-root">modules/redisearch/src/src/redisearch_rs</param>
     <param name="tag">redisearch</param>
     <param name="update">false</param>

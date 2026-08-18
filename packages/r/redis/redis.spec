@@ -50,7 +50,7 @@
 %define _conf_dir      %{_sysconfdir}/%{origname}
 %define _module_dir    %{_libdir}/%{origname}/modules
 Name:           %{origname}%{psuffix}
-Version:        8.10.0
+Version:        8.10.1
 Release:        0
 Summary:        Persistent key-value database
 License:        AGPL-3.0-only
