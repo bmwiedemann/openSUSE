@@ -2174,8 +2174,8 @@
     <package name="libjson-c5" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libjson-glib-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libjte2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libjxl0_11" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libjxl0_11-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libjxl0_12" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libjxl0_12-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libkColorPicker-Qt6-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkImageAnnotator-Qt6-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkaccounts6-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->

@@ -1585,6 +1585,7 @@ unsorted:
   - boinc-client-lang 
   - boinc-manager 
   - boinc-manager-lang 
+  - bolt-tests 
   - bolt-tools 
   - bom 
   - bomber 
@@ -4659,6 +4660,7 @@ unsorted:
   - fwupd-devel 
   - fwupd-doc 
   - fwupd-fish-completion 
+  - fwupd-tests 
   - fx 
   - fxload 
   - fyi 
@@ -7921,6 +7923,10 @@ unsorted:
   - google-worksans-fonts-doc 
   - googleapis-source 
   - googler 
+  - goose 
+  - goose-bash-completion 
+  - goose-fish-completion 
+  - goose-zsh-completion 
   - gopass 
   - gopass-bash-completion 
   - gopass-fish-completion 
@@ -13725,7 +13731,7 @@ unsorted:
   - libgif7-32bit 
   - libgig-devel 
   - libgig-tools 
-  - libgig13 
+  - libgig14 
   - libginac13 
   - libginkgo1_10_0 
   - libgio-2_0-0-32bit 
@@ -14397,7 +14403,7 @@ unsorted:
   - libjwt2 
   - libjxl-devel 
   - libjxl-tools 
-  - libjxl0_11-32bit 
+  - libjxl0_12-32bit 
   - libjxrglue0 
   - libkColorPicker-Qt5-0 
   - libkImageAnnotator-Qt5-0 
@@ -16227,7 +16233,7 @@ unsorted:
   - libressl-devel 
   - libressl-devel-doc 
   - librest-devel 
-  - libresvg0 
+  - libresvg0_48 
   - librevenge-devel 
   - librevenge-doc 
   - librevenge-generators-0_0-0 
@@ -20833,6 +20839,10 @@ unsorted:
   - openSUSE-repos-Tumbleweed-NVIDIA 
   - openSUSE-signkey-cert 
   - openSUSEway 
+  - openai-codex 
+  - openai-codex-bash-completion 
+  - openai-codex-fish-completion 
+  - openai-codex-zsh-completion 
   - openal-soft-devel 
   - openal-soft-devel-32bit 
   - openal-soft-makemhr 
@@ -26237,6 +26247,7 @@ unsorted:
   - python313-hypercorn 
   - python313-hypothesis 
   - python313-hypothesis-fspaths 
+  - python313-hypothesis-jsonschema 
   - python313-hypothesmith 
   - python313-i3ipc 
   - python313-icalendar 
@@ -28065,6 +28076,7 @@ unsorted:
   - python313-swagger-spec-validator 
   - python313-swapper 
   - python313-swiftclient 
+  - python313-switchyard 
   - python313-sybil 
   - python313-sympy 
   - python313-synr 
@@ -30265,6 +30277,7 @@ unsorted:
   - python314-hyperlink 
   - python314-hypothesis 
   - python314-hypothesis-fspaths 
+  - python314-hypothesis-jsonschema 
   - python314-hypothesmith 
   - python314-i3ipc 
   - python314-icalendar 
@@ -32138,6 +32151,7 @@ unsorted:
   - python314-svneverever 
   - python314-swagger-spec-validator 
   - python314-swapper 
+  - python314-switchyard 
   - python314-sybil 
   - python314-sympy 
   - python314-synr 
@@ -35201,6 +35215,7 @@ unsorted:
   - switcheroo 
   - switcheroo-control-doc 
   - switcheroo-lang 
+  - switchyard 
   - sword 
   - sword-devel 
   - swtcalendar 
@@ -46839,7 +46854,10 @@ unsorted:
   - waycheck 
   - wayfire 
   - wayfire-devel 
+  - wayfire-plugin 
+  - wayfire-plugin-lang 
   - wayfire-plugins-extra 
+  - wayfire-plugins-extra-lang 
   - wayland-devel 
   - wayland-devel-32bit 
   - wayland-protocols-devel 
@@ -46858,6 +46876,7 @@ unsorted:
   - wbxml2-tools 
   - wcd 
   - wcm 
+  - wcm-lang 
   - wcslib-devel 
   - wcslib-doc 
   - wcslib-tools 
