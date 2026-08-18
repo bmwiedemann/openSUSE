@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug  5 11:44:17 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- CVE-2026-44742: XSS due to HTML in message subject not being escaped
+  when it is rendered in the Held messages pop-up (bsc#1264638)
+  * CVE-2026-44742-escape-subject-html.patch
+- Skip tests which got broken in the meantime (skip-hanging-test.patch)
+
+-------------------------------------------------------------------
 Tue Mar 10 14:29:18 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Fix files with updated python-django-allauth

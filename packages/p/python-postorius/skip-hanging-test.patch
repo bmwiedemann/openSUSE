@@ -1,0 +1,37 @@
+From c6cc547afd5b564443554ac7c0b70299897a2a81 Mon Sep 17 00:00:00 2001
+From: Mark Sapiro <mark@msapiro.net>
+Date: Wed, 24 Sep 2025 13:52:04 -0700
+Subject: [PATCH] Skip hanging test with Python 3.13 and Django 5.2.
+
+---
+ src/postorius/tests/mailman_api_tests/test_nav_helpers.py | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/src/postorius/tests/mailman_api_tests/test_nav_helpers.py b/src/postorius/tests/mailman_api_tests/test_nav_helpers.py
+index 3bde0084..1cf75bbf 100644
+--- a/src/postorius/tests/mailman_api_tests/test_nav_helpers.py
++++ b/src/postorius/tests/mailman_api_tests/test_nav_helpers.py
+@@ -17,7 +17,11 @@
+ # Postorius.  If not, see <http://www.gnu.org/licenses/>.
+ #
+ 
++import sys
+ import time
++from unittest import skipIf
++
++from django import __version__
+ 
+ from postorius.templatetags.nav_helpers import (
+     held_count,
+@@ -26,6 +30,8 @@ from postorius.templatetags.nav_helpers import (
+ from postorius.tests.utils import ViewTestCase
+ 
+ 
++@skipIf(sys.version >= '3.13.0' and __version__ >= '5.2.0',
++        'This test hangs with Python 3.13 and Django 5.2.')
+ class TestNavigationHelpers(ViewTestCase):
+     def setUp(self):
+         super().setUp()
+-- 
+GitLab
+

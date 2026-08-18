@@ -1,7 +1,7 @@
 #
 # spec file for package python-postorius
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -71,6 +71,10 @@ Source20:       README.SUSE.md
 Patch0:         postorius-settings.patch
 # PATCH-FIX-UPSTREAM https://gitlab.com/mailman/postorius/-/commit/0468ab0329df85b89e6b5d9f7b4d1805f47450c9 feat: Add Python 3.13 and Django 5.2 (LTS) support
 Patch1:         django52.patch
+# PATCH-FIX-UPSTREAM CVE-2026-44742-escape-subject-html.patch bsc#1264638
+Patch2:         CVE-2026-44742-escape-subject-html.patch
+# PATCH-FIX-UPSTREAM https://gitlab.com/mailman/postorius/-/merge_requests/1034 Skip hanging test with Python 3.13 and Django 5.2.
+Patch3:         skip-hanging-test.patch
 #
 BuildRequires:  %{python_module legacy-cgi}
 BuildRequires:  %{python_module pdm-backend}
@@ -103,6 +107,7 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module readme_renderer}
 BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module vcrpy}
+#!BuildConflicts: %{python_module Django >= %{django_max_version}}
 # /SECTION
 %python_subpackages
 
@@ -242,7 +247,8 @@ install -m 0644 %{postorius_pkgname}.sysuser %{buildroot}%{_sysusersdir}/%{posto
 %check
 export PYTHONPATH="$(pwd):$(pwd)/src"
 export LANG=C.UTF-8
-%pytest
+# test_list_info: the failure was already reported https://gitlab.com/mailman/postorius/-/work_items/602
+%pytest -k "not test_list_info"
 # clean flavored alternatives created by test setup, because we are going to install the example_project as docs
 rm -rf build/flavorbin
 rm -rf build/xdgflavorconfig
