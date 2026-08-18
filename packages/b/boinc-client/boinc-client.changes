@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Aug 16 18:27:02 UTC 2026 - KNine <knine@canine.lat>
+
+- Recommend libGLU1 in boinc-manager, the project graphics apps
+  link against libGLU.so.1 and "Show graphics" does nothing
+  without it.
+- Build the manager with wxGTK3-3_2-devel, the GTK 2 flavour has
+  no themes left and no Wayland support. clientgui includes
+  gtk/gtk.h itself, hence the pkgconfig(gtk+-3.0) BuildRequires.
+
+-------------------------------------------------------------------
 Sun Jul  5 10:12:05 UTC 2026 - KNine <knine@canine.lat>
 
 - Drop build-client-scripts.patch. It rebuilt the generated init

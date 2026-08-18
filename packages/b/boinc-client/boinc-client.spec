@@ -72,7 +72,8 @@ BuildRequires:  pkgconfig(xi)
 Requires:       ca-certificates-mozilla
 Recommends:     boinc-client-lang = %{version}
 %if %{with manager}
-BuildRequires:  wxWidgets-3_2-devel >= 3.1.5
+BuildRequires:  wxGTK3-3_2-devel >= 3.1.5
+BuildRequires:  pkgconfig(gtk+-3.0)
 %lang_package -n boinc-manager
 %endif
 %lang_package
@@ -97,6 +98,14 @@ mathematical research.
 Summary:        GUI to control and monitor boinc-client
 Group:          Productivity/Scientific/Astronomy
 Recommends:     boinc-manager-lang = %{version}
+# Some boinc computation programs might contain visual frontend programs using
+# GLU (but of course they are delivered outside of rpm, so GLU would not get
+# installed automatically).
+%ifarch %arm64 %loongarch64 %mips64 %power64 %sparc64 %riscv64 %x86_64
+Recommends:     libGLU.so.1()(64bit)
+%else
+Recommends:     libGLU.so.1
+%endif
 Requires:       hicolor-icon-theme
 
 %description -n boinc-manager
