@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 18 05:37:21 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Avoid variations from --nocheck: move bytecode recompilation and
+  fdupes from %check to %install (boo#1227364)
+
+-------------------------------------------------------------------
 Sat Aug  8 04:41:37 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 4.2.0:

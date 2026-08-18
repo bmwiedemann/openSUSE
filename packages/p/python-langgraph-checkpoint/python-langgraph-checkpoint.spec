@@ -61,17 +61,16 @@ saver and the serialization machinery shared by the persistent backends.
 
 %install
 %pyproject_install
+# Recompile as hash-based bytecode: this namespace package ships many modules
+# whose timestamp-based .pyc desync from the reproducibility-clamped .py mtimes
+# and trip python-bytecode-inconsistent-mtime.
+%python_expand $python -m compileall -q -f --invalidation-mode=unchecked-hash -o 0 -o 1 -s %{buildroot} %{buildroot}%{$python_sitelib}/langgraph
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 # test_redis_cache.py requires a running Redis server (offline build);
 # test_conformance_delta.py self-skips when the conformance suite is absent.
 %pytest tests --ignore tests/test_redis_cache.py
-# Recompile as hash-based bytecode: this namespace package ships many modules
-# whose timestamp-based .pyc desync from the reproducibility-clamped .py mtimes
-# and trip python-bytecode-inconsistent-mtime.
-%python_expand $python -m compileall -q -f --invalidation-mode=unchecked-hash -o 0 -o 1 -s %{buildroot} %{buildroot}%{$python_sitelib}/langgraph
-%python_expand %fdupes %{buildroot}%{$python_sitelib}/langgraph
 
 %files %{python_files}
 %doc README.md

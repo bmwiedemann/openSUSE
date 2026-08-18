@@ -15,4 +15,12 @@
     <comment>Update to 4.2.0: opt-in omit_expired to skip expired rows on read, delta-channel write collection fix. Built and verified on aarch64: 151/156 tests passed per flavour, rpmlint 0 errors / 0 warnings / 0 badness, source_validator clean.</comment>
     <requestid>1370301</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>e7b5d2c3d9cca2c2c2ff47928c56f97d</srcmd5>
+    <version>4.2.0</version>
+    <time>1787063844</time>
+    <user>anag_factory</user>
+    <comment>Reproducibility fix: move the hash-based bytecode recompilation and fdupes from %check to %install, so the package content no longer varies when built with --nocheck (boo#1227364). Same fix bmwiedemann applied to python-langgraph in sr#1371636.</comment>
+    <requestid>1371670</requestid>
+  </revision>
 </revisionlist>
