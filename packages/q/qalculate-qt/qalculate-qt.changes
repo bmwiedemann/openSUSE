@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Aug  4 04:02:42 UTC 2026 - pallas wept <pallaswept@proton.me>
+
+- Update to version 5.12
+  * Add "Insert parentheses" shortcut action (default "Ctrl+Shft+(")
+    which always inserts empty parentheses after cursor
+  * Ignore docks (e.g. keypad) reported hidden when window is minimized
+    on Windows
+  * Fix input of operators with alternate characters popup enabled with 
+    plasma-keyboard version 6.7.0 or 6.7.1
+  * Added Georgian localisation
+
+-------------------------------------------------------------------
 Sat Apr  4 04:42:42 UTC 2026 - pallas wept <pallaswept@proton.me>
 
 - Update to version 5.10

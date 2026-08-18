@@ -17,7 +17,7 @@
 
 
 Name:           qalculate-qt
-Version:        5.10.0
+Version:        5.12.0
 Release:        0
 Summary:        Multi-purpose cross-platform desktop calculator
 License:        GPL-2.0-or-later
@@ -78,6 +78,7 @@ user-friendly interface (QT, GTK+ and CLI).
 %{_datadir}/qalculate-qt/translations/qalculate-qt_en.qm
 %{_datadir}/qalculate-qt/translations/qalculate-qt_es.qm
 %{_datadir}/qalculate-qt/translations/qalculate-qt_fr.qm
+%{_datadir}/qalculate-qt/translations/qalculate-qt_ka.qm
 %{_datadir}/qalculate-qt/translations/qalculate-qt_nl.qm
 %{_datadir}/qalculate-qt/translations/qalculate-qt_pt_BR.qm
 %{_datadir}/qalculate-qt/translations/qalculate-qt_pt_PT.qm
