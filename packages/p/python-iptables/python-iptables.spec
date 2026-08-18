@@ -1,7 +1,7 @@
 #
 # spec file for package python-iptables
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-iptables
-Version:        1.0.1
+Version:        1.2.0
 Release:        0
 Summary:        Python bindings for iptables
 License:        Apache-2.0
@@ -63,7 +63,7 @@ export XTABLES_LIBDIR=$(pkg-config xtables --variable=xtlibdir)
 %license NOTICE
 %doc doc README.md
 %{python_sitearch}/iptc
-%{python_sitearch}/libxtwrapper.cpython*-linux-gnu.so
+%{python_sitearch}/libxtwrapper.cpython*.so
 %{python_sitearch}/python_iptables-%{version}.dist-info
 
 %changelog

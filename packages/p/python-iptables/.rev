@@ -74,4 +74,15 @@
 - No more greedy globs in %files.</comment>
     <requestid>1195631</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b21b21c669f3b19d284338ba960575c9</srcmd5>
+    <version>1.2.0</version>
+    <time>1787063765</time>
+    <user>anag_factory</user>
+    <comment>- Upgrade to 1.2.0
+  * bump sources archive to version 1.2.0
+  * fix cpython expression to also match armv7hl flavor of lib
+</comment>
+    <requestid>1371598</requestid>
+  </revision>
 </revisionlist>

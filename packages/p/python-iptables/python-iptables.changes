@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 17 15:57:22 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Upgrade to 1.2.0
+  * bump sources archive to version 1.2.0
+  * fix cpython expression to also match armv7hl flavor of lib
+
+-------------------------------------------------------------------
 Fri Aug 23 04:18:10 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Do not use setup.py test to "run" the testsuite, use pytest to
