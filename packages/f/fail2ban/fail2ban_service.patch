@@ -1,14 +1,15 @@
-Index: fail2ban-1.1.0/files/fail2ban.service.in
+Index: fail2ban-1.1.1/files/fail2ban.service.in
 ===================================================================
---- fail2ban-1.1.0.orig/files/fail2ban.service.in
-+++ fail2ban-1.1.0/files/fail2ban.service.in
-@@ -6,9 +6,10 @@ PartOf=iptables.service firewalld.servic
+--- fail2ban-1.1.1.orig/files/fail2ban.service.in
++++ fail2ban-1.1.1/files/fail2ban.service.in
+@@ -6,10 +6,11 @@ PartOf=iptables.service firewalld.servic
  
  [Service]
  Type=simple
 +EnvironmentFile=-/etc/sysconfig/fail2ban
  Environment="PYTHONNOUSERSITE=1"
- ExecStartPre=/bin/mkdir -p /run/fail2ban
+ RuntimeDirectory=fail2ban
+ StateDirectory=fail2ban
 -ExecStart=@BINDIR@/fail2ban-server -xf start
 +ExecStart=@BINDIR@/fail2ban-server -xf $FAIL2BAN_OPTIONS start
  # if should be logged in systemd journal, use following line or set logtarget to sysout in fail2ban.local

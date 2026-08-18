@@ -770,4 +770,12 @@ services protected by Fail2ban. CVE-2013-7177 (cyrus-imap) and CVE-2013-7176
 - Make build recipe compatible with POSIX sh</comment>
     <requestid>1360655</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>1b2e029c15f38d0f1701ab8f225db49e</srcmd5>
+    <version>1.1.1</version>
+    <time>1787063903</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.1.1</comment>
+    <requestid>1371755</requestid>
+  </revision>
 </revisionlist>

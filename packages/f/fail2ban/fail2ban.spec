@@ -24,14 +24,15 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           fail2ban
-Version:        1.1.0
+Version:        1.1.1
 Release:        0
 Summary:        Bans IP addresses that make too many authentication failures
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Security
 URL:            https://www.fail2ban.org/
 Source0:        https://github.com/fail2ban/fail2ban/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        https://github.com/fail2ban/fail2ban/releases/download/%{version}/%{name}-%{version}.tar.gz.asc
+#Source1:        https://github.com/fail2ban/fail2ban/releases/download/%%{version}/%%{name}-%%{version}.tar.gz.asc
+Source1:        https://github.com/fail2ban/fail2ban/releases/download/%{version}/%{version}.tar.gz.asc
 Source2:        %{name}.sysconfig
 Source3:        %{name}.logrotate
 Source5:        %{name}.tmpfiles
@@ -46,10 +47,9 @@ Patch201:       %{name}-0.10.4-env-script-interpreter.patch
 Patch300:       %{name}_service.patch
 # PATCH-FEATURE-OPENSUSE harden_fail2ban.service.patch jsegitz@suse.com -- Added hardening to systemd service(s) bsc#1181400
 Patch301:       harden_fail2ban.service.patch
-# PATCH-FIX-OPENSUSE fail2ban-fix-openssh98.patch meissner@suse.com -- support openssh9.8 bsc#1230101
-Patch302:       fail2ban-fix-openssh98.patch
 # PATCH-FIX-OPENSUSE setup-py-install-dir.patch ncutler@suse.com -- fix unit file population broken by switch to pyproject_wheel macro
 Patch303:       setup-py-install-dir.patch
+BuildRequires:  %{python_module base >= 3.5}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyinotify >= 0.8.3}
 BuildRequires:  %{python_module setuptools}
@@ -236,6 +236,11 @@ export LANG=en_US.UTF-8
 # do not include tests as they are executed during the build process
 %exclude %{_bindir}/%{name}-testcases
 %exclude %{python3_sitelib}/%{name}/tests
+
+%pycache_only %exclude %{python_sitelib}/%{name}/__pycache__/*.pyc
+%pycache_only %exclude %{python_sitelib}/%{name}/client/__pycache__/*.pyc
+%pycache_only %exclude %{python_sitelib}/%{name}/compat/__pycache__/*.pyc
+%pycache_only %exclude %{python_sitelib}/%{name}/server/__pycache__/*.pyc
 
 %files -n monitoring-plugins-%{name}
 %license COPYING

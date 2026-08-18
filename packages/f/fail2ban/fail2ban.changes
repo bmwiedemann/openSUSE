@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Tue Aug 18 08:55:05 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.1.1
+  * For details, see
+    <https://github.com/fail2ban/fail2ban/blob/1.1.1/ChangeLog>.
+  * The iptables filter was rewritten for supporting multiple
+    chains. User-level derivations may become incompatible. Tags
+    like e.g. `<chain>` and `<_ipt_for_proto-iter>` may need to be
+    replaced.
+  * Several rules in the Exim filter w.r.t. mode "normal" moved to
+    a new mode "more", because of too risky handling. To use the
+    config as before, set `mode = more` for the exim jail.
+  * Fixed catastrophic backtracking explosion for REs in
+    domino-smtp and dovecot filters.
+  * Fixed systemd causing "too many open files" error for a lot of
+    journal files and large amount of systemd jails.
+  * Passing of arguments from jails to action or filter will affect
+    conditional section too, e.g. setting blocktype="DROP" via jail
+    for action would now apply for IPv4 and IPv6 chains.
+  * jail.conf:
+  * Default `banactions` need to be specified in paths-*.conf
+    (maintainer level) now.
+  * Since the stock fail2ban includes paths-debian.conf by default,
+    banactions are nftables (can be overwritten in jail.local by
+    user).
+  * action.d/firewallcmd-ipset.conf: Renamed `ipsettype` to
+    `ipsetbackend`. The parameter ipsettype will be used now to the
+    real set type.
+  * The Apache filter now recognizes AH02811 and AH10244 log messages.
+  * The sshd filter was adapted to support OpenSSH 9.8's new
+    "sshd-session" process and log messages.
+  * sshd filter: DDoS and aggressive modes had their regex extended
+    for timeout before authentication.
+  * New Features and Enhancements
+  * The systemd backend was extended with a new parameter called "rotated"
+    that allows monitoring only actual journals and ignore a lot of rotated files by
+    default.
+  * The new jail option `skip_if_nologs` was added to ignore a jail
+    if no logpath matches were found.
+- Drop fail2ban-fix-openssh98.patch, bacause now in upstream.
+
+-------------------------------------------------------------------
 Fri Jun 19 18:13:53 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Modernize specfile constructs
