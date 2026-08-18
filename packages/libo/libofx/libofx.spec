@@ -1,7 +1,7 @@
 #
 # spec file for package libofx
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ URL:            https://github.com/libofx/libofx
 Source:         https://github.com/libofx/libofx/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM
 Patch0:         0001-Remove-handling-for-obsolete-partner-server.patch
+# PATCH-FIX-UPSTREAM libofx-cxx20-allocator.patch gh#libofx/libofx#105 dimstar@opensuse.org -- Remove 2nd argument of std::allocator::allocate for C++20 compliance
+Patch1:         libofx-cxx20-allocator.patch
 BuildRequires:  cmake
 BuildRequires:  dos2unix
 BuildRequires:  doxygen

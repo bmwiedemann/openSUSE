@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 18 10:45:00 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add libofx-cxx20-allocator.patch: Remove second parameter to
+  std::allocator::allocate in tree.hh to fix compilation error with
+  C++20 (GCC 16) (gh#libofx/libofx#105).
+
+-------------------------------------------------------------------
 Sun Jun 22 08:15:46 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 0.10.9. Changes since 0.10.8:
