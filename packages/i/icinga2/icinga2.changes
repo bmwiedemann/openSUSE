@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Aug 18 08:50:50 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to version 2.16.5:
+  * Fix indentation in v2.16.5 changelog
+  * Update version to v2.16.5
+  * Update changelog for v2.16.5
+  * EventsHandler: enforce per-user permission checks in event filters
+  * Refactor: move FilterExprPermissionChecker from source file to header
+  * JsonRpc::ReadMessage(): remove unused default
+  * Allow parent nodes to send messages of unbounded size explicitly, not implicitly
+  * JsonRpcConnection: cap message size for child endpoints
+  * ApiListener: don't log config/attributes on config sync
+  * Repeat IcingaDB initial config dump when connections drop
+  * Count `m_RconWorker` in pending connections
+  * JSON-RPC: Do not log tickets
+  * Bump actions/checkout from 6 to 7
+  * Bump actions/cache from 5 to 6
+  * GHA: Linux: remove EOL Fedora 41
+  * GHA: Linux: remove openSUSE
+
+-------------------------------------------------------------------
 Fri Jul 17 09:10:07 UTC 2026 - ecsos <ecsos@opensuse.org>
 
 - Update to version 2.16.4:
