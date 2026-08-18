@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 18 03:01:55 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Avoid variations from --nocheck (boo#1227364)
+
+-------------------------------------------------------------------
 Wed Aug 12 05:18:33 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.2.11:

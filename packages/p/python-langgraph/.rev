@@ -53,4 +53,15 @@ unconditionally imports Postgres and SQLite checkpoint backends that are not
 packaged.</comment>
     <requestid>1370778</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>d397ad604d7cedce4b88dfd181787edd</srcmd5>
+    <version>1.2.11</version>
+    <time>1787063838</time>
+    <user>anag_factory</user>
+    <comment>Reproducibility fix by bmwiedemann (sr#1371636, accepted into devel): move the
+hash-based bytecode recompilation and fdupes from %check to %install so the
+package no longer varies when built with --nocheck (boo#1227364), plus a
+follow-up comment cleanup.</comment>
+    <requestid>1371641</requestid>
+  </revision>
 </revisionlist>

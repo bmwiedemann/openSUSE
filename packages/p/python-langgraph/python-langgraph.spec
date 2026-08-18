@@ -59,6 +59,12 @@ ecosystem.
 
 %install
 %pyproject_install
+
+# Recompile as hash-based bytecode: this namespace package ships many modules
+# whose timestamp-based .pyc desync from the reproducibility-clamped .py mtimes
+# and trip python-bytecode-inconsistent-mtime. Done in %%install, not %%check,
+# so the result does not vary with --nocheck (boo#1227364).
+%python_expand $python -m compileall -q -f --invalidation-mode=unchecked-hash -o 0 -o 1 -s %{buildroot} %{buildroot}%{$python_sitelib}/langgraph
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -67,12 +73,6 @@ ecosystem.
 # SQLite checkpoint backends (langgraph-checkpoint-postgres /
 # langgraph-checkpoint-sqlite, not packaged for Factory) plus psycopg and
 # redis, so pytest collection fails before any offline unit test executes.
-# Only byte-compilation is exercised here.
-# Recompile as hash-based bytecode: this namespace package ships many modules
-# whose timestamp-based .pyc desync from the reproducibility-clamped .py mtimes
-# and trip python-bytecode-inconsistent-mtime.
-%python_expand $python -m compileall -q -f --invalidation-mode=unchecked-hash -o 0 -o 1 -s %{buildroot} %{buildroot}%{$python_sitelib}/langgraph
-%python_expand %fdupes %{buildroot}%{$python_sitelib}/langgraph
 
 %files %{python_files}
 %doc README.md
