@@ -72,4 +72,18 @@ dead: detectInstallMethod() returns &quot;unknown&quot; and getSelfUpdateCommand
 returns undefined.</comment>
     <requestid>1370734</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5373f42f401a0b40dc3abe714b0fc9da</srcmd5>
+    <version>0.84.2</version>
+    <time>1787066221</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.84.2
+
+One upstream release: fullscreen transcript search, configurable
+default tools and fullscreen exit output, per-run themes, plus TUI
+and model-selector fixes. The vendored dependency tree shrinks from
+143 to 139 modules (Mistral SDK replaced by a native HTTP stream);
+licence union unchanged. Local TW build green, rpmlint clean.</comment>
+    <requestid>1371771</requestid>
+  </revision>
 </revisionlist>

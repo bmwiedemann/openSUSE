@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Aug 18 12:54:16 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.84.2:
+  * Fullscreen transcript search with incremental match
+    highlighting, configurable match colors and next/previous
+    navigation
+  * New defaultTools setting to choose the startup built-in tools
+    globally or per project, and a fullscreen exit output setting
+    (full transcript or only a resume hint)
+  * New --use-theme option for a per-run interactive theme
+  * Experimental strict JSON-schema constrained sampling for the
+    default read/bash/edit/write tools under PI_EXPERIMENTAL=1
+  * Mistral SDK transport replaced by a native Chat Completions
+    HTTP stream; the vendored dependency tree shrinks from 143 to
+    139 modules (mistralai, opentelemetry-semantic-conventions,
+    zod and zod-to-json-schema gone), licence union unchanged
+  * Assorted TUI startup, model selector and rendering fixes
+- Refresh package-lock.json (six @earendil-works sibling
+  integrity hashes filled in) and the vendored node_modules
+  archive to match
+
+-------------------------------------------------------------------
 Tue Aug 11 17:56:16 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Initial package (version 0.84.1)
