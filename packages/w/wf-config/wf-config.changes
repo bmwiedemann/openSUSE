@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jul 28 04:36:45 UTC 2026 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.11.0:
+  * Refactor load_xml_files: suppress per-file logging, summarize 
+    loaded ….
+  * ini-parser: emit errors for options not part of the XML spec.
+  * option-wrapper: add option to load via section+option name.
+  * support cubic-bezier as easing.
+  * Don't copy accessed values in getters.
+  * Add extra AUTO options.
+  * files: add support for reloading XMLs files after building 
+    the initial configuration.
+
+-------------------------------------------------------------------
 Mon Sep  1 05:55:17 UTC 2025 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 0.10.0:
