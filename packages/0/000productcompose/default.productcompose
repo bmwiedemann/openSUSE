@@ -1308,7 +1308,6 @@ packagesets:
    - libKF6NewStuffCore6-lang # reason: dvd:patterns-kde-kde
    - libKF6NewStuffWidgets6 # reason: dvd:patterns-kde-kde
    - libKF6Notifications6 # reason: dvd:patterns-kde-kde
-   - libKF6Notifications6-lang # reason: dvd:patterns-kde-kde
    - libKF6NotifyConfig6 # reason: dvd:patterns-kde-kde
    - libKF6NotifyConfig6-lang # reason: dvd:patterns-kde-kde
    - libKF6Package6 # reason: dvd:patterns-kde-kde
@@ -5407,6 +5406,7 @@ packagesets:
    - libelf1 # reason: opensuse_microos:patterns-microos-base
    - libell0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libepoxy0 # reason: opensuse_microos:patterns-microos-onlyDVD
+   - libepub0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - liberation-fonts # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libevdev2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libexif12 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -5864,6 +5864,7 @@ packagesets:
    - libzck1 # reason: opensuse_microos:patterns-microos-base
    - libzimg2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libzio1 # reason: opensuse_microos:patterns-microos-base
+   - libzip5 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libzix-0-0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libzmq5 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - libzopfli1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -7216,6 +7217,7 @@ packagesets:
    - libelf1 # reason: opensuse_kalpa:patterns-kalpa-base
    - libell0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libepoxy0 # reason: opensuse_kalpa:patterns-kalpa-base
+   - libepub0 # reason: opensuse_kalpa:patterns-kalpa-base
    - liberation-fonts # reason: opensuse_kalpa:patterns-kalpa-base
    - libevdev2 # reason: opensuse_kalpa:patterns-kalpa-base
    - libexif12 # reason: opensuse_kalpa:patterns-kalpa-base
