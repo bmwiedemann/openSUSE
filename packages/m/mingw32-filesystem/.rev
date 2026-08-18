@@ -328,4 +328,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1341166</requestid>
   </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>2fcb93dc3bf7dda7a9dd1c1137978c0b</srcmd5>
+    <version>20260312</version>
+    <time>1787063864</time>
+    <user>anag_factory</user>
+    <comment>mingw32-find-debuginfo.sh:
+  * fix a race between the parallel debug-info extraction processes (boo#1102408) (forwarded request 1371665 from bmwiedemann)</comment>
+    <requestid>1371701</requestid>
+  </revision>
 </revisionlist>

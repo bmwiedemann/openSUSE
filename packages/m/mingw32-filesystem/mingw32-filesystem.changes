@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 18 06:32:56 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- mingw32-find-debuginfo.sh:
+  * fix a race between the parallel debug-info extraction processes (boo#1102408)
+
+-------------------------------------------------------------------
 Thu Mar 12 11:37:22 UTC 2026 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Update to version 20260312
