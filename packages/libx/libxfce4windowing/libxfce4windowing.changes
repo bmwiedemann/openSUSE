@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Aug 11 08:00:36 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.20.7
+  * Add xfw_monitor_get_edid()
+  * Support the xfce-output-private-v1 protocol
+  * build: Add missing check for bind_textdomain_codeset
+  * Implement xfce-foreign-toplevel-management-private-v1
+  * Remove G_GNUC_CONST
+  * gobject-linter: Fix property_enum_coverage
+  * gobject-linter: Fix missing_implementation
+  * gobject-linter: Fix use_g_steal_pointer
+  * gobject-linter: Fix g_param_spec_static_strings
+  * gobject-linter: Fix use_clear_functions
+  * gobject-linter: Fix matching_declare_define
+  * gobject-linter: Fix property_switch_exhaustiveness
+  * cppcheck: Fix invalidPrintfArgType_sint warning in test code
+  * Fix includes that should use double quotes
+  * cppcheck: Fix knownConditionTrueFalse
+  * cppcheck: Fix unreadVariable
+  * cppcheck: Fix invalidPrintfArgType_sint
+  * scan-build: Update false positive file after clang version bump
+  * Fix fallback icons for pixmaps path
+  * Translation Updates
+
+-------------------------------------------------------------------
 Wed May 27 14:00:26 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Revert change regarding the -lang package.
