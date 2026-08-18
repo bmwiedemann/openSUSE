@@ -2509,4 +2509,14 @@
   + Include project version in metadata.</comment>
     <requestid>1355871</requestid>
   </revision>
+  <revision rev="153" vrev="1">
+    <srcmd5>bd2b6ff839ba8f77fabf0df87d53a349</srcmd5>
+    <version>50.3</version>
+    <time>1787063911</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 50.3:
+  + auto-move-windows: Make workspace cleanup more robust
+  + window-list: Only perform allowed window actions</comment>
+    <requestid>1371786</requestid>
+  </revision>
 </revisionlist>
