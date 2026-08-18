@@ -320,4 +320,13 @@
     <comment></comment>
     <requestid>1349888</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>695206d7869ce2708bd73b9209353a29</srcmd5>
+    <version>4.5.12</version>
+    <time>1787066218</time>
+    <user>anag_factory</user>
+    <comment>- Mark /var/spool/nagios as %verify(not mode): set_permissions is
+  configured to adjust permissions, delegating this away from RPM. (forwarded request 1370526 from dimstar)</comment>
+    <requestid>1371769</requestid>
+  </revision>
 </revisionlist>

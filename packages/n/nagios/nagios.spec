@@ -563,7 +563,7 @@ fi
 # directories with special handling:
 %attr(0755,root,%{nagios_command_group})           %dir %{nagios_sysconfdir}
 %attr(0755,root,%{nagios_command_group})           %dir %{nagios_sysconfdir}/objects
-%attr(2775,%{nagios_user},%{nagios_command_group}) %dir %{nagios_spooldir}
+%attr(2775,%{nagios_user},%{nagios_command_group}) %verify(not mode) %dir %{nagios_spooldir}
 %attr(0775,%{nagios_user},%{nagios_command_group}) %dir %{nagios_localstatedir}
 %attr(0755,%{nagios_user},%{nagios_group})         %dir %{nagios_logdir}
 %attr(0755,%{nagios_user},%{nagios_group})         %dir %{nagios_logdir}/archives

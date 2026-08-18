@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 10 12:06:09 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Mark /var/spool/nagios as %verify(not mode): set_permissions is
+  configured to adjust permissions, delegating this away from RPM.
+
+-------------------------------------------------------------------
 Fri Apr 17 13:15:20 UTC 2026 - Joel Baltazor <obs@mtlfab.com>
 
 - update to 4.5.12
