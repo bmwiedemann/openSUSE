@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sun Aug 16 22:29:50 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.11.0:
+  * Add helpful headers (instructions to end-users) to generated
+    scripts (gh#tqdm/shtab#253).
+  * Add complex developer examples (gh#tqdm/shtab#253).
+  * Support bash completion mid-command (gh#tqdm/shtab#248 <-
+    gh#tqdm/shtab#116).
+  * Bash: drop global compopt -o filenames (gh#tqdm/shtab#250 <-
+    gh#tqdm/shtab#67).
+  * Fix fallbacks (gh#tqdm/shtab#252).
+  * Fix zsh positional ordering (gh#tqdm/shtab#251 <-
+    gh#tqdm/shtab#123).
+  * Misc tidying.
+- Changes from version 1.10.0:
+  * Add shtab.glob & shtab.cmd (e.g. glob("*.y*ml", "*.toml") &
+    cmd("git branch")) (gh#tqdm/shtab#226, gh#tqdm/shtab#242 <-
+    gh#tqdm/shtab#240).
+  * Improve bash redirection (e.g. >&2) detection
+    (gh#tqdm/shtab#211).
+  * Improve tcsh (sub)command completions (gh#tqdm/shtab#247,
+    gh#tqdm/shtab#241 <- gh#tqdm/shtab#236).
+  * Fish: support shtab.FILE outside current directory
+    (gh#tqdm/shtab#246 <- gh#tqdm/shtab#245).
+  * Ensure .complete overrides choices (gh#tqdm/shtab#239).
+  * Bash: fix add_argument("--optional", help=SUPPRESS)
+    (gh#tqdm/shtab#211).
+  * Fix bash<4 support (gh#tqdm/shtab#244 <- gh#tqdm/shtab#235,
+    gh#tqdm/shtab#196).
+  * Test fish<4 flags (gh#tqdm/shtab#239).
+  * Tests: minimise tcsh pty forks (gh#tqdm/shtab#247).
+  * Test & fix typos (gh#tqdm/shtab#100, gh#tqdm/shtab#188).
+  * Misc docs, linting, testing & framework updates
+    (gh#tqdm/shtab#226, gh#tqdm/shtab#249).
+- Changes from previous versions 1.9.0 to 1.9.4:
+  * See https://github.com/tqdm/shtab/releases
+
+-------------------------------------------------------------------
 Sun Jul  5 10:38:06 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.8.1:
