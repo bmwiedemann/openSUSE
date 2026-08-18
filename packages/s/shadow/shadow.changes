@@ -39,6 +39,9 @@ Thu Jul 30 07:55:32 UTC 2026 - Michael Vetter <mvetter@suse.com>
   * Regressions:
     Some regressions have been introduced (as side effects of bug fixes) and they're here to stay. Users must adapt.
     + `su - <USERNAME>` as root brings inappropriate ioctl for device #1704
+      With Linux kernels >=v6.2, and /proc/sys/dev/tty/legacy_tiocsti set to 0,
+      everything is (hopefully) fine. Otherwise, running su - some_user from
+      root is unsafe, and it won't work correctly, to avoid security problems.
     + `usermod --unlock` on an account without valid password will exit with status 20 instead of print a warning #1706
   * Dependencies:
     + We've removed an unused dependency (libattr). See #1473.
