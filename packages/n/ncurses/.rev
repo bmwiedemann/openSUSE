@@ -5813,4 +5813,30 @@
   + add xterm+24fkeys -TD</comment>
     <requestid>1370523</requestid>
   </revision>
+  <revision rev="338" vrev="111">
+    <srcmd5>398c724a9438846f1cbbab777f810313</srcmd5>
+    <version>unknown</version>
+    <time>1787154977</time>
+    <user>anag_factory</user>
+    <comment>- Add ncurses patch 20260815
+  + improve tic warnings for paired capabilities, including ich/ich1.
+  + use xterm+tmux2 in xterm+nofkeys to match xterm patch #407 -TD
+  + use ST in xterm+osc104 -TD
+  + use ansi+sc -TD
+  + modify test/dup_field.c to also demonstrate link_field().
+  + work around use of ^D for exiting test/ncurses except in the form
+    test which uses ^D for movement (patch by Branden Robinson).
+  + improve appearance of test/dup_field and test/move_field, adding a
+    help-hint (patches by Branden Robinson).
+  + improve formatting/style of manpages (patches by Branden Robinson).
+  + add limit-checks in lib_screen.c and lib_ins_wch.c in case a 2-cell
+    character is added at the right-margin (report by Miroslav Lichvar).
+  + improve limit-check for extended names in _nc_read_termtype
+    (report/patch by Yeo Jooho).
+  + improve description of init_extended_color in man page (patch by
+    Andrew Burgess).
+  + modify test/Makefile.in to fix &quot;make check&quot; when ncurses is built in
+    a non-source tree (report by Bruno Haible).</comment>
+    <requestid>1371662</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Aug 17 08:05:11 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20260815
+  + improve tic warnings for paired capabilities, including ich/ich1.
+  + use xterm+tmux2 in xterm+nofkeys to match xterm patch #407 -TD
+  + use ST in xterm+osc104 -TD
+  + use ansi+sc -TD
+  + modify test/dup_field.c to also demonstrate link_field().
+  + work around use of ^D for exiting test/ncurses except in the form
+    test which uses ^D for movement (patch by Branden Robinson).
+  + improve appearance of test/dup_field and test/move_field, adding a
+    help-hint (patches by Branden Robinson).
+  + improve formatting/style of manpages (patches by Branden Robinson).
+  + add limit-checks in lib_screen.c and lib_ins_wch.c in case a 2-cell
+    character is added at the right-margin (report by Miroslav Lichvar).
+  + improve limit-check for extended names in _nc_read_termtype
+    (report/patch by Yeo Jooho).
+  + improve description of init_extended_color in man page (patch by
+    Andrew Burgess).
+  + modify test/Makefile.in to fix "make check" when ncurses is built in
+    a non-source tree (report by Bruno Haible).
+
+-------------------------------------------------------------------
 Mon Aug 10 06:51:59 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20260808

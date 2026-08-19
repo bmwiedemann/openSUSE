@@ -604,7 +604,7 @@
  # This variant is supposed to work with rxvt 2.7.7 when compiled with
  # NO_BRIGHTCOLOR defined.  rxvt needs more work...
  rxvt-16color|rxvt with 16 colors like aixterm,
-@@ -8927,7 +8989,7 @@ pty|4bsd pseudo teletype,
+@@ -8926,7 +8988,7 @@ pty|4bsd pseudo teletype,
  # https://github.com/emacs-mirror/emacs/blob/master/lisp/term.el
  #
  # The codes supported by the term.el terminal emulation in GNU Emacs 19.30
@@ -613,7 +613,7 @@
  	am, mir, xenl,
  	cols#80, lines#24,
  	bel=^G, bold=\E[1m, cr=\r, csr=\E[%i%p1%d;%p2%dr, cub1=^H,
-@@ -8936,6 +8998,13 @@ eterm|GNU Emacs term.el terminal emulati
+@@ -8935,6 +8997,13 @@ eterm|GNU Emacs term.el terminal emulati
  	smir=\E[4h, use=ansi+cpr, use=ansi+cup, use=ansi+erase,
  	use=ansi+idl, use=ansi+local, use=ansi+sgrso,
  	use=ansi+sgrul, use=xterm+alt47,
@@ -627,7 +627,7 @@
  
  # The codes supported by the term.el terminal emulation in GNU Emacs 22.2
  eterm-color|Emacs term.el terminal emulator term-protocol-version 0.96,
-@@ -9203,6 +9272,8 @@ screen.xterm-new|screen customized for m
+@@ -9202,6 +9271,8 @@ screen.xterm-new|screen customized for m
  # Don't use this, because not everyone has "screen.xterm-new":
  #:screen.xterm|screen for modern xterm,
  #:	use=screen.xterm-new,
@@ -636,7 +636,7 @@
  
  # xterm-r6 does not really support khome/kend unless it is propped up by
  # the translations resource.
-@@ -9295,7 +9366,7 @@ screen-w|VT 100/ANSI X3.64 virtual termi
+@@ -9294,7 +9365,7 @@ screen-w|VT 100/ANSI X3.64 virtual termi
  screen2|VT 100/ANSI X3.64 virtual terminal (old 2.x),
  	cols#80, lines#24,
  	clear=\E[2J\E[H, cr=\r, cub1=^H, cup=\E[%i%p1%d;%p2%dH,
@@ -645,7 +645,7 @@
  	kf2=\ET, kf3=\EU, kf4=\EV, kf5=\EW, kf6=\EP, kf7=\EQ, kf8=\ER,
  	kf9=\E0I, khome=\EH, nel=\r\n, ri=\EM, rmso=\E[23m, rs1=\Ec,
  	sgr0=\E[m, smso=\E[3m, use=ecma+underline, use=ansi+idc,
-@@ -11228,7 +11299,7 @@ hp700-wy|HP 700/41 emulating Wyse30,
+@@ -11227,7 +11298,7 @@ hp700-wy|HP 700/41 emulating Wyse30,
  	ri=\Ej, rmir=\Er, rmso=\EG0$<10/>, rmul=\EG0$<10/>,
  	sgr0=\EG0$<10/>, smir=\Eq, smso=\EG4$<10/>,
  	smul=\EG8$<10/>, tbc=\E0, vpa=\E[%p1%{32}%+%c,
