@@ -1,0 +1,42 @@
+diff --git a/daemon/gdm-session-worker.c b/daemon/gdm-session-worker.c
+index ac6bf69..18c412f 100644
+--- a/daemon/gdm-session-worker.c
++++ b/daemon/gdm-session-worker.c
+@@ -1013,9 +1013,37 @@ fix_terminal_vt_mode (GdmSessionWorker  *worker,
+                       int                tty_fd)
+ {
+         struct vt_mode getmode_reply = { 0 };
++        struct vt_mode setmode_request = { 0 };
++        struct vt_stat vt_state = { 0 };
+         int kernel_display_mode = 0;
+         gboolean mode_fixed = FALSE;
+         gboolean succeeded = TRUE;
++        int active_vt = -1;
++
++        if (ioctl (tty_fd, VT_GETSTATE, &vt_state) < 0) {
++                g_debug ("GdmSessionWorker: couldn't get current VT: %m");
++        } else {
++                active_vt = vt_state.v_active;
++        }
++
++        if (active_vt == 1) {
++                g_debug ("GdmSessionWorker: active VT is tty1, setting VT_AUTO + KD_TEXT");
++
++                setmode_request.mode = VT_AUTO;
++
++                if (ioctl (tty_fd, VT_SETMODE, &setmode_request) < 0) {
++                        g_debug ("GdmSessionWorker: couldn't set VT mode: %m");
++                        succeeded = FALSE;
++                }
++
++                if (ioctl (tty_fd, KDSETMODE, KD_TEXT) < 0) {
++                        g_debug ("GdmSessionWorker: couldn't set text mode: %m");
++                        succeeded = FALSE;
++                }
++
++                mode_fixed = TRUE;
++                goto out;
++        }
+ 
+         if (ioctl (tty_fd, VT_GETMODE, &getmode_reply) < 0) {
+                 g_debug ("GdmSessionWorker: couldn't query VT mode: %m");

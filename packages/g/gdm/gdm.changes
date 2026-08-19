@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug 13 02:31:39 UTC 2026 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Add gdm-fix-tty1-mode.patch: During system startup, tty1 is left
+  in an invalid state, preventing it from being switched away from
+  (bsc#1250688, bsc#1272490, bsc#1252888)
+- Drop gdm-initial-vt-tty1.patch: Fixed by gdm-fix-tty1-mode.patch
+
+-------------------------------------------------------------------
 Wed Aug 12 02:22:31 UTC 2026 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Update solution for switching to tty1 on gdm service stop

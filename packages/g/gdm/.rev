@@ -2456,4 +2456,15 @@
   + Add /usr/lib/systemd/system/gdm.service.d/10-switch-to-vt1-on-stop.conf</comment>
     <requestid>1370825</requestid>
   </revision>
+  <revision rev="305" vrev="3">
+    <srcmd5>71ab8e1b2cc96c04070a2b320125dd01</srcmd5>
+    <version>50.2</version>
+    <time>1787154945</time>
+    <user>anag_factory</user>
+    <comment>- Add gdm-fix-tty1-mode.patch: During system startup, tty1 is left
+  in an invalid state, preventing it from being switched away from
+  (bsc#1250688, bsc#1272490, bsc#1252888)
+- Drop gdm-initial-vt-tty1.patch: Fixed by gdm-fix-tty1-mode.patch</comment>
+    <requestid>1371792</requestid>
+  </revision>
 </revisionlist>

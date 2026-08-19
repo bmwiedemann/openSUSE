@@ -65,12 +65,12 @@ Patch1:         gdm-sysconfig-settings.patch
 Patch2:         gdm-initial-setup-hardening.patch
 # PATCH-FIX-OPENSUSE gdm-service-keytable.patch bsc#1248831 bsc#1250366 yfjiang@suse.com -- set KEYMAP to XkbLayout for GNOME
 Patch3:         gdm-service-keytable.patch
+# PATCH-FIX-OPENSUSE gdm-fix-tty1-mode.patch bsc#1250688 xwang@suse.com -- Fix invalid tty1 state
+Patch4:         gdm-fix-tty1-mode.patch
 
 ### NOTE: Keep please SLE-only patches at bottom (starting on 1000).
 # PATCH-FIX-SLE gdm-disable-gnome-initial-setup.patch bnc#1067976 qzhao@suse.com -- Disable gnome-initial-setup runs before gdm, g-i-s will only serve for CJK people to choose the input-method after login.
 Patch1000:      gdm-disable-gnome-initial-setup.patch
-# PATCH-FIX-SLE gdm-initial-vt-tty1.patch bsc#1252888 xwang@suse.com -- Greeter session runs on tty1
-Patch1001:      gdm-initial-vt-tty1.patch
 
 # dconf and gnome-session-core are needed for directory ownership
 BuildRequires:  dconf
