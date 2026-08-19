@@ -23,7 +23,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-sqlparse
-Version:        0.5.5
+Version:        0.6.0
 Release:        0
 Summary:        Non-validating SQL parser
 License:        BSD-3-Clause
@@ -76,7 +76,7 @@ chmod -x sqlparse/cli.py
 %pytest
 
 %files %{python_files}
-%doc AUTHORS README.rst
+%doc AUTHORS README.md
 %license LICENSE
 %python_alternative %{_bindir}/sqlformat
 %{python_sitelib}/sqlparse
