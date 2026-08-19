@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Aug 19 07:59:18 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.4.0:
+  + feat: add Shake0scillate filter
+
+-------------------------------------------------------------------
+Tue Aug 18 07:12:26 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.3.2:
+  + fix(ntsc): remove now redundant parameter
+  + Add pixels0rt filter
+
+-------------------------------------------------------------------
 Sun Jun 28 18:53:24 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.2.3:
