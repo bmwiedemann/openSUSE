@@ -89,4 +89,29 @@ every rebuild since. Reported upstream as plusky/bugwarden#92. No downstream
 workaround was added, because the fix belongs in the test helper.</comment>
     <requestid>1370891</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f6214dc54d114ffcfcfc2690984ae1eb</srcmd5>
+    <version>0.5.0</version>
+    <time>1787155173</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.5.0:
+  * Let the environment set allowed hosts and the auth header
+  * Require a bearer token on the HTTP transport
+  * Export audit records and diagnostics to an OTLP collector
+  * Handle SIGTERM so container stop is graceful
+  * Refuse unparsable allowed-hosts at startup
+  * Normalize tool schemas for Gemini/Vertex clients, and recurse
+    portable_schema into all draft-2020-12 positions
+- Vendored h2 bumped to 0.4.16 for RUSTSEC-2026-0258 /
+  GHSA-q83h-524g-xf6h (h2 unbounded empty DATA frames lead to
+  denial of service)
+- Raise the rust BuildRequires floor from 1.85 to 1.88 to match
+  the workspace rust-version
+- Refresh License: drop CDLA-Permissive-2.0, the
+  LGPL-2.1-or-later option, the Zlib option and the
+  LLVM-exception option, none of which remain in the linked
+  crate set
+- Ship the worked OpenTelemetry collector example as documentation</comment>
+    <requestid>1371939</requestid>
+  </revision>
 </revisionlist>

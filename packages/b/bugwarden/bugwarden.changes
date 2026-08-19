@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Aug 19 08:02:08 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.5.0:
+  * Let the environment set allowed hosts and the auth header
+  * Require a bearer token on the HTTP transport
+  * Export audit records and diagnostics to an OTLP collector
+  * Handle SIGTERM so container stop is graceful
+  * Refuse unparsable allowed-hosts at startup
+  * Normalize tool schemas for Gemini/Vertex clients, and recurse
+    portable_schema into all draft-2020-12 positions
+- Vendored h2 bumped to 0.4.16 for RUSTSEC-2026-0258 /
+  GHSA-q83h-524g-xf6h (h2 unbounded empty DATA frames lead to
+  denial of service)
+- Raise the rust BuildRequires floor from 1.85 to 1.88 to match
+  the workspace rust-version
+- Refresh License: drop CDLA-Permissive-2.0, the
+  LGPL-2.1-or-later option, the Zlib option and the
+  LLVM-exception option, none of which remain in the linked
+  crate set
+- Ship the worked OpenTelemetry collector example as documentation
+
+-------------------------------------------------------------------
 Wed Aug 12 19:19:16 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Move the shell completions into bash-completion, zsh-completion and

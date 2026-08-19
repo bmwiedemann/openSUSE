@@ -17,12 +17,12 @@
 
 
 Name:           bugwarden
-Version:        0.4.0
+Version:        0.5.0
 Release:        0
 Summary:        MCP server for Bugzilla with operator-controlled security guards
 # Upstream is Apache-2.0; the rest is the aggregate of the crates statically
 # linked into the binary from vendor.tar.zst.
-License:        (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR ISC OR MIT) AND (Apache-2.0 OR LGPL-2.1-or-later OR MIT) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR MIT OR Zlib) AND (Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT) AND (MIT OR Unlicense) AND Apache-2.0 AND BSD-3-Clause AND CDLA-Permissive-2.0 AND ISC AND MIT AND Unicode-3.0
+License:        (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR ISC OR MIT) AND (Apache-2.0 OR MIT) AND (MIT OR Unlicense) AND Apache-2.0 AND BSD-3-Clause AND ISC AND MIT AND Unicode-3.0
 URL:            https://github.com/plusky/bugwarden
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
@@ -33,7 +33,7 @@ BuildRequires:  ca-certificates-mozilla
 BuildRequires:  cargo-packaging
 # Workspace MSRV; the pinned toolchain upstream uses for its own checks is
 # dropped in %%prep so the distribution compiler is used instead.
-BuildRequires:  rust >= 1.85
+BuildRequires:  rust >= 1.88
 ExclusiveArch:  %{rust_tier1_arches}
 
 %description
@@ -118,7 +118,7 @@ install -D -m 0644 crates/%{name}/completions/%{name}.fish \
 
 %files
 %license LICENSE
-%doc README.md docs/DESIGN.md
+%doc README.md docs/DESIGN.md examples/otel-collector.yaml
 %dir %{_sysconfdir}/%{name}
 %config(noreplace) %{_sysconfdir}/%{name}/audit.toml
 %config(noreplace) %{_sysconfdir}/%{name}/policy.toml
