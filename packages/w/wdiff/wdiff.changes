@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 13 11:57:18 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU wdiff 1.2.3:
+  * Modernize build environments
+- drop wdiff-gcc15.patch, refresh spec file, update signing key
+
+-------------------------------------------------------------------
 Wed Feb 19 15:01:43 UTC 2025 - pgajdos@suse.com
 
 - added patches

@@ -2,6 +2,7 @@
 # spec file for package wdiff
 #
 # Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +18,7 @@
 
 
 Name:           wdiff
-Version:        1.2.2
+Version:        1.2.3
 Release:        0
 Summary:        Display Word Differences Between Text Files
 License:        GPL-3.0-or-later
@@ -25,21 +26,19 @@ Group:          Productivity/Text/Utilities
 URL:            https://www.gnu.org/software/wdiff/
 Source0:        https://ftp.gnu.org/gnu/wdiff/wdiff-%{version}.tar.gz
 Source1:        https://ftp.gnu.org/gnu/wdiff/wdiff-%{version}.tar.gz.sig
+# https://blog.josefsson.org/about/
+# ed25519 2019-03-20 [SC] Simon Josefsson <simon@josefsson.org>
+# B1D2 BD13 75BE CB78 4CF4  F8C4 D73C F638 C53C 06BE
+# https://josefsson.org/key-20190320.txt
 Source2:        %{name}.keyring
-# build with gcc15
-Patch0:         wdiff-gcc15.patch
 BuildRequires:  help2man
 BuildRequires:  makeinfo
-BuildRequires:  ncurses-devel
-Requires(post): %{install_info_prereq}
-Requires(preun): %{install_info_prereq}
+BuildRequires:  pkgconfig(tinfo)
 
 %description
 wdiff compares two files and finds which words have been deleted or
 added to old_file to get new_file. A word is considered to be anything
 between whitespace.
-
-Xwdiff is a handy X Window System front-end, based on Tcl/Tk.
 
 %lang_package
 
@@ -49,21 +48,14 @@ Xwdiff is a handy X Window System front-end, based on Tcl/Tk.
 %build
 %configure \
   --enable-experimental="mdiff wdiff2 unify"
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
-%find_lang %{name}-gnulib
 %find_lang %{name}
 
 %check
-make %{?_smp_mflags} check
-
-%post
-%install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
-
-%preun
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
+%make_build check
 
 %files
 %license COPYING
@@ -78,6 +70,7 @@ make %{?_smp_mflags} check
 %{_mandir}/man1/wdiff.1%{?ext_man}
 %{_mandir}/man1/wdiff2.1%{?ext_man}
 
-%files lang -f %{name}-gnulib.lang -f %{name}.lang
+%files lang -f %{name}.lang
+%license COPYING
 
 %changelog
