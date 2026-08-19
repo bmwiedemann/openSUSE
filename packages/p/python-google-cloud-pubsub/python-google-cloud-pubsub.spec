@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-cloud-pubsub
-Version:        2.39.0
+Version:        2.39.1
 Release:        0
 Summary:        Google Cloud Pub/Sub API client library
 License:        Apache-2.0
@@ -30,28 +30,39 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module flaky}
-BuildRequires:  %{python_module google-api-core >= 2.11.0}
+BuildRequires:  %{python_module google-api-core >= 2.25.0}
 BuildRequires:  %{python_module google-auth >= 2.14.1}
-BuildRequires:  %{python_module grpc-google-iam-v1 >= 0.14.0}
-BuildRequires:  %{python_module grpcio >= 1.75.1}
-BuildRequires:  %{python_module grpcio-status >= 1.33.2}
+BuildRequires:  %{python_module grpc-google-iam-v1 >= 0.14.2}
+BuildRequires:  %{python_module grpcio >= 1.59.0 if %python-base < 3.14}
+BuildRequires:  %{python_module grpcio >= 1.75.1 if %python-base >= 3.14}
+BuildRequires:  %{python_module grpcio-status >= 1.59.0 if %python-base < 3.14}
+BuildRequires:  %{python_module grpcio-status >= 1.75.1 if %python-base >= 3.14}
 BuildRequires:  %{python_module opentelemetry-api >= 1.27.0}
 BuildRequires:  %{python_module opentelemetry-sdk >= 1.27.0}
-BuildRequires:  %{python_module proto-plus >= 1.25.0}
-BuildRequires:  %{python_module protobuf >= 4.25.8}
+BuildRequires:  %{python_module proto-plus >= 1.26.1}
+BuildRequires:  %{python_module protobuf >= 6.33.5}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-google-api-core >= 2.11.0
+Requires:       python-google-api-core >= 2.25.0
 Requires:       python-google-auth >= 2.14.1
-Requires:       python-grpc-google-iam-v1 >= 0.14.0
-Requires:       python-grpcio >= 1.51.3
-Requires:       python-grpcio-status >= 1.33.2
+Requires:       python-grpc-google-iam-v1 >= 0.14.2
+%if %python_version_nodots < 314
+Requires:       python-grpcio >= 1.59.0
+%else
+Requires:       python-grpcio >= 1.75.1
+%endif
+%if %python_version_nodots < 314
+Requires:       python-grpcio-status >= 1.59.0
+%else
+Requires:       python-grpcio-status >= 1.75.1
+%endif
+Requires:       python-grpcio-status >= 1.59.0
 Requires:       python-opentelemetry-api >= 1.27.0
 Requires:       python-opentelemetry-sdk >= 1.27.0
-Requires:       python-proto-plus >= 1.22.3
-Requires:       python-protobuf >= 4.25.8
+Requires:       python-proto-plus >= 1.26.1
+Requires:       python-protobuf >= 6.33.5
 Suggests:       python-libcst >= 0.3.10
 BuildArch:      noarch
 %python_subpackages

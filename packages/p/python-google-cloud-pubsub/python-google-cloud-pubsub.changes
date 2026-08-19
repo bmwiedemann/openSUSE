@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 18 09:31:44 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.39.1
+  * bump grpcio to 1.59.0; require Python 3.10+ (#17351)
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Tue Jul 14 19:53:02 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.39.0:
