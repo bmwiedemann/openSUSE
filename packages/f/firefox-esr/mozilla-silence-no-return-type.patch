@@ -1,6 +1,10 @@
-diff -rup a/gfx/skia/skia/include/codec/SkEncodedOrigin.h b/gfx/skia/skia/include/codec/SkEncodedOrigin.h
---- a/gfx/skia/skia/include/codec/SkEncodedOrigin.h	2026-07-16 18:13:40.000000000 +0200
-+++ b/gfx/skia/skia/include/codec/SkEncodedOrigin.h	2026-07-18 12:59:37.462584783 +0200
+# HG changeset patch
+# Parent  0ba4feb95e7f4c365dcb637fef2d16969d5231a9
+
+Index: firefox-153.0/gfx/skia/skia/include/codec/SkEncodedOrigin.h
+===================================================================
+--- firefox-153.0.orig/gfx/skia/skia/include/codec/SkEncodedOrigin.h
++++ firefox-153.0/gfx/skia/skia/include/codec/SkEncodedOrigin.h
 @@ -41,6 +41,7 @@ static inline SkMatrix SkEncodedOriginTo
          case  kLeftBottom_SkEncodedOrigin: return SkMatrix::MakeAll( 0,  1, 0, -1,  0, h, 0, 0, 1);
      }
@@ -9,9 +13,10 @@ diff -rup a/gfx/skia/skia/include/codec/SkEncodedOrigin.h b/gfx/skia/skia/includ
  }
  
  /**
-diff -rup a/gfx/skia/skia/include/private/gpu/ganesh/GrTypesPriv.h b/gfx/skia/skia/include/private/gpu/ganesh/GrTypesPriv.h
---- a/gfx/skia/skia/include/private/gpu/ganesh/GrTypesPriv.h	2026-07-16 18:13:40.000000000 +0200
-+++ b/gfx/skia/skia/include/private/gpu/ganesh/GrTypesPriv.h	2026-07-18 12:53:40.982863915 +0200
+Index: firefox-153.0/gfx/skia/skia/include/private/gpu/ganesh/GrTypesPriv.h
+===================================================================
+--- firefox-153.0.orig/gfx/skia/skia/include/private/gpu/ganesh/GrTypesPriv.h
++++ firefox-153.0/gfx/skia/skia/include/private/gpu/ganesh/GrTypesPriv.h
 @@ -301,6 +301,7 @@ static inline bool GrTextureTypeHasRestr
          default:
              SK_ABORT("Unexpected texture type");
@@ -20,9 +25,10 @@ diff -rup a/gfx/skia/skia/include/private/gpu/ganesh/GrTypesPriv.h b/gfx/skia/sk
  }
  
  //////////////////////////////////////////////////////////////////////////////
-diff -rup a/gfx/skia/skia/src/core/SkDescriptor.cpp b/gfx/skia/skia/src/core/SkDescriptor.cpp
---- a/gfx/skia/skia/src/core/SkDescriptor.cpp	2026-07-16 18:13:40.000000000 +0200
-+++ b/gfx/skia/skia/src/core/SkDescriptor.cpp	2026-07-18 12:53:40.982987240 +0200
+Index: firefox-153.0/gfx/skia/skia/src/core/SkDescriptor.cpp
+===================================================================
+--- firefox-153.0.orig/gfx/skia/skia/src/core/SkDescriptor.cpp
++++ firefox-153.0/gfx/skia/skia/src/core/SkDescriptor.cpp
 @@ -26,6 +26,7 @@ std::unique_ptr<SkDescriptor> SkDescript
  void SkDescriptor::operator delete(void* p) { ::operator delete(p); }
  void* SkDescriptor::operator new(size_t) {
@@ -31,9 +37,10 @@ diff -rup a/gfx/skia/skia/src/core/SkDescriptor.cpp b/gfx/skia/skia/src/core/SkD
  }
  
  void SkDescriptor::flatten(SkWriteBuffer& buffer) const {
-diff -rup a/gfx/skia/skia/src/core/SkGeometry.h b/gfx/skia/skia/src/core/SkGeometry.h
---- a/gfx/skia/skia/src/core/SkGeometry.h	2026-07-16 18:13:40.000000000 +0200
-+++ b/gfx/skia/skia/src/core/SkGeometry.h	2026-07-18 12:53:40.983065483 +0200
+Index: firefox-153.0/gfx/skia/skia/src/core/SkGeometry.h
+===================================================================
+--- firefox-153.0.orig/gfx/skia/skia/src/core/SkGeometry.h
++++ firefox-153.0/gfx/skia/skia/src/core/SkGeometry.h
 @@ -284,6 +284,7 @@ static inline bool SkCubicIsDegenerate(S
              return true;
      }
@@ -50,9 +57,10 @@ diff -rup a/gfx/skia/skia/src/core/SkGeometry.h b/gfx/skia/skia/src/core/SkGeome
  }
  
  /** Returns the cubic classification.
-diff -rup a/gfx/skia/skia/src/core/SkTextBlob.cpp b/gfx/skia/skia/src/core/SkTextBlob.cpp
---- a/gfx/skia/skia/src/core/SkTextBlob.cpp	2026-07-16 18:13:41.000000000 +0200
-+++ b/gfx/skia/skia/src/core/SkTextBlob.cpp	2026-07-18 12:53:40.983169697 +0200
+Index: firefox-153.0/gfx/skia/skia/src/core/SkTextBlob.cpp
+===================================================================
+--- firefox-153.0.orig/gfx/skia/skia/src/core/SkTextBlob.cpp
++++ firefox-153.0/gfx/skia/skia/src/core/SkTextBlob.cpp
 @@ -212,6 +212,7 @@ void SkTextBlob::operator delete(void* p
  
  void* SkTextBlob::operator new(size_t) {
@@ -61,9 +69,10 @@ diff -rup a/gfx/skia/skia/src/core/SkTextBlob.cpp b/gfx/skia/skia/src/core/SkTex
  }
  
  void* SkTextBlob::operator new(size_t, void* p) {
-diff -rup a/gfx/skia/skia/src/core/SkTypeface_remote.h b/gfx/skia/skia/src/core/SkTypeface_remote.h
---- a/gfx/skia/skia/src/core/SkTypeface_remote.h	2026-07-16 18:13:40.000000000 +0200
-+++ b/gfx/skia/skia/src/core/SkTypeface_remote.h	2026-07-18 12:53:40.983257540 +0200
+Index: firefox-153.0/gfx/skia/skia/src/core/SkTypeface_remote.h
+===================================================================
+--- firefox-153.0.orig/gfx/skia/skia/src/core/SkTypeface_remote.h
++++ firefox-153.0/gfx/skia/skia/src/core/SkTypeface_remote.h
 @@ -108,12 +108,14 @@ public:
      bool isLogging() const {return fIsLogging;}
  
@@ -120,9 +129,10 @@ diff -rup a/gfx/skia/skia/src/core/SkTypeface_remote.h b/gfx/skia/skia/src/core/
      }
  
  private:
-diff -rup a/gfx/skia/skia/src/sksl/SkSLOperator.cpp b/gfx/skia/skia/src/sksl/SkSLOperator.cpp
---- a/gfx/skia/skia/src/sksl/SkSLOperator.cpp	2026-07-16 18:13:41.000000000 +0200
-+++ b/gfx/skia/skia/src/sksl/SkSLOperator.cpp	2026-07-18 12:53:40.983302182 +0200
+Index: firefox-153.0/gfx/skia/skia/src/sksl/SkSLOperator.cpp
+===================================================================
+--- firefox-153.0.orig/gfx/skia/skia/src/sksl/SkSLOperator.cpp
++++ firefox-153.0/gfx/skia/skia/src/sksl/SkSLOperator.cpp
 @@ -51,7 +51,7 @@ OperatorPrecedence Operator::getBinaryPr
          case Kind::BITWISEXOREQ: // fall through
          case Kind::BITWISEOREQ:  return OperatorPrecedence::kAssignment;
@@ -132,9 +142,10 @@ diff -rup a/gfx/skia/skia/src/sksl/SkSLOperator.cpp b/gfx/skia/skia/src/sksl/SkS
      }
  }
  
-diff -rup a/gfx/skia/skia/src/sksl/ir/SkSLType.h b/gfx/skia/skia/src/sksl/ir/SkSLType.h
---- a/gfx/skia/skia/src/sksl/ir/SkSLType.h	2026-07-16 18:13:41.000000000 +0200
-+++ b/gfx/skia/skia/src/sksl/ir/SkSLType.h	2026-07-18 12:53:40.983350133 +0200
+Index: firefox-153.0/gfx/skia/skia/src/sksl/ir/SkSLType.h
+===================================================================
+--- firefox-153.0.orig/gfx/skia/skia/src/sksl/ir/SkSLType.h
++++ firefox-153.0/gfx/skia/skia/src/sksl/ir/SkSLType.h
 @@ -474,6 +474,7 @@ public:
  
      virtual SkSpan<const Field> fields() const {
@@ -143,9 +154,10 @@ diff -rup a/gfx/skia/skia/src/sksl/ir/SkSLType.h b/gfx/skia/skia/src/sksl/ir/SkS
      }
  
      /**
-diff -rup a/gfx/skia/skia/src/utils/SkShadowUtils.cpp b/gfx/skia/skia/src/utils/SkShadowUtils.cpp
---- a/gfx/skia/skia/src/utils/SkShadowUtils.cpp	2026-07-16 18:13:40.000000000 +0200
-+++ b/gfx/skia/skia/src/utils/SkShadowUtils.cpp	2026-07-18 12:53:40.983411406 +0200
+Index: firefox-153.0/gfx/skia/skia/src/utils/SkShadowUtils.cpp
+===================================================================
+--- firefox-153.0.orig/gfx/skia/skia/src/utils/SkShadowUtils.cpp
++++ firefox-153.0/gfx/skia/skia/src/utils/SkShadowUtils.cpp
 @@ -142,6 +142,7 @@ struct SpotVerticesFactory {
                  return true;
          }
@@ -154,9 +166,10 @@ diff -rup a/gfx/skia/skia/src/utils/SkShadowUtils.cpp b/gfx/skia/skia/src/utils/
      }
  
      sk_sp<SkVertices> makeVertices(const SkPath& path, const SkMatrix& ctm,
-diff -rup a/intl/icu/source/i18n/number_rounding.cpp b/intl/icu/source/i18n/number_rounding.cpp
---- a/intl/icu/source/i18n/number_rounding.cpp	2026-07-16 18:13:41.000000000 +0200
-+++ b/intl/icu/source/i18n/number_rounding.cpp	2026-07-18 12:53:40.983480888 +0200
+Index: firefox-153.0/intl/icu/source/i18n/number_rounding.cpp
+===================================================================
+--- firefox-153.0.orig/intl/icu/source/i18n/number_rounding.cpp
++++ firefox-153.0/intl/icu/source/i18n/number_rounding.cpp
 @@ -287,6 +287,7 @@ FractionPrecision Precision::constructFr
      settings.fMaxFrac = static_cast<digits_t>(maxFrac);
      settings.fMinSig = -1;
@@ -173,9 +186,22 @@ diff -rup a/intl/icu/source/i18n/number_rounding.cpp b/intl/icu/source/i18n/numb
      PrecisionUnion union_{};
      union_.fracSig = settings;
      return {RND_SIGNIFICANT, union_};
-diff -rup a/third_party/libwebrtc/api/adaptation/resource.cc b/third_party/libwebrtc/api/adaptation/resource.cc
---- a/third_party/libwebrtc/api/adaptation/resource.cc	2026-07-16 18:13:57.000000000 +0200
-+++ b/third_party/libwebrtc/api/adaptation/resource.cc	2026-07-18 12:54:18.155548220 +0200
+Index: firefox-153.0/js/src/irregexp/imported/regexp-parser.cc
+===================================================================
+--- firefox-153.0.orig/js/src/irregexp/imported/regexp-parser.cc
++++ firefox-153.0/js/src/irregexp/imported/regexp-parser.cc
+@@ -2664,6 +2664,7 @@ void AddClassString(ZoneList<base::uc32>
+   } else {
+     strings->emplace(normalized_string->ToVector(), regexp_string);
+   }
++  UNREACHABLE();
+ }
+ 
+ }  // namespace
+Index: firefox-153.0/third_party/libwebrtc/api/adaptation/resource.cc
+===================================================================
+--- firefox-153.0.orig/third_party/libwebrtc/api/adaptation/resource.cc
++++ firefox-153.0/third_party/libwebrtc/api/adaptation/resource.cc
 @@ -22,6 +22,7 @@ const char* ResourceUsageStateToString(R
        return "kUnderuse";
    }
@@ -184,9 +210,10 @@ diff -rup a/third_party/libwebrtc/api/adaptation/resource.cc b/third_party/libwe
  }
  
  ResourceListener::~ResourceListener() {}
-diff -rup a/third_party/libwebrtc/api/rtp_parameters.cc b/third_party/libwebrtc/api/rtp_parameters.cc
---- a/third_party/libwebrtc/api/rtp_parameters.cc	2026-07-16 18:59:08.000000000 +0200
-+++ b/third_party/libwebrtc/api/rtp_parameters.cc	2026-07-18 12:54:18.155592091 +0200
+Index: firefox-153.0/third_party/libwebrtc/api/rtp_parameters.cc
+===================================================================
+--- firefox-153.0.orig/third_party/libwebrtc/api/rtp_parameters.cc
++++ firefox-153.0/third_party/libwebrtc/api/rtp_parameters.cc
 @@ -79,6 +79,7 @@ const char* DegradationPreferenceToStrin
        return "balanced";
    }
@@ -195,9 +222,10 @@ diff -rup a/third_party/libwebrtc/api/rtp_parameters.cc b/third_party/libwebrtc/
  }
  
  const double kDefaultBitratePriority = 1.0;
-diff -rup a/third_party/libwebrtc/api/video/video_frame_buffer.cc b/third_party/libwebrtc/api/video/video_frame_buffer.cc
---- a/third_party/libwebrtc/api/video/video_frame_buffer.cc	2026-07-16 18:13:57.000000000 +0200
-+++ b/third_party/libwebrtc/api/video/video_frame_buffer.cc	2026-07-18 12:54:18.155635493 +0200
+Index: firefox-153.0/third_party/libwebrtc/api/video/video_frame_buffer.cc
+===================================================================
+--- firefox-153.0.orig/third_party/libwebrtc/api/video/video_frame_buffer.cc
++++ firefox-153.0/third_party/libwebrtc/api/video/video_frame_buffer.cc
 @@ -125,6 +125,8 @@ const char* VideoFrameBufferTypeToString
      default:
        RTC_DCHECK_NOTREACHED();
@@ -207,9 +235,10 @@ diff -rup a/third_party/libwebrtc/api/video/video_frame_buffer.cc b/third_party/
  }
  
  int I420BufferInterface::ChromaWidth() const {
-diff -rup a/third_party/libwebrtc/api/video_codecs/video_codec.cc b/third_party/libwebrtc/api/video_codecs/video_codec.cc
---- a/third_party/libwebrtc/api/video_codecs/video_codec.cc	2026-07-16 18:13:57.000000000 +0200
-+++ b/third_party/libwebrtc/api/video_codecs/video_codec.cc	2026-07-18 12:54:18.155681695 +0200
+Index: firefox-153.0/third_party/libwebrtc/api/video_codecs/video_codec.cc
+===================================================================
+--- firefox-153.0.orig/third_party/libwebrtc/api/video_codecs/video_codec.cc
++++ firefox-153.0/third_party/libwebrtc/api/video_codecs/video_codec.cc
 @@ -158,6 +158,7 @@ const char* CodecTypeToPayloadString(Vid
        return kPayloadNameH265;
    }
@@ -218,9 +247,10 @@ diff -rup a/third_party/libwebrtc/api/video_codecs/video_codec.cc b/third_party/
  }
  
  VideoCodecType PayloadStringToCodecType(const std::string& name) {
-diff -rup a/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallback_wrapper.cc b/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallback_wrapper.cc
---- a/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallback_wrapper.cc	2026-07-16 18:13:56.000000000 +0200
-+++ b/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallback_wrapper.cc	2026-07-18 12:54:18.155732397 +0200
+Index: firefox-153.0/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallback_wrapper.cc
+===================================================================
+--- firefox-153.0.orig/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallback_wrapper.cc
++++ firefox-153.0/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallback_wrapper.cc
 @@ -192,6 +192,7 @@ class VideoEncoderSoftwareFallbackWrappe
          return fallback_encoder_.get();
      }
@@ -237,9 +267,10 @@ diff -rup a/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallba
  }
  
  int32_t VideoEncoderSoftwareFallbackWrapper::EncodeWithMainEncoder(
-diff -rup a/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc b/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc
---- a/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc	2026-07-16 18:59:08.000000000 +0200
-+++ b/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc	2026-07-18 12:54:18.155796999 +0200
+Index: firefox-153.0/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc
+===================================================================
+--- firefox-153.0.orig/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc
++++ firefox-153.0/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc
 @@ -177,6 +177,7 @@ const char* Adaptation::StatusToString(A
        return "kRejectedByConstraint";
    }
@@ -273,9 +304,10 @@ diff -rup a/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc b/thir
  }
  
  VideoStreamAdapter::RestrictionsOrState
-diff -rup a/third_party/libwebrtc/call/rtp_payload_params.cc b/third_party/libwebrtc/call/rtp_payload_params.cc
---- a/third_party/libwebrtc/call/rtp_payload_params.cc	2026-07-16 18:13:57.000000000 +0200
-+++ b/third_party/libwebrtc/call/rtp_payload_params.cc	2026-07-18 12:54:18.155868352 +0200
+Index: firefox-153.0/third_party/libwebrtc/call/rtp_payload_params.cc
+===================================================================
+--- firefox-153.0.orig/third_party/libwebrtc/call/rtp_payload_params.cc
++++ firefox-153.0/third_party/libwebrtc/call/rtp_payload_params.cc
 @@ -425,7 +425,8 @@ std::optional<FrameDependencyStructure>
      case VideoCodecType::kVideoCodecH265:
        return std::nullopt;
@@ -286,9 +318,10 @@ diff -rup a/third_party/libwebrtc/call/rtp_payload_params.cc b/third_party/libwe
  }
  
  void RtpPayloadParams::GenericToGeneric(int64_t frame_id,
-diff -rup a/third_party/libwebrtc/call/video_send_stream.cc b/third_party/libwebrtc/call/video_send_stream.cc
---- a/third_party/libwebrtc/call/video_send_stream.cc	2026-07-16 18:13:58.000000000 +0200
-+++ b/third_party/libwebrtc/call/video_send_stream.cc	2026-07-18 12:54:18.155914673 +0200
+Index: firefox-153.0/third_party/libwebrtc/call/video_send_stream.cc
+===================================================================
+--- firefox-153.0.orig/third_party/libwebrtc/call/video_send_stream.cc
++++ firefox-153.0/third_party/libwebrtc/call/video_send_stream.cc
 @@ -34,6 +34,7 @@ const char* StreamTypeToString(VideoSend
        return "flexfec";
    }
@@ -297,9 +330,10 @@ diff -rup a/third_party/libwebrtc/call/video_send_stream.cc b/third_party/libweb
  }
  
  }  // namespace
-diff -rup a/third_party/libwebrtc/media/base/codec_comparators.cc b/third_party/libwebrtc/media/base/codec_comparators.cc
---- a/third_party/libwebrtc/media/base/codec_comparators.cc	2026-07-16 18:59:08.000000000 +0200
-+++ b/third_party/libwebrtc/media/base/codec_comparators.cc	2026-07-18 12:54:18.155950255 +0200
+Index: firefox-153.0/third_party/libwebrtc/media/base/codec_comparators.cc
+===================================================================
+--- firefox-153.0.orig/third_party/libwebrtc/media/base/codec_comparators.cc
++++ firefox-153.0/third_party/libwebrtc/media/base/codec_comparators.cc
 @@ -330,6 +330,7 @@ bool MatchesWithCodecRules(const Codec&
          return IsSameCodecSpecific(left_codec.name, left_codec.params,
                                     right_codec.name, right_codec.params);
@@ -308,9 +342,10 @@ diff -rup a/third_party/libwebrtc/media/base/codec_comparators.cc b/third_party/
    };
  
    return matches_id && matches_type_specific();
-diff -rup a/third_party/libwebrtc/modules/audio_processing/agc2/clipping_predictor.cc b/third_party/libwebrtc/modules/audio_processing/agc2/clipping_predictor.cc
---- a/third_party/libwebrtc/modules/audio_processing/agc2/clipping_predictor.cc	2026-07-16 18:13:57.000000000 +0200
-+++ b/third_party/libwebrtc/modules/audio_processing/agc2/clipping_predictor.cc	2026-07-18 12:54:18.155996136 +0200
+Index: firefox-153.0/third_party/libwebrtc/modules/audio_processing/agc2/clipping_predictor.cc
+===================================================================
+--- firefox-153.0.orig/third_party/libwebrtc/modules/audio_processing/agc2/clipping_predictor.cc
++++ firefox-153.0/third_party/libwebrtc/modules/audio_processing/agc2/clipping_predictor.cc
 @@ -387,7 +387,7 @@ std::unique_ptr<ClippingPredictor> Creat
            config.reference_window_delay, config.clipping_threshold,
            /*adaptive_step_estimation=*/false);
@@ -320,9 +355,10 @@ diff -rup a/third_party/libwebrtc/modules/audio_processing/agc2/clipping_predict
  }
  
  }  // namespace webrtc
-diff -rup a/third_party/libwebrtc/modules/audio_processing/agc2/input_volume_stats_reporter.cc b/third_party/libwebrtc/modules/audio_processing/agc2/input_volume_stats_reporter.cc
---- a/third_party/libwebrtc/modules/audio_processing/agc2/input_volume_stats_reporter.cc	2026-07-16 18:13:57.000000000 +0200
-+++ b/third_party/libwebrtc/modules/audio_processing/agc2/input_volume_stats_reporter.cc	2026-07-18 12:57:26.076221003 +0200
+Index: firefox-153.0/third_party/libwebrtc/modules/audio_processing/agc2/input_volume_stats_reporter.cc
+===================================================================
+--- firefox-153.0.orig/third_party/libwebrtc/modules/audio_processing/agc2/input_volume_stats_reporter.cc
++++ firefox-153.0/third_party/libwebrtc/modules/audio_processing/agc2/input_volume_stats_reporter.cc
 @@ -48,6 +48,7 @@ constexpr absl::string_view MetricNamePr
      case InputVolumeType::kRecommended:
        return "WebRTC.Audio.Apm.RecommendedInputVolume.";
@@ -331,9 +367,10 @@ diff -rup a/third_party/libwebrtc/modules/audio_processing/agc2/input_volume_sta
  }
  
  metrics::Histogram* CreateVolumeHistogram(InputVolumeType input_volume_type) {
-diff -rup a/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.cc b/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.cc
---- a/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.cc	2026-07-16 18:13:57.000000000 +0200
-+++ b/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.cc	2026-07-18 12:54:18.156098610 +0200
+Index: firefox-153.0/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.cc
+===================================================================
+--- firefox-153.0.orig/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.cc
++++ firefox-153.0/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.cc
 @@ -65,6 +65,8 @@ FunctionView<float(float)> GetActivation
      case ActivationFunction::kSigmoidApproximated:
        return ::rnnoise::SigmoidApproximated;
@@ -343,9 +380,10 @@ diff -rup a/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.c
  }
  
  }  // namespace
-diff -rup a/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc b/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc
---- a/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc	2026-07-16 18:13:58.000000000 +0200
-+++ b/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc	2026-07-18 12:54:18.156173363 +0200
+Index: firefox-153.0/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc
+===================================================================
+--- firefox-153.0.orig/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc
++++ firefox-153.0/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc
 @@ -117,6 +117,7 @@ GainControl::Mode Agc1ConfigModeToInterf
        return GainControl::kFixedDigital;
    }
@@ -371,9 +409,10 @@ diff -rup a/third_party/libwebrtc/modules/audio_processing/audio_processing_impl
          };
  
      NsConfig cfg;
-diff -rup a/third_party/libwebrtc/modules/congestion_controller/goog_cc/goog_cc_network_control.cc b/third_party/libwebrtc/modules/congestion_controller/goog_cc/goog_cc_network_control.cc
---- a/third_party/libwebrtc/modules/congestion_controller/goog_cc/goog_cc_network_control.cc	2026-07-16 18:13:57.000000000 +0200
-+++ b/third_party/libwebrtc/modules/congestion_controller/goog_cc/goog_cc_network_control.cc	2026-07-18 12:54:18.156276697 +0200
+Index: firefox-153.0/third_party/libwebrtc/modules/congestion_controller/goog_cc/goog_cc_network_control.cc
+===================================================================
+--- firefox-153.0.orig/third_party/libwebrtc/modules/congestion_controller/goog_cc/goog_cc_network_control.cc
++++ firefox-153.0/third_party/libwebrtc/modules/congestion_controller/goog_cc/goog_cc_network_control.cc
 @@ -85,6 +85,8 @@ BandwidthLimitedCause GetBandwidthLimite
      case LossBasedState::kDelayBasedEstimate:
        return BandwidthLimitedCause::kDelayBasedLimited;
@@ -383,9 +422,10 @@ diff -rup a/third_party/libwebrtc/modules/congestion_controller/goog_cc/goog_cc_
  }
  
  }  // namespace
-diff -rup a/third_party/libwebrtc/modules/congestion_controller/goog_cc_scream_network_controller/goog_cc_scream_network_controller.h b/third_party/libwebrtc/modules/congestion_controller/goog_cc_scream_network_controller/goog_cc_scream_network_controller.h
---- a/third_party/libwebrtc/modules/congestion_controller/goog_cc_scream_network_controller/goog_cc_scream_network_controller.h	2026-07-16 18:13:57.000000000 +0200
-+++ b/third_party/libwebrtc/modules/congestion_controller/goog_cc_scream_network_controller/goog_cc_scream_network_controller.h	2026-07-18 12:54:18.156323198 +0200
+Index: firefox-153.0/third_party/libwebrtc/modules/congestion_controller/goog_cc_scream_network_controller/goog_cc_scream_network_controller.h
+===================================================================
+--- firefox-153.0.orig/third_party/libwebrtc/modules/congestion_controller/goog_cc_scream_network_controller/goog_cc_scream_network_controller.h
++++ firefox-153.0/third_party/libwebrtc/modules/congestion_controller/goog_cc_scream_network_controller/goog_cc_scream_network_controller.h
 @@ -63,6 +63,7 @@ class GoogCcScreamNetworkController : pu
        case Mode::kScreamAfterCe:
          return true;
@@ -394,9 +434,10 @@ diff -rup a/third_party/libwebrtc/modules/congestion_controller/goog_cc_scream_n
    }
  
   private:
-diff -rup a/third_party/libwebrtc/modules/desktop_capture/linux/wayland/screencast_portal.cc b/third_party/libwebrtc/modules/desktop_capture/linux/wayland/screencast_portal.cc
---- a/third_party/libwebrtc/modules/desktop_capture/linux/wayland/screencast_portal.cc	2026-07-16 18:59:08.000000000 +0200
-+++ b/third_party/libwebrtc/modules/desktop_capture/linux/wayland/screencast_portal.cc	2026-07-18 12:54:18.156363010 +0200
+Index: firefox-153.0/third_party/libwebrtc/modules/desktop_capture/linux/wayland/screencast_portal.cc
+===================================================================
+--- firefox-153.0.orig/third_party/libwebrtc/modules/desktop_capture/linux/wayland/screencast_portal.cc
++++ firefox-153.0/third_party/libwebrtc/modules/desktop_capture/linux/wayland/screencast_portal.cc
 @@ -56,6 +56,7 @@ ScreenCastPortal::CaptureSourceType Scre
      case CaptureType::kAnyScreenContent:
        return ScreenCastPortal::CaptureSourceType::kAnyScreenContent;
@@ -405,9 +446,10 @@ diff -rup a/third_party/libwebrtc/modules/desktop_capture/linux/wayland/screenca
  }
  
  ScreenCastPortal::ScreenCastPortal(CaptureType type,
-diff -rup a/third_party/libwebrtc/modules/pacing/bitrate_prober.cc b/third_party/libwebrtc/modules/pacing/bitrate_prober.cc
---- a/third_party/libwebrtc/modules/pacing/bitrate_prober.cc	2026-07-16 18:13:58.000000000 +0200
-+++ b/third_party/libwebrtc/modules/pacing/bitrate_prober.cc	2026-07-18 12:54:18.156407992 +0200
+Index: firefox-153.0/third_party/libwebrtc/modules/pacing/bitrate_prober.cc
+===================================================================
+--- firefox-153.0.orig/third_party/libwebrtc/modules/pacing/bitrate_prober.cc
++++ firefox-153.0/third_party/libwebrtc/modules/pacing/bitrate_prober.cc
 @@ -91,6 +91,7 @@ bool BitrateProber::ReadyToSetActiveStat
        return packet_size >=
               std::min(RecommendedMinProbeSize(), config_.min_packet_size.Get());
@@ -416,9 +458,10 @@ diff -rup a/third_party/libwebrtc/modules/pacing/bitrate_prober.cc b/third_party
  }
  
  void BitrateProber::OnIncomingPacket(DataSize packet_size) {
-diff -rup a/third_party/libwebrtc/modules/rtp_rtcp/source/create_video_rtp_depacketizer.cc b/third_party/libwebrtc/modules/rtp_rtcp/source/create_video_rtp_depacketizer.cc
---- a/third_party/libwebrtc/modules/rtp_rtcp/source/create_video_rtp_depacketizer.cc	2026-07-16 18:13:57.000000000 +0200
-+++ b/third_party/libwebrtc/modules/rtp_rtcp/source/create_video_rtp_depacketizer.cc	2026-07-18 12:54:18.156432152 +0200
+Index: firefox-153.0/third_party/libwebrtc/modules/rtp_rtcp/source/create_video_rtp_depacketizer.cc
+===================================================================
+--- firefox-153.0.orig/third_party/libwebrtc/modules/rtp_rtcp/source/create_video_rtp_depacketizer.cc
++++ firefox-153.0/third_party/libwebrtc/modules/rtp_rtcp/source/create_video_rtp_depacketizer.cc
 @@ -47,6 +47,7 @@ std::unique_ptr<VideoRtpDepacketizer> Cr
        return std::make_unique<VideoRtpDepacketizerGeneric>();
    }
@@ -427,9 +470,10 @@ diff -rup a/third_party/libwebrtc/modules/rtp_rtcp/source/create_video_rtp_depac
  }
  
  }  // namespace webrtc
-diff -rup a/third_party/libwebrtc/modules/rtp_rtcp/source/rtcp_packet/congestion_control_feedback.cc b/third_party/libwebrtc/modules/rtp_rtcp/source/rtcp_packet/congestion_control_feedback.cc
---- a/third_party/libwebrtc/modules/rtp_rtcp/source/rtcp_packet/congestion_control_feedback.cc	2026-07-16 18:13:57.000000000 +0200
-+++ b/third_party/libwebrtc/modules/rtp_rtcp/source/rtcp_packet/congestion_control_feedback.cc	2026-07-18 12:54:18.156458943 +0200
+Index: firefox-153.0/third_party/libwebrtc/modules/rtp_rtcp/source/rtcp_packet/congestion_control_feedback.cc
+===================================================================
+--- firefox-153.0.orig/third_party/libwebrtc/modules/rtp_rtcp/source/rtcp_packet/congestion_control_feedback.cc
++++ firefox-153.0/third_party/libwebrtc/modules/rtp_rtcp/source/rtcp_packet/congestion_control_feedback.cc
 @@ -113,6 +113,7 @@ uint16_t To2BitEcn(EcnMarking ecn_markin
      case EcnMarking::kCe:
        return kEcnCe << 13;
@@ -438,9 +482,10 @@ diff -rup a/third_party/libwebrtc/modules/rtp_rtcp/source/rtcp_packet/congestion
  }
  
  EcnMarking ToEcnMarking(uint16_t receive_info) {
-diff -rup a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_format.cc b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_format.cc
---- a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_format.cc	2026-07-16 18:13:57.000000000 +0200
-+++ b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_format.cc	2026-07-18 12:54:18.156489065 +0200
+Index: firefox-153.0/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_format.cc
+===================================================================
+--- firefox-153.0.orig/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_format.cc
++++ firefox-153.0/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_format.cc
 @@ -73,6 +73,10 @@ std::unique_ptr<RtpPacketizer> RtpPacket
                                                      rtp_video_header);
      }
@@ -452,9 +497,10 @@ diff -rup a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_format.cc b/third_
  }
  
  std::vector<int> RtpPacketizer::SplitAboutEqually(
-diff -rup a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc
---- a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc	2026-07-16 18:59:08.000000000 +0200
-+++ b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc	2026-07-18 12:54:18.156525236 +0200
+Index: firefox-153.0/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc
+===================================================================
+--- firefox-153.0.orig/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc
++++ firefox-153.0/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc
 @@ -149,6 +149,7 @@ bool IsNonVolatile(RTPExtensionType type
  #endif
    }
@@ -463,9 +509,10 @@ diff -rup a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc b/third_
  }
  
  bool HasBweExtension(const RtpHeaderExtensionMap& extensions_map) {
-diff -rup a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_video.cc b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_video.cc
---- a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_video.cc	2026-07-16 18:13:58.000000000 +0200
-+++ b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_video.cc	2026-07-18 12:54:18.156577198 +0200
+Index: firefox-153.0/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_video.cc
+===================================================================
+--- firefox-153.0.orig/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_video.cc
++++ firefox-153.0/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_video.cc
 @@ -178,6 +178,7 @@ PacketizationFormat GetPacketizationForm
      case kVideoCodecGeneric:
        return PacketizationFormat::kGeneric;
@@ -474,9 +521,10 @@ diff -rup a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_video.cc b/
  }
  
  }  // namespace
-diff -rup a/third_party/libwebrtc/modules/video_coding/codecs/vp8/default_temporal_layers.cc b/third_party/libwebrtc/modules/video_coding/codecs/vp8/default_temporal_layers.cc
---- a/third_party/libwebrtc/modules/video_coding/codecs/vp8/default_temporal_layers.cc	2026-07-16 18:13:57.000000000 +0200
-+++ b/third_party/libwebrtc/modules/video_coding/codecs/vp8/default_temporal_layers.cc	2026-07-18 12:54:18.156635280 +0200
+Index: firefox-153.0/third_party/libwebrtc/modules/video_coding/codecs/vp8/default_temporal_layers.cc
+===================================================================
+--- firefox-153.0.orig/third_party/libwebrtc/modules/video_coding/codecs/vp8/default_temporal_layers.cc
++++ firefox-153.0/third_party/libwebrtc/modules/video_coding/codecs/vp8/default_temporal_layers.cc
 @@ -119,6 +119,7 @@ size_t BufferToIndex(Vp8BufferReference
      case Vp8FrameConfig::Vp8BufferReference::kNone:
        RTC_CHECK_NOTREACHED();
@@ -485,9 +533,10 @@ diff -rup a/third_party/libwebrtc/modules/video_coding/codecs/vp8/default_tempor
  }
  
  }  // namespace
-diff -rup a/third_party/libwebrtc/modules/video_coding/codecs/vp8/temporal_layers_checker.cc b/third_party/libwebrtc/modules/video_coding/codecs/vp8/temporal_layers_checker.cc
---- a/third_party/libwebrtc/modules/video_coding/codecs/vp8/temporal_layers_checker.cc	2026-07-16 18:13:57.000000000 +0200
-+++ b/third_party/libwebrtc/modules/video_coding/codecs/vp8/temporal_layers_checker.cc	2026-07-18 12:54:18.156672021 +0200
+Index: firefox-153.0/third_party/libwebrtc/modules/video_coding/codecs/vp8/temporal_layers_checker.cc
+===================================================================
+--- firefox-153.0.orig/third_party/libwebrtc/modules/video_coding/codecs/vp8/temporal_layers_checker.cc
++++ firefox-153.0/third_party/libwebrtc/modules/video_coding/codecs/vp8/temporal_layers_checker.cc
 @@ -34,6 +34,7 @@ TemporalLayersChecker::CreateTemporalLay
        return std::make_unique<TemporalLayersChecker>(num_temporal_layers);
    }
@@ -496,9 +545,10 @@ diff -rup a/third_party/libwebrtc/modules/video_coding/codecs/vp8/temporal_layer
  }
  
  TemporalLayersChecker::TemporalLayersChecker(int num_temporal_layers)
-diff -rup a/third_party/libwebrtc/modules/video_coding/h26x_packet_buffer.cc b/third_party/libwebrtc/modules/video_coding/h26x_packet_buffer.cc
---- a/third_party/libwebrtc/modules/video_coding/h26x_packet_buffer.cc	2026-07-16 18:13:57.000000000 +0200
-+++ b/third_party/libwebrtc/modules/video_coding/h26x_packet_buffer.cc	2026-07-18 12:54:18.156703483 +0200
+Index: firefox-153.0/third_party/libwebrtc/modules/video_coding/h26x_packet_buffer.cc
+===================================================================
+--- firefox-153.0.orig/third_party/libwebrtc/modules/video_coding/h26x_packet_buffer.cc
++++ firefox-153.0/third_party/libwebrtc/modules/video_coding/h26x_packet_buffer.cc
 @@ -67,6 +67,7 @@ bool BeginningOfIdr(const H26xPacketBuff
        return contains_idr_nalu && IsFirstPacketOfFragment(h264_header);
      }
@@ -507,9 +557,10 @@ diff -rup a/third_party/libwebrtc/modules/video_coding/h26x_packet_buffer.cc b/t
  }
  
  bool HasSps(const H26xPacketBuffer::Packet& packet) {
-diff -rup a/third_party/libwebrtc/net/dcsctp/packet/parameter/reconfiguration_response_parameter.cc b/third_party/libwebrtc/net/dcsctp/packet/parameter/reconfiguration_response_parameter.cc
---- a/third_party/libwebrtc/net/dcsctp/packet/parameter/reconfiguration_response_parameter.cc	2026-07-16 18:13:58.000000000 +0200
-+++ b/third_party/libwebrtc/net/dcsctp/packet/parameter/reconfiguration_response_parameter.cc	2026-07-18 12:54:18.156739744 +0200
+Index: firefox-153.0/third_party/libwebrtc/net/dcsctp/packet/parameter/reconfiguration_response_parameter.cc
+===================================================================
+--- firefox-153.0.orig/third_party/libwebrtc/net/dcsctp/packet/parameter/reconfiguration_response_parameter.cc
++++ firefox-153.0/third_party/libwebrtc/net/dcsctp/packet/parameter/reconfiguration_response_parameter.cc
 @@ -60,6 +60,7 @@ absl::string_view ToString(Reconfigurati
      case ReconfigurationResponseParameter::Result::kInProgress:
        return "In progress";
@@ -518,9 +569,10 @@ diff -rup a/third_party/libwebrtc/net/dcsctp/packet/parameter/reconfiguration_re
  }
  
  std::optional<ReconfigurationResponseParameter>
-diff -rup a/third_party/libwebrtc/net/dcsctp/public/dcsctp_handover_state.cc b/third_party/libwebrtc/net/dcsctp/public/dcsctp_handover_state.cc
---- a/third_party/libwebrtc/net/dcsctp/public/dcsctp_handover_state.cc	2026-07-16 18:13:57.000000000 +0200
-+++ b/third_party/libwebrtc/net/dcsctp/public/dcsctp_handover_state.cc	2026-07-18 12:54:18.156761615 +0200
+Index: firefox-153.0/third_party/libwebrtc/net/dcsctp/public/dcsctp_handover_state.cc
+===================================================================
+--- firefox-153.0.orig/third_party/libwebrtc/net/dcsctp/public/dcsctp_handover_state.cc
++++ firefox-153.0/third_party/libwebrtc/net/dcsctp/public/dcsctp_handover_state.cc
 @@ -44,6 +44,7 @@ constexpr absl::string_view HandoverUnre
      case HandoverUnreadinessReason::kPendingStreamResetRequest:
        return "PENDING_STREAM_RESET_REQUEST";
@@ -529,9 +581,10 @@ diff -rup a/third_party/libwebrtc/net/dcsctp/public/dcsctp_handover_state.cc b/t
  }
  }  // namespace
  
-diff -rup a/third_party/libwebrtc/net/dcsctp/rx/data_tracker.cc b/third_party/libwebrtc/net/dcsctp/rx/data_tracker.cc
---- a/third_party/libwebrtc/net/dcsctp/rx/data_tracker.cc	2026-07-16 18:13:57.000000000 +0200
-+++ b/third_party/libwebrtc/net/dcsctp/rx/data_tracker.cc	2026-07-18 12:54:18.156787806 +0200
+Index: firefox-153.0/third_party/libwebrtc/net/dcsctp/rx/data_tracker.cc
+===================================================================
+--- firefox-153.0.orig/third_party/libwebrtc/net/dcsctp/rx/data_tracker.cc
++++ firefox-153.0/third_party/libwebrtc/net/dcsctp/rx/data_tracker.cc
 @@ -357,6 +357,7 @@ absl::string_view DataTracker::ToString(
      case AckState::kImmediate:
        return "IMMEDIATE";
@@ -540,9 +593,10 @@ diff -rup a/third_party/libwebrtc/net/dcsctp/rx/data_tracker.cc b/third_party/li
  }
  
  HandoverReadinessStatus DataTracker::GetHandoverReadiness() const {
-diff -rup a/third_party/libwebrtc/net/dcsctp/socket/dcsctp_socket.cc b/third_party/libwebrtc/net/dcsctp/socket/dcsctp_socket.cc
---- a/third_party/libwebrtc/net/dcsctp/socket/dcsctp_socket.cc	2026-07-16 18:13:57.000000000 +0200
-+++ b/third_party/libwebrtc/net/dcsctp/socket/dcsctp_socket.cc	2026-07-18 12:54:18.156849908 +0200
+Index: firefox-153.0/third_party/libwebrtc/net/dcsctp/socket/dcsctp_socket.cc
+===================================================================
+--- firefox-153.0.orig/third_party/libwebrtc/net/dcsctp/socket/dcsctp_socket.cc
++++ firefox-153.0/third_party/libwebrtc/net/dcsctp/socket/dcsctp_socket.cc
 @@ -261,6 +261,7 @@ bool DcSctpSocket::IsConsistent() const
        return (tcb_ != nullptr && !t1_init_->is_running() &&
                !t1_cookie_->is_running() && t2_shutdown_->is_running());
@@ -567,9 +621,10 @@ diff -rup a/third_party/libwebrtc/net/dcsctp/socket/dcsctp_socket.cc b/third_par
  }
  
  void DcSctpSocket::SetMaxMessageSize(size_t max_message_size) {
-diff -rup a/third_party/libwebrtc/net/dcsctp/socket/packet_sender.cc b/third_party/libwebrtc/net/dcsctp/socket/packet_sender.cc
---- a/third_party/libwebrtc/net/dcsctp/socket/packet_sender.cc	2026-07-16 18:13:58.000000000 +0200
-+++ b/third_party/libwebrtc/net/dcsctp/socket/packet_sender.cc	2026-07-18 12:54:18.156920121 +0200
+Index: firefox-153.0/third_party/libwebrtc/net/dcsctp/socket/packet_sender.cc
+===================================================================
+--- firefox-153.0.orig/third_party/libwebrtc/net/dcsctp/socket/packet_sender.cc
++++ firefox-153.0/third_party/libwebrtc/net/dcsctp/socket/packet_sender.cc
 @@ -48,5 +48,6 @@ bool PacketSender::Send(SctpPacket::Buil
        return false;
      }
@@ -577,9 +632,10 @@ diff -rup a/third_party/libwebrtc/net/dcsctp/socket/packet_sender.cc b/third_par
 +  return false; // not reached
  }
  }  // namespace dcsctp
-diff -rup a/third_party/libwebrtc/net/dcsctp/timer/timer.cc b/third_party/libwebrtc/net/dcsctp/timer/timer.cc
---- a/third_party/libwebrtc/net/dcsctp/timer/timer.cc	2026-07-16 18:13:57.000000000 +0200
-+++ b/third_party/libwebrtc/net/dcsctp/timer/timer.cc	2026-07-18 12:54:18.156942932 +0200
+Index: firefox-153.0/third_party/libwebrtc/net/dcsctp/timer/timer.cc
+===================================================================
+--- firefox-153.0.orig/third_party/libwebrtc/net/dcsctp/timer/timer.cc
++++ firefox-153.0/third_party/libwebrtc/net/dcsctp/timer/timer.cc
 @@ -51,6 +51,7 @@ TimeDelta GetBackoffDuration(const Timer
        return TimeDelta(std::min(duration, Timer::kMaxTimerDuration));
      }
@@ -588,31 +644,10 @@ diff -rup a/third_party/libwebrtc/net/dcsctp/timer/timer.cc b/third_party/libweb
  }
  }  // namespace
  
-diff -rup a/third_party/libwebrtc/rtc_base/network_constants.cc b/third_party/libwebrtc/rtc_base/network_constants.cc
---- a/third_party/libwebrtc/rtc_base/network_constants.cc	2026-07-16 16:13:58.000000000 +0000
-+++ b/third_party/libwebrtc/rtc_base/network_constants.cc	2026-07-18 11:24:57.621285609 +0000
-@@ -54,6 +54,7 @@ absl::string_view NetworkSliceToString(N
-     case NetworkSlice::UNIFIED_COMMUNICATIONS:
-       return "UNIFIED_COMMUNICATIONS";
-   }
-+  return "NOTREACHED";
- }
- 
- }  // namespace webrtc
-diff -rup a/third_party/libwebrtc/rtc_base/network_monitor.cc b/third_party/libwebrtc/rtc_base/network_monitor.cc
---- a/third_party/libwebrtc/rtc_base/network_monitor.cc	2026-07-16 18:13:58.000000000 +0200
-+++ b/third_party/libwebrtc/rtc_base/network_monitor.cc	2026-07-18 12:58:53.059199314 +0200
-@@ -21,6 +21,7 @@ absl::string_view NetworkPreferenceToStr
-     case NetworkPreference::NOT_PREFERRED:
-       return "NOT_PREFERRED";
-   }
-+  return "NEUTRAL"; //unreached
- }
- 
- NetworkMonitorInterface::NetworkMonitorInterface() {}
-diff -rup a/third_party/libwebrtc/video/adaptation/pixel_limit_resource.cc b/third_party/libwebrtc/video/adaptation/pixel_limit_resource.cc
---- a/third_party/libwebrtc/video/adaptation/pixel_limit_resource.cc	2026-07-16 18:13:58.000000000 +0200
-+++ b/third_party/libwebrtc/video/adaptation/pixel_limit_resource.cc	2026-07-18 12:54:18.157016604 +0200
+Index: firefox-153.0/third_party/libwebrtc/video/adaptation/pixel_limit_resource.cc
+===================================================================
+--- firefox-153.0.orig/third_party/libwebrtc/video/adaptation/pixel_limit_resource.cc
++++ firefox-153.0/third_party/libwebrtc/video/adaptation/pixel_limit_resource.cc
 @@ -88,6 +88,7 @@ const char* ToString(VideoAdaptationReas
      case VideoAdaptationReason::kCpu:
        return "cpu";
@@ -621,9 +656,10 @@ diff -rup a/third_party/libwebrtc/video/adaptation/pixel_limit_resource.cc b/thi
  }
  
  }  // namespace
-diff -rup a/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc b/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc
---- a/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc	2026-07-16 18:13:57.000000000 +0200
-+++ b/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc	2026-07-18 12:54:18.157053086 +0200
+Index: firefox-153.0/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc
+===================================================================
+--- firefox-153.0.orig/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc
++++ firefox-153.0/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc
 @@ -87,6 +87,7 @@ std::string ToString(VideoAdaptationReas
        return "cpu";
    }
@@ -632,9 +668,10 @@ diff -rup a/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource
  }
  
  std::vector<bool> GetActiveLayersFlags(const VideoCodec& codec) {
-diff -rup a/third_party/libwebrtc/video/config/encoder_stream_factory.cc b/third_party/libwebrtc/video/config/encoder_stream_factory.cc
---- a/third_party/libwebrtc/video/config/encoder_stream_factory.cc	2026-07-16 18:13:57.000000000 +0200
-+++ b/third_party/libwebrtc/video/config/encoder_stream_factory.cc	2026-07-18 12:54:18.157102287 +0200
+Index: firefox-153.0/third_party/libwebrtc/video/config/encoder_stream_factory.cc
+===================================================================
+--- firefox-153.0.orig/third_party/libwebrtc/video/config/encoder_stream_factory.cc
++++ firefox-153.0/third_party/libwebrtc/video/config/encoder_stream_factory.cc
 @@ -124,6 +124,7 @@ int GetDefaultMaxQp(VideoCodecType codec
      case kVideoCodecAV1:
        return kDefaultVideoMaxQpAv1;
@@ -643,9 +680,10 @@ diff -rup a/third_party/libwebrtc/video/config/encoder_stream_factory.cc b/third
  }
  
  Resolution NormalizeResolution(const Resolution& resolution,
-diff -rup a/third_party/libwebrtc/video/corruption_detection/video_frame_sampler.cc b/third_party/libwebrtc/video/corruption_detection/video_frame_sampler.cc
---- a/third_party/libwebrtc/video/corruption_detection/video_frame_sampler.cc	2026-07-16 18:13:58.000000000 +0200
-+++ b/third_party/libwebrtc/video/corruption_detection/video_frame_sampler.cc	2026-07-18 12:54:18.157147499 +0200
+Index: firefox-153.0/third_party/libwebrtc/video/corruption_detection/video_frame_sampler.cc
+===================================================================
+--- firefox-153.0.orig/third_party/libwebrtc/video/corruption_detection/video_frame_sampler.cc
++++ firefox-153.0/third_party/libwebrtc/video/corruption_detection/video_frame_sampler.cc
 @@ -42,6 +42,7 @@ class I420FrameSampler : public VideoFra
          RTC_DCHECK_LT(row, height(ChannelType::V));
          return buffer_->DataV()[row * buffer_->StrideV() + col];
@@ -694,3 +732,29 @@ diff -rup a/third_party/libwebrtc/video/corruption_detection/video_frame_sampler
    }
  
   private:
+Index: firefox-153.0/third_party/libwebrtc/rtc_base/network_monitor.cc
+===================================================================
+--- firefox-153.0.orig/third_party/libwebrtc/rtc_base/network_monitor.cc
++++ firefox-153.0/third_party/libwebrtc/rtc_base/network_monitor.cc
+@@ -21,6 +21,7 @@ absl::string_view NetworkPreferenceToStr
+     case NetworkPreference::NOT_PREFERRED:
+       return "NOT_PREFERRED";
+   }
++  return "NEUTRAL"; //unreached
+ }
+ 
+ NetworkMonitorInterface::NetworkMonitorInterface() {}
+Index: firefox-153.0/third_party/libwebrtc/rtc_base/network_constants.cc
+===================================================================
+--- firefox-153.0.orig/third_party/libwebrtc/rtc_base/network_constants.cc
++++ firefox-153.0/third_party/libwebrtc/rtc_base/network_constants.cc
+@@ -53,6 +53,9 @@ absl::string_view NetworkSliceToString(N
+       return "NO_SLICE";
+     case NetworkSlice::UNIFIED_COMMUNICATIONS:
+       return "UNIFIED_COMMUNICATIONS";
++    default:
++      RTC_DCHECK_NOTREACHED() << "Invalid slice type " << network_slice;
++      return std::string();
+   }
+ }
+ 

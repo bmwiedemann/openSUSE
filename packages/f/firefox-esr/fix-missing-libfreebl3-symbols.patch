@@ -1,0 +1,26 @@
+Index: firefox-153.0/build/moz.configure/nss.configure
+===================================================================
+--- firefox-153.0.orig/build/moz.configure/nss.configure
++++ firefox-153.0/build/moz.configure/nss.configure
+@@ -38,13 +38,18 @@ nss_pkg = pkg_check_modules(
+ set_config("MOZ_SYSTEM_NSS", True, when="--with-system-nss")
+ 
+ 
+-@depends(nss_pkg, build_environment)
+-def nss_config(nss_pkg, build_env):
++@depends(nss_pkg, build_environment, target)
++def nss_config(nss_pkg, build_env, target):
+     cflags = ["-I%s" % os.path.join(build_env.dist, "include", "nss")]
+     libs = None
+     if nss_pkg:
+         cflags = list(nss_pkg.cflags) + cflags
+-        libs = nss_pkg.libs
++        libs = list(nss_pkg.libs)
++
++        if target.kernel in ("Linux", "FreeBSD", "OpenBSD", "NetBSD", "SunOS"):
++            if "-lfreebl3" not in libs:
++                libs.append("-lfreebl3")
++
+     return namespace(cflags=cflags, libs=libs)
+ 
+ 

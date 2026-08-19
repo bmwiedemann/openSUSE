@@ -1,0 +1,14 @@
+Index: firefox-153.0/gfx/skia/skia/modules/skcms/src/skcms_internals.h
+===================================================================
+--- firefox-153.0.orig/gfx/skia/skia/modules/skcms/src/skcms_internals.h
++++ firefox-153.0/gfx/skia/skia/modules/skcms/src/skcms_internals.h
+@@ -59,7 +59,8 @@ extern "C" {
+     #elif defined(__GNUC__) && !defined(SKCMS_HAS_MUSTTAIL)
+         // GCC on riscv64 does not support our tail call functions
+         // cf. https://gcc.gnu.org/bugzilla/show_bug.cgi?id=121784
+-        #if __has_cpp_attribute(clang::musttail) && !defined(__riscv)
++        // SUSE: Same for s390x
++        #if __has_cpp_attribute(clang::musttail) && !defined(__riscv) && !defined(__s390x__)
+             #define SKCMS_HAS_MUSTTAIL 1
+         #else
+             #define SKCMS_HAS_MUSTTAIL 0

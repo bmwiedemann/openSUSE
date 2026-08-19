@@ -6,10 +6,11 @@
 # Parent  783ceb006fcdabe5ad23bd561362e721c7ed5f8c
 [mq]: mozilla-s390-context.patch
 
-diff --git a/js/src/wasm/WasmSignalHandlers.cpp b/js/src/wasm/WasmSignalHandlers.cpp
---- a/js/src/wasm/WasmSignalHandlers.cpp
-+++ b/js/src/wasm/WasmSignalHandlers.cpp
-@@ -174,6 +174,10 @@ using mozilla::DebugOnly;
+Index: mozilla-esr153/js/src/wasm/WasmSignalHandlers.cpp
+===================================================================
+--- mozilla-esr153.orig/js/src/wasm/WasmSignalHandlers.cpp
++++ mozilla-esr153/js/src/wasm/WasmSignalHandlers.cpp
+@@ -176,6 +176,10 @@ using namespace js::wasm;
  #      define FP_sig(p) ((p)->uc_mcontext.gregs[REG_FPRS])
  #      define SP_sig(p) ((p)->uc_mcontext.gregs[REG_SP])
  #    endif
@@ -20,7 +21,7 @@ diff --git a/js/src/wasm/WasmSignalHandlers.cpp b/js/src/wasm/WasmSignalHandlers
  #  elif defined(__NetBSD__)
  #    define EIP_sig(p) ((p)->uc_mcontext.__gregs[_REG_EIP])
  #    define EBP_sig(p) ((p)->uc_mcontext.__gregs[_REG_EBP])
-@@ -416,6 +420,10 @@ struct macos_aarch64_context {
+@@ -418,6 +422,10 @@ struct macos_aarch64_context {
  #    define FP_sig(p) RFP_sig(p)
  #    define SP_sig(p) R03_sig(p)
  #    define LR_sig(p) RRA_sig(p)

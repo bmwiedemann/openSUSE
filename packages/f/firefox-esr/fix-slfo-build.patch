@@ -1,0 +1,19 @@
+Index: firefox-153.0/config/gcc_hidden.h
+===================================================================
+--- firefox-153.0.orig/config/gcc_hidden.h
++++ firefox-153.0/config/gcc_hidden.h
+@@ -2,5 +2,14 @@
+  * License, v. 2.0. If a copy of the MPL was not distributed with this
+  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+ 
++#if defined(__cplusplus) && defined(__linux__)
++// Workaround for newer GCC toolchains on older glibc bases
++// This stubs the missing glibc symbol to 0 (forcing safe multi-threaded paths)
++// and satisfies the local linker requirements.
++extern "C" {
++  __attribute__((visibility("hidden"))) inline char __libc_single_threaded = 0;
++}
++#endif
++
+ /* Begin all files as hidden visibility */
+ #pragma GCC visibility push(hidden)

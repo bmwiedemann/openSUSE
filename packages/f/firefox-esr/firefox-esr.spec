@@ -41,8 +41,8 @@
 # major 69
 # mainver %%major.99
 %define major          153
-%define mainver        %major.0
-%define orig_version   153.0
+%define mainver        %major.1.0
+%define orig_version   153.1.0
 %define orig_suffix    esr
 %define update_channel esr
 %define branding       1
@@ -52,35 +52,21 @@
 # upstream default is clang (to use gcc for large parts set to 0)
 %define clang_build    0
 
+# PIE, full relro
+%define build_hardened 1
+
 %bcond_with only_print_mozconfig
 
 # define if ccache should be used or not
-%define useccache     1
-
-# ccache doesn't work with pgo
-%if 0%{?do_profiling}
 %define useccache     0
-%endif
-
-# ccache doesn't work with pgo
-%if 0%{?do_profiling}
-%define useccache     0
-%endif
 
 # SLE-12 doesn't have this macro
 %{!?_rpmmacrodir: %global _rpmmacrodir %{_rpmconfigdir}/macros.d}
 
-# No i586 on SLE-12, as the rpmlints are broken and can't handle the big rpms resulting from this build.
-%if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
+# We don't ship i586 anywhere anymore
 ExclusiveArch:  aarch64 ppc64le x86_64 s390x
-%else
-# Firefox only supports i686
-%ifarch %ix86
-ExclusiveArch:  i586 i686
-BuildArch:      i686
-%{expand:%%global optflags %(echo "%optflags"|sed -e s/i586/i686/) -march=i686 -mtune=generic -msse2}
-%endif
-%endif
+
+# Let mach set the appropriate LTO-flags for us, but correctly.
 %{expand:%%global optflags %(echo "%optflags"|sed -e s/-flto=auto//) }
 
 # general build definitions
@@ -98,6 +84,7 @@ BuildArch:      i686
 %define firefox_appid \{ec8030f7-c20a-464f-9b0e-13a3a9e97384\}
 %define __provides_exclude ^lib.*\\.so.*$
 %define __requires_exclude ^(libmoz.*|liblgpllibs.*|libxul.*|libgk.*)$
+
 %define localize 1
 %ifarch %ix86 x86_64
 %define crashreporter 1
@@ -112,6 +99,11 @@ BuildArch:      i686
 # Wayland is too old on Leap <=15.1 as well
 %define wayland_supported 0
 %endif
+%if 0%{?sle_version} >= 120000 && 0%{?sle_version} <= 150000
+%define gcc_version 13
+%else
+%define gcc_version 15
+%endif
 
 Name:           %{pkgname}
 BuildRequires:  Mesa-devel
@@ -121,16 +113,11 @@ BuildRequires:  dbus-1-glib-devel
 BuildRequires:  dejavu-fonts
 BuildRequires:  fdupes
 BuildRequires:  memory-constraints
-%if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150600
-BuildRequires:  gcc13
-BuildRequires:  gcc13-c++
-BuildRequires:  libstdc++6-devel-gcc13
-%else
-BuildRequires:  gcc15-c++
-BuildRequires:  libstdc++6-devel-gcc15
-%endif
-BuildRequires:  cargo1.93
-BuildRequires:  rust1.93
+BuildRequires:  gcc%{gcc_version}
+BuildRequires:  gcc%{gcc_version}-c++
+BuildRequires:  libstdc++6-devel-gcc%{gcc_version}
+BuildRequires:  cargo1.94
+BuildRequires:  rust1.94
 %if 0%{useccache} != 0
 BuildRequires:  ccache
 %endif
@@ -142,32 +129,26 @@ BuildRequires:  makeinfo
 BuildRequires:  mozilla-nspr-devel >= 4.39
 BuildRequires:  mozilla-nss-devel >= 3.125
 BuildRequires:  nasm >= 2.14
-BuildRequires:  nodejs >= 12.22.12
-%if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
-BuildRequires:  libXtst-devel
-BuildRequires:  python-libxml2
-BuildRequires:  python39
-BuildRequires:  python39-curses
-BuildRequires:  python39-devel
-%else
-%if 0%{?sle_version} > 150000 && 0%{?sle_version} <= 150600
+%if 0%{?sle_version} >= 120000 && 0%{?sle_version} <= 150700
 BuildRequires:  nodejs12 >= 12.22.12
-BuildRequires:  python39
-BuildRequires:  python39-curses
-BuildRequires:  python39-devel
+BuildRequires:  libXtst-devel
+#BuildRequires:  python-libxml2
+BuildRequires:  python311
+BuildRequires:  python311-curses
+BuildRequires:  python311-devel
 %else
 # ALP
 BuildRequires:  nodejs >= 12.22.12
-BuildRequires:  python3 >= 3.7
+BuildRequires:  python3 >= 3.11
 BuildRequires:  python3-curses
 BuildRequires:  python3-devel
-%endif
 %endif
 BuildRequires:  rust-cbindgen >= 0.29.4
 %if 0%{?suse_version} >= 1699
 BuildRequires:  translate-suse-desktop
 %endif
 BuildRequires:  unzip
+# BuildRequires:  update-desktop-files
 BuildRequires:  xorg-x11-libXt-devel
 %if 0%{?do_profiling}
 BuildRequires:  xvfb-run
@@ -177,8 +158,19 @@ BuildRequires:  zip
 %if 0%{?suse_version} < 1550
 BuildRequires:  pkgconfig(gconf-2.0) >= 1.2.1
 %endif
-BuildRequires:  clang-devel
+%if 0%{?suse_version} >= 1610
+%define clang_version   21
+%else
+%define clang_version   19
+%endif
+BuildRequires:  clang%{clang_version}-devel
+# Because of reasons, clang-tools is not versioned and leads often
+# to unresolvable or broken builds, because it pulls in different
+# clang-versions then the one we try to use here.
+# But we don't need clang-tools at all, it is just pulled in via
+# the clang-devel-package, so we tell OBS to not use it
 #!BuildIgnore:  clang-tools
+BuildRequires:  glibc-devel
 BuildRequires:  pkgconfig(glib-2.0) >= 2.22
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.14.0
@@ -223,7 +215,7 @@ Source9:        firefox.js
 Source11:       firefox.1
 Source12:       mozilla-get-app-id
 Source13:       spellcheck.js
-Source14:       https://github.com/openSUSE/firefox-scripts/raw/913fab1/create-tar.sh
+Source14:       https://github.com/openSUSE/firefox-scripts/raw/2db396e/create-tar.sh
 Source15:       firefox-appdata.xml
 Source16:       %{name}.changes
 %if "%{pkgname}" != "firefox-esr"
@@ -239,6 +231,7 @@ Source21:       https://ftp.mozilla.org/pub/%{srcname}/releases/%{version}%{orig
 Source22:       firefox-esr.changes.txt
 Source23:       MozillaFirefox.changes.txt
 # Gecko/Toolkit
+Patch1:         fix-missing-libfreebl3-symbols.patch
 Patch3:         mozilla-ntlm-full-path.patch
 Patch4:         mozilla-aarch64-startup-crash.patch
 Patch6:         mozilla-s390-context.patch
@@ -250,9 +243,16 @@ Patch17:        mozilla-libavcodec58_91.patch
 Patch18:        mozilla-silence-no-return-type.patch
 Patch20:        one_swizzle_to_rule_them_all.patch
 Patch21:        svg-rendering.patch
+Patch24:        mozilla-bmo1746799.patch
 Patch25:        mozilla-sandbox-lto.patch
 Patch26:        mozilla-bmo2030493.patch
 Patch28:        mozilla-bmo2048250.patch
+Patch30:        fix-skia-musttail.patch
+Patch31:        mozilla-fix-sle12-aarch64-missing-sve.patch
+Patch32:        mozilla-fix-sle12-ppc64le-webrtc-include.patch
+%if 0%{?suse_version} >= 1600 || 0%{?sle_version} >= 150600
+Patch33:        fix-slfo-build.patch
+%endif
 # Firefox/browser
 Patch102:       firefox-branded-icons.patch
 %endif
@@ -260,7 +260,11 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires(post): coreutils shared-mime-info desktop-file-utils
 Requires(postun): shared-mime-info desktop-file-utils
 Requires:       %{name}-branding >= 68
+%if 0%{?suse_version} >= 1600 || 0%{?sle_version} >= 120500
 Requires:       xdg-desktop-portal
+%else
+Recommends:     xdg-desktop-portal
+%endif
 %requires_ge    mozilla-nspr
 %requires_ge    mozilla-nss
 %requires_ge    libfreetype6
@@ -280,7 +284,7 @@ Recommends:     MozillaFirefox
 %if 0%{?devpkg} == 0
 Obsoletes:      %{name}-devel < %{version}
 %endif
-ExcludeArch:    armv6l armv6hl ppc ppc64 i586
+ExcludeArch:    armv6l armv6hl ppc ppc64
 
 %description
 Mozilla Firefox is a standalone web browser, designed for standards
@@ -399,11 +403,11 @@ DATE="\"$(date -d "${modified}" "+%%b %%e %%Y")\""
 TIME="\"$(date -d "${modified}" "+%%R")\""
 find . -type f -regex ".*\.c\|.*\.cpp\|.*\.h" -exec sed -i "s/__DATE__/${DATE}/g;s/__TIME__/${TIME}/g" {} +
 
-# SLE-12 provides python39, but that package does not provide a python3 binary
+# SLE-12 provides python311, but that package does not provide a python3 binary
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
-sed -i "s|/usr/bin/env python3|/usr/bin/env python3.9|" mach
-sed -i "s|potential_python_binary = f\"python3.{i}\"|potential_python_binary = f\"python3.9.{i}\"|" mach
-export PYTHON3=/usr/bin/python3.9
+sed -i "s|/usr/bin/env python3|/usr/bin/env python3.11|" mach
+sed -i "s|potential_python_binary = f\"python3.{i}\"|potential_python_binary = f\"python3.11.{i}\"|" mach
+export PYTHON3=/usr/bin/python3.11
 %endif
 
 # When doing only_print_mozconfig, this file isn't necessarily available, so skip it
@@ -425,21 +429,23 @@ export BUILD_OFFICIAL=1
 export MOZ_TELEMETRY_REPORTING=1
 export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=system
 export CFLAGS="%{optflags}"
-%if 0%{?clang_build} != 0
+%if 0%{?clang_build} == 0
+export CC=gcc-%{gcc_version}
+export CXX=g++-%{gcc_version}
+export AR=gcc-ar-%{gcc_version}
+export NM=gcc-nm-%{gcc_version}
+export RANLIB=gcc-ranlib-%{gcc_version}
+%else
 export CC=clang
 export CXX=clang++
-%else
-%if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150600
-export CC=gcc-13
-export CXX=g++-13
-%else
-export CC=gcc-15
-export CXX=g++-15
-export AR=gcc-ar-15
-export NM=gcc-nm-15
-export RANLIB=gcc-ranlib-15
 %endif
-%endif
+export LLVM_AR=llvm-ar-%{clang_version}
+export LLVM_NM=llvm-nm-%{clang_version}
+export LLVM_OBJCOPY=llvm-objcopy-%{clang_version}
+export LLVM_OBJDUMP=llvm-objdump-%{clang_version}
+export LLVM_RANLIB=llvm-ranlib-%{clang_version}
+export LLVM_READELF=llvm-readelf-%{clang_version}
+
 %ifarch %arm %ix86
 ### NOTE: these sections are not required anymore. Alson --no-keep-memory + -Wl,-z,pack-relative-relocs causes
 ### ld to go OOM (https://sourceware.org/bugzilla/show_bug.cgi?id=30756)
@@ -449,8 +455,8 @@ export RANLIB=gcc-ranlib-15
 # A lie to prevent -Wl,--gc-sections being set which requires more memory than 32bit can offer
 #export GC_SECTIONS_BREAKS_DEBUG_RANGES=yes
 %endif
+%if 0%{?build_hardened}
 export LDFLAGS="\$LDFLAGS -fPIC -Wl,-z,relro,-z,now"
-%ifarch ppc64 ppc64le
 %endif
 %ifarch %ix86
 # Not enough memory on 32-bit systems, reduce debug info.
@@ -464,6 +470,13 @@ source ./.obsenv.sh
 
 %ifarch aarch64 %arm ppc64 ppc64le riscv64
 %limit_build -m 2500
+%endif
+
+# Mitigating OOM-errors on SLE-16
+%if 0%{?suse_version} >= 1600 && 0%{suse_version} < 1699
+%ifarch s390x
+%limit_build -m 2500
+%endif
 %endif
 
 # Generating mozconfig
@@ -487,13 +500,20 @@ ac_add_options --enable-default-toolkit=cairo-gtk3
 %ifarch %ix86 %arm
 ac_add_options --disable-debug-symbols
 %else
-ac_add_options --enable-debug-symbols=-g0
+ac_add_options --enable-debug-symbols=-g1
 %endif
 ac_add_options --disable-install-strip
-%ifarch %ix86 %arm
-# OOM on 32-bit when ld passed -Wl,-z,pack-relative-relocs
-# ac_add_options --enable-elf-hack
+# TODO: Disable elf-hack everywhere for now because it currently breaks the build
+# We have to disable elf-hack on SLE-12 aarch64, because the autogenerated
+# code produces a "no return in non-void function"-error.
+%if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
+%ifarch aarch64
+ac_add_options --disable-elf-hack
 %endif
+%endif
+# TODO: To enable relrhack:
+# E ERROR: Cannot enable relrhack without linker support for -z pack-relative-relocs
+#ac_add_options --enable-elf-hack=relr
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
 %if 0%{useccache} != 0
@@ -543,19 +563,14 @@ ac_add_options --enable-optimize="-O1"
 %endif
 %ifarch x86_64
 # LTO needs newer toolchain stack only (at least GCC 8.2.1 (r268506)
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} >= 1699
 ac_add_options --enable-lto
 %if 0%{?do_profiling}
 ac_add_options MOZ_PGO=1
-export CCACHE_DISABLE=1
 %endif
 %endif
 %endif
 EOF
-
-%if 0%{?do_profiling}
-export CCACHE_DISABLE=1
-%endif
 
 %if %{with only_print_mozconfig}
 cat ./.obsenv.sh
@@ -594,6 +609,7 @@ ac_add_options --enable-official-branding
 EOF
 
 %if 0%{?suse_version} >= 1600
+# Needed for reproducible builds, only available for rpm version >= 4.19
 %define njobs ${RPM_BUILD_NCPUS:-0}
 %else
 %define njobs 0%{?jobs:%jobs}
@@ -778,9 +794,7 @@ exit 0
 %{progdir}/dependentlibs.list
 %{progdir}/*.so
 %{progdir}/glxtest
-%if 0%{wayland_supported}
 %{progdir}/vaapitest
-%endif
 %{progdir}/vulkantest
 %ifarch aarch64 riscv64 %arm
 %{progdir}/v4l2test

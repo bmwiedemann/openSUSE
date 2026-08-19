@@ -1,10 +1,11 @@
 # HG changeset patch
 # Parent  135d931b3e674a670473f69f8c079e741ac63643
 
-diff --git a/build/moz.configure/rust.configure b/build/moz.configure/rust.configure
---- a/build/moz.configure/rust.configure
-+++ b/build/moz.configure/rust.configure
-@@ -668,7 +668,7 @@ def rust_compile_flags(
+Index: mozilla-esr153/build/moz.configure/rust.configure
+===================================================================
+--- mozilla-esr153.orig/build/moz.configure/rust.configure
++++ mozilla-esr153/build/moz.configure/rust.configure
+@@ -676,7 +676,7 @@ def rust_compile_flags(
          debug_assertions = False
  
      if debug_symbols:

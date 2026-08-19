@@ -2,15 +2,11 @@
 # User Wolfgang Rosenauer <wr@rosenauer.org>
 # Parent  73147e14b378957cdb8516125df34111d2699fe9
 
-diff --git a/build/moz.configure/lto-pgo.configure b/build/moz.configure/lto-pgo.configure
---- a/build/moz.configure/lto-pgo.configure
-+++ b/build/moz.configure/lto-pgo.configure
-@@ -89,22 +89,26 @@ def pgo_profile_path(path, pgo_use, prof
-     return path[0]
- 
- 
- set_config("PGO_PROFILE_PATH", pgo_profile_path)
- 
+Index: mozilla-esr153/build/moz.configure/lto-pgo.configure
+===================================================================
+--- mozilla-esr153.orig/build/moz.configure/lto-pgo.configure
++++ mozilla-esr153/build/moz.configure/lto-pgo.configure
+@@ -94,12 +94,16 @@ set_config("PGO_PROFILE_PATH", pgo_profi
  
  @depends(
      "--enable-profile-use",
@@ -28,17 +24,7 @@ diff --git a/build/moz.configure/lto-pgo.configure b/build/moz.configure/lto-pgo
      if not profile_use:
          return None
  
-     if not profdata_order:
-         return None
- 
-     topobjdir = build_env.topobjdir
- 
-@@ -138,17 +142,17 @@ def pgo_flags(
-     target_is_windows,
-     pgo_temporal,
-     orderfile,
- ):
-     if compiler.type == "gcc":
+@@ -143,7 +147,7 @@ def pgo_flags(
          return namespace(
              gen_cflags=["-fprofile-generate"],
              gen_ldflags=["-fprofile-generate"],
@@ -47,17 +33,7 @@ diff --git a/build/moz.configure/lto-pgo.configure b/build/moz.configure/lto-pgo
              use_ldflags=["-fprofile-use"],
          )
  
-     if compiler.type in ("clang-cl", "clang"):
-         prefix = ""
-         if compiler.type == "clang-cl":
-             prefix = "/clang:"
-             gen_ldflags = None
-@@ -352,34 +356,34 @@ def lto(
-             "configure."
-         )
- 
-     if c_compiler.type == "clang":
-         if "full" in values:
+@@ -357,8 +361,8 @@ def lto(
              cflags.append("-flto")
              ldflags.append("-flto")
          else:
@@ -68,15 +44,7 @@ diff --git a/build/moz.configure/lto-pgo.configure b/build/moz.configure/lto-pgo
  
          if target.os == "Android" and "cross" in values:
              # Work around https://github.com/rust-lang/rust/issues/90088
-             # by enabling the highest level of SSE the rust targets default
-             # to.
-             # https://github.com/rust-lang/rust/blob/bdfcb88e8b6203ccb46a2fb6649979b773efc8ac/compiler/rustc_target/src/spec/i686_linux_android.rs#L13
-             # https://github.com/rust-lang/rust/blob/8d1083e319841624f64400e1524805a40d725439/compiler/rustc_target/src/spec/x86_64_linux_android.rs#L7
-             if target.cpu == "x86":
-                 ldflags.append("-Wl,-plugin-opt=-mattr=+ssse3")
-             elif target.cpu == "x86_64":
-                 ldflags.append("-Wl,-plugin-opt=-mattr=+sse4.2")
-     elif c_compiler.type == "clang-cl":
+@@ -374,7 +378,7 @@ def lto(
          if "full" in values:
              cflags.append("-flto")
          else:
@@ -85,20 +53,11 @@ diff --git a/build/moz.configure/lto-pgo.configure b/build/moz.configure/lto-pgo
          # With clang-cl, -flto can only be used with -c or -fuse-ld=lld.
          # AC_TRY_LINKs during configure don't have -c, so pass -fuse-ld=lld.
          cflags.append("-fuse-ld=lld")
- 
-         # Explicitly set the CPU to optimize for so the linker doesn't
-         # choose a poor default.  Rust compilation by default uses the
-         # pentium4 CPU on x86:
-         #
-diff --git a/build/pgo/profileserver.py b/build/pgo/profileserver.py
---- a/build/pgo/profileserver.py
-+++ b/build/pgo/profileserver.py
-@@ -5,17 +5,17 @@
- # file, You can obtain one at http://mozilla.org/MPL/2.0/.
- 
- import glob
- import os
- import subprocess
+Index: mozilla-esr153/build/pgo/profileserver.py
+===================================================================
+--- mozilla-esr153.orig/build/pgo/profileserver.py
++++ mozilla-esr153/build/pgo/profileserver.py
+@@ -10,7 +10,7 @@ import subprocess
  import sys
  
  import mozcrash
@@ -107,17 +66,7 @@ diff --git a/build/pgo/profileserver.py b/build/pgo/profileserver.py
  from mozfile import TemporaryDirectory, json
  from mozhttpd import MozHttpd
  from mozprofile import FirefoxProfile, Preferences
- from mozprofile.permissions import ServerLocations
- from mozrunner import CLI, FirefoxRunner
- 
- PORT = 8888
- 
-@@ -134,19 +134,32 @@ if __name__ == "__main__":
-             docroot=js3_dir,
-         )
-         js3_httpd.start(block=False)
-         print("started JS3 server on port 8001")
- 
+@@ -139,9 +139,22 @@ if __name__ == "__main__":
      locations = ServerLocations()
      locations.add_host(host="127.0.0.1", port=PORT, options="primary,privileged")
  
@@ -143,17 +92,7 @@ diff --git a/build/pgo/profileserver.py b/build/pgo/profileserver.py
  
      with TemporaryDirectory() as profilePath:
          # TODO: refactor this into mozprofile
-         profile_data_dir = os.path.join(build.topsrcdir, "testing", "profiles")
-         with open(os.path.join(profile_data_dir, "profiles.json")) as fh:
-             base_profiles = json.load(fh)["profileserver"]
- 
-         prefpaths = [
-@@ -273,16 +286,20 @@ if __name__ == "__main__":
- 
-         # Try to move the crash reports to the artifacts even if Firefox appears
-         # to exit successfully, in case there's a crash that doesn't set the
-         # return code to non-zero for some reason.
-         if get_crashreports(profilePath, name="Firefox exited successfully?") != 0:
+@@ -278,6 +291,10 @@ if __name__ == "__main__":
              print("Firefox exited successfully, but produced a crashreport")
              sys.exit(1)
  
@@ -164,18 +103,11 @@ diff --git a/build/pgo/profileserver.py b/build/pgo/profileserver.py
          llvm_profdata = env.get("LLVM_PROFDATA")
          if llvm_profdata:
              profraw_files = glob.glob("*.profraw")
-             if not profraw_files:
-                 print(
-                     "Could not find profraw files in the current directory: %s"
-                     % os.getcwd()
-                 )
-diff --git a/build/unix/mozconfig.unix b/build/unix/mozconfig.unix
---- a/build/unix/mozconfig.unix
-+++ b/build/unix/mozconfig.unix
-@@ -1,14 +1,23 @@
- . "$topsrcdir/build/mozconfig.common"
- 
- if [ -n "$FORCE_GCC" ]; then
+Index: mozilla-esr153/build/unix/mozconfig.unix
+===================================================================
+--- mozilla-esr153.orig/build/unix/mozconfig.unix
++++ mozilla-esr153/build/unix/mozconfig.unix
+@@ -4,6 +4,15 @@ if [ -n "$FORCE_GCC" ]; then
      CC="$MOZ_FETCHES_DIR/gcc/bin/gcc"
      CXX="$MOZ_FETCHES_DIR/gcc/bin/g++"
  
@@ -191,34 +123,21 @@ diff --git a/build/unix/mozconfig.unix b/build/unix/mozconfig.unix
      # We want to make sure we use binutils and other binaries in the tooltool
      # package.
      mk_add_options "export PATH=$MOZ_FETCHES_DIR/gcc/bin:$MOZ_FETCHES_DIR/binutils/bin:$PATH"
- else
-     # For some builds we don't want to have Clang based static-analysis activated
-     if [ -z "$DISABLE_CLANG_PLUGIN" ]; then
-         export ENABLE_CLANG_PLUGIN=1
-     fi
-diff --git a/extensions/spellcheck/src/moz.build b/extensions/spellcheck/src/moz.build
---- a/extensions/spellcheck/src/moz.build
-+++ b/extensions/spellcheck/src/moz.build
-@@ -19,8 +19,10 @@ FINAL_LIBRARY = "xul"
- 
- LOCAL_INCLUDES += [
-     "../ipc",
- ]
- EXPORTS.mozilla += [
+Index: mozilla-esr153/extensions/spellcheck/src/moz.build
+===================================================================
+--- mozilla-esr153.orig/extensions/spellcheck/src/moz.build
++++ mozilla-esr153/extensions/spellcheck/src/moz.build
+@@ -24,3 +24,5 @@ EXPORTS.mozilla += [
      "mozInlineSpellChecker.h",
      "mozSpellChecker.h",
  ]
 +
 +CXXFLAGS += ['-fno-devirtualize']
-diff --git a/toolkit/components/terminator/nsTerminator.cpp b/toolkit/components/terminator/nsTerminator.cpp
---- a/toolkit/components/terminator/nsTerminator.cpp
-+++ b/toolkit/components/terminator/nsTerminator.cpp
-@@ -333,16 +333,21 @@ void nsTerminator::StartWatchdog() {
-       // Defend against overflow
-       crashAfterMS = INT32_MAX;
-     } else {
-       crashAfterMS *= scaleUp;
-     }
+Index: mozilla-esr153/toolkit/components/terminator/nsTerminator.cpp
+===================================================================
+--- mozilla-esr153.orig/toolkit/components/terminator/nsTerminator.cpp
++++ mozilla-esr153/toolkit/components/terminator/nsTerminator.cpp
+@@ -392,6 +392,11 @@ void nsTerminator::StartWatchdog() {
    }
  #endif
  
@@ -230,8 +149,3 @@ diff --git a/toolkit/components/terminator/nsTerminator.cpp b/toolkit/components
    UniquePtr<Options> options(new Options());
    // Guarantee that crashAfterTicks is non-zero
    options->crashAfterTicks = std::max(1, crashAfterMS / HEARTBEAT_INTERVAL_MS);
- 
-   DebugOnly<PRThread*> watchdogThread =
-       CreateSystemThread(RunWatchdog, options.release());
-   MOZ_ASSERT(watchdogThread);
- }

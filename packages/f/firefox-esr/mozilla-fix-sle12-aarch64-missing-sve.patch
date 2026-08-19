@@ -1,0 +1,13 @@
+Index: firefox-153.0/third_party/xsimd/include/xsimd/config/xsimd_cpu_features_arm.hpp
+===================================================================
+--- firefox-153.0.orig/third_party/xsimd/include/xsimd/config/xsimd_cpu_features_arm.hpp
++++ firefox-153.0/third_party/xsimd/include/xsimd/config/xsimd_cpu_features_arm.hpp
+@@ -99,7 +99,7 @@ namespace xsimd
+ 
+     inline bool arm_cpu_features::sve() const noexcept
+     {
+-#if XSIMD_TARGET_ARM64 && XSIMD_HAVE_LINUX_GETAUXVAL
++#if HWCAP_SVE && XSIMD_TARGET_ARM64 && XSIMD_HAVE_LINUX_GETAUXVAL
+         return hwcap().has_feature(HWCAP_SVE);
+ #else
+         return false;

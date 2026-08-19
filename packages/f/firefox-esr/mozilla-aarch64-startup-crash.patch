@@ -7,15 +7,11 @@
 bsc#991344 - Rpi3: Firefox crashes after a few seconds of usage
 bmo#1302554 - ARM/AARCH64: Firefox crashes on NULL nsIChannel** result pointer in nsIOService::NewChannelFromURIWithProxyFlagsInternal()
 
-diff --git a/netwerk/base/nsIOService.cpp b/netwerk/base/nsIOService.cpp
---- a/netwerk/base/nsIOService.cpp
-+++ b/netwerk/base/nsIOService.cpp
-@@ -1227,17 +1227,24 @@ nsresult nsIOService::NewChannelFromURIW
-     return NS_ERROR_UNEXPECTED;
-   }
- 
-   // If we're sandboxed, make sure to clear any owner the channel
-   // might already have.
+Index: mozilla-esr153/netwerk/base/nsIOService.cpp
+===================================================================
+--- mozilla-esr153.orig/netwerk/base/nsIOService.cpp
++++ mozilla-esr153/netwerk/base/nsIOService.cpp
+@@ -1242,7 +1242,14 @@ nsresult nsIOService::NewChannelFromURIW
    if (loadInfo->GetLoadingSandboxed()) {
      channel->SetOwner(nullptr);
    }
@@ -30,8 +26,3 @@ diff --git a/netwerk/base/nsIOService.cpp b/netwerk/base/nsIOService.cpp
    return NS_OK;
  }
  
- NS_IMETHODIMP
- nsIOService::NewChannelFromURIWithProxyFlags(
-     nsIURI* aURI, nsIURI* aProxyURI, uint32_t aProxyFlags,
-     nsINode* aLoadingNode, nsIPrincipal* aLoadingPrincipal,
-     nsIPrincipal* aTriggeringPrincipal, uint32_t aSecurityFlags,

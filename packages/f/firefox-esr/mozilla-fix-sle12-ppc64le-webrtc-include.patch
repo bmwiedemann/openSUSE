@@ -1,0 +1,19 @@
+Index: firefox-153.0/third_party/libwebrtc/rtc_base/platform_thread_types.cc
+===================================================================
+--- firefox-153.0.orig/third_party/libwebrtc/rtc_base/platform_thread_types.cc
++++ firefox-153.0/third_party/libwebrtc/rtc_base/platform_thread_types.cc
+@@ -17,8 +17,14 @@
+ #include <sys/syscall.h>
+ 
+ #if !defined(WEBRTC_ARCH_ARM) && !defined(WEBRTC_ARCH_ARM64)
++#if defined(__has_include)
++#if __has_include(<asm/unistd_64.h>)
+ #include <asm/unistd_64.h>
+ #endif
++#else
++#include <asm/unistd_64.h>
++#endif
++#endif
+ #endif
+ 
+ #if defined(WEBRTC_WIN)
