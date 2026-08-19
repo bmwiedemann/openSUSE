@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Aug 12 13:59:22 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 20260812.bedea52:
+  * Rename images from .raw to .sysext.raw
+
+-------------------------------------------------------------------
+Tue Aug 11 15:33:28 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 20260811.5881e87:
+  * Remove dropped k3s
+
+-------------------------------------------------------------------
+Tue Aug 11 15:31:45 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 20260811.27f2682:
+  * Add rke2 for OBS
+
+-------------------------------------------------------------------
+Tue Aug 11 12:07:55 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 20260811.a40f0b6:
+  * Add first rke2 version
+  * No longer call create-json, mkosi creates enhanced manifests
+  * Remove single strace sysext, part of debug
+  * Remove k3s
+
+-------------------------------------------------------------------
+Wed Apr 29 10:21:18 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 20260317.e2d0eae:
+  * README.md: adjust project URLs
+
+-------------------------------------------------------------------
 Wed Nov 05 10:41:05 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 20251105.cb5e98d:
