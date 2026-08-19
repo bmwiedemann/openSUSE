@@ -940,4 +940,57 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1370196</requestid>
   </revision>
+  <revision rev="51" vrev="51">
+    <srcmd5>db704cacf47524c7685a1e01817586d7</srcmd5>
+    <version>0</version>
+    <time>1787154929</time>
+    <user>anag_factory</user>
+    <comment>Automatic update from systemsmanagement:Agama:Release
+
+--- agama-web-ui.changes (revision 50)
++++ agama-web-ui.changes (revision 116)
+@@ -1,4 +1,33 @@
+ -------------------------------------------------------------------
++Thu Aug 13 10:46:43 UTC 2026 - Imobach Gonzalez Sosa &lt;igonzalezsosa@suse.com&gt;
++
++- Do not wait in the selection page after selecting a product
++  (related to bsc#1275030, gh#agama-project/agama#3820).
++- Fix an sporadic issue with &quot;software&quot; and &quot;storage&quot; skeletons
++  not disappearing (bsc#1275027, gh#agama-project/agama#3819).
++
++-------------------------------------------------------------------
++Fri Aug  7 15:07:47 UTC 2026 - David Diaz &lt;dgonzalez@suse.com&gt;
++
++- Fix typography and layout details that a product skin makes
++  visible: the breadcrumb trail, plain headings, the summary icon
++  and the header logo (gh#agama-project/agama#3797).
++- Document how to design, verify and ship a product skin
++  (gh#agama-project/agama#3797).
++
++-------------------------------------------------------------------
++Wed Aug  5 15:16:36 UTC 2026 - José Iván López González &lt;jlopez@suse.com&gt;
++
++- Adapt types to changes in the storage system and proposal schemas
++  (gh#agama-project/agama#3800).
++
++-------------------------------------------------------------------
++Mon Aug  3 10:25:04 UTC 2026 - David Diaz &lt;dgonzalez@suse.com&gt;
++
++- Improve the installer language and keyboard layout dialog,
++  rebuilt with the new form stack (gh#agama-project/agama#3770).
++
++-------------------------------------------------------------------
+ Fri Jul 31 08:19:29 UTC 2026 - Martin Vidner &lt;mvidner@suse.com&gt;
+ 
+ - dependency updated on Jul 7 already, listing its references
+@@ -25,7 +54,7 @@
+ 
+ - Avoid a flash from Agama colors to a product's own palette
+   (gh#agama-project/agama#3749).
+-  
++
+ -------------------------------------------------------------------
+ Tue Jul 21 19:07:07 UTC 2026 - David Diaz &lt;dgonzalez@suse.com&gt;</comment>
+    <requestid>1371746</requestid>
+  </revision>
 </revisionlist>
