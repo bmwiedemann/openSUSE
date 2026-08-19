@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 11 17:04:07 UTC 2026 - Benoît Monin <benoit.monin@gmx.fr>
+
+- Update to version 2.66.1:
+  * project: skip manifest default fallback for MetaProjects
+
+-------------------------------------------------------------------
 Wed Aug 05 16:32:25 UTC 2026 - Benoît Monin <benoit.monin@gmx.fr>
 
 - Update to version 2.66:
