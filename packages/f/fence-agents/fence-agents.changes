@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug 12 07:09:12 UTC 2026 - Peter Varkoly <varkoly@suse.com>
+
+- Update to version 4.17.0+git.1786356985.d90bec5f:
+  * fence_vmware_rest: remove static --token option
+  * fence_gce: fail immediately on import errors
+  * fence_openstack: implement reboot_cycle_fn for hard reboot support (#657)
+
+-------------------------------------------------------------------
 Tue Jul 21 13:35:32 UTC 2026 - varkoly@suse.com
 
 - Update to version 4.17.0+git.1784121740.9871084:
