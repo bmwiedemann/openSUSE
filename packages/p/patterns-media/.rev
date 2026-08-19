@@ -513,4 +513,14 @@
     <comment></comment>
     <requestid>1321620</requestid>
   </revision>
+  <revision rev="62" vrev="62">
+    <srcmd5>d11c20bf5be2425fc91e3c2e8dbbdec1</srcmd5>
+    <version>20170319</version>
+    <time>1787154971</time>
+    <user>anag_factory</user>
+    <comment>- Media rest_dvd: recommend sudo-policy-wheel-auth-self and
+  openSUSE-repos-Tumbleweed, as they are referenced by the Agama
+  installer.</comment>
+    <requestid>1371690</requestid>
+  </revision>
 </revisionlist>

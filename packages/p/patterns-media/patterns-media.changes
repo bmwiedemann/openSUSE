@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 18 08:31:21 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Media rest_dvd: recommend sudo-policy-wheel-auth-self and
+  openSUSE-repos-Tumbleweed, as they are referenced by the Agama
+  installer.
+
+-------------------------------------------------------------------
 Mon Dec  8 11:20:42 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - Add grub2-riscv64-efi-bls

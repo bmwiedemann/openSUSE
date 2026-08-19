@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-media
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -505,6 +505,9 @@ Recommends:     yast2-python3-bindings
 Recommends:     yast2-slp-server
 Suggests:       krdc
 Suggests:       krfb
+# Agama installer references these packages:
+Recommends:     sudo-policy-wheel-auth-self
+Recommends:     openSUSE-repos-Tumbleweed
 %ifarch ppc
 Recommends:     gtkpbbuttons
 # #381940
