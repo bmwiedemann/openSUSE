@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sat Aug 15 12:35:32 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Build the bindings as _multibuild flavors of this one spec
+  (@BUILD_FLAVOR@): perl, python and the new php. None links the
+  C++ core, so they no longer extend its critical path. Each
+  flavor needs its own Name: to keep its src and debug packages
+  from colliding with the core's; the new thrift-rpmlintrc zeroes
+  the resulting invalid-spec-name badness.
+- New package php8-thrift: the Thrift\ class library plus the
+  thrift_protocol accelerator extension.
+- Fix the 15.x build, which failed everywhere: the
+  suse_version >= 1550 guard forced Python 3.6. Use
+  %{?sle15_python_module_pythons}, renaming the 15.x binary to
+  python311-thrift. Add BuildRequires: gcc-c++, without which
+  setup.py silently drops the fastbinary accelerator.
+- Stop installing the Perl bindings twice - upstream's
+  INSTALL_BASE=/usr/local overrode INSTALLDIRS=vendor. Drive
+  Makefile.PL directly, dropping the bogus "mv
+  %{_perl_vendorlib}" workaround. perl-thrift is now noarch and
+  requires perl(Bit::Vector), without which
+  Thrift::BinaryProtocol failed.
+- Split libthrift_c_glib-devel out of libthrift-devel; a
+  pkgconfig/*.pc glob had put all four .pc files in one package.
+- Pin the library %files to %{version} instead of globbing
+  libthrift-*.so, and assert %{libversion} in %build so a missed
+  bump is an FTBFS.
+- Add %check to every binding flavor. The C++ suite stays
+  disabled - it needs a static Boost, which openSUSE lacks.
+- Drop the dead java, ruby and qt5 bconds and the c bcond
+  (default-on, so it only ever served to break the shipped
+  libthrift_c_glib0), Conflicts: libthrift-0_11_0, %define
+  oldpython and the backports.ssl_match_hostname Recommends;
+  raise the Suggests floors to setup.py's tornado >= 6.3.0 and
+  Twisted >= 24.3.0.
+- Add License: and %license to every subpackage, switch to
+  %ldconfig_scriptlets and %make_build, drop Group tags, the
+  CXXFLAGS export and the redundant %make_install re-runs.
+- Use rpmlint filter instead of setBadness
+
+-------------------------------------------------------------------
 Mon Jul 27 20:02:32 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.24.0 (

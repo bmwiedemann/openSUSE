@@ -263,4 +263,16 @@
   * #3597 - link UnitTests against libthriftz to resolve</comment>
     <requestid>1368215</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>2ffa09ff3ccbfc0ab0b891ff5611aa3a</srcmd5>
+    <version>0.24.0</version>
+    <time>1787154910</time>
+    <user>anag_factory</user>
+    <comment>Resubmission of sr#1371673: factory-auto's setBadness objection is fixed
+by switching thrift-rpmlintrc to addFilter(&quot;invalid-spec-name&quot;). Both the
+core and binding flavors were rebuilt locally and rpmlint-verified: the
+flavors no longer report invalid-spec-name; the core flavor reports the
+filter as unused (badness 1, benign - any non-matching filter form does).</comment>
+    <requestid>1371687</requestid>
+  </revision>
 </revisionlist>

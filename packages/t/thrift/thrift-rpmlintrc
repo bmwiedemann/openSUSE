@@ -1,0 +1,11 @@
+# The binding flavors are built from this one thrift.spec via @BUILD_FLAVOR@,
+# so their source package names (thrift-perl, thrift-php, thrift-python)
+# deliberately differ from the spec file name. Those distinct names are what
+# keeps each flavor's debuginfo/debugsource and src package from colliding
+# with the core's, and they make rpmlint's invalid-spec-name fire on the
+# binding flavors by design. addFilter, not setBadness: factory-auto rejects
+# setBadness in rpmlintrc for Factory submissions. On the core flavor - the
+# only one where the check never fires - rpmlint reports this filter as
+# unused (badness 1, does not fail the build); scoping the regex to the
+# flavor names cannot avoid that, since any non-matching filter is "unused".
+addFilter("invalid-spec-name")
