@@ -1,7 +1,7 @@
 #
 # spec file for package asciidoc
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,6 @@
 %if "%{flavor}" != ""
 %define name_suffix -%{flavor}
 %endif
-
 Name:           asciidoc%{?name_suffix}
 Version:        10.2.1
 Release:        0
@@ -28,6 +27,7 @@ Summary:        Text-Based Document Generation
 License:        GPL-2.0-or-later
 URL:            https://asciidoc-py.github.io/
 Source0:        https://github.com/asciidoc-py/asciidoc-py/releases/download/%{version}/asciidoc-%{version}.tar.gz
+Source1:        asciidoc-test-generate-man
 Patch0:         asciidoc.version.patch
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
@@ -60,7 +60,6 @@ This package contains examples and documents of asciidoc.
 Summary:        Provide latex backend dependencies
 Requires:       %{name} = %{version}
 Requires:       dblatex
-Supplements:    (%{name} and dblatex)
 # some of them are actually required by dblatex, but it's easier to keep them all in here
 Requires:       texlive-metafont-bin
 Requires:       tex(8r.enc)
@@ -74,6 +73,7 @@ Requires:       tex(rsfs10.tfm)
 Requires:       tex(upquote.sty)
 Requires:       tex(zptmcm7v.tfm)
 Requires:       tex(zptmcm7y.tfm)
+Supplements:    (%{name} and dblatex)
 
 %description latex-backend
 AsciiDoc can generate pdf from asciidoc format through dblatex. For that it needs quite some
@@ -81,6 +81,13 @@ latex dependencies that we don't want to have by default. So this package is opt
 
 %prep
 %setup -q -n asciidoc-%{version}
+%patch -P 0 -p1
+# asciidoc.version.patch drops the {asciidoc-version} placeholder from the
+# generator meta tag, but upstream's fixtures were rendered by testasciidoc.py
+# with that attribute injected as the literal string "test" (tests/testasciidoc.py,
+# self.attributes = {'asciidoc-version': 'test'}). Align the expected output with
+# the patched templates, otherwise every HTML backend case mismatches.
+sed -i 's/content="AsciiDoc test"/content="AsciiDoc"/' tests/data/*.html
 # do not use env
 # Remove python shebang from sitelib files, this will remove the
 # automatic dependency on /usr/bin/python3
@@ -102,12 +109,29 @@ cp -a doc/*.1 %{buildroot}%{_mandir}/man1/
 
 %fdupes %{buildroot}%{python3_sitelib}/%{name}
 
+# Install functional test script (Source1)
+install -d %{buildroot}%{_libexecdir}/asciidoc
+install -m 0755 %{SOURCE1} %{buildroot}%{_libexecdir}/asciidoc/test-generate-man
+
 %check
 export PYTHONPATH="$PYTHONPATH:%{buildroot}%{python3_sitelib}"
 export PYTHONDONTWRITEBYTECODE=1
 python3 -m asciidoc.asciidoc --doctest
 python3 -m pytest --ignore=_build.python3 -v
 python3 tests/testasciidoc.py run
+
+%package tests
+Summary:        Functional tests for %{name}
+Requires:       %{name} = %{version}
+
+%description tests
+Functional tests for asciidoc that verify the man page generation pipeline works
+correctly on the installed package.
+Run with: %{_libexecdir}/asciidoc/test-generate-man
+
+%files tests
+%dir %{_libexecdir}/asciidoc
+%{_libexecdir}/asciidoc/test-generate-man
 
 %files
 %license COPYRIGHT LICENSE

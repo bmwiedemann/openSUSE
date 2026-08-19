@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Aug 18 05:09:17 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix build: align the testsuite fixtures with asciidoc.version.patch, which
+  removes the version from the generator meta tag while upstream renders the
+  expected output with that attribute set to the literal string "test"
+- Run spec-cleaner: use %{_libexecdir} instead of a hardcoded path in the
+  tests subpackage description
+
+-------------------------------------------------------------------
+Mon Aug 17 05:02:50 UTC 2026 - Zoltan Balogh <zbalogh@suse.com>
+
+- Add asciidoc-tests subpackage with functional test for man page generation
+
+-------------------------------------------------------------------
 Sun Sep 22 08:56:48 UTC 2024 - jun wang <jgwang@suse.com>
 
 - Update to version 10.2.1 

@@ -402,4 +402,27 @@
     <comment></comment>
     <requestid>1202568</requestid>
   </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>d81d69072b3c7b1a6d97e413124dec35</srcmd5>
+    <version>10.2.1</version>
+    <time>1787154900</time>
+    <user>anag_factory</user>
+    <comment>Resubmission of sr#1371524, which was declined for an FTBFS in the devel project.
+
+The failure was mine to fix. The previous revision added the missing
+&quot;%patch -P 0 -p1&quot; line, which finally applied asciidoc.version.patch -- a patch
+that had been declared but never applied since the 10.x rewrite. It strips the
+{asciidoc-version} placeholder from the generator meta tag so regenerated
+documentation does not churn downstream packages. Upstream's expected-output
+fixtures are rendered with that attribute injected as the literal string
+&quot;test&quot;, so all 127 HTML backend cases mismatched once the patch took effect
+(docbook backends carry no generator tag and kept passing).
+
+Fixed by normalising the fixtures to the patched templates in %prep.
+Local build for openSUSE_Factory: 233 testasciidoc cases passed, 0 failed
+(was 106 passed / 127 failed), plus 140 pytest cases; rpmlint unchanged.
+Also picked up the one spec-cleaner finding in the newly added tests
+subpackage description (hardcoded /usr/libexec).</comment>
+    <requestid>1371643</requestid>
+  </revision>
 </revisionlist>
