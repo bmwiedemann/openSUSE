@@ -146,4 +146,16 @@
     - Update minimum prereqs for some tests.</comment>
     <requestid>1359504</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7aab813880c587937c01153e31d27188</srcmd5>
+    <version>0.230.0</version>
+    <time>1787155062</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.230.0 (0.23)
+   see /usr/share/doc/packages/perl-Net-CIDR-Set/Changes
+  0.23      2026-08-11 20:08:42+01:00 Europe/London
+    [Security]
+    - Fix an unbounded IPv6 netmask prefix length (CVE-2026-19566)</comment>
+    <requestid>1371822</requestid>
+  </revision>
 </revisionlist>

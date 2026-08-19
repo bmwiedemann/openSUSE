@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Aug 12 06:42:06 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.230.0 (0.23)
+   see /usr/share/doc/packages/perl-Net-CIDR-Set/Changes
+
+  0.23      2026-08-11 20:08:42+01:00 Europe/London
+    [Security]
+    - Fix an unbounded IPv6 netmask prefix length (CVE-2026-19566)
+
+-------------------------------------------------------------------
 Sun Jun 14 08:51:10 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.220.0 (0.22)
