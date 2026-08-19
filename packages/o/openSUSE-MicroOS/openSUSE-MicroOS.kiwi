@@ -852,7 +852,7 @@
         <package name="uefi_mbr" arch="x86_64"/>
     </packages>
     <packages type="image" profiles="Pine64,RaspberryPi,RaspberryPi2,Rock64,ppc64le-512B">
-        <package name="patterns-microos-hardware"/>
+        <package name="patterns-base-hardware"/>
     </packages>
     <packages type="image" profiles="ContainerHost">
         <package name="patterns-containers-container_runtime"/>
@@ -916,7 +916,7 @@
         <package name="nfs-client"/>
     </packages>
     <packages type="image" profiles="SelfInstall">
-        <package name="patterns-microos-hardware"/>
+        <package name="patterns-base-hardware"/>
         <package name="dracut-kiwi-oem-dump"/>
         <package name="kernel-firmware-all"/> <!-- Fix choice between kernel-firmware and kernel-firmware-all -->
     </packages>

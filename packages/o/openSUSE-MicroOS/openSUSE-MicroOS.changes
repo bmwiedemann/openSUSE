@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 13 11:36:51 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- patterns-microos-hardware got obsoleted by patterns-base-hardware
+
+-------------------------------------------------------------------
 Fri Aug  7 13:04:28 UTC 2026 - Fabian Vogt <fvogt@suse.com>
 
 - config.sh: Use gawk instead of chpasswd -e for setting root to
