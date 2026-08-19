@@ -18,7 +18,7 @@
 
 
 Name:           clpeak
-Version:        2.0.19
+Version:        2.1.1
 Release:        0
 Summary:        Find peak OpenCL capacities like bandwidth & compute
 # Legal-Review-Notice: upstream relicensed from the Unlicense to Apache-2.0
@@ -28,23 +28,41 @@ Summary:        Find peak OpenCL capacities like bandwidth & compute
 License:        Apache-2.0
 URL:            https://github.com/krrishnarraj/clpeak
 Source:         https://github.com/krrishnarraj/clpeak/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.20
 BuildRequires:  gcc-c++
+BuildRequires:  ninja
 BuildRequires:  opencl-cpp-headers
 BuildRequires:  opencl-headers
 BuildRequires:  pkgconfig
+BuildRequires:  shaderc
+BuildRequires:  vulkan-headers
 BuildRequires:  pkgconfig(OpenCL)
-BuildRequires:  pkgconfig(gl)
+BuildRequires:  pkgconfig(vulkan)
 
 %description
 A tool which profiles OpenCL devices to find their peak capacities like
 bandwidth & compute.
 
 %prep
-%autosetup
+%autosetup -p1
+# GitHub archives have no .git, so git-describe is unavailable and
+# version.cmake's hardcoded fallback is stale (still 2.0.16 in 2.1.1).
+# gh#krrishnarraj/clpeak#198
+sed -i 's/set(CLPEAK_VERSION_FALLBACK ".*")/set(CLPEAK_VERSION_FALLBACK "%{version}")/' \
+    src/common/cmake/version.cmake
 
 %build
-%cmake
+# Flutter GUI is optional upstream and skipped without an SDK; pin it off
+# so a stray flutter in the buildroot cannot pull it in. CUDA/ROCm/Metal/
+# oneAPI likewise auto-skip when their SDKs are absent — keep them off
+# explicitly. Vulkan + OpenCL + CPU stay on (defaults).
+%define __builder ninja
+%cmake \
+    -DCLPEAK_ENABLE_GUI=OFF \
+    -DCLPEAK_ENABLE_CUDA=OFF \
+    -DCLPEAK_ENABLE_ROCM=OFF \
+    -DCLPEAK_ENABLE_METAL=OFF \
+    -DCLPEAK_ENABLE_ONEAPI=OFF
 %cmake_build
 
 %install

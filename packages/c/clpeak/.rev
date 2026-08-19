@@ -163,4 +163,39 @@ Verified: local osc build against openSUSE_Factory/aarch64 green,
 clean.</comment>
     <requestid>1371494</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>52a9e1582ecf1d344da9b309b454fca5</srcmd5>
+    <version>2.1.1</version>
+    <time>1787155147</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.1.1:
+  * New CLI tests: bilinear texture sample rate
+    (--texture-sample), store-to-load forwarding latency
+    (--store-forward), and SMT scaling of fp32 throughput
+    (--smt-scaling).
+  * Rebuild compute MAD chains as a single accumulator across
+    all backends; the old two-register ping-pong understated
+    fp32 peak on some GPUs. Numbers on the same machine can be
+    higher than 2.0.19.
+  * Fix CPU cache-bandwidth measurement (read/write/copy) and
+    stop the AVX-512 FP16 chain collapsing under fast-math.
+  * --describe prints what each test and reading measures.
+  * Overlapping TestScopes no longer silently drop result rows
+    from the text output.
+  * Exclude per-ISA CPU translation units from LTO so distro
+    -flto builds keep their -m/-march flags at link time.
+  * 2.1.1: drop the AMX-TF32 matrix test (Intel removed the ISA
+    before any silicon shipped) and probe AMX tile ops at
+    configure time instead of trusting compiler flags
+    (gh#krrishnarraj/clpeak#193, gh#krrishnarraj/clpeak#195).
+  * Upstream also adds a Flutter desktop/mobile GUI; it is not
+    packaged here (no Flutter SDK in Factory).
+- Enable the Vulkan backend (pkgconfig(vulkan), vulkan-headers,
+  shaderc) and drop the unused pkgconfig(gl) BuildRequires.
+- Set the tarball version fallback so clpeak --version reports
+  2.1.1 rather than the stale 2.0.16
+  (gh#krrishnarraj/clpeak#198).
+</comment>
+    <requestid>1371923</requestid>
+  </revision>
 </revisionlist>
