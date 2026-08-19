@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Aug 19 07:22:51 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 4.18.0:
+  * Update SQLite baseline from 3.53.3 to 3.53.4
+  * Fix GCC "relocation truncated to fit" link error for
+    optimized x86_64 builds (gh#sqlcipher/sqlcipher#600)
+- Re-enable LTO now that the xoshiro TLS relocation overflow
+  from 4.17.0 is fixed upstream
+- Add a %check smoke test for the encryption path
+- Explicitly BuildRequires gcc and make
+
+-------------------------------------------------------------------
 Wed Jul  8 18:55:33 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 4.17.0:

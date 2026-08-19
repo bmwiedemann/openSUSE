@@ -18,13 +18,15 @@
 
 %define         sover 0
 Name:           sqlcipher
-Version:        4.17.0
+Version:        4.18.0
 Release:        0
 Summary:        SQLite database encryption
 License:        BSD-3-Clause
 URL:            http://sqlcipher.net
 Source:         https://github.com/sqlcipher/sqlcipher/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
+BuildRequires:  gcc
+BuildRequires:  make
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
@@ -73,11 +75,6 @@ This package contains development files for SQLCipher.
 %autosetup
 
 %build
-# Disable LTO: sqlcipher 4.17.0 (SQLite 3.53.3) adds a thread-local xoshiro PRNG
-# state; under -flto the x86_64 sqlite3 shell link fails with "relocation
-# truncated to fit: R_X86_64_TPOFF32 against symbol xoshiro_s.lto_priv.0". The
-# overflow is x86_64-specific (local-exec TLS) and only appears with LTO.
-%define _lto_cflags %{nil}
 # sqlcipher 4.16.0 switched to SQLite's autosetup configure and now builds the
 # upstream sqlite3/libsqlite3 names by default.  Following Debian and Arch:
 #  * $CC is exported so the compiler is not derived from %%configure's --host
@@ -112,6 +109,18 @@ sed -i \
   -e 's|^includedir=.*|includedir=%{_includedir}/sqlcipher|' \
   %{buildroot}%{_libdir}/pkgconfig/sqlcipher.pc
 find %{buildroot} -type f -name "*.la" -delete -print
+
+%check
+# Smoke-test the encryption path against the just-installed binary/library.
+export LD_LIBRARY_PATH=%{buildroot}%{_libdir}
+sqlcipher=%{buildroot}%{_bindir}/sqlcipher
+rm -f smoke.db
+"$sqlcipher" smoke.db "PRAGMA key='smoke'; CREATE TABLE t(x INTEGER); INSERT INTO t VALUES(42);"
+if "$sqlcipher" smoke.db "SELECT x FROM t;" >/dev/null 2>&1; then
+  echo "sqlcipher allowed an unkeyed read of an encrypted database" >&2
+  exit 1
+fi
+"$sqlcipher" smoke.db "PRAGMA key='smoke'; SELECT x FROM t;" | grep -qx 42
 
 %ldconfig_scriptlets -n libsqlcipher%{sover}
 
