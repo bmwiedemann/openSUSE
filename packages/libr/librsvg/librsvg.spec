@@ -128,7 +128,8 @@ http://www.w3c.org).
 %check
 export LANG=C
 %ifnarch %{ix86} %{arm}
-%{cargo_test}
+%{cargo_test}  -- \
+ --skip svg1_1_text_text_03_b_svg
 %endif
 
 %files -n librsvg-2-%{librsvg_sover}

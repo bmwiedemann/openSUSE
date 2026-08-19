@@ -1407,4 +1407,12 @@
     contains the corresponding gdk-pixbuf-query-loaders executable</comment>
     <requestid>1356764</requestid>
   </revision>
+  <revision rev="158" vrev="2">
+    <srcmd5>6305808012deb1c56998934f4fab7686</srcmd5>
+    <version>2.62.3</version>
+    <time>1787154957</time>
+    <user>anag_factory</user>
+    <comment>- Disable librsvg --test reference, failing with new pango 1.58.2</comment>
+    <requestid>1371801</requestid>
+  </revision>
 </revisionlist>

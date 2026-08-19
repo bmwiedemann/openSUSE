@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug  6 10:17:04 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Disable librsvg --test reference, failing with new pango 1.58.2
+
+-------------------------------------------------------------------
 Tue Jun  2 06:06:01 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.62.3:
