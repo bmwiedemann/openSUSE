@@ -2449,4 +2449,12 @@ See https://build.opensuse.org/request/show/1286046</comment>
     <user>dimstar_suse</user>
     <comment>Back to &quot;dvd&quot; for agama offline; the combo did not work</comment>
   </revision>
+  <revision rev="344" vrev="342">
+    <srcmd5>1470181965d6f0352da3b216e71b2cdc</srcmd5>
+    <version>unknown</version>
+    <time>1787154967</time>
+    <user>anag_factory</user>
+    <comment>Obsolete patterns-microos-hardware</comment>
+    <requestid>1371155</requestid>
+  </revision>
 </revisionlist>
