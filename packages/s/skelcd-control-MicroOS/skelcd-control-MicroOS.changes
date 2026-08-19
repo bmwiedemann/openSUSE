@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 14 06:30:52 UTC 2026 - Jiri Srain <jsrain@suse.com>
+
+- use patterns-base-hardware instead of patterns-microos-hardware
+  (related to https://build.opensuse.org/requests/1371005/changes)
+- 20260814
+
+-------------------------------------------------------------------
 Thu May  7 06:10:40 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Reference container_runtime_podman instead of the unspecific
