@@ -220,28 +220,6 @@ Requires:       pattern() = microos_base
 This provides default packages for openSUSE MicroOS which can be optionally
 replaced by alternatives.
 
-%package hardware
-Summary:        Hardware Support
-Group:          Metapackages
-Provides:       pattern() = microos_hardware
-Provides:       pattern-category() = MicroOS
-Provides:       pattern-icon() = pattern-kubic
-Provides:       pattern-order() = 9030
-Provides:       pattern-visible()
-Requires:       ethtool
-%ifnarch s390x
-Requires:       irqbalance
-%endif
-%ifarch %ix86 x86_64
-Requires:       ucode-amd
-Requires:       ucode-intel
-%endif
-Requires:       fcoe-utils
-Requires:       hwinfo
-
-%description hardware
-Packages required to install openSUSE MicroOS on real hardware.
-
 %package selinux
 Summary:        SELinux Support
 Group:          Metapackages
@@ -624,7 +602,7 @@ Provides:       pattern() = microos_onlyDVD
 Provides:       pattern-icon() = pattern-generic
 Provides:       pattern-order() = 9900
 Requires:       pattern() = microos_cloud
-Requires:       pattern() = microos_hardware
+Requires:       pattern() = hardware
 Requires:       pattern() = microos_ima_evm
 Requires:       pattern() = microos_ra_agent
 Requires:       pattern() = microos_sssd_ldap
@@ -667,7 +645,7 @@ Alternative additional packages on a openSUSE MicroOS DVD.
 %install
 mkdir -p %{buildroot}%{_docdir}/patterns-microos/
 PATTERNS='
-    basesystem base base_zypper base_dnf5 base_packagekit defaults hardware
+    basesystem base base_zypper base_dnf5 base_packagekit defaults
     sssd_ldap ima_evm ra_agent ra_verifier selinux cockpit cloud
     desktop-common desktop-kde onlyDVD alt_onlyDVD
 '
@@ -699,10 +677,6 @@ done
 %files defaults
 %dir %{_docdir}/patterns-microos
 %{_docdir}/patterns-microos/defaults.txt
-
-%files hardware
-%dir %{_docdir}/patterns-microos
-%{_docdir}/patterns-microos/hardware.txt
 
 %files sssd_ldap
 %dir %{_docdir}/patterns-microos

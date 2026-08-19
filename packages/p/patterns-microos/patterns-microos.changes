@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 13 09:37:17 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove patterns-microos-hardware, got obsoleted by
+  patterns-base-hardware
+
+-------------------------------------------------------------------
 Wed Mar  4 10:49:02 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
 
 - Require sysextmgr instead of only the cli

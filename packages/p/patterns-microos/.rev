@@ -1018,4 +1018,13 @@ Tue Jan  20 02:29:11 UTC 2021 - Syds Bearda &lt;sydsb@opensuse.org&gt;
     <comment>- Require sysextmgr instead of only the cli</comment>
     <requestid>1336328</requestid>
   </revision>
+  <revision rev="110" vrev="110">
+    <srcmd5>c26e242aca0aa116dde4705ceb8d84fb</srcmd5>
+    <version>5.0</version>
+    <time>1787154961</time>
+    <user>anag_factory</user>
+    <comment>- Remove patterns-microos-hardware, got obsoleted by
+  patterns-base-hardware</comment>
+    <requestid>1371005</requestid>
+  </revision>
 </revisionlist>
