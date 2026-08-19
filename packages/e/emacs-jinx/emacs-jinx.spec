@@ -20,7 +20,7 @@
 %global _name    jinx
 
 Name:           emacs-%{_name}
-Version:        2.8
+Version:        2.10
 Release:        0
 Summary:        Enchanted Spell Checker for Emacs
 License:        GPL-3.0-or-later
@@ -55,7 +55,7 @@ Jinx is a fast just-in-time spell-checker for Emacs.
 %check
 
 %files
-%doc README.org CHANGELOG.org
+%doc README.org NEWS.org
 %license LICENSE
 %{_emacs_sitelispdir}/%{_name}.el*
 %{_emacs_sitelispdir}/%{_name}-autoloads.el

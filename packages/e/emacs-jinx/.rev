@@ -203,4 +203,18 @@
   * Improve mouse menu.</comment>
     <requestid>1354879</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0886fb53ed375b7f61fcb769f0b1330a</srcmd5>
+    <version>2.10</version>
+    <time>1787155115</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.10:
+  * Let-bind parse-sexp-lookup-properties to nil during Jinx tokenization.
+    This avoids interference with the syntax-table property attached by some major modes like haskell-mode.
+  * Rename CHANGELOG.org to NEWS.org
+- Changes from version 2.9:
+  * New command jinx-remove-word to remove words from personal dictionary, file local variable, and so on.
+  * New customizable variable jinx-save-prop-line.</comment>
+    <requestid>1371839</requestid>
+  </revision>
 </revisionlist>
