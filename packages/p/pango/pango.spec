@@ -17,7 +17,7 @@
 
 
 Name:           pango
-Version:        1.58.0
+Version:        1.58.2
 Release:        0
 Summary:        Library for Layout and Rendering of Text
 License:        LGPL-2.1-or-later
@@ -34,10 +34,10 @@ BuildRequires:  pkgconfig(cairo) >= 1.18
 BuildRequires:  pkgconfig(fontconfig) >= 2.17
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(fribidi) >= 1.0.6
-BuildRequires:  pkgconfig(glib-2.0) >= 2.80
-BuildRequires:  pkgconfig(gobject-2.0) >= 2.80
+BuildRequires:  pkgconfig(glib-2.0) >= 2.88
+BuildRequires:  pkgconfig(gobject-2.0) >= 2.88
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(harfbuzz) >= 8.4
+BuildRequires:  pkgconfig(harfbuzz) >= 11.0.0
 BuildRequires:  pkgconfig(libthai) >= 0.1.9
 BuildRequires:  pkgconfig(xft) >= 2.0.0
 BuildRequires:  pkgconfig(xrender)

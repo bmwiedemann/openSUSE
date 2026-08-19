@@ -1303,4 +1303,19 @@ pango-view: When running GraphicsMagick 'gm display' command: Failed to execute 
     components of a layout (such overlines, underlines, text,...)</comment>
     <requestid>1361954</requestid>
   </revision>
+  <revision rev="159" vrev="1">
+    <srcmd5>0a42e6f3d8319a96825cb2d688c29cae</srcmd5>
+    <version>1.58.2</version>
+    <time>1787154950</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.58.2:
+  + Require harfbuzz 11
+  + Require glib 2.88
+  + CoreText:
+    - Support variations
+    - Support font features from descriptions
+  + Renderer: Keep over/under/through lines in sync
+  + Fixes for undefined behavior</comment>
+    <requestid>1371799</requestid>
+  </revision>
 </revisionlist>
