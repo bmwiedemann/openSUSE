@@ -1055,4 +1055,63 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1369773</requestid>
   </revision>
+  <revision rev="53" vrev="53">
+    <srcmd5>dc22a73b4000886eacdbca087dff6bd1</srcmd5>
+    <version>0</version>
+    <time>1787154927</time>
+    <user>anag_factory</user>
+    <comment>Automatic update from systemsmanagement:Agama:Release
+
+--- agama.changes (revision 52)
++++ agama.changes (revision 142)
+@@ -1,4 +1,47 @@
+ -------------------------------------------------------------------
++Mon Aug 17 09:07:56 UTC 2026 - Knut Anderssen &lt;kanderssen@suse.com&gt;
++
++- Do not accept the reserved VLAN identifier 4095, which is
++  rejected by NetworkManager (gh#agama-project/agama#3805).
++
++-------------------------------------------------------------------
++Wed Aug 12 13:55:31 UTC 2026 - Imobach Gonzalez Sosa &lt;igonzalezsosa@suse.com&gt;
++
++- Wait for the software service when setting the configuration.
++  It prevents the monitor to exit before the Agama is ready
++  (bsc#1275030, gh#agama-project/agama#3817).
++
++-------------------------------------------------------------------
++Tue Aug 11 11:42:44 UTC 2026 - Josef Reidinger &lt;jreidinger@suse.com&gt;
++
++- Remove the following elements from the /api/system endpoint:
++  &quot;proxy&quot;, &quot;licenses&quot;, &quot;repositories&quot; and patterns &quot;icon&quot;
++  (gh#agama-project/agama#3775).
++
++-------------------------------------------------------------------
++Tue Aug 11 10:59:37 UTC 2026 - Imobach Gonzalez Sosa &lt;igonzalezsosa@suse.com&gt;
++
++- Fix the detection of model and CPU on the s390x machines
++  (bsc#1270639).
++
++-------------------------------------------------------------------
++Wed Aug  5 15:08:46 UTC 2026 - José Iván López González &lt;jlopez@suse.com&gt;
++
++- Fix storage system and proposal schemas
++  (gh#agama-project/agama#3800):
++  - Rename &quot;driver&quot; to &quot;drivers&quot;.
++  - Rename &quot;dellBoss&quot; to &quot;boss&quot;.
++  - Remove unused property &quot;active&quot; from &quot;block&quot; section.
++  - Add &quot;id&quot; to &quot;partition&quot; section.
++
++-------------------------------------------------------------------
++Wed Aug  5 10:30:34 UTC 2026 - José Iván López González &lt;jlopez@suse.com&gt;
++
++- Extend schema of storage search with logical operators and new
++  search conditions: filesystem, partitions, partition id, driver,
++  boss (related to bsc#1273493).
++
++-------------------------------------------------------------------
+ Mon Jul 27 11:23:53 UTC 2026 - Imobach Gonzalez Sosa &lt;igonzalezsosa@suse.com&gt;
+ 
+ - Add an action to &quot;probe&quot; the software service (gh#agama-project/agama#3341).</comment>
+    <requestid>1371744</requestid>
+  </revision>
 </revisionlist>
