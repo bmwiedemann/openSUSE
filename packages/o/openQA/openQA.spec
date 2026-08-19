@@ -95,7 +95,7 @@
 %define qemu qemu
 %endif
 # The following line is generated from dependencies.yaml
-%define style_check_requires ShellCheck perl(Code::TidyAll) perl(Perl::Critic) >= 1.156.0 perl(Perl::Critic::Community) perl(Pod::Markdown) perl(Test::Perl::Critic) python3-gitlint python3-ruff python3-yamllint shfmt
+%define style_check_requires ShellCheck perl(Code::TidyAll) perl(Perl::Critic) >= 1.156.0 perl(Perl::Critic::Community) perl(Pod::Markdown) perl(Test::Perl::Critic) python3-gitlint python3-ruff python3-typer python3-yamllint shfmt
 # The following line is generated from dependencies.yaml
 %define cover_requires perl(Devel::Cover) perl(Devel::Cover::Report::Codecovbash)
 # The following line is generated from dependencies.yaml
@@ -104,7 +104,7 @@
 %define devel_requires %devel_no_selenium_requires chromedriver
 
 Name:           openQA
-Version:        5.1786788019.aa348157
+Version:        5.1787055821.5de28100
 Release:        0
 Summary:        Framework for automated system-level testing (web-frontend, scheduler and tools)
 Group:          Development/Tools/Other

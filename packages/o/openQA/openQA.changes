@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Aug 18 14:54:38 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1787055821.5de28100:
+  * chore(docs): Add Prettier formatting checks for Markdown
+  * docs: fix superflous whitespace
+  * docs: Fix broken Markdown in "Manual daemon setup"
+  * docs: Fix wrapping in "Setting up the PostgreSQL database"
+  * docs: Fix wrapping in "Customize configuration directory"
+  * docs: Make anchors to web UI, worker and DB config more specific
+  * docs: Improve worker and throttling-related documentation
+  * docs: Wrap paragraphs under "Worker settings" consistently
+  * docs: Mention poo#203487 in explanation of `LOCK_NAME` setting
+  * chore(deps): Dependency cron 2026-08-18
+  * fix(worker): isolate podman runtime for isotovideo
+  * fix: Avoid errors due to inconsistent rate limiting configuration
+  * fix: close AssetPack file handles via public API
+  * refactor(logview): Give variables better names
+  * fix(logview): Save state per module instead of globally
+  * feat: allow disabling stale job duplication
+  * test: check each stale job in loop
+  * chore: add python3-typer dependency for Markdown Python checker
+
+-------------------------------------------------------------------
 Mon Aug 17 01:54:40 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1786788019.aa348157:
