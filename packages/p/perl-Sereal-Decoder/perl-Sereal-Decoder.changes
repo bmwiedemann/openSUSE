@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Aug  6 07:51:41 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 5.10.0 (5.010)
+   see /usr/share/doc/packages/perl-Sereal-Decoder/Changes
+
+  5.010
+      * Reset the pending frozen-object state (thaw_av and ref_thawhash) at the
+        start of every decode. A decode that died before srl_finalize_structure
+        ran -- a truncated document, for example -- left those populated, and the
+        next decode on the same decoder then thawed items belonging to the failed
+        document and looked up ref_thawhash keys pointing at freed AVs. That
+        segfaulted or silently produced the wrong class.
+        See https://github.com/Sereal/Sereal/pull/316
+
+-------------------------------------------------------------------
 Sat Jul 18 07:13:20 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 5.9.0 (5.009)

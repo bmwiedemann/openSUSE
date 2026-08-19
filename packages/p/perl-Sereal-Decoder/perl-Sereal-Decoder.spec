@@ -18,10 +18,10 @@
 
 %define cpan_name Sereal-Decoder
 Name:           perl-Sereal-Decoder
-Version:        5.9.0
+Version:        5.10.0
 Release:        0
-# 5.009 -> normalize -> 5.9.0
-%define cpan_version 5.009
+# 5.010 -> normalize -> 5.10.0
+%define cpan_version 5.010
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Binary serialization module for Perl (decoder part)
 URL:            https://metacpan.org/release/%{cpan_name}
