@@ -61,7 +61,7 @@
 %endif
 %bcond_without ldap
 Name:           postfix-bdb
-Version:        3.11.5
+Version:        3.11.6
 Release:        0
 Summary:        A fast, secure, and flexible mailer
 License:        EPL-2.0 OR IPL-1.0
