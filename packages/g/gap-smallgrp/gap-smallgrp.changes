@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Aug 19 07:28:45 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.7.0
+  * Added `SmallGroupsAddLayer` as a clean interface for extending
+    the Small Groups Library by a further layer.
+  * Optimized `NumberSmallGroups` to be much faster in certain
+    cases. For example `NumberSmallGroups(1536, IsSolvableGroup,
+    true)` is now instant instead of running for 90 seconds.
+
+-------------------------------------------------------------------
 Mon Aug 10 16:11:44 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.6.0
