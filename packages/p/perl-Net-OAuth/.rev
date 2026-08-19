@@ -80,4 +80,41 @@
     <comment></comment>
     <requestid>1270602</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c16517bb419bfe3cf3477d4fbb0f1d80</srcmd5>
+    <version>0.330.0</version>
+    <time>1787155065</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.330.0 (0.33)
+   see /usr/share/doc/packages/perl-Net-OAuth/Changes
+  0.33   Mon 17 Aug 23:14:01 BST 2026
+         [Security]
+         - Restrict the verification algorithm to those specified in the allowed_signature_methods, which is
+           now required.  THIS IS A BREAKING CHANGE.
+           See https://github.com/vurtdev/Net-OAuth/security/advisories/GHSA-c8rm-g5cm-4pf5 (CVE-2026-72889)
+           for more information.
+         - HMAC_SHA1 and HMAC_SHA256 signature keys cannot be blank.
+         - HMAC_SHA1, HMAC_SHA256 and PLAINTEXT signature verification now use constant-time comparison (CVE-2026-75589).
+           bsc#1275651
+         [Documentation]
+         - Updated the GitHub repository location, which moved before the version 0.32 release.
+           (The former location does redirect to the new location.)
+         - Removed CONTRIBUTING.md due to changes in the AI policy.
+         - Updated copyright year.
+
+- updated to 0.320.0 (0.32)
+   see /usr/share/doc/packages/perl-Net-OAuth/Changes
+  0.32   Sun 16 Aug 00:51:04 BST 2026
+         [Security]
+         - The Net::OAuth smart_require function no longer memoizes
+           failures, which allowed attackers to exhaust memory with
+           requests for invalid signature methods. CVE-2026-72888
+           bsc#1275446
+         - Net::OAuth::Client no longer allows silent downgrades from
+           OAuth 1.0a to 1.0 when the remote provider drops the
+           oauth_verifier.  The behavior can be re-enabled with the
+           allow_v1a_downgrade option. CVE-2026-72887
+           bsc#1275447</comment>
+    <requestid>1372004</requestid>
+  </revision>
 </revisionlist>
