@@ -17,7 +17,7 @@
 
 
 Name:           gap-sotgrps
-Version:        1.3.1
+Version:        1.4
 Release:        0
 Summary:        GAP: Small Order Type group construction and identification
 License:        GPL-2.0-or-later
@@ -26,9 +26,9 @@ URL:            https://gap-packages.github.io/io/
 #Git-Clone:     https://github.com/gap-packages/sotgrps
 Source:         https://github.com/gap-packages/sotgrps/releases/download/v%version/SOTGrps-%version.tar.gz
 BuildRequires:  fdupes
-BuildRequires:  gap-devel >= 4.11
+BuildRequires:  gap-devel >= 4.12
 BuildRequires:  gap-rpm-devel
-Requires:       gap-core >= 4.11
+Requires:       gap-core >= 4.12
 Requires:       gap-smallgrp >= 1.3
 
 %description
