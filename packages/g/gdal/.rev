@@ -1094,4 +1094,28 @@ Note: SONAME bump libgdal38 -&gt; libgdal39 (rebuilds consumers)</comment>
     <comment>Update to 3.13.2 (bug fix release): security fixes (NITF/Envisat/SXF/liblerc), core integer-overflow/NoData fixes, /vsicurl/ fixes, gdal CLI pipeline fixes, driver fixes (COG/GTiff libtiff 4.7.2rc3/netCDF/JP2Grok/etc.), Python bindings require &gt;=3.9 + SWIG 4.5.0dev, CMake 4.4 + Poppler 26.08dev build fixes</comment>
     <requestid>1367588</requestid>
   </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>5b1c6b6b31993354e7c9c2f0e6c032b4</srcmd5>
+    <version>3.13.3</version>
+    <time>1787155174</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.13.3 (bug fix release):
+  * Port: fix Unix file read() buffering regression introduced in
+    3.13.0
+  * Raster core: fix memory leak in GDALNoDataValuesMaskBand
+    IReadBlock() error path
+  * COG: fix multi-threaded multi-band BuildOverviews()
+  * ENVI: fix 3.12.2 regression where multiband BSQ Create/Open
+    fails when band offset exceeds INT_MAX
+  * netCDF: fix subdataset name parsing with multiple colons in
+    the path
+  * S102/S104/S111: fix dataCodingFormat enumeration names in
+    writer and validator
+  * DOQ2: prevent potential integer overflow
+  * GDALG: fix nullptr dereference on a space-only command_line
+  * ZARR: fix nullptr dereference on a 'bitround' filter id not
+    in lower case
+</comment>
+    <requestid>1371942</requestid>
+  </revision>
 </revisionlist>

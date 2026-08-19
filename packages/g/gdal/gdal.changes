@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Aug 19 07:24:22 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 3.13.3 (bug fix release):
+  * Port: fix Unix file read() buffering regression introduced in
+    3.13.0
+  * Raster core: fix memory leak in GDALNoDataValuesMaskBand
+    IReadBlock() error path
+  * COG: fix multi-threaded multi-band BuildOverviews()
+  * ENVI: fix 3.12.2 regression where multiband BSQ Create/Open
+    fails when band offset exceeds INT_MAX
+  * netCDF: fix subdataset name parsing with multiple colons in
+    the path
+  * S102/S104/S111: fix dataCodingFormat enumeration names in
+    writer and validator
+  * DOQ2: prevent potential integer overflow
+  * GDALG: fix nullptr dereference on a space-only command_line
+  * ZARR: fix nullptr dereference on a 'bitround' filter id not
+    in lower case
+
+-------------------------------------------------------------------
 Thu Jul 23 19:51:53 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 3.13.2 (bug fix release):
