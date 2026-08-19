@@ -17,7 +17,7 @@
 
 
 Name:           gap-atlasrep
-Version:        2.1.11
+Version:        2.1.12
 Release:        0
 Summary:        GAP: Interface to the Atlas of Group Representations
 License:        GPL-3.0-or-later
@@ -27,7 +27,7 @@ Source:         https://www.math.rwth-aachen.de/homes/Thomas.Breuer/atlasrep/atl
 BuildArch:      noarch
 BuildRequires:  fdupes
 BuildRequires:  gap-rpm-devel
-Requires:       gap-core >= 4.11.0
+Requires:       gap-core >= 4.12
 Requires:       gap-gapdoc >= 1.6.2
 Requires:       gap-utils >= 0.77
 Suggests:       gap-browse >= 1.8.3

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Aug 19 13:11:42 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.1.12
+  * The default value for the user preference
+    `AtlasRepJsonFilesAddresses` (see §4.2-14) was changed. Now,
+    the default for the second entry (the local path for storing
+    downloaded files) matches the value of the user preference
+    `AtlasRepDataDirectory` (§4.2-2).
+
+-------------------------------------------------------------------
 Fri May 15 04:49:09 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.1.11
