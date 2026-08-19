@@ -3,5 +3,8 @@
    <param name="replace">
     golang.org/x/net=golang.org/x/net@v0.57.0
    </param>
+   <param name="replace">
+    github.com/moby/go-archive=github.com/moby/go-archive@v0.3.0
+   </param>
   </service>
 </services>

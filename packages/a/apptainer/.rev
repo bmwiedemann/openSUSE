@@ -665,4 +665,16 @@
     where mksquashfs uses many processor cores.</comment>
     <requestid>1367794</requestid>
   </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>1d328b1692a1bccd5e114208ed3518f7</srcmd5>
+    <version>1.5.3</version>
+    <time>1787155196</time>
+    <user>anag_factory</user>
+    <comment>- Update github.com/moby/go-archive to v0.3.0 to fix CVE-2026-17106:
+  The tar extraction routines in moby/go-archive do not confine
+  filesystem operations to the destination directory. A crafted
+  archive can create or overwrite files outside the intended
+  destination (bsc#1275248).</comment>
+    <requestid>1371956</requestid>
+  </revision>
 </revisionlist>
