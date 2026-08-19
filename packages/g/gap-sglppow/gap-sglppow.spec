@@ -17,7 +17,7 @@
 
 
 Name:           gap-sglppow
-Version:        2.5
+Version:        2.6
 Release:        0
 Summary:        GAP: Database of groups of prime-power order for some prime powers
 License:        Artistic-2.0
