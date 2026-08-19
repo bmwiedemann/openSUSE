@@ -36,7 +36,7 @@
 %bcond_with tests
 
 Name:           maxima
-Version:        5.49.0
+Version:        5.50.0
 Release:        0
 Summary:        Symbolic Computation Program/Computer Algebra System
 License:        GPL-2.0-or-later
@@ -211,9 +211,6 @@ gzip %{buildroot}%{_mandir}/*/man1/maxima.1
 %dir %{_datadir}/maxima
 %dir %{_datadir}/maxima/%{version}
 %dir %{_libdir}/maxima
-%if 0%{?sles_version} == 0
-%dir %{_libexecdir}/maxima
-%endif
 %{_datadir}/maxima/%{version}/*
 %{_libdir}/maxima/%{version}
 %if %{with clisp}
@@ -228,8 +225,6 @@ gzip %{buildroot}%{_mandir}/*/man1/maxima.1
 %if %{with gcl}
 %exclude %{_libdir}/maxima/%{version}/binary-gcl
 %endif
-%dir %{_libexecdir}/maxima/%{version}
-%{_libexecdir}/maxima/%{version}/mgnuplot
 %{_infodir}/*.info*
 %{_infodir}/*.lisp
 %{_bindir}/maxima
@@ -282,6 +277,5 @@ gzip %{buildroot}%{_mandir}/*/man1/maxima.1
 %{_infodir}/ja/
 %{_infodir}/pt/
 %{_infodir}/pt_BR/
-%{_infodir}/ru/
 
 %changelog
