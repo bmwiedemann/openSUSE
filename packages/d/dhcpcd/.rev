@@ -154,4 +154,26 @@
   [bsc#1268968]</comment>
     <requestid>1370032</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>1a180d5e7d5e2c4ee4491798b67635f8</srcmd5>
+    <version>10.5.2</version>
+    <time>1787154938</time>
+    <user>anag_factory</user>
+    <comment>- Update to 10.5.2
+  * IPv6: Allocate the interface state before adding a static
+    address
+  * DHCP: Only send the rapid commit option when configured to
+  * DHCP6: Mirror the prior DHCP rapid commit fix to DHCPv6
+  * keep acquisition timestamp when route isn't updated
+  * privsep: Allow __NR__llseek as well as __NR_llseek on linux
+  * compat: Take a copy of libc progname variable
+  * ipv6nd: don't leave a carrier expiry timeout on a freed
+    interface
+  * ipv4: clear added state if we didn't delete the address
+  * DHCP: script reason should be RELEASE on RELEASE, not STOP
+  * control: Harden the socket at the fs level
+  * privsep: re-enable capsicum and pledge
+  * privsep: Fix capsicum support on the control socket</comment>
+    <requestid>1371775</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Aug 18 13:13:43 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to 10.5.2
+  * IPv6: Allocate the interface state before adding a static
+    address
+  * DHCP: Only send the rapid commit option when configured to
+  * DHCP6: Mirror the prior DHCP rapid commit fix to DHCPv6
+  * keep acquisition timestamp when route isn't updated
+  * privsep: Allow __NR__llseek as well as __NR_llseek on linux
+  * compat: Take a copy of libc progname variable
+  * ipv6nd: don't leave a carrier expiry timeout on a freed
+    interface
+  * ipv4: clear added state if we didn't delete the address
+  * DHCP: script reason should be RELEASE on RELEASE, not STOP
+  * control: Harden the socket at the fs level
+  * privsep: re-enable capsicum and pledge
+  * privsep: Fix capsicum support on the control socket
+
+-------------------------------------------------------------------
 Thu Aug  6 10:56:17 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Update to 10.5.0
