@@ -1,7 +1,7 @@
 #
 # spec file for package ooRexx
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,19 +22,17 @@ Version:        5.2.0
 Release:        0
 Summary:        Open Object REXX
 License:        CPL-1.0
-Group:          Development/Languages/Other
 URL:            https://www.rexxla.org
 Source0:        https://master.dl.sourceforge.net/project/oorexx/oorexx/5.2.0/oorexx-5.2.0-13156.tar.gz
 Source1:        ooRexx-rpmlintrc
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  ncurses-devel
-BuildRequires:  update-alternatives
-Requires(post): %{_sbindir}/update-alternatives
-Requires(postun): %{_sbindir}/update-alternatives
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(ncurses)
+Requires:       alts
+Requires:       liboorexx4 = %{version}
 Obsoletes:      ooRexx <= 4.2.0
 Provides:       ooRexx = %{version}
-Requires:       liboorexx4 = %{version}
 
 %description
 Open Object Rexx is an object-oriented scripting language. The language is designed for both beginners and experienced Rexx programmers. It is easy to learn and use, and provides an excellent vehicle to enter the
@@ -47,12 +45,10 @@ For more information on Rexx, visit http://www.rexxla.org/
 
 %package devel
 Summary:        Open Object REXX development files
-Group:          Development/Languages/Other
 BuildArch:      noarch
 
 %package -n liboorexx4
 Summary:        Open Object REXX libraries
-Group:          Development/Languages/Other
 
 %description devel
 Development files for Open Object Rexx. These are intended for developing REXX extensions only.
@@ -106,19 +102,40 @@ cat > %{buildroot}%{_sysconfdir}/rpm/oorexx.macros << EOF
 %{_rexxlibdir}    %{_libdir}
 EOF
 
-# adding update-alternatives support (boo#1083875)
-mkdir -p %{buildroot}%{_sysconfdir}/alternatives
-
+# adding libalternatives support (boo#1083875)
 # rexxc and rxsubcom need to be renamed upstream! rexx and rxqueue are okay already.
 mv %{buildroot}/%{_bindir}/rexx %{buildroot}/%{_bindir}/rexx-oorexx
 mv %{buildroot}/%{_bindir}/rexxc %{buildroot}/%{_bindir}/rexxc-oorexx
 mv %{buildroot}/%{_bindir}/rxsubcom %{buildroot}/%{_bindir}/rxsubcom-oorexx
 mv %{buildroot}/%{_bindir}/rxqueue %{buildroot}/%{_bindir}/rxqueue-oorexx
 
-ln -s  %{_sysconfdir}/alternatives/rexx %{buildroot}%{_bindir}/rexx
-ln -s  %{_sysconfdir}/alternatives/rexxc %{buildroot}%{_bindir}/rexxc
-ln -s  %{_sysconfdir}/alternatives/rxqueue %{buildroot}%{_bindir}/rxqueue
-ln -s  %{_sysconfdir}/alternatives/rxsubcom %{buildroot}%{_bindir}/rxsubcom
+# rexx and rxqueue form a group: rxqueue is the queue client of the very
+# interpreter that serves the queue, so it should follow the selected rexx.
+# libalternatives switches a group according to the group declared by the
+# *selected* alternative, so this becomes effective for a switch away from
+# ooRexx once Regina-REXX -- the other provider of these two commands --
+# declares group=rexx,rxqueue as well. Until then it is simply inert.
+for b in rexx rxqueue; do
+    ln -s %{_bindir}/alts %{buildroot}%{_bindir}/$b
+    install -d %{buildroot}%{_datadir}/libalternatives/$b
+    cat > %{buildroot}%{_datadir}/libalternatives/$b/20.conf <<EOF
+binary=%{_bindir}/$b-oorexx
+man=$b.1
+group=rexx,rxqueue
+EOF
+done
+
+# rexxc and rxsubcom have no competing provider, so they stay ungrouped:
+# a group bigger than any other provider can offer would only advertise
+# members that can never be switched along.
+for b in rexxc rxsubcom; do
+    ln -s %{_bindir}/alts %{buildroot}%{_bindir}/$b
+    install -d %{buildroot}%{_datadir}/libalternatives/$b
+    cat > %{buildroot}%{_datadir}/libalternatives/$b/20.conf <<EOF
+binary=%{_bindir}/$b-oorexx
+man=$b.1
+EOF
+done
 
 # removing binary samples to avoid OBS warnings
 rm %{buildroot}%{_datadir}/ooRexx/samples/api/c++/callsample/{runRexxProgram,stackOverflow}
@@ -127,29 +144,6 @@ rm %{buildroot}%{_datadir}/ooRexx/samples/api/classic/callrexx/callrexx*
 rm %{buildroot}%{_datadir}/ooRexx/samples/api/classic/rexxapi*/librexxapi*.so
 
 %check
-
-%post
-update-alternatives --install %{_bindir}/rexx rexx %{_bindir}/rexx-oorexx 20
-update-alternatives --install %{_bindir}/rexxc rexxc %{_bindir}/rexxc-oorexx 20
-update-alternatives --install %{_bindir}/rxqueue rxqueue %{_bindir}/rxqueue-oorexx 20
-update-alternatives --install %{_bindir}/rxsubcom rxsubcom %{_bindir}/rxsubcom-oorexx 20
-
-%postun
-if [ ! -f %{_bindir}/rexx-oorexx ] ; then
-  update-alternatives --remove rexx %{_bindir}/rexx-oorexx
-fi
-
-if [ ! -f %{_bindir}/rexxc-oorexx ] ; then
-  update-alternatives --remove rexxc %{_bindir}/rexxc-oorexx
-fi
-
-if [ ! -f %{_bindir}/rxqueue-oorexx ] ; then
-  update-alternatives --remove rxqueue %{_bindir}/rxqueue-oorexx
-fi
-
-if [ ! -f %{_bindir}/rxsubcom-oorexx ] ; then
-  update-alternatives --remove rxsubcom %{_bindir}/rxsubcom-oorexx
-fi
 
 %post -n liboorexx4 -p /sbin/ldconfig
 %postun -n liboorexx4 -p /sbin/ldconfig
@@ -176,19 +170,22 @@ fi
 %{_bindir}/*xsd
 %{_bindir}/*xsl
 
-%ghost %{_bindir}/rexx
-%ghost %{_bindir}/rexxc
-%ghost %{_bindir}/rxqueue
-%ghost %{_bindir}/rxsubcom
+# libalternatives: plain symlinks to alts. Regina-REXX ships byte-identical
+# rexx and rxqueue links, which rpm allows both packages to own.
+%{_bindir}/rexx
+%{_bindir}/rexxc
+%{_bindir}/rxqueue
+%{_bindir}/rxsubcom
 
-%ghost %attr(0755,root,root) %{_sysconfdir}/alternatives/rexx
-%ghost %attr(0755,root,root) %{_sysconfdir}/alternatives/rexxc
-%ghost %attr(0755,root,root) %{_sysconfdir}/alternatives/rxqueue
-%ghost %attr(0755,root,root) %{_sysconfdir}/alternatives/rxsubcom
-%ghost %attr(0644,root,root) %{_sysconfdir}/alternatives/rexx.1
-%ghost %attr(0644,root,root) %{_sysconfdir}/alternatives/rexxc.1
-%ghost %attr(0644,root,root) %{_sysconfdir}/alternatives/rxqueue.1
-%ghost %attr(0644,root,root) %{_sysconfdir}/alternatives/rxsubcom.1
+%dir %{_datadir}/libalternatives
+%dir %{_datadir}/libalternatives/rexx
+%{_datadir}/libalternatives/rexx/20.conf
+%dir %{_datadir}/libalternatives/rexxc
+%{_datadir}/libalternatives/rexxc/20.conf
+%dir %{_datadir}/libalternatives/rxqueue
+%{_datadir}/libalternatives/rxqueue/20.conf
+%dir %{_datadir}/libalternatives/rxsubcom
+%{_datadir}/libalternatives/rxsubcom/20.conf
 
 %files -n liboorexx4
 %{_libdir}/lib*

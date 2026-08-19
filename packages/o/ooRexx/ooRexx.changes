@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Aug 14 08:16:16 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Switch the rexx, rexxc, rxqueue and rxsubcom alternatives from
+  update-alternatives to libalternatives (boo#1083875):
+  * update-alternatives is deprecated and should not be used any
+    more; on top of that its ghost entries under /usr/bin were
+    never created on disk when the package was unpacked, so the
+    /usr/bin/rexx the installed .rex scripts point at only came
+    into existence once the install scriptlets had run
+  * ship /usr/share/libalternatives/<binary>/20.conf for each of
+    the four commands, keeping the previous priority of 20
+  * package /usr/bin/rexx, rexxc, rxqueue and rxsubcom as ordinary
+    symlinks to /usr/bin/alts, owned by the package like any other
+    file, and point each config at the -oorexx suffixed binary
+  * drop the install and remove scriptlets, the /etc/alternatives
+    directory and every ghost file entry - libalternatives keeps
+    no install-time state at all
+  * rexx and rxqueue declare group=rexx,rxqueue so that rxqueue
+    follows the selected interpreter as soon as the other provider
+    of the pair declares the same group; rexxc and rxsubcom have no
+    competing provider and stay ungrouped
+  * require alts, which ships /usr/bin/alts
+- Drop the obsolete Group tags and use pkgconfig(ncurses) instead
+  of ncurses-devel, as spec-cleaner asks for
+
+-------------------------------------------------------------------
 Wed Jun  3 20:10:28 UTC 2026 - Erico Mendonca <erico.mendonca@suse.com>
 
 - Update to new upstream release 5.2.0:
