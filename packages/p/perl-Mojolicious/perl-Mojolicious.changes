@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug 10 06:23:09 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 9.490.0 (9.49)
+   see /usr/share/doc/packages/perl-Mojolicious/Changes
+
+  9.49  2026-08-10
+    - Added EXPERIMENTAL support for partitioned cookies. (rawleyfowler)
+    - Added EXPERIMENTAL partitioned attributes to Mojo::Cookie::Response and Mojolicious::Sessions.
+
+-------------------------------------------------------------------
 Wed Jul 15 07:26:15 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 9.480.0 (9.48)

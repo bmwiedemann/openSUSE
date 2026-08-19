@@ -1789,4 +1789,16 @@ Tons of changes, just the peak of the ice berg:
       CVE-2026-15747 bsc#1271431</comment>
     <requestid>1365998</requestid>
   </revision>
+  <revision rev="187" vrev="1">
+    <srcmd5>3036b02211ba095dc51eb27a99bdd837</srcmd5>
+    <version>9.490.0</version>
+    <time>1787155056</time>
+    <user>anag_factory</user>
+    <comment>- updated to 9.490.0 (9.49)
+   see /usr/share/doc/packages/perl-Mojolicious/Changes
+  9.49  2026-08-10
+    - Added EXPERIMENTAL support for partitioned cookies. (rawleyfowler)
+    - Added EXPERIMENTAL partitioned attributes to Mojo::Cookie::Response and Mojolicious::Sessions.</comment>
+    <requestid>1371815</requestid>
+  </revision>
 </revisionlist>
