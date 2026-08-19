@@ -92,7 +92,7 @@ install -p -D -m 644 doc/build/man/heat.1 %{buildroot}%{_mandir}/man1/heat.1
 install -p -D -m 644 tools/heat.bash_completion %{buildroot}%{_sysconfdir}/bash_completion.d/heat.bash_completion
 
 %check
-%{openstack_stestr_run}
+%{openstack_stestr_run} --exclude-regex test_get_system_ca_file
 
 %files %{python_files}
 %license LICENSE

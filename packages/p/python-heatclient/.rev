@@ -762,4 +762,12 @@
   * Update master for stable/2026.1</comment>
     <requestid>1359330</requestid>
   </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>d43026eb3171df2297312e87a2c81268</srcmd5>
+    <version>5.2.0</version>
+    <time>1787155228</time>
+    <user>anag_factory</user>
+    <comment>- skip one test</comment>
+    <requestid>1371534</requestid>
+  </revision>
 </revisionlist>
