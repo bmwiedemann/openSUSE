@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Aug 19 02:22:49 UTC 2026 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
+
+-  Add fix-resource-cleaner-overflow.patch to resolve
+   ResourceCleaner timeout overflow on libstdc++
+
+-------------------------------------------------------------------
+Sat Aug  8 04:08:30 UTC 2026 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
+
+- The packages ibze_intel_npu, linux-npu-driver, and 
+  linux-npu-driver-devel were created separately.
+
+-------------------------------------------------------------------
 Wed Jul 29 23:53:03 UTC 2026 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
 
 - Remove gtest.patch 
