@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 14 09:13:43 UTC 2026 - Fabian Vogt <fvogt@suse.com>
+
+- Add patch to make documentation more reproducible (QTBUG-145807):
+  * 0001-QDoc-Use-deterministic-tiebreaker-for-shared-notifie.patch
+
+-------------------------------------------------------------------
 Thu May 14 14:56:05 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.11.1

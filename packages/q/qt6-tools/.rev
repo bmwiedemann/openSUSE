@@ -467,4 +467,15 @@
     <comment>Qt 6.11.1 (+ backports) (forwarded request 1354945 from krop)</comment>
     <requestid>1355444</requestid>
   </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>9fbfac667f9f3716c5ac4e6640a96739</srcmd5>
+    <version>6.11.1</version>
+    <time>1787154895</time>
+    <user>anag_factory</user>
+    <comment>Won't be part of 6.11.2 apparently
+
+- Add patch to make documentation more reproducible (QTBUG-145807):
+  * 0001-QDoc-Use-deterministic-tiebreaker-for-shared-notifie.patch (forwarded request 1371224 from favogt)</comment>
+    <requestid>1371623</requestid>
+  </revision>
 </revisionlist>
