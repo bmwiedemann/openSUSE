@@ -141,4 +141,15 @@
     resolution status.</comment>
     <requestid>1354640</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>1f7d5035e98a1eb03b51740a529dc20d</srcmd5>
+    <version>0.7.4</version>
+    <time>1787155134</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.7.4
+  * Can be compiled against OpenSSL-4.0.
+  * The library uses new endpoint domains datovka.gov.cz and
+    datovka-test.gov.cz.</comment>
+    <requestid>1371890</requestid>
+  </revision>
 </revisionlist>

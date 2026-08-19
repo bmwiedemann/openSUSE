@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug 19 05:42:57 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
+
+- update to 0.7.4
+  * Can be compiled against OpenSSL-4.0.
+  * The library uses new endpoint domains datovka.gov.cz and
+    datovka-test.gov.cz.
+
+-------------------------------------------------------------------
 Fri May 22 08:35:33 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
 
 - update to 0.7.3
