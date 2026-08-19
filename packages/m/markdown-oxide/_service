@@ -4,5 +4,6 @@
     <param name="src">markdown-oxide-*.tar.gz</param>
     <param name="compression">zst</param>
     <param name="update">false</param>
+    <param name="update-crate">bytes@1.11.1</param>
   </service>
 </services>

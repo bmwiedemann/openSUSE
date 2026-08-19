@@ -17,14 +17,18 @@
 
 
 Name:           markdown-oxide
-Version:        0.25.1
+Version:        0.25.12
 Release:        0
 Summary:        A markdown language server with Obsidian syntax support
-License:        Apache-2.0
+# Legal-Review-Notice: nucleo-matcher 0.3.1 and option-ext 0.2.0
+# are statically linked and MPL-2.0; their sources ship in
+# vendor.tar.zst.
+License:        Apache-2.0 AND MPL-2.0
 URL:            https://github.com/Feel-ix-343/markdown-oxide
 Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
+ExclusiveArch:  %{rust_tier1_arches}
 
 %description
 A markdown language server with Obsidian syntax support.
@@ -41,7 +45,10 @@ provide a feature rich and advanced note taking experience.
 %{cargo_test}
 
 %install
-%{cargo_install}
+# Install the already-built release binary. cargo_install would
+# re-resolve the git tower-lsp dep without Cargo.lock and FTBFS
+# offline (botdel sr#1371854).
+install -D -m 0755 target/release/%{name} %{buildroot}%{_bindir}/%{name}
 
 %files
 %doc README.md

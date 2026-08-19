@@ -55,4 +55,31 @@
     <comment></comment>
     <requestid>1328685</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>81b5abbd8b551b76629aa5dd88ee5285</srcmd5>
+    <version>0.25.12</version>
+    <time>1787155138</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.25.12 — fix Factory FTBFS (botdel sr#1371854).
+
+- Update to version 0.25.12:
+  * CLI for daily notes and config files
+  * Semantic jump and fuzzy workspace-symbol search
+  * YAML frontmatter tags and excluded_folders
+  * Server-side findReferences; aliases in workspace
+    symbols
+  * Fix LSP crash loop under sustained editing
+  * Cap indexing at 10k lines per file
+  * Many link, heading, completion and Neovim 0.11
+    fixes
+- Fix Factory FTBFS of 0.25.1: install the binary
+  cargo_build already produced instead of cargo_install,
+  which re-resolves the git tower-lsp dep without
+  Cargo.lock and fails offline (sr#1371854)
+- Refresh vendor.tar.zst
+- Bump vendored bytes to 1.11.1
+  (CVE-2026-25541, boo#1274404)
+- Declare MPL-2.0 from nucleo-matcher and option-ext</comment>
+    <requestid>1371907</requestid>
+  </revision>
 </revisionlist>
