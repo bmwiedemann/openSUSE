@@ -102,4 +102,19 @@
     <comment>Push from SCM</comment>
     <requestid>1343025</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>593b6d67d0c291b5dacf59baf8c5929c</srcmd5>
+    <version>1.0.3</version>
+    <time>1787155188</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.0.3:
+  + Minor bugfix release, fixing two issues:
+    - &quot;Use after free&quot; errors on cover change
+    - File loading occasionally freezing
+  + Port to AdwShortcutsDialog
+  + Support for the disc subtitle field for Vorbis Comment
+    (OGG/FLAC)
+  + Updated translations.</comment>
+    <requestid>1371782</requestid>
+  </revision>
 </revisionlist>

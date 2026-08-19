@@ -18,7 +18,7 @@
 
 %define         appid app.drey.EarTag
 Name:           eartag
-Version:        1.0.2
+Version:        1.0.3
 Release:        0
 Summary:        Edit audio file tags
 License:        MIT
@@ -33,7 +33,7 @@ BuildRequires:  python3-gobject >= 3.49.0
 BuildRequires:  python3-mutagen
 BuildRequires:  python3-pyacoustid
 BuildRequires:  pkgconfig(gtk4) >= 4.16
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.5
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.8.0
 Requires:       chromaprint-fpcalc
 Requires:       python3-Pillow
 Requires:       python3-aiofiles

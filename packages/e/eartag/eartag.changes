@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Aug 18 07:01:38 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.0.3:
+  + Minor bugfix release, fixing two issues:
+    - "Use after free" errors on cover change
+    - File loading occasionally freezing
+  + Port to AdwShortcutsDialog
+  + Support for the disc subtitle field for Vorbis Comment
+    (OGG/FLAC)
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Mar 23 08:25:33 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run
