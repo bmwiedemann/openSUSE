@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug 19 13:08:04 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.2.1
+  * Cease defining `IsSquareMat` ourselves if GAP already
+    provides it
+  * Compatibility with future `polymaking` changes
+
+-------------------------------------------------------------------
 Mon Jun 15 17:30:54 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.2.0

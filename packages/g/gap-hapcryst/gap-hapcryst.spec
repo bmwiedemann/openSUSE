@@ -17,7 +17,7 @@
 
 
 Name:           gap-hapcryst
-Version:        0.2.0
+Version:        0.2.1
 Release:        0
 Summary:        GAP: A HAP extension for crytallographic groups
 License:        GPL-2.0-or-later
@@ -35,7 +35,7 @@ Requires:       gap-hap >= 1.8
 Requires:       gap-polycyclic >= 2.8.1
 Requires:       gap-polymaking >= 0.8.6
 Requires:       polymake
-Suggests:       gap-carat >= 1.1
+Suggests:       gap-caratinterface >= 2.3.1
 Suggests:       gap-crystcat >= 1.1.2
 Suggests:       gap-gapdoc >= 0.99
 
