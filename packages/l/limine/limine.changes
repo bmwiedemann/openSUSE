@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Aug 19 08:13:58 UTC 2026 - Marvin Friedrich <contact@marvinf.com>
+
+- Update to 12.6.0:
+  * Logical partitions are now numbered as util-linux numbers them, by
+    counting accepted entries rather than by the slot they occupy. An
+    index used in `hdd(3:5):/...` or reported to an executable through
+    `limine_file.partition_index` may therefore differ from before, and
+    a config naming a logical partition may need updating. CONFIG.md
+    documents the numbering that results.
+  * MBR partition tables must once again carry the 0xAA55 boot
+    signature to be recognised. The partitions of a disk without one
+    are no longer enumerated at all.
+  * GPTs are now validated against the checks UEFI requires before
+    being used. A table failing any of them is no longer recognised.
+  * Support 5-level paging on aarch64 through FEAT_LPA2, making the
+    Limine boot protocol's 5-level paging mode available on that port.
+  * Build the bootloader with the stack protector enabled, using a
+    guard drawn from the hardware entropy sources.
+  * Recognise GPTs on media with 2048-byte logical blocks, in both the
+    loader and the `limine` host tool.
+  * Linux protocol: honour a `pref_address` above 4GiB when the kernel
+    declares it may be loaded there.
+  * Draw the mouse pointer sprite on rotated terminals.
+
+-------------------------------------------------------------------
 Tue Jul 28 12:02:41 UTC 2026 - Marvin Friedrich <contact@marvinf.com>
 
 - Update to 12.5.2:
