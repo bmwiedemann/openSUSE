@@ -1,0 +1,56 @@
+Implement default NumLock state. Defined in KBD_NUMLOCK variable
+in /etc/sysconfig/keyboard using /run/numlock-on set by
+kbdsettings.service from kbd package.
+
+Index: numlockx-1.2/main.c
+===================================================================
+--- numlockx-1.2.orig/main.c
++++ numlockx-1.2/main.c
+@@ -36,6 +36,7 @@ DEALINGS IN THE SOFTWARE.
+ #include <string.h>
+ #include <stdlib.h>
+ #include <stdio.h>
++#include <unistd.h>
+ 
+ #include <X11/Xlib.h>
+ 
+@@ -55,9 +56,12 @@ void usage( const char* argv0 )
+         "(C) 2000-2001 Lubos Lunak <l.lunak@kde.org>\n"
+         "(C) 2001      Oswald Buddenhagen <ossi@kde.org>\n\n"
+         "Usage : %s [on|off]\n"
+-        "on     - turns NumLock on in X ( default )\n"
+-        "off    - turns NumLock off in X\n"
+-        "toggle - toggles the NumLock on and off in X\n"
++        "on      - turns NumLock on in X ( default )\n"
++        "off     - turns NumLock off in X\n"
++        "toggle  - toggles the NumLock on and off in X\n"
++        "default - sets the default NumLock state from KBD_NUMLOCK in\n"
++        "          /etc/sysconfig/keyboard using /run/numlock-on set by\n"
++        "          kbdsettings.service on boot\n"
+         "\n"
+         , argv0 );
+     }
+@@ -235,6 +239,14 @@ void numlock_toggle()
+ #endif
+     }
+ 
++void numlock_default()
++    {
++    if( access("/run/numlock-on", F_OK) == 0)
++        numlock_set_on();
++    else
++        numlock_set_off();
++    }
++
+ int main( int argc, char* argv[] )
+     {
+     if( argc > 2 )
+@@ -256,6 +268,8 @@ int main( int argc, char* argv[] )
+         numlock_set_off();
+     else if( strcmp( argv[ 1 ], "toggle" ) == 0 )
+         numlock_toggle();
++    else if( strcmp( argv[ 1 ], "default" ) == 0 )
++        numlock_default();
+     else
+         {
+         usage( argv[ 0 ] );

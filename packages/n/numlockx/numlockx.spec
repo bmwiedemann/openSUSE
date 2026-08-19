@@ -1,7 +1,7 @@
 #
 # spec file for package numlockx
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           numlockx
-Url:            http://freecode.com/projects/numlockx
+URL:            http://freecode.com/projects/numlockx
 BuildRequires:  automake
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xtst)
@@ -29,6 +29,10 @@ Summary:        Switch on/off or toggle numlock
 License:        MIT
 Group:          System/YaST
 Source:         http://home.kde.org/~seli/numlockx/numlockx-%{version}.tar.gz
+# PATCH-FEATURE-SUSE numlockx-sysconfig-default.patch sbrabec@suse.com -- Add "default": Set default NumLock state.
+Patch0:         numlockx-sysconfig-default.patch
+# Symbol defining package support for "numlockx default"
+Provides:       numlockx-default
 
 %description
 This little thingy allows you to start X with NumLock turned on ( which
@@ -46,6 +50,7 @@ Authors:
 
 %prep
 %setup
+%autopatch -p1
 
 %build
 autoreconf -fi

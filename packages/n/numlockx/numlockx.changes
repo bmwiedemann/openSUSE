@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 11 21:09:01 UTC 2026 - Stanislav Brabec <sbrabec@suse.com>
+
+- Implement default NumLock state, uses KBD_NUMLOCK variable in
+  /etc/sysconfig/keyboard using /run/numlock-on set by
+  kbdsettings.service from kbd package
+  (numlockx-sysconfig-default.patch).
+
+-------------------------------------------------------------------
 Mon Dec  4 20:23:09 UTC 2017 - crrodriguez@opensuse.org
 
 - BuildRequire only the needed X libraries, not xorg-x11-devel. 
