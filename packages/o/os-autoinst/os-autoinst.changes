@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Aug 18 12:20:46 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1787055635.69d1218:
+  * feat: validate domain is gone after undefine in svirt
+  * fix: report detailed stderr for failed virsh define
+  * build(deps): bump codecov/codecov-action in the all-actions group (#3082)
+  * docs: Document rootless container example in README
+  * feat: Add custom dev container Dockerfile
+  * feat(testapi): support become_user helper
+  * docs: Improve architecture documentation
+
+-------------------------------------------------------------------
 Mon Aug 03 14:55:39 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1785768930.71d56f4:
