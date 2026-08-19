@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Aug 19 07:30:43 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.19.0:
+  * Add the image_generation server-side tool and
+    Response.image_outputs for generated images
+  * Add a quality parameter (low/medium) to image generation
+  * Add grok-imagine-image-2.0 to ImageGenerationModel
+  * Add reference_audios, generate_audio, and 1080p resolution
+    to video generation
+  * Set the default gRPC User-Agent to XaiSdk/{version}
+  * Set tool_call_id when replaying tool outputs via
+    chat.append(response)
+  * Align model literals with the public catalog
+    (grok-imagine-video-1.5; drop preview/pro aliases)
+  * Require python-typing-extensions >= 4.14.0
+
+-------------------------------------------------------------------
 Thu Aug 13 05:00:13 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.18.0:

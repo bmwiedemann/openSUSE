@@ -17,7 +17,7 @@
 
 
 Name:           python-xai-sdk
-Version:        1.18.0
+Version:        1.19.0
 Release:        0
 Summary:        The official Python SDK for the xAI API
 License:        Apache-2.0
@@ -39,6 +39,7 @@ Requires:       python-packaging >= 25.0
 Requires:       python-protobuf >= 5.29.4
 Requires:       python-pydantic >= 2.5.3
 Requires:       python-requests >= 2.31.0
+Requires:       python-typing-extensions >= 4.14.0
 Recommends:     python-opentelemetry-exporter-otlp-proto-grpc >= 1.36.0
 Recommends:     python-opentelemetry-exporter-otlp-proto-http >= 1.36.0
 BuildArch:      noarch
@@ -54,6 +55,7 @@ BuildRequires:  %{python_module pydantic >= 2.5.3}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.31.0}
+BuildRequires:  %{python_module typing-extensions >= 4.14.0}
 # /SECTION
 %python_subpackages
 

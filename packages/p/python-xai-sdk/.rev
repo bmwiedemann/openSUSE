@@ -34,4 +34,25 @@ Verified on aarch64: build green, 767 tests pass on each of python313 and
 python314, rpmlint 0 errors / 0 warnings / 0 badness.</comment>
     <requestid>1370918</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1c727abf0749340d27465d8ebb9905b6</srcmd5>
+    <version>1.19.0</version>
+    <time>1787155162</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.19.0:
+  * Add the image_generation server-side tool and
+    Response.image_outputs for generated images
+  * Add a quality parameter (low/medium) to image generation
+  * Add grok-imagine-image-2.0 to ImageGenerationModel
+  * Add reference_audios, generate_audio, and 1080p resolution
+    to video generation
+  * Set the default gRPC User-Agent to XaiSdk/{version}
+  * Set tool_call_id when replaying tool outputs via
+    chat.append(response)
+  * Align model literals with the public catalog
+    (grok-imagine-video-1.5; drop preview/pro aliases)
+  * Require python-typing-extensions &gt;= 4.14.0
+</comment>
+    <requestid>1371931</requestid>
+  </revision>
 </revisionlist>
