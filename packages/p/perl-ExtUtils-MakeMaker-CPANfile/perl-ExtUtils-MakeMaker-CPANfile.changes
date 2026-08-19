@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul 22 07:44:37 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.110.0 (0.11)
+   see /usr/share/doc/packages/perl-ExtUtils-MakeMaker-CPANfile/Changes
+
+  0.11  2026/07/22
+      - include PID in temp dir name for testing (GH#4, mauke++)
+
+-------------------------------------------------------------------
 Sun Jul 19 07:37:02 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.100.0 (0.10)

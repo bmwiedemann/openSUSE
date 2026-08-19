@@ -18,10 +18,10 @@
 
 %define cpan_name ExtUtils-MakeMaker-CPANfile
 Name:           perl-ExtUtils-MakeMaker-CPANfile
-Version:        0.100.0
+Version:        0.110.0
 Release:        0
-# 0.10 -> normalize -> 0.100.0
-%define cpan_version 0.10
+# 0.11 -> normalize -> 0.110.0
+%define cpan_version 0.11
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Cpanfile support for EUMM
 URL:            https://metacpan.org/release/%{cpan_name}
