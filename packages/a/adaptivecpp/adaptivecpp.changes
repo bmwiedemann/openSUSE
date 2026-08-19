@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 18 21:26:11 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Add 0003-Find-llvm-link.patch: use imported CMake target to find
+  llvm-link, which is no longer available as unversioned symlink
+  since the migration away from update-alternatives.
+
+-------------------------------------------------------------------
 Thu Nov  6 00:54:18 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to version 25.10.0:

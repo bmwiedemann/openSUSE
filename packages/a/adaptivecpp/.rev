@@ -112,4 +112,15 @@ AFAIK we do miss an open source SYCL implementation in Factory.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1317460</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>52eb0bb2e740c6d4c8fe6fa27b825377</srcmd5>
+    <version>25.10.0</version>
+    <time>1787155121</time>
+    <user>anag_factory</user>
+    <comment>- Add 0003-Find-llvm-link.patch: use imported CMake target to find
+  llvm-link, which is no longer available as unversioned symlink
+  since the migration away from update-alternatives.
+</comment>
+    <requestid>1371878</requestid>
+  </revision>
 </revisionlist>

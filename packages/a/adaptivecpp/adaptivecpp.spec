@@ -1,7 +1,7 @@
 #
 # spec file for package adaptivecpp
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 # Copyright (c) 2025 Eyad Issa <eyadlorenzo@gmail.com>
 #
@@ -29,6 +29,7 @@ URL:            https://adaptivecpp.github.io
 Source:         https://github.com/AdaptiveCpp/AdaptiveCpp/archive/v%{version}/%{name}-%{version}.tar.gz
 Patch1:         0001-Use-bin-env-python3-instead-of-python3-in-scripts.patch
 Patch2:         0002-Remove-realpath-in-acpp.patch
+Patch3:         0003-Find-llvm-link.patch
 BuildRequires:  boost-devel
 BuildRequires:  clang%{llvm_version}-devel
 BuildRequires:  cmake

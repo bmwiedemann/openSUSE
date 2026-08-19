@@ -1,0 +1,15 @@
+Use imported target to obtain the correct path.
+
+diff --git a/src/libkernel/sscp/CMakeLists.txt b/src/libkernel/sscp/CMakeLists.txt
+index 672553a..07feced 100644
+--- a/src/libkernel/sscp/CMakeLists.txt
++++ b/src/libkernel/sscp/CMakeLists.txt
+@@ -77,7 +77,7 @@ function(libkernel_generate_bitcode_target)
+   set(linked_output ${CMAKE_CURRENT_BINARY_DIR}/libkernel-sscp-${target}-full.bc)
+   add_custom_command(
+     OUTPUT ${linked_output}
+-    COMMAND ${LLVM_TOOLS_BINARY_DIR}/llvm-link -o=${linked_output} ${output_files}
++    COMMAND llvm-link -o=${linked_output} ${output_files}
+     DEPENDS ${output_files} ${target_depends}
+   )
+ 
