@@ -1,0 +1,46 @@
+From: Jiri Slaby <jslaby@suse.cz>
+Date: Wed, 19 Aug 2026 08:15:19 +0200
+Subject: compat: in6: add some IPV6_ constants
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+References: build-fix
+Patch-mainline: Submitted https://github.com/kernelslacker/trinity/pull/59
+
+Add
+* IPV6_FLOWINFO
+* IPV6_FLOWLABEL_MGR
+* IPV6_FLOWINFO_SEND
+fallbacks to include/kernel/in6.h -- SL 16.0 does not define those in
+<netinet/in.h>, so we need to.
+
+net/proto/ipv6.c:118:19: error: ‘IPV6_FLOWINFO’ undeclared here (not in a function); did you mean ‘IPV6_2292FLOWINFO’?
+
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+---
+ include/kernel/in6.h | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/include/kernel/in6.h b/include/kernel/in6.h
+index 97c32cbc65a3..3d1f97738d4e 100644
+--- a/include/kernel/in6.h
++++ b/include/kernel/in6.h
+@@ -2,6 +2,15 @@
+ 
+ #include <netinet/in.h>
+ 
++#ifndef IPV6_FLOWINFO
++#define IPV6_FLOWINFO           11
++#endif
++#ifndef IPV6_FLOWLABEL_MGR
++#define IPV6_FLOWLABEL_MGR      32
++#endif
++#ifndef IPV6_FLOWINFO_SEND
++#define IPV6_FLOWINFO_SEND	33
++#endif
+ #ifndef IPV6_ADDR_PREFERENCES
+ #define IPV6_ADDR_PREFERENCES	72
+ #endif
+-- 
+2.55.0
+

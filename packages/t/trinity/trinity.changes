@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Aug 19 06:30:30 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
+
+- add
+  * 0001-compat-in6-add-some-IPV6_-constants.patch
+  * 0001-vm_sockets-include-sys-socket.h.patch
+- Exclude 32 bit architectures. The support was dropped.
+- Exclude ppc+s390, they are not supported apparently, see:
+  https://github.com/kernelslacker/trinity/pull/60
+
+-------------------------------------------------------------------
+Wed Aug 19 05:39:18 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
+
+- Update to version 1.9+git.20260818:
+  * setup-fault-injectors: prune orphaned state keys from emit_state()
+  * setup-privileged-preconditions: fix chmod stripping exec bit from dirs
+  * stat_category: drop dead gate_field parameter; update all callers
+  * setup: add privileged-preconditions.sh (tracefs mount + access)
+  * net/tcp-ao-rotate: fire UAF probes before accept()
+  * inet-listener-rehash-race: drop listener-concurrent ADDRFORM arm
+  * check-stats-reachable: widen header scan root to match .c scan
+  * tcp-ao-rotate: account all reconnect exit paths to a terminal counter
+  * multipath-linkdown-rebalance: guard priming and count flip writes
+  * run-trinity: remove dead _fi_injectors_armed_reason variable
+  * setup: set _netdev_armed only on confirmed arm path
+  * and many more...
+
+-------------------------------------------------------------------
 Mon Jul 27 16:49:15 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.9+git.20260727:
