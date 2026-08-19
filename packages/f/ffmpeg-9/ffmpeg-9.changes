@@ -17,6 +17,24 @@ Wed Aug  5 17:37:10 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
     enhancements, more AVX-512 optimizations, and more.
   * Remove CELT decoding support (doesn't affect Opus CELT)
   * Remove CELT-in-Ogg parsing
+  * avcodec/rasc: Check that 32-bit DLTA accesses stay within the row.
+    (CVE-2026-58049, bsc#1269550)
+  * avformat/spdifenc: bound DTS core_size against the packet size in the HD path.
+    (CVE-2026-64833, bsc#1272755)
+  * avformat/rtpdec_asf: reject ASF objects smaller than their header
+    (CVE-2026-64834, bsc#1272757)
+  * avcodec/tdsc: unref the reference frame before reallocating on size change.
+    (CVE-2026-65703, bsc#Bug 1272759)
+  * avformat/ty: don't let the Series2 AC3 trim underflow the packet size
+    (CVE-2026-65704, bsc# 1272760)
+  * avfilter/vf_floodfill: remove unneeded variables
+    (CVE-2026-65705,  bsc#1272761)
+  * avfilter/vf_swaprect: size the temp row buffer for the widest plane.
+    (CVE-2026-65706, bsc#1272762)
+  * avfilter/vf_hqdn3d: support dynamic frame sizes.
+    (CVE-2026-66036, bsc#1272763)
+  * avformat/iamf_parse: check count_label against the available bytes
+    (CVE-2026-66037, bsc#1272764)
 
 -------------------------------------------------------------------
 Tue Jul 21 13:58:03 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
