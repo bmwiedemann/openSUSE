@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Aug 19 11:58:19 UTC 2026 - Hoyeon Lee <hoyeon.lee@suse.com>
+
+- Fix multi-Python packaging
+  - Remove Python .pyc bytecode copied from the default flavour
+
+-------------------------------------------------------------------
+Wed Jul 29 19:53:56 UTC 2026 - Ákos Szőts <akos@szots.dev>
+
+- Fix Python packaging. Previously, only the default Python-flavour was
+  built, but this was incompatible with packages that are built for all
+  supported versions.
+
+-------------------------------------------------------------------
 Thu Jul  2 16:22:34 UTC 2026 - Hoyeon Lee <hoyeon.lee@suse.com>
 
 - Update to version 0.37.0

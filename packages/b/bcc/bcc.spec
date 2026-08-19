@@ -16,8 +16,9 @@
 #
 
 
+%define python_subpackage_only 1
 %if 0%{?suse_version} > 1500
-%ifarch %ix86 x86_64
+%ifarch %{ix86} x86_64
 %{!?with_lua: %global with_lua 1}
 %else
 %{!?with_lua: %global with_lua 0}
@@ -25,13 +26,12 @@
 %else
 %{!?with_lua: %global with_lua 0}
 %endif
-
-%ifarch %arm %ix86
+%ifarch %{arm} %{ix86}
 %{!?with_libbpf_tools: %global with_libbpf_tools 0}
 %else
 %{!?with_libbpf_tools: %global with_libbpf_tools 1}
 %endif
-
+%{?sle15_python_module_pythons}
 Name:           bcc
 Version:        0.37.0
 Release:        0
@@ -41,14 +41,18 @@ Group:          Development/Tools/Other
 URL:            https://github.com/iovisor/bcc
 Source:         https://github.com/iovisor/bcc/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source100:      bcc-rpmlintrc
-ExcludeArch:    ppc s390
+BuildRequires:  %{python_module base}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  bison
 BuildRequires:  cmake >= 2.8.7
 BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  libbpf-devel
-BuildRequires:  libelf-devel
 BuildRequires:  llvm%{product_libs_llvm_ver}-devel
+BuildRequires:  pkgconfig
+BuildRequires:  python-rpm-macros
+BuildRequires:  pkgconfig(libelf)
+ExcludeArch:    ppc s390
 %if 0%{?suse_version} > 1320
 BuildRequires:  clang%{product_libs_llvm_ver}-devel
 BuildRequires:  llvm%{product_libs_llvm_ver}-gold
@@ -58,9 +62,7 @@ BuildRequires:  libstdc++-devel
 %if %{with_lua}
 BuildRequires:  luajit-devel
 %endif
-BuildRequires:  pkg-config
-BuildRequires:  python3-base
-BuildRequires:  python3-setuptools
+%python_subpackages
 
 %description
 BCC is a toolkit for creating efficient kernel tracing and manipulation
@@ -91,13 +93,13 @@ Requires:       libbcc0 = %{version}
 %description devel
 Headers and pkg-config build descriptions for developing BCC programs.
 
-%package -n python3-bcc
+%package -n python-bcc
 Summary:        Python3 bindings for the BPF Compiler Collection
 Group:          Development/Languages/Python
 Requires:       libbcc0 = %{version}
 BuildArch:      noarch
 
-%description -n python3-bcc
+%description -n python-bcc
 Python 3.x bindings for the BPF Compiler Collection.
 
 %package lua
@@ -165,16 +167,17 @@ sed -i "/add_subdirectory(lua)/d" examples/CMakeLists.txt
 # Install bps to /usr/bin
 sed -i "s,share/bcc/introspection,bin," introspection/CMakeLists.txt
 
-export LD_LIBRARY_PATH="%{_builddir}/usr/lib64"
-export PATH="%{_builddir}/usr/bin":$PATH
+export LD_LIBRARY_PATH="%{_builddir}%{_libdir}"
+export PATH="%{_builddir}%{_bindir}":$PATH
 
 mkdir build
 pushd build
+# FIXME: you should use the %%cmake macros
 CFLAGS="%{optflags}" CXXFLAGS="%{optflags}" cmake \
 	-DCMAKE_USE_LIBBPF_PACKAGE=yes \
 	-DPYTHON_CMD=python3 \
 	-DREVISION=%{version} \
-	-DCMAKE_INSTALL_PREFIX=/usr \
+	-DCMAKE_INSTALL_PREFIX=%{_prefix} \
 %if 0%{?suse_version} > 1320
 	-DENABLE_LLVM_SHARED=1 \
 %endif
@@ -183,19 +186,19 @@ CFLAGS="%{optflags}" CXXFLAGS="%{optflags}" cmake \
 	-DLUAJIT_LIBRARY=%{_libdir}/lib`pkg-config --variable=libname luajit`.so \
 	-DENABLE_NO_PIE=OFF \
 %endif
-%ifarch %arm || %ix86
+%ifarch %{arm} || %{ix86}
 	-DENABLE_USDT=OFF \
 %endif
 	-DENABLE_TESTS=OFF \
 	..
-make %{?_smp_mflags} VERBOSE=1
+%make_build
 popd
 
 # Fix up #!-lines.
 find tools/ examples/ -type f -exec \
-	sed -Ei '1s|^#!/usr/bin/env python3?|#!/usr/bin/python3|' {} +
+	sed -Ei '1s|^#!%{_bindir}/env python3?|#!%{_bindir}/python3|' {} +
 find tools/ examples/ -type f -exec \
-	sed -Ei '1s|^#!/usr/bin/env bcc-lua|#!/usr/bin/bcc-lua|' {} +
+	sed -Ei '1s|^#!%{_bindir}/env bcc-lua|#!%{_bindir}/bcc-lua|' {} +
 find tools/ examples/ -type f -exec \
 	sed -i '1s|/bin/python$|/bin/python3|g' {} +
 
@@ -217,6 +220,9 @@ pushd build
 # Remove bps due to the incomplete support in kernel (bsc#1085403)
 rm -f %{buildroot}/%{_bindir}/bps
 %endif
+
+%python_expand test %{$python_sitelib} = %{python3_sitelib} || rm -rfv %{buildroot}%{$python_sitelib}/bcc*
+%python_expand test %{$python_sitelib} = %{python3_sitelib} || (install -d %{buildroot}%{$python_sitelib} && cp -av %{buildroot}%{python3_sitelib}/bcc* %{buildroot}%{$python_sitelib}/ && rm -rfv %{buildroot}%{$python_sitelib}/bcc/__pycache__)
 
 popd
 
@@ -242,7 +248,6 @@ popd
 rm -f %{buildroot}/%{_libdir}/libbcc*.a
 
 %post -n libbcc0 -p /sbin/ldconfig
-
 %postun -n libbcc0 -p /sbin/ldconfig
 
 %files -n bcc-devel
@@ -257,8 +262,8 @@ rm -f %{buildroot}/%{_libdir}/libbcc*.a
 %{_libdir}/libbcc.so.*
 %{_libdir}/libbcc_bpf.so.*
 
-%files -n python3-bcc
-%{python3_sitelib}/bcc*
+%files %{python_files bcc}
+%{python_sitelib}/bcc*
 
 %if %{with_lua}
 %files lua
