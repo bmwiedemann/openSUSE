@@ -24,11 +24,8 @@ Summary:        Google Cloud Kms Inventory API client library
 License:        Apache-2.0
 URL:            https://github.com/googleapis/google-cloud-python/tree/main/packages/google-cloud-kms-inventory
 Source:         https://files.pythonhosted.org/packages/source/g/google_cloud-kms_inventory/google_cloud_kms_inventory-%{version}.tar.gz
-%if %python_version_nodots < 314
-BuildRequires:  %{python_module grpcio >= 1.59.0}
-%else
-BuildRequires:  %{python_module grpcio >= 1.75.1}
-%endif
+BuildRequires:  %{python_module grpcio >= 1.59.0 if %python-base < 3.14}
+BuildRequires:  %{python_module grpcio >= 1.75.1 if %python-base >= 3.14}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}

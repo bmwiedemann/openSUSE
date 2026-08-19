@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 19 14:27:04 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Fix Python version constraints for python-grpcio in BuildRequires
+
+-------------------------------------------------------------------
 Thu Aug  6 09:05:12 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.6.1

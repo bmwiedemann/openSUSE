@@ -69,4 +69,12 @@
 - Update BuildRequires and Requires from setup.py (forwarded request 1369999 from glaubitz)</comment>
     <requestid>1370047</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>dd3982d2aec60885d95f7672cbe12a12</srcmd5>
+    <version>0.6.1</version>
+    <time>1787155230</time>
+    <user>anag_factory</user>
+    <comment>- Fix Python version constraints for python-grpcio in BuildRequires (forwarded request 1372006 from glaubitz)</comment>
+    <requestid>1372011</requestid>
+  </revision>
 </revisionlist>
