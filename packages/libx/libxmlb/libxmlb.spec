@@ -84,6 +84,16 @@ Requires:       xmlb-tool = %{version}
 %description devel
 Files for development with %{name}.
 
+%package tests
+Summary:        Installed tests for %{name}
+Group:          Development/Libraries/Other
+Requires:       %{name}%{sover} = %{version}
+Requires:       gnome-desktop-testing
+
+%description tests
+This package provides installed tests for %{name},
+compatible with gnome-desktop-testing-runner.
+
 %prep
 %autosetup -p1
 
@@ -101,6 +111,12 @@ Files for development with %{name}.
 
 %install
 %meson_install
+
+# Fix G_TEST_SRCDIR in installed .test file so test binary finds its data
+for testfile in %{buildroot}%{_datadir}/installed-tests/%{name}/*.test; do
+    [ -f "$testfile" ] || continue
+    sed -i 's|^Exec=|Exec=env G_TEST_SRCDIR=%{_libexecdir}/installed-tests/%{name} |' "$testfile"
+done
 
 %ldconfig_scriptlets -n %{name}%{sover}
 
@@ -122,7 +138,11 @@ Files for development with %{name}.
 %{_includedir}/%{name}-%{sover}/
 %{_libdir}/%{name}.so
 %{_libdir}/pkgconfig/xmlb.pc
-%{_libexecdir}/installed-tests/
-%{_datadir}/installed-tests/
+
+%files tests
+%dir %{_libexecdir}/installed-tests
+%{_libexecdir}/installed-tests/%{name}/
+%dir %{_datadir}/installed-tests
+%{_datadir}/installed-tests/%{name}/
 
 %changelog

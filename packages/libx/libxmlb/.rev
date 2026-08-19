@@ -249,4 +249,12 @@ Needed for future versions of fwupd</comment>
     <comment></comment>
     <requestid>1368367</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>ef9e18d60fda4d7fff5dd5a56e1d4f80</srcmd5>
+    <version>0.3.29</version>
+    <time>1787154902</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1371661</requestid>
+  </revision>
 </revisionlist>
