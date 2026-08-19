@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Aug 19 00:45:00 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 2.14.0
+  * Support for serializing and deserializing Java records
+  * Add JsonArray.asList and JsonObject.asMap view methods
+  * Add Gson.fromJson(..., TypeToken) overloads
+  * Make Object and JsonElement deserialization iterative rather
+    than recursive
+  * Add support for reflection access filter
+  * Put module-info.class into Multi-Release JAR folder
+  * Add GsonBuilder.disableJdkUnsafe()
+- Add BuildRequires on google-errorprone-annotations for compiling
+  and Javadoc generation
+- Refactor ant build to support Java 9+ modular compilation of
+  module-info.java
+
+-------------------------------------------------------------------
 Fri Mar 28 05:58:22 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Rewrite the build system for ant to avoid potential build cycles

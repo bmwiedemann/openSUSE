@@ -17,7 +17,7 @@
 
 
 Name:           google-gson
-Version:        2.8.9
+Version:        2.14.0
 Release:        0
 Summary:        Java lib for conversion of Java objects into JSON representation
 License:        Apache-2.0
@@ -27,6 +27,7 @@ Source1:        %{name}-build.tar.xz
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  glassfish-annotation-api
+BuildRequires:  google-errorprone-annotations
 BuildRequires:  java-devel >= 9
 BuildRequires:  javapackages-local >= 6
 BuildRequires:  jsr-305
@@ -53,7 +54,7 @@ This package contains the API documentation for %{name}.
 
 %build
 mkdir -p lib
-build-jar-repository -s lib jsr-305 glassfish-annotation-api
+build-jar-repository -s lib jsr-305 glassfish-annotation-api google-errorprone-annotations
 ant package javadoc
 
 %install
