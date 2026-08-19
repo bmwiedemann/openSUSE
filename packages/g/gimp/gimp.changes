@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug 18 02:12:02 UTC 2026 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add CVE fixes:
+  + gimp-CVE-2026-59087.patch (bsc#1274809, glgo#GNOME/gimp#16491)
+  + gimp-CVE-2026-59088.patch (bsc#1274837, glgo#GNOME/gimp#16492)
+  + gimp-CVE-2026-59090.patch (bsc#1274840, glgo#GNOME/gimp#16509)
+  + gimp-CVE-2026-59091.patch (bsc#1274851, glgo#GNOME/gimp#16510)
+
+-------------------------------------------------------------------
 Fri Jul 31 21:40:35 UTC 2026 - Michael Gorse <mgorse@suse.com>
 
 - Add CVE fixes:

@@ -109,6 +109,14 @@ Patch6:         gimp-CVE-2026-66757.patch
 Patch7:         gimp-CVE-2026-66758.patch
 # PATCH-FIX-UPSTREAM gimp-CVE-2026-66759.patch bsc#1273153 mgorse@suse.com -- mitigate OOB write on ICNS mask data
 Patch8:         gimp-CVE-2026-66759.patch
+# PATCH-FIX-UPSTREAM gimp-CVE-2026-59087.patch bsc#1274809, glgo#GNOME/gimp#16491 alynx.zhou@suse.com -- Fix heap buffer overflow in `file-seattle-filmworks` load
+Patch9:         gimp-CVE-2026-59087.patch
+# PATCH-FIX-UPSTREAM gimp-CVE-2026-59088.patch bsc#1274837, glgo#GNOME/gimp#16492 alynx.zhou@suse.com -- Fix denial of service via signed integer overflow in FLI file processing
+Patch10:        gimp-CVE-2026-59088.patch
+# PATCH-FIX-UPSTREAM gimp-CVE-2026-59090.patch bsc#1274840, glgo#GNOME/gimp#16509 alynx.zhou@suse.com -- Fix arbitrary code execution in PSD plugin due to unsigned underflow
+Patch11:        gimp-CVE-2026-59090.patch
+# PATCH-FIX-UPSTREAM gimp-CVE-2026-59091.patch bsc#1274851, glgo#GNOME/gimp#16510 alynx.zhou@suse.com -- Fix multiple vulnerabilities in file format plugins via crafted image file
+Patch12:        gimp-CVE-2026-59091.patch
 %if %{with debug_in_build_gimp}
 BuildRequires:  gdb
 %endif
