@@ -419,4 +419,26 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1369253</requestid>
   </revision>
+  <revision rev="38" vrev="38">
+    <srcmd5>d0640fb2aa8388f59c04d9f4f47fdc5e</srcmd5>
+    <version>0</version>
+    <time>1787154928</time>
+    <user>anag_factory</user>
+    <comment>Automatic update from systemsmanagement:Agama:Release
+
+--- agama-products.changes (revision 37)
++++ agama-products.changes (revision 85)
+@@ -1,4 +1,10 @@
+ -------------------------------------------------------------------
++Tue Aug 18 06:28:54 UTC 2026 - Dominique Leuenberger &lt;dimstar@opensuse.org&gt;
++
++- Microos/Kalpa: No longer reference deprecated microos_hardware
++  pattern (boo#1275469).
++
++-------------------------------------------------------------------
+ Fri Jul 24 07:03:30 UTC 2026 - Ancor Gonzalez Sosa &lt;ancor@suse.com&gt;
+ 
+ - Added generic storage volumes to the immutables modes, as</comment>
+    <requestid>1371745</requestid>
+  </revision>
 </revisionlist>
