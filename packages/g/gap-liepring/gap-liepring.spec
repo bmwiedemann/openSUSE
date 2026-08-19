@@ -17,7 +17,7 @@
 
 
 Name:           gap-liepring
-Version:        2.9.2
+Version:        2.9.3
 Release:        0
 Summary:        GAP: Database and algorithms for Lie p-rings
 License:        GPL-2.0-only
