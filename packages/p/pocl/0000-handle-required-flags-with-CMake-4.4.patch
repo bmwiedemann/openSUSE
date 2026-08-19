@@ -1,0 +1,29 @@
+From 50b876600df580fec8b4fe5050229160e88eb388 Mon Sep 17 00:00:00 2001
+From: Tim Besard <tim.besard@gmail.com>
+Date: Fri, 10 Jul 2026 15:01:40 +0200
+Subject: [PATCH] CMake: handle required flags with CMake 4.4
+References: https://github.com/pocl/pocl/pull/2234
+
+CMAKE_REQUIRED_FLAGS must be a single space-separated string for try_compile. Passing FORBID_IMPLICIT_FUNCTIONS as an expanded CMake list makes CMake 4.4 interpret -Werror=incompatible-pointer-types as its own warning-control option instead of forwarding it to the C compiler, aborting the fork probe during configuration. Join the flags before assigning the variable so both checks reach the compiler.
+
+(cherry picked from commit 566d6c839c303232abe7906cb2732f31e9dfa404)
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8c3fbe7a2..66d64cc4c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -816,7 +816,7 @@ if(UNIX OR MINGW)
+   include(CheckSymbolExists)
+ 
+   # don't allow implicit function declarations
+-  set(CMAKE_REQUIRED_FLAGS "-std=c99 ${FORBID_IMPLICIT_FUNCTIONS}")
++  string(JOIN " " CMAKE_REQUIRED_FLAGS "-std=c99" ${FORBID_IMPLICIT_FUNCTIONS})
+   if (CMAKE_SYSTEM_NAME MATCHES "Linux")
+     set(CMAKE_REQUIRED_LIBRARIES "rt")
+   endif ()
+-- 
+2.54.0
+

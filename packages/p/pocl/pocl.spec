@@ -38,6 +38,12 @@
 
 %bcond_with vulkan
 
+%if 0%{?suse_version} < 1600
+# GCC 9.3+ fixed GCC#81429.
+# GCC 13 is the build compiler of SLES 16.0 so hopefully can have a longer life.
+%global force_gcc_version 13
+%endif
+
 Name:           pocl
 Version:        7.1
 Release:        0
@@ -50,10 +56,11 @@ URL:            https://portablecl.org/
 Source0:        https://github.com/pocl/pocl/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source98:       maint.README
 Source99:       pocl-rpmlintrc
-# Version 7.0: Supports LLVM versions 19 and 20
-BuildRequires:  ((clang-devel >= 19 with clang-devel < 21) or clang20-devel)
+Patch0:         0000-handle-required-flags-with-CMake-4.4.patch
+# Version 7.1: Supports LLVM versions 19, 20 and 21
+BuildRequires:  (clang19-devel or clang20-devel or clang21-devel)
 BuildRequires:  cmake >= 3.15
-BuildRequires:  gcc-c++
+BuildRequires:  gcc%{?force_gcc_version}-c++ >= 9.3
 BuildRequires:  ninja
 BuildRequires:  opencl-headers
 BuildRequires:  pkgconfig
@@ -141,11 +148,28 @@ This subpackage provides the development files needed for pocl.
 %autosetup -p1
 
 %build
+
+%if 0%{?force_gcc_version}
+export CC=gcc-%{?force_gcc_version}
+export CXX=g++-%{?force_gcc_version}
+%endif
+
+%ifarch %{ix86}
+# Avoid errors like `inlining failed in call to ‘always_inline’ ‘_MM_SET_FLUSH_ZERO_MODE’: target specific option mismatch`
+# 32-bit Tumbleweed requires i686 + SSE2 anyway: https://en.opensuse.org/Lifetime#:~:text=32%2Dbit%20Tumbleweed
+export CFLAGS="${CFLAGS} -msse2"
+%endif
+
+# The build system determines LLVM binaries suffix from the suffix of llvm-config.
+SUFFIXED_LLVM_CONFIG=%{_builddir}/bin/llvm-config-$(llvm-config --version | cut -d'.' -f1)
+mkdir %{_builddir}/bin
+ln -s %{_bindir}/llvm-config ${SUFFIXED_LLVM_CONFIG}
+
 %global __builder ninja
 %cmake \
   -DPOCL_INSTALL_ICD_VENDORDIR=%{_datadir}/OpenCL/vendors \
   -DENABLE_LLVM=ON \
-  -DWITH_LLVM_CONFIG=%{_bindir}/llvm-config \
+  -DWITH_LLVM_CONFIG=${SUFFIXED_LLVM_CONFIG} \
   -DENABLE_ICD=ON \
   -DSTATIC_LLVM=OFF \
   -DENABLE_REMOTE_DISCOVERY_AVAHI=ON \

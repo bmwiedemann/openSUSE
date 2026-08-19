@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Aug  5 13:08:38 UTC 2026 - JS <obs.coke518@passinbox.com>
+
+- Fix build
+  * Use a suffixed llvm-config symlink to help the build system
+    find the suffixed LLVM binaries. The suffix becomes necessary
+    probably due to the libalternatives migration of LLVM.
+  * Add 0000-handle-required-flags-with-CMake-4.4.patch to backport
+    a fix for building with CMake 4.4.0.
+  * Force GCC 13 on SLE 15.
+  * Add "-msse2" to CFLAGS in i586.
+- Enable building with LLVM 21.
+
+-------------------------------------------------------------------
 Sat Jan 10 15:56:41 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to version 7.1:

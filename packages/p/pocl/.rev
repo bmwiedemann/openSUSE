@@ -325,4 +325,20 @@
     <comment></comment>
     <requestid>1326532</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>5468a059d73eab6248a4057df9de1640</srcmd5>
+    <version>7.1</version>
+    <time>1787155186</time>
+    <user>anag_factory</user>
+    <comment>- Fix build
+  * Use a suffixed llvm-config symlink to help the build system
+    find the suffixed LLVM binaries. The suffix becomes necessary
+    probably due to the libalternatives migration of LLVM.
+  * Add 0000-handle-required-flags-with-CMake-4.4.patch to backport
+    a fix for building with CMake 4.4.0.
+  * Force GCC 13 on SLE 15.
+  * Add &quot;-msse2&quot; to CFLAGS in i586.
+- Enable building with LLVM 21. (forwarded request 1369931 from jsulig)</comment>
+    <requestid>1371947</requestid>
+  </revision>
 </revisionlist>
