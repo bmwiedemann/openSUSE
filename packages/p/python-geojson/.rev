@@ -40,4 +40,21 @@
     <comment></comment>
     <requestid>1349875</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b42c0a5be2993ccef3dc987bbbedb7a2</srcmd5>
+    <version>3.3.0</version>
+    <time>1787155130</time>
+    <user>anag_factory</user>
+    <comment>Update to 3.3.0 — fix Factory FTBFS on Python 3.14 (botdel sr#1371864).
+
+- Update to version 3.3.0:
+  * Add support for Python 3.14 (fixes Factory FTBFS)
+  * Drop EOL Python versions; require 3.10+
+  * Convert dict features to Feature objects in
+    FeatureCollection
+  * Fix __all__ to be a sequence of strings
+  * Remove simplejson
+- Point URL at the jazzband/geojson repository</comment>
+    <requestid>1371909</requestid>
+  </revision>
 </revisionlist>

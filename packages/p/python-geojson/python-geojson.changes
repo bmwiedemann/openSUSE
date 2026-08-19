@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Aug 19 06:44:53 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 3.3.0:
+  * Add support for Python 3.14 (fixes Factory FTBFS)
+  * Drop EOL Python versions; require 3.10+
+  * Convert dict features to Feature objects in
+    FeatureCollection
+  * Fix __all__ to be a sequence of strings
+  * Remove simplejson
+- Point URL at the jazzband/geojson repository
+
+-------------------------------------------------------------------
 Sun Apr 26 09:27:38 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.2.0:
