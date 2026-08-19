@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Aug 19 07:19:37 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.28.0:
+  * Add hf endpoints hardware to list deployable Inference Endpoint
+    instances with price and quota
+  * Support managed engine images and tensor/data-parallel sizes on
+    endpoint deploy and update
+  * Add DeepInfra text-to-speech and feature-extraction
+  * Keep hf extensions off the metered GitHub REST API
+  * Fix scheduled single-file uploads, Xet tqdm_class handling,
+    duplicated GPU rows in hf jobs stats, and using a redirect's
+    Content-Length as the file size
+  * Drop the undocumented INFERENCE_ENDPOINT_IMAGE_KEYS constant
+
+-------------------------------------------------------------------
 Sat Aug  8 04:49:15 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.27.0:

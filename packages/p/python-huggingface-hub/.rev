@@ -94,4 +94,22 @@ smoke test passes for both python313 and python314, source_validator clean.</com
     <comment>Update to 1.27.0 (supersedes SR 1370148, which carried 1.26.1): hf-cli agent skill install/refresh, engine flags for Inference Endpoints without --custom-image and updatable after deploy, Baseten inference provider, region on space_info/list_spaces. Built and verified on aarch64: %check import smoke test passes for python 3.13 and 3.14, rpmlint 0 errors / 0 warnings / 0 badness, source_validator clean.</comment>
     <requestid>1370303</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>76af92498e3e344c16ff234a21d8f39d</srcmd5>
+    <version>1.28.0</version>
+    <time>1787155144</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.28.0:
+  * Add hf endpoints hardware to list deployable Inference Endpoint
+    instances with price and quota
+  * Support managed engine images and tensor/data-parallel sizes on
+    endpoint deploy and update
+  * Add DeepInfra text-to-speech and feature-extraction
+  * Keep hf extensions off the metered GitHub REST API
+  * Fix scheduled single-file uploads, Xet tqdm_class handling,
+    duplicated GPU rows in hf jobs stats, and using a redirect's
+    Content-Length as the file size
+  * Drop the undocumented INFERENCE_ENDPOINT_IMAGE_KEYS constant</comment>
+    <requestid>1371919</requestid>
+  </revision>
 </revisionlist>
