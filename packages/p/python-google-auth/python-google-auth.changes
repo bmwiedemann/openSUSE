@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Aug 12 08:02:53 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.56.3
+  * **auth:** avoid creating mTLS SSL context for custom async transports (#17825)
+  * **auth:** only trigger mTLS certificate rotation on mTLS endpoints (#17928)
+  * **auth:** properly extract stdout from gnubby webauthn plugin failures (#17885)
+  * deduplicate x-goog-api-client headers (#17616)
+  * **oauth2:** avoid redundant JWKS network fetches (#17891)
+  * **auth:** use generator expression in any() to allow short-circuiting
+  * **auth:** use generator expression in any() to allow short-circuiting (#17937)
+- from version 2.56.2
+  * **auth:** centralize cert discovery logic and steps (#17696)
+  * **auth:** exit early when agent cert config is outside well-known directory (#17762)
+  * **transport:** propagate mTLS adapter to auth session and fix connection leaks (#17689)
+  * update _SERVICE_ACCOUNT_EMAIL_PATTERN to require .gserviceaccount.com suffix (#17748)
+- from versio 2.56.1
+  * disable RAB lookup for Domain-Wide Delegation (#17763)
+- from version 2.56.0
+  * **auth:** Implement python mtls helpers (#17495)
+  * **google-auth:** add aiohttp bound for Python 3.14 (#17654)
+  * **google-auth:** add bounds for urllib3 and packaging dependencies (#17647)
+  * **google-auth:** add cryptography bound for Python 3.14 (#17649)
+  * **google-auth:** add gRPC extra and clean up obsolete TODOs (#17644)
+  * **google-auth:** raise rsa extra lower bound to 4.0 (#17652)
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Wed Jul  8 09:57:01 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.55.2

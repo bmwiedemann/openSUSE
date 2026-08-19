@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-auth
-Version:        2.55.2
+Version:        2.56.3
 Release:        0
 Summary:        Google Authentication Library
 License:        Apache-2.0
@@ -28,8 +28,12 @@ BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module PyJWT >= 2.0}
 BuildRequires:  %{python_module aiohttp >= 3.8.0}
 BuildRequires:  %{python_module aioresponses}
-BuildRequires:  %{python_module cryptography >= 38.0.3}
+BuildRequires:  %{python_module cryptography >= 38.0.3 if %python-base < 3.14}
+BuildRequires:  %{python_module cryptography >= 41.0.5 if %python-base >= 3.14}
 BuildRequires:  %{python_module freezegun}
+BuildRequires:  %{python_module grpcio >= 1.33.2 if %python-base < 3.14}
+BuildRequires:  %{python_module grpcio >= 1.75.1 if %python-base >= 3.14}
+BuildRequires:  %{python_module packaging >= 20.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyOpenSSL >= 22.0.0}
 BuildRequires:  %{python_module pyasn1-modules >= 0.2.1}
@@ -37,21 +41,30 @@ BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-localserver}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pyu2f >= 0.1.5}
-BuildRequires:  %{python_module requests >= 2.20.0}
+BuildRequires:  %{python_module requests >= 2.30.0}
 BuildRequires:  %{python_module responses}
 BuildRequires:  %{python_module setuptools >= 40.3.0}
-BuildRequires:  %{python_module urllib3}
+BuildRequires:  %{python_module urllib3 >= 1.26.15}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%if %python_version_nodots < 314
 Requires:       python-cryptography >= 38.0.3
+%else
+Requires:       python-cryptography >= 41.0.5
+%endif
+%if %python_version_nodots < 314
+Requires:       python-grpcio >= 1.59.0
+%else
+Requires:       python-grpcio >= 1.75.1
+%endif
 Requires:       python-pyasn1-modules >= 0.2.1
 Requires:       python-urllib3
 Recommends:     python-PyJWT >= 2.0
 Recommends:     python-aiohttp >= 3.6.2
 Recommends:     python-pyOpenSSL >= 22.0.0
 Recommends:     python-pyu2f >= 0.1.5
-Recommends:     python-requests >= 2.20.0
+Recommends:     python-requests >= 2.30.0
 BuildArch:      noarch
 %python_subpackages
 
