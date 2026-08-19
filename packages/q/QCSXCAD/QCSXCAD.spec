@@ -1,7 +1,7 @@
 #
 # spec file for package QCSXCAD
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ Group:          Productivity/Graphics/CAD
 URL:            https://openems.de
 Source0:        https://github.com/thliebig/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch1:         qcsxcad-cmp0020.patch
+Patch2:         https://github.com/thliebig/QCSXCAD/commit/3c7b0d114063.patch#/fix_missing_std_ns_identifier.patch
 BuildRequires:  CSXCAD-devel
 BuildRequires:  cmake
 BuildRequires:  double-conversion-devel

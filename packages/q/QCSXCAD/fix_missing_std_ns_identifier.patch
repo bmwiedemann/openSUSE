@@ -1,0 +1,161 @@
+From 3c7b0d1140638d8b96c3fba555e2a59f408a269e Mon Sep 17 00:00:00 2001
+From: Yifeng Li <tomli@tomli.me>
+Date: Sun, 21 Dec 2025 00:48:03 +0000
+Subject: [PATCH] Add missing iostream, cmath, and std:: prefixes.
+
+Stop relying on unintentionally imported symbol from other headers,
+use iostream header, cmath header, and std:: prefix explicitly.
+
+Signed-off-by: Yifeng Li <tomli@tomli.me>
+---
+ QVTKStructure.cpp                       | 10 +++++-----
+ VTKPrimitives.cpp                       | 22 ++++++++++++++++------
+ vtkInteractorStyleRubberBand2DPlane.cpp |  4 +++-
+ 3 files changed, 24 insertions(+), 12 deletions(-)
+
+diff --git a/QVTKStructure.cpp b/QVTKStructure.cpp
+index b5a4dbb..f1756b9 100644
+--- a/QVTKStructure.cpp
++++ b/QVTKStructure.cpp
+@@ -280,7 +280,7 @@ void QVTKStructure::RenderGrid()
+ 		}
+ 	}
+ 	else
+-		cerr << "QVTKStructure::RenderGrid(): Error, unknown grid type!" << endl;
++		std::cerr << "QVTKStructure::RenderGrid(): Error, unknown grid type!" << std::endl;
+ 
+ 	RenderGridDir(0,0);
+ 	RenderGridDir(1,0);
+@@ -325,7 +325,7 @@ void QVTKStructure::RenderGridDir(int dir, unsigned int plane_pos)
+ 		uiQty[n]=CSGrid->GetQtyLines(n);
+ 	if ((int)plane_pos>=uiQty[dir])
+ 	{
+-		cerr << "QVTKStructure::RenderGridDir: requested plane postion is out of range, resetting to max value!" << endl;
++		std::cerr << "QVTKStructure::RenderGridDir: requested plane postion is out of range, resetting to max value!" << std::endl;
+ 		plane_pos = uiQty[dir]-1;
+ 	}
+ 
+@@ -336,7 +336,7 @@ void QVTKStructure::RenderGridDir(int dir, unsigned int plane_pos)
+ 			ActorGridPlane[dir]->Delete();
+ 			gridMapper->Delete();
+ 			ActorGridPlane[dir]=NULL;
+-			cerr << "QVTKStructure::RenderGridDir: Error, rect grid mesh was not created, skipping drawing..." << endl;
++			std::cerr << "QVTKStructure::RenderGridDir: Error, rect grid mesh was not created, skipping drawing..." << std::endl;
+ 			return;
+ 		}
+ 		vtkRectilinearGridGeometryFilter *grid_plane = vtkRectilinearGridGeometryFilter::New();
+@@ -372,7 +372,7 @@ void QVTKStructure::RenderGridDir(int dir, unsigned int plane_pos)
+ 			ActorGridPlane[dir]->Delete();
+ 			gridMapper->Delete();
+ 			ActorGridPlane[dir]=NULL;
+-			cerr << "QVTKStructure::RenderGridDir: Error, structured grid mesh was not created, skipping drawing..." << endl;
++			std::cerr << "QVTKStructure::RenderGridDir: Error, structured grid mesh was not created, skipping drawing..." << std::endl;
+ 			return;
+ 		}
+ 
+@@ -403,7 +403,7 @@ void QVTKStructure::RenderGridDir(int dir, unsigned int plane_pos)
+ 		}
+ 	}
+ 	else
+-		cerr << "QVTKStructure::RenderGrid(): Error, unknown grid type!" << endl;
++		std::cerr << "QVTKStructure::RenderGrid(): Error, unknown grid type!" << std::endl;
+ 
+ 	gridMapper->SetInputConnection(plane->GetOutputPort());
+ 	ActorGridPlane[dir]->SetMapper(gridMapper);
+diff --git a/VTKPrimitives.cpp b/VTKPrimitives.cpp
+index 61c7c20..580a732 100644
+--- a/VTKPrimitives.cpp
++++ b/VTKPrimitives.cpp
+@@ -15,6 +15,16 @@
+ *	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+ 
++// Must be the first include file on MSVC
++#ifndef  __GNUC__
++#define _USE_MATH_DEFINES
++#include <cmath>
++#else
++#include <cmath>
++#endif
++
++#include <iostream>
++
+ #include "VTKPrimitives.h"
+ #include "vtkRenderer.h"
+ #include "vtkActorCollection.h"
+@@ -106,7 +116,7 @@ void VTKPrimitives::AddCube(const double *start, const double *stop, double *dRG
+ 	}
+ 	if (dim==0)
+ 	{
+-		cerr << "VTKPrimitives::AddCube: Warning, can't draw a Point Box... skipping" << endl;
++		std::cerr << "VTKPrimitives::AddCube: Warning, can't draw a Point Box... skipping" << std::endl;
+ 		return;
+ 	}
+ 	if (dim==1)
+@@ -395,7 +405,7 @@ void VTKPrimitives::AddCylinder(const double *dCenter, const double *dExtrusionV
+ 
+ 	alpha=VectorAngel(dExtrusionVector[0],sqrt(dExtrusionVector[1]*dExtrusionVector[1]+dExtrusionVector[2]*dExtrusionVector[2]),0,0,1,0);
+ 	beta=VectorAngel(0,dExtrusionVector[1],dExtrusionVector[2],0,1,0);
+-	// cout << alpha << "   "  << beta << endl;  //debuging
++	// std::cout << alpha << "   "  << beta << std::endl;  //debuging
+ 	if (dExtrusionVector[0]>0) alpha=-alpha;
+ 	if (dExtrusionVector[2]<0) beta=-beta;
+ 	transform->Translate(dExtrusionVector[0]/2+dCenter[0],dExtrusionVector[1]/2+dCenter[1],dExtrusionVector[2]/2+dCenter[2]);
+@@ -510,7 +520,7 @@ void VTKPrimitives::AddSphericalShell(const double *dCenter, double r_i, double
+ 	Source_o->Delete();
+ 	Source_i->Delete();
+ #else
+-	cerr << "VTKPrimitives::AddSphericalShell: Error, spherical shell not supported by this vkt version, you require vtk 5.10 or higher." << endl;
++	std::cerr << "VTKPrimitives::AddSphericalShell: Error, spherical shell not supported by this vkt version, you require vtk 5.10 or higher." << std::endl;
+ #endif
+ }
+ 
+@@ -848,7 +858,7 @@ void VTKPrimitives::SetOpacity2All(double opacity)
+ 
+ void VTKPrimitives::WritePolyData2File(const char* filename, double scale)
+ {
+-	cout << "VTKPrimitives::WritePolyData2File: Dump to vtk file: " << filename << " -- Using scale: " << scale << endl;
++	std::cout << "VTKPrimitives::WritePolyData2File: Dump to vtk file: " << filename << " -- Using scale: " << scale << std::endl;
+ 	vtkXMLPolyDataWriter* writer  = vtkXMLPolyDataWriter::New();
+ 	writer->SetFileName(filename);
+ 
+@@ -890,7 +900,7 @@ void VTKPrimitives::WritePolyData2File(const char* filename, double scale)
+ 
+ void VTKPrimitives::WritePolyData2STL(const char* filename, double scale)
+ {
+-	cout << "VTKPrimitives::WritePolyData2STL: Dump to stl file: " << filename << " -- Using scale: " << scale << endl;
++	std::cout << "VTKPrimitives::WritePolyData2STL: Dump to stl file: " << filename << " -- Using scale: " << scale << std::endl;
+ 
+ 	vtkTriangleFilter* filter = vtkTriangleFilter::New();
+ 
+@@ -932,7 +942,7 @@ void VTKPrimitives::WritePolyData2STL(const char* filename, double scale)
+ 
+ void VTKPrimitives::WritePolyData2PLY(const char* filename, double scale)
+ {
+-	cout << "VTKPrimitives::WritePolyData2PLY: Dump to ply file: " << filename << " -- Using scale: " << scale << endl;
++	std::cout << "VTKPrimitives::WritePolyData2PLY: Dump to ply file: " << filename << " -- Using scale: " << scale << std::endl;
+ 
+ 	vtkTriangleFilter* filter = vtkTriangleFilter::New();
+ 
+diff --git a/vtkInteractorStyleRubberBand2DPlane.cpp b/vtkInteractorStyleRubberBand2DPlane.cpp
+index 1bd9bdf..b0ec610 100644
+--- a/vtkInteractorStyleRubberBand2DPlane.cpp
++++ b/vtkInteractorStyleRubberBand2DPlane.cpp
+@@ -15,6 +15,8 @@
+ *	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+ 
++#include <iostream>
++
+ #include "vtkInteractorStyleRubberBand2DPlane.h"
+ 
+ #include "vtkCamera.h"
+@@ -56,7 +58,7 @@ void vtkInteractorStyleRubberBand2DPlane::OnMouseMove()
+ 				n_dir = n;
+ 		if (n_dir<0)
+ 		{
+-			cerr << __func__ << ": Error, no view in x-, y- or z-direction, skipping panning!";
++			std::cerr << __func__ << ": Error, no view in x-, y- or z-direction, skipping panning!";
+ 			return;
+ 		}
+ 

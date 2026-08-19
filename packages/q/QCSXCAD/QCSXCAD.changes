@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 19 11:43:37 UTC 2026 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build with GCC16/libstdc++, add
+  fix_missing_std_ns_identifier.patch
+
+-------------------------------------------------------------------
 Fri Jul 25 05:29:51 UTC 2025 - Christoph G <foss@grueninger.de>
 
 - Add qcsxcad-cmp0020.patch to backport compatibility fix for
