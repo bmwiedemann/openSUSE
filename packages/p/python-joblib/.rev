@@ -419,4 +419,12 @@
 - Add fix-tests-numpy-2.4.patch upstream patch gh#joblib/joblib#1770</comment>
     <requestid>1334686</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>a4b8d8cced064027300fc80cdf0e81b3</srcmd5>
+    <version>1.5.3</version>
+    <time>1787154925</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1371698</requestid>
+  </revision>
 </revisionlist>

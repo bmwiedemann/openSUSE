@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 13 12:18:18 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add upstream patch fix-generator-unordered-lock.patch
+  gh#joblib/joblib#1789
+
+-------------------------------------------------------------------
 Tue Feb 24 09:57:31 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 1.5.3

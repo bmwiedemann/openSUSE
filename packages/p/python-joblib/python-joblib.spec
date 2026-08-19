@@ -29,6 +29,8 @@ Source:         https://files.pythonhosted.org/packages/source/j/joblib/joblib-%
 Patch1:         also-filter-new-fork-warning.patch
 # PATCH-FIX-UPSTREAM fix-tests-numpy-2.4.patch gh#joblib/joblib#1770
 Patch2:         fix-tests-numpy-2.4.patch
+# PATCH-FIX-UPSTREAM fix-generator-unordered-lock.patch gh#joblib/joblib#1789
+Patch3:         fix-generator-unordered-lock.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module lz4}
 BuildRequires:  %{python_module numpy}
