@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Aug  5 15:12:03 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.8.0:
+  * Drop Python 3.10 support
+  * zuul: Use openstack-python3-next-jobs template
+  * pre-commit: Bump versions
+  * Do not install code to build release notes
+  * vault: Apply auth_path for approle auth method
+  * Add token-based auth method to VaultKeyManager
+  * Do not expose internal client exceptions
+
+-------------------------------------------------------------------
 Tue Jun  2 15:51:38 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.7.0:
