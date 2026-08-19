@@ -1479,4 +1479,17 @@ New stable rel</comment>
   + Various build, CI, portability, and fuzzing fixes.</comment>
     <requestid>1369993</requestid>
   </revision>
+  <revision rev="140" vrev="1">
+    <srcmd5>de18dff130db295718b0df488efac145</srcmd5>
+    <version>14.3.1</version>
+    <time>1787154952</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 14.3.1:
+  + Various fuzzing and build fixes.
+  + Various subsetting fixes.
+  + Fix AAT insertion at the end of the text.
+  + Fix various rendering bugs in the experimental GPU library.
+  + WASM shaper code can now read the user features.</comment>
+    <requestid>1371800</requestid>
+  </revision>
 </revisionlist>

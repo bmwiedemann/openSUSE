@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Aug 13 07:17:20 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 14.3.1:
+  + Various fuzzing and build fixes.
+  + Various subsetting fixes.
+  + Fix AAT insertion at the end of the text.
+  + Fix various rendering bugs in the experimental GPU library.
+  + WASM shaper code can now read the user features.
+
+-------------------------------------------------------------------
 Fri Jul 31 15:14:32 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 14.3.0:
