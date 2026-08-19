@@ -17,7 +17,7 @@
 
 
 Name:           gap-crystcat
-Version:        1.1.11
+Version:        1.1.12
 Release:        0
 Summary:        GAP: The crystallographic groups catalog
 License:        GPL-2.0-or-later
@@ -27,8 +27,8 @@ Source:         https://www.math.uni-bielefeld.de/~gaehler/gap/CrystCat/crystcat
 BuildArch:      noarch
 BuildRequires:  gap-rpm-devel
 BuildRequires:  xz
-Requires:       gap-core >= 4.5
-Requires:       gap-cryst >= 4.1.8
+Requires:       gap-core >= 4.12
+Requires:       gap-cryst >= 4.1.25
 
 %description
 CrystCat provides a catalog of crystallographic groups of dimensions
