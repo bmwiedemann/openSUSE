@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-keyvault-secrets
-Version:        4.11.0
+Version:        4.11.1
 Release:        0
 Summary:        Microsoft Azure Key Vault Secrets Client Library for Python
 License:        MIT
