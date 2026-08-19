@@ -19,7 +19,7 @@
 %{!?_distconfdir: %global _distconfdir %{_prefix}%{_sysconfdir}}
 
 Name:           microos-tools
-Version:        4.0+git28
+Version:        4.0+git29
 Release:        0
 Summary:        Files and Scripts for openSUSE MicroOS
 License:        GPL-2.0-or-later
@@ -37,8 +37,7 @@ Requires:       selinux-autorelabel = %{version}
 # Was part of the main package previously, require it for
 # compatibility (for now).
 Requires:       zypp-single-rpmtrans
-# for man-online
-Requires:       mandoc-bin
+Requires:       man-online
 
 %description
 Files, scripts and directories for openSUSE MicroOS.
@@ -91,6 +90,15 @@ Requires:       libzypp(econf)
 This package installs a zypp.conf snippet to enable ZYPP_RPM_SINGLETRANS.
 libzypp will then use a single RPM transaction for all package changes,
 instead of one RPM transaction per-package.
+
+%package -n man-online
+Summary:        Retrieve man pages from man.o.o to view them
+Requires:       mandoc-bin
+
+%description -n man-online
+This package contains "man-online", a utility that attempts to retrieve
+the man page from manpages.opensuse.org if the "man" utility is not
+installed.
 
 %prep
 %autosetup -p1
@@ -151,6 +159,8 @@ instead of one RPM transaction per-package.
 %{_unitdir}/import-pubring-from-rpmdb.service
 %{_unitdir}/printenv.service
 %{_bindir}/import-pubring-from-rpmdb
+
+%files -n man-online
 %{_bindir}/man-online
 %{_distconfdir}/profile.d/man-online.sh
 

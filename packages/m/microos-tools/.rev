@@ -513,4 +513,13 @@
   * Remove obsolete stuff (locale-check, salt-tmpdir)</comment>
     <requestid>1368819</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>76dd96d28d1bee49d84608bf9e9e714d</srcmd5>
+    <version>4.0+git29</version>
+    <time>1787154922</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 4.0+git29:
+  * Move man-online to an own sub-package</comment>
+    <requestid>1371693</requestid>
+  </revision>
 </revisionlist>

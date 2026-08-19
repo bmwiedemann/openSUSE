@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 18 08:37:37 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 4.0+git29:
+  * Move man-online to an own sub-package
+
+-------------------------------------------------------------------
 Fri Jul 31 10:15:09 UTC 2026 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 4.0+git28:
