@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 19 07:24:49 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 4.23.0:
+  * Fix inconsistent whitespace after the parameter colon in
+    generated markdown docs
+
+-------------------------------------------------------------------
 Wed Aug  5 05:33:56 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 4.22.5:

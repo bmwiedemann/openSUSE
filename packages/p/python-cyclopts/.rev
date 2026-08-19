@@ -88,4 +88,15 @@ Verified locally on aarch64/openSUSE_Tumbleweed: build green, rpmlint 0 errors
 tests, so %check remains the import smoke test.</comment>
     <requestid>1369633</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>84f4573498250333a259636b121aedcc</srcmd5>
+    <version>4.23.0</version>
+    <time>1787155149</time>
+    <user>anag_factory</user>
+    <comment>Update to 4.23.0:
+  * Fix inconsistent whitespace after the parameter colon in
+    generated markdown docs
+</comment>
+    <requestid>1371924</requestid>
+  </revision>
 </revisionlist>
