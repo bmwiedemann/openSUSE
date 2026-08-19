@@ -21,7 +21,7 @@
 %bcond_with check
 
 Name:           emacs-%{_name}
-Version:        31.0.0.1
+Version:        31.0.0.2
 Release:        0
 Summary:        COMPATibility Library for Emacs Lisp
 License:        GPL-3.0-or-later

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 18 19:30:17 UTC 2026 - Björn Kettunen <bjorn.kettunen@thaodan.de>
+
+- Update to version 31.0.0.2:
+  * compat-31: Fix extended function seconds-to-string.
+
+-------------------------------------------------------------------
 Sat May 23 19:49:56 UTC 2026 - Björn Kettunen <bjorn.kettunen@thaodan.de>
 
 - Rebase 0001-Add-install-target.patch against new upstream version

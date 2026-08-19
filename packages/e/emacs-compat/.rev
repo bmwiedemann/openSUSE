@@ -184,4 +184,13 @@
     Emacs 24.x support is still needed, Compat 30 can be used.</comment>
     <requestid>1354880</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b17da938d010c0c292dfecfdbcf07242</srcmd5>
+    <version>31.0.0.2</version>
+    <time>1787155114</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 31.0.0.2:
+  * compat-31: Fix extended function seconds-to-string.</comment>
+    <requestid>1371838</requestid>
+  </revision>
 </revisionlist>
