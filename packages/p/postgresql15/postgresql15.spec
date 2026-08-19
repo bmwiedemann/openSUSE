@@ -17,7 +17,7 @@
 
 
 %define pgmajor 15
-%define pgminor 18
+%define pgminor 19
 
 ### CUT HERE ###
 %define pgname postgresql%pgmajor
@@ -73,7 +73,7 @@ Name:           %pgname
 %bcond_without alts
 Requires:       pg_alts
 %else
-%define         packaging_level 18
+%define         packaging_level 19
 %bcond_with alts
 %define install_alternatives /usr/share/postgresql/install-alternatives %pgmajor
 %endif

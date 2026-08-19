@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Sat Aug 15 14:52:34 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 15.19:
+  https://www.postgresql.org/docs/15/release-15-19.html
+  https://www.postgresql.org/about/news/postgresql-186-1711-1615-1519-1424-and-19-beta-3-released-3365/
+
+  Security Fixes:
+  - bsc#1275046, CVE-2026-6464: psql COPY FROM STDIN early failure
+    processes data lines as psql commands (CVSS v3.1: 8.1)
+  - bsc#1275044, CVE-2026-6469: ALTER TABLE ALTER TYPE resets
+    extended statistics ownership (CVSS v3.1: 3.8)
+  - bsc#1275043, CVE-2026-6470: Fails to check type USAGE privilege
+    (CVSS v3.1: 4.3)
+  - bsc#1275042, CVE-2026-6471: Logical decoding can dlopen
+    arbitrary file (CVSS v3.1: 7.2)
+  - bsc#1275001, CVE-2026-14662: tsvector and tsquery undersize
+    allocations, via integer wraparound (CVSS v3.1: 8.8)
+  - bsc#1275002, CVE-2026-14663: pgcrypto, for OpenSSL-disabled
+    ciphers, silently encrypts to and decrypts from cleartext (CVSS
+    v3.1: 6.5)
+  - bsc#1275068, CVE-2026-14664: Regexp heap buffer overflow
+    executes arbitrary code (CVSS v3.1: 8.8)
+  - bsc#1275067, CVE-2026-14666: Row security caching disregards
+    role modifications (CVSS v3.1: 4.2)
+  - bsc#1275066, CVE-2026-14668: ctid type confusion in selectivity
+    estimator discloses derivative of arbitrary read (CVSS v3.1:
+    8.1)
+  - bsc#1275065, CVE-2026-14669: to_char heap buffer overflow
+    executes arbitrary code (CVSS v3.1: 8.8)
+  - bsc#1275064, CVE-2026-14670: plperl tied object heap buffer
+    overflow executes arbitrary code (CVSS v3.1: 8.8)
+  - bsc#1275063, CVE-2026-14671: refint plan cache type confusion
+    executes arbitrary code (CVSS v3.1: 8.8)
+  - bsc#1275061, CVE-2026-14673: amcheck does not clear untrusted
+    search path (CVSS v3.1: 3.8)
+  - bsc#1275059, CVE-2026-14677: 32-bit pltcl and plperl undersize
+    allocations, via integer wraparound (CVSS v3.1: 8.8)
+  - bsc#1275058, CVE-2026-14678: pg_trgm picksplit reads past end
+    of buffer (CVSS v3.1: 4.3)
+  - bsc#1275057, CVE-2026-14679: Stack buffer overflow in argument
+    match writes 0x0 and 0x1 to server memory (CVSS v3.1: 8.2)
+  - bsc#1275056, CVE-2026-14680: Type confusion via "internal"
+    arguments (CVSS v3.1: 8.8)
+  - bsc#1275054, CVE-2026-15741: Expression deparse allows SQL
+    injection via EXTRACT argument (CVSS v3.1: 8.8)
+  - bsc#1275053, CVE-2026-15742: fuzzystrmatch writes
+    effectively-arbitrary addresses, via integer wraparound (CVSS
+    v3.1: 8.8)
+  - bsc#1275051, CVE-2026-16239: Type confusion in cursor CLOSE +
+    DECLARE executes arbitrary code (CVSS v3.1: 8.8)
+  - bsc#1275050, CVE-2026-16241: ECPG integer underflow can crash
+    the client (CVSS v3.1: 3.8)
+  - bsc#1275049, CVE-2026-18024: ascii() function reads past end of
+    buffer (CVSS v3.1: 4.3)
+  - bsc#1275048, CVE-2026-18408: psql \unrestrict lets superuser of
+    pg_dump origin server execute arbitrary code in psql client
+    (CVSS v3.1: 8.8)
+  - bsc#1275047, CVE-2026-19385: pg_dump heap buffer overflow
+    executes arbitrary code (CVSS v3.1: 8.8)
+
+-------------------------------------------------------------------
 Sat Jun 13 21:32:53 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Require clang/llvm-devel metapackages instead of directly
@@ -7,6 +68,11 @@ Sat Jun 13 21:32:53 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
   /usr/bin/clang symlink, which will now be contained in the
   metapackage only. If older LLVM versions are required, the
   compiler binary has to be provided via CLANG=clang-<N>.
+
+-------------------------------------------------------------------
+Fri Jun 12 20:10:12 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- bump packaging level to 19
 
 -------------------------------------------------------------------
 Wed May 13 08:30:49 UTC 2026 - Reinhard Max <max@suse.com>
