@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug 19 06:01:35 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
+
+- update to 0.12.0:
+  * Dropped support for Python 3.8.
+  * Bumped python-socks upper bound to <4.0.0.
+  * The entire codebase is now strictly type-annotated and fully compliant with mypy.
+
+-------------------------------------------------------------------
 Thu Jan 22 08:36:42 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.11.0:

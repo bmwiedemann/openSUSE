@@ -133,4 +133,15 @@
   * Fixed https://github.com/romis2012/aiohttp-socks/issues/52</comment>
     <requestid>1328621</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>616554d2fda2809d10d7f4fcdedbc3b5</srcmd5>
+    <version>0.12.0</version>
+    <time>1787155132</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.12.0:
+  * Dropped support for Python 3.8.
+  * Bumped python-socks upper bound to &lt;4.0.0.
+  * The entire codebase is now strictly type-annotated and fully compliant with mypy.</comment>
+    <requestid>1371906</requestid>
+  </revision>
 </revisionlist>

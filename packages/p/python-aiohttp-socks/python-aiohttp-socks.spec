@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-aiohttp-socks
-Version:        0.11.0
+Version:        0.12.0
 Release:        0
 Summary:        SOCKS proxy connector for aiohttp
 License:        Apache-2.0
@@ -31,13 +31,11 @@ BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-aiohttp >= 2.3.2
-Requires:       python-attrs >= 19.2.0
 Requires:       python-python-socks >= 2.0.0
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module aiohttp >= 2.3.2}
 BuildRequires:  %{python_module async_timeout}
-BuildRequires:  %{python_module attrs >= 1.0.1}
 BuildRequires:  %{python_module python-socks >= 2.0.0}
 # /SECTION
 %python_subpackages
