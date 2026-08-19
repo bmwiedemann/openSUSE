@@ -17,7 +17,7 @@
 
 
 Name:           gap-cryst
-Version:        4.1.31
+Version:        4.1.32
 Release:        0
 Summary:        GAP: Computing with crystallographic groups
 License:        GPL-2.0-or-later
@@ -33,7 +33,6 @@ Requires:       gap-polenta >= 1.3.10
 Requires:       gap-polycyclic >= 2.16
 Suggests:       gap-caratinterface >= 2.3.3
 Suggests:       gap-crystcat >= 1.1.9
-Suggests:       gap-xgap >= 4.22
 
 %description
 Cryst provides a rich set of methods to compute with affine
@@ -45,7 +44,7 @@ crystallographers. There are also functions to determine
 representatives of all space group types of a given dimension.
 
 %prep
-%setup -qn cryst
+%autosetup -p1 -n cryst
 
 %build
 

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug 19 07:46:12 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.1.32
+  * Fixed AffineNormalizer, which returned a proper subgroup of the
+    affine normalizer for some space groups (e.g. Pc), because the
+    stabilizer computation used incomplete Schreier generators.
+
+-------------------------------------------------------------------
 Fri May 15 08:26:52 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.1.31
