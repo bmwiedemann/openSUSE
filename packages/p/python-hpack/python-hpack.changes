@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Aug 18 08:24:34 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 4.2.0 (fixes boo#1275232 and CVE-2026-59980)
+  * Support for Python 3.9 has been removed.
+  * Support for PyPy 3.9 has been removed.
+  * Support for Python 3.14 has been added.
+  * Headers marked as sensitive will no longer log their value at DEBUG level.
+    Instead a placeholder value of SENSITIVE_REDACTED is logged.
+  * Fixed perfect match missed for headers with empty values.
+  * Restricted variable integer decoding to uint32 to prevent run-away
+    computation. With thanks to Hiroki Nishino.
+
+-------------------------------------------------------------------
 Tue Feb  4 11:51:51 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 4.1.0

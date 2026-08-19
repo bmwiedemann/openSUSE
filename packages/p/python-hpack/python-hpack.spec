@@ -1,7 +1,7 @@
 #
 # spec file for package python-hpack
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,14 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-hpack
-Version:        4.1.0
+Version:        4.2.0
 Release:        0
 Summary:        Pure-Python HPACK header compression
 License:        MIT
 URL:            https://github.com/python-hyper/hpack
-Source0:        https://files.pythonhosted.org/packages/source/h/hpack/hpack-%{version}.tar.gz
-# Content of https://github.com/python-hyper/hpack/tree/master/test/test_fixtures
-Source1:        test_fixtures.tar.xz
+Source0:        https://github.com/python-hyper/hpack/archive/refs/tags/v%{version}.tar.gz#/hpack-%{version}.tar.gz
 Patch0:         healthcheck.patch
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module pip}
@@ -44,7 +41,7 @@ Python programs that implement HTTP/2. It also contains a compatibility layer th
 automatically enables the use of nghttp2 if it’s available.
 
 %prep
-%autosetup -p1 -a1 -n hpack-%{version}
+%autosetup -p1 -n hpack-%{version}
 
 %build
 export LC_ALL="en_US.UTF-8"

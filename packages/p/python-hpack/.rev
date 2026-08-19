@@ -81,4 +81,24 @@
     <comment></comment>
     <requestid>1243134</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>aa1c4c027df0dc565e4033a66fd66515</srcmd5>
+    <version>4.2.0</version>
+    <time>1787154916</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.2.0 (fixes boo#1275232 and CVE-2026-59980)
+  * Support for Python 3.9 has been removed.
+  * Support for PyPy 3.9 has been removed.
+  * Support for Python 3.14 has been added.
+  * Headers marked as sensitive will no longer log their value at DEBUG level.
+    Instead a placeholder value of SENSITIVE_REDACTED is logged.
+  * Fixed perfect match missed for headers with empty values.
+  * Restricted variable integer decoding to uint32 to prevent run-away
+    computation. With thanks to Hiroki Nishino.
+
+
+Will add the missing bug reference for the CVE once the bug has been opened
+</comment>
+    <requestid>1371691</requestid>
+  </revision>
 </revisionlist>
