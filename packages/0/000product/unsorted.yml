@@ -955,6 +955,7 @@ unsorted:
   - asciidoc 
   - asciidoc-examples 
   - asciidoc-latex-backend 
+  - asciidoc-tests 
   - asciinema 
   - asclock 
   - asco 
@@ -11457,8 +11458,8 @@ unsorted:
   - libOpenIPMI0 
   - libOpenIPMIui1 
   - libOpenImageDenoise2 
-  - libOpenImageDenoise_core2_5_0 
-  - libOpenImageDenoise_device_cpu2_5_0 
+  - libOpenImageDenoise_core2_5_1 
+  - libOpenImageDenoise_device_cpu2_5_1 
   - libOpenImageIO3_1 
   - libOpenImageIO_Util3_1 
   - libOpenSceneGraph-devel 
@@ -13663,9 +13664,6 @@ unsorted:
   - libgda-xslt-6_0-6_0_0 
   - libgdal-drivers 
   - libgdal39 
-  - libgdata-devel 
-  - libgdata-lang 
-  - libgdata22 
   - libgdbm6-32bit 
   - libgdbm_compat4-32bit 
   - libgdcm3_2 
@@ -16810,6 +16808,7 @@ unsorted:
   - libthreadar1000 
   - libthrift-0_24_0 
   - libthrift-devel 
+  - libthrift_c_glib-devel 
   - libthrift_c_glib0 
   - libthriftnb-0_24_0 
   - libthriftz-0_24_0 
@@ -17517,6 +17516,7 @@ unsorted:
   - libxml2-devel 
   - libxml2-devel-32bit 
   - libxmlb-devel 
+  - libxmlb-tests 
   - libxmlbird1 
   - libxmlrpc++9 
   - libxmlrpc3 
@@ -17629,6 +17629,7 @@ unsorted:
   - libzdb17 
   - libze_intel_gpu1 
   - libze_intel_gpu_raytracing 
+  - libze_intel_npu1 
   - libzeitgeist-1_0-1 
   - libzeitgeist-devel 
   - libzen-devel 
@@ -17758,6 +17759,7 @@ unsorted:
   - linux-ftools 
   - linux-libertine-fonts 
   - linux-npu-driver 
+  - linux-npu-driver-devel 
   - linux32 
   - linux_logo 
   - linuxconsoletools 
@@ -20835,7 +20837,6 @@ unsorted:
   - openSUSE-repos-MicroOS-NVIDIA 
   - openSUSE-repos-Slowroll 
   - openSUSE-repos-Slowroll-NVIDIA 
-  - openSUSE-repos-Tumbleweed 
   - openSUSE-repos-Tumbleweed-NVIDIA 
   - openSUSE-signkey-cert 
   - openSUSEway 
@@ -21446,7 +21447,6 @@ unsorted:
   - patterns-base-documentation 
   - patterns-base-enhanced_base-32bit 
   - patterns-base-fips 
-  - patterns-base-hardware 
   - patterns-base-immutable_base 
   - patterns-base-kdump 
   - patterns-base-minimal_base-32bit 
@@ -23190,7 +23190,6 @@ unsorted:
   - php8-ftp 
   - php8-gd 
   - php8-gettext 
-  - php8-gmagick 
   - php8-gmp 
   - php8-gnupg 
   - php8-ice 
@@ -23225,6 +23224,7 @@ unsorted:
   - php8-sysvsem 
   - php8-sysvshm 
   - php8-test 
+  - php8-thrift 
   - php8-tidy 
   - php8-uuid 
   - php8-xdebug 
@@ -24193,7 +24193,6 @@ unsorted:
   - python3-babeltrace 
   - python3-babeltrace2 
   - python3-bandit 
-  - python3-bcc 
   - python3-boost_parallel_mpi 
   - python3-boost_parallel_mpi1_91_0 
   - python3-botan 
@@ -24431,7 +24430,6 @@ unsorted:
   - python311-doc 
   - python311-doc-devhelp 
   - python311-flit-core 
-  - python311-geojson 
   - python311-gql 
   - python311-hatch_vcs 
   - python311-hatchling 
@@ -25367,6 +25365,7 @@ unsorted:
   - python313-base-32bit 
   - python313-base58 
   - python313-bashate 
+  - python313-bcc 
   - python313-beartype 
   - python313-beautifulsoup4 
   - python313-before-after 
@@ -29370,6 +29369,7 @@ unsorted:
   - python314-base-x86-64-v3 
   - python314-base58 
   - python314-bashate 
+  - python314-bcc 
   - python314-bcrypt 
   - python314-beartype 
   - python314-beautifulsoup4 
@@ -46012,7 +46012,6 @@ unsorted:
   - typelib-1_0-Foundry-1 
   - typelib-1_0-FoundryGtk-1 
   - typelib-1_0-GCab-1_0 
-  - typelib-1_0-GData-0_0 
   - typelib-1_0-GES-1_0 
   - typelib-1_0-GExiv2-0_16 
   - typelib-1_0-GMime-3_0 
