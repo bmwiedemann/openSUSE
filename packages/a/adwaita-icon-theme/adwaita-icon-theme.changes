@@ -27,6 +27,15 @@ Fri Mar  6 08:05:24 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 50.rc:
   + Reintroduce legacy icons because themes.
+- Drop adwaita-icon-theme-reintroduce-emblem-icons.patch:
+  fixed upstream.
+
+-------------------------------------------------------------------
+Fri Feb 14 02:03:04 UTC 2026 - Jonthan Kang <songchuan.kang@suse.com>
+
+- Add adwaita-icon-theme-reintroduce-emblem-icons.patch:
+  symbolic: reintroduce emblem icons
+  (bsc#1274565, glgo#GNOME/adwaita-icon-theme!91).
 
 -------------------------------------------------------------------
 Tue Feb 10 08:10:42 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>

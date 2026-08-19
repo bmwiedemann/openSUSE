@@ -361,4 +361,17 @@
   + folder-projects: XDG Projects folder.</comment>
     <requestid>1357101</requestid>
   </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>2c3caeac94c19b83894eb4c1c56a57cd</srcmd5>
+    <version>50.0+2</version>
+    <time>1787154940</time>
+    <user>anag_factory</user>
+    <comment>- Drop adwaita-icon-theme-reintroduce-emblem-icons.patch:
+  fixed upstream.
+
+- Add adwaita-icon-theme-reintroduce-emblem-icons.patch:
+  symbolic: reintroduce emblem icons
+  (bsc#1274565, glgo#GNOME/adwaita-icon-theme!91).</comment>
+    <requestid>1371780</requestid>
+  </revision>
 </revisionlist>
