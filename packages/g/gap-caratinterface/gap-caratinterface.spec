@@ -17,7 +17,7 @@
 
 
 Name:           gap-caratinterface
-Version:        2.3.9
+Version:        2.3.10
 Release:        0
 Summary:        GAP: Interface to CARAT, a crystallographic groups package
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -29,7 +29,7 @@ BuildRequires:  gap-rpm-devel
 BuildRequires:  gmp-devel
 BuildRequires:  xz
 Requires:       carat
-Requires:       gap-core >= 4.11.1
+Requires:       gap-core >= 4.12
 Suggests:       gap-cryst >= 4.1.24
 Requires:       gap-io >= 4.8.0
 Obsoletes:      gap-carat
