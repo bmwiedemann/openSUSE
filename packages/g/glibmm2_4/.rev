@@ -201,4 +201,30 @@
       documentation with Doxygen.</comment>
     <requestid>1362495</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>3307c72a41fefba0007c96a215abc94e</srcmd5>
+    <version>2.66.10</version>
+    <time>1787154947</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.66.10:
+  + Drop G_GNUC_CONST as in GLib.
+  + Gio: Emblem and DBus::ActionGroup: Don't derive gtkmm__Gxxx
+    types. The underlying C classes are final types since GLib
+    2.89.2.
+  + Meson build: Use Meson's pkgconfig module instead of using the
+    *.pc.in templates.
+
+- Update to version 2.66.9+3:
+  + Gio::DBus::ActionGroup: Improve the test whether
+    GDBusActionGroup is final
+  + Drop G_GNUC_CONST as in glib
+  + Gio: Emblem and DBus::ActionGroup: Don't derive gtkmm__Gxxx
+    types
+- Use source service to generate tarball.
+- Add mm-common and perl-XML-Parser BuildRequries: Needed now that
+  we are using a git checkout.
+- Pass maintainer-mode=true to meson setup, needed since we are
+  using a git checkout.</comment>
+    <requestid>1371795</requestid>
+  </revision>
 </revisionlist>

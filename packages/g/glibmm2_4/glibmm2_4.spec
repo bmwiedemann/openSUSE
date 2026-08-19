@@ -20,13 +20,13 @@
 %define so_ver -2_4-1
 %define _name glibmm
 Name:           glibmm2_4
-Version:        2.66.9
+Version:        2.66.10
 Release:        0
 Summary:        C++ Interface for Glib
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            http://www.gtkmm.org/
-Source0:        https://download.gnome.org/sources/glibmm/2.66/%{_name}-%{version}.tar.xz
+Source0:        %{_name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
 BuildRequires:  doxygen
@@ -35,6 +35,8 @@ BuildRequires:  gcc-c++
 BuildRequires:  graphviz-devel
 BuildRequires:  m4
 BuildRequires:  meson >= 0.60
+BuildRequires:  mm-common
+BuildRequires:  perl-XML-Parser
 BuildRequires:  pkgconfig
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(gio-2.0)
@@ -94,7 +96,8 @@ chmod -x NEWS
 
 %build
 %meson \
-	-Dbuild-documentation=true \
+	-D maintainer-mode=true \
+	-D build-documentation=true \
 	%{nil}
 %meson_build
 

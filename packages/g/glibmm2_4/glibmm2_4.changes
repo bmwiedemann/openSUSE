@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Aug 11 16:57:46 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.66.10:
+  + Drop G_GNUC_CONST as in GLib.
+  + Gio: Emblem and DBus::ActionGroup: Don't derive gtkmm__Gxxx
+    types. The underlying C classes are final types since GLib
+    2.89.2.
+  + Meson build: Use Meson's pkgconfig module instead of using the
+    *.pc.in templates.
+
+-------------------------------------------------------------------
+Sun Jul 19 10:26:49 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.66.9+3:
+  + Gio::DBus::ActionGroup: Improve the test whether
+    GDBusActionGroup is final
+  + Drop G_GNUC_CONST as in glib
+  + Gio: Emblem and DBus::ActionGroup: Don't derive gtkmm__Gxxx
+    types
+- Use source service to generate tarball.
+- Add mm-common and perl-XML-Parser BuildRequries: Needed now that
+  we are using a git checkout.
+- Pass maintainer-mode=true to meson setup, needed since we are
+  using a git checkout.
+
+-------------------------------------------------------------------
 Sun Jun 28 12:16:10 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.66.9:
