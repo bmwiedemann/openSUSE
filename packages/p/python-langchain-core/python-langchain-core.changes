@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 19 07:25:38 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.5.6:
+  * Incorporate gateway metadata into traces when the client
+    response provides it
+
+-------------------------------------------------------------------
 Tue Aug 18 05:36:57 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Avoid variations from --nocheck: move bytecode recompilation and fdupes from %check to %install (boo#1227364)

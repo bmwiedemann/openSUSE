@@ -87,4 +87,17 @@ Verified on aarch64: build green for python313 and python314, rpmlint
     <comment>Reproducibility fix: move the hash-based bytecode recompilation and fdupes from %check to %install, so the package content no longer varies when built with --nocheck (boo#1227364). Same fix bmwiedemann applied to python-langgraph in sr#1371636.</comment>
     <requestid>1371668</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>fafe1cc71a2e6a505df8f6523679f688</srcmd5>
+    <version>1.5.6</version>
+    <time>1787155159</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.5.6:
+  * Incorporate gateway metadata into traces when the client
+    response provides it
+
+INTERDEPENDENT with the forthcoming python-langchain-openai 1.5.2 submit — please co-stage if both are open.
+</comment>
+    <requestid>1371930</requestid>
+  </revision>
 </revisionlist>
