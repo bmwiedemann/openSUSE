@@ -18,16 +18,23 @@
 
 
 Name:           glab
-Version:        1.113.0
+Version:        1.114.0
 Release:        0
 Summary:        A GitLab command line tool
 License:        MIT
-Group:          Development/Tools/Other
 URL:            https://gitlab.com/gitlab-org/cli
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 # https://sources.debian.org/src/glab/1.49.0-1/debian/patches/0001-Disable-update-check.patch
 Patch0:         glab-disable_update_check.patch
+# PATCH-FIX-UPSTREAM glab-CVE-2026-39821-idna-punycode.patch boo#1266614 pdostal@suse.com
+# Backport of golang.org/x/net commit f05f21be5927155a88b371674c298ada54b71cf5:
+# reject all-ASCII xn-- Punycode labels regardless of Go's unicode.Version.
+Patch1:         glab-CVE-2026-39821-idna-punycode.patch
+BuildRequires:  bash-completion
+BuildRequires:  fish
+BuildRequires:  zsh
+Suggests:       glab-doc
 %if 0%{?fedora_version} || 0%{?rhel_version} || 0%{?centos_version} || 0%{?almalinux_version} || 0%{?rocky_version}
 BuildRequires:  git
 BuildRequires:  golang >= 1.26.3
@@ -36,17 +43,12 @@ BuildRequires:  git-core
 BuildRequires:  go1.26 >= 1.26.3
 BuildRequires:  golang-packaging
 %endif
-BuildRequires:  bash-completion
-BuildRequires:  fish
-BuildRequires:  zsh
-Suggests:       glab-doc
 
 %description
 glab is a command line tool bringing GitLab's features to the command line.
 
 %package doc
 Summary:        Documentation for GLab
-Group:          Documentation/HTML
 BuildArch:      noarch
 
 %description doc
@@ -54,7 +56,6 @@ glab is a command line tool bringing GitLab's features to the command line.
 
 %package bash-completion
 Summary:        Bash completion for %{name}
-Group:          System/Shells
 Requires:       %{name} = %{version}
 Supplements:    (%{name} and bash)
 BuildArch:      noarch
@@ -64,7 +65,6 @@ Bash command line completion support for %{name}.
 
 %package fish-completion
 Summary:        Fish completion for %{name}
-Group:          System/Shells
 Requires:       %{name} = %{version}
 Supplements:    (%{name} and fish)
 BuildArch:      noarch
@@ -74,7 +74,6 @@ Fish command line completion support for %{name}.
 
 %package zsh-completion
 Summary:        Zsh completion for %{name}
-Group:          System/Shells
 Requires:       %{name} = %{version}
 Supplements:    (%{name} and zsh)
 BuildArch:      noarch
@@ -87,7 +86,7 @@ Zsh command line completion support for %{name}.
 
 %build
 # hash will be shortened by COMMIT_HASH:0:8 later
-COMMIT_HASH="$(sed -n 's/commit: \(.*\)/\1/p' %_sourcedir/%{name}.obsinfo)"
+COMMIT_HASH="$(sed -n 's/commit: \(.*\)/\1/p' %{_sourcedir}/%{name}.obsinfo)"
 
 DATE_FMT="+%%Y-%%m-%%dT%%H:%%M:%%SZ"
 BUILD_DATE=$(date -u -d "@${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u -r "${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u "${DATE_FMT}")

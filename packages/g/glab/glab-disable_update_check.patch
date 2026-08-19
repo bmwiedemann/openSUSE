@@ -4,10 +4,15 @@ Date: Sun, 16 Feb 2025 10:30:09 +0100
 Subject: [PATCH] disable update check
 
 Signed-off-by: Johannes Kastl <git@johannes-kastl.de>
+
+pdostal: rebased for 1.114.0 - the old config.yaml.lock/config_stub.go
+hunks no longer apply since upstream moved the default to a schema.go
+KeyDef table; restored the actual disabling effect by flipping that
+KeyDef's Default there instead.
 ---
- commands/config/config.go        | 199 +++++++++++++++++++++++++++++++
- internal/config/config.yaml.lock |   2 +-
- 3 files changed, 201 insertions(+), 2 deletions(-)
+ commands/config/config.go |  199 +++++++++++++++++++++++++++++++++++++++++++
+ internal/config/schema.go |    2 +-
+ 2 files changed, 200 insertions(+), 1 deletion(-)
  create mode 100644 commands/config/config.go
 
 diff --git a/commands/config/config.go b/commands/config/config.go
@@ -215,6 +220,19 @@ index 00000000..e71fe0a1
 +	cmd.Flags().BoolVarP(&isLocal, "local", "l", false, "Open '.git/glab-cli/config.yml' file instead of the global '~/.config/glab-cli/config.yml' file.")
 +	return cmd
 +}
+diff --git a/internal/config/schema.go b/internal/config/schema.go
+index 1111111..2222222 100644
+--- a/internal/config/schema.go
++++ b/internal/config/schema.go
+@@ -86,7 +86,7 @@ var KeySchema = []KeyDef{
+ 	},
+ 	{
+ 		Name: "check_update", Scope: ScopeGlobal, Type: TypeBool,
+-		Default: "true", UserSettable: true,
++		Default: "false", UserSettable: true,
+ 		Description: "Allow glab to automatically check for updates and notify you when there are new updates.",
+ 	},
+ 	{
 -- 
 2.51.2
 

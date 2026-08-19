@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue Aug 18 13:57:11 UTC 2026 - Pavel Dostál <pdostal@suse.com>
+
+- Update to version 1.114.0:
+  * feat(api): support dynamic custom headers for authenticating proxies
+  * feat(artifact-registry): add glab artifact-registry login --docker
+  * feat(artifact-registry): resolve artifact registries in the Docker
+    credential helper
+  * feat(mr): show source and target branches in view
+  * feat(update): detect more install methods for the upgrade nudge
+  * fix(cmdutils): resolve same-host SSH remotes to the right account
+  * fix(config): resolve YAML alias nodes in hosts config
+  * fix(git): detect "no git repository" by exit status, not message text
+  * fix: glab can not set group level variable masked or masked and hidden
+- Rebase glab-disable_update_check.patch for 1.114.0 and restore the
+  actual disabling effect: upstream moved the check_update default out
+  of internal/config/config.yaml.lock/config_stub.go (removed from the
+  source tree) into a internal/config/schema.go KeyDef table, which the
+  last rebase (1.102.0) missed updating - so glab has been shipping with
+  update checks NOT actually disabled since 1.102.0. Flip that KeyDef's
+  Default to "false" instead.
+
+-------------------------------------------------------------------
+Mon Aug 17 07:04:55 UTC 2026 - Pavel Dostál <pdostal@suse.com>
+
+- Add glab-CVE-2026-39821-idna-punycode.patch: reject all-ASCII xn--
+  Punycode labels in the vendored golang.org/x/net/idna package
+  regardless of Go's unicode.Version (boo#1266614, CVE-2026-39821).
+  Bumping the vendored x/net version alone does not fix this, as the
+  upstream check is gated behind unicode.Version >= 16.0.0, which our
+  Go toolchain does not yet report.
+- The remaining open VUL bugs against glab are already fixed by the
+  currently vendored dependency versions (x/net 0.56.0, x/crypto
+  0.54.0, go-retryablehttp 0.7.8), all above each CVE's fixed version
+  per the Go vulnerability database: boo#1235353, boo#1241815,
+  boo#1251467, boo#1251685, boo#1265775, boo#1265832, boo#1266172,
+  boo#1267155, boo#1227037.
+
+-------------------------------------------------------------------
 Wed Aug 12 05:55:28 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.113.0:
