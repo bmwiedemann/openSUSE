@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Aug 20 09:10:57 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 9.15.0:
+  * feat: remove dht
+  * refactor(ddgs): improve extract performance
+  * fix(engines): disable Google, Yandex
+  * **Full Changelog**:
+    https://github.com/deedy5/ddgs/compare/v9.14.4...v9.15.0
+
+-------------------------------------------------------------------
 Sun May 17 19:04:10 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 9.14.4:

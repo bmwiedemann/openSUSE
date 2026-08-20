@@ -56,4 +56,17 @@
     call bounded executor</comment>
     <requestid>1353612</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1a4abf581315c7c1a970d151478d3f6b</srcmd5>
+    <version>9.15.0</version>
+    <time>1787235397</time>
+    <user>anag_factory</user>
+    <comment>- update to 9.15.0:
+  * feat: remove dht
+  * refactor(ddgs): improve extract performance
+  * fix(engines): disable Google, Yandex
+  * **Full Changelog**:
+    https://github.com/deedy5/ddgs/compare/v9.14.4...v9.15.0</comment>
+    <requestid>1372194</requestid>
+  </revision>
 </revisionlist>
