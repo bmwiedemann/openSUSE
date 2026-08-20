@@ -360,4 +360,40 @@
     <comment></comment>
     <requestid>1369473</requestid>
   </revision>
+  <revision rev="46" vrev="5">
+    <srcmd5>5f146b1baaaf7ee91329184342a21eb3</srcmd5>
+    <version>2.7.0+git.1781190752.ede285d7</version>
+    <time>1787239103</time>
+    <user>anag_factory</user>
+    <comment>- bump rails stack v8.1.3.1, net-imap v0.6.6 and other gems (bsc#1268996,bsc#1273348,
+        bsc#1268996,bsc#1275179,bsc#1275183,bsc#1275188,bsc#1275200,bsc#1275213):
+  * actioncable-8.1.3.1.gem
+  * actionmailbox-8.1.3.1.gem
+  * actionmailer-8.1.3.1.gem
+  * actionpack-8.1.3.1.gem
+  * actiontext-8.1.3.1.gem
+  * actionview-8.1.3.1.gem
+  * activejob-8.1.3.1.gem
+  * activemodel-8.1.3.1.gem
+  * activerecord-8.1.3.1.gem
+  * activestorage-8.1.3.1.gem
+  * activesupport-8.1.3.1.gem
+  * concurrent-ruby-1.3.8.gem
+  * erb-6.0.6.gem
+  * gettext_i18n_rails_js-3.1.6.gem
+  * json-2.21.2.gem
+  * loofah-2.25.2.gem
+  * mail-2.9.1.gem
+  * net-imap-0.6.6.gem
+  * po_to_json-3.0.6.gem
+  * rails-8.1.3.1.gem
+  * rails-html-sanitizer-1.7.1.gem
+  * railties-8.1.3.1.gem
+  * rbs-4.1.2.gem
+  * rdoc-8.0.0.gem
+  * sorbet-runtime-0.6.13403.gem
+  * tilt-2.8.0.gem
+  * zeitwerk-2.8.3.gem</comment>
+    <requestid>1372002</requestid>
+  </revision>
 </revisionlist>

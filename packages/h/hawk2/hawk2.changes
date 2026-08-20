@@ -1,7 +1,8 @@
 -------------------------------------------------------------------
 Tue Aug  4 09:12:46 UTC 2026 - Aleksei Burlakov <aburlakov@suse.com>
 
-- bump rails stack v8.1.3.1, net-imap v0.6.6 and other gems (bsc#1268996,bsc#1273348):
+- bump rails stack v8.1.3.1, net-imap v0.6.6 and other gems (bsc#1268996,bsc#1273348,
+        bsc#1268996,bsc#1275179,bsc#1275183,bsc#1275188,bsc#1275200,bsc#1275213):
   * actioncable-8.1.3.1.gem
   * actionmailbox-8.1.3.1.gem
   * actionmailer-8.1.3.1.gem
