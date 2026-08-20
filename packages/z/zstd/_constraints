@@ -1,8 +1,13 @@
 <constraints>
-  <hardware>
-    <disk>
-      <!-- for fileRoundTripTest: ./datagen -g4193M -->
-      <size unit="G">6</size>
-    </disk>
-  </hardware>
+  <overwrite>
+    <conditions>
+      <!-- only the test flavour runs fileRoundTripTest: ./datagen -g4193M -->
+      <package>zstd:test</package>
+    </conditions>
+    <hardware>
+      <disk>
+        <size unit="G">6</size>
+      </disk>
+    </hardware>
+  </overwrite>
 </constraints>

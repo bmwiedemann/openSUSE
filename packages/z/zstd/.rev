@@ -486,4 +486,21 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1367612</requestid>
   </revision>
+  <revision rev="44" vrev="6">
+    <srcmd5>9973c6eb8f159b6ce1ca25c5cc565301</srcmd5>
+    <version>1.5.7</version>
+    <time>1787235241</time>
+    <user>anag_factory</user>
+    <comment>Move the tests into a multibuild flavor:
+  * speed up build from 1092s to 167s - important for bootstrap
+  * only apply the constraint to tests for faster scheduling
+
+from mpluskal: NOTE for whoever forwards this to Factory: openSUSE:Factory:Rings:0-Bootstrap
+  and openSUSE:Factory:Staging use an excludebuild: blacklist, so 'zstd:test'
+  would build in the rings unless factory-maintainers add
+  'BuildFlags: excludebuild:zstd:test' there, as already exists for
+  coreutils:testsuite. The _with_ringdisabled guard covers the rings but not
+  staging.</comment>
+    <requestid>1371841</requestid>
+  </revision>
 </revisionlist>

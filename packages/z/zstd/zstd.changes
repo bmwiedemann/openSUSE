@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 11 09:34:39 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Move the tests into a multibuild flavor:
+  * speed up build from 1092s to 167s - important for bootstrap
+  * only apply the constraint to tests for faster scheduling
+
+-------------------------------------------------------------------
 Fri Jul 17 05:18:39 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.de>
 
 - Cleanup .spec file

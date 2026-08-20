@@ -16,6 +16,21 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+# This flavour packages nothing -- it exists only to run the test suite --
+# so do not leave a zstd-test-debugsource behind either.
+%global debug_package %{nil}
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+# %%{name} carries the flavour suffix, so everything naming the upstream
+# project -- sources, subpackages, requires -- has to go through %%{origname}.
+%define origname zstd
+
 %bcond_without cmake
 
 %define libname libzstd1
@@ -24,16 +39,16 @@
 %else
 %define with_gzip 1
 %endif
-Name:           zstd
+Name:           %{origname}%{psuffix}
 Version:        1.5.7
 Release:        0
 Summary:        Zstandard compression tools
 License:        BSD-3-Clause AND GPL-2.0-only
 Group:          Productivity/Archiving/Compression
 URL:            https://github.com/facebook/zstd
-Source0:        https://github.com/facebook/zstd/releases/download/v%{version}/%{name}-%{version}.tar.gz
-Source1:        https://github.com/facebook/zstd/releases/download/v%{version}/%{name}-%{version}.tar.gz.sig
-Source2:        zstd.keyring
+Source0:        https://github.com/facebook/zstd/releases/download/v%{version}/%{origname}-%{version}.tar.gz
+Source1:        https://github.com/facebook/zstd/releases/download/v%{version}/%{origname}-%{version}.tar.gz.sig
+Source2:        %{origname}.keyring
 Source99:       baselibs.conf
 # PATCH-FIX-OPENSUSE -- 0001-Don-t-export-libzstd_static-CMake-target.patch
 Patch0:         0001-Don-t-export-libzstd_static-CMake-target.patch
@@ -48,7 +63,14 @@ BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 # for .gz support
 BuildRequires:  pkgconfig(zlib)
+%if %{without test}
 %{?suse_build_hwcaps_libs}
+%endif
+# The rings build every flavour unless told otherwise; the test suite has no
+# business in the bootstrap ring.
+%if %{with test} && 0%{?_with_ringdisabled}
+ExclusiveArch:  do_not_build
+%endif
 
 %description
 Zstd, short for Zstandard, is a lossless compression algorithm. Speed
@@ -62,6 +84,7 @@ compression than gzip. For roughly the same time, zstd achieves a
 ~12%% better ratio than gzip. LZMA outperforms zstd by ~10%% faster
 compression for same ratio, or ~1–4%% size reduction for same time.
 
+%if %{without test}
 %package -n %{libname}
 Summary:        Zstd compression library
 Group:          System/Libraries
@@ -72,25 +95,25 @@ targeting faster compression than zlib at comparable ratios.
 
 This subpackage contains the implementation as a shared library.
 
-%package -n lib%{name}-devel
+%package -n lib%{origname}-devel
 Summary:        Development files for the Zstd compression library
 Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
 Requires:       glibc-devel
 
-%description -n lib%{name}-devel
+%description -n lib%{origname}-devel
 Zstd, short for Zstandard, is a lossless compression algorithm,
 targeting faster compression than zlib at comparable ratios.
 
 Needed for compiling programs that link with the library.
 
-%package -n lib%{name}-devel-static
+%package -n lib%{origname}-devel-static
 Summary:        Development files for the Zstd compression library
 Group:          Development/Libraries/C and C++
 Requires:       glibc-devel-static
-Requires:       lib%{name}-devel = %{version}
+Requires:       lib%{origname}-devel = %{version}
 
-%description -n lib%{name}-devel-static
+%description -n lib%{origname}-devel-static
 Zstd, short for Zstandard, is a lossless compression algorithm,
 targeting faster compression than zlib at comparable ratios.
 
@@ -100,7 +123,7 @@ Needed for compiling programs that link with the library.
 %package gzip
 Summary:        zstd and zlib based gzip drop-in
 Group:          Productivity/Archiving/Compression
-Requires:       %{name} >= %{version}
+Requires:       %{origname} >= %{version}
 Conflicts:      busybox-gzip
 Conflicts:      gzip
 Conflicts:      alternative(gzip)
@@ -114,14 +137,19 @@ targeting faster compression than zlib at comparable ratios.
 This subpackage provides a compatible alternative to gzip(1) using
 an optimized deflate/zlib handling.
 %endif
+%endif
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{origname}-%{version}
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 export CFLAGS="%{optflags}"
 export CXXFLAGS="%{optflags} -std=c++11"
+%if %{with test}
+# Nothing to do: "make -C tests test-zstd" rebuilds the library and the CLI it
+# tests through upstream's plain Makefile, so a cmake build here is wasted work.
+%else
 %if %{with cmake}
 # %%cmake chdirs into ./build, so ./cmake resolves to the build/cmake sources
 %cmake ./cmake -DZSTD_BUILD_CONTRIB:BOOL=ON -DZSTD_ZLIB_SUPPORT:BOOL=ON
@@ -133,14 +161,20 @@ for dir in programs contrib/pzstd; do
   %make_build -C "$dir"
 done
 %endif
+%endif
 
 %check
+%if %{with test}
 export CFLAGS="%{optflags}"
 export CXXFLAGS="%{optflags} -std=c++11"
+# The full suite, including the large-data round trips gated behind
+# --test-large-data, which is what test-zstd (unlike "check") turns on.
 %make_build -C tests test-zstd
 #make_build -C contrib/pzstd test-pzstd
+%endif
 
 %install
+%if %{without test}
 %if %{with cmake}
 %cmake_install
 rm %{buildroot}%{_datadir}/doc/packages/zstd/zstd_manual.html
@@ -154,7 +188,9 @@ ln -s zstd %{buildroot}/%{_bindir}/gzip
 ln -s zstd %{buildroot}/%{_bindir}/gunzip
 ln -s zstdcat %{buildroot}/%{_bindir}/zcat
 %endif
+%endif
 
+%if %{without test}
 %ldconfig_scriptlets -n %{libname}
 
 %files
@@ -173,7 +209,7 @@ ln -s zstdcat %{buildroot}/%{_bindir}/zcat
 %license COPYING LICENSE
 %{_libdir}/libzstd.so.1*
 
-%files -n lib%{name}-devel
+%files -n lib%{origname}-devel
 %license COPYING LICENSE
 %{_includedir}/*.h
 %{_libdir}/pkgconfig/libzstd.pc
@@ -182,7 +218,7 @@ ln -s zstdcat %{buildroot}/%{_bindir}/zcat
 %{_libdir}/cmake/zstd/
 %endif
 
-%files -n lib%{name}-devel-static
+%files -n lib%{origname}-devel-static
 %license COPYING LICENSE
 %{_libdir}/libzstd.a
 
@@ -192,6 +228,7 @@ ln -s zstdcat %{buildroot}/%{_bindir}/zcat
 %{_bindir}/gzip
 %{_bindir}/gunzip
 %{_bindir}/zcat
+%endif
 %endif
 
 %changelog
