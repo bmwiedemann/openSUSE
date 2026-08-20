@@ -762,4 +762,41 @@ update to version 3.1.0
   * typing: Use objects from typing (redux)</comment>
     <requestid>1353859</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>32a7e454ce70d8c258c7c4456b71cd3a</srcmd5>
+    <version>10.2.1</version>
+    <time>1787235243</time>
+    <user>anag_factory</user>
+    <comment>- update to 10.2.1:
+  * Make block-storage endpoint optional for select commands
+  * share: Add support for AZs
+  * share: Import commands (2/n)
+  * network: Address review comments on VPNaaS addition
+  * network: Replace new use of keystoneclient
+  * docs: Remove references to python-keystoneclient
+  * typing: Add hints to new vpnaas commands
+  * docs: Add docs for missing commands
+  * docs: Restructure command-objects guide
+  * Neutron: Move vpnaas osc client code from neutronclient
+  * tests: Rename 'volume_sdk_client' -&gt; 'volume_client'
+  * volume: Migrate to 'volume' client alias
+  * Remove python-cinderclient
+  * tests: Use SDK objects for volume tests
+  * volume: Migrate 'block storage * manageable list' to SDK
+  * volume: Migrate 'block storage cluster *' to SDK
+  * volume: Migrate 'block storage cleanup' to SDK
+  * volume: Migrate 'volume qos *' to SDK
+  * volume: Migrate 'volume consistency group snapshot *' to SDK
+  * volume: Migrate 'volume consistency group *' to SDK
+  * share: Import commands (1/n)
+  * share: Import utils
+  * share: Temporarily ignore new manilaclient commands
+  * share: Fix nits in client creation
+  * share: Bootstrap new service
+  * zuul: Use openstack-python3-next-jobs template
+  * pre-commit: Bump dependencies
+  * network: Replace new use of keystoneclient
+  * typing: Add missing hints to network.v2.dynamic_routing</comment>
+    <requestid>1371530</requestid>
+  </revision>
 </revisionlist>

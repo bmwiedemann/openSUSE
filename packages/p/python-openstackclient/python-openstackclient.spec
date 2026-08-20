@@ -18,7 +18,7 @@
 
 %global pythons %{primary_python}
 Name:           python-openstackclient
-Version:        10.0.0
+Version:        10.2.1
 Release:        0
 Summary:        OpenStack Command-line Client
 License:        Apache-2.0
@@ -32,10 +32,12 @@ BuildRequires:  %{python_module ddt >= 1.0.1}
 BuildRequires:  %{python_module fixtures >= 3.0.0}
 BuildRequires:  %{python_module iso8601 >= 0.1.11}
 BuildRequires:  %{python_module keystoneclient >= 3.22.0}
-BuildRequires:  %{python_module openstacksdk >= 4.12.0}
+BuildRequires:  %{python_module manilaclient}
+BuildRequires:  %{python_module openstacksdk >= 4.14.0}
 BuildRequires:  %{python_module osc-lib >= 4.6.0}
 BuildRequires:  %{python_module oslotest}
 BuildRequires:  %{python_module osprofiler >= 1.4.0}
+BuildRequires:  %{python_module pbr >= 6.1.1}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module requests >= 2.27.0}
 BuildRequires:  %{python_module requests-mock >= 1.2.0}
@@ -52,7 +54,7 @@ Requires:       python-cliff >= 4.13.0
 Requires:       python-cryptography >= 2.7
 Requires:       python-iso8601 >= 0.1.11
 Requires:       python-keystoneclient >= 3.22.0
-Requires:       python-openstacksdk >= 4.12.0
+Requires:       python-openstacksdk >= 4.14.0
 Requires:       python-osc-lib >= 4.6.0
 Requires:       python-oslo.i18n >= 3.15.3
 Requires:       python-oslo.utils

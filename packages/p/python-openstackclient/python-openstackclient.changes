@@ -1,4 +1,140 @@
 -------------------------------------------------------------------
+Wed Aug  5 14:58:39 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 10.2.1:
+  * Make block-storage endpoint optional for select commands
+  * share: Add support for AZs
+  * share: Import commands (2/n)
+  * network: Address review comments on VPNaaS addition
+  * network: Replace new use of keystoneclient
+  * docs: Remove references to python-keystoneclient
+  * typing: Add hints to new vpnaas commands
+  * docs: Add docs for missing commands
+  * docs: Restructure command-objects guide
+  * Neutron: Move vpnaas osc client code from neutronclient
+  * tests: Rename 'volume_sdk_client' -> 'volume_client'
+  * volume: Migrate to 'volume' client alias
+  * Remove python-cinderclient
+  * tests: Use SDK objects for volume tests
+  * volume: Migrate 'block storage * manageable list' to SDK
+  * volume: Migrate 'block storage cluster *' to SDK
+  * volume: Migrate 'block storage cleanup' to SDK
+  * volume: Migrate 'volume qos *' to SDK
+  * volume: Migrate 'volume consistency group snapshot *' to SDK
+  * volume: Migrate 'volume consistency group *' to SDK
+  * share: Import commands (1/n)
+  * share: Import utils
+  * share: Temporarily ignore new manilaclient commands
+  * share: Fix nits in client creation
+  * share: Bootstrap new service
+  * zuul: Use openstack-python3-next-jobs template
+  * pre-commit: Bump dependencies
+  * network: Replace new use of keystoneclient
+  * typing: Add missing hints to network.v2.dynamic_routing
+  * Add security group default statefulness CLI commands
+  * common: Replace remaining use of keystoneclient
+  * volume: Replace remaining use of keystoneclient
+  * network: Replace remaining use of keystoneclient
+  * image: Replace remaining use of keystoneclient
+  * compute: Replace remaining use of keystoneclient
+  * Remove dead nova-network utils (redux)
+  * trivial: Replace references to private _proxy modules
+  * Add "network agent router set" command
+  * Remove workaround for network quota "router_routes"
+  * volume: Migrate 'volume message *' to SDK
+  * volume: Migrate 'volume backup record *' to SDK
+  * volume: Migrate 'volume transfer request *' to SDK
+  * volume: Migrate 'volume host *' to SDK
+  * volume: Migrate 'volume group *' to SDK
+  * volume: Migrate 'volume group type *' to SDK
+  * volume: Migrate 'volume type *' to SDK
+  * Identity: Migrate endpoint-project association commands to
+    SDK
+  * Add support for nova's unpin-az microversion 104
+  * volume: Migrate 'volume list' to SDK
+  * volume: Migrate 'volume set', 'volume unset' to SDK
+  * typing: Typing updates for openstacksdk 4.16.0
+  * Identity: Migrate 'policy' commands to SDK
+  * image: Document replacement for md-tag-create-multiple
+  * identity: Remove unused helper
+  * Add availability zone and host filters to aggregate list
+  * image v1: Migrate 'create image' volume calls to SDK
+  * compute: Replace remaining use of cinderclient
+  * typing: Typing updates for openstacksdk 4.15.0
+  * network: Add --evpn-vni to a Neutron router create command
+  * Fix package discovery
+  * tests: Remove unused fakes
+  * tests: Remove version suffixes
+  * volume: Add v3-specific qos specs module
+  * volume: Add v3-specific volume host module
+  * volume: Add v3-specific backup record module
+  * volume: Add v3-specific consistency group snapshot module
+  * volume: Add v3-specific consistency group module
+  * Neutron: Move dynamic-routing osc client code from
+    neutronclient
+  * volume: Add v3 volume backend support
+  * network: Do not show evpn_vni if not returned by API
+  * quota: Fix incorrect keypair usage in show command
+  * network: Add --advertise-host argument to "add subnet"
+  * common: Use importlib.metadata for package versions
+  * network: Accept name as positional arg for FWaaS create
+    commands
+  * Add --router-routes option to quota commands
+  * typing: Add types for _format_* helpers
+  * typing: Add types for _get_columns helpers
+  * typing: Require typed defs
+  * Remove dead nova-network utils
+  * image: Use pagination helper
+  * Add support for --max-items
+  * network: Add '--marker', '--limit' to most list commands
+  * typing: Typing updates for recent SDK changes
+  * Add PVLAN commands for Neutron
+  * Add functional tests for volume group CRUD
+  * Add groups quota option for volume quota set command
+  * network: Remove irrelevant TODO
+  * network: Prefer --agent-id to --long
+  * feat: add pagination to user and project list
+  * Fix up mypy errors
+  * Drop support for Python 3.10
+  * Identity: Migrate 'mapping' commands to SDK
+
+-------------------------------------------------------------------
+Sun Jun 14 21:19:10 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 10.1.0:
+  * Fix package discovery
+  * tests: Remove unused fakes
+  * tests: Remove version suffixes
+  * volume: Add v3-specific qos specs module
+  * volume: Add v3-specific volume host module
+  * volume: Add v3-specific backup record module
+  * volume: Add v3-specific consistency group snapshot module
+  * volume: Add v3-specific consistency group module
+  * volume: Add v3 volume backend support
+  * network: Do not show evpn_vni if not returned by API
+  * common: Use importlib.metadata for package versions
+  * network: Accept name as positional arg for FWaaS create
+    commands
+  * Add --router-routes option to quota commands
+  * typing: Add types for _format_* helpers
+  * typing: Add types for _get_columns helpers
+  * typing: Require typed defs
+  * Remove dead nova-network utils
+  * image: Use pagination helper
+  * Add support for --max-items
+  * network: Add '--marker', '--limit' to most list commands
+  * typing: Typing updates for recent SDK changes
+  * Add PVLAN commands for Neutron
+  * Add functional tests for volume group CRUD
+  * Add groups quota option for volume quota set command
+  * network: Remove irrelevant TODO
+  * network: Prefer --agent-id to --long
+  * feat: add pagination to user and project list
+  * Fix up mypy errors
+  * Drop support for Python 3.10
+  * Identity: Migrate 'mapping' commands to SDK
+
+-------------------------------------------------------------------
 Mon May 18 13:10:55 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 10.0.0:
