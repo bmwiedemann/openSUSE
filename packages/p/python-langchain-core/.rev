@@ -100,4 +100,33 @@ INTERDEPENDENT with the forthcoming python-langchain-openai 1.5.2 submit — ple
 </comment>
     <requestid>1371930</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f3a74443d0c342bd4d9a810ee970439a</srcmd5>
+    <version>1.6.0</version>
+    <time>1787235325</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.6.0:
+  * Add standard model exception types (ModelError and HTTP-status
+    subclasses) so provider failures share one hierarchy
+  * Allow deserializing RunnablePick
+  * convert_to_openai_function now handles callables and non-dict
+    mappings
+  * Fail fast when tool schemas cannot resolve forward refs during
+    serialization
+  * Require all nested properties for strict tool schemas
+  * Accept non-dict Mapping values in mustache templates
+  * Finalize chain-group runs on BaseException
+  * Resolve postponed annotations when detecting StructuredTool
+    injected arguments
+- Deselect test_benchmark_model, a wall-clock &lt;1s assertion that
+  already fails on slower OBS i586 workers
+
+INTERDEPENDENT REQUESTS - please stage together (will not build until these land):
+ * python-langchain-core 1.6.0
+ * python-langchain-openai 1.6.0 (also carries 1.5.2 vs Factory 1.5.1)
+ * python-langchain-anthropic 1.6.0
+Devel accepts: sr#1372135 (core), sr#1372136 (openai), sr#1372137 (anthropic).
+</comment>
+    <requestid>1372138</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Aug 20 06:00:23 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.6.0:
+  * Add standard model exception types (ModelError and HTTP-status
+    subclasses) so provider failures share one hierarchy
+  * Allow deserializing RunnablePick
+  * convert_to_openai_function now handles callables and non-dict
+    mappings
+  * Fail fast when tool schemas cannot resolve forward refs during
+    serialization
+  * Require all nested properties for strict tool schemas
+  * Accept non-dict Mapping values in mustache templates
+  * Finalize chain-group runs on BaseException
+  * Resolve postponed annotations when detecting StructuredTool
+    injected arguments
+- Deselect test_benchmark_model, a wall-clock <1s assertion that
+  already fails on slower OBS i586 workers
+
+-------------------------------------------------------------------
 Wed Aug 19 07:25:38 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.5.6:
