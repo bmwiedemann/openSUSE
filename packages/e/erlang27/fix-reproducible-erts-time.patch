@@ -1,0 +1,31 @@
+From 89a37f73a5c03bc0718ecb828dc745c6817ef2b4 Mon Sep 17 00:00:00 2001
+From: "Bernhard M. Wiedemann" <bwiedemann@suse.de>
+Date: Mon, 27 Jul 2026 15:14:34 +0200
+Subject: [PATCH] erts: Use SOURCE_DATE_EPOCH for the year in generated
+ erl_alloc_types.h
+
+The make_alloc_types generator embeds the current year in the copyright
+header of the generated erl_alloc_types.h, which ends up in the
+debugsource package and varies with the build clock. Honor
+SOURCE_DATE_EPOCH when set.
+
+Helps with issue #4417
+
+This patch was done while working on reproducible builds for openSUSE.
+---
+ erts/emulator/utils/make_alloc_types | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: otp-OTP-27.1.3/erts/emulator/utils/make_alloc_types
+===================================================================
+--- otp-OTP-27.1.3.orig/erts/emulator/utils/make_alloc_types
++++ otp-OTP-27.1.3/erts/emulator/utils/make_alloc_types
+@@ -188,7 +188,7 @@ print DST "/*
+  * -----------------------------------------------------------------------
+  *
+  * 
+- * Copyright Ericsson AB ", (1900 + (localtime)[5]), ". All Rights Reserved.
++ * Copyright Ericsson AB ", (1900 + (localtime($ENV{SOURCE_DATE_EPOCH} || time))[5]), ". All Rights Reserved.
+  * 
+  * Licensed under the Apache License, Version 2.0 (the \"License\");
+  * you may not use this file except in compliance with the License.

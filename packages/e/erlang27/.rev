@@ -44,4 +44,41 @@
   cache poisoning (bsc#1261726)</comment>
     <requestid>1356831</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>ccf22b8673431e5e2c5d1f2464a3c530</srcmd5>
+    <version>27.1.3</version>
+    <time>1787235299</time>
+    <user>anag_factory</user>
+    <comment>- Fixes for reproducable builds - ex_doc still needs updating for
+  docs
+  * fix-reproducible-asn1.patch
+  * fix-reproducible-docs-time.patch
+  * fix-reproducible-erts-time.patch
+  * fix-reproducible-zip.patch
+- Fix otp-R16B-rpath.patch to work with -p1
+- The following was fixed in a previous update and missed from the
+  changelog
+- CVE-2025-26618: otp: erlang: SSH SFTP packet size not verified
+  properly in Erlang OTP (bsc#1237467)
+  * fix-CVE-2025-26618.patch
+
+- CVE-2026-42792: epmd permanent DoS via EMFILE on accept(2) in
+  erts (bsc#1272908)
+  * fix-CVE-2026-42792.patch
+- CVE-2026-47078: Relative path traversal in zip:unzip/zip:extract
+  via check_dir_level depth-counter bypass (bsc#1272909)
+  * fix-CVE-2026-47078.patch
+- CVE-2026-48855: Exposure of Sensitive Information to an
+  Unauthorized Actor vulnerability in Erlang OTP ssh (ssh_sftpd
+  module) allows File Discovery. The SSH_FXP_READLINK handler in
+  ssh_sftpd sends the raw result of file:read_l ... (bsc#1268139)
+  * fix-CVE-2026-48855.patch
+- CVE-2026-48856: Sensitive Data Exposure vulnerability in Erlang
+  OTP inets (httpc_response module) allows Retrieve Embedded
+  Sensitive Data. The httpc client forwards the Authorization and
+  Proxy-Authorization request headers to  ... (bsc#1268141)
+  * fix-CVE-2026-48856.patch
+- CVE-2026-48858: Server-Side Request Forgery (SSRF) allows FTP</comment>
+    <requestid>1372102</requestid>
+  </revision>
 </revisionlist>

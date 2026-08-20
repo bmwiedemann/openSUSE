@@ -1,6 +1,104 @@
+Wed Aug  5 04:38:54 UTC 2026 - Simon Lees <sflees@suse.de>
+
+- Fixes for reproducable builds - ex_doc still needs updating for
+  docs
+  * fix-reproducible-asn1.patch
+  * fix-reproducible-docs-time.patch
+  * fix-reproducible-erts-time.patch
+  * fix-reproducible-zip.patch
+- Fix otp-R16B-rpath.patch to work with -p1
+- The following was fixed in a previous update and missed from the
+  changelog
+- CVE-2025-26618: otp: erlang: SSH SFTP packet size not verified
+  properly in Erlang OTP (bsc#1237467)
+  * fix-CVE-2025-26618.patch
+
+-------------------------------------------------------------------
+Fri Jul 31 04:13:53 UTC 2026 - Simon Lees <sflees@suse.de>
+
+- CVE-2026-42792: epmd permanent DoS via EMFILE on accept(2) in
+  erts (bsc#1272908)
+  * fix-CVE-2026-42792.patch
+- CVE-2026-47078: Relative path traversal in zip:unzip/zip:extract
+  via check_dir_level depth-counter bypass (bsc#1272909)
+  * fix-CVE-2026-47078.patch
+- CVE-2026-48855: Exposure of Sensitive Information to an
+  Unauthorized Actor vulnerability in Erlang OTP ssh (ssh_sftpd
+  module) allows File Discovery. The SSH_FXP_READLINK handler in
+  ssh_sftpd sends the raw result of file:read_l ... (bsc#1268139)
+  * fix-CVE-2026-48855.patch
+- CVE-2026-48856: Sensitive Data Exposure vulnerability in Erlang
+  OTP inets (httpc_response module) allows Retrieve Embedded
+  Sensitive Data. The httpc client forwards the Authorization and
+  Proxy-Authorization request headers to  ... (bsc#1268141)
+  * fix-CVE-2026-48856.patch
+- CVE-2026-48858: Server-Side Request Forgery (SSRF) allows FTP
+  bounce attacks and SSRF via an unvalidated PASV response IP
+  address. (bsc#1268142)
+  * fix-CVE-2026-48858.patch
+- CVE-2026-48860: Erlang/OTP ssl (inet_tls_dist module) allows
+  unauthenticated bypass of the distribution-over-TLS LAN allowlist
+  (bsc#1268146)
+  * fix-CVE-2026-48860.patch
+- CVE-2026-49759: Stack-based Buffer Overflow vulnerability in
+  Erlang OTP erts (inet_drv). (bsc#1268163)
+  * fix-CVE-2026-49759.patch
+- CVE-2026-49760: Stack-based Buffer Overflow vulnerability in
+  Erlang OTP (erl_interface). (bsc#1268164)
+  * fix-CVE-2026-49760.patch
+- CVE-2026-53422: SFTP REALPATH path-existence oracle allowing
+  filesystem enumeration outside configured root (bsc#1270245)
+  * fix-CVE-2026-53422.patch
+- CVE-2026-54886: SSH SFTP server denial of service via extended
+  channel data infinite loop (bsc#1270246)
+  * fix-CVE-2026-54886.patch
+- CVE-2026-54887: Use of Default Cryptographic Key vulnerability
+  allows predictable DTLS cookie computation during the startup
+  window (bsc#1270247)
+  * fix-CVE-2026-54887.patch
+- CVE-2026-54890: BEAM VM crash via integer underflow in
+  binary_to_term BIT_BINARY_EXT decoding (bsc#1272916)
+  * fix-CVE-2026-54890.patch
+- CVE-2026-54891: erlang: Erlang SSL: Unauthenticated data
+  injection during TLS handshake (bsc#1270250)
+  * fix-CVE-2026-54891.patch
+- CVE-2026-55737: Heap pointer corruption via signed/unsigned
+  mismatch in LARGE_TUPLE_EXT decoding in erts external term format
+  decoder (bsc#1272910)
+  * fix-CVE-2026-55737.patch
+- CVE-2026-55950: Time-of-check Time-of-use (TOCTOU) race condition
+  vulnerability allows an unauthenticated remote attacker to crash
+  all active DTLS sessions on a listener (bsc#1270253)
+  * fix-CVE-2026-55950.patch
+- CVE-2026-55952: The Erlang/OTP ssl application does not validate
+  that the PSK identity list and binder list carried in a TLS 1.3
+  ClientHello pre-shared key extension have equal length before
+  passing them to the session ticket  ... (bsc#1270258)
+  * fix-CVE-2026-55952.patch
+- CVE-2026-55953: TLS 1.2 and DTLS client accepts unoffered
+  anonymous cipher suite, bypassing server authentication
+  (bsc#1272911)
+  * fix-CVE-2026-55953.patch
+- CVE-2026-58227: TLS/DTLS denial of service via unbounded
+  recursion on cross-signed peer certificate chain (bsc#1272913)
+  * fix-CVE-2026-58227.patch
+- CVE-2026-59250: Megaco flex scanner buffer overflow via oversized
+  property parm name (bsc#1272914)
+  * fix-CVE-2026-59250.patch
+- CVE-2026-59251: Denial of service via exponential certificate
+  policy tree growth in path validation (bsc#1272915)
+  * fix-CVE-2026-59251.patch
+
+-------------------------------------------------------------------
+Tue Jun  9 12:31:59 UTC 2026 - Simon Lees <sflees@suse.de>
+
+- Fix 2038 warning for i586
+
 -------------------------------------------------------------------
 Tue Jun  2 02:44:13 UTC 2026 - Simon Lees <sflees@suse.de>
 
+- Disable wxwidgets build for SLE-15 + fix-determenistic-jar.patch
+- Disable Docs that are failing to build on s390x
 - Merge in fixes from SLE-16
 - CVE-2026-42789: `public_key` application accepts non-CA certificates
   as intermediate issuers and this enables chain forgery (bsc#1266449)

@@ -1,0 +1,45 @@
+From 47a19aa1b3694c4218aa075c676d743571abe845 Mon Sep 17 00:00:00 2001
+From: "Bernhard M. Wiedemann" <bwiedemann@suse.de>
+Date: Mon, 27 Jul 2026 15:13:28 +0200
+Subject: [PATCH] docs: Use SOURCE_DATE_EPOCH for the copyright year in doc
+ footers
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+The footer of every ex_doc-generated documentation page embeds the year
+of the build clock ("Copyright © 1996-<year> Ericsson AB"), making the
+erlang-doc package unreproducible when built at a different time. Honor
+the SOURCE_DATE_EPOCH environment variable
+(https://reproducible-builds.org/docs/source-date-epoch/) when set.
+
+Helps with issue #4417
+
+This patch was done while working on reproducible builds for openSUSE.
+---
+ make/ex_doc.exs | 12 +++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
+
+Index: otp-OTP-27.1.3/make/ex_doc.exs
+===================================================================
+--- otp-OTP-27.1.3.orig/make/ex_doc.exs
++++ otp-OTP-27.1.3/make/ex_doc.exs
+@@ -156,7 +156,17 @@ extras =
+ 
+ annotations = Access.get(local_config, :annotations_for_docs, fn _ -> [] end)
+ 
+-current_datetime = System.os_time() |> DateTime.from_unix!(:native)
++current_datetime =
++  case System.get_env("SOURCE_DATE_EPOCH") do
++    nil ->
++      System.os_time() |> DateTime.from_unix!(:native)
++
++    epoch ->
++      case Integer.parse(epoch) do
++        {seconds, ""} -> DateTime.from_unix!(seconds)
++        _ -> System.os_time() |> DateTime.from_unix!(:native)
++      end
++  end
+ 
+ config = [
+   proglang: :erlang,

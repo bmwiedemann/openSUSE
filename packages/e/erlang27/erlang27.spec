@@ -15,7 +15,14 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%ifarch s390x
+%if %{suse_version} < 1600
+%bcond_with wxwidgets
+# Docs also don't build without wxwidget
+%else
+%bcond_without wxwidgets
+%endif
+
+%if "%{_arch}" == "s390x" || ! %{with wxwidgets}
 # Disable building docs on big endian architectures for now
 # as we're using the pre-built ex_doc
 %bcond_with docs
@@ -52,22 +59,50 @@ Source10:       epmd-user.conf
 Patch0:         otp-R16B-rpath.patch
 # PATCH-FIX-OPENSUSE erlang-not-install-misc.patch - matwey.kornilov@gmail.com -- patch from Fedora, this removes unneeded magic
 Patch4:         erlang-not-install-misc.patch
+Patch5:         fix-reproducible-zip.patch
+Patch6:         fix-reproducible-erts-time.patch
+Patch7:         fix-reproducible-docs-time.patch
+Patch8:         fix-reproducible-asn1.patch
 # Take the latest ssh stack from the maint-27 branch
-Patch5:         feature-fix-update-ssh-stack.patch
-Patch6:         fix-CVE-2026-21620.patch
-Patch7:         fix-CVE-2026-23941.patch
-Patch8:         fix-CVE-2026-23942.patch
-Patch9:         fix-CVE-2026-23943.patch
-Patch10:        fix-CVE-2026-28808.patch
-Patch11:        fix-randomize-inet_res.patch
-Patch12:        fix-CVE-2026-28810.patch
-Patch13:        fix-CVE-2026-32144.patch
-Patch14:        fix-determenistic-jar.patch
-Patch15:        fix-CVE-2026-32147.patch
-Patch16:        fix-CVE-2026-42789.patch
-Patch17:        fix-CVE-2026-42790.patch
-Patch18:        fix-CVE-2026-42791.patch
-Patch19:        fix-CVE-2025-4748.patch
+Patch9:         feature-fix-update-ssh-stack.patch
+Patch10:        fix-CVE-2026-21620.patch
+Patch11:        fix-CVE-2026-23941.patch
+Patch12:        fix-CVE-2026-23942.patch
+Patch13:        fix-CVE-2026-23943.patch
+Patch14:        fix-CVE-2026-28808.patch
+Patch15:        fix-randomize-inet_res.patch
+Patch16:        fix-CVE-2026-28810.patch
+Patch17:        fix-CVE-2026-32144.patch
+# SLE 15 Java doesn't support this
+%if 0%{?suse_version} >= 1600
+Patch18:        fix-determenistic-jar.patch
+%endif
+Patch19:        fix-CVE-2026-32147.patch
+Patch20:        fix-CVE-2026-42789.patch
+Patch21:        fix-CVE-2026-42790.patch
+Patch22:        fix-CVE-2026-42791.patch
+Patch23:        fix-CVE-2025-4748.patch
+Patch24:        fix-CVE-2026-42792.patch
+Patch25:        fix-CVE-2026-47078.patch
+Patch26:        fix-CVE-2026-48855.patch
+Patch27:        fix-CVE-2026-48856.patch
+Patch28:        fix-CVE-2026-48858.patch
+Patch29:        fix-CVE-2026-48860.patch
+Patch30:        fix-CVE-2026-49759.patch
+Patch31:        fix-CVE-2026-49760.patch
+Patch32:        fix-CVE-2026-53422.patch
+Patch33:        fix-CVE-2026-54886.patch
+Patch34:        fix-CVE-2026-54887.patch
+Patch35:        fix-CVE-2026-54890.patch
+Patch36:        fix-CVE-2026-54891.patch
+Patch37:        fix-CVE-2026-55737.patch
+Patch38:        fix-CVE-2026-55950.patch
+Patch39:        fix-CVE-2026-55952.patch
+Patch40:        fix-CVE-2026-55953.patch
+Patch41:        fix-CVE-2026-58227.patch
+Patch42:        fix-CVE-2026-59250.patch
+Patch43:        fix-CVE-2026-59251.patch
+
 BuildRequires:  Mesa-devel
 BuildRequires:  autoconf
 BuildRequires:  dejavu-fonts
@@ -80,7 +115,10 @@ BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  sysuser-tools
 BuildRequires:  update-alternatives
+# SLE 15 Doesn't have this
+%if %{with wxwidgets}
 BuildRequires:  wxWidgets-devel >= 3.1
+%endif
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(krb5)
 BuildRequires:  pkgconfig(libsystemd)
@@ -103,6 +141,7 @@ environment. Erlang has built-in support for concurrency, distribution
 and fault tolerance. Erlang is used in several large telecommunication
 systems from Ericsson.
 
+%if %{with wxwidgets}
 %package debugger
 Summary:        A debugger for debugging and testing of Erlang programs
 Requires:       %{name} = %{version}
@@ -112,6 +151,7 @@ Conflicts:      otherproviders(erlang-debugger)
 
 %description debugger
 A debugger for debugging and testing of Erlang programs.
+%endif
 
 %package dialyzer
 Summary:        A DIscrepany AnaLYZer for ERlang programs
@@ -133,6 +173,7 @@ This module provides the interface with which a user can implement a Diameter
 node that sends and receives messages using the Diameter protocol as defined in
 RFC 6733.
 
+%if %{with docs}
 %package doc
 Summary:        Erlang documentation
 Requires:       %{name} = %{version}
@@ -141,6 +182,7 @@ Conflicts:      otherproviders(erlang-doc)
 
 %description doc
 Documentation for Erlang.
+%endif
 
 %package epmd
 Summary:        Erlang Port Mapper daemon
@@ -153,6 +195,7 @@ Conflicts:      otherproviders(erlang-epmd)
 %description epmd
 The Erlang Port Mapper daemon acts as a name server on all hosts involved in distributed Erlang computations.
 
+%if %{with wxwidgets}
 %package et
 Summary:        An event tracer for Erlang programs
 Requires:       %{name} = %{version}
@@ -162,6 +205,7 @@ Conflicts:      otherproviders(erlang-et)
 
 %description et
 An event tracer for Erlang programs.
+%endif
 
 %package jinterface
 Summary:        Erlang Java Interface
@@ -188,6 +232,7 @@ dependencies and enables interactive customization of a
 target system. The backend provides a batch interface
 for generation of customized target systems.
 
+%if %{with wxwidgets}
 %package observer
 Summary:        A GUI tool for observing an erlang system
 Requires:       %{name} = %{version}
@@ -199,6 +244,7 @@ Conflicts:      otherproviders(erlang-observer)
 The observer is gui frontend containing various tools to inspect a system.
 It displays system information, application structures, process information,
 ets or mnesia tables and a frontend for tracing with ttb.
+%endif
 
 %package src
 Summary:        Erlang/OTP applications sources
@@ -211,6 +257,7 @@ Erlang sources for all the applications in the Erlang/OTP system.
 They are useful for educational purpose and as a base for creating
 embedded systems.
 
+%if %{with wxwidgets}
 %package debugger-src
 Summary:        Erlang/OTP debugger application sources
 Requires:       %{name}-debugger = %{version}
@@ -221,6 +268,7 @@ Conflicts:      otherproviders(erlang-debugger-src)
 Erlang sources for the debugger application in the Erlang/OTP system.
 They are useful for educational purpose and as a base for creating
 embedded systems.
+%endif
 
 %package dialyzer-src
 Summary:        Erlang/OTP dialyzer application sources
@@ -244,6 +292,7 @@ Erlang sources for the Diameter application in the Erlang/OTP system.
 They are useful for educational purpose and as a base for creating
 embedded systems.
 
+%if %{with wxwidgets}
 %package et-src
 Summary:        Erlang/OTP et application sources
 Requires:       %{name}-et = %{version}
@@ -254,6 +303,7 @@ Conflicts:      otherproviders(erlang-et-src)
 Erlang sources for the et application in the Erlang/OTP system.
 They are useful for educational purpose and as a base for creating
 embedded systems.
+%endif
 
 %package jinterface-src
 Summary:        Erlang/OTP jinterface application sources
@@ -277,6 +327,7 @@ Erlang sources for the reltool application in the Erlang/OTP system.
 They are useful for educational purpose and as a base for creating
 embedded systems.
 
+%if %{with wxwidgets}
 %package observer-src
 Summary:        Erlang/OTP observer application sources
 Requires:       %{name}-observer = %{version}
@@ -307,26 +358,10 @@ Conflicts:      otherproviders(erlang-wx)
 
 %description wx
 A Graphics System used to write platform independent user interfaces.
+%endif
 
 %prep
-%setup -q -n otp-OTP-%{version}
-%patch -P 0 -p1 -b .rpath
-%patch -P 4 -p1
-%patch -P 5 -p1
-%patch -P 6 -p1
-%patch -P 7 -p1
-%patch -P 8 -p1
-%patch -P 9 -p1
-%patch -P 10 -p1
-%patch -P 11 -p1
-%patch -P 12 -p1
-%patch -P 13 -p1
-%patch -P 14 -p1
-%patch -P 15 -p1
-%patch -P 16 -p1
-%patch -P 17 -p1
-%patch -P 18 -p1
-%patch -P 19 -p1
+%autosetup -p1 -n otp-OTP-%{version}
 
 cp %{SOURCE9} .
 install -m 0755 %{SOURCE1} ./bin/ex_doc
@@ -354,6 +389,15 @@ export LANG="en_US.UTF-8"
     --enable-threads \
     --enable-smp-support \
     --enable-kernel-poll \
+%if ! %{with wxwidgets}
+    --without-wx \
+    --without-debugger  \
+    --without-observer \
+    --without-et \
+%endif
+%ifarch %{ix86}
+    --disable-year2038 \
+%endif
     --enable-shared-zlib
 # clean stalled files before rebuild them
 %make_build clean
@@ -539,9 +583,11 @@ install -m 0644 %{SOURCE10} %{buildroot}%{_sysusersdir}
 %{_datadir}/emacs/site-lisp/erlang.el
 %{_rpmmacrodir}/macros.erlang
 
+%if %{with wxwidgets}
 %files debugger
 %{_libdir}/erlang/lib/debugger-*/
 %exclude %{_libdir}/erlang/lib/debugger-*/src
+%endif
 
 %files dialyzer
 %{_bindir}/dialyzer
@@ -570,10 +616,12 @@ install -m 0644 %{SOURCE10} %{buildroot}%{_sysusersdir}
 %exclude %{_libdir}/erlang/lib/wx-*/doc/chunks
 %endif
 
+%if %{with wxwidgets}
 %files et
 %dir %{_libdir}/erlang/lib/et-*/
 %{_libdir}/erlang/lib/et-*/*
 %exclude %{_libdir}/erlang/lib/et-*/src
+%endif
 
 %files epmd
 %{_bindir}/epmd
@@ -600,6 +648,7 @@ install -m 0644 %{SOURCE10} %{buildroot}%{_sysusersdir}
 %{_libdir}/erlang/lib/reltool-*/*
 %exclude %{_libdir}/erlang/lib/reltool-*/src
 
+%if %{with wxwidgets}
 %files observer
 %dir %{_libdir}/erlang/lib/observer-*/
 %{_libdir}/erlang/lib/observer-*/*
@@ -609,6 +658,7 @@ install -m 0644 %{SOURCE10} %{buildroot}%{_sysusersdir}
 %dir %{_libdir}/erlang/lib/wx-*/
 %{_libdir}/erlang/lib/wx-*/*
 %exclude %{_libdir}/erlang/lib/wx-*/src
+%endif
 
 %files src
 %exclude %{_libdir}/erlang/lib/erl_interface-*/src/INSTALL
@@ -627,9 +677,11 @@ install -m 0644 %{SOURCE10} %{buildroot}%{_sysusersdir}
 %exclude %{_libdir}/erlang/lib/observer-*/src
 %exclude %{_libdir}/erlang/lib/wx-*/src
 
+%if %{with wxwidgets}
 %files debugger-src
 %dir %{_libdir}/erlang/lib/debugger-*/src
 %{_libdir}/erlang/lib/debugger-*/src/*
+%endif
 
 %files dialyzer-src
 %dir %{_libdir}/erlang/lib/dialyzer-*/src
@@ -639,9 +691,11 @@ install -m 0644 %{SOURCE10} %{buildroot}%{_sysusersdir}
 %dir %{_libdir}/erlang/lib/diameter-*/src
 %{_libdir}/erlang/lib/diameter-*/src/*
 
+%if %{with wxwidgets}
 %files et-src
 %dir %{_libdir}/erlang/lib/et-*/src
 %{_libdir}/erlang/lib/et-*/src/*
+%endif
 
 %files jinterface-src
 %dir %{_libdir}/erlang/lib/jinterface-*/java_src
@@ -651,6 +705,7 @@ install -m 0644 %{SOURCE10} %{buildroot}%{_sysusersdir}
 %dir %{_libdir}/erlang/lib/reltool-*/src
 %{_libdir}/erlang/lib/reltool-*/src/*
 
+%if %{with wxwidgets}
 %files observer-src
 %dir %{_libdir}/erlang/lib/observer-*/src
 %{_libdir}/erlang/lib/observer-*/src/*
@@ -658,5 +713,6 @@ install -m 0644 %{SOURCE10} %{buildroot}%{_sysusersdir}
 %files wx-src
 %dir %{_libdir}/erlang/lib/wx-*/src
 %{_libdir}/erlang/lib/wx-*/src/*
+%endif
 
 %changelog
