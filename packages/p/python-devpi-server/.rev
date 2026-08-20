@@ -299,4 +299,21 @@
     mirror. Refs #1018</comment>
     <requestid>1353590</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>900bdcb148d2e4d92d044e207104e3c4</srcmd5>
+    <version>6.20.3</version>
+    <time>1787235419</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.20.3:
+  * Fix fetching files from re-created mirrors (for example after
+    import or delete and create) without fetching simple project
+    page first. This happens when uv uses a package URL directly
+    from a lock file.
+  * Search for METADATA file if the generated name with
+    normalized project and version doesn't match. This fixes
+    serving core metadata for older wheels.
+  * Fix logic error which allowed unauthorized fetching of
+    replication data.</comment>
+    <requestid>1372223</requestid>
+  </revision>
 </revisionlist>
