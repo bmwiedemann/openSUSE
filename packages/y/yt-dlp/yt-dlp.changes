@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Aug 20 05:23:34 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2026.08.19
+  * utils: float_or_none: Catch OverflowError
+  * americastestkitchen: Fix season/series extraction
+  * apple: Rework extractors
+  * ard: Remove dead extractor
+  * bandcamp: Support browser impersonation
+  * bfmtv: Fix extractor
+  * instagram: Fix logged-in extraction
+  * showroom: Rework extractors
+  * tiktok: Fix extractor
+  * tiktok: Fix formats extraction
+  * tiktok: Support share URLs
+  * twitter: broadcast: Fix events handling
+  * vimeo: Remove ios and macos clients
+  * whyp: Fix extractor
+  * youtube: Add visionos player client
+  * youtube: Add web_embedded client fallbacks
+  * youtube: Extract channel_follower_count for collaborators
+  * youtube: Fix live adaptive fragments generation
+  * youtube: Remove android_vr from default clients
+  * youtube: tab: Always extract channel metadata
+  * hls: Fix crash on empty fragment lists in tests
+
+-------------------------------------------------------------------
 Sun Jul  5 13:08:21 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 2026.07.04
