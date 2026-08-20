@@ -3169,6 +3169,7 @@ unsorted:
   - davfs2 
   - davix 
   - davix-devel 
+  - davix-tests 
   - dazzle-list-counters 
   - db48-doc 
   - dbench 
@@ -14375,6 +14376,7 @@ unsorted:
   - libjbig2-32bit 
   - libjbig2dec0 
   - libjcat-devel 
+  - libjcat-tests 
   - libjcat1 
   - libjim0_82 
   - libjodycode-devel 
@@ -16257,7 +16259,7 @@ unsorted:
   - librsb0 
   - librseq-devel 
   - librseq0 
-  - librssguard-5_2_4 
+  - librssguard-5_2_5 
   - librssguard-devel 
   - librsvg-2-2-32bit 
   - librsvg-devel 
@@ -23487,7 +23489,6 @@ unsorted:
   - pmacct 
   - pmbootstrap 
   - pmccabe 
-  - pmdk-convert 
   - pmdk-devel-doc 
   - pmdk-tools 
   - pmidi 
@@ -24434,7 +24435,6 @@ unsorted:
   - python311-hatch_vcs 
   - python311-hatchling 
   - python311-idle 
-  - python311-igwn-auth-utils 
   - python311-onnxruntime 
   - python311-packaging 
   - python311-pathspec 
