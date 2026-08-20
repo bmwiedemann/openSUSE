@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Aug 13 03:46:52 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 26.8.0
+  * kde#518796: skrooge-boursorama.py stop to work for some values
+  * kde#520749: Skrooge can't load skg file after org.kde.Platform
+    update
+  * Correction: Sources' keys not displayed in settings
+  * Feature: Keep focus on selection when the current filter
+    is changed
+  * Feature: New option to choose to currency format
+    (currency or numerical)
+  * Feature: Better management of deprecated source of download
+    of currencies
+
+-------------------------------------------------------------------
 Thu Jul  2 16:28:16 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to 26.4.0

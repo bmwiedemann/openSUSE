@@ -26,7 +26,7 @@
 %define with_qtwebengine 1
 %endif
 Name:           skrooge
-Version:        26.4.0
+Version:        26.8.0
 Release:        0
 Summary:        A Personal Finance Management Tool
 License:        GPL-3.0-only
@@ -130,7 +130,9 @@ sed -i 's#env python3#python3#' %{buildroot}%{_kf6_sharedir}/skrooge/*.py
 %doc CHANGELOG README.md AUTHORS
 %doc %lang(en) %{_kf6_htmldir}/en/skrooge/
 %{_kf6_applicationsdir}/org.kde.skrooge.desktop
+%{_kf6_applicationsdir}/org.kde.skroogecompanion.desktop
 %{_kf6_appstreamdir}/org.kde.skrooge.appdata.xml
+%{_kf6_appstreamdir}/org.kde.skroogecompanion.appdata.xml
 %{_kf6_bindir}/skrooge*
 %{_kf6_configkcfgdir}/skg*.kcfg
 %{_kf6_iconsdir}/breeze*/actions/22/*.svgz
