@@ -69,4 +69,14 @@
     <comment></comment>
     <requestid>1365235</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c71219ba5f8cdeebb3d0c0b81933e1b1</srcmd5>
+    <version>3.0.1</version>
+    <time>1787235393</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.0.1:
+  * **FIX**: Fix case where character or number ranges could
+    throw an exception (@santhreal).</comment>
+    <requestid>1372179</requestid>
+  </revision>
 </revisionlist>

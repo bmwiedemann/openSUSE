@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 20 09:04:41 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.1:
+  * **FIX**: Fix case where character or number ranges could
+    throw an exception (@santhreal).
+
+-------------------------------------------------------------------
 Sun Jul 12 14:12:35 UTC 2026 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 3.0:
