@@ -170,12 +170,13 @@ sed -i "s,share/bcc/introspection,bin," introspection/CMakeLists.txt
 export LD_LIBRARY_PATH="%{_builddir}%{_libdir}"
 export PATH="%{_builddir}%{_bindir}":$PATH
 
-mkdir build
-pushd build
-# FIXME: you should use the %%cmake macros
-CFLAGS="%{optflags}" CXXFLAGS="%{optflags}" cmake \
+python_cmds=
+%python_expand python_cmds+="$python;"
+
+pushd .
+%cmake \
 	-DCMAKE_USE_LIBBPF_PACKAGE=yes \
-	-DPYTHON_CMD=python3 \
+	-DPYTHON_CMD="${python_cmds%;}" \
 	-DREVISION=%{version} \
 	-DCMAKE_INSTALL_PREFIX=%{_prefix} \
 %if 0%{?suse_version} > 1320
@@ -189,9 +190,8 @@ CFLAGS="%{optflags}" CXXFLAGS="%{optflags}" cmake \
 %ifarch %{arm} || %{ix86}
 	-DENABLE_USDT=OFF \
 %endif
-	-DENABLE_TESTS=OFF \
-	..
-%make_build
+	-DENABLE_TESTS=OFF
+%cmake_build
 popd
 
 # Fix up #!-lines.
@@ -213,18 +213,12 @@ popd
 %endif
 
 %install
-pushd build
-%make_install
+%cmake_install
 
 %if 0%{?suse_version} <= 1500 && 0%{?sle_version} < 150500
 # Remove bps due to the incomplete support in kernel (bsc#1085403)
 rm -f %{buildroot}/%{_bindir}/bps
 %endif
-
-%python_expand test %{$python_sitelib} = %{python3_sitelib} || rm -rfv %{buildroot}%{$python_sitelib}/bcc*
-%python_expand test %{$python_sitelib} = %{python3_sitelib} || (install -d %{buildroot}%{$python_sitelib} && cp -av %{buildroot}%{python3_sitelib}/bcc* %{buildroot}%{$python_sitelib}/ && rm -rfv %{buildroot}%{$python_sitelib}/bcc/__pycache__)
-
-popd
 
 %if %{with_libbpf_tools}
 pushd libbpf-tools

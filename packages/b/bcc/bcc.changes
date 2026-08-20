@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Aug 19 14:39:12 UTC 2026 - Hoyeon Lee <hoyeon.lee@suse.com>
+
+- Refactor CMake-based build flow with %cmake/%cmake_{build,install}
+  - Preserve correct directory while building with %cmake
+
+-------------------------------------------------------------------
+Wed Aug 19 14:26:02 UTC 2026 - Hoyeon Lee <hoyeon.lee@suse.com>
+
+- Update multi-Python packaging for CMake
+  - Build all supported Python flavours through a cmake PYTHON_CMD list
+    generated at build time from %python_expand
+
+-------------------------------------------------------------------
 Wed Aug 19 11:58:19 UTC 2026 - Hoyeon Lee <hoyeon.lee@suse.com>
 
 - Fix multi-Python packaging
