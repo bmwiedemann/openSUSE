@@ -1,7 +1,7 @@
-Index: rssguard-5.2.0/localization/CMakeLists.txt
+Index: rssguard-5.2.5/localization/CMakeLists.txt
 ===================================================================
---- rssguard-5.2.0.orig/localization/CMakeLists.txt
-+++ rssguard-5.2.0/localization/CMakeLists.txt
+--- rssguard-5.2.5.orig/localization/CMakeLists.txt
++++ rssguard-5.2.5/localization/CMakeLists.txt
 @@ -8,7 +8,7 @@ if(UPDATE_TRANSLATIONS AND BUILD_WITH_QT
      "${CMAKE_SOURCE_DIR}/src/librssguard*/*.h"
      "${CMAKE_SOURCE_DIR}/src/librssguard*/*.ui")
@@ -27,11 +27,11 @@ Index: rssguard-5.2.0/localization/CMakeLists.txt
 -  add_dependencies(rssguard rssguard_lrelease)
 +  add_dependencies(rssguard-${APP_VERSION} rssguard_lrelease)
  endif()
-Index: rssguard-5.2.0/src/librssguard/CMakeLists.txt
+Index: rssguard-5.2.5/src/librssguard/CMakeLists.txt
 ===================================================================
---- rssguard-5.2.0.orig/src/librssguard/CMakeLists.txt
-+++ rssguard-5.2.0/src/librssguard/CMakeLists.txt
-@@ -530,11 +530,11 @@ if(WIN32)
+--- rssguard-5.2.5.orig/src/librssguard/CMakeLists.txt
++++ rssguard-5.2.5/src/librssguard/CMakeLists.txt
+@@ -547,11 +547,11 @@ if(WIN32)
    list(APPEND SOURCES "${CMAKE_BINARY_DIR}/rssguard.rc")
  endif()
  
@@ -45,7 +45,7 @@ Index: rssguard-5.2.0/src/librssguard/CMakeLists.txt
      PRIVATE
      FORCE_BUNDLE_ICONS
    )
-@@ -542,7 +542,7 @@ if(FORCE_BUNDLE_ICONS)
+@@ -559,7 +559,7 @@ if(FORCE_BUNDLE_ICONS)
    message(STATUS "Forcibly bundling icon themes.")
  endif()
  
@@ -54,7 +54,7 @@ Index: rssguard-5.2.0/src/librssguard/CMakeLists.txt
    PUBLIC
    ${CMAKE_CURRENT_SOURCE_DIR}
    ${CMAKE_CURRENT_SOURCE_DIR}/gui
-@@ -558,31 +558,31 @@ target_include_directories(rssguard
+@@ -575,31 +575,31 @@ target_include_directories(rssguard
  )
  
  # qtlinq
@@ -92,7 +92,7 @@ Index: rssguard-5.2.0/src/librssguard/CMakeLists.txt
    Qt${QT_VERSION_MAJOR}::Core
    Qt${QT_VERSION_MAJOR}::Gui
    Qt${QT_VERSION_MAJOR}::Network
-@@ -595,117 +595,117 @@ target_link_libraries(rssguard PUBLIC
+@@ -612,111 +612,111 @@ target_link_libraries(rssguard PUBLIC
  )
  
  if(WEB_ARTICLE_VIEWER_WEBENGINE)
@@ -120,13 +120,6 @@ Index: rssguard-5.2.0/src/librssguard/CMakeLists.txt
 -  target_link_libraries(rssguard PUBLIC
 +  target_link_libraries(rssguard-${APP_VERSION} PUBLIC
      Qt${QT_VERSION_MAJOR}::Multimedia
-   )
- endif()
- 
- if(ENABLE_TESTS)
--  target_link_libraries(rssguard PUBLIC
-+  target_link_libraries(rssguard-${APP_VERSION} PUBLIC
-     Qt${QT_VERSION_MAJOR}::Test
    )
  endif()
  
@@ -230,10 +223,10 @@ Index: rssguard-5.2.0/src/librssguard/CMakeLists.txt
      PRIVATE
      LOAD_PLUGINS_FROM_PARENT
    )
-Index: rssguard-5.2.0/src/rssguard/CMakeLists.txt
+Index: rssguard-5.2.5/src/rssguard/CMakeLists.txt
 ===================================================================
---- rssguard-5.2.0.orig/src/rssguard/CMakeLists.txt
-+++ rssguard-5.2.0/src/rssguard/CMakeLists.txt
+--- rssguard-5.2.5.orig/src/rssguard/CMakeLists.txt
++++ rssguard-5.2.5/src/rssguard/CMakeLists.txt
 @@ -29,7 +29,7 @@ target_link_libraries(app PUBLIC
    Qt${QT_VERSION_MAJOR}::Core
    Qt${QT_VERSION_MAJOR}::Gui
@@ -243,10 +236,10 @@ Index: rssguard-5.2.0/src/rssguard/CMakeLists.txt
  )
  
  if(APPLE)
-Index: rssguard-5.2.0/src/cmake_plugins.cmake
+Index: rssguard-5.2.5/src/cmake_plugins.cmake
 ===================================================================
---- rssguard-5.2.0.orig/src/cmake_plugins.cmake
-+++ rssguard-5.2.0/src/cmake_plugins.cmake
+--- rssguard-5.2.5.orig/src/cmake_plugins.cmake
++++ rssguard-5.2.5/src/cmake_plugins.cmake
 @@ -15,7 +15,7 @@ function(prepare_rssguard_plugin plugin_
    add_library(${PLUGIN_TARGET} SHARED ${SOURCES} ${QM_FILES})
  
@@ -256,10 +249,10 @@ Index: rssguard-5.2.0/src/cmake_plugins.cmake
    )
  
    target_compile_definitions(${plugin_target_name}
-Index: rssguard-5.2.0/tests/CMakeLists.txt
+Index: rssguard-5.2.5/tests/CMakeLists.txt
 ===================================================================
---- rssguard-5.2.0.orig/tests/CMakeLists.txt
-+++ rssguard-5.2.0/tests/CMakeLists.txt
+--- rssguard-5.2.5.orig/tests/CMakeLists.txt
++++ rssguard-5.2.5/tests/CMakeLists.txt
 @@ -9,14 +9,14 @@ function(add_rssguard_test TEST_TARGET)
    target_link_libraries(${TEST_TARGET}
      PRIVATE

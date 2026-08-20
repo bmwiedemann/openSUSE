@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Aug 20 11:14:51 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to version 5.2.5:
+  * changelog
+  * Czech translation for rssguard_en.ts [skip ci] (#2412)
+  * fix #2407
+  * changelog
+  * fix qt5 article filter object conversion problem
+  * clear history when loading article
+  * some changes related to #2408 and some unrelated refactoring etc
+  * docs for #2411
+  * separate benchmarks #2409
+  * separate benchmarks #2409
+  * cleanup
+  * hopefully fix #2410
+- Rebase rssguard-add_library_version.patch
+
+-------------------------------------------------------------------
 Mon Aug 17 12:07:35 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Spec cleanup:

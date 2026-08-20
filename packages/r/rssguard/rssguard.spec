@@ -16,9 +16,9 @@
 #
 
 
-%define libver  5_2_4
+%define libver  5_2_5
 Name:           rssguard
-Version:        5.2.4
+Version:        5.2.5
 Release:        0
 Summary:        RSS/ATOM/RDF feed reader
 # Legal-Review-Notice: the shipped binaries bundle third-party code; every
