@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Aug 20 10:09:07 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.22.00:
+  * New stressors: dentrycache, epollmany, fp-subnormal,
+    hugepage and spec-rollback
+  * New options: --bad-ioctl-alldev, --branch-jumps,
+    --cache-badpage, --copy-file-io-bytes, --dentrystat,
+    --dentry-negative, --daemon-bloat, --dev-alldev,
+    --no-madvise-opts, --ovpn-tunnel, --pagescatter-numa,
+    --vm-nt
+  * Fix stress-sem-sysv corrupted bogo-ops from concurrent
+    counter updates in forked children
+  * Fix race in shared s_pids->pid assignment after fork
+  * Fix fd leak on unlink hard-link paths
+  * Fix missing pthread_join after pthread_cancel in hugepage,
+    tlb-numa, pseek and vma stressors
+- Enable the ovpn netlink/tunnel path (pkgconfig(libnl-3.0))
+- Correct License to GPL-2.0-or-later (upstream is GPLv2+)
+- Add a --dry-run smoke test in %check
+- Spec cleanup: drop Group, declare gcc/make, convert
+  BuildRequires to pkgconfig() providers
+
+-------------------------------------------------------------------
 Mon Aug  3 12:43:01 UTC 2026 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
 
 - Update to 0.21.04:

@@ -18,29 +18,33 @@
 
 
 %bcond_without  apparmor
-
 Name:           stress-ng
-Version:        0.21.04
+Version:        0.22.00
 Release:        0
 Summary:        Tool to load and stress a computer
-License:        GPL-2.0-only
-Group:          System/Benchmark
+License:        GPL-2.0-or-later
 URL:            https://github.com/ColinIanKing/stress-ng
 Source:         https://github.com/ColinIanKing/stress-ng/archive/refs/tags/V%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  keyutils-devel
+BuildRequires:  gcc
 BuildRequires:  libaio-devel
-%if %{with apparmor}
-BuildRequires:  libapparmor-devel
-%endif
-BuildRequires:  libattr-devel
-BuildRequires:  libbsd-devel
-BuildRequires:  libcap-devel
-BuildRequires:  libseccomp-devel
-BuildRequires:  lksctp-tools-devel
-BuildRequires:  zlib-devel
+BuildRequires:  make
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(gbm)
 BuildRequires:  pkgconfig(glesv2)
+BuildRequires:  pkgconfig(libattr)
+BuildRequires:  pkgconfig(libbsd)
+BuildRequires:  pkgconfig(libcap)
+BuildRequires:  pkgconfig(libkeyutils)
+# ovpn-tunnel / ovpn netlink path (HAVE_LIB_NL)
+BuildRequires:  pkgconfig(libnl-3.0)
+BuildRequires:  pkgconfig(libnl-genl-3.0)
+BuildRequires:  pkgconfig(libsctp)
+BuildRequires:  pkgconfig(libseccomp)
+BuildRequires:  pkgconfig(zlib)
+%if %{with apparmor}
+BuildRequires:  pkgconfig(libapparmor)
+%endif
 
 %description
 stress-ng can stress various subsystems of a computer. It can stress load CPU,
@@ -52,7 +56,6 @@ considerably more stress mechanisms.
 
 %package bash-completion
 Summary:        Bash Completion for %{name}
-Group:          System/Benchmark
 Requires:       %{name} = %{version}
 Requires:       bash-completion
 Supplements:    (stress-ng and bash-completion)
@@ -62,7 +65,7 @@ BuildArch:      noarch
 Bash completion script for stress-ng.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 export CFLAGS="%{optflags}"
@@ -75,6 +78,11 @@ install -D -p -m 0644 stress-ng.1 \
   %{buildroot}%{_mandir}/man1/stress-ng.1
 install -D -p -m 0644 bash-completion/stress-ng \
   %{buildroot}%{_datadir}/bash-completion/completions/%{name}
+
+%check
+# Upstream ships compile-time probes in test/, not a test suite.
+# Smoke-test the built binary without actually stressing the builder.
+./stress-ng --dry-run --cpu 1 --timeout 1 --verify
 
 %files
 %license COPYING
