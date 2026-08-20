@@ -38,4 +38,47 @@ texts shipped under %license, which are kept per-dependency on purpose.</comment
     <comment>Update to 1.9.0: search_issues is semantic by default, issue_read now reports the pull requests that close an issue, issue types can be cleared, projects_write gained batched update_project_items plus singular Issue Field updates, a new non-default find_duplicate tool behind the duplicate_detection flag, list_label ordered by issue count, and create_or_update_file's content parameter is documented as plain text. Vendored Go dependency set is unchanged from 1.8.0 (identical go.mod/go.sum, 41 modules, all MIT/BSD-3-Clause/Apache-2.0), so License: MIT still holds. github-mcp-server-root-command-name.patch is kept - upstream PR gh#github/github-mcp-server#2998 is still open and the cobra root command is still named 'server'. Built locally for openSUSE_Tumbleweed/aarch64: green, rpmlint 0 errors / 0 badness, go test 28 packages ok / 0 failures.</comment>
     <requestid>1370576</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b04b1ab4d080d354061b7dd0444719c0</srcmd5>
+    <version>1.10.0</version>
+    <time>1787235329</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.10.0:
+  * Repository deletion is now a confirmed, elicitation-gated
+    tool (form round-trip, protected state); unknown static
+    --tools names fail closed at startup instead of being ignored.
+  * Bearer tokens are sent only to configured GitHub authorities,
+    and GitHub Enterprise hosts must be HTTPS so credentials are
+    not sent in the clear.
+  * Lockdown, HTTP request limits, per-caller cache isolation,
+    raw URL traversal rejection and response sanitization were
+    hardened; lockdown cannot be relaxed by a request.
+  * Symbolic-link file writes require explicit
+    allow_symlink_write; get_file_contents identifies symlinks
+    and labels dereferenced content. Binary MCP resources are no
+    longer base64-encoded twice.
+  * list_issues and search_issues degrade when GHES lacks issue
+    custom-field GraphQL types; list_issues returns assignee
+    logins and stable empty arrays for unassigned issues.
+  * Project view lifecycle operations and visible-field
+    configuration were added; Actions and other successful
+    responses were trimmed.
+  * add_issue_comment validates mutually exclusive input modes;
+    issue_write accepts delete:false as a no-op for strict-schema
+    clients; omitted arguments are accepted on zero-parameter
+    tools while explicit null is rejected.
+  * Notification subscription tools advertise destructive
+    behaviour; Copilot review-request denials return actionable
+    guidance instead of a bare 404.
+- Re-vendor Go modules: github.com/stretchr/testify 1.11.1 to
+  1.12.0 (test-only; not linked into the binaries). Production
+  module set is unchanged, so the licence audit stands: all
+  vendored modules linked into the binaries are MIT,
+  BSD-3-Clause or Apache-2.0 and no copyleft code is linked.
+- Keep github-mcp-server-root-command-name.patch: upstream pull
+  request 2998 is still open, and the cobra root command is still
+  declared as &quot;server&quot; in this release.
+</comment>
+    <requestid>1372115</requestid>
+  </revision>
 </revisionlist>

@@ -23,7 +23,7 @@
 #   -modcacherw     leave the module cache writable so cleanup cannot fail
 %define goflags "-buildmode=pie -mod=vendor -modcacherw"
 Name:           github-mcp-server
-Version:        1.9.0
+Version:        1.10.0
 Release:        0
 Summary:        Model Context Protocol server for GitHub
 License:        MIT

@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Aug 20 05:49:46 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.10.0:
+  * Repository deletion is now a confirmed, elicitation-gated
+    tool (form round-trip, protected state); unknown static
+    --tools names fail closed at startup instead of being ignored.
+  * Bearer tokens are sent only to configured GitHub authorities,
+    and GitHub Enterprise hosts must be HTTPS so credentials are
+    not sent in the clear.
+  * Lockdown, HTTP request limits, per-caller cache isolation,
+    raw URL traversal rejection and response sanitization were
+    hardened; lockdown cannot be relaxed by a request.
+  * Symbolic-link file writes require explicit
+    allow_symlink_write; get_file_contents identifies symlinks
+    and labels dereferenced content. Binary MCP resources are no
+    longer base64-encoded twice.
+  * list_issues and search_issues degrade when GHES lacks issue
+    custom-field GraphQL types; list_issues returns assignee
+    logins and stable empty arrays for unassigned issues.
+  * Project view lifecycle operations and visible-field
+    configuration were added; Actions and other successful
+    responses were trimmed.
+  * add_issue_comment validates mutually exclusive input modes;
+    issue_write accepts delete:false as a no-op for strict-schema
+    clients; omitted arguments are accepted on zero-parameter
+    tools while explicit null is rejected.
+  * Notification subscription tools advertise destructive
+    behaviour; Copilot review-request denials return actionable
+    guidance instead of a bare 404.
+- Re-vendor Go modules: github.com/stretchr/testify 1.11.1 to
+  1.12.0 (test-only; not linked into the binaries). Production
+  module set is unchanged, so the licence audit stands: all
+  vendored modules linked into the binaries are MIT,
+  BSD-3-Clause or Apache-2.0 and no copyleft code is linked.
+- Keep github-mcp-server-root-command-name.patch: upstream pull
+  request 2998 is still open, and the cobra root command is still
+  declared as "server" in this release.
+
+-------------------------------------------------------------------
 Mon Aug 10 20:22:55 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.9.0:
