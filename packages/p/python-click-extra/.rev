@@ -338,4 +338,41 @@ update to 6.1.0</comment>
     <comment></comment>
     <requestid>1369207</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>f87971e3737c18ef6118eadd8f951160</srcmd5>
+    <version>8.9.1</version>
+    <time>1787235434</time>
+    <user>anag_factory</user>
+    <comment>- update to 8.9.1:
+  * Fix the man-page links of the `click-extra-manpages`
+    directive, which pointed one directory too high on `dirhtml`
+    and `singlehtml` builds.
+  * Resolve man-page links against each rendered page, so they
+    stay correct when builders share a doctree cache.
+  * Stop resolving man-page links through a Sphinx API deprecated
+    for removal in Sphinx 11.
+  * Document the `colon-grid` table format.
+  * Fix the Sphinx page's `click:run` example, which reported the
+    documentation build's own Sphinx version instead of the
+    CLI's.
+  * Add a `transform` argument to `EnumChoice`, reshaping the
+    string produced by any choice source, so `show_aliases` can
+    spell aliases in kebab-case instead of raw Python
+    identifiers.
+  * Reject a `transform` collapsing two `EnumChoice` members into
+    the same choice string, instead of silently dropping one from
+    the help screen.
+  * Point the `EnumChoice` `show_aliases` error at `transform`
+    and explain why `ChoiceSource.STR` and callable sources
+    cannot see aliases.
+  * Add a `max_column_widths` argument to `render_table()` and
+    `print_table()`, and a `max_width` field to `ColumnSpec`,
+    capping a column to a character count or to `auto`.
+  * Wrap long cells in the `vertical` format, aligning
+    continuation lines under the label gutter.
+  * Add a `WRAPPABLE_FORMATS` registry and a
+    `TableFormat.is_wrappable` property, so formats unable to
+    render a wrapped cell drop column widths instead of</comment>
+    <requestid>1372224</requestid>
+  </revision>
 </revisionlist>
