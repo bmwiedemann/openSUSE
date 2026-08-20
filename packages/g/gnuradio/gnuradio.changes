@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Aug 18 13:52:38 UTC 2026 - Mikhail Paulyshka <me@mixaill.net>
+
+- Enable all GNU Radio components explicitly at CMake configure time so missing dependencies cause the build to fail.
+- Enable the test suite and run it during %check.
+  * Skip three ZeroMQ message source tests that segfault during teardown on ppc64le
+- Add BuildRequires for libboost_regex-devel, libboost_test-devel, python3-pyzmq and xvfb-run.
+- Add upstream patches:
+  * gnuradio-fix-fastnoise-unit-test.patch (gh#gnuradio/gnuradio#8145)
+  * gnuradio-run-qtgui-tests-with-xvfb.patch (gh#gnuradio/gnuradio#8170)
+- Remove obsolete patches:
+  * missing_library.patch,
+  * gnuradio-not-install-freedesktop-files.patch 
+  * grc_to_37.sh
+- Install desktop integration files directly during %install.
+- Remove deprecated %suse_update_desktop_file usage
+- Clean up rpmlint findings
+
+-------------------------------------------------------------------
 Thu Oct  2 13:52:39 UTC 2025 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - Restore libboost_system-devel for Leap 16.0 (boost 1.86)

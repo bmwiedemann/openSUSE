@@ -1,2 +1,15 @@
-# Template file for gr_newmod
-addFilter("devel-file-in-non-devel-package.*/usr/share/gnuradio/modtool/templates/gr-newmod/include/howto/api.h")
+# Empty compatibility module imported by grc.gui_qt.helpers.
+addFilter("zero-length.*/gnuradio/grc/gui_qt/helpers/qt.py")
+
+# These development files are input for gr_modtool's module template.
+addFilter("devel-file-in-non-devel-package.*/usr/share/gnuradio/modtool/templates/gr-newmod/include/gnuradio/howto/api.h")
+addFilter("devel-file-in-non-devel-package.*/usr/share/gnuradio/modtool/templates/gr-newmod/docs/doxygen/pydoc_macros.h")
+
+# Hidden files are intentionally shipped as part of gr_modtool templates.
+addFilter("version-control-internal-file.*/usr/share/gnuradio/modtool/templates/gr-newmod/python/howto/.gitignore")
+addFilter("hidden-file-or-dir.*/usr/share/gnuradio/modtool/templates/gr-newmod/python/howto/.gitignore")
+addFilter("hidden-file-or-dir.*/usr/share/gnuradio/modtool/templates/gr-newmod/.conda")
+addFilter("hidden-file-or-dir.*/usr/share/gnuradio/.cmake-format.py")
+
+# Qt loads this resource from its private Python module path.
+addFilter("file-not-in-%lang.*/gnuradio/grc/gui_qt/resources/language/en_US/LC_MESSAGES/grc.mo")
