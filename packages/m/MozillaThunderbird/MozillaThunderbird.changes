@@ -1,4 +1,91 @@
 -------------------------------------------------------------------
+Tue Aug 18 13:05:07 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 140.14.0 ESR
+  MFSA 2026-79 (bsc#1274867)
+  * CVE-2026-74934 (bmo#2050584)
+    Site isolation issue in the Graphics: CanvasWebGL component
+  * CVE-2026-74935 (bmo#2051013)
+    Privilege escalation in the DOM: Networking component
+  * CVE-2026-74936 (bmo#2052688)
+    Use-after-free in the JavaScript: WebAssembly component
+  * CVE-2026-74939 (bmo#2054416)
+    Privilege escalation in the DOM: Navigation component
+  * CVE-2026-74940 (bmo#2054842)
+    Use-after-free in the Graphics: Text component
+  * CVE-2026-74941 (bmo#2055056)
+    Privilege escalation in the Graphics: CanvasWebGL component
+  * CVE-2026-74942 (bmo#2056571)
+    Privilege escalation in the Remote Settings Client component
+  * CVE-2026-74943 (bmo#2057308)
+    Use-after-free in the Graphics: ImageLib component
+  * CVE-2026-74944 (bmo#2057778)
+    Use-after-free in the DOM: Core & HTML component
+  * CVE-2026-74945 (bmo#2057808)
+    Information disclosure in the Graphics: Text component
+  * CVE-2026-74946 (bmo#2059997)
+    Privilege escalation due to incorrect boundary conditions in
+    the Graphics: CanvasWebGL component
+  * CVE-2026-74948 (bmo#2060106)
+    Information disclosure in the Graphics component
+  * CVE-2026-74949 (bmo#2060245)
+    Privilege escalation due to use-after-free in the Graphics:
+    Canvas2D component
+  * CVE-2026-74953 (bmo#2022382)
+    Privilege escalation in the Networking: Cookies component
+  * CVE-2026-74957 (bmo#2041906)
+    Mitigation bypass in the Safe Browsing component
+  * CVE-2026-74959 (bmo#2047853)
+    Mitigation bypass in the Storage: Cache API component
+  * CVE-2026-74960 (bmo#2049148)
+    Site isolation issue in the WebExtensions component
+  * CVE-2026-74962 (bmo#2050425)
+    Site isolation issue in the Networking: Cookies component
+  * CVE-2026-74963 (bmo#2050482)
+    Same-origin policy bypass in the Networking: Cookies component
+  * CVE-2026-74964 (bmo#2053327)
+    Integer overflow in the Graphics component
+  * CVE-2026-74965 (bmo#2053455)
+    Privilege escalation in the Shell Integration component
+  * CVE-2026-74967 (bmo#2055697)
+    Same-origin policy bypass in the Audio/Video: Playback component
+  * CVE-2026-74969 (bmo#2056065)
+    Use-after-free in the Layout: Text and Fonts component
+  * CVE-2026-74971 (bmo#2057204)
+    Information disclosure in the DOM: UI Events & Focus Handling
+    component
+  * CVE-2026-74972 (bmo#2059053)
+    Information disclosure in the DOM: Push Subscriptions
+    component
+  * CVE-2026-74973 (bmo#2060357)
+    Race condition, use-after-free in the Graphics component
+  * CVE-2026-74974 (bmo#2061794)
+    Same-origin policy bypass in the Graphics: ImageLib component
+  * CVE-2026-74976 (bmo#1952164)
+    JIT miscompilation in the JavaScript Engine: JIT component
+  * CVE-2026-74983 (bmo#2051897)
+    Mitigation bypass in the Data Loss Prevention component
+  * CVE-2026-74987 (bmo#1500946, bmo#1788109, bmo#2045379, bmo#2045380,
+    bmo#2048797, bmo#2049339, bmo#2049393, bmo#2050536, bmo#2053272,
+    bmo#2053579, bmo#2053580, bmo#2054662, bmo#2054665, bmo#2054673,
+    bmo#2054785, bmo#2057115, bmo#2057116, bmo#2057130, bmo#2057991,
+    bmo#2057995, bmo#2058002, bmo#2058008, bmo#2058032, bmo#2058102,
+    bmo#2058645, bmo#2058667, bmo#2059424)
+    Internally found bugs fixed in Thunderbird ESR 140.14,
+    Thunderbird ESR 153.1 and Thunderbird 154
+  * CVE-2026-74990 (bmo#2045762, bmo#2045774, bmo#2048490, bmo#2050864,
+    bmo#2052401, bmo#2053159, bmo#2053260, bmo#2053261, bmo#2053582,
+    bmo#2053599, bmo#2053607, bmo#2053608, bmo#2053853, bmo#2054626,
+    bmo#2054627, bmo#2054635, bmo#2054677, bmo#2054740, bmo#2054832,
+    bmo#2056792, bmo#2057098, bmo#2057100, bmo#2057101, bmo#2057103,
+    bmo#2057117, bmo#2057118, bmo#2058048, bmo#2058049, bmo#2058208,
+    bmo#2058622, bmo#2058623, bmo#2058665, bmo#2058666, bmo#2059121,
+    bmo#2059164, bmo#2059188)
+    Internally found bugs fixed in Thunderbird ESR 140.14,
+    Thunderbird ESR 153.1 and Thunderbird 154
+- updated mozilla.keyring
+
+-------------------------------------------------------------------
 Tue Jul 21 13:42:04 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 140.13.0 ESR
