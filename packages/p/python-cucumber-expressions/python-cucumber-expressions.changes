@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug 20 09:10:14 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 20.1.0:
+  * Support a positive exponent in scientific notation floats,
+    e.g. `1.5E+3`
+  * Use more efficient regex without lookahead
+
+-------------------------------------------------------------------
 Sat Jun 20 17:51:59 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 20.0.0:

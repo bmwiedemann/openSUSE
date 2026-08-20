@@ -27,4 +27,15 @@
   * [.Net] Downgrade dependency fluentassertions to 7.2.0</comment>
     <requestid>1360753</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b5c7e47b26619588c7976071e861a837</srcmd5>
+    <version>20.1.0</version>
+    <time>1787235419</time>
+    <user>anag_factory</user>
+    <comment>- update to 20.1.0:
+  * Support a positive exponent in scientific notation floats,
+    e.g. `1.5E+3`
+  * Use more efficient regex without lookahead</comment>
+    <requestid>1372220</requestid>
+  </revision>
 </revisionlist>
