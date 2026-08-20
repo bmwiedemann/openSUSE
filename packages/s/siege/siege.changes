@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Aug 20 10:17:36 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 4.2.0:
+  * Per-thread cookie jars (each simulated user is isolated)
+  * Send HTTPS CONNECT only when the tunnel is not yet up
+  * Do not segfault when the Digest auth algorithm is NULL
+  * Recover from HTTP 403; parse content-type (-T) in URLs;
+    skip null URLs, requests and cookie domains
+  * Fix SIGINT teardown (use-after-free, crew shutdown, and
+    conflicting -r/-t paths)
+  * Substitute {uuid} in URLs
+- Drop siege-gcc15.patch: adopted upstream
+- BuildRequires: pkgconfig(uuid) for the new {uuid} token
+- Use HTTPS Source URL
+- Run siege --version in %check
+- Spec cleanup: %make_build, explicit gcc/make, drop Group
+
+-------------------------------------------------------------------
 Tue Jul  8 10:16:00 UTC 2025 - pgajdos@suse.com
 
 - version update to 4.1.7

@@ -1,7 +1,7 @@
 #
 # spec file for package siege
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,18 +18,19 @@
 
 
 Name:           siege
-Version:        4.1.7
+Version:        4.2.0
 Release:        0
 Summary:        HTTP Regression Testing/Benchmarking Utility
 License:        GPL-2.0-or-later
-Group:          Productivity/Networking/Web/Utilities
 URL:            https://www.joedog.org/siege-home/
-Source:         http://download.joedog.org/siege/siege-%{version}.tar.gz
-# https://github.com/JoeDog/siege/issues/248
-Patch0:          siege-gcc15.patch
+Source:         https://download.joedog.org/siege/siege-%{version}.tar.gz
+BuildRequires:  gcc
+BuildRequires:  make
+# spec-cleaner --perl explodes this into hundreds of perl(...) BRs
 BuildRequires:  perl
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(zlib)
 %{perl_requires}
 
@@ -49,10 +50,14 @@ authentication. Its features are configurable on a per user basis. Since
 %build
 %configure \
   --sysconfdir="%{_sysconfdir}/%{name}"
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
+
+%check
+# --version still loads a resource file before getopt
+./src/siege -R "$PWD/doc/siegerc" --version
 
 %files
 %license COPYING
@@ -64,9 +69,9 @@ make %{?_smp_mflags}
 %{_bindir}/siege
 %{_bindir}/siege2csv.pl
 %{_bindir}/siege.config
-%{_mandir}/man1/bombardment.1%{ext_man}
-%{_mandir}/man1/siege.1%{ext_man}
-%{_mandir}/man1/siege.config.1%{ext_man}
-%{_mandir}/man1/siege2csv.1%{ext_man}
+%{_mandir}/man1/bombardment.1%{?ext_man}
+%{_mandir}/man1/siege.1%{?ext_man}
+%{_mandir}/man1/siege.config.1%{?ext_man}
+%{_mandir}/man1/siege2csv.1%{?ext_man}
 
 %changelog
