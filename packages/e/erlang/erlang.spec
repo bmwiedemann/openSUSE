@@ -22,8 +22,17 @@
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
+
+# Docs broken on i586
+# https://github.com/erlang/otp/issues/11156
+%ifarch i586
+%define build_doc 0
+%else
+%define build_doc 1
+%endif
+
 Name:           erlang
-Version:        28.4.1
+Version:        28.5.0.4
 Release:        0
 Summary:        General-purpose programming language and runtime environment
 License:        Apache-2.0
@@ -40,6 +49,11 @@ Source10:       epmd-user.conf
 Patch0:         otp-R16B-rpath.patch
 # PATCH-FIX-OPENSUSE erlang-not-install-misc.patch - matwey.kornilov@gmail.com -- patch from Fedora, this removes unneeded magic
 Patch4:         erlang-not-install-misc.patch
+# PATCH-FIX-OPENSUSE / SUSE - Reproducable builds support
+Patch5:         fix-reproducible-zip.patch
+Patch6:         fix-reproducible-erts-time.patch
+Patch7:         fix-reproducible-docs-time.patch
+Patch8:         fix-reproducible-asn1.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  autoconf
 BuildRequires:  dejavu-fonts
@@ -100,12 +114,14 @@ This module provides the interface with which a user can implement a Diameter
 node that sends and receives messages using the Diameter protocol as defined in
 RFC 6733.
 
+%if %{build_doc}
 %package doc
 Summary:        Erlang documentation
 Requires:       %{name} = %{version}
 
 %description doc
 Documentation for Erlang.
+%endif
 
 %package epmd
 Summary:        Erlang Port Mapper daemon
@@ -244,9 +260,7 @@ Requires:       wxWidgets >= 2.8
 A Graphics System used to write platform independent user interfaces.
 
 %prep
-%setup -q -n otp-OTP-%{version}
-%patch -P 0 -p1 -b .rpath
-%patch -P 4 -p1
+%autosetup -p1 -n otp-OTP-%{version}
 cp %{SOURCE9} .
 
 # enable dynamic linking for ssl
@@ -270,11 +284,11 @@ export LANG="en_US.UTF-8"
     --enable-smp-support \
     --enable-kernel-poll \
     --enable-shared-zlib
-# clean stalled files before rebuild them
-%make_build clean
 %make_build V=1
+%if %{build_doc}
 # to build the docs, just compiled erlang is required
 PATH=$PWD/bin:$PATH ERL_TOP=$TMP_ERL_TOP %make_build docs
+%endif
 
 %sysusers_generate_pre %{SOURCE10} epmd epmd-user.conf
 
@@ -283,8 +297,11 @@ PATH=$PWD/bin:$PATH ERL_TOP=$TMP_ERL_TOP %make_build docs
 #PATH=$PWD/bin:$PATH make test V=1
 
 %install
+%if %{build_doc}
 %make_install install-docs V=1
-
+%else
+%make_install V=1
+%endif
 export TOOLS_VERSION=`ls %{buildroot}%{_libdir}/erlang/lib/ |grep ^tools- | sed "s|tools-||"`
 
 # clean up
@@ -294,12 +311,14 @@ find %{buildroot}%{_libdir}/erlang "(" -name "*.bat" -o -name index.txt.old ")" 
 find %{buildroot}%{_libdir}/erlang -type d -path '*/priv/obj' -exec rm -Rfv "{}" "+"
 find %{buildroot}%{_libdir}/erlang -name '.build' -exec rm -Rfv "{}" "+"
 
+%if %{build_doc}
 # doc
 mkdir -p erlang_doc
 mv %{buildroot}%{_libdir}/erlang/doc ./erlang_doc
 find %{buildroot}%{_libdir}/erlang -maxdepth 4 -name info -or -type d -and -path '%{buildroot}%{_libdir}/**/doc/*' -and -not -name chunks -prune | while read S;do D=`echo $S | sed -e 's|%{buildroot}%{_libdir}/erlang|erlang_doc|'`; B=`dirname $D`; mkdir -p $B; mv $S $D; done
 # compress man pages ...
 find %{buildroot}%{_libdir}/erlang/man -type f -exec gzip {} +
+%endif
 
 #make link to OtpErlang-*.jar in %%{_javadir}
 mkdir -p %{buildroot}%{_javadir}
@@ -360,7 +379,9 @@ install -m 0644 %{SOURCE10} %{buildroot}%{_sysusersdir}
 %exclude %{_bindir}/epmd
 %dir %{_libdir}/erlang
 %dir %{_libdir}/erlang/lib/
+%if %{build_doc}
 %exclude %{_libdir}/erlang/lib/*/doc/chunks
+%endif
 %exclude %{_libdir}/erlang/lib/*/src
 %exclude %{_libdir}/erlang/lib/*/c_src
 %exclude %{_libdir}/erlang/lib/*/java_src
@@ -429,8 +450,10 @@ install -m 0644 %{SOURCE10} %{buildroot}%{_sysusersdir}
 %{_libdir}/erlang/lib/tools-*/*
 %dir %{_libdir}/erlang/lib/xmerl-*/
 %{_libdir}/erlang/lib/xmerl-*/*
+%if %{build_doc}
 %{_libdir}/erlang/man/
 %{_mandir}/man1/*.1%{?ext_man}
+%endif
 %{_libdir}/erlang/releases/
 %dir %{_libdir}/erlang/usr/
 %dir %{_libdir}/erlang/usr/include
@@ -458,6 +481,7 @@ install -m 0644 %{SOURCE10} %{buildroot}%{_sysusersdir}
 %{_libdir}/erlang/lib/diameter-*/*
 %exclude %{_libdir}/erlang/lib/diameter-*/src
 
+%if %{build_doc}
 %files doc
 %defattr(0644,root,root,0755)
 %doc erlang_doc/*
@@ -469,6 +493,7 @@ install -m 0644 %{SOURCE10} %{buildroot}%{_sysusersdir}
 %exclude %{_libdir}/erlang/lib/reltool-*/doc/chunks
 %exclude %{_libdir}/erlang/lib/observer-*/doc/chunks
 %exclude %{_libdir}/erlang/lib/wx-*/doc/chunks
+%endif
 
 %files et
 %dir %{_libdir}/erlang/lib/et-*/

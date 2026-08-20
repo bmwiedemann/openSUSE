@@ -1284,4 +1284,41 @@ erlang 17.0 is ready for factory, now. See changes in .changes</comment>
     compression allowing attackers to consume system resources</comment>
     <requestid>1348094</requestid>
   </revision>
+  <revision rev="145" vrev="1">
+    <srcmd5>e278196b26cf8d882005a0758bf21c4e</srcmd5>
+    <version>28.5.0.4</version>
+    <time>1787235306</time>
+    <user>anag_factory</user>
+    <comment>- Fixes for reproducable builds
+  * fix-reproducible-asn1.patch
+  * fix-reproducible-docs-time.patch
+  * fix-reproducible-erts-time.patch
+  * fix-reproducible-zip.patch
+- Refreshed the following patches
+  * erlang-not-install-misc.patch
+  * otp-R16B-rpath.patch
+
+- Update to 28.5.0.4 Numerous Fixes including
+  - CVE-2026-42792: epmd permanent DoS via EMFILE on accept(2) in
+    erts (bsc#1272908)
+    * fix-CVE-2026-42792.patch
+  - CVE-2026-47078: Relative path traversal in zip:unzip/zip:extract
+    via check_dir_level depth-counter bypass (bsc#1272909)
+    * fix-CVE-2026-47078.patch
+  - CVE-2026-48855: Exposure of Sensitive Information to an
+    Unauthorized Actor vulnerability in Erlang OTP ssh (ssh_sftpd
+    module) allows File Discovery. The SSH_FXP_READLINK handler in
+    ssh_sftpd sends the raw result of file:read_l ... (bsc#1268139)
+    * fix-CVE-2026-48855.patch
+  - CVE-2026-48856: Sensitive Data Exposure vulnerability in Erlang
+    OTP inets (httpc_response module) allows Retrieve Embedded
+    Sensitive Data. The httpc client forwards the Authorization and
+    Proxy-Authorization request headers to  ... (bsc#1268141)
+    * fix-CVE-2026-48856.patch
+  - CVE-2026-48858: Server-Side Request Forgery (SSRF) allows FTP
+    bounce attacks and SSRF via an unvalidated PASV response IP
+    address. (bsc#1268142)
+    * fix-CVE-2026-48858.patch</comment>
+    <requestid>1372101</requestid>
+  </revision>
 </revisionlist>

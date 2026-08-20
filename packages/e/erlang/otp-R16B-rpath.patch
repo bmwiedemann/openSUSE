@@ -1,8 +1,6 @@
-Index: otp-OTP-24.0/lib/crypto/c_src/Makefile.in
-===================================================================
---- otp-OTP-24.0.orig/lib/crypto/c_src/Makefile.in
-+++ otp-OTP-24.0/lib/crypto/c_src/Makefile.in
-@@ -136,7 +136,7 @@ endif
+--- a/lib/crypto/c_src/Makefile.in
++++ b/lib/crypto/c_src/Makefile.in
+@@ -149,7 +149,7 @@ endif
  endif
  
  ifeq ($(DYNAMIC_OR_WIN_CRYPTO_LIB),yes)

@@ -1,0 +1,39 @@
+From 521670aff0afb168c9056c9b901102e139a6dfcf Mon Sep 17 00:00:00 2001
+From: "Bernhard M. Wiedemann" <bwiedemann@suse.de>
+Date: Mon, 27 Jul 2026 15:17:48 +0200
+Subject: [PATCH] public_key: Compile ASN.1 modules serially for reproducible
+ output
+
+The ASN.1 compiler names anonymous parameterized-type/object-set
+arguments internal_object_set_argument_N using a global counter. How
+many instantiations run while checking a module depends on whether the
+checked .asn1db files of its imports already exist. The RFC 5912
+modules import each other cyclically and the Makefile has no
+inter-module dependencies, so under make -jN the .asn1db availability
+is a race and atoms like getenc_internal_object_set_argument_2 vs _1
+differ between builds. Serialize this directory to get a fixed order.
+
+Helps with issue #4417
+
+This patch was done while working on reproducible builds for openSUSE.
+---
+ lib/public_key/asn1/Makefile | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+Index: otp-OTP-28.5.0.4/lib/public_key/asn1/Makefile
+===================================================================
+--- otp-OTP-28.5.0.4.orig/lib/public_key/asn1/Makefile
++++ otp-OTP-28.5.0.4/lib/public_key/asn1/Makefile
+@@ -106,6 +106,12 @@ endif
+ # Targets
+ # ----------------------------------------------------
+ 
++# The RFC 5912 modules import each other cyclically. Whether a sibling
++# module's checked .asn1db exists when a module is compiled changes the
++# numbering of generated internal_object_set_argument_N names, so the
++# compilations must run in a fixed order for reproducible output.
++.NOTPARALLEL:
++
+ $(TYPES): $(TARGET_FILES) $(HRL_FILES)
+ 
+ clean:

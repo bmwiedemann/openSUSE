@@ -1,4 +1,247 @@
 -------------------------------------------------------------------
+Wed Aug  5 04:38:54 UTC 2026 - Simon Lees <sflees@suse.de>
+
+- Fixes for reproducable builds
+  * fix-reproducible-asn1.patch
+  * fix-reproducible-docs-time.patch
+  * fix-reproducible-erts-time.patch
+  * fix-reproducible-zip.patch
+- Refreshed the following patches
+  * erlang-not-install-misc.patch
+  * otp-R16B-rpath.patch
+
+-------------------------------------------------------------------
+Tue Aug  4 09:44:12 UTC 2026 - Simon Lees <sflees@suse.de>
+
+- Update to 28.5.0.4 Numerous Fixes including
+  - CVE-2026-42792: epmd permanent DoS via EMFILE on accept(2) in
+    erts (bsc#1272908)
+    * fix-CVE-2026-42792.patch
+  - CVE-2026-47078: Relative path traversal in zip:unzip/zip:extract
+    via check_dir_level depth-counter bypass (bsc#1272909)
+    * fix-CVE-2026-47078.patch
+  - CVE-2026-48855: Exposure of Sensitive Information to an
+    Unauthorized Actor vulnerability in Erlang OTP ssh (ssh_sftpd
+    module) allows File Discovery. The SSH_FXP_READLINK handler in
+    ssh_sftpd sends the raw result of file:read_l ... (bsc#1268139)
+    * fix-CVE-2026-48855.patch
+  - CVE-2026-48856: Sensitive Data Exposure vulnerability in Erlang
+    OTP inets (httpc_response module) allows Retrieve Embedded
+    Sensitive Data. The httpc client forwards the Authorization and
+    Proxy-Authorization request headers to  ... (bsc#1268141)
+    * fix-CVE-2026-48856.patch
+  - CVE-2026-48858: Server-Side Request Forgery (SSRF) allows FTP
+    bounce attacks and SSRF via an unvalidated PASV response IP
+    address. (bsc#1268142)
+    * fix-CVE-2026-48858.patch
+  - CVE-2026-48860: Erlang/OTP ssl (inet_tls_dist module) allows
+    unauthenticated bypass of the distribution-over-TLS LAN allowlist
+    (bsc#1268146)
+    * fix-CVE-2026-48860.patch
+  - CVE-2026-49759: Stack-based Buffer Overflow vulnerability in
+    Erlang OTP erts (inet_drv). (bsc#1268163)
+    * fix-CVE-2026-49759.patch
+  - CVE-2026-49760: Stack-based Buffer Overflow vulnerability in
+    Erlang OTP (erl_interface). (bsc#1268164)
+    * fix-CVE-2026-49760.patch
+  - CVE-2026-53422: SFTP REALPATH path-existence oracle allowing
+    filesystem enumeration outside configured root (bsc#1270245)
+    * fix-CVE-2026-53422.patch
+  - CVE-2026-54886: SSH SFTP server denial of service via extended
+    channel data infinite loop (bsc#1270246)
+    * fix-CVE-2026-54886.patch
+  - CVE-2026-54887: Use of Default Cryptographic Key vulnerability
+    allows predictable DTLS cookie computation during the startup
+    window (bsc#1270247)
+    * fix-CVE-2026-54887.patch
+  - CVE-2026-54890: BEAM VM crash via integer underflow in
+    binary_to_term BIT_BINARY_EXT decoding (bsc#1272916)
+    * fix-CVE-2026-54890.patch
+  - CVE-2026-54891: erlang: Erlang SSL: Unauthenticated data
+    injection during TLS handshake (bsc#1270250)
+    * fix-CVE-2026-54891.patch
+  - CVE-2026-55737: Heap pointer corruption via signed/unsigned
+    mismatch in LARGE_TUPLE_EXT decoding in erts external term format
+    decoder (bsc#1272910)
+    * fix-CVE-2026-55737.patch
+  - CVE-2026-55950: Time-of-check Time-of-use (TOCTOU) race condition
+    vulnerability allows an unauthenticated remote attacker to crash
+    all active DTLS sessions on a listener (bsc#1270253)
+    * fix-CVE-2026-55950.patch
+  - CVE-2026-55952: The Erlang/OTP ssl application does not validate
+    that the PSK identity list and binder list carried in a TLS 1.3
+    ClientHello pre-shared key extension have equal length before
+    passing them to the session ticket  ... (bsc#1270258)
+    * fix-CVE-2026-55952.patch
+  - CVE-2026-55953: TLS 1.2 and DTLS client accepts unoffered
+    anonymous cipher suite, bypassing server authentication
+    (bsc#1272911)
+    * fix-CVE-2026-55953.patch
+  - CVE-2026-58227: TLS/DTLS denial of service via unbounded
+    recursion on cross-signed peer certificate chain (bsc#1272913)
+    * fix-CVE-2026-58227.patch
+  - CVE-2026-59250: Megaco flex scanner buffer overflow via oversized
+    property parm name (bsc#1272914)
+    * fix-CVE-2026-59250.patch
+  - CVE-2026-59251: Denial of service via exponential certificate
+    policy tree growth in path validation (bsc#1272915)
+    * fix-CVE-2026-59251.patch
+
+-------------------------------------------------------------------
+Fri May 29 04:32:29 UTC 2026 - Simon Lees <sflees@suse.de>
+
+- Changes for 28.5.0.1
+  * CVE-2026-42790: Name Constraints and Subject CommonName 
+    fallback in TLS hostname verification allows for certificate
+    forgery by MITM attacker (bsc#1266466)
+  * CVE-2026-42791: OCSP response verification in the `public_key`
+    application does not check the validity period of the OCSP
+    responder certificate and allows for OCSP response response
+    forgery (bsc#1266448)
+  * CVE-2026-42789: `public_key` application accepts non-CA 
+    certificates as intermediate issuers and this enables chain
+    forgery (bsc#1266449)
+- Remove "%make_build clean" before build, this now breaks the build
+- docs are broken on i586
+  * https://github.com/erlang/otp/issues/11156
+
+-------------------------------------------------------------------
+Mon May 11 15:13:47 UTC 2026 - Andreas Schwab <schwab@suse.de>
+
+- Remove unneeded constraints
+
+-------------------------------------------------------------------
+Sun May 10 12:15:39 UTC 2026 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Changes for 28.5:
+  * erl_interface: A new configure option [--{enable,disable}-use-
+    embedded-3pp-alternatives ](%60e:system:install.md#advanced-
+    configuration-and-build-of-erlang-otp_configuring%60) has been
+    added. When enabled, configure is forced to find alternatives,
+    to a subset, of the embedded third-party products (3pps) in the
+    runtime system, and when disabled, configure will use all
+    internal embedded 3pps. Currently this option affects zstd,
+    zlib, ryu (with STL), openssl and tcl. The default is to use
+    all built-in embedded 3pps except for zlib which by default
+    will use zlib on the OS if available.
+  * erl_interface: The ei API for decoding/encoding terms is not
+    fully 64-bit compatible since terms that have a representation
+    on the external term format larger than 2 GB cannot be handled.
+  * mnesia: Added documentation for user_properties  and functions
+    read_table_property/2, write_table_property/2,
+    delete_table_property. Enhanced documentation for
+    frag_properties.
+  * mnesia: Fixed a bug where stacktrace was not returned from
+    mnesia:transaction/1 when transaction aborts with an error
+    exception.
+  * erts: Fixed bug in enif_make_map_from_arrays for arrays with at
+    least 33 keys. If duplicate keys existed, instead of failing,
+    it would skip the duplicates. If less than 33 unique keys
+    existed, an internally inconsistent and broken map was
+    returned.
+  * erts: Fixed an issue when supplying the args_file option to
+    erl.exe on windows that did not handle unicode characters
+    correctly.
+  * erts: A new configure option [--{enable,disable}-use-
+    embedded-3pp-alternatives ](%60e:system:install.md#advanced-
+    configuration-and-build-of-erlang-otp_configuring%60) has been
+    added. When enabled, configure is forced to find alternatives,
+    to a subset, of the embedded third-party products (3pps) in the
+    runtime system, and when disabled, configure will use all
+    internal embedded 3pps. Currently this option affects zstd,
+    zlib, ryu (with STL), openssl and tcl. The default is to use
+    all built-in embedded 3pps except for zlib which by default
+    will use zlib on the OS if available.
+  * ssl: Preserve inet option order, as inet_backend option must be
+    first option. Will make inet_backend option work for ssl
+    independently of number of inet supplied options.
+  * ssl: Missing conformance check for signature algorithms in
+    TLS-1.3  could cause selection of incompatible certificate when
+    a server is configured with more than one possible certificate.
+  * ssl: Avoid unnecessary memory consumption for temporary
+    processes in a supervision tree.
+- Changes for 28.4.3:
+  * kernel: On Windows, sockets has to be bound when using
+    'socket'. Therefor when using gen_tcp with inet_backend =
+    socket, gen_tcp_socket bind even if the caller has not provided
+    an explicit bind address. In that case it attempts to locate a
+    "proper" address on its own. But if the connect address is the
+    loopback address, this could lead to an attempt to bind to an
+    external interface. So, this has now been changed so that if
+    the connect address is the loopback address, the loopback
+    address will also be used when binding.
+  * ssh: Fixed a vulnerability in the SFTP server where file
+    attributes could be modified outside the configured root
+    directory. When using FSETSTAT on an open file handle, the
+    operation used the path stored in the handle without verifying
+    it was within the root directory, allowing attribute changes to
+    files outside the chroot boundary.
+- Changes for 28.4.2:
+  * public_key: OCSP designated responder certificate verification
+    now checks the CA's cryptographic signature on the responder
+    certificate. Previously, only the issuer DN match and id-kp-
+    OCSPSigning EKU were verified, which meant a forged self-signed
+    certificate with the CA's subject DN would be accepted as a
+    valid designated responder (Case 2 in RFC 6960 §4.2.2.2).
+  * public_key: Update handling of encoding
+    'OTPSubjectPublicKeyInfo' in public_key:pkix_encode/3, so that
+    it works for update spec added in OTP-28.
+  * public_key: Relax upper bound of common names in certificates
+    for pragmatic interoperability reasons.
+  * kernel: Before this patch, the Erlang/OTP built-in DNS resolver
+    (inet_res) used a sequential, process-global 16-bit transaction
+    ID for UDP queries and did not implement source port
+    randomization. Response validation relied almost entirely on
+    this ID. Together, this made DNS cache poisoning practical for
+    an attacker who can observe one query or predict the next ID.
+    The design conflicted with RFC 5452 recommendations for
+    mitigating forged DNS answers.
+  * sasl: Fixed the typespec of
+    release_handler:eval_appup_script/4.
+  * erts: Fixed a JIT bug that miscompiled expressions like X * X +
+    X * X.
+  * erts: Fixed bug on windows that made tools dialyzer, erlc and
+    typer unusable in powershell or cmd.exe, when there are spaces
+    in the installation path.
+  * erts: Fixed a bug with prim_tty that could occur on windows if
+    we cannot get the console mode, mark the TTY as unavailable.
+    This can happen when the input handle is a pipe, but the output
+    handle is a console.
+  * inets: Fixed authentication bypass in httpd when script_alias
+    maps a URL to a directory outside document_root with mod_auth
+    directory-based access controls. The mod_alias:which_alias/1
+    function now includes script_alias entries so authorization is
+    evaluated against the correct path before CGI execution.
+    CVE-2026-28808.
+  * inets: Fixed typo in http_server.md guide
+  * inets: Expected error accept_socket_timeout in
+    httpd_request_handler now exits gracefully, without generating
+    a crash and supervisor reports.
+  * ssl: Server supporting TLS-1.3 and TLS-1.2, with SLH-DSA
+    algorithms for TLS-1.3, now correctly filter out those
+    algorithms if client is TLS-1.2 only, instead of failing with
+    internal error.
+  * ssl: When OCSP stapling is enabled via the {stapling, staple}
+    or {stapling, #{...}} options, the handshake now fails if the
+    server does not provide an OCSP stapled response.
+  * compiler: The type inference for maps:from_list/1 was
+    incorrect: when the provided list was statically known to be
+    bogus when non-empty (e.g. a list of atoms), the compiler
+    assumed it would also fail when the list was empty.
+  * compiler: Fixed a bug in the type analysis pass that could
+    erroneously eliminate code blocks.
+  * compiler: A binary as the value of a -moduledoc() attribute
+    would be silently ignored.
+  * snmp: The SNMP manager now propagates msgAuthoritativeEngineID
+    and msgUserName from USM security parameters through to the
+    snmpm_user:handle_error/3 callback when an incoming message is
+    discarded due to an unknown EngineID
+    (usmStatsUnknownEngineIDs).
+  * eunit: Fixed EUnit {node, ...} instantiation by passing node
+    name (instead of pid) and restored net_kernel auto-start for
+    non-distributed nodes.
+
+-------------------------------------------------------------------
 Sun Apr 05 14:46:59 UTC 2026 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - Changes for 28.4.1:
