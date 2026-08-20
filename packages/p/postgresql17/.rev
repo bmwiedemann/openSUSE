@@ -325,4 +325,14 @@ https://www.postgresql.org/about/news/postgresql-176-1610-1514-1419-1322-and-18-
     executes arbitrary code (CVSS v3.1: 8.8)</comment>
     <requestid>1371819</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>27ac962db406753e92ec9c5f8ad5599a</srcmd5>
+    <version>17.11</version>
+    <time>1787235404</time>
+    <user>anag_factory</user>
+    <comment>- Revert accidential bump of packaging level
+- Let llvmjit-devel require the llc and clang binaries to fix
+  build of extensions on SLE-16.1 and newer.</comment>
+    <requestid>1372213</requestid>
+  </revision>
 </revisionlist>
