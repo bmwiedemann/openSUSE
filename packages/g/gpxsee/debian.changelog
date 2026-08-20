@@ -1,3 +1,11 @@
+gpxsee (16.13) stable; urgency=low
+
+  * Added warning about broken GPXSee flatpaks from flathub.org.
+  * Fixed Mapsforge themes resource paths handling.
+  * Polished the settings dialogue on macOS.
+
+ -- Martin Tůma <tumic@gpxsee.org>  Thu, 20 Aug 2026 00:02:29 +0200
+
 gpxsee (16.12) stable; urgency=medium
 
   * Fixed multiple TwoNav RMaps loading issues.
