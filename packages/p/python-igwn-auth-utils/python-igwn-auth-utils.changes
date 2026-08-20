@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Aug 19 19:15:47 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.4.0:
+  * Add support for disabling/enabling auth credentials from the
+    environment [!107]
+  * Reduce default token timeleft to 60 [!108]
+- Changes from version 1.3.1:
+  * Make gssapi and htgettoken optional requirements [!105]
+- Changes from version 1.3.0:
+  * Add kinit function to support getting Kerberos credentials
+    [!98]
+  * Add get_scitoken wrapper around htgettoken [!102]
+  * Update minimum requirements for Pip install [!103]
+- Changes from version 1.2.1:
+  * Add deprecation warning for users of X.509 [!27]
+- Changes from version 1.2.0:
+  * [!85] Validate all candidate X.509 credentials in
+    find_credentials
+  * [!88] Support multiple issuers in is_valid_token
+  * [!91] Update requirements versions
+  * [!72] Add support for Python 3.12
+  * [!92] Add support for Python 3.13
+- Drop upstreamed or otherwise fixed patches:
+  * igwn-auth-utils-mr73-utznow.patch
+  * igwn-auth-utils-mr76-mock_called_once.patch
+  * igwn-auth-utils-cryptography-utc-deprecation.patch
+- Don't test optional features with missing packages for openSUSE.
+
+-------------------------------------------------------------------
 Tue Feb 27 13:29:40 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Fix cryptography deprecation sent to duncan.macleod@ligo.org
