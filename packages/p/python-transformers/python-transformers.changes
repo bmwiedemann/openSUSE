@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Aug 20 05:46:40 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 5.15.1:
+  * Fix DFlash candidate-token device mismatch when models are
+    split with device_map="auto"
+  * Align CandidateGenerator sampling with the processed logit
+    distribution
+  * Fix MTP config when mlp_layer_types is absent
+  * Fall back from Lanczos to bicubic image resampling on CUDA
+  * Move Gemma 4 video features onto the model device
+
+-------------------------------------------------------------------
 Mon Aug 10 13:20:07 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Make the package importable again with the tokenizers we ship

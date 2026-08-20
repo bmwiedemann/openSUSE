@@ -53,4 +53,20 @@ Built green locally for aarch64 against openSUSE:Factory:ARM/standard; rpmlint
 pre-existing and untouched to keep this update scoped to the fix).</comment>
     <requestid>1370545</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ea4b063152ce9c77903052afcbf7c3c1</srcmd5>
+    <version>5.15.1</version>
+    <time>1787235324</time>
+    <user>anag_factory</user>
+    <comment>- Update to 5.15.1:
+  * Fix DFlash candidate-token device mismatch when models are
+    split with device_map=&quot;auto&quot;
+  * Align CandidateGenerator sampling with the processed logit
+    distribution
+  * Fix MTP config when mlp_layer_types is absent
+  * Fall back from Lanczos to bicubic image resampling on CUDA
+  * Move Gemma 4 video features onto the model device
+</comment>
+    <requestid>1372113</requestid>
+  </revision>
 </revisionlist>
