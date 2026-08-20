@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-click-aliases
-Version:        1.0.6
+Version:        1.0.7
 Release:        0
 Summary:        Command aliases for Click
 License:        MIT
@@ -29,12 +29,12 @@ BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-click
+Requires:       python-click >= 8.1.7
 BuildArch:      noarch
 # SECTION test requirements
 # See https://github.com/click-contrib/click-aliases/issues/5
 # for problems with click 6.7 currently on Leap.
-BuildRequires:  %{python_module click >= 7.0}
+BuildRequires:  %{python_module click >= 8.1.7}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
