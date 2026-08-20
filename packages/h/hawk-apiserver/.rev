@@ -81,4 +81,14 @@
     <comment></comment>
     <requestid>1369193</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d9039b4345724fa4a9487f82c1ce592f</srcmd5>
+    <version>0.2.2+git.1787135908.0b1b73e</version>
+    <time>1787239101</time>
+    <user>anag_factory</user>
+    <comment>- Vesion 0.2.2+git.1787135908.0b1b73e:
+  * enable custom user parameters (bsc#1274860)
+</comment>
+    <requestid>1371998</requestid>
+  </revision>
 </revisionlist>
