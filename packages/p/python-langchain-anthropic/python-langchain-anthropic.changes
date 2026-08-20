@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Aug 20 05:52:44 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.6.0:
+  * Map Anthropic SDK failures onto the new standard model
+    exception types from langchain-core 1.6.0
+  * Restrict file-search grep to the requested path so sibling
+    directories that only share a name prefix are no longer scanned
+- Follow upstream and raise the langchain-core requirement floor
+  to 1.6.0
+
+-------------------------------------------------------------------
 Tue Aug 18 05:36:47 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Avoid variations from --nocheck: move bytecode recompilation and fdupes from %check to %install (boo#1227364)

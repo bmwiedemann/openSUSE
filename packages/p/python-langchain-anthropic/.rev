@@ -95,4 +95,25 @@ Built and tested natively on aarch64: 195 tests pass per Python flavour
     <comment>Reproducibility fix: move the hash-based bytecode recompilation and fdupes from %check to %install, so the package content no longer varies when built with --nocheck (boo#1227364). Same fix bmwiedemann applied to python-langgraph in sr#1371636.</comment>
     <requestid>1371667</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e1b85a082931da01a1303007f22d3c44</srcmd5>
+    <version>1.6.0</version>
+    <time>1787235327</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.6.0:
+  * Map Anthropic SDK failures onto the new standard model
+    exception types from langchain-core 1.6.0
+  * Restrict file-search grep to the requested path so sibling
+    directories that only share a name prefix are no longer scanned
+- Follow upstream and raise the langchain-core requirement floor
+  to 1.6.0
+
+INTERDEPENDENT REQUESTS - please stage together (will not build until these land):
+ * python-langchain-core 1.6.0
+ * python-langchain-openai 1.6.0 (also carries 1.5.2 vs Factory 1.5.1)
+ * python-langchain-anthropic 1.6.0
+Devel accepts: sr#1372135 (core), sr#1372136 (openai), sr#1372137 (anthropic).
+</comment>
+    <requestid>1372140</requestid>
+  </revision>
 </revisionlist>
