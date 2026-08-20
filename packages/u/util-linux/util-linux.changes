@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug  3 02:28:52 UTC 2026 - Stanislav Brabec <sbrabec@suse.com>
+
+- Fix post installation message conditions (bsc#1268886#c17).
+
+-------------------------------------------------------------------
 Mon Jul 13 11:51:37 UTC 2026 - Stanislav Brabec <sbrabec@suse.com>
 
 - BREAKING CHANGE:

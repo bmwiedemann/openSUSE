@@ -717,6 +717,9 @@ mv %{buildroot}%{_bindir}/login %{buildroot}/bin/
 # ul_extra_bin_sbin, ulbuild == base
 
 %if "%ulsubset" == "core"
+mkdir -p %{buildroot}/var/adm/update-messages
+touch %{buildroot}/var/adm/update-messages/%{name}-%{version}-%{release}-1
+
 %find_lang %{_name} %{name}.lang
 %else
 # ulsubset != core, ulbuild == base
@@ -854,6 +857,42 @@ fi
 %endif
 %dnl # !defined no_config
 
+# Display the message only once. Future versions may shrink the contents.
+# This is normally part of %%posttrans, but we need to detect a fresh installation.
+if test $1 -ge 2 -a -d /var/adm/update-messages ; then
+  if ! grep -q "incompatible changes for unprivileged user" /var/adm/update-messages/%{name}-* 2>/dev/null ; then
+    cat >/var/adm/update-messages/%{name}-%{version}-%{release}-1 <<EOF
+New /etc/fstab limitations for mount(8)!
+
+This update introduces significant security hardening that may
+result in breaking or incompatible changes for unprivileged user
+mounts. The following changes are permanent security hardening
+measures and cannot be disabled. They apply to unprivileged
+(non-root) users:
+
+X-mount.nocanonicalize:
+
+  Paths must always be canonicalized for unprivileged users. The
+  X-mount.nocanonicalize option is now ignored for non-root users.
+
+X-mount.subdir:
+
+  The X-mount.subdir feature for detached subdirectories is
+  disabled for kernel < 6.15 for unprivileged users due to inherent
+  race conditions.
+
+Path canonicalization:
+
+  If LIBMOUNT_FORCE_MOUNT2 is set, mount target paths for user
+  mounts will no longer traverse directories writable by
+  unprivileged users to prevent TOCTOU races.
+
+Future util-linux or kernel versions can remove these restrictions.
+Follow the mount(8) man page.
+EOF
+  fi
+fi
+
 %if %{defined no_config}
 %posttrans
 # Migration to /usr/etc.
@@ -862,45 +901,6 @@ for i in  login remote runuser runuser-l su su-l; do
 done
 %endif
 %dnl # defined no_config
-
-DISPLAY_MESSAGE=false
-if grep -q -e '\([[:space:]]\|,\)user.*X-mount.nocanonicalize' /etc/fstab ; then
-	DISPLAY_MESSAGE=true
-fi
-if grep -q -e '\([[:space:]]\|,\)X-mount.nocanonicalize.*user' /etc/fstab ; then
-	DISPLAY_MESSAGE=true
-fi
-RAW_KERNEL_VERSION=$(uname -r)
-KERNEL_VERSION=${RAW_KERNEL_VERSION%%-*}
-OLD_IFS=$IFS
-IFS=.
-set -- $KERNEL_VERSION
-IFS=$OLD_IFS
-MAJOR=${1:-0}
-MINOR=${2:-0}
-if [ "$MAJOR" -le 6 ] || { [ "$MAJOR" -eq 6 ] && [ "$MINOR" -le 15 ]; }; then
-	if grep -q -e '\([[:space:]]\|,\)user.*X-mount.subdir' /etc/fstab ; then
-		DISPLAY_MESSAGE=true
-	fi
-	if grep -q -e '\([[:space:]]\|,\)X-mount.subdir.*user' /etc/fstab ; then
-		DISPLAY_MESSAGE=true
-	fi
-fi
-if $DISPLAY_MESSAGE ; then
-	cat >/var/adm/update-messages/%name-%version-%release-1 <<EOF
-New /etc/fstab limitations for mount(8)!
-
-For safety reasons, following mount options are now ignored for user mounts:
-
-X-mount.nocanonicalize:
-
-  Paths must always be canonicalized for unprivileged users.
-
-X-mount.subdir (for linux < 6.15):
-  The safe detached subdirectory is no more supported.
-
-EOF
-fi
 
 %post -n libblkid1 -p /sbin/ldconfig
 
@@ -1462,7 +1462,7 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 
 %exclude %{_mandir}/man8/uuidd.8.gz
 
-%ghost /var/adm/update-messages/%name-%version-%release-1
+%ghost /var/adm/update-messages/%{name}-%{version}-%{release}-1
 %endif
 # ulsubset == core, ulbuild == base
 
