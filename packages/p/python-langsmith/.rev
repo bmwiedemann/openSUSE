@@ -219,4 +219,17 @@ rpmlint reports 0 errors, 0 warnings and 0 badness.
 </comment>
     <requestid>1371243</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>4a9b43870aa19ae4c89877cd26765a5c</srcmd5>
+    <version>0.11.1</version>
+    <time>1787235322</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.11.1:
+- Add generate_download_url on the sandbox clients for credential-free file download links
+- Retry transient HTTP 500/502/503/504 WebSocket upgrades during sandbox command startup
+- Report incomplete pytest suites against the full collected set so a partial run cannot appear fully passing
+- Refresh the bundled OpenAPI client (sandbox snapshot tags/names, thread query filters, evaluator spend scoping)
+</comment>
+    <requestid>1372110</requestid>
+  </revision>
 </revisionlist>

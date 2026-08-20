@@ -17,7 +17,7 @@
 
 
 Name:           python-langsmith
-Version:        0.11.0
+Version:        0.11.1
 Release:        0
 Summary:        Client library for the LangSmith LLM tracing and evaluation platform
 License:        MIT
@@ -60,6 +60,7 @@ BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.0.0}
 BuildRequires:  %{python_module requests-toolbelt >= 1.0.0}
+BuildRequires:  %{python_module rich}
 BuildRequires:  %{python_module sniffio >= 1.1}
 BuildRequires:  %{python_module typing_extensions >= 4.0.0}
 BuildRequires:  %{python_module uuid-utils >= 0.12.0}
