@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Aug 20 10:12:49 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.0.14:
+  * Fix upload stall against servers that do not decode chunked
+    bodies (send Content-Length matching the payload)
+  * Harden concurrent transfers and terminal output (data race,
+    goroutine leak, escape injection)
+  * Keep sub-millisecond precision in ping and jitter
+  * Correct the .well-known retry URL and preserve empty
+    rawIspInfo through GetIPInfo
+  * Report progress, TLS version/cipher, ping distribution and
+    per-probe address under --debug
+  * Name the platform in the User-Agent
+  * Drop the empty copyright line and terminate output with a
+    newline; omit the build-date parenthesis when unset
+  * Refresh vendored modules (golang.org/x/net 0.49.0 -> 0.57.0)
+- Raise golang(API) floor to 1.25 matching go.mod
+- Enable %check with the new unit tests
+
+-------------------------------------------------------------------
 Sat Jun 20 20:17:29 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.0.13:

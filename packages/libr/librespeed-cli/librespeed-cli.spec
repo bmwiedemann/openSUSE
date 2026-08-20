@@ -18,7 +18,7 @@
 
 %define sname speedtest-cli
 Name:           librespeed-cli
-Version:        1.0.13
+Version:        1.0.14
 Release:        0
 Summary:        Command line client for LibreSpeed
 License:        LGPL-3.0-only
@@ -26,7 +26,7 @@ URL:            https://github.com/librespeed/speedtest-cli
 Source:         %{sname}-%{version}.tar.zst
 Source1:        vendor.tar.gz
 BuildRequires:  zstd
-BuildRequires:  golang(API) >= 1.18
+BuildRequires:  golang(API) >= 1.25
 
 %description
 Command line interface for LibreSpeed speed test backends, written in Go.
@@ -45,6 +45,9 @@ go build -mod=vendor -buildmode=pie -ldflags "-w -s \
 
 %install
 install -Dm755 %{sname} %{buildroot}%{_bindir}/%{name}
+
+%check
+go test -mod=vendor ./...
 
 %files
 %{_bindir}/%{name}
