@@ -1,7 +1,27 @@
 -------------------------------------------------------------------
+Wed Aug 19 15:32:54 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 151.0.7922.169 (boo#1275706):
+  * CVE-2026-76034: Buffer overflow in WebGL
+  * CVE-2026-76036: Buffer overflow in Dawn
+  * CVE-2026-76033: Inappropriate implementation in CORS
+  * CVE-2026-76037: Link following in CredentialProvider
+  * CVE-2026-76044: Race condition in USB
+  * CVE-2026-76039: Incorrect reference resolution in Core
+  * CVE-2026-76040: Use after free in Browser
+  * CVE-2026-76035: Inappropriate implementation in Media
+  * CVE-2026-76042: Use of uninitialized resource in GPU
+  * CVE-2026-76046: Buffer overflow in ANGLE
+  * CVE-2026-76043: Incorrect calculation in V8
+  * CVE-2026-76041: Information leak in Skia
+  * CVE-2026-76047: Type confusion in V8
+  * CVE-2026-76038: Type confusion in V8
+  * CVE-2026-76045: Use after free in WebGL
+
+-------------------------------------------------------------------
 Wed Aug 12 07:05:52 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
-- Chromiu 151.0.7922.137 (boo#1274759):
+- Chromium 151.0.7922.137 (boo#1274759):
   * CVE-2026-19556: Use after free in V8
   * CVE-2026-19557: Use after free in TabStrip
   * CVE-2026-19558: Use after free in Extensions
