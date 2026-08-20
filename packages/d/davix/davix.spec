@@ -1,7 +1,7 @@
 #
 # spec file for package davix
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -69,6 +69,15 @@ Requires:       %{shlib} = %{version}
 This package provides the headers and sources needed for developing
 applications using davix.
 
+%package tests
+Summary:        Test suite for %{name}
+Requires:       %{shlib} = %{version}
+
+%description tests
+The %{name}-tests package contains test executables that can be used
+to verify the functionality of the installed %{name} package.
+These are the same tests run during the package build (%check section).
+
 %prep
 %autosetup -p1
 
@@ -102,9 +111,11 @@ rm -fr %{buildroot}%{_datadir}/doc/davix
 %{_bindir}/davix-mv
 %{_bindir}/davix-put
 %{_bindir}/davix-rm
+%{_mandir}/man1/davix-*.1%{?ext_man}
+
+%files tests
 %{_bindir}/davix-tester
 %{_bindir}/davix-unit-tests
-%{_mandir}/man1/davix-*.1%{?ext_man}
 
 %files -n %{shlib}
 %{_libdir}/*.so.*
