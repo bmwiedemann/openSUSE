@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 17 04:59:13 UTC 2026 - Zoltan Balogh <zbalogh@suse.com>
+
+- Add libjcat-tests subpackage with installed tests
+  for gnome-desktop-testing-runner
+
+-------------------------------------------------------------------
 Tue Apr 14 12:54:48 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.2.6:
