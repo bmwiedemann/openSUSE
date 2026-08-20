@@ -24,7 +24,7 @@
 %global use_fips_mode 0%{?suse_version} >= 1500
 
 Name:           %{project}
-Version:        2.5.6
+Version:        2.6.0
 Release:        0
 Summary:        Provides access to repositories inside containers
 License:        Apache-2.0
@@ -35,7 +35,7 @@ Source1:        vendor.tar.zst
 Source2:        container-suseconnect-rpmlintrc
 BuildRequires:  libzypp > 9.34
 BuildRequires:  zstd
-BuildRequires:  golang(API) = 1.25
+BuildRequires:  golang(API) = 1.26
 Requires:       libzypp > 9.34
 
 %description

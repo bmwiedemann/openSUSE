@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Aug 20 09:33:32 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 2.6.0:
+  * Update testify to 1.12.1
+  * Bump github.com/stretchr/testify from 1.11.1 to 1.12.0
+  * Bump actions/setup-go from 6 to 7
+  * Bump actions/checkout from 6 to 7
+  * Typos
+  * Bump actions/checkout from 5 to 6
+  * Bump actions/setup-go from 5 to 6
+  * Bump github.com/stretchr/testify from 1.11.0 to 1.11.1
+  * Bump github.com/stretchr/testify from 1.10.0 to 1.11.0
+  * Bump actions/checkout from 4 to 5
+
+-------------------------------------------------------------------
 Tue Mar 10 13:07:01 UTC 2026 - Thomas Blume <Thomas.Blume@suse.com>
 
 - simplify use_fips_mode conditional in specfile
