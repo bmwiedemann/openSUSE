@@ -73,7 +73,7 @@ Name:           %pgname
 %bcond_without alts
 Requires:       pg_alts
 %else
-%define         packaging_level 19
+%define         packaging_level 18
 %bcond_with alts
 %define install_alternatives /usr/share/postgresql/install-alternatives %pgmajor
 %endif
@@ -423,8 +423,8 @@ Requires:       %pgname-server-devel = %version
 Requires:       %pgname-llvmjit = %version
 Requires(post): postgresql-llvmjit-devel-noarch >= %packaging_level
 Requires(postun): postgresql-llvmjit-devel-noarch >= %packaging_level
-%requires_file	%_bindir/llc
-%requires_file	%_bindir/clang
+Requires:       %_bindir/clang
+Requires:       %_bindir/llc
 %endif
 
 %description llvmjit-devel

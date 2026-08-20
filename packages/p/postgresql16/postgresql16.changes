@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 19 11:00:44 UTC 2026 - Reinhard Max <max@suse.com>
+
+- Let llvmjit-devel require the llc and clang binaries to fix
+  build of extensions on SLE-16.1 and newer.
+
+-------------------------------------------------------------------
 Sat Aug 15 14:51:45 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 16.15:
@@ -71,11 +77,6 @@ Sat Jun 13 21:32:53 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
   /usr/bin/clang symlink, which will now be contained in the
   metapackage only. If older LLVM versions are required, the
   compiler binary has to be provided via CLANG=clang-<N>.
-
--------------------------------------------------------------------
-Fri Jun 12 20:10:15 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
-
-- bump packaging level to 19
 
 -------------------------------------------------------------------
 Wed May 13 08:28:21 UTC 2026 - Reinhard Max <max@suse.com>
