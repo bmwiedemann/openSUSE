@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-dict
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define panel_version 4.18.0
 Name:           xfce4-dict
-Version:        0.8.9
+Version:        0.8.10
 Release:        0
 Summary:        Xfce Dictionary Client Application
 License:        GPL-2.0-or-later
@@ -29,8 +29,8 @@ BuildRequires:  gettext >= 0.19.8
 BuildRequires:  meson >= 0.54.0
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(gthread-2.0) >= 2.66.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.66.0
+BuildRequires:  pkgconfig(gthread-2.0) >= 2.66.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
 BuildRequires:  pkgconfig(libxfce4panel-2.0) >= %{panel_version}
 BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.18.0
@@ -61,7 +61,8 @@ This package contains the xfce4-dict dictionary plugin for the Xfce panel.
 %autosetup
 
 %build
-%meson
+%meson	\
+	-Dllm=true
 %meson_build
 
 %install
@@ -76,7 +77,7 @@ rm -rf %{buildroot}%{_datadir}/locale/{ast,kk,tl_PH,ur_PK}
 %find_lang %{name} %{?no_lang_C}
 
 %files
-%doc AUTHORS ChangeLog README
+%doc AUTHORS ChangeLog README.md
 %license COPYING
 %{_bindir}/xfce4-dict
 %{_datadir}/applications/*.desktop

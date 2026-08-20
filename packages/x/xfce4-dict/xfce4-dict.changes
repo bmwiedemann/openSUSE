@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Aug 19 06:22:32 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 0.8.10
+  * Fix more leaks
+  * Avoid dereference of NULL
+  * Fix heap-buffer-overflow
+  * I18n: Update po/LINGUAS list
+  * build: Fix typo in optimization level
+  * README.md: Add uninstall info
+  * Stop using xfce_panel_plugin_(block|unblock)_menu
+  * Remove also #include <config.h>
+  * build: Fix deprecated feature warning
+  * Update README
+  * Drop autotools support
+  * Add LLM support
+  * Translation Updates
+
+-------------------------------------------------------------------
 Tue May 13 08:36:29 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 0.8.9
