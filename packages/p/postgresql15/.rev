@@ -468,4 +468,14 @@ https://www.postgresql.org/about/news/postgresql-176-1610-1514-1419-1322-and-18-
     executes arbitrary code (CVSS v3.1: 8.8) (forwarded request 1371809 from rmax)</comment>
     <requestid>1371814</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>0ba546c93779e95fae2e4784329b605c</srcmd5>
+    <version>15.19</version>
+    <time>1787235401</time>
+    <user>anag_factory</user>
+    <comment>- Revert accidential bump of packaging level
+- Let llvmjit-devel require the llc and clang binaries to fix
+  build of extensions on SLE-16.1 and newer.</comment>
+    <requestid>1372207</requestid>
+  </revision>
 </revisionlist>
