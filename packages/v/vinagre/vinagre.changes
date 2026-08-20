@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 19 07:28:50 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add vinagre-spirce-gtk.patch: Fix build against spice-gtk 0.43,
+  where including spice-client.h is the only valid header to be
+  included now.
+
+-------------------------------------------------------------------
 Fri Jul 11 07:35:10 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Work with newer gettext-runtime. In gettext 0.24.1 the m4 files

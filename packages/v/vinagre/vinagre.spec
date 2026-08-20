@@ -34,6 +34,8 @@ Patch2:         vinagre-cert-validation-api.patch
 # The icon we rely on is from adwaita-icon-theme
 # PATCH-FIX-UPSTREAM vinagre-invisible-fullscreen-toolbar.patch bgo#770484 boo#1008585 badshah400@opensuse.org -- Fix showing of toolbar as invisible in fullscreen mode; patch taken from upstream bug comment
 Patch3:         vinagre-invisible-fullscreen-toolbar.patch
+# PATCH-FIX-OPENSUSE -- Fix build againts spice-gtk 0.43
+Patch4:         vinagre-spirce-gtk.patch
 
 BuildRequires:  adwaita-icon-theme
 BuildRequires:  fdupes

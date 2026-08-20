@@ -845,4 +845,14 @@
     <comment></comment>
     <requestid>1293453</requestid>
   </revision>
+  <revision rev="111" vrev="21">
+    <srcmd5>9911f7caddb030fd571d5e4d8a1c303d</srcmd5>
+    <version>3.22.0</version>
+    <time>1787235250</time>
+    <user>anag_factory</user>
+    <comment>- Add vinagre-spirce-gtk.patch: Fix build against spice-gtk 0.43,
+  where including spice-client.h is the only valid header to be
+  included now.</comment>
+    <requestid>1372010</requestid>
+  </revision>
 </revisionlist>

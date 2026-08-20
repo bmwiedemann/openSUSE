@@ -1,0 +1,16 @@
+Index: vinagre-3.22.0/plugins/spice/vinagre-spice-tab.c
+===================================================================
+--- vinagre-3.22.0.orig/plugins/spice/vinagre-spice-tab.c
++++ vinagre-3.22.0/plugins/spice/vinagre-spice-tab.c
+@@ -22,9 +22,8 @@
+ 
+ #include <config.h>
+ #include <glib/gi18n.h>
+-#include <spice-client-glib-2.0/spice-session.h>
+-#include <spice-client-glib-2.0/spice-audio.h>
+-#include <spice-client-gtk-3.0/spice-widget.h>
++#include <spice-client.h>
++#include <spice-client-gtk.h>
+ #include <gdk/gdkkeysyms.h>
+ 
+ #include <vinagre/vinagre-prefs.h>
