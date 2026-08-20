@@ -97,4 +97,35 @@ passed (up from 261; the new ones are the compatibility-shim tests), same
     <comment>Reproducibility fix: move the hash-based bytecode recompilation and fdupes from %check to %install, so the package content no longer varies when built with --nocheck (boo#1227364). Same fix bmwiedemann applied to python-langgraph in sr#1371636.</comment>
     <requestid>1371666</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ce27a7b3369cf0be43166bd0d4ac95a5</srcmd5>
+    <version>1.6.0</version>
+    <time>1787235326</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.6.0:
+  * Map OpenAI SDK failures onto the new standard model exception
+    types from langchain-core 1.6.0
+  * Raise a clear error on an unexpected response type in
+    _create_chat_result
+- Follow upstream and raise the langchain-core requirement floor
+  to 1.6.0
+
+Also carries 1.5.2 (devel had it; Factory is 1.5.1):
+- Update to 1.5.2:
+  * Preserve consecutive reasoning-item boundaries when converting
+    v1 content blocks back to Responses API input
+  * Extract LangSmith gateway metadata from response headers
+  * Support o-series models in get_num_tokens_from_messages
+- Add python-httpx2 as a test BuildRequires
+- Deselect the o-series token-counting unit test that would
+  download a tiktoken BPE encoding in the offline build
+
+INTERDEPENDENT REQUESTS - please stage together (will not build until these land):
+ * python-langchain-core 1.6.0
+ * python-langchain-openai 1.6.0 (also carries 1.5.2 vs Factory 1.5.1)
+ * python-langchain-anthropic 1.6.0
+Devel accepts: sr#1372135 (core), sr#1372136 (openai), sr#1372137 (anthropic).
+</comment>
+    <requestid>1372139</requestid>
+  </revision>
 </revisionlist>

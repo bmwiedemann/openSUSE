@@ -17,7 +17,7 @@
 
 
 Name:           python-langchain-openai
-Version:        1.5.1
+Version:        1.6.0
 Release:        0
 Summary:        An integration package connecting OpenAI and LangChain
 License:        MIT
@@ -28,14 +28,15 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-certifi >= 2024.6.2
-Requires:       python-langchain-core >= 1.5.4
+Requires:       python-langchain-core >= 1.6.0
 Requires:       python-openai >= 2.45.0
 Requires:       python-tiktoken >= 0.7.0
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module certifi >= 2024.6.2}
+BuildRequires:  %{python_module httpx2}
 BuildRequires:  %{python_module httpx}
-BuildRequires:  %{python_module langchain-core >= 1.5.4}
+BuildRequires:  %{python_module langchain-core >= 1.6.0}
 BuildRequires:  %{python_module openai >= 2.45.0}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module tiktoken >= 0.7.0}
@@ -78,8 +79,8 @@ rm tests/conftest.py
 # (pytest-cov is not needed for the build). The deselected token-counting
 # tests call tiktoken with a model whose BPE encoding is not bundled, so
 # tiktoken tries to download it from openaipublic.blob.core.windows.net,
-# which fails in the offline build.
-%pytest tests/unit_tests -o addopts='' --ignore tests/unit_tests/embeddings/test_azure_standard.py --ignore tests/unit_tests/embeddings/test_base_standard.py --ignore tests/unit_tests/chat_models/test_azure_standard.py --ignore tests/unit_tests/chat_models/test_base_standard.py --ignore tests/unit_tests/chat_models/test_responses_standard.py --ignore tests/unit_tests/chat_models/test_responses_stream.py --ignore tests/unit_tests/middleware/test_openai_moderation_middleware.py --deselect tests/unit_tests/chat_models/test_base.py::test_openai_stream_events_v3_lifecycle --deselect tests/unit_tests/chat_models/test_base.py::test__get_encoding_model --deselect tests/unit_tests/chat_models/test_base.py::test_get_num_tokens_from_messages --deselect tests/unit_tests/embeddings/test_base.py::test_embed_documents_with_custom_chunk_size --deselect tests/unit_tests/embeddings/test_base.py::test_embeddings_respects_token_limit --deselect "tests/unit_tests/llms/test_base.py::test_get_token_ids[gpt-3.5-turbo-instruct]" --deselect "tests/unit_tests/test_token_counts.py::test_chat_openai_get_num_tokens[gpt-5.5]" --deselect "tests/unit_tests/test_token_counts.py::test_chat_openai_get_num_tokens[gpt-5-nano]" --deselect "tests/unit_tests/test_token_counts.py::test_chat_openai_get_num_tokens[o3]"
+# which fails in the offline build (including the o-series variant).
+%pytest tests/unit_tests -o addopts='' --ignore tests/unit_tests/embeddings/test_azure_standard.py --ignore tests/unit_tests/embeddings/test_base_standard.py --ignore tests/unit_tests/chat_models/test_azure_standard.py --ignore tests/unit_tests/chat_models/test_base_standard.py --ignore tests/unit_tests/chat_models/test_responses_standard.py --ignore tests/unit_tests/chat_models/test_responses_stream.py --ignore tests/unit_tests/middleware/test_openai_moderation_middleware.py --deselect tests/unit_tests/chat_models/test_base.py::test_openai_stream_events_v3_lifecycle --deselect tests/unit_tests/chat_models/test_base.py::test__get_encoding_model --deselect tests/unit_tests/chat_models/test_base.py::test_get_num_tokens_from_messages --deselect tests/unit_tests/chat_models/test_base.py::test_get_num_tokens_from_messages_o_series --deselect tests/unit_tests/embeddings/test_base.py::test_embed_documents_with_custom_chunk_size --deselect tests/unit_tests/embeddings/test_base.py::test_embeddings_respects_token_limit --deselect "tests/unit_tests/llms/test_base.py::test_get_token_ids[gpt-3.5-turbo-instruct]" --deselect "tests/unit_tests/test_token_counts.py::test_chat_openai_get_num_tokens[gpt-5.5]" --deselect "tests/unit_tests/test_token_counts.py::test_chat_openai_get_num_tokens[gpt-5-nano]" --deselect "tests/unit_tests/test_token_counts.py::test_chat_openai_get_num_tokens[o3]"
 
 %files %{python_files}
 %doc README.md

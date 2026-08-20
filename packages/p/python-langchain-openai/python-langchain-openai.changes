@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Aug 20 05:52:43 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.6.0:
+  * Map OpenAI SDK failures onto the new standard model exception
+    types from langchain-core 1.6.0
+  * Raise a clear error on an unexpected response type in
+    _create_chat_result
+- Follow upstream and raise the langchain-core requirement floor
+  to 1.6.0
+
+-------------------------------------------------------------------
+Wed Aug 19 07:22:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.5.2:
+  * Preserve consecutive reasoning-item boundaries when converting
+    v1 content blocks back to Responses API input: fragments are
+    only merged when their IDs match, so a later tool turn no
+    longer loses a required reasoning item
+  * Extract LangSmith gateway metadata from response headers when
+    present and attach it to traces
+  * Support o-series models (o1, o3, o4 families) in
+    get_num_tokens_from_messages instead of raising
+    NotImplementedError
+- Follow upstream and raise the langchain-core requirement floor
+  to 1.5.6
+- Add python-httpx2 as a test BuildRequires so the chat-model unit
+  tests can collect (they now import httpx2 at module level)
+- Deselect the new o-series token-counting unit test that would
+  download a tiktoken BPE encoding in the offline build
+
+-------------------------------------------------------------------
 Tue Aug 18 05:37:10 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Avoid variations from --nocheck: move bytecode recompilation and
