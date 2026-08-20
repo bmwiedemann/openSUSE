@@ -432,4 +432,27 @@
     behavior for match(). [7415d1e, #58]</comment>
     <requestid>1344506</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>442caf49df9955161be4235f86d4a596</srcmd5>
+    <version>6.2.4</version>
+    <time>1787235418</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.2.4:
+  * Fix expand_from_start_time day-of-week low bound so Sunday
+    wraps correctly for stepped day-of-week ranges (isoweekday()
+    % 7 instead of weekday() + 1). [44e3090, #239, @alhudz]
+  * Bump pinned GitHub Actions via dependabot.
+  * Fix quadratic expansion of comma-separated range lists for a
+    large speed-up on expressions with many ranges.
+  * Reject a zero step (e.g. 5-5/0) in equal and reversed cron
+    ranges instead of silently accepting it.
+  * Fix expand_from_start_time month low-bound off-by-one so
+    stepped month ranges start on the correct month.
+  * Fix zizmor-reported security findings in GitHub Actions
+    workflows.
+  * Bump pinned build and CI dependencies via dependabot.
+  * Upgrade locked development and build dependencies (uv lock
+    --upgrade).</comment>
+    <requestid>1372217</requestid>
+  </revision>
 </revisionlist>

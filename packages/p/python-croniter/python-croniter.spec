@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-croniter
-Version:        6.2.2
+Version:        6.2.4
 Release:        0
 Summary:        Python iterators for datetime objects with cron-like format
 License:        MIT
