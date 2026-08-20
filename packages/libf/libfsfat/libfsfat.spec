@@ -20,7 +20,7 @@
 
 Name:           libfsfat
 %define lname	libfsfat1
-Version:        20260717
+Version:        20260819
 Release:        0
 Summary:        Library and tools for accessing the FAT filesystem
 License:        LGPL-3.0-or-later
@@ -34,6 +34,7 @@ BuildRequires:  %python_module setuptools
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
+BuildRequires:  pkgconfig(fuse3)
 BuildRequires:  pkgconfig(libbfio) >= 20260623
 BuildRequires:  pkgconfig(libcdata) >= 20260703
 BuildRequires:  pkgconfig(libcerror) >= 20260703
@@ -50,7 +51,6 @@ BuildRequires:  pkgconfig(libfdatetime) >= 20260521
 BuildRequires:  pkgconfig(libfguid) >= 20260521
 BuildRequires:  pkgconfig(libhmac) >= 20260522
 BuildRequires:  pkgconfig(libuna) >= 20260602
-BuildRequires:  pkgconfig(fuse3)
 BuildRequires:  pkgconfig(python3)
 %python_subpackages
 # Various notes: https://en.opensuse.org/libyal
