@@ -26,7 +26,7 @@ Index: netbird/client/cmd/root.go
 ===================================================================
 --- netbird.orig/client/cmd/root.go
 +++ netbird/client/cmd/root.go
-@@ -423,9 +423,16 @@ func getClient(cmd *cobra.Command) (*grp
+@@ -439,9 +439,16 @@ func getClient(cmd *cobra.Command) (*grp
  	conn, err := DialClientGRPCServer(cmd.Context(), daemonAddr)
  	if err != nil {
  		//nolint
@@ -224,7 +224,7 @@ Index: netbird/client/cmd/status.go
 ===================================================================
 --- netbird.orig/client/cmd/status.go
 +++ netbird/client/cmd/status.go
-@@ -158,9 +158,16 @@ func getStatus(ctx context.Context, full
+@@ -164,9 +164,16 @@ func getStatus(ctx context.Context, full
  	conn, err := DialClientGRPCServer(ctx, daemonAddr)
  	if err != nil {
  		//nolint

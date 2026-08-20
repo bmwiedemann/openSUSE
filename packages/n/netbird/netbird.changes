@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Thu Aug 13 15:59:50 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.77.0
+  - Agent Network
+    - Reworked Agent Network endpoint identity and settings
+      bootstrap. #7085
+    - Added a proxy-connect authorizer seam for Agent Network.
+      #7136
+    - Added reverse proxy usage accounting for activity tracking.
+      #7116
+  - Client Improvements
+    - Added strict anonymization level and MAC address
+      anonymization to debug bundles. #7102
+    - Declared the xdg-utils dependency for NetBird UI packages.
+      #7126
+    - Fixed credentials used for GTK3 package uploads. #7125
+    - Prevented WireGuard packets from being misrouted to the STUN
+      handler. #7059
+    - Updated the NetBird Wails fork to remove the native WebView2
+      dependency. #7128
+    - Migrated the relay QUIC tracer to qlog and upgraded quic-go
+      to v0.59.1. #7124
+    - Derived Windows SSH privilege checks from the user token and
+      group membership. #6966
+    - Adjusted the GTK3 release job. #7163
+    - Fixed a macOS DNS panic caused by malformed scutil output.
+      #7180
+    - Added a fallback to per-IP ACL rules when ipset is
+      unavailable. #6332
+    - Gated IPv6 forwarding on overlay IPv6 while preserving host
+      Router Advertisement acceptance. #6221
+    - Removed installer registry handlers for Windows autostart Run
+      keys. #7183
+  - Infrastructure & Documentation
+    - Added Crowdin configuration for UI translation
+      synchronization. #7155
+    - Fixed Crowdin export paths and export options. #7162
+    - Updated the documentation to direct translation contributions
+      to Crowdin. #7161
+    - Allowed external test suites to reuse the NetBird end-to-end
+      test harness. #7176
+    - Improved the release pipeline to build release branches and
+      delay marking releases as "latest" until signing is complete.
+      #7171
+- refreshed patches:
+  service-install-cli-change.patch
+  skip-ui.patch
+
+-------------------------------------------------------------------
 Sat Aug  8 12:16:13 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 0.76.3
