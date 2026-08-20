@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Aug 19 06:53:13 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 70960.patch: Fix build using cmake 4.4.
+
+-------------------------------------------------------------------
+Mon Jul 20 08:10:33 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.52.5:
+  + Fire scrollend event for instant programmatic scrolls.
+  + Increase network idle connection timeout to 115 seconds.
+  + Add User-Agent quirk for HBO Max.
+  + Add User-Agent quirk to make WebXR work better on ikea.com.
+  + Make MiniBrowser exit cleanly when receiving signals and PGO
+    profiles are being gathered.
+  + Fix the build with system malloc.
+  + Fix several crashes and rendering issues.
+
+-------------------------------------------------------------------
 Fri Jun 12 08:07:15 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.52.4:

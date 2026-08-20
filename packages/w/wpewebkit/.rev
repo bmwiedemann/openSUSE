@@ -183,4 +183,22 @@
   + Fix several crashes and rendering issues.</comment>
     <requestid>1361055</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>083f10211447a851d95fd27b1a0943c3</srcmd5>
+    <version>2.52.5</version>
+    <time>1787235250</time>
+    <user>anag_factory</user>
+    <comment>- Add 70960.patch: Fix build using cmake 4.4.
+
+- Update to version 2.52.5:
+  + Fire scrollend event for instant programmatic scrolls.
+  + Increase network idle connection timeout to 115 seconds.
+  + Add User-Agent quirk for HBO Max.
+  + Add User-Agent quirk to make WebXR work better on ikea.com.
+  + Make MiniBrowser exit cleanly when receiving signals and PGO
+    profiles are being gathered.
+  + Fix the build with system malloc.
+  + Fix several crashes and rendering issues.</comment>
+    <requestid>1372009</requestid>
+  </revision>
 </revisionlist>

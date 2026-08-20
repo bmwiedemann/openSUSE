@@ -23,7 +23,7 @@
 
 Name:           wpewebkit
 %define _lto_cflags %{nil}
-Version:        2.52.4
+Version:        2.52.5
 Release:        0
 Summary:        Library for rendering web content, WPE Port
 License:        BSD-3-Clause AND LGPL-2.1-only
@@ -31,6 +31,8 @@ Group:          Development/Libraries/C and C++
 URL:            https://wpewebkit.org/
 Source:         %{url}/releases/%{name}-%{version}.tar.xz
 
+# PATCH-FIX-UPSTREAM
+Patch0:         https://github.com/WebKit/WebKit/pull/70960.patch
 # PATCH-FIX-UPSTREAM riscv-platformenable.patch gh#Webkit/Webkit#64268
 Patch1:         riscv-platformenable.patch
 
