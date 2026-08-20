@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Aug 20 05:46:46 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.125.0:
+  * Promote Files and Skills APIs to GA and add computer-use
+    and browser-use toolsets
+  * Add helpers for reading the workspace ID in response headers
+  * Add managed-agents web-search config and self-hosted sandbox
+    memory-store sync
+  * Extend files, memory stores, skills and user-profile APIs
+  * Drop the unsupported mid_conv_system content block
+  * Compute platform headers without spawning a subprocess
+  * Export ServiceUnavailableError, DeadlineExceededError and
+    custom status errors from the package
+  * Retry session-runner tool-result sends for at least the
+    lease TTL and run synchronous session tools in a worker
+    thread
+
+-------------------------------------------------------------------
 Fri Aug 14 07:29:53 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.122.0:
