@@ -20,7 +20,7 @@ Name:           xh
 Version:        0.26.2
 Release:        0
 Summary:        Tool for sending HTTP requests
-License:        MIT
+License:        MIT AND MPL-2.0
 Group:          Development/Tools/Other
 URL:            https://github.com/ducaale/xh
 Source0:        %{name}-%{version}.tar.xz

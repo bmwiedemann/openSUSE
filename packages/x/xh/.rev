@@ -162,4 +162,12 @@
   * Decode all frames in concatenated zstd response bodies, see #470</comment>
     <requestid>1367930</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>db67c17774055fe01a9e71e647cd8f7d</srcmd5>
+    <version>0.26.2</version>
+    <time>1787235471</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1372277</requestid>
+  </revision>
 </revisionlist>
