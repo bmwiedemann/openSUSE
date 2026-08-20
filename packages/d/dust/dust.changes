@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Thu Aug 20 06:16:50 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to version 1.2.5:
+  * fix: re-sort types after appending others row
+  * test: skip the file-type filetime test on windows
+  * fix: -t with -m sums timestamps instead of taking the newest
+  * test(filetime): run output regression on all platforms
+  * test(windows): make mtime regression deterministic
+  * fix(windows): normalize file times
+  * ci: enforce the committed lockfile
+  * ci: keep existing macOS release runners
+  * ci: complete native ARM64 release coverage
+  * fix: a wide-character filename overflows the requested width
+  * docs: update readme
+  * test: drop the get_collapse test per review
+  * fix: --collapse on the command line is ignored when the config sets it
+  * ci: remove minimum version stuff
+  * ci: Update old CICD.yml
+  * test(time-filter): remove integration test
+  * fix(time-filter): handle invalid values cleanly instead of panicking
+  * fix: don't truncate JSON output to the terminal height
+  * deps: cargo update
+  * chore: remove redundant tests
+  * feat: add `limit-filesystem` config file option
+  * version: increment version
+  * fix build
+  * feat: add --dim flag to render percent bars in dark grey
+  * support other apple build
+  * ci: rewrite CICD file
+  * style: fix clippy
+  * fix: don't request full system info on startup
+  * docs: add Fedora official installation instruction
+  * Add mise installation instructions for dust
+  * Ignore empty path inputs
+  * Honor XDG_CONFIG_HOME for config discovery
+  * fix: use IEC prefixes (Ki, Mi, Gi) for base-1024 size display (#570)
+  * Prevent panic on repeated EINTR errors by gracefully skipping problematic directories
+  * ci: add riscv64 to release build matrix
+  * docs: add animated demo recording to README
+  * tests: add 64K block size expected outputs for ppc64
+  * docs: fix broken snap repo reference
+  * add install.sh
+  * docs: Update README.md
+  * version: increment version
+
+-------------------------------------------------------------------
 Tue Jan 20 08:16:32 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to version 1.2.4:
