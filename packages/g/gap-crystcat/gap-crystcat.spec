@@ -17,7 +17,7 @@
 
 
 Name:           gap-crystcat
-Version:        1.1.12
+Version:        1.1.13
 Release:        0
 Summary:        GAP: The crystallographic groups catalog
 License:        GPL-2.0-or-later
