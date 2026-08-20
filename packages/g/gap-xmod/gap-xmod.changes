@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 20 07:34:23 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.99
+  * Replaced test files in the tst/manual/ folder by examples
+    extracted using AutoDoc.
+
+-------------------------------------------------------------------
 Mon Mar 16 07:18:55 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.98
