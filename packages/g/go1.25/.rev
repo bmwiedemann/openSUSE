@@ -486,4 +486,15 @@
   * go#80618 cmd/compile: prove bug causes invalid indirect call (forwarded request 1371104 from jfkw)</comment>
     <requestid>1371107</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>3ca3c85e426a1441b4a0f6618e795149</srcmd5>
+    <version>1.25.14</version>
+    <time>1787235270</time>
+    <user>anag_factory</user>
+    <comment>- go1.25.14 (released 2026-08-19) includes fixes to the net/http
+  package.
+  Refs boo#1244485 go1.25 release tracking
+  * go#80926 net/http: ReadHeaderTimeout remains active after unencrypted HTTP/2 handoff (forwarded request 1372026 from jfkw)</comment>
+    <requestid>1372028</requestid>
+  </revision>
 </revisionlist>

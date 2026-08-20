@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug 19 14:43:56 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.25.14 (released 2026-08-19) includes fixes to the net/http
+  package.
+  Refs boo#1244485 go1.25 release tracking
+  * go#80926 net/http: ReadHeaderTimeout remains active after unencrypted HTTP/2 handoff
+
+-------------------------------------------------------------------
 Thu Aug 13 17:36:03 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.25.13 (released 2026-08-13) includes security fixes to the go
