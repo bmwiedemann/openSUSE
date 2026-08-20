@@ -56,4 +56,39 @@ Built and verified on aarch64: 545 tests pass on both python313 and python314,
 rpmlint 0 errors / 0 warnings / 0 badness, source_validator clean.</comment>
     <requestid>1370149</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c395a24321e8bf1048f632506eff36ed</srcmd5>
+    <version>1.7.1</version>
+    <time>1787241167</time>
+    <user>anag_factory</user>
+    <comment>Update python-langchain-aws from 1.7.0 to 1.7.1.
+
+Upstream changes:
+- Add DynamoDBVectorStore, a vector store backed by DynamoDB vector
+  indexes.
+- Support streaming for Kimi models (moonshot/moonshotai providers) in
+  ChatBedrockConverse.
+- Refresh the bundled model profile data (openai.gpt-5.6-* Bedrock
+  models now advertise a 1050000-token input limit).
+- Strip AWS_BEARER_TOKEN_BEDROCK from the unit-test environment.
+
+DEPENDENCY FLOOR / COORDINATION: upstream raised its boto3 floor from
+1.43.32 to 1.43.64 and this spec follows it in both BuildRequires and
+Requires. The floor is load-bearing, not cosmetic: DynamoDBVectorStore
+calls DynamoDB's SearchVectors operation, which first appears in the
+botocore service model in 1.43.64. The floor was NOT lowered to make
+the build pass.
+
+openSUSE:Factory currently carries python-boto3/python-botocore
+1.43.36, so this package is unresolvable until the boto3/botocore
+bump lands. python-boto3 1.43.72 and python-botocore 1.43.72 have
+been submitted to devel:languages:python:aws (sr#1371286 for boto3,
+sr#1371299 for botocore) precisely to unblock this. Please stage this
+request together with those, or after they have reached Factory.
+
+Local verification: built for openSUSE_Tumbleweed/aarch64 against a
+repo layering the prepared boto3/botocore 1.43.72 over Tumbleweed;
+%check runs the offline unit tests. No patches are carried.</comment>
+    <requestid>1371318</requestid>
+  </revision>
 </revisionlist>

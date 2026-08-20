@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Aug 15 18:20:01 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.7.1:
+  * Add DynamoDBVectorStore, a vector store backed by DynamoDB
+    vector indexes
+  * Support streaming for Kimi models (moonshot/moonshotai
+    providers) in ChatBedrockConverse
+  * Refresh the bundled model profile data: the openai.gpt-5.6-*
+    Bedrock models now advertise a 1050000-token input limit
+  * Strip AWS_BEARER_TOKEN_BEDROCK from the unit-test environment
+- Raise the python-boto3 floor from 1.43.32 to 1.43.64, following
+  upstream: DynamoDBVectorStore calls DynamoDB's SearchVectors
+  operation, which first appears in the botocore service model in
+  1.43.64
+
+-------------------------------------------------------------------
 Fri Aug  7 05:05:22 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.7.0:
