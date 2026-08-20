@@ -1,0 +1,15 @@
+---
+ src/tests/test_shm.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- src/tests/test_shm.c
++++ src/tests/test_shm.c	2026-08-13 11:39:12.590440508 +0000
+@@ -63,7 +63,7 @@ int main(int argc, char *argv[])
+     if ( (shm_addr = shmat(shm_id, NULL, SHM_RDONLY)) < 0)
+         err(EXIT_FAILURE, "Unable to shmat()");
+     printf("SHMID: %x\n", shm_id);
+-    printf("SHMADDR: %p\n", shm_addr);
++    printf("SHMADDR: %0*lx\n", (int)(sizeof(void *) * 2), (unsigned long)shm_addr);
+     sleep(sleep_time);
+     return EXIT_SUCCESS;
+ }

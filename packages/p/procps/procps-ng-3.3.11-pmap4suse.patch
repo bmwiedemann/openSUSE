@@ -4,7 +4,7 @@
  2 files changed, 44 insertions(+), 20 deletions(-)
 
 --- src/pmap.c
-+++ src/pmap.c	2026-01-30 12:07:37.595146461 +0000
++++ src/pmap.c	2026-08-13 09:45:23.021209643 +0000
 @@ -59,7 +59,9 @@ const char *nls_Address,
  	   *nls_Kbytes,
  	   *nls_Mode,
@@ -39,7 +39,7 @@
  
  static unsigned shm_minor = ~0u;
  
-@@ -555,12 +559,17 @@ static int one_proc (struct pids_stack *
+@@ -574,12 +578,17 @@ static int one_proc (struct pids_stack *
  	char perms[32] = "";
  	const char *cp2 = NULL;
  	unsigned long long rss = 0ull;
@@ -57,7 +57,7 @@
  
  	printf("%u:   %s\n", PIDS_VAL(tgid, s_int, p), PIDS_VAL(cmdline, str, p));
  
-@@ -583,13 +592,15 @@ static int one_proc (struct pids_stack *
+@@ -602,13 +611,15 @@ static int one_proc (struct pids_stack *
  	if (x_option) {
  		maxw1 = 16;
  		if (sizeof(long) == 4) maxw1 = 8;
@@ -74,7 +74,7 @@
  			maxw5 = justify_print(nls_Mode, maxw5, 0);
  			justify_print(nls_Mapping, 0, 0);
  		}
-@@ -629,6 +640,11 @@ static int one_proc (struct pids_stack *
+@@ -648,6 +659,11 @@ static int one_proc (struct pids_stack *
  					total_rss += smap_value;
  					continue;
  				}
@@ -86,7 +86,7 @@
  				if (strcmp("Shared_Dirty", smap_key) == 0) {
  					shared_dirty = smap_value;
  					total_shared_dirty += smap_value;
-@@ -641,16 +657,20 @@ static int one_proc (struct pids_stack *
+@@ -660,16 +676,20 @@ static int one_proc (struct pids_stack *
  				}
  				if (strcmp("Swap", smap_key) == 0) {
  					/* doesn't matter as long as last */
@@ -109,7 +109,7 @@
                      diff = end = 0;
                      perms[0] = '\0';
                      cp2 = NULL;
-@@ -688,7 +708,6 @@ static int one_proc (struct pids_stack *
+@@ -707,7 +727,6 @@ static int one_proc (struct pids_stack *
  		if (perms[3] == 's')
  			total_shared += diff;
  		if (perms[3] == 'p') {
@@ -117,7 +117,7 @@
  			if (perms[1] == 'w')
  				total_private_writeable += diff;
  			else
-@@ -740,17 +759,21 @@ static int one_proc (struct pids_stack *
+@@ -759,17 +778,21 @@ static int one_proc (struct pids_stack *
  				justify_print("----------------", maxw1, 0);
  			justify_print("-------", maxw2, 1);
  			justify_print("-------", maxw3, 1);
@@ -141,7 +141,7 @@
  		}
  		if (d_option) {
  			printf
-@@ -1069,16 +1092,18 @@ int main(int argc, char **argv)
+@@ -1088,16 +1111,18 @@ int main(int argc, char **argv)
  	while ((c = getopt_long(argc, argv, "xXrdqA:hVcC:nN:pk", longopts, NULL)) != -1)
  		switch (c) {
  		case 'x':
@@ -163,22 +163,25 @@
  		case 'q':
  			q_option = 1;
 --- testsuite/pmap.test/pmap.exp
-+++ testsuite/pmap.test/pmap.exp	2026-01-30 12:10:34.535902028 +0000
-@@ -8,17 +8,17 @@ set pmap_procname "${mypid}:\\s+\\S+\[^\
- set pmap_initname "1:\\s+\\S+\[^\\r\]+\\s+"
++++ testsuite/pmap.test/pmap.exp	2026-08-13 11:54:35.553708814 +0000
+@@ -9,19 +9,19 @@ set pmap_procname [pmap_make_name ${mypi
+ set pmap_initname [pmap_make_name 1]
  set pmap_std_header $pmap_procname
  set pmap_device_header "${pmap_procname}Address\\s+Kbytes\\s+Mode\\s+Offset\\s+Device\\s+Mapping\\s+"
--set pmap_ext_header "${pmap_procname}Address\\s+Kbytes\\s+RSS\\s+Dirty\\s+Mode\\s+Mapping\\s+"
-+set pmap_ext_header "${pmap_procname}Address\\s+Kbytes\\s+RSS\\s+PSS\\s+Dirty\\s+Swap\\s+Mode\\s+Mapping\\s+"
- set pmap_generic_header "${pmap_procname}\\s+\(?:\[A-Z\]\[a-z\]+ +\)+"
+-proc pmap_make_ext_header {name} {return "[pmap_make_name ${name}]Address\\s+Kbytes\\s+RSS\\s+Dirty\\s+Mode\\s+Mapping\\s+"}
++proc pmap_make_ext_header {name} {return "[pmap_make_name ${name}]Address\\s+Kbytes\\s+RSS\\s+PSS\\s+Dirty\\s+Swap\\s+Mode\\s+Mapping\\s+"}
+ set pmap_ext_header [pmap_make_ext_header ${mypid}]
+ proc pmap_make_generic_header {name} {return "[pmap_make_name ${name}]\\s+\(?:\[A-Z\]\[a-z\]+ +\)+"}
+ set pmap_generic_header [pmap_make_generic_header ${mypid}]
  
 -set pmap_std_items "\(\[0-9a-f\]+\\s+\\d+K \[rwx-\]{5}\\s+\\S+\[^\\r\]+\\s*\)+"
 -set pmap_device_items "\(\[0-9a-f\]+\\s+\\d+ \[rwx-\]{5}\\s+\[0-9a-f\]+\\s+\[0-9a-f\]{3}:\[0-9a-f\]{5}\\s+\\S+\[^\\r\]+\\s*\)+"
 -set pmap_ext_items "\(\[0-9a-f\]+\\s+\\d+\\s+\\d+\\s+\\d+ \[rwx-\]{5}\\s+\\S+\[^\\r\]+\\s*\)+"
+-set pmap_kernel_items "\(\[0-9a-f\]+\\s+\\d+K \[rwx-\]{5}\\s+\\\[(vdso|vsyscall|heap)\\\]\\s*\)+"
 +set pmap_std_items "\(\[0-9a-f\]+\\s+\\d+K \[rwxp-\]{5}\\s+\\S+\[^\\r\]+\\s*\)+"
 +set pmap_device_items "\(\[0-9a-f\]+\\s+\\d+ \[rwxp-\]{5}\\s+\[0-9a-f\]+\\s+\[0-9a-f\]{3}:\[0-9a-f\]{5}\\s+\\S+\[^\\r\]+\\s*\)+"
 +set pmap_ext_items "\(\[0-9a-f\]+\\s+\\d+\\s+\\d+\\s+\\d+\\s+\\d+ \[rwxp-\]{5}\\s+\\S+\[^\\r\]+\\s*\)+"
- set pmap_kernel_items "\(\[0-9a-f\]+\\s+\\d+K \[rwx-\]{5}\\s+\\\[(vdso|vsyscall)\\\]\\s*\)+"
++set pmap_kernel_items "\(\[0-9a-f\]+\\s+\\d+\\s+\\d+\\s+\\d+\\s+\\d+ \[rwxp-\]{5}\\s+\\\[(vdso|vsyscall|heap)\\\]\\s*\)+"
  
  set pmap_std_footer "total\\s+\\d+K\\s*\$"
  set pmap_device_footer "mapped:\\s+\\d+K\\s+writeable\/private:\\s+\\d+K\\s+shared:\\s+\\d+K\\s*\$"
@@ -187,7 +190,7 @@
  
  set test "pmap with no arguments"
  spawn $pmap
-@@ -27,17 +27,16 @@ expect_pass "$test" "Usage:\\s+\(lt-\)?p
+@@ -30,17 +30,16 @@ expect_pass "$test" "Usage:\\s+\(lt-\)?p
  
  set test "pmap standard output"
  spawn $pmap $mypid
@@ -207,7 +210,7 @@
  set test "pmap device output quiet (dq)"
  spawn $pmap -dq $mypid
  expect_table $test $pmap_procname $pmap_device_items "\$"
-@@ -51,7 +50,7 @@ if  { [ file readable "/proc/self/smaps"
+@@ -54,7 +53,7 @@ if  { [ file readable "/proc/self/smaps"
  } else {
      set test "pmap extended output"
      spawn $pmap -x $mypid

@@ -16,7 +16,7 @@
  Usually
  .B w
 --- procps-ng-4.0.6/src/w.c
-+++ procps-ng-4.0.6/src/w.c	2026-01-30 11:55:02.308987512 +0000
++++ procps-ng-4.0.6/src/w.c	2026-08-13 09:36:23.998824627 +0000
 @@ -225,7 +225,8 @@ static void print_from(
  	    if (r < 0 || host == NULL)
  	        print_host("", 0, fromlen);
@@ -27,7 +27,7 @@
  		free(host);
  	    }
  	} else {
-@@ -636,7 +637,7 @@ static void get_session_tty(
+@@ -638,7 +639,7 @@ static void get_session_tty(
  static void showinfo(
              const char *session, const char *name,
              utmp_t * u, const int longform, int maxcmd, int from,
@@ -36,7 +36,7 @@
              const int pids,
              struct pids_fetch *reap)
  {
-@@ -646,6 +647,7 @@ static void showinfo(
+@@ -648,6 +649,7 @@ static void showinfo(
      char cmdline[MAX_CMD_WIDTH + 1];
      pid_t best_pid = -1;
      int pids_length = 0;
@@ -44,7 +44,7 @@
  
      strcpy(cmdline, "-");
  
-@@ -671,7 +673,18 @@ static void showinfo(
+@@ -673,7 +675,18 @@ static void showinfo(
      /* force NUL term for printf */
      uname[UT_NAMESIZE] = '\0';
  
@@ -64,7 +64,7 @@
      if (from)
          print_from(session, u, ip_addresses, fromlen);
  
-@@ -745,6 +758,7 @@ static void __attribute__ ((__noreturn__
+@@ -747,6 +760,7 @@ static void __attribute__ ((__noreturn__
  	fputs(_(" -h, --no-header     do not print header\n"),out);
  	fputs(_(" -u, --no-current    ignore current process username\n"),out);
  	fputs(_(" -s, --short         short format\n"),out);
@@ -72,7 +72,7 @@
  	fputs(_(" -t, --terminal      show terminals\n"),out);
  	fprintf(out,
  	      _(" -f, --from          toggle remote hostname field (default: %s)\n"),
-@@ -1016,6 +1030,7 @@ int main(int argc, char **argv)
+@@ -1018,6 +1032,7 @@ int main(int argc, char **argv)
  		{"no-header", no_argument, NULL, 'h'},
  		{"no-current", no_argument, NULL, 'u'},
  		{"short", no_argument, NULL, 's'},
@@ -80,7 +80,7 @@
  		{"terminal", no_argument, NULL, 't'},
  		{"from", no_argument, NULL, 'f'},
  		{"old-style", no_argument, NULL, 'o'},
-@@ -1039,7 +1054,7 @@ int main(int argc, char **argv)
+@@ -1041,7 +1056,7 @@ int main(int argc, char **argv)
  #endif
  
  	while ((ch =
@@ -89,7 +89,7 @@
  		switch (ch) {
                  case 'c':
                          container = 1;
-@@ -1050,6 +1065,10 @@ int main(int argc, char **argv)
+@@ -1052,6 +1067,10 @@ int main(int argc, char **argv)
  		case 's':
  			longform = 0;
  			break;

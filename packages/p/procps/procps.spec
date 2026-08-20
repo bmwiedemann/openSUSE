@@ -27,7 +27,7 @@
 %bcond_without  nls
 %bcond_with     kill
 Name:           procps
-Version:        4.0.6
+Version:        4.0.7
 Release:        0
 Summary:        The ps utilities for /proc
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -38,13 +38,8 @@ Source1:        https://downloads.sourceforge.net/project/procps-ng/Production/p
 #Alternate:     https://gitlab.com/procps-ng/procps/-/archive/v%%{version}/procps-v%%{version}.tar.gz
 Source2:        procps-rpmlintrc
 Source3:        procps.keyring
-# PATCH-FIX-USTREAM -- w: Don't crash when using short option
-Patch1:         procps-v3.3.3-ia64.diff
 # PATCH-FIX-COMMUNITY
-Patch2:         glibc-2.43.patch
 Patch3:         procps-ng-3.3.9-w-notruncate.diff
-# PATCH-FIX-UPSTREAM
-Patch4:         d9c96ec0.patch
 Patch7:         procps-ng-3.3.8-readeof.patch
 Patch8:         procps-ng-3.3.10-slab.patch
 Patch11:        procps-ng-3.3.10-xen.dif
@@ -64,8 +59,8 @@ Patch32:        procps-ng-3.3.10-errno.patch
 Patch33:        procps-ng-3.3.11-pmap4suse.patch
 # PATCH-FIX-SUSE -- Avoid float errors on 32bit architectures
 Patch37:        procps-ng-4.0.0-floats.dif
-# PATCH-FIX-SUSE -- with 4.0.4 the totals on -X option are always reset for each pid
-Patch38:        procps-ng-4.0.4-pmapX-not-twice-anymore.patch
+# PATCH-FIX-SUSE -- fill address with leading zeros
+Patch38:        procps-4.0.7-pmap-test.patch
 # PATCH-FIX-SUSE -- ignore dangling symlink to missing /etc/sysctl.conf file
 Patch39:        procps-ng-4.0.4-ignore-sysctl_conf.patch
 BuildRequires:  automake
@@ -164,10 +159,7 @@ the process information pseudo-file system.
 
 %prep
 %setup -q -n procps-ng-%{version}
-%patch -P1
-%patch -P2 -p1
 %patch -P3 -p1 -b .trcate
-%patch -P4 -p1 -b .413
 %patch -P7 -b .rof
 %patch -P8 -b .cache
 %patch -P11
@@ -352,6 +344,7 @@ kill -TERM $pid
 error=no
 for log in testsuite/*.log test-suite.log
 do
+    test -e $log || continue
     if grep -E '^(XFAIL|FAIL|ERROR):' $log
     then
         echo Check $log

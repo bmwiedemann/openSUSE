@@ -1496,4 +1496,41 @@ There are also man pages translations but they doesn't get installed automatical
   * ps: ps f forest works under pid 1                      issue #102</comment>
     <requestid>1335457</requestid>
   </revision>
+  <revision rev="142" vrev="1">
+    <srcmd5>a7387dc6f7d4e9f0ead8bb77a34a9050</srcmd5>
+    <version>4.0.7</version>
+    <time>1787235235</time>
+    <user>anag_factory</user>
+    <comment>- Extend the corrected patch procps-ng-3.3.8-readeof.patch
+  to do open with O_NOATIME only for root 
+
+- Update to procps-ng-4.0.7
+  * library
+    version: inc revision to 2 now 1:2:0
+    internal: procps_pids_length off by one                issue #412
+    external: fix slabinfo header extern 'C' declaration   issue #415
+    internal: fix file descriptor leaks in &lt;pids&gt; api      issue #421
+    internal: strv items are now escaped in &lt;pids&gt; api     issue #429
+    internal: fix output if on seconds edge values         merge !246 RHEL-60825
+  * pidof: Add -d aliased option                           issue #418
+  * pgrep: Don't treat empty list as 0                     issue #427
+  * pmap: Fix testsuite for Alpha                          Debian #1141465
+  * ps: correct 'environ' output when file unavailable
+  * ps: minimize potential EACCES with 'environ' files     issue #431
+  * top: avoid batch mode segfault with maximum width      issue #422
+  * w: Correctly check for end of tty using utmp           issue #430
+  * watch: Dont remove 2 lines when using -t option        issue #413
+  * watch: Handle resizing better                          issue #417
+  * watch: Restore LINES and COLUMNS env variables         issue #432
+- Port patches
+  * procps-ng-3.3.11-pmap4suse.patch
+  * procps-ng-3.3.8-petabytes.patch
+  * procps-ng-3.3.8-readeof.patch
+  * procps-ng-3.3.8-tinfo.dif
+  * procps-ng-3.3.9-w-notruncate.diff
+  * procps-ng-4.0.4-ignore-sysctl_conf.patch
+  * procps-v3.3.3-read-sysctls-also-from-boot-sysctl.conf-kernelversion.diff
+- Remove patches now obsolete</comment>
+    <requestid>1371991</requestid>
+  </revision>
 </revisionlist>
