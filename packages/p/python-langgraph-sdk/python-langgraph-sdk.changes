@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Aug 20 05:49:22 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.4.3:
+  * Add DecryptResult so decrypt handlers can return plaintext
+    plus optional replacement ciphertext (e.g. after key rotation)
+  * Fix CronClient.update(end_time=None) to actually clear a
+    previously set cron end time
+  * Allow websockets 16.x (upper bound raised to <17)
+
+-------------------------------------------------------------------
 Tue Aug 18 05:37:44 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Avoid variations from --nocheck: move bytecode recompilation and

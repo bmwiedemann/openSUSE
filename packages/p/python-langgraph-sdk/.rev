@@ -15,4 +15,18 @@
     <comment>Reproducibility fix: move the hash-based bytecode recompilation and fdupes from %check to %install, so the package content no longer varies when built with --nocheck (boo#1227364). Same fix bmwiedemann applied to python-langgraph in sr#1371636.</comment>
     <requestid>1371671</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d228e0f877f3ebfea3c490482b655739</srcmd5>
+    <version>0.4.3</version>
+    <time>1787235325</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.4.3:
+  * Add DecryptResult so decrypt handlers can return plaintext
+    plus optional replacement ciphertext (e.g. after key rotation)
+  * Fix CronClient.update(end_time=None) to actually clear a
+    previously set cron end time
+  * Allow websockets 16.x (upper bound raised to &lt;17)
+</comment>
+    <requestid>1372118</requestid>
+  </revision>
 </revisionlist>
