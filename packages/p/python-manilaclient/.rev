@@ -606,4 +606,16 @@ update to version 1.10.0
   * Update master for stable/2026.1</comment>
     <requestid>1359329</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>1c71c90c8c6bed80ff2b59d5aed72613</srcmd5>
+    <version>6.2.0</version>
+    <time>1787235243</time>
+    <user>anag_factory</user>
+    <comment>- add multibuild to split off test runs (solves
+  python-openstackclient buildrequires loop)
+
+- update to 6.2.0:
+  * added properties column to share replica list command</comment>
+    <requestid>1372072</requestid>
+  </revision>
 </revisionlist>

@@ -16,28 +16,39 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+
 %global pythons %{primary_python}
-Name:           python-manilaclient
-Version:        6.1.0
+Name:           python-manilaclient%{?psuffix}
+Version:        6.2.0
 Release:        0
 Summary:        Client Library for OpenStack Share API
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/python-manilaclient
 Source0:        https://files.pythonhosted.org/packages/source/p/python_manilaclient/python_manilaclient-%{version}.tar.gz
+%if %{with test}
 BuildRequires:  %{python_module ddt}
 BuildRequires:  %{python_module fixtures}
 BuildRequires:  %{python_module openstackclient}
-BuildRequires:  %{python_module osc-lib >= 1.10.0}
 BuildRequires:  %{python_module oslo.config >= 5.2.0}
 BuildRequires:  %{python_module oslo.log >= 3.36.0}
 BuildRequires:  %{python_module oslo.serialization >= 2.20.0}
 BuildRequires:  %{python_module oslo.utils >= 3.33.0}
-BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module requests-mock}
 BuildRequires:  %{python_module stestr}
 BuildRequires:  %{python_module testrepository}
 BuildRequires:  %{python_module testtools}
+%endif
+BuildRequires:  %{python_module osc-lib >= 1.10.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  openstack-macros
 Requires:       python-Babel >= 2.5.0
@@ -80,8 +91,7 @@ PBR_VERSION=%{version} sphinx-build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
-%install
-%pyproject_install
+%if %{with test}
 
 %check
 # we don't want to depend on Tempest so remove the relevant tests
@@ -89,6 +99,11 @@ rm -f manilaclient/tests/unit/test_shell.py
 rm -f manilaclient/tests/unit/test_functional_utils.py
 rm -rf manilaclient/tests/functional
 %{openstack_stestr_run}
+
+%else
+
+%install
+%pyproject_install
 
 %files %{python_files}
 %doc README.rst
@@ -99,5 +114,6 @@ rm -rf manilaclient/tests/functional
 %files -n python3-manilaclient-doc
 %license LICENSE
 %doc doc/build/html
+%endif
 
 %changelog

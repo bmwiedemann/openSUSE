@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Aug 19 18:40:57 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- add multibuild to split off test runs (solves
+  python-openstackclient buildrequires loop)
+
+-------------------------------------------------------------------
+Wed Aug  5 15:28:17 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.2.0:
+  * added properties column to share replica list command
+
+-------------------------------------------------------------------
 Sun Jun 14 21:27:49 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.1.0:
