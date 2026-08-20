@@ -863,4 +863,54 @@
     <comment></comment>
     <requestid>1370155</requestid>
   </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>a7cc2d6586af04da4bbf7cad8e7421ba</srcmd5>
+    <version>34.0.2</version>
+    <time>1787235333</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 34.0.2:
+  * [stable-34.0] fix(file-provider): Deletion of server-side item
+    for items excluded from sync
+    (gh#nextcloud/desktop#10540)
+  * [stable-34.0] fix(tray): activate tray window also on right
+    click (macOS)
+    (gh#nextcloud/desktop#10542)
+  * [stable-34.0] fix(file-provider): preserve special characters
+    in chunked upload paths
+    (gh#nextcloud/desktop#10544)
+  * [stable-34.0] fix(discovery): use QString to avoid dangling
+    QStringBuilder.
+    (gh#nextcloud/desktop#10557)
+  * [stable-34.0] fix(socketapi): defer move item dialog out of
+    socket read loop. 
+    (gh#nextcloud/desktop#10578)
+  * [stable-34.0] fix(windows): Prevent reupload of placeholder 
+    dirs deleted remotely
+    (gh#nextcloud/desktop#10585)
+  * [stable-34.0] fix(macOS): present tray popup before app
+    activation 
+    (gh#nextcloud/desktop#10593)
+  * [stable-34.0] fix(macos): Get actual user home directory 
+    correctly 
+    (gh#nextcloud/desktop#10573)
+  * [stable-34.0] fix(windows): properly test for locked files 
+    (gh#nextcloud/desktop#10603)
+  * [stable-34.0] fix(wizard): align reauthentication with account
+    setup 
+    (gh#nextcloud/desktop#10605)
+  * [stable-34.0] fix(macOS): compare FinderSync broker
+    application versions 
+    (gh#nextcloud/desktop#10606)
+  * [stable-34.0] fix(tray): restore pause and resume sync action
+    (gh#nextcloud/desktop#10607)
+  * [stable-34.0] Feature/config not interactive migrated to
+    nextcloud cmd 
+    (gh#nextcloud/desktop#10608)
+  * [stable-34.0] fix(file-provider): Clean up stale chunked
+    upload chunks 
+    (gh#nextcloud/desktop#10617)
+  * [stable-34.0] Bugfix/sync new files on windows 
+    (gh#nextcloud/desktop#10626) (forwarded request 1372041 from Kieltux)</comment>
+    <requestid>1372114</requestid>
+  </revision>
 </revisionlist>
