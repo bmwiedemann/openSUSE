@@ -1,0 +1,22 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>61bef8965322863a166f755e622885be</srcmd5>
+    <version>0.23.1</version>
+    <time>1787323963</time>
+    <user>anag_factory</user>
+    <comment>NEW PACKAGE - not yet in openSUSE:Factory.
+
+- Suggests python-tree-sitter &gt;= 0.22 instead of Requires,
+  matching tree-sitter-bash, so ring1/product installcheck
+  does not demand a non-ring package.
+
+Julia grammar + python3-tree-sitter-julia loader subpackage.
+Supersedes sr#1372087.
+
+INTERDEPENDENT REQUESTS - please stage together:
+ * sr#1372054 - tree-sitter (python binding macros)
+ * sibling grammar python-binding SRs already in flight
+Needed for python-graphifyy.</comment>
+    <requestid>1372211</requestid>
+  </revision>
+</revisionlist>
