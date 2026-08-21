@@ -16,10 +16,8 @@
 #
 
 
+%define python_subpackage_only 1
 %define         _name javascript
-%define         python_subpackage_only 1
-%define         python_libname tree_sitter_javascript
-%{?sle15_python_module_pythons}
 Name:           tree-sitter-javascript
 Version:        0.23.1
 Release:        0
@@ -27,25 +25,27 @@ Summary:        Javascript grammar for tree-sitter
 License:        MIT
 URL:            https://github.com/tree-sitter/tree-sitter-javascript
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source99:       tree-sitter-javascript-rpmlintrc
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildRequires:  tree-sitter
+BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module installer}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 %treesitter_grammars %{_name}
+%python_subpackages
 
 %description
 %{summary}.
 
-%package -n python-tree-sitter-javascript
-Summary:        Python bindings for JavaScript TS grammar
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
-BuildRequires:  python-rpm-macros
-BuildRequires:  fdupes
-%python_subpackages
+%package -n python-%{name}
+Summary:        Python binding for the %{name} grammar
+Suggests:       python-tree-sitter
 
-%description -n python-tree-sitter-javascript
-Python bindings for the JavaScript grammar for tree-sitter.
+%description -n python-%{name}
+The tree_sitter_* Python module for the %{name} grammar, loadable
+with the Language()/Parser() API from python-tree-sitter.
 
 %prep
 %autosetup -p1
@@ -53,15 +53,12 @@ Python bindings for the JavaScript grammar for tree-sitter.
 %build
 %treesitter_configure
 %treesitter_build
-%pyproject_wheel
+%treesitter_python_build
 
 %install
 %treesitter_install
 %treesitter_devel_install
-%pyproject_install
-
-
-%python_expand %fdupes %{buildroot}%{$python_sitearch}
+%treesitter_python_install
 
 %files
 %license LICENSE
@@ -70,15 +67,7 @@ Python bindings for the JavaScript grammar for tree-sitter.
 %treesitter_devel_package
 
 %files %{python_files %{name}}
-%dir %{python_sitearch}/%{python_libname}
-%dir %{python_sitearch}/%{python_libname}/queries
-%pycache_only %{python_sitearch}/%{python_libname}/__pycache__
-%{python_sitearch}/%{python_libname}/__init__.py
-%{python_sitearch}/%{python_libname}/__init__.pyi
-%{python_sitearch}/%{python_libname}/_binding.abi3.so
-%{python_sitearch}/%{python_libname}/binding.c
-%{python_sitearch}/%{python_libname}/py.typed
-%{python_sitearch}/%{python_libname}/queries/*.scm
-%{python_sitearch}/%{python_libname}-%{version}.dist-info
+%license LICENSE
+%{python_sitearch}/tree_sitter_*
 
 %changelog
