@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Fri Aug 21 07:30:40 UTC 2026 - Martin Wilck <mwilck@suse.com>
+
+- Packaging:
+   * Add dependency on python3-gnupg (now required for gpg support), and remove
+     dependency on gpg.
+   * Add dependency on python3-setuptools-gettext (now required for generating
+     translations)
+   * Compress large changelog file.
+
+- Update to version 3.2.0.1
+   * chg: Add get_data_files for dynamic data file handling in setup.py
+   * chg: Simplify doc handling by removing outdated duplicity docs
+   * chg: Update dependencies, streamline configs, and refine CI
+   * fix: Resolve PEP8 style issues and whitespace in backend and main modules
+
+-  Update to version 3.2.0
+   * new: Add get_version() to librsync to retrieve underlying library version
+   * new: Add pure Python librsync implementation using ctypes as fallback
+   * new: Add coverage configuration and Makefile targets for testing.
+   * new: Add PyCharm devcontainer configuration and base Dockerfile.
+   * chg: Update release-prep script to use `check_tags`
+   * chg: Update release-prep script to fix tag removal and file refs
+   * chg: Update pipeline triggers for push, web, and merge request events
+   * chg: Improve process in `setup.py` and release prep script
+   * chg: Refactor versioning and metadata handling
+   * chg: Refactor string concatenations to f-strings across codebase
+   * chg: Clean up and refactor `pyproject.toml` and `Makefile`
+   * chg: Rewrite `makechangelog` script in Python
+   * chg: b2backend prefer b2sdk.v3
+   * chg: Cleanup some minor issues
+   * chg: Remove unused Tahoe-LAFS installation steps in Snapcraft
+   * chg: Add support for additional architectures in Snapcraft
+   * chg: Update Snapcraft to core26 and Python 3.14
+   * chg: Add setuptools dependency to requirements.dev for Python 3.12+
+   * chg: Update dependencies in requirements.txt for compatibility.
+   * fix: Replace `os.system` calls with safer Python alternatives.
+   * fix: Add --ignore-installed flag for pip in Dockerfiles
+   * fix: restore issue: AssertionError: (b'keys', [...]) not empty
+   * fix: Replace `log.FatalError` with `raise errors.FatalError`.
+   * fix: Add support for "sync" action and handle passphrase checks.
+   * fix: Enhance error handling and debug logging in Python modules
+   * fix: Use 'python-gnupg' instead of our 'gpginterface.py'.
+   * fix: PCABackend GET URL needs prefix if one is defined
+   * fix: Could not release lockfile
+   * fix: Comprehensive fix for backup, restart, and cleanup logic.
+
+-------------------------------------------------------------------
 Wed Jun 17 14:07:03 UTC 2026 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 3.1.0

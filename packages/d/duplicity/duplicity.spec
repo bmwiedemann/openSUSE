@@ -26,7 +26,7 @@
 %define _python3_version %{?python311_version}
 %endif
 Name:           duplicity
-Version:        3.1.0
+Version:        3.2.0.1
 Release:        0
 Summary:        Encrypted bandwidth-efficient backup using the rsync algorithm
 License:        GPL-3.0-or-later
@@ -36,15 +36,17 @@ Source:         https://gitlab.com/%{name}/%{name}/-/archive/rel.%{version}/%{na
 BuildRequires:  %{_python}-devel
 BuildRequires:  %{_python}-pytest
 BuildRequires:  %{_python}-setuptools
+BuildRequires:  %{_python}-setuptools-gettext
 BuildRequires:  %{_python}-setuptools_scm
 BuildRequires:  fdupes
 BuildRequires:  librsync-devel >= 0.9.6
 BuildRequires:  python-rpm-macros
+BuildRequires:  xz
 Requires:       %{_python}-fasteners
+Requires:       %{_python}-gnupg
 Requires:       %{_python}-lockfile
 Requires:       %{_python}-pexpect
 Requires:       %{_python}-ptyprocess
-Requires:       gpg
 Recommends:     %{_python}-boto3
 Recommends:     %{name}-lang
 Recommends:     lftp
@@ -81,14 +83,15 @@ sed -i -e 's|/usr/bin/env python3|/usr/bin/%{_python}|g' duplicity/__main__.py
 %else
 %python311_install
 %endif
-rm -rf %{buildroot}%{_datadir}/doc/duplicity-%{version}
+rm -rf %{buildroot}%{_datadir}/doc/duplicity
+xz CHANGELOG.md
 perl -n -i -e 'print unless m,(%{_bindir}|%{_mandir}|%{_datadir}/doc|%{_datadir}/locale|%{_python_sitearch}/testing),' files.lst
 %find_lang %{name}
 %fdupes %{buildroot}%{_python_sitearch}
 
 %files
 %license COPYING
-%doc CHANGELOG.md README.md README-LOG.md
+%doc AUTHORS.md CHANGELOG.md.xz README.md README-LOG.md
 %{_bindir}/duplicity
 %{_python_sitearch}/duplicity
 %{_python_sitearch}/duplicity-*-py%{_python3_version}.egg-info
