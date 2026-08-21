@@ -1,0 +1,21 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6f45d0cb03f6e2a1664bde2fc94ea61f</srcmd5>
+    <version>0.1.2</version>
+    <time>1787324418</time>
+    <user>anag_factory</user>
+    <comment>New package python-trampoline for openSUSE:Factory from science:machinelearning (ComfyUI cone). pluskalm is the science:machinelearning package maintainer.
+
+INTERDEPENDENT REQUESTS - please stage together with the rest of the ComfyUI cone as those Factory SRs are filed (python-torchsde depends on this package).
+
+Fri Aug 21 08:48:40 UTC 2026 - Martin Pluskal &lt;mpluskal@suse.com&gt;
+
+- Initial package of trampoline 0.1.2: tiny MIT yield-based
+  trampoline implementation required by torchsde.
+  * PyPI publishes only a wheel; source is the GitLab
+    commit 1d98f39c3015594e2ac8ed48dccc2f393b4dd82b that
+    bumped the version (upstream has no git tags).
+</comment>
+    <requestid>1372780</requestid>
+  </revision>
+</revisionlist>

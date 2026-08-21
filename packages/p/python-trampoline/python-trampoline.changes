@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Fri Aug 21 08:48:40 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package of trampoline 0.1.2: tiny MIT yield-based
+  trampoline implementation required by torchsde.
+  * PyPI publishes only a wheel; source is the GitLab
+    commit 1d98f39c3015594e2ac8ed48dccc2f393b4dd82b that
+    bumped the version (upstream has no git tags).
+
