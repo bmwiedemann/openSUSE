@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Thu Jul 30 12:44:39 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.5.0:
+  * fix: separate needs_layout and needs_render
+  * In `keyboard_leave`, ignore event for unrecognized `wl_surface`
+  * Pass through calls to `grab` xdg popup
+  * Don't `grab` on creation of popup
+  * space_container: Factor out duplicate code into a `space_for_client_mut`
+  * fix: close popups on all outputs before adding a new one
+  * fix: flickering when using frosted glass with preserve panel/dock style on window maximize
+  * fix: frosted-glass applets on hotplugged external monitor
+
+-------------------------------------------------------------------
+Thu Jul 23 06:27:49 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.4.0:
+  * fix: panel crashes when changing output scale due to small intermediate size
+  * fix: set min size for `anchor_rect`
+
+-------------------------------------------------------------------
+Wed Jul 15 08:19:15 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.3.0:
+  * Add option to preserve panel/dock style on window maximize (#601)
+  * fix: apply blur from correct source after applets rearranged
+  * fix: don't create duplicate ext_background_effect_surface_v1 per commit
+  * feat: migrate legacy autohide configs
+  * chore: fmt
+  * feat(autohide): option to always hide
+  * feat: panel / dock blur support (#591)
+  * feat: improve frame pacing of embedded applet popups
+
+-------------------------------------------------------------------
+Wed Jun 24 20:32:55 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.1.0:
+  * fix: ensure that pending_dimensions are applied if necessary, before layout returns
+  * improv: use max size for deciding whether to move an applet back to the panel
+  * improv: prefer smaller applets when moving them to overflow
+  * fix: advertise modifiers
+  * fix: Ensure panel expansion to the edge with fractional scaling
+  * fix: use panel color override on creation
+  * Return a fallback refresh rate instead of unwrapping
+
+-------------------------------------------------------------------
+Thu Jun 11 11:37:57 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.16:
+  * replaced dispatch duration with value calculated from monitor refresh rate
+
+-------------------------------------------------------------------
+Wed Jun 03 19:49:19 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.15:
+  * chore: vendor with --locked
+
+-------------------------------------------------------------------
 Mon Jun 01 13:11:07 UTC 2026 - rrahl0@opensuse.org
 
 - Update to version 1.0.14:
