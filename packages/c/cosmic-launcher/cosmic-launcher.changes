@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Wed Aug 19 11:37:44 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.6.0:
+  * i18n: translation updates from weblate
+  * fix: prevent launcher flickering and closing when Ctrl modifier is used
+
+-------------------------------------------------------------------
+Thu Jul 30 12:44:17 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.5.0:
+  * i18n: translation updates from weblate
+
+-------------------------------------------------------------------
+Thu Jul 23 06:27:34 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.4.0:
+  * fix: reset scroller when the search query changes
+
+-------------------------------------------------------------------
+Wed Jul 15 08:18:59 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.3.0:
+  * chore: update libcosmic
+  * fix: update iced
+  * chore: update deps
+  * fix: dummy surface overlap after open event
+  * fix: unblur dummy surface
+  * fix: use dummy surface to track overlap instead
+  * fix: overlap
+  * chore: update libcosmic
+  * fix
+  * chore: update libcosmic
+  * improv: set the blur padding
+  * wip updates
+  * chore: blur support
+  * chore: update libcosmic
+
+-------------------------------------------------------------------
+Tue Jul 14 07:42:23 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.2.0:
+  * docs (QA): Add testing checklist
+  * fix: use dummy surface to track rectangles
+
+-------------------------------------------------------------------
+Wed Jun 24 20:10:53 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.1.0:
+  * i18n: translation updates from weblate
+
+-------------------------------------------------------------------
+Thu Jun 11 11:26:44 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.16:
+  * fix: recreate the dummy surface on output enter/update when missing
+  * fix: recreate dummy layer surface when closed to keep the clipboard connected
+  * fix alt-tab release handling
+
+-------------------------------------------------------------------
+Wed Jun 03 19:38:17 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.15:
+  * perf(libcosmic): reuse loaded fonts in SVG renderer
+  * fix(libcosmic): fork-exec fix for desktop entry spawning
+
+-------------------------------------------------------------------
 Mon Jun 01 12:56:18 UTC 2026 - rrahl0@opensuse.org
 
 - Update to version 1.0.14:
