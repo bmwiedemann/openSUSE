@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Thu Aug 20 08:50:40 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Convert the Python binding to the shared loader:
+  * Drop %treesitter_python_build; keep
+    %treesitter_python_install only
+  * Generated _binding.py loads the grammar library this
+    package ships, so the parser is not compiled a second
+    time
+  * Drop python devel/installer/pip/setuptools/wheel
+    BuildRequires; keep python-rpm-macros, fdupes and
+    %{python_module base}
+  * Pin python-%{name} to %{name} = %{version}-%{release}
+- Suggests python-tree-sitter >= 0.22 instead of Requires,
+  matching tree-sitter-bash, so ring1/product installcheck
+  does not demand a non-ring package
+- Run a functional %check parsing Swift source through the
+  shim; gated to suse_version >= 1699 because
+  python-tree-sitter does not exist in Leap 16.0
+
+-------------------------------------------------------------------
+Mon Jul 27 08:36:33 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package of tree-sitter-swift 0.7.3:
+  * Swift grammar library for the tree-sitter parsing
+    framework (libtree-sitter-swift.so grammar module)
+  * Python binding built from the bundled bindings/python as
+    pythonXYZ flavor subpackages via the shared
+    %treesitter_python_build/_install macros
