@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Thu Aug 20 08:50:40 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Convert the Python binding to the shared %treesitter_python_install
+  loader: install upstream's pure-Python package files and generate
+  a _binding.py that loads the grammar library this package ships.
+  Drop %treesitter_python_build and the python devel/pip/wheel
+  BuildRequires; the parser is no longer compiled a second time.
+- Pin the python subpackage on the grammar package exactly
+  (tree-sitter-verilog = version-release).
+- Suggests python-tree-sitter >= 0.22 instead of Requires,
+  matching tree-sitter-bash, so ring1/product installcheck
+  does not demand a non-ring package.
+- Run a functional %check parsing Verilog through the shim; gated
+  to suse_version >= 1699 because python-tree-sitter does not exist
+  in Leap 16.0.
+
+-------------------------------------------------------------------
+Mon Jul 27 08:36:32 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package of tree-sitter-verilog 1.0.3:
+  * Verilog grammar library for the tree-sitter parsing
+    framework (libtree-sitter-verilog.so grammar module)
+  * Python binding built from the bundled bindings/python as
+    pythonXYZ flavor subpackages via the shared
+    %treesitter_python_build/_install macros
