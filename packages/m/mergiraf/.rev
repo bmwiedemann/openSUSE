@@ -136,4 +136,12 @@
     + Update `tree-sitter` to 0.26 (forwarded request 1366113 from develop7)</comment>
     <requestid>1366114</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c151eb74216a067fa022b722f6336627</srcmd5>
+    <version>0.19.0</version>
+    <time>1787343437</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 0.19.0: (forwarded request 1372873 from develop7)</comment>
+    <requestid>1372874</requestid>
+  </revision>
 </revisionlist>
