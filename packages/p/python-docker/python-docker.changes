@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Fri Aug 21 10:26:21 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.2.0:
+  * ## Upgrade Notes
+  * `docker.from_env()` now honors the active Docker CLI context
+    when `DOCKER_HOST` is not set.
+  * This means the client may connect to the daemon selected by
+    `DOCKER_CONTEXT` or the current context in
+    `~/.docker/config.json`, matching Docker CLI behavior more
+    closely.
+  * If your application relied on the previous default connection
+    behavior, set `DOCKER_HOST` explicitly, set
+    `DOCKER_CONTEXT=default`, or pass `use_context=False` to
+    `DockerClient.from_env()`.
+  * Added `docker.from_context()` / `DockerClient.from_context()`
+    for explicitly creating a client from a Docker CLI context.
+  * ## Features
+  * Added support for Docker contexts when creating the default
+    client
+  * Added subpath support for volumes
+  * ## Bugfixes
+  * Fixed `exec_run` documentation for the `stream` parameter
+  * Fixed image loading to avoid depending on the deprecated
+    `JSONMessage.error` field
+  * Preserved the rotated unlock key in swarm integration tests
+  * Fixed SSL certificate generation in tests
+  * Fixed IPv6 integration tests by explicitly enabling IPv6
+    where required
+  * ## Miscellaneous
+  * Updated tests for newer Docker Engine behavior
+  * CI and build updates
+  * tests/exec: expect 127 exit code for missing executable
+  * fixing doc for stream param in exec_run
+  * Bump default API version to 1.45 (Moby 26.0/26.1)
+  * Set a dummy-version if none set, and remove unused APT_MIRROR
+    build-arg
+  * test_service_logs: stop testing experimental versions
+  * Makefile: fix circular reference for integration-dind
+  * image load: don't depend on deprecated JSONMessage.error
+    field
+  * integration: test_create_volume_invalid_driver allow either
+    400 or 404
+  * integration: adjust tests for omitted "OnBuild"
+  * Implement Subpath Support for Volumes in Docker-Py
+  * tests: fix ssl generation
+  * test/integration: don't check for deprecated Networks field
+  * test: Skip from_env_unix tests if DOCKER_HOST is network
+    socket
+  * test_connect_with_ipv6_address: enable IPv6
+  * test_create_with_ipv6_address: enable IPv6
+  * tests: Migrate off gpg2 and regenerate key ed25519
+  * gha: Pin to digests
+  * Fix integration tests on non-amd64 hosts and add ARM64 CI
+  * integration/swarm: Preserve rotated unlock key
+  * [DKP-2535] Honour context if present for default client, add
+    contexts support
+  * docs: 7.2.0 changelog
+
+-------------------------------------------------------------------
 Fri Aug 23 08:13:32 UTC 2024 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 7.1.0
