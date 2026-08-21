@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 20 21:27:50 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
+
+- Default `banactions` need to be specified in paths-*.conf (maintainer
+  level) now.
+  % paths-opensuse.conf
+
+-------------------------------------------------------------------
 Tue Aug 18 08:55:05 UTC 2026 - ecsos <ecsos@opensuse.org>
 
 - Update to 1.1.1

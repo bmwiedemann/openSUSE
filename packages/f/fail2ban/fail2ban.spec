@@ -32,7 +32,7 @@ Group:          Productivity/Networking/Security
 URL:            https://www.fail2ban.org/
 Source0:        https://github.com/fail2ban/fail2ban/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 #Source1:        https://github.com/fail2ban/fail2ban/releases/download/%%{version}/%%{name}-%%{version}.tar.gz.asc
-Source1:        https://github.com/fail2ban/fail2ban/releases/download/%{version}/%{version}.tar.gz.asc
+Source1:        https://github.com/fail2ban/fail2ban/releases/download/%{version}/%{version}.tar.gz.asc#/%{name}-%{version}.tar.gz.asc
 Source2:        %{name}.sysconfig
 Source3:        %{name}.logrotate
 Source5:        %{name}.tmpfiles
