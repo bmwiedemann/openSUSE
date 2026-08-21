@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Aug 20 09:06:20 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.2:
+  * Modernize type annotations
+  * Fix pypy CI by skipping redundant mypy runs on it
+  * Fix IndexError on source mixing lone CR with LF line endings
+  * Release modernization, and publish to PyPI from CI via
+    trusted publishing
+
+-------------------------------------------------------------------
 Mon Nov 17 08:44:09 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.0.1

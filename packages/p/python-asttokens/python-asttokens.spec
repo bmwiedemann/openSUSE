@@ -1,7 +1,7 @@
 #
 # spec file for package python-asttokens
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2019-2021 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-asttokens
-Version:        3.0.1
+Version:        3.0.2
 Release:        0
 Summary:        Annotate AST trees with source code positions
 License:        Apache-2.0

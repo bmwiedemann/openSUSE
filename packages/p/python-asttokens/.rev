@@ -122,4 +122,17 @@
     <comment></comment>
     <requestid>1318193</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>7cf1b8cd919ef1ae226145dd507a605e</srcmd5>
+    <version>3.0.2</version>
+    <time>1787323816</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.0.2:
+  * Modernize type annotations
+  * Fix pypy CI by skipping redundant mypy runs on it
+  * Fix IndexError on source mixing lone CR with LF line endings
+  * Release modernization, and publish to PyPI from CI via
+    trusted publishing</comment>
+    <requestid>1372222</requestid>
+  </revision>
 </revisionlist>
