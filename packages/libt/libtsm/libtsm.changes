@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Aug 21 08:11:15 UTC 2026 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 4.7.1
+  * libtsm: fix tsm_screen_attr2_t
+  * Fix 3 out of bound reads
+- update to 4.7.0
+  * Fix backward selection
+  * Fix: also clear the character value for multi-width character.
+  * screen/vte: add cursor style support via DECSCUSR (CSI Ps SP q)
+  * screen: don't clear cells when resizing
+
+-------------------------------------------------------------------
 Tue Jul  7 14:55:02 UTC 2026 - Fabian Vogt <fvogt@suse.com>
 
 - Update to 4.6.0:
