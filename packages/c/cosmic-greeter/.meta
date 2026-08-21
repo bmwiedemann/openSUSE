@@ -1,0 +1,5 @@
+<package name="cosmic-greeter" project="openSUSE:Factory">
+  <title></title>
+  <description>cosmic greeter based on greetd, which can be run inside cosmic-comp</description>
+  <url>https://github.com/pop-os/cosmic-greeter</url>
+</package>

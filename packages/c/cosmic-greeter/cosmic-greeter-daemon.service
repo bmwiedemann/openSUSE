@@ -1,0 +1,10 @@
+[Unit]
+Description=COSMIC Greeter Daemon
+Before=cosmic-greeter.service
+
+[Service]
+ExecStart=/usr/bin/cosmic-greeter-daemon
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

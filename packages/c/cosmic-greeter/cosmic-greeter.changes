@@ -1,0 +1,377 @@
+-------------------------------------------------------------------
+Wed Aug 19 11:37:34 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.6.0:
+  * feat: enable JPEG-XL and AVIF image support
+  * i18n: translation updates from weblate
+  * fix: ignore empty responses on the login screen
+  * fix: ignore empty password
+  * fix: detect and enable logind functionality at runtime
+
+-------------------------------------------------------------------
+Thu Jul 30 12:44:03 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.5.0:
+  * Use `cosmic-keymap-unstable-v1`
+  * i18n: translation updates from weblate
+
+-------------------------------------------------------------------
+Wed Jul 15 08:18:48 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.3.0:
+  * chore: update libcosmic
+  * improv: better handling of popover dialog after dropdown
+  * improv: use the new menu column widget
+  * fix: update libcosmic
+  * chore: update deps
+  * feat: blur
+
+-------------------------------------------------------------------
+Tue Jul 14 07:42:00 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.2.0:
+  * feat: use spinner widget from libcosmic for authentication
+  * fix(justfile): bash syntax error if SOURCE_GIT_HASH was set
+
+-------------------------------------------------------------------
+Wed Jun 24 19:58:05 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.1.0:
+  * i18n: translation updates from weblate
+
+-------------------------------------------------------------------
+Thu Jun 11 11:19:49 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.16:
+  * Autofill SOURCE_DATE_EPOCH and SOURCE_GIT_HASH during vendoring
+
+-------------------------------------------------------------------
+Mon Jun 01 12:47:49 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.14:
+  * i18n: translation updates from weblate
+  * i18n: translation updates from weblate
+  * chore: update deps
+  * chore: add rustfmt config
+  * chore: update dependencies
+  * chore:: clippy
+  * refactor: replace `chrono` with `jiff`
+  * i18n: translation updates from weblate
+
+-------------------------------------------------------------------
+Sat Apr 18 11:15:11 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.10:
+  * chore: update libcosmic
+  * i18n: translation updates from weblate
+
+-------------------------------------------------------------------
+Sun Apr 12 16:31:26 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.9:
+  * fix: advanced-shaping
+  * Fix selected user index during greeter init
+  * chore: update libcosmic
+  * fix: guard against invalid reported capacity
+  * chore: cleanup
+  * fix: wrap column in a different id when entering name
+  * chore: update libcosmic
+  * chore: update deps
+  * chore: update deps
+  * fix: battery icon
+  * chore: update deps
+  * fix: update iced
+  * chore: updates after iced rebase
+  * Security hardening (#426)
+  * i18n: translation updates from weblate
+  * i18n: Use "[0] now." on restarts/shutdowns (#414)
+  * i18n: translation updates from weblate
+- remove < leap 16 packaging
+- remove switch-to-greetd-user.patch, seems to break too much stuff
+- remove fix-dbus-conf.patch
+
+-------------------------------------------------------------------
+Mon Mar  9 14:08:03 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.8:
+  * no changes since last release
+
+-------------------------------------------------------------------
+Mon Feb 23 17:44:29 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.7:
+  * i18n: translation updates from weblate
+  * Add pull request template
+
+-------------------------------------------------------------------
+Thu Feb 12 09:43:38 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.6:
+  * i18n: translation updates from weblate
+
+-------------------------------------------------------------------
+Thu Feb 05 01:54:06 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.5:
+  * i18n: translation updates from weblate
+  * i18n: translation updates from weblate
+  * fix: ACK so greetd doesn't wait forever on systems with fingerprint scanner
+  * chore: use libcosmic's freedesktop-desktop-entry
+
+-------------------------------------------------------------------
+Sun Jan 25 18:02:04 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 1.0.3:
+  * i18n: translation updates from weblate
+
+-------------------------------------------------------------------
+Wed Dec 31 00:53:47 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version /1:
+  * i18n: removing translation for Frankish
+  * i18n: translation updates from weblate
+  * i18n: translation updates from weblate
+  * fix: improve error handling to prevent softlock
+
+-------------------------------------------------------------------
+Mon Dec 22 03:52:26 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- add change-imageformat.patch, so we have the correct file
+  extension for the background
+
+-------------------------------------------------------------------
+Thu Dec 11 17:12:07 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0+0:
+  * no changes since last release
+
+-------------------------------------------------------------------
+Sat Dec 06 22:45:31 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta9+1:
+  * i18n: translation updates from weblate
+  * i18n: translation updates from weblate
+
+-------------------------------------------------------------------
+Fri Nov 28 13:44:57 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- inject openSUSE background
+
+-------------------------------------------------------------------
+Sat Nov 15 19:49:23 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta6+5:
+  * address feedback
+  * implement a more consistent login mask with a stable layout and improved
+    error messages
+  * fix just mock server
+  * i18n: translation updates from weblate
+
+-------------------------------------------------------------------
+Mon Nov 10 15:35:51 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta5+0:
+  * Make offset of prompt from top of screen proportional
+  * improv: don't resize column for caps lock and error text
+  * Update translations
+
+-------------------------------------------------------------------
+Thu Oct 23 17:02:22 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta3+0:
+  * no changes since last release
+
+-------------------------------------------------------------------
+Sun Oct 19 14:21:58 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta2+3:
+  * fix: --no-default-features
+  * chore: add image features
+  * Update translations
+
+-------------------------------------------------------------------
+Tue Sep 30 21:17:27 UTC 2025 - mkd <mkdwho@icloud.com>
+
+switch-to-greetd-user.patch: update to work with the latest changes
+cosmic-greeter.spec: add `%{_bindir}/%{name}-start` binary to %files
+
+-------------------------------------------------------------------
+Mon Sep 29 21:32:00 UTC 2025 - mkd <mkdwho@icloud.com>
+
+- Update to version 1.0.0~beta1.1+2:
+  * Fix ro translation syntax
+  * i18n(cs): Add Czech translation
+  * i18n(bg): updated bulgarian translation
+  * i18n(pt-BR): update translations
+  * Update cosmic_greeter.ftl ITA
+  * perf: cache image handles
+  * fix: update cosmic-randr-shell and other dependencies
+  * chore: update dependencies
+  * if8n(es): add missing translation keys
+  * chore: cleanup logs
+  * i18n(sk): Update translations
+  * i18n(hu): update translation
+  * i18n(pl): update translation
+  * i18n(ar): update translations
+  * i18n(zh-CN): update translation
+  * chore: cleanup
+  * fix: reposition subsurface after layer surface size update
+  * refactor: use randr kdl command
+  * feat: load and apply output configs
+  * chore: add cosmic-greeter-start install
+  * chore: update deps
+  * feat: introduce cosmic-greeter-start for state cleanup
+  * chore: update csd
+  * fix: patch cosmic-protocols
+  * feat: accessibility menu
+  * better syncing
+  * feat: accessibility menu
+  * chore: update libcosmic
+  * i18n(pt-BR): update translations
+  * remove dash
+  * switch to dash
+  * i18n(nl) update Dutch translation
+  * Update cosmic_greeter.ftl PL translation username
+  * i18n(zh-CN): update zh-CN translation
+  * Do not inhibit suspend when lock screen already shown, fixes #230
+  * Fix comment formatting
+  * fix: binary search won't work for name comparison
+  * feat: last user
+  * fix: clear dropdown after enter user is selected
+  * refactor(locker): scrollable menu in locker
+  * refactor: allow entering username
+  * Capitalize "Lock" in Caps Lock
+  * Update Hungarian translations
+  * i18n(pt-BR): update translation
+  * i18n(de): add German translation
+  * Update cosmic_greeter.ftl PL add caps lock
+  * Update time when resuming from sleep
+  * Show if caps lock is active, fixes #115
+  * Update cosmic-applets-config
+  * Move layout and prompt handling to common code
+  * Combine some logic between greeter and locker
+  * Cleanup config handling
+  * Load military time in locker, fixes #150
+  * Unify user data handling between greeter and locker
+  * i18n(bg): Add Bulgarian translation
+  * i18n(es): Fix ParserError, kind: UnbalancedClosingBrace
+  * i18n(es): Translation fix for the word "user"
+  * fix: avoid Fill for the left element
+  * i18n(ar): fix typo and wrong key
+  * i18n(zh-CN): update translation
+  * Updated Irish translations
+
+-------------------------------------------------------------------
+Thu Apr 24 17:34:05 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~alpha7+0:
+  * fix: apply military time preference to time
+  * i18n(ar): improve translations
+  * chore: update libcosmic
+  * Update cosmic_greeter.ftl (SV)
+  * refactor: use icu for datetime
+  * refactor: improve and fix subscriptions and async logic
+  * i18n (pt-BR) Update translations
+  * i18n(ro): Add Romanian translation
+  * i18n(en): fix translations for `restart-timeout` and `shutdown-timeout`
+  * i18n(nl) Update Dutch & i18n(en) propose English plural / singular distinction (#183)
+  * Use just vendor when building debian package
+  * fix(example): `env::set_var` is now marked as unsafe.
+  * Fix vergen generation
+  * chore: switch from lexopt to clap_lex
+  * fix: update nix to fix loongarch64 build
+  * feat: add help and version command line arguments
+  * i18n(zh-CN): Rename the wrong folder  name
+  * chore: update libcosmic
+  * chore: update libcosmic
+  * chore: update libcosmic
+  * refactor: lock surface subsurface menu
+  * update libcosmic
+  * update libcosmic
+  * update libcosmic
+
+-------------------------------------------------------------------
+Sat Feb 22 03:00:39 UTC 2025 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha6+0:
+  * i18n: Add Croatian translation
+  * fix: XDG_SESSION_ID may contain non-numerical characters
+- switch to obs_scm
+
+-------------------------------------------------------------------
+Sat Jan 18 17:15:31 UTC 2025 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha5+0:
+  * Update cosmic_greeter.ftl (#164)
+  * Add Turkish translation (#170)
+  * update and improve Dutch translation (#176)
+
+-------------------------------------------------------------------
+Fri Jan 10 21:36:51 UTC 2025 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha5+0:
+  * Update cosmic_greeter.ftl (#172)
+  * Add xinit to recommends
+  * Create cosmic_greeter.ftl
+  * Added Irish translation
+  * fix: Correctly detect all keyboard layouts
+
+-------------------------------------------------------------------
+Thu Dec 05 23:58:22 UTC 2024 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha4+0:
+  * Recover previous locked state
+  * Create cosmic_greeter.ftl
+  * Suggest libpam-fprintd
+  * greeter: fix show password for greeter
+  * i18n: add Hindi translation
+  * i18n: add Kannada translation
+
+-------------------------------------------------------------------
+Tue Nov 19 08:18:34 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- require rust >= 1.80
+
+-------------------------------------------------------------------
+Thu Oct 31 22:18:25 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.0.0~alpha3:
+  * Suggest libpam-fprintd
+  * greeter: fix show password for greeter
+  * Set full_name_opt to None when GECOS data is empty
+
+-------------------------------------------------------------------
+Wed Sep 25 06:36:51 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.0.0~alpha2:
+  * Hide battery status on devices without a battery
+  * Default to user's previously selected session
+  * Add custom PAM configuration to start gnome-keyring
+  * Respect user config for military time
+  * Remove unneeded searches in ConfigUpdateUser
+  * Reduce time text's size for 12 hour clock
+  * Fix race condition when getting login session
+- add a symlink to greetd pam file, so we can unlock screen
+
+-------------------------------------------------------------------
+Thu Aug  8 00:59:53 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- standardize packaging with also fixes for miscellaneous hardcoding
+  filenames, using @PARENT_TAG where applicable, and be more specific
+  with files in the %files section (so no non-wanted files are getting
+  added
+
+-------------------------------------------------------------------
+Wed Aug  7 01:30:05 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.0.0~alpha1:
+  * fix: exit after logind subscription error
+  * Just reconnect when error received while cancelling session
+  * Set greetd env, requires greetd 0.10
+  * fix login deadlock
+- enable leap (thanks to vyvir)
+
+-------------------------------------------------------------------
+Wed Mar 13 23:35:18 UTC 2024 - Richard Rahl <rrahl0@proton.me>
+
+- initial packaging
