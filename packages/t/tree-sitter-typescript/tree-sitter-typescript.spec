@@ -16,6 +16,7 @@
 #
 
 
+%define python_subpackage_only 1
 %define         _name typescript
 Name:           tree-sitter-typescript
 Version:        0.23.2
@@ -24,12 +25,28 @@ Summary:        Typescript grammar for tree-sitter
 License:        MIT
 URL:            https://github.com/tree-sitter/tree-sitter-typescript
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module installer}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildRequires:  tree-sitter
 BuildRequires:  treesitter_grammar_src(tree-sitter-javascript)
 %treesitter_grammars %{_name} tsx
+%python_subpackages
 
 %description
 %{summary}.
+
+%package -n python-%{name}
+Summary:        Python binding for the %{name} grammar
+Suggests:       python-tree-sitter
+
+%description -n python-%{name}
+The tree_sitter_* Python module for the %{name} grammar, loadable
+with the Language()/Parser() API from python-tree-sitter.
 
 %prep
 %autosetup
@@ -37,15 +54,21 @@ BuildRequires:  treesitter_grammar_src(tree-sitter-javascript)
 %build
 %treesitter_configure
 %treesitter_build
+%treesitter_python_build
 
 %install
 %treesitter_install
 %treesitter_devel_install common/define-grammar.js
+%treesitter_python_install typescript typescript tsx
 
 %files
 %license LICENSE
 %treesitter_files
 
 %treesitter_devel_package
+
+%files %{python_files %{name}}
+%license LICENSE
+%{python_sitearch}/tree_sitter_*
 
 %changelog

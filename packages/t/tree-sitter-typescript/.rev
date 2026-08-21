@@ -23,4 +23,19 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1333370</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>5205daefd9e20f9f144dc9e06fe64f3e</srcmd5>
+    <version>0.23.2</version>
+    <time>1787323965</time>
+    <user>anag_factory</user>
+    <comment>- Suggests python-tree-sitter instead of Requires, matching
+  tree-sitter-bash, so ring1 installcheck does not demand a
+  non-ring package.
+- Call %treesitter_python_install typescript typescript tsx:
+  this package ships two grammars and the bare form now errors.
+
+INTERDEPENDENT REQUESTS - please stage together:
+ * sr#1372054 - tree-sitter (Python binding macros this set needs)</comment>
+    <requestid>1372215</requestid>
+  </revision>
 </revisionlist>
