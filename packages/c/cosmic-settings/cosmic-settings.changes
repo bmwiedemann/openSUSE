@@ -1,0 +1,982 @@
+-------------------------------------------------------------------
+Wed Aug 19 11:38:16 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.6.0:
+  * i18n: translation updates from weblate
+  * feat(sound): per-application volume control (#2138)
+  * build(nix): add dav1d to flake and update flake lock
+  * fix(search): don't unload active page during search
+
+-------------------------------------------------------------------
+Thu Jul 30 12:45:00 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.5.0:
+  * fix(networking): stop storing the VPN username as a secret (#2116)
+  * fix: one pixel gap between outputs due to rounding error
+  * feat(libcosmic): slider widget handle improvements
+  * chore: update dependencies
+  * i18n: translation updates from weblate
+  * fix(wallpaper): allow adding multiple images at once
+  * feat(wallpaper): apply EXIF orientation to wallpapers (#2075)
+  * fix: increased hard-coded wallpapers limit from 100 to 500
+  * docs (QA): Add Sound page tests (#2099)
+
+-------------------------------------------------------------------
+Thu Jul 23 06:28:03 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.4.0:
+  * fix(sound): source volume changes applied to sink
+  * fix: preserve content when rebuilding appearance drawer
+
+-------------------------------------------------------------------
+Wed Jul 15 08:19:28 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.3.0:
+  * Update cosmic-protocols dep
+  * feat(networking): replace custom NetworkManager backend with nmrs
+  * feat: reapply frosted glass feature
+  * chore: update cosmic-panel-config
+  * Revert "feat: frosted glass"
+  * Revert "fix: update iced"
+  * pages/display: Fix reverting orientation changes
+  * fix(sound): throttle volume sliders by 128ms
+  * build: make avif feature optional but enable by default
+  * feat(wallpapers): enable avif support via libdav1d
+  * fix: update iced
+  * feat: frosted glass
+
+-------------------------------------------------------------------
+Tue Jul 14 07:43:30 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.2.0:
+  * i18n(en): change super-key-action disable to none
+  * feat(keyboard): make key names for special character keys translatable
+  * fix(network): validate MAC address length when parsing addresses from network manager
+
+-------------------------------------------------------------------
+Wed Jun 24 22:12:53 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.1.0:
+  * i18n: translation updates from weblate
+  * i18n: translation updates from weblate
+  * fix(default_apps): set text editor associations for application/x-zerosize
+  * fix(vpn): handle non-file url on openvpn import
+  * feat(sound): use cosmic-settings-daemon's varlink API
+
+-------------------------------------------------------------------
+Thu Jun 11 11:54:22 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.16:
+  * fix: check if action is already found before adding it to search results
+  * fix: focus inputs on open of context drawer
+  * feat: add openrc cargo feature for OpenRC bluetooth service management
+  * fix(bluetooth): add passkey/PIN display dialogs for keyboard pairing
+
+-------------------------------------------------------------------
+Wed Jun 03 20:08:06 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.15:
+  * fix(default-apps): additional missing apps
+  * fix(default-apps): missing and wrong associations
+  * fix: wait for cosmic-settings-daemon and send initial max-brightness
+
+-------------------------------------------------------------------
+Mon Jun 01 13:20:19 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.14:
+  * i18n: translation updates from weblate
+  * improv(panel): corner radius handling
+  * refactor: extract sorting logic for startup applications and all apps
+  * sort startup applications and all apps by name for improved organization
+  * fix(sound): use `go_next_item` for device profiles button
+  * chore: add rustfmt config
+  * chore: update libcosmic
+  * Sort VPN connections alphabetically
+  * fix: retry connection to settings daemon and allow requests for brightness values
+  * i18n: translation updates from weblate
+  * fix(wifi): remove misleading search placeholder
+  * chore: add defaults
+  * chore: bump version to 1.0.12
+  * chore: update libcosmic & iced
+  * build: set MSRV to Rust 1.93
+  * fix: set locale with DBus to fix OpenRC support
+  * Revert "Changes the PageInner.size field to have no explicit default.… (#1977)
+  * fix(wallpapers): follow symlinks when scanning wallpaper directories
+  * chore(default_apps): reduce code duplication
+  * fix(shortcuts): modified count for accessibility and tiling
+  * Incorporates format suggestions from 'cargo fmt --all --check', Improves error messages when PageInner.size is unexpectedly None
+  * Changes the PageInner.size field to have no explicit default. It is only initialized (not None) when PageInner.panel_config is initialized. This implementation fails faster and more verbose, when program is in an unintended state.
+  * Changes behavior of the panel/dock size slider - from: new size is committed as soon as the slider position is changed (triggers panel/dock restart), - to: new size is committed only when slider is released.
+  * feat(workspaces): add workspace wrapping toggle
+  * feat(keyboard): add "swap with control" for caps lock key
+  * chore: update CI
+  * chore: clippy
+  * chore: update libcosmic
+
+-------------------------------------------------------------------
+Sat Apr 18 15:52:24 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.10:
+  * i18n: translation updates from weblate
+  * chore: update libcosmic after reexports were removed
+
+-------------------------------------------------------------------
+Sun Apr 12 16:06:18 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.9:
+  * chore: adapt to libcosmic row/column changes
+  * chore: update libcosmic
+  * fix: fonts such as Droid Sans not being rendered
+  * Spelling corrections in TESTING.md (#1946)
+  * chore: update libcosmic
+  * fix(power): ellipsize connected device name
+  * fix(display): ellipsize display output name in tabs
+  * fix(wallpaper): ellipsize display output name in tabs
+  * fix(appearance): sync UI state with theme config on import and reset
+  * fix: use more permissive denylist for bare shortcut key validation
+  * fix(sound): allow text for left and right to take up more space if ne… (#1941)
+  * fix(about): deduplicate OpenGL GPU name variants in About page (#1906)
+  * docs (QA): Add Bluetooth checklist items
+  * fix(bluetooth): call connect() after pair() for unpaired devices
+  * i18n: translation updates from weblate
+  * i18n: translation updates from weblate
+  * fix(bluetooth): call pair() for unpaired devices before connecting
+  * fix(bluetooth): show connected devices without pairing bonds
+  * fix: scroll speed slider
+  * fix: keyboard repeat delay and rate sliders
+  * feat: libcosmic iced 0.14 rebase
+  * feat(wifi): add search functionality for filtering WiFi networks
+  * fix(bluetooth): improve device list UX and transitions
+  * i18n: translation updates from weblate
+  * i18n: translation updates from weblate
+  * chore: Use `slab!` and `with_capacity` more
+  * i18n: translation updates from weblate
+  * i18n: translation updates from weblate
+  * i18n(kab): update translations from Weblate
+  * i18n(ga): update translations from Weblate
+  * i18n(fi): update translations from Weblate
+  * i18n(cs): update translations from Weblate
+  * i18n(sv): update translations from Weblate
+  * i18n(sv): update translations from Weblate
+  * i18n(sv): update translations from Weblate
+  * i18n(kab): update translations from Weblate
+  * i18n(de): update translations from Weblate
+  * i18n(ga): update translations from Weblate
+  * i18n(zh-CN): update translations from Weblate
+  * i18n: translation updates from weblate
+  * i18n: translation updates from weblate
+  * i18n: translation updates from weblate
+  * i18n: translation updates from weblate
+  * i18n: translation updates from weblate
+  * i18n: un-capitalize "desktop" to match other apps
+  * i18n: remove periods and untranslated keys
+  * i18n(en): update comment for main desktop entry
+  * i18n(en): remove deprecated keys
+  * refactor: use xdg entry comment as page descriptions
+  * i18n: generate desktop entries with xdgen
+
+-------------------------------------------------------------------
+Tue Feb 24 20:49:58 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.8:
+  * fix(wallpaper): prevent adding same image path multiple times
+  * fix(daytime): improve accuracy of `northern_tilt`
+  * chore: clippy
+  * chore: update dependencies
+  * chore: use `jiff` instead of `chrono` where possible
+  * fix(shortcuts): fix shortcut replacement button (#1846)
+
+-------------------------------------------------------------------
+Mon Feb 23 18:09:53 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.7:
+  * fix(appearance): switch light and dark despite suspend/time change
+  * release: 1.0.7
+  * i18n: translation updates from weblate
+  * fix(region): set the language via AccountsService when reordering languages
+  * Add pull request template
+  * fix(appearance): 'Reset to default' not appearing
+  * fix(region): only display 'Install additional languages' if
+    gnome-language-selector is available
+  * fix(network): show missing WPA3-only networks
+  * fix(sound): only consider active routes when setting volume and mute-ness
+  * Added updated Cargo.lock
+  * Added branch action-on-typing to workspace.dependencies.cosmic-comp-config,
+    which (unless merged) contains necessary changes to build cosmic-settings
+  * Added "action on typing" setting to workspaces settings page. Added
+  * language information for action on typing for: English, German, Spanish,
+    Swedish
+
+-------------------------------------------------------------------
+Thu Feb 12 10:21:16 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.6:
+  * i18n: translation updates from weblate
+  * fix(shortcuts): reset input after shortcut replace cancellation
+
+-------------------------------------------------------------------
+Thu Feb 05 02:28:06 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.5:
+  * fix: update connection if the secret channel is not available, but password is
+  * feature(keyboard): support user-defined xkb layouts
+  * fix(startup-apps): ensure delete dialog shows when triggered from search
+  * i18n: translation updates from weblate
+  * fix(default-apps): Avoid creating dropdowns for empty categories
+  * Update depedendencies
+  * Enable tokio::process feature
+  * Add just to check features CI dependencies
+  * Add cosmic-comp-config feature
+  * Fix compilation without wgpu feature
+  * Fix compilation without wayland feature
+  * Add CI test for features
+  * improv: network authentication
+  * fix(wallpaper): save `rotation_frequency` setting to disk
+  * Update com.system76.CosmicSettings.StartupApps.desktop ITA
+  * Update com.system76.CosmicSettings.Users.policy Fixed
+  * Update com.system76.CosmicSettings.Users.policy ITA
+  * i18n: translation updates from weblate
+  * fix(secret): fail early if secret connection fails (#1777)
+  * Update com.system76.CosmicSettings.Time.desktop
+  * Update com.system76.CosmicSettings.Sound.desktop
+  * Update com.system76.CosmicSettings.LegacyApplications.desktop
+  * Update com.system76.CosmicSettings.Power.desktop
+  * Update com.system76.CosmicSettings.Users.desktop
+  * Update com.system76.CosmicSettings.Panel.desktop
+  * Update com.system76.CosmicSettings.Mouse.desktop
+  * Update com.system76.CosmicSettings.Sound.desktop
+  * Update com.system76.CosmicSettings.Keyboard.desktop
+  * Update com.system76.CosmicSettings.WindowManagement.desktop
+  * Update com.system76.CosmicSettings.Vpn.desktop
+  * Update com.system76.CosmicSettings.Time.desktop
+  * Update com.system76.CosmicSettings.Notifications.desktop
+  * Update com.system76.CosmicSettings.Wireless.desktop
+  * Update com.system76.CosmicSettings.RegionLanguage.desktop
+  * Update com.system76.CosmicSettings.Touchpad.desktop
+  * Update com.system76.CosmicSettings.Wallpaper.desktop
+  * Update com.system76.CosmicSettings.Network.desktop
+  * Update com.system76.CosmicSettings.Wired.desktop
+  * Update com.system76.CosmicSettings.Desktop.desktop
+  * Update com.system76.CosmicSettings.Dock.desktop
+  * Update com.system76.CosmicSettings.System.desktop
+  * i18n(cs): Update Czech translation
+  * chore(wallpaper): Remove unused `Message` variant
+  * i18n(zh_CN): updated translations in desktop entries
+
+-------------------------------------------------------------------
+Sun Jan 25 18:36:46 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 1.0.3:
+  * use theme_manager::Manager for consistent behavior with the UI
+  * move cli import/export functions for themes to a the appearance 
+  	module
+  * better import and export of themes via cli
+  * provide the option to apply RON theme files via the cli
+  * i18n: translation updates from weblate
+  * i18n: translation updates from weblate
+  * fix: fallback to saving pw in system if secret agent channel is 
+  	closed (#1759)
+  * feat(desktop): add window shadows and corners settings
+  * chore: update ashpd to 0.12.1
+  * chore: update zbus to 5.13.1 with build fix
+  * build: use cargo vendor --locked
+  * chore: drop `async-fn-stream` for 
+  	`cosmic::iced_futures::stream::channel`
+  * chore: update dependencies
+  * fix(a11y): listen to screen reader changes from org.a11y.Bus
+  * improv(vpn): focus the failed to connect input
+  * improv(network): focus the secure input
+  * fix: remove false searchbar placeholders
+  * feat: type to search
+  * chore: update cosmic-randr dependencies
+  * chore: clippy
+  * chore: update dbus-settings-bindings
+  * fix: update a known connection on authentication if providing
+  	identity
+  * refactor: use secret agent for managing passwords
+  * i18n(it): add translations to desktop entries
+  * i18n(fr): add translations to desktop entries
+  * i18n: translation updates from weblate
+  * chore: screen reader toggle shortcut
+  * fix(appearance): reset-apply default active_hint on 
+  	theme.builder config file.
+
+-------------------------------------------------------------------
+Wed Dec 31 01:21:14 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.1:
+  * fix(sound): set route before setting default to fix headsets
+  * feat: add `Request::SetRoute`
+  * fix(a11y): close magnifier overlay and sync view moves
+  * fix(appearance): update the gap when active hint is larger than the gap
+  * i18n(it): add translations to desktop entries
+  * i18n: translation updates from weblate
+  * fix(displays): disable display when disabling mirroring on a projected display
+  * i18n: translation updates from weblate
+  * fix(display): tests
+  * improv: make popover styling consistent
+  * ci: set apt to non-interactive
+  * feat(about): improve GPU names by getting info from wgpu
+  * fix(shortcuts): Add suspend action to searchable list
+  * feat(shortcuts): add suspend action to system page
+  * chore: update cosmic-randr
+  * fix(input): add suspend shortcut
+  * chore: update dependencies
+
+-------------------------------------------------------------------
+Thu Dec 11 18:19:27 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0+0:
+  * chore: enable tap to click by default
+  * Russian translation for .desktop file
+  * fix(input): install defaults for input_touchpad config
+  * i18n: translation updates from weblate
+  * chore: update winit
+  * fix(sound): do not set default device when active route is found
+  * feat(comsic-pipewire): add `route-port-type` feature
+
+-------------------------------------------------------------------
+Sat Dec 06 23:14:55 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta9+3:
+  * i18n(pl): update .desktop metadata
+  * fix(sound): Use crate feature to disable auto-profile on init by default
+  * feat(shortcuts): add accessibility shortcuts subpage w/ zoom-in & zoom-out
+  * revert: "feat(display): display OSD display ID identifier when arranging displays"
+  * fix(cargo): no-default-features -> default-feature
+  * chore(sound-subscription): remove unused log dependency
+  * chore(sound-subscription): disable libcosmic default features
+  * i18n: translation updates from weblate
+  * chore: Remove empty firmware page
+  * feat(display): display OSD display ID identifier when arranging displays
+  * feat(sound): redesign with separate device profiles page (#1500)
+  * i18n: translation updates from weblate
+  * i18n: translation updates from weblate (#1574)
+
+-------------------------------------------------------------------
+Sat Nov 15 20:24:36 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta6+2:
+  * i18n: translation updates from weblate
+  * fix(users): on setting user icons, shrink icons larger than 1 MB
+  * fix(keyboard): extra padding in special character and numlock drawers
+  * fix(panel): update defaults with shrinkable applets appearance fixes
+  * feat(wifi): share public network with QR code
+  * fix(shortcut): get shortcut model using given id
+
+-------------------------------------------------------------------
+Mon Nov 10 16:08:04 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta5+7:
+  * feat(about): show kernel version
+  * i18n(sv): translate appstream metainfo
+  * chore(appearance): remove call to set icon theme as this is handled by cosmic-settings-daemon
+  * syntax and light copy changes
+  * improv(startup_apps): change drawer title
+  * improv(applets_inner): always show placeholder on empty segments
+  * chore: fix compiler warnings
+  * Update translations
+
+-------------------------------------------------------------------
+Fri Oct 24 10:36:28 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- add NetworkManager-openvpn as a runtime dep
+
+-------------------------------------------------------------------
+Thu Oct 23 18:07:41 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta3+2:
+  * chore: don't needlessly `partial_cmp` two `&str`s
+  * chore: update flake
+  * fix(bluetooth): disabling/enabling typo
+  * fix: use rfkill when toggling bluetooth
+
+-------------------------------------------------------------------
+Sun Oct 19 15:03:25 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta2+3:
+  * feat: merge subscriptions crate into cosmic-settings repo
+  * build: add build-deb recipe for vendorless package build
+  * build: move desktop entries into resources/applications
+  * build(justfile): ensure usrdir is an absolute path
+  * build: streamline justfile & add tag recipe
+  * build(justfile): removed -d '\n' from xargs
+  * fix: allow no modifier for function keys
+  * fix(panel): case insensitive applet search
+  * perf(cargo): re-enable opt-level 3 and set panic="abort" to reduce size
+  * fix: also accept "wheel" as group name for polkit authentication
+  * chore: use same laptop display check as cosmic-comp
+  * Updated translations
+
+-------------------------------------------------------------------
+Mon Sep 29 22:27:01 UTC 2025 - mkd <mkdwho@icloud.com>
+
+- Include `CosmicSettings.StartupApps.desktop` file in %files
+
+-------------------------------------------------------------------
+Mon Sep 29 21:36:31 UTC 2025 - mkd <mkdwho@icloud.com>
+
+- Update to version 1.0.0~beta1.1+37:
+  * i18n(nb-NO): update translations from Weblate
+  * i18n(cs): update translations from Weblate
+  * i18n(be): update translations from Weblate
+  * fix(about): CPU model name fetched twice
+  * fix(region): dont update time settings on set_locale failure
+  * i18n: adding translation for (Norwegian Bokmål)
+  * i18n(et): update translations from Weblate
+  * i18n(af): update translations from Weblate
+  * i18n(hi): update translations from Weblate
+  * i18n(zh-TW): update translations from Weblate
+  * i18n(zh-CN): update translations from Weblate
+  * i18n(uk): update translations from Weblate
+  * i18n(ru): update translations from Weblate
+  * i18n(pt-BR): update translations from Weblate
+  * i18n(es-419): update translations from Weblate
+  * chore: remove branch
+  * fix(shortcuts): handling of super modifier and search
+  * i18n: adding translation for (Estonian)
+  * i18n(uk): update translations from Weblate
+  * i18n(ru): update translations from Weblate
+  * i18n(ga): update translations from Weblate
+  * i18n(es-419): update translations from Weblate
+  * i18n(cs): update translations from Weblate
+  * fix: add unhide_delay for panels
+  * i18n(fy): update translations from Weblate
+  * i18n(af): update translations from Weblate
+  * i18n(zh-CN): update translations from Weblate
+  * i18n(pl): update translations from Weblate
+  * i18n(nl): update translations from Weblate
+  * i18n(hi): update translations from Weblate
+  * Translated using Weblate (Portuguese)
+  * Translated using Weblate (Frisian)
+  * Translated using Weblate (Afrikaans)
+  * Translated using Weblate (Portuguese)
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Arabic)
+  * Added translation using Weblate (Limburgish)
+  * Added translation using Weblate (Frisian)
+  * Translated using Weblate (Afrikaans)
+  * Translated using Weblate (Italian)
+  * Added translation using Weblate (Afrikaans)
+  * Translated using Weblate (Italian)
+  * feat(power): subscribe to battery events
+  * Translated using Weblate (Chinese (Simplified Han script))
+  * fix(power): connected devices may contain duplicates
+  * fix: search bar not dismissed on clear click
+  * i18n(af,nl): update translations
+  * i18n(ita): update translation
+  * i18n(ar): translate desktop entries
+  * fix(time): icu locale requires hyphenated lang codes
+  * Translated using Weblate (Hindi)
+  * Translated using Weblate (Czech)
+  * fix(shortcuts): ignore keyboard input when replace dialog is active
+  * Translated using Weblate (Chinese (Simplified Han script))
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (Polish)
+  * Translated using Weblate (Hungarian)
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Bulgarian)
+  * Translated using Weblate (Arabic)
+  * chore(display): display ID should count from 1
+  * Translated using Weblate (Portuguese (Brazil))
+  * Update cosmic_settings.ftl PL Translation touchpad toggle
+  * More translation fixes
+  * More translation fixes
+  * More translation fixes
+  * Oops, remove swap file
+  * Translation fixes for weblate parser
+  * Fix es-419 translation path
+  * i18n(ar): fix stray character breaking fluent parser
+  * i18n(bg): updated bulgarian translation
+  * i18n(ar): Update Arabic translation
+  * chore: cleanup deps
+  * chore(system shortcut): touchpad toggle
+  * fix(input): more shortcut improvments
+  * fix(input): better handling of keyboard focus and highlighting of shortcuts
+  * i18n(it): update translation
+  * fix: set initial binding input and select all for input strings when focused
+  * i18n(pl): update translation
+  * feat: shortcut key input
+  * i18n(th): update translations
+  * chore: add startup applications command and desktop entry
+  * i18n(es): update translations
+  * i18n(pt-BR): update translations
+  * chore: update dependencies
+  * refactor(time): update to icu 2.0.0
+  * feat(sound): volume amplification
+  * fix(about): add fallback for hardware model and processor
+  * i18n(sk): Update translations
+  * fix(display): update cosmic-randr-shell for VRR arg display
+  * i18n(zh-TW): update translation
+  * fix: update cosmic-randr-shell for KDL syntax fix
+  * i18n(zh-CN): update translation
+  * i18n(pl): update translation
+  * i18n(hu): update translation
+  * i18n(da): update danish translation
+  * i18n(pl): fix spelling typos, etc.
+  * fix(font): remove intrusive filter for fonts
+  * i18n(sr): update translations
+  * improv(startup_apps): match designs
+  * chore: libcosmic and theme updates
+  * chore: update libcosmic
+  * fix: fix installed defaults for bg colors
+  * fix: use image feature of jxl-oxide to fix image decoding error
+  * i18n(sv): update translation for auto-suspend
+  * fix(vpn): set data ciphers
+  * fix(vpn): use to_file_path
+  * fix(appearance): use ContentFit::Contain to center modes
+  * fix(appearance): use flex row for accent colors to avoid scrollable overdraw
+  * fix(appearance): excess padding in mode button selector
+  * chore(cargo): update libcosmic for image button fixes
+  * fix(appearance): use image buttons to get selection icons
+  * chore: fix lints
+  * improv(libcosmic): segmented button improvements
+  * fix(libcosmic): context drawer title text wrapping
+  * fix(appearance): theme desync causing configs not to be set
+  * fix(appearance): reload system theme after building themes
+  * fix(appearance): set color from pickers only when needed
+  * chore(cargo): update dependencies
+  * feat: add launch command for panel and dock applet pages
+  * fix(keyboard): add missing keyboard shortcut to make it searchable
+  * fix(sound): source_profiles returning sink profiles
+  * fix(sound): fix sound profiles & move logic to cosmic-settings-subscriptions
+  * wip
+  * improv(sound): hide input section if no input device is available
+  * fix(appearance): regressions in changing theme mode and density
+  * chore(appearance): disable wrapping for style text
+  * chore(default_schema): update default themes
+  * chore: add defaults
+  * chore: update libcosmic
+  * fix: switch mode when imported theme doesn't match
+  * i18n(pt-BR): update translation
+  * fix(appearance): window hint
+  * chore: update libcosmic
+  * improv(sound): reduce codegen, use subscription, and fix threads not exiting on page close
+  * fix(sound): sound profile handling improvements
+  * fix(appearance): typo
+  * fix(appearance): accent-text
+  * docs: Add QA testing checklist
+  * fix(appearance): reload system theme after successful import
+  * fix(appearance): reload system theme after resetting mode
+  * fix(appearance): fix regressions that broke theme application and responsiveness
+  * chore: update libcosmic
+  * fix(appearance): theme mode changing when selecting roundness
+  * i18n(be): Update translation
+  * i18n(nl) update Dutch translation
+  * i18n(de) update German translation
+  * i18n(hu): update translation
+  * fix: use loaded theme from config, instead of falling back to default theme when there is an error
+  * shortcuts: Add fullscreen shortcut
+  * chore(appearance): Remove unused function
+  * i18n(pt-BR): update translation
+  * fix(appearance): Synchronize Roundness between dark & light mode
+  * fix(wallpaper): Settings reset on entering page (#1256)
+  * fix(appearance): Multiple fixes + refactor (#1244)
+  * fix(accessibility): color filter dropdown
+  * Update Hungarian translations
+  * Update cosmic_settings.ftl PL Translation poweroff
+  * fix(wifi): enable connection to open wifis
+  * i18n(bg): update bulgarian translation (#1242)
+  * Update libcosmic
+  * Fixes for theme updates
+  * fix: pin cosmic-protocols revision
+  * chore: update libcosmic
+  * improv(applications): convert message types to reduce code gen
+  * chore(keyboard): remove eprintln logs
+  * fix(applets_inner): use correct background color
+  * fix(input): update shortcuts in search on search
+  * feat: wallpaper subscription
+  * fix(vpn): retry username/pw entry dialog if connection fails
+  * fix(sound): revert change in alsa device descriptions
+  * i18n: fix window-management-appearance
+  * i18n: fix duplicates and curly brackets
+  * fix: wallpaper discovery
+  * i18n(de): accessibility page translations
+  * fix(bluetooth): stop discovery on leave asynchrously
+  * feat(panel): get localized applet entries
+  * fix(libcosmic): enter key activating navbar menus
+  * fix: revert cosmic-text version to fix cut off text
+  * fix(startup-apps): create autostart directory before creating startup entries
+  * chore: cargo fmt
+  * fix(applets_inner): use `radius_s` for dnd items
+  * i18n: replace missing key in users page
+  * fix: right alt key as alternate key
+  * feat(region): update datetime formatting on region change
+  * feat(date): default to locale's preferred date settings
+  * perf(accessibility): consolidate message types in view to reduce code gen
+  * fix(users): wrong text for dialog adding profile image
+  * chore(bluetooth): refactor to make it easier to share logic
+  * feat: add subscription method for Page trait
+  * i18n(nl) adding Dutch translations, but also modifying some punctuation to EN and PL. (#1218)
+  * improv(bluetooth): stop bluetooth discovery on page leave
+  * chore: update libcosmic
+  * fix: update fde
+  * fix(nix): Simplify nix flake and fix dependencies
+  * feat(panel): custom panel sizes
+  * i18n(pt-BR): update translation
+  * feat(shortcuts): search by key bindings
+  * fix(power): freeze if a power daemon was not active or enabled
+  * chore: update cosmic-settings-subscriptions
+  * fix(sound): display unknown input/output devices
+  * chore: fix compiler warnings
+  * i18n(nl): update Dutch translation
+  * chore: update dependencies
+  * i18n(hu): update translation
+  * fix(display): Show revert dialog iff mode changed
+  * i18n(pt-BR): Update translations
+  * fix: apply the toggle overflow fix to the user list
+  * i18n(pl): update translation
+  * fix: user admin toggle overflowing container
+  * i18n(bg): Add Bulgarian translation
+  * i18n(nl): update translation
+  * i18n(es): Fix words for coherence between components
+  * i18n(tr): update translation
+  * chore: update cosmic-settings-subscriptions
+  * i18n(sv): update translation
+  * i18n(pt-BR) - Update translations
+  * chore(accessibility): use settings subscription for color filter
+  * i18n(zh-CN): update translation
+  * i18n(pl) Update and fix Polish translation
+  * fix(wallpapers): iterate XDG_DATA_DIRS when loading backgrounds
+  * feat(accessibility): screen reader toggle
+  * i18n(it): update translation
+  * i18n(sv): update bluetooth translation
+  * Updated Irish translation
+  * Updated cosmic settings ITA (#1149)
+  * i18n(nl) update Dutch translation
+
+-------------------------------------------------------------------
+Mon May 12 16:15:39 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- add runtime dependencies, so we can add networks which don't
+  show up
+
+-------------------------------------------------------------------
+Thu Apr 24 18:06:36 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~alpha7+0:
+  * fix(shortcuts): disable default keybind when modified
+  * fix(bluetooth): resolve issues with bluetooth settings page
+  * fix: save on unfocus for inline editable fields
+  * fix(appearance): load theme for initial default
+  * fix: use appropriate hashing method for passwords
+  * i18n(pt-BR) Update translations
+  * improv: use ContextDrawer model in pages
+  * feat: make ContextDrawer model accessible to pages
+  * Fixup #1125
+  * Update Hungarian translations
+  * chore: update settings subscriptions
+  * fix: username fallback when there's no full name
+  * fix: username fallback when there's no full name
+  * fix: user list style and layout
+  * fix: hash password befote saving on user create and password update
+  * feat: improved password workflow
+  * feat: improved password workflow
+  * fix wording of panel descriptions
+  * Fix an error in Polish translation
+  * fix(shortcuts): quick fix for custom shortcuts not being clickable
+  * i18n(nl): update translation
+  * chore: Update wording on magnifier scroll controls
+  * feat(legacy_apps): Add primary output selection
+  * feat(legacy_apps): Add new scaling modes
+  * chore: update cosmic-comp/randr/protocols
+  * i18n(pl): X11 and accessibility settings translations
+  * Update Swedish translation (#1114)
+  * i18n (pt-BR) update translations (#1112)
+  * feat: change `default_folder` path of system backgrounds based on distribution
+  * fix(network): vpn dropdown styling
+  * i18n - update portuguese translations (#1108)
+  * i18n(zh-TW): update Taiwanese translation (#1065)
+  * Update cosmic_settings.ftl PL translation Applications Accessibility (#1087)
+  * Update cosmic_settings.ftl (sv translation) (#1093)
+  * i18n (pt-BR) Update translation (#1096)
+  * i18n(nl) update Dutch translations (#1097)
+  * Update Hungarian translations (#1100)
+  * i18n(ro): Improve Romanian translation (#1105)
+  * Add feature for legacy applications page
+  * feat(applications): Add xwayland global shortcuts configuration
+  * chore: cosmic-comp-config update
+  * chore: Rust 2024 edition format
+  * accessibility/magnifier: Add new settings
+  * improv(keyboard): shortcuts UI improvements
+  * chore: update deps
+  * feat(a11y): mono sound toggle
+  * chore: update cosmic-settings-subscriptions
+  * feat: sound balance
+  * update
+  * feat(network): support for eap peap networks
+  * feat(users): validate user account details details before creating
+  * fix(app): padding fixes
+  * fix(startup_apps): improve interface
+  * fix(accessibility): use popup_dropdown
+  * i18n(sv): update translation
+  * i18n(hu): update translation
+  * feat(startup_apps): fallback icon/name, removing cosmic applets from search list
+  * fix: set theme builder to match theme after theme is changed
+  * i18n(zh-CN): update zh-CN translation
+  *  fix(accessibility): allow localisation on the string 'Default'
+  * fix(default_apps): include applications defining applicat/ogg as music players
+  * fix(wallpaper): color picker functionality
+  * feat: Add screen filter settings
+  * chore: Update cosmic-protocols/cctk
+  * chore: update libcosmic
+  * feat: add applications page
+  * feat: add startup applications page
+  * fix: 'open' arrow icon on user details
+  * fix: return tasks from the window management page
+  * fix(dock): msg conversion using provided function
+  * Update Hungarian translations
+  * i18n(nl) translate 'numlock status' to Dutch (#1057)
+  * i18n(tr): update translation
+  * feat: dropdown popups
+  * fix(about): change hostname when input focus changes
+  * chore(cargo): switch lichen-system dep to locales-rs
+  * Fix features to improve portability
+  * i18n(pl): translation improvements
+  * feat: high contrast toggle (#1039)
+  * i18n(sv): update translation
+  * i18n(pt-BR): update translation
+  * i18n(sk): Update Slovak translations
+  * i18n(hu): update translation
+  * i18n(pl): update translation
+  * i18n(nl): update Dutch translation
+  * feat(keyboard): add numlock configuration
+  * accessibility/magnifier: Compose shortcut list from config
+  * shortcuts: Ignore deprecated shortcuts
+  * fix(libcosmic): theme subscription fix
+  * chore(display): better error messages
+  * fix(wallpapers): filter images by extension
+  * fix(wallpapers): regression in same-on-all not being applied
+  * fix(default_apps): apps missing if they had duplicate desktop entry keys
+  * chore(display): remove commented code block
+  * refactor: use Task::stream instead of a channel subscription
+  * refactor(display): use Task::stream instead of on_enter sender
+  * fix(display): refresh displays on display hotplug events
+  * fix(about): shorten the width of the hostname input
+  * refactor(appearance): use cosmic::dialog for xdg file chooser dialogs
+  * fix: set active page through state file
+  * chore: document accent palette config
+  * feat: add configurables for accent_palette_dark and accent_palette_light
+  * fix(vpn): handle file_chooser dialog cancellation
+  * fix(appearance): limit active window hint to 64 width max
+  * feat: add shortcut for input source switch
+
+-------------------------------------------------------------------
+Sat Feb 22 03:38:13 UTC 2025 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha6+0:
+  * fix: prevent checkmark clipping in font and region selection drawers
+  * pages: Add Accessibility/Magnifier page
+  * chore: Update cosmic-comp-config
+  * chore: Update cosmic-protocols
+  * chore: upgrade cosmic-randr and other dependencies
+  * perf: update libcosmic to improve window resize performance
+  * fix(displays): fix display data refresh spam & mismatched scale value
+  * fix(displays): fix tabs changing on display updates
+  * chore: font style changes in libcosmic
+  * improv(display): apply adjusted scale only if it changed
+  * improv(display): switch scaling slider to spin button
+  * fix(window_management): fix overflow of edge gravity control
+  * fix(displays): keep refresh rate when changing scale
+  * fix(displays): scaling slider should adjust selected scale
+  * chore: update libcosmic
+  * chore: update libcosmic with accent text color improvements
+  * i18n(pl): update translation
+  * i18n(hu): update translations
+  * i18n(de): add German translation
+  * refactor(bluetooth): integrate cosmic-settings-subscriptions
+  * fix(power): Fix battery charged icon when a device is fully charged.
+  * chore: update libcosmic
+  * feat(display): add additional scaling options slider
+  * feat(default_apps): set default terminal in system_actions config
+  * feat(window_management): add window edge snapping setting
+  * i18n: remove duplicate keys
+  * chore: upgrade all dependencies
+  * i18n(pt-BR): update translations
+  * i18n(hu): update Hungarian translations
+  * i18n(pl): translate metainfo
+  * i18n(pl): add translation
+  * fix(power): prevent connected device model name from wrapping and overflowing
+  * feat(power): implement periodic update for connected devices
+  * feat(default_apps): add text editor default
+  * fix: close context menu when switching pages
+  * improve(bluetooth): ignore devices with unknown type and without alias
+  * fix: set M_MMAP_THRESHOLD to prevent glibc memory fragmentation
+  * i18n(nl): translate log-out
+  * i18n(pl): fix translation for dock
+  * i18n(pl): translation updates
+  * feat: Add terminal application selection to default apps page
+  * i18n(th): update translations
+  * Update cosmic_settings.ftl PL Translation logout chore
+  * chore: update freedesktop-desktop-entry, cosmic-text, and freedesktop-icons
+  * improv(wallpapers): reclaim memory when leaving page
+  * fix: update ron to gracefully handle new system actions
+- switch to obs_scm
+
+-------------------------------------------------------------------
+Sat Jan 18 17:55:35 UTC 2025 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha5.1+3:
+  * chore: update dependencies
+  * chore: add log-out shortcut
+  * chore: add theme to appearance keywords
+  * chore: update libcosmic and reduce binary size
+  * i18n(nl): translation update
+  * i18n(it): translation update
+  * i18n(pl): translation for desktop entries
+  * i18n(sv): translate user page
+  * i18n(fr): improve translation
+  * i18n(pl): translation updates
+  * perf: optimized cosmic-freedesktop-icons
+  * chore(wallpapers): replace freedesktop-icons crate
+  * perf: update freedesktop-icons to reduce memory usage
+  * perf(wallpaper): avoid recursion for system wallpapers
+  * fix(display): avoid block on dispatch; fixing app close
+
+-------------------------------------------------------------------
+Fri Jan 10 22:34:37 UTC 2025 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha5+2:
+  * fix: libcosmic api changes
+  * perf: update libcosmic to significantly reduce memory usage
+  * improv(region): localize languages and regions with dgettext
+  * improv(keyboard): localize input sources with dgettext
+  * fix(touchpad): compiler error in disable-while-typing toggle
+  * fix: set default value for disable-while-typing when unset
+  * perf(appearance): fetch icons on demand
+  * i18n(en): Opens a web browser -> Open a web browser
+  * i18n(de): improve translation
+  * i18n(tr): add Turkish translation
+  * i18n(sv): translate power saving options
+  * i18n(nl): add Dutch translation
+  * i18n(ga): add Irish translation
+  * i18n(pt-BR): translation improvements
+  * i18n(sv): translation for default apps page
+  * i18n(da): add Danish translation
+  * i18n(sv): translation for font config
+  * i18n(pl): translation updates
+  * fix(appearance): roundness button style
+  * fix(region): set unique day/month/year values
+  * chore(bluetooth): handle DBus service unknown error
+  * chore(default-apps): remove eprintln log
+  * fix(cargo): update freedesktop-icons to fix high CPU usage
+  * feat: alt-shift-tab
+  * Update cosmic_settings.ftl (Ita)
+  * fix(default_apps): audio/mp3 not being associated for audio
+  * fix(default_apps): local mimeapps config not being read
+  * feat: add user accounts page
+  * Updated active hint and gap size update logic
+  * Updated appearance gap min
+
+-------------------------------------------------------------------
+Fri Dec 06 00:46:25 UTC 2024 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha4+0:
+  * fix(bluetooth): remove cog next to toggle
+  * fix(applet list): remove extra padding
+  * Update cosmic_settings.ftl
+  * i18n(zh-CN): update Chinese translation
+  * i18n(de): add German translation
+  * Update cosmic_settings.ftl ITA
+  * Update cosmic_settings.ftl ITA
+  * Update cosmic_settings.ftl
+  * i18n(ar): add Arabic translation
+  * i18n: update Kannada translation
+
+-------------------------------------------------------------------
+Thu Oct 31 22:27:28 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update 1.0.0~alpha3:
+  * fix(vpn): improve support for importing WireGuard configs
+  * fix(appearance): clean up density message
+  * fix(sound): volume debounce not applied
+  * fix(power): fix battery state / charge devices info
+  * fix(displays): reduce height of display arrangement widget
+  * feat(keyboard): ability to remap caps lock to control
+  * jp: update bluetooth and some display settings
+  * partial bluetooth translation (ja)
+  * feat(wallpaper): support JPEG XL wallpapers
+  * improv(appearance): checkmark for selected font
+  * feat(keyboard): add caps lock remapping options
+  * fix(keyboard): duplicate input sources
+  * fix(keyboard): close input sources popup on click out
+  * improv(networking): match page list item to design
+  * fix(appearance): interface density button order
+  * updated translations
+
+-------------------------------------------------------------------
+Wed Sep 25 06:47:15 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.0.0~alpha2:
+  * feat(date-time): select timezones from searchable context drawer
+  * chore: set rust-version to 1.80.0
+  * improv(date-time): auto-enable NTP when setting timezone
+  * refactor(panel): use set_* to reduce amount written to disk
+  * feat: add sound settings page
+  * fix(sound): reset page state on leave
+  * chore: update cosmic-settings-subscriptions
+  * chore: update desktop entries
+  * chore: do not log error for unset configs
+  * chore: remove extraneous file
+  * fix(sound): Bluez5 device support
+  * feat(sound): sound profiles, bluetooth codecs, and fixes
+  * fix(sound): SourceChange should lookup source_ids
+  * fix(sound): use pactl for setting default sinks and sources
+  * fix(sound): profile mismatch and device shuffling
+  * chore(i18n): remove duplicate unknown IDs
+  * chore: add desktop entries
+  * fix: page list item padding and spacing
+  * display: Add options for DPI scales up to 300%
+  * i18n(sr): Update Serbian translations
+  * improv(sound): Use flex row with adaptive width slider
+  * feat(time): Option to display seconds on the clock
+  * fix(touchpad): update page to match design
+  * fix(touchpad): adapt to workspace layout
+  * feat(power): add battery status
+  * fix(time): Try LC_TIME before LANG
+  * feat(display): display as integer
+  * fix(power): list item styling
+  * feat(displays): add X11 scaling settings
+  * improv: make entire length of radio items clickable
+  * fix(wallpapers): use context drawer for color picker
+  * feat(window_management): add focus_navigation
+  * fix(power): alignment of remaining battery
+  * feat(power): add connected devices section
+  * fix(shortcuts): add switch to workspace
+  * fix(shortcuts): searchable custom shortcuts
+  * feat(shortcuts): add option to disable the default super key action
+  * perf(desktop): write icon theme config atomically
+  * fix(desktop): add window_hint to config update transaction
+  * feat(networking): display list of devices on page
+  * chore(wired): change "Add network" to "Add profile"
+  * fix(wired): display known connections when unplugged
+  * fix: fix padding and height of page list items
+  * fix(app): add network subcommand
+  * fix(libcosmic): set 32px minimum height for list column items
+  * feat(appearance): add interface density settings
+  * feat: add Bluetooth settings page
+
+-------------------------------------------------------------------
+Thu Aug  8 01:00:32 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- standardize packaging with also fixes for miscellaneous hardcoding
+  filenames, using @PARENT_TAG where applicable, and be more specific
+  with files in the %files section (so no non-wanted files are getting
+  added
+
+-------------------------------------------------------------------
+Wed Aug  7 01:51:47 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.0.0~alpha1:
+  * chore: update desktop entry comments
+  * shortcuts: Add new Play-(Pause/Next/Prev) shortcuts
+  * fix: match navbar item order to designs
+  * fix(libcosmic): multiple text input focus
+- enable leap (thanks to vyvir)
+
+-------------------------------------------------------------------
+Thu Mar 14 03:01:34 UTC 2024 - Richard Rahl <rrahl0@proton.me>
+
+- initial packaging
