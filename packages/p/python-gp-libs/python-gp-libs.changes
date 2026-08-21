@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Aug 21 10:11:49 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.0.19:
+  * gp-libs 0.0.19 adds the +HIDE doctest option flag, so a
+    documentation example can carry setup lines that run and are
+    checked but stay out of the rendered page
+
+-------------------------------------------------------------------
 Wed Jul  1 16:17:15 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.0.18:

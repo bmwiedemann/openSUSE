@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-gp-libs
-Version:        0.0.18
+Version:        0.0.19
 Release:        0
 Summary:        Internal utilities for projects following git-pull python package spec
 License:        MIT
@@ -40,7 +40,8 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-Incubating / dogfooding some sphinx extensions and pytest plugins on git-pull projects, e.g. cihai, vcs-python, or tmux-python.
+Incubating / dogfooding some sphinx extensions and pytest plugins on git-pull
+projects, e.g. cihai, vcs-python, or tmux-python.
 
 %prep
 %autosetup -p1 -n gp_libs-%{version}

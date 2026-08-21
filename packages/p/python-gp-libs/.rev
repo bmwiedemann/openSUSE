@@ -63,4 +63,15 @@
     around the shared git-pull docs stack.</comment>
     <requestid>1363027</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>83d4c517c3674f21f83812512e966bc0</srcmd5>
+    <version>0.0.19</version>
+    <time>1787324415</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.0.19:
+  * gp-libs 0.0.19 adds the +HIDE doctest option flag, so a
+    documentation example can carry setup lines that run and are
+    checked but stay out of the rendered page</comment>
+    <requestid>1372792</requestid>
+  </revision>
 </revisionlist>
