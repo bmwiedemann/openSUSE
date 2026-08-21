@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Aug 21 08:29:12 UTC 2026 - meissner@suse.com
+
+- Update to version 1.5.3:
+  * Use bytes.Equal for inclusion proof root hash comparison (#2861)
+  * return 499 if client disconnects instead of 500 (#2870)
+  * build(deps): Bump google.golang.org/grpc from 1.80.0 to 1.82.0 (#2859)
+  * build(deps): Bump the all group across 1 directory with 7 updates (#2869)
+  * Change max upperbound on latency metrics (#2868)
+  * build(deps): Bump golang from `87a41d2` to `f96cc55` (#2855)
+  * build(deps): Bump actions/checkout from 6.0.3 to 7.0.0 (#2857)
+  * build(deps): Bump golang.org/x/net from 0.52.0 to 0.55.0 in /hack/tools (#2866)
+  * Move fuzz into its own workflow (#2865)
+  * build(deps): Bump google.com/cloudsdktool/google-cloud-cli (#2862)
+  * build(deps): Bump the all group with 2 updates (#2863)
+  * build(deps): Bump the all group across 1 directory with 11 updates
+  * build(deps): Bump golang in the all group across 1 directory
+  * build(deps): Bump the all group across 1 directory with 2 updates
+  * build(deps): Bump google.com/cloudsdktool/google-cloud-cli
+  * build(deps): Bump codecov/codecov-action from 6.0.1 to 7.0.0
+  * build(deps): Bump github.com/go-openapi/loads from 0.23.3 to 0.24.0
+  * build(deps): Bump github.com/redis/go-redis/v9 from 9.18.0 to 9.20.0
+  * build(deps): Bump github.com/go-openapi/runtime from 0.29.4 to 0.32.2
+  * build(deps): Bump golang from `313faae` to `2d6c802`
+  * build(deps): Bump golang.org/x/net from 0.53.0 to 0.55.0
+  * build(deps): Bump the all group across 1 directory with 4 updates
+  * build(deps): Bump google.com/cloudsdktool/google-cloud-cli
+
+-------------------------------------------------------------------
 Fri May 29 07:04:22 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.5.2:
