@@ -81,4 +81,27 @@ texts shipped under %license, which are kept per-dependency on purpose.</comment
 </comment>
     <requestid>1372115</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>aa33dbed9310cc18f08ede547d290b22</srcmd5>
+    <version>1.10.1</version>
+    <time>1787324182</time>
+    <user>anag_factory</user>
+    <comment>Thu Aug 20 18:43:34 UTC 2026 - Martin Pluskal &lt;mpluskal@suse.com&gt;
+
+- Update to version 1.10.1:
+  * Flatten add_issue_comment's input schema (drop top-level
+    anyOf and dependentSchemas) so stricter JSON Schema clients
+    can list tools; the handler still validates mutually
+    exclusive body/reaction/comment_id modes. Fixes a v1.10.0
+    regression that could reject the whole tool inventory
+    before any tool ran.
+- Vendored Go modules are unchanged (go.mod/go.sum identical to
+  1.10.0), so the licence audit stands: all vendored modules
+  linked into the binaries are MIT, BSD-3-Clause or Apache-2.0
+  and no copyleft code is linked.
+- Keep github-mcp-server-root-command-name.patch: upstream pull
+  request 2998 merged after v1.10.1, and the cobra root command
+  is still declared as &quot;server&quot; in this release.</comment>
+    <requestid>1372635</requestid>
+  </revision>
 </revisionlist>
