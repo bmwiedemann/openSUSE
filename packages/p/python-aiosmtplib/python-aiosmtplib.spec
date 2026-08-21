@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-aiosmtplib
-Version:        5.1.1
+Version:        5.1.2
 Release:        0
 Summary:        Python asyncio SMTP client
 License:        MIT
@@ -58,15 +58,7 @@ Python asyncio SMTP client.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# Disable tests, broken with pytest-asyncio >= 1.0.0
-# gh#cole/aiosmtplib@3b4bd0d7048c
-# https://github.com/cole/aiosmtplib/blob/main/requirements-dev.txt#L2
-# %%pytest -rs -k "not test_live and not test_tls"
-
-%{python_expand # just test import meantime tests are broken
-export PYTHONPATH=${PYTHONPATH:+$PYTHONPATH:}%{buildroot}%{$python_sitelib}
-$python -c "import aiosmtplib; assert aiosmtplib.__version__ == '%{version}'"
-}
+%pytest -rs -k "not test_live and not test_tls"
 
 %files %{python_files}
 %doc README.rst docs/*.rst

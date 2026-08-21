@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Aug 21 12:21:32 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 5.1.2 (fixes CVE-2026-55558, bsc#1275982)
+  * Security: Discard any buffered server data before the STARTTLS handshake,
+    preventing a response-injection attack where a man-in-the-middle pre-stages
+    plaintext that would otherwise be read as part of the encrypted session
+  * Bugfix: Corrected SMTPResponse __repr__ result
+  * Bugfix: Calling connect() on an already-connected client now raises
+    SMTPException instead of deadlocking on the connection lock
+  * Feature: Poe command runner for dev tasks
+  * Bugfix: Timeout ignored during CRAM-MD5 verification
+  * Bugfix: Only parse EHLO response after validating success
+  * Bugfix: return None from extract_sender when address list is empty
+  * Bugfix: Enforce a maximum total response size, preventing unbounded memory
+    use if a server streams data with no line ending or endless multiline
+    continuation lines
+  * Bugfix: Use the invalid_response status code (-1) instead of 500 when a
+    server response line exceeds the maximum length
+  * Bugfix: A read timeout now closes the connection instead of leaving it in
+    a desynced state, where a late server response could be mispaired with a
+    subsequent command
+  * Bugfix: Correctly parse old-style AUTH= extension advertisements; all
+    advertised methods are now kept (e.g. both PLAIN and LOGIN from
+    AUTH=PLAIN LOGIN)
+  * Bugfix: ESMTP extension lines with leading whitespace are no longer ignored
+- enable testsuite again
+
+-------------------------------------------------------------------
 Sun Jun 14 09:27:07 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.1.1 (CVE-2026-53533, bsc#1268219):
