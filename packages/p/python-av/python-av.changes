@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Fri Apr  3 17:35:47 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 17.0.0:
+  * Limited API binary wheels are now built.
+  * 3.13t (free-threading) wheels are be dropped because of
+    storage limitations. Use 3.14t or 3.13.
+  * When an FFmpeg C function indicates an error, raise
+    av.ArgumentError instead of ValueError/av.ValueError. This
+    helps disambiguate why an exception is being thrown.
+  * Save space by removing libaom (av1 encoder/decoder); dav1d,
+    stvav1, and hardware, are available alternatives.
+  * ### Features
+  * Add `OutputContainer.add_mux_stream()` for creating codec-
+    context-free streams, enabling muxing of pre-encoded packets
+    without an encoder, addressing #1970 by @WyattBlue.
+  * Use zero-copy for Packet init from buffer data by @WyattBlue
+    in (#2199).
+  * Expose AVIndexEntry by @Queuecumber in (#2136).
+  * Preserving hardware memory during cuvid decoding,
+    exporting/importing via dlpack by @WyattBlue in (#2155).
+  * Add enumerate_input_devices and enumerate_output_devices API
+    by @WyattBlue in (#2174).
+  * Add `ColorTrc` and `ColorPrimaries` enums; add `color_trc`
+    and `color_primaries` properties to `VideoFrame`; add
+    `dst_color_trc` and `dst_color_primaries` parameters to
+    `VideoFrame.reformat()`, addressing #1968 by @WyattBlue in
+    (#2175).
+  * Add multithreaded reformatting and reduce Python overhead by
+    replacing `sws_scale` with `sws_scale_frame`, skipping
+    unnecessary reformats, and minimizing Python interactions by
+    @lgeiger.
+  * Prevent data copy in `VideoFrame.to_ndarray()` for padded
+    frames by @lgeiger in (#2190).
+  * Fix #2149 by @WyattBlue in (#2155).
+  * Fix packet typing based on stream and specify
+    InputContainer.demux based on incoming stream by @ntjohnson1
+    in (#2134).
+  * Fix memory growth when remuxing with
+    `add_stream_from_template` by skipping `avcodec_open2` for
+    template-initialized codec contexts, addressing #2135 by
+    @WyattBlue).
+  * Explicitly disable OpenSSL in source builds (`scripts/build-
+    deps`) to prevent accidental OpenSSL linkage that breaks
+    FIPS-enabled systems, addressing #1972.
+  * Add missing `SWS_SPLINE` interpolation by @lgeiger in
+    (#2188).
+- update to 16.1.0:
+  * Add support for Intel QSV codecs by @ladaapp.
+  * Add AMD AMF hardware decoding by @ladaapp2.
+  * Add subtitle encoding support by @skeskinen in #2050.
+  * Add read/write access to PacketSideData by @skeskinen in
+    #2051.
+  * Add yuv422p support for video frame to_ndarray and
+    from_ndarray by @wader in #2054.
+  * Add binding for `avcodec_find_best_pix_fmt_of_list()`
+
+-------------------------------------------------------------------
 Fri Jun 13 05:35:08 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
