@@ -20,7 +20,7 @@
 
 %define lname	libfsext1
 Name:           libfsext
-Version:        20260201
+Version:        20260821
 Release:        0
 Summary:        Library and tools to access the Extended File System
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
@@ -157,6 +157,6 @@ find "%buildroot" -type f -name "*.la" -delete -print
 
 %files %python_files
 %license COPYING*
-%python_sitearch/pyfsext.so
+%python_sitearch/pyfsext*
 
 %changelog
