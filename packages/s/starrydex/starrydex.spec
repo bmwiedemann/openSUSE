@@ -18,7 +18,7 @@
 
 %define         appid dev.mariinkys.StarryDex
 Name:           starrydex
-Version:        0.3.5
+Version:        0.3.7
 Release:        0
 Summary:        Pokédex application for the COSMIC desktop
 License:        GPL-3.0-only
