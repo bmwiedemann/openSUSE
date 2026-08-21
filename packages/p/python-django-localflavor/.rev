@@ -107,4 +107,33 @@
   * Use versioned django-admin command when running tests.</comment>
     <requestid>1329902</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9091721b495045a9415edfddc7f04351</srcmd5>
+    <version>5.1</version>
+    <time>1787324406</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.1:
+  * Added local flavor for Qatar (gh-544).
+  * Added local flavor for Taiwan (gh-530).
+  * Added local flavor for United Arab Emirates (gh-542).
+  * US: Added USIndividualTaxpayerIdentificationNumberField,
+    USAdoptionTaxpayerIdentificationNumberField, and
+    USTaxpayerIdentificationNumberField form and model fields for
+    validating ITINs, ATINs, and any valid U.S. taxpayer
+    identification number (SSN, ITIN, or ATIN).
+  * Fix REGON validation for PL (gh-529).
+  * Update SI postal codes (gh-531).
+  * Update BR CNPJ validator to accept new alphanumeric format
+    (gh-533).
+  * Added Falkland Islands (Malvinas), Honduras, Oman, Somalia
+    and Yemen to IBAN_COUNTRY_CODE_LENGTH dict based on version
+    101 of the IBAN registry document from December 2025. The
+    minium version of python-stdnum is now 2.2. (gh-538),
+    (gh-547)
+  * Updated NORDEA_COUNTRY_CODE_LENGTH with data from nordea-
+    country-and-currency-list.pdf v2.2 (gh-546).
+
+    There are also a few modifications in the States and</comment>
+    <requestid>1372802</requestid>
+  </revision>
 </revisionlist>

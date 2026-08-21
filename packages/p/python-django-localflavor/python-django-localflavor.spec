@@ -17,7 +17,7 @@
 
 
 Name:           python-django-localflavor
-Version:        5.0
+Version:        5.1
 Release:        0
 Summary:        Country-specific Django helpers
 License:        BSD-3-Clause
