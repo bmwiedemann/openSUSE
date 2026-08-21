@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Wed Aug 19 11:38:29 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.6.0:
+  * Epoch 1.6.0 version update
+  * chore: update libcosmic and cosmic-files
+  * i18n: translation updates from weblate
+  * chore: `cargo clippy --fix`
+  * fix: request a redraw if terminal needs to update
+  * fix: round subpixel coordinates for glyph background rectangles
+  * feat: allow configuring terminal pane borders
+
+-------------------------------------------------------------------
+Thu Jul 30 12:45:19 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.5.0:
+  * Epoch 1.5.0 version update
+  * i18n: translation updates from weblate
+  * feat: allow configuring terminal pane borders
+
+-------------------------------------------------------------------
+Thu Jul 23 06:28:18 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.4.0:
+  * Epoch 1.4.0 version update
+
+-------------------------------------------------------------------
+Wed Jul 15 08:19:41 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.3.0:
+  * fix: only PaneClicked events change focus
+  * Epoch 1.3.0 version update
+  * chore: update libcosmic
+  * Remove background shading when not focused
+  * chore: update libcosmic
+  * feat: blur
+  * fix: accumulate fractional wheel-line scroll deltas
+
+-------------------------------------------------------------------
+Tue Jul 14 07:43:58 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.2.0:
+  * Epoch 1.2.0 version update
+  * fix: report effective OSC 11 background
+  * feat: report focus in and out events
+  * i18n: translation updates from weblate
+
+-------------------------------------------------------------------
+Wed Jun 24 22:22:48 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.1.0:
+  * Epoch 1.1.0 version update
+  * fix: avoid re-reading system theme from disk on every menu bar render
+
+-------------------------------------------------------------------
+Thu Jun 11 12:05:39 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.16:
+  * Epoch 1.0.16 version update
+
+-------------------------------------------------------------------
+Wed Jun 03 20:26:02 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.15:
+  * Epoch 1.0.15 version update
+  * keybindings: Fix terminal undo
+  * chore: update libcosmic
+  * Set scrolling_history to 100,000
+  * fix: avoid unnecessary shape-until-cursor at start-up
+  * fix: send the correct up/down code in APP_CURSOR mode
+  * fix: do not drop scrolling events from smooth scrolling mice
+  * chore: support more named keys for keyboard shortcuts
+  * fix(libcosmic): fix item highlight in wayland context menu
+  * feat: option to open new windows in the current directory
+
+-------------------------------------------------------------------
 Mon Jun 01 13:34:28 UTC 2026 - rrahl0@opensuse.org
 
 - Update to version 1.0.14:

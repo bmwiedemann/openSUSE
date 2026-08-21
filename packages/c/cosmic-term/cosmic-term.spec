@@ -18,7 +18,7 @@
 
 %define         appid com.system76.CosmicTerm
 Name:           cosmic-term
-Version:        1.0.14
+Version:        1.6.0
 Release:        0
 Summary:        COSMIC terminal emulator
 License:        GPL-3.0-only
