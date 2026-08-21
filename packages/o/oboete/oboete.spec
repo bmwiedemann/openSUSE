@@ -18,7 +18,7 @@
 
 %define         appid dev.mariinkys.Oboete
 Name:           oboete
-Version:        0.2.4
+Version:        0.2.6
 Release:        0
 Summary:        A simple flashcards application for the COSMIC desktop
 License:        GPL-3.0-only
