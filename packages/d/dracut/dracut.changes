@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Aug 19 11:25:05 UTC 2026 - antonio.feijoo@suse.com
+
+- Update to version 112+suse.34.g35e16b7:
+  * fix(devicetree-firmware): include Qualcomm X2 laptop model specific firmwares
+  * fix(devicetree-firmware): include soc specific firmwares in install_generic() (bsc#1267865)
+  * refactor(devicetree-firmware): make looping over fw_dir top-level loop
+  * fix(resume): handle noresume kernel command line option (bsc#1274588)
+  * fix(resume): actually get value from resume= kernel command line option
+
+-------------------------------------------------------------------
 Tue Aug 11 08:51:45 UTC 2026 - antonio.feijoo@suse.com
 
 - Update to version 112+suse.29.gc0c5e1d
