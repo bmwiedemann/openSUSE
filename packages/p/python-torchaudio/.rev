@@ -1,0 +1,24 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>deb62d8f9c1f256884ed4487db375ea2</srcmd5>
+    <version>2.11.0</version>
+    <time>1787324443</time>
+    <user>anag_factory</user>
+    <comment>New package python-torchaudio for openSUSE:Factory from science:machinelearning (ComfyUI cone). pluskalm is the science:machinelearning package maintainer.
+
+INTERDEPENDENT REQUESTS - please stage together with the ComfyUI cone (see comment on sr#1372800).
+
+Fri Aug 21 08:56:25 UTC 2026 - Martin Pluskal &lt;mpluskal@suse.com&gt;
+
+- Initial package of python-torchaudio 2.11.0:
+  * Audio signal processing for PyTorch (CPU-only)
+  * Upstream 2.11.0 is the latest release and is documented as
+    compatible with later torch versions (Factory python-torch
+    2.12.0); there is no 2.12.0 torchaudio tag
+  * Builds the C++ extensions (lfilter, RNNT, forced_align,
+    overdrive) with USE_CUDA=0; CUDA CTC decoder is not built
+  * Set PYTHONPATH so PEP 517 can import tools/setup_helpers
+</comment>
+    <requestid>1372805</requestid>
+  </revision>
+</revisionlist>

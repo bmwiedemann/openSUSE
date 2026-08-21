@@ -1,0 +1,4 @@
+<package name="python-torchaudio" project="openSUSE:Factory">
+  <title>Audio signal processing for PyTorch</title>
+  <description>TorchAudio applies PyTorch to the audio domain with autograd-friendly transforms and C++ extensions.</description>
+</package>
