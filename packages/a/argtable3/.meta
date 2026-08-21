@@ -1,0 +1,6 @@
+<package name="argtable3" project="openSUSE:Factory">
+  <title>Command-line parsing library that parses GNU-style command-line options</title>
+  <description>A single-file, ANSI C, command-line parsing library that parses GNU-style
+command-line options.</description>
+  <url>https://www.argtable.org/</url>
+</package>
