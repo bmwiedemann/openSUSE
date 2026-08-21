@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Aug 21 10:15:37 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.6.1:
+  * UniRateBackend exchange-rate backend for UniRateAPI.
+    Configure via EXCHANGE_BACKEND =
+    "djmoney.contrib.exchange.backends.UniRateBackend" and set
+    UNIRATE_ACCESS_KEY.
+  * Upsert rates instead of deleting and recreating them
+
+-------------------------------------------------------------------
 Sun Mar 15 14:44:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.6.0:

@@ -160,4 +160,17 @@
   * Python 3.8 and 3.9 support was dropped to give way for typehint</comment>
     <requestid>1339101</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>1b76c767531abd388a8909da9cc3ae08</srcmd5>
+    <version>3.6.1</version>
+    <time>1787324408</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.6.1:
+  * UniRateBackend exchange-rate backend for UniRateAPI.
+    Configure via EXCHANGE_BACKEND =
+    &quot;djmoney.contrib.exchange.backends.UniRateBackend&quot; and set
+    UNIRATE_ACCESS_KEY.
+  * Upsert rates instead of deleting and recreating them</comment>
+    <requestid>1372806</requestid>
+  </revision>
 </revisionlist>

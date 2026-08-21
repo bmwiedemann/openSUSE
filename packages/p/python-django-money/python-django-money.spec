@@ -17,7 +17,7 @@
 
 
 Name:           python-django-money
-Version:        3.6.0
+Version:        3.6.1
 Release:        0
 Summary:        Django support for using money and currency fields
 License:        BSD-3-Clause
