@@ -32,7 +32,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-Pygments%{psuffix}
-Version:        2.20.0
+Version:        2.21.0
 Release:        0
 Summary:        A syntax highlighting package written in Python
 License:        BSD-2-Clause
@@ -79,8 +79,6 @@ source code. Highlights are:
 
 %prep
 %autosetup -n pygments-%{version} -p1
-# Remove unneeded executable bit
-chmod -x pygments/formatters/_mapping.py pygments/lexers/gsql.py
 
 %if !%{with test}
 %build

@@ -657,4 +657,12 @@
     <comment>- update to 2.20.0 (bsc#1260796, CVE-2026-4539):</comment>
     <requestid>1343910</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>edf9c2910504d06ee5d90e1d5f549a62</srcmd5>
+    <version>2.21.0</version>
+    <time>1787323796</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1371699</requestid>
+  </revision>
 </revisionlist>
