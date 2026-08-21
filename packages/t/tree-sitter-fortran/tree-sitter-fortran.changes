@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Thu Aug 20 08:53:50 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Recreate the package git repo with sha256 object format so it
+  matches tree-sitter/_ObsPrj (OBS scmsync was broken: mismatched
+  algorithms, client sha256 vs server sha1)
+- Switch the python subpackage to the loader binding (same pattern
+  as tree-sitter-python):
+  * Drop %treesitter_python_build and the C-extension Python
+    BuildRequires (devel/installer/pip/setuptools/wheel)
+  * Keep %treesitter_python_install: install upstream's
+    pure-Python package files and generate a _binding.py that
+    loads libtree-sitter-fortran.so, so the parser is not
+    compiled a second time
+  * Pin Requires: %{name} = %{version}-%{release}
+  * Functional %check parses Fortran source through the shim
+- New openSUSE:Factory package (Fortran grammar +
+  python3-tree-sitter-fortran), needed for python-graphifyy
+- Suggests python-tree-sitter >= 0.22 instead of Requires,
+  matching tree-sitter-bash, so ring1/product installcheck
+  does not demand a non-ring package.
+
+-------------------------------------------------------------------
+Mon Jul 27 08:36:27 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package of tree-sitter-fortran 0.6.0:
+  * Fortran grammar library for the tree-sitter parsing
+    framework (libtree-sitter-fortran.so grammar module)
+  * Python binding built from the bundled bindings/python as
+    pythonXYZ flavor subpackages via the shared
+    %treesitter_python_build/_install macros

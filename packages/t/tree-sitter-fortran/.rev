@@ -1,0 +1,22 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e4f74438bd39e93815ddef102f4af06b</srcmd5>
+    <version>0.6.0</version>
+    <time>1787323960</time>
+    <user>anag_factory</user>
+    <comment>NEW PACKAGE - not yet in openSUSE:Factory.
+
+- Suggests python-tree-sitter &gt;= 0.22 instead of Requires,
+  matching tree-sitter-bash, so ring1/product installcheck
+  does not demand a non-ring package.
+
+Fortran grammar + python3-tree-sitter-fortran loader subpackage.
+Supersedes sr#1372090.
+
+INTERDEPENDENT REQUESTS - please stage together:
+ * sr#1372054 - tree-sitter (python binding macros)
+ * sibling grammar python-binding SRs already in flight
+Needed for python-graphifyy.</comment>
+    <requestid>1372208</requestid>
+  </revision>
+</revisionlist>
