@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Wed Aug 19 11:37:55 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.6.0:
+  * i18n: translation updates from weblate
+
+-------------------------------------------------------------------
+Thu Jul 30 12:44:33 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.5.0:
+  * i18n: translation updates from weblate
+
+-------------------------------------------------------------------
+Wed Jul 15 08:19:09 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.3.0:
+  * chore: update libcosmic
+  * fix: update iced
+  * fix: handling of simultaneous surfaces and dummy surface
+  * refactor: use margin instead of padding on surface
+  * chore: update deps and improve corner radius
+  * chore: update deps
+  * fix: cleanup osd using helper
+  * feat: improve handling of blur on creation and tracking of overlaps
+  * feat: apply transparency to the colors
+  * feat: blur for osd indicator surfaces
+
+-------------------------------------------------------------------
+Wed Jun 24 20:25:25 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.1.0:
+  * i18n: translation updates from weblate
+  * fix(audio): accessing sink volume array when checking source volume
+  * feat(sound): use cosmic-settings-daemon's varlink API
+
+-------------------------------------------------------------------
+Wed Jun 03 19:45:20 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.15:
+  * chore: update cosmic-settings-daemon-subsription (#204)
+
+-------------------------------------------------------------------
 Mon Jun 01 13:06:16 UTC 2026 - rrahl0@opensuse.org
 
 - Update to version 1.0.14:
