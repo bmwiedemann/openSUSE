@@ -71,4 +71,22 @@
     <comment></comment>
     <requestid>1352305</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f4982762b69743174bde946e35fb36f3</srcmd5>
+    <version>5.17.0</version>
+    <time>1787324187</time>
+    <user>anag_factory</user>
+    <comment>Emergency Security Update
+
+- Update to version 5.17.0:
+  * Full changes:
+    https://docs.luanti.org/about/changelog/#5160--5170
+
+- Fix critial security vulnerability GHSA-5373-9cjp-qfmg
+(No CVE/BSC ID available at the moment, for more info, read: https://github.com/luanti-org/luanti/security/advisories/GHSA-5373-9cjp-qfmg)
+
+- Fix security vulnerability GHSA-j2v5-g52g-685j
+(No CVE/BSC ID available at the moment, for more info, read: https://github.com/luanti-org/luanti/security/advisories/GHSA-j2v5-g52g-685j)</comment>
+    <requestid>1372674</requestid>
+  </revision>
 </revisionlist>

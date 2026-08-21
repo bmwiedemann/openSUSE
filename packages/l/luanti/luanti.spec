@@ -22,7 +22,7 @@
 %bcond_without redis
 %bcond_without postgresql
 Name:           luanti
-Version:        5.16.1
+Version:        5.17.0
 Release:        0
 Summary:        A InfiniMiner/Minecraft inspired game
 License:        CC-BY-SA-3.0 AND LGPL-2.1-or-later
@@ -257,7 +257,6 @@ fi
 %files data
 %license LICENSE.txt
 %doc .github/CONTRIBUTING.md
-%doc .github/SECURITY.md
 %doc %{_docdir}/%{name}/
 %{_datadir}/%{name}/
 
