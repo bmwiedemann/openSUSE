@@ -28,4 +28,18 @@
     <comment>- Remove redundant Neovim workaround</comment>
     <requestid>1336839</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>ec7aface983af9b6f95102659f6ae49d</srcmd5>
+    <version>1.1.0</version>
+    <time>1787323951</time>
+    <user>anag_factory</user>
+    <comment>- Convert the Python binding to the shared %treesitter_python_* macros
+  (flavor subpackages; binary names/contents unchanged).
+- Suggests python-tree-sitter instead of Requires, matching tree-sitter-bash,
+  so ring1 installcheck does not demand a non-ring package.
+
+INTERDEPENDENT REQUESTS - please stage together:
+ * sr#1372054 - tree-sitter (new Python binding macros this set needs)</comment>
+    <requestid>1372192</requestid>
+  </revision>
 </revisionlist>
