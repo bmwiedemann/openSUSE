@@ -18,10 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-anthropic
-Version:        0.125.0
+Version:        1.0.0
 Release:        0
 Summary:        The official Python library for the Anthropic API
-License:        MIT
+# Legal-Review-Notice: ships vendored httpx_aiohttp (BSD-3-Clause)
+# under src/anthropic/_vendor; the SDK itself is MIT.
+License:        BSD-3-Clause AND MIT
 URL:            https://github.com/anthropics/anthropic-sdk-python
 Source:         https://files.pythonhosted.org/packages/source/a/anthropic/anthropic-%{version}.tar.gz
 BuildRequires:  %{python_module hatch-fancy-pypi-readme}
@@ -30,9 +32,8 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-anyio >= 3.5.0
-Requires:       python-distro >= 1.7.0
 Requires:       python-docstring-parser >= 0.15
-Requires:       python-httpx >= 0.25.0
+Requires:       python-httpx2 >= 2.0.0
 Requires:       python-jiter >= 0.4.0
 Requires:       python-pydantic >= 1.9.0
 Requires:       python-sniffio >= 1
@@ -40,9 +41,8 @@ Requires:       python-typing_extensions >= 4.14
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module anyio >= 3.5.0}
-BuildRequires:  %{python_module distro >= 1.7.0}
 BuildRequires:  %{python_module docstring-parser >= 0.15}
-BuildRequires:  %{python_module httpx >= 0.25.0}
+BuildRequires:  %{python_module httpx2 >= 2.0.0}
 BuildRequires:  %{python_module jiter >= 0.4.0}
 BuildRequires:  %{python_module pydantic >= 1.9.0}
 BuildRequires:  %{python_module pytest}
@@ -53,12 +53,14 @@ BuildRequires:  %{python_module typing_extensions >= 4.14}
 
 %description
 The Anthropic Python library provides convenient access to the
-Anthropic REST API from any Python 3.9+ application. It includes type
+Anthropic REST API from any Python 3.10+ application. It includes type
 definitions for all request params and response fields, and offers both
-synchronous and asynchronous clients powered by httpx.
+synchronous and asynchronous clients powered by httpx2.
 
 %prep
 %autosetup -p1 -n anthropic-%{version}
+# Distinct basename so %%license does not overwrite the SDK MIT LICENSE.
+cp -a src/anthropic/_vendor/httpx_aiohttp/LICENSE httpx_aiohttp.LICENSE
 
 %build
 %pyproject_wheel
@@ -84,8 +86,8 @@ synchronous and asynchronous clients powered by httpx.
 %pytest -o addopts="" -W default --noconftest tests/test_models.py tests/test_qs.py tests/test_required_args.py tests/test_extract_files.py tests/test_utils
 
 %files %{python_files}
-%license LICENSE
-%doc README.md
+%license LICENSE httpx_aiohttp.LICENSE
+%doc README.md MIGRATION.md
 %{python_sitelib}/anthropic
 %{python_sitelib}/anthropic-%{version}.dist-info
 

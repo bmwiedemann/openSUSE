@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Aug 21 05:38:01 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.0.0:
+  * Switch the HTTP client from python-httpx to
+    python-httpx2 >= 2.0.0; passing an httpx.Client now
+    raises TypeError
+  * Drop the python-distro runtime dependency
+  * Raise the Python floor from 3.9 to 3.10
+  * Remove the legacy Text Completions API
+    (client.completions.create and HUMAN_PROMPT/AI_PROMPT)
+  * .with_raw_response now returns APIResponse /
+    AsyncAPIResponse (async parse/read/text/json are
+    coroutines; .text and .content became methods)
+  * Bedrock clients now require a region; unknown
+    streaming events are skipped
+  * Stop warning about output_format= on the parse,
+    stream and tool_runner helpers
+  * Vendor httpx_aiohttp under anthropic/_vendor;
+    License is now MIT AND BSD-3-Clause
+  * Ship MIGRATION.md as documentation
+
+-------------------------------------------------------------------
 Thu Aug 20 05:46:46 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.125.0:
