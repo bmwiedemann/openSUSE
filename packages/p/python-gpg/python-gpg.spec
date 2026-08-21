@@ -1,7 +1,7 @@
 #
 # spec file for package python-gpg
 #
-# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 # Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
@@ -37,6 +37,7 @@ Patch2:         build-pep621-pyproject.patch
 %ifarch %{ix86} %{arm}
 Patch3:         gpgmepy-2.0.0-swig-32-bit.patch
 %endif
+Patch4:         gpgmepy-2.0.0-swig-4-5-0.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 65.2.0}

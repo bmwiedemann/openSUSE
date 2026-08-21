@@ -29,4 +29,12 @@ v3: 32 bit build fixed</comment>
     <comment></comment>
     <requestid>1295252</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>9ac316857a9db14fb1b409a70ff47b3c</srcmd5>
+    <version>2.0.0</version>
+    <time>1787323806</time>
+    <user>anag_factory</user>
+    <comment>fix build with swig 4.5.0 (forwarded request 1371251 from AndreasStieger)</comment>
+    <requestid>1371252</requestid>
+  </revision>
 </revisionlist>

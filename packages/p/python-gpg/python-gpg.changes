@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug 14 18:09:48 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fix build with swig 4.5.0 adding gpgmepy-2.0.0-swig-4-5-0.patch
+
+-------------------------------------------------------------------
 Wed Jul 23 09:06:16 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fixup of previous commit to really fix the build on armv6
