@@ -18,7 +18,7 @@
 
 %define         appid com.system76.CosmicAppLibrary
 Name:           cosmic-app-library
-Version:        1.0.14
+Version:        1.6.0
 Release:        0
 Summary:        A template for getting started with COSMIC
 License:        GPL-3.0-only
