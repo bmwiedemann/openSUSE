@@ -292,4 +292,41 @@
     longer works since May 4th, 2026 (deprecation notice).</comment>
     <requestid>1360754</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>500286391ce679b8c523c27066cb8212</srcmd5>
+    <version>65.19.1</version>
+    <time>1787324403</time>
+    <user>anag_factory</user>
+    <comment>- update to 65.19.1:
+  * IdP: Fixed an incorrect URL reverse in the OpenID Connect
+    authorization template. It silently resolved to an empty form
+    action (posting back to the same URL), so the flow kept
+    working regardless.
+  * IdP: Redirectable errors from the authorization endpoint were
+    not delivered to clients registered with an app native (non-
+    http(s)) redirect_uri.
+  * IdP: The OpenID Connect RP-initiated logout endpoint honored
+    any post_logout_redirect_uri that could not be tied to a
+    registered client, making it an open redirector. It now only
+    redirects to URIs that can be verified as registered. The
+    impact is low: no tokens or secrets are exposed, it merely
+    allowed redirecting the user agent to an arbitrary URL after
+    logout.
+  * Officially support Django 6.1.
+  * IdP: Added support for Client ID Metadata Document (CIMD).
+  * IdP: Added IDP_OIDC_REFRESH_TOKEN_EXPIRES_IN, allowing
+    refresh tokens to expire. Combined with
+    IDP_OIDC_ROTATE_REFRESH_TOKEN, this results in a sliding
+    (inactivity) window. Defaults to None (no expiry), preserving
+    the previous behavior. Whenever a refresh token carries an
+    expiry, its remaining lifetime is returned to the client as
+    refresh_expires_in in the token response.
+  * IdP: Added an oidc_cleartokens management command that
+    deletes expired OpenID Connect tokens.
+  * IdP: Added key rotation support via IDP_OIDC_PRIVATE_KEYS, as
+    well as cache control for the JWKS endpoint.
+  * IdP: Added RFC 7662 OAuth 2.0 Token Introspection support.
+  * The jwt and cryptography dependencies are now imported</comment>
+    <requestid>1372771</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Fri Aug 21 09:57:23 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 65.19.1:
+  * IdP: Fixed an incorrect URL reverse in the OpenID Connect
+    authorization template. It silently resolved to an empty form
+    action (posting back to the same URL), so the flow kept
+    working regardless.
+  * IdP: Redirectable errors from the authorization endpoint were
+    not delivered to clients registered with an app native (non-
+    http(s)) redirect_uri.
+  * IdP: The OpenID Connect RP-initiated logout endpoint honored
+    any post_logout_redirect_uri that could not be tied to a
+    registered client, making it an open redirector. It now only
+    redirects to URIs that can be verified as registered. The
+    impact is low: no tokens or secrets are exposed, it merely
+    allowed redirecting the user agent to an arbitrary URL after
+    logout.
+  * Officially support Django 6.1.
+  * IdP: Added support for Client ID Metadata Document (CIMD).
+  * IdP: Added IDP_OIDC_REFRESH_TOKEN_EXPIRES_IN, allowing
+    refresh tokens to expire. Combined with
+    IDP_OIDC_ROTATE_REFRESH_TOKEN, this results in a sliding
+    (inactivity) window. Defaults to None (no expiry), preserving
+    the previous behavior. Whenever a refresh token carries an
+    expiry, its remaining lifetime is returned to the client as
+    refresh_expires_in in the token response.
+  * IdP: Added an oidc_cleartokens management command that
+    deletes expired OpenID Connect tokens.
+  * IdP: Added key rotation support via IDP_OIDC_PRIVATE_KEYS, as
+    well as cache control for the JWKS endpoint.
+  * IdP: Added RFC 7662 OAuth 2.0 Token Introspection support.
+  * The jwt and cryptography dependencies are now imported
+    lazily. Deployments that register JWT-verifying providers
+    (e.g. Google, or OpenID Connect) - for example, no longer pay
+    their memory cost (roughly 8-10 MiB per process) unless a
+    token is actually verified.
+  * On the "Change Password" form, the "Forgot password?" link
+    has been moved into the password field help text, and the
+    "Reauthenticate" form now shows it too. As on the login form,
+    the link can be customized via the
+    account/password_reset_help_text.html template.
+  * IdP: App native URLs wouldn't be accepted as
+    post_logout_redirect_uri.
+  * IdP: Fix IDP_OIDC_ID_TOKEN_EXPIRES_IN always returning the
+    default value, even if set in settings.
+
+-------------------------------------------------------------------
 Sat Jun 20 17:53:06 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 65.18.0:
