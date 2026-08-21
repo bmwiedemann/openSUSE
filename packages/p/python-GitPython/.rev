@@ -1127,4 +1127,12 @@ bsc#1273781, bsc#1273783, bsc#1273785, bsc#1278787):
 </comment>
     <requestid>1371034</requestid>
   </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>adff5ced12d538fc522f3973677ca925</srcmd5>
+    <version>3.1.59</version>
+    <time>1787323811</time>
+    <user>anag_factory</user>
+    <comment>Update bug references with CVE numbers and new bugs</comment>
+    <requestid>1372176</requestid>
+  </revision>
 </revisionlist>

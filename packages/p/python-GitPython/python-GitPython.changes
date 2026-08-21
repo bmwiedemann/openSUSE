@@ -14,8 +14,10 @@ Wed Aug 12 13:15:02 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 -------------------------------------------------------------------
 Wed Aug  5 08:19:15 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
-- Update to 3.1.58 (fixes VUL-0: bsc#1273775, bsc#1273779,
-  bsc#1273781, bsc#1273783, bsc#1273785, bsc#1278787):
+- Update to 3.1.58 (fixes CVE-2026-76222 (bsc#1275750),
+  CVE-2026-76221 (bsc#1275749), CVE-2026-76220 (bsc#1275748),
+  CVE-2026-76219 (bsc#1275747), CVE-2026-76218 (bsc#1275746),
+  CVE-2026-76217 (bsc#1275745)):
   * test: allow Python startup before timeout
   * Resolve Windows hook Bash through PATH
   * Revert "Resolve Windows hook Bash through PATH"
@@ -32,7 +34,8 @@ Wed Aug  5 08:19:15 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 -------------------------------------------------------------------
 Tue Aug 04 12:22:13 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
-- Update to version 3.1.57 (fixes VUL-0: bsc#1273547, bsc#1273546):
+- Update to version 3.1.57 (fixes CVE-2026-73619 (bsc#1275755),
+  CVE-2026-73620 (bsc#1275756)):
   * Merge gitdb and smmap into the GitPython repository
   * build(deps): bump actions/setup-python from 6 to 7
   * build(deps): bump the pre-commit group with 2 updates
@@ -48,7 +51,7 @@ Tue Aug 04 12:22:13 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 -------------------------------------------------------------------
 Sat Jul 25 17:39:39 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
-- Update to version 3.1.56 (fixes VUL-0: bsc#1273545):
+- Update to version 3.1.56 (fixes CVE-2026-73621 (bsc#1275757)):
   * prepare next release
   * fix: reject unsafe output options in Commit.count
   * Stop testing experimental 3.13t
@@ -120,10 +123,10 @@ Sat Jul 25 17:32:21 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 - Update to version 3.1.56:
   - Add support for Python 3.15
   - fix: reject unsafe output options in Commit.count
-- Update to version 3.1.55 (fixes VUL-0: bsc#1273087):
+- Update to version 3.1.55 (fixes CVE-202673622 (bsc#1275751)):
   - fix: prevent environment expansion in remote URLs
-- Update to version 3.1.54 (fixes VUL-0: bsc#1273086, bsc#1273088,
-  bsc#1273085):
+- Update to version 3.1.54 (fixes VUL-0: CVE-2026-73624 (bsc#1275753),
+  CVE-2026-73623 (bsc#1275752), CVE-2026-73625 (bsc#1275754)):
   - Harden unsafe Git option validation
 - Update to version 3.1.53 (fixes VUL-0: CVE-2026-69097 (bsc#1273414)):
   - feat(submodule): add deinit method to Submodule (#2014)
