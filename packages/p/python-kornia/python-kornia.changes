@@ -1,0 +1,24 @@
+-------------------------------------------------------------------
+Fri Aug 21 10:16:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- ExclusiveArch %%{rust_tier1_arches} to match python-kornia-rs, so
+  riscv64/i586/armv7l stay excluded rather than unresolvable.
+
+-------------------------------------------------------------------
+Fri Aug 21 10:08:03 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- ExcludeArch %%{ix86} %%{arm} to match Factory python-torch, so
+  i586/armv7l stay excluded rather than unresolvable.
+
+-------------------------------------------------------------------
+Fri Aug 21 08:50:08 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package of python-kornia 0.8.3:
+  * Differentiable computer vision library for PyTorch
+  * New in 0.8.3: XFeat and ALIKED feature detectors,
+    VisualPrompter batched inference, float16/bfloat16 support,
+    faster depth_to_normals and point transforms, MPS and ONNX
+    export fixes
+  * Requires python-kornia-rs >= 0.1.9, python-packaging and
+    python-torch >= 2.0
+
