@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Fri Aug 21 10:08:11 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- ExcludeArch %%{ix86} %%{arm} to match Factory python-torch, so
+  i586/armv7l stay excluded rather than unresolvable.
+
+-------------------------------------------------------------------
+Fri Aug 21 08:56:25 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package of python-spandrel 0.4.2:
+  * Load and run pre-trained PyTorch image models with automatic
+    architecture detection from .pth / safetensors files
+  * New in 0.4.2: FDAT and AuraSR architectures, bfloat16 for DAT
+    and HAT, SwinIR DiffBIR v1.0 Stage-1 SR fix
+  * %check imports torchvision, which needs python-Pillow
+  * Declare runtime Requires (generator misses them) and strip
+    unused shebangs
+

@@ -1,0 +1,4 @@
+<package name="python-spandrel" project="openSUSE:Factory">
+  <title>Load and run pre-trained PyTorch image models</title>
+  <description>Spandrel loads pre-trained PyTorch image models and auto-detects architecture from .pth / safetensors files.</description>
+</package>
