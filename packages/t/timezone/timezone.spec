@@ -1,7 +1,7 @@
 #
 # spec file for package timezone
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,7 +23,7 @@ Name:           timezone
 Version:        2026c
 Release:        0
 Summary:        Time Zone Descriptions
-License:        BSD-3-Clause AND SUSE-Public-Domain
+License:        BSD-3-Clause AND LicenseRef-SUSE-Public-Domain
 Group:          System/Base
 URL:            https://www.iana.org/time-zones
 Source:         https://www.iana.org/time-zones/repository/releases/tzdata%{version}.tar.gz
@@ -64,8 +64,13 @@ LC_ALL=POSIX
 AREA=%{AREA}
 ZONE=%{ZONE}
 export AREA LANG LC_ALL ZONE
+%if 0%{?suse_version} < 1699
+REDO=posix_right
+%else
+REDO=posix_only
+%endif
 %make_build TZDIR=%{_datadir}/zoneinfo CC="gcc" CFLAGS="%{optflags} -DHAVE_GETTEXT=1 -DTZDEFAULT='\"%{_sysconfdir}/localtime\"' -DTM_GMTOFF=tm_gmtoff -DTM_ZONE=tm_zone -Dlint" AWK=awk BUGEMAIL="opensuse-support@opensuse.org" KSHELL=/bin/sh
-%make_build TZDIR=zoneinfo AWK=awk zones
+%make_build REDO=$REDO TZDIR=zoneinfo AWK=awk zones
 # Generate posixrules
 ./zic -b fat -y ./yearistype -d zoneinfo -p %{AREA}/%{ZONE}
 
@@ -73,6 +78,9 @@ export AREA LANG LC_ALL ZONE
 mkdir -p %{buildroot}%{_datadir}/zoneinfo
 cp -a zoneinfo %{buildroot}%{_datadir}/zoneinfo/posix
 cp -al %{buildroot}%{_datadir}/zoneinfo/posix/. %{buildroot}%{_datadir}/zoneinfo
+%if 0%{?suse_version} < 1699
+cp -a zoneinfo-leaps %{buildroot}%{_datadir}/zoneinfo/right
+%endif
 mkdir -p %{buildroot}%{_sysconfdir}
 rm -f  %{buildroot}%{_sysconfdir}/localtime
 rm -f  %{buildroot}%{_datadir}/zoneinfo/posixrules
