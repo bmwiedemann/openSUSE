@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Aug 20 08:55:20 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Build the upstream Python binding as pythonXYZ flavor
+  subpackages: the shared %treesitter_python_build/_install
+  macros plus the singlespec python_subpackage_only template
+- Suggests python-tree-sitter instead of Requires, matching
+  tree-sitter-bash, so ring1 installcheck does not demand a
+  non-ring package.
+
+-------------------------------------------------------------------
 Mon Feb  9 13:42:14 UTC 2026 - Björn Bidar <bjorn.bidar@thaodan.de>
 
 - Remove redundant Neovim workaround
