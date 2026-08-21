@@ -189,4 +189,16 @@
   * Fix Atlassian incident checks</comment>
     <requestid>1367889</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>08ce3d62a91b3415592de1dd0f3ec35b</srcmd5>
+    <version>4.5.0</version>
+    <time>1787324402</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.5.0:
+  * Fix #758 -- Support Django 6.1 MAILERS setting in Mail health
+    check
+- update to 4.4.4:
+  * Fix #743 -- Add redis label to JSON views</comment>
+    <requestid>1372752</requestid>
+  </revision>
 </revisionlist>

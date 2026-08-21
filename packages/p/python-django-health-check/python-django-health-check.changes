@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Aug 21 09:56:40 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.5.0:
+  * Fix #758 -- Support Django 6.1 MAILERS setting in Mail health
+    check
+- update to 4.4.4:
+  * Fix #743 -- Add redis label to JSON views
+
+-------------------------------------------------------------------
 Mon Jul 27 05:52:13 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 4.4.3:
