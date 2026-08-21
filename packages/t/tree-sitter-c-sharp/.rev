@@ -174,4 +174,21 @@
   - feat: collection expression support (#402)</comment>
     <requestid>1350405</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>b1010b5ed7c3bb0a2e52f1da2af22f1b</srcmd5>
+    <version>0.23.5</version>
+    <time>1787323942</time>
+    <user>anag_factory</user>
+    <comment>- Build the upstream Python binding as pythonXYZ flavor
+  subpackages: the shared %treesitter_python_build/_install
+  macros plus the singlespec python_subpackage_only template
+- Suggests python-tree-sitter instead of Requires, matching
+  tree-sitter-bash, so ring1 installcheck does not demand a
+  non-ring package
+
+INTERDEPENDENT REQUESTS - please stage together:
+ * sr#1372054 - tree-sitter (new Python binding macros this set needs)
+</comment>
+    <requestid>1372186</requestid>
+  </revision>
 </revisionlist>
