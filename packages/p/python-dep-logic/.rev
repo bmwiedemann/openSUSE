@@ -96,4 +96,17 @@
   * Explicitly check for invalid versions in more places</comment>
     <requestid>1359231</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a8ab8eb843bd0adfef90e08eab66c407</srcmd5>
+    <version>0.7.1</version>
+    <time>1787324476</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.7.1:
+  * Return AnyMarker in EqualityMarkerUnion for complement case
+    and add corresponding test
+- update to 0.7.0:
+  * Update dependencies and improve type hints across the
+    codebase</comment>
+    <requestid>1372809</requestid>
+  </revision>
 </revisionlist>
