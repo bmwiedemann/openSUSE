@@ -1,0 +1,324 @@
+-------------------------------------------------------------------
+Wed Aug 19 11:38:20 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.6.0:
+  * feat: handle playback specific sound settings
+  * refactor(audio): make events backward compatible
+  * fix(battery): watch AC plug events from line power device via upower
+  * perf: add function for getting shared system dbus connection
+  * fix: panic on -1 max brightness value
+
+-------------------------------------------------------------------
+Thu Jul 30 12:45:07 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.5.0:
+  * fix(brightness): drop cached DDC handles when idle
+
+-------------------------------------------------------------------
+Thu Jul 23 06:28:07 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.4.0:
+  * chore(debian): make qt5ct and qt6ct optional
+  * chore: clippy
+  * chore(cosmic-pipewire): split up registry_listener
+  * feat(audio-server): volume step config
+
+-------------------------------------------------------------------
+Wed Jul 15 08:19:32 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.3.0:
+  * fix(theme): unset flatpak override for QT_QPA_PLATFORMTHEME This override is not necessary and sets the wrong value.
+  * Use `cosmic-keyboard-layout-unstable-v1`
+  * Run `cargo fmt`
+  * fix: update iced
+  * chore: udpate deps
+  * feat: update pipewire/libspa to 0.10.0
+
+-------------------------------------------------------------------
+Tue Jul 14 07:43:39 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.2.0:
+  * fix(cosmic-pipewire): retry pipewire connection on connection failure
+
+-------------------------------------------------------------------
+Wed Jun 24 22:17:15 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.1.0:
+  * feat: graceful restart with SIGHUP
+  * fix(audio-server): sync source/sink volume/balance on default node change
+  * fix: clear routes and profiles on 0 index
+  * chore: revert profile enumeration request after setting profile
+  * fix(audio-server): on setting headphone profile, attempt to active available internal mic route
+  * fix(audio-server): on headset profile set, set route if profile is already active
+  * fix(cosmic-pipewire): enumerate profiles after setting a profile
+  * fix(audio-server): disable headset profile detection for bluetooth devices
+  * fix(cosmic-pipewire): route capacity panic
+  * fix(cosmic-pipewire): request to enumerate routes after setting route
+  * chore(cosmic-pipewire): add audio-backend target to logs
+  * fix(cosmic-pipewire): check route::device when getting active route by card profile device
+  * chore(cosmic-pipewire): clear routes when route index 0 is received
+  * chore: log volume property updates to pipewire
+  * fix: speaker route after headphone profile apply
+  * fix(audio-server): always emit ActiveRoute signals to fix device names
+  * perf(audio): set device profiles internally with libpipewire
+  * refactor(audio-server): add Select{Headphone,Headset}Profile methods
+  * fix(audio-server): ensure headset profile route is a source
+  * fix(audio-server): missing argument to cosmic-osd
+  * feat(audio-server): pass better arguments to `cosmic-osd confirm-headphones`
+  * chore: clippy suggestions
+  * feat(audio-server): add SetRoute varlink method
+  * feat: update zlink to 0.5.0
+  * feat: update MSRV to Rust 1.93
+  * chore(audio-server): no need to clear default sink/source node name
+  * fix(audio-server): handle default source/sink event even if name is unchanged
+  * fix(cosmic-pipewire): emit default source/sink event even if name is the same
+  * chore(audio-backend): no need to clear active sink/source name
+  * fix(audio-backend): on default node set, check before assuming a node is a source
+  * Revert "fix(audio-server): only show dialog for physical plugs (no bt)"
+  * Revert "fix(audio-server): detect when a speaker route changes to a headphone"
+  * fix(audio-backend): avoid node volume overwrite if set before node was available
+  * fix(audio-backend): adjust profile priority 2/2
+  * fix(audio-backend): adjust profile priority 1/2
+  * fix(audio-server): detect when a speaker route changes to a headphone
+  * fix(audio-server): only show dialog for physical plugs (no bt)
+  * fix(audio-server): volume set to 0 when a volume property update is empty
+  * fix(audio-server): active profile messages not being emitted
+  * fix(cosmic-pipewire): RemoveDevice message not emitted
+  * chore(audio-client): re-export zlink
+  * chore(audio-server): remove dbg logging
+  * fix(audio-server): reset headset check when headset route is unplugged
+  * fix(audio-server): do not skip headset detection for devices available on startup
+  * chore: lower delay for ignore of device_headset_check to 1 second after start
+  * chore: add device to log
+  * chore: add a few more debug logs
+  * fix(audio-server): select headset route which has headset port type
+  * chore: add debug logs
+  * fix(audio-server): also consider source routes when detecting headset profiles
+  * fix(audio-server): use port type as fallback for headset detection
+  * fix(audio): round volume values to fix volume raise shortcut
+  * refactor(varlink-server): prefix audio interface methods
+  * tests(audio-server): add dev-dependencies needed to run tests
+  * build(debian): add libclang-dev to Build-Depends
+  * feat: impl varlink service w/ audio APIs
+
+-------------------------------------------------------------------
+Mon Jun 01 13:24:20 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.14:
+  * feat: support for external monitors using ddc-ci
+  * feat: support external monitors using the ddc/ci crate
+
+-------------------------------------------------------------------
+Sun Apr 12 16:11:13 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.9:
+  * fix: allow modifier-less shortcut bindings for non-typing keys
+  * feat: generate QPalette for wider Qt compatibility
+  * chore: updates for iced 0.14 rebase
+  * fix(cosmic-theme): do not reset VS code config when unsetting theme configs (#133)
+
+-------------------------------------------------------------------
+Tue Feb 24 20:53:34 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.8:
+  * feat: support Qt theme generation with qt5ct & qt6ct
+
+-------------------------------------------------------------------
+Mon Feb 23 18:11:04 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.7:
+  * fix: switch light and dark despite suspend/time change
+  * Add pull request template
+
+-------------------------------------------------------------------
+Thu Feb 12 10:29:03 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.6:
+  * no changes since last release
+
+-------------------------------------------------------------------
+Thu Feb 05 02:33:38 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.5:
+  * chore: update xkb-data crate
+  * chore: screen reader toggle shortcut
+
+-------------------------------------------------------------------
+Wed Dec 31 01:27:53 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.1:
+  * feat: set notification sounds to notification media role
+
+-------------------------------------------------------------------
+Thu Dec 11 19:29:36 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0+0:
+  * config: Add `Suspend` system action
+
+-------------------------------------------------------------------
+Sat Dec 06 23:20:04 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta9+0:
+  * fix: clamp keyboard-driven backlight to 1% to prevent black screen
+
+-------------------------------------------------------------------
+Sat Nov 15 20:33:27 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta6+0:
+  * no changes since last release
+
+-------------------------------------------------------------------
+Mon Nov 10 16:13:39 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta5+0:
+  * Don't print errors for `ErrorKind::NotFound` from `CosmicTk`
+
+-------------------------------------------------------------------
+Thu Oct 23 18:16:53 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta3+0:
+  * no changes since last release
+
+-------------------------------------------------------------------
+Sun Oct 19 15:11:31 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~beta2+0:
+  * fix: don't uppercase keysym first letter
+  * fix: reset critical battery alert if battery is normal
+  * chore: display toggle
+
+-------------------------------------------------------------------
+Mon Sep 29 22:15:00 UTC 2025 - mkd <mkdwho@icloud.com>
+
+- Add `BuildRequires: pkgconfig(openssl)` for openssl-sys crate
+
+-------------------------------------------------------------------
+Mon Sep 29 21:41:08 UTC 2025 - mkd <mkdwho@icloud.com>
+
+- Update to version 1.0.0~beta1.1+1:
+  * fix: handling for super binding
+  * fix: missing icons in GTK apps
+  * fix: also accept "wheel" as group name for polkit authentication
+  * feat(shortcuts): touchpad toggl
+  * feat: configurable volume actions
+  * chore: Rust 2024 and update dependencies
+  * chore: add optional keycode to Binding
+  * fix(pulse): pass headset port name to osd
+  * fix(pulse): reset tracked card on change with no unknown state
+  * cleanup: deps
+  * refactor: improved handling of tracked card
+  * feat: trigger headset/headphone confirmation when availability is unknown
+  * improv(config): Don't error if `tiling_exception_custom` is not present
+  * fix(system_actions): Switch MuteMic to PipeWire
+  * fix: deps
+  * feat: sync with greeter state
+  * wip: state from greeter
+  * Use `log` and `env-logger`, instead of just `eprintln!`
+  * Log backlight event in more concise and clear format
+  * chore: update dependencies
+  * fix(autoswitch): delay until next event if theme is switched while autoswitch is enabled
+  * fix: timezone-based theme auto-switching
+  * config: Add shortcut for fullscreen
+  * fix: keep timezone watcher alive
+  * improv: get location updates direct from stream
+  * fix: ignore location updates that are None
+  * Revert "fix: debounce cosmic-config notifier events"
+  * fix: debounce cosmic-config notifier events
+  * feat: use locally-cached timezone geopositions over geoclue
+  * feat: power off system action
+  * fix(shortcuts): unmute on volume raise/lower
+  * improv(shortcuts): enable searching shortcuts by binding in cosmic-settings
+  * Update to zbus 5.x
+
+-------------------------------------------------------------------
+Thu Apr 24 18:12:01 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~alpha7+0:
+  * fix: Invert volume actions to be correct
+  * fix(system_actions): use wpctl instead of amixer
+  * chore: update cosmic-settings-subscriptions
+  * feat: manage sinks the mono sound setting
+  * chore: update dependencies
+  * config: Mark next/previous output actions deprecated
+  * feat: add system action and dbus method for input source switching
+
+-------------------------------------------------------------------
+Sat Feb 22 03:43:47 UTC 2025 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha6+0:
+  * config: Add `ZoomIn`/`Out` shortcuts
+  * fix(config): Handle unknown Action/SystemAction gracefully
+- switch to obs_scm
+
+-------------------------------------------------------------------
+Sat Jan 18 17:56:43 UTC 2025 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha5.1+1:
+  * chore: add log-out shortcut
+  * Update dependencies
+
+-------------------------------------------------------------------
+Fri Jan 10 22:42:43 UTC 2025 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha5+0:
+  * fix: only take oneshot for theme watcher if ID matches
+  * fix: avoid removing custom gtk css config files
+  * feat: shift+alt+tab
+  * Revert "feat: shift+alt+tab"
+  * feat: shift+alt+tab
+
+-------------------------------------------------------------------
+Fri Dec 06 00:57:39 UTC 2024 - rrahl0@opensuse.org
+
+- Update to version 1.0.0~alpha4+0:
+  * feat: cleanup gtk.css when exiting
+  * fix: remove debug log
+  * chore(cargo): update dependencies
+  * fix: keyboard config reset on startup
+  * fix: do not exit on Geoclue failure
+  * config: Add tiling_exceptions (#50)
+  * fix: ensure pop-sound-theme is installed
+  * fix: gnome button layout differs from COSMIC on first login
+  * fix: brightness not reaching 100
+  * refactor: only apply theme exports to gtk
+
+-------------------------------------------------------------------
+Thu Oct 31 22:37:54 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.0.0~alpha3:
+  * fix: remove debug log
+  * chore(cargo): update dependencies
+  * fix: keyboard config reset on startup
+- require rust >= 1.80
+
+-------------------------------------------------------------------
+Wed Sep 25 06:57:46 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.0.0~alpha2:
+  * refactor: only apply theme exports to gtk
+  * fix: brightness not reaching 100
+  * fix: gnome button layout differs from COSMIC on first login
+  * fix: ensure pop-sound-theme is installed
+  * config: Add tiling_exceptions
+  * fix: do not exit on Geoclue failure
+
+-------------------------------------------------------------------
+Thu Aug  8 01:00:35 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- standardize packaging with also fixes for miscellaneous hardcoding
+  filenames, using @PARENT_TAG where applicable, and be more specific
+  with files in the %files section (so no non-wanted files are getting
+  added
+
+-------------------------------------------------------------------
+Wed Aug  7 01:54:49 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.0.0~alpha1:
+  * improv(config): add PlayPause, PlayPrev, and PlayNext system actions
+  * fix: vscode theme parsing error
+- eanble leap (thanks to vyvir)
+
+-------------------------------------------------------------------
+Thu Mar 14 03:42:03 UTC 2024 - Richard Rahl <rrahl0@proton.me>
+
+- initial packaging
