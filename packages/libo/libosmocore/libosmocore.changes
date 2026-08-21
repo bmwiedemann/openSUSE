@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Aug 21 09:34:27 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.14.2
+  * Fix buffer overflows/overreads in `bssgp_rx_paging`,
+    `parse_process_uss_req`, `osmo_dec_gcr`, `osmo_pbit2ubit`, in
+    the CBSP WRITE-REPLACE decoder, and in TLV tag logging.
+  * iuup: Cure stack buffer-overflow rx IuUP with payload
+    larger than 1024 bytes.
+  * gsm: Reject BSSMAP Encryption Information IE with no selected
+    algo or key length != 8.
+
+-------------------------------------------------------------------
 Wed Jul 22 14:39:34 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.14.1
