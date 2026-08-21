@@ -18,10 +18,10 @@
 
 %define cpan_name MCP
 Name:           perl-MCP
-Version:        0.120.0
+Version:        0.150.0
 Release:        0
-# 0.12 -> normalize -> 0.120.0
-%define cpan_version 0.12
+# 0.15 -> normalize -> 0.150.0
+%define cpan_version 0.15
 License:        MIT
 Summary:        Connect Perl with AI using MCP (Model Context Protocol)
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -32,11 +32,11 @@ BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(CryptX) >= 0.87
 BuildRequires:  perl(IPC::Run) >= 20231003.0
-BuildRequires:  perl(JSON::Validator) >= 5.150
+BuildRequires:  perl(JSON::Schema::Tiny) >= 0.34
 BuildRequires:  perl(Mojolicious) >= 9.410
 Requires:       perl(CryptX) >= 0.87
 Requires:       perl(IPC::Run) >= 20231003.0
-Requires:       perl(JSON::Validator) >= 5.150
+Requires:       perl(JSON::Schema::Tiny) >= 0.34
 Requires:       perl(Mojolicious) >= 9.410
 Provides:       perl(MCP) = %{version}
 Provides:       perl(MCP::Client)
@@ -46,7 +46,8 @@ Provides:       perl(MCP::Prompt)
 Provides:       perl(MCP::Resource)
 Provides:       perl(MCP::Server)
 Provides:       perl(MCP::Server::Context)
-Provides:       perl(MCP::Server::Session)
+Provides:       perl(MCP::Server::Legacy)
+Provides:       perl(MCP::Server::Subscription)
 Provides:       perl(MCP::Server::Transport)
 Provides:       perl(MCP::Server::Transport::HTTP)
 Provides:       perl(MCP::Server::Transport::Stdio)
@@ -55,66 +56,18 @@ Provides:       perl(MCP::Tool)
 %{perl_requires}
 
 %description
-Connect Perl with AI using the Model Context Protocol (MCP). Currently this
-module is focused on tool calling and prompts, but it will be extended to
-support other MCP features in the future. At its core, MCP is all about
-text processing, making it a great fit for Perl.
+Connect Perl with AI using the Model Context Protocol (MCP). An MCP server
+hands a model three kinds of things: tools it can call, prompts it can
+start from, and resources it can read. At its core MCP is all about text
+processing, which makes it a great fit for Perl.
 
-Streamable HTTP Transport
-    Use the MCP::Server/"to_action" method to add an MCP endpoint to any
-    Mojolicious application. The tool name and description are used for
-    discovery, and the at https://json-schema.org is used to validate the
-    input.
+The protocol revision implemented is '2026-07-28', and it is stateless.
+There is no handshake and no session, every request stands on its own, so
+an MCP endpoint is just another route in your Mojolicious application and
+scales the same way.
 
-      use Mojolicious::Lite -signatures;
-
-      use MCP::Server;
-
-      my $server = MCP::Server->new;
-      $server->tool(
-        name         => 'echo',
-        description  => 'Echo the input text',
-        input_schema => {type => 'object', properties => {msg => {type => 'string'}}, required => ['msg']},
-        code         => sub ($tool, $args) {
-          return "Echo: $args->{msg}";
-        }
-      );
-
-      any '/mcp' => $server->to_action;
-
-      app->start;
-
-    Authentication can be added by the web application, just like for any
-    other route. OAuth scopes can be enforced per tool, prompt and
-    resource. To allow for MCP applications to scale with prefork web
-    servers, server to client streaming is currentlly avoided when
-    possible.
-
-Stdio Transport
-    Build local command line applications and use the stdio transport for
-    testing with the MCP::Server/"to_stdio" method.
-
-      use Mojo::Base -strict, -signatures;
-
-      use MCP::Server;
-
-      my $server = MCP::Server->new;
-      $server->tool(
-        name         => 'echo',
-        description  => 'Echo the input text',
-        input_schema => {type => 'object', properties => {msg => {type => 'string'}}, required => ['msg']},
-        code         => sub ($tool, $args) {
-          return "Echo: $args->{msg}";
-        }
-      );
-
-      $server->to_stdio;
-
-    Just run the script and type requests on the command line.
-
-      $ perl examples/echo_stdio.pl
-      {"jsonrpc":"2.0","id":"1","method":"tools/list"}
-      {"jsonrpc":"2.0","id":"2","method":"tools/call","params":{"name":"echo","arguments":{"msg":"hello perl"}}}
+Read on for a tour, or go straight to MCP::Server for the reference
+documentation.
 
 %prep
 %autosetup -n %{cpan_name}-%{cpan_version} -p1

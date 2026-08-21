@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Fri Jul 31 08:09:57 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.150.0 (0.15)
+   see /usr/share/doc/packages/perl-MCP/Changes
+
+  0.15  2026-07-30
+    - Updated to MCP protocol revision 2026-07-28, which makes the protocol stateless. This is a breaking change for
+      every user of this module.
+    - Removed the initialize handshake, protocol sessions, and the Mcp-Session-Id header. Every request now declares
+      the protocol version and client capabilities it was made with in _meta.
+    - Removed MCP::Server::Session, and the sessions and session_timeout attributes from MCP::Server::Transport::HTTP.
+      GET and DELETE requests are now answered with status 405.
+    - Removed initialize_session, delete_session, ping, and session_id from MCP::Client.
+    - Removed the ping method and the RESOURCE_NOT_FOUND constant. Prompts, resources, and tools that were not found
+      now use INVALID_PARAMS, and unknown methods are answered with status 404.
+    - Added MCP::Server::Legacy, a temporary fallback that answers the initialize handshake of protocol revisions
+      older than 2026-07-28, so clients that have not been updated yet can still list and call tools, prompts, and
+      resources. It also adds a legacy attribute to MCP::Server::Context, and will be removed again in a future
+      release.
+    - Added the server/discover method, which replaces initialize, and an instructions attribute to MCP::Server.
+    - Added a discover method to MCP::Client.
+    - Added subscriptions/listen, which replaces the GET stream and resources/subscribe, to both transports.
+    - Added MCP::Server::Subscription class, and a subscriptions attribute to both transports.
+    - Added a listen method and a notification event to MCP::Client.
+    - Added support for multi-round tool requests, with an input_required method on MCP::Primitive that seals its
+      request state with HMAC-SHA256, and matching input_responses and request_state options for call_tool, get_prompt,
+      and read_resource in MCP::Client.
+    - Added state_secret and state_timeout attributes to MCP::Server.
+    - Added input_responses, principal, raw_request_state, state_binding, state_secret, and state_timeout attributes,
+      and request_state and seal_state methods, to MCP::Server::Context.
+    - Added routing header validation to MCP::Server::Transport::HTTP, covering MCP-Protocol-Version, Mcp-Method,
+      Mcp-Name, and the Mcp-Param-* headers declared with x-mcp-header in a tool input schema.
+    - Added an origins attribute to MCP::Server::Transport::HTTP, to protect against DNS rebinding attacks.
+    - Added cache hints to discovery, list, and read results, with cache_scope and cache_ttl attributes on MCP::Server
+      and MCP::Primitive.
+    - Added a resultType field and server info to every result.
+    - Added a log attribute to MCP::Server, and the INTERNAL_ERROR constant.
+    - Fixed a bug where an exception thrown by a prompt, resource, or tool, or a rejected promise returned by one,
+      was not turned into a JSON-RPC error. Over stdio it terminated the server, and over HTTP it produced a response
+      without a body and leaked the notification stream. The exception is now logged and answered with
+      INTERNAL_ERROR.
+    - Added JSON Schema 2020-12 support to MCP::Tool, which is now the default dialect, together with a
+      max_schema_depth attribute and validation of structuredContent against output_schema. This requires
+      JSON::Schema::Tiny 0.034.
+    - Added client_capabilities, client_info, log_level, and protocol_version attributes, and a notify_log method, to
+      MCP::Server::Context.
+    - Added a cancelled event, and cancel and is_cancelled methods, to MCP::Server::Context, so long running tools can
+      stop as soon as a client goes away. MCP::Server::Context is now a Mojo::EventEmitter.
+    - Added HEADER_MISMATCH, META_CLIENT_CAPABILITIES, META_CLIENT_INFO, META_LOG_LEVEL, META_PROTOCOL_VERSION,
+      META_SERVER_INFO, META_SUBSCRIPTION_ID, MISSING_CLIENT_CAPABILITY, SUPPORTED_VERSIONS, and
+      UNSUPPORTED_PROTOCOL_VERSION constants to MCP::Constants.
+    - Added capabilities and protocol_version attributes to MCP::Client, which renegotiates once when a server rejects
+      its protocol version.
+    - Improved progress and log notifications to be delivered on the response stream of the request they belong to, so
+      they no longer require streaming to be enabled and work with pre-forking web servers.
+    - Added a tutorial to the MCP documentation, introducing tools, prompts, resources, and everything around them.
+    - Added examples/perldoc_stdio.pl, the server built in the tutorial.
+
+  0.13  2026-06-22
+    - Switched from JSON::Valdiator to JSON::Schema::Tiny for better portability.
+
+-------------------------------------------------------------------
 Mon Jun 29 10:40:19 UTC 2026 - Tina Müller <tina.mueller@suse.com>
 
 - Downgrade to 0.12 again to avoid the new (failing) dependency for now
