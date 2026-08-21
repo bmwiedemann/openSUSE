@@ -17,26 +17,28 @@
 
 
 Name:           openai-codex
-Version:        0.147.0
+Version:        0.149.0
 Release:        0
 Summary:        OpenAI Codex coding agent for the terminal
 # Legal-Review-Notice: upstream codex is Apache-2.0. Everything after that
 # covers the third-party Rust crates statically linked into the shipped
 # %%{_bindir}/codex binary, enumerated with
-#   cargo tree --offline -p codex-cli -e normal
-# against the vendored tree (853 crates on aarch64, 856 on x86_64; every one
+#   cargo tree --offline -p codex-cli -e normal,no-proc-macro
+# against the vendored tree (871 crates on aarch64, 873 on x86_64; every one
 # of them declares a licence, none is missing). Electing Apache-2.0 where it
-# is offered and MIT otherwise, the tally is Apache-2.0 583, MIT 213,
-# Unicode-3.0 24, MPL-2.0 12, ISC 10, BSD-3-Clause 10, Zlib 6, BSD-2-Clause 2,
+# is offered and MIT otherwise, the tally is Apache-2.0 644, MIT 174,
+# Unicode-3.0 20, MPL-2.0 12, ISC 7, BSD-3-Clause 6, Zlib 5, BSD-2-Clause 1,
 # CC0-1.0 1, CDLA-Permissive-2.0 1.
-#  - self_cell is "Apache-2.0 OR GPL-2.0-only" and is the ONLY crate anywhere
-#    in the graph offering GPL. Apache-2.0 is elected, so this package carries
-#    no GPL obligation; please do not re-derive it as GPL.
+#  - self_cell 1.2.2 is "Apache-2.0 OR GPL-2.0-only" and is the ONLY crate
+#    anywhere in the graph offering GPL. Apache-2.0 is elected, so this
+#    package carries no GPL obligation; please do not re-derive it as GPL.
+#    (self_cell 0.10.3, also linked, is Apache-2.0 only.)
 #  - MPL-2.0 is unavoidable and comes from nucleo, nucleo-matcher, option-ext
 #    and the nine symphonia-* crates. MPL-2.0 section 3.2 source availability
 #    is satisfied by vendor.tar.zst, which ships in the src.rpm.
 #  - CC0-1.0 is notify, CDLA-Permissive-2.0 is webpki-roots, and Unicode-3.0
-#    is forced by an "AND" in unicode-ident plus the icu/zerovec family.
+#    is forced by the icu/zerovec family. unicode-ident's "AND Unicode-3.0"
+#    is proc-macro-only and is not linked into the binary.
 #  - Unicode-DFS-2016 (finl_unicode, wezterm-bidi) and WTFPL (terminfo) are
 #    present in vendor.tar.zst but are NOT linked: they are reachable only
 #    through ratatui's optional "termina"/"termwiz" backends, and the
@@ -49,7 +51,9 @@ Summary:        OpenAI Codex coding agent for the terminal
 #    (Apache-2.0 OR ISC OR MIT) AND (Apache-2.0 OR ISC OR MIT-0)". Electing
 #    Apache-2.0 in each OR leaves ISC, Apache-2.0, MIT and BSD-3-Clause, all of
 #    which the tag already carries. It is one of the bundled C libraries listed
-#    in the Provides: bundled(...) lines below.
+#    in the Provides: bundled(...) lines below. matchit (MIT AND BSD-3-Clause),
+#    encoding_rs, ring and aws-lc-rs similarly keep ISC / BSD-3-Clause in the
+#    tag even when Apache-2.0 is elected as the crate's primary licence.
 License:        Apache-2.0 AND MIT AND Unicode-3.0 AND MPL-2.0 AND ISC AND BSD-3-Clause AND Zlib AND BSD-2-Clause AND CC0-1.0 AND CDLA-Permissive-2.0
 URL:            https://github.com/openai/codex
 Source0:        https://github.com/openai/codex/archive/refs/tags/rust-v%{version}.tar.gz#/codex-rust-v%{version}.tar.gz
@@ -96,7 +100,8 @@ common developer workflows from the command line.
 The %{_bindir}/codex binary is a multicall executable: the helper programs
 (apply_patch, codex-linux-sandbox, codex-execve-wrapper) are dispatched from
 argv[0], and the remaining tools are subcommands (exec, mcp-server,
-app-server, execpolicy, sandbox, responses-api-proxy, completion, doctor).
+app-server, execpolicy, sandbox, responses-api-proxy, completion, doctor,
+agents, queue).
 
 %package bash-completion
 Summary:        Bash completion for codex

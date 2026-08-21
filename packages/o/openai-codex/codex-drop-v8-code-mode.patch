@@ -11,9 +11,9 @@ keeps ~213 MB of unbuilt V8 sources out of the vendor bundle.
 
 Downstream-only distribution policy, not suitable for upstream submission.
 
---- a/codex-rs/Cargo.toml	2026-08-16 18:52:16.891827938 +0200
-+++ b/codex-rs/Cargo.toml	2026-08-16 18:52:16.895828387 +0200
-@@ -22,9 +22,7 @@
+--- a/codex-rs/Cargo.toml
++++ b/codex-rs/Cargo.toml
+@@ -23,9 +23,7 @@
      "install-context",
      "codex-backend-openapi-models",
      "code-mode",
@@ -23,15 +23,15 @@ Downstream-only distribution policy, not suitable for upstream submission.
      "codex-home",
      "cloud-config",
      "cloud-tasks",
-@@ -91,7 +89,6 @@
+@@ -94,7 +92,6 @@
      "otel",
      "tui",
      "tools",
 -    "v8-poc",
      "websocket-client",
+     "workload-identity",
      "utils/absolute-path",
-     "utils/audio",
-@@ -170,7 +167,6 @@
+@@ -173,7 +170,6 @@
  codex-cloud-tasks-mock-client = { path = "cloud-tasks-mock-client" }
  codex-code-mode = { path = "code-mode" }
  codex-code-mode-protocol = { path = "code-mode-protocol" }
@@ -39,23 +39,23 @@ Downstream-only distribution policy, not suitable for upstream submission.
  codex-home = { path = "codex-home" }
  codex-http-client = { path = "http-client" }
  codex-websocket-client = { path = "websocket-client" }
-@@ -268,7 +264,6 @@
+@@ -273,7 +269,6 @@
  codex-utils-stream-parser = { path = "utils/stream-parser" }
  codex-utils-string = { path = "utils/string" }
  codex-utils-template = { path = "utils/template" }
 -codex-v8-poc = { path = "v8-poc" }
+ codex-workload-identity = { path = "workload-identity" }
  codex-windows-sandbox = { path = "windows-sandbox-rs" }
  core_test_support = { path = "core/tests/common" }
- mcp_test_support = { path = "mcp-server/tests/common" }
-@@ -474,7 +469,6 @@
+@@ -482,7 +477,6 @@
  url = "2"
  urlencoding = "2.1"
  uuid = "1"
 -v8 = "=150.4.0"
  vt100 = "0.16.2"
  walkdir = "2.5.0"
- webbrowser = "1.0"
-@@ -535,7 +529,6 @@
+ webbrowser = "1.2.2"
+@@ -543,7 +537,6 @@
  ignored = [
      "icu_provider",
      "openssl-sys",

@@ -136,4 +136,30 @@ across 10 test binaries with 0 failures, and each finishing rpmlint at
 and 15.7 build as well.</comment>
     <requestid>1371460</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ad2413cdb623a2072ebcfc17a02ac96d</srcmd5>
+    <version>0.149.0</version>
+    <time>1787324001</time>
+    <user>anag_factory</user>
+    <comment>Fri Aug 21 05:49:48 UTC 2026 - Martin Pluskal &lt;mpluskal@suse.com&gt;
+
+- Update to 0.149.0:
+  * Interactive `codex agents` dashboard for searching, starting,
+    opening, renaming and stopping tasks
+  * `/cd`, `/pwd` and `/cwd` TUI commands for the working directory
+  * `codex queue` sends a message to an existing local or remote
+    session
+  * Expanded Vim change motions (`cw`, `c$`, `cc`) and character
+    replacement
+  * `codex doctor` now diagnoses endpoint protection, network/proxy
+    failures and update connectivity
+  * Resumed and forked threads restore their permission profile
+  * Linux sandbox drops extra capabilities and isolates IPC in
+    bubblewrap
+  * `apply_patch` no longer widens write permissions; git commands
+    are no longer treated as inherently safe
+- Rebase codex-drop-v8-code-mode.patch and
+  codex-no-startup-update-check.patch</comment>
+    <requestid>1372722</requestid>
+  </revision>
 </revisionlist>

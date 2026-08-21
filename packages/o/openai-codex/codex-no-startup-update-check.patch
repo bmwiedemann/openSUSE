@@ -10,9 +10,9 @@ set check_for_update_on_startup = true in ~/.codex/config.toml.
 
 Downstream-only distribution policy, not suitable for upstream submission.
 
---- a/codex-rs/core/src/config/mod.rs	2026-08-16 19:03:50.017595546 +0200
-+++ b/codex-rs/core/src/config/mod.rs	2026-08-16 19:03:50.021595995 +0200
-@@ -3946,7 +3946,7 @@
+--- a/codex-rs/core/src/config/mod.rs
++++ b/codex-rs/core/src/config/mod.rs
+@@ -3868,7 +3868,7 @@
  
          let review_model = override_review_model.or(cfg.review_model);
  

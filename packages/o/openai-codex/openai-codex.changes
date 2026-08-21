@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri Aug 21 05:49:48 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.149.0:
+  * Interactive `codex agents` dashboard for searching, starting,
+    opening, renaming and stopping tasks
+  * `/cd`, `/pwd` and `/cwd` TUI commands for the working directory
+  * `codex queue` sends a message to an existing local or remote
+    session
+  * Expanded Vim change motions (`cw`, `c$`, `cc`) and character
+    replacement
+  * `codex doctor` now diagnoses endpoint protection, network/proxy
+    failures and update connectivity
+  * Resumed and forked threads restore their permission profile
+  * Linux sandbox drops extra capabilities and isolates IPC in
+    bubblewrap
+  * `apply_patch` no longer widens write permissions; git commands
+    are no longer treated as inherently safe
+- Rebase codex-drop-v8-code-mode.patch and
+  codex-no-startup-update-check.patch
+
+-------------------------------------------------------------------
+Thu Aug 20 13:56:42 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.148.0:
+  * TUI /export writes a conversation to Markdown (clipboard
+    or file)
+  * Fork sessions with `codex exec fork`; archive and restore
+    sessions from the resume picker
+  * Show estimated thread credits or cost in /status
+  * Amazon Bedrock Runtime as a built-in model provider
+  * Hooks can run commands asynchronously and invoke MCP tools
+  * Sandbox path denials now fail closed
+  * Resumed sessions restore the persisted working directory
+    and approval policy
+- Rebase codex-drop-v8-code-mode.patch and
+  codex-no-startup-update-check.patch
+
+-------------------------------------------------------------------
 Sun Aug 16 17:07:41 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Initial package (0.147.0)
