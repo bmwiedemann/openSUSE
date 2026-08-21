@@ -41,4 +41,16 @@
   * [Python] Drop support for python 3.9.</comment>
     <requestid>1352258</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>719dbfc36d89c8166ca68a7615d81376</srcmd5>
+    <version>42.0.1</version>
+    <time>1787324480</time>
+    <user>anag_factory</user>
+    <comment>- update to 42.0.1:
+  * (i18n) Added Persian translation of &quot;Rule&quot;
+  * (i18n) Added new synonyms for existing Persian keywords
+  * Allow steps to have both a DocString and a Datatable argument
+  * Update dependency messages to at-least v34</comment>
+    <requestid>1372813</requestid>
+  </revision>
 </revisionlist>
