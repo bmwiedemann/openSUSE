@@ -1,0 +1,66 @@
+From 36cb77858d91d417ee579a309a569d862efa6477 Mon Sep 17 00:00:00 2001
+From: Tyrel Datwyler <tyreld@linux.ibm.com>
+Date: Thu, 6 Aug 2026 11:39:35 -0700
+Subject: [PATCH] lparstat: report virtual cpus as vcpu in non-legacy mode
+
+Upstream: merged, expected in 1.3.15
+Git-commit: 36cb77858d91d417ee579a309a569d862efa6477
+
+There is a subtle difference between lcpu when using the --legacy flag
+ane when not using the flag. Prior to this patch lcpu is the number of
+SMT threads when using --legacy, and the number of virtual processor
+cores when not. This can be confusing the the end user.
+
+Change lcpu to vcpu in non-legacy reporting to better correspond to the
+notion of a virtual processor core as opposed to the logical cpu mapping
+to a thread of execution as is generally understood on Linux.
+
+Update the man page as well to reflect this change as well as the cpus
+value is number of online virtual processor in the processor pool and
+not logical cpu threads.
+
+Signed-off-by: Tyrel Datwyler <tyreld@linux.ibm.com>
+---
+ man/lparstat.8 | 7 +++++--
+ src/lparstat.c | 2 +-
+ 2 files changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/man/lparstat.8 b/man/lparstat.8
+index ef20250..7bad4f3 100644
+--- a/man/lparstat.8
++++ b/man/lparstat.8
+@@ -29,13 +29,16 @@ smt
+ Indicates whether simultaneous multi-threading is enabled or disabled in the partition. If SMT is enabled, the number of SMT threads is displayed.
+ .TP
+ lcpu
+-Number of online logical processors.
++Number of online logical SMT threads. This is reported when using the --legacy flag.
++.TP
++vcpu
++Number of online virtual processor cores.
+ .TP
+ mem
+ Online Memory Capacity.
+ .TP
+ cpus
+-Number of online physical processors in the pool.
++Number of online physical processor cores in the pool.
+ .RS
+ This attribute is referred as
+ .B psize
+diff --git a/src/lparstat.c b/src/lparstat.c
+index 9158353..6244868 100644
+--- a/src/lparstat.c
++++ b/src/lparstat.c
+@@ -1115,7 +1115,7 @@ void print_system_configuration(void)
+ 	if (o_legacy)
+ 		offset += sprintf(buf + offset, "lcpu=%d ", active_proc*smt);
+ 	else
+-		offset += sprintf(buf + offset, "lcpu=%s ", value);
++		offset += sprintf(buf + offset, "vcpu=%s ", value);
+ 	get_sysdata("MemTotal", &descr, value);
+ 	offset += sprintf(buf + offset, "mem=%s ", value);
+ 	get_sysdata("active_cpus_in_pool", &descr, value);
+-- 
+2.51.0
+

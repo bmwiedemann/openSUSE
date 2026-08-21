@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Aug 19 12:55:42 UTC 2026 - Michal Suchanek <msuchanek@suse.de>
+
+- Add timeoout for DLPAR memory remove operation (bsc#1265903 ltc#216658 bsc#1268314 ltc#218736)
+  - drmgr-Use-30-secs-timeout-for-each-LMB-removal-kerne.patch
+- Fix description of lcpu field in the output of "lparstat" (bsc#1257065 ltc#216990)
+  - lparstat-report-virtual-cpus-as-vcpu-in-non-legacy-m.patch
+- Refresh patch to upstream version
+  - bootlist-set-ethernet-using-open-firmware-path-as-bo.patch
+
+-------------------------------------------------------------------
 Fri Jul 10 08:22:25 UTC 2026 - Michal Suchanek <msuchanek@suse.de>
 
 - Fix adding Ethernet entries in bootlist (bsc#1246281 ltc#214785):
@@ -19,7 +29,7 @@ Thu May 21 08:17:04 UTC 2026 - Michal Suchanek <msuchanek@suse.de>
   * 0007-drmgr-Add-NUMA-configuration-update-for-CPU-remove.patch
   * 0008-drmgr-Add-NUMA-based-CPU-removal.patch
   * 0009-drmgr-Allow-signals-mentioned-in-new-sigset_t.patch
-  * 0010-drmgr-Add-timeout-signal-handling-for-NUMA-memory-RE.patch (bsc#1265903 ltc#216658)
+  * 0010-drmgr-Add-timeout-signal-handling-for-NUMA-memory-RE.patch (bsc#1265903 ltc#216658 bsc#1268314 ltc#218736)
   * 0011-drmgr-Do-not-remove-LMBs-when-the-timer-expires.patch
 
 -------------------------------------------------------------------
@@ -85,8 +95,8 @@ Mon May 12 09:44:17 UTC 2025 - Michal Suchanek <msuchanek@suse.de>
 -------------------------------------------------------------------
 Thu Mar 20 08:28:34 UTC 2025 - Michal Suchanek <msuchanek@suse.de>
 
-- Refresh lparstat-Fix-negative-values-for-idle-PURR.patch to work without
-  PPC_FEATURE2_ARCH_3_1 defined (bsc#1238322 ltc#210808)
+- Refresh lparstat-print-memory-mode-correctly.patch to work without
+  PPC_FEATURE2_ARCH_3_1 defined (bsc#1237409 ltc#211627)
 
 -------------------------------------------------------------------
 Wed Mar  5 15:20:45 UTC 2025 - Michal Suchanek <msuchanek@suse.de>
