@@ -16,6 +16,15 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+
 %if 0%{?suse_version} > 1500
 %bcond_without libalternatives
 %else
@@ -23,20 +32,25 @@
 %endif
 
 %{?sle15_python_module_pythons}
-Name:           python-Mako
-Version:        1.3.12
+Name:           python-Mako%{psuffix}
+Version:        1.4.1
 Release:        0
 Summary:        A Python templating language
 License:        MIT
 URL:            https://www.makotemplates.org/
 Source:         https://files.pythonhosted.org/packages/source/m/mako/mako-%{version}.tar.gz
-BuildRequires:  %{python_module MarkupSafe >= 0.9.2}
-BuildRequires:  %{python_module base >= 3.8}
-BuildRequires:  %{python_module pbr}
+BuildRequires:  %{python_module MarkupSafe}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+%if %{with test}
+BuildRequires:  %{python_module Beaker}
+BuildRequires:  %{python_module Mako = %{version}}
+BuildRequires:  %{python_module dogpile.cache}
+BuildRequires:  %{python_module pygments}
+BuildRequires:  %{python_module pytest}
+%endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
 Requires:       python-MarkupSafe >= 0.9.2
@@ -63,8 +77,9 @@ inheritance, while maintaining close ties to Python calling and
 scoping semantics.
 
 %prep
-%setup -q -n mako-%{version}
+%autosetup -p1 -n mako-%{version}
 
+%if ! %{with test}
 %build
 %pyproject_wheel
 
@@ -72,9 +87,13 @@ scoping semantics.
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/mako-render
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
+%if %{with test}
 %check
-%pytest
+# failing with pygments 2.21.0 (gh#sqlalchemy/mako/issues/440)
+%pytest -k "not (test_py_utf8_html_error_template or test_utf8_format_exceptions_pygments or test_custom_tback)"
+%endif
 
 %pre
 # If libalternatives is used: Removing old update-alternatives entries.
@@ -86,6 +105,7 @@ scoping semantics.
 %postun
 %python_uninstall_alternative mako-render
 
+%if ! %{with test}
 %files %{python_files}
 %license LICENSE
 %doc CHANGES README.rst
@@ -93,5 +113,6 @@ scoping semantics.
 %python_alternative %{_bindir}/mako-render
 %{python_sitelib}/mako/
 %{python_sitelib}/[Mm]ako-%{version}.dist-info
+%endif
 
 %changelog

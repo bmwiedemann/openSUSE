@@ -687,4 +687,57 @@ Switching over to update-alternatives for python 3 would be a huge undertaking a
     slashes before path resolution.</comment>
     <requestid>1350583</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>e63fa6ac378580845f556006dc8d9a2c</srcmd5>
+    <version>1.4.1</version>
+    <time>1787323805</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.4.1
+  * [bug] [installation] Fixed issue in the 1.4.0 packaging where the
+    repository's internal tools/ directory was detected by setuptools package
+    discovery and installed as a top-level tools package into site-packages,
+    shadowing unrelated tools packages belonging to other applications. Package
+    discovery is now limited to the mako package explicitly.
+- Update to 1.4.0
+  * [changed] [examples] The examples/bench folder has been removed as it used
+    mostly long-obsolete template engines. The examples/wsgi/run_wsgi.py example
+    has been updated to remove the use of the removed-in-Python-3.13 cgi
+    module, and to be runnable as a module from the project root.
+  * [changed] [installation] Minimum MarkupSafe dependency version bumped from
+    0.9.2 to 2.0.
+  * [changed] [tests] The test suite now runs via nox. The old tox.ini remains
+    however nox will be the only system that's maintained.
+  * [changed] [installation] Project metadata has been migrated to PEP 621
+    pyproject.toml-based configuration. setup.cfg remains only for the
+    [mako_testing] section used by Mako's own test suite. The build requirements
+    now set the minimum setuptools version at 77.0.0 in order to build Mako
+    from source.
+  * [changed] [installation] Minimum Python version is now 3.10. Mako 1.4.0 has
+    been tested up through Python 3.15.0b4.
+  * bug] [ext] The minimum Lingua version supported by LinguaMakoExtractor is
+    now 4.16. The test suite had continued to pin Lingua below 4 long after
+    the extractor itself was repaired to work with Lingua 4 in version 1.2.0,
+    with the result that the plugin was no longer covered by tests at all; the
+    pinned version additionally imports pkg_resources at startup, which is
+    not present in current setuptools releases and left the package
+    unimportable. Lingua 4.16 resolves entry points using
+    importlib.metadata, so no deprecated pkg_resources usage remains.
+  * [bug] [exceptions] Fixed issue where formatting a traceback for an exception
+    raised inside a template compiled from a string would emit
+    DeprecationWarning: Module globals is missing a __spec__.loader on Python
+    3.15. Modules for such templates were created without a module spec, which
+    Python's linecache module consults for every frame while a traceback is
+    being built; the warning was raised from within traceback formatting
+    itself, disrupting the error report for applications that configure
+    warnings as errors. These modules are now given a spec with a loader that
+    provides the generated module source, which additionally allows the
+    generated source lines to be displayed in tracebacks produced by the
+    standard library where previously no source was available.
+  * [bug] [exceptions] A series of fixes involving syntax warnings and
+    exceptions found during template lexing / compilation
+- run tests in multibuild flavor to not add new test dependencies to ring0
+- disable 3 tests failing with Pygments 2.21.0
+</comment>
+    <requestid>1372849</requestid>
+  </revision>
 </revisionlist>
