@@ -16,7 +16,7 @@
 #
 
 Name:           sysextmgr
-Version:        1.2.0+git20260817.3f4cd50
+Version:        1.3.0+git20260820.0628c3a
 Release:        0
 Summary:        Tools to manage systemd-sysext images
 License:        GPL-2.0-or-later
@@ -28,6 +28,7 @@ BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libeconf)
 BuildRequires:  pkgconfig(libsystemd) >= 257
+BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(smartcols)
 BuildRequires:  pkgconfig(zlib)
 Requires:       %{_bindir}/systemd-dissect
