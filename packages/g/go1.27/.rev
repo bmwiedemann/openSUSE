@@ -28,4 +28,20 @@
   * go#80435 boo#1275033 security: fix CVE-2026-56858 html/template: fix Javascript regexp context tracking</comment>
     <requestid>1371109</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>64522c3c6980d029a7d24624f3d2d78b</srcmd5>
+    <version>1.27.0</version>
+    <time>1787323792</time>
+    <user>anag_factory</user>
+    <comment>- go1.27.0 (released 2026-08-19) is a major release of Go.
+  go1.27.x minor releases will be provided through August 2027.
+  https://github.com/golang/go/wiki/Go-Release-Cycle
+  go1.27 arrives six months after Go 1.26. Most of its changes are
+  in the implementation of the toolchain, runtime, and
+  libraries. As always, the release maintains the Go 1 promise of
+  compatibility. We expect almost all Go programs to continue to
+  compile and run as before.
+  Refs boo#1272545 go1.27 release tracking</comment>
+    <requestid>1372060</requestid>
+  </revision>
 </revisionlist>
