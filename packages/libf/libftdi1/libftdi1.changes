@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Aug  6 11:44:44 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Add libftdi1-swig-4.5-python3-api.patch: the python typemaps called
+  PyInt_AsLong() unguarded, which only compiled because SWIG emitted a
+  Python 2 compatibility macro for it. SWIG 4.5.0 drops Python 2 and
+  removes those macros, so the generated wrapper failed to build with
+  "implicit declaration of function 'PyInt_AsLong'". Use a guarded
+  helper instead, matching the existing helpers in ftdi1.i
+
+-------------------------------------------------------------------
 Mon Feb 23 17:36:22 UTC 2026 - trenn@suse.com
 
 - Remove mainlined patch:

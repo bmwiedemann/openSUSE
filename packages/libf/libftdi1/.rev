@@ -205,4 +205,27 @@ Patch got integrated mainline</comment>
     <comment></comment>
     <requestid>1335068</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>2074d19e71b8ef76b5596ec657025a54</srcmd5>
+    <version>1.6rc1.2+git.92d657b</version>
+    <time>1787323810</time>
+    <user>anag_factory</user>
+    <comment>libftdi1's python typemaps call PyInt_AsLong() unguarded. That only ever
+compiled because SWIG emitted a Python 2 compatibility macro for it in the
+generated wrapper. SWIG 4.5.0 (now in devel:tools:building via SR 1370020)
+drops Python 2 support and removes those macros, so the build fails:
+
+  ftdi1PYTHON_wrap.c:3985:10: error: implicit declaration of function
+  'PyInt_AsLong'; did you mean 'PyLong_AsLong'?
+
+The patch adds a PY_MAJOR_VERSION-guarded pyobj2long() helper, matching the
+existing charp2str()/str2charp_size() helpers already in ftdi1.i, and uses it in
+both typemaps. Python 2 behaviour is unchanged.
+
+Verified by A/B build on aarch64: green with swig 4.4.1 and red with 4.5.0
+before the patch; green with both afterwards, 0 rpmlint errors / 0 badness.
+
+Supersedes SR 1370041. (forwarded request 1370050 from pluskalm)</comment>
+    <requestid>1371948</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,62 @@
+From ba2f57104fa5efc51fe006e7cad07ea1e087c1d7 Mon Sep 17 00:00:00 2001
+From: Martin Pluskal <martin@pluskal.org>
+Date: Thu, 6 Aug 2026 13:39:24 +0200
+Subject: [PATCH] python: do not rely on SWIG's Python 2 compatibility macros
+
+The (unsigned char *buf, int size) input typemaps call PyInt_AsLong()
+unguarded. That only ever compiled because SWIG emitted a Python 2
+compatibility macro mapping it onto PyLong_AsLong() in the generated
+wrapper. SWIG 4.5.0 drops Python 2 support and removes those macros, so
+the generated ftdi1PYTHON_wrap.c now fails to build:
+
+  ftdi1PYTHON_wrap.c:3985:10: error: implicit declaration of function
+  'PyInt_AsLong'; did you mean 'PyLong_AsLong'?
+
+Add a pyobj2long() helper guarded by PY_MAJOR_VERSION, matching the
+existing charp2str()/str2charp_size() helpers in this file, and use it
+in both typemaps. Python 2 behaviour is unchanged.
+---
+ python/ftdi1.i | 13 +++++++++++--
+ 1 file changed, 11 insertions(+), 2 deletions(-)
+
+diff --git a/python/ftdi1.i b/python/ftdi1.i
+index fac4d16..aa05d92 100644
+--- a/python/ftdi1.i
++++ b/python/ftdi1.i
+@@ -31,6 +31,15 @@ char * str2charp_size(PyObject* pyObj, int * size)
+   *size = len;
+   return v_;
+ }
++
++inline long pyobj2long(PyObject* pyObj)
++{
++#if PY_MAJOR_VERSION >= 3
++  return PyLong_AsLong(pyObj);
++#else
++  return PyInt_AsLong(pyObj);
++#endif
++}
+ %}
+ 
+ %include <typemaps.i>
+@@ -91,7 +100,7 @@ char * str2charp_size(PyObject* pyObj, int * size)
+ "read_data(context) -> (return_code, buf)"
+ %enddef
+ %feature("autodoc", ftdi_read_data_docstring) ftdi_read_data;
+-%typemap(in,numinputs=1) (unsigned char *buf, int size) %{ $2 = PyInt_AsLong($input);$1 = (unsigned char*)malloc($2*sizeof(char)); %}
++%typemap(in,numinputs=1) (unsigned char *buf, int size) %{ $2 = pyobj2long($input);$1 = (unsigned char*)malloc($2*sizeof(char)); %}
+ %typemap(argout,noblock=1) (unsigned char *buf, int size) {
+         if(result<0)
+                 $2=0;
+@@ -136,7 +145,7 @@ char * str2charp_size(PyObject* pyObj, int * size)
+     int ftdi_get_eeprom_value(struct ftdi_context *ftdi, enum ftdi_eeprom_value value_name, int* value);
+ %clear int* value;
+ 
+-%typemap(in,numinputs=1) (unsigned char *buf, int size) %{ $2 = PyInt_AsLong($input);$1 = (unsigned char*)malloc($2*sizeof(char)); %}
++%typemap(in,numinputs=1) (unsigned char *buf, int size) %{ $2 = pyobj2long($input);$1 = (unsigned char*)malloc($2*sizeof(char)); %}
+ %typemap(argout,noblock=1) (unsigned char *buf, int size) {
+         if(result<0)
+                 $2=0;
+-- 
+2.51.0
+

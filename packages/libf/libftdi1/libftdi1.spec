@@ -1,7 +1,7 @@
 #
 # spec file for package libftdi1
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,10 @@ License:        LGPL-2.1-only AND GPL-2.0-only AND GPL-2.0-with-classpath-except
 Group:          Hardware/Other
 URL:            https://www.intra2net.com/en/developer/libftdi
 Source:         libftdi1-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM libftdi1-swig-4.5-python3-api.patch -- typemaps used
+# PyInt_AsLong(), which only worked via SWIG's Python 2 compat macros;
+# SWIG 4.5.0 removed them
+Patch0:         libftdi1-swig-4.5-python3-api.patch
 BuildRequires:  cmake >= 2.8
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
