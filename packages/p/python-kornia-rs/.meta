@@ -1,0 +1,4 @@
+<package name="python-kornia-rs" project="openSUSE:Factory">
+  <title>Low-level computer vision library implemented in Rust</title>
+  <description>Python bindings for kornia-rs, a low-level computer vision library written in Rust.</description>
+</package>

@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Fri Aug 21 08:50:08 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package of python-kornia-rs 0.1.14:
+  * Low-level computer vision library implemented in Rust with
+    Python bindings (maturin)
+  * Image I/O (JPEG via libjpeg-turbo, PNG, TIFF, WebP), image
+    processing, AprilTag detection and 3D vision helpers
+  * 0.1.14 makes the turbojpeg Python API actually reachable
+    (encode/decode/read/write_image_jpegturbo)
+

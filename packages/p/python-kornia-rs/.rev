@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a1e92b38adc641d90f76430c646cffba</srcmd5>
+    <version>0.1.14</version>
+    <time>1787324419</time>
+    <user>anag_factory</user>
+    <comment>New package python-kornia-rs for openSUSE:Factory from science:machinelearning (ComfyUI cone). pluskalm is the science:machinelearning package maintainer.
+
+INTERDEPENDENT REQUESTS - please stage together (ComfyUI cone):
+  * sr#1372780 python-trampoline
+  * sr#1372737 python-av (devel:languages:python; Factory 14.2.0, need &gt;= 16 for comfyui)
+  * remaining cone packages from science:machinelearning being submitted in this batch
+
+Fri Aug 21 08:50:08 UTC 2026 - Martin Pluskal &lt;mpluskal@suse.com&gt;
+
+- Initial package of python-kornia-rs 0.1.14:
+  * Low-level computer vision library implemented in Rust with
+    Python bindings (maturin)
+  * Image I/O (JPEG via libjpeg-turbo, PNG, TIFF, WebP), image
+    processing, AprilTag detection and 3D vision helpers
+  * 0.1.14 makes the turbojpeg Python API actually reachable
+    (encode/decode/read/write_image_jpegturbo)
+</comment>
+    <requestid>1372789</requestid>
+  </revision>
+</revisionlist>
