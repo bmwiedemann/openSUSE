@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-drf-spectacular
-Version:        0.29.0
+Version:        0.30.0
 Release:        0
 Summary:        Sane and flexible OpenAPI 3 schema generation for Django REST framework
 License:        BSD-3-Clause
