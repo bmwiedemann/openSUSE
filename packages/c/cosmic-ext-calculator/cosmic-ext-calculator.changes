@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Aug 13 07:59:36 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 0.2.1:
+  * v0.2.1
+  * fix(flatpak): theme detection
+  * Create flathub.yml
+  * fix unfocused numpad and shifted symbols
+  * Create flatpak.yml
+  * fix: button colors
+  * Improve keypad and history sidebar UI
+  * fix: enable default features
+  * Trim comments
+  * Add global keyboard support (numpad and number row)
+  * Trim verbose comments per review feedback
+  * Guard empty-expression eval and widen input validation
+  * i18n(cs): Update Czech translation
+  * Add files via upload
+  * made the text input to get focus when the app is focused
+  * fix qalc output parsing
+  * replace wide button with standard button
+  * fix: add power and square root operators as valid keyboard input
+  * fix: add parenthesis as input from keyboard
+  * fix: support '/' character as input from keyboard
+  * pressing division divides
+  * auto-focus input upon launch
+  * Update metainfo.xml
+  * Update app.desktop
+  * Add Ukrainian translation
+  * chore: update libcosmic
+  * add French translation
+  * i18n(hu): update Hungarian translation
+  * i18n(hu): add Hungarian translations
+  * chore: update libcosmic
+  * i18n(cs): Add Czech translation
+
+-------------------------------------------------------------------
 Thu Nov 20 13:14:31 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 0.2.0+8:

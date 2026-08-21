@@ -1,7 +1,7 @@
 #
 # spec file for package cosmic-ext-calculator
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define         lic_data_ver 3.25.0
 %define         appid dev.edfloreshz.Calculator
 Name:           cosmic-ext-calculator
-Version:        0.2.0+8
+Version:        0.2.1
 Release:        0
 Summary:        A simple calculator for the COSMIC desktop
 License:        GPL-3.0-only
