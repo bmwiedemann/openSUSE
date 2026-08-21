@@ -24,4 +24,16 @@
 </comment>
     <requestid>1343992</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5925949bcfe8a0105aede7c37ab6b681</srcmd5>
+    <version>9.2.0</version>
+    <time>1787324189</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 9.2.0.
+  * Changed levels of several notations.
+  * Fixed lemma bits.skipn_app in Zmod.Bits to actually describe
+    the interaction between the titular functions.
+- Fix spurious executable permissions in documentation.</comment>
+    <requestid>1372679</requestid>
+  </revision>
 </revisionlist>

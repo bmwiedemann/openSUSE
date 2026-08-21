@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug 20 21:54:21 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 9.2.0.
+  * Changed levels of several notations.
+  * Fixed lemma bits.skipn_app in Zmod.Bits to actually describe
+    the interaction between the titular functions.
+- Fix spurious executable permissions in documentation.
+
+-------------------------------------------------------------------
 Tue Mar 31 21:19:48 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Require ocaml-rpm-macros in build for generation of dependencies.

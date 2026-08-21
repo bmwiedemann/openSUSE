@@ -19,7 +19,7 @@
 %global rocq_minver 9.0.0
 
 Name:           rocq-stdlib
-Version:        9.1.0
+Version:        9.2.0
 Release:        0
 Summary:        Standard library for the Rocq prover
 Group:          Productivity/Scientific/Math
@@ -129,6 +129,9 @@ cp -r refman-stdlib stdlib %{buildroot}%{_docdir}/rocq
 rm -r %{buildroot}%{_docdir}/rocq/refman-stdlib/{.buildinfo,.doctrees,_sources}
 
 %fdupes %{buildroot}%{_docdir}/rocq
+
+# Fix spurious executable permissions in documentation.
+find %{buildroot}%{_docdir}/rocq/refman-stdlib -type f -executable -exec chmod -v a-x {} +
 
 %files -f dir.list -f runtime.list
 %license LICENSE
