@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Sat Jun 20 21:12:20 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 3.10.2:
+  + fix an issue with updated dependencies
+- Abandoned just (and fix-justfile.patch), as the justfile is
+  nowadays only for flatpak
+
+-------------------------------------------------------------------
+Mon Jun 01 19:01:43 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 3.10.1:
+  * Fix: workflow typo
+  * Fix: workflow typo
+  * Fix: release workflow
+  * Fix: workflow typo
+  * Update: Manually trigger flatpak_release
+  * Fix: flatpak_release.yml action
+  * Fix: flatpak_release.yml action
+  * Fix: flatpak_release.yml action
+  * Add: Release Action
+  * Remove: *.orig files
+  * Update Rust and deps
+  * Add account switching
+  * Update .desktop and justfile
+  * Update justfile
+  * Update deps
+  * Removed build-release from just install recipe
+  * Update justfile, deps, and max-popup size
+  * Update: README.md and screenshots
+  * Fix: UI constraints, translations
+  * Remove: Tailscale CLI
+  * Updated justfile to auto-install dependencies.
+  * Update Rust and deps
+  * Add account switching
+  * Update to match binary
+  * Update deps
+  * Change manifest branch to flatpak
+  * Update max width to 400px
+  * Updated max width value
+  * Fixed flatpak-spawn command
+  * Removed grep commands
+  * Fixed flatpak logic
+  * Updated to build flatpak
+  * Update window.rs
+  * Updated flatpak manifest
+  * Updated .gitignore, updated .desktop file, updated logic.rs - window.rs, deleted .flatpak directory
+  * Updated to work as a flatpak
+  * Fix icon installation in justfile
+  * i18n(nl)
+  * Create FUNDING.yml
+  * Create FUNDING.yml
+  * Updated README.md logic.rs and window.rs
+  * Removed outdated imports
+  * chore: update libcosmic
+  * Upgraded crates, libcosmic, and window.rs
+
+-------------------------------------------------------------------
 Fri Dec 06 03:47:57 UTC 2024 - rrahl0@opensuse.org
 
 - Update to version 2.0.0+1:

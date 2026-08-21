@@ -15,4 +15,13 @@
     <comment></comment>
     <requestid>1228871</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>664aa73f31781e441761db8b676cde9a</srcmd5>
+    <version>3.10.2</version>
+    <time>1787324168</time>
+    <user>anag_factory</user>
+    <comment>- Abandoned just (and fix-justfile.patch), as the justfile is
+  nowadays only for flatpak (forwarded request 1372668 from rrahl0)</comment>
+    <requestid>1372669</requestid>
+  </revision>
 </revisionlist>

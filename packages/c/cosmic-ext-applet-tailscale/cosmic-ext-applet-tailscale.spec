@@ -1,7 +1,7 @@
 #
 # spec file for package cosmic-ext-applet-tailscale
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,22 +16,19 @@
 #
 
 
-%define         appname com.github.bhh32.GUIScaleApplet
+%define         appid com.bhh32.gui-scale-applet
 Name:           cosmic-ext-applet-tailscale
-Version:        2.0.0+1
+Version:        3.10.2
 Release:        0
 Summary:        Tailscale applet for the COSMIC Desktop
 License:        BSD-3-Clause
 URL:            https://github.com/cosmic-utils/gui-scale-applet
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
-Patch0:         fix-justfile.patch
 BuildRequires:  cargo-packaging
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  just
 BuildRequires:  pkgconfig
-BuildRequires:  rust >= 1.80
-BuildRequires:  update-desktop-files
+BuildRequires:  rust >= 1.96
 BuildRequires:  pkgconfig(xkbcommon)
 
 %description
@@ -42,17 +39,20 @@ enable/disable and Tail Drop functionality.
 %autosetup -a1
 
 %build
-just build-release
+%{cargo_build}
 
 %install
-just rootdir=%{buildroot} prefix=%{_prefix} install
-%suse_update_desktop_file %{appname}
+install -Dpm0755 ./target/release/gui-scale-applet -t %{buildroot}%{_bindir}
+install -Dpm0644 data/%{appid}.metainfo.xml -t %{buildroot}%{_datadir}/metainfo
+install -Dpm0644 data/%{appid}.desktop -t %{buildroot}%{_datadir}/applications
+install -Dpm0644 data/icons/scalable/apps/%{appid}.png -t %{buildroot}%{_datadir}/icons/hicolor/scalable/apps
 
 %files
 %license LICENSE
 %doc README.md
 %{_bindir}/gui-scale-applet
-%{_datadir}/applications/%{appname}.desktop
-%{_datadir}/icons/hicolor/scalable/status/%{appname}.png
+%{_datadir}/applications/%{appid}.desktop
+%{_datadir}/icons/hicolor/scalable/apps/%{appid}.png
+%{_datadir}/metainfo/%{appid}.metainfo.xml
 
 %changelog
