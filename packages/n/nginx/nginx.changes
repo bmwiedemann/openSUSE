@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Aug 19 17:53:27 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.31.4 
+  *) Feature: the "proxy_protocol" directive in the stream and mail
+     modules now supports the PROXY protocol version 2.
+  *) Change: now HTTP/2 and gRPC requests to backends are always
+     sent with the ":authority" pseudo-header, and HTTP/1.1
+     requests - with the "Host" header.
+  *) Bugfix: a segmentation fault might occur in a worker process
+     if the "select" method was used.
+  *) Bugfix: incomplete gRPC responses with a non-zero
+     "Content-Length" header line are now treated as malformed.
+  *) Bugfix: in binary compatibility with third-party modules
+     using script codes; the bug had appeared in 1.31.3.
+  *) Bugfix: in the ngx_http_perl_module. Thanks to David Carlier.
+  *) Bugfixes in HTTP/2, HTTP/3, ngx_http_image_filter_module, and
+     ngx_http_grpc_module.
+
+-------------------------------------------------------------------
 Wed Jul 15 18:28:24 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 1.31.3 (boo#1271514 boo#1271517 boo#1271518)
