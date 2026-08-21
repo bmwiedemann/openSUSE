@@ -16,6 +16,7 @@
 #
 
 
+%define python_subpackage_only 1
 %define         _name zig
 Name:           tree-sitter-zig
 Version:        1.1.2
@@ -24,11 +25,27 @@ Summary:        Zig grammar for tree-sitter
 License:        MIT
 URL:            https://github.com/tree-sitter-grammars/tree-sitter-zig
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module installer}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildRequires:  tree-sitter
 %treesitter_grammars %{_name}
+%python_subpackages
 
 %description
 %{summary}.
+
+%package -n python-%{name}
+Summary:        Python binding for the %{name} grammar
+Suggests:       python-tree-sitter
+
+%description -n python-%{name}
+The tree_sitter_* Python module for the %{name} grammar, loadable
+with the Language()/Parser() API from python-tree-sitter.
 
 %prep
 %autosetup
@@ -36,15 +53,21 @@ BuildRequires:  tree-sitter
 %build
 %treesitter_configure
 %treesitter_build
+%treesitter_python_build
 
 %install
 %treesitter_install
 %treesitter_devel_install
+%treesitter_python_install
 
 %files
 %license LICENSE
 %treesitter_files
 
 %treesitter_devel_package
+
+%files %{python_files %{name}}
+%license LICENSE
+%{python_sitearch}/tree_sitter_*
 
 %changelog
