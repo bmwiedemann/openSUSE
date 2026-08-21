@@ -117,4 +117,26 @@
     * Explicitly install an event loop to support Python 3.14, which no longer does so implicitly</comment>
     <requestid>1320605</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ae5e56ad2918ba6ee2f444c8bc37c9e2</srcmd5>
+    <version>3.9.1</version>
+    <time>1787324411</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.9.1:
+  * Handle queues missing on reconnect with passive declares (PR
+    #579)
+  * Allow loading multiple server certificates from the same PEM
+    file (this fixes a bug that was introduced with the addition
+    of the new CA certificate for our RabbitMQ PKI in 6facb16,
+    the code was only loading the first certificate in the file)
+  * Switch integration tests to durable, non-exclusive queues
+    (non-durable and non-exclusive queues are deprecated) (PR
+    #580)
+  * Fix the Packit configuration
+
+- Update to version 3.2.0
+- Update to version 3.1.0
+- Remove unneeded BuildRequires on mock.</comment>
+    <requestid>1372781</requestid>
+  </revision>
 </revisionlist>

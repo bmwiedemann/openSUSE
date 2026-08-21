@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Aug 21 10:08:17 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.9.1:
+  * Handle queues missing on reconnect with passive declares (PR
+    #579)
+  * Allow loading multiple server certificates from the same PEM
+    file (this fixes a bug that was introduced with the addition
+    of the new CA certificate for our RabbitMQ PKI in 6facb16,
+    the code was only loading the first certificate in the file)
+  * Switch integration tests to durable, non-exclusive queues
+    (non-durable and non-exclusive queues are deprecated) (PR
+    #580)
+  * Fix the Packit configuration
+
+-------------------------------------------------------------------
 Fri Nov 28 11:06:46 UTC 2025 - Marius Grossu <marius.grossu@suse.com>
 
 - Update to version 3.9.0:
@@ -61,7 +76,7 @@ Thu Dec 15 09:16:19 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 -------------------------------------------------------------------
 Fri Oct 28 17:02:11 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 3.2.0 
+- Update to version 3.2.0
   Features
   * Add a priority property to messages, and a default priority in the configuration (#275)
   * Add a message schema attribute and some documentation to help deprecate and upgrade message schemas (#227)
@@ -71,7 +86,7 @@ Fri Oct 28 17:02:11 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 -------------------------------------------------------------------
 Wed Oct 12 03:16:41 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 3.1.0 
+- Update to version 3.1.0
   * Add the app_name and agent_name properties to message schemas (#272)
   * Added "groups" property to message schemas. This property can be used if an event affects a list of groups. (#252)
 
@@ -81,7 +96,7 @@ Wed Aug  3 03:12:42 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 - Update to 3.0.2:
   * Add packit configuration.
   * Correct sync list, add issue repo and version info
-- Remove unneeded BuildRequires on mock. 
+- Remove unneeded BuildRequires on mock.
 
 -------------------------------------------------------------------
 Tue May  3 11:05:27 UTC 2022 - pgajdos@suse.com
