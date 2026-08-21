@@ -1,0 +1,4 @@
+<package name="python-torchvision" project="openSUSE:Factory">
+  <title>Image datasets, models and transforms for PyTorch</title>
+  <description>The torchvision package consists of popular datasets, model architectures, and common image transformations for computer vision.</description>
+</package>

@@ -1,0 +1,59 @@
+-------------------------------------------------------------------
+Fri Aug 21 08:56:25 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.27.0 (matches Factory python-torch 2.12.0):
+  * Add lanczos interpolation for v2.Resize on CPU (AVX2/NEON)
+  * Add KeyPoints and rotated bounding-box support in v2
+    transforms
+  * Add GIF and WEBP image decoders; decode_image() accepts paths
+  * Resize can target the longest edge via max_size
+  * Remove the video_reader backend (use TorchCodec / pyav)
+  * Vectorize masks_to_boxes; add rotated-box IoU
+  * Fix v2.ElasticTransform normalization and bbox clamping
+- Add fix-gif-decoder-oob.patch (pytorch/vision#9520, from 0.28):
+  * GIF decoder heap OOB read/write on crafted images
+    (GHSA-vp9x-48wq-4wc3; no CVE assigned)
+- Build CPU-only against Factory torch (FORCE_CUDA=0, no NVJPEG)
+- Drop ffmpeg BuildRequires: video_reader was removed upstream
+- Switch the build to %pyproject_wheel / %pyproject_install
+- Run %check outside the source tree so the compiled _C extension
+  is imported
+- Declare runtime Requires for numpy, Pillow and torch (the
+  generator does not pick them up from this setuptools wheel)
+- Strip unused shebangs from imported .py modules
+
+-------------------------------------------------------------------
+Fri Aug 21 08:47:56 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Build against distro ffmpeg via pkgconfig(libavcodec) and friends instead of the retired ffmpeg-6 packages.
+
+-------------------------------------------------------------------
+Fri Jul 19 08:19:15 UTC 2024 - Christian Goll <cgoll@suse.com>
+
+- update to 0.18.1 with following highlights:
+  * torchvision.transforms.v2 is now stable and support image classification,
+    segmentation, detection, and video tasks.
+  * support for the CutMix and MixUp augmentations
+  * new Swin Transformer V2 architecture 
+  * a new Multi-weight support API for loading different weights to the
+    existing model 
+  * Optical Flow support and RAFT model
+  * RegNet and EfficientNet 
+- check the upstream changelog for more detailed descriptions
+ 
+-------------------------------------------------------------------
+Wed Nov  3 13:54:16 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not build for python 3.6: stack incomplete (nothing provides
+  python36-torch-devel >= 1.5.1).
+
+-------------------------------------------------------------------
+Thu Jan 21 23:29:42 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Fix python-rpm-macros usage
+
+-------------------------------------------------------------------
+Fri Oct  9 13:00:34 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Version 0.6.1
+
