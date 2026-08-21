@@ -1,0 +1,48 @@
+--- a/setup.py
++++ b/setup.py
+@@ -21,7 +21,9 @@
+ # Parse command-line early to check for --no-cuda flag
+ # This needs to happen before get_extensions() is called
+ # Usage: python setup.py install --no-cuda
+-BUILD_NO_CUDA = False
++# PEP 517 (pip wheel) does not put setup.py flags in sys.argv at import
++# time, so also honour the env var (mirrors COMFY_KITCHEN_BUILD_NO_HIP).
++BUILD_NO_CUDA = os.getenv("COMFY_KITCHEN_BUILD_NO_CUDA") == "1"
+ if "--no-cuda" in sys.argv:
+     BUILD_NO_CUDA = True
+     sys.argv.remove("--no-cuda")  # Remove so setuptools doesn't complain
+@@ -790,8 +792,11 @@
+     version = project_meta["version"]
+     description = project_meta.get("description", "")
+ 
++    # Do not pass packages= here: get_packages() temporarily moves the CUDA
++    # backend tree aside so discovery misses comfy_kitchen.backends.cuda, but
++    # comfy_kitchen/__init__.py always imports that package. Keep pyproject
++    # discovery so the Python CUDA wrapper (which degrades without _C) ships.
+     setup_kwargs.update({
+-        "packages": get_packages(),
+         "name": "comfy-kitchen",
+         "version": version,
+         "description": f"{description} (CPU-only)",
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -1,16 +1,10 @@
+ [build-system]
++# CPU/eager distro build: native CUDA/HIP backends are not compiled, so the
++# CMake/nanobind/ninja build-system requires (PyPI names, not in Factory) are
++# dropped. Re-add them if a CUDA/HIP backend is enabled.
+ requires = [
+     "setuptools>=61.0",
+     "wheel",
+-    "nanobind>=2.0.0",
+-    # setup.py drives both extensions through CMake. 3.21 is the HIP language's own
+-    # floor (CMAKE_HIP_ARCHITECTURES does not exist before it), but both backends
+-    # ask FindPython for Development.SABIModule, which arrived in 3.26.
+-    "cmake>=3.26",
+-    # The HIP extension pins the Ninja generator on every platform: CMake's default
+-    # generator on Windows is Visual Studio, which cannot build the HIP language.
+-    "ninja",
+-    "tomli; python_version < '3.11'",
+ ]
+ build-backend = "setuptools.build_meta"
+ 

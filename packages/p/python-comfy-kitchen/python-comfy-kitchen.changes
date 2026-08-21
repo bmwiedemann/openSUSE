@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Fri Aug 21 10:07:52 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- ExcludeArch %%{ix86} %%{arm} to match Factory python-torch, so
+  i586/armv7l stay excluded rather than unresolvable.
+
+-------------------------------------------------------------------
+Fri Aug 21 08:59:41 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package of python-comfy-kitchen 0.2.31:
+  * CPU/eager backend only; Factory python-torch is CPU-only and
+    has no CUDA flavor
+  * Add comfy-kitchen-cpu-only-build.patch
+  * Require python-torch >= 2.5.0 (eager backend imports torch)
+  * Drop CUDA *.h/*.cuh from the installed tree
+

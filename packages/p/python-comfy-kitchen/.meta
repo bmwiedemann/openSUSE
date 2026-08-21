@@ -1,0 +1,5 @@
+<package name="python-comfy-kitchen" project="openSUSE:Factory">
+  <title>Fast kernel library for ComfyUI (CPU/eager backend)</title>
+  <description>Comfy Kitchen is a kernel library for diffusion-model inference used by ComfyUI. This build ships the pure-Python eager (CPU) backend. Native CUDA and HIP extensions are not compiled: Factory python-torch is CPU-only and has no CUDA flavor.</description>
+  <url>https://github.com/Comfy-Org/comfy-kitchen</url>
+</package>
