@@ -11,7 +11,7 @@ spec alone.
 Bumping the version
 -------------------
 
-    ./opencode_vendor 1.18.16 --retrace
+    ./opencode_vendor 1.18.19 --retrace
 
 That one command produces every source the spec consumes:
 
@@ -76,7 +76,9 @@ keeps, out of the 995 that are left once the filtered install has had the
 platforms we do not build for removed. It is derived, not curated.
 `--retrace` runs the real build under strace, resolves every path it touched
 back to the package that owns it, prunes to that set and rebuilds to prove
-the result still links.
+the result still links. It applies opencode-relax-bun-version.patch so the
+trace can run under a bun that is not the one upstream pins, then reverses
+it so Source0 stays the upstream tree and Patch0 still applies at %prep.
 
 The install runs with `--cpu '*' --os '*'`. Bun 1.4 resolves
 optionalDependencies for the host platform alone, so an install done on
@@ -164,8 +166,8 @@ found and why the behaviour could not simply be configured off.
         OPENCODE_ALLOW_GRAMMAR_DOWNLOAD=1
 
 The fourth patch, opencode-relax-bun-version.patch, is unrelated and, as of
-1.18.18, inert. Upstream's build script fails unless bun satisfies a caret
-range around the version in the packageManager field: 1.18.18 pins bun@1.3.14
+1.18.19, inert. Upstream's build script fails unless bun satisfies a caret
+range around the version in the packageManager field: 1.18.19 pins bun@1.3.14
 and Factory has 1.4.0, which satisfies ^1.3.14, so the check passes and the
 patch changes nothing. Keep it anyway. Both versions float independently, a
 distribution ships one bun, and the day either side crosses a major the check
@@ -199,10 +201,10 @@ Licensing
 ---------
 
 The dependency tree is compiled into the executable, so its licences are part
-of the binary and the License: tag has to cover all of them. As of 1.18.18,
-across the 507 shipped packages:
+of the binary and the License: tag has to cover all of them. As of 1.18.19,
+across the 508 shipped packages:
 
-    MIT 295, Apache-2.0 108, ISC 75, BSD-2-Clause 9, BlueOak-1.0.0 9,
+    MIT 293, Apache-2.0 111, ISC 75, BSD-2-Clause 9, BlueOak-1.0.0 9,
     BSD-3-Clause 6, 0BSD 1, CC0-1.0 1, CC-BY-3.0 1, CC-BY-4.0 1
 
 No copyleft, nothing non-free. Two declarations are inconsistent and neither

@@ -13,7 +13,7 @@
 #
 # Run it on a version bump, not by the package build:
 #
-#     ./opencode_vendor 1.18.15
+#     ./opencode_vendor 1.18.19
 #
 # It needs bun (the same one the package builds with), zstd and curl. See
 # README.SUSE-maint for what each step is for and how to review the result.

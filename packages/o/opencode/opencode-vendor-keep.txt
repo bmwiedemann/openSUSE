@@ -6,7 +6,7 @@
 @agentclientprotocol+sdk@0.21.0+d6123d32214422cb
 @ai-sdk+alibaba@1.0.17+d6123d32214422cb
 @ai-sdk+amazon-bedrock@4.0.112+d6123d32214422cb
-@ai-sdk+anthropic@3.0.77+d6123d32214422cb
+@ai-sdk+anthropic@3.0.110+d6123d32214422cb
 @ai-sdk+anthropic@3.0.81+d6123d32214422cb
 @ai-sdk+anthropic@3.0.82+d6123d32214422cb
 @ai-sdk+azure@3.0.88+d6123d32214422cb
@@ -16,7 +16,8 @@
 @ai-sdk+deepinfra@2.0.41+d6123d32214422cb
 @ai-sdk+deepseek@2.0.47+d6123d32214422cb
 @ai-sdk+gateway@3.0.104+d6123d32214422cb
-@ai-sdk+google-vertex@4.0.128+681b88a6fb77e557
+@ai-sdk+google-vertex@4.0.181+681b88a6fb77e557
+@ai-sdk+google@3.0.108+d6123d32214422cb
 @ai-sdk+google@3.0.73+d6123d32214422cb
 @ai-sdk+groq@3.0.31+d6123d32214422cb
 @ai-sdk+mistral@3.0.51+d6123d32214422cb
@@ -35,10 +36,12 @@
 @ai-sdk+provider-utils@4.0.35+d6123d32214422cb
 @ai-sdk+provider-utils@4.0.38+d6123d32214422cb
 @ai-sdk+provider-utils@4.0.40+d6123d32214422cb
+@ai-sdk+provider-utils@4.0.45+d6123d32214422cb
 @ai-sdk+provider@3.0.10
 @ai-sdk+provider@3.0.12
 @ai-sdk+provider@3.0.13
 @ai-sdk+provider@3.0.14
+@ai-sdk+provider@3.0.15
 @ai-sdk+provider@3.0.8
 @ai-sdk+togetherai@2.0.41+d6123d32214422cb
 @ai-sdk+vercel@2.0.39+d6123d32214422cb
@@ -200,8 +203,7 @@ abbrev@4.0.0
 abstract-logging@2.0.1
 acorn@8.15.0
 agent-base@7.1.4
-ai-gateway-provider@3.1.2+856220a6eb86af76
-ai-gateway-provider@3.1.2+a6631614dda8d488
+ai-gateway-provider@3.2.0+a6631614dda8d488
 ai@6.0.168+d6123d32214422cb
 ajv-formats@3.0.1
 ajv@8.20.0
@@ -296,8 +298,7 @@ gensync@1.0.0-beta.2
 get-caller-file@2.0.5
 get-east-asian-width@1.6.0
 get-stream@8.0.1
-gitlab-ai-provider@6.12.1+6dfbf2eb88514315
-gitlab-ai-provider@6.12.1+d569ba182567bf10
+gitlab-ai-provider@6.12.1+73b0dab39db04f21
 glob@13.0.5
 glob@9.3.5
 google-auth-library@10.5.0+759ce506b1ed1a42

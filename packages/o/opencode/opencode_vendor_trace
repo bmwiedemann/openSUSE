@@ -98,3 +98,8 @@ echo "    rebuilding against the pruned tree"
   MODELS_DEV_API_JSON="$models" OPENCODE_CHANNEL=latest OPENCODE_VERSION=0.0.0 \
   bun run ./script/build.ts --single --skip-install --skip-embed-web-ui >/dev/null )
 echo "    pruned tree builds"
+
+# The patch is only so the retrace build can run under a bun that is not the
+# one upstream pins. Reverse it so Source0 stays the upstream tree and Patch0
+# still applies at %prep.
+( cd "$tree" && patch -p1 -s -R < "$here/opencode-relax-bun-version.patch" )

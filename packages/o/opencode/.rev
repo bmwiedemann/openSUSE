@@ -63,4 +63,30 @@ both. rpmlint: 0 errors, 0 badness, 1 warning
 bun build --compile executable).</comment>
     <requestid>1371300</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0909c4ffad4d476086941c605f278bbd</srcmd5>
+    <version>1.18.19</version>
+    <time>1787324011</time>
+    <user>anag_factory</user>
+    <comment>Thu Aug 20 18:47:55 UTC 2026 - Martin Pluskal &lt;mpluskal@suse.com&gt;
+
+- Update to version 1.18.19:
+  * Cloudflare AI Gateway models get native OpenAI and Anthropic
+    passthroughs, Codex rate limits match ChatGPT subscriptions,
+    and ChatGPT workspace compute residency is forwarded.
+  * Drop built-in Qwen sampling defaults that could send
+    unsupported settings, ignore malformed model prices instead of
+    breaking cost calculation, and fall back when OpenAI websocket
+    requests exceed the message size limit.
+  * /connect lists authenticated providers, the default Console URL
+    is updated, web search works with the OpenCode Go provider, and
+    v1 session databases stay readable.
+  * Grep previews keep unicode characters.
+- Retrace the vendor keep list (508 to 509 store entries). The SPDX
+  license set is unchanged and still contains no copyleft.
+- Reverse opencode-relax-bun-version.patch after --retrace so
+  Source0 stays the upstream tree and Patch0 still applies at
+  %prep.</comment>
+    <requestid>1372626</requestid>
+  </revision>
 </revisionlist>

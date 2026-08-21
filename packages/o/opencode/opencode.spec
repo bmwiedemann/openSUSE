@@ -35,19 +35,19 @@
 %global node_arch arm64
 %endif
 Name:           opencode
-Version:        1.18.18
+Version:        1.18.19
 Release:        0
 Summary:        AI coding agent for the terminal
 # opencode itself is MIT. The npm dependency tree is compiled into the
 # executable, so its licences are part of the binary; see README.SUSE-maint
 # for how the expression below is derived and rechecked on a bump.
-# Legal-Review-Notice: rederived for 1.18.18 from the declared license field
-# of all 507 packages in the vendor tarball. No copyleft of any kind, and the
-# closure is unchanged from 1.18.15 down to name@version. Two conclusions are
-# not visible from the packages themselves: poe-oauth 0.0.8 declares no
-# licence and ships no text, its MIT grant comes from the upstream repository
-# root; caniuse-lite is CC-BY-4.0, whose attribution clause is why %%prep
-# installs its LICENSE separately.
+# Legal-Review-Notice: rederived for 1.18.19 from the declared license field
+# of all 508 unique packages in the vendor tarball (509 store entries). No
+# copyleft of any kind. The SPDX set is unchanged from 1.18.18. Two
+# conclusions are not visible from the packages themselves: poe-oauth 0.0.8
+# declares no licence and ships no text, its MIT grant comes from the
+# upstream repository root; caniuse-lite is CC-BY-4.0, whose attribution
+# clause is why %%prep installs its LICENSE separately.
 License:        0BSD AND Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND BlueOak-1.0.0 AND CC-BY-3.0 AND CC-BY-4.0 AND CC0-1.0 AND ISC AND MIT
 URL:            https://opencode.ai
 # Not the upstream tarball. Upstream ships the web console, the desktop app
