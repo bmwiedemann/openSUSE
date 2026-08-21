@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug 20 18:40:38 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2.1.2:
+  * Keep machine-readable output locale-independent so XML
+    dumps, JSON/CSV exports and parsed values always use '.'
+    as the decimal separator, including under comma-decimal
+    locales (gh#krrishnarraj/clpeak#199).
+
+-------------------------------------------------------------------
 Wed Aug 19 07:25:58 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 2.1.1:

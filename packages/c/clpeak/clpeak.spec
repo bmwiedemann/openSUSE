@@ -18,7 +18,7 @@
 
 
 Name:           clpeak
-Version:        2.1.1
+Version:        2.1.2
 Release:        0
 Summary:        Find peak OpenCL capacities like bandwidth & compute
 # Legal-Review-Notice: upstream relicensed from the Unlicense to Apache-2.0
@@ -46,7 +46,7 @@ bandwidth & compute.
 %prep
 %autosetup -p1
 # GitHub archives have no .git, so git-describe is unavailable and
-# version.cmake's hardcoded fallback is stale (still 2.0.16 in 2.1.1).
+# version.cmake's hardcoded fallback is stale (still 2.0.16 in 2.1.2).
 # gh#krrishnarraj/clpeak#198
 sed -i 's/set(CLPEAK_VERSION_FALLBACK ".*")/set(CLPEAK_VERSION_FALLBACK "%{version}")/' \
     src/common/cmake/version.cmake

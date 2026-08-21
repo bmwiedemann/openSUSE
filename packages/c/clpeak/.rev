@@ -198,4 +198,18 @@ clean.</comment>
 </comment>
     <requestid>1371923</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>7fca8f0a3416dd15140237113047c919</srcmd5>
+    <version>2.1.2</version>
+    <time>1787324180</time>
+    <user>anag_factory</user>
+    <comment>Thu Aug 20 18:40:38 UTC 2026 - Martin Pluskal &lt;mpluskal@suse.com&gt;
+
+- Update to 2.1.2:
+  * Keep machine-readable output locale-independent so XML
+    dumps, JSON/CSV exports and parsed values always use '.'
+    as the decimal separator, including under comma-decimal
+    locales (gh#krrishnarraj/clpeak#199).</comment>
+    <requestid>1372634</requestid>
+  </revision>
 </revisionlist>
