@@ -304,4 +304,12 @@
     <comment>Qt 6.11.1 (+ backports) (forwarded request 1354945 from krop)</comment>
     <requestid>1355431</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>7da33a623e9075939a183ffccf97f4ac</srcmd5>
+    <version>6.11.2</version>
+    <time>1787323864</time>
+    <user>anag_factory</user>
+    <comment>Qt 6.11.2 (forwarded request 1372096 from krop)</comment>
+    <requestid>1372253</requestid>
+  </revision>
 </revisionlist>
