@@ -16,6 +16,7 @@
 #
 
 
+%define python_subpackage_only 1
 %define         _name json
 Name:           tree-sitter-json
 Version:        0.24.8
@@ -24,11 +25,27 @@ Summary:        Json grammar for tree-sitter
 License:        MIT
 URL:            https://github.com/tree-sitter/tree-sitter-json
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildRequires:  tree-sitter
+BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module installer}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 %treesitter_grammars %{_name}
+%python_subpackages
 
 %description
 %{summary}.
+
+%package -n python-%{name}
+Summary:        Python binding for the %{name} grammar
+Suggests:       python-tree-sitter
+
+%description -n python-%{name}
+The tree_sitter_* Python module for the %{name} grammar, loadable
+with the Language()/Parser() API from python-tree-sitter.
 
 %prep
 %autosetup
@@ -36,15 +53,21 @@ BuildRequires:  tree-sitter
 %build
 %treesitter_configure
 %treesitter_build
+%treesitter_python_build
 
 %install
 %treesitter_install
 %treesitter_devel_install
+%treesitter_python_install
 
 %files
 %license LICENSE
 %treesitter_files
 
 %treesitter_devel_package
+
+%files %{python_files %{name}}
+%license LICENSE
+%{python_sitearch}/tree_sitter_*
 
 %changelog
