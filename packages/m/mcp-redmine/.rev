@@ -13,4 +13,16 @@ clean). The matching delete request for openSUSE:Factory/redmine-mcp is
 SR 1369199.</comment>
     <requestid>1369214</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e8915f8a6e7d56240be7dde47f8317d9</srcmd5>
+    <version>2026.8.1.2543</version>
+    <time>1787324013</time>
+    <user>anag_factory</user>
+    <comment>Thu Aug 20 18:42:24 UTC 2026 - Martin Pluskal &lt;mpluskal@suse.com&gt;
+
+- Update to version 2026.8.1.2543:
+  * Clarify redmine_download: save_path is a file path (not a
+    directory); filename only affects the Redmine download URL</comment>
+    <requestid>1372629</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 20 18:42:24 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2026.8.1.2543:
+  * Clarify redmine_download: save_path is a file path (not a
+    directory); filename only affects the Redmine download URL
+
+-------------------------------------------------------------------
 Mon Aug  3 07:50:06 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Rename the package from redmine-mcp to mcp-redmine, which is what

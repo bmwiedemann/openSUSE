@@ -20,7 +20,7 @@
 # it against the distribution's primary Python flavour.
 %define pythons %{primary_python}
 Name:           mcp-redmine
-Version:        2026.1.13.152335
+Version:        2026.8.1.2543
 Release:        0
 Summary:        Model Context Protocol server for Redmine
 License:        MPL-2.0
