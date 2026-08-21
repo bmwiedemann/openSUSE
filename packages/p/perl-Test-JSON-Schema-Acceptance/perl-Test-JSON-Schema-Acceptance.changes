@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Aug 16 05:44:13 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.38.0 (1.038)
+   see /usr/share/doc/packages/perl-Test-JSON-Schema-Acceptance/Changes
+
+  1.038     2026-08-16 00:22:45Z
+          - removed dependency on Ref::Util
+          - updated test suite:
+            https://github.com/json-schema-org/JSON-Schema-Test-Suite/compare/75995a1c8112322024d5c04a5eac27813aeb46f0...6648e8194c69697b2e1a15fe76a06a480b183a51
+
+-------------------------------------------------------------------
 Thu Jan 22 05:49:32 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.37.0 (1.037)

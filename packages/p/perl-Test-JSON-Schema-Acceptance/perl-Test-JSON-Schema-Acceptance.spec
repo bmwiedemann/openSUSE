@@ -18,10 +18,10 @@
 
 %define cpan_name Test-JSON-Schema-Acceptance
 Name:           perl-Test-JSON-Schema-Acceptance
-Version:        1.37.0
+Version:        1.38.0
 Release:        0
-# 1.037 -> normalize -> 1.37.0
-%define cpan_version 1.037
+# 1.038 -> normalize -> 1.38.0
+%define cpan_version 1.038
 License:        MIT
 Summary:        Acceptance testing for JSON-Schema based validators
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -36,16 +36,12 @@ BuildRequires:  perl(File::ShareDir::Install) >= 0.60
 BuildRequires:  perl(Git::Wrapper)
 BuildRequires:  perl(JSON::PP) >= 4.11
 BuildRequires:  perl(List::Util) >= 1.33
-BuildRequires:  perl(Mojo::JSON)
 BuildRequires:  perl(Mojolicious) >= 7.870
 BuildRequires:  perl(Moo)
 BuildRequires:  perl(MooX::TypeTiny) >= 0.2.2
 BuildRequires:  perl(Path::Tiny) >= 0.69
-BuildRequires:  perl(Ref::Util)
-BuildRequires:  perl(Test2::API)
 BuildRequires:  perl(Test2::Suite) >= 0.000131
 BuildRequires:  perl(Test2::Todo)
-BuildRequires:  perl(Test2::Tools::Compare)
 BuildRequires:  perl(Test2::Tools::Exception)
 BuildRequires:  perl(Test2::V0)
 BuildRequires:  perl(Test2::Warnings)
@@ -57,7 +53,6 @@ BuildRequires:  perl(Types::Standard) >= 1.16.3
 BuildRequires:  perl(autovivification)
 BuildRequires:  perl(builtin::compat)
 BuildRequires:  perl(experimental)
-BuildRequires:  perl(feature)
 BuildRequires:  perl(namespace::clean)
 BuildRequires:  perl(stable) >= 0.031
 BuildRequires:  perl(strictures) >= 2
@@ -66,20 +61,15 @@ Requires:       perl(File::ShareDir)
 Requires:       perl(Git::Wrapper)
 Requires:       perl(JSON::PP) >= 4.11
 Requires:       perl(List::Util) >= 1.33
-Requires:       perl(Mojo::JSON)
 Requires:       perl(Mojolicious) >= 7.870
 Requires:       perl(Moo)
 Requires:       perl(MooX::TypeTiny) >= 0.2.2
 Requires:       perl(Path::Tiny) >= 0.69
-Requires:       perl(Ref::Util)
-Requires:       perl(Test2::API)
 Requires:       perl(Test2::Todo)
-Requires:       perl(Test2::Tools::Compare)
 Requires:       perl(Types::Common::Numeric)
 Requires:       perl(Types::Standard) >= 1.16.3
 Requires:       perl(autovivification)
 Requires:       perl(experimental)
-Requires:       perl(feature)
 Requires:       perl(namespace::clean)
 Requires:       perl(stable) >= 0.031
 Requires:       perl(strictures) >= 2
