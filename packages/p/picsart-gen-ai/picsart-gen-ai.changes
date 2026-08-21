@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Thu Aug 13 11:15:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Rename the package from gen-ai to picsart-gen-ai, following a
+  review comment on the Factory submission: the tool is a client for
+  one specific hosted service and should not hold the generic name
+  * The installed command stays /usr/bin/gen-ai, which is what
+    upstream's documentation and npx invocations use; only the RPM
+    name is qualified with the service
+  * Obsolete gen-ai up to 2.60.1, the only version it ever shipped, so
+    a copy installed from the devel project is replaced instead of
+    co-installed; the bound is frozen rather than tracking the version,
+    and the generic name is deliberately not provided back, since
+    either would keep laying claim to a name this rename gives up
+  * Introduce an npm_name macro for the upstream tarball, the nodejs
+    module directory and the command, all of which keep the upstream
+    name now that the package name differs from it
+
+-------------------------------------------------------------------
+Mon Aug 10 18:03:30 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package (version 2.60.1):
+  * Command line client for Picsart's generative AI service, which
+    creates and edits images, video and audio from the terminal
+  * Interactive picker for models and their parameters, batch re-runs
+    of failed jobs and a browsable history of past generations
+  * Requires a Picsart account; nothing is generated locally
+- Package the published npm bundle rather than the git tree: upstream
+  inlines two dependencies from a private registry that cannot be
+  resolved downstream, so the git tree does not build outside Picsart
+- Vendor the runtime dependencies with the node_modules OBS service:
+  package-lock.json is the input, node_modules.obscpio the offline
+  tarball set consumed by local-npm-registry at build time

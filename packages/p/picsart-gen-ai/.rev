@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>515ad661cfdf83d47ec2438d3366cdbb</srcmd5>
+    <version>2.60.1</version>
+    <time>1787323937</time>
+    <user>anag_factory</user>
+    <comment>New package: picsart-gen-ai 2.60.1, Picsart's CLI for their generative AI
+service.
+
+This replaces SR 1370570, which submitted the same sources under the name
+gen-ai and has been revoked. Reviewer bigironman asked there: &quot;Since this
+is specific to one service, is the package name really a good idea ?&quot; That
+is a fair objection - the tool is a client for one specific hosted service
+and should not hold a generic name - so the package is renamed to
+picsart-gen-ai. devel:tools/gen-ai has been deleted.
+
+The installed command deliberately stays /usr/bin/gen-ai. That is upstream's
+own CLI name, the one all upstream documentation and every npx invocation
+use, so renaming it would diverge from upstream for no gain; the RPM name is
+what carries the service qualification. This follows the usual practice of
+not renaming upstream commands (git-core ships /usr/bin/git, python3-pip
+ships /usr/bin/pip). The package ships no man page, shell completion or
+desktop file, so /usr/bin/gen-ai and the module directory are its only
+claims on the name, and no other package in OBS ships a binary called
+gen-ai. A spec comment above the symlink records the choice so it can be
+pushed back on.
+
+The upstream tarball, the @picsart/gen-ai directory under
+/usr/lib/node_modules and the command all keep the upstream name through an
+npm_name macro, so the built payload is identical to what 1370570 carried
+apart from the docdir and licensedir paths.
+
+There is an Obsoletes on gen-ai for anyone who installed it from
+devel:tools, but deliberately no matching Provides: providing the generic
+name back would undo the point of the rename, and nothing requires it. That
+is why rpmlint reports obsolete-not-provided - it is intended, and the spec
+says so. The bound is version-only (gen-ai &lt;= %{version}) because both
+packages build at the same release in the devel project, so a
+release-qualified &quot;&lt;&quot; would compare equal and never fire.
+
+Generates and edits images, video and audio from the terminal against
+Picsart's hosted API (a Picsart account is required; nothing runs locally).
+MIT, noarch, pure JavaScript on nodejs &gt;= 22.
+
+Packaged from the published npm bundle: the upstream git tree inlines two
+dependencies from a private registry (@pulse/core, @pulse/server) that are
+not publishable to npm, so only the published artifact is buildable
+downstream. Runtime dependencies are vendored with the node_modules OBS
+service (package-lock.json + node_modules.obscpio consumed offline by
+local-npm-registry at build time), one Source URL per dependency in
+node_modules.spec.inc. The License tag covers the vendored tree; the
+derivation is recorded in a Legal-Review-Notice comment above it.
+
+Built green natively on aarch64, rpmlint 0 errors / 0 badness, the check
+section runs the packaged CLI.</comment>
+    <requestid>1371038</requestid>
+  </revision>
+</revisionlist>
