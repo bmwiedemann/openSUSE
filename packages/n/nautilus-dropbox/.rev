@@ -207,4 +207,15 @@
     <comment>Push from SCM</comment>
     <requestid>1343036</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>5a50225cab3fc44ed4ae865be2082c67</srcmd5>
+    <version>2026.05.06</version>
+    <time>1787343455</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2026.05.06:
+  + Update deps for later Debian/Ubuntu versions.
+- Changes from version 2026.03.20:
+  + Add Fedora 45 to supported distros list.</comment>
+    <requestid>1372909</requestid>
+  </revision>
 </revisionlist>
