@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Aug 21 09:37:37 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.9:
+  * Bump ubuntu version in build workflow
+  * A new configuration option `trust_per_page` allows
+    controlling how pagination is handled
+  * PyPi: https://pypi.org/project/python3-discogs-client/2.9/
+
+-------------------------------------------------------------------
 Sun Jul 13 13:39:26 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.8:

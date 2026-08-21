@@ -72,4 +72,16 @@
 - Update to 2.3.0</comment>
     <requestid>1292513</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4edd1a03bc0316aff80e62f8bd444c1d</srcmd5>
+    <version>2.9</version>
+    <time>1787324389</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.9:
+  * Bump ubuntu version in build workflow
+  * A new configuration option `trust_per_page` allows
+    controlling how pagination is handled
+  * PyPi: https://pypi.org/project/python3-discogs-client/2.9/</comment>
+    <requestid>1372740</requestid>
+  </revision>
 </revisionlist>

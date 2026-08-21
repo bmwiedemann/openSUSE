@@ -1,7 +1,7 @@
 #
 # spec file for package python-discogs-client
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2015 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           python-discogs-client
-Version:        2.8
+Version:        2.9
 Release:        0
 Summary:        Python API client for Discogs
 License:        BSD-2-Clause
