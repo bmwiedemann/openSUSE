@@ -18,7 +18,7 @@
 
 
 Name:           gromit-mpx
-Version:        1.8.0
+Version:        1.9.0
 Release:        0
 Summary:        A desktop annotation tool
 License:        GPL-2.0-or-later

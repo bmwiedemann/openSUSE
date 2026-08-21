@@ -15,4 +15,15 @@
     <comment></comment>
     <requestid>1334276</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>aaaede6e948014f971d39a41e9d46031</srcmd5>
+    <version>1.9.0</version>
+    <time>1787343451</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.9.0:
+  + Added functionality to show a length label when drawing lines
+  + Fixed a minimal memleak in the client program
+  + Updated translations</comment>
+    <requestid>1372901</requestid>
+  </revision>
 </revisionlist>
