@@ -19,16 +19,17 @@
 %bcond_with test_extras
 %{?sle15_python_module_pythons}
 Name:           python-imageio
-Version:        2.37.3
+Version:        2.37.4
 Release:        0
 Summary:        Python library for reading and writing image, video, and related formats
 License:        BSD-2-Clause
 URL:            https://github.com/imageio/imageio
 Source0:        https://files.pythonhosted.org/packages/source/i/imageio/imageio-%{version}.tar.gz
 BuildRequires:  %{python_module Pillow >= 8.3.2}
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module numpy >= 2}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools >= 61.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -109,7 +110,7 @@ donttest+=" or test_gif"
 
 %files %{python_files}
 %license LICENSE
-%doc CONTRIBUTORS.txt README.md
+%doc README.md
 %{python_sitelib}/imageio
 %{python_sitelib}/imageio-%{version}*-info
 %python_alternative %{_bindir}/imageio_download_bin

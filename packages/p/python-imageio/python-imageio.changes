@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Aug 21 10:04:26 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.37.4:
+  * Set filename parameter of FileNotFoundError exception
+  * Fix typos in docstrings and comments
+  * Bump aiohttp from 3.13.3 to 3.13.4
+  * Bump aiohttp from 3.13.4 to 3.14.1
+  * Bump black from 26.3.0 to 26.3.1
+  * Bump gdal from 3.12.2 to 3.13.1
+  * Bump idna from 3.11 to 3.15
+  * Bump pygments from 2.19.2 to 2.20.0
+  * Bump requests from 2.32.5 to 2.33.0
+  * Bump soupsieve from 2.8.3 to 2.8.4
+  * Bump urllib3 from 2.6.3 to 2.7.0
+  * Set readme content-type in project metadata
+  * Update CI to support new dependency versions
+
+-------------------------------------------------------------------
 Tue Mar 10 21:40:40 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.37.3:
