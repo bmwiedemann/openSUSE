@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Aug 20 11:47:54 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.4.10:
+  + Rewrite locale migration to use fd-based traversal
+  + Various improvements to tests
+- Changes from version 1.4.9:
+  + Fix various leaks found by ASAN
+  + Fix various build warnings and fix the build with GCC 15 and
+    GLIBC 2.43
+
+-------------------------------------------------------------------
 Mon Apr 20 01:12:44 UTC 2026 - Yifan Jiang <yfjiang@suse.com>
 
 - Update to version 1.4.8:

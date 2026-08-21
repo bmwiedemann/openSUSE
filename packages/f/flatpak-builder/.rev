@@ -383,4 +383,18 @@
     <comment>Update version</comment>
     <requestid>1348430</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>cfa0c35c028648330c41d34fb5b2157a</srcmd5>
+    <version>1.4.10</version>
+    <time>1787343440</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.10:
+  + Rewrite locale migration to use fd-based traversal
+  + Various improvements to tests
+- Changes from version 1.4.9:
+  + Fix various leaks found by ASAN
+  + Fix various build warnings and fix the build with GCC 15 and
+    GLIBC 2.43</comment>
+    <requestid>1372896</requestid>
+  </revision>
 </revisionlist>
