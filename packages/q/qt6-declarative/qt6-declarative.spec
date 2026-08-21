@@ -21,7 +21,7 @@
 %define _lto_cflags %{nil}
 %endif
 
-%define real_version 6.11.1
+%define real_version 6.11.2
 %define short_version 6.11
 %define tar_name qtdeclarative-everywhere-src
 %define tar_suffix %{nil}
@@ -32,7 +32,7 @@
 %endif
 #
 Name:           qt6-declarative%{?pkg_suffix}
-Version:        6.11.1
+Version:        6.11.2
 Release:        0
 Summary:        Qt 6 Declarative Libraries and tools
 License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
@@ -41,8 +41,6 @@ Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{r
 Source99:       qt6-declarative-rpmlintrc
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-qmlimportscanner-Include-module-versions-again.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-QQmlTableInstanceModel-refactor-QModelIndex-calculat.patch
 BuildRequires:  memory-constraints
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
@@ -1071,6 +1069,14 @@ mkdir -p %{buildroot}%{_qt6_importsdir}
 # CMake files are not needed for plugins
 rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,Targets}*.cmake
+
+# Qmltc static library used internally
+rm %{buildroot}%{_qt6_libdir}/libQt6Qmltc.{a,prl}
+rm %{buildroot}%{_qt6_descriptionsdir}/QmltcPrivate.json
+rm %{buildroot}%{_qt6_metatypesdir}/qt6qmltcprivate_metatypes.json
+rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_qmltc_private.pri
+rm -r %{buildroot}%{_qt6_cmakedir}/Qt6QmltcPrivate
+rm -r %{buildroot}%{_qt6_includedir}/QtQmltc
 
 %ldconfig_scriptlets -n libQt6LabsAnimation6
 %ldconfig_scriptlets -n libQt6LabsFolderListModel6

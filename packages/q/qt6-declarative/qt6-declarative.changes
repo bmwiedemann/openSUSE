@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 18 11:48:34 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.11.2
+  https://www.qt.io/blog/qt-6.11.2-released
+- Drop patch, merged upstream:
+  * 0001-QQmlTableInstanceModel-refactor-QModelIndex-calculat.patch
+
+-------------------------------------------------------------------
 Sun May 24 07:28:59 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream fix (kde#520252)
