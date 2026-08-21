@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Aug 19 07:46:39 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.2.16
+  * GUI: Updated Catalan translations
+  * GUI: Fixed OVF import warning visibility
+  * GUI: Added graceful handling of inaccessible VMs
+  * Graphics: VMSVGA 3D performance improvements
+  * Video Recording: Fixed a hang when stopping recording after a
+    large number of display updates
+  * Host: OpenSSL 4.0 build fixes
+  * Linux Host: Support for FRED
+  * Linux Host and Guest: Improvements in shared clipboard handling
+    in Wayland
+
+-------------------------------------------------------------------
 Thu Aug 13 08:45:55 UTC 2026 - Robert Frohl <rfrohl@suse.com>
 
 - Fix kmp build against kernel-longterm 6.18.44+, where the

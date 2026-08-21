@@ -2933,4 +2933,12 @@ we must have vb7.1.10.</comment>
     adding kernel-longterm_6-18-44.patch</comment>
     <requestid>1371172</requestid>
   </revision>
+  <revision rev="314" vrev="1">
+    <srcmd5>5c51709aa3d55006c1c095dc77dc1f0f</srcmd5>
+    <version>7.2.16</version>
+    <time>1787323785</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 7.2.16</comment>
+    <requestid>1371978</requestid>
+  </revision>
 </revisionlist>

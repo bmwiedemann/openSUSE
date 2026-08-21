@@ -69,7 +69,7 @@
 %endif
 
 Name:           virtualbox%{?dash}%{?name_suffix}
-Version:        7.2.14
+Version:        7.2.16
 Release:        0
 Summary:        %{package_summary}
 License:        GPL-3.0-only
@@ -79,12 +79,8 @@ Group:          System/Kernel
 Group:          System/Emulators/PC
 %endif
 URL:            https://www.virtualbox.org/
-#
-# so you don't need to repack virtualbox by hand, just add new release of VirtualBox-x.x.x.tar.bz2 and line below with
-# script virtualbox-patch-source.sh will do the job :)
-# WARNING: This is not a comment, but the real command to repack source
-#%%(bash %%{_sourcedir}/virtualbox-patch-source.sh VirtualBox-%%{version}.tar.bz2)
-#Source:        https://download.virtualbox.org/virtualbox/7.1.8/VirtualBox-7.1.8.tar.bz2
+# Replenish by running ./virtualbox-patch-source.sh VirtualBox-%%{version}.tar.bz2
+#Source:        https://download.virtualbox.org/virtualbox/7.2.16/VirtualBox-7.2.16.tar.bz2
 Source0:        VirtualBox-%{version}-patched.tpxz
 Source1:        UserManual.pdf
 Source3:        virtualbox-60-vboxguest.rules
