@@ -1,7 +1,7 @@
 #
 # spec file for package python-gql
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,16 +19,14 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-gql
-Version:        3.5.3
+Version:        4.0.0
 Release:        0
 Summary:        GraphQL client for Python
 License:        MIT
 URL:            https://gql.readthedocs.io
 Source:         https://github.com/graphql-python/gql/archive/refs/tags/v%{version}.tar.gz#/gql-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM Based on gh#graphql-python/gql#504
-Patch0:         fix-tests.patch
-# PATCH-FIX-UPSTREAM Based on gh#graphql-python/gql#537
-Patch1:         support-new-pytest-asyncio.patch
+# PATCH-FIX-UPSTEAM tests.patch gh#graphql-python/gql@3b2c396
+Patch0:         tests.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -36,15 +34,18 @@ BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
+BuildRequires:  ca-certificates
 BuildRequires:  %{python_module aiofiles}
 BuildRequires:  %{python_module aiohttp}
-BuildRequires:  %{python_module anyio}
-BuildRequires:  %{python_module backoff >= 1.10.0}
+BuildRequires:  %{python_module anyio >= 3.0 with %python-anyio  < 5}
+BuildRequires:  %{python_module backoff >= 1.10.1 with %python-backoff < 3.0}
 BuildRequires:  %{python_module botocore}
+BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module flake8-import-order}
 BuildRequires:  %{python_module flake8}
-BuildRequires:  %{python_module graphql-core >= 3.2 with %python-graphql-core < 3.4}
+BuildRequires:  %{python_module graphql-core >= 3.2 with %python-graphql-core < 3.3}
 BuildRequires:  %{python_module httpx}
+BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module parse}
 BuildRequires:  %{python_module pycodestyle}
 BuildRequires:  %{python_module pylama}
@@ -56,13 +57,14 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests-toolbelt}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module websockets}
-BuildRequires:  %{python_module yarl}
+BuildRequires:  %{python_module yarl >= 1.6 with %python-yarl < 2}
+BuildRequires:  ca-certificates-mozilla
 # /SECTION
 Requires:       alts
-Requires:       python-anyio
-Requires:       python-backoff >= 1.11.1
-Requires:       python-yarl >= 1.6
-Requires:       (python-graphql-core >= 3.2 with python-graphql-core < 3.4)
+Requires:       (python-anyio >= 3.0 with python-anyio < 5)
+Requires:       (python-backoff >= 1.11.1 with python-backoff < 3.0)
+Requires:       (python-graphql-core >= 3.2 with python-graphql-core < 3.3)
+Requires:       (python-yarl >= 1.6 with python-yarl < 2)
 BuildArch:      noarch
 %python_subpackages
 
@@ -85,7 +87,12 @@ rm -Rf gql-checker
 
 %check
 # skip some non-functional tests
-%pytest -k "not (test_aiohttp_using_cli_ep or test_cli_ep_version or test_httpx_using_cli_ep or test_async_client_validation)"
+IGNORED_CHECKS='test_aiohttp_using_cli_ep'
+IGNORED_CHECKS+=' or test_cli_ep_version'
+IGNORED_CHECKS+=' or test_httpx_using_cli_ep'
+IGNORED_CHECKS+=' or test_async_client_validation'
+
+%pytest -k "not (network or ${IGNORED_CHECKS})"
 
 %pre
 %python_libalternatives_reset_alternative gql-cli

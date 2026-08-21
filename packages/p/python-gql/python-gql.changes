@@ -1,4 +1,96 @@
 -------------------------------------------------------------------
+Tue Jul  7 05:59:54 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 4.0.0:
+  * Breaking Changes
+    * Change transports prototype using GraphQLRequest (#551)
+    * Using GraphQLRequest instead of DocumentNode for gql,
+      execute, subscribe methods (#556):
+      This is a big change:
+      - the gql and dsl_gql methods will now return a
+        GraphQLRequest instead of a Document Node a GraphQLRequest
+        is an object containing the document and optional
+        variable_values and operation_name
+      - ALL the execute and subscribe methods now receive a
+        GraphQLRequest as main argument instead of a DocumentNode,
+        variable_values and operation_name arguments
+      - The old method of sending variable_values as an argument of
+        execute or subscribe still works but is deprecated
+        See
+        https://gql.readthedocs.io/en/latest/usage/variables.html
+        for the new syntax.
+    * Fix subscription task cancel exception swallow (#548):
+      Previously if a task was cancelled while a subscription task
+      was active, the asyncio.CancelledError Exception would be
+      swallowed by our code.
+      This is not the case anymore so you should now trap that
+      Exception yourself.
+    * Clean up the file upload interface with FileVar class (#549):
+      The file upload functionality has been modified to require
+      FileVar instances for uploaded files (the old method still
+      works but is deprecated).
+      See
+      https://gql.readthedocs.io/en/latest/usage/file_upload.html
+    * Set logging level to DEBUG for all transports (#552)
+    * introspection now requests deprecated input fields by default
+      (#553)
+      Note that some backends might not support this and return
+      Unknown argument includeDeprecated. See #564
+    * Trapping dependencies Exceptions into
+      TransportConnectionFailed (#558):
+      Now gql will trap Exceptions raised by dependencies when
+      executing a request and will encapsulate that Exception into
+      the TransportConnectionFailed Exception
+    * Set ssl=True by default for AIOHTTPTransport (#538) (issue
+      #529)
+    * New TransportConnectionClosed Exception replacing
+      ConnectionClosed Exception (#536)
+    * websocket attribute removed from transport, now using
+      '_connected' instead (#536)
+    * Upgrade lastest websockets and Exceptions overhaul (#543)
+
+  * Features
+    - Batching requests is now fully supported, on sync or async
+      transports, with automatic batching:
+      - Implementation of execute_batch for async transports (#550)
+      - Implementation of automatic batching for async (#554)
+      See
+      https://gql.readthedocs.io/en/latest/advanced/batching_requests.html
+  * Fixes
+    - Fix httpx test deprecated warning (#542)
+    - Refactor websockets transports (#536) :
+      Refactor WebSockets Transport with Dependency Injection
+      Architecture
+      This major architectural improvement implements dependency
+      injection patterns across the WebSockets transport layer,
+      creating a more modular, testable, and extensible system:
+      - Created abstract AdapterConnection interface in
+        common/adapters/connection.py
+      - Implemented concrete WebSocketsAdapter to wrap the
+        websockets library
+      - Moved websockets_base.py to common/base.py maintaining
+        better structure which is independant of the websockets
+        library used
+      - Added new TransportConnectionClosed exception for clearer
+        error handling
+      - Reorganized code with proper separation of concerns:
+      - Moved common functionality into dedicated adapters folder
+      - Isolated connection handling from transport business logic
+      - Separated ListenerQueue into its own file for better
+        modularity
+  * Misc
+    - Remove MIT license classifier (#555)
+    - Refactor transports (#557)
+    - bump aiohttp to 3.11.2 (#541)
+    - Bumping all the dev dependencies to latest versions (#540)
+    - Bump test dependencies (#539)
+    - Update pytest to 8.3.4 and pytest-asyncio to 0.25.3 (#537)
+- remove fix-tests.patch, merged upstream
+- remove support-new-pytest-asyncio.patch, merged upstream
+- add tests.patch to fix testsuite
+- skip some broken tests (boo#1275674)
+
+-------------------------------------------------------------------
 Thu Jul 24 02:45:28 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-new-pytest-asyncio.patch:

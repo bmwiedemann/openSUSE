@@ -1,0 +1,350 @@
+From 3b2c396fb54c42f93bf428fb7bd2dcc52cf452e9 Mon Sep 17 00:00:00 2001
+From: Hanusz Leszek <leszek.hanusz@gmail.com>
+Date: Tue, 30 Jun 2026 10:39:15 +0200
+Subject: [PATCH] Fix gql to work with graphql-core 3.3.0rc0 (#597)
+
+* Add kind to introspection query root types
+
+* Invert order or kind and name in introspection query to follow new graphql-core version
+
+* Restrict aiohttp to <= 3.13.2 for now to avoid unrelated tests break
+---
+ gql/dsl.py                                   |  6 ++--
+ gql/utilities/build_client_schema.py         | 12 ++++----
+ gql/utilities/get_introspection_query_ast.py | 10 +++---
+ gql/utilities/node_tree.py                   | 27 +++++++++--------
+ gql/utilities/serialize_variable_values.py   |  2 +-
+ setup.py                                     |  2 +-
+ tests/starwars/test_dsl.py                   | 32 +++++++++++---------
+ tests/test_transport.py                      | 29 +++++++++++++++++-
+ tests/test_transport_batch.py                | 29 +++++++++++++++++-
+ 9 files changed, 105 insertions(+), 44 deletions(-)
+
+Index: gql-4.0.0/gql/utilities/build_client_schema.py
+===================================================================
+--- gql-4.0.0.orig/gql/utilities/build_client_schema.py
++++ gql-4.0.0/gql/utilities/build_client_schema.py
+@@ -23,10 +23,10 @@ INCLUDE_DIRECTIVE_JSON: IntrospectionDir
+             "description": "Included when true.",
+             "type": {
+                 "kind": "NON_NULL",
+-                "name": "None",
+-                "ofType": {"kind": "SCALAR", "name": "Boolean", "ofType": "None"},
++                "name": None,
++                "ofType": {"kind": "SCALAR", "name": "Boolean", "ofType": None},
+             },
+-            "defaultValue": "None",
++            "defaultValue": None,
+         }
+     ],
+ }
+@@ -48,10 +48,10 @@ SKIP_DIRECTIVE_JSON: IntrospectionDirect
+             "description": "Skipped when true.",
+             "type": {
+                 "kind": "NON_NULL",
+-                "name": "None",
+-                "ofType": {"kind": "SCALAR", "name": "Boolean", "ofType": "None"},
++                "name": None,
++                "ofType": {"kind": "SCALAR", "name": "Boolean", "ofType": None},
+             },
+-            "defaultValue": "None",
++            "defaultValue": None,
+         }
+     ],
+ }
+Index: gql-4.0.0/gql/utilities/get_introspection_query_ast.py
+===================================================================
+--- gql-4.0.0.orig/gql/utilities/get_introspection_query_ast.py
++++ gql-4.0.0/gql/utilities/get_introspection_query_ast.py
+@@ -35,9 +35,9 @@ def get_introspection_query_ast(
+         schema.select(ds.__Schema.description)
+ 
+     schema.select(
+-        ds.__Schema.queryType.select(ds.__Type.name),
+-        ds.__Schema.mutationType.select(ds.__Type.name),
+-        ds.__Schema.subscriptionType.select(ds.__Type.name),
++        ds.__Schema.queryType.select(ds.__Type.name, ds.__Type.kind),
++        ds.__Schema.mutationType.select(ds.__Type.name, ds.__Type.kind),
++        ds.__Schema.subscriptionType.select(ds.__Type.name, ds.__Type.kind),
+     )
+ 
+     schema.select(ds.__Schema.types.select(fragment_FullType))
+@@ -125,11 +125,11 @@ def get_introspection_query_ast(
+     )
+ 
+     if type_recursion_level >= 1:
+-        current_field = ds.__Type.ofType.select(ds.__Type.kind, ds.__Type.name)
++        current_field = ds.__Type.ofType.select(ds.__Type.name, ds.__Type.kind)
+         fragment_TypeRef.select(current_field)
+ 
+         for _ in repeat(None, type_recursion_level - 1):
+-            new_oftype = ds.__Type.ofType.select(ds.__Type.kind, ds.__Type.name)
++            new_oftype = ds.__Type.ofType.select(ds.__Type.name, ds.__Type.kind)
+             current_field.select(new_oftype)
+             current_field = new_oftype
+ 
+Index: gql-4.0.0/gql/utilities/node_tree.py
+===================================================================
+--- gql-4.0.0.orig/gql/utilities/node_tree.py
++++ gql-4.0.0/gql/utilities/node_tree.py
+@@ -29,22 +29,21 @@ def _node_tree_recursive(
+                     continue
+                 attr_value = getattr(obj, key, None)
+                 results.append("  " * (indent + 1) + f"{key}:")
+-                if isinstance(attr_value, Iterable) and not isinstance(
++                if attr_value is None or (
++                    isinstance(attr_value, Sized) and len(attr_value) == 0
++                ):
++                    results.append("  " * (indent + 2) + "None")
++                elif isinstance(attr_value, Iterable) and not isinstance(
+                     attr_value, (str, bytes)
+                 ):
+-                    if isinstance(attr_value, Sized) and len(attr_value) == 0:
++                    for item in attr_value:
+                         results.append(
+-                            "  " * (indent + 2) + f"empty {type(attr_value).__name__}"
+-                        )
+-                    else:
+-                        for item in attr_value:
+-                            results.append(
+-                                _node_tree_recursive(
+-                                    item,
+-                                    indent=indent + 2,
+-                                    ignored_keys=ignored_keys,
+-                                )
++                            _node_tree_recursive(
++                                item,
++                                indent=indent + 2,
++                                ignored_keys=ignored_keys,
+                             )
++                        )
+                 else:
+                     results.append(
+                         _node_tree_recursive(
+@@ -89,4 +88,8 @@ def node_tree(
+         # We are ignoring block attributes by default (in StringValueNode)
+         ignored_keys.append("block")
+ 
++    # Ignore description field which was added to OperationDefinitionNode
++    # in graphql-core 3.3.0b0
++    ignored_keys.append("description")
++
+     return _node_tree_recursive(obj, ignored_keys=ignored_keys)
+Index: gql-4.0.0/gql/utilities/serialize_variable_values.py
+===================================================================
+--- gql-4.0.0.orig/gql/utilities/serialize_variable_values.py
++++ gql-4.0.0/gql/utilities/serialize_variable_values.py
+@@ -115,7 +115,7 @@ def serialize_variable_values(
+     operation = _get_document_operation(document, operation_name=operation_name)
+ 
+     # Serialize every variable value defined for the operation
+-    for var_def_node in operation.variable_definitions:
++    for var_def_node in operation.variable_definitions or ():
+         var_name = var_def_node.variable.name.value
+         var_type = type_from_ast(schema, var_def_node.type)
+ 
+Index: gql-4.0.0/tests/starwars/test_dsl.py
+===================================================================
+--- gql-4.0.0.orig/tests/starwars/test_dsl.py
++++ gql-4.0.0/tests/starwars/test_dsl.py
+@@ -19,7 +19,9 @@ from graphql import (
+     parse,
+     print_ast,
+ )
++from graphql import __version__ as graphql_version
+ from graphql.utilities import get_introspection_query
++from packaging import version
+ 
+ from gql import Client, gql
+ from gql.dsl import (
+@@ -1015,6 +1017,10 @@ def test_invalid_meta_field_selection(ds
+         ds.Query.hero.select(DSLMetaField("__type"))
+ 
+ 
++@pytest.mark.skipif(
++    version.parse(graphql_version) < version.parse("3.3.0rc0"),
++    reason="Requires graphql-core >= 3.3.0rc0",
++)
+ @pytest.mark.parametrize("option", [True, False])
+ def test_get_introspection_query_ast(option):
+ 
+@@ -1092,7 +1098,7 @@ DocumentNode
+   definitions:
+     OperationDefinitionNode
+       directives:
+-        empty tuple
++        None
+       loc:
+         Location
+           <Location 0:43>
+@@ -1115,9 +1121,9 @@ DocumentNode
+               alias:
+                 None
+               arguments:
+-                empty tuple
++                None
+               directives:
+-                empty tuple
++                None
+               loc:
+                 Location
+                   <Location 22:41>
+@@ -1140,9 +1146,9 @@ DocumentNode
+                       alias:
+                         None
+                       arguments:
+-                        empty tuple
++                        None
+                       directives:
+-                        empty tuple
++                        None
+                       loc:
+                         Location
+                           <Location 33:37>
+@@ -1158,7 +1164,7 @@ DocumentNode
+                       selection_set:
+                         None
+       variable_definitions:
+-        empty tuple
++        None
+   loc:
+     Location
+       <Location 0:43>
+@@ -1169,7 +1175,7 @@ DocumentNode
+   definitions:
+     OperationDefinitionNode
+       directives:
+-        empty tuple
++        None
+       loc:
+         Location
+           <Location 0:43>
+@@ -1192,9 +1198,9 @@ DocumentNode
+               alias:
+                 None
+               arguments:
+-                empty tuple
++                None
+               directives:
+-                empty tuple
++                None
+               loc:
+                 Location
+                   <Location 22:41>
+@@ -1215,9 +1221,9 @@ DocumentNode
+                       alias:
+                         None
+                       arguments:
+-                        empty tuple
++                        None
+                       directives:
+-                        empty tuple
++                        None
+                       loc:
+                         Location
+                           <Location 33:37>
+@@ -1231,7 +1237,7 @@ DocumentNode
+                       selection_set:
+                         None
+       variable_definitions:
+-        empty tuple
++        None
+   loc:
+     Location
+       <Location 0:43>
+Index: gql-4.0.0/tests/test_transport.py
+===================================================================
+--- gql-4.0.0.orig/tests/test_transport.py
++++ gql-4.0.0/tests/test_transport.py
+@@ -12,15 +12,42 @@ pytestmark = pytest.mark.requests
+ 
+ 
+ def use_cassette(name):
++    import json
++
+     import vcr
+ 
++    # method to ignore introspection changes in graphql-core 3.3.0b0
++    def graphql_body_matcher(r1, r2):
++        try:
++            b1 = json.loads(r1.body)
++            b2 = json.loads(r2.body)
++            if isinstance(b1, dict) and isinstance(b2, dict):
++                q1 = b1.get("query", "")
++                q2 = b2.get("query", "")
++                if "IntrospectionQuery" in q1 and "IntrospectionQuery" in q2:
++                    return True
++                return b1 == b2
++            elif isinstance(b1, list) and isinstance(b2, list) and len(b1) == len(b2):
++                for item1, item2 in zip(b1, b2):
++                    q1 = item1.get("query", "")
++                    q2 = item2.get("query", "")
++                    if "IntrospectionQuery" in q1 and "IntrospectionQuery" in q2:
++                        continue
++                    if item1 != item2:
++                        return False
++                return True
++        except Exception:
++            pass
++        return r1.body == r2.body
++
+     query_vcr = vcr.VCR(
+         cassette_library_dir=os.path.join(
+             os.path.dirname(__file__), "fixtures", "vcr_cassettes"
+         ),
+         record_mode="new_episodes",
+-        match_on=["uri", "method", "body"],
+     )
++    query_vcr.register_matcher("graphql_body", graphql_body_matcher)
++    query_vcr.match_on = ["uri", "method", "graphql_body"]
+ 
+     return query_vcr.use_cassette(name + ".yaml")
+ 
+Index: gql-4.0.0/tests/test_transport_batch.py
+===================================================================
+--- gql-4.0.0.orig/tests/test_transport_batch.py
++++ gql-4.0.0/tests/test_transport_batch.py
+@@ -12,15 +12,42 @@ pytestmark = pytest.mark.requests
+ 
+ 
+ def use_cassette(name):
++    import json
++
+     import vcr
+ 
++    # method to ignore introspection changes in graphql-core 3.3.0b0
++    def graphql_body_matcher(r1, r2):
++        try:
++            b1 = json.loads(r1.body)
++            b2 = json.loads(r2.body)
++            if isinstance(b1, dict) and isinstance(b2, dict):
++                q1 = b1.get("query", "")
++                q2 = b2.get("query", "")
++                if "IntrospectionQuery" in q1 and "IntrospectionQuery" in q2:
++                    return True
++                return b1 == b2
++            elif isinstance(b1, list) and isinstance(b2, list) and len(b1) == len(b2):
++                for item1, item2 in zip(b1, b2):
++                    q1 = item1.get("query", "")
++                    q2 = item2.get("query", "")
++                    if "IntrospectionQuery" in q1 and "IntrospectionQuery" in q2:
++                        continue
++                    if item1 != item2:
++                        return False
++                return True
++        except Exception:
++            pass
++        return r1.body == r2.body
++
+     query_vcr = vcr.VCR(
+         cassette_library_dir=os.path.join(
+             os.path.dirname(__file__), "fixtures", "vcr_cassettes"
+         ),
+         record_mode="new_episodes",
+-        match_on=["uri", "method", "body"],
+     )
++    query_vcr.register_matcher("graphql_body", graphql_body_matcher)
++    query_vcr.match_on = ["uri", "method", "graphql_body"]
+ 
+     return query_vcr.use_cassette(name + ".yaml")
+ 
