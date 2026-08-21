@@ -974,4 +974,29 @@ Update to 0.36.0:
     <comment>For Staging:B</comment>
     <requestid>1357806</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>7d0dadacbf254a8d27297dfbafad6a41</srcmd5>
+    <version>0.49.0</version>
+    <time>1787323809</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.49.0:
+  - defer unavailable ENGINE constant lookup
+  - fixes problematic behaviour of pkcs11-provider
+  - support TLS 1.0 contexts with modern OpenSSL
+  - use Python 3 C APIs in handwritten SWIG code (bsc#1275165)
+  - feat: Add AES-GCM (AEAD) support to M2Crypto
+  - remove Black configuration from setup.cfg
+  - release X509V3 config with its context
+  - keep IOBuffer chains alive until destruction
+  - test: free low-level OpenSSL objects in leak tests
+  - avoid leaking X509V3 extension config
+  - free RSA exponent on modulus conversion failure
+  - free replaced EVP digest contexts
+  - wrap created X509 name entries with ownership
+  - own ASN1 values created from Python data
+  - own PKCS7 certificate stack copies
+  - release BIOs on explicit close
+  - Add AuthorityKeyIdentifier extension support</comment>
+    <requestid>1371332</requestid>
+  </revision>
 </revisionlist>

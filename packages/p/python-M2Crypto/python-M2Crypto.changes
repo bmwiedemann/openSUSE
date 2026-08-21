@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Aug 15 23:06:36 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 0.49.0:
+  - defer unavailable ENGINE constant lookup
+  - fixes problematic behaviour of pkcs11-provider
+  - support TLS 1.0 contexts with modern OpenSSL
+  - use Python 3 C APIs in handwritten SWIG code (bsc#1275165)
+  - feat: Add AES-GCM (AEAD) support to M2Crypto
+  - remove Black configuration from setup.cfg
+  - release X509V3 config with its context
+  - keep IOBuffer chains alive until destruction
+  - test: free low-level OpenSSL objects in leak tests
+  - avoid leaking X509V3 extension config
+  - free RSA exponent on modulus conversion failure
+  - free replaced EVP digest contexts
+  - wrap created X509 name entries with ownership
+  - own ASN1 values created from Python data
+  - own PKCS7 certificate stack copies
+  - release BIOs on explicit close
+  - Add AuthorityKeyIdentifier extension support
+
+-------------------------------------------------------------------
 Sun Jun  7 19:05:51 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Upgrade to 0.48.0:

@@ -21,7 +21,7 @@
 %define skip_python312 1
 %{?sle15allpythons}
 Name:           python-M2Crypto
-Version:        0.48.0
+Version:        0.49.0
 Release:        0
 Summary:        Crypto and SSL toolkit for Python
 License:        BSD-2-Clause
