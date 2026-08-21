@@ -1,0 +1,30 @@
+-------------------------------------------------------------------
+Thu Aug 20 08:53:50 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Ship the upstream Python binding as pythonXYZ flavor subpackages
+  via the shared %treesitter_python_install macro and the singlespec
+  python_subpackage_only template. The compiled _binding extension
+  is not built: the macro installs upstream's pure-Python package
+  files and generates a _binding.py that loads the grammar library
+  this package ships, so the parser is not compiled a second time
+  and no python devel/pip/wheel BuildRequires are needed.
+- The python subpackage pins the grammar package exactly.
+- Suggests python-tree-sitter >= 0.22 instead of Requires,
+  matching tree-sitter-bash, so ring1/product installcheck
+  does not demand a non-ring package.
+- Run a functional %check parsing Objective-C source through the
+  shim; gated to suse_version >= 1699 because python-tree-sitter
+  does not exist in Leap 16.0.
+
+-------------------------------------------------------------------
+Mon Jul 27 08:36:26 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package of tree-sitter-objc 3.0.2:
+  * Objective-C grammar library for the tree-sitter parsing
+    framework (libtree-sitter-objc.so grammar module)
+  * BuildRequires tree-sitter-c-devel: the grammar extends that
+    grammar and tree-sitter generate resolves it from the devel
+    package
+  * Python binding built from the bundled bindings/python as
+    pythonXYZ flavor subpackages via the shared
+    %treesitter_python_build/_install macros
