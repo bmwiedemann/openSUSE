@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Fri Aug 21 06:39:00 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.6.0:
+  * i18n: translation updates from weblate
+  * Allow switching CPU/GPU graph types, design updates, and GPU frequency
+  * Allow quiting apps and minor dashboard design changes
+  * Collect GPU memory usage for Intel GPUs
+  * Calculate power usage for AMD/Intel GPUs, show GPU power and total VRAM in dashboard
+  * Refactor NVIDIA GPU suspend handling
+  * chore: update libcosmic
+  * Do not show stale GPU data in cards
+  * Be explicit about no GPU monitoring when idle or suspended
+  * Remove timer from description of idle power state
+  * Do not show stale GPU metrics
+  * Show GPU power information
+  * Find VRAM size on Intel GPU
+  * Use wayland feature to fix NVIDIA GPU being used
+  * Do not query NVML if GPU should be allowed to suspend
+  * fix: update iced
+  * feat: blur
+  * Horizontal scrolling of applications and processes tables with fixed headers
+  * i18n: translation updates from weblate
+  * Fix missing app icons for absolute Icon= paths (e.g. Zen Browser)
+
+-------------------------------------------------------------------
+Wed Jun 24 22:25:21 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- initial packaging
