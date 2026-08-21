@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri Aug 21 09:51:33 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.18.0:
+  * Drop support for Django 4.2, Django 5.0 and Django 5.1
+  * Change errors for list serializers (`many=True`) to dict
+    format
+  * Add `unaccent` to `SearchFilter`
+  * Add support for Django 6.1
+  * Add `@throttle_scope` function based view decorator
+  * Add `nulls_distinct` support to `UniqueTogetherValidator`
+  * Include `choices` param for non-editable fields
+  * Improve cursor pagination template accessibility in browsable
+    API
+  * Fix partial form data updates involving `ListField`
+  * Fix crash due to browsable API extra action permissions
+  * Handle unhashable `BooleanField` representation value
+  * Fix OpenAPI schema for zero numeric bounds on ListField
+    children
+  * Replace `cc_delim_re usage` with `split_header_value` for
+    Django 6.1+ compatibility
+  * Fix `set_rollback` to only rollback initialized connections
+  * Fix DictField HTML input returning empty dict for missing
+    fields
+  * Raise clear error for unsupported unique-together list
+    updates
+- update to 3.17.2:
+  * Fix disclosure of GET-protected data in case of validation
+    error with `AdminRenderer`
+  * Enforce `DATA_UPLOAD_MAX_MEMORY_SIZE` for `request.data`
+    parsing
+  * **Full Changelog**: https://github.com/encode/django-rest-
+    framework/compare/3.17.1...3.17.2
+
+-------------------------------------------------------------------
 Wed May 13 13:08:40 UTC 2026 - Andreas Schneider <asn@cryptomilk.org>
 
 - Fix sed for filterwarnings

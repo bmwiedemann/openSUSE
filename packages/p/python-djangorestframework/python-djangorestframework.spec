@@ -26,37 +26,38 @@
 %bcond_with test
 %endif
 Name:           python-djangorestframework%{psuffix}
-Version:        3.17.1
+Version:        3.18.0
 Release:        0
 Summary:        A REST Framework for Django
 License:        BSD-2-Clause
 URL:            https://www.django-rest-framework.org/
 Source:         https://github.com/encode/django-rest-framework/archive/%{version}.tar.gz#/djangorestframework-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 77.0.3}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Django >= 4.2
+Requires:       python-Django >= 5.2
 %if 0%{?suse_version} > 1500
-Recommends:     python-Markdown
+Recommends:     python-Markdown >= 3.3.7
 %endif
-Recommends:     python-Pygments
+Recommends:     python-Pygments >= 2.17
 Recommends:     python-requests
-Suggests:       python-psycopg2
+Suggests:       python-psycopg >= 3.1.8
 Provides:       python-django-rest-framework = %{version}
 Obsoletes:      python-django-rest-framework < %{version}
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module Django >= 4.2}
+BuildRequires:  %{python_module Django >= 5.2}
+BuildRequires:  %{python_module dj-database-url}
 %if 0%{?suse_version} > 1500
-BuildRequires:  %{python_module Markdown >= 3.3}
+BuildRequires:  %{python_module Markdown >= 3.3.7}
 %endif
-BuildRequires:  %{python_module PyYAML}
-BuildRequires:  %{python_module Pygments}
+BuildRequires:  %{python_module PyYAML >= 5.3.1}
+BuildRequires:  %{python_module Pygments >= 2.17}
 BuildRequires:  %{python_module django-guardian >= 2.4.0}
-BuildRequires:  %{python_module psycopg}
-BuildRequires:  %{python_module pytest-django >= 4.1.0}
+BuildRequires:  %{python_module psycopg >= 3.1.8}
+BuildRequires:  %{python_module pytest-django >= 4.5.2}
 BuildRequires:  %{python_module pytz}
 %endif
 %python_subpackages
