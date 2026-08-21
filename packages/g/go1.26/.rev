@@ -333,4 +333,15 @@
   * go#80615 cmd/compile: mips64le misscompile OffPtr by a const which doesn't fit 32bits resulting in panic (forwarded request 1371105 from jfkw)</comment>
     <requestid>1371108</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>416d98eb36285625f6416e1d86f05410</srcmd5>
+    <version>1.26.7</version>
+    <time>1787323788</time>
+    <user>anag_factory</user>
+    <comment>- go1.26.7 (released 2026-08-19) includes fixes to the net/http
+  package.
+  Refs boo#1255111 go1.26 release tracking
+  * go#80927 net/http: ReadHeaderTimeout remains active after unencrypted HTTP/2 handoff (forwarded request 1372027 from jfkw)</comment>
+    <requestid>1372029</requestid>
+  </revision>
 </revisionlist>
