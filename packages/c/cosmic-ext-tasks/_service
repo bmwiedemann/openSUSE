@@ -3,7 +3,7 @@
   <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/cosmic-utils/tasks.git</param>
     <param name="scm">git</param>
-    <param name="revision">refs/tags/0.2.4</param>
+    <param name="revision">refs/tags/0.3.1</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="package-meta">yes</param>
     <param name="filename">cosmic-ext-tasks</param>

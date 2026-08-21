@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Aug 13 08:14:16 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 0.3.1:
+  * fix(toast): close on dismiss
+  * fix: move search bar below title when condensed
+  * feat(search): add always-visible global search, fix in-place list search
+  * fix(theme): remove hardcoded is_dark
+  * fix(ui): address UX polish items
+  * feat(sync): add file watcher to reflect changes across windows
+  * fix: view titles
+  * refactor(ui): extract shared collapsible-section widget
+  * feat(favorites): group by collapsible sections
+  * fix(tasks): expand using button
+  * feat(trash): add undo toasts and restorable trashed lists
+  * fix(tasks): search bar hiding on unfocus event
+  * feat(trash): icon reflects current state
+  * fix: empty task inserts
+  * chore: remove useless comments
+  * feat: collapsible sections
+  * feat: list sorting
+  * feat: preserve last selected list
+  * refactor: reorganize source tree by feature
+  * feat: hide trash
+  * Update README.md
+  * fix: warnings
+  * chore: update dependencies
+  * chore: update libcosmic
+  * Update Ukrainian
+  * Add files via upload
+  * Add Swedish translations for date and reminder features
+  * i18n: add Hungarian translations
+
+-------------------------------------------------------------------
 Mon Jun 01 18:52:45 UTC 2026 - rrahl0@opensuse.org
 
 - Update to version 0.2.4:

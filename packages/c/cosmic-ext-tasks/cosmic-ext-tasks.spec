@@ -18,7 +18,7 @@
 
 %define         appid dev.edfloreshz.Tasks
 Name:           cosmic-ext-tasks
-Version:        0.2.4
+Version:        0.3.1
 Release:        0
 Summary:        Task Management app for COSMIC DE
 License:        GPL-3.0-only
