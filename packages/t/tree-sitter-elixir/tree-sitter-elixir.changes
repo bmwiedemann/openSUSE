@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Thu Aug 20 08:53:50 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Recreate the Git packaging repo as sha256 so OBS scmsync
+  can fetch it (the previous sha1 repo could not be synced
+  from the sha256 _ObsPrj parent).
+- Switch the python3-tree-sitter-elixir binding to the
+  shared tree-sitter loader macros: install the grammar
+  library once and generate a ctypes _binding.py instead
+  of compiling the upstream C extension a second time.
+- New package for Factory: Elixir grammar plus the
+  python3-tree-sitter-elixir loader subpackage.
+- Suggests python-tree-sitter >= 0.22 instead of Requires,
+  matching tree-sitter-bash, so ring1/product installcheck
+  does not demand a non-ring package.
+
+-------------------------------------------------------------------
+Mon Jul 27 08:36:23 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package of tree-sitter-elixir 0.3.5:
+  * Elixir grammar library for the tree-sitter parsing
+    framework (libtree-sitter-elixir.so grammar module)
+  * Python binding built from the bundled bindings/python as
+    pythonXYZ flavor subpackages via the shared
+    %treesitter_python_build/_install macros
