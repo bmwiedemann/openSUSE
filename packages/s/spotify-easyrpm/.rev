@@ -111,4 +111,15 @@
 Full details in spotify-easyrpm.changes</comment>
     <requestid>1371626</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>dfacbe67c06a998f048bcf22289275c9</srcmd5>
+    <version>4.0.2</version>
+    <time>1787324185</time>
+    <user>anag_factory</user>
+    <comment>Update to 4.0.2
+
+- Use curl for the snap download instead of wget, so the script needs one HTTP client rather than two. This addresses dimstar's review comment on request 1371626
+- Drop the wget requirement</comment>
+    <requestid>1372638</requestid>
+  </revision>
 </revisionlist>

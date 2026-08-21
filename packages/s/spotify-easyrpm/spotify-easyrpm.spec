@@ -17,7 +17,7 @@
 
 
 Name:           spotify-easyrpm
-Version:        4.0.1
+Version:        4.0.2
 Release:        0
 Summary:        Tool to download, convert and install the Spotify for Linux package
 License:        GPL-3.0-only
@@ -31,7 +31,6 @@ Requires:       openssl
 Requires:       rpm-build
 Requires:       rpmdevtools
 Requires:       squashfs
-Requires:       wget
 BuildArch:      noarch
 
 %description
