@@ -1,0 +1,4 @@
+<package name="python-torchsde" project="openSUSE:Factory">
+  <title>SDE solvers and stochastic adjoint sensitivity analysis in PyTorch</title>
+  <description>PyTorch implementation of differentiable SDE solvers with GPU support and efficient backpropagation.</description>
+</package>

@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Fri Aug 21 10:07:58 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- ExcludeArch %%{ix86} %%{arm} to match Factory python-torch, so
+  i586/armv7l stay excluded rather than unresolvable.
+
+-------------------------------------------------------------------
+Fri Aug 21 08:54:30 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package of torchsde 0.2.6: differentiable SDE solvers
+  in PyTorch.
+  * Requires numpy >= 1.19, scipy >= 1.5, torch >= 1.6.0 and
+    trampoline >= 0.1.2.
+

@@ -1,0 +1,35 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ccbd53fffa484002755f16d74cd262cc</srcmd5>
+    <version>0.2.6</version>
+    <time>1787324451</time>
+    <user>anag_factory</user>
+    <comment>New package python-torchsde for openSUSE:Factory from science:machinelearning (ComfyUI cone). pluskalm is the science:machinelearning package maintainer.
+
+INTERDEPENDENT REQUESTS - please stage together (ComfyUI cone):
+  * sr#1372737 python-av (need &gt;= 16 for comfyui)
+  * sr#1372780 python-trampoline
+  * sr#1372789 python-kornia-rs
+  * sr#1372790 python-comfyui-frontend-package
+  * sr#1372791 python-comfyui-workflow-templates-core
+  * sr#1372793 python-comfyui-workflow-templates-json
+  * sr#1372794 python-comfyui-workflow-templates-media-api
+  * sr#1372795 python-comfyui-workflow-templates-media-assets-01
+  * sr#1372796 python-comfyui-workflow-templates-media-image
+  * sr#1372797 python-comfyui-workflow-templates-media-other
+  * sr#1372798 python-comfyui-workflow-templates-media-video
+  * sr#1372799 python-comfy-aimdo
+  * sr#1372800 comfyui
+  * sr#1372804 python-comfyui-workflow-templates
+  * sr#1372805 python-torchaudio
+  * this batch: python-comfyui-embedded-docs, python-comfy-kitchen,
+    python-torchsde, python-kornia, python-torchvision, python-spandrel
+
+Fri Aug 21 10:07:58 UTC 2026 - Martin Pluskal &lt;mpluskal@suse.com&gt;
+
+- ExcludeArch %%{ix86} %%{arm} to match Factory python-torch, so
+  i586/armv7l stay excluded rather than unresolvable.
+</comment>
+    <requestid>1372827</requestid>
+  </revision>
+</revisionlist>
