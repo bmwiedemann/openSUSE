@@ -1,0 +1,8 @@
+<package name="python-comfy-angle" project="openSUSE:Factory">
+  <title>Mesa/libglvnd backend for ComfyUI's comfy-angle API</title>
+  <description>Distro implementation of the comfy-angle 0.1.0 Python API used by
+ComfyUI's GLSL Shader node. The module locates the system's libEGL
+and libGLESv2 (libglvnd dispatch plus Mesa) at runtime. It does not
+ship Chromium ANGLE or Electron-extracted binaries.</description>
+  <url>https://github.com/Comfy-Org/comfy-angle</url>
+</package>

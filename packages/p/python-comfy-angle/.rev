@@ -1,0 +1,23 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>50d0966668aa324687bc18cf1eba8e6e</srcmd5>
+    <version>0.1.0</version>
+    <time>1787324466</time>
+    <user>anag_factory</user>
+    <comment>python-comfy-angle 0.1.0 (Mesa/libglvnd-backed comfy-angle API). Supersedes sr#1372846 with r4: explicit Requires: libglvnd (ctypes-loaded, rpmlint filtered) plus Mesa-libEGL1 and Mesa-dri.
+
+INTERDEPENDENT REQUESTS - please stage with the ComfyUI cone (sr#1372800).
+
+Fri Aug 21 12:20:13 UTC 2026 - Martin Pluskal &lt;mpluskal@suse.com&gt;
+
+- Initial package of python-comfy-angle 0.1.0:
+  * Mesa/libglvnd-backed implementation of the comfy-angle 0.1.0
+    API for ComfyUI's GLSL Shader node (optional extra
+    comfy-angle)
+  * Does not ship Electron-extracted Chromium ANGLE; locates
+    system libEGL/libGLESv2 at runtime
+  * Requires libglvnd, Mesa-libEGL1 and Mesa-dri
+</comment>
+    <requestid>1372848</requestid>
+  </revision>
+</revisionlist>

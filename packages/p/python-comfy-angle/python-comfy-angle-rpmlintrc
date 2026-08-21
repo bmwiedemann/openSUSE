@@ -1,0 +1,3 @@
+# libglvnd is dlopened via ctypes, not linked, so rpm auto-deps cannot see it.
+# The explicit Requires is load-bearing (libEGL.so.1 / libGLESv2.so.2 dispatch).
+addFilter("explicit-lib-dependency libglvnd")

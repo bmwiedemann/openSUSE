@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Fri Aug 21 12:20:13 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package of python-comfy-angle 0.1.0:
+  * Mesa/libglvnd-backed implementation of the comfy-angle 0.1.0
+    API for ComfyUI's GLSL Shader node (optional extra
+    comfy-angle)
+  * Does not ship Electron-extracted Chromium ANGLE; locates
+    system libEGL/libGLESv2 at runtime
+  * Requires libglvnd, Mesa-libEGL1 and Mesa-dri
+
