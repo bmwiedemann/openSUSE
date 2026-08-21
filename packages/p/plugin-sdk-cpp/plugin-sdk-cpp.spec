@@ -17,13 +17,22 @@
 
 
 Name:           plugin-sdk-cpp
-Version:        0.3.0
+Version:        0.4.1
 Release:        0
 Summary:        C++ SDK for writing Falcosecurity plugins
 License:        Apache-2.0
 URL:            https://github.com/falcosecurity/plugin-sdk-cpp
-Source0:        https://github.com/falcosecurity/plugin-sdk-cpp/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/falcosecurity/plugin-sdk-cpp/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE plugin-sdk-cpp-system-gtest.patch -- use system googletest; FetchContent cannot clone in the offline OBS build
+Patch0:         plugin-sdk-cpp-system-gtest.patch
 BuildArch:      noarch
+# C++20 codec tests; skip the compile on Leap 15.x (gcc 7)
+%if 0%{?suse_version} >= 1600
+BuildRequires:  cmake
+BuildRequires:  gcc-c++
+BuildRequires:  make
+BuildRequires:  cmake(GTest)
+%endif
 
 %description
 The Falcosecurity Plugin SDK for C++ is a header-only library that wraps
@@ -42,12 +51,27 @@ Header files of the Falcosecurity Plugin SDK for C++ (header-only).
 %autosetup -p1
 
 %build
-# header-only library: nothing to compile
+# header-only INTERFACE library: cmake is used only to build the tests
+%if 0%{?suse_version} >= 1600
+%cmake
+%cmake_build
+%endif
 
 %install
 mkdir -p %{buildroot}%{_includedir}
 cp -r include/falcosecurity %{buildroot}%{_includedir}/
 find %{buildroot}%{_includedir}/falcosecurity -type f -exec chmod 0644 {} +
+
+%if 0%{?suse_version} >= 1600
+%check
+# noarch: %%ifnarch is evaluated against target=noarch, not the worker.
+# Variable-length fields encode sizeof(size_t); tests hard-code 8-byte sizes.
+if [ "$(getconf LONG_BIT)" = 64 ]; then
+%ctest
+else
+  echo "skipping codec tests: upstream hard-codes 64-bit size_t"
+fi
+%endif
 
 %files devel
 %license LICENSE

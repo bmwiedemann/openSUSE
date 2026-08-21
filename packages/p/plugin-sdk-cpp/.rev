@@ -10,4 +10,25 @@ Header-only C++ SDK for writing Falcosecurity plugins. Build dependency
 of the falcosecurity container plugin (next submission).</comment>
     <requestid>1360103</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a3847ef4cb842d5e5a3eea6037c3ca3f</srcmd5>
+    <version>0.4.1</version>
+    <time>1787324183</time>
+    <user>anag_factory</user>
+    <comment>Thu Aug 20 18:51:37 UTC 2026 - Martin Pluskal &lt;mpluskal@suse.com&gt;
+
+- Update to version 0.4.1:
+  * extract_request: exclude std::string from the generic
+    byte-buffer set_value() overload so non-const strings are
+    exported as string results
+  * add automatic event encoders and decoders
+  * extract requests can return a vector of bytes
+  * fix const correctness during field extraction
+  * add a field_arg constructor
+  * update bundled nlohmann/json 3.10.2 to 3.12.0
+- Enable %check with the new codec unit tests against system
+  googletest (64-bit only; tests assume sizeof(size_t) == 8):
+  * plugin-sdk-cpp-system-gtest.patch</comment>
+    <requestid>1372637</requestid>
+  </revision>
 </revisionlist>

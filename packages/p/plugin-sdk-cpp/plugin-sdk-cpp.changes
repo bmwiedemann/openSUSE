@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Aug 20 18:51:37 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.4.1:
+  * extract_request: exclude std::string from the generic
+    byte-buffer set_value() overload so non-const strings are
+    exported as string results
+  * add automatic event encoders and decoders
+  * extract requests can return a vector of bytes
+  * fix const correctness during field extraction
+  * add a field_arg constructor
+  * update bundled nlohmann/json 3.10.2 to 3.12.0
+- Enable %check with the new codec unit tests against system
+  googletest (64-bit only; tests assume sizeof(size_t) == 8):
+  * plugin-sdk-cpp-system-gtest.patch
+
+-------------------------------------------------------------------
 Wed Jun 17 20:48:04 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Initial package (version 0.3.0):
