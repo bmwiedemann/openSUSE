@@ -17,18 +17,17 @@
 
 
 Name:           python-caio
-Version:        0.12.2
+Version:        0.12.3
 Release:        0
 Summary:        Asynchronous file IO for Linux MacOS or Windows
 License:        Apache-2.0
 URL:            https://github.com/mosquito/caio
-# Use the PyPI sdist, not the GitHub archive: upstream forgot to bump
-# "version" in pyproject.toml for 0.11.0 and 0.11.1, so a build from the git
-# tag installs caio-0.10.2.dist-info and the %%files glob below misses it. The
-# sdist is produced by upstream's release CI with the correct version injected,
-# and since 0.11.0 it also ships the complete tests directory, so %%check is
-# unaffected.
-Source:         https://files.pythonhosted.org/packages/source/c/caio/caio-%{version}.tar.gz
+# No PyPI sdist for 0.12.3 (pypi.org/pypi/caio/0.12.3/json is 404). Use the
+# GitHub tag archive. Upstream still forgot to bump [project] version in
+# pyproject.toml (the tag still says 0.10.2); %%prep rewrites it so the
+# wheel's dist-info matches %%{version}. Tests stay in the sdist (graft
+# tests in MANIFEST.in), so %%check is unaffected.
+Source:         https://github.com/mosquito/caio/archive/refs/tags/%{version}.tar.gz#/caio-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-asyncio}
@@ -46,6 +45,9 @@ based fallback. Provides a small, fast async file-IO layer.
 
 %prep
 %autosetup -p1 -n caio-%{version}
+# Upstream often forgets to bump [project] version (still 0.10.2 on tag
+# 0.12.3). Rewrite it so the wheel installs caio-%%{version}.dist-info.
+sed -i 's/^version = ".*"/version = "%{version}"/' pyproject.toml
 
 %build
 %pyproject_wheel
@@ -55,12 +57,6 @@ based fallback. Provides a small, fast async file-IO layer.
 # drop the bundled C sources/headers that the wheel ships alongside the .so
 find %{buildroot} -name '*.c' -delete
 find %{buildroot} -name '*.h' -delete
-# 0.11.0 started shipping tests/ in the sdist without excluding it from the
-# wheel's package discovery, so setuptools installs it as a top-level "tests"
-# package. That name is far too generic to occupy in site-packages -- it would
-# collide with every other project doing the same -- and the suite has already
-# been run from the build tree by %%check, so drop it.
-%python_expand rm -rf %{buildroot}%{$python_sitearch}/tests
 # force hash-based .pyc (avoid python-bytecode-inconsistent-mtime)
 %python_expand $python -m compileall -q -f -o 0 -o 1 --invalidation-mode unchecked-hash %{buildroot}%{$python_sitearch}/caio
 %python_expand %fdupes %{buildroot}%{$python_sitearch}

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Aug 21 13:31:16 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.12.3:
+  * Do not install the test suite into site-packages (PR #75)
+- Switch Source to the GitHub tag archive: there is no PyPI sdist
+  for 0.12.3, so files.pythonhosted.org would fail factory-auto
+- Rewrite the stale pyproject.toml version (still 0.10.2 on the
+  tag) to the package version in %prep, otherwise the wheel
+  installs caio-0.10.2.dist-info
+- Drop the %install rm of the top-level tests package: 0.12.3 no
+  longer ships it
+- Keep the existing %check skips: 0.12.3 did not change the
+  suite, so test_asyncio_adapter.py (unpackaged aiomisc) and the
+  python -c / timing tests still cannot pass in the OBS chroot
+
+-------------------------------------------------------------------
 Wed Aug  5 05:29:56 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.12.2:
