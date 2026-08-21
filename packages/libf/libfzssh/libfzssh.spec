@@ -16,15 +16,15 @@
 #
 
 
-%define sover		13
+%define sover		14
 %define soname		%{sover}_0_0
 %define libname		%{name}%{soname}
 %define develname	%{name}-devel
 
-%define libfilezillaversion 0.55.3
+%define libfilezillaversion 0.57.0
 
 Name:           libfzssh
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        A C++ SSH/SFTP library based on libfilezilla
 License:        AGPL-3.0-or-later
