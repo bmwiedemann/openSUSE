@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Aug 20 11:43:58 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update 1.102.3
+  - All Platforms
+    - Changed: Go is updated to version 1.26.6.
+    - Fixed: Tailscale refuses host-scoped IPv4 destinations at
+      every point that acts on an unmapped 4via6 address. This fix
+      addresses a security vulnerability described in TS-2026-011.
+    - Fixed: When MagicDNS is disabled, unqualified hostnames are
+      correctly forwarded to the configured nameservers.
+    - Fixed: Resolved an issue where nodes with Tailnet Lock
+      enabled on large tailnets would experience startup failures.
+
+-------------------------------------------------------------------
 Wed Aug  5 00:45:30 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update 1.102.2
