@@ -37,4 +37,40 @@ editable dev install. Its assertion is covered in-process by
 test_build_server_registers_scan_skill, which does run.</comment>
     <requestid>1369456</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>af02eb442bf39ef34453b0edcf34a91f</srcmd5>
+    <version>2.9.6</version>
+    <time>1787324183</time>
+    <user>anag_factory</user>
+    <comment>Thu Aug 20 18:46:27 UTC 2026 - Martin Pluskal &lt;mpluskal@suse.com&gt;
+
+- Update to version 2.9.6:
+  * MCP registry posture scanning
+  * Ollama, Azure OpenAI, and generic OpenAI-compatible providers
+  * Opt-in discovery of an author-shipped baseline
+    (.skillspector-baseline.yaml)
+  * Detect insecure deserialization (AST10, TT6, DS1-DS4)
+  * Detect whitespace-padding prompt injection (P9)
+  * HIGH SC8 when a skill ships __pycache__ or .pyc
+  * Bound URL, zip and git ingest to limit resource exhaustion
+  * SC4 reports only verified OSV hits; use lockfile versions
+  * HTTP MCP rejects local filesystem targets and local YARA dirs
+  * Reject symlink traversal in skill content; disable git
+    symlinks on clone
+  * PE3 no longer flags ordinary OAuth &quot;access token&quot;
+    documentation
+  * LLM analyzers retry or isolate malformed responses and
+    connection failures; incomplete analysis is recorded as
+    skipped
+  * Reduce false positives (instructional prose, Markdown
+    tables, JS RegExp.exec, negated safety constraints, OMS
+    signatures)
+  * Map YARA matches via byte offsets; scope the locality guard
+    to the built-in rule namespace
+- Switch source to the official GitHub release tarball
+- Drop _service, skillspector-2.5.1.obscpio and
+  skillspector.obsinfo
+- Add packaging &gt;= 24.0 (requirement parsing for OSV lookups)</comment>
+    <requestid>1372636</requestid>
+  </revision>
 </revisionlist>

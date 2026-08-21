@@ -21,12 +21,13 @@
 # %%{primary_python} so it stays correct as the primary interpreter moves.
 %define pythons %{primary_python}
 Name:           skillspector
-Version:        2.5.1
+Version:        2.9.6
 Release:        0
 Summary:        Security scanner for AI agent skills
 License:        Apache-2.0
 URL:            https://github.com/NVIDIA/skillspector
-Source:         %{name}-%{version}.tar.gz
+# Official GitHub release sdist (not on PyPI; not a git auto-archive).
+Source:         https://github.com/NVIDIA/skillspector/releases/download/v%{version}/%{name}-%{version}.tar.gz
 # Test suite - exercises the full langchain/langgraph runtime cone
 BuildRequires:  %{python_module PyYAML >= 6.0.1}
 BuildRequires:  %{python_module anthropic}
@@ -40,8 +41,12 @@ BuildRequires:  %{python_module langchain-openai >= 1.1.10}
 BuildRequires:  %{python_module langgraph >= 1.0.10}
 BuildRequires:  %{python_module langgraph-cli >= 0.4.14}
 BuildRequires:  %{python_module langsmith >= 0.7.30}
+# Upstream extra is mcp>=1.29.0,<2.0.0; the code only needs FastMCP, which
+# Factory's python-mcp 1.28.1 already ships. Do not raise the floor above
+# what Factory provides.
 BuildRequires:  %{python_module mcp >= 1.2.0}
 BuildRequires:  %{python_module openai >= 2.25.0}
+BuildRequires:  %{python_module packaging >= 24.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pydantic >= 2.11.7}
 BuildRequires:  %{python_module pytest-asyncio}
@@ -64,10 +69,13 @@ Requires:       %{primary_python}-langgraph >= 1.0.10
 Requires:       %{primary_python}-langgraph-cli >= 0.4.14
 Requires:       %{primary_python}-langsmith >= 0.7.30
 Requires:       %{primary_python}-openai >= 2.25.0
+Requires:       %{primary_python}-packaging >= 24.0
 Requires:       %{primary_python}-pydantic >= 2.11.7
 Requires:       %{primary_python}-rich >= 14.0.0
 # Upstream caps typer < 0.24 to avoid a click clash with semgrep; that cap is
-# environment-specific, so only the floor is enforced here.
+# environment-specific (Factory ships typer 0.27), so only the floor is
+# enforced here. pydantic>=2.12 / rich>=14.3 remain pin-inflation against
+# long-stable APIs; keep the previously verified floors.
 Requires:       %{primary_python}-typer >= 0.16.0
 Requires:       %{primary_python}-yara >= 4.5.0
 BuildArch:      noarch
