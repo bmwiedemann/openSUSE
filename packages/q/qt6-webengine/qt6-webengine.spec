@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.11.1
+%define real_version 6.11.2
 %define short_version 6.11
 %define tar_name qtwebengine-everywhere-src
 %define tar_suffix %{nil}
@@ -58,7 +58,7 @@
 %global lts_version 6.8.0
 #
 Name:           qt6-webengine%{?pkg_suffix}
-Version:        6.11.1
+Version:        6.11.2
 Release:        0
 Summary:        Web browser engine for Qt applications
 License:        GPL-2.0-only OR LGPL-3.0-only OR GPL-3.0-only
@@ -66,7 +66,6 @@ URL:            https://www.qt.io
 Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-webengine-rpmlintrc
 # Patches 0-100 are upstream patches #
-Patch0:         0001-Fix-AMD-VA-API-flickering-on-Wayland-by-allowing-mul.patch
 # Patches 100-200 are openSUSE and/or non-upstream(able) patches #
 Patch100:       rtc-dont-use-h264.patch
 Patch101:       QtWebEngine_6.8_skip_xnnpack.patch
