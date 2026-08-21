@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>73fd2576c24d433452fd93f6ea6a2cea</srcmd5>
+    <version>0.26.4</version>
+    <time>1787323955</time>
+    <user>anag_factory</user>
+    <comment>NEW PACKAGE (supersedes sr#1372081): Suggests python-tree-sitter &gt;= 0.22 instead of Requires, matching tree-sitter-bash, so ring1/product installcheck does not demand a non-ring package.
+
+- Convert the Python binding to the shared %treesitter_python_install
+  loader: the compiled _binding extension is not built, so the parser
+  is not compiled a second time and no python devel/pip/wheel
+  BuildRequires are needed.
+- The python subpackage pins the grammar package exactly.
+- Suggests python-tree-sitter &gt;= 0.22 instead of Requires,
+  matching tree-sitter-bash, so ring1/product installcheck
+  does not demand a non-ring package.
+- Run a functional %check parsing PowerShell source through the
+  shim; gated to suse_version &gt;= 1699 because python-tree-sitter
+  does not exist in Leap 16.0.
+
+INTERDEPENDENT REQUESTS - please stage together:
+ * sr#1372054 - tree-sitter (python binding macros)
+ * sibling new-grammar SRs from editors:tree-sitter
+Needed for python-graphifyy.</comment>
+    <requestid>1372198</requestid>
+  </revision>
+</revisionlist>
