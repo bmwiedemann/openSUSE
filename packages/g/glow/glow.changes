@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Aug 13 16:01:36 UTC 2026 - munix9@googlemail.com
+
+- Update to 3.0.0:
+  * This quiet release updates Bubble Tea, Lip Gloss, and Bubbles
+    to their glorious v2s. While there are no UX changes, there's
+    a ton great stuff with the Bubble Tea v2 ecosystem, most
+    notably faster, more accurate rendering.
+  * This upgrade literally let @andrinoff close a ton of issues.
+  * fix: adaptive document(s) (#998)
+  * chore(deps): bump lipgloss to v2.0.6 (#1011)
+  * chore(v3): prepare v3 (#1009)
+  * chore: bump bubbletea to v2 (#1002)
+  * chore: govulncheck bumps (#1004)
+
+- Remove fix-CVE-2025-47911_CVE-2025-58190.patch (obsolete now
+  with golang.org/x/net v0.53.0)
+
+-------------------------------------------------------------------
 Fri Apr 10 06:50:09 UTC 2026 - munix9@googlemail.com
 
 - Fix Leap build with go 1.25.8

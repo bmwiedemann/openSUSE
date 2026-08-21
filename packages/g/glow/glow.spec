@@ -21,7 +21,7 @@
 %global _lto_cflags %nil
 
 Name:           glow
-Version:        2.1.2
+Version:        3.0.0
 Release:        0
 Summary:        Render markdown on the CLI
 License:        MIT
@@ -30,10 +30,9 @@ Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 # vendoring obtained by `osc service manualrun`. See README.suse-maint.md for details.
 Source1:        vendor.tar.zst
 Source2:        README.suse-maint.md
-Source3:        fix-CVE-2025-47911_CVE-2025-58190.patch
 BuildRequires:  golang-packaging
 BuildRequires:  zstd
-BuildRequires:  golang(API) >= 1.23
+BuildRequires:  golang(API) >= 1.26
 
 %description
 Glow is a terminal based markdown reader designed from the ground up to bring
@@ -78,11 +77,6 @@ Zsh command-line completion support for %{name}.
 
 %prep
 %autosetup -a1 -p1
-patch -d vendor/golang.org/x/net/ -p1 -i %{SOURCE3}
-
-%if 0%{?suse_version} <= 1600
-go mod edit -go=1.25.8
-%endif
 
 %build
 %ifnarch ppc64
@@ -93,7 +87,7 @@ export CGO_CXXFLAGS="%{optflags}"
 export CGO_CPPFLAGS="%{optflags}"
 export GOFLAGS="-mod=vendor $BUILDMOD -trimpath -ldflags=-linkmode=external"
 mkdir -p build
-go build -v -ldflags "-s -X main.Version=%{version}" -o build .
+go build -ldflags "-s -X main.Version=%{version}" -o build .
 
 %install
 install -D -m 0755 -t %{buildroot}%{_bindir} build/%{name}
