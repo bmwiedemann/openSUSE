@@ -478,4 +478,12 @@
   * 0001-QDoc-Use-deterministic-tiebreaker-for-shared-notifie.patch (forwarded request 1371224 from favogt)</comment>
     <requestid>1371623</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>f3290a37cbf8c13afafd1fe77df60bc1</srcmd5>
+    <version>6.11.2</version>
+    <time>1787323889</time>
+    <user>anag_factory</user>
+    <comment>Qt 6.11.2 (forwarded request 1372096 from krop)</comment>
+    <requestid>1372266</requestid>
+  </revision>
 </revisionlist>
