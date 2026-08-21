@@ -1,0 +1,16 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>383e592c087b43f85dc415c4ef635ef5</srcmd5>
+    <version>0.23.9</version>
+    <time>1787323967</time>
+    <user>anag_factory</user>
+    <comment>Thu Aug 20 13:53:41 UTC 2026 - Martin Pluskal &lt;mpluskal@suse.com&gt;
+
+- Ship shared common/ fragments in the -devel package
+  (define-grammar.js, scanner.h, common.mak) next to php/ and
+  php_only/, so grammar.js require('../common/...') resolves
+  and installcheck no longer demands
+  treesitter_grammar_src(../common).</comment>
+    <requestid>1372548</requestid>
+  </revision>
+</revisionlist>
