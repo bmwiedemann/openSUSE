@@ -1,7 +1,7 @@
 <services>
 	<service name="obs_scm" mode="manual">
 		<param name="filename">faad2</param>
-		<param name="revision">b743105de73f31f214f824e72d2001a3736da768</param>
+		<param name="revision">2.11.3</param>
 		<param name="scm">git</param>
 		<param name="submodules">disable</param>
 		<param name="url">https://github.com/knik0/faad2.git</param>
