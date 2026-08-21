@@ -221,4 +221,19 @@
   * Updated translations.</comment>
     <requestid>1364461</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>e87c6f0b1cb0ff873702844628165f7e</srcmd5>
+    <version>1.4.4.5</version>
+    <time>1787324397</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.4.4-5:
+  * Add a layer=overlay KWin window rule so Onboard stays above
+    fullscreen windows
+  * AT-SPI:
+    - fix inserting multi-byte unicode characters
+    - note a WebKitGTK contenteditable Text-interface gap (see
+      webkit.org/319904 for upstream tracking)
+  * Updated translations.</comment>
+    <requestid>1372777</requestid>
+  </revision>
 </revisionlist>

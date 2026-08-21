@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Aug  7 11:58:37 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.4.4-5:
+  * Add a layer=overlay KWin window rule so Onboard stays above
+    fullscreen windows
+  * AT-SPI:
+    - fix inserting multi-byte unicode characters
+    - note a WebKitGTK contenteditable Text-interface gap (see
+      webkit.org/319904 for upstream tracking)
+  * Updated translations.
+
+-------------------------------------------------------------------
 Tue Jul  7 20:02:02 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.4.4-4:
