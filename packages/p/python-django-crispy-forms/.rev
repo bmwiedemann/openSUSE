@@ -201,4 +201,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1338736</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>00f9494a93b8091ffabcd83717438a31</srcmd5>
+    <version>2.7</version>
+    <time>1787324410</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.7:
+  * Confirmed support for Django 6.1.</comment>
+    <requestid>1372816</requestid>
+  </revision>
 </revisionlist>
