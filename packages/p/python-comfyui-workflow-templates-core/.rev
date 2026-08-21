@@ -1,0 +1,21 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dd172b6eb24898963f7ab9baa1560e60</srcmd5>
+    <version>0.3.315</version>
+    <time>1787324421</time>
+    <user>anag_factory</user>
+    <comment>New package python-comfyui-workflow-templates-core for openSUSE:Factory from science:machinelearning (ComfyUI cone). pluskalm is the science:machinelearning package maintainer.
+
+INTERDEPENDENT REQUESTS - please stage together (ComfyUI cone):
+  * sr#1372780 python-trampoline
+  * sr#1372737 python-av (devel:languages:python; Factory 14.2.0, need &gt;= 16 for comfyui)
+  * remaining cone packages from science:machinelearning being submitted in this batch
+
+Fri Aug 21 08:51:33 UTC 2026 - Martin Pluskal &lt;mpluskal@suse.com&gt;
+
+- Initial package (version 0.3.315): core helpers (manifest loading
+  and asset path resolution) for ComfyUI workflow templates.
+</comment>
+    <requestid>1372791</requestid>
+  </revision>
+</revisionlist>
