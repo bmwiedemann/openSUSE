@@ -3,9 +3,9 @@
   <service name="obs_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://github.com/freeswitch/sofia-sip.git</param>
-    <param name="revision">54981e14d05e60b1ee547bd4c55647b85fe35e56</param>
+    <param name="revision">v1.13.18</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
-    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="versionrewrite-pattern">v?(.*)\+0</param>
     <param name="versionrewrite-replacement">\1</param>
   </service>
   <service name="tar" mode="manual"/>

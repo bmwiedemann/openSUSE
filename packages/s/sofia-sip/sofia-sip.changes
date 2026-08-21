@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Aug 20 11:58:43 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.13.18:
+  + Make HEP capture buffer size configurable via `bufsize=`
+  + Clamp HEP capture payload to the buffer instead of dropping chunks
+  + Capture HEP messages after parsing instead of per recv
+  + [GHA] Skip mirror and meta jobs on public forks
+  + [GHA] Skip artifacts upload on public forks
+
+-------------------------------------------------------------------
 Fri May 29 13:22:22 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.13.17+50:

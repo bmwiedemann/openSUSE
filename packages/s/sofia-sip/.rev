@@ -176,4 +176,17 @@
   build.</comment>
     <requestid>1357103</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>4b3a58080f4b36bc5f33b853f92f0742</srcmd5>
+    <version>1.13.18</version>
+    <time>1787343453</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.13.18:
+  + Make HEP capture buffer size configurable via `bufsize=`
+  + Clamp HEP capture payload to the buffer instead of dropping chunks
+  + Capture HEP messages after parsing instead of per recv
+  + [GHA] Skip mirror and meta jobs on public forks
+  + [GHA] Skip artifacts upload on public forks</comment>
+    <requestid>1372905</requestid>
+  </revision>
 </revisionlist>
