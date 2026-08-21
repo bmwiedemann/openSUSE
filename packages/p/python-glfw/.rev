@@ -164,4 +164,14 @@
   * Added type stubs</comment>
     <requestid>1307755</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>833916cffcc7b17d874d1e39e834bfe3</srcmd5>
+    <version>2.10.2</version>
+    <time>1787324473</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.10.2:
+  * Improve Python version compatibility of type hints
+  * Include type stubs in package</comment>
+    <requestid>1372803</requestid>
+  </revision>
 </revisionlist>
