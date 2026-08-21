@@ -1,0 +1,8 @@
+-------------------------------------------------------------------
+Fri Aug 21 08:59:41 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package of python-comfy-aimdo 0.4.13:
+  * Pure-Python fallback; native CUDA/HIP allocator is not built
+    (needs CUDA 12.8+ and a CUDA-enabled PyTorch)
+  * Require python-torch >= 2.8.0
+

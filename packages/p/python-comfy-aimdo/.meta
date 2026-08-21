@@ -1,0 +1,5 @@
+<package name="python-comfy-aimdo" project="openSUSE:Factory">
+  <title>AI Model Dynamic Offloader for ComfyUI (pure-Python fallback)</title>
+  <description>AIMDO is a PyTorch VRAM allocator used by ComfyUI to offload model weights under memory pressure. This build ships the pure-Python fallback. The native CUDA/HIP allocator is not compiled because it requires CUDA 12.8+ and a CUDA-enabled PyTorch, which Factory does not provide.</description>
+  <url>https://github.com/Comfy-Org/comfy-aimdo</url>
+</package>
