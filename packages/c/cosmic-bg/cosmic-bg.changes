@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Aug 19 11:37:12 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.6.0:
+  * fix: update default config syntax
+  * chore: update dependencies
+
+-------------------------------------------------------------------
+Thu Jul 30 12:43:38 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.5.0:
+  * feat: apply EXIF orientation when decoding a wallpaper (#142)
+
+-------------------------------------------------------------------
+Wed Jul 15 08:18:24 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.3.0:
+  * feat: make avif feature optional but enable by default
+  * fix: switch to libdav1d for avif in image crate
+
+-------------------------------------------------------------------
+Tue Jul 14 07:41:16 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.2.0:
+  * feat: enable avif support in image crate
+  * chore: update dependencies
+
+-------------------------------------------------------------------
+Wed Jun 24 19:32:26 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.1.0:
+  * fix: enable recursive scanning for custom wallpaper directories
+
+-------------------------------------------------------------------
 Mon Jun 01 12:31:16 UTC 2026 - rrahl0@opensuse.org
 
 - Update to version 1.0.14:
