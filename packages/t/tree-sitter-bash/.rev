@@ -46,4 +46,21 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1333356</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>178a3a54cede1805af0bab407d5a1b8c</srcmd5>
+    <version>0.25.1</version>
+    <time>1787323940</time>
+    <user>anag_factory</user>
+    <comment>- Convert the Python binding to the shared
+  %treesitter_python_build/_install macros with the singlespec
+  python_subpackage_only template; binary package names and
+  contents are unchanged
+- Suggests python-tree-sitter instead of Requires so ring1
+  installcheck does not demand a non-ring package
+
+INTERDEPENDENT REQUESTS - please stage together:
+ * sr#1372054 - tree-sitter (new Python binding macros this set needs)
+</comment>
+    <requestid>1372184</requestid>
+  </revision>
 </revisionlist>

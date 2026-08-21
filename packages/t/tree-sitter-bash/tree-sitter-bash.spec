@@ -27,6 +27,7 @@ Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  tree-sitter
 
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module installer}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 42}
 BuildRequires:  %{python_module wheel}
@@ -41,12 +42,12 @@ Suggests:       python-tree-sitter >= 0.24
 %description
 %{summary}.
 
-%package -n python-tree-sitter-bash
-Summary:        Python bindings for tree-sitter-bash
-Requires:       %{name} = %{version}
+%package -n python-%{name}
+Summary:        Python binding for the %{name} grammar
 
-%description -n python-tree-sitter-bash
-Python bindings for tree-sitter-bash.
+%description -n python-%{name}
+The tree_sitter_* Python module for the %{name} grammar, loadable
+with the Language()/Parser() API from python-tree-sitter.
 
 %prep
 %autosetup
@@ -55,17 +56,13 @@ Python bindings for tree-sitter-bash.
 %treesitter_configure
 %treesitter_build
 
-export CFLAGS="%{optflags}"
-%pyproject_wheel
+%treesitter_python_build
 
 %install
 %treesitter_install
 %treesitter_devel_install
 
-%pyproject_install
-%{python_expand rm %{buildroot}%{$python_sitearch}/tree_sitter_bash/binding.c
-%fdupes %{buildroot}%{$python_sitearch}
-}
+%treesitter_python_install
 
 %files
 %license LICENSE
@@ -73,9 +70,8 @@ export CFLAGS="%{optflags}"
 
 %treesitter_devel_package
 
-%files %{python_files tree-sitter-bash}
+%files %{python_files %{name}}
 %license LICENSE
-%{python_sitearch}/tree_sitter_bash
-%{python_sitearch}/tree_sitter_bash-%{version}.dist-info
+%{python_sitearch}/tree_sitter_*
 
 %changelog
