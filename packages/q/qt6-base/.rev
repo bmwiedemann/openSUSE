@@ -730,4 +730,12 @@
   * 0001-CMake-Handle-generated-headers-in-syncqt-scan-all-mo.patch (forwarded request 1371183 from favogt)</comment>
     <requestid>1371206</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>06d939c364611fc634d39f8f550175a3</srcmd5>
+    <version>6.11.2</version>
+    <time>1787323830</time>
+    <user>anag_factory</user>
+    <comment>Qt 6.11.2 (forwarded request 1372096 from krop)</comment>
+    <requestid>1372233</requestid>
+  </revision>
 </revisionlist>
