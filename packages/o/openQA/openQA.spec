@@ -1,7 +1,7 @@
 #
 # spec file for package openQA
 #
-# Copyright 2018-2020 SUSE LLC
+# Copyright SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -104,7 +104,7 @@
 %define devel_requires %devel_no_selenium_requires chromedriver
 
 Name:           openQA
-Version:        5.1787055821.5de28100
+Version:        5.1787133330.4deef227
 Release:        0
 Summary:        Framework for automated system-level testing (web-frontend, scheduler and tools)
 Group:          Development/Tools/Other

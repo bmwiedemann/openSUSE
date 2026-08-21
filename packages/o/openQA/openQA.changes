@@ -1,7 +1,9 @@
 -------------------------------------------------------------------
-Tue Aug 18 14:54:38 UTC 2026 - okurz@suse.com
+Wed Aug 19 09:55:39 UTC 2026 - okurz@suse.com
 
-- Update to version 5.1787055821.5de28100:
+- Update to version 5.1787133330.4deef227:
+  * chore(deps): Dependency cron 2026-08-19
+  * docs: fix event list formatting in UsersGuide
   * chore(docs): Add Prettier formatting checks for Markdown
   * docs: fix superflous whitespace
   * docs: Fix broken Markdown in "Manual daemon setup"
@@ -17,6 +19,10 @@ Tue Aug 18 14:54:38 UTC 2026 - okurz@suse.com
   * fix: close AssetPack file handles via public API
   * refactor(logview): Give variables better names
   * fix(logview): Save state per module instead of globally
+  * style: unify copyright headers by dropping years
+  * fix(webapi): Support inheritance via UI for carry_over_bugrefs
+  * test(style): Enforce modern JS and forbid inline scripts in templates
+  * feat: Add option to always show version
   * feat: allow disabling stale job duplication
   * test: check each stale job in loop
   * chore: add python3-typer dependency for Markdown Python checker
