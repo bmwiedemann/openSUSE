@@ -1,0 +1,44 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ea586eec23b5b1247b043d5fabf4cede</srcmd5>
+    <version>0.9.48</version>
+    <time>1787343443</time>
+    <user>dimstar_suse</user>
+    <comment>New package: python-graphifyy 0.9.48 (PyPI name graphifyy; CLI is graphify).
+Please keep pluskalm as package maintainer.
+
+Devel openSUSE_Tumbleweed is still unresolvable until the TW snapshot
+publishes the tree-sitter python grammar bindings already accepted into
+Factory. The package builds green where those binaries are visible:
+devel ppc64le succeeded, and home:pluskalm:treesitter-py succeeded on
+Factory x86_64 and aarch64 (3781 tests passed per flavour).
+
+- Update to 0.9.48:
+  * Extractor and graph correctness: directed path queries,
+    shrink-guard on incremental merge, language-specific
+    call/import resolution, deterministic ids
+  * MCP extra is dual-compat with mcp 1.x/2.x and requires
+    starlette &gt;= 1.3.1 (CVE-2026-48818, CVE-2026-54283)
+  * Optional OCaml and Common Lisp extras (unpackaged)
+- Replace spec-cleaner-exploded perl(Git::*) BuildRequires
+  with git-core
+- Skip test_label_communities_batches_when_over_batch_size:
+  batches run concurrently so completion order is racy
+- Ship only the GitHub tag archive: the PyPI sdist omits
+  tests/fixtures and ARCHITECTURE.md, so the second source
+  overlay is unnecessary
+- BuildRequires/Recommends the C tree-sitter-&lt;lang&gt; grammar
+  libraries: python bindings ctypes-load those shared objects,
+  and only tree-sitter-python's python subpackage Requires
+  the matching C library
+- BuildRequires python-PyYAML so nested Markdown frontmatter
+  tests use the YAML parser
+- Skip test_built_wheel_ships_the_full_skill_payload: it runs
+  python -m build, which collides with OBS's build package
+- Pass pytest --basetemp so query CLI tests do not match
+  &quot;build&quot; inside the OBS user name abuild
+- Requires(post/postun): update-alternatives for the
+  graphify / graphify-mcp alternatives scriptlets</comment>
+    <requestid>1372894</requestid>
+  </revision>
+</revisionlist>

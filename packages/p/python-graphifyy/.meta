@@ -1,0 +1,11 @@
+<package name="python-graphifyy" project="openSUSE:Factory">
+  <title>Code knowledge graph builder and query CLI for AI assistants</title>
+  <description>Graphify turns a codebase into a queryable knowledge graph
+(graphify-out/graph.json) and registers a /graphify skill with AI coding
+assistants. The graphify CLI answers plain-English questions about the
+graph with file:line citations, traces paths between components, explains
+symbols and summarizes pull-request impact. Individual language support is
+provided by the python-tree-sitter-&lt;language&gt; grammar modules; a missing
+grammar only disables that language.</description>
+  <url>https://github.com/Graphify-Labs/graphify</url>
+</package>
