@@ -1,0 +1,57 @@
+#
+# spec file for package python-comfyui-workflow-templates-media-image
+#
+# Copyright (c) 2026 SUSE LLC and contributors
+#
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
+
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+
+Name:           python-comfyui-workflow-templates-media-image
+Version:        0.3.160
+Release:        0
+Summary:        Image ComfyUI workflow media assets
+# Legal-Review-Notice: sdist ships no LICENSE file; upstream
+# Comfy-Org/workflow_templates is MIT
+License:        MIT
+URL:            https://github.com/Comfy-Org/workflow_templates
+Source0:        https://files.pythonhosted.org/packages/source/c/comfyui_workflow_templates_media_image/comfyui_workflow_templates_media_image-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools >= 61}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+BuildArch:      noarch
+%python_subpackages
+
+%description
+Media bundle containing image workflow assets for ComfyUI
+templates.
+
+%prep
+%autosetup -p1 -n comfyui_workflow_templates_media_image-%{version}
+
+%build
+%pyproject_wheel
+
+%install
+%pyproject_install
+%python_expand $python -m compileall -q -f -o 0 -o 1 --invalidation-mode unchecked-hash %{buildroot}%{$python_sitelib}/comfyui_workflow_templates_media_image
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
+%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -B -c "import comfyui_workflow_templates_media_image"
+
+%files %{python_files}
+%{python_sitelib}/comfyui_workflow_templates_media_image
+%{python_sitelib}/comfyui_workflow_templates_media_image-%{version}.dist-info
+
+%changelog
