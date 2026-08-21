@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jul 25 07:29:55 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.60.0 (0.06)
+   see /usr/share/doc/packages/perl-Socket-MsgHdr/Changes
+
+  FG - Felipe Gasper
+  EW - Eric Wong
+
+  0.06 Fri Jul 24 2026
+      - Make recvmsg set .msg_flags. (EW)
+
+-------------------------------------------------------------------
 Thu Dec  6 16:16:27 UTC 2018 - Stephan Kulow <coolo@suse.com>
 
 - updated to 0.05

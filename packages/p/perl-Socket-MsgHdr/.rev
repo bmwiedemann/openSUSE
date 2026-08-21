@@ -153,4 +153,17 @@
 </comment>
     <requestid>655842</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>296b3e20d939967d6a3e29e1c123870e</srcmd5>
+    <version>0.60.0</version>
+    <time>1787324495</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.60.0 (0.06)
+   see /usr/share/doc/packages/perl-Socket-MsgHdr/Changes
+  FG - Felipe Gasper
+  EW - Eric Wong
+  0.06 Fri Jul 24 2026
+      - Make recvmsg set .msg_flags. (EW)</comment>
+    <requestid>1372841</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Socket-MsgHdr
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,22 @@
 #
 
 
-Name:           perl-Socket-MsgHdr
-Version:        0.05
-Release:        0
 %define cpan_name Socket-MsgHdr
-Summary:        Sendmsg, Recvmsg and Ancillary Data Operations
-License:        GPL-1.0-or-later OR Artistic-1.0
-Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/F/FE/FELIPE/%{cpan_name}-%{version}.tar.gz
+Name:           perl-Socket-MsgHdr
+Version:        0.60.0
+Release:        0
+# 0.06 -> normalize -> 0.60.0
+%define cpan_version 0.06
+License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Sendmsg, recvmsg and ancillary data operations
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/F/FE/FELIPE/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Source100:      README.md
 BuildRequires:  perl
 BuildRequires:  perl-macros
+Provides:       perl(Socket::MsgHdr) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -42,11 +45,11 @@ information (cmsghdr). This ancillary data may be used for file descriptor
 passing, IPv6 operations, and a host of implemenation-specific extensions.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -57,7 +60,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes CONTRIBUTING README
 %license LICENSE
 
