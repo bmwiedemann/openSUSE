@@ -19,6 +19,123 @@ This package contains grammar sources for use in other grammars. \
 %files -n %{__treesitter_devel_package_name} \
 %{treesitter_devel_files}
 
+
+# --[[
+#    Optional Python binding subpackage for grammars whose upstream ships
+#    bindings/python (the tree-sitter org grammars do). Ships the
+#    tree_sitter_<grammar> module for every python flavor (singlespec), for
+#    consumers like graphify that use the grammar from Python via
+#    python3-tree-sitter.
+#
+#    No second copy of the parser is compiled: upstream's pure-Python
+#    package files (__init__.py, __init__.pyi, py.typed, queries) are
+#    installed as-is and the compiled _binding C extension is replaced by a
+#    generated _binding.py (from %%{_treesitter_python_shim_template}) that
+#    ctypes-loads the grammar library this same source package installs
+#    into %%{_treesitter_grammardir} and hands its TSLanguage pointer to
+#    python-tree-sitter as the "tree_sitter.Language" PyCapsule that the
+#    Language() constructor expects. No compiler, no wheel, no abi concerns.
+#
+#    Usage -- the spec MUST carry the BuildRequires AND the singlespec
+#    subpackage template literally. Neither can come from a macro in this
+#    file: the OBS scheduler extracts BuildRequires without
+#    macros.treesitter installed, and the python-rpm-macros generator
+#    re-reads the raw spec text for the %%package template to clone per
+#    flavor.
+#
+#    %%define python_subpackage_only 1
+#    BuildRequires:  fdupes
+#    BuildRequires:  python-rpm-macros
+#    BuildRequires:  %%{python_module base}
+#    # only for the functional test in %%check:
+#    BuildRequires:  %%{python_module tree-sitter}
+#
+#    %%treesitter_grammars %%{_name}
+#    %%python_subpackages
+#
+#    %%package -n python-%%{name}
+#    Summary: Python binding for the %%{name} grammar
+#    Requires: %%{name} = %%{version}-%%{release}
+#    Suggests: python-tree-sitter >= 0.22
+#    %%description -n python-%%{name}
+#    ...
+#
+#    %%files %%{python_files %%{name}}
+#    %%license LICENSE
+#    %%{python_sitearch}/tree_sitter_*
+#
+#    %%install
+#    %%treesitter_install
+#    %%treesitter_python_install
+#
+#    The Requires on the grammar package is exact on purpose: the grammar
+#    library is unversioned and both halves come from the same source
+#    package, so library and binding always move in lockstep.
+#
+#    python-tree-sitter is Suggests, not Requires: it is a separate
+#    package not in Rings:1-MinimalX, and several grammars live in
+#    ring1. A hard Requires fails Staging installcheck (nothing
+#    provides python*-tree-sitter). tree-sitter-bash already uses
+#    Suggests for the same reason.
+# --]]
+
+# Template the generated _binding.py comes from; shipped by tree-sitter
+# next to the other rpm helpers so it is versioned and testable on its own
+# instead of being inlined (and %%-escaped) in a macro body.
+%_treesitter_python_shim_template %{_rpmconfigdir}/tree-sitter-python-shim.py.in
+
+# Deprecated no-op: nothing is compiled for the python binding any more.
+# Kept so in-flight grammar branches that still call it in %%build keep
+# building; remove once those branches are refreshed.
+%treesitter_python_build %{nil}
+
+# %%treesitter_python_install [grammarname]
+# %%treesitter_python_install MODNAME GRAMMAR1 GRAMMAR2 ...
+# Installs upstream's bindings/python/tree_sitter_<name> package for every
+# python flavor, dropping binding.c and generating _binding.py from
+# %%{_treesitter_python_shim_template}.
+#
+# Bare or single-argument form: the module tree_sitter_<grammarname>
+# (default: the single grammar declared via %%treesitter_grammars) gets a
+# plain language() function, matching upstream's single-language bindings.
+#
+# Multi-language form, for upstream modules that expose several grammars
+# from one python package (no plain language()): pass the module name and
+# then every grammar; each grammar Gi yields a language_<Gi>() function
+# loading libtree-sitter-<Gi>.so. tree-sitter-typescript is the known case:
+#     %%treesitter_python_install typescript typescript tsx
+# generates language_typescript() and language_tsx() in
+# tree_sitter_typescript, matching its upstream binding exactly.
+# CAUTION: in the multi form the module name does NOT count as a grammar --
+# when the module also exposes its namesake grammar, repeat it (as above).
+# "%%treesitter_python_install typescript tsx" would generate ONLY
+# language_tsx() and the module's own __init__ import would fail.
+%treesitter_python_install() \
+tspy_args="%{?*}" \
+if test -z "${tspy_args}"; then \
+  tspy_args="%{treesitter_grammar_names}" \
+  if test $(echo ${tspy_args} | wc -w) -ne 1; then echo "error: package declares multiple grammars (${tspy_args}); call %%treesitter_python_install MODNAME GRAMMAR... explicitly (see macros.treesitter)" >&2; exit 1; fi \
+fi \
+set -- ${tspy_args} \
+tspy_grammar="$1" \
+tspy_mod="tree_sitter_$(echo "$1" | tr '-' '_')" \
+if ! test -d "bindings/python/${tspy_mod}"; then echo "error: bindings/python/${tspy_mod} not found -- upstream ships no python binding for $1" >&2; exit 1; fi \
+sed -e "s|@GRAMMAR@|${tspy_grammar}|g" %{_treesitter_python_shim_template} > _tspy_binding.py \
+# NB: no backslash-escaped quotes below -- rpm macro expansion strips the \
+# backslashes and collapses the shell quoting. Python string literals are \
+# single-quoted and docstrings triple-single-quoted so none are needed. \
+if test "$#" -eq 1; then \
+  tspy_und=$(echo "${tspy_grammar}" | tr '-' '_') \
+  { echo '' ; echo '' ; echo 'def language():' ; echo "    '''Return the language capsule for tree_sitter.Language().'''" ; echo "    return _language('%{_treesitter_grammardir}/%{_treesitter_grammar_base_libname}-${tspy_grammar}.so', 'tree_sitter_${tspy_und}')" ; } >> _tspy_binding.py \
+else \
+  shift \
+  for tspy_g in "$@"; do \
+    tspy_g_und=$(echo "${tspy_g}" | tr '-' '_') \
+    { echo '' ; echo '' ; echo "def language_${tspy_g_und}():" ; echo "    '''Return the ${tspy_g} language capsule for tree_sitter.Language().'''" ; echo "    return _language('%{_treesitter_grammardir}/%{_treesitter_grammar_base_libname}-${tspy_g}.so', 'tree_sitter_${tspy_g_und}')" ; } >> _tspy_binding.py \
+  done \
+fi \
+%{python_expand install -d %{buildroot}%{$python_sitearch}/${tspy_mod} ; cp -pr bindings/python/${tspy_mod}/. %{buildroot}%{$python_sitearch}/${tspy_mod}/ ; rm -f %{buildroot}%{$python_sitearch}/${tspy_mod}/binding.c ; if test -d queries && ! test -d %{buildroot}%{$python_sitearch}/${tspy_mod}/queries; then install -d %{buildroot}%{$python_sitearch}/${tspy_mod}/queries ; install -m 0644 queries/*.scm %{buildroot}%{$python_sitearch}/${tspy_mod}/queries/ ; fi ; install -m 0644 _tspy_binding.py %{buildroot}%{$python_sitearch}/${tspy_mod}/_binding.py ; %fdupes %{buildroot}%{$python_sitearch}}
+
 ### LUA-MACROS ###
 
 

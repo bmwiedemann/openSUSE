@@ -330,4 +330,19 @@ Superceed previous request.</comment>
   ignore it anyway.</comment>
     <requestid>1353457</requestid>
   </revision>
+  <revision rev="28" vrev="4">
+    <srcmd5>e8af037e9a5d900fe5bbd5a4b9700171</srcmd5>
+    <version>0.26.8</version>
+    <time>1787323819</time>
+    <user>anag_factory</user>
+    <comment>Thu Aug 20 13:53:41 UTC 2026 - Martin Pluskal &lt;mpluskal@suse.com&gt;
+
+- Do not emit treesitter_grammar_src() rpm symbols for relative
+  require() paths (., .., ./, ../). Local relative requires are
+  still followed to find nested external grammar deps. Fixes
+  installcheck on grammars that share a sibling common/
+  directory (nothing provides treesitter_grammar_src(../common)
+  for tree-sitter-php-devel).</comment>
+    <requestid>1372547</requestid>
+  </revision>
 </revisionlist>

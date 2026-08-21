@@ -79,9 +79,8 @@ def dummyRequire(requiredFile_fd: str, maxDepth: Optional[int] = 5 ) -> str:
                                 requiredLvl2.group(1).removeprefix("'").removesuffix("'")
                             requiredLvl2_grp_cleaned = \
                                 requiredLvl2_grp_cleaned.removeprefix("\"").removesuffix("\"")
-                        if not requiredLvl2_grp_cleaned.split('/')[0] == "..":
-                            # Don't emit dependencies which are local
-                            pass
+                        # Follow local relative requires to find nested
+                        # external deps; emission is filtered below.
                         dummyRequire(requiredLvl2_grp_cleaned, maxDepth - 1)
         except FileNotFoundError:
             pass
@@ -89,8 +88,14 @@ def dummyRequire(requiredFile_fd: str, maxDepth: Optional[int] = 5 ) -> str:
         if maxDepth == 5:
             # In case we immediately fail to open the first grammar source file
             return
-        # We only want to resolve dependencies outside of the package
-        print(f"{treeSitterGrammarSymbolToken}({Path(requiredFile_fd).parent})")
+        # We only want to resolve dependencies outside of the package.
+        # Never emit a relative-path rpm symbol (., .., ./..., ../...):
+        # those are local fragments, not grammar names. A token such as
+        # ../common produced treesitter_grammar_src(../common).
+        token = str(Path(requiredFile_fd).parent)
+        if token in (".", "..") or token.startswith("../") or token.startswith("./"):
+            return
+        print(f"{treeSitterGrammarSymbolToken}({token})")
 
 for line in fileinput.input():
     line = line.rstrip('\n')

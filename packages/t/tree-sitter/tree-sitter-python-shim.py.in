@@ -1,0 +1,43 @@
+# SPDX-License-Identifier: MIT
+# SPDX-FileCopyrightText: 2026 SUSE LLC
+#
+# Header template for the pure-Python tree-sitter grammar binding generated
+# by %treesitter_python_install (see macros.treesitter). The grammar name
+# token in the docstring is substituted at package build time; the
+# per-language "def language...()" lines are appended below this header by
+# the macro, one per grammar library the module exposes.
+#
+# This file is generated into MIT-licensed grammar subpackages, so it is
+# MIT itself.
+#
+# Instead of compiling upstream's binding.c (which would link a second copy
+# of the parser), load the grammar library packaged by this same source
+# package and hand its TSLanguage pointer to python-tree-sitter as the
+# PyCapsule named "tree_sitter.Language" that Language() expects.
+"""Binding for the @GRAMMAR@ tree-sitter grammar (openSUSE, ctypes-based)."""
+
+import ctypes
+
+# Module-level cache: the TSLanguage pointers handed out below point into
+# these mappings. The module stays referenced in sys.modules for the life
+# of the interpreter, so no library is ever dlclose()d while capsules
+# pointing into it exist.
+_libs = {}
+
+# ctypes defaults restype to c_int, which truncates pointers on 64-bit.
+# The explicit restypes below are load-bearing; do not remove them.
+_PyCapsule_New = ctypes.pythonapi.PyCapsule_New
+_PyCapsule_New.restype = ctypes.py_object
+_PyCapsule_New.argtypes = (ctypes.c_void_p, ctypes.c_char_p, ctypes.c_void_p)
+
+_CAPSULE_NAME = b"tree_sitter.Language"
+
+
+def _language(path, symbol):
+    lib = _libs.get(path)
+    if lib is None:
+        lib = _libs[path] = ctypes.CDLL(path)
+    fn = getattr(lib, symbol)
+    fn.restype = ctypes.c_void_p
+    fn.argtypes = ()
+    return _PyCapsule_New(fn(), _CAPSULE_NAME, None)

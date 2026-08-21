@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Thu Aug 20 13:53:41 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Do not emit treesitter_grammar_src() rpm symbols for relative
+  require() paths (., .., ./, ../). Local relative requires are
+  still followed to find nested external grammar deps. Fixes
+  installcheck on grammars that share a sibling common/
+  directory (nothing provides treesitter_grammar_src(../common)
+  for tree-sitter-php-devel).
+
+-------------------------------------------------------------------
+Thu Aug 20 08:46:22 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Add an opt-in Python binding macro to the grammar framework.
+  Review follow-up: generate a Python loader instead of compiling
+  the upstream C binding, so the parser is not built a second time:
+  * %treesitter_python_install installs upstream's pure-Python
+    bindings/python package files as-is and replaces the compiled
+    _binding extension with a generated _binding.py that loads the
+    grammar library from %{_libdir}/tree-sitter via ctypes and
+    hands its TSLanguage pointer to python-tree-sitter as the
+    "tree_sitter.Language" PyCapsule the Language() constructor
+    expects - no duplicate parser, no compiler, no wheel
+  * New source tree-sitter-python-shim.py.in: the template the
+    generated _binding.py comes from, shipped in %{_rpmconfigdir}
+    so it is versioned and testable instead of inlined in a macro
+  * %treesitter_python_build is a deprecated no-op; consumers no
+    longer need the python devel/pip/wheel/setuptools/installer
+    BuildRequires
+  * The python subpackage pins the grammar package exactly
+    (Requires: %{name} = %{version}-%{release}); library and
+    binding come from the same source package and move in lockstep
+  * %treesitter_python_install also takes an explicit multi-language
+    form, MODNAME GRAMMAR..., for upstream modules that expose
+    several grammars from one python package: each grammar yields a
+    language_<grammar>() function loading its own library, matching
+    the upstream binding of tree-sitter-typescript
+    (language_typescript and language_tsx, no plain language)
+  * Consuming specs still carry the (now much smaller) singlespec
+    template literally: the python-rpm-macros generator re-reads
+    the raw spec text for the %package template, so an %include
+    fragment cannot provide it (the BuildRequires alone could move
+    to a fragment - the OBS scheduler does resolve %include - but
+    splitting one small block across two files is not worth it)
+  * Documented python subpackage dep is Suggests:
+    python-tree-sitter >= 0.22, not Requires -- python-tree-sitter
+    is not in Rings:1-MinimalX, so a hard Requires fails Staging
+    installcheck for ring1 grammars (matching tree-sitter-bash)
+  * No change for grammar packages that do not opt in
+
+-------------------------------------------------------------------
 Tue May  5 06:30:03 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Also don't provide lib%{name}%{somajor}: this is already the

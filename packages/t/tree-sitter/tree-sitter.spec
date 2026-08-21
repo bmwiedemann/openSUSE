@@ -36,6 +36,7 @@ Source23:       functions.lua
 Source24:       compile-macros.sh
 Source25:       treesitter_grammar.attr
 Source26:       treesitter_grammar.req
+Source27:       tree-sitter-python-shim.py.in
 BuildRequires:  cargo-packaging
 BuildRequires:  clang
 BuildRequires:  fdupes
@@ -110,6 +111,7 @@ install -Dm755 %{SOURCE20} %{buildroot}%{_rpmconfigdir}/$(basename %{SOURCE20})
 
 install -Dm644 %{SOURCE25} %{buildroot}%{_fileattrsdir}/$(basename %{SOURCE25})
 install -Dm755 %{SOURCE26} %{buildroot}%{_rpmconfigdir}/$(basename %{SOURCE26})
+install -Dm644 %{SOURCE27} %{buildroot}%{_rpmconfigdir}/$(basename %{SOURCE27})
 
 #remove .a/.la files
 find %{buildroot} -type f \( -name "*.la" -o -name "*.a" \) -delete -print
@@ -147,6 +149,7 @@ EOF
 %{_rpmconfigdir}/%{name}-target.py
 %{_rpmmacrodir}/macros.treesitter
 %{_rpmconfigdir}/treesitter_grammar.req
+%{_rpmconfigdir}/tree-sitter-python-shim.py.in
 %{_fileattrsdir}/treesitter_grammar.attr
 %dir %{_emacs_sitelispdir}
 %dir %{_emacs_sitestartdir}
