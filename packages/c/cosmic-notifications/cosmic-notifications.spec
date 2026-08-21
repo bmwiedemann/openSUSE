@@ -18,7 +18,7 @@
 
 %define         appid com.system76.CosmicNotifications
 Name:           cosmic-notifications
-Version:        1.0.14
+Version:        1.6.0
 Release:        0
 Summary:        Layer for COSMIC Notifications
 License:        GPL-3.0-only
