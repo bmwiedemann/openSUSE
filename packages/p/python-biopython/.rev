@@ -261,4 +261,19 @@
     <comment></comment>
     <requestid>1363045</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>2fefe41b41d4ce64a3d1874c27f46ad6</srcmd5>
+    <version>1.88</version>
+    <time>1787324392</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.88 (bsc#1275943):
+  * The primary driver for this release is a security fix to remove
+    the use of Python's built-in function `eval` following a report by
+    email from independent security researcher Anand Patil. This
+    demonstrated arbitrary code execution via the `Bio.Nexus` NEXUS
+    parser.
+  * Additionally, a number of small bugs and typos have been fixed
+    with additions to the test suite and type annotations.</comment>
+    <requestid>1372744</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Aug 21 09:39:07 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.88 (bsc#1275943):
+  * The primary driver for this release is a security fix to remove
+    the use of Python's built-in function `eval` following a report by
+    email from independent security researcher Anand Patil. This
+    demonstrated arbitrary code execution via the `Bio.Nexus` NEXUS
+    parser.
+  * Additionally, a number of small bugs and typos have been fixed
+    with additions to the test suite and type annotations.
+
+-------------------------------------------------------------------
 Wed Jul  1 09:58:01 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add a legal notice about examples not being distributed
