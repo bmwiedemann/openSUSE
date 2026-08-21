@@ -116,4 +116,17 @@ Devel accepts: sr#1372135 (core), sr#1372136 (openai), sr#1372137 (anthropic).
 </comment>
     <requestid>1372140</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>217d019bdaeb3334a66c653e770d3e6a</srcmd5>
+    <version>1.6.1</version>
+    <time>1787324006</time>
+    <user>anag_factory</user>
+    <comment>Thu Aug 20 18:42:02 UTC 2026 - Martin Pluskal &lt;mpluskal@suse.com&gt;
+
+- Update to 1.6.1:
+  * Drop invalid_tool_call blocks from v1 content conversion
+    so partial streamed tool calls are not sent back to the
+    Anthropic API (kept on AIMessage.invalid_tool_calls)</comment>
+    <requestid>1372627</requestid>
+  </revision>
 </revisionlist>

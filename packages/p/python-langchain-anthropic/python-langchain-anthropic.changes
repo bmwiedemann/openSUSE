@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug 20 18:42:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.6.1:
+  * Drop invalid_tool_call blocks from v1 content conversion
+    so partial streamed tool calls are not sent back to the
+    Anthropic API (kept on AIMessage.invalid_tool_calls)
+
+-------------------------------------------------------------------
 Thu Aug 20 05:52:44 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.6.0:
