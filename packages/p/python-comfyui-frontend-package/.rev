@@ -1,0 +1,21 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bd6a6d9e9b2ca206d4d94f3f524d9620</srcmd5>
+    <version>1.49.6</version>
+    <time>1787324420</time>
+    <user>anag_factory</user>
+    <comment>New package python-comfyui-frontend-package for openSUSE:Factory from science:machinelearning (ComfyUI cone). pluskalm is the science:machinelearning package maintainer.
+
+INTERDEPENDENT REQUESTS - please stage together (ComfyUI cone):
+  * sr#1372780 python-trampoline
+  * sr#1372737 python-av (devel:languages:python; Factory 14.2.0, need &gt;= 16 for comfyui)
+  * remaining cone packages from science:machinelearning being submitted in this batch
+
+Fri Aug 21 08:51:33 UTC 2026 - Martin Pluskal &lt;mpluskal@suse.com&gt;
+
+- Initial package (version 1.49.6): official ComfyUI frontend
+  static assets shipped as a Python package.
+</comment>
+    <requestid>1372790</requestid>
+  </revision>
+</revisionlist>
