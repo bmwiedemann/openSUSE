@@ -60,4 +60,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1364982</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>12e68e0c53fea259018e663665dbe887</srcmd5>
+    <version>0.0.241</version>
+    <time>1787324398</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.0.241:
+  * refreshed to latest state from https://github.com/disposable-email-domains/disposable-email-domains</comment>
+    <requestid>1372770</requestid>
+  </revision>
 </revisionlist>
