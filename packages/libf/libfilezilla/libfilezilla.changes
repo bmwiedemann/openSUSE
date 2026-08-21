@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Aug 21 08:40:24 UTC 2026 - ecsos <ecsos@opensuse.org> - 0.57.0
+
+- Update to 0.57.0
+  * New features:
+    - Added support for creating impersonation_token from either
+      user names or user ids
+    - Added APIs to check whether impersonation is available before
+      trying to create a token
+    - Added fz::get_user_id() and fz::get_user_name()
+    - MSW: Added passwordless impersonation tokens
+    - MSW: Added desktop selection for processes spawned under
+      impersonation
+    - MSW: Process spawning under impersonation can now report
+      setup failures through a logger
+    - Improved the impersonation demo with user id, passwordless,
+      desktop and custom command support
+    - Added fz::secure_buffer that wipes memory on deallocation
+    - Added fz::pbkd2 function taking hmac algorithm as argument
+  * Bugfixes and minor changes:
+    - MSW: Loading impersonated user profiles no longer changes
+      caller process privileges
+    - MSW: Fixed EOF handling when reading redirected process
+      output after the child process exits
+
+-------------------------------------------------------------------
 Fri Jun 12 12:46:25 UTC 2026 - ecsos <ecsos@opensuse.org> - 0.56.1
 
 - Update to 0.56.1
