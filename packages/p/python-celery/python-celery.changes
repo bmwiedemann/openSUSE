@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 19 14:44:30 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Add tests.patch to fix testsuite (boo#1275668)
+
+-------------------------------------------------------------------
 Mon Jun 15 11:17:37 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Return click-plugins to requiremets, still needed

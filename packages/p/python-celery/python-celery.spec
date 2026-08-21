@@ -35,6 +35,8 @@ License:        BSD-3-Clause
 URL:            https://celeryproject.org
 Source:         https://files.pythonhosted.org/packages/source/c/celery/celery-%{version}.tar.gz
 Patch0:         move-pytest-configuration-to-conftest.patch
+# PATCH-FIX-UPSTREAM tests.patch boo#1275668 gh#celery/celery@bf1cf69
+Patch1:         tests.patch
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
