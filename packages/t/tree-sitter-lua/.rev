@@ -77,4 +77,18 @@
   * support lua5.5 grammar (forwarded request 1340856 from rrahl0)</comment>
     <requestid>1340857</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>33572e2d6b38d53cbe6c3161185f830c</srcmd5>
+    <version>0.5.0</version>
+    <time>1787323951</time>
+    <user>anag_factory</user>
+    <comment>- Convert the Python binding to the shared %treesitter_python_* macros
+  (flavor subpackages; binary names/contents unchanged).
+- Suggests python-tree-sitter instead of Requires, matching tree-sitter-bash,
+  so ring1 installcheck does not demand a non-ring package.
+
+INTERDEPENDENT REQUESTS - please stage together:
+ * sr#1372054 - tree-sitter (new Python binding macros this set needs)</comment>
+    <requestid>1372193</requestid>
+  </revision>
 </revisionlist>
