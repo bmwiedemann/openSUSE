@@ -1,0 +1,21 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f56d9c92feddb598c192ae26f2d5f06c</srcmd5>
+    <version>0.1.30</version>
+    <time>1787324424</time>
+    <user>anag_factory</user>
+    <comment>New package python-comfyui-workflow-templates-media-assets-01 for openSUSE:Factory from science:machinelearning (ComfyUI cone). pluskalm is the science:machinelearning package maintainer.
+
+INTERDEPENDENT REQUESTS - please stage together (ComfyUI cone):
+  * sr#1372780 python-trampoline
+  * sr#1372737 python-av (devel:languages:python; Factory 14.2.0, need &gt;= 16 for comfyui)
+  * remaining cone packages from science:machinelearning being submitted in this batch
+
+Fri Aug 21 08:51:33 UTC 2026 - Martin Pluskal &lt;mpluskal@suse.com&gt;
+
+- Initial package (version 0.1.30): extra media assets bundle for
+  ComfyUI workflow templates.
+</comment>
+    <requestid>1372795</requestid>
+  </revision>
+</revisionlist>
