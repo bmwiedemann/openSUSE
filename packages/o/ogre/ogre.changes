@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug 13 16:20:00 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.de>
+
+- Let ogre-devel require its own -devel subpackages by name instead of
+  by pkgconfig() symbol. Since ogre1 started publishing its own devel
+  subpackages, both OGRE generations provide pkgconfig(OGRE-Overlay)
+  and friends from the same unversioned paths, so anything asking for
+  ogre-devel became unresolvable with "have choice".
+
+-------------------------------------------------------------------
 Tue Jun 24 06:54:23 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix packaging on aarch64 and %{arm}

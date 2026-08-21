@@ -401,15 +401,18 @@ This package contains the development headers for the Ogre Terrain System.
 %package devel
 Summary:        Development files for the Ogre Engine
 Group:          Development/Libraries/C and C++
-Requires:       pkgconfig(OGRE)
-Requires:       pkgconfig(OGRE-Bites)
-Requires:       pkgconfig(OGRE-MeshLodGenerator)
-Requires:       pkgconfig(OGRE-Overlay)
-Requires:       pkgconfig(OGRE-Paging)
-Requires:       pkgconfig(OGRE-Property)
-Requires:       pkgconfig(OGRE-RTShaderSystem)
-Requires:       pkgconfig(OGRE-Terrain)
-Requires:       pkgconfig(OGRE-Volume)
+# By name rather than by pkgconfig(): the compat package ogre1 installs
+# its pkgconfig files at the same unversioned paths, so asking for the
+# symbols makes every consumer of ogre-devel ambiguous to the resolver.
+Requires:       libOgreBites-devel = %{version}
+Requires:       libOgreMain-devel = %{version}
+Requires:       libOgreMeshLodGenerator-devel = %{version}
+Requires:       libOgreOverlay-devel = %{version}
+Requires:       libOgrePaging-devel = %{version}
+Requires:       libOgreProperty-devel = %{version}
+Requires:       libOgreRTShaderSystem-devel = %{version}
+Requires:       libOgreTerrain-devel = %{version}
+Requires:       libOgreVolume-devel = %{version}
 
 %description devel
 OGRE (Object-Oriented Graphics Rendering Engine) is a scene-oriented 3D engine.
