@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Aug 21 18:55:28 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20260821:
+  * Add Kenwood NX-800 driver
+  * kenwood_itm: Fix DCS parsing
+  * tmd710: various bug fixes
+  * Add TK-3180E support
+  * tk8180: various updates
+  * Support Shift+F10 convention for context menu in memedit
+  * Add Baofeng BF-T20, BF-T20FRS setting descriptions
+  * Add QYT KT-8900 setting documentation
+  * Add user-friendly Baofeng UV-5R setting descriptions
+
+-------------------------------------------------------------------
 Sun Jul 05 10:43:47 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20260626:
