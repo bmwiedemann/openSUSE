@@ -21,4 +21,16 @@ If it is ok, I'll keep requesting the missing dependencies from the bottom of th
     <comment></comment>
     <requestid>860213</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>78a0819cfcfdccc9b3df3d7bef2a9781</srcmd5>
+    <version>0.90.0</version>
+    <time>1787324495</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.90.0 (0.09)
+   see /usr/share/doc/packages/perl-DateTime-Format-W3CDTF/Changes
+  0.09  2026-07-24
+   - (Update) Fix nanosecond value to be an integer for Specio 0.50+
+     compatibility (#4 by @hitode909)</comment>
+    <requestid>1372833</requestid>
+  </revision>
 </revisionlist>

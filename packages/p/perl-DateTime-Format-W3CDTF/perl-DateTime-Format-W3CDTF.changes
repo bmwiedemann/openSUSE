@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jul 29 07:52:51 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.90.0 (0.09)
+   see /usr/share/doc/packages/perl-DateTime-Format-W3CDTF/Changes
+
+  0.09  2026-07-24
+
+   - (Update) Fix nanosecond value to be an integer for Specio 0.50+
+     compatibility (#4 by @hitode909)
+
+-------------------------------------------------------------------
 Sun Dec 20 03:07:21 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.08

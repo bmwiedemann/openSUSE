@@ -1,7 +1,7 @@
 #
 # spec file for package perl-DateTime-Format-W3CDTF
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,22 +16,26 @@
 #
 
 
-Name:           perl-DateTime-Format-W3CDTF
-Version:        0.08
-Release:        0
 %define cpan_name DateTime-Format-W3CDTF
-Summary:        Parse and format W3CDTF datetime strings
+Name:           perl-DateTime-Format-W3CDTF
+Version:        0.90.0
+Release:        0
+# 0.09 -> normalize -> 0.90.0
+%define cpan_version 0.09
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
+Summary:        Parse and format W3CDTF datetime strings
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/G/GW/GWILLIAMS/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/G/GW/GWILLIAMS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(DateTime)
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.59
 Requires:       perl(DateTime)
+Provides:       perl(DateTime::Format::W3CDTF) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -43,11 +47,11 @@ It can be used to parse these formats in order to create the appropriate
 objects.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 PERL_USE_UNSAFE_INC=1 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -58,7 +62,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes examples README
 %license LICENSE
 
