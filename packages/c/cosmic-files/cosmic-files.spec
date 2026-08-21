@@ -18,7 +18,7 @@
 
 %define         appid com.system76.CosmicFiles
 Name:           cosmic-files
-Version:        1.0.14
+Version:        1.6.0
 Release:        0
 Summary:        COSMIC file manager
 License:        GPL-3.0-only

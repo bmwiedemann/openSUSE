@@ -1,4 +1,96 @@
 -------------------------------------------------------------------
+Wed Aug 19 11:37:27 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.6.0:
+  * Epoch 1.6.0 version update
+  * i18n: translation updates from weblate
+  * chore: update libcosmic
+  * feat: add context menu to text input and selectable text fields
+  * fix infinite dialog on network mount failure
+
+-------------------------------------------------------------------
+Thu Jul 30 12:43:57 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.5.0:
+  * Epoch 1.5.0 version update
+  * i18n: translation updates from weblate
+
+-------------------------------------------------------------------
+Thu Jul 23 06:27:21 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.4.0:
+  * Epoch 1.4.0 version update
+  * fix: fixes original_path_for_trash_child
+  * fix: not all files directory are trash
+  * fix: fall back to GIO on destination open failure for MTP copies
+
+-------------------------------------------------------------------
+Wed Jul 15 08:18:45 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.3.0:
+  * fix(libcosmic): crash when right clicking mounted path in nav bar
+  * Epoch 1.3.0 version update
+  * chore: update libcosmic
+  * fix: update iced
+  * chore: updated deps
+  * feat: support MIME subclasses in file chooser dialog
+  * fix: remove background style for container around tab bar
+  * fix: popup corner improvements
+  * chore: update for navbar popup
+  * fix: no blur for desktop mode
+  * cctk
+  * chore: update libcosmic
+
+-------------------------------------------------------------------
+Tue Jul 14 07:41:49 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.2.0:
+  * Epoch 1.2.0 version update
+  * feat: view folder's content in trash
+  * i18n: translation updates from weblate
+  * feat: add SHA256 checksums to file properties
+  * fix: panic when a second zip extract dialog is opened
+
+-------------------------------------------------------------------
+Wed Jun 24 19:49:11 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.1.0:
+  * Epoch 1.1.0 version update
+  * feat: add PageUp and PageDown bindings
+  * Clear hover highlights when navigating with keyboard
+  * fix(mime_app): unalias mime types when associating apps
+  * feat(mime_app): show related apps in open with dropdown in preview
+  * fix(mime_app): track mime type app default by mime
+  * feat(mime_app): include text editors for text-based mime types
+  * feat(mime_app): include video players for audio mime types
+  * refactor: move mime app logic to mime_app module
+  * fix: do not use `application/x-zerosize` as mime type for empty files
+  * improv: use sort-icons instead of unicode arrow glyphs
+
+-------------------------------------------------------------------
+Thu Jun 11 11:12:17 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.16:
+  * fix: take user's Added Association into account when hiding apps
+  * improv: lazy load app icons for mime apps
+  * fix: hide apps without declared mimetype support
+  * Epoch 1.0.16 version update
+  * fix: sort other apps section
+  * fix: hide no-display apps only in other category
+  * fix: hide no-display apps in open-with select
+
+-------------------------------------------------------------------
+Wed Jun 03 19:29:42 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.15:
+  * Epoch 1.0.15 version update
+  * fix: gate desktop features for no-default-features build
+  * feat: reload mime app cache when mime app config is updated
+  * build: use `cargo vendor --locked`
+  * feat: improve mime app detection & do it faster
+  * chore: update libcosmic to fix item highlight in wayland context menu
+
+-------------------------------------------------------------------
 Mon Jun 01 12:42:23 UTC 2026 - rrahl0@opensuse.org
 
 - Update to version 1.0.14:
