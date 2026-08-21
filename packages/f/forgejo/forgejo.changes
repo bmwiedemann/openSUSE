@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Thu Aug 20 11:51:19 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 16.0.3:
+  - Security bug fixes
+    - PR: - fix: public-only and repo-specific access to
+      /repos/{owner}/{repo}/pulls/{index}/update
+    - PR: - fix: expand local reusable workflows from base branch
+      w/ pull_request_target
+    - PR: - fix: disallow owner as collaboration access mode
+  - User Interface bug fixes
+    - PR (backported): fix(ui): hashbox alignment
+    - PR (backported): fix: adopt repositories from user settings
+  - Localization
+    - Translations updates from Codeberg Translate: #13958
+      (backport of #13467)
+  - Bug fixes
+    - PR (backported): fix: do not read past the last line when
+      formatting zoekt search results
+    - PR (backported): fix(api): mark fields for issue
+      dependencies/blocks as required
+    - PR (backported): fix(conda): parse null dependencies as empty
+      array
+    - PR (backported): webhook(matrix): fix stateKey collision
+      swallowing messages
+    - PR (backported): fix: expire task logs even if there is no
+      log file
+    - PR (backported): fix(api): unblock fall-through to urlencoded
+      names in wiki
+    - PR (backported): fix: prevent Actions trigger pull_request
+      from drifting
+    - PR (backported): fix(package/pypi): response header based on
+      PEP691
+    - PR (backported): fix: bump minimum version to use git-replay
+      on
+    - PR (backported): fix: use HTML link for pull request webhook
+    - PR (backported): fix: exclude deleted artifacts when
+      calculating storage consumption
+    - PR (backported): fix: error when replying to comments on
+      removed lines-of-code in review
+    - PR (backported): fix: send 401 responses when accessing
+      endpoints that don't support session auth
+    - PR (backported): fix: trigger Actions for original commits
+      (#13706)
+    - PR (backported): fix: bad quoting in hook scripts allow word
+      splitting, leading to hook script errors
+    - PR (backported): fix: prevent panic by returning error if
+      dbfs file does not exist
+  - Included for completeness but not user-facing (chores, etc.)
+    - PR: Update go toolchain directive to v1.26.7 (v16.0/forgejo)
+    - PR: Update module golang.org/x/image to v0.45.0 [SECURITY]
+      (v16.0/forgejo)
+    - PR: Update golang.org/x/mod (indirect) to v0.40.0 [SECURITY]
+      (v16.0/forgejo)
+    - PR: Update go toolchain directive to v1.26.6 [SECURITY]
+      (v16.0/forgejo)
+    - PR (backported): Fix TestCannotCreatePrivateKey in Guix
+      container.
+    - PR (backported): chore: retry diff page load on
+      TestPullRequestCommentPlacement when expected commit isn't
+      matched
+    - PR: Update dependency mermaid to v11.16.1 [SECURITY]
+      (v16.0/forgejo)
+    - PR: Update dependency postcss to v8.5.23 [SECURITY]
+      (v16.0/forgejo)
+
+-------------------------------------------------------------------
 Thu Jul 30 23:19:33 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - update to 16.0.2:

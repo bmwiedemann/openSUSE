@@ -1028,4 +1028,12 @@ Bug fixes:
     <comment>- update to 16.0.2: (forwarded request 1368705 from darix)</comment>
     <requestid>1368725</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>f1a9968a778d7ea65044fde47156e8f2</srcmd5>
+    <version>16.0.3</version>
+    <time>1787324200</time>
+    <user>anag_factory</user>
+    <comment>- update to 16.0.3: (forwarded request 1372291 from darix)</comment>
+    <requestid>1372714</requestid>
+  </revision>
 </revisionlist>
