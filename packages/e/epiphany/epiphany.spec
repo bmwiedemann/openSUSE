@@ -21,7 +21,6 @@ Version:        50.6
 Release:        0
 Summary:        GNOME Web Browser
 License:        GPL-3.0-or-later
-Group:          Productivity/Networking/Web/Browsers
 URL:            https://wiki.gnome.org/Apps/Web
 Source0:        %{name}-%{version}.tar.xz
 
@@ -70,7 +69,6 @@ simplicity and standards compliance.
 
 %package branding-upstream
 Summary:        GNOME Web Browser -- Upstream default bookmarks and user agent string
-Group:          Productivity/Networking/Web/Browsers
 Requires:       %{name} = %{version}
 Supplements:    (%{name} and branding-upstream)
 Conflicts:      %{name}-branding
@@ -86,7 +84,6 @@ string.
 
 %package -n gnome-shell-search-provider-epiphany
 Summary:        Epiphany Search Provider for GNOME Shell
-Group:          Productivity/Networking/Web/Browsers
 Requires:       %{name} = %{version}
 Requires:       gnome-shell
 Supplements:    (%{name} and gnome-shell)

@@ -1979,4 +1979,12 @@ New stable rel</comment>
   + Updated translations.</comment>
     <requestid>1371796</requestid>
   </revision>
+  <revision rev="230" vrev="2">
+    <srcmd5>ef99126990815a4806c6235e99575e2c</srcmd5>
+    <version>50.6</version>
+    <time>1787324396</time>
+    <user>anag_factory</user>
+    <comment>- Drop obsolete Group tag.</comment>
+    <requestid>1372773</requestid>
+  </revision>
 </revisionlist>
