@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Aug  4 04:02:42 UTC 2026 - pallas wept <pallaswept@proton.me>
+
+- Update to version 5.12
+  * Add "Insert parentheses" shortcut action (default "Ctrl+Shft+(")
+    which always inserts empty parentheses after cursor
+  * Fix cursor and text position with RTL keyboard layouts
+  * Update conversion list immediately during calculate-as-you-type
+    (do not wait until added to history)
+  * Do not fail configure on macOS if gtk-mac-integration-gtk3 is
+    not found
+  * Fix duplicated character when using plasma keyboard alternate
+    character popup
+  * Minor bug fixes and feature enhancements
+- Recommend language subpackage
+  * Fixes localisation
+
+-------------------------------------------------------------------
 Sat Apr  4 04:42:42 UTC 2026 - pallas wept <pallaswept@proton.me>
 
 - Update to version 5.10
