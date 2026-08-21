@@ -17,7 +17,7 @@
 
 
 Name:           cosmic-session
-Version:        1.0.14
+Version:        1.3.0
 Release:        0
 Summary:        Session manager for the COSMIC desktop environment
 License:        GPL-3.0-only
