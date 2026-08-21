@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Fri Aug 21 09:01:47 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package of ComfyUI 0.33.3: node-graph engine for local
+  image, video, audio and 3D generation
+  * Single-flavour application: tree in /usr/share/comfyui,
+    launcher /usr/bin/comfyui
+  * Launcher defaults --base-directory and --database-url to
+    $XDG_DATA_HOME/comfyui (or ~/.local/share/comfyui)
+  * Already includes the 0.28.0 security fixes:
+    CVE-2026-56670, CVE-2026-56671, CVE-2026-56672, CVE-2026-56673
+

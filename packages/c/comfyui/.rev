@@ -1,0 +1,29 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d9f61f91618cb7b6bfdd75fc4c84148b</srcmd5>
+    <version>0.33.3</version>
+    <time>1787324437</time>
+    <user>anag_factory</user>
+    <comment>New package comfyui for openSUSE:Factory from science:machinelearning (ComfyUI cone). pluskalm is the science:machinelearning package maintainer.
+
+Requires python-av &gt;= 16 (Factory is 14.2.0 until sr#1372737). python-comfy-angle is Recommends only and is not packaged (prebuilt Electron libEGL/libGLESv2).
+
+INTERDEPENDENT REQUESTS - please stage together (ComfyUI cone):
+  * sr#1372780 python-trampoline
+  * sr#1372737 python-av (devel:languages:python; Factory 14.2.0, need &gt;= 16 for comfyui)
+  * remaining cone packages from science:machinelearning being submitted in this batch
+
+Fri Aug 21 09:01:47 UTC 2026 - Martin Pluskal &lt;mpluskal@suse.com&gt;
+
+- Initial package of ComfyUI 0.33.3: node-graph engine for local
+  image, video, audio and 3D generation
+  * Single-flavour application: tree in /usr/share/comfyui,
+    launcher /usr/bin/comfyui
+  * Launcher defaults --base-directory and --database-url to
+    $XDG_DATA_HOME/comfyui (or ~/.local/share/comfyui)
+  * Already includes the 0.28.0 security fixes:
+    CVE-2026-56670, CVE-2026-56671, CVE-2026-56672, CVE-2026-56673
+</comment>
+    <requestid>1372800</requestid>
+  </revision>
+</revisionlist>

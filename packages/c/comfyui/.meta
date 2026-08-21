@@ -1,0 +1,6 @@
+<package name="comfyui" project="openSUSE:Factory">
+  <title>Modular node-graph engine for local AI content creation</title>
+  <description>ComfyUI is a node-graph engine for local AI content creation. Workflows are assembled from nodes that load diffusion models, encoders, LoRAs and other assets, and can produce images, video, audio and 3D output. A local HTTP API and a browser UI are included.
+
+The packaged tree is read-only. Models, custom nodes, input, output, temp and user state live under the per-user --base-directory. ComfyUI-Manager is not enabled.</description>
+</package>
