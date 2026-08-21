@@ -23,7 +23,7 @@
 %endif
 
 Name:           python-dynaconf
-Version:        3.3.1
+Version:        3.3.5
 Release:        0
 Summary:        The dynamic configurator for your Python Project
 License:        MIT

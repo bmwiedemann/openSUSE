@@ -269,4 +269,40 @@
     segment.</comment>
     <requestid>1362041</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>eeaeac437370c0b277de21154939933c</srcmd5>
+    <version>3.3.5</version>
+    <time>1787324412</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.3.5:
+  * Skip non-str keys when resolving key casing (#1446).
+  * Get/get_fresh with dotted keys stop working after first call
+  * Fix get_history ignoring its history_limit argument (#1424).
+  * Fix regression on override precedence with proper dynaconf-
+    token cleanup (#1438).
+  * Add __deepcopy__ to DataDict to match DataList (#1440).
+  * Added py314 in toxList and up some test packages to full
+    support this (#1443).
+  * Fixed error when passing a list values for env on dynaconf
+    init (#1278) (#1421).
+  * Clean up nested dynaconf_merge tokens when parent key is new
+  * Keep sibling keys that share a dotted path leaf name (#1434).
+  * Convert container subclasses (#1436).
+  * Django early validation integration code bug (#1432). By
+  * Fixed regression on lazy evaluation when using
+    dynaboxify=False (#1429). By @pedro-psb.
+  * Clarify the values of True, False and None for must_exist
+    check (#1416). By @pedro-psb.
+  * Fix netlify deploy command on publish workflow (#1420). By
+  * Consolidate docs-publishing workflow for rolling-release
+  * Simplify docs-only skip and include backport branches on main
+  * Don't treat a string sharing a converter prefix as a cast
+  * Fixed 'dynaconf validate' edge cases with
+    validation_file.toml (#1411). By @pedro-psb.
+  * Avoid RecursionError in from_env with validate_on_update
+  * Avoid crash merging a dynaconf_merge list into a missing key
+  * Fix check-release command from release utility. By @pedro-
+    psb.</comment>
+    <requestid>1372787</requestid>
+  </revision>
 </revisionlist>
