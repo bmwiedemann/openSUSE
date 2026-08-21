@@ -17,7 +17,7 @@
 
 
 %define pgmajor 18
-%define pgminor 4
+%define pgminor 6
 
 ### CUT HERE ###
 %define pgname postgresql%pgmajor
@@ -423,8 +423,8 @@ Requires:       %pgname-server-devel = %version
 Requires:       %pgname-llvmjit = %version
 Requires(post): postgresql-llvmjit-devel-noarch >= %packaging_level
 Requires(postun): postgresql-llvmjit-devel-noarch >= %packaging_level
-%requires_file	%_bindir/llc
-%requires_file	%_bindir/clang
+Requires:       %_bindir/llc
+Requires:       %_bindir/clang
 %endif
 
 %description llvmjit-devel
