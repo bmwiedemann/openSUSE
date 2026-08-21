@@ -884,4 +884,13 @@ Features
     <comment>- Update to 1.26.0</comment>
     <requestid>1369459</requestid>
   </revision>
+  <revision rev="85" vrev="2">
+    <srcmd5>eb2420acbf212db5c638dc51ee0d4110</srcmd5>
+    <version>1.26.0</version>
+    <time>1787323807</time>
+    <user>anag_factory</user>
+    <comment>- Add patch to fix build issue with swig 4.5
+  [unbound-swig-4.5-compat.patch]</comment>
+    <requestid>1371254</requestid>
+  </revision>
 </revisionlist>

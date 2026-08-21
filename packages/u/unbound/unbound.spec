@@ -101,6 +101,7 @@ Source16:       unbound-munin.README
 Source18:       unbound-anchor.service
 Source19:       unbound.sysusers
 Source20:       tmpfiles-unbound-anchor.conf
+Patch0:         unbound-swig-4.5-compat.patch
 
 Summary:        Validating, recursive, and caching DNS(SEC) resolver
 License:        BSD-3-Clause
