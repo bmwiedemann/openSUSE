@@ -72,4 +72,20 @@
 - switch to download_files service</comment>
     <requestid>1358750</requestid>
   </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>e90e64a0f958135ee758f20d67a1152b</srcmd5>
+    <version>0.23.1</version>
+    <time>1787323814</time>
+    <user>anag_factory</user>
+    <comment>- Suggests python-tree-sitter instead of Requires, matching
+  tree-sitter-bash, so ring1 installcheck does not demand a
+  non-ring package.
+- Fixes Staging:E installcheck (anag_factory on sr#1372054):
+  python313/python314-tree-sitter-ruby hard-required
+  python-tree-sitter, which is not in Rings:1-MinimalX.
+
+INTERDEPENDENT REQUESTS - please stage together:
+ * sr#1372054 - tree-sitter (Python binding macros this set needs)</comment>
+    <requestid>1372195</requestid>
+  </revision>
 </revisionlist>

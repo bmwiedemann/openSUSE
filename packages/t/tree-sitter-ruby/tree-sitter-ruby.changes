@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Aug 20 08:51:53 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Build the upstream Python binding as pythonXYZ flavor
+  subpackages: the shared %treesitter_python_build/_install
+  macros plus the singlespec python_subpackage_only template
+- Suggests python-tree-sitter instead of Requires, matching
+  tree-sitter-bash, so ring1 installcheck does not demand a
+  non-ring package.
+
+-------------------------------------------------------------------
 Mon Jun  8 14:36:15 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Use correct tree-sitter dirname instead of tree_sitter
