@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Aug 21 08:39:34 UTC 2026 - ecsos <ecsos@opensuse.org> - 3.71.0
+
+- Update to 3.71.0
+  * New features:
+    - FTP(S), SFTP: Entering an empty path in the remote path edit
+      field now returns back to the initial home directory
+  * Bugfixes and minor changes:
+    - FTP(S): Fix parsing of permissions for chmod dialog on
+      servers that include both perms and unix.mode facts in MLSD
+      output
+    - SFTP: Updated fzssh to 1.4.0 to support additional
+      algorithms and key file formats
+    - Official binaries are now linked against wxWidgets 3.2.11
+    - FTP(S): Fixed parsing of paths on servers with the server
+      type set to DOS. Some malformed paths were wrongly accepted,
+      confusing the engine; such paths are now rejected early.
+    - Refactored engine internals to remove influences from
+      FTP-specific concepts that were permeating into other protocols
+
+-------------------------------------------------------------------
 Fri Jun 12 12:48:27 UTC 2026 - ecsos <ecsos@opensuse.org> - 3.70.6
 
 - Update to 3.70.6
