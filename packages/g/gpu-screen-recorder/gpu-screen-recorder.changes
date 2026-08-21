@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Aug 21 11:15:49 UTC 2026 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 20260818:
+  * Refactored core codebase from C++ to C library architecture
+  * Added gsr-cli tool for IPC control via Unix domain socket
+  * Added Apple Silicon support and C11 standard build setup
+  * Enabled static FFmpeg build option and updated to FFmpeg 9.0
+  * Improved PipeWire audio matching and virtual device handling
+  * Improved PipeWire/KMS HDR, night light, and SDR tonemapping
+  * Optimized replay save memory clearing and shutdown times
+  * Added customizable audio track names and metadata flags
+  * Switched SSL backend from OpenSSL to mbedTLS
+  * Fixed NVENC, Vulkan encoding, and gsr-kms-server crashes
+  * Updated build dependencies, manpages, and README docs
+
+-------------------------------------------------------------------
 Sat May 30 12:03:05 UTC 2026 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 20260529:
