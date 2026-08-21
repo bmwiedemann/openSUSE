@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Aug 13 08:05:13 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 0.2.5:
+  * fix(flatpak): theme detection
+  * Update Ukrainian localization
+  * feat: improve layout page
+  * fix(cache): invalidate when deserialization fails
+  * feat: add uuid for remote themes
+  * fix(color-schemes): theme v1 parsing
+  * chore: remove libdav1d-dev
+  * fix: multi-window bug
+  * Update README.md
+  * fix: dependency issue
+  * i18n(cs): Update Czech translation
+  * Update cosmic_ext_tweaks.ftl
+  * i18n(fr): Update French translations
+  * i18n(pt-BR) - update translation
+  * feat: add reset-to-defaults functionality
+  * fix(flatpak): build commands
+
+-------------------------------------------------------------------
 Mon Jun 01 19:00:31 UTC 2026 - rrahl0@opensuse.org
 
 - Update to version 0.2.2:
