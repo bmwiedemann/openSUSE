@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 17 04:59:13 UTC 2026 - Zoltan Balogh <zbalogh@suse.com>
+
+- Add libfprint-tests subpackage with installed tests
+  for gnome-desktop-testing-runner
+
+-------------------------------------------------------------------
 Tue Jun 30 15:01:53 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
 - Add upstream patch focal-tech-support.patch to add support for

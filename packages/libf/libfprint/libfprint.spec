@@ -141,7 +141,7 @@ This package contains the introspection bindings for the libfprint.
 %build
 %meson \
 	-Dgtk-examples=false \
-	-Dinstalled-tests=false \
+	-Dinstalled-tests=true \
 %if %{install_fp_udev_hwdb}
 	-Dudev_hwdb=enabled \
 %else
@@ -150,8 +150,22 @@ This package contains the introspection bindings for the libfprint.
 	%{nil}
 %meson_build
 
+%check
+%meson_test || :
+
 %install
 %meson_install
+
+# Fix hardcoded OBS build paths in installed .test files
+# G_TEST_SRCDIR/BUILDDIR/FP_PRINTS_PATH -> installed locations
+for testfile in %{buildroot}%{_datadir}/installed-tests/libfprint-%{apiver}/*.test; do
+    [ -f "$testfile" ] || continue
+    sed -i \
+        -e 's|G_TEST_SRCDIR=[^ ]* |G_TEST_SRCDIR=%{_datadir}/installed-tests/libfprint-%{apiver} |g' \
+        -e 's|G_TEST_BUILDDIR=[^ ]* |G_TEST_BUILDDIR=%{_libexecdir}/installed-tests/libfprint-%{apiver} |g' \
+        -e 's|FP_PRINTS_PATH=[^ ]* |FP_PRINTS_PATH=%{_datadir}/installed-tests/libfprint-%{apiver} |g' \
+        "$testfile"
+done
 
 %post -n libfprint-%{apiver}-%{apiver}
 /sbin/ldconfig
@@ -193,5 +207,21 @@ This package contains the introspection bindings for the libfprint.
 %{_includedir}/%{name}-%{apiver}/tod-1/
 %{_libdir}/%{name}-%{apiver}-tod.so
 %{_libdir}/pkgconfig/%{name}-%{apiver}-tod-1.pc
+
+%package tests
+Summary:        Installed tests for libfprint-%{apiver}
+Requires:       gnome-desktop-testing
+Requires:       libfprint-%{apiver}-%{todapiver} = %{version}
+
+%description tests
+Installed tests for libfprint, compatible with gnome-desktop-testing-runner.
+Tests use a virtual USB fingerprint device driver — no hardware required.
+Run with: gnome-desktop-testing-runner libfprint-2
+
+%files tests
+%dir %{_libexecdir}/installed-tests
+%{_libexecdir}/installed-tests/libfprint-%{apiver}/
+%dir %{_datadir}/installed-tests
+%{_datadir}/installed-tests/libfprint-%{apiver}/
 
 %changelog
