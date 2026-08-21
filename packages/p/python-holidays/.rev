@@ -617,4 +617,41 @@
     format labels</comment>
     <requestid>1366639</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>7c2780674e7b4b77db18ac0f7da65aa9</srcmd5>
+    <version>0.103</version>
+    <time>1787324399</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.103:
+  * Add New Zealand Exchange (NZX) holidays
+  * Add Taiwan Stock Exchange (TWSE) holidays
+  * Update India holidays: add Ganesh Chaturthi as public holiday
+    (MH)
+  * Update India holidays: add Gujarati New Year holiday (GJ)
+  * Update India tests
+  * Update Israel holidays: standardize Thai l10n
+  * Update NSE/BSE holidays: change Holi 2026 date
+  * Refactor XNYS holidays: update format labels handling
+  * Add Bolsas y Mercados Argentinos (BYMA) holidays
+  * Add Bolsas y Mercados Españoles (BME) holidays
+  * Add Johannesburg Stock Exchange (JSE) holidays
+  * Add Korea Exchange (KRX) holidays
+  * Add Singapore Exchange (SGX) holidays
+  * Update Latvia holidays: add ru localization
+  * Update Australia holidays: rename Grand Final Day holiday
+    (VIC)
+  * Update CI/CD workflow: optimize build testing
+  * Update Ghana holidays
+  * Update India holidays: add Remna Ni (Peace Accord Day) for MZ
+  * Update India holidays: subdiv holidays improvement (North
+    region)
+  * Update Israel holidays: fix Lag Ba'omer name in Hebrew
+  * Update Malaysia holidays: add 2026 additional Hari Raya
+    Aidilfitri public holiday
+  * Update Paraguay holidays: add new Constitution Oath Day
+    holiday
+  * Update South Korea holidays: update Constitution Day and
+    Labor Day</comment>
+    <requestid>1372774</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Fri Aug 21 10:02:00 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.103:
+  * Add New Zealand Exchange (NZX) holidays
+  * Add Taiwan Stock Exchange (TWSE) holidays
+  * Update India holidays: add Ganesh Chaturthi as public holiday
+    (MH)
+  * Update India holidays: add Gujarati New Year holiday (GJ)
+  * Update India tests
+  * Update Israel holidays: standardize Thai l10n
+  * Update NSE/BSE holidays: change Holi 2026 date
+  * Refactor XNYS holidays: update format labels handling
+  * Add Bolsas y Mercados Argentinos (BYMA) holidays
+  * Add Bolsas y Mercados Españoles (BME) holidays
+  * Add Johannesburg Stock Exchange (JSE) holidays
+  * Add Korea Exchange (KRX) holidays
+  * Add Singapore Exchange (SGX) holidays
+  * Update Latvia holidays: add ru localization
+  * Update Australia holidays: rename Grand Final Day holiday
+    (VIC)
+  * Update CI/CD workflow: optimize build testing
+  * Update Ghana holidays
+  * Update India holidays: add Remna Ni (Peace Accord Day) for MZ
+  * Update India holidays: subdiv holidays improvement (North
+    region)
+  * Update Israel holidays: fix Lag Ba'omer name in Hebrew
+  * Update Malaysia holidays: add 2026 additional Hari Raya
+    Aidilfitri public holiday
+  * Update Paraguay holidays: add new Constitution Oath Day
+    holiday
+  * Update South Korea holidays: update Constitution Day and
+    Labor Day
+  * Update Uganda holidays: add 2026 general elections public
+    holidays
+  * Update l10n: Thai l10n standardisation for "Workers' Day"
+  * Update l10n: general unification
+  * Migrate Madagascar tests to new test case standards
+  * Add SIX Swiss Exchange (SIX) holidays
+  * Add Toronto Stock Exchange (TSX) holidays
+  * Update Canada holidays: add observed rule for National Day
+    for Truth and Reconciliation in BC
+  * Update Canada holidays: update Ontario (ON) holidays
+  * Update Kazakhstan holidays: 2026 constitutional law changes
+  * Update Monaco holidays
+  * Update PR template
+  * Update `HolidayBase::get_closest_holiday` method
+  * Update iCalendar generation tool: add output filename
+    template support
+  * Update l10n: synchronize Hindi and Gujarati translations
+
+-------------------------------------------------------------------
 Mon Jul 20 05:09:17 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Sprinkle in alts for the new holiday-ics cli tool.
