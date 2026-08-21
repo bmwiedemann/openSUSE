@@ -59,7 +59,17 @@ markdown and more to the terminal.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# tests broken by pygments 2.21.0
+# https://github.com/Textualize/rich/issues/4209
+skiptest="test_card_render"
+skiptest+=" or test_inline_code_in_table_cells"
+skiptest+=" or test_python_render"
+skiptest+=" or test_python_render_simple"
+skiptest+=" or test_python_render_simple_passing_lexer_instance"
+skiptest+=" or test_python_render_indent_guides"
+skiptest+=" or test_option_no_wrap"
+skiptest+=" or test_syntax_highlight_ranges"
+%pytest -k "not ($skiptest)"
 
 %files %{python_files}
 %license LICENSE

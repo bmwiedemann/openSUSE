@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 20 14:37:07 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Skip tests broken by Pygments 2.21.0 for now
+
+-------------------------------------------------------------------
 Mon Aug 10 02:10:18 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-python-315.patch:

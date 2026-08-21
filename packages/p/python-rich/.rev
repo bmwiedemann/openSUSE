@@ -494,4 +494,12 @@
   * Support signature changes for Python 3.15.</comment>
     <requestid>1370432</requestid>
   </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>f50cbc7820f1bcf0e3fbdf8384438575</srcmd5>
+    <version>15.0.0</version>
+    <time>1787323798</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1372559</requestid>
+  </revision>
 </revisionlist>
