@@ -36,7 +36,8 @@ Patch5:         skip_cycles.patch
 # Make linking working even when default pkg-config doesn’t provide -lpython<ver>
 Patch6:         python3.8-compat.patch
 Patch7:         swig4_moduleimport.patch
-Patch8:         man_selinux_disabled_mismatch_kernel_config.patch
+# PATCH-FIX-UPSTREAM libselinux-Replace-PyString_FromString-with-PyUnicod.patch bsc#1275512
+Patch8:         libselinux-Replace-PyString_FromString-with-PyUnicod.patch
 BuildRequires:  fdupes
 BuildRequires:  libsepol-devel >= %{libsepol_ver}
 BuildRequires:  libsepol-devel-static >= %{libsepol_ver}

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 18 10:31:50 UTC 2026 - Robert Frohl <rfrohl@suse.com>
+
+- fix swig 4.5.0 compatibility (bsc#1275512).
+  adding libselinux-Replace-PyString_FromString-with-PyUnicod.patch
+
+-------------------------------------------------------------------
 Mon Jul  6 12:52:44 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
 
 - Update to version 3.11
