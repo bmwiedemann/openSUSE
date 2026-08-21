@@ -445,4 +445,12 @@
 - Include per-flavor tools (boo#1271427)</comment>
     <requestid>1367586</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>3ce247e51dc2c1708a4745a906315b48</srcmd5>
+    <version>6.11.2</version>
+    <time>1787323931</time>
+    <user>anag_factory</user>
+    <comment>Qt 6.11.2</comment>
+    <requestid>1372554</requestid>
+  </revision>
 </revisionlist>

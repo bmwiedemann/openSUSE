@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 20 15:06:56 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.11.2
+  https://www.qt.io/blog/qt-6.11.2-released
+
+-------------------------------------------------------------------
 Wed Jul 22 19:38:33 UTC 2026 - Luca Beltrame <lbeltrame@kde.org>
 
 - Remove further conflicting files between flavors
@@ -30,7 +36,6 @@ Thu May 14 15:05:36 UTC 2026 - Christophe Marin <christophe@krop.fr>
   * 0008-shiboken6-Add-some-type-checks.patch
   * 0009-shiboken6-Add-clang-type-struct.patch
   * 0010-shiboken6-Fix-retrieving-fully-qualified-type-names-with-clang-22.patch
-
 
 -------------------------------------------------------------------
 Tue Apr 28 13:02:58 UTC 2026 - Fabian Vogt <fvogt@suse.com>
