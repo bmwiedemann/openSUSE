@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 20 14:45:10 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Apply tests.patch to fix tests with Pygments 2.21.0
+
+-------------------------------------------------------------------
 Fri Jul 24 03:00:36 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 9.1.0:
