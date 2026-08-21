@@ -33,7 +33,7 @@
 %endif
 
 Name:           azure-cli%{?psuffix}
-Version:        2.89.0
+Version:        2.89.1
 Release:        0
 Summary:        Microsoft Azure CLI 2.0
 License:        MIT
