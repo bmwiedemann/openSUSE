@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug 20 19:51:44 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 2.23:
+  * fix OSC parsing of Unicode sequences; escape terminal string
+    output
+  * fix gcc-17 compilation
+  * GUI: persist toggle view status in settings
+
+-------------------------------------------------------------------
 Sat Sep 13 08:26:24 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 2.22:
