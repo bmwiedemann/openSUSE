@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Aug 20 09:01:03 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Ship the upstream Python binding as pythonXYZ flavor subpackages
+  via the shared %treesitter_python_install macro and the singlespec
+  python_subpackage_only template. The compiled _binding extension
+  is not built: the macro installs upstream's pure-Python package
+  files and generates a _binding.py that loads the grammar library
+  this package ships, so the parser is not compiled a second time
+  and no python devel/pip/wheel BuildRequires are needed.
+- The python subpackage pins the grammar package exactly and
+  Suggests python-tree-sitter >= 0.22 (the Language() capsule
+  constructor) instead of Requires, matching tree-sitter-bash,
+  so ring1 installcheck does not demand a non-ring package.
+- Run a functional %check parsing Python source through the shim;
+  gated to suse_version >= 1699 because python-tree-sitter does not
+  exist in Leap 16.0.
+
+-------------------------------------------------------------------
 Mon Feb  9 14:09:55 UTC 2026 - Björn Bidar <bjorn.bidar@thaodan.de>
 
 - Remove redundant Neovim workaround

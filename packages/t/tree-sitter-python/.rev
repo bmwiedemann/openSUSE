@@ -51,4 +51,17 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1333379</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>868e3982a866dbb37af86c87bab3b3b0</srcmd5>
+    <version>0.23.6</version>
+    <time>1787323952</time>
+    <user>anag_factory</user>
+    <comment>- Suggests python-tree-sitter &gt;= 0.22 instead of Requires
+  (floor kept), matching tree-sitter-bash, so ring1
+  installcheck does not demand a non-ring package.
+
+INTERDEPENDENT REQUESTS - please stage together:
+ * sr#1372054 - tree-sitter (Python binding macros this set needs)</comment>
+    <requestid>1372196</requestid>
+  </revision>
 </revisionlist>
