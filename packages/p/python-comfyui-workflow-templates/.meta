@@ -1,0 +1,4 @@
+<package name="python-comfyui-workflow-templates" project="openSUSE:Factory">
+  <title>ComfyUI workflow templates meta package</title>
+  <description>Meta package that pulls in the ComfyUI workflow template bundles.</description>
+</package>

@@ -1,0 +1,25 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>02b613df45b7255f7cf3922bf3de25b1</srcmd5>
+    <version>0.11.44</version>
+    <time>1787324441</time>
+    <user>anag_factory</user>
+    <comment>New package python-comfyui-workflow-templates for openSUSE:Factory from science:machinelearning (ComfyUI cone). pluskalm is the science:machinelearning package maintainer.
+
+INTERDEPENDENT REQUESTS - please stage together with the ComfyUI cone (see comment on sr#1372800).
+
+Fri Aug 21 08:51:33 UTC 2026 - Martin Pluskal &lt;mpluskal@suse.com&gt;
+
+- Initial package (version 0.11.44): meta package for ComfyUI
+  workflow templates, requiring:
+  * python-comfyui-workflow-templates-core = 0.3.315
+  * python-comfyui-workflow-templates-json = 0.1.50
+  * python-comfyui-workflow-templates-media-api = 0.3.84
+  * python-comfyui-workflow-templates-media-video = 0.3.101
+  * python-comfyui-workflow-templates-media-image = 0.3.160
+  * python-comfyui-workflow-templates-media-other = 0.3.229
+  * python-comfyui-workflow-templates-media-assets-01 = 0.1.30
+</comment>
+    <requestid>1372804</requestid>
+  </revision>
+</revisionlist>
