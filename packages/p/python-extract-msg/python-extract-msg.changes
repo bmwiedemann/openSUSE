@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Aug 21 10:32:18 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.56.1:
+  * [TeamMsgExtractor #484] Corrected the way the HTML body is
+    decoded in `MessageBase.asEmailMessage()` to prevent encoding
+    errors.
+  * [TeamMsgExtractor #478] Expand allowable versions of `ebcdic`
+    to include `2.x`. The 2.0 release is a pure technical release
+    with no functional changes; it only drops support for Python
+    2 and 3.8. The lower bound is unchanged so installs on Python
+    3.8 will continue to resolve to `ebcdic 1.1.1`.
+  * [TeamMsgExtractor #469] Expanded `beautifulsoup` to allow for
+    versions up to `5.*.*`. I was previously hesitant to do so
+    because they sometimes do what seems like non backwards
+    compatible changes in minor versions, but it looks like this
+    should be fine.
+  * [TeamMsgExtractor #471] Added `.strip()` to file name
+    determination to ensure that folders with trailing spaces
+    would be corrected before being used.
+  * [TeamMsgExtractor #481] Fixed a typo that caused an HTML body
+    created from plain text to end with `</head>` instead of
+    `</html>`.
+  * [TeamMsgExtractor #476] Fixed `MessageBase.asEmailMessage()`
+    raising `ValueError` when a message has multiple `To`
+    recipients.
+
+-------------------------------------------------------------------
 Mon Sep 15 11:46:51 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.55.0

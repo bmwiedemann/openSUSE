@@ -75,4 +75,34 @@
     <comment></comment>
     <requestid>1304820</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6b42d591fa7c0ff68c198cbd70e2ace7</srcmd5>
+    <version>0.56.1</version>
+    <time>1787324483</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.56.1:
+  * [TeamMsgExtractor #484] Corrected the way the HTML body is
+    decoded in `MessageBase.asEmailMessage()` to prevent encoding
+    errors.
+  * [TeamMsgExtractor #478] Expand allowable versions of `ebcdic`
+    to include `2.x`. The 2.0 release is a pure technical release
+    with no functional changes; it only drops support for Python
+    2 and 3.8. The lower bound is unchanged so installs on Python
+    3.8 will continue to resolve to `ebcdic 1.1.1`.
+  * [TeamMsgExtractor #469] Expanded `beautifulsoup` to allow for
+    versions up to `5.*.*`. I was previously hesitant to do so
+    because they sometimes do what seems like non backwards
+    compatible changes in minor versions, but it looks like this
+    should be fine.
+  * [TeamMsgExtractor #471] Added `.strip()` to file name
+    determination to ensure that folders with trailing spaces
+    would be corrected before being used.
+  * [TeamMsgExtractor #481] Fixed a typo that caused an HTML body
+    created from plain text to end with `&lt;/head&gt;` instead of
+    `&lt;/html&gt;`.
+  * [TeamMsgExtractor #476] Fixed `MessageBase.asEmailMessage()`
+    raising `ValueError` when a message has multiple `To`
+    recipients.</comment>
+    <requestid>1372817</requestid>
+  </revision>
 </revisionlist>
