@@ -1,4 +1,202 @@
 -------------------------------------------------------------------
+Wed Aug 19 11:37:16 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.6.0:
+  * i18n: translation updates from weblate
+  * libei: Add `com.system76.CosmicOSK` to DBus whitelist
+  * chore: Fix `clippy` lints
+  * libei: on KMS, schedule render after handling input events
+  * Ei protocol support
+  * Initial Ei protocol support
+  * input: Handle scroll events that only have `amount_v120`
+  * Update `smithay` with tablet API changes
+  * i18n: translation updates from weblate
+  * i18n: translation updates from weblate
+  * i18n: translation updates from weblate
+  * fix(shell): take presentation feedback from fullscreen surfaces
+  * i18n: translation updates from weblate
+  * backend: Support wl-dmabuf v6
+
+-------------------------------------------------------------------
+Thu Jul 30 12:43:44 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.5.0:
+  * i18n: translation updates from weblate
+  * fix(corner_radius): check LayerHookId for layer surfaces
+  * fix: clamp pointer edge after applying the output offset
+  * fix(kms): don't panic when renderer creation fails after a GPU reset
+  * fix: ensure X window focus on unmap/map
+  * dbus: Fix deadlock in a11y keyboard monitor
+  * fix: workaround for Chromium apps breaking below 1.0 scaling
+  * fix(kms): skip empty DRM cleanup commit in display_configuration
+  * fix(kms): join surface threads before exit to avoid SIGABRT on shutdown
+  * i18n: translation updates from weblate
+
+-------------------------------------------------------------------
+Thu Jul 23 06:27:11 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.4.0:
+  * fix: no ceil for scaled outline thickness
+  * fix: release active popup grabs on toplevel destruction     If a window with an active popup grab is closed or crashes unexpectedly, the input grab state can get stuck, freezing keyboard and mouse clicks.     This patch iterates over all seats and releases the active seat grab if it is owned by the destroyed window or one of its child popups.
+  * image-copy: Only embed cursor in toplevel capture if focused
+  * image-copy: Update toplevel cursor position for `cursor_follows_focus`
+  * input: Deduplicate into `update_output_image_copy_cursor_position`
+  * input: Send `wl_pointer.motion` on warp, and applying constraint hint
+  * Use `Global` coordinate instead of inferring as `Logical`
+  * image-copy: Move duplicate code to a `cursor_capture_constraints()`
+  * Make `cursor_geometry()` return a `CursorGeometry` struct
+  * image-copy: Hold references to `Buffer`s to block release
+  * image-copy: Use seat from `WlPointer` instead of `last_active()`
+  * chore(render): use `Affine2` where possible
+  * Fix: improve edge pointer accuracy
+  * fix: map_window_request should update pending state
+  * fix: flicker on wayland context menu pop up
+  * chore: Fix feature gate for logind
+  * chore: clippy fixes
+  * render: `cgmath` -> `glam`
+  * chore: formatting fixes
+  * chore: clippy fixes
+  * main: fix kiosk command with command line options
+  * main: notify readiness on non-systemd systems
+  * fix: input to cropped tiled windows should be bound to the tile
+  * Fix detached active window hint
+  * cleanup: remove attempts to force redraw
+
+-------------------------------------------------------------------
+Wed Jul 15 08:18:36 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.3.0:
+  * fixup: logic error
+  * element/surface: Avoid scanning out translucent surfaces
+  * Forward axis relative direction to Wayland clients.
+  * fix: take into account pending maximized state when recalculating window geometry
+  * remove redundant level condition; simplify level early return on ZoomMovement::Centered
+  * improve comments
+  * fix: a11y: magnifier: correct Centered/OnEdge focal-point math and refresh focal point at zoom-in
+  * shell/window: Fix radii for server-side decorations
+  * render/blur: Fix rotated outputs having cut off blur regions
+  * chore: update smithay
+  * shell/menu: Use new MenuColumn widget
+  * blur: Fix invalid matrix inversions
+  * chore: cleanup new blur code
+  * examples: Fix new libcosmic build
+  * render/blur: Cache native texture type
+  * render/element: Support converting gl-textures
+  * render: Include OutputId in namespaces
+  * output: Add increasing output id
+  * fix: use configured blur strength for lock surface and its subsurfaces
+  * render/blur: Wipe blur_texture before blit
+  * render/blur: Fix div-by-zero in shaders
+  * chore: fix warnings with no features
+  * render/blur: Fix transformed outputs
+  * fix(corner_radius): loosen padding size constraint
+  * fix: pad_rect typos
+  * element: Refactor remaining libcosmic elements for blur
+  * element/window/stack: Use new IcedRenderElement
+  * iced: Handle blur internally
+  * wayland: Support cosmic-corner-radius v2
+  * chore: theme-v2 libcosmic update
+  * renderer/blur: Fix incorrectly offset blur region
+  * renderer/blur: Use proper commit counter
+  * chore: Adjust log level for blur debugging
+  * chore: Fix clippy lints
+  * render: Make blur_strength configurable
+  * render: Don't use separate `damage_output` calls
+  * render: Use NamespaceElements to fix blurred lower layer-shell surfaces
+  * element/wayland: Add blur background-effect
+  * element: Refactor element acquisition to be push based
+  * element: Introduce SurfaceRenderElement
+  * render: Merge FromGlesError into AsGlowRenderer
+  * element/surface: Fix reported corner radius
+  * fix: fall back to legacy X11 names when loading pointer themes
+  * shell: Restore fullscreen to single-element stack
+  * shell: Also restore stack element on sticky layer to stack
+  * Don't unnecessarily use `Option` in `WorkspaceRestoreData`
+  * shell: Restore fullscreen surface to stack
+  * Avoid unnecessarily unwrapping `stack_ref()` after `is_stack()`
+  * Implement `Debug` and comparison with `CosmicMapped` for `CosmicMappedKey`
+  * Add `cosmic-keyboard-layout-unstable-v1` protocol
+  * kms: change from thread_local approach to wiring scanout node through function calls to detect scanout candidates
+  * fix(kms): gate overlay scanout per-element by buffer GPU node
+  * revert: "fix: follow the focus after alt+tab to another output"
+  * make device `DrmDevice` in disable_crts
+  * fix: internal laptop screen stuck on vendor logo with external monitor
+  * chore: workaround for Tiger Lake
+  * change update_focal_point to use f64 to avoid rounding errors
+  * i18n: translation updates from weblate
+
+-------------------------------------------------------------------
+Tue Jul 14 07:41:27 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.2.0:
+  * backend: Don't attempt dma-copies from newer intel chips
+  * chore: update smithay
+  * fix: keep windows visible until overview commits a buffer
+
+-------------------------------------------------------------------
+Wed Jun 24 19:34:06 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.1.0:
+  * fix: set_rectangle leak
+  * shell/focus: Order sticky windows before fullscreen windows
+  * wayland/activation: Fix requests without active outputs
+  * wayland: reject cursor hint requests that are outside the surface bound
+  * wayland: implement pointer_warp_v1
+  * feat: separate logind feature from systemd
+  * kms: skip lease resume when drm device activation fails in resume_session()
+  * fix(floating): allow remapping minimized windows
+  * floating: don't panic if window disappears mid-unminimize
+  * shell/stack: Cleanup previous_index on remove
+  * perf(toplevel_info): optimize send_toplevel_to_client
+  * feat: allow naming pinned workspaces
+  * fix: add git hash to .cargo/config when vendoring
+  * Revert "fix: use SOURCE_GIT_HASH when building for pop ci"
+  * fix: debug build pinning panic
+  * fix: skip dead windows in floating set_output
+  * feat(tiling-exceptions): add exception for Thunderbird message compose dialog
+  * feat(tiling-exceptions): add exception for Slack huddle preview
+
+-------------------------------------------------------------------
+Thu Jun 11 10:59:13 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.16:
+  * fix: draw the focused window border for the current window only
+  * fix(dbus): Block on creation of zbus connection to avoid deadlock
+  * fix: use SOURCE_GIT_HASH when building for pop ci
+  * image-copy: Adjust cursor position for subsurface offset
+  * shell: Fix definition of `surface_tree_offset()`
+  * image-copy: Adjust toplevel capture coordinate for window geometry
+  * image-copy: Fix cursor pos for toplevels with SSD
+  * image-copy: Function for duplicated toplevel cursor enter/motion code
+  * image-copy: Don't send 0x0 buffer params for cursor capture
+  * image-copy: Subtract output position for pointer position sent to client
+  * image-copy: Don't send redundantly pointer changes on fullscreen
+  * fix: pass the full window size to xwayland
+  * dbus: Refactor to share DBus connections
+  * dbus: Remove unused return value from `dbus::init`
+  * dbus: Use `calloop` async executor
+  * dbus: Use `FutureSource` instead of a channel
+
+-------------------------------------------------------------------
+Wed Jun 03 19:22:45 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.0.15:
+  * feat: add config option for xdg activation behavior
+  * fix: follow the focus after alt+tab to another output
+  * feat: support multiple fullscreen windows per workspace
+  * chore: update smithay
+  * shell: disable WindowUI detection if constraint is active
+  * wayland: implement new_constraint, remove_constraint and cursor_position_hint for PointerConstraintsHandler
+  * chore: update smithay
+  * shell: remove constraint when target changed
+  * input: when updating pointer in the confined mode, recalibrate to the valid coordinates
+  * input: implement apply_cursor_hint
+  * shell: implement surface_geometry_offset_from_toplevel for WorkspaceSet
+  * shell: implement has_surface for KeyboardFocusTarget
+  * shell: implement surface_offset and surface_tree_offset
+  * input: allow layout switching and brightness/volume control under session lock
+
+-------------------------------------------------------------------
 Mon Jun 01 12:33:28 UTC 2026 - rrahl0@opensuse.org
 
 - Update to version 1.0.14:
