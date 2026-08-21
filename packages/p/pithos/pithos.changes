@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Aug 20 16:00:28 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.6.2:
+  + Fix issue where playback would stop after a few songs
+  + Fix album art caches never being deleted
+- Changes from version 1.6.1:
+  + Fix Python 3.11 support
+  + Fix very short songs being labeled as ads
+- Migrate to _service managed git checkout.
+
+-------------------------------------------------------------------
 Mon Dec  5 07:07:15 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - Update to version 1.6.0:

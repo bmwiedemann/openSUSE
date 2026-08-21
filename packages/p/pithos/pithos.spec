@@ -19,7 +19,7 @@
 
 %global appid io.github.Pithos
 Name:           pithos
-Version:        1.6.0
+Version:        1.6.2
 Release:        0
 Summary:        Native Pandora Radio client for Linux
 License:        GPL-3.0-only
