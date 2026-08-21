@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Wed Aug 19 11:38:41 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.6.0:
+  * i18n: translation updates from weblate
+
+-------------------------------------------------------------------
+Thu Jul 30 12:45:35 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.5.0:
+  * i18n: translation updates from weblate
+  * screencast: Support metadata cursor capture
+  * wayland: Move `Transform` enum conversion to a function
+  * screencast: Rename pipewire stream
+  * wayland: Remove outdated comments
+
+-------------------------------------------------------------------
+Thu Jul 23 06:28:29 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.4.0:
+  * wayland: Terminate process if thread panics
+  * Share wayland connection between UI and `WaylandHelper`
+  * screencast: Use an `enum` for `CursorMode` instead of just `bool`
+  * Log to `journald` on `systemd` system
+  * Use `log-panics` crate to log panics to `tracing`
+  * Use `tracing` instead of `log`
+  * dbus: Add `SystemdService` to start as systemd service
+  * chore: update libcosmic
+
+-------------------------------------------------------------------
+Wed Jul 15 08:19:50 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.3.0:
+  * chore: update libcosmic
+  * fix: avoid handling panics with an abort
+  * chore: update deps
+  * cleanup
+  * chore: update deps
+  * wip: blur
+
+-------------------------------------------------------------------
+Tue Jul 14 07:44:25 UTC 2026 - rrahl0@opensuse.org
+
+- Update to version 1.2.0:
+  * fix: honor libexecdir override for binary install path
+  * chore: keep justfile a 1:1 migration of the Makefile
+  * chore: Migrate from Makefile to justfile
+
+-------------------------------------------------------------------
+Wed Jun 24 22:03:28 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.1.0:
+  * feat: lay out screencast outputs by display arrangement
+  * fix: sort the outputs in screencast dialog based on their position
+  * i18n: translation updates from weblate
+  * fix(ci): add missing dependency
+  * fix: outdated libcosmic api in wgpu feature
+  * chore: add ci for pull requests
+
+-------------------------------------------------------------------
+Thu Jun 11 12:18:50 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.16:
+  * chore: update deps
+
+-------------------------------------------------------------------
 Mon Jun 01 13:41:59 UTC 2026 - rrahl0@opensuse.org
 
 - Update to version 1.0.14:

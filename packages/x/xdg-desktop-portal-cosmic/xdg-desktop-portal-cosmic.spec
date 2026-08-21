@@ -18,7 +18,7 @@
 
 %define         appid org.freedesktop.impl.portal.desktop.cosmic
 Name:           xdg-desktop-portal-cosmic
-Version:        1.0.14
+Version:        1.6.0
 Release:        0
 Summary:        COSMIC xdg portal
 License:        GPL-3.0-only
@@ -29,7 +29,7 @@ BuildRequires:  cargo-packaging
 BuildRequires:  clang-devel
 BuildRequires:  git-core
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  make
+BuildRequires:  just
 BuildRequires:  pkgconfig
 BuildRequires:  rust >= 1.80
 BuildRequires:  pkgconfig(egl)
@@ -48,10 +48,10 @@ This package contains the xdg portal implementation for COSMIC DE.
 %autosetup -a1
 
 %build
-%make_build
+just build
 
 %install
-%make_install DESTDIR=%{buildroot} prefix=%{_prefix} libexecdir=%{_libexecdir}
+just rootdir=%{buildroot} prefix=%{_prefix} install
 
 %check
 %{cargo_test}
