@@ -18,7 +18,7 @@
 
 %define         appid com.system76.CosmicEdit
 Name:           cosmic-edit
-Version:        1.0.14
+Version:        1.6.0
 Release:        0
 Summary:        COSMIC Text Editor
 License:        GPL-3.0-only
