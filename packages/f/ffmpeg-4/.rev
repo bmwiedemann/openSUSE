@@ -904,4 +904,12 @@
   ffmpeg-4-CVE-2026-66039.patch: (CVE-2026-66039, bsc#1272765)</comment>
     <requestid>1369399</requestid>
   </revision>
+  <revision rev="99" vrev="4">
+    <srcmd5>e8efda959294056b6c67993bda35707d</srcmd5>
+    <version>4.4.8</version>
+    <time>1787324486</time>
+    <user>anag_factory</user>
+    <comment>add CVE patches and bugrefs</comment>
+    <requestid>1372812</requestid>
+  </revision>
 </revisionlist>

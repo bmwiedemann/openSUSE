@@ -155,6 +155,15 @@ Patch45:        ffmpeg-4-CVE-2026-64832.patch
 Patch46:        ffmpeg-4-CVE-2026-64830.patch
 Patch47:        ffmpeg-4-CVE-2026-66038.patch
 Patch48:        ffmpeg-4-CVE-2026-66039.patch
+Patch49:        ffmpeg-4-CVE-2026-58049.patch
+Patch50:        ffmpeg-4-CVE-2026-64833.patch
+Patch51:        ffmpeg-4-CVE-2026-64834.patch
+Patch52:        ffmpeg-4-CVE-2026-65703.patch
+Patch53:        ffmpeg-4-CVE-2026-65704.patch
+Patch54:        ffmpeg-4-CVE-2026-65705.patch
+Patch55:        ffmpeg-4-CVE-2026-65706.patch
+Patch56:        ffmpeg-4-CVE-2026-66036-shim01.patch
+Patch57:        ffmpeg-4-CVE-2026-66036.patch
 BuildRequires:  ladspa-devel
 BuildRequires:  libgsm-devel
 BuildRequires:  libmp3lame-devel
