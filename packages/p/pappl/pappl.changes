@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Aug 21 10:32:45 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.4.12
+  * Added overflow protection to the dithering code paths and for
+    setting ready media values.
+  * Added logging of the USB port status byte for USB-connected
+    printers.
+  * Now clears USB errors after a failed get device ID request.
+  * Updated poll error handling and forced sleep to be consistent
+    throughout.
+  * Now closes HTTP connections immediately after returning an
+    error.
+  * Fixed a locking issue when deleting a printer.
+
+-------------------------------------------------------------------
 Sun Jun  7 08:47:45 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.4.11
