@@ -91,4 +91,20 @@ repo layering the prepared boto3/botocore 1.43.72 over Tumbleweed;
 %check runs the offline unit tests. No patches are carried.</comment>
     <requestid>1371318</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>211b3dfde5b27977b9529bbdd49a5853</srcmd5>
+    <version>1.7.3</version>
+    <time>1787324007</time>
+    <user>anag_factory</user>
+    <comment>Fri Aug 21 05:36:38 UTC 2026 - Martin Pluskal &lt;mpluskal@suse.com&gt;
+
+- Update to 1.7.3:
+  * ChatBedrockConverse ignores unsupported cross-provider AI
+    content blocks (OpenAI function_call, Google reasoning) so
+    persisted threads can return to Bedrock
+  * Normalize signed Gemini thinking blocks and convert
+    tool_call blocks to Bedrock toolUse before serialization
+  * Refresh the bundled model profile data: add xai.grok-4.6</comment>
+    <requestid>1372688</requestid>
+  </revision>
 </revisionlist>

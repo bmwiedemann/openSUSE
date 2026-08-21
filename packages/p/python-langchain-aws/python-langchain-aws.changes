@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri Aug 21 05:36:38 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.7.3:
+  * ChatBedrockConverse ignores unsupported cross-provider AI
+    content blocks (OpenAI function_call, Google reasoning) so
+    persisted threads can return to Bedrock
+  * Normalize signed Gemini thinking blocks and convert
+    tool_call blocks to Bedrock toolUse before serialization
+  * Refresh the bundled model profile data: add xai.grok-4.6
+
+-------------------------------------------------------------------
+Thu Aug 20 18:53:19 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.7.2:
+  * Add ChatAnthropicMantle for the Bedrock Mantle Anthropic
+    Messages API (requires the anthropic extra)
+  * Derive ChatOpenAIMantle auth from the AWS credential chain
+    when no static Bedrock API key is provided
+  * Refresh the bundled model profile data: add
+    global.openai.gpt-5.6-{luna,sol,terra}
+- Skip tests/unit_tests/chat_models/test_anthropic_mantle.py, new
+  in this release: it drives ChatAnthropicMantle through the
+  python-langchain-tests ChatModel unit-test bridge, which is not
+  packaged
+- Deselect test_bedrock_api_key_provider_* in
+  tests/unit_tests/test_utils.py: they mock.patch
+  aws_bedrock_token_generator, which is not packaged
+- Run tests/unit_tests/test_versioning.py now that
+  python-langchain-anthropic is in Factory
+- Run TestToolNodeCompatibility now that python-langgraph is in
+  Factory
+
+-------------------------------------------------------------------
+Tue Aug 18 05:36:28 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Avoid variations from --nocheck: move bytecode recompilation and fdupes from %check to %install (boo#1227364)
+
+-------------------------------------------------------------------
 Sat Aug 15 18:20:01 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.7.1:

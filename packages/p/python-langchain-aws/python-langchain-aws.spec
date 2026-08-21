@@ -17,7 +17,7 @@
 
 
 Name:           python-langchain-aws
-Version:        1.7.1
+Version:        1.7.3
 Release:        0
 Summary:        LangChain integrations for AWS
 License:        MIT
@@ -34,7 +34,9 @@ Requires:       python-pydantic >= 2.10.6
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module boto3 >= 1.43.64}
+BuildRequires:  %{python_module langchain-anthropic}
 BuildRequires:  %{python_module langchain-core >= 1.4.7}
+BuildRequires:  %{python_module langgraph}
 BuildRequires:  %{python_module numpy >= 1.0.0}
 BuildRequires:  %{python_module pydantic >= 2.10.6}
 BuildRequires:  %{python_module pytest-asyncio}
@@ -60,23 +62,24 @@ rm tests/conftest.py
 
 %install
 %pyproject_install
+# Recompile the installed modules as hash-based bytecode so the
+# timestamp-clamped .pyc do not trip python-bytecode-inconsistent-mtime.
+%python_expand $python -m compileall -q -f --invalidation-mode=unchecked-hash -o 0 -o 1 -s %{buildroot} %{buildroot}%{$python_sitelib}/langchain_aws
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 # Ignored modules pull in packages not available in Factory:
 # - test_standard / chat_models test_anthropic / test_bedrock_converse /
-#   chat_models test_openai use the python-langchain-tests ChatModel unit-test
-#   bridge (test_openai also needs the langchain-aws[openai] extra, which IS in
-#   Factory -- langchain-tests is the blocker);
-# - middleware/test_prompt_caching needs the full python-langchain meta package;
-# - test_versioning exercises ChatAnthropicBedrock (the langchain-aws[anthropic]
-#   extra: anthropic + python-langchain-anthropic).
-# The ToolNode compatibility tests need langgraph (not in Factory).
-%pytest tests/unit_tests --ignore tests/unit_tests/test_standard.py --ignore tests/unit_tests/chat_models/test_anthropic.py --ignore tests/unit_tests/chat_models/test_bedrock_converse.py --ignore tests/unit_tests/chat_models/test_openai.py --ignore tests/unit_tests/middleware/test_prompt_caching.py --ignore tests/unit_tests/test_versioning.py --deselect tests/unit_tests/tools/test_nova_tools.py::TestToolNodeCompatibility
-# Recompile the installed modules as hash-based bytecode so the
-# timestamp-clamped .pyc do not trip python-bytecode-inconsistent-mtime.
-%python_expand $python -m compileall -q -f --invalidation-mode=unchecked-hash -o 0 -o 1 -s %{buildroot} %{buildroot}%{$python_sitelib}/langchain_aws
-%python_expand %fdupes %{buildroot}%{$python_sitelib}/langchain_aws
+#   chat_models test_openai / chat_models test_anthropic_mantle use the
+#   python-langchain-tests ChatModel unit-test bridge (test_openai also needs
+#   the langchain-aws[openai] extra, which IS in Factory -- langchain-tests is
+#   the blocker; test_anthropic_mantle also needs the anthropic extra);
+# - middleware/test_prompt_caching needs the full python-langchain meta package.
+# test_versioning and TestToolNodeCompatibility now run: langchain-anthropic
+# and langgraph are in Factory.
+# test_bedrock_api_key_provider_* mock.patch aws-bedrock-token-generator,
+# which is not packaged (openai/anthropic extra only).
+%pytest tests/unit_tests --ignore tests/unit_tests/test_standard.py --ignore tests/unit_tests/chat_models/test_anthropic.py --ignore tests/unit_tests/chat_models/test_bedrock_converse.py --ignore tests/unit_tests/chat_models/test_openai.py --ignore tests/unit_tests/chat_models/test_anthropic_mantle.py --ignore tests/unit_tests/middleware/test_prompt_caching.py -k 'not test_bedrock_api_key_provider'
 
 %files %{python_files}
 %doc README.md
