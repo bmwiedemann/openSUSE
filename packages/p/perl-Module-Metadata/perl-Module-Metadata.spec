@@ -18,7 +18,7 @@
 
 %define cpan_name Module-Metadata
 Name:           perl-Module-Metadata
-Version:        1.000039
+Version:        1.000040
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Gather package and POD information from perl module files

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Aug 11 06:06:04 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.000040
+   see /usr/share/doc/packages/perl-Module-Metadata/Changes
+
+  1.000040  2026-08-10 21:34:29Z
+    - update taint support detection in a test to handle an upcoming change in
+      perl 5.45.2 (Paul Evans, #41)
+
+-------------------------------------------------------------------
 Sun Apr  5 06:22:45 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.000039

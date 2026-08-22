@@ -75,4 +75,16 @@
       #39)</comment>
     <requestid>1345221</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d58d56fde9e3ced29c0297638e7bc3b9</srcmd5>
+    <version>1.000040</version>
+    <time>1787427283</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.000040
+   see /usr/share/doc/packages/perl-Module-Metadata/Changes
+  1.000040  2026-08-10 21:34:29Z
+    - update taint support detection in a test to handle an upcoming change in
+      perl 5.45.2 (Paul Evans, #41)</comment>
+    <requestid>1372838</requestid>
+  </revision>
 </revisionlist>
