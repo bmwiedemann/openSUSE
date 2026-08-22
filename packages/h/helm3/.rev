@@ -199,4 +199,16 @@
     <comment>- add CVE-2026-63308.patch (CVE-2026-63308, bsc#1272402)</comment>
     <requestid>1368033</requestid>
   </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>09728787aa0bcad836e2f1daa79c123e</srcmd5>
+    <version>3.21.3</version>
+    <time>1787427326</time>
+    <user>dimstar_suse</user>
+    <comment>- bump vendor to address various security issues:
+  * golang.org/x/mod@v0.40.0
+  * oras.land/oras-go/v2@v2.6.2
+  * google.golang.org/grpc@v1.82.1
+  * go.opentelemetry.io/otel@v1.44.0</comment>
+    <requestid>1372957</requestid>
+  </revision>
 </revisionlist>
