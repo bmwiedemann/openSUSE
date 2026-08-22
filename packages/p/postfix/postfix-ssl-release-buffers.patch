@@ -2,7 +2,7 @@ Index: src/tls/tls_client.c
 ===================================================================
 --- src/tls/tls_client.c.orig
 +++ src/tls/tls_client.c
-@@ -751,6 +751,11 @@ TLS_APPL_STATE *tls_client_init(const TL
+@@ -766,6 +766,11 @@ TLS_APPL_STATE *tls_client_init(const TL
      SSL_CTX_set_security_level(client_ctx, 0);
  #endif
  

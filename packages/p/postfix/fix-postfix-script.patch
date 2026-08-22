@@ -2,7 +2,7 @@ Index: conf/postfix-script
 ===================================================================
 --- conf/postfix-script.orig
 +++ conf/postfix-script
-@@ -324,10 +324,17 @@ check-warn)
+@@ -355,10 +355,17 @@ check-warn)
  	}
  	todo=`echo "$todo" | tr ' ' '\12' | sort -u`
  

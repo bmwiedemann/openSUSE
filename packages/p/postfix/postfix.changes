@@ -68,6 +68,24 @@ Sun Aug 16 20:54:13 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
     type which the rest of Postfix ignores.
 
 -------------------------------------------------------------------
+Mon Aug 10 16:19:52 UTC 2026 - chris@computersalat.de
+
+- Add %bcond_with config
+  * brings back sysconfig.postfix and config.postfix
+  * add postfix-config.tar.gz
+  * add postfix-main.cf.patch
+  * add postfix-master.cf.patch
+- rebase patches
+  * avoid-inherited-file-descriptor.patch
+  * fix-postfix-script.patch
+  * ipv6_disabled.patch
+  * postfix-linux45.patch
+  * postfix-no-md5.patch
+  * postfix-ssl-release-buffers.patch
+  * postfix-vda-v14-3.0.3.patch
+  * set-default-db-type.patch
+
+-------------------------------------------------------------------
 Tue Jul  7 18:17:33 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 3.11.5
@@ -193,7 +211,7 @@ Sun May 17 18:49:21 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
 Fri May  8 16:32:55 UTC 2026 - Peter Varkoly <varkoly@suse.com>
 
 - AUDIT-0: postfix: move permissions from /etc to /usr/share/permissions
-  (bsc#1264563) Apply proposed changes. 
+  (bsc#1264563) Apply proposed changes.
 
 -------------------------------------------------------------------
 Mon May  4 19:34:23 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
@@ -234,24 +252,24 @@ Tue Apr 21 16:30:07 UTC 2026 - Peter Varkoly <varkoly@suse.com>
 
 - Yet another AVC denial from procmail ... (bsc#1261933)
   Set FD_CLOEXEC on the file descriptor of the db file
-  o avoid-inherited-file-descriptor.patch    
+  o avoid-inherited-file-descriptor.patch
 
 -------------------------------------------------------------------
 Wed Mar 11 15:50:36 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 3.11.1
   * Bugfix (defect introduced: 20260219): alias_maps errors when
-    default_database_type was not set in main.cf. 
+    default_database_type was not set in main.cf.
   * Bugfix (defect introduced: Postfix 3.0): buffer over-read when
     Postfix is configured with an enhanced status code not followed
     by other text. For example, "5.7.2" without text after the
     three-number code, in an access(5) table, header or body checks,
     or with "$rbl_code $rbl_text" in rbl_reply_maps or default_rbl_reply.
-    These are all uncommon configurations. 
+    These are all uncommon configurations.
     (bsc#1264062) VUL-0: CVE-2026-43964
   * Bugfix (defect introduced: Postfix 3.3): null pointer in
     nbdb_reindexd(8) because the "service_name" value was not
-    propagated. 
+    propagated.
   * During Postfix start-up, avoid a spurious error message from
     nbdb_reindexd(8), when non_bdb_migration_level disables automatic
     re-indexing.
@@ -562,14 +580,14 @@ Sun Aug  3 20:30:23 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 3.10.3
   * Bugfix (defect introduced: Postfix-3.10, date 20250117): include
-    the current TLS security level in the SMTP connection cache  
+    the current TLS security level in the SMTP connection cache
     lookup key for lookups by next-hop destination, to avoid reusing
-    the same SMTP connection when sending messages with and without 
-    a "TLS-Required: no" header. Likewise, include the current TLS 
+    the same SMTP connection when sending messages with and without
+    a "TLS-Required: no" header. Likewise, include the current TLS
     security level in the TLS session lookup key, to avoid reusing
     the same TLS session info when sending messages with and without
     a "TLS-Required: no" header.
-  * Bugfix (defect introduced: Postfix-3.10, date 20250117): the  
+  * Bugfix (defect introduced: Postfix-3.10, date 20250117): the
     Postfix SMTP client attempted to look up TLSA records even with
     "TLS-Required: no". This could result in unnecessary failures.
 
@@ -785,7 +803,7 @@ Thu Aug  1 08:36:10 UTC 2024 - Peter Varkoly <varkoly@suse.com>
 Tue Jul  2 21:57:06 UTC 2024 - chris@computersalat.de
 
 - update postfix-main.cf.patch
-  * add smtp_dns_support_level = 
+  * add smtp_dns_support_level =
 - rebase patches
   * fix-postfix-script.patch
   * pointer_to_literals.patch
@@ -965,7 +983,7 @@ Tue Mar  5 16:46:16 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
 Tue Mar  5 12:19:01 UTC 2024 - Peter Varkoly <varkoly@suse.com>
 
 - %autosetup does not works with multiple -a.
-  https://github.com/rpm-software-management/rpm/issues/1204 
+  https://github.com/rpm-software-management/rpm/issues/1204
 
 -------------------------------------------------------------------
 Thu Feb 29 14:40:38 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>

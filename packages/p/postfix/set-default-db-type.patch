@@ -2,7 +2,7 @@ Index: src/util/sys_defs.h
 ===================================================================
 --- src/util/sys_defs.h.orig
 +++ src/util/sys_defs.h
-@@ -53,7 +53,7 @@
+@@ -54,7 +54,7 @@
  #define HAS_FSYNC
  #define HAS_DB
  #define HAS_SA_LEN
@@ -11,7 +11,7 @@ Index: src/util/sys_defs.h
  #if (defined(__NetBSD_Version__) && __NetBSD_Version__ >= 104250000)
  #define ALIAS_DB_MAP   "$default_database_type:/etc/mail/aliases"	/* sendmail 8.10 */
  #endif
-@@ -234,7 +234,7 @@
+@@ -235,7 +235,7 @@
  #define HAS_FSYNC
  #define HAS_DB
  #define HAS_SA_LEN
@@ -20,7 +20,7 @@ Index: src/util/sys_defs.h
  #define ALIAS_DB_MAP	"$default_database_type:/etc/aliases"
  #define GETTIMEOFDAY(t) gettimeofday(t,(struct timezone *) 0)
  #define ROOT_PATH	"/bin:/usr/bin:/sbin:/usr/sbin"
-@@ -291,7 +291,7 @@
+@@ -292,7 +292,7 @@
  #define HAS_FSYNC
  /* might be set by makedef */
  #ifdef HAS_DB
@@ -29,7 +29,7 @@ Index: src/util/sys_defs.h
  #define ALIAS_DB_MAP	"$default_database_type:/etc/aliases"
  #else
  #define HAS_DBM
-@@ -775,7 +775,7 @@ extern int initgroups(const char *, int)
+@@ -776,7 +776,7 @@ extern int initgroups(const char *, int)
  #define DEF_MAILBOX_LOCK "fcntl, dotlock"	/* RedHat >= 4.x */
  #define HAS_FSYNC
  #define HAS_DB
@@ -38,7 +38,7 @@ Index: src/util/sys_defs.h
  #define ALIAS_DB_MAP	"$default_database_type:/etc/aliases"
  #ifndef NO_NIS
  #define HAS_NIS
-@@ -851,7 +851,7 @@ extern int initgroups(const char *, int)
+@@ -850,7 +850,7 @@ extern int initgroups(const char *, int)
  #define DEF_MAILBOX_LOCK "dotlock"	/* verified RedHat 3.03 */
  #define HAS_FSYNC
  #define HAS_DB
@@ -47,7 +47,7 @@ Index: src/util/sys_defs.h
  #define ALIAS_DB_MAP	"$default_database_type:/etc/aliases"
  #ifndef NO_NIS
  #define HAS_NIS
-@@ -884,7 +884,7 @@ extern int initgroups(const char *, int)
+@@ -883,7 +883,7 @@ extern int initgroups(const char *, int)
  #define DEF_MAILBOX_LOCK "fcntl, dotlock"	/* RedHat >= 4.x */
  #define HAS_FSYNC
  #define HAS_DB
@@ -56,7 +56,7 @@ Index: src/util/sys_defs.h
  #define ALIAS_DB_MAP	"$default_database_type:/etc/aliases"
  #ifndef NO_NIS
  #define HAS_NIS
-@@ -1209,7 +1209,7 @@ extern int opterr;			/* XXX use <getopt.
+@@ -1208,7 +1208,7 @@ extern int opterr;			/* XXX use <getopt.
  #define INTERNAL_LOCK	MYFLOCK_STYLE_FCNTL
  #define DEF_MAILBOX_LOCK "fcntl, dotlock"
  #define HAS_FSYNC
@@ -78,7 +78,7 @@ Index: man/man1/postmap.1
  earlier versions, the lookup key is folded even with tables
  where a lookup field can match both upper and lower case
  text, such as regexp: and pcre:. This resulted in loss of
-@@ -215,9 +215,9 @@ the "\fBpostconf \-m\fR" command.
+@@ -225,9 +225,9 @@ The default value for this parameter dep
  The \fBpostmap\fR(1) command can query any supported file type,
  but it can create only the following file types:
  .RS
@@ -91,7 +91,7 @@ Index: man/man1/postmap.1
  .IP \fBcdb\fR
  The output consists of one file, named \fIfile_name\fB.cdb\fR.
  This is available on systems with support for \fBcdb\fR databases.
-@@ -229,9 +229,6 @@ This is available on systems with suppor
+@@ -239,9 +239,6 @@ This is available on systems with suppor
  A table that reliably fails all requests. The lookup table
  name is used for logging only. This table exists to simplify
  Postfix error tests.
@@ -101,7 +101,7 @@ Index: man/man1/postmap.1
  .IP \fBlmdb\fR
  The output is a btree\-based file, named \fIfile_name\fB.lmdb\fR.
  \fBlmdb\fR supports concurrent writes and reads from different
-@@ -277,12 +274,6 @@ The following \fBmain.cf\fR parameters a
+@@ -283,12 +280,6 @@ The following \fBmain.cf\fR parameters a
  this program.
  The text below provides only a parameter summary. See
  \fBpostconf\fR(5) for more details including examples.
@@ -127,7 +127,7 @@ Index: man/man1/postalias.1
  earlier versions, the lookup key is folded even with tables
  where a lookup field can match both upper and lower case
  text, such as regexp: and pcre:. This resulted in loss of
-@@ -122,9 +122,9 @@ the "\fBpostconf \-m\fR" command.
+@@ -132,9 +132,9 @@ The default value for this parameter dep
  The \fBpostalias\fR(1) command can query any supported file type,
  but it can create only the following file types:
  .RS
@@ -140,7 +140,7 @@ Index: man/man1/postalias.1
  .IP \fBcdb\fR
  The output is one file named \fIfile_name\fB.cdb\fR.
  This is available on systems with support for \fBcdb\fR databases.
-@@ -136,9 +136,6 @@ This is available on systems with suppor
+@@ -146,9 +146,6 @@ This is available on systems with suppor
  A table that reliably fails all requests. The lookup table
  name is used for logging only. This table exists to simplify
  Postfix error tests.
@@ -150,7 +150,7 @@ Index: man/man1/postalias.1
  .IP \fBlmdb\fR
  The output is a btree\-based file, named \fIfile_name\fB.lmdb\fR.
  \fBlmdb\fR supports concurrent writes and reads from different
-@@ -192,12 +189,6 @@ The alias databases for \fBlocal\fR(8) d
+@@ -197,12 +194,6 @@ The alias databases for \fBlocal\fR(8) d
  .IP "\fBconfig_directory (see 'postconf -d' output)\fR"
  The default location of the Postfix main.cf and master.cf
  configuration files.
