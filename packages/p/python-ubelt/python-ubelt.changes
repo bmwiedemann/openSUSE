@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Aug 22 13:49:14 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.3:
+  * Fix building documentation with Python 3.14
+
+-------------------------------------------------------------------
 Tue Apr 28 09:59:43 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.4.2
