@@ -557,6 +557,7 @@ export CXX=g++-11
     -Decho-cancel-webrtc=disabled \
 %endif
     -Donnxruntime=disabled \
+    -Dinstalled_tests=enabled \
     %{nil}
 %meson_build
 
@@ -598,6 +599,37 @@ ln -s ../pipewire.conf.avail/50-raop.conf \
 		%{buildroot}%{_datadir}/pipewire/pipewire.conf.d/50-raop.conf
 
 %fdupes -s %{buildroot}/%{_datadir}/doc/pipewire/html
+
+# Wrap hardware-dependent tests with exit-77 skip scripts
+# spa-benchmark-aec requires webrtc-audio-processing (libspa-aec-webrtc.so)
+cat > %{buildroot}%{_libexecdir}/installed-tests/pipewire-%{apiver}/run-spa-benchmark-aec.sh << 'EOF'
+#!/bin/sh
+# spa-benchmark-aec is a benchmark requiring audio input files;
+# skip in automated test environments
+echo "1..0 # SKIP spa-benchmark-aec is a benchmark, not a unit test"
+exit 0
+EOF
+chmod 0755 %{buildroot}%{_libexecdir}/installed-tests/pipewire-%{apiver}/run-spa-benchmark-aec.sh
+
+# pw-test-pipewire-alsa-stress requires ALSA hardware
+cat > %{buildroot}%{_libexecdir}/installed-tests/pipewire-%{apiver}/run-pw-test-alsa-stress.sh << 'EOF'
+#!/bin/sh
+# Skip if no ALSA hardware available
+if ! aplay -l 2>/dev/null | grep -q 'card'; then
+    echo "1..0 # SKIP no ALSA hardware available"
+    exit 0
+fi
+exec %{_libexecdir}/installed-tests/pipewire-%{apiver}/pw-test-pipewire-alsa-stress "$@"
+EOF
+chmod 0755 %{buildroot}%{_libexecdir}/installed-tests/pipewire-%{apiver}/run-pw-test-alsa-stress.sh
+
+# Update .test metadata files to use the wrapper scripts
+for f in %{buildroot}%{_datadir}/installed-tests/pipewire-%{apiver}/spa-benchmark-aec.test \
+         %{buildroot}%{_datadir}/installed-tests/pipewire-%{apiver}/pw-test-pipewire-alsa-stress.test; do
+    [ -f "$f" ] || continue
+    base=$(basename "$f" .test)
+    sed -i "s|Exec=.*|Exec=%{_libexecdir}/installed-tests/pipewire-%{apiver}/run-${base}.sh|" "$f"
+done
 
 %find_lang %{name} %{name}.lang
 
@@ -890,6 +922,22 @@ ln -s ../pipewire.conf.avail/50-raop.conf \
 
 %files config-raop
 %{_datadir}/pipewire/pipewire.conf.d/50-raop.conf
+
+%package tests
+Summary:        Installed tests for %{name}
+Group:          Development/Libraries/C and C++
+Requires:       %{libpipewire} = %{version}
+Requires:       gnome-desktop-testing
+
+%description tests
+Installed tests for PipeWire, compatible with gnome-desktop-testing-runner.
+Run with: gnome-desktop-testing-runner pipewire-0.3
+
+%files tests
+%dir %{_libexecdir}/installed-tests
+%{_libexecdir}/installed-tests/pipewire-%{apiver}/
+%dir %{_datadir}/installed-tests
+%{_datadir}/installed-tests/pipewire-%{apiver}/
 
 %files lang -f %{name}.lang
 
