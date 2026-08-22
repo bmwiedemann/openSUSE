@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug 18 14:04:09 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- update to 0.67.0
+  * Support for NumPy 2.5
+  * np.sum and np.cumsum now support dynamic axis argument
+  * Use topological iteration order in liveness fix-point analysis
+  * see https://numba.readthedocs.io/en/0.67.0/release/0.67.0-notes.html
+
+-------------------------------------------------------------------
 Mon Jul  6 19:47:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.66.0:

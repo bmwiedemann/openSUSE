@@ -602,4 +602,12 @@ Python2 support was turned off by accident.  I don't go out of my way to support
 </comment>
     <requestid>1366084</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>ed31f4a0a0c27216e58aff7884a2e033</srcmd5>
+    <version>0.67.0</version>
+    <time>1787427352</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1373025</requestid>
+  </revision>
 </revisionlist>
