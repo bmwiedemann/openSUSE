@@ -31,4 +31,12 @@
     <comment></comment>
     <requestid>1334285</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>05c10ea09f045ad231b6ee1e49456ab2</srcmd5>
+    <version>4.73</version>
+    <time>1787427361</time>
+    <user>dimstar_suse</user>
+    <comment>libzia 4.73 (forwarded request 1373044 from AndreasStieger)</comment>
+    <requestid>1373045</requestid>
+  </revision>
 </revisionlist>
