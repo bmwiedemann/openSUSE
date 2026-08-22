@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Aug 20 08:25:27 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.1.8:
+  + Fix broadcast messages bypassing path/interface/member checks
+  + Improvements to the existing testing infrastructure
+  + Add tests for owning names, issuing method calls, receiving
+    messages
+
+-------------------------------------------------------------------
+Mon Aug 17 10:11:41 UTC 2026 - Zoltan Balogh <zbalogh@suse.com>
+
+- Add xdg-dbus-proxy-tests subpackage with installed
+  tests for gnome-desktop-testing-runner
+
+-------------------------------------------------------------------
 Fri Apr 17 07:07:56 UTC 2026 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Update to version 0.1.7:
@@ -75,4 +90,3 @@ Thu Sep 19 10:49:48 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 Wed Jan 23 13:02:50 UTC 2019 - bjorn.lie@gmail.com
 
 - Initial packaging for openSUSE, version 0.1.1.
-

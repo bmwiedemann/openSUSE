@@ -64,4 +64,19 @@ Needed for future versions of flatpak, previously a part of flatpak itself. Resu
     <comment>Update version</comment>
     <requestid>1348440</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>297277702f23913c163d365fd161090b</srcmd5>
+    <version>0.1.8</version>
+    <time>1787427266</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.1.8:
+  + Fix broadcast messages bypassing path/interface/member checks
+  + Improvements to the existing testing infrastructure
+  + Add tests for owning names, issuing method calls, receiving
+    messages
+
+- Add xdg-dbus-proxy-tests subpackage with installed
+  tests for gnome-desktop-testing-runner</comment>
+    <requestid>1372904</requestid>
+  </revision>
 </revisionlist>

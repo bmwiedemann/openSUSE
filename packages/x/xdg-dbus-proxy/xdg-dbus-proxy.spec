@@ -1,7 +1,7 @@
 #
 # spec file for package xdg-dbus-proxy
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2019 Bjørn Lie, Bryne, Norway.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           xdg-dbus-proxy
-Version:        0.1.7
+Version:        0.1.8
 Release:        0
 Summary:        Filtering proxy for D-Bus connections
 License:        LGPL-2.1-or-later
@@ -49,6 +49,7 @@ as a standalone module to facilitate using it in other contexts.
 
 %build
 %meson \
+	-Dinstalled_tests=true \
 	%{nil}
 %meson_build
 
@@ -63,5 +64,20 @@ as a standalone module to facilitate using it in other contexts.
 %doc NEWS
 %{_bindir}/xdg-dbus-proxy
 %{_mandir}/man1/xdg-dbus-proxy.1%{ext_man}
+
+%package tests
+Summary:        Installed tests for %{name}
+Requires:       %{name} = %{version}
+Requires:       dbus-1
+Requires:       gnome-desktop-testing
+
+%description tests
+Installed tests for xdg-dbus-proxy, compatible with gnome-desktop-testing-runner.
+
+%files tests
+%dir %{_libexecdir}/installed-tests
+%{_libexecdir}/installed-tests/%{name}/
+%dir %{_datadir}/installed-tests
+%{_datadir}/installed-tests/%{name}/
 
 %changelog
