@@ -708,4 +708,30 @@
                 ? $a</comment>
     <requestid>1364271</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>8e129f6036e62d90e74854e110ede7c1</srcmd5>
+    <version>20260808.0.0</version>
+    <time>1787427284</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 20260808.0.0 (20260808)
+   see /usr/share/doc/packages/perl-Perl-Tidy/CHANGES.md
+  ## 2026 08 08
+     - Fixed git #211, an unusual instability with the following eval block:
+       eval { @$list = map( { [ qr($_), $_, 0 ]; } @$list ); };
+       A workaround was removing the parens around the map call parameters;
+       this version has a permanent fix.
+     - Some very rare instabilities with the -xlp style have been identified
+       and fixed.  This could cause a shift in the indentation some lists
+       formatted with -xlp.
+     - Added checks when converting here-doc types '&lt;&lt;' to '&lt;&lt;~' using
+       the parameter --heredoc-convert-to='indented':
+       (1) Zero-length tags are skipped and
+       (2) the conversion is skipped if any here-text lines match the new tag.
+     - Added more syntax checks to help catch missing semicolons.
+     - The parameters --want-call-parens and --nowant-call-parens now have
+       the ability to restrict warnings to lists with or without multiple
+       comma-separated items. This can be done by placing a plus sign after
+       a function name in their parameter lists. The manual has details.</comment>
+    <requestid>1372840</requestid>
+  </revision>
 </revisionlist>
