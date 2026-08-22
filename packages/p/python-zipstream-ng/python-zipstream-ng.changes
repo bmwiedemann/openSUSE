@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Aug 22 14:10:16 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.9.3:
+  * Fix length calculation when adding extended ascii filenames
+
+-------------------------------------------------------------------
 Tue May 19 21:37:41 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.9.2:

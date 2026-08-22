@@ -46,4 +46,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1355245</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>fa26177e249ab94e7d8b95e2a788b2d9</srcmd5>
+    <version>1.9.3</version>
+    <time>1787427402</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.9.3:
+  * Fix length calculation when adding extended ascii filenames</comment>
+    <requestid>1373084</requestid>
+  </revision>
 </revisionlist>
