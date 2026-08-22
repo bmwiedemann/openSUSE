@@ -1,7 +1,7 @@
 #
 # spec file for package perl-HTTP-Cookies
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,16 @@
 
 %define cpan_name HTTP-Cookies
 Name:           perl-HTTP-Cookies
-Version:        6.110.0
+Version:        6.120.0
 Release:        0
-%define cpan_version 6.11
+# 6.12 -> normalize -> 6.120.0
+%define cpan_version 6.12
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        HTTP cookie jars
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/O/OA/OALDERS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -33,6 +35,7 @@ BuildRequires:  perl(HTTP::Date) >= 6
 BuildRequires:  perl(HTTP::Headers::Util) >= 6
 BuildRequires:  perl(HTTP::Request)
 BuildRequires:  perl(HTTP::Response)
+BuildRequires:  perl(Test::More) >= 0.96
 BuildRequires:  perl(URI)
 Requires:       perl(HTTP::Date) >= 6
 Requires:       perl(HTTP::Headers::Util) >= 6
@@ -62,7 +65,7 @@ to initialize Cookie-headers in _HTTP::Request_ objects. The state of a
 _HTTP::Cookies_ object can be saved in and restored from files.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
