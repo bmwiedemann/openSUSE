@@ -20,7 +20,7 @@
 
 Name:           libfsfat
 %define lname	libfsfat1
-Version:        20260819
+Version:        20260822
 Release:        0
 Summary:        Library and tools for accessing the FAT filesystem
 License:        LGPL-3.0-or-later
