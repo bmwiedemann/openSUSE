@@ -17,7 +17,7 @@
 
 
 Name:           libgedit-gfls
-Version:        0.4.1
+Version:        0.4.2
 Release:        0
 Summary:        Gedit Technology - File loading and saving
 License:        LGPL-3.0-or-later
