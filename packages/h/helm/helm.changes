@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Aug 21 22:06:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update vendor.tar to fix
+  * bsc#1275025, CVE-2026-56864
+  * bsc#1275024, CVE-2026-56865
+  * bsc#1271462, CVE-2026-50163
+
+-------------------------------------------------------------------
+Fri Aug 14 05:28:46 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 4.2.4:
+  * fix: Improve error reporting for helm template --debug with
+    --show-only- #31185
+  * fix: fetch logs from all containers in test pods- #32099
+  * fix(provenance): check error return in Digest and
+    encodeRelease- #32136
+  * fix panic on repeated IsReachable calls- #32184
+  * fix: set [pull,push] scope when helm push to a registry(use
+    token auth) - v4- #31211
+  * Fix missing conflict retry with server-side apply- #32088
+  * Properly format the extra field in gzipped packages- #31884
+  * Fix vanishing empty lines- #32327
+  * fix: pass registry client to downloader.Manager in upgrade-
+    #32400
+  * chore(deps): bump google.golang.org/grpc from 1.80.0 to 1.82.1-
+    #32450
+  * fix: bump go.opentelemetry.io/otel to v1.44.0 for GO-2026-5158-
+    #32521
+
+-------------------------------------------------------------------
 Mon Jul 27 12:59:00 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - add CVE-2026-63308.patch (CVE-2026-63308, bsc#1272402)

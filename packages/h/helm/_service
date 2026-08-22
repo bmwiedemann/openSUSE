@@ -5,7 +5,7 @@
     <param name="exclude">.git</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
-    <param name="revision">refs/tags/v4.2.3</param>
+    <param name="revision">refs/tags/v4.2.4</param>
     <param name="changesgenerate">disable</param>
   </service>
   <service name="set_version" mode="manual">
@@ -16,6 +16,9 @@
     <param name="compression">gz</param>
   </service>
   <service name="go_modules" mode="manual">
+    <param name="compression">zst</param>
     <param name="replace">golang.org/x/net=golang.org/x/net@v0.57.0</param>
+    <param name="replace">golang.org/x/mod=golang.org/x/mod@v0.40.0</param>
+    <param name="replace">oras.land/oras-go/v2=oras.land/oras-go/v2@v2.6.2</param>
   </service>
 </services>
