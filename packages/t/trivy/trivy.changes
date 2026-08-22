@@ -1,7 +1,39 @@
 -------------------------------------------------------------------
+Fri Aug 21 20:33:00 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 0.74.0:
+  * release: v0.74.0 [main] (#11037)
+  * chore(deps): update golang.org/x modules (#11094)
+  * chore(deps): bump the docker group with 2 updates (#11090)
+  * docs: update release branch ruleset instructions (#11093)
+  * chore(deps): bump the common group across 1 directory with 7 updates (#11086)
+  * fix(misconf): unmark cty values outside the evaluation context (#11078)
+  * chore(deps): bump the aws group across 1 directory with 6 updates (#11053)
+  * fix(misconf): parse Azure flexible server parameters under their own names (#11072)
+  * chore(deps): bump the docker group with 2 updates (#11054)
+  * feat: add RapidFort curated image scanner (#10452)
+  * feat(java): resolve JAR license URLs to SPDX IDs (Bundle-License, pom <url>) (#10948)
+  * refactor(misconf): remove unused Azure expression-related code (#10637)
+  * fix(server): preserve check aliases and query in uploaded blobs (#11080)
+  * fix(java): read artifact properties only from the MANIFEST.MF main section (#11066)
+  * fix(terraform): support OpenTofu language block (#10923)
+  * chore(deps): bump github.com/go-git/go-git/v5 from 5.19.1 to 5.19.2 (#11063)
+  * ci: trigger Auto Ready for Review after Test docs (#11045)
+  * docs: remove trivy-checks from AWS ECR locations (#11044)
+  * refactor(ubuntu): move EOL version resolution out of loop (#11047)
+  * fix(python): normalize dependency names in PEP 621 pyproject.toml (#11050)
+  * chore(deps): bump oras.land/oras-go/v2 from 2.6.1 to 2.6.2 (#11042)
+  * chore(deps): bump github.com/nikolalohinski/gonja/v2 to v2.9.0 (#11038)
+  * fix(terraform): avoid panic when for_each local has unknown object values (#11019)
+  * chore(deps): bump the github-actions group across 2 directories with 15 updates (#11028)
+  * ci(spdx): migrate to Slack notifications (#11032)
+  * ci(helm): bump Trivy version to 0.73.0 for Trivy Helm Chart 0.25.0 (#11034)
+
+-------------------------------------------------------------------
 Wed Aug 05 08:21:21 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
-- Update to version 0.73.0:
+- Update to version 0.73.0 (bsc#1276128,
+  CVE-2026-72817,CVE-2026-72815,CVE-2026-72816):
   * release: v0.73.0 [main] (#11012)
   * docs: clarify debug logs when version check or telemetry is disabled (#10984)
   * feat(java): support user-defined Maven mirrors in trivy.yaml (#11006)
