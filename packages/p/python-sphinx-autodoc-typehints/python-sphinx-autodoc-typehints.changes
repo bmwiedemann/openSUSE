@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Aug 22 14:12:25 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.13.2:
+  * fix: support subscripted type aliases
+- update to 3.13.1:
+  * ci(coverage): pick a measurement core that records contexts
+  * fix(resolver): ignore non-tuple __type_params__
+  * fix(resolver): stop TYPE_CHECKING and stub gaps cascading
+
+-------------------------------------------------------------------
 Wed Jul 22 02:15:06 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 3.13.0:

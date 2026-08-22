@@ -347,4 +347,17 @@
 - update to 3.9.10:</comment>
     <requestid>1367900</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>16ad3c2c3c5c7364631a44cc0179ad2f</srcmd5>
+    <version>3.13.2</version>
+    <time>1787427408</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.13.2:
+  * fix: support subscripted type aliases
+- update to 3.13.1:
+  * ci(coverage): pick a measurement core that records contexts
+  * fix(resolver): ignore non-tuple __type_params__
+  * fix(resolver): stop TYPE_CHECKING and stub gaps cascading</comment>
+    <requestid>1373087</requestid>
+  </revision>
 </revisionlist>
