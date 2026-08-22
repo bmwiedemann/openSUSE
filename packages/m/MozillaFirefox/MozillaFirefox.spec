@@ -28,9 +28,9 @@
 # orig_suffix b3
 # major 69
 # mainver %%major.99
-%define major          153
-%define mainver        %major.0.3
-%define orig_version   153.0.3
+%define major          154
+%define mainver        %major.0
+%define orig_version   154.0
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -119,8 +119,8 @@ BuildRequires:  libstdc++6-devel-gcc13
 BuildRequires:  gcc15-c++
 BuildRequires:  libstdc++6-devel-gcc15
 %endif
-BuildRequires:  cargo1.93
-BuildRequires:  rust1.93
+BuildRequires:  cargo1.94
+BuildRequires:  rust1.94
 %if 0%{useccache} != 0
 BuildRequires:  ccache
 %endif
@@ -130,7 +130,7 @@ BuildRequires:  libiw-devel
 BuildRequires:  libproxy-devel
 BuildRequires:  makeinfo
 BuildRequires:  mozilla-nspr-devel >= 4.39
-BuildRequires:  mozilla-nss-devel >= 3.125
+BuildRequires:  mozilla-nss-devel >= 3.126
 BuildRequires:  nasm >= 2.14
 BuildRequires:  nodejs >= 12.22.12
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
@@ -238,7 +238,6 @@ Patch20:        one_swizzle_to_rule_them_all.patch
 Patch21:        svg-rendering.patch
 Patch25:        mozilla-sandbox-lto.patch
 Patch26:        mozilla-bmo2030493.patch
-Patch28:        mozilla-bmo2048250.patch
 # Firefox/browser
 Patch102:       firefox-branded-icons.patch
 %endif

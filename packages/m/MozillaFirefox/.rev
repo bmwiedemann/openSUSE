@@ -8404,4 +8404,41 @@
     <comment></comment>
     <requestid>1369567</requestid>
   </revision>
+  <revision rev="499" vrev="1">
+    <srcmd5>b429e99d0b0b89b079056f9830cd0206</srcmd5>
+    <version>154.0</version>
+    <time>1787427228</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Firefox 154.0
+  * https://www.firefox.com/en-US/firefox/154.0/releasenotes
+  MFSA 2026-74 (bsc#1274867)
+  * CVE-2026-75874 (bmo#2039972)
+    Sandbox escape in the Remote Settings Client component
+  * CVE-2026-74934 (bmo#2050584)
+    Site isolation issue in the Graphics: CanvasWebGL component
+  * CVE-2026-74935 (bmo#2051013)
+    Privilege escalation in the DOM: Networking component
+  * CVE-2026-74936 (bmo#2052688)
+    Use-after-free in the JavaScript: WebAssembly component
+  * CVE-2026-74937 (bmo#2053337)
+    Use-after-free in the JavaScript: GC component
+  * CVE-2026-74938 (bmo#2053688)
+    Mitigation bypass in the JavaScript: GC component
+  * CVE-2026-74939 (bmo#2054416)
+    Privilege escalation in the DOM: Navigation component
+  * CVE-2026-74940 (bmo#2054842)
+    Use-after-free in the Graphics: Text component
+  * CVE-2026-74941 (bmo#2055056)
+    Privilege escalation in the Graphics: CanvasWebGL component
+  * CVE-2026-74942 (bmo#2056571)
+    Privilege escalation in the Remote Settings Client component
+  * CVE-2026-74943 (bmo#2057308)
+    Use-after-free in the Graphics: ImageLib component
+  * CVE-2026-74944 (bmo#2057778)
+    Use-after-free in the DOM: Core &amp; HTML component
+  * CVE-2026-74945 (bmo#2057808)
+    Information disclosure in the Graphics: Text component
+  * CVE-2026-74946 (bmo#2059997)</comment>
+    <requestid>1372157</requestid>
+  </revision>
 </revisionlist>

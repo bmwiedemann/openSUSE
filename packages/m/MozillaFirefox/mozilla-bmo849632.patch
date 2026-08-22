@@ -1,24 +1,38 @@
 # HG changeset patch
-# Parent  3de59fe1b8708c01e134ce698c4232b8a854f617
+# Parent  669e83ba291d98fea133d2cfd670d04963d456b9
 Problem:  webGL sites are displayed in the wrong color (usually blue-ish)
 Solution: Problem is with skia once again. Output of webgl seems endian-correct, but skia only
           knows how to deal with little endian.
           So we swizzle the output of webgl after reading it from readpixels()
 Note:     This does not fix all webGL sites, but is a step in the right direction
 
-Index: firefox-151.0.1/gfx/gl/GLContext.h
-===================================================================
---- firefox-151.0.1.orig/gfx/gl/GLContext.h
-+++ firefox-151.0.1/gfx/gl/GLContext.h
-@@ -24,6 +24,7 @@
- #  define MOZ_GL_DEBUG_BUILD 1
- #endif
+diff --git a/gfx/gl/GLContext.h b/gfx/gl/GLContext.h
+--- a/gfx/gl/GLContext.h
++++ b/gfx/gl/GLContext.h
+@@ -27,16 +27,17 @@
  
+ #include "GLConsts.h"
+ #include "GLContextSymbols.h"
+ #include "GLContextTypes.h"
+ #include "GLDefs.h"
+ #include "GLTypes.h"
+ #include "MozFramebuffer.h"
+ #include "base/platform_thread.h"  // for PlatformThreadId
 +#include "mozilla/EndianUtils.h"
+ #include "mozilla/GenericRefCounted.h"
  #include "mozilla/IntegerRange.h"
  #include "mozilla/RefPtr.h"
+ #include "mozilla/ThreadLocal.h"
  #include "mozilla/UniquePtr.h"
-@@ -1621,6 +1622,13 @@ class GLContext : public GenericAtomicRe
+ #include "mozilla/WeakPtr.h"
+ #include "nsRegionFwd.h"
+ #include "nsString.h"
+@@ -1619,16 +1620,23 @@ class GLContext : public GenericAtomicRe
+     AFTER_GL_CALL;
+   }
+ 
+   void raw_fReadPixels(GLint x, GLint y, GLsizei width, GLsizei height,
+                        GLenum format, GLenum type, GLvoid* pixels) {
      BEFORE_GL_CALL;
      mSymbols.fReadPixels(x, y, width, height, format, type, pixels);
      OnSyncCall();
@@ -32,3 +46,8 @@ Index: firefox-151.0.1/gfx/gl/GLContext.h
      AFTER_GL_CALL;
      mHeavyGLCallsSinceLastFlush = true;
    }
+ 
+   void fReadPixels(GLint x, GLint y, GLsizei width, GLsizei height,
+                    GLenum format, GLenum type, GLvoid* pixels);
+ 
+  public:
