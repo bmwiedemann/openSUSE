@@ -65,4 +65,14 @@
   * Drop support for Python 3.10, support Python 3.14.</comment>
     <requestid>1333447</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>cfc3f739e1575aec6e309b12577f286c</srcmd5>
+    <version>2026.7.25</version>
+    <time>1787427354</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2026.7.25:
+  * Drop support for Python 3.11 and numpy 2.0 (SPEC0), support
+    Python 3.15.</comment>
+    <requestid>1373034</requestid>
+  </revision>
 </revisionlist>

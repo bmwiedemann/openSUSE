@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-netpbmfile
-Version:        2026.1.29
+Version:        2026.7.25
 Release:        0
 Summary:        Read and write image files in the Netpbm format
 License:        BSD-3-Clause

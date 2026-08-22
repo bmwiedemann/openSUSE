@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Aug 22 09:29:10 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2026.7.25:
+  * Drop support for Python 3.11 and numpy 2.0 (SPEC0), support
+    Python 3.15.
+
+-------------------------------------------------------------------
 Mon Feb 16 20:54:33 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2026.1.29:
