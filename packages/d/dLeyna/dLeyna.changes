@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 20 11:21:15 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.8.4:
+  + Core: Fix compatibility with musl
+  + Renderer: Potentially fix crash if renderer device disappears
+
+-------------------------------------------------------------------
 Mon Mar 23 08:24:35 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run

@@ -51,4 +51,14 @@
     <comment>Push GNOME 50</comment>
     <requestid>1345348</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>88d328fe23ff5f4e0ec97e6b0d120839</srcmd5>
+    <version>0.8.4</version>
+    <time>1787427268</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.8.4:
+  + Core: Fix compatibility with musl
+  + Renderer: Potentially fix crash if renderer device disappears</comment>
+    <requestid>1372913</requestid>
+  </revision>
 </revisionlist>

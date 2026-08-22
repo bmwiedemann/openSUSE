@@ -2,7 +2,7 @@
 <services>
   <service mode="manual" name="obs_scm">
     <param name="url">https://gitlab.gnome.org/World/dLeyna.git</param>
-    <param name="revision">v0.8.3</param>
+    <param name="revision">v0.8.4</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="scm">git</param>

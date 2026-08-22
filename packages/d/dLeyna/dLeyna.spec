@@ -17,7 +17,7 @@
 
 
 Name:           dLeyna
-Version:        0.8.3
+Version:        0.8.4
 Release:        0
 Summary:        Services and D-Bus APIs to access UPnP and DLNA media devices in a network
 License:        LGPL-2.1-or-later
