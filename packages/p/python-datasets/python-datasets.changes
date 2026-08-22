@@ -1,0 +1,38 @@
+-------------------------------------------------------------------
+Sat Aug 22 05:58:38 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Switch from update-alternatives to libalternatives
+
+-------------------------------------------------------------------
+Fri Aug 21 19:35:24 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 5.0.1:
+  * Fix Python 3.14 pickle support (Pickler._batch_setitems)
+  * Add python-httpx as a required dependency
+  * Raise floors: pyarrow >= 21.0.0, huggingface-hub >= 0.25.0
+  * Audio/video decoding now uses optional torchcodec
+    instead of soundfile/decord
+  * Drop dataset loading scripts
+  * Fix symlink-following arbitrary file write during
+    archive extraction and path traversal via metadata
+    file_name in folder-based builders
+  * Rewrite Requires/Suggests from upstream metadata
+    (drop duplicated extras and stale pins)
+  * Add Requires(post/postun) update-alternatives for
+    datasets-cli
+  * Restrict %check to tests shipped in the PyPI sdist and
+    add a Dataset.map/pickle smoke test
+
+-------------------------------------------------------------------
+Mon Sep 30 15:49:27 UTC 2024 - Guang Yee <gyee@suse.com>
+
+- Release v3.0.1
+  * Modify add_column() to optionally accept a FeatureType as param by
+  * Align filename prefix splitting with WebDataset library by
+  * Support ndjson data files by
+  * Support JSON lines with missing struct fields by
+  * Support JSON lines with empty struct by
+  * fix increase_load_count by
+  * fix docstring code example for distributed shuffle by
+  * Support JSON lines with missing columns by
+  * Add torchdata as a regular test dependency by

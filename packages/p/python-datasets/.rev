@@ -1,0 +1,29 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7f0a7cfea194766dcd94411542449234</srcmd5>
+    <version>5.0.1</version>
+    <time>1787427396</time>
+    <user>dimstar_suse</user>
+    <comment>New package: HuggingFace &quot;datasets&quot; -- community library of datasets providing
+one-line dataloaders and efficient pre-processing for audio, vision and NLP.
+
+Version 5.0.1, current on PyPI; the sdist md5 matches upstream exactly.
+License Apache-2.0, noarch.
+
+All build and runtime dependencies are already in Factory: pyarrow 25.0.0 from
+apache-arrow:python-pyarrow satisfies the &gt;= 21.0.0 floor, and alts comes from
+libalternatives.
+
+Builds green on x86_64 and aarch64. %check runs the subset of tests the PyPI
+sdist actually ships -- tests/utils.py, conftest.py and the fixtures live only
+in the GitHub tree, so the modules importing them cannot collect -- plus a
+Dataset.map and pickle round-trip smoke test covering the Python 3.14
+Pickler._batch_setitems regression fixed upstream in 4.4.0.
+
+i586 and armv7hl are unresolvable because pyarrow there is absent or 19.0.1,
+below the required floor.
+
+Proposed devel project: science:machinelearning (maintainer: mslacken).</comment>
+    <requestid>1373079</requestid>
+  </revision>
+</revisionlist>
