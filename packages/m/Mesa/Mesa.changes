@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Aug 20 11:00:32 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to 26.2.1 bugfix release
+  --> https://docs.mesa3d.org/relnotes/26.2.1
+
+-------------------------------------------------------------------
+Tue Aug 18 10:04:53 UTC 2026 - Jianhua Lu <lujianhua000@gmail.com>
+
+- Enable virtio vulkan driver
+
+-------------------------------------------------------------------
 Mon Aug 10 14:35:25 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Apparently %patch -P 18 -p1 is ignored when the patch does not

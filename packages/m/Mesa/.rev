@@ -6887,4 +6887,15 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
     <comment></comment>
     <requestid>1370557</requestid>
   </revision>
+  <revision rev="586" vrev="1">
+    <srcmd5>8ae0a8a760adc9b2cf65f39c7992c8df</srcmd5>
+    <version>26.2.1</version>
+    <time>1787427271</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 26.2.1 bugfix release
+  --&gt; https://docs.mesa3d.org/relnotes/26.2.1
+
+- Enable virtio vulkan driver</comment>
+    <requestid>1372621</requestid>
+  </revision>
 </revisionlist>

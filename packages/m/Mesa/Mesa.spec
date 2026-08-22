@@ -70,22 +70,22 @@
     %define with_vulkan 1
     %if 0%{?suse_version} >= 1699
        %ifarch x86_64
-       %define vulkan_drivers swrast,amd,intel,intel_hasvk,nouveau,microsoft-experimental,imagination,asahi
+       %define vulkan_drivers swrast,amd,intel,intel_hasvk,virtio,nouveau,microsoft-experimental,imagination,asahi
        %else
-       %define vulkan_drivers swrast,amd,intel,intel_hasvk,nouveau,microsoft-experimental,imagination
+       %define vulkan_drivers swrast,amd,intel,intel_hasvk,virtio,nouveau,microsoft-experimental,imagination
        %endif
     %else
-    %define vulkan_drivers swrast,amd,intel,intel_hasvk
+    %define vulkan_drivers swrast,amd,intel,intel_hasvk,virtio
     %endif
   %endif
   %ifarch %{arm} aarch64
     %define with_vulkan 1
     %if 0%{?suse_version} >= 1699
        %ifarch aarch64
-       %define vulkan_drivers swrast,amd,broadcom,freedreno,intel,intel_hasvk,nouveau,panfrost,imagination,asahi
+       %define vulkan_drivers swrast,amd,broadcom,freedreno,intel,intel_hasvk,nouveau,panfrost,imagination,virtio,asahi
        %else
        %ifnarch armv6l armv6hl
-       %define vulkan_drivers swrast,amd,broadcom,freedreno,intel,intel_hasvk,nouveau,panfrost,imagination
+       %define vulkan_drivers swrast,amd,broadcom,freedreno,intel,intel_hasvk,nouveau,panfrost,imagination,virtio
        %else
        # Disable vulkan on armv6 as it fails to build
        %define with_vulkan 0
@@ -93,17 +93,17 @@
        %endif
     %else
       %if 0%{?suse_version} >= 1600 && %{suse_version} < 1699
-        %define vulkan_drivers swrast,amd,broadcom,freedreno,intel,intel_hasvk,panfrost
+        %define vulkan_drivers swrast,amd,broadcom,freedreno,intel,intel_hasvk,panfrost,virtio
       %endif
     %endif
   %endif
   %ifarch riscv64
     %define with_vulkan 1
-    %define vulkan_drivers swrast,amd,intel,intel_hasvk,imagination
+    %define vulkan_drivers swrast,amd,intel,intel_hasvk,virtio,imagination
   %endif
   %ifarch loongarch64
     %define with_vulkan 1
-    %define vulkan_drivers swrast,amd,intel,intel_hasvk,nouveau
+    %define vulkan_drivers swrast,amd,intel,intel_hasvk,virtio,nouveau
   %endif
 %endif
 
@@ -142,9 +142,9 @@
 %endif
 
 Name:           Mesa%{psuffix}
-Version:        26.2.0
+Version:        26.2.1
 Release:        0
-%define pkg_version 26.2.0
+%define pkg_version 26.2.1
 Summary:        System for rendering 3-D graphics
 License:        MIT
 Group:          System/Libraries
@@ -723,6 +723,13 @@ Group:          System/Libraries
 This package contains the Vulkan parts for Mesa.
 %endif
 
+%package -n libvulkan_virtio
+Summary:        Mesa vulkan driver for Virtio-GPU (Venus)
+Group:          System/Libraries
+
+%description -n libvulkan_virtio
+This package contains the Vulkan parts for Mesa.
+
 %package -n Mesa-vulkan-device-select
 Summary:        Vulkan layer to select Vulkan devices provided by Mesa
 Group:          System/Libraries
@@ -1208,6 +1215,12 @@ echo "The \"Mesa\" package does not have the ability to render, but is supplemen
 %dir %{_datadir}/vulkan/icd.d
 %{_datadir}/vulkan/icd.d/panfrost_icd.*.json
 %endif
+
+%files -n libvulkan_virtio
+%{_libdir}/libvulkan_virtio.so
+%dir %{_datadir}/vulkan
+%dir %{_datadir}/vulkan/icd.d
+%{_datadir}/vulkan/icd.d/virtio_icd.*.json
 
 %files -n Mesa-vulkan-device-select
 %{_libdir}/libVkLayer_MESA_device_select.so
