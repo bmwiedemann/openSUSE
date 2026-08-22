@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Aug 22 08:19:08 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.50.6:
+  * GHSA-2gr5-vw2p-2hcf: stored DOM-XSS via unescaped group-node
+    and subgraph names in node search (fixed in 1.50.2)
+  * GHSA-j6xv-rx8r-mh6j: stored DOM-XSS via unescaped node
+    property names in the litegraph Properties dialog
+    (fixed in 1.50.4)
+  * GHSA-8xxc-66vh-2pf3: cloud Open Image same-origin XSS via
+    attacker-controlled Content-Type (fixed in 1.50.5; first
+    PyPI release that contains the fix)
+  * First-run onboarding tour with canvas coachmarks and
+    template hand-off
+  * Asset filter search; image compositor node with a
+    PSD-style layer editor
+  * Show backend-submitted node display names in English
+  * Import A1111 PNGs that have no negative prompt
+  * Build nodes for uninstalled types on API JSON import
+  * Show dynamic combo inputs in the node info panel
+  * Batch WebSocket progress events
+  * Open popular templates for new users; stop relaying
+    Desktop execution starts to the frontend
+
+-------------------------------------------------------------------
 Fri Aug 21 08:51:33 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Initial package (version 1.49.6): official ComfyUI frontend
