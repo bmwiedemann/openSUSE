@@ -189,4 +189,20 @@
 - Remove urllib3 BuildRequires, now that we don't have to pin it.</comment>
     <requestid>1329917</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>96be233771b81a8ea832e0cf7c21848d</srcmd5>
+    <version>4.17.0</version>
+    <time>1787427390</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.17.0:
+  * Add reset_time parameter to TooManyRequests
+  * Replace deprecated datetime.utcnow() in MongodbCache.store
+
+  * Add support for exclude parameter for get_quote_tweets
+- update to version 4.9.0:
+   - This will be the last major and minor version to support Python 2.7 ([#1253](https://github.com/tweepy/tweepy/issues/1253)) and Python 3.5.
+ New features:
+  * Streaming: don't decode stream bytes until json.decode.</comment>
+    <requestid>1373077</requestid>
+  </revision>
 </revisionlist>
