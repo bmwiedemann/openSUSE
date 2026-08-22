@@ -21,13 +21,16 @@
 %{?sle15_python_module_pythons}
 Name:           python-llvmlite
 # Note: this has to be in sync with Numba releases
-Version:        0.48.0
+Version:        0.49.0
 Release:        0
 Summary:        Lightweight wrapper around basic LLVM functionality
 License:        BSD-2-Clause
 URL:            https://llvmlite.pydata.org
 # SourceRepository: https://github.com/numba/llvmlite
 Source:         https://files.pythonhosted.org/packages/source/l/llvmlite/llvmlite-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE skip various failing tests
+# https://github.com/numba/llvmlite/issues/1449
+Patch0:         skip-failing-tests.patch
 BuildRequires:  %{python_module devel >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}

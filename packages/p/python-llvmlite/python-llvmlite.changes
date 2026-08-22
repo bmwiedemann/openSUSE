@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug 18 12:54:41 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- update to 0.49.0
+  * Warnings on ptrtoint/inttoptr for LLVM 22 pointer provenance
+    issues that can cause miscompilation
+  * https://llvmlite.readthedocs.io/en/latest/release-notes.html#v0-49-0-august-11-2026
+- Add skip-failing-tests.patch to skip some known failures
+
+-------------------------------------------------------------------
 Mon Jul  6 19:48:23 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.48.0:

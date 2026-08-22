@@ -454,4 +454,12 @@ This version works with llvm 4.</comment>
   * https://llvmlite.readthedocs.io/en/latest/release-notes.html#v0-48-0rc1-june-4-2026</comment>
     <requestid>1364116</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>cbee005f8bcbcc2778b283d7cb53a4d2</srcmd5>
+    <version>0.49.0</version>
+    <time>1787427348</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1373023</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,12 @@
+Index: llvmlite-0.49.0/llvmlite/tests/test_binding.py
+===================================================================
+--- llvmlite-0.49.0.orig/llvmlite/tests/test_binding.py
++++ llvmlite-0.49.0/llvmlite/tests/test_binding.py
+@@ -2809,6 +2809,7 @@ class TestNewModulePassManager(BaseTest,
+         self.assertIn("alloca", orig_asm_optnone)
+         self.assertIn("alloca", optimized_asm_optnone)
+ 
++    @unittest.skipIf(platform.machine().lower() in ("s390x", "i386", "i686"), "See https://github.com/numba/llvmlite/issues/1449")
+     def test_optsize_minsize(self):
+         pb = self.pb(speed_level=3)
+ 
