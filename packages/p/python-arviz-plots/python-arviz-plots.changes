@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Aug 21 20:33:31 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.3.0:
+  * Add KDE2D to plot_pair
+  * Add plot_loo_pava
+  * Set default style DPI to 100
+  * Add ROPE to plot_dist
+  * Add multiple chains test to rank plot
+  * Fix typo in author name
+- update to 1.2.0:
+  * Pass varnames to loo_pit
+  * Polish plot_ppc_dist
+  * Add ppc_dist_pit and refactor
+  * Add tests to plot_lm, fix bug with observations
+  * Forward labeller in plot_ridge labels
+  * Forward labeller in plot_forest labels
+  * Generalize and refactor bf
+  * Add nightlies to tox and fix Hypothesis test deadline
+    Extended issue
+  * plot_lm: support extra dimensions
+  * Bring arviz-darkgrid style back
+  * prepare release
+
+-------------------------------------------------------------------
 Tue May 19 05:38:42 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 1.1.0:

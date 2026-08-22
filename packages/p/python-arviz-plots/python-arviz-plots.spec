@@ -1,7 +1,7 @@
 #
 # spec file for package python-arviz-plots
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,35 +16,33 @@
 #
 
 
-# Upstream supports Python 3.12+
-%define skip_python311 1
 Name:           python-arviz-plots
-Version:        1.1.0
+Version:        1.3.0
 Release:        0
 Summary:        Ready to use and composable plots for Bayesian Workflow
 License:        Apache-2.0
 URL:            https://github.com/arviz-devs/arviz-plots
 Source:         https://github.com/arviz-devs/arviz-plots/archive/refs/tags/v%{version}.tar.gz#/arviz_plots-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module base >= 3.12}
 BuildRequires:  %{python_module flit-core >= 3.4}
 BuildRequires:  %{python_module pip}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module arviz-base >= 1.0}
-BuildRequires:  %{python_module arviz-stats >= 1.0}
-BuildRequires:  %{python_module h5netcdf}
-BuildRequires:  %{python_module dask}
+BuildRequires:  %{python_module arviz-base >= 1.3.0}
+BuildRequires:  %{python_module arviz-stats >= 1.3.0}
 BuildRequires:  %{python_module bokeh}
+BuildRequires:  %{python_module dask}
+BuildRequires:  %{python_module h5netcdf}
+BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module matplotlib >= 3.9}
 BuildRequires:  %{python_module plotly}
-BuildRequires:  %{python_module webcolors}
-BuildRequires:  %{python_module hypothesis}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytest-cov}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module webcolors}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-arviz-base >= 1.0
-Requires:       python-arviz-stats >= 1.0
+Requires:       python-arviz-base >= 1.3.0
+Requires:       python-arviz-stats >= 1.3.0
 Suggests:       python-plotly
 Suggests:       python-webcolors
 Suggests:       python-matplotlib >= 3.9
