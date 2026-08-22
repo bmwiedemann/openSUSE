@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Aug 22 14:11:45 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.0:
+  * Dropped support for Python < 3.10
+  * Significantly improved `.pyi` typing stub with modern type
+    aliases and annotations
+  * `Command` now supports generic subscript syntax
+    (`Command[str]`) via `GenericAlias`
+  * Bugfix where signal names containing numbers were not matched
+    correctly
+  * `stubtest` and `pyrefly coverage check` now run in CI
+
+-------------------------------------------------------------------
 Fri Jul 24 11:42:35 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 2.3.0
@@ -14,7 +27,7 @@ Fri Jul 24 11:42:35 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
   * Improvements to str representation of Command
   * Bugfix where rare ProcessLookupError can be thrown
   * Various spelling corrections
-- Update to 2.2.4 
+- Update to 2.2.4
   * Bugfix regression where correct gid was not set on the launched process
 - Update to 2.2.3 (fixes CVE-2026-54552, bsc#1272424)
   * Bugfix where supplemental groups were not dropped when using _uid
