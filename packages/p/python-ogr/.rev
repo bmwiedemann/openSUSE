@@ -132,4 +132,41 @@
 - Switch to GitHub tarball.</comment>
     <requestid>1355373</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a469caf7616270f06092451b3c3e1475</srcmd5>
+    <version>0.62.4</version>
+    <time>1787427368</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.62.4:
+  * The `ForgejoService.get_project_from_url()` method has been
+    updated to ensure repository names are parsed accurately. It
+    now correctly removes the `.git` extension from the
+    repository name, addressing an issue where the extension was
+    previously retained.
+  * The implementation of `__str__`, `__eq__`, and `__hash__`
+    methods has been added to `ForgejoService`.
+  * Emoji reactions on GitLab comments now work reliably
+  * The `ogr` library now correctly handles the Forgejo 'error'
+    commit flag, resolving an issue that previously caused it to
+    fail during internal mapping.
+
+  * There is a new method for getting a single commit comment,
+  * We have fixed an issue that caused inconsistencies with the expected
+    behavior stated by the documentation when adding duplicate reactions
+  * GitLabProject.get_file_content can now correctly handle file paths
+  * Interface for labels was unified and labels property for PullRequest and
+  * For Pagure there are 2 new methods available: one for getting users with
+  * For Pagure there are 2 new methods available: one for getting users with
+  * Fixed an issue where getting a list of GitLab merge requests using .list()
+  * Added support for removing users/groups from a project and possibility
+  * Migrated from setup.py + setup.cfg to pyproject.toml with hatchling
+  * We have fixed a bug in get_fork method for Pagure about checking the
+  * OGR now understands a few community-hosted GitLab instances
+    that could not be determined automatically from the hostname.
+  * Fixes an issue with project-&gt;service mapping where the service
+  * A bug in ogr resulting in returning only first page of pull
+  * ogr now raises GitForgeInternalError rather than PagureAPIException
+- Update to 0.41.0</comment>
+    <requestid>1373056</requestid>
+  </revision>
 </revisionlist>
