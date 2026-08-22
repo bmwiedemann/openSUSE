@@ -17,7 +17,7 @@
 
 
 Name:           python-lastversion
-Version:        3.6.12
+Version:        3.6.17
 Release:        0
 Summary:        Find the latest stable release version of an arbitrary project
 License:        BSD-2-Clause

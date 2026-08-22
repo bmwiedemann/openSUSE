@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Sat Aug 22 09:35:52 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.6.17:
+  * **Fixes RPM spec auto-bumps that were silently failing.**
+  * Every `lastversion .spec` update against a spec genuinely
+    behind upstream died with:
+  * ```
+  * TypeError: '<' not supported between instances of 'str' and
+    'Version'
+  * ```
+  * That is the only case the auto-bump exists for, so packaging
+    cron chains failed on exactly the releases they were meant to
+    catch. An already-current spec took the "nothing to do"
+    branch and looked healthy, which hid it.
+  * **Root cause:** `current_version` is read off the spec's
+    `Version:` tag — the state of the file on disk — but it was
+    stored in, and served back from, the release cache. The cache
+    round-trips through JSON, so a cache hit returned a plain
+    `str` while `version` was a `Version`.
+  * **Fixed:**
+  * Local project metadata is now parsed *before* the cache
+    lookup and re-applied over a cache hit, mirroring the fetch
+    path. This also fixes staleness: a cache entry written when
+    the spec said 6.0.16 no longer dictates `current_version`
+    after the spec moves on.
+  * `update_spec()` coerces `current_version` and `version` to
+    `Version` before comparing, as defence in depth.
+- update to 3.6.16:
+  * Page-scan holders now return the artifact URL instead of
+    `[None]`.
+  * `lastversion  --assets` crashed with `TypeError: sequence
+    item 0: expected str instance, NoneType found`. Holders that
+    scrape a links page have no `RELEASE_URL_FORMAT`, so
+    `release_download_url()` returned `None` and `get_assets()`
+    appended it verbatim. A falsy download URL is now simply not
+    an asset.
+  * The feed holder can do better: the hyperlink it matched on
+    *is* the artifact location, so it is kept (absolute) and
+    returned as the download URL.
+  * A releases page typically links both the tarball and its
+    release notes for the same version (`varnish-6.0.18.tgz` next
+    to `rel6.0.18.html`). Both sanitize to the same version, so
+    ties now break towards the archive rather than document
+    order.
+  * Pre-existing since the page link-scan landed in 3.6.13.
+- update to 3.6.15:
+  * Resolve Varnish/Vinyl Cache 6.0 LTS via vinyl-cache.org.
+  * The Varnish Cache FOSS project renamed to **Vinyl Cache** in
+    the 9.0 release (2026-03-16) after a trademark dispute with
+    Varnish Software. The `varnishcache/*` GitHub org is
+    archived; development moved to code.vinyl-cache.org. Varnish
+    Software kept the trademark and now runs
+    github.com/varnish/varnish as a downstream fork (a different
+    codebase).
+  * The 6.0 and 8.0 LTS branches stayed with Vinyl Cache, so the
+    known-repo entries now scrape `vinyl-cache.org/releases/`.
+  * This also fixes resolution on EL7: `varnish-cache.org` is
+    TLS-1.3-only and EL7's OpenSSL 1.0.2k cannot negotiate it, so
+    lookups died on the handshake. `vinyl-cache.org` serves TLS
+    1.2.
+  * All historic spellings keep working (`varnish-cache`,
+    `varnishcache/varnish-cache`, URL form); new `vinyl-*`
+    spellings and bare hostnames resolve too.
+- update to 3.6.14:
+  * Resolve `varnishcache/varnish-cache` (GitHub owner/repo form)
+    from the varnish-cache.org releases page as well, not just
+    the bare name and site URL. The 6.0 LTS branch is no longer
+    tagged on GitHub, so that form returned a stale 6.0.16.
+- update to 3.6.13:
+  * ## What's new
+  * Feed holder: known-repo entries can carry a `page` URL whose
+    hyperlinks are scanned for versioned artifact names — used
+    when a project's homepage feed lags or omits maintenance
+    releases.
+  * `varnish-cache` now resolves from varnish-cache.org/releases/
+    (by name and by URL): Varnish 6.0 LTS releases after 6.0.16
+    are dist-tarball-only (no GitHub tags), so `lastversion
+    varnish-cache --major 6.0` previously stalled at 6.0.16. It
+    now returns 6.0.18.
+  * Fixed a crash (`NoneType` concatenation) when invoking `--at
+    website-feed example.org` with a bare hostname.
+
+-------------------------------------------------------------------
 Mon Jul  6 06:26:38 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.6.12:

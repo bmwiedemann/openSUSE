@@ -32,4 +32,41 @@
 - Drop python-six dependency (Python 2 no longer supported upstream)</comment>
     <requestid>1363964</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e86be077954930cfe929f37aff33d179</srcmd5>
+    <version>3.6.17</version>
+    <time>1787427346</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.6.17:
+  * **Fixes RPM spec auto-bumps that were silently failing.**
+  * Every `lastversion .spec` update against a spec genuinely
+    behind upstream died with:
+  * ```
+  * TypeError: '&lt;' not supported between instances of 'str' and
+    'Version'
+  * ```
+  * That is the only case the auto-bump exists for, so packaging
+    cron chains failed on exactly the releases they were meant to
+    catch. An already-current spec took the &quot;nothing to do&quot;
+    branch and looked healthy, which hid it.
+  * **Root cause:** `current_version` is read off the spec's
+    `Version:` tag — the state of the file on disk — but it was
+    stored in, and served back from, the release cache. The cache
+    round-trips through JSON, so a cache hit returned a plain
+    `str` while `version` was a `Version`.
+  * **Fixed:**
+  * Local project metadata is now parsed *before* the cache
+    lookup and re-applied over a cache hit, mirroring the fetch
+    path. This also fixes staleness: a cache entry written when
+    the spec said 6.0.16 no longer dictates `current_version`
+    after the spec moves on.
+  * `update_spec()` coerces `current_version` and `version` to
+    `Version` before comparing, as defence in depth.
+- update to 3.6.16:
+  * Page-scan holders now return the artifact URL instead of
+    `[None]`.
+  * `lastversion  --assets` crashed with `TypeError: sequence
+    item 0: expected str instance, NoneType found`. Holders that</comment>
+    <requestid>1373041</requestid>
+  </revision>
 </revisionlist>
