@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sat Aug 22 13:48:23 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0.11:
+  * Raw display: do not crash on a last row of a single wide
+    grapheme
+  * ScrollBar: decide the scrollbar hitbox before the event is
+    passed on
+  * GridFlow: keep the focus a callback set during keypress or
+    mouse event
+  * Typing: annotate ListBox
+  * Refactoring: stop with monkey-patching Padding in GridFlow
+  * @luantaraschi made their first contribution in
+    https://github.com/urwid/urwid/pull/1229
+  * Web display: handle invalid input with "window resize"
+  * Typing: annotate bar_graph
+  * typing: handle internal mypy warnings
+  * typing: fix monitored list errors
+  * typing: fix part of listbox errors
+  * typing: early guard ListWalker API in ListBox calls
+  * Typing: fix WidgetContainerListContentsMixin typing
+  * Typing: simplify internal annotations
+  * Typing: explicit annotate enum literals for widget constants
+  * Refactoring: get rid of monkeypatching in monitored_list
+  * Fix MRO for SimpleFocusListWalker: wrong order causes delayed
+    invalidate
+  * Fix encoding handling by web display
+  * Typing: annotate MainLoop and signals
+  * Typing: fix ListBox expected widget API
+  * Typing: partial annotation for treetools
+  * Fix web display broken by token_urlsafe session ids
+  * Typing: fix scrollable module annotations
+  * Typing: introduce AbstractWidget abstract base class/protocol
+  * @2018302345 made their first contribution in
+    https://github.com/urwid/urwid/pull/1195
+
+-------------------------------------------------------------------
 Wed Jul 22 10:44:54 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 4.0.5

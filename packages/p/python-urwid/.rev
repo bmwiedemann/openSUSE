@@ -394,4 +394,41 @@ Should fix problem with non-downloadable source file.</comment>
     <comment></comment>
     <requestid>1367459</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>445e5c6281711cacb3f091c290d2f9a7</srcmd5>
+    <version>4.0.11</version>
+    <time>1787427388</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.0.11:
+  * Raw display: do not crash on a last row of a single wide
+    grapheme
+  * ScrollBar: decide the scrollbar hitbox before the event is
+    passed on
+  * GridFlow: keep the focus a callback set during keypress or
+    mouse event
+  * Typing: annotate ListBox
+  * Refactoring: stop with monkey-patching Padding in GridFlow
+  * @luantaraschi made their first contribution in
+    https://github.com/urwid/urwid/pull/1229
+  * Web display: handle invalid input with &quot;window resize&quot;
+  * Typing: annotate bar_graph
+  * typing: handle internal mypy warnings
+  * typing: fix monitored list errors
+  * typing: fix part of listbox errors
+  * typing: early guard ListWalker API in ListBox calls
+  * Typing: fix WidgetContainerListContentsMixin typing
+  * Typing: simplify internal annotations
+  * Typing: explicit annotate enum literals for widget constants
+  * Refactoring: get rid of monkeypatching in monitored_list
+  * Fix MRO for SimpleFocusListWalker: wrong order causes delayed
+    invalidate
+  * Fix encoding handling by web display
+  * Typing: annotate MainLoop and signals
+  * Typing: fix ListBox expected widget API
+  * Typing: partial annotation for treetools
+  * Fix web display broken by token_urlsafe session ids
+  * Typing: fix scrollable module annotations
+  * Typing: introduce AbstractWidget abstract base class/protocol</comment>
+    <requestid>1373072</requestid>
+  </revision>
 </revisionlist>
