@@ -127,4 +127,32 @@
 - update to 5.0.9:</comment>
     <requestid>1366717</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>952f420d91289593dcfe2571b6992b39</srcmd5>
+    <version>5.0.16</version>
+    <time>1787427296</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.0.16:
+  * Port collection base class tests from girder 3
+  * Clamp privilege level in inviteToGroup force path
+- update to 5.0.15:
+  * Add zizmor to pre-commit hooks and apply its recommendations
+  * Document how to expand and use public settings from a plugin
+  * Fix notification on cancel job count.
+  * Don't skip source maps when building clients for CI
+  * Update our use of __dirname in vite
+- update to 5.0.14:
+  * Install Tini with `apt` to fix arm64 builds
+  * Girder Worker Override API URL using Enviroment Variable
+  * Girder worker log mixing
+- update to 5.0.13:
+  * Run web tests on both chromium and firefox
+  * Update `playwright install` to only install Firefox and
+    Chromium browsers for testing
+  * Fix measuring coverage on client code
+  * Migrate a few of the girder 3 client tests to the modern
+    harness
+  * Cache public settings in UI</comment>
+    <requestid>1372918</requestid>
+  </revision>
 </revisionlist>

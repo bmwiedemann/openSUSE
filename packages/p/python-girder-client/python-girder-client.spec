@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-girder-client
-Version:        5.0.12
+Version:        5.0.16
 Release:        0
 Summary:        Python Girder client
 License:        Apache-2.0
