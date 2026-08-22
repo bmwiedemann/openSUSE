@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Aug 22 14:14:28 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.4.8:
+  * chore(deps): bump daphne from 4.2.1 to 4.2.2
+  * chore(deps): bump actions/checkout from 6 to 7
+  * make ping tests independent of wall-clock timing
+
+-------------------------------------------------------------------
 Sun Jun 28 14:47:16 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.4.5:
