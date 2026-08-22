@@ -19,13 +19,19 @@
 %define so_ver 10
 %define __builder ninja
 Name:           cfitsio
-Version:        4.6.4
+Version:        4.7.0
 Release:        0
 Summary:        Library for manipulating FITS data files
 License:        NASA-1.3
 URL:            https://heasarc.gsfc.nasa.gov/fitsio/
 Source0:        https://heasarc.gsfc.nasa.gov/FTP/software/fitsio/c/%{name}-%{version}.tar.gz
-BuildRequires:  cmake >= 3.5
+# Pregenerated documentation to avoid a bunch of TeX dependencies
+Source1:        https://github.com/heasarc/cfitsio/releases/download/%{name}-%{version}/cfitsio-v%{version}.pdf
+Source2:        https://github.com/heasarc/cfitsio/releases/download/%{name}-%{version}/fitsio-v%{version}.pdf
+Source3:        https://github.com/heasarc/cfitsio/releases/download/%{name}-%{version}/fpackguide.pdf
+Source4:        https://github.com/heasarc/cfitsio/releases/download/%{name}-%{version}/quick.pdf
+#
+BuildRequires:  cmake >= 3.15
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
 BuildRequires:  ninja
@@ -80,6 +86,7 @@ in FITS files.
 
 %prep
 %autosetup -p1
+cp %{SOURCE1} %{SOURCE2} %{SOURCE3} %{SOURCE4} ./
 
 %build
 %cmake \
@@ -87,7 +94,6 @@ in FITS files.
   -DUSE_BZIP2=ON \
   -DTESTS=ON \
   -DUTILS=ON \
-  -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
 %ifarch x86_64
   -DUSE_SSE2=ON \
 %endif
@@ -104,7 +110,7 @@ in FITS files.
 %ldconfig_scriptlets -n libcfitsio%{so_ver}
 
 %files
-%doc README.md docs/{changes.txt,fpackguide.pdf}
+%doc README.md ChangeLog
 %license licenses/License.txt
 %{_bindir}/fitscopy
 %{_bindir}/fitsverify
@@ -123,7 +129,7 @@ in FITS files.
 %{_libdir}/cmake/%{name}/
 
 %files devel-doc
-%doc docs/{cfitsio.ps,cfortran.doc,fitsio.doc,fitsio.ps,quick.ps}
+%doc *.pdf
 
 %files -n libcfitsio%{so_ver}
 %license licenses/License.txt
