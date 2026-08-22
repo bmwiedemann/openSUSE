@@ -28,7 +28,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-zope.proxy%{psuffix}
-Version:        7.2
+Version:        7.3
 Release:        0
 Summary:        Generic Transparent Proxies
 License:        ZPL-2.1

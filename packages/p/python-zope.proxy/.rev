@@ -207,4 +207,13 @@
     distributions.</comment>
     <requestid>1354130</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>935cc9eed0f231389ba3783584a53429</srcmd5>
+    <version>7.3</version>
+    <time>1787427392</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.3:
+  * Add support for Python 3.15.</comment>
+    <requestid>1373078</requestid>
+  </revision>
 </revisionlist>
