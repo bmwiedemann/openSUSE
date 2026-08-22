@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-hiredis
-Version:        3.4.0
+Version:        3.4.1
 Release:        0
 Summary:        Python wrapper for hiredis
 License:        BSD-3-Clause
