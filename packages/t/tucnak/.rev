@@ -43,4 +43,12 @@
     <comment></comment>
     <requestid>1334287</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ddb8ae7a852c7c205a13d70010b7a6ec</srcmd5>
+    <version>4.73</version>
+    <time>1787427363</time>
+    <user>dimstar_suse</user>
+    <comment>tucnak 4.73 (forwarded request 1373046 from AndreasStieger)</comment>
+    <requestid>1373047</requestid>
+  </revision>
 </revisionlist>

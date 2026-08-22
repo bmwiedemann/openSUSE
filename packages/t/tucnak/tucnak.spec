@@ -12,7 +12,7 @@
 
 
 Name:           tucnak
-Version:        4.71
+Version:        4.73
 Release:        0
 Summary:        VHF and microwave contest log
 License:        GPL-2.0-or-later
