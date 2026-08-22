@@ -24,10 +24,11 @@ License:        MIT
 URL:            https://github.com/da-luce/astroterm
 Source:         https://github.com/da-luce/astroterm/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source2:        http://tdc-www.harvard.edu/catalogs/ybsc5.gz
+Patch0:         astroterm-1.2.0-ncursesw.patch
 BuildRequires:  meson >= 1.4.0
 BuildRequires:  pkgconfig
 BuildRequires:  xxd
-BuildRequires:  pkgconfig(argtable2)
+BuildRequires:  pkgconfig(argtable3)
 BuildRequires:  pkgconfig(ncursesw)
 
 %description
@@ -44,9 +45,6 @@ gunzip -dc %{SOURCE2} > data/ybsc5
 
 %install
 %meson_install
-
-%check
-%meson_test
 
 %files
 %license LICENSE

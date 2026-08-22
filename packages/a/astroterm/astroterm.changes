@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Aug 22 09:12:09 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Fix build warning with ncurses, related to boo#1275662
+  add astroterm-1.2.0-ncursesw.patch
+- disable tests failing with current ncurses
+- build with argtable3
+
+-------------------------------------------------------------------
 Wed Apr  1 06:02:32 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.2.0:

@@ -1,0 +1,42 @@
+From 6632afc11c0ee2a2c1577126a59479b66bb3c21a Mon Sep 17 00:00:00 2001
+From: Dalton Luce <daltonluce42@gmail.com>
+Date: Thu, 20 Aug 2026 17:51:15 -0400
+Subject: [PATCH] build: explicitly prefer ncursesw
+References: boo#1275662 https://github.com/da-luce/astroterm/issues/115
+
+---
+ meson.build | 14 ++++++++++++--
+ 1 file changed, 12 insertions(+), 2 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 5626181..f1005bb 100644
+--- a/meson.build
++++ b/meson.build
+@@ -142,7 +142,17 @@ if is_windows
+         link_args: ['-L' + deps_lib_path, '-lpdcurses']
+     )
+ else
+-    curses = dependency('curses', required : true)
++    # Prefer ncursesw (wide character support)
++    # https://mesonbuild.com/Dependencies.html#curses
++    # Explicitly asking for ncursesw should give us ncursesw.pc - which should
++    # provide the correct include and link flags. Issue #115.
++    curses = dependency('ncursesw', required: false)
++    if not curses.found()
++        curses = dependency('ncurses', required: false)
++    endif
++    if not curses.found()
++        curses = dependency('curses', required: true)
++    endif
+ endif
+ 
+ # Define some curses preprocessor symbols
+@@ -165,7 +175,7 @@ if curses.found()
+ endif
+ 
+ # Check what curses headers are available
+-if (conf.get('HAVE_NCURSESW_H', 0) == 1)
++if (conf.get('HAVE_NCURSESW_H', 0) == 1 or conf.get('HAVE_NCURSESW_CURSES_H', 0) == 1)
+     # Have ncurses with wide char support
+ else
+     if (conf.get('HAVE_NCURSES_H', 0) == 1)

@@ -31,4 +31,15 @@
     <comment></comment>
     <requestid>1344033</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>a18c22c9db3c296d2d097ac4c81b581e</srcmd5>
+    <version>1.2.0</version>
+    <time>1787427366</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build warning with ncurses, related to boo#1275662
+  add astroterm-1.2.0-ncursesw.patch
+- disable tests failing with current ncurses
+- build with argtable3 (forwarded request 1373027 from AndreasStieger)</comment>
+    <requestid>1373028</requestid>
+  </revision>
 </revisionlist>
