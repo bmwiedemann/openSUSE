@@ -141,4 +141,15 @@
   * DROPPED support for python versions &lt; 3.10.</comment>
     <requestid>1343442</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>5350893de22625ebf216cd3b0f62e31e</srcmd5>
+    <version>0.14.1</version>
+    <time>1787427338</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.14.1:
+  * FIX add timezone when assigning start/end time
+  * FIX crash on urwid &gt;= 4.0.5
+  * NEW add alarms-list output formats</comment>
+    <requestid>1373022</requestid>
+  </revision>
 </revisionlist>
