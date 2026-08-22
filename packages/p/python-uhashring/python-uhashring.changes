@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Aug 22 13:31:50 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.5:
+  * security: pypi trusted publisher
+  * codeql: add workflow and dependabot
+  * bump hatch required version for pypi metadata
+  * fix: track MetaRing per-node vnodes to prevent stale ring
+    entries
+  * fix: handle vnode hash collisions in MetaRing ring
+    maintenance
+  * ci(python): drop 3.9 EOL version and test each matrix version
+  * chore: drop leftover Python 2 compatibility code
+  * refactor: align KetamaRing._remove_node with MetaRing
+  * ci(pypy): move to PyPy 3.11
+
+-------------------------------------------------------------------
 Tue Apr 22 07:33:21 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.4

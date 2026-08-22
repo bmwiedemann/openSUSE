@@ -30,4 +30,23 @@
     <comment></comment>
     <requestid>1271297</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0c3873009f4d6d43324a09fd68ff2fad</srcmd5>
+    <version>2.5</version>
+    <time>1787427382</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.5:
+  * security: pypi trusted publisher
+  * codeql: add workflow and dependabot
+  * bump hatch required version for pypi metadata
+  * fix: track MetaRing per-node vnodes to prevent stale ring
+    entries
+  * fix: handle vnode hash collisions in MetaRing ring
+    maintenance
+  * ci(python): drop 3.9 EOL version and test each matrix version
+  * chore: drop leftover Python 2 compatibility code
+  * refactor: align KetamaRing._remove_node with MetaRing
+  * ci(pypy): move to PyPy 3.11</comment>
+    <requestid>1373062</requestid>
+  </revision>
 </revisionlist>
