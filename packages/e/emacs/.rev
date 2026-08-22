@@ -2362,4 +2362,18 @@ Now one could consider building emacs with gsettings support (both debian and fe
   mailing list to fix memory leak in wayland port (boo#1271643)</comment>
     <requestid>1370206</requestid>
   </revision>
+  <revision rev="221" vrev="11">
+    <srcmd5>7ac2275e80e1f8ef0f24aabb1361f444</srcmd5>
+    <version>30.2</version>
+    <time>1787427286</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch 04_all_shorthands.patch and 03_all_ruby-flymake.patch
+  * First patch fixes bsc#1275941 with
+    VUL-0: emacs: code execution upon opening arbitrary file
+  * Second patch makes ruby support work with ruby 3.4.5
+
+- Add patch emacs-30.2-bsc1275927.patch to Fix bug 1275927:
+  VUL-0: emacs: zero-click local command execution via TRAMP</comment>
+    <requestid>1372858</requestid>
+  </revision>
 </revisionlist>

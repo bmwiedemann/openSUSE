@@ -253,6 +253,7 @@ Patch26:        emacs-27.1-pdftex.patch
 Patch27:        emacs-30.1-seccomp.patch
 Patch49:        0009-pdumper-set-DUMP_RELOC_ALIGNMENT_BITS-1-for-m68k.patch
 Patch50:        emacs-30.2-pgtk-visual-bell-boo1271643.patch
+Patch51:        emacs-30.2-bsc1275927.patch
 Patch52:        0012-Add-inhibit-native-compilation.patch
 Patch53:        0013-Rename-to-inhibit-automatic-native-compilation.patch
 Patch55:        0015-Change-native-comp-async-jobs-number-default-to-1.patch
@@ -260,6 +261,8 @@ Patch56:        0016-Change-native-comp-async-report-warnings-errors-to-s.patch
 Patch57:        emacs-30.2-fix-zoom.patch
 Patch58:        emacs-30.2-tree-sitter-0.26.8.patch
 Patch59:        emacs-30.2-boo1262611.patch
+Patch60:        03_all_ruby-flymake.patch
+Patch61:        04_all_shorthands.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{expand: %%global include_info %(test -s /usr/share/info/info.info* && echo 0 || echo 1)}
@@ -434,6 +437,7 @@ and most assembler-like syntaxes.
 %setup -q -b 2
 %patch -P49 -p1
 %patch -P50 -p0
+%patch -P51 -p0
 %patch -P52 -p1
 %patch -P53 -p1
 %patch -P55 -p1
@@ -441,6 +445,8 @@ and most assembler-like syntaxes.
 %patch -P57 -p1
 %patch -P58 -p1
 %patch -P59 -p1
+%patch -P60 -p1
+%patch -P61 -p1
 %patch -P1  -p0 -b .xauth
 %if %{with memmmap}
 %patch -P2  -p0 -b .glibc
