@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Aug 22 13:45:02 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.8.12:
+  * Extended easy Intersphinx configuration to platformdirs
+  * Added an explicit dependency on docutils.
+  * Added the :gh: role, to link to GitHub issues and pull
+    requests, of the current repository or of a different one.
+  * Fixed project data from pyproject.toml, like the automatic
+    html_baseurl value, being read relative to the current
+    working directory instead of relative to conf.py.
+  * Fixed the docs tox environment getting an invalid Python
+    interpreter in projects without a pyproject.toml.
+  * Fixed the docs tox environment failing to find its Python
+    interpreter when tox-uv is installed.
+  * Added the stat cross-reference type, for the .. stat::
+    directive and the :stat: role, to document and link to Scrapy
+    stats.
+  * Extended easy Intersphinx configuration to scrapy-lint
+  * Extended easy Intersphinx configuration to pypug
+
+-------------------------------------------------------------------
 Sun Jul  5 15:39:11 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.8.6:
