@@ -20,7 +20,7 @@
 %global __requires_exclude typelib\\(Clutter|St\\)
 %global alt_name GPaste
 Name:           gpaste
-Version:        45.4
+Version:        50.8
 Release:        0
 Summary:        Clipboard management system for GNOME
 License:        BSD-2-Clause
@@ -29,7 +29,6 @@ URL:            https://github.com/Keruspe/GPaste
 # Source url disabled as we are using a git checkout
 # Source0:        http://www.imagination-land.org/files/%%{name}/%%{alt_name}-%%{version}.tar.xz
 Source0:        %{alt_name}-%{version}.tar.xz
-Source99:       gpaste-rpmlintrc
 
 # For directory ownership
 BuildRequires:  gnome-shell >= 3.28
@@ -42,14 +41,11 @@ BuildRequires:  pkgconfig(appstream-glib)
 BuildRequires:  pkgconfig(clutter-1.0)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(gcr-4)
-BuildRequires:  pkgconfig(gdk-3.0) >= 3.0.0
-BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.38.0
 BuildRequires:  pkgconfig(gio-2.0) >= 2.58.0
 BuildRequires:  pkgconfig(gjs-1.0) >= 1.78.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.58.0
 BuildRequires:  pkgconfig(gnome-keybindings)
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.58.0
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
 BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(libadwaita-1)
 BuildRequires:  pkgconfig(libxml-2.0)
@@ -58,38 +54,26 @@ BuildRequires:  pkgconfig(vapigen) >= 0.42
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xtst)
-%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
-BuildRequires:  gcc13
-%else
-BuildRequires:  gcc
-%endif
 
 %description
 GPaste is a clipboard management daemon with DBus interface.
 
-%package -n libgpaste2-0
+%package -n libgpaste-2-0
 Summary:        Library for managing clipboard history
 Group:          System/Libraries
+# The package was wrongly named libgpase2-0 up to version 50.8
+Obsoletes:      libgpaste2-0 < 50.8
 
-%description -n libgpaste2-0
+%description -n libgpaste-2-0
 GPaste is a clipboard management daemon with DBus interface.
 
 This package provides a library for managing clipboard history.
 
-%package -n libgpaste-gtk-3-0
+%package -n libgpaste-gtk4-1
 Summary:        Library for managing clipboard history
 Group:          System/Libraries
 
-%description -n libgpaste-gtk-3-0
-GPaste is a clipboard management daemon with DBus interface.
-
-This package provides a library for managing clipboard history.
-
-%package -n libgpaste-gtk4-0
-Summary:        Library for managing clipboard history
-Group:          System/Libraries
-
-%description -n libgpaste-gtk4-0
+%description -n libgpaste-gtk4-1
 GPaste is a clipboard management daemon with DBus interface.
 
 This package provides a library for managing clipboard history.
@@ -113,16 +97,6 @@ GPaste is a clipboard management daemon with DBus interface.
 This package provides the GObject Introspection bindings for the library
 managing clipboard history.
 
-%package -n typelib-1_0-GPasteGtk-3
-Summary:        Introspection bindings for the gpaste clipboard history manager
-Group:          System/Libraries
-
-%description -n typelib-1_0-GPasteGtk-3
-GPaste is a clipboard management daemon with DBus interface.
-
-This package provides the GObject Introspection bindings for the library
-managing clipboard history.
-
 %package -n typelib-1_0-GPasteGtk-4
 Summary:        Introspection bindings for the gpaste clipboard history manager
 Group:          System/Libraries
@@ -136,9 +110,8 @@ managing clipboard history.
 %package devel
 Summary:        Development files for the gpaste clipboard history manager
 Group:          Development/Libraries/GNOME
-Requires:       libgpaste-gtk-3-0 = %{version}
-Requires:       libgpaste-gtk4-0 = %{version}
-Requires:       libgpaste2-0 = %{version}
+Requires:       libgpaste-gtk4-1 = %{version}
+Requires:       libgpaste-2-0 = %{version}
 Requires:       typelib-1_0-GPaste-2 = %{version}
 
 %description devel
@@ -188,41 +161,38 @@ export CC=gcc-13
 desktop-file-edit --set-icon=edit-paste --remove-key Categories --add-category=Applet --add-only-show-in=GNOME %{buildroot}%{_datadir}/applications/org.gnome.GPaste.Ui.desktop
 %find_lang GPaste %{?no_lang_C}
 
-%ldconfig_scriptlets -n libgpaste2-0
-%ldconfig_scriptlets -n libgpaste-gtk-3-0
-%ldconfig_scriptlets -n libgpaste-gtk4-0
+%check
+%meson_test
+
+%ldconfig_scriptlets -n libgpaste-2-0
+%ldconfig_scriptlets -n libgpaste-gtk4-1
 
 %files
 %license COPYING
 %{_bindir}/gpaste-client
 %{_libexecdir}/gpaste/
-%{_datadir}/applications/org.gnome.GPaste.Ui.desktop
+%{_datadir}/applications/org.gnome.GPaste.Daemon.desktop
 %{_datadir}/applications/org.gnome.GPaste.Preferences.desktop
+%{_datadir}/applications/org.gnome.GPaste.Ui.desktop
 %{_datadir}/bash-completion/completions/gpaste-client
 %{_datadir}/dbus-1/services/org.gnome.GPaste.Ui.service
 %{_datadir}/dbus-1/services/org.gnome.GPaste.Preferences.service
 %{_datadir}/dbus-1/services/org.gnome.GPaste.service
 %{_datadir}/glib-2.0/schemas/org.gnome.GPaste.gschema.xml
-%{_datadir}/metainfo/org.gnome.GPaste.Ui.appdata.xml
+%{_datadir}/metainfo/org.gnome.GPaste.Ui.metainfo.xml
 %{_mandir}/man1/gpaste-client.1%{?ext_man}
 %{_userunitdir}/org.gnome.GPaste.Ui.service
 %{_userunitdir}/org.gnome.GPaste.Preferences.service
 %{_userunitdir}/org.gnome.GPaste.service
 
-%files -n libgpaste2-0
+%files -n libgpaste-2-0
 %{_libdir}/libgpaste-2.so.*
 
-%files -n libgpaste-gtk-3-0
-%{_libdir}/libgpaste-gtk-3.so.*
-
-%files -n libgpaste-gtk4-0
+%files -n libgpaste-gtk4-1
 %{_libdir}/libgpaste-gtk4.so.*
 
 %files -n typelib-1_0-GPaste-2
 %{_libdir}/girepository-1.0/GPaste-2.typelib
-
-%files -n typelib-1_0-GPasteGtk-3
-%{_libdir}/girepository-1.0/GPasteGtk-3.typelib
 
 %files -n typelib-1_0-GPasteGtk-4
 %{_libdir}/girepository-1.0/GPasteGtk-4.typelib
