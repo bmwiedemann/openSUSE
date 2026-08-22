@@ -342,4 +342,19 @@
       - now handling HTTP method '0' (GH#211) (Karen Etheridge)</comment>
     <requestid>1357784</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>0aa0f1ab245758409880ec6efdab502f</srcmd5>
+    <version>7.40.0</version>
+    <time>1787427281</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 7.40.0 (7.04)
+   see /usr/share/doc/packages/perl-HTTP-Message/Changes
+  7.04      2026-07-24 00:01:56Z
+      - add RFC 10008 HTTP QUERY method (GH#225) (Daniel Böhmer),
+        see https://datatracker.ietf.org/doc/rfc10008/
+  7.03      2026-07-21 20:45:16Z
+      - Fix max_body_size for Content-Encoding: br, which made every brotli
+        response fail to decode whenever a limit was set (GH#229)</comment>
+    <requestid>1372835</requestid>
+  </revision>
 </revisionlist>

@@ -18,10 +18,10 @@
 
 %define cpan_name HTTP-Message
 Name:           perl-HTTP-Message
-Version:        7.20.0
+Version:        7.40.0
 Release:        0
-# 7.02 -> normalize -> 7.20.0
-%define cpan_version 7.02
+# 7.04 -> normalize -> 7.40.0
+%define cpan_version 7.04
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        HTTP style message (base class)
 URL:            https://metacpan.org/release/%{cpan_name}

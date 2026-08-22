@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jul 24 08:28:50 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 7.40.0 (7.04)
+   see /usr/share/doc/packages/perl-HTTP-Message/Changes
+
+  7.04      2026-07-24 00:01:56Z
+      - add RFC 10008 HTTP QUERY method (GH#225) (Daniel Böhmer),
+        see https://datatracker.ietf.org/doc/rfc10008/
+
+  7.03      2026-07-21 20:45:16Z
+      - Fix max_body_size for Content-Encoding: br, which made every brotli
+        response fail to decode whenever a limit was set (GH#229)
+
+-------------------------------------------------------------------
 Sun Jun  7 00:37:52 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 7.20.0 (7.02)
