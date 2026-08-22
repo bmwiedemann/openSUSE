@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug 20 11:49:47 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.4:
+  + Only show furigana (hiragana phonetic) names for places when
+    the user has the language set to Japanese.
+  + Fix showing points for via locations for route searching.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Aug  1 11:59:12 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 50.3:

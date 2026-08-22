@@ -989,4 +989,16 @@
   + Updated translations.</comment>
     <requestid>1369840</requestid>
   </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>47004d6c2945473e6e8a3763df9617c8</srcmd5>
+    <version>50.4</version>
+    <time>1787427273</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 50.4:
+  + Only show furigana (hiragana phonetic) names for places when
+    the user has the language set to Japanese.
+  + Fix showing points for via locations for route searching.
+  + Updated translations.</comment>
+    <requestid>1372775</requestid>
+  </revision>
 </revisionlist>
