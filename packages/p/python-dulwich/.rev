@@ -848,4 +848,41 @@
     <comment></comment>
     <requestid>1364757</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>83310234142ae2f851fbad4d630682e3</srcmd5>
+    <version>1.2.12</version>
+    <time>1787427303</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.12:
+  * Fix ``Bundle.store_objects()`` silently dropping every
+    OFS_DELTA/REF_DELTA object in the bundle's pack instead of
+    resolving it, leaving the target object store missing most
+    objects with no error raised. Delta resolution
+    now goes through ``PackInflater``, matching how packs are
+    ingested elsewhere in the object store code.
+  * SECURITY: Refuse to write a checkout entry whose leading path
+    resolves through a symlink. ``build_index_from_tree`` (used by
+    ``reset_index`` and thus by ``clone``/``checkout``)
+    materialized a tree in sorted order without checking leading
+    components, so a tree pairing a symlink ``link`` with a
+    descendant ``link/foo`` wrote ``foo`` through the link to an
+    arbitrary absolute path. The same ``verify_leading_dirs``
+    guard already used by porcelain and stash is now applied here.
+  * Let porcelain functions that consult the environment take an
+    ``env`` argument overriding ``os.environ``. As a side effect
+    ``tag_create`` now honours ``GIT_COMMITTER_NAME``/
+    ``GIT_COMMITTER_EMAIL`` for the tagger line and
+    ``merge``/``revert`` honour ``GIT_AUTHOR_NAME``/``GIT_AUTHOR_EMAIL``,
+  * Honour the ``core.worktree`` configuration option, so the
+    working tree can live somewhere other than the parent of
+    the control directory. Relative paths are resolved against the
+    control directory, and ``core.bare`` and ``core.worktree``
+    are now rejected as incompatible.
+  * Clear ``core.bare`` when setting up a submodule's working
+    tree. ``submodule_update`` cloned the submodule bare and then
+    ``core.worktree`` on it, leaving a configuration git
+    considers invalid.
+  * Read ``GIT_PROTOCOL`` in porcelain rather than only in the</comment>
+    <requestid>1372931</requestid>
+  </revision>
 </revisionlist>
