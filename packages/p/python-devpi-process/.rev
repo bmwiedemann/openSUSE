@@ -46,4 +46,20 @@
   * Align dependency versions across projects</comment>
     <requestid>1340847</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2973feadd5790c6495e0aab4c7db861f</srcmd5>
+    <version>1.2.0</version>
+    <time>1787427328</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.0:
+  * Add permissions to workflows
+  * Move SECURITY.md to .github/SECURITY.md
+  * Add missing .github config files
+  * Standardize .github files to .yaml suffix
+  * ci(workflows): add zizmor security auditing
+  * fix(type): resolve ty 0.0.25 type errors
+  * Replace prettier with mdformat and yamlfmt
+  * ci(github): test against Python 3.15</comment>
+    <requestid>1372958</requestid>
+  </revision>
 </revisionlist>

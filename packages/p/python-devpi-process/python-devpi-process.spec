@@ -25,9 +25,8 @@
 %bcond_with test
 %endif
 %{?sle15_python_module_pythons}
-%define skip_python39 1
 Name:           python-devpi-process%{psuffix}
-Version:        1.1.1
+Version:        1.2.0
 Release:        0
 Summary:        Programmatic API to create and use a devpi server process
 License:        MIT
