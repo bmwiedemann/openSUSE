@@ -123,4 +123,16 @@
     <comment></comment>
     <requestid>1361273</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>858ea779dd316756a75b8239e6d8c61f</srcmd5>
+    <version>4.2.0</version>
+    <time>1787427344</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.2.0:
+  * Add configuration management (Config/AsyncConfig,
+    api.config()): export, import/merge, validate, compare,
+    backup, a scheduler-based rollback safety net and reset-based
+    replace. RouterOS 7.x, binary API only (no SSH).</comment>
+    <requestid>1373035</requestid>
+  </revision>
 </revisionlist>

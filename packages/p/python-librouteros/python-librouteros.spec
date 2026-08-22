@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-librouteros
-Version:        4.1.1
+Version:        4.2.0
 Release:        0
 Summary:        Python implementation of MikroTik RouterOS API
 License:        GPL-2.0-or-later
