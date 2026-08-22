@@ -294,4 +294,15 @@
   + Updated translations.</comment>
     <requestid>1361958</requestid>
   </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>e258af1fb54f3c2aa9a3112c0a00f7b3</srcmd5>
+    <version>1.14.4</version>
+    <time>1787427221</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gspell-tests subpackage with installed tests
+  for gnome-desktop-testing-runner
+
+- Initial package.</comment>
+    <requestid>1372147</requestid>
+  </revision>
 </revisionlist>

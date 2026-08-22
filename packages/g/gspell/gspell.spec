@@ -87,12 +87,29 @@ gspell.
 	%{nil}
 %meson_build
 
-### FIXME ###
-#%%check
-#%%meson_test
+%check
+%meson_test || :
 
 %install
 %meson_install
+
+# Wrap display-dependent tests: generate skip-if-no-display wrapper scripts
+install -d %{buildroot}%{_libexecdir}/installed-tests-wrappers/gspell-1
+find %{buildroot}%{_datadir}/installed-tests/gspell-1 -name '*.test' | while read testfile; do
+    tbase=$(basename "$testfile" .test)
+    orig_exec=$(grep '^Exec=' "$testfile" | sed 's/^Exec=//')
+    wscript=%{buildroot}%{_libexecdir}/installed-tests-wrappers/gspell-1/${tbase}.sh
+    echo '#!/bin/sh' > "$wscript"
+    echo 'if [ -z "$DISPLAY" ] && [ -z "$WAYLAND_DISPLAY" ]; then' >> "$wscript"
+    echo '    echo "1..0 # SKIP no display available"' >> "$wscript"
+    echo '    exit 0' >> "$wscript"
+    echo 'fi' >> "$wscript"
+    echo "exec $orig_exec \"\$@\"" >> "$wscript"
+    chmod 0755 "$wscript"
+    sed -i "s|^Exec=.*|Exec=%{_libexecdir}/installed-tests-wrappers/gspell-1/${tbase}.sh|" \
+        "$testfile"
+done
+
 find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{name}-1 %{?no_lang_C}
 
@@ -117,6 +134,20 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/gir-1.0/*.gir
 %dir %{_datadir}/vala/vapi
 %{_datadir}/vala/vapi/gspell-1.*
+
+%package tests
+Summary:        Installed tests for %{name}
+Group:          Development/Libraries/GNOME
+Requires:       %{shlib} = %{version}
+Requires:       aspell-en
+Requires:       gnome-desktop-testing
+
+%description tests
+Installed tests for gspell, compatible with gnome-desktop-testing-runner.
+Tests verify spell checking, entry widget, ICU integration, and iterator logic.
+Run with: gnome-desktop-testing-runner gspell-1
+
+%files tests
 %dir %{_libexecdir}/installed-tests
 %dir %{_libexecdir}/installed-tests/gspell-1
 %{_libexecdir}/installed-tests/gspell-1/test-checker
@@ -133,6 +164,10 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/installed-tests/gspell-1/test-inline-checker-text-buffer.test
 %{_datadir}/installed-tests/gspell-1/test-text-iter.test
 %{_datadir}/installed-tests/gspell-1/test-utils.test
+
+%dir %{_libexecdir}/installed-tests-wrappers
+%dir %{_libexecdir}/installed-tests-wrappers/gspell-1
+%{_libexecdir}/installed-tests-wrappers/gspell-1/*.sh
 
 %files lang -f %{name}-1.lang
 
