@@ -26,7 +26,7 @@ Source0:        %{name}-%{version}.tar.zst
 Source1:        README-suse-maint.md
 Source2:        roast_scm.info
 BuildRequires:  make
-BuildRequires:  qbe = 1.2
+BuildRequires:  qbe >= 1.2
 BuildRequires:  zstd
 License:        GPL-3.0-only
 
