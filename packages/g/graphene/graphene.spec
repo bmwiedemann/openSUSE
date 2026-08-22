@@ -1,7 +1,7 @@
 #
 # spec file for package graphene
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -79,6 +79,16 @@ quaternions.
 
 This subpackage contains the development files for the Graphene library.
 
+%package tests
+Summary:        Installed tests for %{name}
+Group:          Development/Languages/C and C++
+Requires:       gnome-desktop-testing
+Requires:       libgraphene-1_0-0 = %{version}
+
+%description tests
+This package provides installed tests for %{name},
+compatible with gnome-desktop-testing-runner.
+
 %prep
 %autosetup -p1
 
@@ -120,7 +130,6 @@ This subpackage contains the development files for the Graphene library.
 %files -n libgraphene-devel
 %doc %{_datadir}/gtk-doc/html/*
 %{_includedir}/graphene-1.0/
-%{_libexecdir}/installed-tests/
 %{_libdir}/libgraphene-1.0.so
 %{_libdir}/pkgconfig/graphene-1.0.pc
 %{_libdir}/pkgconfig/graphene-gobject-1.0.pc
@@ -128,8 +137,11 @@ This subpackage contains the development files for the Graphene library.
 %dir %{_libdir}/graphene-1.0/include
 %{_libdir}/graphene-1.0/include/graphene-config.h
 %{_datadir}/gir-1.0/Graphene-1.0.gir
+
+%files tests
+%dir %{_libexecdir}/installed-tests
+%{_libexecdir}/installed-tests/%{name}-1.0/
 %dir %{_datadir}/installed-tests
-%dir %{_datadir}/installed-tests/graphene-1.0
-%{_datadir}/installed-tests/graphene-1.0/*
+%{_datadir}/installed-tests/%{name}-1.0/
 
 %changelog
