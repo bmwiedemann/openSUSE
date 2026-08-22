@@ -403,4 +403,36 @@
     <comment></comment>
     <requestid>1327204</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>e6d32655bb0462b8bcc500c6599aa08b</srcmd5>
+    <version>1.52.4</version>
+    <time>1787427265</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.52.4:
+  + Parser-hardening of control characters in username, VPN
+    data-items and secrets along with PLUTODEBUG and CHARONDEBUG
+    env vars.
+  + Disable MPPE option in editor whenever IPsec is enabled.
+  + Remove deprecated KDE Plasma-nm L2TP certificate support.
+  + Updated translations.
+- Changes from version 1.52.2:
+  + Add experimental IPv6 support. Requires kl2tpd or an
+    IPv6-capable fork of xl2tpd.
+  + Add optional Group Name / IPsec ID field for pre-shared key
+    authentication.
+  + Add xl2tpd-max-retries connection setting, while preserving the
+    existing NM_L2TP_XL2TPD_MAX_RETRIES environment variable
+    fallback.
+  + Add ipcp-peer-ip connection setting so the IPCP peer address
+    can be set without forcing ipv4.gateway, allowing it to be used
+    with ipv4.never-default.
+  + Fix import/export and editor save handling to preserve hidden
+    VPN properties such as xl2tpd-max-retries and ipcp-peer-ip.
+  + Fix several service and editor correctness issues, including
+    portable daemon restart detection, auth-dialog timeout
+    handling, memory leaks, a heap use-after-free and pointer
+    ownership bugs.
+  + Updated translations.</comment>
+    <requestid>1372898</requestid>
+  </revision>
 </revisionlist>

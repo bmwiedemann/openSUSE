@@ -19,7 +19,7 @@
 %define pppd_plugin_dir %(rpm -ql ppp | grep -m1 pppd/[0-9]*)
 %define rbrelease %(r=%{release}; echo ${r%%.*})
 Name:           NetworkManager-l2tp
-Version:        1.52.0
+Version:        1.52.4
 Release:        0
 Summary:        NetworkManager VPN support for L2TP and L2TP/IPsec
 License:        GPL-2.0-or-later
