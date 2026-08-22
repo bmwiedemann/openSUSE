@@ -80,4 +80,20 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1366613</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8191f66c0877bb32e7d4b3ed43c6f352</srcmd5>
+    <version>11.0.1</version>
+    <time>1787427404</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 11.0.1:
+  * **DOCS**: Provide information in documentation that discloses
+    information about what should or should not be
+  * expected from Wildcard Match in regards to security, and
+    provide general information to allow users to make good
+  * decisions.
+  * **FIX**: Fix an issue where in some cases dot handling was
+    not correct within an extended glob pattern when
+  * `EXTGLOB`/`EXTMATCH` was enabled.</comment>
+    <requestid>1373085</requestid>
+  </revision>
 </revisionlist>
