@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-httpx-socks%{psuffix}
-Version:        0.11.0
+Version:        0.13.1
 Release:        0
 Summary:        Proxy (HTTP, SOCKS) transports for httpx
 License:        Apache-2.0

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Aug 21 20:09:27 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.13.1:
+  * Add py.typed
+- update to 0.13.0:
+  * Dropped support for Python 3.8.
+  * Bumped `python-socks` upper bound to `<4.0.0`.
+  * The entire codebase is now strictly type-annotated and fully
+    compliant with `mypy`.
+
+-------------------------------------------------------------------
 Sun Mar 29 12:16:35 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.11.0:
