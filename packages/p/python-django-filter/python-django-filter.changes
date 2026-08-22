@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Aug 21 19:32:40 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 26.1:
+  * Added testing for Django 6.1. DRF integration will require
+    the upcoming DRF v3.18. See https://github.com/encode/django-
+    rest-framework/pull/9978
+  * Added testing against Python 3.14.
+
+-------------------------------------------------------------------
 Thu Jan 22 14:37:07 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 25.2:

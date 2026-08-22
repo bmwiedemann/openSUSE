@@ -189,4 +189,16 @@
   * Dropped support for Python 3.9.</comment>
     <requestid>1328709</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>2e781531277b56234d30bff0e102a5e1</srcmd5>
+    <version>26.1</version>
+    <time>1787427295</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 26.1:
+  * Added testing for Django 6.1. DRF integration will require
+    the upcoming DRF v3.18. See https://github.com/encode/django-
+    rest-framework/pull/9978
+  * Added testing against Python 3.14.</comment>
+    <requestid>1372917</requestid>
+  </revision>
 </revisionlist>
