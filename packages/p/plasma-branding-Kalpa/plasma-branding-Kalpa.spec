@@ -1,8 +1,7 @@
 #
 # spec file for package plasma-branding-Kalpa
 #
-# Copyright (c) 2026 SUSE LLC and contributors
-# Copyright (c) 2021 SUSE Software Solutions GmbH
+# Copyright (c) 2026 Shawn W Dunn <sfalken@kalpadesktop.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -13,20 +12,14 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
-#
-
 
 Name:           plasma-branding-Kalpa
-Version:        20260612
+Version:        20260819
 Release:        0
 Summary:        Kalpa Desktop default settings
 License:        MIT
 URL:            https://codeberg.org/KalpaDesktop/plasma-branding-Kalpa
 Source:         %{name}-%{version}.tar.gz
-
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-add-missed-locale1-in-sddm-config.patch
 
 BuildRequires:  cmake
 BuildRequires:  flatpak

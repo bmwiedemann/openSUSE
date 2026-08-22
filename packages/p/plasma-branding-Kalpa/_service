@@ -3,8 +3,8 @@
   <service mode="manual" name="obs_scm">
     <param name="scm">git</param>
     <param name="url">https://codeberg.org/KalpaDesktop/plasma-branding-Kalpa.git</param>
-    <param name="version">20260612</param>
-    <param name="revision">20260612</param>
+    <param name="version">20260819</param>
+    <param name="revision">20260819</param>
   </service>
   <service mode="manual" name="tar"/>
   <service mode="manual" name="extract_file">

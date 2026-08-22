@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug 19 16:42:18 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
+
+- Version 20260819
+  * Revise cups dropin (boo#1268171)
+  * Add missed locale1 declaration in sddm config
+- Drop 0001-add-missed-locale1-in-sddm-config.patch
+
+-------------------------------------------------------------------
 Thu Jun 18 15:47:31 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
 
 - add 0001-add-missed-locale1-in-sddm-config.patch
