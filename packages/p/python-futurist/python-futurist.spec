@@ -17,7 +17,7 @@
 
 
 Name:           python-futurist
-Version:        3.4.0
+Version:        3.5.0
 Release:        0
 Summary:        Useful additions to futures, from the future.
 License:        Apache-2.0

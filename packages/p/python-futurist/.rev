@@ -241,4 +241,18 @@
   * typing: Fixes for mypy 2.0.0</comment>
     <requestid>1364079</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>0787f24eb7a95bcdf25ce8e3ce314260</srcmd5>
+    <version>3.5.0</version>
+    <time>1787427299</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.5.0:
+  * typing: Tighten signature for ProcessPoolExecutor.__init__
+  * typing: Expose function signature
+  * Don't alias typing library
+  * Use &quot;futures&quot; consistently in log messages
+  * Add DelayedExecutorMixin variants
+  * ruff: Configure hacking as external linter</comment>
+    <requestid>1372930</requestid>
+  </revision>
 </revisionlist>

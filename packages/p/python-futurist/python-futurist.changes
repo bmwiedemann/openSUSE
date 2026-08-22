@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Aug 21 20:10:04 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.5.0:
+  * typing: Tighten signature for ProcessPoolExecutor.__init__
+  * typing: Expose function signature
+  * Don't alias typing library
+  * Use "futures" consistently in log messages
+  * Add DelayedExecutorMixin variants
+  * ruff: Configure hacking as external linter
+
+-------------------------------------------------------------------
 Mon Jul  6 15:54:07 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.4.0:
