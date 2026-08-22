@@ -18,10 +18,10 @@
 
 %define cpan_name CryptX
 Name:           perl-CryptX
-Version:        0.89.0
+Version:        0.91.0
 Release:        0
-# 0.089 -> normalize -> 0.89.0
-%define cpan_version 0.089
+# 0.091 -> normalize -> 0.91.0
+%define cpan_version 0.091
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Cryptographic toolkit
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -36,6 +36,7 @@ Provides:       perl(Crypt::AuthEnc::CCM) = %{version}
 Provides:       perl(Crypt::AuthEnc::ChaCha20Poly1305) = %{version}
 Provides:       perl(Crypt::AuthEnc::EAX) = %{version}
 Provides:       perl(Crypt::AuthEnc::GCM) = %{version}
+Provides:       perl(Crypt::AuthEnc::GCMSIV) = %{version}
 Provides:       perl(Crypt::AuthEnc::OCB) = %{version}
 Provides:       perl(Crypt::AuthEnc::SIV) = %{version}
 Provides:       perl(Crypt::AuthEnc::XChaCha20Poly1305) = %{version}
@@ -44,6 +45,7 @@ Provides:       perl(Crypt::Checksum::Adler32) = %{version}
 Provides:       perl(Crypt::Checksum::CRC32) = %{version}
 Provides:       perl(Crypt::Cipher) = %{version}
 Provides:       perl(Crypt::Cipher::AES) = %{version}
+Provides:       perl(Crypt::Cipher::ARIA) = %{version}
 Provides:       perl(Crypt::Cipher::Anubis) = %{version}
 Provides:       perl(Crypt::Cipher::Blowfish) = %{version}
 Provides:       perl(Crypt::Cipher::CAST5) = %{version}
@@ -78,6 +80,7 @@ Provides:       perl(Crypt::Digest::BLAKE2s_128) = %{version}
 Provides:       perl(Crypt::Digest::BLAKE2s_160) = %{version}
 Provides:       perl(Crypt::Digest::BLAKE2s_224) = %{version}
 Provides:       perl(Crypt::Digest::BLAKE2s_256) = %{version}
+Provides:       perl(Crypt::Digest::BLAKE3) = %{version}
 Provides:       perl(Crypt::Digest::CHAES) = %{version}
 Provides:       perl(Crypt::Digest::KangarooTwelve) = %{version}
 Provides:       perl(Crypt::Digest::Keccak224) = %{version}
@@ -103,6 +106,7 @@ Provides:       perl(Crypt::Digest::SHA512) = %{version}
 Provides:       perl(Crypt::Digest::SHA512_224) = %{version}
 Provides:       perl(Crypt::Digest::SHA512_256) = %{version}
 Provides:       perl(Crypt::Digest::SHAKE) = %{version}
+Provides:       perl(Crypt::Digest::SM3) = %{version}
 Provides:       perl(Crypt::Digest::Tiger192) = %{version}
 Provides:       perl(Crypt::Digest::TurboSHAKE) = %{version}
 Provides:       perl(Crypt::Digest::Whirlpool) = %{version}
@@ -112,6 +116,7 @@ Provides:       perl(Crypt::Mac::BLAKE2b) = %{version}
 Provides:       perl(Crypt::Mac::BLAKE2s) = %{version}
 Provides:       perl(Crypt::Mac::F9) = %{version}
 Provides:       perl(Crypt::Mac::HMAC) = %{version}
+Provides:       perl(Crypt::Mac::KMAC) = %{version}
 Provides:       perl(Crypt::Mac::OMAC) = %{version}
 Provides:       perl(Crypt::Mac::PMAC) = %{version}
 Provides:       perl(Crypt::Mac::Pelican) = %{version}
@@ -124,6 +129,7 @@ Provides:       perl(Crypt::Mode::CFB) = %{version}
 Provides:       perl(Crypt::Mode::CTR) = %{version}
 Provides:       perl(Crypt::Mode::ECB) = %{version}
 Provides:       perl(Crypt::Mode::OFB) = %{version}
+Provides:       perl(Crypt::Mode::XTS) = %{version}
 Provides:       perl(Crypt::PK) = %{version}
 Provides:       perl(Crypt::PK::DH) = %{version}
 Provides:       perl(Crypt::PK::DSA) = %{version}

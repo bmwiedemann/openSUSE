@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Aug 11 06:04:44 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.91.0 (0.091)
+   see /usr/share/doc/packages/perl-CryptX/Changes
+
+  0.091   2026-08-10
+          - fix #125 (non-NUL-terminated PVs)
+          - new: Crypt::Mode::XTS
+          - new: Crypt::Digest::BLAKE3
+          - re-enable SHA1/SHA224/SHA256 hash state cloning
+          - bundled libtomcrypt update branch:develop (commit: a10cad62 2026-08-07)
+
+-------------------------------------------------------------------
+Wed Jun 17 10:02:21 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.90.0 (0.090)
+   see /usr/share/doc/packages/perl-CryptX/Changes
+
+  0.090   2026-06-17
+          - new: Crypt::AuthEnc::GCMSIV
+          - new: Crypt::Cipher::ARIA
+          - new: Crypt::Digest::SM3
+          - new: Crypt::Mac::KMAC
+          - bundled libtomcrypt update branch:develop (commit: a68fa19b 2026-05-19)
+
+-------------------------------------------------------------------
 Mon May 11 08:37:41 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.89.0 (0.089)
