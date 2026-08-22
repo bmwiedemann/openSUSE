@@ -20,7 +20,7 @@
 %global src_name podman-compose
 
 Name:           python-%{src_name}
-Version:        1.5.0
+Version:        1.6.0
 Release:        0
 Summary:        A script to run docker-compose using podman
 License:        GPL-2.0-only

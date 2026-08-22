@@ -89,4 +89,12 @@ update to 1.1.0</comment>
         environment variables.</comment>
     <requestid>1337380</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>85bf8130633dff5d7768a44bc75ac08b</srcmd5>
+    <version>1.6.0</version>
+    <time>1787427410</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1373090</requestid>
+  </revision>
 </revisionlist>
