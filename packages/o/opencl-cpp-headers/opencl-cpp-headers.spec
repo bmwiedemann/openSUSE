@@ -1,8 +1,7 @@
 #
 # spec file for package opencl-cpp-headers
 #
-# Copyright (c) 2025 SUSE LLC
-# Copyright (c) 2024 Aaron Puchert.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +17,7 @@
 
 
 Name:           opencl-cpp-headers
-Version:        2025.07.22
+Version:        2026.05.29
 Release:        0
 Summary:        OpenCL C++ headers
 License:        Apache-2.0
