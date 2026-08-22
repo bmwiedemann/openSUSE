@@ -735,4 +735,15 @@ New stable rel</comment>
   (CVE-2026-10028, bsc#1267979, glgo#GNOME/glib-networking!279)</comment>
     <requestid>1358738</requestid>
   </revision>
+  <revision rev="90" vrev="4">
+    <srcmd5>8a9c9d6a723b59f58377d7950d3f07fd</srcmd5>
+    <version>2.80.1</version>
+    <time>1787427218</time>
+    <user>dimstar_suse</user>
+    <comment>- Add glib-networking-tests subpackage with installed
+  tests for gnome-desktop-testing-runner
+
+- Initial packaging (version 2.25.0)</comment>
+    <requestid>1372145</requestid>
+  </revision>
 </revisionlist>

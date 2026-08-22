@@ -1,7 +1,7 @@
 #
 # spec file for package glib-networking
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -61,7 +61,9 @@ Currently, there is only a proxy module based on libproxy.
 %autosetup -p1
 
 %build
-%meson
+%meson \
+	-Dinstalled_tests=true \
+	%{nil}
 %meson_build
 
 %install
@@ -86,6 +88,24 @@ Currently, there is only a proxy module based on libproxy.
 %{_libdir}/gio/modules/libgiolibproxy.so
 %{_libexecdir}/glib-pacrunner
 %{_userunitdir}/glib-pacrunner.service
+
+%package tests
+Summary:        Installed tests for %{name}
+Group:          Development/Libraries/Other
+Requires:       %{name} = %{version}
+Requires:       dbus-1
+Requires:       gnome-desktop-testing
+
+%description tests
+Installed tests for glib-networking, compatible with gnome-desktop-testing-runner.
+Tests cover TLS/HTTPS connections, proxy support, and GnuTLS integration.
+Run with: gnome-desktop-testing-runner glib-networking
+
+%files tests
+%dir %{_libexecdir}/installed-tests
+%{_libexecdir}/installed-tests/glib-networking/
+%dir %{_datadir}/installed-tests
+%{_datadir}/installed-tests/glib-networking/
 
 %files lang -f %{name}.lang
 
