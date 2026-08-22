@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-django-reversion
-Version:        6.1.0
+Version:        6.3.0
 Release:        0
 Summary:        A Django extension that provides version control for model instances
 License:        BSD-3-Clause

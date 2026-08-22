@@ -214,4 +214,15 @@
 - refresh only-sqlite-test-db.patch</comment>
     <requestid>1343784</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>d65cbf684ac5c81fa63cd5036d15af59</srcmd5>
+    <version>6.3.0</version>
+    <time>1787427295</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.3.0:
+  * Added Turkish translation (@mcihad).
+  * Added object_id_field to reversion.register()
+    (@philippeducasse).</comment>
+    <requestid>1372927</requestid>
+  </revision>
 </revisionlist>

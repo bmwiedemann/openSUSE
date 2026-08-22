@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Aug 21 20:04:41 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.3.0:
+  * Added Turkish translation (@mcihad).
+  * Added object_id_field to reversion.register()
+    (@philippeducasse).
+
+-------------------------------------------------------------------
 Mon Mar 30 21:57:16 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.1.0:
