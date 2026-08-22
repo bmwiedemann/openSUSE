@@ -1892,4 +1892,16 @@ Now with build cycle removed.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1371022</requestid>
   </revision>
+  <revision rev="127" vrev="1">
+    <srcmd5>624afbc5c169a936cc6d8b1fa358e9f7</srcmd5>
+    <version>20260814</version>
+    <time>1787427214</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20260814:
+  * migrate `vps.hrsn.au` to `vps.hrsn.net` (#3121)
+
+Forwarding already-built network:utilities/publicsuffix r276 (20260814).
+</comment>
+    <requestid>1372107</requestid>
+  </revision>
 </revisionlist>
