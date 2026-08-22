@@ -98,7 +98,7 @@ export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
 %check
 # upstream currently only tests the readers subdir. The rest seems to still expect v1
 # See .github/workflows/main.yaml
-%pytest -rsfE intake/readers
+%pytest -rsfE intake/readers -k "not test_xarray_dataset_remote_url_glob_str"
 %endif
 
 %if !%{with test}

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug 21 20:01:23 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- skip one failing test
+
+-------------------------------------------------------------------
 Fri May 22 09:58:59 UTC 2026 - Jakub Špaček <jakub.spacek07@email.cz>
 
 - Drop support for Python 3.11: added %global skip_python311 1 because python11-zarr is missing

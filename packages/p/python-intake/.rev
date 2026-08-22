@@ -218,4 +218,12 @@
     <comment></comment>
     <requestid>1355171</requestid>
   </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>bf71390cbb4a887f3aa013c0cd10b2a9</srcmd5>
+    <version>2.0.9</version>
+    <time>1787427297</time>
+    <user>dimstar_suse</user>
+    <comment>- skip one failing test</comment>
+    <requestid>1372924</requestid>
+  </revision>
 </revisionlist>
