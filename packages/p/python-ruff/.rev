@@ -3618,4 +3618,30 @@ an &quot;excludebuild:python-ruff:test&quot; line in openSUSE:Factory:Staging.
 </comment>
     <requestid>1371200</requestid>
   </revision>
+  <revision rev="124" vrev="1">
+    <srcmd5>b8673485b4485958d333584e71a57d6d</srcmd5>
+    <version>0.16.4</version>
+    <time>1787427261</time>
+    <user>dimstar_suse</user>
+    <comment>Fri Aug 21 05:42:09 UTC 2026 - Martin Pluskal &lt;mpluskal@suse.com&gt;
+
+- Update to 0.16.4:
+  * Preview: PTH116 now has an autofix; FURB131 only flags lists;
+    FURB101 and FURB103 skip when open() is given a file descriptor
+  * F722 reports semantic syntax errors in string type definitions
+  * PLC2701 allows os._exit imports
+  * RUF012 also exempts ctypes.LittleEndianStructure and related
+    types
+  * Parser now rejects duplicate keyword arguments and parameters
+    declared nonlocal, and aligns mixed t-string/bytes errors with
+    CPython 3.14
+  * LSP: display-only fixes with safe fixes preferred; pull
+    diagnostics for notebook cells
+  * Guarantee a minimum stack size when parsing
+- Re-vendor the Rust dependencies and re-derive the licence set of
+  the statically linked crates (297 unique); copyleft is still only
+  MPL-2.0 from colored, option-ext and version-ranges, so License
+  stays MIT AND MPL-2.0</comment>
+    <requestid>1372710</requestid>
+  </revision>
 </revisionlist>
