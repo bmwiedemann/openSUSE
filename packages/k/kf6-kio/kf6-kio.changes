@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 20 17:05:13 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream fix (kde#524239, boo#1275906)
+  * 0001-kfileitemactions-fix-submenu-lifetime-using-main-men.patch
+
+-------------------------------------------------------------------
 Sun Aug  9 10:38:36 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.29.0

@@ -33,6 +33,8 @@ Source:         %{rname}-%{version}.tar.xz
 Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-kfileitemactions-fix-submenu-lifetime-using-main-men.patch
 BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_version}
 BuildRequires:  libattr-devel

@@ -1,0 +1,50 @@
+From 774defb949ac5130bbbd9f900c2c140ff99e1af1 Mon Sep 17 00:00:00 2001
+From: Luis Bocanegra <luisbocanegra17b@gmail.com>
+Date: Mon, 17 Aug 2026 18:27:22 -0600
+Subject: [PATCH] kfileitemactions: fix submenu lifetime using main menu as the
+ parent
+
+parent was set to the menu holders which are deleted taking the X-KDE-Submenu with them
+
+BUG: 524239
+---
+ src/widgets/kfileitemactions.cpp | 3 ++-
+ src/widgets/kfileitemactions_p.h | 1 +
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/widgets/kfileitemactions.cpp b/src/widgets/kfileitemactions.cpp
+index 23371283c..b78f19bfd 100644
+--- a/src/widgets/kfileitemactions.cpp
++++ b/src/widgets/kfileitemactions.cpp
+@@ -152,7 +152,7 @@ int KFileItemActionsPrivate::insertServicesSubmenus(const QMap<QString, ServiceL
+             continue;
+         }
+ 
+-        QMenu *actionSubmenu = new QMenu(menu);
++        QMenu *actionSubmenu = new QMenu(m_mainMenu);
+         const int servicesAddedCount = insertServices(it.value(), actionSubmenu);
+ 
+         if (servicesAddedCount > 0) {
+@@ -313,6 +313,7 @@ void KFileItemActions::addActionsTo(QMenu *mainMenu, MenuActionSources sources,
+ {
+     QMenu *mainMenuHolder = new QMenu();
+     QMenu *actionsMenuHolder = new QMenu();
++    d->m_mainMenu = mainMenu;
+     if (sources & MenuActionSource::Services) {
+         d->addServiceActionsTo(mainMenuHolder, actionsMenuHolder, additionalActions, excludeList);
+     } else {
+diff --git a/src/widgets/kfileitemactions_p.h b/src/widgets/kfileitemactions_p.h
+index ae415f850..f7c6f8042 100644
+--- a/src/widgets/kfileitemactions_p.h
++++ b/src/widgets/kfileitemactions_p.h
+@@ -92,6 +92,7 @@ public:
+     QActionGroup m_executeServiceActionGroup;
+     QActionGroup m_runApplicationActionGroup;
+     QWidget *m_parentWidget;
++    QMenu *m_mainMenu = nullptr;
+     KConfig m_config;
+     QHash<QString, KAbstractFileItemActionPlugin *> m_loadedPlugins;
+     // Actions created by createServiceMenuActions()
+-- 
+2.55.0
+
