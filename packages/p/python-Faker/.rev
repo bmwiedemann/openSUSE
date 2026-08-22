@@ -825,4 +825,41 @@
   * Add french company RCS number.</comment>
     <requestid>1344809</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>999989bf98276d4511013865e873e6db</srcmd5>
+    <version>40.36.0</version>
+    <time>1787427271</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 40.36.0:
+  * Fix: correct `uk_UA` `bban_format` to 6 digits + 19 letters
+    so `iban()` generates valid Ukrainian IBANs (#2417). Thanks
+    @CedricConday.
+  * Fix: add correct `bban_format` so `ru_RU` `iban()` generates
+    valid Russian IBANs (#2416). Thanks @CedricConday.
+  * Fix: correct BBAN length so `da_DK` `iban()` generates valid
+    Danish IBANs (#2409). Thanks @CedricConday.
+  * Validate `positive=True` against a non-positive `max_value`
+    in `pydecimal` (#2428). Thanks @Sreekant13.
+  * Make `uuid1()` and `uuid7()` reproducible under a fixed seed
+    (#2427). Thanks @vidigoat.
+  * Add alphanumeric CNPJ support for `pt_BR` via flag (#2402).
+    Thanks @moohbr.
+  * Add `allowed_path_traversal_elements` option to `file_path()`
+    (#2397). Thanks @Ayushmann13479.
+  * Fix Windows `file_path` depth=3 test regex. Thanks @fcurella.
+  * Fix: correct BBAN length so `pt_BR` `iban()` generates valid
+    Brazilian IBANs (#2410). Thanks @CedricConday.
+  * Fix: generate valid Belgian bank codes in `nl_BE` `iban()`
+    (#2412). Thanks @CedricConday.
+  * Fix: generate valid Spanish CCC control digits in `es_ES`
+    `iban()` (#2404). Thanks @CedricConday.
+  * Fix: compute valid ISO 7064 Mod 11,10 check digit for `de_DE`
+    `vat_id` (#2403). Thanks @CedricConday.
+  * Add `es_MX` automotive license plate provider (#2393). Thanks
+    @r1cksync.
+  * Add `sr_BA` SSN provider (#2391). Thanks @AleksaMCode.
+  * Update providers job, phone_number, bank and ssn for pt_BR
+    (#2386). Thanks @dclobato.</comment>
+    <requestid>1372746</requestid>
+  </revision>
 </revisionlist>

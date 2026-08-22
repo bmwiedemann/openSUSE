@@ -1,4 +1,98 @@
 -------------------------------------------------------------------
+Fri Aug 21 09:48:12 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 40.36.0:
+  * Fix: correct `uk_UA` `bban_format` to 6 digits + 19 letters
+    so `iban()` generates valid Ukrainian IBANs (#2417). Thanks
+    @CedricConday.
+  * Fix: add correct `bban_format` so `ru_RU` `iban()` generates
+    valid Russian IBANs (#2416). Thanks @CedricConday.
+  * Fix: correct BBAN length so `da_DK` `iban()` generates valid
+    Danish IBANs (#2409). Thanks @CedricConday.
+  * Validate `positive=True` against a non-positive `max_value`
+    in `pydecimal` (#2428). Thanks @Sreekant13.
+  * Make `uuid1()` and `uuid7()` reproducible under a fixed seed
+    (#2427). Thanks @vidigoat.
+  * Add alphanumeric CNPJ support for `pt_BR` via flag (#2402).
+    Thanks @moohbr.
+  * Add `allowed_path_traversal_elements` option to `file_path()`
+    (#2397). Thanks @Ayushmann13479.
+  * Fix Windows `file_path` depth=3 test regex. Thanks @fcurella.
+  * Fix: correct BBAN length so `pt_BR` `iban()` generates valid
+    Brazilian IBANs (#2410). Thanks @CedricConday.
+  * Fix: generate valid Belgian bank codes in `nl_BE` `iban()`
+    (#2412). Thanks @CedricConday.
+  * Fix: generate valid Spanish CCC control digits in `es_ES`
+    `iban()` (#2404). Thanks @CedricConday.
+  * Fix: compute valid ISO 7064 Mod 11,10 check digit for `de_DE`
+    `vat_id` (#2403). Thanks @CedricConday.
+  * Add `es_MX` automotive license plate provider (#2393). Thanks
+    @r1cksync.
+  * Add `sr_BA` SSN provider (#2391). Thanks @AleksaMCode.
+  * Update providers job, phone_number, bank and ssn for pt_BR
+    (#2386). Thanks @dclobato.
+  * Update phone number test regex for pt_BR. Thanks @fcurella.
+  * Update outdated Korean locale names (#2385). Thanks @ydj515.
+  * Fix: prevent infinite recursion in `_safe_random_int` when
+    both bounds collapse to the same integer (#2396). Thanks
+    @gaoflow.
+  * Add mk_MK (Macedonian) locale (#2339). Thanks @acikabubo.
+  * CI: run PR checks against PR code instead of base branch.
+    Thanks @fcurella.
+  * Fix: raise `NotImplementedError` in `bank()` for locales
+    without banks data (#2378). Thanks @koushik717.
+  * Fix outdated links in README credits section (#2394). Thanks
+    @TejasAmle.
+  * Bump actions/cache from 5 to 6 (#2400). Thanks
+    @dependabot[bot].
+  * Bump actions/checkout from 6 to 7 (#2392). Thanks
+    @dependabot[bot].
+  * Add French social security numbers with Corsican codes
+    (#2373). Thanks @dancergraham.
+  * Fix typos in docstrings and comments (#2387). Thanks @Labib-
+    Bin-Salam.
+  * Fix flaky `test_optional` by using seed and larger sample
+    size (#2376). Thanks @tejasae-afk.
+  * Add banks list for `en_GB` locale (#2363). Thanks
+    @osolomientsev.
+  * Add `pan` and `gstin` generators to `en_IN` SSN provider
+    (#2357). Thanks @RedZapdos123.
+  * Improve barcode provider test coverage (#2382). Thanks
+    @lphuc2250gma.
+  * Bump liskin/gh-problem-matcher-wrap from 3 to 4 (#2381).
+    Thanks @dependabot[bot].
+  * Fix shared state mutation in `en_IN` `pincode_in_state`
+    (#2369). Thanks @RedZapdos123.
+  * Add `uuid1` and `uuid7` providers to `misc` provider (#2344).
+    Thanks @Krishnachaitanyakc.
+  * Add automotive providers for `ar_DZ` and `fr_DZ` locales.
+  * Add `phone_number` provider for `ar_DZ` and `fr_DZ` locales.
+  * Add `am_ET` `phone_number` provider for Ethiopia. Thanks
+  * Fix duplicate phone number prefix `145` in `zh_CN` locale.
+  * Add job providers for `ar_DZ` and `fr_DZ` locales (#2352).
+  * Add company providers for `ar_DZ` and `fr_DZ` locales
+  * Add geo providers for `ar_DZ` and `fr_DZ` locales (#2350).
+  * Add currency providers for `ar_DZ` and `fr_DZ` locales
+  * Add `date_time` provider for `ar_DZ` locale (#2348). Thanks
+  * Add ssn providers for `ar_DZ` and `fr_DZ` locales (#2347).
+  * Fix `UnicodeEncodeError` in CLI docs on non-UTF consoles
+  * Fix: update placekitten URL to placekittens (#2364).
+
+-------------------------------------------------------------------
+Sun Apr 26 09:16:13 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 40.15.0:
+  * Add job providers for `ar_DZ` and `fr_DZ` locales (#2352).
+  * Add company providers for `ar_DZ` and `fr_DZ` locales
+  * Add geo providers for `ar_DZ` and `fr_DZ` locales (#2350).
+  * Add currency providers for `ar_DZ` and `fr_DZ` locales
+  * Add `date_time` provider for `ar_DZ` locale (#2348). Thanks
+  * Add ssn providers for `ar_DZ` and `fr_DZ` locales (#2347).
+  * Fix `UnicodeEncodeError` in CLI docs on non-UTF consoles
+    (#2362).
+  * Fix: update placekitten URL to placekittens (#2364).
+
+-------------------------------------------------------------------
 Mon Apr  6 21:31:15 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 40.13.0:
