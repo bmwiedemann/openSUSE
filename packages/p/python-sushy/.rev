@@ -399,4 +399,14 @@
   * filter out drives reporting null size on inspect</comment>
     <requestid>1369788</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>72ac29cd4d1351e7bc15ccb4599730cd</srcmd5>
+    <version>5.13.0</version>
+    <time>1787427398</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.13.0:
+  * system: guard HttpBootUri writes against iDRAC 10 removal
+  * Handle incomplete TaskMonitor responses</comment>
+    <requestid>1373088</requestid>
+  </revision>
 </revisionlist>

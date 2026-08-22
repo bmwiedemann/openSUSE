@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Aug 22 14:13:41 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.13.0:
+  * system: guard HttpBootUri writes against iDRAC 10 removal
+  * Handle incomplete TaskMonitor responses
+
+-------------------------------------------------------------------
 Wed Aug  5 14:46:07 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.12.0:
