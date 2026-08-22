@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Aug 20 15:26:44 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.14.6:
+  + Fix memory leak in Context::pop_group()
+  + Documentation:
+    - Fix outdated FSF mailing address in COPYING
+    - Change license info. Lesser GPL 2.1 instead of Library GPL 2
+    - Meson: Use SPDX expression for license
+    - MSVC-Builds.md: Mention Visual Studio 2026
+    - MSVC-Builds.md: Update build documentation for NMake
+    - cairomm.h: Add the Basic Usage section
+  + Build system (meson) fixes.
+
+-------------------------------------------------------------------
 Wed Sep 24 11:42:05 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.14.5:

@@ -18,7 +18,7 @@
 
 %define _name   cairomm
 Name:           cairomm1_0
-Version:        1.14.5
+Version:        1.14.6
 Release:        0
 Summary:        C++ Interface for Cairo
 License:        LGPL-2.1-or-later
