@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Aug 22 14:06:55 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.9.1:
+  * docs: Add guide on conflict resolution
+  * Fix conflict_resolver with DriverManager
+  * ruff: Use more explicit name for "UP" checks
+
+-------------------------------------------------------------------
 Sun Jul  5 10:37:01 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.9.0:

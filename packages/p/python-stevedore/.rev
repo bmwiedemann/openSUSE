@@ -620,4 +620,15 @@
   * Drop support for Python 3.10</comment>
     <requestid>1363846</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>1d113b0e3cf8182340631590db6c2b4c</srcmd5>
+    <version>5.9.1</version>
+    <time>1787427400</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.9.1:
+  * docs: Add guide on conflict resolution
+  * Fix conflict_resolver with DriverManager
+  * ruff: Use more explicit name for &quot;UP&quot; checks</comment>
+    <requestid>1373081</requestid>
+  </revision>
 </revisionlist>
