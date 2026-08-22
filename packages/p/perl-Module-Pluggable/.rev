@@ -46,4 +46,13 @@
     <comment></comment>
     <requestid>1238348</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3efd493a909343bf12d28e46582f1867</srcmd5>
+    <version>6.400.0</version>
+    <time>1787427284</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 6.400.0 (6.4)
+   see /usr/share/doc/packages/perl-Module-Pluggable/Changes</comment>
+    <requestid>1372839</requestid>
+  </revision>
 </revisionlist>
