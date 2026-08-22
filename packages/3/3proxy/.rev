@@ -94,4 +94,16 @@
   * Multiple fixes.</comment>
     <requestid>1370393</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2f8eb17ffe992acc243209c4a20646e8</srcmd5>
+    <version>0.9.9</version>
+    <time>1787427330</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 0.9.9
+  * https://github.com/3proxy/3proxy/releases/tag/0.9.9
+  * Added SOCKSv5 UDP with ACL.
+  * Added timeouts: LINGER value added (11th, default 5).
+  * Multiple fixes.</comment>
+    <requestid>1372956</requestid>
+  </revision>
 </revisionlist>

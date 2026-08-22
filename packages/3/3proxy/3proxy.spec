@@ -21,7 +21,7 @@
 %define _group  proxy
 %define _home   %{_localstatedir}/lib/%{name}
 Name:           3proxy
-Version:        0.9.8
+Version:        0.9.9
 Release:        0
 Summary:        Tiny proxy servers set
 License:        Apache-2.0 OR BSD-3-Clause OR GPL-2.0-or-later OR LGPL-2.1-or-later
