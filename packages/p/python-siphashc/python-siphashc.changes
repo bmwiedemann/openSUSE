@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Aug 22 13:35:07 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.8:
+  * Added support for Python 3.15, including free-threaded
+    builds.
+  * Fixed SipHash input decoding on platforms with different
+    alignment or byte order.
+  * Improved hashing performance and enabled concurrent hashing
+    of large inputs.
+
+-------------------------------------------------------------------
 Sat Apr 25 22:16:06 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.7:
