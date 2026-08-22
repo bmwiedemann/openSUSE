@@ -104,4 +104,26 @@
   * Removed the global importmap object</comment>
     <requestid>1360750</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b1aa7ce0f9274b8b5532a26bc21a2f35</srcmd5>
+    <version>4.0.2</version>
+    <time>1787427311</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.0.2:
+  * Fixed js_asset.Media treating html-safe strings -- e.g.
+    mark_safe('&lt;script defer src=&quot;...&quot;&gt;&lt;/script&gt;'), a
+    long-documented Django idiom for embedding a complete asset tag
+    -- as asset paths, so they were run through static() and
+    percent-encoded instead of being rendered verbatim. Anything
+    providing __html__() now takes the verbatim path, matching
+    django.forms.Media (see Django's ticket #37262).
+  * js_asset.Media additionally renders html-safe strings
+    correctly on Django 6.1, whose own forms.Media mangles them
+    (fixed in Django for 6.1.1). Only media built through
+    js_asset.Media benefits; assets adopted from a plain
+    forms.Media -- including widget Media declarations, which
+    Django always builds with forms.Media -- are already normalized
+    before we see them.</comment>
+    <requestid>1372942</requestid>
+  </revision>
 </revisionlist>

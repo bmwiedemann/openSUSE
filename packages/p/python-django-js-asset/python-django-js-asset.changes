@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Aug 21 20:53:01 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0.2:
+  * Fixed js_asset.Media treating html-safe strings -- e.g.
+    mark_safe('<script defer src="..."></script>'), a
+    long-documented Django idiom for embedding a complete asset tag
+    -- as asset paths, so they were run through static() and
+    percent-encoded instead of being rendered verbatim. Anything
+    providing __html__() now takes the verbatim path, matching
+    django.forms.Media (see Django's ticket #37262).
+  * js_asset.Media additionally renders html-safe strings
+    correctly on Django 6.1, whose own forms.Media mangles them
+    (fixed in Django for 6.1.1). Only media built through
+    js_asset.Media benefits; assets adopted from a plain
+    forms.Media -- including widget Media declarations, which
+    Django always builds with forms.Media -- are already normalized
+    before we see them.
+
+-------------------------------------------------------------------
 Sat Jun 20 17:42:31 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.0.1:

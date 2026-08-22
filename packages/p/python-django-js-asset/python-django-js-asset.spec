@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-django-js-asset
-Version:        4.0.1
+Version:        4.0.2
 Release:        0
 Summary:        Script tag with additional attributes for django.formsMedia
 License:        BSD-3-Clause
