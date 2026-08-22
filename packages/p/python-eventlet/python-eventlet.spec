@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-eventlet
-Version:        0.41.0
+Version:        0.41.2
 Release:        0
 Summary:        Concurrent networking library for Python
 License:        MIT
