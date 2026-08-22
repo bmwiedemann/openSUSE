@@ -345,4 +345,17 @@
   * Rewriting decoder module (issue #87)</comment>
     <requestid>1362533</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>ba0dc6c71ccdfaa633a87bd35fba8a6e</srcmd5>
+    <version>5.1.4</version>
+    <time>1787427278</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.1.4:
+  * Add allow_environment and allow_external_resources arguments
+    to XPath30Parser
+  * some/every statements: revert to v4.8 implementation (fix
+    issue #106)
+  * reverse axis position: workaround until next minor-version</comment>
+    <requestid>1372818</requestid>
+  </revision>
 </revisionlist>
