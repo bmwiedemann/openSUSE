@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Aug 20 04:43:24 UTC 2026 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add libsoup2-CVE-2026-12548.patch: Fix heap out-of-bounds read
+  flaw when parsing multipart HTTP messages. (bsc#1272196,
+  glgo#GNOME/libsoup!524)
+
+-------------------------------------------------------------------
+Mon Aug 17 10:11:41 UTC 2026 - Zoltan Balogh <zbalogh@suse.com>
+
+- Add libsoup2-tests subpackage with installed tests
+  for gnome-desktop-testing-runner
+
+-------------------------------------------------------------------
 Wed May 27 14:42:50 UTC 2026 - Michael Gorse <mgorse@suse.com>
 
 - Add libsoup2-CVE-2026-1801.patch: Use CRLF as line boundary when
@@ -3517,4 +3530,3 @@ Mon Jul 14 14:48:27 CEST 2003 - sbrabec@suse.cz
 Thu May 22 14:52:58 CEST 2003 - sbrabec@suse.cz
 
 - Initial SuSE version of GNOME2 port.
-

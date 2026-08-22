@@ -108,6 +108,8 @@ Patch39:        libsoup-CVE-2026-1539.patch
 Patch40:        https://github.com/GNOME/libsoup/commit/35af2342.patch
 # PATCH-FIX-UPSTREAM libsoup2-CVE-2026-1801.patch bsc#1257649 mgorse@suse.com -- Use CRLF as line boundary when parsing chunk encoding data.
 Patch41:        libsoup2-CVE-2026-1801.patch
+# PATCH-FIX-UPSTREAM libsoup2-CVE-2026-12548.patch bsc#1272196, glgo#GNOME/libsoup!524 alynx.zhou@suse.com -- Fix heap out-of-bounds read flaw when parsing multipart HTTP messages
+Patch42:        libsoup2-CVE-2026-12548.patch
 
 BuildRequires:  glib-networking
 BuildRequires:  meson >= 0.50
@@ -205,6 +207,7 @@ Features:
     -Dgtk_doc=true \
     -Dntlm=disabled \
     -Dsysprof=disabled \
+    -Dinstalled_tests=true \
     %{nil}
 %meson_build
 
@@ -244,6 +247,23 @@ export G_TLS_GNUTLS_PRIORITY=NORMAL
 %dir %{_datadir}/vala/vapi/
 %{_datadir}/vala/vapi/libsoup-2.4.vapi
 %{_datadir}/vala/vapi/libsoup-2.4.deps
+
+%package tests
+Summary:        Installed tests for %{name}
+Group:          Development/Libraries/Other
+Requires:       %{_name}-2_4-1 = %{version}
+Requires:       gnome-desktop-testing
+
+%description tests
+Installed tests for libsoup2 (libsoup 2.4), compatible with gnome-desktop-testing-runner.
+Tests cover HTTP client/server, GNOME authentication, and TLS.
+Run with: gnome-desktop-testing-runner libsoup-2.4
+
+%files tests
+%dir %{_libexecdir}/installed-tests
+%{_libexecdir}/installed-tests/libsoup-2.4/
+%dir %{_datadir}/installed-tests
+%{_datadir}/installed-tests/libsoup-2.4/
 
 %files lang -f %{_name}.lang
 

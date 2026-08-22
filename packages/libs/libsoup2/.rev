@@ -222,4 +222,19 @@ Forwarded request #1101518 from iznogood
   glgo#GNOME/libsoup#481).</comment>
     <requestid>1355962</requestid>
   </revision>
+  <revision rev="26" vrev="22">
+    <srcmd5>ef3edcff784dca4e55d5224edd1c56d4</srcmd5>
+    <version>2.74.3</version>
+    <time>1787427224</time>
+    <user>dimstar_suse</user>
+    <comment>- Add libsoup2-CVE-2026-12548.patch: Fix heap out-of-bounds read
+  flaw when parsing multipart HTTP messages. (bsc#1272196,
+  glgo#GNOME/libsoup!524)
+
+- Add libsoup2-tests subpackage with installed tests
+  for gnome-desktop-testing-runner
+
+- Initial SuSE version of GNOME2 port.</comment>
+    <requestid>1372152</requestid>
+  </revision>
 </revisionlist>
