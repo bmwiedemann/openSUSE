@@ -23,7 +23,7 @@
 %endif
 
 Name:           python-kafka-python
-Version:        3.0.8
+Version:        3.0.11
 Release:        0
 Summary:        Pure Python client for Apache Kafka
 License:        Apache-2.0

@@ -203,4 +203,18 @@
   * transport: Fix TLS SNI when `ssl_check_hostname=False`</comment>
     <requestid>1365772</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>07aaf5dae18f7dd325fc84ec6db56180</srcmd5>
+    <version>3.0.11</version>
+    <time>1787427341</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.11:
+  * Fix JsonSerializer returning None and raising TypeError on
+    deserialize
+  * Admin: Fix `create_partitions` sending empty assignments
+    array instead of null
+  * Consumer: fix stuck partitions retained after rebalance with
+    listener</comment>
+    <requestid>1373030</requestid>
+  </revision>
 </revisionlist>
