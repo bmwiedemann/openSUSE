@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Aug 22 16:15:37 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.0:
+  * Invalid ByteBuffer state that can lead to incorrect read/write sizes
+  * out-of-bounds write when CyclicBuffer is empty
+  * Prevent integer overflow in ODBCAppender
+  * Reduce stack overflow likelihood processing XML configurations
+  * overflow in toFileSize causing incorrect log rotation limits
+  * CyclicBuffer validation ordering and resize wraparound handling
+  * Normalize invalid FileAppender buffer sizes
+  * PropertyConfigurator reporting configured state for invalid appenders
+  * Simplify Configurator inheritance in the next ABI version
+  * Fix nullptr pointer arithmetic in charset decoder
+  * Simplify the config::PropertySetter interface in the next ABI version
+
+-------------------------------------------------------------------
 Fri Apr 10 22:13:16 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.7.0 (bsc#1261994, CVE-2026-40023):

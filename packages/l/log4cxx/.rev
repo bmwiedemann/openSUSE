@@ -143,4 +143,23 @@
     <comment>- update to 1.7.0 (bsc#1261994, CVE-2026-40023):</comment>
     <requestid>1347167</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>eabecd732948a9cc5e13df4e0235423f</srcmd5>
+    <version>1.8.0</version>
+    <time>1787427413</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.8.0:
+  * Invalid ByteBuffer state that can lead to incorrect read/write sizes
+  * out-of-bounds write when CyclicBuffer is empty
+  * Prevent integer overflow in ODBCAppender
+  * Reduce stack overflow likelihood processing XML configurations
+  * overflow in toFileSize causing incorrect log rotation limits
+  * CyclicBuffer validation ordering and resize wraparound handling
+  * Normalize invalid FileAppender buffer sizes
+  * PropertyConfigurator reporting configured state for invalid appenders
+  * Simplify Configurator inheritance in the next ABI version
+  * Fix nullptr pointer arithmetic in charset decoder
+  * Simplify the config::PropertySetter interface in the next ABI version</comment>
+    <requestid>1373102</requestid>
+  </revision>
 </revisionlist>

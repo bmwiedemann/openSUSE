@@ -17,7 +17,7 @@
 
 
 Name:           log4cxx
-Version:        1.7.0
+Version:        1.8.0
 Release:        0
 %define soname 15
 Summary:        Log4j like C++ Logging Library
