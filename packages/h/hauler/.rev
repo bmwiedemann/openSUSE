@@ -369,4 +369,26 @@
     <comment>- update x/net to 0.57 (bsc#1266602, CVE-2026-39821)</comment>
     <requestid>1366427</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>99c3270e8bbaad67aa2ed7e0db0f7fa5</srcmd5>
+    <version>2.0.3</version>
+    <time>1787427304</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.3 (bsc#1276124,
+  CVE-2026-72817,CVE-2026-72815,CVE-2026-72816):
+  * Bump k8s.io/apimachinery from 0.36.2 to 0.36.3 (backport
+    #688)
+  * Bump oras.land/oras-go/v2 from 2.6.1 to 2.6.2 in the
+    go_modules group across 1 directory (backport #691)
+  * fix for homebrew macOS binary quarantine (backport #690)
+  * fix: process Helm deps before --add-images discovery
+    (backport #703)
+  * update hauler store remove to handle registry reference as
+    part of string (backport #705)
+  * fixed vuln for golang grpc
+
+- update to 2.0.1 (bsc#1269433, CVE-2026-48702,
+    bsc#1265425, CVE-2026-41888):</comment>
+    <requestid>1372935</requestid>
+  </revision>
 </revisionlist>

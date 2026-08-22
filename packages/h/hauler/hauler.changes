@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Aug 21 20:24:04 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.3 (bsc#1276124,
+  CVE-2026-72817,CVE-2026-72815,CVE-2026-72816):
+  * Bump k8s.io/apimachinery from 0.36.2 to 0.36.3 (backport
+    #688)
+  * Bump oras.land/oras-go/v2 from 2.6.1 to 2.6.2 in the
+    go_modules group across 1 directory (backport #691)
+  * fix for homebrew macOS binary quarantine (backport #690)
+  * fix: process Helm deps before --add-images discovery
+    (backport #703)
+  * update hauler store remove to handle registry reference as
+    part of string (backport #705)
+  * fixed vuln for golang grpc
+
+-------------------------------------------------------------------
 Fri Jul 17 13:47:04 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update x/net to 0.57 (bsc#1266602, CVE-2026-39821)
@@ -6,7 +22,8 @@ Fri Jul 17 13:47:04 UTC 2026 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Sun Jun 28 21:15:11 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
-- update to 2.0.1 (bsc#1269433, CVE-2026-48702):
+- update to 2.0.1 (bsc#1269433, CVE-2026-48702,
+    bsc#1265425, CVE-2026-41888):
   * bump go to 1.26.4 to squash CVE noise
   * Full v2 Release notes: https://github.com/hauler-
     dev/hauler/releases/tag/v2.0.0
