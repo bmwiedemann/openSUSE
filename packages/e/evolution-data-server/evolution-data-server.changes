@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 17 10:11:41 UTC 2026 - Zoltan Balogh <zbalogh@suse.com>
+
+- Add evolution-data-server-tests subpackage with
+  installed tests for gnome-desktop-testing-runner
+
+-------------------------------------------------------------------
 Fri May 22 05:23:15 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.60.2:
@@ -8063,4 +8069,3 @@ Tue May 18 18:54:04 CEST 2004 - clahey@suse.de
 Tue May 18 04:32:40 CEST 2004 - clahey@suse.de
 
 - Initial import of evolution-data-server.
-

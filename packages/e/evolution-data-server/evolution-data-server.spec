@@ -283,6 +283,17 @@ and calendar in the GNOME Desktop.
 This package provides the GObject Introspection bindings for the
 libedataserver library.
 
+%package tests
+Summary:        Tests for %{name}
+Requires:       %{name} = %{version}
+Requires:       gnome-desktop-testing
+
+%description tests
+The %{name}-tests package contains tests that can be used to verify
+the functionality of the installed %{name} package.
+Tests use the GNOME installed-tests framework and can be run with
+gnome-desktop-testing-runner.
+
 %package devel
 Summary:        Development files for Evolution Data Server
 Group:          Development/Libraries/GNOME
@@ -357,6 +368,7 @@ sed -i 's/icu-i18n/icu-uc &/' CMakeLists.txt
     -DENABLE_INTROSPECTION=ON} \
     -DWITH_PHONENUMBER=ON \
     -DENABLE_DBUS_SESSION_TOOL=OFF \
+    -DENABLE_INSTALLED_TESTS=ON \
     %gtkdoc_flags \
     %{nil}
 %cmake_build
@@ -395,6 +407,7 @@ sed -i 's/icu-i18n/icu-uc &/' CMakeLists.txt
 %{_libdir}/evolution-data-server/
 %if "%{_libdir}" != "%{_libexecdir}"
 %{_libexecdir}/evolution-data-server/
+%exclude %{_libexecdir}/evolution-data-server/evolution-data-server/
 %endif
 %{_userunitdir}/evolution-addressbook-factory.service
 %{_userunitdir}/evolution-alarm-notify.service
@@ -487,5 +500,12 @@ sed -i 's/icu-i18n/icu-uc &/' CMakeLists.txt
 %endif
 
 %files lang -f evolution-data-server.lang
+
+%files tests
+%{_libdir}/libetestserverutils.so*
+%{_libexecdir}/evolution-data-server/evolution-data-server/
+%dir %{_datadir}/installed-tests
+%dir %{_datadir}/installed-tests/evolution-data-server
+%{_datadir}/installed-tests/evolution-data-server/
 
 %changelog
