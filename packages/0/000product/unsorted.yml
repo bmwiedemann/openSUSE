@@ -900,6 +900,7 @@ unsorted:
   - args4j 
   - args4j-javadoc 
   - args4j-tools 
+  - argtable3-devel 
   - argus 
   - argus-client 
   - argus-server 
@@ -2518,6 +2519,7 @@ unsorted:
   - colorpicker-lang 
   - combustion 
   - comet 
+  - comfyui 
   - commandergenius 
   - compartm 
   - compat-usrmerge 
@@ -2712,17 +2714,22 @@ unsorted:
   - cosmic-ext-tasks 
   - cosmic-ext-tweaks 
   - cosmic-files 
+  - cosmic-greeter 
   - cosmic-icons 
   - cosmic-idle 
   - cosmic-launcher 
+  - cosmic-monitor 
   - cosmic-notifications 
   - cosmic-osd 
+  - cosmic-osk 
   - cosmic-panel 
   - cosmic-player 
   - cosmic-randr 
   - cosmic-reader 
   - cosmic-screenshot 
   - cosmic-session 
+  - cosmic-settings 
+  - cosmic-settings-daemon 
   - cosmic-store 
   - cosmic-term 
   - cosmic-wallpapers 
@@ -12193,6 +12200,7 @@ unsorted:
   - libargon2-1-32bit 
   - libargtable2-0 
   - libargtable2-devel 
+  - libargtable3-3 
   - libaria2-0 
   - libarm_compute53 
   - libarm_compute_graph53 
@@ -13397,7 +13405,7 @@ unsorted:
   - libfifechan_sdl0_1_5 
   - libfilezilla-devel 
   - libfilezilla-lang 
-  - libfilezilla58 
+  - libfilezilla59 
   - libfilteraudio0 
   - libfinal-devel 
   - libfinal-examples 
@@ -13492,6 +13500,7 @@ unsorted:
   - libfprint-2-tod1-32bit 
   - libfprint-devel 
   - libfprint-doc 
+  - libfprint-tests 
   - libfprint-tod-devel 
   - libframe6 
   - libframecpp16 
@@ -13593,7 +13602,7 @@ unsorted:
   - libfyaml-fy-tool 
   - libfzssh 
   - libfzssh-devel 
-  - libfzssh13_0_0 
+  - libfzssh14_0_0 
   - libga68-2 
   - libga68-2-32bit 
   - libgadu-devel 
@@ -23265,6 +23274,7 @@ unsorted:
   - picotool 
   - picplanner 
   - picplanner-lang 
+  - picsart-gen-ai 
   - pidentd 
   - pidgin 
   - pidgin-devel 
@@ -24431,7 +24441,6 @@ unsorted:
   - python311-doc 
   - python311-doc-devhelp 
   - python311-flit-core 
-  - python311-gql 
   - python311-hatch_vcs 
   - python311-hatchling 
   - python311-idle 
@@ -25544,6 +25553,19 @@ unsorted:
   - python313-colorspacious 
   - python313-colour 
   - python313-columnize 
+  - python313-comfy-aimdo 
+  - python313-comfy-angle 
+  - python313-comfy-kitchen 
+  - python313-comfyui-embedded-docs 
+  - python313-comfyui-frontend-package 
+  - python313-comfyui-workflow-templates 
+  - python313-comfyui-workflow-templates-core 
+  - python313-comfyui-workflow-templates-json 
+  - python313-comfyui-workflow-templates-media-api 
+  - python313-comfyui-workflow-templates-media-assets-01 
+  - python313-comfyui-workflow-templates-media-image 
+  - python313-comfyui-workflow-templates-media-other 
+  - python313-comfyui-workflow-templates-media-video 
   - python313-comm 
   - python313-commented-configparser 
   - python313-compat-patcher-core 
@@ -26138,6 +26160,8 @@ unsorted:
   - python313-gql 
   - python313-graphene 
   - python313-graphene-django 
+  - python313-graphifyy 
+  - python313-graphifyy-mcp 
   - python313-graphql-core 
   - python313-graphql-relay 
   - python313-graphviz 
@@ -26451,6 +26475,8 @@ unsorted:
   - python313-knowit 
   - python313-kombu 
   - python313-korean-lunar-calendar 
+  - python313-kornia 
+  - python313-kornia-rs 
   - python313-kubernetes 
   - python313-kwant 
   - python313-labels 
@@ -27943,6 +27969,7 @@ unsorted:
   - python313-sox 
   - python313-soxr 
   - python313-spake2 
+  - python313-spandrel 
   - python313-spark_parser 
   - python313-sparse 
   - python313-speaklater 
@@ -28164,6 +28191,9 @@ unsorted:
   - python313-torch-devel 
   - python313-torch-openmpi4 
   - python313-torch-openmpi4-devel 
+  - python313-torchaudio 
+  - python313-torchsde 
+  - python313-torchvision 
   - python313-tornado 
   - python313-tortilla 
   - python313-towncrier 
@@ -28177,6 +28207,7 @@ unsorted:
   - python313-traitsui 
   - python313-traittypes 
   - python313-trakit 
+  - python313-trampoline 
   - python313-transaction 
   - python313-transformers 
   - python313-transip 
@@ -28188,7 +28219,30 @@ unsorted:
   - python313-translitcodec 
   - python313-tree-sitter 
   - python313-tree-sitter-bash 
+  - python313-tree-sitter-c 
+  - python313-tree-sitter-c-sharp 
+  - python313-tree-sitter-cpp 
+  - python313-tree-sitter-elixir 
+  - python313-tree-sitter-fortran 
+  - python313-tree-sitter-go 
+  - python313-tree-sitter-groovy 
+  - python313-tree-sitter-java 
   - python313-tree-sitter-javascript 
+  - python313-tree-sitter-json 
+  - python313-tree-sitter-julia 
+  - python313-tree-sitter-kotlin 
+  - python313-tree-sitter-lua 
+  - python313-tree-sitter-objc 
+  - python313-tree-sitter-php 
+  - python313-tree-sitter-powershell 
+  - python313-tree-sitter-python 
+  - python313-tree-sitter-ruby 
+  - python313-tree-sitter-rust 
+  - python313-tree-sitter-scala 
+  - python313-tree-sitter-swift 
+  - python313-tree-sitter-typescript 
+  - python313-tree-sitter-verilog 
+  - python313-tree-sitter-zig 
   - python313-treq 
   - python313-tri.struct 
   - python313-trio 
@@ -29553,6 +29607,19 @@ unsorted:
   - python314-colorspacious 
   - python314-colour 
   - python314-columnize 
+  - python314-comfy-aimdo 
+  - python314-comfy-angle 
+  - python314-comfy-kitchen 
+  - python314-comfyui-embedded-docs 
+  - python314-comfyui-frontend-package 
+  - python314-comfyui-workflow-templates 
+  - python314-comfyui-workflow-templates-core 
+  - python314-comfyui-workflow-templates-json 
+  - python314-comfyui-workflow-templates-media-api 
+  - python314-comfyui-workflow-templates-media-assets-01 
+  - python314-comfyui-workflow-templates-media-image 
+  - python314-comfyui-workflow-templates-media-other 
+  - python314-comfyui-workflow-templates-media-video 
   - python314-comm 
   - python314-commented-configparser 
   - python314-compat-patcher-core 
@@ -30161,6 +30228,8 @@ unsorted:
   - python314-gql 
   - python314-graphene 
   - python314-graphene-django 
+  - python314-graphifyy 
+  - python314-graphifyy-mcp 
   - python314-graphql-core 
   - python314-graphql-relay 
   - python314-graphviz 
@@ -30488,6 +30557,8 @@ unsorted:
   - python314-knowit 
   - python314-kombu 
   - python314-korean-lunar-calendar 
+  - python314-kornia 
+  - python314-kornia-rs 
   - python314-kubernetes 
   - python314-kwant 
   - python314-labels 
@@ -32023,6 +32094,7 @@ unsorted:
   - python314-sox 
   - python314-soxr 
   - python314-spake2 
+  - python314-spandrel 
   - python314-spark_parser 
   - python314-sparse 
   - python314-speaklater 
@@ -32243,6 +32315,9 @@ unsorted:
   - python314-torch-devel 
   - python314-torch-openmpi4 
   - python314-torch-openmpi4-devel 
+  - python314-torchaudio 
+  - python314-torchsde 
+  - python314-torchvision 
   - python314-tornado 
   - python314-tornado6 
   - python314-tortilla 
@@ -32257,6 +32332,7 @@ unsorted:
   - python314-traitsui 
   - python314-traittypes 
   - python314-trakit 
+  - python314-trampoline 
   - python314-transaction 
   - python314-transformers 
   - python314-transip 
@@ -32268,7 +32344,30 @@ unsorted:
   - python314-translitcodec 
   - python314-tree-sitter 
   - python314-tree-sitter-bash 
+  - python314-tree-sitter-c 
+  - python314-tree-sitter-c-sharp 
+  - python314-tree-sitter-cpp 
+  - python314-tree-sitter-elixir 
+  - python314-tree-sitter-fortran 
+  - python314-tree-sitter-go 
+  - python314-tree-sitter-groovy 
+  - python314-tree-sitter-java 
   - python314-tree-sitter-javascript 
+  - python314-tree-sitter-json 
+  - python314-tree-sitter-julia 
+  - python314-tree-sitter-kotlin 
+  - python314-tree-sitter-lua 
+  - python314-tree-sitter-objc 
+  - python314-tree-sitter-php 
+  - python314-tree-sitter-powershell 
+  - python314-tree-sitter-python 
+  - python314-tree-sitter-ruby 
+  - python314-tree-sitter-rust 
+  - python314-tree-sitter-scala 
+  - python314-tree-sitter-swift 
+  - python314-tree-sitter-typescript 
+  - python314-tree-sitter-verilog 
+  - python314-tree-sitter-zig 
   - python314-treq 
   - python314-tri.struct 
   - python314-trio 
@@ -34225,6 +34324,7 @@ unsorted:
   - samplicator 
   - samply 
   - samtools 
+  - samtools-test 
   - samurai 
   - sane-airscan 
   - sane-backends-32bit 
@@ -45659,8 +45759,12 @@ unsorted:
   - tree-sitter-devel 
   - tree-sitter-doxygen 
   - tree-sitter-doxygen-devel 
+  - tree-sitter-elixir 
+  - tree-sitter-elixir-devel 
   - tree-sitter-firrtl 
   - tree-sitter-firrtl-devel 
+  - tree-sitter-fortran 
+  - tree-sitter-fortran-devel 
   - tree-sitter-fountain 
   - tree-sitter-fountain-devel 
   - tree-sitter-func 
@@ -45676,6 +45780,8 @@ unsorted:
   - tree-sitter-gomod-devel 
   - tree-sitter-gpg-config 
   - tree-sitter-gpg-config-devel 
+  - tree-sitter-groovy 
+  - tree-sitter-groovy-devel 
   - tree-sitter-gstlaunch 
   - tree-sitter-gstlaunch-devel 
   - tree-sitter-hare 
@@ -45696,6 +45802,8 @@ unsorted:
   - tree-sitter-jinja2-devel 
   - tree-sitter-json 
   - tree-sitter-json-devel 
+  - tree-sitter-julia 
+  - tree-sitter-julia-devel 
   - tree-sitter-kconfig 
   - tree-sitter-kconfig-devel 
   - tree-sitter-kdl 
@@ -45716,18 +45824,24 @@ unsorted:
   - tree-sitter-mail-devel 
   - tree-sitter-markdown 
   - tree-sitter-meson 
+  - tree-sitter-objc 
+  - tree-sitter-objc-devel 
   - tree-sitter-odin 
   - tree-sitter-odin-devel 
   - tree-sitter-org 
   - tree-sitter-org-devel 
   - tree-sitter-pem 
   - tree-sitter-pem-devel 
+  - tree-sitter-php 
+  - tree-sitter-php-devel 
   - tree-sitter-po 
   - tree-sitter-po-devel 
   - tree-sitter-poe-filter 
   - tree-sitter-poe-filter-devel 
   - tree-sitter-pony 
   - tree-sitter-pony-devel 
+  - tree-sitter-powershell 
+  - tree-sitter-powershell-devel 
   - tree-sitter-printf 
   - tree-sitter-printf-devel 
   - tree-sitter-properties 
@@ -45761,6 +45875,8 @@ unsorted:
   - tree-sitter-ruby-devel 
   - tree-sitter-rust 
   - tree-sitter-rust-devel 
+  - tree-sitter-scala 
+  - tree-sitter-scala-devel 
   - tree-sitter-scheme 
   - tree-sitter-scheme-devel 
   - tree-sitter-scss 
@@ -45775,6 +45891,8 @@ unsorted:
   - tree-sitter-starlark-devel 
   - tree-sitter-svelte 
   - tree-sitter-svelte-devel 
+  - tree-sitter-swift 
+  - tree-sitter-swift-devel 
   - tree-sitter-tablegen 
   - tree-sitter-tablegen-devel 
   - tree-sitter-tcl 
@@ -45793,6 +45911,8 @@ unsorted:
   - tree-sitter-ungrammar-devel 
   - tree-sitter-uxntal 
   - tree-sitter-uxntal-devel 
+  - tree-sitter-verilog 
+  - tree-sitter-verilog-devel 
   - tree-sitter-vim 
   - tree-sitter-vimdoc 
   - tree-sitter-vimdoc-devel 
