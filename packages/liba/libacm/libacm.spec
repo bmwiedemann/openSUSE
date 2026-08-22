@@ -1,7 +1,7 @@
 #
 # spec file for package libacm
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,24 +17,20 @@
 
 
 Name:           libacm
-%define lname   libacm-1_3
-%define commit  110a8a03806c2a4e00b772a32f17b7207060000f
-Version:        1.3+g7.110a8a0
+%define lname   libacm1
+Version:        1.5
 Release:        0
 Summary:        Decoder for ACM audio files
-License:        MIT AND LGPL-2.1-or-later
+License:        LGPL-2.1-or-later AND MIT
 Group:          Productivity/Multimedia/Video/Editors and Convertors
 URL:            https://github.com/markokr/libacm
-Source:         https://github.com/markokr/libacm/archive/%commit.tar.gz
-Patch1:         shared.patch
-Patch2:         autoconf-leap.patch
+Source:         https://github.com/markokr/libacm/archive/refs/tags/libacm_v%version.tar.gz
 BuildRequires:  autoconf >= 2.69
 BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  libtool >= 2
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(ao)
-BuildRequires:  xz
 
 %description
 Decoder library for InterPlay ACM audio files.
@@ -59,11 +55,11 @@ Decoder library for InterPlay ACM audio files.
 This subpackage contains the header files for libacm.
 
 %prep
-%autosetup -p1 -n %name-%commit
-./autogen.sh
+%autosetup -p1 -n %name-libacm_v%version
 
 %build
-%configure --disable-static
+./autogen.sh
+%configure --enable-shared --disable-static
 %make_build
 
 %install
@@ -76,12 +72,13 @@ rm -f "%buildroot/%_libdir"/*.la
 %ldconfig_scriptlets -n %lname
 
 %files -n %lname
-%_libdir/libacm-1.3.so
+%_libdir/libacm.so.*
 
 %files devel
 %_bindir/acmtool
 %_includedir/*.h
 %_libdir/libacm.so
+%_libdir/pkgconfig/*.pc
 %license COPYING
 
 %changelog

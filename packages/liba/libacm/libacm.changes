@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Aug 22 18:11:32 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.5
+  * Decoder: fix seeking with WAVC
+- Drop autoconf-leap.patch, shared.patch (merged)
+
+-------------------------------------------------------------------
+Sat Aug 22 07:08:43 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.4
+  * Backported ffmpeg fixes
+  * Remove precalculated tables
+  * Use force_chans = 0 to mean "always trust header in
+    acm_open_decoder"
+  * Make libacm.h usable from C++
+  * Document parts of API in libacm.h
+  * Check for alloc failures and avoid invalid alloc sizes
+
+-------------------------------------------------------------------
 Sun Sep 22 08:09:04 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Add autoconf-leap.patch to make Leap 15.x build succeed.
