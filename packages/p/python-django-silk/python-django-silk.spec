@@ -17,7 +17,7 @@
 
 
 Name:           python-django-silk
-Version:        5.5.0
+Version:        5.5.2
 Release:        0
 Summary:        Profiling for the Django Framework
 License:        MIT
