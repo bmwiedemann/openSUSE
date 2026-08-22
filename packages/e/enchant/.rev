@@ -400,4 +400,37 @@
     <comment></comment>
     <requestid>1336688</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>d27e01f3cf49a51190809083a176e923</srcmd5>
+    <version>2.8.19</version>
+    <time>1787427266</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.8.19:
+  + This release adds a provider for WinSpell.
+  + The change in the previous release to update the tests and
+    require the use of C++20 have been reverted.
+- Changes from version 2.8.18:
+  + This release fixes compatibility with the latest Vala compiler,
+    version 0.56.19.
+  + enchant(1) now assumes UTF-8 input and produces only UTF-8
+    output.
+  + The macOS spelling checker used to have a hard-wired list of
+    languages it supported. Drop this, and support all languages
+    supported by the system.
+  + Some code clean-up has been done, removing some unused code,
+    and making somr minor improvements to the build system.
+  + The tests have been updated to drop the use of the deprecated
+    codecvt APIs, and instead use u8 string literals. As a result,
+    Enchant’s build system now requires C++20.
+- Changes from version 2.8.17:
+  + Make enchant silently ignore -C flag, for better Emacs
+    compatibility.
+- Changes from version 2.8.16:
+  + Fix a bug introduced in 2.8.14: after rejecting a word for not
+    containing at least one letter, enchant(1) would skip the rest
+    of the line.
+
+- Update to version 2.8.15:</comment>
+    <requestid>1372906</requestid>
+  </revision>
 </revisionlist>

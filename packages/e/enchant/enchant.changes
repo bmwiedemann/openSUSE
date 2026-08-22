@@ -1,7 +1,35 @@
 -------------------------------------------------------------------
+Thu Aug 20 15:36:41 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.8.19:
+  + This release adds a provider for WinSpell.
+  + The change in the previous release to update the tests and
+    require the use of C++20 have been reverted.
+- Changes from version 2.8.18:
+  + This release fixes compatibility with the latest Vala compiler,
+    version 0.56.19.
+  + enchant(1) now assumes UTF-8 input and produces only UTF-8
+    output.
+  + The macOS spelling checker used to have a hard-wired list of
+    languages it supported. Drop this, and support all languages
+    supported by the system.
+  + Some code clean-up has been done, removing some unused code,
+    and making somr minor improvements to the build system.
+  + The tests have been updated to drop the use of the deprecated
+    codecvt APIs, and instead use u8 string literals. As a result,
+    Enchant’s build system now requires C++20.
+- Changes from version 2.8.17:
+  + Make enchant silently ignore -C flag, for better Emacs
+    compatibility.
+- Changes from version 2.8.16:
+  + Fix a bug introduced in 2.8.14: after rejecting a word for not
+    containing at least one letter, enchant(1) would skip the rest
+    of the line.
+
+-------------------------------------------------------------------
 Mon Feb 16 10:52:43 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
-- Update to version 2.5.15:
+- Update to version 2.8.15:
   + This release fixes two bugs related to personal word lists.
     - First, removing a word that happens to be at the end of a
       personal word list file has not worked since 2.7.0.
