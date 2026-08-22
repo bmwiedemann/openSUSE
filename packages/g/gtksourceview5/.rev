@@ -189,4 +189,15 @@
     <comment>Push GNOME 50</comment>
     <requestid>1345421</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>65a3029d11a20e73de36e660d414a5ee</srcmd5>
+    <version>5.20.0</version>
+    <time>1787427222</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gtksourceview5-tests subpackage with installed
+  tests for gnome-desktop-testing-runner
+
+- Initial package for openSUSE, version 5.1.0.</comment>
+    <requestid>1372149</requestid>
+  </revision>
 </revisionlist>

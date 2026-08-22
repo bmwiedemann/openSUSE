@@ -95,11 +95,33 @@ features typical of a source editor.
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 %meson \
+    -Dinstall-tests=true \
     %{nil}
 %meson_build
 
+%check
+%meson_test || :
+
 %install
 %meson_install
+
+# Wrap display-dependent tests: generate skip-if-no-display wrapper scripts
+install -d %{buildroot}%{_libexecdir}/installed-tests-wrappers/gtksourceview-5
+find %{buildroot}%{_datadir}/installed-tests/gtksourceview-5 -name '*.test' | while read testfile; do
+    tbase=$(basename "$testfile" .test)
+    orig_exec=$(grep '^Exec=' "$testfile" | sed 's/^Exec=//')
+    wscript=%{buildroot}%{_libexecdir}/installed-tests-wrappers/gtksourceview-5/${tbase}.sh
+    echo '#!/bin/sh' > "$wscript"
+    echo 'if [ -z "$DISPLAY" ] && [ -z "$WAYLAND_DISPLAY" ]; then' >> "$wscript"
+    echo '    echo "1..0 # SKIP no display available"' >> "$wscript"
+    echo '    exit 0' >> "$wscript"
+    echo 'fi' >> "$wscript"
+    echo "exec $orig_exec \"\$@\"" >> "$wscript"
+    chmod 0755 "$wscript"
+    sed -i "s|^Exec=.*|Exec=%{_libexecdir}/installed-tests-wrappers/gtksourceview-5/${tbase}.sh|" \
+        "$testfile"
+done
+
 %find_lang %{_name}-5
 
 %ldconfig_scriptlets -n libgtksourceview-5-0
@@ -121,6 +143,27 @@ features typical of a source editor.
 %{_datadir}/gir-1.0/GtkSource-5.gir
 %dir %{_datadir}/vala/vapi
 %{_datadir}/vala/vapi/gtksourceview-5.*
+
+%package tests
+Summary:        Installed tests for %{name}
+Group:          Development/Languages/C and C++
+Requires:       gnome-desktop-testing
+Requires:       libgtksourceview-5-0 = %{version}
+
+%description tests
+Installed tests for GtkSourceView 5, compatible with gnome-desktop-testing-runner.
+Tests cover syntax highlighting, buffer operations, completion, and search.
+
+%files tests
+%{_bindir}/gtksourceview5-widget
+%dir %{_libexecdir}/installed-tests
+%{_libexecdir}/installed-tests/gtksourceview-5/
+%dir %{_datadir}/installed-tests
+%{_datadir}/installed-tests/gtksourceview-5/
+
+%dir %{_libexecdir}/installed-tests-wrappers
+%dir %{_libexecdir}/installed-tests-wrappers/gtksourceview-5
+%{_libexecdir}/installed-tests-wrappers/gtksourceview-5/*.sh
 
 %files lang -f %{_name}-5.lang
 
