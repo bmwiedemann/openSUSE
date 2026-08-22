@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Aug 21 04:52:45 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 151.0.7922.173 (boo#1275913):
+  * CVE-2026-76017: Use after free in Chromoting
+  * CVE-2026-76018: Privilege elevation in Import
+  * CVE-2026-76019: Incorrect authorization in Workers
+  * CVE-2026-76020: Race condition in V8
+  * CVE-2026-76021: Use after free in DOM.
+  * CVE-2026-76022: Buffer overflow in Network
+  * CVE-2026-76023: Improper resource control in Linux Toolkit Theming
+
+-------------------------------------------------------------------
 Wed Aug 19 15:32:54 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 151.0.7922.169 (boo#1275706):
