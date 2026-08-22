@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Aug 22 13:52:40 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.19.2:
+  * fix: don't let NaN fill_value poison reductions of fully-
+    populated slices
+- update to 0.19.1:
+  * fix: avoid narrow-dtype overflow in reduceat group offsets
+
+-------------------------------------------------------------------
 Mon Jul  6 06:08:12 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.19.0:
