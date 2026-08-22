@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jul 24 08:41:31 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.170.0 (6.17)
+   see /usr/share/doc/packages/perl-LWP-Protocol-https/Changes
+
+  6.17      2026-07-23 14:32:07Z
+      - Move the live httpbin.org test from t/example.t to xt/author/example.t so
+        that a transient outage of the external service (e.g. a 503) can no longer
+        fail an end-user install. The test still runs in CI, and now skips
+        (rather than fails) when httpbin.org itself is unhealthy, e.g. returns a
+        5xx. (GH#100) (Claude Opus 4.8)
+
+  6.16      2026-07-23 03:48:07Z
+      - Remove undeclared Try::Tiny dependency from t/diag.t, which could cause
+        the test suite to fail to install on minimal perls (GH#96) (Olaf Alders)
+
+-------------------------------------------------------------------
 Tue Feb 24 06:17:08 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.150.0 (6.15)
