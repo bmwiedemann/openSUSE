@@ -19,7 +19,7 @@
 %define sover 5
 
 Name:           libgedit-gtksourceview
-Version:        299.7.0
+Version:        299.7.1
 Release:        0
 Summary:        Source code editing widget
 License:        LGPL-2.1-or-later
