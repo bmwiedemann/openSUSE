@@ -234,4 +234,15 @@ We need to take a look at this:
     <comment></comment>
     <requestid>1235513</requestid>
   </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>6353f5ef06bf25320aa9686573da1bc7</srcmd5>
+    <version>4.8.4</version>
+    <time>1787427222</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gtksourceview4-tests subpackage with installed
+  tests for gnome-desktop-testing-runner
+
+  gtksourceview 3.22.</comment>
+    <requestid>1372148</requestid>
+  </revision>
 </revisionlist>

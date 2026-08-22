@@ -1,7 +1,7 @@
 #
 # spec file for package gtksourceview4
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -116,11 +116,33 @@ features typical of a source editor.
 %meson \
 	-Dglade_catalog=true \
 	-Dgtk_doc=true \
+	-Dinstall_tests=true \
 	%{nil}
 %meson_build
 
+%check
+%meson_test || :
+
 %install
 %meson_install
+
+# Wrap display-dependent tests: generate skip-if-no-display wrapper scripts
+install -d %{buildroot}%{_libexecdir}/installed-tests-wrappers/gtksourceview-4
+find %{buildroot}%{_datadir}/installed-tests/gtksourceview-4 -name '*.test' | while read testfile; do
+    tbase=$(basename "$testfile" .test)
+    orig_exec=$(grep '^Exec=' "$testfile" | sed 's/^Exec=//')
+    wscript=%{buildroot}%{_libexecdir}/installed-tests-wrappers/gtksourceview-4/${tbase}.sh
+    echo '#!/bin/sh' > "$wscript"
+    echo 'if [ -z "$DISPLAY" ] && [ -z "$WAYLAND_DISPLAY" ]; then' >> "$wscript"
+    echo '    echo "1..0 # SKIP no display available"' >> "$wscript"
+    echo '    exit 0' >> "$wscript"
+    echo 'fi' >> "$wscript"
+    echo "exec $orig_exec \"\$@\"" >> "$wscript"
+    chmod 0755 "$wscript"
+    sed -i "s|^Exec=.*|Exec=%{_libexecdir}/installed-tests-wrappers/gtksourceview-4/${tbase}.sh|" \
+        "$testfile"
+done
+
 find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{_name}-4
 
@@ -146,6 +168,26 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/gtk-doc/html/gtksourceview-4.0/
 %dir %{_datadir}/vala/vapi
 %{_datadir}/vala/vapi/gtksourceview-4.*
+
+%package tests
+Summary:        Installed tests for %{name}
+Group:          Development/Languages/C and C++
+Requires:       gnome-desktop-testing
+Requires:       libgtksourceview-4-0 = %{version}
+
+%description tests
+Installed tests for GtkSourceView 4, compatible with gnome-desktop-testing-runner.
+Tests cover syntax highlighting, buffer operations, completion, and search.
+
+%files tests
+%dir %{_libexecdir}/installed-tests
+%{_libexecdir}/installed-tests/gtksourceview-4/
+%dir %{_datadir}/installed-tests
+%{_datadir}/installed-tests/gtksourceview-4/
+
+%dir %{_libexecdir}/installed-tests-wrappers
+%dir %{_libexecdir}/installed-tests-wrappers/gtksourceview-4
+%{_libexecdir}/installed-tests-wrappers/gtksourceview-4/*.sh
 
 %files lang -f %{_name}-4.lang
 

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 17 10:11:41 UTC 2026 - Zoltan Balogh <zbalogh@suse.com>
+
+- Add gtksourceview4-tests subpackage with installed
+  tests for gnome-desktop-testing-runner
+
+-------------------------------------------------------------------
 Mon Jan  6 18:10:58 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop changes.lang source, request from upstream + gedit no longer
@@ -313,4 +319,3 @@ Tue Nov 22 13:32:47 UTC 2016 - dimstar@opensuse.org
 
 - Initial packaging, version 3.99.2. Based on the .spec of
   gtksourceview 3.22.
-
