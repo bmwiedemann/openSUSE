@@ -2,34 +2,34 @@
 Thu Aug 13 07:45:34 UTC 2026 - Robert Frohl <rfrohl@suse.com>
 
 - Wireshark 4.6.8
-  * sharkd crash.
-  * sharkd crash.
-  * UMTS FP protocol dissector crash.
-  * RDP protocol dissector crash.
-  * TTX Logger file parser crash.
-  * Dissection engine reassembly crash.
-  * BUSMASTER file parser abnormal exit.
-  * Tektronix K12xx file parser crash.
-  * ERF file parser crash.
-  * Bluetooth Attribute Protocol dissector crash.
-  * Catapult DCT2000 file parser crash.
-  * C12.22 protocol dissector crash.
-  * CMS protocol dissector crash.
-  * H.245 protocol dissector crash.
-  * Kerberos protocol dissector crash.
-  * Bluetooth HFP Profile protocol dissector crash.
-  * Bluetooth BR/EDR FHS protocol dissector crash.
-  * 3gpp phone log file parser crash.
-  * Ixia IxVeriWave and Vector Informatik BLF file parser crashes on Windows.
-  * CMS protocol dissector crash.
-  * Pcapng file parser crash.
-  * SSH protocol dissector crash.
-  * ESS protocol dissector crash.
-  * X.509IF protocol dissector crash.
-  * RRC protocol dissector crash.
-  * C12.22 protocol dissector crash.
-  * Gammu DCT3 trace file parser crash.
-  * Bluetooth AVRCP Profile protocol dissector crash.
+  * CVE-2026-76891: sharkd crash (bsc#1275844).
+  * CVE-2026-76890: sharkd crash (bsc#1275841).
+  * CVE-2026-76889: UMTS FP protocol dissector crash (bsc#1275840).
+  * CVE-2026-76888: RDP protocol dissector crash (bsc#1275839).
+  * CVE-2026-19694: TTX Logger file parser crash (bsc#1275279).
+  * CVE-2026-76887: Dissection engine reassembly crash (bsc#1275838)
+  * CVE-2026-76926: BUSMASTER file parser abnormal exit (bsc#1275851).
+  * CVE-2026-76885: Tektronix K12xx file parser crash (bsc#1275835).
+  * CVE-2026-76884: ERF file parser crash (bsc#1275834).
+  * CVE-2026-76882: Bluetooth Attribute Protocol dissector crash (bsc#1275832).
+  * CVE-2026-76883: Catapult DCT2000 file parser crash (bsc#1275833).
+  * CVE-2026-76886: C12.22 protocol dissector crash (bsc#1275836).
+  * CVE-2026-76881: CMS protocol dissector crash (bsc#1275831).
+  * CVE-2026-76927: H.245 protocol dissector crash (bsc#1275852).
+  * CVE-2026-76924: Kerberos protocol dissector crash (bsc#1275850).
+  * CVE-2026-76923: Bluetooth HFP Profile protocol dissector crash (bsc#1275849).
+  * CVE-2026-76922: Bluetooth BR/EDR FHS protocol dissector crash (bsc#1275848).
+  * CVE-2026-76920: 3gpp phone log file parser crash (bsc#1275846).
+  * CVE-2026-19696: Ixia IxVeriWave and Vector Informatik BLF file parser crashes on Windows (bsc#1275281).
+  * CVE-2026-76921: CMS protocol dissector crash (bsc#1275847).
+  * CVE-2026-76929: Pcapng file parser crash (bsc#1275854).
+  * CVE-2026-76918: SSH protocol dissector crash (bsc#1275843).
+  * CVE-2026-76919: ESS protocol dissector crash (bsc#1275845).
+  * CVE-2026-76928: X.509IF protocol dissector crash (bsc#1275853).
+  * CVE-2026-76880: RRC protocol dissector crash (bsc#1275829).
+  * CVE-2026-76879: C12.22 protocol dissector crash (bsc#1275828).
+  * CVE-2026-19695: Gammu DCT3 trace file parser crash (bsc#1275280).
+  * CVE-2026-76917: Bluetooth AVRCP Profile protocol dissector crash (bsc#1275842).
 - Many more features, bug fixes and updated protocol support as listed in:
   https://www.wireshark.org/docs/relnotes/wireshark-4.6.8.html
 
