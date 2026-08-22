@@ -45,4 +45,19 @@
   * prepare release</comment>
     <requestid>1360751</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9e3d69e30f4aa2398169b855322d2dbd</srcmd5>
+    <version>1.3.0</version>
+    <time>1787427314</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.3.0:
+  * Summary: Preserve raw data and auto behaviour
+  * Enhance k-fold cross-validation with random seed and
+    pointwise handling
+  * Add moment matching arg to main `loo()` function
+  * Update Code of Conduct
+  * Fix typos, grammar, and deprecated links in README and
+    diagnostics</comment>
+    <requestid>1372936</requestid>
+  </revision>
 </revisionlist>

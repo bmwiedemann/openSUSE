@@ -1,7 +1,7 @@
 #
 # spec file for package python-arviz-stats
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,30 +16,28 @@
 #
 
 
-# Upstream supports Python 3.12+
-%define skip_python311 1
 Name:           python-arviz-stats
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        Statistical computation and diagnostics for ArviZ
 License:        Apache-2.0
 URL:            https://github.com/arviz-devs/arviz-base
 Source:         https://github.com/arviz-devs/arviz-stats/archive/refs/tags/v%{version}.tar.gz#/arviz_stats-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module base >= 3.12}
 BuildRequires:  %{python_module flit-core >= 3.4}
 BuildRequires:  %{python_module pip}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module numpy >= 2}
-BuildRequires:  %{python_module scipy >= 1.13}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytest-cov}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module scipy >= 1.13}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-numpy >= 2
 Requires:       python-scipy >= 1.13
 Requires:       python-xarray-einstats >= 0.8
-Suggests:       python-arviz-base >= 1.0
+Suggests:       python-arviz-base >= 1.3.0
 Suggests:       python-numba
 BuildArch:      noarch
 %python_subpackages
