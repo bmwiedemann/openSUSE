@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Aug 21 18:37:21 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.13.1:
+  * Fixed a regression in blocks() when fill_value is set and the
+    block size is longer than the file
+- 0.13.0:
+  * numpy is now a hard dependency (was Recommends)
+  * Add compression_level and bitrate_mode for compressed formats
+  * Fix blocks() on files shorter than the block size
+- Rebase 0001-Fix-libsndfile-versioning.patch
+- Switch to %autosetup
+- Require libsndfile1 directly instead of a parse-time rpm query
+  of libsndfile-devel
+- Use pkgconfig(sndfile) instead of libsndfile-devel
+- Skip test_write_mp3_compression: openSUSE libsndfile is built
+  without MPEG
+
+-------------------------------------------------------------------
 Sun Sep 29 03:20:29 UTC 2024 - Guang Yee <gyee@suse.com>
 
 - Add 0001-Fix-libsndfile-versioning.patch
