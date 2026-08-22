@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Aug 21 18:34:01 UTC 2026 - zeus <dunning1kruger@mailfence.com>
+
+- Update to version 0.20.2:
+  * Display config errors in labnag or optionally another client. 
+  Also support associated option <core><errorCommand>
+  * Destroy scene-output before scene cleanup to avoid rare abort.
+  * Do not leave a failed output render format on the pending state
+  * When window-cycling is cancelled give back focus to the window
+  that had it before cycling started
+  * Fix missing panel icon with Firefox running under X11
+  * abnag(1): document defaults
+  * Force the initial modeset commit to fix an issue with 
+  QEMU/virtio-gpu and WLR_NO_HARDWARE_CURSORS=1
+
+-------------------------------------------------------------------
 Tue Jun 16 08:39:02 UTC 2026 - zeus <dunning1kruger@mailfence.com>
 
 - Update to version 0.20.1:
