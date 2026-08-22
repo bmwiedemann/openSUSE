@@ -285,4 +285,15 @@
     <comment>Push GNOME 50</comment>
     <requestid>1345431</requestid>
   </revision>
+  <revision rev="36" vrev="3">
+    <srcmd5>0f085c2ab3f1d63e4a762be897535c84</srcmd5>
+    <version>3.26.4</version>
+    <time>1787427217</time>
+    <user>dimstar_suse</user>
+    <comment>- Add geocode-glib-tests subpackage with installed
+  tests for gnome-desktop-testing-runner
+
+- Initial package (version 0.99.0).</comment>
+    <requestid>1372144</requestid>
+  </revision>
 </revisionlist>

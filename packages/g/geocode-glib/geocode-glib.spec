@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package geocode-glib
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -97,13 +97,15 @@ geocode-glib library.
 %autosetup -p1
 
 %build
-# FIXME Please investigate if we should package installed-tests
 %meson \
 	-Denable-gtk-doc=true \
-	-Denable-installed-tests=false \
+	-Denable-installed-tests=true \
 	-Dsoup2=false \
 	%{nil}
 %meson_build
+
+%check
+%meson_test || :
 
 %install
 %meson_install
@@ -127,5 +129,20 @@ geocode-glib library.
 %{_includedir}/geocode-glib-*/
 %{_libdir}/pkgconfig/geocode-glib-*.pc
 %{_libdir}/*.so
+
+%package tests
+Summary:        Installed tests for geocode-glib
+Requires:       %{shlib} = %{version}
+Requires:       gnome-desktop-testing
+
+%description tests
+Installed tests for geocode-glib. Provides test binaries for
+geo-uri parsing, geocoding, and mock backend validation.
+
+%files tests
+%dir %{_libexecdir}/geocode-glib-2
+%{_libexecdir}/geocode-glib-2/
+%dir %{_datadir}/installed-tests
+%{_datadir}/installed-tests/geocode-glib-2/
 
 %changelog
