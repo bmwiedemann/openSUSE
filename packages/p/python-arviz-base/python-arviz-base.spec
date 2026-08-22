@@ -16,10 +16,8 @@
 #
 
 
-# Upstream supports Python 3.12+
-%define skip_python311 1
 Name:           python-arviz-base
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        Base ArviZ features and converters
 License:        Apache-2.0
