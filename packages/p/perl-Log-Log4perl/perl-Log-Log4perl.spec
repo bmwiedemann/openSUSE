@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Log-Log4perl
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,14 @@
 
 %define cpan_name Log-Log4perl
 Name:           perl-Log-Log4perl
-Version:        1.570.0
+Version:        1.580.0
 Release:        0
-# 1.57 -> normalize -> 1.570.0
-%define cpan_version 1.57
+# 1.58 -> normalize -> 1.580.0
+%define cpan_version 1.58
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Log4j implementation for Perl
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/E/ET/ETJ/%{cpan_name}-%{cpan_version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/M/MS/MSCHILLI/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 Source100:      README.md
 BuildArch:      noarch
@@ -34,7 +34,6 @@ BuildRequires:  perl-macros
 BuildRequires:  perl(File::Path) >= 2.07
 BuildRequires:  perl(Test::More) >= 0.88
 Requires:       perl(File::Path) >= 2.07
-Provides:       perl(L4pResurrectable) = 0.10.0
 Provides:       perl(Log::Log4perl) = %{version}
 Provides:       perl(Log::Log4perl::Appender)
 Provides:       perl(Log::Log4perl::Appender::Buffer) = 1.530.0
