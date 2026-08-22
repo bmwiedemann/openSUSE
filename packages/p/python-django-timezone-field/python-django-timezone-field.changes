@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 21 20:57:22 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.2.2:
+  * Test aginst django 6.1 pre-release
+
+-------------------------------------------------------------------
 Wed Jan  7 00:44:15 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 7.2.1:

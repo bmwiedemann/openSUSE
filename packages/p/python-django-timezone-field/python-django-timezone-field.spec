@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-django-timezone-field
-Version:        7.2.1
+Version:        7.2.2
 Release:        0
 Summary:        Django app providing database and form fields for pytz timezone objects
 License:        BSD-2-Clause
