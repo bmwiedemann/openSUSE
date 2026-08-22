@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Aug 20 07:19:27 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 2026.4:
+  * Revert the static delta decompression-size safety margin
+    introduced in 2026.3, which turned out to reject legitimate
+    large deltas at apply time -- most visibly, Flathub Firefox
+    updates were failing with Decompressed delta part exceeds
+    configured limit. Both the margin heuristic and the flat 512MiB
+    per-part decompression cap it fed into have been dropped for
+    now. This deliberately reopens a DoS (unbounded decompression
+    of a given delta part) until a precise, per-part exact-size-
+    based replacement lands in a future release. The LZMA decoder
+    memory limit (100 MiB) from that same advisory's fix is
+    unaffected and remains in place (boo#1273918)
+  * core: fixed a bug that caused every other xattr entry to be
+    skipped during validation, letting a crafted xattr array hide
+    unsorted or duplicate entries in odd-indexed slots
+
+-------------------------------------------------------------------
 Thu Aug  6 20:27:52 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 2026.3:
