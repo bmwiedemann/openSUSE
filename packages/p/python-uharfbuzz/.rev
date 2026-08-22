@@ -164,4 +164,16 @@
   * Bind hb_face_set_get_table_tags_func()</comment>
     <requestid>1359316</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>9a61fb4a0b1c6a1256af7897c4146c02</srcmd5>
+    <version>0.56.0</version>
+    <time>1787427386</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.56.0:
+  * Publish Pyodide wheels to PyPI (PEP 783)
+  * Update to HarfBuzz 14.3.0
+  * Bind fill-glyph paint API
+  * Bind new SubsetFlags</comment>
+    <requestid>1373071</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Aug 22 13:47:29 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.56.0:
+  * Publish Pyodide wheels to PyPI (PEP 783)
+  * Update to HarfBuzz 14.3.0
+  * Bind fill-glyph paint API
+  * Bind new SubsetFlags
+
+-------------------------------------------------------------------
 Sun Jun 14 20:26:41 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.55.0:
