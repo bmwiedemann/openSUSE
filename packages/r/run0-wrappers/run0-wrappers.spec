@@ -16,7 +16,7 @@
 #
 
 Name:           run0-wrappers
-Version:        0.5.0+git20260717.efd7268
+Version:        0.5.0+git20260822.4d653d8
 Release:        0
 Summary:        Configs and scripts to simulate some sudo and su behavior with run0
 License:        BSD-2-Clause

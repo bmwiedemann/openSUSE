@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Aug 22 05:09:44 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.5.0+git20260822.4d653d8:
+  * run0-sudo -E: skip invalid variable names [bsc#1274617]
+  * run0-su: fix type in error message (#7)
+
+-------------------------------------------------------------------
 Fri Jul 17 14:40:45 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 0.5.0+git20260717.efd7268:

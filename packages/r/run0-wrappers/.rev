@@ -41,4 +41,14 @@
   * run0-sudo: improved version of -k/-K options (#6)</comment>
     <requestid>1366431</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5ad170c1b9f6b54ba786746014a93fed</srcmd5>
+    <version>0.5.0+git20260822.4d653d8</version>
+    <time>1787427332</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.5.0+git20260822.4d653d8:
+  * run0-sudo -E: skip invalid variable names [bsc#1274617]
+  * run0-su: fix type in error message (#7)</comment>
+    <requestid>1372964</requestid>
+  </revision>
 </revisionlist>
