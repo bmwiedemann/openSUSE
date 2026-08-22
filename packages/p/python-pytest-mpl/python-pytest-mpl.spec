@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-mpl
-Version:        0.18.0
+Version:        0.19.0
 Release:        0
 Summary:        Pytest plugin for testing Matplotlib figures
 License:        BSD-2-Clause
