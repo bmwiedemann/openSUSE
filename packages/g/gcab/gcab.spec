@@ -1,7 +1,7 @@
 #
 # spec file for package gcab
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -79,6 +79,8 @@ It supports creation of archives with simple MSZIP compression.
 This package provides development files to build code against
 libgcab.
 
+
+
 %lang_package
 
 %prep
@@ -88,13 +90,16 @@ libgcab.
 %meson \
 	-D docs=true \
 	-D introspection=true \
-	-D tests=false \
+	-D tests=true \
 	%{nil}
 %meson_build
 
 %install
 %meson_install
 %find_lang %{name}
+
+%check
+%meson_test
 
 %post -n libgcab-1_0-0 -p /sbin/ldconfig
 %postun -n libgcab-1_0-0 -p /sbin/ldconfig
