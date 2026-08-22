@@ -41,7 +41,7 @@
 %global big_endian 1
 %endif
 Name:           mozjs%{major}
-Version:        140.13.0
+Version:        140.14.0
 Release:        1%{?dist}
 Summary:        SpiderMonkey JavaScript library
 License:        MPL-2.0
