@@ -439,4 +439,15 @@
   + Fix static builds. (forwarded request 1304580 from iznogood)</comment>
     <requestid>1305430</requestid>
   </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>9f2f6b17b7c4f153381badf5369c11db</srcmd5>
+    <version>1.10.8</version>
+    <time>1787427223</time>
+    <user>dimstar_suse</user>
+    <comment>- Add json-glib-tests subpackage with installed tests
+  for gnome-desktop-testing-runner
+
+- Initial package of 0.6.2 for openSUSE</comment>
+    <requestid>1372150</requestid>
+  </revision>
 </revisionlist>

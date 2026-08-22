@@ -1,7 +1,7 @@
 #
 # spec file for package json-glib
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2009 Dominique Leuenberger, Almere, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -132,10 +132,23 @@ json-glib library.
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
 %{_datadir}/gir-1.0/*.gir
-%dir %{_datadir}/installed-tests
+
+%package tests
+Summary:        Installed tests for %{name}
+Group:          Development/Libraries/Other
+Requires:       gnome-desktop-testing
+Requires:       libjson-glib-1_0-0 = %{version}
+
+%description tests
+Installed tests for json-glib, compatible with gnome-desktop-testing-runner.
+Tests cover JSON parsing, serialization, and object mapping.
+Run with: gnome-desktop-testing-runner json-glib-1.0
+
+%files tests
 %dir %{_libexecdir}/installed-tests
-%{_datadir}/installed-tests/json-glib-1.0/
 %{_libexecdir}/installed-tests/json-glib-1.0/
+%dir %{_datadir}/installed-tests
+%{_datadir}/installed-tests/json-glib-1.0/
 
 %files lang -f %{name}-1.0.lang
 
