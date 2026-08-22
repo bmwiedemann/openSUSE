@@ -1864,4 +1864,14 @@ mostly-working synapse than nothing at all) and the package has been update to
 - Update to 1.158.0</comment>
     <requestid>1369603</requestid>
   </revision>
+  <revision rev="168" vrev="1">
+    <srcmd5>73ad13d82d84ffb58e56901f7bd41946</srcmd5>
+    <version>1.159.0</version>
+    <time>1787427415</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1371846 from darix
+
+- Update to 1.159.0</comment>
+    <requestid>1373120</requestid>
+  </revision>
 </revisionlist>

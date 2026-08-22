@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Tue Aug 18 20:26:21 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.159.0
+  - Features
+    - Add optional support for MSC4429: Profile Updates for Legacy
+      Sync. Currently defaults to not enabled, and is limited to
+      local users only for the sync results. (#19556)
+  - Bugfixes
+    - Fix thumbnail generation failing for MPO images. Animations
+      that cannot be decoded now fall back to a static thumbnail.
+      (#20025)
+    - Fix the quarantined_media replication stream never being sent
+      when the configured quarantined_media_changes stream writer
+      is a worker. Introduced in v1.152.0. (#20085)
+    - Updates to the Docker image
+    - Run with PYTHONUNBUFFERED=1 to ensure that we can always see
+      log output when things go wrong. (#20075)
+  - Improved Documentation
+    - Correct the documentation for the
+      on_media_upload_limit_exceeded module callback with regards
+      to where it is called from. (#20018)
+    - Add upgrade notes to point out updated Debian package signing
+      key. (#20066)
+    - Update stream cheatsheet docs to re-link
+      synapse/config/workers.py which has more references. (#20086)
+  - Internal Changes
+    - Fix tests that use homeserver_to_use=GenericWorkerServer not
+      being able to be run standalone. (#20017)
+    - Fix RemoteJoinHelper test helper to handle room version "12"
+      rooms. Contributed by @famedly @jason-famedly. (#20021)
+    - Fix release script announcement to link to correct release
+      branch of changelog. (#20023)
+    - Dust off make_full_schema and add CI using it to show schema
+      diffs. (#20027)
+    - Remove broken DROP statements for SQLite in make_full_schema
+      script. (#20028)
+    - Document how to capture a JSON snapshot of a Grafana
+      dashboard to aid in debugging. (#20048)
+    - Routinely purge old cancelled tasks from the database.
+      (#20068)
+    - Introduce an RdataSafeValue type and correct some minor type
+      annotation mistakes. (#20071)
+    - Set idle_in_transaction_session_timeout (default 30 minutes)
+      on new PostgreSQL connections, so that wedged connections
+      don't hold locks or block vacuum indefinitely. (#20077)
+
+-------------------------------------------------------------------
 Tue Aug  4 21:56:49 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 1.158.0
