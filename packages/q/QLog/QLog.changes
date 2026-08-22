@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Sat Aug 22 09:28:32 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 0.52.0:
+  * [NEW] - QSL Printing - Added Custom Paper Size
+  * [NEW] - FLDigi Logging - Added ADIF UDP logging method
+  * [NEW] - Services - Added QSLInfo.de as the QSL Manager Service
+  * [NEW] - Alerts - Added ability to clear selected alerts
+  * [NEW] - LoTW - Added an All Callsigns option
+  * [NEW] - LoTW/eQSL - Report reasons for unmatched QSOs
+  * [NEW] - Online Map - Added HeardMe Spot from PSKReporter and RBN
+  * [NEW] - Online Map - WSJTX-CQ Added the second ring if SNR > -15dB
+  * [NEW] - Online Map - Added interactive antenna control; Target Antenna context menu
+  * [NEW] - Offline Map - Added zoom, panning, and QSO path fitting
+  * [NEW] - Settings - Antenna profile can be selected automatically by TX band
+  * [NEW] - Settings - Antenna profile can have an Assigned Rotator
+  * [NEW] - Settings - Added an option to hide DXCC entity flags
+  * [NEW] - Statistics - Added QSO histogram by operator callsign
+  * [NEW] - Added direct labeling of QSL Sent QSO context menu
+  * [NEW] - Contest - Added Flexible Exchange Linking
+  * [NEW] - Rotator Widget - Add persistent map navigation (zooming/moving)
+  * [CHANGED] - Online Map - Improve dark mode night-side visibility
+  * [CHANGED] - Online Map - Adapt antenna beam length to map context
+  * [CHANGED] - ADI/ADX Import - Added checks of enumerated values
+  * [CHANGED] - ADI/ADX Import - Warnings are displayed if an incorrect enum
+  * [CHANGED] - Logging External QSO - Warn once per station context is different
+  * [CHANGED] - LoTW - Do not overwrite paper QSL received-via field
+  * [CHANGED] - LoTW - Resolve ambiguous QSL matches by exact time
+  * [CHANGED] - Activity Editor - Rotator Override takes priority over the antenna's Assigned Rotator
+  * [CHANGED] - Main Menu - Removed Equipment - Added Power On-Off buttons to corresponding widgets
+  * Fixed WAAC not connected to the Log
+  * Fixed Rig Widget displays an incorrect Bandmap Guide Label
+  * Fixed Cannot directly edit notes or multiline fields
+  * Fixed LoTW - Merge QSL credits instead of overwriting them
+  * Fixed LoTW - Case-insensitive compare for SAT_NAME
+  * Fixed eQSL - Refresh AG status for redownloaded confirmations
+  * Fixed Rotator - Apply antenna azimuth offset consistently across drivers
+  * Fixed Offline Map Ant Path calculation
+  * Fixed Rotator Widget - Use circular distance for azimuth deadband
+  * Fixed QSL confirmation status is not displayed correctly in QSO Detail and tooltip
+  * Fixed DXCC flag assignments and documented neutral handling of territorial disputes
+  * Fixed EQSL abort crash
+  * Fixed serial parity configuration passed to rigctld
+  * Fixed Added more lighthouse suffixes LH, LS, LT
+  * Hamlib Share Rig - various fixes
+  * Omnirig - various fixes
+  * TCI - various fixes
+  * Flrig - various fixes
+  * Hamlib Rotaror - various fixes
+  * PSTRot - various fixes
+  * Rotator Widget - various fixes
+
+-------------------------------------------------------------------
 Tue Jul  7 16:36:39 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 0.51.1:

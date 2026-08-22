@@ -128,4 +128,12 @@
     <comment>QLog 0.51.1 (forwarded request 1364367 from AndreasStieger)</comment>
     <requestid>1364368</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>73af607a74119acefd9462e0061f74ee</srcmd5>
+    <version>0.52.0</version>
+    <time>1787427363</time>
+    <user>dimstar_suse</user>
+    <comment>QLog 0.52.0 (forwarded request 1373048 from AndreasStieger)</comment>
+    <requestid>1373049</requestid>
+  </revision>
 </revisionlist>
