@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Aug 22 14:58:16 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix the very first start of comfyui aborting with a
+  FileNotFoundError instead of serving the web UI: add
+  comfyui-create-custom-nodes-directory.patch, which creates the
+  custom_nodes directory in the per-user base directory
+- Load the custom nodes shipped with ComfyUI again: the per-user
+  base directory had hidden them, so SaveImageWebsocket, used by
+  the packaged websocket API example, was unavailable
+- Do not create the per-user directory tree for comfyui --help
+- Require python-comfyui-frontend-package 1.50.6 (XSS fixes
+  GHSA-2gr5-vw2p-2hcf, GHSA-j6xv-rx8r-mh6j, GHSA-8xxc-66vh-2pf3)
+
+-------------------------------------------------------------------
 Fri Aug 21 09:01:47 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Initial package of ComfyUI 0.33.3: node-graph engine for local

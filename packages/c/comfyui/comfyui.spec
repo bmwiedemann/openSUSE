@@ -27,6 +27,9 @@ License:        GPL-3.0-only
 URL:            https://github.com/Comfy-Org/ComfyUI
 Source0:        https://github.com/Comfy-Org/ComfyUI/archive/refs/tags/v%{version}.tar.gz#/ComfyUI-%{version}.tar.gz
 Source1:        comfyui.sh
+Source2:        comfyui-packaged-paths.yaml
+# PATCH-FIX-UPSTREAM comfyui-create-custom-nodes-directory.patch gh#Comfy-Org/ComfyUI#8110 gh#Comfy-Org/ComfyUI#8434 mpluskal@suse.com -- create custom_nodes under --base-directory, main.py lists it before the server starts
+Patch0:         comfyui-create-custom-nodes-directory.patch
 BuildRequires:  %{python_module base}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -43,7 +46,7 @@ Requires:       %{primary_python}-blake3
 Requires:       %{primary_python}-comfy-aimdo = 0.4.13
 Requires:       %{primary_python}-comfy-kitchen = 0.2.31
 Requires:       %{primary_python}-comfyui-embedded-docs >= 0.5.9
-Requires:       %{primary_python}-comfyui-frontend-package = 1.49.6
+Requires:       %{primary_python}-comfyui-frontend-package = 1.50.6
 Requires:       %{primary_python}-comfyui-workflow-templates = 0.11.44
 Requires:       %{primary_python}-einops
 Requires:       %{primary_python}-filelock
@@ -80,8 +83,9 @@ HTTP API and a browser UI are included.
 
 The packaged tree is read-only. Models, custom nodes, input, output, temp
 and user state live under the per-user --base-directory (default:
-$XDG_DATA_HOME/comfyui or ~/.local/share/comfyui). ComfyUI-Manager is not
-enabled.
+$XDG_DATA_HOME/comfyui or ~/.local/share/comfyui); the custom nodes shipped
+with ComfyUI itself are loaded from the package tree as well.
+ComfyUI-Manager is not enabled.
 
 %prep
 %autosetup -p1 -n ComfyUI-%{version}
@@ -126,6 +130,10 @@ sed -e 's|@@PYTHON@@|%{_bindir}/python3|g' \
     -e 's|@@DATADIR@@|%{_datadir}/comfyui|g' \
     %{SOURCE1} > %{buildroot}%{_bindir}/comfyui
 chmod 0755 %{buildroot}%{_bindir}/comfyui
+# --base-directory moves the custom_nodes search path into the user profile;
+# register the packaged one as an additional path so both are loaded.
+sed -e 's|@@DATADIR@@|%{_datadir}/comfyui|g' \
+    %{SOURCE2} > %{buildroot}%{_datadir}/comfyui/comfyui-packaged-paths.yaml
 %fdupes %{buildroot}%{_datadir}/comfyui
 
 %check
@@ -135,6 +143,15 @@ chmod 0755 %{buildroot}%{_bindir}/comfyui
 # BuildRequires resolve in this project.
 sh -n %{buildroot}%{_bindir}/comfyui
 %python_expand $python %{buildroot}%{_datadir}/comfyui/main.py --help
+# The launcher must not touch the filesystem for a query-only invocation.
+xdg=$(mktemp -d)
+XDG_DATA_HOME="$xdg" sh %{buildroot}%{_bindir}/comfyui --help >/dev/null 2>&1 || :
+test -z "$(ls -A "$xdg")"
+rm -rf "$xdg"
+# The extra search path must resolve to the packaged custom nodes.
+grep -q '^  custom_nodes: %{_datadir}/comfyui/custom_nodes$' \
+     %{buildroot}%{_datadir}/comfyui/comfyui-packaged-paths.yaml
+test -f %{buildroot}%{_datadir}/comfyui/custom_nodes/websocket_image_save.py
 
 %files
 %license LICENSE

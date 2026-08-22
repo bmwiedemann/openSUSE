@@ -1,0 +1,14 @@
+# Installed by the comfyui package; loaded by the comfyui launcher.
+#
+# The launcher passes --base-directory so that models, custom_nodes, input,
+# output, temp and user live in a writable per-user tree. That also moves the
+# custom_nodes search path off the read-only package tree, which would hide
+# the custom nodes shipped with ComfyUI itself. Register the packaged
+# directory as an additional search path.
+#
+# is_default keeps the packaged directory first in the search list. Custom
+# nodes are registered last-wins, so a user node of the same name still
+# overrides the packaged one.
+comfyui-packaged:
+  is_default: true
+  custom_nodes: @@DATADIR@@/custom_nodes
