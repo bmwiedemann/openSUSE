@@ -280,4 +280,41 @@ Fri Apr  3 17:35:47 UTC 2026 - Dirk Müller &lt;dmueller@suse.com&gt;
 </comment>
     <requestid>1372737</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>6ac49fecebb76a466d93f3804c2444c7</srcmd5>
+    <version>18.1.0</version>
+    <time>1787427345</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 18.1.0:
+  * ## Features
+  * Infer the specific stream and codec context types for all
+    FFmpeg encoder names in type-checked code by @WyattBlue.
+  * Add `CodecContext.supported_options` to discover generic and
+    codec-specific options by @WyattBlue (#2032).
+  * Add `Packet.rescale_ts()` to rescale packet PTS, DTS, and
+    duration to a new `AVRational` time base by @WyattBlue.
+  * Support reusing the thread's current CUDA context via a
+    `current_ctx` flag on `CudaContext` and
+    `VideoFrame.from_dlpack`, for interop with libraries like
+    PyTorch that initialize CUDA first by @Yozer (#2339).
+  * `VideoFrame.from_dlpack` no longer requires restating
+    `primary_ctx`/`current_ctx` when passing an explicit
+    `cuda_context`; the flags are only validated when explicitly
+    given by @WyattBlue.
+  * Support passing an explicit CUDA stream to FFmpeg CUDA
+    operations, including NVENC input and output, via a
+    `cuda_stream` parameter on `CudaContext`; currently limited
+    to logical CUDA device 0 by @Yozer (#2360).
+  * Add `av.AVRational`, an exact rational number stored as two
+    int32s that mirrors FFmpeg's `AVRational`.
+    `Codec.frame_rates` now holds these rather than
+    `fractions.Fraction`, and every setter that accepts a
+    `Fraction` also accepts an `AVRational`. Unset rational
+    attributes are falsy, so test them with `if not
+    stream.time_base:` rather than `is None` by @WyattBlue.
+  * Add `Frame.metadata`, the metadata FFmpeg attaches to a
+    frame, by @WyattBlue.
+  * Add `CodecContext.level` by @WyattBlue.</comment>
+    <requestid>1373037</requestid>
+  </revision>
 </revisionlist>

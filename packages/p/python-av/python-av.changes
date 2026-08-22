@@ -1,4 +1,175 @@
 -------------------------------------------------------------------
+Sat Aug 22 09:32:13 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 18.1.0:
+  * ## Features
+  * Infer the specific stream and codec context types for all
+    FFmpeg encoder names in type-checked code by @WyattBlue.
+  * Add `CodecContext.supported_options` to discover generic and
+    codec-specific options by @WyattBlue (#2032).
+  * Add `Packet.rescale_ts()` to rescale packet PTS, DTS, and
+    duration to a new `AVRational` time base by @WyattBlue.
+  * Support reusing the thread's current CUDA context via a
+    `current_ctx` flag on `CudaContext` and
+    `VideoFrame.from_dlpack`, for interop with libraries like
+    PyTorch that initialize CUDA first by @Yozer (#2339).
+  * `VideoFrame.from_dlpack` no longer requires restating
+    `primary_ctx`/`current_ctx` when passing an explicit
+    `cuda_context`; the flags are only validated when explicitly
+    given by @WyattBlue.
+  * Support passing an explicit CUDA stream to FFmpeg CUDA
+    operations, including NVENC input and output, via a
+    `cuda_stream` parameter on `CudaContext`; currently limited
+    to logical CUDA device 0 by @Yozer (#2360).
+  * Add `av.AVRational`, an exact rational number stored as two
+    int32s that mirrors FFmpeg's `AVRational`.
+    `Codec.frame_rates` now holds these rather than
+    `fractions.Fraction`, and every setter that accepts a
+    `Fraction` also accepts an `AVRational`. Unset rational
+    attributes are falsy, so test them with `if not
+    stream.time_base:` rather than `is None` by @WyattBlue.
+  * Add `Frame.metadata`, the metadata FFmpeg attaches to a
+    frame, by @WyattBlue.
+  * Add `CodecContext.level` by @WyattBlue.
+  * Add `VideoCodecContext.field_order` by @WyattBlue.
+  * `VideoFrame.save` now forwards keyword arguments to the
+    encoder, letting callers trade file size for speed (e.g.
+    `pred="none"` or `compression_level=1` for PNG, `qscale=2`
+    for JPG) by @WyattBlue.
+  * Add `InputContainer.start_time_realtime`, the stream's start
+    time in microseconds since the Unix epoch, which RTSP derives
+    from RTCP sender reports, by @WyattBlue (#2365).
+  * ## Fixes
+  * Fix `VideoFrame.save` raising `AttributeError` when given a
+    `Path` rather than a `str` by @WyattBlue.
+  * Fix a frame rate assigned to a `VideoStream` after
+    `add_stream` being dropped from the output; the codec
+    context's frame rate is now copied to the stream before the
+    header is written by @WyattBlue (#2301).
+  * Prevent crashes and corrupted output when structural codec
+    properties are changed after an output stream has been opened
+    by @WyattBlue, reported by @oakaigh (#2232).
+  * Fix a crash when using a stream that has no `CodecContext` (a
+    demuxed stream with no available decoder, such as one from a
+    truncated file, or a stream created by `add_mux_stream`);
+    decoding now raises `DecoderNotFoundError`, encoding now
+    raises `EncoderNotFoundError`, and `BitStreamFilterContext`
+    accepts such a stream as `out_stream` by @WyattBlue, reported
+    by @justinrmiller (#2344).
+  * ## Misc
+  * Support building from source against FFmpeg 9.0 by
+    @WyattBlue. The binary wheels still ship FFmpeg 8.1.2.
+- update to 18.0.0:
+  * ## Major
+  * Remove Support for Python 3.10
+  * Upgrade binary wheels to ffmpeg 8.1.2
+  * ## Features
+  * Support HW encoding via a `hwaccel` parameter on
+    `OutputContainer.add_stream` (e.g. `h264_vaapi`,
+    `h264_nvenc`, `h264_videotoolbox`); software frames passed to
+    `encode` are uploaded to the device automatically by
+    @WyattBlue (#2156).
+  * Expose `sw_format` on `VideoCodecContext`, and allow
+    configuring the software format of hardware encoders by
+    @WyattBlue.
+  * Add `options` parameter to `AudioResampler` for passing
+    `libswresample` options (e.g. `resampler`, `filter_size`,
+    `cutoff`) by @WyattBlue (#2262).
+  * Support `yuv420p10le` in `VideoFrame.to_ndarray` and
+    `VideoFrame.from_ndarray` by @WyattBlue (#1981).
+  * Add `at` parameter to `Graph.push` and `Graph.vpush` to push
+    a frame to a single buffer source by index, for multi-input
+    filters like `overlay` by @WyattBlue.
+  * `find_best_pix_fmt_of_list` now returns the loss as a
+    `PixFmtLoss` `enum.IntFlag` instead of a plain `int` by
+    @WyattBlue (#2300).
+  * Add `Colorspace.BT2020` by @mark-oshea.
+  * `BitStreamFilterContext` now accepts a `Codec` or a codec-
+    name `str` as `in_stream` to pin the input codec without a
+    full `Stream` by @WyattBlue.
+  * ## Fixes
+  * Fix `VideoFrame.reformat` (and
+    `to_ndarray`/`to_rgb`/`to_image`) raising `OSError`
+    `Operation not supported` on frames tagged with reserved or
+    otherwise unsupported `color_primaries`/`color_trc` values
+    (e.g. VP9 and NVDEC output); a transfer/primaries conversion
+    is now only performed when explicitly requested by @WyattBlue
+    (#2208).
+  * Fix `add_mux_stream` producing unwritable Matroska files by
+    extracting codec extradata from the bitstream before the
+    header is written by @WyattBlue (#2198).
+  * Encode GPU frames (e.g. CUDA frames from DLPack) directly
+    with `pix_fmt="cuda"` by adopting the frame's `hw_frames_ctx`
+    before opening the encoder by @WyattBlue (#2199).
+  * Fix a crash when reading `VideoCodecContext.pix_fmt` before
+    it is set; it now returns `None` by @CarlosRDomin.
+  * Preserve frame attributes (`pts`, `time_base`, colorspace,
+    etc.) when downloading hardware frames to system memory by
+    @CarlosRDomin.
+- update to 17.1.0:
+  * ### Breaking
+  * Remove the undertested `av.option` and `av.descriptor` APIs,
+    along with the related `Codec` and `Filter` descriptor
+    accessors.
+  * ### Features
+  * Use FFmpeg 8.1.1 in the binary wheels by @WyattBlue.
+  * Build Linux ARMv7 binary wheels by @WyattBlue.
+  * Expose `AVCodecContext.global_quality` by @WyattBlue in
+    #2246.
+  * Expose `Stream.discard` so demuxing and seeking can skip
+    unwanted streams by @WyattBlue (#2272).
+  * Add `Stream.set_display_matrix()` and
+    `Stream.set_display_rotation()` to write the container
+    display (rotation) matrix on output streams by @hmaarrfk in
+    #2287.
+  * Add `Container.video_codec_id` to force a specific video
+    codec on a container by @WyattBlue (#2243).
+  * ### Fixes
+  * Add `cython.final` to leaf classes, ensuring that they are
+    not subclassed by @WyattBlue.
+  * Warn that `CodecContext.decode()` is not memory safe in some
+    cases.
+  * Fix memory leaks in `FFmpegError`, `AudioLayout` channel
+    layouts, and `Frame.opaque`, and break a reference cycle
+    between `FilterLink` and `Graph` by @lgeiger.
+  * Reduce excessive logging lock contention by @WyattBlue
+    (#2276).
+  * Fix a crash when accessing `Stream` from multiple threads
+    under FFmpeg 8.1 by @WyattBlue (#2247).
+  * Fix a crash during `InputContainer` initialization by
+    @WyattBlue (#2010).
+  * Fix `enumerate_input_devices` and `enumerate_output_devices`
+    raising `AttributeError` by @WyattBlue and @kazuki (#2264).
+  * Map HTTP 429 to `HTTPTooManyRequestsError` instead of
+    `UndefinedError` by @WyattBlue (#2267).
+  * Fix crash in `VideoFrame.to_ndarray()` and `to_image()` on
+    bottom-up frames with a negative `line_size` by @WyattBlue
+    (#2213).
+  * Make `Disposition` an `IntFlag` so `Stream.disposition` can
+    be assigned without raising `TypeError` by @HotariTobu.
+  * Assign parser-inferred `pts`, `dts`, and `duration` to
+    packets from `CodecContext.parse()` by @WyattBlue (#1919).
+  * Copy `time_base` in `add_stream_from_template()` by
+    @daveisfera in #2249.
+  * Fix the remux examples dropping keyframes that demux with no
+    DTS, which produced audio-only output by @WyattBlue (#1917).
+  * Fix subtitle UTF-8 handling by @jbree in #2271.
+  * Fix several incorrect `malloc` size calculations by
+    @WyattBlue.
+- update to 17.0.1:
+  * Adjust tests so they work with ffmpeg 8.1
+  * Make VideoFormat.components lazy
+  * Break reference cycle in `StreamContainer.get()`
+  * Expose `threads` in filter graph
+  * Fix crash with container closing with GC
+  * Fix #2223 "Writing packets to data stream broken in av>=17"
+    regression by @WyattBlue
+  * Remove `_send_packet_and_recv` to simplify `decode()`
+  * Reuse a `AVPacket` read buffer when demuxing
+  * Use `AVCodecContext.frame_num` instead of counting ourselves
+  * Use `layout_compare()` for `AudioLayout.__eq__()`
+
+-------------------------------------------------------------------
 Fri Apr  3 17:35:47 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 17.0.0:
