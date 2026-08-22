@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Aug 21 12:28:44 UTC 2026 - Tina Müller <tina.mueller@suse.com>
+
+- Remove perl-Crypt-DES-gcc14.patch (fixed upstream)
+
+-------------------------------------------------------------------
+Tue Aug 18 16:13:21 UTC 2026 - Tina Müller <tina.mueller@suse.com>
+
+- Add cpanspec.yml for overriding license
+
+-------------------------------------------------------------------
+Tue Aug 11 06:02:55 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.90.0 (2.09)
+   see /usr/share/doc/packages/perl-Crypt-DES/Changes
+
+-------------------------------------------------------------------
 Tue May  7 14:08:26 UTC 2024 - pgajdos@suse.com
 
 - added patches

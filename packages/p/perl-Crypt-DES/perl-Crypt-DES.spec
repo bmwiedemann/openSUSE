@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Crypt-DES
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,23 @@
 #
 
 
-Name:           perl-Crypt-DES
-Version:        2.07
-Release:        0
 %define cpan_name Crypt-DES
-Summary:        Perl DES encryption module
+Name:           perl-Crypt-DES
+Version:        2.90.0
+Release:        0
+# 2.09 -> normalize -> 2.90.0
+%define cpan_version 2.09
+#Upstream:  of, Eric Young (eay@mincom.oz.au). Other parts of the perl extension and Cross-platform work and packaging for single algorithm distribution is
 License:        BSD-3-Clause
-Group:          Development/Libraries/Perl
-URL:            http://search.cpan.org/dist/Crypt-DES/
-Source:         http://www.cpan.org/authors/id/D/DP/DPARIS/%{cpan_name}-%{version}.tar.gz
-# fix build with gcc14
-Patch0:         perl-Crypt-DES-gcc14.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Summary:        Perl DES encryption module
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/T/TI/TIMLEGGE/%{cpan_name}-%{cpan_version}.tar.gz
+Source1:        cpanspec.yml
+Source100:      README.md
 BuildRequires:  perl
 BuildRequires:  perl-macros
+Provides:       perl(Crypt::DES) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -37,20 +40,24 @@ The module implements the Crypt::CBC interface, which has the following
 methods
 
 * blocksize
-  =item keysize
-  =item encrypt
-  =item decrypt
+
+* keysize
+
+* encrypt
+
+* decrypt
 
 %prep
-%autosetup -p1 -n %{cpan_name}-%{version}
-find . -type f -print0 | xargs -0 chmod 644
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -58,7 +65,6 @@ find . -type f -print0 | xargs -0 chmod 644
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc COPYRIGHT README
+%doc Changes COPYRIGHT README SECURITY.md
 
 %changelog
