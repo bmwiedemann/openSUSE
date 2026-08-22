@@ -1,7 +1,7 @@
 <services>
   <service mode="manual" name="roast_scm">
     <param name="url">https://git.sr.ht/~sircmpwn/hare</param>
-    <param name="revision">0.26.0</param>
+    <param name="revision">0.26.0.1</param>
     <param name="changesgenerate">true</param>
     <param name="changesauthor">uncomfyhalomacro@opensuse.org</param>
   </service>

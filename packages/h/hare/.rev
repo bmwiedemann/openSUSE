@@ -238,4 +238,17 @@
   * MAINTAINERS: bgs steps down</comment>
     <requestid>1333531</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>dac99ab7714957192311523085fe4954</srcmd5>
+    <version>0.26.0.1</version>
+    <time>1787427301</time>
+    <user>dimstar_suse</user>
+    <comment>- Relax strict qbe dependency requirement from = 1.2 to &gt;= 1.2 
+  to fix Factory build failures.
+
+- Update to version 0.26.0.1:
+  * This is a security release for Hare 0.26.0 which includes patches to
+    address CVE-2026-43923.</comment>
+    <requestid>1372933</requestid>
+  </revision>
 </revisionlist>

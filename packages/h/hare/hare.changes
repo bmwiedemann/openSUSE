@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Aug 13 13:04:25 UTC 2026 - shresthkumarlal@gmail.com
+
+- Relax strict qbe dependency requirement from = 1.2 to >= 1.2 
+  to fix Factory build failures.
+
+-------------------------------------------------------------------
+Sat May 09 11:29:50 UTC 2026 - uncomfyhalomacro@opensuse.org
+
+- Update to version 0.26.0.1:
+  * This is a security release for Hare 0.26.0 which includes patches to
+    address CVE-2026-43923.
+
+-------------------------------------------------------------------
 Fri Feb 13 14:22:21 UTC 2026 - uncomfyhalomacro@opensuse.org
 
 - Update to version 0.26.0:

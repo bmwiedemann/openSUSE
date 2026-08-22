@@ -17,10 +17,10 @@
 
 
 %bcond_without  test
-%define relver 0.25.2
+%define relver 0.26.0
 Name:           hare
 Release:        0
-Version:        0.26.0
+Version:        0.26.0.1
 Summary:        Hare system programming language
 Group:          Development/Tools/Building
 License:        MPL-2.0
@@ -40,7 +40,7 @@ BuildRequires:  timezone
 BuildRequires:  zstd
 Requires:       harec >= %{relver}
 # Hare requires QBE 1.2 like HareC does
-Requires:       qbe = 1.2
+Requires:       qbe >= 1.2
 Requires:       timezone
 
 %description
