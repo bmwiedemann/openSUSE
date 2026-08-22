@@ -279,4 +279,15 @@
   * Add preliminary support for Python 3.15b1.</comment>
     <requestid>1362140</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>0a8e1c0d7a3c4c6720faeafabf04000d</srcmd5>
+    <version>6.8</version>
+    <time>1787427339</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.8:
+  * Add support for Python 3.15.
+  * Fix DeprecationWarning on Python 3.14+ about returning non-
+    None values from test methods in test_picklecache.py.</comment>
+    <requestid>1373026</requestid>
+  </revision>
 </revisionlist>
