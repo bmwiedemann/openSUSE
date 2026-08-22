@@ -199,4 +199,16 @@
   * Fix up the container build</comment>
     <requestid>1363878</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>1b2018b22cca19c7b4ebb467060be29d</srcmd5>
+    <version>2.7.11</version>
+    <time>1787427344</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.7.11:
+  * add support for .cfg export/import
+  * Initial implementation of simradio-based testing with a
+    multi-node simulated mesh
+  * Half-close TCP connections so the last write is not lost</comment>
+    <requestid>1373036</requestid>
+  </revision>
 </revisionlist>

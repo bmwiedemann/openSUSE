@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Aug 22 09:30:41 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.7.11:
+  * add support for .cfg export/import
+  * Initial implementation of simradio-based testing with a
+    multi-node simulated mesh
+  * Half-close TCP connections so the last write is not lost
+
+-------------------------------------------------------------------
 Sun Jul  5 10:18:43 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.7.10:
