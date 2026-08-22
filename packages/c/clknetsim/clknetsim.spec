@@ -17,7 +17,7 @@
 
 
 Name:           clknetsim
-Version:        0+git.20260512
+Version:        0+git.20260819
 Release:        0
 Summary:        Clock and Network Simulator
 License:        GPL-2.0-only

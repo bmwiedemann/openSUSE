@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Aug 22 08:15:30 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0+git.20260819:
+  * Add minimal raw-socket support for ptp4l L2 transport
+  * Fix delay of raw packets
+  * Drop leftover TCP packets from an early-closed connection
+  * Allow TCP packets to be dropped by a negative delay
+  * Fix compilation in older C++ standard
+- Pin obs_scm revision for reproducible snapshots
+
+-------------------------------------------------------------------
 Fri May 22 10:26:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0+git.20260512:

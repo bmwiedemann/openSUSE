@@ -113,4 +113,18 @@
   * add IP/IPV6_RECVERR control message to messages in error queue</comment>
     <requestid>1354683</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6a6cde1e194d6b32576cae36967a2755</srcmd5>
+    <version>0+git.20260819</version>
+    <time>1787427335</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0+git.20260819:
+  * Add minimal raw-socket support for ptp4l L2 transport
+  * Fix delay of raw packets
+  * Drop leftover TCP packets from an early-closed connection
+  * Allow TCP packets to be dropped by a negative delay
+  * Fix compilation in older C++ standard
+- Pin obs_scm revision for reproducible snapshots</comment>
+    <requestid>1373014</requestid>
+  </revision>
 </revisionlist>
