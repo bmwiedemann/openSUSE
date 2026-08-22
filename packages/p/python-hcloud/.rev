@@ -249,4 +249,19 @@
   * retry requests on api bad_gateway error</comment>
     <requestid>1363028</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>873602bd9e11954cd6f8c82d9ebd3de2</srcmd5>
+    <version>2.23.0</version>
+    <time>1787427293</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.23.0:
+  * ### Removed deprecated Datacenter property from Server and
+  * Removed the deprecated Datacenter property from the Server
+    and PrimaryIP resources. Since the property was already
+    removed from the Hetzner Cloud API, we do not consider this a
+    breaking change (see changelog entry).
+  * remove datacenter property from server and primary_ip
+  * add deprecation info to load balancer type</comment>
+    <requestid>1372925</requestid>
+  </revision>
 </revisionlist>

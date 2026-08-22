@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Aug 21 20:02:53 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.23.0:
+  * ### Removed deprecated Datacenter property from Server and
+  * Removed the deprecated Datacenter property from the Server
+    and PrimaryIP resources. Since the property was already
+    removed from the Hetzner Cloud API, we do not consider this a
+    breaking change (see changelog entry).
+  * remove datacenter property from server and primary_ip
+  * add deprecation info to load balancer type
+
+-------------------------------------------------------------------
 Wed Jul  1 16:18:30 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.22.0:
