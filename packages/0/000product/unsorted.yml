@@ -3943,6 +3943,7 @@ unsorted:
   - evince-plugin-tiffdocument 
   - evince-plugin-xpsdocument 
   - evolution-data-server-devel 
+  - evolution-data-server-tests 
   - evolution-devel 
   - evolution-plugin-bogofilter 
   - evolution-plugin-pst-import 
@@ -5138,6 +5139,7 @@ unsorted:
   - gensio-devel 
   - geoclue2-devel 
   - geocode-glib-devel 
+  - geocode-glib-tests 
   - geoipupdate 
   - geoipupdate-legacy 
   - geolite2legacy 
@@ -7339,6 +7341,7 @@ unsorted:
   - gli-devel 
   - gli-doc 
   - glib-networking-32bit 
+  - glib-networking-tests 
   - glib-sharp2 
   - glib2-devel 
   - glib2-devel-32bit 
@@ -8057,6 +8060,7 @@ unsorted:
   - grantlee-editor 
   - grantlee-editor-lang 
   - grantleetheme-devel 
+  - graphene-tests 
   - graphite2 
   - graphite2-devel 
   - graphviz 
@@ -8168,6 +8172,7 @@ unsorted:
   - gsound-devel 
   - gspell 
   - gspell-devel 
+  - gspell-tests 
   - gssdp-doc 
   - gssntlmssp 
   - gssntlmssp-devel 
@@ -8367,7 +8372,9 @@ unsorted:
   - gtksourceview-lang 
   - gtksourceview-theme-yaru 
   - gtksourceview4-devel 
+  - gtksourceview4-tests 
   - gtksourceview5-devel 
+  - gtksourceview5-tests 
   - gtksourceviewmm-devel 
   - gtkspell-devel 
   - gtkspell-doc 
@@ -9792,6 +9799,7 @@ unsorted:
   - json-c-devel 
   - json-c-doc 
   - json-glib-devel 
+  - json-glib-tests 
   - json-java 
   - json-java-javadoc 
   - json-simple 
@@ -12064,8 +12072,8 @@ unsorted:
   - libaccounts-qt6-doc 
   - libacl-devel 
   - libacl-devel-32bit 
-  - libacm-1_3 
   - libacm-devel 
+  - libacm1 
   - libacpp-bitcode 
   - libacpp-clang 
   - libacpp-common 
@@ -13912,9 +13920,8 @@ unsorted:
   - libgovirt-devel 
   - libgovirt-lang 
   - libgovirt2 
-  - libgpaste-gtk-3-0 
-  - libgpaste-gtk4-0 
-  - libgpaste2-0 
+  - libgpaste-2-0 
+  - libgpaste-gtk4-1 
   - libgpg-error-devel 
   - libgpg-error-devel-32bit 
   - libgpgme45-32bit 
@@ -16513,6 +16520,7 @@ unsorted:
   - libsoup-devel-32bit 
   - libsoup2-devel 
   - libsoup2-devel-32bit 
+  - libsoup2-tests 
   - libsource-highlight-devel 
   - libsource-highlight4-32bit 
   - libsox3 
@@ -17249,6 +17257,7 @@ unsorted:
   - libvulkan_nouveau-32bit 
   - libvulkan_powervr 
   - libvulkan_radeon-32bit 
+  - libvulkan_virtio 
   - libwacom-devel 
   - libwacom-tools 
   - libwacom9-32bit 
@@ -17646,7 +17655,7 @@ unsorted:
   - libzen-devel 
   - libzen0 
   - libzfp1 
-  - libzia-4_71 
+  - libzia-4_73 
   - libzia-devel 
   - libzim-devel 
   - libzim9 
@@ -23338,6 +23347,7 @@ unsorted:
   - pipewire-modules-0_3-32bit 
   - pipewire-spa-plugins-0_2-32bit 
   - pipewire-spa-plugins-0_2-jack 
+  - pipewire-tests 
   - pithos 
   - pitivi 
   - pitivi-lang 
@@ -24434,7 +24444,6 @@ unsorted:
   - python311-calver 
   - python311-cfn-lint 
   - python311-click 
-  - python311-cppclean 
   - python311-curses 
   - python311-dbm 
   - python311-devel 
@@ -25596,7 +25605,6 @@ unsorted:
   - python313-covdefaults 
   - python313-coverage 
   - python313-coveralls-check 
-  - python313-cppclean 
   - python313-cpplint 
   - python313-cppy 
   - python313-cptrace 
@@ -25658,6 +25666,7 @@ unsorted:
   - python313-dataclasses-json 
   - python313-datadiff 
   - python313-datamodel-code-generator 
+  - python313-datasets 
   - python313-datashader 
   - python313-dateparser 
   - python313-dateutils 
@@ -29653,7 +29662,6 @@ unsorted:
   - python314-covdefaults 
   - python314-coverage 
   - python314-coveralls-check 
-  - python314-cppclean 
   - python314-cpplint 
   - python314-cppy 
   - python314-cptrace 
@@ -29719,6 +29727,7 @@ unsorted:
   - python314-dataclasses-json 
   - python314-datadiff 
   - python314-datamodel-code-generator 
+  - python314-datasets 
   - python314-datashader 
   - python314-dateparser 
   - python314-dateutils 
@@ -46137,7 +46146,6 @@ unsorted:
   - typelib-1_0-GMime-3_0 
   - typelib-1_0-GOffice-0_10 
   - typelib-1_0-GPaste-2 
-  - typelib-1_0-GPasteGtk-3 
   - typelib-1_0-GPasteGtk-4 
   - typelib-1_0-GPlugin-1_0 
   - typelib-1_0-GPluginGtk4-1_0 
@@ -47306,6 +47314,7 @@ unsorted:
   - xdbedizzy 
   - xdelta3-devel 
   - xdemorse 
+  - xdg-dbus-proxy-tests 
   - xdg-desktop-portal-cosmic 
   - xdg-desktop-portal-devel 
   - xdg-desktop-portal-devel-docs 
