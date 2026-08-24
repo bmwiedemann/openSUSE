@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
 
 %bcond_without released
 Name:           kpkpass
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        Library to parse Passbook files
 License:        LGPL-2.1-or-later
@@ -105,5 +105,6 @@ to build programs that use the kpkpass library.
 %{_includedir}/KPim6/KPkPass/
 %{_kf6_cmakedir}/KPim6PkPass/
 %{_kf6_libdir}/libKPim6PkPass.so
+%{_qt6_metatypesdir}/qt6kpim6pkpass_metatypes.json
 
 %changelog

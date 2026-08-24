@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sun Aug 16 07:27:36 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.08.0/
+- No code change since 26.07.90
+
+-------------------------------------------------------------------
+Sat Aug  1 11:39:17 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.07.90
+  * New feature release
+- No code change since 26.07.80
+
+-------------------------------------------------------------------
+Sat Jul 18 11:11:59 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.07.80
+  * New feature release
+- Changes since 26.04.3:
+  * Add additional API for semantic tag seat information
+  * Add basic support for semantic tag seat information
+  * Also print ZIP decoding error when we fail to open a pkpass
+  * Expose semantic tag API to QML as well
+  * Expose translation catalog lookup in public API
+  * Add method for checking whether a field value contains rich text markup
+  * Support date-only/time-only field formats
+  * Fix organization and description fields not being translated
+  * Install Qt metatypes file
+  * Support multi-row auxiliary fields
+  * Add properties for checking whether a specific color is set
+  * Support rgba() color values
+  * Find image assets only existing in a higher pixel ratio variant as well
+  * Add support for semantic tags and new pass styles
+  * CMAKE_CXX_SCAN_FOR_MODULES is already defined in ecm
+  * Move CMakePresets.json.license to REUSE.toml
+  * Use prek support
+
+-------------------------------------------------------------------
 Tue Jun 30 18:19:53 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.04.3
