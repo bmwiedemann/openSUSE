@@ -600,4 +600,12 @@ Bugfixes
     XSS attacks, buffer overload etc. (forwarded request 1356608 from mnhauke)</comment>
     <requestid>1357247</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>68d4bcedd77f282f5a525e6f1f03a7e5</srcmd5>
+    <version>2.4.20.2</version>
+    <time>1787579099</time>
+    <user>anag_factory</user>
+    <comment>[jsc#PED-12759][jsc#PED-14130]</comment>
+    <requestid>1373388</requestid>
+  </revision>
 </revisionlist>

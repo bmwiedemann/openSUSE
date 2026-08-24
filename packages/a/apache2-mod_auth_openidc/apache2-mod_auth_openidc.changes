@@ -1,4 +1,108 @@
 -------------------------------------------------------------------
+Mon Aug 24 11:17:35 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- Update to version 2.4.20.2 (08/10/2026)
+   * Removed local cache tier: Stripped out the process-local
+    derived-object cache tier (util/cache_local) and its five
+    underlying caches (session state, appinfo claims, provider
+    metadata, JWKs, and Require regexes) to improve simplicity and
+    avoid concurrency overhead.
+   * Added OIDCDebugMaskSecrets: Created a server-level directive
+    to temporarily disable masking of secrets/tokens in debug logs.
+   * Hardened file and cache operations:
+     - cache/file: Expired entries are now reported as misses
+      without immediate unlinking to avoid race conditions with
+      concurrent writers, and unlinks confirm the target file.
+     - cache/shm: Bounds checks on SHM entry size are computed signed
+      to prevent integer wrap-around.
+     - Made metadata file writes atomic (temp file + rename) and
+      restricted metadata/cache loads to regular files (no symlinks).
+   * Improved security bounds: Restricted DPoP token_type omission
+    and forced-refresh throttling. Fixed trailing CRLF stripping on
+    response headers to prevent out-of-bounds reads on empty values.
+- Update to version 2.4.20.1 (08/09/2026)
+   * Serialized JWKS cache: Stored process-local JWKS selection
+    cache serialized, giving each request a parsed copy instead of
+    retaining imported keys in worker memory for the process lifetime.
+   * Eliminated data races: Fixed a data race on process-local
+    cache last-access timestamps by updating them atomically.
+   * VHost isolation on startup: Prevented base-server inherited
+    OIDCRedirectURIs from forcing RP role inference and causing
+    unnecessary startup failures on non-OIDC virtual hosts.
+   * Named virtual hosts in logs: Included the hostname in post-
+    config startup and check logs for easier troubleshooting.
+- Update to version 2.4.20 (08/01/2026)
+   * Significant performance optimizations:
+     - Replaced slow libcurl-based URL percent-encoding with a fast
+      RFC 3986 percent-codec (10x faster).
+     - Pooled and reused libcurl easy handles across requests to
+      maintain TCP/TLS connection caches and DNS cache across threads.
+     - Shared cached, parsed server-session and client-cookie session
+      objects using copy-on-write semantics to avoid redundant JSON
+      parsing and decryption.
+     - Replaced linear scans in the shared memory (SHM) cache with
+      an in-segment hash table (up to 87% faster on misses).
+     - Cached compiled authorization "Require claim" regular
+      expressions and validated JWT access token claims.
+   * Enhanced security hardening:
+     - Key stretching: Upgraded internal token/cookie encryption key
+      derivation from raw SHA-256 to PBKDF2-HMAC-SHA256 (210k rounds).
+     - Mitigated SSRF: Added OIDCDiscoverIssuersAllowed to restrict
+      the hosts dynamic discovery is allowed to resolve/probe.
+     - Log redaction: Redacted sensitive credentials, refresh tokens,
+      and authorization codes from all debug logs.
+     - Switched state browser-fingerprints to SHA-256, increased CSRF
+      token entropy to 16 bytes, and used constant-time string
+      comparison for request-supplied secrets.
+     - Prevented session fixation: Re-keyed and generated a new
+      session ID upon login instead of reusing the browser's cookie.
+     - Added OIDCOAuthVerifyAudience/Issuer to enforce audience/
+      issuer binding on locally validated JWT access tokens.
+   * Protocol & Standards Support:
+     - Implemented full support for RFC 8705 OAuth 2.0 Mutual-TLS
+      Client Authentication and certificate-bound access tokens.
+     - Enforced required iat and jti claims in back-channel logout
+      tokens according to OIDC Back-Channel Logout 1.0.
+     - Added support for symmetrically encrypted back-channel logout
+      tokens and indexed sessions by sub for sid-less logouts.
+     - Emitted cty:JWT on encrypted request objects and omitted
+      scope=openid under FAPI 2.0 profiles.
+   * Refactoring:
+     - Separated the JOSE/JWK/JWS/JWE codebase into a jose/ source
+      subdirectory and encapsulated cjose symbols within it.
+     - Table-driven the redirect-URI sub-feature dispatch chain.
+- Update to version 2.4.19.4 (07/01/2026)
+   * Decoupled backend libraries:
+     - Introduced a backend-independent JSON abstraction layer to
+      completely isolate JSON backends from external source modules.
+     - Encapsulated cjose types inside jose.c, keeping public
+      headers clean of JOSE library dependencies.
+   * Config & Endpoint enhancements:
+     - Permitted setting OIDCProviderUserInfoEndpoint to empty to
+      explicitly disable calling the UserInfo Endpoint.
+     - Flattened config-accessor generator macros and grouped OIDC
+      directive macros under cfg/directives.h.
+   * Important bug fixes:
+     - Prevented type coercion: Spec-defined string parameters like
+      client_id or scope are no longer parsed as JSON, ensuring
+      numeric values remain strings when copied into request objects.
+     - Fixed out-of-bounds reads in state-cookie parsing and trailing-
+      slash stripping.
+     - Copy SHM cache values under lock to prevent data tearing.
+     - Honored pinned signing algorithms over the "none" exception
+      for back-channel code-flow id_tokens.
+     - Added Cache-Control: no-cache, no-store headers on info hook
+      responses to prevent intermediate caching of claims/tokens.
+     - Memcache keys are now always hashed to satisfy protocol
+      key constraints and avoid violations.
+   * Unit testing & CI expansion:
+     - Migrated legacy test.c unit tests to modern, Check-based
+      test suites across all modules and expanded coverage.
+     - Integrated static-analysis gates (such as clang-tidy,
+      clang-analyzer, and gcc -fanalyzer) and OSS-Fuzz.
+- fixes CVE-2026-54789 [bsc#1276217]
+
+-------------------------------------------------------------------
 Tue Jun  2 06:19:44 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.4.19.3
@@ -99,7 +203,7 @@ Tue Sep  9 09:25:18 UTC 2025 - pgajdos@suse.com
 -------------------------------------------------------------------
 Tue Jun 24 10:20:59 UTC 2025 - pgajdos@suse.com
 
-- version update to 2.4.17.1
+- version update to 2.4.17.1 [jsc#PED-12759][jsc#PED-14130]
   * fix usage of OIDCSessionType client-cookie:persistent:store_id_token; see #1331; thanks @rgcv
   * fix usage of OIDCPreservePostTemplates, regression in 2.4.17; see #1325; thanks @perry19987
   * javascript: use HTMLFormElement.prototype.submit.call(document.forms[0]) on all Javascript
