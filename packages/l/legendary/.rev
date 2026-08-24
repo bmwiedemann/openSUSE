@@ -88,4 +88,51 @@ This is also a dependency for heroic-games-launcher package.</comment>
     <comment></comment>
     <requestid>1353240</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6d6fee0f4de9cfc19d345c80d59de45b</srcmd5>
+    <version>0.21.0</version>
+    <time>1787566229</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.21.0 - Lowlife
+  * Update source repository from github.com/Heroic-Games-Launcher/legendary
+  to github.com/legendary-gl/legendary
+  * Remove unused legendary.rpmlintrc
+  * Detect games specifying &quot;the EA app&quot; for their ThirdPartyManagedApp as
+  Origin games by @CommandMC in #632
+  * Skip library items with no appName by @CommandMC in #649
+  * fix: add required arg name for FileLock &gt;=3.15.3 by @kloon15 in #656
+  * Update Ubisoft game instructions by @SpyGuy0215 in #591
+  * fix: update graphql host by @imLinguin in #713
+  * [utils/cli] Accept empty string as a falsey value in strtobool by @loathingKernel
+  in #701
+  * fix: prevent .netrc credentials from being injected into api calls by @badboybeyer
+  in #736
+  * ci: update actions by @imLinguin in #739
+  * feat: support encrypted manifests and chunks by @imLinguin in #738
+  * Move to pyproject.toml and the uv build system by @CommandMC in #741
+  * Handle file tasks case-insensitively by @CommandMC in #690
+  * [core] check for STEAM_COMPAT_DATA_PATH in default.env too when resolving 
+  save paths by @loathingKernel in #714
+  * tech: make python 3.10 a minimum required version by @imLinguin in #746
+  * fix: add 3rd param to setexchangecode callback by @imLinguin in #745
+  * fix: save-sync chunk read crash by @imLinguin in #747
+  * feat: support launching games with uplay protocol by @imLinguin in #750
+  * tech: ensure boolean types are always returned by @imLinguin in #752
+  * Bump urllib3 from 2.6.3 to 2.7.0 by @dependabot[bot] in #754
+  * fix: support non-encrypted variants of v5 manifests by @imLinguin in #756
+  * [cli/core]: report grant date information with info by @loathingKernel in #748
+  * Add achievement handling by @loathingKernel in #729
+  * Display UAC prompt for games which requires admin rights by @hawkeye116477 in #668
+  * cli: remove redundant if statement by @imLinguin in #762
+  * fix: unset old_manifest for all types of repair by @imLinguin in #697
+  * ci: automate pypi and releases drafting by @imLinguin in #761
+  * Bump idna from 3.11 to 3.15 by @dependabot[bot] in #755
+  * Add Ruff by @CommandMC in #743
+  * release: 0.21.0 Lowlife by @imLinguin in #765
+  * fix: avoid KeyError when game metadata is missing id/namespace by @SAY-5 in #769
+  * Make case_insensitive_file_search a no-op on Windows by @CommandMC in #772
+  * chore: fix typo by @loathingKernel in #771
+  * ci: add id-token permission by @imLinguin in #773</comment>
+    <requestid>1373138</requestid>
+  </revision>
 </revisionlist>

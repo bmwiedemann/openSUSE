@@ -16,24 +16,22 @@
 #
 
 Name:           legendary
-Version:        0.20.43
+Version:        0.21.0
 Release:        0
 Summary:        An Epic Games Launcher alternative
 License:        GPL-3.0-only
-URL:            https://github.com/Heroic-Games-Launcher/legendary.git
+URL:            https://github.com/legendary-gl/legendary.git
 Source:         %{name}-%{version}.tar.gz
-Source1:        legendary.rpmlintrc
 BuildRequires:  fdupes
-BuildRequires:  python3-pip
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-wheel
 BuildRequires:  python3-build
 BuildRequires:  python3-installer
+BuildRequires:  python3-setuptools
+BuildRequires:  python3-uv-build
+BuildRequires:  python3-wheel
 Requires:       python3
-Requires:       python3-requests < 3.0
 Requires:       python3-filelock
-Requires:       python3-requests-futures
 Requires:       python3-pycryptodomex
+Requires:       python3-requests < 3.0
 BuildArch:      noarch
 
 %description
