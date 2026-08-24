@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
-%define kpim6_version 6.7.3
+%define kpim6_version 6.8.0
 
 %bcond_without released
 Name:           ktnef
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        TNEF support
 License:        LGPL-2.1-or-later
@@ -34,6 +34,7 @@ Source2:        applications.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  cmake(KF6CalendarCore) >= %{kf6_version}
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6Contacts) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KPim6CalendarUtils) >= %{kpim6_version}
@@ -44,6 +45,7 @@ Library to work with TNEF Email Attachments.
 
 # A ktnef subpackage is already created by kmail.spec, we need a different name
 # for debug categories
+
 %package debug-categories
 Summary:        Debug categories files needed by libKPim6Tnef6
 
