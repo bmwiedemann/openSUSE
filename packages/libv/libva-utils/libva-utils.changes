@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Aug 22 16:20:48 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.24.0:
+  * avcenc: Use the appropriate size for VAEncMiscParameterHRD
+  * fix: set general_profile_idc in bitstream when --profile is
+    not specified
+  * fix: remove VA_ENC_PACKED_HEADER_RAW_DATA from
+    VAConfigAttribEncInterlaced list
+  * fix: remove duplicate differential_mode output
+
+-------------------------------------------------------------------
 Sun Dec 28 23:08:46 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.23.0:
