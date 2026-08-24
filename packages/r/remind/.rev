@@ -1142,4 +1142,41 @@
 - IMPROVEMENT: remind: Emit more helpful error messages if Remind is</comment>
     <requestid>1369969</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>ca0c5d580196f3031b9de734b97a8a35</srcmd5>
+    <version>6.3.0</version>
+    <time>1787579109</time>
+    <user>anag_factory</user>
+    <comment>- VERSION 06.03.00 - 2026-08-20
+- MAJOR NEW FEATURE: remind: Add support for a small markup language
+  (a subset of the Pango markup language) that lets your format
+  reminders on the terminal (being able to change foreground and
+  background color, font weight, underline, strikethrough, and font
+  slant.)  This same markup language works with the rem2pdf, rem2html
+  and TkRemind back-ends.  This feature was triggered by a request
+  from Joel Young.  See the section &quot;FORMATTED REMINDERS&quot; in the
+  remind(1) man page for details.
+  NOTE: In the terminal, marked-up reminders are formatted specially
+  only if the &quot;-@&quot; command-line option is used.
+  Marked-up reminders are indicated with either:
+      REM ... SPECIAL FORMATTED &lt;b&gt;Markup!&lt;/b&gt;
+  or:
+      REM ... FMT &lt;b&gt;Markup!&lt;/b&gt;
+  The latter is merely syntactic sugar for the former.
+  ***** IMPORTANT NOTE FOR USERS: *****
+  Whereas Remind has typically been pretty chill about what you put in
+  the body of a REM command, treating it as just a bunch of bytes, for
+  FMT-style reminders, you have to use valid multibyte characters.  If
+  you use a UTF-8 locale, that means everything after the FMT has to
+  be valid UTF-8 or else Remind will throw an error.  That's because
+  it has to parse the body of the reminder rather than treating it as
+  a bunch of bytes.
+  If you are not using a UTF-8 locale... you should be.
+  ***** IMPORTANT NOTE FOR BACK-END AUTHORS: *****
+  If you maintain a Remind back-end that consumes &quot;remind -pp&quot; or
+  &quot;remind -ppp&quot; output, FMT-style reminders are given a &quot;passthru&quot;
+  value of &quot;FORMATTED&quot;.  By default, your back-end should ignore these
+  reminders.</comment>
+    <requestid>1373378</requestid>
+  </revision>
 </revisionlist>

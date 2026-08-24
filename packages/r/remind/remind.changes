@@ -1,4 +1,105 @@
 -------------------------------------------------------------------
+Mon Aug 24 11:08:47 UTC 2026 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- VERSION 06.03.00 - 2026-08-20
+
+- MAJOR NEW FEATURE: remind: Add support for a small markup language
+  (a subset of the Pango markup language) that lets your format
+  reminders on the terminal (being able to change foreground and
+  background color, font weight, underline, strikethrough, and font
+  slant.)  This same markup language works with the rem2pdf, rem2html
+  and TkRemind back-ends.  This feature was triggered by a request
+  from Joel Young.  See the section "FORMATTED REMINDERS" in the
+  remind(1) man page for details.
+
+  NOTE: In the terminal, marked-up reminders are formatted specially
+  only if the "-@" command-line option is used.
+
+  Marked-up reminders are indicated with either:
+      REM ... SPECIAL FORMATTED <b>Markup!</b>
+  or:
+      REM ... FMT <b>Markup!</b>
+
+  The latter is merely syntactic sugar for the former.
+
+  ***** IMPORTANT NOTE FOR USERS: *****
+
+  Whereas Remind has typically been pretty chill about what you put in
+  the body of a REM command, treating it as just a bunch of bytes, for
+  FMT-style reminders, you have to use valid multibyte characters.  If
+  you use a UTF-8 locale, that means everything after the FMT has to
+  be valid UTF-8 or else Remind will throw an error.  That's because
+  it has to parse the body of the reminder rather than treating it as
+  a bunch of bytes.
+
+  If you are not using a UTF-8 locale... you should be.
+
+  ***** IMPORTANT NOTE FOR BACK-END AUTHORS: *****
+
+  If you maintain a Remind back-end that consumes "remind -pp" or
+  "remind -ppp" output, FMT-style reminders are given a "passthru"
+  value of "FORMATTED".  By default, your back-end should ignore these
+  reminders.
+
+  If you run Remind with the "--no-fmt" option, however, FMT-style
+  reminders have the formatting tags stripped and are sent to the
+  back-end as normal MSG-style reminders (i.e., no "passthru")
+
+  Back-end authors have three choices:
+
+  1) Do nothing and ignore FORMATTED reminders.
+
+  2) Invoke Remind with --no-fmt (or tell users to do so) so that
+     FORMATTED reminders are treated as unformatted reminders.
+
+  3) Actually support the FORMATTED passthru by interpreting the
+     markup yourself.
+
+- DEPRECATIONS:  Both rem2html and rem2pdf issue a deprecation warning
+  if fed data from "remind -p".  You should use "remind -pp" or
+  "remind -ppp" with both of those back-ends; the older "-p" interchange
+  format cannot communicate all the information the back-ends need to
+  reliable handle FMT-style reminders.
+
+- MINOR NEW FEATURE: remind: You can specify the reminder script to read
+  with a "--file=pathname" option.  This simplifies writing wrapper scripts
+  that pre-set a default file because you can have options that come after
+  the filename.  This same option applies to the "rem" symbolic link too.
+  Suggested by Ian! D. Allen.
+
+- MINOR IMPROVEMENT: TkRemind: Running "tkremind --version" works even
+  if there's no X11 display.  Suggested by Tim Chase.
+
+- MINOR IMPROVEMENT: remind: The variable $DefaultColour is an alias
+  for $DefaultColor; either may be set with the same effect.
+
+- MINOR IMPROVEMENT: TkRemind: When running the Remind daemon,
+  tkremind would leave an extraneous /bin/sh process running too.
+  This has been fixed.
+
+- DOCUMENTATION IMPROVEMENT: Merge the rem(1) and remind(1) man pages
+  based on a suggestion from Ian! D. Allen.
+
+- CONSISTENCY IMPROVEMENT: rem: Look first at the environment variable
+  $REMIND_FILE and then fall back on $DOTREMINDERS.  This is for
+  consistency with the --file= command-line option.
+
+- MINOR DOCUMENTATION IMPROVEMENTS: remind: Added a few clarifications
+  to the remind(1) man page.
+
+- TEST IMPROVEMENTS: Add tests for rem2html and rem2pdf.
+  Unfortunately, the output of rem2pdf differs based on the Pango
+  version, so this test is not run by default.
+
+- BUG FIX: remind:  "remind -c" would sometimes split a line early when
+  the next word on the line would have fit in the calendar box (and thus
+  could make the calendar box unnecessarily high.)  This has been fixed.
+
+- BUG FIX: tkremind: If tkremind is invoked on a filename containing a
+  dash, it could get confused and interpret the filename as command-line
+  options, with confusion and hilarity ensuing.
+
+-------------------------------------------------------------------
 Thu Aug  6 07:23:16 UTC 2026 - Detlef Steuer <detlef.steuer@gmx.de>
 
 * VERSION 06.02.10 - 2026-08-05
