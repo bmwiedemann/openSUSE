@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug 14 16:58:28 CEST 2026 - Michael Schroeder <mls@suse.de>
+
+- drop unneeded ima-evm-utils-devel BuildRequires
+
+-------------------------------------------------------------------
 Fri Mar  7 14:14:55 CET 2025 - mls@suse.de
 
 - update to rpm-4.20.1

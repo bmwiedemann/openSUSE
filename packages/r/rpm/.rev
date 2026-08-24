@@ -2642,4 +2642,12 @@ See bugzilla 1167537 for the gory details.</comment>
     <user>dimstar_suse</user>
     <comment>- Add Requires: (rpm-plugin-selinux if selinux-policy)</comment>
   </revision>
+  <revision rev="329" vrev="10">
+    <srcmd5>683ee33bf807d63a199f3a8a797d5b66</srcmd5>
+    <version>4.20.1</version>
+    <time>1787565885</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1372871</requestid>
+  </revision>
 </revisionlist>

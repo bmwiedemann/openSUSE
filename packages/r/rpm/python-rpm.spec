@@ -31,7 +31,6 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  file-devel
-BuildRequires:  ima-evm-utils-devel
 BuildRequires:  libacl-devel
 BuildRequires:  libarchive-devel
 BuildRequires:  libbz2-devel
