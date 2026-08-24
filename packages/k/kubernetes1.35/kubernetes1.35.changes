@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Aug 24 04:07:41 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.35.8:
+  * Update golang.org/x deps
+  * Bump to go 1.26.5
+  * Fix case where preemptor may be stuck in unschedulable queue
+  * Fix ObjectVal ConvertToNative for structpb and refine mutation tests
+
+- Update .spec file to bump go version build requirements:
+    `BuildRequires:  go >= 1.26.5`
+    `BuildRequires:  golang(API) = 1.26`
+  * ref: https://github.com/kubernetes/kubernetes/blob/v1.35.7/.go-version
+
+-------------------------------------------------------------------
 Mon Jul 27 06:14:23 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - CVE-2020-8561: kubernetes: Webhook redirect in kube-apiserver, bsc#1190099
