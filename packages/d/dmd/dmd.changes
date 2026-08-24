@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Aug 23 14:20:57 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 2.113.0
+  * Support for default values in C-style bitfields
+  * Destructors now run in a nothrow function when an Error unwinds through it
+  * New experimental Data Flow Analysis Engine for nullability and truthiness
+  * Fast DFA reports on uninitialized variable reads
+  * Improve -ftime-trace template instance detail
+  * Added __traits(needsDestruction, T)
+  * New trait __traits(isOverlapped, field) to detect overlapping fields
+  * Checks for null dereferences
+  * Allow certain pragma(printf) function calls to be treated as @safe
+  * Add support for static array length inference
+  * The compiler now inlines pragma(inline, true) functions in a separate pass
+  * -vgc now reports locations of nested functions that create closures
+  * Add support for with (auto x = expression())
+  * Gravedigger approach to Throwables escaping a thread entry point is now 
+    available
+  * variant: Support big structs with @disable this()
+  * Added --timeout option to dub dustmite command.
+
+for details, see https://dlang.org/changelog/2.113.0.html
+
+-------------------------------------------------------------------
 Sun Mar 29 15:07:21 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 2.112.1
