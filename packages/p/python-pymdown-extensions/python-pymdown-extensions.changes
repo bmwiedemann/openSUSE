@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 24 07:44:30 UTC 2026 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 11.0.2:
+  * FIX: InlineHilite: Improve performance of inline code matching.
+  * FIX: Keys: Fix regex pattern inefficiencies.
+  * FIX: Blocks.HTML: Fix backtracking in HTML extension.
+
+-------------------------------------------------------------------
 Sat Jul  4 09:11:56 UTC 2026 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 11.0.1:
