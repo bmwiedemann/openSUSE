@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define plasma6_version 5.27.80
 %define qt6_version 6.9.0
 
 %bcond_without released
 Name:           kate
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        Advanced Text Editor
 License:        GPL-3.0-or-later
@@ -48,7 +48,6 @@ BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
 BuildRequires:  cmake(KF6NewStuff) >= %{kf6_version}
 BuildRequires:  cmake(KF6TextEditor) >= %{kf6_version}
 BuildRequires:  cmake(KF6UserFeedback) >= %{kf6_version}
-BuildRequires:  cmake(KF6Wallet) >= %{kf6_version}
 BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
 BuildRequires:  cmake(PlasmaActivities) >= %{plasma6_version}
 BuildRequires:  cmake(Qt6Concurrent) >= %{qt6_version}
