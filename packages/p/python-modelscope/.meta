@@ -1,0 +1,8 @@
+<package name="python-modelscope" project="openSUSE:Factory">
+  <title>ModelScope hub and library core (Model-as-a-Service SDK)</title>
+  <description>ModelScope is a Model-as-a-Service SDK for browsing, downloading and
+running models from ModelScope Hub. This package ships the hub/library
+core only: the cv, nlp, audio and related extras are not required.
+The modelscope and ms commands delegate to python-modelscope-hub.</description>
+  <url>https://github.com/modelscope/modelscope</url>
+</package>

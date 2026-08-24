@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Sat Aug 22 06:05:52 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Switch from update-alternatives to libalternatives
+  * Drop bundled C/CUDA sources from ops/ (not built; they tripped
+    devel-file-in-non-devel-package)
+
+-------------------------------------------------------------------
+Sat Aug 22 05:40:21 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package of python-modelscope 1.39.1: ModelScope hub and
+  library core (Model-as-a-Service SDK)
+  * Requires python-modelscope-hub >= 0.2.0; import modelscope
+    loads the hub client
+  * Ships modelscope and ms CLI entry points (delegates to
+    modelscope-hub)
+  * cv/nlp/audio extras are not hard-required; Suggests
+    python-transformers, python-datasets and python-Pillow
+  * Non-free NVIDIA proprietary, NVIDIA-NC and CC-BY-NC files
+    from optional extras are removed in prep and not shipped
+
