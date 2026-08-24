@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
 
 %bcond_without  released
 Name:           keysmith
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        OTP client
 License:        GPL-3.0-or-later
@@ -31,16 +31,15 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  fdupes
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pkgconfig
-BuildRequires:  qt6qmlimport(org.kde.prison.scanner)
-BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6Kirigami) >= %{kf6_version}
-BuildRequires:  cmake(KF6KirigamiAddons) 
+BuildRequires:  cmake(KF6KirigamiAddons)
 BuildRequires:  cmake(KF6Prison) >= %{kf6_version}
 BuildRequires:  cmake(KF6QQC2DesktopStyle) >= %{kf6_version}
 BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
@@ -53,6 +52,7 @@ BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  pkgconfig(libsodium)
 BuildRequires:  pkgconfig(openssl)
+BuildRequires:  qt6qmlimport(org.kde.prison.scanner)
 Requires:       kf6-kirigami-imports >= %{kf6_version}
 Requires:       kf6-prison-imports >= %{kf6_version}
 Requires:       kirigami-addons6
