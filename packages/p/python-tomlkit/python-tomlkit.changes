@@ -1,4 +1,159 @@
 -------------------------------------------------------------------
+Sat Aug 22 14:07:37 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.15.1:
+  * Speed up membership tests (`key in ...`) on `Container`,
+    `Table` and `InlineTable` with native `__contains__`
+    implementations, avoiding the inherited `MutableMapping`
+    round-trip through `__getitem__` (which resolves the value
+    and builds an exception on every absent key).
+  * Speed up parsing by making `Source` index-based: it now
+    tracks an integer position over the input string instead of
+    materializing a list of `(index, char)` tuples up front, so
+    construction is O(1) and state save/restore no longer copies
+    an iterator.
+  * Speed up parsing by scanning character runs in bulk:
+    `Source.advance_while`/`advance_until` consume a whole run of
+    whitespace, bare-key or number characters in a single pass
+    over the input string instead of one `inc()` call per
+    character.
+  * Speed up parsing of single-line strings by bulk-appending the
+    run of ordinary characters up to the next delimiter,
+    backslash or control character in one pass, instead of one
+    character at a time.
+  * Speed up parsing by removing the internal `TOMLChar` wrapper:
+    the parser now reads plain `str` characters from `Source` and
+    detects end-of-input positionally, avoiding a per-character
+    object construction and method dispatch.
+  * Speed up parsing by comparing `StringType` members by
+    identity (`is`) instead of building a set on every
+    `is_basic`/`is_literal`/`is_singleline`/`is_multiline` call,
+    avoiding millions of enum hashes while parsing.
+  * Speed up merging super tables by merging in place instead of
+    deep-copying the growing target on every merge, turning the
+    parse of documents with many subtables under a shared super
+    table (e.g. consecutive `[a.b.c]` / `[a.b.d]` headers) from
+    O(n²) into O(n).
+  * Speed up membership tests (`key in ...`) on out-of-order
+    tables with a native `OutOfOrderTableProxy.__contains__`,
+    completing #483 for the last mapping type that still
+    inherited the slow `MutableMapping` mixin (which resolves the
+    value and builds an exception on every absent key).
+  * Speed up parsing documents with many dotted keys or table
+    headers sharing a prefix by validating out-of-order tables
+    incrementally: each new fragment is merged into a cached
+    validation container once, instead of re-merging (and deep-
+    copying) every earlier fragment on each append, turning a
+    super-cubic worst case into linear time (80 shared-prefix
+    dotted keys: ~8 s → ~10 ms).
+  * Speed up parsing of arrays that close right after a value
+    (e.g. the `files = [...]` blocks that dominate lock files):
+    the parser no longer attempts to read a value while sitting
+    on the closing `]`, which previously built an
+    `UnexpectedCharError` just to discard it — and constructing
+    that exception eagerly computes a line/column by scanning the
+    whole document, making it O(document size) per such array.
+  * Speed up parsing of multiline strings by bulk-appending the
+    run of ordinary characters — across raw line feeds and tabs —
+    up to the next delimiter, backslash, carriage return or
+    control character, instead of one character at a time. This
+    extends to `"""`/`'''` bodies the single-line fast path added
+    in #491; a `r` still stops the scan so `rn` stays validated
+    and byte-for-byte preserved.
+  * Speed up `unwrap()` (converting a parsed document to a plain
+    `dict`) by resolving each key directly from the container's
+    key map instead of iterating the inherited `MutableMapping`
+    view, which rebuilt a `SingleKey` from the bare string for
+    every key just to re-look-up the value. Out-of-order tables
+    still resolve through their proxy, so their validation is
+    unchanged.
+  * Speed up rendering (`as_string()` / `dumps()`) of inline
+    tables with many keys by precomputing the last-key and last-
+    deleted-element indices in a single pass, instead of
+    rescanning the remaining body on every separator comma —
+    turning an O(n²) render into O(n).
+  * Raise on malformed array element instead of dropping it,
+  * Fix `string()` dropping a leading newline of a multiline
+    string on round-trip: a value beginning with a newline is now
+    rendered with an extra leading newline (the one the parser
+    trims after the opening delimiter) so it survives re-parsing.
+  * Fix invalid serialization with a duplicated comma when
+    removing a non-edge element from a parsed inline table.
+  * Fix invalid serialization with a duplicated comma when
+    appending or inserting into a comma-first formatted array.
+  * Fix `ParseError` when a sub-table extends the last element of
+    an array of tables after an unrelated table.
+  * Fix unparseable serialization when adding a key to a dotted-
+    key table inside an inline table.
+  * Fix a table replaced by a plain value being serialized inside
+    the preceding table's body when other tables follow; the
+    value now moves before the first table like other root-level
+    values.
+  * Fix assigning a table over a dotted key (e.g. `doc["a"] =
+    {...}` where `a` came from `a.b = ...`): the dotted prefix
+    was duplicated onto the new `[a]` header, and the header then
+    swallowed any sibling that follows it on round-trip. The
+    replacement now renders as a plain table and, when needed,
+    moves before the inline entries (values and dotted keys) it
+    would otherwise capture.
+  * Restore `dumps()` rendering mapping-like wrappers around a
+    parsed document (e.g. `dotty_dict`'s `Dotty`) through their
+    delegated `as_string`, preserving the original table order
+    and layout instead of re-encoding through a plain dict — a
+    0.15.0 regression.
+  * Fix uncontrolled recursion when parsing deeply nested
+    documents: crafted input could crash the process with a
+    `RecursionError`. Values nested more than 100 levels deep and
+    keys with more than 100 dotted fragments now raise
+    `ParseError`.
+  * Fix `comment()` producing invalid TOML for a multiline string
+    by prefixing every line with `#`, not just the first.
+  * Fix the separator comma being swallowed by a trailing comment
+    when appending a key to a multiline inline table, leaving the
+    new key without a separator so the result no longer round-
+    trips.
+  * Fix a `KeyAlreadyPresent` error when parsing or accessing an
+    out-of-order table whose array-of-tables elements are split
+    across the table's parts.
+  * Out-of-order value-vs-table and dotted-key-vs-table
+    redefinitions are now rejected at parse time instead of being
+    silently accepted or raising only on access. The parser also
+    detects when a non-dotted key is a prefix of an existing
+    dotted key, matching the stdlib `tomllib` behaviour.
+  * Reject tables inserted into inline tables instead of
+    serializing invalid TOML.
+  * Fix assigning an array of tables over a dotted key (e.g.
+    `doc["a"] = aot(...)` where `a` came from `a.b = ...`): the
+    new `[[a]]` header kept the dotted key's inline position and
+    swallowed the following dotted sibling on round-trip. The
+    array of tables now renders past the inline entries it would
+    otherwise capture, mirroring the table fix for #513.
+  * Fix a new top-level scalar being captured by a table rendered
+    from a dotted key: appending a scalar after a dotted-key
+    entry (e.g. `a.b = 1`) whose table had gained a `[a.c]`-style
+    child placed the scalar inside that table's scope, silently
+    re-nesting it on round-trip. Scalars now move before such an
+    entry, like they do before regular tables.
+  * Fix invalid serialization with a duplicated `[table]` header
+    when adding a key to an out-of-order table whose concrete
+    header is declared after its sub-tables; the new key now
+    lands in the existing concrete part instead of giving the
+    header-less super part a second header.
+  * Fix a table's display name (its exact header spelling,
+    including whitespace and quoting) being normalised when the
+    table is assigned onto itself, e.g. `doc[k] = doc[k]`
+    rewriting `[keys .'a'.'c']` to `[keys.a.'c']`.
+  * Fix missing newlines when appending a key after a dotted
+    inline table, including when the original document has no
+    trailing newline.
+  * Preserve trailing whitespace when replacing a super table,
+    including assigning it onto itself.
+  * Fix `str()` and `repr()` of out-of-order table proxies to
+    show their merged values.
+  * Reject decimal integer literals that exceed Python's integer-
+    string conversion limit instead of coercing them to infinity.
+
+-------------------------------------------------------------------
 Tue May 19 20:49:32 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.15.0:

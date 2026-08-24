@@ -276,4 +276,41 @@
   * Update parser to support TOML spec v1.1.0.</comment>
     <requestid>1354096</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>ed47d04baf0c1c8c31c1368c7a630257</srcmd5>
+    <version>0.15.1</version>
+    <time>1787565706</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.15.1:
+  * Speed up membership tests (`key in ...`) on `Container`,
+    `Table` and `InlineTable` with native `__contains__`
+    implementations, avoiding the inherited `MutableMapping`
+    round-trip through `__getitem__` (which resolves the value
+    and builds an exception on every absent key).
+  * Speed up parsing by making `Source` index-based: it now
+    tracks an integer position over the input string instead of
+    materializing a list of `(index, char)` tuples up front, so
+    construction is O(1) and state save/restore no longer copies
+    an iterator.
+  * Speed up parsing by scanning character runs in bulk:
+    `Source.advance_while`/`advance_until` consume a whole run of
+    whitespace, bare-key or number characters in a single pass
+    over the input string instead of one `inc()` call per
+    character.
+  * Speed up parsing of single-line strings by bulk-appending the
+    run of ordinary characters up to the next delimiter,
+    backslash or control character in one pass, instead of one
+    character at a time.
+  * Speed up parsing by removing the internal `TOMLChar` wrapper:
+    the parser now reads plain `str` characters from `Source` and
+    detects end-of-input positionally, avoiding a per-character
+    object construction and method dispatch.
+  * Speed up parsing by comparing `StringType` members by
+    identity (`is`) instead of building a set on every
+    `is_basic`/`is_literal`/`is_singleline`/`is_multiline` call,
+    avoiding millions of enum hashes while parsing.
+  * Speed up merging super tables by merging in place instead of
+    deep-copying the growing target on every merge, turning the</comment>
+    <requestid>1373082</requestid>
+  </revision>
 </revisionlist>
