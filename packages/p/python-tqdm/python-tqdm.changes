@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Aug 22 13:51:37 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.70.0:
+  * support `process_map(mp_context, max_tasks_per_child)`,
+    `thread_map(thread_name_prefix)`
+  * fix `total` based on shortest iterable length
+  * use default `max_workers`
+  * support `timeout`, `buffersize`
+  * improve ETA
+  * update `as_completed`
+  * add `tqdm.concurrent.intepreter_map`
+  * `asyncio`: support iterables with only `__aiter__`
+  * support `reset(float("inf"))`
+  * framework: test & reduce wheel size
+- update to 4.69.1:
+  * `contrib.logging`: preserve filters
+  * support generators (without `len`)
+  * fix potential `AttributeError` on exit
+  * fix `total=float('inf')`
+  * fix potential `AttributeError` on exit
+  * fix minor docs typos
+- update to 4.69.0:
+  * add `tqdm.asyncio.gather(..., return_exceptions=False)`
+  * misc minor framework updates
+- update to 4.68.4:
+  * trim to `ncols` even when `'{bar}' not in bar_format`
+  * fix `tqdm.write` when `stdout=None`
+
+-------------------------------------------------------------------
 Sun Jun 28 14:31:27 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.68.3:
