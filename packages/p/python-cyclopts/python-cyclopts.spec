@@ -16,8 +16,9 @@
 #
 
 
+%bcond_without libalternatives
 Name:           python-cyclopts
-Version:        4.23.1
+Version:        4.23.2
 Release:        0
 Summary:        Intuitive, easy CLIs based on python type hints
 License:        Apache-2.0
@@ -31,14 +32,14 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module rich >= 13.6.0}
 BuildRequires:  %{python_module rich-rst >= 1.3.1}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-attrs >= 23.1.0
 Requires:       python-docstring-parser >= 0.15
 Requires:       python-rich >= 13.6.0
 Requires:       python-rich-rst >= 1.3.1
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 BuildArch:      noarch
 %if %{python_version_nodots} < 311
 Requires:       python-tomli >= 2.0.0
@@ -60,6 +61,7 @@ argument/sub-command resolution.
 %install
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/cyclopts
+%python_group_libalternatives cyclopts
 # force hash-based .pyc (avoid python-bytecode-inconsistent-mtime)
 %python_expand $python -m compileall -q -f -o 0 -o 1 --invalidation-mode unchecked-hash %{buildroot}%{$python_sitelib}/cyclopts
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
@@ -67,11 +69,8 @@ argument/sub-command resolution.
 %check
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -B -c "import cyclopts"
 
-%post
-%python_install_alternative cyclopts
-
-%postun
-%python_uninstall_alternative cyclopts
+%pre
+%python_libalternatives_reset_alternative cyclopts
 
 %files %{python_files}
 %doc README.md

@@ -113,4 +113,25 @@ tests, so %check remains the import smoke test.</comment>
   * Skip var-keyword parameters in shell completion generation</comment>
     <requestid>1372691</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>9f3c762780d59dec4998678d0ef3f14b</srcmd5>
+    <version>4.23.2</version>
+    <time>1787566239</time>
+    <user>anag_factory</user>
+    <comment>Update to 4.23.2:
+- Add type hints to the help panel and spec copy() methods (upstream PR #899);
+  a sys.version_info typing/typing_extensions Self shim comes with it. No
+  dependency, build-backend or version-floor change (pyproject.toml is
+  byte-identical to 4.23.1).
+- Switch from update-alternatives to libalternatives (alts), the Factory
+  default: %python_group_libalternatives + %pre reset scriptlet replace the
+  %post/%postun %python_install_alternative pair. /usr/bin/cyclopts is now a
+  real &quot;-&gt; alts&quot; symlink and rpmlint reports package-supports-libalternatives.
+
+License unchanged (Apache-2.0, upstream License-Expression). Verified with a
+native local osc build against openSUSE_Tumbleweed/aarch64 (--clean): green,
+%check import passes for python313 and python314, rpmlint 0 errors 0 warnings
+0 badness.</comment>
+    <requestid>1373167</requestid>
+  </revision>
 </revisionlist>
