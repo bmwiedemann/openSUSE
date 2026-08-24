@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Sun Aug 16 07:27:14 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.08.0/
+- Changes since 26.07.90:
+  * kcmtrash.cpp: fix trash settings not detecting multiple mounts (kde#469598)
+
+-------------------------------------------------------------------
+Sat Aug  1 11:38:57 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.07.90
+  * New feature release
+- Changes since 26.07.80:
+  * workers: fill UDSEntry one value type at a time
+  * smb: fix DFS namespace authentication (kde#510902)
+
+-------------------------------------------------------------------
+Sat Jul 18 11:11:37 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.07.80
+  * New feature release
+- Changes since 26.04.3:
+  * Fix incorrect display aspect ratio on SVG thumbnails with height > width
+  * kio_thumbnail: poll wasKilled() in the directory thumbnail loops
+  * Poll wasKilled() in worker transfer and listing loops
+  * kio_filenamesearch: Skip content searches in /dev, /proc and /sys
+  * Restore original "None" string in accordance with review comments
+  * Update help tooltip in accordance with review comments
+  * Web Search Keywords: Update tool tips and reduce duplication
+  * Web Search Keywords: Show provider domain as tool tip for name column
+  * Web Search Keywords: Allow the "Preferred" column to be sorted
+  * Web Search Keywords: Add icons to action buttons
+  * man: Accept a case insensitive or fuzzy match for the page name
+  * sftp: avoid copying captured variables to pass to qScopeGuard
+  * sftp: added an autotest suite using a paramiko-based sftp server
+  * sftp: fixes for mime type detection and resuming files
+  * proxykcm: fix auto configuration help button spacing
+  * Use default DEFAULT_SEVERITY for logging
+  * mtp: only handle portable media players that explicitly support MTP
+  * D-Bus spec doesn't allow hyphens in object paths, exchanged for underscores, which are allowed (kde#516856)
+  * Drop MinimumKeepSize from KCM
+  * Drop MinimumKeepSize config from workers
+  * filenamesearch: Treat any url with non empty path as invalid
+
+-------------------------------------------------------------------
 Tue Jun 30 18:19:34 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.04.3

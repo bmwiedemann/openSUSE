@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define plasma6_version 5.27.80
 %define qt6_version 6.9.0
 
 %bcond_without released
 Name:           kio-extras
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        Additional KIO slaves for KDE applications
 License:        GPL-2.0-or-later
@@ -74,8 +74,8 @@ BuildRequires:  pkgconfig(libproxy-1.0)
 BuildRequires:  pkgconfig(libtirpc)
 BuildRequires:  pkgconfig(smbclient)
 BuildRequires:  pkgconfig(taglib)
-Requires:       trash_kcm
 Requires:       qt6-sql-sqlite >= %{qt6_version}
+Requires:       trash_kcm
 Recommends:     kf6-kimageformats >= %{kf6_version}
 Recommends:     qt6-imageformats >= %{qt6_version}
 # Packages are only coinstallable since 24.02.0
@@ -89,6 +89,7 @@ Obsoletes:      kde-odf-thumbnail < %{version}
 Additional KIO-slaves for KDE applications.
 
 # kcm_trash.desktop conflicts with KF5's kio one. Only one is needed
+
 %package -n trash_kcm
 Summary:        Trash KDE module
 Conflicts:      kio-core < 5.116
@@ -142,7 +143,7 @@ This is the development package for libkioarchive6
 %dir %{_kf6_plugindir}/kf6/kded/
 %{_kf6_plugindir}/kf6/kded/filenamesearchmodule.so
 %{_kf6_plugindir}/kf6/kded/smbwatcher.so
-%{_kf6_plugindir}/kf6/kded/wpad-detector.so
+%{_kf6_plugindir}/kf6/kded/wpad_detector.so
 %dir %{_kf6_plugindir}/kf6/kfileitemaction
 %{_kf6_plugindir}/kf6/kfileitemaction/forgetfileitemaction.so
 %{_kf6_plugindir}/kf6/kfileitemaction/kactivitymanagerd_fileitem_linking_plugin.so
