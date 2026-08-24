@@ -17,7 +17,7 @@
 
 
 Name:           taisei
-Version:        1.4.5
+Version:        1.4.6
 Release:        0
 Summary:        Clone of the Touhou Project series of shoot ’em up games
 License:        MIT
@@ -36,7 +36,9 @@ BuildRequires:  python3-Pygments
 BuildRequires:  python3-docutils
 BuildRequires:  shaderc
 BuildRequires:  spirv-cross-devel
+%if 0%{?suse_version} > 1600
 BuildRequires:  (python3-backports.zstd if python(abi) < 3.14)
+%endif
 BuildRequires:  cmake(glslang) >= 15.0.0
 BuildRequires:  pkgconfig(cglm) >= 0.7.8
 BuildRequires:  pkgconfig(freetype2)
@@ -61,6 +63,11 @@ BuildOption:    -Dinstall_macos_bundle=disabled
 BuildOption:    -Dinstall_relocatable=disabled
 BuildOption:    -Dshader_transpiler=enabled
 BuildOption:    -Dr_gles30=enabled
+%if 0%{?suse_version} <= 1600
+# Leap 16.0 has neither Python 3.14 (compression.zstd) nor backports.zstd,
+# which scripts/pack.py needs to build the data archive.
+BuildOption:    -Dpackage_data=disabled
+%endif
 
 %description
 Taisei is an open clone of the Touhou Project series. Touhou is a one-man project

@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Aug 22 20:23:44 UTC 2026 - Mia Herkt <mia@0x0.st>
+
+- Update to version 1.4.6
+  * Fixed toggling fullscreen mode from the menu causing it to
+    flip back and forth
+    gh#taisei-project/taisei#430
+  * Fixed some minor background rendering errors, in particular
+    in the non-OpenGL backends.
+  * Fixed a crash in Stage Practice menu when choosing a
+    difficulty that was never played before.
+  * Improved FPS limiter accuracy on some systems.
+  * Fixed "System" language option always defaulting to English.
+    gh#taisei-project/taisei#433
+  * Implemented dialogue title cards for bosses.
+  * Added background color adjustment options
+    (brightness, contrast, saturation).
+  * Improved visibility of Iku's cloud bullets in Stage 5.
+  * Minor locale fixes; French no longer overflows the HUD.
+  * Improved progress and config saving robustness by writing to a
+    temporary file.
+
+-------------------------------------------------------------------
+Mon Aug 17 14:36:31 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Fix unresolvable build on Leap 16.0: it has neither Python 3.14
+  nor backports.zstd, so drop that BuildRequires there and build
+  with -Dpackage_data=disabled, shipping the data as .pkgdir.
+
+-------------------------------------------------------------------
 Wed Jul  8 15:19:48 UTC 2026 - Mia Herkt <mia@0x0.st>
 
 - Update to version 1.4.5

@@ -245,4 +245,33 @@ See website: https://taisei-project.org/news/0022_v1.4.5
   * Drop libzip</comment>
     <requestid>1364605</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>fcb0acc6af524218149056bc819d107c</srcmd5>
+    <version>1.4.6</version>
+    <time>1787566208</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.4.6
+  * Fixed toggling fullscreen mode from the menu causing it to
+    flip back and forth
+    gh#taisei-project/taisei#430
+  * Fixed some minor background rendering errors, in particular
+    in the non-OpenGL backends.
+  * Fixed a crash in Stage Practice menu when choosing a
+    difficulty that was never played before.
+  * Improved FPS limiter accuracy on some systems.
+  * Fixed &quot;System&quot; language option always defaulting to English.
+    gh#taisei-project/taisei#433
+  * Implemented dialogue title cards for bosses.
+  * Added background color adjustment options
+    (brightness, contrast, saturation).
+  * Improved visibility of Iku's cloud bullets in Stage 5.
+  * Minor locale fixes; French no longer overflows the HUD.
+  * Improved progress and config saving robustness by writing to a
+    temporary file.
+
+- Fix unresolvable build on Leap 16.0: it has neither Python 3.14
+  nor backports.zstd, so drop that BuildRequires there and build
+  with -Dpackage_data=disabled, shipping the data as .pkgdir.</comment>
+    <requestid>1373145</requestid>
+  </revision>
 </revisionlist>
