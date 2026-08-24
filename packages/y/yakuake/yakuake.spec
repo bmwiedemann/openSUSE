@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define plasma6_version 5.27.80
 %define qt6_version 6.9.0
 
 %bcond_without released
 Name:           yakuake
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        Drop-down terminal emulator based on Konsole technologies
 License:        GPL-2.0-or-later
@@ -55,11 +55,11 @@ BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
 BuildRequires:  cmake(KWayland) >= %{plasma6_version}
 BuildRequires:  cmake(PlasmaWaylandProtocols)
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
-BuildRequires:  cmake(Qt6WaylandClient) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
+BuildRequires:  cmake(Qt6WaylandClient) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  pkgconfig(x11)
-Buildrequires:  pkgconfig(xcb-event)
+BuildRequires:  pkgconfig(xcb-event)
 Requires:       konsole-part
 Recommends:     konsole
 
