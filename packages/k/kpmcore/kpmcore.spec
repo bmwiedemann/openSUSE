@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
 
 %bcond_without released
 Name:           kpmcore
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        KDE Partition Manager core library
 License:        GPL-3.0-or-later
