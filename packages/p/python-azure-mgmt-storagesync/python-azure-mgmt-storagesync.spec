@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-storagesync
-Version:        2.0.0
+Version:        2.1.0
 Release:        0
 Summary:        Microsoft Azure Storage Sync Client Library
 License:        MIT
