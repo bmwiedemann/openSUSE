@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
-%define kpim6_version 6.7.3
+%define kpim6_version 6.8.0
 
 %bcond_without released
 Name:           ksmtp
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        Job-based library to send email through an SMTP server
 License:        LGPL-2.1-or-later
@@ -58,9 +58,6 @@ package contains the KSMTP library itself.
 Summary:        Development files for KSMTP
 Requires:       libKPim6SMTP6 = %{version}
 Requires:       cmake(KF6CoreAddons) >= %{kf6_version}
-Requires:       cmake(KF6I18n) >= %{kf6_version}
-Requires:       cmake(KF6KIO) >= %{kf6_version}
-Requires:       cmake(KPim6Mime) >= %{kpim6_version}
 
 %description devel
 This package contains all necessary include files and libraries needed
