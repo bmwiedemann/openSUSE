@@ -105,7 +105,9 @@ jq --indent 2 \
         "find-up": "5.0.0",
         "shell-quote": "1.9.0",
         "ws@^7.0.0": "7.5.11",
-        "ws@^8.0.0": "8.21.0"
+        "ws@^8.0.0": "8.21.0",
+        "axios": "^1.18.0",
+        "browserslist": "^4.28.7"
       }
   )
 ' package.json > temp.json && mv temp.json package.json

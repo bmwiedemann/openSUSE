@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Sat Aug 22 23:27:51 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to 2.22.1 "Hotfix #1"
+  * Remove manual patches and sed replacements for node modules:
+    * extract-zip-cve-2026-56876.patch
+    * electron-updater (CVE-2026-54673)
+    * app-builder-lib (CVE-2026-54672)
+  * Rationale: These packages are used strictly as build-time dependencies 
+    (electron-builder tooling) or are not utilized in the RPM distribution
+    model. 
+    They are not shipped in the final binary, making these runtime CVEs 
+    false positives for the end-user RPM package.
+  * [Fix] "Add Game" dialog resetting the Wineprefix if SteamGridDB API
+    is used by @CommandMC in #5599
+  * [Tech] Make LibraryManagers and GameManagers actual classes by
+    @CommandMC in #4889
+  * [Tech] No longer use GameManagers as singletons by @CommandMC in #4894
+  * [i18n] Updated Translations by @weblate in #5583
+  * Re-add rehype-raw dependency by @CommandMC in #5688
+  * [UX] Add proton-cachyos to the wine manager by @arielj in #5463
+  * Update Flatpak manifest to fix build by @CommandMC in #5697
+  * Add missing encodeURIComponent in log uploader by @CommandMC in #5701
+  * Create compatibilitytools.d if it does not exist by @CommandMC in #5699
+  * Make Proton-CachyOS the default Proton version by @CommandMC in #5705
+  * Move "Disable umu" into the "Legacy" section by @CommandMC in #5689
+  * Switch GOG user APIs by @CommandMC in #5718
+  * [TECH] Remove Wine-GE from the wine manager options by @arielj in #5251
+  * Update to latest v41 of Electron by @CommandMC in #5716
+  * [Tech] Point Plausible analytics to the self-hosted instance by
+    @flavioislima in #5736
+  * Add Green Man Gaming deals to the Discounts screen by @flavioislima
+    in #5740
+  * update Spanish language code to es-ES for Epic API requests by @mglourido
+    in #5717
+  * tech: update nile to 1.2.0 by @imLinguin in #5645
+  * Update to Electron 43 and re-add React Dev Tools extension by @CommandMC
+    in #5755
+  * Fix various typos by @upriver4 in #5761
+  * [Feat] Add Humble Bundle deals to the Discounts screen by @flavioislima
+    in #5748
+  * [Tech] Don't minify main, and add source maps by @CommandMC in #5766
+  * Make GE-Proton downloads deterministic by @CommandMC in #5708
+  * Hide ProgressDialog's indeterminate progress bar if it does not make
+    sense by @CommandMC in #5743
+  * fix: unify webview session partitions so login credentials carry over
+    to stores by @kairosci in #5752
+  * Added new currencies from GOG. by @Moon-yungg in #5779
+  * [Feat] Resolve GOG Deals region from the user's GOG account by
+    @flavioislima in #5790
+  * [Feat] Make the Store Pages controllable with Joystick by @flavioislima
+    in #5707
+  * [Tech] Add Zoom runner to Plausible analytics by @flavioislima in #5799
+  * Fix: show Rosetta warning when Rosetta is not installed by @flavioislima
+    in #5772
+  * [Fix] Respect hidden games in Console mode by @adamcolwell in #5788
+  * [Feat] Update legendary and gogdl by @CommandMC in #5809
+  * [Fix] Description of "Game Arguments" option by @CommandMC in #5810
+  * [Fix] Correct reversed A/B and X/Y buttons on Nintendo controllers by 
+    @flavioislima in #5747
+  * [Input] Improved gamepad key repeat to make navigation snappier by
+    @veryprofessionaldodo in #5059
+  * [i18n] Updated Translations by @weblate in #5806
+
+-------------------------------------------------------------------
 Sat Jul  4 00:49:47 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
 
 - Apply security patches for embedded dependencies:
