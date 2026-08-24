@@ -19,7 +19,7 @@
 %define _so -28
 %define _so_astro 1
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
 
 %ifarch x86_64 aarch64 riscv64
@@ -28,7 +28,7 @@
 
 %bcond_without released
 Name:           marble
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        Generic map viewer
 # License note: the tools directory contains GPL-3 tools, but they are neither built nor installed by the package
@@ -77,9 +77,9 @@ BuildRequires:  cmake(Qt6WebEngineWidgets) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Xml) >= %{qt6_version}
 BuildRequires:  cmake(absl)
+BuildRequires:  pkgconfig(Qgpsmm)
 BuildRequires:  pkgconfig(libgps)
 BuildRequires:  pkgconfig(protobuf)
-BuildRequires:  pkgconfig(Qgpsmm)
 BuildRequires:  pkgconfig(shapelib)
 BuildRequires:  pkgconfig(zlib)
 Requires:       libastro%{_so_astro} = %{version}
