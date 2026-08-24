@@ -18,11 +18,11 @@
 
 %bcond_without released
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
 #
 Name:           kunifiedpush
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        UnifiedPush client components
 License:        LGPL-2.0-or-later
