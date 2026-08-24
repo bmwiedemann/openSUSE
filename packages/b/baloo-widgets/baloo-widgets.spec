@@ -16,14 +16,13 @@
 #
 
 
-
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
 
 %define rname baloo-widgets
 %bcond_without released
 Name:           baloo-widgets
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        Framework for searching and managing metadata
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-only
@@ -47,9 +46,9 @@ BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 # Due to the binary it can't be SLPP compliant currently,
 # but only the latest version should be needed.
 Obsoletes:      libKF5BalooWidgets5 < %{version}
-Obsoletes:      libKF6BalooNaturalQueryParser1 < %{version}
 Obsoletes:      baloo5-widgets < %{version}
 Obsoletes:      baloo5-widgets-lang < %{version}
+Obsoletes:      libKF6BalooNaturalQueryParser1 < %{version}
 
 %description
 Baloo is a framework for searching and managing metada
