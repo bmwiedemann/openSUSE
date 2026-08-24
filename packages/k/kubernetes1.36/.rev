@@ -34,4 +34,12 @@
 Also, includes a changelog entry pointing to the mitigation steps suggested by the upstream Kubernetes project for CVE-2020-8561, bsc#1190099</comment>
     <requestid>1367910</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8ec11b83549dd270c131da054218254e</srcmd5>
+    <version>1.36.4</version>
+    <time>1787566302</time>
+    <user>anag_factory</user>
+    <comment>Monthly Patch Release – Aug, 2026: Update to version 1.36.4</comment>
+    <requestid>1373296</requestid>
+  </revision>
 </revisionlist>

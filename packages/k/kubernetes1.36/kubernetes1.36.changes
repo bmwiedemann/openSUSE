@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Aug 24 04:10:27 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.36.4:
+  * Make sure gated pods are flushed with the same frequency as non-gated
+  * Update golang.org/x deps
+  * Always set UpdatePodResources when a starting container is resized
+  * client-go: restore FakeCustomStore conformance to cache.Store
+  * kubelet/dra: reset devices before processing response
+  * Unset WasFlushedFromUnschedulable for gated pods
+  * DRA: key the structured allocator counter caches by PoolID
+  * Fix case where preemptor may be stuck in unschedulable queue
+  * Clarify multi-attach events
+
+-------------------------------------------------------------------
+Tue Jul 28 08:26:52 UTC 2026 - Andreas Schwab <schwab@suse.de>
+
+- Fix output_path for riscv64
+
+-------------------------------------------------------------------
 Mon Jul 27 06:16:44 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - CVE-2020-8561: kubernetes: Webhook redirect in kube-apiserver, bsc#1190099

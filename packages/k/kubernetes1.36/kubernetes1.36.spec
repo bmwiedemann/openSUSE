@@ -1,7 +1,7 @@
 #
 # spec file for package kubernetes1.36
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %define baseversionminus1 1.35
 
 Name:           kubernetes%{baseversion}
-Version:        1.36.3
+Version:        1.36.4
 Release:        0
 Summary:        Container Scheduling and Management
 License:        Apache-2.0
@@ -231,7 +231,6 @@ export KUBE_GIT_VERSION=v%{version}
 #TEST
 export FORCE_HOST_GO=y
 
-
 %if (0%{?sle_version} == 0 || 0%{?is_opensuse})
   %ifarch s390x
     # On openSUSE s390x, build all, but without PIE
@@ -253,7 +252,6 @@ export FORCE_HOST_GO=y
   %endif
 %endif
 
-
 # The majority of the documentation has already been moved into
 # http://kubernetes.io/docs/admin, and most of the files stored in the `docs`
 # directory simply point there. That being said, some of the files are actual
@@ -272,7 +270,7 @@ popd
 
 %install
 
-%ifarch ppc64le aarch64
+%ifarch ppc64le aarch64 riscv64
 output_path="_output/local/go/bin"
 %else
 output_path="_output/local/bin/linux/%{go_arch}"
