@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Aug 24 08:20:07 UTC 2026 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.115.1:
+  + Additions:
+    * Add HelixChangeMode keybinding support.
+    * Add background-completions opt-out.
+  + Other changes:
+    * Interactive pickers in completions.
+    * Tab waits for the external completer.
+  + Bug fixes:
+    * Fixed semver (and other custom) comparisons not working 
+      in boolean expressions.
+    * Fix $ans after invalid operations on $ans.last.
+    * Fix update closures on lazy SQLite tables.
+    * Fix $env.config.keybindings merging for shared names.
+    * Fix completions for cd and custom completers.
+  * For a full list of changes with detailed descriptions, see:
+    https://www.nushell.sh/blog/2026-08-23-nushell_v0_115_1.html
+
+-------------------------------------------------------------------
 Sun Aug 16 16:09:36 UTC 2026 - Andrei Dziahel <develop7@develop7.info>
 
 - Update to version 0.115.0:
