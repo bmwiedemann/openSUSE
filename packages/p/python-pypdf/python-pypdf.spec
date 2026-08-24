@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pypdf
-Version:        6.14.2
+Version:        6.16.2
 Release:        0
 Summary:        PDF toolkit
 License:        BSD-3-Clause
@@ -27,6 +27,7 @@ Source0:        https://github.com/py-pdf/pypdf/archive/refs/tags/%{version}.tar
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Provides:       python3-PyPDF2 = %version-%release
 Obsoletes:      python3-PyPDF2 < %version-%release
 # SECTION test requirements

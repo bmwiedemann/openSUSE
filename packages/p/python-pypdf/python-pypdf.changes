@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Aug 24 09:18:28 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 6.16.2
+  * Make remove_from_tree() work on outline items
+  * Allow repeated page references
+  * Improve RC4 fallback when cryptography can't provide it
+  6.16.1
+  * Limit iterations for outline retrieval and XForm text extraction
+  6.16.0
+  * Detect cycles in TreeObject.insert_child
+  * Build /ToUnicode source-code bytes directly in parse_bfrange
+  * Reject typeless non-page /Kids entries in strict mode
+  6.15.0 (CVE-2026-71870, bsc#1274688, CVE-2026-71852, bsc#1275551)
+  * Improve performance of read_until_whitespace
+  * Limit CID width range and width count when loading fonts
+  * Limit token length for ToUnicode entries
+  * Deprecate previously missed inline_images setter as well
+  * Add ActualText tag when we produce RTL appearance stream
+  * Allow keeping original PDF header in non-incremental clone mode
+
+-------------------------------------------------------------------
 Thu Jul  9 12:11:07 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Update to 6.14.2 (CVE-2026-59935, bsc#1271145)
