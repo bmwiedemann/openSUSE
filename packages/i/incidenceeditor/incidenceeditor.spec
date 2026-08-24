@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
-%define kpim6_version 6.7.3
+%define kpim6_version 6.8.0
 
 %bcond_without released
 Name:           incidenceeditor
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        Incidenceeditor library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -32,13 +32,15 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  fdupes
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  cmake(KF6CalendarCore) >= %{kf6_version}
 BuildRequires:  cmake(KF6Codecs) >= %{kf6_version}
+BuildRequires:  cmake(KF6Holidays) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
 BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6Mime) >= %{kf6_version}
 BuildRequires:  cmake(KF6TextWidgets) >= %{kf6_version}
 BuildRequires:  cmake(KGantt6) >= 3.0.0
 BuildRequires:  cmake(KPim6Akonadi) >= %{kpim6_version}
@@ -50,7 +52,6 @@ BuildRequires:  cmake(KPim6EventViews) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6IdentityManagementCore) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6LdapWidgets) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6Libkdepim) >= %{kpim6_version}
-BuildRequires:  cmake(KPim6Mime) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6PimCommonAkonadi) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6TextEdit) >= %{kpim6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
@@ -64,8 +65,8 @@ This package contains the incidenceeditor library.
 Summary:        Incidenceeditor Library
 License:        LGPL-2.1-or-later
 Requires:       incidenceeditor >= %{version}
-Obsoletes:      libKPim5IncidenceEditor5 < %{version}
 Obsoletes:      incidenceeditor-lang <= 23.04.0
+Obsoletes:      libKPim5IncidenceEditor5 < %{version}
 Obsoletes:      libKPim5IncidenceEditor5-lang < %{version}
 
 %description -n libKPim6IncidenceEditor6
@@ -76,11 +77,11 @@ Summary:        Development package for incidenceeditor
 License:        LGPL-2.1-or-later
 Requires:       libKPim6IncidenceEditor6 = %{version}
 Requires:       cmake(KF6CalendarCore) >= %{kf6_version}
+Requires:       cmake(KF6Mime) >= %{kf6_version}
 Requires:       cmake(KPim6AkonadiMime) >= %{kpim6_version}
 Requires:       cmake(KPim6CalendarSupport) >= %{kpim6_version}
 Requires:       cmake(KPim6CalendarUtils) >= %{kpim6_version}
 Requires:       cmake(KPim6EventViews) >= %{kpim6_version}
-Requires:       cmake(KPim6Mime) >= %{kpim6_version}
 
 %description devel
 The development package for the incidenceeditor libraries.

@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sun Aug 16 07:26:40 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.08.0/
+- No code change since 26.07.90
+
+-------------------------------------------------------------------
+Sat Aug  1 11:38:23 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.07.90
+  * New feature release
+- No code change since 26.07.80
+
+-------------------------------------------------------------------
+Sat Jul 18 11:11:01 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.07.80
+  * New feature release
+- Too many changes since 26.04.3, only listing bugfixes:
+  * Don't LLCONFLICT when moving an incidence to a new collection. (kde#522164)
+  * templatemanagementdialog.cpp - disable OK button until new or remove (kde#228683)
+  * Prompt for overwriting changed values with a template (kde#228675)
+  * guard against crash from empty organiser email (kde#495848)
+
+-------------------------------------------------------------------
+Sat Jul 18 09:03:16 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update build requirements
+
+-------------------------------------------------------------------
 Tue Jun 30 18:19:04 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.04.3
