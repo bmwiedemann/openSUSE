@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Sun Aug 16 07:27:32 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.08.0/
+- No code change since 26.07.90
+
+-------------------------------------------------------------------
+Sat Aug  1 11:39:14 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.07.90
+  * New feature release
+- No code change since 26.07.80
+
+-------------------------------------------------------------------
+Sat Jul 18 11:11:55 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.07.80
+  * New feature release
+- Changes since 26.04.3:
+  * pimuniqueapplication.cpp - prevent crash in exportWindow() with Wayland
+  * Add a signal for minuteChanged()
+  * .kde-ci.yml - require merge requests do not introduce cppcheck issues
+  * Use reinterpret_cast to convert from integral to pointer type
+  * cppcheck-suppressions.xml - add cppcheck suppressions
+  * cppcheck ignoredReturnValue fixes
+  * cppcheck cstyleCast fixes
+  * cppcheck uninitMemberVar fix
+  * clang-tidy readability-const-return-type suppress
+  * clang-tidy readability-inconsistent-declaration-parameter-name fixes
+  * clang-tidy bugprone-integer-division suppression
+  * clang-tidy misc-const-correctness fixes
+  * clang-tidy misc-use-internal-linkage fix
+  * clang-tidy strict-iterators fix
+  * .clang-tidy - add the pim clang-tidy configuration
+  * Add ECMInstalledLibraryCheck support
+  * Fix compile on freebsd
+  * Port to new api
+  * CMAKE_CXX_SCAN_FOR_MODULES is already defined in ecm
+  * Remove unused variable
+  * Move license info in REUSE.toml
+  * Allow to use prek
+
+-------------------------------------------------------------------
 Tue Jun 30 18:19:50 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.04.3
