@@ -16,14 +16,14 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
-%define kpim6_version 6.7.3
-%define ktextaddons_version 2.0.0
+%define kpim6_version 6.8.0
+%define ktextaddons_version 2.0.2
 
 %bcond_without released
 Name:           kalarm
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        Personal Alarm Scheduler
 License:        GPL-2.0-only
@@ -35,8 +35,8 @@ Source2:        applications.keyring
 %endif
 BuildRequires:  kf6-breeze-icons
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
-BuildRequires:  polkit-default-privs
 BuildRequires:  pkgconfig
+BuildRequires:  polkit-default-privs
 BuildRequires:  cmake(KF6Auth) >= %{kf6_version}
 BuildRequires:  cmake(KF6CalendarCore) >= %{kf6_version}
 BuildRequires:  cmake(KF6Codecs) >= %{kf6_version}
@@ -55,6 +55,7 @@ BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
 BuildRequires:  cmake(KF6ItemModels) >= %{kf6_version}
 BuildRequires:  cmake(KF6JobWidgets) >= %{kf6_version}
 BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6Mime) >= %{kf6_version}
 BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
 BuildRequires:  cmake(KF6NotifyConfig) >= %{kf6_version}
 BuildRequires:  cmake(KF6Service) >= %{kf6_version}
@@ -70,14 +71,13 @@ BuildRequires:  cmake(KPim6AkonadiMime) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6CalendarUtils) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6IdentityManagementWidgets) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6MailTransport) >= %{kpim6_version}
-BuildRequires:  cmake(KPim6Mime) >= %{kpim6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  pkgconfig(libvlc)
-BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(mpv)
+BuildRequires:  pkgconfig(x11)
 Provides:       kalarm5 = %{version}
 Obsoletes:      kalarm5 < %{version}
 
