@@ -60,4 +60,21 @@ SLE_15_SP7 repo is red, but it was red on the previous version too - its cargo
 is too old to read the lock file - and it is not a Factory target.</comment>
     <requestid>1371620</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>39a8f962ba07d4952311e6f152b96ba5</srcmd5>
+    <version>1.47.0</version>
+    <time>1787566203</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.47.0
+
+- Upstream release 1.47.0
+- Re-derive the License tag comment: 1216 crates vendored, 607 linked
+- Drop pkgconfig(sqlite3): sqlx requests libsqlite3-sys with the
+  bundled feature, so the system library was never linked
+- Declare bundled(aws-lc), bundled(libzstd), bundled(oniguruma) and
+  bundled(sqlite3): four C libraries compiled in from crate-bundled
+  sources that cannot be unbundled without changing the feature
+  selection upstream picked</comment>
+    <requestid>1373122</requestid>
+  </revision>
 </revisionlist>

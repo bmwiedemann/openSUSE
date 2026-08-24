@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sat Aug 22 13:49:47 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.47.0:
+  * recipes: the documented minijinja filters work again, and
+    recipe parameter values are validated before a run starts
+  * the computercontroller extension no longer offers the
+    automation_script, web_scrape and cache tools
+  * ACP: authentication errors are reported by the goose acp
+    server, large sessions no longer drop the connection, and the
+    handoff context is retried after a failed prompt
+  * providers: context-length-exceeded is recognised from byte-size
+    request limits as well, one-shot fast-model calls no longer pay
+    the prompt-cache write premium, and the Gemini OAuth provider
+    is deprecated
+  * extensions over streamable HTTP can use pre-registered OAuth
+    clients, and OAuth token transport must now be secure
+  * hardening: bounded XLSX range reads, local image reads,
+    action-required stream admission and partial thinking tags;
+    goose review no longer follows untracked symlinks
+  * the bundled SQLite is 3.51.3
+- Re-derive the License tag from the new vendored crate graph: the
+  set of 13 SPDX identifiers is unchanged, but BSD-2-Clause is now
+  carried only by the bundled leaflet.min.js because arrayref left
+  the crate graph
+- Drop the pkgconfig(sqlite3) BuildRequires: sqlx requests
+  libsqlite3-sys with the "bundled" feature, so SQLite is compiled
+  from the crate-bundled amalgamation and the system library is
+  never linked
+- Declare the C libraries that are statically compiled into the
+  binary as bundled() provides, so their CVE surface is visible:
+  aws-lc 5.5.0, libzstd 1.5.7, oniguruma 6.9.10 and sqlite3 3.51.3
+
+-------------------------------------------------------------------
 Sun Aug 16 19:06:51 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.46.0:

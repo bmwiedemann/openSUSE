@@ -18,7 +18,7 @@
 
 %global goose_features aws-providers,nostr,otel,rustls-tls,system-keyring,tui,disable-update
 Name:           goose
-Version:        1.46.0
+Version:        1.47.0
 Release:        0
 Summary:        Extensible open source AI agent that automates engineering tasks
 # Legal-Review-Notice: goose itself is Apache-2.0, but the shipped binary
@@ -26,8 +26,9 @@ Summary:        Extensible open source AI agent that automates engineering tasks
 # whole linked set. Derived on this vendoring with
 # "cargo tree --offline -p goose-cli -e normal --no-default-features
 #  --features %%{goose_features}" over the vendored tree
-# (1235 crates vendored, 608 in the linked graph -- the code-mode and
-# local-inference branches, and with them v8/candle/llama-cpp, are not built),
+# (1216 crates vendored, 607 in the linked graph -- the code-mode and
+# local-inference branches, and with them v8/candle/llama-cpp, are not built,
+# and neither is the cuda branch, so the cudaforge git dependency is unused),
 # then reading "license =" from every vendor-crates/<name>-<version>/Cargo.toml.
 # Where a crate offers a choice the Apache-2.0 branch is elected, and MIT where
 # Apache-2.0 is not on offer; both are already named, so no "OR" expression in
@@ -35,19 +36,22 @@ Summary:        Extensible open source AI agent that automates engineering tasks
 # to make: LGPL-3.0-or-later from ansi_colours (pulled in by bat),
 # MPL-2.0 from option-ext (via dirs-sys), Unicode-3.0 from the 20 ICU crates,
 # CC0-1.0 from the five bitcoin_hashes/secp256k1 crates (nostr),
-# CDLA-Permissive-2.0 from webpki-roots, ISC from rustls-webpki and untrusted
-# (and from ring, "Apache-2.0 AND ISC"), BSD-3-Clause from subtle/brotli/
-# alloc-no-stdlib, BSD-2-Clause from arrayref, Zlib from foldhash and friends,
-# MIT-0 from borrow-or-share, bzip2-1.0.6 from libbz2-rs-sys, and MIT from the
-# 165 MIT-only crates. MPL-2.0 section 3.2 and the LGPL-3.0 source requirement
+# CDLA-Permissive-2.0 from the two webpki-roots, ISC from rustls-webpki,
+# simple_asn1 and untrusted (and from ring, "Apache-2.0 AND ISC"),
+# BSD-3-Clause from subtle/brotli/alloc-no-stdlib/exr/lebe, Zlib from foldhash
+# and zlib-rs, MIT-0 from borrow-or-share, bzip2-1.0.6 from libbz2-rs-sys, and
+# MIT from the 164 MIT-only crates. No crate in the graph carries BSD-2-Clause
+# any more (arrayref left it in 1.47.0); that identifier is now held solely by
+# the bundled leaflet.min.js named below.
+# MPL-2.0 section 3.2 and the LGPL-3.0 source requirement
 # are satisfied because the complete vendor-crates.tar.zst ships in the src.rpm;
 # the two texts are additionally installed as %%license files.
 # Beside the crates, goose-mcp include_str!()s six minified JavaScript/CSS
 # libraries into the binary -- chart.js (MIT), d3 (ISC), d3-sankey
 # (BSD-3-Clause), leaflet (BSD-2-Clause), leaflet.markercluster (MIT) and
-# mermaid (MIT). Every one of those identifiers is already carried above by a
-# Rust crate, so they add nothing to the tag; their texts, which upstream keeps
-# in crates/goose-mcp/licenses/, are installed as %%license files.
+# mermaid (MIT). All but leaflet's BSD-2-Clause are already carried above by a
+# Rust crate; their texts, which upstream keeps in crates/goose-mcp/licenses/,
+# are installed as %%license files.
 License:        Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND CC0-1.0 AND CDLA-Permissive-2.0 AND ISC AND LGPL-3.0-or-later AND MIT AND MIT-0 AND MPL-2.0 AND Unicode-3.0 AND Zlib AND bzip2-1.0.6
 URL:            https://github.com/aaif-goose/goose
 Source0:        %{name}-%{version}.tar.zst
@@ -62,15 +66,24 @@ BuildRequires:  pkgconfig
 # upstream declares rust-version = "1.94.1" in the workspace manifest and cargo
 # refuses to build below it
 BuildRequires:  rust >= 1.94.1
-# libdbus-sys (via keyring -> dbus-secret-service) probes for it
+# libdbus-sys (via keyring -> dbus-secret-service) probes for it; the floor is
+# the one its build script passes to pkg-config
 BuildRequires:  pkgconfig(dbus-1) >= 1.6
-# libsqlite3-sys is pulled in by sqlx-sqlite with default-features off, so it
-# links the system SQLite rather than the bundled copy
-BuildRequires:  pkgconfig(sqlite3)
 # The computer-controller extension shells out to these; goose warns at start-up
 # when none of them is present, but works without them.
 Recommends:     wtype
 Recommends:     xdotool
+# Four C libraries are compiled into the binary from crate-bundled sources and
+# cannot be unbundled without patching the feature selection upstream picked:
+# sqlx requests libsqlite3-sys with "bundled", so SQLite is the cc-compiled
+# amalgamation and NOT the system library; zstd-sys and onig_sys only use
+# pkg-config behind a feature/env switch neither sqlx nor bat sets; aws-lc-sys
+# (pulled in by rustls) has no system-library mode at all. Declare them so the
+# bundled CVE surface is visible to the distribution.
+Provides:       bundled(aws-lc) = 5.5.0
+Provides:       bundled(libzstd) = 1.5.7
+Provides:       bundled(oniguruma) = 6.9.10
+Provides:       bundled(sqlite3) = 3.51.3
 ExclusiveArch:  %{rust_tier1_arches}
 
 %description
