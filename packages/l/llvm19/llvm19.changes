@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Aug 23 13:52:04 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Remove soft limit on open files. Depending on the number of jobs,
+  linking can sometimes open more than 1024 files (boo#1261761).
+
+-------------------------------------------------------------------
 Sun Jul 26 13:47:48 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Add compiler-rt-Remove-linux-scc-h.patch to remove <linux/scc.h>

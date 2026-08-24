@@ -208,4 +208,14 @@
 </comment>
     <requestid>1367825</requestid>
   </revision>
+  <revision rev="20" vrev="14">
+    <srcmd5>8e5efea57bd89113adc4ee27b6c9a6d8</srcmd5>
+    <version>19.1.7</version>
+    <time>1787566282</time>
+    <user>anag_factory</user>
+    <comment>- Remove soft limit on open files. Depending on the number of jobs,
+  linking can sometimes open more than 1024 files (boo#1261761).
+</comment>
+    <requestid>1373281</requestid>
+  </revision>
 </revisionlist>
