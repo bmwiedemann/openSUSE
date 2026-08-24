@@ -478,4 +478,41 @@
     SplitResult gained a __getstate__ that requires attributes</comment>
     <requestid>1355112</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>d4485abeb474cfbf73a0443242ef0fc8</srcmd5>
+    <version>1.24.5</version>
+    <time>1787565703</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.24.5:
+  * Restricted the exhaustive IDNA default-ignorable sweep test
+    to a native Linux x86_64 runner. It iterates roughly 140,000
+    code points and its result does not depend on the
+    architecture, so running it under emulated wheel builds only
+    added minutes and intermittently crashed the test workers --
+    by :user:`bdraco`. Related issues and pull requests on
+    GitHub: :issue:`1806`.
+  * Stopped installing hypothesis in the wheel-build test
+    environment. The property-based quoting tests that need it
+    are skipped there already, and building it from source on
+    architectures without a prebuilt wheel (such as armv7l
+    musllinux, where the build pulls in a Rust toolchain) was
+    failing the wheel jobs -- by :user:`bdraco`. Related issues
+    and pull requests on GitHub: :issue:`1804`.
+  * Fixed the :attr:`~yarl.URL.host` property incorrectly
+    returning the percent-encoded zone ID separator %25 instead
+    of decoding it to % for IPv6 Zone ID URLs (e.g.
+    http://[fe80::1%251]/ now correctly exposes .host as
+    fe80::1%1 per RFC 6874) -- by :user:`rodrigobnogueira`.
+    Related issues and pull requests on GitHub: :issue:`1653`.
+  * Fixed _check_netloc() missing % from its NFKC normalization
+    character check, which allowed Unicode characters U+FF05
+    (FULLWIDTH PERCENT SIGN) and U+FE6A (SMALL PERCENT SIGN) to
+    produce a literal % in url.host via the standard library IDNA
+    fallback -- by :user:`rodrigobnogueira`. Related issues and
+    pull requests on GitHub: :issue:`1655`.
+  * Fixed :meth:`~yarl.URL.build` failing to validate characters
+    in the zone ID portion of IPv6 addresses when
+    validate_host=True, allowing control characters such as CR,</comment>
+    <requestid>1373070</requestid>
+  </revision>
 </revisionlist>
