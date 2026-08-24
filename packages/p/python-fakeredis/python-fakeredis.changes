@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Fri Aug 21 19:35:18 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.37.1:
+  * fix: honor the `FILTER-EF` (max filtering effort) option in
+    `VSIM` — the value was previously parsed but ignored, so a
+  * low `FILTER-EF` could return filter matches that real Redis
+    skips
+  * fix: `ZPOPMIN`/`ZPOPMAX` in RESP3 now return a flat `[member,
+    score]` pair when no count is given (an array of pairs is
+  * only returned when an explicit count is passed), matching
+    real Redis
+  * fix: `ZPOPMIN`/`ZPOPMAX` now reject a negative count with
+    `value is out of range, must be positive`
+  * fix:
+    `ZPOPMIN`/`ZPOPMAX`/`BZPOPMIN`/`BZPOPMAX`/`ZMPOP`/`BZMPOP`
+    now delete the sorted set key once its last member is
+  * popped
+  * fix: `LTRIM` now signals the key as modified even when the
+    trim is a no-op, so a `WATCH` on that key correctly aborts
+  * the following transaction, matching real Redis
+  * fix: align stream group errors with Redis — `XPENDING` on a
+    missing key or unknown group now raises `NOGROUP` instead
+  * of returning `0`/an empty array, and neither `XPENDING` nor
+    `XINFO GROUPS` creates the key as a side effect
+  * perf: `VADD`/`VSIM` keep a row-oriented matrix of the vector
+    set resident and reuse it, instead of restacking every
+  * stored vector on each call; re-adding an existing member now
+    replaces its row rather than leaving a stale one
+  * perf: cache compiled `JSONPath` objects in the JSON stack
+    mixin
+  * build: drop Python 3.9, target Python 3.10+
+  * Update to redis-py 8.1
+  * refactor: modernize typing for Ruff 0.16 defaults
+  * test: refactor hypothesis tests
+  * feat: implement connection commands `RESET`, `CLIENT KILL`,
+    `CLIENT UNBLOCK`, `CLIENT REPLY`, `CLIENT PAUSE`,
+  * `CLIENT UNPAUSE`, `CLIENT NO-EVICT` and `CLIENT NO-TOUCH`.
+    `CLIENT PAUSE` validates and records its arguments but does
+  * not actually suspend command processing; the client-side
+    caching commands (`CLIENT TRACKING`, `CLIENT TRACKINGINFO`,
+  * `CLIENT CACHING`, `CLIENT GETREDIR`) remain unsupported
+  * feat: support `INCREX` command (redis 8.8)
+  * feat: support `FPHA` argument in `JSON.SET` to force
+    homogeneous numeric arrays to a floating-point type (redis
+    8.8) (
+  * #523)
+  * feat: support hash field subkey notifications (redis 8.8)
+  * feat: support multiple aggregators in
+    `TS.RANGE`/`TS.REVRANGE`/`TS.MRANGE`/`TS.MREVRANGE` (redis
+    8.8)
+  * feat: support `COUNT` aggregator in
+    `ZUNION`/`ZINTER`/`ZUNIONSTORE`/`ZINTERSTORE` (redis 8.8)
+  * feat: support `CLAIM min-idle-time` option in `XREADGROUP`
+    (redis 8.4)
+  * feat(bitfield): support `#`-prefixed offsets in `BITFIELD`
+  * fix: align `XNACK` with redis 8.8 semantics
+  * fix: `HEXPIRE`/`HPEXPIRE` now raise an error on negative
+    expiration time
+  * fix: `GEOADD` now rejects longitude/latitude pairs outside
+    the valid range
+  * fix: validate command option values that real Redis rejects
+    instead of silently acting on them — negative
+  * expirations in `HGETEX`/`HSETEX`, non-positive
+    `COUNT`/`numkeys` in `LMPOP`/`BLMPOP`/`ZMPOP`/`BZMPOP` and
+  * `SINTERCARD`, negative `LPOS` `COUNT`/`MAXLEN`, out-of-range
+    `COPY` `DB` index, negative blocking timeouts,
+  * non-positive `SCAN`/`SSCAN`/`HSCAN`/`ZSCAN` `COUNT`, and
+    invalid `BITCOUNT`/`BITPOS` range arguments
+  * Update to redis-py 8.0.1
+  * Update Valkey version used in CI to 8.1.8
+  * refactor: reorganize and clean up command classes in
+    `_commands.py` and related mixins
+  * test: skip subkey notification tests on redis-py below 5
+  * doc: fix link to implement command guide
+
+-------------------------------------------------------------------
 Wed Jul  1 16:19:32 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.36.2:

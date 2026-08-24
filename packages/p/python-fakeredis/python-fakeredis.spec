@@ -18,13 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-fakeredis
-Version:        2.36.2
+Version:        2.37.1
 Release:        0
 Summary:        Fake implementation of redis API for testing purposes
 License:        BSD-3-Clause AND MIT
 URL:            https://github.com/cunla/fakeredis-py
 Source:         https://github.com/cunla/fakeredis-py/archive/refs/tags/v%{version}.tar.gz#/fakeredis-%{version}-gh.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
@@ -37,7 +37,7 @@ Suggests:       python-lupa >= 2.1
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module hypothesis >= 6.138}
-BuildRequires:  %{python_module pytest >= 8.4}
+BuildRequires:  %{python_module pytest >= 9}
 BuildRequires:  %{python_module pytest-asyncio >= 1.1}
 BuildRequires:  %{python_module pytest-mock >= 3.15}
 BuildRequires:  %{python_module redis >= 4.3}

@@ -488,4 +488,41 @@
     `__hash__`/`__eq__` (previously returned an unstable hash)</comment>
     <requestid>1363029</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>987387c7be84ab7174e631d103da00f2</srcmd5>
+    <version>2.37.1</version>
+    <time>1787565684</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.37.1:
+  * fix: honor the `FILTER-EF` (max filtering effort) option in
+    `VSIM` — the value was previously parsed but ignored, so a
+  * low `FILTER-EF` could return filter matches that real Redis
+    skips
+  * fix: `ZPOPMIN`/`ZPOPMAX` in RESP3 now return a flat `[member,
+    score]` pair when no count is given (an array of pairs is
+  * only returned when an explicit count is passed), matching
+    real Redis
+  * fix: `ZPOPMIN`/`ZPOPMAX` now reject a negative count with
+    `value is out of range, must be positive`
+  * fix:
+    `ZPOPMIN`/`ZPOPMAX`/`BZPOPMIN`/`BZPOPMAX`/`ZMPOP`/`BZMPOP`
+    now delete the sorted set key once its last member is
+  * popped
+  * fix: `LTRIM` now signals the key as modified even when the
+    trim is a no-op, so a `WATCH` on that key correctly aborts
+  * the following transaction, matching real Redis
+  * fix: align stream group errors with Redis — `XPENDING` on a
+    missing key or unknown group now raises `NOGROUP` instead
+  * of returning `0`/an empty array, and neither `XPENDING` nor
+    `XINFO GROUPS` creates the key as a side effect
+  * perf: `VADD`/`VSIM` keep a row-oriented matrix of the vector
+    set resident and reuse it, instead of restacking every
+  * stored vector on each call; re-adding an existing member now
+    replaces its row rather than leaving a stale one
+  * perf: cache compiled `JSONPath` objects in the JSON stack
+    mixin
+  * build: drop Python 3.9, target Python 3.10+
+  * Update to redis-py 8.1</comment>
+    <requestid>1372919</requestid>
+  </revision>
 </revisionlist>
