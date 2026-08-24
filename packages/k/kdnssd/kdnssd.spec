@@ -17,12 +17,12 @@
 
 
 %define rname kio-zeroconf
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
 
 %bcond_without released
 Name:           kdnssd
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        Zeroconf Support for KIO applications
 License:        GPL-2.0-or-later
