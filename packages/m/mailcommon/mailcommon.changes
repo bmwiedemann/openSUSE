@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Sun Aug 16 07:28:00 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.08.0/
+- No code change since 26.07.90
+
+-------------------------------------------------------------------
+Sat Aug  1 11:39:39 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.07.90
+  * New feature release
+- No code change since 26.07.80
+
+-------------------------------------------------------------------
+Sat Jul 18 11:12:21 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.07.80
+  * New feature release
+- Changes since 26.04.3:
+  * Add ECMInstalledLibraryCheck support
+  * CMAKE_CXX_SCAN_FOR_MODULES is already defined in ecm
+  * Add noexcept here
+  * Add missing dependancies
+  * Add KPim6::MessageViewer in public (need by some headers)
+  * Add missing QMetaType for Q_DECLARE_METATYPE
+  * Use index not current index
+  * Fix EntityCollectionOrderProxyModel::lessThan with isUnifiedMailboxesAgent
+  * Fix check
+  * Fix check index
+  * Fix invalid index
+  * Assign directly not using temporary element
+  * Don't duplicate item
+  * coding style
+  * Increase PlasmaActivities version
+  * Reflect the move of KMime to Frameworks in the dependency data
+  * Port to the named-argument variant of the Akonadi CMake test macro
+  * Remove unused include
+  * Add forward compatibility with KMime from KDE Frameworks
+  * Use if(..) as in release mode it can crash
+  * MAILCOMMON_LIB_VERSION unused
+  * Use PIM_VERSION
+  * Use prek + move license info in REUSE.toml
+
+-------------------------------------------------------------------
+Sat Jul 18 09:04:21 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update build requirements
+
+-------------------------------------------------------------------
 Tue Jun 30 18:20:13 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.04.3

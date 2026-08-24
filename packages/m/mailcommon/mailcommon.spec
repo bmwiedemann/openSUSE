@@ -16,14 +16,14 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
-%define kpim6_version 6.7.3
-%define ktextaddons_version 2.0.0
+%define kpim6_version 6.8.0
+%define ktextaddons_version 2.0.2
 
 %bcond_without released
 Name:           mailcommon
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        Base KDE PIM library for mail-handling applications
 License:        GPL-2.0-only AND LGPL-2.1-or-later
@@ -44,6 +44,7 @@ BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
 BuildRequires:  cmake(KF6ItemViews) >= %{kf6_version}
 BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6Mime) >= %{kf6_version}
 BuildRequires:  cmake(KF6SyntaxHighlighting) >= %{kf6_version}
 BuildRequires:  cmake(KF6TextCustomEditor) >= %{ktextaddons_version}
 BuildRequires:  cmake(KF6TextWidgets) >= %{kf6_version}
@@ -60,7 +61,6 @@ BuildRequires:  cmake(KPim6MessageComposer) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6MessageCore) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6MessageList) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6MessageViewer) >= %{kpim6_version}
-BuildRequires:  cmake(KPim6Mime) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6PimCommonAkonadi) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6TemplateParser) >= %{kpim6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
@@ -93,8 +93,10 @@ Requires:       cmake(KPim6Akonadi) >= %{kpim6_version}
 Requires:       cmake(KPim6AkonadiMime) >= %{kpim6_version}
 Requires:       cmake(KPim6Libkdepim) >= %{kpim6_version}
 Requires:       cmake(KPim6MessageComposer) >= %{kpim6_version}
+Requires:       cmake(KPim6MessageViewer) >= %{kpim6_version}
 Requires:       cmake(KPim6PimCommon) >= %{kpim6_version}
 Requires:       cmake(KPim6PimCommonAkonadi) >= %{kpim6_version}
+Requires:       cmake(Qt6Widgets) >= %{qt6_version}
 
 %description devel
 This package contains the development headers for the mailcommon library.
