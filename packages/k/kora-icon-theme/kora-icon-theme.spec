@@ -17,7 +17,7 @@
 
 
 Name:           kora-icon-theme
-Version:        2.0.5
+Version:        2.0.6
 Release:        0
 Summary:        SVG icon theme suitable for every desktop environment
 License:        GPL-3.0-only
