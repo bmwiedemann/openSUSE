@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Aug 16 07:26:53 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.08.0/
+- No code change since 26.07.90
+
+-------------------------------------------------------------------
+Sat Aug  1 11:38:36 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.07.90
+  * New feature release
+- Changes since 26.07.80:
+  * fixed infinity loop when degree token is found in calculation (kde#515379)
+
+-------------------------------------------------------------------
+Sat Jul 18 11:11:15 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.07.80
+  * New feature release
+- Changes since 26.04.3:
+  * Add option to force scientific notation (kde#142729)
+  * README.md proofreading
+  * tests: Force locale so tests pass on locales with , as decimal separator
+  * kcalc binaries are shipped as GPL-2.0-or-later. Only CMakePresets.json is BSD-3-Clause
+
+-------------------------------------------------------------------
 Tue Jun 30 18:19:16 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.04.3
