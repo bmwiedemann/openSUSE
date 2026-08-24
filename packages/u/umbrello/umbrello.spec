@@ -16,52 +16,46 @@
 #
 
 
-%ifarch %{arm} aarch64 %{ix86} x86_64 %{x86_64} %{riscv}
-# 07/2024: Integration is currently broken due to kdevelop now using KF6/Qt6 and umbrello not being ported
-%bcond_with kdevelop
-%endif
+%define kf6_version 6.27.0
+%define qt6_version 6.9.0
+#
 %bcond_without released
 Name:           umbrello
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        UML Modeller
-License:        GPL-2.0-only AND GFDL-1.2-only AND GPL-3.0-or-later
+License:        GFDL-1.2-only AND GPL-2.0-only AND GPL-3.0-or-later
 URL:            https://apps.kde.org/umbrello
 Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules
-%if %{with kdevelop}
-BuildRequires:  kdevelop5-pg-qt
-BuildRequires:  kdevplatform-devel
-%endif
-BuildRequires:  libxml2-devel
-BuildRequires:  libxslt-devel
-BuildRequires:  cmake(KF5Archive)
-BuildRequires:  cmake(KF5Completion)
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5Crash)
-BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5IconThemes)
-BuildRequires:  cmake(KF5ItemModels)
-BuildRequires:  cmake(KF5KCMUtils)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5TextEditor)
-BuildRequires:  cmake(KF5ThreadWeaver)
-BuildRequires:  cmake(KF5WidgetsAddons)
-BuildRequires:  cmake(KF5WindowSystem)
-BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5Gui)
-BuildRequires:  cmake(Qt5PrintSupport)
-BuildRequires:  cmake(Qt5Svg)
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5Widgets)
-BuildRequires:  cmake(Qt5Xml)
+BuildRequires:  doxygen
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  pkgconfig
+BuildRequires:  cmake(KF6Archive) >= %{kf6_version}
+BuildRequires:  cmake(KF6Completion) >= %{kf6_version}
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
+BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6TextEditor) >= %{kf6_version}
+BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
+BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
+BuildRequires:  cmake(Qt6PrintSupport) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Xml) >= %{qt6_version}
+BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(libxslt)
 Obsoletes:      umbrello5 < %{version}
 Provides:       umbrello5 = %{version}
 
@@ -74,30 +68,31 @@ Umbrello is a UML modelling application.
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build -- -DBUILD_KF5=ON
+%cmake_kf6 \
+  -DBUILD_WITH_QT6:BOOL=TRUE \
+  -DBUILD_PHP_IMPORT:BOOL=FALSE
 
-%cmake_build
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --with-man --all-name
-
-%{kf5_find_htmldocs}
+%find_lang %{name} --with-html --with-man --all-name
 
 %files
-%license COPYING COPYING.DOC
+%license LICENSES/*
 %doc README
-%doc %lang(en) %{_kf5_htmldir}/en/umbrello
-%{_kf5_applicationsdir}/org.kde.umbrello.desktop
-%{_kf5_appstreamdir}/org.kde.umbrello.appdata.xml
-%{_kf5_bindir}/po2xmi5
-%{_kf5_bindir}/umbrello5
-%{_kf5_bindir}/xmi2pot5
-%{_kf5_iconsdir}/hicolor/*/*/umbrello*
-%{_kf5_iconsdir}/hicolor/*/mimetypes/application-x-uml.png
-%{_kf5_sharedir}/umbrello5/
+%doc %lang(en) %{_kf6_htmldir}/en/umbrello
+%{_kf6_applicationsdir}/org.kde.umbrello.desktop
+%{_kf6_appstreamdir}/org.kde.umbrello.appdata.xml
+%{_kf6_bindir}/po2xmi6
+%{_kf6_bindir}/umbrello6
+%{_kf6_bindir}/xmi2pot6
+%{_kf6_iconsdir}/hicolor/*/*/umbrello*
+%{_kf6_iconsdir}/hicolor/*/mimetypes/application-x-uml.png
+%{_kf6_sharedir}/umbrello6/
 
 %files lang -f %{name}.lang
+%exclude %{_kf6_htmldir}/en/umbrello
 
 %changelog
