@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Aug 22 20:36:06 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to version 20260815:
+  * Update GNU bc and dc manuals (bc.1, dc.1) to version 1.08.2
+    to cover void functions, array passing by variable, and new
+    commands (R, --max-recursion).
+  * Update and sync numerous date/time and utility man pages
+    with LDP man-pages 6.18, including adjtimex.2,
+    clock_getres.2, nanosleep.2, time.1, and others.
+  * Add translation for previously untranslated paragraphs in
+    ldd.1, notably the security warnings.
+  * Apply styling and formatting cleanups across updated files.
+  * Update translation_list, README, and INSTALL references.
+
+-------------------------------------------------------------------
 Wed Jul 22 13:48:06 UTC 2026 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Use correct spdx reference for BSD-4-Clause

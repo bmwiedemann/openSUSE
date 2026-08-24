@@ -17,7 +17,7 @@
 
 
 Name:           man-pages-ja
-Version:        20260515
+Version:        20260815
 Release:        0
 Summary:        LDP Manual Pages (Japanese)
 License:        Apache-2.0 AND BSD-3-Clause AND BSD-4-Clause AND GPL-2.0-only AND GPL-2.0-or-later AND GFDL-1.1-only AND GFDL-1.2-only AND GFDL-1.3-only

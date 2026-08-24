@@ -392,4 +392,22 @@
     <comment>- Use correct spdx reference for BSD-4-Clause (forwarded request 1367137 from lkocman)</comment>
     <requestid>1367138</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>3ffe04161445db3147628decae8f7981</srcmd5>
+    <version>20260815</version>
+    <time>1787566316</time>
+    <user>anag_factory</user>
+    <comment>- update to version 20260815:
+  * Update GNU bc and dc manuals (bc.1, dc.1) to version 1.08.2
+    to cover void functions, array passing by variable, and new
+    commands (R, --max-recursion).
+  * Update and sync numerous date/time and utility man pages
+    with LDP man-pages 6.18, including adjtimex.2,
+    clock_getres.2, nanosleep.2, time.1, and others.
+  * Add translation for previously untranslated paragraphs in
+    ldd.1, notably the security warnings.
+  * Apply styling and formatting cleanups across updated files.
+  * Update translation_list, README, and INSTALL references. (forwarded request 1373148 from dirkmueller)</comment>
+    <requestid>1373346</requestid>
+  </revision>
 </revisionlist>
