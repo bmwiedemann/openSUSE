@@ -1,7 +1,7 @@
 #
 # spec file for package sipgrep
 #
-# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,15 +21,12 @@
 %bcond_without compression
 %bcond_without ssl
 Name:           sipgrep
-Version:        2.2.0
+Version:        2.2.4
 Release:        0
 Summary:        Tool for displaying/troubleshooting SIP signaling on IP networks
 License:        GPL-3.0-or-later
 URL:            https://github.com/sipcapture/sipgrep
 Source:         https://github.com/sipcapture/sipgrep/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         sipgrep-2.2.0-inet_pton.patch
-# https://github.com/sipcapture/sipgrep/issues/47
-Patch1:         sipgrep-gcc15.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool

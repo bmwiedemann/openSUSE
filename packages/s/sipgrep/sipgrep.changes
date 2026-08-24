@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Aug 23 08:02:20 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.2.4:
+  * Fix off-by-one in regex_and() so combined -f/-t/-c filters keep
+    the trailing )
+
+-------------------------------------------------------------------
+Sat Aug 22 18:57:54 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.2.3:
+  * Accept Linux TUN/OpenVPN and Raw IP captures (DLT_RAW)
+  * -f/-t/-c are ANDed with the match expression
+  * -G prints dialog report only (no per-packet dump)
+- includes changes from 2.2.2:
+  * Fix stack buffer overflow (CWE-787) in parse_message(): clamp
+    SIP reply reason phrase and Content-Length copies to 31 bytes
+    (boo#1276212)
+- drop patches included upstream:
+  * sipgrep-2.2.0-inet_pton.patch
+  * sipgrep-gcc15.patch
+
+-------------------------------------------------------------------
 Thu Jun 19 13:43:14 UTC 2025 - pgajdos@suse.com
 
 - added patches
