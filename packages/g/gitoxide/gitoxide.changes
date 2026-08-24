@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sun Aug 23 05:56:14 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.57.0:
+  * Add gix clone --revision, and PrepareFetch::with_revision(), for
+    cloning a single revision named by a full ref, HEAD or a full
+    object id: HEAD is detached to the fetched commit, no ordinary
+    refs are created, no fetch refspec is persisted and tag
+    following is disabled
+  * Fix a panic when a full object id was passed to with_ref_name(),
+    which produced an object-id refspec mapping that clone expected
+    to be named
+  * Rewrite relative date parsing to follow git: several count and
+    unit pairs are applied in input order, as in "2 days 3 hours
+    ago", counts may be spelled out, any non-alphanumeric byte
+    separates the parts, the trailing "ago" is optional, and a
+    leading "@" may introduce a timestamp. Month and year steps now
+    walk the calendar fields, so a day past the end of the shorter
+    target month rolls over into the following month
+  * gix commit verify now checks signatures through the library
+    rather than spawning gpg itself, so the configured gpg program
+    is honoured and an invalid or untrusted signature is reported
+    as such
+  * Fix the conflict stage labels printed by gix revision explain,
+    which called stage 0 "base"; they are now unconflicted, base,
+    ours and theirs
+  * Reject a TREE index extension whose child entry counts overflow
+    instead of wrapping while verifying them
+  * Replace the jwalk directory walker with dua-core
+- Refresh the vendored dependencies. The licence set is unchanged:
+  re-derived over the new vendor tree, uluru (MPL-2.0) is still the
+  only copyleft crate linked into the binaries, and the new dua-core
+  dependency is MIT.
+
+-------------------------------------------------------------------
 Sat Aug  8 19:10:17 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.56.0:

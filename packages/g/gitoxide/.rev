@@ -79,4 +79,31 @@ Also: require rust &gt;= 1.85 as upstream declares (edition 2024), build against
 Built and verified on aarch64: rpmlint 0 errors / 0 warnings / 0 badness, %check green, source_validator clean.</comment>
     <requestid>1370355</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c7baff3907a53927cb4d6a7f148e0449</srcmd5>
+    <version>0.57.0</version>
+    <time>1787566246</time>
+    <user>anag_factory</user>
+    <comment>Update to gitoxide 0.57.0.
+
+- New gix clone --revision fetches and checks out a single revision
+  (full ref, HEAD or object id) with a detached HEAD; the old panic
+  when a full object id was passed to with_ref_name() is fixed.
+- Relative date parsing now follows git: several count/unit pairs in
+  input order, spelled-out counts, optional &quot;ago&quot;, a leading &quot;@&quot;, and
+  calendar month/year steps where a day past the end of the shorter
+  target month rolls over.
+- gix commit verify checks signatures through the library instead of
+  spawning gpg, honouring the configured gpg program and trust level;
+  gix revision explain no longer mislabels conflict stages.
+- Vendored dependencies refreshed; jwalk replaced by dua-core (MIT).
+  The License tag was re-derived over the new vendor tree and is
+  unchanged: uluru (MPL-2.0) remains the only copyleft crate linked
+  into the binaries.
+
+No patches are carried. Built locally with &quot;osc build --clean
+openSUSE_Tumbleweed aarch64&quot;: green, %check ok, rpmlint 0 errors /
+0 warnings / 0 badness.</comment>
+    <requestid>1373238</requestid>
+  </revision>
 </revisionlist>
