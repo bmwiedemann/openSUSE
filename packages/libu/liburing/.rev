@@ -307,4 +307,22 @@
     <comment></comment>
     <requestid>1360274</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>296faeb9fae53e4c66216acea105238c</srcmd5>
+    <version>2.15</version>
+    <time>1787565678</time>
+    <user>anag_factory</user>
+    <comment>- exclude more tests: they fail on 7.2 so far
+
+- update to 2.15
+  * Classic BPF (cBPF) filter support.
+  * New register helpers: io_uring_register_query() and
+    io_uring_register_zcrx_ctrl()
+  * Out-of-source build support.
+  * Many other improvements, see:
+    https://github.com/axboe/liburing/releases/tag/liburing-2.15
+- disable some new tests for SLE 15 and 16
+- keyring updated</comment>
+    <requestid>1372682</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package liburing
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %global _buildshell /bin/bash
 %define lname   liburing2
 Name:           liburing
-Version:        2.14
+Version:        2.15
 Release:        0
 Summary:        Linux-native io_uring I/O access library
 License:        (GPL-2.0-only AND LGPL-2.1-or-later) OR MIT
@@ -100,20 +100,25 @@ declare -a TEST_EXCLUDE=( conn-unreach.t io-wq-unused-exit.t )
 TEST_EXCLUDE+=( accept-non-empty.t )
 TEST_EXCLUDE+=( accept.t )
 TEST_EXCLUDE+=( bind-listen.t )
+TEST_EXCLUDE+=( cancel-fd-userdata.t )
 TEST_EXCLUDE+=( eploop.t )
 TEST_EXCLUDE+=( eventfd-ring.t )
 TEST_EXCLUDE+=( evloop.t )
 TEST_EXCLUDE+=( fallocate.t )
 TEST_EXCLUDE+=( fd-pass.t )
 TEST_EXCLUDE+=( fifo-futex-poll.t )
+TEST_EXCLUDE+=( file-alloc-range-hint.t )
 TEST_EXCLUDE+=( fixed-buf-merge.t )
 TEST_EXCLUDE+=( fixed-seg.t )
 TEST_EXCLUDE+=( fpos.t )
 TEST_EXCLUDE+=( link-timeout.t )
-TEST_EXCLUDE+=( min-timeout-wait.t )
 TEST_EXCLUDE+=( min-timeout.t )
+TEST_EXCLUDE+=( min-timeout-wait.t )
 TEST_EXCLUDE+=( nop.t )
+TEST_EXCLUDE+=( poll-mshot-wake.t )
 TEST_EXCLUDE+=( read-before-exit.t )
+TEST_EXCLUDE+=( read-inc-buf-more.t )
+TEST_EXCLUDE+=( recv-bundle-buf-len.t )
 TEST_EXCLUDE+=( recv-msgall-stream.t )
 TEST_EXCLUDE+=( recv-mshot-fair.t )
 TEST_EXCLUDE+=( recvsend_bundle.t )
@@ -128,10 +133,21 @@ TEST_EXCLUDE+=( timeout.t )
 TEST_EXCLUDE+=( wq-aff.t )
 %endif
 %if 0%{?suse_version} >= 1600 && %{suse_version} < 1699
-TEST_EXCLUDE+=( min-timeout.t min-timeout-wait.t )
+TEST_EXCLUDE+=( cancel-fd-userdata.t )
+TEST_EXCLUDE+=( file-alloc-range-hint.t )
+TEST_EXCLUDE+=( min-timeout.t )
+TEST_EXCLUDE+=( min-timeout-wait.t )
+TEST_EXCLUDE+=( nop-fixed-file-leak.t )
+TEST_EXCLUDE+=( poll-mshot-wake.t )
+TEST_EXCLUDE+=( read-inc-buf-more.t )
+TEST_EXCLUDE+=( recv-bundle-buf-len.t )
 %endif
 %if 0%{?suse_version} >= 1600
 TEST_EXCLUDE+=( io-wq-exit.t )
+TEST_EXCLUDE+=( iowait.t )
+TEST_EXCLUDE+=( read-before-exit.t )
+TEST_EXCLUDE+=( read-inc-buf-more.t )
+TEST_EXCLUDE+=( read-mshot.t )
 %endif
 
 echo "TEST_EXCLUDE=\"${TEST_EXCLUDE[@]}\"" > test/config.local

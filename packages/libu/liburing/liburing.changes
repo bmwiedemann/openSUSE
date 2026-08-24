@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Aug 21 04:23:18 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
+
+- exclude more tests: they fail on 7.2 so far
+
+-------------------------------------------------------------------
+Thu Jul  2 07:49:16 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
+
+- update to 2.15
+  * Classic BPF (cBPF) filter support.
+  * New register helpers: io_uring_register_query() and
+    io_uring_register_zcrx_ctrl()
+  * Out-of-source build support.
+  * Many other improvements, see:
+    https://github.com/axboe/liburing/releases/tag/liburing-2.15
+- disable some new tests for SLE 15 and 16
+- keyring updated
+
+-------------------------------------------------------------------
 Thu Jun 18 12:34:56 UTC 2026 - olaf@aepfle.de
 
 - disable failing tests via catch-all in SLE15, force bash
