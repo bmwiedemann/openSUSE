@@ -16,15 +16,15 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
 
 %bcond_without released
 Name:           kapptemplate
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        Template for KDE Application Development
-License:        GPL-2.0-only AND GFDL-1.2-only
+License:        GFDL-1.2-only AND GPL-2.0-only
 URL:            https://apps.kde.org/kapptemplate
 Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
