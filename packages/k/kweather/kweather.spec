@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
 %define plasma6_version 5.27.80
 
 %bcond_without released
 Name:           kweather
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Weather application for Plasma
@@ -37,10 +37,11 @@ BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
-BuildRequires:  cmake(KWeatherCore) >= 0.8
 BuildRequires:  cmake(KF6Kirigami) >= %{kf6_version}
 BuildRequires:  cmake(KF6KirigamiAddons) >= 0.11
 BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
+BuildRequires:  cmake(KF6Runner) >= %{kf6_version}
+BuildRequires:  cmake(KWeatherCore) >= 0.8
 BuildRequires:  cmake(Plasma) >= %{plasma6_version}
 BuildRequires:  cmake(Qt6Charts) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
@@ -82,6 +83,8 @@ views for showing forecasts and other information.
 %{_kf6_appstreamdir}/org.kde.kweather.appdata.xml
 %{_kf6_bindir}/kweather
 %{_kf6_iconsdir}/hicolor/scalable/apps/org.kde.kweather.svg
+%dir %{_kf6_plugindir}/kf6/krunner
+%{_kf6_plugindir}/kf6/krunner/krunnerkweather.so
 %{_kf6_plugindir}/plasma/applets/org.kde.plasma.kweather_1x4.so
 
 %files lang -f %{name}.lang
