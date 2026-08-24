@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
 
 %bcond_without released
 Name:           kdebugsettings
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        Program to set debug verbosity for KDE applications
 License:        LGPL-2.0-or-later
