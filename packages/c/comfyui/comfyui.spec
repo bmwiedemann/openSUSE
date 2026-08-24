@@ -30,6 +30,8 @@ Source1:        comfyui.sh
 Source2:        comfyui-packaged-paths.yaml
 # PATCH-FIX-UPSTREAM comfyui-create-custom-nodes-directory.patch gh#Comfy-Org/ComfyUI#8110 gh#Comfy-Org/ComfyUI#8434 mpluskal@suse.com -- create custom_nodes under --base-directory, main.py lists it before the server starts
 Patch0:         comfyui-create-custom-nodes-directory.patch
+# PATCH-FIX-UPSTREAM comfyui-fall-back-to-cpu-without-accelerator.patch mpluskal@suse.com -- start on the CPU when no accelerator is present, instead of raising AssertionError while importing
+Patch1:         comfyui-fall-back-to-cpu-without-accelerator.patch
 BuildRequires:  %{python_module base}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -43,7 +45,7 @@ Requires:       %{primary_python}-aiohttp >= 3.11.8
 Requires:       %{primary_python}-alembic
 Requires:       %{primary_python}-av >= 16.0.0
 Requires:       %{primary_python}-blake3
-Requires:       %{primary_python}-comfy-aimdo = 0.4.13
+Requires:       %{primary_python}-comfy-aimdo = 0.4.14
 Requires:       %{primary_python}-comfy-kitchen = 0.2.31
 Requires:       %{primary_python}-comfyui-embedded-docs >= 0.5.9
 Requires:       %{primary_python}-comfyui-frontend-package = 1.50.6

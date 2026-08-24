@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Aug 23 17:27:06 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Start on the CPU when the machine has no usable accelerator, instead
+  of aborting during import: add
+  comfyui-fall-back-to-cpu-without-accelerator.patch
+  * comfy/model_management.py assumed a GPU unless --cpu was given, so
+    on a CPU-only installation importing it raised "AssertionError:
+    Torch not compiled with CUDA enabled" and the server never started
+  * openSUSE builds PyTorch without CUDA and without ROCm, so this
+    affected every user who did not know to pass --cpu
+  * the fallback logs a warning naming the cause, because the same
+    condition also holds for a GPU-capable PyTorch whose device is
+    currently unusable, where a silent CPU run would be far slower
+    than the user expects
+- Require python-comfy-aimdo 0.4.14 instead of 0.4.13, so the exact
+  pin keeps resolving once that update is published
+
+-------------------------------------------------------------------
 Sat Aug 22 14:58:16 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Fix the very first start of comfyui aborting with a

@@ -1,0 +1,53 @@
+Fall back to the CPU device when no accelerator is present.
+
+comfy/model_management.py sets cpu_state = CPUState.GPU unconditionally at
+import time and the only assignment back to CPUState.CPU is behind the --cpu
+command line flag. There is no autodetection of "this machine has no usable
+GPU at all", so on a CPU-only installation the module-level statement
+
+    total_vram = get_total_memory(get_torch_device()) / (1024 * 1024)
+
+reaches torch.device(torch.cuda.current_device()) and raises
+
+    AssertionError: Torch not compiled with CUDA enabled
+
+while ComfyUI is still importing, i.e. the server never starts. openSUSE
+builds PyTorch without CUDA and without ROCm, so this is what every user of
+the packaged ComfyUI gets unless they know to pass --cpu.
+
+Fall back to the CPU device when none of the accelerator backends the module
+already probes is available. The condition mirrors the flags that are bound
+above it, and it deliberately leaves cpu_state alone when it is CPUState.MPS,
+so Apple silicon is unaffected.
+
+ixuca_available is included in the check so that an Iluvatar CoreX PyTorch
+keeps exactly the behaviour it has today: get_torch_device() has no ixuca
+branch, so such a build must continue to take the torch.cuda.* path rather
+than being silently downgraded to the CPU by this patch. That hardware is not
+available for testing, so it is preserved rather than changed.
+
+The message is a warning rather than an informational line on purpose. The
+same condition is true both for a PyTorch built without any GPU support and
+for a PyTorch that has GPU support whose device is unusable right now (driver
+not loaded, CUDA_VISIBLE_DEVICES empty, a container without device
+passthrough). In the second case the user previously got a loud failure and
+would now get a silent run that is one to two orders of magnitude slower, so
+the fallback has to announce itself and name the cause.
+
+--- ComfyUI-0.33.3.orig/comfy/model_management.py
++++ ComfyUI-0.33.3/comfy/model_management.py
+@@ -156,6 +156,14 @@
+ 
+ if args.cpu:
+     cpu_state = CPUState.CPU
++elif cpu_state == CPUState.GPU and not (directml_enabled or xpu_available
++                                        or npu_available or mlu_available
++                                        or ixuca_available
++                                        or torch.cuda.is_available()):
++    logging.warning("No usable accelerator found (this PyTorch reports no CUDA "
++                    "or ROCm device), falling back to the CPU. Generation will "
++                    "be very slow.")
++    cpu_state = CPUState.CPU
+ 
+ def is_intel_xpu():
+     global cpu_state

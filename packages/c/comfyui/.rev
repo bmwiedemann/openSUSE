@@ -58,4 +58,37 @@ openSUSE:Factory:Staging:adi:28 and needs to be re-paired with this
 request.</comment>
     <requestid>1373109</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>7cc77b3eb32e94613ad07d8acd7a07fa</srcmd5>
+    <version>0.33.3</version>
+    <time>1787579030</time>
+    <user>anag_factory</user>
+    <comment>Start on the CPU when no accelerator is present
+
+comfy/model_management.py assumes a GPU unless --cpu is passed: cpu_state
+is set to GPU at import and only args.cpu ever sets it back. On a
+CPU-only machine the module level
+
+  total_vram = get_total_memory(get_torch_device())
+
+then raises &quot;AssertionError: Torch not compiled with CUDA enabled&quot; while
+ComfyUI is still importing, so the server never starts. Factory builds
+PyTorch without CUDA and without ROCm, so this is what every user gets
+unless they know about --cpu.
+
+Patch1 falls back to the CPU device when none of the accelerator
+backends the module already probes is available. It logs a warning
+rather than an informational line on purpose: the same condition holds
+for a GPU-capable PyTorch whose device is momentarily unusable, and a
+silent CPU run there would be far slower than expected.
+
+Also bumps the exact python-comfy-aimdo requirement to 0.4.14 to match
+request 1373273, so the pin keeps resolving when that lands.
+
+Verified by running the built rpm, since neither the ComfyUI nor the
+comfy-aimdo %check reaches this code: in an x86_64 container with the
+Factory CPU-only torch, a flagless start from a clean home now reaches
+&quot;Starting server&quot; instead of exiting 1.</comment>
+    <requestid>1373274</requestid>
+  </revision>
 </revisionlist>
