@@ -991,6 +991,9 @@ mv third-party-%{_version}.src ../third-party
 CFLAGS="%flags"
 CXXFLAGS="%flags"
 
+# Linking opens lots of files at the same time.
+ulimit -S -n unlimited
+
 mem_per_compile_job=1200000
 %ifarch i586 ppc armv6hl armv7hl
 # 32-bit arches need less memory than 64-bit arches.
