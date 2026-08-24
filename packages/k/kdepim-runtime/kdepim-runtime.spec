@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
-%define kpim6_version 6.7.3
+%define kpim6_version 6.8.0
 
 %bcond_without released
 Name:           kdepim-runtime
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        Akonadi resources for PIM applications
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -47,24 +47,23 @@ BuildRequires:  cmake(KF6Holidays) >= %{kf6_version}
 BuildRequires:  cmake(KF6ItemModels) >= %{kf6_version}
 BuildRequires:  cmake(KF6KCMUtils) >= %{kf6_version}
 BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6Mime) >= %{kf6_version}
 BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
 BuildRequires:  cmake(KF6NotifyConfig) >= %{kf6_version}
-BuildRequires:  cmake(KF6Wallet) >= %{kf6_version}
 BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
 BuildRequires:  cmake(KPim6Akonadi) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6AkonadiCalendar) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6AkonadiContactWidgets) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6AkonadiMime) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6CalendarUtils) >= %{kpim6_version}
-BuildRequires:  cmake(KPim6PimCommonAkonadi) >= %{kpim6_version}
-BuildRequires:  cmake(KPim6PimCommonActivities) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6GAPI) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6IMAP) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6IdentityManagementWidgets) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6LdapWidgets) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6MailTransport) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6Mbox) >= %{kpim6_version}
-BuildRequires:  cmake(KPim6Mime) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6PimCommonActivities) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6PimCommonAkonadi) >= %{kpim6_version}
 BuildRequires:  cmake(Qca-qt6)
 BuildRequires:  cmake(Qt6Concurrent) >= %{qt6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
@@ -117,7 +116,6 @@ use PIM applications.
 %{_kf6_applicationsdir}/org.kde.akonadi_openxchange_resource.desktop
 %{_kf6_applicationsdir}/org.kde.akonadi_vcard_resource.desktop
 %{_kf6_applicationsdir}/org.kde.akonadi_vcarddir_resource.desktop
-%{_kf6_applicationsdir}/org.kde.akonadi_kolab_resource.desktop
 %{_kf6_bindir}/akonadi_*
 %{_kf6_bindir}/gidmigrator
 %{_kf6_dbusinterfacesdir}/org.kde.Akonadi.Maildir.Settings.xml
