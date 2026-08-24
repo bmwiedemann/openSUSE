@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Wed Jul  1 09:17:38 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- update to 1.2.1 (bsc#1269947, CVE-2026-57585)
+  * Fix a segfault when calling Unpacker.unpack() or Unpacker.skip()
+    after an unpacking failure.
+
+-------------------------------------------------------------------
+Sun Jun 14 20:31:18 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.0:
+  * relax setuptools version
+  * update setuptools requirements to >=78.1.1
+  * cython: freethreading_compatible
+  * drop Python 3.9
+  * update cython and cibuildwheel
+  * ci: add riscv64 manylinux/musllinux wheels
+  * fix: check `unpack_callback_uint32` result
+  * fix: re-raise existing exception when available
+  * fix: check return code in `unpack_callback_int64`
+  * Fixed README example
+  * Bump the all-dependencies group with 6 updates
+  * ci: use ubuntu-slim for lint
+  * fix: enforce `strict_map_key` with `object_pairs_hook`
+  * Raise DEFAULT_RECURSE_LIMIT from 511 to 1024
+  * fix: properly handle return codes in `pack_timestamp`
+  * fix: avoid memory leak when decoding invalid nested arrays
+  * Add missing autoreset in Packer.pack_ext_type
+  * Add no-GIL interpreter support
+  * skip recursion limit test on free-threaded CPython builds
+  * Fix Timestamp.from_datetime returning wrong value for pre-
+    epoch datetimes
+  * Add 3.15 to CI
+  * fix: use-after-free in `get_data_from_buffer`
+  * change changelog format to markdown
+  * Bump the all-dependencies group with 2 updates
+  * Bump sys.setrecursionlimit within test_nest_limit_1024
+  * Guard `Packer` buffer protocol hooks with Cython critical
+    sections
+  * Harden `Unpacker.__init__` re-entry cleanup to prevent
+    buffer/context leaks
+  * release v1.2.0rc1
+  * Wheels CI hangs for MacOS Intel
+  * Bump pypa/cibuildwheel from 3.4.1 to 4.0.0 in the all-
+    dependencies group
+  * release v1.2.0
+
+-------------------------------------------------------------------
 Thu Oct 16 11:41:58 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.1.2
