@@ -168,4 +168,13 @@
     #179</comment>
     <requestid>1359220</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>071b6365a2d1b3e20a0a7d8de43932a7</srcmd5>
+    <version>0.19.0</version>
+    <time>1787566297</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.19.0:
+  * Add support for Python 3.15 (tested against Python 3.15 rc)</comment>
+    <requestid>1373284</requestid>
+  </revision>
 </revisionlist>
