@@ -16,7 +16,7 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
 
 %{?sle15_python_module_pythons}
@@ -28,7 +28,7 @@
 
 %bcond_without released
 Name:           kajongg
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        4 Player Mahjongg game
 License:        GPL-2.0-or-later
@@ -38,9 +38,9 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  %{pyver}-Twisted >= 16.6.0
 BuildRequires:  %{pyver}-base >= 3.8.0
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
@@ -50,8 +50,8 @@ BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
 BuildRequires:  cmake(Qt6SvgWidgets) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
-Requires:       %{pyver}-Twisted
 Requires:       %{pyver}-PyQt6
+Requires:       %{pyver}-Twisted
 BuildArch:      noarch
 
 %description
