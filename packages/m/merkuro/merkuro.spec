@@ -18,14 +18,14 @@
 
 %global __requires_exclude qt6qmlimport\\((org\\.kde\\.merkuro|org\\.kde\\.raven).*
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
-%define kpim6_version 6.7.3
+%define kpim6_version 6.8.0
 %define plasma6_version 6.2.0
 
 %bcond_without released
 Name:           merkuro
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        Calendar Application
 License:        GPL-3.0-only
@@ -50,6 +50,7 @@ BuildRequires:  cmake(KF6ItemModels) >= %{kf6_version}
 BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
 BuildRequires:  cmake(KF6Kirigami) >= %{kf6_version}
 BuildRequires:  cmake(KF6KirigamiAddons) >= 1.2.1
+BuildRequires:  cmake(KF6Mime) >= %{kf6_version}
 BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
 BuildRequires:  cmake(KF6QQC2DesktopStyle) >= %{kf6_version}
 BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
@@ -58,12 +59,12 @@ BuildRequires:  cmake(KPim6Akonadi) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6AkonadiCalendar) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6AkonadiContactCore) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6AkonadiMime) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6AkonadiSearch) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6CalendarUtils) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6IdentityManagementQuick) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6MailCommon) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6MailTransport) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6MimeTreeParserCore) >= %{kpim6_version}
-BuildRequires:  cmake(KPim6AkonadiSearch) >= %{kpim6_version}
 BuildRequires:  cmake(Plasma) >= %{plasma6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
@@ -84,13 +85,13 @@ Requires:       kf6-kirigami-imports >= %{kf6_version}
 Requires:       kf6-kitemmodels-imports >= %{kf6_version}
 Requires:       kf6-ksvg-imports >= %{kf6_version}
 Requires:       kidentitymanagement-imports
-Requires:       qt6qmlimport(org.kde.plasma.components) >= %{plasma6_version}
-Requires:       qt6qmlimport(org.kde.plasma.core) >= %{plasma6_version}
-Requires:       qt6qmlimport(org.kde.plasma.plasmoid) >= %{plasma6_version}
 Requires:       mimetreeparser-imports
 Requires:       qt6-declarative-imports >= %{qt6_version}
 Requires:       qt6-location >= %{qt6_version}
 Requires:       qt6-positioning-imports >= %{qt6_version}
+Requires:       qt6qmlimport(org.kde.plasma.components) >= %{plasma6_version}
+Requires:       qt6qmlimport(org.kde.plasma.core) >= %{plasma6_version}
+Requires:       qt6qmlimport(org.kde.plasma.plasmoid) >= %{plasma6_version}
 Provides:       kalendar = %{version}
 Obsoletes:      kalendar < %{version}
 # merkuro has a runtime dependency on QtWebEngine
