@@ -17,12 +17,12 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
 
 %bcond_without released
 Name:           libkleo
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        Base package of Kleopatra, a key manager by KDE
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -32,8 +32,6 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-# PATCH-FIX-OPENSUSE -- Leap 15.6 doesn't have Boost >= 1.70
-Patch0:         0001-Revert-Explicitly-use-Boost-s-cmake-config-file.patch
 BuildRequires:  doxygen
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  libboost_headers-devel
@@ -77,7 +75,8 @@ The development package for the libkleo libraries.
 %autosetup -p1
 
 %build
-%cmake_kf6 -DBUILD_QCH:BOOL=TRUE
+%cmake_kf6 \
+  -DBUILD_QCH:BOOL=TRUE
 
 %kf6_build
 
@@ -107,6 +106,9 @@ The development package for the libkleo libraries.
 %dir %{_kf6_sharedir}/KPim6Libkleo/find-modules
 %{_kf6_sharedir}/KPim6Libkleo/find-modules/FindLibAssuan.cmake
 %{_kf6_sharedir}/KPim6Libkleo/find-modules/FindLibGpgError.cmake
+%dir %{_kf6_sharedir}/KPim6Libkleo/modules
+%{_kf6_sharedir}/KPim6Libkleo/modules/KleoAddGpgCryptoTest.cmake
+%{_kf6_sharedir}/KPim6Libkleo/modules/KleoGenerateCryptoTestWrapper.cmake
 
 %files lang -f %{name}.lang
 
