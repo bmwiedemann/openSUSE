@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sun Aug 16 07:27:35 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.08.0/
+- No code change since 26.07.90
+
+-------------------------------------------------------------------
+Sat Aug  1 11:39:17 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.07.90
+  * New feature release
+- No code change since 26.07.80
+
+-------------------------------------------------------------------
+Sat Jul 18 11:11:58 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.07.80
+  * New feature release
+- Changes since 26.04.3:
+  * Add ECMInstalledLibraryCheck support
+  * CMAKE_CXX_SCAN_FOR_MODULES is already defined in ecm
+  * Add missing dependancy
+  * precommit uses reuse now
+  * Fix potential mem leak
+  * compare with command line
+  * Add parent
+  * Move in same check
+  * Fix includes
+  * KPIMTEXTEDIT_LIB_VERSION is not used
+  * src/CMakeLists.txt - remove unused KPimTextEdit_grantlee_HEADERS
+  * Move license to REUSE
+  * Allow to use prek support
+
+-------------------------------------------------------------------
 Tue Jun 30 18:19:53 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.04.3

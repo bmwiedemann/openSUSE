@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
-%define ktextaddons_version 2.0.0
+%define ktextaddons_version 2.0.2
 
 %bcond_without released
 Name:           kpimtextedit
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        KDE PIM Libraries: Text edit functionality
 License:        LGPL-2.1-or-later
@@ -63,8 +63,12 @@ This package provides text editing functionality for KDE PIM applications
 %package devel
 Summary:        KDE PIM Libraries: Build Environment
 Requires:       libKPim6TextEdit6 = %{version}
+Requires:       cmake(KF6Sonnet) >= %{kf6_version}
 Requires:       cmake(KF6TextCustomEditor) >= %{ktextaddons_version}
 Requires:       cmake(KF6TextEditTextToSpeech) >= %{ktextaddons_version}
+Requires:       cmake(Qt6Core) >= %{qt6_version}
+Requires:       cmake(Qt6Gui) >= %{qt6_version}
+Requires:       cmake(Qt6Widgets) >= %{qt6_version}
 
 %description devel
 This package contains necessary include files and libraries needed
