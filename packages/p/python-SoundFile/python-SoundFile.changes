@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Aug 23 05:20:16 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.14.0:
+  * Added type annotations throughout the public API
+  * Added a licensing note to the wheel
+  * Fixed a race condition when opening files concurrently
+  * Fixed regressions in the test suite
+  * Dropped support for Python 3.9 and older
+  * Added ARM64 support on Windows
+- Add python-typing_extensions dependency, newly required at
+  runtime by the type annotations
+- Drop 0001-Fix-libsndfile-versioning.patch: openSUSE builds
+  libsndfile without experimental code, so sf_version_string()
+  never carries the "-exp" suffix the patch stripped
+
+-------------------------------------------------------------------
 Fri Aug 21 18:37:21 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.13.1:

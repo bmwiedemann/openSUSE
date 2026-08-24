@@ -93,4 +93,29 @@
     <comment>1</comment>
     <requestid>1373057</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>8bc1b0b423d809e95ccc3f1a79fb66f3</srcmd5>
+    <version>0.14.0</version>
+    <time>1787566240</time>
+    <user>anag_factory</user>
+    <comment>Update python-SoundFile to 0.14.0.
+
+- Upstream adds type annotations across the public API, fixes a race
+  condition when opening files concurrently, fixes test-suite
+  regressions and drops Python 3.9 and older (python_requires &gt;= 3.10).
+- New mandatory runtime dependency python-typing_extensions: soundfile.py
+  now does an unconditional &quot;from typing_extensions import Self&quot;.
+- Dropped the openSUSE-only 0001-Fix-libsndfile-versioning.patch:
+  openSUSE builds libsndfile without experimental code, so
+  sf_version_string() returns &quot;libsndfile-1.2.2&quot; with no &quot;-exp&quot; suffix
+  to strip (verified on a current system).
+- Still noarch cffi ABI mode: soundfile_build.py is byte-identical to
+  0.13.1, so no libsndfile floor change and no bundled library.
+
+Built locally with osc build --clean for openSUSE_Tumbleweed/aarch64:
+python313 and python314 flavors, tests 330 passed / 1 deselected
+(test_write_mp3_compression, openSUSE libsndfile has no MPEG),
+rpmlint 0 errors, 0 warnings, 0 badness.</comment>
+    <requestid>1373168</requestid>
+  </revision>
 </revisionlist>
