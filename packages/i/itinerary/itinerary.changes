@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sun Aug 16 07:26:40 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.08.0/
+- Changes since 26.07.90:
+  * Add 26.08.0 release notes
+  * Add dirty workaround for zero-sized export menus
+
+-------------------------------------------------------------------
+Sat Aug  1 11:38:24 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.07.90
+  * New feature release
+- Changes since 26.07.80:
+  * Map road-based on-demand and sharing services to bus trips
+  * Stack stop name below adjacent labels
+  * StopoverInformationSheet: Fix sizing of StopoverInformationView
+  * PublicTransportPage: Fix showing details of departure stop
+  * Also show EU roaming area warnings when no other location property changes
+  * Add France to the EU roaming list
+  * Fix wrongly namespaced enum use in calendar permission check
+  * Show all reserved seat numbers on the vehicle layout page
+  * Accumulate seat class information over all reservations in a batch
+  * Fix activating deep booking links on details pages
+
+-------------------------------------------------------------------
+Sat Jul 18 11:11:01 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.07.80
+  * New feature release
+- Too many changes since 26.04.3, only listing bugfixes:
+  * Fix flight number separation (kde#516999)
+
+-------------------------------------------------------------------
 Tue Jun 30 18:19:05 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.04.3
