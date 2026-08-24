@@ -20,7 +20,7 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-%{modname}
-Version:        3.3.2
+Version:        3.3.4
 Release:        0
 Summary:        Python Markdown parser with renderers and plugins
 License:        BSD-3-Clause

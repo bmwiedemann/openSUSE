@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Aug 22 09:28:30 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.3.4:
+  * Harden inline parsing against deeply nested and adversarial
+    link, image, emphasis, formatting, math, and reference
+    inputs.
+  * Improve performance for repeated link suffixes, dense
+    emphasis, unclosed formatting markers, inline spoilers, and
+    adjacent ruby tokens.
+  * Refactor the inline parser into dedicated emphasis and link
+    modules.
+  * Escape literal */_ emphasis markers in the Markdown renderer
+    so round-tripping escaped text does not re-introduce
+    emphasis.
+  * Limit deeply nested emphasis and image parsing to avoid
+    RecursionError.
+  * Fix repeated link suffix and unclosed formatting marker
+    performance issues.
+  * Fix unclosed inline spoiler performance issues.
+  * Avoid recursive parsing for adjacent ruby tokens.
+  * Speed up footnote reference indexing.
+
+-------------------------------------------------------------------
 Thu Jun 25 11:52:23 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - update to 3.3.2 (CVE-2026-49851, bsc#1269091)
