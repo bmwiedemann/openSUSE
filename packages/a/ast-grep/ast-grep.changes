@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Aug 24 06:37:00 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to version 0.45.2:
+  * 0.45.2 bump version
+  * fix: change default test arch for macos
+  * chore(deps): update astral-sh/setup-uv action to v10 (#2892)
+  * chore(deps): update rust crate terminal-light to v1.9.1 (#2905)
+  * chore(deps): update dependency web-tree-sitter to v0.26.13 (#2903)
+  * chore(deps): update rust crate tree-sitter to v0.26.13 (#2904)
+  * chore(deps): update dependency dprint to v0.56.1 (#2901)
+  * chore(deps): update dependency @napi-rs/cli to v3.8.6 (#2882)
+  * fix: fix linting
+  * fix: address pyo3 deprecation
+  * feat: add named_children to pyo3
+  * feat: add namedChildren support to wasm
+  * feat: add namedChildren to napi
+  * feat: add named_children to SgNode trait
+  * chore: update deps
+  * fix(deps): update rust-wasm-bindgen monorepo (#2878)
+  * chore: lock version
+  * chore: update deps
+  * fix: some coding style
+  * chore(deps): update dependency dprint to v0.56.0 (#2896)
+  * chore(deps): update dependency oxlint to v1.79.0 (#2897)
+  * chore(deps): update dependency @ast-grep/napi to v0.45.1 (#2876)
+  * chore(deps): update dependency web-tree-sitter to v0.26.12 (#2880)
+  * chore: bump deps
+  * fix: exit quietly on broken pipe instead of erroring (#2887)
+  * feat(outline): extract embedded language symbols (#2883)
+  * chore(deps): update dependency oxlint to v1.78.0 (#2888)
+  * chore: bump deps
+  * 0.45.1
+  * fix: bump down napi
+
+-------------------------------------------------------------------
 Mon Aug 10 07:10:53 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to version 0.45.1:
