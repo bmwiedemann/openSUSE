@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Fri Aug 21 19:38:51 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.77.1
+  - Client Improvements
+    - Fixed session extension and SSH authentication always using
+      the device code flow on Linux. #7187
+    - Added Windows DNS configuration to the debug bundle. #7196
+    - Added a CI check for translation key parity. #6852
+    - Preserved the account email on Android logout while removing
+      it when a profile is deleted. #7200
+    - Ranked Windows route candidates using combined route and
+      interface metrics. #7210
+    - Skipped IPv6 route tests when the default next hop is
+      unusable. #7212
+    - Passed the stored email as a login hint from the UI and
+      preserved it on logout. #7199
+    - Fixed inconsistencies in the CI gomobile init process. #7229
+    - Deleted Windows NRPT rules by enumerating the registry
+      instead of relying on a rule count. #7195
+    - Declared multi-buffer support for the loopback XDP program.
+      #7230
+    - Exposed SSH functionality on Android. #7156
+    - Handled Android network changes without restarting the
+      engine. #7144
+    - Cleared stale installer results before starting updates.
+      #7204
+    - Stopped the UI before silent Windows updates and suppressed
+      installer reboots. #7209
+    - Reported network addresses on Android for posture checks.
+      #7235
+    - Restarted the UI using the user's environment block after
+      updates. #7245
+    - Switched client tests to go.uber.org/mock. #7253
+    - Renamed TURN-specific WireGuard proxy terminology to relayed
+      connections. #7231
+    - Fixed staticcheck findings after upgrading golangci-lint.
+      #7266
+    - Added missing anonymization and SSH privilege translations.
+      #7269
+    - Added a lazy connection override and device name reporting to
+      the WASM client. #7276
+  - Management Improvements
+    - Documented the mutual exclusivity of ports and port_ranges in
+      policy rules. #7158
+    - Refused usage limits that one-off setup keys cannot honor.
+      #7220
+    - Switched management tests to go.uber.org/mock. #7253
+    - Suppressed staticcheck warnings for deprecated protobuf
+      fields. #7261
+  - Infrastructure & Miscellaneous
+    - Added support for non-interactive, environment-driven
+      installations in getting-started.sh. #7168
+    - Updated the Agent Network documentation. #7020
+    - Prevented overriding the dashboard image in Enterprise
+      migrations. #7206
+    - Skipped store migrations for PostgreSQL deployments. #7207
+
+-------------------------------------------------------------------
 Thu Aug 13 15:59:50 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 0.77.0
