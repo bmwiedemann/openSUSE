@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define plasma6_version 5.27.80
 %define qt6_version 6.9.0
 
 %bcond_without released
 Name:           dolphin
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        KDE File Manager
 License:        GPL-2.0-or-later
@@ -162,6 +162,8 @@ rm %{buildroot}%{_datadir}/zsh/site-functions/_dolphin
 %{_kf6_sharedir}/kconf_update/dolphin_replace_view_mode_with_view_settings_in_toolbar.py
 %{_kf6_sharedir}/kconf_update/dolphin_replace_view_mode_with_view_settings_in_toolbar.upd
 %{_kf6_sharedir}/kconf_update/dolphin_statusandlocationbarssettings.upd
+%{_kf6_sharedir}/kconf_update/dolphin_tab_key_shortcut_for_focus_other_view.py
+%{_kf6_sharedir}/kconf_update/dolphin_tab_key_shortcut_for_focus_other_view.upd
 %dir %{_kf6_sharedir}/kglobalaccel
 %{_kf6_sharedir}/kglobalaccel/org.kde.dolphin.desktop
 %{_userunitdir}/plasma-dolphin.service
