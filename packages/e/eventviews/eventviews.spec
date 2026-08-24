@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
-%define kpim6_version 6.7.3
+%define kpim6_version 6.8.0
 
 %bcond_without released
 Name:           eventviews
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        Eventviews Library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -50,7 +50,6 @@ BuildRequires:  cmake(KPim6AkonadiCalendar) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6CalendarSupport) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6CalendarUtils) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6Libkdepim) >= %{kpim6_version}
-BuildRequires:  cmake(KPim6Mime) >= %{kpim6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  x86_64 %{x86_64} aarch64 riscv64
@@ -76,8 +75,8 @@ calendar events in agenda, list, month view or timeline fashion.
 Summary:        Library for messages
 License:        LGPL-2.1-or-later
 Requires:       libKPim6EventViews6 = %{version}
-Requires:       cmake(KPim6Akonadi) >= %{kpim6_version}
 Requires:       cmake(KF6CalendarCore) >= %{kf6_version}
+Requires:       cmake(KPim6Akonadi) >= %{kpim6_version}
 Requires:       cmake(KPim6AkonadiCalendar) >= %{kpim6_version}
 Requires:       cmake(KPim6CalendarSupport) >= %{kpim6_version}
 Requires:       cmake(KPim6CalendarUtils) >= %{kpim6_version}
