@@ -16,13 +16,25 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
-%define kpim6_version 6.7.3
+%define kpim6_version 6.8.0
+
+%bcond_without kde_python_bindings
+%if %{with kde_python_bindings}
+%if 0%{suse_version} > 1500
+%define pythons %{primary_python}
+%else
+%{?sle15_python_module_pythons}
+%endif
+%define mypython %pythons
+%define __mypython %{expand:%%__%{mypython}}
+%define mypython_sitearch %{expand:%%%{mypython}_sitearch}
+%endif
 
 %bcond_without released
 Name:           akonadi-calendar
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        Akonadi calendar integration
 License:        LGPL-2.1-or-later
@@ -39,6 +51,7 @@ BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
 BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6Mime) >= %{kf6_version}
 BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
 BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
@@ -51,7 +64,18 @@ BuildRequires:  cmake(KPim6Libkleo) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6MailTransport) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6MessageComposer) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6MessageCore) >= %{kpim6_version}
-BuildRequires:  cmake(KPim6Mime) >= %{kpim6_version}
+# SECTION bindings
+%if %{with kde_python_bindings}
+BuildRequires:  %{mypython}-build
+BuildRequires:  %{mypython}-devel >= 3.9
+BuildRequires:  %{mypython}-setuptools
+BuildRequires:  %{mypython}-wheel
+BuildRequires:  python3-akonadi >= %{kpim6_version}
+BuildRequires:  python3-kf6-kcalendarcore >= %{kf6_version}
+BuildRequires:  cmake(PySide6)
+BuildRequires:  cmake(Shiboken6)
+%endif
+# /SECTION
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  x86_64 %{x86_64} aarch64 riscv64
 
@@ -63,8 +87,8 @@ Summary:        KDE PIM Libraries: AkonadiCalendar
 Requires:       akonadi-calendar >= %{version}
 
 %description -n libKPim6AkonadiCalendarCore6
-This library provides calendar integration for Akonadi based applications. 
-This library is provides the core integration. 
+This library provides calendar integration for Akonadi based applications.
+This library is provides the core integration.
 
 %package -n libKPim6AkonadiCalendar6
 Summary:        KDE PIM Libraries: AkonadiCalendar
@@ -97,8 +121,8 @@ Kalendarac is a reminder daemon client for calendar events.
 
 %package devel
 Summary:        KDE PIM Libraries: Build Environment
-Requires:       libKPim6AkonadiCalendarCore6 = %{version}
 Requires:       libKPim6AkonadiCalendar6 = %{version}
+Requires:       libKPim6AkonadiCalendarCore6 = %{version}
 Requires:       cmake(KF6CalendarCore) >= %{kf6_version}
 Requires:       cmake(KF6I18n) >= %{kf6_version}
 Requires:       cmake(KF6WidgetsAddons) >= %{kf6_version}
@@ -110,13 +134,27 @@ Provides:       akonadi5-calendar-devel = %{version}
 %description devel
 Development package for akonadi-calendar.
 
+%if %{with kde_python_bindings}
+%package -n python3-akonadi-calendar
+Summary:        Python bindings for akonadi-calendar
+Requires:       python3-akonadi >= %{kpim6_version}
+Requires:       python3-kf6-kcalendarcore >= %{kf6_version}
+
+%description -n python3-akonadi-calendar
+This package provides Python bindings for akonadi-calendar.
+%endif
+
 %lang_package -n libKPim6AkonadiCalendar6
 
 %prep
 %autosetup -p1 -n akonadi-calendar-%{version}
 
 %build
-%cmake_kf6
+%cmake_kf6 \
+%if %{with kde_python_bindings}
+  -DPython_EXECUTABLE:STRING=%{__mypython}
+%endif
+%{nil}
 
 %kf6_build
 
@@ -162,6 +200,16 @@ Development package for akonadi-calendar.
 %{_kf6_cmakedir}/KPim6AkonadiCalendarCore/
 %{_kf6_libdir}/libKPim6AkonadiCalendar.so
 %{_kf6_libdir}/libKPim6AkonadiCalendarCore.so
+%if %{with kde_python_bindings}
+%dir %{_includedir}/PySide6/
+%{_includedir}/PySide6/AkonadiCalendar/
+%endif
+
+%if %{with kde_python_bindings}
+%files -n python3-akonadi-calendar
+%{mypython_sitearch}/*.so
+%{_kf6_sharedir}/PySide6/typesystems/typesystem_akonadi_calendar.xml
+%endif
 
 %files -n libKPim6AkonadiCalendar6-lang -f libKPim6AkonadiCalendar6.lang
 
