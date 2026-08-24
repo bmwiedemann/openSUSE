@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 24 01:37:57 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-flit-core-4.patch:
+  * Support building with flit-core 4+.
+- Remove Python 2 leftovers.
+
+-------------------------------------------------------------------
 Thu Jul  6 10:56:14 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

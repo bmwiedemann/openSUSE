@@ -1,7 +1,7 @@
 #
 # spec file for package python-entrypoints
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,19 +24,14 @@ Summary:        Discover and load entry points from installed packages
 License:        MIT
 URL:            https://github.com/takluyver/entrypoints
 Source:         https://files.pythonhosted.org/packages/source/e/entrypoints/entrypoints-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Support flit-core >= 4
+Patch0:         support-flit-core-4.patch
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-%if %{with python2}
-BuildRequires:  python-configparser >= 3.5
-%endif
-%ifpython2
-Requires:       python-configparser >= 3.5
-%endif
 %python_subpackages
 
 %description
@@ -50,7 +45,7 @@ similar interfaces. An application might use a group to find its
 plugins, or multiple groups if it has different kinds of plugins.
 
 %prep
-%setup -q -n entrypoints-%{version}
+%autosetup -p1 -n entrypoints-%{version}
 
 %build
 %pyproject_wheel
@@ -64,8 +59,8 @@ plugins, or multiple groups if it has different kinds of plugins.
 
 %files %{python_files}
 %license LICENSE
-%{python_sitelib}/entrypoints.py*
-%pycache_only %{python_sitelib}/__pycache__/entrypoints*.py*
+%{python_sitelib}/entrypoints.py
+%pycache_only %{python_sitelib}/__pycache__/entrypoints*.pyc
 %{python_sitelib}/entrypoints-%{version}.dist-info
 
 %changelog

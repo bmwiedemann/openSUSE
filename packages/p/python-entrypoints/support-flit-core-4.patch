@@ -1,0 +1,34 @@
+Index: entrypoints-0.4/pyproject.toml
+===================================================================
+--- entrypoints-0.4.orig/pyproject.toml
++++ entrypoints-0.4/pyproject.toml
+@@ -1,18 +1,21 @@
+ [build-system]
+-requires = ["flit_core  >=2,<4"]
++requires = ["flit_core >=4"]
+ build-backend = "flit_core.buildapi"
+ 
+-[tool.flit.metadata]
+-module = "entrypoints"
+-author = "Thomas Kluyver"
+-author-email = "thomas@kluyver.me.uk"
+-home-page = "https://github.com/takluyver/entrypoints"
+-description-file = "README.rst"
++[project]
++name = "entrypoints"
++version = "0.4"
++authors = [
++    {name = "Thomas Kluyver", email = "thomas@kluyver.me.uk"},
++]
++description = "functions to find and load entry points"
++readme = "README.rst"
+ classifiers = [
+     "License :: OSI Approved :: MIT License",
+     "Programming Language :: Python :: 3"
+ ]
+ requires-python = ">=3.6"
+ 
+-[tool.flit.metadata.urls]
++[project.urls]
+ Documentation = "https://entrypoints.readthedocs.io/en/latest/"
++Homepage = "https://github.com/takluyver/entrypoints"

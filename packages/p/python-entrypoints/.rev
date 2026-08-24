@@ -69,4 +69,14 @@
     <comment></comment>
     <requestid>1097116</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>497279cda7fa1b966b6bc4fc109d7d5f</srcmd5>
+    <version>0.4</version>
+    <time>1787566298</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-flit-core-4.patch:
+  * Support building with flit-core 4+.
+- Remove Python 2 leftovers.</comment>
+    <requestid>1373285</requestid>
+  </revision>
 </revisionlist>
