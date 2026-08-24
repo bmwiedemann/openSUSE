@@ -16,7 +16,7 @@
 #
 
 Name:             heroic-gogdl
-Version:          1.2.2
+Version:          1.3.0
 Release:          0
 Summary:          GOG download module for Heroic Games Launcher
 License:          GPL-3.0-only

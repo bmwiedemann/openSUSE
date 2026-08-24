@@ -90,4 +90,18 @@ Fix URL to use upstream GitHub release tarball as Source0</comment>
   * Drop xdelta extension definition from pyproject.toml via patch</comment>
     <requestid>1357623</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>83bae40e37a96979aa1c5898843684c0</srcmd5>
+    <version>1.3.0</version>
+    <time>1787566237</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.3.0
+  * Set path property in ScummVM config file if we're running native ScummVM
+    by @CommandMC in #82
+  * Improve support for native DOSBox and ScummVM on macOS by @JKingweb in #85
+  * Fix 83 - IPv6 and Timeouts by @Moon-yungg in #86
+  * feat: cdn fallbacks by @imLinguin in d9eb7dc
+  * fix: cdn fallback on stream disconnection (HTTP 200) by @NicholasDymov in #88</comment>
+    <requestid>1373159</requestid>
+  </revision>
 </revisionlist>
