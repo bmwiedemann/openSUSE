@@ -23,8 +23,8 @@
 %global debug_package %{nil}
 %global __strip /bin/true
 # The TypeScript and libopentui.so talk over a private FFI ABI with no
-# versioning of its own, so opencode has to be built against exactly the
-# opentui release it pins. %%prep checks that this still matches the tree.
+# versioning of its own, so the runtime opentui package must be the
+# release this tree pins. %%prep checks that this still matches.
 %global opentui_version 0.4.5
 # Node's names for the platform, not RPM's: the build target is derived from
 # them, and @opentui/core resolves its native library by the same names.
@@ -35,15 +35,15 @@
 %global node_arch arm64
 %endif
 Name:           opencode
-Version:        1.18.19
+Version:        1.18.21
 Release:        0
 Summary:        AI coding agent for the terminal
 # opencode itself is MIT. The npm dependency tree is compiled into the
 # executable, so its licences are part of the binary; see README.SUSE-maint
 # for how the expression below is derived and rechecked on a bump.
-# Legal-Review-Notice: rederived for 1.18.19 from the declared license field
+# Legal-Review-Notice: rederived for 1.18.21 from the declared license field
 # of all 508 unique packages in the vendor tarball (509 store entries). No
-# copyleft of any kind. The SPDX set is unchanged from 1.18.18. Two
+# copyleft of any kind. The SPDX set is unchanged from 1.18.19. Two
 # conclusions are not visible from the packages themselves: poe-oauth 0.0.8
 # declares no licence and ships no text, its MIT grant comes from the
 # upstream repository root; caniuse-lite is CC-BY-4.0, whose attribution
@@ -82,11 +82,13 @@ Patch3:         %{name}-no-grammar-download.patch
 # older bun still works, and the package is a git snapshot anyway, so
 # 1.4.0~git sorts below 1.4.0.
 BuildRequires:  bun
-BuildRequires:  opentui = %{opentui_version}
 # %%prep reads the @opentui/core pin out of package.json.
 BuildRequires:  python3-base
 BuildRequires:  zstd
 Requires:       git-core
+# Native TUI library, loaded at runtime (not compiled into the binary).
+# Equality because the FFI ABI is private and unversioned.
+Requires:       opentui = %{opentui_version}
 # Downloaded on first use otherwise; opencode shells out to it for grep.
 Requires:       ripgrep
 # bun only supports these two, and so do the prebuilt native modules left in
@@ -128,11 +130,17 @@ if [ "$pinned" != "%{opentui_version}" ]; then
 fi
 
 # The npm @opentui/core-linux-* packages ship a prebuilt libopentui.so, which
-# opencode_vendor removed. Put the distribution's own build of it back, so the
-# native library inside the executable is one we compiled from source.
+# opencode_vendor removed. Do not copy the distro .so into the tree: bun
+# --compile would embed it. Point the native module at the opentui package
+# path so bun:ffi dlopens it at runtime.
 otui="node_modules/.bun/@opentui+core-linux-%{node_arch}@%{opentui_version}/node_modules/@opentui/core-linux-%{node_arch}"
-install -Dpm 0644 %{_libdir}/opentui/@opentui/core-linux-%{node_arch}/libopentui.so \
-    "$otui/libopentui.so"
+mkdir -p "$otui"
+cat > "$otui/index.bun.js" <<EOF
+export default "%{_libdir}/opentui/@opentui/core-linux-%{node_arch}/libopentui.so"
+EOF
+cat > "$otui/index.js" <<EOF
+export default "%{_libdir}/opentui/@opentui/core-linux-%{node_arch}/libopentui.so"
+EOF
 
 %build
 export HOME="$PWD/.home"

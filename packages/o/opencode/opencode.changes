@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Aug 22 08:33:34 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.18.21:
+  * Retry xAI capacity and other network_error stream failures,
+    including more network error variants, and continue when a
+    model reports an unknown finish reason.
+  * Surface failed subagent tool calls with a resumable task_id,
+    answer subagent permission prompts during opencode run, and
+    preserve Cerebras max_completion_tokens.
+  * Route Vertex AI eu and us multi-region Gemini requests
+    through REP endpoints.
+- Retrace the vendor keep list (still 509 store entries). The SPDX
+  license set is unchanged and still contains no copyleft;
+  README.SUSE-maint records the audit as redone for 1.18.21.
+- Reverse opencode-relax-bun-version.patch after --retrace so
+  Source0 stays the upstream tree and Patch0 still applies at
+  %prep.
+- Load libopentui.so from the opentui package at runtime instead
+  of embedding it in the binary.
+
+-------------------------------------------------------------------
 Thu Aug 20 18:47:55 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.18.19:
