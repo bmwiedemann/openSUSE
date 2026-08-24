@@ -7591,4 +7591,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>7.1.8; bugs: bsc#1012628 bsc#1271359 bsc#1273426 bsc#1274208 bsc#1274224 bsc#1274228 bsc#1274231 bsc#1274239 bsc#1274243 bsc#1274245 bsc#1274253 bsc#1274254 bsc#1274255 bsc#1274256 bsc#1274257 bsc#1274258 bsc#1274261 bsc#1274262 bsc#1274264 bsc#1274265 bsc#1274269 bsc#1274271 bsc#1274274 bsc#1274277 bsc#1274278 bsc#1274280 bsc#1274281 bsc#1274283 bsc#1274286 bsc#1274288 bsc#1274290 bsc#1274293 bsc#1274294 bsc#1274295 bsc#1274296 bsc#1274297 bsc#1274298 bsc#1274314 bsc#1274315 bsc#1274316 bsc#1274317 bsc#1274319 bsc#1274320 bsc#1274321 bsc#1274491 bsc#1274492 bsc#1274494 bsc#1274495 bsc#1274496 bsc#1274497 bsc#1274538 bsc#1274539 bsc#1274541 bsc#1274543 bsc#1274545 bsc#1274547</comment>
     <requestid>1370434</requestid>
   </revision>
+  <revision rev="855" vrev="1">
+    <srcmd5>a57aa13656e3952548f35a8dab09c54d</srcmd5>
+    <version>7.2.0</version>
+    <time>1787565677</time>
+    <user>anag_factory</user>
+    <comment>7.2; bugs: bsc#1012628 bsc#1259453 bsc#1270053 bsc#1271264 bsc#1272261 bsc#1273084</comment>
+    <requestid>1371888</requestid>
+  </revision>
 </revisionlist>

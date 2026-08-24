@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Mon Aug 17 13:14:40 CEST 2026 - pfalcato@suse.de
+
+- update to 7.2 final
+   - refresh configs
+- commit bf2526a
+
+-------------------------------------------------------------------
+Thu Aug 13 06:49:28 CEST 2026 - jslaby@suse.cz
+
+- Refresh
+  patches.suse/x86-alternative-exclude-text-poking-against-change_page_at.patch.
+- Refresh
+  patches.suse/x86-mm-pat-acquire-init_mm-read-lock-on-attribute-change-t.patch.
+- Refresh
+  patches.suse/x86-mm-pat-acquire-init_mm-write-lock-on-collapse-to-avoid.patch.
+- Refresh
+  patches.suse/x86-mm-pat-allocate-split-page-tables-as-kernel-page-table.patch.
+- Refresh
+  patches.suse/x86-mm-pat-fix-effective-RW-computation-in-lookup_address_.patch.
+- Refresh
+  patches.suse/x86-alternative-dump-more-on-failure-in-__text_poke.patch.
+  Update to v2 and refresh the debug patch on top.
+- commit d99c08e
+
+-------------------------------------------------------------------
+Wed Aug 12 12:06:05 CEST 2026 - jslaby@suse.cz
+
+- Update
+  patches.kernel.org/7.1.8-435-drm-amd-display-check-GRPH_FLIP-status-before-s.patch
+  (bsc#1012628 bsc#1259453).
+- Update
+  patches.kernel.org/7.1.8-436-drm-amd-display-Exit-idle-optimizations-before-.patch
+  (bsc#1012628 bsc#1259453).
+  Add a reference.
+- commit 067e5f8
+
+-------------------------------------------------------------------
+Mon Aug 10 11:26:31 CEST 2026 - pfalcato@suse.de
+
+- update to 7.2-rc7
+   - refresh configs
+- commit b94a346
+
+-------------------------------------------------------------------
+Mon Aug 10 10:14:27 CEST 2026 - jslaby@suse.cz
+
+- Refresh
+  patches.suse/md-raid1-create-serial-pool-adding-rdev-to-array-wit.patch.
+  Update upstream status.
+  (cherry picked from commit 8402a1ee52a538d1edbed9b780965f2916d0467b)
+- Refresh
+  patches.suse/md-raid1-create-serial-pool-adding-rdev-to-array-wit.patch.
+  Update upstream status.
+- commit ff3cc64
+
+-------------------------------------------------------------------
+Mon Aug 10 09:50:31 CEST 2026 - jslaby@suse.cz
+
+- Refresh
+  patches.suse/soundwire-dmi-quirks-Disable-ghost-Realtek-on-Asus-Z.patch.
+  Update upstream status.
+  (cherry picked from commit afc0edc8aa7ec113d9e26a710c41b051d26e83cf)
+- Refresh
+  patches.suse/soundwire-dmi-quirks-Disable-ghost-Realtek-on-Asus-Z.patch.
+  Update upstream status.
+- commit 129ce48
+
+-------------------------------------------------------------------
 Mon Aug 10 07:03:20 CEST 2026 - jslaby@suse.cz
 
 - Update
@@ -3667,6 +3735,13 @@ Mon Aug  3 12:01:15 CEST 2026 - jslaby@suse.cz
 - commit 5de54b0
 
 -------------------------------------------------------------------
+Mon Aug  3 11:22:35 CEST 2026 - pfalcato@suse.de
+
+- update to 7.2-rc6
+   - refresh configs
+- commit 4d222e9
+
+-------------------------------------------------------------------
 Mon Aug  3 09:56:22 CEST 2026 - jslaby@suse.cz
 
 - Refresh
@@ -3683,11 +3758,19 @@ Mon Aug  3 07:57:44 CEST 2026 - jslaby@suse.cz
 - commit 6d96b09
 
 -------------------------------------------------------------------
+Fri Jul 31 15:54:18 CEST 2026 - duwe@suse.de
+
+- Update arm64 config files.
+- commit 5e75bb6
+
+-------------------------------------------------------------------
 Fri Jul 31 11:37:26 CEST 2026 - pfalcato@suse.de
 
 - Delete patches.suse/crasher.patch (bsc#1273084).
   Sunset the crasher module and remove it from configs.
   (cherry picked from commit 4527af7006350b5e062f5d7843fc87eb4999238c)
+- Delete patches.suse/crasher.patch (bsc#1273084).
+  Sunset the crasher module and remove it from configs.
 - commit dd8e4c7
 
 -------------------------------------------------------------------
@@ -3697,6 +3780,9 @@ Thu Jul 30 08:14:55 CEST 2026 - jslaby@suse.cz
   Add MODULE_DESCRIPTION() to fix:
   WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/char/crasher.o
   (cherry picked from commit 71c8b26203eb694b1af88296142da73b9d7adde5)
+- Refresh patches.suse/crasher.patch.
+  Add MODULE_DESCRIPTION() to fix:
+  WARNING: modpost: missing MODULE_DESCRIPTION() in drivers/char/crasher.o
 - commit 05b8588
 
 -------------------------------------------------------------------
@@ -7523,11 +7609,21 @@ Mon Jul 27 15:18:40 CEST 2026 - msuchanek@suse.de
 - commit 133d77b
 
 -------------------------------------------------------------------
+Mon Jul 27 11:12:17 CEST 2026 - pfalcato@suse.de
+
+- update to 7.2-rc5
+   - refresh configs
+- commit eac7a1f
+
+-------------------------------------------------------------------
 Thu Jul 23 13:38:53 CEST 2026 - mwilck@suse.com
 
 - md/raid1: create serial pool adding rdev to array with
   serialize_policy=1 (bsc#1272261).
-- commit 50997db
+  (cherry picked from commit 50997db7025e6bcf6d1ccb7d13d3fecaff414ab9)
+- md/raid1: create serial pool adding rdev to array with
+  serialize_policy=1 (bsc#1272261).
+- commit b5ff308
 
 -------------------------------------------------------------------
 Wed Jul 22 14:34:03 CEST 2026 - tiwai@suse.de
@@ -7540,7 +7636,10 @@ Tue Jul 21 11:50:46 CEST 2026 - tiwai@suse.de
 
 - soundwire: dmi-quirks: Disable ghost Realtek on Asus Zenbook
   Duo (bsc#1271264).
-- commit bce4269
+  (cherry picked from commit bce42698c79337089584d44a97913d03b2243122)
+- soundwire: dmi-quirks: Disable ghost Realtek on Asus Zenbook
+  Duo (bsc#1271264).
+- commit 18e574b
 
 -------------------------------------------------------------------
 Tue Jul 21 11:44:29 CEST 2026 - tiwai@suse.de
@@ -8746,11 +8845,32 @@ Mon Jul 20 06:27:49 CEST 2026 - jslaby@suse.cz
 - commit 9ad6d99
 
 -------------------------------------------------------------------
+Sun Jul 19 23:30:05 CEST 2026 - pfalcato@suse.de
+
+- update to 7.2-rc4
+   - update configs
+  - CONFIG_SND_SOC_ACPI_AMD_SDCA_QUIRKS=y
+  - CONFIG_CRYPTO_LIB_AES_CBC_MACS=y
+- commit 983003e
+
+-------------------------------------------------------------------
 Tue Jul 14 18:59:39 CEST 2026 - jslaby@suse.cz
 
 - wifi: rtw89: correct drop logic for malformed AMPDU frames
   (bsc#1271359).
 - commit 5a35dfd
+
+-------------------------------------------------------------------
+Mon Jul 13 00:41:26 CEST 2026 - pfalcato@suse.de
+
+- update to 7.2-rc3
+   - refresh configs
+   - new config options for riscv
+  - CONFIG_ARCH_ULTRARISC=y
+  - CONFIG_PCIE_ULTRARISC=m
+  - CONFIG_PINCTRL_ULTRARISC=m
+  - CONFIG_PINCTRL_ULTRARISC_DP1000=m
+- commit 477d40c
 
 -------------------------------------------------------------------
 Fri Jul 10 13:05:33 CEST 2026 - jslaby@suse.cz
@@ -8793,6 +8913,13 @@ Thu Jul  9 07:39:34 CEST 2026 - jslaby@suse.cz
   > versions, so the condition doesn't apply any longer.
   > It's a a Whack-a-Mole issue, after all...
   (cherry picked from commit 00fa88f271a1bd686db8274ca442c4e1bbcce68c)
+- Delete
+  patches.suse/wifi-iwlwifi-Add-missing-firmware-info-for-bz-b0-mod.patch.
+  Drop as per:
+  https://bugzilla.suse.com/show_bug.cgi?id=1252084#c20
+  > Let's close this one.  The upstream linux-firmware includes more newer
+  > versions, so the condition doesn't apply any longer.
+  > It's a a Whack-a-Mole issue, after all...
 - commit 14ca9d4
 
 -------------------------------------------------------------------
@@ -8801,7 +8928,16 @@ Tue Jul  7 15:15:39 CEST 2026 - schwab@suse.de
 - config: riscv64: raise CONFIG_NR_CPUS
   Set CONFIG_NR_CPUS to the new default of 256.
   (cherry picked from commit f0d265ff98f6017a55d6d485edb437e57d843f1e)
+- config: riscv64: raise CONFIG_NR_CPUS
+  Set CONFIG_NR_CPUS to the new default of 256.
 - commit 342bd0e
+
+-------------------------------------------------------------------
+Mon Jul  6 13:26:45 CEST 2026 - pfalcato@suse.de
+
+- update to 7.2-rc2
+   - refresh configs.
+- commit 6307658
 
 -------------------------------------------------------------------
 Sat Jul  4 18:20:40 CEST 2026 - jslaby@suse.cz
@@ -9068,7 +9204,146 @@ Thu Jul  2 07:02:38 CEST 2026 - jslaby@suse.cz
 
 - KVM: x86/tdx: Do not print error message on non-present feature
   (bsc#1270053).
-- commit 15c3ef6
+  (cherry picked from commit 15c3ef6e6732d2a7c63e732257ec33ad352e57af)
+- KVM: x86/tdx: Do not print error message on non-present feature
+  (bsc#1270053).
+- commit 167e333
+
+-------------------------------------------------------------------
+Tue Jun 30 13:24:01 CEST 2026 - duwe@suse.de
+
+- config.conf: re-enable arm64
+- Update config files for 7.2-RC1:
+  * new drivers for various subsystems
+  * support for ASpeed SoCs and their peripherials
+- commit db31f04
+
+-------------------------------------------------------------------
+Mon Jun 29 00:51:48 CEST 2026 - mkubecek@suse.cz
+
+- update to 7.2-rc1
+- drop 19 patches (11 stable, 8 mainline)
+  - patches.kernel.org/*
+  - patches.suse/ACPICA-Unbreak-tools-build-after-switching-over-to-s.patch
+  - patches.suse/apparmor-don-t-audit-files-pointing-to-aa_null.dentr.patch
+  - patches.suse/apparmor-fix-uninitialised-pointer-passed-to-audit_l.patch
+  - patches.suse/apparmor-fix-use-after-free-in-rawdata-dedup-loop.patch
+  - patches.suse/ima-return-error-early-if-file-xattr-cannot-be-changed.patch
+  - patches.suse/selftests-namespaces-Fix-waitpid-race-in-listns_efault_tes.patch
+  - patches.suse/selftests-namespaces-Kill-grandchild-in-nsid-fixture-teard.patch
+  - patches.suse/selftests-namespaces-Skip-efault-tests-when-listns-is-not-.patch
+- refresh
+  - patches.suse/firmware-qemu_fw_cfg-Do-not-hard-depend-on-CONFIG_HA.patch
+  - patches.suse/vfs-add-super_operations-get_inode_dev
+  - patches.suse/wifi-iwlwifi-Add-missing-firmware-info-for-bz-b0-mod.patch
+- disable ARM architectures (need config update)
+- new config options
+  - General setup
+    - SCHED_CACHE=y
+    - KEXEC_HANDOVER=y
+    - KEXEC_HANDOVER_DEBUG=n
+    - KEXEC_HANDOVER_DEBUGFS=y
+    - KEXEC_HANDOVER_ENABLE_DEFAULT=n
+    - LIVEUPDATE=y
+    - LIVEUPDATE_MEMFD=y
+  - Enable the block layer
+    - BLK_ERROR_INJECTION=n
+  - Memory Management options
+    - KMALLOC_PARTITION_RANDOM=y
+    - KMALLOC_PARTITION_TYPED=n
+  - Networking support
+    - NET_DSA_TAG_NETC=m
+  - Security options
+    - TRUSTED_KEYS_DEBUG=n
+    - IMA_STAGING=n
+  - Library routines
+    - CMA_SIZE_PERNUMA=y
+  - Kernel hacking
+    - TEST_KEXEC_HANDOVER=n
+    - LIVEUPDATE_TEST=n
+  - Kernel hacking
+    - RING_BUFFER_PERSISTENT_INJECT=n
+  - Network device support
+    - NET_VENDOR_ALIBABA=y
+    - ALIBABA_EEA=m
+    - AIR_AN8801_PHY=m
+    - CAN_VIRTIO_CAN=m
+    - RTW89_8922AU=m
+  - Hardware Monitoring support
+    - SENSORS_ARCTIC_FAN_CONTROLLER=m
+    - SENSORS_PROM21_XHCI=m
+    - SENSORS_LTC4283=m
+    - SENSORS_D1U74T=m
+    - SENSORS_E50SN12051=m
+    - SENSORS_LX1308=m
+    - SENSORS_MAX20830=m
+    - SENSORS_MAX20860A=m
+    - SENSORS_MAX20860A_REGULATOR=y
+    - SENSORS_MP2985=m
+    - SENSORS_EMC1812=m
+  - Multimedia support
+    - VIDEO_HWS=m
+    - VIDEO_ISL7998X=m
+    - VIDEO_MAX9286=m
+    - VIDEO_INTEL_CVS=m
+  - Graphics support
+    - DRM_PANEL_FOCALTECH_OTA7290B=m
+    - BACKLIGHT_MAX25014=m
+  - Sound card support
+    - SND_SOC_AMD_ACP7X=m
+    - SND_SOC_CS42XX8_SPI=n
+    - SND_SOC_TAC5XX2_SDW=n
+    - SND_SOC_TAS675X=n
+  - HID bus support
+    - HID_RAKK=m
+    - HID_OXP=m
+  - Industrial I/O support
+    - AD4691=n
+    - AD5706R=n
+    - APDS9999=n
+    - VEML3328=n
+    - MMC5983=n
+  - misc devices
+    - DM_INLINECRYPT=m
+    - TOUCHSCREEN_WACOM_W9000=m
+    - GPIO_WAVESHARE_DSI_TOUCH=n
+    - GPIO_LTC4283=m
+    - BATTERY_CHARGER_SURFACE_RT=m
+    - GPIO_WATCHDOG=m
+    - DMABUF_HEAPS_SYSTEM_CC_SHARED=n
+    - VIDEO_MAX96712=m
+    - DELL_DW5826E_RESET=m
+    - PHY_NXP_TJA1145=m
+    - USB4_STREAM=m
+    - FPGA_MGR_EFINIX_SPI=m
+  - OF dependent (i386, ppc64le, riscv64)
+    - PINCTRL_GENERIC_MUX=m
+    - REGULATOR_SGM3804=m
+    - LEDS_LP5860_CORE=m
+    - LEDS_LP5860_SPI=m
+    - PHY_TI_DS125DF111=m
+  - i386
+    - RDC321X_WDT=m
+    - DRM_PANEL_CHIPWEALTH_CH13726A=n
+    - DRM_PANEL_NOVATEK_NT35532=n
+    - SND_SOC_ES9356=n
+  - s390x
+    - SERIAL_MAX310X=n
+  - riscv64
+    - SPI_SPACEMIT_K1=m
+    - SPACEMIT_K1_TSENSOR=m
+    - ATCWDT200_WATCHDOG=m
+    - VIDEO_AMD_ISP4_CAPTURE=m
+    - SND_SOC_SDCA=m
+    - SND_SOC_SDCA_HID=y
+    - SND_SOC_SDCA_IRQ=y
+    - SND_SOC_SDCA_FDL=y
+    - LEDS_LP5860_CORE=m
+    - LEDS_LP5860_SPI=m
+    - RCAR_MFIS=m
+    - STARFIVE_JHB100_INTC=y
+    - FTRACE_SORT_STARTUP_TEST=n
+- commit 67d3cb5
 
 -------------------------------------------------------------------
 Sat Jun 27 20:45:48 CEST 2026 - jslaby@suse.cz

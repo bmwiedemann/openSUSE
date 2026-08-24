@@ -19,7 +19,7 @@
 
 #!BuildIgnore: post-build-checks
 
-%define patchversion 7.1.8
+%define patchversion 7.2.0
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -38,23 +38,23 @@
 %endif
 %endif
 %endif
-%global kernel_package kernel%kernel_flavor-srchash-f1071afe11a0df6b9bfac324d0180c88ec5e1ee9
+%global kernel_package kernel%kernel_flavor-srchash-2b1d62831e372c454d117a20a6d629665fd2b7d0
 %endif
 %if 0%{?rhel_version}
 %global kernel_package kernel
 %endif
 
 Name:           kernel-obs-build
-Version:        7.1.8
+Version:        7.2.0
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gf1071af
+Release:        <RELEASE>.g2b1d628
 %else
 Release:        0
 %endif
 Summary:        package kernel and initrd for OBS VM builds
 License:        GPL-2.0-only
 Group:          SLES
-Provides:       kernel-obs-build-srchash-f1071afe11a0df6b9bfac324d0180c88ec5e1ee9
+Provides:       kernel-obs-build-srchash-2b1d62831e372c454d117a20a6d629665fd2b7d0
 BuildRequires:  coreutils
 BuildRequires:  device-mapper
 BuildRequires:  dracut
@@ -63,7 +63,7 @@ BuildRequires:  util-linux
 %if 0%{?suse_version} > 1550 || 0%{?sle_version} > 150200
 BuildRequires:  zstd
 %endif
-ExclusiveArch:  aarch64 armv6hl armv7hl ppc64le riscv64 s390x x86_64
+ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
 
 %description
 This package is repackaging already compiled kernels to make them usable
