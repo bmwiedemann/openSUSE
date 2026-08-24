@@ -16,13 +16,26 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
 
 %define name   akonadi
+
+%bcond_without kde_python_bindings
+%if %{with kde_python_bindings}
+%if 0%{suse_version} > 1500
+%define pythons %{primary_python}
+%else
+%{?sle15_python_module_pythons}
+%endif
+%define mypython %pythons
+%define __mypython %{expand:%%__%{mypython}}
+%define mypython_sitearch %{expand:%%%{mypython}_sitearch}
+%endif
+
 %bcond_without released
 Name:           akonadi
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        PIM Storage Service
 License:        LGPL-2.1-or-later
@@ -62,6 +75,17 @@ BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Xml) >= %{qt6_version}
 BuildRequires:  pkgconfig(liblzma) >= 5.0.0
+# SECTION bindings
+%if %{with kde_python_bindings}
+BuildRequires:  %{mypython}-build
+BuildRequires:  %{mypython}-devel >= 3.9
+BuildRequires:  %{mypython}-setuptools
+BuildRequires:  %{mypython}-wheel
+BuildRequires:  python3-kf6-kcoreaddons
+BuildRequires:  cmake(PySide6)
+BuildRequires:  cmake(Shiboken6)
+%endif
+# /SECTION
 # SECTION sqlite
 Requires:       qt6-sql-sqlite
 Requires:       sqlite3
@@ -127,9 +151,9 @@ Recommends:     akonadi
 This package includes the Akonadi Xml library for Akonadi, the KDE PIM storage service.
 
 %package imports
-Summary:       QtQuick components for Akonadi
-Requires:      libKPim6AkonadiCore6 = %{version}
-Recommends:    akonadi
+Summary:        QtQuick components for Akonadi
+Requires:       libKPim6AkonadiCore6 = %{version}
+Recommends:     akonadi
 
 %description imports
 This package contains QtQuick components for the libraries part of Akonadi, the KDE PIM storage service.
@@ -140,9 +164,9 @@ Requires:       akonadi = %{version}
 # For the kcfg_generate_dbus_interface CMake macro
 Requires:       xsltproc
 Requires:       libKPim6AkonadiAgentBase6 = %{version}
+Requires:       libKPim6AkonadiAgentWidgetBase6 = %{version}
 Requires:       libKPim6AkonadiCore6 = %{version}
 Requires:       libKPim6AkonadiWidgets6 = %{version}
-Requires:       libKPim6AkonadiAgentWidgetBase6 = %{version}
 Requires:       libKPim6AkonadiXml6 = %{version}
 Requires:       cmake(KF6Config) >= %{kf6_version}
 Requires:       cmake(KF6ConfigWidgets) >= %{kf6_version}
@@ -172,13 +196,26 @@ Obsoletes:      akonadi-server-apparmor < %{version}
 %description apparmor
 This package contains AppArmor profiles for Akonadi.
 
+%if %{with kde_python_bindings}
+%package -n python3-akonadi
+Summary:        Python interface for Akonadi
+Requires:       python3-kf6-kcoreaddons
+
+%description -n python3-akonadi
+This package provides a python interface for Akonadi.
+%endif
+
 %lang_package
 
 %prep
 %autosetup -p1
 
 %build
-%cmake_kf6 -DDATABASE_BACKEND:STRING=SQLITE
+%cmake_kf6 \
+%if %{with kde_python_bindings}
+  -DPython_EXECUTABLE:STRING=%{__mypython}
+%endif
+%{nil}
 
 %kf6_build
 
@@ -216,6 +253,7 @@ This package contains AppArmor profiles for Akonadi.
 %dir %{_kf6_iconsdir}/hicolor/256x256
 %dir %{_kf6_iconsdir}/hicolor/256x256/apps
 %{_kf6_applicationsdir}/org.kde.akonadi.configdialog.desktop
+%{_kf6_applicationsdir}/org.kde.akonadi.desktop
 %{_kf6_bindir}/akonadi_agent_launcher
 %{_kf6_bindir}/akonadi_agent_server
 %{_kf6_bindir}/akonadi_control
@@ -290,12 +328,22 @@ This package contains AppArmor profiles for Akonadi.
 %{_kf6_plugindir}/designer/akonadi6widgets.so
 %{_kf6_sharedir}/kdevappwizard/templates/akonadiresource.tar.bz2
 %{_kf6_sharedir}/kdevappwizard/templates/akonadiserializer.tar.bz2
+%if %{with kde_python_bindings}
+%dir %{_includedir}/PySide6/
+%{_includedir}/PySide6/AkonadiCore/
+%endif
 
 %files apparmor
 %config(noreplace) %{_sysconfdir}/apparmor.d/mariadbd_akonadi
 %config(noreplace) %{_sysconfdir}/apparmor.d/mysqld_akonadi
 %config(noreplace) %{_sysconfdir}/apparmor.d/postgresql_akonadi
 %config(noreplace) %{_sysconfdir}/apparmor.d/usr.bin.akonadiserver
+
+%if %{with kde_python_bindings}
+%files -n python3-akonadi
+%{_kf6_sharedir}/PySide6/typesystems/typesystem_akonadi.xml
+%{mypython_sitearch}/*.so
+%endif
 
 %files lang -f %{name}.lang
 
