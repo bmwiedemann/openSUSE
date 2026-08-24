@@ -15,4 +15,26 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1338298</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>969863a911ed5653147cce1bfdcfc62f</srcmd5>
+    <version>13.1.0</version>
+    <time>1787566311</time>
+    <user>anag_factory</user>
+    <comment>- Update to 13.1.0:
+  Features:
+  * yaml: represent multiline YAML blocks in multiple output lines (40f8f4c)
+  Bug Fixes:
+  * gitlab: handle 'tags: []' definitions for extended jobs too (36908b1)
+  * BREAKING CHANGE updates, requirements: migrate to 'update_checker' 1.0.0 API (19aba1c)
+  Documentation:
+  * license, mkdocs: raise copyright year to 2026 (ac7092e)
+  Styling:
+  * src: migrate to '|' types unions (python:S6546) (4d85b34)
+  Test:
+  * permissions: ensure quick job execution handles interruption (2a27ac5)
+  Cleanups:
+  * docker: avoid coverage of deprecated 'progress' animation (e7bb656)
+  * updates: enforce 'typings' [arg-type] error on 'date' (b2f7c6b)</comment>
+    <requestid>1373328</requestid>
+  </revision>
 </revisionlist>
