@@ -1,0 +1,5 @@
+<package name="python-torchao" project="openSUSE:Factory">
+  <title>PyTorch native quantization and sparsity</title>
+  <description>TorchAO is a PyTorch-native library for quantization and sparsity of model weights and activations, for both training and inference. CPU-only build for the SGLang cone.</description>
+  <url>https://github.com/pytorch/ao</url>
+</package>

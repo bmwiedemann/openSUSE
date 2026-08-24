@@ -1,0 +1,25 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>047214458350a2ff4ae28cf99a390cd9</srcmd5>
+    <version>0.17.0</version>
+    <time>1787579015</time>
+    <user>anag_factory</user>
+    <comment>New package python-torchao 0.17.0. Please keep pluskalm as package maintainer. SGLang 0.5.17 CPU pin. CPU-only USE_CPP=0, GitHub tag (PyPI wheels only).
+
+INTERDEPENDENT REQUESTS — please stage together:
+ * sr#1372971 python-blobfile
+ * sr#1372972 python-easydict
+ * sr#1372974 python-gguf
+ * sr#1372973 python-timm
+ * python-datasets (s:ml sr#1372967, not yet in Factory)
+ * python-sglang (not yet submitted)
+
+- Initial package of python-torchao 0.17.0: PyTorch-native
+  quantization and sparsity for training and inference,
+  pinned by SGLang 0.5.17 CPU. Built from the GitHub v0.17.0
+  tag (PyPI ships wheels only). CPU-only, USE_CPP=0 (no CUDA).
+
+New package to Factory.</comment>
+    <requestid>1372976</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,8 @@
+-------------------------------------------------------------------
+Fri Aug 21 19:30:17 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package of python-torchao 0.17.0: PyTorch-native
+  quantization and sparsity for training and inference,
+  pinned by SGLang 0.5.17 CPU. Built from the GitHub v0.17.0
+  tag (PyPI ships wheels only). CPU-only, USE_CPP=0 (no CUDA).
+
