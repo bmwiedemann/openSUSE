@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
 
 %bcond_without released
 Name:           ktrip
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        Public transport assistant targeted towards mobile Linux and Android
 License:        GPL-2.0-or-later
@@ -38,8 +38,8 @@ BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6ItemModels) >= %{kf6_version}
-BuildRequires:  cmake(KF6QQC2DesktopStyle) >= %{kf6_version}
 BuildRequires:  cmake(KF6KirigamiAddons) >= 0.11.0
+BuildRequires:  cmake(KF6QQC2DesktopStyle) >= %{kf6_version}
 BuildRequires:  cmake(KPublicTransport)
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
@@ -53,9 +53,9 @@ BuildRequires:  kpublictransport-imports
 Requires:       kf6-breeze-icons
 # QML imports
 Requires:       kf6-kitemmodels-imports >= %{kf6_version}
+Requires:       kf6-kirigami-imports >= %{kf6_version}
 Requires:       kirigami-addons6 >= 0.11.0
 Requires:       kpublictransport-imports
-Requires:       kf6-kirigami-imports >= %{kf6_version}
 
 %description
 KTrip is a public transport assistant targeted towards mobile Linux and
@@ -80,10 +80,11 @@ transport providers by leveraging KPublicTransport.
 %files
 %license LICENSES/*
 %doc README.md
-%{_kf6_bindir}/ktrip
-%{_kf6_iconsdir}/hicolor/scalable/apps/org.kde.ktrip.svg
 %{_kf6_applicationsdir}/org.kde.ktrip.desktop
 %{_kf6_appstreamdir}/org.kde.ktrip.appdata.xml
+%{_kf6_bindir}/ktrip
+%{_kf6_iconsdir}/hicolor/scalable/apps/org.kde.ktrip.svg
+%{_kf6_sharedir}/config.kcfg/ktripsettings.kcfg
 
 %files lang -f %{name}.lang
 
