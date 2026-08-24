@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Aug 21 07:28:40 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.300071.0
+  * [OpenTelemetry] Add file tailing and Windows Events support
+    by @jefchien in (#2206) and (#2193)
+  * [OpenTelemetry] Add resource_attributes support by @movence in (#2207)
+  * [Agent] Add set-env ctl action to persist agent environment variables
+    by @sky333999 in (#2211)
+  * [Agent] Add platform-aware default configs for OpenTelemetry (host,
+    Kubernetes, ECS) by @jefchien in (#2179)
+  * [Agent] Add Microsoft Azure support for VMs and AKS by @movence in (#2183)
+  * [OpenTelemetry] Add root-level cluster_name and standardize collection_interval
+    by @Paamicky in (#2189)
+  * [Agent] Retain custom environment variables in env-config.json between
+    translation by @jefchien in (#2131)
+  * [DatabaseInsights] Add severity parsing and fix multiline/timestamp for
+    PostgreSQL server logs by @JayPolanco in (#2209)
+  * [Logs] Fix throttling deadlock in cloudwatchlogs output plugin when destinations
+    are removed by @lorespiz in (#2190)
+  * [Logs] Fix force-flush timer permanently stalling on low-volume log streams
+    by @musa-asad in (#2166)
+- from version 1.300070.0
+  * [Logs] Add journald log collection support by @Paamicky in (#2121)
+  * [OpenTelemetry] Add new opentelemetry section in JSON configuration to support
+    sending telemetry to CloudWatch OTLP endpoints by @mitali-salvi in (#2152)
+  * [DatabaseInsights] Add support for self-managed PostgreSQL metrics and logs
+    collection by @JayPolanco in (#2172)
+  * [ApplicationSignals] Fix Service Events logs and metrics pipelines
+    to use shared AWS credential chain by @jefchien in (#2151)
+
+-------------------------------------------------------------------
 Mon Jun 29 13:53:37 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.300069.0
