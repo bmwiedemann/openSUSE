@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
 
 %bcond_without released
 Name:           neochat
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        A chat client for Matrix, the decentralized communication protocol
 License:        BSD-2-Clause AND GPL-3.0-only AND GPL-3.0-or-later
@@ -113,6 +113,7 @@ instant messaging.
 %{_kf6_applicationsdir}/org.kde.neochat.desktop
 %{_kf6_appstreamdir}/org.kde.neochat.appdata.xml
 %{_kf6_bindir}/neochat
+%{_kf6_configkcfgdir}/neochatconfig.kcfg
 %{_kf6_debugdir}/neochat.categories
 %{_kf6_iconsdir}/hicolor/*/apps/org.kde.neochat.svg
 %{_kf6_iconsdir}/hicolor/scalable/apps/org.kde.neochat.tray.svg

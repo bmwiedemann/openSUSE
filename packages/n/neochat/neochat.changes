@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Sun Aug 16 07:28:05 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.08.0/
+- Changes since 26.07.90:
+  * CI: Flatpak: Add update check for Corrosion and update to 0.6.1
+  * CI: Flatpak: Update to 26.04.3 KUnifiedPush
+  * Keep rich text as off by default for 26.08
+
+-------------------------------------------------------------------
+Sat Aug  1 11:39:44 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.07.90
+  * New feature release
+- Changes since 26.07.80:
+  * Fix hiding images
+  * Fix incorrect role being used in maximize component
+  * Fix crash when opening delegate context menu for images still loading
+  * Actually paste attachments if you only have a file list in the clipboard
+  * Fix type name in kcfg file
+  * Install kcfg file
+  * Don't show QR codes for private, invite-only rooms
+  * Wait until encryption is set up before decrypting pinned message
+  * Don't check m.room.message in an encrypted room (kde#523143)
+  * Don't refresh user events right after adding them
+  * Don't reset the ReadMarkerModel twice in quick succession
+  * Make the CompletionModel much faster 🏃💨
+  * Rename parameters for clarity
+  * Don't manage a whole new RoomListModel just for KRunner
+  * Only invalidate filtering when IsChildSpaceRole changes
+
+-------------------------------------------------------------------
+Sat Jul 18 11:12:26 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.07.80
+  * New feature release
+- Too many changes since 26.04.3, only listing bugfixes:
+  * Fix pinned messages not actually being limited in every scenario (kde#521147)
+  * Unescape backslashes when sending (kde#521390)
+  * Don't show "Hide Image" button for really tiny images (kde#506631)
+  * Linkify URLs with apostrophes (kde#501960)
+  * Don't mangle URLs with two consecutive underscores (kde#503933)
+  * Show an explanation label when you can't send messages in a room (kde#519284)
+  * Don't allow previewing audio/video before sending it (kde#519112)
+  * Fix text selection (kde#519616)
+  * Don't allow downloading stickers for now (kde#518849)
+  * Only spell-check words if turned on again (kde#519565)
+  * Fix crash when reacting with /react (kde#518166)
+  * Various room creation fixes (kde#518300)
+  * Set maximum height for link preview images (kde#517962)
+  * Hide empty, errored out link previews (kde#517187)
+  * Change text in searching messages dialog if searching a specific user (kde#517886)
+  * Don't make pinned custom emotes humungous (kde#517850)
+  * Don't change active connection when logging out an inactive connection (kde#515543)
+  * Don't send polls twice (kde#517184)
+
+-------------------------------------------------------------------
 Tue Jun 30 18:20:17 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.04.3
