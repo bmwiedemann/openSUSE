@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
 
 %bcond_without released
 Name:           ktorrent
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        KDE BitTorrent Client
 License:        GPL-2.0-or-later
@@ -35,8 +35,8 @@ Source3:        ktorrent.1
 Source4:        ktupnptest.1
 # PATCH-FIX-OPENSUSE initial-preference.diff cmorve69@yahoo.es -- InitialPreference to set it as the default torrent downloader
 Patch0:         initial-preference.diff
-BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  fdupes
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  libboost_headers-devel
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF6Archive) >= %{kf6_version}
@@ -62,10 +62,10 @@ BuildRequires:  cmake(KF6Solid) >= %{kf6_version}
 BuildRequires:  cmake(KF6StatusNotifierItem) >= %{kf6_version}
 BuildRequires:  cmake(KF6Syndication) >= %{kf6_version}
 BuildRequires:  cmake(KF6TextWidgets) >= %{kf6_version}
-BuildRequires:  cmake(KTorrent6)
 BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
 BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(KTorrent6)
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
@@ -73,8 +73,8 @@ BuildRequires:  cmake(Qt6Multimedia) >= %{qt6_version}
 BuildRequires:  cmake(Qt6MultimediaWidgets) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
-BuildRequires:  pkgconfig(taglib)
 BuildRequires:  pkgconfig(libmaxminddb)
+BuildRequires:  pkgconfig(taglib)
 %ifarch aarch64 x86_64 %{x86_64} riscv64
 BuildRequires:  cmake(Qt6WebEngineWidgets) >= %{qt6_version}
 %endif

@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Sun Aug 16 07:27:46 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.08.0/
+- Changes since 26.07.90:
+  * Fix Download Order search bar and sort button not being enabled at startup when custom order is already enabled
+  * Fix Download Order dialog move buttons when selecting from bottom index upwards
+
+-------------------------------------------------------------------
+Sat Aug  1 11:39:27 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.07.90
+  * New feature release
+- Changes since 26.07.80:
+  * Fix crash in ScanFolder plugin due to non-threadsafe KDirWatch destructor
+  * Fix data checker progress bar skipping to 100% when cancelled or error happened
+  * Add explicit linkage needed after clean-up of KTorrent6 link interface
+
+-------------------------------------------------------------------
+Sat Jul 18 11:12:08 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.07.80
+  * New feature release
+- Changes since 26.04.3:
+  * Add option to quit KTorrent to shutdown plugin
+  * Update media player description to not include Phonon
+  * Typo fix succes -> success
+  * Fix queue manager constantly resorting when auto-resort for inactive torrents is enabled (kde#508964)
+  * Adapt to TorrentCreator::makeTC API change
+  * Adapt to ExtractFileJob API change
+  * Adapt to DataCheckerThread API change
+  * Logging plugin: fix log level filters
+  * Remove repeated default offset parameter in BDecoder constructor
+  * Fix incorrect peer ID (kde#515565)
+  * Actually build with C++20
+  * Port FlagDB to KCountryFlagEmojiIconEngine
+  * Avoid clobbering CMAKE_MODULE_PATH in GeoIP path
+  * Use key-value overload of BEncoder::write for dictionaries
+  * Remove now unneeded QByteArrayLiterals for Bencoding functions
+  * Adapt to API change in BEncoder
+  * Adapt to API change in BEncoderOutput
+  * Fixed appdata descriptions
+
+-------------------------------------------------------------------
 Tue Jun 30 18:20:02 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.04.3
