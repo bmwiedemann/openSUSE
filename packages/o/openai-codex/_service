@@ -8,11 +8,11 @@
     the v8-poc/code-mode-runtime/code-mode-host workspace members (~213 MB of
     sources that are never compiled) stay out of the bundle.  To regenerate:
 
-      tar xf codex-rust-v0.149.0.tar.gz
-      patch -p1 -d codex-rust-v0.149.0 < codex-drop-v8-code-mode.patch
-      rm -rf codex-rust-v0.149.0/codex-rs/vendor
+      tar xf codex-rust-v0.149.1.tar.gz
+      patch -p1 -d codex-rust-v0.149.1 < codex-drop-v8-code-mode.patch
+      rm -rf codex-rust-v0.149.1/codex-rs/vendor
       osc service manualrun
-      rm -rf codex-rust-v0.149.0
+      rm -rf codex-rust-v0.149.1
 
     The codex-rs/vendor removal drops the bundled bubblewrap 0.11.2 C sources,
     which %prep removes as well - codex uses the system bubblewrap instead.
@@ -28,7 +28,7 @@
     with the cargo_vendor "update-crate" parameter instead.
   -->
   <service name="cargo_vendor" mode="manual">
-    <param name="srcdir">codex-rust-v0.149.0/codex-rs</param>
+    <param name="srcdir">codex-rust-v0.149.1/codex-rs</param>
     <param name="compression">zst</param>
     <param name="update">false</param>
   </service>

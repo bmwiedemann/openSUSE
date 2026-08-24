@@ -162,4 +162,26 @@ and 15.7 build as well.</comment>
   codex-no-startup-update-check.patch</comment>
     <requestid>1372722</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ef1e3541fc4e44f385730c0be67a2912</srcmd5>
+    <version>0.149.1</version>
+    <time>1787579041</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.149.1.
+
+Small upstream release: 5 commits, 23 files. codex exec callers can classify
+new threads, retained images are budgeted during remote compaction, and
+detached memory requests are identified as memory consolidation.
+
+vendor.tar.zst is carried over unchanged. codex-rs/Cargo.lock is byte-identical
+between 0.149.0 and 0.149.1 (upstream's only Cargo.toml change was the
+workspace version line, and the workspace members are recorded in the lock as
+0.0.0), so re-vendoring with update=false resolves the same crate set. The
+Legal-Review-Notice crate tallies in the spec are unchanged for the same reason.
+
+Both patches apply without fuzz. Built green on openSUSE_Tumbleweed/aarch64:
+rpmlint 0 errors, 0 warnings, 0 badness; %check 341 tests passed across the five
+allowlisted crates; the built binary reports &quot;codex-cli 0.149.1&quot;.</comment>
+    <requestid>1373338</requestid>
+  </revision>
 </revisionlist>

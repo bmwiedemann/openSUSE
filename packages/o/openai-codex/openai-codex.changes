@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Aug 24 05:37:35 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.149.1:
+  * `codex exec` callers can classify new threads
+  * Retained images are now budgeted during remote compaction
+  * Detached memory requests are identified as memory consolidation
+- vendor.tar.zst is carried over unchanged: codex-rs/Cargo.lock is
+  byte-identical between 0.149.0 and 0.149.1, so re-vendoring with
+  update=false resolves the same crate set
+
+-------------------------------------------------------------------
 Fri Aug 21 05:49:48 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.149.0:
