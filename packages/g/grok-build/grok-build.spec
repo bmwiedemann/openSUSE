@@ -17,12 +17,13 @@
 
 
 Name:           grok-build
-Version:        0+git20260815.d6a22a1
+Version:        0+git20260819.19d42e3
 Release:        0
 Summary:        Terminal AI coding agent by xAI
 # Legal-Review-Notice (boo#1273104): licences of the statically linked Rust
 # dependencies, verified against the vendored tree with
-# "cargo tree -p xai-grok-pager-bin -e normal" (1003 vendored crates):
+# "cargo tree -p xai-grok-pager-bin -e normal" (1015 crates in this graph,
+# 1250 vendored):
 #  - pdf_oxide IS shipped (pulled with its "rendering" feature), but it is
 #    "MIT OR Apache-2.0" and carries no GPL code. Its src/decoders/jbig2.rs is
 #    a pass-through stub ("no actual decoding performed"); its sole GPL-3.0
@@ -35,6 +36,14 @@ Summary:        Terminal AI coding agent by xAI
 #    selectors and smartstring (MPL-2.0+).
 #  - colored_json (EPL-2.0) is NOT in this binary's dependency graph; it is
 #    reachable only from xai-ratatui-inline, which this package does not build.
+#  - GPL-2.0 WITH Linking-exception and LGPL-2.1-or-later cover the libgit2 C
+#    sources that libgit2-sys bundles and links statically: libgit2 itself is
+#    GPL-2.0 with the linking exception, and its deps/xdiff (LibXDiff) is
+#    LGPL-2.1-or-later. The LGPL-covered deps/winhttp is Windows-only and is
+#    not compiled here.
+#  - aws-lc-sys, rust-stemmers and zstd-sys ship a GPL licence text but none
+#    applies: aws-lc expressly elects ISC over GPL-2.0, rust-stemmers' GPL-3.0
+#    covers only its test_data, and zstd is dual BSD-3-Clause/GPL-2.0.
 License:        Apache-2.0 AND MPL-2.0 AND GPL-2.0 WITH Linking-exception AND LGPL-2.1-or-later
 URL:            https://github.com/xai-org/grok-build
 Source0:        %{name}-%{version}.tar.zst

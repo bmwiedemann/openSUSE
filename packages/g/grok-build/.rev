@@ -107,4 +107,30 @@ finished &quot;build grok-build.spec&quot;, rpmlint 2 packages checked, 0 errors
 workspace test suite needs network access).</comment>
     <requestid>1371325</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c07f5df033512b23b4d39f9d29fb5767</srcmd5>
+    <version>0+git20260819.19d42e3</version>
+    <time>1787566255</time>
+    <user>anag_factory</user>
+    <comment>Update grok-build to the 2026-08-19 upstream snapshot (0+git20260819.19d42e3).
+
+Highlights: persistent &quot;Never allow&quot; permission answers for MCP tools and
+web-fetch domains with remember_tool_approvals on by default; consent-notice
+gating with server-side verification of acceptances; GROK_FORCE_LOGIN_TEAM_ID
+to restrict login to a single team; automatic worktree garbage collection
+behind a fail-closed safety gate; earlier two-tier interruption of identical
+tool-call loops; a pager status line; and several panic/freeze fixes.
+
+0002-disable-telemetry-by-default.patch was rebased (upstream moved
+resolve_telemetry_mode, so it no longer applied at fuzz 0);
+0001-disable-self-updater.patch is unchanged. No patch dropped, no shared
+library, no SONAME change. The vendored crates were refreshed and the License
+tag re-derived from the new vendor tree (unchanged); the spec's legal note now
+documents why it carries GPL-2.0 WITH Linking-exception and LGPL-2.1-or-later
+(the libgit2 C sources that libgit2-sys bundles and links statically).
+
+Built locally with osc build --clean for openSUSE_Tumbleweed/aarch64: green,
+rpmlint 0 errors, 0 badness (3 pre-existing warnings).</comment>
+    <requestid>1373245</requestid>
+  </revision>
 </revisionlist>

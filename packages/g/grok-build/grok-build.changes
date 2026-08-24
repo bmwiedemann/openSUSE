@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Sun Aug 23 05:30:19 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to git snapshot 0+git20260819.19d42e3:
+  * Add a persistent "Never allow" permission answer for MCP tools
+    and web-fetch domains, default remember_tool_approvals to on and
+    report granular prompt outcomes plus the remember-gate state
+  * Block a session behind a consent notice until it is accepted,
+    carry the notice in remote settings, record the answer locally
+    and verify acceptances server-side against what was served
+  * Restrict login to a single team with the new
+    GROK_FORCE_LOGIN_TEAM_ID environment override
+  * Adopt sibling auth tokens before taking the auth lock and bound
+    startup-path token refreshes; the earlier authentication straddle
+    hardening was reverted
+  * Add automatic worktree garbage collection behind a fail-closed
+    safety gate, clone straight into a projected worktree and stop
+    dropping a sibling worktree registration when removing a worktree
+  * Let sandbox sessions delete loops, remove a scheduled loop from
+    the background-tasks tray and keep paused workflows visible
+  * Interrupt identical tool-call loops earlier, in two tiers, and
+    keep the ask-user tool out of subagents
+  * Gate /goal verification on objective-named CI oracles and require
+    in-repo tests for planner and verifier changes
+  * Compact on a model family switch, add an optional model_family to
+    the model catalog schema and cap parallel media-generation tool
+    calls at eight images and four videos
+  * Unblock queued messages and allow queue edits during goal mode,
+    preserve agent message anchors and typed input provenance and add
+    a typed input queue policy
+  * Add a status line, re-run a command status line on a timer via
+    refresh_interval, keep the page-flip prompt pin through scroll and
+    render e-mail addresses as mailto links in the pager
+  * Use browser-style shift-extended selection in the textarea, expand
+    command output when unfolding a folded section and deflake the
+    bash full-output double-click fold in the PTY pager
+  * Load a single session summary for the /session-info title row
+    instead of scanning every session, and drop the yanked prompt on a
+    Ctrl+C rewind
+  * Resolve session HEAD metadata from refs only, never from the
+    object database
+  * Fix still-streaming replies freezing when thinking interleaves,
+    and TTS decode window span export under concurrent decode
+  * Fix zero-data-retention storage errors in the video API and the
+    matching Imagine messaging
+  * Forward MCP protocol icons on MCP list responses, add the
+    GROK_CONNECT_UI_TIMEOUT_SECS override for the startup connect
+    budget and deny unwrap, expect and panic on session
+    resource-release paths
+- Rebase 0002-disable-telemetry-by-default.patch onto the moved
+  resolve_telemetry_mode context
+- Refresh the vendored Rust crate dependencies
+- Document in the spec why the licence tag carries GPL-2.0 WITH
+  Linking-exception and LGPL-2.1-or-later: libgit2-sys statically
+  links the bundled libgit2 C sources, whose deps/xdiff is
+  LGPL-2.1-or-later, and refresh the audited crate counts
+
+-------------------------------------------------------------------
 Sat Aug 15 18:55:28 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to git snapshot 0+git20260815.d6a22a1:
