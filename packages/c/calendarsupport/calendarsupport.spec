@@ -16,14 +16,14 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
-%define kpim6_version 6.7.3
-%define ktextaddons_version 2.0.0
+%define kpim6_version 6.8.0
+%define ktextaddons_version 2.0.2
 
 %bcond_without released
 Name:           calendarsupport
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        KDE PIM calendaring support library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -40,12 +40,12 @@ BuildRequires:  cmake(KF6GuiAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6Holidays) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6Mime) >= %{kf6_version}
 BuildRequires:  cmake(KF6TextCustomEditor) >= %{ktextaddons_version}
 BuildRequires:  cmake(KPim6Akonadi) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6AkonadiCalendar) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6CalendarUtils) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6IdentityManagementCore) >= %{kpim6_version}
-BuildRequires:  cmake(KPim6Mime) >= %{kpim6_version}
 BuildRequires:  cmake(Qt6PrintSupport) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
@@ -71,9 +71,9 @@ to handle calendaring.
 %package devel
 Summary:        Development package for the KDEPIM Calendarsupport library
 Requires:       libKPim6CalendarSupport6 = %{version}
+Requires:       cmake(KF6Mime) >= %{kf6_version}
 Requires:       cmake(KPim6AkonadiCalendar) >= %{kpim6_version}
 Requires:       cmake(KPim6IdentityManagementCore) >= %{kpim6_version}
-Requires:       cmake(KPim6Mime) >= %{kpim6_version}
 Requires:       cmake(Qt6PrintSupport) >= %{qt6_version}
 
 %description devel
