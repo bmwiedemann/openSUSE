@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sun Aug 16 07:27:02 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.08.0/
+- Changes since 26.07.90:
+  * kdevgdb: set style emoji off
+
+-------------------------------------------------------------------
+Sat Aug  1 11:38:45 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.07.90
+  * New feature release
+- Changes since 26.07.80:
+  * Fix doubled view closing on MMB on view tabbar (kde#522321)
+  * test_compilerprovider: add test to check if include order is preserved
+  * custom-definesandincludes: when reading settings preserve includes order (kde#523168)
+
+-------------------------------------------------------------------
+Sat Jul 18 11:11:25 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.07.80
+  * New feature release
+- Too many changes since 26.04.3, only listing bugfixes:
+  * projectmanagerview: ignore null items in build actions (kde#492880)
+  * Do not write to read-only mmapped bucket (kde#497172)
+  * Add info about noexcept into duchain (kde#403798)
+
+-------------------------------------------------------------------
 Tue Jun 30 18:19:24 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.04.3

@@ -16,15 +16,14 @@
 #
 
 
-
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
 
-%define libkdev_major 65
+%define libkdev_major 66
 
 %bcond_without released
 Name:           kdevelop
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        Plugin-extensible IDE for C/C++ and other programming languages
 License:        GPL-2.0-or-later
@@ -35,8 +34,8 @@ Source1:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source2:        applications.keyring
 %endif
 BuildRequires:  clang-devel
-BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  kdevelop-pg-qt >= 1.9
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  libboost_headers-devel
 # TODO: not ported to Qt6. Expected: 10/2024
 # BuildRequires:  okteta-devel
