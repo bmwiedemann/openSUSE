@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
-%define ktextaddons_version 2.0.0
+%define ktextaddons_version 2.0.2
 
 %bcond_without released
 Name:           grantleetheme
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        Grantlee theme support
 License:        GPL-2.0-only
@@ -38,9 +38,9 @@ BuildRequires:  cmake(KF6GuiAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
 BuildRequires:  cmake(KF6NewStuff) >= %{kf6_version}
+BuildRequires:  cmake(KF6TextTemplate) >= %{ktextaddons_version}
 BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
 BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
-BuildRequires:  cmake(KF6TextTemplate) >= %{ktextaddons_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 
 %description
