@@ -1,7 +1,7 @@
 #
 # spec file for package btfs
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           btfs
-Version:        3.1
+Version:        3.2
 Release:        0
 Summary:        A BitTorrent file system based on FUSE
 License:        GPL-3.0-or-later
@@ -43,7 +43,6 @@ cp work as expected. Applications like media players can also work without chang
 sed -i 's,env python,python,' scripts/btplay
 
 %build
-export CXXFLAGS="-std=c++14"
 autoreconf -fi
 %configure
 %make_build

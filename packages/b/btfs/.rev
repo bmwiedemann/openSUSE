@@ -142,4 +142,16 @@
     <comment>- Drop unused libboost_system dependency</comment>
     <requestid>1308701</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>3641cc758fb1abb92a3df90ae9afd962</srcmd5>
+    <version>3.2</version>
+    <time>1787566233</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.2:
+  * Build against libtorrent-rasterbar 2.1 (ABI 2)
+    Also switch to C++17, which libtorrent 2.1 requires.
+    Still builds against ABI 1 (2.0).
+    gh#johang/btfs#109</comment>
+    <requestid>1373146</requestid>
+  </revision>
 </revisionlist>
