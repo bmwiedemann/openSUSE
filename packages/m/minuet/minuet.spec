@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
 
 %bcond_without released
 Name:           minuet
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        A KDE Software for Music Education
 License:        GPL-2.0-or-later
@@ -38,14 +38,21 @@ BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
 BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6Kirigami) >= %{kf6_version}
+BuildRequires:  cmake(KF6KirigamiAddons) >= 1.13.0
+BuildRequires:  cmake(KF6QQC2DesktopStyle) >= %{kf6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Multimedia) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
 BuildRequires:  cmake(Qt6QuickControls2) >= %{qt6_version}
+BuildRequires:  cmake(Qt6QuickEffects) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
+BuildRequires:  pkgconfig(aubio)
 BuildRequires:  pkgconfig(fluidsynth) >= 2.5.1
-# Runtime requirement
+Requires:       kf6-kcoreaddons-imports >= %{kf6_version}
+Requires:       kf6-kirigami-imports >= %{kf6_version}
+Requires:       kirigami-addons6 >= 1.13.0
 Requires:       qt6-declarative-imports >= %{qt6_version}
 
 %description
