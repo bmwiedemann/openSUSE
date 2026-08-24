@@ -32,17 +32,17 @@ Source0:        %{name}-%{rversion}.tar.xz
 Source1:        %{name}-%{rversion}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(libmusicbrainz5)
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
-BuildRequires:  cmake(KF5KCMUtils) >= %{kf5_version}
+BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5Config) >= %{kf5_version}
 BuildRequires:  cmake(KF5DocTools) >= %{kf5_version}
 BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
+BuildRequires:  cmake(KF5KCMUtils) >= %{kf5_version}
 BuildRequires:  cmake(KF5KIO) >= %{kf5_version}
 BuildRequires:  cmake(KF5WidgetsAddons) >= %{kf5_version}
 BuildRequires:  cmake(Qt5Network) >= %{qt5_version}
 BuildRequires:  cmake(Qt5Widgets) >= %{qt5_version}
+BuildRequires:  pkgconfig(libmusicbrainz5)
 Provides:       libkcddb5 = %{rversion}
 Obsoletes:      libkcddb5 < %{rversion}
 Provides:       libkcddb16 = %{rversion}

@@ -1,5 +1,5 @@
 #
-# spec file for package libkcddb
+# spec file for package libkcddb-qt6
 #
 # Copyright (c) 2026 SUSE LLC and contributors
 #
@@ -18,12 +18,12 @@
 
 %define rname  libkcddb
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
 
 %bcond_without released
 Name:           libkcddb-qt6
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        CDDB library for KDE Applications
 License:        GPL-2.0-or-later
@@ -33,9 +33,8 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(libmusicbrainz5)
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
@@ -44,6 +43,7 @@ BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
 BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
 BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+BuildRequires:  pkgconfig(libmusicbrainz5)
 # FIXME upstream bug, conflicting kcfg and desktop files
 Conflicts:      libkcddb
 Obsoletes:      libkcddb-lang
