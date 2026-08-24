@@ -1,4 +1,5 @@
-# spec file for kongress
+#
+# spec file for package kongress
 #
 # Copyright (c) 2026 SUSE LLC and contributors
 #
@@ -15,16 +16,16 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
 
 %bcond_without  released
 Name:           kongress
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 License:        GPL-3.0-or-later
 Summary:        Companion application for conferences
-Url:            https://apps.kde.org/kongress/
+URL:            https://apps.kde.org/kongress/
 Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
@@ -33,8 +34,8 @@ Source2:        applications.keyring
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  cmake(KF6CalendarCore) >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
-BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
 BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6Kirigami) >= %{kf6_version}
