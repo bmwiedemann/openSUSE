@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
 
 %bcond_without released
 Name:           accessibility-inspector
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        Accessibility inspector
 License:        LGPL-2.1-or-later
@@ -76,4 +76,3 @@ It lets you check all the items exposed via At-SPI.
 %files lang -f %{name}.lang
 
 %changelog
-
