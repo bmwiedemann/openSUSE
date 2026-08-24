@@ -17,14 +17,14 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
-%define kpim6_version 6.7.3
-%define ktextaddons_version 2.0.0
+%define kpim6_version 6.8.0
+%define ktextaddons_version 2.0.2
 
 %bcond_without released
 Name:           kdepim-addons
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        Addons for KDE PIM applications
 License:        GPL-2.0-only
@@ -54,6 +54,7 @@ BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
 BuildRequires:  cmake(KF6KCMUtils) >= %{kf6_version}
 BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6Mime) >= %{kf6_version}
 BuildRequires:  cmake(KF6Parts) >= %{kf6_version}
 BuildRequires:  cmake(KF6Prison) >= %{kf6_version}
 BuildRequires:  cmake(KF6SyntaxHighlighting) >= %{kf6_version}
@@ -73,8 +74,8 @@ BuildRequires:  cmake(KPim6CalendarUtils) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6EventViews) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6GrantleeTheme) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6Gravatar) >= %{kpim6_version}
-BuildRequires:  cmake(KPim6IMAP) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6IdentityManagementCore) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6IMAP) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6ImportWizard) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6IncidenceEditor) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6Itinerary) >= %{kpim6_version}
@@ -89,7 +90,6 @@ BuildRequires:  cmake(KPim6MessageComposer) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6MessageCore) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6MessageList) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6MessageViewer) >= %{kpim6_version}
-BuildRequires:  cmake(KPim6Mime) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6PimCommonAkonadi) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6PkPass) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6TemplateParser) >= %{kpim6_version}
