@@ -17,14 +17,14 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
-%define kpim6_version 6.7.3
-%define ktextaddons_version 2.0.0
+%define kpim6_version 6.8.0
+%define ktextaddons_version 2.0.2
 
 %bcond_without released
 Name:           kmail
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        Mail Client
 License:        GPL-2.0-only
@@ -51,6 +51,7 @@ BuildRequires:  cmake(KF6ItemViews) >= %{kf6_version}
 BuildRequires:  cmake(KF6JobWidgets) >= %{kf6_version}
 BuildRequires:  cmake(KF6KCMUtils) >= %{kf6_version}
 BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6Mime) >= %{kf6_version}
 BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
 BuildRequires:  cmake(KF6NotifyConfig) >= %{kf6_version}
 BuildRequires:  cmake(KF6Parts) >= %{kf6_version}
@@ -85,7 +86,6 @@ BuildRequires:  cmake(KPim6MessageComposer) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6MessageCore) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6MessageList) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6MessageViewer) >= %{kpim6_version}
-BuildRequires:  cmake(KPim6Mime) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6PimCommonAkonadi) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6TemplateParser) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6TextEdit) >= %{kpim6_version}
@@ -183,6 +183,7 @@ KTNEF is a viewer for email attachments in the TNEF format.
 %{_kf6_libdir}/libmailfilteragentprivate.so.*
 %{_kf6_notificationsdir}/akonadi_*_agent.notifyrc
 %{_kf6_notificationsdir}/kmail2.notifyrc
+%{_kf6_notificationsdir}/kontact.notifyrc
 %dir %{_kf6_plugindir}/pim6
 %dir %{_kf6_plugindir}/pim6/akonadi/
 %{_kf6_plugindir}/pim6/akonadi/config/
