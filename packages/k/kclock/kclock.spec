@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
 %define plasma6_version 5.27.80
 
 %bcond_without  released
 Name:           kclock
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        Clock application for Plasma
 License:        GPL-2.0-or-later
@@ -59,10 +59,10 @@ BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
 BuildRequires:  cmake(Qt6WaylandClient) >= %{qt6_version}
 BuildRequires:  pkgconfig(wayland-protocols)
-Requires:       kirigami-addons6
 Requires:       kf6-kcoreaddons-imports >= %{kf6_version}
 Requires:       kf6-kirigami-imports >= %{kf6_version}
 Requires:       kf6-ksvg-imports >= %{kf6_version}
+Requires:       kirigami-addons6
 Requires:       qt6-declarative-imports >= %{qt6_version}
 
 %description
