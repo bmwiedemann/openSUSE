@@ -17,14 +17,14 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
-%define kpim6_version 6.7.3
-%define ktextaddons_version 2.0.0
+%define kpim6_version 6.8.0
+%define ktextaddons_version 2.0.2
 
 %bcond_without released
 Name:           messagelib
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        KDE PIM library for e-mail message parsing and display
 License:        GPL-2.0-only AND GPL-3.0-only AND LGPL-2.1-or-later
@@ -51,6 +51,7 @@ BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
 BuildRequires:  cmake(KF6ItemViews) >= %{kf6_version}
 BuildRequires:  cmake(KF6JobWidgets) >= %{kf6_version}
 BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6Mime) >= %{kf6_version}
 BuildRequires:  cmake(KF6NewStuff) >= %{kf6_version}
 BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
 BuildRequires:  cmake(KF6Service) >= %{kf6_version}
@@ -76,7 +77,6 @@ BuildRequires:  cmake(KPim6Libkdepim) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6Libkleo) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6MailTransport) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6Mbox) >= %{kpim6_version}
-BuildRequires:  cmake(KPim6Mime) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6PimCommonAkonadi) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6TextEdit) >= %{kpim6_version}
 BuildRequires:  cmake(QGpgmeQt6)
@@ -99,7 +99,11 @@ display emails.
 Summary:        Library for messages
 License:        LGPL-2.1-or-later
 Requires:       messagelib = %{version}
+Requires:       cmake(KF6ColorScheme) >= %{kf6_version}
+Requires:       cmake(KF6Config) >= %{kf6_version}
 Requires:       cmake(KF6Contacts) >= %{kf6_version}
+Requires:       cmake(KF6CoreAddons) >= %{kf6_version}
+Requires:       cmake(KF6Mime) >= %{kf6_version}
 Requires:       cmake(KF6Service) >= %{kf6_version}
 Requires:       cmake(KF6TextAutoCorrectionWidgets) >= %{ktextaddons_version}
 Requires:       cmake(KPim6Akonadi) >= %{kpim6_version}
@@ -107,13 +111,14 @@ Requires:       cmake(KPim6AkonadiMime) >= %{kpim6_version}
 Requires:       cmake(KPim6IdentityManagementWidgets) >= %{kpim6_version}
 Requires:       cmake(KPim6Libkleo) >= %{kpim6_version}
 Requires:       cmake(KPim6MessageCore) >= %{kpim6_version}
-Requires:       cmake(KPim6Mime) >= %{kpim6_version}
 Requires:       cmake(KPim6MimeTreeParser) >= %{kpim6_version}
 Requires:       cmake(KPim6PimCommon) >= %{kpim6_version}
 Requires:       cmake(KPim6PimCommonAkonadi) >= %{kpim6_version}
 Requires:       cmake(KPim6TemplateParser) >= %{kpim6_version}
 Requires:       cmake(KPim6WebEngineViewer) >= %{kpim6_version}
+Requires:       cmake(Qt6Gui) >= %{qt6_version}
 Requires:       cmake(Qt6WebEngineWidgets) >= %{qt6_version}
+Requires:       cmake(Qt6Widgets) >= %{qt6_version}
 
 %description devel
 This package contains source headers for messagelib.
