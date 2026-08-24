@@ -17,12 +17,12 @@
 
 
 %define rname audiocd-kio
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
 
 %bcond_without released
 Name:           kio_audiocd
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        KDE I/O Slave for Audio CDs
 License:        GPL-2.0-or-later
@@ -85,7 +85,8 @@ This package contains the development files for the audiocd kio slave
 %{_kf6_debugdir}/kio_audiocd.renamecategories
 %{_kf6_libdir}/libaudiocdplugins.so.*
 %{_kf6_plugindir}/kf6/kio/audiocd.so
-%{_kf6_plugindir}/libaudiocd_encoder_*.so
+%dir %{_kf6_plugindir}/audiocd
+%{_kf6_plugindir}/audiocd/libaudiocd_encoder_*.so
 %{_kf6_plugindir}/plasma/kcms/systemsettings_qwidgets/kcm_audiocd.so
 %dir %{_kf6_sharedir}/konqsidebartng
 %dir %{_kf6_sharedir}/konqsidebartng/virtual_folders
