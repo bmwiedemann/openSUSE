@@ -16,15 +16,15 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
 
 %bcond_without released
 Name:           poxml
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        Tools for translating DocBook XML files with Gettext
-License:        GPL-2.0-only AND GFDL-1.2-only
+License:        GFDL-1.2-only AND GPL-2.0-only
 URL:            https://www.kde.org/
 Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -33,8 +33,8 @@ Source2:        applications.keyring
 %endif
 BuildRequires:  antlr
 BuildRequires:  antlr-devel
-BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  gettext-devel
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Xml) >= %{qt6_version}
