@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-uv-dynamic-versioning
-Version:        0.14.0
+Version:        0.14.1
 Release:        0
 Summary:        Dynamic versioning based on VCS tags for uv/hatch project
 License:        MIT

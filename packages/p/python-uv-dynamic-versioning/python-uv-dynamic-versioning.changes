@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Aug 22 13:32:45 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.14.1:
+  * chore: remove monkeypatch
+  * chore: update actions & set permissions
+  * fix: address license deprecations
+  * chore: update actions
+  * chore: update hatchling and others
+  * ci: update actions
+  * fix: don't use matrix
+  * docs: pinning build dependencies
+  * feat: add examples of build-constraint-dependencies
+  * ci: add integration test
+  * chore: set build-constraint-dependencies
+  * Read files as UTF-8 instead of using the locale encoding
+  * chore: update actions
+
+-------------------------------------------------------------------
 Wed Jun 17 02:50:04 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Enable the testsuite.
@@ -7,7 +25,7 @@ Wed Jun 17 02:50:04 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 -------------------------------------------------------------------
 Sun Jun  7 10:08:12 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- update to 0.14.0 
+- update to 0.14.0
  * docs: explain about style
  * fix pattern issue
  * feat: support highest tag option
@@ -15,4 +33,4 @@ Sun Jun  7 10:08:12 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 -------------------------------------------------------------------
 Wed Oct  1 17:08:39 UTC 2025 - Jordi Massaguer <jmassaguerpla@suse.com>
 
-- Initial commit 
+- Initial commit

@@ -16,4 +16,28 @@
 - Add missing BuildRequires on update-alternatives.</comment>
     <requestid>1359874</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>efdbbd3ad5b96455c82f5744708dd2d3</srcmd5>
+    <version>0.14.1</version>
+    <time>1787565700</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.14.1:
+  * chore: remove monkeypatch
+  * chore: update actions &amp; set permissions
+  * fix: address license deprecations
+  * chore: update actions
+  * chore: update hatchling and others
+  * ci: update actions
+  * fix: don't use matrix
+  * docs: pinning build dependencies
+  * feat: add examples of build-constraint-dependencies
+  * ci: add integration test
+  * chore: set build-constraint-dependencies
+  * Read files as UTF-8 instead of using the locale encoding
+  * chore: update actions
+
+- update to 0.14.0
+- Initial commit</comment>
+    <requestid>1373063</requestid>
+  </revision>
 </revisionlist>
