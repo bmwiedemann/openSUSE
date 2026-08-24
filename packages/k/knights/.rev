@@ -743,4 +743,12 @@
     <comment>KDE release gear 26.04.3 (forwarded request 1362728 from krop)</comment>
     <requestid>1363290</requestid>
   </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>b96fb83e6e6adeef52765b8b2ce47f04</srcmd5>
+    <version>26.08.0</version>
+    <time>1787566052</time>
+    <user>anag_factory</user>
+    <comment>KDE release gear 26.08.0 (forwarded request 1371427 from krop)</comment>
+    <requestid>1372438</requestid>
+  </revision>
 </revisionlist>
