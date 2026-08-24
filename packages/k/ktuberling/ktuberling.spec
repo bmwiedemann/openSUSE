@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
 
 %bcond_without released
 Name:           ktuberling
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        Potato drawing editor
 License:        GPL-2.0-or-later
@@ -33,7 +33,7 @@ Source2:        applications.keyring
 %endif
 BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
-BuildRequires:  cmake(KDEGames6) 
+BuildRequires:  cmake(KDEGames6)
 BuildRequires:  cmake(KF6Completion) >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6ConfigWidgets) >= %{kf6_version}
