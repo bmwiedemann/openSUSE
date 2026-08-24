@@ -20,7 +20,7 @@
 %define toruser %{name}
 %define torgroup %{name}
 Name:           tor
-Version:        0.4.9.9
+Version:        0.4.9.11
 Release:        0
 Summary:        Anonymizing overlay network for TCP (The onion router)
 License:        BSD-3-Clause

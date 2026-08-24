@@ -1298,4 +1298,27 @@ Update to 0.4.9.8
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1367614</requestid>
   </revision>
+  <revision rev="136" vrev="1">
+    <srcmd5>963a790c3bb2c233d6f5c9c4f89f885c</srcmd5>
+    <version>0.4.9.11</version>
+    <time>1787566274</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.4.9.11
+  * Major bugfixes
+    + onion services: Prevent a race condition (boo#1275918, CVE-2026-77638)
+    + client: no longer assert and exit if an onion service encodes an
+      all-zero public key for one of its introduction points
+    + directory authorities: Stop allowing 0 as a port in exit policy lines
+    + security, conflux: Fix a use-after-free (and potential double free)
+      (boo#1275919, CVE-2026-77587, TROVE-2026-026)
+- Update to 0.4.9.10
+  * Major bugfixes
+    + conflux, security: Reject a CONFLUX_LINK cell that arrives on a circuit
+      which already has attached streams. (boo#1275920, CVE-2026-77584, TROVE-2026-025)
+    + client: Resume warning about unsafe socks protocols when SafeSocks
+      is not set. Also resume warning every time when TestSocks is set.
+    + Make clients more consistently expire entry guards 48 to 60 days
+      after they are first used.</comment>
+    <requestid>1373271</requestid>
+  </revision>
 </revisionlist>

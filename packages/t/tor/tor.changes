@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Aug 23 11:05:02 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.de>
+
+- Update to 0.4.9.11
+  * Major bugfixes
+    + onion services: Prevent a race condition (boo#1275918, CVE-2026-77638)
+    + client: no longer assert and exit if an onion service encodes an
+      all-zero public key for one of its introduction points
+    + directory authorities: Stop allowing 0 as a port in exit policy lines
+    + security, conflux: Fix a use-after-free (and potential double free)
+      (boo#1275919, CVE-2026-77587, TROVE-2026-026)
+
+- Update to 0.4.9.10
+  * Major bugfixes
+    + conflux, security: Reject a CONFLUX_LINK cell that arrives on a circuit
+      which already has attached streams. (boo#1275920, CVE-2026-77584, TROVE-2026-025)
+    + client: Resume warning about unsafe socks protocols when SafeSocks
+      is not set. Also resume warning every time when TestSocks is set.
+    + Make clients more consistently expire entry guards 48 to 60 days
+      after they are first used.
+
+-------------------------------------------------------------------
 Thu Jul 16 21:43:44 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.de>
 
 - Create the tor user and group via sysusers.d (new source:
