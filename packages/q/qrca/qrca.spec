@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
 
 %bcond_without released
 Name:           qrca
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        QR code scanner for Plasma
 License:        GPL-3.0-or-later
@@ -95,4 +95,3 @@ sed -i '/env xdg-open/d' %{buildroot}%{_kf6_applicationsdir}/org.kde.qrca*.deskt
 %files lang -f %{name}.lang
 
 %changelog
-
