@@ -106,6 +106,8 @@ BuildRequires:  texlive-ec
 Patch0:         sbcl-1.1.2-install.patch
 # PATCH-FIX-UPSTREAM Remove obsolete qemu workarounds
 Patch1:         remove-qemu-workarounds.patch
+# PATCH-FIX-UPSTREAM Use SOURCE_DATE_EPOCH for the manual generation date
+Patch2:         sb-manual-source-date-epoch.patch
 ExcludeArch:    s390x
 Requires:       sbcl-bin
 
@@ -139,6 +141,8 @@ sed -i -e "s|\"%version\"|\"%version-%release-%_vendor\"|" version.lisp-expr
 
 %build
 export CFLAGS="%optflags -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64"
+# make it run on x86_64-v1 (boo#1100677)
+export SBCL_CONTRIB_BLOCKLIST=sb-simd
 %if %{with bootstrap}
 %{?sbcl_arch:export SBCL_ARCH=%{sbcl_arch}}
 %if 0%{?with_clisp}

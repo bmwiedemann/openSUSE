@@ -1,0 +1,47 @@
+From f72396a3c119b10fe6d1285e62919ed89fbc2a98 Mon Sep 17 00:00:00 2001
+From: "Bernhard M. Wiedemann" <claudeaibmw@lsmod.de>
+Date: Fri, 7 Aug 2026 20:55:59 +0200
+Subject: [PATCH] sb-manual: honour SOURCE_DATE_EPOCH in the generation date
+
+The SBCL version and generation date are baked into the @sbcl-manual
+docstring and into UPDATE-MONTH in variables.texinfo, which ends up on
+the title page of the PDF manual. Taking them from the wall clock makes
+sb-manual.fasl and sbcl.pdf differ between two builds of the same
+source, which breaks reproducible builds.
+
+Use SOURCE_DATE_EPOCH when it is set, in the same way that dumping
+debug-source information already does, and decode in UTC so the result
+does not depend on the builder timezone either.
+---
+ contrib/sb-manual/doc/sbcl.lisp | 13 ++++++++++++-
+ 1 file changed, 12 insertions(+), 1 deletion(-)
+
+diff --git a/contrib/sb-manual/doc/sbcl.lisp b/contrib/sb-manual/doc/sbcl.lisp
+index 40ad88c97..1f3c0ebc6 100644
+--- a/contrib/sb-manual/doc/sbcl.lisp
++++ b/contrib/sb-manual/doc/sbcl.lisp
+@@ -1,9 +1,20 @@
+ (in-package :sb-manual)
+ 
+ (eval-when (:compile-toplevel :load-toplevel :execute)
++  (defun documentation-generation-time ()
++    (let ((source-date-epoch (sb-ext:posix-getenv "SOURCE_DATE_EPOCH")))
++      (or (when source-date-epoch
++            (multiple-value-bind (val end)
++                (parse-integer source-date-epoch :junk-allowed t)
++              (when (and val (= end (length source-date-epoch)))
++                (+ val (encode-universal-time 0 0 0 1 1 1970 0)))))
++          (get-universal-time))))
++
+   (defun documentation-generation-date-string (&key long)
++    ;; Decoded in UTC, so that the rendered date does not depend on the
++    ;; time zone of the machine the manual was generated on.
+     (multiple-value-bind (second minute hour day month year)
+-        (decode-universal-time (get-universal-time))
++        (decode-universal-time (documentation-generation-time) 0)
+       (if long
+           (format nil "~D-~2,'0D-~2,'0D ~2,'0D:~2,'0D:~2,'0D"
+                   year month day hour minute second)
+-- 
+2.54.0
+
