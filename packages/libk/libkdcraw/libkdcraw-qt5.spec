@@ -1,5 +1,5 @@
 #
-# spec file for package libkdcraw
+# spec file for package libkdcraw-qt5
 #
 # Copyright (c) 2026 SUSE LLC and contributors
 #
@@ -26,7 +26,7 @@ Name:           libkdcraw-qt5
 Version:        25.12.3
 Release:        0
 Summary:        Shared library interface around dcraw
-License:        LGPL-2.0-or-later AND GPL-2.0-or-later AND GPL-3.0-or-later
+License:        GPL-2.0-or-later AND LGPL-2.0-or-later AND GPL-3.0-or-later
 URL:            https://www.kde.org
 Source0:        %{rname}-%{version}.tar.xz
 %if %{with released}
@@ -35,9 +35,9 @@ Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(libraw) >= 0.18.0
 BuildRequires:  cmake(Qt5Core) >= %{qt5_version}
 BuildRequires:  cmake(Qt5Gui) >= %{qt5_version}
+BuildRequires:  pkgconfig(libraw) >= 0.18.0
 Provides:       libkdcraw = %{version}
 Obsoletes:      libkdcraw < %{version}
 Provides:       libkdcraw-kf5 = %{version}

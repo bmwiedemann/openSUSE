@@ -16,17 +16,17 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
 
 %define rname  libkdcraw
 
 %bcond_without released
 Name:           libkdcraw
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        Shared library interface around dcraw
-License:        LGPL-2.0-or-later AND GPL-2.0-or-later AND GPL-3.0-or-later
+License:        GPL-2.0-or-later AND LGPL-2.0-or-later AND GPL-3.0-or-later
 URL:            https://www.kde.org
 Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz
 %if %{with released}
@@ -35,9 +35,9 @@ Source2:        applications.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(libraw) >= 0.18.0
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
+BuildRequires:  pkgconfig(libraw) >= 0.18.0
 
 %description
 Libkdcraw is a C++ interface around dcraw binary program used to decode
