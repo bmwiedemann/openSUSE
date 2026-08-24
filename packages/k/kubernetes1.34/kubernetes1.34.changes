@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Aug 24 04:06:32 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.34.11:
+  * Update golang.org/x deps
+  * Bump to go 1.26.5
+  * fix the gomock errors
+
+- Update .spec file to bump go version build requirements:
+  * `BuildRequires:  go >= 1.26.5`
+    `BuildRequires:  golang(API) = 1.26`
+  * ref: https://github.com/kubernetes/kubernetes/blob/v1.34.11/.go-version
+
+-------------------------------------------------------------------
 Mon Jul 27 06:21:03 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - CVE-2020-8561: kubernetes: Webhook redirect in kube-apiserver, bsc#1190099
