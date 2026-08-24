@@ -16,13 +16,12 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
-%define kpim6_version 6.7.3
 
 %bcond_without released
 Name:           kmbox
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        KDE PIM Libraries: Mailbox functionality
 License:        LGPL-2.1-or-later
@@ -33,7 +32,8 @@ Source1:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source2:        applications.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
-BuildRequires:  cmake(KPim6Mime) >= %{kpim6_version}
+BuildRequires:  cmake(KF6Mime) >= %{kf6_version}
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 Conflicts:      libKF6MBox5 < %{version}
 
 %description
@@ -51,7 +51,7 @@ This package provides the mailbox functionality for KDE PIM applications
 %package devel
 Summary:        KDE PIM Libraries: Build Environment
 Requires:       libKPim6Mbox6 = %{version}
-Requires:       cmake(KPim6Mime) >= %{kpim6_version}
+Requires:       cmake(KF6Mime) >= %{kf6_version}
 
 %description devel
 This package contains necessary include files and libraries needed
