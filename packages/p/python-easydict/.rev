@@ -1,0 +1,11 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c4c0c8bc6539085dd86e57529983982c</srcmd5>
+    <version>1.13</version>
+    <time>1787579011</time>
+    <user>anag_factory</user>
+    <comment>New package python-easydict 1.13. Devel: science:machinelearning. Please keep pluskalm as package maintainer. SGLang CPU cone leaf. INTERDEPENDENT with python-blobfile, python-gguf, python-torchao, python-timm, python-datasets, python-sglang.
+Changes: Initial package of python-easydict 1.13: access dict values as attributes (works recursively)</comment>
+    <requestid>1372972</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+Fri Aug 21 18:34:37 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package of python-easydict 1.13: access dict values as
+  attributes (works recursively)
+

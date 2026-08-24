@@ -1,0 +1,7 @@
+<package name="python-easydict" project="openSUSE:Factory">
+  <title>Access dict values as attributes (works recursively)</title>
+  <description>EasyDict allows accessing dict values as attributes (works
+recursively). It provides Javascript-like properties dot notation
+for Python dicts.</description>
+  <url>https://github.com/makinacorpus/easydict</url>
+</package>
