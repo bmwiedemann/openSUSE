@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
 
 %bcond_without released
 Name:           kpublictransport
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        QML imports for querying public transport data
 License:        LGPL-2.0-or-later
@@ -33,12 +33,12 @@ Source2:        applications.keyring
 %endif
 BuildRequires:  bison
 BuildRequires:  doxygen
-BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  fdupes
 BuildRequires:  flex
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(KF6KirigamiAddons)
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6KirigamiAddons)
 BuildRequires:  cmake(KF6NetworkManagerQt) >= %{kf6_version}
 BuildRequires:  cmake(Qt6Location) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
@@ -73,8 +73,8 @@ Requires:       libKPublicTransport1 = %{version}
 
 %description -n libKPublicTransportOnboard1
 A library for access realtime public transport data and for performing public
-transport journey queries. This package contains a library to determine 
-the presence onboard of a train using WiFi SSIDs and provide journey 
+transport journey queries. This package contains a library to determine
+the presence onboard of a train using WiFi SSIDs and provide journey
 details.
 
 %package devel
@@ -131,6 +131,8 @@ ransport journey queries.Development files.
 %{_kf6_cmakedir}/KPublicTransport/
 %{_kf6_libdir}/libKPublicTransport.so
 %{_kf6_libdir}/libKPublicTransportOnboard.so
+%{_qt6_metatypesdir}/qt6kpublictransport_metatypes.json
+%{_qt6_metatypesdir}/qt6kpublictransportonboard_metatypes.json
 
 %files lang -f %{name}.lang
 

@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Aug 16 07:27:37 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.08.0/
+- No code change since 26.07.90
+
+-------------------------------------------------------------------
+Sat Aug  1 11:39:18 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.07.90
+  * New feature release
+- Changes since 26.07.80:
+  * Fix displaying text on light line colors with light color schemes
+  * Work around unreasonably long display names for Amarillo ride shares
+  * Add support for motis booking urls
+  * Map GTFS route type 1551 to Line::RideShare
+
+-------------------------------------------------------------------
+Sat Jul 18 11:12:00 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.07.80
+  * New feature release
+- Too many changes since 26.04.3, only listing bugfixes:
+  * Improve OTP parsing heuristic for choosing between trip and route names (kde#519906)
+
+-------------------------------------------------------------------
 Tue Jun 30 18:19:54 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.04.3
