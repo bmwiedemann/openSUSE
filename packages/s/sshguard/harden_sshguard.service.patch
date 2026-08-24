@@ -1,8 +1,8 @@
-Index: sshguard-2.4.3/examples/sshguard.service
+Index: sshguard-2.5.1/examples/sshguard.service
 ===================================================================
---- sshguard-2.4.3.orig/examples/sshguard.service
-+++ sshguard-2.4.3/examples/sshguard.service
-@@ -9,6 +9,19 @@ After=libvirtd.service
+--- sshguard-2.5.1.orig/examples/sshguard.service
++++ sshguard-2.5.1/examples/sshguard.service
+@@ -8,6 +8,19 @@ After=libvirtd.service
  After=firewalld.service
  
  [Service]

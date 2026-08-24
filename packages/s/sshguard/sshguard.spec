@@ -1,7 +1,7 @@
 #
 # spec file for package sshguard
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 BuildRequires:  pkgconfig(systemd)
 %{?systemd_requires}
 Name:           sshguard
-Version:        2.4.3
+Version:        2.5.1
 Release:        0
 Summary:        SSH brute force attack protector
 License:        ISC
@@ -38,8 +38,6 @@ Source4:        sshguard.whitelist
 # PATCH-FIX-UPSTREAM sshguard-gcc5.patch
 Patch0:         sshguard-gcc5.patch
 Patch1:         harden_sshguard.service.patch
-# build with gcc15 (https://bitbucket.org/sshguard/sshguard/issues/189/fail-with-gcc15)
-Patch2:         sshguard-gcc15.patch
 Requires:       openssh
 BuildRequires:  bison
 Requires(pre):  %fillup_prereq
@@ -51,6 +49,8 @@ attacker's address with a firewall rule.
 
 %prep
 %autosetup -p1
+# Clean up upstream backup files from release tarball
+rm -f doc/.*.un~
 
 %build
 %configure \

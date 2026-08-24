@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Jun 28 19:26:19 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.5.1:
+  * Fix a denial of service issue in the quoted string parser
+  * Fix build on systems without setresgid() or setresuid()
+  * Add attack signatures for Proxmox VE
+  * Update signatures for: - Cyrus - Exim - OpenSSH - Postfix
+  * Add option to write Prometheus-compatible metrics
+  * Add option to change sandboxable-processes to an unprivileged
+    user
+  * Any HTTP 401 response is now recognized as an attack
+  * Code improvements in in log banner and web (CLF) parsers. If
+    there are regressions, please file a bug report with example
+    attacks so that they can be added to our tests.
+  * Fix configure issues when the shell is not bash
+  * Fix false positives in web (CLF) log detection with "mail" in
+    the request
+- Remove obsolete sshguard-gcc15.patch which is fixed upstream.
+
+-------------------------------------------------------------------
 Fri Feb 28 15:29:45 UTC 2025 - pgajdos@suse.com
 
 - added patches
@@ -93,7 +113,7 @@ Tue Jun 11 09:27:06 UTC 2019 - Joop Boonen <joop.boonen@opensuse.org>
 Wed Feb  6 11:39:18 UTC 2019 - joop.boonen@opensuse.org
 
 - Removed not needed files and service files
-  as sshguard can now parse journal files 
+  as sshguard can now parse journal files
 - /etc/sysconfig/sshguard is not used any more
   as sshguard uses it's own config file
 
@@ -169,7 +189,7 @@ Thu Jan 24 08:19:29 UTC 2019 - liedke@rz.uni-mannheim.de
   * Fix initial block time
   * Update Dovecot pattern for macOS
   * Use standard score for Sendmail auth attack
- 
+
 -------------------------------------------------------------------
 Thu Nov  8 18:28:49 UTC 2018 - joop.boonen@opensuse.org
 
@@ -178,7 +198,7 @@ Thu Nov  8 18:28:49 UTC 2018 - joop.boonen@opensuse.org
 -------------------------------------------------------------------
 Thu Nov 23 13:44:30 UTC 2017 - rbrown@suse.com
 
-- Replace references to /var/adm/fillup-templates with new 
+- Replace references to /var/adm/fillup-templates with new
   %_fillupdir macro (boo#1069468)
 
 -------------------------------------------------------------------
@@ -219,16 +239,16 @@ Thu Dec 29 12:27:02 UTC 2016 - joop.boonen@opensuse.org
     - Match "Connection reset" message for SSH
     - Resurrect PID file option by popular demand
     - Adjust default abuse threshold
-    
+
 -------------------------------------------------------------------
 Fri Feb 19 13:18:55 UTC 2016 - joop.boonen@opensuse.org
 
-- Added a corrected attack treshold value (40 default) 
+- Added a corrected attack treshold value (40 default)
 
 -------------------------------------------------------------------
 Thu Feb 18 10:07:08 UTC 2016 - eshmarnev@suse.com
 
-- Build version 1.6.3 
+- Build version 1.6.3
     - Disable blacklisting by default
     - Implement logging as wrappers around syslog(2)
     - Improve log and error messages
@@ -245,19 +265,19 @@ Thu Feb 18 10:07:08 UTC 2016 - eshmarnev@suse.com
 -------------------------------------------------------------------
 Mon Jan 11 15:14:38 UTC 2016 - joop.boonen@opensuse.org
 
-- Added ip6tables support handles via init and service files 
+- Added ip6tables support handles via init and service files
 
 -------------------------------------------------------------------
 Fri Oct 16 12:15:24 UTC 2015 - joop.boonen@opensuse.org
 
-- Corrected a iptables error, that prevented sshguard 
+- Corrected a iptables error, that prevented sshguard
   from functioning correctly
 
 -------------------------------------------------------------------
 Thu Oct 15 13:51:15 UTC 2015 - joop.boonen@opensuse.org
 
 - Moved blacklist.db to /var/lib/sshguard/db/blacklist.db analog
-  most SUSE packages 
+  most SUSE packages
 
 -------------------------------------------------------------------
 Thu Oct 15 07:52:48 UTC 2015 - joop.boonen@opensuse.org
@@ -271,14 +291,14 @@ Wed Oct 14 11:56:49 UTC 2015 - joop.boonen@opensuse.org
 - Build version 1.6.2
   + Make '-w' option backwards-compatible for iptables (James Harris)
   + Remove support for ip6fw and 'ipfw-range' option
-  + Rewrite ipfw backend using command framework 
-- The white and black list now initially reside in files 
+  + Rewrite ipfw backend using command framework
+- The white and black list now initially reside in files
   /etc/sshguard/whitelist|blacklist
 
 -------------------------------------------------------------------
 Mon Sep 28 13:48:45 UTC 2015 - joop.boonen@opensuse.org
 
-- Build version 1.6.1 
+- Build version 1.6.1
 - Added sshguard-gcc5.patch so it also builds via gcc5
 - Created a sshguard.service file so it'll run on systemd
   systems
@@ -294,14 +314,14 @@ Sat Feb 19 11:42:03 UTC 2011 - lars@linux-schulserver.de
 
 - update to 1.5:
   + logsucker: sshguard polls multiple log files at once
-  + recognize syslog's "last message repeated N times" contextually 
+  + recognize syslog's "last message repeated N times" contextually
     and per-source
-  + attackers now gauged with attack *dangerousness* instead of 
+  + attackers now gauged with attack *dangerousness* instead of
     count (adjust your -a !)
   + improve IPv6 support
   + add detection for: Exim, vsftpd, Sendmail, Cucipop
   + improve logging granularity and descriptiveness
-  + add -i command line option for saving PID file as an aid for 
+  + add -i command line option for saving PID file as an aid for
     startup scripts
   + update some attack signatures
 - cleanup specfile via spec-cleaner
