@@ -1,0 +1,65 @@
+Detect the PyTorch flavour properly, and stay quiet when there is none.
+
+detect_vendor() decides which native allocator to load by looking for the
+substrings "+cu" and "+rocm" in torch.__version__. Those only appear when
+PyTorch carries a local version label, which is how the upstream wheels are
+built but not how a distribution builds it: openSUSE's PyTorch reports a plain
+"2.12.0a0". The very version.py that detect_vendor() executes also defines the
+authoritative "cuda" and "hip" attributes, so read those first and keep the
+substring test as a fallback. This half matches the pending upstream change in
+Comfy-Org/comfy-aimdo#84.
+
+When neither is set, PyTorch genuinely has no CUDA and no ROCm support, and
+there is no allocator that could be loaded. init() previously logged
+
+    Could not autodetect AIMDO implementation, assuming Nvidia
+
+at warning level and then went on to guess "cuda", which only picked which of
+the two .so names to try before failing to open it a moment later. On a
+distribution build of PyTorch that warning is printed on every single start,
+for every user, whatever hardware they have, and it invites the reading that
+the wrong GPU vendor was selected. Return False instead, with an informational
+line that states what was actually detected. init() already returns False on
+this path once the CDLL fails, and its callers check the return value, so
+nothing downstream changes.
+
+--- comfy-aimdo-0.4.14.orig/comfy_aimdo/control.py
++++ comfy-aimdo-0.4.14/comfy_aimdo/control.py
+@@ -28,6 +28,8 @@
+ 
+ def detect_vendor():
+     version = ""
++    cuda = None
++    hip = None
+     try:
+         torch_spec = importlib.util.find_spec("torch")
+         for folder in torch_spec.submodule_search_locations:
+@@ -37,10 +39,16 @@
+                 module = importlib.util.module_from_spec(spec)
+                 spec.loader.exec_module(module)
+                 version = module.__version__
++                cuda = getattr(module, "cuda", None)
++                hip = getattr(module, "hip", None)
+     except Exception as e:
+         logging.warning("Failed to detect Torch version")
+         pass
+ 
++    if hip:
++        return "rocm"
++    if cuda:
++        return "cuda"
+     if '+cu' in version:
+         return "cuda"
+     if '+rocm' in version:
+@@ -61,8 +69,9 @@
+         implementation = detect_vendor()
+ 
+     if implementation is None:
+-        logging.warning("Could not autodetect AIMDO implementation, assuming Nvidia")
+-        implementation = "cuda"
++        logging.info("comfy-aimdo: this PyTorch reports neither CUDA nor ROCm, "
++                     "DynamicVRAM stays disabled")
++        return False
+ 
+     impl = {
+         "cuda": "aimdo",

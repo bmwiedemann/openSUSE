@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Aug 23 17:31:30 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Stop warning "Could not autodetect AIMDO implementation, assuming
+  Nvidia" on every start: add
+  comfy-aimdo-detect-vendor-without-local-version.patch
+  * the vendor check looked for "+cu" or "+rocm" in the PyTorch
+    version string, which only upstream's own wheels carry, so a
+    distribution PyTorch never matched and the code then guessed
+    Nvidia; it now reads the cuda and hip attributes that the same
+    version module already defines
+  * when PyTorch has neither, there is no allocator to load, so
+    init() reports failure with an informational message instead of
+    warning about a vendor it never really selected
+  * %check now exercises that path
+
+-------------------------------------------------------------------
+Sun Aug 23 05:25:11 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.4.14:
+  * README now documents AMD GPU (ROCm 7+) support alongside Nvidia
+    (CUDA 12.8+); the HIP backend itself already shipped in 0.4.13
+    and is unchanged in this release
+  * Windows shared-memory detection reserves a larger VRAM headroom
+    (768 MB) when the free-memory figure comes from NVML rather than
+    from cuMemGetInfo()
+  * No changes to the pure-Python fallback shipped by this package
+
+-------------------------------------------------------------------
 Fri Aug 21 08:59:41 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Initial package of python-comfy-aimdo 0.4.13:
