@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Sun Aug 16 07:26:56 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.08.0/
+- Changes since 26.07.90:
+  * Reimplement deleteLater but checking that the socket wasn't updated
+  * Fix copy-pasted return that should be a continue like the rest
+  * Do not create devicelink if we are going to discard it
+  * Fix clipboard plugin trying to share directories
+  * kio: Provide better error message on failure in stat, too
+  * Add modifier keys as special keys
+  * Remote keyboard: Support sending meta
+  * macos: focus app when opened from indicator
+  * Fix drag-and-drop on macos
+  * Unify code paths for transferring empty and non-empty files
+  * Fix: Received files with size 0 also get their timestamps set
+  * Use the specialKey validation across remote input implementations
+
+-------------------------------------------------------------------
+Sat Aug  1 11:38:39 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.07.90
+  * New feature release
+- Changes since 26.07.80:
+  * sms: give up on an attachment that cannot be read
+  * Keep files that arrive whole but not in the announced size (kde#523547)
+  * Protect from creation/modification timestamps being 0 (kde#523078)
+  * sftp: don't spin forever removing Solid device entries from Dolphin
+
+-------------------------------------------------------------------
+Sat Jul 18 11:11:19 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.07.80
+  * New feature release
+- Too many changes since 26.04.3, only listing bugfixes:
+  * pause music plugin: skip our own mpris interface (kde#427028)
+  * Avoid echoing phone notifications back to the phone (kde#520838)
+  * Filter the addresses we advertise via mdns (kde#520453)
+  * dbusproperty: scope signal connection (fixes crash closing settings) (kde#520352)
+  * Call FromIdentityPacketAndCert from the class, not the object (kde#519057)
+  * Fix: add connection timeout to CompositeUploadJob to prevent port leaks (kde#516765)
+  * Fix silent send failure on SMS conversation cache miss (kde#517659)
+  * Fix mousepad delta update by using x11 API (kde#516951)
+  * Tune TCP keepalive to 60s for dead connection detection (kde#476747)
+  * smsapp: Make URLs in chat messages clickable (kde#419100)
+  * smsapp: Display newlines in chat message bubbles (kde#418285)
+  * smsapp: Preserve leading zeros in new conversation addresses (kde#498217)
+  * smsapp: Raise existing window when app is launched again (kde#498219)
+  * smsapp: Remove drop shadow from compose box pane (kde#487369)
+  * smsapp: Fix +New button not opening conversation (kde#463247)
+  * app: Improve accessibility of plugin list delegates (kde#517006)
+
+-------------------------------------------------------------------
 Tue Jun 30 18:19:19 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.04.3

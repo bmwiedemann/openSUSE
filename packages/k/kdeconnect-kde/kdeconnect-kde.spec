@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
 
 %bcond_without released
 Name:           kdeconnect-kde
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        Integration of Android with Linux desktops
 License:        GPL-2.0-or-later
@@ -66,9 +66,9 @@ BuildRequires:  cmake(Qt6QuickControls2) >= %{qt6_version}
 BuildRequires:  cmake(Qt6QuickWidgets) >= %{qt6_version}
 BuildRequires:  cmake(Qt6WaylandClient) >= %{qt6_version}
 BuildRequires:  pkgconfig(dbus-1)
-BuildRequires:  pkgconfig(libfakekey)
-BuildRequires:  pkgconfig(libei-1.0) 
+BuildRequires:  pkgconfig(libei-1.0)
 BuildRequires:  pkgconfig(libevdev)
+BuildRequires:  pkgconfig(libfakekey)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(x11)
@@ -219,6 +219,11 @@ true
 %dir %{_kf6_sharedir}/nautilus-python
 %dir %{_kf6_sharedir}/nautilus-python/extensions/
 %{_kf6_sharedir}/nautilus-python/extensions/kdeconnect-share.py
+%dir %{_kf6_sharedir}/remoteview/
+%{_kf6_sharedir}/remoteview/kdeconnect-network.desktop
+%dir %{_kf6_sharedir}/solid
+%dir %{_kf6_sharedir}/solid/actions
+%{_kf6_sharedir}/solid/actions/solid_kdeconnect.desktop
 %dir %{_kf6_sharedir}/Thunar
 %dir %{_kf6_sharedir}/Thunar/sendto
 %{_kf6_sharedir}/Thunar/sendto/kdeconnect-thunar.desktop
