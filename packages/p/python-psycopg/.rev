@@ -228,4 +228,12 @@
     ~Cursor.executemany() (:ticket:`#1302`).</comment>
     <requestid>1353778</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>55ee9f21a36d7c8653265ca27eb3d3a6</srcmd5>
+    <version>3.3.4</version>
+    <time>1787579103</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1373380</requestid>
+  </revision>
 </revisionlist>

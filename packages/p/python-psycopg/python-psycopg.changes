@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 24 10:14:44 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Ignore flaky test failures in s390x, bsc#1268604
+
+-------------------------------------------------------------------
 Mon May 18 10:30:30 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.3.4:
