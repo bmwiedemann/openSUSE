@@ -131,4 +131,30 @@
   * correct the escaping of periods in the ipv6 format regex</comment>
     <requestid>1307730</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a3e06ce24284b0a3551bf5b97b818b2d</srcmd5>
+    <version>2.22.2</version>
+    <time>1787565688</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.22.2:
+  * Fixed wrong results of anyOf, oneOf, not, if/then/else,
+    contains and propertyNames when `fast_fail` is off
+  * Fixed collecting errors from subschemas behind `$ref` when
+    `fast_fail` is off Fixed escaping property name in boolean
+    `dependencies`
+    validation (prevents schema-controlled code injection) Fixed
+    IPv4 validation (rejecting leading zeros)
+  * Fixed empty items and patternProperties
+  * Fixed protection from deeply nested schemas potentially causing
+    denial of service Fixed comparing values for enum and const
+    validations
+  * Fixed resolving plain-name ref fragments
+  * Fixed not throwing when unknown format is used
+  * Fixed compilation of not, if/then/else, items, additionalItems,
+    propertyNames and schema dependencies when a subschema
+    generates no validation code Added option to get all the errors
+  * Added basic type hints
+  * Added support of duration and uuid formats from draft-2019</comment>
+    <requestid>1372928</requestid>
+  </revision>
 </revisionlist>

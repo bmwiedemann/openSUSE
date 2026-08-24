@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Aug 21 20:05:42 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.22.2:
+  * Fixed wrong results of anyOf, oneOf, not, if/then/else,
+    contains and propertyNames when `fast_fail` is off
+  * Fixed collecting errors from subschemas behind `$ref` when
+    `fast_fail` is off Fixed escaping property name in boolean
+    `dependencies`
+    validation (prevents schema-controlled code injection) Fixed
+    IPv4 validation (rejecting leading zeros)
+  * Fixed empty items and patternProperties
+  * Fixed protection from deeply nested schemas potentially causing
+    denial of service Fixed comparing values for enum and const
+    validations
+  * Fixed resolving plain-name ref fragments
+  * Fixed not throwing when unknown format is used
+  * Fixed compilation of not, if/then/else, items, additionalItems,
+    propertyNames and schema dependencies when a subschema
+    generates no validation code Added option to get all the errors
+  * Added basic type hints
+  * Added support of duration and uuid formats from draft-2019
+
+-------------------------------------------------------------------
 Mon Sep 29 10:38:05 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 -update to 2.21.2:
