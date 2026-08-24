@@ -893,4 +893,13 @@ A    add-f16h-support.patch</comment>
     <comment></comment>
     <requestid>1364517</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>e0933b197d96ac0bc1abb781bced45b6</srcmd5>
+    <version>212</version>
+    <time>1787565715</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 212:
+  * mcelog: Fix cache level message</comment>
+    <requestid>1373116</requestid>
+  </revision>
 </revisionlist>

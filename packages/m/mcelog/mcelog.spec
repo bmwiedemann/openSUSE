@@ -24,7 +24,7 @@
 %bcond_without usr_etc
 %endif
 Name:           mcelog
-Version:        211
+Version:        212
 Release:        0
 Summary:        Log Machine Check Events
 License:        GPL-2.0-only

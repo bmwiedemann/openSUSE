@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Aug 22 16:41:03 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 212:
+  * mcelog: Fix cache level message
+
+-------------------------------------------------------------------
 Wed Jul 08 11:27:47 UTC 2026 - Thomas Renninger <trenn@suse.com>
 
 - Add missing python3-base BR (bsc#1270322).
