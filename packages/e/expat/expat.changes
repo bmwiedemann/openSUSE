@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri Aug 21 21:02:51 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.8.2 (
+      bsc#1267631, CVE-2026-50219,
+      bsc#1268572, CVE-2026-56131,
+      bsc#1268573, CVE-2026-56132,
+      bsc#1275096, CVE-2026-56403, CVE-2026-56404, CVE-2026-56405,
+      CVE-2026-56406, CVE-2026-56407, CVE-2026-56408,
+      CVE-2026-56409, CVE-2026-56410, CVE-2026-56411,
+      CVE-2026-56412):
+  * #1246  CVE-2026-50219 -- Disallow calls to functions
+  * `XML_GetBuffer`, `XML_Parse`, `XML_ParseBuffer`,
+  * `XML_ParserFree`, `XML_ParserReset` to guard e.g.
+  * Expat bindings from memory corruption;
+  * #1267  CVE-2026-56131 -- Protect XML_ResumeParser from being
+    called from a handler, plugging a hole in the fix to CVE-2026-50219
+  * #1272  CVE-2026-56132 -- Fix out-of-bound scaffolding index
+    store in `doProlog`
+  * #1229 #1232  CVE-2026-56403 -- Integer overflow in
+    `storeAtts`
+  * #1249  CVE-2026-56404 -- Integer overflow in `addBinding`
+  * #1251  CVE-2026-56405 -- Integer overflow in `getAttributeId`
+  * #1255  CVE-2026-56406 -- Integer overflow in
+    `XML_ParseBuffer`
+  * #1262  CVE-2026-56407 -- Integer overflow in `textLen`
+    handling
+  * #565  CVE-2026-56408 -- Integer overflow in `copyString`
+  * #1259  CVE-2026-56409 -- xmlwf: Integer overflow in output
+    path join
+  * #1252  CVE-2026-56410 -- xmlwf: Integer overflow in
+    `resolveSystemId`
+  * #1263  CVE-2026-56411 -- xmlwf: Integer overflow in notation
+    list allocation
+  * #1278  CVE-2026-56412 -- Guard XML_TOK_DATA_CHARS handler
+    calls in `doCdataSection`, plugging a hole in the fix to
+    CVE-2026-50219
+
+
+-------------------------------------------------------------------
 Thu May 14 19:13:23 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.8.1
