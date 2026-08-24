@@ -71,4 +71,12 @@ Meson clean up and fixes regression on Leap 15.6.</comment>
   * fix(app): support compat /execarg_default: directives in xdg-terminals.list</comment>
     <requestid>1362505</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b1a10e88fec991efcac8805a381d5e12</srcmd5>
+    <version>0.26.7</version>
+    <time>1787566299</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.26.7</comment>
+    <requestid>1373289</requestid>
+  </revision>
 </revisionlist>
