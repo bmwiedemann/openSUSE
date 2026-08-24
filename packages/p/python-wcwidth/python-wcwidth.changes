@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Aug 22 13:34:24 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.8.2:
+  * bugfix: IndexError when 'n' exceeds length
+
+-------------------------------------------------------------------
 Thu Aug  6 20:30:29 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.8.1:

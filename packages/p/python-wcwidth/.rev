@@ -316,4 +316,13 @@ add explicit Requires for python-importlib_metadata for Python &lt; 3.8</comment
     foot, and Windows Terminal #224.</comment>
     <requestid>1370117</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>e031f16d8b29d4fe2f573892735abe3d</srcmd5>
+    <version>0.8.2</version>
+    <time>1787565702</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.8.2:
+  * bugfix: IndexError when 'n' exceeds length</comment>
+    <requestid>1373065</requestid>
+  </revision>
 </revisionlist>
