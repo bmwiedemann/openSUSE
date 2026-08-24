@@ -2,10 +2,10 @@
  tests/core/test_history_properties.py |    4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
-Index: mistral-vibe-2.23.3/tests/core/test_history_properties.py
+Index: mistral-vibe-2.24.3/tests/core/test_history_properties.py
 ===================================================================
---- mistral-vibe-2.23.3.orig/tests/core/test_history_properties.py	2026-08-03 14:57:51.000000000 +0200
-+++ mistral-vibe-2.23.3/tests/core/test_history_properties.py	2026-08-05 16:38:25.740805859 +0200
+--- mistral-vibe-2.24.3.orig/tests/core/test_history_properties.py	2026-08-20 19:38:11.000000000 +0200
++++ mistral-vibe-2.24.3/tests/core/test_history_properties.py	2026-08-22 13:40:27.668515522 +0200
 @@ -118,7 +118,7 @@
  
  # -- core invariants over random text chains ---------------------------------

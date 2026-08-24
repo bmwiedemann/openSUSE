@@ -16,7 +16,7 @@
 #
 
 Name:           mistral-vibe
-Version:        2.24.1
+Version:        2.24.3
 Release:        0
 Summary:        Minimal CLI coding agent by Mistral
 License:        Apache-2.0
@@ -130,6 +130,7 @@ Requires:       python3-textual-speedups >= 0.2.1
 Requires:       python3-tomli-w >= 1.2.0
 Requires:       python3-tree-sitter >= 0.26.0
 Requires:       python3-tree-sitter-bash >= 0.25.1
+Requires:       tree-sitter-bash
 Requires:       python3-truststore >= 0.10.4
 Requires:       python3-typing-extensions >= 4.15.0
 Requires:       python3-typing-inspection >= 0.4.2
@@ -239,6 +240,7 @@ BuildRequires:  python3-tomli-w >= 1.2.0
 BuildRequires:  python3-tomlkit >= 0.13.0
 BuildRequires:  python3-tree-sitter >= 0.26.0
 BuildRequires:  python3-tree-sitter-bash >= 0.25.1
+BuildRequires:  tree-sitter-bash
 BuildRequires:  python3-truststore >= 0.10.4
 BuildRequires:  python3-typing-extensions >= 4.15.0
 BuildRequires:  python3-typing-inspection >= 0.4.2

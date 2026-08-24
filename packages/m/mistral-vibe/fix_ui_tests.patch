@@ -1,16 +1,16 @@
 ---
  tests/app_server/test_vibe_code.py                |    2 +-
+ tests/cli/test_ui_config_and_model_picker.py      |   12 +++++++++++-
  tests/cli/test_ui_session_incremental_renderer.py |    2 ++
  tests/cli/test_ui_skill_dispatch.py               |    2 ++
  tests/cli/textual_ui/test_app_server_requests.py  |    2 ++
- tests/core/test_worktree.py                       |    7 ++++++-
  tests/test_ui_rewind.py                           |    2 ++
- 6 files changed, 15 insertions(+), 2 deletions(-)
+ 6 files changed, 20 insertions(+), 2 deletions(-)
 
-Index: mistral-vibe-2.24.1/tests/app_server/test_vibe_code.py
+Index: mistral-vibe-2.24.3/tests/app_server/test_vibe_code.py
 ===================================================================
---- mistral-vibe-2.24.1.orig/tests/app_server/test_vibe_code.py	2026-08-11 17:43:49.363141762 +0200
-+++ mistral-vibe-2.24.1/tests/app_server/test_vibe_code.py	2026-08-11 17:44:03.556013548 +0200
+--- mistral-vibe-2.24.3.orig/tests/app_server/test_vibe_code.py	2026-08-22 13:42:42.936887544 +0200
++++ mistral-vibe-2.24.3/tests/app_server/test_vibe_code.py	2026-08-22 13:44:23.769739837 +0200
 @@ -68,7 +68,7 @@
          capture_output=True,
          env=env,
@@ -20,10 +20,46 @@ Index: mistral-vibe-2.24.1/tests/app_server/test_vibe_code.py
      )
  
      assert result.returncode == 0, result.stderr
-Index: mistral-vibe-2.24.1/tests/cli/test_ui_session_incremental_renderer.py
+Index: mistral-vibe-2.24.3/tests/cli/test_ui_config_and_model_picker.py
 ===================================================================
---- mistral-vibe-2.24.1.orig/tests/cli/test_ui_session_incremental_renderer.py	2026-08-11 17:43:49.363141762 +0200
-+++ mistral-vibe-2.24.1/tests/cli/test_ui_session_incremental_renderer.py	2026-08-11 17:44:03.557260298 +0200
+--- mistral-vibe-2.24.3.orig/tests/cli/test_ui_config_and_model_picker.py	2026-08-22 13:44:10.539665525 +0200
++++ mistral-vibe-2.24.3/tests/cli/test_ui_config_and_model_picker.py	2026-08-22 13:44:23.770218219 +0200
+@@ -1,5 +1,6 @@
+ from __future__ import annotations
+ 
++import time
+ from unittest.mock import AsyncMock, patch
+ 
+ import pytest
+@@ -41,6 +42,15 @@
+     return build_test_vibe_config(models=_model_configs(), active_model="", **kwargs)
+ 
+ 
++async def _wait_until_drained(pilot, app, timeout: float = 2.0) -> bool:
++    deadline = time.monotonic() + timeout
++    while time.monotonic() < deadline:
++        if not app._queue.draining:
++            return True
++        await pilot.pause(0.05)
++    return False
++
++
+ # --- /model command ---
+ 
+ 
+@@ -263,7 +273,7 @@
+         # Highlight starts on pinned "alpha" (index 1); move up to Default.
+         await pilot.press("up")
+         await pilot.press("enter")
+-        await pilot.pause(0.2)
++        assert await _wait_until_drained(pilot, app)
+ 
+         assert app.config.active_model_pinned is False
+         assert app._current_bottom_app == BottomApp.Input
+Index: mistral-vibe-2.24.3/tests/cli/test_ui_session_incremental_renderer.py
+===================================================================
+--- mistral-vibe-2.24.3.orig/tests/cli/test_ui_session_incremental_renderer.py	2026-08-22 13:42:42.936887544 +0200
++++ mistral-vibe-2.24.3/tests/cli/test_ui_session_incremental_renderer.py	2026-08-22 13:44:23.770518335 +0200
 @@ -5,6 +5,8 @@
  import time
  
@@ -33,10 +69,10 @@ Index: mistral-vibe-2.24.1/tests/cli/test_ui_session_incremental_renderer.py
  from textual.widgets import Button
  
  from tests.conftest import build_test_agent_loop
-Index: mistral-vibe-2.24.1/tests/cli/test_ui_skill_dispatch.py
+Index: mistral-vibe-2.24.3/tests/cli/test_ui_skill_dispatch.py
 ===================================================================
---- mistral-vibe-2.24.1.orig/tests/cli/test_ui_skill_dispatch.py	2026-08-11 17:43:49.363141762 +0200
-+++ mistral-vibe-2.24.1/tests/cli/test_ui_skill_dispatch.py	2026-08-11 17:44:03.557470925 +0200
+--- mistral-vibe-2.24.3.orig/tests/cli/test_ui_skill_dispatch.py	2026-08-22 13:42:42.936887544 +0200
++++ mistral-vibe-2.24.3/tests/cli/test_ui_skill_dispatch.py	2026-08-22 13:44:23.770763718 +0200
 @@ -7,6 +7,8 @@
  
  import pytest
@@ -46,10 +82,10 @@ Index: mistral-vibe-2.24.1/tests/cli/test_ui_skill_dispatch.py
  from tests.conftest import build_test_vibe_app, build_test_vibe_config
  from tests.skills.conftest import create_skill
  from vibe.app_server.models import CompletedEffectState, PublicEffectEntry
-Index: mistral-vibe-2.24.1/tests/cli/textual_ui/test_app_server_requests.py
+Index: mistral-vibe-2.24.3/tests/cli/textual_ui/test_app_server_requests.py
 ===================================================================
---- mistral-vibe-2.24.1.orig/tests/cli/textual_ui/test_app_server_requests.py	2026-08-11 17:43:49.363141762 +0200
-+++ mistral-vibe-2.24.1/tests/cli/textual_ui/test_app_server_requests.py	2026-08-11 17:44:03.556388917 +0200
+--- mistral-vibe-2.24.3.orig/tests/cli/textual_ui/test_app_server_requests.py	2026-08-22 13:42:42.936887544 +0200
++++ mistral-vibe-2.24.3/tests/cli/textual_ui/test_app_server_requests.py	2026-08-22 13:44:23.771035260 +0200
 @@ -8,6 +8,8 @@
  
  import pytest
@@ -59,28 +95,10 @@ Index: mistral-vibe-2.24.1/tests/cli/textual_ui/test_app_server_requests.py
  from tests.conftest import (
      build_test_agent_loop,
      build_test_vibe_app,
-Index: mistral-vibe-2.24.1/tests/core/test_worktree.py
+Index: mistral-vibe-2.24.3/tests/test_ui_rewind.py
 ===================================================================
---- mistral-vibe-2.24.1.orig/tests/core/test_worktree.py	2026-08-11 17:43:49.363141762 +0200
-+++ mistral-vibe-2.24.1/tests/core/test_worktree.py	2026-08-11 17:44:03.556790523 +0200
-@@ -21,7 +21,12 @@
- 
- 
- def _init_repo(root: Path, *, separate_git_dir: Path | None = None) -> Repo:
--    repo = Repo.init(root, initial_branch="main", separate_git_dir=separate_git_dir)
-+    repo = Repo.init(
-+        root,
-+        initial_branch="main",
-+        separate_git_dir=separate_git_dir,
-+        allow_unsafe_options=True,
-+    )
-     repo.config_writer().set_value("user", "name", "Tester").release()
-     repo.config_writer().set_value("user", "email", "t@example.com").release()
-     (root / "file.txt").write_text("hello\n")
-Index: mistral-vibe-2.24.1/tests/test_ui_rewind.py
-===================================================================
---- mistral-vibe-2.24.1.orig/tests/test_ui_rewind.py	2026-08-11 17:43:49.363141762 +0200
-+++ mistral-vibe-2.24.1/tests/test_ui_rewind.py	2026-08-11 17:44:03.557055772 +0200
+--- mistral-vibe-2.24.3.orig/tests/test_ui_rewind.py	2026-08-22 13:42:42.936887544 +0200
++++ mistral-vibe-2.24.3/tests/test_ui_rewind.py	2026-08-22 13:44:23.771389237 +0200
 @@ -6,6 +6,8 @@
  
  import pytest
