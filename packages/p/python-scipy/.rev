@@ -1505,4 +1505,13 @@ bsc#1130564: Apply update from the openSUSE package
     <comment></comment>
     <requestid>1368189</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>c669c139d14b86e7717d0ffe5272e8d8</srcmd5>
+    <version>1.18.1</version>
+    <time>1787565710</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.18.1:
+  * python 3.15 support</comment>
+    <requestid>1373094</requestid>
+  </revision>
 </revisionlist>
