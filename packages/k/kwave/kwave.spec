@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
 
 %bcond_without released
 Name:           kwave
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        Sound editor by KDE
 License:        GPL-2.0-or-later
@@ -33,10 +33,10 @@ Source2:        applications.keyring
 %endif
 BuildRequires:  alsa-devel
 BuildRequires:  audiofile-devel
-BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  fftw3-devel
 BuildRequires:  flac-devel
 BuildRequires:  id3lib-devel
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  libogg-devel
 BuildRequires:  libopus-devel
 BuildRequires:  libpulse-devel
@@ -55,8 +55,8 @@ BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
 BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
 BuildRequires:  cmake(KF6TextWidgets) >= %{kf6_version}
-BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
 BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
 BuildRequires:  cmake(Qt6Concurrent) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Multimedia) >= %{qt6_version}
