@@ -930,6 +930,7 @@
     <package name="kf6-kitemmodels-imports" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kf6-kitemviews" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kf6-kjobwidgets" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="kf6-kmime" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kf6-knewstuff" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kf6-knewstuff-imports" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kf6-knotifications" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -981,7 +982,7 @@
     <package name="kgamma6-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kgeography" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="kgeography-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
-    <package name="kglobalaccel5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
+    <package name="kglobalaccel5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_office -->
     <package name="kglobalacceld6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="khangman" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="khangman-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
@@ -1032,7 +1033,6 @@
     <package name="kmbox" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kmenuedit6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kmenuedit6-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="kmime" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kmines" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kmines-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kmod" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
@@ -1082,8 +1082,6 @@
     <package name="ksystemstats6-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="ktextaddons" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="ktextaddons-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="ktexteditor" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
-    <package name="ktexteditor-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="ktnef" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="ktnef-debug-categories" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="ktouch" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
@@ -1163,7 +1161,7 @@
     <package name="libKF5DocTools5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5GlobalAccel5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5GlobalAccel5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libKF5GlobalAccelPrivate5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
+    <package name="libKF5GlobalAccelPrivate5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_office -->
     <package name="libKF5GuiAddons5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5I18n5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5I18n5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1175,16 +1173,12 @@
     <package name="libKF5JobWidgets5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5Notifications5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5Notifications5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libKF5Parts5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
-    <package name="libKF5Parts5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="libKF5Solid5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5Solid5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5SonnetCore5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5SonnetCore5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5SonnetUi5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5Style5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libKF5SyntaxHighlighting5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
-    <package name="libKF5SyntaxHighlighting5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="libKF5TextWidgets5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5TextWidgets5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5Wallet5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1254,6 +1248,8 @@
     <package name="libKF6KCMUtilsCore6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF6KCMUtilsQuick6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF6KIO6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libKF6Mime6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libKF6Mime6-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF6ModemManagerQt6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF6NetworkManagerQt6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF6NewStuffCore6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1360,8 +1356,6 @@
     <package name="libKPim6MailImporterAkonadi6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKPim6MailTransport6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKPim6Mbox6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libKPim6Mime6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libKPim6Mime6-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKPim6MimeTreeParserCore6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKPim6MimeTreeParserCore6-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKPim6MimeTreeParserWidgets6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2192,6 +2186,7 @@
     <package name="libkdegames-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkdepim" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkdepim-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libkdsingleapplication-qt6-1_2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkdsoap-qt6-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkerfuffle26" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkexiv2-qt6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -3850,7 +3845,6 @@
     <package name="switcheroo-control" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="swtpm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="swtpm-selinux" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="syntax-highlighting" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="sysconfig" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="sysconfig-netconfig" supportstatus="unsupported"/> <!-- reason: dvd:wicked -->
     <package name="syslinux" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -4066,8 +4060,8 @@
     <package name="udisks2" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="udisks2-bash-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="udisks2-lang" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
-    <package name="umbrello" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
-    <package name="umbrello-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
+    <package name="umbrello" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="umbrello-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="un-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="unar" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="unbound" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->

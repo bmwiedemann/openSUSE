@@ -295,6 +295,9 @@ unsorted:
   - R-utils 
   - Radicale 
   - RealtimeSync 
+  - Regina-REXX 
+  - Regina-REXX-devel 
+  - Regina-REXX-doc 
   - RemoteBox 
   - RigelEngine 
   - Rivet-data 
@@ -10248,7 +10251,6 @@ unsorted:
   - kf6-kitemmodels-devel 
   - kf6-kitemviews-devel 
   - kf6-kjobwidgets-devel 
-  - kf6-kmime 
   - kf6-kmime-devel 
   - kf6-knewstuff-devel 
   - kf6-knotifications-devel 
@@ -10465,6 +10467,7 @@ unsorted:
   - klp-build 
   - kmailtransport-devel 
   - kmbox-devel 
+  - kmime 
   - kmime-devel 
   - kmix 
   - kmix-lang 
@@ -10646,7 +10649,9 @@ unsorted:
   - kteatime 
   - kteatime-lang 
   - ktextaddons-devel 
+  - ktexteditor 
   - ktexteditor-devel 
+  - ktexteditor-lang 
   - ktextwidgets-devel 
   - ktikz 
   - ktimer 
@@ -11381,13 +11386,15 @@ unsorted:
   - libKF5NewStuffWidgets5 
   - libKF5NotifyConfig5 
   - libKF5NotifyConfig5-lang 
+  - libKF5Parts5 
+  - libKF5Parts5-lang 
   - libKF5QuickAddons5 
   - libKF5Syndication5 
+  - libKF5SyntaxHighlighting5 
+  - libKF5SyntaxHighlighting5-lang 
   - libKF5ThreadWeaver5 
   - libKF5UnitConversion5 
   - libKF5UnitConversion5-lang 
-  - libKF6Mime6 
-  - libKF6Mime6-lang 
   - libKGantt2 
   - libKHealthCertificate1 
   - libKOSM1 
@@ -11399,6 +11406,8 @@ unsorted:
   - libKPim6GAPILatitude6 
   - libKPim6GAPIMaps6 
   - libKPim6IdentityManagementQuick6 
+  - libKPim6Mime6 
+  - libKPim6Mime6-lang 
   - libKPublicTransport1 
   - libKPublicTransportOnboard1 
   - libKSeExpr4 
@@ -13188,7 +13197,7 @@ unsorted:
   - libdwarf-doc 
   - libdwarf-tools 
   - libdwarf2 
-  - libdwarfs0_15_5 
+  - libdwarfs0_15_7 
   - libdwarves1 
   - libdxflib-3_26_4-1 
   - libe-book-devel 
@@ -14442,8 +14451,7 @@ unsorted:
   - libkddockwidgets-qt6-3 
   - libkdegames-devel 
   - libkdepim-devel 
-  - libkdevplatform65 
-  - libkdsingleapplication-qt6-1_2 
+  - libkdevplatform66 
   - libkdsoap-server-qt6-2 
   - libkdsoap-server2 
   - libkdsoap2 
@@ -15577,7 +15585,7 @@ unsorted:
   - libphdi-devel 
   - libphdi-tools 
   - libphdi1 
-  - libphobos2-0_112 
+  - libphobos2-0_113 
   - libphobos2-ldc112 
   - libphonenumber-devel 
   - libphysfs-devel 
@@ -16089,6 +16097,7 @@ unsorted:
   - libregf-devel 
   - libregf-tools 
   - libregf1 
+  - libregina3 
   - libregraphapi-devel 
   - librelp-devel 
   - librelp0 
@@ -19754,7 +19763,6 @@ unsorted:
   - mypaint-brushes1 
   - mypaint-brushes1-devel 
   - mypaint-lang 
-  - myquerytutor 
   - myspell-af_NA 
   - myspell-af_ZA 
   - myspell-an 
@@ -23967,6 +23975,7 @@ unsorted:
   - pssh 
   - pstoedit 
   - pstoedit-devel 
+  - pstoedit-gui 
   - pt2-clone 
   - ptcpdump 
   - pthread-stubs-devel 
@@ -24194,6 +24203,8 @@ unsorted:
   - python3-adios2-mpich 
   - python3-adios2-mvapich2 
   - python3-adios2-openmpi4 
+  - python3-akonadi 
+  - python3-akonadi-calendar 
   - python3-ansible-compat 
   - python3-arpack-ng 
   - python3-avahi-gtk 
@@ -25415,6 +25426,7 @@ unsorted:
   - python313-bleak 
   - python313-blessed 
   - python313-blessings 
+  - python313-blobfile 
   - python313-blockbuster 
   - python313-blockdiag 
   - python313-blosc 
@@ -25888,6 +25900,7 @@ unsorted:
   - python313-e-antic 
   - python313-easy-thumbnails 
   - python313-easydev 
+  - python313-easydict 
   - python313-easygui 
   - python313-easypysmb 
   - python313-easywatch 
@@ -26092,6 +26105,7 @@ unsorted:
   - python313-gevent-websocket 
   - python313-geventhttpclient 
   - python313-gfloat 
+  - python313-gguf 
   - python313-gherkin-official 
   - python313-ghostscript 
   - python313-ghp-import 
@@ -26212,7 +26226,6 @@ unsorted:
   - python313-happybase 
   - python313-haproxyctl 
   - python313-hardware 
-  - python313-hashids 
   - python313-hatanaka 
   - python313-hatch 
   - python313-hatch-argparse-manpage 
@@ -26743,6 +26756,8 @@ unsorted:
   - python313-mockito 
   - python313-model-bakery 
   - python313-model-hosting-container-standards 
+  - python313-modelscope 
+  - python313-modelscope-hub 
   - python313-modern-colorthief 
   - python313-mohawk 
   - python313-mongoengine 
@@ -27909,6 +27924,7 @@ unsorted:
   - python313-setuptools_scm 
   - python313-sfs 
   - python313-sge-pygame 
+  - python313-sglang 
   - python313-sgmllib3k 
   - python313-sgp4 
   - python313-sgqlc 
@@ -28173,6 +28189,7 @@ unsorted:
   - python313-time-machine 
   - python313-time-travel 
   - python313-timeout-decorator 
+  - python313-timm 
   - python313-tiny-proxy 
   - python313-tinyarray 
   - python313-tinydb 
@@ -28200,6 +28217,7 @@ unsorted:
   - python313-torch-devel 
   - python313-torch-openmpi4 
   - python313-torch-openmpi4-devel 
+  - python313-torchao 
   - python313-torchaudio 
   - python313-torchsde 
   - python313-torchvision 
@@ -29466,6 +29484,7 @@ unsorted:
   - python314-blessed 
   - python314-blessings 
   - python314-blinker 
+  - python314-blobfile 
   - python314-blockbuster 
   - python314-blockdiag 
   - python314-blosc 
@@ -29953,6 +29972,7 @@ unsorted:
   - python314-e-antic 
   - python314-easy-thumbnails 
   - python314-easydev 
+  - python314-easydict 
   - python314-easygui 
   - python314-easypysmb 
   - python314-easywatch 
@@ -30158,6 +30178,7 @@ unsorted:
   - python314-gevent-websocket 
   - python314-geventhttpclient 
   - python314-gfloat 
+  - python314-gguf 
   - python314-gherkin-official 
   - python314-ghostscript 
   - python314-ghp-import 
@@ -30284,7 +30305,6 @@ unsorted:
   - python314-happybase 
   - python314-haproxyctl 
   - python314-hardware 
-  - python314-hashids 
   - python314-hatanaka 
   - python314-hatch 
   - python314-hatch-argparse-manpage 
@@ -30826,6 +30846,8 @@ unsorted:
   - python314-mockito 
   - python314-model-bakery 
   - python314-model-hosting-container-standards 
+  - python314-modelscope 
+  - python314-modelscope-hub 
   - python314-modern-colorthief 
   - python314-mohawk 
   - python314-mongoengine 
@@ -32032,6 +32054,7 @@ unsorted:
   - python314-setuptools_scm 
   - python314-sfs 
   - python314-sge-pygame 
+  - python314-sglang 
   - python314-sgmllib3k 
   - python314-sgp4 
   - python314-sgqlc 
@@ -32295,6 +32318,7 @@ unsorted:
   - python314-time-machine 
   - python314-time-travel 
   - python314-timeout-decorator 
+  - python314-timm 
   - python314-tiny-proxy 
   - python314-tinyarray 
   - python314-tinycss2 
@@ -32324,6 +32348,7 @@ unsorted:
   - python314-torch-devel 
   - python314-torch-openmpi4 
   - python314-torch-openmpi4-devel 
+  - python314-torchao 
   - python314-torchaudio 
   - python314-torchsde 
   - python314-torchvision 
@@ -35348,6 +35373,7 @@ unsorted:
   - syncthing-relaysrv 
   - syndication-devel 
   - synergy 
+  - syntax-highlighting 
   - syntax-highlighting-devel 
   - syntax-highlighting-imports 
   - sypper 
