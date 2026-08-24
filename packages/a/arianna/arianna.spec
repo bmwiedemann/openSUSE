@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
 
 %bcond_without released
 Name:           arianna
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        Ebook reader and library management app
 License:        GPL-3.0-only
@@ -58,11 +58,11 @@ BuildRequires:  cmake(Qt6WebEngineQuick) >= %{qt6_version}
 BuildRequires:  cmake(Qt6WebSockets) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Xml) >= %{qt6_version}
-Requires:       kirigami-addons6
 Requires:       kf6-kirigami-imports >= %{kf6_version}
 Requires:       kf6-kquickcharts  >= %{kf6_version}
-Requires:       qt6-sql-sqlite >= %{qt6_version}
+Requires:       kirigami-addons6
 Requires:       qt6-declarative-imports >= %{qt6_version}
+Requires:       qt6-sql-sqlite >= %{qt6_version}
 # No QtWebEngine for other archs
 ExclusiveArch:  x86_64 %{x86_64} aarch64 riscv64
 
