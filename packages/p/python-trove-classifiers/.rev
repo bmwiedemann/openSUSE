@@ -230,4 +230,13 @@
   * Python :: 3.16</comment>
     <requestid>1354136</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>9f955cb1ee724a2872115bba9a4c23f8</srcmd5>
+    <version>2026.6.1.19</version>
+    <time>1787565704</time>
+    <user>anag_factory</user>
+    <comment>- update to 2026.6.1.19:
+  * Django, Plone and Wagtail additions</comment>
+    <requestid>1373075</requestid>
+  </revision>
 </revisionlist>
