@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Aug 22 10:03:23 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2026.7.19:
+  * Git issue 607: SIGSEGV: NULL pointer dereference in
+    `basic_match()` when `(?R)`/`(?0)` recursion is used inside a
+    fuzzy-matching quantifier
+  * Git issue 608: SIGSEGV: out-of-bounds read in
+    `bytes1_char_at()` with `DOTALL` + a fuzzy constraint +
+    `(?r)` reverse-direction matching
+  * Clarified that the POSIX flag makes it look for only the
+    longest overall match.
+  * Git issue 606: `regex`'s compiled-pattern cache eviction is
+    not free-threading-safe
+
+-------------------------------------------------------------------
 Sun Jul  5 10:48:14 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2026.6.28:
