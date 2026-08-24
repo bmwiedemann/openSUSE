@@ -16,14 +16,14 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
-%define kpim6_version 6.7.3
-%define ktextaddons_version 2.0.0
+%define kpim6_version 6.8.0
+%define ktextaddons_version 2.0.2
 
 %bcond_without released
 Name:           libksieve
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        Sieve and Managesieve support library for KDE PIM applications
 License:        GPL-2.0-only AND LGPL-2.1-or-later
@@ -37,11 +37,12 @@ BuildRequires:  cyrus-sasl-devel
 BuildRequires:  doxygen
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  cmake(KF6Archive) >= %{kf6_version}
-BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
 BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6Mime) >= %{kf6_version}
 BuildRequires:  cmake(KF6NewStuff) >= %{kf6_version}
 BuildRequires:  cmake(KF6Sonnet) >= %{kf6_version}
 BuildRequires:  cmake(KF6SyntaxHighlighting) >= %{kf6_version}
@@ -49,11 +50,10 @@ BuildRequires:  cmake(KF6TextAddonsWidgets) >= %{ktextaddons_version}
 BuildRequires:  cmake(KF6TextCustomEditor) >= %{ktextaddons_version}
 BuildRequires:  cmake(KF6TextEditTextToSpeech) >= %{ktextaddons_version}
 BuildRequires:  cmake(KF6TextUtils) >= %{ktextaddons_version}
-BuildRequires:  cmake(KPim6IdentityManagementCore) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6IMAP) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6IdentityManagementCore) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6Libkdepim) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6MailTransport) >= %{kpim6_version}
-BuildRequires:  cmake(KPim6Mime) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6PimCommon) >= %{kpim6_version}
 BuildRequires:  cmake(Qt6PrintSupport) >= %{qt6_version}
 BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
