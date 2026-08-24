@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Aug 22 13:38:07 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.5.8 (bsc#1276210, bsc#1276211):
+  * Form-encoded POST bodies are now subject to a limit of 1000
+    arguments by default. This prevents a CPU and memory denial of
+    service attack. This limit can be overridden via the
+    set_parse_body_config function. Thanks to Arpit Jain for reporting
+    this issue.
+  * Multipart parsing now rejects requests with an excessive number of
+    parts earlier in the parsing process, limiting memory consumption.
+    Thanks to afldl for reporting this issue.
+  * The deprecated mixed-case arguments to RequestHandler.set_cookie
+    now enforce the same restrictions on invalid characters that were
+    introduced in Tornado 6.5.5 for the standard lowercase arguments.
+    Thanks to sec-reex and Arpit Jain for reporting this issue.
+- drop python-tornado6-Fix-test_strip_headers_on_redirects.patch
+  (upstream)
+
+-------------------------------------------------------------------
 Tue Jul  7 07:13:13 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
 
 - Fix test_strip_headers_on_redirect's URL-embedded-credentials cases.

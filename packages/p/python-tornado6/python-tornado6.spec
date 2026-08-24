@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-tornado6
-Version:        6.5.7
+Version:        6.5.8
 Release:        0
 Summary:        Open source version of scalable, non-blocking web server that power FriendFeed
 License:        Apache-2.0
@@ -29,8 +29,6 @@ Source99:       python-tornado6-rpmlintrc
 Patch0:         ignore-resourcewarning-doctests.patch
 # PATCH-FIX-OPENSUSE increase compatibility with newer pycares versions
 Patch1:         pycares-getaddrinfo.patch
-# PATCH-FIX-UPSTREAM Fix test_strip_headers_on_redirect's URL-embedded-credentials cases
-Patch2:         python-tornado6-Fix-test_strip_headers_on_redirects.patch
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
