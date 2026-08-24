@@ -5966,4 +5966,17 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
 - update staging to 11.15 release</comment>
     <requestid>1370687</requestid>
   </revision>
+  <revision rev="499" vrev="1">
+    <srcmd5>e063175cb1bd32abad26b2101c64a6ef</srcmd5>
+    <version>11.16</version>
+    <time>1787566256</time>
+    <user>anag_factory</user>
+    <comment>- updated to 11.16 release
+  - Mono engine updated to version 11.3.0, including ARM64 support.
+  - Hardware video decoding using VA-API.
+  - Improved exception handling on ARM64EC.
+  - Various bug fixes.
+- update staging to 11.16 release</comment>
+    <requestid>1373254</requestid>
+  </revision>
 </revisionlist>

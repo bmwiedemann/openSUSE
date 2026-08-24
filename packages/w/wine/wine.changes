@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Aug 23 08:24:41 UTC 2026 - Marcus Meissner <meissner@suse.com>
+
+- updated to 11.16 release
+  - Mono engine updated to version 11.3.0, including ARM64 support.
+  - Hardware video decoding using VA-API.
+  - Improved exception handling on ARM64EC.
+  - Various bug fixes.
+- update staging to 11.16 release
+
+-------------------------------------------------------------------
 Sat Aug  8 16:23:32 UTC 2026 - Marcus Meissner <meissner@suse.com>
 
 - updated to 11.15 release
