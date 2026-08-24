@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Aug 20 14:31:07 UTC 2026 - munix9@googlemail.com
+
+- Update to version 4.3:
+  * Some fixes in src related to macOS.
+  * Fixed a bug when converting several files in one batch to DXF
+    from GUI.
+  * Added a backend for SVG.
+  * Some minor fixes in the GUI.
+  * Dropped the SWF/ming backend since this format is obsolete
+    meanwhile.
+  * Transition to github. Thanks a lot to Barak A. Pearlmutter for
+    his guideance.
+  * See also https://www.pstoedit.com/changelog.htm for change log
+
+- Add fix-wrong-pkg-config-file-contents.patch
+  * Fix issue #8 - wrong pkg-config file contents (gh#woglu/pstoedit#8)
+- Add fix-wrong-L-flag-for-linking-the-GUI.patch
+  * fix a wrong -L flag for linking the GUI part - addresses issue #6
+    (gh#woglu/pstoedit#6)
+- Add fix-Qt-linker-flags.patch
+  * Qt linker flags Hardening flags were not being passed to the
+    linker in building the GUI binary.
+- Add fix-pkgconfig-ImageMagick.patch
+  * fix pkgconfig ImageMagick module name
+- Add fix-reproducible-build.patch
+  * allow for reproducible builds (docs)
+- Add pstoedit-gui sub-package (Qt GUI of pstoedit)
+- Add locally generated pstoedit.1 as there are currently issues
+  with reproducible builds (eg. section order)
+- Change URL to https://www.pstoedit.com/
+- Change source code to github project woglu/pstoedit
+- Clean up spec file
+
+-------------------------------------------------------------------
 Sun Dec  1 16:40:06 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to version 4.02:

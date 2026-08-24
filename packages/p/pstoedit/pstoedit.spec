@@ -1,7 +1,7 @@
 #
 # spec file for package pstoedit
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,120 +17,137 @@
 
 
 Name:           pstoedit
-Version:        4.02
+Version:        4.3
 Release:        0
 Summary:        PostScript and PDF Converter
 License:        GPL-2.0-or-later
-Group:          Productivity/Publishing/PS
-URL:            http://www.pstoedit.net/
-Source:         https://sourceforge.net/projects/pstoedit/files/pstoedit/%{version}/%{name}-%{version}.tar.gz
+URL:            https://www.pstoedit.com/
+Source0:        https://github.com/woglu/pstoedit/archive/v%{version}/%{name}-%{version}.tar.gz
+Source1:        %{name}.1
+# PATCH-FIX-UPSTREAM fix-wrong-pkg-config-file-contents.patch -- based on commit 4911078
+Patch0:         fix-wrong-pkg-config-file-contents.patch
+# PATCH-FIX-UPSTREAM fix-wrong-L-flag-for-linking-the-GUI.patch -- based on commit a7c5e80
+Patch1:         fix-wrong-L-flag-for-linking-the-GUI.patch
+# PATCH-FIX-UPSTREAM fix-Qt-linker-flags.patch -- based on commit 65f4bbf
+Patch2:         fix-Qt-linker-flags.patch
+# PATCH-FIX-OPENSUSE fix-pkgconfig-ImageMagick.patch munix9@googlemail.com -- fix pkgconfig ImageMagick module name
+Patch3:         fix-pkgconfig-ImageMagick.patch
+# PATCH-FIX-OPENSUSE fix-reproducible-build.patch munix9@googlemail.com -- allow for reproducible builds
+Patch4:         fix-reproducible-build.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
+BuildRequires:  chrpath
+BuildRequires:  dos2unix
 BuildRequires:  gcc-c++
-BuildRequires:  gd-devel
 BuildRequires:  ghostscript-devel
 BuildRequires:  libEMF-devel
-BuildRequires:  libMagick++-devel
-BuildRequires:  libpng-devel
 BuildRequires:  libtool
-BuildRequires:  libzip-devel
 BuildRequires:  pkgconfig
 BuildRequires:  plotutils-devel
+# docs: there are currently issues with reproducible builds (eg. section order)
+#BuildRequires:  texlive-babel
+#BuildRequires:  texlive-babel-english
+#BuildRequires:  texlive-fancyhdr
+#BuildRequires:  texlive-latex
+#BuildRequires:  texlive-scheme-basic
+#BuildRequires:  texlive-scripts
+BuildRequires:  pkgconfig(Magick++)
+BuildRequires:  pkgconfig(gdlib)
+BuildRequires:  pkgconfig(libpng)
+BuildRequires:  pkgconfig(libzip)
 Requires:       ghostscript
 
 %description
-pstoedit converts PostScript and PDF files to other vector graphic
-formats so that they can be edited graphically.
+Pstoedit converts PostScript and PDF files to various vector graphic
+formats. The resulting files can be edited or imported into various
+drawing packages. Pstoedit comes with a large set of integrated format
+drivers.
 
-pstoedit supports:
+%package gui
+Summary:        Qt GUI of %{name}
+BuildRequires:  desktop-file-utils
+BuildRequires:  hicolor-icon-theme
+BuildRequires:  qt6-base-devel
+Requires:       %{name} = %{version}
 
-* Tgif .obj format (for tgif version >= 3)
-* .fig format for xfig
-* pdf - Adobe's Portable Document Format
-* gnuplot format
-* Flattened PostScript (with or without Bezier curves)
-* DXF - CAD exchange format
-* LWO - LightWave 3D
-* RIB - RenderMan
-* RPL - Real3D
-* Java 1 or Java 2 applet
-* Idraw format (in fact a special form of EPS that idraw can read)
-* Tcl/Tk
-* HPGL
-* AI (Adobe Illustrator) (based on ps2ai.ps - not a real pstoedit driver - see notes below and manual)
-* Windows Meta Files (WMF) (Windows only)
-* Enhanced Windows Meta Files (EMF) (Windows, but also Linux/Unix if libemf is available)
-* OS/2 meta files (OS/2 only)
-* PIC format for troff/groff
-* MetaPost format for usage with TeX/LaTeX
-* LaTeX2e picture
-* Kontour
-* GNU Metafile (plotutils / libplot)
-* Skencil ( http://www.skencil.org )
-* Mathematica
-* via ImageMagick to any format supported by ImageMagick
-* SWF
-* CNC G code
-* VTK files for ParaView and similar visualization tools
+%description gui
+PstoeditQtGui provides an alternative to the command driven operation.
+The GUI provides access to almost all options and features that are
+supported by pstoedit. In addition it supports the conversion of multiple
+files in one job and also provides some shortcuts to some of Ghostscript's
+high leve output devices.
 
 %package devel
 Summary:        PostScript and PDF converter (development files)
-Group:          Productivity/Publishing/PS
 Requires:       %{name} = %{version}
-Requires:       ImageMagick-devel
-Requires:       libMagick++-devel
-Requires:       libpng-devel
-Requires:       libzip-devel
+Requires:       plotutils-devel
+Requires:       pkgconfig(Magick++)
+Requires:       pkgconfig(libzip)
 
 %description devel
 PostScript and PDF converter development headers and library files.
 
 %prep
 %autosetup -p1
-for CRLFFILE in doc/readme.txt examples/figtext.ps ; do
-	tr -d '\r' <$CRLFFILE >$CRLFFILE.lf
-	touch -r $CRLFFILE $CRLFFILE.lf
-	mv $CRLFFILE.lf $CRLFFILE
-done
+
+mkdir -p m4
+dos2unix doc/*.htm examples/figtext.ps
+
+# create dummy docs so the make below will run correctly
+touch doc/pstoedit.{1,htm,pdf}
 
 %build
-# --without-swf: lacking libming package
+autoreconf -if --warnings=all
 %configure \
+	--disable-docs \
 	--disable-static \
 	--with-emf \
-	--with-magick \
+	--with-gui \
 	--with-libplot \
-	--with-pptx \
-	--without-swf
-
+	--with-magick \
+	--with-pptx
 %make_build
 
 %install
 %make_install
-find %{buildroot} -type f -name "*.la" -delete -print
-# doc cleanup
-rm -rf examples/Makefile*
-rm -rf %{buildroot}/usr/share/doc/%{name}
+install -D -m 0644 -t %{buildroot}%{_mandir}/man1 %{SOURCE1}
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+chrpath -d %{buildroot}%{_bindir}/pstoedit
+chrpath -d %{buildroot}%{_bindir}/PstoeditQtGui
+
+find %{buildroot} -type f -name "*.la" -delete -print
+
+# doc cleanup
+rm -f examples/Makefile*
+rm -rf %{buildroot}%{_datadir}/doc
+
+%check
+desktop-file-validate %{buildroot}%{_datadir}/applications/PstoeditQtGui.desktop
+
+%ldconfig_scriptlets
 
 %files
+%license LICENSE
+%doc README.md doc/changelog.htm examples
 %{_bindir}/pstoedit
-%{_libdir}/*.so.*
+%{_datadir}/pstoedit
+%{_libdir}/libpstoedit.so.*
 %dir %{_libdir}/pstoedit
-%{_libdir}/pstoedit/*.so
-%{_datadir}/%{name}
-%{_mandir}/man?*/*.*
-%defattr(644, -, -, 755)
-%license copying
-%doc examples doc/readme.txt
-%doc doc/*.htm doc/%{name}.pdf
+%{_libdir}/pstoedit/libp2edrvlplot.so
+%{_libdir}/pstoedit/libp2edrvmagick++.so
+%{_libdir}/pstoedit/libp2edrvpptx.so
+%{_libdir}/pstoedit/libp2edrvstd.so
+%{_libdir}/pstoedit/libp2edrvwmf.so
+%{_mandir}/man1/pstoedit.1%{?ext_man}
+
+%files gui
+%{_bindir}/PstoeditQtGui
+%{_datadir}/applications/PstoeditQtGui.desktop
+%{_datadir}/icons/hicolor/256x256/apps/pstoedit.png
 
 %files devel
-%{_libdir}/*.so
 %{_includedir}/pstoedit
-%{_libdir}/pkgconfig/*.pc
-%{_datadir}/aclocal/*.m4
+%{_libdir}/libpstoedit.so
+%{_libdir}/pkgconfig/pstoedit.pc
 
 %changelog

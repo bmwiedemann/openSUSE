@@ -1,0 +1,23 @@
+From a7c5e805fcd665239c80cd805cdfd1bf23a7bd49 Mon Sep 17 00:00:00 2001
+From: Wolfgang Glunz <wolfgang.glunz@gmx.de>
+Date: Sun, 15 Mar 2026 17:53:37 +0100
+Subject: [PATCH] fix a wrong -L flag for linking the GUI part - addresses
+ issue #6
+
+---
+ QT/PstoeditQtGui/PstoeditQtGui.pro | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/QT/PstoeditQtGui/PstoeditQtGui.pro b/QT/PstoeditQtGui/PstoeditQtGui.pro
+index 02c66b0..d3dbe03 100644
+--- a/QT/PstoeditQtGui/PstoeditQtGui.pro
++++ b/QT/PstoeditQtGui/PstoeditQtGui.pro
+@@ -20,7 +20,7 @@ FORMS += \
+ 
+ RESOURCES += PstoeditQtGui.qrc
+ 
+-LIBS +=  -Wl,-rpath,`pwd`/../../src/.libs/ -L ../../src/.libs -lpstoedit
++LIBS +=  -Wl,-rpath,`pwd`/../../src/.libs/ -L../../src/.libs -lpstoedit
+ 
+ INCLUDEPATH += ../../src
+ 

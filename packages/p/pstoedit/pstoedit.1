@@ -1,0 +1,1702 @@
+.\" *********************************** start of \input{version.tex}
+.\" *********************************** end of \input{version.tex}
+'\" t
+.\" Manual page created with latex2man.local on Thu Aug 20 14:31:07 2026
+.\" NOTE: This file is generated, DO NOT EDIT.
+.de Vb
+.ft CW
+.nf
+..
+.de Ve
+.ft R
+
+.fi
+..
+.TH "PSTOEDIT" "1" "20 August 2026" "Conversion Tools " "Conversion Tools "
+.SH NAME
+
+pstoedit
+\- a tool converting PostScript files into various 
+vector graphic formats 
+.PP
+.SH SYNOPSIS
+
+.PP
+.SS FROM A COMMAND SHELL
+.PP
+pstoedit
+[\fB\-v \-help\fP]
+.br
+.PP
+pstoedit
+.\" *********************************** start of \input{generalhelpshort.tex}
+The following options are available: 
+[\fB\-include\fP\fI filename\fP]
+[\fB\-df\fP\fI font name\fP]
+[\fB\-nomaptoisolatin1\fP]
+[\fB\-dis\fP]
+[\fB\-pngimage\fP\fI filename\fP]
+[\fB\-q\fP]
+[\fB\-nq\fP]
+[\fB\-nc\fP]
+[\fB\-mergelines\fP]
+[\fB\-filledrecttostroke\fP]
+[\fB\-mergetext\fP]
+[\fB\-dt\fP]
+[\fB\-adt\fP]
+[\fB\-ndt\fP]
+[\fB\-dgbm\fP]
+[\fB\-correctdefinefont\fP]
+[\fB\-pti\fP]
+[\fB\-pta\fP]
+[\fB\-xscale\fP\fI number\fP]
+[\fB\-yscale\fP\fI number\fP]
+[\fB\-xshift\fP\fI number\fP]
+[\fB\-yshift\fP\fI number\fP]
+[\fB\-centered\fP]
+[\fB\-minlinewidth\fP\fI number\fP]
+[\fB\-pagenumberformat\fP\fI page number format specification\fP]
+[\fB\-split\fP]
+[\fB\-v\fP]
+[\fB\-vl\fP\fI \fP]
+[\fB\-usebbfrominput\fP]
+[\fB\-ssp\fP]
+[\fB\-sfill\fP]
+[\fB\-uchar\fP\fI character\fP]
+[\fB\-nb\fP]
+[\fB\-rdb\fP]
+[\fB\-page\fP\fI page number\fP]
+[\fB\-flat\fP\fI flatness factor\fP]
+[\fB\-sclip\fP]
+[\fB\-ups\fP]
+[\fB\-usefinddevice\fP]
+[\fB\-rgb\fP]
+[\fB\-useagl\fP]
+[\fB\-noclip\fP]
+[\fB\-t2fontsast1\fP]
+[\fB\-keep\fP]
+[\fB\-debugfonthandling\fP]
+[\fB\-gstest\fP]
+[\fB\-fakedateandversion\fP]
+[\fB\-nfr\fP]
+[\fB\-glyphs\fP]
+[\fB\-useoldnormalization\fP]
+[\fB\-rotate\fP\fI angle (0\-360)\fP]
+[\fB\-fontmap\fP\fI name of font map file for pstoedit\fP]
+[\fB\-pagesize\fP\fI page format\fP]
+[\fB\-help\fP]
+[\fB\-bo\fP]
+[\fB\-psarg\fP\fI argument string\fP]
+[\fB\-pslanguagelevel\fP\fI PostScript Language Level 1, 2, or 3 to be used.\fP]
+\fB\-f\fP\fI "format[:options]"\fP
+[\fB\-gs\fP\fI either full path to the Ghostscript executable/DLL or \- for Windows \- just a version number (e.g. 10.01.0), in which case the version is used to look up the path from the registry.\fP]
+[\fB\-gsregbase\fP\fI Ghostscript base registry path\fP]
+[ inputfile [outputfile] ] 
+.\" *********************************** end of \input{generalhelpshort.tex}
+.PP
+\"GUI
+.SS FROM PSTOEDITQTGUI
+.PP
+PstoeditQtGui
+provides an alternative to the command driven operation. 
+The GUI provides access to almost all options and features that are supported by pstoedit\&.
+In addition it supports the conversion of multiple files in one job and also provides some 
+shortcuts to some of Ghostscript\&'s
+high level output devices. 
+.PP
+The GUI is implemented using QT (\fBhttps://www.qt.io\fP).
+.PP
+The various options provided by pstoedit
+are displayed in different tabs in the GUI according to their category. 
+A link to a more detailed description of each option into this manual is provided with each option in the GUI. 
+.PP
+Side note: None of the options are "hard coded" into the GUI. Instead the meta information is retrieved from pstoedit
+itself. 
+By this the GUI is always up to date with respect to the options and formats provided by pstoedit\&.
+.PP
+.SH DESCRIPTION
+
+.PP
+.SS RELEASE LEVEL
+.PP
+This man\-page documents release 4.3 of pstoedit\&.
+.PP
+.SS USE
+.PP
+pstoedit
+converts PostScript files into various vector graphics 
+formats. The resulting files can be edited or imported into various drawing 
+packages. Type 
+.PP
+\fBpstoedit \-help\fP
+.PP
+for a list of supported output formats. Pstoedit comes with a 
+large set of format drivers built into in the binary. 
+.PP
+.SS PRINCIPLE OF CONVERSION
+.PP
+pstoedit
+works by redefining some of PostScript\&'s basic drawing operators, 
+such as \fBstroke\fP
+or \fBshow\fP
+(bitmaps drawn by the image 
+operator are not supported by all output formats.) After 
+redefining these operators, the PostScript file that needs to be 
+converted is processed by a PostScript interpreter, e.g., Ghostscript 
+(\fIgs\fP(1)).
+You normally need to have a PostScript interpreter installed in 
+order to use this program. However, you can perform some "back end only" processing 
+of files following the conventions of the pstoedit intermediate format by specifying the \fB\-bo\fP
+option. See "Available formats and their specific options" below. 
+.PP
+The output that is written by the interpreter due to the redefinition of the 
+drawing operators is a kind of \&'flat\&' PostScript file containing only simple 
+operations such as moveto, lineto, show, etc. You can view this file using the 
+\fB\-f debug\fP
+option. 
+.PP
+This output is read by the end\-processing functions of pstoedit
+and triggers 
+the drawing functions in the selected output format driver sometimes called also "back\-end". 
+.PP
+.SS NOTES ON GHOSTSCRIPT
+.PP
+Although pstoedit was designed to allow the use of any kind of PostScript interpreter, it 
+has only been tested in combination with Ghostscript
+(\fBhttps://ghostscript.com\fP).
+.PP
+Up to version 9.55 of Ghostscript,
+it\&'s PDF interpreter was implemented in PostScript itself. 
+That allowed pstoedit
+to handle PDF files in the same way as PostScript files since the same 
+mechanisms for intercepting the drawing operations could be used. 
+.PP
+However, from version 9.56 on, the PDF interpreter of Ghostscript
+was implemented in C and 
+hence the interceptions used by pstoedit are no longer effective when processing PDF files. 
+.PP
+You need to convert the PDF to PostScript at first before you can convert it into another format. 
+You can use Ghostscript
+for that or also use the gs:ps2write (\fB\-f gs:ps2write\fP)
+driver from pstoedit\&.
+.PP
+.SH OPTIONS
+
+.PP
+.\" *********************************** start of \input{generalhelplong.tex}
+.SS GENERAL OPTIONS
+The following options are available: 
+.TP
+[\fB\-include\fP\fI filename\fP]
+ \"option\-main\-include
+This option allows specifying an additional PostScript file that will be executed just before the normal input is read. This is helpful for including specific page settings or for disabling potentially unsafe PostScript operators, e.g., file, renamefile, or deletefile. 
+.PP
+.TP
+[\fB\-xscale\fP\fI number\fP]
+ \"option\-main\-xscale
+scale by a factor in x\-direction 
+.PP
+.TP
+[\fB\-yscale\fP\fI number\fP]
+ \"option\-main\-yscale
+scale by a factor in y\-direction 
+.PP
+.TP
+[\fB\-xshift\fP\fI number\fP]
+ \"option\-main\-xshift
+shift image in x\-direction 
+.PP
+.TP
+[\fB\-yshift\fP\fI number\fP]
+ \"option\-main\-yshift
+shift image in y\-direction 
+.PP
+.TP
+[\fB\-centered\fP]
+ \"option\-main\-centered
+center image before scaling or shifting 
+.PP
+.TP
+[\fB\-minlinewidth\fP\fI number\fP]
+ \"option\-main\-minlinewidth
+minimal line width. All lines thinner than this will be drawn in this line width \- especially zero\-width lines 
+.PP
+.TP
+[\fB\-pagenumberformat\fP\fI page number format specification\fP]
+ \"option\-main\-pagenumberformat
+format specification for page numbers in filename if \-split is used. The specification is used to create the page number using sprintf. The specification shall not include the leading % nor the trailing d. Default is empty string which results in formatting the page number using %d. This results in page numbers like 1, 2, \&.\&.\&., 10. Sometimes you may want to have fixed length with leading 0, so you might want to specify 02 which means 2 digits with leading 0. 
+.PP
+.TP
+[\fB\-split\fP]
+ \"option\-main\-split
+Create a new file for each page of the input. For this the output filename must contain a %d which is replaced with the current page number. This option is automatically switched on for output formats that do not support multiple pages within one file, e.g. fig or gnuplot. 
+.PP
+.TP
+[\fB\-usebbfrominput\fP]
+ \"option\-main\-usebbfrominput
+If specified, pstoedit uses the BoundingBox as is (hopefully) found in the input file instead of one that is calculated by its own. 
+.PP
+.TP
+[\fB\-page\fP\fI page number\fP]
+ \"option\-main\-page
+Select a single page from a multi\-page PostScript or PDF file. 
+.PP
+.TP
+[\fB\-rgb\fP]
+ \"option\-main\-rgb
+Since version 3.30 pstoedit uses the CMYK colors internally. The \-rgb option turns on the old behavior to use RGB values. 
+.PP
+.TP
+[\fB\-useagl\fP]
+ \"option\-main\-useagl
+use Adobe Glyph List instead of the ISO Latin\-1 table (this is experimental) 
+.PP
+.TP
+[\fB\-noclip\fP]
+ \"option\-main\-noclip
+do not use clipping (relevant only if output format supports clipping at all) 
+.PP
+.TP
+[\fB\-rotate\fP\fI angle (0\-360)\fP]
+ \"option\-main\-rotate
+Rotate image by angle. 
+.PP
+.TP
+[\fB\-pagesize\fP\fI page format\fP]
+ \"option\-main\-pagesize
+set page size for output medium. 
+This option sets the page size for the output medium. Currently this is just used by the libplot output format driver, but might be used by other output format drivers in future. The page size is specified in terms of the usual page size names, e.g. letter or a4. 
+.PP
+.TP
+[\fB\-help\fP]
+ \"option\-main\-help
+show the help information 
+.PP
+.TP
+[\fB\-bo\fP]
+ \"option\-main\-bo
+You can run backend processing only (without the PostScript interpreter frontend) by first running \fBpstoedit\fP
+\fB\-f dump\fP
+\fIinfile\fP
+\fIdumpfile\fP
+and then running \fBpstoedit\fP
+\fB\-f\fP\fI format\fP
+\fB\-bo\fP
+\fIdumpfile\fP
+\fIoutfile\fP\&.
+.PP
+.TP
+[\fB\-psarg\fP\fI argument string\fP]
+ \"option\-main\-psarg
+The string given with this option is passed directly to Ghostscript when Ghostscript is called to process the PostScript file for pstoedit\&.
+For example: \fB\-psarg\fP\fB "\fP\fB\-r300x300\fP\fB"\fP\&.
+This causes the resolution to be changed to 300x300 dpi. (With older versions of Ghostscript, changing the resolution this way has an effect only if the \fB\-dis\fP
+option is given.) If you want to pass multiple options to Ghostscript you can use multiple \-psarg options \fB\-psarg opt1\fP
+\fB\-psarg opt2\fP
+\fB\-psarg opt2\fP\&.
+See the Ghostscript manual for other possible options. 
+.PP
+.TP
+[\fB\-pslanguagelevel\fP\fI PostScript Language Level 1, 2, or 3 to be used.\fP]
+ \"option\-main\-pslanguagelevel
+PostScript Language Level 1, 2, or 3 to be used. You can switch Ghostscript into PostScript Level 1 only mode by \fB\-pslanguagelevel 1\fP\&.
+This can be useful for example if the PostScript file to be converted uses some Level 2 specific custom color models that are not supported by pstoedit. However, this requires that the PostScript program checks for the PostScript level supported by the interpreter and "acts" accordingly. The default language level is 3. 
+.PP
+.TP
+\fB\-f\fP\fI "format[:options]"\fP
+ \"option\-main\-f
+target output format recognized by pstoedit\&.
+Since other format drivers can be loaded dynamically, type pstoedit \-help
+to get a full list of formats. See "Available formats and their specific options" below for an explanation of the [\fI:options\fP]
+to \fB\-f\fP
+format. If the format option is not given, pstoedit tries to guess the target format from the suffix of the output filename. However, in a lot of cases, this is not a unique mapping and hence pstoedit demands the \fB\-f\fP
+option. 
+.PP
+.TP
+[\fB\-gs\fP\fI either full path to the Ghostscript executable/DLL or \- for Windows \- just a version number (e.g. 10.01.0), in which case the version is used to look up the path from the registry.\fP]
+ \"option\-main\-gs
+tells pstoedit which Ghostscript executable/DLL to use \- overwrites the internal search heuristic 
+.PP
+.TP
+[\fB\-gsregbase\fP\fI Ghostscript base registry path\fP]
+ \"option\-main\-gsregbase
+registry path to use as a base path when searching Ghostscript interpreter. 
+This option provides means to specify a registry key under HKLM/Software where to search for GS interpreter key, version and GS_DLL / GS_LIB values. Example: "\-gsregbase MyCompany" means that HKLM/Software/MyCompany/GPL Ghostscript would be searched instead of HKLM/Software/GPL Ghostscript. 
+.PP
+.SS TEXT AND FONT HANDLING RELATED OPTIONS
+The following options are available: 
+.TP
+[\fB\-df\fP\fI font name\fP]
+ \"option\-main\-df
+Sometimes fonts embedded in a PostScript program do not have a fontname. For example, this happens in PostScript files generated by \fIdvips\fP(1)\&.
+In such a case pstoedit
+uses a replacement font. The default for this is Courier. Another font can be specified using the \fB\-df\fP
+option. \fB\-df Helvetica\fP
+causes all unnamed fonts to be replaced by Helvetica. 
+.PP
+.TP
+[\fB\-nomaptoisolatin1\fP]
+ \"option\-main\-nomaptoisolatin1
+Normally pstoedit
+maps all character codes to the ones defined by the ISO Latin1 encoding. If you specify \fB\-nomaptoisolatin1\fP
+then the encoding from the input PostScript is passed unchanged to the output. This may result in strange text output but on the other hand may be the only way to get some fonts converted appropriately. Try what fits best to your concrete case. 
+.PP
+.TP
+[\fB\-pngimage\fP\fI filename\fP]
+ \"option\-main\-pngimage
+for debugging purpose mainly. Write result of processing also to a PNG file 
+.PP
+.TP
+[\fB\-dt\fP]
+ \"option\-main\-dt
+draw text. Text is drawn as polygons. This might produce a large output file. This option is automatically switched on if the selected output format does not support text, e.g. \fIgnuplot\fP(1)\&.
+.PP
+.TP
+[\fB\-adt\fP]
+ \"option\-main\-adt
+automatic draw text. This option turns on the \fB\-dt\fP
+option selectively for fonts that seem to be no normal text fonts, e.g. Symbol. 
+.PP
+.TP
+[\fB\-ndt\fP]
+ \"option\-main\-ndt
+never draw text. Fully disable the heuristics used by pstoedit to decide when to "draw" text instead of showing it as text. This may produce incorrect results, but in some cases it might nevertheless be useful. "Use at own risk". 
+.PP
+.TP
+[\fB\-dgbm\fP]
+ \"option\-main\-dgbm
+experimental \- draw also bitmaps generated by fonts/glyphs 
+.PP
+.TP
+[\fB\-correctdefinefont\fP]
+ \"option\-main\-correctdefinefont
+Some PostScript files, e.g. such as generated by ChemDraw, use the PostScript definefont operator in a way that is incompatible with pstoedit\&'s assumptions. The new font is defined by copying an old font without changing the FontName of the new font. When this option is applied, some "patches" are done after a definefont in order to make it again compatible with pstoedit\&'s assumptions. This option is not enabled by default, since it may break other PostScript files. It is tested only with ChemDraw generated files. 
+.PP
+.TP
+[\fB\-pti\fP]
+ \"option\-main\-pti
+precision text. Normally a text string is drawn as it occurs in the input file. However, in some situations, this might produce wrongly positioned characters. This is due to limitations in most output formats of pstoedit. They cannot represent text with arbitrary inter\-letter spacing which is easily possible in PDF and PostScript. With \fB\-pta\fP,
+each character of a text string is placed separately. With \fB\-pti\fP,
+this is done only in cases when there is a non zero inter\-letter spacing. The downside of "precision text" is a bigger file size and hard to edit text. 
+.PP
+.TP
+[\fB\-pta\fP]
+ \"option\-main\-pta
+see \-pti 
+.PP
+.TP
+[\fB\-uchar\fP\fI character\fP]
+ \"option\-main\-uchar
+Sometimes pstoedit cannot map a character from the encoding used by the PostScript file to the font encoding of the target format. In this case pstoedit replaces the input character by a special character in order to show all the places that could not be mapped correctly. The default for this is a "#". Using the \fB\-uchar\fP
+option it is possible to specify another character to be used instead. If you want to use a space, use \-uchar " ". 
+.PP
+.TP
+[\fB\-t2fontsast1\fP]
+ \"option\-main\-t2fontsast1
+Handle Type 2 fonts same as Type 1. Type 2 fonts sometimes occur as embedded fonts within PDF files. In the default mode, text using such fonts is drawn as polygons since pstoedit assumes that such a font is not available on the user\&'s machine. If this option is set, pstoedit assumes that the internal encoding follows the same as for a standard font and generates normal text output. This assumption may not be true in all cases. But it is nearly impossible for pstoedit to verify this assumption \- it would have to do a sort of OCR. 
+.PP
+.TP
+[\fB\-nfr\fP]
+ \"option\-main\-nfr
+In normal mode pstoedit replaces bitmap fonts with a font as defined by the \fB\-df\fP
+option. This is done, because most output formats cannot handle such fonts. This behavior can be switched off using the \fB\-nfr\fP
+option but then it strongly depends on the application reading the generated file whether the file is usable and correctly interpreted or not. Any problems are then out of control of pstoedit. 
+.PP
+.TP
+[\fB\-glyphs\fP]
+ \"option\-main\-glyphs
+pass glyph names to the output format driver. So far no output format driver really uses the glyph names, so this does not have any effect at the moment. It is a preparation for future work. 
+.PP
+.TP
+[\fB\-useoldnormalization\fP]
+ \"option\-main\-useoldnormalization
+Just use this option in case the new heuristic introduced in 3.5 does not produce correct results \- however, this normalization of font encoding will always be a best\-effort approach since there is no real general solution to it with reasonable effort 
+.PP
+.TP
+[\fB\-fontmap\fP\fI name of font map file for pstoedit\fP]
+ \"option\-main\-fontmap
+The font map is a simple text file containing lines in the following format:
+.br
+.PP
+document_font_name target_font_name
+.br 
+Lines beginning with % are considered comments.
+.br
+For font names with spaces use the "font name with spaces" notation. 
+.PP
+If a target_font_name starts with /, it is regarded as alias to a former entry. 
+.PP
+Each font name found in the document is checked against this mapping and if there is a corresponding entry, the new name is used for the output. 
+.PP
+If the \fB\-fontmap\fP
+option is not specified, pstoedit
+automatically looks for the file \fIdrivername\fP\&.fmp
+in the installation directory and uses that file as a default fontmap file if available. The installation directory is: 
+.PP
+.RS
+.TP
+.B *
+MS Windows: The same directory where the pstoedit executable is located
+.TP
+.B *
+Unix:
+.br 
+The default installation directory. If it fails, then <\fIThe directory where the pstoedit executable is located\fP>
+/../lib/ 
+.RE
+.RS
+.PP
+The mpost.fmp in the misc directory of the pstoedit distribution is a sample map file with mappings from over 5000 PostScript font names to their TeX equivalents. This is useful because MetaPost is frequently used with TeX/LaTeX and those programs do not use standard font names. This file and the MetaPost output format driver are provided by Scott Pakin (\fBscott+ps2ed_AT_pakin.org\fP).
+Another example is wemf.fmp to be used under Windows. See the misc directory of the pstoedit source distribution. 
+After loading the implicit (based on driver name) or explicit (based on the \-fontmap option) font map file, a system specific map file is searched and loaded from the installation directory (unix.fmp or windows.fmp). This file can be used to redirect certain fonts to system specific names using the /AliasName notation described above. 
+.PP
+.RE
+.PP
+.SS DRAWING RELATED OPTIONS
+The following options are available: 
+.TP
+[\fB\-nc\fP]
+ \"option\-main\-nc
+no curves. 
+Normally pstoedit tries to keep curves from the input and transfers them to the output if the output format supports curves. If the output format does not support curves, then pstoedit replaces curves by a series of lines (see also \fB\-flat\fP
+option). However, in some cases the user might wish to have this behavior also for output formats that originally support curves. This can be forced via the \fB\-nc\fP
+option. 
+.PP
+.TP
+[\fB\-mergelines\fP]
+ \"option\-main\-mergelines
+Some output formats permit the representation of filled polygons with edges that are in a different color than the fill color. Since PostScript does not support this by the standard drawing primitives directly, drawing programs typically generate two objects (the outline and the filled polygon) into the PostScript output. pstoedit
+is able to recombine these, if they follow each other directly and you specify \fB\-mergelines\fP\&.
+However, this merging is not supported by all output formats due to restrictions in the target format. 
+.PP
+.TP
+[\fB\-filledrecttostroke\fP]
+ \"option\-main\-filledrecttostroke
+Rectangles filled with a solid color can be converted to a stroked line with a width that corresponds to the width of the rectangle. This is of primary interest for output formats which do not support filled polygons at all. But it is restricted to rectangles only, i.e. it is not supported for general polygons 
+.PP
+.TP
+[\fB\-mergetext\fP]
+ \"option\-main\-mergetext
+In order to produce nice looking text output, programs producing PostScript files often split words into smaller pieces which are then placed individually on adjacent positions. However, such split text is hard to edit later on and hence it is sometime better to recombine these pieces again to form a word (or even sequence of words). For this pstoedit implements some heuristics about what text pieces are to be considered parts of a split word. This is based on the geometrical proximity of the different parts and seems to work quite well so far. But there are certainly cases where this simple heuristic fails. So please check the results carefully. 
+.PP
+.TP
+[\fB\-ssp\fP]
+ \"option\-main\-ssp
+simulate subpaths. 
+Several output formats do not support PostScript paths containing subpaths, i.e. paths with intermediate movetos. In the normal case, each subpath is treated as an independent path for such output formats. This can lead to bad looking results. The most common case where this happens is if you use the \fB\-dt\fP
+option and show some text with letters like e, o, or b, i.e. letters that have a "hole". When the \fB\-ssp\fP
+option is set, pstoedit tries to eliminate these problems. However, this option is CPU time intensive! 
+.PP
+.TP
+[\fB\-sfill\fP]
+ \"option\-main\-sfill
+simulate filling by individual strokes. 
+.PP
+.TP
+[\fB\-flat\fP\fI flatness factor\fP]
+ \"option\-main\-flat
+If the output format does not support curves in the way PostScript does or if the \fB\-nc\fP
+option is specified, all curves are approximated by lines. Using the \fB\-flat\fP
+option one can control this approximation. This parameter is directly converted to a PostScript \fBsetflat\fP
+command. Higher numbers, e.g. 10 give rougher, lower numbers, e.g. 0.1, give finer approximations. 
+.PP
+.TP
+[\fB\-sclip\fP]
+ \"option\-main\-sclip
+simulate clipping. 
+Most output formats of pstoedit do not have native support for clipping. For that pstoedit
+offers an option to perform the clipping of the graphics directly without passing the clippath to the output driver. However, this results in curves being replaced by a lot of line segments and thus larger output files. So use this option only if your output looks different from the input due to clipping. In addition, this "simulated clipping" is not exactly the same as defined in PostScript. There might be lines drawn at double size. Also clipping of text is not supported unless you also use the \fB\-dt\fP
+option. 
+.PP
+.SS DIAGNOSTIC AND DEBUG OPTIONS
+The following options are available: 
+.TP
+[\fB\-dis\fP]
+ \"option\-main\-dis
+Open a display during processing by Ghostscript. Some files only work correctly this way. 
+.PP
+.TP
+[\fB\-q\fP]
+ \"option\-main\-q
+quiet mode \- do not write startup message 
+.PP
+.TP
+[\fB\-nq\fP]
+ \"option\-main\-nq
+no exit from the PostScript interpreter. Normally Ghostscript exits after processing the pstoedit input\-file. For debugging it can be useful to avoid this. If you do, you will have to type quit at the GS> prompt to exit from Ghostscript. 
+.PP
+.TP
+[\fB\-v\fP]
+ \"option\-main\-v
+Switch on verbose mode. Some additional information is shown during processing. 
+.PP
+.TP
+[\fB\-vl\fP\fI \fP]
+ \"option\-main\-vl
+Switch on verbose mode with a given level. Some additional information is shown during processing. 
+.PP
+.TP
+[\fB\-nb\fP]
+ \"option\-main\-nb
+Since version 3.10 pstoedit
+uses the \-dDELAYBIND
+option when calling Ghostscript. Previously the \-dNOBIND
+option was used instead but that sometimes caused problems if a user\&'s PostScript file overloaded standard PostScript operator with totally new semantic, e.g. lt for lineto instead of the standard meaning of "less than". Using \fB\-nb\fP
+the old style can be activated again in case the \-dDELAYBIND
+gives different results as before. In such a case please also contact the author. 
+.PP
+.TP
+[\fB\-rdb\fP]
+ \"option\-main\-rdb
+Since version 3.10 pstoedit
+uses the \-dDELAYBIND
+option when calling Ghostscript. But in version 9.22 of Ghostscript, that option is not supported anymore because of security reasons. As a fallback, that version provides the REALLYDELAYBIND option and pstoedit can use this if you supply the \fB\-rdb\fP
+option. Use this with caution as it might open security risks, e.g. a PostScript file injecting some malicious code into PostScript standard operators. However, not using this option can cause some of the PostScript drawings operations to be not seen by pstoedit, hence causing missing artefacts in the output. Later versions of Ghostscript will probably support \-dDELAYBIND again. But also in that case the security risk remains. So be careful with what files you process with pstoedit and Ghostscript. 
+.PP
+.TP
+[\fB\-ups\fP]
+ \"option\-main\-ups
+write text as plain string instead of hex string in intermediate format \- normally useful for trouble shooting and debugging only. 
+.PP
+.TP
+[\fB\-usefinddevice\fP]
+ \"option\-main\-usefinddevice
+use the ghostscript internal finddevice operator during image handling instead of standard operators \- normally useful for trouble shooting and debugging only. 
+.PP
+.TP
+[\fB\-keep\fP]
+ \"option\-main\-keep
+keep the intermediate files produced by pstoedit \- for debug purposes only 
+.PP
+.TP
+[\fB\-debugfonthandling\fP]
+ \"option\-main\-debugfonthandling
+writes verbose messages related to internal font processing \- for debug purposes only 
+.PP
+.TP
+[\fB\-gstest\fP]
+ \"option\-main\-gstest
+perform a basic test of the interworking with Ghostscript 
+.PP
+.TP
+[\fB\-fakedateandversion\fP]
+ \"option\-main\-fakedateandversion
+Just for regression testing \- uses a constant date and version string. 
+.PP
+.SS INPUT AND OUTFILE FILE ARGUMENTS
+[ inputfile [outputfile] ] 
+.\" *********************************** end of \input{generalhelplong.tex}
+.PP
+If neither an input nor an output file is given as argument, pstoedit works as filter reading from standard input and 
+writing to standard output. 
+The special filename "\-" can also be used. It represents standard input if it is the first on the command line and standard output if it is the second. So "pstoedit \- output.xxx" reads from standard input and writes to output.xxx 
+.PP
+.SH AVAILABLE FORMATS AND THEIR SPECIFIC OPTIONS
+
+.PP
+pstoedit
+allows passing individual options to an output format driver. This is done by 
+appending all options to the format specified after the \fB\-f\fP
+option. The format 
+specifier and its options must be separated by a colon (:). If more than one 
+option needs to be passed to the output format driver, the whole argument to \fB\-f\fP
+must be 
+enclosed within double\-quote characters, thus: 
+.PP
+\fB\-f\fP\fI "format[:option option ...]"\fP
+.PP
+To see which options are supported by a specific format, type: 
+\fBpstoedit \-f format:\-help\fP
+.br
+.PP
+The following description of the different formats supported by pstoedit is extracted from the source code of the individual drivers. 
+.PP
+.\" *********************************** start of \input{driverhelp.tex}
+.SS FORMAT GROUP: PSF PS DEBUG DUMP PS2AI GS 
+This group consists of the following variants: 
+.TP
+psf: 
+Flattened PostScript (no curves). 
+.TP
+ps: 
+Simplified PostScript with curves. 
+.TP
+debug: 
+for test purposes. 
+.TP
+dump: 
+for test purposes (same as debug). 
+.TP
+ps2ai: 
+Adobe Illustrator via ps2ai.ps of Ghostscript. 
+.TP
+gs: 
+any device that Ghostscript provides \- use gs:format, e.g. gs:pdfwrite. 
+.PP
+No format specific options 
+.SS PPTX \- PRESENTATIONML (POWERPOINT) FORMAT
+This is the format used internally by Microsoft PowerPoint. LibreOffice can also read/write PowerPoint files albeit with some lack of functionality. 
+.PP
+The following driver specific options are available: 
+.TP
+[\fB\-colors\fP\fI string\fP]
+ \"option\-pptx\-colors
+"original" to retain original colors (default), "theme" to convert randomly to theme colors, or "theme\-lum" also to vary luminance 
+.PP
+.TP
+[\fB\-fonts\fP\fI string\fP]
+ \"option\-pptx\-fonts
+use "windows" fonts (default), "native" fonts, or convert to the "theme" font 
+.PP
+.TP
+[\fB\-embed\fP\fI string\fP]
+ \"option\-pptx\-embed
+embed fonts, specified as a comma\-separated list of EOT\-format font files 
+.PP
+.TP
+[\fB\-keepimagefiles\fP]
+ \"option\-pptx\-keepimagefiles
+do not remove the temporary PNG image files. 
+.PP
+.SS FORMAT GROUP: GMFA GMFB PLOT PLOT\-PNM PLOT\-CGM PLOT\-AI PLOT\-SVG PLOT\-PS PLOT\-FIG PLOT\-PCL PLOT\-HPGL PLOT\-TEK 
+This group consists of the following variants: 
+.TP
+gmfa: 
+ASCII GNU metafile. 
+.TP
+gmfb: 
+binary GNU metafile. 
+.TP
+plot: 
+GNU libplot output types, e.g. plot:\-plotformat X. 
+.TP
+plot\-pnm: 
+pnm via GNU libplot. 
+.TP
+plot\-cgm: 
+cgm via GNU libplot. 
+.TP
+plot\-ai: 
+ai via GNU libplot. 
+.TP
+plot\-svg: 
+svg via GNU libplot. 
+.TP
+plot\-ps: 
+ps via GNU libplot. 
+.TP
+plot\-fig: 
+fig via GNU libplot. 
+.TP
+plot\-pcl: 
+pcl via GNU libplot. 
+.TP
+plot\-hpgl: 
+hpgl via GNU libplot. 
+.TP
+plot\-tek: 
+tek via GNU libplot. 
+.PP
+The following driver specific options are available in this group: 
+.TP
+[\fB\-plotformat\fP\fI string\fP]
+ \"option\-gmfa\-plotformat
+plotutil format to generate 
+.PP
+.SS SAMPLE \- SAMPLE DRIVER
+This is a long description for the sample driver 
+.PP
+The following driver specific options are available: 
+.TP
+[\fB\-sampleoption\fP\fI integer\fP]
+ \"option\-sample\-sampleoption
+just an example 
+.PP
+.SS IDRAW \- INTERVIEWS DRAW FORMAT (EPS)
+No format specific options 
+.SS FORMAT GROUP: FIG XFIG TFIG 
+This group consists of the following variants: 
+.TP
+fig: 
+\&.fig format for xfig. 
+.TP
+xfig: 
+\&.fig format for xfig. 
+.TP
+tfig: 
+\&.fig format for xfig \- test only version. 
+.PP
+The xfig format driver supports special fontnames, which may be produced by using a fontmap file. The following types of names are supported:
+.br
+.Vb
+General notation:
+"PostScript Font Name" ((LaTeX|PostScript|empty)(::special)::)XFigFontName
+
+Examples:
+
+Helvetica LaTeX::SansSerif
+Courier LaTeX::special::Typewriter
+GillSans "AvantGarde Demi"
+Albertus PostScript::special::"New Century Schoolbook Italic"
+Symbol ::special::Symbol (same as PostScript::special::Symbol)
+.Ve
+See also the file examplefigmap.fmp in the misc directory of the pstoedit source distribution for an example font map file for xfig. Please note that the fontname has to be among those supported by xfig. See \- \fBhttps://mcj.sourceforge.net/fig\-format.html\fP
+for a list of legal font names 
+.PP
+The following driver specific options are available in this group: 
+.TP
+[\fB\-startdepth\fP\fI number\fP]
+ \"option\-fig\-startdepth
+set the initial depth (default 999) 
+.PP
+.TP
+[\fB\-metric\fP]
+ \"option\-fig\-metric
+switch to centimeter display (default inches) 
+.PP
+.TP
+[\fB\-usecorrectfontsize\fP]
+ \"option\-fig\-usecorrectfontsize
+do not scale fonts for xfig. Use this if you also use this option with xfig 
+.PP
+.TP
+[\fB\-depth\fP\fI number\fP]
+ \"option\-fig\-depth
+set the page depth in inches (default 11) 
+.PP
+.SS TGIF \- TGIF .OBJ FORMAT
+The following driver specific options are available: 
+.TP
+[\fB\-ta\fP]
+ \"option\-tgif\-ta
+text as attribute 
+.PP
+.SS GNUPLOT \- GNUPLOT FORMAT
+No format specific options 
+.SS FORMAT GROUP: SVG XAML 
+This group consists of the following variants: 
+.TP
+svg: 
+Scalable Vector Graphics. 
+.TP
+xaml: 
+eXtensible Application Markup Language. 
+.PP
+The following driver specific options are available in this group: 
+.TP
+[\fB\-localdtd\fP]
+ \"option\-svg\-localdtd
+use local DTD 
+.PP
+.TP
+[\fB\-standalone\fP]
+ \"option\-svg\-standalone
+create stand\-alone type svg 
+.PP
+.TP
+[\fB\-withdtd\fP]
+ \"option\-svg\-withdtd
+write DTD 
+.PP
+.TP
+[\fB\-withgrouping\fP]
+ \"option\-svg\-withgrouping
+write also ordinary save/restores as SVG group 
+.PP
+.TP
+[\fB\-nogroupedpath\fP]
+ \"option\-svg\-nogroupedpath
+do not write a group around paths 
+.PP
+.TP
+[\fB\-noviewbox\fP]
+ \"option\-svg\-noviewbox
+do not write a view box 
+.PP
+.TP
+[\fB\-texmode\fP]
+ \"option\-svg\-texmode
+TeX mode 
+.PP
+.TP
+[\fB\-imagetofile\fP]
+ \"option\-svg\-imagetofile
+write raster images to separate files instead of embedding them 
+.PP
+.TP
+[\fB\-notextrendering\fP]
+ \"option\-svg\-notextrendering
+do not write textrendering attribute 
+.PP
+.TP
+[\fB\-border\fP\fI number\fP]
+ \"option\-svg\-border
+additional border to draw around bare bounding box (in percent of width and height) 
+.PP
+.TP
+[\fB\-title\fP\fI string\fP]
+ \"option\-svg\-title
+text to use as title for the generated document 
+.PP
+.SS SVM \- STARVIEW/OPENOFFICE.ORG METAFILE
+StarView/OpenOffice.org metafile, readable from OpenOffice.org 1.0/StarOffice 6.0 and above. 
+.PP
+The following driver specific options are available: 
+.TP
+[\fB\-m\fP]
+ \"option\-svm\-m
+map to Arial 
+.PP
+.TP
+[\fB\-nf\fP]
+ \"option\-svm\-nf
+emulate narrow fonts 
+.PP
+.SS VTK \- VTK DRIVER
+this is a long description for the VTKe driver 
+.PP
+The following driver specific options are available: 
+.TP
+[\fB\-VTKeoption\fP\fI integer\fP]
+ \"option\-vtk\-VTKeoption
+just an example 
+.PP
+.SS TK \- TK AND/OR TK.PPLET SOURCE CODE
+The following driver specific options are available: 
+.TP
+[\fB\-R\fP]
+ \"option\-tk\-R
+swap HW 
+.PP
+.TP
+[\fB\-I\fP]
+ \"option\-tk\-I
+no impress 
+.PP
+.TP
+[\fB\-n\fP\fI string\fP]
+ \"option\-tk\-n
+tagnames 
+.PP
+.SS CFDG \- CONTEXT FREE DESIGN GRAMMAR
+Context Free Design Grammar, usable by Context Free Art (http://www.contextfreeart.org/) 
+.PP
+No format specific options 
+.SS GSCHEM \- GSCHEM FORMAT
+See also: \fBhttp://wiki.geda\-project.org/geda:gaf\fP
+.PP
+No format specific options 
+.SS PCB\-RND \- PCB\-RND FORMAT
+See also: \fBhttp://repo.hu/projects/pcb\-rnd\fP
+and \fBhttp://www.penguin.cz/~utx/pstoedit\-pcb/\fP
+.PP
+The following driver specific options are available: 
+.TP
+[\fB\-grid\fP\fI double number\fP]
+ \"option\-pcb\-rnd\-grid
+attempt to snap relevant output to grid (mils) and put failed objects to a different layer 
+.PP
+.TP
+[\fB\-snapdist\fP\fI double number\fP]
+ \"option\-pcb\-rnd\-snapdist
+grid snap distance ratio (0 < snapdist <= 0.5, default 0.1) 
+.PP
+.TP
+[\fB\-tshiftx\fP\fI double number\fP]
+ \"option\-pcb\-rnd\-tshiftx
+additional x shift measured in target units (mils) 
+.PP
+.TP
+[\fB\-tshifty\fP\fI double number\fP]
+ \"option\-pcb\-rnd\-tshifty
+additional y shift measured in target units (mils) 
+.PP
+.TP
+[\fB\-mm\fP]
+ \"option\-pcb\-rnd\-mm
+switch to metric units (mm) 
+.PP
+.TP
+[\fB\-forcepoly\fP]
+ \"option\-pcb\-rnd\-forcepoly
+force all objects to be interpreted as polygons 
+.PP
+.SS PCBFILL \- PCB FORMAT WITH FILLS
+See also: \fBhttp://pcb.sourceforge.net\fP
+.PP
+No format specific options 
+.SS PCB \- PCB FORMAT
+See also: \fBhttp://pcb.sourceforge.net\fP
+and \fBhttp://www.penguin.cz/~utx/pstoedit\-pcb/\fP
+.PP
+The following driver specific options are available: 
+.TP
+[\fB\-grid\fP\fI double number\fP]
+ \"option\-pcb\-grid
+attempt to snap relevant output to grid (mils) and put failed objects to a different layer 
+.PP
+.TP
+[\fB\-snapdist\fP\fI double number\fP]
+ \"option\-pcb\-snapdist
+grid snap distance ratio (0 < snapdist <= 0.5, default 0.1) 
+.PP
+.TP
+[\fB\-tshiftx\fP\fI double number\fP]
+ \"option\-pcb\-tshiftx
+additional x shift measured in target units (mils) 
+.PP
+.TP
+[\fB\-tshifty\fP\fI double number\fP]
+ \"option\-pcb\-tshifty
+additional y shift measured in target units (mils) 
+.PP
+.TP
+[\fB\-mm\fP]
+ \"option\-pcb\-mm
+switch to metric units (mm) 
+.PP
+.TP
+[\fB\-stdnames\fP]
+ \"option\-pcb\-stdnames
+use standard layer names instead of descriptive names 
+.PP
+.TP
+[\fB\-forcepoly\fP]
+ \"option\-pcb\-forcepoly
+force all objects to be interpreted as polygons 
+.PP
+.SS PCBI \- ENGRAVE DATA \- INSULATE/PCB FORMAT
+No format specific options 
+.SS FORMAT GROUP: HPGL PCL 
+This group consists of the following variants: 
+.TP
+hpgl: 
+HPGL code. 
+.TP
+pcl: 
+PCL code. 
+.PP
+The following driver specific options are available in this group: 
+.TP
+[\fB\-penplotter\fP]
+ \"option\-hpgl\-penplotter
+plotter is pen plotter (i.e. no support for specific line widths) 
+.PP
+.TP
+[\fB\-pencolorsfromfile\fP]
+ \"option\-hpgl\-pencolorsfromfile
+read pen colors from file drvhpgl.pencolors in pstoedit\&'s data directory 
+.PP
+.TP
+[\fB\-pencolors\fP\fI number\fP]
+ \"option\-hpgl\-pencolors
+maximum number of pen colors to be used by pstoedit (default 0) \- 
+.PP
+.TP
+[\fB\-filltype\fP\fI string\fP]
+ \"option\-hpgl\-filltype
+select fill type e.g. FT 1 
+.PP
+.TP
+[\fB\-hpgl2\fP]
+ \"option\-hpgl\-hpgl2
+Use HPGL/2 instead of HPGL/1 
+.PP
+.TP
+[\fB\-rot90\fP]
+ \"option\-hpgl\-rot90
+rotate hpgl by 90 degrees 
+.PP
+.TP
+[\fB\-rot180\fP]
+ \"option\-hpgl\-rot180
+rotate hpgl by 180 degrees 
+.PP
+.TP
+[\fB\-rot270\fP]
+ \"option\-hpgl\-rot270
+rotate hpgl by 270 degrees 
+.PP
+.SS PIC \- PIC FORMAT FOR TROFF ET.AL.
+The following driver specific options are available: 
+.TP
+[\fB\-troff\fP]
+ \"option\-pic\-troff
+troff mode (default is groff) 
+.PP
+.TP
+[\fB\-landscape\fP]
+ \"option\-pic\-landscape
+landscape output 
+.PP
+.TP
+[\fB\-portrait\fP]
+ \"option\-pic\-portrait
+portrait output 
+.PP
+.TP
+[\fB\-keepfont\fP]
+ \"option\-pic\-keepfont
+print unrecognized literally 
+.PP
+.TP
+[\fB\-text\fP]
+ \"option\-pic\-text
+try not to make pictures from running text 
+.PP
+.TP
+[\fB\-debug\fP]
+ \"option\-pic\-debug
+enable debug output 
+.PP
+.SS NOIXML \- NEMETSCHEK NOI XML FORMAT
+Nemetschek Object Interface XML format 
+.PP
+The following driver specific options are available: 
+.TP
+[\fB\-r\fP\fI string\fP]
+ \"option\-noixml\-r
+Allplan resource file 
+.PP
+.TP
+[\fB\-bsl\fP\fI number\fP]
+ \"option\-noixml\-bsl
+Bezier Split Level (default 3) 
+.PP
+.SS LATEX2E \- LaTeX2E PICTURE FORMAT
+The following driver specific options are available: 
+.TP
+[\fB\-integers\fP]
+ \"option\-latex2e\-integers
+round all coordinates to the nearest integer 
+.PP
+.SS MMA \- MATHEMATICA GRAPHICS
+The following driver specific options are available: 
+.TP
+[\fB\-eofillfills\fP]
+ \"option\-mma\-eofillfills
+Filling is used for eofill (default is not to fill) 
+.PP
+.SS ASY \- ASYMPTOTE FORMAT
+No format specific options 
+.SS MPOST \- METAPOST FORMAT
+No format specific options 
+.SS SK \- SKETCH FORMAT
+No format specific options 
+.SS TEXT \- TEXT IN DIFFERENT FORMS 
+The following driver specific options are available: 
+.TP
+[\fB\-height\fP\fI number\fP]
+ \"option\-text\-height
+page height in terms of characters 
+.PP
+.TP
+[\fB\-width\fP\fI number\fP]
+ \"option\-text\-width
+page width in terms of characters 
+.PP
+.TP
+[\fB\-dump\fP]
+ \"option\-text\-dump
+dump text pieces 
+.PP
+.SS KIL \- .KIL FORMAT FOR KONTOUR
+No format specific options 
+.SS PDF \- ADOBE\&'S PORTABLE DOCUMENT FORMAT
+No format specific options 
+.SS JAVA2 \- JAVA 2 SOURCE CODE
+The following driver specific options are available: 
+.TP
+[\fBjava_class_name\fP\fI string\fP]
+ \"option\-java2java_class_name
+name of java class to generate 
+.PP
+.SS JAVA1 \- JAVA 1.PPLET SOURCE CODE
+The following driver specific options are available: 
+.TP
+[\fBjava_class_name\fP\fI string\fP]
+ \"option\-java1java_class_name
+name of java class to generate 
+.PP
+.SS FORMAT GROUP: DXF DXF_14 DXF_S 
+This group consists of the following variants: 
+.TP
+dxf: 
+CAD exchange format version 9 \- only limited features. Consider using dxf_14 instead.. 
+.TP
+dxf_14: 
+CAD exchange format version 14 supporting splines and linetypes. 
+.TP
+dxf_s: 
+CAD exchange format version 14 supporting splines and linetypes. 
+.PP
+The following driver specific options are available in this group: 
+.TP
+[\fB\-polyaslines\fP]
+ \"option\-dxf\-polyaslines
+use LINE instead of POLYLINE in DXF 
+.PP
+.TP
+[\fB\-mm\fP]
+ \"option\-dxf\-mm
+use mm coordinates instead of points in DXF (mm=pt/72*25.4) 
+.PP
+.TP
+[\fB\-ctl\fP]
+ \"option\-dxf\-ctl
+map colors to layers 
+.PP
+.TP
+[\fB\-filltohatch\fP]
+ \"option\-dxf\-filltohatch
+generate hatch objects from fill operations (still experimental) 
+.PP
+.TP
+[\fB\-splineaspolyline\fP]
+ \"option\-dxf\-splineaspolyline
+approximate splines with PolyLines (only for \-f dxf_s) 
+.PP
+.TP
+[\fB\-splineasnurb\fP]
+ \"option\-dxf\-splineasnurb
+experimental (only for \-f dxf_s) 
+.PP
+.TP
+[\fB\-splineasbspline\fP]
+ \"option\-dxf\-splineasbspline
+experimental (only for \-f dxf_s) 
+.PP
+.TP
+[\fB\-splineassinglespline\fP]
+ \"option\-dxf\-splineassinglespline
+experimental (only for \-f dxf_s) 
+.PP
+.TP
+[\fB\-splineasmultispline\fP]
+ \"option\-dxf\-splineasmultispline
+experimental (only for \-f dxf_s) 
+.PP
+.TP
+[\fB\-splineasbezier\fP]
+ \"option\-dxf\-splineasbezier
+use Bezier splines in DXF format (only for \-f dxf_s) 
+.PP
+.TP
+[\fB\-splineprecision\fP\fI number\fP]
+ \"option\-dxf\-splineprecision
+number of samples to take from spline curve when doing approximation with \-splineaspolyline or \-splineasmultispline \- should be =2 (default 5) 
+.PP
+.TP
+[\fB\-dumplayernames\fP]
+ \"option\-dxf\-dumplayernames
+dump all layer names found to standard output 
+.PP
+.TP
+[\fB\-layers\fP\fI string\fP]
+ \"option\-dxf\-layers
+layers to be shown (comma separated list of layer names, no space) 
+.PP
+.TP
+[\fB\-layerfilter\fP\fI string\fP]
+ \"option\-dxf\-layerfilter
+layers to be hidden (comma separated list of layer names, no space) 
+.PP
+.SS RPL \- REAL3D PROGRAMMING LANGUAGE FORMAT
+No format specific options 
+.SS RIB \- RENDERMAN INTERFACE BYTESTREAM
+No format specific options 
+.SS LWO \- LIGHTWAVE 3D OBJECT FORMAT
+No format specific options 
+.SS CAIRO \- CAIRO DRIVER
+generates compilable c code for rendering with cairo 
+.PP
+The following driver specific options are available: 
+.TP
+[\fB\-pango\fP]
+ \"option\-cairo\-pango
+use pango for font rendering 
+.PP
+.TP
+[\fB\-funcname\fP\fI string\fP]
+ \"option\-cairo\-funcname
+sets the base name for the generated functions and variables. e.g. myfig 
+.PP
+.TP
+[\fB\-header\fP\fI string\fP]
+ \"option\-cairo\-header
+sets the output file name for the generated C header file. e.g. myfig.h 
+.PP
+.SS GCODE \- EMC2 GCODE FORMAT
+See also: \fBhttp://linuxcnc.org/\fP
+.PP
+No format specific options 
+.SS MAGICK \- MAGICK DRIVER COMPATIBLE WITH VERSION 7.1.2 OF IMAGEMAGICK.
+This driver uses the C++ API of ImageMagick or GraphicsMagick to finally produce different output formats. The output format is determined automatically by Image\-/GraphicsMagick based on the suffix of the output filename. So an output file test.png will force the creation of an image in PNG format. This binary of pstoedit was compiled against version 7.1.2 of ImageMagick. 
+.PP
+No format specific options 
+.SS EMF \- ENHANCED MS WINDOWS METAFILE
+The following driver specific options are available: 
+.TP
+[\fB\-m\fP]
+ \"option\-emf\-m
+map to Arial 
+.PP
+.TP
+[\fB\-nf\fP]
+ \"option\-emf\-nf
+emulate narrow fonts 
+.PP
+.TP
+[\fB\-drawbb\fP]
+ \"option\-emf\-drawbb
+draw bounding box 
+.PP
+.TP
+[\fB\-p\fP]
+ \"option\-emf\-p
+prune line ends 
+.PP
+.TP
+[\fB\-nfw\fP]
+ \"option\-emf\-nfw
+Newer versions of MS Windows (2000, XP, Vista, 7, \&.\&.\&.) will not accept WMF/EMF files generated when this option is set and the input contains text. But if this option is not set, then the WMF/EMF driver will estimate interletter spacing of text using a very coarse heuristic. This may result in ugly looking output. On the other hand, OpenOffice can still read EMF/WMF files where pstoedit delegates the calculation of the inter letter spacing to the program reading the WMF/EMF file. So if the generated WMF/EMF file shall never be processed under MS Windows, use this option. If WMF/EMF files with high precision text need to be generated under *nix the only option is to use the \-pta option of pstoedit. However that causes every text to be split into single characters which makes the text hard to edit afterwards. Hence the \-nfw option provides a sort of compromise between portability and nice to edit but still nice looking text. Again \- this option has no meaning when pstoedit is executed under MS Windows anyway. In that case the output is portable but nevertheless not split and still looks fine. 
+.PP
+.TP
+[\fB\-winbb\fP]
+ \"option\-emf\-winbb
+let the MS Windows API calculate the Bounding Box (MS Windows only) 
+.PP
+.TP
+[\fB\-OO\fP]
+ \"option\-emf\-OO
+generate OpenOffice compatible EMF file 
+.PP
+.\" *********************************** end of \input{driverhelp.tex}
+.SH NOTES ON SPECIFIC FORMATS AND DRIVERS
+
+.SS AUTOTRACE
+pstoedit cooperates with autotrace. Autotrace can now produce a dump file 
+for further processing by pstoedit using the \fB\-bo\fP
+(back\-end only) option. 
+Autotrace is a program written by a group around Martin Weber and can be 
+found at \fBhttps://sourceforge.net/projects/autotrace/\fP\&.
+.PP
+.SS PS2AI
+The ps2ai output format driver is not a native pstoedit output format driver. It does not use the 
+pstoedit PostScript flattener, instead it uses the PostScript program 
+ps2ai.ps which is installed in the Ghostscript distribution directory. It 
+is included to provide the same "look\-and\-feel" for the conversion to AI. 
+However, lot\&'s of files do not 
+convert nicely or at all using ps2ai.ps. So a native pstoedit driver would 
+be much better. Anyone out there to take this? The AI format is usable for 
+example by Mayura Draw (\fBhttp://www.mayura.com\fP).
+Also a driver to the 
+Mayura native format would be nice. 
+.PP
+An alternative to the ps2ai based driver is available via the \-f plot:ai format if the libplot(ter) is installed. 
+.PP
+You should use a version of Ghostscript greater than or equal to 6.00 for using the ps2ai output format driver. 
+.PP
+.SS METAPOST
+Note that, as far as Scott knows, MetaPost does not support PostScript\&'s 
+eofill. The MetaPost output format driver just converts eofill to fill, and issues a warning if 
+verbose is set. Fortunately, very few PostScript programs rely on the 
+even\-odd fill rule, even though many specify it. 
+.PP
+For more on MetaPost see: 
+.PP
+\fBhttp://tug.org/metapost\fP
+.PP
+.SS CONTEXT FREE \- CFDG
+The driver for the CFDG format (drvcfdg) defines 
+one shape per page of PostScript, but only the first shape is actually 
+rendered (unless the user edits the generated CFDG code, of course). 
+CFDG does not support multi\-page output, so this probably is a reasonable thing to do. 
+.PP
+For more on Context Free see: \fBhttp://www.contextfreeart.org/\fP
+.PP
+.SS LaTeX2E
+.TP
+.B *
+LaTeX2e\&'s picture environment is not very powerful. As a result, many 
+elementary PostScript constructs are ignored \-\- fills, line 
+thicknesses (besides "thick" and "thin"), and dash patterns, to name a 
+few. Furthermore, complex pictures may overrun TeX\&'s memory capacity. 
+(The eepic package overcomes many such restrictions.) 
+.PP
+.TP
+.B *
+Some PostScript constructs are not supported directly by "picture", 
+but can be handled by external packages. If a figure uses color, the 
+top\-level document will need to do a "\\usepackage{color}" or "\\usepackage{xcolor}"\&. And if a 
+figure contains rotated text, the top\-level document will need to do a 
+"\\usepackage{rotating}"\&. 
+.PP
+.TP
+.B *
+All lengths, coordinates, and font sizes output by the output format driver are in 
+terms of \\unitlength, so scaling a figure is simply a matter of doing 
+a "\\setlength{\\unitlength}{...}"\&. 
+.PP
+.TP
+.B *
+The output format driver currently supports one output format driver specific option, 
+"integers", which rounds all lengths, coordinates, and font sizes to 
+the nearest integer. This makes hand\-editing the picture a little 
+nicer. 
+.PP
+.TP
+.B *
+Why is this output format driver useful? 
+One answer is portability; any LaTeX2e system can handle the picture environment, 
+even if it cannot handle 
+PostScript graphics. (pdfLaTeX comes to mind here.) A second answer 
+is that pictures can be edited easily to contain any arbitrary 
+LaTeX2e code. For instance, the text in a figure can be modified to contain 
+complex mathematics, non\-Latin alphabets, bibliographic citations, or 
+\-\- the real reason Scott wrote the LaTeX2e output format driver \-\- hyperlinks to the 
+surrounding document (with help from the hyperref package). 
+.PP
+.SS CREATING A NEW OUTPUT FORMAT DRIVER
+To implement a new output format driver you can start from drvsampl.cpp
+and 
+drvsampl.h\&.
+See also comments in drvbase.h
+and 
+drvfuncs.h
+for an explanation of methods that should be implemented 
+for a new output format driver. 
+.PP
+.SH ENVIRONMENT VARIABLES
+
+.PP
+A default PostScript interpreter to be called by pstoedit is specified at 
+compile time. You can overwrite the default by setting the GS environment 
+variable to the name of a suitable PostScript interpreter. 
+.PP
+You can check which name of a PostScript interpreter was compiled into 
+pstoedit using: \fBpstoedit\fP
+\fB\-help \-v\fP\&.
+.PP
+See the Ghostscript manual for descriptions of environment variables used by 
+Ghostscript, most importantly GS_FONTPATH and GS_LIB; other 
+environment variables also affect output to display, print, and additional 
+filtering and processing. See the related documentation. 
+.PP
+pstoedit
+allocates temporary files using the function \fItempnam\fP(3)\&.
+Thus the location for temporary files might be controllable by other 
+environment variables used by this function. See the \fItempnam\fP(3)
+man\-page 
+for descriptions of environment variables used. On UNIX like system this is 
+probably the TMPDIR variable, on DOS/WINDOWS either TMP or 
+TEMP\&. 
+.PP
+.SH TROUBLE SHOOTING
+
+.PP
+If you have problems with pstoedit
+first try whether Ghostscript 
+successfully displays your file. If yes, then try 
+\fBpstoedit\fP
+\fB\-f ps\fP
+\fIinfile.ps\fP
+\fItestfile.ps\fP
+and check whether \fItestfile.ps\fP
+still displays correctly using 
+Ghostscript. If this file does not look correctly then there seems to be a 
+problem with pstoedit\&'s
+PostScript front\-end. If this file looks good 
+but the output for a specific format is wrong, the problem is probably in 
+the output format driver for the specific format. In either case send bug fixes and 
+reports to the author. 
+.PP
+A common problem with PostScript files is that the PostScript file redefines 
+one of the standard PostScript operators inconsistently. There is no effect 
+of this if you just print the file since the original PostScript "program" 
+uses these new operators in the new meaning and does not use the original 
+ones anymore. However, when run under the control of pstoedit, these 
+operators are expected to work with the original semantics. 
+.PP
+So far I\&'ve seen redefinitions for: 
+.PP
+.TP
+.B *
+lt \- "less\-then" to mean "draw a line to" 
+.TP
+.B *
+string \- "create a string object" to mean "draw a string" 
+.TP
+.B *
+length \- "get the length of e.g. a string" to a "float constant" 
+.PP
+I\&'ve included work\-arounds for the ones mentioned above, but some others 
+could show up in addition to those. 
+.PP
+.SH RESTRICTIONS
+
+.PP
+.TP
+.B *
+Non\-standard fonts (e.g. TeX bitmap fonts) are mapped to a default font which 
+can be changed using the \fB\-df\fP
+option. pstoedit
+chooses the size of 
+the replacement font such that the width of the string in the original font is 
+the same as with the replacement font. This is done for each text fragment 
+displayed. Special character encoding support is limited in this case. If a 
+character cannot be mapped into the target format, pstoedit displays a \&'#\&' 
+instead. See also the \-uchar option. 
+.TP
+.B *
+pstoedit supports bitmap graphics only for some output format drivers. 
+.TP
+.B *
+Some output format drivers, e.g. the Gnuplot output format driver or the 3D output format driver (rpl, lwo, rib) do not support text. 
+.TP
+.B *
+For most output format drivers pstoedit does not support clipping (mainly due to limitations in the target format). You can try to use the 
+\fB\-sclip\fP
+option to simulate clipping. However, this does not work in all cases as expected. 
+.TP
+.B *
+Special note about the Java output format drivers (java1 and java2). 
+The java output format drivers generate a java source file that needs other files in 
+order to be compiled and usable. These other files are Java classes (one 
+applet and support classes) that allow stepping through the individual pages 
+of a converted PostScript document. This applet can easily be activated from 
+a HTML\-document. See the contrib/java/java1/readme_java1.txt
+or 
+contrib/java/java2/readme_java2.htm
+files for more details. 
+.PP
+.SH FAQS
+
+.PP
+.TP
+1.
+Why do letters like O or B get strange if converted to TGIF/XFIG 
+using the \fB\-dt\fP
+option? 
+.PP
+Most output format drivers do not support composite paths with 
+intermediate gaps (moveto\&'s) and second do not support very well the (eo)fill 
+operators of PostScript (winding rule). For such objects pstoedit
+breaks 
+them into smaller objects whenever such a gap is found. This results in the 
+"hole" being filled with black color instead of being transparent. Since 
+version 3.11 you can try the \fB\-ssp\fP
+option in combination with the XFIG 
+output format driver. 
+.PP
+.TP
+2.
+Why does pstoedit produce ugly results from PostScript files generated by dvips? 
+.PP
+This is because TeX documents usually use bitmap fonts. Such fonts cannot be used as native 
+font in other format. So pstoedit replaces the TeX font with another native 
+font. Of course, the replacement font will in most cases produce another 
+look, especially if mathematical symbols are used. 
+Try to use PostScript fonts instead of the bitmap fonts when generating a PostScript file from TeX or LaTeX\&.
+.PP
+.SH AUTHOR
+
+Wolfgang Glunz, \fBwglunz35_AT_pstoedit.net\fP,
+\fBhttps://de.linkedin.com/in/wolfgangglunz\fP
+.PP
+.SH CANONICAL ARCHIVE SITE
+
+\fBhttps://www.pstoedit.com\fP
+.PP
+At this site you also find more information about pstoedit
+and related 
+programs and hints how to subscribe to a mailing list in order to get informed 
+about new releases and bug\-fixes. 
+.PP
+If you like pstoedit \- please express so also at Facebook \fBhttps://www.facebook.com/pstoedit\fP\&.
+.PP
+.SH ACKNOWLEDGMENTS
+
+.PP
+.TP
+.B *
+Klaus Steinberger \fBKlaus.Steinberger_AT_physik.uni\-muenchen.de\fP
+wrote the initial version of this man\-page. 
+.TP
+.B *
+Lar Kaufman revised the increasingly complex 
+command syntax diagrams and updated the structure and content of this 
+man\-page following release 2.5. 
+.TP
+.B *
+David B. Rosen \fBrosen_AT_unr.edu\fP provided ideas and some PostScript
+code from his ps2aplot program. 
+.TP
+.B *
+Ian MacPhedran \fBIan_MacPhedran_AT_engr.USask.CA\fP provided the XFIG
+output format driver. 
+.TP
+.B *
+Carsten Hammer \fBchammer_AT_hermes.hrz.uni\-bielefeld.de\fP provided the
+Gnuplot output format driver and the initial DXF output format driver. 
+.TP
+.B *
+Christoph Jaeschke provided the OS/2 metafile (MET) output format driver. 
+Thomas Hoffmann \fBthoffman_AT_zappa.sax.de\fP
+did some further updates on the OS/2 part. 
+.TP
+.B *
+Jens Weber \fBrz47b7_AT_PostAG.DE\fP provided the MS Windows metafile (WMF)
+output format driver, and a graphical user interface (GUI). 
+.TP
+.B *
+G. Edward Johnson \fBlorax_AT_nist.gov\fP provided the CGM Draw library
+used in the CGM output format driver. 
+.TP
+.B *
+Gerhard Kircher \fBkircher_AT_edvz.tuwien.ac.at\fP provided some bug
+fixes. 
+.TP
+.B *
+Bill Cheng \fBbill.cheng_AT_acm.org\fP provided help with the TGIF
+format and some changes to TGIF to make the output format driver easier to implement. 
+.TP
+.B *
+Reini Urban \fBrurban_AT_sbox.tu\-graz.ac.at\fP provided input for the
+extended DXF output format driver. 
+.TP
+.B *
+Glenn M. Lewis \fBglenn_AT_gmlewis.com\fP provided RenderMan (RIB),
+Real3D (RPL), and LightWave 3D (LWO) output format drivers. 
+.TP
+.B *
+Piet van Oostrum \fBpiet_AT_cs.ruu.nl\fP made several bug fixes.
+.TP
+.B *
+Lutz Vieweg \fBlkv_AT_mania.robin.de\fP provided several bug fixes and
+suggestions for improvements. 
+.TP
+.B *
+Derek B. Noonburg \fBderekn_AT_vw.ece.cmu.edu\fP and Rainer Dorsch
+\fBrd_AT_berlepsch.wohnheim.uni\-ulm.de\fP
+isolated and resolved a 
+Linux\-specific core dump problem. 
+.TP
+.B *
+Rob Warner \fBrcw2_AT_ukc.ac.uk\fP made pstoedit compile under RiscOS.
+.TP
+.B *
+Patrick Gosling \fBjpmg_AT_eng.cam.ac.uk\fP made some suggestions
+regarding the usage of pstoedit in Ghostscript\&'s SAFER mode. 
+.TP
+.B *
+Scott Pakin \fBscott+ps2ed_AT_pakin.org\fP for the Idraw output format driver and the
+autoconf support. 
+.TP
+.B *
+Peter Katzmann \fBp.katzmann_AT_thiesen.com\fP for the HPGL output format driver.
+.TP
+.B *
+Chris Cox \fBccox_AT_airmail.net\fP contributed the Tcl/Tk output format driver.
+.TP
+.B *
+Thorsten Behrens \fBThorsten_Behrens_AT_public.uni\-hamburg.de\fP and
+Bjoern Petersen for reworking the WMF output format driver. 
+.TP
+.B *
+Leszek Piotrowicz \fBleszek_AT_sopot.rodan.pl\fP implemented the image
+support for the XFIG driver and a JAVA based GUI. 
+.TP
+.B *
+Egil Kvaleberg \fBegil_AT_kvaleberg.no\fP contributed the pic output format driver.
+.TP
+.B *
+Kai\-Uwe Sattler \fBkus_AT_iti.cs.uni\-magdeburg.de\fP implemented the
+output format driver for Kontour. 
+.TP
+.B *
+Scott Pakin, \fBscott+ps2ed_AT_pakin.org\fP provided the MetaPost and LaTeX2e and MS PowerPoint output format driver.
+.TP
+.B *
+The MS PowerPoint driver (pptx) uses the libzip library \- \fBhttps://libzip.org\fP\&. Under MS Windows, libzip and libz are linked statically into the driver DLL. Thanks to the whole libzip team. The libzip license is explained here \fBhttps://libzip.org/license\fP\&.
+.TP
+.B *
+Burkhard Plaum \fBplaum_AT_IPF.Uni\-Stuttgart.de\fP added support for
+complex filled paths for the XFIG output format driver. 
+.TP
+.B *
+Bernhard Herzog \fBherzog_AT_online.de\fP contributed the output format driver for
+sketch ( \fBhttp://www.skencil.org/\fP
+) 
+.TP
+.B *
+Rolf Niepraschk (\fBniepraschk_AT_ptb.de\fP) converted the HTML man page
+to LaTeX format. This allows generating the UNIX style and the HTML manual from this 
+base format. 
+.TP
+.B *
+Several others sent smaller bug fixed and bug reports. Sorry if I do not 
+mention them all here. 
+.TP
+.B *
+Gisbert W. Selke (\fBgisbert_AT_tapirsoft.de\fP) for the Java 2 output format driver.
+.TP
+.B *
+Robert S. Maier (\fBrsm_AT_math.arizona.edu\fP) for many improvements on
+the libplot output format driver and for libplot itself. 
+.TP
+.B *
+The authors of pstotext (\fBmcjones_AT_pa.dec.com\fP and \fBbirrell_AT_pa.dec.com\fP)
+for giving me the permission to use their simple PostScript code for 
+performing rotation. 
+.TP
+.B *
+Daniel Gehriger \fBgehriger_AT_linkcad.com\fP for his help concerning the handling of Splines in the DXF format.
+.TP
+.B *
+Allen Barnett \fBlibemf_AT_lignumcomputing.com\fP for his work on the libEMF which allows creating WMF/EMF files under *nix systems.
+.TP
+.B *
+Dave \fBdave_AT_opaque.net\fP for providing the libming which is a multiplatform library for generating SWF files.
+.TP
+.B *
+Masatake Yamoto for the introduction of autoconf, automake and libtool into pstoedit 
+.TP
+.B *
+Bob Friesenhahn for his help and the building of the Magick++ API to ImageMagick. 
+.TP
+.B *
+Barak Pearlmutter from Debian for his upfront testing of new versions. 
+.TP
+.B *
+But most important: Peter Deutsch, Ken Sharp, Chris Liddell from the GhostScript team at Artifex, and Russell 
+Lang \fBgsview_AT_ghostgum.com.au\fP
+for their help and answers regarding Ghostscript and gsview. 
+.PP
+.SH LEGAL NOTICES
+
+.PP
+Trademarks mentioned are the property of their respective owners. 
+.PP
+Some code incorporated in the pstoedit package is subject to copyright or 
+other intellectual property rights or restrictions including attribution 
+rights. See the notes in individual files. 
+.PP
+pstoedit
+is controlled under the Free Software Foundation GNU Public 
+License (GPL). However, this does not apply to the additional plugins. 
+.PP
+Ghostscript is a redistributable software package with copyright 
+restrictions controlled by Artifex \fBhttps://artifex.com/\fP\&.
+.PP
+pstoedit
+has no other relation to Ghostscript besides calling it in a 
+subprocess. 
+.PP
+The authors, contributors, and distributors of pstoedit are not responsible 
+for its use for any purpose, or for the results generated thereby. 
+.PP
+Restrictions such as the foregoing may apply in other countries according to 
+international conventions and agreements. 
+.PP
+.\" NOTE: This file is generated, DO NOT EDIT.

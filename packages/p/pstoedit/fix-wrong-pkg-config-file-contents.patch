@@ -1,0 +1,28 @@
+From 49110782751abeb324fa1251f812dca09fb18e08 Mon Sep 17 00:00:00 2001
+From: Wolfgang Glunz <wolfgang.glunz@gmx.de>
+Date: Sun, 15 Mar 2026 17:49:39 +0100
+Subject: [PATCH] Fix issue #8 - wrong pkg-config file contents
+
+---
+ config/pstoedit.pc.in | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/config/pstoedit.pc.in b/config/pstoedit.pc.in
+index ffda220..28b3154 100644
+--- a/config/pstoedit.pc.in
++++ b/config/pstoedit.pc.in
+@@ -1,11 +1,11 @@
+ prefix=@prefix@
+ exec_prefix=@exec_prefix@
+ libdir=@libdir@
+-includedir=@includedir@
++includedir=@includedir@/pstoedit
+ 
+ Name: pstoedit
+ Description: converts PostScript(TM) and PDF files to other vector graphic formats
+-Version: @VERSION@.0
++Version: @VERSION@
+ Requires: 
+ Libs: -L@libdir@ -lpstoedit @CXX_STD_LIB@ @CXX_RUNTIME_LIB@ @LIBLD_LDFLAGS@
+-Cflags: -I@includedir@
++Cflags: -I@includedir@/pstoedit

@@ -1,0 +1,26 @@
+From 65f4bbf0cf632467985d956ccaa1ca9c11104ef9 Mon Sep 17 00:00:00 2001
+From: "Barak A. Pearlmutter" <barak+git@pearlmutter.net>
+Date: Sun, 19 Apr 2026 09:53:15 +0100
+Subject: [PATCH] Qt linker flags Hardening flags were not being passed to the
+ linker in building the GUI binary. This fix passes them, thus placating
+ lintian.
+
+Gbp-Pq: Name 0002-Qt-linker-flags.patch
+---
+ QT/PstoeditQtGui/PstoeditQtGui.pro | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/QT/PstoeditQtGui/PstoeditQtGui.pro b/QT/PstoeditQtGui/PstoeditQtGui.pro
+index d3dbe03..a9fe22d 100644
+--- a/QT/PstoeditQtGui/PstoeditQtGui.pro
++++ b/QT/PstoeditQtGui/PstoeditQtGui.pro
+@@ -21,6 +21,9 @@ FORMS += \
+ RESOURCES += PstoeditQtGui.qrc
+ 
+ LIBS +=  -Wl,-rpath,`pwd`/../../src/.libs/ -L../../src/.libs -lpstoedit
++QMAKE_LFLAGS += $$(LDFLAGS)
++QMAKE_CFLAGS += $$(CFLAGS)
++QMAKE_CXXFLAGS += $$(CXXFLAGS)
+ 
+ INCLUDEPATH += ../../src
+ 

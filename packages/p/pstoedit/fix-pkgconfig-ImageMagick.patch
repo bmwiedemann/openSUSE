@@ -1,0 +1,11 @@
+--- a/configure.ac	2025-12-14 13:04:34.000000000 +0100
++++ b/configure.ac	2026-08-20 15:31:33.125661450 +0200
+@@ -340,7 +340,7 @@
+ else
+       if test -n "$PKG_CONFIG"; then
+         AC_MSG_CHECKING(ImageMagick flags through pkg-config)
+-	PKG_CHECK_MODULES(LIBMAGICK, ImageMagick++, 
++	PKG_CHECK_MODULES(LIBMAGICK, Magick++, 
+ 		HAVE_LIBMAGICK=yes 
+ 		LIBMAGICK_CFLAGS="-DHAVE_MAGIC $LIBMAGICK_CFLAGS" 
+ 		LIBMAGICK_LDFLAGS="$LIBMAGICK_LIBS" , 
