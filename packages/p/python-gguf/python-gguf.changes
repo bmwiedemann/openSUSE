@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Sat Aug 22 05:58:38 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Switch from update-alternatives to libalternatives
+
+-------------------------------------------------------------------
+Fri Aug 21 18:37:03 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package python-gguf 0.19.0
+  * Python library for reading and writing GGUF (GGML Universal
+    File) model files, split out of llama.cpp
+  * Ships gguf-dump, gguf-set-metadata, gguf-new-metadata and
+    gguf-convert-endian CLI tools
+  * Runtime dependencies: numpy, PyYAML, requests, tqdm
+  * The optional gui extra (PySide6) is not enabled
+

@@ -1,0 +1,9 @@
+<package name="python-gguf" project="openSUSE:Factory">
+  <title>Read and write ML models in GGUF for GGML</title>
+  <description>Python library for reading and writing ML models in the GGUF (GGML
+Universal File) format used by GGML-based inference engines such as
+llama.cpp. It also ships command-line tools to dump metadata, edit
+metadata values, copy a GGUF file with new metadata, and convert
+endianness.</description>
+  <url>https://github.com/ggml-org/llama.cpp</url>
+</package>
