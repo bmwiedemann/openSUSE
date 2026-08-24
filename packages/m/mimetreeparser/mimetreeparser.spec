@@ -17,13 +17,13 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
-%define kpim6_version 6.7.3
+%define kpim6_version 6.8.0
 
 %bcond_without released
 Name:           mimetreeparser
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        Library to parse MIME trees
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
@@ -37,14 +37,14 @@ BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  cmake(Gpgmepp)
 BuildRequires:  cmake(KF6CalendarCore) >= %{kf6_version}
 BuildRequires:  cmake(KF6Codecs) >= %{kf6_version}
-BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
-BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6ColorScheme) >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6Mime) >= %{kf6_version}
+BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
 BuildRequires:  cmake(KPim6Libkleo) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6Mbox) >= %{kpim6_version}
-BuildRequires:  cmake(KPim6Mime) >= %{kpim6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
 BuildRequires:  cmake(Qt6PrintSupport) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
@@ -88,8 +88,8 @@ Summary:        Development files for for MIME tree parser
 Requires:       libKPim6MimeTreeParserCore6 = %{version}
 Requires:       libKPim6MimeTreeParserWidgets6 = %{version}
 Requires:       cmake(KF6I18n) >= %{kf6_version}
+Requires:       cmake(KF6Mime) >= %{kf6_version}
 Requires:       cmake(KPim6Mbox) >= %{kpim6_version}
-Requires:       cmake(KPim6Mime) >= %{kpim6_version}
 
 %description devel
 mimetreeparser is a parser for MIME trees. Given a MIME tree, it extracts
