@@ -19,9 +19,10 @@
 %define oldpython python
 %{?sle15_python_module_pythons}
 Name:           python-tldextract
-Version:        5.3.1
+Version:        5.3.2
 Release:        0
 Summary:        Python module to separate the TLD of a URL
+# Legal-Review-Notice: Contains a snapshot (.tld_set_snapshot) of the Mozilla Public Suffix list, which is licensed under MPL-2.0. May also download this at runtime if settings permit.
 License:        BSD-3-Clause AND MPL-2.0
 URL:            https://github.com/john-kurkowski/tldextract
 Source:         https://files.pythonhosted.org/packages/source/t/tldextract/tldextract-%{version}.tar.gz
@@ -37,6 +38,7 @@ BuildRequires:  %{python_module requests-file >= 1.4}
 BuildRequires:  %{python_module responses}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module sybil}
 BuildRequires:  %{python_module syrupy}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes

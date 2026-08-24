@@ -458,4 +458,22 @@ Docs
     <comment></comment>
     <requestid>1365371</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>78ae2955351f9876fac34b678a640d56</srcmd5>
+    <version>5.3.2</version>
+    <time>1787566206</time>
+    <user>anag_factory</user>
+    <comment>- Update to 5.3.2:
+Bugfixes
+  * Fix reverse_domain_name stray dots when suffix or domain empty
+    gh#john-kurkowski/tldextract#368
+Docs
+  * Fix README: extract_urllib is on the instance, not the module
+    gh#john-kurkowski/tldextract#362
+  * Fix docstring: default cache_dir description
+    gh#john-kurkowski/tldextract#367
+  * Document hostname representation limits
+  * Document implicit PSL wildcard behavior</comment>
+    <requestid>1373149</requestid>
+  </revision>
 </revisionlist>
