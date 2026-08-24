@@ -16,15 +16,15 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
 
 %bcond_without released
 Name:           kosmindoormap
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        OSM multi-floor indoor map renderer
-License:        LGPL-2.0-or-later AND CC0-1.0
+License:        CC0-1.0 AND LGPL-2.0-or-later
 URL:            https://apps.kde.org/kosmindoormap
 Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -32,8 +32,8 @@ Source1:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source2:        applications.keyring
 %endif
 BuildRequires:  bison
-BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  flex
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-base-private-devel >= %{qt6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
@@ -41,8 +41,8 @@ BuildRequires:  cmake(KF6KirigamiAddons) >= 1.6.0
 BuildRequires:  cmake(KOpeningHours)
 BuildRequires:  cmake(KPublicTransport)
 BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
-BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 %if 0%{?suse_version} >= 1600
 BuildRequires:  cmake(recastnavigation)
 %endif
@@ -53,9 +53,9 @@ BuildRequires:  pkgconfig(zlib)
 OSM multi-floor indoor map renderer.
 
 %package imports
-Summary:      QML imports for kosmindoormap
-Requires:     libKOSM1 = %{version}
-Requires:     libKOSMIndoorRouting1 = %{version}
+Summary:        QML imports for kosmindoormap
+Requires:       libKOSM1 = %{version}
+Requires:       libKOSMIndoorRouting1 = %{version}
 
 %description imports
 QML components for KOpeningHours.
@@ -77,7 +77,7 @@ OSM multi-floor indoor map renderer library.
 Summary:        OSM multi-floor indoor map renderer
 
 %description -n libKOSMIndoorRouting1
-Indoor routing component of kosmindoormap, an OSM 
+Indoor routing component of kosmindoormap, an OSM
 multi-floor indoor map renderer
 
 %package devel
@@ -146,6 +146,8 @@ Development files for the KOSM and KOSMIndoorMap libraries.
 %{_kf6_libdir}/libKOSM.so
 %{_kf6_libdir}/libKOSMIndoorMap.so
 %{_kf6_libdir}/libKOSMIndoorRouting.so
+%{_qt6_metatypesdir}/qt6kosmindoormap_metatypes.json
+%{_qt6_metatypesdir}/qt6kosmindoorrouting_metatypes.json
 
 %files lang -f %{name}.lang
 
