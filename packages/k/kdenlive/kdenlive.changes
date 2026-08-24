@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Sun Aug 16 07:27:00 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.08.0/
+- Changes since 26.07.90:
+  * Fix typo
+  * Update KDDockWidgets tabbar proxystyle on application palette change (kde#522933)
+  * Fix crash selecting keyframe in time remap
+  * Add appdata changelog
+  * Fix full project reset on unsaved profile change by using .kdenlive temp extension
+  * fix(monitor): guard ruler tick count against divide-by-zero freeze
+  * Fix corner radius input not updating when dragging
+  * Fix timeline clip deletion when toggling proxy on reversed clips (kde#523788)
+  * Use dissolve as default transition
+  * Switch default transition to luma, now that the transparency issue is solved in MLT
+  * Fix transform resize with side hanles and forced ratio (kde#516921)
+
+-------------------------------------------------------------------
+Sat Aug  1 11:38:43 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.07.90
+  * New feature release
+- Changes since 26.07.80:
+  * Fix possible crash in project opening when discarding autosave file
+  * Resolve video import and profile loading failures on paths with diacritical marks (kde#513899)
+  * Fix duplicate clip only duplicating one clip
+  * Fix allowing 0 length composition causing crash
+  * Fix crash on time remap title clip (kde#523277)
+  * Disable LV2 and Libplacebo
+  * Ensure attached picture stream are not incorrectly marked as video Fix disabling/enabling video in clip properties Limit clip stream to max 99 (kde#523268)
+
+-------------------------------------------------------------------
+Sat Jul 18 11:11:23 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.07.80
+  * New feature release
+- Too many changes since 26.04.3, only listing bugfixes:
+  * Notify when speech recognition finishes (kde#509977)
+  * Add duplicate clip action in timeline (kde#435319)
+  * Fix auto-keyframe generation and interaction across monitor scenes (Corners, Geometry, etc.) (kde#515154)
+  * Add option to replace the timeline clip when adding a new title (kde#498136)
+  * Move Clip Marker with mouse (kde#406887)
+  * Fixc thumbnails not correctly adjusting after dar change (kde#522252)
+  * Rename and reposition Replace Timeline Clip action
+   (kde#multimedia/kdenlive#2196)
+  * Anchor right side of list label to truncate text
+  * Make Rectangular alpha mask use keyframes Fix min / max not used in fakerect, causing avfilter.delogo crash (kde#521165)
+  * Add 'Return playhead to start position on stop' setting (kde#519449)
+  * Fix tmp files copied to wrong location when setting project folder (kde#467740)
+  * Headers cleanup, fixes Windows qml startup crash (kde#520522)
+  * Display paths in native format in render widget (kde#520428)
+  * timeline: Snap playhead to snap points when dragging+Alt in ruler (kde#503693)
+  * Add Identify Gaps submenu to Timeline menu with Selected Track and All Tracks options (kde#352409)
+  * Add per-track gap identification via track header context menu (kde#352409)
+  * Use ranged markers for gap identification (kde#352409)
+  * Fix gap detection to use union of intervals across all video tracks (kde#352409)
+  * Add "Add Markers at Gaps" feature to Timeline menu (kde#352409)
+  * Fix tab order in Render dialog (kde#487883)
+  * Fix duplicate profiles appearing in New Project dialog (kde#475724)
+  * Add "Add to Project Bin" option to Render Widget (kde#509908)
+
+-------------------------------------------------------------------
 Tue Jun 30 18:19:22 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.04.3
