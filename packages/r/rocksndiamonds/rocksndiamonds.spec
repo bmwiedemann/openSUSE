@@ -17,7 +17,7 @@
 
 
 Name:           rocksndiamonds
-Version:        4.4.2.3
+Version:        4.4.2.4
 Release:        0
 Summary:        Colorful Boulderdash'n'Emerald Mine'n'Sokoban'n'Stuff
 License:        GPL-2.0-or-later
@@ -27,6 +27,7 @@ URL:            https://www.artsoft.org/rocksndiamonds/
 Source0:        https://www.artsoft.org/RELEASES/linux/%{name}/%{name}-%{version}-linux.tar.gz
 Source1:        %{name}-icons.tar.gz
 Source2:        %{name}.desktop
+Patch0:         %{name}-parallel-make.patch
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig

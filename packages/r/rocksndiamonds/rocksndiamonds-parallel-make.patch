@@ -1,0 +1,65 @@
+From: openSUSE games maintainers
+Subject: Makefile: build each sub-library exactly once
+
+Both "all" and "$(PROGNAME)" pull in the sub-libraries, via the phony
+"<name>_dir" targets and via the "$(<NAME>)" archive targets respectively.
+Both rules carry the same recipe, so "make -j" happily runs two sub-makes in
+the same directory at the same time. Their "ar cr" calls then write the same
+archive concurrently and one of them ends up truncated:
+
+  ar cr game_em.a cave.o convert.o graphics.o init.o game.o logic.o reademc.o
+  ar cr game_em.a cave.o convert.o graphics.o init.o game.o logic.o reademc.o
+  bfd plugin: game_em.a: file too short
+  ld: init.c:5880: undefined reference to `InitGfxBuffers_EM'
+  [...]
+
+Give the archive targets an empty recipe and let them depend on the phony
+directory target, so only one rule descends. An empty recipe (rather than no
+recipe) keeps make from marking the archive as remade on every run, so
+untouched builds still relink nothing.
+
+Not using an order-only prerequisite here: that would stop a rebuilt archive
+from relinking the binary, leaving a stale executable behind.
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -302,30 +302,30 @@
+ endif
+ endif
+ 
++# The archives are built by descending into their directory, which must happen
++# exactly once: two rules with the same recipe let "make -j" run two sub-makes
++# in the same directory at once, and their concurrent "ar cr" calls truncate
++# the archive. The file targets therefore carry an empty recipe (";") and let
++# the phony directory target do the work.
+ libgame_dir:
+ 	@$(MAKE) -C $(LIBGAME_DIR)
+-$(LIBGAME):
+-	@$(MAKE) -C $(LIBGAME_DIR)
++$(LIBGAME): libgame_dir ;
+ 
+ game_bd_dir:
+ 	@$(MAKE) -C $(GAME_BD_DIR)
+-$(GAME_BD):
+-	@$(MAKE) -C $(GAME_BD_DIR)
++$(GAME_BD): game_bd_dir ;
+ 
+ game_em_dir:
+ 	@$(MAKE) -C $(GAME_EM_DIR)
+-$(GAME_EM):
+-	@$(MAKE) -C $(GAME_EM_DIR)
++$(GAME_EM): game_em_dir ;
+ 
+ game_sp_dir:
+ 	@$(MAKE) -C $(GAME_SP_DIR)
+-$(GAME_SP):
+-	@$(MAKE) -C $(GAME_SP_DIR)
++$(GAME_SP): game_sp_dir ;
+ 
+ game_mm_dir:
+ 	@$(MAKE) -C $(GAME_MM_DIR)
+-$(GAME_MM):
+-	@$(MAKE) -C $(GAME_MM_DIR)
++$(GAME_MM): game_mm_dir ;
+ 
+ auto-conf:
+ 	@for i in $(CNFS); do			\
