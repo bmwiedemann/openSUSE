@@ -1,7 +1,8 @@
 """Locate system libEGL/libGLESv2 (libglvnd/Mesa) for ComfyUI's ANGLE API.
 
-This is a distro implementation of the PyPI comfy-angle 0.1.0 import API.
-It does not ship Chromium ANGLE or Electron-extracted shared libraries.
+This is a distro implementation of the PyPI comfy-angle 0.1.1 import API.
+It does not ship Chromium ANGLE shared libraries; headless operation is
+provided by Mesa's surfaceless EGL platform.
 """
 
 import ctypes.util
@@ -12,7 +13,7 @@ from importlib.metadata import PackageNotFoundError, version as _version
 try:
     __version__ = _version("comfy-angle")
 except PackageNotFoundError:
-    __version__ = "0.1.0"
+    __version__ = "0.1.1"
 
 __all__ = ["get_lib_dir", "get_egl_path", "get_glesv2_path"]
 

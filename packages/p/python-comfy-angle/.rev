@@ -20,4 +20,32 @@ Fri Aug 21 12:20:13 UTC 2026 - Martin Pluskal &lt;mpluskal@suse.com&gt;
 </comment>
     <requestid>1372848</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b243bcdf6d90e1f7fda5088326d98b72</srcmd5>
+    <version>0.1.1</version>
+    <time>1787579028</time>
+    <user>anag_factory</user>
+    <comment>Update python-comfy-angle to 0.1.1.
+
+Upstream 0.1.1 leaves the import API unchanged (get_lib_dir, get_egl_path,
+get_glesv2_path); its only source change is a docstring. The substantive work
+is upstream's own: Linux ANGLE libraries are now built from the pinned ANGLE
+revision without X11/Wayland/GBM instead of being extracted from Electron,
+plus a new Windows arm64 wheel. This package ships none of those prebuilt
+binaries - it stays the Mesa/libglvnd-backed distro implementation that
+locates the system libEGL.so.1 / libGLESv2.so.2 - so only the version, the
+docs and the prose that still said &quot;Electron-extracted&quot; needed updating.
+%check additionally asserts the installed dist metadata version equals
+%{version}, so the spec and the hand-maintained pyproject.toml cannot drift.
+
+License stays MIT: every shipped file is distro-authored, nothing is vendored;
+upstream's BSD-3-Clause covers only the ANGLE binaries we do not ship. No
+patches, no _service, no shared library.
+
+Built natively on aarch64 against openSUSE:Factory:ARM/standard with --clean:
+rpmlint 0 errors / 0 warnings / 0 badness, %check ran on python313 and
+python314 and ctypes-loaded the real system libEGL/libGLESv2 in the chroot.
+spec-cleaner no-diff, source_validator rc0.</comment>
+    <requestid>1373166</requestid>
+  </revision>
 </revisionlist>

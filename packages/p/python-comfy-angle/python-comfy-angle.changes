@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Aug 23 05:18:32 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.1.1:
+  * Track the upstream comfy-angle 0.1.1 import API; the public
+    surface (get_lib_dir, get_egl_path, get_glesv2_path) is
+    unchanged from 0.1.0
+  * Upstream now builds the Linux ANGLE libraries without X11,
+    Wayland or GBM instead of extracting them from Electron; the
+    distro wrapper stays headless via Mesa's surfaceless EGL
+  * Upstream adds a Windows arm64 build, which does not affect this
+    package
+- Assert the installed dist metadata version in %check so the spec
+  and pyproject.toml versions cannot drift apart
+
+-------------------------------------------------------------------
 Fri Aug 21 12:20:13 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Initial package of python-comfy-angle 0.1.0:

@@ -18,15 +18,17 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-comfy-angle
-Version:        0.1.0
+Version:        0.1.1
 Release:        0
 Summary:        Mesa/libglvnd backend for ComfyUI's comfy-angle API
-# Legal-Review-Notice: this package does not ship ANGLE or Electron
-# binaries; it locates system libEGL/libGLESv2 from libglvnd/Mesa. The
-# name matches the ComfyUI optional extra comfy-angle.
+# Legal-Review-Notice: this package does not ship ANGLE, Chromium or
+# Electron binaries; it locates system libEGL/libGLESv2 from
+# libglvnd/Mesa. The name matches the ComfyUI optional extra
+# comfy-angle. License is MIT for this distro-authored code (upstream's
+# own BSD-3-Clause covers only the ANGLE binaries we do not ship).
 License:        MIT
 URL:            https://github.com/Comfy-Org/comfy-angle
-# Distro wrapper implementing the PyPI comfy-angle 0.1.0 Python API
+# Distro wrapper implementing the PyPI comfy-angle 0.1.1 Python API
 # against system Mesa/libglvnd. Bare filenames (no download URL) so
 # factory-auto does not fetch Electron/GitHub wheels.
 Source0:        pyproject.toml
@@ -51,10 +53,11 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-Distro implementation of the comfy-angle 0.1.0 Python API used by
+Distro implementation of the comfy-angle 0.1.1 Python API used by
 ComfyUI's GLSL Shader node. The module locates the system's libEGL
 and libGLESv2 (libglvnd dispatch plus Mesa) at runtime. It does not
-ship Chromium ANGLE or Electron-extracted binaries.
+ship Chromium ANGLE binaries; headless rendering comes from Mesa's
+surfaceless EGL platform.
 
 %prep
 %setup -q -T -c -n comfy-angle-%{version}
@@ -74,8 +77,8 @@ cp %{SOURCE3} README.md
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# Import the 0.1.0 API and load system libEGL/libGLESv2 (fail if missing).
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -B -c "import ctypes, comfy_angle as c; assert c.__all__ == ['get_lib_dir', 'get_egl_path', 'get_glesv2_path']; e, g = c.get_egl_path(), c.get_glesv2_path(); assert e and g; ctypes.CDLL(e); ctypes.CDLL(g); c.get_lib_dir()"
+# Import the 0.1.1 API and load system libEGL/libGLESv2 (fail if missing).
+%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -B -c "import ctypes, comfy_angle as c; assert c.__version__ == '%{version}', c.__version__; assert c.__all__ == ['get_lib_dir', 'get_egl_path', 'get_glesv2_path']; e, g = c.get_egl_path(), c.get_glesv2_path(); assert e and g; ctypes.CDLL(e); ctypes.CDLL(g); c.get_lib_dir()"
 
 %files %{python_files}
 %license LICENSE
