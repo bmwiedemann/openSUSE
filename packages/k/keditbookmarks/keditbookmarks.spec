@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
 
 %bcond_without released
 Name:           keditbookmarks
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        KDE Bookmark Editor
 License:        GPL-2.0-only
@@ -78,7 +78,6 @@ This is an editor to edit your KDE-wide bookmark set.
 %{_kf6_configkcfgdir}/keditbookmarks.kcfg
 %{_kf6_debugdir}/keditbookmarks.categories
 %{_kf6_libdir}/libkbookmarkmodel_private.so.*
-
 
 %files lang -f %{name}.lang
 %exclude %{_kf6_htmldir}/en/keditbookmarks/
