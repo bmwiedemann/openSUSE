@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
 
 %bcond_without released
 Name:           konsole
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        KDE Terminal
 License:        GPL-2.0-or-later
@@ -71,12 +71,13 @@ BuildRequires:  cmake(Qt6PrintSupport) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  pkgconfig(icu-i18n) >= 61.0
 BuildRequires:  pkgconfig(icu-uc) >= 61.0
+BuildRequires:  pkgconfig(libssh)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(zlib)
 Requires:       konsole-part = %{version}
 Obsoletes:      konsole5 < %{version}
-Provides:       konsole5 = %{version}
 Provides:       konsole-zsh-completion = %{version}
+Provides:       konsole5 = %{version}
 Obsoletes:      konsole-zsh-completion < %{version}
 
 %description
