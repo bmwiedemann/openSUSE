@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Sun Aug 16 07:27:18 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.08.0/
+- No code change since 26.07.90
+
+-------------------------------------------------------------------
+Sat Aug  1 11:39:00 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.07.90
+  * New feature release
+- No code change since 26.07.80
+
+-------------------------------------------------------------------
+Sat Jul 18 11:11:41 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.07.80
+  * New feature release
+- Changes since 26.04.3:
+  * Refactor open file/folder dialogs
+  * Switch to KSandbox for determining if currently running in container
+  * Display currently used journal location in window title
+  * Fix url conversion for last used folder open dialog
+  * Add portal based access to initial journal when running in Flatpak/Snap
+  * Add main features for last two feature releases
+  * Add unit tests for string cleanup operation
+  * Fix loading of previously priority filter level "no filter"
+  * Fix journal DB switching corner cases
+  * Use QT_ENABLE_STRICT_MODE_UP_TO for Qt 6.5 API
+  * Cleanup cleanupString method
+  * Avoid overhead for color code cleanups
+  * Imporove JournaldViewModel::readEntries hot path
+  * Improve JournaldHelper::cleanupString hot path
+  * Disable filter critieras when categories are empty
+  * Use QQmlParserStatus to avoid redundant filter criteria model resets during startup
+  * Fix race in filter criteria cache generation
+  * Hide filter category for user/system units when it makes no sense
+  * Fix page up/down behavior for key events
+  * Introduce small cache for unique services per boot
+
+-------------------------------------------------------------------
 Tue Jun 30 18:19:37 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.04.3
