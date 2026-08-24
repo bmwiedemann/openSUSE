@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 24 07:41:32 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20260823
+  * Improved error handling about timestamp reading
+  * A bit of EXFAT support: support for directory data stream flags
+
+-------------------------------------------------------------------
 Sat Aug 22 14:43:14 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20260822
