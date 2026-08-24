@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
-%define kpim6_version 6.7.3
+%define kpim6_version 6.8.0
 
 %bcond_without released
 Name:           kimap
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        Library to assist working with IMAP servers
 License:        LGPL-2.1-or-later
@@ -37,7 +37,7 @@ BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
-BuildRequires:  cmake(KPim6Mime) >= %{kpim6_version}
+BuildRequires:  cmake(KF6Mime) >= %{kf6_version}
 BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
 
 %description
@@ -51,8 +51,8 @@ Requires:       cyrus-sasl-crammd5
 Requires:       cyrus-sasl-digestmd5
 Requires:       cyrus-sasl-gssapi
 Requires:       cyrus-sasl-plain
-Requires:       sasl2-kdexoauth2
 Requires:       kimap >= %{version}
+Requires:       sasl2-kdexoauth2
 Obsoletes:      kimap-lang <= 23.04.0
 Obsoletes:      libKF5IMAP5 < %{version}
 Obsoletes:      libKPim5IMAP5 < %{version}
@@ -67,7 +67,7 @@ Summary:        Development files for kimap
 Requires:       cyrus-sasl-devel
 Requires:       libKPim6IMAP6 = %{version}
 Requires:       cmake(KF6CoreAddons) >= %{kf6_version}
-Requires:       cmake(KPim6Mime) >= %{kpim6_version}
+Requires:       cmake(KF6Mime) >= %{kf6_version}
 
 %description devel
 This package contains development headers to add IMAP support to PIM
