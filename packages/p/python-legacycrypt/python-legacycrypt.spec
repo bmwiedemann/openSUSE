@@ -1,7 +1,7 @@
 #
 # spec file for package python-legacycrypt
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,9 @@ Summary:        Wrapper to the POSIX crypt library call and associated functiona
 License:        Python-2.0
 URL:            https://github.com/tiran/legacycrypt
 Source:         https://files.pythonhosted.org/packages/source/l/legacycrypt/legacycrypt-%{version}.tar.gz
-BuildRequires:  %{python_module flit}
+# PATCH-FIX-UPSTREAM gh#tiran/legacycrypt#3
+Patch0:         support-flit-core-4.patch
+BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  fdupes

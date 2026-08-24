@@ -7,4 +7,13 @@
     <comment>- Initial release of 0.3</comment>
     <requestid>1226137</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>838404714f2aaa51eb6fb48657b936f5</srcmd5>
+    <version>0.3</version>
+    <time>1787566300</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-flit-core-4.patch:
+  * Switch to flit-core as the build API (and support flit-core 4)</comment>
+    <requestid>1373290</requestid>
+  </revision>
 </revisionlist>

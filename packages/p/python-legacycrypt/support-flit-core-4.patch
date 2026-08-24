@@ -1,0 +1,50 @@
+From cb260077a8698526fe269f7efb7974dc6b28b5de Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Mon, 24 Aug 2026 12:19:43 +1000
+Subject: [PATCH] Switch to flit-core
+
+Use flit-core as the build API, and a bonus, support flit-core 4.
+---
+ pyproject.toml | 26 ++++++++++++++++----------
+ 1 file changed, 16 insertions(+), 10 deletions(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 2ff97e0..c4417fd 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -1,15 +1,18 @@
+ [build-system]
+-requires = ["flit"]
+-build-backend = "flit.buildapi"
++requires = ["flit-core"]
++build-backend = "flit_core.buildapi"
+ 
+-[tool.flit.metadata]
+-module = "legacycrypt"
+-author = "Christian Heimes"
+-author-email = "christian@python.org"
+-maintainer = "Christian Heimes"
+-maintainer-email = "christian@python.org"
+-home-page = "https://github.com/tiran/legacycrypt"
+-description-file = "README.md"
++[project]
++name = "legacycrypt"
++version = "0.3"
++authors = [
++    {name = "Christian Heimes", email = "christian@python.org"},
++]
++maintainers = [
++    {name = "Christian Heimes", email = "christian@python.org"},
++]
++description = "Function to check Unix passwords"
++readme = "README.md"
+ classifiers = [
+     "Development Status :: 5 - Production/Stable",
+     "Programming Language :: Python :: 3.6",
+@@ -25,3 +28,6 @@ classifiers = [
+ ]
+ # 3.5 for pypy3. It supports f"" but not 10_000.
+ requires-python = ">=3.5"
++
++[project.urls]
++Homepage = "https://github.com/tiran/legacycrypt"
