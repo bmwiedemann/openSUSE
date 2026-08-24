@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
 
 %bcond_without released
 Name:           libktorrent
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        Torrent Downloading Library
 License:        GPL-2.0-or-later
@@ -62,6 +62,7 @@ libktorrent is a torrent downloading library.
 
 %package devel
 Summary:        Development files for libktorrent
+Requires:       gmp-devel >= 6.0.0
 Requires:       libKTorrent6 = %{version}
 Requires:       libboost_headers-devel >= 1.66.0
 Requires:       cmake(KF6Archive) >= %{kf6_version}
@@ -69,7 +70,6 @@ Requires:       cmake(KF6Config) >= %{kf6_version}
 Requires:       cmake(KF6KIO) >= %{kf6_version}
 Requires:       cmake(Qt6Core) >= %{qt6_version}
 Requires:       cmake(Qt6Network) >= %{qt6_version}
-Requires:       gmp-devel >= 6.0.0
 Requires:       pkgconfig(libgcrypt) >= 1.4.5
 
 %description devel
@@ -105,7 +105,7 @@ sed -i 's#1.71.0#1.66.0#' CMakeLists.txt
 
 %files devel
 %{_kf6_cmakedir}/KTorrent6/
-%{_kf6_includedir}/libktorrent/
+%{_includedir}/libktorrent/
 %{_kf6_libdir}/libKTorrent6.so
 
 %files -n libKTorrent6-lang -f %{name}.lang
