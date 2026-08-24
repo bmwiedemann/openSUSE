@@ -23,12 +23,12 @@
 %bcond_without qtwebengine
 %endif
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
 
 %bcond_without released
 Name:           kaccounts-providers
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        KDE Accounts Providers
 License:        GPL-2.0-or-later
@@ -37,8 +37,8 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  intltool
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  cmake(KAccounts6)
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
