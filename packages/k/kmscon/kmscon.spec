@@ -18,13 +18,17 @@
 
 
 Name:           kmscon
-Version:        10.0.1
+Version:        10.0.2
 Release:        0
 Summary:        Linux KMS/DRM based virtual Console Emulator
 License:        MIT
 Group:          System/Console
 URL:            https://github.com/kmscon/kmscon
 Source:         %{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-seat-Fix-use-after-free-in-kmscon_seat_remove_video.patch
+# PATCH-FIX-DOWNSTREAM
+Patch100:       0001-Reapply-service-Revert-to-agetty-for-showing-issue.patch
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  meson
 BuildRequires:  pkg-config
@@ -99,6 +103,7 @@ rm %{buildroot}%{_sysconfdir}/kmscon/kmscon.conf.example
 %{_bindir}/%{name}-launch-gui
 %dir %{_libdir}/kmscon/
 %{_libdir}/kmscon/mod-freetype.so
+%{_libdir}/kmscon/mod-psf.so
 %{_libdir}/kmscon/mod-unifont.so
 %{_mandir}/man1/kmscon.1%{?ext_man}
 %{_mandir}/man5/kmscon.conf.5%{?ext_man}

@@ -1,0 +1,87 @@
+From 7f30562947a83f5e10fc8f6e5eb8c9b04927b8e6 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fvogt@suse.de>
+Date: Fri, 21 Aug 2026 15:02:23 +0200
+Subject: [PATCH] Reapply "service: Revert to agetty for showing issue."
+
+This reverts commit e3c2721fa3612ad937b437601a7500da3ebb0cfe.
+
+It's not feature complete and also needs SELinux policy changes
+to work:
+
+https://github.com/kmscon/kmscon/issues/407
+https://github.com/fedora-selinux/selinux-policy/issues/3368
+---
+ docs/man/kmscon.1.xml.in             | 2 +-
+ scripts/systemd/kmscon.service.in    | 2 +-
+ scripts/systemd/kmsconvt@.service.in | 2 +-
+ src/config.c                         | 7 +++----
+ 4 files changed, 6 insertions(+), 7 deletions(-)
+
+diff --git a/docs/man/kmscon.1.xml.in b/docs/man/kmscon.1.xml.in
+index 09d630ef7625..496dcb229b94 100644
+--- a/docs/man/kmscon.1.xml.in
++++ b/docs/man/kmscon.1.xml.in
+@@ -245,7 +245,7 @@
+         <listitem>
+           <para>Display issue files before the login prompt. Use --no-issue to
+                 let the login process handle it.
+-                (default: on)</para>
++                (default: off)</para>
+         </listitem>
+       </varlistentry>
+ 
+diff --git a/scripts/systemd/kmscon.service.in b/scripts/systemd/kmscon.service.in
+index 9b169f0e63ad..f15747d2c3b2 100644
+--- a/scripts/systemd/kmscon.service.in
++++ b/scripts/systemd/kmscon.service.in
+@@ -7,7 +7,7 @@ After=rc-local.service
+ 
+ [Service]
+ @PAM_CFG@
+-ExecStart=kmscon
++ExecStart=kmscon --login -- /sbin/agetty -8 -o '-p -- \\u' --noclear -- - $$TERM
+ 
+ [Install]
+ WantedBy=multi-user.target
+diff --git a/scripts/systemd/kmsconvt@.service.in b/scripts/systemd/kmsconvt@.service.in
+index cd59fdb4b488..9762fc130c54 100644
+--- a/scripts/systemd/kmsconvt@.service.in
++++ b/scripts/systemd/kmsconvt@.service.in
+@@ -39,7 +39,7 @@ ConditionPathExists=/dev/tty0
+ 
+ [Service]
+ @PAM_CFG@
+-ExecStart=kmscon --vt=%I --no-switchvt
++ExecStart=kmscon --vt=%I --no-switchvt --login -- /sbin/agetty -8 -o '-p -- \\u' --noclear -- - $$TERM
+ UtmpIdentifier=%I
+ TTYPath=/dev/%I
+ TTYReset=yes
+diff --git a/src/config.c b/src/config.c
+index ca2d66711f87..ab41967a82d6 100644
+--- a/src/config.c
++++ b/src/config.c
+@@ -99,10 +99,9 @@ static void print_help()
+ 		"\t    --reset-env             [on]\n"
+ 		"\t                              Reset environment before running child\n"
+ 		"\t                              process\n"
+-		"\t    --issue                 [on]\n"
++		"\t    --issue                 [off]\n"
+ 		"\t                              Display issue files before the\n"
+-		"\t                              login prompt. Use --no-issue to\n"
+-		"\t                              let the login process handle it.\n"
++		"\t                              login prompt.\n"
+ 		"\t    --issue-path <path>     [" ISSUE_DEFAULT_PATH "]\n"
+ 		"\t                              Colon-separated list of issue\n"
+ 		"\t                              files and directories to read\n"
+@@ -738,7 +737,7 @@ int kmscon_conf_new(struct conf_ctx **out)
+ 		CONF_OPTION_BOOL(0, "session-control", &conf->session_control, false),
+ 
+ 		/* Terminal Options */
+-		CONF_OPTION_BOOL(0, "issue", &conf->issue, true),
++		CONF_OPTION_BOOL(0, "issue", &conf->issue, false),
+ 		CONF_OPTION_STRING(0, "issue-path", &conf->issue_path, ISSUE_DEFAULT_PATH),
+ 		CONF_OPTION_STRING(0, "asciicast", &conf->asciicast, NULL),
+ 		CONF_OPTION_BOOL(0, "asciicast-loop", &conf->asciicast_loop, false),
+-- 
+2.55.0
+

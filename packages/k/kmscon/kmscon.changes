@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Fri Aug 21 07:50:06 UTC 2026 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 10.0.2:
+  * Prepare v10.0.2
+  * text: invert color for full block cursor
+  * video: Restore shl_export macros
+  * video: remove stride for glyph buffers.
+  * fonts: use replacement char macro
+  * docs: Add psf font support in Readme and man pages
+  * font_psf: add gz support
+  * font_psf: Add psf font format support
+  * issue_network: fix msghdr initialization with musl
+  * dbus: silence DBUS_ERROR_SERVICE_UNKNOWN errors
+  * video: merge video_ops and video_module into video_ops
+  * video: remove VIDEO_CALL macro
+  * video: remove video_get_displays, and use the common for each to list displays
+  * video: refactor, replace hook and event with simple callbacks
+  * video: remove unused VIDEO_SLEEP / VIDEO_WAKE_UP
+  * freetype: Fix top if it may crop the glyph for bitmap fonts
+  * text: fix cursor outside of the screen
+  * bbulk: fix mouse software cursor when rotated.
+  * bbulk: Fix mouse soft cursor
+  * terminal: reset blink timer when typing
+  * text: Add cursor style support
+  * freetype: Fix underline on space
+  * misc: Fix modifiers check for keyboard shortcut
+  * input: Fix mouse button order
+  * seat: Fix segfault in uterm_monitor_set_dev_data()
+  * 8x16: Add bold and underline support
+  * 8x16: Add scaling support to 8x16 font
+  * docs: Add man page for --issue, and reorder terminal options
+  * Revert "service: Revert to agetty for showing issue."
+  * term: don't open pty when there are no screen
+  * docs/meson: simplify man pages files names
+  * tests/meson: fix formatting
+  * Add an editorconfig file
+  * Remove trailing blank lines
+  * issue: consume oversized escape parameters
+  * issue: handle unavailable network addresses
+  * ci: delete manual install of libtsm
+  * asciinema/meson: add missing dependency on libtsm
+  * meson: fix libtsm subproject version to match dependency bump
+  * meson: fix libtsm subproject version to match dependency bump
+  * meson: format all the files
+  * ci: enforce correct meson formatting
+  * COPYING: include the OFL-1.1 license for unifont
+  * issue: Add \a and \A support
+  * issue: Handle \4 and \6
+  * issue: Add network to display IP address
+  * issue: add a generic get_parameter()
+  * issue: use a switch case for all escape code
+  * workflows: Fix clang check
+  * kmscon: drop kmscon_ prefix for the main sources.
+  * uterm: move the uterm static library to its own directory
+  * misc: create misc static library with the remaining files
+  * issue: Add a test program
+  * COPYING: Update path to hash-table implementation
+  * COPYING: Remove reference to third-party dbus-loop code
+  * COPYING: Remove most third-party source references
+  * docs: Update links to the vte and hterm projects
+  * docs: Use HTTPS in external links
+  * drm: retry modeset for connected offline displays
+  * drm: preserve display state on failed modesets
+  * docs: Add missing blink configuration option to kmscon.conf.example
+  * conf: Add a blink option
+  * terminal: add asciicast playback
+- Add patch to fix crash on exit:
+  * 0001-seat-Fix-use-after-free-in-kmscon_seat_remove_video.patch
+- Add revert to switch to agetty again for now:
+  * 0001-Reapply-service-Revert-to-agetty-for-showing-issue.patch
+
+-------------------------------------------------------------------
 Thu Jul  2 13:49:21 UTC 2026 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 10.0.1:
