@@ -449,4 +449,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1360888</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>f3f26685f974955461fd6718987feab2</srcmd5>
+    <version>8.6</version>
+    <time>1787565708</time>
+    <user>anag_factory</user>
+    <comment>- update to 8.6:
+  * Add support for Python 3.15.</comment>
+    <requestid>1373083</requestid>
+  </revision>
 </revisionlist>
