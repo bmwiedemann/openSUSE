@@ -220,4 +220,39 @@ and python-pydantic-settings</comment>
     no:ranodmly`</comment>
     <requestid>1363034</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f5c51b2f6d23e29676488bfe9eae2328</srcmd5>
+    <version>0.35.4</version>
+    <time>1787565693</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.35.4:
+  * Prevented `--inline-snapshot=trim` from changing snapshots
+    when a test body fails or pytest is limited with `-k`, a test
+    path, or a test node ID. Skipped tests and fixture teardown
+    errors do not prevent trimming. A message now
+    explains why trimming was disabled when it was requested
+    implicitly. An explicit `--inline-snapshot=trim` overrides this
+    safeguard.
+  * Fixed a crash during session finalization when pytest's
+    capture plugin is disabled.
+  * Added `Builder.create_set()` for creating set expressions in
+    customization functions.
+  * Fixed set snapshot serialization to be deterministic for
+    partially ordered values such as incomparable `frozenset` members.
+  * Fixed a crash when an unknown `--inline-snapshot` flag is
+    provided, without running report finalization or modifying
+    external snapshot tracking files.
+  * fix passing `PYTHONPATH`, `PYTHONWARNINGS`, and
+    `PYTHONDONTWRITEBYTECODE` while running the test suite.
+  * fix passing `PYTEST_DISABLE_PLUGIN_AUTOLOAD` and
+    `PYTEST_PLUGINS` while running the test suite.
+  * inline-snapshot now tracks source files that use `external()`
+    in `.inline-snapshot/files_using_external.txt` (inside
+    `storage-dir`) and uses this tracked list to detect and trim
+    unused external snapshots.
+  * The `tool.inline-snapshot.test-dir` configuration option is
+    only used as a compatibility fallback when
+    `files_using_external.txt` does not exist yet.</comment>
+    <requestid>1373042</requestid>
+  </revision>
 </revisionlist>

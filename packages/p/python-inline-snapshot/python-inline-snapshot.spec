@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-inline-snapshot%{psuffix}
-Version:        0.34.2
+Version:        0.35.4
 Release:        0
 Summary:        Create and update inline snapshots in your Python code
 License:        MIT
