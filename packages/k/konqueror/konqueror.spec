@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
 
 %bcond_without released
 Name:           konqueror
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        KDE File Manager and Browser
 # Note for legal: webenginepart/autotests/webengine_testutils.h is neither built nor installed in our package.
@@ -65,8 +65,8 @@ BuildRequires:  cmake(Qt6WebEngineWidgets) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  pkgconfig(zlib)
 Requires:       webenginepart
-Recommends:     konqueror-plugins
 Recommends:     dolphin-part
+Recommends:     konqueror-plugins
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  x86_64 %{x86_64} aarch64 riscv64
 

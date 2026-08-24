@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Sun Aug 16 07:27:30 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.08.0/
+- No code change since 26.07.90
+
+-------------------------------------------------------------------
+Sat Aug  1 11:39:12 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.07.90
+  * New feature release
+- Changes since 26.07.80:
+  * Fix crash when clicking on Configure Policy button in Cookie Management KCM
+
+-------------------------------------------------------------------
+Sat Jul 18 11:11:53 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.07.80
+  * New feature release
+- Changes since 26.04.3:
+  * Fix minor typo (repeated word)
+  * Improve text of the "Protect window" action
+  * Add actions to quit Konqueror and action to close all other windows
+  * Don't fill the location bar when showing a preloaded window
+  * Make detecting a preloaded window more robust
+  * Ensure that slotLoadStarted, slotUrlChanged and slotLoadFinished are always called in the expected order
+  * Emit the correct signal so that "View Image" works
+  * Don't emit setLocationBarUrl() when the current URL is empty
+  * Fix history handling with WebEnginePart
+  * Delete the configuration dialog after the user closes it
+  * Show current User Agent in browser identification setting page
+  * Pass an empty URL when emitting browserCreateNewWindow from WebEnginePage
+  * Replace KColorScheme with QPalette where possible
+  * Ensure preloading is turned off
+  * Call setUrl before calling slotLoadStarted
+  * KonqClosedItem: Comment out frequent but not useful debug messages
+  * Allow the user to choose to open the start page when creating a new tab
+  * Don't call QWebEngineNewWindowRequest::openIn() when creating a new window
+  * Revert "Connect the location bar slotActivated slot also to the returnPressed signal"
+
+-------------------------------------------------------------------
 Tue Jun 30 18:19:48 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.04.3
