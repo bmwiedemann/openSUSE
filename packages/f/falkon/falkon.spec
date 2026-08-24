@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
 
 %bcond_without released
 Name:           falkon
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        Modern web browser
 License:        GPL-3.0-or-later
@@ -31,8 +31,8 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  fdupes
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-network-private-devel >= %{qt6_version}
 BuildRequires:  cmake(KF6Archive) >= %{kf6_version}
@@ -64,8 +64,8 @@ Requires:       qt6-sql-sqlite >= %{qt6_version}
 Recommends:     falkon-kde
 Provides:       qupzilla = %{version}
 Obsoletes:      qupzilla < %{version}
-Provides:       web_browser
 Provides:       falkon-gnome-keyring = %{version}
+Provides:       web_browser
 Obsoletes:      falkon-gnome-keyring < %{version}
 # No QtWebEngine for other archs
 ExclusiveArch:  aarch64 x86_64 %{x86_64} riscv64
