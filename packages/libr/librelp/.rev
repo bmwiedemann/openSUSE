@@ -356,4 +356,26 @@ No indication of GPL-3.0 ^only^ files in package. Fedora also using GPL-3.0+ (fo
   support, requires support from the caller). It also contains</comment>
     <requestid>1324607</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>794e89d2b1f4794e22a161231cd7a3a7</srcmd5>
+    <version>1.13.0</version>
+    <time>1787565709</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.13.0:
+  * API: add server-session lifecycle callbacks
+  * Applications can now register callbacks for session open,
+    close, and failed-open events. Callback teardown semantics
+    and the accompanying regression coverage have been corrected
+    as well.
+  * relp: avoid spurious errors while tearing down half-open
+    clients
+  * Do not attempt a graceful RELP close when a client has not
+    reached a state in which it can send one, avoiding an extra
+    wait-state error during shutdown.
+  * OpenSSL: apply client TLS configuration commands before
+    creating SSL objects
+  * tlsConfigCmd settings such as Groups now take effect on
+    client connections, including on OpenSSL 3.x.</comment>
+    <requestid>1373091</requestid>
+  </revision>
 </revisionlist>
