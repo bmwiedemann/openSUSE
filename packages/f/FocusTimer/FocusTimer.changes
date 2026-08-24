@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Aug 24 06:32:03 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.1.4:
+  * MPRIS integration
+  * Relax Pomodoro completion threshold from 80% to 75%
+  * Relax completion threshold for long breaks
+  * Determine session expiry timeout based on Pomodoro duration
+  * Do not detect activity while on a lock-screen with "Pause By Locking The Screen" off
+  * Fix activity detection after first break
+  * Fix higher CPU usage when opening window in Stats view
+
+-------------------------------------------------------------------
 Mon Jul 27 15:22:54 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - gnome-pomodoro got renamed FocusTimer in 1.0.0

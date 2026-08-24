@@ -18,7 +18,7 @@
 
 %global __requires_exclude typelib\\(Meta\\)
 Name:           FocusTimer
-Version:        1.1.3
+Version:        1.1.4
 Release:        0
 Summary:        A time management utility for GNOME
 License:        GPL-3.0-or-later

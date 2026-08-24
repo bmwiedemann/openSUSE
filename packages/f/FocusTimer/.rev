@@ -7,4 +7,19 @@
     <comment></comment>
     <requestid>1368351</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>643f562cd0abdac5bbd740d0386b9304</srcmd5>
+    <version>1.1.4</version>
+    <time>1787566308</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.1.4:
+  * MPRIS integration
+  * Relax Pomodoro completion threshold from 80% to 75%
+  * Relax completion threshold for long breaks
+  * Determine session expiry timeout based on Pomodoro duration
+  * Do not detect activity while on a lock-screen with &quot;Pause By Locking The Screen&quot; off
+  * Fix activity detection after first break
+  * Fix higher CPU usage when opening window in Stats view</comment>
+    <requestid>1373325</requestid>
+  </revision>
 </revisionlist>
