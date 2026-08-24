@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Aug 22 09:56:19 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.10.0:
+  * Use `=` as separator for the test run report
+  * Respect verbosity/quietness settings when deciding to print
+    the parallel report summary
+  * Configure per-test report to be displayed at higher verbosity
+    modes
+  * Create a separate tmpdir/tmp_path subdirectory for each
+    iteration, so these fixtures can work with --iterations
+- update to 0.9.1:
+  * Fix xpass tests incorrectly being recognized as passes
+  * Add a Python 3.15 trove classifier
+- update to 0.9.0:
+  * Drop python 3.9
+  * Add a force_parallel_threads mark
+  * Avoid crash for sybil doctests
+  * Fix test failures running on a single-CPU system
+
+-------------------------------------------------------------------
 Sun Apr 12 18:57:53 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.8.2:

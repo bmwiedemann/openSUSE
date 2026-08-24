@@ -17,7 +17,7 @@
 
 
 Name:           python-pytest-run-parallel
-Version:        0.8.2
+Version:        0.10.0
 Release:        0
 Summary:        A simple pytest plugin to run tests concurrently
 License:        MIT
