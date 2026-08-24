@@ -1,0 +1,51 @@
+From 3e5fd9dd0fad5718a3fc884ab237e826b569489f Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Mon, 24 Aug 2026 14:43:05 +1000
+Subject: [PATCH] Only use dataclasses._MISSING_TYPE if it's defined
+
+Python 3.15 has removed dataclasses._MISSING_TYPE, since it now uses its
+own built in sentinal type, so make use of it if it's defined, falling
+back to checking dataclasses.MISSING if it is.
+---
+ dataclasses_json/undefined.py | 24 ++++++++++++++++--------
+ 1 file changed, 16 insertions(+), 8 deletions(-)
+
+diff --git a/dataclasses_json/undefined.py b/dataclasses_json/undefined.py
+index cb8b2cfc..16cf0457 100644
+--- a/dataclasses_json/undefined.py
++++ b/dataclasses_json/undefined.py
+@@ -168,18 +168,26 @@ def handle_from_dict(cls, kvs: Dict) -> Dict[str, Any]:
+         return known
+ 
+     @staticmethod
+-    def _get_default(catch_all_field: Field) -> Any:
++    def _is_missing(field_name):
+         # access to the default factory currently causes
+         # a false-positive mypy error (16. Dec 2019):
+         # https://github.com/python/mypy/issues/6910
+ 
+-        # noinspection PyProtectedMember
+-        has_default = not isinstance(catch_all_field.default,
+-                                     dataclasses._MISSING_TYPE)
+-        # noinspection PyProtectedMember
+-        has_default_factory = not isinstance(catch_all_field.default_factory,
+-                                             # type: ignore
+-                                             dataclasses._MISSING_TYPE)
++        # Python 3.14 and earlier
++        if hasattr(dataclasses, "_MISSING_TYPE"):
++            # noinspection PyProtectedMember
++            return not isinstance(field_name, dataclasses._MISSING_TYPE)
++        else:
++            return field_name is not dataclasses.MISSING
++
++    @staticmethod
++    def _get_default(catch_all_field: Field) -> Any:
++        has_default = _CatchAllUndefinedParameters._is_missing(
++            catch_all_field.default
++        )
++        has_default_factory = _CatchAllUndefinedParameters._is_missing(
++            catch_all_field.default_factory
++        )
+         # TODO: black this for proper formatting
+         default_value: Union[
+             Type[_CatchAllUndefinedParameters._SentinelNoDefault], Any] = _CatchAllUndefinedParameters\

@@ -65,4 +65,15 @@
   * Do not use internals to check if fields are undefined.</comment>
     <requestid>1370746</requestid>
   </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>f10920e19de9b5a1ca9e833e47525cc0</srcmd5>
+    <version>0.6.7</version>
+    <time>1787566305</time>
+    <user>anag_factory</user>
+    <comment>- Rename patch no-dataclasses-missing-type.patch to
+  support-python315.patch:
+  * Support checking if fields are undefined for Python 3.15 as well as
+    earlier versions.</comment>
+    <requestid>1373302</requestid>
+  </revision>
 </revisionlist>
