@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Aug 22 09:38:17 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.3.0:
+  * Added strip_ansi for removing ANSI escape sequences (e.g. SGR
+    color codes) from a string.
+
+-------------------------------------------------------------------
 Sun Mar 15 15:35:56 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.2.0:

@@ -192,4 +192,14 @@
     jaraco.text.FoldedCase.split -- by :user:`Avasam`</comment>
     <requestid>1339134</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>4abaca52328b53191fa4879be6b5ce1e</srcmd5>
+    <version>4.3.0</version>
+    <time>1787565695</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.3.0:
+  * Added strip_ansi for removing ANSI escape sequences (e.g. SGR
+    color codes) from a string.</comment>
+    <requestid>1373043</requestid>
+  </revision>
 </revisionlist>
