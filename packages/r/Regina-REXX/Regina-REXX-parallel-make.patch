@@ -1,0 +1,75 @@
+From: Martin Pluskal <martin@pluskal.org>
+Subject: Build the alternate-variant objects with -o instead of renaming
+
+Four rules compile a source file a second time under different defines
+(-DRXLIB for drexx, -DEXTERNAL_TO_REGINA for eextstack/erexxbif) but pass
+no -o, so the compiler writes the *base* object name.  To end up with the
+object the rule promises, each one moves the shared object aside, compiles,
+renames the result, and moves the original back:
+
+	-mv extstack.$(OBJ) extstack$(OSAVE)
+	$(CC) -DEXTERNAL_TO_REGINA $(COPT) -c $(srcdir)/extstack.c
+	-mv extstack.$(OBJ) eextstack.$(OBJ)
+	-mv extstack$(OSAVE) extstack.$(OBJ)
+
+That makes the rules non-reentrant.  With -j > 1 the base object is missing
+for whatever window the dance is open, and any concurrent rule needing it
+fails:
+
+	ar: extstack.o: No such file or directory
+	make: *** [Makefile:363: libregina.a] Error 1
+	cc: error: no such file or directory: 'rexxbif.o'
+	make: *** [Makefile:337: rexx] Error 1
+
+Every other object rule in this Makefile already compiles with $(CC2O),
+which configure sets to "-o $@", so none of the renaming is needed.  Use it
+in these four rules too and drop the sixteen mv calls.  The build then
+survives -j16; before the change it failed on every attempt.
+
+Index: regina-rexx-3.9.7/Makefile.in
+===================================================================
+--- regina-rexx-3.9.7.orig/Makefile.in
++++ regina-rexx-3.9.7/Makefile.in
+@@ -527,10 +527,7 @@
+ 	$(CC) $(COPT) $(CC2O) -c $(THREADING_COMPILE) $(srcdir)/regina.c
+
+ drexx.$(OBJ) : $(srcdir)/rexx.c $(srcdir)/rexx.h
+-	-mv rexx.$(OBJ) rexx$(OSAVE)
+-	$(CC) $(COPT) -c -DRXLIB $(srcdir)/rexx.c
+-	-mv rexx.$(OBJ) drexx.$(OBJ)
+-	-mv rexx$(OSAVE) rexx.$(OBJ)
++	$(CC) $(COPT) $(CC2O) -c -DRXLIB $(srcdir)/rexx.c
+
+ lexsrc.$(OBJ) : $(srcdir)/lexsrc.c $(srcdir)/rexx.h $(srcdir)/yaccsrc.h
+ 	$(CC) $(COPT) $(CC2O) -c $(srcdir)/lexsrc.c
+@@ -575,16 +572,10 @@
+ 	$(CC) -DEXTERNAL_TO_REGINA $(COPT) $(CC2O) -c $(srcdir)/rxqueue.c
+
+ eextstack.$(OBJ) : $(srcdir)/extstack.c $(srcdir)/extstack.h $(srcdir)/rexxbif.h $(srcdir)/rexx.h
+-	-mv extstack.$(OBJ) extstack$(OSAVE)
+-	$(CC) -DEXTERNAL_TO_REGINA $(COPT) -c $(srcdir)/extstack.c
+-	-mv extstack.$(OBJ) eextstack.$(OBJ)
+-	-mv extstack$(OSAVE) extstack.$(OBJ)
++	$(CC) -DEXTERNAL_TO_REGINA $(COPT) $(CC2O) -c $(srcdir)/extstack.c
+
+ erexxbif.$(OBJ) : $(srcdir)/rexxbif.c $(srcdir)/rexxbif.h $(srcdir)/rexx.h
+-	-mv rexxbif.$(OBJ) rexxbif$(OSAVE)
+-	$(CC) -DEXTERNAL_TO_REGINA $(COPT) -c $(srcdir)/rexxbif.c
+-	-mv rexxbif.$(OBJ) erexxbif.$(OBJ)
+-	-mv rexxbif$(OSAVE) rexxbif.$(OBJ)
++	$(CC) -DEXTERNAL_TO_REGINA $(COPT) $(CC2O) -c $(srcdir)/rexxbif.c
+
+ LibSha1.$(OBJ) : $(srcdir)/contrib/LibSha1.c $(srcdir)/contrib/LibSha1.h
+ 	$(CC) $(COPT) -c $(srcdir)/contrib/LibSha1.c
+@@ -815,10 +806,7 @@
+ 	$(SAVE2O)
+
+ drexx.so.$(OBJ) : $(srcdir)/rexx.c
+-	-mv rexx.$(OBJ) rexx.$(OBJ).save
+-	$(CC) $(TSCOPT) $(DYN_COMP) -c -DRXLIB $(srcdir)/rexx.c
+-	-mv rexx.$(OBJ) drexx.so.$(OBJ)
+-	-mv rexx.$(OBJ).save rexx.$(OBJ)
++	$(CC) $(TSCOPT) $(CC2O) $(DYN_COMP) -c -DRXLIB $(srcdir)/rexx.c
+
+ lexsrc.so.$(OBJ) : $(srcdir)/lexsrc.c $(srcdir)/rexx.h $(srcdir)/yaccsrc.h
+ 	$(O2SAVE)

@@ -1,0 +1,28 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8739b79f2d84e341e53346fbac452618</srcmd5>
+    <version>3.9.7</version>
+    <time>1787579033</time>
+    <user>anag_factory</user>
+    <comment>Reintroduce Regina-REXX, an ANSI-compliant REXX interpreter.
+
+Resubmission of request 1371181, which was declined for a file conflict
+with ooRexx 5.2. That conflict is now gone: ooRexx in Factory has since
+migrated to libalternatives (request 1371842, accepted 2026-08-19) and
+ships /usr/bin/rexx and /usr/bin/rxqueue as plain symlinks to alts, the
+same form this package uses.
+
+The sources are unchanged from the declined request.
+
+Verified rather than assumed: the two packages share exactly five paths -
+/usr/bin/rexx, /usr/bin/rxqueue and three libalternatives directories.
+Both symlinks are lrwxrwxrwx root:root pointing at alts in both packages,
+so rpm permits both to own them, with the config files at different
+priorities (Regina-REXX 15, ooRexx 20). Installing Regina-REXX,
+libregina3, ooRexx and liboorexx4 in a single rpm transaction completes
+with no conflict.
+
+Local build green, rpmlint 0 errors.</comment>
+    <requestid>1373258</requestid>
+  </revision>
+</revisionlist>

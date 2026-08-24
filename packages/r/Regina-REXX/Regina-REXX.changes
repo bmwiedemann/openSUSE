@@ -1,0 +1,294 @@
+-------------------------------------------------------------------
+Fri Aug 14 08:39:55 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Group the rexx and rxqueue alternatives together so that selecting
+  one switches both, matching the group ooRexx registers for the same
+  two commands:
+  * rxqueue communicates with the queue of its own interpreter, so
+    mixing the two implementations is not a supported combination
+  * a libalternatives group only takes effect when every member
+    declares it, so a group present on one side alone does nothing
+
+-------------------------------------------------------------------
+Fri Aug 14 07:52:21 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Migrate the rexx and rxqueue commands from update-alternatives,
+  which is deprecated and not to be used in new packages, to
+  libalternatives:
+  * Ship /usr/share/libalternatives/rexx/15.conf and
+    /usr/share/libalternatives/rxqueue/15.conf, keeping the priority
+    update-alternatives was registering
+  * Drop the %post/%postun registration and the two /etc/alternatives
+    ghost entries; libalternatives keeps no install-time state
+  * Require alts, which provides the /usr/bin/alts dispatcher
+  * Set options=KeepArgv0 so both tools keep reporting the invoked
+    name in their usage and -v output, as the symlink used to
+  * Point man= at the manual pages that are actually shipped, so
+    "man rexx" and "man rxqueue" keep resolving
+- Package /usr/bin/rexx and /usr/bin/rxqueue as real symlinks to
+  /usr/bin/alts instead of marking them %ghost, so both commands are
+  created and owned by the package itself
+
+-------------------------------------------------------------------
+Thu Aug 13 19:08:19 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Coexist with ooRexx, which provides the same rexx and rxqueue
+  commands (this conflict is what got the previous Factory submission,
+  request 1287670, declined):
+  * Do not ship man1/rexx.1, a byte-identical copy of the regina.1 we
+    already ship, and rename man1/rxqueue.1 to rxqueue-Regina-REXX.1;
+    ooRexx owns both of those paths outright
+  * Mark %ghost the /usr/bin/rexx and /usr/bin/rxqueue symlinks that
+    update-alternatives creates, as ooRexx does
+  * Record the /etc/alternatives/rexx and rxqueue ghosts with mode
+    0755 so their attributes match ooRexx's
+
+-------------------------------------------------------------------
+Thu Aug 13 18:55:25 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Add Regina-REXX-parallel-make.patch: build the alternate-variant
+  objects with -o instead of moving the shared object aside and back,
+  which raced under make -j and forced a serial build
+- Add Regina-REXX-trip-helpers-c99.patch: include <stdlib.h> in the
+  trip test helpers, whose implicit exit()/atoi() declarations have
+  been an error since GCC 14
+- Run upstream's trip conformance suite in %check
+- Ship rxstack.conf instead of marking it %ghost, which dropped the
+  installed configuration file from the package
+- Do not download the documentation PDFs separately, they are the very
+  same files the tarball already ships in doc/ (1.5 MB duplicated)
+- Fix the example scripts: replace the env(1) shebang with an absolute
+  path and convert rexxcps.rexx to LF line endings
+- Install libregina.pc non-executable
+- Move regina-config.1 to the devel subpackage next to regina-config
+- Drop the no-op removal of a datadir addons directory that is really
+  installed under libdir
+- Drop unused lsb-release and distribution-release build requirements
+
+-------------------------------------------------------------------
+Thu Jun 26 11:54:47 UTC 2025 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Adopt permissions for sbindir because of permission conflict
+
+-------------------------------------------------------------------
+Tue Jun 17 15:28:53 UTC 2025 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Update docs to 3.9.7
+
+-------------------------------------------------------------------
+Tue May 27 16:11:08 UTC 2025 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Update to 3.9.7
+  * Bugs Fixed:
+    * #580 Missing files in SVN trunk (target Windows)
+    * #587 https://regina-rexx.sourceforge.io/ Sourceforge links mostly broken
+    * #595 Unexpected NUL bytes from changestr()
+    * #596 stream(filename,"C","OPEN WRITE REPLACE") fails, but "CREATE" works
+    * #598 Implicit command doesn't recognize arguments
+    * #600 Erroneous syntax error 37
+    * #602 Error "System resources exhausted" on Haiku
+    * #606 regina.dll reports WIN8 for Windows 11 systems
+    * #607 Visual C++ 4.0 build is broken
+    * #609 CENTER regression
+    * #610 CALL X(SIGL) passes updated SIGL as ARG(1)
+    * #612 Problems with cc23
+    * #613 Fixed typos in PDF #
+  * Implement return of available memory via STORAGE() and FREESPACE() for Windows and Linux
+  * Distribute binary error message files as source so Regina can be cross-compiled
+  * Add rexxtry.rexx test program
+- Documentation for 3.9.6 because of missing documentation for 3.9.7
+- Conflict resolution with datadir between package and lib
+- Conflict resolution related to regina config between package and devel package
+
+-------------------------------------------------------------------
+Sat Feb 22 15:17:16 UTC 2025 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Update to 3.9.6
+  * Fixed bugs
+  * Changed addons dir in regina-config script to exclude prefix - breakage
+  * Add optional setting of PATHEXT under Windows installer
+  * Enabled rxstack to run as a Websocket server
+  * Added .DIRSEP reserved variable for current directory separator
+  * Support ~ as first character in filenames under Un*x/Linux platforms 
+  * Added 'I' option to sysfiletree() in regutil
+  * Add libregina.pc for pkg-config
+  * Version information display via "regina -v" now goes to stdout
+  * Added options to -v switch to provide more information to external function
+  * Added support for update-alternatives mechanism on Linux
+  * Added Alpine Linux package support
+  * Added "CALLER" as valid environment for VALUE BIF
+  * Enabled GETCALLSTACK to display to stderr if no stem argument specified
+  * Package builds now self-contained
+  * Add syshomedirectory() in regutil to get user's home directory
+  * Add sysgetline() and sysgetlinehistory() in regutil to provide an interface to readline
+  * Support both AA and AC as Logical Not 
+  * run rxstack as rxstack user not root when installing Linux package
+  * Fix crash with sysgetline() if line > 260 characters
+  * Support tilde in Linux file names
+  * Improve performance by reducing initial variable pool hash size from 2003 to 227
+  * Add REGINA_HASHTABLELENGTH to enable initial variable pool size to be changed at runtime
+  * Add sysgetline() and sysgetlinehistory() to Regutil; implementation of GNU Readline
+  * Add handling support for SIGUSR1 and SIGUSR2 to turn on/off TRACE I
+  * Add ReginaGetAddonDir() API call to obtain location where Regina looks for external function packages
+  * Check for Windows 11 and arm/arm64 architecture in UNAME BIF
+  * Add OPTION STRICT_ANSI_FORMAT_BIF to apply strict ANSI rules to the FORMAT BIF
+
+-------------------------------------------------------------------
+Tue Jul 27 11:31:57 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s). Modified:
+  * rxstack.service
+
+-------------------------------------------------------------------
+Thu Oct 17 12:37:59 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Remove obsolete Groups tag (fate#326485)
+
+-------------------------------------------------------------------
+Sun Mar 17 10:31:36 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Reduce %systemd_requires to %systemd_ordering:
+  %service_* can deal with the absence of systemd.
+- Replace historic boilerplate -devel subpackage summary.
+
+-------------------------------------------------------------------
+Thu Mar 15 14:44:19 UTC 2018 - mpluskal@suse.com
+
+- Modernise spec file with spec-cleaner
+- Allow alternative rexx implementations to be installed in
+  parallel (bsc#1083875)
+
+-------------------------------------------------------------------
+Thu Jun  8 11:39:04 UTC 2017 - mpluskal@suse.com
+
+- Update dependencies
+
+-------------------------------------------------------------------
+Mon May  2 11:34:04 UTC 2016 - mpluskal@suse.com
+
+- Rename package to Regina-REXX
+
+-------------------------------------------------------------------
+Wed Apr 20 18:30:13 UTC 2016 - mpost@suse.com
+
+- Upgraded to version 3.9.1
+- Added Regina-REXX-regutil-3.9.1-doc.pdf
+- Removed regina-rxstack-lsb.init.d and added a systemd unit file
+  for rxstack.
+- Converted all hardcoded paths to RPM macros.
+- Removed obsolete regina-rpmlintrc file
+- Removed the following obsolete patches:
+  regina-3.3-configure.diff
+  regina-3.3-Makefile.in.diff
+- Removed deprecated Authors section
+- Broke the documentation out into a separate package.
+- Removed redundant changelog entries from the spec file.
+
+-------------------------------------------------------------------
+Fri Aug 29 00:07:35 CEST 2008 - cthiel@suse.de
+
+- fix init script
+
+-------------------------------------------------------------------
+Wed Jan 25 21:41:08 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Oct 31 13:41:23 CET 2005 - dmueller@suse.de
+
+- don't build as root 
+
+-------------------------------------------------------------------
+Thu Aug 12 14:07:26 CEST 2004 - mge@suse.de
+
+- update to 3.3 
+
+-------------------------------------------------------------------
+Mon Feb  9 17:36:57 CET 2004 - mge@suse.de
+
+- added SONAME (libregina.so) to library
+
+-------------------------------------------------------------------
+Tue Aug  5 16:38:25 CEST 2003 - mge@suse.de
+
+- update to 3.2
+
+-------------------------------------------------------------------
+Sun Jun 15 18:24:47 CEST 2003 - mmj@suse.de
+
+- Package all dirs
+
+-------------------------------------------------------------------
+Wed Sep 18 00:18:20 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides
+
+-------------------------------------------------------------------
+Tue Aug 20 16:07:05 CEST 2002 - mge@suse.de
+
+- fix dependencies (remove BuildRoot from installed scripts)
+
+-------------------------------------------------------------------
+Fri Aug 16 13:19:53 CEST 2002 - mge@suse.de
+
+- fix building on 64bit
+
+-------------------------------------------------------------------
+Thu Aug 15 16:28:38 CEST 2002 - mge@suse.de
+
+- update to 3.0
+
+-------------------------------------------------------------------
+Tue May 21 17:05:46 CEST 2002 - coolo@suse.de
+
+- use %_libdir
+
+-------------------------------------------------------------------
+Fri Jun 15 16:16:11 CEST 2001 - schwab@suse.de
+
+- Fix for new autoconf.
+
+-------------------------------------------------------------------
+Thu May 10 01:23:40 CEST 2001 - mfabian@suse.de
+
+- bzip2 sources
+
+-------------------------------------------------------------------
+Mon Sep 18 14:54:28 CEST 2000 - schwab@suse.de
+
+- Use alpha patch on ia64 and lower opt level.
+
+-------------------------------------------------------------------
+Thu Sep 14 16:26:50 CEST 2000 - ro@suse.de
+
+- update to 2.1
+- fix for alpha 
+
+-------------------------------------------------------------------
+Thu Jul  6 00:43:16 MEST 2000 - mge@suse.de
+
+- Update to regina 2.0.0
+
+-------------------------------------------------------------------
+Mon Feb 14 14:16:17 MET 2000 - mge@suse.de
+
+- patched Makefile.in to make mandir valid
+
+-------------------------------------------------------------------
+Mon Feb 14 10:34:40 MET 2000 - mge@suse.de
+
+- fixed mandir
+
+-------------------------------------------------------------------
+Sun Feb 13 16:52:49 MET 2000 - mge@suse.de
+
+- update to 0.8h
+- group tag
+- use version macro
+
+-------------------------------------------------------------------
+Mon Oct 25 23:56:50 MEST 1999 - mge@suse.de
+
+- initial SuSE-RPM
+

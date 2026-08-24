@@ -1,0 +1,29 @@
+From: Martin Pluskal <martin@pluskal.org>
+Subject: Include <stdlib.h> in the trip test helpers
+
+rc.c and true.c call exit() and atoi() without declaring them.  Implicit
+function declarations were removed from the language in C99 and GCC 14 /
+Clang 16 now reject them by default, so both helpers fail to build:
+
+    rc.c:1:38: error: implicit declaration of function 'exit'
+    rc.c:1:44: error: implicit declaration of function 'atoi'
+
+The trip README tells the tester to compile these by hand ("cc -o rc rc.c")
+before running the suite, and the ADDRESS COMMAND cases refuse to run without
+them ("You must compile rc.c first"), so on any current toolchain the whole
+suite is unrunnable.  Add the missing include.
+
+Index: regina-rexx-3.9.7/trip/rc.c
+===================================================================
+--- regina-rexx-3.9.7.orig/trip/rc.c
++++ regina-rexx-3.9.7/trip/rc.c
+@@ -1 +1,2 @@
++#include <stdlib.h>
+ int main( int argc, char *argv[] ) { exit (atoi(argv[1])) ; } 
+Index: regina-rexx-3.9.7/trip/true.c
+===================================================================
+--- regina-rexx-3.9.7.orig/trip/true.c
++++ regina-rexx-3.9.7/trip/true.c
+@@ -1 +1,2 @@
++#include <stdlib.h>
+ int main( int argc, char *argv[] ) { exit (0); }
