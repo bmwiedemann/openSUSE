@@ -1,0 +1,19 @@
+--- a/python/pyproject_cpu.toml
++++ b/python/pyproject_cpu.toml
+@@ -1,6 +1,6 @@
+ # https://docs.sglang.io/platforms/cpu_server.html
+ [build-system]
+-requires = ["setuptools>=61.0", "setuptools-scm>=8.0", "wheel"]
++requires = ["setuptools>=61.0", "setuptools-rust>=1.10", "setuptools-scm>=8.0", "wheel"]
+ build-backend = "setuptools.build_meta"
+ 
+ [project]
+@@ -159,3 +159,8 @@
+ git_describe_command = ["python3", "python/tools/get_version_tag.py"]
+ # Allow editable installs even when .git metadata is not available.
+ fallback_version = "0.0.0.dev0"
++
++# NOTE: setup.py reads this with a line regex, not a TOML parser — keep the
++# assignment on a single line.
++[tool.sglang]
++rust-extensions = ["multimodal", "grpc"]

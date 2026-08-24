@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Sat Aug 22 07:59:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package of python-sglang 0.5.17 (CPU singlespec,
+  python313):
+  * GitHub v0.5.17 tag (PyPI ships wheels only)
+  * Add sglang-relax-cpu-requirements.patch: relax
+    transformers/openai/xgrammar, drop unpackaged
+    CPU-inappropriate deps
+  * Add sglang-cpu-triton-stub.patch
+  * Build Rust PyO3 extensions (multimodal, grpc)
+    * Add sglang-cpu-rust-exts.patch
+    * Add sglang-grpc-system-protoc.patch
+    * Add vendor.tar.zst
+    * CARGO_HOME vendor remap (setuptools-rust runs from python/)
+    * sglang-server not built: dynamo-protocols 5.3.1 added
+      ChatCompletionTokenLogprob.token_id
+  * libalternatives (alts) for the sglang CLI
+

@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>841a07123a54188847fa5c3a738c5307</srcmd5>
+    <version>0.5.17</version>
+    <time>1787579025</time>
+    <user>anag_factory</user>
+    <comment>New package python-sglang 0.5.17 (devel: science:machinelearning). CPU singlespec (python313), alts for the sglang CLI. pluskalm is the science:machinelearning/python-sglang package maintainer.
+
+INTERDEPENDENT REQUESTS — please stage together:
+* sr#1372971 python-blobfile
+* sr#1372972 python-easydict
+* sr#1372973 python-timm 1.0.16
+* sr#1372976 python-torchao 0.17.0
+* sr#1372989 python-gguf
+* sr#1372990 python-modelscope-hub
+* sr#1372992 python-modelscope
+
+- Initial package of python-sglang 0.5.17 
+* GitHub v0.5.17 tag (PyPI ships wheels only)
+* Add sglang-relax-cpu-requirements.patch: relax
+transformers/openai/xgrammar, drop unpackaged
+CPU-inappropriate deps
+* Add sglang-cpu-triton-stub.patch
+* Build Rust PyO3 extensions (multimodal, grpc)
+* Add sglang-cpu-rust-exts.patch
+* Add sglang-grpc-system-protoc.patch
+* Add vendor.tar.zst
+* CARGO_HOME vendor remap (setuptools-rust runs from python/)
+* sglang-server not built: dynamo-protocols 5.3.1 added
+ChatCompletionTokenLogprob.token_id
+* libalternatives (alts) for the sglang CLI</comment>
+    <requestid>1373058</requestid>
+  </revision>
+</revisionlist>

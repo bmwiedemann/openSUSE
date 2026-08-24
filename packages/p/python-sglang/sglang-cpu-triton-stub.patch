@@ -1,0 +1,42 @@
+--- a/python/sglang/__init__.py	2026-08-07 23:50:47.000000000 +0200
++++ b/python/sglang/__init__.py	2026-08-21 22:24:26.691879593 +0200
+@@ -6,16 +6,23 @@
+ import platform as _platform
+ import sys as _sys
+ 
++# Distro CPU builds do not ship triton. Reuse upstream's macOS stub so
++# `import sglang` (which pulls sglang.srt.utils.common) still succeeds.
++try:
++    import triton as _triton  # noqa: F401
++
++    del _triton
++except ImportError:
++    from sglang._triton_stub import install as _install_triton_stub
++
++    _install_triton_stub()
++    del _install_triton_stub
++
+ if _sys.platform == "darwin" and _platform.machine() == "arm64":
+     try:
+         import torch as _torch
+ 
+         if _torch.backends.mps.is_available():
+-            from sglang._triton_stub import install as _install_triton_stub
+-
+-            _install_triton_stub()
+-            del _install_triton_stub
+-
+             from sglang._mps_stub import install as _install_mps_stub
+ 
+             _install_mps_stub()
+--- a/python/sglang/_triton_stub.py	2026-08-07 23:50:47.000000000 +0200
++++ b/python/sglang/_triton_stub.py	2026-08-21 22:24:26.751886325 +0200
+@@ -41,7 +41,7 @@
+         self.__file__ = __file__
+         self._children: dict[str, object] = {}
+         # Set __spec__ so that importlib.util.find_spec() works on cached modules
+-        import importlib
++        import importlib.machinery
+ 
+         self.__spec__ = importlib.machinery.ModuleSpec(name, None, is_package=True)
+ 

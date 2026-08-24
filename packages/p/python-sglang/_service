@@ -1,0 +1,8 @@
+<services>
+  <service name="cargo_vendor" mode="manual">
+    <param name="src">sglang-*.tar.gz</param>
+    <param name="custom-root">sglang-0.5.17/rust</param>
+    <param name="compression">zst</param>
+    <param name="update">true</param>
+  </service>
+</services>

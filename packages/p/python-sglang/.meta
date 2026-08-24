@@ -1,0 +1,11 @@
+<package name="python-sglang" project="openSUSE:Factory">
+  <title>Fast serving framework for large language models</title>
+  <description>SGLang is a fast serving framework for large language models and
+vision language models.
+
+This is a CPU build: inference uses PyTorch's native CPU operators.
+The Rust PyO3 extensions (multimodal preprocess, native gRPC) are
+built. The embedded Rust server is not (dynamo-protocols 5.3.1
+API drift). CUDA kernels, sgl-kernel and flashinfer are not.</description>
+  <url>https://github.com/sgl-project/sglang</url>
+</package>

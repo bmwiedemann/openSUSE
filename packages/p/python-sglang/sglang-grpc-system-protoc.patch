@@ -1,0 +1,33 @@
+--- a/rust/sglang-grpc/Cargo.toml
++++ b/rust/sglang-grpc/Cargo.toml
+@@ -36,9 +36,6 @@
+ 
+ [build-dependencies]
+ tonic-build = "0.12"
+-# Fallback protoc for machines without a system install (see build.rs); keeps
+-# `cargo clippy/check/build` and lint CI working without apt/brew protobuf.
+-protoc-bin-vendored = "3"
+ 
+ [features]
+ default = ["pyo3/extension-module"]
+--- a/rust/sglang-grpc/build.rs
++++ b/rust/sglang-grpc/build.rs
+@@ -1,16 +1,6 @@
+ fn main() -> Result<(), Box<dyn std::error::Error>> {
+-    // Prefer an explicitly configured protoc; otherwise use the vendored
+-    // binary so builds (including `cargo clippy` and the pre-commit hook on
+-    // machines/CI runners without protobuf installed) are self-contained.
+-    // protoc_bin_path() errs on platforms the vendored crate doesn't cover;
+-    // those fall back to prost-build's own lookup of `protoc` on PATH.
+-    if std::env::var_os("PROTOC").is_none()
+-        && let Ok(vendored) = protoc_bin_vendored::protoc_bin_path()
+-    {
+-        // SAFETY: build scripts are single-threaded at this point.
+-        unsafe { std::env::set_var("PROTOC", vendored) };
+-    }
+-
++    // Distro builds use the system protoc (PROTOC or PATH). The upstream
++    // vendored binary is not shipped.
+     let proto_path = "../../proto/sglang/runtime/v1/sglang.proto";
+ 
+     tonic_build::configure()
