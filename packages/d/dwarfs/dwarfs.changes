@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sat Aug 22 19:54:42 UTC 2026 - Mia Herkt <mia@0x0.st>
+
+- Update to version 0.15.7
+Bug fixes
+  * For fragments that are compressed with an algorithm that
+    requires a granularity greater than 1 byte, sparse files with
+    holes could trigger an error and cause the file to be empty in
+    the output file system if the hole boundaries were not aligned
+    to the granularity. This can easily be the case for 24-bit PCM
+    audio files with long periods of silence, where the source file
+    system has punched holes into the file to save space.
+    The fix is to only treat holes specially if the compression
+    algorithm has a granularity of 1 byte. For other granularities,
+    holes are simply treated as "regular" runs of zeros. This is
+    justifiable since PCM audio files are unlikely to contain
+    gigabytes worth of silence, and even then this it would still
+    be de-duplicated away by the segmenter.
+    gh#mhx/dwarfs#378
+  * When changing the block size of a DwarFS image, the inode size
+    cache update would only ever add new entries, but never remove
+    inodes that no longer had the minimum number of chunks to
+    qualify for being cached. This could eventually trigger the
+    consistency check in dwarfsck and cause it to fail.
+    The fix is to remove any unqualifying inodes from the cache.
+
+-------------------------------------------------------------------
+Mon Aug 17 18:48:53 UTC 2026 - Mia Herkt <mia@0x0.st>
+
+- Update to version 0.15.6
+  * (other) When logging a fmt exception, include the exception
+    message if possible.
+  * (other) In dwarfs, log FUSE command line options after parsing.
+  * (build) Work around a CMake 4.4 gtest JSON test parsing bug
+    (https://gitlab.kitware.com/cmake/cmake/-/work_items/27939)
+
+-------------------------------------------------------------------
 Sun Jul 12 19:39:24 UTC 2026 - Mia Herkt <mia@0x0.st>
 
 - Update to version 0.15.5 (no changes affecting openSUSE)
