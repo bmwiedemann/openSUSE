@@ -1,0 +1,5 @@
+<package name="python-timm" project="openSUSE:Factory">
+  <title>PyTorch Image Models</title>
+  <description>PyTorch Image Models (timm) is a collection of image models, layers, utilities, optimizers, schedulers, data-loaders / augmentations, and reference training / validation scripts that aim to pull together a wide variety of SOTA models with ability to reproduce ImageNet training results.</description>
+  <url>https://github.com/huggingface/pytorch-image-models</url>
+</package>

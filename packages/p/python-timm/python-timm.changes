@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Fri Aug 21 19:30:39 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.0.16 (pinned by SGLang 0.5.17):
+  * Add MobileNetV5 backbone for the Gemma 3n image encoder
+  * Add NaFlexViT (variable aspect/resolution, FlexiViT and
+    NaViT embeddings) plus a matching data pipeline
+  * Add SigLIP 2, AIM-v2, SAM2 (HieraDet), BEiT-3, InternViT,
+    MambaOut, PaliGemma2 and Meta Perception Encoder models
+  * Add SwiftFormer, FasterNet, SHViT, StarNet, GhostNet-V3
+    and RDNet architectures
+  * New pretrained weights for MobileNet-V4, SBB/SO150M ViT,
+    EfficientNet-B0/B1, ResNet50-D and others
+  * Add local-dir: schema for loading Hub models from a
+    local folder
+  * Add set_input_size() for ViT and Swin v1/v2
+  * Fix LeViT safetensors loading and the deprecated
+    timm.models.registry import path
+- Switch Source to the PyPI sdist (timm-1.0.16.tar.gz), replacing
+  python-timm-1.0.7.tar.gz
+- BuildRequires python-pdm-backend (pdm.backend) instead of
+  python-pdm so the wheel actually builds
+- Add a %check import smoke test
+- Add runtime Requires for torch, torchvision, PyYAML,
+  huggingface-hub and safetensors (generator does not pick
+  them up from METADATA)
+
+-------------------------------------------------------------------
+Wed Jul 24 08:03:23 UTC 2024 - Christian Goll <cgoll@suse.com>
+
+- inital commit of python-timm a helper fpr python-tranformers 
+  with images
