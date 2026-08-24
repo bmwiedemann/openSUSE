@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
-%define kpim6_version 6.7.3
+%define kpim6_version 6.8.0
 
 %bcond_without released
 Name:           kitinerary
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        Data model and extraction system for travel reservations
 License:        LGPL-2.1-or-later
@@ -38,9 +38,10 @@ BuildRequires:  libphonenumber-devel
 BuildRequires:  pkgconfig
 BuildRequires:  shared-mime-info
 BuildRequires:  cmake(KF6CalendarCore) >= %{kf6_version}
+BuildRequires:  cmake(KF6Codecs) >= %{kf6_version}
 BuildRequires:  cmake(KF6Contacts) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
-BuildRequires:  cmake(KPim6Mime) >= %{kpim6_version}
+BuildRequires:  cmake(KF6Mime) >= %{kf6_version}
 BuildRequires:  cmake(KPim6PkPass) >= %{kpim6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
@@ -73,7 +74,7 @@ Summary:        Development files for kitinerary
 Requires:       libKPim6Itinerary6 = %{version}
 Requires:       cmake(KF6CalendarCore) >= %{kf6_version}
 Requires:       cmake(KF6Contacts) >= %{kf6_version}
-Requires:       cmake(KPim6Mime) >= %{kpim6_version}
+Requires:       cmake(KF6Mime) >= %{kf6_version}
 Requires:       cmake(KPim6PkPass) >= %{kpim6_version}
 Requires:       cmake(Qt6Gui) >= %{qt6_version}
 
