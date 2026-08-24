@@ -287,4 +287,27 @@
     user_fonts_dir, user_preference_dir</comment>
     <requestid>1362146</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>75fa3cc2109a91dea332618ec2209f8f</srcmd5>
+    <version>4.11.3</version>
+    <time>1787565691</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.11.3:
+  * docs: publish llms.txt from the docs build
+  * fix: don't crash when an XDG dirs variable holds only
+    separators
+- update to 4.11.2:
+  * fix: stop the remaining iter_*_dirs yielding duplicate or
+    joined paths
+- update to 4.11.1:
+  * Let the non-ctypes resolvers find the desktop folder
+- update to 4.11.0:
+  * ci: run the test suite against Python 3.15
+  * **Full Changelog**: https://github.com/tox-
+    dev/platformdirs/compare/4.10.1...4.11.0
+- update to 4.10.1:
+  * ci(release): towncrier changelog + publish on tag push
+  * docs(changelog): rebuild against release history</comment>
+    <requestid>1373038</requestid>
+  </revision>
 </revisionlist>
