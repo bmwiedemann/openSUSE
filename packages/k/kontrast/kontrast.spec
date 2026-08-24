@@ -16,15 +16,15 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
 
 %bcond_without released
 Name:           kontrast
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        Contrast checker
-License:        GPL-3.0-or-later AND CC0-1.0
+License:        CC0-1.0 AND GPL-3.0-or-later
 URL:            https://apps.kde.org/kontrast
 Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
