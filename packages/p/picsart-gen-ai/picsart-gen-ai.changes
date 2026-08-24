@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Aug 22 08:05:18 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.68.1:
+  * Update the inlined @picsart/ai-sdk to 5.x so edit, enhance,
+    upscale, TTS and related flows match the new catalog (they
+    selected no models after the SDK 5 shape change) and hide
+    deprecated models
+  * Fix a crash after generation when xdg-open is missing, Ctrl+C
+    cancel handling, prompt-box corruption, wide-character widths
+    and ANSI sequences leaking into piped stdout
+  * Harden login and token refresh (timeouts, atomic writes, CI
+    PICSART_ACCESS_TOKEN, 401 retry) and reject directory uploads
+  * Sanitize untrusted API and model names so they cannot inject
+    terminal escape sequences
+  * Wire video-extend array file slots, keep edit-mode parameters
+    and expand ~ in downloadDir
+  * Honour config defaultModel and imagePreview
+
+-------------------------------------------------------------------
 Thu Aug 13 11:15:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Rename the package from gen-ai to picsart-gen-ai, following a

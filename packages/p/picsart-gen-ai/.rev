@@ -55,4 +55,26 @@ Built green natively on aarch64, rpmlint 0 errors / 0 badness, the check
 section runs the packaged CLI.</comment>
     <requestid>1371038</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0747dbd28028da8c3c999710a0e5b590</srcmd5>
+    <version>2.68.1</version>
+    <time>1787566196</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.68.1:
+  * Update the inlined @picsart/ai-sdk to 5.x so edit, enhance,
+    upscale, TTS and related flows match the new catalog (they
+    selected no models after the SDK 5 shape change) and hide
+    deprecated models
+  * Fix a crash after generation when xdg-open is missing, Ctrl+C
+    cancel handling, prompt-box corruption, wide-character widths
+    and ANSI sequences leaking into piped stdout
+  * Harden login and token refresh (timeouts, atomic writes, CI
+    PICSART_ACCESS_TOKEN, 401 retry) and reject directory uploads
+  * Sanitize untrusted API and model names so they cannot inject
+    terminal escape sequences
+  * Wire video-extend array file slots, keep edit-mode parameters
+    and expand ~ in downloadDir
+  * Honour config defaultModel and imagePreview</comment>
+    <requestid>1373009</requestid>
+  </revision>
 </revisionlist>
