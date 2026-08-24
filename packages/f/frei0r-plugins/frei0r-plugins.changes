@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Aug 23 15:07:58 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.4.3:
+  + fix(shake0scillate): include C++ math declarations
+- Add check section and ctest macro.
+
+-------------------------------------------------------------------
 Wed Aug 19 07:59:18 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.4.0:

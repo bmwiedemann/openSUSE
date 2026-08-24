@@ -17,7 +17,7 @@
 
 
 Name:           frei0r-plugins
-Version:        3.4.0
+Version:        3.4.3
 Release:        0
 Summary:        Collection of video sources and filters plugins
 # Upstream says 2.0+ but quite few of their plugins are GPL-3.0+
@@ -66,6 +66,9 @@ adaptation issue of standard effects.
 
 %install
 %cmake_install
+
+%check
+%ctest
 
 %files
 %license COPYING
