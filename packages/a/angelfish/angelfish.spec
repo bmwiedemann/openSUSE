@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
 
 %bcond_without released
 Name:           angelfish
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        Mobile web browser
 License:        GPL-2.0-or-later
@@ -76,8 +76,7 @@ as bookmarks, history and tabs.
 %lang_package
 
 %build
-%cmake_kf6 \
-  -DQT_QML_NO_CACHEGEN:BOOL=TRUE
+%cmake_kf6
 
 %kf6_build
 
