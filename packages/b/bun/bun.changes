@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Sat Aug 22 13:49:13 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.4.0 (from 1.4.0~git20260808.52bf09cb snapshot):
+  switch Source0 to the bun-v1.4.0 release tarball
+  * bun pm diff
+  * Redis/Valkey: bitmap, HyperLogLog, geo, scripting, server
+    and stream commands
+  * fetch: park an unread body stream instead of buffering
+    without bound
+  * node:crypto: fix abort on shake128/256 digest with a huge
+    outputLength
+  * Bun.password: verify argon2 hashes with memoryCost below 8
+    again
+  * Crash/panic fixes: path-length limits, Bun.inspect, sqlite
+    bind, vm ShadowRealm, HTTP/2, shell, fs.watch
+  * WebKit 0f966e81
+- Provide bundled(rust-argon2): 1.4.0 vendors it as a workspace
+  path dependency instead of crates.io 3.0
+- Build the C++ half with the same clang as the C half: Bun's
+  toolchain resolver version-checks the C compiler but not the
+  C++ one, so it took the unversioned /usr/bin/clang++ for all of
+  JavaScriptCore and Bun's own bindings while only the C units
+  honoured the clang BuildRequires. Prepend a PATH shim in
+  %%build; CC/CXX were never read by that resolver
+- Provide bundled(bcrypt): a crates.io dependency backing
+  Bun.password's bcrypt algorithm, missing from both sources the
+  bundled() list is regenerated from
+- Recommend libsecret-1-0, which Bun.secrets dlopens, so no ELF
+  dependency is generated for it
+- Exercise bun:sqlite, bun:ffi and the bundled tinycc in %%check
+  instead of only --help; assert sqlite_version() against the
+  version bundled(sqlite3) advertises so the two cannot drift
+- Anchor the %%check revision match on the release form, which a
+  bare short-sha substring match would not have caught
+- Add bun-system-libs.patch: link zstd, brotli, libdeflate,
+  libspng, libwebp and libjpeg-turbo from the distribution. These
+  are the bundled C libraries whose pin is an unmodified upstream
+  release and that bun reaches through their installed headers.
+  Drop their bundled() Provides, drop IJG from the License tag
+  and the x86_64 nasm BuildRequires with them, report the linked
+  zstd and libdeflate in process.versions instead of the vendored
+  commit hashes, and check in %%check that all six are in the ELF
+  dependencies and that each one round-trips
+- Add bun-llvm-22.patch: build against LLVM 22, the distribution
+  default, rather than the pinned 21
+
+-------------------------------------------------------------------
 Tue Aug 18 07:24:13 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - CVE-2026-73088: prototype pollution via unguarded for...in in

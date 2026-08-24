@@ -1,19 +1,16 @@
 diff --git a/scripts/build/rust.ts b/scripts/build/rust.ts
-index 4e3a41ae..47c344f5 100644
 --- a/scripts/build/rust.ts
 +++ b/scripts/build/rust.ts
-@@ -347,20 +347,25 @@ export function cargoBuildInvocation(cfg: Config): CargoInvocation {
-     triple,
+@@ -413,18 +413,22 @@
      "--profile",
      profile.name,
+     "--locked",
 +    // Distribution builds have no network and a pre-vendored crate tree.
-+    "--locked",
 +    "--offline",
    ];
 -  if (tier3 || cfg.release || cfg.asan) {
 +  if (tier3 || cfg.asan) {
-     // Build std/core/alloc from source instead of linking the rustup prebuilt.
-     //
+     // Rebuild std from source (cargoBuildStdArg) because:
      // tier3:   no prebuilt `rust-std` exists.
 -    // release: prebuilt std is native code built for generic x86-64 with no
 -    //          `.llvm_addrsig`. Rebuilding with our RUSTFLAGS gets it
@@ -23,20 +20,20 @@ index 4e3a41ae..47c344f5 100644
      // asan:    prebuilt std is uninstrumented; rebuilding applies
      //          `-Zsanitizer=address` so OOB/UAF inside Vec/String/HashMap are
      //          visible instead of stopping at the std boundary.
-     //
++    //
 +    // Release builds used to rebuild std here too, to get `-Ctarget-cpu=` into
 +    // it and to feed cross-language LTO. That is dropped when packaging for a
 +    // distribution: rebuilding std means resolving its own dependencies from
 +    // crates.io, which a build environment cannot reach, and the distribution
 +    // compiler's prebuilt std is the one the rest of the system links against
 +    // anyway. Cross-language LTO is off for the same build (--lto=off).
-+    //
-     // The workspace is `panic = "abort"` (see Cargo.toml). `proc_macro` is
-     // needed because `cargo build --target` still resolves proc-macro crates
-     // for the host through the same `-Zbuild-std` flag set. Requires the
+     args.push(cargoBuildStdArg);
+     if (cfg.release && !cfg.asan) {
+       // Cargo's default build-std feature set is `panic-unwind,backtrace,default`.
+diff --git a/scripts/build/codegen.ts b/scripts/build/codegen.ts
 --- a/scripts/build/codegen.ts
 +++ b/scripts/build/codegen.ts
-@@ -148,11 +148,14 @@
+@@ -146,11 +146,14 @@
    //
    // CMake only tracked package.json as input; we add bun.lock so lockfile
    // version bumps actually reinstall.

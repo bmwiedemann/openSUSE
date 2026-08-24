@@ -1,0 +1,209 @@
+From: Martin Pluskal <mpluskal@suse.com>
+Subject: Link zstd, brotli, libdeflate, libspng, libwebp and libjpeg-turbo
+ from the distribution
+
+Bun's build system has no USE_SYSTEM_* switch; the only precedent for a
+distribution library is the ICU block in systemLibs() (scripts/build/bun.ts),
+which is where this hooks in. Disabling a Dependency's enabled() predicate
+makes resolveDep() return null and computeDepLibs() return [], so no fetch,
+no compile and no -l for the vendored copy; the link flags are then added by
+hand in the same place ICU's are.
+
+These six are the vendored C libraries whose pin is an unmodified upstream
+release rather than a fork, that bun reaches through their installed public
+headers, and that no other dependency fetchDeps on. Each dep file carries the
+specific reasoning; the recurring points are:
+
+  - zstd: one file, bun_icu_decompress.cpp, uses two ZSTD_STATIC_LINKING_ONLY
+    entry points. Upstream exports those from the shared library too, so they
+    resolve.
+  - libspng and libwebp: the Rust codecs mirror C structs and ABI version
+    constants by hand. The distribution versions equal the vendored pins
+    (0.7.4 and 1.6.0), so the layouts and constants agree.
+  - libjpeg-turbo: 8bit-only.patch and jbun_stubs.c only compile out the 12-
+    and 16-bit precisions to save size, which the distribution library simply
+    has.
+  - libspng's fetchDeps on zlib goes away with it, since resolveDep() returns
+    before reading them.
+
+All six stay vendored for Android, whose NDK sysroot ships none of them.
+
+process.versions.zstd and .libdeflate are generated from the vendored commit
+hashes, so depVersionsHeader.ts learns to take the real linked version from
+the environment instead; the spec file fills it in from pkg-config.
+diff --git a/scripts/build/bun.ts b/scripts/build/bun.ts
+index ae2fdef..28a1e4e 100644
+--- a/scripts/build/bun.ts
++++ b/scripts/build/bun.ts
+@@ -78,6 +78,25 @@ function systemLibs(cfg: Config): string[] {
+         libs.push("-latomic");
+       }
+     }
++    // openSUSE: these are unbundled - see the enabled() predicate in each of
++    // deps/{zstd,brotli,libdeflate,libspng,libwebp,libjpeg-turbo}.ts for why
++    // that one can go where the rest of the vendored list cannot.
++    // brotlicommon comes last: static archives resolve left to right and the
++    // encoder and decoder both draw symbols from it.
++    if (cfg.abi !== "android") {
++      libs.push(
++        "-lzstd",
++        "-lbrotlienc",
++        "-lbrotlidec",
++        "-lbrotlicommon",
++        "-ldeflate",
++        "-lspng",
++        "-lwebp",
++        "-lwebpmux",
++        "-lwebpdemux",
++        "-lturbojpeg",
++      );
++    }
+     // Linux local WebKit: link system ICU (prebuilt bundles its own).
+     // Assumes system ICU is in default lib paths — true on most distros.
+     // Android: no system ICU; the local WebKit build must bundle it.
+diff --git a/scripts/build/depVersionsHeader.ts b/scripts/build/depVersionsHeader.ts
+index fbf24f6..a3ea9a2 100644
+--- a/scripts/build/depVersionsHeader.ts
++++ b/scripts/build/depVersionsHeader.ts
+@@ -49,6 +49,14 @@ function computeVersions(cfg: Config): [string, string][] {
+   // Single source of truth — bumping deps/<name>.ts updates this.
+   for (const dep of allDeps) {
+     if (dep.versionMacro === undefined) continue;
++    // openSUSE: for a dep whose vendored build has been disabled in favour of
++    // a distribution library, process.versions must report what is actually
++    // linked. The spec file sets these from pkg-config.
++    const systemVersion = process.env[`BUN_SYSTEM_VERSION_${dep.name.toUpperCase()}`];
++    if (systemVersion !== undefined && systemVersion.length > 0) {
++      versions.push([dep.versionMacro, systemVersion]);
++      continue;
++    }
+     const source = dep.source(cfg);
+     const id = sourceIdentifier(source);
+     // WebKit special case: prebuilt.identity carries the artifact suffix, but
+diff --git a/scripts/build/deps/brotli.ts b/scripts/build/deps/brotli.ts
+index 12eb351..643f36a 100644
+--- a/scripts/build/deps/brotli.ts
++++ b/scripts/build/deps/brotli.ts
+@@ -30,6 +30,12 @@ const SOURCES = [
+ export const brotli: Dependency = {
+   name: "brotli",
+ 
++  // openSUSE: link the distribution's libbrotli instead of building the
++  // vendored copy. Bun includes only <brotli/encode.h> and <brotli/decode.h>,
++  // the public API, and the pin below is the v1.1.0 release rather than a
++  // fork. See systemLibs() in scripts/build/bun.ts.
++  enabled: cfg => !cfg.linux || cfg.abi === "android",
++
+   source: () => ({
+     kind: "github-archive",
+     repo: "google/brotli",
+diff --git a/scripts/build/deps/libdeflate.ts b/scripts/build/deps/libdeflate.ts
+index e84688d..c789608 100644
+--- a/scripts/build/deps/libdeflate.ts
++++ b/scripts/build/deps/libdeflate.ts
+@@ -15,6 +15,14 @@ export const libdeflate: Dependency = {
+   name: "libdeflate",
+   versionMacro: "LIBDEFLATE_HASH",
+ 
++  // openSUSE: link the distribution's libdeflate instead of building the
++  // vendored copy. Bun reaches it from Rust (WebSocketDeflate.rs and the
++  // http compression paths) through hand-written externs that name only
++  // documented libdeflate_* entry points, all of which take opaque handles
++  // and scalars - there is no struct layout to keep in step.
++  // See systemLibs() in scripts/build/bun.ts.
++  enabled: cfg => !cfg.linux || cfg.abi === "android",
++
+   source: () => ({
+     kind: "github-archive",
+     repo: "ebiggers/libdeflate",
+diff --git a/scripts/build/deps/libjpeg-turbo.ts b/scripts/build/deps/libjpeg-turbo.ts
+index 224d1f3..e8eb699 100644
+--- a/scripts/build/deps/libjpeg-turbo.ts
++++ b/scripts/build/deps/libjpeg-turbo.ts
+@@ -89,6 +89,16 @@ const cmakedefine = (truthy: boolean): [string, string] => ["#cmakedefine", trut
+ export const libjpegTurbo: Dependency = {
+   name: "libjpeg-turbo",
+ 
++  // openSUSE: link the distribution's libturbojpeg instead of building the
++  // vendored copy - 3.1.4 either side. codec_jpeg.rs uses only the tj3_* API
++  // and two POD structs of ints, so nothing here depends on the internals the
++  // vendored build reconfigures. The two patches above are size trims, not
++  // fixes: 8bit-only.patch and jbun_stubs.c compile out the 12- and 16-bit
++  // precisions, which the distribution library simply has. Dropping this also
++  // drops the NASM SIMD kernels, and with them the only reason the spec
++  // needed nasm on x86_64. See systemLibs() in scripts/build/bun.ts.
++  enabled: cfg => !cfg.linux || cfg.abi === "android",
++
+   source: () => ({
+     kind: "github-archive",
+     repo: "libjpeg-turbo/libjpeg-turbo",
+diff --git a/scripts/build/deps/libspng.ts b/scripts/build/deps/libspng.ts
+index 0f66452..00b2372 100644
+--- a/scripts/build/deps/libspng.ts
++++ b/scripts/build/deps/libspng.ts
+@@ -17,6 +17,17 @@ const LIBSPNG_COMMIT = "fb768002d4288590083a476af628e51c3f1d47cd"; // v0.7.4
+ export const libspng: Dependency = {
+   name: "libspng",
+ 
++  // openSUSE: link the distribution's libspng instead of building the
++  // vendored copy - both are 0.7.4. codec_png.rs mirrors spng_ihdr, spng_plte,
++  // spng_trns and spng_iccp as #[repr(C)] structs, so the layouts have to
++  // agree; they do (16/1028/268/96 bytes on either side), and the spec's
++  // %check round-trips a PNG through them. SPNG_STATIC and SPNG_SSE below
++  // only affect symbol visibility and the x86 filter SIMD level, both of
++  // which the distribution build settles for itself. The fetchDeps on zlib
++  // goes away with it: resolveDep() returns before reading them.
++  // See systemLibs() in scripts/build/bun.ts.
++  enabled: cfg => !cfg.linux || cfg.abi === "android",
++
+   source: () => ({
+     kind: "github-archive",
+     repo: "randy408/libspng",
+diff --git a/scripts/build/deps/libwebp.ts b/scripts/build/deps/libwebp.ts
+index 762034f..f1f8c11 100644
+--- a/scripts/build/deps/libwebp.ts
++++ b/scripts/build/deps/libwebp.ts
+@@ -114,6 +114,18 @@ function simd(path: string, x64: boolean) {
+ export const libwebp: Dependency = {
+   name: "libwebp",
+ 
++  // openSUSE: link the distribution's libwebp instead of building the
++  // vendored copy - both are 1.6.0, so the WEBP_DEMUX_ABI_VERSION and
++  // WEBP_MUX_ABI_VERSION constants codec_webp.rs passes to the *Internal()
++  // entry points still match; a mismatch makes those return NULL, which
++  // would silently drop ICC profile carry-through, so the spec's %check
++  // round-trips a WebP. WEBP_USE_THREAD stays off either way in practice:
++  // libwebp only spawns threads when the caller sets config.thread_level,
++  // and bun never does. sharpyuv is a transitive shared dependency of
++  // libwebp.so, so it needs no -l of its own.
++  // See systemLibs() in scripts/build/bun.ts.
++  enabled: cfg => !cfg.linux || cfg.abi === "android",
++
+   source: () => ({
+     kind: "github-archive",
+     repo: "webmproject/libwebp",
+diff --git a/scripts/build/deps/zstd.ts b/scripts/build/deps/zstd.ts
+index 8bf87f0..5c00308 100644
+--- a/scripts/build/deps/zstd.ts
++++ b/scripts/build/deps/zstd.ts
+@@ -35,6 +35,20 @@ export const zstd: Dependency = {
+   name: "zstd",
+   versionMacro: "ZSTD_HASH",
+ 
++  // openSUSE: link the distribution's libzstd instead of building the
++  // vendored copy. Almost all of what bun calls is the stable API — the
++  // CCtx/DCtx streaming calls, the ZSTD_c_*/ZSTD_d_* parameter enums, the
++  // ZSTD_error_* codes. The exception is bun_icu_decompress.cpp, which
++  // defines ZSTD_STATIC_LINKING_ONLY for ZSTD_createDDict_byReference() and
++  // ZSTD_findFrameCompressedSize(); upstream builds those into the shared
++  // library too (ZSTDLIB_STATIC_API is visible there), so they link. The two
++  // non-default knobs below do not survive unbundling and do not need to:
++  // ZSTD_LEGACY_SUPPORT=0 only drops decoders the system build includes
++  // anyway, and XXH_NAMESPACE existed solely to keep three statically linked
++  // copies of xxhash from colliding, which a shared library makes impossible.
++  // See systemLibs() in scripts/build/bun.ts.
++  enabled: cfg => !cfg.linux || cfg.abi === "android",
++
+   source: () => ({
+     kind: "github-archive",
+     repo: "facebook/zstd",

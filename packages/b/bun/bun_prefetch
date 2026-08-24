@@ -28,9 +28,9 @@
 # automatically.
 #
 # Rust crates are vendored here rather than by obs-service-cargo because the
-# workspace has a path dependency on vendor/lolhtml, which is one of the
-# downloads above: cargo cannot even read the manifest until it is unpacked,
-# which has to happen between the two steps.
+# workspace has path dependencies on vendor/lolhtml and vendor/rust-argon2,
+# which are downloads above: cargo cannot even read the manifest until they
+# are unpacked, which has to happen between the two steps.
 #
 # Run after a version bump:
 #     ./bun_prefetch
@@ -108,13 +108,20 @@ fetch() {
 # ---------------------------------------------------------------------------
 echo "enumerating dependencies from scripts/build/deps/"
 cp "$deps_script" "$srcdir/bun-deps.mjs"
+# Into a file, not a process substitution: the exit status of the right-hand
+# side of `done < <(...)` is not seen by set -e, so an enumeration that failed
+# half way through would silently produce an incomplete archive.
+deps_list="$workdir/deps.tsv"
+(cd "$srcdir" && node --experimental-strip-types --no-warnings bun-deps.mjs) >"$deps_list"
 lolhtml_url=""
+argon2_url=""
 while IFS=$'\t' read -r kind name url; do
     case "$kind" in
         archive|prebuilt)
             echo "  $name"
             fetch "$url"
             [ "$name" = "lolhtml" ] && lolhtml_url="$url"
+            [ "$name" = "rust-argon2" ] && argon2_url="$url"
             ;;
         *)
             # SQLite is committed to Bun's tree as an amalgamation and WebKit
@@ -122,7 +129,7 @@ while IFS=$'\t' read -r kind name url; do
             echo "  $name: $kind, not downloaded"
             ;;
     esac
-done < <(cd "$srcdir" && node --experimental-strip-types --no-warnings bun-deps.mjs)
+done <"$deps_list"
 rm -f "$srcdir/bun-deps.mjs"
 
 sort -o "$manifest" "$manifest"
@@ -131,13 +138,24 @@ cp "$manifest" "$workdir/cache/manifest.sha256"
 # ---------------------------------------------------------------------------
 # 2. Rust crates
 #
-# The workspace has `lol_html = { path = "vendor/lolhtml" }`, so the lolhtml
-# archive fetched above has to be unpacked before cargo will read the manifest.
+# The workspace has path dependencies on vendor/lolhtml and
+# vendor/rust-argon2, so those archives have to be unpacked before cargo
+# will read the manifest. rust-argon2 used to be a crates.io dep; 1.4.0
+# vendors it to apply patches/rust-argon2/legacy-low-memory.patch.
 # ---------------------------------------------------------------------------
 [ -n "$lolhtml_url" ] || { echo "$0: lolhtml not in the dependency list" >&2; exit 1; }
 echo "unpacking lolhtml for the cargo workspace"
 mkdir -p "$srcdir/vendor/lolhtml"
 tar -xzf "$byurl/$(url_key "$lolhtml_url")" -C "$srcdir/vendor/lolhtml" --strip-components=1
+
+[ -n "$argon2_url" ] || { echo "$0: rust-argon2 not in the dependency list" >&2; exit 1; }
+echo "unpacking rust-argon2 for the cargo workspace"
+mkdir -p "$srcdir/vendor/rust-argon2"
+tar -xzf "$byurl/$(url_key "$argon2_url")" -C "$srcdir/vendor/rust-argon2" --strip-components=1
+if [ -f "$srcdir/patches/rust-argon2/legacy-low-memory.patch" ]; then
+    patch -p1 -d "$srcdir/vendor/rust-argon2" \
+        < "$srcdir/patches/rust-argon2/legacy-low-memory.patch"
+fi
 
 echo "vendoring Rust crates"
 # Bun pins a Rust nightly it expects rustup to install. There is no rustup in

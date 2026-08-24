@@ -1,0 +1,33 @@
+From: Martin Pluskal <mpluskal@suse.com>
+Subject: Build against LLVM 22
+
+Upstream pins LLVM 21.1.8. openSUSE's default is 22, and pinning bun a major
+behind means carrying a second LLVM in the build root for no benefit. Only
+the clang C driver and ld.lld are version-checked by findLlvmTool(); the rest
+of the toolchain is resolved by name, so raising the two constants that
+LLVM_VERSION_RANGE is built from is the entire change.
+
+checkWorkarounds() is not affected. The three entries keyed on the clang
+major are asan-dyld-shim (Darwin), darwin-cross-stack-size (Darwin) and
+rust-lld-for-crosslang-lto, which needs cross-language LTO - config.ts only
+sets crossLangLto when LTO is on, and the spec builds with --lto=off.
+
+--- a/scripts/build/tools.ts
++++ b/scripts/build/tools.ts
+@@ -264,8 +264,14 @@
+  * LLVM version constraint. Any version in the same major.minor range is
+  * accepted (e.g. Alpine 3.23 ships 21.1.2 while we target 21.1.8).
+  */
+-export const LLVM_VERSION = "21.1.8";
+-const LLVM_MAJOR = "21";
++// openSUSE: built against the distribution's LLVM 22 rather than upstream's
++// pinned 21. Only two tools are version-checked (the clang C driver and
++// ld.lld); everything else is found by name, so this pair of constants is the
++// whole switch. None of the entries in workarounds.ts that key off the clang
++// major apply here: the LTO ones need cross-language LTO, which the spec turns
++// off, and the rest are Darwin-only.
++export const LLVM_VERSION = "22.1.8";
++const LLVM_MAJOR = "22";
+ const LLVM_MINOR = "1";
+ const LLVM_VERSION_RANGE = `>=${LLVM_MAJOR}.${LLVM_MINOR}.0 <${LLVM_MAJOR}.${LLVM_MINOR}.99`;
+ 

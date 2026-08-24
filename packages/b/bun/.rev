@@ -73,4 +73,34 @@ final link.</comment>
     <comment>Fix CVE-2026-73088 (boo#1275410): the embedded browserslist 4.28.2 flagged by the security scanner lives solely in WebKit/Tools/WebKitBot/package-lock.json inside the WebKit source archive - Apple's CI bot tooling, never read by a JSCOnly build, never compiled or shipped, and upstream bun main still pins the same vulnerable revision, so a version bump would not help. Pruned Tools/WebKitBot from the archive and extended the bun_webkit generator prune list; repacked archive verified to contain zero browserslist references, full local aarch64 build green including %check smoke tests.</comment>
     <requestid>1371686</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d964163d7140ab99e20cfc42041673df</srcmd5>
+    <version>1.4.0</version>
+    <time>1787566199</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.4.0 and unbundle six C libraries
+
+- Update to the bun-v1.4.0 release tarball, from the
+  1.4.0~git20260808.52bf09cb snapshot
+- Add bun-system-libs.patch: link zstd, brotli, libdeflate, libspng,
+  libwebp and libjpeg-turbo from the distribution. These are the bundled
+  C libraries whose pin is an unmodified upstream release rather than a
+  fork and that bun reaches through their installed public headers. Drop
+  their bundled() Provides, drop IJG from the License tag and the x86_64
+  nasm BuildRequires with them, report the linked zstd and libdeflate in
+  process.versions instead of the vendored commit hashes, and assert in
+  %check that all six are ELF dependencies and that each round-trips
+- Add bun-llvm-22.patch: build against LLVM 22, the distribution default,
+  rather than upstream's pinned 21
+- Build the C++ half with the same clang as the C half: bun's toolchain
+  resolver version-checks the C compiler but not the C++ one, so it took
+  the unversioned /usr/bin/clang++ for all of JavaScriptCore and bun's
+  own bindings. Prepend a PATH shim in %build
+- Provide bundled(rust-argon2) and bundled(bcrypt); recommend
+  libsecret-1-0, which Bun.secrets dlopens
+- Exercise bun:sqlite, bun:ffi and the bundled tinycc in %check
+
+Built locally on Factory/aarch64: 0 rpmlint errors.</comment>
+    <requestid>1373126</requestid>
+  </revision>
 </revisionlist>

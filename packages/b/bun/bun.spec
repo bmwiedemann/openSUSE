@@ -16,18 +16,18 @@
 #
 
 
-# Bun is being rewritten from Zig to Rust. The last release written in Zig is
-# 1.3.14; the first written in Rust will be 1.4.0, which is not tagged yet.
-# This packages a snapshot of the Rust rewrite, because the Zig branch is no
-# longer developed - there will be no 1.3.15 and no fixes for it. The snapshot
-# is a commit upstream's own CI published as a canary build, not an arbitrary
-# one. Switch Source0 back to a release tarball once 1.4.0 is tagged.
-%define git_commit 52bf09cb1cdbed0fbda4cf576e5d329cf92366ef
-%define git_short 52bf09cb
-%define git_date 20260808
+# 1.4.0 is the first release written in Rust (1.3.14 was the last in Zig).
+# git_commit is the bun-v1.4.0 tag peel, used as GIT_SHA for bun --revision;
+# it is not part of the RPM version.
+%define git_commit 34cbb9a40b4bd1bd767d134a7065e66c2432a676
+%define git_short 34cbb9a4
 # The WebKit revision Source1 was made from, for reference; it is read out of
 # the Bun tarball by bun_webkit, not set here.
-# ddea71318fec9b923465c7c45ded8fa713ca3251
+# 0f966e81b78c84bb23213e391bc679c4ef83e56b
+# The SQLite amalgamation in Bun's tree. Used for both the bundled() Provides
+# and the %%check that asserts it against sqlite_version(), so the two cannot
+# drift apart on a version bump.
+%define bundled_sqlite 3.53.2
 %define bootstrap_version 1.3.14
 %define dl_boot https://github.com/oven-sh/bun/releases/download/bun-v%{bootstrap_version}
 # Building Bun requires an existing Bun. The build driver runs on Node, but 24
@@ -51,23 +51,24 @@
 # slower but keeps the package free of foreign binaries.
 %bcond_without webkit_source
 Name:           bun
-Version:        1.4.0~git%{git_date}.%{git_short}
+Version:        1.4.0
 Release:        0
 Summary:        Fast all-in-one JavaScript runtime and toolkit
 # Bun itself is MIT, but it is one statically linked executable and everything
 # in the Provides: bundled() list below ends up inside it, so the tag covers the
 # whole binary. The notable ones are JavaScriptCore and tinycc (LGPL-2.1) and
-# the Servo CSS crates (MPL-2.0); IJG comes from libjpeg-turbo, blessing from
-# the SQLite amalgamation, Unicode-3.0 from unicode-ident. zstd
-# (BSD-3-Clause OR GPL-2.0-only) and picohttpparser (MIT OR Artistic-1.0-Perl)
-# are taken under their permissive halves. See LICENSE.md, which upstream keeps
-# current, and re-check this on every version bump.
+# the Servo CSS crates (MPL-2.0); blessing comes from the SQLite amalgamation,
+# Unicode-3.0 from unicode-ident, BSD-3-Clause from lol-html and lsquic.
+# picohttpparser (MIT OR Artistic-1.0-Perl) is taken under its permissive half.
+# See LICENSE.md, which upstream keeps current, and re-check this on every
+# version bump. IJG is gone with libjpeg-turbo, the only thing that carried it,
+# now that Patch5 links it from the distribution.
 #
 # LGPL-2.1 section 6 is satisfied by shipping the engine's source: WebKit is
 # Source1 and is part of the src.rpm.
-License:        Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND IJG AND LGPL-2.1-or-later AND MIT AND MPL-2.0 AND Unicode-3.0 AND Zlib AND blessing
+License:        Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND LGPL-2.1-or-later AND MIT AND MPL-2.0 AND Unicode-3.0 AND Zlib AND blessing
 URL:            https://bun.sh/
-Source0:        https://github.com/oven-sh/bun/archive/%{git_commit}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/oven-sh/bun/archive/refs/tags/bun-v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # JavaScriptCore source. Upstream's fork, at the revision Bun is developed
 # against; not fetched by Bun's dependency machinery, which expects a manual
 # clone. Produced by the bun_webkit generator.
@@ -129,17 +130,30 @@ Patch3:         bun-uniform-dwarf.patch
 # each and drops the rest, leaving .debug_str_offsets entries no unit refers to
 # any more, and debugedit asserts on the first of those.
 Patch4:         bun-webkit-no-type-units.patch
+# Link zstd, brotli, libdeflate, libspng, libwebp and libjpeg-turbo from the
+# distribution instead of the vendored copies. These are the bundled C
+# libraries whose pin is an unmodified upstream release rather than a fork and
+# that Bun reaches through their installed public headers, so each can be
+# tracked like any other shared library. See the patch header for the details
+# that are specific to each of them.
+Patch5:         bun-system-libs.patch
+# Raise the LLVM version bun pins from 21 to the distribution default.
+Patch6:         bun-llvm-22.patch
 BuildRequires:  cargo
-# LLVM 21.1.x is required and enforced by the build (scripts/build/tools.ts).
-BuildRequires:  clang21
+# LLVM 22.1.x, per Patch6. scripts/build/tools.ts enforces this for the C
+# compiler and the linker only; see the PATH shim in %%build for the C++
+# compiler, which it looks up without a version check.
+BuildRequires:  clang22
 BuildRequires:  cmake >= 3.24
 BuildRequires:  gcc-c++
 # Bun patches several of its vendored C dependencies with `git apply`.
 BuildRequires:  git-core
-BuildRequires:  lld21
-BuildRequires:  llvm21
+BuildRequires:  lld22
+BuildRequires:  llvm22
 BuildRequires:  ninja
 BuildRequires:  nodejs24 >= 24.3.0
+# WebKit cmake. This is not a Perl package: spec-cleaner --perl explodes
+# this into hundreds of perl(...) module BRs and drops git-core.
 BuildRequires:  perl
 BuildRequires:  pkgconfig
 BuildRequires:  python3
@@ -149,40 +163,55 @@ BuildRequires:  python3
 BuildRequires:  rust >= 1.97
 BuildRequires:  unzip
 BuildRequires:  zstd
-# Bun is a single statically linked executable and its build system has no
-# option to link any of these from the distribution: each is pinned to an exact
-# commit, several are upstream forks (boringssl, tinycc, mimalloc, lol-html)
-# and the JavaScript engine is a fork of WebKit. Unversioned because upstream
-# pins commits rather than releases. Regenerate from bun-prefetch.manifest and
-# LICENSE.md on a version bump.
+# Unbundled by Patch5. brotlicommon has no header of its own but is a separate
+# pkg-config module, and the link line names it. libwebp's sharpyuv needs no
+# entry of its own: it is a transitive dependency of libwebp.so.
+BuildRequires:  pkgconfig(libbrotlicommon)
+BuildRequires:  pkgconfig(libbrotlidec)
+BuildRequires:  pkgconfig(libbrotlienc)
+BuildRequires:  pkgconfig(libdeflate)
+BuildRequires:  pkgconfig(libturbojpeg)
+BuildRequires:  pkgconfig(libwebp)
+BuildRequires:  pkgconfig(libwebpdemux)
+BuildRequires:  pkgconfig(libwebpmux)
+BuildRequires:  pkgconfig(libzstd)
+BuildRequires:  pkgconfig(spng)
+# Bun.secrets dlopens libsecret at run time, so no ELF dependency is generated
+# for it. Without it that API fails with "libsecret not available"; everything
+# else works, hence Recommends rather than Requires.
+Recommends:     libsecret-1-0
+# Bun is a single statically linked executable and everything still listed here
+# ends up inside it. Each is pinned to an exact commit, several are upstream
+# forks (boringssl, tinycc, mimalloc, lol-html) and the JavaScript engine is a
+# fork of WebKit, so none of them can be unbundled the way the six in Patch5
+# were. Unversioned because upstream pins commits rather than releases.
+# Regenerate from bun-prefetch.manifest, LICENSE.md and the crates.io
+# dependencies in Cargo.toml on a version bump - the manifest and LICENSE.md
+# do not list the Rust crates.
+Provides:       bundled(bcrypt) = 0.19.0
 Provides:       bundled(boringssl)
-Provides:       bundled(brotli) = 1.1.0
 Provides:       bundled(c-ares)
 Provides:       bundled(hdr_histogram)
 Provides:       bundled(highway)
 Provides:       bundled(libarchive)
-Provides:       bundled(libdeflate)
-Provides:       bundled(libjpeg-turbo)
-Provides:       bundled(libspng)
-Provides:       bundled(libwebp)
 Provides:       bundled(lol-html)
 Provides:       bundled(ls-hpack)
 Provides:       bundled(ls-qpack)
 Provides:       bundled(lsquic)
 Provides:       bundled(mimalloc)
 Provides:       bundled(picohttpparser)
+Provides:       bundled(rust-argon2)
 # bun:sqlite and node:sqlite are built against the SQLite amalgamation in
 # Bun's own tree. Unbundling is not possible even in principle: the alternative
 # Bun offers (LAZY_LOAD_SQLITE) is a macOS-only path that dlopens a hardcoded
 # "libsqlite3.dylib" (src/jsc/bindings/sqlite/lazy_sqlite3.h), so on Linux
 # there is no configuration that links or loads the system library.
-Provides:       bundled(sqlite3) = 3.53.2
+Provides:       bundled(sqlite3) = %{bundled_sqlite}
 Provides:       bundled(tinycc)
 Provides:       bundled(usockets)
 Provides:       bundled(uwebsockets)
 Provides:       bundled(webkit)
 Provides:       bundled(zlib-ng)
-Provides:       bundled(zstd)
 # Upstream supports linux-x64 and linux-arm64 only, and Bun can only be built
 # where an upstream bootstrap binary is published for the same architecture.
 ExclusiveArch:  x86_64 aarch64
@@ -201,7 +230,7 @@ Bun is an all-in-one JavaScript runtime and toolkit with a bundler, test
 runner, and Node.js-compatible package manager.
 
 %prep
-%autosetup -p1 -n %{name}-%{git_commit}
+%autosetup -p1 -n %{name}-bun-v%{version}
 
 # JavaScriptCore. Bun's build expects a manual checkout here.
 mkdir -p vendor/WebKit
@@ -223,11 +252,17 @@ tar --zstd -xf %{SOURCE4}
 # in it already chooses at run time.
 find . -path '*/node_modules/.bin/esbuild' -exec ln -sf ../esbuild/bin/esbuild {} \;
 
-# lol-html is both a download and a Rust path dependency of the workspace, so
-# it has to be unpacked before cargo can read the manifest.
-mkdir -p vendor/lolhtml
+# lol-html and rust-argon2 are both downloads and Rust path dependencies of
+# the workspace, so they have to be unpacked before cargo can read the
+# manifest. rust-argon2 was a crates.io dep in the snapshot; 1.4.0 vendors
+# it to apply patches/rust-argon2/legacy-low-memory.patch (Bun.password
+# still verifies argon2 hashes with memoryCost below 8).
+mkdir -p vendor/lolhtml vendor/rust-argon2
 tar -xzf "prefetch/by-url/$(grep -F 'oven-sh/lol-html' prefetch/manifest.sha256 | cut -d' ' -f1)" \
     -C vendor/lolhtml --strip-components=1
+tar -xzf "prefetch/by-url/$(grep -F 'sru-systems/rust-argon2' prefetch/manifest.sha256 | cut -d' ' -f1)" \
+    -C vendor/rust-argon2 --strip-components=1
+patch -p1 -d vendor/rust-argon2 < patches/rust-argon2/legacy-low-memory.patch
 
 %if %{with bootstrap}
 mkdir -p bootstrap
@@ -259,11 +294,36 @@ rm -f rust-toolchain.toml
 %endif
 
 %build
-export CC=clang-21
-export CXX=clang++-21
-export AR=llvm-ar-21
-export RANLIB=llvm-ranlib-21
+# Bun resolves its own toolchain (scripts/build/tools.ts) and never reads CC,
+# CXX, AR or RANLIB - those are for the cc crate in the Rust workspace. Its
+# resolver looks up "clang" with a version check, so an unversioned clang of a
+# different major is rejected and clang-22 is found instead; but it looks up
+# "clang++" with checkVersion:false ("clang++ is the same binary from the same
+# install", which does not hold here) and takes the first hit in PATH.
+# /usr/bin/clang++ is whatever major the unversioned clang package currently
+# points at, so every C++ unit - JavaScriptCore and Bun's own bindings alike -
+# can end up built by a different compiler than the C units. Put the right one
+# first in PATH; the resolver tries each name across all of PATH before moving
+# to the next name variant, so this wins. It is needed even while 22 is the
+# distribution default, because that default moves on its own.
+mkdir -p _clangshim
+ln -sf %{_bindir}/clang-22 _clangshim/clang
+ln -sf %{_bindir}/clang++-22 _clangshim/clang++
+export PATH="$PWD/_clangshim:$PATH"
+# llvm-ar, llvm-ranlib, llvm-nm and llvm-strip are looked up unversioned too,
+# but openSUSE ships no unversioned names for those, so they already resolve to
+# the 22 variants. ld.lld is version-checked like clang.
+export CC=clang-22
+export CXX=clang++-22
+export AR=llvm-ar-22
+export RANLIB=llvm-ranlib-22
 export GIT_SHA="%{git_commit}"
+# process.versions.zstd and .libdeflate are generated from the vendored commit
+# hashes, which say nothing once the distribution libraries are linked instead
+# (Patch5). Report what is actually linked. The other four have no such macro,
+# so they need no counterpart.
+export BUN_SYSTEM_VERSION_ZSTD="$(pkg-config --modversion libzstd)"
+export BUN_SYSTEM_VERSION_LIBDEFLATE="$(pkg-config --modversion libdeflate)"
 export CARGO_HOME="$PWD/.cargo-home"
 export CARGO_NET_OFFLINE=true
 %if %{without rust_nightly}
@@ -313,11 +373,71 @@ ln -s bun %{buildroot}%{_bindir}/bunx
 
 %check
 %{buildroot}%{_bindir}/bun --version
-%{buildroot}%{_bindir}/bun --revision | grep -F "%{git_short}"
+# Anchored on the release form. A canary reports 1.4.0-canary.<stamp>+<sha>,
+# which a bare substring match for the short sha would have accepted.
+%{buildroot}%{_bindir}/bun --revision | grep -E "^%{version}\+%{git_short}"
 %{buildroot}%{_bindir}/bun -e 'if (6 * 7 !== 42) process.exit(1)'
 # The bundler and the package manager are the reason this package exists.
 %{buildroot}%{_bindir}/bun build --help >/dev/null
 %{buildroot}%{_bindir}/bun install --help >/dev/null
+
+# The native surfaces this package makes bundled() claims about. --help exiting
+# 0 proves nothing about any of them, and all three are statically linked, so
+# nothing else in the build would notice if they broke.
+#
+# bun:sqlite, against the version the Provides advertises.
+%{buildroot}%{_bindir}/bun -e 'import{Database}from"bun:sqlite";const v=new Database(":memory:").query("select sqlite_version() v").get().v;if(v!=="%{bundled_sqlite}")throw new Error("bundled(sqlite3) says %{bundled_sqlite}, runtime says "+v)'
+# bun:ffi, dlopening a library built here rather than a system one, so the test
+# fails on a broken FFI rather than on a missing dependency.
+cat > _ffi_check.c <<'EOF'
+long long ffi_smoke(long long a, long long b) { return a * b + 1; }
+EOF
+gcc -shared -fPIC -o _ffi_check.so _ffi_check.c
+%{buildroot}%{_bindir}/bun -e 'import{dlopen,FFIType}from"bun:ffi";const{symbols:{ffi_smoke:f}}=dlopen("./_ffi_check.so",{ffi_smoke:{args:[FFIType.i64,FFIType.i64],returns:FFIType.i64}});const r=f(6n,7n);if(r!==43n)throw new Error("bun:ffi returned "+r)'
+# bundled(tinycc): cc() compiles at run time with the vendored tcc. No #include,
+# so this does not depend on the buildroot's libc headers.
+cat > _tcc_check.c <<'EOF'
+int tcc_smoke(int x) { return x * 2 + 2; }
+EOF
+%{buildroot}%{_bindir}/bun -e 'import{cc}from"bun:ffi";const{symbols:{tcc_smoke:g}}=cc({source:"./_tcc_check.c",symbols:{tcc_smoke:{args:["int"],returns:"int"}}});const r=g(20);if(r!==42)throw new Error("bundled(tinycc) returned "+r)'
+
+# Patch5 must have taken effect: every unbundled library has to be an ELF
+# dependency now. A silently reverted patch would otherwise still build and
+# still pass every test above.
+ldd %{buildroot}%{_bindir}/bun
+for lib in libzstd libbrotlienc libbrotlidec libbrotlicommon libdeflate \
+           libspng libwebp libwebpmux libwebpdemux libturbojpeg; do
+    ldd %{buildroot}%{_bindir}/bun | grep -qE "\<$lib\.so" || \
+        { echo "$lib is not linked - Patch5 did not take effect"; exit 1; }
+done
+# ... and each one works through the binary, not just at link time.
+%{buildroot}%{_bindir}/bun -e 'const c=Bun.zstdCompressSync(Buffer.from("z".repeat(4096)));if(Bun.zstdDecompressSync(c).length!==4096)throw new Error("zstd round trip failed")'
+%{buildroot}%{_bindir}/bun -e 'const z=require("node:zlib");const c=z.brotliCompressSync(Buffer.from("b".repeat(4096)));if(z.brotliDecompressSync(c).length!==4096)throw new Error("brotli round trip failed")'
+# Bun.gzipSync/deflateSync are libdeflate, not zlib-ng.
+%{buildroot}%{_bindir}/bun -e 'const b=Buffer.from("d".repeat(4096));for(const[c,d]of[[Bun.gzipSync,Bun.gunzipSync],[Bun.deflateSync,Bun.inflateSync]])if(d(c(b)).length!==4096)throw new Error("libdeflate round trip failed")'
+# The three image codecs, chained so that one seed exercises all of them:
+# libspng decodes, libjpeg-turbo re-encodes and decodes, libwebp likewise, and
+# libspng encodes at the end. A struct-layout or ABI-constant mismatch between
+# Bun's hand-written Rust externs and the distribution headers shows up here as
+# a wrong size or a decode failure rather than at link time.
+cat > _img_check.mjs <<'EOF'
+const seed = Buffer.from(
+  "iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAXklEQVR42hXKMQHAMAgAsEqp" +
+  "FKQgBSlIQQpOtvTIl3NOfZcgKZphOecKBEnRDHtfCIEgKZph44UUCJKiGTZfKIEgKZph64UW" +
+  "CJKiGbZfGIEgKZph54UVCJKiGXbr+wH6kZfBPhkbiwAAAABJRU5ErkJggg==", "base64");
+let bytes = seed;
+for (const fmt of ["jpeg", "webp", "png"]) {
+  bytes = await new Bun.Image(bytes)[fmt]().bytes();
+  const m = await new Bun.Image(bytes).metadata();
+  if (m.width !== 8 || m.height !== 8) {
+    throw new Error(`${fmt}: got ${m.width}x${m.height}, expected 8x8`);
+  }
+  if (m.format !== fmt) throw new Error(`${fmt}: sniffed as ${m.format}`);
+}
+EOF
+%{buildroot}%{_bindir}/bun run _img_check.mjs
+# process.versions reports the linked libraries, not the vendored commits.
+%{buildroot}%{_bindir}/bun -e 'for(const[k,w]of[["zstd","'"$(pkg-config --modversion libzstd)"'"],["libdeflate","'"$(pkg-config --modversion libdeflate)"'"]]){const v=process.versions[k];if(v!==w)throw new Error("process.versions."+k+" is "+v+", linked is "+w)}'
 
 %files
 %license LICENSE.md

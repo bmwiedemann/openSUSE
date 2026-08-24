@@ -10,24 +10,16 @@ regenerate each of them.
 What is being packaged
 ----------------------
 
-Bun is being rewritten from Zig to Rust. 1.3.14 is the last release written in
-Zig; the first written in Rust will be 1.4.0, which upstream has not tagged
-yet. The Zig branch is no longer developed - there will be no 1.3.15 - so this
-packages a snapshot of the Rust rewrite instead.
-
-The snapshot is not an arbitrary commit. Upstream's CI publishes a "canary"
-build for every commit that passes the full matrix, and %{git_commit} is the
-commit today's canary was built from. Picking the tip of main instead would
-pick up a red build roughly one time in ten.
-
-Once 1.4.0 is tagged, point Source0 at the release tarball and drop the
-git_commit / git_date defines.
+1.4.0 is the first release written in Rust; 1.3.14 was the last written in
+Zig. Source0 is the bun-v1.4.0 release tarball. %{git_commit} is the commit
+that tag points at, passed as GIT_SHA so `bun --revision` reports it; it is
+not part of the RPM version.
 
 
 Regenerating the sources
 ------------------------
 
-After changing git_commit, in order:
+After changing Version, in order:
 
   1. osc service manualrun download_files      Source0, the Bun tarball
   2. ./bun_webkit                              Source1
@@ -107,10 +99,12 @@ alongside, so the contents of the archive can be audited without unpacking it.
 Source3 - the Rust crates
 -------------------------
 
-Plain `cargo vendor`, not obs-service-cargo: the workspace has a path
-dependency on vendor/lolhtml, which is one of the downloads in Source2, so
-cargo cannot even read the manifest until that has been unpacked. bun_prefetch
-does the two steps in the right order.
+Plain `cargo vendor`, not obs-service-cargo: the workspace has path
+dependencies on vendor/lolhtml and vendor/rust-argon2, which are downloads in
+Source2, so cargo cannot even read the manifest until those have been
+unpacked. bun_prefetch does the steps in the right order. rust-argon2 used to
+be a crates.io crate; 1.4.0 vendors it to apply
+patches/rust-argon2/legacy-low-memory.patch.
 
 The crates unpack to cargo-vendor/ rather than vendor/, which in Bun's tree
 already holds WebKit and lol-html; cargo requires every entry of its vendor
@@ -178,15 +172,13 @@ Upstream tracks removing the dependency entirely (scripts/build/CLAUDE.md, "TODO
 - remaining cfg.bun usage"); until then, turn %bcond bootstrap off once the
 package is in the distribution and it will build with the Bun already there.
 
-1.3.14 is old - it is the last Zig release, while the source here is the Rust
-rewrite - but it does the job: it was verified to complete configure and all 24
-code-generation edges against this snapshot. The
-build applies no minimum Bun version, and upstream's own CI bootstraps this
-tree with 1.3.13 (scripts/bootstrap.sh).
-
-Do not be tempted to bootstrap from a 1.4.0 canary instead. The canary tag's
-assets are replaced in place - they carry no version in the name and no stable
-checksum - and there is no per-commit artifact with a permanent URL.
+1.3.14 is old - it is the last Zig release, while the source here is the 1.4.0
+Rust tree - but it does the job: the build applies no minimum Bun version, and
+upstream's own CI bootstraps this tree with 1.3.13 (scripts/bootstrap.sh).
+Keep 1.3.14 until bun is in the distribution, then turn %bcond bootstrap off
+so the package builds with itself. Do not switch the bootstrap zips to 1.4.0
+while this package is still the first 1.4.0 in the distro - that would be
+another foreign binary for no gain.
 
 The binaries are NoSource: uploaded to the build service but not shipped in the
 src.rpm, and used during %build only - never installed.
@@ -222,9 +214,9 @@ library. Upstream rebuilds it to get -Ctarget-cpu into it and to feed
 cross-language LTO, but doing so resolves std's own dependencies from crates.io,
 which a build environment cannot reach. The distribution compiler's prebuilt
 std is what the rest of the system links against anyway, and cross-language LTO
-is off in this build. The patch also passes --locked --offline to cargo, and
-reduces the `bun install` ninja rule to touching its stamp - see "Source4 - the
-npm packages".
+is off in this build. The patch also passes --offline to cargo (--locked is
+upstream's own since 1.4.0), and reduces the `bun install` ninja rule to
+touching its stamp - see "Source4 - the npm packages".
 
 bun-unknown-lint.patch adds unknown_lints to two allow() attributes that name a
 lint newer than the released compiler. The workspace denies warnings, so an

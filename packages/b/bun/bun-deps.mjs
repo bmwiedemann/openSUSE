@@ -35,6 +35,9 @@ const cfg = {
   webkitVersion: WEBKIT_VERSION,
   cacheDir: "/nonexistent/cache",
   vendorDir: "/nonexistent/vendor",
+  // --local-deps redirections. Empty here, but the field has to exist:
+  // depSourceDir() indexes it unconditionally (scripts/build/source.ts).
+  localDeps: {},
   webkit: webkitMode,
   os: "linux",
   linux: true,
