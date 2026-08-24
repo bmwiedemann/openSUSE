@@ -1517,4 +1517,12 @@
     resolve CVE-2026-41676, bsc#1270138.</comment>
     <requestid>1363548</requestid>
   </revision>
+  <revision rev="142" vrev="1">
+    <srcmd5>9f92eda5bfbc8b7031696e83a1947e92</srcmd5>
+    <version>1.5.4</version>
+    <time>1787579104</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1373377</requestid>
+  </revision>
 </revisionlist>

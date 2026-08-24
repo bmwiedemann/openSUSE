@@ -44,7 +44,7 @@
 %define jsonc json-c-json-c-%vjsonc-20240915
 
 Name:           clamav
-Version:        1.5.3
+Version:        1.5.4
 Release:        0
 Summary:        Antivirus Toolkit
 License:        GPL-2.0-only
@@ -62,12 +62,14 @@ Source10:       timer.freshclam
 # w3m https://www.clamav.net/downloads | sed -n '/-BEGIN /,/-END /p'
 Source11:       clamav.keyring
 Source12:       service.clamonacc
+Source13:       clamav-vendor-cve-2026-46671.tar.gz
 Source65:       system-user-vscan.conf
 Patch1:         clamav-conf.patch
 Patch5:         clamav-obsolete-config.patch
 Patch14:        clamav-document-maxsize.patch
 Patch15:        clamav-format.patch
 Patch16:        clamav-workaround.patch
+Patch17:        clamav-CVE-2026-46671.patch
 ExcludeArch:    %{arml} %{ix86}
 
 BuildRequires:  cargo%{?vrust}
@@ -204,6 +206,7 @@ that want to make use of libclamav.
 
 %prep
 %setup -q
+%setup -D -T -a 13 -q
 %if %{with static_jsonc}
 %setup -D -T -b 2 -q
 %endif
@@ -212,6 +215,15 @@ that want to make use of libclamav.
 %patch -P 14
 %patch -P 15
 %patch -P 16
+%patch -P 17 -p 1
+
+# Update cargo checksums for patched onenote_parser files
+sed -i \
+    -e 's/"Cargo\.toml":"[^"]*"/"Cargo.toml":"3686e894fa5754caceaac071320facb1cb6d2179a64493226c3e04e25e56e021"/' \
+    -e 's/"src\/errors\.rs":"[^"]*"/"src\/errors.rs":"69670dda64c2ff4ebe2a695e327bb3acb16ba449c9552d811b09844362719f1d"/' \
+    -e 's/"src\/onenote\/mod\.rs":"[^"]*"/"src\/onenote\/mod.rs":"0663148eb403ed1b0052e0fa99ef4598b958bde91cba936e9fd962e1b4b08da1"/' \
+    .cargo/vendor/onenote_parser/.cargo-checksum.json
+
 chmod -x docs/html/images/flamegraph.svg
 
 %build

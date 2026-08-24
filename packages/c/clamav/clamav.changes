@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Sun Aug 16 20:44:26 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 1.5.4
+  ClamAV 1.5.4 is a patch release with the following fixes:
+  * CVE-2026-20337, bsc#1274597:
+    Fixed ZIP catalogue capacity tracking that could write beyond a heap
+    allocation while indexing local file headers.
+  * CVE-2026-20345, bsc#1274600:
+    Fixed an indexing error while converting GPT partition names that could
+    read or write beyond a stack-allocated partition entry.
+  * CVE-2026-20339, bsc#1274599:
+    Fixed an integer overflow in the PESpin unpacker that could allocate an
+    undersized buffer and then write beyond it while rebuilding a PE file.
+  * CVE-2026-20338, bsc#1274598:
+    Fixed ownership handling while merging ZIP catalogue records that could
+    cause an invalid free while scanning a malformed archive.
+  * CVE-2026-20346, bsc#1274601:
+    Fixed an integer underflow in the PDF parser that could cause a crash while
+    reading a malformed hex string.
+  * CVE-2026-20347, bsc#1274602:
+    Fixed undefined behavior and integer overflow in the Mach-O parser that
+    could cause a crash while scanning a malformed Mach-O file.
+  * CVE-2026-20348, bsc#1274603:
+    Fixed XAR parser size handling that could request an excessive allocation
+    or exceed scan limits while decompressing a malformed table of contents.
+  * CVE-2025-8088:
+    Adopted the upstream UnRAR project fix in ClamAV's bundled UnRAR library.
+    The fix rejects path separators in NTFS alternate data stream names to
+    prevent extraction outside ClamAV's temporary scan directory on Windows.
+  * Fixed thread-safety issues in the clamd STATS command that could disclose
+    process memory or crash the daemon while scans and STATS requests run
+    concurrently. Also fixed partial socket-write handling used for large STATS
+    responses.
+  * FreeBSD: Restored support for safe quarantine move and remove actions while
+    preserving protection against source-path replacement races.
+  * Fixed an OpenSSL library-context leak in legacy hashing helpers when a
+    requested message digest cannot be fetched, such as when the default
+    provider is unavailable in a FIPS-enabled environment.
+  * Upgraded the Rust crossbeam-epoch dependency to resolve the
+    RUSTSEC-2026-0204 advisory.
+
+-------------------------------------------------------------------
+Fri Jul 24 14:09:10 UTC 2026 - Reinhard Max <max@suse.com>
+
+- CVE-2026-46671, bsc#1271922: Add clamav-CVE-2026-46671.patch to
+  fix path traversal vulnerability in OneNote parser.
+- Add clamav-vendor-cve-2026-46671.tar.gz to provide the
+  sanitise-file-name Rust crate required by the security fix.
+
+-------------------------------------------------------------------
 Wed Jul  1 16:18:42 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 1.5.3
