@@ -5759,4 +5759,41 @@ The version curretnly submitted to Factory breaks build of e.g coreutils (forwar
 </comment>
     <requestid>1370084</requestid>
   </revision>
+  <revision rev="547" vrev="1">
+    <srcmd5>301303178c3f3802402818a093716419</srcmd5>
+    <version>2.10.0+git20260819.485e0ded</version>
+    <time>1787565719</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.10.0+git20260819.485e0ded:
+  * FileDigestCheck: detect more varlink socket units
+  * test_whitelist_syntax: include new varlink-whitelist
+  * varlink-whitelist: add systemd-experimental sockets (bsc#1261919)
+  * varlink-whitelist: add systemd-userdbd (bsc#1261919)
+  * varlink-whitelist: add systemd-sysext (bsc#1261919)
+  * varlink-whitelist: add systemd-logind (bsc#1261919)
+  * varlink-whitelist: add systemd-hostnamed.socket (bsc#1261919)
+  * varlink-whitelist: add systemd-creds.socket (bsc#1261919)
+  * varlink-whitelist: add systemd-ask-password (bsc#1261919)
+  * varlink-whitelist: add systemd-resolved socket (bsc#1261919)
+  * varlink-whitelist: add networkd service (bsc#1261919)
+  * varlink-whitelist: add systemd-container services (bsc#1261919)
+  * pam-modules: whitelist pam_ssh_agent (bsc#1274633)
+  * varlink-whitelist: add udev core services (bsc#1261919)
+
+- Update to version 2.10.0+git20260811.5bace490:
+  * Bump github/codeql-action/autobuild from 4.37.4 to 4.37.6
+  * Bump github/codeql-action/init from 4.37.4 to 4.37.6
+  * Bump github/codeql-action/analyze from 4.37.4 to 4.37.6
+  * FileDigestCheck: varlink: don't process files in sub-directories
+  * Release 2.10.0
+  * CI: Remove ruff
+  * Bump github/codeql-action/autobuild from 4.36.2 to 4.37.4
+  * Bump github/codeql-action/init from 4.36.2 to 4.37.4
+  * Bump github/codeql-action/analyze from 4.36.2 to 4.37.4
+  * ErlangCheck: Handle beams compiled with the deterministic option
+  * Bump actions/checkout from 6.0.3 to 7.0.1
+  * Bump github/codeql-action from 4.36.0 to 4.36.2
+  * Bump actions/checkout from 6.0.2 to 6.0.3</comment>
+    <requestid>1372854</requestid>
+  </revision>
 </revisionlist>
