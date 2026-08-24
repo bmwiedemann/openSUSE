@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define plasma6_version 5.27.80
 %define qt6_version 6.9.0
 
 %bcond_without released
 Name:           gwenview
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        Image Viewer by KDE
 License:        GPL-2.0-or-later
@@ -39,6 +39,7 @@ BuildRequires:  liblcms2-devel
 BuildRequires:  libpng-devel
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-gui-private-devel >= %{qt6_version}
+BuildRequires:  cmake(KDcrawQt6)
 BuildRequires:  cmake(KF6Baloo) >= %{kf6_version}
 BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
 BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
@@ -46,7 +47,6 @@ BuildRequires:  cmake(KF6GuiAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
 BuildRequires:  cmake(KF6ItemModels) >= %{kf6_version}
-BuildRequires:  cmake(KDcrawQt6)
 BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
 BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
 BuildRequires:  cmake(KF6Parts) >= %{kf6_version}
@@ -65,9 +65,9 @@ BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
 BuildRequires:  cmake(Qt6SvgWidgets) >= %{qt6_version}
 BuildRequires:  cmake(Qt6WaylandClient) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
-BuildRequires:  pkgconfig(exiv2)
-BuildRequires:  cmake(kImageAnnotator-Qt6)
 BuildRequires:  cmake(kColorPicker-Qt6)
+BuildRequires:  cmake(kImageAnnotator-Qt6)
+BuildRequires:  pkgconfig(exiv2)
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-protocols)
@@ -84,7 +84,6 @@ list window, providing navigation of file hierarchies.
 
 %prep
 %autosetup -p1
-
 
 %build
 %cmake_kf6
