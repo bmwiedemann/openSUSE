@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jul 27 11:36:32 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- update CUDA variant to 580.178.04
+- supersedes kernel-5.14.patch, linux-7.1.patch
+
+-------------------------------------------------------------------
+Thu Jul 16 15:02:22 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- update non-CUDA variant to version 580.178.04 (boo#1271603)
+
+-------------------------------------------------------------------
 Tue Jun 16 19:39:34 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - linux-7.1.patch

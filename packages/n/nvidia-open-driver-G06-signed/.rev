@@ -1091,4 +1091,15 @@
     release (boo#1268331)</comment>
     <requestid>1359838</requestid>
   </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>3e5e94c1d0f9f468cecf38ec9fbbc971</srcmd5>
+    <version>580.178.04</version>
+    <time>1787565679</time>
+    <user>anag_factory</user>
+    <comment>- update CUDA variant to 580.178.04
+- supersedes kernel-5.14.patch, linux-7.1.patch
+
+- update non-CUDA variant to version 580.178.04 (boo#1271603)</comment>
+    <requestid>1372952</requestid>
+  </revision>
 </revisionlist>

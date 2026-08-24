@@ -16,14 +16,14 @@
 #
 
 
-%define gfx_aarch64_version 580.159.03
+%define gfx_aarch64_version 580.178.04
 
 %ifarch aarch64
 %define gfx_version %gfx_aarch64_version
 %else
-%define gfx_version 580.159.03
+%define gfx_version 580.178.04
 %endif
-%define cuda_version 580.159.03
+%define cuda_version 580.178.04
 
 %global flavor @BUILD_FLAVOR@%{?nil}
 
@@ -98,14 +98,10 @@ Source14:       group-source-files.pl
 Source15:       kmp-trigger.sh
 Source17:       kmp-post.sh
 Source18:       Check4WrongSupplements.sh
-%if 0%{?sle_version} < 150600
-Patch0:         kernel-5.14.patch
-%endif
 %ifnarch aarch64
 Patch1:         fix-objtool-warnings.patch
 %endif
 Patch2:         linux-7.0.patch
-Patch3:         linux-7.1.patch
 BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
