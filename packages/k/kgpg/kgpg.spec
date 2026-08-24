@@ -15,13 +15,14 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define kf6_version 6.19.0
+
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
-%define kpim6_version 6.7.3
+%define kpim6_version 6.8.0
 
 %bcond_without released
 Name:           kgpg
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        Encryption Tool
 License:        GPL-2.0-or-later
