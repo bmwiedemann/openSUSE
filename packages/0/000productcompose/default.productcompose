@@ -978,6 +978,7 @@ packagesets:
    - kf6-kitemmodels-imports # reason: dvd:patterns-kde-kde
    - kf6-kitemviews # reason: dvd:patterns-kde-kde
    - kf6-kjobwidgets # reason: dvd:patterns-kde-kde
+   - kf6-kmime # reason: dvd:patterns-kde-kde
    - kf6-knewstuff # reason: dvd:patterns-kde-kde
    - kf6-knewstuff-imports # reason: dvd:patterns-kde-kde
    - kf6-knotifications # reason: dvd:patterns-kde-kde
@@ -1029,7 +1030,7 @@ packagesets:
    - kgamma6-lang # reason: dvd:patterns-kde-kde
    - kgeography # reason: dvd:patterns-kde-kde_edutainment
    - kgeography-lang # reason: dvd:patterns-kde-kde_edutainment
-   - kglobalaccel5 # reason: dvd:patterns-kde-kde_ide
+   - kglobalaccel5 # reason: dvd:patterns-kde-kde_office
    - kglobalacceld6 # reason: dvd:patterns-kde-kde
    - khangman # reason: dvd:patterns-kde-kde_edutainment
    - khangman-lang # reason: dvd:patterns-kde-kde_edutainment
@@ -1080,7 +1081,6 @@ packagesets:
    - kmbox # reason: dvd:patterns-kde-kde
    - kmenuedit6 # reason: dvd:patterns-kde-kde
    - kmenuedit6-lang # reason: dvd:patterns-kde-kde
-   - kmime # reason: dvd:patterns-kde-kde
    - kmines # reason: dvd:patterns-kde-kde
    - kmines-lang # reason: dvd:patterns-kde-kde
    - kmod # reason: dvd:grub2
@@ -1130,8 +1130,6 @@ packagesets:
    - ksystemstats6-lang # reason: dvd:patterns-kde-kde
    - ktextaddons # reason: dvd:patterns-kde-kde
    - ktextaddons-lang # reason: dvd:patterns-kde-kde
-   - ktexteditor # reason: dvd:patterns-kde-kde_ide
-   - ktexteditor-lang # reason: dvd:patterns-kde-kde_ide
    - ktnef # reason: dvd:patterns-kde-kde
    - ktnef-debug-categories # reason: dvd:patterns-kde-kde
    - ktouch # reason: dvd:patterns-kde-kde_edutainment
@@ -1211,7 +1209,7 @@ packagesets:
    - libKF5DocTools5 # reason: dvd:patterns-kde-kde
    - libKF5GlobalAccel5 # reason: dvd:patterns-kde-kde
    - libKF5GlobalAccel5-lang # reason: dvd:patterns-kde-kde
-   - libKF5GlobalAccelPrivate5 # reason: dvd:patterns-kde-kde_ide
+   - libKF5GlobalAccelPrivate5 # reason: dvd:patterns-kde-kde_office
    - libKF5GuiAddons5 # reason: dvd:patterns-kde-kde
    - libKF5I18n5 # reason: dvd:patterns-kde-kde
    - libKF5I18n5-lang # reason: dvd:patterns-kde-kde
@@ -1223,16 +1221,12 @@ packagesets:
    - libKF5JobWidgets5-lang # reason: dvd:patterns-kde-kde
    - libKF5Notifications5 # reason: dvd:patterns-kde-kde
    - libKF5Notifications5-lang # reason: dvd:patterns-kde-kde
-   - libKF5Parts5 # reason: dvd:patterns-kde-kde_ide
-   - libKF5Parts5-lang # reason: dvd:patterns-kde-kde_ide
    - libKF5Solid5 # reason: dvd:patterns-kde-kde
    - libKF5Solid5-lang # reason: dvd:patterns-kde-kde
    - libKF5SonnetCore5 # reason: dvd:patterns-kde-kde
    - libKF5SonnetCore5-lang # reason: dvd:patterns-kde-kde
    - libKF5SonnetUi5 # reason: dvd:patterns-kde-kde
    - libKF5Style5 # reason: dvd:patterns-kde-kde
-   - libKF5SyntaxHighlighting5 # reason: dvd:patterns-kde-kde_ide
-   - libKF5SyntaxHighlighting5-lang # reason: dvd:patterns-kde-kde_ide
    - libKF5TextWidgets5 # reason: dvd:patterns-kde-kde
    - libKF5TextWidgets5-lang # reason: dvd:patterns-kde-kde
    - libKF5Wallet5 # reason: dvd:patterns-kde-kde
@@ -1302,6 +1296,8 @@ packagesets:
    - libKF6KCMUtilsCore6 # reason: dvd:patterns-kde-kde
    - libKF6KCMUtilsQuick6 # reason: dvd:patterns-kde-kde
    - libKF6KIO6 # reason: dvd:patterns-kde-kde
+   - libKF6Mime6 # reason: dvd:patterns-kde-kde
+   - libKF6Mime6-lang # reason: dvd:patterns-kde-kde
    - libKF6ModemManagerQt6 # reason: dvd:patterns-kde-kde
    - libKF6NetworkManagerQt6 # reason: dvd:patterns-kde-kde
    - libKF6NewStuffCore6 # reason: dvd:patterns-kde-kde
@@ -1408,8 +1404,6 @@ packagesets:
    - libKPim6MailImporterAkonadi6 # reason: dvd:patterns-kde-kde
    - libKPim6MailTransport6 # reason: dvd:patterns-kde-kde
    - libKPim6Mbox6 # reason: dvd:patterns-kde-kde
-   - libKPim6Mime6 # reason: dvd:patterns-kde-kde
-   - libKPim6Mime6-lang # reason: dvd:patterns-kde-kde
    - libKPim6MimeTreeParserCore6 # reason: dvd:patterns-kde-kde
    - libKPim6MimeTreeParserCore6-lang # reason: dvd:patterns-kde-kde
    - libKPim6MimeTreeParserWidgets6 # reason: dvd:patterns-kde-kde
@@ -2240,6 +2234,7 @@ packagesets:
    - libkdegames-lang # reason: dvd:patterns-kde-kde
    - libkdepim # reason: dvd:patterns-kde-kde
    - libkdepim-lang # reason: dvd:patterns-kde-kde
+   - libkdsingleapplication-qt6-1_2 # reason: dvd:patterns-kde-kde
    - libkdsoap-qt6-2 # reason: dvd:patterns-kde-kde
    - libkerfuffle26 # reason: dvd:patterns-kde-kde
    - libkexiv2-qt6 # reason: dvd:patterns-kde-kde
@@ -3898,7 +3893,6 @@ packagesets:
    - switcheroo-control # reason: dvd:patterns-kde-kde
    - swtpm # reason: dvd:patterns-media-rest_dvd
    - swtpm-selinux # reason: common_locks:expansion
-   - syntax-highlighting # reason: dvd:patterns-kde-kde_ide
    - sysconfig # reason: dvd:patterns-gnome-gnome
    - sysconfig-netconfig # reason: dvd:wicked
    - syslinux # reason: dvd:patterns-kde-kde
@@ -4114,8 +4108,8 @@ packagesets:
    - udisks2 # reason: dvd:grub2
    - udisks2-bash-completion # reason: dvd:patterns-kde-kde
    - udisks2-lang # reason: dvd:grub2
-   - umbrello # reason: dvd:patterns-kde-kde_ide
-   - umbrello-lang # reason: dvd:patterns-kde-kde_ide
+   - umbrello # reason: dvd:patterns-media-rest_dvd
+   - umbrello-lang # reason: dvd:patterns-media-rest_dvd
    - un-fonts # reason: dvd:patterns-media-rest_dvd
    - unar # reason: dvd:patterns-kde-kde
    - unbound # reason: dvd:patterns-media-rest_dvd
