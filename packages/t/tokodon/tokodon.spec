@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
 
 %bcond_without released
 Name:           tokodon
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        Mastodon client by KDE
 License:        GPL-3.0-only
@@ -104,6 +104,7 @@ community.
 %{_kf6_bindir}/tokodon
 %{_kf6_debugdir}/tokodon.categories
 %{_kf6_iconsdir}/hicolor/scalable/apps/org.kde.tokodon.svg
+%{_kf6_iconsdir}/hicolor/scalable/apps/org.kde.tokodon.tray.svg
 %{_kf6_notificationsdir}/tokodon.notifyrc
 %{_kf6_plugindir}/kf6/purpose/tokodonplugin.so
 %{_kf6_sharedir}/dbus-1/services/org.kde.tokodon.service
