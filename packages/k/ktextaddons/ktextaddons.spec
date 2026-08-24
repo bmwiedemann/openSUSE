@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           ktextaddons
-Version:        2.0.1
+Version:        2.1.1
 Release:        0
 Summary:        Various text handling addons
 License:        LGPL-2.1-or-later
@@ -74,6 +74,20 @@ text to speech and translations.
 %package devel
 Summary:        Development files for ktextaddons, a library for handling texts
 Requires:       libKF6TextAddons1 = %{version}
+Requires:       cmake(KF6ColorScheme) >= %{kf6_version}
+Requires:       cmake(KF6Config) >= %{kf6_version}
+Requires:       cmake(KF6CoreAddons) >= %{kf6_version}
+Requires:       cmake(KF6I18n) >= %{kf6_version}
+Requires:       cmake(KF6Service) >= %{kf6_version}
+Requires:       cmake(KF6Sonnet) >= %{kf6_version}
+Requires:       cmake(KF6SyntaxHighlighting) >= %{kf6_version}
+Requires:       cmake(KF6WidgetsAddons) >= %{kf6_version}
+Requires:       cmake(Qt6Core) >= %{qt6_version}
+Requires:       cmake(Qt6Gui) >= %{qt6_version}
+Requires:       cmake(Qt6Network) >= %{qt6_version}
+Requires:       cmake(Qt6Sql) >= %{qt6_version}
+Requires:       cmake(Qt6TextToSpeech) >= %{qt6_version}
+Requires:       cmake(Qt6Widgets) >= %{qt6_version}
 
 %description devel
 This package provides development files to use ktextaddons in other applications.
@@ -99,15 +113,21 @@ This package provides development files to use ktextaddons in other applications
 %files
 %{_kf6_debugdir}/ktextaddons.categories
 %{_kf6_debugdir}/ktextaddons.renamecategories
+%{_kf6_libdir}/libmcpprotocolclientplugin.so.*
+%{_kf6_libdir}/libmcpprotocolserverplugin.so.*
 %{_kf6_libdir}/libtextautogenerategenericnetwork.so.*
+%{_kf6_libdir}/libtextautogeneratelmstudio.so.*
 %{_kf6_libdir}/libtextautogenerateollama.so.*
+%{_kf6_libdir}/libtextautogeneratellamacpp.so.*
 %{_kf6_libdir}/libtextautogenerateollamacloud.so.*
 %{_kf6_libdir}/libtextautogenerateollamacommon.so.*
 %{_kf6_libdir}/libtextautogenerateollamaonline.so.*
+%{_kf6_libdir}/libtextautogenerateplugincommon.so.*
 %{_kf6_libdir}/libtextutils-cmark-rc-copy.so.*
 %{_kf6_plugindir}/kf6/speechtotext/
 %{_kf6_plugindir}/kf6/textautogeneratetext/
 %{_kf6_plugindir}/kf6/translator/
+%{_kf6_sharedir}/config.kcfg/textautogeneratetextglobalconfig.kcfg
 
 %files lang -f %{name}.lang
 
@@ -117,6 +137,8 @@ This package provides development files to use ktextaddons in other applications
 %{_kf6_libdir}/libKF6TextAutoCorrectionCore.so.*
 %{_kf6_libdir}/libKF6TextAutoCorrectionWidgets.so.*
 %{_kf6_libdir}/libKF6TextAutoGenerateText.so.*
+%{_kf6_libdir}/libKF6TextAutoGenerateTextMcpProtocolCore.so.*
+%{_kf6_libdir}/libKF6TextAutoGenerateTextMcpProtocolWidgets.so.*
 %{_kf6_libdir}/libKF6TextCustomEditor.so.*
 %{_kf6_libdir}/libKF6TextEditTextToSpeech.so.*
 %{_kf6_libdir}/libKF6TextEmoticonsCore.so.*
@@ -131,6 +153,8 @@ This package provides development files to use ktextaddons in other applications
 %{_kf6_cmakedir}/KF6TextAutoCorrectionCore/
 %{_kf6_cmakedir}/KF6TextAutoCorrectionWidgets/
 %{_kf6_cmakedir}/KF6TextAutoGenerateText/
+%{_kf6_cmakedir}/KF6TextAutoGenerateTextMcpProtocolCore/
+%{_kf6_cmakedir}/KF6TextAutoGenerateTextMcpProtocolWidgets/
 %{_kf6_cmakedir}/KF6TextCustomEditor/
 %{_kf6_cmakedir}/KF6TextEditTextToSpeech/
 %{_kf6_cmakedir}/KF6TextEmoticonsCore/
@@ -144,6 +168,8 @@ This package provides development files to use ktextaddons in other applications
 %{_kf6_includedir}/TextAutoCorrectionCore/
 %{_kf6_includedir}/TextAutoCorrectionWidgets/
 %{_kf6_includedir}/TextAutoGenerateText/
+%{_kf6_includedir}/TextAutoGenerateTextMcpProtocolCore/
+%{_kf6_includedir}/TextAutoGenerateTextMcpProtocolWidgets/
 %{_kf6_includedir}/TextCustomEditor/
 %{_kf6_includedir}/TextEditTextToSpeech/
 %{_kf6_includedir}/TextEmoticonsCore/
@@ -156,6 +182,8 @@ This package provides development files to use ktextaddons in other applications
 %{_kf6_libdir}/libKF6TextAutoCorrectionCore.so
 %{_kf6_libdir}/libKF6TextAutoCorrectionWidgets.so
 %{_kf6_libdir}/libKF6TextAutoGenerateText.so
+%{_kf6_libdir}/libKF6TextAutoGenerateTextMcpProtocolCore.so
+%{_kf6_libdir}/libKF6TextAutoGenerateTextMcpProtocolWidgets.so
 %{_kf6_libdir}/libKF6TextCustomEditor.so
 %{_kf6_libdir}/libKF6TextEditTextToSpeech.so
 %{_kf6_libdir}/libKF6TextEmoticonsCore.so
