@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Aug 23 09:18:30 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Move QtPass from Qt5 to Qt6, as Version 5 is deprecated and eol
+- Small adjustments to the spec file
+
+-------------------------------------------------------------------
 Wed Apr 22 12:41:01 UTC 2026 - ecsos <ecsos@opensuse.org>
 
 - Update to version 1.7.0:

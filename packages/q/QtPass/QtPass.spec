@@ -16,25 +16,25 @@
 #
 
 
+%define         _name qtpass
 Name:           QtPass
 Version:        1.7.0
 Release:        0
 Summary:        A multi-platform gui for pass
 License:        GPL-3.0-only
 Group:          Productivity/Security
-URL:            https://qtpass.org/
-#Source0:        https://github.com/IJHack/qtpass/archive/v%%{version}.tar.gz#/%%{name}-%%{version}.tar.gz
+URL:            https://qtpass.org
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libqt5-linguist
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Core) >= 5.10.0
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5Svg)
-BuildRequires:  pkgconfig(Qt5Test)
-BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  qt6-macros
+BuildRequires:  pkgconfig(Qt6Core)
+BuildRequires:  pkgconfig(Qt6Gui)
+BuildRequires:  pkgconfig(Qt6Linguist)
+BuildRequires:  pkgconfig(Qt6Network)
+BuildRequires:  pkgconfig(Qt6Platform)
+BuildRequires:  pkgconfig(Qt6Test)
+BuildRequires:  pkgconfig(Qt6Widgets)
 Requires:       password-store
 Recommends:     git-core
 Recommends:     gpg2
@@ -45,30 +45,26 @@ Provides:       qtpass
 QtPass is a multi-platform GUI for pass, the standard unix password manager.
 
 %prep
-%autosetup -p1
+%autosetup
 
 %build
-export QT_HASH_SEED=0
-%qmake5 PREFIX=%{_prefix}
-%make_jobs
+%qmake6 PREFIX=%{_prefix}
+%cmake_build
 
 %install
-%qmake5_install
-%suse_update_desktop_file -i qtpass
-install -Dpm644 artwork/icon.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/qtpass-icon.svg
-install -Dpm644 qtpass.appdata.xml %{buildroot}%{_datadir}/appdata/qtpass.appdata.xml
-install -Dpm644 qtpass.1 %{buildroot}%{_mandir}/man1/qtpass.1
-
-# do not ship tests
-rm -rf %{buildroot}%{_prefix}%{_prefix}/tests
+%qmake6_install
+install -Dpm0644 %{_name}.desktop %{buildroot}%{_datadir}/applications/%{_name}.desktop
+install -Dpm0644 %{_name}.appdata.xml %{buildroot}%{_datadir}/metainfo/%{_name}.appdata.xml
+install -Dpm0644 artwork/icon.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/%{_name}-icon.svg
+install -Dpm0644 %{_name}.1 %{buildroot}%{_mandir}/man1/%{_name}.1
 
 %files
 %license LICENSE
 %doc README.md
-%{_bindir}/qtpass
-%{_datadir}/applications/qtpass.desktop
-%{_datadir}/appdata/qtpass.appdata.xml
-%{_datadir}/icons/hicolor/scalable/apps/qtpass-icon.svg
-%{_mandir}/man1/qtpass.1%{?ext_man}
+%{_bindir}/%{_name}
+%{_datadir}/applications/%{_name}.desktop
+%{_datadir}/icons/hicolor/scalable/apps/%{_name}-icon.svg
+%{_datadir}/metainfo/%{_name}.appdata.xml
+%{_mandir}/man?/%{_name}.?%{ext_man}
 
 %changelog
