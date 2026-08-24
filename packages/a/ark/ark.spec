@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
 
 %bcond_without released
 Name:           ark
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        KDE Archiver Tool
 License:        GPL-2.0-or-later
@@ -88,7 +88,6 @@ This is a KDE application to work with compressed archives.
 
 %find_lang %{name} --with-man --with-html --all-name
 
-
 %ldconfig_scriptlets -n libkerfuffle26
 
 %files
@@ -108,6 +107,8 @@ This is a KDE application to work with compressed archives.
 %{_kf6_plugindir}/kf6/kfileitemaction/extractfileitemaction.so
 %dir %{_kf6_plugindir}/kf6/kio_dnd
 %{_kf6_plugindir}/kf6/kio_dnd/extracthere.so
+%{_kf6_sharedir}/kconf_update/ark_move_dirhistory_to_state_config.py
+%{_kf6_sharedir}/kconf_update/ark_move_dirhistory_to_state_config.upd
 
 %files -n libkerfuffle26
 %{_kf6_libdir}/libkerfuffle.so.*
