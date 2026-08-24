@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
-%define kpim6_version 6.7.3
+%define kpim6_version 6.8.0
 
 %bcond_without released
 Name:           kidentitymanagement
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        KDE PIM Libraries: Identity Management
 License:        LGPL-2.1-or-later
@@ -36,8 +36,8 @@ BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  cmake(KF6Codecs) >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
-BuildRequires:  cmake(KF6KirigamiAddons) >= 0.11
 BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6KirigamiAddons) >= 0.11
 BuildRequires:  cmake(KF6TextCustomEditor)
 BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
 BuildRequires:  cmake(KPim6TextEdit) >= %{kpim6_version}
@@ -74,7 +74,7 @@ Summary:        KDE PIM Libraries: Identity Management - QtQuick library
 Requires:       libKPim6IdentityManagementCore6 = %{version}
 
 %description -n libKPim6IdentityManagementQuick6
-This package provides a shared library to build QtQuick interfaces for 
+This package provides a shared library to build QtQuick interfaces for
 PIM identity management.
 
 %package imports
@@ -88,8 +88,8 @@ QML imports for using kidentitymanagement.
 %package devel
 Summary:        KDE PIM Libraries: Identity Management - development files
 Requires:       libKPim6IdentityManagementCore6 = %{version}
-Requires:       libKPim6IdentityManagementWidgets6 = %{version}
 Requires:       libKPim6IdentityManagementQuick6 = %{version}
+Requires:       libKPim6IdentityManagementWidgets6 = %{version}
 Requires:       cmake(KF6CoreAddons) >= %{kf6_version}
 Requires:       cmake(KPim6TextEdit) >= %{kpim6_version}
 
