@@ -17,7 +17,7 @@
 
 
 Name:           gap
-Version:        4.16.0
+Version:        4.16.1
 Release:        0
 Summary:        System for Computational Discrete Algebra
 License:        GPL-2.0-or-later

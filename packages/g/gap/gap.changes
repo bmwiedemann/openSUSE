@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Aug 23 14:33:19 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.16.1
+  * Fix `IsSingleValued` and cokernel for mappings of pc groups
+  * Fix `IsSquareMatrix` to not return `true` for lists-of-lists
+    that are not rectangular (so with rows of different length)
+  * Fix `ElementaryAbelianSeries` returning an invalid series after
+    `AutomorphismGroup`
+  * Fix wrong group orders caused by leaked randomized stabilizer
+    chain options in `CompatiblePairs`
+  * Fix `IsFinite` for characteristic zero matrix groups, it could
+    incorrectly flag finite groups as being infinite
+  * Fix a bug in automorphism group computations/isomorphism tests,
+    that might have missed morphisms in larger groups (and e.g.
+    incorrectly marked two groups as nonisomorphic when they really
+    are isomorphic)
+  * Fix infinite recursion in `MaximalSubgroupClassReps` for A_n
+  * Fix `BaumClausenInfo` when the given pcgs does not describe a
+    normal series of the group
+  * Fix an unexpected error when calling `ConjugateGroup` on matrix
+    groups not defined over a field
+
+-------------------------------------------------------------------
 Mon Jun 15 17:07:42 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.16.0
