@@ -960,4 +960,12 @@
   * 0001-Add-missing-find_package-KF6I18n.patch</comment>
     <requestid>1365600</requestid>
   </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>5edc1775a7bd75f8e3aa19acad045782</srcmd5>
+    <version>26.08.0</version>
+    <time>1787565728</time>
+    <user>anag_factory</user>
+    <comment>KDE release gear 26.08.0 (forwarded request 1371427 from krop)</comment>
+    <requestid>1372302</requestid>
+  </revision>
 </revisionlist>

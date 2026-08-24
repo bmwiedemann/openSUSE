@@ -15,13 +15,14 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define kf6_version 6.19.0
+
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
-%define kpim6_version 6.7.3
+%define kpim6_version 6.8.0
 
 %bcond_without released
 Name:           akonadi-import-wizard
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        Assistant to import PIM data
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -31,10 +32,8 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Add-missing-find_package-KF6I18n.patch
-BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  fdupes
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  cmake(KF6Archive) >= %{kf6_version}
 BuildRequires:  cmake(KF6Auth) >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
