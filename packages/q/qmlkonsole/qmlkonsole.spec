@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
 
 %bcond_without released
 Name:           qmlkonsole
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        Terminal application
 License:        GPL-2.0-or-later
@@ -47,10 +47,10 @@ BuildRequires:  cmake(Qt6QuickControls2) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
-Requires:       kirigami-addons6
 Requires:       kf6-kirigami-imports >= %{kf6_version}
-Requires:       qt6-declarative-imports >= %{qt6_version}
+Requires:       kirigami-addons6
 Requires:       qmltermwidget
+Requires:       qt6-declarative-imports >= %{qt6_version}
 
 %description
 Terminal application offering additional keyboard buttons useful on touch
