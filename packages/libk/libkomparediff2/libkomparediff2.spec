@@ -16,13 +16,12 @@
 #
 
 
-
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
 
 %bcond_without released
 Name:           libkomparediff2
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        A library to compare files and strings
 License:        GPL-2.0-or-later
@@ -45,6 +44,7 @@ BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 A library to compare files and strings, used in Kompare and KDevelop.
 
 # Both libkomparediff packages will have to coexist until kdevelop is ported
+
 %package -n libkomparediff2-6
 Summary:        A library to compare files and strings
 # Conflicting translations catalog
@@ -57,10 +57,10 @@ A library to compare files and strings, used in Kompare and KDevelop.
 %package devel
 Summary:        Development package for libkomparediff2
 Requires:       libkomparediff2-6 = %{version}
-Requires:       cmake(Qt6Core) >= %{qt6_version}
-Requires:       cmake(Qt6Widgets) >= %{qt6_version}
 Requires:       cmake(KF6Config) >= %{kf6_version}
 Requires:       cmake(KF6XmlGui) >= %{kf6_version}
+Requires:       cmake(Qt6Core) >= %{qt6_version}
+Requires:       cmake(Qt6Widgets) >= %{qt6_version}
 Conflicts:      libkomparediff-kf5-devel
 
 %description devel
