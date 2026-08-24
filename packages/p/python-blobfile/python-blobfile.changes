@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+Fri Aug 21 18:32:52 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package of blobfile 3.0.0: read GCS, Azure Blob Storage
+  and local paths with a tensorflow.io.gfile-like interface
+

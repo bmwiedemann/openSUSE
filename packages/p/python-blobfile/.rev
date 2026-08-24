@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5819c9638a5905c7012f7ccf72d6a259</srcmd5>
+    <version>3.0.0</version>
+    <time>1787579010</time>
+    <user>anag_factory</user>
+    <comment>New package: python-blobfile 3.0.0.
+
+Please keep pluskalm as package maintainer.
+
+Leaf of the SGLang CPU cone (home:pluskalm:sglang). INTERDEPENDENT — stage with other sglang cone Factory SRs (python-easydict, python-gguf, python-torchao, python-timm, python-datasets, python-sglang).
+
+- Initial package of blobfile 3.0.0: read GCS, Azure Blob Storage
+  and local paths with a tensorflow.io.gfile-like interface
+
+New package to Factory.</comment>
+    <requestid>1372971</requestid>
+  </revision>
+</revisionlist>

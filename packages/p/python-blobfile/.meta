@@ -1,0 +1,9 @@
+<package name="python-blobfile" project="openSUSE:Factory">
+  <title>Read GCS, ABS and local paths with the same interface</title>
+  <description>A Python library that provides an open()-like interface for reading
+local and remote files (Google Cloud Storage and Azure Blob Storage),
+plus os.path- and shutil-like helpers that also accept GCS (gs://)
+and Azure (az://) paths. Inspired by TensorFlow's gfile, but not an
+exact clone of that API.
+</description>
+</package>
