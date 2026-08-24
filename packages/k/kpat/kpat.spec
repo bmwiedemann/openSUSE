@@ -16,7 +16,7 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
 
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150400
@@ -25,7 +25,7 @@
 
 %bcond_without released
 Name:           kpat
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        Patience card game
 License:        GPL-2.0-or-later
@@ -35,12 +35,12 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  freecell-solver-devel
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 %if %{with bhsolver}
 BuildRequires:  pkgconfig(libblack-hole-solver)
 %endif
-BuildRequires:  cmake(KDEGames6) 
+BuildRequires:  cmake(KDEGames6)
 BuildRequires:  cmake(KF6Completion) >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6ConfigWidgets) >= %{kf6_version}
