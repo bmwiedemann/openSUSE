@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 24 06:37:35 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-flit-core-4.patch:
+  * Support changes required by flit-core 4.
+
+-------------------------------------------------------------------
 Wed Jun 11 12:53:23 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build

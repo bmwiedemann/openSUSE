@@ -1,0 +1,38 @@
+From 38c4f88daadb6be72412dc0fc137e4d2ca8afccf Mon Sep 17 00:00:00 2001
+From: Maxwell G <maxwell@gtmx.me>
+Date: Wed, 19 Aug 2026 20:29:26 -0500
+Subject: [PATCH 1/2] packaging: adopt PEP 621 metadata for flit-core v4 compat
+
+---
+ pyproject.toml | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+Index: requests_download-0.1.2/pyproject.toml
+===================================================================
+--- requests_download-0.1.2.orig/pyproject.toml
++++ requests_download-0.1.2/pyproject.toml
+@@ -1,13 +1,13 @@
+ [build-system]
+-requires = ["flit"]
+-build-backend = "flit.buildapi"
+-
+-[tool.flit.metadata]
+-module = "requests_download"
+-author = "Thomas Kluyver"
+-author-email = "thomas@kluyver.me.uk"
+-home-page = "https://www.github.com/takluyver/requests_download"
+-description-file = "README.rst"
+-classifiers = ["License :: OSI Approved :: MIT License"]
+-requires = ["requests"]
++requires = ["flit_core  >=3.11,<5"]
++build-backend = "flit_core.buildapi"
+ 
++[project]
++name = "requests_download"
++dynamic = ["version", "description"]
++authors = [{ name = "Thomas Kluyver", email = "thomas@kluyver.me.uk" }]
++urls.Homepage = "https://www.github.com/takluyver/requests_download"
++readme = "README.rst"
++license = "MIT"
++license-files = ["LICENSE"]
++dependencies = ["requests"]
