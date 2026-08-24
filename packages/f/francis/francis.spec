@@ -16,15 +16,15 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
 
 %bcond_without released
 Name:           francis
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        Productivity tool
-License:        LGPL-2.1-or-later AND GPL-3.0-or-later
+License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 URL:            https://apps.kde.org/francis
 Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -45,9 +45,9 @@ BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
 BuildRequires:  cmake(Qt6QuickControls2) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+Requires:       kf6-kirigami-imports >= %{kf6_version}
 Requires:       kf6-knotifications-imports >= %{kf6_version}
 Requires:       kirigami-addons6 >= 1.0
-Requires:       kf6-kirigami-imports >= %{kf6_version}
 
 %description
 Francis uses the well-known pomodoro technique to help you get more productive.
