@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
 
 %bcond_without released
 Name:           khelpcenter
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        KDE Documentation Application
 License:        GPL-2.0-or-later
@@ -58,8 +58,8 @@ ExclusiveArch:  x86_64 %{x86_64} aarch64 riscv64
 # khelpcenter uses some images and stylesheets from kdoctools (boo#1011094)
 Requires:       kf6-kdoctools >= %{kf6_version}
 Conflicts:      kdebase4-runtime < 17.04.1
-Provides:       suse_help_viewer
 Provides:       khelpcenter5 = %{version}
+Provides:       suse_help_viewer
 Obsoletes:      khelpcenter5 < %{version}
 Obsoletes:      khelpcenter5-lang < %{version}
 
