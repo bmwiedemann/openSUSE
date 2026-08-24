@@ -16,7 +16,7 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
 
 %ifarch aarch64 ppc64le riscv64 s390x x86_64
@@ -26,7 +26,7 @@
 %endif
 %bcond_without released
 Name:           kalzium
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        Periodic Table of Elements
 License:        GPL-2.0-or-later
@@ -57,9 +57,9 @@ BuildRequires:  cmake(KF6Plotting) >= %{kf6_version}
 BuildRequires:  cmake(KF6TextWidgets) >= %{kf6_version}
 BuildRequires:  cmake(KF6UnitConversion) >= %{kf6_version}
 BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
+BuildRequires:  cmake(Qt6Concurrent) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
-BuildRequires:  cmake(Qt6Concurrent) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
 BuildRequires:  cmake(Qt6OpenGLWidgets) >= %{qt6_version}
 BuildRequires:  cmake(Qt6StateMachine) >= %{qt6_version}

@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Aug 16 07:26:45 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.08.0/
+- Changes since 26.07.90:
+  * Use operator!= as such, rather than calling it as function
+
+-------------------------------------------------------------------
+Sat Aug  1 11:38:29 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.07.90
+  * New feature release
+- No code change since 26.07.80
+
+-------------------------------------------------------------------
+Sat Jul 18 11:11:07 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.07.80
+  * New feature release
+- Changes since 26.04.3:
+  * Add glossary entries for 'HPLC' and 'Evaporating Dish'
+  * Reword tool glossary entries and change picture names to English
+  * Add glossary pictures for more tools
+
+-------------------------------------------------------------------
 Tue Jul  7 07:07:07 UTC 2026 - ohering@suse.de
 
 - Remove OCaml bindings on 32bit architectures

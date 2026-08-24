@@ -1519,4 +1519,12 @@
     <comment></comment>
     <requestid>1365835</requestid>
   </revision>
+  <revision rev="191" vrev="1">
+    <srcmd5>d28d51a41f3ce81ac97b5ee910759497</srcmd5>
+    <version>26.08.0</version>
+    <time>1787565941</time>
+    <user>anag_factory</user>
+    <comment>KDE release gear 26.08.0 (forwarded request 1371427 from krop)</comment>
+    <requestid>1372349</requestid>
+  </revision>
 </revisionlist>
