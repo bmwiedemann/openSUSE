@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Fri Aug 21 20:03:39 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 9.5.0:
+  * Optional backoff delay strategy for retries (Fixes #197)
+  * Sanitize index names in ES|QL query builder (Fixes #3422)
+  * DSL
+  * Added `flat_index_threshold` attribute to
+    `DenseVectorIndexOptions` type
+  * Added `field` attribute to `InnerHits` type
+  * Added `embedding` attribute to `QueryVectorBuilder` type
+- update to 9.4.0:
+  * ES|QL updates for 9.4 and Serverless
+  * Added `server_mode` parameter to the client’s constructor
+  * ## API
+  * Added `inference.embedding` API
+  * Added `inference.put_fireworksai` API
+  * Added `project.create_many_routing`,
+    `project.create_routing`, `project.delete_routing`,
+    `project.get_many_routing` and `project.get_routing` APIs
+  * Added `security.clone_api_key` API
+  * Added `group_by` parameter to `reindex_rethrottle` API
+  * Added `return_intermediate_results` parameter to
+    `async_search.get` API
+  * Added `project_routing` and `time_zone` parameters to
+    `esql.async_query` and `esql.query` APIs
+  * Removed `master_timeout` parameter from
+    `searchable_snapshots.cache_stats` API
+  * Added `name` parameter to `streams.logs_enable` and
+    `streams.logs_disable` APIs
+  * Added `should_parse_recursively` parameter to
+    `text_structure.find_field_structure`,
+    `text_structure.find_message_structure` and
+    `text_structure.find_structure` APIs
+  * Data stream support
+  * Handle document attributes that have a name collision with a
+    method
+  * Added `es_name` parameter to `mapped_field` function
+  * Added `_es_name` parameter to all subclasses of `Field`
+  * Added `script` attribute to `MultiTermLookup` type
+  * Added `lookup` attribute to `QueryVectorBuilder` type
+
+-------------------------------------------------------------------
 Tue Apr 21 11:10:10 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 9.3.0
@@ -136,7 +178,7 @@ Wed Jan  8 08:59:00 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
   * Add Geoip database configuration APIs: Create or update, Get and Delete
   * Add q parameter to Update by Query API
   * Add allow_no_indices and ignore_unavailable parameters to Resolve index API
-- 8.15.0: 
+- 8.15.0:
   * Added the Connector API (#2623)
   * Added support for semantic_text and semantic query.
   * Added support for sequences of job id, model id and tags where applicable in ML APIs
