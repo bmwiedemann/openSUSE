@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Sat Aug 22 05:58:38 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Switch from update-alternatives to libalternatives
+
+-------------------------------------------------------------------
+Sat Aug 22 05:38:49 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package of modelscope-hub 0.2.0: official Python SDK and
+  CLI for ModelScope Hub (download, upload and manage models,
+  datasets, Studio spaces, skills and MCP servers)
+  * Ships modelscope-hub and ms-hub console scripts
+  * Runtime dependencies: requests >= 2.28, tqdm >= 4.64.0,
+    filelock >= 3.9, urllib3 >= 1.26
+

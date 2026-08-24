@@ -1,0 +1,7 @@
+<package name="python-modelscope-hub" project="openSUSE:Factory">
+  <title>Official Python client for ModelScope Hub</title>
+  <description>Python SDK and CLI to download, upload and manage models, datasets,
+Studio spaces, skills and MCP servers on ModelScope Hub. Provides a
+HubApi class and the modelscope-hub and ms-hub commands.</description>
+  <url>https://github.com/modelscope/modelscope_hub</url>
+</package>
