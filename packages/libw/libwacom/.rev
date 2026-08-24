@@ -444,4 +444,13 @@
     <comment></comment>
     <requestid>1363507</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>6ae0675611495f1f7f92717a7002b551</srcmd5>
+    <version>2.19.1</version>
+    <time>1787565717</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.19.1:
+  * Build fixes for older systems and other arches (forwarded request 1373111 from dirkmueller)</comment>
+    <requestid>1373123</requestid>
+  </revision>
 </revisionlist>
