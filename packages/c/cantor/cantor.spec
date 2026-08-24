@@ -17,7 +17,7 @@
 
 
 %global libMAJOR 28
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
 
 %ifarch x86_64 %{x86_64} aarch64 riscv64
@@ -32,7 +32,7 @@
 %bcond_without analitza
 %bcond_without released
 Name:           cantor
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        Worksheet GUI for mathematical software
 License:        GPL-2.0-or-later
@@ -103,7 +103,6 @@ those backends and is not targeted to kids but to scientists.
 %package devel
 Summary:        Worksheet GUI for mathematical software
 Requires:       libcantorlibs%{libMAJOR} = %{version}
-Requires:       pkgconfig(poppler-qt6)
 Requires:       libspectre-devel
 Requires:       cmake(KF6Archive) >= %{kf6_version}
 Requires:       cmake(KF6Completion) >= %{kf6_version}
@@ -114,6 +113,7 @@ Requires:       cmake(KF6KIO) >= %{kf6_version}
 Requires:       cmake(KF6XmlGui) >= %{kf6_version}
 Requires:       cmake(Qt6Svg) >= %{qt6_version}
 Requires:       cmake(Qt6Xml) >= %{qt6_version}
+Requires:       pkgconfig(poppler-qt6)
 
 %description devel
 A frontend to several existing mathematical software such as R, Sage
