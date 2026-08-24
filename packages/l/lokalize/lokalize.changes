@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sun Aug 16 07:27:59 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.08.0/
+- No code change since 26.07.90
+
+-------------------------------------------------------------------
+Sat Aug  1 11:39:38 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.07.90
+  * New feature release
+- Changes since 26.07.80:
+  * Revert "Add KDDockWidgets as new dependency"
+
+-------------------------------------------------------------------
+Sat Jul 18 11:12:20 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.07.80
+  * New feature release
+- Too many changes since 26.04.3, only listing bugfixes:
+  * Fix Tab button for keyboard navigation (kde#519058)
+  * feature: expand project list directories to show untranslated files (kde#517866)
+  * Sort terms in Glossary View (kde#442704)
+  * Remove unnecessary menu action, disable project tab Edit menu (kde#517633)
+  * Fix KXMLGUI menu deletion (kde#517631)
+  * fix: stop constant "load project?" dialogues when closing tabs / project (kde#516944)
+  * fix: editor tab labels display file name and dir rather than complete file path (kde#516928)
+  * fix: enabling movement of previous/next bookmark in filtered view (kde#517200)
+
+-------------------------------------------------------------------
 Tue Jun 30 18:20:12 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.04.3
