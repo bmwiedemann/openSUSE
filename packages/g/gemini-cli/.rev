@@ -989,4 +989,13 @@
     modules</comment>
     <requestid>1371257</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>6ea126b9bb86f52f7320b862f9b6fc06</srcmd5>
+    <version>0.56.0</version>
+    <time>1787566306</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.56.0:
+  * no change over 0.55.1</comment>
+    <requestid>1373320</requestid>
+  </revision>
 </revisionlist>
