@@ -542,4 +542,19 @@
 - Drop update-grpc.patch, fixed by upstream (forwarded request 1355908 from hillwood)</comment>
     <requestid>1355909</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>0c402def0ef34a0f17de94852caabb35</srcmd5>
+    <version>5.53.0</version>
+    <time>1787566264</time>
+    <user>anag_factory</user>
+    <comment>- Update version to 5.53.0
+  * Add X-Forwarded-For support to gRPC transport
+  * Add Stream based Packet Addr for UDP Connections
+  * rrpit: compact session, async send, session recovery
+  * Add socks5ify engineering command
+  * Fix bugs
+  * Update modules (boo#1276119 and CVE-2026-72817, CVE-2026-72815, CVE-2026-72816)
+- Drop update-net.patch (forwarded request 1373260 from hillwood)</comment>
+    <requestid>1373261</requestid>
+  </revision>
 </revisionlist>

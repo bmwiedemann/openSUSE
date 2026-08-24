@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Aug 23 14:17:16 UTC 2026 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.53.0
+  * Add X-Forwarded-For support to gRPC transport
+  * Add Stream based Packet Addr for UDP Connections
+  * rrpit: compact session, async send, session recovery
+  * Add socks5ify engineering command
+  * Fix bugs
+  * Update modules (boo#1276119 and CVE-2026-72817, CVE-2026-72815, CVE-2026-72816)
+- Drop update-net.patch
+
+-------------------------------------------------------------------
 Fri May 29 13:51:40 UTC 2026 - Hillwood Yang <hillwoodroc@gmail.com>
 
 - Update version to 5.51.2
