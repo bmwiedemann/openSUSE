@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Aug 18 12:05:15 UTC 2026 - Andreas Schwab <schwab@suse.de>
+
+- Update to strace 7.2
+  * Implemented decoding of OPENAT2_REGULAR openat2 flag.
+  * Implemented decoding of IFLA_BRPORT_NEIGH_FORWARD_GRAT attribute.
+  * Implemented decoding of BPF_TRACE_FENTRY_MULTI,
+    BPF_TRACE_FEXIT_MULTI, and BPF_TRACE_FSESSION_MULTI bpf attach types.
+  * Updated decoding of BPF_LINK_CREATE uprobe_multi attribute.
+  * Updated decoding of struct landlock_ruleset_attr.
+  * Updated decoding of landlock_add_rule syscall flags.
+  * Implemented decoding of ZCRX_CTRL_ARM_NOTIFICATION io_uring zcrx ctrl
+    operation.
+  * Implemented decoding of IO_URING_QUERY_ZCRX_EVENT io_uring query
+    operation.
+  * Updated lists of BPF_*, ETH_P_*, FS_*, FUTEX_*, IFLA_*, IO_URING_*, KVM_*,
+    LANDLOCK_*, NL80211_*, O_*, RTEXT_*, V4L2_*, and XFRM_MSG_* constants.
+  * Updated lists of ioctl commands from Linux 7.2.
+
+-------------------------------------------------------------------
 Mon Jun 15 19:20:56 UTC 2026 - Andreas Schwab <schwab@linux-m68k.org>
 
 - Update to strace 7.1

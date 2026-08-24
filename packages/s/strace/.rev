@@ -1791,4 +1791,26 @@ http://lists.opensuse.org/opensuse-factory/2015-03/msg00391.html (forwarded requ
     <comment></comment>
     <requestid>1362282</requestid>
   </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>8f81bcedf9d6e39fa05f9f325530ef8d</srcmd5>
+    <version>7.2</version>
+    <time>1787565675</time>
+    <user>anag_factory</user>
+    <comment>- Update to strace 7.2
+  * Implemented decoding of OPENAT2_REGULAR openat2 flag.
+  * Implemented decoding of IFLA_BRPORT_NEIGH_FORWARD_GRAT attribute.
+  * Implemented decoding of BPF_TRACE_FENTRY_MULTI,
+    BPF_TRACE_FEXIT_MULTI, and BPF_TRACE_FSESSION_MULTI bpf attach types.
+  * Updated decoding of BPF_LINK_CREATE uprobe_multi attribute.
+  * Updated decoding of struct landlock_ruleset_attr.
+  * Updated decoding of landlock_add_rule syscall flags.
+  * Implemented decoding of ZCRX_CTRL_ARM_NOTIFICATION io_uring zcrx ctrl
+    operation.
+  * Implemented decoding of IO_URING_QUERY_ZCRX_EVENT io_uring query
+    operation.
+  * Updated lists of BPF_*, ETH_P_*, FS_*, FUTEX_*, IFLA_*, IO_URING_*, KVM_*,
+    LANDLOCK_*, NL80211_*, O_*, RTEXT_*, V4L2_*, and XFRM_MSG_* constants.
+  * Updated lists of ioctl commands from Linux 7.2. (forwarded request 1371788 from Andreas_Schwab)</comment>
+    <requestid>1371789</requestid>
+  </revision>
 </revisionlist>
