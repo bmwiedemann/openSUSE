@@ -428,7 +428,7 @@ AL.40.10944368	Bashkia Berat	Bashkia Berat	10944368
 AL.40.10944369	Bashkia Kuçovë	Bashkia Kucove	10944369
 AL.40.10944370	Bashkia Poliçan	Bashkia Polican	10944370
 AL.40.10944371	Bashkia Skrapar	Bashkia Skrapar	10944371
-AL.40.10944372	Bashkia Ura Vajgurore	Bashkia Ura Vajgurore	10944372
+AL.40.10944372	Bashkia Dimal	Bashkia Dimal	10944372
 AL.41.10944373	Bashkia Bulqizë	Bashkia Bulqize	10944373
 AL.41.10944374	Bashkia Dibër	Bashkia Diber	10944374
 AL.41.10944375	Bashkia Klos	Bashkia Klos	10944375
@@ -571,16 +571,16 @@ AO.18.145530	Saurimo	Saurimo	145530
 AO.17.145723	Lucapa	Lucapa	145723
 AO.17.145775	Chitato	Chitato	145775
 AO.17.145897	Cambulo	Cambulo	145897
-AO.04.875819	Rivungo	Rivungo	875819
+AO.CUB.875819	Rivungo	Rivungo	875819
 AO.18.875968	Muconda	Muconda	875968
 AO.14.875997	Luena	Luena	875997
-AO.04.876017	Mavinga	Mavinga	876017
+AO.CUB.876017	Mavinga	Mavinga	876017
 AO.14.876125	Cameia	Cameia	876125
 AO.14.876129	Lumbala Nguimbo	Lumbala Nguimbo	876129
 AO.14.876176	Luau	Luau	876176
 AO.14.876198	Luacano	Luacano	876198
 AO.14.876232	Léua	Leua	876232
-AO.04.876291	Dirico	Dirico	876291
+AO.CUB.876291	Dirico	Dirico	876291
 AO.18.876307	Dala	Dala	876307
 AO.14.876631	Camanongue	Camanongue	876631
 AO.14.876723	Alto Zambeze	Alto Zambeze	876723
@@ -662,12 +662,12 @@ AO.06.3346597	Quibala	Quibala	3346597
 AO.06.3346659	Porto Amboim	Porto Amboim	3346659
 AO.07.3346850	Ombadja	Ombadja	3346850
 AO.02.3346941	Nharea	Nharea	3346941
-AO.04.3347005	Nancova	Nancova	3347005
+AO.CBG.3347005	Nancova	Nancova	3347005
 AO.13.3347017	Namibe	Namibe	3347017
 AO.07.3347028	Namacunde	Namacunde	3347028
 AO.06.3347070	Mussende	Mussende	3347070
 AO.08.3347110	Mungo	Mungo	3347110
-AO.04.3347352	Menongue	Menongue	3347352
+AO.CBG.3347352	Menongue	Menongue	3347352
 AO.09.3347423	Matala	Matala	3347423
 AO.12.3347614	Luquembo	Luquembo	3347614
 AO.09.3347760	Lubango	Lubango	3347760
@@ -687,12 +687,12 @@ AO.06.3348792	Ebo	Ebo	3348792
 AO.07.3348986	Cuvelai	Cuvelai	3348986
 AO.07.3349045	Curoca	Curoca	3349045
 AO.02.3349078	Cunhinga	Cunhinga	3349078
-AO.04.3349148	Cuito Cuanavale	Cuito Cuanavale	3349148
+AO.02.3349148	Cuito Cuanavale	Cuito Cuanavale	3349148
 AO.02.3349179	Cuemba	Cuemba	3349179
-AO.04.3349195	Cuchi	Cuchi	3349195
+AO.CBG.3349195	Cuchi	Cuchi	3349195
 AO.01.3349225	Cubal	Cubal	3349225
 AO.07.3349237	Cuanhama	Cuanhama	3349237
-AO.04.3349243	Cuangar	Cuangar	3349243
+AO.CBG.3349243	Cuangar	Cuangar	3349243
 AO.06.3349321	Conda	Conda	3349321
 AO.01.3349404	Chongoroi	Chongoroi	3349404
 AO.02.3349514	Chitembo	Chitembo	3349514
@@ -709,7 +709,7 @@ AO.02.3351012	Camacupa	Camacupa	3351012
 AO.02.3351013	Camacupa	Camacupa	3351013
 AO.13.3351015	Camucuio	Camucuio	3351015
 AO.09.3351021	Caluquembe	Caluquembe	3351021
-AO.04.3351214	Calai	Calai	3351214
+AO.CBG.3351214	Calai	Calai	3351214
 AO.01.3351267	Caimbambo	Caimbambo	3351267
 AO.07.3351306	Cahama	Cahama	3351306
 AO.09.3351379	Caconda	Caconda	3351379
@@ -5766,7 +5766,7 @@ BR.15.3168705	Timóteo	Timoteo	6321881
 BR.15.3168804	Tiradentes	Tiradentes	6321882
 BR.15.3168903	Tiros	Tiros	6321883
 BR.15.3169000	Tocantins	Tocantins	6321884
-BR.15.3169059	Tocos do Moji	Tocos Do Moji	6321885
+BR.15.3169059	Tocos do Moji	Tocos do Moji	6321885
 BR.15.3169109	Toledo	Toledo	6321886
 BR.15.3169208	Tombos	Tombos	6321887
 BR.15.3169307	Três Corações	Tres Coracoes	6321888
@@ -7923,7 +7923,7 @@ BR.29.5214861	Nova Glória	Nova Gloria	6324038
 BR.29.5214879	Nova Iguaçu de Goiás	Nova Iguacu De Goias	6324039
 BR.29.5214903	Nova Roma	Nova Roma	6324040
 BR.29.5215009	Nova Veneza	Nova Veneza	6324041
-BR.29.5215207	Novo Brasil	Novo Brasil	6324042
+BR.29.5215207	Novo Brazil	Novo Brazil	6324042
 BR.29.5215231	Novo Gama	Novo Gama	6324043
 BR.29.5215256	Novo Planalto	Novo Planalto	6324044
 BR.29.5215306	Orizona	Orizona	6324045
@@ -17835,7 +17835,7 @@ IN.02.546	West Godāvari	West Godavari	1252873
 IN.29.242	Gyalshing	Gyalshing	1252877
 IN.16.504	Wardha	Wardha	1252944
 IN.40.540	Warangal Rural	Warangal Rural	1252949
-IN.02.544	Vishākhapatnam	Vishakhapatnam	1253103
+IN.02.544	Visākhapatnam	Visakhapatnam	1253103
 IN.35.443	Vidisha	Vidisha	1253201
 IN.36.197	Varanasi	Varanasi	1253407
 IN.09.491	Valsād	Valsad	1253469
@@ -17878,7 +17878,7 @@ IN.24.117	Sirohi	Sirohi	1256068
 IN.11.032	Sirmaur	Sirmaur	1256073
 IN.38.368	Pashchim Singhbhūm	Pashchim Singhbhum	1256163
 IN.11.033	Shimla	Shimla	1256238
-IN.24.111	Sīkar	Sikar	1256321
+IN.24.111	Sikar District	Sikar District	1256321
 IN.35.462	Sidhi	Sidhi	1256370
 IN.03.311	Sibsāgar	Sibsagar	1256389
 IN.35.423	Shivpurī	Shivpuri	1256452
@@ -17933,7 +17933,7 @@ IN.34.203	Pashchim Champāran	Pashchim Champaran	1260208
 IN.16.513	Parbhani	Parbhani	1260342
 IN.35.426	Panna	Panna	1260455
 IN.09.484	Pānch Mahāls	Panch Mahals	1260571
-IN.24.118	Pāli	Pali	1260724
+IN.24.118	Pali District	Pali District	1260724
 IN.38.358	Palāmu	Palamu	1260783
 IN.16.525	Osmanabad	Osmanabad	1261013
 IN.26.292	North Tripura	North Tripura	1261174
@@ -17949,7 +17949,7 @@ IN.16.511	Nanded	Nanded	1261978
 IN.40.539	Nalgonda District	Nalgonda District	1262068
 IN.34.229	Nālanda	Nalanda	1262081
 IN.39.066	Nainital	Nainital	1262118
-IN.24.112	Nāgaur	Nagaur	1262217
+IN.24.112	Nagaur District	Nagaur District	1262217
 IN.28.336	Nadia	Nadia	1262293
 IN.19.577	Mysore	Mysore	1262322
 IN.34.216	Muzaffarpur	Muzaffarpur	1262331
@@ -17977,7 +17977,7 @@ IN.22.636	Mahe	Mahe	1264404
 IN.40.538	Mahbūbnagar	Mahbubnagar	1264408
 IN.25.623	Madurai	Madurai	1264522
 IN.34.207	Madhubani	Madhubani	1264556
-IN.23.041	Ludhiana	Ludhiana	1264729
+IN.23.041	Ludhiāna	Ludhiana	1264729
 IN.36.157	Lucknow District	Lucknow District	1264734
 IN.30.255	Lower Subansiri	Lower Subansiri	1264739
 IN.30.259	Lohit District	Lohit District	1264818
@@ -18020,9 +18020,9 @@ IN.09.479	Jūnāgadh	Junagadh	1268774
 IN.23.037	Jalandhar	Jalandhar	1268783
 IN.24.113	Jodhpur	Jodhpur	1268867
 IN.10.077	Jīnd	Jind	1268908
-IN.24.103	Jhunjhunūn	Jhunjhunun	1268937
+IN.24.103	Jhunjhunu District	Jhunjhunu District	1268937
 IN.36.166	Jhānsi	Jhansi	1269007
-IN.24.129	Jhālāwār	Jhalawar	1269028
+IN.24.129	Jhalawar District	Jhalawar District	1269028
 IN.35.464	Jhābua	Jhabua	1269054
 IN.36.194	Jaunpur	Jaunpur	1269136
 IN.09.477	Jāmnagar	Jamnagar	1269318
@@ -18104,7 +18104,7 @@ IN.19.575	Dakshina Kannada	Dakshina Kannada	1273664
 IN.21.381	Cuttack	Cuttack	1273781
 IN.02.551	YSR district	YSR district	1273801
 IN.25.632	Coimbatore	Coimbatore	1273866
-IN.24.102	Chūru	Churu	1273894
+IN.24.102	Churu District	Churu District	1273894
 IN.02.554	Chittoor	Chittoor	1274034
 IN.24.126	Chittaurgarh	Chittaurgarh	1274041
 IN.19.566	Chitradurga	Chitradurga	1274057
@@ -18116,7 +18116,7 @@ IN.11.023	Chamba	Chamba	1274849
 IN.13.589	Kannur	Kannur	1274988
 IN.28.342	Kolkata	Kolkata	1275005
 IN.03.316	Cāchār	Cachar	1275009
-IN.24.121	Būndi	Bundi	1275104
+IN.24.121	Bundi District	Bundi District	1275104
 IN.16.500	Buldhana	Buldhana	1275118
 IN.36.142	Bulandshahr	Bulandshahr	1275121
 IN.36.149	Budaun	Budaun	1275164
@@ -18124,7 +18124,7 @@ IN.28.334	Birbhum	Birbhum	1275525
 IN.16.523	Bid	Bid	1275540
 IN.11.030	Bilāspur	Bilaspur	1275638
 IN.37.406	Bilāspur	Bilaspur	1275639
-IN.24.101	Bīkāner	Bikaner	1275666
+IN.24.101	Bikaner District	Bikaner District	1275666
 IN.36.134	Bijnor	Bijnor	1275680
 IN.19.557	Bijāpur	Bijapur	1275702
 IN.19.558	Bīdar	Bidar	1275739
@@ -18132,7 +18132,7 @@ IN.35.444	Bhopāl	Bhopal	1275842
 IN.34.231	Bhojpur	Bhojpur	1275871
 IN.10.081	Bhiwani	Bhiwani	1275900
 IN.35.420	Bhind	Bhind	1275927
-IN.24.122	Bhīlwāra	Bhilwara	1275961
+IN.24.122	Bhilwara District	Bhilwara District	1275961
 IN.09.481	Bhāvnagar	Bhavnagar	1276033
 IN.23.046	Bathinda	Bathinda	1276071
 IN.09.488	Bharūch	Bharuch	1276101
@@ -18145,12 +18145,12 @@ IN.19.555	Belgaum	Belgaum	1276534
 IN.34.222	Begusarāi	Begusarai	1276610
 IN.36.185	Basti	Basti	1276737
 IN.37.414	Bastar	Bastar	1276739
-IN.24.115	Bārmer	Barmer	1276902
+IN.24.115	Barmer District	Barmer District	1276902
 IN.36.150	Bareilly	Bareilly	1277014
 IN.28.335	Purba Bardhaman	Purba Bardhaman	1277030
 IN.12.008	Bāramūla	Baramula	1277086
 IN.36.176	Bāra Banki	Bara Banki	1277159
-IN.24.125	Bānswāra	Banswara	1277215
+IN.24.125	Banswara District	Banswara District	1277215
 IN.28.339	Bankura	Bankura	1277265
 IN.19.572	Bangalore Urban	Bangalore Urban	1277331
 IN.19.583	Bangalore Rural	Bangalore Rural	1277332
@@ -35264,7 +35264,7 @@ RO.34.146584	Oraş Gura Humorului	Oras Gura Humorului	8334743
 RO.37.159767	Oraş Sulina	Oras Sulina	8334744
 RO.27.116126	Comuna Chiheru De Jos	Comuna Chiheru De Jos	8334745
 RO.27.114925	Municipiul Târnãveni	Municipiul Tarnaveni	8334746
-RO.27.114319	Municipiul Târgu Mureş	Municipiul Targu Mures	8334747
+RO.27.114319	Târgu Mureș	Targu Mures	8334747
 RO.25.106684	Oraş Baia Sprie	Oras Baia Sprie	8334748
 RO.13.56568	Comuna Cãpuşu Mare	Comuna Capusu Mare	8334749
 RO.29.127901	Comuna Optaşi-Mãgura	Comuna Optasi-Magura	8334750
@@ -35380,7 +35380,7 @@ RO.43.104243	Comuna Moara Vlãsiei	Comuna Moara Vlasiei	8334859
 RO.06.33541	Comuna Livezile	Comuna Livezile	8334860
 RO.37.159614	Municipiul Tulcea	Municipiul Tulcea	8334861
 RO.37.159687	Oraş Isaccea	Oras Isaccea	8334862
-RO.27.114854	Oraş Sovata	Oras Sovata	8334863
+RO.27.114854	Oraș Sovata	Oras Sovata	8334863
 RO.30.135164	Comuna Scorţeni	Comuna Scorteni	8334864
 RO.26.111587	Comuna Dumbrava	Comuna Dumbrava	8334865
 RO.12.50923	Oraş Bãile Herculane	Oras Baile Herculane	8334866
@@ -39708,7 +39708,7 @@ TH.31.9608	Amphoe Waeng	Amphoe Waeng	1605185
 TH.30.3310	Amphoe Uthumphon Phisai	Amphoe Uthumphon Phisai	1605218
 TH.36.1414	Amphoe Uthai	Amphoe Uthai	1605222
 TH.10.5302	Amphoe Tron	Amphoe Tron	1605267
-TH.75.3411	Amphoe Trakan Phuet Phon	Amphoe Trakan Phuet Phon	1605280
+TH.75.3411	Amphoe Trakan Phuetphon	Amphoe Trakan Phuetphon	1605280
 TH.04.5508	Amphoe Thung Chang	Amphoe Thung Chang	1605358
 TH.40.1015	Thon buri	Thon buri	1605401
 TH.03.5704	Amphoe Thoeng	Amphoe Thoeng	1605408
@@ -39745,7 +39745,7 @@ TH.73.4808	Amphoe Si Songkhram	Amphoe Si Songkhram	1606231
 TH.46.2007	Amphoe Si Racha	Amphoe Si Racha	1606249
 TH.51.7205	Amphoe Si Prachan	Amphoe Si Prachan	1606256
 TH.74.2508	Amphoe Si Maha Phot	Amphoe Si Maha Phot	1606290
-TH.29.3209	Amphoe Si Khoraphum	Amphoe Si Khoraphum	1606301
+TH.29.3209	Amphoe Sikhoraphum	Amphoe Sikhoraphum	1606301
 TH.27.3020	Amphoe Sikhio	Amphoe Sikhio	1606305
 TH.17.4307	Amphoe Si Chiang Mai	Amphoe Si Chiang Mai	1606315
 TH.79.3904	Amphoe Si Bun Rueang	Amphoe Si Bun Rueang	1606322
@@ -39810,7 +39810,7 @@ TH.40.1009	Phra Khanong	Phra Khanong	1607541
 TH.35.1504	Amphoe Pho Thong	Amphoe Pho Thong	1607578
 TH.13.6606	Amphoe Pho Thale	Amphoe Pho Thale	1607583
 TH.25.4507	Amphoe Phon Thong	Amphoe Phon Thong	1607599
-TH.17.4305	Amphoe Phonphisai	Amphoe Phonphisai	1607605
+TH.17.4305	Amphoe Phon Phisai	Amphoe Phon Phisai	1607605
 TH.22.4012	Amphoe Phon	Amphoe Phon	1607616
 TH.27.3015	Amphoe Phimai	Amphoe Phimai	1607715
 TH.10.5307	Amphoe Phichai	Amphoe Phichai	1607727
@@ -39854,7 +39854,7 @@ TH.37.1903	Amphoe Nong Khae	Amphoe Nong Khae	1608238
 TH.76.4106	Amphoe Nong Han	Amphoe Nong Han	1608250
 TH.40.1003	Nong Chok	Nong Chok	1608257
 TH.69.9403	Amphoe Nong Chik	Amphoe Nong Chik	1608262
-TH.79.3901	Amphoe Mueang Nong Bua Lamphu	Amphoe Mueang Nong Bua Lamphu	1608268
+TH.79.3901	Amphoe Mueang Nong Bua Lam Phu	Amphoe Mueang Nong Bua Lam Phu	1608268
 TH.26.3605	Amphoe Nong Bua Daeng	Amphoe Nong Bua Daeng	1608272
 TH.16.6004	Amphoe Nong Bua	Amphoe Nong Bua	1608285
 TH.68.9004	Amphoe Na Thawi	Amphoe Na Thawi	1608401
@@ -39873,18 +39873,18 @@ TH.70.9501	Amphoe Mueang Yala	Amphoe Mueang Yala	1608605
 TH.10.5301	Amphoe Mueang Uttaradit	Amphoe Mueang Uttaradit	1608606
 TH.15.6101	Amphoe Mueang Uthai Thani	Amphoe Mueang Uthai Thani	1608607
 TH.76.4101	Amphoe Mueang Udon Thani	Amphoe Mueang Udon Thani	1608608
-TH.75.3401	Amphoe Mueang Ubon Ratchathani	Amphoe Mueang Ubon Ratchathani	1608609
+TH.75.3401	Amphoe Mueang Ubonratchathani	Amphoe Mueang Ubonratchathani	1608609
 TH.49.2301	Amphoe Mueang Trat	Amphoe Mueang Trat	1608610
 TH.29.3201	Amphoe Mueang Surin	Amphoe Mueang Surin	1608612
 TH.51.7201	Amphoe Mueang Suphan Buri	Amphoe Mueang Suphan Buri	1608613
 TH.68.9001	Amphoe Mueang Songkhla	Amphoe Mueang Songkhla	1608615
-TH.30.3301	Amphoe Mueang Sisaket	Amphoe Mueang Sisaket	1608616
+TH.30.3301	Amphoe Mueang Si Sa Ket	Amphoe Mueang Si Sa Ket	1608616
 TH.33.1701	Amphoe Mueang Sing Buri	Amphoe Mueang Sing Buri	1608617
 TH.37.1901	Amphoe Mueang Saraburi	Amphoe Mueang Saraburi	1608620
 TH.54.7501	Amphoe Mueang Samut Songkhram	Amphoe Mueang Samut Songkhram	1608621
 TH.55.7401	Amphoe Mueang Samut Sakhon	Amphoe Mueang Samut Sakhon	1608622
 TH.42.1101	Amphoe Mueang Samut Prakan	Amphoe Mueang Samut Prakan	1608623
-TH.75.3414	Amphoe Muang Sam Sip	Amphoe Muang Sam Sip	1608624
+TH.75.3414	Amphoe Muang Samsip	Amphoe Muang Samsip	1608624
 TH.20.4701	Amphoe Mueang Sakon Nakhon	Amphoe Mueang Sakon Nakhon	1608626
 TH.25.4501	Amphoe Mueang Roi Et	Amphoe Mueang Roi Et	1608627
 TH.47.2101	Amphoe Mueang Rayong	Amphoe Mueang Rayong	1608628
@@ -39916,7 +39916,7 @@ TH.48.2201	Amphoe Mueang Chanthaburi	Amphoe Mueang Chanthaburi	1608660
 TH.26.3601	Amphoe Mueang Chaiyaphum	Amphoe Mueang Chaiyaphum	1608661
 TH.32.1801	Amphoe Mueang Chai Nat	Amphoe Mueang Chai Nat	1608662
 TH.44.2401	Amphoe Mueang Chachoengsao	Amphoe Mueang Chachoengsao	1608663
-TH.28.3101	Amphoe Mueang Buriram	Amphoe Mueang Buriram	1608664
+TH.28.3101	Amphoe Mueang Buri Ram	Amphoe Mueang Buri Ram	1608664
 TH.35.1501	Amphoe Mueang Ang Thong	Amphoe Mueang Ang Thong	1608665
 TH.40.1010	Min Buri	Min Buri	1608717
 TH.69.9405	Amphoe Mayo	Amphoe Mayo	1608732
@@ -40074,7 +40074,7 @@ TH.40.1036	Don Mueang	Don Mueang	1619792
 TH.75.3403	Amphoe Khong Chiam	Amphoe Khong Chiam	1620052
 TH.46.2002	Amphoe Ban Bueng	Amphoe Ban Bueng	1620432
 TH.26.3607	Amphoe Bamnet Narong	Amphoe Bamnet Narong	1620988
-TH.31.9603	Amphoe Ba Cho	Amphoe Ba Cho	1621004
+TH.31.9603	Amphoe Bacho	Amphoe Bacho	1621004
 TH.25.4514	Amphoe At Samat	Amphoe At Samat	1621007
 TH.80.2706	Amphoe Aranyaprathet	Amphoe Aranyaprathet	1621019
 TH.77.3701	Amphoe Mueang Amnat Charoen	Amphoe Mueang Amnat Charoen	1621059
@@ -40138,9 +40138,9 @@ TH.67.9103	Amphoe Khuan Kalong	Amphoe Khuan Kalong	7466923
 TH.02.5021	Amphoe Chai Prakan	Amphoe Chai Prakan	7505711
 TH.02.5020	Amphoe Wiang Haeng	Amphoe Wiang Haeng	7509793
 TH.59.8505	Amphoe Suk Samran	Amphoe Suk Samran	7510608
-TH.60.8409	Amphoe Ban Takhun	Amphoe Ban Takhun	7510611
+TH.60.8409	Amphoe Ban Ta Khun	Amphoe Ban Ta Khun	7510611
 TH.63.8106	Amphoe Plai Phraya	Amphoe Plai Phraya	7510612
-TH.60.8419	Amphoe Wiphawadi	Amphoe Wiphawadi	7510613
+TH.60.8419	Amphoe Vibhavadi	Amphoe Vibhavadi	7510613
 TH.08.6307	Amphoe Phop Phra	Amphoe Phop Phra	7510614
 TH.02.5017	Amphoe Doi Tao	Amphoe Doi Tao	7510615
 TH.02.5024	Amphoe Doi Lo	Amphoe Doi Lo	7510616
@@ -40206,7 +40206,7 @@ TH.16.6012	Amphoe Tak Fa	Amphoe Tak Fa	7510677
 TH.16.6006	Amphoe Kao Liao	Amphoe Kao Liao	7510678
 TH.13.6610	Amphoe Bueng Na Rang	Amphoe Bueng Na Rang	7510679
 TH.13.6609	Amphoe Sak Lek	Amphoe Sak Lek	7510680
-TH.13.6612	Amphoe Wachira Barami	Amphoe Wachira Barami	7510681
+TH.13.6612	Amphoe Wachirabarami	Amphoe Wachirabarami	7510681
 TH.10.5309	Amphoe Thong Saen Khan	Amphoe Thong Saen Khan	7510682
 TH.07.5408	Amphoe Nong Muang Khai	Amphoe Nong Muang Khai	7510683
 TH.04.5503	Amphoe Ban Luang	Amphoe Ban Luang	7510684
@@ -40265,7 +40265,7 @@ TH.80.2704	Amphoe Wang Nam Yen	Amphoe Wang Nam Yen	7510736
 TH.80.2709	Amphoe Wang Sombun	Amphoe Wang Sombun	7510737
 TH.80.2707	Amphoe Khao Chakan	Amphoe Khao Chakan	7510738
 TH.27.3003	Amphoe Soeng Sang	Amphoe Soeng Sang	7510739
-TH.27.3022	Amphoe Nong Bun Mak	Amphoe Nong Bun Mak	7510740
+TH.27.3022	Amphoe Nong Bunmak	Amphoe Nong Bunmak	7510740
 TH.27.3032	Amphoe Chaloem Phra Kiat	Amphoe Chaloem Phra Kiat	7510741
 TH.22.4014	Amphoe Waeng Noi	Amphoe Waeng Noi	7510742
 TH.27.3023	Amphoe Kaeng Sanam Nang	Amphoe Kaeng Sanam Nang	7510743
@@ -40328,12 +40328,12 @@ TH.76.4123	Amphoe Phibun Rak	Amphoe Phibun Rak	7510799
 TH.81.3805	Amphoe Pak Khat	Amphoe Pak Khat	7510800
 TH.81.3803	Amphoe So Phisai	Amphoe So Phisai	7510801
 TH.17.4315	Amphoe Fao Rai	Amphoe Fao Rai	7510802
-TH.17.4316	Amphoe Rattanawapi	Amphoe Rattanawapi	7510803
+TH.17.4316	Amphoe Rattana Wapi	Amphoe Rattana Wapi	7510803
 TH.29.3215	Amphoe Si Narong	Amphoe Si Narong	7510804
 TH.29.3211	Amphoe Lamduan	Amphoe Lamduan	7510805
 TH.25.4513	Amphoe Phon Sai	Amphoe Phon Sai	7510806
 TH.29.3217	Amphoe Non Narai	Amphoe Non Narai	7510807
-TH.29.3216	Amphoe Khwao Sinarin	Amphoe Khwao Sinarin	7510808
+TH.29.3216	Amphoe Khwao Sin Rin	Amphoe Khwao Sin Rin	7510808
 TH.25.4520	Amphoe Thung Khao Luang	Amphoe Thung Khao Luang	7510809
 TH.25.4519	Amphoe Nong Hi	Amphoe Nong Hi	7510810
 TH.25.4508	Amphoe Pho Chai	Amphoe Pho Chai	7510811
@@ -40369,7 +40369,7 @@ TH.23.4616	Amphoe Na Khu	Amphoe Na Khu	7510840
 TH.73.4810	Amphoe Phon Sawan	Amphoe Phon Sawan	7510841
 TH.20.4717	Amphoe Phon Na Kaeo	Amphoe Phon Na Kaeo	7510842
 TH.20.4715	Amphoe Khok Si Suphan	Amphoe Khok Si Suphan	7510843
-TH.73.4812	Amphoe Wangyang	Amphoe Wangyang	7510844
+TH.73.4812	Amphoe Wang Yang	Amphoe Wang Yang	7510844
 TH.81.3806	Amphoe Bueng Khong Long	Amphoe Bueng Khong Long	7510845
 TH.73.4811	Amphoe Na Thom	Amphoe Na Thom	7510846
 TH.75.3426	Amphoe Thung Si Udom	Amphoe Thung Si Udom	7510847
@@ -40459,14 +40459,14 @@ TH.61.8206	Amphoe Khura Buri	Amphoe Khura Buri	11496465
 TH.75.3409	Amphoe Nam Yuen	Amphoe Nam Yuen	11496467
 TH.65.9205	Amphoe Sikao	Amphoe Sikao	11496468
 TJ.RR.1220012	Tursunzoda District	Tursunzoda District	1220012
-TJ.04.1220048	Zheleznodorozhnyy Rayon	Zheleznodorozhnyy Rayon	1220048
+TJ.04.1220048	Shohmansur Region	Shohmansur Region	1220048
 TJ.02.1220107	Yavanskiy Rayon	Yavanskiy Rayon	1220107
 TJ.01.1220206	Vanchskiy Rayon	Vanchskiy Rayon	1220206
-TJ.04.1220319	Tsentral’nyy Rayon	Tsentral'nyy Rayon	1220319
+TJ.04.1220319	Firdavsi Region	Firdavsi Region	1220319
 TJ.02.1220445	Sovetskiy Rayon	Sovetskiy Rayon	1220445
 TJ.03.1220797	Pendzhikentskiy Rayon	Pendzhikentskiy Rayon	1220797
 TJ.RR.1220854	Vahdat District	Vahdat District	1220854
-TJ.04.1220859	Oktyabr’skiy Rayon	Oktyabr'skiy Rayon	1220859
+TJ.04.1220859	Ismoili Somoni Region	Ismoili Somoni Region	1220859
 TJ.RR.1221088	Rudaki District	Rudaki District	1221088
 TJ.02.1221090	Muminobodskiy Rayon	Muminobodskiy Rayon	1221090
 TJ.RR.1221249	Nurobod District	Nurobod District	1221249
@@ -40527,6 +40527,7 @@ TJ.02.8221286	Nohiyai Khuroson	Nohiyai Khuroson	8221286
 TJ.02.8221287	Nohiyai Hamadoní	Nohiyai Hamadoni	8221287
 TJ.02.8221288	Nohiyai Jilikŭl	Nohiyai Jilikul	8221288
 TJ.02.8221292	Nohiyai Shahritus	Nohiyai Shahritus	8221292
+TJ.04.8235659	Sino Region	Sino Region	8235659
 TJ.RR.8238328	Nohiyai Rasht	Nohiyai Rasht	8238328
 TJ.RR.8238355	Nohiyai Hisor	Nohiyai Hisor	8238355
 TJ.RR.8238358	Jirgatol	Jirgatol	8238358
@@ -40599,7 +40600,7 @@ TL.DI.602	Nain Feto	Nain Feto	8629966
 TL.CO.503	Fohorem	Fohorem	8630092
 TM.05.1218305	Tagtabazar Etrap	Tagtabazar Etrap	1218305
 TM.05.1218742	Guşgy Etrap	Gusgy Etrap	1218742
-TM.01.11189155	Baharly District	Baharly District	11189155
+TM.01.11189155	Bäherden District	Baeherden District	11189155
 TM.03.11820056	Akdepe District	Akdepe District	11820056
 TM.05.13526664	Mary District	Mary District	13526664
 TM.05.13526677	Baýramaly District	Bayramaly District	13526677
@@ -40611,6 +40612,21 @@ TM.05.13526682	Wekilbazar District	Wekilbazar District	13526682
 TM.03.13526879	Gubadag District	Gubadag District	13526879
 TM.04.13526881	Saýat District	Sayat District	13526881
 TM.05.13526882	Türkmengala District	Tuerkmengala District	13526882
+TM.02.13696769	Bereket District	Bereket District	13696769
+TM.01.13696810	Ak bugdaý District	Ak bugday District	13696810
+TM.01.13696811	Altyn asyr District	Altyn asyr District	13696811
+TM.01.13696812	Arkadag	Arkadag	13696812
+TM.01.13696814	Babadaýhan District	Babadayhan District	13696814
+TM.01.13696820	Gökdepe District	Goekdepe District	13696820
+TM.01.13696851	Kaka District	Kaka District	13696851
+TM.01.13696852	Sarahs District	Sarahs District	13696852
+TM.01.13696853	Tejen District	Tejen District	13696853
+TM.01.13696854	Gorjaw District	Gorjaw District	13696854
+TM.01.13696856	Kärizek District	Kaerizek District	13696856
+TM.01.13696857	Berkararlyk District	Berkararlyk District	13696857
+TM.01.13696858	Büzmeýin District	Buezmeyin District	13696858
+TM.01.13696859	Kopetdag District	Kopetdag District	13696859
+TM.02.13696863	Bereket District	Bereket District	13696863
 TN.37.1651	Zaghouan	Zaghouan	2464039
 TN.36.1152	Délégation de la Médina	Delegation de la Medina	2464465
 TN.35.6251	Tozeur	Tozeur	2464646
@@ -41765,6 +41781,7 @@ TR.11.8632586	Gölpazarı İlçesi	Goelpazari Ilcesi	8632586
 TR.11.8632587	Osmaneli İlçesi	Osmaneli Ilcesi	8632587
 TR.11.8632588	Bozüyük İlçesi	Bozueyuek Ilcesi	8632588
 TR.11.8632589	Pazaryeri İlçesi	Pazaryeri Ilcesi	8632589
+TR.70.8694443	Doski Aşireti Bölgesi	Doski Asireti Boelgesi	8694443
 TR.07.9535332	Döşemealtı İlçesi	Doesemealti Ilcesi	9535332
 TR.07.9535333	Aksu	Aksu	9535333
 TR.07.9535334	Konyaaltı	Konyaalti	9535334
@@ -42108,7 +42125,7 @@ UA.23.0506	Zhmerynka Raion	Zhmerynka Raion	687114
 UA.27.1804	Zhytomyr Raion	Zhytomyr Raion	687124
 UA.26.2306	Zaporizhzhya Raion	Zaporizhzhya Raion	687686
 UA.15.4614	Yavorivskyi Raion	Yavorivskyi Raion	688284
-UA.13.3210	Vyshgorodskiy Rayon	Vyshgorodskiy Rayon	688721
+UA.13.3210	Vyshhorod Raion	Vyshhorod Raion	688721
 UA.16.4804	Voznesensk Raion	Voznesensk Raion	688857
 UA.05.1404	Volnovakha Raion	Volnovakha Raion	689196
 UA.23.0502	Vinnytsya Raion	Vinnytsya Raion	689560
@@ -42179,7 +42196,7 @@ UA.23.0504	Haysyn Raion	Haysyn Raion	708899
 UA.10.3508	Oleksandriya Raion	Oleksandriya Raion	709226
 UA.13.3214	Fastiv Raion	Fastiv Raion	709244
 UA.11.0106	Dzhankoyskiy rayon	Dzhankoyskiy rayon	709333
-UA.04.1202	Dnipro rural raion	Dnipro rural raion	709961
+UA.04.1202	Dnipro raion	Dnipro raion	709961
 UA.12.710276	Darnytsia Raion	Darnytsia Raion	710276
 UA.22.6106	Chortkiv Raion	Chortkiv Raion	710399
 UA.02.7410	Chernihiv Raion	Chernihiv Raion	710736
@@ -42199,14 +42216,14 @@ UA.16.4802	Bashtanka Raion	Bashtanka Raion	712771
 UA.11.0102	Bakhchysarai Raion	Bakhchysarai Raion	712968
 UA.05.1402	Bakhmut Raion	Bakhmut Raion	713172
 UA.21.5904	Okhtyrskiy Rayon	Okhtyrskiy Rayon	713748
-UA.11.0120	Miskyi okruh Yalta	Miskyi okruh Yalta	8449687
-UA.11.0110	Kerchens'ka Mis'ka Rada	Kerchens'ka Mis'ka Rada	8449692
+UA.11.0120	Yalta Raion	Yalta Raion	8449687
+UA.11.0110	Kerch Raion	Kerch Raion	8449692
 UA.12.8520167	Desnianskyi Raion	Desnianskyi Raion	8520167
 UA.12.8693025	Dnipro Raion	Dnipro Raion	8693025
 UA.07.6310	Lozova City Council	Lozova City Council	9101597
 UA.07.6312	Kharkiv Raion	Kharkiv Raion	9114284
-UA.07.6314	Chuhuiv City Council	Chuhuiv City Council	9114317
-UA.07.6308	Kupianska Miskrada	Kupianska Miskrada	9194084
+UA.07.6314	Chuhuiv Raion	Chuhuiv Raion	9114317
+UA.07.6308	Kupiansk Raion	Kupiansk Raion	9194084
 UA.07.6304	Izyum Raion	Izyum Raion	9197254
 UA.24.0702	Volodymyr-Volynska Miskrada	Volodymyr-Volynska Miskrada	9287851
 UA.24.0706	Kovel’s’ka Mis’krada	Kovel's'ka Mis'krada	9287853
@@ -42220,7 +42237,7 @@ UA.13.3202	Bilotserkivska Miskrada	Bilotserkivska Miskrada	9644965
 UA.02.7404	Nizhyns’ka Mis’krada	Nizhyns'ka Mis'krada	9806344
 UA.02.7406	Novhorod-Sivers’ka Mis’krada	Novhorod-Sivers'ka Mis'krada	9806345
 UA.21.5910	Shostkyns’ka Mis’krada	Shostkyns'ka Mis'krada	9807848
-UA.21.5902	Konotops’ka Mis’krada	Konotops'ka Mis'krada	9808694
+UA.21.5902	Konotop Raion	Konotop Raion	9808694
 UA.16.4806	Mykolayiv urban raion	Mykolayiv urban raion	9821293
 UA.03.7302	Vyzhnytsya Raion	Vyzhnytsya Raion	12156240
 UA.11.0118	Feodosiya Raion	Feodosiya Raion	12189505
@@ -42235,7 +42252,7 @@ UA.08.6510	Khersonskyi Raion	Khersonskyi Raion	12189518
 UA.14.4402	Alchevskyi Raion	Alchevskyi Raion	12189519
 UA.14.4406	Luhansk Raion	Luhansk Raion	12189520
 UA.14.4408	Rovenkivskyi Raion	Rovenkivskyi Raion	12189521
-UA.14.4412	Sievierodonetskyi Raion	Sievierodonetskyi Raion	12189522
+UA.14.4412	Siverskodonetskyi Raion	Siverskodonetskyi Raion	12189522
 UA.14.4416	Shchastynskyi Raion	Shchastynskyi Raion	12189523
 UA.06.2604	Ivano-Frankivskyi Raion	Ivano-Frankivskyi Raion	12189526
 UA.05.1414	Mariupolskyi Raion	Mariupolskyi Raion	12189527

@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
 
 %bcond_without released
 Name:           koko
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        Kirigami based gallery application
 License:        LGPL-2.1-or-later
@@ -56,6 +56,7 @@ BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
 BuildRequires:  cmake(KF6Kirigami) >= %{kf6_version}
 BuildRequires:  cmake(KF6KirigamiAddons)
+BuildRequires:  cmake(KF6KirigamiAppComponents)
 BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
 BuildRequires:  cmake(KF6Purpose) >= %{kf6_version}
 BuildRequires:  cmake(Qt6Positioning) >= %{qt6_version}
