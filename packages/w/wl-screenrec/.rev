@@ -99,4 +99,17 @@
 </comment>
     <requestid>1365161</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>daaae22e6ee02753bc85e6bdd7558e65</srcmd5>
+    <version>0.3.2+git.20260810T091406.73b5890</version>
+    <time>1787566272</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.3.1+git.20260810T091406.73b5890:
+  * actually update version in cargo.toml this time
+  * fix compile on ffmpeg 9
+  * clippy lints
+  * update to ffmpeg crate 9.0
+</comment>
+    <requestid>1373268</requestid>
+  </revision>
 </revisionlist>

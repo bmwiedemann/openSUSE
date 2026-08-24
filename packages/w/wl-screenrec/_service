@@ -3,7 +3,7 @@
     <param name="url">https://github.com/russelltg/wl-screenrec</param>
 	<param name="scm">git</param>
 	<param name="revision">main</param>
-	<param name="versionprefix">0.2.0+git</param>
+	<param name="versionprefix">0.3.2+git</param>
   <param name="versionformat">%ci.%h</param>
 	<param name="changesgenerate">enable</param>
   </service>

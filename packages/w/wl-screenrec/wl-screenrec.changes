@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Aug 23 15:53:28 UTC 2026 - llyyr <llyyr@yukari.in>
+
+- Update to version 0.3.1+git.20260810T091406.73b5890:
+  * actually update version in cargo.toml this time
+  * fix compile on ffmpeg 9
+  * clippy lints
+  * update to ffmpeg crate 9.0
+
+-------------------------------------------------------------------
 Mon Jul 13 02:59:14 UTC 2026 - llyyr <llyyr@yukari.in>
 
 - Update to version 0.2.0+git.20260517T151356.0925290:
