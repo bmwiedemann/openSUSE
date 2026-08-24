@@ -19,7 +19,7 @@
 %define modname nltk
 %{?sle15_python_module_pythons}
 Name:           python-nltk
-Version:        3.10.2
+Version:        3.10.3
 Release:        0
 Summary:        Natural Language Toolkit
 License:        Apache-2.0
@@ -97,6 +97,7 @@ BuildRequires:  %{python_module twython}
 # /SECTION
 Requires:       python-regex >= 2021.8.3
 Requires:       python-click
+Requires:       python-defusedxml
 Requires:       python-joblib
 Requires:       python-tqdm
 Recommends:     python-gensim
