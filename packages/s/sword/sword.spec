@@ -1,7 +1,7 @@
 #
 # spec file for package sword
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -72,7 +72,7 @@ is required to compile Sword frontends, too.
 %autosetup -p1
 
 %build
-export CXXFLAGS="%{optflags} -DU_USING_ICU_NAMESPACE=1"
+export CXXFLAGS="%{optflags} -std=c++17 -DU_USING_ICU_NAMESPACE=1"
 autoreconf -fiv
 %configure \
   --disable-static \

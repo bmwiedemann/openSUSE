@@ -135,4 +135,13 @@
     <comment></comment>
     <requestid>1255184</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>30575aa574483fbc567f8a31fb643f0e</srcmd5>
+    <version>1.9.0</version>
+    <time>1787566328</time>
+    <user>anag_factory</user>
+    <comment>- Fix from Greg Hellings building against newer versions of C++ standards
+</comment>
+    <requestid>1373352</requestid>
+  </revision>
 </revisionlist>
