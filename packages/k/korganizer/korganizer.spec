@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
-%define kpim6_version 6.7.3
+%define kpim6_version 6.8.0
 
 %bcond_without released
 Name:           korganizer
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        Personal Organizer
 License:        GPL-2.0-only
@@ -47,6 +47,7 @@ BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
 BuildRequires:  cmake(KF6ItemViews) >= %{kf6_version}
 BuildRequires:  cmake(KF6JobWidgets) >= %{kf6_version}
 BuildRequires:  cmake(KF6KCMUtils) >= %{kf6_version}
+BuildRequires:  cmake(KF6Mime) >= %{kf6_version}
 BuildRequires:  cmake(KF6NewStuff) >= %{kf6_version}
 BuildRequires:  cmake(KF6Parts) >= %{kf6_version}
 BuildRequires:  cmake(KF6UserFeedback) >= %{kf6_version}
@@ -65,7 +66,6 @@ BuildRequires:  cmake(KPim6KontactInterface) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6LdapWidgets) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6Libkdepim) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6MailTransport) >= %{kpim6_version}
-BuildRequires:  cmake(KPim6Mime) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6PimCommonAkonadi) >= %{kpim6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
@@ -119,7 +119,6 @@ KOrganizer is a calendar application by KDE.
 %{_kf6_iconsdir}/hicolor/scalable/apps/korg-todo.svg
 %{_kf6_iconsdir}/hicolor/scalable/apps/korganizer.svg
 %{_kf6_iconsdir}/hicolor/scalable/apps/quickview.svgz
-%{_kf6_iconsdir}/hicolor/scalable/status/*.svg
 %{_kf6_libdir}/libkorganizer_core.so.*
 %{_kf6_libdir}/libkorganizer_interfaces.so.*
 %{_kf6_libdir}/libkorganizerprivate.so.*

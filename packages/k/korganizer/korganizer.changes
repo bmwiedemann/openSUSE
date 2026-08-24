@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Sun Aug 16 07:27:34 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.08.0/
+- Changes since 26.07.90:
+  * Persist checked calendars by stable remote path
+  * Better icons again that look good in dark-mode
+  * lunarphases plugin - improve icons and complete the set of lunar phases
+
+-------------------------------------------------------------------
+Sat Aug  1 11:39:16 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.07.90
+  * New feature release
+- No code change since 26.07.80
+
+-------------------------------------------------------------------
+Sat Jul 18 11:11:57 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.07.80
+  * New feature release
+- Too many changes since 26.04.3, only listing bugfixes:
+  * apptsummarywidget.cpp, summaryeventinfo.cpp - event in-progress or ended (kde#125162)
+  * todosummarywidget.cpp, sdsummarywidget.cpp - use today and urgent colors (kde#107783)
+  * Month view: add an option to display the event start and end times (kde#104732)
+  * Add default access classification setting when creating new incidences (kde#474036, kde#55539)
+  * Agenda View: allow showing incidence description in the agenda items (kde#364968)
+  * calendarview.cpp - use the "from scratch" newTodo if summary is empty (kde#472725)
+  * kitemiconcheckcombo.cpp - enable all icons in monthview too (kde#161652)
+  * Implement holiday category selection and filtering. (kde#336147)
+  * Implement holiday category selection and filtering. (kde#336147)
+  * Agenda view: bold hour marker every two hours (kde#212164)
+
+-------------------------------------------------------------------
+Sat Jul 18 09:04:06 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update build requirements
+
+-------------------------------------------------------------------
 Tue Jun 30 18:19:51 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.04.3
