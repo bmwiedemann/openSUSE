@@ -1,4 +1,114 @@
 -------------------------------------------------------------------
+Mon Aug 24 09:10:37 UTC 2026 - Pavel Dostál <pdostal@suse.com>
+
+- Update to version 2.98.0:
+  * chore: fix extra whitespace
+  * Default Codespaces port forwarding to loopback
+  * Bump gh-aw-actions to v0.87.1 and recompile workflows
+  * Fix issue triage action compatibility
+  * chore(deps): bump golang.org/x/crypto from 0.54.0 to 0.55.0
+  * chore: bump go to 1.26.7 (#14205)
+  * chore(deps): bump the codeql-actions group across 1 directory with 3 updates
+  * chore(deps): bump github.com/stretchr/testify from 1.11.1 to 1.12.1
+  * Revert "ci: add temporary step to verify Linux repo signing keys"
+  * ci: add temporary step to verify Linux repo signing keys
+  * Accept pre-release tags in deployment validation (#14193)
+  * chore: sign APT repositories with both keys
+  * chore(deps): bump charm.land/lipgloss/v2 from 2.0.5 to 2.0.6
+  * chore(deps): bump the aw-actions group with 2 updates
+  * chore(deps): bump github.com/klauspost/compress from 1.19.1 to 1.19.2
+  * Bump Go to 1.26.6
+  * Upgrade gh-aw workflows to v0.85.4
+  * chore(deps): bump github.com/google/go-containerregistry
+  * chore(deps): bump google.golang.org/protobuf from 1.36.11 to 1.36.12
+  * Address review: drop cleanup markers, document search-type in skill
+  * Reconcile feature detection cleanup comment rules in AGENTS.md
+  * Update AGENTS.md with cleanup comment guidance
+  * Address review feedback
+  * Add --search-type flag for semantic and hybrid issue search
+  * Rename config mock constructors to match repo convention
+  * Document when to use the config mock or the isolated config
+  * Accept config content in NewIsolatedTestConfig
+  * Clear auth environment variables in isolated test config
+  * Isolate git config in tests that shell out to git
+  * Rename config stub file to test.go
+  * chore(deps): bump the aw-actions group with 2 updates
+  * Add aw-actions group to dependabot configuration
+  * Rename cli-code-reviewer skill to code-review (#14116)
+  * chore(deps): bump github/gh-aw-actions/setup-cli from 0.83.4 to 0.85.4
+  * Reduce item-add test diff
+  * Isolate item-add test mocks
+  * Test item-add output through command path
+  * Run lint workflow when the lint workflow changes
+  * Bump golangci-lint in CI to v2.12.2
+  * Clarify PR testing section expectations
+  * chore(deps): bump the codeql-actions group across 1 directory with 3 updates
+  * chore(deps): bump azure/login from 3.0.0 to 3.0.1
+  * chore(deps): bump actions/attest from 4.2.1 to 4.2.2
+  * Use reflect.Pointer instead of deprecated reflect.Ptr
+  * Add a scheduled tech debt burndown skill (#14095)
+  * Restore automatic spam issue closure (#14088)
+  * Give Dependabot triage a real reachability check (#14087)
+  * Route release deletions through api.Client (#14077)
+  * chore(deps): bump google.golang.org/grpc from 1.82.1 to 1.83.0
+  * chore(deps): bump github.com/google/go-containerregistry
+  * Grant the gate the scopes its CI read needs
+  * Keep pre-flight dedup out of the integrity proxy
+  * Key direct/indirect off the // indirect comment
+  * Gate triager confidence on required evidence
+  * Gate Dependabot triage on deterministic pre-flight check
+  * Set GH_EXTENSION=1 when gh invokes an extension
+  * Tell agents to use the PR template in AGENTS.md
+  * Merge pull request #14062 from cli/williammartin-wp-08-release-create
+  * Route extension requests through api.Client (#14059)
+  * Route autolink requests through api.Client (#14013)
+  * chore(deps): bump the codeql-actions group across 1 directory with 3 updates
+  * fix(release create): trim spaces when parsing X-Oauth-Scopes
+  * Match worktree rev-parse stub against absolute path on Windows
+  * fix(pr/checkout): pass -- before worktree path so dash paths work
+  * docs(pr/checkout): add worktree usage example to help text
+  * docs(skills): mention pr checkout worktree support
+  * chore(pr checkout): polish worktree related tests
+  * Route gpg key requests through api.Client (#13997)
+  * Use generated key in ssh-key acceptance test
+  * Route ssh key requests through api.Client
+  * Fix item-add output for non-TTY
+  * test(pr/checkout): add acceptance tests for worktree checkout
+  * chore(deps): bump actions/attest from 4.2.0 to 4.2.1
+  * chore(deps): bump github.com/sigstore/sigstore-go from 1.2.2 to 1.3.0
+  * Generate unique acceptance SSH keys
+  * Route deploy key requests through api.Client
+  * Collapse spam triage into the agentic issue-triage workflow (#14027)
+  * Run Dependabot triage hourly
+  * chore(deps): bump github.com/yuin/goldmark from 1.8.4 to 1.8.5
+  * Require explicit PR review ownership (#14028)
+  * Slim down dependabot triage comments (#14019)
+  * Wrap RESTWithNext errors as api.HTTPError
+  * Bail out early on unusable --worktree paths
+  * Clarify current-worktree rejection message
+  * Return ok bool from revParseFacts to satisfy nilerr
+  * Drop docs on self-explanatory worktree helpers
+  * Trim redundant comments and clarify worktree field names
+  * Resolve worktree target once instead of re-querying git
+  * Fix worktree toplevel stub to match Windows absolute paths
+  * Detect worktrees via git rev-parse and reject the current worktree
+  * Address review: restore TODO, flatten detachCmds, guard worktree symlink
+  * Cover detach-reuse, worktree fetch dir, and symlink path resolution
+  * Harden worktree submodule prefixing and cover cmd.Dir stripping
+  * Create branch when reusing a worktree with a new --branch name
+  * Extract authenticatedCommand helper to dedupe -C handling
+  * Preserve no-force safety when reusing a worktree for fork PRs
+  * Simplify submodule worktree prefix to inline conditional
+  * Run submodule commands inside the worktree for pr checkout
+  * tidying..
+  * Refine PR checkout worktree flag help
+  * Add --worktree flag to gh pr checkout
+- Remove gh-CVE-2026-39821-idna-punycode.patch: no longer needed, as
+  2.98.0 vendors golang.org/x/net v0.57.0, which removes the
+  unicode16 version gate unconditionally and fixes CVE-2026-39821
+  (bsc#1266618) regardless of Go's unicode.Version.
+
+-------------------------------------------------------------------
 Mon Aug 17 06:31:33 UTC 2026 - Pavel Dostál <pdostal@suse.com>
 
 - Update to version 2.97.0, fixing four security issues (CVE-2026-64654,
