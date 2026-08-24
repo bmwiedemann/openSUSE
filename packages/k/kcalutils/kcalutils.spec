@@ -16,14 +16,14 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
-%define kpim6_version 6.7.3
-%define ktextaddons_version 2.0.0
+%define kpim6_version 6.8.0
+%define ktextaddons_version 2.0.2
 
 %bcond_without released
 Name:           kcalutils
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        Library with utility functions for handling calendar data
 License:        LGPL-2.1-or-later
@@ -39,8 +39,8 @@ BuildRequires:  cmake(KF6Codecs) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
-BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6TextTemplate) >= %{ktextaddons_version}
+BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
 BuildRequires:  cmake(KPim6IdentityManagementCore) >= %{kpim6_version}
 Conflicts:      libKF6CalendarUtils5 < %{version}
 

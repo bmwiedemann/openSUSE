@@ -1080,4 +1080,12 @@
     <comment>- Add missing kcalutils-devel dependencies</comment>
     <requestid>1365603</requestid>
   </revision>
+  <revision rev="136" vrev="1">
+    <srcmd5>5ce57c735eebcdd6765947abfc382510</srcmd5>
+    <version>26.08.0</version>
+    <time>1787565764</time>
+    <user>anag_factory</user>
+    <comment>KDE release gear 26.08.0 (forwarded request 1371427 from krop)</comment>
+    <requestid>1372366</requestid>
+  </revision>
 </revisionlist>
