@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sun Aug 16 07:26:41 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.08.0/
+- Changes since 26.07.90:
+  * Fix replacement of files from the old session (kde#341892)
+  * Fix import of sessions with a Joliet descriptor (kde#349865)
+  * Consider word boundaries during feature parsing
+
+-------------------------------------------------------------------
+Sat Aug  1 11:38:25 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.07.90
+  * New feature release
+- No code change since 26.07.80
+
+-------------------------------------------------------------------
+Sat Jul 18 11:11:02 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.07.80
+  * New feature release
+- Changes since 26.04.3:
+  * Eject after ripping (if configured to)
+  * Give a warning message for temporary file open failures
+  * Eliminate 'ignoring return value' warnings for system calls
+  * Eliminate 'ignoring return value' warnings for QFile/QTemporaryFile/KArchive
+  * Port deprecated QCheckBox::stateChanged() -> checkStateChanged()
+  * Eliminate "declaration shadows a member/local/parameter" warnings
+  * Port deprecated QRegularExpression::match() -> matchView()
+  * Port deprecated Qt::Key operator "+" -> "|"
+  * Port deprecated KIconEffect::hasEffect()/apply() -> toActive()
+  * Unknown '#pragma unimplemented' -> #warning
+  * Port deprecated QMouseEvent::globalPos()/pos() -> globalPosition()/position()
+  * Port deprecated QMessageBox::standardIcon() -> QStyle
+  * Port deprecated QCryptographicHash::addData(data, len) -> QByteArrayView
+
+-------------------------------------------------------------------
 Tue Jun 30 18:19:05 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.04.3

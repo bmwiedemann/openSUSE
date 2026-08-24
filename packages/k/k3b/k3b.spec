@@ -16,7 +16,7 @@
 #
 
 
-%define kf6_version 6.19.0
+%define kf6_version 6.27.0
 %define qt6_version 6.9.0
 
 %bcond_without released
@@ -24,7 +24,7 @@
 %bcond_without lame
 %bcond_without mad
 Name:           k3b
-Version:        26.04.3
+Version:        26.08.0
 Release:        0
 Summary:        CD/DVD/Blu-ray Burning Application by KDE
 License:        GPL-2.0-or-later
