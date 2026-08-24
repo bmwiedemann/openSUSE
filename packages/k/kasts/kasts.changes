@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sun Aug 16 07:26:48 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.08.0/
+- Changes since 26.07.90:
+  * Fix settings popup of GlobalSearchField
+  * Fix search bar options menu not opening
+
+-------------------------------------------------------------------
+Sat Aug  1 11:38:32 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.07.90
+  * New feature release
+- Changes since 26.07.80:
+  * Remove datamembers from UpdateFeedJob
+  * Fix new chapter titles not getting stored in database. (kde#523619)
+
+-------------------------------------------------------------------
+Sat Jul 18 11:11:10 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.07.80
+  * New feature release
+- Too many changes since 26.04.3, only listing bugfixes:
+  * Some more fixes to clean up and avoid db corruption (kde#519232)
+  * Fix doing quick feed updates (kde#519232)
+  * Fix dialogs on SynchronizationSettingsPage showing up on wrong window (kde#518296)
+  * Fix crash when html images don't have a host set (kde#517775)
+  * Try both the original and redirected URL for streams (kde#517427)
+  * Implement maximum amount of parallel episode downloads and add to settings (kde#496632)
+  * Download and process feed updates from same host sequentially (kde#516859)
+
+-------------------------------------------------------------------
 Tue Jun 30 18:19:11 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.04.3
