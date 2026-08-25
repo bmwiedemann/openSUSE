@@ -62,7 +62,7 @@ ExclusiveArch:  do-not-build
 %endif
 
 Name:           webkit%{_gtknamesuffix}
-Version:        2.52.5
+Version:        2.52.6
 Release:        0
 Summary:        Library for rendering web content, GTK+ Port
 License:        BSD-3-Clause AND LGPL-2.0-or-later

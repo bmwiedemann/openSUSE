@@ -88,4 +88,27 @@
     <comment>Add bug ref and cve to .changes</comment>
     <requestid>1367069</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>fe8665b862b70061db2abef765428044</srcmd5>
+    <version>2.52.6</version>
+    <time>1787656705</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.52.6 (bsc#1275791):
+  + Improve memory usage in pages that use font variations.
+  + The webkit://gpu page now respects the dark theme user
+    preference.
+  + Fix cross compilation due to failure to pick the correct
+    gio-unix-2.0 headers in certain configurations.
+  + Fix calculating data sizes of reported through
+    WebKitWebsiteData.
+  + Fix the build with CMake 4.4 or newer.
+  + Fix several crashes and rendering issues.
+  + Security fixes: CVE-2026-43804, CVE-2026-64713, CVE-2026-64719,
+    CVE-2026-64728, CVE-2026-64730, CVE-2026-64757, CVE-2026-64783.
+
+    CVE-2026-43734, CVE-2026-43740, CVE-2026-43742, CVE-2026-43745,
+    CVE-2026-64787.
+    CVe-2026-43660, CVE-2026-28984.</comment>
+    <requestid>1373244</requestid>
+  </revision>
 </revisionlist>

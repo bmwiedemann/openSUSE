@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Aug 21 00:56:00 UTC 2026 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 2.52.6 (bsc#1275791):
+  + Improve memory usage in pages that use font variations.
+  + The webkit://gpu page now respects the dark theme user
+    preference.
+  + Fix cross compilation due to failure to pick the correct
+    gio-unix-2.0 headers in certain configurations.
+  + Fix calculating data sizes of reported through
+    WebKitWebsiteData.
+  + Fix the build with CMake 4.4 or newer.
+  + Fix several crashes and rendering issues.
+  + Security fixes: CVE-2026-43804, CVE-2026-64713, CVE-2026-64719,
+    CVE-2026-64728, CVE-2026-64730, CVE-2026-64757, CVE-2026-64783.
+
+-------------------------------------------------------------------
 Wed Jul 15 07:10:43 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.52.5 (bsc#1271638):
@@ -12,7 +28,8 @@ Wed Jul 15 07:10:43 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
     CVE-2026-43707, CVE-2026-43712, CVE-2026-43713, CVE-2026-43715,
     CVE-2026-43716, CVE-2026-43720, CVE-2026-43721, CVE-2026-43725,
     CVE-2026-43726, CVE-2026-43727, CVE-2026-43731, CVE-2026-43732,
-    CVE-2026-43734, CVE-2026-43740, CVE-2026-43742, CVE-2026-43745.
+    CVE-2026-43734, CVE-2026-43740, CVE-2026-43742, CVE-2026-43745,
+    CVE-2026-64787.
 - Drop webkitgtk-ppc64le-build-fix.patch: Applied upstream.
 
 -------------------------------------------------------------------
@@ -41,7 +58,7 @@ Thu Jun  4 00:08:15 UTC 2026 - Michael Gorse <mgorse@suse.com>
     CVE-2026-28902, CVE-2026-28903, CVE-2026-28904, CVE-2026-28905,
     CVE-2026-28907, CVE-2026-28942, CVE-2026-28946, CVE-2026-28947,
     CVE-2026-28953, CVE-2026-28955, CVE-2026-28958, CVE-2026-43658,
-    CVe-2026-43660.
+    CVe-2026-43660, CVE-2026-28984.
 - Drop webkit2gtk3-aarch64-build-fix.patch: fixed upstream.
 - Add webkitgtk-ppc64le-build-fix.patch: fix the build when system
   malloc is enabled.
