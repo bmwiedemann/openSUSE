@@ -199,4 +199,13 @@
   include that was removed in Linux 7.1 (boo#1271641).</comment>
     <requestid>1367823</requestid>
   </revision>
+  <revision rev="17" vrev="9">
+    <srcmd5>14bf049a1d28b77620f02d2b7e335e5d</srcmd5>
+    <version>21.1.8</version>
+    <time>1787656716</time>
+    <user>anag_factory</user>
+    <comment>- Remove soft limit on open files. Depending on the number of jobs,
+  linking can sometimes open more than 1024 files (boo#1261761).</comment>
+    <requestid>1373279</requestid>
+  </revision>
 </revisionlist>
