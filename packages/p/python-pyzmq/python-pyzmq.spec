@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyzmq
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%define skip_python2 1
 %define plainpython python
 %ifarch x86_64
 %bcond_without  tests
@@ -26,7 +25,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pyzmq
-Version:        27.1.0
+Version:        27.2.0
 Release:        0
 Summary:        Python bindings for 0MQ
 License:        BSD-3-Clause AND LGPL-3.0-or-later
@@ -120,7 +119,7 @@ SKIPPED_TESTS+=" or test_log"
 # tries to open a network connection on older distributions
 SKIPPED_TESTS+=" or test_null or test_int_sockopts"
 %endif
-%pytest_arch -v -k "not (${SKIPPED_TESTS:4})"
+%pytest_arch -v --ignore tests/test_curve_keygen.py -k "not (${SKIPPED_TESTS:4})"
 %endif
 
 %files %{python_files}

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Aug 24 06:04:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 27.2.0:
+  * Lots of new type coverage.
+  * Add `python3 -m zmq.curve_keygen` entrypoint for creating
+    curve key pairs
+  * Require Python 3.9 (drops Python 3.8)
+  * Stop building wheels for free-threaded CPython 3.13 (cp313t)
+  * Add wheels for free-threaded CPython 3.15 (cp315t)
+  * Fix builds on Windows with Visual Studio 2026
+  * Fix builds with upcoming Cython release
+  * Add more type coverage, fix some typing, typing compatibility
+    with mypy 2.1
+
+-------------------------------------------------------------------
 Tue Aug  4 11:42:49 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Pin scikit-build-core's CMake build directory for reproducible builds.
@@ -104,7 +119,7 @@ Fri May 12 11:09:45 UTC 2023 - Markéta Machová <mmachova@suse.com>
   * Added `socket_class` argument to zmq.Context.socket
   * Support shadowing sockets with socket objects.
   * In zmq.auth and zmq.eventloop.zmqstream callbacks may now be async.
-  * License files have been renamed to more standard LICENSE.BSD, LICENSE.LESSER 
+  * License files have been renamed to more standard LICENSE.BSD, LICENSE.LESSER
     to appease some license auto-detect tools.
 
 -------------------------------------------------------------------
@@ -234,8 +249,8 @@ Wed Aug 11 10:15:01 UTC 2021 - Markéta Machová <mmachova@suse.com>
 - Update to 22.2.1
   * Nicer reprs of contexts and sockets
   * Memory allocated by recv(copy=False) is no longer read-only
-  * asyncio: Always reference current loop instead of attaching to 
-    the current loop at instantiation time. This fixes e.g. contexts 
+  * asyncio: Always reference current loop instead of attaching to
+    the current loop at instantiation time. This fixes e.g. contexts
     and/or sockets instantiated prior to a call to asyncio.run.
 
 -------------------------------------------------------------------
@@ -593,14 +608,14 @@ Mon Jul 13 18:31:35 UTC 2015 - aboe76@gmail.com
     * Following the lead of Python 3.5, interrupted system calls will be retried.
   + Bugfixes:
     * Fixes for CFFI backend on Python 3 + support for PyPy 3.
-    * Verify types of all frames in :meth:`~zmq.Socket.send_multipart` 
+    * Verify types of all frames in :meth:`~zmq.Socket.send_multipart`
       before sending, to avoid partial messages.
     * Fix build on Windows when both debug and release versions of libzmq are found.
 - Update to 14.6.0
   + Changes:
     * improvements in :meth:`zmq.Socket.bind_to_random_port`:
       - Use system to allocate ports by default
-    * pyzmq no longer bundles external libzmq when making a bdist. 
+    * pyzmq no longer bundles external libzmq when making a bdist.
       You can use delocate to do this.
   + Bugfixes:
     * add missing :attr:`ndim` on memoryviews of Frames
@@ -617,7 +632,7 @@ Mon Mar 16 21:17:00 UTC 2015 - hpj@urpla.net
 - Update to 14.5.0
   + Changes:
     * use pickle.DEFAULT_PROTOCOL by default in send_pickle
-    * with the release of pip-6, OS X wheels are only marked as 10.6-intel, 
+    * with the release of pip-6, OS X wheels are only marked as 10.6-intel,
       indicating that they should be installable on any newer or single-arch Python.
     * raise SSHException on failed check of host key
   + Bugfixes:
@@ -651,9 +666,9 @@ Wed Oct  1 15:06:28 UTC 2014 - toddrme2178@gmail.com
     * Fixes to tests
     * Pull upstream fixes to zmq.ssh for ssh multiplexing
 - Update to 14.3.0
-  + PyZMQ no longer calls :meth:`.Socket.close` or 
+  + PyZMQ no longer calls :meth:`.Socket.close` or
     :meth:`.Context.term` during process cleanup.
-    Changes to garbage collection in Python 3.4 make this 
+    Changes to garbage collection in Python 3.4 make this
     impossible to do sensibly.
   + :meth:`ZMQStream.close` closes its socket immediately,
     rather than scheduling a timeout.
@@ -661,40 +676,40 @@ Wed Oct  1 15:06:28 UTC 2014 - toddrme2178@gmail.com
     Should be more informative than `no module cffi...`.
 - Update to 14.2.0
   + New Stuff
-    * Raise new ZMQVersionError when a requested method is not 
+    * Raise new ZMQVersionError when a requested method is not
       supported by the linked libzmq.
-      For backward compatibility, this subclasses 
+      For backward compatibility, this subclasses
       NotImplementedError.
   + Bugs Fixed
     * Memory leak introduced in pyzmq-14.0 in zero copy.
     * OverflowError on 32 bit systems in zero copy.
 - Update to 14.1.0
   + Security
-    The headline features for 14.1 are adding better support for 
+    The headline features for 14.1 are adding better support for
     libzmq's security features.
-    * When libzmq is bundled as a Python extension 
-      (e.g. wheels, eggs), libsodium is also bundled 
-      (excluding Windows), ensuring that libzmq security is 
+    * When libzmq is bundled as a Python extension
+      (e.g. wheels, eggs), libsodium is also bundled
+      (excluding Windows), ensuring that libzmq security is
       available to users who install from wheels
     * New :mod:`zmq.auth`, implementing zeromq's ZAP authentication,
       modeled on czmq zauth.
-      For more information, see the 
+      For more information, see the
       `examples <https://github.com/zeromq/pyzmq/tree/master/examples/>`_.
   + Other New Stuff
     * Add PYZMQ_BACKEND for enabling use of backends outside the
       pyzmq codebase.
-    * Add :attr:`~.Context.underlying` property and 
-      :meth:`~.Context.shadow` method to Context and Socket, for 
+    * Add :attr:`~.Context.underlying` property and
+      :meth:`~.Context.shadow` method to Context and Socket, for
       handing off sockets and contexts. between pyzmq and other
       bindings (mainly pyczmq_).
-    * Add TOS, ROUTER_HANDOVER, and IPC_FILTER constants from 
+    * Add TOS, ROUTER_HANDOVER, and IPC_FILTER constants from
       libzmq-4.1-dev.
     * Add Context option support in the CFFI backend.
     * Various small unicode and build fixes, as always.
     * :meth:`~.Socket.send_json` and :meth:`~.Socket.recv_json`
       pass any extra kwargs to ``json.dumps/loads``.
   + Deprecations
-    * ``Socket.socket_type`` is deprecated, in favor of 
+    * ``Socket.socket_type`` is deprecated, in favor of
       ``Socket.type``, which has been available since 2.1.
 - Update to 14.0.1
   + Bugfix release
@@ -765,7 +780,7 @@ Wed Mar 27 12:06:12 UTC 2013 - speilicke@suse.com
   + PyPy support
   + The Threadsafe ZMQStream experiment in 2.2.0.1 was deemed inappropriate and not useful,
     and has been removed.
-  + The zmq.web experiment has been removed, to be developed as a standalone project 
+  + The zmq.web experiment has been removed, to be developed as a standalone project
   + Fixes bnc#811890
 - Add rpmlintrc
 - Drop useless macros
@@ -779,7 +794,7 @@ Fri May 18 09:07:39 UTC 2012 - toddrme2178@gmail.com
 -------------------------------------------------------------------
 Fri Apr 27 09:10:08 UTC 2012 - highwaystar.ru@gmail.com
 
-- fixed building of python3 package on openSUSE 11.4 and older 
+- fixed building of python3 package on openSUSE 11.4 and older
 
 -------------------------------------------------------------------
 Tue Mar 27 09:32:34 UTC 2012 - saschpe@suse.de

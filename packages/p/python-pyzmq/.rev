@@ -565,4 +565,41 @@ update to latest version</comment>
     <comment></comment>
     <requestid>1369529</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>f4d525667d6267eafb76f2cc75df7bc2</srcmd5>
+    <version>27.2.0</version>
+    <time>1787656725</time>
+    <user>anag_factory</user>
+    <comment>- update to 27.2.0:
+  * Lots of new type coverage.
+  * Add `python3 -m zmq.curve_keygen` entrypoint for creating
+    curve key pairs
+  * Require Python 3.9 (drops Python 3.8)
+  * Stop building wheels for free-threaded CPython 3.13 (cp313t)
+  * Add wheels for free-threaded CPython 3.15 (cp315t)
+  * Fix builds on Windows with Visual Studio 2026
+  * Fix builds with upcoming Cython release
+  * Add more type coverage, fix some typing, typing compatibility
+    with mypy 2.1
+
+  * License files have been renamed to more standard LICENSE.BSD, LICENSE.LESSER
+  * asyncio: Always reference current loop instead of attaching to
+    the current loop at instantiation time. This fixes e.g. contexts
+    * Verify types of all frames in :meth:`~zmq.Socket.send_multipart`
+    * pyzmq no longer bundles external libzmq when making a bdist.
+    * with the release of pip-6, OS X wheels are only marked as 10.6-intel,
+  + PyZMQ no longer calls :meth:`.Socket.close` or
+    Changes to garbage collection in Python 3.4 make this
+    * Raise new ZMQVersionError when a requested method is not
+      For backward compatibility, this subclasses
+    The headline features for 14.1 are adding better support for
+    * When libzmq is bundled as a Python extension
+      (e.g. wheels, eggs), libsodium is also bundled
+      (excluding Windows), ensuring that libzmq security is
+      For more information, see the
+    * Add :attr:`~.Context.underlying` property and
+      :meth:`~.Context.shadow` method to Context and Socket, for
+    * Add TOS, ROUTER_HANDOVER, and IPC_FILTER constants from</comment>
+    <requestid>1373324</requestid>
+  </revision>
 </revisionlist>
