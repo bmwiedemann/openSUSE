@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug 25 07:52:49 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.3.320:
+  * Template manifest grows from 522 to 528 entries, adding the
+    Bytedance VCube video enhance, Meshy7 image/text to model and
+    Wan 3.0 i2v/r2v/t2v API templates
+  * No changes to the loader or the public helper API
+
+-------------------------------------------------------------------
 Fri Aug 21 08:51:33 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Initial package (version 0.3.315): core helpers (manifest loading

@@ -16,7 +16,7 @@
 #
 
 Name:           python-comfyui-workflow-templates-core
-Version:        0.3.315
+Version:        0.3.320
 Release:        0
 Summary:        Core helpers for ComfyUI workflow templates
 # Legal-Review-Notice: sdist ships no LICENSE file; upstream
@@ -49,6 +49,9 @@ comfyui-workflow-templates meta package.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+# The sdist ships tests/, but every test resolves a REPO_ROOT three levels
+# above the package and reads bundles.json / scripts/sync/, none of which are
+# in the sdist -- so only an import smoke test is possible here.
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -B -c "import comfyui_workflow_templates_core"
 
 %files %{python_files}
