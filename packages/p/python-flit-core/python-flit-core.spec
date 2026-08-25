@@ -62,13 +62,13 @@ ExclusiveArch:  do-not-build
 %endif
 
 Name:           %{pprefix}-flit-core%{?psuffix}
-Version:        3.12.0
+Version:        4.0.2
 Release:        0
 Summary:        Distribution-building parts of Flit
 License:        BSD-3-Clause AND MIT
 URL:            https://github.com/pypa/flit
 Source0:        https://files.pythonhosted.org/packages/source/f/flit_core/flit_core-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.6}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch

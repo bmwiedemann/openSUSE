@@ -250,4 +250,41 @@
   minimal stack for different python versions.</comment>
     <requestid>1331997</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>5d045b45e3c6374f5d6134d4fa739b8b</srcmd5>
+    <version>4.0.2</version>
+    <time>1787656659</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.0.2:
+  * Fix invalid metadata files with ``Import-Name`` (:ghissue:`813`).
+  * The ``[tool.flit.metadata]`` table is no longer used for project
+    metadata (:ghpull:`771`). Use the newer :ref:`[project] table
+    &lt;pyproject_toml_project&gt;` instead (or if that is not possible,
+    build with ``flit_core &lt;4``).
+  * :ref:`build_cmd` and :ref:`publish_cmd` no longer include files in the sdist
+    based on what is committed in git or Mercurial (:ghpull:`772`). These commands
+    now build packages more like Flit does when called as a backend by e.g.
+    ``python -m build``. Specify :ref:`sdist include &amp; exclude patterns
+    &lt;pyproject_toml_sdist&gt;` instead (Flit can help to generate these), or pass
+    the ``--use-vcs`` option to get the old behaviour back.
+  * ``flit_core`` now requires Python 3.8 or above (:ghpull:`738`)
+  * The ``--setup-py`` option to generate sdists containing a ``setup.py`` file
+    is no longer available (:ghpull:`776`).
+  * Making typing stubs packages with a ``-stubs`` suffix will now work
+    (:ghpull:`742`).
+  * The default glob patterns for license files have been extended to include
+    ``NOTICE*`` and ``AUTHORS*`` (:ghpull:`758`).
+  * ``license-files`` glob patterns can contain spaces (:ghpull:`797`).
+  * Fix a bug where license files could be found twice on Windows (:ghpull:`752`).
+  * The new ``Import-Name`` and ``Import-Namespace`` metadata fields (metadata 2.5)
+    are now supported (:ghpull:`774`). In most cases no new input is required,
+    as Flit will create this metadata automatically.
+  * Fix creating RECORD files when file names include commas (:ghpull:`744`).
+  * The ``--use-vcs`` option now correctly recognises git from inside a git
+    worktree folder (:ghpull:`799`).
+  * On Python 3.12 and above, ``flit build`` now uses the 'data' filter when
+    extracting the just-created sdist prior to building a wheel (:ghpull:`775`).
+    This restricts some special features of tar files, but sdists are unlikely</comment>
+    <requestid>1372929</requestid>
+  </revision>
 </revisionlist>
