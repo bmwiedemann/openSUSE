@@ -45,6 +45,8 @@ This is part of Octave-Forge project.
 %octave_pkg_src
 
 %build
+# autoconf compiler detection is broken, force it
+export CXX="g++ -std=gnu++17"
 %octave_pkg_build
 
 %install
