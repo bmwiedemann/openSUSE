@@ -89,4 +89,13 @@
 - Initial packaging of version 0.7</comment>
     <requestid>1355082</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>1892849fbf0591f4862ebddf4de33daa</srcmd5>
+    <version>0.17.0</version>
+    <time>1787656827</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-flit-core-4.patch:
+  * Support flit-core 4 by using PEP 621 metadata.</comment>
+    <requestid>1373500</requestid>
+  </revision>
 </revisionlist>

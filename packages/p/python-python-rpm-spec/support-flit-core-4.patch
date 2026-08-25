@@ -1,0 +1,41 @@
+From 477c8f6cac7789b0371fdd042630a9a14f3a2793 Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Tue, 25 Aug 2026 12:17:12 +1000
+Subject: [PATCH] Use PEP 621 metadata to support flit-core >= 4
+
+To fix building wheels with flit-core 4 and above, use PEP 621 metadata.
+---
+ pyproject.toml | 19 +++++++++++--------
+ 1 file changed, 11 insertions(+), 8 deletions(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 8d4948d..079f813 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -1,15 +1,18 @@
+ [build-system]
+-requires = ["flit_core >=2,<4"]
++requires = ["flit_core >=2,<5"]
+ build-backend = "flit_core.buildapi"
+ 
+-[tool.flit.metadata]
+-dist-name = "python-rpm-spec"
+-module = "pyrpm"
+-author = "Ben Kircher"
+-author-email = "bkircher@0xadd.de"
+-home-page = "https://github.com/bkircher/python-rpm-spec"
++[project]
++name = "python-rpm-spec"
++authors = [
++    {"name" = "Ben Kircher", "email" = "bkircher@0xadd.de"},
++]
++urls.homepage = "https://github.com/bkircher/python-rpm-spec"
+ requires-python = ">=3.10"
+-description-file = "README.md"
++dynamic = ["description", "version"]
++
++[tool.flit.module]
++name = "pyrpm"
+ 
+ [tool.ruff]
+ target-version = "py313"

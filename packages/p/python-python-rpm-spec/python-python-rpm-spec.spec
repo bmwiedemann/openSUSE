@@ -23,11 +23,12 @@ Summary:        Python module for parsing RPM spec files
 License:        MIT
 URL:            https://github.com/bkircher/python-rpm-spec
 Source0:        https://files.pythonhosted.org/packages/source/p/python_rpm_spec/python_rpm_spec-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#bkircher/python-rpm-spec#128
+Patch0:         support-flit-core-4.patch
 BuildRequires:  %{python_module flit-core >= 2}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Conflicts:      python-pyrpm
