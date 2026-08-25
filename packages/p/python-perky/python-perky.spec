@@ -1,7 +1,7 @@
 #
 # spec file for package python-perky
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,21 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-perky
-Version:        0.9.3
+Version:        0.10
 Release:        0
 Summary:        A parser for the perky text file format
 License:        MIT
 URL:            https://github.com/larryhastings/perky/
 Source:         https://files.pythonhosted.org/packages/source/p/perky/perky-%{version}.tar.gz
-BuildRequires:  %{python_module flit}
+# PATCH-FIX-OPENSUSE Use PEP 621 metadata and flit-core
+Patch0:         switch-to-flit-core.patch
+BuildRequires:  %{python_module big >= 0.14}
+BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-big >= 0.14
 BuildArch:      noarch
 %python_subpackages
 
@@ -37,7 +39,7 @@ An "rcfile" text file format for Python programs solving the same
 problem as "INI" files, "TOML" files, and "JSON" files.
 
 %prep
-%setup -q -n perky-%{version}
+%autosetup -p1 -n perky-%{version}
 sed -i '1{/\/usr\/bin\/env python*/d;}' perky/utility.py perky/__init__.py
 
 %build

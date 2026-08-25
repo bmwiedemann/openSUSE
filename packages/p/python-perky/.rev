@@ -52,4 +52,27 @@
     <comment></comment>
     <requestid>1224131</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>53626b58c7fd47223f0be40729481923</srcmd5>
+    <version>0.10</version>
+    <time>1787656836</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.10:
+  * Perky now depends on big (&gt;= 0.14)
+  * Error messages got great. Every parse error now reports the file, line,
+    and column of the problem, and shows the offending line with a caret
+    pointing at the trouble.
+  * load now always parses with provenance: every str in the parsed result is
+    a big.string that knows its own file, line, and column--so your
+    validation errors can point into the config file too.
+  * The tokenizer used to iterate character by character, accumulating each
+    token in a buffer; now it scans for token boundaries and slices each
+    token out of the line in one step.
+  * API change: tokenize() now takes the line itself (a str or big.string),
+    not a pushback_str_iterator. The tokenizer no longer rewinds, so
+    pushback_str_iterator is now unused and deprecated.
+- Add patch switch-to-flit-core.patch:
+  * Support flit-core &gt;= 4 by using PEP 621 metadata.</comment>
+    <requestid>1373509</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Aug 25 05:23:21 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.10:
+  * Perky now depends on big (>= 0.14)
+  * Error messages got great. Every parse error now reports the file, line,
+    and column of the problem, and shows the offending line with a caret
+    pointing at the trouble.
+  * load now always parses with provenance: every str in the parsed result is
+    a big.string that knows its own file, line, and column--so your
+    validation errors can point into the config file too.
+  * The tokenizer used to iterate character by character, accumulating each
+    token in a buffer; now it scans for token boundaries and slices each
+    token out of the line in one step.
+  * API change: tokenize() now takes the line itself (a str or big.string),
+    not a pushback_str_iterator. The tokenizer no longer rewinds, so
+    pushback_str_iterator is now unused and deprecated.
+- Add patch switch-to-flit-core.patch:
+  * Support flit-core >= 4 by using PEP 621 metadata.
+
+-------------------------------------------------------------------
 Thu Nov 14 08:21:05 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.9.3

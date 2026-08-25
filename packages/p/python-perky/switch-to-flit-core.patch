@@ -1,0 +1,31 @@
+Index: perky-0.10/pyproject.toml
+===================================================================
+--- perky-0.10.orig/pyproject.toml
++++ perky-0.10/pyproject.toml
+@@ -1,15 +1,17 @@
+ [build-system]
+-requires = ["flit"]
+-build-backend = "flit.buildapi"
++requires = ["flit_core >=2,<5"]
++build-backend = "flit_core.buildapi"
+ 
+-[tool.flit.metadata]
+-module = "perky"
+-author = "Larry Hastings"
+-author-email = "larry@hastings.org"
+-home-page = "https://github.com/larryhastings/perky/"
+-requires = ["big >= 0.14"]
++[project]
++name = "perky"
++authors = [
++    {"name" = "Larry Hastings", "email" = "larry@larryhastings.org"},
++]
++urls.homepage = "https://github.com/larryhastings/perky/"
++dependencies = ["big >= 0.14"]
+ requires-python = ">=3.6"
+-description-file = "README.md"
++dynamic = ["description", "version"]
++readme = "README.md"
+ classifiers = [
+     "Intended Audience :: Developers",
+     "License :: OSI Approved :: MIT License",
