@@ -17,14 +17,14 @@
 
 
 Name:           goreleaser
-Version:        2.17.1
+Version:        2.18.0
 Release:        0
 Summary:        CLI tool for release engineering in Go, Rust, Zig and TypeScript
 License:        MIT
 URL:            https://goreleaser.com/
 Source:         goreleaser-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) >= 1.26
+BuildRequires:  golang(API) >= 1.27
 
 %description
 CLI tool that provides a single command to build, archive, package, sign and publish artifacts.

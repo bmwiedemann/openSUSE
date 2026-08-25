@@ -1,4 +1,94 @@
 -------------------------------------------------------------------
+Mon Aug 24 15:06:31 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging improvements:
+  * Update to BuildRequires: golang(API) >= 1.27 matching go.mod
+
+-------------------------------------------------------------------
+Mon Aug 24 06:54:42 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 2.18.0:
+  * test(dockers/v2): cover debug helpers (#6808)
+  * feat: release summary (#6810)
+  * chore: auto-update generated files (#6809)
+  * chore: schema update
+  * chore(deps): bump the gomod group across 1 directory with 4 updates (#6805)
+  * ci(deps): bump the actions group with 8 updates (#6807)
+  * chore: auto-update generated files (#6806)
+  * feat: update to Go 1.27 (#6802)
+  * fix(dockers/v2): annotation scopes (#6800)
+  * docs: download SBOMs (#6803)
+  * fix(config): type retry durations as strings in schema (#6801)
+  * fix(winget): a skipped winget entry stops the ones after it (#6797)
+  * chore: auto-update generated files (#6798)
+  * fix(mcp): mcp.disable is documented but never read (#6795)
+  * fix(healthcheck): register upx and makeself dependency checkers (#6793)
+  * fix(blob): honor s3_force_path_style without a custom endpoint (#6789)
+  * chore: auto-update generated files (#6794)
+  * fix(aur): expand description templates before escaping quotes (#6791)
+  * fix(chocolatey): error on multiple archives for the same platform (#6792)
+  * fix: surface archive Close errors when writing release archives (#6690)
+  * fix(nix): a skipped nix entry stops the ones after it (#6788)
+  * fix(sign): artifacts: none masks real signing failures (#6790)
+  * fix(cask): a cask without a repository stops the ones after it (#6785)
+  * fix(brew): a formula without a repository stops the ones after it (#6783)
+  * fix(upload): a misconfigured upload stops the others (#6786)
+  * fix(krew): a manifest without a name stops the ones after it (#6787)
+  * fix(snapcraft): a disabled snap stops the ones after it (#6784)
+  * fix(nfpm): overrides ignore package_name, epoch, release and prerelease (#6782)
+  * fix(flatpak): a disabled flatpak stops the ones after it (#6781)
+  * fix(milestone): a milestone with close disabled stops the ones after it (#6778)
+  * fix(git): tag templates strip apostrophes from the message (#6779)
+  * fix(snapcraft): assumes, hooks and plugs are dropped when apps is omitted (#6780)
+  * fix(krew): apply the documented goarm default (#6775)
+  * fix(nfpm): record the conventional extension, not the format name (#6776)
+  * fix(build): node windows targets get no .exe extension (#6777)
+  * fix(winget): count arm64 in the duplicate-archive check (#6774)
+  * fix(changelog): a commit matching two include filters is listed twice (#6773)
+  * fix(tmpl): register the documented join template function (#6772)
+  * docs: update
+  * docs: update
+  * chore: auto-update generated files (#6769)
+  * ci(deps): bump the actions group across 1 directory with 2 updates (#6770)
+  * chore(deps): bump the docker group across 1 directory with 2 updates (#6767)
+  * fix(winget): fall back to the default description in additional locales (#6771)
+  * chore(deps): bump the gomod group with 7 updates (#6768)
+  * ci(deps): exclude setup-task from license check
+  * fix(nfpm): don't set deb arch variant for goamd64 v1 (#6765)
+  * sec(deps): bump go-openapi/spec and go-openapi/validade (#6766)
+  * feat: add iru custom apps publisher (#6709)
+  * fix(notarize): cap macOS notarization timeout at 20m (#6758)
+  * fix(docker): add gpg-agent to the image (#6763)
+  * docs: many fixes
+  * fix(srpm): make documented rpm fields actually configurable (#6762)
+  * docs: use formats plural syntax (#6756)
+  * docs: use correct script for debconf (#6759)
+  * feat(winget): support publishing additional locale manifests (#6733)
+  * feat(ko): support templating for local_domain, base_image, and repositories (#6741)
+  * chore(deps): bump the docker group across 1 directory with 2 updates (#6749)
+  * chore(deps): bump github.com/go-git/go-git/v5 from 5.19.1 to 5.19.2 (#6753)
+  * ci: fix merge queue
+  * ci(deps): bump the actions group with 5 updates (#6751)
+  * chore(deps): bump the gomod group with 2 updates (#6750)
+  * fix(cask): emit Casks that pass brew style (#6752)
+  * ci: merge queue
+  * chore: update schema
+  * docs: update dockers_v2
+  * chore: auto-update generated files (#6744)
+  * feat: preflight checks (#6704)
+  * fix: lint
+  * chore(deps): bump github.com/sigstore/sigstore-go from 1.2.0 to 1.2.1 (#6743)
+  * docs(dockers_v2): clarify that build and push are a single step (#6742)
+  * fix: do not panic decoding a commit whose message contains a log marker (#6738)
+  * feat: allow PR creation to use a different auth token (#6717)
+  * chore(deps): bump anchore/syft from v1.49.0 to v1.50.0 in the docker group across 1 directory (#6736)
+  * chore(deps): bump the gomod group with 3 updates (#6735)
+  * ci(deps): bump the actions group with 3 updates (#6737)
+  * chore: auto-update generated files (#6740)
+  * chore: auto-update generated files (#6732)
+  * chore: auto-update generated files (#6731)
+
+-------------------------------------------------------------------
 Mon Jul 27 06:48:46 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update to version 2.17.1:
@@ -121,7 +211,7 @@ Mon Jul 06 07:26:34 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
 -------------------------------------------------------------------
 Tue Jun 16 12:09:07 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
 
-- Remove unnecessary files: _scmsync.obsinfo build.specials.obscpio 
+- Remove unnecessary files: _scmsync.obsinfo build.specials.obscpio
 
 -------------------------------------------------------------------
 Mon Jun 08 12:08:16 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>

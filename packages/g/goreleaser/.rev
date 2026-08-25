@@ -1139,4 +1139,15 @@
   * fix(builder/go): parse GORISCV64 and GOPPC64 for riscv64 and ppc64le targets (#6698) (forwarded request 1367929 from ph03nix)</comment>
     <requestid>1368023</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>63219e2ed9c951f900deacae5daf3495</srcmd5>
+    <version>2.18.0</version>
+    <time>1787656769</time>
+    <user>anag_factory</user>
+    <comment>- Packaging improvements:
+  * Update to BuildRequires: golang(API) &gt;= 1.27 matching go.mod
+
+- Remove unnecessary files: _scmsync.obsinfo build.specials.obscpio (forwarded request 1373451 from jfkw)</comment>
+    <requestid>1373452</requestid>
+  </revision>
 </revisionlist>
