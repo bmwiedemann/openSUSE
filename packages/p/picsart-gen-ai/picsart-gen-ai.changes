@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Aug 24 20:12:35 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.69.0:
+  * Report the generation-tracking events under event_type instead
+    of event, so the started and completed events match the current
+    telemetry schema
+- Re-vendor the runtime dependencies for the new release: picomatch
+  4.0.5 -> 4.0.7 is the only change, the dependency set is otherwise
+  unchanged
+
+-------------------------------------------------------------------
 Sat Aug 22 08:05:18 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.68.1:

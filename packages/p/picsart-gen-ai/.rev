@@ -77,4 +77,25 @@ section runs the packaged CLI.</comment>
   * Honour config defaultModel and imagePreview</comment>
     <requestid>1373009</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5acfb887d60156ce7fe43a56eca15ef7</srcmd5>
+    <version>2.69.0</version>
+    <time>1787656805</time>
+    <user>anag_factory</user>
+    <comment>Update to 2.69.0.
+
+Upstream change: the generation-tracking analytics events are reported
+under event_type instead of event, so the started and completed events
+match the current telemetry schema. That is the only difference in the
+published bundle between 2.68.1 and 2.69.0.
+
+The vendored runtime dependency set was regenerated for the new release
+with the node_modules service; picomatch 4.0.5 -&gt; 4.0.7 is the only
+change, the set is otherwise identical (71 tarballs, same licences).
+
+Built and verified on openSUSE_Tumbleweed/aarch64: rpmlint 0 errors,
+0 badness, the one warning (obsolete-not-provided gen-ai) is the
+deliberate one documented in the spec.</comment>
+    <requestid>1373481</requestid>
+  </revision>
 </revisionlist>
