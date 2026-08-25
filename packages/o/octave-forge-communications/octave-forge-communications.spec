@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-communications
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,9 +27,9 @@ URL:            https://gnu-octave.github.io/packages/%{octpkg}/
 Source0:        https://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  hdf5-devel
-BuildRequires:  octave-devel
+BuildRequires:  octave-devel >= 4.4.0
 BuildRequires:  octave-forge-signal
-Requires:       octave-cli >= 3.4.0
+Requires:       octave-cli >= 4.4.0
 Requires:       octave-forge-signal >= 1.1.3
 
 %description
@@ -45,6 +45,8 @@ popd
 %octave_pkg_src
 
 %build
+# autoconf compiler detection is broken, force it
+export CXX="g++ -std=gnu++17"
 %octave_pkg_build
 
 %install

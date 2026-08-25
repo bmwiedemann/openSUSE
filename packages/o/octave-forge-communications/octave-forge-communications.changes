@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 20 18:06:05 UTC 2026 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Work around broken autoconf compiler/default C++ version
+  detection.
+
+-------------------------------------------------------------------
 Fri Aug 22 22:37:30 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 1.2.7:
