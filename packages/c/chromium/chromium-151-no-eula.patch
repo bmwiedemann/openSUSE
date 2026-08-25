@@ -1,0 +1,15 @@
+Index: chromium-151.0.7922.173/chrome/browser/first_run/first_run_internal_linux.cc
+===================================================================
+--- chromium-151.0.7922.173.orig/chrome/browser/first_run/first_run_internal_linux.cc
++++ chromium-151.0.7922.173/chrome/browser/first_run/first_run_internal_linux.cc
+@@ -50,6 +50,10 @@ bool ShowEulaDialog() {
+     return true;
+   }
+ 
++  // Do not show an empty placeholder text in openSUSE's chromium build
++  // boo#1276225
++  return true;
++
+   base::RunLoop run_loop;
+   bool accepted = false;
+ 

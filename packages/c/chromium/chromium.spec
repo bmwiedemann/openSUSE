@@ -205,6 +205,7 @@ Patch401:       chromium-149-strip-path.patch
 Patch402:       chromium-150-toolchain.patch
 Patch403:       chromium-151-metrics-metadata-histograms.patch
 Patch404:       chromium-151-value_or.patch
+Patch405:       chromium-151-no-eula.patch
 # conditionally applied patches ppc64le only
 # where applicable patch numbers from fedora specfile + 100
 Patch452:       ppc-fedora-memory-allocator-dcheck-assert-fix.patch

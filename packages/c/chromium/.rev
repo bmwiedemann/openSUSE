@@ -6651,4 +6651,12 @@ boo#1269061 moved to the new release because 149.0.7827.196 did not contain secu
     <comment>Chromium 151.0.7922.173 (boo#1275913)</comment>
     <requestid>1372683</requestid>
   </revision>
+  <revision rev="542" vrev="2">
+    <srcmd5>9ca118c7459ae60edbb45b4c073e9767</srcmd5>
+    <version>151.0.7922.173</version>
+    <time>1787656811</time>
+    <user>anag_factory</user>
+    <comment>do not show empty EULA dialog with placeholder text (boo#1276225)</comment>
+    <requestid>1373487</requestid>
+  </revision>
 </revisionlist>
