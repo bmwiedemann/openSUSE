@@ -100,4 +100,13 @@
     This release is API and ABI compatible with 22.1.0.</comment>
     <requestid>1363912</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>2474799585317baaece9fdf5a519af71</srcmd5>
+    <version>22.1.8</version>
+    <time>1787656706</time>
+    <user>anag_factory</user>
+    <comment>- Remove soft limit on open files. Depending on the number of jobs,
+  linking can sometimes open more than 1024 files (boo#1261761).</comment>
+    <requestid>1373278</requestid>
+  </revision>
 </revisionlist>
