@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Aug 23 06:03:47 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.de>
+
+- Make the build reproducible: the bundled mupdf static library
+  pymupdf/mupdf-devel/lib/libmupdf-threads.a, and therefore its
+  hash in dist-info/RECORD, differed between builds.
+  * Pass -frandom-seed to pin the random suffix gcc puts on the
+    .gnu.lto_* section names of the -ffat-lto-objects output.
+  * Set AR="ar -D" so mupdf's `ar cr` stops storing the build time
+    in the archive header.
+
+-------------------------------------------------------------------
 Mon Jun  1 07:30:56 UTC 2026 - JS <obs.coke518@passinbox.com>
 
 - BuildRequire llvm21-clang13 on Tumbleweed as an interim fix until

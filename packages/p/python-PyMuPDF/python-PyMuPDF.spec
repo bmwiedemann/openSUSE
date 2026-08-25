@@ -79,8 +79,10 @@ Devel package for %{name}.
 cp %{SOURCE1} .
 
 %build
-export CFLAGS="%{optflags} -ffat-lto-objects -I/usr/include/freetype2 -DNDEBUG"
+export CFLAGS="%{optflags} -ffat-lto-objects -frandom-seed=%{version} -I/usr/include/freetype2 -DNDEBUG"
 export ARCHFLAGS="%{optflags}"
+# -D makes .a files deterministic
+export AR="ar -D"
 %pyproject_wheel
 
 %install
