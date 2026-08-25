@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Aug 24 16:47:34 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.10.0:
+  * Added clear(), which removes every item from a queue while
+    keeping it open
+  * Fixed RoundRobinQueue.pop() dropping falsy items
+  * Added support for Python 3.15
+- Refresh summary and description to also mention the in-memory
+  queues
+- List installed files explicitly instead of globbing sitelib
+
+-------------------------------------------------------------------
 Sun Mar 22 16:53:01 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.9.0:

@@ -18,9 +18,9 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-queuelib
-Version:        1.9.0
+Version:        1.10.0
 Release:        0
-Summary:        Collection of Persistent (Disk-Based) Queues
+Summary:        Collection of In-Memory and Persistent (Disk-Based) Queues
 License:        BSD-3-Clause
 URL:            https://github.com/scrapy/queuelib
 Source:         https://files.pythonhosted.org/packages/source/q/queuelib/queuelib-%{version}.tar.gz
@@ -38,10 +38,12 @@ BuildRequires:  %{python_module pytest}
 %python_subpackages
 
 %description
-Queuelib is a collection of persistent (disk-based) queues for Python.
+Queuelib is a Python library that implements object collections which are
+stored in memory or persisted to disk, provide a simple API, and run fast.
 
-Queuelib goals are speed and simplicity. It was originally part of the
-`Scrapy framework`_ and stripped out on its own library.
+Queuelib provides collections for queues (FIFO), stacks (LIFO), queues sorted
+by priority and queues that are emptied in a round-robin fashion. Queuelib
+collections are not thread-safe.
 
 %prep
 %setup -q -n queuelib-%{version}
@@ -59,6 +61,7 @@ Queuelib goals are speed and simplicity. It was originally part of the
 %files %{python_files}
 %doc README.rst NEWS
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/queuelib
+%{python_sitelib}/queuelib-%{version}*-info
 
 %changelog
