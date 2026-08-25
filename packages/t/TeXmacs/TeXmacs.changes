@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Aug 25 01:09:33 UTC 2026 - RN <R_Nik_C@proton.me>
+
+- Update to 2.1.5
+  * Qt6 based version on all supported platforms
+  * Experimental support for collaborative editing
+  * Jupyter plugin and new R interface based on Jupyter
+  * Possibility to embed the TeXmacs source document inside its
+    PDF export
+  * New support for Aspell via its C API
+  * Experimental interface for various AI tools (ChatGPT, Mistral
+    AI, etc.)
+  * Experimental support for language tools
+  * New GnuTLS support with x509 certificates for collaborative
+    editing
+  * Document based server preference editor for collaborative editing
+  * Improved DPR (device pixel ratio) support when using multiple
+    screens
+  * Horizontally scrollable toolbars
+  * Various bug fixes
+- Removed texmacs-hashtree-fix.patch due unneeded
+- Moved to qt6 version
+
+-------------------------------------------------------------------
 Thu Jul 24 11:11:47 UTC 2025 - Christoph G <foss@grueninger.de>
 
 - Add texmacs-hashtree-fix.patch to fix compatibility with

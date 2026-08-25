@@ -1,7 +1,7 @@
 #
 # spec file for package TeXmacs
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 8/2011 - now  open-slx GmbH <Sascha.Manns@open-slx.de>
 # Copyright (c) 2009 - 7/2011 Sascha Manns <saigkill@opensuse.org>
 #
@@ -18,123 +18,133 @@
 #
 
 
+%define rev 15315
+
 Name:           TeXmacs
-Version:        2.1.4
+Version:        2.1.5
 Release:        0
 Summary:        A Structured WYSIWYG Scientific Text Editor
 License:        GPL-3.0-or-later
-URL:            https://www.texmacs.org/
-Source:         %{name}-%{version}.tar.gz
+URL:            https://www.texmacs.org
+Source:         %{name}-%{version}-src.tar.gz
 Patch1:         Reproducibility.patch
-Patch2:         texmacs-hashtree-fix.patch
+
 BuildRequires:  fdupes
 BuildRequires:  fontpackages-devel
+BuildRequires:  gcc-c++
+BuildRequires:  ghostscript-devel
+BuildRequires:  glib2-devel
+BuildRequires:  gnutls-devel
 BuildRequires:  libtool-ltdl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  png++-devel
+BuildRequires:  pspell-devel
+BuildRequires:  rsync
+BuildRequires:  shared-mime-info
+BuildRequires:  texinfo
 BuildRequires:  update-desktop-files
 BuildRequires:  xdg-utils
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5PrintSupport)
-BuildRequires:  pkgconfig(Qt5Svg)
+BuildRequires:  perl(Digest::SHA)
+BuildRequires:  pkgconfig(default-icon-theme)
+BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(freetype2)
-BuildRequires:  pkgconfig(guile-1.8)
-BuildRequires:  pkgconfig(ice)
+BuildRequires:  pkgconfig(gmp)
+BuildRequires:  pkgconfig(libffi)
 BuildRequires:  pkgconfig(libjpeg)
+BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(python3)
-BuildRequires:  pkgconfig(sm)
-BuildRequires:  pkgconfig(x11)
-BuildRequires:  pkgconfig(xaw7)
-BuildRequires:  pkgconfig(xext)
-BuildRequires:  pkgconfig(xft)
-BuildRequires:  pkgconfig(xmu)
-BuildRequires:  pkgconfig(xrender)
-BuildRequires:  pkgconfig(xt)
+BuildRequires:  pkgconfig(readline)
+BuildRequires:  pkgconfig(xcb)
+
+# Qt6
+BuildRequires:  qt6-base-devel
+BuildRequires:  qt6-tools-devel
+BuildRequires:  qt6-wayland-devel
+BuildRequires:  pkgconfig(Qt6Core)
+BuildRequires:  pkgconfig(Qt6Gui)
+BuildRequires:  pkgconfig(Qt6Svg)
+BuildRequires:  pkgconfig(Qt6Widgets)
 
 %description
-GNU TeXmacs is a free scientific text editor, inspired by TeX and GNU
-Emacs. The editor allows you to write structured documents via a
-WYSIWYG (what-you-see-is-what-you-get) and user friendly interface. New
-styles can be created by the user. The program implements high-quality
-typesetting algorithms and TeX fonts, which help you to produce
-professional looking documents.
+GNU TeXmacs is a free wysiwyw (what you see is what you want) editing
+platform with special features for scientists. The software aims to provide
+a unified and user friendly framework for editing structured documents with
+different types of content (text, graphics, mathematics, interactive content,
+etc.). The rendering engine uses high-quality typesetting algorithms so as to
+produce professionally looking documents, which can either be printed out
+or presented from a laptop.
 
-The high typesetting quality still goes through for automatically
-generated formulas, which makes TeXmacs suitable as an interface for
-computer algebra systems. TeXmacs also supports the Guile/Scheme
-extension language, so that you may customize the interface and write
-your own extensions to the editor.
+The software includes a text editor with support for mathematical formulas,
+a small technical picture editor and a tool for making presentations from
+a laptop. Moreover, TeXmacs can be used as an interface for many external
+systems for computer algebra, numerical analysis, statistics, etc.
+New presentation styles can be written by the user and new features can be
+added to the editor using the Scheme extension language. A native spreadsheet
+and tools for collaborative authoring are planned for later.
 
-%package examples
-Summary:        A Structured WYSIWYG Scientific Text Editor
-Group:          Productivity/Scientific/Other
-
-%description examples
-GNU TeXmacs is a free scientific text editor, inspired by TeX and GNU
-Emacs. The editor allows you to write structured documents via a
-WYSIWYG (what-you-see-is-what-you-get) and user friendly interface. New
-styles can be created by the user. The program implements high-quality
-typesetting algorithms and TeX fonts, which help you to produce
-professional looking documents.
-
-The high typesetting quality still goes through for automatically
-generated formulas, which makes TeXmacs suitable as an interface for
-computer algebra systems. TeXmacs also supports the Guile/Scheme
-extension language, so that you may customize the interface and write
-your own extensions to the editor.
+TeXmacs runs on all major Unix platforms and Windows. Documents can be
+saved in TeXmacs, Xml or Scheme format and printed as Postscript or
+Pdf files. Converters exist for TeX/LaTeX and Html/Mathml.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{name}-%{version}.%{rev}
 
 %build
-ARCH_FLAGS="`echo %{optflags} | sed -e 's|-Werror=return-type||g'`"
-export CFLAGS="${ARCH_FLAGS}"
-export CXXFLAGS="${ARCH_FLAGS}"
-%configure
+export PATH="%{_qt6_bindir}:%{_qt6_libexecdir}:$PATH"
+export QT_SELECT=qt6
+%set_build_flags
+export CFLAGS="$CFLAGS -Wno-error=return-type"
+export CXXFLAGS="$CXXFLAGS -Wno-error=return-type"
+export LDFLAGS="$LDFLAGS -pthread -ldl -Wl,--copy-dt-needed-entries"
+
+./configure --prefix=%{_prefix} \
+            --with-qt-find-method=pkgconfig \
+            --with-guile=embedded18 \
+            --with-gnutls=yes
+
+cp -rf tm-guile188/ice-9 ./TeXmacs/progs/
 %make_build TEXMACS
 
 %install
 export XDG_UTILS_INSTALL_MODE=system
+%make_install
 
-%make_install DESTDIR=%{buildroot}
 mkdir -p %{buildroot}%{_datadir}/mime/packages
 install -m 0644 TeXmacs/misc/mime/texmacs.xml %{buildroot}%{_datadir}/mime/packages/texmacs.xml
 
+# Fix python shebangs
+find %{buildroot} -type f -name "*.py" -exec sed -i 's|^#!/usr/bin/env python.*$|#!/usr/bin/python3|' {} +
+
 %suse_update_desktop_file -i texmacs
 
-%fdupes %{buildroot}/%{_prefix}
+%fdupes %{buildroot}/%{_datadir}
 
 %files
+%license %{_datadir}/%{name}/LICENSE
 %{_bindir}/fig2ps
 %{_bindir}/texmacs
-%{_includedir}/TeXmacs.h
+%doc %{_datadir}/%{name}/examples
+%doc %{_datadir}/%{name}/doc
+%doc %{_datadir}/%{name}/texts
+%dir %{_libexecdir}/%{name}
+%{_libexecdir}/%{name}/bin
+%{_includedir}/%{name}.h
 %{_mandir}/man1/fig2ps.1%{?ext_man}
 %{_mandir}/man1/texmacs.1%{?ext_man}
-%doc %{_datadir}/TeXmacs/examples
-%doc %{_datadir}/TeXmacs/doc
-%license %{_datadir}/TeXmacs/LICENSE
-%doc %{_datadir}/TeXmacs/texts
 %{_datadir}/icons/hicolor/*/*/*texmacs*
-%{_datadir}/pixmaps/*.xpm
-%{_datadir}/applications/*.desktop
-%{_datadir}/mime/packages/texmacs.xml
-%dir %{_datadir}/TeXmacs
-%dir %{_libexecdir}/TeXmacs
-%dir %{_libexecdir}/TeXmacs/bin
-%dir %{_datadir}/icons/hicolor
-%dir %{_datadir}/icons/hicolor/scalable
-%dir %{_datadir}/icons/hicolor/scalable/apps
-%dir %{_datadir}/icons/hicolor/scalable/mimetypes
-%dir %{_datadir}/icons/hicolor/*x*/
+%{_datadir}/applications/texmacs.desktop
+%dir %{_datadir}/icons/hicolor/*x*
 %dir %{_datadir}/icons/hicolor/*x*/apps
 %dir %{_datadir}/icons/hicolor/*x*/mimetypes
-%{_libexecdir}/TeXmacs/bin
-%{_datadir}/TeXmacs/fonts
-%{_datadir}/TeXmacs/langs
-%{_datadir}/TeXmacs/packages
-%{_datadir}/TeXmacs/misc
-%{_datadir}/TeXmacs/plugins
-%{_datadir}/TeXmacs/progs
-%{_datadir}/TeXmacs/styles
+%{_datadir}/pixmaps/%{name}.xpm
+%{_datadir}/mime/packages/texmacs.xml
+%dir %{_datadir}/%{name}
+%{_datadir}/%{name}/fonts
+%{_datadir}/%{name}/langs
+%{_datadir}/%{name}/packages
+%{_datadir}/%{name}/misc
+%{_datadir}/%{name}/plugins
+%{_datadir}/%{name}/progs
+%{_datadir}/%{name}/styles
 
 %changelog
