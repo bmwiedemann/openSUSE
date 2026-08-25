@@ -1,7 +1,7 @@
 #
 # spec file for package coccinelle
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,27 +18,31 @@
 
 %bcond_with coccinelle_testsuite
 %define build_flavor @BUILD_FLAVOR@%nil
+%if "%build_flavor" == ""
+ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
+%define nsuffix %nil
+%endif
+%if "%build_flavor" == "doc"
+ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
+%define nsuffix -doc
+%endif
 %if "%build_flavor" == "testsuite"
 %if %{without coccinelle_testsuite}
 ExclusiveArch:  do-not-build
 %else
-ExclusiveArch:  aarch64 ppc64 ppc64le riscv64 s390x x86_64
+ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
 %endif
 %define nsuffix -testsuite
-%else
-%define nsuffix %nil
-ExclusiveArch:  aarch64 ppc64 ppc64le riscv64 s390x x86_64
 %endif
 
 %define     pkg coccinelle
 %global _buildshell /bin/bash
 Name:           %pkg%nsuffix
-Version:        1.3.1
+Version:        1.3.2
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Semantic patch utility
 License:        GPL-2.0-only
-Group:          Productivity/Text/Utilities
 URL:            http://coccinelle.lip6.fr/
 Source0:        %pkg-%version.tar.xz
 Source1:        %pkg.rpmlintrc
@@ -61,14 +65,6 @@ BuildRequires:  pkgconfig(python3)
 Requires:       findutils
 Requires:       grep
 Requires:       which
-%endif
-
-%if "%build_flavor" == "testsuite"
-BuildRequires:  %pkg = %version
-BuildRequires:  ocaml(ocaml.opt)
-BuildRequires:  ocamlfind(findlib)
-%endif
-
 %description
 Coccinelle is a program matching and transformation engine which
 provides the language SmPL (Semantic Patch Language) for specifying
@@ -82,6 +78,66 @@ such as renaming a function, adding a function argument whose value
 is somehow context-dependent, and reorganizing a data structure.
 Beyond collateral evolutions, Coccinelle is used for finding and
 fixing bugs in systems code.
+%endif
+
+%if "%build_flavor" == "doc"
+BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  hevea
+BuildRequires:  ocaml(ocaml.opt)
+BuildRequires:  ocamlfind(findlib)
+BuildRequires:  ocamlfind(parmap)
+BuildRequires:  ocamlfind(stdcompat)
+BuildRequires:  tex(8r.enc)
+BuildRequires:  tex(alltt.sty)
+BuildRequires:  tex(amsmath.sty)
+BuildRequires:  tex(amssymb.sty)
+BuildRequires:  tex(boxedminipage.sty)
+BuildRequires:  tex(color.sty)
+BuildRequires:  tex(colortbl.sty)
+BuildRequires:  tex(comment.sty)
+BuildRequires:  tex(endnotes.sty)
+BuildRequires:  tex(epsfig.sty)
+BuildRequires:  tex(fancyvrb.sty)
+BuildRequires:  tex(fontenc.sty)
+BuildRequires:  tex(fullpage.sty)
+BuildRequires:  tex(graphics.sty)
+BuildRequires:  tex(graphicx.sty)
+BuildRequires:  tex(hyperref.sty)
+BuildRequires:  tex(ifgeo10.tfm)
+BuildRequires:  tex(ifsym.sty)
+BuildRequires:  tex(ifthen.sty)
+BuildRequires:  tex(inputenc.sty)
+BuildRequires:  tex(listings.sty)
+BuildRequires:  tex(moreverb.sty)
+BuildRequires:  tex(multirow.sty)
+BuildRequires:  tex(pcrr8t.tfm)
+BuildRequires:  tex(phvr8t.tfm)
+BuildRequires:  tex(ptmr8t.tfm)
+BuildRequires:  tex(subfigure.sty)
+BuildRequires:  tex(times.sty)
+BuildRequires:  tex(url.sty)
+BuildRequires:  tex(wrapfig.sty)
+BuildRequires:  tex(xspace.sty)
+BuildRequires:  tex(xy.sty)
+BuildRequires:  tex(babel-english.tex)
+BuildRequires:  tex(fancyhdr.sty)
+BuildRequires:  tex(english.ldf)
+BuildRequires:  texlive-latex
+BuildRequires:  texlive-metafont
+BuildRequires:  texlive-mfware
+%description
+Coccinelle is a program matching and transformation engine which
+provides the language SmPL (Semantic Patch Language) for specifying
+desired matches and transformations in C code.
+%endif
+
+%if "%build_flavor" == "testsuite"
+BuildRequires:  %pkg = %version
+BuildRequires:  ocaml(ocaml.opt)
+BuildRequires:  ocamlfind(findlib)
+%description
+%endif
 
 %prep
 %setup -q -n %pkg-%version
@@ -102,6 +158,20 @@ ulimit -s 32768
 %endif
 %make_build -j1 VERBOSE=yes
 %endif
+%if "%build_flavor" == "doc"
+echo '%version' > version
+autoreconf -fi
+%configure \
+	--disable-pcre-syntax \
+	--disable-python \
+	%nil
+pushd docs/manual
+%make_build -j1 VERBOSE=yes pdf
+popd
+pushd tools/spgen/documentation
+%make_build -j1 VERBOSE=yes docs
+popd
+%endif
 
 %install
 %if "%build_flavor" == ""
@@ -120,6 +190,16 @@ mkdir -p "%buildroot/%python3_sitelib"
 mv "%buildroot/%_libdir/%name/python/coccilib" "%buildroot/%python3_sitelib"
 %fdupes %buildroot/%_prefix
 %?python3_fix_shebang
+%endif
+%if "%build_flavor" == "doc"
+mkdir -vp %buildroot%_defaultdocdir/%pkg
+pushd docs/manual
+mv -vt %buildroot%_defaultdocdir/%pkg *.pdf
+popd
+pushd tools/spgen/documentation
+mv documentation.pdf spgen.pdf
+mv -vt %buildroot%_defaultdocdir/%pkg *.pdf
+popd
 %endif
 
 %if "%build_flavor" == "testsuite"
@@ -158,6 +238,11 @@ spatch --sp-file bug1192695.cocci --include-headers --no-includes --smpl-spacing
 %_libdir/%name
 %_mandir/*/*
 %python3_sitelib/coccilib
+%endif
+
+%if "%build_flavor" == "doc"
+%files
+%doc %_defaultdocdir/%pkg
 %endif
 
 %changelog
