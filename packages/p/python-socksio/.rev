@@ -7,4 +7,13 @@
     <comment>- Initial version 1.0.0</comment>
     <requestid>1359709</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>88d22a8cbc9bab3cf2bfe3fdcde2393c</srcmd5>
+    <version>1.0.0</version>
+    <time>1787656664</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-flit-core-4.patch:
+  * Suppport changes required by flit-core 4.</comment>
+    <requestid>1373321</requestid>
+  </revision>
 </revisionlist>

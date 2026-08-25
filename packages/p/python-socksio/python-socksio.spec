@@ -1,7 +1,7 @@
 #
 # spec file for package python-socksio
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,10 +23,12 @@ Summary:        Sans-I/O implementation of SOCKS4, SOCKS4A, and SOCKS5
 License:        MIT
 URL:            https://github.com/sethmlarson/socksio
 Source:         https://files.pythonhosted.org/packages/source/s/socksio/socksio-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
+# PATCH-FIX-UPSTREAM Based on first commit from gh#sethmlarson/socksio#66
+Patch0:         support-flit-core-4.patch
 BuildRequires:  %{python_module flit-core >= 2}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 # Test requirements
 BuildRequires:  %{python_module pytest}
 #
