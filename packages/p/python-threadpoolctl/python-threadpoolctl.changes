@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 25 02:45:46 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-flit-core-4.patch:
+  * Use PEP 621 metadata to support flit-core >= 4.
+
+-------------------------------------------------------------------
 Thu Apr 10 13:23:38 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.6.0

@@ -135,4 +135,13 @@
     <comment></comment>
     <requestid>1268408</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>5880bd13b3ee70b49ee85af298215fb3</srcmd5>
+    <version>3.6.0</version>
+    <time>1787656685</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-flit-core-4.patch:
+  * Use PEP 621 metadata to support flit-core &gt;= 4.</comment>
+    <requestid>1373501</requestid>
+  </revision>
 </revisionlist>

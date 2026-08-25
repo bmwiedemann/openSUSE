@@ -1,7 +1,7 @@
 #
 # spec file for package python-threadpoolctl
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,15 +22,15 @@ Version:        3.6.0
 Release:        0
 Summary:        Thread-pool Controls
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/joblib/threadpoolctl
 Source:         %{url}/archive/%{version}.tar.gz#/threadpoolctl-%{version}.tar.gz
-BuildRequires:  %{python_module devel >= 3.8}
+# PATCH-FIX-UPSTREAM gh#joblib/threadpoolctl#226
+Patch0:         support-flit-core-4.patch
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -42,7 +42,7 @@ libraries that handle their own internal threadpool (BLAS
 and OpenMP implementations).
 
 %prep
-%setup -q -n threadpoolctl-%{version}
+%autosetup -p1 -n threadpoolctl-%{version}
 
 %build
 %pyproject_wheel
@@ -58,7 +58,7 @@ and OpenMP implementations).
 %doc CHANGES.md README.md
 %license LICENSE
 %{python_sitelib}/threadpoolctl.py
-%pycache_only %{python_sitelib}/__pycache__/threadpoolctl.*.py*
-%{python_sitelib}/threadpoolctl-%{version}*info
+%pycache_only %{python_sitelib}/__pycache__/threadpoolctl.*.pyc
+%{python_sitelib}/threadpoolctl-%{version}.dist-info
 
 %changelog
