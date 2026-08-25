@@ -81,4 +81,12 @@ Depends on sr#1164320</comment>
     <comment>Update to 1.6.0</comment>
     <requestid>1356064</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>ea60e1af334beecc21483f5b8dd1fc40</srcmd5>
+    <version>1.6.0</version>
+    <time>1787656875</time>
+    <user>anag_factory</user>
+    <comment>- Build against KMime from Frameworks (forwarded request 1373576 from favogt)</comment>
+    <requestid>1373577</requestid>
+  </revision>
 </revisionlist>
