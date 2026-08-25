@@ -153,6 +153,7 @@ NO_TESTS+=" or test_convergence_dtype_consistency"
 NO_TESTS+=" or test_imputation_missing_value_in_test_array"
 NO_TESTS+=" or test_graphviz_toy"
 NO_TESTS+=" or test_forest_classifier_oob"
+NO_TESTS+=" or test_function_no_callback_support"
 %endif
 %pytest_arch -v --pyargs sklearn -n auto -m "not thread_unsafe" -k "not ($NO_TESTS)"
 popd

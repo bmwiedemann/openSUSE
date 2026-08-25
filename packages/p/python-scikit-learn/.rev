@@ -773,4 +773,14 @@
     <comment></comment>
     <requestid>1369686</requestid>
   </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>e92d531700c5688e401c926787a5993c</srcmd5>
+    <version>1.9.0</version>
+    <time>1787656689</time>
+    <user>anag_factory</user>
+    <comment>- Skip test_function_no_callback_support as well
+  (gh#scikit-learn/scikit-learn#34792)
+</comment>
+    <requestid>1373000</requestid>
+  </revision>
 </revisionlist>

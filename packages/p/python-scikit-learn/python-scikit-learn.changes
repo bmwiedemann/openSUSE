@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 21 18:23:14 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Skip test_function_no_callback_support as well
+  (gh#scikit-learn/scikit-learn#34792)
+
+-------------------------------------------------------------------
 Mon Aug  3 11:30:10 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - update to 1.9.0
