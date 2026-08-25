@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 24 01:50:09 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-flit-core-4.patch
+  * Support changes required for flit-core 4.
+
+-------------------------------------------------------------------
 Fri May 29 04:38:49 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove pointless BuildRequires on py.

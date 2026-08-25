@@ -342,4 +342,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1357210</requestid>
   </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>31b34a77257dd44a83ea40ce06aabbcb</srcmd5>
+    <version>3.1.2</version>
+    <time>1787656662</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-flit-core-4.patch
+  * Support changes required for flit-core 4.</comment>
+    <requestid>1373291</requestid>
+  </revision>
 </revisionlist>
