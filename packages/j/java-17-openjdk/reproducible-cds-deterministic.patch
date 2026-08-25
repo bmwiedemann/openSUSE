@@ -1,0 +1,256 @@
+# 8253495: CDS generates non-deterministic output
+#
+# Reviewed-by: erikj, kbarrett, ccheung, ihse
+# (cherry picked from commit de4f04cb71a26ce03b96460cb8d1c1e28cd1ed38)
+#
+# Backported to make the shipped CDS archives of openSUSE
+# java-17-openjdk reproducible. After pinning the build timestamp,
+# lib/server/classes.jsa and classes_nocoops.jsa were the only remaining
+# differences between two builds: the read-only region differed in size by
+# 8 bytes and the rw, ro, bm and heap region checksums all differed, so
+# the dump itself is not deterministic.
+#
+# This addresses all the causes:
+#   - JVM_StartThread(): during -Xshare:dump, other Java threads
+#     (ReferenceHandler, FinalizerThread, CleanerImpl) load symbols and
+#     classes in a racy order, which changes the layout of the metaspace
+#     regions.
+#   - os::malloc(): alignment gaps in C++ structures are copied into the
+#     archive, so they must be filled deterministically instead of being
+#     left uninitialized.
+#   - MethodCounters: execution counters depend on how much interpretation
+#     happened before the dump, so they are now set to NULL like
+#     MethodData already was.
+#   - filler arrays: their contents end up in the archived heap and were
+#     only zapped in debug builds.
+#   - the dump time subgraph info table was hashed by Klass address, which
+#     varies with ASLR, so its iteration order and hence the order of the
+#     ro region allocations varied between runs.
+#
+# Adapted for 17, which is otherwise unchanged:
+#   - src/hotspot/share/cds/dumpTimeClassInfo.hpp does not exist yet; on 17
+#     DumpTimeSharedClassTable_hash() lives in systemDictionaryShared.cpp
+#     and is not visible to heapShared.hpp. Rather than move it, keep
+#     HeapShared::klass_hash() and give it the same deterministic body
+#     (hash the offset of the class name within the symbol space). The
+#     upstream template change exists only to let both tables share one
+#     function, so nothing is lost.
+#   - the corresponding hunks in os.cpp and prims/jvm.cpp were applied by
+#     hand, the surrounding context differs.
+#   - the test and make/scripts/compare.sh hunks were dropped.
+#
+
+diff --git a/src/hotspot/share/cds/archiveBuilder.cpp b/src/hotspot/share/cds/archiveBuilder.cpp
+index 699926fcfe0..8e12cdabb8e 100644
+--- a/src/hotspot/share/cds/archiveBuilder.cpp
++++ b/src/hotspot/share/cds/archiveBuilder.cpp
+@@ -1,5 +1,5 @@
+ /*
+- * Copyright (c) 2020, 2021, Oracle and/or its affiliates. All rights reserved.
++ * Copyright (c) 2020, 2022, Oracle and/or its affiliates. All rights reserved.
+  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+  *
+  * This code is free software; you can redistribute it and/or modify it
+@@ -540,7 +540,8 @@ ArchiveBuilder::FollowMode ArchiveBuilder::get_follow_mode(MetaspaceClosure::Ref
+   if (MetaspaceShared::is_in_shared_metaspace(obj)) {
+     // Don't dump existing shared metadata again.
+     return point_to_it;
+-  } else if (ref->msotype() == MetaspaceObj::MethodDataType) {
++  } else if (ref->msotype() == MetaspaceObj::MethodDataType ||
++             ref->msotype() == MetaspaceObj::MethodCountersType) {
+     return set_to_null;
+   } else {
+     if (ref->msotype() == MetaspaceObj::ClassType) {
+diff --git a/src/hotspot/share/cds/archiveUtils.hpp b/src/hotspot/share/cds/archiveUtils.hpp
+index cdb3d99ab53..6d8e0b43a68 100644
+--- a/src/hotspot/share/cds/archiveUtils.hpp
++++ b/src/hotspot/share/cds/archiveUtils.hpp
+@@ -1,5 +1,5 @@
+ /*
+- * Copyright (c) 2019, 2021, Oracle and/or its affiliates. All rights reserved.
++ * Copyright (c) 2019, 2022, Oracle and/or its affiliates. All rights reserved.
+  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+  *
+  * This code is free software; you can redistribute it and/or modify it
+@@ -30,6 +30,7 @@
+ #include "memory/virtualspace.hpp"
+ #include "utilities/bitMap.hpp"
+ #include "utilities/exceptions.hpp"
++#include "utilities/macros.hpp"
+ 
+ class BootstrapInfo;
+ class ReservedSpace;
+@@ -142,7 +143,7 @@ public:
+   char* expand_top_to(char* newtop);
+   char* allocate(size_t num_bytes);
+ 
+-  void append_intptr_t(intptr_t n, bool need_to_mark = false);
++  void append_intptr_t(intptr_t n, bool need_to_mark = false) NOT_CDS_RETURN;
+ 
+   char* base()      const { return _base;        }
+   char* top()       const { return _top;         }
+diff --git a/src/hotspot/share/cds/heapShared.cpp b/src/hotspot/share/cds/heapShared.cpp
+index 709282028a2..811da73ef24 100644
+--- a/src/hotspot/share/cds/heapShared.cpp
++++ b/src/hotspot/share/cds/heapShared.cpp
+@@ -454,7 +454,7 @@ KlassSubGraphInfo* HeapShared::init_subgraph_info(Klass* k, bool is_full_module_
+   bool created;
+   Klass* relocated_k = ArchiveBuilder::get_relocated_klass(k);
+   KlassSubGraphInfo* info =
+-    _dump_time_subgraph_info_table->put_if_absent(relocated_k, KlassSubGraphInfo(relocated_k, is_full_module_graph),
++    _dump_time_subgraph_info_table->put_if_absent(k, KlassSubGraphInfo(relocated_k, is_full_module_graph),
+                                                   &created);
+   assert(created, "must not initialize twice");
+   return info;
+@@ -462,8 +462,7 @@ KlassSubGraphInfo* HeapShared::init_subgraph_info(Klass* k, bool is_full_module_
+ 
+ KlassSubGraphInfo* HeapShared::get_subgraph_info(Klass* k) {
+   assert(DumpSharedSpaces, "dump time only");
+-  Klass* relocated_k = ArchiveBuilder::get_relocated_klass(k);
+-  KlassSubGraphInfo* info = _dump_time_subgraph_info_table->get(relocated_k);
++  KlassSubGraphInfo* info = _dump_time_subgraph_info_table->get(k);
+   assert(info != NULL, "must have been initialized");
+   return info;
+ }
+@@ -624,7 +623,8 @@ struct CopyKlassSubGraphInfoToArchive : StackObj {
+         (ArchivedKlassSubGraphInfoRecord*)ArchiveBuilder::ro_region_alloc(sizeof(ArchivedKlassSubGraphInfoRecord));
+       record->init(&info);
+ 
+-      unsigned int hash = SystemDictionaryShared::hash_for_shared_dictionary((address)klass);
++      Klass* relocated_k = ArchiveBuilder::get_relocated_klass(klass);
++      unsigned int hash = SystemDictionaryShared::hash_for_shared_dictionary((address)relocated_k);
+       u4 delta = ArchiveBuilder::current()->any_to_offset_u4(record);
+       _writer->add(hash, delta);
+     }
+diff --git a/src/hotspot/share/cds/heapShared.hpp b/src/hotspot/share/cds/heapShared.hpp
+index 74de74d6c92..3473357ea6b 100644
+--- a/src/hotspot/share/cds/heapShared.hpp
++++ b/src/hotspot/share/cds/heapShared.hpp
+@@ -170,8 +170,16 @@ private:
+   }
+ 
+   static unsigned klass_hash(Klass* const& klass) {
+-    // Generate deterministic hashcode even if SharedBaseAddress is changed due to ASLR.
+-    return primitive_hash<address>(address(klass) - SharedBaseAddress);
++    if (DumpSharedSpaces) {
++      // Deterministic archive contents: hash by the offset of the class name
++      // within the symbol space. Unlike the Klass address, that offset does not
++      // depend on where the VM happened to map its memory (ASLR). This mirrors
++      // DumpTimeSharedClassTable_hash() in systemDictionaryShared.cpp.
++      uintx delta = klass->name() - MetaspaceShared::symbol_rs_base();
++      return primitive_hash<uintx>(delta);
++    } else {
++      return primitive_hash<Klass*>(klass);
++    }
+   }
+ 
+   class DumpTimeKlassSubGraphInfoTable
+diff --git a/src/hotspot/share/gc/shared/collectedHeap.cpp b/src/hotspot/share/gc/shared/collectedHeap.cpp
+index 2f90992f6ee..27e4f5765be 100644
+--- a/src/hotspot/share/gc/shared/collectedHeap.cpp
++++ b/src/hotspot/share/gc/shared/collectedHeap.cpp
+@@ -1,5 +1,5 @@
+ /*
+- * Copyright (c) 2001, 2021, Oracle and/or its affiliates. All rights reserved.
++ * Copyright (c) 2001, 2022, Oracle and/or its affiliates. All rights reserved.
+  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+  *
+  * This code is free software; you can redistribute it and/or modify it
+@@ -406,6 +406,11 @@ size_t CollectedHeap::filler_array_min_size() {
+   return align_object_size(filler_array_hdr_size()); // align to MinObjAlignment
+ }
+ 
++void CollectedHeap::zap_filler_array_with(HeapWord* start, size_t words, juint value) {
++  Copy::fill_to_words(start + filler_array_hdr_size(),
++                      words - filler_array_hdr_size(), value);
++}
++
+ #ifdef ASSERT
+ void CollectedHeap::fill_args_check(HeapWord* start, size_t words)
+ {
+@@ -416,8 +421,7 @@ void CollectedHeap::fill_args_check(HeapWord* start, size_t words)
+ void CollectedHeap::zap_filler_array(HeapWord* start, size_t words, bool zap)
+ {
+   if (ZapFillerObjects && zap) {
+-    Copy::fill_to_words(start + filler_array_hdr_size(),
+-                        words - filler_array_hdr_size(), 0XDEAFBABE);
++    zap_filler_array_with(start, words, 0XDEAFBABE);
+   }
+ }
+ #endif // ASSERT
+@@ -434,7 +438,13 @@ CollectedHeap::fill_with_array(HeapWord* start, size_t words, bool zap)
+ 
+   ObjArrayAllocator allocator(Universe::intArrayKlassObj(), words, (int)len, /* do_zero */ false);
+   allocator.initialize(start);
+-  DEBUG_ONLY(zap_filler_array(start, words, zap);)
++  if (DumpSharedSpaces) {
++    // This array is written into the CDS archive. Make sure it
++    // has deterministic contents.
++    zap_filler_array_with(start, words, 0);
++  } else {
++    DEBUG_ONLY(zap_filler_array(start, words, zap);)
++  }
+ }
+ 
+ void
+diff --git a/src/hotspot/share/gc/shared/collectedHeap.hpp b/src/hotspot/share/gc/shared/collectedHeap.hpp
+index cf1a6b6ff31..65b9c21c951 100644
+--- a/src/hotspot/share/gc/shared/collectedHeap.hpp
++++ b/src/hotspot/share/gc/shared/collectedHeap.hpp
+@@ -157,6 +157,7 @@ class CollectedHeap : public CHeapObj<mtGC> {
+   static inline size_t filler_array_hdr_size();
+   static inline size_t filler_array_min_size();
+ 
++  static inline void zap_filler_array_with(HeapWord* start, size_t words, juint value);
+   DEBUG_ONLY(static void fill_args_check(HeapWord* start, size_t words);)
+   DEBUG_ONLY(static void zap_filler_array(HeapWord* start, size_t words, bool zap = true);)
+ 
+diff --git a/src/hotspot/share/prims/jvm.cpp b/src/hotspot/share/prims/jvm.cpp
+index 7419921cd9a..3c9eb2d9dd7 100644
+--- a/src/hotspot/share/prims/jvm.cpp
++++ b/src/hotspot/share/prims/jvm.cpp
+@@ -2852,6 +2852,26 @@ static void thread_entry(JavaThread* thread, TRAPS) {
+ 
+ 
+ JVM_ENTRY(void, JVM_StartThread(JNIEnv* env, jobject jthread))
++#if INCLUDE_CDS
++  if (DumpSharedSpaces) {
++    // During java -Xshare:dump, if we allow multiple Java threads to
++    // execute in parallel, symbols and classes may be loaded in
++    // random orders which will make the resulting CDS archive
++    // non-deterministic.
++    //
++    // Lucikly, during java -Xshare:dump, it's important to run only
++    // the code in the main Java thread (which is NOT started here) that
++    // creates the module graph, etc. It's safe to not start the other
++    // threads which are launched by class static initializers
++    // (ReferenceHandler, FinalizerThread and CleanerImpl).
++    if (log_is_enabled(Info, cds)) {
++      ResourceMark rm;
++      oop t = JNIHandles::resolve_non_null(jthread);
++      log_info(cds)("JVM_StartThread() ignored: %s", t->klass()->external_name());
++    }
++    return;
++  }
++#endif
+   JavaThread *native_thread = NULL;
+ 
+   // We cannot hold the Threads_lock when we throw an exception,
+diff --git a/src/hotspot/share/runtime/os.cpp b/src/hotspot/share/runtime/os.cpp
+index ae3c39f3b1e..338b18533e8 100644
+--- a/src/hotspot/share/runtime/os.cpp
++++ b/src/hotspot/share/runtime/os.cpp
+@@ -693,7 +693,12 @@ void* os::malloc(size_t size, MEMFLAGS memflags, const NativeCallStack& stack) {
+ 
+   void* const inner_ptr = MemTracker::record_malloc((address)outer_ptr, size, memflags, stack);
+ 
+-  DEBUG_ONLY(::memset(inner_ptr, uninitBlockPad, size);)
++  if (DumpSharedSpaces) {
++    // Need to deterministically fill all the alignment gaps in C++ structures.
++    ::memset(inner_ptr, 0, size);
++  } else {
++    DEBUG_ONLY(::memset(inner_ptr, uninitBlockPad, size);)
++  }
+   DEBUG_ONLY(break_if_ptr_caught(inner_ptr);)
+ 
+   return inner_ptr;

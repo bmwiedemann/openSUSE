@@ -1,0 +1,250 @@
+# 8282567: Improve source-date handling in build system
+#
+# Reviewed-by: erikj, sgehwolf
+# (cherry picked from commit 5d5bf16b0af419781fd336fe33d8eab5adf8be5a)
+#
+# Backported to make openSUSE java-17-openjdk builds reproducible.
+#
+# Without this, configure ignores the SOURCE_DATE_EPOCH exported by the
+# build service and defaults SOURCE_DATE to "updated", so
+# SetupReproducibleBuild in make/InitSupport.gmk replaces the inherited
+# SOURCE_DATE_EPOCH with $(shell date +%s) at make start. Every build
+# therefore compiles with a different SOURCE_DATE_EPOCH, and since gcc
+# derives __DATE__ and __TIME__ from that variable, the HOTSPOT_BUILD_TIME
+# fallback in abstract_vm_version.cpp embeds a different timestamp in
+# libjvm.so on each build. The same string reaches the CDS archives
+# through FileMapHeader::_jvm_ident (filemap.cpp), and libjvm.so is also
+# packaged inside java.base.jmod, so a single wall clock read makes four
+# shipped files differ. The clobbered epoch additionally lands in
+# lib/ct.sym, whose entries are stamped with SOURCE_DATE_EPOCH by
+# make/modules/jdk.compiler/Gendata.gmk, which propagates into
+# jdk.compiler.jmod.
+#
+# With this change SOURCE_DATE_EPOCH from the environment is honoured, it
+# sets with_source_date_present=true so ENABLE_REPRODUCIBLE_BUILD becomes
+# true (enabling jar --date, jmod --date, reproducible zips and
+# -frandom-seed), and HOTSPOT_BUILD_TIME is derived from it.
+#
+# The doc/building.{md,html} hunks were dropped; they only document the
+# new configure behaviour and conflict with 17u generated HTML.
+#
+
+diff --git a/make/InitSupport.gmk b/make/InitSupport.gmk
+index d2291c50f21..62fdc438c8a 100644
+--- a/make/InitSupport.gmk
++++ b/make/InitSupport.gmk
+@@ -1,5 +1,5 @@
+ #
+-# Copyright (c) 2011, 2021, Oracle and/or its affiliates. All rights reserved.
++# Copyright (c) 2011, 2022, Oracle and/or its affiliates. All rights reserved.
+ # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+ #
+ # This code is free software; you can redistribute it and/or modify it
+@@ -310,17 +310,16 @@ else # $(HAS_SPEC)=true
+   # level of reproducible builds
+   define SetupReproducibleBuild
+     ifeq ($$(SOURCE_DATE), updated)
+-      SOURCE_DATE := $$(shell $$(DATE) +"%s")
+-    endif
+-    export SOURCE_DATE_EPOCH := $$(SOURCE_DATE)
+-    ifeq ($$(IS_GNU_DATE), yes)
+-      export SOURCE_DATE_ISO_8601 := $$(shell $$(DATE) --utc \
+-                                                       --date="@$$(SOURCE_DATE_EPOCH)" \
+-                                                       +"%Y-%m-%dT%H:%M:%SZ" 2> /dev/null)
+-    else
+-      export SOURCE_DATE_ISO_8601 := $$(shell $$(DATE) -u \
+-                                                       -j -f "%s" "$$(SOURCE_DATE_EPOCH)" \
+-                                                       +"%Y-%m-%dT%H:%M:%SZ" 2> /dev/null)
++      # For static values of SOURCE_DATE (not "updated"), these are set in spec.gmk
++      export SOURCE_DATE_EPOCH := $$(shell $$(DATE) +"%s")
++      ifeq ($$(IS_GNU_DATE), yes)
++        export SOURCE_DATE_ISO_8601 := $$(shell $$(DATE) --utc \
++            --date="@$$(SOURCE_DATE_EPOCH)" +"$$(ISO_8601_FORMAT_STRING)" \
++            2> /dev/null)
++      else
++        export SOURCE_DATE_ISO_8601 := $$(shell $$(DATE) -u -j -f "%s" \
++            "$$(SOURCE_DATE_EPOCH)" +"$$(ISO_8601_FORMAT_STRING)" 2> /dev/null)
++      endif
+     endif
+   endef
+ 
+diff --git a/make/autoconf/configure.ac b/make/autoconf/configure.ac
+index 173d533359d..83997e45710 100644
+--- a/make/autoconf/configure.ac
++++ b/make/autoconf/configure.ac
+@@ -153,6 +153,7 @@ BOOTJDK_SETUP_DOCS_REFERENCE_JDK
+ #
+ ###############################################################################
+ 
++JDKOPT_SETUP_REPRODUCIBLE_BUILD
+ JDKOPT_SETUP_JDK_OPTIONS
+ 
+ ###############################################################################
+@@ -205,7 +206,6 @@ PLATFORM_SETUP_OPENJDK_TARGET_BITS
+ PLATFORM_SETUP_OPENJDK_TARGET_ENDIANNESS
+ 
+ # Configure flags for the tools. Need to know if we should build reproducible.
+-JDKOPT_SETUP_REPRODUCIBLE_BUILD
+ FLAGS_SETUP_FLAGS
+ 
+ # Setup debug symbols (need objcopy from the toolchain for that)
+diff --git a/make/autoconf/help.m4 b/make/autoconf/help.m4
+index 139d18a8628..8cbf9276df0 100644
+--- a/make/autoconf/help.m4
++++ b/make/autoconf/help.m4
+@@ -284,6 +284,13 @@ AC_DEFUN_ONCE([HELP_PRINT_SUMMARY_AND_WARNINGS],
+   printf "* OpenJDK target: OS: $OPENJDK_TARGET_OS, CPU architecture: $OPENJDK_TARGET_CPU_ARCH, address length: $OPENJDK_TARGET_CPU_BITS\n"
+   printf "* Version string: $VERSION_STRING ($VERSION_SHORT)\n"
+ 
++  if test "x$SOURCE_DATE" != xupdated; then
++    source_date_info="$SOURCE_DATE ($SOURCE_DATE_ISO_8601)"
++  else
++    source_date_info="Determined at build time"
++  fi
++  printf "* Source date:    $source_date_info\n"
++
+   printf "\n"
+   printf "Tools summary:\n"
+   if test "x$OPENJDK_BUILD_OS" = "xwindows"; then
+diff --git a/make/autoconf/hotspot.m4 b/make/autoconf/hotspot.m4
+index 43653c115be..2f9f5e7111e 100644
+--- a/make/autoconf/hotspot.m4
++++ b/make/autoconf/hotspot.m4
+@@ -1,5 +1,5 @@
+ #
+-# Copyright (c) 2011, 2020, Oracle and/or its affiliates. All rights reserved.
++# Copyright (c) 2011, 2022, Oracle and/or its affiliates. All rights reserved.
+ # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+ #
+ # This code is free software; you can redistribute it and/or modify it
+@@ -123,12 +123,26 @@ AC_DEFUN_ONCE([HOTSPOT_SETUP_MISC],
+     HOTSPOT_TARGET_CPU_ARCH=zero
+   fi
+ 
++
+   AC_ARG_WITH([hotspot-build-time], [AS_HELP_STRING([--with-hotspot-build-time],
+-  [timestamp to use in hotspot version string, empty for on-the-fly @<:@empty@:>@])])
++  [timestamp to use in hotspot version string, empty means determined at build time @<:@source-date/empty@:>@])])
++
++  AC_MSG_CHECKING([what hotspot build time to use])
+ 
+   if test "x$with_hotspot_build_time" != x; then
+     HOTSPOT_BUILD_TIME="$with_hotspot_build_time"
++    AC_MSG_RESULT([$HOTSPOT_BUILD_TIME (from --with-hotspot-build-time)])
++  else
++    if test "x$SOURCE_DATE" = xupdated; then
++      HOTSPOT_BUILD_TIME=""
++      AC_MSG_RESULT([determined at build time (default)])
++    else
++      # If we have a fixed value for SOURCE_DATE, use it as default
++      HOTSPOT_BUILD_TIME="$SOURCE_DATE_ISO_8601"
++      AC_MSG_RESULT([$HOTSPOT_BUILD_TIME (from --with-source-date)])
++    fi
+   fi
++
+   AC_SUBST(HOTSPOT_BUILD_TIME)
+ 
+ 
+diff --git a/make/autoconf/jdk-options.m4 b/make/autoconf/jdk-options.m4
+index c20e8c7e291..4f569c8ab3b 100644
+--- a/make/autoconf/jdk-options.m4
++++ b/make/autoconf/jdk-options.m4
+@@ -221,16 +221,16 @@ AC_DEFUN_ONCE([JDKOPT_SETUP_JDK_OPTIONS],
+ 
+   # Setup default copyright year. Mostly overridden when building close to a new year.
+   AC_ARG_WITH(copyright-year, [AS_HELP_STRING([--with-copyright-year],
+-      [Set copyright year value for build @<:@current year@:>@])])
++      [Set copyright year value for build @<:@current year/source-date@:>@])])
+   if test "x$with_copyright_year" = xyes; then
+     AC_MSG_ERROR([Copyright year must have a value])
+   elif test "x$with_copyright_year" != x; then
+     COPYRIGHT_YEAR="$with_copyright_year"
+-  elif test "x$SOURCE_DATE_EPOCH" != x; then
++  elif test "x$SOURCE_DATE" != xupdated; then
+     if test "x$IS_GNU_DATE" = xyes; then
+-      COPYRIGHT_YEAR=`date --date=@$SOURCE_DATE_EPOCH +%Y`
++      COPYRIGHT_YEAR=`$DATE --date=@$SOURCE_DATE +%Y`
+     else
+-      COPYRIGHT_YEAR=`date -j -f %s $SOURCE_DATE_EPOCH +%Y`
++      COPYRIGHT_YEAR=`$DATE -j -f %s $SOURCE_DATE +%Y`
+     fi
+   else
+     COPYRIGHT_YEAR=`$DATE +'%Y'`
+@@ -649,15 +649,28 @@ AC_DEFUN([JDKOPT_ALLOW_ABSOLUTE_PATHS_IN_OUTPUT],
+ AC_DEFUN_ONCE([JDKOPT_SETUP_REPRODUCIBLE_BUILD],
+ [
+   AC_ARG_WITH([source-date], [AS_HELP_STRING([--with-source-date],
+-      [how to set SOURCE_DATE_EPOCH ('updated', 'current', 'version' a timestamp or an ISO-8601 date) @<:@updated@:>@])],
++      [how to set SOURCE_DATE_EPOCH ('updated', 'current', 'version' a timestamp or an ISO-8601 date) @<:@updated/value of SOURCE_DATE_EPOCH@:>@])],
+       [with_source_date_present=true], [with_source_date_present=false])
+ 
++  if test "x$SOURCE_DATE_EPOCH" != x && test "x$with_source_date" != x; then
++    AC_MSG_WARN([--with-source-date will override SOURCE_DATE_EPOCH])
++  fi
++
+   AC_MSG_CHECKING([what source date to use])
+ 
+   if test "x$with_source_date" = xyes; then
+     AC_MSG_ERROR([--with-source-date must have a value])
+-  elif test "x$with_source_date" = xupdated || test "x$with_source_date" = x; then
+-    # Tell the makefiles to update at each build
++  elif test "x$with_source_date" = x; then
++    if test "x$SOURCE_DATE_EPOCH" != x; then
++      SOURCE_DATE=$SOURCE_DATE_EPOCH
++      with_source_date_present=true
++      AC_MSG_RESULT([$SOURCE_DATE, from SOURCE_DATE_EPOCH])
++    else
++      # Tell the makefiles to update at each build
++      SOURCE_DATE=updated
++      AC_MSG_RESULT([determined at build time (default)])
++    fi
++  elif test "x$with_source_date" = xupdated; then
+     SOURCE_DATE=updated
+     AC_MSG_RESULT([determined at build time, from 'updated'])
+   elif test "x$with_source_date" = xcurrent; then
+@@ -689,6 +702,18 @@ AC_DEFUN_ONCE([JDKOPT_SETUP_REPRODUCIBLE_BUILD],
+     fi
+   fi
+ 
++  ISO_8601_FORMAT_STRING="%Y-%m-%dT%H:%M:%SZ"
++  if test "x$SOURCE_DATE" != xupdated; then
++    # If we have a fixed value for SOURCE_DATE, we need to set SOURCE_DATE_EPOCH
++    # for the rest of configure.
++    SOURCE_DATE_EPOCH="$SOURCE_DATE"
++    if test "x$IS_GNU_DATE" = xyes; then
++      SOURCE_DATE_ISO_8601=`$DATE --utc --date="@$SOURCE_DATE" +"$ISO_8601_FORMAT_STRING" 2> /dev/null`
++    else
++      SOURCE_DATE_ISO_8601=`$DATE -u -j -f "%s" "$SOURCE_DATE" +"$ISO_8601_FORMAT_STRING" 2> /dev/null`
++    fi
++  fi
++
+   REPRODUCIBLE_BUILD_DEFAULT=$with_source_date_present
+ 
+   if test "x$OPENJDK_BUILD_OS" = xwindows && \
+@@ -713,6 +738,8 @@ AC_DEFUN_ONCE([JDKOPT_SETUP_REPRODUCIBLE_BUILD],
+ 
+   AC_SUBST(SOURCE_DATE)
+   AC_SUBST(ENABLE_REPRODUCIBLE_BUILD)
++  AC_SUBST(ISO_8601_FORMAT_STRING)
++  AC_SUBST(SOURCE_DATE_ISO_8601)
+ ])
+ 
+ ################################################################################
+diff --git a/make/autoconf/spec.gmk.in b/make/autoconf/spec.gmk.in
+index 807ba27589b..f5536ab886c 100644
+--- a/make/autoconf/spec.gmk.in
++++ b/make/autoconf/spec.gmk.in
+@@ -127,6 +127,13 @@ RELEASE_FILE_LIBC:=@RELEASE_FILE_LIBC@
+ 
+ SOURCE_DATE := @SOURCE_DATE@
+ ENABLE_REPRODUCIBLE_BUILD := @ENABLE_REPRODUCIBLE_BUILD@
++ISO_8601_FORMAT_STRING := @ISO_8601_FORMAT_STRING@
++
++ifneq ($(SOURCE_DATE), updated)
++  # For "updated" source date value, these are set in InitSupport.gmk
++  export SOURCE_DATE_EPOCH := $(SOURCE_DATE)
++  SOURCE_DATE_ISO_8601 := @SOURCE_DATE_ISO_8601@
++endif
+ 
+ LIBM:=@LIBM@
+ LIBDL:=@LIBDL@

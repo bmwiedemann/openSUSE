@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Aug 24 17:05:34 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream tag jdk-17.0.20.1+1 (August 2026 CSPU)
+  * Changes:
+    + JDK-8389947: [17u] Remove designator
+      DEFAULT_PROMOTED_VERSION_PRE=ea for release 17.0.20.1
+    + JDK-8386205, bsc#1275764, CVE-2026-70907: Enhance TLS server
+    + JDK-8384708, bsc#1275778, CVE-2026-61308: Enhance HTTP
+      Connections
+    + JDK-8382471, bsc#1275777, CVE-2026-60589: Improve Resource
+      Resolving
+    + JDK-8333743: Change .jcheck/conf branches property to match
+      valid branches
+    + JDK-8388790: Bump update version for OpenJDK: jdk-17.0.20.1
+- Added patch:
+  * tzdata-2026c.patch
+    + backport upcoming upgrade of timezone data (bsc#1275035)
+
+-------------------------------------------------------------------
+Tue Jul 28 11:07:55 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add patches for reproducible builds:
+  * java-40y.patch
+  * reproducible-cds-archive-g1.patch
+  * reproducible-cds-deterministic.patch
+  * reproducible-classlist-g1.patch
+  * reproducible-classlist-striped64.patch
+  * reproducible-default.patch
+  * reproducible-source-date-epoch.patch
+
+-------------------------------------------------------------------
 Wed Jul 22 09:20:50 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream tag jdk-17.0.20+8 (July 2026 CPU)

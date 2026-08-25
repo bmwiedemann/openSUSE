@@ -1,0 +1,81 @@
+# Make CDS archive generation independent of the build machine CPU count
+#
+# JDK 17 can only archive Java heap objects with G1
+# (HeapShared::is_heap_object_archiving_allowed() requires UseG1GC), while
+# GC ergonomics select SerialGC on a machine with a single CPU, because
+# os::is_server_class_machine() requires at least two. A 1-core builder
+# therefore dumps lib/server/classes.jsa without any archived heap
+# regions, so the shipped archive differs from the one a multi-core
+# builder produces.
+#
+# Pin G1 for the four -Xshare:dump commands if the JVM supports it. The
+# guard expands to nothing for variants built without the g1gc feature
+# (zero, minimal), so those builds are unaffected.
+#
+# This is the JDK 17 shaped equivalent of JDK-8292329, which added
+# "Only G1 supports dumping the shared heap, so explicitly use G1 if the
+# JVM supports it" to Images.gmk in JDK 20. It cannot be cherry-picked
+# because it edits the CreateCDSArchive macro introduced by JDK-8290981,
+# which JDK 17 does not have.
+#
+# Note that the two _nocoops archives additionally pass
+# -XX:-UseCompressedOops, and JDK 17 also requires UseCompressedOops to
+# archive heap objects, so those archives never contain heap regions
+# regardless of the GC; passing the flag there is only for consistency.
+#
+
+diff --git a/make/Images.gmk b/make/Images.gmk
+index 841ccef7637..8b6be5c5d2f 100644
+--- a/make/Images.gmk
++++ b/make/Images.gmk
+@@ -123,6 +123,14 @@ ifeq ($(BUILD_CDS_ARCHIVE), true)
+     CDS_NOCOOPS_ARCHIVE := lib/server/classes_nocoops.jsa
+   endif
+ 
++  # Only G1 can dump the archived heap (HeapShared::is_heap_object_archiving_allowed()
++  # requires UseG1GC), and GC ergonomics select SerialGC on single-CPU machines because
++  # os::is_server_class_machine() requires at least 2 CPUs. Without archived heap regions
++  # the resulting archive differs, so explicitly use G1 if the JVM supports it. This makes
++  # the shipped archives independent of the CPU count of the build machine.
++  CDS_DUMP_FLAGS := -Xmx128M -Xms128M \
++      $(if $(filter g1gc, $(JVM_FEATURES_$(JVM_VARIANT_MAIN))),-XX:+UseG1GC)
++
+   $(eval $(call SetupExecute, gen_cds_archive_jdk, \
+       WARN := Creating CDS archive for jdk image, \
+       DEPS := $(jlink_jdk), \
+@@ -130,7 +138,7 @@ ifeq ($(BUILD_CDS_ARCHIVE), true)
+       SUPPORT_DIR := $(SUPPORT_OUTPUTDIR)/images/jdk, \
+       COMMAND := $(FIXPATH) $(JDK_IMAGE_DIR)/bin/java -Xshare:dump \
+           -XX:SharedArchiveFile=$(JDK_IMAGE_DIR)/$(CDS_ARCHIVE) \
+-          -Xmx128M -Xms128M $(LOG_INFO), \
++          $(CDS_DUMP_FLAGS) $(LOG_INFO), \
+   ))
+ 
+   JDK_TARGETS += $(gen_cds_archive_jdk)
+@@ -142,7 +150,7 @@ ifeq ($(BUILD_CDS_ARCHIVE), true)
+       SUPPORT_DIR := $(SUPPORT_OUTPUTDIR)/images/jre, \
+       COMMAND := $(FIXPATH) $(JRE_IMAGE_DIR)/bin/java -Xshare:dump \
+           -XX:SharedArchiveFile=$(JRE_IMAGE_DIR)/$(CDS_ARCHIVE) \
+-          -Xmx128M -Xms128M $(LOG_INFO), \
++          $(CDS_DUMP_FLAGS) $(LOG_INFO), \
+   ))
+ 
+   JRE_TARGETS += $(gen_cds_archive_jre)
+@@ -156,7 +164,7 @@ ifeq ($(BUILD_CDS_ARCHIVE), true)
+         COMMAND := $(FIXPATH) $(JDK_IMAGE_DIR)/bin/java -Xshare:dump \
+             -XX:SharedArchiveFile=$(JDK_IMAGE_DIR)/$(CDS_NOCOOPS_ARCHIVE) \
+             -XX:-UseCompressedOops \
+-            -Xmx128M -Xms128M $(LOG_INFO), \
++            $(CDS_DUMP_FLAGS) $(LOG_INFO), \
+     ))
+ 
+     JDK_TARGETS += $(gen_cds_nocoops_archive_jdk)
+@@ -169,7 +177,7 @@ ifeq ($(BUILD_CDS_ARCHIVE), true)
+         COMMAND := $(FIXPATH) $(JRE_IMAGE_DIR)/bin/java -Xshare:dump \
+             -XX:SharedArchiveFile=$(JRE_IMAGE_DIR)/$(CDS_NOCOOPS_ARCHIVE) \
+             -XX:-UseCompressedOops \
+-            -Xmx128M -Xms128M $(LOG_INFO), \
++            $(CDS_DUMP_FLAGS) $(LOG_INFO), \
+     ))
+ 
+     JRE_TARGETS += $(gen_cds_nocoops_archive_jre)

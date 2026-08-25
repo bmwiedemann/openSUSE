@@ -38,7 +38,8 @@
 %global featurever      17
 %global interimver      0
 %global updatever       20
-%global buildver        8
+%global patchver        1
+%global buildver        1
 %global openjdk_repo    jdk17u
 %global openjdk_tag     jdk-%{featurever}.%{interimver}.%{updatever}%{?patchver:.%{patchver}}+%{buildver}
 %global openjdk_dir     %{openjdk_repo}-jdk-%{featurever}.%{interimver}.%{updatever}%{?patchver:.%{patchver}}-%{buildver}
@@ -183,6 +184,21 @@ Patch20:        loadAssistiveTechnologies.patch
 #
 Patch21:        reproducible-javadoc-timestamp.patch
 Patch22:        reproducible-directory-mtime.patch
+# Honour the SOURCE_DATE_EPOCH from the environment and derive
+# HOTSPOT_BUILD_TIME from it (JDK-8282567, in JDK 20)
+Patch23:        reproducible-source-date-epoch.patch
+# Dump the shipped CDS archives with G1, so that they do not depend on the
+# CPU count of the build machine (JDK 17 shaped equivalent of JDK-8292329)
+Patch24:        reproducible-cds-archive-g1.patch
+# Same for the classlist generated during the build
+Patch25:        reproducible-classlist-g1.patch
+# Load Striped64$Cell explicitly, its presence in the classlist otherwise
+# depends on thread contention (JDK-8295951, in JDK 21)
+Patch26:        reproducible-classlist-striped64.patch
+Patch27:        java-40y.patch
+# Make the CDS dump itself deterministic: no racing threads during the dump,
+# no uninitialized padding, no timing dependent counters (JDK-8253495, in JDK 19)
+Patch28:        reproducible-cds-deterministic.patch
 #
 Patch31:        bsc_1255446.patch
 #
@@ -192,6 +208,8 @@ Patch200:       ppc_stack_overflow_fix.patch
 #
 Patch301:       JDK-8303509.patch
 Patch302:       disable-doclint-by-default.patch
+#
+Patch400:       tzdata-2026c.patch
 #
 BuildRequires:  alsa-lib-devel
 BuildRequires:  autoconf
@@ -430,6 +448,12 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 
 %patch -P 21 -p1
 %patch -P 22 -p1
+%patch -P 23 -p1
+%patch -P 24 -p1
+%patch -P 25 -p1
+%patch -P 26 -p1
+%patch -P 27 -p1
+%patch -P 28 -p1
 
 %patch -P 31 -p1
 
@@ -437,6 +461,8 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 
 %patch -P 301 -p1
 %patch -P 302 -p1
+
+%patch -P 400 -p1
 
 # Extract systemtap tapsets
 

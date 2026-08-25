@@ -1,0 +1,30 @@
+# 8295951: intermittent cmp_baseline task failures with CDS files
+#
+# Reviewed-by: iklam, erikj
+# (cherry picked from commit e193a0b72a143889170b64da19fb22f7f8555e89)
+#
+# Applied manually, the surrounding context differs on 17.
+#
+# Striped64$Cell is only loaded when several threads contend in
+# LongAdder.increment(), so whether it ends up in the default classlist
+# depends on the timing and on the number of CPUs of the build machine.
+# Loading it explicitly removes that source of non-determinism.
+#
+
+diff --git a/make/jdk/src/classes/build/tools/classlist/HelloClasslist.java b/make/jdk/src/classes/build/tools/classlist/HelloClasslist.java
+index e5a1d044676..d70e385fa8b 100644
+--- a/make/jdk/src/classes/build/tools/classlist/HelloClasslist.java
++++ b/make/jdk/src/classes/build/tools/classlist/HelloClasslist.java
+@@ -124,6 +124,12 @@ public class HelloClasslist {
+         invoke(handle("staticMethod_V", MethodType.methodType(void.class)));
+ 
+         LOGGER.log(Level.FINE, "New Date: " + newDate + " - old: " + oldDate);
++
++        // The Striped64$Cell is loaded rarely only when there's a contention among
++        // multiple threads performing LongAdder.increment(). This results in
++        // an inconsistency in the classlist between builds (see JDK-8295951).
++        // To avoid the problem, load the class explicitly.
++        Class<?> striped64Class = Class.forName("java.util.concurrent.atomic.Striped64$Cell");
+     }
+ 
+     public static void staticMethod_V() {}

@@ -1,0 +1,70 @@
+# Make default classlist generation independent of the build CPU count
+#
+# JDK 17 can only archive Java heap objects with G1
+# (HeapShared::is_heap_object_archiving_allowed() requires UseG1GC), while
+# GC ergonomics select SerialGC on a machine with a single CPU. The
+# intermediate -Xshare:dump of the classlist recipe therefore produces an
+# archive without archived heap objects on a 1-core builder, the second
+# HelloClasslist run does not restore the archived subgraphs, and the set
+# of loaded classes changes. java/lang/Byte$ByteCache,
+# java/lang/Short$ShortCache and jdk/internal/math/FDBigInteger are the
+# visible symptom; the resulting lib/classlist difference then propagates
+# into lib/modules, lib/server/classes*.jsa and jmods/java.base.jmod.
+#
+# Pin G1 for classlist generation if the JVM supports it, the same way the
+# preceding change does for the shipped CDS archives. The guard expands to
+# nothing for variants built without the g1gc feature.
+#
+# Measured on jdk21u-dev, where make/GenerateLinkOptData.gmk is identical:
+# with this change the classlist and the intermediate archive are
+# bit-identical for 1, 2, 4 and 16 CPUs and under taskset -c 0, and match
+# what multi-core builds produce today, so the shipped content does not
+# change. Upstream only removed the G1 requirement in JDK 24 via
+# JDK-8298614, which is not suitable for 17u.
+#
+
+diff --git a/make/GenerateLinkOptData.gmk b/make/GenerateLinkOptData.gmk
+index 5dd766c8c07..4ade4373842 100644
+--- a/make/GenerateLinkOptData.gmk
++++ b/make/GenerateLinkOptData.gmk
+@@ -59,6 +59,19 @@ ifeq ($(EXTERNAL_BUILDJDK), true)
+   INTERIM_IMAGE_DIR := $(BUILD_JDK)
+ endif
+ 
++# These are needed for deterministic classlist:
++# - The classlist can be influenced by locale. Always set it to en/US.
++# - Only G1 supports dumping the shared heap, and GC ergonomics pick SerialGC on
++#   single-CPU machines. Without archived heap objects a different set of classes
++#   is loaded, so the classlist would depend on the CPU count of the build machine.
++#   Explicitly use G1 if the JVM supports it, like Images.gmk does for the shipped
++#   CDS archives.
++CLASSLIST_GC_OPT := $(if $(filter g1gc, $(JVM_FEATURES_$(JVM_VARIANT_MAIN))),-XX:+UseG1GC)
++
++CLASSLIST_FILE_VM_OPTS = \
++    -Duser.language=en -Duser.country=US \
++    $(CLASSLIST_GC_OPT)
++
+ # Save the stderr output of the command and print it along with stdout in case
+ # something goes wrong.
+ $(CLASSLIST_FILE): $(INTERIM_IMAGE_DIR)/bin/java$(EXECUTABLE_SUFFIX) $(CLASSLIST_JAR)
+@@ -66,17 +79,17 @@ $(CLASSLIST_FILE): $(INTERIM_IMAGE_DIR)/bin/java$(EXECUTABLE_SUFFIX) $(CLASSLIST
+ 	$(call LogInfo, Generating $(patsubst $(OUTPUTDIR)/%, %, $@))
+ 	$(call LogInfo, Generating $(patsubst $(OUTPUTDIR)/%, %, $(JLI_TRACE_FILE)))
+ 	$(FIXPATH) $(INTERIM_IMAGE_DIR)/bin/java -XX:DumpLoadedClassList=$@.raw \
+-	    -Duser.language=en -Duser.country=US \
++	    $(CLASSLIST_FILE_VM_OPTS) \
+ 	    -cp $(SUPPORT_OUTPUTDIR)/classlist.jar \
+ 	    build.tools.classlist.HelloClasslist $(LOG_DEBUG)
+ 	$(GREP) -v HelloClasslist $@.raw > $@.interim
+ 	$(FIXPATH) $(INTERIM_IMAGE_DIR)/bin/java -Xshare:dump \
+ 	    -XX:SharedClassListFile=$@.interim -XX:SharedArchiveFile=$@.jsa \
+-	    -Xmx128M -Xms128M $(LOG_INFO)
++	    $(CLASSLIST_GC_OPT) -Xmx128M -Xms128M $(LOG_INFO)
+ 	$(FIXPATH) $(INTERIM_IMAGE_DIR)/bin/java -XX:DumpLoadedClassList=$@.raw.2 \
+ 	    -XX:SharedClassListFile=$@.interim -XX:SharedArchiveFile=$@.jsa \
+ 	    -Djava.lang.invoke.MethodHandle.TRACE_RESOLVE=true \
+-	    -Duser.language=en -Duser.country=US \
++	    $(CLASSLIST_FILE_VM_OPTS) \
+ 	    --module-path $(SUPPORT_OUTPUTDIR)/classlist.jar \
+ 	    -cp $(SUPPORT_OUTPUTDIR)/classlist.jar \
+ 	    build.tools.classlist.HelloClasslist \
