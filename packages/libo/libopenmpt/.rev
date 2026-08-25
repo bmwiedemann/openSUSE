@@ -1153,4 +1153,29 @@ Changes in 0.5.3:
     <comment></comment>
     <requestid>1353715</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>dcd9eba8a0acec3885a56293e3ea2b26</srcmd5>
+    <version>0.8.9</version>
+    <time>1787656694</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.8.9:
+  * [Sec] Possible heap out-of-bounds write when loading SymMOD
+    files containing WAV IMA ADPCM samples.
+    See also https://github.com/OpenMPT/openmpt/security/advisories/GHSA-fxf7-wc37-p2cx
+  * [Sec] Possible heap out-of-bounds read when loading custom
+    tunings from MPTM files.
+- Charges in version 0.8.8:
+  * IT: Due to an Impulse Tracker bug in Compatible Gxx mode,
+    Envelope Carry may not resume the envelope from the correct
+    position when there is both an instrument number and tone
+    portamento next to a note.
+  * XM: NitroTracker ignores instrument numbers where there is no
+    note next to them, so they are no longer imported. Fixes
+    various NitroTracker-made XMs such as notominous-a19.xm.
+  * STK: Loosen heuristics a bit to allow STK.CRB-GreatMuzaxs6 to
+    load.
+  * GT2: Loading file versions 6 and later was broken since
+    libopenmpt 0.8.0.</comment>
+    <requestid>1373139</requestid>
+  </revision>
 </revisionlist>
