@@ -1,0 +1,25 @@
+From 4ffec293e90ddfbebd6719c4fca93ac6635ce04c Mon Sep 17 00:00:00 2001
+From: Jeff Kowalczyk <jkowalczyk@suse.com>
+Date: Mon, 24 Aug 2026 05:29:14 +0000
+Subject: [PATCH 2/4] gcc-disable-werror.patch
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index bab3d89dd..b0312e751 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -431,7 +431,7 @@ endif()
+ #
+ # TODO(crbug.com/389897612): Should these be set on a per-target basis?
+ if(CMAKE_COMPILER_IS_GNUCXX OR CLANG)
+-  set(C_CXX_WARNINGS -Werror -Wformat=2 -Wmissing-field-initializers -Wshadow
++  set(C_CXX_WARNINGS -Wformat=2 -Wmissing-field-initializers -Wshadow
+       -Wsign-compare -Wtype-limits -Wvla -Wwrite-strings -Wimplicit-fallthrough)
+   set(C_WARNINGS -Wold-style-definition -Wstrict-prototypes)
+   set(CXX_WARNING -Wnon-virtual-dtor)
+-- 
+2.55.0
+

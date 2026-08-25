@@ -1,0 +1,32 @@
+From c920b1234446aebe00db88e3d56c62e239196d4d Mon Sep 17 00:00:00 2001
+From: Jeff Kowalczyk <jkowalczyk@suse.com>
+Date: Mon, 24 Aug 2026 05:31:53 +0000
+Subject: [PATCH 3/4] soname-sover.patch
+
+---
+ CMakeLists.txt | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b0312e751..e2dc578dd 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -639,6 +639,7 @@ target_include_directories(crypto PUBLIC
+ )
+ target_compile_definitions(crypto PRIVATE -DBORINGSSL_IMPLEMENTATION)
+ set_property(TARGET crypto PROPERTY EXPORT_NAME Crypto)
++set_target_properties(crypto PROPERTIES OUTPUT_NAME boringssl_crypto SOVERSION 1)
+ 
+ if(FIPS_SHARED)
+   # Rewrite libcrypto.so to inject the correct module hash value. This assumes
+@@ -678,6 +679,7 @@ add_library(ssl ${SSL_SOURCES})
+ set_property(TARGET ssl PROPERTY EXPORT_NAME SSL)
+ target_link_libraries(ssl crypto)
+ target_compile_definitions(ssl PRIVATE -DBORINGSSL_IMPLEMENTATION)
++set_target_properties(ssl PROPERTIES OUTPUT_NAME boringssl_ssl SOVERSION 1)
+ 
+ add_library(decrepit ${DECREPIT_SOURCES})
+ target_link_libraries(decrepit ssl crypto)
+-- 
+2.55.0
+

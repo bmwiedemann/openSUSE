@@ -19,25 +19,26 @@
 %define sover 1
 %define libname libboringssl%{sover}
 %define src_install_dir %{_prefix}/src/%{name}
+%if 0%{?gcc_version} < 10
+%define with_gcc 11
+%endif
 Name:           boringssl
-Version:        0.20210430
+Version:        0.20260813
 Release:        0
 Summary:        An SSL/TLS protocol implementation
 License:        OpenSSL
 URL:            https://boringssl.googlesource.com/boringssl/
 Source:         %{name}-%{version}.tar.xz
-Source1:        vendor.tar.gz
-Patch2:         0002-crypto-Fix-aead_test-build-on-aarch64.patch
-Patch3:         0003-enable-s390x-builds.patch
-Patch4:         0004-fix-alignment-for-ppc64le.patch
-Patch5:         0005-fix-alignment-for-arm.patch
-Patch6:         0006-gcc-disable-werror.patch
-Patch7:         0007-fix-go-vendor-embed_test_data.patch
-Patch8:         0008-fix-go-vendor-err_data_generate.patch
-Patch9:         0009-soname-sover.patch
+Source1:        vendor.tar.xz
+Patch0:         0001-enable-s390x-and-ppc64le-builds.patch
+Patch1:         0002-gcc-disable-werror.patch.patch
+Patch2:         0003-soname-sover.patch.patch
+Patch3:         0004-lower-cmake-version.patch
+# https://github.com/lexiforest/curl-impersonate/raw/refs/tags/v2.1.1/patches/boringssl.patch
+Patch10:        curl-impersonate.patch
 BuildRequires:  cmake >= 3.0
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
+BuildRequires:  gcc%{?with_gcc}-c++
 BuildRequires:  golang(API) >= 1.13
 ExclusiveArch:  %{ix86} x86_64 aarch64 s390x ppc64le %{arm} riscv64
 
@@ -73,13 +74,17 @@ Source files for BoringSSL implementation
 %autosetup -a 1 -p 1
 
 %build
+%if 0%{?with_gcc}
+export CXX=g++-%{with_gcc}
+export CC=gcc-%{with_gcc}
+%endif
 # Supress CMake default to include RPATH in binary on platforms which support it.
 # Failure to supress rpath fails rpmlint:
 # libboringssl1: E: binary-or-shlib-defines-rpath (Badness: 10000) /usr/lib64/libboringssl_ssl.so.1
 # (RUNPATH: /home/abuild/rpmbuild/BUILD/boringssl-0.20210430-build/boringssl-0.20210430/build/crypto)
 # The binary or shared library defines `RPATH' (or `RUNPATH') that points to a non-system library path.
 %cmake \
-%ifarch riscv64
+%ifarch %{ix86}
   -DOPENSSL_NO_ASM=1 \
 %endif
   -DCMAKE_SKIP_RPATH=1 \
@@ -89,8 +94,8 @@ Source files for BoringSSL implementation
 %install
 # Install libraries
 # Upstream sources build .so in crypto/ and ssl/ subdirs. TBD if package layout needs to preserve that.
-install -D -m0755 build/crypto/libboringssl_crypto.so.%{sover} %{buildroot}%{_libdir}/libboringssl_crypto.so.%{sover}
-install -D -m0755 build/ssl/libboringssl_ssl.so.%{sover} %{buildroot}%{_libdir}/libboringssl_ssl.so.%{sover}
+install -D -m0755 build/libboringssl_crypto.so.%{sover} %{buildroot}%{_libdir}/libboringssl_crypto.so.%{sover}
+install -D -m0755 build/libboringssl_ssl.so.%{sover} %{buildroot}%{_libdir}/libboringssl_ssl.so.%{sover}
 # Create links from *.so to *.so.SOVER
 ln -sf libboringssl_crypto.so.%{sover} %{buildroot}%{_libdir}/libboringssl_crypto.so
 ln -sf libboringssl_ssl.so.%{sover} %{buildroot}%{_libdir}/libboringssl_ssl.so
@@ -110,26 +115,23 @@ find %{buildroot}%{src_install_dir} -type f -name ".gitignore" -delete
 
 # Fix script-without-shebang error.
 # boringssl-source.noarch: E: script-without-shebang
-# /usr/src/boringssl/third_party/googletest/test/gtest_test_utils.py
-# /usr/src/boringssl/third_party/googletest/test/gtest_xml_test_utils.py
+# /usr/src/boringssl/third_party/googletest/googletest/test/gtest_test_utils.py
+# /usr/src/boringssl/third_party/googletest/googletest/test/gtest_xml_test_utils.py
 # /usr/src/boringssl/fuzz/minimise_corpora.sh
-# /usr/src/boringssl/util/fipstools/break-tests-android.sh
 # /usr/src/boringssl/util/fipstools/break-tests.sh
 # /usr/src/boringssl/crypto/fipsmodule/ec/asm/p256_beeu-x86_64-asm.pl
 # As built, permissions for these are:
-# -rwxr-xr-x third_party/googletest/test/gtest_test_utils.py
-# -rwxr-xr-x third_party/googletest/test/gtest_xml_test_utils.py
+# -rwxr-xr-x third_party/googletest/googletest/test/gtest_test_utils.py
+# -rwxr-xr-x third_party/googletest/googletest/test/gtest_xml_test_utils.py
 # -rw-r--r-- fuzz/minimise_corpora.sh
-# -rw-r--r-- util/fipstools/break-tests-android.sh
 # -rw-r--r-- util/fipstools/break-tests.sh
 # -rw-r--r-- crypto/fipsmodule/ec/asm/p256_beeu-x86_64-asm.pl
 # Unsetting executable bits on .py files has the intended effect to pass the linter
-chmod a-x %{buildroot}%{_prefix}/src/boringssl/third_party/googletest/test/gtest_test_utils.py
-chmod a-x %{buildroot}%{_prefix}/src/boringssl/third_party/googletest/test/gtest_xml_test_utils.py
+chmod a-x %{buildroot}%{_prefix}/src/boringssl/third_party/googletest/googletest/test/gtest_test_utils.py
+chmod a-x %{buildroot}%{_prefix}/src/boringssl/third_party/googletest/googletest/test/gtest_xml_test_utils.py
 # The .sh files already do not have executable bits set but script-without-shebang linter still fails
 # Insert a bash shebang line for script-without-shebang linter
 sed -i -e '1i#!/bin/bash' %{buildroot}%{_prefix}/src/boringssl/fuzz/minimise_corpora.sh
-sed -i -e '1i#!/bin/bash' %{buildroot}%{_prefix}/src/boringssl/util/fipstools/break-tests-android.sh
 sed -i -e '1i#!/bin/bash' %{buildroot}%{_prefix}/src/boringssl/util/fipstools/break-tests.sh
 # Insert a perl shebang line for script-without-shebang linter
 sed -i -e '1i#!%{_bindir}/perl' %{buildroot}%{_prefix}/src/boringssl/crypto/fipsmodule/ec/asm/p256_beeu-x86_64-asm.pl
@@ -138,12 +140,11 @@ sed -i -e '1i#!%{_bindir}/perl' %{buildroot}%{_prefix}/src/boringssl/crypto/fips
 find %{buildroot}%{src_install_dir} -type f -name "*.sh" -print -exec chmod +x "{}" +
 find %{buildroot}%{src_install_dir} -type f -name "*.pl" -print -exec chmod +x "{}" +
 # Fix these individually, since we don't want all *.py to all be executable
-chmod +x %{buildroot}%{_prefix}/src/boringssl/third_party/googletest/test/googletest-json-outfiles-test.py
-chmod +x %{buildroot}%{_prefix}/src/boringssl/third_party/googletest/test/googletest-json-output-unittest.py
-chmod +x %{buildroot}%{_prefix}/src/boringssl/third_party/googletest/test/googletest-param-test-invalid-name1-test.py
-chmod +x %{buildroot}%{_prefix}/src/boringssl/third_party/googletest/test/googletest-param-test-invalid-name2-test.py
-chmod +x %{buildroot}%{_prefix}/src/boringssl/third_party/googletest/test/gtest_list_output_unittest.py
-chmod +x %{buildroot}%{_prefix}/src/boringssl/util/bot/update_clang.py
+chmod +x %{buildroot}%{_prefix}/src/boringssl/third_party/googletest/googletest/test/googletest-json-outfiles-test.py
+chmod +x %{buildroot}%{_prefix}/src/boringssl/third_party/googletest/googletest/test/googletest-json-output-unittest.py
+chmod +x %{buildroot}%{_prefix}/src/boringssl/third_party/googletest/googletest/test/googletest-param-test-invalid-name1-test.py
+chmod +x %{buildroot}%{_prefix}/src/boringssl/third_party/googletest/googletest/test/googletest-param-test-invalid-name2-test.py
+chmod +x %{buildroot}%{_prefix}/src/boringssl/third_party/googletest/googletest/test/gtest_list_output_unittest.py
 # Fix one bash script to be executable
 chmod +x %{buildroot}%{_prefix}/src/boringssl/vendor/golang.org/x/sys/windows/mkerrors.bash
 
@@ -156,19 +157,16 @@ find %{buildroot}%{src_install_dir} -type f -name "*.py" -exec sed -i 's|#!.*%{_
 find %{buildroot}%{src_install_dir} -type f -name "*.py" -exec sed -i 's|#!.*%{_bindir}/env python.*|#!%{_bindir}/python3|' "{}" +
 find %{buildroot}%{src_install_dir} -type f -name "*.sh" -exec sed -i 's|#!.*%{_bindir}/env bash|#!/bin/bash|' "{}" +
 
-# To avoid conflicts with openssl development files, change all includes from
-# openssl to boringssl.
-# BoringSSL headers provided by this pachage are installed in
-# /usr/include/boringssl for the same reason.
-find %{buildroot}%{_prefix}/src/boringssl/include/openssl -type f -exec sed -i 's/openssl/boringssl/' "{}" +
-
-find %{buildroot}%{_prefix}/src/boringssl/include/openssl -type f -execdir install -D -m0644 "{}" "%{buildroot}%{_includedir}/boringssl/{}" \;
+# Install headers into /usr/include/boringssl/openssl/ to avoid conflicts with openssl
+# development files, while allowing downstream packages to include them via -I/usr/include/boringssl
+mkdir -p %{buildroot}%{_includedir}/boringssl
+cp -R %{buildroot}%{src_install_dir}/include/openssl %{buildroot}%{_includedir}/boringssl/
+find %{buildroot}%{_includedir}/boringssl/openssl -type d -exec chmod 0755 "{}" +
+find %{buildroot}%{_includedir}/boringssl/openssl -type f -exec chmod 0644 "{}" +
 
 # Remove Go build utilities which cause debuginfo error:
 # dwz: ./usr/src/boringssl/crypto/err/err_data_generate.debug: Found compressed .debug_abbrev section, not attempting dwz compression
 # dwz: ./usr/src/boringssl/embed_test_data.debug: Found compressed .debug_abbrev section, not attempting dwz compression
-rm %{buildroot}%{_prefix}/src/boringssl/crypto/err/err_data_generate
-rm %{buildroot}%{_prefix}/src/boringssl/embed_test_data
 
 # Relocate doc and license to align with packaging standards
 mkdir -p %{buildroot}%{_docdir}/%{name}

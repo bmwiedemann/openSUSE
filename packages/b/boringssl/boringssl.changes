@@ -1,4 +1,3846 @@
 -------------------------------------------------------------------
+Mon Aug 24 14:32:50 UTC 2026 - Fridrich Strba <fridrich.strba@bluewin.ch>
+
+- Update to version 0.20260813:
+  * Update version for Bazel Central Repository to 0.20260813.0
+  * Bump BORINGSSL_API_VERSION
+  * Fix ACVP RSA PSS.
+  * Separate serial number validity from serial number length
+  * crypto/x509: Implement Merkle Tree inclusion proof evaluation
+  * crypto/x509: Add convenience function to verify signature from byte span
+  * Defer allocating reassembly buffers in DTLS
+  * Support cSHAKE and TurboSHAKE.
+  * runner: replace ptrTo with value-based new
+  * Enable `check_prefixed_symbols` on the CI-only prefixed symbols builders.
+  * Fix benchmark names of the IOVec variants.
+  * AEAD benchmarks: add iovec variants.
+  * audit_symbols.go: Default to locating libraries in the CWD.
+  * Add a stub for SSL_get_peer_tmp_key
+  * draft-ietf-tls-ecdhe-mlkem is now RFC 10024
+  * rust: bssl-tls: Unstage the callback uninstallers
+  * Update Rust and Clang.
+  * AEAD benchmarks: declare optimization hints.
+  * Don't unnecessarily tag ssl_cipher_is_deprecated as OPENSSL_EXPORT
+  * Remove OPENSSL_EXPORT on some internal SSL_SESSION functions
+  * Add some bit math helpers
+  * runner: Remove split handshake test machinery from the handshaker
+  * Revert "Work around a NASM bug"
+  * Update nasm in CI to 3.01
+  * rust: Publish the experimental bssl-tls tokio interop crate
+  * rust: bssl-tls-tokio: Rework the tests
+  * rust: bssl-tls: Introduce hyper support
+  * rust: bssl-tls: Add ALPN support
+  * Minor include cleanup.
+  * rust: hoist FFI slice converters to bssl-crypto
+  * Discard .group sections in fips_shared.lds
+  * runner: Remove split handshake tests
+  * rust: Minor nit fixing
+  * rust: Keep future options open through non-exhaustiveness
+  * Re-enable the linux32_sde CI builder.
+  * Unwind EVP_CIPHER_CTX poisoning
+  * Document that EVP_aes_256_xts is single-shot
+  * Bump SDE version.
+  * Make BoringSSL handling of "unusable" EchConfigLists configurable
+  * Disable urandom_test while under SDE.
+  * Remove inconsistent null pointer checks in cipher_update hooks
+  * Delete unused code
+  * bssl-tls: Use more representative test data for cert parsing
+  * acvptool: seed key format for ML-DSA sigGen and ML-KEM decap
+  * Delete the mac_tmp_try_out_cas builder.
+  * Upload all mobile binaries to CAS when building.
+  * rust: bssl-tls: Clean up all slice_from_raw_parts
+  * Upload all Mac binaries to CAS when building.
+  * Upload all Windows binaries to CAS when building.
+  * Upload all Linux binaries to CAS when building.
+  * Linux: also export *.so.* files to CAS.
+  * Remove old Kyber hybrid from the TLS stack
+  * Use the correct file list of the ios64 test build archival.
+  * Improve ECC benchmarks
+  * Prepare for a new BCR release.
+  * Test the remaining "interesting" build configs for LUCI uploads.
+  * Revert "Enable symbol prefixing for the Bazel build"
+  * Run 5 more temporary test configs.
+  * When exporting build artifacts to CAS, reduce to necessary stuff.
+  * rust: bssl-tls: Introduce certificate callback
+  * rust: bssl-tls: Minor typo fix
+  * EVP_CIPHER: only poison the object on failure if it was mutated by the call.
+  * Point CMake more firmly at the `delocate` and `inject_hash` binaries.
+  * rust: bssl-tls: Allow application to get selected credential
+  * ssl: Allow retrospection of PSK identity
+  * Bump Bazel version to 0.20260730.0
+  * rust: bssl-tls: Split Methods trait into connection and context variants
+  * In `linux_tmp_try_out_cas`, explicitly provide list of files to export.
+  * Create a temporary test CQ builder for setting up CAS uploading of artifacts.
+  * Preparation for including asm code from pq-code-package.
+  * TEST_F(BNTest, ModSqrtInvalid): explain what's going on.
+  * Preserve comments in perlasm.
+  * Documentation: add proper section heading for CRYPTO ByteBuilder
+  * rust: bssl-tls: Relax `set_ca_names` to both parties
+  * third_party/fiat: mark as Static
+  * New target: `run_unit_tests`.
+  * Reset the error queue in some more typical cases where unit tests intend to fail.
+  * Enable thread safety annotations in local bazel builds.
+  * rust: bssl-tls: Fix documentation
+  * rust: bssl-tls: RPK with private key methods
+  * Add Threads dependency in exported CMake config file
+  * Add CBB_add_u48
+  * Disable the linux32_sde runner for now.
+  * Enable symbol prefixing for the Bazel build
+  * ssl: Use default ALPN handler
+  * Fix typo in doc
+  * Fix notes on the SDE version on CI
+  * Test runner: when stdout is redirected, assume -pipe.
+  * rust: bssl-tls-tokio: Remove DTLS convenience wrappers
+  * Reset the error queue in some typical cases where unit tests intend to fail.
+  * Add an ErrorsAreAndClear test helper.
+  * rust: bssl-tls: Add cipher type
+  * rust: bssl-tls: Simplify the tests
+  * rust: bssl-tls: Make building a new connection builder infallible
+  * Add EVP-level RSAPublicKey and RSAPrivateKey parsers
+  * Add some EVP APIs for low-level EC point and scalar formats
+  * rust: bssl-tls: Unstage compliance policy
+  * Revamp evp_test key import
+  * draft-ietf-tls-keylogfile is now RFC 9850
+  * Export SLHDSA_generate_key_from_seed to the public API.
+  * rust: bssl-tls: Add convenient adapters
+  * rust: bssl-tls: Refactor the stack iterator
+  * Use EVP_PKEY_generate_from_alg in tool/server.cc
+  * rust: bssl-tls: Introduce non-X.509 mode
+  * ssl: Release the names if `SSL_set0_CA_names` is called after config is shed
+  * rust: bssl-tls: Add controls for CAs
+  * rust: bssl-tls: Make getting internal handle for us easier
+  * rust: bssl-tls: Move DTLS methods into the correct typestate
+  * rust: bssl-tls: Add missing SSL error codes
+  * rust: bssl-tls: Do not provide the TlsSession example
+  * rust/bssl-tls: Expose set_tlsext_host_name to support client SNI.
+  * Use scopers in CBB_flush_asn1_set_of
+  * Use the error queue a bit more consistently in CBB functions
+  * Update version for Bazel Central Repository to 0.20260713.0
+  * bssl-sys: fix clippy warnings
+  * bssl-crypto: support ECDSA verification of already-hashed messages.
+  * Implement trust anchor groups on the certificate selection side
+  * Handle serial numbers permissively in OCSP
+  * runner: Switch to CertificatePropertyList for passing properties to the shim
+  * Expose CBS_get_asn1_oid_component
+  * rust: bssl-tls: Unstage the session support
+  * rust: bssl-tls: Fix predicate on `established`
+  * MLKEM benchmark: also add a "private key from seed" benchmark.
+  * ssl: Support ML-KEM by default.
+- Add the service go_modules to the _service file and regenerate the vendor.tar.xz
+- Rebase curl-impersonate.patch
+
+-------------------------------------------------------------------
+Mon Aug 24 05:19:42 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 0.20260708:
+  * Install headers into /usr/include/boringssl/openssl/ preserving
+    standard-compliant directory nesting rather than flat-installing
+    them directly under /usr/include/boringssl and rewriting includes.
+  * Rebase patches:
+    - 0003-enable-s390x-builds.patch
+      -> 0001-enable-s390x-and-ppc64le-builds.patch
+    - 0006-gcc-disable-werror.patch
+      -> 0002-gcc-disable-werror.patch.patch
+    - 0009-soname-sover.patch -> 0003-soname-sover.patch.patch
+  * Add patch:
+    - 0004-lower-cmake-version.patch: lower minimum CMake version
+      requirement to 3.20 to support older build environments
+    - curl-impersonate.patch: backport curl-impersonate changes
+  * Remove obsolete patches:
+    - 0002-crypto-Fix-aead_test-build-on-aarch64.patch
+    - 0004-fix-alignment-for-ppc64le.patch
+    - 0005-fix-alignment-for-arm.patch
+    - 0007-fix-go-vendor-embed_test_data.patch
+    - 0008-fix-go-vendor-err_data_generate.patch
+  * Disable Rust DTLS tests for now
+  * rust: bssl-tls: Disallow downcasting in-handshake to normal handle
+  * Handle CV-qualifiers in __gnu_cxx audit_symbols exclusion
+  * Turn SSL into an opaque struct
+  * Implement MTC plants-04 non-CA cosignature verification.
+  * Implement a vectorized "quad Keccak".
+  * Update Android documentation and add -upload-only flag
+  * Add ABI tests for Poly1305 Arm assembly
+  * Add ABI tests for AES-GCM-SIV assembly
+  * Document alignment requirements on AES-GCM-SIV assembly
+  * Move the alignment specifier on fe1305x2 to the type
+  * rust: bssl-tls: Introduce asynchronous private key delegate
+  * tool: correct cast of format argument
+  * rust: bssl-tls: Add more RPK related configurations
+  * ssl: Do not request or set hints when handshake is torn down
+  * Add some tests that X509_NAME_hash does not overcanonicalize
+  * Add some basic AI agent skills for BoringSSL development
+  * Expand on crypto/obj/README
+  * Add missing includes
+  * Fix outdated comment in fiat METADATA file
+  * Allow a SSL_SESSION to only ever live in one SSL_CTX.
+  * Null-check SSL_HANDSHAKE first in SSL_serialize_handshake_hints
+  * infra: Add buildbucket.creator binding to shadow buckets
+  * rust: bssl-tls: Introduce early callback support
+  * infra: Set up basic 'shadow' buckets for ci & try
+  * Add GREASE for signature_algorithms
+  * Make it more obvious that some ML-KEM vector_decode calls are infallible
+  * Import ML-KEM Wycheproof tests
+  * Clean up mlkem_test.cc to use a traits object
+  * Update Wycheproof test vectors
+  * Run Wycheproof ML-DSA signing vectors through verification too
+  * Fix typo in test name
+  * Fix ML-KEM constant-time validation regression
+  * Declassify the result of EC point-on-curve fault checks
+  * rust: bssl-tls: Correct the name of the SCT getter function
+  * Fix apparent infinite loop in X509NameAttribute::AsRFC2253String
+  * SSLBuffer::EnsureCap: ensure `new_cap` can never cause `offset_` overflow.
+  * ACVP: update other cases of memcpying into ints.
+  * Fix a bad parameter in `PEM_read_bio_inner`'s base64 decoding.
+  * ACVP: test SHAKE.
+  * ACVP: add extra ML-KEM tests.
+  * Remove some old commented out OpenSSL debug code
+  * Use scopers for embedded ASN1_STRING and X509_ALGOR
+  * Make X509_NAME_ENTRY an opaque type
+  * Switch easy fields in X509 to UniquePtr
+  * Fold x509_pubkey_{init,cleanup} into the class
+  * Fold x509_name_{init,cleanup} into the classs
+  * Allow a single SSL to consume and produce handshake hints
+  * Remove old Strawberry Perl workaround
+  * Implement EC_wpa3_sae_hash_to_curve_p256
+  * crypto/x509: Fix handling of pathLenConstraint on self-issued intermediates.
+  * fiat: only use asm variants of P256 symbols if they're actually declared.
+  * rust: bssl-tls: Properly annotate sections of configuration options
+  * Revert "Replace most of P-256 assembly code with C"
+  * Finish documenting <openssl/pem.h>
+  * Unwind SSL_set_enforce_rsa_key_usage
+  * Run pregenerate as part of run_tests
+  * clang-format: p256_test.cc
+  * perlasm: delimit AESNI `set_encrypt_key_base` function properly
+  * Remove PEM_TYPE_* constants
+  * Document low-level PEM functions
+  * Add TLS_RSA_WITH_AES_256_GCM_SHA384 to ssl_compliance_policy_cnsa1_202603
+  * Start expanding and documenting PEM_read and PEM_write functions
+  * ANY PRIVATE KEY is not a real PEM type
+  * Const-correct PEM_write functions and i2d_SSL_SESSION
+  * Normalize in-memory ASN1_BOOLEAN representations on parse
+  * rust: bssl-tls: report RPK in custom certificate verifier
+  * rust: bssl-tls: convenient certificate verification outcomes
+  * rust: bssl-tls: Share some credential configs with builder
+  * Unexport IMPLEMENT_PEM_* macros
+  * rust: bssl-tls: make DER encoding use slice sanitation
+  * Don't depend on tasn_* for ASN1_TYPE functions
+  * Fix strict aliasing violations in crypto/asn1 from ASN1_VALUE*
+  * Running spelling and grammar checks over comments.
+  * Update version for Bazel Central Repository to 0.20260616.0
+  * Rewrite tasn_enc and tasn_dec with CBS/CBB
+  * Split out a CBS_peek_any_asn1_tag helper from CBS_peek_asn1_tag
+  * Remove unnecessary size limit comment
+  * Use scopers in IDP and CRDP config parsing
+  * Add a test for CRLDP parsing
+  * Break out a few more helper functions for supported crypto/asn1 types
+  * Support X509 objects with extern ASN1_ITEM helpers
+  * Wire up some more types to bssl::UniquePtr
+  * Add a test for PolicyInformation parsing
+  * Enable .subsections_via_symbols on all assembly files.
+  * mac_rel CI/CQ build: enable `-Wl,-dead_strip`.
+  * Add platform configuration for "Pythia".
+  * Fix comment typo
+  * Avoid having a L label at the start of a section on macOS.
+  * ssl: return non-const RPK handle
+  * Fix license header on p256_internal.h
+  * Make the SysV gates for fiat assembly more consistent
+  * Disable fiat P-256 assembly on OPENSSL_NANOLIBC
+  * OpenSSL Advisory: June 9th, 2026 (BoringSSL Not Affected)
+  * delocate: Support a few more aarch64 assembly variants
+  * delocate: Treat BORINGSSL_bcm_text_hash as a synthesized symbol
+  * xlate scripts: Use .subsections_via_symbols in apple assembly files.
+  * Store ML-DSA's s1, s2, and t0 in NTT form
+  * Don't decode t0 twice in the testing-only ML-DSA format
+  * runner: Unconditionally fill in our vendored ML-DSA public key
+  * Make Montgomery reduction clearer in ML-DSA
+  * Add EVP_CIPHER_CTX_max_next_update and EVP_CIPHER_CTX_max_final
+  * Fix compile-time assertion about sizing of AES-GCM-SIV data.
+  * Use the vectorized "double Keccak" for ML-DSA too.
+  * Use templates to simplify ML-DSA's scalar_*code functions, making all dispatch compile-time.
+  * delete extraneous test data file
+  * Update documentation about ASN.1 BIT STRING lengths
+  * Implement MTC plants-04 CA cosignature verification.
+  * Switch from select to poll in demo command-line tool
+  * Add a tool to update bazel dependencies
+  * Update bazel dependencies
+  * Fix build
+  * Touch up v2i_AUTHORITY_KEYID
+  * Add some tests to exercise v2i_AUTHORITY_KEYID
+  * Clarify that TLS-specific AEADs are not AEADs
+  * rust: cargo update
+  * Use scopers in certificate policy conf logic
+  * Add tests for constructing certificate policies from strings
+  * util/ar: Fix integer conversion in bounds check
+  * Update dependencies in go.mod
+  * runner: Rewrite some ServerKeyExchange serializers with cryptobyte
+  * Flip the sign on timezone offset calculation
+  * Update GitHub actions/checkout to version 6
+  * Reject invalid IV lengths in EVP_CTRL_GCM_SET_IV_INV
+  * Include inline functions from BCM in the shared build's hashed region
+  * draft-ietf-dnsop-svcb-https was also published
+  * draft-ietf-lamps-dilithium-certificates is now RFC 9881
+  * Restore the libcrypto C++ runtime dependency, but with a build flag
+  * Fix error_depth in the name constraints common name check
+  * Add default SSL options to SSL_OP_ALL
+  * Unroll the ML-DSA NTT outer loops.
+  * In SSL_reset_early_data_reject, clear out unreported bytes written.
+  * Update Wycheproof test vectors
+  * Replace most of P-256 assembly code with C
+  * For AES-GCM-SIV, also require PCLMUL instruction set.
+  * Add CMS_LIB to kLibraryNames.
+  * Documentation: Change |...| to `...` for code references in comments 9/N
+  * Remove the size limits for AES-EAX.
+  * Documentation: Change |...| to `...` for code references in comments 15/15
+  * Documentation: Change |...| to `...` for code references in comments 14/N
+  * Documentation: Change |...| to `...` for code references in comments 12/N
+  * Remove unreachable checks in builtin BIO callbacks
+  * Convert built-in BIOs to write_ex
+  * Switch some BIO_write calls to BIO_write_ex
+  * Documentation: Change |...| to `...` for code references in comments 13/N
+  * Take another pass at EVP_MD_CTX and EVP_CIPHER_CTX documentation
+  * Implement plants-04 landmark relative MTC verification.
+  * Implement BIO_write_ex
+  * Narrow BIO_read and BIO_write error values
+  * Fix BIOTest.SocketConnect on platforms where loopback is synchronous
+  * Fix non-blocking connect completion check in BIO.
+  * Fix EVP_MD_CTX reuse across EVP_PKEY algorithms
+  * Use C++ destructors in by_dir.cc
+  * Clean up by_dir's get_cert_by_subject function
+  * Documentation: Change |...| to `...` for code references in comments 11/N
+  * Documentation: Change |...| to `...` for code references in comments 10/N
+  * Documentation: Change |...| to `...` for code references in comments 8/N
+  * Documentation: Change |...| to `...` for code references in comments 7/N
+  * Documentation: Change |...| to `...` for code references in comments 6/N
+  * Documentation: Change |...| to `...` for code references in comments 5/N
+  * Documentation: Change |...| to `...` for code references in comments 4/N
+  * Documentation: Change |...| to `...` for code references in comments 3/N
+  * CI/CQ custom libc++: enable bounds checked containers.
+  * CI/CQ custom libc++: enable unspecified sorting order randomization.
+  * armv8 assembly: do not branch to global symbols.
+  * Rewrite add_cert_dir's directory string parsing
+  * Turn SSL_CTX into an opaque struct
+  * Test that X509_LOOKUP_hash_dir ignores duplicates
+  * Update style guide to change |...| to `...` for code in comments
+  * Documentation: Change |...| to `...` for code references in comments 2/N
+  * Documentation: Change |...| to `...` for code references in comments 1/N
+  * Fix SSL_OP_LEGACY_SERVER_CONNECT with TLS 1.3
+  * Add some tests for file and fd BIOs
+  * Add the proper limit to PKCS5_PBKDF2_HMAC.
+  * Fix limits for AES-GCM-SIV.
+  * AES-CTR-HMAC: Apply the 64 GiB limit to open operations too.
+  * Release name_list if SSL_set0_client_CAs does nothing
+  * Fix OBJ_dup's handling of malloc failures
+  * Restore the SSL_OP_LEGACY_SERVER_CONNECT option
+  * CBB_cleanup: null out the buffer pointer if it was freed.
+  * Fix uninitialized data read by AES-GCM-SIV assembly.
+  * EVP_CTRL_GCM_IV_GEN: reject if the IV length is <8.
+  * Reject legacy_cookie in DTLS 1.3
+  * Switch away from being an entropy-injected FIPS module.
+  * Tag new BoringSSL release for Bazel.
+  * RC2: fix RC2 heap overflow with _huge_ key lengths.
+  * DSA_check_signature: on failure, set *out_valid = 0.
+  * add CBS_get_u48
+  * Bump BORINGSSL_API_VERSION
+  * Fix off-by-one allowing an unauthenticated handshake abort.
+  * bio_read_all: bail out on every error.
+  * RSA: handle gracefully when a SSL_PRIVATE_KEY_METHOD has NULL methods.
+  * X509_VERIFY_PARAM_inherit/_set1: refuse if either params are poisoned.
+  * RSA_generate_key_ex: tighten up code a bit.
+  * RSA_generate_key_ex: reject invalid values of e.
+  * Expand on infra/config/README.md a bit
+  * [Server Padding] Don't pad on resumption handshake.
+  * build: Do not list .inc as compile unit
+  * Revert "CI/CQ: in debug builds, enable lots of libc++ checks."
+  * CI/CQ: in debug builds, enable lots of libc++ checks.
+  * Minor optimizations to ML-DSA: marking some internal functions inline.
+  * Switch STACK_OF(T) back to std::sort from std::stable_sort
+  * Use the certificate issuer in CMS/PKCS7 signer IDs
+  * rust: bssl-macros: Do not depend on std
+  * crypto/evp: Eliminate `operator delete` from EVP_PKEY_CTX destructor
+  * Correctly handle max_early_data_size over 2^16
+  * Alert on ClientHello with only one of key_share and supported_groups
+  * Introduce SSL_get_signature_algorithm_used.
+  * TRUST_TOKEN: remove metadata_key.
+  * Server Padding Extension
+  * Add a document explaining what a "named group" is
+  * Add SSL_CTX_set1_available_trust_anchors
+  * Fix sectioning in ssl.h
+  * Fix typo in benchmark name
+  * Fixup some minor issues in HPKE P-256 key derivation
+  * Tidy up poly1305 alignment a bit
+  * Stop manually encoding various x86 extensions from perlasm
+  * Clear r->neg in bn_abs_sub_consttime
+  * Fork detection test: align the stack to 16 bytes.
+  * Disable fork detection test on qemu.
+  * Bump version for Bazel Central Registry
+  * Limit PEM data to 1 GiB.
+  * Roll windows toolchain
+  * Fix presubmit errors in infra/config/main.star
+  * Consistently fill in the sign bit in BN_lebin2bn and BN_bin2bn
+  * Disable the tests for fork detection on Linux < 4.14.
+  * Inherit hostflags verify params even without hosts
+  * Clean up bssl::PEM_read_bio_inner.
+  * Fork detection: add rfork() and similar support for FreeBSD/OpenBSD.
+  * Implement libpki's HexEncode function more straightforwardly
+  * Remove internal NumberToDecimalString helper
+  * Align libpki's PEM parser with crypto/pem a bit
+  * Add some tests to capture libpki's PEMTokenizer behavior
+  * Clear the counters for empty or warning records only on actual data.
+  * rust: bssl-tls: Raw Public Key credentials
+  * Fix integer overflow in CollapseWhitespaceASCII.
+  * x509: Use explicit has_value on optionals
+  * TRUST_TOKEN_ISSUER: add missing `return 0` when trying to set a too small metadata key.
+  * rust: bssl-tls: feature gate the sync_io module
+  * rust: bssl-tls: Expose bssl_sys::SSL handle from `TlsConnection`
+  * perlasm: Conform to the visibility convention and fix typo
+  * ssl: const-correct SSL_CREDENTIAL
+  * Implement a vectorized "double Keccak".
+  * rust: bssl-tls: Introduce custom certificate verification
+  * draft-ietf-tls-tls13-pkcs1-00 is now RFC 9963
+  * Fix BIO_set_retry_special
+  * Test non-blocking connect in connect BIOs
+  * crypto/x509: Tighten URI name constraints parsing and matching
+  * Fix return value in x509_print_rsa_pss_params error path
+  * rust: bssl-tls: Do not depend on `tracing` yet
+  * crypto: Make X509* and EVP_PKEY* const clonable
+  * bssl-crypto: Stop gating ML-DSA on a Rust feature flag
+  * rust: bssl-tls: Remove TlsConnectionRef
+  * rust: bssl-tls: Promote CertificateCache to a full ref-counted type
+  * Use placement new to initialize the atomic into the WIPEONFORK page
+  * Implement EVP_HPKE_KEY_derive
+  * Use HPKE-PQ test vectors from the spec
+  * rust: bssl-tls: fix MockSocket behaviour on pending read
+  * rust: bssl-x509: rename our panic-catcher
+  * x509: Switch from implicit `bool`-conversion to `has_value`
+  * Update Wycheproof test vectors
+  * Reference-count CRYPTO_BUFFER_POOLs
+  * rust: bssl-tls: Sessions for TLS 1.3
+  * rust: bssl-tls: Carve out tokio support into its own crate
+  * rust: bssl-tls: I/O mocking infrastructure
+  * rust: bssl-tls: General functional tests
+  * rust: bssl-tls: Formatting and feature gate fix
+  * audit_symbols: Allowlist stdext:: weak symbols on Windows
+  * Modernize crypto/x509/policy.cc a bit
+  * Add helpers to match characters in CBS
+  * Various IWYU fixes
+  * Check for negative bit indices in ASN1_BIT_STRING_set_bit
+  * Hook up X-wing to EVP_KEM
+  * Fix the legacy AES-GCM API's IV resizing logic
+  * Move some code around in v3_ncons.cc
+  * Fix up v2i_NAME_CONSTRAINTS
+  * Add tests for nameConstraints' ad-hoc config parser
+  * Clear the sorted bit after sk_FOO_set
+  * rust: bssl-tls: Add MLDSA into list of signature algorithms
+  * Tidy up ownership a bit in X509_get1_email and friends
+  * Defer dedup in X509_get1_email and friends to the end
+  * Unwind EC_FELEM hooks on EC_METHOD
+  * Add an EVP adapter for KEM encap/decap
+  * Add sk_FOO_sort_and_dedup
+  * Update documentation for ML-KEM
+  * pregenerate: Compile public headers entirely as C.
+  * Reject trailing data in ClientHello and EncryptedExtensions trust_anchors
+  * Test trailing data in OCSP staple parsing
+  * Test trailing data for SNI parsing
+  * Remove the OPENSSL_NO_ASM gate in OPENSSL_cleanse
+  * Add tests for X509_get1_email and friends
+  * pregenerate: Collect symbols with -DBORINGSSL_NO_CXX
+  * pregenerate: Don't process libpki headers for symbols
+  * EVP_PKEY: Treat pss_params as params for RSA-PSS keys
+  * Allow no-op EVP_CTRL_AEAD_SET_IVLEN calls to keep the IV set
+  * slhdsa: Reorder a BSSL_CHECK with its shift
+  * Fix some unreachable code in curve25519_64_adx.h's fiat_addcarryx_u64
+  * rust: bssl-tls: Introduce basic session controls on context level
+  * rust: bssl-tls: More advanced controls over certificate verification
+  * rust: bssl-tls: More advanced control over IO transport
+  * rust: bssl-tls: Introduce TLS alerts
+  * Don't skip calling the cleanup hook in EVP_PKEY_CTX when the copy hook fails
+  * Check for invalid certificate_authorities extensions
+  * Remove p224-64.cc.inc
+  * pki: Check for unused bits when verifying MTC proofs
+  * rust: bssl-tls: Reinstate preshared key tests
+  * rust: bssl-x509: Stop reporting partially constructed cert chain
+  * rust: bssl-x509: proper serialisation of X.509 certificate serial number
+  * Test 0 * P + 0 * G in ec_point_mul_scalar_public
+  * Cut down on test-only OPENSSL_EXPORTs
+  * rust: bssl-rustls-adapters: Mask the content type and protocol
+  * rust: bssl-tls: std and tokio transport integration
+  * rust: bssl-tls: Drop Sync on BIO objects
+  * rust: bssl-tls: Application facing I/O
+  * rust: bssl-tls: Make certificate store more ergonomic
+  * Add missing CONSTTIME_SECRET markers to ML-DSA implementation
+  * Configure .clangd and .clang-format so that header insertion works
+  * Reset IV state in legacy AES-GCM API on EVP_CTRL_AEAD_SET_IVLEN
+  * Support ML-DSA in libssl
+  * Require internal and external ML-KEM public key structs to match in size
+  * rust: bssl-tls: Cap the input length reported by the abstract socket
+  * Update documented default scrypt memory limits
+  * EVP_PKEY_copy_parameters: Allocate new receiving key if not present
+  * Handle short-name-less NIDs in X509_NAME_print_ex
+  * Remove SSL_R_PAKE_AND_KEY_SHARE_NOT_ALLOWED
+  * EVP_PKEY: null-check EVP_PKEY_ASN1_METHOD before using
+  * Fix beeu_mod_inverse_vartime on aarch64
+  * More gracefully handle invalid ASN1_STRING objects in ASN1_STRING_print_ex
+  * Allow zero-length inputs in SHA256_TransformBlocks
+  * Fix ERR_add_error_data call in SSL_add_dir_cert_subjects_to_stack
+  * More consistently make the ASN1_TYPE-level type take precedence over the ASN1_STRING one
+  * rust: bssl-tls: Take a borrowed credentials
+  * rust: bssl-tls: Drop unused functions
+  * rust: bssl-tls: Bubble up EOF during shutdown
+  * Fix output bounds checking in EVP_AEAD_CTX_seal_scatter
+  * Fix return value on impossible error condition
+  * pki: Set a default iteration limit of 20
+  * Check for PMULL in gcm_sha3_capable
+  * Document some historical mistakes in HandshakeHints tagging
+  * Check hashes when parsing test-only, semi-expand ML-KEM private keys
+  * Update style guide to reflect C++ usage
+  * rust: bssl-tls: Cope with upstream type inference regression
+  * Split MLKEM's scalar_*code functions into compile-time alternatives by bit size.
+  * rust: bssl-tls: Safe abstraction of a partially filled buffer
+  * Clarify that the old PSK API is just about TLS 1.2 PSKs
+  * rust: bssl-tls: Keep CertificateCache live
+  * Remove check_imported_libraries.go script
+  * Update reference for X-Wing to a more recent draft
+  * Unroll the ML-KEM NTT outer loops.
+  * Disable check_imported_libraries check on CI
+  * Link to CMVP certificate for 20240805
+  * ML-KEM benchmarks: add per-operation microbenchmarks.
+  * Add a value barrier to EVP_sha256_final_with_secret_suffix too
+  * Add unit tests for EVP_aead_aes_128_cbc_sha256_tls
+  * docs/references: Use the newer RFC for ChaCha20-Poly1305
+  * Add some missing #includes
+  * Remove an unused label and dead code from chacha20_poly1305_armv8.pl
+  * Rust: fix a missing import
+  * anyExtendeKeyUsage -> anyExtendedKeyUsage
+  * Fix typos
+  * rust: bssl-macros: Add Apache-2.0 license
+  * Clear unused bits in ASN1_STRING_set/set0
+  * delocate: Support three-argument .prefalign
+  * Add ASN1_BIT_STRING_set1
+  * Add ASN1_BIT_STRING_unused_bits and deprecate ASN1_BIT_STRING_num_bytes
+  * Remove ASN1_BIT_STRING implicit truncation
+  * Explicitly trim strings in ASN1_BIT_STRING_set_bit
+  * Correct a comment in serializing a CBS_ASN1_BITSTRING
+  * rust: bssl-crypto: fix clippy errors
+  * rust: bssl-tls: Give an option to disable session controls
+  * rust: bssl-tls: More TLS context protocol controls
+  * Drop the irrelevant tests from other CLs
+  * rust: bssl-tls: Split TlsMode
+  * rust: bssl-tls: Introduce preshared key support
+  * rust: bssl-tls: Introduce connection builder
+  * Update SSL_CTX_set0_buffer_pool reflecting CRYPTO_BUFFER_POOL changes
+  * Run the GeneralNames parser through trailing data tests
+  * Fix wrong parser variable in directoryName trailing data check
+  * bio->method cannot be null
+  * Don't use both bio and impl in the same function
+  * Remove some stray OPENSSL_EXPORTS in a .cc file
+  * rust: bssl-tls: adopt Linux kernel Rust import style
+  * Fix BIO_find_type with BIO chains
+  * Minor optimizations to MLKEM: marking some internal functions inline.
+  * Remove OPENSSL_EXPORT from some internal libssl functions
+  * Update email address for CI failure notifications
+  * util/fipstools: allow rsakpg2-[basic|crt] for KTS-IFC
+  * Add #includes missing from RPK implementation
+  * Add missing headers to documentation generator config
+  * Add flags to bssl client and bssl server to test RPKs
+  * Fix sectioning in ssl.h
+  * Turn SSL_ECH_KEYS into an opaque struct
+  * Turn SSL_CREDENTIAL into a namespaced opaque struct
+  * Tell GitHub (and other indexing tools) which files are generated code.
+  * rust: bssl-tls: Introduce control over certificate stores and chains
+  * rust: bssl-tls: Given option to drive handshake until error
+  * Raw Public Keys: Process and verify received RPKs
+  * rust: bssl-tls: Mark the as_mut_ptr functions as unsafe
+  * rust: bssl-tls: Expose bytes behind CRYPTO_BUFFER wrappers
+  * Bump version for Bazel Central Registry release.
+  * rust: bssl-tls: Check with the right buffer size limit for Rust FFI
+  * GitHub Actions: Only run on google/boringssl
+  * Raw Public Keys: Store peer cert type and RPK in SSL_SESSION
+  * rust: bssl-tls: Fix a typo on the cert verification mode option
+  * Set IWYU pragmas for prefix_symbols.h and friends.
+  * Add ML-KEM and ML-DSA to EVP_PKEY_from_raw_public_key
+  * rust: bssl-x509: Introduce public key type
+  * rust: bssl-tls: Change context method access into shared
+  * crypto/x509: remove OpenSSL exception for name constraints "@example.com".
+  * Add some implementation techniques to references.md
+  * runner: Gracefully detect when the handshaker cannot parse flags
+  * Update CI deps
+  * Update dependencies from BCR
+  * runner: Print something when errUnimplemented is rejected
+  * Add more test data for OCSP handling
+  * Make make_ocsp.py deterministic
+  * Bump ocsp_unittest to RSA-2048 from RSA-1024
+  * Fix execution_timeout on CQ
+  * rust: bssl-x509: Drop unused repr(transparent)
+  * Avoid Windows cross-dll constexpr issues in mldsa_test.cc
+  * Support ML-DSA certificates in libpki
+  * Support ML-DSA in verify_signed_data.cc
+  * Raw Public Keys: Select and send RPK as client Certificate
+  * Raw Public Keys: Select and send RPK as server Certificate
+  * Don't rely on trailing NUL in ASN1_TIME_to_generalizedtime
+  * Remove commented-out test code.
+  * mldsa_test: Use Wycheproof test vectors more fully
+  * mldsa_test: Use a Traits struct instead of lots of template parameters
+  * Update Wycheproof test vectors
+  * Add new compliance policy profiles for CNSA 1.0 and 2.0
+  * OpenSSL Advisory: April 7th, 2026 (BoringSSL Not Affected)
+  * convert_wycheproof: Return an error instead of panicking
+  * rust: bssl-tls: Export keying materials
+  * crypto/x509 nc_email: sync to libpki's logic.
+  * Also test that DCs are not negotiated at TLS 1.1
+  * Fix pki/testdata/ocsp_unittest/make_ocsp.py for Python 3
+  * Fix pki/testdata/ocsp_unittest/annotate_test_data.py for Python 3
+  * Raw Public Keys: Configure and advertise available client cert types
+  * Raw Public Keys: Determine and send negotiated client_certificate_type
+  * Mark ssl.h as exporting ssl3.h and tls1.h
+  * draft-ietf-tls-esni is now RFC 9849
+  * Define OPENSSL_NO_UI_CONSOLE
+  * Switch callers within the library to EVP_PKEY_eq
+  * Add EVP_PKEY_eq and EVP_PKEY_parameters_eq
+  * Restore X509_check_private_key's error after EVP_PKEY_cmp narrowing
+  * Start filling in some functions from OpenSSL 3.x
+  * Add definition of OSSL_PARAM
+  * Benchmark all three ML-DSA sizes
+  * Fix use of empty line in prefix_symbols.h.
+  * Work around a GCC false positive warning
+  * Update annotate_test_data.py to python3
+  * rust: bssl-tls: allow FFI interop with BoringSSL-dependent libraries
+  * Tidy up X509StoreGet1IssuerMultipleMatches tests a bit
+  * Raw Public Keys: Configure cert types accepted from the server
+  * Remove a stray space
+  * Use stable sort in OPENSSL_sk_sort to sort STACK_OF(T)
+  * Add some missing #includes
+  * rust: bssl-tls: Introduce shutdown controls
+  * rust: bssl-tls: Introduce I/O model
+  * Bump version for BCR to 0.20260327.0
+  * rust: bssl-tls: add TLS-specific error codes
+  * rust: bssl-tls: Precise control over handshakes
+  * rust: bssl-tls: basic bssl-tls framework
+  * Symbol renaming: also rename inline functions using `redefine_extname`.
+  * Regression test for I7cdf6cbdbd5f07093cdf3c191bfbd5c46a6a6964.
+  * Reapply "Reapply "Simplify the symbol prefixing macros.""
+  * Don't vote Presubmit-BoringSSL-Verified:-1 on dry run cancellation
+  * Partial rollback of I40aed9832f72f6bd2b4b8a7f9d68f60ae0eb1e2c.
+  * rust: Fix the lifetime contract for intermediate certs used by verifiers
+  * Add new EVP_KEM API
+  * CQ: Apply Presubmit-BoringSSL-Verified label when dry run finishes
+  * Implement ML-KEM integration with EVP_PKEY_CTX
+  * Add a helper to compare two ML-KEM public keys
+  * Add accessors for ML-KEM public key part of private key
+  * Revert "Reapply "Simplify the symbol prefixing macros.""
+  * Reapply "Simplify the symbol prefixing macros."
+  * i2d_SSL_SESSION: support operating as allocating i2d function.
+  * Fix misspelling in error reason name
+  * GitHub: Loosen branch-time.yml check
+  * Add a function to copy the public part of an EVP_PKEY
+  * rust: Move test data around for incoming crates
+  * Array::CopyFrom and InPlaceVector::TryCopyFrom: do not allow in to alias this.
+  * Document that BIO flags should usually be left alone.
+  * Add RFC 9525 to references
+  * Const-correct EVP_PKEY_CTX_set1_signature_context_string
+  * Tolerate feof returning arbitrary non-zero values
+  * OpenSSL Advisory: March 13th, 2026 (BoringSSL Not Affected)
+  * rust: x509 remove deprecated and no-op parameter flags
+  * Remove DEFINE_NAMESPACED_STACK_OF from stack_test.cc
+  * Remove an easy DEFINE_NAMESPACED_STACK_OF
+  * Modernize p_hkdf.cc a bit
+  * Use UniquePtr in RSA
+  * bssl-x509: don't expose X509CertificateList
+  * bssl-x509: API tweaks in certificates.rs
+  * Remove unused internal constant
+  * bssl-x509: documentation improvements.
+  * bssl-x509: various tidy-ups.
+  * rust: Pick up std feature by default for x509 and tls crate
+  * Remove NewZeroed entirely
+  * Add Send and Sync marker traits to X509Certificate
+  * Add new Rust crates to build files
+  * rust: Fix doc test since last crate renaming
+  * rust: Introduce X.509 bindings
+  * Remove some more easy NewZeroed calls
+  * Remove some dependencies on NewZeroed
+  * Wire up ML-DSA keygen to the EVP API
+  * Add new APIs to generate EVP_PKEYs
+  * Center EVP_PKEY_CTX creation on EVP_PKEY_ALG
+  * Place kObjects constants in namespace bssl.
+  * runner: Also copy resumeExpectations before running the test
+  * Don't allow half-empty EVP_PKEYs to be passed into various APIs
+  * Revert "Reduce thread contention for pooled CRYPTO_BUFFERs"
+  * Document <openssl/cast.h>
+  * rust: Properly dispatch the key types to the right curve after parsing
+  * rust: parse keys into the right curve type per DER encoding
+  * Document length requirements on low-level DES APIs
+  * Check for syntax errors in SANs in X509_check_host
+  * Fix typo in comment
+  * Add some options to bssl client and bssl server to test PSKs
+  * Warn in docs that TLS 1.3 PSKs must be high entropy
+  * Revert "Simplify the symbol prefixing macros."
+  * Fix prefixed names on MSVC.
+  * Simplify the symbol prefixing macros.
+  * Implement RFC 9258 as a server
+  * Handle an API edge case with PSKs and client certificates
+  * Implement RFC 9258 as a client
+  * Ignore CMS_PARTIAL in CMS_add1_signer
+  * crypto/x509: Fix interaction of DNS exclude constraints with wildcard DNS names.
+  * Use UniquePtr in DSAImpl
+  * Use UniquePtr in DHImpl
+  * Remove redundant DH_num_bits API
+  * Reduce thread contention for pooled CRYPTO_BUFFERs
+  * Allow CRYPTO_BUFFERs to outlive CRYPTO_BUFFER_POOL
+  * C++ CRYPTO_BUFFER internals a bit more
+  * Make CRYPTO_MUTEX a C++ type
+  * Add a test for bssl::Cleanup
+  * Give CRYPTO_EX_DATA_CLASS a constructor
+  * Simplify delocate macros slightly
+  * More consistently use the public/private struct split in crypto/pool
+  * Don't stack-allocate CryptoBuffer for pool lookups
+  * rust: Give options to serialise curve names
+  * Remove duplicate include
+  * GitHub Actions: Tighten up branch-time.yml check
+  * ssl: Allow inspection of SSL_CREDENTIAL completion status
+  * Add some missing file headers
+  * Publish the remaining historical advisories
+  * GitHub: Tweak branch-time.yml workflow
+  * runner: Add a preSharedKey object
+  * GitHub: Create GitHub Actions workflow to check branch time
+  * Add a no-op virtual destructor to EvpPkeyCtx
+  * audit_symbols: Allow Windows RTTI descriptors to be unprefixed
+  * Preprocessor compatibility: update logic for symbol prefixing.
+  * Move definition of BORINGSSL_ALWAYS_USE_STATIC_INLINE farther up.
+  * Revert "Integrate the new way of C++ symbol prefixing with Bindgen."
+  * Remove getrandom_fillin.h
+  * Use std::sort in crypto/stack/stack.cc
+  * When building a shared ELF library with FIPS, set the section markers hidden.
+  * Finish symbol prefixing with delocate (delocate approach).
+  * delocate: Pass through .reloc directives associated with pointer field protection
+  * CI naming: minor improvements
+  * Add GNU linker manual to references
+  * Use destructors more in crypto/cms
+  * Introduce macro BORINGSSL_ALWAYS_USE_STATIC_INLINE.
+  * Reapply "Migrate Bio to RefCounted."
+  * Base BIO_free's return value on only the input BIO
+  * runner: Don't override the version in the SendBothTickets tests
+  * runner: Bundle wire version, protocol version, and isDTLS together
+  * runner: Remove version parameter to TLS 1.2 keyAgreement objects
+  * runner: Simplify Config.minVersion and Config.maxVersion
+  * runner: Check that the server did not resume a session at the wrong version/cipher
+  * Rewrite the CipherNotPreferred tests
+  * runner: Store a cipherSuite object in sessionState
+  * runner: Pass just a hash algorithm, not a cipher suite, into PSK binders
+  * Make BORINGSSL_check_test take a pair of spans
+  * Split RSA sign and verify KATs
+  * Run `go fix`
+  * Update filippo.io/edwards25519 to 1.2.0
+  * Fix the docs for and test BIO_free's return value
+  * rust: Make true links in HPKE doc-string
+  * Revert "Migrate Bio to RefCounted."
+  * Fix documentation for SSL_set_alps_use_new_codepoint
+  * bssl_shim: Make a general SetValueFlag helper in test_config.cc
+  * Abstract out the check for whether certificate modes are acceptable
+  * Add bssl::Vector::EraseIf
+  * Remove unused version parameter to tls13_verify_data
+  * Fold tls13_write_psk_binder into the caller
+  * runner: Remove a dead condition in dtlsPackRecord
+  * runner: Use slices package a bit more
+  * Require __NR_getrandom to be either available or polyfilled
+  * runner: Make some panics more useful
+  * runner: Remove stale recordTypePlaintextHandshake constant
+  * Remove BORINGSSL_ALL_PUBLIC_SYMBOLS from pregenerate
+  * Remove GitHub pull request template
+  * Fix cpu_aarch64_sysreg.cc
+  * Split __wasm__ into __wasm32__ and __wasm64__
+  * Revert "SSL_CREDENTIAL: Check that configured private key actually has one"
+  * rust: simplify the rustls provider crate
+  * dtls: bump default maximum protocol version to 1.3
+  * rust: Make HPKE layouts more precise and improve documentation
+  * rust: HPKE type for TLS interop
+  * Const-correct a few more crypto/x509 APIs
+  * rust: move rustls adapters to its own crate
+  * Const-correct SSL_SESSION_dup
+  * Talk about what "CTX" means in API-CONVENTIONS
+  * Update documentation on fuzzer mode
+  * Remove bad PSK binder assert (debug only)
+  * Reland "Add support for ML-DSA `ctx` parameter. Add corresponding tests including a fix of a segfault in setting up context for the VerifyMessage scenario."
+  * Migrate DHImpl to RefCounted.
+  * Migrate Bio to RefCounted.
+  * Bump BCR
+  * Migrate X509Impl to RefCounted.
+  * Migrate X509Store to RefCounted.
+  * Migrate RSAImpl to RefCounted.
+  * Migrate ECKey to RefCounted.
+  * Fix up DECLARE_OPAQUE_STRUCT docs
+  * Migrate ECCustomGroup to RefCounted.
+  * Migrate EVP_PKEY to RefCounted.
+  * Also implement UpRef() for kAllowRefCountedUniquePtr types.
+  * Migrate DSA to RefCounted.
+  * Bring RefCounted over from libssl to libcrypto.
+  * Activate Windows DLL builds on CI and CQ.
+  * Simplify PSK binder calculation
+  * evp_test: Fix MaybeReplaceWithCopy for EVP_MD_CTX
+  * SSL_CREDENTIAL: Check that configured private key actually has one
+  * Use destructors in X509_NAME_CACHE
+  * Use destructors more in crypto/bio/connect.cc
+  * Add a CBBAsSpan internal helper function
+  * Remove header_len parameter to ssl_add_clienthello_tlsext
+  * Update other dependencies
+  * Update third_party/benchmark to 1.9.5
+  * Update Go dependencies
+  * runner: syncronize shimListener connChan access
+  * Remove exported C++ interfaces from libcrypto that were used only by tests.
+  * Android test runner: don't copy libboringssl_gtest.so.
+  * Fix DLL build on Windows.
+  * rust: clean up other slice casts involved in FFI
+  * Add missing test certificates
+  * bssl-crypto: use `as_ffi_ptr`.
+  * A menagerie of changes to bssl-tls
+  * rust: Add `rustls` CryptoProvider adapters
+  * util/fipstools: saltLen arg for ACVP RSA/sigGen/pss cmd
+  * Add CI builds for Windows DLLs that even run the generated binaries.
+  * Revert "Add support for ML-DSA `ctx` parameter. Add corresponding tests"
+  * CI: also rename nosse2 to n2.
+  * CI: move "fips" from short name into category, and rename "nosse2" to "n2".
+  * Partial symbol prefixing support with delocate.
+  * CI: build categories and short names in code.
+  * Add support for ML-DSA `ctx` parameter. Add corresponding tests including a fix of a segfault in setting up context for the VerifyMessage scenario.
+  * CI: give linux32_nosse2_noasm the nosse2 short name.
+  * Rebuild categories and short names for the BoringSSL CI console.
+  * Remove non-namespaced symbols for ctor/dtor of EC_GROUP.
+  * Remove non-namespaced symbols for ctor/dtor of EVP_PKEY.
+  * Pregenerate: restructure console output.
+  * Pregenerate: remove hack to find clang and to locate the Windows SDK.
+  * Remove non-namespaced symbols for ctor/dtor of RSA.
+  * Remove non-namespaced symbols for ctor/dtor of X509_STORE.
+  * Remove non-namespaced symbols for ctor/dtor of EC_KEY.
+  * New BCR release.
+  * Delocate: also support `name = value` kind symbol aliasing.
+  * Enable most of the prefixed builds that work.
+  * Remove non-namespaced symbols for ctor/dtor of DSA.
+  * Remove uses of `static inline` in C++.
+  * Fix location of NASM flags.
+  * Fix Clang-Tidy issues: missing includes.
+  * MLDSA, MLKEM, SLHDSA: do not use extern "C" inside anon namespace.
+  * Remove non-namespaced symbols for ctor/dtor of DH.
+  * Remove non-namespaced symbols for ctor/dtor of BIO.
+  * Also move most OPENSSL_free uses to Delete.
+  * rust: Add RSA-PSS signature test
+  * Remove non-namespaced symbols for ctor/dtor of CMS_ContentInfo and CMS_SignerInfo.
+  * Replace malloc/sizeof pattern by New.
+  * Add symbol prefixing validation to CMake.
+  * Add support for RSA PSS.
+  * Fix a broken Go doc comment.
+  * util/fipstools: add ACVP KTS-IFC crt support
+  * Fix typo in comment
+  * Add some missing includes found by clang-tidy.
+  * Actually enable symbol prefixing on linux_clang_prefixed_compile.
+  * Disable some slow test in unoptimized builds
+  * Publish historical advisories from 2021 and 2022
+  * Remove most tests' dependency on the dangerous SSL_VERIFY_NONE behavior
+  * Only emit .note.gnu.property on ELF targets
+  * Add prefixed builds for win_arm64.
+  * Fix ios64_prefixed_compile.
+  * The prefixing field on the CI system is called `prefixed_symbols`.
+  * Remove non-namespaced symbols for ctor/dtor of BN_CTX, CRYPTO_BUFFER, EVP_PKEY_CTX, X509, and X509_NAME.
+  * Add CQ builders for symbol prefixing.
+  * Fix some trailing whitespace in extension printer
+  * Prefixing: do not use relative includes with nasm.
+  * Add helpers to query whether an EVP_PKEY has a public/private key
+  * AES-GCM: optimize ARMv8 kernel and add EOR3 support
+  * Add DLL builds for Windows to CI and CQ.
+  * Publish historical advisories from 2023
+  * Convert .arch into .arch_extension on Apple arm64 targets
+  * Integrate the new way of C++ symbol prefixing with Bindgen.
+  * Integrate the new way of asm symbol prefixing with CMake.
+  * Publish historical advisories from 2024 and 2025
+  * Fix an OK but odd-looking use of ASN1_TYPE
+  * OpenSSL Advisory: January 27th, 2026 (BoringSSL Not Affected)
+  * Remove outdated comment about updating Chromium sandbox definition
+  * sha512-armv8: Correct the comment-only suffixes on sha2 instructions
+  * sha512-armv8: Burn in the results of most instruction rewrites
+  * sha512-armv8: Pull the .16b suffixes out of the variables
+  * Also improve test coverage for the crlDistributionPoints config machinery
+  * Update Mechanism: Manual
+  * Stop manually encoding AES-NI instructions in aesni-x86.pl
+  * Fix strncmp usage in v3_crld.cc to use strcmp
+  * Improve issuingDistributionPoint config file coverage
+  * Integrate the new way of C++ symbol prefixing with CMake.
+  * Add ML-DSA support to X.509
+  * util/fipstools: ACVP RSA keyFormat=crt keyGen
+  * Add a SECURITY.md pointing to the Chromium process
+  * Add a regression test for an OpenSSL SPARC bug
+  * rust: add tests and example to pkcs8.rs
+  * rust: Unifying PKCS #8 private key parsing
+  * rust: Do not check P-Hash output buffer length
+  * Update ECDSA comments and logic for FIPS 186-5
+  * Use secp224k1 instead of secp160r1 to test a custom curve edge case
+  * Add a couple more references
+  * Start a references document
+  * Add a reference for Arm CPU features in docs
+  * Allow DTLSv1_set_initial_timeout_duration to be called mid-handshake
+  * Add log_id() getter to MTCAnchor class
+  * PRESUBMIT.py: Pass -clang flag to pregenerate
+  * Fix asm symbol prefixing includes:
+  * pregenerate: refactor Tasks to better support skipping.
+  * Remove BSAES code entirely if BSAES is not compiled in.
+  * Ignore OPENSSL_STATIC_ARMCAP on non-Arm platforms
+  * Modernize the Arm cpuinfo parser a bit
+  * Run `buildifier` to format BUILD.bazel
+  * infra: Regenerate LUCI config files
+  * runner: Stop handle interrupts reentrantly in DTLS tests
+  * Fix some minor prefixing misses on Linux.
+  * Fix namespaces bssl::entropy and bssl::acvp.
+  * Let bindgen rename link names
+  * Remove ia32cap_P references from the perlasm code.
+  * Namespace crypto/internal.h's internal symbols.
+  * Make pregenerate output files `gen/boringssl_prefix_symbols_internal_*.inc`.
+  * Make pregenerate output a file `gen/boringssl_prefix_symbols_c.inc`.
+  * pregenerate: fix deadlock when filtering out a dependent task.
+  * Detect Arm SHA-512 instructions on Windows when available
+  * Make keys clone-able
+  * Add TLS 1.2 P-hash function binding
+  * perlasm scripts: work better if the command interpreter is cmd.exe.
+  * Pregenerate: emit all assembly function names
+  * extract_identifiers_clang_json: factor out Clang AST logic.
+  * Namespace crypto/fipsmodule/sha's internal symbols.
+  * Remove paths.cmake as it is no longer in use.
+  * runner: Fix -private-key-delay-ms flag
+  * runner: Spanify parts of packeted_bio.cc
+  * runner: Tidy up initializing a PacketedBio
+  * runner: Make AdvanceClock(0) work and test stopping the timeout early
+  * Fix race condition in TLS 1.3 InvalidChannelIDSignature test
+  * Unseal EC group method in Rust binding
+  * Namespace crypto/x509's internal symbols.
+  * Revert "Revert "Namespace crypto/trust_token's internal symbols.""
+  * Mark Prk as Send + Sync
+  * Add HMAC on SHA-384 for TLS 1.3 support
+  * Narrow EVP_PKEY_cmp and EVP_PKEY_cmp_parameters return values
+  * Fix typo in setting up CMAKE_CXX_FLAGS
+  * Use proper label type in TLS1.2 P-hash function
+  * Pregenerate: add a concept of tasks that can be waited upon.
+  * Deflake DTLS12-SendExtraFinished-Reordered
+  * The null parameter should be equal to itself
+  * Stop reaching into TRUST_TOKEN_CLIENT internals in the benchmark
+  * Move most DTLS 1.3 TODOs to child bugs
+  * Test that DTLS 1.2 rejects renegotiation
+  * bssl-sys: Remove unsupported_inline_wrappers
+  * Raise the maximum RSA key size back to 16384
+  * Also check OPENSSL_RSA_MAX_MODULUS_BITS in RSA keygen
+  * Rust: Move TLS1.2 PRF into public interface
+  * Spanify a couple helper functions
+  * Namespace crypto/asn1's internal symbols.
+  * Namespace crypto/fipsmodule/bcm_interface.h's internal symbols.
+  * Namespace crypto/fipsmodule/bn's internal symbols.
+  * Namespace crypto/fipsmodule/aes's internal symbols.
+  * Namespace crypto/fipsmodule/ec's internal symbols.
+  * Namespace crypto/fipsmodule/service_indicator's internal symbols.
+  * Namespace crypto/bytestring's internal symbols.
+  * Namespace crypto/bcm_support.h's internal symbols.
+  * Namespace crypto/evp's internal symbols.
+  * Namespace crypto/fipsmodule/rsa's internal symbols.
+  * Namespace crypto/fipsmodule/dh's internal symbols.
+  * Namespace crypto/fipsmodule/keccak's internal symbols.
+  * Namespace crypto/fipsmodule/rand's internal symbols.
+  * Namespace crypto/fipsmodule/ecdsa's internal symbols.
+  * Namespace crypto/cipher's internal symbols.
+  * Namespace crypto/ec's internal symbols.
+  * Namespace crypto/dsa's internal symbols.
+  * Namespace crypto/fipsmodule/tls's internal symbols.
+  * Namespace crypto/conf's internal symbols.
+  * Revert "Revert "Namespace crypto/pkcs7's internal symbols.""
+  * bssl-crypto: Add support for serializing and deserializing compressed points
+  * Fix build with -Wheader-hygiene
+  * Revert "Namespace crypto/pkcs7's internal symbols."
+  * Namespace crypto/pkcs7's internal symbols.
+  * Namespace crypto/fipsmodule/slhdsa's internal symbols.
+  * Namespace crypto/pkcs8's internal symbols.
+  * Symbol prefixing: also include symbols that don't have C linkage.
+  * bssl-crypto: fix typo in error string
+  * bssl-crypto: run cargo fmt
+  * Remove internal STACK_OF(X509V3_EXT_METHOD) symbols
+  * Clean up no-op cipher aliases for legacy SHA-2 CBC ciphers
+  * Add support for TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
+  * Namespace all lhash internal symbols.
+  * Namespace crypto/kyber's internal symbols.
+  * Namespace crypto/hrss's internal symbols.
+  * Namespace decrepit/cast's internal symbols.
+  * Namespace crypto/pem's internal symbols.
+  * Namespace crypto/chacha's internal symbols.
+  * Namespace crypto/curve25519's internal symbols.
+  * Namespace crypto/des's internal symbols.
+  * Stop using sqrt(2) in RSA key generation
+  * Update RSA-related citations from FIPS 186-4 to FIPS 186-5
+  * Use consistent RSA keygen and import limits
+  * Revert "Namespace crypto/trust_token's internal symbols."
+  * Remove the last remnants of iovec in their experimental state
+  * Namespace crypto/trust_token's internal symbols.
+  * infra: Move Android FIPS builders to RelWithAsserts
+  * infra: Extend timeout for Android devices on CI/CQ
+  * Change `(void)` function prototypes to `()` in C++ code.
+  * list_unintended_exported_symbols.sh: work fine within jj.
+  * modulewrappers: use the correct bssl namespace.
+  * list_unintended_exported_symbols: export public symbols list.
+  * When listing unexported symbols, disable asm for now.
+  * Include <openssl/rand.h> when defining RAND_maybe_seed.
+  * runner: Copy testCase objects before mutating them in-place
+  * crypto/x509/v3_cpols.cc: do not forward declare ASN.1 items.
+  * Restore mac_arm64_bazel
+  * delocate: Use adrp/add in loadAarch64Address
+  * Compute the FIPS module hash after evaluating relocations
+  * inject_hash: Support finding the marker symbols in .symtab or .dynsym
+  * Test clearing out-of-bounds bits with ASN1_BIT_STRING_set_bit
+  * inject_hash: Convert more Go empty string checks
+  * delocate: Add adrp BORINGSSL_bcm_text_start to our tests
+  * inject_hash: Switch a bytes.Index to bytes.Contains
+  * Add API to configure server's NamedGroups with equal preference
+  * inject_hash: Add an option to hash a different object from what we rewrite
+  * Fix namespacing of err_save_state_st.
+  * Identifier extractor: fix linkage of constants.
+  * Add a script to list unintended symbols in libcrypto.
+  * Move `crypto/rsa/internal.h` into the `bssl` namespace.
+  * Move `crypto/bio/internal.h` into the `bssl` namespace.
+  * Move `crypto/err/internal.h` into the `bssl` namespace.
+  * Symbol extractor: handle more cases.
+  * Rework test Merkle Tree machinery
+  * Empty subtrees are invalid
+  * Convert Go string-empty checks to `!= ""`.
+  * Spanify internal EVP_AEAD APIs.
+  * EVP_AEAD AES-GCM: bring back missing buffer size check.
+  * Make libssl no longer export the lhash symbols for SSL_SESSION.
+  * Bump BORINGSSL_API_VERSION
+  * Remove the odd __cplusplus gating of libpki's include guards
+  * Add `RAND_maybe_reseed`
+  * Implement TrustStoreCollection::GetTrustedMTCIssuerOf
+  * Fix some include spelling in libpki
+  * EVP_AEAD: rip out internal remnants of the legacy open/seal API.
+  * Add missing include
+  * [WIP] Support verifying signatureless MTCs.
+  * Put a test function that's extern "C" explicitly not in the anonymous namespace.
+  * Use CRYPTO_store_u32_be in tls_cbc.cc
+  * Add a missing error check in bench/aead.cc
+  * Pass a slightly smaller upper bound to TLS CBC MAC calculation
+  * EVP_AEAD: make the iovec APIs mandatory for all AEADs.
+  * Add some more value barriers to Lucky 13 mitigation
+  * EVP_AEAD: implement sealv/openv for AES-GCM-SIV.
+  * Fix up constant-time annotations for TLS CBC ciphers
+  * EVP_AEAD: implement sealv/openv for the TLS ciphers.
+  * EVP_AEAD: implement sealv/openv for ChaCha20-Poly1305.
+  * EVP_AEAD: implement sealv/openv for AES-CCM.
+  * EVP_AEAD: implement sealv/openv for AES-EAX.
+  * EVP_AEAD: add a helper to process iovecs on a per-block basis.
+  * Move `err_data.cc` symbols into the `bssl` namespace.
+  * Link to CMVP certificate for 20240407
+  * Fix a missing incldue in `aead.cc.inc`.
+  * Revert "Revert the initial seal/openv implementations"
+  * AEAD tests: fix accidental bit overlap.
+  * Deduplicate some code to compute test vector paths
+  * Skip iovec tests for NIST CAVP vectors
+  * Split sealv, openv, and openv_detached into separate tests
+  * Recreate the TestIOVecs on every test call
+  * When testing AEADs, don't split both the AAD and the plaintext.
+  * Revert the initial seal/openv implementations
+  * EVP_AEAD: implement sealv/openv for AES-GCM.
+  * EVP_AEAD: implement sealv/openv for AES-CTR-HMAC-SHA256.
+  * EVP_AEAD: declare CRYPTO_IOVEC based APIs to support zero copy I/O.
+  * infra: Remove seemingly unused win_toolchain cache
+  * Check in .bazelversion and MODULE.bazel.lock in util/bazel-example
+  * infra: Prefix all of BoringSSL's caches
+  * Make third_party/benchmark's configure script less noisy
+  * Format *.bzl, *.bazel files using buildifier
+  * Add a try builder to run boringssl presubmits
+  * Fix minor benchmark issues:
+  * Retire RSA blinding support
+  * Benchmark long-lived vs newly-imported RSA keys for both sign and verify
+  * Use google/benchmark for performance tracking
+  * Make the benchmark timeout a floating point, not integer, flag.
+  * Add a utility to extract identifiers from public headers.
+  * Remove non-CBC codepaths from e_tls.cc
+  * Don't condition BORINGSSL_self_test on !_MSC_VER
+  * Inject the custom libc++ globally
+  * Don't build third-party deps with our warnings
+  * infra: Bump android-21 to android-24 on CI
+  * infra: Disable mac_arm64_bazel builder again
+  * Simply warnings config slightly
+  * Stop setting -fmsc-version in our build
+  * infra: Retain CMake toolchain defaults in win*_small builders
+  * Another attempt to implementation_deps, preserving transitivity
+  * Unbreak build on Visual Studio.
+  * runner: Revise chain certificate passed to shim
+  * runner: Test change cipher spec tests with no CCS message
+  * Add a libssl user to util/bazel-example
+  * Revert "util/util.bzl: use implementation_deps to hide internal header"
+  * Don't detect pre-C++11 in <openssl/base.h>
+  * Retire the STLport workaround
+  * Keep STL includes inside extern "C++"
+  * Add missing include for bssl::Span.
+  * Fix copy-paste error in comment
+  * runner: Use slices.Clip instead of x[:len(x):len(x)]
+  * Fix BoringSSL public includes for Tree-sitter parsability.
+  * Fix PRESUBMIT.py
+  * bssl speed: better and more consistent pattern matching in `-filter`.
+  * Revert "[infra] Temporarily disable mac_arm64_bazel from CQ"
+  * [infra] Temporarily disable mac_arm64_bazel from CQ
+  * Fix a bunch of lint errors.
+  * util/util.bzl: use implementation_deps to hide internal header
+  * Bump version for BCR release.
+  * `util/analyze_bssl_speed.go`: also parse lines for "1 byte".
+  * Link to ACVP results for 20251031.
+  * `bssl speed`: include all AEAD implementations and directions.
+  * Rephrase the bssl-crypto warning a bit
+  * Deprecate no-op startup/shutdown ERR functions
+  * Fix up `PEM_do_header` to use `size_t`
+  * Add AES-CTR-HMAC-SHA256 to `bssl speed`.
+  * Add a quick tool to analyze `bssl speed` output.
+  * `bssl speed`: add a flag `-cputime`.
+  * Add a -request-trust-anchors flag to bssl client
+  * Fix typo in style guide
+  * Add a helper function to split strings in tool/
+  * Clang-format tool/client.cc and tool/server.cc arguments list
+  * Add helpers for working with relative OIDs.
+  * ML-DSA signature test from seed
+  * Standardize the comments on the closing brace of extern "C".
+  * bssl::Span::subspan: split into two overloads.
+  * Make `bssl::Span::subspan` behave like `std::span::subspan`.
+  * Remove some non-span methods of der::Input
+  * Upgrade linux bots from ubuntu 22.04 to 24.04
+  * Support handle poisoning in EVP_Decrypt ops too.
+  * Spanify EVP_Cipher update and final methods.
+  * Implement pure version of SLH-DSA-SHAKE-256f
+  * Update NDK on CI to r29
+  * Use _t and _v versions of type traits
+  * Add some documentation for updating ACVP tests.
+  * Move all internal calls to the new API with size checking.
+  * Unwind wait_for_entropy diagnostic function in getrandom code
+  * Add function to evaluate MT inclusion proof
+  * Add presubmit check for bzl/bazel file formatting using `buildifier`
+  * acvptool: ML-DSA external mu, internal sig. interface
+  * Update all the Bazel things
+  * Remove workaround for Bazel C/C++ issue
+  * Add BCR presubmit testing for Bazel 8.x and rolling
+  * Add ML-DSA-87 variants to Rust wrappers
+  * EVP_Cipher: fix comments about required buffer sizes.
+  * Bump version for BCR
+  * acvptool: Fix error reporting if dk or c are empty
+  * Fix ACVP tests
+  * Add missing #include
+  * Add API functions for OpenSSL ciphers with sized output.
+  * Format *.bzl, *.bazel files using buildifier
+  * Update acvptool for recent server-side changes.
+  * Remove ro.boringcrypto.hwrand toggle on Android
+  * Fix util/bazel-example under Bazel 9.0.0rc1
+  * Implement Merkle Tree operations.
+  * Don't abort in a non-FIPS build.
+  * Sync flags from `CMakeLists.txt` to `util/util.bzl`.
+  * Update PRNG docs to reflect recent changes
+  * Fix constant_time_conditional_memxor on some input lengths
+  * Fix potential constant time issue
+  * Add an external mu variant of ML-DSA verification
+  * Bump android-18 to android-21 on CI
+  * Update Android NDK to r27d on CI
+  * Spellcheck the codebase
+  * Ensuse self tests run for ML-DSA prehash signing
+  * Run ML-DSA Wycheproof verify tests through EVP too
+  * Set `-fno-strict-aliasing` when building with bazel.
+  * runner: Don't parse zero-length OCSP responses in tests
+  * Add basic integration with ML-DSA and EVP
+  * EVP_DecryptUpdate: fix comment about required buffer size.
+  * Update Wycheproof test vectors
+  * Include the public key in ML-DSA private keys
+  * Add constants in nid.h for encoded OIDs
+  * Make the EVP_PKEY_ASN1_METHOD tables static
+  * Fold p_${alg}_asn1.cc into p_${alg}.cc
+  * Fix error handling for invalid TLS 1.3 status_request extensions
+  * Fix some more NULLs by hand
+  * Also modernize-use-nullptr the BCM fragments
+  * IWYU fixes
+  * Add an /* up to */ comment to all subspan calls that may truncate.
+  * Make constant-sized calls to Span::first/last/subspan compile-time sized.
+  * Initialize last_sample_ to fix maybe-uninitialized warning.
+  * Also fix nullptr in internal header files
+  * Apply modernize-use-nullptr fixes in all .cc files
+  * Add some more notes to CONTRIBUTING.md
+  * Take another pass at CONTRIBUTING.md
+  * Remove some easy OPENSSL_EXPORTs
+  * Add an assert for a correct buffer size.
+  * Elide storage of bssl::Span size if known at compile time.
+  * Uprev the CIPD version of infra/3pp/tools/perl/windows-amd64
+  * Add a PRESUBMIT.py script to check pregenerated files
+  * Fix a bug when BN_mod_sqrt is called on very annoying primes
+  * Remove NID_MLKEM1024 alias
+  * Document how BN_mod_sqrt handles the `in` parameter
+  * Test bssl::InplaceVector with a move-only type
+  * Rust wrappers for external mu variant of ML-DSA
+  * Document that ASN1_STRING_set_by_NID enforces the bounds on the string
+  * Also accept incorrectly-encoded X509 v1 version fields again
+  * Prevent false positive in constant time checks
+  * Allow empty extension lists in X.509
+  * Use a less verbose pattern to heap-allocate temporaries in ML-DSA
+  * Const-correct the internal/external pointer casts
+  * Don't have separate BCM and ML-KEM and ML-DSA types
+  * Unwind <openssl/bcm_public.h>
+  * Add SSWU_NU encode-to-curve functions from RFC 9380.
+  * Unify the HPKE implementation for ML-KEM.
+  * Update Go on CI
+  * Bump the macOS versions on our CI to macOS 12 or 13
+  * Deprecate SSL_CIPHER_get_name
+  * Remove some unused constants
+  * Order TLS1_TXT_* and TLS1_CK_* in the same order
+  * Remove TLS1_TXT_* constants for unimplemented cipher suites
+  * Add OIDs and NIDs for ML-DSA-{44,65,87} and ML-KEM-{768,1024}
+  * Restore TLS 1.3 TLS1_CK_* constants
+  * Remove TLS1_CK_* constants for unimplemented cipher suites
+  * Add additional check, as contract of function
+  * Bump BORINGSSL_API_VERSION to 37
+  * Add API for caller to hint server's preferred key shares
+  * Update CI dependencies
+  * Update Bazel deps and bump version for BCR
+  * Add newer HPKE configuration to Rust wrappers.
+  * Rework ML-DSA modular operations
+  * Add ML-KEM-1024 option for HPKE.
+  * entropy_modulewrapper: set batch mode.
+  * Add some missing includes
+  * Define X-Wing constants as expressions.
+  * Add ML-KEM-768 option for HPKE.
+  * Put the legacy cipher constants back in tls1.h and ssl3.h
+  * Introduce cipher constants without the leading 0x03
+  * Update status of FIPS 20250728
+  * Tolerate nullptr in i2d_X509_NAME
+  * Add some missing includes
+  * Fix and test other self-assignment cases in crypto/x509
+  * Const-correct all i2d_*_bio functions
+  * Add ACVP modulewrapper for the jitter entropy SHA-384 implementation.
+  * Document that HMAC_Final can have a nullptr `out_len`.
+  * Add a missing note about the hashes in ssl_compliance_policy_fips_202205 docs
+  * Fix bugs found by clangsa
+  * Make setting an X509_NAME to itself work
+  * Make the ASN1_TYPE-level type take precedence over the ASN1_STRING one
+  * Use CRYPTO_addc_w in bn_from_montgomery_in_place
+  * Use a simpler process to compute n0
+  * Forbid setting EC public key to point at infinity
+  * Remove stale comment
+  * Upgrade the opportunistic CRYPTO_sysrand calls to normal ones
+  * Remove some stale ifdefs from urandom.cc
+  * Reject explicit default X.509 versions and empty extension lists
+  * Bump the minimum CMake version to 3.22
+  * Add API for configuring client key shares
+  * draft-ietf-lamps-x509-policy-graph is now RFC 9618
+  * Test a few more unusual TBS certificates
+  * Const-correct a bunch more of <openssl/x509.h>
+  * Unwind ASN1_ANY_AS_STRING
+  * Embed X509_NAME into X509
+  * Don't create partial X509 and X509_CRL objects to search the X509_STORE
+  * Const-correct X509_NAME and test thread-safety
+  * Rewrite the X509_NAME parser
+  * Parameterize the tag in IMPLEMENT_EXTERN_ASN1_SIMPLE
+  * Test a few more cases of null STACK_OF(T)
+  * Make more of atomic<T> available to libcrypto
+  * Test that X509_NAME_add_entry will not allow invalid entries to be added
+  * Make make_unusual_tbs.go test data idempotent
+  * Add EVP_pkey_rsa_pss_sha384 and EVP_pkey_rsa_pss_sha512
+  * Store the PSS parameters in the RSA object
+  * Don't include every field in every EVP_PKEY_ALG
+  * Allow SSL_HANDSHAKE::key_shares to vary in size
+  * Always populate supported_group_list
+  * Require configured groups for key exchange to be unique
+  * Various IWYU fixes
+  * [gtest] Clean up single-arg `testing::Invoke()`s
+  * Remove stale static asserts about atomics
+  * Add X509_parse_with_algorithms
+  * Make X509_verify X509_sign_ctx work with EVP_PKEY_RSA_PSS
+  * Rewrite X509's parser with CBS/CBB
+  * Rename X509_CINF::signature to X509_CINF::tbs_sig_alg
+  * Rewrite X509_PUBKEY's parsers with CBS/CBB
+  * Parse X509's signature algorithm with the CBS/CBB functions
+  * Parse X509_ALGOR without depending on the templates
+  * Make ASN1_EXTERN_FUNCS's parse callback CBS-based
+  * Remove the tag parameter to IMPLEMENT_EXTERN_ASN1
+  * Add X509_ALGOR_copy
+  * Write some templated functions for the d2i/i2d convention
+  * Make CBS/CBB-versions of crypto/asn1 types
+  * Avoid one malloc indirection in X509
+  * Test the implicit cleanup feature of X509_sign_ctx, etc.
+  * Add a benchmark for parsing with d2i_X509
+  * Systematically test that parsers catch trailing data
+  * Test verifying signatures over "unusual" TBSCertificates
+  * Use std::string_view in x509_test.cc
+  * Clear the extension list when removing the last extension
+  * Refresh basic constraints test certificates
+  * Document ASN1_item_sign's order of operations a bit
+  * Add a few more TODOs for functions that should be const but aren't
+  * Use the new SPKI API in d2i_RSA_PUBKEY and friends
+  * Unexport a few more ASN1_ITEMs
+  * Make some test data of unknown ASN.1 types slightly less invalid
+  * Test ASN1_TYPE parsing more extensively
+  * Add EVP_PKEY_ALG-based raw public/private key importers
+  * Use EVP_PKEY_bits in SimplePathBuilderDelegate
+  * Update citations from RFC 3447 to RFC 8017
+  * Replace OPENSSL_ARRAY_SIZE with std::size
+  * Const-correct the kPrintMethods table
+  * Add SHA-256-only support for EVP_PKEY_RSA_PSS
+  * Write a CBS-based RSA-PSS parameter parser
+  * Switch libssl to the new SPKI parsing APIs
+  * Switch libpki to the new SPKI-parsing APIs
+  * bssl-crypto: Switch to new SPKI/PKCS8 parsing APIs
+  * Introduce EVP_PKEY_ALG
+  * Add internal EC parsing functions that take lists of allowed groups
+  * Test lookup and creation by RSA parameters in evp_test
+  * bump fiat-crypto (remove redundant return statements)
+  * Make FileTest work with std::string_view
+  * Test key import in EVPTest a bit more extensively
+  * infra/config: Remove luci.recipes.use_python3 experiment
+  * Add an ERR_equals function
+  * Add utility for dumping raw jitter samples.
+  * Use inline asm to read cntvct_el0 to accommodate GCC
+  * bssl-crypto: Fix Ed25519 SPKI parser to check key types
+  * Add a jitter entropy source.
+  * Set an EVP_PKEY's algorithm and data together
+  * Make some more half-empty EVP_PKEY states impossible
+  * Limit EVP_PKEY_set_type to EVP_PKEY_X25519
+  * Add a test that arbitrary curves can be wrapped in EVP_PKEY
+  * Stop tracking an ENGINE in EVP_PKEY_CTX
+  * Rename EVP_PKEY_METHOD to EVP_PKEY_CTX_METHOD
+  * Pull the EC_GROUP_new_by_curve_name up into EVP_PKEY_CTX_set_ec_paramgen_curve_nid
+  * Split evp_tests.txt into separate files
+  * Add a test for SPKI and PKCS8 parsing with unknown algorithms
+  * Fix markdown syntax in BUILDING.md
+  * Test async BIO_flush and fix a corner case
+  * Rename EVP_R_EXPECTING_AN_EC_KEY_KEY to match OpenSSL
+  * Document the generators for all the MODP groups
+  * Remove an old, impractical TODO
+  * Say a bit more in docs about how to use EVP_PKEY_CTX
+  * Bump version for BCR
+  * Run through more code in PKCS#8 and SPKI parsers
+  * Fix typo in comment
+  * runner: Remove need for an AllCurves value
+  * Remove redundant copy of EVP_PKEY type
+  * Remove EVP_PKEY_print_* support for DSA
+  * Don't support parameterless DSA keys in SPKIs
+  * Add a couple more no-op compatibility functions
+  * More consistently reset EVP_PKEYs in free_it
+  * Unexport the Kyber implementation
+  * Deprecate EVP_PKEY_set_type
+  * Fix reference to public key in evp.h docs
+  * pki: add PEMDecode and PEMDecodeSingle
+  * Switch to using a derivation function in CTR-DRBG.
+  * pki: allow span<string_view> for allowed types in PEMTokenizer
+  * Style guide: mention placement of & for reference types
+  * Update releasing docs slightly
+  * Implement MLKEM1024 for TLS
+  * delocate: support 4-bit tweak immediates for AArch64.
+  * Add a discussion about callbacks to API Conventions
+  * Don't run CTR-DRBG in Kyber tests.
+  * Link to ACVP results for 20250728.
+  * Bump Bazel deps and version for BCR
+  * Expand BCM abbreviation in the FIPS.md documentation
+  * Add IWYU export in nid.h file generated by objects.go
+  * Fix documentation typo
+  * Revert Rust config for 32-bit Linux CI/CQ bots
+  * Run Rust recipe steps on Mac CI/CQ builders and 32-bit Linux
+  * Run Rust recipe steps on "win64_rel" builder
+  * Make Windows Rust try builder use a Release build
+  * Add a default-off win64_rust try builder for testing
+  * Run Rust recipe steps on "linux" builder
+  * Fix FIPS version number comment.
+  * Add AES-CCM to test_fips.cc.
+  * Add AES-KW(P) to test_fips.cc
+  * Remove DES from test_fips.cc
+  * Fix typo in header comments
+  * Make checkout_rust in util/bot/DEPS also run hooks for clang
+  * Work around a Rust problem tripped by working around a Rust problem, which in turn was tripped by working around a Rust problem
+  * rust: Gate new lint on Rust version
+  * Revert "Add a try builder to run boringssl presubmits"
+  * Add a try builder to run boringssl presubmits
+  * Add PRESUBMIT.py for infra/config
+  * Specify ACL for CQ new patchset runs
+  * rust: add includable CQ builder for testing
+  * Add a comment about ct and gcc builtins
+  * Pull in Rust toolchain via util/bot/DEPS
+  * Add a Rust workspace
+  * Add X-Wing KEM option for HPKE.
+  * rust: Suppress unnecessary_transmutes warnings in bssl-sys
+  * Update .gitignore to check in Cargo.lock files
+  * [clang-tidy] First stab at making clang-tidy bot work
+  * Fix some tabs in build.json
+  * Fix some more IWYU issues
+  * Keep SHA-1 in crypto.h
+  * Fix Rust build
+  * Add sha2.h
+  * Add ML-DSA-44
+  * Rename bn_mul_mont to bn_mul_mont_words
+  * Remove Lw and Hw macros from BN internals
+  * bssl-crypto: Test that we don't accidentally accept RSA-PSS keys
+  * Test that libssl rejects id-RSASSA-PSS certificates
+  * runner: write a new test certificate library
+  * Drop the RSA, DSA, and DH DoS limits to 8,192 bits
+  * Make BN_MONT_CTX opaque
+  * Shave 8 bytes off BN_MONT_CTX in 64-bit
+  * Inline a small single-use variable
+  * Supress the run_tests target when we're a subdirectory
+  * Don't look for libunwind when BUILD_TESTING is off
+  * Update tools and prep for 0.20250701.0
+  * More clearly suggest passing NULL for EC and EC_KEY APIs
+  * Add EVP_PKEY_get_ec_curve_nid and EVP_PKEY_get_ec_point_conv_form
+  * Remove the SHA-1 default for PSS with EVP_PKEY
+  * Document the default use of SHA-1 with OAEP
+  * Change the RSA-PSS salt length default to RSA_PSS_SALTLEN_DIGEST
+  * Import Bedrock code for P-256 point double, add
+  * Use CRYPTO_load_* and CRYPTO_store_* in ML-DSA
+  * runner: Remove Leaf field from Credential
+  * Test more EVP_PKEY_CTX_copy cases
+  * Use C++ destructors for RSA_PKEY_CTX
+  * Remove tbuf from RSA_PKEY_CTX
+  * Avoid making assumptions about RSA_PSS_* constants
+  * use intrinsics for adc/sbb on MSVC
+  * fix p256_64_msvc.h
+  * Don't suppress CMAKE_(C,CXX)_FLAGS in MSVC builds
+  * Document versions undergoing CAVP testing
+  * runner: silence some confusing errors when tests fail
+  * Test server_name acknowledgement
+  * Document that EVP_PKEY_CTX_set_rsa_keygen_pubexp takes ownership
+  * Add constants for special PSS salt length values
+  * bedrock2 platform, tests, 64-bit p256_coord_sub
+  * Pack SHA-512 and BLAKE2b a little more tightly.
+  * Make EVP_MD_CTX hold the hash state inline.
+  * Add a stub implementation of SSL_CTX_get_security_level
+  * Fix link to FedRAMP policy.
+  * Add link to 2023 FIPS certificate
+  * Add a couple more missing includes
+  * Don't pass `parent` or `ad` to CRYPTO_EX_free
+  * Address some minor things from the MLDSA mu support.
+  * Add an external mu variant of the ML-DSA API (65 and 87 variants).
+  * Make CRYPTO_EX_DATA opaque
+  * Move CRYPTO_refcount_t into internal headers
+  * Remove unused bputs hook
+  * Make BIO and BIO_METHOD opaque
+  * Update defaults for PKCS12_create
+  * Note a couple of typoed struct names that we'll leave alone.
+  * xwing: tweaks and cleanups.
+  * Update references to RFC 2898
+  * add a test for -fno-strict-aliasing
+  * Fix some more IWYU issues
+  * Replace OPENSSL_ia32cap env test with a unit test
+  * Update googletest
+  * Remove empty messages in static_assert
+  * Remove P-224 from TLS
+  * Fix OPENSSL_ia32cap parsing.
+  * Remove the need for scratch space when squaring
+  * Fix some theoretical missing earlyclobber markers in inline assembly
+  * Introduce an opaque in-memory object to manage xwing private keys.
+  * Implement the X-Wing KEM as drafted in https://datatracker.ietf.org/doc/html/draft-connolly-cfrg-xwing-kem-07.
+  * Suppress -Wcast-qual in STACK_OF implementation
+  * Unexport <openssl/service_indicator.h>
+  * Add missing newlines and section headers to sha.h
+  * Update most deps and bump version
+  * Increase default salt length from 8 to 16 bytes in PKCS#8 and PKCS#12
+  * Tidy up some comments and #defines around salt lengths
+  * Expose ML-DSA-87 in the public headers.
+  * Fix EVP verify documentation.
+  * Send only usable trust anchor IDs in EncryptedExtensions
+  * Add CBB_discard
+  * Document that "add1" is like "set1"
+  * Remove ext_dat.h
+  * Remove v3_ocsp_accresp
+  * Don't stack-allocate incomplete X509/X509_CRL objects
+  * Also add BIO_meth_get_write and BIO_meth_get_read
+  * Reapply "Remove Karatsuba multiplication in BIGNUM"
+  * Test non-NEON codepaths with a OPENSSL_NO_STATIC_NEON_FOR_TESTING
+  * Simplify the implementation of OPENSSL_STATIC_ARMCAP
+  * Use C++ destructors a little more
+  * Clean up ssl_file.cc
+  * Remove some dead code from SSL_CTX_use_certificate_chain_file
+  * Write some tests for ssl_file.cc
+  * Remove --no_auth from download_from_google_storage hooks
+  * Rewrite crypto_md32_* with templates instead of function pointers
+  * Convert EC_KEY_derive_from_secret to scopers
+  * Add various missing includes
+  * delocate: Support more aarch64 load instructions with :lo12:
+  * Remove STACK_OF(CRYPTO_EX_DATA_FUNCS)
+  * Remove STACK_OF(BIGNUM) from BN_CTX
+  * Don't define N in hrss/internal.h
+  * Add front(), back(), and pop_back() to internal containers
+  * Move most of libssl's C++ utilities to libcrypto
+  * Disable CFI in FIPS module
+  * Expose P1363-based ECDSA sign/verify functions
+  * Use max_cert_list for TLSv1.3 NewSessionTicket
+  * Replace sscanf() with strtoull() in OPENSSL_ia32cap parser
+  * Fix urandom_test includes so it is not a no-op
+  * Make bssl_shim and fuzzer BIOs use the public APIs
+  * Make LHASH a completely internal type
+  * Put BIO_clear_flags with the other flags functions
+  * Add BIO_meth_set_callback_ctrl
+  * Implement BIO_meth_get_*
+  * Align bio_info_cb with upstream OpenSSL
+  * Fix BIO_eof for BIO pairs
+  * Tidy up the BIO_ctrl implementations
+  * Add missing asserts to SSL_get_(min|max)_proto_version
+  * Add CBB_add_asn1_element convenience function
+  * Some more IWYU fixes
+  * Fix rust build breakge, unable to find cmake artifacts
+  * Avoid redefining constants introduced in glibc 2.41.
+  * IWYU in cms_test.cc
+  * Fix v2i_AUTHORITY_INFO_ACCESS
+  * Remove dependencies in the library on der::Input(std::string_view)
+  * Switch a bit more of libcrypto to scopers
+  * [acvptool] Fetch and upload arbitrary algortihms
+  * Flatten a few more inner CMake files
+  * Honor the BUILD_TESTING option
+  * Stop copying targets into subdirectory in the CMake build
+  * Update ACVP tests in light of 99bd1df99b
+  * I have been laid off from Google.
+  * Convert more things to scopers
+  * Pull BN_mod_pow2 and BN_nnmod_pow2 out of BCM
+  * Pull BN_sqrt out of BCM
+  * Convert most of BN to scopers
+  * Bump version for BCR
+  * Tidy TLS 1.2 cipher selection.
+  * Put all VS runtime dirs in PATH
+  * Update tools, etc
+  * Switch to the CIPD Windows SDK package
+  * Implement functions to generate CMS external signatures
+  * Move most PKCS #7 test data to files
+  * Add CBB_flush_asn1_set_of calls to pkcs7_add_signed_data
+  * Add EVP_marshal_digest_algorithm_no_params
+  * Add some CBB-based functions for crypto/x509 and crypto/asn1 types
+  * Shave 8 bytes off EVP_AEAD_CTX
+  * Fix backward check in crl_crldp_check
+  * Remove OPENSSL_CAN_USE_ATTR_FALLTHROUGH
+  * Remove EVP_MD_FLAG_PKEY_DIGEST
+  * Remove MAC truncation from FIPS interface.
+  * Remove B_ASN1_UNKNOWN
+  * Support ANY attribute values in X509_NAME
+  * Remove ASN1_PRINTABLE
+  * Support OCTET STRING attribute values in X509_NAME
+  * Optimize computation of H^2 from H^1 in AES-GCM
+  * Do not include asn1_mac.h from rust
+  * Default to no target prefix when generating Android build files.
+  * Mention the license notice for new files in CONTRIBUTING
+  * Spell Apache 2.0 correctly in fiat/README.chromium
+  * Use Montgomery reduction in DSA verify
+  * Use std::sort instead of qsort in libssl
+  * Fix comment on bn_div_rem_words and use MSVC instrinsic
+  * Change to use ALPS new codepoint as default
+  * upprev boringssl/util/bot/perl-win32 dep
+  * Make Golint happy
+  * Revert "Remove Karatsuba multiplication in BIGNUM"
+  * Add `hpke::Kem::get_public_key`
+  * Add support for C2PA validation modes
+  * Add a missing ifdef to CRYPTO_set_fuzzer_mode call
+  * Fix comment for SSL_get_write_sequence.
+  * Pull SLH-DSA test out of BORINGSSL_self_check()
+  * Add APIs to access DTLS record layer state
+  * draft-kwiatkowski-tls-ecdhe-mlkem-01 is now draft-ietf-tls-ecdhe-mlkem-00
+  * Remove MSVC C4702 suppressions in code
+  * Remove MSVC warning suppressions around Windows system headers
+  * Fix fuzzer build on Windows
+  * Refresh fuzzer corpus
+  * Simplfy fuzzer build
+  * Make bcm use internal AES functions
+  * Don't override the clock in BORINGSSL_UNSAFE_DETERMINISTIC_MODE
+  * Fix the link order of various dependencies
+  * Fix some duplicate #defines
+  * Rewrite header guards
+  * Remove the avx10_256 entry from BORINGSSL_function_hit
+  * Clean up aes-gcm-avx512-x86_64.pl to assume 512-bit vectors
+  * Rename avx10 and avx10_512 to avx512
+  * delocate: Preserve AVX-512 tokens when rewriting labels
+  * Tolerate RCS-MLS custom critical extensions
+  * Accept only digital signature key usage for RCS-MLS
+  * correct old license on aes.cc
+  * Move gcm_gmult_vpclmulqdq_avx10 and add comment
+  * Move polyval into asegcmsiv
+  * Start extracting AES
+  * Make MODULE.bazel and BUILD.bazel buildifier-clean
+  * Mark some transitive includes as IWYU export.
+  * Remove bn_div_words from bn-586.pl
+  * Remove Karatsuba multiplication in BIGNUM
+  * Decrease BN_MONTGOMERY_MAX_WORDS to 16384 bits
+  * Convert a few more things to scopers
+  * bn: Change return type of `bn_mul_mont_*` internals to `void`.
+  * Correct an incorrect license that was committed recently
+  * [fuzz] Replace is_pod
+  * Handle nullptr arguments to FIPS key generation functions
+  * Move some exponentation functions out of the FIPS module
+  * Remove optimized even modulus mod-exp implementation
+  * Warn in SSL_export_keying_material API docs that lengths must match
+  * Add mode for MLS client auth, with EKU checking
+  * Const-correct SSL_export_keying_material
+  * Remove unused "endbranch" x86-64 encoder
+  * Add AES-EAX EVP_AEAD cipher
+  * Stop manually encoding a bunch of x86-64 instructions
+  * Migrate remaining uses of io/ioutil
+  * go mod tidy
+  * acvptool: Disable GCS support by default
+  * Update deps and tag a version for BCR
+  * Replace an old README.chromium file with a plain README.md
+  * Implement draft-ietf-tls-cross-sni-resumption
+  * Fix missing vzeroupper in poly_Rq_mul()
+  * Use vmovdqa to save/restore xmm registers in AES-GCM code on Windows
+  * Fix missing vzeroupper in gcm_ghash_vpclmulqdq_avx2() for len=16
+  * aes-gcm-avx10-x86_64.pl: use strict mode and sync with avx2 code
+  * Update PQ ACVP to reflect NIST's breaking changes.
+  * aes-gcm-avx10-x86_64.pl: fold _ghash_mul_step into _ghash_mul
+  * runner: Test export keying material across all protocols
+  * runner: Restore error output in the "unexpected failure" case
+  * Split runner.go into a bunch of different files
+  * Fix CBS_get_any_asn1 to match the documentation.
+  * runner: add one-to-many error mapping for canonical error checking in BoGo tests
+  * delocate: Recognize msl as an ARMConstantTweak
+  * Fix a pair of words that swapped were in ssl.h documentation
+  * Add a pregenerated sources.mk
+  * Gate CLMUL AES-GCM on SSSE3
+  * Stop checking the FXSR bit
+  * Use scopers in crypto/fipsmodule/ec
+  * Add local targets to .set directives in delocate
+  * Add Trust Anchors extension
+  * Use FIPS functions in modulewrapper where possible.
+  * Restore FIPS version check.
+  * Add SLH-DSA self tests
+  * Compress the CA extension
+  * Add ML-DSA self tests.
+  * Add ML-KEM self-tests.
+  * delocate: remove the need to demangle local variables
+  * Add IWYU pragma to obj_mac.h.
+  * Retitle the certificate authorities section in ssl.h
+  * Iterate on SSL_CREDENTIAL_set_must_match_issuer a bit
+  * runner: Simplify certificate_authorities testing
+  * Accept either | or ` in doc.go
+  * Remove SSL_VERIFY_PEER_IF_NO_OBC
+  * Remove OPENSSL_ia32cap_P and OPENSSL_armcap handling in delocate
+  * Add some newlines between distinct setup steps
+  * Add --gcs option for uploading test results from GCS
+  * Update googletest
+  * Add from/to SubjectPublicKeyInfo conversion to ed25519.
+  * Clarify bssl-sys build instructions.
+  * Support PBES2 schemes in PKCS12_create
+  * Fix legacy_version in DTLS 1.3 HelloRetryRequest
+  * Remove dependencies between bssl_shim and ssl/internal.h
+  * Add a way to prefix Android targets names
+  * Shave an easy 16 bytes off SSL_SESSION
+  * Avoid running the X.509 auto-chaining logic twice in TLS clients
+  * Remove now unnecessary <openssl/arm_arch.h> includes from assembly
+  * Revert "runner: Switch back to filippo.io/mlkem768 for now"
+  * runner: Switch back to filippo.io/mlkem768 for now
+  * runner: Include the name of the message we failed to parse
+  * runnner: Switch to Go's crypto/ecdh module
+  * Switch to Go standard library functions where available
+  * Fix include spelling in spake2plus.cc
+  * Revert "Speed up sha512 on x86" and update comments
+  * Add ".git" hint to Go module name
+  * Bump version for BCR
+  * Clarify that sigalg configuration does not impact TLS 1.0/1.1
+  * Update dependencies
+  * Remove ocsp_revocation_status.h and ocsp_verify_result.h
+  * Fix up ClientHello parser errors
+  * Add SSL_parse_client_hello
+  * use public header instead of internal for ocsp
+  * Make CheckOCSP public api
+  * Remove SSL_set_check_client_certificate_type and SSL_set_check_ecdsa_curve
+  * HPKE DHKEM-P256 BoringSSL Rust
+  * FIPS.md: update wording to align with FRR7.
+  * FIPS.md: add build instructions for the update stream.
+  * util/fipstools: KDA OneStepNoCounter mode support
+  * util/fipstools: generalize hkdf KDA subprocess
+  * Add a missing word to documentation on the upstream stream
+  * Add a section on the latest FedRAMP policy to FIPS.md.
+  * Add CBS APIs for fetching an implicitly tagged int64/uint64 fields.
+  * Delete some unnecessary implicit conversions in pkcs12_test.cc
+  * Remove now unnecessary ia32cap_P customizations
+  * Restore the __SHA__ compile-time check for Intel SHA Extensions
+  * Clean up license-related scripts
+  * Switch the license to Apache 2.0, matching OpenSSL upstream
+  * Add a tool to switch the license to Apache 2.0, matching OpenSSL
+  * Move copyright lines to the top of the file
+  * Remove other references to additional licenses
+  * License: change any non-boilerplate comment referring to "OpenSSL license"
+  * Rename chacha20_poly1305_*_nohw to chacha20_poly1305_*_sse41
+  * Implement SPAKE2+ and its integration in TLS 1.3
+  * Collapse the modes directory into aes
+  * util/fipstools: cSHAKE ACVP algorithm support
+  * Fix link to Mozilla wiki in comment
+  * Add missing error with credential/issuer matching
+  * runner: Only require a curve match in TLS 1.3 when doing key shares
+  * Test that we reject Certificate or CertificateRequest in resumption
+  * runner: implement SecondHelloRetryRequest more straightforwardly
+  * runner: Make -expect-selected-credential's default more convenient
+  * Use std::vector<uint8_t> to store base64-decode byte arrays
+  * Document EVP_BytesToKey a bit better
+  * Bump API version to 34
+  * infra: Use main branch exclusively
+  * util/fipstools: basic support for KTS-IFC
+  * Reword the SSL_export_keying_material docs slightly
+  * Update references in the repo to use the main branch
+  * infra: Support both master and main branches
+  * Sync presubmit.yml with what landed in BCR
+  * Include the extension in the error in ssl_parse_extensions
+  * Remove ASN1_UTCTIME_cmp_time_t
+  * util/fipstools: update RSA sigGen cmd args docs
+  * util/fipstools: support feedback KDF w/ empty IVs
+  * Add a function for Conscrypt to use
+  * Fix unwrap comment for CBB_init_fixed
+  * Document and test PEM_X509_INFO_read_bio's odd decryption behavior
+  * Test some obscure modes of EVP sign/verify with RSA keys
+  * Remove some dead code in bssl_shim
+  * clang-format bssl_shim.cc
+  * Rename foo_extra to foo
+  * Add explicit prefetching to the new AES-GCM code
+  * Add SPAKE2+.
+  * Add ability to upload a directory of vector test results.
+  * Bump MODULE.bazel for another snapshot
+  * Unfork Chromium's Clang update script
+  * Remove embed_test_data.go
+  * Mark fallible container operations as `nodiscard`
+  * Start using bssl::UniquePtr in libcrypto
+  * Move RSA_blinding_on out of BCM
+  * Switch some tests to std::string_view
+  * Initialize iqmp during keygen directly
+  * Remove a redundant call to freeze_private_key
+  * Add tests for TIME functions that accept offsets
+  * Use more span patterns for strings vs bytes
+  * Remove calls to now unnecessary MakeSpan/MakeConstSpan
+  * Remove now unused size hooks from ECDSA_METHOD and RSA_METHOD
+  * Remove some RSA_is_opaque and EC_KEY_is_opaque special cases
+  * Use std::string_view for label strings
+  * Update CMAKE_CXX_STANDARD in generate_build_files.py
+  * Revert "Stop playing with time strings with strlcat"
+  * util/fipstools: document AES-gcm-randnonce cmds
+  * util/fipstools: add SSH KDF ACVP support
+  * Add something to the error queue when Proc-Type version is wrong
+  * Gate Rust support for ML-{KEM,DSA} on a crate feature.
+  * Stop playing with time strings with strlcat
+  * Revert "Always try and enable the new_uninit feature."
+  * replace some more allocate + strlcat with asprintf
+  * Remove out directories in pki test data
+  * replace manual alloction math and srlcats with asprintf
+  * use asprintf instead of magic manual allocation
+  * Always try and enable the new_uninit feature.
+  * Add another missing file header
+  * Add some missing file headers
+  * Align a few license headers with OpenSSL's "copyright consolidation"
+  * Remove uses of `strcpy`, `strcat`, and `sprintf`, and handle NULL in some functions.
+  * Import "Remove some code for a contributor that we cannot find" from upstream OpenSSL
+  * Import "Undo commit d420ac2" from upstream OpenSSL
+  * Disable the "AVX10/256" AES-GCM functions for now
+  * Add VAES + AVX2 optimized AES-GCM
+  * util/fipstools: adjust KDF-counter command docs
+  * util/fipstools: support more digests w/ hmacDRBG
+  * Don't mutate the buffer in PEM_get_EVP_CIPHER_INFO
+  * Import "Remove some code" from upstream OpenSSL
+  * Unexport a couple internal PEM functions from pem.h
+  * Move implicit OPENSSL_STATIC_ARMCAP definition to target.h
+  * Clean up "copyright consolidation" tools
+  * Import "Cleanup some copyright stuff" from upstream OpenSSL
+  * Import upstream changes to copyright lines
+  * Fix objects.go generator to reflect new header
+  * Apply OpenSSL's "copyright consolidation" changes
+  * Add a tool to summarize and compare copyright lines
+  * Update copyright.pl to sync copyright lines from OpenSSL
+  * Add a copy of OpenSSL's copyright.pl script
+  * Update diff_asm.go
+  * SLH-DSA: add support for SHA-256 prehashing.
+  * SLH-DSA: add ACVP support
+  * Disable MSVC's C4702 warning
+  * Don't impose Werror on users of BoringSSL
+  * Update Go deps
+  * Fix a theoretical overflow in BIO_printf
+  * SLH-DSA: move into the FIPS module.
+  * Also run Kyber through constant-time validation
+  * Add a few more anonymous namespaces around struts
+  * Add SSL[_CTX]_get_compliance_policy
+  * Remove uses of OPENSSL_INLINE and OPENSSL_UNUSED except for public headers
+  * Make ec/make_tables.go run cleanly again
+  * Don't check for __has_include
+  * Use std::optional in one place in bssl_shim
+  * Replace OPENSSL_FALLTHROUGH with [[fallthrough]]
+  * Fix data buffer size in GCMTest.ABI
+  * Require C++17
+  * Put structs in anonymous namespaces to avoid ODR worries.
+  * ML-KEM: remove private key parsing from public interfaces.
+  * ML-KEM: add ACVP support.
+  * Avoid reduce_once in scalar_centered_binomial_distribution_eta_2_with_prf
+  * Run ML-KEM and ML-DSA through constant-time validation
+  * Add Alder Lake to SDE tests
+  * util/fipstools: fix HKDFExtract/HKDFExpandLabel cmd docs
+  * Move fips_counter_evp_aes_*_gcm into GCM internals
+  * Remove alignment requirement on ghash-ssse3
+  * Move AES_KEY into GCM128_KEY, GCM128_KEY out of GCM128_CONTEXT
+  * Always provide a ctr32_encrypt_blocks function
+  * Move ML-KEM into the FIPS module
+  * ML-DSA: drop parsing private keys from the public API.
+  * Slightly simplify SSLBuffer
+  * delocate: support floating point literals in AArch64 asm.
+  * ML-DSA ACVP
+  * Add ML-DSA-87 in the FIPS module.
+  * Move ML-DSA and Keccak into the FIPS module.
+  * utils/fipstools: add DetECDSA ACVP support
+  * Fix include
+  * Start maintaining an AUTHORS file
+  * Manually reflow some comments in file headers
+  * Work around issue with GCC 8.5 and earlier
+  * Ensure that AVX512 is not used on macOS
+  * Add missing $ to immediate in aes-gcm-avx10-x86_64.pl
+  * Add VAES and VPCLMULQDQ accelerated AES-GCM
+  * Refresh fuzzer corpus
+  * Support ECH with DTLS 1.3
+  * Remove extra va_end in err_add_error_vdata
+  * Fix pointer arithmetic in ASN1_item_ex_free
+  * Bump the MODULE.bazel version again
+  * Use BAZEL_CURRENT_REPOSITORY to pick up test data files
+  * Cover DTLS 1.3 in the TLS fuzzers
+  * Implement the downgrade protection signal in DTLS 1.3
+  * Switch to the actual DTLS 1.3 codepoint
+  * Correctly re-ACK client Finished in DTLS 1.3
+  * Resolve a couple DTLS 1.3 TODOs in tests
+  * Run record padding tests in DTLS 1.3 as well
+  * spx: remove
+  * Don't report ChangeCipherSpec through the message callback in QUIC
+  * Run TLS 1.3 per-message tests in DTLS
+  * Move 0-RTT-related DTLS 1.3 TODOs to a child bug
+  * Support sending KeyUpdate in DTLS 1.3
+  * scrypt: increase default memory limit.
+  * Make `bcm_infallible` and `bcm_status` enum classes
+  * Fix DTLS cross-version resumption tests
+  * Print the OS error when bssl_shim hits SSL_ERROR_SYSCALL
+  * Rework how DTLS ACKs and retransmits are flushed
+  * Call BIO_flush when sending a DTLS 1.3 ACK
+  * Add SSL_is_quic API
+  * Test that post-handshake flows do not implicitly ACK Finished
+  * Check for message sequence overflow in DTLS
+  * Remove centos7_java11_devtoolset10 from BCR presubmits
+  * Implement receiving KeyUpdates in DTLS 1.3
+  * Run clang-format on ssl.h
+  * Remove Dilithium in favor of ML-DSA
+  * Bump MODULE.bazel to 0.20241203.0
+  * Implement CRYPTO_addc_* and CRYPTO_subc_* in C++ more straightforwardly
+  * Mark some local symbols as static
+  * Remove redundant GCM tests
+  * Add EVP_MD_CTX_get0_md
+  * Update tools and add a .bazelversion
+  * Speed up sha512 on x86
+  * crypto: switch to C++
+  * Remove the old SSL_R_APPLICATION_DATA_INSTEAD_OF_HANDSHAKE logic
+  * Don't access the read_buffer directly in read_v2_client_hello
+  * Don't refer to key_update_requested responses as ACKs
+  * Test ACKing and reassembly of post-handshake messages
+  * runner: Move some test bugs into the callback
+  * Test that the DTLS 1.3 server retransmits NewSessionTicket correctly.
+  * Fix OPENSSL_NO_ASM build for ARM
+  * Document expected operations on libssl custom BIOs
+  * Gate -fno-rtti on BORINGSSL_ALLOW_CXX_RUNTIME
+  * Tweak comment in thread.h slightly
+  * Build with -Wextra-semi in Clang
+  * runner: Move receivedFlightRecords tracking up a layer
+  * Remove outdated DTLS 1.3 test suppression
+  * runner: Remove unused skipPacket method
+  * Remove stale DTLS 1.3 TODO
+  * Schedule ACKs when we receive a partial flight
+  * Introduce a DTLSTimer abstraction
+  * Check for QUIC in SSL_process_quic_post_handshake
+  * runner: Remove outdated FragmentClientVersion logic
+  * Test DTLSv1_get_timeout behavior
+  * runner: Add a helper to read and downcast a message
+  * runner: Rearrange 0-RTT code in server slightly
+  * Return OPENSSL_timeval by value
+  * Call the message callback for DTLS 1.3 ACKs
+  * Better track final vs early versions
+  * Update the default retransmit timeout for DTLS
+  * runner: Remove unused SendHalfRTTData option
+  * Send one ACK immediately after the handshake in DTLS 1.3 servers
+  * clang-format all of ssl
+  * Include <memory> in mldsa.cc
+  * Support skipping tickets in both ticket callbacks
+  * Exercise SSL_TICKET_AEAD_METHOD in runner
+  * Disable sdallocx detection by default
+  * Correctly retransmit the final flight in DTLS 1.3
+  * Track SSL session types a bit better on the client
+  * Don't pack fragments as efficiently for plaintext records
+  * Reject NewSessionTicket messages with empty tickets in TLS 1.3
+  * Remove stray semicolon
+  * Update the timer API for DTLS 1.3
+  * runner: ACK flights in DTLS 1.3 by default
+  * Handle implicit ACKs in DTLS 1.3
+  * Use DTLS 1.3 ACKs to avoid retransmitting ACKed fragments
+  * SLH-DSA: support SHA-384 as the prehash function instead.
+  * Test that DTLS retransmit can react to MTU changes
+  * Redo DTLS retransmit tests
+  * runner: don't assume BlockMod implements SetIV
+  * Remove redundant tests.
+  * Fix up a DTLS 1.3 comment.
+  * Run some DTLS tests across all versions
+  * Stage new DTLS 1.3 read epochs until the first record comes in
+  * acvptool: unbreak tests.
+  * Add support for prehashed SLH-DSA.
+  * Pack DTLS fragments into records when possible
+  * runner: Retain past epochs
+  * runner: Move epoch state into a separate structure
+  * Don't attempt to send early data in DTLS 1.3.
+  * Don't issue early data capable tickets in DTLS 1.3.
+  * runner: Remove explicit seq parameter to encrypt and decrypt
+  * runner: Remove unnecessary config parameter to hc.changeCipherSpec
+  * runner: Remove redundant check for (D)TLS 1.3 in test code
+  * Adding Debug derivation for RSA PublicKey
+  * runner: Flush DTLS fragments on key change in our 1.3 test stack
+  * Remove now redundant check for extra DTLS messages in epoch 1
+  * fix indexing_slicing and unwrap warnings
+  * Update Cargo.toml after the cfg rename
+  * Copy bindings to OUT_DIR in bssl-sys build.rs
+  * mldsa: abstract over the matrix size.
+  * utils/fipstools: add SHAKE-128/256 ACVP support
+  * Spanify the DTLS packet assembly logic a bit
+  * Implement a fixed-width ring buffer for DTLS 1.3
+  * Amortize invariant maintenance in DTLSMessageBitmap
+  * add some details to releaseing.md
+  * Store an Array in hm_fragment
+  * Use DTLSRecordNumber in DTLSWriteEpoch
+  * mldsa: convert to C++
+  * Return the record number out of the DTLS record layer
+  * Update BCR to 20241024.0
+  * Resolve DTLS 1.3 TODOs in ssl_test.cc.
+  * Never reconstruct 1.3 record numbers above 2^48-1
+  * enable honor_gerrit_linked_accounts for boingssl
+  * Allow bssl_shim to be ptraced by anyone if waiting for a debugger
+  * Rename DTLS 1.3 TODOs.
+  * Pull the DTLS reassembly bitmap into its own abstraction
+  * Have modulewrapper print more of its build environment.
+  * Standardize on Init vs InitForOverwrite for value vs default initialization
+  * Move tests for libssl's internal utilities into a separate file
+  * Process (and ignore) DTLS 1.3 ACK messages.
+  * util/fipstools: add EDDSA ACVP support
+  * Support resumption in DTLS 1.3.
+  * Move RecordNumberEncrypter to DTLS-specific state
+  * Store DTLS epoch state separately
+  * Copy the infra/config branch into an infra/config subdirectory
+  * Improve handling of DTLS 1.3 post-handshake messages.
+  * Don't use OPENSSL_ARRAY_SIZE with an InplaceVector
+  * utils/fipstools: add PBKDF ACVP support
+  * utils/fipstools: fix ACVP test data comments
+  * util/fipstools: SHA2-512-224 ACVP.md updates
+  * Suppress cast function type warnings where needed for bio
+  * Add SSL_set0_CA_names to configure the CA extension
+  * Choose matching credentials if we have ca_names
+  * Fix transcript hash for DTLS 1.3.
+  * Add the CA extension to client hello
+  * Add ssl_has_CA_names and ssl_add_CA_names
+  * Change around some "client CA" things
+  * Add ChainContainsIssuer to SSL_CREDENTIAL
+  * Drop the transcript buffer before hashing ClientHello whenever possible
+  * runner: Use some new Go conveniences
+  * Use InplaceVector for the various handshake derivations
+  * rust: add SLH-DSA support.
+  * Fix a typo in scrypt docs
+  * util/fipstools: SHA2-512-224 ACVP primitives
+  * Switch outgoing_messages to InplaceVector
+  * Add a bssl::InplaceVector to libssl
+  * Bounds-check bssl::Array and bssl::Vector
+  * Make bssl::Vector not require a default constructor
+  * Use the STL helpers for managing uninitialized buffers in bssl::Array
+  * Bump the minimum MSVC version to 2022
+  * Move `alignas` to start of declaration.
+  * Rename GrowableArray to Vector
+  * Simplify SSLAEADContext::Create slightly
+  * Rename default credential to legacy credential
+  * Use the same EVP_AEADs for TLS and DTLS
+  * Remove redudant version information from SSLAEADContext
+  * Indirect stderr through a function
+  * Note that the tag won't mirror to GitHub immediately
+  * Fix the endianness of DTLS 1.3 ChaCha20 record number encryption
+  * Bump module version and Bazel dependencies
+  * rust: add wrappings for ML-KEM and ML-DSA.
+  * Use illegal_parameter instead of decode_error for invalid key shares
+  * Avoid an allocation when deriving the DTLS record number key
+  * Do not implement SSL_get_traffic_secrets for QUIC and DTLS
+  * go mod tidy
+  * rust: minor changes resulting from safety review.
+  * rust: make bssl-sys `no_std`.
+  * Check for 0-RTT vs final version mismatches earlier
+  * Remove redundant have_version bit
+  * Add a test for a subtle corner of 0-RTT and version tracking
+  * Move ssl->version to ssl->s3->version
+  * Add test for how SSL_version interacts with SSL_clear and the initial state
+  * Rearrange 0-RTT key schedule setup slightly
+  * Check for HelloRetryRequest in the ServerHello state
+  * Rework the Bazel workaround's relationship with linkstatic
+  * Work around a workaround of a workaround of a Bazel bug
+  * Extract SHA384/SHA512/SHA512_256 from bcm
+  * Test SSL_get_ivs across all versions and TLS/DTLS
+  * [DTLS 1.3] Use HelloRetryRequest in place of HelloVerifyRequest.
+  * runner: Slightly simplify sequence number management
+  * runner: Remove block pool
+  * runner: Fix up how hpke and kyber get their test data
+  * hex-search-modify: add tool used in FIPS validations.
+  * break-kat.go should have a copyright header.
+  * Add some more no-op OPENSSL_INIT_* options for compatibility
+  * Store state for each DTLS epoch.
+  * Add some compatibility symbols
+  * DTLS 1.3 doesn't use EndOfEarlyData
+  * slhdsa: fix some ClangTidy warnings.
+  * slhdsa: clang-format
+  * Update deny-toml to match new version format
+  * Write custom tooling for publishing to BCR
+  * Sync presubmit.yml from BCR
+  * Add templates for Publish to BCR
+  * Prepare to tag 0.20240913.0 as the first periodic snapshot
+  * Extract SHA224/256 from bcm
+  * Fix delocate with the aarch64 NO_ASM build
+  * Add SLH-DSA-SHA2-128s from FIPS 205.
+  * Don't define `OPENSSL_cpuid_setup` in NO_ASM builds.
+  * Bump the minimum CMake version to 3.16
+  * Extract SHA1 from bcm
+  * Switch to rules_license
+  * Update bzlmod dependencies
+  * break-kat: update to run all tests directly.
+  * Don't enable asm if OPENSSL_NO_ASM is set.
+  * nist-pkits: update README.chromium metadata
+  * Remove the bcm md5 assembler files.
+  * Extract MD5 from bcm
+  * Revamp test coverage for invalid key shares
+  * Leave some more breadcrumbs in docs for error-handling
+  * Extract md4 from bcm
+  * Rename SPX files to have `spx_` prefix.
+  * Fix all_tests.go test counts
+  * Remove now unnecessary OPENSSL_init_cpuid call
+  * Clarify BN_uadd and BN_usub's documentation
+  * Simplify some unnecessary sign bit juggling
+  * Consistently use accessors in service_indicator.c.inc
+  * Fix some missing includes in BCM
+  * Remove OPENSSL_ia32cap_P references from ChaCha20-Poly1305 assembly
+  * Remove OPENSSL_ia32cap_P references from P-256 assembly
+  * Mark the CPU capability helpers as const, not just pure
+  * Remove some stray debugging
+  * Move ecp_nistz256_from_mont out of the header
+  * Add DTLS 1.3 sequence number encryption
+  * Allow empty passwords in PEM password callback
+  * DTLS 1.3 compatibility mode fix in test runner.
+  * Rename bcm.c fragments to foo.c.inc
+  * Fix some mistakes in build.json
+  * Move fork detection support out of bcm
+  * Move urandom and OS entropy support out of BCM
+  * Add an optional Bazel package to CI
+  * Extract C++ files, rather than C, when working around Bazel bugs
+  * Fix a couple more IWYU errors
+  * Disable parse_headers feature
+  * Fix IWYU issue in internal header
+  * Support detecting preference for ymm registers over zmm
+  * Support detecting AVX512BW, AVX512VL, VAES, and VPCLMULQDQ
+  * Fix one of two issues breaking the Bazel build
+  * Fix generate_build_files.py
+  * Add a pre-generated GN source list
+  * Implement X25519MLKEM768 for TLS
+  * Update README with new bugtracker links
+  * Clarify that ASN1_STRING reprs are not always the DER one
+  * Add P-256 KEM to HPKE.
+  * Specify the list of Rust files with build.json
+  * Remove the unused MLKEM1024_SHARED_SECRET_BYTES
+  * Use BSSL_NAMESPACE_{BEGIN,END} macros more consistently
+  * runner: Convert a few more of the test stack's parsers to cryptobyte
+  * Move ECDSA_SIG out of BCM
+  * Don't use weak symbols in the EDK2 build.
+  * Specify the list of fuzzers with build.json
+  * Add tests for reconstruct_seqnum.
+  * Silence clang-tidy warnings in ML-KEM
+  * ML-DSA: focus the API on saving private keys as seeds.
+  * Fix some ClangTidy nits in ML-DSA.
+  * Add ML-KEM.
+  * Deprecate the experimental dilithium code.
+  * Implement DTLS 1.3 record header.
+  * Add ML-DSA.
+  * [riscv64] Add qemu-static CIPD dependency for RISC-V checkouts
+  * Final cleanup pass in BN_div
+  * Remove remaining running pointers in BN_div
+  * Split off DTLS record header parsing in test runner.
+  * Remove the confusing extra word in BN_div
+  * Add Sapphire Rapids to SDE tests
+  * Correct DOS line endings.
+  * Comment the core BN_div loop
+  * Include <string> in pki/string_util.h
+  * Add RSA 3072 to bssl SpeedRSA benchmark.
+  * Clear AVX512 feature bits when AVX512 not actually supported
+  * Size res in BN_div correctly
+  * Remove resp variable in BN_div
+  * Simplify and clarify the snum padding logic in BN_div
+  * Reverse the loop variable in BN_div and assert pointer invariants
+  * Clean up some BN_div variable declarations
+  * Comment what "normalize" means in BN_div
+  * Remove the now impossible BN_R_NOT_INITIALIZED check in BN_div
+  * Refactor record header length in test runner.
+  * Pass additional parameters to decrypt() in test runner.
+  * Fix documentation missed in 82f9853fc7.
+  * Cite where BN_div actually comes from
+  * Move discussion on BN_div's sign to the headers
+  * Update the bn_div_rem_words comment
+  * Use "dtls13" label prefix for DTLS 1.3.
+  * Update build tools
+  * Add preprocessor bits for the EDK2 target.
+  * [jumbo] Mark Span and Input as satisfying view and borrowed_range.
+  * Add Certs method to CertIssuerSourceStatic to return all certs.
+  * CFI tag AES-NI key expansion helpers.
+  * Remove util/bot/go/env.py
+  * Sort build.json
+  * Add virtual destructors.
+  * Disable compatibility mode for DTLS 1.3.
+  * Add ssl_compliance_policy_cnsa_202407
+  * Add runner test support for DTLS 1.25
+  * Implement DTLS 1.25
+  * Add a comment showing how to update a hash generically.
+  * Clarify SCT resumption comment
+  * Declare our `cfg()`s in Cargo.toml
+  * Add link to 2022 FIPS certificate.
+  * Adds functionality for instantiating and using `Algorithm`
+  * Use dtls_record_header_write_len instead of DTLS1_RT_HEADER_LENGTH.
+  * optimize constant_time_conditional_memxor for gcc
+  * Compute should_ack_sni in one place
+  * Add ECH fallback API
+  * Update Go dependencies
+  * Make go mod tidy work better
+  * Add QEMU user option for running tests.
+  * Add DILITHIUM_public_from_private function.
+  * Reapply "Fix test_fips in google3"
+  * [DTLS] Use absolute instead of relative epoch numbers.
+  * Revert "Fix test_fips in google3"
+  * Fix test_fips in google3
+  * Ensure CRYPTO_needs_hwcap2_workaround works without CRYPTO_library_init
+  * Work around GCC's broken -Warray-bounds warning
+  * Rewrite CBS_get_asn1_int64 slightly
+  * Make BoringSSL initialization-less
+  * Call CRYPTO_library_init before ChaCha20 and P-256 assembly
+  * test_fips: two tweaks
+  * Add EDDSA support for fetching and uploading vectors
+  * test_fips: don't forget a couple of \n's
+  * Add the Revision field to third_party/fiat/README.chromium
+  * Implement rsa_pkcs1_sha256_legacy.
+  * Send a consistent alert when the peer sends a bad signature algorithm
+  * Fix pointers in CONSTTIME_DECLASSIFY.
+  * Revert "Adds functionality for instantiating and using `Algorithm`" and friends.
+  * Remove OPENSSL_ia32cap_P references from AES-NI assembly
+  * [bogo] Compute length in record header before encrypting.
+  * Remove Knights Landing and Knights Mill logic
+  * Extract the AES-NI encrypt -> decrypt assembly conversion
+  * Update other CI tools
+  * Allow local labels in symbol expressions
+  * Handle notrack instructions in delocate output
+  * Update Clang in CI
+  * Include subcomponents in the bugtracker link
+  * Update links to bugtracker
+  * Make the bug tracker link be buganizer
+  * Make SSL_select_next_proto more robust to invalid calls.
+  * Add missing trait "use" in doc tests
+  * Test various empty string cases with NPN callbacks
+  * Mark kyber as experimental
+  * remove un-needed muts which were causing build warnings/errors
+  * Adds functionality for instantiating and using `Algorithm`
+  * Tidy up dilithium_test.cc
+  * Move GCMTest.ByteSwap to crypto_test.cc
+  * Fix the indentation in gen/sources.bzl
+  * Revert "Move unit tests out of bcm/fipsmodule"
+  * Revert "Also extract the test data files from bcm"
+  * Fix build with -Wctad-maybe-unsupported
+  * Also extract the test data files from bcm
+  * Move unit tests out of bcm/fipsmodule
+  * Fix some enum issues in the test-only BORINGSSL_FIPS_COUNTERS build
+  * Set the minumum TLS version to (D)TLS 1.2 by default
+  * Fix the "-with-bazel" branches
+  * Don't bother checking for NULL pointers in AES key schedule assembly
+  * More ECH certificates
+  * Add error string to JSON test result output
+  * Add edge-case tests for Dilithium, and fix a bug that sneaked in with the constant-time transformation.
+  * Use SEH directives for aes_hw_set_encrypt_key and aes_hw_set_decrypt_key
+  * Check DSA size limits in a couple more places
+  * The FIPS hash is only 32 bytes, not 64 bytes
+  * Enable -expect-curve-id in NotJustKyberKeyShare
+  * Disable DilithiumTest.BitFlips test
+  * Expose the FIPS module hash at build- and run-time.
+  * Reject invalid IPv4 addresses in ipv4_from_asc
+  * Move fiat_p256_adx assembly to the right build target
+  * use AT&T syntax in fiat_p256_adx
+  * Don't define CRYPTO_addc_* and CRYPTO_subc_* in C++
+  * Re-add a way to run embed_test_data.go for now
+  * Namespace crypto/test/file_util.h
+  * Fix the Bazel build
+  * Fix alignment of generated UNWIND_INFO structures
+  * Add crypto_test_data to the AndroidCMake build
+  * Document and test stance on non-canonical base64
+  * ACVP updates.
+  * Align perlasm SEH directives with gas/clang-assembler
+  * Remove no-op register move from ChaCha20_ctr32_ssse3_4x
+  * Re-remove redundant OPENSSL_IA32_SSE2 from perlasm commands
+  * Replace conf_def.h with straightforward functions
+  * Remove X509_STORE_set_get_crl and X509_STORE_set_check_crl
+  * Add re-exports for making inline functions available
+  * Add HPKE secret export and implement Send for EvpHpkeCtx.
+  * Make Dilithium pass constant-time validation
+  * bn: Move dispatching logic from x86_64-mont5.pl to C.
+  * Add verify.cc and verify.h as top level public API.
+  * Add certificates to the remaining ECH client tests
+  * Re-apply dilithium and make it work with a limited stack
+  * Add tests for some odd escaping behavior in the CONF parser
+  * Test some more CONF edge cases
+  * Move dispatch from sha512-586.pl to C
+  * Allow creation of HKDF using PRK bytes.
+  * Remove SSE2 checks in 32-bit x86 assembly
+  * [DEPS] Migrate from Chromium git to CIPD
+  * Make googletest a full dependency, not a dev_dependency
+  * Rename function pointers to avoid shadowing global declaration
+  * Don't add extra 'informational' errors in the delegate
+  * Remove remnants of C++ runtime workarounds
+  * Add a standalone Bazel build
+  * Reset DTLS1_BITMAP without resorting to memset
+  * Add an OUT_DIR option for finding bindgen output for Android
+  * Discuss pointer rules in even more detail in API-CONVENTIONS
+  * short-circuit verification on invalid SPKI
+  * Add certificates to a couple of tests
+  * Change unsupported KEM identifier
+  * Add a CLIENT_AUTH_STRICT_LEAF and SERVER_AUTH_STRICT_LEAF which do STRICT requirements on the leaf certificate, and not STRICT on the rest of the chain.
+  * Make SSL_CTX_set_keylog_callback constant time
+  * clarify a few tests
+  * Add some tests for SSL_CTX_set_keylog_callback
+  * Switch some pointer arithmetic to spans
+  * Disable fork detection for Zephyr and CrOS EC
+  * Enable thread support for Zephyr RTOS
+  * Fix Zephyr define and description
+  * Remove unnecessary NULL checks
+  * Avoid strdup in crypto/err/err.c
+  * Increase DTLS window size from 64 to 256
+  * delocate: handle more SVE2 forms.
+  * Disable `-Wcast-function-type-strict` for `BORINGSSL_DEFINE_STACK_OF_IMPL.`
+  * Set service indicator for TLS 1.3 KDF.
+  * Rewrite RAND_enable_fork_unsafe_buffering documentation
+  * Document that our Unicode APIs reject noncharacters
+  * Add missing public header for libpki
+  * Switch EVP_CIPHERs to C99 initializers
+  * Add a PrivacyInfo plist file
+  * Make Go an optional build dependency for the CMake build
+  * Install the Windows toolchain under util/bot
+  * Reflect latest FIPS updates, including 186-5.
+  * Update CI build tools
+  * [rust] Tell Cargo to link cpp runtime library
+  * Update run_android_tests to exit on invalid ABI
+  * Move fips_fragments into bcm.internal_hdrs in build.json
+  * Move internal headers to build.json
+  * Flatten crypto/CMakeLists.txt into the top-level
+  * Move crypto_sources to build.json
+  * Specify public headers in build.json
+  * Rework the test data story
+  * Move the rest of sources.cmake into util/pregenerate
+  * Use source lists to find pki_test data in run_android_tests.go
+  * Move test data lists to util/pregenerate
+  * Support glob patterns in build.json
+  * Correctly sort err_data.c inputs
+  * Regenerate err_data.c
+  * Check in pre-generated perlasm and error data files
+  * Flatten crypto/fipsmodule/CMakeLists.txt up a layer
+  * Document that null STACK_OF(T) can be used with several functions
+  * Remove unused flags argument from trust handlers
+  * Build fips_shared_support.c as part of libcrypto
+  * Make it plainly obvious this is experimental code.
+  * Add some barebones support for DH in EVP
+  * Add verify_errors as public error API
+  * Fix EVP_PKEY_CTX_dup with EC generation
+  * Start making asserts constant-time too
+  * Clear some more false positives from constant-time validation
+  * Fix X509_ALGOR_set_md()
+  * Trim unused files from PKI_TEST_DATA
+  * Remove unnecessary LINKER_LANGUAGE setting in CMake build
+  * Move ssl and decrepit sources to sources.cmake
+  * Add threading documentation to DH and DSA
+  * Make EVP_PKEY_type into the identity function
+  * Move EVP_PKEY setters to their corresponding type-specific files
+  * Avoid EVP_PKEY_set_type in EVP_PKEY_new_raw_*_key
+  * Remove some unnecessary dependencies on EVP_PKEY_set_type
+  * Gate -Wframe-larger-than on Clang 13
+  * Make ninja run_tests output less confusing
+  * X509_ALGOR_set_md is a mess, document it
+  * Filter out DW.ref.__gxx_personality_v0 in read_symbols.go
+  * Remove unused app_data from EVP_CIPHER
+  * Re-remove unnecesary stat calls from by_dir.c
+  * Add a regression test for error handling and hash_dir
+  * Fix spelling of Identifier
+  * Revert "Remove unnecessary stat calls from by_dir.c"
+  * Don't dereference hs->credential on TLS 1.2 PSK ciphers
+  * Add ERR_lib_symbol_name and ERR_reason_symbol_name
+  * Add BIO_FP_TEXT
+  * Fix a number of cases overwriting certificates, keys, etc. with SSL_CREDENTIAL
+  * Set -Wframe-larger-than=25344 for a typical cmake clang compile.
+  * Make crypto_test build with -Wframe-larger-than=25344
+  * Revert "Add a Dilithium implementation."
+  * Fix sha1 dynamic dispatch issues.
+  * Remove an unused runner/shim flag in SSL tests
+  * Only negotiate ECDHE curves and sigalgs once
+  * Add an SSL_CREDENTIAL API for ECDSA/RSA and delegated credentials
+  * Rename CRYPTO_get_ex_new_index to CRYPTO_get_ex_new_index_ex
+  * Remove unused group_id parameter in TLS 1.3 cipher suite selection
+  * Check ECDSA curves in TLS 1.2 servers
+  * Inline CBS_init, CBS_data, and CBS_len
+  * Check client certificate types in TLS <= 1.2
+  * runner: Add a test for hint mismatch due to public key
+  * Add a Dilithium implementation.
+  * Tidy up Rust HPKE binding.
+  * Move spx from internal to include/openssl/experimental
+  * runner: Configure all relevant fields from the Credential type
+  * runner: Rename CertificateChain to Credential
+  * Align CRYPTO_get_ex_new_index with the public API's calling convention
+  * Make bssl_shim's setup logic infallible
+  * Slightly simplify ssl_x509.cc
+  * Forbid RSA delegated credentials
+  * Fix delegated credential signature algorithm handling
+  * Make DelegatedCredentials-KeyMismatch test less confusing
+  * Use slices.Contains in ssl/test/runner
+  * Fold ssl_add_cert_chain into its caller
+  * runner: Remove the ability to configure multiple certificates
+  * runner: Use go:embed
+  * Generate certs on the fly in runner, pass trusted cert to shim
+  * Make pki_sources available to Soong
+  * Finish documenting x509.h
+  * Add safety coments to bssl-sys
+  * Test X509_verify_cert with CAs that share a name
+  * Document the remaining struct types in x509.h
+  * Expand and document the remaining DECLARE_ASN1_* macros
+  * Unexport i2d, d2i, and ASN1_ITEM for X.509 interior types
+  * Document filesystem-based X509_STORE APIs
+  * Document APIs relating to built-in and custom extensions
+  * Add tests for what happens when no certificate is configured
+  * Introduce a test helper for asserting on the error
+  * Make an include/openssl/experimental. Move kyber to it for now.
+  * Deprecate and simplify SSL_CTX_check_private_key
+  * Use a more fine-grained lock in by_dir.c
+  * Remove unnecessary stat calls from by_dir.c
+  * Use std::copy instead of OPENSSL_memcpy for the internal bssl::Array::CopyFrom
+  * Consistently open files in binary mode on Windows
+  * Add some tests for X509_LOOKUP_hash_dir
+  * Add some utilities for testing temporary files
+  * Remove redundant piece of DC state
+  * Test an unusual split between context and connection configuration
+  * Remove redundant bssl_sys import
+  * Remove some impossible null checks
+  * Remove some indirection in SSL_certs_clear
+  * Make an internal RefCounted base class for libssl
+  * Const-correct the 'kstr' parameter of PEM functions
+  * Implement Hybrid Public Key Encryption in Rust.
+  * Use BIO_TYPE_* constants for flags
+  * Move capability checks in sha256-586.pl to C
+  * Integrate TLS 1.2 sigalg and cipher suite selection
+  * Remove old "check for P4" in sha256-586.pl
+  * Document some miscellaneous x509.h functions
+  * Move capability checks in sha1-586.pl to C
+  * Write down the bounds for the sha*_block_data_order functions
+  * Move capability checks in chacha-x86.pl to C
+  * Remove OPENSSL_IA32_SSE2 checks in x86 perlasm
+  * Update delegated credentials to the final RFC
+  * Don't report libpki headers as part of libcrypto
+  * Add a no-op OPENSSL_INIT_NO_ATEXIT
+  * bssl-crypto: remove unused code.
+  * Add x509.h to doc.config
+  * Unexport DIST_POINT_set_dpname
+  * Allow a C++ runtime dependency in libssl
+  * Rewrite the warning about X509_AUX
+  * Remove pki/tag.h
+  * Work around bindgen bug around constants
+  * Guard C++ headers.
+  * Include verify_unittest files in PKI_TEST_DATA
+  * Switch to bindgen's static inline support
+  * Document X509_V_FLAG_*
+  * Merge X509_PURPOSE/X509_TRUST IDs and indices
+  * Unexport most of X509_TRUST and X509_PURPOSE and simplify
+  * Remove X509_TRUST_DEFAULT
+  * Add X509_STORE_get1_objects
+  * Mark ASN1_STRFLAGS_* and XN_FLAG_* with the right type
+  * Remove unused include in now public header
+  * Move signature_verify_cache.h to openssl/pki as public api
+  * Make ContainsError look only for Errors, not Warnings.
+  * Don't assume that Fiat assembly is available on Windows.
+  * Add public API for a certificate.
+  * Allow the delegate to indicate it wishes to accept PreCertificates when building chains.
+  * Use uint64_t for num_read and num_write in BIO
+  * Add functions to convert from Span<const uint8> and std::string_view
+  * Minor formatting fixes
+  * Expose OPENSSL_timegm in posix_time.h
+  * Add SSL_get0_chain method
+  * Tighten up the warning about RSAES-PKCS1-v1_5
+  * Avoid conversion overflow from struct tm.
+  * Ensure additions in this call can't overflow.
+  * Create a new NameConstraints constructor that takes in an already constructed GeneralNames object for permitted names.
+  * Fix strict aliasing issues with DES_cblock
+  * Require SSE2 when targetting 32-bit x86
+  * Remove unused files from pki
+  * Move NEON dispatch in bn_mul_mont to C
+  * Rewrite bn_big_endian_to_words to avoid a GCC false positive
+  * Enable SSE2 intrinsics on MSVC
+  * Rename <openssl/time.h> to <openssl/posix_time.h>
+  * Tweak generate_build_files.py output to pass gn's formatter
+  * Remove remnants of the old Android CMake toolchain
+  * bn: Move ia32cap_P references from x86_64-mont.pl to C.
+  * Stop generating unused assembly for 32-bit iOS
+  * Fix SHA ABI tests
+  * sha: Move Armv7 dispatching to C (reland)
+  * bn: Move x86-64 argument-based dispatching of bn_mul_mont to C.
+  * Import upstream's tests for DES_ede3_cfb_encrypt
+  * Move single-use macros from internal.h to des.c
+  * Unexport uint32_t-based DES APIs
+  * Import upstream tests for CVE-2024-0727
+  * aes gcm: Remove Atom Silvermont optimizations.
+  * Arrange other X509_STORE, etc. symbols into sections
+  * Simplify purpose checks
+  * Stop processing the Netscape cert type extension
+  * Remove X509_STORE_CTX_purpose_inherit
+  * Document and test X509_PURPOSE and X509_TRUST machinery
+  * Fix threads detection for CROS_EC/CROS_ZEPHYR
+  * Stop passing der::Input by const-ref
+  * Make der::Input a little closer to Span
+  * Remove pki/patches
+  * Document assumptions made by bssl-crypto's unboxed HMAC_CTX
+  * delocate: update to handle SVE2
+  * Use four-iterator std::equal for bssl::Span::operator==
+  * Avoid unions in CCM
+  * Reworking bssl_crypto: don't use zero keys in examples.
+  * Fix AES-GCM-SIV with huge inputs on 32-bit.
+  * Reworking bssl_crypto: support AES-GCM-SIV open_gather.
+  * Reworking bssl_crypto: bump version and fix license.
+  * Reworking bssl_crypto: Sync+Send for ECC and RSA.
+  * Reworking bssl_crypto: tidy up module list.
+  * Reworking bssl_crypto: Add RSA support
+  * Reworking bssl_crypto: Ed25519
+  * Reworking bssl_crypto: add ECDSA support
+  * Reworking bssl_crypto: rand
+  * Reworking bssl_crypto: ECDH
+  * Reworking bssl_crypto: make with_output_array_fallible use a bool.
+  * Reworking bssl_crypto: AES
+  * Reworking bssl_crypto: AEAD
+  * Clarify that X509_NAME_hash(_old) are specific to hash-dir
+  * Reduce the BER conversion recursion depth
+  * Fix a bug detecting BER deeply nested inside DER
+  * Replace CONF's internal representation with something more typesafe
+  * Elaborate a bit on static vs dynamic EC_GROUPs in documentation
+  * Have generate_build_files.py output Rust sources.
+  * Make the debug vs release build note in BUILDING.md more prominent
+  * Simplify Montgomery RR precomputation.
+  * Update build tools on CI
+  * Disable the __SHA__ static check for now
+  * Update Go dependencies
+  * Clear some false positives in constant-time validation
+  * Fix segfault if CRYPTO_set_thread_local fails and calls rand_thread_state_free.
+  * Move CRL_REASON_* back to x509v3.h
+  * Reworking bssl_crypto: HMAC
+  * Reworking bssl_crypto: HKDF
+  * Reworking bssl_crypto: imports_granularity = "Crate"
+  * Reworking bssl_crypto: digest
+  * Reworking bssl_crypto: x25519
+  * Revert "sha: Move Armv7 dispatching to C"
+  * acvp: test with internal nonce generation.
+  * chacha: Move x86-64 CPU & length dispatching from assembly to C.
+  * Do not condition CRYPTO_is_RDRAND_capable on __RDRND__
+  * Fix PKI test data list in sources.cmake
+  * Remove all -1 returns from X509_check_purpose
+  * Add some more TSan tests for crypto/x509
+  * Don't define OPENSSL_LINUX for CROS_EC and CROS_ZEPHYR
+  * Remove X509_TRUST_OCSP_SIGN and X509_TRUST_OCSP_REQUEST
+  * Remove X509_{PURPOSE,TRUST}_{MIN,MAX}
+  * Some miscellaneous openssl/x509.h documentation fixes
+  * Const-correct a bunch of X509_STORE_CTX functions
+  * Move some deprecated X.509 functions into the deprecated section
+  * Const-correct X509_alias_get0 and X509_keyid_get0
+  * Add a missing error check for sk_X509_push
+  * Fix error-handling convention in x509_vfy.c and avoid -1 returns
+  * Forbid unusual return values out of verify_cb
+  * get_issuer can never return -1
+  * Make X509_V_FLAG_NOTIFY_POLICY into a no-op
+  * Remove X509_STORE_CTX_get0_current_issuer
+  * Test the X509_V_ERR_UNABLE_TO_VERIFY_LEAF_SIGNATURE codepath
+  * Remove remnants of Netscape Server Gated Crypto from the new verifier
+  * Make configure_callback in x509_test.cc take the X509_STORE_CTX
+  * Use X509_get0_pubkey to simplify things slightly
+  * Eagerly compute the cached EVP_PKEY in X509_PUBKEY
+  * Test signature verification in X509_verify_cert
+  * Fix X509_PUBKEY_set0_param to clear the cached EVP_PKEY
+  * Do a better job testing expiration checks
+  * Allow for the path builder to limit the number of valid paths.
+  * Warn more explicitly not to use the callback in SSL_set_verify
+  * Simplify some logic around X509_verify_cert callbacks
+  * Remove X509_STORE_set_get_issuer
+  * chacha: Move 32-bit Arm CPU dispatch from assembly to C
+  * chacha: Move ARMv8 OPENSSL_armcap_P dispatching from assembly to C.
+  * Restore the X509_EXTENSION ASN1_ITEM too
+  * Give WARNING paragraphs a splash of color
+  * Support lists and code blocks in doc.go
+  * sha: Add SSSE3 check to SHAEXT SHA-256 implementation.
+  * Give time.h a title and move to low-level infra group
+  * Restore the X509 ASN1_ITEM
+  * Add conf.h to the documentation output
+  * Skip emitting empty <pre> blocks in documentation
+  * Support medium memory models.
+  * Change certificate depth limit to match OpenSSL and document
+  * Fix X509_ATTRIBUTE_set1_data with negative attributes
+  * sha: Move Armv7 dispatching to C
+  * Disable 32-bit Arm assembly optimizations on iOS
+  * Assume the Arm assembler can handle ADR
+  * Document and fix up name hashing functions
+  * sha: Remove check for SSSE3 for AVX variants.
+  * Document functions that export verification internals
+  * sha: Move AArch64/X86-64 dispatching to C.
+  * Remove cert_verify_proc_blocklist.inc
+  * Call CheckPathAfterVerification in deadline/iteration limit case
+  * Fuzz more extension parsers in the cert parser
+  * Document GENERAL_NAME-related APIs
+  * Remove unused Chromium test data
+  * Remove fillins/log.h
+  * Unexport some STACK_OF types.
+  * Const-correct X509_TRUST and X509_PURPOSE
+  * Remove dynamic X509_TRUST and X509_PURPOSE registration
+  * Actually remove KU_* from x509.h
+  * Add distrust by SPKI to TrustStoreInMemory
+  * Move KU_* back to <openssl/x509v3.h>
+  * Document or unexport some more of x509.h
+  * Add missing include
+  * Consistently call CRYPTO_free_ex_data first
+  * Fix the names of some X509_STORE_CTX functions
+  * Simplify and document X509_VERIFY_PARAM inheritance
+  * Add a debugging log facility to the delegate.
+  * Unexport X509_VERIFY_PARAM_lookup
+  * Fix build with -Wmissing-field-initializers
+  * Remove X509_VERIFY_PARAM_get0_peername
+  * Document some key usage accessors
+  * Simplify and document X509_supported_extension
+  * Const-correct X509_LOOKUP_METHOD
+  * Fix KYBER_decap declaration
+  * Replace X509_LOOKUP_ctrl with real functions
+  * Name the hash functions in the Kyber implementation
+  * Pull the string-based extensions APIs into their own section
+  * Always use a 32-byte shared secret for Kyber
+  * Tidy up x509_lu.c functions a little
+  * Clean up the by_file_ctrl x509 code to be slightly less obtuse
+  * Use relative links in markdown files
+  * Merge <openssl/x509v3.h> into <openssl/x509.h>
+  * Merge crypto/x509v3 into crypto/x509
+  * Simplify X509_VERIFY_PARAM_new and X509_VERIFY_PARAM_free
+  * Remove X509_VERIFY_PARAM names
+  * Add a value barrier in p224_select_point
+  * Add CRYPTO_{addc,subc}_* functions to crypto/internal.h
+  * Implement the old FIPS 186-2 PRF
+  * Document some X509_VERIFY_PARAM and X509_STORE functions
+  * Remove a pile of unused X509_STORE callbacks
+  * add checkout command to BUILDING.md
+  * Move X509_INFO back into x509.h and document
+  * Give BIO an ex_data
+  * Remove fillins/openssl_util
+  * Remove unused fields in X509_LOOKUP and X509_LOOKUP_METHOD
+  * Fix some docs.go nits
+  * Unexport various unused X509_OBJECT and X509_LOOKUP functions.
+  * Add X509_OBJECT_new and X509_OBJECT_free
+  * Fix leak if X509_STORE_CTX_init is called on a previously initialized context
+  * Remove fillins/path_service
+  * Remove fillins/fillins_base64
+  * Remove fillins/file_util
+  * Remove fillins/fillins_string_util.[cc|h]
+  * Remove X509_STORE_CTX_zero
+  * Update README.md
+  * Remove IMPORT and related importing tools
+  * Use InsertBraces - and reformat pki as such
+  * Clang-format all of pki.
+  * Trim X509_INFO and move to crypto/pem
+  * Document ASN1_ITEM-based signing, etc. APIs
+  * Unexport some ASN1_ITEMs that aren't used externally
+  * Document X509_NAME comparison functions
+  * Document PKCS8_PRIV_KEY_INFO and X509_SIG
+  * Document X509_PUBKEY functions
+  * Remove pki/fillins/net_errors.h
+  * Remove the _BORINGSSL_LIBPKI_ defines
+  * Remove no longer reachable CRL path validation code
+  * Remove support for the certificateIssuer CRL entry extension
+  * Use the ASN1_BOOLEAN typedef in ISSUING_DIST_POINT
+  * Unexport the idp_flags constants
+  * Remove some remnants of indirect CRLs in CRL matching
+  * Remove the delta CRL special case on expiry
+  * Remove the now no-op CRL reasons loop
+  * Don't process DistributionPoints with a reasons field
+  * Remove the redundant idp_reasons field
+  * Remove removedFromCRL handling
+  * Remove dcrl output parameter in CRL lookup logic
+  * Don't parse delta CRL and CRL number extensions
+  * Remove EXFLAG_FRESHEST
+  * Remove delta and extended CRL support
+  * Manually unroll pi and rho steps in Keccak
+  * Don't prematurely run keccak_f in squeeze
+  * Remove X509_CRL_diff
+  * Expand and document RSA_PSS_PARAMS functions
+  * Document X509_REVOKED-related functions
+  * Const-correct and document trust/reject object APIs
+  * Limit the SHA_CTX workaround to C
+  * Simplify AES-GCM counter increment
+  * Remove unnecessary length check before OPENSSL_memcpy
+  * Test EVP_CTRL_AEAD_SET_IV_FIXED and friends
+  * Tighten the limit in ASN1_STRING_set further
+  * Fix delocate build rules with make
+  * Add basic C implementation of SPHINCS+-SHA2-128s.
+  * Update Go dependencies
+  * do not call memcpy directly in curve25519_64_adx.h
+  * Skip ForkDetect tests on iOS
+  * Add ALPS codepoint supports for split handshake
+  * Add missing include for waitpid
+  * Add a note about the list in target.h
+  * Teach delocate about a new directive that Clang is using.
+  * Make the pki private headers available to gn
+  * Sync pki to chromium 5934e28579cddeae3d9ae5b5974f8aae31f200dd
+  * Move Keccak code to its own folder and add an absorb API.
+  * Add support for fork detection via pthread_atfork()
+  * Error check X509_ALGOR_set0()
+  * Add some IWYU export pragmas
+  * Convert X509_NAME_get_text_by_[NID|OBJ] to return UTF-8
+  * crypto: remove kBoringSSLBinaryTag
+  * Export OPENSSL_NO_* defines in bssl-sys for consumption in rust-openssl
+  * Improve X509Test.NameAttributeValues coverage
+  * Edit bssl-sys setup instructions.
+  * Store NID_undef's ASN1_OBJECT outside the table
+  * Don't include NID_undef in short/long name tables
+  * Remove asn1_ex_clear from ASN1_EXTERN_FUNCS.
+  * Avoid GCC's -Wdangling-pointer warning in CBB
+  * Replace remaining references to __ARM_ARCH__ with __ARM_ARCH
+  * Update tools on CI
+  * Add support for 32bit break tests on Android.
+  * Fix path for modifiable libcrypto used in KAT testing.
+  * Add new asm files to generate_build_files.py
+  * sync pki to chromium 248754f767a6df29d26ebb7da231f22713924a7d
+  * Consistently use SIZE_MAX over (size_t)-1
+  * Also add OPENSSL_calloc
+  * Add OPENSSL_zalloc
+  * Add table-independent x86+adx asm for P-256
+  * Implement bssl-crypto wrappers for AES-CBC
+  * Add a comment for what compiler_test.cc is about
+  * Sync pki to chromium eddbcb143c7462e0b8d60e859b96d678ca0c013c
+  * Stop rewriting ret to repz ret on x86_64
+  * Make bssl-crypto no_std compatible
+  * Bump the minimum CMake version to 3.12
+  * CMake doesn't have an error function
+  * Require C11 in MSVC too
+  * Add support for the new ALPS codepoint
+  * Expose curves for ECDH
+  * Sync pki to chromium ce4bc9571462aa298d79b591df9d997323cf5157
+  * Help the compiler dedup ia32cap and armcap accesses
+  * Automatically call CRYPTO_library_init before C accesses
+  * acvptool: create fresh variables in loops.
+  * Sync pki to chromium 1ef93e346424a24fa27ee55a36254b6ee0f96e86
+  * Update googletest and include googlemock
+  * Return the correct value in EVP_CIPHER_CTX_iv_length after EVP_CTRL_AEAD_SET_IVLEN
+  * Add X25519 bindings for bssl-crypto
+  * Add ecdh and P256 bindings to bssl-crypto
+  * Update the warnings on split handshakes and handshake hints
+  * runner: Check that the shim HRRs echo the session ID
+  * Reland "Build with C11 on MSVC in the standalone Bazel build"
+  * Fix cargo clippy and fmt
+  * delocate: accept more directive expressions
+  * Initialize libunwind cursors from the signal handler's ucontext_t
+  * Remove another decltype(fclose)
+  * Save trampoline state in unwind tests more straightforwardly
+  * Explicitly mark saved registers with .cfi_restore
+  * Remove undesired OPENSSL_EXPORT's in non-library code
+  * Fix RBP-based unwind in fiat assembly
+  * Remove another OPENSSL_EXPORT in an enum
+  * Silence warn_unused_result warning on write() call
+  * Remove OPENSSL_EXPORT from enum in fillins/net_errors.h
+  * Ensure OPENSSL_EXPORT is only on the class not methods.
+  * Add pki file lists to generated gn build files
+  * Add Rust bindings to AES_CTR through EVP_* cipher API's
+  * Export CBS/CBB unicode functions
+  * rename fillins/string_util.h because gn is special
+  * rename fillins/base64.c to handle gn being special
+  * Also suppress OPENSSL_LINUX for nanolibc
+  * Add BN_bn2lebinpad and BN_lebin2bn
+  * Use a callable type for ScopedFILE in settings_writer.cc
+  * Add Rust bindings to AES-GCM through the EVP_AEAD_* APIs
+  * Deduplicate the three copies of OBJ_cmp
+  * Remove header file accidentally added to sources.cmake
+  * Sync pki to chromium d740199e083b70d13506973c6f479f0b01165a05
+  * Move the fuzzers into the fuzz directory and make them build.
+  * Fix typo in .size directives for aesni_gcm_encrypt
+  * Hook in ocsp into libpki, and run the ocsp unit tests.
+  * Update pki to chromium cf9a08ff8be3a3f2d5b13693cc13ef22ab7ee618
+  * Make a BSSL_CHECK that always aborts
+  * Add rust bindings to AES-GCM-SIV through the EVP_AEAD_* API's
+  * Add EVP_HPKE_KEY_move
+  * Default to q = (p-1)/2 for DH keygen
+  * Remove the CRYPTO_is_*_capable_at_runtime indirection
+  * Select SHA-256 vs SHA-512 explicitly in perlasm
+  * Hash-to-curve is now RFC 9380
+  * Add the rest of the new test data files to sources.cmake
+  * Align DH keygen with NIST's formulation when q is available
+  * add missing test file to sources.cmake
+  * Consistently reject large p and large q in DH
+  * use <errno.h> instead of <sys/errno.h>
+  * Document and test DH_generate_key's weird key reuse behavior
+  * Sync pki to chromium 8049b24a3fa617e66c5d3fc0e9322bb07c500f49
+  * Add a basic sanity test for getentropy() if we are using it.
+  * Add ChromeOS EC related targets
+  * Add rust API instability warning
+  * Fix FFI slice usage
+  * Remove the remaining old-style asm lists
+  * Remove the old asm lists from JSON and android-cmake output
+  * Disable assembly for Android's darwin build
+  * Split TLS 1.0 and 1.2 self checks.
+  * MD5 and SHA-1 are not actually approved in the TLS KDF.
+  * Restore OPENSSL_RAND_TRUSTY
+  * Remove old asm source lists from Android sources.mk
+  * Trim some redundant Arm feature detection files
+  * Stop duplicating the OPENSSL_armcap_P declaration
+  * arm64: Implement baremetal OPENSSL_cpuid_setup
+  * Switch the generated Soong (Android) build to the new asm source list
+  * Restore fuzz/session_corpus
+  * Mark all of bssl::Span as constexpr
+  * Sync pki to chromium aef592bb1b83f019c8342bbc2c476758ccb6098d
+  * Reflect OPENSSL_NO_SOCK and OPENSSL_NO_POSIX_IO into headers
+  * Use a stub fopen implementation when OPENSSL_NO_FILESYSTEM is set
+  * Link Googlers to the new porting policy doc
+  * Make the parse_certificate_fuzzer from libpki work inside boring.
+  * Fix the missing header issue for OPENSSL_NO_SOCK
+  * Mark the old sk symbols as deprecated
+  * Temporarily restore sk_pop_free_ex
+  * Sync pki with chrome 6d4f9e7881fe07cf46eafd3245db2c8829e312f4
+  * Add pki to generate_build_files.py
+  * Silence -Wformat-truncation warning in crypto/err/err.c
+  * Tidy up error handling for sockets vs fds
+  * Test non-blocking socket BIOs
+  * Unconditionally include BIO_set_fd and BIO_get_fd
+  * Support Android's "baremetal" target
+  * add pki test data to sources.cmake
+  * remove duplicates that make bazel unhappy
+  * Silence -Wformat-truncation in newer GCCs
+  * Update RSATest.BadKey to use a plausible key size
+  * Replace BIO_snprintf with snprintf within the library
+  * Fix error handling in bssl_shim socket object
+  * Define _DEFAULT_SOURCE for getentropy in musl
+  * [ssci] Added Shipped field to READMEs
+  * Add combined source lists to the other generators
+  * Remove old style asm source lists for GN and Bazel
+  * Clarify what __TRUSTY__ and OPENSSL_NANOLIBC are
+  * Temporarily disable the Trusty CRYPTO_sysrand implementation
+  * Fix aarch64 build with GCC
+  * Fix error condition in new iOS CRYPTO_sysrand
+  * Make the old sk_* functions into full functions
+  * Move file_test_gtest.cc to CRYPTO_TEST_SOURCES for now
+  * Use constant curve-specific groups whenever possible
+  * [acvptool] skip connection to the server if input json or regdump is on
+  * Entropy changes for trusty and windows.
+  * Use std::make_unique when possible
+  * Make built-in curves static.
+  * Update the documentation of RAND_cleanup
+  * Resolve an old TODO in TestState::Deserialize
+  * Fix truncation warnings with the iteration count
+  * sync pki to chrome 6e6fa5a08b94199de10eea22845963baf548628b
+  * Fix spelling nits
+  * Clear some size_t truncations
+  * Add Intel Indirect Branch Tracking support.
+  * Embed the generator into EC_GROUP
+  * Const-correct a handful of time functions
+  * Don't include stdalign.h in refcount.c
+  * Fuchsia has getentropy() via musl - use it and drop the custom file
+  * Remove remnants of malloc.cc
+  * Embed BN_MONT_CTX into EC_GROUP.
+  * Move to preferring getentropy() for system provided entropy
+  * Use sources.cmake for the bssl tool
+  * Fix Android shared library tests
+  * Use sources.cmake for the test_support library
+  * Use sources.cmake for test binaries
+  * Don't store a redundant copy of the EC_GROUP field modulus
+  * Revert "Build with C11 on MSVC in the standalone Bazel build"
+  * Configure explicitly whether to shard tests
+  * Use sources.cmake for pki and pki_test
+  * Remove field_minus_order from EC_GROUP.
+  * Use file(STRINGS) to read go_tests.txt
+  * Use individual files for lists of source files.
+  * Sync pki to chrome 28e4a1b838b2ffbf9e2151ae5fcfffe5ab0ffac0
+  * Build with C11 on MSVC in the standalone Bazel build
+  * Replace byteBuilder and byteReader with cryptobyte
+  * Don't store a redundant copy of the order in EC_GROUP
+  * Make the curve compat APIs into real functions
+  * Add pki test files for android, adapt PathService fillin.
+  * Remove some unused fields
+  * Temporarily add sk_new_null, etc., wrappers in bssl-sys
+  * Fix libpki build
+  * Fix the Windows fuzzer build
+  * Consistently include BTI markers in every assembly file
+  * Use ProcessPrng instead of RtlGenRandom on Windows
+  * Bring in the core of  chromium certificate verifier as libpki
+  * Slightly tidy BIO_C_SET_FILENAME logic
+  * Credit CryptOpt in third_party/fiat/README.md
+  * Start recognizing the OPENSSL_NANOLIBC define
+  * Use a single TCP server port in runner
+  * Simplify shimProcess accept and wait
+  * Turn SocketCloser in bssl_shim into a proper owning type
+  * Pass IPv6 vs IPv4 down to the shim
+  * Add more tests for recognizing explicit forms of built-in curves
+  * Log failure to create SSL objects in handshakers
+  * Remove -D__ASSEMBLER__=1 when shelling out to the preprocessor
+  * Remove p > q normalization in RSA keys
+  * Implement BN_MONT_CTX_new_consttime with Montgomery reduction
+  * Make bn_mod_lshift_consttime faster
+  * Fix tests on Arm when NEON is unavailable
+  * Fix fiat asm .private_extern declaration on Apple platforms
+  * Don't expose EVP_PKEY internal representation through EVP_PKEY_assign
+  * Add memcmp binding to bssl-crypto
+  * Remove CRYPTO_MUTEX from public headers
+  * Make RSA opaque
+  * Add target attributes to curve25519_64_adx.h
+  * Add ASN1_TIME_set_string_X509
+  * Don't allow timezone offsets in ASN1_UTCTIME_set_string
+  * Add SSL_CIPHER_get_handshake_digest
+  * Const-correct a few X509_PURPOSE and X509_TRUST functions
+  * Tidy bssl-crypto documentation
+  * Avoid another NULL+0 in BIO_s_mem
+  * Remove a layer of indirection from fiat curve25519 assembly
+  * Fix the combined asm source lists in generate_build_files.py
+  * Update build tools
+  * Give up on qsort for sk_FOO_sort
+  * Remove a pointer indirection in STACK_OF(T) comparisons
+  * Add fiat_curve25519_adx.S to generate_build_files.py
+  * Prefix the private stack functions
+  * Add .type, .hidden, and .size to the new fiat ADX assembly
+  * Use ADX asm for Curve25519 base-point multiplication
+  * Make DSA opaque
+  * Add saturated X25519 for x86_64+ADX running Linux
+  * Handle ChaCha20 counter overflow consistently
+  * Use packed representation for large Curve25519 table
+  * Add SHA256 and SHA512 bindings to bssl-crypto
+  * Make BN_mod_inverse() deal with repeated arguments
+  * Remove BN_DEC_FMT2 and test the others
+  * Define TLSEXT_nid_unknown
+  * Constant-time test that X25519 has a single path.
+  * Add a value barrier when checking for point doubling.
+  * Align NIDs vs group IDs in TLS group APIs
+  * Align remaining TLS ECDH APIs on "group" terminology
+  * Align on using the "group" over "curve" for ECDH in TLS
+  * Remove SSL_CIPHER_get_value
+  * add rust bindings for ed25519
+  * Add an ABI test for x25519_NEON
+  * Add constant-time validation for curve25519
+  * Add prefetch to aes_hw_ctr32_encrypt_blocks
+  * Remove variable expansion from CONF fuzzer
+  * Remove some unreachable character types in the CONF parser
+  * Remove some unnecessary NULL checks in conf.c.
+  * Test the CONF parser more extensively
+  * Miscellaneous size_t truncation fixes
+  * Add int casts as needed around STACK_OF(T) sizes and indices
+  * Bound STACK_OF(T) sizes by int
+  * acvptool: clean up better.
+  * Avoid locks in CRYPTO_free_ex_data
+  * Disable TLS_RSA_WITH_3DES_EDE_CBC_SHA by default
+  * Don't include <stdatomic.h> in C++
+  * Add a comment about the Chromium sandbox for macOS sysctls
+  * Update hkdf.c to avoid potentially vulnerable code pattern.
+  * Fix RAND_enable_fork_unsafe_buffering when called after fork
+  * Add a thread test for ex_data
+  * Remove read locks from PRNG steady state
+  * Add an atomics library to crypto/internal.h
+  * Remove the lock-based atomics fallback
+  * Use Windows Interlocked* APIs for refcounts when C11 isn't available
+  * Reject RSA keys under 512 bits
+  * Check public components in freeze_private_key
+  * Remove now redundant RSA test
+  * Add documentation for X509_STORE_CTX_set_verify_cb and friends
+  * Add a multi-threaded mode to bssl speed
+  * Use a helper function to implement get_all_foo_names functions.
+  * Cap the input size to the conf fuzzer
+  * acvptool: implement pipelining.
+  * Update googletest
+  * Update build tools
+  * OpenBSD Support
+  * Remove unions in BLAKE2b implementation
+  * Bump the minimum supported MSVC version to VS2019
+  * Add APIs to query a list of possible strings for TLS features
+  * Add back support for TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
+  * Fix PKCS8Test to not rely on RSA-512
+  * Add a more general mechanism for deprecating TLS ciphers
+  * Add APIs to support RSA keys with large e.
+  * Remove unions in GCM implementation
+  * Rename EC_RAW_POINT to EC_JACOBIAN
+  * Clarify that X25519 also supports EVP_PKEY_new_raw_private_key, etc
+  * Align Kyber names with draft-tls-westerbaan-xyber768d00
+  * Remove unions in polyval implementation
+  * Remove H from GCM128_KEY
+  * Don't make assumptions about GCM128_CONTEXT layout in aesni-gcm-x86_64.pl
+  * Don't make assumptions about GCM128_CONTEXT layout in aesv8-gcm-armv8.pl
+  * Implement the AuthEncap/AuthDecap HPKE modes
+  * Update references to draft-irtf-cfrg-gcmsiv
+  * Replace interface{} with any
+  * Add new APIs for creating RSA keys
+  * Disable BlindingCacheConcurrency on FreeBSD.
+  * Add Kyber to runner tests
+  * Invalidated cached RSA, DH, and DSA state when changing keys
+  * Support WPA 3.1 "enterprise" mode.
+  * runner: Remove an unnecessary use of AllCurves
+  * Move the old SPKAC types to their own section
+  * Remove unimplemented SSL BIO_ctrl values
+  * Don't copy all of bssl-sys into the CMake build directory
+  * Remove go:build ignore from convert_wycheproof
+  * X509_sign, etc., should return the length of the signature on success
+  * Add some missing includes
+  * Specify the TLS cipher order more straightforwardly
+  * Squeeze a block at a time when computing the matrix in Kyber
+  * Align TRUST_TOKEN_pst_v1_voprf with draft-21 of VOPRF
+  * Re-add go:build ignore lines
+  * Move convert_wycheproof into its own package
+  * Allow passing extra flags to BoGo shim
+  * Remove TLS_RSA_WITH_NULL_SHA
+  * Only rerun bindgen when its dependencies change
+  * Add mechanism for deprecated declarations.
+  * Spell includes in wrapper.h like the rest of the project
+  * Replace sort.Sort with sort.Slice
+  * Fix allowlist regex in bindgen invocation
+  * Update docs to recommend a much more convenient CMake invocation
+  * Trim some unused XN_FLAG_* values
+  * Remove --size_t-is-usize from bindgen call
+  * Clarify in ssl.h documentation not to use the verify callback
+  * Move the X509 time functions under "Convenience functions"
+  * Remove the X509at_* functions
+  * Organize X509_ATTRIBUTE functions into sections.
+  * Document a pile of X509 print functions
+  * Generate 64-bit Curve25519 and P256 code for MSVC
+  * Widen ASN1_mbstring_copy and ASN1_mbstring_ncopy to ossl_ssize_t
+  * Update test_fips.c with new functions added to FIPS module.
+  * break-tests.sh: break run-time tests and use two test_fips binaries.
+  * Skip some BIO_gets tests if tmpfile fails on Android
+  * Switch to new ACVP test for TLS 1.2 KDF.
+  * Default SSL_set_enforce_rsa_key_usage to enabled.
+  * add extra lints to align with Chromium rust toolchain
+  * Include bindgen generated file via a build time env var, this plays nicer with other build systems like Soong and Gn.
+  * Move TLS 1.3 KDF functions into the FIPS module.
+  * Move HKDF into the FIPS module.
+  * Drop CECPQ2 support.
+  * expose a reset API on hmac which resets the current instance back to its original state keeping the same key as initially used
+  * Remove X509V3_EXT_add_list and X509V3_EXT_cleanup
+  * Remove support for "old-style" X509V3_EXT_METHODs.
+  * Restore some default cases in tasn_dec.c and tasn_enc.c
+  * Add functions to allow the mocking of AES hw support for testing.
+  * Fix up do_ext_i2d's error-handling
+  * Add Trust Token version using standardized hash2curve.
+  * Move RSA (en|de)cryption out of the FIPS module.
+  * leaked_storage in method POLICYQUALINFO *notice_section
+  * Fix miscellaneous size_t truncations
+  * Remove SSL_CIPHER_get_rfc_name
+  * Run `go fmt` in `ssl/test/runner`.
+  * If the ret is not null, it needs to be released before return
+  * Don't consume the newline in BIO_gets for fds
+  * RESOURCE_LEAK in method STACK_OF(TRUST_TOKEN) *voprf_unblind before return 0
+  * Tidy up some lengths in SSL_SESSION
+  * Fix size_t truncations in bio_mem.c
+  * Convert a few more ints to bools in libssl.
+  * Add various tests for memory BIOs.
+  * Update X25519+Kyber ID.
+  * Add comment about regenerating peg files.
+  * Adding a C implementation of Kyber.
+  * Fix handling of critical X.509 policy constraints
+  * Fix policy validation when the user policy set is NULL
+  * Remove dynamic X509_VERIFY_PARAM registration
+  * Const-correct sk_FOO_cmp_func
+  * Sort various X.509 global lists sooner
+  * Add a warning about OBJ_create and global state
+  * Fix parameter name for i2d_X509_EXTENSION
+  * Give X509 an ASN1_ITEM again
+  * Reject non-minimal lengths in ASN1_get_object
+  * Reimplement X509 parsing without templates
+  * add bindings to RAND_bytes
+  * Represent unknown universal types with V_ASN1_OTHER
+  * - remove dependency on hex-literal crate - add helper for converting between hex strings and bytes
+  * Rewrite c2i_ASN1_OBJECT
+  * Make ASN1_OBJECT_create size_t-clean.
+  * Rewrite ASN1_OBJECT and ASN1_BOOLEAN d2i/i2d functions.
+  * add bindings for hkdf and update panic handler
+  * Get rid of the libc crate dependency in bssl-sys
+  * Set up cargo deny to deny new dependencies by default.
+  * Reduce type-punning in ASN1_TYPE
+  * Add a test for OPTIONAL CHOICE values
+  * Add CTRDBG_STATE to bssl::UniquePtr
+  * Hmac should be able to take longer keys
+  * Const-correct and document a few functions in x509v3.h.
+  * Test that X509_NAMEs sort their RDNs when encoding.
+  * Tidy up HMAC_Init_ex slightly
+  * Rust bindings to boringssl plain AES implementation
+  * Rust build cleanup
+  * initial setup for bssl crate with hmac and sha2 bindings - update rust folder to split into `bssl` and `bssl-sys` - add initial bindings for hmac and a subset of sha2
+  * Add OPENSSL_EXPORT to BN_mod_inverse_blinded
+  * Add prefetch to sha1_block_data_order_shaext
+  * Remove EVP_PKEY_ASN1_METHOD and EVP_PKEY_METHOD from public headers
+  * test_fips: flush stdout before aborting on failure.
+  * Work around a NASM bug
+  * Plug a leak in ASN1_item_i2d()
+  * Add a few more assertions to compiler_test.cc.
+  * Fix use of unitialized cbb on failure case.
+  * urandom_test: force MADV_WIPEONFORK both ways.
+  * Use KEM terminology in TLS ECDHE and key_share abstractions
+  * Define a NID for P-384 + Kyber768.
+  * Use the common location for CMake in the bots
+  * Fix ninja run_tests
+  * Workaround yet more NULL + 0 language bugs
+  * Fix the generated CMake build
+  * Replace almost all instances of CMAKE_SOURCE_DIR and CMAKE_BINARY_DIR
+  * Ignore elf.ErrNoSymbols in util/read_symbols.go
+  * Run Go tests as part of run_tests
+  * Pick up a VS 2022 toolchain from Chromium
+  * Switch to CIPD's copy of perl
+  * Simplify ECKeyShare slightly.
+  * Move the ASN.1-based SSLKeyShare serialization to handoff.cc.
+  * Create the SSLKeyShare object in TLS 1.2 client ECDHE slightly later
+  * Require getauxval on 32-bit Arm Linux
+  * Go back to breaking syscalls with the syscall number
+  * Pass the full user_regs_struct to PTRACE_SETREGS
+  * Print the reason the child stopped in urandom_test
+  * Move data from .text to .rodata on x86_64
+  * Start a Kyber implementation with basic Keccak code.
+  * Tweak urandom_test for Android devices without getrandom.
+  * Cap the number of ECDSA and DSA sign iterations.
+  * Add more DSA consistency checks.
+  * Revert "Revert "Fetch entropy from a system daemon in FIPS mode on Android.""
+  * Reject zero ECDSA keys in EC_KEY_set_private_key
+  * Gracefully handle DSA objects with missing fields
+  * Fix Android tests with new recipe changes
+  * acvp: update test expectations
+  * acvp: write updated tests without `.bz2` suffix
+  * acvp: fix tests
+  * Update Go dependencies
+  * Move constants from .text to .rodata on aarch64
+  * Add bbe@ to list of reviewers
+  * Revert go:build ignore lines
+  * Replace the union inside EVP_PKEY with void*.
+  * Make EVP_PKEY opaque.
+  * Make boringssl_gtest_main a STATIC library
+  * Update build tools
+  * Use --allowlist-file in bssl-sys
+  * Tidy up check_chain_extensions after proxy certificate removal
+  * Remove proxy certificate support.
+  * Remove global_target from build.
+  * Don't include custom builds of libc++ in CMake installs
+  * Specify -Iinclude with the crypto target.
+  * Unify the two copies of bn_add_words and bn_sub_words
+  * Implement P256_XMD:SHA-256_SSWU_RO_ and P384_XMD:SHA-384_SSWU_RO_
+  * Align the hash-to-curve formulation with draft-16.
+  * Fix a -Wignored-qualifiers warning in trust_token_test.cc
+  * Make OPENSSL_malloc push ERR_R_MALLOC_FAILURE on failure.
+  * Cap decimal input sizes in s2i_ASN1_INTEGER
+  * Make ERR and thread use system malloc.
+  * Add OPENSSL_asprintf and friends for asprintf(3) functionality.
+  * Add a note in INCORPORATING about which branch to use
+  * Generate Rust wrappers for HKDF
+  * Bound the overall output size of ASN1_generate_v3
+  * VMS? I don't think so. Take this for a walk behind the barn.
+  * Revert "Drop HRSS assembly."
+  * Move Go CMake support into its own file.
+  * Get rid of time_t usage internally, change to int64_t
+  * Remove d2i_FOO object reuse
+  * Don't use negative values for unimplemented modes
+  * Don't use object reuse in X509_parse_from_buffer.
+  * Remove stale TODO in util/bot/DEPS
+  * Remove if'd-out OCB-AES assembly
+  * Trim unnecessary -lrt and ws2_32 deps in the build.
+  * Unexport GENERAL_NAME_cmp
+  * Also test i2d_GENERAL_NAME in X509Test.GeneralName
+  * Fix the type of x400Address in GENERAL_NAME
+  * Remove old clang-cl workaround
+  * Limit the CMake -isysroot assembly workaround to older CMake
+  * Clean up test_support_lib and GTest dependencies slightly.
+  * Fix various malloc failure paths.
+  * Partially mitigate quadratic-time malloc tests in unit tests
+  * Add ABI tests for bn_add_words, etc.
+  * Avoid branches in GCC in bn/generic.c.
+  * Add bn_add_words and bn_sub_words assembly for aarch64.
+  * Rearrange bn/generic.c
+  * Reject even moduli in RSA_check_key.
+  * Move malloc failure testing into OPENSSL_malloc
+  * Const-correct the various EVP_PKEY PEM writers
+  * Fix leak in set_dist_point_name error handling.
+  * Fix leak in error-handling for issuingDistributionPoint
+  * Clear false positives in RSA-OAEP constant time validation
+  * Fix some clang-format formatting.
+  * Stop clang from un-constant-timing copy_from_prebuf.
+  * Clear various false positives in RSA constant-time validation
+  * Silence an uninitialized variable false positive in GCC.
+  * Fix leak on error in v2i_POLICY_MAPPINGS
+  * Cap bit indices in the unsafe string-based X.509 extensions API
+  * Move OpenSSLConfig.cmake into the cmake/ directory
+  * Align header guard style in the remaining headers.
+  * Add locale independent implementations of isalpha, isalnum, isdigit, and isxdigit.
+  * Fix OPENSSL_NO_ASM builds with the generated CMake build.
+  * Remove ASN1_TFLG_COMBINE.
+  * Unexport and remove support for implicit tagging on ASN1_ITYPE_EXTERN.
+  * Correctly handle optional ASN1_ITEM_TEMPLATE types.
+  * Remove the last of the broken NEON workaround
+  * Make X509V3_get_value_int free the old value before overwriting it.
+  * Fix leak on invalid input to a2i_GENERAL_NAME.
+  * Define BORINGSSL_IMPLEMENTATION in the Bazel build
+  * Simplify the external Bazel build.
+  * Simplify a pair of Go range expressions
+  * Fix stray */s in // line comment license headers
+  * Mark standalone Go scripts with go:build ignore
+  * Align the generated CMake build with the main one.
+  * Check for null value in set_dist_point_name.
+  * Fix error-handling in X509V3_EXT_add_nconf_sk and X509v3_add_ext.
+  * Remove now unnecessary check in CBS_peek_asn1_tag.
+  * Introduce a locale-independent version of isdigit
+  * Add a fuzzer for the config file machinery.
+  * Rewrite ASN1_generate_v3.
+  * Add some tests for optional and default ASN1_BOOLEAN.
+  * Introduce constants for ASN1_BOOLEAN
+  * Introduce a locale-independent version of isspace
+  * Add tests for X509_NAME_hash and X509_NAME_hash_old.
+  * Remove old Trust Token redeem API.
+  * Remove support for ppc64le.
+  * Switch ERR_GET_* to inline functions
+  * Remove ppc64le assembly.
+  * Remove ppc64le delocate and FIPS build.
+  * Add CBS_get_u64_decimal.
+  * Align ppc assembly setup with other architectures
+  * Use the same Deleter across all bssl::UniquePtr<T>.
+  * Set C11 in all compilers.
+  * Reduce architecture detection in CMake.
+  * Work around nasm bug with empty assembly files
+  * Also remove poly_rq_mul.S from generate_build_files.py
+  * Don't send two post-quantum initial key shares.
+  * Drop HRSS assembly.
+  * Add a WORKSPACE.toplevel file
+  * Unexport BN_MONT_CTX_set_locked.
+  * Align headers in generate_build_files.py output.
+  * Maintain a frame pointer in aesni-gcm-x86_64.pl and add SEH unwind codes
+  * Don't automatically sync the two CONF parameters in X509V3_EXT_nconf.
+  * Convert ghash-x86_64.pl to new directives.
+  * Add initial support for SEH directives in x86_64 perlasm
+  * Fix inhibitPolicyMapping in the new policy tree code.
+  * Rewrite X.509 policy tree logic.
+  * Don't test for PMULL when NO_ASM.
+  * Indent DB lines in x86_64 NASM output.
+  * Reduce caller requirements on X509V3_CTX.
+  * Rename CTX_TEST to X509V3_CTX_TEST.
+  * Handle errors more normally in asn1_gen.c.
+  * Fix crash if '@section' is used with no CONF.
+  * Test requireAnyPolicy being a SkipCerts value
+  * Test policy mappings from invalid policies.
+  * Add stubs for hybrid Kyber768 with X25519 or P-256.
+  * Add optimised Aarch64 GCM.
+  * Test that policy checking always succeeds with just a trust anchor
+  * Remove no-op entries from asn1_str2tag.
+  * Const-correct sk_FOO_deep_copy's copy callback.
+  * Deprecate, test, and document X.509 config APIs.
+  * Remove the last of the filename comments.
+  * Further const-correct config-based extension creation.
+  * Empty stacks are vacuously sorted
+  * Add sk_FOO_delete_if.
+  * Add over_message issuance and redemption to Trust Tokens.
+  * Remove hmac.h include from ssl.h.
+  * Simplify MSVC warning configuration
+  * Build rust bindings against header files under current source dir
+  * Drop the preference for 256-bit ciphers with CECPQ2.
+  * Remove custom CONF methods from X509V3_CTX.
+  * Unexport various X509V3_CTX and NCONF helper functions.
+  * Reword hardware support for AES-GCM.
+  * Add a link for FIPS cert #4409.
+  * [clang-warning] Don't pass -stdlib=libc++ on Apple platforms
+  * Use -pthread instead of -lpthread in Bazel.
+  * Add some tests for policy mapping.
+  * Add some tests for anyPolicy.
+  * Fix some memory leaks in policy_cache_new.
+  * Add prefetch to aesni_ctr32_ghash_6x
+  * Add tests for rejecting duplicate policy OIDs.
+  * Fuzz x509v3_cache_extensions.
+  * Fix handling of EXFLAG_INVALID_POLICY on the leaf.
+  * Restore ASN1_TIME_set_string's behavior on NULL.
+  * Fix return value on malloc failure in tree_calculate_user_set.
+  * Const-correct and simplify X509_VERIFY_PARAM_set1_policies.
+  * Add a basic threading test for X509 verification.
+  * Explicitly warn about streaming AEADs with EVP_CIPHER_CTX.
+  * acvptool: add support for uploading results.
+  * acvptool: factor out getResultsWithRetry
+  * acvptool: factor out logic for connecting to the server
+  * Switch X509 ex_* flags to uint32_t.
+  * Rename and tidy up x509v3_name_cmp.
+  * Fix some more implicit size_t truncations.
+  * acvptool: factor out uploadResult
+  * Unexport X509V3_NAME_from_section and fix the type of chtype.
+  * Finish porting dh_test.cc and ripemd_test.cc to GTest.
+  * Replace comment with static assert.
+  * Add a tool to check whether a binary has an executable stack
+  * Disable blinding for boringssl_self_test_rsa().
+  * Drop the workaround for the third-party Android CMake toolchain.
+  * Fully condition all assembly files.
+  * See whether relative links work for the documentation.
+  * Add SSL_was_key_usage_invalid.
+  * Add an 'all' option to generate_build_files.py
+  * delocate: match all the ARM register extension patterns.
+  * Fix -Wshorten-64-to-32 errors in ex_data.c.
+  * acvptool: KDA replaces KAS-KDF for HKDF.
+  * Add NO_CHECK_TIME to SSLTest.ECHBuiltinVerifier too
+  * Rewrite i2o_ECPublicKey with CBB_finish_i2d.
+  * Fix timebomb by disabling time check in this test
+  * [Bazel] Support More Platforms
+  * Add int casts to BIO_ctrl calls where appropriate.
+  * Switch microsecond and iteration counts in bssl speed to uint64_t.
+  * Finish porting dsa_test.cc to GTest.
+  * Remove unnecessary L suffixes on DES constants.
+  * Fix up some integer types in crypto/asn1
+  * Use a sized type for asn1t.h flags.
+  * Don't allow the caller to configure invalid signature algorithms.
+  * Never accidentally use SSL_SIGN_RSA_PKCS1_MD5_SHA1 at TLS 1.2.
+  * Add a copy of ninja from CIPD to util/bot/DEPS
+  * Include ctrdrbg.h in the Rust wrapper.
+  * Test, re-document, and deprecate EVP_Cipher.
+  * Test streaming the AAD into EVP_CIPHER_CTX.
+  * Add negative tests for the EVP_CIPHER tag check.
+  * Test the most likely point for calling EVP_CIPHER_CTX_copy.
+  * Give cipher tests a common entrypoint.
+  * Correct the maximum output size in cipher_test.cc
+  * Tidy up cipher_test.cc slightly
+  * Cap Montgomery moduli to 8 KiB.
+  * Fix allocation size in BN_mod_exp_mont_consttime.
+  * delocate: learn about more Aarch64 registers.
+  * Preprocess asm on all platforms with delocate.
+  * Add a note in bn.h that this is not for general-purpose math.
+  * Minor style tweaks in BN_mod_exp_mont_consttime.
+  * Bump Go version in go.mod and run go mod tidy.
+  * Split bn_tests.txt into several test files.
+  * Work around some valgrind warnings in GTest.
+  * Fix comments now BN_mod_exp_mont_consttime is not cache-line-sensitive
+  * Replace MOD_EXP_CTIME_ALIGN with align_pointer.
+  * Add a hint to the C++ ending guard message
+  * Make OPENSSL_tm_to_posix and OPENSSL_posix_to_tm public API
+  * delocate: be able to preprocess inputs.
+  * Update x86_64-mont5.pl and RSAZ comments a bit.
+  * Update SDE.
+  * Update build tools.
+  * Bump minimum CMake version.
+  * Migrate io/ioutil uses to new APIs.
+  * Switch blinding indices to size_t.
+  * Remove ASN1_PRINTABLE_type.
+  * Replace malloc/memcpy pairs with memdup.
+  * Release memory earlier when clearing ASN1_ENCODING.
+  * Align the generated gni files with the new Chromium copyright header
+  * Define CBS/CBB tags as uint32_t with a typedef.
+  * More -Wshorten-64-to-32 fixes.
+  * Introduce ossl_ssize_t and use it in ASN1_STRING_set.
+  * Do not allow changing keys with parameters already set.
+  * Fix the comment in ecp_nistz256_ord_sqr_mont to match code and prototype.
+  * Allow EVP_PKEY_copy_parameters into an untyped EVP_PKEY.
+  * Fix integer overflow in OPENSSL_gmtime_adj
+  * Check for overflow in i2c_ASN1_BIT_STRING.
+  * Add the suite of EC_KEY and EC_POINT serializers.
+  * Skip the field inversion when just measuring output size.
+  * Allow using the TLS exporter in more cases.
+  * Print the curve name, not bit length in EVP_PKEY_print_*
+  * Remove tautological comparison.
+  * Fix EC public key output in EVP_PKEY_print_*
+  * Add missing heading to DSA output.
+  * Fix trailing whitespace in EVP_PKEY_print_*
+  * Revert "Default SSL_set_enforce_rsa_key_usage to enabled."
+  * Simplify crypto/evp/print.c.
+  * Add tests for EVP_PKEY_print_*
+  * Clean up short BIGNUM handling in bn_print.
+  * Miscellaneous -Wshorten-64-to-32 fixes.
+  * Make EVP_PKEY_*_tls_encodedpoint work with EVP_PKEY_EC.
+  * Fix linking with non-MSVC toolchain in Windows platform
+  * Break FIPS tests by zeroing out the entire value.
+  * Remove CMake install command for modulewrapper.
+  * Enable -Wstring-concatenation and silence warning.
+  * Switch RSA_sign to size_t.
+  * Further fixups on the new tests.
+  * Also detect Armv8.2 SHA-512 extensions on FreeBSD.
+  * Fix comments around TBSCertificate cache.
+  * Test (and, for CSRs, fix) TBS cache invalidation on signing.
+  * Add support for arm/aarch64 on FreeBSD
+  * Replace UTF8_putc with cbb_add_utf8.
+  * Some CBB_init_fixed simplifications.
+  * Make CBB_init_fixed infallible and allocationless.
+  * Check for TLS 1.3 in SSL_generate_key_block.
+  * acvp: support fetching expected results.
+  * Add CBB_add_asn1_[u]int64_with_tag.
+  * Make DH opaque.
+  * Default SSL_set_enforce_rsa_key_usage to enabled.
+  * Test i2d_re_* for CRLs and CSRs too.
+  * Add EVP_HPKE_KEM_public_key_len and EVP_HPKE_KEM_private_key_len.
+  * Remove the experimental in-place record APIs.
+  * Maintain the sequence number as a uint64_t.
+  * Add int64 ASN1_INTEGER setters too.
+  * Also check for V_ASN1_NEG_INTEGER when checking types.
+  * Write a test for CONF_parse_list.
+  * Make CONF_parse_list size_t-clean.
+  * Unexport CONF_parse_list.
+  * Use Array<uint8_t> in DTLS1_OUTGOING_MESSAGE.
+  * Move the DTLS cookie to SSL_HANDSHAKE.
+  * Use the new macOS sysctl names when available
+  * Various -Wshorten-64-to-32 fixes.
+  * Document and tidy up X509_find_by_*.
+  * Remove unused X509_LOOKUP_by_* functions.
+  * Check some ASN1_STRING types in crypto/x509
+  * Replace even more ad-hoc bytes/integer conversions.
+  * Specify all library install destinations
+  * Add a poisoned field to EVP_CIPHER_CTX.
+  * Stub out DSA paramgen functions.
+  * Stub out the OpenSSL secure heap.
+  * Define OPENSSL_NO_SSL_TRACE.
+  * Add ASN1_INTEGER_get_int64 and ASN1_ENUMERATED_get_int64.
+  * Add the "groups" variants of SSL_CTX_set1_curves_list.
+  * Provide the other primes from RFC 3526.
+  * Silence a GCC 12 -Warray-bounds false positive warning.
+  * Rework truncated SHA-2 to silence GCC 12 false positive warning.
+  * Require getrandom in all FIPS builds.
+  * Incorporate OS entropy on FIPS CTR-DRBG reseed, not just init.
+  * Add RAND_get_system_entropy_for_custom_prng
+  * Rewrite RSA_verify_PKCS1_PSS_mgf1 with size_t.
+  * Check set_encrypt_key return value in AESTest.ABI.
+  * Prefer established session properties mid renegotiation.
+  * Add EVP_HPKE_KDF_hkdf_md.
+  * Find threading library
+  * Use O_CLOEXEC instead of fcntl(FD_CLOEXEC)
+  * Add an EVP_HPKE_KEM_enc_len API.
+  * Track SSL_ERROR_ZERO_RETURN explicitly.
+  * Clean up header to reuse __riscv definition
+  * Tighten up supported PSS combinations in X.509.
+  * Add HMAC_CTX_get_md.
+  * Add a test for SSL_CTX_set_quiet_shutdown.
+  * Add X509_STORE_CTX_set0_trusted_stack.
+  * Add X509_V_FLAG_NO_CHECK_TIME.
+  * Add DSA_bits and DH_bits.
+  * Add handshake hints for TLS 1.2 session tickets.
+  * Rework STACK_OF(T) documentation.
+  * Fix some typos in comments.
+  * Remove stale comment.
+  * Fix SSL_load_client_CA_file when given an empty file.
+  * Define NR_getrandom for riscv64
+  * Adapt break-tests.sh to run on an attached Android device.
+  * Include hopefully all ARM instructions with condition codes.
+  * Replace OPENSSL_STATIC_ASSERT with static_assert.
+  * Make time_t conversions. Give up on the OS provided ones.
+  * Test that close_notify state does not impair SSL_ERROR_SYSCALL.
+  * Convert more of the SSL write path to size_t and Spans.
+  * Revert "Fetch entropy from a system daemon in FIPS mode on Android."
+  * Fetch entropy from a system daemon in FIPS mode on Android.
+  * Merge entropy read in FIPS mode.
+  * Rename |from_cpu| to |want_additional_input|.
+  * Support handshake hints for TLS 1.2 full handshakes.
+  * Expose the CTR_DRBG API.
+  * Don't try and test 3DES with ACVP.
+  * Fix possible ODR violations for ecp_nistz256_from_mont
+  * Don't try to specify SHA-256 for Aarch64 FIPS.
+  * Fix up book-keeping between the write buffer and pending writes.
+  * Fix an edge case in SSL_write's retry mechanism.
+  * Fix unused variable warning on macOS + ASan
+  * Remove PEM_X509_INFO_write_bio.
+  * Add SSL_CTX_get_num_tickets.
+  * Mostly Revert 52426 - Drop AVCP support for 3DES
+  * Add script to run FIPS break tests.
+  * More alignment with OpenSSL on TLS 1.3 cipher suite constants.
+  * Align with OpenSSL on TLS 1.3 cipher suite constants.
+  * Document and organize some of the basic extensions functions.
+  * Const-correct X509_EXTENSION functions, as best we can.
+  * Document all the dup functions.
+  * Const-correct X509_REVOKED as well.
+  * Const-correct and document EVP_PKCS82PKEY and EVP_PKEY2PKCS8.
+  * Remove PKCS8_pkey_get0 and PKCS8_pkey_set0.
+  * Move all the miscelleneous convenience functions into a section.
+  * Fix the documentation of X509_pubkey_digest.
+  * Remove the last of the Suite B code.
+  * Remove X509_ocspid_print.
+  * Unexport all low-level policy machinery.
+  * Document most X509_NAME functions.
+  * Add some tests for X509_NAME_ENTRY management.
+  * Clarify thisUpdate vs. lastUpdate in docs.
+  * Start grouping x509.h into sections.
+  * Start expanding DECLARE_ASN1_* macros in x509.h.
+  * Bump CMake requirement to 3.8.
+  * Remove X509_ALGORS.
+  * Remove X509_REQ's refcount.
+  * Const-correct the i2d/dup functions we can.
+  * Use GTest's built-in sharding feature
+  * Fix memory leak with X509V3_ADD_DELETE.
+  * Tidy up ASN1_GENERALIZEDTIME_adj and ASN1_UTCTIME_adj.
+  * Check for invalid UCS-2 and UTF-32 in ASN1_STRING_print_ex.
+  * Check Unicode string encodings in crypto/asn1.
+  * Rewrite scalar operations in spake25519.c with BN_ULONG
+  * Accept invalid "v3" CSRs.
+  * Drop stdout when looking for abort messages
+  * Add a CCM AEAD for Matter, the IoT standard.
+  * Remove some unnecessary NULL checks.
+  * Reimplement ASN1_TIME_print with the new parser.
+  * Dedup a few more load/store implementations.
+  * Remove a few more unions.
+  * Remove p256_point_union_t.
+  * Don't use a union in Ed25519 EVP_PKEYs.
+  * Set is_first and is_last correctly with ASN1_STRFLGS_UTF8_CONVERT.
+  * Remove unnecessary parens on return.
+  * Post-clang-format fixups.
+  * Run convert_comments.go on the recently-converted files
+  * Re-run clang-format with InsertBraces.
+  * clang-format remaining directories.
+  * Add fixed key generation for Trust Token.
+  * Fix duplicate declarations
+  * Validate ASN.1 times according to RFC 5280
+  * Define STACK_OF(OPENSSL_STRING) more straight-forwardly.
+  * Rewrite SSL_add_file_cert_subjects_to_stack
+  * Rearrange the C11 vs MSVC check.
+  * Fix build with MSVC 2022.
+  * Don't guard alignof static asserts on GCC/Clang.
+  * Add BN_GENCB_get_arg.
+  * Const-correct bn_gather5.
+  * Get the EVP_PKEY_METHOD from EVP_PKEY_ASN1_METHOD.
+  * Add SHA3 support
+  * More includes for builds that don't use bcm.c
+  * Replace some more C unions.
+  * Add X509_REQ_set1_signature_algo and X509_REQ_set1_signature_value.
+  * Add support for RISC-V 64-bit architecture
+  * Add EVP_PKEY_HKDF for OpenSSL compatibility.
+  * Make it more obvious that am and tmp's widths are accurate.
+  * Add some more includes.
+  * Align rsaz and mont5 table construction.
+  * Simplify mont5 table computation.
+  * Add an extra reduction step to the end of RSAZ.
+  * Always end BN_mod_exp_mont_consttime with normal Montgomery reduction.
+  * Use // instead of # for comments inside armv8 asm.
+  * Add SSL_[CTX_]_set_compliance_policy.
+  * Increase ACVP sizes.
+  * Add a fuzzer to check CBS is a DER parser.
+  * Add some missing includes.
+  * Move digestsign.c into the module.
+  * Manually fix a few tables in advance of clang-format.
+  * Remove leading blank lines in convert_comments.go
+  * Rewrite ASN1_STRING_print_ex escaping.
+  * Convince clang-format to handle ASN1_ITEM definitions better
+  * Do not allow md4 or md5 based signatures in X.509 certificates.
+  * Fix docs for EVP_Cipher given an AEAD.
+  * Remove a layer of indirection from most EVP_CIPHERs
+  * Make EVP_CIPHER opaque.
+  * Use the correct function types in X509V3_EXT_METHODs.
+  * Remove X509_CRL_METHOD.
+  * Clean up ECDSA EVP_PKEY_CTRL_MD validation.
+  * Add a service indicator for FIPS 140-3.
+  * Move cmac into the FIPS module boundary.
+  * Use CMake's C/C++ version features.
+  * Update build tools.
+  * Don't leave stray errors in the error queue in X509_print_ex.
+  * Switch to the CIPD version of CMake on Windows.
+  * limit the feature macro stuff to __linux__
+  * Enforce X.509 version invariants more consistently.
+  * Remove X509_to_X509_REQ.
+  * Declare EVP_AEAD_CTX in base.h, like other typedefs.
+  * Add missing blank line between functions.
+  * Remove unions in EC_SCALAR and EC_FELEM.
+  * Implement SSL_CTX_set_num_tickets.
+  * Add tests for X509_NAME_print_ex.
+  * acvp: test CTR-DRBG with reseed in modulewrapper.
+  * Do pending `go fmt` updates.
+  * acvp: test SHA-512/256 with HMAC, RSA (PSS), and ECDSA.
+  * Add PSS to the AVCP regcap.
+  * Drop ACVP support for 3DES.
+  * Add function to return the name of the FIPS module.
+  * Support running tests on non-NEON devices.
+  * Update delocate tests
+  * Tidy up how ASN1_STRING_print_ex figures out the type.
+  * Remove the ASN1_TLC cache. It appears to not help performance.
+  * Fix build for older CMake versions.
+  * Remove code added to avoid SHA1 weakness.
+  * Update comment in light of prior change.
+  * ChaCha20-Poly1305 for Armv8 (AArch64)
+  * Replace the last strcasecmp with OPENSSL_strcasecmp.
+  * [build] Fix build with HEAD clang.
+  * Make calls to the verify callback consistant by calling ctx->verify_cb directly. This removes some temporary variables that would only be used to hold ctx->verify_cb.
+  * Try to require C11 (in non-MSVC compilers).
+  * Try to require C++14.
+  * Reject [UNIVERSAL 0] in DER/BER element parsers.
+  * Add CMake install rules.
+  * P-256 assembly optimisations for Aarch64.
+  * hrss: always normalize.
+  * Use SHA-256 for the FIPS integrity check everywhere.
+  * Remove unused variable
+  * Use X509 certificate alias as friendlyName in PKCS12
+  * Retire the Windows BIO_printf workaround.
+  * Work around another C language bug with empty spans.
+  * ASAN replaces malloc and free with its own implementation.
+  * Update fiat-crypto.
+  * Remove VS 2015 support.
+  * Remove X509_TRUST_set_default.
+  * Replace internal use sha1 hash with sha256.
+  * Document that |EC_KEY_generate_fips| works for both cases.
+  * Allow the integrity test to be run on demand.
+  * Add a function to return a FIPS version.
+  * Add a function to tell if an algorithm is FIPS approved.
+  * Add vs2019 to vs_toolchain.py.
+  * Unexport X509_CERT_AUX and remove X509_CERT_AUX.other
+  * Document and tidy up X509_alias_get0, etc.
+  * Don't loop forever in BN_mod_sqrt on invalid inputs.
+  * Make a whitespace commit to trigger a build.
+  * Rust bindings: Use CARGO_MANIFEST_DIR in build.rs
+  * Remove ASN1_ADB_INTEGER.
+  * Replace an ASN1_INTEGER_get call with ASN1_INTEGER_get_uint64
+  * Correctly handle LONG_MIN in ASN1_INTEGER_get.
+  * Implement ASN1_INTEGER_set_uint64 with ASN1_STRING_set.
+  * Rewrite and tighten ASN1_INTEGER encoding and decoding.
+  * Deduplicate the rest of ASN1_INTEGER and ASN1_ENUMERATED.
+  * Fix theoretical overflow in ASN1_INTEGER_cmp.
+  * Include rsa/internal.h for |...no_self_test| functions.
+  * Limit the pthread_rwlock workaround to glibc.
+  * Rewrite ASN1_INTEGER tests.
+  * Use X509V3_add_value_int in i2v_AUTHORITY_KEYID.
+  * Fix x509v3_bytes_to_hex when passed the empty string.
+  * Reimplement ASN1_get_object with CBS.
+  * Add an explicit indefinite-length output to CBS_get_any_ber_asn1_element.
+  * Use ctype(3) in a more standards-conformant way.
+  * Linkify RFCs in more places in the docs.
+  * Make FFDH self tests lazy.
+  * Make ECC self tests lazy.
+  * HPKE is now RFC 9180.
+  * Include the policy document for the most recent FIPS validation.
+  * Check static CPU capabilities on x86.
+  * Align rsaz_avx2_preferred with x86_64-mont5.pl.
+  * Enable SHA-NI optimizations for SHA-256.
+  * Update Intel SDE.
+  * Include the EKU extension in bssl server's self-signed certs.
+  * Don't call a non-test file *test.h.
+  * Make RSA self-test lazy.
+  * Add link to new Android FIPS certificate.
+  * delocate: handle a new output form in Clang 13.
+  * Drop, now unused, KAT value.
+  * Drop CAVP code.
+  * Break FIPS tests differently.
+  * Don't forget hmac.h in self_check.h.
+  * Perform SHA-$x and HMAC KAT before integrity check.
+  * Add a couple of spaces to `check_test`.
+  * Split FIPS KATs into fast and slow groups.
+  * Move DES out of the FIPS module.
+  * acvp: don't send the Authorization header when renewing tokens
+  * Support Bazel's test-sharding protocol.
+  * Simply CMake assembly source selection.
+  * Rename generated assembly from 'mac' or 'ios' to 'apple'
+  * Build aarch64 assembly for macOS in the bazel build.
+  * Fix OPENSSL_NO_ASM definition in bazel.
+  * Use @platforms in Bazel rules.
+  * Record ClientHelloInner values in msg_callback.
+  * Fold ssl_decode_client_hello_inner into ssl_client_hello_decrypt.
+  * Explicitly reject self-referential ech_outer_extensions.
+  * Simpler square-root computation for Ed25519
+  * Condition split handshake tests on Linux in CMake.
+  * Implement PEM_read_bio_DHparams with the macro.
+  * Limit _XOPEN_SOURCE to Linux.
+  * Fix Unicode strings for C++20
+  * Switch CRYPTO_BUFFER_POOL to SipHash-2-4.
+  * LSC: Apply clang-tidy's modernize-use-bool-literals to boringssl
+  * Fix mac_arm64 builder.
+  * Put Rust binding generation behind an explicit flag and only build bindings for the targeted Arch
+  * Add ARMV8_SHA512 detection for Fuchsia.
+  * Generates "low-level" bindings for Rust using bindgen
+  * Add note about Gerrit account creation
+  * Make EVP_AEAD_CTX_free accept NULL.
+  * Zero out the values from the integrity check.
+  * Ignore duplicates in |X509_STORE_add_*|
+  * Don't #include "internal.h" twice.
+  * Version bump: 2 -> 3.
+  * Simplify __ARM_ARCH__ definition.
+  * Don't use __ARMEL__/__ARMEB__ in aarch64 assembly
+  * Switch __ARM_FEATURE_CRYPTO to __ARM_FEATURE_{AES,SHA2}.
+  * Move CPU detection symbols to crypto/internal.h.
+  * Move public APIs from cpu.h to crypto.h.
+  * Rename CPU feature files with underscores.
+  * Enable SHA-512 ARM acceleration when available.
+  * Sync sha512-armv8.pl up to 753316232243ccbf86b96c1c51ffcb41651d9ad5.
+  * Import sha512-armv8.pl transforms from upstream NEON code.
+  * Import a few test vectors from OpenSSL.
+  * Use uint16_t in TestConfig and enable -Wformat-signedness.
+  * Reorder flags to match TestConfig struct.
+  * Rewrite bssl_shim command-line parser.
+  * Fix X509_CRL_print error-handling.
+  * Silence -Wformat-signedness when printing X.509 versions.
+  * Don't print small, negative serial numbers in decimal.
+  * Fix the easy -Wformat-signedness errors.
+  * Add BIO_tell and BIO_seek wrappers.
+  * Remove non-standard wildcard input DNS names.
+  * Rewrite X.509 name-matching tests.
+  * Remove non-standard X.509 DNS wildcard matching.
+  * Make X509_REVOKED opaque.
+  * Document |SSL_set1_host| return values.
+  * Add |SSL_set1_host| and |SSL_set_hostflags|.
+  * Add ERR_set_error_data for compatibility.
+  * Add BN_GENCB_new, BN_GENCB_free, and RSA_test_flags.
+  * Remove X509_REVOKED.sequence.
+  * Binary tag bump: 1 -> 2
+  * Export PKCS12_DEFAULT_ITER.
+  * Add SSL_has_pending.
+  * Update HPKE test vectors.
+  * Add various OpenSSL compatibility functions.
+  * Add PKCS7_bundle_raw_certificates function which takes CRYPTO_BUFFERs
+  * No-op change to test the bots.
+  * Remove outdated comment in ECDSA implementation.
+  * Add missing assert.h include.
+  * Check tag class and constructed bit in d2i_ASN1_OBJECT.
+  * Don't parse constructed BIT STRINGs in crypto/bytestring
+  * Enforce DER rules for BIT STRING values.
+  * Remove support for indefinite lengths in crypto/asn1.
+  * Remove support for constructed strings in crypto/asn1.
+  * Check for trailing data in extensions.
+  * Update tools.
+  * Fold x509v3/pcy_int.h into x509v3/internal.h.
+  * Switch kModuleDigestSize to a macro.
+  * Switch DEPS actions on bots to Python 3.
+  * Match OPENSSL_EXPORT in ssl/internal.h friend declarations.
+  * Add a function to express the desired record version protocol.
+  * Add CRYPTO_BUFFER_new_from_static_data_unsafe.
+  * Finish documenting asn1.h.
+  * Trim some undocumented symbols from asn1.h.
+  * Add magic tag to BoringSSL binaries.
+  * Document and const-correct multi-string types.
+  * Fully unexport X509_VAL.
+  * Document ASN1_OBJECT, i2c, and c2i functions.
+  * Unexport ASN1_OBJECT_new.
+  * Return 0x80 in all ASN1_get_object error paths.
+  * Document low-level encoding functions in asn1.h.
+  * Use C preprocessor comments in assembly headers.
+  * Document and const-correct ASN1_TYPE functions.
+  * Fix error-handling for i2a_ASN1_OBJECT.
+  * Document i2a_ASN1_* functions.
+  * Fold i2a_ASN1_ENUMERATED into i2a_ASN1_INTEGER.
+  * Fix BIT STRING comparison in ASN1_STRING_cmp.
+  * Rewrite ASN1_item_pack and ASN1_item_unpack.
+  * Document some more ASN1_ITEM-associated functions.
+  * Reword ASN1_BOOLEAN exception.
+  * Move M_ASN1_* to the deprecated section.
+  * Fix up some doc.go nits in asn1.h.
+  * Document new/free/d2i/i2d for singly-typed ASN1_STRINGs.
+  * Document ASN1_NULL.
+  * Const-correct the low-level ASN1 i2d functions.
+  * Start documenting ASN1_ITEM.
+  * Tidy up SSLTest.SetVersion.
+  * Deduplicate d2i and i2d documentation.
+  * Check tag class and constructed bit in d2i_ASN1_BOOLEAN.
+  * Use typedefs in i2d and d2i_ASN1_BOOLEAN.
+  * Forward-declare SSL_CLIENT_HELLO.
+  * Fix BN_CTX usage in BN_mod_sqrt malloc error paths.
+  * Make ASN1_NULL an opaque pointer.
+  * Remove remnants of ASN.1 print function generators.
+  * Fold x509_vfy.h into x509.h.
+  * Make ASN1_STRING_TABLE_add thread-safe and document.
+  * Test ASN1_STRING_set_by_NID with custom NIDs.
+  * Test ASN1_STRING_set_by_NID with built-in NIDs.
+  * Test that built-in ASN1_STRING_TABLEs are sorted.
+  * Extract common rotl/rotr functions.
+  * Remove X509_STORE_set0_additional_untrusted.
+  * Enable X509_V_FLAG_TRUSTED_FIRST by default.
+  * Switch x509_test.cc to modify the existing X509_VERIFY_PARAM.
+  * Add note to HMAC test vectors from NIST
+  * Add log tag for Trusty.
+  * Fix CRYPTO_malloc, etc., definitions.
+  * Keep EVP_CIPHER/EVP_MD lookup and do_all functions in sync
+  * aarch64: Add missing LR validation in 'vpaes_cbc_encrypt'
+  * Allow PKCS7_sign to work for signing kernel modules.
+  * Speed up constant-time base64 decoding.
+  * Unwind remnants of ASN1_TFLG_NDEF.
+  * acvptool: add CS3 support.
+  * Ignore SIGPIPE in the bssl tool.
+  * Add FIPS counters for AES-GCM in EVP_AEAD.
+  * Refresh fuzzer corpus for ECH draft-13.
+  * Fix the TLS fuzzers for ECH draft-13.
+  * Clarify that TLS sessions are not application sessions.
+  * Fix BN_prime_checks_for_validation to align with false-positive rate.
+  * Add maskHash to RSA_PSS_PARAMS for compat
+  * Remove ASN1_OP_I2D_* callbacks.
+  * Don't read it->funcs without checking it->itype.
+  * Reject missing required fields in i2d functions.
+  * Reject -1 types in ASN1_TYPE and MSTRINGs when encoding.
+  * Correctly handle invalid ASN1_OBJECTs when encoding.
+  * Check for invalid CHOICE selectors in i2d functions.
+  * Fix x509_name_ex_i2d error-handling.
+  * Correctly propagate errors in i2d functions.
+  * acvptool: add hmacDRBG support
+  * Check for __TRUSTY__ instead of TRUSTY.
+  * Update comment for ECH draft-13.
+  * Silence a GCC false positive warning.
+  * Switch to the new, simpler WHATWG URL formulation.
+  * Revert "Guard use of sdallocx with BORINGSSL_SDALLOCX"
+  * Fix calculation of draft-13 ECH confirmation signal.
+  * Update to draft-ietf-tls-esni-13.
+  * Reword SSL_get0_ech_name_override documentation.
+  * Remove SSL_set_verify_result.
+  * Make most of crypto/x509 opaque.
+  * Remove V_ASN1_APP_CHOOSE.
+  * Rewrite ASN1_PRINTABLE_type and add tests.
+  * Include SHA512-256 in EVP_get_digestbyname and EVP_MD_do_all.
+  * NUL is not printable.
+  * Make RSA_check_key more than 2x as fast.
+  * Benchmark RSA private key parsing.
+  * Work around yet another MSVC 2015 SFINAE bug.
+  * Avoid re-hashing the transcript multiple times.
+  * Make ssl_parse_extensions a little easier to use.
+  * Deduplicate our three ServerHello parsers.
+  * Merge in OpenSSL's X.509 corpus.
+  * Run X509_print in the certificate fuzzer.
+  * Fix some error-handling in i2v functions.
+  * Fix typo.
+  * OPENSSL_strndup should not return NULL given {NULL, 0}.
+  * Rewrite name constraints matching with CBS.
+  * Add some tests for name constraints.
+  * Fix i2v_GENERAL_NAME to not assume NUL terminated strings
+  * Do not rely on ASN1_STRING being NUL-terminated.
+  * Add a CBB_add_zeros helper.
+  * Linkify RFCs in documentation.
+  * Refer to RFCs consistently.
+  * runner: Test session IDs over 32 bytes.
+  * Process the TLS 1.3 cipher suite in one place.
+  * Guard use of sdallocx with BORINGSSL_SDALLOCX
+  * Bump minimum GCC version and note impending VS2015 deprecation.
+  * Add Span::first() and Span::last().
+  * Simplify built-in BIOs slightly.
+  * Fix some error returns from SSL_read and SSL_write.
+  * Fix negative ENUMERATED values in multi-strings.
+  * Add a test for ASN1_mbstring_copy and clean up.
+  * Remove ASN1_TFLG_SET_ORDER.
+  * Fix ASN1_STRING_print_ex with negative integers.
+  * Check i2d_ASN1_TYPE's return value in ASN1_STRING_print_ex.
+  * Document ASN.1 printing functions.
+  * Move some ASN1 printing functions to crypto/asn1.
+  * Move a_strex.c back to asn1, split X509_NAME bits out.
+  * Unwind io_ch abstraction in print functions.
+  * Implement ASN1_STRING_print_ex_fp, etc., with file BIOs.
+  * Remove OPENSSL_NO_FP_API ifdefs.
+  * Move X509_ALGOR to x509.h.
+  * Unexport BIT_STRING_BITNAME.
+  * Unexport ub_* constants.
+  * Always use an ASN1_STRING_TABLE global mask of UTF8String.
+  * Document ASN1_mbstring_copy.
+  * Update ghashv8-armx.pl from upstream.
+  * Align with upstream on 'close STDOUT' lines.
+  * Avoid double-expanding variables in CMake.
+  * Reject years outside 0000-9999 in ASN1_GENERALIZEDTIME_adj.
+  * Add some tests for time_t to ASN1_TIME conversions.
+  * Remove ASN1_STRING_FLAG_MSTRING.
+  * Document another batch of functions.
+  * Clarify BIO_new_mum_buf's lifetime rules.
+  * generate_ech.cc: include needed headers
+  * Don't overread in poly_Rq_mul
+  * acvp: recognise another style of JSON.
+  * Revert "Revert "Revert "Disable check that X.509 extensions implies v3."""
+  * acvp: add HKDF support.
+  * Add 'generate-ech' command to bssl tool
+  * Don't enable atomics in NO_THREADS configurations.
+  * Check strtoul return for overflow error in GetUnsigned()
+  * Add convenience functions to malloc EVP_HPKE_CTX and EVP_HPKE_KEY.
+  * Document that SSL_PRIVATE_KEY_METHOD should configure signing prefs.
+  * Always have CRYPTO_sysrand_for_seed.
+  * hrss: use less stack space.
+  * Make X509_EXTENSION opaque.
+  * Make X509_CRL opaque.
+  * Switch another malloc to bssl::Array.
+  * Add a pointer alignment helper function.
+  * Remove unused field in X509_NAME_ENTRY.
+  * Fix sign bit in BN_div if numerator and quotient alias.
+  * Handle the server case in SSL_get0_ech_name_override.
+  * Remove -2 return value from X509*_get_*_by_NID.
+  * Remove X509at_get0_data_by_OBJ.
+  * Document a batch of extension-related functions in x509.h.
+  * conf: fix getting keys from the default section.
+  * conf: don't crash when parsing.
+  * Add some OpenSSL compatibility aliases.
+  * Make ASN1_OBJECT opaque.
+  * Rename asn1_locl.h to internal.h.
+  * Update hpke_test.go.
+  * Decorate x509v3_a2i_ipadd declaration as its definition.
+  * SHA-256 is used on AArch64, even if NO_ASM.
+  * swtb is another AArch64 magic tweak.
+  * Implement ClientHelloOuter handshakes.
+  * runner: Add a convenience function for base64 flags.
+  * Reduce bouncing on the cache lock in ssl_update_cache.
+  * Only clear not_resumable after the handshake.
+  * runner: Test that clients actually use renewed tickets.
+  * runner: Clean up test logic.
+  * runner: Fix process exit timeout.
+  * Remove old ASN.1 SET macros.
+  * Document some ASN1_INTEGER and ASN1_ENUMERATED functions.
+  * Document ASN1_STRING_to_UTF8.
+  * Const-correct ASN1_item_verify a bit more.
+  * Compute ASN.1 BIT STRING sizes more consistently.
+  * Remove lh_FOO_doall.
+  * Prefix internal LHASH functions.
+  * Unexport almost all of LHASH.
+  * Rename t1_lib.cc to extensions.cc.
+  * Prefix and unexport a2i_ipadd.
+  * Fix a -Wdeprecated-copy warning.
+  * Validate ECH public names.
+  * Fold X509_VERIFY_PARAM_ID into X509_VERIFY_PARAM.
+  * Make X509_VERIFY_PARAM opaque.
+  * Move crypto/x509/vpm_int.h into internal.h.
+  * Reformat x509_vfy.h and convert comments.
+  * Reland "Add util/fetch_ech_config_list.go"
+  * Revert "Add util/fetch_ech_config_list.go"
+  * Add util/fetch_ech_config_list.go
+  * More reliably report handshake errors through SSL_write.
+  * Add an option to permute ClientHello extension order.
+  * runner: Check the test name against the protocol being tested.
+  * Remove outdated comment in primality testing.
+  * Add most of an ECH client implementation.
+  * Add a basic API to make ECHConfigs.
+  * Make ECH server APIs take EVP_HPKE_KEY.
+  * Rename SSL_ECH_SERVER_CONFIG_LIST to SSL_ECH_KEYS.
+  * runner: Self-check tests more accurately and earlier.
+  * Don't pad the second ClientHello.
+  * Fix ext_pre_shared_key_clienthello_length calculation.
+  * Tidy up the PSK binder logic.
+  * Move the TLS vs DTLS header length adjustment into ssl_add_clienthello_tlsext.
+  * Shift some complexity out of ssl_add_clienthello_tlsext.
+  * Add a note about extension callback names.
+  * Add move support to EVP_MD_CTX.
+  * Replace hs->needs_psk_binder with an output parameter.
+  * Make add_clienthello callbacks const.
+  * Fix documentation typo.
+  * Compute the ECH GREASE payload outside of the callbacks.
+  * Pick up the GREASE ECH config ID from grease_seed.
+  * Initialize grease_seed on construction.
+  * Remove the extension init hook.
+  * Move key_share computation out of ClientHello callbacks.
+  * Release some temporaries outside of ClientHello callbacks.
+  * Move the early_data_{offered,reason} logic out of extension callbacks.
+  * Implement a handshake hint for certificate compression.
+  * runner: Implement ECH server for testing.
+  * runner: Parse the status_request extension more strictly.
+  * runner: Make echIsInner a boolean.
+  * runner: Revise ECHConfig type in preparation for client implementation
+  * Fix ECH-Server-RepeatedConfigID test.
+  * Add SSL_ech_accepted API and ech_is_required alerts.
+  * Reject the ECH extension in TLS 1.2 ServerHello.
+  * Move ECH-related APIs to encrypted_client_hello.cc.
+  * Const-correct message creation hooks.
+  * Remove the Channel ID callback.
+  * Manage Channel ID handshake state better.
+  * DTLS-SRTP is only defined for DTLS.
+  * Remove impossible ssl->s3 null check.
+  * fix #415: Perl scripts fail when building from a path with spaces
+  * Cite an RFC over 9000 (draft-ietf-quic-tls is now RFC 9001).
+  * Add compatibility impl for EVP_PKEY_get0
+  * Make md32_common.h single-included and use an unsized helper for SHA-256.
+  * Pull HASH_TRANSFORM out of md32_common.h.
+  * Ensure name not null in EVP_get_cipherbyname
+  * Fix array-parameter warnings
+  * Don't copy client's session ID into server's session.
+  * Test ECH server with unique and repeated config IDs.
+  * Refresh SSL corpora after adding ECH fuzzer mode.
+  * Implement fuzzer mode for ECH server.
+  * Don't try to write empty early data in the tool.
+  * GREASE is now RFC 8701.
+  * runner: Reject all zero client and server randoms.
+  * Const-correct SSL_get_srtp_profiles.
+  * Update the ECH GREASE size selection.
+  * fuzz/minimise_corpora.sh: Add shebang and chmod +x
+  * Add a missing case to SSL_error_description.
+  * Remove draft tokbind implementation.
+  * Make X509_REQ and X509_REQ_INFO opaque.
+  * Check hs->early_session, not ssl->session, for the early data limit.
+  * Fix some includes.
+  * Be clearer which signing inputs are digests.
+  * Validate RSA public keys more consistently.
+  * Add APIs to manually fill in signatures for CRLs.
+  * Check for resumption identifiers in SSL_SESSION_is_resumable.
+  * Don't use SHA256(ticket) as the signaling session ID for tickets.
+  * Simplify renego + resumption handling.
+  * Move session ID assignment out of ssl_get_new_session.
+  * Fix the ech_accept comment.
+  * Export the HPKE implementation.
+  * Refer to EVP_HPKE_CTX by a consistent name.
+  * Shift the KEM dependency in HPKE up a step.
+  * Update ACVP URLs.
+  * Add SSL_can_release_private_key.
+  * Make X509_SIG and X509_CERT_AUX opaque.
+  * acvp: move hash iterations into modulewrapper.
+  * Switch HPKE to a three-parameter output buffer.
+  * Introduce EVP_HPKE_{AEAD,KDF} types.
+  * Don't mark up the first word in a collective comment.
+  * Revise the deterministic for_test variant of HPKE's SetupBaseS.
+  * Fix a memory leak with d2i_ASN1_OBJECT object reuse.
+  * Remove HPKE PSK mode.
+  * Remove HKDF-SHA384 and HKDF-SHA512 from HPKE.
+  * Correctly order PKCS#7 certificates and CRLs.
+  * Implement ECH draft 10 and update HPKE to draft 08.
+  * Document expected use of BTI and PAC macros.
+
+-------------------------------------------------------------------
 Sat May 30 08:04:19 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Drop 0001-Compile-for-RISC-V.patch: it was an orphaned source

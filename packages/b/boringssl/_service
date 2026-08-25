@@ -5,11 +5,16 @@
     <param name="changesgenerate">enable</param>
     <param name="filename">boringssl</param>
     <param name="versionformat">0.%cd</param>
-    <param name="revision">2c45d4e03e35a2dd73834252e11e8a7282eb9185</param>
+    <param name="revision">7c1efd8d6ffb36a57feba44e8c73cf674801f3cb</param>
   </service>
   <service mode="manual" name="recompress">
     <param name="file">*.tar</param>
     <param name="compression">xz</param>
   </service>
-  <service mode="manual" name="set_version"/>
+  <service mode="manual" name="set_version">
+    <param name="basename">boringssl</param>
+  </service>
+  <service name="go_modules" mode="manual">
+    <param name="compression">xz</param>
+  </service>
 </services>

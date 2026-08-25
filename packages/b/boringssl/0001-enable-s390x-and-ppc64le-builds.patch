@@ -1,0 +1,46 @@
+From 05d24f2e64dcb584f4d56878eee7ca806bdad7a6 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
+Date: Mon, 24 Aug 2026 05:29:14 +0000
+Subject: [PATCH 1/4] enable s390x and ppc64le builds
+
+---
+ crypto/poly1305/poly1305_test.cc | 5 +++++
+ include/openssl/target.h         | 6 ++++++
+ 2 files changed, 11 insertions(+)
+
+diff --git a/crypto/poly1305/poly1305_test.cc b/crypto/poly1305/poly1305_test.cc
+index 5f8453258..9920491fb 100644
+--- a/crypto/poly1305/poly1305_test.cc
++++ b/crypto/poly1305/poly1305_test.cc
+@@ -27,6 +27,11 @@
+ #include "../test/test_util.h"
+ #include "internal.h"
+ 
++#if defined(OPENSSL_S390X)
++#define ALIGN_BYTES 8
++#else
++#define ALIGN_BYTES 16
++#endif
+ 
+ BSSL_NAMESPACE_BEGIN
+ namespace {
+diff --git a/include/openssl/target.h b/include/openssl/target.h
+index 2372a055d..7e5a19a52 100644
+--- a/include/openssl/target.h
++++ b/include/openssl/target.h
+@@ -40,6 +40,12 @@
+ #elif defined(__MIPSEL__) && defined(__LP64__)
+ #define OPENSSL_64_BIT
+ #define OPENSSL_MIPS64
++#elif defined(__s390x__) || defined(__S390X__)
++#define OPENSSL_64_BIT
++#define OPENSSL_S390X
++#elif (defined(__PPC64__) || defined(__powerpc64__)) && (defined(__LITTLE_ENDIAN__) || defined(_LITTLE_ENDIAN))
++#define OPENSSL_64_BIT
++#define OPENSSL_PPC64LE
+ #elif defined(__riscv) && __SIZEOF_POINTER__ == 8
+ #define OPENSSL_64_BIT
+ #define OPENSSL_RISCV64
+-- 
+2.55.0
+

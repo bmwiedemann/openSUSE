@@ -1,0 +1,25 @@
+From cbfcd76ff1b80af00686974c512563ea65e2683b Mon Sep 17 00:00:00 2001
+From: Fridrich Strba <fridrich.strba@bluewin.ch>
+Date: Mon, 24 Aug 2026 11:00:12 +0200
+Subject: [PATCH 4/4] lower cmake version
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e2dc578dd..a69862974 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -12,7 +12,7 @@
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+ 
+-cmake_minimum_required(VERSION 3.22)
++cmake_minimum_required(VERSION 3.20)
+ 
+ # Defer enabling C and CXX languages.
+ project(BoringSSL NONE)
+-- 
+2.55.0
+

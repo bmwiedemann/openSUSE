@@ -424,4 +424,12 @@
     <comment>Drop the orphaned, obsolete 0001-Compile-for-RISC-V.patch (it was shipped but unreferenced -- the factory-auto orphaned-source check that declined the previous request -- and is redundant anyway: the pinned FIPS snapshot already has the RISC-V detection in include/openssl/base.h). Spec cleanup (drop Group tags, use path macros). No version change (boringssl stays pinned to fips-20210429 for Go boringcrypto).</comment>
     <requestid>1356025</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>7fada83dec274111ec9f248a6a42a2ff</srcmd5>
+    <version>0.20260813</version>
+    <time>1787656831</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1373505</requestid>
+  </revision>
 </revisionlist>
