@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 13 08:17:44 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.435
+  * This release features improved performance for many operations. e.g.
+    running `find` over a large directory shows up to 40% improvement.
+
+-------------------------------------------------------------------
 Tue Aug  4 08:05:56 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.430
