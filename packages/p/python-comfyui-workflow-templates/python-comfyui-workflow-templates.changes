@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Aug 25 08:28:57 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.11.46:
+  * Only the pinned bundle versions move: -core to 0.3.320, -json
+    to 0.1.55 and -media-assets-01 to 0.1.33, which together add
+    the Bytedance VCube video enhance, Meshy7 image/text to model
+    and Wan 3.0 i2v/r2v/t2v API templates
+  * Module code, README and license are unchanged from 0.11.44
+- Relax the bundle dependencies from exact '=' pins to '>=' floors:
+  * upstream's '==' is a release-train lockfile, not an API
+    constraint, and an exact pin made this package uninstallable
+    the moment any independently released bundle moved
+  * the real requirement is one-directional -- a bundle older than
+    the manifest -core ships means a missing asset -- which a floor
+    expresses exactly
+
+-------------------------------------------------------------------
 Fri Aug 21 08:51:33 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Initial package (version 0.11.44): meta package for ComfyUI

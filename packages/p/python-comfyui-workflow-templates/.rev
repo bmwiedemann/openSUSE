@@ -22,4 +22,40 @@ Fri Aug 21 08:51:33 UTC 2026 - Martin Pluskal &lt;mpluskal@suse.com&gt;
 </comment>
     <requestid>1372804</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>48a28d59b0eefcd6d4ebe05b74ab189c</srcmd5>
+    <version>0.11.46</version>
+    <time>1787656858</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.11.46 and relax the bundle dependencies from exact '=' pins to
+'&gt;=' floors.
+
+0.11.46 changes nothing but the pinned bundle versions: -core 0.3.320,
+-json 0.1.55, -media-assets-01 0.1.33. Module code, README and LICENSE are
+byte-identical to 0.11.44.
+
+PLEASE STAGE TOGETHER with the rest of this release train, which is
+submitted as separate requests:
+  sr#1373544  python-comfyui-workflow-templates-json          0.1.55
+  sr#1373547  python-comfyui-workflow-templates-media-assets-01 0.1.33
+  sr#1373548  python-comfyui-workflow-templates-core           0.3.320
+The four packages are only consistent as a set: -core's manifest names the
+assets that live in -json and -media-assets-01.
+
+On the pin change: upstream's '==' is a release-train lockfile, not an API
+constraint. This meta package's only code imports five stable helpers from
+-core, and the bundles are additive asset stores, so the real requirement is
+one-directional -- a bundle OLDER than the manifest -core ships means a
+missing asset. A floor states exactly that; '=' additionally forbids the
+harmless newer direction, and that is not theoretical: while preparing this
+train, bumping -core alone immediately made the 0.11.44 meta package
+unresolvable in the devel project.
+
+Verified in the build chroot with the built RPMs installed: all 528
+templates and all 1235 assets resolve via iter_assets(), including the six
+new ones (api_wan3_0_{t2v,i2v,r2v}, api_meshy7_{text,image}_to_model,
+api_bytedance_vcube_video_enhance).
+</comment>
+    <requestid>1373549</requestid>
+  </revision>
 </revisionlist>

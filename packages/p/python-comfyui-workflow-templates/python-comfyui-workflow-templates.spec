@@ -16,31 +16,38 @@
 #
 
 Name:           python-comfyui-workflow-templates
-Version:        0.11.44
+Version:        0.11.46
 Release:        0
 Summary:        ComfyUI workflow templates meta package
 License:        MIT
 URL:            https://github.com/Comfy-Org/workflow_templates
 Source0:        https://files.pythonhosted.org/packages/source/c/comfyui_workflow_templates/comfyui_workflow_templates-%{version}.tar.gz
-BuildRequires:  %{python_module comfyui-workflow-templates-core = 0.3.315}
-BuildRequires:  %{python_module comfyui-workflow-templates-json = 0.1.50}
-BuildRequires:  %{python_module comfyui-workflow-templates-media-api = 0.3.84}
-BuildRequires:  %{python_module comfyui-workflow-templates-media-assets-01 = 0.1.30}
-BuildRequires:  %{python_module comfyui-workflow-templates-media-image = 0.3.160}
-BuildRequires:  %{python_module comfyui-workflow-templates-media-other = 0.3.229}
-BuildRequires:  %{python_module comfyui-workflow-templates-media-video = 0.3.101}
+BuildRequires:  %{python_module comfyui-workflow-templates-core >= 0.3.320}
+BuildRequires:  %{python_module comfyui-workflow-templates-json >= 0.1.55}
+BuildRequires:  %{python_module comfyui-workflow-templates-media-api >= 0.3.84}
+BuildRequires:  %{python_module comfyui-workflow-templates-media-assets-01 >= 0.1.33}
+BuildRequires:  %{python_module comfyui-workflow-templates-media-image >= 0.3.160}
+BuildRequires:  %{python_module comfyui-workflow-templates-media-other >= 0.3.229}
+BuildRequires:  %{python_module comfyui-workflow-templates-media-video >= 0.3.101}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 61}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-comfyui-workflow-templates-core = 0.3.315
-Requires:       python-comfyui-workflow-templates-json = 0.1.50
-Requires:       python-comfyui-workflow-templates-media-api = 0.3.84
-Requires:       python-comfyui-workflow-templates-media-assets-01 = 0.1.30
-Requires:       python-comfyui-workflow-templates-media-image = 0.3.160
-Requires:       python-comfyui-workflow-templates-media-other = 0.3.229
-Requires:       python-comfyui-workflow-templates-media-video = 0.3.101
+# Upstream pins the bundles with '==', but that is a release-train lockfile,
+# not an API constraint: this package's only code imports five stable helpers
+# from -core, and the bundles are additive asset stores. The real requirement
+# is one-directional -- a bundle older than the manifest core ships means a
+# missing asset -- so a floor expresses it exactly, while '=' additionally
+# forbids the harmless newer direction and makes this package uninstallable
+# on every independent bundle release.
+Requires:       python-comfyui-workflow-templates-core >= 0.3.320
+Requires:       python-comfyui-workflow-templates-json >= 0.1.55
+Requires:       python-comfyui-workflow-templates-media-api >= 0.3.84
+Requires:       python-comfyui-workflow-templates-media-assets-01 >= 0.1.33
+Requires:       python-comfyui-workflow-templates-media-image >= 0.3.160
+Requires:       python-comfyui-workflow-templates-media-other >= 0.3.229
+Requires:       python-comfyui-workflow-templates-media-video >= 0.3.101
 BuildArch:      noarch
 %python_subpackages
 
