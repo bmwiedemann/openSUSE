@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package octave-forge-general
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define octpkg  general
 Name:           octave-forge-%{octpkg}
-Version:        2.1.3
+Version:        2.1.4
 Release:        0
 Summary:        General tools for Octave
 License:        BSD-3-Clause AND GPL-3.0-or-later
@@ -37,15 +37,15 @@ This is part of Octave-Forge project.
 
 %prep
 %setup -q -c %{name}-%{version}
-if test -f /usr/lib/rpm/config.guess; then
-  cp /usr/lib/rpm/config.{guess,sub} */src
-fi
+
 %octave_pkg_src
 
 # Save metainfo file, we only have tarballs later
 find ./ -name "*.metainfo.xml" -exec cp '{}' ./ \;
 
 %build
+# autoconf compiler detection is broken, force it
+export CXX="g++ -std=gnu++17"
 %octave_pkg_build
 
 %install

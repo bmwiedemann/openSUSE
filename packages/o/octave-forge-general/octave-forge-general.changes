@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug 20 16:56:50 UTC 2026 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 2.1.4:
+  * updates to support libnettle 4 changes
+- Work around broken autoconf compiler/default C++ version
+  detection.
+
+-------------------------------------------------------------------
 Sat Nov  4 11:15:51 UTC 2023 - Andreas Schwab <schwab@suse.de>
 
 - Update antique config.{guess,sub} scripts
