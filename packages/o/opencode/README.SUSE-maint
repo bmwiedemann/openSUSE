@@ -11,7 +11,7 @@ spec alone.
 Bumping the version
 -------------------
 
-    ./opencode_vendor 1.18.21 --retrace
+    ./opencode_vendor 1.18.22 --retrace
 
 That one command produces every source the spec consumes:
 
@@ -71,8 +71,8 @@ something a reviewer should have to work out.
 The keep list
 -------------
 
-opencode-vendor-keep.txt names the 509 store entries the vendor tarball
-keeps, out of the 994 that are left once the filtered install has had the
+opencode-vendor-keep.txt names the 512 store entries the vendor tarball
+keeps, out of the 996 that are left once the filtered install has had the
 platforms we do not build for removed. It is derived, not curated.
 `--retrace` runs the real build under strace, resolves every path it touched
 back to the package that owns it, prunes to that set and rebuilds to prove
@@ -87,7 +87,7 @@ or @parcel/watcher-linux-x64-glibc. A plain run notices - the script's keep
 list check stops with "keep list names packages the install did not produce"
 - but --retrace is what the list is regenerated with, and the counterpart
 step described below can only add packages the install produced. Without
-these flags it writes a 505-entry list instead of 508 and the x86_64 build
+these flags it writes a 509-entry list instead of 512 and the x86_64 build
 on OBS, which is not the architecture this is generated on, is what finds
 out. The step after the install prunes the platforms we really do not want
 back out.
@@ -166,8 +166,8 @@ found and why the behaviour could not simply be configured off.
         OPENCODE_ALLOW_GRAMMAR_DOWNLOAD=1
 
 The fourth patch, opencode-relax-bun-version.patch, is unrelated and, as of
-1.18.21, inert. Upstream's build script fails unless bun satisfies a caret
-range around the version in the packageManager field: 1.18.21 pins bun@1.3.14
+1.18.22, inert. Upstream's build script fails unless bun satisfies a caret
+range around the version in the packageManager field: 1.18.22 pins bun@1.3.14
 and Factory has 1.4.0, which satisfies ^1.3.14, so the check passes and the
 patch changes nothing. Keep it anyway. Both versions float independently, a
 distribution ships one bun, and the day either side crosses a major the check
@@ -201,10 +201,10 @@ Licensing
 ---------
 
 The dependency tree is compiled into the executable, so its licences are part
-of the binary and the License: tag has to cover all of them. As of 1.18.21,
-across the 508 shipped packages:
+of the binary and the License: tag has to cover all of them. As of 1.18.22,
+across the 509 shipped packages:
 
-    MIT 293, Apache-2.0 111, ISC 75, BSD-2-Clause 9, BlueOak-1.0.0 9,
+    MIT 293, Apache-2.0 112, ISC 75, BSD-2-Clause 9, BlueOak-1.0.0 9,
     BSD-3-Clause 6, 0BSD 1, CC0-1.0 1, CC-BY-3.0 1, CC-BY-4.0 1
 
 No copyleft, nothing non-free. Two declarations are inconsistent and neither

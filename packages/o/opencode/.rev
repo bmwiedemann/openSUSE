@@ -113,4 +113,35 @@ bun build --compile executable).</comment>
   of embedding it in the binary.</comment>
     <requestid>1373019</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ba156275fbe073a97782fb8d9ba5d780</srcmd5>
+    <version>1.18.22</version>
+    <time>1787656807</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.18.22.
+
+Upstream bugfix release (2026-08-24):
+- Fix opencode device login when the server returns a relative
+  verification URL or uses a base path.
+- Stop sending textVerbosity to OpenAI-compatible providers that do not
+  support it.
+- Update the Amazon Bedrock provider for compatibility fixes.
+- Drop outdated opencode Go first-month discount messaging and pricing.
+
+Packaging:
+- Vendor sources regenerated with opencode_vendor 1.18.22 --retrace; the
+  keep list moved from 509 to 512 store entries because the Amazon
+  Bedrock provider and its nested @ai-sdk dependencies were bumped.
+- Licence audit rerun over all 509 unique packages in the vendor
+  tarball: the SPDX set is unchanged and still contains no copyleft, so
+  the License tag is untouched.
+- The @opentui/core catalog pin is still 0.4.5 and the packageManager
+  pin is still bun@1.3.14, so no change to opentui or bun is needed.
+- All four patches apply unchanged; none of the files they touch was
+  modified upstream between 1.18.21 and 1.18.22.
+
+Built locally on aarch64: green, %check runs the compiled binary and it
+reports 1.18.22; rpmlint 0 errors, 0 badness.</comment>
+    <requestid>1373483</requestid>
+  </revision>
 </revisionlist>

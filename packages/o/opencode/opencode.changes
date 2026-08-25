@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Aug 24 20:21:46 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.18.22:
+  * Fix opencode device login when the server returns a relative
+    verification URL or uses a base path.
+  * Stop sending textVerbosity to OpenAI-compatible providers that
+    do not support it.
+  * Update the Amazon Bedrock provider for compatibility fixes.
+  * Drop outdated opencode Go first-month discount messaging and
+    pricing.
+- Retrace the vendor keep list (509 to 512 store entries): the
+  Amazon Bedrock provider and its nested @ai-sdk dependencies
+  moved. The SPDX license set is unchanged and still contains no
+  copyleft.
+
+-------------------------------------------------------------------
 Sat Aug 22 08:33:34 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.18.21:
