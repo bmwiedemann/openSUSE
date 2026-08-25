@@ -1,7 +1,7 @@
 #
 # spec file for package libsigsegv
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,10 @@
 
 %define somajor	2
 %define lname	  libsigsegv%{somajor}
+%define add_optflags(a:f:t:p:w:W:d:g:O:A:C:D:E:H:i:M:n:P:U:u:l:s:X:B:I:L:b:V:m:x:c:S:E:o:v:) \
+%global optflags %{optflags} %{**}
 Name:           libsigsegv
-Version:        2.14
+Version:        2.15
 Release:        0
 Summary:        Library for Handling Page Faults in User Mode
 License:        GPL-2.0-or-later
@@ -28,11 +30,7 @@ URL:            https://www.gnu.org/software/libsigsegv/
 Source0:        https://ftp.gnu.org/pub/gnu/libsigsegv/libsigsegv-%{version}.tar.gz
 Source1:        https://ftp.gnu.org/pub/gnu/libsigsegv/libsigsegv-%{version}.tar.gz.sig
 Source2:        http://savannah.gnu.org/people/viewgpg.php?user_id=1871#/%{name}.keyring
-Patch0:         libsigsegv-2.12-lto.dif
 BuildRequires:  pkgconfig
-
-%define add_optflags(a:f:t:p:w:W:d:g:O:A:C:D:E:H:i:M:n:P:U:u:l:s:X:B:I:L:b:V:m:x:c:S:E:o:v:) \
-%global optflags %{optflags} %{**}
 
 %description
 This is a library for handling page faults in user mode. A page fault occurs
@@ -68,12 +66,11 @@ when a program tries to access to a region of memory that is currently not
 available.
 
 %prep
-%setup -q
-%patch -P 0 -b .p0
+%autosetup -p1
 
 %build
 %add_optflags -g3 -D_DEFAULT_SOURCE -D_XOPEN_SOURCE
-%if 0%(case "%optflags" in (*-flto*) echo 1;; esac)
+%if 0%(case "%{optflags}" in (*-flto*) echo 1;; esac)
 %add_optflags -ffat-lto-objects
 %endif
 %configure \
@@ -85,7 +82,7 @@ sed -ri 's@^(hardcode_libdir_flag_spec=)".*"@\1""@' libtool
 mkdir bin/
 ln -sf /bin/true bin/strip
 PATH=${PWD}/bin:$PATH; export PATH
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -96,18 +93,14 @@ rm "%{buildroot}%{_libdir}/libsigsegv.la"
 # qemu does not support stack overflows well
 export XFAIL_TESTS="test-catch-stackoverflow1 test-catch-stackoverflow2"
 %endif
-make %{?_smp_mflags} check
+%make_build check
 
 %post   -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
 
 %files doc
-%if %{defined license}
 %license COPYING
-%doc AUTHORS ChangeLog* NEWS PORTING README
-%else
-%doc AUTHORS COPYING ChangeLog* NEWS PORTING README
-%endif
+%doc ChangeLog* NEWS README
 
 %files -n %{lname}
 %{_libdir}/libsigsegv.so.%{somajor}*

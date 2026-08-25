@@ -125,4 +125,21 @@
     <comment></comment>
     <requestid>1154030</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b0b4c18900efedfe38223ca6db716e1e</srcmd5>
+    <version>2.15</version>
+    <time>1787656696</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.15:
+  * Added support for Linux/PowerPC (32-bit) with musl libc.
+  * Added support for Hurd/x86_64.
+  * Added support for macOS/x86_64 with clang 15.
+  * Optimize distinction between stack overflow and other fault
+    on AIX 7.
+- drop libsigsegv-2.12-lto.dif (obsolete)
+- refresh keyring
+
+- Adopt patch fix-build-in-qemu.patch</comment>
+    <requestid>1373150</requestid>
+  </revision>
 </revisionlist>

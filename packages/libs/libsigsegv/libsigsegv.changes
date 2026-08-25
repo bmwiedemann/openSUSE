@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Aug 22 20:47:19 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.15:
+  * Added support for Linux/PowerPC (32-bit) with musl libc.
+  * Added support for Hurd/x86_64.
+  * Added support for macOS/x86_64 with clang 15.
+  * Optimize distinction between stack overflow and other fault
+    on AIX 7.
+- drop libsigsegv-2.12-lto.dif (obsolete)
+- refresh keyring
+
+-------------------------------------------------------------------
 Fri Mar  1 09:37:48 UTC 2024 - pgajdos@suse.com
 
 - Use %patch -P N instead of deprecated %patchN.
@@ -92,7 +104,7 @@ Wed Jul  3 12:36:56 UTC 2013 - schwab@suse.de
 Wed May  8 13:09:02 UTC 2013 - werner@suse.de
 
 - Update to version 2.10
-- Adopt patch fix-build-in-qemu.patch 
+- Adopt patch fix-build-in-qemu.patch
 
 -------------------------------------------------------------------
 Tue Jan 31 10:39:15 UTC 2012 - jengelh@medozas.de
