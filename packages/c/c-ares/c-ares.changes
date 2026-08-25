@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Aug 24 09:42:15 UTC 2026 - Adam Majer <adam.majer@suse.de>
+
+- c-ares 1.36.8:
+  * CVE-2026-33630: Fixes use-after-free/double-free in c-ares
+    query-completion handling, remotely triggerable via
+    ares_getaddrinfo() over TCP (bsc#1270416)
+  * CVE-2026-69184: CPU-exhaustion denial of service via unbounded
+    DNS name compression pointer chains (bsc#1276290)
+  * CVE-2026-69186: Memory-amplification denial of service via unvalidated
+    DNS header record counts (bsc#1276291)
+
+- README.md: Add readme with build status
+
+For details, see https://c-ares.org/changelog.html
+
+-------------------------------------------------------------------
 Thu Jan  1 19:06:23 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - c-ares 1.35.6:
