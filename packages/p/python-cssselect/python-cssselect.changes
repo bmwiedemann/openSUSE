@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Aug 20 09:07:32 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.0:
+  * **Backward-incompatible change**: removed the no longer used
+    ``closing_combiner`` and ``has_inner_condition`` arguments of
+    ``XPathExpr.join()``. They were added for ``:has()`` support
+    which no longer needs them.
+  * Fixed and improved support for the following selector
+    features:
+  * Fixed some issues with the ``Selector.canonical()`` method.
+  * Improved the ``Element.__repr__()`` and
+    ``Relation.__repr__()`` methods.
+  * Fixed ``Selector.specificity()`` calculation for the
+    ``:is()``, ``:where()`` and ``:matches()`` pseudo-classes.
+  * Improved the docs about the ``:has()``, ``:is()`` and
+    ``:where()`` pseudo-classes and the `!=`` attribute operator.
+
+-------------------------------------------------------------------
 Sun Mar 29 10:19:05 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.0:

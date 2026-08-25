@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-cssselect%{psuffix}
-Version:        1.4.0
+Version:        1.5.0
 Release:        0
 Summary:        CSS3 selectors for Python
 License:        BSD-3-Clause

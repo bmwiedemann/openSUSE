@@ -150,4 +150,25 @@
   fixes bnc#828513</comment>
     <requestid>1343406</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>0f55a0ff724a5953008ca4f85f5bdcc5</srcmd5>
+    <version>1.5.0</version>
+    <time>1787656688</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.5.0:
+  * **Backward-incompatible change**: removed the no longer used
+    ``closing_combiner`` and ``has_inner_condition`` arguments of
+    ``XPathExpr.join()``. They were added for ``:has()`` support
+    which no longer needs them.
+  * Fixed and improved support for the following selector
+    features:
+  * Fixed some issues with the ``Selector.canonical()`` method.
+  * Improved the ``Element.__repr__()`` and
+    ``Relation.__repr__()`` methods.
+  * Fixed ``Selector.specificity()`` calculation for the
+    ``:is()``, ``:where()`` and ``:matches()`` pseudo-classes.
+  * Improved the docs about the ``:has()``, ``:is()`` and
+    ``:where()`` pseudo-classes and the `!=`` attribute operator.</comment>
+    <requestid>1372221</requestid>
+  </revision>
 </revisionlist>
