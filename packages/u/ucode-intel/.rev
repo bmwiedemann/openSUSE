@@ -1521,4 +1521,23 @@
   | SRF-AP/SP      | C0       | 06-af-03/01 | 03000382 | 030003a3 | Xeon 6900/6700-Series Processors with E-Cores (forwarded request 1352969 from msmeissn)</comment>
     <requestid>1352992</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>97211a9f58ddfc43db8ea621ec0bdffe</srcmd5>
+    <version>20260812</version>
+    <time>1787656737</time>
+    <user>anag_factory</user>
+    <comment>- Intel CPU Microcode was updated to the 20260812 release (bsc#1274785)
+  - Removed MTL/06-aa-04/c0 due to functional issues observed when loading the MCU in some platforms.
+- Intel CPU Microcode was updated to the 20260811 release (bsc#1274785)
+  - Security updates for INTEL-SA-01379 / CVE-2025-31936
+  - Security updates for INTEL-SA-01404 / CVE-2025-31938
+  - Security updates for INTEL-SA-01423 / CVE-2026-20917
+  - Security updates for INTEL-SA-01428 / CVE-2025-35973
+  - Security updates for INTEL-SA-01435 / CVE-2026-20716
+  - Security updates for INTEL-SA-01441 / CVE-2026-20760
+  - Security updates for INTEL-SA-01442 / CVE-2026-20713 / CVE-2026-20901
+  - Security updates for INTEL-SA-01443 / CVE-2026-20707
+  - Update for functional issues. (forwarded request 1373402 from msmeissn)</comment>
+    <requestid>1373403</requestid>
+  </revision>
 </revisionlist>
