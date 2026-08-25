@@ -17,7 +17,7 @@
 
 
 Name:           python-sglang
-Version:        0.5.17
+Version:        0.5.18
 Release:        0
 Summary:        Fast serving framework for large language models
 # Legal-Review-Notice: sgl-model-gateway and CUDA AOT kernels
@@ -27,21 +27,22 @@ Summary:        Fast serving framework for large language models
 # under BSD-3-Clause, shipped as Python package data.
 # Rust PyO3 extensions (sglang-mm, sglang-grpc) are built from rust/
 # against vendor.tar.zst. Re-derived with cargo tree --offline -e normal
-# over those crates: MPL-2.0 from option-ext; Unicode-3.0 from
-# icu_*/unicode-ident; ISC from rustls-webpki/untrusted;
-# CDLA-Permissive-2.0 from webpki-roots. r-efi offers LGPL-2.1-or-later
-# but is UEFI-target-only and absent from the Linux graph.
-# vendor.tar.zst in the src.rpm satisfies MPL-2.0 §3.2.
-# sglang-server is not built: cargo_vendor update=true pulled
-# dynamo-protocols 5.3.1 which added ChatCompletionTokenLogprob.token_id
-# and FTBFS the 0.5.17 server crate (written for 5.1.0).
-License:        Apache-2.0 AND BSD-3-Clause AND CDLA-Permissive-2.0 AND ISC AND MIT AND MPL-2.0 AND Unicode-3.0
+# over those crates: BSD-2-Clause from numpy; BSD-3-Clause from
+# subtle/matchit; Unicode-3.0 from icu_*/unicode-ident; ISC from
+# rustls-webpki/untrusted; CDLA-Permissive-2.0 from webpki-roots.
+# option-ext (MPL-2.0) reaches only sglang-server, but its sources ride
+# along in vendor.tar.zst, which in the src.rpm satisfies MPL-2.0 §3.2.
+# r-efi offers LGPL-2.1-or-later but is UEFI-target-only and absent from
+# the Linux graph. sglang-server itself is not built: the CPU Python
+# runtime does not use it and it drags in the whole dynamo stack.
+License:        Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND CDLA-Permissive-2.0 AND ISC AND MIT AND MPL-2.0 AND Unicode-3.0
 URL:            https://github.com/sgl-project/sglang
 Source0:        https://github.com/sgl-project/sglang/archive/refs/tags/v%{version}.tar.gz#/sglang-%{version}.tar.gz
 Source1:        vendor.tar.zst
 # PATCH-FIX-OPENSUSE sglang-relax-cpu-requirements.patch -- >= floors (not exact pins), drop unpackaged CPU-inappropriate deps, name the dist sglang (not sglang-cpu)
 Patch0:         sglang-relax-cpu-requirements.patch
 # PATCH-FIX-OPENSUSE sglang-cpu-triton-stub.patch -- install upstream's triton stub when triton is not present so import sglang works
+# The explicit importlib.machinery/importlib.util imports it also carries are upstream sgl-project/sglang PR 36215
 Patch1:         sglang-cpu-triton-stub.patch
 # PATCH-FIX-OPENSUSE sglang-cpu-rust-exts.patch -- build setuptools-rust PyO3 extensions (mm, grpc) from the CPU pyproject
 Patch2:         sglang-cpu-rust-exts.patch
@@ -89,7 +90,6 @@ BuildRequires:  %{python_module tabulate}
 BuildRequires:  %{python_module tiktoken}
 BuildRequires:  %{python_module timm >= 1.0.16}
 BuildRequires:  %{python_module torch >= 2.12.0}
-BuildRequires:  %{python_module torchao >= 0.17.0}
 BuildRequires:  %{python_module torchaudio >= 2.11.0}
 BuildRequires:  %{python_module torchvision >= 0.27.0}
 BuildRequires:  %{python_module tqdm}
@@ -153,7 +153,6 @@ Requires:       python-tabulate
 Requires:       python-tiktoken
 Requires:       python-timm >= 1.0.16
 Requires:       python-torch >= 2.12.0
-Requires:       python-torchao >= 0.17.0
 Requires:       python-torchaudio >= 2.11.0
 Requires:       python-torchvision >= 0.27.0
 Requires:       python-tqdm
@@ -179,15 +178,15 @@ vision language models.
 
 This is a CPU build: inference uses PyTorch's native CPU operators.
 The Rust PyO3 extensions (multimodal preprocess, native gRPC) are
-built. The embedded Rust server is not (dynamo-protocols 5.3.1
-API drift). CUDA kernels, sgl-kernel and flashinfer are not.
+built. The embedded Rust server is not. CUDA kernels, sgl-kernel
+and flashinfer are not.
 
 %prep
 %autosetup -p1 -n sglang-%{version}
 rm -f rust/rust-toolchain.toml
 # vendor.tar.zst holds rust/.cargo/config.toml, rust/vendor and a
 # regenerated rust/Cargo.lock (protoc-bin-vendored dropped).
-tar -xf %{SOURCE1} -C rust
+tar -xf %{SOURCE1}
 # setuptools-rust runs cargo from python/, which does not see rust/.cargo.
 # CARGO_HOME is the reliable remap (same pattern as python-tokenizers).
 mkdir -p .cargo-home
@@ -232,11 +231,9 @@ popd
 rm -rf %{buildroot}%{$python_sitearch}/sglang/test \
        %{buildroot}%{$python_sitearch}/sglang/kernels/aot \
        %{buildroot}%{$python_sitearch}/sglang/multimodal_gen/test \
-       %{buildroot}%{$python_sitearch}/tools \
        %{buildroot}%{$python_sitelib}/sglang/test \
        %{buildroot}%{$python_sitelib}/sglang/kernels/aot \
-       %{buildroot}%{$python_sitelib}/sglang/multimodal_gen/test \
-       %{buildroot}%{$python_sitelib}/tools
+       %{buildroot}%{$python_sitelib}/sglang/multimodal_gen/test
 # CPU flavour never JIT-compiles these; shipping them scores
 # devel-file-in-non-devel-package (badness 50 each) and fails rpmlint.
 find %{buildroot} -type f \( \
@@ -259,7 +256,7 @@ $python -m compileall -q -f -o 0 -o 1 --invalidation-mode unchecked-hash \
 %check
 # Full tests need model weights, a GPU and network. Smoke-test the import
 # graph, the CLI, and that the Rust PyO3 extensions loaded.
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitearch}:%{buildroot}%{$python_sitelib} $python -B -c "import sglang; print(sglang.__version__); import sglang.srt.multimodal._core; import sglang.srt.grpc._core"
+%python_expand PYTHONPATH=%{buildroot}%{$python_sitearch}:%{buildroot}%{$python_sitelib} $python -B -c "import sglang; print(sglang.__version__); import sglang.srt.rust_extensions._multimodal; import sglang.srt.rust_extensions._grpc"
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitearch}:%{buildroot}%{$python_sitelib} %{buildroot}%{_bindir}/sglang-%{$python_bin_suffix} --help
 
 %pre

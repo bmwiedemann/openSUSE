@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Aug 24 18:24:18 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.5.18:
+  * Upstream removed the torchao integration; drop the
+    python-torchao dependency
+  * Rust PyO3 extension modules moved to
+    sglang.srt.rust_extensions._multimodal and ._grpc
+  * Triton, FlashInfer, Inductor, DeepGEMM and CUDA driver caches
+    all moved under SGLANG_CACHE_DIR
+  * Overlapped checkpoint staging at startup, enabled with
+    --startup-weight-load-mode overlap
+  * TP LMHead allgather and scatter fused into one all-to-all for
+    pure-DP dp-attention
+  * Non-fused allreduce reuses the FlashInfer MNNVL workspace
+    instead of falling back to NCCL
+  * Remote media downloads are bounded to 64 MiB and validate
+    redirects, with opt-in hostname allowlisting
+  * New models: Muse Glimmer, Intern-S2-Mobius, SANA-Video,
+    LingBot-Video-MoE, LTX-2.5, Cosmos3, LongCat-Image
+  * Removed 22 unmaintained benchmarks
+  * Reverted the parallel request lifecycle tracking that shipped
+    with the 0.5.17 gRPC generation semantics
+- Rebase sglang-relax-cpu-requirements.patch and
+  sglang-cpu-rust-exts.patch
+- Rebase sglang-cpu-triton-stub.patch onto _platform_stubs.py,
+  which replaced _triton_stub.py upstream; it also imports
+  importlib.machinery and importlib.util explicitly, which
+  Python 3.14 no longer provides implicitly
+- Add BSD-2-Clause to License: the numpy crate in the sglang-mm
+  dependency graph is BSD-2-Clause only
+- Regenerate vendor.tar.zst
+
+-------------------------------------------------------------------
 Sat Aug 22 07:59:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Initial package of python-sglang 0.5.17 (CPU singlespec,

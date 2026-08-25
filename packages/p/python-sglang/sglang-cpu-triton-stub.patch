@@ -1,42 +1,77 @@
---- a/python/sglang/__init__.py	2026-08-07 23:50:47.000000000 +0200
-+++ b/python/sglang/__init__.py	2026-08-21 22:24:26.691879593 +0200
-@@ -6,16 +6,23 @@
- import platform as _platform
- import sys as _sys
+--- a/python/sglang/__init__.py
++++ b/python/sglang/__init__.py
+@@ -1,8 +1,5 @@
+ """SGLang public API."""
  
-+# Distro CPU builds do not ship triton. Reuse upstream's macOS stub so
-+# `import sglang` (which pulls sglang.srt.utils.common) still succeeds.
-+try:
-+    import triton as _triton  # noqa: F401
-+
-+    del _triton
-+except ImportError:
-+    from sglang._triton_stub import install as _install_triton_stub
-+
-+    _install_triton_stub()
-+    del _install_triton_stub
-+
- if _sys.platform == "darwin" and _platform.machine() == "arm64":
-     try:
-         import torch as _torch
- 
-         if _torch.backends.mps.is_available():
--            from sglang._triton_stub import install as _install_triton_stub
+-import platform as _platform
+-import sys as _sys
 -
--            _install_triton_stub()
--            del _install_triton_stub
+ # sglang.srt.environ must run before the rest of this file's imports
+ # (hf_transformers_patches, lang.api, ...), which pull in torch and
+ # FlashInfer: those claim these cache dirs early, and the first value set is
+@@ -13,10 +10,11 @@
+ 
+ _redirect_third_party_caches()
+ 
+-if _sys.platform == "darwin" and _platform.machine() == "arm64":
+-    from sglang._platform_stubs import install_platform_stubs as _install_platform_stubs
++# Distro CPU builds do not ship triton either, so let the stub installer run
++# on every platform; it keeps the torch.mps patching macOS-only itself.
++from sglang._platform_stubs import install_platform_stubs as _install_platform_stubs
+ 
+-    _install_platform_stubs()
++_install_platform_stubs()
+ 
+ from sglang.srt.utils.hf_transformers_patches import apply_all as _apply_hf_patches
+ 
+--- a/python/sglang/_platform_stubs.py
++++ b/python/sglang/_platform_stubs.py
+@@ -10,7 +10,11 @@
+ from __future__ import annotations
+ 
+ import functools
+-import importlib
++# Explicit submodule imports: `import importlib` alone does not bind
++# importlib.machinery / importlib.util, and Python 3.14 no longer happens
++# to have them preloaded by the time this module runs.
++import importlib.machinery
++import importlib.util
+ import platform
+ import sys
+ import types
+@@ -378,16 +382,15 @@
+     if _platform_stubs_installed:
+         return
+ 
+-    if sys.platform != "darwin" or platform.machine() != "arm64":
+-        return
 -
-             from sglang._mps_stub import install as _install_mps_stub
+-    try:
+-        import torch
+-    except ImportError:
+-        return
++    patch_mps = sys.platform == "darwin" and platform.machine() == "arm64"
++    if patch_mps:
++        try:
++            import torch
++        except ImportError:
++            return
  
-             _install_mps_stub()
---- a/python/sglang/_triton_stub.py	2026-08-07 23:50:47.000000000 +0200
-+++ b/python/sglang/_triton_stub.py	2026-08-21 22:24:26.751886325 +0200
-@@ -41,7 +41,7 @@
-         self.__file__ = __file__
-         self._children: dict[str, object] = {}
-         # Set __spec__ so that importlib.util.find_spec() works on cached modules
--        import importlib
-+        import importlib.machinery
+-    if not torch.backends.mps.is_available():
+-        return
++        if not torch.backends.mps.is_available():
++            return
  
-         self.__spec__ = importlib.machinery.ModuleSpec(name, None, is_package=True)
+     if "triton" not in sys.modules and importlib.util.find_spec("triton") is None:
+         # Register the meta-path finder first so later ``import triton.X``
+@@ -454,6 +457,10 @@
+         compiler = _make_mock("triton.backends.compiler")
+         backends.compiler = compiler
  
++    if not patch_mps:
++        _platform_stubs_installed = True
++        return
++
+     mps = torch.mps
+     # Only patch attributes that are actually missing
+     for name, obj in [

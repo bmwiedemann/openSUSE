@@ -31,4 +31,30 @@ ChatCompletionTokenLogprob.token_id
 * libalternatives (alts) for the sglang CLI</comment>
     <requestid>1373058</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b508cb6de8a62cf4aaed2791d93415c0</srcmd5>
+    <version>0.5.18</version>
+    <time>1787656803</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.5.18.
+
+Upstream removed the torchao integration, so the python-torchao
+dependency is dropped. The Rust PyO3 extension modules moved to
+sglang.srt.rust_extensions._multimodal and ._grpc; the %check smoke
+test follows them. All compiled-kernel caches moved under
+SGLANG_CACHE_DIR upstream.
+
+All four patches were rebased. sglang-cpu-triton-stub.patch now
+targets _platform_stubs.py, which replaced _triton_stub.py upstream;
+it also imports importlib.machinery and importlib.util explicitly,
+which Python 3.14 no longer provides implicitly (that part is
+upstream sgl-project/sglang PR 36215).
+
+License gains BSD-2-Clause: the numpy crate in the sglang-mm
+dependency graph is BSD-2-Clause only.
+
+vendor.tar.zst regenerated. Built and %check-tested locally on
+aarch64 for python313 and python314.</comment>
+    <requestid>1373479</requestid>
+  </revision>
 </revisionlist>

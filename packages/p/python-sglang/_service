@@ -1,7 +1,10 @@
 <services>
+  <!-- Run this on a tree with sglang-grpc-system-protoc.patch applied: the
+       pristine rust/sglang-grpc/Cargo.toml pulls protoc-bin-vendored, whose
+       prebuilt protoc binaries must not end up in vendor.tar.zst. -->
   <service name="cargo_vendor" mode="manual">
     <param name="src">sglang-*.tar.gz</param>
-    <param name="custom-root">sglang-0.5.17/rust</param>
+    <param name="custom-root">rust</param>
     <param name="compression">zst</param>
     <param name="update">true</param>
   </service>
