@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Aug 20 18:30:15 UTC 2026 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to verion 0.10.1:
+  * Minor doc updates
+  * Updates for Octave 12+ compatibility
+  * Update binread/write and device read/write functions for
+    endian compatibility
+  * Add qt6 doc generation support
+- Update to verion 0.10.1:
+  * Minor doc updates
+  * Added initial visa support
+  * Bugfixes for:
+    + readbinblock
+    + writebinblock
+    + i2c
+    + modbus
+
+-------------------------------------------------------------------
 Tue Aug 26 20:05:35 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to verion 0.9.5:

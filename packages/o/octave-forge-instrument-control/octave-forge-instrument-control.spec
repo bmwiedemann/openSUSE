@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-instrument-control
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %define octpkg  instrument-control
 Name:           octave-forge-%{octpkg}
-Version:        0.9.5
+Version:        0.10.1
 Release:        0
 Summary:        Instrument Control for Octave
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://gnu-octave.github.io/packages/%{octpkg}/
-Source0:        https://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
+Source0:        https://github.com/gnu-octave/%{octpkg}/releases/download/release-%{version}/%{octpkg}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM instrument-control-no-return-in-nonvoid-function.patch badshah400@gmail.com -- Fix non-void functions not returning data typically at the end of an if-elseif-else block.
 Patch0:         instrument-control-no-return-in-nonvoid-function.patch
 BuildRequires:  gcc-c++
