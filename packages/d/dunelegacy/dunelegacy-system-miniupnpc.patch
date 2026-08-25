@@ -1,0 +1,57 @@
+From: openSUSE games maintainers
+Subject: Build against a system miniupnpc older than 2.3
+
+The build assumed the vcpkg-provided miniupnpc, which always ships a CMake
+package config and is new enough for the seven-argument UPNP_GetValidIGD().
+Distributions may ship neither: openSUSE Leap 16.0 has miniupnpc 2.2.6 built
+with its plain Makefile, so only miniupnpc.pc is installed and the wanaddr
+output parameter (added in 2.2.8, API version 18) does not exist yet.
+
+Fall back to pkg-config for detection and select the matching UPNP_GetValidIGD()
+prototype. The returned WAN address was unused anyway.
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 090493e..dae145b 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -370,7 +370,14 @@ if(APPLE)
+ endif()
+ 
+ # Find miniupnpc for UPnP support
+-find_package(miniupnpc CONFIG REQUIRED)
++find_package(miniupnpc CONFIG QUIET)
++if(NOT TARGET miniupnpc::miniupnpc)
++    # vcpkg always provides the CMake package config, but distributions that
++    # build miniupnpc with its plain Makefile install only miniupnpc.pc.
++    find_package(PkgConfig REQUIRED)
++    pkg_check_modules(MINIUPNPC REQUIRED IMPORTED_TARGET GLOBAL miniupnpc)
++    add_library(miniupnpc::miniupnpc ALIAS PkgConfig::MINIUPNPC)
++endif()
+ 
+ # Find discord-rpc for Discord Rich Presence
+ find_library(DISCORD_RPC_LIBRARY discord-rpc PATHS ${CMAKE_PREFIX_PATH}/lib)
+diff --git a/src/Network/UPnPManager.cpp b/src/Network/UPnPManager.cpp
+index 851e316..b3abbd6 100644
+--- a/src/Network/UPnPManager.cpp
++++ b/src/Network/UPnPManager.cpp
+@@ -67,11 +67,18 @@ bool UPnPManager::discover(int timeoutMs) {
+     }
+     
+     // Find a valid IGD (Internet Gateway Device)
++#if MINIUPNPC_API_VERSION >= 18
+     char wanAddress[64] = {0};
+-    int result = UPNP_GetValidIGD(deviceList, &data->urls, &data->igdData, 
++    int result = UPNP_GetValidIGD(deviceList, &data->urls, &data->igdData,
+                                    data->lanAddress, sizeof(data->lanAddress),
+                                    wanAddress, sizeof(wanAddress));
+-    
++#else
++    // miniupnpc before 2.2.8 does not report the WAN address here; we only
++    // need the external address, which UPNP_GetExternalIPAddress() gives us.
++    int result = UPNP_GetValidIGD(deviceList, &data->urls, &data->igdData,
++                                   data->lanAddress, sizeof(data->lanAddress));
++#endif
++
+     freeUPNPDevlist(deviceList);
+     
+     // Only result == 1 means a valid, connected IGD

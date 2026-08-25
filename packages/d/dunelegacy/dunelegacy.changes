@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 17 13:43:13 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add patch:
+  * dunelegacy-system-miniupnpc.patch
+    Build with miniupnpc < 2.3 (Leap 16.0)
+
+-------------------------------------------------------------------
 Sun Mar 22 13:38:00 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.99.5

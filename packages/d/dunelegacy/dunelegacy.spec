@@ -29,6 +29,8 @@ Source8:        %{name}.appdata.xml
 # PATCH-FEATURE-UPSTREAM https://sourceforge.net/p/dunelegacy/patches/7/
 Source9:        %{name}.6
 Patch0:         dunelegacy-fix-cmake.patch
+# PATCH-FIX-UPSTREAM dunelegacy-system-miniupnpc.patch -- Build against a system miniupnpc older than 2.3
+Patch1:         dunelegacy-system-miniupnpc.patch
 BuildRequires:  cmake
 BuildRequires:  discord-rpc-devel
 BuildRequires:  gcc-c++
