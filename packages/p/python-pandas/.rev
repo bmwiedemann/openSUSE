@@ -961,4 +961,13 @@ All packages broken by this update should be fixed now.</comment>
   * update constraints for increased job limit (forwarded request 1368223 from bnavigator)</comment>
     <requestid>1368224</requestid>
   </revision>
+  <revision rev="85" vrev="2">
+    <srcmd5>b524ffb065dc3bd8f91a77d928ea43fd</srcmd5>
+    <version>3.0.5</version>
+    <time>1787656665</time>
+    <user>anag_factory</user>
+    <comment>- Add np25.patch to fix tests with numpy 2.5
+- Hotfix dirty hack which broke with recent python-rpm-macros</comment>
+    <requestid>1373438</requestid>
+  </revision>
 </revisionlist>

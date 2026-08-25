@@ -73,6 +73,8 @@ URL:            https://pandas.pydata.org/
 # SourceRepository: https://github.com/pandas-dev/pandas
 # Must be created by cloning through `osc service runall`: gh#pandas-dev/pandas#54903, gh#pandas-dev/pandas#54907
 Source0:        pandas-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/pandas-dev/pandas/pull/66621 BUG: Avoid NumPy 2.5 DeprecationWarning in Timedelta.view
+Patch0:         np25.patch
 %if !%{with test}
 BuildRequires:  %{python_module Cython >= 3.1.0}
 BuildRequires:  %{python_module devel >= 3.11}
@@ -443,7 +445,7 @@ You can install them directly through `pip%{python_bin_suffix} install --user`, 
 %setup -q -n pandas-%{version}
 %if !%{with test}
 # use the last one from the buildset: need versioneer installed
-%python_expand genpython="%__$python"
+%python_expand genpython="$python"
 ${genpython} generate_version.py -o _version_meson.py
 sed -i "s|'generate_version.py',|'${genpython}', 'generate_version.py',|" meson.build
 # don't require the PyPI data only tzdata package, we use the timezone RPM package

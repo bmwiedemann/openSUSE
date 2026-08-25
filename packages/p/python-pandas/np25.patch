@@ -1,0 +1,42 @@
+From ff1d39bbdf4eda26de2285cf836104f9885b0826 Mon Sep 17 00:00:00 2001
+From: Aryan Bhirud <112156883+AryanBhirud@users.noreply.github.com>
+Date: Sun, 9 Aug 2026 05:01:00 +0530
+Subject: [PATCH] BUG: Avoid NumPy 2.5 DeprecationWarning in Timedelta.view
+ (#66621)
+
+---
+ pandas/_libs/tslibs/timedeltas.pyx              | 2 +-
+ pandas/tests/scalar/timedelta/test_timedelta.py | 7 +++++++
+ 2 files changed, 8 insertions(+), 1 deletion(-)
+
+Index: pandas-3.0.5/pandas/_libs/tslibs/timedeltas.pyx
+===================================================================
+--- pandas-3.0.5.orig/pandas/_libs/tslibs/timedeltas.pyx
++++ pandas-3.0.5/pandas/_libs/tslibs/timedeltas.pyx
+@@ -1687,7 +1687,7 @@ cdef class _Timedelta(timedelta):
+         >>> td.view(int)
+         259200000000000
+         """
+-        return np.timedelta64(self._value).view(dtype)
++        return np.timedelta64(self._value, self.unit).view(dtype)
+ 
+     @property
+     def components(self):
+Index: pandas-3.0.5/pandas/tests/scalar/timedelta/test_timedelta.py
+===================================================================
+--- pandas-3.0.5.orig/pandas/tests/scalar/timedelta/test_timedelta.py
++++ pandas-3.0.5/pandas/tests/scalar/timedelta/test_timedelta.py
+@@ -106,6 +106,13 @@ class TestNonNano:
+             elif unit == NpyDatetimeUnit.NPY_FR_us.value:
+                 assert res.dtype == "m8[us]"
+ 
++    def test_view(self):
++        # GH#66608
++        td = Timedelta(seconds=1)
++        with tm.assert_produces_warning(None):
++            res = td.view(np.int64)
++        assert res == td._value
++
+     def test_truediv_timedeltalike(self, td):
+         assert td / td == 1
+         assert (2.5 * td) / td == 2.5
