@@ -443,4 +443,19 @@
     <comment></comment>
     <requestid>1332975</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>cc27d5985af9c780eb2e5cc8bd159821</srcmd5>
+    <version>20260817.0</version>
+    <time>1787656730</time>
+    <user>anag_factory</user>
+    <comment>Update to 20260817.0:
+  * Add URL escaping utilities
+  * Many bug fixes and optimizations
+  * absl::void_t is now deprecated; users should use C++17
+    std::void_t directly
+  * Hashtable iterators returned from insert/emplace are now
+    non-iterable (any prior use of iteration was likely a bug)
+- drop test_instance_tracker.patch, included upstream</comment>
+    <requestid>1373344</requestid>
+  </revision>
 </revisionlist>

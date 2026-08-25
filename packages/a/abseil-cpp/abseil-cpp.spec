@@ -17,10 +17,10 @@
 #
 
 
-%global soversion so.2601.0.0
-%global lname_suffix 2601_0_0
+%global soversion so.2608.0.0
+%global lname_suffix 2608_0_0
 Name:           abseil-cpp
-Version:        20260107.1
+Version:        20260817.0
 Release:        0
 Summary:        C++ libraries which augment the C++ stdlib
 License:        Apache-2.0
@@ -28,7 +28,6 @@ URL:            https://abseil.io/
 Source0:        https://github.com/abseil/abseil-cpp/releases/download/%{version}/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 Patch0:         options-cxx17.patch
-Patch1:         test_instance_tracker.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -43,9 +42,10 @@ library. It also provides features incorporated into later C++ standards.
 
 %define abseil_libs \
 %abseil_libpackage -l libabsl_base \
-%abseil_libpackage -l libabsl_borrowed_fixup_buffer \
+%abseil_libpackage -l libabsl_base_cpu_detect \
 %abseil_libpackage -l libabsl_city \
 %abseil_libpackage -l libabsl_civil_time \
+%abseil_libpackage -l libabsl_clock_interface \
 %abseil_libpackage -l libabsl_cord \
 %abseil_libpackage -l libabsl_cord_internal \
 %abseil_libpackage -l libabsl_cordz_functions \
@@ -54,7 +54,6 @@ library. It also provides features incorporated into later C++ standards.
 %abseil_libpackage -l libabsl_cordz_sample_token \
 %abseil_libpackage -l libabsl_crc32c \
 %abseil_libpackage -l libabsl_crc_cord_state \
-%abseil_libpackage -l libabsl_crc_cpu_detect \
 %abseil_libpackage -l libabsl_crc_internal \
 %abseil_libpackage -l libabsl_debugging_internal \
 %abseil_libpackage -l libabsl_decode_rust_punycode \
@@ -77,6 +76,7 @@ library. It also provides features incorporated into later C++ standards.
 %abseil_libpackage -l libabsl_flags_usage_internal \
 %abseil_libpackage -l libabsl_generic_printer_internal \
 %abseil_libpackage -l libabsl_graphcycles_internal \
+%abseil_libpackage -l libabsl_hardening \
 %abseil_libpackage -l libabsl_hash \
 %abseil_libpackage -l libabsl_hashtable_profiler \
 %abseil_libpackage -l libabsl_hashtablez_sampler \
@@ -117,9 +117,11 @@ library. It also provides features incorporated into later C++ standards.
 %abseil_libpackage -l libabsl_raw_hash_set \
 %abseil_libpackage -l libabsl_raw_logging_internal \
 %abseil_libpackage -l libabsl_scoped_set_env \
+%abseil_libpackage -l libabsl_source_location \
 %abseil_libpackage -l libabsl_spinlock_wait \
 %abseil_libpackage -l libabsl_stacktrace \
 %abseil_libpackage -l libabsl_status \
+%abseil_libpackage -l libabsl_status_builder \
 %abseil_libpackage -l libabsl_statusor \
 %abseil_libpackage -l libabsl_strerror \
 %abseil_libpackage -l libabsl_str_format_internal \
