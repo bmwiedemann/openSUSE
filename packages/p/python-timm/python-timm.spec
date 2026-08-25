@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-timm
-Version:        1.0.16
+Version:        1.0.28
 Release:        0
 Summary:        PyTorch Image Models
 License:        Apache-2.0
@@ -59,8 +59,18 @@ ability to reproduce ImageNet training results.
 
 %check
 # Upstream pytest downloads pretrained weights and needs network.
-# Smoke-test the import and model registry instead.
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -B -c "import timm; assert timm.__version__ == '%{version}', timm.__version__; assert timm.list_models()"
+# Smoke-test import, the model registry and a real forward pass instead.
+cat > smoke.py <<'EOF'
+import timm, torch
+assert timm.__version__ == "%{version}", timm.__version__
+assert timm.list_models()
+# guard the SigLIP ViT that python-sglang builds via timm.create_model()
+assert "vit_so400m_patch14_siglip_384" in timm.list_models()
+m = timm.create_model("resnet18", pretrained=False, num_classes=10).eval()
+with torch.no_grad():
+    assert m(torch.randn(1, 3, 64, 64)).shape == (1, 10)
+EOF
+%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -B smoke.py
 
 %files %{python_files}
 %license LICENSE

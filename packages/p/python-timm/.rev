@@ -33,4 +33,41 @@
 pluskalm is the science:machinelearning/python-timm package maintainer.</comment>
     <requestid>1372973</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>84fa49ec6cf96830026431704c126035</srcmd5>
+    <version>1.0.28</version>
+    <time>1787656801</time>
+    <user>anag_factory</user>
+    <comment>Update python-timm from 1.0.16 to 1.0.28 (upstream release 2026-07-11).
+
+Twelve upstream releases since 1.0.16. Highlights: new DINOv3, Gemma4 ViT,
+TIPSv2, EUPE, CSATv2, MobileCLIP-2/MetaCLIP-2 and SigLIP-2 NaFlex model
+definitions; the Muon/AdaMuon/NAdaMuon optimizers; a new timm.task subpackage
+for logits/feature/token distillation; hardened checkpoint loading
+(weights_only=True by default plus several pickle security fixes); and a
+number of correctness fixes (LayerScale init_values, Hiera SDPA dispatch,
+reg_token weight-decay grouping).
+
+Two upstream compat breaks are noted in the changelog: the ParallelScalingBlock
+QKV/MLP bias fix (no shipped weights affected) and the MobileNet-V5 stem
+bias / tanh-GELU change (breaks pre-1.0.17 MobileNet-V5 weights).
+
+Dependency check: timm still declares torch/torchvision/pyyaml/
+huggingface-hub/safetensors without version constraints, and upstream CI
+lower-bounds PyTorch 1.13 / Python 3.10. Factory carries torch 2.12.0 and
+torchvision 0.27.0, so no floor bump is needed and no new dependency is
+introduced.
+
+Reverse-dependency check: python-sglang is the only consumer in Factory. Its
+spec requires timm &gt;= 1.0.16 (the packaging already patches upstream's
+timm==1.0.16 pin down to a floor), and its entire timm surface is a single
+timm.create_model(&quot;vit_so400m_patch14_siglip_384.webli&quot;, pretrained=False, ...)
+call - no &quot;from timm import&quot; anywhere. That model is still in the 1.0.28
+registry and pretrained=False is unaffected by the weights_only change, so
+python-sglang is not impacted. The %check smoke test now asserts that model
+name is present so a future timm bump cannot silently break it.
+
+Built and tested locally for openSUSE_Tumbleweed/aarch64.</comment>
+    <requestid>1373474</requestid>
+  </revision>
 </revisionlist>

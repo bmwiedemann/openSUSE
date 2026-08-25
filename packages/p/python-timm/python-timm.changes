@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Aug 24 18:07:15 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.0.28:
+  * New models: DINOv3 ConvNeXt/ViT, Gemma4 ViT, TIPSv2, EUPE,
+    CSATv2, MobileCLIP-2 and MetaCLIP-2 encoders, SigLIP-2
+    NaFlex weights
+  * Add the Muon optimizer plus AdaMuon/NAdaMuon variants, and
+    a cautious mode for AdamP and SGDP
+  * Add a lightweight task abstraction with logits, feature and
+    token distillation support (new timm.task subpackage)
+  * Add ROPE support to NaFlexViT and set_input_size() to EVA
+    models; extend NaFlexViT patch layout and forward_intermediates
+  * Add differential attention, coordinate attention and the
+    LsePlus/SimPool/PRR pooling modules
+  * Harden checkpoint loading: default weights_only=True and
+    address several pickle security concerns
+  * Support device/dtype factory kwargs and meta-device model
+    initialisation
+  * Fix LayerScale ignoring init_values, reg_token weight decay
+    grouping, Hiera SDPA dispatch and a ZeroDivisionError in
+    AverageMeter
+  * Remove APEX AMP support and reduce torch.jit usage ahead of
+    its deprecation
+  * Compat break: correct QKV vs MLP bias in ParallelScalingBlock
+    and DiffParallelScalingBlock; no shipped weights are affected
+  * Compat break: MobileNet-V5 gains a stem bias and uses the tanh
+    GELU approximation, breaking pre-1.0.17 weights
+- Extend the %check smoke test with a forward pass and a guard for
+  the SigLIP ViT that python-sglang builds via timm.create_model()
+
+-------------------------------------------------------------------
 Fri Aug 21 19:30:39 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.0.16 (pinned by SGLang 0.5.17):
