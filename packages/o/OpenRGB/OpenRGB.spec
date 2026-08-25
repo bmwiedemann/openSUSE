@@ -29,6 +29,7 @@ Source1:        openrgb-modules.conf
 Source2:        openrgb-udev.conf
 # Restrict i2c access and remove /dev/port permissions (bsc#1215130)
 Patch0:         OpenRGB-udev-i2c-use-group.patch
+Patch1:         harden-network.patch
 # Leap 15.6 and below cannot use the default GCC7 due to std::filesystem.
 # Picking GCC13 as this works with position independent executables
 %if 0%{?suse_version} < 1600
