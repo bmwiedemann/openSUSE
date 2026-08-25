@@ -40,4 +40,12 @@
   CVE-2026-25680,CVE-2026-42502,CVE-2026-27136,CVE-2026-25681,CVE-2026-42506</comment>
     <requestid>1362614</requestid>
   </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>7ea58195ecadb12f09dc888a94ae33f6</srcmd5>
+    <version>1.11.0</version>
+    <time>1787656744</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1373409</requestid>
+  </revision>
 </revisionlist>

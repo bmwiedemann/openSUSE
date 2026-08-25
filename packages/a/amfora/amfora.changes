@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 12 12:51:59 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update golang.org/x/net to v0.57.0 due to bsc#1266653
+
+-------------------------------------------------------------------
 Wed Jun 10 06:59:02 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update golang.org/x/net to v0.55.0 due to bsc#1267184: fixes
