@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-blobfile
-Version:        3.0.0
+Version:        3.3.0
 Release:        0
 Summary:        Read GCS, ABS and local paths with the same interface
 License:        Unlicense
@@ -29,8 +29,8 @@ BuildRequires:  %{python_module lxml >= 4.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pycryptodomex >= 3.8}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools >= 64.0}
-BuildRequires:  %{python_module urllib3 >= 1.25.3}
+BuildRequires:  %{python_module setuptools >= 69}
+BuildRequires:  %{python_module urllib3 >= 2}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module xmltodict}
 BuildRequires:  fdupes
@@ -38,7 +38,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-filelock >= 3.0
 Requires:       python-lxml >= 4.9
 Requires:       python-pycryptodomex >= 3.8
-Requires:       python-urllib3 >= 1.25.3
+Requires:       python-urllib3 >= 2
 BuildArch:      noarch
 %python_subpackages
 
@@ -57,8 +57,6 @@ exact clone of that API.
 mkdir tests
 mv blobfile/_xml_test.py tests/
 rm -f blobfile/_ops_test.py
-# Upstream README/LICENSE are CRLF (rpmlint wrong-file-end-of-line-encoding)
-sed -i 's/\r$//' README.md LICENSE
 
 %build
 %pyproject_wheel

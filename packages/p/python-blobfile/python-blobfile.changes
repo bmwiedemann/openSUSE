@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Aug 24 18:03:57 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 3.3.0:
+  * Use streaming writes in the higher level APIs
+  * Fix partial_writes_on_exc=False being ignored when a failure
+    occurred while preparing a write to an Azure file
+  * Clean up the accessTokens.json code path
+- Changes from 3.2.0:
+  * BlobFile gained a partial_writes_on_exc argument to discard
+    partial writes to remote files when an exception is raised
+  * write_text, write_bytes and copy now avoid partial writes to
+    remote files when they are interrupted
+  * New BLOBFILE_REDIRECT_RETRY_COUNT environment variable to allow
+    following redirects
+  * Raise an error when a local path looks like a URL
+  * Require urllib3 >= 2 and Python >= 3.10
+- Changes from 3.1.0:
+  * Improve bf.join
+  * Add an option to support blind writes
+  * Treat EAI_NODATA like EAI_NONAME in the DNS retry logic
+- Raise the setuptools build requirement to >= 69, as demanded by
+  upstream pyproject.toml
+- Drop the CRLF conversion of README.md and LICENSE from %prep,
+  upstream now ships them with LF line endings
+
+-------------------------------------------------------------------
 Fri Aug 21 18:32:52 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Initial package of blobfile 3.0.0: read GCS, Azure Blob Storage

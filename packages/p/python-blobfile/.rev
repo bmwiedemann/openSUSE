@@ -16,4 +16,34 @@ Leaf of the SGLang CPU cone (home:pluskalm:sglang). INTERDEPENDENT — stage wit
 New package to Factory.</comment>
     <requestid>1372971</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3f6ebdd7298bf252ed64986754d4ec4a</srcmd5>
+    <version>3.3.0</version>
+    <time>1787656801</time>
+    <user>anag_factory</user>
+    <comment>Update python-blobfile from 3.0.0 to 3.3.0 (upstream 2026-08-20), folding in
+the 3.1.0 and 3.2.0 releases.
+
+3.3.0: streaming writes in the higher level APIs; fix partial_writes_on_exc=False
+being ignored when a write to an Azure file failed while being prepared; clean up
+the accessTokens.json code path.
+
+3.2.0: new partial_writes_on_exc argument on BlobFile; write_text/write_bytes/copy
+avoid partial remote writes when interrupted; new BLOBFILE_REDIRECT_RETRY_COUNT
+environment variable; error out when a local path looks like a URL; requires
+urllib3 &gt;= 2 and Python &gt;= 3.10.
+
+3.1.0: improved bf.join, optional blind writes, EAI_NODATA handled like
+EAI_NONAME in the DNS retry logic.
+
+Packaging: the urllib3 floor moves from 1.25.3 to 2 and the setuptools build
+requirement from 64.0 to 69, both as demanded by upstream metadata. The CRLF
+conversion of README.md and LICENSE is dropped since upstream now ships them
+with LF line endings.
+
+Built for openSUSE_Tumbleweed/aarch64: green, rpmlint 0 errors, 0 warnings,
+0 badness; the self-contained XML parser tests pass on both python313 and
+python314. No patches carried.</comment>
+    <requestid>1373465</requestid>
+  </revision>
 </revisionlist>
