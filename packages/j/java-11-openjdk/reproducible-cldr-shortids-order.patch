@@ -1,0 +1,38 @@
+# Insert the ZoneId.SHORT_IDS compatibility entries in a fixed order
+#
+# ZoneId.SHORT_IDS is built with Map.ofEntries, and the immutable maps
+# introduced in JDK 9 randomize their iteration order once per JVM run.
+# CLDRConverter.extractZoneNames() collects into a HashMap, so that random
+# order decides the relative order of any two short ids that hash to the
+# same bucket, and ResourceBundleGenerator then writes the map out in
+# iteration order.
+#
+# The result is that a generated TimeZoneNames bundle differs between two
+# otherwise identical builds. TimeZoneNames_kea.java, for instance, has
+# "PST" and "AET" in the same bucket and emits them in either order, which
+# propagates into lib/src.zip, jdk.localedata.jmod, lib/modules, and - via
+# the module hashes recorded in its module-info - java.base.jmod.
+#
+# Sort the entries by key before inserting them. Still present upstream.
+#
+
+diff --git a/make/jdk/src/classes/build/tools/cldrconverter/CLDRConverter.java b/make/jdk/src/classes/build/tools/cldrconverter/CLDRConverter.java
+index 068b8701d70..5954462573b 100644
+--- a/make/jdk/src/classes/build/tools/cldrconverter/CLDRConverter.java
++++ b/make/jdk/src/classes/build/tools/cldrconverter/CLDRConverter.java
+@@ -718,8 +718,14 @@ public class CLDRConverter {
+             names.put("UTC", META_EMPTY_ZONE_NAME);
+         }
+ 
+-        // Finally some compatibility stuff
++        // Finally some compatibility stuff.
++        // ZoneId.SHORT_IDS is an immutable map, whose iteration order is
++        // randomized per JVM run. Since "names" is a HashMap, that insertion
++        // order decides the order of any two of these ids that end up in the
++        // same bucket, and with it the order of the entries in the generated
++        // TimeZoneNames bundles. Insert them in a fixed order instead.
+         ZoneId.SHORT_IDS.entrySet().stream()
++            .sorted(Map.Entry.comparingByKey())
+             .filter(e -> !names.containsKey(e.getKey()) && names.containsKey(e.getValue()))
+             .forEach(e -> {
+                 names.put(e.getKey(), names.get(e.getValue()));

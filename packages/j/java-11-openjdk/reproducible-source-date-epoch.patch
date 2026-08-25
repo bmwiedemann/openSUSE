@@ -1,0 +1,76 @@
+# Derive the source date and the copyright year from SOURCE_DATE_EPOCH
+#
+# Adapted from JDK-8282567 ("Improve source-date handling in build system",
+# JDK 20) and from the COPYRIGHT_YEAR handling that JDK 17 already has.
+#
+# Two independent sources of non-determinism in openSUSE java-11-openjdk:
+#
+# 1. configure ignored the SOURCE_DATE_EPOCH exported by the build service
+#    and left SOURCE_DATE at "updated", so SetupReproducibleBuild in
+#    make/InitSupport.gmk replaced the inherited SOURCE_DATE_EPOCH with the
+#    output of "date +%s" at make start. Since gcc derives __DATE__ and
+#    __TIME__ from SOURCE_DATE_EPOCH, every build embedded a different
+#    timestamp in libjvm.so ("built on Sep 11 2025 22:44:08" versus
+#    "built on Oct 18 2026 12:53:30" in two openSUSE builds).
+#
+# 2. COPYRIGHT_YEAR was taken from the wall clock, so builds run in
+#    different years differ in every generated file that carries a
+#    copyright header: the whole javadoc bundle and more than 1200
+#    generated CLDR sources in lib/src.zip.
+#
+# Honour SOURCE_DATE_EPOCH from the environment when --with-source-date is
+# not given, and derive COPYRIGHT_YEAR from it, exactly like JDK 17.
+#
+# Note that setting with_source_date_present flips ENABLE_REPRODUCIBLE_BUILD
+# to true, which on JDK 11 only affects the Microsoft toolchain
+# (flags-cflags.m4 and flags-ldflags.m4 gate -pathmap and
+# -experimental:deterministic on it), so this is a no-op elsewhere. Unlike
+# JDK 17, JDK 11 has no HOTSPOT_BUILD_TIME and no jar/jmod --date, so those
+# parts of JDK-8282567 have no counterpart here.
+#
+# JDK 11 also has no IS_GNU_DATE (make/InitSupport.gmk references it, but
+# nothing ever sets it), so the epoch to year conversion tries the GNU
+# syntax first and falls back to the BSD one.
+#
+
+diff --git a/make/autoconf/jdk-options.m4 b/make/autoconf/jdk-options.m4
+index cc45f3c0267..00e0ea22878 100644
+--- a/make/autoconf/jdk-options.m4
++++ b/make/autoconf/jdk-options.m4
+@@ -255,6 +255,17 @@ AC_DEFUN_ONCE([JDKOPT_SETUP_JDK_OPTIONS],
+     AC_MSG_ERROR([Copyright year must have a value])
+   elif test "x$with_copyright_year" != x; then
+     COPYRIGHT_YEAR="$with_copyright_year"
++  elif test "x$SOURCE_DATE_EPOCH" != x; then
++    # Derive the copyright year from SOURCE_DATE_EPOCH, so that it does not
++    # depend on when the build happens to run. JDK 17 and later do the same.
++    # JDK 11 has no IS_GNU_DATE, so try the GNU syntax and fall back to BSD.
++    COPYRIGHT_YEAR=`$DATE --utc --date=@$SOURCE_DATE_EPOCH +%Y 2> /dev/null`
++    if test "x$COPYRIGHT_YEAR" = x; then
++      COPYRIGHT_YEAR=`$DATE -u -j -f %s $SOURCE_DATE_EPOCH +%Y 2> /dev/null`
++    fi
++    if test "x$COPYRIGHT_YEAR" = x; then
++      AC_MSG_ERROR([Cannot convert SOURCE_DATE_EPOCH to a copyright year])
++    fi
+   else
+     COPYRIGHT_YEAR=`$DATE +'%Y'`
+   fi
+@@ -659,7 +670,17 @@ AC_DEFUN_ONCE([JDKOPT_SETUP_REPRODUCIBLE_BUILD],
+ 
+   if test "x$with_source_date" = xyes; then
+     AC_MSG_ERROR([--with-source-date must have a value])
+-  elif test "x$with_source_date" = xupdated || test "x$with_source_date" = x; then
++  elif test "x$with_source_date" = x; then
++    if test "x$SOURCE_DATE_EPOCH" != x; then
++      SOURCE_DATE=$SOURCE_DATE_EPOCH
++      with_source_date_present=true
++      AC_MSG_RESULT([$SOURCE_DATE, from SOURCE_DATE_EPOCH])
++    else
++      # Tell the makefiles to update at each build
++      SOURCE_DATE=updated
++      AC_MSG_RESULT([determined at build time (default)])
++    fi
++  elif test "x$with_source_date" = xupdated; then
+     # Tell the makefiles to update at each build
+     SOURCE_DATE=updated
+     AC_MSG_RESULT([determined at build time, from 'updated'])

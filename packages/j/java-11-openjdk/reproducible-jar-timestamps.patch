@@ -1,0 +1,222 @@
+# Stamp jrt-fs.jar and ct.sym entries with SOURCE_DATE_EPOCH
+#
+# The jar command of this release takes the entry times from the
+# modification times of the input files, and stamps the entries it creates
+# itself (META-INF/ and META-INF/MANIFEST.MF) with the current time, so
+# every archive built by SetupJarArchive differs between builds. Upstream
+# solved this in JDK 19 with the jar --date option (JDK-8276766), which the
+# boot JDK used to build this release does not have.
+#
+# The two archives that matter here are lib/jrt-fs.jar and lib/ct.sym,
+# because they are also packed into java.base.jmod and jdk.compiler.jmod -
+# these were the last two files that still differed between two openSUSE
+# builds. Normalising the installed image does not reach the copies inside
+# the jmods.
+#
+# Add a build tool that rewrites the entry timestamps of a finished archive
+# to SOURCE_DATE_EPOCH, leaving names, order, contents and compression
+# method alone, and a REPRODUCIBLE_TIMESTAMPS argument to SetupJarArchive
+# that runs it. It is opt-in because the tool lives in buildtools-jdk,
+# which the buildtools-hotspot jars cannot depend on. When SOURCE_DATE_EPOCH
+# is unset nothing changes.
+#
+
+diff --git a/make/JrtfsJar.gmk b/make/JrtfsJar.gmk
+index e35c8220cd0..589eb0f90eb 100644
+--- a/make/JrtfsJar.gmk
++++ b/make/JrtfsJar.gmk
+@@ -67,6 +67,7 @@ $(eval $(call SetupJarArchive,BUILD_JRTFS_JAR, \
+     SRCS := $(SUPPORT_OUTPUTDIR)/jrtfs_classes, \
+     JAR := $(SUPPORT_OUTPUTDIR)/modules_libs/java.base/jrt-fs.jar, \
+     MANIFEST := $(SUPPORT_OUTPUTDIR)/java-main-manifest.mf, \
++    REPRODUCIBLE_TIMESTAMPS := true, \
+ ))
+ 
+ all: $(BUILD_JRTFS_JAR)
+diff --git a/make/Main.gmk b/make/Main.gmk
+index 2c08532626a..66451a1e0fc 100644
+--- a/make/Main.gmk
++++ b/make/Main.gmk
+@@ -894,7 +894,8 @@ else
+ 
+   zip-source: gensrc rmic
+ 
+-  jrtfs-jar: interim-langtools
++  # buildtools-jdk is needed to make the jar entry timestamps reproducible.
++  jrtfs-jar: interim-langtools buildtools-jdk
+ 
+   ifeq ($(ENABLE_GENERATE_CLASSLIST), true)
+     ifeq ($(CREATE_BUILDJDK), true)
+diff --git a/make/common/JarArchive.gmk b/make/common/JarArchive.gmk
+index e1ec1427a88..0e39a377fdb 100644
+--- a/make/common/JarArchive.gmk
++++ b/make/common/JarArchive.gmk
+@@ -57,6 +57,9 @@ FALSE_FIND_PATTERN:=-name FILE_NAME_THAT_DOESNT_EXIST
+ #   EXTRA_MANIFEST_ATTR:=Extra attribute to add to manifest.
+ #   CHECK_COMPRESS_JAR Check the COMPRESS_JAR variable
+ #   JAR_CMD:=Optionally override the jar command to use when creating the archive.
++#   REPRODUCIBLE_TIMESTAMPS:=true means rewrite the entry timestamps of the
++#       finished archive to SOURCE_DATE_EPOCH. Requires the jdk build tools,
++#       so the target must depend on buildtools-jdk.
+ SetupJarArchive = $(NamedParamsMacroTemplate)
+ define SetupJarArchiveBody
+ 
+@@ -68,6 +71,20 @@ define SetupJarArchiveBody
+   $1_BIN:=$$(dir $$($1_JAR))
+   $$(call SetIfEmpty, $1_JAR_CMD, $$(JAR))
+ 
++  # The jar command takes the entry times from the input files, and stamps the
++  # entries it creates itself (META-INF/ and META-INF/MANIFEST.MF, and the
++  # index) with the current time, so its output differs between builds. Later
++  # releases pass jar --date, which the boot JDK used here does not support,
++  # so rewrite the timestamps once the archive is complete instead.
++  $1_FIXUP_TIMESTAMPS := true
++  ifeq ($$($1_REPRODUCIBLE_TIMESTAMPS), true)
++    ifneq ($(SOURCE_DATE_EPOCH), )
++      $1_FIXUP_TIMESTAMPS := $(JAVA_SMALL) \
++          -cp $(BUILDTOOLS_OUTPUTDIR)/jdk_tools_classes \
++          build.tools.jarreproducible.JarReproducible $$($1_JAR)
++    endif
++  endif
++
+   ifeq (,$$($1_SUFFIXES))
+     # No suffix was set, default to classes.
+     $1_SUFFIXES:=.class
+@@ -230,7 +247,8 @@ define SetupJarArchiveBody
+   # Include all variables of significance in the vardeps file
+   $1_VARDEPS := $$($1_JAR_CMD) $$($1_JAR_CREATE_OPTIONS) $$($1_MANIFEST) \
+       $$($1_JARMAIN) $$($1_EXTRA_MANIFEST_ATTR) $$($1_ORIG_DEPS) $$($1_SRCS) \
+-      $$($1_INCLUDES) $$($1_EXCLUDES) $$($1_EXCLUDE_FILES) $$($1_EXTRA_FILES)
++      $$($1_INCLUDES) $$($1_EXCLUDES) $$($1_EXCLUDE_FILES) $$($1_EXTRA_FILES) \
++      $$($1_FIXUP_TIMESTAMPS)
+   $1_VARDEPS_FILE := $$(call DependOnVariable, $1_VARDEPS, $$(dir $$($1_JAR))_the.$$($1_JARNAME).vardeps)
+ 
+   # Here is the rule that creates/updates the jar file.
+@@ -270,6 +288,7 @@ define SetupJarArchiveBody
+ 	  fi $$(NEWLINE) \
+ 	  $$($1_UPDATE_CONTENTS) true $$(NEWLINE) \
+ 	  $$($1_JARINDEX) && true )
++	$$($1_FIXUP_TIMESTAMPS)
+ 
+   # Add jar to target list
+   $1 += $$($1_JAR)
+diff --git a/make/gendata/Gendata-jdk.compiler.gmk b/make/gendata/Gendata-jdk.compiler.gmk
+index 1d034828598..976ba758a7f 100644
+--- a/make/gendata/Gendata-jdk.compiler.gmk
++++ b/make/gendata/Gendata-jdk.compiler.gmk
+@@ -91,6 +91,7 @@ $(eval $(call SetupJarArchive, CREATE_CTSYM, \
+     SRCS := $(SUPPORT_OUTPUTDIR)/symbols/ct.sym-files, \
+     SUFFIXES := .sig system-modules, \
+     JAR := $(SUPPORT_OUTPUTDIR)/symbols/ct.sym, \
++    REPRODUCIBLE_TIMESTAMPS := true, \
+ ))
+ 
+ # Copy ct.sym to the modules libs dir
+diff --git a/make/jdk/src/classes/build/tools/jarreproducible/JarReproducible.java b/make/jdk/src/classes/build/tools/jarreproducible/JarReproducible.java
+new file mode 100644
+index 00000000000..87a39525abc
+--- /dev/null
++++ b/make/jdk/src/classes/build/tools/jarreproducible/JarReproducible.java
+@@ -0,0 +1,102 @@
++/*
++ * Copyright (c) 2026, Oracle and/or its affiliates. All rights reserved.
++ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
++ *
++ * This code is free software; you can redistribute it and/or modify it
++ * under the terms of the GNU General Public License version 2 only, as
++ * published by the Free Software Foundation.  Oracle designates this
++ * particular file as subject to the "Classpath" exception as provided
++ * by Oracle in the LICENSE file that accompanied this code.
++ *
++ * This code is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
++ * version 2 for more details (a copy is included in the LICENSE file that
++ * accompanied this code).
++ *
++ * You should have received a copy of the GNU General Public License version
++ * 2 along with this work; if not, write to the Free Software Foundation,
++ * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
++ *
++ * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
++ * or visit www.oracle.com if you need additional information or have any
++ * questions.
++ */
++
++package build.tools.jarreproducible;
++
++import java.io.IOException;
++import java.io.InputStream;
++import java.nio.file.Files;
++import java.nio.file.Path;
++import java.nio.file.Paths;
++import java.nio.file.StandardCopyOption;
++import java.util.Enumeration;
++import java.util.zip.ZipEntry;
++import java.util.zip.ZipFile;
++import java.util.zip.ZipOutputStream;
++
++/**
++ * Rewrites the given jar files so that every entry is stamped with the time
++ * given by SOURCE_DATE_EPOCH instead of the time the build happened to run.
++ *
++ * The jar command of this release takes entry times from the modification
++ * times of the input files, and stamps the entries it generates itself
++ * (META-INF/ and META-INF/MANIFEST.MF) with the current time, so the archives
++ * it produces differ between builds. Later releases solve this with the
++ * jar --date option, which is not available in the boot JDK used here.
++ *
++ * Entry names, order, contents and compression method are left untouched, so
++ * this only removes the timestamps as a source of difference. If
++ * SOURCE_DATE_EPOCH is not set the files are left alone.
++ */
++public class JarReproducible {
++
++    public static void main(String[] args) throws IOException {
++        String sourceDateEpoch = System.getenv("SOURCE_DATE_EPOCH");
++        if (sourceDateEpoch == null || sourceDateEpoch.trim().isEmpty()) {
++            return;
++        }
++        long time;
++        try {
++            time = Long.parseLong(sourceDateEpoch.trim()) * 1000L;
++        } catch (NumberFormatException e) {
++            return;
++        }
++        for (String arg : args) {
++            normalize(Paths.get(arg), time);
++        }
++    }
++
++    private static void normalize(Path jar, long time) throws IOException {
++        Path tmp = jar.resolveSibling(jar.getFileName() + ".tmp");
++        try (ZipFile in = new ZipFile(jar.toFile());
++             ZipOutputStream out =
++                 new ZipOutputStream(Files.newOutputStream(tmp))) {
++            Enumeration<? extends ZipEntry> entries = in.entries();
++            while (entries.hasMoreElements()) {
++                ZipEntry entry = entries.nextElement();
++                ZipEntry copy = new ZipEntry(entry.getName());
++                copy.setMethod(entry.getMethod());
++                copy.setTime(time);
++                copy.setComment(entry.getComment());
++                // The extra field is deliberately not carried over. The jar
++                // command does not add any, and the ones ZipFile hands out
++                // from the central directory (zip64, timestamps) would either
++                // be regenerated by ZipOutputStream or reintroduce a time.
++                if (entry.getMethod() == ZipEntry.STORED) {
++                    copy.setSize(entry.getSize());
++                    copy.setCompressedSize(entry.getCompressedSize());
++                    copy.setCrc(entry.getCrc());
++                }
++                out.putNextEntry(copy);
++                try (InputStream is = in.getInputStream(entry)) {
++                    is.transferTo(out);
++                }
++                out.closeEntry();
++            }
++            out.setComment(in.getComment());
++        }
++        Files.move(tmp, jar, StandardCopyOption.REPLACE_EXISTING);
++    }
++}

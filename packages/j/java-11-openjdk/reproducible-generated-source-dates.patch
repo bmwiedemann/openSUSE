@@ -1,0 +1,134 @@
+# Use SOURCE_DATE_EPOCH for dates written into generated sources
+#
+# Three build tools stamp the current date into the sources they generate,
+# so the result depends on when the build runs. All three show up in the
+# shipped lib/src.zip and in the jmods and lib/modules built from them.
+#
+#   - CopyrightHeaders.getYear() in the CLDR converter used the current
+#     year, which put "Copyright (c) 2012, 2026" into one build and
+#     "2012, 2027" into the next, across more than a thousand generated
+#     locale sources.
+#
+#   - GenerateCharacter wrote "This file was generated AUTOMATICALLY from
+#     a template file <full timestamp>" into the five CharacterData*.java
+#     files.
+#
+#   - EquivMapsGenerator did the same as the CLDR converter for the
+#     copyright header of sun/util/locale/LocaleEquivalentMaps.java.
+#
+# Take the date from SOURCE_DATE_EPOCH when it is set, and keep the
+# current time otherwise. The CLDR converter and EquivMapsGenerator keep
+# computing the year in America/Los_Angeles, as before, so only the
+# instant changes.
+#
+# Note that this is separate from the COPYRIGHT_YEAR that configure
+# computes: that one already follows SOURCE_DATE_EPOCH and fixed the
+# javadoc bundle, but these tools never consulted it.
+#
+
+diff --git a/make/jdk/src/classes/build/tools/cldrconverter/CopyrightHeaders.java b/make/jdk/src/classes/build/tools/cldrconverter/CopyrightHeaders.java
+index 89c7e0f41aa..d714dd27292 100644
+--- a/make/jdk/src/classes/build/tools/cldrconverter/CopyrightHeaders.java
++++ b/make/jdk/src/classes/build/tools/cldrconverter/CopyrightHeaders.java
+@@ -150,8 +150,20 @@ class CopyrightHeaders {
+     }
+ 
+     private static int getYear() {
+-        return new GregorianCalendar(TimeZone.getTimeZone("America/Los_Angeles"),
+-                                         Locale.US).get(Calendar.YEAR);
++        GregorianCalendar cal =
++            new GregorianCalendar(TimeZone.getTimeZone("America/Los_Angeles"),
++                                  Locale.US);
++        String sourceDateEpoch = System.getenv("SOURCE_DATE_EPOCH");
++        if (sourceDateEpoch != null && !sourceDateEpoch.isEmpty()) {
++            // Use the source date rather than the current time, so that the
++            // generated files do not depend on when the build is run.
++            try {
++                cal.setTimeInMillis(Long.parseLong(sourceDateEpoch.trim()) * 1000L);
++            } catch (NumberFormatException e) {
++                // Not a valid timestamp, keep the current time.
++            }
++        }
++        return cal.get(Calendar.YEAR);
+     }
+ 
+     // no instantiation
+diff --git a/make/jdk/src/classes/build/tools/generatecharacter/GenerateCharacter.java b/make/jdk/src/classes/build/tools/generatecharacter/GenerateCharacter.java
+index 88a8d82f893..fd553f35c42 100644
+--- a/make/jdk/src/classes/build/tools/generatecharacter/GenerateCharacter.java
++++ b/make/jdk/src/classes/build/tools/generatecharacter/GenerateCharacter.java
+@@ -686,6 +686,22 @@ OUTER:  for (int i = 0; i < n; i += m) {
+     *     @see GenerateCharacter#replaceCommand
+     */
+ 
++    /**
++     * The date stamped into the generated files. Use SOURCE_DATE_EPOCH when it
++     * is set, so that the generated files do not depend on when the build runs.
++     */
++    static java.util.Date generationDate() {
++        String sourceDateEpoch = System.getenv("SOURCE_DATE_EPOCH");
++        if (sourceDateEpoch != null && !sourceDateEpoch.isEmpty()) {
++            try {
++                return new java.util.Date(Long.parseLong(sourceDateEpoch.trim()) * 1000L);
++            } catch (NumberFormatException e) {
++                // Not a valid timestamp, fall through to the current time.
++            }
++        }
++        return new java.util.Date();
++    }
++
+     static void generateCharacterClass(String theTemplateFileName,
+                                        String theOutputFileName)
+         throws FileNotFoundException, IOException {
+@@ -693,7 +709,7 @@ OUTER:  for (int i = 0; i < n; i += m) {
+         PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(theOutputFileName)));
+         out.println(commentStart +
+             " This file was generated AUTOMATICALLY from a template file " +
+-            new java.util.Date() + commentEnd);
++            generationDate() + commentEnd);
+         int marklen = commandMarker.length();
+         LOOP: while(true) {
+             try {
+diff --git a/make/jdk/src/classes/build/tools/generatelsrequivmaps/EquivMapsGenerator.java b/make/jdk/src/classes/build/tools/generatelsrequivmaps/EquivMapsGenerator.java
+index cffaed7186a..c8660c90c15 100644
+--- a/make/jdk/src/classes/build/tools/generatelsrequivmaps/EquivMapsGenerator.java
++++ b/make/jdk/src/classes/build/tools/generatelsrequivmaps/EquivMapsGenerator.java
+@@ -30,6 +30,7 @@ import java.io.IOException;
+ import java.nio.charset.Charset;
+ import java.nio.file.Files;
+ import java.nio.file.Paths;
++import java.time.Instant;
+ import java.time.ZoneId;
+ import java.time.ZonedDateTime;
+ import java.util.ArrayList;
+@@ -266,9 +267,27 @@ public class EquivMapsGenerator {
+         + "}";
+ 
+     private static String getOpenJDKCopyright() {
+-        int year = ZonedDateTime.now(ZoneId
+-                .of("America/Los_Angeles")).getYear();
+-        return String.format(Locale.US, COPYRIGHT, year);
++        return String.format(Locale.US, COPYRIGHT, getYear());
++    }
++
++    /**
++     * The copyright year written into the generated source file. Use
++     * SOURCE_DATE_EPOCH when it is set, so that the generated file does not
++     * depend on when the build is run.
++     */
++    private static int getYear() {
++        ZoneId zone = ZoneId.of("America/Los_Angeles");
++        String sourceDateEpoch = System.getenv("SOURCE_DATE_EPOCH");
++        if (sourceDateEpoch != null && !sourceDateEpoch.isEmpty()) {
++            try {
++                return ZonedDateTime.ofInstant(
++                        Instant.ofEpochSecond(Long.parseLong(sourceDateEpoch.trim())),
++                        zone).getYear();
++            } catch (NumberFormatException e) {
++                // Not a valid timestamp, fall back to the current time.
++            }
++        }
++        return ZonedDateTime.now(zone).getYear();
+     }
+ 
+     /**

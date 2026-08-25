@@ -1,0 +1,37 @@
+# Stamp jmod entries with SOURCE_DATE_EPOCH instead of the current time
+#
+# JmodOutputStream.newEntry() returns a ZipEntry without a time, so
+# ZipOutputStream.putNextEntry() fills in System.currentTimeMillis() for
+# every entry. Each build therefore writes a different DOS timestamp into
+# the local file header of every entry, which is why all of the roughly 70
+# shipped jmods differ between two openSUSE builds while their contents are
+# identical.
+#
+# Use SOURCE_DATE_EPOCH for the entry time when it is set in the
+# environment, and keep the previous behaviour when it is not.
+#
+# JDK 19 solved this upstream with the jmod --date option (JDK-8276766),
+# which also required jmod command line and ZipEntry.setTimeLocal()
+# support that JDK 11 does not have, so this is an openSUSE specific
+# change rather than a backport.
+#
+# Note that ZipEntry.setTime() converts to the DOS timestamp using the
+# local time zone, so the build still has to run with a fixed TZ, which
+# the openSUSE build service already guarantees.
+#
+
+--- a/src/jdk.jlink/share/classes/jdk/tools/jmod/JmodOutputStream.java
++++ b/src/jdk.jlink/share/classes/jdk/tools/jmod/JmodOutputStream.java
+@@ -101,7 +101,11 @@ class JmodOutputStream extends OutputStream implements AutoCloseable {
+         String prefix = section.jmodDir();
+         String name = Paths.get(prefix, path).toString()
+                            .replace(File.separatorChar, '/');
+-        return new ZipEntry(name);
++        ZipEntry ze = new ZipEntry(name);
++        String sde = System.getenv("SOURCE_DATE_EPOCH");
++        if (sde != null)
++            ze.setTime(1000 * Long.parseLong(sde));
++        return ze;
+     }
+
+     @Override

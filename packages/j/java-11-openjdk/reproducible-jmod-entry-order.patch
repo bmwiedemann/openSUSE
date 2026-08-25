@@ -1,0 +1,82 @@
+# Write jmod entries in sorted order
+#
+# JmodTask walks the input directories with Files.walkFileTree and writes
+# each file as it is visited, so the order of the entries in the resulting
+# jmod is whatever order the file system returned the directory entries
+# in. Eight of the shipped jmods differed between two openSUSE builds for
+# this reason: the entry timestamps and the contents matched, but the
+# entries appeared at different offsets.
+#
+# Collect the files first, sort them by their relative path, and then
+# write them out.
+#
+# The jar files handled by processClasses keep their existing order, which
+# comes from the jar itself and is already deterministic.
+#
+
+diff --git a/src/jdk.jlink/share/classes/jdk/tools/jmod/JmodTask.java b/src/jdk.jlink/share/classes/jdk/tools/jmod/JmodTask.java
+index 0f6b488bf5e..68c9faf73d0 100644
+--- a/src/jdk.jlink/share/classes/jdk/tools/jmod/JmodTask.java
++++ b/src/jdk.jlink/share/classes/jdk/tools/jmod/JmodTask.java
+@@ -773,33 +773,40 @@ public class JmodTask {
+         void processSection(JmodOutputStream out, Section section, Path path)
+             throws IOException
+         {
++            // Collect the files first and sort them, so that the entry order in
++            // the resulting jmod does not depend on the order in which the file
++            // system happens to return directory entries.
++            List<Path> files = new ArrayList<>();
+             Files.walkFileTree(path, Set.of(FileVisitOption.FOLLOW_LINKS),
+                 Integer.MAX_VALUE, new SimpleFileVisitor<Path>() {
+                     @Override
+-                    public FileVisitResult visitFile(Path file, BasicFileAttributes attrs)
+-                        throws IOException
+-                    {
+-                        Path relPath = path.relativize(file);
+-                        if (relPath.toString().equals(MODULE_INFO)
+-                                && !Section.CLASSES.equals(section))
+-                            warning("warn.ignore.entry", MODULE_INFO, section);
+-
+-                        if (!relPath.toString().equals(MODULE_INFO)
+-                                && !matches(relPath, excludes)) {
+-                            try (InputStream in = Files.newInputStream(file)) {
+-                                out.writeEntry(in, section, relPath.toString());
+-                            } catch (IOException x) {
+-                                if (x.getMessage().contains("duplicate entry")) {
+-                                    warning("warn.ignore.duplicate.entry",
+-                                            relPath.toString(), section);
+-                                    return FileVisitResult.CONTINUE;
+-                                }
+-                                throw x;
+-                            }
+-                        }
++                    public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) {
++                        files.add(file);
+                         return FileVisitResult.CONTINUE;
+                     }
+                 });
++            files.sort(Comparator.comparing(f -> path.relativize(f).toString()));
++
++            for (Path file : files) {
++                Path relPath = path.relativize(file);
++                if (relPath.toString().equals(MODULE_INFO)
++                        && !Section.CLASSES.equals(section))
++                    warning("warn.ignore.entry", MODULE_INFO, section);
++
++                if (!relPath.toString().equals(MODULE_INFO)
++                        && !matches(relPath, excludes)) {
++                    try (InputStream in = Files.newInputStream(file)) {
++                        out.writeEntry(in, section, relPath.toString());
++                    } catch (IOException x) {
++                        if (x.getMessage().contains("duplicate entry")) {
++                            warning("warn.ignore.duplicate.entry",
++                                    relPath.toString(), section);
++                            continue;
++                        }
++                        throw x;
++                    }
++                }
++            }
+         }
+ 
+         boolean matches(Path path, List<PathMatcher> matchers) {

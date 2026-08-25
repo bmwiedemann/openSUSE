@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Aug 24 16:50:27 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream tag jdk-11.0.32.1+1 (August 2026 CSPU)
+  * Changes:
+    + JDK-8385390: Update FreeType to 2.14.3
+    + JDK-8384708, bsc#1275778, CVE-2026-61308: Enhance HTTP
+      Connections
+    + JDK-8386205, bsc#1275764, CVE-2026-70907: Enhance TLS server
+    + JDK-8382471, CVE-2026-60589: Improve Resource Resolving
+    + JDK-8389476: Bump update version for OpenJDK: jdk-11.0.32.1
+- Added patch:
+  * tzdata-2026c.patch
+    + backport upcoming upgrade of timezone data (bsc#1275035)
+
+-------------------------------------------------------------------
+Wed Jul 29 09:37:47 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.de>
+
+- Add patches for reproducible builds:
+  * reproducible-classlist-sort.patch
+  * reproducible-cldr-shortids-order.patch
+  * reproducible-generated-source-dates.patch
+  * reproducible-jar-timestamps.patch
+  * reproducible-jmod-entry-order.patch
+  * reproducible-jmod-timestamps.patch
+  * reproducible-module-descriptor-hashcode.patch
+  * reproducible-source-date-epoch.patch
+
+-------------------------------------------------------------------
 Wed Jul 22 08:52:04 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream tag jdk-11.0.32+9 (July 2026 CPU)

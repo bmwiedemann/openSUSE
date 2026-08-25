@@ -43,7 +43,8 @@
 %global featurever      11
 %global interimver      0
 %global updatever       32
-%global buildver        9
+%global patchver        1
+%global buildver        1
 %global openjdk_repo    jdk11u
 %global openjdk_tag     jdk-%{featurever}.%{interimver}.%{updatever}%{?patchver:.%{patchver}}+%{buildver}
 %global openjdk_dir     %{openjdk_repo}-jdk-%{featurever}.%{interimver}.%{updatever}%{?patchver:.%{patchver}}-%{buildver}
@@ -233,9 +234,32 @@ Patch21:        reproducible-javadoc-timestamp.patch
 Patch22:        reproducible-jlink.patch
 Patch23:        reproducible-directory-mtime.patch
 Patch24:        reproducible-search-index-files.patch
+# Honour the SOURCE_DATE_EPOCH from the environment and derive the copyright
+# year from it (adapted from JDK-8282567, and from what JDK 17 already does)
+Patch25:        reproducible-source-date-epoch.patch
+# Sort the classlist, its order otherwise depends on thread scheduling
+# (JDK-8273092, in JDK 18)
+Patch26:        reproducible-classlist-sort.patch
+# Stamp jmod entries with SOURCE_DATE_EPOCH rather than the current time
+Patch27:        reproducible-jmod-timestamps.patch
+# Use SOURCE_DATE_EPOCH for the dates the CLDR converter, GenerateCharacter
+# and EquivMapsGenerator write into the sources they generate
+Patch28:        reproducible-generated-source-dates.patch
+# Write jmod entries in sorted order, not in file system order
+Patch29:        reproducible-jmod-entry-order.patch
 #
 Patch30:        JDK-8208602.patch
 Patch31:        bsc_1255446.patch
+# Stamp the entries of jrt-fs.jar and ct.sym with SOURCE_DATE_EPOCH, so that
+# java.base.jmod and jdk.compiler.jmod stop depending on the build time
+Patch32:        reproducible-jar-timestamps.patch
+# Insert the ZoneId.SHORT_IDS entries into the generated TimeZoneNames bundles
+# in a fixed order, rather than in the per-JVM-run random order of Map.of
+Patch33:        reproducible-cldr-shortids-order.patch
+# Derive ModuleDescriptor.hashCode from the modifier names rather than from
+# enum identity hash codes, which vary per JVM run (JDK-8275509, JDK-8290041).
+# jlink bakes that hash into the SystemModules classes in lib/modules.
+Patch34:        reproducible-module-descriptor-hashcode.patch
 #
 # OpenJDK specific patches
 #
@@ -246,6 +270,8 @@ Patch200:       ppc_stack_overflow_fix.patch
 Patch201:       fix_armv6_build.patch
 #
 Patch302:       disable-doclint-by-default.patch
+#
+Patch400:       tzdata-2026c.patch
 #
 Patch500:       activation-module.patch
 Patch501:       annotation-module.patch
@@ -277,6 +303,9 @@ BuildRequires:  libtool
 BuildRequires:  libxslt
 BuildRequires:  mozilla-nss-devel >= 3.53
 BuildRequires:  pkgconfig
+%if 0%{?suse_version} >= 1500
+BuildRequires:  strip-nondeterminism
+%endif
 BuildRequires:  unzip
 BuildRequires:  xorg-x11-proto-devel
 BuildRequires:  xprop
@@ -540,9 +569,17 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %patch -P 22 -p1
 %patch -P 23 -p1
 %patch -P 24 -p1
+%patch -P 25 -p1
+%patch -P 26 -p1
+%patch -P 27 -p1
+%patch -P 28 -p1
+%patch -P 29 -p1
 
 %patch -P 30 -p1
 %patch -P 31 -p1
+%patch -P 32 -p1
+%patch -P 33 -p1
+%patch -P 34 -p1
 
 # s390 build fixes
 
@@ -558,6 +595,8 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %endif
 
 %patch -P 302 -p1
+
+%patch -P 400 -p1
 
 %patch -P 500
 %patch -P 501
@@ -983,6 +1022,9 @@ find %{buildroot}%{_jvmdir}/%{sdkdir}/demo \
   | sed 's|^|%doc |' \
   >> %{name}-demo.files
 
+%if 0%?have_strip_nondeterminism
+strip-all-nondeterminism %{buildroot}/%{_jvmdir}
+%endif
 # fdupes links the files from JDK to JRE, so it breaks a JRE
 # use it carefully :))
 %fdupes -s %{buildroot}/%{_jvmdir}/%{sdkdir}/

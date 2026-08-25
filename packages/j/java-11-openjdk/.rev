@@ -703,4 +703,12 @@
     <comment>July 2026 CPU fixes</comment>
     <requestid>1367102</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>141ac4dc50c5f0f8428109f4b654c551</srcmd5>
+    <version>11.0.32.1</version>
+    <time>1787656786</time>
+    <user>anag_factory</user>
+    <comment>August 2026 CSPU + tzdata 2026c</comment>
+    <requestid>1373461</requestid>
+  </revision>
 </revisionlist>
