@@ -1,7 +1,7 @@
 #
 # spec file for package libdjinterop
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define libname libdjinterop0
 Name:           libdjinterop
-Version:        0.26.1
+Version:        0.27.1
 Release:        0
 Summary:        Access library for DJ record databases
 License:        LGPL-3.0-only

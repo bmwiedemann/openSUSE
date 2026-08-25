@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Aug 22 16:30:40 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.27.1:
+  * Use the C++20 date functions when available
+  * Fix null optional deref in 1.x code
+  * Engine DB 3.0.1 schema support
+  * Fix semver typo for Engine schema 3.0.1
+
+-------------------------------------------------------------------
 Thu Jun 19 22:58:25 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
 
 - Follow packaging conventions and rename the package to
