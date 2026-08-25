@@ -2912,4 +2912,41 @@ jsc#PED-15851</comment>
   CVE-2026-11940-tarfile-escape.patch</comment>
     <requestid>1365776</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>ed80a2878110ecc5c1258a0aa875bb22</srcmd5>
+    <version>3.14.7</version>
+    <time>1787656686</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.14.7:
+  - Security
+    - gh-153030: Fixed quadratic complexity in incremental
+      parsing of long unterminated constructs (such as tags or
+      comments) in html.parser.HTMLParser, which could be
+      exploited for a denial of service (bsc#1271192,
+      CVE-2026-15308).
+    - gh-152674: The xml.etree.ElementTree.Element methods
+      findall(), iterfind() and find() avoid quadratic behavior
+      when using XPath index predicates ([1], [last()],
+      [last()-N]) on XML documents with many same-tag siblings.
+    - gh-152216: Update bundled libexpat to version 2.8.2.
+    - gh-151987: The tarfile.TarFile.extract() method now applies
+      the given filter when it extracts a link target from the
+      archive as a fallback (bsc#1269959, CVE-2026-4360).
+    - gh-151981: In tarfile, seeking a stream now stops when end
+      of the stream is reached (bsc#1269788, CVE-2026-11972).
+    - gh-151544: Modules/Setup.local is no longer used as
+      a landmark to discover whether Python is running in
+      a source tree, as it could potentially affect actual
+      installs. The pybuilddir.txt file is now the sole indicator
+      of running in a source tree.
+    - gh-151558: Fixed an vulnerability in the tarfile data and
+      tar extraction filters where crafted archives could create
+      a symlink pointing outside the destination directory. This
+      was a bypass of CVE 2025-4330 (bsc#1268977,
+      CVE-2026-11940).
+    - gh-150743: http.client now limits the number of
+      chunked-response trailer lines it will read to 100, and the
+      number of interim (1xx) responses it will skip to 100.</comment>
+    <requestid>1370390</requestid>
+  </revision>
 </revisionlist>

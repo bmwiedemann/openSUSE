@@ -162,7 +162,7 @@
 # _md5.cpython-38m-x86_64-linux-gnu.so
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.14.6
+Version:        3.14.7
 %define         tarversion %{version}
 %define         tarname    Python-%{tarversion}
 Release:        0
@@ -231,18 +231,12 @@ Patch46:        CVE-2024-6923-follow-up-EOL-email-headers.patch
 # PATCH-FIX-UPSTREAM CVE-2025-12781-b64decode-alt-chars.patch bsc#1257108 mcepl@suse.com
 # Fix decoding with non-standard Base64 alphabet gh#python/cpython#125346
 Patch49:        CVE-2025-12781-b64decode-alt-chars.patch
-# PATCH-FIX-UPSTREAM CVE-2025-15366-imap-ctrl-chars.patch bsc#1257044 mcepl@suse.com
-# Reject control characters in wsgiref.headers.Headers
-Patch50:        CVE-2025-15366-imap-ctrl-chars.patch
 # PATCH-FIX-UPSTREAM CVE-2025-15367-poplib-ctrl-chars.patch bsc#1257041 mcepl@suse.com
 # Reject control characters in poplib
 Patch51:        CVE-2025-15367-poplib-ctrl-chars.patch
 # PATCH-FIX-OPENSUSE bsc1260884-llvm21-support.patch bsc#1260884 mcepl@suse.com
 # update JIT builds to use LLVM 21
 Patch57:        bsc1260884-llvm21-support.patch
-# PATCH-FIX-UPSTREAM CVE-2026-11940-tarfile-escape.patch bsc#1268977 mcepl@suse.com
-# Fix symlink escape via tarfile hardlink-extraction fallback
-Patch58:        CVE-2026-11940-tarfile-escape.patch
 #### Python 3.14 END OF PATCHES
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
