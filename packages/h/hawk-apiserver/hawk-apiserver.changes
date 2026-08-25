@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 24 13:10:08 UTC 2026 - Aleksei Burlakov <aburlakov@suse.com>
+
+- Vesion 0.2.3+git.1787575068.680f9de:
+  * Dev: decouple Action and OpDefaults (code refactory)
+
+-------------------------------------------------------------------
 Wed Aug 19 10:57:30 UTC 2026 - Aleksei Burlakov <aburlakov@suse.com>
 
 - Vesion 0.2.2+git.1787135908.0b1b73e:
