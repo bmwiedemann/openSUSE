@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Mon Aug 24 07:56:03 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.15.0:
+  * Added a preview implementation of the **share consumer**
+    (Queues for Kafka, KIP-932).
+  * Members of a share group cooperatively consume from the same
+    partitions with per-record acquire/acknowledge semantics and
+    redelivery, providing queue-like consumption on top of Kafka.
+  * New `rd_kafka_share_*` public API, with a dedicated
+    `rd_kafka_share_t` handle created via `rd_kafka_share_consumer_new()`:
+  * Subscription: `rd_kafka_share_subscribe()`,
+    `rd_kafka_share_unsubscribe()`, `rd_kafka_share_subscription()`.
+  * Batch polling: `rd_kafka_share_poll()` returns an
+    `rd_kafka_messages_t` batch (`rd_kafka_messages_count()` /
+    `rd_kafka_messages_get()` / `rd_kafka_messages_destroy()`).
+  * Acknowledgement: `rd_kafka_share_acknowledge()`,
+  * `rd_kafka_share_acknowledge_type()`,
+    `rd_kafka_share_acknowledge_offset()` with
+    ACCEPT / RELEASE / REJECT types, and
+  * `rd_kafka_message_delivery_count()`.
+    `rd_kafka_share_commit_async()` and the acknowledgement-commit
+     callback (`rd_kafka_share_set_acknowledgement_commit_cb()`).
+  * Lifecycle: `rd_kafka_share_consumer_close()`,
+  * `rd_kafka_share_consumer_close_queue()`,
+    `rd_kafka_share_destroy()`.
+  * Two acknowledgement modes selected by
+    `share.acknowledgement.mode` (default `implicit`; `explicit`
+    requires the application to acknowledge every record before
+    the next poll).
+  * New `max.poll.records` property (default 500) and adjusted
+    defaults for several network properties for share consumers
+    (`receive.message.max.bytes`, `connections.max.idle.ms`,
+    `reconnect.backoff.ms`, `reconnect.backoff.max.ms`).
+  * See the *Share consumers (Queues for Kafka)* section of
+  * INTRODUCTION.md, the *Share consumer* section in rdkafka.h,
+    and the `examples/share_consumer*` programs.
+
+-------------------------------------------------------------------
 Mon Jun 29 06:20:23 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.14.2:
