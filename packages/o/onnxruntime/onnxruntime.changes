@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 17 09:22:12 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not build python311 flavor on suse_version >= 1699.
+
+-------------------------------------------------------------------
 Wed Jul 01 07:55:07 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 1.27.0:

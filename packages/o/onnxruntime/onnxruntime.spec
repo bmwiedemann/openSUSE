@@ -1,7 +1,7 @@
 #
 # spec file for package onnxruntime
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,7 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %global flavor @BUILD_FLAVOR@%{nil}
+%define archs x86_64 aarch64 ppc64le
 
 %if "%{flavor}" == ""
 %bcond_with python
@@ -24,6 +26,9 @@
 %if "%{flavor}" == "python311"
 %define pyver  3.11
 %define pysuff 311
+%if 0%{?suse_version} >= 1699
+%define archs do-not-build
+%endif
 %elif "%{flavor}" == "python313"
 %define pyver  3.13
 %define pysuff 313
@@ -75,7 +80,7 @@ Version:        1.27.0
 Release:        0
 Summary:        Cross-platform machine-learning inference and training accelerator
 Group:          Development/Libraries/Other
-License:        MIT AND Apache-2.0 AND MPL-2.0 AND BSL-1.0 AND BSD-2-Clause
+License:        Apache-2.0 AND MIT AND MPL-2.0 AND BSL-1.0 AND BSD-2-Clause
 URL:            https://github.com/microsoft/onnxruntime
 Source0:        %{name}-%{version}.tar.zst
 
@@ -113,7 +118,7 @@ Patch4:         system-mp11.patch
 Patch5:         system-flatbuffers.patch
 
 # MLAS only supports these architectures
-ExclusiveArch:  x86_64 aarch64 ppc64le
+ExclusiveArch:  %archs
 
 BuildRequires:  cmake >= 3.28
 BuildRequires:  fdupes
@@ -124,17 +129,17 @@ BuildRequires:  python3 >= 3.11
 # (the bare python3 meta does not ship it); used for the flatbuffers schema
 # regeneration in %%build.
 BuildRequires:  python3-base
+BuildRequires:  execstack
 BuildRequires:  unzip
 BuildRequires:  zstd
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(zlib)
-BuildRequires:  execstack
 # Dependencies taken from system libraries instead of bundling (see deps
 # comment above). protobuf21 pins the exact 21.12 the runtime needs and
 # provides protoc; do NOT pull the default protobuf-devel (34.x).
 BuildRequires:  protobuf21-devel
-BuildRequires:  nlohmann_json-devel
 BuildRequires:  ms-gsl-devel
+BuildRequires:  nlohmann_json-devel
 # abseil + re2 must be a matched pair (re2 is built against this abseil)
 BuildRequires:  abseil-cpp-devel
 BuildRequires:  re2-devel
@@ -153,10 +158,10 @@ BuildRequires:  libboost_headers-devel
 
 %if %{with python}
 BuildRequires:  python%{pysuff}-devel
-BuildRequires:  python%{pysuff}-pybind11-devel
 BuildRequires:  python%{pysuff}-numpy-devel
 BuildRequires:  python%{pysuff}-packaging
 BuildRequires:  python%{pysuff}-pip
+BuildRequires:  python%{pysuff}-pybind11-devel
 BuildRequires:  python%{pysuff}-setuptools
 BuildRequires:  python%{pysuff}-wheel
 %endif
@@ -165,8 +170,8 @@ BuildRequires:  python%{pysuff}-wheel
 # lib and the python extension); eigen too on Leap/SLE. Declared once here for
 # bundled-library tracking.
 Provides:       bundled(date) = %{date_ver}
-Provides:       bundled(onnx) = %{onnx_ver}
 Provides:       bundled(SafeInt) = %{safeint_ver}
+Provides:       bundled(onnx) = %{onnx_ver}
 %if 0%{?suse_version} < 1699
 Provides:       bundled(eigen3) = %{eigen_ver}
 %endif
@@ -201,9 +206,9 @@ Summary:        Python %{pyver} bindings for ONNX Runtime
 # date/onnx/SafeInt are statically linked into the pybind extension (eigen too on
 # Leap/SLE).
 Requires:       python%{pysuff}-numpy
-Requires:       python%{pysuff}-protobuf
 Requires:       python%{pysuff}-flatbuffers
 Requires:       python%{pysuff}-packaging
+Requires:       python%{pysuff}-protobuf
 Requires:       python%{pysuff}-sympy
 
 %description -n python%{pysuff}-onnxruntime
