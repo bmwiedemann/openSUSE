@@ -249,4 +249,18 @@ Can't create the python3 package in dlp, so whoever pulls this would have to do 
     <comment></comment>
     <requestid>1306905</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>0f46dfec74e170ce97bc1fd8791c88f3</srcmd5>
+    <version>2.1.0</version>
+    <time>1787656691</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.1.0:
+  * Drop support for Python 3.9 and 3.10, add support for Python 3.13.
+  * Drop unicode_literals and modernize formatting with f-strings.
+  * Empty/whitespace-only markup now returns empty document matching jQuery.
+  * Handle option value fallback to option text.
+- Refresh make_webtest_optional.patch
+</comment>
+    <requestid>1373132</requestid>
+  </revision>
 </revisionlist>

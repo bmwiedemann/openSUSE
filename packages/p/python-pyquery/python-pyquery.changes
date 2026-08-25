@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Aug 22 19:00:58 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 2.1.0:
+  * Drop support for Python 3.9 and 3.10, add support for Python 3.13.
+  * Drop unicode_literals and modernize formatting with f-strings.
+  * Empty/whitespace-only markup now returns empty document matching jQuery.
+  * Handle option value fallback to option text.
+- Refresh make_webtest_optional.patch
+
+-------------------------------------------------------------------
 Wed Sep 24 10:43:53 UTC 2025 - pgajdos@suse.com
 
 - temporarily disable tests that fails because of libxml2 version

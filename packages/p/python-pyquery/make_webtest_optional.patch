@@ -1,8 +1,10 @@
-diff -Nru pyquery-2.0.1.orig/conftest.py pyquery-2.0.1/conftest.py
---- pyquery-2.0.1.orig/conftest.py	2024-08-30 10:12:19.000000000 +0200
-+++ pyquery-2.0.1/conftest.py	2024-11-15 14:36:47.617602776 +0100
-@@ -1,7 +1,12 @@
- import os
+Index: pyquery-2.1.0/conftest.py
+===================================================================
+--- pyquery-2.1.0.orig/conftest.py	2026-07-27 21:00:02.000000000 +0200
++++ pyquery-2.1.0/conftest.py	2026-08-22 20:58:58.803206680 +0200
+@@ -2,8 +2,12 @@
+ from urllib.request import urlopen
+ 
  import pytest
 -from webtest import http
 -from webtest.debugapp import debug_app
@@ -12,30 +14,34 @@ diff -Nru pyquery-2.0.1.orig/conftest.py pyquery-2.0.1/conftest.py
 +    from webtest.debugapp import debug_app
 +except (ImportError, ModuleNotFoundError):
 +    http = None
-+
- from urllib.request import urlopen
  
  
-diff -Nru pyquery-2.0.1.orig/tests/test_pyquery.py pyquery-2.0.1/tests/test_pyquery.py
---- pyquery-2.0.1.orig/tests/test_pyquery.py	2024-08-30 10:12:19.000000000 +0200
-+++ pyquery-2.0.1/tests/test_pyquery.py	2024-11-15 14:36:47.607602471 +0100
-@@ -7,9 +7,12 @@
- from lxml import etree
- from pyquery.pyquery import PyQuery as pq, no_default
- from pyquery.openers import HAS_REQUEST
--from webtest import http
--from webtest.debugapp import debug_app
+ @pytest.fixture
+Index: pyquery-2.1.0/tests/test_pyquery.py
+===================================================================
+--- pyquery-2.1.0.orig/tests/test_pyquery.py	2026-07-27 21:00:02.000000000 +0200
++++ pyquery-2.1.0/tests/test_pyquery.py	2026-08-22 20:59:04.549266706 +0200
+@@ -4,12 +4,16 @@
+ import os
+ import sys
+ import time
 -from unittest import TestCase
 +from unittest import TestCase, skipIf
+ 
+ import pytest
+ from lxml import etree
+-from webtest import http
+-from webtest.debugapp import debug_app
++
 +try:
 +    from webtest import http
 +    from webtest.debugapp import debug_app
 +except (ImportError, ModuleNotFoundError):
 +    http = None
  
- sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
- 
-@@ -888,6 +891,7 @@
+ from pyquery.openers import HAS_REQUEST
+ from pyquery.pyquery import PyQuery as pq
+@@ -943,6 +947,7 @@
          self.assertEqual(repr(val), repr('b'))
  
  
@@ -43,7 +49,7 @@ diff -Nru pyquery-2.0.1.orig/tests/test_pyquery.py pyquery-2.0.1/tests/test_pyqu
  class TestWebScrapping(TestCase):
  
      def setUp(self):
-@@ -932,6 +936,7 @@
+@@ -988,6 +993,7 @@
          self.assertEqual(d('#pt-login').text(), 'Войти')
  
  

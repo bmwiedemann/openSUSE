@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyquery
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pyquery%{psuffix}
-Version:        2.0.1
+Version:        2.1.0
 Release:        0
 Summary:        A jQuery-like library for python
 License:        BSD-3-Clause
@@ -36,14 +36,14 @@ Source:         https://files.pythonhosted.org/packages/source/p/pyquery/pyquery
 # PATCH-FIX-OPENSUSE make_webtest_optional.patch mcepl@suse.com
 # Make it possible to run test suite (albeit partial) without WebTest module
 Patch0:         make_webtest_optional.patch
-BuildRequires:  %{python_module cssselect >= 1.2.0}
+BuildRequires:  %{python_module cssselect >= 1.5.0}
 BuildRequires:  %{python_module lxml >= 2.1}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-cssselect >= 1.2.0
+Requires:       python-cssselect >= 1.5.0
 Requires:       python-lxml >= 2.1
 BuildArch:      noarch
 %if %{with test}
