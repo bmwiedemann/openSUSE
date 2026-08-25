@@ -40,7 +40,8 @@ Patch5:         libsoup-CVE-2026-12478.patch
 Patch6:         libsoup-CVE-2026-4271.patch
 # PATCH-FIX-UPSTREAM fix-samsung-tv-playback.patch -- Update the content length decimal value when encoding is set to SOUP_ENCODING_CONTENT_LENGTH
 Patch7:         fix-samsung-tv-playback.patch
-
+# PATCH-FIX-UPSTREAM libsoup-CVE-2026-12548.patch bsc#1272196, glgo#GNOME/libsoup!524 alynx.zhou@suse.com -- Fix heap out-of-bounds read flaw when parsing multipart HTTP messages
+Patch8:         libsoup-CVE-2026-12548.patch
 
 # PATCH-FIX-SLE libsoup-revert-dep-meson-0.62-shim01-e315cf2d.patch qzhao@suse.com -- Revert upstream e315cf2d to make libsoup build with meson 0.54 for SLE-15-SP4/SP5.
 Patch1000:      libsoup-revert-dep-meson-0.62-shim01-e315cf2d.patch
@@ -136,12 +137,23 @@ Features:
   * Server support for Digest and Basic authentication
   * XML-RPC support
 
+%package tests
+Summary:        Installed tests for %{name}
+Group:          Development/Libraries/Other
+Requires:       %{name}-3_0-0 = %{version}
+Requires:       gnome-desktop-testing
+
+%description tests
+Installed tests for libsoup (libsoup3), compatible with gnome-desktop-testing-runner.
+Tests cover HTTP client/server, authentication, cookies, and TLS.
+Run with: gnome-desktop-testing-runner libsoup-3.0
+
 %lang_package
 
 %prep
 %autosetup -N
 %autopatch -p1 -M 999
-%if 0%{?sle_version} >= 150400 && 0%{?sle_version} <= 155000 
+%if 0%{?sle_version} >= 150400 && 0%{?sle_version} <= 155000
 %autopatch -p1 -m 1000
 %endif
 
@@ -153,6 +165,7 @@ Features:
 	-D ntlm=disabled \
 	-D sysprof=disabled \
 	-D autobahn=disabled \
+	-D installed_tests=true \
 	%{nil}
 %meson_build
 
@@ -193,6 +206,12 @@ export G_TLS_GNUTLS_PRIORITY=NORMAL
 %dir %{_datadir}/vala/vapi/
 %{_datadir}/vala/vapi/libsoup-%{api_version}.vapi
 %{_datadir}/vala/vapi/libsoup-%{api_version}.deps
+
+%files tests
+%dir %{_libexecdir}/installed-tests
+%{_libexecdir}/installed-tests/libsoup-3.0/
+%dir %{_datadir}/installed-tests
+%{_datadir}/installed-tests/libsoup-3.0/
 
 %files lang -f %{name}-3.0.lang
 
