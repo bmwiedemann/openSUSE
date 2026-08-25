@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 25 04:27:02 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-flit-core-4.patch:
+  * Use PEP 621 metadata to support flit-core >= 4.
+
+-------------------------------------------------------------------
 Wed Jun 11 05:51:48 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

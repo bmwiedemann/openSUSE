@@ -1,7 +1,7 @@
 #
 # spec file for package python-ptyprocess
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ URL:            https://github.com/pexpect/ptyprocess
 Source:         https://files.pythonhosted.org/packages/source/p/ptyprocess/ptyprocess-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM - gh/pexpect/ptyprocess#75 - Remove unittest.makeSuite, gone from Python 3.13
 Patch1:         https://github.com/pexpect/ptyprocess/pull/75.patch#/remove-old-unittest-functions.patch
+# PATCH-FIX-UPSTREAM Based on gh#pexpect/ptyprocess#84
+Patch2:         support-flit-core-4.patch
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
@@ -51,11 +53,6 @@ If you need to automate these things, running the process in a pseudo terminal
 
 %install
 %pyproject_install
-# Fix python-bytecode-inconsistent-mtime
-pushd %{buildroot}%{python_sitelib}
-find . -name '*.pyc' -exec rm -f '{}' ';'
-python%python_bin_suffix -m compileall *.py ';'
-popd
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

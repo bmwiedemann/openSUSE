@@ -102,4 +102,13 @@
 - No more greedy globs in %files.</comment>
     <requestid>1284626</requestid>
   </revision>
+  <revision rev="13" vrev="6">
+    <srcmd5>2f93de4118da3bfec6756186e4023107</srcmd5>
+    <version>0.7.0</version>
+    <time>1787656686</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-flit-core-4.patch:
+  * Use PEP 621 metadata to support flit-core &gt;= 4.</comment>
+    <requestid>1373504</requestid>
+  </revision>
 </revisionlist>
