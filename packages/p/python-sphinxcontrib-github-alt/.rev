@@ -48,4 +48,14 @@
 </comment>
     <requestid>1285511</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>0d4a9b91946d2422fe261b19e397cb37</srcmd5>
+    <version>1.2</version>
+    <time>1787656826</time>
+    <user>anag_factory</user>
+    <comment>- Update URL to be correct.
+- Add patch support-flit-core-4.patch:
+  * Support changes required by flit-core 4.</comment>
+    <requestid>1373497</requestid>
+  </revision>
 </revisionlist>

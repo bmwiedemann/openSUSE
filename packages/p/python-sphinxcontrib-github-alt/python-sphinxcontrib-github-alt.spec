@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinxcontrib-github-alt
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,14 +22,14 @@ Version:        1.2
 Release:        0
 Summary:        Sphinx extension to link to GitHub issues, pull requests, commits and users
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
-URL:            https://github.com/Calysto/octave_kernel
+URL:            https://github.com/jupyter/sphinxcontrib_github_alt
 Source0:        https://files.pythonhosted.org/packages/source/s/sphinxcontrib_github_alt/sphinxcontrib_github_alt-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Support flit-core 4
+Patch0:         support-flit-core-4.patch
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Sphinx
@@ -45,7 +45,7 @@ To use this extension, add it to the extensions list in conf.py,
 and set the variable github_project_url:
 
 %prep
-%setup -q -n sphinxcontrib_github_alt-%{version}
+%autosetup -p1 -n sphinxcontrib_github_alt-%{version}
 
 %build
 %pyproject_wheel
@@ -61,7 +61,8 @@ and set the variable github_project_url:
 %files %{python_files}
 %license COPYING.md
 %doc README.rst
-%{python_sitelib}/sphinxcontrib_github_alt*
-%pycache_only %{python_sitelib}/__pycache__/sphinxcontrib_github_alt*.py*
+%{python_sitelib}/sphinxcontrib_github_alt.py
+%{python_sitelib}/sphinxcontrib_github_alt-%{version}.dist-info
+%pycache_only %{python_sitelib}/__pycache__/sphinxcontrib_github_alt*.pyc
 
 %changelog

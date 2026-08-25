@@ -1,0 +1,29 @@
+Index: sphinxcontrib_github_alt-1.2/pyproject.toml
+===================================================================
+--- sphinxcontrib_github_alt-1.2.orig/pyproject.toml
++++ sphinxcontrib_github_alt-1.2/pyproject.toml
+@@ -1,14 +1,16 @@
+ [build-system]
+-requires = ["flit_core >=2,<4"]
++requires = ["flit_core >=2,<5"]
+ build-backend = "flit_core.buildapi"
+ 
+-[tool.flit.metadata]
+-module = "sphinxcontrib_github_alt"
+-author = "Jupyter Development Team"
+-author-email = "jupyter@googlegroups.com"
+-home-page = "https://github.com/jupyter/sphinxcontrib_github_alt"
+-description-file = "README.rst"
+-requires = [
++[project]
++name = "sphinxcontrib_github_alt"
++version = "1.2"
++authors = [
++    {"name" = "Jupyter Development Team", "email" = "jupyter@googlegroups.com"},
++]
++urls.homepage = "https://github.com/jupyter/sphinxcontrib_github_alt"
++dynamic = ["description"]
++dependencies = [
+     "docutils",
+     "sphinx",
+ ]
