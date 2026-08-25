@@ -31,21 +31,17 @@
 %define modulename3 swtpmcuse
 %define modulename4 swtpm_libvirt
 Name:           swtpm
-Version:        0.10.1
+Version:        0.10.2
 Release:        0
 Summary:        Software TPM emulator
 License:        BSD-3-Clause
 Group:          System/Base
 URL:            https://github.com/stefanberger/swtpm
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
+Source1:        %{url}/releases/download/v%{version}/v%{version}.tar.gz.asc#/%{name}-%{version}.tar.gz.asc
+Source2:        %{name}.keyring
 Source100:      swtpm-rpmlintrc
 Patch0:         swtpm-fix-build.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         https://patch-diff.githubusercontent.com/raw/stefanberger/swtpm/pull/1027.patch
-# PATCH-FIX-UPSTREAM - cahu@suse.de bsc#1271417 drop tunable requires as it overrides booleanif
-Patch2:         1271417-drop-tunable-requires.patch
-# PATCH-FIX-UPSTREAM - jehuherrerap@hotmail.com bsc#1266339 allow unix_stream_socket and setsched for virtqemud
-Patch3:         https://patch-diff.githubusercontent.com/raw/stefanberger/swtpm/pull/1132.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  expect
@@ -59,7 +55,7 @@ BuildRequires:  libopenssl-devel
 BuildRequires:  libseccomp-devel
 BuildRequires:  libtasn1-devel
 BuildRequires:  libtool
-BuildRequires:  libtpms-devel
+BuildRequires:  libtpms-devel >= 0.10
 BuildRequires:  pkgconfig
 %if %{with use_selinux}
 BuildRequires:  selinux-policy-devel
@@ -179,6 +175,7 @@ fi
 %dir %attr(0750,tss,root) %{_localstatedir}/lib/swtpm-localca
 
 %files devel
+%license LICENSE
 %{_libdir}/swtpm/*.so
 %{_includedir}/swtpm
 %{_mandir}/man3/swtpm*%{?ext_man}

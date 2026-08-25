@@ -402,4 +402,12 @@ As discussed before we are going to move SELinux modules from /var/lib/selinux t
 You can proceed with the version bump for Leap 16.0 described in https://bugzilla.suse.com/show_bug.cgi?id=1266339 (forwarded request 1368441 from JMarcosHP01)</comment>
     <requestid>1369535</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>6ba827c72c0cf604ee9ec928b5d6b6d2</srcmd5>
+    <version>0.10.2</version>
+    <time>1787656729</time>
+    <user>anag_factory</user>
+    <comment>swtpm 0.10.2:   CVE-2026-75900 boo#1275653 (forwarded request 1373277 from AndreasStieger)</comment>
+    <requestid>1373339</requestid>
+  </revision>
 </revisionlist>

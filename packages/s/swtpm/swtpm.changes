@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Aug 23 18:26:09 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.10.2:
+  * CVE-2026-75900: swtpm: Fix length check in
+    SWTPM_NVRAM_CheckHeader() (boo#1275653)
+  * Properly check for truncation following snprintf call
+- drop patches included upstream:
+  * 1271417-drop-tunable-requires.patch
+  * 1027.patch
+  * 1132.patch
+- add upstream signing key and validate source signature
+
+-------------------------------------------------------------------
 Thu Jul 30 04:37:06 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
 
 - Fix SELinux policy for virtqemud_t swtpm_t setsched
