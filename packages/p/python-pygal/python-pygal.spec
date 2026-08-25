@@ -35,13 +35,14 @@ BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module importlib-metadata}
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pyquery}
+BuildRequires:  %{python_module pyquery >= 2.0.2}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-importlib-metadata
 Requires:       python-lxml
+Requires:       python-pyquery >= 2.0.2
 Recommends:     python-CairoSVG
 BuildArch:      noarch
 %if %{with libalternatives}
