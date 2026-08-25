@@ -17,8 +17,9 @@
 
 
 %{?sle15_python_module_pythons}
+%bcond_without libalternatives
 Name:           python-graphifyy
-Version:        0.9.48
+Version:        0.9.49
 Release:        0
 Summary:        Code knowledge graph builder and query CLI for AI assistants
 License:        Apache-2.0 AND MIT
@@ -26,13 +27,13 @@ URL:            https://github.com/Graphify-Labs/graphify
 # PyPI sdist omits tests/fixtures and ARCHITECTURE.md, which %%check needs.
 # Use the GitHub tag archive (same revision as the PyPI release).
 Source:         https://github.com/Graphify-Labs/graphify/archive/refs/tags/v%{version}.tar.gz#/graphify-%{version}.tar.gz
+# Optional at runtime: nested YAML frontmatter uses PyYAML when present.
+BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module mcp >= 1}
 BuildRequires:  %{python_module networkx >= 3.4}
 BuildRequires:  %{python_module numpy >= 1.21}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-# Optional at runtime: nested YAML frontmatter uses PyYAML when present.
-BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module rapidfuzz >= 3.0}
 BuildRequires:  %{python_module setuptools >= 77}
 # HTTP MCP tests import starlette; extra floor is 1.3.1 (CVE-2026-48818 /
@@ -65,11 +66,12 @@ BuildRequires:  %{python_module tree-sitter-typescript}
 BuildRequires:  %{python_module tree-sitter-verilog}
 BuildRequires:  %{python_module tree-sitter-zig}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
 # git CLI for hook/install tests. spec-cleaner --perl rewrites this into
 # perl(Git::*) providers; keep the package name (accepted deviation).
 BuildRequires:  git-core
+BuildRequires:  python-rpm-macros
 # python-tree-sitter-* bindings ctypes-load the C grammar .so from
 # %%{_libdir}/tree-sitter/. Only tree-sitter-python's python subpackage
 # Requires the C library; the rest omit it, so the python module BR does
@@ -99,11 +101,10 @@ BuildRequires:  tree-sitter-swift
 BuildRequires:  tree-sitter-typescript
 BuildRequires:  tree-sitter-verilog
 BuildRequires:  tree-sitter-zig
+Requires:       alts
 Requires:       python-networkx >= 3.4
 Requires:       python-numpy >= 1.21
 Requires:       python-rapidfuzz >= 3.0
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 Recommends:     %{python_flavor}-tree-sitter >= 0.23
 Recommends:     %{python_flavor}-tree-sitter-bash
 Recommends:     %{python_flavor}-tree-sitter-c
@@ -156,8 +157,14 @@ Recommends:     tree-sitter-swift
 Recommends:     tree-sitter-typescript
 Recommends:     tree-sitter-verilog
 Recommends:     tree-sitter-zig
-# the primary python3 flavor provides the plain PyPI/app name
-%python3_only Provides: graphifyy = %{version}
+BuildArch:      noarch
+# The primary flavor provides the plain PyPI/app name. Do NOT use the
+# %%python3_only macro here: it expands to a test for a flavor literally named
+# python3, which is false for every real flavor (python313, python314), so its
+# body is silently dropped and the Provides never appears.
+%if "%{python_flavor}" == "%{primary_python}"
+Provides:       graphifyy = %{version}
+%endif
 %python_subpackages
 
 %description
@@ -174,8 +181,11 @@ Summary:        Model Context Protocol server for graphify
 Requires:       %{python_flavor}-graphifyy = %{version}
 Requires:       %{python_flavor}-mcp >= 1
 Requires:       %{python_flavor}-starlette >= 1.3.1
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires:       alts
+# the primary flavor provides the plain PyPI/app name (see the main package)
+%if "%{python_flavor}" == "%{primary_python}"
+Provides:       graphifyy-mcp = %{version}
+%endif
 
 %description mcp
 The graphify-mcp entry point, exposing the graphify knowledge graph
@@ -183,6 +193,8 @@ to AI assistants over the Model Context Protocol.
 
 %prep
 %autosetup -n graphify-%{version}
+# a library module, never installed as a script: drop its stray shebang
+sed -i '1{/^#!/d}' graphify/callflow_html.py
 
 %build
 %pyproject_wheel
@@ -191,6 +203,8 @@ to AI assistants over the Model Context Protocol.
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/graphify
 %python_clone -a %{buildroot}%{_bindir}/graphify-mcp
+%python_group_libalternatives graphify
+%python_group_libalternatives graphify-mcp
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -210,17 +224,11 @@ to AI assistants over the Model Context Protocol.
 export PYTEST_ADDOPTS="--basetemp=%{_tmppath}/gfytmp"
 %pytest --ignore tests/test_skillgen.py --ignore tests/test_hooks.py --ignore tests/test_terraform.py --ignore tests/test_security.py --ignore tests/test_home_sandbox.py --ignore tests/test_watch.py --ignore tests/test_manifest_ingest.py --ignore tests/test_llm_backends.py --ignore tests/test_install_strings.py --ignore tests/test_detect.py -k "not (anthropic or openai or gemini or bedrock or ollama or test_label_communities_batches_when_over_batch_size or test_built_wheel_ships_the_full_skill_payload)"
 
-%post
-%python_install_alternative graphify
+%pre
+%python_libalternatives_reset_alternative graphify
 
-%postun
-%python_uninstall_alternative graphify
-
-%post mcp
-%python_install_alternative graphify-mcp
-
-%postun mcp
-%python_uninstall_alternative graphify-mcp
+%pre mcp
+%python_libalternatives_reset_alternative graphify-mcp
 
 %files %{python_files}
 %license LICENSE LICENSE-MIT NOTICE

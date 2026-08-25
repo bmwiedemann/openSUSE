@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Aug 24 16:55:09 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.9.49:
+  * merge-graphs links a type declaration two repositories share
+    with a same_type_as edge
+  * C# gains property member nodes, calls edges for object-creation
+    expressions, references edges for generic type arguments and
+    dispatches_to edges from a single-implementation interface
+  * Merged C/C++/Objective-C declaration nodes point at the
+    definition site instead of the header prototype
+  * Bash command substitution on the right of an assignment emits
+    a calls edge
+  * SQL CREATE TABLE inside a BEGIN/COMMIT transaction is extracted
+  * Zig methods on enums and unions, Julia abstract types with a
+    supertype, Common Lisp cross-file base classes and PowerShell
+    enum definitions are extracted
+  * Empty semantic results are no longer cached, and fresh results
+    are scoped to the files actually dispatched
+  * extract --code-only --force keeps the document semantic layer
+  * A class inheriting from a built-in base no longer collapses
+    onto a same-named class in another language
+  * The git post-commit hook resolves graphify installed as a uv
+    tool
+  * Re-export into a pre-manifest Obsidian vault adopts graphify's
+    own notes instead of orphaning them
+  * tsconfig/jsconfig alias caches are cleared per extraction run
+  * Oversized PDFs are sliced through their text converter and
+    sized from the extracted text; every text document type is
+    sliced when oversized
+- Build noarch: the package ships no binaries (rpmlint no-binary)
+- Drop the stray shebang from graphify/callflow_html.py, a library
+  module that is never installed as a script (rpmlint
+  non-executable-script)
+- Switch from update-alternatives to libalternatives (alts), the
+  Factory default: the generic names graphify and graphify-mcp are
+  declared in config files and nothing runs at install time
+- Provide graphifyy-mcp from the primary flavour of the mcp
+  subpackage, matching the graphifyy Provides on the main package
+
+-------------------------------------------------------------------
 Fri Aug 21 17:11:51 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - BuildRequires/Recommends the C tree-sitter-<lang> grammar

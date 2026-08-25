@@ -41,4 +41,34 @@ Factory x86_64 and aarch64 (3781 tests passed per flavour).
   graphify / graphify-mcp alternatives scriptlets</comment>
     <requestid>1372894</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>61feeada65ad00c238b4da9fbdaba139</srcmd5>
+    <version>0.9.49</version>
+    <time>1787656798</time>
+    <user>anag_factory</user>
+    <comment>Supersedes sr#1373460 (0.9.49). Same version bump, plus two changes on top.
+
+Switch from update-alternatives to libalternatives (alts), the Factory
+default: graphify and graphify-mcp are now declared in
+%{_datadir}/libalternatives/&lt;name&gt;/1313.conf and %{_bindir}/&lt;name&gt; is a real
+symlink to alts, so nothing runs at install time. The only scriptlet left is
+%pre, which drops a stale update-alternatives entry on upgrade. The two
+generic names are grouped separately on purpose - graphify-mcp lives in an
+optional subpackage, so a shared group would name a member that need not be
+installed.
+
+Fix the primary-flavour Provides, which never worked: the spec used
+%python3_only, which expands to a test for a flavour literally named
+&quot;python3&quot;. No real flavour is called that (python313, python314), so the body
+was silently dropped and the built RPM never provided the plain &quot;graphifyy&quot;
+name. Replaced with a %{python_flavor} == %{primary_python} test, and the same
+Provides added for graphifyy-mcp on the mcp subpackage. Verified against the
+built RPMs: python313-graphifyy provides &quot;graphifyy = 0.9.49&quot; exactly once,
+python313-graphifyy-mcp provides &quot;graphifyy-mcp = 0.9.49&quot;, and neither name
+appears on the python314 flavour.
+
+Built green on aarch64: 3908 tests passed per flavour, rpmlint 0 errors and
+0 badness.</comment>
+    <requestid>1373480</requestid>
+  </revision>
 </revisionlist>
