@@ -17,8 +17,11 @@
 
 
 %global ver_major 2
-%global ver_minor 5
-%global ver_patch 2
+%global ver_minor 6
+%global ver_patch 3
+%if 0%{?gcc_version} < 10
+%define with_gcc 11
+%endif
 Name:           conscrypt
 Version:        %{ver_major}.%{ver_minor}.%{ver_patch}
 Release:        0
@@ -28,11 +31,12 @@ Group:          Development/Libraries/Java
 URL:            https://github.com/google/%{name}
 Source0:        %{url}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        https://repo1.maven.org/maven2/org/%{name}/%{name}-openjdk/%{version}/%{name}-openjdk-%{version}.pom
-Patch0:         boringssl.patch
+# fixes: https://github.com/google/conscrypt/issues/1530
+Patch0:         ignore-unsupported-x25519kyber768draft00-group.patch
 BuildRequires:  boringssl-devel
 BuildRequires:  cmake
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
+BuildRequires:  gcc%{?with_gcc}-c++
 BuildRequires:  maven-local
 
 %description
@@ -52,8 +56,8 @@ API documentation for %{name}.
 
 %prep
 %setup -q
-cp %{SOURCE1} openjdk/pom.xml
 %patch -P 0 -p1
+cp %{SOURCE1} openjdk/pom.xml
 
 %pom_xpath_remove pom:packaging openjdk
 %pom_add_plugin org.apache.maven.plugins:maven-jar-plugin openjdk \
@@ -71,14 +75,6 @@ cp %{SOURCE1} openjdk/pom.xml
 
 cp -rv common/src openjdk/
 
-sed -i -e 's#<openssl/#<boringssl/#' \
-	constants/src/gen/cpp/generate_constants.cc \
-	common/src/jni/main/cpp/conscrypt/*.cc \
-	common/src/jni/main/include/conscrypt/jniutil.h \
-	common/src/jni/main/include/conscrypt/bio_input_stream.h \
-	common/src/jni/main/include/conscrypt/scoped_ssl_bio.h \
-	common/src/jni/main/include/conscrypt/ssl_error.h
-
 cat <<__CMAKELISTS__ >openjdk/CMakeLists.txt
 cmake_minimum_required(VERSION 3.5.0)
 project(conscrypt_jni LANGUAGES CXX)
@@ -88,12 +84,11 @@ add_library(conscrypt_jni SHARED
 	../common/src/jni/main/cpp/conscrypt/jniutil.cc
 	../common/src/jni/main/cpp/conscrypt/native_crypto.cc
 	../common/src/jni/main/cpp/conscrypt/netutil.cc
-	../common/src/jni/main/cpp/conscrypt/trace.cc
 	)
 include_directories(
+	%{_includedir}/boringssl
 	../common/src/jni/main/include/
     ../common/src/jni/unbundled/include/
-    %{_includedir}/boringssl
 	${JAVA_HOME}/include/
 	${JAVA_HOME}/include/linux/
 	)
@@ -102,6 +97,10 @@ __CMAKELISTS__
 
 %build
 pushd openjdk
+%if 0%{?with_gcc}
+export CXX=g++-%{with_gcc}
+export CC=gcc-%{with_gcc}
+%endif
 %cmake .
 %cmake_build
 mkdir -p ../src/main/resources/META-INF/native/
@@ -116,7 +115,7 @@ org.conscrypt.version.patch=%{ver_patch}
 __PROPERTIES__
 popd
 
-env -Cconstants g++ src/gen/cpp/generate_constants.cc -o generate_constants
+env -Cconstants ${CXX:-g++} -I%{_includedir}/boringssl src/gen/cpp/generate_constants.cc -o generate_constants
 ./constants/generate_constants >openjdk/src/main/java/org/conscrypt/NativeConstants.java
 
 pushd openjdk

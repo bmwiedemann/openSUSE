@@ -1,0 +1,39 @@
+--- a/common/src/main/java/org/conscrypt/NativeSsl.java
++++ b/common/src/main/java/org/conscrypt/NativeSsl.java
+@@ -296,7 +296,9 @@
+             case "X25519MLKEM768":
+                 return NativeConstants.NID_X25519MLKEM768;
+             case "X25519Kyber768Draft00":
+-                return NativeConstants.NID_X25519Kyber768Draft00;
++                // Not in this BoringSSL's group table; SSL_set1_groups() rejects the
++                // whole list on one unknown id, so drop it rather than fail the handshake.
++                return -1;
+             case "MLKEM1024":
+                 return NativeConstants.NID_ML_KEM_1024;
+             default:
+--- a/openjdk/src/test/java/org/conscrypt/NativeSslTest.java
++++ b/openjdk/src/test/java/org/conscrypt/NativeSslTest.java
+@@ -45,8 +45,6 @@
+                           NativeSsl.toBoringSslGroups(new String[] {"secp521r1"}));
+         assertArrayEquals(new int[] {NativeConstants.NID_X25519MLKEM768},
+                           NativeSsl.toBoringSslGroups(new String[] {"X25519MLKEM768"}));
+-        assertArrayEquals(new int[] {NativeConstants.NID_X25519Kyber768Draft00},
+-                          NativeSsl.toBoringSslGroups(new String[] {"X25519Kyber768Draft00"}));
+         assertArrayEquals(new int[] {NativeConstants.NID_ML_KEM_1024},
+                           NativeSsl.toBoringSslGroups(new String[] {"MLKEM1024"}));
+     }
+@@ -66,6 +64,14 @@
+     }
+ 
+     @Test
++    public void toBoringSslGroups_ignoresX25519Kyber768Draft00() {
++        // Not present in this BoringSSL's group table; see NativeSsl.toBoringSslGroup().
++        assertArrayEquals(
++                new int[] {NativeConstants.NID_X25519},
++                NativeSsl.toBoringSslGroups(new String[] {"X25519Kyber768Draft00", "X25519"}));
++    }
++
++    @Test
+     public void toBoringSslGroups_throwsIfNoKnownGroupsFound() {
+         assertThrows(IllegalArgumentException.class,
+                      () -> NativeSsl.toBoringSslGroups(new String[] {}));

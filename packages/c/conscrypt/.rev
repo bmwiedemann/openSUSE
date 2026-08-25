@@ -39,4 +39,12 @@
     <comment>Allow building with newer boringssl</comment>
     <requestid>1364173</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>34520c6c2d5f9641b38bd6abd4952cdf</srcmd5>
+    <version>2.6.3</version>
+    <time>1787656835</time>
+    <user>anag_factory</user>
+    <comment>2.6.3 with build fixed against recent boringssl</comment>
+    <requestid>1373535</requestid>
+  </revision>
 </revisionlist>

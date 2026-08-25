@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Aug 25 06:31:37 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * ignore-unsupported-x25519kyber768draft00-group.patch
+    + fix the ignore-unsupported-x25519kyber768draft00-group.patch
+      by never calling the removed X25519Kyber768Draft00
+
+-------------------------------------------------------------------
+Mon Aug 24 07:50:00 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 2.6.3
+  * Fixes
+    + #1530: SSL errors using v2.6.2
+    + #1526: Conscrypt 2.6+ incompatible with Netty
+    + #1519: Byte-array elements leak in EVP_DigestSign()
+  * Important changes since 2.5.x
+    + Many new algorithms, such as X25519, Ed25519, ML-DSA,
+      SLH-DSA, ML-KEM, X-Wing.
+    + For TLS, it supports X25519MLKEM768 and MLKEM1024.
+    + Includes a new HPKE interface.
+    + Support osx-aarch_64 (Apple Silicon) and linux-aarch_64
+      (Linux on ARM).
+    + Dropped support of windows-x86 (32-bit Windows)
+    + On Linux, it requires GLIBC 2.35 or newer
+- Removed patch:
+  * boringssl.patch
+    + not needed with this version and recent boringssl
+
+-------------------------------------------------------------------
 Tue Jul  7 06:17:27 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:
