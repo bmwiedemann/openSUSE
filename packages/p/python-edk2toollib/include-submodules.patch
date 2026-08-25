@@ -1,0 +1,16 @@
+Index: edk2-pytool-library-0.23.15/pyproject.toml
+===================================================================
+--- edk2-pytool-library-0.23.15.orig/pyproject.toml
++++ edk2-pytool-library-0.23.15/pyproject.toml
+@@ -61,8 +61,9 @@ docs = [
+     "mkdocs-awesome-pages-plugin==2.10.1",
+ ]
+ 
+-[tool.setuptools]
+-packages = ["edk2toollib"]
++[tool.setuptools.packages.find]
++where = ["."]
++include = ["edk2toollib", "edk2toollib.*"]
+ 
+ [tool.setuptools_scm]
+ 

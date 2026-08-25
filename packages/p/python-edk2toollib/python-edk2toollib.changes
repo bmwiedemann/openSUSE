@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Tue Aug 25 05:49:35 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.23.16:
+  * fdf_parser: Fixed a RecursionError on long runs of skipped lines.
+  * edk2toollib: Included OtherMods in DscParser.GetMods().
+  * edk2toollib: Fixed PCDs failing to parse when placed adjacent to symbols.
+  * SourceTable: Filtered out directories from source file glob results.
+  * Architecture Support: Added LoongArch64 host architecture support.
+  * Python Compatibility: Added support for Python 3.14.
+  * dsc_parser: Fixed issue where certain PCD values were not evaluated
+    properly in !if directives.
+  * inf_generator2: Added TargetOSVersion option.
+  * inf_generator2: Removed DIRID_WINDOWS from generated INF files.
+  * cat_generator: Updated supported operating systems for inf2cat.
+  * base_parser: Allowed precedence for input variables.
+  * edk2_db: Fixed misaligned zip archive handling for library dependencies.
+  * UEFI Support: Added UEFI Device Path support.
+  * base_parser: Prevented circular variable replacement.
+  * EfiTime: Added support to decode raw bytes.
+  * base_parser: Fixed conditional evaluation for !ifdef and !ifndef
+    directives.
+  * base_parser: Updated operator precedence of == and !=.
+  * Path Utilities: Updated type hinting for path parameters in
+    GetEdk2RelativePathFromAbsolutePath and
+    GetAbsolutePathOnThisSystemFromEdk2RelativePath.
+  * buildreport_parser: Properly handled NULL library entries.
+  * UEFI Variables: Fixed UEFI variable fetching on Linux.
+  * fdf_parser: Added support for SECTION COMPRESS sections.
+  * base_parser: Added support for conditions checking for empty strings.
+  * Python Compatibility: Dropped support for Python 3.10 and added support
+    for Python 3.13 (minimum Python 3.11+).
+  * dsc_parser: Fixed PCD parsing errors when values contain single quotes.
+- Run the testsuite.
+- List directories under sitelib explicitly.
+- Use GitHub URL for the source tarball, and stop including the readme
+  and license directly.
+- Add patch include-submodules.patch:
+  * Include all submodules when building the wheel.
+
+-------------------------------------------------------------------
 Wed Oct 23 02:26:13 UTC 2024 - Richard Lyu <rlyu@suse.com>
 
 - Update version to 0.21.9
