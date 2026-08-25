@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Aug 22 16:20:10 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.24.1:
+  * va: include <unistd.h> for getuid/getgid in secure_getenv
+    fallback
+
+-------------------------------------------------------------------
 Sat Jul  4 09:59:55 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
 
 - update to 2.24.0:
