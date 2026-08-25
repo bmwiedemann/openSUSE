@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-torchao
-Version:        0.17.0
+Version:        0.18.0
 Release:        0
 Summary:        PyTorch native quantization and sparsity
 # Legal-Review-Notice: root LICENSE is BSD-3-Clause. prototype/paretoq
@@ -31,13 +31,14 @@ URL:            https://github.com/pytorch/ao
 Source:         https://github.com/pytorch/ao/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module torch}
+# upstream dropped support for PyTorch older than 2.11 in 0.18.0
+BuildRequires:  %{python_module torch >= 2.11}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # setup.py does not declare install_requires; pythondistdeps sees no
 # Requires-Dist in the wheel METADATA
-Requires:       python-torch
+Requires:       python-torch >= 2.11
 BuildArch:      noarch
 %python_subpackages
 

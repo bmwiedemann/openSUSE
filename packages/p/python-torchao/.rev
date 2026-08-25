@@ -22,4 +22,28 @@ INTERDEPENDENT REQUESTS — please stage together:
 New package to Factory.</comment>
     <requestid>1372976</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>437f8a434bbf9ccf2d8bc7cbaefefd3d</srcmd5>
+    <version>0.18.0</version>
+    <time>1787656801</time>
+    <user>anag_factory</user>
+    <comment>Update python-torchao to 0.18.0 (upstream pytorch/ao tag v0.18.0, released 2026-08-03).
+
+Highlights:
+- Minimum supported PyTorch is now 2.11; the code dropped all older
+  compatibility paths. Factory ships python-torch 2.12.0, so the floor is
+  satisfied. BuildRequires/Requires now encode &quot;torch &gt;= 2.11&quot;.
+- The deprecated v1 tensor-subclass and layout system (AffineQuantizedTensor,
+  AQTTensorImpl, Layout, PlainLayout, TensorCoreTiledLayout,
+  LinearActivationQuantizedTensor and friends) was removed, completing the
+  migration to v2 tensor subclasses.
+- New prototype NVFP4 training, MXFP8Linear, blockwise FP8 MoE support,
+  free-threaded (no-GIL) build support and a Python 3.14 compatibility fix
+  for quantization/pt2e.
+
+No patches. Still the CPU, pure-Python build (USE_CPP=0), no CUDA kernels.
+Built for aarch64 on openSUSE_Tumbleweed: green, rpmlint 0 errors / 0 badness,
+%check import smoke test passes on python 3.13 and 3.14.</comment>
+    <requestid>1373473</requestid>
+  </revision>
 </revisionlist>

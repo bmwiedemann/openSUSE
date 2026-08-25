@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Aug 24 18:03:54 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.18.0:
+  * Minimum supported PyTorch is now 2.11; support for older
+    releases was removed from the code
+  * Removed the deprecated v1 tensor-subclass and layout system
+    (AffineQuantizedTensor, AQTTensorImpl, Layout, PlainLayout,
+    TensorCoreTiledLayout, LinearActivationQuantizedTensor and
+    friends), completing the migration to v2 tensor subclasses
+  * Renamed Int4WeightOnlyOpaqueTensorConfig to
+    PrototypeInt4WeightOnlyConfig and moved NF4Tensor to
+    torchao.quantization.quantize_.workflows
+  * New prototype NVFP4 training support for dense linears
+  * Added MXFP8Linear plus blockwise FP8 MoE support
+  * Float8 softmax quantization now uses a fixed scale instead of
+    an observer
+  * Building under a free-threaded (no-GIL) interpreter is now
+    supported
+  * Fixed Python 3.14 compatibility of quantization/pt2e
+  * Numerous QAT, sparsity and pruning fixes
+- Require python-torch >= 2.11 to match the new upstream floor
+
+-------------------------------------------------------------------
 Fri Aug 21 19:30:17 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Initial package of python-torchao 0.17.0: PyTorch-native
