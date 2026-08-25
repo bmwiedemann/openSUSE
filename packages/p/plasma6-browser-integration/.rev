@@ -367,4 +367,13 @@
     <comment>Plasma 6.7.4, untested (forwarded request 1369583 from Vogtinator)</comment>
     <requestid>1369892</requestid>
   </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>cb8de818bd9a34a43253a5ea3dfdd5a9</srcmd5>
+    <version>6.7.4</version>
+    <time>1787656736</time>
+    <user>anag_factory</user>
+    <comment>- Place native-messaging-hosts files in /usr/lib in addition to
+  /usr/lib64 (boo#1275979) (forwarded request 1373357 from Vogtinator)</comment>
+    <requestid>1373394</requestid>
+  </revision>
 </revisionlist>

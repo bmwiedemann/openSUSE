@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 21 14:23:54 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Place native-messaging-hosts files in /usr/lib in addition to
+  /usr/lib64 (boo#1275979)
+
+-------------------------------------------------------------------
 Tue Aug  4 11:26:14 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.7.4:

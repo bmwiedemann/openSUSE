@@ -39,6 +39,7 @@ Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{ver
 Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
+BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
@@ -98,12 +99,16 @@ KDE Plasma.
 %install
 %kf6_install
 
-if [ "%{_lib}" != "lib" ]; then
-  # Move mozilla native messaging file to correct location
-  mv %{buildroot}%{_prefix}/lib/{mozilla,librewolf,waterfox} %{buildroot}%{_libdir}
-fi
+%if "%{_lib}" != "lib"
+  # Copy mozilla native messaging file to correct location
+  # Some third-party RPMs use /usr/lib/ still, so keep them there too
+  cp -R %{buildroot}%{_prefix}/lib/{mozilla,librewolf,waterfox} %{buildroot}%{_libdir}
+%endif
 
 %find_lang %{name} --all-name
+
+# Need to use -s here, rpmlint thinks /usr/lib and /usr/lib64 can be on different partitions.
+%fdupes -s %{buildroot}%{_prefix}
 
 %files
 %license COPYING*
@@ -112,6 +117,10 @@ fi
 %{_kf6_plugindir}/kf6/kded/browserintegrationflatpakintegrator.so
 %dir %{_libdir}/{mozilla,librewolf,waterfox}
 %{_libdir}/{mozilla,librewolf,waterfox}/native-messaging-hosts/
+%if "%{_lib}" != "lib"
+%dir %{_prefix}/lib/{mozilla,librewolf,waterfox}
+%{_prefix}/lib/{mozilla,librewolf,waterfox}/native-messaging-hosts/
+%endif
 %dir %{_sysconfdir}/chromium
 %{_sysconfdir}/chromium/native-messaging-hosts/
 %dir %{_sysconfdir}/opt/chrome
