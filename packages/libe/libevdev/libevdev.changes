@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Aug 22 14:32:52 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.13.7:
+  * Refuse devices with more than 256 slots
+  * Fix off-by-one in slot_value() bounds check
+  * include: sync with kernel 7.0
+
+-------------------------------------------------------------------
 Fri Jan  2 21:52:44 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.13.6:
