@@ -62,4 +62,24 @@
   * Support Python 3.14.</comment>
     <requestid>1306357</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>20340ff000c3d7bdf8a42ca9191a10bf</srcmd5>
+    <version>3.1.0</version>
+    <time>1787656825</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.1.0:
+  * Fix the temp_patch decorator form to return the decorated function's
+    return value.
+  * Fix patching functions whose argument default values refer to names that
+    are unavailable at patch time, such as class attributes or enclosing
+    function locals.
+  * Store patched source with Python's linecache module, under a per-function
+    virtual filename like &lt;patchy: example.some_func&gt;.
+  * Apply patches in-memory with unipatch, a pure-Python implementation of
+    unified diff built especially for patchy.
+  * Support Python 3.15.
+  * Switch package build backend from setuptools to uv_build.
+  * Drop Python 3.9 support.</comment>
+    <requestid>1373495</requestid>
+  </revision>
 </revisionlist>

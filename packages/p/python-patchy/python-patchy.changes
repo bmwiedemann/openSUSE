@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Aug 25 00:40:37 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.1.0:
+  * Fix the temp_patch decorator form to return the decorated function's
+    return value.
+  * Fix patching functions whose argument default values refer to names that
+    are unavailable at patch time, such as class attributes or enclosing
+    function locals.
+  * Store patched source with Python's linecache module, under a per-function
+    virtual filename like <patchy: example.some_func>.
+  * Apply patches in-memory with unipatch, a pure-Python implementation of
+    unified diff built especially for patchy.
+  * Support Python 3.15.
+  * Switch package build backend from setuptools to uv_build.
+  * Drop Python 3.9 support.
+
+-------------------------------------------------------------------
 Sun Sep 21 19:30:12 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.10.0:

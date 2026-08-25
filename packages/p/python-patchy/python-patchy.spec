@@ -1,7 +1,7 @@
 #
 # spec file for package python-patchy
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,21 +18,20 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-patchy
-Version:        2.10.0
+Version:        3.1.0
 Release:        0
 License:        BSD-3-Clause
 Summary:        Patch the inner source of python functions at runtime
 URL:            https://github.com/adamchainz/patchy
-Group:          Development/Languages/Python
 Source:         https://github.com/adamchainz/patchy/archive/refs/tags/%{version}.tar.gz#/patchy-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pkgutil-resolve-name}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
+BuildRequires:  %{python_module unipatch}
+BuildRequires:  %{python_module uv-build}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-pkgutil-resolve-name
+Requires:       python-unipatch
 BuildArch:      noarch
 
 %python_subpackages
