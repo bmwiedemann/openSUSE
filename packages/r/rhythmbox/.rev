@@ -854,4 +854,16 @@
   + Updated translations.</comment>
     <requestid>1369096</requestid>
   </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>ab2cfec8c2e4a4d7f1b119bf653fbdf9</srcmd5>
+    <version>3.5.1</version>
+    <time>1787656841</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.5.1:
+  + ReplayGain plugin works with new player backend
+  + Improved detection of pygobject/libpeas/girepository
+    compatibility issues
+  + Updated translations.</comment>
+    <requestid>1373533</requestid>
+  </revision>
 </revisionlist>

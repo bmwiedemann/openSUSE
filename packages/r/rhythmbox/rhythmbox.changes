@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug 24 15:51:09 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.5.1:
+  + ReplayGain plugin works with new player backend
+  + Improved detection of pygobject/libpeas/girepository
+    compatibility issues
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Aug  2 10:19:34 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.5.0:
