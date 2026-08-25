@@ -1,0 +1,16 @@
+Index: edk2-pytool-extensions-0.31.0/pyproject.toml
+===================================================================
+--- edk2-pytool-extensions-0.31.0.orig/pyproject.toml
++++ edk2-pytool-extensions-0.31.0/pyproject.toml
+@@ -95,8 +95,9 @@ perf_report_generator = "edk2toolext.per
+ secureboot_audit = "edk2toolext.windows.secureboot.secureboot_audit:main"
+ statuscode_processor = "edk2toolext.status_code_processor:main"
+ 
+-[tool.setuptools]
+-packages = ["edk2toolext"]
++[tool.setuptools.packages.find]
++where = ["."]
++include = ["edk2toolext", "edk2toolext.*"]
+ 
+ [tool.setuptools_scm]
+ 

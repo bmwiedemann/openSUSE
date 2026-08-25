@@ -1,0 +1,21 @@
+Index: edk2-pytool-extensions-0.31.0/tests.unit/test_uefi_build.py
+===================================================================
+--- edk2-pytool-extensions-0.31.0.orig/tests.unit/test_uefi_build.py
++++ edk2-pytool-extensions-0.31.0/tests.unit/test_uefi_build.py
+@@ -12,6 +12,7 @@ import argparse
+ import logging
+ import os
+ import stat
++import sys
+ import tempfile
+ import unittest
+ from inspect import cleandoc
+@@ -127,7 +128,7 @@ class TestUefiBuild(unittest.TestCase):
+             sys.exit(0)
+             """
+ 
+-        build_wrapper_cmd = "python"
++        build_wrapper_cmd = sys.executable
+         build_wrapper_params = os.path.normpath(build_wrapper_path)
+ 
+         TestUefiBuild.write_to_file(build_wrapper_path, cleandoc(build_wrapper_file_content))

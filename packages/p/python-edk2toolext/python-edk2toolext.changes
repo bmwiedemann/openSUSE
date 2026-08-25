@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Tue Aug 25 05:52:02 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.31.1:
+  * invocable: Log the command executed
+  * web_dependency: Handle additional web dep download exceptions
+  * component-libs: Cleanly error when component not found
+  * Add StatusCodeprocessor to facilitate the parsing of Status Code
+  * add ability to pass --debug switch to az artifacts download
+  * Perf Component: Align GUID format for fpdt_parser and add file encoding
+    for perf_report_generator
+  * Add Python 3.14 support
+  * edk2_parse: bugfix unknown arguments for platform
+  * [REBASE&FF] Do not set permissions if the expected_mode is zero
+  * Replace az --version call with az version
+  * Removed @classmethod decorators from methods intended to be overridden by
+    subclasses
+  * capsule_helper: Allow INF Target OS Version to be specified
+  * Format output xml and align GUID format for fpdt_parser
+  * invocable: Do not print help message on error.
+  * stuart_ci_build: Add support for listing plugins
+  * edk2_pr_eval: Consider build variables in Policy 4 [Rebase & FF]
+  * edk2_invocable: Register one version per pip package
+  * edk2_invocable: Fix pkg_resources deprecation warning
+  * Adding limited cloning capabilities to stuart_setup
+  * environment/repo_resolved: Support branches from gh pr checkout
+  * Add Performance Tools [Rebase & FF]
+  * repo_resolver: fix case of reference and recurse being mutually
+    exclusive.
+  * edk2toolext: Add patch var store [Rebase & FF]
+  * Improve configuration options for GetDependencies.
+  * Add high-level performance data
+  * edk2_logging: Add separate perf measurement logs
+  * repo_resolver: Retry on git dirty repo checks
+  * project: Add a minimum supported version
+  * az_cli_universal_dependency.py: Lower logging verbosity when az download
+    command results contain non-Json data
+  * improve verbosity flag override
+  * az_cli_universal_dependency.py: Manage results output for non-Json data
+  * az_cli_universal_dependency: Enhance error messaging
+  * Allow [tool] or [tools] section in Rust Env Checker
+  * pyopenssl_signer: Use cryptography
+  * rust.py: Use cargo-binstall
+  * Python support: drop 3.10, add 3.13
+- Run the testsuite.
+- List directories under sitelib explicitly.
+- Use GitHub URL for the source tarball.
+- Add patch include-submodules.patch:
+  * Include all submodules when building the wheel.
+- Add patch do-not-use-bare-python.patch:
+  * Use sys.executable in the testsuite.
+
+-------------------------------------------------------------------
 Wed Nov  6 03:57:33 UTC 2024 - YI HSIN Lyu <richard.lyu@suse.com>
 
 - Update version to 0.28.0
