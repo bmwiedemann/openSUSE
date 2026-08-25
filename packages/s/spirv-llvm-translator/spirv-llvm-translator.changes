@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Aug 20 21:32:37 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 22.1.5.
+  * Implement SPV_INTEL_subgroup_scaled_matrix_multiply_accumulate.
+  * Use SPV_EXT_long_vector extension for non-standard vector size.
+  * Keep VectorAnyINTEL for VectorCompute modules with
+    SPV_EXT_long_vector.
+  * Represent FP4 E2M1 with SPV_EXT_ocp_microscaling_types.
+  * Add 2 opcodes back from old SPV_INTEL_fp_conversionsspec.
+  * Add missing coverage for SPV_EXT_long_vector.
+  * Fix OpGroupNonUniformRotateKHR mangling.
+  * Read old SPV_INTEL_float4 type for StochasticRound*ToE2M1INTEL.
+- Drop obsolete patches:
+  * Remove-internal-values-for-SPV_INTEL_predicated_io.patch
+  * Support-SPV_INTEL_rounded_div_sqrt-extension.patch
+
+-------------------------------------------------------------------
 Sun Jul  5 20:57:55 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 22.1.4.
