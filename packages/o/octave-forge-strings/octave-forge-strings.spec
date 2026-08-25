@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-strings
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %define octpkg  strings
 Name:           octave-forge-%{octpkg}
-Version:        1.3.1
+Version:        1.3.2
 Release:        0
 Summary:        Additional manipulation functions for Octave
 License:        BSD-2-Clause AND GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://gnu-octave.github.io/packages/%{octpkg}/
-Source0:        http://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
+Source0:        https://github.com/gnu-octave/octave-%{octpkg}/releases/download/release-%{version}/%{octpkg}-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  hdf5-devel
 BuildRequires:  octave-devel
