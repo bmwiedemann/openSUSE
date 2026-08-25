@@ -212,4 +212,36 @@ clean.</comment>
     locales (gh#krrishnarraj/clpeak#199).</comment>
     <requestid>1372634</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>6131113ffed236ad8bb6ac5bf8e65828</srcmd5>
+    <version>2.1.3</version>
+    <time>1787656776</time>
+    <user>anag_factory</user>
+    <comment>Update to 2.1.3.
+
+Upstream release of 2026-08-24. Mostly measurement correctness: four
+Intel Arc faults fixed (Vulkan device features were requested with their
+extensions enabled but every feature flag left VK_FALSE, and
+cooperative-matrix stages are now pinned to a 32-wide subgroup so a
+driver splitting the group stops dividing the reported rate), a second
+MAD-chain shape raced per compute family after the shared squaring chain
+was found to report exactly half of Alchemist/Xe-HPG throughput, and
+corrections to CUDA int8 sparsity and to OpenCL mixed-precision, which
+read 8x high on work-item-vectorising CPU runtimes. New CUDA FP8 rows
+complete the dense/sparse grid.
+
+Packaging: 2.1.3 removes the hardcoded in-tree version fallback, so a
+tarball build (no .git, no git-describe) now reports &quot;unknown&quot; in
+--version and in the clpeak_version field of every JSON, XML and CSV
+export. The %prep sed we carried for that variable became a silent
+no-op, so it is dropped and replaced by clpeak-version-override.patch,
+which adds -DCLPEAK_VERSION_OVERRIDE. Our source is exactly the tag, so
+the number is a fact we hold and git does not. Sent upstream as
+gh#krrishnarraj/clpeak#206; drop the patch when it is released.
+
+Verified by running the built binary in the build chroot: it prints
+&quot;clpeak version: 2.1.3&quot;. Built on aarch64 against openSUSE_Factory,
+ctest 1/1 passed, rpmlint 0 errors 0 warnings 0 badness.</comment>
+    <requestid>1373454</requestid>
+  </revision>
 </revisionlist>

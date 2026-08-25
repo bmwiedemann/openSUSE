@@ -18,7 +18,7 @@
 
 
 Name:           clpeak
-Version:        2.1.2
+Version:        2.1.3
 Release:        0
 Summary:        Find peak OpenCL capacities like bandwidth & compute
 # Legal-Review-Notice: upstream relicensed from the Unlicense to Apache-2.0
@@ -28,6 +28,9 @@ Summary:        Find peak OpenCL capacities like bandwidth & compute
 License:        Apache-2.0
 URL:            https://github.com/krrishnarraj/clpeak
 Source:         https://github.com/krrishnarraj/clpeak/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM clpeak-version-override.patch gh#krrishnarraj/clpeak#206 mpluskal@suse.com
+# -- let the builder pass the version in; tarball builds report "unknown" since 2.1.3
+Patch0:         clpeak-version-override.patch
 BuildRequires:  cmake >= 3.20
 BuildRequires:  gcc-c++
 BuildRequires:  ninja
@@ -45,11 +48,6 @@ bandwidth & compute.
 
 %prep
 %autosetup -p1
-# GitHub archives have no .git, so git-describe is unavailable and
-# version.cmake's hardcoded fallback is stale (still 2.0.16 in 2.1.2).
-# gh#krrishnarraj/clpeak#198
-sed -i 's/set(CLPEAK_VERSION_FALLBACK ".*")/set(CLPEAK_VERSION_FALLBACK "%{version}")/' \
-    src/common/cmake/version.cmake
 
 %build
 # Flutter GUI is optional upstream and skipped without an SDK; pin it off
@@ -57,7 +55,11 @@ sed -i 's/set(CLPEAK_VERSION_FALLBACK ".*")/set(CLPEAK_VERSION_FALLBACK "%{versi
 # oneAPI likewise auto-skip when their SDKs are absent — keep them off
 # explicitly. Vulkan + OpenCL + CPU stay on (defaults).
 %define __builder ninja
+# GitHub archives carry no .git, so git-describe cannot run and 2.1.3 reports
+# "unknown" -- in --version and in the clpeak_version field of every JSON/XML/
+# CSV export. Our source is exactly the tag Version names, so state it (Patch0).
 %cmake \
+    -DCLPEAK_VERSION_OVERRIDE=%{version} \
     -DCLPEAK_ENABLE_GUI=OFF \
     -DCLPEAK_ENABLE_CUDA=OFF \
     -DCLPEAK_ENABLE_ROCM=OFF \

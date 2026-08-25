@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Aug 24 16:50:17 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2.1.3:
+  * Fix four Intel Arc faults: Vulkan device features were requested
+    but never enabled (A380 crashed in the shader compiler),
+    cooperative-matrix stages are now pinned to a 32-wide subgroup so
+    split subgroups stop dividing the reported rate, and fp16/bf16/
+    int8 coopmat rows are gated on the matching type feature.
+  * Race two MAD-chain shapes per compute family; the shared squaring
+    chain reported exactly half of Alchemist/Xe-HPG throughput. Intel
+    Arc and CPU OpenCL runtimes gain up to 2x across compute.
+  * New CUDA FP8 rows (fp8_e4m3_f16acc, fp8_sparse, fp8_sparse_f16acc)
+    completing the FP8 dense/sparse grid.
+  * Correct CUDA int8_sparse, which was pinned to the wrong shape and
+    compared against a dense row of a different K.
+  * Correct OpenCL mixed-precision, inflated 8x on work-item-
+    vectorising CPU runtimes because every operand derived from a
+    uniform kernel argument; GPUs unaffected.
+  * Give oneAPI mixed-precision and bf16 four chains instead of one.
+  * Detect OpenCL int8_dp through the device capability query instead
+    of the extension string, turning five clCreateKernel errors on Arc
+    and Intel CPU runtimes into an honest Unsupported skip.
+  * Builds without git report "unknown" rather than a stale hardcoded
+    version.
+  * Discover ROCm via HIP_PATH/ROCM_PATH, not just /opt/rocm.
+- Add clpeak-version-override.patch: let the builder supply the
+  version with -DCLPEAK_VERSION_OVERRIDE, so our tarball build keeps
+  reporting %{version} in --version and in the clpeak_version field
+  of JSON/XML/CSV exports instead of "unknown"
+  (gh#krrishnarraj/clpeak#206).
+- Drop the CLPEAK_VERSION_FALLBACK sed from %prep: upstream removed
+  that variable in this release, so it had become a silent no-op.
+
+-------------------------------------------------------------------
 Thu Aug 20 18:40:38 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 2.1.2:
