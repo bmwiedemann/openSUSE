@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Aug 25 08:07:46 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.1.55:
+  * Add ByteDance vCube video enhance template
+  * Add Meshy 7 image-to-model and text-to-model templates
+  * Add Wan 3.0 image-, reference- and text-to-video templates
+  * Refresh the existing Meshy templates (MESHY_TASK_ID node
+    type, updated node graphs)
+
+-------------------------------------------------------------------
 Fri Aug 21 08:51:33 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Initial package (version 0.1.50): workflow template JSON
