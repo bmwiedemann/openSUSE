@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Aug 22 16:19:20 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.4.3:
+  * Fix autogen.sh/configure.ac
+
+-------------------------------------------------------------------
 Fri Apr  4 17:41:57 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - add -std=gnu11 to CFLAGS to fix gcc15 compile time error, and to
@@ -26,7 +32,7 @@ Fri Jul 26 19:16:34 UTC 2013 - asterios.dramis@gmail.com
 
 -------------------------------------------------------------------
 Sun Aug  7 14:44:44 UTC 2011 - toddrme2178@gmail.com
- 
+
 - Fixed group (fix for RPMLINT warning)
 - Removed commented file
 

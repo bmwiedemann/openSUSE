@@ -124,4 +124,12 @@
     <comment>add -std=gnu11 to CFLAGS to fix gcc15 compile time error, and to still allow build on Leap 15.6 (forwarded request 1267253 from hsk17)</comment>
     <requestid>1267258</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>e8d934d1b7b91b56868d7ab2e62b9931</srcmd5>
+    <version>0.4.3</version>
+    <time>1787656726</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1373330</requestid>
+  </revision>
 </revisionlist>

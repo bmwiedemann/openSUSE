@@ -18,13 +18,13 @@
 
 %define so_ver 0
 Name:           liblqr
-Version:        0.4.2
+Version:        0.4.3
 Release:        0
 Summary:        Liquid Rescale seam-carving library
 License:        LGPL-3.0-only AND GPL-3.0-only
 Group:          System/Libraries
 URL:            https://liblqr.wikidot.com/
-Source0:        http://liblqr.wikidot.com/local--files/en:download-page/liblqr-1-%{version}.tar.bz2
+Source0:        https://liblqr.wikidot.com/local--files/en:download-page/liblqr-1-%{version}.tar.bz2
 Source1:        baselibs.conf
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  glib2-devel
