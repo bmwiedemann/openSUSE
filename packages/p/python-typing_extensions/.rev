@@ -417,4 +417,12 @@
     3.10+ since `typing_extensions` v4.6.0. Patch by Brian Schubert.</comment>
     <requestid>1370852</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>e032f33e653c2fe645d590cc160027bb</srcmd5>
+    <version>4.16.0</version>
+    <time>1787656661</time>
+    <user>anag_factory</user>
+    <comment>- permit flit-core 4</comment>
+    <requestid>1373151</requestid>
+  </revision>
 </revisionlist>

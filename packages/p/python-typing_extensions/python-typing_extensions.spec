@@ -36,7 +36,7 @@ Source0:        https://files.pythonhosted.org/packages/source/t/typing_extensio
 # PATCH-FIX-UPSTREAM remove-obsolete-literal-deduplication-assertion.patch gh#python/typing_extensions#785
 Patch1:         remove-obsolete-literal-deduplication-assertion.patch
 BuildRequires:  %{python_module base >= 3.9}
-BuildRequires:  %{python_module flit-core >= 3.4 with %python-flit-core < 4}
+BuildRequires:  %{python_module flit-core >= 3.4}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

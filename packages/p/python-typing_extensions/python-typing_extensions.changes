@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Aug 22 21:01:07 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- permit flit-core 4
+
+-------------------------------------------------------------------
 Wed Aug 12 10:02:17 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Drop not needed patch py314-fix-tests.patch
