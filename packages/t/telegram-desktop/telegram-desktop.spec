@@ -22,9 +22,9 @@
 %define api_hash  d524b414d21f4d37f08684c1df41ac9c
 %define ada_ver   4.0.0
 %define owt_ver   git20260725
-%define td_ver    git20260717
+%define td_ver    git20260729
 Name:           telegram-desktop
-Version:        7.0.9
+Version:        7.1.1
 Release:        0
 Summary:        Messaging application with a focus on speed and security
 License:        GPL-3.0-only
@@ -138,7 +138,8 @@ popd
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-CFLAGS="%{optflags} -fPIC -g1 -Wl,-v -fuse-ld=mold"
+export CFLAGS="%{optflags} -fPIC -g1 -Wl,-v -fuse-ld=mold"
+export CXXFLAGS=$CFLAGS
 export CMAKE_GENERATOR=Ninja
 mkdir %{_builddir}/local
 
@@ -146,8 +147,6 @@ cd %{_builddir}/tdesktop-%{version}-full/Telegram/ThirdParty/ada
 %cmake -LA \
       -DBUILD_SHARED_LIBS=OFF \
       -DCMAKE_BUILD_TYPE="Release" \
-      -DCMAKE_C_FLAGS="$CFLAGS" \
-      -DCMAKE_CXX_FLAGS="$CFLAGS" \
       -DCMAKE_INSTALL_PREFIX="%{_builddir}/local"
 %cmake_build
 ninja install
@@ -155,8 +154,6 @@ ninja install
 cd %{_builddir}/tdesktop-%{version}-full/Telegram/ThirdParty/expected
 %cmake -LA \
       -DCMAKE_BUILD_TYPE="Release" \
-      -DCMAKE_C_FLAGS="$CFLAGS" \
-      -DCMAKE_CXX_FLAGS="$CFLAGS" \
       -DCMAKE_INSTALL_PREFIX="%{_builddir}/local" \
       -DEXPECTED_BUILD_PACKAGE=OFF \
       -DEXPECTED_BUILD_TESTS=OFF
@@ -167,8 +164,6 @@ cd %{_builddir}/tdesktop-%{version}-full/Telegram/ThirdParty/tg_owt
 %cmake -LA \
       -DBUILD_SHARED_LIBS=OFF \
       -DCMAKE_BUILD_TYPE="Release" \
-      -DCMAKE_C_FLAGS="$CFLAGS" \
-      -DCMAKE_CXX_FLAGS="$CFLAGS" \
       -DCMAKE_INSTALL_PREFIX="%{_builddir}/local" \
       -DTG_OWT_PACKAGED_BUILD=ON
 %cmake_build
@@ -179,8 +174,6 @@ cd %{_builddir}/tdesktop-%{version}-full/Telegram/ThirdParty/td
       -DBUILD_SHARED_LIBS=OFF \
       -DBUILD_TESTING=OFF \
       -DCMAKE_BUILD_TYPE="Release" \
-      -DCMAKE_C_FLAGS="$CFLAGS" \
-      -DCMAKE_CXX_FLAGS="$CFLAGS" \
       -DCMAKE_INSTALL_PREFIX="%{_builddir}/local" \
       -DTD_E2E_ONLY=ON
 %cmake_build
@@ -188,9 +181,6 @@ ninja install
 
 cd %{_builddir}/tdesktop-%{version}-full
 %cmake -LA \
-      -DCMAKE_BUILD_TYPE="Release" \
-      -DCMAKE_C_FLAGS="$CFLAGS" \
-      -DCMAKE_CXX_FLAGS="$CFLAGS" \
       -DCMAKE_PREFIX_PATH="%{_builddir}/local/lib64/cmake;%{_builddir}/local/share/cmake" \
       -DDESKTOP_APP_DISABLE_QT_PLUGINS=ON \
       -DDESKTOP_APP_USE_PACKAGED=ON \
