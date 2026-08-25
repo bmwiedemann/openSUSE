@@ -1,0 +1,87 @@
+From 83fd70bf580a64d54185c0faf3f5df23647b1f2d Mon Sep 17 00:00:00 2001
+From: "Bernhard M. Wiedemann" <bwiedemann@suse.de>
+Date: Mon, 17 Aug 2026 15:50:00 +0200
+Subject: [PATCH] Give autosave_test and config_test their own scratch files
+
+Both tests write a file named "tmp" into the shared ctest working
+directory.  Under "ctest -j" they overlap, so config_test's write can
+land between autosave_test's AutosaveSave() and AutosaveLoad().
+AutosaveLoad() then fails to parse, leaves Campaigns empty, and the
+test segfaults on CArrayGet(&autosave2.Campaigns, 0).
+
+Name the scratch file after the test that owns it.
+---
+ src/tests/autosave_test.c |  4 ++--
+ src/tests/config_test.c   | 14 +++++++-------
+ 2 files changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/src/tests/autosave_test.c b/src/tests/autosave_test.c
+index a16a3d7..7c57dcb 100644
+--- a/src/tests/autosave_test.c
++++ b/src/tests/autosave_test.c
+@@ -32,12 +32,12 @@ FEATURE(save_and_load, "Save and load")
+ 			cs1.NextMission = 1;
+ 			AutosaveAddCampaign(&autosave1, &cs1);
+ 		AND("I save it to file")
+-			AutosaveSave(&autosave1, "tmp");
++			AutosaveSave(&autosave1, "autosave_test.tmp");
+ 
+ 		WHEN("I initialise and load a second autosave from that file")
+ 			Autosave autosave2;
+ 			AutosaveInit(&autosave2);
+-			AutosaveLoad(&autosave2, "tmp");
++			AutosaveLoad(&autosave2, "autosave_test.tmp");
+ 			CampaignSave *cs2 = CArrayGet(&autosave2.Campaigns, 0);
+ 
+ 		THEN("their mission paths should equal")
+diff --git a/src/tests/config_test.c b/src/tests/config_test.c
+index eb77045..8831746 100644
+--- a/src/tests/config_test.c
++++ b/src/tests/config_test.c
+@@ -59,10 +59,10 @@ FEATURE(save_and_load, "Save and load")
+ 			Config config1 = ConfigLoad(NULL);
+ 			ConfigGet(&config1, "Game.FriendlyFire")->u.Bool.Value = true;
+ 			ConfigGet(&config1, "Graphics.Brightness")->u.Int.Value = 5;
+-			ConfigSave(&config1, "tmp");
++			ConfigSave(&config1, "config_test.tmp");
+ 
+ 		WHEN("I load a second config from that file")
+-			Config config2 = ConfigLoad("tmp");
++			Config config2 = ConfigLoad("config_test.tmp");
+ 
+ 		THEN("the two configs should have the same values")
+ 			SHOULD_INT_EQUAL(
+@@ -81,14 +81,14 @@ FEATURE(detect_version, "Detect config version")
+ 			ConfigGet(&config1, "Game.FriendlyFire")->u.Bool.Value = true;
+ 			ConfigGet(&config1, "Graphics.Brightness")->u.Int.Value = 5;
+ 		AND("I save the config to file in the JSON format")
+-			ConfigSave(&config1, "tmp");
++			ConfigSave(&config1, "config_test.tmp");
+ 
+ 		WHEN("I detect the version")
+-			FILE *file = fopen("tmp", "r");
++			FILE *file = fopen("config_test.tmp", "r");
+ 			int version = ConfigGetVersion(file);
+ 			fclose(file);
+ 		AND("load a second config from that file")
+-			Config config2 = ConfigLoad("tmp");
++			Config config2 = ConfigLoad("config_test.tmp");
+ 
+ 		THEN("the version should be " TOSTRING(CONFIG_VERSION))
+ 			SHOULD_INT_EQUAL(version, CONFIG_VERSION);
+@@ -109,10 +109,10 @@ FEATURE(save_as_latest, "Save config as latest format by default")
+ 			ConfigGet(&config, "Game.FriendlyFire")->u.Bool.Value = true;
+ 			ConfigGet(&config, "Graphics.Brightness")->u.Int.Value = 5;
+ 		AND("I save the config to file")
+-			ConfigSave(&config, "tmp");
++			ConfigSave(&config, "config_test.tmp");
+ 
+ 		WHEN("I detect the version")
+-			FILE *file = fopen("tmp", "r");
++			FILE *file = fopen("config_test.tmp", "r");
+ 			int version = ConfigGetVersion(file);
+ 			fclose(file);
+ 
+-- 
+2.55.0
+

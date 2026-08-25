@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug 17 13:58:21 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.de>
+
+- Add cdogs-sdl-test-tmpfile-race.patch: fix autosave_test segfault under ctest -j
+
+-------------------------------------------------------------------
+Thu Aug  6 03:29:21 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.de>
+
+- Add cdogs-sdl-gcc16.patch: fix build with GCC 16
+
+-------------------------------------------------------------------
 Mon Jan 26 06:09:34 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.4.0

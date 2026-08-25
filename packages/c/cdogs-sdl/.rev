@@ -295,4 +295,12 @@
     <comment></comment>
     <requestid>1329144</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>d3ebb36c129268a981c9037343c9177b</srcmd5>
+    <version>2.4.0</version>
+    <time>1787656770</time>
+    <user>anag_factory</user>
+    <comment>Fix changelog (forwarded request 1373440 from dimstar)</comment>
+    <requestid>1373441</requestid>
+  </revision>
 </revisionlist>
