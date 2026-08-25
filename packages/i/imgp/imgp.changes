@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Aug 25 07:38:16 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 3.0
+  * Add megapixel target functionality
+  * Add an option to raise the PIL/Pillow pixel limit for trusted input files
+  * Fix incorrect gamma handling during resizing
+  * Add Python 3.12, 3.13 and 3.14 support
+  * Retire Python 3.8 and 3.9 support (EOL)
+  * Add -v and --version options
+  * Add version option completion for Bash, Fish, and Zsh
+
+-------------------------------------------------------------------
 Tue Aug  4 11:51:48 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
 
 - Fixed installation path for fish completions.

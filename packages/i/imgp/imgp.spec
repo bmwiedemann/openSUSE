@@ -22,7 +22,7 @@
 %define _fish_completions %{_datadir}/fish/vendor_completions.d
 %endif
 Name:           imgp
-Version:        2.9
+Version:        3.0
 Release:        0
 Summary:        Image resizer and rotator
 License:        GPL-3.0-or-later
