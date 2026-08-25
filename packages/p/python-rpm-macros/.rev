@@ -728,4 +728,23 @@ prerequisite for new python submission</comment>
   /usr/bin/python3.</comment>
     <requestid>1358060</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>eafadd21c456e019882569274596d732</srcmd5>
+    <version>20260821.08c5ec8</version>
+    <time>1787656656</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260821.08c5ec8:
+  * Use the primary interpreter for generic python3 macros
+  * Add python315 macros, remove python39
+
+- Update to version 20260629.bcd36db:
+  * don't use realpath to the interpreter binary
+  * doc: add a shot documentation text for %python_site{lib,arch}_module.
+  * Add initial pyproject declarative buildsystem
+  * fix: handle the situation when either `name` or `meta_name` is not found
+  * Consolidate site directory name normalization into %__python_sitedir_name
+  * Normalize the name of the directory
+  * Definitions of %python_site{lib,arch}_module macros.</comment>
+    <requestid>1372870</requestid>
+  </revision>
 </revisionlist>
