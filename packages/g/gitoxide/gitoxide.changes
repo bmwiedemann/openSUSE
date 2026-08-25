@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Aug 25 07:57:59 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.58.0:
+  * gix tix is now the full gix-tix platform embedded in the plumbing
+    command instead of a second parser and dispatcher, so standalone
+    and plumbing invocations behave alike and amend and spill are
+    reachable through gix tix
+  * tix decorates commits checked out by other main or linked
+    worktrees with light-blue name@ labels, keeps the marker for the
+    checkout it was opened from, and watches linked HEAD and worktree
+    membership so the decorations stay current
+  * tix gained -w/--worktrees to add every resolved worktree HEAD to
+    the traversal tips without weakening hidden-revision exclusions
+  * gix tix no longer accepts --screen: the interactive history always
+    owns the alternate screen, so the automatic and half-screen modes
+    were removed
+- Refresh the vendored dependencies. The linked graph gains a second
+  MPL-2.0 crate, option-ext, reached through the directories and
+  dirs-sys crates that gix-tix newly depends on; the License tag
+  already covers MPL-2.0 and is unchanged.
+
+-------------------------------------------------------------------
 Sun Aug 23 05:56:14 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.57.0:

@@ -106,4 +106,25 @@ openSUSE_Tumbleweed aarch64&quot;: green, %check ok, rpmlint 0 errors /
 0 warnings / 0 badness.</comment>
     <requestid>1373238</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>cc420e0af61941bfad1be7c4e8646136</srcmd5>
+    <version>0.58.0</version>
+    <time>1787656860</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.58.0
+
+- gix tix now embeds the full gix-tix platform in the plumbing command,
+  so standalone and plumbing invocations behave alike and amend/spill
+  are reachable through gix tix
+- tix decorates commits checked out by other main or linked worktrees,
+  and gained -w/--worktrees to add every resolved worktree HEAD to the
+  traversal tips
+- gix tix no longer accepts --screen (upstream breaking change)
+- Vendored dependencies refreshed; licences re-derived over the new
+  vendor tree. The linked graph gains a second MPL-2.0 crate,
+  option-ext, via directories/dirs-sys which gix-tix newly depends on.
+  The License tag already covers MPL-2.0 and is unchanged; the
+  Legal-Review-Notice above it was updated to record the derivation.</comment>
+    <requestid>1373556</requestid>
+  </revision>
 </revisionlist>
