@@ -222,4 +222,13 @@
     <comment>- Convert to libalternatives</comment>
     <requestid>1291695</requestid>
   </revision>
+  <revision rev="23" vrev="8">
+    <srcmd5>1b4c547437f1b8654d686c554491080a</srcmd5>
+    <version>10.0</version>
+    <time>1787656843</time>
+    <user>anag_factory</user>
+    <comment>- Use %python_fix_shebang_path instead of fiddling with sed.
+</comment>
+    <requestid>1373543</requestid>
+  </revision>
 </revisionlist>

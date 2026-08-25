@@ -1,7 +1,7 @@
 #
 # spec file for package python-humanfriendly
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -83,7 +83,7 @@ text interfaces more user friendly.
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/humanfriendly
 %{python_expand chmod a+x %{buildroot}%{$python_sitelib}/humanfriendly/tests.py
-sed -i "s|#!%{_bindir}/env python|#!%__$python|" %{buildroot}%{$python_sitelib}/humanfriendly/tests.py
+%{$python_fix_shebang_path %{buildroot}%{$python_sitelib}/humanfriendly/tests.py}
 $python -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/humanfriendly/
 $python -O -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/humanfriendly/
 %fdupes %{buildroot}%{$python_sitelib}
