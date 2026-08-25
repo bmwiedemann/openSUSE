@@ -86,4 +86,42 @@ and model-selector fixes. The vendored dependency tree shrinks from
 licence union unchanged. Local TW build green, rpmlint clean.</comment>
     <requestid>1371771</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5a9db5e11b3ec6072d9f804c734d0f06</srcmd5>
+    <version>0.84.3</version>
+    <time>1787656829</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.84.3. This replaces sr#1373482, which I revoked: that request
+carried the bump but not the packaging decision 0.84.3 forces.
+
+0.84.3 adds dist/bundle, a 7.1 MB esbuild bundle of the same application, and
+repoints package.json's &quot;bin&quot; and the &quot;./rpc-entry&quot; export at it (0.84.2's bin
+was dist/cli.js and had no bundle at all). That matters here because the
+bundle inlines its own copy of detectInstallMethod(), so
+pi-disable-self-update.patch - which edits dist/config.js and exists to stop
+`pi update` running `npm install -g` over the RPM-owned tree - does not reach
+it. Left alone, the package would either ship 7.1 MB of dead unpatched
+runtime while diverging from upstream's declared bin, or, if the symlink
+followed bin, silently lose the self-update protection.
+
+pi-use-modular-runtime.patch points both entry points back at the modular
+tree (dist/cli.js, dist/rpc-entry.js), which upstream still builds and ships
+- its own release note keeps the public library and legacy module paths on
+the modular runtime - and %prep then deletes dist/bundle, which nothing
+references any more. Patching the bundle instead was rejected deliberately:
+its chunk filenames are content-hashed and change every release, so the patch
+would need re-deriving on every bump.
+
+Verified in the built RPM: no dist/bundle path is shipped, package.json
+declares bin = dist/cli.js, /usr/bin/pi points at that same file,
+dist/rpc-entry.js is present, and dist/config.js is the only copy of
+detectInstallMethod() - patched to return &quot;unknown&quot;.
+
+The changelog no longer credits the release with the bundled runtime's
+startup improvement, which openSUSE users do not get.
+
+Built green on openSUSE_Tumbleweed/aarch64: rpmlint 0 errors, 0 warnings,
+0 badness; %check asserts the built CLI reports 0.84.3.</comment>
+    <requestid>1373506</requestid>
+  </revision>
 </revisionlist>

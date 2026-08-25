@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Mon Aug 24 20:10:14 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.84.3:
+  * New /thinking selector with searchable defaults, session-scoped
+    model and thinking selections, and Ctrl+S to persist them
+  * Managed installer updates are now staged, verified and
+    activated atomically
+  * Optional powershell tool for Windows, selectable through
+    defaultTools and the SDK
+  * Package resource globbing switched to the Node.js built-in
+    implementation, dropping the glob, minipass and path-scurry
+    dependencies
+  * Lazy jiti/Babel loading and eager highlighting limited to
+    twenty languages, both cutting startup time
+  * Anthropic, Azure OpenAI, Google, Mistral and OpenAI adapters
+    now send pi's default User-Agent unless overridden
+  * Renamed the GoogleThinkingLevel type to GoogleApiThinkingLevel
+    and added ResolvedGoogleThinkingLevel
+  * auth.json and models-store.json writes no longer override
+    administrator-managed file permissions and ACLs
+  * Assorted extension, compaction, skill discovery and provider
+    catalogue fixes
+- Refresh package-lock.json (six @earendil-works sibling integrity
+  hashes filled in) and the vendored node_modules archive to match;
+  the dependency set shrinks from 139 to 135 modules and the
+  license union is unchanged
+- Declare the second verbatim copy embedded by "pi export" as
+  Provides: bundled(marked)
+- Add pi-use-modular-runtime.patch: 0.84.3 also introduced
+  dist/bundle, a pre-bundled copy of the same application, and
+  pointed package.json's bin and the ./rpc-entry export at it. The
+  bundle inlines its own detectInstallMethod(), which
+  pi-disable-self-update.patch cannot reach, and its chunk names are
+  content-hashed and change every release. Point both entry points
+  back at the modular tree upstream still ships, so what the package
+  declares, what /usr/bin/pi runs and what the self-update patch
+  covers are the same code
+- Drop dist/bundle in %prep: nothing references it after the patch
+  above, and it is 7.1 MB of duplicate runtime
+
+-------------------------------------------------------------------
 Tue Aug 18 12:54:16 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.84.2:

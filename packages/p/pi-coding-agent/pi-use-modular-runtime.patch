@@ -1,0 +1,41 @@
+Run the modular runtime, not the pre-bundled one.
+
+0.84.3 added dist/bundle/, a 7.1 MB esbuild bundle of the same application,
+and pointed package.json's "bin" and the "./rpc-entry" export at it. Upstream
+keeps the modular tree (dist/cli.js, dist/rpc-entry.js) building and shipping
+alongside it -- its own release note says the public library and legacy module
+paths stay on the modular runtime -- and that is the tree this package
+patches and ships.
+
+Shipping both is worse than picking one. The bundle inlines its own copy of
+detectInstallMethod(), so pi-disable-self-update.patch, which edits
+dist/config.js, does not reach it: a package that ran the bundle would offer
+to `npm install -g` over the RPM-owned tree again. The bundle's chunk
+filenames are content-hashed and change every release, so patching it instead
+would mean re-deriving a filename on every bump.
+
+Point the two entry points back at the modular files so that what the RPM
+declares, what /usr/bin/pi runs, and what the self-update patch covers are all
+the same code. %prep then deletes dist/bundle, which nothing references any
+more.
+
+--- a/package.json
++++ b/package.json
+@@ -7,7 +7,7 @@
+ 		"configDir": ".pi"
+ 	},
+ 	"bin": {
+-		"pi": "dist/bundle/cli.js"
++		"pi": "dist/cli.js"
+ 	},
+ 	"main": "./dist/index.js",
+ 	"types": "./dist/index.d.ts",
+@@ -17,7 +17,7 @@
+ 			"import": "./dist/index.js"
+ 		},
+ 		"./rpc-entry": {
+-			"import": "./dist/bundle/rpc-entry.js"
++			"import": "./dist/rpc-entry.js"
+ 		},
+ 		"./client": {
+ 			"types": "./dist/client/index.d.ts",

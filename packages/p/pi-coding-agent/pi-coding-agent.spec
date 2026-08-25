@@ -23,11 +23,11 @@
 %global __nodejs_provides %{nil}
 %global __nodejs_requires %{nil}
 Name:           pi-coding-agent
-Version:        0.84.2
+Version:        0.84.3
 Release:        0
 Summary:        Minimal terminal coding agent
-# Legal-Review-Notice: pi itself is MIT. The 139 vendored dependencies are
-# MIT (68), Apache-2.0 (45), BSD-3-Clause (13), ISC (7), BlueOak-1.0.0 (5)
+# Legal-Review-Notice: pi itself is MIT. The 135 vendored dependencies are
+# MIT (68), Apache-2.0 (44), BSD-3-Clause (13), ISC (7), BlueOak-1.0.0 (2)
 # and 0BSD (1); every dependency declares a license. The tag below is the
 # union of all of them.
 License:        0BSD AND Apache-2.0 AND BSD-3-Clause AND BlueOak-1.0.0 AND ISC AND MIT
@@ -40,6 +40,8 @@ Source11:       node_modules.spec.inc
 Source12:       node_modules.sums
 Source13:       %{name}-rpmlintrc
 Patch0:         pi-disable-self-update.patch
+# PATCH-FIX-OPENSUSE pi-use-modular-runtime.patch mpluskal@suse.com -- point bin and the rpc-entry export at the modular runtime we ship and patch, not at the pre-bundled copy
+Patch1:         pi-use-modular-runtime.patch
 BuildRequires:  fdupes
 BuildRequires:  local-npm-registry
 BuildRequires:  nodejs >= 22.19.0
@@ -54,9 +56,11 @@ Recommends:     xclip
 # installs it as /usr/bin/pi next to libcln.so, so the two cannot be
 # co-installed. Upstream cln's "make install" does not ship that binary.
 Conflicts:      cln
-# dist/core/export-html/vendor/highlight.min.js is embedded verbatim into the
-# standalone HTML that "pi export" produces, so it cannot be unbundled.
+# dist/core/export-html/vendor/highlight.min.js and marked.min.js are embedded
+# verbatim into the standalone HTML that "pi export" produces, so they cannot
+# be unbundled.
 Provides:       bundled(highlight.js)
+Provides:       bundled(marked)
 BuildArch:      noarch
 %include        %{_sourcedir}/node_modules.spec.inc
 
@@ -83,6 +87,7 @@ tar -xf %{SOURCE0}
 mv package %{name}
 cd %{name}
 %patch -P 0 -p1
+%patch -P 1 -p1
 cp -p %{SOURCE1} LICENSE
 
 # Source maps (5.9 MB) and TypeScript declarations (1 MB) are of no use in a
@@ -92,6 +97,12 @@ find dist -name '*.d.ts' -delete
 
 # Documentation screenshots, useless for a terminal application.
 rm -rf docs/images
+
+# The 7.1 MB pre-bundled runtime added in 0.84.3. Patch1 points bin and the
+# rpc-entry export back at the modular tree, so nothing references this any
+# more, and it carries an unpatched second copy of detectInstallMethod() that
+# pi-disable-self-update.patch cannot reach.
+rm -rf dist/bundle
 
 # The doom-overlay example ships doom.wasm/doom.js built from doomgeneric,
 # which is derived from the GPL-2.0 id Software Doom sources -- the complete
