@@ -18,7 +18,7 @@
 
 %define octpkg  miscellaneous
 Name:           octave-forge-%{octpkg}
-Version:        1.3.2
+Version:        1.3.3
 Release:        0
 Summary:        Miscellaneous functions for Octave
 License:        GPL-3.0-or-later
@@ -29,7 +29,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  ncurses-devel
 BuildRequires:  octave-devel
 BuildRequires:  units
-Requires:       octave-cli >= 3.6.0
+Requires:       octave-cli >= 3.8.0
 Requires:       octave-forge-general >= 1.3.1
 Requires:       units
 
