@@ -1904,4 +1904,27 @@ Forwarding already-built network:utilities/publicsuffix r276 (20260814).
 </comment>
     <requestid>1372107</requestid>
   </revision>
+  <revision rev="128" vrev="1">
+    <srcmd5>ebe39dc8e44284ff54ee8cb842e13233</srcmd5>
+    <version>20260819</version>
+    <time>1787656703</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260819:
+  * Add claudeusercontent.com to PSL (Anthropic) (#3087)
+  * Add *.cursorusercontent.com (#3092)
+  * Add *.aivencloud.com subdomain and remove the non-wildcard
+    aivencloud.com (#3019, #3169)
+  * Add CodePen domains (#3143)
+  * Add online-server.cloud to PSL (#3138)
+  * Add scw.site, ams.scw.site, waw.scw.site (#3110)
+  * Add here.now (#3096)
+  * Remove adaptable entries (#3144)
+
+Weekly public_suffix_list.dat refresh; keeps cookie-scope/domain
+boundaries correct for the newly delegated suffixes. Data only, no
+spec changes beyond Version. Built locally on aarch64 against
+openSUSE_Factory_ARM (--clean): green, %check &quot;make test-syntax&quot;
+(pslint) passed, rpmlint 0 errors 0 warnings.</comment>
+    <requestid>1373164</requestid>
+  </revision>
 </revisionlist>

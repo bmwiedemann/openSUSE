@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Aug 23 05:17:36 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20260819 (public_suffix_list.dat snapshot taken
+  from upstream commit of 2026-08-19):
+  * Add claudeusercontent.com to PSL (Anthropic) (#3087)
+  * Add *.cursorusercontent.com (#3092)
+  * Add *.aivencloud.com subdomain and remove the non-wildcard
+    aivencloud.com (#3019, #3169)
+  * Add CodePen domains (#3143)
+  * Add online-server.cloud to PSL (#3138)
+  * Add scw.site, ams.scw.site, waw.scw.site (#3110)
+  * Add here.now (#3096)
+  * Remove adaptable entries (#3144)
+
+-------------------------------------------------------------------
 Sat Aug 15 19:35:23 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20260814:
