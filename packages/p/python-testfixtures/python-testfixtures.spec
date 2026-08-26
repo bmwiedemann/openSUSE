@@ -34,7 +34,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-testfixtures%{psuffix}
-Version:        12.2.0
+Version:        12.3.0
 Release:        0
 Summary:        A collection of helpers and mock objects for unit tests and doc tests
 License:        MIT
