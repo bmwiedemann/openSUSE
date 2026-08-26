@@ -1,0 +1,20 @@
+The filter designer calls cos(), sqrt(), exp(), pow(), log10() and friends, but
+the library is never linked against libm.  It only happens to build where the
+toolchain links libm implicitly; with -Wl,--no-undefined the link fails with a
+long list of undefined math symbols.  Link libm explicitly.
+
+Index: libad9361-iio-0.4.0/CMakeLists.txt
+===================================================================
+--- libad9361-iio-0.4.0.orig/CMakeLists.txt
++++ libad9361-iio-0.4.0/CMakeLists.txt
+@@ -109,6 +109,10 @@
+ )
+ target_link_libraries(ad9361 LINK_PRIVATE ${LIBIIO_LIBRARIES})
+ 
++if (NOT WIN32)
++	target_link_libraries(ad9361 LINK_PRIVATE m)
++endif()
++
+ if (MSVC)
+ 	set_target_properties(ad9361 PROPERTIES OUTPUT_NAME libad9361)
+ endif()

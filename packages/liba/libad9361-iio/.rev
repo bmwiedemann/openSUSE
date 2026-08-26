@@ -17,4 +17,48 @@ This function is required to build an new version of existing package gnuradio (
     <comment></comment>
     <requestid>1176150</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1361fa955b905caacaf268424353df20</srcmd5>
+    <version>0.4.0</version>
+    <time>1787767058</time>
+    <user>anag_factory</user>
+    <comment>Update libad9361-iio to 0.4.0 (first release since 0.3 in 2019) plus a
+full spec cleanup.
+
+Upstream now honours GNUInstallDirs, raises the CMake minimum to 3.5.0,
+adds a BUILD_TESTS option and a configurable uninstall target name, and
+bumps the internal library version from 0.2 to 0.4. The SONAME is
+unchanged at libad9361.so.0, so no rebuild of dependent packages is
+needed.
+
+Packaging changes:
+- License corrected to LGPL-2.1-or-later. LICENSE and the newly added
+  COPYING.txt both carry the LGPL-2.1 text, every source file grants
+  &quot;version 2.1 of the License, or (at your option) any later version&quot;,
+  and the Python bindings declare SPDX-License-Identifier:
+  LGPL-2.1-or-later. The previous GPL-3.0-only tag was wrong; Fedora and
+  Debian ship the package as LGPL-2.1-or-later as well.
+- URL now points at analogdevicesinc/libad9361-iio; only a GitHub rename
+  redirect kept the old analogdevicesinc/libad9361 working.
+- New libad9361-iio-link-libm.patch: the filter designer calls cos(),
+  sqrt(), exp(), pow() and log10() but the library was never linked
+  against libm. The spec hid that by emptying CMAKE_SHARED_LINKER_FLAGS,
+  which also discarded the distribution hardening link flags. Both are
+  back in place now.
+- libad9361-iio-lib-dir.patch rebased: upstream computes the library
+  directory itself now, only the generated pkg-config file still needs
+  fixing.
+- New %check section running the two tests that do not need an AD936x
+  device attached (2/2 pass).
+- texlive-dot2texi and gcc-c++ BuildRequires dropped (the Doxygen
+  configuration disables LaTeX and dot output, the project is plain C),
+  cmake &gt;= 3.5.0 floor added.
+- Group tags dropped, %cmake_build / %ldconfig_scriptlets / symlinking
+  %fdupes, explicit file lists.
+
+Built and verified natively on aarch64 against openSUSE_Tumbleweed:
+rpmlint reports 0 errors, 0 warnings, 0 badness (the previous build had
+one no-%check-section warning).</comment>
+    <requestid>1373838</requestid>
+  </revision>
 </revisionlist>

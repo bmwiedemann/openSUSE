@@ -1,7 +1,7 @@
 #
 # spec file for package libad9361-iio
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,21 +19,23 @@
 %define sover 0
 %define libname libad9361
 Name:           libad9361-iio
-Version:        0.3
+Version:        0.4.0
 Release:        0
 Summary:        Library for AD9361
-License:        GPL-3.0-only
-Group:          Productivity/Hamradio/Other
-URL:            https://github.com/analogdevicesinc/libad9361
-#Git-Clone:     https://github.com/analogdevicesinc/libad9361-iio.git
-Source:         https://github.com/analogdevicesinc/libad9361-iio/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# Legal-Review-Notice: LICENSE and COPYING.txt both carry the LGPL-2.1 text and
+# every source file grants "version 2.1 of the License, or (at your option) any
+# later version"; the bindings even declare SPDX-License-Identifier:
+# LGPL-2.1-or-later. The GPL-3.0-only tag used before 0.4.0 was incorrect.
+License:        LGPL-2.1-or-later
+URL:            https://github.com/analogdevicesinc/libad9361-iio
+Source:         %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         %{name}-lib-dir.patch
-BuildRequires:  cmake
+Patch1:         %{name}-link-libm.patch
+BuildRequires:  cmake >= 3.5.0
 BuildRequires:  doxygen
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-BuildRequires:  texlive-dot2texi
+# Upstream still targets the libiio 0.x API, libiio >= 1.0 is not supported yet
 BuildRequires:  pkgconfig(libiio)
 
 %description
@@ -42,7 +44,6 @@ platforms (FMCOMMS5) where multiple AD9361 devices are used.
 
 %package -n %{libname}-%{sover}
 Summary:        Library for AD9361
-Group:          Hardware/Other
 
 %description -n %{libname}-%{sover}
 This is a simple library used for userspace, which manages multi-chip sync, on
@@ -50,7 +51,6 @@ platforms (FMCOMMS5) where multiple AD9361 devices are used.
 
 %package devel
 Summary:        Development files for libad9361
-Group:          Development/Libraries/Other
 Requires:       %{libname}-%{sover} = %{version}
 
 %description devel
@@ -59,7 +59,6 @@ platforms (FMCOMMS5) where multiple AD9361 devices are used.
 
 %package devel-doc
 Summary:        Documentation for libad9361-iio
-Group:          Documentation/Other
 BuildArch:      noarch
 
 %description devel-doc
@@ -69,33 +68,38 @@ Documentation for libad9361-iio library.
 %autosetup -p1
 
 %build
-%cmake -DCMAKE_SHARED_LINKER_FLAGS=""
-%make_build
+%cmake
+%cmake_build
 
 %install
 %cmake_install
-%fdupes %{buildroot}
 
-#move docs
+# Upstream forces its own documentation root, move it below %%{_docdir}
 mkdir -p %{buildroot}%{_docdir}/%{name}
-mv %{buildroot}%{_datadir}/doc/ad93610-doc/html %{buildroot}%{_docdir}/%{name}
+mv %{buildroot}%{_datadir}/doc/ad93610-doc/html %{buildroot}%{_docdir}/%{name}/
+rmdir %{buildroot}%{_datadir}/doc/ad93610-doc
 
-%post -n %{libname}-%{sover} -p /sbin/ldconfig
-%postun -n %{libname}-%{sover} -p /sbin/ldconfig
+%fdupes -s %{buildroot}%{_docdir}
+
+%check
+# The remaining tests need a real AD936x device attached
+%ctest --tests-regex '^(FilterDesignerTest|GenerateRatesTest)$'
+
+%ldconfig_scriptlets -n %{libname}-%{sover}
 
 %files -n %{libname}-%{sover}
 %license LICENSE
 %doc README.md
-%{_libdir}/libad9361.so.%{sover}*
-%dir %{_docdir}/%{name}
-%exclude %{_docdir}/%{name}/html
+%{_libdir}/libad9361.so.%{sover}
+%{_libdir}/libad9361.so.%{sover}.*
 
 %files devel
-%{_includedir}/ad9361*.h
+%{_includedir}/ad9361.h
 %{_libdir}/libad9361.so
 %{_libdir}/pkgconfig/libad9361.pc
 
 %files devel-doc
+%dir %{_docdir}/%{name}
 %{_docdir}/%{name}/html
 
 %changelog

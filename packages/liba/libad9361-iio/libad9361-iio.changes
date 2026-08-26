@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Wed Aug 26 14:41:51 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to release 0.4.0:
+  * The build system now honours GNUInstallDirs, so the library,
+    the public header and the pkg-config file land in the
+    directories the distribution asks for instead of a hardcoded
+    ${prefix}/lib and ${prefix}/include.
+  * The internal library version was raised from 0.2 to 0.4, so
+    the shared object is installed as libad9361.so.0.4 now; the
+    SONAME is unchanged at libad9361.so.0 and no rebuild of
+    dependent packages is required.
+  * The minimum required CMake version was raised from 2.8.12 to
+    3.5.0.
+  * New BUILD_TESTS option (default ON) allows skipping the build
+    of the test programs.
+  * The name of the "uninstall" target can be changed through
+    LIBAD9361_TARGETNAME_UNINSTALL now, so that the library no
+    longer clashes with other projects when built as a subproject.
+  * The documentation and the README state explicitly now that the
+    library implements the libiio 0.x API and does not support
+    libiio 1.0 or newer yet.
+  * A copy of the LGPL-2.1 licence text was added as COPYING.txt
+    next to the existing LICENSE file.
+  * The remaining changes are limited to the upstream CI setup and
+    to Windows and macOS packaging.
+- Fix the License tag: the sources and both licence texts are
+  LGPL-2.1-or-later, the package claimed GPL-3.0-only.
+- Point URL at the repository under its current name, only a
+  GitHub rename redirect kept the old one working.
+- Add libad9361-iio-link-libm.patch: the filter designer calls
+  cos(), sqrt(), exp(), pow() and log10(), but the library was
+  never linked against libm. That went unnoticed because the spec
+  emptied CMAKE_SHARED_LINKER_FLAGS, which dropped
+  -Wl,--no-undefined along with the distribution hardening link
+  flags; both are back in place now.
+- Rebase libad9361-iio-lib-dir.patch: upstream computes the
+  library directory itself now, only the generated pkg-config
+  file still needs fixing.
+- Add a %check section that runs the two tests which do not need
+  an AD936x device attached.
+- Drop the texlive-dot2texi and gcc-c++ BuildRequires: the Doxygen
+  configuration disables both LaTeX and dot output, and the
+  project is plain C.
+- Require cmake >= 3.5.0, the minimum upstream tests for.
+- Modernise the spec: %cmake_build, %ldconfig_scriptlets,
+  symlinking %fdupes, no Group tags and explicit file lists.
+
+-------------------------------------------------------------------
 Wed May 22 11:57:40 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro: allows us to eliminate usage of deprecated
