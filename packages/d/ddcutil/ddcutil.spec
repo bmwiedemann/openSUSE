@@ -18,16 +18,13 @@
 
 
 Name:           ddcutil
-Version:        2.2.5
+Version:        2.2.7
 Release:        0
 Summary:        Utility to query and update monitor settings
 License:        GPL-2.0-or-later
 Group:          System/GUI/Other
 URL:            https://github.com/rockowitz/ddcutil
 Source:         https://github.com/rockowitz/ddcutil/archive/refs/tags/v%{version}.tar.gz
-
-# PATCH-FIX-UPSTREAM 0001-fix-freezes-on-laptops.patch <sfalken@opensuse.org>
-Patch0:         0001-fix-freezes-on-laptops.patch
 
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -37,8 +34,10 @@ BuildRequires:  gcc
 BuildRequires:  libi2c0-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(jansson)
+BuildRequires:  pkgconfig(libacl)
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libkmod)
 BuildRequires:  pkgconfig(libudev)

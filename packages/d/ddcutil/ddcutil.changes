@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Mon May 11 14:53:54 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
+
+- Update to 2.2.7:
+  * New:
+    - Extensive diagnostics are written to the system log if opening
+      a /dev/i2c device fails with errno EACCES.
+    - Implemented a basic segfault handler.
+    - Option max-eacces-retry-ms. (See above.)
+  * Changes:
+    - Re-enable reporting of laptop display connection/disconnection.
+      Do not check DDC operation for the laptop /dev/i2c bus or for
+      any bus unresponsive on slave address x37.
+    - When watching for display connection/disconnection using watch-mode
+      UDEV:
+      * watch for UDEV notifications for subsystem i2c-dev as well as drm.
+      * write udev event detail to the system log
+    - dw_hotplug_change_handler(): write additonal messages to the system
+      log when a /dev/i2c device unexpectedly no longer exists
+    - Option --skip-ddc-checks: valid only for command line ddcutil,
+      not shared library libddcutil. If specified in config file
+      ddcutilrc, it must now be in the [ddcutil] section, not the
+      [global] section.
+    - The installed udev rules file, 60-ddcutil-i2c.rules now sets
+      group i2c and mode 0660 as well as using token uaccess to
+      assign /dev/i2c permissions. Users encountering the transient
+      EACCES errors may need to use the old group permissions method.
+  * Fixes:
+    - ddca_redetect_displays(): Recover from an unexpected system
+      state that previously triggered assert() failures.
+      (gh#rockowitz/ddcutil#595), (kde#517571)
+    - dw_create_display_status_event(), test for event type
+      DDCA_EVENT_DDC_DISABLED incorrectly used flag
+      DDCA_DISPLAY_EVENT_DDC_WORKING.
+    - man page ddcutil: Replace "getvcp supported" by "getvcp all".
+      Group "supported" was replaced long ago by "all".
+      (gh#rockowitz/ddcutil#579).
+    - segfault in diagnose_open_failure_to_syslog().
+      (gh#rockowitz/ddcutil#596)
+    - Error parsing option --maxtries.
+    - run command line programs lsof, getfacl caused a segfault when
+      those programs are not found on the user's system.
+      (gh#rockowitz/ddcutil#590)
+    - In syslog, reported thread id might be the process id.
+    - Change the sample rules file 60-ddcutil-i2c.rules, to conform
+      to /usr/lib/udev/rules.d/60-ddcutil-i2c.rules. Loosens the
+      display adapter test (gh#rockowitz/ddcutil#597)
+    - Fix ioctl call in hiddev_get_report(), for monitors using
+      USB rather that I2C
+    - reading the EDID bytewise use get_edid_bytes_directly_using_fileio(),
+      only every other byte was saved.
+    - Incorrect call to i2c-dev set address ioctl.
+    - General source cleanup using Claude Code
+    - Update Doxygen documentaion.
+    - Consistenly make #include "config.h" the first include.
+    - Consistenly set AM_CFLAGS = $(AM_CLAGS_STD) in the Makefile.am
+    - Avoid a possible buffer overflow when printing an EDID field
+      such as serial number that contains invalid ASCII characters
+    - Write error message during getvcp --brief* to stderr, not
+      stdout. (gh#rockowitz/ddcutil#598)
+    - More consistent formatting of syslog output.
+    - Use atomic variables to fix time of use to time of check
+      (TOCTOU) race conditions identified by Claude Code.
+  * Drop 0001-fix-freezes-on-laptops.patch
+
+-------------------------------------------------------------------
 Sun Feb 15 16:42:37 UTC 2026 - Shawn Dunn <sfalken@opensuse.org>
 
 - Add 0001-fix-freezes-on-laptops.patch (boo#1257873)
