@@ -1,0 +1,41 @@
+-------------------------------------------------------------------
+Sat Aug  1 09:09:01 UTC 2026 - Jakob Lorenz <onlyjak0b@mailbox.org>
+
+- update to v0.12.0
+  * Update various dependencies, including Arti 2.5.0 and onionmasq.
+    * These include bug fixes and security fixes.
+
+-------------------------------------------------------------------
+Sat May 23 19:55:03 UTC 2026 - Jakob Lorenz <onlyjak0b@mailbox.org>
+
+- update to v0.11.0
+  * Update various dependencies, including Arti 2.3.0
+  * Switches to a canonical smoltcp version, 0.13.1 in this case
+  * Set MSRV to 1.91
+  * oniux now mounts a private `/tmp` by default
+    * This might prevent accidential leaks better, as certain processes
+      do IPC through files inside `/tmp`
+    * Can be disabled using `--no-private-tmp`
+
+-------------------------------------------------------------------
+Tue May 19 09:56:40 UTC 2026 - Jakob Lorenz <onlyjak0b@mailbox.org>
+
+- update to 0.10.0
+  * Update various dependencies, including Arti 2.2.0
+  * Small CI fixes
+  * Small grammar improvements
+
+-------------------------------------------------------------------
+Mon Mar 16 20:19:53 UTC 2026 - Jakob Lorenz <onlyjak0b@mailbox.org>
+
+- update to v0.9.0
+  * Update various dependencies, including Arti 2.1.0.
+  * Share smoltcp version with onionmasq.
+  * Use 1.89 as the MSRV and decide upon an MSRV policy.
+  * Document the release process.
+- fix wrong License in specfile
+
+-------------------------------------------------------------------
+Tue Jun 17 15:26:16 UTC 2025 - Jakob Lorenz <onlyjak0b@mailbox.org>
+
+- add package

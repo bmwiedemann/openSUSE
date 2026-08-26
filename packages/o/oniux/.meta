@@ -1,0 +1,7 @@
+<package name="oniux" project="openSUSE:Factory">
+  <title>oniux</title>
+  <description>**This is still considered experimental software!**
+
+*oniux* is a tool that utilizes various Linux `namespaces(7)` in order to isolate an arbitrary application over the Tor network. To achieve this, it makes heavy use of the onionmasq, which offers a TUN device to send Tor traffic through.</description>
+  <url>https://gitlab.torproject.org/tpo/core/oniux</url>
+</package>
