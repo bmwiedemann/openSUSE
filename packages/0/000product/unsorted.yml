@@ -15454,7 +15454,7 @@ unsorted:
   - libosmo-simtrace2-1 
   - libosmo-simtrace2-devel 
   - libosmoabis-devel 
-  - libosmoabis15 
+  - libosmoabis17 
   - libosmocodec-devel 
   - libosmocodec4 
   - libosmocoding-devel 
@@ -20761,6 +20761,7 @@ unsorted:
   - ongres-stringprep-javadoc 
   - oniguruma-devel 
   - onioncat 
+  - oniux 
   - onnxruntime-devel 
   - oo7 
   - oo7-cli 
@@ -27130,7 +27131,6 @@ unsorted:
   - python313-pixelmatch 
   - python313-pkgconfig 
   - python313-pkginfo 
-  - python313-pkgutil-resolve-name 
   - python313-plaster 
   - python313-plaster-pastedeploy 
   - python313-platformdirs 
@@ -28151,7 +28151,6 @@ unsorted:
   - python313-tabulate 
   - python313-tap.py 
   - python313-targetcli-fb 
-  - python313-taskgroup 
   - python313-tasklib 
   - python313-taskw 
   - python313-tbb 
@@ -31230,7 +31229,6 @@ unsorted:
   - python314-pixelmatch 
   - python314-pkgconfig 
   - python314-pkginfo 
-  - python314-pkgutil-resolve-name 
   - python314-plaster 
   - python314-plaster-pastedeploy 
   - python314-platformdirs 
@@ -32282,7 +32280,6 @@ unsorted:
   - python314-tabulate 
   - python314-tap.py 
   - python314-targetcli-fb 
-  - python314-taskgroup 
   - python314-tasklib 
   - python314-taskw 
   - python314-tbb 
@@ -47979,6 +47976,12 @@ unsorted:
   - znc-perl 
   - znc-python3 
   - znc-tcl 
+  - zoitechat 
+  - zoitechat-devel 
+  - zoitechat-lang 
+  - zoitechat-plugins-lua 
+  - zoitechat-plugins-perl 
+  - zoitechat-plugins-python3 
   - zola 
   - zola-bash-completion 
   - zola-fish-completion 
