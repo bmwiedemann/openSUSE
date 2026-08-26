@@ -63,4 +63,24 @@
     <comment></comment>
     <requestid>1321463</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>2169f5e51f920c5937568174897e62c0</srcmd5>
+    <version>0.4.0</version>
+    <time>1787767058</time>
+    <user>anag_factory</user>
+    <comment>Spec cleanup for inspectrum (no version change, still 0.4.0):
+
+- Convert %setup to %autosetup.
+- Replace the deprecated %suse_update_desktop_file macro with a shipped
+  inspectrum.desktop source installed directly in %install.
+- Drop Requires(post)/Requires(postun) on update-desktop-files (it only
+  provides the build-time macro) and on hicolor-icon-theme (the icon is
+  installed into /usr/share/pixmaps, not into an icon theme directory).
+- Drop unused BuildRequires: boost-devel (nothing in the tree uses boost).
+- Drop the Group tag.
+
+Built locally for openSUSE_Tumbleweed/aarch64: green, rpmlint 0 errors,
+0 badness, packaged file list unchanged.</comment>
+    <requestid>1373837</requestid>
+  </revision>
 </revisionlist>

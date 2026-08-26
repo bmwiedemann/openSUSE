@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Aug 26 14:36:27 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Convert %setup to %autosetup.
+- Replace the deprecated %suse_update_desktop_file macro with a
+  shipped desktop file:
+  * Add inspectrum.desktop and install it directly.
+  * Drop Requires(post)/Requires(postun) on update-desktop-files,
+    which only provides the build-time macro and is not a runtime
+    dependency.
+  * Drop Requires(post)/Requires(postun) on hicolor-icon-theme, the
+    icon is installed into /usr/share/pixmaps and not into an icon
+    theme directory.
+- Drop unused BuildRequires: boost-devel.
+- Drop the Group tag.
+
+-------------------------------------------------------------------
 Sat Dec  6 15:55:46 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.4.0

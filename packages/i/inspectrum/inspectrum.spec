@@ -1,8 +1,8 @@
 #
 # spec file for package inspectrum
 #
-# Copyright (c) 2025 SUSE LLC and contributors
-# Copyright (c) 2015-2025, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2015-2026, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,10 +22,9 @@ Version:        0.4.0
 Release:        0
 Summary:        A tool for analysing captured signals from SDRs
 License:        GPL-3.0-or-later
-Group:          Productivity/Hamradio/Other
 URL:            https://github.com/miek/inspectrum
-Source:         %{url}/archive/refs/tags/v%{version}.tar.gz/#/%{name}-%{version}.tar.gz
-BuildRequires:  boost-devel
+Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz/#/%{name}-%{version}.tar.gz
+Source1:        %{name}.desktop
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libliquid-devel
@@ -33,16 +32,12 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(Qt6Concurrent)
 BuildRequires:  pkgconfig(Qt6Widgets)
 BuildRequires:  pkgconfig(fftw3f)
-Requires(post): hicolor-icon-theme
-Requires(post): update-desktop-files
-Requires(postun): hicolor-icon-theme
-Requires(postun): update-desktop-files
 
 %description
 A tool for analysing captured signals, primarily from software-defined radio receivers
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %cmake
@@ -50,14 +45,14 @@ A tool for analysing captured signals, primarily from software-defined radio rec
 
 %install
 %cmake_install
-install -Dm 0644 screenshot.jpg %{buildroot}/%{_datadir}/pixmaps/inspectrum.jpg
-%suse_update_desktop_file -c inspectrum inspectrum "Offline Radio Signal Analyser" inspectrum inspectrum "Network;HamRadio"
+install -D -m 0644 screenshot.jpg %{buildroot}%{_datadir}/pixmaps/%{name}.jpg
+install -D -m 0644 %{SOURCE1} %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 %files
 %license LICENSE
 %doc README.md
 %{_bindir}/%{name}
-%{_datadir}/applications/inspectrum.desktop
-%{_datadir}/pixmaps/inspectrum.jpg
+%{_datadir}/applications/%{name}.desktop
+%{_datadir}/pixmaps/%{name}.jpg
 
 %changelog
