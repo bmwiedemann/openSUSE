@@ -332,4 +332,12 @@
     <comment></comment>
     <requestid>1365815</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>8334ff222b8a8b3b34853c60800d9a9e</srcmd5>
+    <version>1.14.7</version>
+    <time>1787766966</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.14.7 (boo#1276712, CVE-2026-41178)</comment>
+    <requestid>1373808</requestid>
+  </revision>
 </revisionlist>

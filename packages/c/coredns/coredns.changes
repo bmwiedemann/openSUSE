@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Aug 26 10:09:43 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 1.14.7:
+  * plugin/acl, plugin/cache, plugin/file, plugin/forward, plugin/kubernetes:
+    assorted correctness fixes (stale-cache races, AXFR zone contamination,
+    DoH health-check TLS config, failover counter reset, ACL bypass via
+    autopath).
+  * New: plugin/shed (UDP overload protection), plugin/tls (ACME DNS-01),
+    plugin/timeouts maxtcpqueries, DoQ connection-level concurrency limits.
+- CVE-2026-41178: go.opentelemetry.io/otel/baggage header parsing did not
+  reject excessively large raw values, allowing a denial of service via
+  oversized input; fixed by the otel v1.43.0 -> v1.44.0 bump pulled in with
+  this update (boo#1276712)
+- _service: tar_scm was mode="disabled" but run by hand on every bump;
+  converted to mode="manual" (osc service mr) to match actual practice.
+
+-------------------------------------------------------------------
 Sun Jul 12 17:16:41 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 1.14.6:

@@ -18,19 +18,18 @@
 
 %define project github.com/coredns/coredns
 Name:           coredns
-Version:        1.14.6
+Version:        1.14.7
 Release:        0
 Summary:        DNS server written in Go
 License:        Apache-2.0
-Group:          Productivity/Networking/DNS/Servers
 URL:            https://coredns.io
-Provides:       dns_daemon
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source10:       Corefile
 Source11:       coredns.service
 BuildRequires:  fdupes
 BuildRequires:  golang(API) >= 1.25.0
+Provides:       dns_daemon
 
 %description
 CoreDNS is a DNS server in Go. It has a plugin architecture for
@@ -41,11 +40,11 @@ TLS (RFC 7858) and gRPC (not a standard).
 
 %package extras
 Summary:        Extra components for the %{name} package
-Group:          Productivity/Networking/DNS/Servers
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(systemd)
 Requires:       %{name} = %{version}
 Supplements:    %{name}
 BuildArch:      noarch
-BuildRequires:  pkgconfig(systemd)
 
 %description extras
 Extra components for the %{name} package, to make %{name} usable in a
