@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug 25 13:35:53 UTC 2026 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 2026.8.2
+  * Update vendor (boo#1276196, CVE-2026-72815, CVE-2026-72816, CVE-2026-72817)
+  * Add OpenRC support
+  * Migrate config renovate.json
+  * Fix bugs
+
+-------------------------------------------------------------------
 Fri May 29 14:11:34 UTC 2026 - Hillwood Yang <hillwoodroc@gmail.com>
 
 - Update version to 2026.5.2

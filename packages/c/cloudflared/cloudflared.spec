@@ -17,14 +17,14 @@
 
 
 Name:           cloudflared
-Version:        2026.5.2
+Version:        2026.8.2
 Release:        0
 Summary:        Cloudflare Tunnel client
 License:        Apache-2.0
 Group:          Productivity/Networking/System
 URL:            https://github.com/cloudflare/cloudflared
 Source0:        https://github.com/cloudflare/cloudflared/archive/%{version}/%{name}-%{version}.tar.gz
-Source1:        vendor.tar.gz
+# Source1:        vendor.tar.gz
 # PATCH-FIX-OPENSUSE 001-skip-test.patch hillwood@opensuse.org
 Patch0:         001-skip-test.patch
 # PATCH-FIX-OPENSUSE 002-use-pie.patch hillwood@opensuse.org
@@ -50,8 +50,6 @@ origins are available under cloudflared tunnel help.
 %autosetup -p1 -n %{name}-%{version}
 
 %build
-rm -rf vendor
-tar -zxf %{SOURCE1}
 %make_build GOARCH=$(go env GOARCH)
 
 %install

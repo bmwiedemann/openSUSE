@@ -179,4 +179,12 @@
 - Drop update-crypto.patch, fixed by upstream (forwarded request 1355911 from hillwood)</comment>
     <requestid>1355912</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>09f72ff2c10b708bd9e9082031f816d4</srcmd5>
+    <version>2026.8.2</version>
+    <time>1787767051</time>
+    <user>anag_factory</user>
+    <comment> (forwarded request 1373832 from hillwood)</comment>
+    <requestid>1373833</requestid>
+  </revision>
 </revisionlist>
