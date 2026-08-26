@@ -240,4 +240,13 @@
 - update x/crypto to 0.54</comment>
     <requestid>1367009</requestid>
   </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>bdad772e5fd425c0e3958e2bf68e3afb</srcmd5>
+    <version>3.1.1</version>
+    <time>1787766831</time>
+    <user>anag_factory</user>
+    <comment>- update vendor:
+  * go.opentelemetry.io/otel@v1.44.0 (bsc#1276677, CVE-2026-41178)</comment>
+    <requestid>1373697</requestid>
+  </revision>
 </revisionlist>

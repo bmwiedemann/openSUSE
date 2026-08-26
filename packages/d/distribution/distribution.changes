@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 25 19:05:02 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update vendor:
+  * go.opentelemetry.io/otel@v1.44.0 (bsc#1276677, CVE-2026-41178)
+
+-------------------------------------------------------------------
 Mon Jul 20 07:48:02 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update x/net to 0.57.0 (bsc#1266629, CVE-2026-39821)
