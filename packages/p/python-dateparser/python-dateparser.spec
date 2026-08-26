@@ -23,7 +23,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-dateparser
-Version:        1.4.1
+Version:        1.4.2
 Release:        0
 Summary:        Date parsing library designed to parse dates from HTML pages
 License:        BSD-3-Clause

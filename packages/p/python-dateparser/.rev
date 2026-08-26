@@ -369,4 +369,41 @@
     tomorrow, and &quot;N months ago/later&quot;</comment>
     <requestid>1363817</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>81ac51c5f7d23bc18424395cece1d5e6</srcmd5>
+    <version>1.4.2</version>
+    <time>1787766684</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.4.2:
+  * Add an IGNORE_SURROUNDING_TEXT setting that, when enabled,
+    retries parsing after ignoring the leading and trailing words
+    the language does not recognize, so a date wrapped in extra
+    text such as &quot;Published on 16/04/2019&quot; is parsed
+  * Add a strategy argument to search_dates() to choose the
+    search strategy: the default &quot;split&quot; keeps the current
+    behavior, while the new &quot;ngram&quot; strategy parses the longest
+    sequences of tokens as dates for more predictable results on
+    noisy text
+  * Do not read a two-digit number as a year once a later
+    component has been found in year-first date orders, so the
+    day in Japanese dates such as &quot;4月20日&quot; is no longer consumed
+    as the year
+  * Parse ISO 8601 dates (those starting with a four-digit year)
+    in month-day order even when an explicit day-first language
+    such as it or fr is given, without needing to set
+    PREFER_LOCALE_DATE_ORDER to False
+  * Honor PREFER_DATES_FROM and RELATIVE_BASE when parsing with
+    custom date_formats that use a two-digit year (%y)
+  * Honor the %j (day of year) directive in date_formats instead
+    of overwriting the parsed month and day with the current date
+  * Update the bundled CLDR locale data to 44.1.0, adding many
+    newly recognized date forms across locales and a standalone
+    hour/duration unit (e.g. Catalan &quot;2 hores&quot;), while keeping
+    previously supported forms parseable
+  * Add the Italian expressions &quot;un ora fa&quot; and &quot;un'ora fa&quot;, and
+    skip &quot;alle&quot; so phrases like &quot;oggi alle 11:00&quot; parse
+  * Expand Czech date translations with month locative/dative
+    forms (e.g. &quot;v lednu 2023&quot;), the July abbreviation &quot;črv&quot;, and</comment>
+    <requestid>1373641</requestid>
+  </revision>
 </revisionlist>
