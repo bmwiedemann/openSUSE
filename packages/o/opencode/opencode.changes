@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Aug 25 17:04:17 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.18.23:
+  * Route non-native Cloudflare AI Gateway providers through the
+    gateway's REST API, so third-party models reached through the
+    gateway work again.
+  * Convert dotted Anthropic model ids such as claude-haiku-4.5 to
+    the dashed slug Anthropic expects when going through the AI
+    Gateway.
+  * Send the parent session id in the request headers for
+    session-aware providers.
+  * Fix GitHub authentication for immutable OIDC subject tokens.
+- Retrace the vendor keep list, which comes back unchanged at 512
+  store entries. The SPDX license set is unchanged and still
+  contains no copyleft; README.SUSE-maint records the audit as
+  redone for 1.18.23.
+
+-------------------------------------------------------------------
 Mon Aug 24 20:21:46 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.18.22:
