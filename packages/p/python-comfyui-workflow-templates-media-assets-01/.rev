@@ -29,4 +29,36 @@ Fri Aug 21 08:51:33 UTC 2026 - Martin Pluskal &lt;mpluskal@suse.com&gt;
   workflow templates</comment>
     <requestid>1373547</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>de083eadbaa95199130c08dbf52f83b3</srcmd5>
+    <version>0.1.35</version>
+    <time>1787766811</time>
+    <user>anag_factory</user>
+    <comment>Update python-comfyui-workflow-templates-media-assets-01 to 0.1.35.
+
+This package tracks its own PyPI distribution
+(comfyui_workflow_templates_media_assets_01), not the parent repository's
+0.11.x version line. 0.1.35 is the current release of that distribution.
+
+Purely additive: five new preview images, one for each of the five workflow
+templates added in this release cycle. No existing asset changes.
+
+Staging: these four requests must land in the SAME staging project -- the
+meta package python-comfyui-workflow-templates 0.11.48 raises its
+BuildRequires and Requires floors onto the three new bundle versions, so
+splitting the batch across stagings leaves it unresolvable.
+
+Sequencing: please stage this together with, or after, SR 1373695, which
+converts comfyui's exact &quot;=&quot; pins on this package family to floors. Until
+1373695 is accepted, Factory's comfyui still requires
+python3XX-comfyui-workflow-templates = 0.11.44, so a staging that takes this
+batch without 1373695 will show comfyui broken in installcheck. All four new
+versions in this batch (0.11.48, 0.3.322, 0.1.57, 0.1.35) satisfy the floors
+1373695 introduces, so no comfyui spec change is needed.
+
+Submitted together with python-comfyui-workflow-templates 0.11.48,
+python-comfyui-workflow-templates-core 0.3.322 and
+python-comfyui-workflow-templates-json 0.1.57.</comment>
+    <requestid>1373739</requestid>
+  </revision>
 </revisionlist>
