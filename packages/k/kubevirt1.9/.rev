@@ -20,4 +20,16 @@ Supersedes declined request 1369606; disks-images-provider.yaml now matches the 
 </comment>
     <requestid>1371084</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>76ebb5b3ee0bd3d6bb2ce318621e77af</srcmd5>
+    <version>1.9.0</version>
+    <time>1787766715</time>
+    <user>anag_factory</user>
+    <comment>Package the pr-helper entrypoint script: virt-operator runs the
+pr-helper container with /entrypoint.sh, which symlinks the
+multipath socket and execs qemu-pr-helper. Only multipath.conf was
+installed, so enabling the PersistentReservation feature gate
+crashlooped every virt-handler pod.</comment>
+    <requestid>1373648</requestid>
+  </revision>
 </revisionlist>
