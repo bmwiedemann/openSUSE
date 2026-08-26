@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-hishel
-Version:        1.3.0
+Version:        1.3.1
 Release:        0
 Summary:        Persistent cache implementation for popular HTTP clients
 License:        BSD-3-Clause

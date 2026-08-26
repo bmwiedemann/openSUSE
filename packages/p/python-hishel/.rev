@@ -162,4 +162,25 @@
   * use weak ETag comparison when freshening stored responses</comment>
     <requestid>1362047</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>35cd5249c947ff99f4a5a5b02ced8e4f</srcmd5>
+    <version>1.3.1</version>
+    <time>1787766761</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.3.1:
+  * Gate optional sqlite imports behind TYPE_CHECKING instead of
+    wrapping classes in try/except. by @karpetrosyan
+  * Migrate RFC 9111 spec tests to a hybrid BDD style. by
+    @karpetrosyan
+  * chore(test): Fix incorrect coverage suppression in spec. by
+    @aebrahim in #470
+  * chore(vscode): Exclude files. by @aebrahim in #471
+  * remove egg folder from source by @karpetrosyan
+  * add readme in pyproject.toml by @karpetrosyan
+  * fix(spec): handle invalid expires date as expired by
+    @aebrahim in #468
+  * use weak ETag comparison when freshening stored responses by
+    @karpetrosyan</comment>
+    <requestid>1373645</requestid>
+  </revision>
 </revisionlist>
