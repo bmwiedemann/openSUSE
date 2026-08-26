@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Wed Aug 26 14:34:58 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.6:
+  * Add a satellite filter to the radio and rotator controllers
+    (gh#csete/gpredict#339)
+  * Remove the NOAA and Molniya satellite groups, which are no
+    longer available upstream
+  * Remove invalid data from satellites.dat (gh#csete/gpredict#413)
+  * Fix the positioning of the North and South labels in the polar
+    views (gh#csete/gpredict#415)
+  * Fix the wrong display of the polar plot orientation setting in
+    the configuration dialog
+  * Fix the missing cursor elevation in the polar views
+    (gh#csete/gpredict#416)
+  * Fix the missing Next Event entry in the polar view
+    (gh#csete/gpredict#417)
+  * Limit the width of the transponder selector in the radio
+    controller window
+  * Update the list of contributors (gh#csete/gpredict#414)
+- Drop no longer needed build dependency on goocanvas-3.0, which
+  upstream replaced with native GTK3/Cairo drawing in 2.5
+- Drop no longer needed build dependency on libtool - the release
+  tarball ships a pregenerated configure script
+- Drop the -fcommon compiler flag, no longer required to build
+- Add the minimal versions configure actually checks for to the
+  build dependencies: intltool >= 0.21, gtk+-3.0 >= 3.0 and
+  libgps >= 2.90
+- Stop shipping the upstream ChangeLog, which is now only a stub
+  pointing at NEWS
+- Correct the License tag to GPL-2.0-or-later AND LGPL-3.0-or-later:
+  every upstream source header grants GPL version 2 or any later
+  version, as does upstream's own AppStream metainfo, and the
+  bundled src/nxjson is compiled into the gpredict binary under
+  LGPL-3.0-or-later
+
+-------------------------------------------------------------------
 Tue Aug  4 13:54:04 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.5.2:

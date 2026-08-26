@@ -17,23 +17,26 @@
 
 
 Name:           gpredict
-Version:        2.5.2
+Version:        2.6
 Release:        0
 Summary:        Realtime satellite tracking and orbit prediction application
-License:        GPL-2.0-only
+# Legal-Review-Notice: every upstream source header grants GPL "version 2 ...
+# or (at your option) any later version", and upstream's own AppStream
+# metainfo declares GPL-2.0+. src/nxjson/ is bundled, listed in
+# gpredict_SOURCES and thus compiled into the gpredict binary, under
+# LGPL-3.0-or-later.
+License:        GPL-2.0-or-later AND LGPL-3.0-or-later
 URL:            https://gpredict.oz9aec.net/
 Source:         https://github.com/csete/gpredict/releases/download/v%{version}/gpredict-%{version}.tar.bz2
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  intltool
-BuildRequires:  libtool
+BuildRequires:  intltool >= 0.21
 BuildRequires:  perl-XML-Parser
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0) >= 2.40
-BuildRequires:  pkgconfig(goocanvas-3.0)
-BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.0
 BuildRequires:  pkgconfig(libcurl) >= 7.19
-BuildRequires:  pkgconfig(libgps)
+BuildRequires:  pkgconfig(libgps) >= 2.90
 Recommends:     %{name}-lang
 Recommends:     hamlib
 
@@ -50,7 +53,6 @@ satellite, and provide you with detailed information about each pass.
 %autosetup -p1
 
 %build
-export CFLAGS="%{optflags} -fcommon"
 %configure
 %make_build
 
@@ -61,7 +63,7 @@ export CFLAGS="%{optflags} -fcommon"
 
 %files
 %license COPYING
-%doc AUTHORS ChangeLog NEWS README
+%doc AUTHORS NEWS README
 %{_bindir}/gpredict
 %{_datadir}/applications/gpredict.desktop
 %{_datadir}/gpredict/

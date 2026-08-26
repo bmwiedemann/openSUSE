@@ -87,4 +87,43 @@ Packaging: drops the obsolete Group tag. spec-cleaner clean, builds green on
 Tumbleweed aarch64 with rpmlint 0 errors 0 badness.</comment>
     <requestid>1369550</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>259eb2f9c4730e97055eb83f91757f30</srcmd5>
+    <version>2.6</version>
+    <time>1787767059</time>
+    <user>anag_factory</user>
+    <comment>Update to gpredict 2.6 plus a spec cleanup.
+
+Upstream 2.6 adds a satellite filter to the radio and rotator controllers,
+removes the NOAA and Molniya satellite groups (no longer available) and
+invalid data from satellites.dat, and fixes several polar-view defects
+(North/South label positioning, cursor elevation, the missing Next Event
+entry, and the orientation setting shown in the config dialog).
+
+Packaging changes:
+- Dropped the build dependency on goocanvas-3.0. It is unused since 2.5
+  replaced goocanvas with native GTK3/Cairo drawing; the string does not
+  occur anywhere in the source tree any more.
+- Dropped the build dependency on libtool. The release tarball is a real
+  &quot;make dist&quot; artifact that ships configure, Makefile.in and ltmain.sh,
+  and nothing regenerates them during the build.
+- Dropped the -fcommon workaround; the package builds without it and the
+  full optflags set still reaches every compile line.
+- Declared the minimal versions configure actually tests for, so OBS holds
+  the package unresolvable rather than starting a build that can only die
+  in configure: intltool &gt;= 0.21, gtk+-3.0 &gt;= 3.0 and libgps &gt;= 2.90.
+- Stopped shipping the upstream ChangeLog, which is now a one-line stub
+  pointing at NEWS.
+- Corrected the License tag from GPL-2.0-only to
+  GPL-2.0-or-later AND LGPL-3.0-or-later. All 123 licence-bearing upstream
+  sources grant &quot;version 2 of the License, or (at your option) any later
+  version&quot; and upstream's own AppStream metainfo declares GPL-2.0+; the
+  bundled src/nxjson is listed in gpredict_SOURCES and therefore compiled
+  into the gpredict binary under LGPL-3.0-or-later. The derivation is
+  recorded as a Legal-Review-Notice comment above the tag.
+
+Built locally on aarch64 and on OBS for Tumbleweed x86_64/aarch64; rpmlint
+is unchanged from 2.5.2 (0 errors, 0 badness).</comment>
+    <requestid>1373839</requestid>
+  </revision>
 </revisionlist>
