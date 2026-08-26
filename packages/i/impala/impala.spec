@@ -16,7 +16,7 @@
 #
 
 Name:           impala
-Version:        0.7.4
+Version:        0.8.0
 Release:        0
 Summary:        TUI for managing wifi on Linux
 License:        GPL-3.0-or-later

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Aug 26 05:49:11 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.8.0:
+  * Add ascii display
+  * Fix AP input popup flow
+  * Make j/k wrap in known and new networks
+  * Escape special characters when sharing qr code
+
+-------------------------------------------------------------------
 Wed Mar 25 17:05:39 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - fix up spec file license
