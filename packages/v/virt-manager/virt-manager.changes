@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Aug 22 07:40:58 UTC 2026 - JS <obs.coke518@passinbox.com>
+
+- Build with SPICE on openSUSE. Remain disabled on SLES 16+. Users
+  can use packages built in Virtualization:SPICE:openSUSE-Leap-16.x
+  to restore SPICE support after this change is picked up by the
+  SLFO branches (https://en.opensuse.org/SDB:SPICE)
+
+-------------------------------------------------------------------
+Thu Jul  2 10:26:17 MDT 2026 - carnold@suse.com
+
+- Add BuildRequires for python3-base
+
+-------------------------------------------------------------------
 Fri Apr 17 09:37:39 MDT 2026 - carnold@suse.com
 
 - Add check for product name length to prevent exception

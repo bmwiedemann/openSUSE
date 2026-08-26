@@ -21,9 +21,13 @@
 %global default_hvs                "qemu,xen,lxc"
 %if 0%{?suse_version} < 1600 || 0%{?suse_version} >= 1699
     %define is_sles16 0
-    %define have_spice 1
 %else
     %define is_sles16 1
+%endif
+
+%if 0%{?suse_version} < 1600 || 0%{?is_opensuse}
+    %define have_spice 1
+%else
     %define have_spice 0
 %endif
 
@@ -148,14 +152,17 @@ Suggests:       python3-libguestfs
 
 BuildRequires:  gettext
 BuildRequires:  meson
+BuildRequires:  python3-base
 BuildRequires:  python3-devel
 BuildRequires:  python3-docutils
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-%if %{is_sles16}
-%define __requires_exclude typelib\\(AppIndicator3|SpiceClientGtk|SpiceClientGLib|GtkSource\\) = 3.0
-%else
 # GtkSource = 4 is available everywhere we run this version of virt-manager
-%define __requires_exclude typelib\\(GtkSource\\) = 3.0
+%global __requires_exclude typelib\\(GtkSource\\) = 3.0
+%if %{is_sles16}
+%global __requires_exclude %{?__requires_exclude:%{__requires_exclude}|}typelib\\(AppIndicator3\\)
+%endif
+%if ! %{have_spice}
+%global __requires_exclude %{?__requires_exclude:%{__requires_exclude}|}typelib\\((SpiceClientGtk|SpiceClientGLib)\\)
 %endif
 %if %{with test}
 BuildRequires:  python3-argcomplete
