@@ -71,4 +71,36 @@ Built green on aarch64: 3908 tests passed per flavour, rpmlint 0 errors and
 0 badness.</comment>
     <requestid>1373480</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0fda598d7b20de672f0b068dd6f25fc5</srcmd5>
+    <version>0.9.50</version>
+    <time>1787766943</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.9.50. Refiled through the devel project after sr#1373736 was
+declined for originating from a branch rather than a devel project; the
+devel link is now registered as well (sr#1373768).
+
+Source stays the GitHub tag archive rather than the PyPI sdist: the
+0.9.50 sdist still omits ARCHITECTURE.md (read by
+tests/test_architecture_doc.py) and 136 test files including
+tests/fixtures/ and conftest.py, so it cannot run %check.
+
+Licence re-derived and unchanged at Apache-2.0 AND MIT: LICENSE,
+LICENSE-MIT and NOTICE are byte-identical to 0.9.49, and NOTICE still
+records that pre-relicensing MIT contributions remain available under
+LICENSE-MIT.
+
+No dependency change was owed. The only non-version pyproject.toml
+change is the optional [postgres] extra gaining tree-sitter-sql; that
+extra is not packaged, python-tree-sitter-sql is not in Factory, and the
+tests needing it use pytest.importorskip (confirmed SKIPPED in the build
+log). No CVEs in the 0.9.49..0.9.50 range.
+
+Verified on native aarch64 against openSUSE:Factory:ARM/standard: build
+green, %check 3947 passed / 229 skipped / 82 deselected on both python313
+and python314, rpmlint 0 errors / 0 badness (the 52 warnings are
+python-missing-require on the deliberately-Recommends tree-sitter
+grammars, unchanged from the 0.9.49 baseline).</comment>
+    <requestid>1373778</requestid>
+  </revision>
 </revisionlist>

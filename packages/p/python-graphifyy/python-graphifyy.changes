@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Aug 26 05:54:08 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.9.50:
+  * Ruby methods ending in !, ? or = keep distinct node ids, and a
+    call on a qualified constant receiver binds to the receiver's
+    full constant path
+  * CommonJS member exports wrapped in a higher-order function are
+    captured
+  * merge-graphs offsets each input's community ids so communities
+    from different repositories no longer fuse
+  * C# and TypeScript enum members emit a node with a case_of edge
+    to their enum
+  * watch no longer re-triggers on the watcher's own read-only
+    inotify events
+  * A .graphify_root marker written by Windows PowerShell is read
+    and written without a UTF-8 BOM
+  * Ignore-pattern matching is evaluated lexically and cached, so
+    pattern-heavy trees scan much faster
+  * The postgres extra pulls the tree-sitter-sql grammar and an
+    unusable grammar now raises instead of returning zero nodes
+
+-------------------------------------------------------------------
 Mon Aug 24 16:55:09 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.9.49:

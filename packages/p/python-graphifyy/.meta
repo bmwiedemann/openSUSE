@@ -7,5 +7,6 @@ graph with file:line citations, traces paths between components, explains
 symbols and summarizes pull-request impact. Individual language support is
 provided by the python-tree-sitter-&lt;language&gt; grammar modules; a missing
 grammar only disables that language.</description>
+  <devel project="devel:languages:python" package="python-graphifyy"/>
   <url>https://github.com/Graphify-Labs/graphify</url>
 </package>
