@@ -40,6 +40,8 @@ Patch12:        LibVNCServer-CVE-2026-32854.patch
 Patch13:        LibVNCServer-CVE-2026-32853.patch
 # CVE-2026-44988: missing validation of rectangle width in tight gradient decoding can lead to server-triggered out-of-bounds write [bsc#1266459]
 Patch14:        LibVNCServer-CVE-2026-44988.patch
+# CVE-2026-50538: a malicious (or man-in-the-middle) VNC server can force a connecting `libvncclient` to write attacker-controlled data past the end of its framebuffer [bsc#1276218]
+Patch15:        LibVNCServer-CVE-2026-50538.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libavahi-devel

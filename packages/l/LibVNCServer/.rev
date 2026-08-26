@@ -539,4 +539,12 @@
     <comment>CVE-2026-44988, [bsc#1266459]</comment>
     <requestid>1355889</requestid>
   </revision>
+  <revision rev="51" vrev="4">
+    <srcmd5>acc06688291d4cac2b48633e146a8df8</srcmd5>
+    <version>0.9.15</version>
+    <time>1787766666</time>
+    <user>anag_factory</user>
+    <comment>[bsc#1276218], CVE-2026-50538</comment>
+    <requestid>1373528</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 25 06:24:41 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- added patches
+  CVE-2026-50538: a malicious (or man-in-the-middle) VNC server can force a connecting `libvncclient` to write attacker-controlled data past the end of its framebuffer [bsc#1276218]
+  * LibVNCServer-CVE-2026-50538.patch
+
+-------------------------------------------------------------------
 Fri May 29 12:50:18 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - added patches
