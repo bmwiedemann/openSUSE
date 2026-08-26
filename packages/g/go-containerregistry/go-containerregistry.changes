@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Aug 25 18:46:59 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.22.0:
+  * mutate: let Time and Canonical take tarball.LayerOption
+  * build: add multi-architecture Cloud Build configurations for
+    crane, gcrane, and krane
+  * remote: resolve push-check credentials against the repository
+  * Allow single-character repository paths
+  * fix: add missing substitutions and workspace cleanup to new
+    build files
+  * remote: retry failed Puller and Pusher initialization
+  * build(deps): bump the actions group across 1 directory with 8
+    updates
+  * build(deps): bump the go-deps group across 1 directory with 3
+    updates
+  * go.mod: bump Go version + add toolchain directive to replace
+    .go-version file
+  * fix: Fix new build options and provenance
+  * fix(build): unify new build flow into cloudbuild_v2.yaml
+
+-------------------------------------------------------------------
 Wed Aug  5 08:19:00 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.21.8:
