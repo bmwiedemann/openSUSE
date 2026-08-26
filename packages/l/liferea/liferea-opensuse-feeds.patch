@@ -1,7 +1,7 @@
-Index: liferea-1.14.6/opml/feedlist_bg.opml
+Index: liferea-2.0/opml/feedlist_bg.opml
 ===================================================================
---- liferea-1.14.6.orig/opml/feedlist_bg.opml
-+++ liferea-1.14.6/opml/feedlist_bg.opml
+--- liferea-2.0.orig/opml/feedlist_bg.opml
++++ liferea-2.0/opml/feedlist_bg.opml
 @@ -12,6 +12,10 @@
  
  	<!-- lets keep this default English block in sync over all feed lists! -->
@@ -13,10 +13,10 @@ Index: liferea-1.14.6/opml/feedlist_bg.opml
  		<outline text="News">
  			<outline text="Ars Technica" htmlUrl="https://arstechnica.com" xmlUrl="https://feeds.arstechnica.com/arstechnica/index"/>
  			<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="https://rss.slashdot.org/Slashdot/slashdotMain" />
-Index: liferea-1.14.6/opml/feedlist_ca.opml
+Index: liferea-2.0/opml/feedlist_ca.opml
 ===================================================================
---- liferea-1.14.6.orig/opml/feedlist_ca.opml
-+++ liferea-1.14.6/opml/feedlist_ca.opml
+--- liferea-2.0.orig/opml/feedlist_ca.opml
++++ liferea-2.0/opml/feedlist_ca.opml
 @@ -17,6 +17,10 @@
  
  	<!-- lets keep this default English block in sync over all feed lists! -->
@@ -28,10 +28,10 @@ Index: liferea-1.14.6/opml/feedlist_ca.opml
  		<outline text="News">
  			<outline text="Ars Technica" htmlUrl="https://arstechnica.com" xmlUrl="https://feeds.arstechnica.com/arstechnica/index"/>
  			<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="https://rss.slashdot.org/Slashdot/slashdotMain" />
-Index: liferea-1.14.6/opml/feedlist_de.opml
+Index: liferea-2.0/opml/feedlist_de.opml
 ===================================================================
---- liferea-1.14.6.orig/opml/feedlist_de.opml
-+++ liferea-1.14.6/opml/feedlist_de.opml
+--- liferea-2.0.orig/opml/feedlist_de.opml
++++ liferea-2.0/opml/feedlist_de.opml
 @@ -19,6 +19,10 @@
   
  		<!-- lets keep this default English block in sync over all feed lists! -->
@@ -43,10 +43,10 @@ Index: liferea-1.14.6/opml/feedlist_de.opml
  			<outline text="News">
  				<outline text="Ars Technica" htmlUrl="https://arstechnica.com" xmlUrl="https://feeds.arstechnica.com/arstechnica/index"/>
  				<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="https://rss.slashdot.org/Slashdot/slashdotMain" />
-Index: liferea-1.14.6/opml/feedlist_en.opml
+Index: liferea-2.0/opml/feedlist_en.opml
 ===================================================================
---- liferea-1.14.6.orig/opml/feedlist_en.opml
-+++ liferea-1.14.6/opml/feedlist_en.opml
+--- liferea-2.0.orig/opml/feedlist_en.opml
++++ liferea-2.0/opml/feedlist_en.opml
 @@ -6,6 +6,10 @@
  <body>
  	<!-- lets keep this default English block in sync over all feed lists! -->
@@ -58,10 +58,10 @@ Index: liferea-1.14.6/opml/feedlist_en.opml
  		<outline text="News">
  			<outline text="Ars Technica" htmlUrl="https://arstechnica.com" xmlUrl="https://feeds.arstechnica.com/arstechnica/index"/>
  			<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="https://rss.slashdot.org/Slashdot/slashdotMain" />
-Index: liferea-1.14.6/opml/feedlist_es.opml
+Index: liferea-2.0/opml/feedlist_es.opml
 ===================================================================
---- liferea-1.14.6.orig/opml/feedlist_es.opml
-+++ liferea-1.14.6/opml/feedlist_es.opml
+--- liferea-2.0.orig/opml/feedlist_es.opml
++++ liferea-2.0/opml/feedlist_es.opml
 @@ -15,6 +15,10 @@
  
  	<!-- lets keep this default English block in sync over all feed lists! -->
@@ -73,10 +73,10 @@ Index: liferea-1.14.6/opml/feedlist_es.opml
  		<outline text="News">
  			<outline text="Ars Technica" htmlUrl="https://arstechnica.com" xmlUrl="https://feeds.arstechnica.com/arstechnica/index"/>
  			<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="https://rss.slashdot.org/Slashdot/slashdot" />
-Index: liferea-1.14.6/opml/feedlist_eu.opml
+Index: liferea-2.0/opml/feedlist_eu.opml
 ===================================================================
---- liferea-1.14.6.orig/opml/feedlist_eu.opml
-+++ liferea-1.14.6/opml/feedlist_eu.opml
+--- liferea-2.0.orig/opml/feedlist_eu.opml
++++ liferea-2.0/opml/feedlist_eu.opml
 @@ -17,6 +17,10 @@
  
  	<!-- lets keep this default English block in sync over all feed lists! -->
@@ -88,10 +88,10 @@ Index: liferea-1.14.6/opml/feedlist_eu.opml
  		<outline text="Berriak">
  			<outline text="Ars Technica" htmlUrl="https://arstechnica.com" xmlUrl="https://feeds.arstechnica.com/arstechnica/index"/>
  			<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="https://rss.slashdot.org/Slashdot/slashdotMain" />
-Index: liferea-1.14.6/opml/feedlist_fa.opml
+Index: liferea-2.0/opml/feedlist_fa.opml
 ===================================================================
---- liferea-1.14.6.orig/opml/feedlist_fa.opml
-+++ liferea-1.14.6/opml/feedlist_fa.opml
+--- liferea-2.0.orig/opml/feedlist_fa.opml
++++ liferea-2.0/opml/feedlist_fa.opml
 @@ -13,6 +13,10 @@
  		
  		<!-- lets keep this default English block in sync over all feed lists! -->
@@ -103,10 +103,10 @@ Index: liferea-1.14.6/opml/feedlist_fa.opml
  			<outline text="News">
  				<outline text="Ars Technica" htmlUrl="https://arstechnica.com" xmlUrl="https://feeds.arstechnica.com/arstechnica/index"/>
  				<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="https://rss.slashdot.org/Slashdot/slashdotMain" />
-Index: liferea-1.14.6/opml/feedlist_fr.opml
+Index: liferea-2.0/opml/feedlist_fr.opml
 ===================================================================
---- liferea-1.14.6.orig/opml/feedlist_fr.opml
-+++ liferea-1.14.6/opml/feedlist_fr.opml
+--- liferea-2.0.orig/opml/feedlist_fr.opml
++++ liferea-2.0/opml/feedlist_fr.opml
 @@ -17,6 +17,10 @@
  
  	<!-- lets keep this default English block in sync over all feed lists! -->
@@ -118,10 +118,10 @@ Index: liferea-1.14.6/opml/feedlist_fr.opml
  		<outline text="News">		<!-- translate this title for localized feed list -->
  			<outline text="Ars Technica" htmlUrl="https://arstechnica.com" xmlUrl="https://feeds.arstechnica.com/arstechnica/index"/>
  			<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="https://rss.slashdot.org/Slashdot/slashdotMain" />
-Index: liferea-1.14.6/opml/feedlist_gl.opml
+Index: liferea-2.0/opml/feedlist_gl.opml
 ===================================================================
---- liferea-1.14.6.orig/opml/feedlist_gl.opml
-+++ liferea-1.14.6/opml/feedlist_gl.opml
+--- liferea-2.0.orig/opml/feedlist_gl.opml
++++ liferea-2.0/opml/feedlist_gl.opml
 @@ -12,6 +12,10 @@
  	</outline>
  	<!-- lets keep this default English block in sync over all feed lists! -->
@@ -133,10 +133,10 @@ Index: liferea-1.14.6/opml/feedlist_gl.opml
  		<outline text="News">
  			<outline text="Ars Technica" htmlUrl="https://arstechnica.com" xmlUrl="https://feeds.arstechnica.com/arstechnica/index"/>
  			<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="https://rss.slashdot.org/Slashdot/slashdotMain" />
-Index: liferea-1.14.6/opml/feedlist_he.opml
+Index: liferea-2.0/opml/feedlist_he.opml
 ===================================================================
---- liferea-1.14.6.orig/opml/feedlist_he.opml
-+++ liferea-1.14.6/opml/feedlist_he.opml
+--- liferea-2.0.orig/opml/feedlist_he.opml
++++ liferea-2.0/opml/feedlist_he.opml
 @@ -28,6 +28,10 @@
      </outline>
   		<!-- lets keep this default English block in sync over all feed lists! -->
@@ -148,10 +148,10 @@ Index: liferea-1.14.6/opml/feedlist_he.opml
  			<outline text="News">
  				<outline text="Ars Technica" htmlUrl="https://arstechnica.com" xmlUrl="https://feeds.arstechnica.com/arstechnica/index"/>
  				<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="https://rss.slashdot.org/Slashdot/slashdotMain" />
-Index: liferea-1.14.6/opml/feedlist_hu.opml
+Index: liferea-2.0/opml/feedlist_hu.opml
 ===================================================================
---- liferea-1.14.6.orig/opml/feedlist_hu.opml
-+++ liferea-1.14.6/opml/feedlist_hu.opml
+--- liferea-2.0.orig/opml/feedlist_hu.opml
++++ liferea-2.0/opml/feedlist_hu.opml
 @@ -6,6 +6,10 @@
  <body>
  	<!-- lets keep this default English block in sync over all feed lists! -->
@@ -160,13 +160,13 @@ Index: liferea-1.14.6/opml/feedlist_hu.opml
 +			<outline text="openSUSE News" htmlUrl="https://news.opensuse.org/" xmlUrl="https://news.opensuse.org/feed.xml" />
 +			<outline text="Planet openSUSE" htmlUrl="https://planet.opensuse.org/" xmlUrl="https://planet.opensuse.org/global/rss20.xml" />
 +		</outline>
- 		<outline text="Magyar hírek">
+ 		<outline text="Magyar hírek 🇭🇺">
  			<outline text="[origo]" htmlUrl="http://www.origo.hu/" xmlUrl="http://www.origo.hu/contentpartner/rss/hircentrum/origo.xml" />
  			<outline text="Index" htmlUrl="https://index.hu/" xmlUrl="https://index.hu/24ora/rss/" />
-Index: liferea-1.14.6/opml/feedlist_id.opml
+Index: liferea-2.0/opml/feedlist_id.opml
 ===================================================================
---- liferea-1.14.6.orig/opml/feedlist_id.opml
-+++ liferea-1.14.6/opml/feedlist_id.opml
+--- liferea-2.0.orig/opml/feedlist_id.opml
++++ liferea-2.0/opml/feedlist_id.opml
 @@ -6,6 +6,10 @@
  <body>
  	<!-- lets keep this default English block in sync over all feed lists! -->

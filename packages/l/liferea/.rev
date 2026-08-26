@@ -318,4 +318,38 @@
  +  Updated manpage</comment>
     <requestid>1371790</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>c0b43ff6ace69e48b9f6fe32baf40429</srcmd5>
+    <version>2.0</version>
+    <time>1787766696</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.0:
+  + This is the first release of the new stable 2.0 release line.
+    The change of the major version means breaking changes to the
+    UI interface. 2.0 stays compatible to 1.16 in the data format.
+    If you have problems with the new release you can easily
+    downgrade. See the &quot;removed features&quot; section for features that
+    could not be kept in the GTK4 port that was the focus of this
+    new major version.
+  + Changes:
+    - Liferea was ported to GTK4 and uses libadwaita
+    - Liferea uses a headerbar now instead of a menubar
+    - Feed and item list do use GtkListView
+    - New WebDAV based sync backend
+    - All node sources now use a common subscribing dialog
+    - Unread count numbers are now lazy-updated (every 500ms) to
+      improve performance
+    - New update monitor that gives deeper insight into the
+      background updating and node source synchronization
+    - Most of the dialogs use libadwaita widgets and are modal now
+  + Removed Features:
+    - Reduced feed list mode is not supported anymore
+    - Item list view headers are now gone (use the context menu for
+      sorting)
+    - Tray icon support has lost the feature to indicate the unread
+      counter
+- Switch to meson BuildSystem.
+- Rebase patch with quilt.</comment>
+    <requestid>1373570</requestid>
+  </revision>
 </revisionlist>

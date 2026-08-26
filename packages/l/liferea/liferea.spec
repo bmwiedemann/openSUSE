@@ -17,7 +17,7 @@
 
 
 Name:           liferea
-Version:        1.16.14
+Version:        2.0
 Release:        0
 Summary:        Linux Feed Reader
 License:        GPL-2.0-only
@@ -26,29 +26,10 @@ URL:            https://lzone.de/liferea/
 Source0:        %{name}-%{version}.tar.xz
 # PATCH-FEATURE-OPENSUSE liferea-opensuse-feeds.patch -- Add openSUSE feeds to default feeds
 Patch0:         liferea-opensuse-feeds.patch
-
-BuildRequires:  appstream-glib
-BuildRequires:  c++_compiler
-BuildRequires:  fdupes
-BuildRequires:  intltool >= 0.40.0
-BuildRequires:  libtool
-BuildRequires:  pkgconfig(fribidi)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.86.0
+BuildSystem:    meson
+BuildRequires:  meson
+BuildRequires:  intltool
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(gsettings-desktop-schemas)
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.4.0
-BuildRequires:  pkgconfig(json-glib-1.0)
-BuildRequires:  pkgconfig(libnotify)
-BuildRequires:  pkgconfig(libpeas-2)
-BuildRequires:  pkgconfig(libsoup-3.0)
-BuildRequires:  pkgconfig(libxml-2.0) >= 2.6.27
-BuildRequires:  pkgconfig(libxslt) >= 1.1.19
-BuildRequires:  pkgconfig(pango) >= 1.56
-BuildRequires:  pkgconfig(sqlite3) >= 3.22
-BuildRequires:  pkgconfig(webkit2gtk-4.1)
-Requires:       dbus-1 >= 0.30
-Requires:       python3-cairo
-Requires:       python3-gobject-Gdk
 ExcludeArch:    %{ix86}
 
 %description
@@ -62,36 +43,21 @@ news aggregator for GTK and GNOME.
 
 %lang_package
 
-%prep
-%autosetup -p1
+%generate_buildrequires
+%meson_buildrequires
 
-%build
-autoreconf -fiv
-%configure --disable-static
-%make_build
-
-%install
-%make_install
+%install -a
 %find_lang %{name} %{?no_lang_C}
-rm doc/Makefile*
-rm doc/html/Makefile*
-
-%fdupes %{buildroot}%{_prefix}
-
-%check
-appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.xml
 
 %files
 %license COPYING
 %doc AUTHORS ChangeLog
 %{_bindir}/liferea
-%{_bindir}/liferea-add-feed
 %{_datadir}/applications/net.sourceforge.liferea.desktop
 %{_datadir}/dbus-1/services/net.sourceforge.liferea.service
 %{_datadir}/%{name}/
 %dir %{_datadir}/metainfo
 %{_datadir}/metainfo/net.sourceforge.liferea.appdata.xml
-%{_datadir}/GConf/gsettings/liferea.convert
 %{_datadir}/glib-2.0/schemas/net.sf.liferea.gschema.xml
 %{_datadir}/icons/hicolor/*/*/*.*
 %{_libdir}/%{name}/
