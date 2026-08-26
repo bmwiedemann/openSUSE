@@ -19,7 +19,7 @@
 %define pythons python3
 
 Name:           virtui-manager
-Version:        3.1.1
+Version:        3.2.1
 Release:        0
 Summary:        Terminal-based interface to manage virtual machines using libvirt
 License:        GPL-3.0-or-later
@@ -135,6 +135,7 @@ cp README.md %{buildroot}%{_docdir}/%{name}/
 %doc README.md
 %{_bindir}/virtui-manager
 %{_bindir}/virtui-manager-cmd
+%{_bindir}/vmc
 %{_bindir}/virtui-gui
 %if 0%{?fedora} || 0%{?rhel}
 %{python3_sitelib}/vmanager/

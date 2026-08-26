@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Aug 26 10:14:12 UTC 2026 - Antoine Ginies <aginies@suse.com>
+
+- version 3.2.1:
+  * Fix key generation and domain retrieval
+  * Enhance input validation
+  * add vmc alias
+  * remove unused import
+  * fix strip_installation_assets reading live XML on running VM
+  * refactor vm_actions XML edits into shared helper
+  * update documentation
+
+-------------------------------------------------------------------
 Tue Jun 23 06:55:53 UTC 2026 - Antoine Ginies <aginies@suse.com>
 
 - version 3.1.1:
