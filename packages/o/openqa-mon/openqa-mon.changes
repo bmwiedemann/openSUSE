@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Aug 25 12:34:55 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 1.6.0:
+  * Version bump
+  * Update dependencies
+  * fix: SLEM5.2 has no more Container Maintenance nor Product Increment
+  * feat: Display running job progress as a percentage
+  * Bump github.com/os-autoinst/gopenqa from 1.0.0 to 1.1.0
+  * Adapt qec-publiccloud to image tests
+  * Bump actions/checkout from 7.0.0 to 7.0.1 (#238)
+  * Bump actions/setup-go from 6.5.0 to 7.0.0 (#237)
+  * fix: Remove EOL products
+  * feat(ci): configure 7-day cooldown for Dependabot GitHub Actions updates
+  * ci: automate Dependabot updates and auto-merge
+  * ci: disable Mergify interactive queue controls in PR comments
+  * Remove non-existing group
+  * Include request parameters in error message
+  * fix(ci): format inline comments in workflows to pass yamllint
+  * feat(ci): pin GitHub Actions by commit hash
+
+-------------------------------------------------------------------
 Tue Jun 23 18:44:50 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update to version 1.5.2:

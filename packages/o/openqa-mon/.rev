@@ -266,4 +266,28 @@
   * Revert &quot;Revert &quot;Bump uncenter/setup-taplo from 1 to 2&quot;&quot; (forwarded request 1361484 from ph03nix)</comment>
     <requestid>1361490</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>d204ab0ae4c06680c3a6649ca78e76af</srcmd5>
+    <version>1.6.0</version>
+    <time>1787766985</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.6.0:
+  * Version bump
+  * Update dependencies
+  * fix: SLEM5.2 has no more Container Maintenance nor Product Increment
+  * feat: Display running job progress as a percentage
+  * Bump github.com/os-autoinst/gopenqa from 1.0.0 to 1.1.0
+  * Adapt qec-publiccloud to image tests
+  * Bump actions/checkout from 7.0.0 to 7.0.1 (#238)
+  * Bump actions/setup-go from 6.5.0 to 7.0.0 (#237)
+  * fix: Remove EOL products
+  * feat(ci): configure 7-day cooldown for Dependabot GitHub Actions updates
+  * ci: automate Dependabot updates and auto-merge
+  * ci: disable Mergify interactive queue controls in PR comments
+  * Remove non-existing group
+  * Include request parameters in error message
+  * fix(ci): format inline comments in workflows to pass yamllint
+  * feat(ci): pin GitHub Actions by commit hash (forwarded request 1373604 from ph03nix)</comment>
+    <requestid>1373813</requestid>
+  </revision>
 </revisionlist>
