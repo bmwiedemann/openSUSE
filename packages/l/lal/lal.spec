@@ -80,8 +80,6 @@ BuildRequires:  swig >= 3.0
 BuildRequires:  python3-freezegun
 BuildRequires:  python3-igwn-ligolw
 BuildRequires:  python3-igwn-segments
-# python3-py - remove with next update -- https://git.ligo.org/lscsoft/lalsuite/-/merge_requests/2033
-BuildRequires:  python3-py
 BuildRequires:  python3-pytest
 BuildRequires:  python3-python-dateutil
 BuildRequires:  python3-scipy

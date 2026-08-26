@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 24 06:44:08 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove unneeded BuildRequires on python-py.
+
+-------------------------------------------------------------------
 Fri Jun 26 21:10:54 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add lal-ptr-const-qualifier.patch: correctly declare pointers to
