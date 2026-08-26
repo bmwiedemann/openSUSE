@@ -296,4 +296,13 @@
     <comment>Push GNOME 50</comment>
     <requestid>1345406</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>bfd0a580213c552482c7d00987864866</srcmd5>
+    <version>50.0</version>
+    <time>1787766699</time>
+    <user>anag_factory</user>
+    <comment>- Replace appstream-glib with AppStream BuildRequires: Align with
+  what meson really checks for (appstreamcli).</comment>
+    <requestid>1373571</requestid>
+  </revision>
 </revisionlist>

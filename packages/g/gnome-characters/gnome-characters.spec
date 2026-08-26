@@ -25,7 +25,7 @@ Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Design/Apps/CharacterMap
 Source0:        %{name}-%{version}.tar.xz
 
-BuildRequires:  appstream-glib
+BuildRequires:  AppStream
 BuildRequires:  desktop-file-utils
 BuildRequires:  intltool >= 0.50.1
 BuildRequires:  meson

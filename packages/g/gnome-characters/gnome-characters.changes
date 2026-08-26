@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 13 08:49:37 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Replace appstream-glib with AppStream BuildRequires: Align with
+  what meson really checks for (appstreamcli).
+
+-------------------------------------------------------------------
 Mon Mar 23 08:35:37 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run
