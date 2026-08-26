@@ -1,0 +1,65 @@
+From: Jiri Slaby <jslaby@suse.cz>
+Date: Wed, 26 Aug 2026 08:19:28 +0200
+Subject: ioctls/atm: use ATM_ADDPARTY/ATM_DROPPARTY only if defined
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+References: build-fix
+Patch-mainline: Submitted https://github.com/kernelslacker/trinity/pull/61
+
+They were dropped in 7.2 by 8f9616500c59 ("atm: remove orphaned uAPI for
+deleted drivers, protocols and SVCs"). So do not use them when
+undefined.
+
+To fix:
+  ioctls/atm.c:292:15: error: ‘ATM_ADDPARTY’ undeclared here (not in a function)
+
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+---
+ ioctls/atm.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/ioctls/atm.c b/ioctls/atm.c
+index c4694b54d28b..e79bd1627628 100644
+--- a/ioctls/atm.c
++++ b/ioctls/atm.c
+@@ -176,7 +176,9 @@ static void atm_sanitise(const struct ioctl_group *grp, struct syscallrecord *re
+ 		break;
+ 
+ 	case ATM_GETNAMES:
++#ifdef ATM_ADDPARTY
+ 	case ATM_ADDPARTY:
++#endif
+ 		sanitise_atm_iobuf(rec);
+ 		break;
+ 
+@@ -202,6 +204,7 @@ static void atm_sanitise(const struct ioctl_group *grp, struct syscallrecord *re
+ 		break;
+ 	}
+ 
++#ifdef ATM_DROPPARTY
+ 	case ATM_DROPPARTY: {
+ 		/* int: party endpoint ID (1..127 for N-UNI) */
+ 		int *pid = (int *) get_writable_struct(sizeof(int));
+@@ -211,6 +214,7 @@ static void atm_sanitise(const struct ioctl_group *grp, struct syscallrecord *re
+ 		}
+ 		break;
+ 	}
++#endif
+ 
+ 	case BR2684_SETFILT:
+ 		sanitise_br2684_filter_set(rec);
+@@ -289,8 +293,10 @@ static const struct ioctl atm_ioctls[] = {
+ 	IOCTL(ATM_SETSC),
+ 	IOCTL(ATM_SETBACKEND),
+ 	IOCTL(ATM_NEWBACKENDIF),
++#ifdef ATM_ADDPARTY
+ 	IOCTL(ATM_ADDPARTY),
+ 	IOCTL(ATM_DROPPARTY),
++#endif
+ 	/* BR2684 bridged RFC2684 backend filter */
+ 	IOCTL(BR2684_SETFILT),
+ 	IOCTL(SONET_GETSTAT),
+-- 
+2.55.0
+

@@ -1,0 +1,32 @@
+From: Jiri Slaby <jslaby@suse.cz>
+Date: Wed, 26 Aug 2026 08:38:17 +0200
+Subject: sunrpc: mark fam_sunrpc as used
+References: build-fix
+Patch-mainline: Submitted https://github.com/kernelslacker/trinity/pull/62
+
+With LTO, I see:
+  /usr/x86_64-suse-linux/bin/ld: /tmp/ccpD84iN.ltrans10.ltrans.o:(.data.rel.ro+0xc0): undefined reference to `fam_sunrpc'
+
+Mark it as used as it is not declared in any header.
+
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+---
+ net/netlink/genl/sunrpc.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/net/netlink/genl/sunrpc.c b/net/netlink/genl/sunrpc.c
+index 3f74a9312b11..a5c334312d67 100644
+--- a/net/netlink/genl/sunrpc.c
++++ b/net/netlink/genl/sunrpc.c
+@@ -113,7 +113,7 @@ static const struct nla_attr_spec sunrpc_attrs[] = {
+ 	{ SUNRPC_A_IP_MAP_REQS_REQUESTS,	NLA_KIND_NESTED, 0 },
+ };
+ 
+-struct genl_family_grammar fam_sunrpc = {
++struct genl_family_grammar fam_sunrpc __attribute__((used)) = {
+ 	.name = SUNRPC_FAMILY_NAME,
+ 	.cmds = sunrpc_cmds,
+ 	.n_cmds = ARRAY_SIZE(sunrpc_cmds),
+-- 
+2.55.0
+

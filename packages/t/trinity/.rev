@@ -910,4 +910,31 @@
   * and many more...</comment>
     <requestid>1371940</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>5e681d9ca075952c02b14048f3464591</srcmd5>
+    <version>1.9+git.20260823</version>
+    <time>1787766900</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.9+git.20260823:
+  * watchdog: bound the sigblk read by the space it was given
+  * tables: keep const on the strstr result in check_user_specified_arch
+  * net: add the 7.3 rtnl and tun attrs
+  * net/unix: add SO_RIGHTS_NOTRUNC (7.3)
+  * watchdog: unblock SIGALRM before arming, not just reinstall it
+  * check-static: put the batch's own headers in the Tier-2 probe set
+  * check-static: harvest shift-form shim values
+  * kernel/openvswitch: fix the off-by-one in the vport attr shims
+  * userfaultfd: add the RWP surface (7.3)
+  * check-static: harvest negative shim values
+  * and many more...
+- remove (in upstream)
+  * 0001-compat-in6-add-some-IPV6_-constants.patch
+  * 0001-vm_sockets-include-sys-socket.h.patch
+- add
+  * 0001-ioctls-atm-use-ATM_ADDPARTY-ATM_DROPPARTY-only-if-de.patch
+  * 0001-sunrpc-mark-fam_sunrpc-as-used.patch
+
+- Exclude riscv too</comment>
+    <requestid>1373748</requestid>
+  </revision>
 </revisionlist>
