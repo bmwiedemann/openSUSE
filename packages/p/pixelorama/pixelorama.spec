@@ -20,7 +20,7 @@
 %define nameupper Pixelorama
 
 Name:           pixelorama
-Version:        1.1.10
+Version:        1.2.1
 Release:        0
 Summary:        2D sprite editor
 License:        MIT
@@ -28,8 +28,8 @@ Group:          Productivity/Graphics/Bitmap Editors
 URL:            https://github.com/Orama-Interactive/Pixelorama
 Source0:        https://codeload.github.com/Orama-Interactive/%{nameupper}/tar.gz/refs/tags/v%{version}#/%{nameupper}-%{version}.tar.gz
 BuildRequires:  fdupes
-BuildRequires:  godot >= 4.6.1
-BuildRequires:  godot-runner >= 4.6.1
+BuildRequires:  godot >= 4.7.1
+BuildRequires:  godot-runner >= 4.7.1
 BuildRequires:  vendored_licenses_packager
 # currently no godot binary
 ExcludeArch:    %arm
@@ -96,7 +96,7 @@ install -D -p -m 0644 Misc/Linux/com.orama_interactive.%{nameupper}.appdata.xml 
 
 %files
 %license LICENSE addons_README.md font_Roboto-License.txt
-%doc CHANGELOG.md CONTRIBUTING.md README.md
+%doc CHANGELOG.md "CHANGELOG - v0.x.md" CONTRIBUTING.md README.md
 %dir %{_datadir}/icons/hicolor
 %dir %{_datadir}/icons/hicolor/256x256
 %dir %{_datadir}/icons/hicolor/256x256/apps

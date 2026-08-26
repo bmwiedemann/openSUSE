@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Aug 21 12:00:00 UTC 2026 - cunix@mail.de
+
+- Update to 1.2.1
+  * Exporting images as SVG files is now possible. Right now it's very basic.
+  * Right-clicking on a keyframe brings up a popup menu,
+      which allows you to delete the keyframe.
+  * Export settings are now being stored inside pxo files.
+  and more
+
+- Update to 1.2
+  * 3D layer system has been completely re-written! 3D objects are now shared
+      across all cels of a layer.
+      Due to this, the 3D layer data of pxo files is
+      NO LONGER COMPATIBLE between v1.2 and older versions.
+  * Added a keyframe-based view on the timeline
+  * Implemented autotiling support for tilemap layers, with a new tool for
+      tilemap layers that allows users to set the autotiling bits on each tile
+  * The shape tools now support drawing with brushes
+  * Users can now change the colors of the UI by changing the theme's base
+      color, accent color & contrast directly from the Preferences,
+      making Pixelorama even more configurable & accessible,
+      without having to rely on extensions.
+  * A default license option for projects has been added in the preferences
+  * Reference images are now stored inside pxo files.
+      NOTE: This is a breaking change as reference images will fail to load
+      from pxo files saved in v1.1.10 and older.
+  * and much more
+
+-------------------------------------------------------------------
 Tue Jun  9 12:00:00 UTC 2026 - cunix@mail.de
 
 - Update to 1.1.10
