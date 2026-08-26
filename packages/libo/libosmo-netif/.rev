@@ -135,4 +135,12 @@
     <comment>- Switch from Github autocreated tarball to official tarball</comment>
     <requestid>1339031</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>132e317763f3d7b67cf7ef9bc221d39e</srcmd5>
+    <version>1.8.0</version>
+    <time>1787766772</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 1.8.0</comment>
+    <requestid>1373647</requestid>
+  </revision>
 </revisionlist>

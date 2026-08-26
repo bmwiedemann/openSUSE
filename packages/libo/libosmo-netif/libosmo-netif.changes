@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 25 15:26:57 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.8.0
+  * Introduce ip_checksum API
+  * Introduce API osmo_icmpv6
+
+-------------------------------------------------------------------
 Sat Mar 14 10:55:24 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Switch from Github autocreated tarball to official tarball
