@@ -100,7 +100,7 @@
 %global pkg_name blender
 
 Name:           blender-4.5
-Version:        4.5.11
+Version:        4.5.13
 Release:        0
 Summary:        A 3D Modelling And Rendering Package
 License:        GPL-2.0-or-later AND CC-BY-4.0 AND Apache-2.0 WITH Trademark-Clause AND Apache-2.0

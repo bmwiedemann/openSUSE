@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Aug 25 15:58:28 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 4.5.13
+  - bf319e10923 Fix #161532: Undoing from Texture Paint into
+    Particle Edit corrupts data
+  - 2201809f75f License: Update licence doc
+
+-------------------------------------------------------------------
+Sat Jul 25 15:47:14 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 4.5.12
+  - 74e4f556711 Fix #156207: VSE: (4.5 Backport) Newly created
+    crossfade direction is unexpected
+  - 23131d9d2c4 Fix: Invalid ID name uniqueness code handling of ID
+    name removal.
+  - e3d228ac409 Fix: crash in Armature Edit mode after duplicating
+    animated bone
+  - 9aedd99690e Fix #161211: Do not 'make single user' materials
+    used by linked obdata.
+  - fc8987dd1ad Fix #160559: VSE: Sequencer-type scene strip
+    prematurely ends scene render check
+
+-------------------------------------------------------------------
 Thu Jul 16 20:49:32 UTC 2026 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Add Apache-2.0 WITH Trademark-Clause and Apache-2.0 licenses
