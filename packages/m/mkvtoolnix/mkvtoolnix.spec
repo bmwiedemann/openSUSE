@@ -17,7 +17,7 @@
 
 
 Name:           mkvtoolnix
-Version:        100.0
+Version:        101.0
 Release:        0
 Summary:        Tools to Create, Alter, and Inspect Matroska Files
 License:        GPL-2.0-or-later
@@ -64,8 +64,8 @@ BuildRequires:  pkgconfig(dvdread)
 BuildRequires:  pkgconfig(flac)
 BuildRequires:  pkgconfig(fmt) >= 8.0.0
 BuildRequires:  pkgconfig(libcmark)
-BuildRequires:  pkgconfig(libebml) >= 1.4.4
-BuildRequires:  pkgconfig(libmatroska) >= 1.7.1
+BuildRequires:  pkgconfig(libebml) >= 1.4.7
+BuildRequires:  pkgconfig(libmatroska) >= 1.7.2
 BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(vorbis)
@@ -146,7 +146,7 @@ install -m0755 src/tools/ac3parser src/tools/base64tool src/tools/bluray_dump \
 
 %files gui -f mkvtoolnix-gui.lang
 %{_bindir}/mkvtoolnix-gui
-%{_datadir}/metainfo/org.bunkus.mkvtoolnix-gui.appdata.xml
+%{_datadir}/metainfo/org.bunkus.mkvtoolnix-gui.metainfo.xml
 %{_datadir}/mime/packages/org.bunkus.mkvtoolnix-gui.xml
 %{_datadir}/%{name}/qt_resources.rcc
 %{_datadir}/%{name}/sounds

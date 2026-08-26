@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Aug 25 02:48:44 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 101.0
+  New features and enhancements:
+  * translations: substantial extension of the Czech translation
+  Bug fixes:
+  * mkvmerge: TrueHD parser: fixed mkvmerge dropping the last
+    TrueHD frame if its size was smaller than 12 bytes.
+  * MKVToolNix GUI: job runner: the variable
+    `<MTX_INSTALLATION_DIRECTORY>` will be replaed in the
+    executable position of the command-line for the program to
+    execute again.
+  Build system changes:
+  * The bundled libraries libEBML & libMatroska were updated to
+    v1.4.7 & v1.7.2 respectively. Those versions fix various
+    possible invalid memory accesses when reading data broken in
+    certain, very specific ways, making them security sensitive.
+  * libEBML v1.4.7 & libMatroska v1.7.2 are now required.
+  * The meta info file `org.bunkus.mkvtoolnix-gui.appdata.xml`
+    was renamed to `org.bunkus.mkvtoolnix-gui.metainfo.xml`.
+
+-------------------------------------------------------------------
 Sun Jul  5 20:31:51 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 100
