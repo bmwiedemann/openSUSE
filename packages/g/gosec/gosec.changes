@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Aug 26 12:25:55 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 2.29.0:
+  * analyzers/G703: stop treating Clean/Abs/PathEscape as path-traversal sanitizers (#1723)
+  * fix(junit): properly escape XML in failure text (#1718)
+  * fix(csv): capture and report write errors on flush (#1716)
+  * fix(report): root path matching in formatters (#1719)
+  * fix(config): handle nosec tags with leading hash (#1717)
+  * Update all dependencies (#1720)
+  * Add support for go version 1.27.0 and update to version 1.25.14 and 1… (#1726)
+  * Update all dependencies (#1713)
+  * Update all dependencies (#1710)
+  * fix(G202): don't flag strings.Builder built from constants (#1707)
+  * ci: allow fork PR checkout in barry-ai-security-review job (#1708)
+  * Update all dependencies (#1709)
+  * Downgrade min Go version (#1706)
+  * Udpate action to use gosec v2.28.0 (#1705)
+
+-------------------------------------------------------------------
 Wed Jul 15 06:32:23 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update to version 2.28.0:
