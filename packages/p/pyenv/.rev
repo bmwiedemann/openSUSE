@@ -677,4 +677,41 @@ Full Changelog: https://github.com/pyenv/pyenv/compare/v2.4.7...v2.4.8</comment>
   * 3.14.0-5: Support building against OpenSSL 4</comment>
     <requestid>1362478</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>ac472c58fd2c2d3cc37166f3d1f811f5</srcmd5>
+    <version>2.8.4</version>
+    <time>1787766913</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.8.4(CVE-2026-68939, bsc#1275661):
+  * CI: Add macos_26_intel
+  * pyenv-binary: check FreeBSD system libraries
+  * version-file: Fix infinite loop for a relative path argument
+  * pyenv-binary: check patchelf early and add --verbose
+  * CI: add ubuntu ARM images
+  * Add CPython 3.10.21, 3.11.16, 3.12.14
+  * Add anaconda3-2026.07-1, miniconda3 26.5.3-2
+- Release v2.8.3
+  * Add CPython 3.13.15, 3.14.7
+- Release v2.8.2
+  * pyenv-binary: add the `package` subcommand; add `pyenv install --list --bare`
+  * Add graalpy3.12-25.2.4
+  * Bump actions/setup-python from 6 to 7 in the github-actions group
+  * add_cpython: refactor extra Requests logic
+  * Add CPython 3.15.0rc1
+  * pyenv-binary: generate platform-specific package names
+- Release v2.8.1
+  * pyenv-binary: add the `generate-installer` subcommand
+  * Add CPython 3.15.0b4
+- Release v2.8.0
+  * CVE-2026-68939: Fix handling of glob characters in .python-version
+  * CI: add_version enhancements
+  * Add miniforge3-26.3.2-2, 26.3.2-3
+  * rehash: fix race condition in landlock writability check
+  * Add script to generate sponsors section for release notes
+  * install: Add an ability to install a version under an alias
+  * Add graalpy-3.12-25.1.3
+  * Bump actions/checkout from 6 to 7 in the github-actions group
+  * Add an experimental pyenv-binary plugin with a save command</comment>
+    <requestid>1373743</requestid>
+  </revision>
 </revisionlist>

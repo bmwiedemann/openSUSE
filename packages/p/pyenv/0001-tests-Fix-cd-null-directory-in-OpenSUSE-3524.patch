@@ -1,0 +1,28 @@
+From b0cff001ffa831e19da613b8e7fea4f48968d078 Mon Sep 17 00:00:00 2001
+From: native-api <ivan_pozdeev@mail.ru>
+Date: Tue, 25 Aug 2026 22:43:59 +0300
+Subject: [PATCH] tests: Fix "cd: null directory" in OpenSUSE (#3524)
+
+A workaround because tests don't use the Pyenv launcher and setting PYENV_DIR to $PWD at every run invocation is too cumbersome.
+---
+ libexec/pyenv-version-file | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/libexec/pyenv-version-file b/libexec/pyenv-version-file
+index 2e8a23ba..33548571 100755
+--- a/libexec/pyenv-version-file
++++ b/libexec/pyenv-version-file
+@@ -38,7 +38,9 @@ find_local_version_file() {
+ if [ -n "$target_dir" ]; then
+   find_local_version_file "$target_dir"
+ else
+-  find_local_version_file "$PYENV_DIR" || {
++  # In tests, PYENV_DIR is not set, ultimately leading to "cd: null directory" in OpenSUSE
++  # While most `cd` implemntations treat an empty argument the same as missing, that's still wrong
++  find_local_version_file "${PYENV_DIR:=$PWD}" || {
+     [ "$PYENV_DIR" != "$PWD" ] && find_local_version_file "$PWD"
+   } || echo "${PYENV_ROOT}/version"
+ fi
+-- 
+2.55.0
+

@@ -19,13 +19,15 @@
 %define pyenv_dir      %{_libexecdir}/pyenv
 #
 Name:           pyenv
-Version:        2.7.3
+Version:        2.8.4
 Release:        0
 Summary:        Python Version Management
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/pyenv/pyenv
 Source:         https://github.com/pyenv/pyenv/archive/refs/tags/v%{version}.tar.gz#/pyenv-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM 0001-tests-Fix-cd-null-directory-in-OpenSUSE-3524.patch gh#pyenv/pyenv#3524
+Patch0:         0001-tests-Fix-cd-null-directory-in-OpenSUSE-3524.patch
 #
 BuildRequires:  bash-completion
 BuildRequires:  bats
