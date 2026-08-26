@@ -98,4 +98,16 @@ with a single new entry on top covering both changes above.
 [0] https://build.opensuse.org/request/show/1368602</comment>
     <requestid>1368683</requestid>
   </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>ad9c7c021f781bb6effcd5c7814b74d3</srcmd5>
+    <version>1.8.4</version>
+    <time>1787766716</time>
+    <user>anag_factory</user>
+    <comment>Package the pr-helper entrypoint script: virt-operator runs the
+pr-helper container with /entrypoint.sh, which symlinks the
+multipath socket and execs qemu-pr-helper. Only multipath.conf was
+installed, so enabling the PersistentReservation feature gate
+crashlooped every virt-handler pod.</comment>
+    <requestid>1373666</requestid>
+  </revision>
 </revisionlist>

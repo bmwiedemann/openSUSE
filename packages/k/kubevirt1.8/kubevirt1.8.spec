@@ -377,6 +377,10 @@ install -p -m 0644 cmd/virt-handler/nsswitch.conf %{buildroot}%{_datadir}/kube-v
 # Persistent reservation helper configuration files
 mkdir -p %{buildroot}%{_datadir}/kube-virt-1.8/pr-helper
 install -p -m 0644 cmd/pr-helper/multipath.conf %{buildroot}%{_datadir}/kube-virt-1.8/pr-helper/
+# entrypoint.sh is the command virt-operator gives the pr-helper container
+# (RenderPrHelperContainer); it symlinks the multipath socket before exec'ing
+# qemu-pr-helper. Without it the container cannot start at all.
+install -p -m 0755 cmd/pr-helper/entrypoint.sh %{buildroot}%{_datadir}/kube-virt-1.8/pr-helper/
 
 # Entrypoint for the libguestfs-tools container
 mkdir -p %{buildroot}%{_datadir}/kube-virt-1.8/libguestfs-tools

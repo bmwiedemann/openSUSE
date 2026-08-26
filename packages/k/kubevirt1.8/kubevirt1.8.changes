@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug 17 20:45:00 UTC 2026 - Victor Carvalho <victor.carvalho@suse.com>
+
+- Package the persistent-reservation helper's entrypoint script:
+  virt-operator runs the pr-helper container with the command
+  /entrypoint.sh, which symlinks the multipath socket into place and
+  then execs qemu-pr-helper. Only multipath.conf was installed, so the
+  container could not start and persistent reservation was
+  unavailable. The script is upstream in cmd/pr-helper/entrypoint.sh.
+
+-------------------------------------------------------------------
 Thu Jul 30 18:17:46 UTC 2026 - Victor Toso de Carvalho <victor.carvalho@suse.com>
 
 - Fix the release manifests' image references (bsc#1272604): pull
