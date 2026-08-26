@@ -1,4 +1,387 @@
 -------------------------------------------------------------------
+Sun Aug 23 15:42:17 CEST 2026 - rfrohl@suse.com
+
+- Linux 6.18.46 (bsc#1258210).
+- ALSA: hda/realtek: Enable headset mic on F+ FLAPTOP r
+  (bsc#1258210).
+- firewire: ohci: initialize page array to use alloc_pages_bulk()
+  correctly (bsc#1258210).
+- drm/vmwgfx: Set surface-framebuffer GEM objects (bsc#1258210).
+- erofs: fix EROFS_FS_ZIP_LZMA_DEFAULT_MAX_STREAMS on some UP
+  platforms (bsc#1258210).
+- spi: virtio: mark device ready before registering the controller
+  (bsc#1258210).
+- drm/log: Fix infinite loop when scale is too large for display
+  (bsc#1258210).
+- drm/client: Remove drm_client_framebuffer_delete() (bsc#1258210).
+- drm/client: Deprecate struct drm_client_buffer.gem (bsc#1258210).
+- drm/client: Inline drm_client_buffer_addfb() and _rmfb()
+  (bsc#1258210).
+- drm/client: Move dumb-buffer handling to
+  drm_client_framebuffer_create() (bsc#1258210).
+- drm/client: Remove pitch from struct drm_client_buffer
+  (bsc#1258210).
+- drm/log: Fix out-of-bounds read on empty message length
+  (bsc#1258210).
+- drm/xe/oa: Fix sync entry leak on OA config emit failure
+  (bsc#1258210).
+- firewire: ohci: fix NULL pointer dereference in
+  ar_context_release (bsc#1258210).
+- firewire: ohci: split page allocation from dma mapping
+  (bsc#1258210).
+- net/sched: cls_bpf: reject dev-bound programs bound to a
+  different device (bsc#1258210).
+- accel/amdxdna: Skip unmapped range in aie2_populate_range()
+  (bsc#1258210).
+- net: ethernet: ti: am65-cpsw-nuss: Fix port_id extraction from
+  SRC TAG (bsc#1258210).
+- regmap: sdw-mbq: don't call an unset readable_reg callback
+  (bsc#1258210).
+- m68k: Define NR_CPUS to 1 (bsc#1258210).
+- net/sched: cls_u32: skip hash tables in u32_bind_class()
+  (bsc#1258210).
+- net/sched: act_api: fix TOCTOU NULL deref on a->goto_chain
+  (bsc#1258210).
+- af_packet: Don't send zero-byte data in tpacket_snd()
+  (bsc#1258210).
+- regmap: sdw-mbq: Fix swap of timeout and retry times
+  (bsc#1258210).
+- ASoC: xilinx: formatter_pcm: pass aud_drv_data to irq handlers
+  (bsc#1258210).
+- net/tls: Fail tls_sw_splice_read() after a failed async decrypt
+  (bsc#1258210).
+- net: ngbe: fix NULL pointer dereference in non-MSI-X interrupt
+  enabling (bsc#1258210).
+- net: tap: fix wrong transport_header when sending VLAN-tagged
+  frame (bsc#1258210).
+- net: packet: fix wrong transport_header when sending VLAN-tagged
+  frame (bsc#1258210).
+- net: phy: realtek: fix EEE advertisement write on the internal
+  PHY MMD path (bsc#1258210).
+- tcp: fix icsk_ack.ato bitfield overflow (bsc#1258210).
+- veth: fix queue index used to wake the peer txq in veth_poll
+  (bsc#1258210).
+- macvlan: inherit needed_headroom and needed_tailroom from
+  lowerdev (bsc#1258210).
+- ipvlan: inherit needed_headroom and needed_tailroom from phy_dev
+  (bsc#1258210).
+- eth: bnxt: keep the aRFS rmap updated when TPH is enabled
+  (bsc#1258210).
+- eth: bnxt: cancel IRQ notifier before freeing affinity mask
+  (bsc#1258210).
+- netfilter: ipset: let destroy callbacks adjust ext mem size
+  (bsc#1258210).
+- netfilter: ipset: fix list type element drift bug (bsc#1258210).
+- netfilter: flowtable: publish GC-visible tuple last
+  (bsc#1258210).
+- netfilter: nf_tables_offload: suppress WARN_ON_ONCE for ENOMEM
+  in abort path (bsc#1258210).
+- netfilter: ipset: fix refcount race between list:set GC and swap
+  (bsc#1258210).
+- ASoC: tas2781: fix clang build error for goto bypassing cleanup
+  variable (bsc#1258210).
+- gpio: ml-ioh: share the register lock across channels
+  (bsc#1258210).
+- perf: Reject exited events as group leaders (bsc#1258210).
+- riscv: ftrace: Fix ftrace_modify_call failure on kprobed
+  functions (bsc#1258210).
+- ovpn: finish crypto callback cleanup before peer release
+  (bsc#1258210).
+- ovpn: fix NULL dereference when killing missing key
+  (bsc#1258210).
+- crypto: tegra - fix rctx->cryptlen calculation in
+  tegra_gcm_do_one_req() (bsc#1258210).
+- crypto: ccm - Set rfc4309 maxauthsize from child (bsc#1258210).
+- arm64: tegra: Add EL2 virtual timer interrupt for Tegra194
+  (bsc#1258210).
+- NTB: ntb_netdev: Preserve RX queue depth on allocation failure
+  (bsc#1258210).
+- net: ntb_netdev: Introduce per-queue context (bsc#1258210).
+- ASoC: SOF: ipc4-topology: Refresh copier IPC payload before
+  widget setup (bsc#1258210).
+- drm/amd/pm: fix pptable use-after-free (bsc#1258210).
+- drm/amd/pm: adjust the visibility of pp_table sysfs node
+  (bsc#1258210).
+- mm/page_table_check: skip special zero mappings (bsc#1258210).
+- ring-buffer: Prevent resizing of persistent ring buffer
+  (bsc#1258210).
+- ring-buffer: Store bpage pointers into subbuf_ids (bsc#1258210).
+- ring-buffer: Add helper functions for allocations (bsc#1258210).
+- sched_ext: Take cgroup_lock() first in scx_cgroup_lock()
+  (bsc#1258210).
+- sched_ext: Reorganize enable/disable path for multi-scheduler
+  support (bsc#1258210).
+- sched_ext: Update p->scx.disallow warning in scx_init_task()
+  (bsc#1258210).
+- futex: Fix race in futex_pivot_pending() during private hash
+  resize (bsc#1258210).
+- can: rcar_canfd: change the initializing flow for clocks and
+  resets (bsc#1258210).
+- can: rcar_canfd: Extract rcar_canfd_global_{,de}init()
+  (bsc#1258210).
+- can: rcar_canfd: Use devm_clk_get_optional() for RAM clk
+  (bsc#1258210).
+- can: rcar_canfd: Invert global vs. channel teardown
+  (bsc#1258210).
+- can: rcar_canfd: Invert reset assert order (bsc#1258210).
+- binfmt_misc: don't leak the user namespace when the mount fails
+  (bsc#1258210).
+- ata: libata-scsi: terminate deferred commands on time out
+  (bsc#1258210).
+- ASoC: tas2562: Validate values for volume writes (bsc#1258210).
+- KVM: x86: Cancel delayed I/O APIC EOI handling before destroying
+  vCPUs (bsc#1258210).
+- userfaultfd: wait on source PMD during UFFDIO_MOVE (bsc#1258210).
+- mm: replace pmd_to_swp_entry() with softleaf_from_pmd()
+  (bsc#1258210).
+- fs/proc/task_mmu: refactor pagemap_pmd_range() (bsc#1258210).
+- btrfs: zoned: fix missing chunk metadata reservation
+  (bsc#1258210).
+- btrfs: remove fs_info argument from btrfs_zoned_activate_one_bg()
+  (bsc#1258210).
+- ksmbd: validate minimum PDU size for transform requests
+  (bsc#1258210).
+- smb/server: fix minimum SMB2 PDU size (bsc#1258210).
+- smb/server: fix minimum SMB1 PDU size (bsc#1258210).
+- ksmbd: rename smb2_get_msg to smb_get_msg (bsc#1258210).
+- ksmbd: Fix to handle removal of rfc1002 header from smb_hdr
+  (bsc#1258210).
+- smb/server: rename include guard in smb_common.h (bsc#1258210).
+- smb: move get_rfc1002_len() to common/smbglob.h (bsc#1258210).
+- net/sched: serialize qdisc_rtab_list against concurrent get/put
+  (bsc#1258210).
+- libceph: fix two unsafe bare decodes in decode_lockers()
+  (bsc#1258210).
+- libceph: bound pg_{temp,upmap,upmap_items} length to
+  CEPH_PG_MAX_SIZE (bsc#1258210).
+- libceph: Amend checking to fix `make W=1` build breakage
+  (bsc#1258210).
+- ceph: fix hanging __ceph_get_caps() with stale mds_wanted
+  (bsc#1258210).
+- ceph: avoid fs reclaim while using current->journal_info
+  (bsc#1258210).
+- xfs: check v5 superblock features early (bsc#1258210).
+- xfs: check xfarray iteration errors when committing unlinked
+  inode lists (bsc#1258210).
+- xfs: don't ignore runtime errors in xrep_iunlink_reload_next
+  (bsc#1258210).
+- xfs: don't swallow dquot recovery verification errors
+  (bsc#1258210).
+- xfs: fix exchange-range reflink flag clearing issue with
+  INO1_WRITTEN (bsc#1258210).
+- xfs: avoid UAF on sc->tempip in xrep_tempfile_create
+  (bsc#1258210).
+- xfs: don't return EFSCORRUPTED when scrubbing corrupt parent
+  pointers (bsc#1258210).
+- xfs: fix another iunlink infinite loop bug in online fsck
+  (bsc#1258210).
+- xfs: fix allocated inodes that show up in the unlinked list
+  (bsc#1258210).
+- xfs: don't walk off the end of a null sc->sa.agi_bp in AGI
+  repair (bsc#1258210).
+- xfs: don't zap the attr fork on repair when there are queued
+  pptr updates (bsc#1258210).
+- xfs: fix ilock leak on error in xfs_dq_get_next_id (bsc#1258210).
+- xfs: load next_agino from the correct xfarray in
+  xrep_iunlink_relink_prev (bsc#1258210).
+- xfs: nlink scrub must take IOLOCK before determining ILOCK state
+  (bsc#1258210).
+- xfs: pass runtime errors from xrep_iunlink_mark_ondisk_rec up
+  to callers (bsc#1258210).
+- xfs: set the prev pointer when reinserting an inode on the
+  unlinked list (bsc#1258210).
+- xfs: don't double-lock when deleting a self-referential directory
+  (bsc#1258210).
+- xfs: only check mergeability of bnobt records (bsc#1258210).
+- xfs: zero i_nlink before repair puts inode on unlinked list
+  (bsc#1258210).
+- xfs: fix transaction block reservation in xrep_rtbitmap
+  (bsc#1258210).
+- xfs: check cowextsize in xrep_inode_cowextsize (bsc#1258210).
+- xfs: clear zapped attr fork state when bmap repair finds no
+  attr fork (bsc#1258210).
+- xfs: mark nonzero sb_gquotino as corrupt on metadir filesystems
+  (bsc#1258210).
+- xfs: bounds-check buffer log item's dirty bitmap (bsc#1258210).
+- xfs: fix off-by-one in rtrefcount btree root level validation
+  (bsc#1258210).
+- xfs: propagate errors from xfs_rtginode_load (bsc#1258210).
+- drm/amdgpu: disallow multiple FENCE chunks in one submit
+  (bsc#1258210).
+- drm/amdgpu: Fix UVD decode image min size calculation
+  (bsc#1258210).
+- drm/amdgpu: Fix UVD dpb min size calculation for H264
+  (bsc#1258210).
+- drm/amdgpu: Fix UVD min buffer sizes (bsc#1258210).
+- drm/amdgpu: Implement insert_end for VCE 3 (bsc#1258210).
+- drm/amdgpu: Reject UVD message with dimensions above 4096
+  (bsc#1258210).
+- drm/amdgpu: validate GEM_CREATE domain combinations
+  (bsc#1258210).
+- drm/amdgpu: check ASPM on the dGPU host link (bsc#1258210).
+- drm/amdgpu: fix nbif 6.3.1 l1 low power not functional
+  (bsc#1258210).
+- drm/amdgpu: Reject UVD message with invalid number of h265 refs
+  (bsc#1258210).
+- drm/amd/display: fix BT.2020 YCbCr output CSC matrices for DCE
+  (bsc#1258210).
+- drm/amd/display: fix BT.2020 YCbCr limited output CSC matrix
+  (bsc#1258210).
+- drm/amd/display: Fix NULL pointer dereference in
+  amdgpu_dm_crtc_set_vblank() (bsc#1258210).
+- s390/zcrypt: Fix CPRB memory allocation in zcrypt misc code
+  (bsc#1258210).
+- s390/vfio_ccw: Implement a crw lock (bsc#1258210).
+- s390/vfio_ccw: Calculate idal length based on idaw type
+  (bsc#1258210).
+- s390/vfio_ccw: Selectively expand io_mutex (bsc#1258210).
+- s390/vfio_ccw: Move cp cleanup out of not operational
+  (bsc#1258210).
+- s390/vfio_ccw: Fix out of bounds check on CCW array
+  (bsc#1258210).
+- s390/vfio_ccw: Ensure first IDAW remains constant (bsc#1258210).
+- s390/vfio_ccw: Ensure index for read/write regions are within
+  range (bsc#1258210).
+- s390/vfio_ccw: Cancel existing workqueues (bsc#1258210).
+- s390/vfio_ccw: Limit the number of channel program segments
+  (bsc#1258210).
+- s390/vfio_ccw: Free all memory if cp_init() fails (bsc#1258210).
+- eth: bnxt: make sure we populate the qcfg defaults on old FW/HW
+  (bsc#1258210).
+- eth: bnxt: always set the queue mgmt ops (bsc#1258210).
+- drm/radeon: fix autosuspend cleanup during teardown
+  (bsc#1258210).
+- drm/xe: Fix xe_device_probe() failure (bsc#1258210).
+- drm/xe: Order ring writes before ring tail updates (bsc#1258210).
+- pmdomain: mediatek: Fix mt8183 hang on boot (bsc#1258210).
+- mmc: loongson2: Fix sg iteration in data reorder functions
+  (bsc#1258210).
+- drm/connector/hdmi: Fix out of bounds memory read (bsc#1258210).
+- mmc: atmel-mci: Fix use-after-free in atmci_remove due to race
+  condition (bsc#1258210).
+- pmdomains: mediatek: Avoid setting RTFF's CLK_DIS before NRESTORE
+  (bsc#1258210).
+- mmc: sdhci: make tuning_err a signed int (bsc#1258210).
+- pmdomain: mediatek: fix remaining %pOF after of_node_put()
+  (bsc#1258210).
+- mmc: sdhci: unmap the bounce buffer before device release
+  (bsc#1258210).
+- mmc: omap_hsmmc: fix busy_timeout overflow in ns conversion
+  on 32-bit (bsc#1258210).
+- libceph: tolerate addrvecs with multiple entries of the same
+  type (bsc#1258210).
+- ceph: fix MDS random selection readiness predicate (bsc#1258210).
+- libceph: Avoid using invalid osd indices from primary_temp
+  (bsc#1258210).
+- Input: sur40 - fix V4L error path cleanup (bsc#1258210).
+- Input: sur40 - fix input device registration ordering
+  (bsc#1258210).
+- openrisc: signal: do not restore privileged SR bits on sigreturn
+  (bsc#1258210).
+- ftrace: Fix off-by-one fentry site disable in ftrace_free_mem()
+  (bsc#1258210).
+- ftrace: Protect direct_functions in ftrace_find_rec_direct
+  (bsc#1258210).
+- libceph: fix multiple unsafe decodes in decode_locker()
+  (bsc#1258210).
+- pmdomain: arm: Fix -EINVAL from scmi_pd_set_perf_state()
+  on state 0 (bsc#1258210).
+- gpio: ml-ioh: use raw_spinlock_t for the register lock
+  (bsc#1258210).
+- gve: fix zero-length skb frag with header-split (bsc#1258210).
+- selftests/ftrace: Convert ELF entry point to file offset in
+  uprobe test (bsc#1258210).
+- gpio: sloppy-logic-analyzer: fix use-after-free via debugfs
+  trigger on unbind (bsc#1258210).
+- gve: fix NULL dereference due to missing ptp adjfine
+  (bsc#1258210).
+- crypto: qce - fix error path in devm_qce_register_algs
+  (bsc#1258210).
+- crypto: starfive - use scatterlist length before DMA mapping
+  (bsc#1258210).
+- Input: hynitron_cstxxx - validate touch count and finger IDs
+  (bsc#1258210).
+- Input: synaptics-rmi4 - propagate F54 worker errors to V4L2
+  queue (bsc#1258210).
+- Input: synaptics-rmi4 - block s_input when F54 queue is busy
+  (bsc#1258210).
+- Input: synaptics-rmi4 - bound the F54 report size to the
+  allocated buffer (bsc#1258210).
+- Input: synaptics-rmi4 - zero report size on F54 work error
+  (bsc#1258210).
+- powerpc/pseries: papr-phy-attest - validate cmd.length, plug
+  mem leak (bsc#1258210).
+- powerpc/pseries: lparcfg - fix kbuf[] underflow (bsc#1258210).
+- Input: byd - synchronize timer deletion before freeing private
+  data (bsc#1258210).
+- Input: iforce - validate input packet lengths (bsc#1258210).
+- Input: atkbd - skip deactivate for Xiaomi Book Pro 14's internal
+  keyboard (bsc#1258210).
+- Input: psxpad-spi - set driver data before use (bsc#1258210).
+- Input: focaltech - fix array out-of-bounds in
+  focaltech_process_rel_packet (bsc#1258210).
+- Input: synaptics-rmi4 - fix F55 transmitter electrode count typo
+  (bsc#1258210).
+- powerpc/pseries: pci - logic bug (bsc#1258210).
+- Input: cs40l50-vibra - validate custom data from user space
+  (bsc#1258210).
+- Input: xpad - add support for ZENAIM LEVERLESS (bsc#1258210).
+- ASoC: SOF: topology: Use acpi mach from the machine driver
+  (bsc#1258210).
+- drm/amdgpu: fix aperture iounmap skipped on device removal
+  (bsc#1258210).
+- drm/amdgpu: fix JPEG v4.0.5 queue reset failure in DPG mode
+  (bsc#1258210).
+- drm/amdgpu: fix JPEG v5.0.0 queue reset failure in DPG mode
+  (bsc#1258210).
+- drm/amdgpu: read TRUNCATE_COORD_MODE on gfx12 (bsc#1258210).
+- drm/amdgpu: reject oversized IBs with per-ring packet limits
+  (bsc#1258210).
+- drm/panthor: skip zero-sized firmware sections (bsc#1258210).
+- fbdev: core: Fix pointer desynchronization in fb_io_read()
+  (bsc#1258210).
+- ASoC: codecs: lpass-wsa-macro: Fix enum kcontrol accesses
+  (bsc#1258210).
+- ASoC: cs35l41: sort the register default table (bsc#1258210).
+- ASoC: cs35l45: sort the register default table (bsc#1258210).
+- ASoC: cs4265: sort the register default table (bsc#1258210).
+- ASoC: SOF: ipc4-pcm: Continue the pipeline trigger in case of
+  IPC timeout (bsc#1258210).
+- ASoC: SOF: sof-audio: Fix error path in
+  sof_widget_setup_unlocked() (bsc#1258210).
+- s390/qeth: validate user buffer length in SNMP and ARP query
+  ioctls (bsc#1258210).
+- mptcp: fastopen: only mark MPTFO subflows with SYN data
+  (bsc#1258210).
+- mptcp: pm: fix data race in add_addr timer callback
+  (bsc#1258210).
+- mptcp: options: reset DSS fields in case of unexpected size
+  (bsc#1258210).
+- mptcp: avoid combining some incoming suboptions (bsc#1258210).
+- selftests: mptcp: join: mark tests with data corruption as
+  failed (bsc#1258210).
+- mptcp: reclaim forward-allocated memory on RX path errors
+  (bsc#1258210).
+- selinux: reject a permission value exceeding the class permission
+  count (bsc#1258210).
+- selinux: reject an unclaimed class value in
+  security_get_classes() (bsc#1258210).
+- selinux: do not cancel a policy conversion that never started
+  (bsc#1258210).
+- selinux: reject a class permission count below its inherited
+  common (bsc#1258210).
+- selinux: require every boolean value to be defined (bsc#1258210).
+- ipvs: separate destination availability state (bsc#1258210).
+- ubi: fastmap: fix ubi->fm memory leak (bsc#1258210).
+- mtd: ubi: skip programming unused bits in ubi headers
+  (bsc#1258210).
+- block: stop the timeout timer when releasing a never added disk
+  (bsc#1258210).
+- ALSA: hda/realtek: Add quirk for HP Dragonfly Folio G3 2-in-1
+  (103c:8a05) (bsc#1258210).
+- commit 5851c34
+
+-------------------------------------------------------------------
 Wed Aug 19 20:00:57 CEST 2026 - rfrohl@suse.com
 
 - Linux 6.18.45 (bsc#1258210).
