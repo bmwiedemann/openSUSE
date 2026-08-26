@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Aug 26 08:30:16 UTC 2026 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- update to 1.0~rc3.1+git326
+  * fix trivial local and remote security compromise (bsc#1269523,
+    CVE-2026-59682, CVE-2026-59683, CVE-2026-18794)
+- drop harden-network.patch which is now contained in the upstream tarball.
+  The patch also had a mistake in the --no[-]autoconnect command line
+  switch.
+- adjust _service file to use upstream release tags instead of random master
+  branch commits that are disguised as release tags.
+
+-------------------------------------------------------------------
 Thu Aug 13 12:07:40 UTC 2026 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - add harden-network.patch: don't listen on all interfaces by default. Users
