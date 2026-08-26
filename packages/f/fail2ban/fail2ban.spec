@@ -63,7 +63,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  timezone
 Requires:       cron
 Requires:       ed
-Requires:       iptables
+Requires:       nftables
 Requires:       logrotate
 Requires:       python3 >= 3.5
 Requires:       python3-setuptools

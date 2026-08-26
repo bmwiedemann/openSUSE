@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Aug 22 18:44:10 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
+
+- Switch from iptables to nftables
+
+-------------------------------------------------------------------
 Thu Aug 20 21:27:50 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
 
 - Default `banactions` need to be specified in paths-*.conf (maintainer
