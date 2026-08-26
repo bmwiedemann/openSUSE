@@ -35,8 +35,8 @@ Source0:        https://github.com/v2fly/v2ray-core/archive/v%{version}/%{name}-
 Source1:        vendor.tar.gz
 Source2:        v2ray.service
 Source3:        v2ray@.service
-Source4:        https://github.com/v2fly/geoip/releases/download/202605120112/geoip.dat
-Source5:        https://github.com/v2fly/domain-list-community/releases/download/20260529001745/dlc.dat
+Source4:        https://github.com/v2fly/geoip/releases/download/202608050239/geoip.dat
+Source5:        https://github.com/v2fly/domain-list-community/releases/download/20260826065759/dlc.dat
 Source6:        https://github.com/v2fly/v2ray-core/releases/download/v%{version}/v2ray-extra.zip
 Source99:       %{name}-rpmlintrc
 BuildRequires:  fdupes

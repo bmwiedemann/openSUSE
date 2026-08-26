@@ -557,4 +557,12 @@
 - Drop update-net.patch (forwarded request 1373260 from hillwood)</comment>
     <requestid>1373261</requestid>
   </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>f029ac9c701ed2b615a17c6c1e478ded</srcmd5>
+    <version>5.53.0</version>
+    <time>1787768649</time>
+    <user>anag_factory</user>
+    <comment>- Update dlc.dat and geoip.dat (forwarded request 1373827 from hillwood)</comment>
+    <requestid>1373828</requestid>
+  </revision>
 </revisionlist>
