@@ -1,7 +1,7 @@
 #
 # spec file for package python-geopandas
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %bcond_with test
 %endif
 Name:           python-geopandas%{psuffix}
-Version:        1.0.1
+Version:        1.1.4
 Release:        0
 Summary:        Geographic pandas extensions
 License:        BSD-3-Clause
@@ -34,21 +34,21 @@ URL:            https://geopandas.org
 # SourceRepository: https://github.com/geopandas/geopandas
 # Use Repository for test data
 Source0:        https://github.com/geopandas/geopandas/archive/refs/tags/v{%version}.tar.gz#/geopandas-%{version}-gh.tar.gz
-BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module base >= 3.10}
+BuildRequires:  %{python_module hatch-vcs}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools >= 61}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       proj
-Requires:       python-numpy >= 1.22
+Requires:       python-numpy >= 2
 Requires:       python-packaging
-Requires:       python-pandas >= 1.4.0
-Requires:       python-pyogrio >= 0.7.2
-Requires:       python-pyproj
-Requires:       python-shapely >= 2
+Requires:       python-pandas >= 2.2.0
+Requires:       python-pyogrio >= 0.8
+Requires:       python-pyproj >= 3.7
+Requires:       python-shapely >= 2.1
 Recommends:     python-geopy
-Recommends:     python-matplotlib
+Recommends:     python-matplotlib >= 3.9
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module Fiona}
@@ -57,13 +57,13 @@ BuildRequires:  %{python_module folium}
 BuildRequires:  %{python_module fsspec}
 BuildRequires:  %{python_module geopandas = %{version}}
 BuildRequires:  %{python_module geopy}
-BuildRequires:  %{python_module matplotlib >= 3.5.0}
-BuildRequires:  %{python_module numpy >= 1.22}
-BuildRequires:  %{python_module psycopg2}
-BuildRequires:  %{python_module pyarrow}
+BuildRequires:  %{python_module matplotlib >= 3.9}
+BuildRequires:  %{python_module psycopg >= 3.2}
+BuildRequires:  %{python_module pyarrow >= 15}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy}
-BuildRequires:  %{python_module sqlalchemy}
+BuildRequires:  %{python_module sqlalchemy >= 2}
 # mapclassify not yet available
 #BuildRequires: %%{python_module mapclassify}
 %endif
@@ -91,18 +91,11 @@ require a spatial database such as PostGIS.
 
 %check
 %if %{with test}
-# online resource
-donttest="test_read_file_url"
-# test files missing in sdist
-donttest="$donttest or test_overlay"
-donttest="$donttest or (test_arrow and (test_read_versioned_file or test_read_gdal_file))"
-# wrong shapely type
-donttest="$donttest or (test_geom_methods and test_sample_points_array)"
-donttest="$donttest or (test_random and test_uniform and geom)"
+donttest="dummydonttest"
 if [ $(getconf LONG_BIT) -eq 32 ]; then
   donttest="$donttest or test_explode or test_get_coordinates_parts"
 fi
-%pytest -rsfE -k "not ($donttest)"
+%pytest -n auto -rsfE -m "not web" -k "not ($donttest)"
 %endif
 
 %if !%{with test}
