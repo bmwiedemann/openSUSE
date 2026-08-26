@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 25 08:14:46 UTC 2026 - Fabian Vogt <fvogt@suse.com>
+
+- Add patch to fix a regression in icon loading (kde#=524657, QTBUG-149431):
+  * 0001-QIconLoader-Don-t-consider-fallbackThemeName-in-them.patch
+
+-------------------------------------------------------------------
 Tue Aug 18 11:48:22 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.11.2
