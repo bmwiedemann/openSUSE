@@ -27,6 +27,8 @@ Source:         https://sourceforge.net/projects/xpenguins/files/xpenguins-%{ver
 Source1:        README.openSUSE
 Source2:        %{name}-stop.desktop
 Source3:        %{name}-stop.png
+# PATCH-FIX-UPSTREAM https://gitlab.com/wvermin/xpenguins/-/merge_requests/1
+Patch0:         reproducible.patch
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
@@ -46,6 +48,7 @@ go-go-gadget 'copter ability.
 
 %prep
 %setup -q
+%patch -P0 -p1
 
 %build
 %configure

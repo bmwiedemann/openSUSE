@@ -1,0 +1,37 @@
+Use the SOURCE_DATE_EPOCH-derived date for the man page
+
+configure.ac already turns SOURCE_DATE_EPOCH into the @DATE@ substitution,
+but the rule expanding xpenguins.1.tmpl still calls date(1).  The .TH line
+of the installed man page therefore records the day of the build, so the
+man page - and, with --enable-selfrep, the tarball embedded in the binary -
+differs between two builds from the same source.
+
+Use $(DATE) instead.  Besides being reproducible, the resulting %Y-%m-%d is
+the date format man-pages(7) asks for, and it no longer depends on the build
+locale (date +%B is translated).
+
+Makefile.in is patched too, so that the fix takes effect without re-running
+automake.
+
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -25,7 +25,7 @@
+ man_MANS = xpenguins.1
+ 
+ xpenguins.1: xpenguins.1.tmpl
+-	sed "s'SYSTEMTHEMES'$(datadir)/xpenguins/themes/*';s/VERSION/$(VERSION)/;s/DATE/`date +'%B %Y'`/" < $< > $@
++	sed "s'SYSTEMTHEMES'$(datadir)/xpenguins/themes/*';s/VERSION/$(VERSION)/;s/DATE/$(DATE)/" < $< > $@
+ 
+ tarfile = $(top_builddir)/xroachng-$(VERSION).tar.gz
+ 
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -894,7 +894,7 @@
+ 
+ 
+ xpenguins.1: xpenguins.1.tmpl
+-	sed "s'SYSTEMTHEMES'$(datadir)/xpenguins/themes/*';s/VERSION/$(VERSION)/;s/DATE/`date +'%B %Y'`/" < $< > $@
++	sed "s'SYSTEMTHEMES'$(datadir)/xpenguins/themes/*';s/VERSION/$(VERSION)/;s/DATE/$(DATE)/" < $< > $@
+ 
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.
+ # Otherwise a system limit (for SysV at least) may be exceeded.
