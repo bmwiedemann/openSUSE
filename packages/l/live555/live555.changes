@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Aug 22 20:32:55 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2026.08.14:
+  * Fixed a bug that could cause a problem with subclassed variants
+    of H.264 or H.265 RTP sinks.
+  * Fixed old code in "GroupsockHelper.cpp" that was using
+    hardcoded numeric error numbers
+  * Fixed a memory leak that could occur when parsing a SDP
+    description that contains two or more
+  * When adding protection against the use of 'stolen' RTSP session
+    ids we forgot to do so for every "SETUP" command.  This release
+    fixes that.
+  * Fixed a typo in "RTSPCommon.cpp": "smtpe" -> "smpte".
+  * Updated the RTSP server implementation to return a "Unsupported
+    Transport" error if a "SETUP" request does not include a
+    "Transport:" header.
+  * Added "-std=c++20" to the "CPLUSPLUS_FLAGS" line in each
+    "config.*" file, so that "std::atomic_flag::test" will compile
+    with compilers that support
+  * Made the parsing of MP3 audio files more robust to protect
+    against malformed MP3 data.
+  * Minor change to "testProgs/testRTSPClient.cpp" to make
+    compiling on Mac OS X happier.
+
+-------------------------------------------------------------------
 Tue Jun  2 07:30:31 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2026.06.01:
