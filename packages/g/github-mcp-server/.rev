@@ -104,4 +104,45 @@ texts shipped under %license, which are kept per-dependency on purpose.</comment
   is still declared as &quot;server&quot; in this release.</comment>
     <requestid>1372635</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7a71524f6d00acf55b8f2a41470d70be</srcmd5>
+    <version>1.11.0</version>
+    <time>1787766795</time>
+    <user>anag_factory</user>
+    <comment>Update github-mcp-server to 1.11.0.
+
+Upstream highlights: per-call OAuth scope challenges (a tool invocation
+requests only the permissions it actually needs), CORS preserved across the
+OAuth discovery routes plus a new --authorization-server flag, atomic
+parent/sub-issue creation including across repositories, and ETag conditional
+requests in the REST transport with a client-scoped, byte-bounded response
+cache.
+
+Packaging changes:
+
+* Dropped github-mcp-server-root-command-name.patch. Upstream merged it as
+  github/github-mcp-server#2998 (after the v1.10.1 tag), so v1.11.0 already
+  declares the cobra root command as &quot;github-mcp-server&quot; and the generated
+  shell completions bind to the right command name without the patch. The
+  patch file is removed from the package and the %install comment that
+  referenced it was reworded.
+
+* Re-vendored the Go modules: go-chi/chi 5.3.1 -&gt; 5.3.2, go.yaml.in/yaml
+  3.0.4 -&gt; 3.0.5, testify 1.12.0 -&gt; 1.12.1 (test-only), and
+  gopkg.in/check.v1 / gopkg.in/yaml.v3 are gone from the vendor tree.
+  Licences re-audited after the re-vendor, as required for any vendored
+  dependency refresh: all 37 vendored modules are MIT, BSD-3-Clause or
+  Apache-2.0, none copyleft, so License: MIT is unchanged.
+
+go.mod still declares go 1.25.12 - upstream's &quot;Go 1.27&quot; release note refers to
+its Docker base image, not the module requirement - so
+BuildRequires: golang(API) &gt;= 1.26 stays as it is.
+
+Verified locally on aarch64 against openSUSE:Factory:ARM/standard: build
+green, %check ran the full offline test suite (29 packages ok, 0 failures),
+rpmlint 0 errors / 0 badness (5 files-duplicate warnings on byte-identical
+third-party licence texts). source_validator clean. The v1.10.1..v1.11.0
+commit range mentions no CVEs.</comment>
+    <requestid>1373670</requestid>
+  </revision>
 </revisionlist>

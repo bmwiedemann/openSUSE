@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Aug 25 17:01:47 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.11.0:
+  * Per-call OAuth scope challenges: a tool invocation now requests
+    only the permissions it actually needs, with runtime checks
+    where required.
+  * Browser-based OAuth works across the discovery routes again:
+    CORS is preserved, unknown resource-metadata routes are
+    terminated, and a new --authorization-server flag overrides the
+    authorization server URL.
+  * Parent and sub-issues can be created atomically, including
+    across repositories; parent repository coordinates must now be
+    given in full.
+  * The REST transport supports ETag conditional requests, with the
+    response cache scoped to the REST client, bounded by bytes and
+    streaming oversized responses.
+- Drop github-mcp-server-root-command-name.patch: upstream merged
+  it as pull request 2998, so this release already names the cobra
+  root command after the installed binary.
+- Re-vendor Go modules: go-chi/chi 5.3.1 to 5.3.2 and
+  go.yaml.in/yaml 3.0.4 to 3.0.5; testify moves to 1.12.1 and the
+  check.v1 and yaml.v3 test-only modules are gone. All vendored
+  modules linked into the binaries remain MIT, BSD-3-Clause or
+  Apache-2.0, so no copyleft code is linked.
+
+-------------------------------------------------------------------
 Thu Aug 20 18:43:34 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.10.1:
