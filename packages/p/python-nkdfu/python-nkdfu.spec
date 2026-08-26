@@ -1,7 +1,7 @@
 #
 # spec file for package python-nkdfu
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,10 +24,10 @@ Summary:        DFU tool for updating Nitrokeys' firmware
 License:        GPL-2.0-only
 URL:            https://github.com/Nitrokey/nkdfu
 Source:         https://files.pythonhosted.org/packages/source/n/nkdfu/nkdfu-0.2.tar.gz
-BuildRequires:  %{python_module flit}
+# PATCH-FIX-UPSTREAM gh#Nitrokey/nkdfu#2
+Patch0:         support-flit-core-4.patch
+BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       intelhex
@@ -35,7 +35,7 @@ Requires:       python-fire
 Requires:       python-libusb1
 Requires:       python-tqdm
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 

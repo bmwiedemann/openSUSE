@@ -7,4 +7,13 @@
     <comment></comment>
     <requestid>1089575</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2643db1f27f07c4422025c9f5a161991</srcmd5>
+    <version>0.2</version>
+    <time>1787766893</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-flit-core-4.patch:
+  * Use PEP 621 metadata and migrate to flit-core.</comment>
+    <requestid>1373713</requestid>
+  </revision>
 </revisionlist>

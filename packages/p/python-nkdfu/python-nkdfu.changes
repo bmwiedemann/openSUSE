@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 26 00:38:26 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-flit-core-4.patch:
+  * Use PEP 621 metadata and migrate to flit-core.
+
+-------------------------------------------------------------------
 Sun May 28 07:03:00 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - Require intelhex, not python-intelhex, as the former is already
