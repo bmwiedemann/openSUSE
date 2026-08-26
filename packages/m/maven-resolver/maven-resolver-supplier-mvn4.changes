@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Tue Aug 25 07:07:27 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 2.0.22
+  * New features and improvements
+    + Fix #1994: log exceptions from IpcNamedLock.tryUnlock()
+    + Consider "Retry-After" header in Java HTTP Client
+    + Fix compilation error in DefaultRepositorySystemReentrancyTest
+    + Extend re-entrancy detection for broken trace chains
+    + Fix #2013: optimize TransitiveDependencyManager performance
+    + Extract included checksums from x-amz-meta-* headers
+    + Enh: Allow validator factory to abstain
+  * Bug Fixes
+    + Fix InterruptedException silently dropping task in
+      SmartExecutor.Limited.submit(Runnable)
+    + Documentation updates
+    + docs: rewrite expected-checksums.md to STE rules
+    + Support deprecated tag.
+    + Reconcile the two download pages and modernise them
+    + Convert the index page from xdoc to Markdown
+    + docs: rewrite creating-a-repository-system-session.md to STE
+      rules
+    + docs: rewrite common-misconceptions.md to ASD-STE100 rules
+    + docs: rewrite deployment.md in ASD-STE100 Simplified Technical
+      English
+    + docs: rewrite dependency-graph.md in ASD-STE100 Simplified
+      Technical English
+    + docs: rewrite about-checksums.md to STE rules
+    + docs: rewrite api-compatibility.md to STE rules
+    + Docs: rewrite what-is-resolver page in Simplified Technical
+      English (ASD-STE100)
+    + Fix documentation issues across site docs
+    + Improve rendering of javadoc content
+    + Edit version comparison
+  * Maintenance
+    + Drop the versions.junit5 property the parent already provides
+    + Fix #1998: use try-with-resources in test file utilities
+    + Convert the index page from xdoc to Markdown
+    + Use https in license URLs as recommended by ASF
+    + Exclude ODG graphics from RAT checks
+    + Build against Maven 4.0.0-rc-6
+    + Fix resource leak pattern in
+      DependencyGraphParser.parseLiteral()
+    + Replace printStackTrace with proper error handling
+  * Build
+    + Improve error reporting
+    + .gitignore .vscode/
+    + Improve rendering of javadoc content
+  * Dependency updates
+    + deps: Updates
+    + Drop the versions.junit5 property the parent already provides
+    + Bump org.redisson:redisson from 4.6.1 to 4.7.0
+    + Bump commons-codec:commons-codec from 1.22.0 to 1.22.1
+    + Bump sisuVersion from 1.0.1 to 1.1.0
+
+-------------------------------------------------------------------
 Thu Jul 23 07:05:59 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream version 2.0.21
