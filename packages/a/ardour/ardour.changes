@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 20 11:48:49 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 9.8.0
+  Check https://ardour.org/whatsnew.html for all details.
+
+-------------------------------------------------------------------
 Sun Aug  2 18:35:04 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Build with the default compiler again, pinning the language standard
