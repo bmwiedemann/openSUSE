@@ -1135,4 +1135,15 @@ bsc#1273781, bsc#1273783, bsc#1273785, bsc#1278787):
     <comment>Update bug references with CVE numbers and new bugs</comment>
     <requestid>1372176</requestid>
   </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>daf95cede603ed445c1cba1d2b12491e</srcmd5>
+    <version>3.1.59</version>
+    <time>1787766673</time>
+    <user>anag_factory</user>
+    <comment>- Update bug references (CVE-2026-78679 (bsc#1276430),
+  CVE-2026-78678 (bsc#1276431), CVE-2026-78677 (bsc#1276432),
+  CVE-2026-78676 (bsc#1276433), CVE-2026-78675 (bsc#1276434))
+  * new bugs have been opened since CVE numbers were assigned and old bugs have been closed as duplicates</comment>
+    <requestid>1373552</requestid>
+  </revision>
 </revisionlist>
