@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 26 09:00:16 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Add fix-oauth-tests.patch to fix testsuite
+
+-------------------------------------------------------------------
 Thu Jun 18 10:50:41 UTC 2026 - Jordi Massaguer <jmassaguerpla@suse.com>
 
 - Split test package and use multibuild, so it can be excluded from

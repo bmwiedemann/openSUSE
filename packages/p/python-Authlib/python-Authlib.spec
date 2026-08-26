@@ -36,6 +36,8 @@ Summary:        Python library for building OAuth and OpenID Connect servers
 License:        BSD-3-Clause
 URL:            https://authlib.org/
 Source:         https://github.com/lepture/%{modname}/archive/refs/tags/v%{version}.tar.gz#/%{modname}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM fix-oauth-tests.patch gh#authlib/authlib@aaac6e5
+Patch0:         fix-oauth-tests.patch
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}

@@ -1,0 +1,89 @@
+From aaac6e55e1f3509003c243e959a29370ea0b1810 Mon Sep 17 00:00:00 2001
+From: Levin Kaus <levinkaus@gmail.com>
+Date: Thu, 16 Jul 2026 18:37:37 +0200
+Subject: [PATCH] fix(oauth): cast sub claim to string in
+ JWTBearerTokenGenerator
+
+---
+ authlib/oauth2/rfc9068/token.py                             | 2 +-
+ tests/flask/test_oauth2/rfc9068/test_resource_server.py     | 2 +-
+ tests/flask/test_oauth2/rfc9068/test_token_generation.py    | 2 +-
+ tests/flask/test_oauth2/rfc9068/test_token_introspection.py | 4 ++--
+ tests/flask/test_oauth2/rfc9068/test_token_revocation.py    | 2 +-
+ 5 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/authlib/oauth2/rfc9068/token.py b/authlib/oauth2/rfc9068/token.py
+index 97959a1b..f53ac651 100644
+--- a/authlib/oauth2/rfc9068/token.py
++++ b/authlib/oauth2/rfc9068/token.py
+@@ -144,7 +144,7 @@ def access_token_generator(self, client, grant_type, user, scope):
+         # correspond to the subject identifier of the resource owner.
+ 
+         if user:
+-            token_data["sub"] = user.get_user_id()
++            token_data["sub"] = str(user.get_user_id())
+ 
+         # In cases of access tokens obtained through grants where no resource owner is
+         # involved, such as the client credentials grant, the value of 'sub' SHOULD
+diff --git a/tests/flask/test_oauth2/rfc9068/test_resource_server.py b/tests/flask/test_oauth2/rfc9068/test_resource_server.py
+index 0e665df5..02b62d04 100644
+--- a/tests/flask/test_oauth2/rfc9068/test_resource_server.py
++++ b/tests/flask/test_oauth2/rfc9068/test_resource_server.py
+@@ -129,7 +129,7 @@ def create_access_token_claims(client, user):
+         "iss": issuer,
+         "exp": expires_in,
+         "aud": resource_server,
+-        "sub": user.get_user_id(),
++        "sub": str(user.get_user_id()),
+         "client_id": client.client_id,
+         "iat": now,
+         "jti": generate_token(16),
+diff --git a/tests/flask/test_oauth2/rfc9068/test_token_generation.py b/tests/flask/test_oauth2/rfc9068/test_token_generation.py
+index ed0f4966..146b3317 100644
+--- a/tests/flask/test_oauth2/rfc9068/test_token_generation.py
++++ b/tests/flask/test_oauth2/rfc9068/test_token_generation.py
+@@ -100,7 +100,7 @@ def test_generate_jwt_access_token(test_client, client, user, jwks):
+     claims = jwt.decode(access_token, jwks)
+ 
+     assert claims["iss"] == issuer
+-    assert claims["sub"] == user.id
++    assert claims["sub"] == str(user.id)
+     assert claims["scope"] == client.scope
+     assert claims["client_id"] == client.client_id
+ 
+diff --git a/tests/flask/test_oauth2/rfc9068/test_token_introspection.py b/tests/flask/test_oauth2/rfc9068/test_token_introspection.py
+index cf7a7ef3..19e6fffd 100644
+--- a/tests/flask/test_oauth2/rfc9068/test_token_introspection.py
++++ b/tests/flask/test_oauth2/rfc9068/test_token_introspection.py
+@@ -96,7 +96,7 @@ def create_access_token_claims(client, user):
+         "iss": issuer,
+         "exp": expires_in,
+         "aud": [resource_server],
+-        "sub": user.get_user_id(),
++        "sub": str(user.get_user_id()),
+         "client_id": client.client_id,
+         "iat": now,
+         "jti": generate_token(16),
+@@ -140,7 +140,7 @@ def test_introspection(test_client, client, user, access_token):
+     assert resp["client_id"] == client.client_id
+     assert resp["token_type"] == "Bearer"
+     assert resp["scope"] == client.scope
+-    assert resp["sub"] == user.id
++    assert resp["sub"] == str(user.id)
+     assert resp["aud"] == [resource_server]
+     assert resp["iss"] == issuer
+ 
+diff --git a/tests/flask/test_oauth2/rfc9068/test_token_revocation.py b/tests/flask/test_oauth2/rfc9068/test_token_revocation.py
+index a0466781..a59f4808 100644
+--- a/tests/flask/test_oauth2/rfc9068/test_token_revocation.py
++++ b/tests/flask/test_oauth2/rfc9068/test_token_revocation.py
+@@ -92,7 +92,7 @@ def create_access_token_claims(client, user):
+         "iss": issuer,
+         "exp": expires_in,
+         "aud": [resource_server],
+-        "sub": user.get_user_id(),
++        "sub": str(user.get_user_id()),
+         "client_id": client.client_id,
+         "iat": now,
+         "jti": generate_token(16),
+
