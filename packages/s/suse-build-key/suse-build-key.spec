@@ -32,7 +32,7 @@ Source1000:     key2rpmname
 # pub  2048R/39DB7C82 2013-01-31 SuSE Package Signing Key <build@suse.de>
 # The main package signing key.
 Source0:        gpg-pubkey-39db7c82-66c5d91a.asc
-#pub   rsa4096/0xF74F09BC3FA1D6CE 2023-01-19 [SC] [expires: 2027-01-18]
+#pub   rsa4096/0xF74F09BC3FA1D6CE 2023-01-19 [SC] [expires: 2029-03-05]
 #      Key fingerprint = 7F00 9157 B127 B994 D5CF  BE76 F74F 09BC 3FA1 D6CE
 #uid                             SUSE Package Signing Key <build@suse.de>
 Source4:        gpg-pubkey-3fa1d6ce-67c856ee.asc

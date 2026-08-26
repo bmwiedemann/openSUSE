@@ -453,4 +453,12 @@ This fixes build on SLE15SP7. (forwarded request 1190501 from epaolantonio)</com
 - initial package. Contains (forwarded request 1355307 from dirkmueller)</comment>
     <requestid>1355313</requestid>
   </revision>
+  <revision rev="52" vrev="23">
+    <srcmd5>22c0a2bcf976de3c437b10685d5fde70</srcmd5>
+    <version>12.0</version>
+    <time>1787766963</time>
+    <user>anag_factory</user>
+    <comment>- correct comment on suse sle15 4k build key (forwarded request 1373803 from msmeissn)</comment>
+    <requestid>1373805</requestid>
+  </revision>
 </revisionlist>

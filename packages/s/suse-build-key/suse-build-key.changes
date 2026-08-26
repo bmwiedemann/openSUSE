@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 26 11:45:55 UTC 2026 - Marcus Meissner <meissner@suse.com>
+
+- correct comment on suse sle15 4k build key
+
+-------------------------------------------------------------------
 Wed May 27 08:49:26 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - avoid using touch without requiring touch as postinstall script
