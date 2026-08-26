@@ -46,4 +46,32 @@ built.
 %check now exercises it. Local build green on both flavours, rpmlint clean.</comment>
     <requestid>1373273</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5e242670359eff88058c886564a46d63</srcmd5>
+    <version>0.4.15</version>
+    <time>1787766808</time>
+    <user>anag_factory</user>
+    <comment>Update python-comfy-aimdo to 0.4.15.
+
+The entire upstream 0.4.14..0.4.15 delta is a single Windows-only
+constant: NVML_BUDGET_HEADROOM in src-win/shmem-detect.c drops from
+768 MB to 512 MB. The comfy_aimdo Python tree that this package ships
+is byte-identical to 0.4.14, so there is no functional change for
+openSUSE users.
+
+Upstream publishes no sdist on PyPI, so the source stays the GitHub tag
+tarball; its sha256 was checked against a freshly fetched copy of the
+tag. Patch0 is retained unchanged and still applies cleanly, as the
+upstream pull request behind it has not been merged.
+
+Built and verified on aarch64: rpmlint 0 errors, 0 warnings, 0 badness,
+and %check passes for python313 and python314.
+
+Staging note: Factory's comfyui pinned this package to an exact version,
+which would have gone unresolvable when this landed. Request 1373685
+converts that pin to a floor (and fixes a second, already-broken exact
+pin on comfyui-workflow-templates). Please stage the two together, or
+let 1373685 land first.</comment>
+    <requestid>1373687</requestid>
+  </revision>
 </revisionlist>

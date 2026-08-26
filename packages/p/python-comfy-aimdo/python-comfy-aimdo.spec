@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-comfy-aimdo
-Version:        0.4.14
+Version:        0.4.15
 Release:        0
 Summary:        AI Model Dynamic Offloader for ComfyUI (pure-Python fallback)
 License:        GPL-3.0-only

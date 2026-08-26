@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Aug 25 16:59:43 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.4.15:
+  * Windows shared-memory detection now keeps 512 MB of VRAM headroom
+    instead of the 768 MB introduced in 0.4.14 when the free-memory
+    figure is read from NVML rather than from cuMemGetInfo()
+  * That Windows-only constant is the entire release; the Python code
+    shipped by this package is unchanged from 0.4.14
+
+-------------------------------------------------------------------
 Sun Aug 23 17:31:30 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Stop warning "Could not autodetect AIMDO implementation, assuming
