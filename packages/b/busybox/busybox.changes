@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Aug 21 16:25:27 UTC 2026 - Radoslav Kolev <radoslav.kolev@suse.com>
+
+- Fix stack exhaustion in the ash applet caused by unbounded shell
+  function recursion (CVE-2026-38755, bsc#1271548)
+  * ash-fix-evalfun.patch
+
+-------------------------------------------------------------------
+Tue Aug 21 12:10:52 UTC 2026 - Radoslav Kolev <radoslav.kolev@suse.com>
+
+- Fix out-of-bounds read in ifsbreakup() (CVE-2026-38754, bsc#1271547)
+  * 0001-ash-fix-out-of-bounds-read-in-ifsbreakup.patch
+
+-------------------------------------------------------------------
+Tue Aug 21 11:58:15 UTC 2026 - Radoslav Kolev <radoslav.kolev@suse.com>
+
+- Fix use-after-free in the awk applet regexp processing code when
+  text replacement operations are used (CVE-2026-38753, bsc#1271545)
+  * awk-fix-use-after-free-sub.patch
+
+-------------------------------------------------------------------
+Mon Aug 20 15:14:21 UTC 2026 - Radoslav Kolev <radoslav.kolev@suse.com>
+
+- Fix stack exhaustion in the awk applet caused by unbounded
+  function call recursion (CVE-2026-38752, bsc#1271544)
+  * awk-fix-recursion.patch
+
+-------------------------------------------------------------------
+Mon Aug 20 12:20:37 UTC 2026 - Radoslav Kolev <radoslav.kolev@suse.com>
+
+- Fix heap buffer overflow in the awk applet when a regexp ends
+  with a backslash (CVE-2023-42366, bsc#1217586)
+  * 0001-awk.c-fix-CVE-2023-42366-bug-15874.patch
+
+-------------------------------------------------------------------
 Fri Jun 19 07:56:28 UTC 2026 - Radoslav Kolev <radoslav.kolev@suse.com>
 
 - Update to version 1.38.0:

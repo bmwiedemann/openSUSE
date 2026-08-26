@@ -49,6 +49,17 @@ Patch5:         busybox-1.37.0-make-ping-work-without-root-privileges.patch
 Patch6:         0001-update_passwd-Avoid-selinux_preserve_fcontext-if-SEL.patch
 # PATCH-FIX-UPSTREAM - Fix bsc#1253245 (CVE-2025-60876), submitted to mailing list
 Patch7:         wget-don-t-allow-control-characters-in-url.patch
+# PATCH-FIX-UPSTREAM - Fix bsc#1217586 (CVE-2023-42366), heap-buffer-overflow in awk next_token()
+# the patch has been submitted upstream a long time ago, but never applied
+Patch8:         0001-awk.c-fix-CVE-2023-42366-bug-15874.patch
+# PATCH-FIX-UPSTREAM - Fix bsc#1271544 (CVE-2026-38752), stack exhaustion in awk
+Patch9:         awk-fix-recursion.patch
+# PATCH-FIX-UPSTREAM - Fix bsc#1271545 (CVE-2026-38753), use-after-free in aw
+Patch10:        awk-fix-use-after-free-sub.patch
+# PATCH-FIX-UPSTREAM - Fix bsc#1271547 (CVE-2026-38754), out-of-bounds read in ash ifsbreakup(), upstream commit a448b6d5b
+Patch11:        0001-ash-fix-out-of-bounds-read-in-ifsbreakup.patch
+# PATCH-FIX-UPSTREAM - Fix bsc#1271548 (CVE-2026-38755), stack exhaustion on deep ash function recursion
+Patch12:        ash-fix-evalfun.patch
 
 # other patches
 Patch100:       busybox.install.patch
