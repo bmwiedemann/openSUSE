@@ -16,7 +16,7 @@
 #
 
 Name:           python-comfyui-workflow-templates-json
-Version:        0.1.55
+Version:        0.1.57
 Release:        0
 Summary:        Workflow template JSON definitions for ComfyUI
 # Legal-Review-Notice: sdist ships no LICENSE file; upstream

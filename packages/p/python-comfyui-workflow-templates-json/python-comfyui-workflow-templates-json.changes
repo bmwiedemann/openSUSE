@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Aug 26 05:55:50 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.1.57:
+  * Add Pixal3D/TRELLIS.2 image-to-model, Nano Banana 2 image edit
+    continuation, SDXL 1.0 simple text-to-image, SAM 3D Body mesh
+    extraction and MiniMax H3 image-to-video continuation
+    templates
+  * Wan 3.0 API templates regenerated against frontend 1.49.6:
+    named widget values, comfy-core node metadata, and the video
+    duration now defaults to auto instead of 5 seconds
+  * MiniMax H3 templates document the optional style prompt
+    embeddings and how to reference them
+  * Template index and its localisations updated for the new
+    entries
+
+-------------------------------------------------------------------
 Tue Aug 25 08:07:46 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.1.55:
