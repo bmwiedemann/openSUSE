@@ -55,4 +55,66 @@
     <comment></comment>
     <requestid>1255223</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>48f8131e364c123699df9d04fb3f3b7d</srcmd5>
+    <version>4.6</version>
+    <time>1787767063</time>
+    <user>anag_factory</user>
+    <comment>Update acarsdec to 4.6, switching to the maintained upstream repository.
+
+UPSTREAM MIGRATION - please read, it is the point of this request:
+
+The repository this package tracked, github.com/TLeconte/acarsdec, was
+ARCHIVED (read-only) on 2025-07-31. Its last release is the tag
+acarsdec-3.7 from 2022, which is exactly what Factory ships today, and
+its README now reads &quot;This is a legacy repository of the original code
+of acarsdec by T.Leconte / For newer versions see:
+github.com/f00b4r0/acarsdec&quot;. Development moved to that repository,
+which released v4.6 on 2026-06-18. Arch (AUR) ships 4.6 from it and GNU
+Guix ships 4.4.1 from it, so the new location is not a random fork but
+the continuation the original author designates.
+
+URL, Source and the package _meta have been repointed accordingly. The
+release tags were renamed from acarsdec-X.Y to vX.Y and the archive now
+unpacks to acarsdec-&lt;version&gt;, so the srcname helper macro the old
+tarball layout needed is gone.
+
+Packaging notes for the 3.7 -&gt; 4.6 jump:
+
+* The SDR backend selection had never taken effect. The 3.x spec passed
+  -DLIBRTL=1 and -DLIBAIR=1, but in 3.x those were the internal
+  find_library cache variables and the actual CMake options were named
+  &quot;rtl&quot; and &quot;airspy&quot;. The Factory build log for 3.7 shows CMake printing
+  &quot;No sdr option set ! are you sure ?&quot; and the resulting RPM requires
+  neither librtlsdr nor libairspy - the shipped binary could only decode
+  from an audio file. The 4.x option names are now passed explicitly and
+  the binary links against both again.
+* 4.0 dropped the bundled cJSON copy in favour of the system library, so
+  Provides: bundled(cJSON) is gone and pkgconfig(libcjson) is a new
+  build dependency.
+* 4.0 wired up the ALSA capture input, so pkgconfig(alsa) is a new build
+  dependency.
+* SoapySDR and SDRplay are explicitly disabled: SoapySDR is not packaged
+  in openSUSE and sdrplay_api v3 is proprietary. MQTT stays off as it
+  was before, so paho-mqtt-c is not pulled in.
+* reproducible.patch is dropped - upstream removed the hardcoded
+  -march=native in 4.0 (boo#1100677), so the patch is obsolete and no
+  longer applies.
+* The -DCMAKE_POLICY_VERSION_MINIMUM=3.5 cmake4 workaround is dropped;
+  upstream now requires CMake 3.12 and builds with CMake 4. The cmake
+  BuildRequires floor was raised to match.
+* License corrected to GPL-2.0-only: 4.0 added a LICENSE.md carrying the
+  GPL version 2 text and README.md states GPLv2-only. The per-file
+  boilerplate naming the &quot;Library&quot; GPL version 2 is a long-standing
+  upstream typo and is recorded as a Legal-Review-Notice in the spec.
+* The %check was an empty ctest run - upstream ships no test suite, so
+  it always reported &quot;No tests were found!!!&quot;. It is replaced by a
+  functional smoke test that decodes the sample recording upstream
+  ships; it decodes seven ACARS messages during the build.
+
+Built and verified locally on aarch64 for openSUSE_Tumbleweed: green,
+rpmlint 0 errors / 0 warnings / 0 badness (unchanged from the 3.7
+baseline).</comment>
+    <requestid>1373840</requestid>
+  </revision>
 </revisionlist>

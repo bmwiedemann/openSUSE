@@ -1,4 +1,108 @@
 -------------------------------------------------------------------
+Wed Aug 26 14:41:06 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Switch to the actively maintained upstream repository
+  f00b4r0/acarsdec:
+  * the original TLeconte/acarsdec repository was archived on
+    2025-07-31 with tag acarsdec-3.7 (2022) as its last release, and
+    its README now designates f00b4r0/acarsdec as the continuation
+  * all development from 4.0 onwards happens in that repository;
+    Arch (AUR) and Guix track it as well
+  * URL and Source have been repointed accordingly
+- Upstream renamed the release tags from acarsdec-X.Y to vX.Y and the
+  archive now unpacks to acarsdec-<version>, so the srcname helper
+  macro used for the old tarball layout was dropped
+- Update to version 4.6:
+  * partial sdrplay API v3 support, marked untested and unmaintained
+    by upstream
+  * fix a potential buffer overrun in the ACARS decoder when handling
+    abnormally long messages
+  * fix a buffer overrun in the file output when rotation is enabled
+    on a pathname that contains an extension
+- Changes from version 4.5:
+  * Airspy R2 support
+- Changes from version 4.4.1:
+  * fix the operation of --skip-reassembly
+- Changes from version 4.4:
+  * MSK demodulator revamp
+  * SoapySDR and Airspy updates
+  * fix the build when paho-mqtt is not installed
+- Changes from version 4.3.1:
+  * fix a compile failure with CMake older than 3.26
+- Changes from version 4.3:
+  * backends now carry their own default configuration and SoapySDR
+    picks its sample rate multiplier automatically
+  * the sample recording test.wav was resampled to 12 kHz
+  * the version string is taken from git describe when building from
+    a checkout, with an in-tree fallback for release tarballs
+- Changes from version 4.2:
+  * new noise floor estimator; the receiver bandwidth is now set for
+    rtlsdr and SoapySDR and the rtlsdr sample rate multiplier is
+    chosen automatically
+  * report the signal level after sync and flag messages received
+    above 0 dB
+  * the internal sample rate is fixed at 12 kHz
+  * fix the build with recent CMake releases
+- Changes from version 4.1:
+  * ACARS decoder and MSK demodulator rework: sync on the entire
+    PREKEY, reworked level estimator, vectorizable parity removal and
+    several out-of-bound accesses fixed in the output path
+  * the libsndfile input gained raw audio support and accepts any
+    sample rate that is a multiple of 12 kHz
+- Changes from version 4.0:
+  * new SoapySDR input backend and ALSA capture input
+  * StatsD reporting of decoder statistics via the new --statsd option
+  * the command line was reworked: input sources are selected with
+    long options (--rtlsdr, --soapysdr, --airspy, --sdrplay,
+    --sndfile, --alsa) and all logging is configured through one or
+    more --output FORMAT:DESTINATION:DESTPARAMS arguments, replacing
+    the old -r, -s, -n, -N, -j, -l, -H and -D switches; at least one
+    --output argument is now mandatory
+  * new monitor and routejson output formats and per-output logfile
+    rotation
+  * the number of simultaneously decoded channels is no longer capped
+    at 8
+  * bias tee support for rtlsdr and center frequency selection for
+    every SDR backend except Airspy
+  * the network outputs reconnect automatically
+  * the bundled cJSON copy was removed in favour of the system library
+  * a LICENSE file was added
+- Fix the SDR backend selection, which had never taken effect: the
+  3.x spec passed -DLIBRTL=1 and -DLIBAIR=1, but those are the
+  internal find_library cache variables, not the CMake options, which
+  were named rtl and airspy. As a result no SDR front end was ever
+  compiled in and the shipped binary could only decode from an audio
+  file. The 4.x option names are now passed explicitly and the binary
+  links against librtlsdr and libairspy again
+- Build against the system cJSON library and drop the now false
+  bundled(cJSON) provides; adds a build dependency on
+  pkgconfig(libcjson)
+- Enable the ALSA capture input added in 4.0; adds a build dependency
+  on pkgconfig(alsa)
+- Disable the SoapySDR and SDRplay backends explicitly, as SoapySDR is
+  not packaged in openSUSE and the sdrplay_api v3 library is
+  proprietary
+- Keep the MQTT output disabled, as it was before the 4.x switch, so
+  that paho-mqtt-c is not pulled into every installation
+- Drop patch:
+  * reproducible.patch -- upstream stopped forcing -march=native in
+    4.0, so the patch no longer applies and is no longer needed
+    (boo#1100677)
+- Drop the -DCMAKE_POLICY_VERSION_MINIMUM=3.5 workaround, as upstream
+  now requires CMake 3.12 and builds with CMake 4; raise the cmake
+  build dependency to the version upstream actually checks for
+- Correct the license to GPL-2.0-only: 4.0 added a LICENSE.md holding
+  the GPL version 2 text and README.md states GPLv2-only. The per-file
+  boilerplate naming the Library GPL version 2 is a long-standing
+  upstream typo and is recorded as a Legal-Review-Notice in the spec
+- Install LICENSE.md with the license macro
+- Replace the ctest based check, which never had a single test to run,
+  with a functional smoke test that decodes the sample recording
+  shipped by upstream
+- Refresh the package description for the input sources and output
+  formats supported by 4.x
+
+-------------------------------------------------------------------
 Thu Mar 20 21:41:15 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to fix FTBFS with cmake4
