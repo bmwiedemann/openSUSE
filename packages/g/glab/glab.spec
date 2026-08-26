@@ -18,7 +18,7 @@
 
 
 Name:           glab
-Version:        1.114.0
+Version:        1.115.0
 Release:        0
 Summary:        A GitLab command line tool
 License:        MIT
@@ -27,10 +27,6 @@ Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 # https://sources.debian.org/src/glab/1.49.0-1/debian/patches/0001-Disable-update-check.patch
 Patch0:         glab-disable_update_check.patch
-# PATCH-FIX-UPSTREAM glab-CVE-2026-39821-idna-punycode.patch boo#1266614 pdostal@suse.com
-# Backport of golang.org/x/net commit f05f21be5927155a88b371674c298ada54b71cf5:
-# reject all-ASCII xn-- Punycode labels regardless of Go's unicode.Version.
-Patch1:         glab-CVE-2026-39821-idna-punycode.patch
 BuildRequires:  bash-completion
 BuildRequires:  fish
 BuildRequires:  zsh
