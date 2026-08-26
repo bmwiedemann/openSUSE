@@ -1,0 +1,4 @@
+<package name="kubevirt-1.9-image" project="openSUSE:Factory">
+  <title>openSUSE Tumbleweed KubeVirt libguestfs-tools</title>
+  <description>KubeVirt libguestfs-tools container based on the openSUSE Tumbleweed Base Container Image.</description>
+</package>
