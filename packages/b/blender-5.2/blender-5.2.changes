@@ -1,4 +1,306 @@
 -------------------------------------------------------------------
+Tue Aug 25 15:59:41 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 5.2.1
+  - 9e2066aef7e Cycles: Bump minimum driver version in UI from 570
+    to 575
+  - 4d16b97d19f Buildbot: Use CUDA 12.9.1 instead of 12.8.0
+  - f2ebf82689a Fix: Cycles: GPU alignment issue reading pixel
+    jitter offset
+  - 19c26bb2a16 Fix #161234: Cycles caustics blurred out after ray
+    differential widening
+  - 8a8d703141e Release: Bump to 5.2.1 release
+  - 248c01dabfb GPU: Workaround for `update_sub` assert by
+    temporarily disabling `MTLTexturePool`
+  - ba75c8b2b71 Fix: VSE: (5.2 Backport) Crash when deleting strip
+    with mask modifier pointing outside meta
+  - 5adcd79a574 Compositor: Optimize pixel operations by folding
+    single inputs
+  - efb201aa0e0 Fix: Empty bone name could still crash Blender on
+    file load
+  - 06a247d37fa Fix #162046: Empty bone name crashes Blender
+  - 6dcbb35c540 Fix #161404: Deps: Build OpenXR as shared library
+    on macOS/Linux to fix symbol shadowing issue
+  - 20b65b4a886 VSE: Fixes for realtime preview feedback of
+    animated strip properties
+  - 7c22973ded0 Fix #161882: New color attributes always have an
+    alpha of 1
+  - 7446b4f84f3 Fix #161952: Skin Modifier root and radii lost when
+    joining objects
+  - 129d48d0380 Fix: Add continuous grab to decimate modifier
+    operator
+  - b6a9a3460e7 Tests: Make Sculpt UI tests more resiliant to small
+    viewport changes
+  - b69cc09cb1c Cleanup: make format
+  - 2a7737c8bc8 Fix #161681: Mismatches in translated formatting
+    tokens can crash Blender.
+  - c3d8472ffee Fix: glTF: Fix hook for materials
+  - a8729d99c4e Fix: Nodes: UnboundLocalError on Swap operator
+  - bf5dfd701e1 Fix: Nodes: Visible output not swapped when node
+    type is identical
+  - 33c99708d79 Fix #161866: Attribute menu uses wrong material
+    when in pinned nodetree
+  - 5ddcf2d313e Fix #162629: VSE image strip custom length ignored
+    when Move Strips is enabled
+  - be936b30ce9 Fix #162728: EEVEE: division by zero for coat at
+    grazing angles
+  - fb6e18e8700 Fix: VSE: Force drawing of keys after they are
+    newly added
+  - 91aec0df4a3 Fix: VSE: Retiming could not be toggled back and
+    forth more than once
+  - a801a1523af Fix: VSE: Use-after-free when realizing fake
+    retiming keys
+  - 8e71078cd5e Fix: VSE: Retiming movement jumps back and forth
+    for different FPS media
+  - b38c8cd8798 Fix #162667: VSE GPU compositor crash when strip
+    with compositor modifier uses strip with compositor modifier as
+    a mask
+  - 8839acfa8ec Fix #162667: VSE GPU compositor crash when strip
+    with compositor modifier uses strip with compositor modifier as
+    a mask
+  - d45ec34431d Fix #161631: Sculpt Mode gesture tools do not
+    respect the Clip Border region
+  - 8c92656c70e Fix #126358: SSL authentication failure on
+    MS-Windows
+  - 0b8cc92fc9a Fix: VSE: Can't snap to locked strips that are
+    selected
+  - a7caf90c910 Fix: VSE: Cache was not cleared when updating
+    Stereo 3D mode
+  - 175618a5ab0 Fix: VSE: Images show multi-view even when "Use
+    Multi-View" is unset
+  - 3e6c9b8c0fd Fix: VSE: Stereoscopy rendering in VSE preview is
+    broken
+  - 0b91c767217 GPU: Replace mipmap workaround for Intel Arc with
+    multiple dispatches
+  - b10bd7e0d3a Fix #162523: GPU: Add mipmap workaround for Intel
+    Arc Windows OpenGL
+  - 1a856793e2d Fix #162409: Make all fcurve 'slider' based
+    operators behave the same using continuous grab
+  - 020534a28ed Fix #162316: Grease Pencil: Transfer defgroup names
+    when pasting
+  - eec9f05e8e2 Fix: VSE: Locked state was not considered in
+    snapping and retiming transform
+  - a43242ae0ca Fix #162541: Node group assets not placed under
+    cursor
+  - 19b1cd507ad Fix: JPEG 2000 out of bounds read with subsampled
+    images
+  - 4e80d91033d Fix #161039: UI: Use theme for navigation gizmo
+    group
+  - d36dd8f3697 Fix #161665: UV sync select face mode mismatch
+  - f3eb4957f93 Fix #162023: Socket View operator allow viewing
+    virtual sockets
+  - 64f236e51f5 Refactor: use caching for ViewLayer
+    object_bases_array
+  - a0ccee88905 Refactor: Layers: move ViewLayer runtime data to
+    separate struct
+  - 26b52199b8d Fix #162395: Multires unsubdivide hangs with
+    non-manifold vertex
+  - c0eeac6d1c4 Fix #162305: Multires unsubdivide regression
+    restoring multi-res data
+  - 06d7fb668cf Fix #162075: Domain size node crash with empty
+    component
+  - 4a5841459dc Fix #161905: External Multires data cleared when
+    exiting Edit Mode
+  - a168f36484e Fix #160020: Reversed rotation in the uv editor
+  - effa87ea4ea Fix #162097: Crash when displaying loose edges
+    after Sculpt hide
+  - 994599e1616 Fix #162183: Cycles texture cache broken for
+    textures larger than 2^31 px
+  - 38187d6072a Fix #161898: Color management memory leak with
+    curves enabled
+  - eb59242e8fe Fix: VSE text strips interfering with burned in
+    stamp data
+  - 0e6bfecfdd4 Fix #162328: Shape key crash with pose markers
+  - 6ea35ab570a Fix #162036: zero-width spacing glyphs treated as
+    combining characters
+  - a43687c7635 extern: update wcwidth combining character table to
+    Unicode 17.0
+  - e40062a0b20 Fix #162159: Point Cloud Geometry Proximity
+    incorrectly deduplicated
+  - 6677300fad6 Fix #160064: Assert in Grease Pencil "Stroke
+    Simplify"
+  - 79f4833dea3 Fix: Draw: Disable handle ranges optimizations for
+    Grease Pencil
+  - 88bbe24ce15 Fix #161928: Core add-ons loaded after extensions
+    in 5.2
+  - 38e0301bde5 Fix #161492: Cycles CUDA/OptiX wrong bicubic
+    texture sample on Blackwell
+  - fec8fd89d3d Fix: Anim loop mode 'Stop at End Frame' + start at
+    end frame + cancel fails
+  - 124762243ce Fix: Anim loop mode 'Stop at End Frame' + starting
+    at end frame can fail
+  - c6db63f2b5b Re-enable multi-bind and OpenGL texture pool on
+    supported Intel GPUs
+  - 6f9a58ed1c3 Fix #162015: Crash when relocating linked file with
+    liboverrides.
+  - 5340143cc5f Fix #137232: KDE+Wayland+Vulkan failure to restore
+    cursor grab position
+  - 47d52cb5893 Fix #162007: RMB hardcoded to sidebar context menu
+  - d9cb32a4343 Fix: memory leak in BLI_getenv on WIN32
+  - e2c48ac87f8 Fix #162034: Vulkan: Prevent VkExtent2D from
+    getting negative values
+  - 40b66c20f25 Fix #162068: Rigging: Clarify "Weight from Bones"
+    in the description
+  - d0b0b56d506 Fix #161825: use-after-free drawing a GPUBatch
+    whose shader was freed
+  - add7113c56f Fix: FBX: Legacy importer access of nonexistent
+    cast_shadow property
+  - 0998422cf37 Fix #162079: VSE Render Sequence Preview crash with
+    compositor modifier
+  - 311f6bad16e Fix #159021: increasing memory usage while
+    rendering VSE scene strip with timeline source
+  - 1bc5ca1eb64 Cycles: oneAPI: Fix compilation error with DPC++
+    7.0+ compiler
+  - ac9968ef5da Fix #159418: Anim: Scaling keyframes with snapping
+    incorrectly updates handles
+  - 49082c692bb Fix: Use after free in fluid sim modifier
+    versioning
+  - 7171c71c71d Fix #162084: Smear & Blur brush only affect red
+    channel for byte images
+  - 126eb18225e Fix #161709: Crash when saving an image while
+    painting
+  - a6cac7ad971 Fix #161976: Rotating 2D Cursor in UV Editor Causes
+    Crash
+  - e22959af3e9 Assets: download previews of online assets in
+    parallel
+  - e69d5c13671 Fix: failure to download an asset thumbnail would
+    cause Blender to error
+  - 74fac2521a8 Fix #161832: Node copy-paste changing colors in
+    non-sRGB working space
+  - 44531d1b2d3 Fix: race conditions in HTTP downloader
+  - 3ffc9ea0181 Assets: download online previews in LIFO fashion
+  - 56d49089573 Fix #161944: VSE meta strips wrongly occlude other
+    strips
+  - 466582d2378 Fix #161419: UV select less broken with face
+    selection
+  - f449ac29bcd Tests: add test to ensure UV selection face syncing
+    works
+  - a91a4ec3c19 Fix #162004: UV Selection Sync mismatch in face
+    selection mode
+  - bd8b00d3a6e Fix #161714: Select UV overlap crashes on macOS
+  - 72649822076 Fix #161550: Crash displaying file info with an
+    incorrect modified date
+  - e3cb628976e Fix #161761: Tablet eraser not recognized in mesh
+    paint modes
+  - dcd964a65fc Fix: XR: Crash on OpenXR runtime initialization
+    failure
+  - 704302b85da Fix #161530 glTF: Fix exporting multiple material
+    with vertex color
+  - 2b3de7bc415 Fix #161423: Film Grain asset downsamples
+    incorrectly in camera view #83
+  - 04f3537d3c1 Fix readfile failing to load some packed data in
+    some complex cases.
+  - a6ece127749 Fix #161830: Windows on ARM: Information printed
+    not captured on exit
+  - de2bb5c9be3 Fix: missing touch surface clear under Wayland
+  - d01ad6a3bdc Fix #161820: Grab Planar Cloth brush crashes when
+    used off mesh
+  - 492fc0870b1 Fix #161705: Proportional connected edit affects
+    vertices beyond radius
+  - e0ea10eece9 Fix #161653: glTF add-on libraries fail to find
+    their dependencies
+  - 9fea3215a71 Fix: foreach_get requested a read-only buffer it
+    then wrote into
+  - ee81c378fa9 Fix #161788: VSE: MJPEG thumbnail stream loaded as
+    glitched video
+  - 17c849e4155 Fix: Cycles: Bake has excessive aliasing due to
+    wrong derivatives
+  - 15c8bc142b8 Fix #161774: VSE: Composition guides are not
+    default enabled for new editors
+  - 90db2a11132 Fix #161309: file browser view settings impact
+    image order when running "Change Data/Files" on image sequence
+    strip
+  - 7049fe97fd6 Fix #161793: Curve to mesh conversion with builtin
+    attributes on curves
+  - d875ef865b0 Fix #161775: Crash in bpy.app.handlers.render_stats
+    in animation render
+  - 2b2c3ae1472 Fix #137550: Assert failure in Metal-RT BVH
+    refitting
+  - 51e17dc28cb Fix #161777: Cycles crash when point cloud is
+    changed to mesh
+  - 9917a877dd6 Fix #161972: Texture Paint bleed does not work
+  - d66acba098f Fix #161697: Crash when texture painting mesh with
+    single-value UV Map
+  - fd23dac64bd Fix #161532: Undoing from Texture Paint into
+    Particle Edit corrupts data
+  - ca5839fd3fa Fix #158830: Missing data-block defaults for
+    modifier inputs
+  - c1b88926610 Fix: BMDeformVert subscript assignment created data
+    before validating
+  - 096107d06bf Fix: out-of-bounds read in BVHTree.FromPolygons
+    with a bad index
+  - d087938579a Fix: crash passing an empty sequence to
+    mathutils.geometry functions
+  - befa8a480af Fix: crash calling a context manager's __exit__
+    without __enter__
+  - 1a584156f78 Fix: Composite node has no width when opened in
+    Blender 4.5
+  - d116d3d242e Fix #161515: EEVEE: SubSurface Scattering:
+    Uninitialized loads
+  - 56a131168d6 Fix #161595: Console paste crashes when commands
+    change the context
+  - 91a2de5b79b Fix #161637: Crash when accessing Brush direction
+    enum without context
+  - 0e9da62a2bb Fix #161407: Cycles texture cache HDRI broken with
+    CPU + GPU render
+  - 150ad60fbfe Fix: Overlay: Clamp axis aligned ortho view grid to
+    lowest level
+  - bba1f8f1a93 Fix #161438: Exception thrown in custom property
+    type change
+  - 3ef70069ede Fix: exception changing a Python custom property to
+    data-block type
+  - c0372c3a3f1 Cycles: Use minimum 64x64 tile size for texture
+    cache load
+  - 5a22b7e930b Fix: Cycles: Poor texture cache initialization time
+    with many tiles
+  - ae399326c0d Fix: Cycles: Hydra uses unsupported GPU when driver
+    is outdated
+  - ce04740de22 Fix: Cycles: Hydra use-after-free deleting light
+    and geometry
+  - b8e7006f2ee Fix: Cycles: Hydra render delegate broken by ray
+    visibility refactor
+  - f6b140636b3 Fix: Only invoke the crash handler once
+  - 3519c09f264 Fix #161421: VSE: Off-center origins offset
+    rendered result for reduced output resolutions
+  - 108164e3a53 Fix: VSE: Incorrect text selection/cursor draw and
+    interaction when mirrored
+  - 42e35690b2d Release: Regenerate license.md
+  - 2b496609d90 Deps: Update copyright info for ffmpeg and fribidi
+  - 4336429db17 Release: Regenerate license.md
+  - 453ef3b0c88 Deps: Update LZMA / XZ license info
+  - b3d37dc54db Fix #161468: Color strip dimensions aren't set when
+    calling #new_effect
+  - e92e62f1966 Fix: out-of-bounds read passing "name" keywords to
+    GPUShaderCreateInfo
+  - 88c5ecc87cc Fix: memory leak looking up collections with an
+    allocated key
+  - 747f26cd8bb Fix: memory corruption passing "options" to
+    keyframe_delete
+  - ff796a8a9c0 Fix: libraries.load swapped "set_fake" &
+    "recursive" arguments
+  - 48e45c7e6ca Fix: resource leak accessing BMesh MLoop Color
+  - f050f72d912 Fix: resource leak in bpy.app.timers return value
+  - f25c16e6365 Fix: Grease Penci: Regression: Drawing fills with
+    strokes become cyclic
+  - 095ae2ea7fc Fix #161352: EEVEE: Avoid resetting sampling every
+    frame
+  - de47f7c5e34 Fix #161434: Cycles: Transmission passes missing
+    with thin glass
+  - 53e5197bd12 Fix: crash in Armature Edit mode after duplicating
+    animated bone
+  - b0f073dadbd Fix: Use-after-free in link/append code.
+  - cbb040c4943 Fix #161243: use-after-free in handling of
+    link/append/pack data during packing.
+  - d87f5a2b563 Fix #160310: VSE: Strip animations don't play in
+    sequencer-type scene strips
+  - 5bee91cee88 Fix #161263: Handle empty bundle lists in Geometry
+    Nodes
+  - cf00b767b2d Fix: VSE: Clear cache of seq-input scene strips
+    when modifying their contents
+  - b23c7b0ecf6 Fix: VSE: Cannot prefetch sequencer-input scene
+    strips
+
+-------------------------------------------------------------------
 Wed Jul 15 23:49:28 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 5.2.0
