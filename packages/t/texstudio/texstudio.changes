@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Aug 22 22:14:19 UTC 2026 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to TeXstudio 4.9.7
+  * use fully asynchronous command execution for latex commands.
+    This should remedy some rare stability issues.
+  * add accessibilty for text editor component (screen reader
+    compatibility)
+  * add bibliography overview in global TOC
+  * fix crash when changing project structure (comment out/in
+    includes) #4579
+  * fix remove command #4578
+  * have Find Usages results of labels ordered by line number
+    #4575
+  * allow expanding structures from all loaded files #4565
+  * fix freeze/crash on removeColumn #4590
+  * fix keyVal values completer trigger #4595
+
+-------------------------------------------------------------------
 Mon Jul 27 08:00:35 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Update to TeXstudio 4.9.6
