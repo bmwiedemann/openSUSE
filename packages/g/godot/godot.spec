@@ -29,7 +29,7 @@
 %define compiler_version_leap 13
 
 Name:           godot
-Version:        4.7.1
+Version:        4.7.2
 Release:        0
 Summary:        Cross-Platform Game Engine with an Integrated Editor
 License:        MIT
@@ -135,7 +135,7 @@ Provides:       bundled(FastNoiseLite)
 Provides:       bundled(JetBrainsMono_Regular)
 Provides:       bundled(RVO2-3D)
 Provides:       bundled(Tangent_Space_Normal_Maps)
-Provides:       bundled(accesskit) = 0.21.2
+Provides:       bundled(accesskit) = 0.22.3
 Provides:       bundled(amd-fsr) = 1.0.2
 Provides:       bundled(amd-fsr2) = 2.2.1
 Provides:       bundled(angle)

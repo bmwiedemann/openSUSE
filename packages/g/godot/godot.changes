@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Aug 21 12:00:00 UTC 2026 - cunix@mail.de
+
+- Update to 4.7.2
+  * Make it impossible to have more than one main thread
+  * Fix Script Editor zoom factor not being applied on editor start
+  * Wayland: Fix IME popup position under fractional scaling on KDE Plasma
+  * Wayland: Improve pointer constraining
+  * Always use Godot's OS as entropy source with vendored mbedTLS
+  * and more: https://godotengine.github.io/godot-interactive-changelog/#4.7.2
+
+-------------------------------------------------------------------
 Sun Aug  9 12:00:00 UTC 2026 - cunix@mail.de
 
 - Update to 4.7.1
