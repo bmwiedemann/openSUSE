@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 25 16:11:48 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.15.0
+  * gtp: clamp GSN-Address copy to sockaddr_in size
+  * gtp: fix OOB write in PDP ctx GSN-Address decode
+
+-------------------------------------------------------------------
 Sat Mar 14 21:40:15 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.14.0
