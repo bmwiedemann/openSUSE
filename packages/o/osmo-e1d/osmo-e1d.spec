@@ -18,7 +18,7 @@
 
 
 Name:           osmo-e1d
-Version:        0.7.2
+Version:        0.8.0
 Release:        0
 Summary:        Osmocom E1 Daemon
 License:        GPL-2.0-or-later

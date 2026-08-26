@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 25 15:35:03 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.8.0
+  * Add Channel-Associated Signalling (CAS) support
+  * HDLC timeslots: fix Rx of maximum-sized frames
+
+-------------------------------------------------------------------
 Sat Mar 14 21:08:39 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.7.2
