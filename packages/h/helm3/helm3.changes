@@ -4,8 +4,8 @@ Fri Aug 21 22:25:58 UTC 2026 - Dirk Müller <dmueller@suse.com>
 - bump vendor to address various security issues:
   * golang.org/x/mod@v0.40.0
   * oras.land/oras-go/v2@v2.6.2
-  * google.golang.org/grpc@v1.82.1
-  * go.opentelemetry.io/otel@v1.44.0
+  * google.golang.org/grpc@v1.82.1 (bsc#1276514)
+  * go.opentelemetry.io/otel@v1.44.0 (bsc#1276510, CVE-2026-41178)
 
 -------------------------------------------------------------------
 Mon Jul 27 12:59:00 UTC 2026 - Dirk Müller <dmueller@suse.com>

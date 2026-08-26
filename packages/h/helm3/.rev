@@ -211,4 +211,13 @@
   * go.opentelemetry.io/otel@v1.44.0</comment>
     <requestid>1372957</requestid>
   </revision>
+  <revision rev="21" vrev="6">
+    <srcmd5>9b91b8a64a3bc6ad8a73a52d9bac73d4</srcmd5>
+    <version>3.21.3</version>
+    <time>1787766710</time>
+    <user>anag_factory</user>
+    <comment>  * google.golang.org/grpc@v1.82.1 (bsc#1276514)
+  * go.opentelemetry.io/otel@v1.44.0 (bsc#1276510, CVE-2026-41178)</comment>
+    <requestid>1373606</requestid>
+  </revision>
 </revisionlist>
