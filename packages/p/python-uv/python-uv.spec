@@ -36,7 +36,7 @@
 %global build_rustflags -C linker=clang -C link-arg=-fuse-ld=%{_bindir}/mold -C link-arg=-Wl,-z,relro,-z,now -C debuginfo=2 -C incremental=false -C strip=none
 %endif
 Name:           %{origname}%{psuffix}
-Version:        0.12.5
+Version:        0.12.6
 Release:        0
 Summary:        A Python package installer and resolver, written in Rust
 # Legal-Review-Notice: uv itself is "Apache-2.0 OR MIT", but the binary
@@ -56,7 +56,7 @@ License:        (Apache-2.0 OR MIT) AND MPL-2.0
 URL:            https://github.com/astral-sh/uv
 Source0:        https://github.com/astral-sh/uv/archive/refs/tags/%{version}.tar.gz#/%{origname}-%{version}.tar.gz
 Source1:        vendor.tar.zst
-BuildRequires:  cargo >= 1.95
+BuildRequires:  cargo >= 1.96
 BuildRequires:  cargo-packaging
 BuildRequires:  cmake
 BuildRequires:  zstd
@@ -202,13 +202,20 @@ export CARGO_PROFILE_RELEASE_STRIP=false
 # sees either because cargo-nextest gives every test its own process;
 # one test thread is the equivalent for the stock harness.
 #
-# The single skip is environmental: linehaul reports the distro from
+# Both skips are environmental. linehaul reports the distro from
 # /etc/os-release, which a build chroot does not have, so the snapshot
-# gets null where it expects a name and version.
+# gets null where it expects a name and version. uv-extract's
+# test_vectors_json cross-checks the Rust dirhash against the reference
+# dirhash.py by running "uv run --locked --script", which needs a uv
+# binary on PATH - the test flavour builds no binary and installs
+# nothing, so the spawn fails outright - and would then resolve a
+# Python interpreter and its dependencies over the network. The other
+# nine uv-extract tests, including the rest of the dirhash suite, still
+# run.
 #
 # The leading "--" is required: %%cargo_test is a parametrised macro, so
 # without it rpm parses "--workspace" as a macro option and aborts.
-%{cargo_test -- --workspace --exclude uv --exclude uv-dev --exclude uv-build-backend -- --test-threads=1 --skip user_agent_version::test_user_agent_has_linehaul}
+%{cargo_test -- --workspace --exclude uv --exclude uv-dev --exclude uv-build-backend -- --test-threads=1 --skip user_agent_version::test_user_agent_has_linehaul --skip dirhash::tests::test_vectors_json}
 %endif
 
 %if %{without test}

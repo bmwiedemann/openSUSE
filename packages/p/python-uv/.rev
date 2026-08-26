@@ -3022,4 +3022,68 @@ changes-guard green.</comment>
     <comment>Update to 0.12.5. Re-vendored Rust deps (0 crates added/removed, 5 updated); licence set re-derived over the 512 linked crates and unchanged. Both multibuild flavours green, 1343 tests pass, rpmlint 0 badness.</comment>
     <requestid>1371292</requestid>
   </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>d4481e7a54b78c0b5958660c1eff8b40</srcmd5>
+    <version>0.12.6</version>
+    <time>1787766914</time>
+    <user>anag_factory</user>
+    <comment>Update python-uv to 0.12.6.
+
+Upstream highlights: managed CPython builds move to OpenSSL 3.5.8 and
+libffi 3.4.8; cache-cleaning now reports savings from filesystem block
+allocation without double-counting hard links; new &quot;uv workspace
+metadata --sync --exact&quot; and &quot;artifact-hash-filtering&quot; preview
+features; fixes for index credentials on &quot;uv tool upgrade&quot;, full
+40-character Git commit pins resolving to the requested object,
+dependencies/constraints selected through recursive extras, and a
+panic on unencodable bearer tokens.
+
+Packaging changes:
+
+- BuildRequires: cargo &gt;= 1.96. Upstream raised rust-version from
+  1.95.0 to 1.96.0 in this release; Factory publishes cargo 1.96.1, so
+  the floor resolves.
+
+- The test flavour now skips uv-extract's dirhash test_vectors_json.
+  The test itself is not new (it existed and passed in 0.12.5), but
+  0.12.6 adds a third assertion inside it that shells out to
+  &quot;uv run --locked --script crates/uv-extract/test_vectors/dirhash.py&quot;
+  to cross-check the Rust dirhash against the reference Python
+  implementation. That cannot work in a build chroot for two
+  independent reasons: the test flavour builds no binary and installs
+  nothing, so Command::new(&quot;uv&quot;) fails to spawn outright (os error 2),
+  and dirhash.py's PEP 723 header requires Python &gt;=3.14 plus a
+  blake3 &gt;=1.0.9 wheel, both of which would have to be downloaded.
+  Skipping is surgical: --skip matched exactly one test across all 61
+  test binaries, and the run reports exactly 2 filtered out (this plus
+  the pre-existing linehaul skip). It does also drop the test's
+  Rust-side vector assertions, which is stated plainly in the
+  changelog; dirhash_path stays covered by test_dirhash_path and
+  test_dirhash_path_symlinks, and DirhashTree by
+  test_add_update_and_add_empty_dir and test_normalize, all still
+  passing.
+
+Licence: re-derived over the new vendor tree, as required on every
+re-vendor. cargo tree --offline -p uv -e normal gives 512 linked
+crates; the copyleft set is unchanged (MPL-2.0 from astral-pubgrub,
+astral-version-ranges and option-ext via shellexpand -&gt; dirs -&gt;
+dirs-sys; priority-queue elected MPL-2.0; configparser elected MIT).
+r-efi and colored are vendored but absent from the linked graph. The
+one newly vendored crate, mea 0.6.7, is Apache-2.0 and is in
+upstream's own Cargo.lock. License stays (Apache-2.0 OR MIT) AND
+MPL-2.0 and the Legal-Review-Notice needed no edit.
+
+Vendor delta: 1 crate added (mea), 36 updated, none removed.
+
+Verification: both _multibuild flavours built natively on aarch64
+against openSUSE:Factory:ARM/standard. Main flavour green with rpmlint
+0 errors, 1 warning, 0 badness - byte-identical to Factory's published
+0.12.5 result, so no new rpmlint findings. Test flavour green with
+%check running 1357 tests, 0 failed, 2 filtered out. source_validator
+rc 0, spec-cleaner no-diff.
+
+No CVEs in the 0.12.5..0.12.6 commit range and no open openSUSE bugs
+against the package.</comment>
+    <requestid>1373752</requestid>
+  </revision>
 </revisionlist>

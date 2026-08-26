@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Wed Aug 26 07:12:21 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.12.6:
+  * Update the managed CPython builds to OpenSSL 3.5.8 and libffi
+    3.4.8
+  * Report cache-cleaning space savings from filesystem block
+    allocation and stop double-counting hard links
+  * Add uv workspace metadata --sync --exact to remove packages
+    outside the selected resolution (preview)
+  * Add the artifact-hash-filtering preview feature, making
+    uv pip compile --generate-hashes honour --only-binary and
+    --no-binary
+  * Allow explicit uv build and non-editable first-party workspace
+    packages when no-build is enabled
+  * Reuse configured index credentials during uv tool upgrade when
+    the tool receipt references the same index
+  * Resolve full 40-character Git commit pins to the requested
+    object instead of a branch that happens to be named for a SHA
+  * Preserve dependencies and version constraints selected through
+    recursive extras
+  * Return an error instead of panicking when a bearer token
+    cannot be encoded as an HTTP header
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+- Raise the cargo BuildRequires floor to 1.96, matching upstream's
+  new minimum supported Rust version
+- Skip uv-extract's dirhash test_vectors_json in the test flavour:
+  0.12.6 adds a cross-check against the reference dirhash.py, run
+  through "uv run --locked --script", which needs a uv binary on
+  PATH (the test flavour builds none) and network access for a
+  Python 3.14 interpreter and the blake3 wheel. That drops the
+  test's Rust-side vector checks too, but dirhash_path and
+  DirhashTree stay covered by the other nine uv-extract tests,
+  which all run
+- Re-vendor the Rust dependencies: one crate added (mea), 36
+  updated, none removed. Re-derived the licence set over the 512
+  crates linked into the uv binary; the copyleft set is unchanged,
+  so License stays (Apache-2.0 OR MIT) AND MPL-2.0
+
+-------------------------------------------------------------------
 Sat Aug 15 05:58:55 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.12.5:
