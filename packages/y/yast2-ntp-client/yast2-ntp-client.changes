@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Aug 21 16:34:07 UTC 2026 - Michal Filka <mfilka@suse.com>
+
+- bsc#1274746
+  - fix loading 'server' entries when there is only one of them
+  - fixed removing of ntp source
+- 5.0.2 
+
+-------------------------------------------------------------------
 Tue Mar 10 09:00:28 UTC 2026 - Michal Filka <mfilka@suse.com>
 
 - jsc#PED-14507
