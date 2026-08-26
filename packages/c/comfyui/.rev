@@ -91,4 +91,48 @@ Factory CPU-only torch, a flagless start from a clean home now reaches
 &quot;Starting server&quot; instead of exiting 1.</comment>
     <requestid>1373274</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>27f33d1ce207045581ca39306277f679</srcmd5>
+    <version>0.33.3</version>
+    <time>1787766808</time>
+    <user>anag_factory</user>
+    <comment>comfyui carries exact &quot;=&quot; pins on the comfy* packages, which makes it
+uninstallable the moment any one of them is updated on its own. That has
+now happened: the pin is comfyui-workflow-templates = 0.11.44 and Factory
+has accepted 0.11.46, so the dependency loses its provider as soon as that
+build publishes.
+
+Upstream's requirements.txt uses &quot;==&quot; for all of these, but upstream's own
+check_comfy_packages_versions() (app/frontend_management.py) warns only
+when the installed version is BELOW the required one, so upstream treats
+them as floors. This converts all of them to floors.
+
+No upper bounds are set. comfy-aimdo and comfy-kitchen are both imported
+at module scope, so an API removal in either would fail at import time,
+but no such break is known: the one comfy-kitchen minor bump so far
+(0.1 -&gt; 0.2) removed no exported names, 0.2.0 -&gt; 0.2.31 only added them,
+and comfy-aimdo's Python tree is byte-identical between 0.4.13 and 0.4.15.
+A speculative cap would simply recreate the unresolvable state these
+floors exist to fix. A real break gets a bound then, with the evidence.
+
+The comfyui-frontend-package floor of 1.50.6 is a security floor rather
+than a compatibility pin: it carries the fixes for GHSA-2gr5-vw2p-2hcf,
+GHSA-j6xv-rx8r-mh6j and GHSA-8xxc-66vh-2pf3 (repo-level advisories on
+Comfy-Org/ComfyUI_frontend, all High, patched in 1.50.2/1.50.4/1.50.5).
+None of them has a CVE id, and openSUSE Bugzilla has no bug for either
+package, so there is no boo# to cite.
+
+comfy-aimdo's floor moves down from = 0.4.14 to upstream's declared
+&gt;= 0.4.13; the 0.4.14 was tracking whatever happened to be packaged
+rather than a real requirement.
+
+Supersedes sr#1373685, which relaxed three of the four pins and left
+comfy-kitchen exact.
+
+Verified: native aarch64 build green, rpmlint 0 errors / 0 badness,
+source_validator clean. The built RPM's requires resolve against what
+Factory ships today (aimdo 0.4.14, kitchen 0.2.31, embedded-docs 0.5.10,
+frontend 1.50.6, workflow-templates 0.11.46).</comment>
+    <requestid>1373695</requestid>
+  </revision>
 </revisionlist>

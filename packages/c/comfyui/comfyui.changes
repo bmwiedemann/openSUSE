@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Aug 25 18:48:09 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Depend on floors instead of exact versions for the comfy* packages,
+  so that comfyui does not become uninstallable whenever one of them
+  is updated on its own:
+  * comfyui-workflow-templates was pinned to = 0.11.44; Factory has
+    accepted 0.11.46, so that pin loses its provider as soon as the
+    build publishes. It is now >= 0.11.44
+  * comfy-kitchen is now >= 0.2.31, comfyui-frontend-package
+    >= 1.50.6, comfyui-embedded-docs stays >= 0.5.9, and comfy-aimdo goes
+    back to upstream's declared >= 0.4.13 from the = 0.4.14 that was
+    tracking whatever happened to be packaged
+  * upstream's requirements.txt uses == for all of these, but its own
+    check_comfy_packages_versions() warns only when the installed
+    version is below the required one, so upstream treats them as
+    floors as well
+  * no upper bounds are set: comfy-aimdo and comfy-kitchen are both
+    imported at module scope, so an API removal in either would fail
+    at import, but the one comfy-kitchen minor bump so far removed no
+    exported names and comfy-aimdo's Python tree is unchanged between
+    0.4.13 and 0.4.15. A speculative bound would recreate exactly the
+    unresolvable state these floors fix
+  * the frontend-package floor is a security floor, not a
+    compatibility one: 1.50.6 carries the fixes for
+    GHSA-2gr5-vw2p-2hcf, GHSA-j6xv-rx8r-mh6j and GHSA-8xxc-66vh-2pf3
+
+-------------------------------------------------------------------
 Sun Aug 23 17:27:06 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Start on the CPU when the machine has no usable accelerator, instead

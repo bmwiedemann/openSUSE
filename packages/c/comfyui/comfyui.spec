@@ -45,11 +45,32 @@ Requires:       %{primary_python}-aiohttp >= 3.11.8
 Requires:       %{primary_python}-alembic
 Requires:       %{primary_python}-av >= 16.0.0
 Requires:       %{primary_python}-blake3
-Requires:       %{primary_python}-comfy-aimdo = 0.4.14
-Requires:       %{primary_python}-comfy-kitchen = 0.2.31
+# Upstream's requirements.txt uses "==" for the comfy* packages, but its own
+# check_comfy_packages_versions() warns only when the installed version is
+# BELOW the pinned one, so upstream itself treats these as floors. Encoding
+# them as exact RPM pins makes comfyui uninstallable as soon as any one of
+# them is updated on its own: the pin on comfyui-workflow-templates lost
+# its provider the moment Factory accepted 0.11.46.
+# frontend-package and embedded-docs are read only as data directories via
+# importlib.resources. workflow-templates is used through its Python API
+# (frontend_management.py imports iter_templates and get_asset_path), but
+# that import is guarded and server.py switches on the installed version at
+# 0.3.0, so comfyui handles both the old bundled-data layout and the new
+# re-export shim. comfy-aimdo and comfy-kitchen are both imported at module
+# scope, so an API removal in either is an import-time failure -- but no
+# such break is known: the one comfy-kitchen minor bump so far (0.1 to
+# 0.2) removed no exported names, and comfy-aimdo's Python tree is
+# byte-identical between 0.4.13 and 0.4.15. A speculative upper bound would simply recreate
+# the unresolvable state this floor exists to fix, so none is set; a real
+# break gets a bound then, with the evidence.
+Requires:       %{primary_python}-comfy-aimdo >= 0.4.13
+Requires:       %{primary_python}-comfy-kitchen >= 0.2.31
 Requires:       %{primary_python}-comfyui-embedded-docs >= 0.5.9
-Requires:       %{primary_python}-comfyui-frontend-package = 1.50.6
-Requires:       %{primary_python}-comfyui-workflow-templates = 0.11.44
+# Security floor, not a compatibility pin: 1.50.6 carries the XSS fixes
+# GHSA-2gr5-vw2p-2hcf, GHSA-j6xv-rx8r-mh6j and GHSA-8xxc-66vh-2pf3. Do not
+# lower it to whatever upstream's requirements.txt happens to name.
+Requires:       %{primary_python}-comfyui-frontend-package >= 1.50.6
+Requires:       %{primary_python}-comfyui-workflow-templates >= 0.11.44
 Requires:       %{primary_python}-einops
 Requires:       %{primary_python}-filelock
 Requires:       %{primary_python}-numpy >= 1.25.0
