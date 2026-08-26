@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Aug 22 20:14:38 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.14:
+  * am-sera.mim: Fix Ethiopic Swap between ፙ and ፘ, and Add ጟ
+  * mr-krutidev.mim: Marathi input method for Remington (Godrej)
+    typewriter layout. By Aniruddha Purushottamrao Mohod
+  * bn-unijoy.mim: Update to modern Unijoy layout
+  * bn-khipro.mim: Updates by the author: Nafee
+  * bn-khipro.mim:  from https://github.com/rank-
+    coder/khipro-m17n/blob/main/bn-khipro.mim by Nafee Bishan
+  * ta-tamil99.mim:  Various fixes by thesupertechie
+  * kn-kgp.mim: Update by the original author Sridhar M A
+
+-------------------------------------------------------------------
 Thu Apr  9 21:14:58 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.8.10:
