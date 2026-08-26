@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-jaraco.test
-Version:        5.6.0
+Version:        5.7.0
 Release:        0
 Summary:        Testing support by jaraco
 License:        MIT

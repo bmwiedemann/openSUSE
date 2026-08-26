@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 25 15:15:46 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.7.0:
+  * Added ensure_checkout fixture in jaraco.test.git to skip a
+    test unless the project is a git checkout with an origin
+    remote.
+
+-------------------------------------------------------------------
 Mon Apr 13 00:38:08 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add missing {Build,}Requires on git-core.

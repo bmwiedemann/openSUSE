@@ -83,4 +83,15 @@
 - No longer allow the testsuite to fail.</comment>
     <requestid>1346318</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ba8db79525b468a79aec6348dcd9cd69</srcmd5>
+    <version>5.7.0</version>
+    <time>1787766686</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.7.0:
+  * Added ensure_checkout fixture in jaraco.test.git to skip a
+    test unless the project is a git checkout with an origin
+    remote.</comment>
+    <requestid>1373644</requestid>
+  </revision>
 </revisionlist>
