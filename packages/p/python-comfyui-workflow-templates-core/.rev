@@ -50,4 +50,38 @@ comfyui_workflow_templates meta package.
 </comment>
     <requestid>1373548</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>186521cbebd731f93dbcfa8b9ac199f2</srcmd5>
+    <version>0.3.322</version>
+    <time>1787766809</time>
+    <user>anag_factory</user>
+    <comment>Update python-comfyui-workflow-templates-core to 0.3.322.
+
+This package tracks its own PyPI distribution (comfyui_workflow_templates_core),
+not the parent repository's 0.11.x version line. 0.3.322 is the current release
+of that distribution.
+
+The template manifest grows from 528 to 533 entries (Pixal3D/TRELLIS.2 image to
+model, Nano Banana 2 image edit continuation, SDXL 1.0 simple text to image,
+SAM 3D Body mesh extraction, MiniMax H3 image to video continuation); the
+loader and the public helper API are unchanged.
+
+Staging: these four requests must land in the SAME staging project -- the
+meta package python-comfyui-workflow-templates 0.11.48 raises its
+BuildRequires and Requires floors onto the three new bundle versions, so
+splitting the batch across stagings leaves it unresolvable.
+
+Sequencing: please stage this together with, or after, SR 1373695, which
+converts comfyui's exact &quot;=&quot; pins on this package family to floors. Until
+1373695 is accepted, Factory's comfyui still requires
+python3XX-comfyui-workflow-templates = 0.11.44, so a staging that takes this
+batch without 1373695 will show comfyui broken in installcheck. All four new
+versions in this batch (0.11.48, 0.3.322, 0.1.57, 0.1.35) satisfy the floors
+1373695 introduces, so no comfyui spec change is needed.
+
+Submitted together with python-comfyui-workflow-templates 0.11.48,
+python-comfyui-workflow-templates-json 0.1.57 and
+python-comfyui-workflow-templates-media-assets-01 0.1.35.</comment>
+    <requestid>1373737</requestid>
+  </revision>
 </revisionlist>
