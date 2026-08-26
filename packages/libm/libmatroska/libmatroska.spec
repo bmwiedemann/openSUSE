@@ -1,7 +1,7 @@
 #
 # spec file for package libmatroska
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sover 7
 Name:           libmatroska
-Version:        1.7.1
+Version:        1.7.2
 Release:        0
 Summary:        Library to Deal with Matroska Files
 License:        LGPL-2.1-or-later

@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Aug 22 16:26:21 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.2:
+  * Do not allow infinite sizes on all Master elements except
+    Segment+Cluster
+  * Only allow `KaxSeekId` of 4 bytes length (as per RFC 9559).
+  * KaxBlock: release read buffers on `EndOfStream` error.
+  * Catch some allocation failures internally.
+  * Deprecate `KaxTrackMinCache`/`KaxTrackMaxCache` elements (as
+    per RFC 9559).
+  * Deprecate `KaxTrackOverlay` element (as per RFC 9559).
+  * Fix `MATROSKA_VIDEO_FIELDORDER_TOPFIELDSWAPPED`/
+  * `MATROSKA_VIDEO_FIELDORDER_BOTTOMFIELDSWAPPED` values.
+  * Add missing `MatroskaChapProcessCodecID` enum.
+  * [API break] remove `MatroskaChapterTranslateCodec`/`MatroskaT
+    rackTranslateCodec`.
+  * KaxSemantic: update enum comments to match RFC 9559.
+  * Add `MATROSKA_CHAPTERSKIPTYPE_INTERMISSION` to
+    `MatroskaChapterSkipType`.
+  * Fix some includes that are not implicit in modern compilers.
+  * Show a summary of build configuration when configuring CMake.
+  * Add a DEV_MODE CMake option to check more compiler errors
+    (default off).
+  * Add a BUILD_EXAMPLES CMake option (default off).
+
+-------------------------------------------------------------------
 Sun Oct  9 10:07:58 UTC 2022 - C J <c.j@tuta.io>
 
 - update to 1.7.1:
@@ -97,9 +123,9 @@ Sun Jun 28 06:13:21 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.6.0
   * libEBML v1.4.0 is now required.
-  * Due to breaking ABI the soname version has been bumped to 
+  * Due to breaking ABI the soname version has been bumped to
     7.0.0.
-  * Default symbol visibility is now "hidden", reducing binary 
+  * Default symbol visibility is now "hidden", reducing binary
     size.
   * Converted some things pointed out by cppcheck & clang-tidy to
     C++11.
@@ -115,12 +141,12 @@ Sun Jun 28 06:13:21 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
   * Fixed classes for updates in the current specification:
     KaxTrackTimecodeScale (can be written again), TimeSlice,
     SliceLaceNumber, TrackAttachmentLink (these cannot be written
-    anymore), KaxContentEncAlgo (it's mandatory), 
+    anymore), KaxContentEncAlgo (it's mandatory),
     KaxChapLanguageIETF (can occur multiple times),
     KaxFileUsedStartTime, KaxFileUsedEndTime (DivX-related
     elements, cannot be written anymore)
-  * Added classes for new elements from the current 
-    specification: KaxBlockAdditionMapping, KaxBlockAddIDValue, 
+  * Added classes for new elements from the current
+    specification: KaxBlockAdditionMapping, KaxBlockAddIDValue,
     KaxBlockAddIDName, KaxBlockAddIDType, KaxBlockAddIDExtraData,
     KaxContentEncAESSettings, KaxContentEncAESSettings.
   * The MATROSKA_VERSION pre-processor definition has been
@@ -256,14 +282,14 @@ Tue Feb 11 21:21:03 UTC 2014 - dimstar@opensuse.org
 -------------------------------------------------------------------
 Thu Jan 16 17:58:40 UTC 2014 - crrodriguez@opensuse.org
 
-- Revert last change for now as it breaks mkvtoolnix which 
+- Revert last change for now as it breaks mkvtoolnix which
   uses internal symbols :-(
   keep fvisibility-inlines-hidden though
 
 -------------------------------------------------------------------
 Sun Jan 12 02:26:29 UTC 2014 - crrodriguez@opensuse.org
 
-- Add C++ visibility support by simply reusing the win32 
+- Add C++ visibility support by simply reusing the win32
   dll code for the same purpose.
 - added patches:
   * matroska-visibility.patch
@@ -297,8 +323,8 @@ Sat Mar 23 14:14:45 UTC 2013 - zaitor@opensuse.org
 -------------------------------------------------------------------
 Thu May 10 00:24:50 UTC 2012 - crrodriguez@opensuse.org
 
-- Do not use gcc 's -ansi flag, but whatever the compiler 
-  has a default. 
+- Do not use gcc 's -ansi flag, but whatever the compiler
+  has a default.
 
 -------------------------------------------------------------------
 Sun Sep 25 23:45:18 UTC 2011 - reddwarf@opensuse.org
@@ -322,7 +348,7 @@ Thu Jun 30 12:25:51 CEST 2011 - dimstar@opensuse.org
 -------------------------------------------------------------------
 Tue Apr 19 00:17:33 CEST 2011 - ro@suse.de
 
-- update baselibs.conf 
+- update baselibs.conf
 
 -------------------------------------------------------------------
 Sun Jan 30 17:46:54 UTC 2011 - reddwarf@opensuse.org
@@ -373,13 +399,13 @@ Wed May 12 17:44:23 UTC 2010 - cmorve69@yahoo.es
 -------------------------------------------------------------------
 Tue Jan 13 23:37:23 CET 2009 - crrodriguez@suse.de
 
-- remove static libraries 
+- remove static libraries
 
 -------------------------------------------------------------------
 Sun May 27 00:06:43 CEST 2007 - ro@suse.de
 
 - added libebml-devel to buildreq
-- split off devel package 
+- split off devel package
 
 -------------------------------------------------------------------
 Mon Feb 26 10:21:40 CET 2007 - seife@suse.de
@@ -401,7 +427,7 @@ Mon Nov 21 19:46:39 CET 2005 - seife@suse.de
 -------------------------------------------------------------------
 Wed Nov  2 21:47:54 CET 2005 - dmueller@suse.de
 
-- don't build as root 
+- don't build as root
 
 -------------------------------------------------------------------
 Wed Sep 28 15:20:51 CEST 2005 - meissner@suse.de
