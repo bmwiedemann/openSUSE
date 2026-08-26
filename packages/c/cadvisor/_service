@@ -3,6 +3,7 @@
   <service name="go_modules" mode="manual">
     <param name="subdir">cmd</param>
     <param name="compression">zst</param>
+    <param name="replace">go.opentelemetry.io/otel=go.opentelemetry.io/otel@v1.44.0</param>
   </service>
   <service name="set_version" mode="manual">
     <param name="basename">cadvisor</param>

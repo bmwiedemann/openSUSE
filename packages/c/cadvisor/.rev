@@ -139,4 +139,13 @@
     in the go_modules group across 0 directory</comment>
     <requestid>1366422</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>b533d5d52b40e0b653877cb5dc5860e4</srcmd5>
+    <version>0.60.5</version>
+    <time>1787766828</time>
+    <user>anag_factory</user>
+    <comment>- update vendor:
+  * go.opentelemetry.io/otel@v1.44.0 (bsc#1276727, CVE-2026-41178)</comment>
+    <requestid>1373696</requestid>
+  </revision>
 </revisionlist>
