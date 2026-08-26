@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sat Aug 22 16:28:07 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.1.1:
+  * reduce the number of symbols exported to avoid conflicts when
+    linking
+  * DVD-Audio support:
+  * Allow CPRM and CSS decryption support to be available
+    simultaneously
+  * Add Audio Still Video Set (ASVS) IFO structures and readers
+  * Add ASVS and SAMG support to public IFO open APIs
+  * Expose ASVS IFO, backup and menu VOB files
+  * Improve AOB/VOB stream type handling
+  * Misc fixes on structures documentation
+  * DVD-VR support:
+  * Add DVD-VR IFO parsing (PGIT, PG_GI, PS_GI)
+  * Add DVDOpenVideoRecording functions
+  * Add ifoOpenVideoRecording support
+  * Add CPRM decryption support
+  * Add DVDProbeType auto-detection for DVD-Video, DVD-Audio and
+    DVD-VR
+  * Add support for user-defined cells and time maps
+  * Harden parsing of missing or malformed DVD-VR metadata
+  * Add DVDOpenFiles for caller-provided virtual filesystem
+    implementations
+  * Split the internal filesystem implementation into platform-
+    specific helpers
+  * Improve file and directory handling on Windows, macOS and iOS
+  * Improve logger fallback behavior when no controlling terminal
+    is available
+  * Add audio and subpicture code extension enums
+  * Fixes and hardening:
+  * Hardened IFO parsing for oversized still video groups
+  * Fix DVD-Audio ASVS/SAMG fallback handling
+  * Fix DVD-VR cell entry point byte swapping
+  * Fix DVDFileSeek validation for non-sector-aligned files
+  * Fix partial-block size accounting
+  * Fix resource leaks, null pointer checks and error paths
+
+-------------------------------------------------------------------
 Tue Feb 24 16:02:33 UTC 2026 - Mia Herkt <mia@0x0.st>
 
 - Update VideoLAN signing keys
@@ -113,7 +152,7 @@ Fri Jan 30 14:38:44 UTC 2015 - joerg.lorenzen@ki.tng.de
 
 - Update to version 5.0.2:
   * Add DVDOpenStream to open a dvd from a set of callbacks
-  
+
 -------------------------------------------------------------------
 Tue Jan 27 12:30:13 UTC 2015 - joerg.lorenzen@ki.tng.de
 
@@ -143,8 +182,8 @@ Fri Jul 18 16:03:33 UTC 2014 - dimstar@opensuse.org
 Tue Jul 31 19:08:23 UTC 2012 - crrodriguez@opensuse.org
 
 - Use openssl for crypto, we have too many duplicated
-  implementations of common digest algos 
-- Autotools fixes. 
+  implementations of common digest algos
+- Autotools fixes.
 
 -------------------------------------------------------------------
 Sat Dec  3 23:04:01 UTC 2011 - pascal.bleser@opensuse.org
@@ -189,12 +228,12 @@ Wed Sep 10 10:15:12 CEST 2008 - hvogel@suse.de
 Tue Aug 21 02:29:37 CEST 2007 - crrodriguez@suse.de
 
 - fix devel package dependencies
-- remote static libraries and pointless libtool archive 
+- remote static libraries and pointless libtool archive
 
 -------------------------------------------------------------------
 Mon Jul 30 00:52:03 CEST 2007 - ro@suse.de
 
-- provide old name 
+- provide old name
 
 -------------------------------------------------------------------
 Wed Jul 25 15:28:15 CEST 2007 - sbrabec@suse.cz
@@ -212,7 +251,7 @@ Mon Jun 12 10:39:31 CEST 2006 - kukuk@suse.de
 Mon May 15 11:49:01 CEST 2006 - stark@suse.de
 
 - update to 0.9.6
-  * Various bug fixes 
+  * Various bug fixes
   * Potential memory leak fixes
   * Better error handling
   * Some support for multithreaded apps
@@ -237,7 +276,7 @@ Sun Jan 11 13:18:29 CET 2004 - adrian@suse.de
 -------------------------------------------------------------------
 Mon Mar 24 07:35:41 CET 2003 - stark@suse.de
 
-- update to 0.9.4 
+- update to 0.9.4
 
 -------------------------------------------------------------------
 Thu Jan 16 11:28:43 CET 2003 - nadvornik@suse.cz
@@ -247,17 +286,17 @@ Thu Jan 16 11:28:43 CET 2003 - nadvornik@suse.cz
 -------------------------------------------------------------------
 Fri Aug  9 19:59:08 CEST 2002 - stark@suse.de
 
-- added Requires to -devel package 
+- added Requires to -devel package
 
 -------------------------------------------------------------------
 Wed Jun 12 01:15:22 CEST 2002 - ro@suse.de
 
-- use autoreconf (fixes build on ppc64) 
+- use autoreconf (fixes build on ppc64)
 
 -------------------------------------------------------------------
 Tue May 28 16:30:32 CEST 2002 - stark@suse.de
 
-- update to 0.9.3 
+- update to 0.9.3
 
 -------------------------------------------------------------------
 Wed Feb 13 07:54:28 CET 2002 - stark@suse.de
@@ -268,7 +307,7 @@ Wed Feb 13 07:54:28 CET 2002 - stark@suse.de
 Mon Jan 14 09:41:53 CET 2002 - stark@suse.de
 
 - bzip2 sources
-- fixed dlopen() to work with newer versions 
+- fixed dlopen() to work with newer versions
 
 -------------------------------------------------------------------
 Mon Jan  7 18:00:34 CET 2002 - schwab@suse.de

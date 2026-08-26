@@ -18,7 +18,7 @@
 
 %define sover   8
 Name:           libdvdread
-Version:        7.0.1
+Version:        7.1.1
 Release:        0
 Summary:        Library for Reading DVD Video Images
 License:        GPL-2.0-or-later
