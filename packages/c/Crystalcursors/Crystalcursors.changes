@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 26 08:53:40 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Patch to use 'magick convert' instead of 'convert'
+  * patch_im.diff
+
+-------------------------------------------------------------------
 Wed Mar 25 21:10:52 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - spec file refresh

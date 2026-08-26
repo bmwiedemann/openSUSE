@@ -25,6 +25,7 @@ Group:          System/X11/Icons
 URL:            https://digilander.libero.it/m4rt/html/crystalcursors.html
 Source:         https://digilander.libero.it/m4rt/files/Crystalcursors.tar.bz2
 Patch0:         root-installation.diff
+Patch1:         patch_im.diff
 BuildRequires:  ImageMagick
 BuildRequires:  libpng
 BuildRequires:  xcursorgen

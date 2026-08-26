@@ -1,0 +1,92 @@
+diff -Nrua Crystalcursors.orig/colorize.sh Crystalcursors/colorize.sh
+--- Crystalcursors.orig/colorize.sh	2004-05-18 18:18:06.000000000 +0200
++++ Crystalcursors/colorize.sh	2026-08-26 10:56:31.772793258 +0200
+@@ -16,7 +16,7 @@
+  do
+   #convert -fill $1 -colorize 40 -contrast -modulate 100,180,100 +contrast $f $f
+   #convert -fill $1 -colorize 40 $f $f
+-  convert -fill $1 -colorize 40 -modulate 100,180,100 $f $f
++  magick convert -fill $1 -colorize 40 -modulate 100,180,100 $f $f
+  done
+ }
+ 
+@@ -46,4 +46,4 @@
+ mv index2 index.theme
+ 
+ cd ..
+-make&&make install
+\ No newline at end of file
++make&&make install
+diff -Nrua Crystalcursors.orig/left-handed_templates/floptheme.sh Crystalcursors/left-handed_templates/floptheme.sh
+--- Crystalcursors.orig/left-handed_templates/floptheme.sh	2004-10-17 15:46:34.000000000 +0200
++++ Crystalcursors/left-handed_templates/floptheme.sh	2026-08-26 11:25:42.972038007 +0200
+@@ -10,37 +10,39 @@
+ cp -r $1'_src' $1'_src_left'
+ 
+ function flopcursors () {
+- debug=1
+- for i in `find . -name '*.png'`; do
+-     convert $i -flop $i
+-     test -n $debug && echo Converting: $i
+- done
+- 
+- for i in `find . -name '*.conf'`; do
+-     test -n $debug && echo Adjusting: $i
+-     cat $i | \
+-         (
+-         rm -f $i.flopcursorstmp
+-         while read ln; do
+-             size=`echo $ln | cut -f 1 -d " "`
+-             xhot=`echo $ln | cut -f 2 -d " "`
+-             yhot=`echo $ln | cut -f 3 -d " "`
+-             filename=`echo $ln | cut -f 4 -d " "`
+-             delay=`echo $ln | cut -f 5 -d " "`
+-             file=`dirname $i`/$filename
+-             if test -r "$file"; then
+-                 width=`identify -format %w $file`
+-             else
+-                 file=`dirname $i`/`basename $filename`
+-                 width=`identify -format %w $file`
+-             fi
+-             echo $size $((width-xhot)) $yhot $filename $delay >>$i.flopcursorstmp
+-         done
+-         mv -f $i.flopcursorstmp $i
+-         )
+- done
+-}
++    debug=1
++
++    for i in $(find . -name '*.png'); do
++        magick "$i" -flop "$i"
++        test -n "$debug" && echo "Converting: $i"
++    done
++
++    for i in $(find . -name '*.conf'); do
++        test -n "$debug" && echo "Adjusting: $i"
++        cat "$i" | (
++            rm -f "$i.flopcursorstmp"
++            while read -r ln; do
++                size=$(echo "$ln" | cut -f 1 -d " ")
++                xhot=$(echo "$ln" | cut -f 2 -d " ")
++                yhot=$(echo "$ln" | cut -f 3 -d " ")
++                filename=$(echo "$ln" | cut -f 4 -d " ")
++                delay=$(echo "$ln" | cut -f 5 -d " ")
+ 
++                file=$(realpath "$(dirname "$i")/$filename")
++
++                if test -r "$file"; then
++                    width=$(identify -format %w "$file")
++                else
++                    file=$(realpath "$(dirname "$i")/$(basename "$filename")")
++                    width=$(identify -format %w "$file")
++                fi
++
++                echo "$size $((width-xhot)) $yhot $filename $delay" >> "$i.flopcursorstmp"
++            done
++            mv -f "$i.flopcursorstmp" "$i"
++        )
++    done
++}
+ 
+ 
+ cd $1"_src_left"
