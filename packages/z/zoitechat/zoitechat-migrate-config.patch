@@ -1,0 +1,39 @@
+diff --git a/src/common/cfgfiles.c b/src/common/cfgfiles.c
+--- a/src/common/cfgfiles.c
++++ b/src/common/cfgfiles.c
+@@ -952,6 +952,12 @@ load_default_config(void)
+ 	g_free (langs);
+ }
+ 
++void
++migrate_from_hex_or_xchat (void)
++{
++	g_spawn_command_line_sync ("@@LIBDIR@@/zoitechat/zoitechat-migrate-sh", NULL, NULL, NULL, NULL);
++}
++
+ int
+ make_config_dirs (void)
+ {
+diff --git a/src/common/cfgfiles.h b/src/common/cfgfiles.h
+--- a/src/common/cfgfiles.h
++++ b/src/common/cfgfiles.h
+@@ -41,6 +41,7 @@ int check_config_dir (void);
+ void load_default_config (void);
+ int make_config_dirs (void);
+ int make_dcc_dirs (void);
++void migrate_from_hex_or_xchat (void);
+ int load_config (void);
+ int save_config (void);
+ int save_config_prepare (char **temp_path);
+diff --git a/src/common/zoitechat.c b/src/common/zoitechat.c
+--- a/src/common/zoitechat.c
++++ b/src/common/zoitechat.c
+@@ -1221,6 +1221,8 @@ main (int argc, char *argv[])
+ 		load_default_config ();
+ 		make_config_dirs ();
+ 		make_dcc_dirs ();
++		migrate_from_hex_or_xchat ();
++		load_config ();
+ 	}
+ 
+ 	/* we MUST do this after load_config () AND before fe_init (thus gtk_init) otherwise it will fail */

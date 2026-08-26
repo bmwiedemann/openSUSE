@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Sun Aug 16 22:00:00 UTC 2026 - Simon Lees + Gemini <sflees@suse.de>
+
+- Import and adapt HexChat configuration migration logic to ZoiteChat:
+  * Add zoitechat-migrate-config.patch to hook into cfgfiles.c and trigger
+    the migration on the first startup.
+  * Add zoitechat-migrate-sh script to automate config/log/scrollback copy
+    from HexChat (~/.config/hexchat/) or XChat (~/.xchat2/) to ZoiteChat
+    (~/.config/zoitechat/).
+- Add publicsuffix as a BuildRequires 
+- Add pkgconfig(appindicator3-0.1) as a BuildRequires to fix build failure
+  caused by missing tray support dependency on Linux.
+
+-------------------------------------------------------------------
+Sun Aug 16 14:15:00 UTC 2026 - Simon Lees + Gemini <sflees@suse.de>
+
+- Update to version 2.19.0:
+  * Added on-demand SASL password prompts, including renewed prompts after reconnecting.
+  * Corrected NickServ authentication to use the decrypted password for the active network.
+  * Made system theme matching the default and polished GTK3 theme integration.
+  * Applied more settings changes immediately, reducing the need to restart ZoiteChat.
+  * Added descriptive tooltips to the color picker choices and refined default text-event colors.
+  * Stabilized channel tree font handling across palette and theme updates.
+  * Corrected the chat scrollbar increment used by its arrow buttons.
+
+-------------------------------------------------------------------
+Sun Aug 16 13:50:00 UTC 2026 - Simon Lees + Gemini <sflees@suse.de>
+
+- Initial package of ZoiteChat 2.18.3, a fork of HexChat.

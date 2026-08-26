@@ -1,0 +1,105 @@
+#!/bin/sh
+# This script is for migrating config/logs from hexchat and xchat to 
+# zoitechat automatically.
+
+_DEBUG="off"
+function DEBUG()
+{
+    [ "$_DEBUG" == "on" ] && $@
+}
+
+XCHAT_DIR=$HOME/.xchat2/
+HEXCHAT_DIR=$HOME/.config/hexchat/
+ZOITECHAT_DIR=$HOME/.config/zoitechat/
+SERVLIST_=servlist_.conf
+SERVLIST=servlist.conf
+SCROLL_PATH=scrollback/
+XCHAT_LOGS=xchatlogs/
+HEXCHAT_LOGS=logs/
+CP_PATH=/usr/bin/cp
+MV_PATH=/usr/bin/mv
+MD_PATH=/usr/bin/mkdir
+
+doCopyServlist(){
+    if [ -e $XCHAT_DIR$SERVLIST_ ]; then
+        if [ -d $ZOITECHAT_DIR ]; then
+            $CP_PATH $XCHAT_DIR$SERVLIST_ $ZOITECHAT_DIR$SERVLIST
+        else
+            DEBUG echo $ZOITECHAT_DIR" does not exist"
+        fi
+    else
+        DEBUG echo "servlist does not exist"
+    fi
+}
+
+doCopyScroll(){
+    if [ -d $XCHAT_DIR$SCROLL_PATH ]; then
+        if [ -d $ZOITECHAT_DIR ]; then
+            if [ ! -e $ZOITECHAT_DIR$SCROLL_PATH ]; then
+                $CP_PATH -a $XCHAT_DIR$SCROLL_PATH $ZOITECHAT_DIR$SCROLL_PATH
+            else
+                DEBUG echo $ZOITECHAT_DIR$SCROLL_PATH" already exists"
+            fi
+        else
+            DEBUG echo $ZOITECHAT_DIR" does not exist"
+        fi
+    else
+        DEBUG echo $XCHAT_DIR$SCROLL_PATH" does not exist"
+    fi
+}
+
+doCopyLogs(){
+    if [ -d $XCHAT_DIR$XCHAT_LOGS ]; then
+        if [ -d $ZOITECHAT_DIR ]; then
+            if [ ! -e $ZOITECHAT_DIR$HEXCHAT_LOGS ]; then
+                $CP_PATH -a $XCHAT_DIR$XCHAT_LOGS $ZOITECHAT_DIR$HEXCHAT_LOGS
+                if [ -d $ZOITECHAT_DIR$HEXCHAT_LOGS ]; then
+                    for file in `ls $ZOITECHAT_DIR$HEXCHAT_LOGS` 
+                    do
+                        path=$file
+                        paths=(${path//-/ })
+                        $MD_PATH $ZOITECHAT_DIR$HEXCHAT_LOGS${paths[0]}
+                        $MV_PATH $ZOITECHAT_DIR$HEXCHAT_LOGS$file $ZOITECHAT_DIR$HEXCHAT_LOGS${paths[0]}/${paths[1]}
+                    done
+                else
+                    DEBUG echo "Copy fails"
+                fi
+            else
+                DEBUG echo $ZOITECHAT_DIR$HEXCHAT_LOGS" already exists"
+            fi
+        else
+            DEBUG echo $ZOITECHAT_DIR" does not exist"
+        fi
+    else
+        DEBUG echo $XCHAT_DIR$XCHAT_LOGS" does not exist"
+    fi
+}
+
+# 1. Try to migrate from hexchat (entire directory copy/merge)
+if [ -d $HEXCHAT_DIR ]; then
+    if [ ! -e $ZOITECHAT_DIR/zoitechat.conf ] && [ ! -e $ZOITECHAT_DIR/$SERVLIST ]; then
+        DEBUG echo "Migrating from HexChat..."
+        $MD_PATH -p $ZOITECHAT_DIR
+        # Copy the contents of the HexChat config directory into the ZoiteChat config directory
+        $CP_PATH -a $HEXCHAT_DIR/. $ZOITECHAT_DIR/
+        # Rename hexchat.conf to zoitechat.conf if it exists
+        if [ -e $ZOITECHAT_DIR/hexchat.conf ]; then
+            $MV_PATH $ZOITECHAT_DIR/hexchat.conf $ZOITECHAT_DIR/zoitechat.conf
+        fi
+    else
+        DEBUG echo "ZoiteChat config already exists. Skipping HexChat migration..."
+    fi
+# 2. Try to migrate from xchat if no hexchat config exists
+elif [ -d $XCHAT_DIR ]; then
+    if [ ! -e $ZOITECHAT_DIR/zoitechat.conf ] && [ ! -e $ZOITECHAT_DIR/$SERVLIST ]; then
+        DEBUG echo "Migrating from XChat..."
+        $MD_PATH -p $ZOITECHAT_DIR
+        doCopyServlist
+        doCopyScroll
+        doCopyLogs
+    else
+        DEBUG echo "ZoiteChat config already exists. Skipping XChat migration..."
+    fi
+else
+    DEBUG echo "No HexChat or XChat config directories found. Stop migrating..."
+fi
