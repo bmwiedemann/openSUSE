@@ -66,4 +66,12 @@
     to use shared AWS credential chain by @jefchien in (#2151) (forwarded request 1372725 from glaubitz)</comment>
     <requestid>1373239</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>2dd3499b1348490377ceeed9b9bfc4f6</srcmd5>
+    <version>1.300071.0</version>
+    <time>1787766973</time>
+    <user>anag_factory</user>
+    <comment>- Update go.opentelemetry.io/otel to v1.44.0 (bsc#1276739, CVE-2026-41178) (forwarded request 1373785 from glaubitz)</comment>
+    <requestid>1373809</requestid>
+  </revision>
 </revisionlist>
