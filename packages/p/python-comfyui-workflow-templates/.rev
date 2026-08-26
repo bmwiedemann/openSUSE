@@ -58,4 +58,38 @@ api_bytedance_vcube_video_enhance).
 </comment>
     <requestid>1373549</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>904dfadc47381c0f9ea9b68a724b4ceb</srcmd5>
+    <version>0.11.48</version>
+    <time>1787766812</time>
+    <user>anag_factory</user>
+    <comment>Update python-comfyui-workflow-templates to 0.11.48.
+
+Upstream moves only the pinned bundle versions in this release: -core to
+0.3.322, -json to 0.1.57 and -media-assets-01 to 0.1.35. The module code,
+README and license are byte-identical to 0.11.46. Those three bundles are
+submitted alongside this request.
+
+The spec's bundle dependency floors are raised to match what 0.11.48 pins.
+Upstream uses &quot;==&quot; for these; the spec keeps them as &quot;&gt;=&quot; floors for the
+reason recorded in the comment above the Requires block -- the constraint is
+one-directional, and an exact pin makes the package uninstallable on every
+independent bundle release. The four bundles upstream did not move
+(media-api 0.3.84, media-video 0.3.101, media-image 0.3.160,
+media-other 0.3.229) keep their existing floors.
+
+Staging: these four requests must land in the SAME staging project. Factory
+currently has -core 0.3.320, -json 0.1.55 and -media-assets-01 0.1.33; this
+package's raised BuildRequires and Requires need 0.3.322 / 0.1.57 / 0.1.35, so
+splitting the batch across stagings leaves this package unresolvable.
+
+Sequencing: please stage this together with, or after, SR 1373695, which
+converts comfyui's exact &quot;=&quot; pins on this package family to floors. Until
+1373695 is accepted, Factory's comfyui still requires
+python3XX-comfyui-workflow-templates = 0.11.44, so a staging that takes this
+bump without 1373695 will show comfyui broken in installcheck. 0.11.48
+satisfies the &quot;&gt;= 0.11.44&quot; floor 1373695 introduces, so no comfyui spec
+change is needed.</comment>
+    <requestid>1373740</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Aug 26 05:55:50 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.11.48:
+  * Only the pinned bundle versions move: -core to 0.3.322, -json
+    to 0.1.57 and -media-assets-01 to 0.1.35, which together add
+    the Pixal3D/TRELLIS.2 image to model, Nano Banana 2 image edit
+    continuation, SDXL 1.0 simple text to image, SAM 3D Body mesh
+    extraction and MiniMax H3 image to video continuation
+    templates
+  * Module code, README and license are unchanged from 0.11.46
+- Raise the bundle dependency floors to the versions this release
+  pins: -core >= 0.3.322, -json >= 0.1.57 and
+  -media-assets-01 >= 0.1.35
+
+-------------------------------------------------------------------
 Tue Aug 25 08:28:57 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.11.46:
