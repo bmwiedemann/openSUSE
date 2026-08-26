@@ -2,10 +2,10 @@ Author: Adam Majer <amajer@suse.de>
 Date: Dec 20 09:18:49 UTC 2017
 Summary: Fix CI unit tests framework for OBS building
 
-Index: node-v26.2.0/test/parallel/test-module-loading-globalpaths.js
+Index: node-v26.7.0/test/parallel/test-module-loading-globalpaths.js
 ===================================================================
---- node-v26.2.0.orig/test/parallel/test-module-loading-globalpaths.js
-+++ node-v26.2.0/test/parallel/test-module-loading-globalpaths.js
+--- node-v26.7.0.orig/test/parallel/test-module-loading-globalpaths.js
++++ node-v26.7.0/test/parallel/test-module-loading-globalpaths.js
 @@ -11,6 +11,9 @@ const { addLibraryPath } = require('../c
  
  addLibraryPath(process.env);
@@ -16,10 +16,10 @@ Index: node-v26.2.0/test/parallel/test-module-loading-globalpaths.js
  if (process.argv[2] === 'child') {
    console.log(require(pkgName).string);
  } else {
-Index: node-v26.2.0/test/parallel/test-tls-passphrase.js
+Index: node-v26.7.0/test/parallel/test-tls-passphrase.js
 ===================================================================
---- node-v26.2.0.orig/test/parallel/test-tls-passphrase.js
-+++ node-v26.2.0/test/parallel/test-tls-passphrase.js
+--- node-v26.7.0.orig/test/parallel/test-tls-passphrase.js
++++ node-v26.7.0/test/parallel/test-tls-passphrase.js
 @@ -223,7 +223,7 @@ server.listen(0, common.mustCall(functio
    }, onSecureConnect());
  })).unref();
@@ -29,10 +29,10 @@ Index: node-v26.2.0/test/parallel/test-tls-passphrase.js
  
  // Missing passphrase
  assert.throws(function() {
-Index: node-v26.2.0/test/parallel/test-repl-envvars.js
+Index: node-v26.7.0/test/parallel/test-repl-envvars.js
 ===================================================================
---- node-v26.2.0.orig/test/parallel/test-repl-envvars.js
-+++ node-v26.2.0/test/parallel/test-repl-envvars.js
+--- node-v26.7.0.orig/test/parallel/test-repl-envvars.js
++++ node-v26.7.0/test/parallel/test-repl-envvars.js
 @@ -3,6 +3,8 @@
  // Flags: --expose-internals
  
@@ -42,10 +42,10 @@ Index: node-v26.2.0/test/parallel/test-repl-envvars.js
  const stream = require('stream');
  const { describe, test } = require('node:test');
  const REPL = require('internal/repl');
-Index: node-v26.2.0/Makefile
+Index: node-v26.7.0/Makefile
 ===================================================================
---- node-v26.2.0.orig/Makefile
-+++ node-v26.2.0/Makefile
+--- node-v26.7.0.orig/Makefile
++++ node-v26.7.0/Makefile
 @@ -414,7 +414,6 @@ ADDONS_HEADERS_PREREQS := tools/install.
  	$(wildcard deps/uv/include/*/*.h) \
  	$(wildcard deps/v8/include/*.h) \
@@ -72,10 +72,10 @@ Index: node-v26.2.0/Makefile
  		echo "Skipping tools/doc/node_modules (no crypto and/or no ICU)"; \
  	else \
  		cd tools/doc && $(call available-node,$(run-npm-ci)) \
-Index: node-v26.2.0/tools/test.py
+Index: node-v26.7.0/tools/test.py
 ===================================================================
---- node-v26.2.0.orig/tools/test.py
-+++ node-v26.2.0/tools/test.py
+--- node-v26.7.0.orig/tools/test.py
++++ node-v26.7.0/tools/test.py
 @@ -1400,7 +1400,7 @@ def BuildOptions():
    result.add_argument("-s", "--suite", help="A test suite",
        default=[], action="append")
@@ -85,10 +85,10 @@ Index: node-v26.2.0/tools/test.py
    result.add_argument("--arch", help='The architecture to run tests for',
        default='none')
    result.add_argument("--snapshot", help="Run the tests with snapshot turned on",
-Index: node-v26.2.0/test/parallel/test-crypto-dh.js
+Index: node-v26.7.0/test/parallel/test-crypto-dh.js
 ===================================================================
---- node-v26.2.0.orig/test/parallel/test-crypto-dh.js
-+++ node-v26.2.0/test/parallel/test-crypto-dh.js
+--- node-v26.7.0.orig/test/parallel/test-crypto-dh.js
++++ node-v26.7.0/test/parallel/test-crypto-dh.js
 @@ -93,7 +93,7 @@ const {
        dh3.computeSecret('');
      }, { message: process.features.openssl_is_boringssl ?
@@ -98,10 +98,10 @@ Index: node-v26.2.0/test/parallel/test-crypto-dh.js
    }
  }
  
-Index: node-v26.2.0/test/parallel/test-dns.js
+Index: node-v26.7.0/test/parallel/test-dns.js
 ===================================================================
---- node-v26.2.0.orig/test/parallel/test-dns.js
-+++ node-v26.2.0/test/parallel/test-dns.js
+--- node-v26.7.0.orig/test/parallel/test-dns.js
++++ node-v26.7.0/test/parallel/test-dns.js
 @@ -451,7 +451,7 @@ assert.throws(() => {
  
    const server = dgram.createSocket('udp4');
@@ -111,10 +111,10 @@ Index: node-v26.2.0/test/parallel/test-dns.js
      const parsed = dnstools.parseDNSPacket(msg);
      const domain = parsed.questions[0].domain;
      assert.strictEqual(domain, 'example.org');
-Index: node-v26.2.0/test/wpt/test-webcrypto.js
+Index: node-v26.7.0/test/wpt/test-webcrypto.js
 ===================================================================
---- node-v26.2.0.orig/test/wpt/test-webcrypto.js
-+++ node-v26.2.0/test/wpt/test-webcrypto.js
+--- node-v26.7.0.orig/test/wpt/test-webcrypto.js
++++ node-v26.7.0/test/wpt/test-webcrypto.js
 @@ -1,7 +1,8 @@
  'use strict';
  
@@ -125,10 +125,10 @@ Index: node-v26.2.0/test/wpt/test-webcrypto.js
    common.skip('missing crypto');
  
  const { WPTRunner } = require('../common/wpt');
-Index: node-v26.2.0/test/parallel/test-sqlite.js
+Index: node-v26.7.0/test/parallel/test-sqlite.js
 ===================================================================
---- node-v26.2.0.orig/test/parallel/test-sqlite.js
-+++ node-v26.2.0/test/parallel/test-sqlite.js
+--- node-v26.7.0.orig/test/parallel/test-sqlite.js
++++ node-v26.7.0/test/parallel/test-sqlite.js
 @@ -243,6 +243,7 @@ suite('SQL APIs enabled at build time',
    });
  
@@ -153,10 +153,10 @@ Index: node-v26.2.0/test/parallel/test-sqlite.js
      const db = new DatabaseSync(':memory:');
      db.exec(`
        CREATE VIRTUAL TABLE t1 USING geopoly(a,b,c);
-Index: node-v26.2.0/test/parallel/test-internal-util-construct-sab.js
+Index: node-v26.7.0/test/parallel/test-internal-util-construct-sab.js
 ===================================================================
---- node-v26.2.0.orig/test/parallel/test-internal-util-construct-sab.js
-+++ node-v26.2.0/test/parallel/test-internal-util-construct-sab.js
+--- node-v26.7.0.orig/test/parallel/test-internal-util-construct-sab.js
++++ node-v26.7.0/test/parallel/test-internal-util-construct-sab.js
 @@ -1,7 +1,6 @@
  // Flags: --enable-sharedarraybuffer-per-context --expose-internals
  'use strict';
@@ -165,11 +165,11 @@ Index: node-v26.2.0/test/parallel/test-internal-util-construct-sab.js
  const assert = require('assert');
  const { kMaxLength } = require('buffer');
  const { isSharedArrayBuffer } = require('util/types');
-Index: node-v26.2.0/test/common/index.js
+Index: node-v26.7.0/test/common/index.js
 ===================================================================
---- node-v26.2.0.orig/test/common/index.js
-+++ node-v26.2.0/test/common/index.js
-@@ -968,6 +968,7 @@ function resolveBuiltBinary(binary) {
+--- node-v26.7.0.orig/test/common/index.js
++++ node-v26.7.0/test/common/index.js
+@@ -1003,6 +1003,7 @@ function resolveBuiltBinary(binary) {
  
  const common = {
    allowGlobals,
@@ -177,10 +177,10 @@ Index: node-v26.2.0/test/common/index.js
    buildType,
    canCreateSymLink,
    childShouldThrowAndAbort,
-Index: node-v26.2.0/test/common/index.mjs
+Index: node-v26.7.0/test/common/index.mjs
 ===================================================================
---- node-v26.2.0.orig/test/common/index.mjs
-+++ node-v26.2.0/test/common/index.mjs
+--- node-v26.7.0.orig/test/common/index.mjs
++++ node-v26.7.0/test/common/index.mjs
 @@ -5,6 +5,7 @@ const common = require('./index.js');
  
  const {
@@ -189,3 +189,39 @@ Index: node-v26.2.0/test/common/index.mjs
    buildType,
    canCreateSymLink,
    childShouldThrowAndAbort,
+Index: node-v26.7.0/test/common/shared-lib-util.js
+===================================================================
+--- node-v26.7.0.orig/test/common/shared-lib-util.js
++++ node-v26.7.0/test/common/shared-lib-util.js
+@@ -1,6 +1,7 @@
+ 'use strict';
+ const common = require('../common');
+ const path = require('path');
++const fs = require('fs');
+ 
+ const kNodeShared = Boolean(process.config.variables.node_shared);
+ const kShlibSuffix = process.config.variables.shlib_suffix;
+@@ -35,6 +36,23 @@ function getSharedLibPath() {
+   if (common.isWindows) {
+     return path.join(kExecPath, 'node.dll');
+   }
++
++  // On Linux/Unix, dynamically find the real loaded library path from the process memory map
++  try {
++    const maps = fs.readFileSync('/proc/self/maps', 'utf8');
++    const targetLib = `libnode.${kShlibSuffix}`;
++    for (const line of maps.split('\n')) {
++      if (line.includes(targetLib)) {
++        const match = line.match(/(\/\S+)/);
++        if (match) {
++          return match[1];
++        }
++      }
++    }
++  } catch {
++    // Graceful fallback if /proc/self/maps is unavailable
++  }
++
+   return path.join(kExecPath, `libnode.${kShlibSuffix}`);
+ }
+ 

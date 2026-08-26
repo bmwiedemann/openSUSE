@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue Aug 25 10:56:32 UTC 2026 - Adam Majer <adam.majer@suse.de>
+
+- Update to 26.7.0:
+  - crypto: support loading private keys through STORE loaders
+  - lib: add perfetto support
+  - module: implement Symbol.dispose in ModuleHooks
+  - st_runner: add support for --test-coverage-include-all
+
+For details, see https://github.com/nodejs/node/releases#release-v26.7.0
+
+- fix_ci_tests.patch: look up libnode location instead of hardcoding it
+- no_avx2_on_i586.patch: remove AVX2 from i586
+
+-------------------------------------------------------------------
+Tue Aug 25 10:39:43 UTC 2026 - Adam Majer <adam.majer@suse.de>
+
+- npm-line-truncation.patch: do not truncate long lines in help output (bsc#1276224)
+
+-------------------------------------------------------------------
+Mon Aug  3 14:39:30 UTC 2026 - Adam Majer <adam.majer@suse.de>
+
+- Add shared library (bsc#1174792)
+- versioned.patch: use libnode.so.* instead of versioning it
+  as soname is already unique between major versions
+- no-rpath.patch: remove fixed RPATH
+
+-------------------------------------------------------------------
+Mon Aug  3 14:27:08 UTC 2026 - Adam Majer <adam.majer@suse.de>
+
+- Update to 26.6.0:
+  - ffi: add getCurrentEventLoop
+  - test_runner: add context.log() and test:log event
+  - test_runner: report entryFile in TestStream events
+
+- CVE-2026-54272: ip-address.patch: misclassification of IPv4-mapped/NAT64 IPv6 addresses allows for bypass of SSRF and trust-boundary checks (bsc#1272882)
+- For details, see https://github.com/nodejs/node/releases#release-v26.6.0
+
+-------------------------------------------------------------------
 Fri Jul 31 14:14:15 UTC 2026 - Adam Majer <adam.majer@suse.de>
 
 - Update to 26.5.1:

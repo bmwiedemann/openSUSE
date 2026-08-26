@@ -25,7 +25,7 @@
 %endif
 
 Name:           nodejs26
-Version:        26.5.1
+Version:        26.7.0
 Release:        0
 
 # Double DWZ memory limits
@@ -119,8 +119,12 @@ Source21:       README.md
 
 ## Patches not distribution specific
 Patch1:         v8-i586.patch
+Patch2:         no-rpath.patch
 Patch3:         fix_ci_tests.patch
+Patch4:         no_avx2_on_i586.patch
 Patch5:         icu_781.patch
+Patch6:         ip-address.patch
+Patch7:         npm-line-truncation.patch
 
 ## Patches specific to SUSE and openSUSE
 # PATCH-FIX-OPENSUSE -- set correct path for dtrace if it is built
@@ -223,7 +227,7 @@ BuildRequires:  bundled_openssl_should_not_be_required
 %if ! 0%{with intree_cares}
 BuildRequires:  pkgconfig(libcares) >= 1.17.0
 %else
-Provides:       bundled(libcares2) = 1.34.6
+Provides:       bundled(libcares2) = 1.34.8
 %endif
 
 %if %node_version_number >= 22
@@ -242,7 +246,7 @@ Provides:       bundled(icu) = 78.3
 %if ! 0%{with intree_nghttp2}
 BuildRequires:  libnghttp2-devel >= 1.41.0
 %else
-Provides:       bundled(nghttp2) = 1.69.0
+Provides:       bundled(nghttp2) = 1.70.0
 %endif
 
 %if 0%{with valgrind_tests}
@@ -301,17 +305,18 @@ BuildRequires:  pkgconfig(libbrotlidec)
 
 # bundled url-ada parser, not ada
 Provides:       bundled(LIEF) = 0.17.0
-Provides:       bundled(ada) = 3.4.4
+Provides:       bundled(ada) = 4.0.0
 Provides:       bundled(libuv) = 1.52.1
 Provides:       bundled(llhttp) = 9.4.3
 Provides:       bundled(merve) = 1.2.2
-Provides:       bundled(ngtcp2) = 1.23.0
-Provides:       bundled(node-acorn) = 8.17.0
+Provides:       bundled(nghttp3) = 1.18.0
+Provides:       bundled(ngtcp2) = 1.25.0
+Provides:       bundled(node-acorn) = 8.18.0
 Provides:       bundled(node-acorn-walk) = 8.3.5
-Provides:       bundled(node-amaro) = 1.1.10
-Provides:       bundled(node-minimatch) = 10.2.5
+Provides:       bundled(node-amaro) = 1.1.11
+Provides:       bundled(node-minimatch) = 10.2.6
 Provides:       bundled(node-undici) = 8.9.0
-Provides:       bundled(simdjson) = 4.6.4
+Provides:       bundled(simdjson) = 4.6.6
 Provides:       bundled(uvwasi) = 0.0.23
 Provides:       bundled(v8) = 14.6.202.34
 ## END NON-NPM PROVIDES ##
@@ -360,7 +365,7 @@ Provides:       bundled(node-archy) = 1.0.0
 Provides:       bundled(node-balanced-match) = 4.0.4
 Provides:       bundled(node-bin-links) = 6.0.2
 Provides:       bundled(node-binary-extensions) = 3.1.0
-Provides:       bundled(node-brace-expansion) = 5.0.6
+Provides:       bundled(node-brace-expansion) = 5.0.7
 Provides:       bundled(node-cacache) = 20.0.4
 Provides:       bundled(node-chalk) = 5.6.2
 Provides:       bundled(node-chownr) = 3.0.0
@@ -395,11 +400,11 @@ Provides:       bundled(node-jsonparse) = 1.3.1
 Provides:       bundled(node-just-diff) = 6.0.2
 Provides:       bundled(node-just-diff-apply) = 5.5.0
 Provides:       bundled(node-libnpmaccess) = 10.0.3
-Provides:       bundled(node-libnpmdiff) = 8.1.10
-Provides:       bundled(node-libnpmexec) = 10.3.0
-Provides:       bundled(node-libnpmfund) = 7.0.24
+Provides:       bundled(node-libnpmdiff) = 8.1.12
+Provides:       bundled(node-libnpmexec) = 10.3.2
+Provides:       bundled(node-libnpmfund) = 7.0.26
 Provides:       bundled(node-libnpmorg) = 8.0.1
-Provides:       bundled(node-libnpmpack) = 9.1.10
+Provides:       bundled(node-libnpmpack) = 9.1.12
 Provides:       bundled(node-libnpmpublish) = 11.2.0
 Provides:       bundled(node-libnpmsearch) = 9.0.1
 Provides:       bundled(node-libnpmteam) = 8.0.2
@@ -427,7 +432,7 @@ Provides:       bundled(node-npm-normalize-package-bin) = 5.0.0
 Provides:       bundled(node-npm-package-arg) = 13.0.2
 Provides:       bundled(node-npm-packlist) = 10.0.4
 Provides:       bundled(node-npm-pick-manifest) = 11.0.3
-Provides:       bundled(node-npm-profile) = 12.0.1
+Provides:       bundled(node-npm-profile) = 12.0.2
 Provides:       bundled(node-npm-registry-fetch) = 19.1.1
 Provides:       bundled(node-npm-user-validate) = 4.0.0
 Provides:       bundled(node-p-map) = 7.0.4
@@ -445,7 +450,7 @@ Provides:       bundled(node-qrcode-terminal) = 0.12.0
 Provides:       bundled(node-read) = 5.0.1
 Provides:       bundled(node-read-cmd-shim) = 6.0.0
 Provides:       bundled(node-safer-buffer) = 2.1.2
-Provides:       bundled(node-semver) = 7.8.4
+Provides:       bundled(node-semver) = 7.8.5
 Provides:       bundled(node-signal-exit) = 4.1.0
 Provides:       bundled(node-sigstore) = 4.1.1
 Provides:       bundled(node-smart-buffer) = 4.2.0
@@ -456,13 +461,13 @@ Provides:       bundled(node-spdx-expression-parse) = 4.0.0
 Provides:       bundled(node-spdx-license-ids) = 3.0.23
 Provides:       bundled(node-ssri) = 13.0.1
 Provides:       bundled(node-supports-color) = 10.2.2
-Provides:       bundled(node-tar) = 7.5.16
+Provides:       bundled(node-tar) = 7.5.19
 Provides:       bundled(node-text-table) = 0.2.0
 Provides:       bundled(node-tiny-relative-date) = 2.0.2
 Provides:       bundled(node-tinyglobby) = 0.2.17
 Provides:       bundled(node-treeverse) = 3.0.0
 Provides:       bundled(node-tuf-js) = 4.1.0
-Provides:       bundled(node-undici) = 6.26.0
+Provides:       bundled(node-undici) = 6.27.0
 Provides:       bundled(node-util-deprecate) = 1.0.2
 Provides:       bundled(node-validate-npm-package-name) = 7.0.2
 Provides:       bundled(node-walk-up-path) = 4.0.0
@@ -596,6 +601,8 @@ EOF
 %endif
 %if %{node_version_number} >= 22
     --shared-zstd \
+    --shared \
+    --libdir=%_lib \
 %endif
 %if %{node_version_number} >= 16 && (0%{?suse_version} > 1550 || 0%{?sle_version} >= 150400)
     --openssl-default-cipher-list=PROFILE=SYSTEM \
@@ -612,6 +619,11 @@ find doc/api -type f -exec chmod 0644 {} +
 . ./spec.build.config
 
 decoupled_cmd %make_install %{?_smp_mflags}
+
+pushd %{buildroot}%{_libdir}
+ln -s libnode.so.* %{buildroot}%{_libdir}/libnode.so
+popd
+
 rm %{buildroot}%{_datadir}/doc/node/gdbinit
 rm -f %{buildroot}%{_datadir}/doc/node/lldbinit
 rm -f %{buildroot}%{_datadir}/doc/node/lldb_commands.py
@@ -710,6 +722,7 @@ export OPENSSL_CONF=''
 
 export CI_JS_SUITES=default
 export NODE_TEST_NO_INTERNET=1
+export LD_LIBRARY_PATH=%{buildroot}%{_libdir}
 
 %ifarch %{ix86} %{arm}
 rm -f test/parallel/test-fs-utimes-y2K38.js
@@ -802,6 +815,7 @@ make test-ci-native
 %dir %{_datadir}/libalternatives/node
 %{_datadir}/libalternatives/node/%{node_version_number}.conf
 %{_bindir}/node%{node_version_number}
+%{_libdir}/libnode.so.*
 %{_mandir}/man1/node%{node_version_number}.1%{ext_man}
 %if ! 0%{with libalternatives}
 %ghost %{_bindir}/node-default
@@ -844,6 +858,7 @@ make test-ci-native
 %files devel
 %defattr(-, root, root)
 %{_includedir}/node%{node_version_number}
+%{_libdir}/libnode.so
 %if %{node_version_number} < 19
 %dir %{_datadir}/systemtap
 %dir %{_datadir}/systemtap/tapset

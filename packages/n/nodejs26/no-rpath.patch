@@ -1,0 +1,50 @@
+Index: node-v26.6.0/node.gyp
+===================================================================
+--- node-v26.6.0.orig/node.gyp
++++ node-v26.6.0/node.gyp
+@@ -705,13 +705,6 @@
+           'xcode_settings': {
+             'OTHER_LDFLAGS': [ '-Wl,-rpath,@loader_path', '-Wl,-rpath,@loader_path/../lib'],
+           },
+-          'conditions': [
+-            ['OS=="linux" or OS=="openharmony"', {
+-               'ldflags': [
+-                 '-Wl,-rpath,\\$$ORIGIN/../lib'
+-               ],
+-            }],
+-          ],
+         }],
+         [ 'enable_lto=="true"', {
+           'xcode_settings': {
+@@ -1617,12 +1610,7 @@
+             'OTHER_LDFLAGS': [ '-Wl,-rpath,@loader_path', ],
+           }
+         }],
+-        ['OS=="linux"', {
+-          'ldflags': [
+-            '-Wl,-rpath,\\$$ORIGIN'
+-          ],
+-        }],
+-      ],
++     ],
+     }, # shared_embedtest
+ 
+     {
+Index: node-v26.6.0/tools/gyp/pylib/gyp/generator/make.py
+===================================================================
+--- node-v26.6.0.orig/tools/gyp/pylib/gyp/generator/make.py
++++ node-v26.6.0/tools/gyp/pylib/gyp/generator/make.py
+@@ -1738,12 +1738,7 @@ $(obj).$(TOOLSET)/$(TARGET)/%%.o: $(obj)
+                         target_postbuilds[configname] = target_postbuild
+                 else:
+                     ldflags = config.get("ldflags", [])
+-                    # Compute an rpath for this output if needed.
+-                    if any(dep.endswith(".so") or ".so." in dep for dep in deps):
+-                        # We want to get the literal string "$ORIGIN"
+-                        # into the link command, so we need lots of escaping.
+-                        ldflags.append(r"-Wl,-rpath=\$$ORIGIN/")
+-                        ldflags.append(r"-Wl,-rpath-link=\$(builddir)/")
++
+                 if library_dirs := config.get("library_dirs", []):
+                     library_dirs = [Sourceify(self.Absolutify(i)) for i in library_dirs]
+                 ldflags += [("-L%s" % library_dir) for library_dir in library_dirs]
