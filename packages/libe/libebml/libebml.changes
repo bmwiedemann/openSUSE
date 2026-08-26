@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Aug 25 02:59:33 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.4.7
+  * Fixed cmake rules for building with utf8cpp 4.x
+  version 1.4.6:
+  * Set EbmlHead as not allowed to be infinite (as per RFC 8794)
+  * Fix leak on upper element found inside the last element
+  * EbmlString::ReadFully: use automatic memory management/fewer
+    allocations
+  * EbmlUnicodeString: use std::string when reading instead of
+    manual memory management
+  * IOCallback: avoid reading more than 2^32 at once
+  * Fix some includes that are not implicit in modern compilers
+  * Download utfcpp automatically
+  * Show a summary of build configuration when configuring CMake
+  * Add a DEV_MODE CMake option to check more compiler errors
+    (default off)
+
+-------------------------------------------------------------------
 Thu Dec 28 12:53:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.5 (bsc#1218432, CVE-2023-52339):

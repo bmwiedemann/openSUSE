@@ -1,7 +1,7 @@
 #
 # spec file for package libebml
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define soname 5
 Name:           libebml
-Version:        1.4.5
+Version:        1.4.7
 Release:        0
 Summary:        Library to parse EBML (Extensible Binary Markup Language) files
 License:        LGPL-2.1-or-later
@@ -31,6 +31,7 @@ Source100:      baselibs.conf
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
+BuildRequires:  cmake(utf8cpp)
 
 %description
 libebml is a C++ library to parse EBML files. See the EBML RFC at
