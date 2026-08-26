@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 25 13:06:25 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * 0003-Upgrade-to-maven-resolver-2.0.22.patch
+    + allow building with maven-resolver 2.0.22
+
+-------------------------------------------------------------------
 Tue Aug  4 05:12:02 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to 4.0.0-rc-6

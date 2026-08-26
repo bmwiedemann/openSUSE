@@ -1,0 +1,93 @@
+From fef0b1a38d6ec8abc79dc5400d0f04f822e72978 Mon Sep 17 00:00:00 2001
+From: Fridrich Strba <fridrich.strba@bluewin.ch>
+Date: Tue, 25 Aug 2026 11:17:12 +0200
+Subject: [PATCH 3/3] Upgrade to maven-resolver 2.0.22
+
+---
+ .../impl/standalone/RepositorySystemSupplier.java     |  7 +++----
+ .../plugin/stubs/RepositorySystemSupplier.java        | 11 +++++------
+ pom.xml                                               |  2 +-
+ 3 files changed, 9 insertions(+), 11 deletions(-)
+
+diff --git a/impl/maven-impl/src/main/java/org/apache/maven/impl/standalone/RepositorySystemSupplier.java b/impl/maven-impl/src/main/java/org/apache/maven/impl/standalone/RepositorySystemSupplier.java
+index df64ef0570..408ea4d394 100644
+--- a/impl/maven-impl/src/main/java/org/apache/maven/impl/standalone/RepositorySystemSupplier.java
++++ b/impl/maven-impl/src/main/java/org/apache/maven/impl/standalone/RepositorySystemSupplier.java
+@@ -18,7 +18,6 @@
+  */
+ package org.apache.maven.impl.standalone;
+ 
+-import java.util.List;
+ import java.util.Map;
+ 
+ import org.apache.maven.api.annotations.Nullable;
+@@ -313,13 +312,13 @@ static PathProcessor newPathProcessor() {
+ 
+     @Singleton
+     @Provides
+-    static List<ValidatorFactory> newValidatorFactories() {
+-        return List.of(new MavenValidatorFactory());
++    static Map<String, ValidatorFactory> newValidatorFactories() {
++        return Map.of("mavenValidatorFactory", new MavenValidatorFactory());
+     }
+ 
+     @Singleton
+     @Provides
+-    static RepositorySystemValidator newRepositorySystemValidator(List<ValidatorFactory> validatorFactories) {
++    static RepositorySystemValidator newRepositorySystemValidator(Map<String, ValidatorFactory> validatorFactories) {
+         return new DefaultRepositorySystemValidator(validatorFactories);
+     }
+ 
+diff --git a/impl/maven-testing/src/main/java/org/apache/maven/testing/plugin/stubs/RepositorySystemSupplier.java b/impl/maven-testing/src/main/java/org/apache/maven/testing/plugin/stubs/RepositorySystemSupplier.java
+index 504a92b545..88221836cd 100644
+--- a/impl/maven-testing/src/main/java/org/apache/maven/testing/plugin/stubs/RepositorySystemSupplier.java
++++ b/impl/maven-testing/src/main/java/org/apache/maven/testing/plugin/stubs/RepositorySystemSupplier.java
+@@ -18,7 +18,6 @@
+  */
+ package org.apache.maven.testing.plugin.stubs;
+ 
+-import java.util.ArrayList;
+ import java.util.HashMap;
+ import java.util.LinkedHashMap;
+ import java.util.List;
+@@ -1195,9 +1194,9 @@ protected RepositorySystemValidator createRepositorySystemValidator() {
+         return new DefaultRepositorySystemValidator(getValidatorFactories());
+     }
+ 
+-    private List<ValidatorFactory> validatorFactories;
++    private Map<String, ValidatorFactory> validatorFactories;
+ 
+-    public final List<ValidatorFactory> getValidatorFactories() {
++    public final Map<String, ValidatorFactory> getValidatorFactories() {
+         checkClosed();
+         if (validatorFactories == null) {
+             validatorFactories = createValidatorFactories();
+@@ -1205,9 +1204,9 @@ public final List<ValidatorFactory> getValidatorFactories() {
+         return validatorFactories;
+     }
+ 
+-    protected List<ValidatorFactory> createValidatorFactories() {
+-        List<ValidatorFactory> result = new ArrayList<>();
+-        result.add(new MavenValidatorFactory());
++    protected Map<String, ValidatorFactory> createValidatorFactories() {
++        Map<String, ValidatorFactory> result = new HashMap<>();
++        result.put("mavenValidatorFactory", new MavenValidatorFactory());
+         return result;
+     }
+ 
+diff --git a/pom.xml b/pom.xml
+index ea711e1718..7d3a084a80 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -164,7 +164,7 @@ under the License.
+     <plexusInterpolationVersion>1.29</plexusInterpolationVersion>
+     <plexusTestingVersion>2.1.0</plexusTestingVersion>
+     <plexusXmlVersion>4.1.1</plexusXmlVersion>
+-    <resolverVersion>2.0.21</resolverVersion>
++    <resolverVersion>2.0.22</resolverVersion>
+     <securityDispatcherVersion>4.1.0</securityDispatcherVersion>
+     <sisuVersion>1.1.0</sisuVersion>
+     <slf4jVersion>2.0.18</slf4jVersion>
+-- 
+2.55.0
+

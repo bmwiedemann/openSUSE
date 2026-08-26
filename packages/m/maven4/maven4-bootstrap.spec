@@ -34,6 +34,7 @@ Source2:        mvn.1
 Source10:       apache-%{base_name}-build.tar.xz
 Patch1:         0001-Adapt-mvn-script.patch
 Patch2:         0002-Invoke-logback-via-reflection.patch
+Patch3:         0003-Upgrade-to-maven-resolver-2.0.22.patch
 BuildRequires:  ant
 BuildRequires:  java-devel >= 17
 BuildRequires:  javapackages-local
@@ -55,6 +56,7 @@ reporting and documentation from a central piece of information.
 
 %patch -P 1 -p1
 %patch -P 2 -p1
+%patch -P 3 -p1
 
 %pom_remove_dep -r :junit-bom
 %pom_remove_dep -r :mockito-bom

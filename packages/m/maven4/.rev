@@ -111,4 +111,12 @@
     <comment>4.0.0-rc-6</comment>
     <requestid>1369578</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>5e4bca04baf8e6f6393981f9cada8fda</srcmd5>
+    <version>4.0.0~rc6</version>
+    <time>1787767004</time>
+    <user>anag_factory</user>
+    <comment>Fix build with maven-resolver 2.0.22</comment>
+    <requestid>1373815</requestid>
+  </revision>
 </revisionlist>
