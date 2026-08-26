@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Wed Aug 26 04:34:08 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.1.0+20260826.a973bf9a:
+  * Chore: github-actions: automate building CI container
+  * Dev: build: make docdir configurable
+  * Dev: build: replace version.in with crmsh/build_config.py.in
+  * Dev: build: simplify config variables and options
+  * Dev: build: Migrate build system from Autotools and setuptools to Meson
+
+-------------------------------------------------------------------
+Tue Aug 25 10:29:40 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.1.0+20260825.c11725f1:
+  * Chore: Changelog: Update ChangeLog for release 5.1.0
+
+-------------------------------------------------------------------
+Tue Aug 25 06:24:34 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.1.0+20260825.538cfc25:
+  * Fix: ui_sbd: Resolve SBD device aliases on removal
+
+-------------------------------------------------------------------
+Thu Aug 20 11:43:22 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.1.0+20260820.18176afc:
+  * Dev: workflows: Add timeout for general_check
+
+-------------------------------------------------------------------
+Wed Aug 19 12:50:56 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.1.0+20260819.09544e8a:
+  * Dev: crash_test: Prefer nft for split-brain blocking
+
+-------------------------------------------------------------------
+Wed Aug 19 04:25:06 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.1.0+20260819.c1ccc992:
+  * Dev: behave: Increase timeout for expect in bootstrap_password.feature
+  * Dev: behave: Report expect timeouts in bootstrap_password.feature
+
+-------------------------------------------------------------------
 Fri Aug 14 07:15:51 UTC 2026 - nicholas.yang@suse.com
 
 - Update to version 5.1.0+20260814.d9688661:
