@@ -200,4 +200,12 @@ fix build with ortp 0.27</comment>
     <comment>- Deactive ORTP integration, that package is going away.</comment>
     <requestid>1345528</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>049144ec41678969c54876d45a816a36</srcmd5>
+    <version>2.2.0</version>
+    <time>1787766774</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 2.2.0</comment>
+    <requestid>1373652</requestid>
+  </revision>
 </revisionlist>

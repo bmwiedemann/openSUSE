@@ -17,7 +17,7 @@
 
 
 Name:           libosmo-abis
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        Osmocom library for A-bis interface between BTS and BSC
 License:        AGPL-3.0-or-later AND GPL-2.0-or-later
@@ -32,12 +32,12 @@ BuildRequires:  automake >= 1.6
 BuildRequires:  libtool >= 2
 BuildRequires:  pkg-config >= 0.20
 BuildRequires:  xz
-BuildRequires:  pkgconfig(libosmo-e1d) >= 0.7.0
-BuildRequires:  pkgconfig(libosmo-netif) >= 1.6.0
-BuildRequires:  pkgconfig(libosmocodec) >= 1.11.0
-BuildRequires:  pkgconfig(libosmocore) >= 1.11.0
-BuildRequires:  pkgconfig(libosmogsm) >= 1.11.0
-BuildRequires:  pkgconfig(libosmovty) >= 1.11.0
+BuildRequires:  pkgconfig(libosmo-e1d) >= 0.8.0
+BuildRequires:  pkgconfig(libosmo-netif) >= 1.8.0
+BuildRequires:  pkgconfig(libosmocodec) >= 1.14.2
+BuildRequires:  pkgconfig(libosmocore) >= 1.14.2
+BuildRequires:  pkgconfig(libosmogsm) >= 1.14.2
+BuildRequires:  pkgconfig(libosmovty) >= 1.14.2
 BuildRequires:  pkgconfig(talloc)
 
 %description
@@ -45,12 +45,12 @@ In GSM, A-bis is a BSS-internal interface link between the BTS and
 BSC. This interface allows control of the radio equipment and radio
 frequency allocation in the BTS.
 
-%package -n libosmoabis15
+%package -n libosmoabis17
 Summary:        Osmocom GSM A-bis interface library
 License:        AGPL-3.0-or-later
 Group:          System/Libraries
 
-%description -n libosmoabis15
+%description -n libosmoabis17
 In the GSM system architecture, A-bis is a Base Station
 System-internal interface linking the Base Transceiver Stations (BTS)
 and Base Station Controller (BSC). This interface allows control of
@@ -64,7 +64,7 @@ cards, as well as some A-bis/IP dialects.
 Summary:        Development files for the Osmocom GSM A-bis library
 License:        AGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
-Requires:       libosmoabis15 = %version
+Requires:       libosmoabis17 = %version
 Requires:       libosmocore-devel >= 1.4.0
 Requires:       libosmogsm-devel >= 1.4.0
 
@@ -125,10 +125,10 @@ if ! %make_build check; then
 %endif
 fi
 
-%ldconfig_scriptlets -n libosmoabis15
+%ldconfig_scriptlets -n libosmoabis17
 %ldconfig_scriptlets -n libosmotrau11
 
-%files -n libosmoabis15
+%files -n libosmoabis17
 %_libdir/libosmoabis.so.*
 
 %files -n libosmoabis-devel

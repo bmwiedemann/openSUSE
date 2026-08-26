@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 25 15:21:57 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.2.0
+  * amr_trau: added the `osmo_amrt_fill_with_dhf` function
+  * Add CAS channel support
+
+-------------------------------------------------------------------
 Thu Apr  9 12:02:41 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Deactive ORTP integration, that package is going away.
