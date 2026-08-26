@@ -1,4 +1,92 @@
 -------------------------------------------------------------------
+Wed Aug 26 14:36:44 UTC 2026 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- v1.59.0 (boo#1275994)
+  * new shell_command verb attribute: run a command through a shell (sh -c / cmd /C) so &&, ; and pipes work, without leaving broot - Fix #1145
+  * fix invalid official Mac binary (duplicate linked dylib) with new build chain - Fix #1194
+  * Sixel graphics support for image preview, auto-detected: works in iterm2, Windows Terminal 1.22+ and Sixel-capable Unix terminals (foot, mlterm, xterm built with Sixel, recent WezTerm). Kitty remains the preferred protocol when available. Note: this requires broot to be compiled with sixel feature (eg cargo install broot --features sixel) - Fix #568
+  * High-Res images in Rio terminal (detect it to enable the Kitty image protocol) - Fix #1179
+  * fix iTerm2 3.6.10 and later not displaying Hi-Res images, the version being compared as text
+  * fix content-exact match line number off-by-one when the match starts at the first byte of a line (broot jumped to the line above)
+  * new :no_action internal, doing nothing, which can be used to disable a key - Fix #328
+  * fix: detect a duplicate broot server name instead of silently overtaking the running server - Fix #1065
+  * fix preview transformers extension matching not working with double extensions such as .tar.gz - Fix #1195
+  * strip escape sequences from displayed names to prevent OSC injections - Fix #1188
+  * fall back to numeric uid/gid instead of ???? when the user or group name can't be resolved, which is always the case on statically linked musl builds - Fix #1075
+  * fix panic on a content regex matching the empty string at the end of a line ending with a control char (eg cr/$/ on a CRLF file)
+  * fix Windows paths (containing backslashes) being mangled by the launcher's eval when using :cd and similar; also fixes escaping of paths containing a single quote - Fix #1100
+  * fix br failing on Windows/PowerShell when the temp path contains a space (e.g. a space in the Windows username) - Fix #788
+  * JPEG XL images are no longer previewed: the decoder had out-of-bounds bugs and the fix needs a more recent rustc (if you need it, tell me and I'll try to make it opt-in)
+  * rustc minimal version changed from 1.83 to 1.85, and edition 2024
+
+- v1.58.0
+  * change the way possible verb completions are listed, making it more readable when there are more than what fits the screen
+  * fix argument of :select and :show being ignored in a --cmd sequence - Fix 1176
+
+- v1.57.0
+  * help: verb 'keys' and 'description' columns now searchable - Fix #1163
+  * fix :print_path / :print_relative_path adding a trailing empty line when printing a multi-item staging area - Fix #1062
+  * Skin: attributes (bold, underlined, etc.) of the "selected_line" entry now applied - Fix #1156
+  * if no Wezterm version is found, broot now assumes it's recent enough to support kitty protocol for image - Fix #509
+
+- v1.56.4
+  * fix compilation on non unix platforms (1.56.3 isn't available on those systems)
+
+- v1.56.3
+  * fix control characters sometimes remaining in the terminal after broot exit
+  * nushell: rename br module to avoid conflict in last nushell version - Fix #1138
+  * :open_stay on the staging area opens every staged file through the system opener - Fix #444
+
+- v1.56.2
+  * {file-root-relative} argument - Fix #1142
+  * fix :clear_stage (or other operations closing the stage panel) often closing broot - Fix #1143
+
+- v1.56.1
+  * fix a typo in a verb in default conf
+
+- v1.56.0
+  * impacted_panel verb argument, allows the effect of a verb to be on another panel (eg to scroll the preview panel without removing the focus from the tree) - Fix #1119
+  * focus_panel_left and focus_panel_right internals - Fix #1115
+  * Major Feature: merge staged files to issue a single command: when a verb argument has a space-separated or comma-separated flag, a single external command is run even when the selection is multiple - Fix #465 The default verbs.json file has an example of a zip verb building an archive from all staged files.
+
+- v1.55.0
+  * activate Kitty Graphics Protocol to display Hi-Res images in iTerm2
+  * Tokyo Night skin ( https://github.com/Canop/broot/blob/main/resources/default-conf/skins/tokyo-night.hjson )
+  * matches related to several name patterns joined with and/or in a composite pattern are merged instead of having just the first one shown
+  * nushell integration: switch $nu.temp-path to $nu.temp-dir - #1116
+
+- v1.54.0
+  * fix crash on rendering B&W images with Kitty image protocol
+  * don't match directories when a composite pattern has a content pattern, even negated (eg /js$/&!c/;: it's clear the user wants to match js files not containing a semicolon)
+
+- v1.53.0
+  * fix some cases of the verb not removed from the input on execution (with a risk of accidental double execution)
+  * add the :filesystems (short :fs) verb and state on windows (it was already present on linux and mac).
+  * improve the generation of preview pattern from a file tree pattern (i.e. going from /java$/&c/test to /test on opening a matching file in preview). With this change broot avoids filtering the preview when it shouldn't (eg when you searched /java$/|c/test) - See #1097
+  * display files whose name isn't valid UTF-8 (they were previously ignored)
+  * android executable is back to the official binary archive
+
+- v1.52.0
+  * auto_open_staging_area preference - Fix #1090
+  * search content of file target of symlink - Fix #1081
+  * fix nushell script (swapped logic for --listen and --listen-auto)
+  * return non-zero exit code on error
+
+- v1.51.0
+  * improved image rendering (both speed by using the zune-image library, and quality with bilinear interpolation)
+  * fix compilation broken by 1.50.0 on Android
+  * --listen-auto listens for commands on a random linux socket - Fix #1064
+  * when auto-completing, back-tab cycles in reverse order - Fix #1071
+
+- v1.50.0
+  * big text files now only partially loaded for initial display, remaining being done in background - Fix #1052
+  * better support of kitty image protocol over tmux, ssh or unknown terminals, with kitty_graphics_display option and $TMUX_NEST_COUNT env variable - see PR #1034
+  * "trash" compilation feature removed: trash related features are built depending on the platform
+  * build chain revised. Future official releases should include a Mac binary
+  * fix crash on double unstage of last entry in stage panel - fix #1057
+  * fallback to transparent background for text preview when the skin specifies nothing
+
+-------------------------------------------------------------------
 Wed Sep 24 14:07:05 UTC 2025 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
 - v1.49.1
