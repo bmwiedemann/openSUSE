@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Aug 26 06:34:58 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 10.32.7
+  * Ensure flags that should be hidden are hidden
+  * Fix SIGTERM cancellation during enumeration
+  * go mod -u (#3522) (bsc#1276733, CVE-2026-41178)
+  * Upgrade minio to better support more recent S3 regions (#3495)
+  * Generate resource.syso files during pipeline runs, embed into executable (#3479)
+  * 10.32.6 release / FIPS release (#3499) [ #110341, #3500, #3501 ]
+- Remove stale Go module version overrides in _service file
+
+-------------------------------------------------------------------
 Mon Aug  3 06:56:52 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 10.32.6

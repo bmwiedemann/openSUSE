@@ -155,4 +155,19 @@
   validation of the HTTP/2 :path pseudo-header (bsc#1260307, CVE-2026-33186) (forwarded request 1370529 from glaubitz)</comment>
     <requestid>1370535</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>604bf859a9e2a65aa9d2c0c9820862bb</srcmd5>
+    <version>10.32.7</version>
+    <time>1787766961</time>
+    <user>anag_factory</user>
+    <comment>- Update to 10.32.7
+  * Ensure flags that should be hidden are hidden
+  * Fix SIGTERM cancellation during enumeration
+  * go mod -u (#3522) (bsc#1276733, CVE-2026-41178)
+  * Upgrade minio to better support more recent S3 regions (#3495)
+  * Generate resource.syso files during pipeline runs, embed into executable (#3479)
+  * 10.32.6 release / FIPS release (#3499) [ #110341, #3500, #3501 ]
+- Remove stale Go module version overrides in _service file (forwarded request 1373745 from glaubitz)</comment>
+    <requestid>1373802</requestid>
+  </revision>
 </revisionlist>
