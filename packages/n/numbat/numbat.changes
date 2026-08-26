@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Aug 11 13:12:57 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.23.0:
+  * Support for °C and °F (including conversions) 
+  * Simplify units to less complex base/derived units, e.g. J/s simplifies to W
+  * Better error message for implicit multiplication with parens
+  * Expose TypeCheckError as a public type
+  * Fix fuzzer panics in consteval computations
+  * Minor docs improvements
+  * Simplify when printing values
+
+- Update to version 1.21.0:
+  * Add functionality to compute sunrise and sunset times
+  * Moon phase calculation
+  * Add base_unit_of
+  * Add formatting configuration options
+  * Add proper spans to constraint solver errors
+  * Allow shadowing in function parameters and local variables
+  * Unix timestamps (µs): updates
+
+- Update to version 1.20.0:
+  * Choose smaller unit when adding/subtracting
+  * New conversion mechanism
+  * Add parse<T: Dim>(input: String) -> T
+  * Add parse support for dimensionful quantities
+  * Add args() function for accessing command-line arguments
+  * Support milli- and microsecond precision for unix timestamps
+
+older updates: see https://github.com/sharkdp/numbat/releases
+
+-------------------------------------------------------------------
 Sat Nov 16 10:03:16 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Fix tests in specfile

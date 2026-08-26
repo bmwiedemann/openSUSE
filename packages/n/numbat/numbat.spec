@@ -1,7 +1,7 @@
 #
 # spec file for package numbat
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           numbat
-Version:        1.14.0
+Version:        1.23.0
 Release:        0
 URL:            https://github.com/sharkdp/numbat
 Summary:        Statically typed programming language for scientific computations
@@ -27,6 +27,7 @@ Source0:        https://github.com/sharkdp/numbat/archive/refs/tags/v%{version}.
 Source1:        vendor.tar.zst
 BuildRequires:  cargo
 BuildRequires:  cargo-packaging
+BuildRequires:  timezone
 BuildRequires:  zstd
 
 %description
