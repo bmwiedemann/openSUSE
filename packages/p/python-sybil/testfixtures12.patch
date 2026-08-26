@@ -1,0 +1,37 @@
+From b1c31ce0818cfa7953a61b3b391a88cd5620f9dd Mon Sep 17 00:00:00 2001
+From: Chris Withers <chris@withers.org>
+Date: Thu, 9 Jul 2026 08:51:56 +0100
+Subject: [PATCH] Follow testfixtures' compare_text/compare_dict move to
+ comparers module
+
+---
+ pyproject.toml       | 2 +-
+ tests/test_lexing.py | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index b3189a4..e4f6fd4 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -31,7 +31,7 @@ dev = [
+     "pytest-cov>=6",
+     "ruff>=0.15.7",
+     "seedir",
+-    "testfixtures>=11",
++    "testfixtures>=12.0.0",
+     "types-PyYAML",
+ ]
+ docs = [
+diff --git a/tests/test_lexing.py b/tests/test_lexing.py
+index 44d20c3..c6129cd 100644
+--- a/tests/test_lexing.py
++++ b/tests/test_lexing.py
+@@ -2,7 +2,7 @@
+ 
+ import pytest
+ from testfixtures import ShouldRaise, compare
+-from testfixtures.comparison import compare_text, compare_dict
++from testfixtures.comparers import compare_text, compare_dict
+ 
+ from sybil import Lexeme
+ from sybil.parsers.abstract.lexers import BlockLexer, LexingException

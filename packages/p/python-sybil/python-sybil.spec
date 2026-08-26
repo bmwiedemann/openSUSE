@@ -32,6 +32,8 @@ Summary:        Automated testing of examples in documentation
 License:        MIT
 URL:            https://github.com/simplistix/sybil
 Source:         https://github.com/simplistix/sybil/archive/refs/tags/%{version}.tar.gz#/sybil-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/simplistix/sybil/commit/b1c31ce0818cfa7953a61b3b391a88cd5620f9dd Follow testfixtures' compare_text/compare_dict move to comparers module
+Patch:          testfixtures12.patch
 BuildRequires:  %{python_module base >= 3.11}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
@@ -40,7 +42,7 @@ BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module pytest >= 8}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module sybil = %{version}}
-BuildRequires:  %{python_module testfixtures >= 11}
+BuildRequires:  %{python_module testfixtures >= 12}
 %if 0%{?sle_version} && 0%{?sle_version} <= 150400
 BuildRequires:  %{python_module dataclasses}
 %endif
