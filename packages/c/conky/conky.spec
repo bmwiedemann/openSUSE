@@ -18,19 +18,18 @@
 
 %bcond_with    audacious
 %bcond_without cmus
-%ifarch %ix86 x86_64 aarch64
+%ifarch %{ix86} x86_64 aarch64
 %bcond_without libXNVCtrl
 %else
 %bcond_with libXNVCtrl
 %endif
-%ifarch s390x %ix86
+%ifarch s390x %{ix86}
 %bcond_with docs
 %else
 %bcond_without docs
 %endif
-
 Name:           conky
-Version:        1.24.0
+Version:        1.24.2
 Release:        0
 Summary:        A System Monitor
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later AND MIT
@@ -43,43 +42,46 @@ Patch1:         conky-1.10.1-avoid-git.patch
 BuildRequires:  cmake
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  docbook2x
-BuildRequires:  freetype2-devel
-%if 0%{?suse_version} < 1600
-BuildRequires:  gcc13
-BuildRequires:  gcc13-c++
-%else
-BuildRequires:  gcc-c++
-%endif
 BuildRequires:  gperf
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libXi-devel
 BuildRequires:  libiw-devel
-BuildRequires:  libmicrohttpd-devel
 BuildRequires:  libmysqld-devel
 BuildRequires:  libtool
 BuildRequires:  libxslt-tools
-BuildRequires:  lua53-devel
-BuildRequires:  ncurses-devel
 BuildRequires:  ninja
-%if %{with docs}
-BuildRequires:  pandoc
-%endif
 BuildRequires:  pkgconfig
 BuildRequires:  python3-Jinja2
 BuildRequires:  python3-PyYAML
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(cairo-xlib)
+BuildRequires:  pkgconfig(form)
+BuildRequires:  pkgconfig(formw)
+BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(imlib2)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libical)
+BuildRequires:  pkgconfig(libmicrohttpd)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(librsvg-2.0) >= 2.52
 BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(lua)
+BuildRequires:  pkgconfig(lua5.3)
+BuildRequires:  pkgconfig(menu)
+BuildRequires:  pkgconfig(menuw)
+BuildRequires:  pkgconfig(ncurses)
+BuildRequires:  pkgconfig(ncurses++)
+BuildRequires:  pkgconfig(ncurses++w)
+BuildRequires:  pkgconfig(ncursesw)
+BuildRequires:  pkgconfig(panel)
+BuildRequires:  pkgconfig(panelw)
+BuildRequires:  pkgconfig(tic)
+BuildRequires:  pkgconfig(tinfo)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(xdamage)
 BuildRequires:  pkgconfig(xft)
+BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xinerama)
 Requires:       fontawesome-fonts
 # This is required for imlib2 function properly.
@@ -88,6 +90,15 @@ Provides:       conky-cairo = %{version}
 Obsoletes:      conky-cairo < %{version}
 Provides:       conky-imlib2 = %{version}
 Obsoletes:      conky-imlib2 < %{version}
+%if 0%{?suse_version} < 1600
+BuildRequires:  gcc13
+BuildRequires:  gcc13-c++
+%else
+BuildRequires:  gcc-c++
+%endif
+%if %{with docs}
+BuildRequires:  pandoc
+%endif
 %if %{with audacious}
 BuildRequires:  pkgconfig(audacious)
 BuildRequires:  pkgconfig(audclient)
@@ -102,7 +113,7 @@ Obsoletes:      conky-feature-nvidia < %{version}
 %endif
 %if 0%{?is_opensuse}
 BuildRequires:  libircclient-devel
-BuildRequires:  libtolua++-5_1-devel
+BuildRequires:  pkgconfig(tolua++)
 %endif
 
 %description
@@ -121,10 +132,10 @@ This package provides additional documentation about conky.
 
 %package -n vim-plugin-conky
 Summary:        Conky Configuration File Support for Vim
-BuildArch:      noarch
 Requires:       vim-base
 Provides:       conky-vim = %{version}
 Obsoletes:      conky-vim < %{version}
+BuildArch:      noarch
 
 %description -n vim-plugin-conky
 Conky is an configurable system monitor for X.
@@ -134,9 +145,9 @@ configuration files in vim.
 
 %package -n nano-plugin-conky
 Summary:        Conky Configuration File Support for nano
-BuildArch:      noarch
 Provides:       conky-nano = %{version}
 Obsoletes:      conky-nano < %{version}
+BuildArch:      noarch
 
 %description -n nano-plugin-conky
 Conky is an configurable system monitor for X.
@@ -202,8 +213,8 @@ test -x "$(type -p g++-13)" && export CXX="$_"
 	-DBUILD_RSS=ON \
 	-DBUILD_OLD_CONFIG=ON \
 	-DBUILD_WAYLAND=ON \
-  -DWayland_CLIENT_INCLUDE_DIR=/usr/include/wayland/ \
-  -DWayland_SERVER_INCLUDE_DIR=/usr/include/wayland/ \
+  -DWayland_CLIENT_INCLUDE_DIR=%{_includedir}/wayland/ \
+  -DWayland_SERVER_INCLUDE_DIR=%{_includedir}/wayland/ \
 	-DBUILD_WLAN=ON \
 	-DBUILD_X11=ON \
 	-DBUILD_XDAMAGE=ON \
@@ -258,7 +269,7 @@ rm -rf %{buildroot}%{_libdir}/conky/*.{a,la}
 
 %if %{with docs}
 %files doc
-%doc %{_mandir}/man1/conky.1%{?ext_man}
+%{_mandir}/man1/conky.1%{?ext_man}
 %endif
 
 %files -n vim-plugin-conky

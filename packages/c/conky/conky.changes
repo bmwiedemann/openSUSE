@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Aug 25 11:16:00 UTC 2026 - Simon Lees + Gemini <sflees@suse.de>
+
+- Update to 1.24.2:
+  * Wayland double-buffer management and release listener fixes
+  * Wayland fractional scaling, viewporter, and logical
+    maximum_width support
+  * Layer placement, own_window and exclusive zones in Wayland
+  * Optional NVML backend for querying NVIDIA GPUs on Linux
+- Also includes changes from 1.24.1:
+  * Security: harden APCUPSD NIS response parsing to prevent
+    oversized reads from malformed/tampered length prefixes
+    (GHSA-4577-mm6h-jxmx)
+  * Fix X11 cursor event stealing (Openbox/Fluxbox compatibility)
+  * Fix HTTP backend thread safety (corruption/hangs on reload)
+  * Discard stderr from ${exec} commands; execbar/execgauge/
+    execgraph return 0.0 while no output is available yet
+  * Fix ${top cpu} in one-shot runs, offline CPU cores reporting
+    stale usage, and a no-op 100ms sleep in Linux CPU updates
+  * Fix $distribution parsing for unquoted /etc/os-release values
+  * Fix net-stat bar parsing and window sizing for tall elements
+
+-------------------------------------------------------------------
 Tue Jun 16 01:07:06 UTC 2026 - Simon Lees <sflees@suse.de>
 
 - Enable BUILD_LUA_TEXT
