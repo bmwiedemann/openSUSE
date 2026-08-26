@@ -1,0 +1,28 @@
+From 581bfc458ad6800f3825186b54527d82c52c5d85 Mon Sep 17 00:00:00 2001
+From: Thomas Blume <Thomas.Blume@suse.com>
+Date: Tue, 25 Aug 2026 08:24:03 +0200
+Subject: [PATCH] fix: RainerScript replace() heap buffer overflow
+
+(bsc#1275926)
+---
+ grammar/rainerscript.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/grammar/rainerscript.c b/grammar/rainerscript.c
+index 7a3f8f4e4..56b366a46 100644
+--- a/grammar/rainerscript.c
++++ b/grammar/rainerscript.c
+@@ -1801,8 +1801,8 @@ static es_str_t *doFuncReplace(struct svar *__restrict__ const operandVal,
+         if (src_buff[i] == find[j]) {
+             j++;
+         } else if (j > 0) {
+-            i -= (j - 1);
+-            lDst -= (j - 1);
++            i -= j;
++            lDst -= j;
+             j = 0;
+         }
+     }
+-- 
+2.55.0
+

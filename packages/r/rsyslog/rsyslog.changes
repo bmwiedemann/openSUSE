@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 25 06:25:15 UTC 2026 - Thomas Blume <Thomas.Blume@suse.com>
+
+- fix RainerScript replace() heap buffer overflow (bsc#1275926)
+  * add 0001-fix-RainerScript-replace-heap-buffer-overflow.patch
+
+-------------------------------------------------------------------
 Thu Jul 30 13:11:08 UTC 2026 - Thomas Blume <Thomas.Blume@suse.com>
 
 - fix specfile for dtls module
