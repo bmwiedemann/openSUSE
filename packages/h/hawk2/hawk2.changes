@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Aug 26 13:21:01 UTC 2026 - aburlakov@suse.com
+
+- Update to version 2.7.1+git.1787667448.cd1d963e:
+  * Test: update the e2e test for the change allowing custom parameters
+  * Dev: enable custom Parameters and Meta Attributes (bsc#1274860)
+  * CI/CD: update hawk examiner entry point
+  * Test: enable test_add_clone against hawk-apiserver verion 0.2.1
+  * Test: fix SyntaxWarning: invalid escape sequence '\|'
+  * Test: make the tests compatible against hawk-apiserver ver0.2.0
+
+-------------------------------------------------------------------
 Tue Aug  4 09:12:46 UTC 2026 - Aleksei Burlakov <aburlakov@suse.com>
 
 - bump rails stack v8.1.3.1, net-imap v0.6.6 and other gems (bsc#1268996,bsc#1273348,
