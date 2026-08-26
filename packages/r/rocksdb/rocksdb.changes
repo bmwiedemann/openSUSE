@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Aug 26 14:17:48 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 11.8.1 (from 11.1.2, covering 11.2.0 through 11.8.1):
+  * Default column-family compression changed from Snappy to LZ4 for
+    CFs that don't set compression explicitly; existing data stays
+    readable, no migration needed (since 11.5.0).
+  * Fixed the empty string being silently accepted as a column family
+    name: the CF was never persisted in the manifest, so data written
+    to it was lost on reopen.
+  * Fixed a rare last-level/proximal-level range-tombstone corruption
+    bug, surfaced when force_consistency_checks is enabled.
+  * Fixed quadratic time/memory growth (and slow DB open) with
+    best_efforts_recovery and secondary/follower catch-up on DBs
+    with a large number of files.
+  * Added callback-based async read APIs DB::GetAsync()/MultiGetAsync()
+    and experimental embedded-blob SST support.
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list.
+
+-------------------------------------------------------------------
 Sun Jul 12 16:10:13 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 11.1.2:

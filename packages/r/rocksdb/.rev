@@ -290,4 +290,12 @@ The conflict with mariadb is still a problem. Debian solved this by making maria
     <comment></comment>
     <requestid>1365070</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>aceafd3c5991661ab7c715368664e98f</srcmd5>
+    <version>11.8.1</version>
+    <time>1787767076</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1373848</requestid>
+  </revision>
 </revisionlist>
