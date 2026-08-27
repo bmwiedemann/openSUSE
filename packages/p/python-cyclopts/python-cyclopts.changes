@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Aug 27 05:56:27 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 4.23.3:
+  * Render deprecation notices in help output again: the
+    ".. deprecated::" directive extracted into docstring metadata
+    is reconstructed for every help format, and deprecated
+    commands are now tagged in the command list
+  * Split JSON documents on "\n" rather than str.splitlines() when
+    rendering decode errors, so the reported line agrees with the
+    line number JSONDecodeError computed
+  * Include the commands of flattened subapps (registered with
+    name="*") in the generated documentation
+  * Treat a configuration file with an empty document as an empty
+    mapping, and reject a document root that is not a mapping with
+    a clear error instead of failing later
+
+-------------------------------------------------------------------
 Sun Aug 23 05:20:01 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 4.23.2:

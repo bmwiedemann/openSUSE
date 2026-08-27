@@ -134,4 +134,24 @@ native local osc build against openSUSE_Tumbleweed/aarch64 (--clean): green,
 0 badness.</comment>
     <requestid>1373167</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e992dfb00ed48928da5056219bd39bad</srcmd5>
+    <version>4.23.3</version>
+    <time>1787849584</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.23.3:
+  * Render deprecation notices in help output again: the
+    &quot;.. deprecated::&quot; directive extracted into docstring metadata
+    is reconstructed for every help format, and deprecated
+    commands are now tagged in the command list
+  * Split JSON documents on &quot;\n&quot; rather than str.splitlines() when
+    rendering decode errors, so the reported line agrees with the
+    line number JSONDecodeError computed
+  * Include the commands of flattened subapps (registered with
+    name=&quot;*&quot;) in the generated documentation
+  * Treat a configuration file with an empty document as an empty
+    mapping, and reject a document root that is not a mapping with
+    a clear error instead of failing later</comment>
+    <requestid>1373922</requestid>
+  </revision>
 </revisionlist>
