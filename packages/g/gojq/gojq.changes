@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 20 01:56:12 UTC 2026 - Arnav Singh <opensuse@arnavion.dev>
+
+- Patches:
+  * Add 0001-Disable-test-that-fails-with-golang-v1.27.patch to disable
+    a test that fails with golang v1.27.
+
+-------------------------------------------------------------------
 Wed Apr  1 14:32:35 UTC 2026 - Arnav Singh <opensuse@arnavion.dev>
 
 - Update to v0.12.19

@@ -1,0 +1,37 @@
+From 7babfdeaf91f7f34eed8a9c6c2ce30c0eb5ceb3d Mon Sep 17 00:00:00 2001
+From: Arnav Singh <me@arnavion.dev>
+Date: Wed, 19 Aug 2026 18:54:53 -0700
+Subject: [PATCH] Disable test that fails with golang v1.27
+
+Ref: https://github.com/itchyny/gojq/issues/301
+---
+ cli/test.yaml | 13 -------------
+ 1 file changed, 13 deletions(-)
+
+diff --git a/cli/test.yaml b/cli/test.yaml
+index 15423b7..5c5af7f 100644
+--- a/cli/test.yaml
++++ b/cli/test.yaml
+@@ -7521,19 +7521,6 @@
+     [["c"],3]
+     [["c"]]
+ 
+-- name: stream option with unterminated input
+-  args:
+-    - -c
+-    - --stream
+-    - '.'
+-  input: '{"a":1,'
+-  expected: |
+-    [["a"],1]
+-  error: |
+-    invalid json: <stdin>
+-        {"a":1,
+-               ^  unexpected EOF
+-
+ - name: yaml input option
+   args:
+     - --yaml-input
+-- 
+2.55.0
+

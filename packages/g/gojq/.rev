@@ -148,4 +148,12 @@
   * Improve performance of regexp functions by caching compiled regexps</comment>
     <requestid>1344179</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>807b906673044b016e9224b447041a37</srcmd5>
+    <version>0.12.19</version>
+    <time>1787849553</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1373906</requestid>
+  </revision>
 </revisionlist>

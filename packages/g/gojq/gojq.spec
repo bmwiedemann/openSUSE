@@ -25,6 +25,7 @@ URL:            https://github.com/itchyny/gojq
 Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 Source2:        gojq.rpmlintrc
+Patch0:         0001-Disable-test-that-fails-with-golang-v1.27.patch
 BuildRequires:  go >= 1.24
 BuildRequires:  golang-packaging
 BuildRequires:  zstd
