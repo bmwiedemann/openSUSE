@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Aug 25 08:08:40 UTC 2026 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
+
+- Update to version 25.11.3
+  * Full changelog https://doc.dpdk.org/guides-25.11/rel_notes/release_25_11.html#id4
+    - Use timing-safe digest comparisons across crypto drivers
+      (uadk, ccp, armv8, cnxk).
+    - Fix numerous validation, overflow and undefined behavior
+      issues in the BPF validator.
+    - Resolve thread-safety and hardening issues in telemetry parameter
+      parsing (ethdev, dmadev, security, eventdev).
+    - Fix deadlocks and memory leaks in IPC async requests.
+    - Fix out-of-bounds writes in ethdev (GENEVE option and flex item
+      conversion).
+    - Address stability, memory leaks, and driver-specific statistics
+      underflows in network/PMD drivers (including mlx5, ice, iavf,
+      bnxt, gve, dpaa, txgbe).
+
+-------------------------------------------------------------------
 Tue Jun  2 19:43:32 UTC 2026 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
 
 - Update to version 25.11.2

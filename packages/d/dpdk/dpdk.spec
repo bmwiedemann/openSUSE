@@ -43,7 +43,7 @@
 # Add option to build without tools
 %bcond_without tools
 Name:           dpdk
-Version:        25.11.2
+Version:        25.11.3
 Release:        0
 Summary:        Set of libraries and drivers for fast packet processing
 License:        BSD-3-Clause AND GPL-2.0-only AND LGPL-2.1-only

@@ -804,4 +804,13 @@
     <comment></comment>
     <requestid>1356967</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>bd4fd2e0b6eb9e5e02d896faf5d153b7</srcmd5>
+    <version>25.11.3</version>
+    <time>1787849425</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 25.11.3
+  * Full changelog https://doc.dpdk.org/guides-25.11/rel_notes/release_25_11.html#id4</comment>
+    <requestid>1373765</requestid>
+  </revision>
 </revisionlist>
