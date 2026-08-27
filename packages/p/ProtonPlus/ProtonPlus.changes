@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Fri Aug 14 04:14:32 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 0.6.4:
+  + Redesigned the interface to adapt better to different window sizes
+  + Made tool releases easier to browse without leaving the tools list
+  + Added sortable columns and improved game selection
+  + Improved controller navigation, activation, and scrolling
+  + Improved support for light, dark, and custom themes
+  + Prevented compatibility tools from being updated or removed while in use
+  + Fixed unrelated background processes blocking compatibility tool changes
+  + Fixed SteamOS Gaming Mode being detected during regular desktop sessions
+  + Fixed YAD 15 sometimes not being detected before installing SteamTinkerLaunch
+  + Fixed Anti-Cheat information getting stuck on Loading for unlisted games
+
+-------------------------------------------------------------------
+Thu Aug 13 07:27:48 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 0.6.3:
+  + Improved the introduction screen on smaller windows
+  + Added a warning when YAD 15 may prevent SteamTinkerLaunch from working
+  + Fixed new Proton-GE x86-64 releases not being detected
+  + Fixed DW-Proton not using GitHub releases
+  + Fixed inaccessible Faugus folders preventing ProtonPlus from starting
+  + Fixed SteamTinkerLaunch installations sometimes starting more than once
+  + Fixed some tool descriptions not being translated
+  + Updated translations
+- Update to version 0.6.2:
+  + Added a configurable download speed limit
+- Update to version 0.6.1:
+  + Improved how ProtonPlus finds Steam compatibility tools
+  + Improved mass editing and controller navigation in the Games tab
+  + Fixed compatibility tool installation for some Steam setups
+  + Fixed tool usage counts and game lists when moving to another tool
+  + Fixed tool installation on some Linux systems and improved archive safety
+- Update to version 0.6.0:
+  + Added Faugus Launcher support.
+  + Added controller navigation with contextual hints, optional haptic
+    feedback, and a first-run guide
+  + Added scheduled background updates and notifications
+  + Added Breeze Light, Breeze Dark, SteamOS, and OLED themes
+  + Added a built-in MangoHud editor and proxy settings
+  + Added CPU-aware x86-64 and ARM64 tool variant selection
+  + Reworked the launch-options editor with hardware-aware options and exact
+    command previews
+  + Custom and unknown safe launch options are now preserved during single-game
+    and mass edits
+  + Added Steam shortcut creation and guided Steam restarts, including SteamOS
+    Gaming Mode
+  + Added migration for Steam's default compatibility prefix
+  + Improved custom executable launching, multi-user Steam handling, VDF
+    configuration, and shortcuts
+  + Added an active downloads indicator and direct links to tool repositories
+  + Improved Games and Tools navigation, searching, filtering, and selection
+  + Improved stable-release filtering, Latest handling, and variant selection
+  + Timed-out downloads are now retried automatically
+  + Downloaded archives are validated before being cached
+  + Tool updates better preserve custom settings and recover from failed replacements
+  + Improved startup resilience when some Steam library or profile data cannot be loaded
+  + Fixed release and installation issues affecting Proton-TKG, Proton-CachyOS,
+    DXVK, VKD3D, Lutris, and Steam Tinker Launch
+  + Improved command-line validation and error reporting
+
+-------------------------------------------------------------------
 Thu Jul 30 04:34:20 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 0.5.22:

@@ -347,4 +347,41 @@
   + Temporary fix for Proton-GE RTSP (forwarded request 1368486 from rrahl0)</comment>
     <requestid>1368487</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>26045d2d55b42b010bf667c329533410</srcmd5>
+    <version>0.6.4</version>
+    <time>1787849666</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.6.4:
+  + Redesigned the interface to adapt better to different window sizes
+  + Made tool releases easier to browse without leaving the tools list
+  + Added sortable columns and improved game selection
+  + Improved controller navigation, activation, and scrolling
+  + Improved support for light, dark, and custom themes
+  + Prevented compatibility tools from being updated or removed while in use
+  + Fixed unrelated background processes blocking compatibility tool changes
+  + Fixed SteamOS Gaming Mode being detected during regular desktop sessions
+  + Fixed YAD 15 sometimes not being detected before installing SteamTinkerLaunch
+  + Fixed Anti-Cheat information getting stuck on Loading for unlisted games
+
+- Update to version 0.6.3:
+  + Improved the introduction screen on smaller windows
+  + Added a warning when YAD 15 may prevent SteamTinkerLaunch from working
+  + Fixed new Proton-GE x86-64 releases not being detected
+  + Fixed DW-Proton not using GitHub releases
+  + Fixed inaccessible Faugus folders preventing ProtonPlus from starting
+  + Fixed SteamTinkerLaunch installations sometimes starting more than once
+  + Fixed some tool descriptions not being translated
+  + Updated translations
+- Update to version 0.6.2:
+  + Added a configurable download speed limit
+- Update to version 0.6.1:
+  + Improved how ProtonPlus finds Steam compatibility tools
+  + Improved mass editing and controller navigation in the Games tab
+  + Fixed compatibility tool installation for some Steam setups
+  + Fixed tool usage counts and game lists when moving to another tool
+  + Fixed tool installation on some Linux systems and improved archive safety
+- Update to version 0.6.0: (forwarded request 1373952 from rrahl0)</comment>
+    <requestid>1373953</requestid>
+  </revision>
 </revisionlist>
