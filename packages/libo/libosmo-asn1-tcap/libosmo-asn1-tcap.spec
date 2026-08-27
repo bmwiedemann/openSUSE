@@ -19,7 +19,7 @@
 %define _lto_cflags %nil
 Name:           libosmo-asn1-tcap
 %define lname   libosmo-asn1-tcap1
-Version:        0.2.1
+Version:        0.3.0
 Release:        0
 Summary:        ASN.1 library for parsing the TCAP protocol (SS7)
 License:        GPL-2.0-or-later
@@ -33,6 +33,7 @@ Patch1:         build.patch
 BuildRequires:  automake
 BuildRequires:  libtool >= 2
 BuildRequires:  pkg-config >= 0.20
+BuildRequires:  pkgconfig(talloc) >= 2.1.0
 
 %description
 A TCAP message decoding library.

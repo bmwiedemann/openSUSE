@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 26 19:19:36 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.3.0
+  * Introduce API osmo_asn1_tcap_TCMessage_decode()
+
+-------------------------------------------------------------------
 Sat Mar 14 10:55:24 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Switch from Github autocreated tarball to official tarball

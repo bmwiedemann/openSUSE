@@ -15,4 +15,12 @@
     <comment>- Switch from Github autocreated tarball to official tarball</comment>
     <requestid>1339028</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>05681ca1ac964df0bc4e82ca9ab5270c</srcmd5>
+    <version>0.3.0</version>
+    <time>1787849516</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 0.3.0</comment>
+    <requestid>1373886</requestid>
+  </revision>
 </revisionlist>
