@@ -2293,7 +2293,7 @@ packagesets:
    - liblightdm-gobject-1-0 # reason: dvd:patterns-media-rest_cd_core
    - liblilv-0-0 # reason: dvd:openSUSE-release
    - liblirc_client0 # reason: dvd:patterns-kde-kde
-   - libliveMedia119 # reason: dvd:patterns-kde-kde
+   - libliveMedia120 # reason: dvd:patterns-kde-kde
    - liblmdb-0_9_35 # reason: dvd:patterns-gnome-gnome
    - liblogging0 # reason: dvd:rsyslog
    - liblognorm5 # reason: dvd:rsyslog
@@ -5540,7 +5540,7 @@ packagesets:
    - libleptonica6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - liblilv-0-0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - liblirc_client0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libliveMedia119 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
+   - libliveMedia120 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - liblldp_clif1 # reason: opensuse_microos:patterns-base-hardware
    - liblmdb-0_9_35 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - libltdl7 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
@@ -7351,7 +7351,7 @@ packagesets:
    - libleptonica6 # reason: opensuse_kalpa:patterns-kalpa-base
    - liblilv-0-0 # reason: opensuse_kalpa:patterns-kalpa-base
    - liblirc_client0 # reason: opensuse_kalpa:patterns-kalpa-base
-   - libliveMedia119 # reason: opensuse_kalpa:patterns-kalpa-base
+   - libliveMedia120 # reason: opensuse_kalpa:patterns-kalpa-base
    - liblldp_clif1 # reason: opensuse_kalpa:patterns-kalpa-base
    - liblmdb-0_9_35 # reason: opensuse_kalpa:patterns-kalpa-base
    - libltdl7 # reason: opensuse_kalpa:patterns-kalpa-base
