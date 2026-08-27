@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 24 09:10:26 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.1.128:
+  + avx512 support is now more extensively checked at runtime
+  + exported symbols and library version, initial WASM support.
+
+-------------------------------------------------------------------
 Mon Apr 20 18:34:41 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.1.126:
