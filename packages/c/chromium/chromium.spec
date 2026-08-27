@@ -79,7 +79,7 @@
 # minimal esbuild version
 %define esbuild_version 0.25.1
 # minimal gn version
-%define gn_version 0.20260429
+%define gn_version 0.20260730
 # local rollup override to run without binaries
 %define rollup_version 3.29.5
 %if 0%{?suse_version} <= 1699
@@ -132,7 +132,7 @@
 %global official_build 1
 
 Name:           chromium%{n_suffix}
-Version:        151.0.7922.173
+Version:        152.0.7977.64
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -203,8 +203,8 @@ Patch399:       chromium-148-no_dep_on_intree_rustc_binary.patch
 Patch400:       chromium-149-profile_no_const.patch
 Patch401:       chromium-149-strip-path.patch
 Patch402:       chromium-150-toolchain.patch
-Patch403:       chromium-151-metrics-metadata-histograms.patch
-Patch404:       chromium-151-value_or.patch
+Patch403:       chromium-152-revert-crubit.patch
+Patch404:       chromium-152-value_or.patch
 Patch405:       chromium-151-no-eula.patch
 # conditionally applied patches ppc64le only
 # where applicable patch numbers from fedora specfile + 100
@@ -292,10 +292,6 @@ Patch1061:       chromium-146-static-assert.patch
 # llvm19 segfaults in
 # ../services/network/public/cpp/permissions_policy/origin_with_possible_wildcards.cc:99:1: current parser token 'std'
 Patch1062:       chromium-146-clang-19-crash.patch
-# error in llvm19
-# ./device/fido/cable/v2_handshake.cc:221:17: error: static assertion expression is not an integral constant expression
-# revert spanification for now
-Patch1063:       chromium-bafd7d217b9e26edf3be8d20b1ff56bcea4b16ee.patch
 # error:  [44980s] ../components/enterprise/client_certificates/core/private_key_factory.cc:126:14: error: expression is not assignable
 Patch1064:       chromium-146-keyfactory.patch
 Patch1065:       chromium-150-i18n-builder-enum.patch
@@ -309,6 +305,8 @@ Patch1069:       chromium-148-revert_std_ranges_iota.patch
 Patch1071:       chromium-150-raw-ref-map-find.patch
 Patch1072:       chromium-151-privatefriends.patch
 Patch1073:       chromium-151-constexpr.patch
+Patch1074:       chromium-152-no-lifetime-checks.patch 
+Patch1075:       chromium-152-no-warning-suppression-map.patch
 Patch1080:       rollup.patch
 
 # end conditionally applied patches
@@ -539,6 +537,7 @@ BuildRequires:  gcc%{gcc_version}-c++
 %if 0%{?suse_version} >= 1699
 #!BuildIgnore:  rpmlint rpmlint-Factory rpmlint-mini
 %endif
+BuildRequires:  unzip
 
 %description
 Chromium is the open-source project behind Google Chrome. We invite you to join us in our effort to help build a safer, faster, and more stable way for all Internet users to experience the web, and to create a powerful platform for developing a new generation of web applications.
@@ -591,11 +590,11 @@ if [[ $(echo ${clang_version} | cut -d. -f1) -lt 21 ]]; then
 %patch -p1 -R -P 1060
 %patch -p1 -P 1061
 %patch -p1 -P 1062
-%patch -p1 -R -P 1063
 %patch -p1 -P 1065
 %patch -p1 -P 1069
 %patch -p1 -P 1072
 %patch -p1 -P 1073
+%patch -p1 -P 1075
 fi
 %patch -p1 -P 1064
 
@@ -604,6 +603,7 @@ if [[ $(echo ${clang_version} | cut -d. -f1) -lt 23 ]]; then
 %patch -p1 -P 1067
 %patch -p1 -P 1068
 %patch -p1 -P 1071
+%patch -p1 -P 1074
 fi
 
 ## ROLLUP_HACK
@@ -962,7 +962,6 @@ keeplibs=(
     third_party/zlib/google
     third_party/zxcvbn-cpp
     url/third_party/mozilla
-    v8/third_party/glibc
     v8/third_party/inspector_protocol
     v8/third_party/rapidhash-v8
     v8/third_party/siphash

@@ -6659,4 +6659,12 @@ boo#1269061 moved to the new release because 149.0.7827.196 did not contain secu
     <comment>do not show empty EULA dialog with placeholder text (boo#1276225)</comment>
     <requestid>1373487</requestid>
   </revision>
+  <revision rev="543" vrev="1">
+    <srcmd5>42ef2cdf608ecbfb9d24de2999d3afbd</srcmd5>
+    <version>152.0.7977.64</version>
+    <time>1787849462</time>
+    <user>anag_factory</user>
+    <comment>Chromium 152.0.7977.64 (boo#1276749, stable released 2026-08-25)</comment>
+    <requestid>1373702</requestid>
+  </revision>
 </revisionlist>

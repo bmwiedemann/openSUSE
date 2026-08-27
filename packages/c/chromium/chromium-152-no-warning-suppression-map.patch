@@ -1,0 +1,15 @@
+--- chromium-152.0.7977.54/third_party/dawn/src/utils/BUILD.gn  2026/08/21 07:40:42     1.1
++++ chromium-152.0.7977.54/third_party/dawn/src/utils/BUILD.gn  2026/08/21 08:54:40
+@@ -171,12 +171,6 @@
+ 
+     ### Now, configure all warning suppressions (regardless of dawn_standalone).
+ 
+-    # Use per-file warning suppressions from warning_suppression_mappings.txt
+-    inputs = [ "warning_suppression_mappings.txt" ]
+-    cflags +=
+-        [ "--warning-suppression-mappings=" +
+-          rebase_path("warning_suppression_mappings.txt", root_build_dir) ]
+-
+     if (!clang_use_unsafe_buffers_plugin) {
+       # If we don't have Chromium's unsafe buffers plugin (e.g. it was
+       # disabled in GN args), disable the warning entirely. The plugin

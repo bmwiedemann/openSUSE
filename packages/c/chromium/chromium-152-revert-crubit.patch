@@ -1,0 +1,159 @@
+--- chromium-152.0.7977.54/DEPS	2026/08/20 14:49:31	1.1
++++ chromium-152.0.7977.54/DEPS	2026/08/20 14:50:05
+@@ -4257,16 +4257,9 @@
+   '+third_party/google_benchmark/src/include/benchmark/benchmark.h',
+   '+third_party/icu/source/common/unicode',
+   '+third_party/icu/source/i18n/unicode',
++  '+third_party/rust-toolchain/lib/crubit/support',
+   '+url',
+ 
+-  # Everybody can use support libraries for C++/Rust interop based on Crubit.
+-  #
+-  # Actual headers location (under `third_party/rust-toolchain/lib`) should be
+-  # treated as an implementation detail - code should instead use
+-  # `third_party/crubit/support/...` as the canonical `#include` path (this is
+-  # unified across other major Crubit clients).
+-  '+third_party/crubit/support',
+-
+   # Abseil is allowed by default, but some features are banned. See
+   # //styleguide/c++/c++-features.md.
+   '+third_party/abseil-cpp',
+--- chromium-152.0.7977.54/tools/rust/build_crubit.py	2026/08/20 14:54:51	1.1
++++ chromium-152.0.7977.54/tools/rust/build_crubit.py	2026/08/20 14:55:20
+@@ -134,12 +134,8 @@
+         shutil.copy(os.path.join(release_dir, bin),
+                     os.path.join(RUST_TOOLCHAIN_OUT_DIR, 'bin', bin))
+ 
+-    # `crubit_target_dir` below helps ensure that Chromium can use the same
+-    # `#include` paths as other Crubit clients like google3 - e.g.
+-    # `#include "third_party/crubit/support/rs_std/slice_ref.h"`.
+     print(f'Installing `crubit/support` to {RUST_TOOLCHAIN_OUT_DIR} ...')
+-    crubit_target_dir = os.path.join(RUST_TOOLCHAIN_OUT_DIR, 'lib',
+-                                     'third_party', 'crubit')
++    crubit_target_dir = os.path.join(RUST_TOOLCHAIN_OUT_DIR, 'lib', 'crubit')
+     for item in ["BUILD.gn", "LICENSE", "crubit.gni", "support"]:
+         source_path = os.path.join(CRUBIT_SRC_DIR, item)
+         target_path = os.path.join(crubit_target_dir, item)
+--- chromium-152.0.7977.54/build_overrides/crubit.gni	2026/08/20 14:54:24	1.1
++++ chromium-152.0.7977.54/build_overrides/crubit.gni	2026/08/20 14:54:41
+@@ -2,7 +2,7 @@
+ # Use of this source code is governed by a BSD-style license that can be
+ # found in the LICENSE file.
+ 
+-crubit_src_dir = "//third_party/rust-toolchain/lib/third_party/crubit"
++crubit_src_dir = "//third_party/rust-toolchain/lib/crubit"
+ crubit_absl_dep_target = "//third_party/abseil-cpp:absl"
+ crubit_gn_configs_to_remove = [
+   "//build/config/compiler:chromium_code",
+--- chromium-152.0.7977.54/build/rust/tests/test_cpp_api_from_rust/unittests.cc	2026/08/20 14:53:31	1.1
++++ chromium-152.0.7977.54/build/rust/tests/test_cpp_api_from_rust/unittests.cc	2026/08/20 14:54:11
+@@ -4,8 +4,8 @@
+ 
+ #include "build/rust/tests/test_cpp_api_from_rust/rust_lib.h"
+ #include "testing/gtest/include/gtest/gtest.h"
+-#include "third_party/crubit/support/rs_std/char.h"
+-#include "third_party/crubit/support/rs_std/rs_alloc.h"
++#include "third_party/rust-toolchain/lib/crubit/support/rs_std/char.h"
++#include "third_party/rust-toolchain/lib/crubit/support/rs_std/rs_alloc.h"
+ 
+ TEST(RustCcBindingsFromRs, TestI32) {
+   EXPECT_EQ(12, rust_lib::mul_two_ints_via_rust(3, 4));
+--- chromium-152.0.7977.54/build/rust/tests/test_cpp_api_from_rust/BUILD.gn	2026/08/20 14:52:56	1.1
++++ chromium-152.0.7977.54/build/rust/tests/test_cpp_api_from_rust/BUILD.gn	2026/08/20 14:53:16
+@@ -31,7 +31,8 @@
+   deps = [
+     ":rust_lib_bindings",
+     "//base",
+-    "//build/rust/crubit",
++    "//build/rust/crubit:rs_std",
++    "//build/rust/std:std_bindings",
+     "//testing/gmock",
+     "//testing/gtest",
+   ]
+--- chromium-152.0.7977.54/build/rust/gni_impl/cpp_api_from_rust.gni	2026/08/20 14:51:22	1.1
++++ chromium-152.0.7977.54/build/rust/gni_impl/cpp_api_from_rust.gni	2026/08/20 14:52:36
+@@ -91,7 +91,8 @@
+     _original_attributes.deps += [ "//build/rust/std:std_bindings" ]
+   }
+ 
+-  _crubit_support_path_format = "\"third_party/crubit/support/{header}\""
++  _crubit_support_path_format =
++      "\"third_party/rust-toolchain/lib/crubit/support/{header}\""
+   _cpp_api_from_rust_exe_path =
+       "//third_party/rust-toolchain/bin/cc_bindings_from_rs"
+   _rustfmt_exe_path = "//third_party/rust-toolchain/bin/rustfmt"
+--- chromium-152.0.7977.54/build/rust/crubit/BUILD.gn	2026/08/20 14:50:21	1.1
++++ chromium-152.0.7977.54/build/rust/crubit/BUILD.gn	2026/08/20 14:51:00
+@@ -4,36 +4,20 @@
+ 
+ import("//build_overrides/crubit.gni")
+ 
+-# Public C++ APIs provided by Crubit.
+-group("crubit") {
+-  public_configs = [ ":public_config" ]
+-  public_deps = [
+-    "$crubit_src_dir/support:support_cpp",
+-    "$crubit_src_dir/support/rs_std:rs_std_cpp",
+-    "//build/rust/std/rules:alloc_bindings",
+-    "//build/rust/std/rules:core_bindings",
+-    "//build/rust/std/rules:std_bindings",
+-  ]
+-}
+-
+-config("public_config") {
+-  visibility = [ ":*" ]
+-
+-  # `include_dirs` below help ensure that Chromium can use the same
+-  # `#include` paths as other Crubit clients like google3 - e.g.
+-  # `#include "third_party/crubit/support/rs_std/slice_ref.h"`.
+-  include_dirs = [ "//third_party/rust-toolchain/lib" ]
++# Public support headers for using bindings generated by `cpp_api_from_rust`,
++# including 'option.h`, `result.h`, `slice_ref.h`, `str_ref.h`, etc.
++group("rs_std") {
++#  public_deps = [ "$crubit_src_dir/support/rs_std:rs_std_cpp" ]
+ }
+ 
+ # Dependencies of the `.h` file generated by `cpp_api_from_rust`.
+ group("cpp_api_from_rust_bindings_cpp_deps") {
+-  public_configs = [ ":public_config" ]
+-  public_deps = [ "$crubit_src_dir:cpp_api_from_rust_bindings_cpp_deps" ]
++#  public_deps = [ "$crubit_src_dir:cpp_api_from_rust_bindings_cpp_deps" ]
+ }
+ 
+ # Dependencies of the `.rs` file generated by `cpp_api_from_rust`.
+ group("cpp_api_from_rust_bindings_rs_deps") {
+-  public_deps = [ "$crubit_src_dir:cpp_api_from_rust_bindings_rs_deps" ]
++#  public_deps = [ "$crubit_src_dir:cpp_api_from_rust_bindings_rs_deps" ]
+ }
+ 
+ # This config is injected via `//build_overrides/crubit.gni`.
+--- chromium-152.0.7977.54/components/cbor/BUILD.gn     2026/08/20 16:06:43     1.1
++++ chromium-152.0.7977.54/components/cbor/BUILD.gn     2026/08/20 16:07:38
+@@ -12,7 +12,7 @@
+   # TODO(crbug.com/535682335): Remove `USE_CBOR_RUST` buildflag entirely,
+   # unconditionally enable Rust CBOR parser, and drop `is_cronet_build` check
+   # once Cronet supports Crubit dependencies.
+-  flags = [ "USE_CBOR_RUST=!$is_cronet_build" ]
++  flags = [ "USE_CBOR_RUST=false" ]
+ }
+ 
+ component("cbor") {
+@@ -37,12 +37,12 @@
+     "//base",
+   ]
+ 
+-  if (!is_cronet_build) {
+-    public_deps = [
+-      "//build/rust/crubit",
+-      "//components/cbor/rust:cbor_rust_bindings",
+-    ]
+-  }
++#  if (!is_cronet_build) {
++#    public_deps = [
++#      "//build/rust/crubit",
++#      "//components/cbor/rust:cbor_rust_bindings",
++#    ]
++#  }
+ }
+ 
+ source_set("unit_tests") {

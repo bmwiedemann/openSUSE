@@ -1,17 +1,21 @@
---- chromium-143.0.7489.0/testing/libfuzzer/fuzzers/BUILD.gn	2025/10/27 00:01:26	1.1
-+++ chromium-143.0.7489.0/testing/libfuzzer/fuzzers/BUILD.gn	2025/10/27 00:01:40
-@@ -103,7 +103,7 @@
-   sources = [ "libpng_read_fuzzer.cc" ]
+Index: chromium-152.0.7977.8/testing/libfuzzer/fuzzers/BUILD.gn
+===================================================================
+--- chromium-152.0.7977.8.orig/testing/libfuzzer/fuzzers/BUILD.gn
++++ chromium-152.0.7977.8/testing/libfuzzer/fuzzers/BUILD.gn
+@@ -166,7 +166,7 @@ fuzzer_test("libpng_progressive_read_fuz
    deps = [
      "//base",
+     "//testing/libfuzzer:libfuzzer_base_wrappers",
 -    "//third_party/libpng:libpng_for_testonly",
 +    "//third_party/libpng",
    ]
    dict = "dicts/png.dict"
    seed_corpuses = libpng_seed_corpuses
---- chromium-143.0.7489.0/tools/imagediff/BUILD.gn	2025/10/27 12:14:26	1.1
-+++ chromium-143.0.7489.0/tools/imagediff/BUILD.gn	2025/10/27 12:15:39
-@@ -48,7 +48,7 @@
+Index: chromium-152.0.7977.8/tools/imagediff/BUILD.gn
+===================================================================
+--- chromium-152.0.7977.8.orig/tools/imagediff/BUILD.gn
++++ chromium-152.0.7977.8/tools/imagediff/BUILD.gn
+@@ -48,7 +48,7 @@ if (current_toolchain == imagediff_toolc
      deps = [
        "//base",
        "//build/win:default_exe_manifest",
@@ -20,9 +24,11 @@
        "//third_party/zlib",
      ]
    }
---- chromium-143.0.7489.0/chrome/test/BUILD.gn	2025/10/27 13:35:00	1.1
-+++ chromium-143.0.7489.0/chrome/test/BUILD.gn	2025/10/27 13:35:18
-@@ -11167,7 +11167,7 @@
+Index: chromium-152.0.7977.8/chrome/test/BUILD.gn
+===================================================================
+--- chromium-152.0.7977.8.orig/chrome/test/BUILD.gn
++++ chromium-152.0.7977.8/chrome/test/BUILD.gn
+@@ -8459,7 +8459,7 @@ if (!is_android) {
          "//testing/gtest",
          "//third_party/hunspell",
          "//third_party/icu",
@@ -31,7 +37,7 @@
          "//ui/base:test_support",
          "//ui/events:test_support",
          "//ui/ozone",
-@@ -11532,7 +11532,7 @@
+@@ -8848,7 +8848,7 @@ if (!is_android && !is_chromeos_device)
        "//testing/gtest",
        "//third_party/hunspell",
        "//third_party/icu",
@@ -40,7 +46,7 @@
        "//ui/base:base_interactive_ui_tests",
        "//ui/base:ozone_buildflags",
        "//ui/base:test_support",
-@@ -12492,7 +12492,7 @@
+@@ -9784,7 +9784,7 @@ if (!is_android) {
        "//testing/gtest",
        "//third_party/hunspell",
        "//third_party/icu",
@@ -49,9 +55,11 @@
        "//ui/base:test_support",
        "//ui/resources:ui_test_pak",
        "//ui/views",
---- chromium-143.0.7489.0/ui/gfx/BUILD.gn	2025/10/27 13:34:40	1.1
-+++ chromium-143.0.7489.0/ui/gfx/BUILD.gn	2025/10/27 13:34:52
-@@ -902,7 +902,7 @@
+Index: chromium-152.0.7977.8/ui/gfx/BUILD.gn
+===================================================================
+--- chromium-152.0.7977.8.orig/ui/gfx/BUILD.gn
++++ chromium-152.0.7977.8/ui/gfx/BUILD.gn
+@@ -897,7 +897,7 @@ test("gfx_unittests") {
      "//skia:skcms",
      "//testing/gtest",
      "//third_party/icu:icuuc",

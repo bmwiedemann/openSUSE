@@ -11,6 +11,10 @@ fixes various compile-time static_assert() checks that clang-19 doesn't like:
   101 |     static_assert(num_dc_codes.size() == dcTable.code_length.size());
       |                                          ^
 
+Likely differences in llvm-19 vs llvm-22 c++ headers (there's probably
+more inlined code in llvm-22, or stuff that's marked constexpr) means the
+compiler can't do compile-time asserts.
+
 --- a/media/gpu/vaapi/vaapi_jpeg_encoder.cc
 +++ b/media/gpu/vaapi/vaapi_jpeg_encoder.cc
 @@ -98,24 +98,24 @@ void FillHuffmanTableParameters(
@@ -56,3 +60,27 @@ fixes various compile-time static_assert() checks that clang-19 doesn't like:
  namespace blink {
  
  class DOMPointInit;
+--- a/device/fido/cable/v2_handshake.cc
++++ b/device/fido/cable/v2_handshake.cc
+@@ -217,9 +217,9 @@ std::array<uint8_t, kAdvertSize> Encrypt
+   // is a pair of 256-bit keys, concatenated.
+   DCHECK(ReservedBitsAreZero(eid));
+ 
+-  auto [aes_key_bytes, hmac_key_bytes] = key.split_at<32>();
+-  static_assert(aes_key_bytes.size() == 32u);
+-  static_assert(hmac_key_bytes.size() == 32u);
++  auto [aes_key_bytes, hmac_key_bytes] = key.split_at<32>();
++  //static_assert(aes_key_bytes.size() == 32u);
++  //static_assert(hmac_key_bytes.size() == 32u);
+   AES_KEY aes_key;
+   CHECK(AES_set_encrypt_key(aes_key_bytes.data(),
+                             /*bits=*/8 * aes_key_bytes.size(), &aes_key) == 0);
+@@ -261,7 +261,7 @@ std::optional<CableEidArray> Decrypt(
+              &calculated_hmac_len) != nullptr);
+   CHECK_EQ(calculated_hmac_len, sizeof(calculated_hmac));
+   static_assert(sizeof(calculated_hmac) >= 4u);
+-  static_assert(base::span(advert).subspan<AES_BLOCK_SIZE>().size() == 4u);
++  //static_assert(base::span(advert).subspan<AES_BLOCK_SIZE>().size() == 4u);
+   if (CRYPTO_memcmp(calculated_hmac, &advert[AES_BLOCK_SIZE], 4) != 0) {
+     return std::nullopt;
+   }

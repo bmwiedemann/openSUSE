@@ -1,0 +1,17 @@
+--- chromium-152.0.7977.8/chrome/browser/ui/autofill/autofill_popup_controller_impl.cc	2026/08/22 14:11:04	1.1
++++ chromium-152.0.7977.8/chrome/browser/ui/autofill/autofill_popup_controller_impl.cc	2026/08/22 14:11:38
+@@ -595,12 +595,12 @@
+   const int popup_level = GetPopupLevel();
+   std::vector<size_t> multi_row_index(popup_level, 0);
+   base::WeakPtr<AutofillPopupControllerImpl> controller =
+-      parent_controller_.value_or({});
++      parent_controller_.value_or(base::WeakPtr<AutofillPopupControllerImpl>{});
+   for (int i = popup_level - 1; i >= 0 && controller && controller->view_;
+        --i) {
+     multi_row_index[i] =
+         controller->view_->GetIndexOfSubPopupAnchorSuggestion().value_or(0);
+-    controller = controller->parent_controller_.value_or({});
++    controller = controller->parent_controller_.value_or(base::WeakPtr<AutofillPopupControllerImpl>{});
+   }
+   return multi_row_index;
+ }
