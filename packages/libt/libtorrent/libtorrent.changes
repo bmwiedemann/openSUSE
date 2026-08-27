@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug 26 19:28:47 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.16.21
+  * This release includes various bugfixes and minor improvements.
+  * Check for empty paths, zero-length datagrams,
+    file lengths. Restrict lengths of DHT tokens.
+
+-------------------------------------------------------------------
 Thu Aug  6 16:06:54 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update o release 0.16.20
