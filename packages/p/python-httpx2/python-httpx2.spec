@@ -24,7 +24,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-httpx2
-Version:        2.5.0
+Version:        2.12.0
 Release:        0
 Summary:        The next generation HTTP client
 License:        BSD-3-Clause
@@ -38,7 +38,9 @@ BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest >= 8.3}
 BuildRequires:  %{python_module Werkzeug >= 3.1.6}
-BuildRequires:  %{python_module anyio}
+BuildRequires:  %{python_module anyio >= 4.10}
+# Not built for Python 3.14
+BuildRequires:  python313-backports.zstd
 BuildRequires:  %{python_module chardet >= 5.2.0}
 BuildRequires:  %{python_module cryptography >= 46.0.7}
 BuildRequires:  %{python_module h2}
@@ -51,29 +53,25 @@ BuildRequires:  %{python_module pytest-httpbin >= 2.0.0}
 BuildRequires:  %{python_module pytest-trio >= 0.8.0}
 BuildRequires:  %{python_module rich >= 10}
 BuildRequires:  %{python_module socksio}
+BuildRequires:  %{python_module starlette >= 0.49}
 BuildRequires:  %{python_module trio >= 0.31.0}
 BuildRequires:  %{python_module trustme >= 1.2.1}
 BuildRequires:  %{python_module truststore >= 0.10}
 BuildRequires:  %{python_module uvicorn >= 0.35}
-BuildRequires:  %{python_module zstandard}
+BuildRequires:  %{python_module websockets >= 16}
+BuildRequires:  %{python_module wsproto >= 1.2}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-anyio
+Requires:       python-anyio >= 4.10
 Requires:       python-httpcore2 == %{version}
 Requires:       python-idna >= 3.18
 Requires:       python-truststore >= 0.10
-%if 0%{?python_version_nodots} < 313
-Requires:       python-typing-extensions >= 4.5.0
-%endif
-Suggests:       python-brotli
+Suggests:       python-brotli >= 1.2
 Suggests:       python-click >= 8.0.0
 Suggests:       python-pygments >= 2.0.0
 Suggests:       python-rich >= 10
 Suggests:       python-h2 >= 3
 Suggests:       python-socksio >= 1.0.0
-%if 0%{?python_version_nodots} < 314
-Suggests:       python-zstandard >= 0.18.0
-%endif
 %if %{with libalternatives}
 Requires:       alts
 BuildRequires:  alts

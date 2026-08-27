@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Aug 26 02:15:17 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.12.0:
+  ## Added
+  * Add the public Origin value object and URL.origin property for
+    normalized, hashable origin comparisons.
+  * Add max_event_size to cap SSE event buffering.
+  * Add RFC 9110 status code constants.
+  * Add support for Python 3.15.
+  * Add alias_httpx(), letting applications make import httpx resolve to
+    httpx2 process-wide.
+  * Add native WebSocket support by vendoring httpx-ws.
+  * Add support for the QUERY HTTP method via httpx2.query() and
+    client.query().
+  ## Changed
+  * Use backports.zstd for Zstandard decoding on Python 3.13 and earlier.
+  * Require Brotli 1.2.0 or later for the brotli extra.
+  * Improve SSE chunk buffering performance.
+  * Skip cookie extraction for responses without Set-Cookie headers.
+  * Return str | None instead of Any from Headers.get.
+  * Update the vendored httpx-ws to upstream v0.9.0.
+  * Allow click 8.4+ in the cli extra, dropping the upper bound.
+  ## Fixed
+  * Bound peak memory while streaming compressed responses and close response
+    streams when decoding fails.
+  * Restore deprecated status code aliases.
+  * Extract HTTP/2 release notes from changelog headings correctly.
+  * Respect explicit Transfer-Encoding headers and expose buffered request
+    body lengths to WSGI applications.
+  * Validate multipart part header names and values before serialization.
+  * Enforce the WebSocket max message size across fragmented messages.
+  * Ignore unsolicited and duplicate WebSocket Pong frames.
+  * Alias httpcore imports to httpcore2 in alias_httpx().
+
+-------------------------------------------------------------------
 Wed Jul  1 12:02:35 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.5.0:
