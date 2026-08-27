@@ -1,0 +1,8 @@
+<package name="qmqtt" project="openSUSE:Factory">
+  <title>MQTT client library for Qt</title>
+  <description>QMQTT is an MQTT client library for the Qt framework, speaking the MQTT 3.1
+and 3.1.1 publish/subscribe protocols on top of QtNetwork. It supports plain
+TCP, TLS and WebSocket transports, and offers a topic router that dispatches
+incoming messages to subscribers by topic pattern.</description>
+  <url>https://github.com/emqx/qmqtt</url>
+</package>

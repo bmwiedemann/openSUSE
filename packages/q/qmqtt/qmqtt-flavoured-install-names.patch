@@ -1,0 +1,88 @@
+From: Martin Pluskal <mpluskal@suse.com>
+Subject: build: let the installed library and CMake package be renamed
+
+Everything QMQTT installs is hardwired to the name "qmqtt": the library is
+libqmqtt.so, the CMake package lives in <libdir>/cmake/qmqtt and is called
+qmqttConfig.cmake.  A distribution that wants to offer a Qt5 and a Qt6 build
+of QMQTT at the same time therefore cannot, because the two builds would claim
+the same paths and, worse, the same SONAME for two incompatible ABIs.
+
+Add a QMQTT_PACKAGE_NAME cache variable, defaulting to the project name so
+nothing changes for anyone who does not set it, and route the installed
+library name, the export destination and the generated package config through
+it.
+
+openSUSE passes -DQMQTT_PACKAGE_NAME=qmqtt-qt5 / -DQMQTT_PACKAGE_NAME=qmqtt-qt6
+for its two flavours.
+
+--- qmqtt-1.0.7.orig/CMakeLists.txt
++++ qmqtt-1.0.7/CMakeLists.txt
+@@ -2,6 +2,12 @@
+ 
+ project( qmqtt VERSION 1.0.7 )
+ 
++# Name under which the library and its CMake package get installed.  Defaults
++# to the project name; a distribution that ships a Qt5 and a Qt6 build of QMQTT
++# side by side overrides it so the two do not claim the same installed files.
++set( QMQTT_PACKAGE_NAME "${PROJECT_NAME}" CACHE STRING
++     "Name of the installed library and of its CMake package" )
++
+ include( GNUInstallDirs ) # needed to define vars used in install() directives.
+ 
+ 
+@@ -136,6 +142,7 @@
+ 
+ set_target_properties( ${PROJECT_NAME}
+     PROPERTIES
++        OUTPUT_NAME               ${QMQTT_PACKAGE_NAME}
+         VERSION                   ${PROJECT_VERSION}
+         SOVERSION                 ${PROJECT_VERSION_MAJOR}
+         CXX_STANDARD              11
+@@ -168,8 +175,8 @@
+ 
+ install(
+     EXPORT ${PROJECT_NAME}
+-    DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}"
+-    FILE ${PROJECT_NAME}Targets.cmake
++    DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${QMQTT_PACKAGE_NAME}"
++    FILE ${QMQTT_PACKAGE_NAME}Targets.cmake
+     COMPONENT Devel
+ )
+ 
+@@ -183,27 +190,27 @@
+ 
+ include( CMakePackageConfigHelpers )
+ 
+-file( WRITE "${CMAKE_CURRENT_BINARY_DIR}/qmqttConfig.cmake.in"
+-      "@PACKAGE_INIT@\ninclude( \${CMAKE_CURRENT_LIST_DIR}/qmqttTargets.cmake )" )
++file( WRITE "${CMAKE_CURRENT_BINARY_DIR}/${QMQTT_PACKAGE_NAME}Config.cmake.in"
++      "@PACKAGE_INIT@\ninclude( \${CMAKE_CURRENT_LIST_DIR}/${QMQTT_PACKAGE_NAME}Targets.cmake )" )
+ 
+ configure_package_config_file(
+-    "${CMAKE_CURRENT_BINARY_DIR}/qmqttConfig.cmake.in"
+-    "qmqttConfig.cmake"
+-    INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}
++    "${CMAKE_CURRENT_BINARY_DIR}/${QMQTT_PACKAGE_NAME}Config.cmake.in"
++    "${QMQTT_PACKAGE_NAME}Config.cmake"
++    INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${QMQTT_PACKAGE_NAME}
+     PATH_VARS           CMAKE_INSTALL_LIBDIR
+ )
+ 
+ write_basic_package_version_file(
+-    "qmqttConfigVersion.cmake"
++    "${QMQTT_PACKAGE_NAME}ConfigVersion.cmake"
+     VERSION       ${PROJECT_VERSION}
+     COMPATIBILITY SameMajorVersion
+ )
+ 
+ install(
+     FILES
+-        ${CMAKE_CURRENT_BINARY_DIR}/qmqttConfig.cmake
+-        ${CMAKE_CURRENT_BINARY_DIR}/qmqttConfigVersion.cmake
+-    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}
++        ${CMAKE_CURRENT_BINARY_DIR}/${QMQTT_PACKAGE_NAME}Config.cmake
++        ${CMAKE_CURRENT_BINARY_DIR}/${QMQTT_PACKAGE_NAME}ConfigVersion.cmake
++    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${QMQTT_PACKAGE_NAME}
+     COMPONENT   Devel
+ )
+ 

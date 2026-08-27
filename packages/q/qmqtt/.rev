@@ -1,0 +1,100 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7bd8e045280a0cf2a774bdb262cba45a</srcmd5>
+    <version>1.0.7</version>
+    <time>1787849483</time>
+    <user>anag_factory</user>
+    <comment>New package: qmqtt 1.0.7 - MQTT client library for Qt (Qt5 + Qt6)
+
+QMQTT (https://github.com/emqx/qmqtt) is an MQTT 3.1/3.1.1 client library for
+the Qt framework: plain TCP, TLS and WebSocket transports plus a topic router
+that dispatches incoming messages by topic pattern. Version 1.0.7 is the
+current release, tagged and published 2026-07-19, and is also the head of
+upstream's master branch. Nothing named qmqtt exists in OBS today.
+
+This supersedes SR#1373861, which briefly offered a Qt6-only build. Both Qt
+majors are wanted, so this is back to a qt5/qt6 multibuild, laid out the way
+Factory's qcustomplot already does it: source packages qmqtt-qt5 and
+qmqtt-qt6, libraries libqmqtt-qt5-1 and libqmqtt-qt6-1, headers in
+qmqtt-qt5-devel and qmqtt-qt6-devel. The two flavours share no installed path
+- SONAMEs libqmqtt-qt5.so.1 and libqmqtt-qt6.so.1, headers under
+/usr/include/qmqtt-qt5 and /usr/include/qmqtt-qt6, CMake packages qmqtt-qt5
+and qmqtt-qt6 - so unlike qcustomplot they need no Conflicts and install side
+by side.
+
+jaero is submitted separately and builds against the qt5 flavour.
+
+Licence: EPL-1.0 OR BSD-3-Clause, with the reasoning recorded in a
+Legal-Review-Notice comment above the tag so it does not have to be
+re-derived. In short: upstream's LICENSE offers the library under the Eclipse
+Public License 1.0 *or* the Eclipse Distribution License 1.0, and the shipped
+edl-v10 is the verbatim three-clause BSD template naming the Eclipse
+Foundation - SPDX has no EDL-1.0 identifier and matches that text to
+BSD-3-Clause. Every source file compiled into the library carries an in-file
+BSD-3-Clause notice and nothing else, no file carries an EPL notice, and
+README.md itself says &quot;New BSD License&quot;. EPL-1.0 being GPL-incompatible, the
+GPL-3.0-or-later consumer jaero relies on the BSD-3-Clause arm, which the
+&quot;OR&quot; grants. tests/gtest/gtest/ is a bundled googletest (also BSD-3-Clause)
+that is built for the test suite and never installed.
+
+Four patches. Three are upstream, one is deliberately ours:
+
+ - qmqtt-tests-follow-ssl-option.patch, gh#emqx/qmqtt#269 - upstream compiles
+   the test binary with QT_NO_SSL while the library defaults to SSL on.
+   QT_NO_SSL removes pure virtuals from the middle of NetworkInterface and
+   SocketInterface, so the mocks end up with a different vtable layout than
+   the library they link, dispatch lands on a slot that is not there, and the
+   suite dies with SIGSEGV.
+
+ - qmqtt-drop-duplicate-cmake-export.patch, gh#emqx/qmqtt#271 - upstream
+   installs the same CMake export twice, the second time under a name nothing
+   includes.
+
+ - qmqtt-tests-any-qt-major.patch, gh#emqx/qmqtt#270 - the CMake test tree
+   hardcodes Qt5 and neither configures nor compiles against Qt6: the Qt Test
+   component and the linked targets, the global endl manipulator Qt6 removed,
+   missing &lt;climits&gt;/&lt;QIODevice&gt; includes, and
+   QCoreApplication::hasPendingEvents which Qt6 also removed. It also stops
+   adding tests/auto, which holds only the qmake module test and cannot pass
+   in a CMake build of either Qt major.
+
+ - qmqtt-flavoured-install-names.patch - PATCH-FIX-OPENSUSE. Adds a
+   QMQTT_PACKAGE_NAME knob so the installed library and its CMake package can
+   be renamed, which is what stops the two flavours claiming the same files
+   and the same SONAME for two incompatible ABIs. Kept downstream on purpose:
+   it exists to serve this package's flavour split.
+
+Two build flags worth explaining:
+
+ - -DQT_VERSION_MAJOR, for both flavours. Upstream reads QT_VERSION_MAJOR as
+   an ordinary variable, but Qt5 never defines it and Qt6Config only
+   publishes it as a directory property via set_directory_properties(). Its
+   WebSockets branch therefore expands to find_package(Qt COMPONENTS
+   WebSockets), lands in CMake's own FindQt module and dies looking for Qt3 -
+   on either Qt major.
+
+ - -DBUILD_SHARED_LIBS=OFF, which reaches only the bundled googletest; the
+   library gets its type from qmqtt_SHARED, which passes SHARED to
+   add_library() explicitly. A shared googletest needs its consumers to
+   define GTEST_LINKED_AS_SHARED_LIBRARY=1, which upstream's test target does
+   not, so its global state is duplicated and the suite aborts at teardown
+   with a double free.
+
+Each flavour also refuses the other Qt major outright, so neither a stray Qt6
+development package nor a missing one can quietly change which Qt a flavour
+is built against.
+
+%check runs the bundled Google Test suite for both flavours: 107 cases pass
+under Qt5 and the same 107 under Qt6. Three are skipped by name via
+GTEST_FILTER, with the reason in the spec - they assert behaviour the library
+deliberately moved away from (isConnectedToHost now answers from
+ClientPrivate's own connection state, and the reconnect timer moved from
+onSocketError to onDisconnected) and were never updated. Upstream does not
+notice because the only workflow in the repository is CodeQL.
+
+Both flavours built locally on aarch64: green, no findings from the shared
+library policy check, rpmlint clean apart from the invalid-spec-name every
+multibuild source package emits.</comment>
+    <requestid>1373867</requestid>
+  </revision>
+</revisionlist>

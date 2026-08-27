@@ -1,0 +1,26 @@
+From: Martin Pluskal <mpluskal@suse.com>
+Subject: tests: build the unit tests with the same SSL configuration as the library
+
+tests/gtest/tests/CMakeLists.txt hardcodes QT_NO_SSL, while the library is
+built with qmqtt_SSL=ON by default.  QT_NO_SSL is not an implementation
+detail: it removes three pure virtuals from the middle of
+QMQTT::NetworkInterface and four from QMQTT::SocketInterface, so the mocks
+compiled into the test binary get a different vtable layout than the libqmqtt
+that binary links against.  libqmqtt then dispatches connectToHost() through a
+slot the mock does not have and the suite dies in
+ClientTest.connectToHostWillCallNetworkConnectToHost with SIGSEGV.
+
+Use the same ${ssl_defs} the library target uses, so the tests follow the
+qmqtt_SSL option instead of contradicting it.
+
+--- qmqtt-1.0.7.orig/tests/gtest/tests/CMakeLists.txt
++++ qmqtt-1.0.7/tests/gtest/tests/CMakeLists.txt
+@@ -47,7 +47,7 @@
+ target_compile_definitions(qmqtt_tests
+     PRIVATE
+         QMQTT_LIBRARY_TESTS
+-        QT_NO_SSL
++        ${ssl_defs}
+ )
+ 
+ # Set C++ standard

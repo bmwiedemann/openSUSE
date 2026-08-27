@@ -1,0 +1,63 @@
+-------------------------------------------------------------------
+Wed Aug 26 17:54:28 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package, version 1.0.7:
+  * QMQTT is an MQTT 3.1/3.1.1 client library for Qt, providing
+    plain TCP, TLS and WebSocket transports plus a topic router
+    that dispatches incoming messages by topic pattern
+  * New dependency of jaero, which has no in-tree copy of it
+- Add qmqtt-tests-follow-ssl-option.patch: compile the unit tests
+  with the same SSL configuration as the library. Upstream
+  hardcodes QT_NO_SSL for the test binary while the library
+  defaults to SSL enabled, which removes pure virtuals from the
+  middle of NetworkInterface and SocketInterface, so the mocks and
+  the library disagree about the vtable layout and the suite
+  segfaults. Sent upstream as gh#emqx/qmqtt#269
+- Add qmqtt-drop-duplicate-cmake-export.patch: upstream installs
+  the same CMake export twice, the second time under a name nothing
+  includes. Sent upstream as gh#emqx/qmqtt#271
+- Add qmqtt-flavoured-install-names.patch: add a QMQTT_PACKAGE_NAME
+  knob so the installed library and its CMake package can be
+  renamed, which is what stops the two flavours claiming the same
+  files and the same SONAME. Kept downstream deliberately, since it
+  exists to serve this package's flavour split
+- Add qmqtt-tests-any-qt-major.patch: the CMake test tree hardcodes
+  Qt5 and neither configures nor compiles against Qt6. Covers the
+  Qt Test component and the linked targets, the global endl
+  manipulator Qt6 removed, missing climits and QIODevice includes,
+  and QCoreApplication::hasPendingEvents which Qt6 also removed.
+  Also stops adding tests/auto, which holds only the qmake module
+  test and cannot pass in a CMake build of either Qt major. Sent
+  upstream as gh#emqx/qmqtt#270
+- Packaging decisions worth recording:
+  * Built as a _multibuild with qt5 and qt6 flavours, laid out the
+    way openSUSE's qcustomplot does it: source packages qmqtt-qt5
+    and qmqtt-qt6, libraries libqmqtt-qt5-1 and libqmqtt-qt6-1,
+    headers in qmqtt-qt5-devel and qmqtt-qt6-devel
+  * The flavours share no installed path, so both are installable
+    at once: SONAMEs libqmqtt-qt5.so.1 and libqmqtt-qt6.so.1,
+    headers under /usr/include/qmqtt-qt5 and /usr/include/qmqtt-qt6,
+    and CMake packages found as qmqtt-qt5 or qmqtt-qt6. Upstream
+    generates no pkg-config file
+  * Each flavour refuses the other Qt major outright, so neither a
+    stray Qt6 development package nor a missing one can silently
+    change which Qt a flavour is built against
+  * Build with qmqtt_WEBSOCKETS enabled. The installed
+    qmqtt_client.h declares the WebSocket constructors whenever the
+    consumer compiles with QT_WEBSOCKETS_LIB defined, so a library
+    built without them would offer a declaration with no symbol
+    behind it. Both flavours need -DQT_VERSION_MAJOR for this:
+    upstream reads that variable but nothing sets it, Qt5 not at
+    all and Qt6 only as a directory property, so its WebSockets
+    branch otherwise goes looking for Qt3
+  * Run the bundled Google Test suite in %check for both flavours,
+    107 cases each. Three are skipped: they assert behaviour the
+    library deliberately moved away from without the tests being
+    updated, and upstream runs no CI over this suite
+  * Build the bundled googletest static (-DBUILD_SHARED_LIBS=OFF,
+    which does not reach the library because upstream passes SHARED
+    to add_library explicitly). A shared googletest needs consumers
+    to define GTEST_LINKED_AS_SHARED_LIBRARY=1, which upstream's
+    test target does not, and the duplicated global state aborts
+    the suite at teardown with a double free
+
