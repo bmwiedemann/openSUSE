@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Aug 18 10:59:25 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2.5.2
+  * drop support for Python 3.11
+  * distutils has been removed
+  * many expired deprecations, see below
+  * many new deprecations, see upstream changes
+  * static typing improvements
+  * improved support for free threading
+  * support for descending sorts
+  Expired deprecations:
+  * passing None as dtype to np.finfo will now raise a TypeError
+  * numpy.cross no longer supports 2-dimensional vectors
+  * numpy._core.numerictypes.maximum_sctype has been removed
+  * numpy.row_stack has been removed in favor of numpy.vstack
+  * get_array_wrap has been removed
+  * recfromtxt and recfromcsv have been removed from
+    numpy.lib._npyio in favor of numpy.genfromtxt
+  * numpy.chararray (re-export of numpy.char.chararray) has been
+    removed
+  * bincount now raises a TypeError for non-integer inputs
+  * numpy.lib.math (alias for the standard library math module) has
+    been removed
+  * data type alias 'a' was removed in favor of 'S'
+  * _add_newdoc_ufunc(ufunc, newdoc) has been removed in favor of
+    ufunc.__doc__ = newdoc
+- Drop numpy-buildfix.patch as distutils was dropped
+
+-------------------------------------------------------------------
 Wed Aug  5 04:00:15 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Skip a test to unblock Python 3.15 until new upstream release.

@@ -30,19 +30,17 @@
 %{?sle15_python_module_pythons}
 
 Name:           python-numpy
-Version:        2.4.6
+Version:        2.5.2
 Release:        0
 Summary:        NumPy array processing for numbers, strings, records and objects
 License:        BSD-3-Clause
 URL:            http://www.numpy.org/
 Source:         https://files.pythonhosted.org/packages/source/n/numpy/numpy-%{version}.tar.gz
 Source99:       python-numpy-rpmlintrc
-# PATCH-FIX-OPENSUSE numpy-buildfix.patch -- openSUSE-specific build fixes
-Patch0:         numpy-buildfix.patch
-BuildRequires:  %{python_module Cython >= 3.0.6}
-BuildRequires:  %{python_module base >= 3.11}
+BuildRequires:  %{python_module Cython >= 3.1.0}
+BuildRequires:  %{python_module base >= 3.12}
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module meson-python >= 0.18.0}
+BuildRequires:  %{python_module meson-python >= 0.20.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyproject-metadata >= 0.7.1}
 BuildRequires:  cmake
@@ -65,7 +63,7 @@ BuildRequires:  %{python_module pytest >= 7.4.0}
 BuildRequires:  %{python_module hypothesis >= 6.75.0}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module testsuite}
-BuildRequires:  %{python_module typing-extensions >= 4.2.0}
+BuildRequires:  %{python_module tzdata}
 # /SECTION
 # Last version which packaged %%{_bindir}/f2py without update-alternatives
 Conflicts:      %{plainpython}-numpy <= 1.12.0
@@ -120,7 +118,6 @@ This package contains files for developing applications using numpy.
 %autosetup -p1 -n numpy-%{version}
 # Fix non-executable scripts
 sed -i '1{/^#!/d}'\
-  numpy/distutils/{conv_template,cpuinfo,from_template,system_info}.py \
   numpy/f2py/{__init__,cfuncs,diagnose,crackfortran,f2py2e,rules}.py \
   numpy/random/_examples/cython/extending{,_distributions}.pyx \
   numpy/testing/print_coercion_tables.py
@@ -180,17 +177,6 @@ test_failok+=" or test_structured_object_indexing"
 test_failok+=" or test_structured_object_item_setting"
 # flaky due to memory consumption
 test_failok+=" or test_big_arrays"
-# gh#numpy/numpy#22825
-test_failok+=" or TestPrintOptions"
-# gh#numpy/numpy#22835
-test_failok+=" or test_keepdims_out"
-# boo#1148173 gh#numpy/numpy#14438
-%ifarch ppc64 ppc64le
-test_failok+=" or test_generalized_sq"
-# situation with IBM and double numbers is ... complicated
-# gh#numpy/numpy#21094
-test_failok+=" or test_ppc64_ibm_double_double128"
-%endif
 # these tests fail on big endian gh#numpy/numpy#11831
 %ifarch s390x ppc ppc64
 test_failok+=" or TestFReturnCharacter"
@@ -207,6 +193,8 @@ test_failok+=" or test_pareto"
 # gh#numpy/numpy#18388
 test_failok+=" or test_float_remainder_overflow"
 test_failok+=" or test_einsum"
+# precision errors (really)
+test_failok+=" or test_poly_int_overflow"
 %endif
 %ifarch %{ix86} %{arm32}
 # too much memory for 32bit
@@ -232,10 +220,6 @@ test_failok+=" or (test_umath and test_fp_noncontiguous)"
 %endif
 # The meson command is always on the primary python and wants to import numpy from there
 test_failok+=" or test_limited_api"
-# gh#numpy/numpy#27531
-test_failok+=" or test_api_importable"
-# raises a warning as an error, remove when upgrading to 2.5.0.
-test_failok+=" or test_xerbla_override"
 
 echo "
 import sys
@@ -275,18 +259,12 @@ popd
 %exclude %{python_sitearch}/numpy/_core/include
 %exclude %{python_sitearch}/numpy/_core/lib/libnpymath.a
 %exclude %{python_sitearch}/numpy/_core/lib/pkgconfig/numpy.pc
-%exclude %{python_sitearch}/numpy/distutils/mingw/*.c
-%exclude %{python_sitearch}/numpy/distutils/checks/*.c
 %exclude %{python_sitearch}/numpy/f2py/src/
 %exclude %{python_sitearch}/numpy/random/lib/libnpyrandom.a
 
 %files %{python_files devel}
 %license LICENSE.txt
 %{python_sitearch}/numpy/_core/include/
-%if 0%{python_version_nodots} < 312
-%{python_sitearch}/numpy/distutils/mingw/*.c
-%{python_sitearch}/numpy/distutils/checks/*.c
-%endif
 %{python_sitearch}/numpy/f2py/src/
 %{python_sitearch}/numpy/_core/lib/libnpymath.a
 %{python_sitearch}/numpy/_core/lib/pkgconfig/numpy.pc
