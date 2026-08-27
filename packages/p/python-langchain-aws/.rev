@@ -107,4 +107,29 @@ repo layering the prepared boto3/botocore 1.43.72 over Tumbleweed;
   * Refresh the bundled model profile data: add xai.grok-4.6</comment>
     <requestid>1372688</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e711cf8da1fef648f600870922876ed6</srcmd5>
+    <version>1.7.4</version>
+    <time>1787849495</time>
+    <user>anag_factory</user>
+    <comment>Wed Aug 26 17:55:37 UTC 2026 - Martin Pluskal &lt;mpluskal@suse.com&gt;
+
+- Update to 1.7.4:
+  * ChatBedrockConverse now builds Converse reasoning blocks per
+    model id: reasoning is dropped entirely for models that reject
+    it (deepseek.r1 and the inline-reasoning models), unsigned
+    reasoning is kept only for openai.gpt-oss, amazon.nova-2,
+    deepseek.v3, minimax and kimi, and encrypted redactedContent
+    is passed through untouched
+  * Emit streaming redacted_content reasoning blocks into the
+    LangChain content list instead of discarding them
+  * ChatAnthropicMantle and ChatOpenAIMantle now raise ValueError
+    on guardrail_config/guardrails and on x-amzn-bedrock-guardrail*
+    headers, which the Mantle endpoint silently ignores
+  * Align ChatAnthropicMantle auth precedence with the Anthropic
+    SDK Mantle client: explicitly passed SigV4 credentials now
+    outrank a bearer key sourced from AWS_BEARER_TOKEN_BEDROCK
+- Follow upstream and raise the langchain-core floor to &gt;= 1.6.0</comment>
+    <requestid>1373868</requestid>
+  </revision>
 </revisionlist>

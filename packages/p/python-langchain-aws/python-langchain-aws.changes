@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Aug 26 17:55:37 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.7.4:
+  * ChatBedrockConverse now builds Converse reasoning blocks per
+    model id: reasoning is dropped entirely for models that reject
+    it (deepseek.r1 and the inline-reasoning models), unsigned
+    reasoning is kept only for openai.gpt-oss, amazon.nova-2,
+    deepseek.v3, minimax and kimi, and encrypted redactedContent
+    is passed through untouched
+  * Emit streaming redacted_content reasoning blocks into the
+    LangChain content list instead of discarding them
+  * ChatAnthropicMantle and ChatOpenAIMantle now raise ValueError
+    on guardrail_config/guardrails and on x-amzn-bedrock-guardrail*
+    headers, which the Mantle endpoint silently ignores
+  * Align ChatAnthropicMantle auth precedence with the Anthropic
+    SDK Mantle client: explicitly passed SigV4 credentials now
+    outrank a bearer key sourced from AWS_BEARER_TOKEN_BEDROCK
+- Follow upstream and raise the langchain-core floor to >= 1.6.0
+
+-------------------------------------------------------------------
 Fri Aug 21 05:36:38 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.7.3:
