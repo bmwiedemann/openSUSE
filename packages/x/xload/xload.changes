@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 20 11:14:04 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.2.2:
+  * This release fixes builds with meson on systems like NetBSD that
+    need libintl for gettext().
+
+-------------------------------------------------------------------
 Tue Jul 21 11:23:57 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.2.1:

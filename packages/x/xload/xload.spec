@@ -17,7 +17,7 @@
 
 
 Name:           xload
-Version:        1.2.1
+Version:        1.2.2
 Release:        0
 Summary:        X utility to display system load average
 License:        MIT
