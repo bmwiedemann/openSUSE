@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Aug 25 15:19:19 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.12.0:
+  * No changes since `2.11.0`. Version bumped to stay in lockstep
+    with `httpx2`.
+  * Cache sniffio availability instead of importing it on every
+    synchronization call.
+  * Add support for Python 3.15.
+  * Avoid quadratic copying when sending large HTTP/2 request
+    bodies.
+  * Propagate the original exception instead of raising
+    `KeyError` when an HTTP/2 stream fails.
+  * Start TLS for the `wss` scheme in SOCKS5 proxy connections.
+  * Assign each released connection to a single queued request,
+    eliminating multi-assignment churn in the connection pool.
+  * Clean up garbage connections on cancellation in
+    `AsyncConnectionPool`.
+  * Read `_expire_at` only once in `has_expired()`.
+
+-------------------------------------------------------------------
 Wed Jul  1 11:37:02 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.5.0:
