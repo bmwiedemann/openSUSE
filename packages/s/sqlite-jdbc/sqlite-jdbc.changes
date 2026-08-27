@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Wed Aug 26 10:51:31 UTC 2026 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v3.53.4.0
+  * Features
+    ~ sqlite
+      + upgrade to sqlite 3.53.4 (3c55d7a)
+  * Fixes
+    ~ bound utf-8 reader to the terminating nul in
+      extension-functions (a6f4d4d)
+  * Build
+    ~ deps
+      + bump org.graalvm.buildtools:native-maven-plugin (c72dc32)
+      + bump org.graalvm.buildtools:native-maven-plugin (f5aaf0e)
+      + bump EndBug/add-and-commit from 10 to 11 (0a6a8f2)
+      + bump org.graalvm.buildtools:native-maven-plugin (843cd86)
+      + bump org.graalvm.buildtools:native-maven-plugin (16aa812)
+      + bump org.graalvm.sdk:nativeimage from 25.1.3 to 25.2.4
+        (47e20b2)
+    ~ deps-dev
+      + bump com.tngtech.archunit:archunit-junit5 (db432fd)
+      + bump org.apache.maven.plugins:maven-jar-plugin (7650e24)
+- Update to v3.53.2.1
+  * Fixes
+    ~ jdbc
+      + map DATETIME column type to Types.TIMESTAMP (19ac6bb),
+        closes #1436
+      + throw SQLException from createConnection on invalid URL
+        (fe636b7)
+      + escape resolved table name in getExportedKeys query
+        (b8eca2a)
+      + escape catalog and schema in foreign key metadata queries
+        (ff4b847)
+      + escape table type values in getTables metadata query
+        (33eaa19)
+      + escape table name in getColumns metadata query (a5149f8)
+    ~ pool
+      + reset connection before notifying listeners on close
+        (57f6cfa), closes #821
+    ~ unscoped
+      + fallback to isAlpineLinux when map_files contains no musl
+        entries (7537528), closes #1382
+  * Changes
+    ~ spotless apply (eec4fc5)
+  * Build
+    ~ deps
+      + bump org.graalvm.buildtools:native-maven-plugin (75f593a)
+      + bump org.graalvm.sdk:nativeimage from 25.0.3 to 25.1.3
+        (ac69b1e)
+      + bump org.graalvm.buildtools:native-maven-plugin (37988f4)
+      + bump org.graalvm.buildtools:native-maven-plugin (aae577a)
+      + bump actions/checkout from 6 to 7 (9761dfd)
+      + bump org.graalvm.buildtools:native-maven-plugin (e21a3b4)
+    ~ deps-dev
+      + bump org.apache.maven.plugins:maven-help-plugin (dcf3ea2)
+      + bump org.jreleaser:jreleaser-maven-plugin (02e2e53)
+      + bump org.sonatype.central:central-publishing-maven-plugin
+        (72b9a31)
+    ~ unscoped
+      + add missing configuration for msvc (25b5de5)
+      + central publishing wait only until validated (7018821)
+      + switch to a maintained fork of setup-msvc-dev (3ca5e70)
+      + fix older graalvm on windows (bb1382c)
+
+-------------------------------------------------------------------
 Fri Jun  5 07:45:43 UTC 2026 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v3.53.2.0
