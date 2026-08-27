@@ -31,4 +31,46 @@
     <comment></comment>
     <requestid>1326392</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d4eded2def833541c5db21a91a7f327c</srcmd5>
+    <version>1.0.4.14</version>
+    <time>1787849478</time>
+    <user>anag_factory</user>
+    <comment>Update jaero to 1.0.4.14
+
+DEPENDENCY / STAGING ORDER: this request needs the new qmqtt package,
+submitted separately as SR 1373859 (hardware:sdr/qmqtt -&gt;
+openSUSE:Factory). qmqtt must be accepted FIRST, or staged together with
+this request; jaero 1.0.4.14 cannot build without it. jaero builds
+against the qt5 flavour, so it needs qmqtt-qt5-devel from that package.
+
+Upstream 1.0.4.14 adds an MQTT client (subscribe to and publish decoded
+ACARS messages over a broker, with TLS and authentication), reworks input
+handling into a dedicated feeder dialog, adds a JSONdump output format
+mimicking dumpvdl2/dumphfdl, and fixes a source/destination mix-up, the
+ZMQ checkbox having no effect and duplicate burst-data deliveries. It
+also moves from libacars 1 to libacars 2.
+
+ALSO FIXES A LIVE BREAKAGE: jaero currently fails to build on Leap 16.0
+(aarch64, ppc64le and x86_64) with &quot;cannot find -lqcustomplot&quot;, because
+jaero-fix-build-with-qcustomplot-qt5.patch was gated on
+suse_version &gt; 1600, which excludes 16.0 itself. That patch is now
+applied unconditionally, repairing those three architectures.
+
+Two patches are involved: jaero-fix-build-with-qcustomplot-qt5.patch
+(kept, refreshed, now unconditional) and jaero-use-system-qmqtt.patch
+(new, links the system qmqtt shared library instead of the in-tree qmake
+module upstream expects to build itself).
+
+Packaging cleanup: the bundled JFFT source is pinned to the commit
+upstream builds against rather than a floating master branch archive
+(contents unchanged), the package now ships its own jaero.desktop instead
+of using the deprecated %suse_update_desktop_file macro, the Group tag is
+gone, the tarball is named .tar.gz to match what GitHub serves, and
+%make_jobs is replaced by %make_build.
+
+Built and verified natively on aarch64 (openSUSE_Tumbleweed): rpmlint
+clean, 0 errors, 0 badness.</comment>
+    <requestid>1373860</requestid>
+  </revision>
 </revisionlist>

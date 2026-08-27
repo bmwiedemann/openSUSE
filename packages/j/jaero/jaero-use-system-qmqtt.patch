@@ -1,0 +1,22 @@
+diff --git a/JAERO/JAERO.pro b/JAERO/JAERO.pro
+index 57e0af2..d390c10 100644
+--- a/JAERO/JAERO.pro
++++ b/JAERO/JAERO.pro
+@@ -13,7 +13,7 @@
+ 
+ DEFINES += JAERO_VERSION=\\\"v1.0.4.14\\\"
+ 
+-QT       += multimedia core network gui svg sql qmqtt
++QT       += multimedia core network gui svg sql
+ 
+ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets  printsupport
+ 
+@@ -185,6 +185,8 @@ QMAKE_CXXFLAGS_RELEASE += -O3
+ #QMAKE_CXXFLAGS_RELEASE *= -O3
+ 
+ #for static building order seems to matter
++INCLUDEPATH += /usr/include/qmqtt-qt5
++LIBS += -lqmqtt-qt5
+ LIBS += -lcorrect -lvorbis -lvorbisenc -logg -lacars-2
+ 
+ #desktop

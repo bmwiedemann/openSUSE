@@ -1,8 +1,8 @@
 diff --git a/JAERO/JAERO.pro b/JAERO/JAERO.pro
-index 442ff17..2e0ac60 100644
+index 57e0af2..f54deb2 100644
 --- a/JAERO/JAERO.pro
 +++ b/JAERO/JAERO.pro
-@@ -135,7 +135,7 @@ win32 {
+@@ -154,7 +154,7 @@ win32 {
  LIBS += -lqcustomplot2 -llibzmq
  } else {
  #message("not windows")

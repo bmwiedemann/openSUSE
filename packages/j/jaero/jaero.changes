@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Wed Aug 26 16:54:28 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.0.4.14
+  * New MQTT client: JAERO can subscribe to and publish decoded
+    ACARS messages over an MQTT broker, with optional TLS,
+    authentication and a configurable client id and topic, plus
+    a status LED reporting the connection state.
+  * Inputs (feeders) are now created and edited in a dedicated
+    dialog, several outputs can be configured at once, and
+    editing a feeder no longer reports a false duplicate.
+  * New "JSONdump" output format mimicking dumpvdl2 and dumphfdl,
+    replacing the earlier "JSON4"; the redundant outer "jaero"
+    object is gone and an optional station id can be included.
+  * ADS messages can optionally be parsed with libacars only, and
+    the ARINC parser now also emits its decode as JSON.
+  * Fixed a source/destination mix-up, the ZMQ checkbox having no
+    effect, and duplicate burst-data deliveries.
+  * Audio output no longer writes single samples at a time, which
+    stops it overloading PulseAudio, and the beep sound is
+    released while unused.
+  * See upstream's release notes for the full list of changes.
+- Build against libacars 2 (pkgconfig(libacars-2)) and against
+  qmqtt-qt5-devel, both newly required by this release
+- Add patch:
+  * jaero-use-system-qmqtt.patch -- link against the Qt5 flavour
+    of the system qmqtt shared library instead of the in-tree
+    qmake module that upstream expects to build itself
+- Apply jaero-fix-build-with-qcustomplot-qt5.patch unconditionally
+  and refresh it for the new sources; it was gated on
+  suse_version > 1600, which left Leap 16.0 failing to link with
+  "cannot find -lqcustomplot"
+- Pin the bundled JFFT source to the commit that upstream builds
+  against instead of fetching a floating master branch archive;
+  the extracted contents are unchanged
+- Ship our own jaero.desktop instead of generating one with the
+  deprecated %suse_update_desktop_file macro
+- Specfile cleanup: drop the Group tag, name the downloaded
+  tarball .tar.gz to match what GitHub serves, and replace the
+  deprecated %make_jobs macro with %make_build
+
+-------------------------------------------------------------------
 Fri Jan  9 16:26:29 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Add patch:
