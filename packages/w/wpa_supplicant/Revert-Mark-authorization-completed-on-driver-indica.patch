@@ -1,23 +1,21 @@
-From c970f0f54fd33307e90e355f40d436dfa084c35e Mon Sep 17 00:00:00 2001
-From: Clemens Famulla-Conrad <cfamullaconrad@suse.de>
-Date: Fri, 20 Sep 2024 12:35:04 +0200
+From e7a33a757dc58ebcb1e59a4786e40c2aa7dd277c Mon Sep 17 00:00:00 2001
+From: Clemens Famulla-Conrad <cfamullaconrad@suse.com>
+Date: Mon, 17 Aug 2026 14:07:12 +0200
 Subject: [PATCH] Revert "Mark authorization completed on driver indication
  during 4-way HS offload"
 Reference: bsc#1230797
 
 This reverts commit 41638606054a09867fe3f9a2b5523aa4678cbfa5.
 ---
- wpa_supplicant/events.c | 25 ++++++++-----------------
+ wpa_supplicant/events.c |   25 ++++++++-----------------
  1 file changed, 8 insertions(+), 17 deletions(-)
 
-diff --git a/wpa_supplicant/events.c b/wpa_supplicant/events.c
-index 49917f7aa..bbb3a3eda 100644
 --- a/wpa_supplicant/events.c
 +++ b/wpa_supplicant/events.c
-@@ -4327,23 +4327,14 @@ static void wpa_supplicant_event_assoc(struct wpa_supplicant *wpa_s,
- 		eapol_sm_notify_eap_success(wpa_s->eapol, true);
- 	} else if ((wpa_s->drv_flags & WPA_DRIVER_FLAGS_4WAY_HANDSHAKE_PSK) &&
- 		   wpa_key_mgmt_wpa_psk(wpa_s->key_mgmt)) {
+@@ -4925,23 +4925,14 @@ static int wpa_supplicant_event_assoc(st
+ 		    wpa_key_mgmt_wpa_psk(wpa_s->key_mgmt)) ||
+ 		   ((wpa_s->drv_flags2 & WPA_DRIVER_FLAGS2_OWE_OFFLOAD_STA) &&
+ 		    wpa_s->key_mgmt == WPA_KEY_MGMT_OWE)) {
 -		if (already_authorized) {
 -			/*
 -			 * We are done; the driver will take care of RSN 4-way
@@ -46,6 +44,3 @@ index 49917f7aa..bbb3a3eda 100644
  	} else if ((wpa_s->drv_flags & WPA_DRIVER_FLAGS_4WAY_HANDSHAKE_8021X) &&
  		   wpa_key_mgmt_wpa_ieee8021x(wpa_s->key_mgmt)) {
  		/*
--- 
-2.43.0
-

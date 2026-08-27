@@ -4,7 +4,7 @@
 
 --- a/wpa_supplicant/wpa_supplicant.c
 +++ b/wpa_supplicant/wpa_supplicant.c
-@@ -123,6 +123,22 @@
+@@ -125,6 +125,22 @@ const char *const wpa_supplicant_full_li
  "\n";
  #endif /* CONFIG_NO_STDOUT_DEBUG */
  
@@ -27,7 +27,7 @@
  
  static void wpa_bss_tmp_disallow_timeout(void *eloop_ctx, void *timeout_ctx);
  static void wpas_verify_ssid_beacon(void *eloop_ctx, void *timeout_ctx);
-@@ -8189,6 +8205,8 @@
+@@ -8940,6 +8956,8 @@ int wpa_supplicant_run(struct wpa_global
  	eloop_register_signal_terminate(wpa_supplicant_terminate, global);
  	eloop_register_signal_reconfig(wpa_supplicant_reconfig, global);
  

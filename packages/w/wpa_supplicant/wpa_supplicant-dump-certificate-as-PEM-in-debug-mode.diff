@@ -11,7 +11,7 @@ Subject: [PATCH] dump certificate as PEM in debug mode
 
 --- a/src/crypto/tls_openssl.c
 +++ b/src/crypto/tls_openssl.c
-@@ -2515,6 +2515,19 @@
+@@ -2806,6 +2806,19 @@ static int tls_verify_cb(int preverify_o
  	debug_print_cert(err_cert, buf);
  	X509_NAME_oneline(X509_get_subject_name(err_cert), buf, sizeof(buf));
  
@@ -33,7 +33,7 @@ Subject: [PATCH] dump certificate as PEM in debug mode
  		return 0;
 --- a/src/utils/wpa_debug.c
 +++ b/src/utils/wpa_debug.c
-@@ -66,6 +66,11 @@
+@@ -66,6 +66,11 @@ static int wpa_to_android_level(int leve
  #endif /* CONFIG_DEBUG_FILE */
  
  
@@ -47,15 +47,15 @@ Subject: [PATCH] dump certificate as PEM in debug mode
  #ifndef CONFIG_ANDROID_LOG
 --- a/src/utils/wpa_debug.h
 +++ b/src/utils/wpa_debug.h
-@@ -25,6 +25,7 @@
+@@ -25,6 +25,7 @@ enum {
  
  #ifdef CONFIG_NO_STDOUT_DEBUG
  
 +#define wpa_debug_enabled(x) do { } while (0)
  #define wpa_debug_print_timestamp() do { } while (0)
  #define wpa_printf(args...) do { } while (0)
- #define wpa_hexdump(l,t,b,le) do { } while (0)
-@@ -52,6 +53,13 @@
+ #define wpa_debug_open_file(p) do { } while (0)
+@@ -82,6 +83,13 @@ void wpa_debug_setup_stdout(void);
  void wpa_debug_stop_log(void);
  
  /**

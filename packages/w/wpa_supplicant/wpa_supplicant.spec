@@ -17,7 +17,7 @@
 
 
 Name:           wpa_supplicant
-Version:        2.11
+Version:        2.12
 Release:        0
 Summary:        WPA supplicant implementation
 License:        BSD-3-Clause AND GPL-2.0-or-later
@@ -39,20 +39,8 @@ Patch2:         wpa_supplicant-sigusr1-changes-debuglevel.patch
 Patch3:         wpa_supplicant-alloc_size.patch
 Patch5:         wpa_supplicant-dump-certificate-as-PEM-in-debug-mode.diff
 Patch6:         Revert-Mark-authorization-completed-on-driver-indica.patch
-# PATCH-FIX-UPSTREAM CVE-2025-24912.patch, bsc#1239461, CVE-2025-24912
-Patch7:         CVE-2025-24912.patch
-# PATCH-FIX-UPSTREAM https://w1.fi/cgit/hostap/commit/?id=2ed9806275f9ae37545ca30d9bcce1e94fba1d97
-Patch8:         0001-wpa_gui-Port-to-Qt6.patch
-# PATCH-FIX-UPSTREAM bsc#1258365, https://git.w1.fi/cgit/hostap/commit/?id=9bb25b01fe843924113883a93236d43bb77d4cb1
-Patch9:         wpa_supplicant_support_pem_encoded_chain.patch
-# PATCH-FIX-UPSTREAM CVE-2026-58374, bsc#1269892 Missing multi-link parsing validation
-Patch10:        CVE-2026-58374.patch
-# PATCH-FIX-UPSTREAM https://w1.fi/security/2026-2/
-Patch11:        Require-network_ctx-and-AKMP-match-for-accepting-PMK.patch
-# PATCH-FIX-UPSTREAM https://w1.fi/security/2026-3/
-Patch12:        SAE-Fix-crash-due-to-NULL-pointer-dereference-in-H2E.patch
-# PATCH-FIX-UPSTREAM https://w1.fi/security/2026-4/
-Patch13:        mesh-Reject-AMPE-MIC-element-with-length-AES_BLOCK_S.patch
+# UPSTREAM-FIX fix https://w1.fi/security/2026-5
+Patch7:         RADIUS-Fix-Message-Authenticator-attribute-validatio.patch
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 BuildRequires:  systemd-rpm-macros
