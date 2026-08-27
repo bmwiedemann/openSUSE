@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-passenger
-Version:        6.1.7
+Version:        6.2.0
 Release:        0
 %define mod_name passenger
 %define mod_full_name %{mod_name}-%{version}
@@ -211,7 +211,7 @@ Summary:        Passenger apache module
 Group:          Development/Languages/Ruby
 Supplements:    packageand(apache2:rubygem-passenger)
 
-# Requires:      rubygem-passenger = 6.1.5
+# Requires:      rubygem-passenger = 6.2.0
 %description apache2
 
 A modern web server and application server for Ruby, Python and Node.js,
@@ -232,7 +232,7 @@ Summary:        Passenger Nginx module
 Group:          Development/Languages/Ruby
 Supplements:    packageand(nginx:rubygem-passenger)
 
-# Requires:      rubygem-passenger = 6.1.5
+# Requires:      rubygem-passenger = 6.2.0
 %description nginx
 
 A modern web server and application server for Ruby, Python and Node.js,

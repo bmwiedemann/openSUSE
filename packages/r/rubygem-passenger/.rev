@@ -235,4 +235,12 @@
 New upstream release 6.1.7, see bundled CHANGELOG</comment>
     <requestid>1365653</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>d081a2edcae7ec1a9e56156d9e409552</srcmd5>
+    <version>6.2.0</version>
+    <time>1787849674</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1373967</requestid>
+  </revision>
 </revisionlist>
