@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Aug 24 17:28:58 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream tag jdk-25.0.4.1+1 (August 2026 CSPU)
+  * Changes
+    + JDK-8382471, bsc#1275777, CVE-2026-60589: Improve Resource
+      Resolving
+    + JDK-8384708, bsc#1275778, CVE-2026-61308: Enhance HTTP
+      Connections
+    + JDK-8386205, bsc#1275764, CVE-2026-70907: Enhance TLS server
+    + JDK-8386298, bsc#1275763, CVE-2026-70906: Improve font loading
+    + JDK-8388788: Bump update version for OpenJDK: jdk-25.0.4.1
+    + JDK-8389945: [25u] Remove designator
+      DEFAULT_PROMOTED_VERSION_PRE=ea for release 25.0.4.1
+- Added patch:
+  * tzdata-2026c.patch
+    + backport upcoming upgrade of timezone data (bsc#1275035)
+
+-------------------------------------------------------------------
 Wed Jul 22 10:23:31 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream tag jdk-25.0.4+7 (July 2026 CPU)

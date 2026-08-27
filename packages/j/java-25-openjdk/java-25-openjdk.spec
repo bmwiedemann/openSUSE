@@ -38,7 +38,8 @@
 %global featurever      25
 %global interimver      0
 %global updatever       4
-%global buildver        7
+%global patchver        1
+%global buildver        1
 %global openjdk_repo    jdk25u
 %global openjdk_tag     jdk-%{featurever}%{?updatever:.%{interimver}.%{updatever}}%{?patchver:.%{patchver}}+%{buildver}
 %global openjdk_dir     %{openjdk_repo}-jdk-%{featurever}%{?updatever:.%{interimver}.%{updatever}}%{?patchver:.%{patchver}}-%{buildver}
@@ -196,6 +197,8 @@ Patch302:       disable-doclint-by-default.patch
 #
 Patch400:       nssadapter-Fix-build-on-openSUSE.patch
 Patch401:       nssadapter-Allow-overriding-of-gcc-name.patch
+#
+Patch500:       tzdata-2026c.patch
 #
 BuildRequires:  alsa-lib-devel
 BuildRequires:  autoconf
@@ -439,6 +442,8 @@ pushd %{nssadapter_name}
 %patch -P 400 -p1
 %patch -P 401 -p1
 popd # nssadapter
+
+%patch -P 500 -p1
 
 # Extract systemtap tapsets
 
