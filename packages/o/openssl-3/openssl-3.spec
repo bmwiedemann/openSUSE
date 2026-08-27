@@ -208,6 +208,28 @@ Patch89:        openssl-CVE-2026-7383.patch
 Patch90:        openssl-CVE-2026-34180.patch
 # PATCH-FIX-UPSTREAM: Grow the init_buf incrementally as we receive data (bsc#1271712)
 Patch91:        openssl-HollowByte.patch
+# PATCH-FIX-UPSTREAM: CVE-2026-14456: Unbounded Memory Growth in QUIC Server Incoming Channel Queue (bsc#1274791)
+Patch92:        openssl-CVE-2026-14456.patch
+# PATCH-FIX-UPSTREAM: CVE-2026-14457: RPK Server Signature Algorithm Selection Can Dereference a Missing Certificate (bsc#1274792)
+Patch93:        openssl-CVE-2026-14457.patch
+# PATCH-FIX-UPSTREAM: CVE-2026-18798: QUIC Server May Trigger Double Free When Processing INITIAL Packet (bsc#1274777)
+Patch94:        openssl-CVE-2026-18798.patch
+# PATCH-FIX-UPSTREAM: CVE-2026-34181: PKCS#12 Files with PBMAC1 Are Accepted with Short HMAC Keys (bsc#1266343)
+Patch95:        openssl-CVE-2026-34181.patch
+# PATCH-FIX-UPSTREAM: CVE-2026-54874: Excessive Memory Use Buffering DTLS Records for a Future Epoch (bsc#1274795)
+Patch96:        openssl-CVE-2026-54874.patch
+# PATCH-FIX-UPSTREAM: CVE-2026-63072: Heap Buffer Overflow in CMS Key Unwrapping (bsc#1274788)
+Patch97:        openssl-CVE-2026-63072.patch
+# PATCH-FIX-UPSTREAM: CVE-2026-63073: Untrusted Sender DN Used as Format String in CMP Response Validation (bsc#1274796)
+Patch98:        openssl-CVE-2026-63073.patch
+# PATCH-FIX-UPSTREAM: CVE-2026-63074: CMP Indefinite Cache Growth of ExtraCerts (bsc#1274797)
+Patch99:        openssl-CVE-2026-63074.patch
+# PATCH-FIX-UPSTREAM: CVE-2026-63075: QUIC ACK-only Packet Retention Can Cause Memory Exhaustion (bsc#1274798)
+Patch100:       openssl-CVE-2026-63075.patch
+# PATCH-FIX-UPSTREAM: CVE-2026-63076: Invalid Pointer Dereference in CMP Server via Crafted protectionAlg (bsc#1274790)
+Patch101:       openssl-CVE-2026-63076.patch
+# PATCH-FIX-UPSTREAM: CVE-2026-75803: AEAD Forgeries with Empty Ciphertext When Using EVP_Cipher() (bsc#1275837)
+Patch102:       openssl-CVE-2026-75803.patch
 
 # ulp-macros is available according to SUSE version.
 %if 0%{?sle_version} >= 150400 || 0%{?suse_version} >= 1540
