@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 25 16:07:26 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 1550+20260825.76d85e6:
+  * profiles: add lact profile-hook action (bsc#1274863)
+
+-------------------------------------------------------------------
 Mon Aug 03 15:03:07 UTC 2026 - Mislav Bozicevic <mislav.bozicevic@suse.com>
 
 - Update to version 1550+20260803.90784eb:

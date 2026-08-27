@@ -2544,4 +2544,14 @@ for 12.3</comment>
     <comment></comment>
     <requestid>1369296</requestid>
   </revision>
+  <revision rev="273" vrev="1">
+    <srcmd5>baacdb6080cbdf7283bb88feeedc5730</srcmd5>
+    <version>1550+20260825.76d85e6</version>
+    <time>1787849404</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1550+20260825.76d85e6:
+  * profiles: add lact profile-hook action (bsc#1274863)
+</comment>
+    <requestid>1373662</requestid>
+  </revision>
 </revisionlist>
