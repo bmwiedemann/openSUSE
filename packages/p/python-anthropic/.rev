@@ -137,4 +137,23 @@
   * Ship MIGRATION.md as documentation</comment>
     <requestid>1372692</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>aa4550d1c5f0768226225796a5412e4b</srcmd5>
+    <version>1.1.0</version>
+    <time>1787849563</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.1.0:
+  * Add the beta Organization API resources: organization users,
+    invites, API keys, external keys, rate limits, service
+    accounts, workspaces and federation
+  * Add the &quot;updates&quot; thinking display mode to the beta adaptive
+    thinking configuration
+  * Add the anthropic-beta header values that were missing:
+    compact, computer-use, mcp-tunnels, structured-outputs,
+    task-budgets, thinking-display-updates and ce-user-management
+  * Keep the beta tool runner going when a response stops with
+    pause_turn or compaction instead of ending the turn
+  * Fix the documentation link for the long-requests error</comment>
+    <requestid>1373913</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Aug 27 05:47:11 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.1.0:
+  * Add the beta Organization API resources: organization users,
+    invites, API keys, external keys, rate limits, service
+    accounts, workspaces and federation
+  * Add the "updates" thinking display mode to the beta adaptive
+    thinking configuration
+  * Add the anthropic-beta header values that were missing:
+    compact, computer-use, mcp-tunnels, structured-outputs,
+    task-budgets, thinking-display-updates and ce-user-management
+  * Keep the beta tool runner going when a response stops with
+    pause_turn or compaction instead of ending the turn
+  * Fix the documentation link for the long-requests error
+
+-------------------------------------------------------------------
 Fri Aug 21 05:38:01 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.0.0:
