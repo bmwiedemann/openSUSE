@@ -775,4 +775,41 @@ python-logilab-common is in openSUSE:Factory so this builds now.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1352301</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>dffaf98fee052e66240f2f99f11b137a</srcmd5>
+    <version>4.3.1</version>
+    <time>1787849415</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.3.1:
+  * Fix inference of the attributes of a namedtuple created with rename=True.
+  * Fix inference of a method's first argument (self or cls) when the
+    method's return value is stored on an unrelated object.
+  * super() with no argument now resolves against the class of the object the
+    method was called on, instead of the class the method is written in.
+  * typing.overload stubs no longer shadow the implementation when a special
+    method is looked up in the MRO.
+  * Fix a crash when the field names of a functional Enum or namedtuple call
+    are bytes, as in Enum(&quot;&quot;, b&quot;&quot;).
+  * Fix a crash when the body of a typing.NamedTuple subclass contains an
+    assignment whose target is not a single name, such as
+    cat.color = &quot;black&quot;, basket[0] = &quot;apple&quot; or
+    apple, banana = &quot;red&quot;, &quot;yellow&quot;.
+  * Fix a crash when a binary operation involves a class whose metaclass is
+    not a class, as in class C(metaclass=sum) followed by C | None. The type
+    of such a class is a function, which has no bases.
+  * Fix a crash when a dataclass inherits from a dataclass that annotates
+    __init__ as a field, as in __init__: int.
+  * Prevent crashes while processing extension-module classes whose bases
+    cannot be resolved when applying enum inference transformations.
+  * Add __required_keys__ and __optional_keys__ to the inferred TypedDict
+    base class, so subclasses no longer raise a no-member false positive in
+    pylint when accessing those attributes at runtime.
+  * Comprehension conditions now constrain the inference of names used in the
+    comprehension, like if statement conditions already did: [x for x in lst
+    if x is not None] no longer infers None for x in the element expression.
+  * Fix isinstance() constraints only filtering the first inferred value of a
+    variable: checking a value made the isinstance classinfo uninferable for
+    the checks of the following values.</comment>
+    <requestid>1373746</requestid>
+  </revision>
 </revisionlist>

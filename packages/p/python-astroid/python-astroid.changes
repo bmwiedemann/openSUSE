@@ -1,4 +1,98 @@
 -------------------------------------------------------------------
+Wed Aug 26 06:09:58 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.3.1:
+  * Fix inference of the attributes of a namedtuple created with rename=True.
+  * Fix inference of a method's first argument (self or cls) when the
+    method's return value is stored on an unrelated object.
+  * super() with no argument now resolves against the class of the object the
+    method was called on, instead of the class the method is written in.
+  * typing.overload stubs no longer shadow the implementation when a special
+    method is looked up in the MRO.
+  * Fix a crash when the field names of a functional Enum or namedtuple call
+    are bytes, as in Enum("", b"").
+  * Fix a crash when the body of a typing.NamedTuple subclass contains an
+    assignment whose target is not a single name, such as
+    cat.color = "black", basket[0] = "apple" or
+    apple, banana = "red", "yellow".
+  * Fix a crash when a binary operation involves a class whose metaclass is
+    not a class, as in class C(metaclass=sum) followed by C | None. The type
+    of such a class is a function, which has no bases.
+  * Fix a crash when a dataclass inherits from a dataclass that annotates
+    __init__ as a field, as in __init__: int.
+  * Prevent crashes while processing extension-module classes whose bases
+    cannot be resolved when applying enum inference transformations.
+  * Add __required_keys__ and __optional_keys__ to the inferred TypedDict
+    base class, so subclasses no longer raise a no-member false positive in
+    pylint when accessing those attributes at runtime.
+  * Comprehension conditions now constrain the inference of names used in the
+    comprehension, like if statement conditions already did: [x for x in lst
+    if x is not None] no longer infers None for x in the element expression.
+  * Fix isinstance() constraints only filtering the first inferred value of a
+    variable: checking a value made the isinstance classinfo uninferable for
+    the checks of the following values.
+  * Remove Python 2 era dead code and outdated comments.
+  * Fix inference of a starred target that is not last in a for loop, such as
+    for a, *b, c in .... The elements following the starred one were counted
+    from the target's own arity rather than from the end of the iterable, so
+    b was truncated whenever the iterable was longer than the target.
+  * Add qname() method to the Slice node class, returning "builtins.slice",
+    so that the node can be used in contexts that require a qualified name.
+  * Add brain tip for numpy.fromfile so that calls to np.fromfile(...) are
+    correctly inferred as returning numpy.ndarray instead of Uninferable.
+  * Add brain for decimal that gets applied if _decimal isn't available.
+  * Removed the **kwargs argument from all infer functions.
+  * Deduplicate keys when inferring dict.fromkeys. dict.fromkeys("aab") now
+    infers a dict with keys "a", "b" instead of "a", "a", "b", matching the
+    runtime.
+  * Bound str/bytes and list/tuple concatenation (a + b) during inference.
+  * Bound oversized old-style (%) string/bytes formatting during inference.
+  * A tiny literal such as "%1000000000d" % 1 made
+    _infer_old_style_string_formatting eagerly build a multi-gigabyte Const
+    while inferring otherwise untrusted source.
+  * Fix crash (TypeError: 'UninferableBase' object is not iterable) in the
+    multiprocessing brain when a local package shadows the stdlib
+    multiprocessing module.
+  * Bound the number of nodes built when inferring list/set/tuple/frozenset
+    and dict.fromkeys from a str/bytes constant. These built one Const node
+    per character with no cap, so ``list(("a" * 10 ** 8)
+  * Bound string/bytes multiplication ("x" * n) and integer left shifts
+    (1 << n) in const_infer_binary_op the same way list/tuple multiplication
+    and ** already are.
+  * Remove the asname keyword argument from Import._infer and
+    ImportFrom._infer.
+  * Fix uncaught IndentationError when parsing code whose lines end in \r.
+  * Support PEP 810 lazy imports (new in Python 3.15).
+  * Support PEP 798 comprehension unpacking ({**d for d in dicts}, new in
+    Python 3.15).
+  * Shorten import astroid by deferring imports only needed on cold paths.
+  * Fix AttributeError crash in starred_assigned_stmts when a starred
+    unpacking target is an attribute (e.g. for *o.attr, x in ...) rather than
+    a simple name.
+  * Wrap assignment expressions (:=) in parentheses when emitting as_string
+    output so the rendered code remains syntactically valid in contexts such
+    as comparisons, where Python requires the walrus expression to be
+    parenthesized.
+  * Catch MemoryError/RecursionError (and ValueError) when validating type
+    comments with ast.parse.
+  * Fix RecursionError in _compute_mro() when circular class hierarchies are
+    created through runtime name rebinding.
+  * Fix DuplicateBasesError crash in the enum brain when inferring an enum
+    class with duplicate bases (e.g. class C(enum.Enum, enum.Enum)).
+  * Fix InferenceError crash in ClassDef.slots() when __slots__ is declared
+    as an annotation without a value (e.g. __slots__: None).
+  * Fix TypeError crash in the enum brain when a functional Enum call has a
+    non-string member name.
+  * Fix detecting static/class methods and inspecting IntFlag types in
+    GObject-based libraries.
+  * Only inject the _HAS_DEFAULT_FACTORY sentinel into a module's locals when
+    the generated dataclass __init__ actually references it.
+  * Add qname() and pytype() to the TypeVar, ParamSpec, TypeVarTuple and
+    TypeAlias node classes.
+  * Infer the value of a data descriptor of a C-implemented class as unknown
+    instead of as a class named after the attribute.
+
+-------------------------------------------------------------------
 Sun May  3 17:24:47 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.2.0:
