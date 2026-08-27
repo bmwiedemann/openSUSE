@@ -1,0 +1,28 @@
+From cf3aacfe162e6a7a6961a688940b88e3510f3208 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Cl=C3=A9ment=20Robert?= <cr52@protonmail.com>
+Date: Thu, 23 Apr 2026 22:49:46 +0200
+Subject: [PATCH] BUG: avoid a deprecation warning from numpy 2.5 (calling
+ `datetime64('NaT')` without a unit is deprecated) (#31554)
+
+* BUG: avoid a deprecation warning from numpy 2.5 (calling `datetime64('NaT')` without a unit is deprecated)
+
+Co-authored-by: Tim Hoffmann <2836374+timhoffm@users.noreply.github.com>
+---
+ lib/matplotlib/dates.py | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/lib/matplotlib/dates.py b/lib/matplotlib/dates.py
+index f5f0918dcc13..77c803cde6e5 100644
+--- a/lib/matplotlib/dates.py
++++ b/lib/matplotlib/dates.py
+@@ -325,9 +325,7 @@ def _dt64_to_ordinalf(d):
+     dt += extra.astype(np.float64) / 1.0e9
+     dt = dt / SEC_PER_DAY
+ 
+-    NaT_int = np.datetime64('NaT').astype(np.int64)
+-    d_int = d.astype(np.int64)
+-    dt[d_int == NaT_int] = np.nan
++    dt[np.isnat(d)] = np.nan
+     return dt
+ 
+ 

@@ -1164,4 +1164,12 @@ http://forums.opensuse.org/showthread.php/416182-Python-matplolib (forwarded req
 - drop correct-reset-mock.patch (upstream)</comment>
     <requestid>1349528</requestid>
   </revision>
+  <revision rev="132" vrev="2">
+    <srcmd5>316cc601c2d9a84f38b1466c13d1bba3</srcmd5>
+    <version>3.10.9</version>
+    <time>1787849396</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1373607</requestid>
+  </revision>
 </revisionlist>

@@ -59,6 +59,8 @@ Source100:      python-matplotlib.rpmlintrc
 Patch1:         matplotlib-meson-options-opensuse.patch
 # PATCH-FIX-UPSTREAM https://github.com/matplotlib/matplotlib/pull/30918 TST: account for asyncio changes in py314
 Patch2:         py314.patch
+# PATCH-FIX-UPSTREAM https://github.com/matplotlib/matplotlib/pull/31554 BUG: avoid a deprecation warning from numpy 2.5 (calling datetime64('NaT') without a unit is deprecated)
+Patch3:         np25.patch
 Recommends:     ghostscript
 Recommends:     libxml2-tools
 Recommends:     poppler-tools
