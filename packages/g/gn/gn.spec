@@ -17,7 +17,7 @@
 
 
 Name:           gn
-Version:        0.20260605
+Version:        0.20260730
 Release:        0
 Summary:        A meta-build system that generates build files for Ninja
 License:        BSD-3-Clause
@@ -27,8 +27,12 @@ Patch0:         redundant-move.patch
 Patch1:         subprocess-python36.patch
 Patch2:         gn-multiline-comment.patch
 BuildRequires:  ninja
-BuildRequires:  python3-base
 ExcludeArch:    ppc
+%if %{?suse_version} < 1600
+BuildRequires:  python311-base
+%else
+BuildRequires:  python3-base
+%endif
 %if %{?suse_version} < 1550
 BuildRequires:  gcc13-c++
 %else
@@ -61,7 +65,12 @@ export CXX=g++
 export AR=ar
 export CXXFLAGS="${ARCH_FLAGS}"
 # bootstrap
-python3 build/gen.py \
+%if %{?suse_version} < 1600
+PYTHON=python3.11
+%else
+PYTHON=python3
+%endif
+$PYTHON build/gen.py \
   --no-strip \
   --no-last-commit-position \
   --no-static-libstdc++

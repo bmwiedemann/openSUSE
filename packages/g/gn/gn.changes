@@ -1,4 +1,101 @@
 -------------------------------------------------------------------
+Sat Aug 01 10:14:23 UTC 2026 - Ruediger Oertel <ro@suse.com>
+
+- Update to version 0.20260730:
+  * Allow too many arguments lint.
+  * Fix starlark linker errors for clean builds
+  * Fix occasional crashes when running cargo ffi tests in parallel.
+  * Remove several unsafes from the FFI bridge code.
+  * Support converting starlark::Error to gn's Err type.
+  * Support source-relative paths for script_executable
+  * Fix UB in ffi scope function.
+  * Clarify "it" in error messages.
+  * Support builtin provider types.
+  * Add --starlark to build/gen.py.
+  * Add label and toolchain method to TargetRef trait.
+  * Run tools/run_formatter.sh
+  * Implement check_includes_strict parameter
+  * Add option to supply multiple comma-separated types in --type
+  * Add support for remaining target types in gn --type
+  * Create starlark rule crate
+  * Simplify provider types to require freezing at the compiler level.
+  * Make EvalContext have interior mutability.
+  * Rework API to create targets.
+  * Fix lint errors
+  * Add support for creating ctx.attr/files/file
+  * Allow testonly validations on non-testonly targets
+  * Fix and improve metadata collection help documentation
+  * Add detailed failure messages to command_format_unittest
+  * Fix failing lint errors
+  * Run formatter.
+  * Create starlark providers crate
+  * Create starlark args crate
+  * Refactor depset and testutils to do a few things:
+  * Implement GnValue FFI and starlark/rust conversions
+  * Enable build and usage on Sparc64
+  * Replace OutputFile with StringAtom under the hood
+  * Remove all mutations of OutputFile objects.
+  * Create starlark depset crate
+  * Create starlark loader crate
+  * Support converting attr to starlark values
+  * Refactor filesystem utils to clean up the code and avoid OutputFile mutation
+  * Keep cxx.h up to date
+  * Fix command_format_unittest.cc out-of-tree builds.
+  * Fix update_reference.sh to work with a custom output directory.
+  * Update CI recipe to build using out/Default output directory.
+  * Fix integration tests to work with a custom build/gen.py --out-path
+  * Fix issues where cargo wouldn't rerun after static libraries were updated.
+  * Implement clang-format-ignore instead of manually using grep.
+  * Fix missing public_inputs in the action's own inputs dependency
+  * Add public_inputs variable to action targets and propagate dependencies
+  * Switch FFI method to cxxbridge, and add tests to ffi crate.
+  * Create starlark testutils crate
+  * Create starlark attr crate
+  * Make PackageRef validate package names.
+  * Add cole to owners, as the rust expert who will likely be giving the +2
+  * Add linting tools to GN and fix lint errors.
+  * [rust-project] Support space-separated --cfg arguments
+  * Implement ffi for OutputFile type.
+  * Implement ffi for settings type.
+  * Refactor label conversion to handle source dirs that aren't labels as well.
+  * Fix jj formatter.
+  * Add formatter configuration for jj.
+  * Create rust formatter configuration and apply it.
+  * Reland "Propagate public_deps outputs via dependency_output for non-binary targets"
+  * Fix a compile error in label.rs
+  * Add linting instructions to AGENTS.md
+  * Create a simple FFI crate
+  * Create starlark types crate.
+  * Revert "Propagate public_deps outputs via dependency_output for non-binary targets"
+  * Propagate public_deps outputs via dependency_output for non-binary targets
+  * Create an `intern_string` function accessible to rust
+  * Parallelize per-target JSON rendering in --ide=json
+  * Share ResolvedTargetData across targets in --ide=json
+  * Make Ninja output deterministic across GN binary builds
+  * Vendor only cxx.h
+  * Add an agents.md providing instructions on writing code.
+  * Create an empty cargo project for starlark suppoprt.
+  * Change resolution algorithm to reduce edge walks
+  * Use BuilderRecord::waiting_map_
+  * ninja_rust_binary_target_writer: link C++-reachable transitive rlibs
+  * Add integration test support to GN.
+  * Prevent CI breakages by running integration tests.
+  * Fix the failing windows builder by adding a .exe suffix
+  * Rerun `python3 infra/recipes.py test train`
+  * Specifically only compile code in the build step.
+  * Update GN to require a minimum of python 3.9
+  * Revert "Run builds and tests quietly in CI"
+  * Make toolchain.ninja deterministic order.
+  * Run builds and tests quietly in CI
+  * Improve pointer stability of OutputFile objects.
+  * Add --quiet to gn_unittests
+  * Run formatter
+  * Prefer implicit std::string type conversion in rust_project_writer.cc for string literals
+  * Support `--target=<value>` in addition to `--target <value>`
+  * Formatting only changes
+- use python3.11 to build on 15.x
+
+-------------------------------------------------------------------
 Mon Jun 08 18:34:56 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 0.20260605:

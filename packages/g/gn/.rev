@@ -279,4 +279,12 @@
     <comment>gn 0.20260605</comment>
     <requestid>1359076</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>d487c2c7b91679afa3cb1ac80061dd3b</srcmd5>
+    <version>0.20260730</version>
+    <time>1787849465</time>
+    <user>anag_factory</user>
+    <comment>dependency for chromium 152</comment>
+    <requestid>1373705</requestid>
+  </revision>
 </revisionlist>
