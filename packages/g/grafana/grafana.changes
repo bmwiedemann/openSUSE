@@ -17,12 +17,24 @@ Thu Jun 18 14:10:51 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Update to version 12.4.4:
   * Security and quality updates:
+    CVE-2026-39882: Prevent memory exhaustion DoS in OpenTelemetry
+                    OTLP HTTP exporters by updating to v1.43.0.
+                    (bsc#1274217)
     CVE-2026-33382: Limit the size of the request body before
                     processing it at several Grafana API endpoints
                     (bsc#1271331)
     CVE-2026-8595: Fix stored XSS in the table panel (bsc#1271557)
     CVE-2026-42127: Fix DoS through memory exhaustion in grafana'a
                     public dashboard query endpoint (bsc#1268868)
+    CVE-2026-9029: Fix arbitrary code execution and information
+                   disclosure via XSS in geomap panel (bsc#1272328)
+    CVE-2026-41607: Fix out-of-bounds read and potential
+                    information disclosure in Apache Thrift
+                    (bsc#1263289)
+    CVE-2026-33814: Fix infinite loop in HTTP/2 transport by
+                    updating golang.org/x/net (bsc#1265763)
+    CVE-2026-8609: Fix pre-authentication DoS in the OAuth login
+                   route (bsc#1271330)
   * Various bug fixes and enhancements.
 
 - Update to version 12.4.3:
@@ -36,6 +48,9 @@ Thu Jun 18 14:10:51 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
 - Update to version 12.4.2:
   * Various bug fixes and performance improvements.
   * Dependency updates to core plugins and UI libraries.
+  * CVE-2026-1229: Update github.com/cloudflare/circl to fix
+                   producing incorect output for specific inputs
+                   (bsc#1265525)
 
 - Update to version 12.4.1:
   * Bug fixes and minor quality-of-life enhancements.
@@ -51,7 +66,9 @@ Thu Jun 18 14:10:51 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
     configurable bar thickness, and endpoint markers.
   * Added support to map one variable to multiple values.
   * CVE-2025-12141: Fixed information leakage in Grafana Alerting
-    (bsc#1262187)
+                    (bsc#1262187)
+  * CVE-2026-21723: Fix DoS vulnerability in Templates Test
+                    endpoint (bsc#1272427)
 
 - Update to version 12.3.0:
   * Released a completely redesigned logs visualization.
