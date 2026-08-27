@@ -18,7 +18,7 @@
 
 Name:           libosmo-sigtran
 %define lname   libosmo-sigtran12
-Version:        2.2.1
+Version:        2.3.0
 Release:        0
 Summary:        Osmocom library for the A-bis interface between BTS and BSC
 License:        AGPL-3.0-or-later AND GPL-2.0-or-later
@@ -34,11 +34,11 @@ BuildRequires:  libtool >= 2
 BuildRequires:  lksctp-tools-devel
 BuildRequires:  pkg-config >= 0.20
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  pkgconfig(libosmo-netif) >= 1.6.0
-BuildRequires:  pkgconfig(libosmocore) >= 1.11.0
-BuildRequires:  pkgconfig(libosmogsm) >= 1.11.0
-BuildRequires:  pkgconfig(libosmovty) >= 1.11.0
-BuildRequires:  pkgconfig(libosmo-asn1-tcap) >= 0.2.1
+BuildRequires:  pkgconfig(libosmo-asn1-tcap) >= 0.3.0
+BuildRequires:  pkgconfig(libosmo-netif) >= 1.7.0
+BuildRequires:  pkgconfig(libosmocore) >= 1.12.0
+BuildRequires:  pkgconfig(libosmogsm) >= 1.12.0
+BuildRequires:  pkgconfig(libosmovty) >= 1.12.0
 
 %description
 libosmo-sigtran is a C-language library implementation of a variety

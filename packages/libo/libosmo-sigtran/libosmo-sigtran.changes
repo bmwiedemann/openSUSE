@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Aug 26 19:15:45 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.3.0
+  * tcap: Forbid tcap-routing in ASP mode
+  * xua: Implement User Part Unavailable HMDT -> HMRT
+  * vty: Allow configuring xua timers and servers in ASP mode
+  * IPSP: Allow vty-configuration of IPSP role "ASPs"
+  * m3ua: Allow rx SCON in IPSP role
+  * xua_default_fsm: Support IPSP role
+  * sua: Support rx SCON in role=ASP/SG/IPSP
+  * Use new libosmo-asn1-tcap API osmo_asn1_tcap_TCMessage_decode()
+  * Implement ITU Q.704 T10 timer
+  * Support administrative block in role ASP
+  * Add DSCP configuration support for server transport role
+    and for each individual ASP
+
+-------------------------------------------------------------------
 Sat Mar 14 10:55:24 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Switch from Github autocreated tarball to official tarball

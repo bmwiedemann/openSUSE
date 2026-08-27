@@ -31,4 +31,12 @@
     <comment>- Switch from Github autocreated tarball to official tarball</comment>
     <requestid>1339032</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>dc1115857efb41eff463e1d0fa400ca1</srcmd5>
+    <version>2.3.0</version>
+    <time>1787849518</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 2.3.0</comment>
+    <requestid>1373887</requestid>
+  </revision>
 </revisionlist>
