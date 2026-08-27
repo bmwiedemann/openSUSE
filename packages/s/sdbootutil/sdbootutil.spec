@@ -18,7 +18,7 @@
 
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 Name:           sdbootutil
-Version:        1+git20260813.357956d
+Version:        1+git20260825.c7a5a97
 Release:        0
 Summary:        Bootctl wrapper for BLS boot loaders
 License:        MIT

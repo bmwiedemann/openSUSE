@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Aug 25 14:42:40 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20260825.c7a5a97:
+  * Refactor free space calculation
+  * Do not use /proc/cmdline in half configured systems
+  * Warning when the recovery PIN is not validated
+  * Show default and booted snapshots with marks
+  * Improve detection of snapshot systems
+  * Fix when searching for a boot entry
+  * Fix boot order and boot order entry
+  * Create the entries directory in the ESP
+  * Fix get_final_pcr parser
+  * Keep btrfs error and show it when fails
+  * Fix set -e early exit instances
+  * Fix measure-pcr-validator when there is no terminal
+  * Don't include measure-pcr-validator in initrd if TPM2 is not used
+  * Update predictions even if crypttab did not change
+  * Improve PCR 15 signing
+  * Detect NAME=VALUE passed as parameters and complain
+  * When asking a password, require a terminal
+  * Filter some warnings from pcrlock
+  * Detect directories that are not part of the snapshot
+  * Write bash completion errors to /dev/null
+  * Detect when t-u apply is done and avoid data corruption
+  * Detect pcr-oracle leftovers
+  * Show in title that it's the initial version for transactional systems
+  * Manually generate PCR7 measurements
+  * Regenerate pcrlock.json when it is missing
+
+-------------------------------------------------------------------
 Thu Aug 13 08:48:44 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to version 1+git20260813.357956d:

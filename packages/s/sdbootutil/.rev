@@ -904,4 +904,17 @@
     <comment></comment>
     <requestid>1370978</requestid>
   </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>27ca94b7ddb3898188fa93ce3d563009</srcmd5>
+    <version>1+git20260825.c7a5a97</version>
+    <time>1787849385</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1+git20260825.c7a5a97:
+  * Refactor free space calculation
+  * Do not use /proc/cmdline in half configured systems
+  * Warning when the recovery PIN is not validated
+  * Show default and booted snapshots with marks
+  * Improve detection of snapshot systems (forwarded request 1373635 from aplanas)</comment>
+    <requestid>1373636</requestid>
+  </revision>
 </revisionlist>
