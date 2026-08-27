@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Aug 26 09:25:18 UTC 2026 - Petr Gajdos <pgajdos@suse.com> + gemini
+
+- added patches
+  fix build with doxygen 1.18.0
+  * python-sphinxygen-doxygen-1.18.patch
+
+-------------------------------------------------------------------
+Tue Aug 25 13:52:16 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- version update to 1.0.12
+  * Fix documentation for C++ namespaces
+  * Fix documentation for C++ template functions
+  * Improve formatting of macro initializers
+
+-------------------------------------------------------------------
 Sat Jan 18 23:57:42 UTC 2025 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Add update-alternatives to Requires

@@ -1,0 +1,13 @@
+--- a/src/sphinxygen/sphinxygen.py
++++ b/src/sphinxygen/sphinxygen.py
+@@ -709,6 +709,9 @@
+         args_text = member.find("argsstring").text
+         target_text = plain_text(member.find("type"))
+         if args_text is not None:  # Function pointer
++            if len(args_text) > 0 and target_text[-1] == ")" and args_text[0] == "(":
++                target_text = target_text[:-1]
++                args_text = ")" + args_text
+             assert target_text[-2:] == "(*" and args_text[0] == ")"
+             record["type"] = target_text + args_text
+             record["definition"] = target_text + name + args_text
+

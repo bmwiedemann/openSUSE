@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinxygen
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,19 @@
 
 
 Name:           python-sphinxygen
-Version:        1.0.10
+Version:        1.0.12
 Release:        0
 Summary:        A script to generate Sphinx ReST from Doxygen XML
 License:        ISC
 URL:            https://gitlab.com/drobilla/sphinxygen
 Source:         https://files.pythonhosted.org/packages/source/s/sphinxygen/sphinxygen-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
+# fix build with doxygen 1.18.0 (emailed David, d@drobilla.net, the upstream author of this module and both serd and lilv)
+Patch0:          python-sphinxygen-doxygen-1.18.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 61.2}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
 Suggests:       python-html5lib
 BuildArch:      noarch
@@ -48,7 +50,7 @@ Sphinxygen is a Python module/script that generates Sphinx markup to describe a 
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
- 
+
 %post
 %python_install_alternative sphinxygen
 
