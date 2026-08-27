@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug 20 11:24:44 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.0.6
+  * This release adds support for -help, --help, -version, and
+    --version options.
+  * add support for meson build
+- switch to meson
+
+-------------------------------------------------------------------
 Mon Mar 25 02:07:17 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.0.5

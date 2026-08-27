@@ -1,7 +1,7 @@
 #
 # spec file for package lndir
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 Name:           lndir
-Version:        1.0.5
+Version:        1.0.6
 Release:        0
 Summary:        Utility to create a shadow directory of symbolic links to another directory tree
 License:        MIT
 Group:          Development/Tools/Building
 URL:            https://xorg.freedesktop.org/
 Source0:        https://xorg.freedesktop.org/releases/individual/util/%{name}-%{version}.tar.xz
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(xorg-macros) >= 1.8
 BuildRequires:  pkgconfig(xproto) >= 7.0.17
@@ -39,11 +40,11 @@ links pointing at the real files in the original directory tree.
 %setup -q
 
 %build
-%configure
-%make_build
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
 
 %files
 %license COPYING
