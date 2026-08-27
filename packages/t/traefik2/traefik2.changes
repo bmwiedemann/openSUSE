@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu Aug 27 10:56:00 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Version 2.11.56
+
+  CVEs fixed
+  * Advisory GHSA-7ghq-v6jf-g56c
+  * Advisory GHSA-rf44-j88r-hh8c
+
+  Bugs fixed
+  * Bump etcd client modules to v3.5.33
+  * http3
+    - Apply read timeout, idle timeout, and max header bytes for HTTP/3
+  * server
+    - Add an entry point option to handle request headers with aliasing names
+  * tcp, udp
+    - Reject negative weights in TCP and UDP weighted services
+
+- Version 2.11.55
+  CVEs fixed
+  * Advisory GHSA-5w68-77r2-r64c
+  * Advisory GHSA-g55h-rg46-x9c5
+
+  Bugs fixed
+  * Bump golang.org/x dependencies
+  * k8s/crd
+    - Add an option to restrict the namespace of the default TLS resources
+    - Add safe naming option to avoid collisions for Kubernetes CRD provider
+    - Prevent generated name collisions in the Kubernetes CRD provider
+    - Scope generated Kubernetes Service names to their parent in the
+      CRD provider
+  * k8s/gatewayapi
+    - Fix Gateway API router rules
+  * middleware, authentication
+    - Bump github.com/containous/go-http-auth to b975dcaa8c48
+  * tls
+    - Add an option to disable the fallback to the default TLS options
+
+-------------------------------------------------------------------
 Wed Aug  5 08:28:26 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Version 2.11.54
