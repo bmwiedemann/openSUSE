@@ -1,7 +1,7 @@
 #
 # spec file for package borgbackup
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2016-2025 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -53,7 +53,7 @@
 %endif
 
 Name:           borgbackup
-Version:        1.4.1
+Version:        1.4.5
 Release:        0
 Summary:        Deduplicating backup program with compression and authenticated encryption
 License:        BSD-3-Clause
@@ -66,14 +66,6 @@ Source2:        %{name}.keyring
 # python3-guzzle_sphinx_theme isn't available everywhere,
 # fall back to Sphinx default theme for older distributions
 Patch0:         borgbackup-1.1.4-sphinx-default-theme.patch
-# PATCH-FIX-OPENSUSE msgpack-allow-1.1.2.patch -- let's hope, 1.1.2 will work as well
-Patch1:         msgpack-allow-1.1.2.patch
-# PATCH-FIX-UPSTREAM 0001-set_flags-use-get-set-to-only-influence-specific-fla.patch #9039
-Patch2:         0001-set_flags-use-get-set-to-only-influence-specific-fla.patch
-# PATCH-FIX-UPSTREAM 0002-set_flags-better-give-up-than-corrupt.patch #9039
-Patch3:         0002-set_flags-better-give-up-than-corrupt.patch
-# PATCH-FIX-UPSTREAM 0003-set_flags-remove-compression-flag.patch #9039
-Patch4:         0003-set_flags-remove-compression-flag.patch
 # SECTION build dependencies
 BuildRequires:  bash
 BuildRequires:  %{py3pkg}-Cython >= 3.0.10
@@ -104,9 +96,9 @@ BuildRequires:  libzstd-devel >= 1.3.0
 # msgpack is not included with borg version >= 1.2.0 anymore
 # The metadata is very specific about the version, the command will fail if msgpack is out of range -- boo#1198267
 # See https://github.com/borgbackup/borg/blob/1.2.1/setup.py#L68 and update this for every version bump!
-BuildRequires:  (%{py3pkg}-msgpack >= 1.0.3 with %{py3pkg}-msgpack <= 1.1.2)
+BuildRequires:  (%{py3pkg}-msgpack >= 1.0.3 with %{py3pkg}-msgpack <= 1.2.1)
 Requires:       %{py3pkg}-packaging
-Requires:       (%{py3pkg}-msgpack >= 1.0.3 with %{py3pkg}-msgpack <= 1.1.2)
+Requires:       (%{py3pkg}-msgpack >= 1.0.3 with %{py3pkg}-msgpack <= 1.2.1)
 %if 0%{?suse_version} > 1500
 # upstream recommends a "Requires" if pyfuse3 is available
 Requires:       %{py3pkg}-pyfuse3 >= 3.1.1
@@ -204,10 +196,6 @@ This package contains the fish completion script for borgbackup.
 %if ! %{with borg_guzzle}
 %patch -P 0 -p1
 %endif
-%patch -P 1 -p1
-%patch -P 2 -p1
-%patch -P 3 -p1
-%patch -P 4 -p1
 
 %ifnarch %ix86 %arm
   # https://github.com/borgbackup/borg/issues/6996

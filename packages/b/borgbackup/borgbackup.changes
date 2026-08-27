@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Aug 27 04:44:25 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
+
+- update to version 1.4.5
+  * notably, allow builds against msgpack 1.2.1
+  Full changelog:
+  https://borgbackup.readthedocs.io/en/stable/changes.html#version-1-4-5-2026-07-19
+- Removed (upstream)
+  * 0001-set_flags-use-get-set-to-only-influence-specific-fla.patch
+  * 0002-set_flags-better-give-up-than-corrupt.patch
+  * 0003-set_flags-remove-compression-flag.patch
+  * msgpack-allow-1.1.2.patch
+
+-------------------------------------------------------------------
 Tue Dec  2 15:44:02 UTC 2025 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Allow to build with earlier distributions 15.{5,6,7}
