@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug 26 19:12:58 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.8.1
+  * iu_client: reject oversized RANAP NAS-PDU
+  * ranap: Introduce new APIs to encode rab_ass for gtp and rtp
+  * ranap: Fix msgb leak on decode error paths
+
+-------------------------------------------------------------------
 Sat Mar 14 22:04:24 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.8.0

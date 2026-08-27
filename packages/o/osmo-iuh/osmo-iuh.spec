@@ -17,7 +17,7 @@
 
 
 Name:           osmo-iuh
-Version:        1.8.0
+Version:        1.8.1
 Release:        0
 Summary:        Osmocom code for the Iuh interface (HNBAP, RUA, RANAP)
 License:        AGPL-3.0-or-later
@@ -82,14 +82,14 @@ Requires:       libosmo-hnbap0 = %version-%release
 Requires:       libosmo-ranap7 = %version-%release
 Requires:       libosmo-rua0 = %version-%release
 Requires:       libosmo-sabp1 = %version-%release
-Obsoletes:      libosmo-hnbap-devel = %version-%release
 Obsoletes:      libosmo-hnbap-devel < %version-%release
-Obsoletes:      libosmo-ranap-devel = %version-%release
+Obsoletes:      libosmo-hnbap-devel = %version-%release
 Obsoletes:      libosmo-ranap-devel < %version-%release
-Obsoletes:      libosmo-rua-devel = %version-%release
+Obsoletes:      libosmo-ranap-devel = %version-%release
 Obsoletes:      libosmo-rua-devel < %version-%release
-Obsoletes:      libosmo-sabp-devel = %version-%release
+Obsoletes:      libosmo-rua-devel = %version-%release
 Obsoletes:      libosmo-sabp-devel < %version-%release
+Obsoletes:      libosmo-sabp-devel = %version-%release
 
 %description devel
 Osmocom code for the Service Area Broadcast Protocol interface.
