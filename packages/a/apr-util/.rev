@@ -127,4 +127,19 @@
     <comment></comment>
     <requestid>1352341</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>4811755de08f92e9e955dd6baef680ff</srcmd5>
+    <version>1.6.5</version>
+    <time>1787849446</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.6.5.
+- Changes for APR 1.6.5:
+  * Fix Win32 build breakage in apr_os_exp_time_put() in 1.6.4.
+- Changes for APR 1.6.4:
+  * configure: Fix detection of &lt;net/if.h&gt; on OpenBSD.
+  * Fix apr_parse_addr_port() regression in scope_id parsing introduced.
+  * Fix Win32 file buffer locking behavior for single threaded file streams.
+  * Numerous corrections to APR poll behavior.</comment>
+    <requestid>1373904</requestid>
+  </revision>
 </revisionlist>

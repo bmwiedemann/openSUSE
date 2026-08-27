@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Aug 27 00:02:50 UTC 2026 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Update to 1.6.5.
+- Changes for APR 1.6.5:
+  * Fix Win32 build breakage in apr_os_exp_time_put() in 1.6.4.
+- Changes for APR 1.6.4:
+  * configure: Fix detection of <net/if.h> on OpenBSD.
+  * Fix apr_parse_addr_port() regression in scope_id parsing introduced.
+  * Fix Win32 file buffer locking behavior for single threaded file streams.
+  * Numerous corrections to APR poll behavior.
+
+-------------------------------------------------------------------
 Tue May  5 10:07:43 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - requires_ge takes a package name as parameter, not a full

@@ -22,7 +22,7 @@
 %define         includedir %{_includedir}/apr-%{apuver}
 %global         libapr %(rpm --qf "%%{name}" -qf $(realpath %{_libdir}/libapr-1.so))
 Name:           apr-util
-Version:        1.6.3
+Version:        1.6.5
 Release:        0
 Summary:        Apache Portable Runtime (APR) Utility Library
 License:        Apache-2.0
