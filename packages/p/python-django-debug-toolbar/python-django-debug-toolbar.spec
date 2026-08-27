@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-django-debug-toolbar
-Version:        7.0.0
+Version:        7.1.1
 Release:        0
 Summary:        A configurable set of panels that display various debug information
 License:        BSD-3-Clause
@@ -62,6 +62,8 @@ There is also one Django management command currently:
 
 %prep
 %setup -q -n django-debug-toolbar-%{version}
+# not sure what is wrong, hatchling does not like "Framework :: Django :: 6.1"
+sed -i '/Django :: 6.1/d' pyproject.toml
 
 %build
 %pyproject_wheel
