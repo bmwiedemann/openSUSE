@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Aug 27 05:55:24 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.28.3:
+  * Fix building the SWIG-generated Python bindings with SWIG 4.5:
+    the exception-handling glue emitted by scripts/wrap/swig.py still
+    called the Python 2 PyString_FromString(), which SWIG 4.5 no
+    longer provides; it now uses PyUnicode_FromString()
+  * No library or tool source changed between 1.28.2 and 1.28.3, so
+    the rendering engine, mutool and the viewers are unaffected
+- Rename the shared library subpackage from libmupdf28_2 to
+  libmupdf28_3, following the SONAME libmupdf.so.28.3 which upstream
+  derives from the release version
+
+-------------------------------------------------------------------
 Wed Aug  5 05:57:53 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.28.2:

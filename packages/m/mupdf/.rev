@@ -868,4 +868,32 @@ Verified locally on aarch64/openSUSE_Factory: build green, rpmlint 0 errors,
 diff empty; source_validator clean.</comment>
     <requestid>1369653</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>096ae27ffadbc97b9d6e2ce845aeca8a</srcmd5>
+    <version>1.28.3</version>
+    <time>1787849577</time>
+    <user>anag_factory</user>
+    <comment>Update mupdf to 1.28.3.
+
+Upstream release note is &quot;Fix for swig-4.5.&quot;: scripts/wrap/swig.py emitted
+Python 2 PyString_FromString() in the generated exception-handling glue,
+which SWIG 4.5 no longer provides. A diff of the two release tarballs shows
+only three files changed between 1.28.2 and 1.28.3 -- version.h,
+platform/wasm/package.json and scripts/wrap/swig.py -- so no library or tool
+source is touched and there are no CVE fixes in the crossed range.
+
+SONAME: upstream derives it from the release version, so it moves from
+libmupdf.so.28.2 to libmupdf.so.28.3. The shared library subpackage is
+renamed libmupdf28_2 -&gt; libmupdf28_3 accordingly. Reverse build dependencies
+in Factory are netperfmeter and zathura-plugin-pdf-mupdf; neither names the
+versioned subpackage in its spec (they BuildRequire &quot;mupdf&quot; and
+&quot;pkgconfig(mupdf)&quot;), so both just need a rebuild.
+
+Both downstream patches (mupdf-no-strip.patch, mupdf-system-cmark-gfm.patch)
+still apply unchanged with zero fuzz and are still required; nothing was
+dropped.
+
+Built locally for aarch64 against openSUSE:Factory.</comment>
+    <requestid>1373923</requestid>
+  </revision>
 </revisionlist>
