@@ -919,4 +919,33 @@ mtime and ctime values are now stored in the manifest files only when sloppy_fil
     variables from the Makefile.</comment>
     <requestid>1355461</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>e972b345c18ad8c5f56dc018fe4ef887</srcmd5>
+    <version>4.14</version>
+    <time>1787849361</time>
+    <user>anag_factory</user>
+    <comment>Update to 4.14 (released 2026-08-23), plus a small cleanup pass.
+
+Notable for packaging: the cpp_extension (CCACHE_EXTENSION) configuration
+option is removed, as ccache now processes preprocessor output in memory
+instead of via temporary files; and upstream has deprecated the built-in HTTP
+and Redis remote storage backends, which it intends to remove in the next
+non-bug-fix release. Nothing changes in the spec for that yet.
+
+Also encoded the dependency minimums upstream actually enforces in
+cmake/Dependencies.cmake: cmake &gt;= 3.18, cmake(fmt) &gt;= 8.0.0,
+cmake(httplib) &gt;= 0.10.6, pkgconfig(libxxhash) &gt;= 0.8.0,
+pkgconfig(libzstd) &gt;= 1.3.4 and doctest-devel &gt;= 2.4.6. The zstd floor was
+the one that was actually wrong: the spec asked for 1.1.2 while upstream
+requires 1.3.4. BuildRequires sorted with spec-cleaner; only unconditional
+entries moved, the conditional blocks are unchanged.
+
+0001-doc-do-not-install-html-and-md-docs.patch still applies without fuzz.
+
+Built green locally on openSUSE_Factory/aarch64: 54/54 ctest plus 1/1 unittest
+passed, rpmlint 0 errors, 0 warnings, 0 badness, no unpackaged files.
+
+Merged into the devel project as jirislaby/d-t-b-ccache PR #2.</comment>
+    <requestid>1373448</requestid>
+  </revision>
 </revisionlist>

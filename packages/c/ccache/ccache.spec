@@ -30,7 +30,7 @@
 %bcond_with test
 %endif
 Name:           ccache
-Version:        4.13.6
+Version:        4.14
 Release:        0
 Summary:        A Fast C/C++ Compiler Cache
 License:        GPL-3.0-or-later
@@ -38,33 +38,33 @@ URL:            https://ccache.dev/
 Source0:        https://github.com/ccache/ccache/releases/download/v%{version}/ccache-%{version}.tar.xz
 Source2:        %{name}.keyring
 Patch2:         0001-doc-do-not-install-html-and-md-docs.patch
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.18
+BuildRequires:  ninja
+BuildRequires:  pkgconfig
+BuildRequires:  cmake(fmt) >= 8.0.0
+BuildRequires:  pkgconfig(libxxhash) >= 0.8.0
+BuildRequires:  pkgconfig(libzstd) >= 1.3.4
+BuildRequires:  rubygem(asciidoctor)
+Provides:       distcc:%{_bindir}/ccache
 %if %{?suse_version} > 1600
 # There is a cycle: rust1.95/blake3/hwloc/nvidia-settings/libwebp/Mesa:drivers
 #BuildRequires:  cmake(blake3)
 %endif
-BuildRequires:  cmake(fmt)
 %if %{?suse_version} > 1500
-BuildRequires:  cmake(httplib)
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
+BuildRequires:  cmake(httplib) >= 0.10.6
 # SLE15 requires gcc11 for std::filesystem
 %else
 BuildRequires:  gcc11
 BuildRequires:  gcc11-PIE
 BuildRequires:  gcc11-c++
 %endif
-BuildRequires:  ninja
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(libxxhash)
-BuildRequires:  pkgconfig(libzstd) >= 1.1.2
-BuildRequires:  rubygem(asciidoctor)
-Provides:       distcc:%{_bindir}/ccache
 %if %{with hiredis}
 BuildRequires:  pkgconfig(hiredis) >= 0.13.3
 %endif
 %if %{with test}
-BuildRequires:  doctest-devel
+BuildRequires:  doctest-devel >= 2.4.6
 %endif
 
 %description

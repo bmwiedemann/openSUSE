@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Mon Aug 24 05:33:47 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 4.14:
+  * Added support for the QCC (QNX) compiler
+  * Added limited support for caching SARIF diagnostics for GCC and
+    MSVC
+  * Added automatic depend mode for NVCC on Windows
+  * Added support for @layout=local in the file storage backend,
+    allowing a copy or read-only mount of a local cache to be used as
+    remote storage
+  * Extended the remote storage helper protocol with exists and info
+    operations
+  * Added a --dry-run option for previewing cleanup, eviction and
+    directory trimming operations
+  * Added support for rewriting absolute profile data file paths to
+    relative ones, improving cache sharing between directory trees
+  * Added detection of C23 #embed and assembler .incbin directives,
+    preventing false cache hits
+  * Clang module files passed with -fmodule-file= are now hashed
+  * Cleanup and eviction now print the amount of data and number of
+    files removed
+  * Removed the cpp_extension (CCACHE_EXTENSION) option, as preprocessor
+    output is now processed in memory instead of in temporary files
+  * Built-in HTTP and Redis remote storage support is deprecated and
+    will be removed in the next non-bug-fix release; the remote storage
+    helper mechanism replaces it
+  * Fixed base_dir handling for include paths in preprocessor mode, a
+    regression in 4.12.2
+  * Fixed a remote storage configured with read_only=false being
+    treated as read-only
+  * Fixed handling of Clang 22 --warning-suppression-mappings and of
+    compiler options where one recognised option is a prefix of another
+  * Fixed the free space check for the inode cache
+  * Fixed building with Clang 23
+- Encode the minimum dependency versions that upstream's
+  Dependencies.cmake requires: cmake >= 3.18, cmake(fmt) >= 8.0.0,
+  cmake(httplib) >= 0.10.6, pkgconfig(libxxhash) >= 0.8.0,
+  pkgconfig(libzstd) >= 1.3.4 (was 1.1.2, below what upstream accepts)
+  and doctest-devel >= 2.4.6
+- Sort BuildRequires with spec-cleaner
+
+-------------------------------------------------------------------
 Wed May 27 17:48:52 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
 
 - use the bundled blake3 to avoid cycles
