@@ -17,16 +17,16 @@
 
 
 Name:           openai-codex
-Version:        0.149.1
+Version:        0.150.1
 Release:        0
 Summary:        OpenAI Codex coding agent for the terminal
 # Legal-Review-Notice: upstream codex is Apache-2.0. Everything after that
 # covers the third-party Rust crates statically linked into the shipped
 # %%{_bindir}/codex binary, enumerated with
 #   cargo tree --offline -p codex-cli -e normal,no-proc-macro
-# against the vendored tree (871 crates on aarch64, 873 on x86_64; every one
+# against the vendored tree (874 crates on aarch64, 876 on x86_64; every one
 # of them declares a licence, none is missing). Electing Apache-2.0 where it
-# is offered and MIT otherwise, the tally is Apache-2.0 644, MIT 174,
+# is offered and MIT otherwise, the tally is Apache-2.0 647, MIT 174,
 # Unicode-3.0 20, MPL-2.0 12, ISC 7, BSD-3-Clause 6, Zlib 5, BSD-2-Clause 1,
 # CC0-1.0 1, CDLA-Permissive-2.0 1.
 #  - self_cell 1.2.2 is "Apache-2.0 OR GPL-2.0-only" and is the ONLY crate

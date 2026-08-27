@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Aug 27 08:05:39 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.150.1:
+  * Retained-image compaction budgeting is backported to the 0.150
+    line, restoring the behaviour 0.149.1 already had
+- Update to 0.150.0:
+  * Reference other Codex tasks with `@` mentions, and ask agents
+    to read, create or message tasks from the terminal
+  * `/copy` offers a picker for the full response, individual code
+    blocks and blockquotes
+  * Unnamed terminal tasks get descriptive titles automatically and
+    `/rename` suggests an editable one
+  * New keybindings cycle the permission modes, `.` in Vim mode
+    repeats the last edit, and `Interrupt` hooks run commands or
+    MCP handlers when an active top-level turn is interrupted
+  * Untrusted projects no longer supply project-level AGENTS.md
+    instructions, and managed deny-read rules stay enforced across
+    permission changes
+  * Wider credential redaction in app-server diagnostics, plus fixes
+    for remote MCP bearer tokens, Unix shutdown hangs and Amazon
+    Bedrock compaction; see upstream's release notes for the rest
+- Rebase codex-drop-v8-code-mode.patch and
+  codex-no-startup-update-check.patch
+- Regenerate vendor.tar.zst: rmcp and rmcp-macros move from 3.1.2
+  to 3.1.3 and are the only third-party crate change; the licence
+  set of the linked crates is unchanged
+
+-------------------------------------------------------------------
 Mon Aug 24 05:37:35 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.149.1:

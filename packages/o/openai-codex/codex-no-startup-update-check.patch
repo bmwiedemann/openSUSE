@@ -12,7 +12,7 @@ Downstream-only distribution policy, not suitable for upstream submission.
 
 --- a/codex-rs/core/src/config/mod.rs
 +++ b/codex-rs/core/src/config/mod.rs
-@@ -3868,7 +3868,7 @@
+@@ -3900,7 +3900,7 @@
  
          let review_model = override_review_model.or(cfg.review_model);
  
