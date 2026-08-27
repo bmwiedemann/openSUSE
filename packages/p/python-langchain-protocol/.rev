@@ -7,4 +7,18 @@
     <comment>New package python-langchain-protocol. Part of the langchain/langgraph stack (dependency cone for skillspector): interdependent NEW packages + the langsmith bump that must be co-staged together — please stage with the sibling devel:languages:python SRs by pluskalm or builds go unresolvable.</comment>
     <requestid>1362375</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9159d0ffe3a413f3060ce2a446162f84</srcmd5>
+    <version>0.0.19</version>
+    <time>1787849586</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.0.19:
+  * Add the LangSmithTracer typed dictionary and the optional
+    langsmith_tracer field on RunStartParams, so a run can name an
+    additional LangSmith project and dataset example to trace to
+  * No other protocol definitions changed; the rest of the release
+    is code-generator tooling and release plumbing
+- Build with hatchling &gt;= 1.26, the floor upstream now declares</comment>
+    <requestid>1373930</requestid>
+  </revision>
 </revisionlist>

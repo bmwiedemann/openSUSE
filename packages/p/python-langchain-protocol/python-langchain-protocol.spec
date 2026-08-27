@@ -1,7 +1,7 @@
 #
 # spec file for package python-langchain-protocol
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %define modname langchain_protocol
 Name:           python-langchain-protocol
-Version:        0.0.18
+Version:        0.0.19
 Release:        0
 Summary:        Python bindings for the LangChain agent streaming protocol
 License:        MIT
 URL:            https://github.com/langchain-ai/agent-protocol
 Source:         https://files.pythonhosted.org/packages/source/l/langchain_protocol/%{modname}-%{version}.tar.gz
-BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module hatchling >= 1.26}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module typing_extensions >= 4.13.0}
 BuildRequires:  %{python_module wheel}

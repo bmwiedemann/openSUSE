@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Aug 27 06:24:46 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.0.19:
+  * Add the LangSmithTracer typed dictionary and the optional
+    langsmith_tracer field on RunStartParams, so a run can name an
+    additional LangSmith project and dataset example to trace to
+  * No other protocol definitions changed; the rest of the release
+    is code-generator tooling and release plumbing
+- Build with hatchling >= 1.26, the floor upstream now declares
+
+-------------------------------------------------------------------
 Sun Jun 28 20:21:39 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Initial package python-langchain-protocol 0.0.18
