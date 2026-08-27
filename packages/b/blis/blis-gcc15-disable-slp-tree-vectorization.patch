@@ -19,12 +19,12 @@ Details:
  kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_s6x16n.c | 7 +++++++
  5 files changed, 29 insertions(+)
 
-Index: blis-2.0/kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_d6x8m.c
+Index: blis-2.1/kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_d6x8m.c
 ===================================================================
---- blis-2.0.orig/kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_d6x8m.c
-+++ blis-2.0/kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_d6x8m.c
-@@ -40,6 +40,13 @@
- #pragma GCC optimize("-fno-tree-slp-vectorize")
+--- blis-2.1.orig/kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_d6x8m.c
++++ blis-2.1/kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_d6x8m.c
+@@ -39,6 +39,13 @@
+ #pragma GCC optimize("-fno-tree-vectorize")
  #endif
  
 +// This avoids a known issue with GCC15 ("error: bp cannot be used in asm here", #845).
@@ -37,12 +37,12 @@ Index: blis-2.0/kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_d6x8m.c
  #include "blis.h"
  
  #define BLIS_ASM_SYNTAX_ATT
-Index: blis-2.0/kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_d6x8n.c
+Index: blis-2.1/kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_d6x8n.c
 ===================================================================
---- blis-2.0.orig/kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_d6x8n.c
-+++ blis-2.0/kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_d6x8n.c
-@@ -40,6 +40,13 @@
- #pragma GCC optimize("-fno-tree-slp-vectorize")
+--- blis-2.1.orig/kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_d6x8n.c
++++ blis-2.1/kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_d6x8n.c
+@@ -39,6 +39,13 @@
+ #pragma GCC optimize("-fno-tree-vectorize")
  #endif
  
 +// This avoids a known issue with GCC15 ("error: bp cannot be used in asm here", #845).
@@ -55,12 +55,12 @@ Index: blis-2.0/kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_d6x8n.c
  #include "blis.h"
  
  #define BLIS_ASM_SYNTAX_ATT
-Index: blis-2.0/kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_s6x16m.c
+Index: blis-2.1/kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_s6x16m.c
 ===================================================================
---- blis-2.0.orig/kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_s6x16m.c
-+++ blis-2.0/kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_s6x16m.c
-@@ -40,6 +40,13 @@
- #pragma GCC optimize("-fno-tree-slp-vectorize")
+--- blis-2.1.orig/kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_s6x16m.c
++++ blis-2.1/kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_s6x16m.c
+@@ -39,6 +39,13 @@
+ #pragma GCC optimize("-fno-tree-vectorize")
  #endif
  
 +// This avoids a known issue with GCC15 ("error: bp cannot be used in asm here", #845).
@@ -73,12 +73,12 @@ Index: blis-2.0/kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_s6x16m.c
  #include "blis.h"
  
  #define BLIS_ASM_SYNTAX_ATT
-Index: blis-2.0/kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_s6x16n.c
+Index: blis-2.1/kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_s6x16n.c
 ===================================================================
---- blis-2.0.orig/kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_s6x16n.c
-+++ blis-2.0/kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_s6x16n.c
-@@ -40,6 +40,13 @@
- #pragma GCC optimize("-fno-tree-slp-vectorize")
+--- blis-2.1.orig/kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_s6x16n.c
++++ blis-2.1/kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_s6x16n.c
+@@ -39,6 +39,13 @@
+ #pragma GCC optimize("-fno-tree-vectorize")
  #endif
  
 +// This avoids a known issue with GCC15 ("error: bp cannot be used in asm here", #845).

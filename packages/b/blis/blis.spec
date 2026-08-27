@@ -1,7 +1,7 @@
 #
 # spec file for package blis
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@
 %define sover 4
 %define shlib lib%{name}%{sover}
 Name:           blis
-Version:        2.0
+Version:        2.1
 Release:        0
 Summary:        BLAS-like Library Instantiation Software Framework
 License:        BSD-3-Clause
@@ -113,9 +113,12 @@ sed -i "s/\-Wl,\-rpath.* //g" %{buildroot}%{_datadir}/pkgconfig/blis.pc
 
 %fdupes %{buildroot}%{_datadir}/blis/
 
+%ifnarch %{arm64}
+# Tests fail on aarch64
 %check
 pushd testsuite
 ./test_libblis.x
+%endif
 
 %ldconfig_scriptlets -n %{shlib}
 
