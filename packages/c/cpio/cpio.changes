@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Aug 24 13:38:25 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Fix CVE-2026-66484: path traversal allows creating hard links outside
+  intended directory via malicious tar archives (bsc#1274856)
+  * CVE-2026-66484.patch
+- Fix CVE-2026-66485: denial of service via uncontrolled memory allocation
+  from crafted archives (bsc#1274857)
+  * CVE-2026-66485.patch
+- Fix CVE-2026-66486: terminal control sequence injection via crafted
+  archive member names (bsc#1274858)
+  * CVE-2026-66486.patch
+- Refresh patches to apply with -p1:
+  * cpio-close_files_after_copy.patch
+  * cpio-default_tape_dev.patch
+  * cpio-dev_number.patch
+  * cpio-eof_tape_handling.patch
+  * cpio-open_nonblock.patch
+  * cpio-use_new_ascii_format.patch
+  * cpio-use_sbin_rmt.patch
+- Reorder patches, apply with %autosetup -p1
+- Add makeinfo build requirement
+
+-------------------------------------------------------------------
 Mon Mar  2 16:41:55 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Remove update-alternatives %post scripts for SLES 16.x future releases

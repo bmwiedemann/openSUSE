@@ -26,24 +26,34 @@ URL:            https://www.gnu.org/software/cpio/cpio.html
 Source0:        https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.bz2
 Source1:        https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.bz2.sig
 Source2:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=%{name}&download=1#/%{name}.keyring
-Patch2:         cpio-use_new_ascii_format.patch
-Patch4:         cpio-use_sbin_rmt.patch
-#PATCH-FIX-UPSTREAM cpio-2.12 cpio-open_nonblock.patch bnc#94449,
-#https://savannah.gnu.org/patch/?9263 -- open device with O_NONBLOCK option
-Patch5:         cpio-open_nonblock.patch
-Patch15:        cpio-eof_tape_handling.patch
+Patch0:         cpio-use_new_ascii_format.patch
+Patch1:         cpio-use_sbin_rmt.patch
+# PATCH-FIX-UPSTREAM cpio-2.12 cpio-open_nonblock.patch bnc#94449,
+# https://savannah.gnu.org/patch/?9263 -- open device with O_NONBLOCK option
+Patch2:         cpio-open_nonblock.patch
+Patch3:         cpio-eof_tape_handling.patch
 # make posibble to have device nodes with major number > 127
 # Red Hat Bugzilla #450109
-Patch17:        cpio-dev_number.patch
-Patch18:        cpio-default_tape_dev.patch
-#PATCH-FIX-UPSTREAM cpio-2.10-close_files_after_copy.patch
-Patch20:        cpio-close_files_after_copy.patch
-Patch21:        cpio-pattern-file-sigsegv.patch
-Patch23:        paxutils-rtapelib_mtget.patch
-Patch25:        cpio-fix_truncation_check.patch
-Patch26:        fix-gcc14.patch
+Patch4:         cpio-dev_number.patch
+Patch5:         cpio-default_tape_dev.patch
+# PATCH-FIX-UPSTREAM cpio-2.10-close_files_after_copy.patch
+Patch6:         cpio-close_files_after_copy.patch
+Patch7:         cpio-pattern-file-sigsegv.patch
+Patch8:         paxutils-rtapelib_mtget.patch
+Patch9:         cpio-fix_truncation_check.patch
+Patch10:        fix-gcc14.patch
+# PATCH-FIX-UPSTREAM CVE-2026-66484.patch bsc#1274856 antonio.teixeira@suse.com
+# CVE-2026-66484: path traversal allows creating hard links outside intended directory via malicious tar archives.
+Patch11:        CVE-2026-66484.patch
+# PATCH-FIX-UPSTREAM CVE-2026-66485.patch bsc#1274857 antonio.teixeira@suse.com
+# CVE-2026-66485: denial of service via uncontrolled memory allocation from crafted archives
+Patch12:        CVE-2026-66485.patch
+# PATCH-FIX-UPSTREAM CVE-2026-66486.patch bsc#1274858 antonio.teixeira@suse.com
+# CVE-2026-66486: terminal control sequence injection via crafted archive member names
+Patch13:        CVE-2026-66486.patch
 BuildRequires:  autoconf >= 2.71
 BuildRequires:  automake
+BuildRequires:  makeinfo
 #Requires(post): %{xinstall_info_prereq}
 #Requires(preun): %{xinstall_info_prereq}
 Suggests:       rmt
@@ -72,9 +82,7 @@ This package includes the 'mt', a local tape drive control program.
 %lang_package
 
 %prep
-%setup -q
-%autopatch -M 20 -p0
-%autopatch -m 21 -p1
+%autosetup -p1
 
 %build
 gettextize -f --no-changelog

@@ -1,8 +1,8 @@
-Index: src/util.c
+Index: b/src/util.c
 ===================================================================
---- src/util.c.orig
-+++ src/util.c
-@@ -203,8 +203,15 @@ tape_fill_input_buffer (int in_des, int
+--- a/src/util.c
++++ b/src/util.c
+@@ -201,8 +201,15 @@ tape_fill_input_buffer (int in_des, int
    input_size = rmtread (in_des, input_buffer, num_bytes);
    if (input_size == 0 && input_is_special)
      {
@@ -19,7 +19,7 @@ Index: src/util.c
      }
    if (input_size == SAFE_READ_ERROR)
      error (PAXEXIT_FAILURE, errno, _("read error"));
-@@ -366,8 +373,15 @@ tape_buffered_peek (char *peek_buf, int
+@@ -364,8 +371,15 @@ tape_buffered_peek (char *peek_buf, int
  	{
  	  if (input_is_special)
  	    {
@@ -36,7 +36,7 @@ Index: src/util.c
  	    }
  	  else
  	    break;
-@@ -829,6 +843,40 @@ tape_offline (int tape_des)
+@@ -827,6 +841,40 @@ tape_offline (int tape_des)
  #endif
  }
  

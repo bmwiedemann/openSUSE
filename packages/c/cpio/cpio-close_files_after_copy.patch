@@ -1,8 +1,8 @@
-Index: src/copyin.c
+Index: b/src/copyin.c
 ===================================================================
---- src/copyin.c.orig
-+++ src/copyin.c
-@@ -1420,6 +1420,19 @@ process_copy_in ()
+--- a/src/copyin.c
++++ b/src/copyin.c
+@@ -1595,6 +1595,19 @@ process_copy_in (void)
  
    cpio_file_stat_free (&file_hdr);
  

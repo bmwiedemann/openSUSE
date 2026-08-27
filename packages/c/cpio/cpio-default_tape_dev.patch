@@ -1,7 +1,7 @@
-Index: src/mt.c
+Index: b/src/mt.c
 ===================================================================
---- src/mt.c.orig
-+++ src/mt.c
+--- a/src/mt.c
++++ b/src/mt.c
 @@ -224,11 +224,18 @@ parse_opt (int key, char *arg, struct ar
  	{
  	  tapedev = getenv ("TAPE");

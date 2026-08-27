@@ -26,10 +26,10 @@ Suggest adding the use of O_NONBLOCK when opening the device.  As it is,
 for long-running commands such as "fsf", one cannot tell if the command is
 progressing or if it's blocking waiting for media.
 
-Index: src/mt.c
+Index: b/src/mt.c
 ===================================================================
---- src/mt.c.orig
-+++ src/mt.c
+--- a/src/mt.c
++++ b/src/mt.c
 @@ -332,11 +332,11 @@ main (int argc, char **argv)
  #ifdef MTERASE
      case MTERASE:
@@ -44,10 +44,10 @@ Index: src/mt.c
      }
  
    if (tapedesc == -1)
-Index: src/util.c
+Index: b/src/util.c
 ===================================================================
---- src/util.c.orig
-+++ src/util.c
+--- a/src/util.c
++++ b/src/util.c
 @@ -799,14 +799,14 @@ open_archive (char *file)
    copy_in = process_copy_in;
  
