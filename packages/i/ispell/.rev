@@ -370,4 +370,12 @@
     <comment>- Make it build again</comment>
     <requestid>1351401</requestid>
   </revision>
+  <revision rev="40" vrev="5">
+    <srcmd5>a006f437c3d7ac65add3a25850ddd855</srcmd5>
+    <version>3.4.06</version>
+    <time>1787849654</time>
+    <user>anag_factory</user>
+    <comment>- Use lexical-binding for lisp file</comment>
+    <requestid>1373946</requestid>
+  </revision>
 </revisionlist>

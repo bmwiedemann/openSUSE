@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 27 08:37:39 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Use lexical-binding for lisp file
+
+-------------------------------------------------------------------
 Thu May  7 11:22:49 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Make it build again 

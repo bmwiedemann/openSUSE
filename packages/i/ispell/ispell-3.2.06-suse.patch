@@ -1,14 +1,14 @@
 ---
  suse/LIESMICH             |  125 ++++++++++++++++++++++++++++++++++++++++++++++
  suse/README               |  108 +++++++++++++++++++++++++++++++++++++++
- suse/emacs/american.el    |    8 ++
- suse/emacs/british.el     |    9 +++
- suse/emacs/english.el     |    9 +++
+ suse/emacs/american.el    |    9 +++
+ suse/emacs/british.el     |   10 +++
+ suse/emacs/english.el     |   10 +++
  suse/ispell-emacs-menu.el |   64 +++++++++++++++++++++++
- 6 files changed, 323 insertions(+)
+ 6 files changed, 326 insertions(+)
 
 --- suse/LIESMICH
-+++ suse/LIESMICH	2016-02-12 11:02:35.326533721 +0000
++++ suse/LIESMICH	2026-08-27 09:08:47.529558179 +0000
 @@ -0,0 +1,125 @@
 +
 +  Kurzbeschreibung
@@ -136,7 +136,7 @@
 +    norsk.hash        (mittel)
 +
 --- suse/README
-+++ suse/README	2016-02-12 11:02:35.326533721 +0000
++++ suse/README	2026-08-27 09:08:47.529558179 +0000
 @@ -0,0 +1,108 @@
 +
 +     Short description
@@ -247,8 +247,9 @@
 +
 +
 --- suse/emacs/american.el
-+++ suse/emacs/american.el	2017-02-28 13:39:37.284734434 +0000
-@@ -0,0 +1,8 @@
++++ suse/emacs/american.el	2026-08-27 09:10:06.500152718 +0000
+@@ -0,0 +1,9 @@
++;;; american.el --- Used by ispell-emacs-menu.el -*- lexical-binding: t -*-
 +;; Used by ispell-emacs-menu.el
 +;; Do *not* byte-compile this file because its loaded by both emacs and xemacs
 +
@@ -258,8 +259,9 @@
 +(append-ispell-dict-alist	"american.hash"
 +   '("american-utf8" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-B" "-d" "american") "~utf8" utf-8))
 --- suse/emacs/british.el
-+++ suse/emacs/british.el	2017-02-28 13:42:47.093130616 +0000
-@@ -0,0 +1,9 @@
++++ suse/emacs/british.el	2026-08-27 09:10:29.583741867 +0000
+@@ -0,0 +1,10 @@
++;;; british.el --- Used by ispell-emacs-menu.el -*- lexical-binding: t -*-
 +;; Used by ispell-emacs-menu.el
 +;; Do *not* byte-compile this file because its loaded by both emacs and xemacs
 +
@@ -270,8 +272,9 @@
 +   '("british-utf8" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-B" "-d" "british") "~utf8" utf-8))
 +
 --- suse/emacs/english.el
-+++ suse/emacs/english.el	2017-02-28 13:41:41.674372696 +0000
-@@ -0,0 +1,9 @@
++++ suse/emacs/english.el	2026-08-27 09:10:41.207534980 +0000
+@@ -0,0 +1,10 @@
++;;; english.el --- Used by ispell-emacs-menu.el -*- lexical-binding: t -*-
 +;; Used by ispell-emacs-menu.el
 +;; Do *not* byte-compile this file because its loaded by both emacs and xemacs
 +
@@ -282,9 +285,9 @@
 +   '("english-utf8" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-B" "-d" "english") "~utf8" utf-8))
 +
 --- suse/ispell-emacs-menu.el
-+++ suse/ispell-emacs-menu.el	2017-02-28 13:48:52.630198546 +0000
++++ suse/ispell-emacs-menu.el	2026-08-27 09:09:26.576863258 +0000
 @@ -0,0 +1,64 @@
-+;;; ispell-emacs-menu.el --- Produce the (x)emacs (i)spell menu on the fly
++;;; ispell-emacs-menu.el --- Produce the (x)emacs (i)spell menu on the fly -*- lexical-binding:t -*-
 +
 +;; Copyright (c) 1999 SuSE Gmbh Nuernberg, Germany.  All rights reserved.
 +;; Copyright (c) 2017 SUSE Linux Gmbh Nürnberg, Germany.  All rights reserved.
