@@ -247,4 +247,12 @@ Use a license from the spreadsheet linked at http://license.opensuse.org (forwar
     <comment></comment>
     <requestid>1251815</requestid>
   </revision>
+  <revision rev="34" vrev="426">
+    <srcmd5>7d5374d2dcddddd43377a04f734b37c9</srcmd5>
+    <version>1.5</version>
+    <time>1787849618</time>
+    <user>anag_factory</user>
+    <comment>- Use lexical-binding for lisp file</comment>
+    <requestid>1373941</requestid>
+  </revision>
 </revisionlist>

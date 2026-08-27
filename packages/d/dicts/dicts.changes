@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 27 08:37:39 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Use lexical-binding for lisp file
+
+-------------------------------------------------------------------
 Fri Mar  7 12:35:20 UTC 2025 - pgajdos@suse.com
 
 - build with gcc15
