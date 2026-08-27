@@ -44,4 +44,13 @@
   * Escape special characters when sharing qr code</comment>
     <requestid>1373732</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2d78b9e22044bfb69afdb9258b5d2345</srcmd5>
+    <version>0.8.1</version>
+    <time>1787849500</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.8.1:
+  * Fix no station found error when dis/connecting</comment>
+    <requestid>1373877</requestid>
+  </revision>
 </revisionlist>
