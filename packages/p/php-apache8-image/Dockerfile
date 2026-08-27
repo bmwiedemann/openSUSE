@@ -29,9 +29,18 @@ RUN set -euo pipefail; \
     export PERMCTL_ALLOW_INSECURE_MODE_IF_NO_PROC=1 SOURCE_DATE_EPOCH=0; \
     zypper -n --installroot /target --gpg-auto-import-keys install php8 php8-cli php-composer2 php8-curl php8-zip php8-zlib php8-phar php8-mbstring apache2-mod_php8
 
+COPY docker-php-source docker-php-entrypoint docker-php-ext-configure docker-php-ext-enable docker-php-ext-install /target/usr/local/bin/
+RUN chmod +x /target/usr/local/bin/docker-php-*
+
 RUN set -euo pipefail; zypper -n install --no-recommends systemd && \
     systemd-tmpfiles --create --root /target apache2.conf
 
+# create our own apache2-foreground from the systemd startup script
+RUN sed 's|^exec $apache_bin|exec $apache_bin -DFOREGROUND|' /target/usr/sbin/start_apache2 > /target/usr/local/bin/apache2-foreground
+RUN chmod +x /target/usr/local/bin/apache2-foreground
+
+# apache fails to start without its log folder
+RUN mkdir -p /target/var/log/apache2
 
 # cleanup logs and temporary files
 RUN set -euo pipefail; zypper -n --installroot /target clean -a; \
@@ -72,18 +81,7 @@ ENV PHP_INI_DIR="/etc/php8/"
 ENV PHP_VERSION="%%php_version%%"
 ENTRYPOINT ["docker-php-entrypoint"]
 CMD ["apache2-foreground"]
-COPY docker-php-source docker-php-entrypoint docker-php-ext-configure docker-php-ext-enable docker-php-ext-install /usr/local/bin/
-RUN chmod +x /usr/local/bin/docker-php-*
 
 STOPSIGNAL SIGWINCH
-
-# create our own apache2-foreground from the systemd startup script
-RUN sed 's|^exec $apache_bin|exec $apache_bin -DFOREGROUND|' /usr/sbin/start_apache2 > /usr/local/bin/apache2-foreground
-RUN chmod +x /usr/local/bin/apache2-foreground
-
-# apache fails to start without its log folder
-RUN mkdir -p /var/log/apache2
-
 WORKDIR /srv/www/htdocs
-
 EXPOSE 80
