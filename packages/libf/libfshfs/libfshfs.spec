@@ -21,7 +21,7 @@
 
 %define lname	libfshfs1
 Name:           libfshfs
-Version:        20260802
+Version:        20260826
 Release:        0
 Summary:        Library and tools to access the Mac OS Hierarchical File System (HFS)
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
