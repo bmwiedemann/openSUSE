@@ -64,6 +64,8 @@ Patch03:        tests-increase-timeout.patch
 # PATCH-FIX-UPSTREAM
 Patch04:        mozjs140-XP_UNIX.patch
 # PATCH-FIX-OPENSUSE
+Patch05:        mozjs140-rust1.98.patch
+# PATCH-FIX-OPENSUSE
 Patch09:        icu_sources_data.py-Decouple-from-Mozilla-build-system.patch
 # PATCH-FIX-OPENSUSE
 Patch10:        icu_sources_data-Write-command-output-to-our-stderr.patch
@@ -159,6 +161,7 @@ pushd ../..
 %patch -P 02 -p1
 %patch -P 03 -p1
 %patch -P 04 -p1
+%patch -P 05 -p1
 %patch -P 09 -p1
 %patch -P 10 -p1
 %patch -P 12 -p1

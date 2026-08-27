@@ -148,4 +148,18 @@
   + See https://www.firefox.com/en-US/firefox/140.14.0/releasenotes/</comment>
     <requestid>1372908</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>980e1b4e373214207731c11efd06c515</srcmd5>
+    <version>140.14.0</version>
+    <time>1787849436</time>
+    <user>anag_factory</user>
+    <comment>- Update mozjs140-rust1.98.patch: Base the patch on upstream
+  commited solution from commit 1ecaa12: andle the *-oe-linux-*
+  rust targets added in rustc 1.98 in rust target detection.
+
+- Add mozjs140-rust1.98.patch: Fix detection of rust target when
+  building against Rust 1.98 (build system gets confused by the new
+  target x86_64-oe-linux-gnu).</comment>
+    <requestid>1374078</requestid>
+  </revision>
 </revisionlist>
