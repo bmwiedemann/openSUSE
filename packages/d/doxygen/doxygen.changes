@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Aug 13 19:12:34 UTC 2026 - Christoph G <foss@grueninger.de>
+
+- update to 1.18.0
+  * Doxywizard's GUI and config option documentation are now
+    translated to 8 addition languages
+  * From the menu one can switch between languages
+  * Via the wizard the Doxyfile can also be generated in 8 different
+    languages next to English.
+  * The expert panel of Doxywizard now has a search field to
+    quickly search for and filter configuration options.
+  * When using the external search engine, icons are used instead
+    of numbers and words for search result types
+- Drop doxygen-12117-test-tagfile.patch which is part of the release
+- Drop reproducible.patch as it can no longer be applied
+
+-------------------------------------------------------------------
 Fri May  1 21:39:14 UTC 2026 - Christoph G <foss@grueninger.de>
 
 - update to 1.17.0

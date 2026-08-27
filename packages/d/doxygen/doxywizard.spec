@@ -17,9 +17,9 @@
 #
 
 
-%global rdir Release_1_17_0
+%global rdir Release_1_18_0
 Name:           doxywizard
-Version:        1.17.0
+Version:        1.18.0
 Release:        0
 Summary:        Graphical User Interface for Doxygen
 # qtools are used for building and they are GPL-3.0 licensed
@@ -29,7 +29,6 @@ URL:            https://github.com/doxygen/doxygen
 Source:         https://github.com/doxygen/doxygen/releases/download/%{rdir}/doxygen-%{version}.src.tar.gz
 # https://github.com/doxygen/doxygen/issues/11957
 Source1:        doxywizard.desktop
-Patch1:         doxygen-12117-test-tagfile.patch
 BuildRequires:  bison
 BuildRequires:  cmake >= 3.14
 BuildRequires:  flex

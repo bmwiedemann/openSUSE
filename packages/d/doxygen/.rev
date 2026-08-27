@@ -2570,4 +2570,23 @@ On Leap15/SLE15 a newer GCC is needed to build against Qt6. On SLE15 the default
   Merged upstream from https://github.com/doxygen/doxygen/pull/12117 (forwarded request 1350428 from mathletic)</comment>
     <requestid>1351386</requestid>
   </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>979c9b4b42426a0ba39ac29501c86902</srcmd5>
+    <version>1.18.0</version>
+    <time>1787849334</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.18.0
+  * Doxywizard's GUI and config option documentation are now
+    translated to 8 addition languages
+  * From the menu one can switch between languages
+  * Via the wizard the Doxyfile can also be generated in 8 different
+    languages next to English.
+  * The expert panel of Doxywizard now has a search field to
+    quickly search for and filter configuration options.
+  * When using the external search engine, icons are used instead
+    of numbers and words for search result types
+- Drop doxygen-12117-test-tagfile.patch which is part of the release
+- Drop reproducible.patch as it can no longer be applied (forwarded request 1371093 from mathletic)</comment>
+    <requestid>1373340</requestid>
+  </revision>
 </revisionlist>

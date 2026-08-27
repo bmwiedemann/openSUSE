@@ -17,9 +17,9 @@
 #
 
 
-%global rdir Release_1_17_0
+%global rdir Release_1_18_0
 Name:           doxygen
-Version:        1.17.0
+Version:        1.18.0
 Release:        0
 Summary:        Automated C, C++, and Java Documentation Generator
 # qtools are used for building and they are GPL-3.0 licensed
@@ -29,7 +29,6 @@ URL:            https://github.com/doxygen/doxygen
 Source0:        https://github.com/doxygen/doxygen/releases/download/%{rdir}/doxygen-%{version}.src.tar.gz
 # suse specific
 Patch1:         %{name}-no-lowercase-man-names.patch
-Patch2:         reproducible.patch
 BuildRequires:  bison
 BuildRequires:  cmake >= 3.14
 BuildRequires:  flex
