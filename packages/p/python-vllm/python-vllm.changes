@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Wed Aug 26 18:04:34 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.28.0:
+  * Kimi-K3 performance push across the stack: decode context
+    parallelism, fused FlashKDA decode and prefill kernels, GEMM-RS
+    for sequence parallelism and optional shared-expert sharding
+  * DeepSeek-V4 sparse MLA now works end to end for plain decode,
+    MTP and DSpark speculative decoding
+  * Model Runner V2 matures: encode/prefill/decode disaggregation,
+    weight offloading, encoder CUDA graphs and attention-free models
+  * CPU backend gains an MLA backend so DeepSeek-V2/V3 run on CPU,
+    and unquantized MoE moves to the modular-kernel expert structure
+  * New defaults: max_num_batched_tokens raised from 8192 to 16384,
+    and prefix caching enabled by default for Mamba models
+  * Breaking changes: bitsandbytes support moved to an out-of-tree
+    plugin, and the deprecated calculate_kv_scales runtime KV scale
+    calculation and override_attention_dtype were removed
+  * Security hardening: an audio decode duration limit in
+    NanoNemotronVL, and _load_ov2_processor guarded with
+    resolve_trust_remote_code
+  * Many further model, quantization, KV-offloading and large-scale
+    serving changes -- see upstream's release notes for the full list
+- Convert the remaining exact "=" version requirements into ">="
+  floors at the version upstream actually asks for.  An exact RPM
+  pin couples two independently released packages, so every update
+  of either leaves the other uninstallable, and it fails only at
+  install time where no build gate can see it:
+  * python-torch = 2.12.0 becomes >= 2.12.0, as do the matching
+    torch and torch-devel BuildRequires.  The default flavour is
+    pure Python; the cpu flavour's link against libtorch is already
+    carried by the automatic libtorch.so, libtorch_cpu.so and
+    libc10.so dependencies rpm generates from the extension, which
+    is also what makes OBS rebuild this package when torch moves
+  * python-depyf = 0.20.0 becomes >= 0.20.0
+  * python-lm-format-enforcer = 0.11.3 becomes >= 0.11.3
+  * python-outlines_core = 0.2.14 becomes >= 0.2.14, whose on-disk
+    index cache is keyed on the installed outlines_core version and
+    cleared when it changes, so it handles drift by design
+  * vllm-relax-cpu-requirements.patch relaxes the same pins in the
+    wheel metadata, and now covers the compressed-tensors and depyf
+    lines too, so the RPM dependencies and the installed dist-info
+    agree
+- Add a python-huggingface-hub >= 1.27.0 requirement, a new upstream
+  floor in this release
+- Follow upstream's cmake/cpu_extension.cmake to oneDNN 3.13 on
+  x86_64; the aarch64 oneDNN commit pin and Arm Compute Library
+  52.6.0 are unchanged:
+  * Add oneDNN-3.13.tar.gz
+  * Drop oneDNN-3.10.tar.gz
+- Switch from update-alternatives to libalternatives, the Factory
+  default for a generic binary name: /usr/bin/vllm is now a plain
+  symlink to alts plus a declarative config, with no install-time
+  scriptlet.  An already installed update-alternatives symlink is
+  migrated on upgrade
+- Rebase vllm-relax-cpu-requirements.patch and
+  vllm-cpu-disable-rust-frontend.patch onto 0.28.0
+
+-------------------------------------------------------------------
 Wed Aug 12 05:21:29 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.27.1:

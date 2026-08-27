@@ -102,4 +102,43 @@ lm-format-enforcer, outlines_core and torch. Each is the same latent
 breakage whenever the devel project moves one of them.</comment>
     <requestid>1370785</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>66fa1c6c1bd629d46188e2ae6d748b23</srcmd5>
+    <version>0.28.0</version>
+    <time>1787849502</time>
+    <user>anag_factory</user>
+    <comment>python-vllm 0.28.0
+
+Update to upstream 0.28.0, plus the dependency-pin cleanup this package
+has owed for a while.
+
+All remaining exact &quot;=&quot; version requirements are converted to &quot;&gt;=&quot;
+floors at the version upstream actually asks for:
+
+  python-torch              = 2.12.0  -&gt;  &gt;= 2.12.0
+  python-depyf              = 0.20.0  -&gt;  &gt;= 0.20.0
+  python-lm-format-enforcer = 0.11.3  -&gt;  &gt;= 0.11.3
+  python-outlines_core      = 0.2.14  -&gt;  &gt;= 0.2.14
+
+plus the matching torch / torch-devel BuildRequires. An exact RPM pin
+couples two independently released packages, so every update of either
+leaves the other uninstallable, and nothing catches it because it only
+fails at install time. depyf, lm-format-enforcer and outlines_core are
+lazily imported optional backends and all three are currently at their
+latest upstream release, so each floor is exactly upstream's own pin.
+For the cpu flavour the link against torch is already expressed by the
+automatic libtorch.so / libtorch_cpu.so / libc10.so dependencies rpm
+generates from the compiled extension. No exact pin was kept.
+vllm-relax-cpu-requirements.patch relaxes the same pins in the wheel
+metadata so the RPM dependencies and the installed dist-info agree.
+
+Also in this request:
+  - python-huggingface-hub &gt;= 1.27.0, a new upstream floor in 0.28.0
+  - oneDNN 3.13 on x86_64, following upstream's cmake/cpu_extension.cmake
+    (the aarch64 commit pin and Arm Compute Library 52.6.0 are unchanged)
+  - switched from update-alternatives to libalternatives
+
+Built and tested natively on aarch64, both multibuild flavours.</comment>
+    <requestid>1373880</requestid>
+  </revision>
 </revisionlist>
