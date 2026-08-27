@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Wed Aug 26 06:08:57 UTC 2026 - Joey Lee <jlee@suse.com>
+
+- Add ovmf-KEKUpdate to ovmf package (jsc#PED-16786)
+  - It generates the KEKUpdate_SUSE_PK.bin file by using
+    pesign-obs-integration to sign Microsoft KEK package.The
+    KEKUpdate_SUSE_PK.bin file can be used to update kek in SUSE ovmf
+    by efi-updatevar tool. It will also be upload to Microsoft
+    secureboot_objects project.
+  - Add ovmf-KEKUpdate.spec
+    - Add ovmf-KEKUpdate to _multibuild
+  - Add Microsoft KEK.bin which is ESL (EFI Signature List) format file
+    as the signing target:
+    - Add edk2-x64-secureboot-binaries.tar.gz
+        - version 1.6.5
+        - https://github.com/microsoft/secureboot_objects/releases/download/1.6.5/
+        - sha256:624c8629f4aab631064fde7d098ad60204288267b6e6edaab50a852ba7dd382b
+    - Add edk2-aarch64-secureboot-binaries.tar.gz
+        - version 1.6.5
+        - https://github.com/microsoft/secureboot_objects/releases/download/1.6.5/
+        - sha256:bf5a51e79815698013b9a062d489235cd042d0b1f9370a0a7c27a05367c95ed3

@@ -1,3 +1,4 @@
 <multibuild>
   <package>uefi-shell</package>
+  <package>ovmf-KEKUpdate</package>
 </multibuild>
