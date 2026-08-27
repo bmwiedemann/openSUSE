@@ -259,4 +259,12 @@
   % fix8bit.c (forwarded request 1250256 from pgajdos)</comment>
     <requestid>1251714</requestid>
   </revision>
+  <revision rev="33" vrev="6">
+    <srcmd5>af9fbb687e86106d3a31c46c5bf29cac</srcmd5>
+    <version>20161207</version>
+    <time>1787849639</time>
+    <user>anag_factory</user>
+    <comment>- Use lexical-binding for lisp file</comment>
+    <requestid>1373950</requestid>
+  </revision>
 </revisionlist>

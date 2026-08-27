@@ -1,3 +1,4 @@
+;;; german.el --- Used by ispell-emacs-menu.el -*- lexical-binding: t -*-
 ;; Used by ispell-emacs-menu.el
 ;; Do *not* byte-compile this file because its loaded by both emacs and xemacs
 
