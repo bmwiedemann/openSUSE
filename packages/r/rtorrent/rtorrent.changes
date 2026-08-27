@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Aug 26 19:32:42 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.16.21
+  * Various `string.*` commands for text manipulation, see
+    <https://github.com/rakshasa/rtorrent/pull/1916>.
+  * Variants of path related commands that return the realpath,
+    see <>https://github.com/rakshasa/rtorrent/pull/1918>.
+  * Added `system.sockets.<category>.max_alloc_limit` and
+    `system.sockets.<category>.min_alloc_limit` commands.
+
+-------------------------------------------------------------------
 Thu Aug  6 16:07:29 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.16.20
