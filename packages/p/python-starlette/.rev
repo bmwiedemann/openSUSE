@@ -506,4 +506,24 @@ https://build.opensuse.org/request/show/1126958
 </comment>
     <requestid>1360239</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>8693b569153e34b97540374db426fb8b</srcmd5>
+    <version>1.6.0</version>
+    <time>1787849444</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.6.0:
+  * Add max_body_size to Starlette and route classes
+  * Expose http.response.debug info via response extensions
+  * Reject inverted single-byte Range like bytes=5-4
+  * Limit FileResponse to 100 ranges
+  * Add exclude_content_types parameter to GZipMiddleware
+  * Flush GZip output for each streamed chunk
+  * Skip compression of partial responses in GZipMiddleware
+  * Expand default excluded content types in GZipMiddleware
+  * Default thread_minimum_size in GZipResponder
+  * Lazily allocate GZipMiddleware compression resources
+  * Use zlib.compressobj instead of GzipFile in GZipMiddleware
+  * Offload large GZip compression</comment>
+    <requestid>1373902</requestid>
+  </revision>
 </revisionlist>

@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-starlette%{psuffix}
-Version:        1.3.1
+Version:        1.6.0
 Release:        0
 Summary:        Lightweight ASGI framework/toolkit
 License:        BSD-3-Clause
@@ -63,7 +63,7 @@ BuildRequires:  %{python_module trio}
 BuildRequires:  %{python_module typing_extensions >= 4.10.0}
 BuildRequires:  %{python_module importlib-metadata >= 7.0.1}
 # httpx2[zstd]
-BuildRequires:  %{python_module zstandard}
+BuildRequires:  python313-backports.zstd
 # /SECITON
 %endif
 %python_subpackages
