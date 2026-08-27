@@ -421,4 +421,14 @@
     framework/compare/3.17.1...3.17.2</comment>
     <requestid>1372772</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>2dd125268e7a44173f89c790a9c90a38</srcmd5>
+    <version>3.18.0</version>
+    <time>1787849754</time>
+    <user>anag_factory</user>
+    <comment>- Skip failing test and add CVE references
+
+- update to 3.17.2 (CVE-2026-73228, bsc#1275006, CVE-2026-73229, bsc#1275005):</comment>
+    <requestid>1374088</requestid>
+  </revision>
 </revisionlist>

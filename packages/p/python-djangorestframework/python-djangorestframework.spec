@@ -91,7 +91,8 @@ sed -i '/^filterwarnings/,/^\]/d' pyproject.toml
 %check
 %if %{with test}
 # coreapi has been removed from Tumbleweed
-%pytest -rs -vv -k 'not (test_coreapi)'
+# test_markdown has problems again with new Pygments: https://github.com/encode/django-rest-framework/pull/10026
+%pytest -rs -vv -k 'not (test_coreapi or test_markdown)'
 %endif
 
 %if !%{with test}

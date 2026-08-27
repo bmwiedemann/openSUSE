@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 27 14:38:44 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Skip failing test and add CVE references
+
+-------------------------------------------------------------------
 Fri Aug 21 09:51:33 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.18.0:
@@ -24,7 +29,7 @@ Fri Aug 21 09:51:33 UTC 2026 - Dirk Müller <dmueller@suse.com>
     fields
   * Raise clear error for unsupported unique-together list
     updates
-- update to 3.17.2:
+- update to 3.17.2 (CVE-2026-73228, bsc#1275006, CVE-2026-73229, bsc#1275005):
   * Fix disclosure of GET-protected data in case of validation
     error with `AdminRenderer`
   * Enforce `DATA_UPLOAD_MAX_MEMORY_SIZE` for `request.data`
