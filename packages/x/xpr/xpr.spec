@@ -1,7 +1,7 @@
 #
 # spec file for package xpr
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           xpr
-Version:        1.2.0
+Version:        1.2.1
 Release:        0
 Summary:        Utility to print an X window dump
 License:        MIT
 Group:          System/X11/Utilities
 URL:            https://xorg.freedesktop.org/
 Source0:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz
-BuildRequires:  pkgconfig
+BuildRequires:  meson
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xmuu)
 BuildRequires:  pkgconfig(xorg-macros) >= 1.3
@@ -40,11 +40,11 @@ and formats it for output on various types of printers.
 %setup -q
 
 %build
-%configure
-%make_build
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
 
 %files
 %license COPYING

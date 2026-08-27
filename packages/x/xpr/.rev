@@ -105,4 +105,12 @@
   * configure: Use AC_SYS_LARGEFILE to enable large file support</comment>
     <requestid>1154501</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>5f06f76d923604edc809bf98f6648e9f</srcmd5>
+    <version>1.2.1</version>
+    <time>1787849682</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1374059</requestid>
+  </revision>
 </revisionlist>
