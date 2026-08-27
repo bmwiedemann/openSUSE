@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Aug 26 14:22:13 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.55.1
+  * many changes, see https://github.com/aws-cloudformation/cfn-lint/compare/v1.47.1...v1.55.1
+
+-------------------------------------------------------------------
+Mon Mar 30 10:54:26 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.47.1
+  * Fix [E3063] false positive when Code is a string (aws-cli pattern)
+  * Cap resolve_value permutations to prevent exponential blowup
+  * Fix: maintenance guardduty policy
+  * Add `EngineVersion` of `8.0.0` to DocDB Cluster
+  * Support multi-attribute composite keys in DynamoDB GSI KeySchema
+  * Allow JSONata string expressions for Arguments in Step Functions
+  * Update CloudFormation schemas to `2026-03-24`
+
+-------------------------------------------------------------------
 Wed Mar 18 09:08:11 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.47.0

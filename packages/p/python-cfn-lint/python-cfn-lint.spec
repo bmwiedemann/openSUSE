@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-cfn-lint
-Version:        1.47.0
+Version:        1.55.1
 Release:        0
 Summary:        Tool to checks cloudformation for practices and behaviour
 License:        MIT
@@ -33,25 +33,24 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       git-core
-Requires:       python-PyYAML >= 5.4
-Requires:       python-aws-sam-translator >= 1.97.0
-Requires:       python-jschema-to-python >= 1.2.3
+Requires:       python-PyYAML >= 6.0.3
 Requires:       python-jsonpatch
-Requires:       python-junit-xml >= 1.9
 Requires:       python-networkx >= 2.4
 Requires:       python-regex
-Requires:       python-sarif-om >= 1.0.4
-Requires:       python-sympy >= 1.0.0
+Requires:       python-sympy >= 1.14.0
 Requires:       python-typing-extensions
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+Recommends:     python-jschema-to-python >= 1.2.3
+Recommends:     python-junit-xml >= 1.9
 Recommends:     python-pydot
+Recommends:     python-sarif-om >= 1.0.4
 Provides:       cfn-lint = %{version}
 Obsoletes:      cfn-lint < %{version}
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module PyYAML >= 5.4}
-BuildRequires:  %{python_module aws-sam-translator >= 1.97.0}
+BuildRequires:  %{python_module PyYAML >= 6.0.3}
+BuildRequires:  %{python_module boto3}
 BuildRequires:  %{python_module defusedxml}
 BuildRequires:  %{python_module jschema-to-python >= 1.2.3}
 BuildRequires:  %{python_module jsonpatch}
@@ -59,7 +58,10 @@ BuildRequires:  %{python_module junit-xml >= 1.9}
 BuildRequires:  %{python_module networkx >= 2.4}
 BuildRequires:  %{python_module pydot}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module regex}
 BuildRequires:  %{python_module sarif-om >= 1.0.4}
+BuildRequires:  %{python_module sympy >= 1.14.0}
+BuildRequires:  %{python_module typing-extensions}
 BuildRequires:  bash
 BuildRequires:  git-core
 # /SECTION
@@ -96,7 +98,8 @@ donttest="$donttest or test_override_parameters"
 donttest="$donttest or test_positional_template_parameters"
 donttest="$donttest or test_template_config"
 donttest="$donttest or test_build_graph"
-%pytest -s test -v -k "not ($donttest)"
+# integration tests were silently skipped before, now they throw error: https://github.com/aws-cloudformation/cfn-lint/pull/4553
+%pytest -s test/unit -v -k "not ($donttest)"
 
 %post
 %python_install_alternative cfn-lint
