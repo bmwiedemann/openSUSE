@@ -20,7 +20,7 @@
 # Follow %%{primary_python} so the interpreter tracks the distro primary.
 %define pythons %{primary_python}
 Name:           comfyui
-Version:        0.33.3
+Version:        0.34.0
 Release:        0
 Summary:        Modular node-graph engine for local AI content creation
 License:        GPL-3.0-only
@@ -43,7 +43,7 @@ Requires:       %{primary_python}-PyYAML
 Requires:       %{primary_python}-SQLAlchemy >= 2.0.0
 Requires:       %{primary_python}-aiohttp >= 3.11.8
 Requires:       %{primary_python}-alembic
-Requires:       %{primary_python}-av >= 16.0.0
+Requires:       %{primary_python}-av >= 17.0.0
 Requires:       %{primary_python}-blake3
 # Upstream's requirements.txt uses "==" for the comfy* packages, but its own
 # check_comfy_packages_versions() warns only when the installed version is
@@ -63,14 +63,14 @@ Requires:       %{primary_python}-blake3
 # byte-identical between 0.4.13 and 0.4.15. A speculative upper bound would simply recreate
 # the unresolvable state this floor exists to fix, so none is set; a real
 # break gets a bound then, with the evidence.
-Requires:       %{primary_python}-comfy-aimdo >= 0.4.13
+Requires:       %{primary_python}-comfy-aimdo >= 0.4.15
 Requires:       %{primary_python}-comfy-kitchen >= 0.2.31
-Requires:       %{primary_python}-comfyui-embedded-docs >= 0.5.9
+Requires:       %{primary_python}-comfyui-embedded-docs >= 0.5.10
 # Security floor, not a compatibility pin: 1.50.6 carries the XSS fixes
 # GHSA-2gr5-vw2p-2hcf, GHSA-j6xv-rx8r-mh6j and GHSA-8xxc-66vh-2pf3. Do not
 # lower it to whatever upstream's requirements.txt happens to name.
 Requires:       %{primary_python}-comfyui-frontend-package >= 1.50.6
-Requires:       %{primary_python}-comfyui-workflow-templates >= 0.11.44
+Requires:       %{primary_python}-comfyui-workflow-templates >= 0.11.48
 Requires:       %{primary_python}-einops
 Requires:       %{primary_python}-filelock
 Requires:       %{primary_python}-numpy >= 1.25.0
@@ -90,10 +90,13 @@ Requires:       %{primary_python}-torchvision
 Requires:       %{primary_python}-tqdm
 Requires:       %{primary_python}-transformers >= 4.50.3
 Requires:       %{primary_python}-yarl >= 1.18.0
-# Non-essential extras (kornia/spandrel/comfy-angle/opengl): missing
-# optional modules must not block installing the tool.
+# Non-essential extras (kornia/spandrel/comfy-angle/numba/opengl):
+# missing optional modules must not block installing the tool. numba
+# is new in 0.34.0 and only used by comfy_extras/mesh3d/uv_unwrap,
+# which falls back to a torch implementation when it is absent.
 Recommends:     %{primary_python}-comfy-angle
 Recommends:     %{primary_python}-kornia >= 0.7.1
+Recommends:     %{primary_python}-numba
 Recommends:     %{primary_python}-opengl >= 3.1.8
 Recommends:     %{primary_python}-spandrel
 BuildArch:      noarch

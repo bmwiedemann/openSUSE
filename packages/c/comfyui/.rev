@@ -135,4 +135,53 @@ Factory ships today (aimdo 0.4.14, kitchen 0.2.31, embedded-docs 0.5.10,
 frontend 1.50.6, workflow-templates 0.11.46).</comment>
     <requestid>1373695</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a4c1c63192006f632a21a93d08ea0d33</srcmd5>
+    <version>0.34.0</version>
+    <time>1787849590</time>
+    <user>anag_factory</user>
+    <comment>Update comfyui to 0.34.0.
+
+New model support (Pixal3d, TRELLIS2, Sam3d-body, taeh3), a large
+MiniMax-H3 feature round, HDR/AV1/mkv/webm video writing, and fixes
+for the default database path under a custom user directory and for
+temp-directory asset previews.
+
+0.34.1 exists as a git tag but has no published release, so 0.34.0
+is what is submitted.
+
+Upstream raised several runtime minimums. They are encoded here as
+floors, deliberately not as the exact &quot;==&quot; pins requirements.txt
+writes, because exact pins on the independently released comfy*
+companion packages previously made comfyui uninstallable in Factory:
+
+  python-av                         &gt;= 17.0.0 (was 16.0.0)
+  python-comfy-aimdo                &gt;= 0.4.15 (was 0.4.13)
+  python-comfyui-embedded-docs      &gt;= 0.5.10 (was 0.5.9)
+  python-comfyui-workflow-templates &gt;= 0.11.48 (was 0.11.44)
+
+All four are already at or above those versions in Factory, so the
+package stays resolvable and this request needs no staging partner.
+
+The python-comfyui-frontend-package floor deliberately stays at
+&gt;= 1.50.6. The shipped v0.34.0 tarball asks for 1.49.6 (the 1.51.9
+pin is on upstream master, not on this release), and 1.50.6 already
+satisfies that while also being the security floor for the XSS fixes
+GHSA-2gr5-vw2p-2hcf, GHSA-j6xv-rx8r-mh6j and GHSA-8xxc-66vh-2pf3.
+Raising it to 1.51.9 would couple this request to the in-flight
+python-comfyui-frontend-package submission for no benefit.
+
+0.34.0 adds one new optional runtime dependency, picked up as
+Recommends: python-numba, used by the new comfy_extras/mesh3d UV
+unwrapping code when it is importable, with a working torch fallback
+when it is not.
+
+Both downstream patches (custom_nodes bootstrap under
+--base-directory, CPU fallback when no accelerator is present) are
+still required and apply unchanged; both are reported upstream.
+
+Built locally for openSUSE_Tumbleweed/aarch64, rpmlint unchanged
+from the previous version.</comment>
+    <requestid>1373929</requestid>
+  </revision>
 </revisionlist>

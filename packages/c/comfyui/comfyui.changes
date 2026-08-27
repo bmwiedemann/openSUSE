@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu Aug 27 06:17:01 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.34.0:
+  * New model support: Pixal3d, TRELLIS2, Sam3d-body and taeh3
+  * MiniMax-H3 gained a MiniMaxH3AddGuide node that anchors image and
+    audio guides at any frame, per-token video and audio latent noise
+    masks, prompt embeddings and the special tokens it was missing;
+    the plain Empty Latent Image node can now feed it as well
+  * Save Video writes HDR, the AV1 codec and mkv/webm containers, the
+    h264 codec gained HDR colour space options, and CreateVideo gained
+    a colorspace option with bit_depth turned into a combo
+  * Faster Gemma4 text generation, and dynamic VRAM is now enabled by
+    default on ROCm 7.14 and newer
+  * Fixed the default database path when a custom user directory is in
+    use, temp-directory assets disappearing while their files still
+    exist, and missing asset preview URLs outside input and output
+  * API nodes: added Wan 3.0, Meshy-7, Pixverse V6 and ByteDance vCube
+    Video Enhance; removed the retired Kling v2 image model and the
+    Tripo Refine node and v2.0 model version
+  * Startup warns that Python 3.10 reaches end of life on
+    October 31 2026
+  * ... see upstream's release notes for the full list
+- Recommend python-numba: the new mesh3d UV unwrapping code uses it
+  when it is importable and is roughly five times faster than the
+  torch fallback it otherwise takes, but works without it
+- Follow upstream's raised runtime minimums, still encoded as floors
+  and not as the exact pins that requirements.txt writes:
+  * python-av >= 17.0.0, was 16.0.0
+  * python-comfy-aimdo >= 0.4.15, was 0.4.13
+  * python-comfyui-embedded-docs >= 0.5.10, was 0.5.9
+  * python-comfyui-workflow-templates >= 0.11.48, was 0.11.44
+  * python-comfy-kitchen stays at >= 0.2.31, unchanged upstream
+  * python-comfyui-frontend-package stays at >= 1.50.6 although
+    upstream asks for 1.49.6: that is a security floor, for
+    GHSA-2gr5-vw2p-2hcf, GHSA-j6xv-rx8r-mh6j and GHSA-8xxc-66vh-2pf3
+
+-------------------------------------------------------------------
 Tue Aug 25 18:48:09 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Depend on floors instead of exact versions for the comfy* packages,
