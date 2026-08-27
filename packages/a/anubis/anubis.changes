@@ -1,4 +1,118 @@
 -------------------------------------------------------------------
+Wed Aug 19 22:28:43 UTC 2026 - Yoshio Sato <vasua.ukraine@gmail.com>
+
+- Update to the new upstream release 1.27.0
+  - 1.27.0 changes
+    * feature: Allow importing bot policy rules using wildcard matching (#1815).
+    * feature: Add support for JSON sources to iplist2rule (#1833)
+    * feature: Make the honeypot feature log detected addresses to the disk every minute when honeypot.ip_log_file is set. See the IP address logging section for more information.
+    * feature:  standard library rules for making Dillo less threatening to Anubis and document how to enable them.
+    * crawlers: Allow Arquivo.pt, the Portuguese web archive, by default via its crawling network.
+    * crawlers: Add (data)/bots/lyrenth.yaml snippet that denies Lyrenth's AIWebIndex crawler and AIWebIndex-Agent on-demand fetcher by user agent and by their published IP ranges. This is imported by (data)/bots/_deny-pathological.yaml.
+    * crawlers: Updates Alibaba cloud IP list (#1813)
+    * crawlers: Updates Googlebot IP list (#1812)
+    * crawlers: Updates IP list for DuckDuckBot (#1810)
+    * crawlers: Update Huawei Cloud IP list (#1814)
+    * fixes: Fix bot policy imports to not require pedantically correct YAML formatting when using wildcard matching.
+    * fixes: JavaScript served by the fast challenge is loaded using defer instead of async (#1782).
+    * fixes: Amend default Lightpanda rule to match current behaviour, add smoke test to ensure it keeps working (#1822).
+    * fixes: Fix a panic when a request asks for the undetermined language tag, such as Accept-Language: und (#1776).
+    * fixes: Allow user agents that start with capital-G Git in (data)/clients/git.yaml.
+    * fixes: Enabled the Partitioned flag on cookies by default (#1701).
+    * fixes: Fix Windows MSI builds on prerelease tags such as v1.27.0-pre1.
+    * fixes: Bump AI-robots.txt to version 1.47.
+    * i18n: Add Basque (eu) localization.
+    * i18n: Update Bulgarian locale (#1708)
+    * i18n: Add Croatian (hr) localization.
+  - v1.26.2 changes:
+    * chore(data): fix updown stdlib entry, add CI to catch future things by @Xe in #1771
+  - v1.26.1 changes:
+    * chore: update updown IPs by @hyperdefined in #1666
+    * fix(main): re-enable semicolon logic for proxied backends by @Xe in #1764
+    * feat: make proofofwork challenge more reliable under heavy server load by @Xe in #1766
+  - v1.26.0 changes:
+    * build(deps): bump actions-hub/kubectl from 1.35.2 to 1.35.3 in the github-actions group by @dependabot[bot] in #1532
+    * build(deps): bump github.com/go-jose/go-jose/v3 from 3.0.4 to 3.0.5 by @dependabot[bot] in #1629
+    * build(deps): bump the github-actions group across 1 directory with 11 updates by @dependabot[bot] in #1516
+    * build(deps): bump the github-actions group across 1 directory with 14 updates by @dependabot[bot] in #1725
+    * build(deps): bump the github-actions group across 1 directory with 7 updates by @dependabot[bot] in #1560
+    * build(deps): bump the gomod group across 1 directory with 16 updates by @dependabot[bot] in #1727
+    * build(deps): bump the gomod group with 2 updates by @dependabot[bot] in #1730
+    * build(deps): bump the npm group across 1 directory with 5 updates by @dependabot[bot] in #1559
+    * build(deps): bump the npm group across 1 directory with 6 updates by @dependabot[bot] in #1512
+    * build(deps): bump the npm group across 1 directory with 6 updates by @dependabot[bot] in #1646
+    * build(deps): bump the npm group across 1 directory with 8 updates by @dependabot[bot] in #1723
+    * build(deps): bump the npm group with 5 updates by @dependabot[bot] in #1531
+    * build(deps-dev): bump prettier from 3.8.5 to 3.9.1 in the npm group by @dependabot[bot] in #1729
+    * build(deps-dev): bump the npm group across 1 directory with 4 updates by @dependabot[bot] in #1677
+    * build(deps-dev): bump the npm group across 1 directory with 6 updates by @dependabot[bot] in #1621
+    * chore(data): fix google translate bug #444 by @Xe in #1734
+    * chore(l10n): update French translation by @HarmfulBreeze in #1496
+    * chore(sponsors): add embeDD GmbH by @Xe in #1539
+    * chore: add chrome testing command by @Xe in #1740
+    * chore: add golangci words to the spelling dictionary by @Xe in #1724
+    * chore: ban x.ai by @Xe in #1673
+    * chore: bump go version to 1.26 by @Xe in #1695
+    * chore: gofix by @JasonLovesDoggo in #1466
+    * chore: set up golangci-lint by @Xe in #1720
+    * chore: tag v1.26.0-pre1 by @Xe in #1705
+    * chore: update playwright dependencies by @JasonLovesDoggo in #1279
+    * chore: update vi.json by @honhatduy in #1459
+    * chore: use Go stdlib version stamping by @Xe in #1665
+    * ci: add cspell to replace check-spelling by @Xe in #1722
+    * ci: purge govulncheck, it's less signal than i hoped by @Xe in #1515
+    * ci: remove spelling checks by @Xe in #1688
+    * docs(admin/policy): document ReadWritePaths for logging to files by @Xe in #1469
+    * docs(faq): document minimum versions of browsers Anubis supports by @Xe in #1540
+    * docs(faq): document that disabling JIT makes Anubis slow by @Xe in #1526
+    * docs(known-instances): Add missing one. by @p0008874 in #1500
+    * docs: add anubis-kubernetes-operator as another option by @eznix86 in #1675
+    * docs: fix mixed tab/space indentation in Caddy config example by @pzhlkj6612 in #1506
+    * docs: remove developer/code-quality by @gucci-on-fleek in #1475
+    * docs: use stable container in traefik deployment example by @RealOrangeOne in #1676
+    * feat(anubis): enable pprof endpoints on the metrics server by @Xe in #1530
+    * feat(config): add option to disable the honeypot by @Xe in #1759
+    * feat(data): add Citoid to good bots list by @mvolz in #1524
+    * feat(data): add Meta's web indexer used for AI purposes by @bnjbvr in #1573
+    * feat(docs): Add instructions on using Anubis with envoy-gateway by @fhoekstra in #1460
+    * feat(docs): Update HAProxy Advanced Variant documentation by @rozmansi in #1521
+    * feat(http): set "Cache-Control: no-store" on error responses by @gucci-on-fleek in #1474
+    * feat(i18n): add Bulgarian language translation by @ramromcode in #1394
+    * feat(metrics): basic auth support by @Xe in #1579
+    * feat(metrics): enable TLS/mTLS serving support by @Xe in #1576
+    * feat(qwantbot): update remote addresses by @mhardy-qwant in #1719
+    * feat(yeetfile): build freebsd and windows binaries by @Xe in #1735
+    * feat: Log weight when issuing challenge by @tdgroot in #1611
+    * feat: add ASN data from Thoth to logs/metrics by @lillian-b in #1608
+    * feat: add HttpOnly cookie option by @tdgroot in #1679
+    * feat: move metrics server config to the policy file by @Xe in #1572
+    * fix(crawlers): update MojeekBot remote_addresses subnet to match official spec by @bochard07 in #1746
+    * fix(honeypot): remove DoS vector by @Xe in #1581
+    * fix(honeypot/naive): apply robot9001 style delays by @Xe in #1632
+    * fix(locales/de): revise and update German translations by @michi-onl in #1457
+    * fix(locales/ja): change the position of the バージョン (version) by @fu-sen in #1527
+    * fix(metrics): bind to the right network/bindhost by @Xe in #1606
+    * fix(policy): correctly wire subrequest mode through CEL/path checkers by @Xe in #1630
+    * fix(web): lower chrome support floor to Chrome 66 by @Xe in #1738
+    * fix: Address issued raised in #1193 by @dwhitemv25 in #1519
+    * fix: Thoth geoip compare by @lenny87 in #1564
+    * fix: add cel iterator by @JasonLovesDoggo in #1465
+    * fix: add trimpath option to artifact builds by @tdgroot in #1682
+    * fix: nil deref when solve request lands on a different DIFFICULTY than the original req by @JasonLovesDoggo in #1467
+    * fix: patch GHSA-6wcg-mqvh-fcvg by @Xe in #1616
+    * fix: small security fixes by @Xe in #1651
+    * perf(challenge/proofofwork): stream sha256 into stack buffer in Validate by @jvoisin in #1653
+    * perf(internal): cut allocations in computeXFFHeader by @jvoisin in #1692
+    * perf(internal/gzip): pool *gzip.Writer per middleware instance by @jvoisin in #1654
+    * perf(internal/gzip): share writer pool across middleware reconstructions by @jvoisin in #1694
+    * perf(lib): iterate s.policy.Bots by index to drop per-call heap copy by @jvoisin in #1639
+    * perf(policy): only compute ja4h fingerprint when referenced by @jvoisin in #1689
+    * perf: don't look into the store for OpenGraph things if it is disabled by @jvoisin in #1690
+    * perf: enable uuid randomness pool and minor cleanups by @jvoisin in #1652
+    * perf: iterate s.policy.Bots by index to drop per-call heap copy by @jvoisin in #1691
+    * refactor(honeypot/naive): compute network hash once in incrementNetwork by @jvoisin in #1693 
+
+-------------------------------------------------------------------
 Wed Feb 18 16:58:51 UTC 2026 - Yoshio Sato <vasua.ukraine@gmail.com>
 
 - Update to the new upstream release 1.25.0
