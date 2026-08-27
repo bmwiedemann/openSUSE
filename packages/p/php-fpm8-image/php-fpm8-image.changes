@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 27 08:09:37 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
+
+- move customization steps to build stage- #4314
+
+-------------------------------------------------------------------
 Mon Jul 27 12:02:51 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
 
 - filter basecontainer packages from installation for optimizing rebuilds
