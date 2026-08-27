@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-django-oauth-toolkit
-Version:        3.3.0
+Version:        3.4.1
 Release:        0
 Summary:        OAuth2 Provider for Django
 License:        BSD-2-Clause
@@ -26,6 +26,7 @@ URL:            https://github.com/jazzband/django-oauth-toolkit
 Source:         https://github.com/jazzband/django-oauth-toolkit/archive/%{version}.tar.gz#/django-oauth-toolkit-%{version}.tar.gz
 BuildRequires:  %{python_module Django >= 4.2}
 BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module django-ninja}
 BuildRequires:  %{python_module djangorestframework}
 BuildRequires:  %{python_module jwcrypto >= 1.5.0}
 BuildRequires:  %{python_module oauthlib >= 3.2.2}
@@ -33,6 +34,7 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module pytest-mock}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module requests >= 2.13.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}

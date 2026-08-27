@@ -213,4 +213,12 @@
   * #1692 Fix consent violation and scope escalation.</comment>
     <requestid>1362534</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6c4ece31219ddc4a48fb40705178547a</srcmd5>
+    <version>3.4.1</version>
+    <time>1787849742</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1374085</requestid>
+  </revision>
 </revisionlist>

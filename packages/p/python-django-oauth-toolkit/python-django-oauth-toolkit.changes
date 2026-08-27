@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Aug 27 11:35:22 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- update to 3.4.1 (CVE-2026-16206, bsc#1271699)
+  * Integration and docs for Django Ninja authentication
+  * Support for RP-Initiated Registration
+  * Add RFC 8414 OAuth 2.0 Authorization Server Metadata endpoint
+  * Add RFC 9728 OAuth 2.0 Protected Resource Metadata endpoint
+  * Dynamic help text on the application client_secret field, warning
+    users to copy the secret on creation and explaining it is hashed
+    and unrecoverable when editing
+  * Dynamic Client Registration Protocol (RFC 7591 / RFC 7592)
+  * ALLOW_LOCALHOST_LOOPBACK setting to extend the RFC 8252 §7.3
+    any-port loopback exemption to http://localhost redirect URIs
+  * Support for OAuth Client ID Metadata Documents
+  * New docs/security.rst page mapping each RFC 9700 recommendation
+    to the corresponding setting
+  * Deprecate the AUTHENTICATION_SERVER_EXP_TIME_ZONE setting
+
+-------------------------------------------------------------------
 Mon Jun 29 20:40:32 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.3.0:
