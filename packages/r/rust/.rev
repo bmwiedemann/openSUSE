@@ -1001,4 +1001,12 @@ See SR#946556</comment>
     <comment></comment>
     <requestid>1365457</requestid>
   </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>509c57f0012b60765a60ada908832cec</srcmd5>
+    <version>1.98.0</version>
+    <time>1787849433</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.98.0 - for details see the rust1.98 package</comment>
+    <requestid>1373493</requestid>
+  </revision>
 </revisionlist>
