@@ -1,0 +1,41 @@
+--- a/configure.ac	2026-08-26 09:25:34.712811719 +0200
++++ b/configure.ac	2026-08-26 09:27:18.429345003 +0200
+@@ -65,6 +65,10 @@
+ AC_SUBST(CRYPTO_OSSL_LT_REVISION, 1)
+ AC_SUBST(CRYPTO_OSSL_LT_AGE, 3)
+ 
++AC_SUBST(CRYPTO_BORINGSSL_LT_CURRENT, 0)
++AC_SUBST(CRYPTO_BORINGSSL_LT_REVISION, 0)
++AC_SUBST(CRYPTO_BORINGSSL_LT_AGE, 0)
++
+ # from nghttp2
+ major=`echo $PACKAGE_VERSION |cut -d. -f1 | sed -e "s/[^0-9]//g"`
+ minor=`echo $PACKAGE_VERSION |cut -d. -f2 | sed -e "s/[^0-9]//g"`
+--- a/crypto/boringssl/Makefile.am	2026-08-26 09:25:34.707471566 +0200
++++ b/crypto/boringssl/Makefile.am	2026-08-26 09:28:38.517920390 +0200
+@@ -34,9 +34,14 @@
+ pkgconfig_DATA = libngtcp2_crypto_boringssl.pc
+ DISTCLEANFILES = $(pkgconfig_DATA)
+ 
+-lib_LIBRARIES = libngtcp2_crypto_boringssl.a
++lib_LTLIBRARIES = libngtcp2_crypto_boringssl.la
+ 
+-libngtcp2_crypto_boringssl_a_SOURCES = boringssl.c ../shared.c ../shared.h
++libngtcp2_crypto_boringssl_la_SOURCES = boringssl.c ../shared.c ../shared.h
++libngtcp2_crypto_boringssl_la_LDFLAGS = -no-undefined \
++	-version-info $(CRYPTO_BORINGSSL_LT_CURRENT):$(CRYPTO_BORINGSSL_LT_REVISION):$(CRYPTO_BORINGSSL_LT_AGE)
++libngtcp2_crypto_boringssl_la_LIBADD = \
++	$(top_builddir)/lib/libngtcp2.la \
++	@BORINGSSL_LIBS@
+ 
+ if HAVE_CRYPTOTEST
+ if HAVE_BORINGSSL_STDCXXLIB
+@@ -48,7 +53,7 @@
+ 	$(top_srcdir)/tests/munit/munit.c $(top_srcdir)/tests/munit/munit.h
+ cryptotest_CPPFLAGS = ${AM_CPPFLAGS} -I$(top_srcdir)/tests/munit
+ cryptotest_LDADD = \
+-	libngtcp2_crypto_boringssl.a \
++	libngtcp2_crypto_boringssl.la \
+ 	$(top_builddir)/lib/libngtcp2.la \
+ 	@BORINGSSL_LIBS@ \
+ 	@BORINGSSL_STDCXXLIB@

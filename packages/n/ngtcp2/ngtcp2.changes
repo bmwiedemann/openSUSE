@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Aug 26 11:25:59 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Require boringssl-devel >= 0.20260813 at build time: the previous
+  0.20210430 snapshot lacks SSL_set_quic_early_data_context, so
+  configure rejected it with a misleading "boringssl was requested
+  but not found" failure instead of an unresolvable dependency
+
+-------------------------------------------------------------------
+Wed Aug 26 07:18:25 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Add ngtcp2-boringssl-shared.patch bulding the boringssl bridge
+  as shared library
+- Enable building the boringssl bridge in Factory
+
+-------------------------------------------------------------------
+Mon Aug 24 18:07:11 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Add curl-impersonate.patch backporting backward compatible changes
+  used by curl-impersonate project
+
+-------------------------------------------------------------------
 Fri Jul 31 19:46:57 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.25.0:

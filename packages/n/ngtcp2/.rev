@@ -378,4 +378,35 @@
     <comment>Update to 1.25.0</comment>
     <requestid>1368936</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>62e74f2e8ae44e17ee4cb5dfa0a092c6</srcmd5>
+    <version>1.25.0</version>
+    <time>1787849387</time>
+    <user>anag_factory</user>
+    <comment>Supersedes sr#1373759: same change plus a build-time version floor on
+boringssl-devel.
+
+ngtcp2's boringssl bridge needs SSL_set_quic_early_data_context, which
+the 0.20210430 FIPS snapshot that was in Factory until 2026-08-25 does
+not provide. With an unversioned BuildRequires the old snapshot still
+satisfies dependency resolution, so configure gets as far as
+&quot;checking for SSL_set_quic_early_data_context... no&quot; and then fails
+%build with &quot;boringssl was requested (--with-boringssl) but not found&quot;
+-- which reads like a packaging bug rather than a too-old dependency.
+This is exactly what the devel project's openSUSE_Factory repo is
+currently doing on all four arches, since published Tumbleweed has not
+picked up boringssl 0.20260813 (rq1373505) yet.
+
+Declaring BuildRequires: boringssl-devel &gt;= 0.20260813 turns that into
+a plain unresolvable, which is the correct signal, and it resolves on
+its own once the new boringssl reaches the published snapshot. The
+floor sits inside the existing %if %{with boringssl} guard, so the
+Leap/SLE targets that do not build the bridge are unaffected.
+
+Verified locally on aarch64 against openSUSE:Factory:ARM/standard,
+where boringssl-devel 0.20260813 is available: build green, %check
+TOTAL=1 PASS=1, rpmlint 0 errors / 0 warnings / 0 badness,
+soname-check.sh clean over all 8 packages, source_validator rc0.</comment>
+    <requestid>1373797</requestid>
+  </revision>
 </revisionlist>

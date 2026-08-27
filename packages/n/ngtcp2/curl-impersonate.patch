@@ -1,0 +1,292 @@
+--- a/export.sh	1970-01-01 01:00:00.000000000 +0100
++++ b/export.sh	2026-08-24 14:52:55.078427300 +0200
+@@ -0,0 +1,10 @@
++#!/bin/bash
++
++# TODO: use cmake to generate mingw makefile, see:
++#
++# 1. https://github.com/curl/curl/pull/13244/files
++# 2. https://everything.curl.dev/build/windows.html
++
++git df v1.20.0 > ngtcp2.patch
++mv ngtcp2.patch ../curl-impersonate/patches/ngtcp2.patch
++
+--- a/lib/includes/ngtcp2/ngtcp2.h	2026-08-24 14:52:28.535774953 +0200
++++ b/lib/includes/ngtcp2/ngtcp2.h	2026-08-24 14:52:55.079196506 +0200
+@@ -1474,6 +1474,25 @@
+ /**
+  * @struct
+  *
++ * :type:`ngtcp2_transport_params_raw` represents the raw serialized
++ * QUIC transport parameters.
++ */
++typedef struct ngtcp2_transport_params_raw {
++  /**
++   * :member:`base` points to the beginning of serialized transport
++   * parameters.
++   */
++  const uint8_t *base;
++  /**
++   * :member:`len` is the number of bytes pointed by
++   * :member:`base`.
++   */
++  size_t len;
++} ngtcp2_transport_params_raw;
++
++/**
++ * @struct
++ *
+  * :type:`ngtcp2_transport_params` represents QUIC transport
+  * parameters.
+  */
+@@ -4940,6 +4959,36 @@
+ 
+ /**
+  * @function
++ *
++ * `ngtcp2_conn_set_local_transport_params_raw` sets pre-serialized
++ * local transport parameters.  If this function succeeds,
++ * `ngtcp2_conn_encode_local_transport_params` returns exactly the
++ * serialized bytes specified by |params|.
++ *
++ * This function does not update local transport parameters returned
++ * by `ngtcp2_conn_get_local_transport_params`.
++ *
++ * This function must be called before
++ * `ngtcp2_conn_install_tx_handshake_key`.
++ *
++ * This function returns 0 if it succeeds, or one of the following
++ * negative error codes:
++ *
++ * :macro:`NGTCP2_ERR_INVALID_ARGUMENT`
++ *     |params| is NULL, or |params->base| is NULL when
++ *     |params->len| is not 0.
++ * :macro:`NGTCP2_ERR_INVALID_STATE`
++ *     `ngtcp2_conn_install_tx_handshake_key` has been called.
++ * :macro:`NGTCP2_ERR_NOMEM`
++ *     Out of memory.
++ * :macro:`NGTCP2_ERR_MALFORMED_TRANSPORT_PARAM`
++ *     The input is malformed.
++ */
++NGTCP2_EXTERN int ngtcp2_conn_set_local_transport_params_raw(
++  ngtcp2_conn *conn, const ngtcp2_transport_params_raw *params);
++
++/**
++ * @function
+  *
+  * .. warning::
+  *
+--- a/lib/ngtcp2_conn.c	2026-08-24 14:52:28.534729392 +0200
++++ b/lib/ngtcp2_conn.c	2026-08-24 14:52:55.081864399 +0200
+@@ -1144,6 +1144,11 @@
+   p->version_info_present = 1;
+ }
+ 
++static void conn_clear_local_transport_params_raw(ngtcp2_conn *conn) {
++  ngtcp2_mem_free(conn->mem, (uint8_t *)conn->local.transport_params_raw.base);
++  conn->local.transport_params_raw = (ngtcp2_transport_params_raw){0};
++}
++
+ static void conn_update_skip_pkt(ngtcp2_conn *conn, ngtcp2_pktns *pktns) {
+   const int64_t min_gap = 3;
+   uint8_t r;
+@@ -1811,6 +1816,7 @@
+   ngtcp2_mem_free(conn->mem, conn->crypto.decrypt_buf.base);
+   ngtcp2_mem_free(conn->mem, conn->crypto.decrypt_hp_buf.base);
+   ngtcp2_mem_free(conn->mem, (uint8_t *)conn->local.settings.token);
++  ngtcp2_mem_free(conn->mem, (uint8_t *)conn->local.transport_params_raw.base);
+ 
+   ngtcp2_crypto_km_del(conn->crypto.key_update.old_rx_ckm, conn->mem);
+   ngtcp2_crypto_km_del(conn->crypto.key_update.new_rx_ckm, conn->mem);
+@@ -11942,11 +11948,51 @@
+     return NGTCP2_ERR_INVALID_STATE;
+   }
+ 
++  conn_clear_local_transport_params_raw(conn);
+   conn_set_local_transport_params(conn, params);
+ 
+   return 0;
+ }
+ 
++int ngtcp2_conn_set_local_transport_params_raw(
++  ngtcp2_conn *conn, const ngtcp2_transport_params_raw *params) {
++  uint8_t *buf;
++  ngtcp2_transport_params paramsbuf;
++  int rv;
++
++  if (params == NULL || (params->len && params->base == NULL)) {
++    return NGTCP2_ERR_INVALID_ARGUMENT;
++  }
++
++  if (conn->hs_pktns == NULL || conn->hs_pktns->crypto.tx.ckm) {
++    return NGTCP2_ERR_INVALID_STATE;
++  }
++
++  if (params->len == 0) {
++    conn_clear_local_transport_params_raw(conn);
++    return 0;
++  }
++
++  rv = ngtcp2_transport_params_decode(&paramsbuf, params->base, params->len);
++  if (rv != 0) {
++    return rv;
++  }
++
++  buf = ngtcp2_mem_malloc(conn->mem, params->len);
++  if (buf == NULL) {
++    return NGTCP2_ERR_NOMEM;
++  }
++
++  memcpy(buf, params->base, params->len);
++
++  conn_clear_local_transport_params_raw(conn);
++
++  conn->local.transport_params_raw.base = buf;
++  conn->local.transport_params_raw.len = params->len;
++
++  return 0;
++}
++
+ int ngtcp2_conn_commit_local_transport_params(ngtcp2_conn *conn) {
+   const ngtcp2_mem *mem = conn->mem;
+   ngtcp2_transport_params *params = &conn->local.transport_params;
+@@ -12013,6 +12059,16 @@
+ ngtcp2_ssize ngtcp2_conn_encode_local_transport_params2(const ngtcp2_conn *conn,
+                                                         uint8_t *dest,
+                                                         size_t destlen) {
++  if (conn->local.transport_params_raw.len) {
++    if (destlen < conn->local.transport_params_raw.len) {
++      return NGTCP2_ERR_NOBUF;
++    }
++
++    memcpy(dest, conn->local.transport_params_raw.base,
++           conn->local.transport_params_raw.len);
++    return (ngtcp2_ssize)conn->local.transport_params_raw.len;
++  }
++
+   return ngtcp2_transport_params_encode(dest, destlen,
+                                         &conn->local.transport_params);
+ }
+--- a/lib/ngtcp2_conn.h	2026-08-24 14:52:28.533935115 +0200
++++ b/lib/ngtcp2_conn.h	2026-08-24 14:52:55.082724453 +0200
+@@ -467,6 +467,9 @@
+     /* transport_params is the local transport parameters.  It is used
+        for Short packet only. */
+     ngtcp2_transport_params transport_params;
++    /* transport_params_raw contains serialized local transport
++       parameters, if they are specified. */
++    ngtcp2_transport_params_raw transport_params_raw;
+     struct {
+       /* max_streams is the maximum number of bidirectional streams which
+          the local endpoint can open. */
+--- a/tests/ngtcp2_conn_test.c	2026-08-24 14:52:28.527989902 +0200
++++ b/tests/ngtcp2_conn_test.c	2026-08-24 14:52:55.084864420 +0200
+@@ -97,6 +97,7 @@
+   munit_void_test(test_ngtcp2_conn_recv_version_negotiation),
+   munit_void_test(test_ngtcp2_conn_send_initial_token),
+   munit_void_test(test_ngtcp2_conn_set_remote_transport_params),
++  munit_void_test(test_ngtcp2_conn_set_local_transport_params_raw),
+   munit_void_test(test_ngtcp2_conn_write_connection_close),
+   munit_void_test(test_ngtcp2_conn_write_application_close),
+   munit_void_test(test_ngtcp2_conn_rtb_reclaim_on_pto),
+@@ -13267,6 +13268,90 @@
+ 
+   ngtcp2_conn_del(conn);
+ }
++
++void test_ngtcp2_conn_set_local_transport_params_raw(void) {
++  ngtcp2_conn *conn;
++  ngtcp2_transport_params params, decoded_params;
++  ngtcp2_transport_params_raw raw_params;
++  ngtcp2_crypto_aead_ctx aead_ctx = {0};
++  ngtcp2_crypto_cipher_ctx hp_ctx = {0};
++  uint8_t encoded[1024];
++  uint8_t rawbuf[1024];
++  uint8_t out[1024];
++  uint8_t malformed[] = {0x01};
++  uint8_t *p;
++  ngtcp2_ssize nwrite;
++  size_t rawlen;
++  int rv;
++  conn_options opts = {0};
++
++  conn_server_new(&conn, opts);
++  conn->local.transport_params.version_info.chosen_version = NGTCP2_PROTO_VER_V1;
++
++  server_default_transport_params(&params);
++  params.original_dcid = conn->rcid;
++
++  nwrite = ngtcp2_transport_params_encode(encoded, sizeof(encoded), &params);
++  assert_ptrdiff(0, <, nwrite);
++
++  p = rawbuf;
++  p = ngtcp2_put_uvarint(p, 0x173e);
++  p = ngtcp2_put_uvarint(p, 0);
++
++  memcpy(p, encoded, (size_t)nwrite);
++  p += (size_t)nwrite;
++  rawlen = (size_t)(p - rawbuf);
++
++  raw_params = (ngtcp2_transport_params_raw){
++    .base = rawbuf,
++    .len = rawlen,
++  };
++
++  rv = ngtcp2_conn_set_local_transport_params_raw(conn, &raw_params);
++  assert_int(0, ==, rv);
++
++  nwrite = ngtcp2_conn_encode_local_transport_params(conn, out, sizeof(out));
++  assert_ptrdiff((ngtcp2_ssize)rawlen, ==, nwrite);
++  assert_memory_equal(rawlen, rawbuf, out);
++
++  params.initial_max_data += 1000;
++  rv = ngtcp2_conn_set_local_transport_params(conn, &params);
++  assert_int(0, ==, rv);
++
++  nwrite = ngtcp2_conn_encode_local_transport_params(conn, out, sizeof(out));
++  assert_ptrdiff(0, <, nwrite);
++
++  rv = ngtcp2_transport_params_decode(&decoded_params, out, (size_t)nwrite);
++  assert_int(0, ==, rv);
++  assert_uint64(params.initial_max_data, ==, decoded_params.initial_max_data);
++
++  raw_params = (ngtcp2_transport_params_raw){
++    .base = NULL,
++    .len = sizeof(malformed),
++  };
++  rv = ngtcp2_conn_set_local_transport_params_raw(conn, &raw_params);
++  assert_int(NGTCP2_ERR_INVALID_ARGUMENT, ==, rv);
++
++  raw_params = (ngtcp2_transport_params_raw){
++    .base = malformed,
++    .len = sizeof(malformed),
++  };
++  rv = ngtcp2_conn_set_local_transport_params_raw(conn, &raw_params);
++  assert_int(NGTCP2_ERR_MALFORMED_TRANSPORT_PARAM, ==, rv);
++
++  rv = ngtcp2_conn_install_tx_handshake_key(conn, &aead_ctx, null_iv,
++                                            sizeof(null_iv), &hp_ctx);
++  assert_int(0, ==, rv);
++
++  raw_params = (ngtcp2_transport_params_raw){
++    .base = rawbuf,
++    .len = rawlen,
++  };
++  rv = ngtcp2_conn_set_local_transport_params_raw(conn, &raw_params);
++  assert_int(NGTCP2_ERR_INVALID_STATE, ==, rv);
++
++  ngtcp2_conn_del(conn);
++}
+ 
+ void test_ngtcp2_conn_write_connection_close(void) {
+   ngtcp2_conn *conn;
+--- a/tests/ngtcp2_conn_test.h	2026-08-24 14:52:28.529036841 +0200
++++ b/tests/ngtcp2_conn_test.h	2026-08-24 14:52:55.086088732 +0200
+@@ -91,6 +91,7 @@
+ munit_void_test_decl(test_ngtcp2_conn_recv_version_negotiation)
+ munit_void_test_decl(test_ngtcp2_conn_send_initial_token)
+ munit_void_test_decl(test_ngtcp2_conn_set_remote_transport_params)
++munit_void_test_decl(test_ngtcp2_conn_set_local_transport_params_raw)
+ munit_void_test_decl(test_ngtcp2_conn_write_connection_close)
+ munit_void_test_decl(test_ngtcp2_conn_write_application_close)
+ munit_void_test_decl(test_ngtcp2_conn_rtb_reclaim_on_pto)
