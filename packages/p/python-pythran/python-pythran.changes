@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Aug 24 05:58:04 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.19.0:
+  * Improve numpoy expression combiners
+  * Improve range-value analysis
+  * Match numpy upgrades
+  * CPython 3.15 compatibility
+  * Update pocketfft requirements
+  * Update xsimd requirements
+  * Bump C++ dependency to C++17
+  * Use clang-tidy to lint pythonic codebase
+  * Remove obsolete pythonic code
+  * Improve compatibility with 32bit architectures
+
+-------------------------------------------------------------------
 Wed Aug 12 06:57:23 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Support new gast and beniget.
