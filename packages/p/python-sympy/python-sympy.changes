@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Aug 26 14:32:44 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- update to 1.14.0
+  * assumptions: invalid figures give None instead of True or False
+  * Fixed a bug in the ask function where Q.algebraic queries did
+    not handle three-valued logic correctly.
+  * new classes mapping to numpy's functions: amin, amax, minimum, maximum
+  * DEPRECATION: The gcd parameter for Rational is now deprecated.
+  * Fixed a bug where Mod(1, n) evaluates to 1 - n when n is a positive
+    integer.
+  * BREAKING CHANGE: In SymPy 1.7 Basic.match and Basic.replace were
+    changed to treat bound symbols in a pattern as wild cards. This change
+    is now reverted so that patterns are matched structurally without
+    distinguishing between free and bound symbols.
+  * Added caching to speed up harmonic number computation.
+  * Ramanujan's congruences have been implemented.
+  * Added fraction-free LU Decomposition method for DomainMatrix.
+  * add a draw method for the Arch class
+  * Added method to solve StateSpace equations using dsolve().
+  * KanesMethod requires linear speed constraints, but it does not check
+    whether they indeed are linear.
+  * BREAKING CHANGE: Using polynomial rings with the ring_series module
+    now only works for series that have nonnegative integer exponents.
+    For series with negative or fractional exponents the PuiseuxRing type
+    must be used instead.
+  * BREAKING CHANGE: True division like a / b with elements of polynomial
+    rings now computes an exact division (exquo) rather than floor division.
+    For floor division use a // b.
+  * Added PyTorch backend support to lambdify
+  * more changes, see upstream release notes
+- Rewrote too ancient changelog entries
+
+-------------------------------------------------------------------
 Fri May  9 05:19:08 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
@@ -1443,22 +1476,34 @@ Sat Feb 25 21:50:14 UTC 2012 - scorot@free.fr
 Sun Nov 20 17:59:44 UTC 2011 - werner.ho@gmx.de
 
 - new version 0.7.1
+
 -------------------------------------------------------------------
-* Mon Mar 29 2010 Werner Hoch <werner.ho@gmx.de> - 0.6.7
+Mon Mar 29 00:00:00 UTC 2010 - Werner Hoch <werner.ho@gmx.de>
+
 - new version 0.6.7
+
 -------------------------------------------------------------------
-* Sun Dec 20 2009 Werner Hoch <werner.ho@gmx.de> - 0.6.5
+Sun Dec 20 00:00:00 UTC 2009 - Werner Hoch <werner.ho@gmx.de>
+
 - fixed site-packages location for openSUSE 11.2
+
 -------------------------------------------------------------------
-* Sun Oct 04 2009 Werner Hoch <werner.ho@gmx.de> - 0.6.5
+Sun Oct 04 00:00:00 UTC 2009 - Werner Hoch <werner.ho@gmx.de>
+
 - new version 0.6.5
+
 -------------------------------------------------------------------
-* Sun Apr 19 2009 Werner Hoch <werner.ho@gmx.de> - 0.6.4
+Sun Apr 19 00:00:00 UTC 2009 - Werner Hoch <werner.ho@gmx.de>
+
 - new version 0.6.4
+
 -------------------------------------------------------------------
-* Mon Nov 24 2008 Werner Hoch <werner.ho@gmx.de> - 0.6.3
+Mon Nov 24 00:00:00 UTC 2008 - Werner Hoch <werner.ho@gmx.de>
+
 - new version 0.6.3
+
 -------------------------------------------------------------------
-* Sat Sep 20 2008 Werner Hoch <werner.ho@gmx.de> - 0.6.2
+Sat Sep 20 00:00:00 UTC 2008 - Werner Hoch <werner.ho@gmx.de> - 0.6.2
+
 - fixed wrong man-page in INSTALLED_FILES list
 

@@ -1,7 +1,7 @@
 #
 # spec file for package python-sympy
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 # Tests run 7h53m47s in OBS ... so we are switching them off right now
 %bcond_with  test
 Name:           python-sympy
-Version:        1.13.3
+Version:        1.14.0
 Release:        0
 Summary:        Computer algebra system (CAS) in Python
 License:        BSD-3-Clause
@@ -34,7 +34,6 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-mpmath >= 1.1.0
-Requires:       python-setuptools
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Recommends:     python-ipython
@@ -57,11 +56,6 @@ any external libraries.
 %autosetup -p1 -n sympy-%{version}
 
 sed -i -e '/^#!\//, 1d' sympy/testing/tests/diagnose_imports.py
-
-%{python_expand cp -r examples examples-%{$python_bin_suffix}
-find examples-%{$python_bin_suffix} -name "*.py" -exec sed -i "s|^#!%{_bindir}/env python$|#!%{__$python}|" {} \;
-find examples-%{$python_bin_suffix} -name "*.py" -exec sed -i "s|^#! %{_bindir}/env python$|#!%{__$python}|" {} \;
-}
 
 %build
 %pyproject_wheel
@@ -100,7 +94,6 @@ $python -c 'from sympy.testing import runtests ; runtests.run_all_tests()'
 %files %{python_files}
 %license LICENSE
 %doc AUTHORS README.md
-%doc examples-%{python_bin_suffix}/
 %python_alternative %{_bindir}/isympy
 %python_alternative %{_mandir}/man1/isympy.1%{ext_man}
 %{python_sitelib}/sympy
