@@ -1,0 +1,805 @@
+From 196bcc2c505688b7fa7c2c41f13d1544ab9ac49e Mon Sep 17 00:00:00 2001
+From: oumaiymaintissar <oumaiyma.intissar@oracle.com>
+Date: Fri, 7 Aug 2026 19:39:02 +0000
+Subject: [PATCH] 8388214: (tz) Update Timezone Data to 2026c
+
+Reviewed-by: naoto
+---
+ src/java.base/share/data/tzdata/VERSION       |   2 +-
+ src/java.base/share/data/tzdata/africa        | 191 +++---------------
+ src/java.base/share/data/tzdata/australasia   |   2 +-
+ src/java.base/share/data/tzdata/europe        |  21 +-
+ src/java.base/share/data/tzdata/leapseconds   |   8 +-
+ src/java.base/share/data/tzdata/northamerica  | 121 +++++++++--
+ .../format/TestZoneTextPrinterParser.java     |  26 ++-
+ .../test/java/time/zone/TestZoneRules.java    |  14 +-
+ test/jdk/java/util/TimeZone/Bug6329116.java   |  17 +-
+ .../java/util/TimeZone/NegativeDSTTest.java   |  17 +-
+ .../java/util/TimeZone/TimeZoneData/VERSION   |   2 +-
+ .../TimeZone/TimeZoneData/displaynames.txt    |   4 +-
+ 12 files changed, 214 insertions(+), 211 deletions(-)
+
+diff --git a/src/java.base/share/data/tzdata/VERSION b/src/java.base/share/data/tzdata/VERSION
+index 7602b7afe4c..0b4358e49c9 100644
+--- a/src/java.base/share/data/tzdata/VERSION
++++ b/src/java.base/share/data/tzdata/VERSION
+@@ -21,4 +21,4 @@
+ # or visit www.oracle.com if you need additional information or have any
+ # questions.
+ #
+-tzdata2026b
++tzdata2026c
+diff --git a/src/java.base/share/data/tzdata/africa b/src/java.base/share/data/tzdata/africa
+index cf1247ee3ab..a00c3b925e3 100644
+--- a/src/java.base/share/data/tzdata/africa
++++ b/src/java.base/share/data/tzdata/africa
+@@ -620,6 +620,24 @@ Zone Indian/Mauritius	3:50:00 -	LMT	1907 # Port Louis
+ # Morocco
+ # See Africa/Ceuta for Spanish Morocco.
+ 
++# From Paul Eggert (2026-06-26):
++# In “Morocco’s GMT+1, a century of shifting time and a debate far from over”
++# https://en.yabiladi.com/articles/details/191310/morocco-s-gmt1-century-shifting-time
++# (2026-03-30), Yabiladi’s Latifa Babas reports the following:
++#  * A 1913-10-26 royal dahir established GMT as legal time in Morocco.
++#  * A 1918-05-10 dahir instituted DST on 1918-05-16 at 00:00.
++#  * A September 1939 dahir restarted DST on 1939-09-12.
++#  * A February 1940 dahir restarted DST as early as 1940-02-25.
++#  * Standard time resumed in September 1946.
++#  * A June 1950 decree restarted DST, which ran until as late as October.
++#  * Royal decree 455-67 (1967-06-02) restarted DST on June 3 at noon.
++#  * After 1967 Morocco used DST “during several summers, particularly
++#    throughout the 1970s and 1980s.”
++# Babas consulted official records that disagree with and are surely
++# more correct than our pre-2008 timestamp data, which came from the
++# unreliable Shanks & Pottenger.  Unfortunately, Babas did not provide
++# enough detail to correct our data.
++
+ # From Alex Krivenyshev (2008-05-09):
+ # Here is an article that Morocco plan to introduce Daylight Saving Time between
+ # 1 June, 2008 and 27 September, 2008.
+@@ -873,33 +891,16 @@ Zone Indian/Mauritius	3:50:00 -	LMT	1907 # Port Louis
+ # The return to legal GMT time will take place this Sunday, March 19 at 3 a.m.
+ # ... the return to GMT+1 will be made on Sunday April 23, 2023 at 2 a.m.
+ # https://www.mmsp.gov.ma/fr/actualites/passage-à-l%E2%80%99heure-gmt-à-partir-du-dimanche-19-mars-2023
+-#
+-# From Paul Eggert (2023-03-14):
+-# For now, guess that in the future Morocco will fall back at 03:00
+-# the last Sunday before Ramadan, and spring forward at 02:00 the
+-# first Sunday after one day after Ramadan.  To implement this,
+-# transition dates and times for 2019 through 2087 were determined by
+-# running the following program under GNU Emacs 28.2.  (This algorithm
+-# also produces the correct transition dates for 2016 through 2018,
+-# though the times differ due to Morocco's time zone change in 2018.)
+-# (let ((islamic-year 1440))
+-#   (require 'cal-islam)
+-#   (while (< islamic-year 1511)
+-#     (let ((a (calendar-islamic-to-absolute (list 9 1 islamic-year)))
+-#           (b (+ 1 (calendar-islamic-to-absolute (list 10 1 islamic-year))))
+-#           (sunday 0))
+-#       (while (/= sunday (mod (setq a (1- a)) 7)))
+-#       (while (/= sunday (mod b 7))
+-#         (setq b (1+ b)))
+-#       (setq a (calendar-gregorian-from-absolute a))
+-#       (setq b (calendar-gregorian-from-absolute b))
+-#       (insert
+-#        (format
+-#         (concat "Rule\tMorocco\t%d\tonly\t-\t%s\t%2d\t 3:00\t-1:00\t-\n"
+-#                 "Rule\tMorocco\t%d\tonly\t-\t%s\t%2d\t 2:00\t0\t-\n")
+-#         (car (cdr (cdr a))) (calendar-month-name (car a) t) (car (cdr a))
+-#         (car (cdr (cdr b))) (calendar-month-name (car b) t) (car (cdr b)))))
+-#     (setq islamic-year (+ 1 islamic-year))))
++
++# From Paul Eggert (2026-06-25):
++# https://www.moroccoworldnews.com/2026/06/325034/confirmed-morocco-to-restore-gmt-on-september-20-ending-eight-year-gmt1-saga/
++# Today the Moroccan government adopted Decree No. 2.26.530, which abrogates
++# the 2018 decree that put it at +01 with daylight saving during Ramadan.
++# The plan is to go back to +00 without DST on 2026-09-20 at 02:00.
++# From Anass Taghjichte (2026-07-03):
++# https://www.sgg.gov.ma/BO/AR/3111/2026/BO_7521_Ar.pdf
++# From Afaf EL MAAYATI (2026-07-06):
++# https://www.mapexpress.ma/actualite/activite-gouvernementale/conseil-gouvernement-approuve-projet-decret-relatif-au-retour-lheure-legale/
+ 
+ # Rule	NAME	FROM	TO	-	IN	ON	AT	SAVE	LETTER/S
+ Rule	Morocco	1939	only	-	Sep	12	 0:00	1:00	-
+@@ -959,143 +960,14 @@ Rule	Morocco	2025	only	-	Feb	23	 3:00	-1:00	-
+ Rule	Morocco	2025	only	-	Apr	 6	 2:00	0	-
+ Rule	Morocco	2026	only	-	Feb	15	 3:00	-1:00	-
+ Rule	Morocco	2026	only	-	Mar	22	 2:00	0	-
+-Rule	Morocco	2027	only	-	Feb	 7	 3:00	-1:00	-
+-Rule	Morocco	2027	only	-	Mar	14	 2:00	0	-
+-Rule	Morocco	2028	only	-	Jan	23	 3:00	-1:00	-
+-Rule	Morocco	2028	only	-	Mar	 5	 2:00	0	-
+-Rule	Morocco	2029	only	-	Jan	14	 3:00	-1:00	-
+-Rule	Morocco	2029	only	-	Feb	18	 2:00	0	-
+-Rule	Morocco	2029	only	-	Dec	30	 3:00	-1:00	-
+-Rule	Morocco	2030	only	-	Feb	10	 2:00	0	-
+-Rule	Morocco	2030	only	-	Dec	22	 3:00	-1:00	-
+-Rule	Morocco	2031	only	-	Jan	26	 2:00	0	-
+-Rule	Morocco	2031	only	-	Dec	14	 3:00	-1:00	-
+-Rule	Morocco	2032	only	-	Jan	18	 2:00	0	-
+-Rule	Morocco	2032	only	-	Nov	28	 3:00	-1:00	-
+-Rule	Morocco	2033	only	-	Jan	 9	 2:00	0	-
+-Rule	Morocco	2033	only	-	Nov	20	 3:00	-1:00	-
+-Rule	Morocco	2033	only	-	Dec	25	 2:00	0	-
+-Rule	Morocco	2034	only	-	Nov	 5	 3:00	-1:00	-
+-Rule	Morocco	2034	only	-	Dec	17	 2:00	0	-
+-Rule	Morocco	2035	only	-	Oct	28	 3:00	-1:00	-
+-Rule	Morocco	2035	only	-	Dec	 9	 2:00	0	-
+-Rule	Morocco	2036	only	-	Oct	19	 3:00	-1:00	-
+-Rule	Morocco	2036	only	-	Nov	23	 2:00	0	-
+-Rule	Morocco	2037	only	-	Oct	 4	 3:00	-1:00	-
+-Rule	Morocco	2037	only	-	Nov	15	 2:00	0	-
+-Rule	Morocco	2038	only	-	Sep	26	 3:00	-1:00	-
+-Rule	Morocco	2038	only	-	Oct	31	 2:00	0	-
+-Rule	Morocco	2039	only	-	Sep	18	 3:00	-1:00	-
+-Rule	Morocco	2039	only	-	Oct	23	 2:00	0	-
+-Rule	Morocco	2040	only	-	Sep	 2	 3:00	-1:00	-
+-Rule	Morocco	2040	only	-	Oct	14	 2:00	0	-
+-Rule	Morocco	2041	only	-	Aug	25	 3:00	-1:00	-
+-Rule	Morocco	2041	only	-	Sep	29	 2:00	0	-
+-Rule	Morocco	2042	only	-	Aug	10	 3:00	-1:00	-
+-Rule	Morocco	2042	only	-	Sep	21	 2:00	0	-
+-Rule	Morocco	2043	only	-	Aug	 2	 3:00	-1:00	-
+-Rule	Morocco	2043	only	-	Sep	13	 2:00	0	-
+-Rule	Morocco	2044	only	-	Jul	24	 3:00	-1:00	-
+-Rule	Morocco	2044	only	-	Aug	28	 2:00	0	-
+-Rule	Morocco	2045	only	-	Jul	 9	 3:00	-1:00	-
+-Rule	Morocco	2045	only	-	Aug	20	 2:00	0	-
+-Rule	Morocco	2046	only	-	Jul	 1	 3:00	-1:00	-
+-Rule	Morocco	2046	only	-	Aug	 5	 2:00	0	-
+-Rule	Morocco	2047	only	-	Jun	23	 3:00	-1:00	-
+-Rule	Morocco	2047	only	-	Jul	28	 2:00	0	-
+-Rule	Morocco	2048	only	-	Jun	 7	 3:00	-1:00	-
+-Rule	Morocco	2048	only	-	Jul	19	 2:00	0	-
+-Rule	Morocco	2049	only	-	May	30	 3:00	-1:00	-
+-Rule	Morocco	2049	only	-	Jul	 4	 2:00	0	-
+-Rule	Morocco	2050	only	-	May	15	 3:00	-1:00	-
+-Rule	Morocco	2050	only	-	Jun	26	 2:00	0	-
+-Rule	Morocco	2051	only	-	May	 7	 3:00	-1:00	-
+-Rule	Morocco	2051	only	-	Jun	18	 2:00	0	-
+-Rule	Morocco	2052	only	-	Apr	28	 3:00	-1:00	-
+-Rule	Morocco	2052	only	-	Jun	 2	 2:00	0	-
+-Rule	Morocco	2053	only	-	Apr	13	 3:00	-1:00	-
+-Rule	Morocco	2053	only	-	May	25	 2:00	0	-
+-Rule	Morocco	2054	only	-	Apr	 5	 3:00	-1:00	-
+-Rule	Morocco	2054	only	-	May	10	 2:00	0	-
+-Rule	Morocco	2055	only	-	Mar	28	 3:00	-1:00	-
+-Rule	Morocco	2055	only	-	May	 2	 2:00	0	-
+-Rule	Morocco	2056	only	-	Mar	12	 3:00	-1:00	-
+-Rule	Morocco	2056	only	-	Apr	23	 2:00	0	-
+-Rule	Morocco	2057	only	-	Mar	 4	 3:00	-1:00	-
+-Rule	Morocco	2057	only	-	Apr	 8	 2:00	0	-
+-Rule	Morocco	2058	only	-	Feb	17	 3:00	-1:00	-
+-Rule	Morocco	2058	only	-	Mar	31	 2:00	0	-
+-Rule	Morocco	2059	only	-	Feb	 9	 3:00	-1:00	-
+-Rule	Morocco	2059	only	-	Mar	23	 2:00	0	-
+-Rule	Morocco	2060	only	-	Feb	 1	 3:00	-1:00	-
+-Rule	Morocco	2060	only	-	Mar	 7	 2:00	0	-
+-Rule	Morocco	2061	only	-	Jan	16	 3:00	-1:00	-
+-Rule	Morocco	2061	only	-	Feb	27	 2:00	0	-
+-Rule	Morocco	2062	only	-	Jan	 8	 3:00	-1:00	-
+-Rule	Morocco	2062	only	-	Feb	12	 2:00	0	-
+-Rule	Morocco	2062	only	-	Dec	31	 3:00	-1:00	-
+-Rule	Morocco	2063	only	-	Feb	 4	 2:00	0	-
+-Rule	Morocco	2063	only	-	Dec	16	 3:00	-1:00	-
+-Rule	Morocco	2064	only	-	Jan	27	 2:00	0	-
+-Rule	Morocco	2064	only	-	Dec	 7	 3:00	-1:00	-
+-Rule	Morocco	2065	only	-	Jan	11	 2:00	0	-
+-Rule	Morocco	2065	only	-	Nov	22	 3:00	-1:00	-
+-Rule	Morocco	2066	only	-	Jan	 3	 2:00	0	-
+-Rule	Morocco	2066	only	-	Nov	14	 3:00	-1:00	-
+-Rule	Morocco	2066	only	-	Dec	26	 2:00	0	-
+-Rule	Morocco	2067	only	-	Nov	 6	 3:00	-1:00	-
+-Rule	Morocco	2067	only	-	Dec	11	 2:00	0	-
+-Rule	Morocco	2068	only	-	Oct	21	 3:00	-1:00	-
+-Rule	Morocco	2068	only	-	Dec	 2	 2:00	0	-
+-Rule	Morocco	2069	only	-	Oct	13	 3:00	-1:00	-
+-Rule	Morocco	2069	only	-	Nov	17	 2:00	0	-
+-Rule	Morocco	2070	only	-	Oct	 5	 3:00	-1:00	-
+-Rule	Morocco	2070	only	-	Nov	 9	 2:00	0	-
+-Rule	Morocco	2071	only	-	Sep	20	 3:00	-1:00	-
+-Rule	Morocco	2071	only	-	Nov	 1	 2:00	0	-
+-Rule	Morocco	2072	only	-	Sep	11	 3:00	-1:00	-
+-Rule	Morocco	2072	only	-	Oct	16	 2:00	0	-
+-Rule	Morocco	2073	only	-	Aug	27	 3:00	-1:00	-
+-Rule	Morocco	2073	only	-	Oct	 8	 2:00	0	-
+-Rule	Morocco	2074	only	-	Aug	19	 3:00	-1:00	-
+-Rule	Morocco	2074	only	-	Sep	30	 2:00	0	-
+-Rule	Morocco	2075	only	-	Aug	11	 3:00	-1:00	-
+-Rule	Morocco	2075	only	-	Sep	15	 2:00	0	-
+-Rule	Morocco	2076	only	-	Jul	26	 3:00	-1:00	-
+-Rule	Morocco	2076	only	-	Sep	 6	 2:00	0	-
+-Rule	Morocco	2077	only	-	Jul	18	 3:00	-1:00	-
+-Rule	Morocco	2077	only	-	Aug	22	 2:00	0	-
+-Rule	Morocco	2078	only	-	Jul	10	 3:00	-1:00	-
+-Rule	Morocco	2078	only	-	Aug	14	 2:00	0	-
+-Rule	Morocco	2079	only	-	Jun	25	 3:00	-1:00	-
+-Rule	Morocco	2079	only	-	Aug	 6	 2:00	0	-
+-Rule	Morocco	2080	only	-	Jun	16	 3:00	-1:00	-
+-Rule	Morocco	2080	only	-	Jul	21	 2:00	0	-
+-Rule	Morocco	2081	only	-	Jun	 1	 3:00	-1:00	-
+-Rule	Morocco	2081	only	-	Jul	13	 2:00	0	-
+-Rule	Morocco	2082	only	-	May	24	 3:00	-1:00	-
+-Rule	Morocco	2082	only	-	Jun	28	 2:00	0	-
+-Rule	Morocco	2083	only	-	May	16	 3:00	-1:00	-
+-Rule	Morocco	2083	only	-	Jun	20	 2:00	0	-
+-Rule	Morocco	2084	only	-	Apr	30	 3:00	-1:00	-
+-Rule	Morocco	2084	only	-	Jun	11	 2:00	0	-
+-Rule	Morocco	2085	only	-	Apr	22	 3:00	-1:00	-
+-Rule	Morocco	2085	only	-	May	27	 2:00	0	-
+-Rule	Morocco	2086	only	-	Apr	14	 3:00	-1:00	-
+-Rule	Morocco	2086	only	-	May	19	 2:00	0	-
+-Rule	Morocco	2087	only	-	Mar	30	 3:00	-1:00	-
+-Rule	Morocco	2087	only	-	May	11	 2:00	0	-
+-# For dates after the somewhat-arbitrary cutoff of 2087, assume that
+-# Morocco will no longer observe DST.  At some point this table will
+-# need to be extended, though quite possibly Morocco will change the
+-# rules first.
+ 
+ # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
+ Zone Africa/Casablanca	-0:30:20 -	LMT	1913 Oct 26
+ 			 0:00	Morocco	%z	1984 Mar 16
+ 			 1:00	-	%z	1986
+ 			 0:00	Morocco	%z	2018 Oct 28  3:00
+-			 1:00	Morocco	%z
++			 1:00	Morocco	%z	2026 Sep 20  2:00
++			 0:00	-	%z
+ 
+ # Western Sahara
+ #
+@@ -1111,7 +983,8 @@ Zone Africa/Casablanca	-0:30:20 -	LMT	1913 Oct 26
+ Zone Africa/El_Aaiun	-0:52:48 -	LMT	1934 Jan # El Aaiún
+ 			-1:00	-	%z	1976 Apr 14
+ 			 0:00	Morocco	%z	2018 Oct 28  3:00
+-			 1:00	Morocco	%z
++			 1:00	Morocco	%z	2026 Sep 20  2:00
++			 0:00	-	%z
+ 
+ # Botswana
+ # Burundi
+diff --git a/src/java.base/share/data/tzdata/australasia b/src/java.base/share/data/tzdata/australasia
+index 638789f42da..04a668ecd5b 100644
+--- a/src/java.base/share/data/tzdata/australasia
++++ b/src/java.base/share/data/tzdata/australasia
+@@ -1744,7 +1744,7 @@ Zone	Pacific/Efate	11:13:16 -	LMT	1912 Jan 13 # Vila
+ # to Japanese rule was right before 1970, ... per the current tz database
+ # rule, the information doesn't warrant creation of a new timezone for Bonin
+ # Islands itself and is thus as an anecdotal note for interest purpose only.
+-# ... [The abovementioned link] described some special timekeeping phenomenon
++# ... [The link mentioned above] described some special timekeeping phenomenon
+ # regarding Marcus island, another remote island currently owned by Japanese
+ # in the same administrative unit as Bonin Islands.  Many reports claim that
+ # the American coastal guard on the American quarter of the island use its own
+diff --git a/src/java.base/share/data/tzdata/europe b/src/java.base/share/data/tzdata/europe
+index a66d40834cd..ca09f4fa3ed 100644
+--- a/src/java.base/share/data/tzdata/europe
++++ b/src/java.base/share/data/tzdata/europe
+@@ -253,7 +253,7 @@
+ # https://www.polyomino.org.uk/british-time/bbc-19410418.png
+ # https://www.polyomino.org.uk/british-time/ho-19410421.png
+ 
+-# From Sir Alexander Maxwell in the above-mentioned letter (1941-04-21):
++# From Sir Alexander Maxwell (1941-04-21) in the letter mentioned above:
+ # [N]o official designation has as far as I know been adopted for the time
+ # which is to be introduced in May....
+ # I cannot think of anything better than "Double British Summer Time"
+@@ -2038,7 +2038,7 @@ Zone	Europe/Malta	0:58:04 -	LMT	1893 Nov  2 # Valletta
+ # From Roman Tudos (2015-07-02):
+ # http://lex.justice.md/index.php?action=view&view=doc&lang=1&id=355077
+ # From Paul Eggert (2015-07-01):
+-# The abovementioned official link to IGO1445-868/2014 states that
++# The above-mentioned official link to IGO1445-868/2014 states that
+ # 2014-10-26's fallback transition occurred at 03:00 local time.  Also,
+ # https://www.trm.md/en/social/la-30-martie-vom-trece-la-ora-de-vara
+ # says the 2014-03-30 spring-forward transition was at 02:00 local time.
+@@ -2403,10 +2403,17 @@ Zone	Europe/Lisbon	-0:36:45 -	LMT	1884
+ # https://oal.ul.pt/hora-legal/legislacao/
+ # working backward through references of revocation and abrogation to
+ # Decreto-Lei 47233 of 1966-10-01, the last time DST was abolished across the
+-# mainland and its adjacent islands.  Because of that reference, it is
+-# therefore assumed that DST rules in the islands prior to 1966 were like that
+-# of the mainland, though most legislation of the time didn't explicitly
+-# specify DST practices for the islands.
++# mainland and its adjacent islands.
++#
++# From Tim Parenti (2026-05-26):
++# Observance of DST on the Azores and Madeira was explicitly covered by
++# mainland legislation in:
++# - Portaria 11767 of 1947-03-28 for 1947,
++# - Portaria 12286 of 1948-02-19 for 1948, and
++# - Decreto-Lei 37048 of 1948-09-07 through its revocation in 1966.
++# (See mainland commentary, above.)  However, most legislation prior to 1947
++# didn't explicitly call out these "adjacent islands", so we assume that DST
++# rules on the islands prior to 1947 were also like that of the mainland.
+ Zone Atlantic/Azores	-1:42:40 -	LMT	1884        # Ponta Delgada
+ 			-1:54:32 -	HMT	1912 Jan  1  2:00u # Horta MT
+ # Vanguard section, for zic and other parsers that support %z.
+@@ -2639,7 +2646,7 @@ Zone Europe/Bucharest	1:44:24 -	LMT	1891 Oct
+ # http://astro.uni-altai.ru/~orion/blog/2011/11/novyie-granitsyi-chasovyih-poyasov-v-sssr/
+ #
+ # From Paul Eggert (2018-07-16):
+-# Perhaps someone could translate the above-mentioned link and use it
++# Perhaps someone could translate the link mentioned above, and use it
+ # to correct our data for the ex-Soviet Union.  It cites the following:
+ # «Поясное время и новые границы часовых поясов» / сост. П.Н. Долгов,
+ # отв. ред. Г.Д. Бурдун - М: Комитет стандартов, мер и измерительных
+diff --git a/src/java.base/share/data/tzdata/leapseconds b/src/java.base/share/data/tzdata/leapseconds
+index d431a7d3607..179e0e9bcc7 100644
+--- a/src/java.base/share/data/tzdata/leapseconds
++++ b/src/java.base/share/data/tzdata/leapseconds
+@@ -93,7 +93,7 @@ Leap	2016	Dec	31	23:59:60	+	S
+ # Any additional leap seconds will come after this.
+ # This Expires line is commented out for now,
+ # so that pre-2020a zic implementations do not reject this file.
+-#Expires 2026	Dec	28	00:00:00
++#Expires 2027	Jun	28	00:00:00
+ 
+ # Here are POSIX timestamps for the data in this file.
+ # "#updated" gives the last time the leap seconds data changed
+@@ -102,8 +102,8 @@ Leap	2016	Dec	31	23:59:60	+	S
+ # "#expires" gives the first time this file might be wrong;
+ # if this file was derived from the IERS leap-seconds.list,
+ # this is typically a bit less than one year after "updated".
+-#updated 1767698058 (2026-01-06 11:14:18 UTC)
+-#expires 1798416000 (2026-12-28 00:00:00 UTC)
++#updated 1783323897 (2026-07-06 07:44:57 UTC)
++#expires 1814140800 (2027-06-28 00:00:00 UTC)
+ 
+ #	Updated through IERS Bulletin C (https://hpiers.obspm.fr/iers/bul/bulc/bulletinc.dat)
+-#	File expires on 28 December 2026
++#	File expires on 28 June 2027
+diff --git a/src/java.base/share/data/tzdata/northamerica b/src/java.base/share/data/tzdata/northamerica
+index 88e4e853f58..f072cee702a 100644
+--- a/src/java.base/share/data/tzdata/northamerica
++++ b/src/java.base/share/data/tzdata/northamerica
+@@ -1765,6 +1765,22 @@ Zone America/Toronto	-5:17:32 -	LMT	1895
+ 
+ # Manitoba
+ 
++# From Paul Eggert (2026-05-08):
++# For 1916 timestamps America/Winnipeg covers only a small region. See:
++# Cassidy C. Winnipeg’s 110-year history with daylight time.
++# Winnipeg Free Press. 2026-05-06.
++# https://www.winnipegfreepress.com/our-communities/correspondents/2026/05/06/winnipegs-110-year-history-with-daylight-time
++# Of the 1916 experiment, Cassidy writes: “As rural areas and nearby
++# urban centres such as Selkirk and Brandon did not adopt DST, the
++# City of Winnipeg essentially had its own time zone.” Cassidy also
++# writes that province-wide DST came into effect on 1963-05-12.
++#
++# Shanks & Pottenger write that Winnipeg did not observe DST in 1964 and 1965.
++# Although dubious in the light of Cassidy’s article, we lack a better source.
++# Perhaps S&P’s data are for the train stations, not for the city?
++# Also, S&P say Manitoba switched at 02:00 (not 02:00s) starting in 1966.
++# Since 02:00s is clearly correct for 1967 on, assume 02:00s in 1966 too.
++
+ # From Rob Douglas (2006-04-06):
+ # the old Manitoba Time Act - as amended by Bill 2, assented to
+ # March 27, 1987 ... said ...
+@@ -1779,11 +1795,6 @@ Zone America/Toronto	-5:17:32 -	LMT	1895
+ # the 1987 version would apply - the changeover was at 2:00 Central
+ # Standard Time (i.e. not until 3:00 Central Daylight Time).
+ 
+-# From Paul Eggert (2006-04-10):
+-# Shanks & Pottenger say Manitoba switched at 02:00 (not 02:00s)
+-# starting 1966.  Since 02:00s is clearly correct for 1967 on, assume
+-# it was also 02:00s in 1966.
+-
+ # Rule	NAME	FROM	TO	-	IN	ON	AT	SAVE	LETTER/S
+ Rule	Winn	1916	only	-	Apr	23	0:00	1:00	D
+ Rule	Winn	1916	only	-	Sep	17	0:00	0	S
+@@ -1875,6 +1886,22 @@ Zone America/Winnipeg	-6:28:36 -	LMT	1887 Jul 16
+ # long and rather painful to read.
+ # http://www.qp.gov.sk.ca/documents/English/Statutes/Statutes/T14.pdf
+ 
++# From Heitor David Pinto (2026-05-14):
++# In Saskatchewan, a bill was passed to replace the Time Act. It sets UTC-6 all
++# year in the whole province, including Lloydminster, but allows the government
++# to issue regulations specifying a different time in localities that request
++# so:
++# https://docs.legassembly.sk.ca/legdocs/Bills/30L2S/Bill30-58.pdf
++# The bill ... received royal assent today.
++# From Tim Parenti (2026-05-14):
++# In light of Alberta joining Saskatchewan on year-round -06, this simplifies
++# the prior Act's framework for the many local exceptions to year-round -06 in
++# border areas, by extending province-wide the notion of "time option areas"
++# which can be prescribed by regulation "if it is in the provincial interest"
++# for those areas to observe either "UTC-5, UTC-6 or UTC-7 for all or part of
++# the year" on at least 30 days' notice.
++# The new Act comes into force by order of the Lieutenant Governor in Council.
++
+ # Rule	NAME	FROM	TO	-	IN	ON	AT	SAVE	LETTER/S
+ Rule	Regina	1918	only	-	Apr	14	2:00	1:00	D
+ Rule	Regina	1918	only	-	Oct	27	2:00	0	S
+@@ -1925,6 +1952,45 @@ Zone America/Swift_Current -7:11:20 -	LMT	1905 Sep
+ # Boyer JP. Forcing Choice: The Risky Reward of Referendums. Dundum. 2017.
+ # ISBN 978-1459739123.
+ 
++# From Roozbeh Pournader (2026-04-20):
++# https://calgaryherald.com/opinion/columnists/bell-alberta-daylight-time-year-round-premier-danielle-smith
++#
++# From Tim Parenti (2026-04-23):
++# Section 3 of Bill 31, the Red Tape Reduction Statutes Amendment Act, 2026
++# https://docs.assembly.ab.ca/LADDAR_files/docs/bills/bill/legislature_31/session_2/20251023_bill-031.pdf
++# would repeal the Daylight Saving Time Act in the Revised Statutes of Alberta
++# 2000 Chapter D-5:
++# https://kings-printer.alberta.ca/documents/Acts/D05.pdf
++# ...and substitutes a new chapter with language that closely parallels the
++# original.  The new title is the Official Time Act and will be numbered
++# Chapter O-5.7.  The Act establishes a standard time of UTC−6 without
++# replacing the language previously used to effectuate DST.
++#
++# From Tim Parenti (2026-06-19):
++# After receiving Royal Assent on 2026-05-14, Order in Council 204/2026 was
++# issued on 2026-06-18 proclaiming the relevant section of the bill in force on
++# the same date.  Order in Council 206/2026, issued the same day, uses the
++# regulatory authority within the Act to prescribe the official term "Alberta
++# Time"; we use the traditional abbreviation CST for consistency.
++# https://kings-printer.alberta.ca/Documents/Orders/Orders_in_Council/2026/2026_204.pdf
++# https://kings-printer.alberta.ca/Documents/Orders/Orders_in_Council/2026/2026_206.pdf
++#
++# Since wall clock times do not diverge from past practice until 2026-11-01,
++# use that transition date for now to work around potential CLDR limitations in
++# the meantime; see British Columbia, below.
++#
++# From Paul Eggert (2026-07-02):
++# The temporary hack for Alberta is needed for CLDR 48.2 (2026-03-17)
++# and earlier, not the CLDR 48.1-and-earlier which drives BC’s temporary hack.
++# Only a few platforms track minor CLDR releases, though, so the two
++# temporary hacks have roughly the same effect in practice.
++#
++# The term “Alberta Time” is legally prescribed from yesterday until
++# 2031-06-30, when the regulation in OiC 206/2026 expires to ensure that the
++# term is reviewed by then for relevancy and need.  This plan for possible
++# obsolescence affects neither timekeeping nor TZDB’s data, which do
++# not contain the string “Alberta Time”.
++
+ # Rule	NAME	FROM	TO	-	IN	ON	AT	SAVE	LETTER/S
+ Rule	Edm	1918	1919	-	Apr	Sun>=8	2:00	1:00	D
+ Rule	Edm	1918	only	-	Oct	27	2:00	0	S
+@@ -1942,7 +2008,11 @@ Rule	Edm	1972	2006	-	Oct	lastSun	2:00	0	S
+ # Zone	NAME		STDOFF	RULES	FORMAT	[UNTIL]
+ Zone America/Edmonton	-7:33:52 -	LMT	1906 Sep
+ 			-7:00	Edm	M%sT	1987
+-			-7:00	Canada	M%sT
++			-7:00	Canada	M%sT	2026 Jun 18
++			# Temporary hack; see above.
++			-7:00	1:00	MDT	2026 Nov  1  2:00
++			# End of temporary hack.
++			-6:00	-	CST
+ 
+ 
+ # British Columbia
+@@ -1985,7 +2055,7 @@ Zone America/Edmonton	-7:33:52 -	LMT	1906 Sep
+ # on March 8 will be the last time change, ending twice-yearly clock changes.”
+ # https://news.gov.bc.ca/releases/2026AG0013-000209
+ #
+-# From Paul Eggert (2026-03-07):
++# From Paul Eggert (2026-07-02):
+ # The law says that 21 hours after the usual 2026-03-08 02:00 switch from
+ # PST to PDT, the next day inaugurates the new standard time Pacific Time,
+ # i.e., just one clock change but two name changes separated by 21 hours.
+@@ -1994,13 +2064,14 @@ Zone America/Edmonton	-7:33:52 -	LMT	1906 Sep
+ # I asked the BC government for advice, with no response. For now, do this:
+ #   1.	As a temporary hack, pretend that the BC law takes effect
+ #	not on 2026-03-09 at 00:00, but on 2026-11-01 at 02:00.
+-#	This pretense works around a limitation in CLDR v48.2 (2026-03-17),
++#	This pretense works around a limitation in CLDR 48.1 (2026-01-08),
+ #	which would otherwise say the interval uses “Pacific Standard Time”.
+ #	(Below, this temporary hack is marked “Temporary hack; see above.”)
+ #	Strictly speaking this hack is incorrect since the interval uses
+ #	standard time, but it does have the right UT offset and it
+ #	works around the CLDR limitation.  We should be able to remove
+-#	the temporary hack after CLDR is fixed.
++#	the temporary hack by November when there would be little point
++#	to keeping it anyway.
+ #   2.	After the BC law takes effect, model the time as MST sans DST.
+ #	We can change this later if another conforming non-numeric abbreviation
+ #	for Pacific Time becomes more popular.  Possibilities include:
+@@ -2011,10 +2082,7 @@ Zone America/Edmonton	-7:33:52 -	LMT	1906 Sep
+ #   PST - straightforward but even more confusing,
+ #	and will likely break much software that assumes PST is -08
+ #   -07 - accurate and clear in itself, but makes BC look odd vs neighbors
+-#   CPT, CPST - for Canadian Pacific (Standard) Time,
+-#	by analogy with AEST in Australia
+-#   P-T - conforming approximation to “PT”
+-#   PT+ - like P-T but suggesting one-hour advance over PST
++#   PacT - straightforward but novel abbreviation for Pacific Time
+ 
+ # From Chris Walton (2026-03-15):
+ # The Regional District of East Kootenay is planning to move to year-round
+@@ -2029,6 +2097,10 @@ Zone America/Edmonton	-7:33:52 -	LMT	1906 Sep
+ # saying, “Pardon the pun, but this is not a time-sensitive issue.”
+ # For now, merely mention the potential change in these comments.
+ # If it happens it would likely affect clocks starting 2027-03-14 at 02:00.
++# From Tim Parenti (2026-05-14):
++# RDEK has historically been aligned with neighboring Alberta.  With the latter
++# now opting to stay on -06 year-round, if RDEK does not follow, it would
++# require a new zone for the Cranbrook area.
+ 
+ # Rule	NAME	FROM	TO	-	IN	ON	AT	SAVE	LETTER/S
+ Rule	Vanc	1918	only	-	Apr	14	2:00	1:00	D
+@@ -2045,7 +2117,7 @@ Zone America/Vancouver	-8:12:28 -	LMT	1884
+ 			-8:00	Vanc	P%sT	1987
+ 			-8:00	Canada	P%sT	2026 Mar  9
+ 			# Temporary hack; see above.
+-			-8:00	1:00	PDT	2026 Nov  1 02:00
++			-8:00	1:00	PDT	2026 Nov  1  2:00
+ 			# End of temporary hack.
+ 			-7:00	-	MST
+ Zone America/Dawson_Creek -8:00:56 -	LMT	1884
+@@ -2373,6 +2445,23 @@ Zone America/Fort_Nelson	-8:10:47 -	LMT	1884
+ # about 1970, and uses PST for standard time in Yukon since then.  Consistent
+ # with that, use MST for -07, the new standard time in Yukon effective Nov. 1.
+ 
++# From Tim Parenti (2026-04-21):
++# "[Northwest Territories] Premier R.J. Simpson announced Monday that the
++# territory will move to end seasonal time changes and will adopt a year-round
++# time standard instead. ... Simpson has previously said the territory wouldn't
++# end seasonal time changes until Alberta does."
++# https://www.cbc.ca/news/canada/north/nwt-ends-daylight-saving-9.7170964
++#
++# From Tim Parenti (2026-06-19), per James Bellaire (2026-06-02):
++# Much of NWT has, to date, been represented by America/Edmonton, which alias
++# America/Yellowknife links to.  While Bill 13 (assented to 2021-03-31) would
++# enable NWT's proposed change mirroring Alberta's, at time of writing it has
++# not yet been formally enacted; if it doesn't move forward as expected,
++# America/Yellowknife would need to become its own zone as Alberta has stopped
++# changing its clocks.
++# If it does go ahead, draft changes to America/Inuvik, which represents the
++# remainder of NWT, are commented below.
++
+ # Rule	NAME	FROM	TO	-	IN	ON	AT	SAVE	LETTER/S
+ Rule	NT_YK	1918	only	-	Apr	14	2:00	1:00	D
+ Rule	NT_YK	1918	only	-	Oct	27	2:00	0	S
+@@ -2415,6 +2504,10 @@ Zone America/Inuvik	0	-	-00	1953 # Inuvik founded
+ 			-8:00	NT_YK	P%sT	1979 Apr lastSun  2:00
+ 			-7:00	NT_YK	M%sT	1980
+ 			-7:00	Canada	M%sT
++# Assuming Northwest Territories follows Alberta in abolishing seasonal time
++# changes, replace the above line with something like:
++#			-7:00	Canada	M%sT	2026 Nov  1  2:00
++#			-6:00	-	CST
+ Zone America/Whitehorse	-9:00:12 -	LMT	1900 Aug 20
+ 			-9:00	NT_YK	Y%sT	1965
+ 			-9:00	Yukon	Y%sT	1966 Feb 27  0:00
+diff --git a/test/jdk/java/time/test/java/time/format/TestZoneTextPrinterParser.java b/test/jdk/java/time/test/java/time/format/TestZoneTextPrinterParser.java
+index dbc912d1f23..b56aac5906e 100644
+--- a/test/jdk/java/time/test/java/time/format/TestZoneTextPrinterParser.java
++++ b/test/jdk/java/time/test/java/time/format/TestZoneTextPrinterParser.java
+@@ -28,6 +28,7 @@ import static org.testng.Assert.fail;
+ 
+ import java.text.DateFormatSymbols;
+ import java.time.ZoneId;
++import java.time.ZoneOffset;
+ import java.time.ZonedDateTime;
+ import java.time.format.DateTimeParseException;
+ import java.time.format.DecimalStyle;
+@@ -41,6 +42,7 @@ import java.util.Arrays;
+ import java.util.Date;
+ import java.util.HashSet;
+ import java.util.Locale;
++import java.util.Map;
+ import java.util.Random;
+ import java.util.Set;
+ import java.util.TimeZone;
+@@ -51,7 +53,7 @@ import org.testng.annotations.Test;
+ 
+ /*
+  * @test
+- * @bug 8081022 8151876 8166875 8177819 8189784 8206980 8277049 8278434
++ * @bug 8081022 8151876 8166875 8177819 8189784 8206980 8277049 8278434 8388214
+  * @key randomness
+  */
+ 
+@@ -61,6 +63,14 @@ import org.testng.annotations.Test;
+ @Test
+ public class TestZoneTextPrinterParser extends AbstractTestPrinterParser {
+ 
++    // Explicit dstOffset attributes from CLDR v48.2 metazone data.
++    private static final Map<String, ZoneOffset> CLDR_EXPLICIT_DST_OFFSETS = Map.of(
++            "Africa/Windhoek", ZoneOffset.of("+02:00"),
++            "America/Vancouver", ZoneOffset.of("-07:00"),
++            "Canada/Pacific", ZoneOffset.of("-07:00"),
++            "Europe/Dublin", ZoneOffset.of("+01:00"),
++            "Eire", ZoneOffset.of("+01:00"));
++
+     private static final Locale[] SAMPLE_LOCALES = {
+         Locale.US, Locale.UK, Locale.FRANCE, Locale.GERMANY, Locale.ITALY, Locale.forLanguageTag("es"),
+         Locale.forLanguageTag("pt-BR"), Locale.forLanguageTag("ru"),
+@@ -89,9 +99,15 @@ public class TestZoneTextPrinterParser extends AbstractTestPrinterParser {
+                 zdt = zdt.withZoneSameLocal(ZoneId.of(zid));
+                 TimeZone tz = TimeZone.getTimeZone(zid);
+                 boolean isDST = tz.inDaylightTime(new Date(zdt.toInstant().toEpochMilli()));
++                // Some zones now use an explicit daylight offset in CLDR without java.util.TimeZone
++                // reporting DST for the instant.
++                ZoneOffset explicitDstOffset = CLDR_EXPLICIT_DST_OFFSETS.get(zid);
++                boolean useDaylightName = explicitDstOffset != null
++                        ? zdt.getOffset().equals(explicitDstOffset)
++                        : isDST;
+                 for (Locale locale : SAMPLE_LOCALES) {
+-                    String longDisplayName = tz.getDisplayName(isDST, TimeZone.LONG, locale);
+-                    String shortDisplayName = tz.getDisplayName(isDST, TimeZone.SHORT, locale);
++                    String longDisplayName = tz.getDisplayName(useDaylightName, TimeZone.LONG, locale);
++                    String shortDisplayName = tz.getDisplayName(useDaylightName, TimeZone.SHORT, locale);
+                     if ((longDisplayName.startsWith("GMT+") && shortDisplayName.startsWith("GMT+"))
+                             || (longDisplayName.startsWith("GMT-") && shortDisplayName.startsWith("GMT-"))) {
+                         printText(locale, zdt, TextStyle.FULL, tz, tz.getID());
+@@ -99,9 +115,9 @@ public class TestZoneTextPrinterParser extends AbstractTestPrinterParser {
+                         continue;
+                     }
+                     printText(locale, zdt, TextStyle.FULL, tz,
+-                            tz.getDisplayName(isDST, TimeZone.LONG, locale));
++                            tz.getDisplayName(useDaylightName, TimeZone.LONG, locale));
+                     printText(locale, zdt, TextStyle.SHORT, tz,
+-                            tz.getDisplayName(isDST, TimeZone.SHORT, locale));
++                            tz.getDisplayName(useDaylightName, TimeZone.SHORT, locale));
+                 }
+             }
+         }
+diff --git a/test/jdk/java/time/test/java/time/zone/TestZoneRules.java b/test/jdk/java/time/test/java/time/zone/TestZoneRules.java
+index 584ed2e56c7..a5efd6ddae3 100644
+--- a/test/jdk/java/time/test/java/time/zone/TestZoneRules.java
++++ b/test/jdk/java/time/test/java/time/zone/TestZoneRules.java
+@@ -1,5 +1,5 @@
+ /*
+- * Copyright (c) 2019, 2020, Oracle and/or its affiliates. All rights reserved.
++ * Copyright (c) 2019, 2026, Oracle and/or its affiliates. All rights reserved.
+  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+  *
+  * This code is free software; you can redistribute it and/or modify it
+@@ -48,7 +48,7 @@ import static org.testng.Assert.assertTrue;
+ /**
+  * @summary Tests for ZoneRules class.
+  *
+- * @bug 8212970 8236903 8239836
++ * @bug 8212970 8236903 8239836 8388214
+  */
+ @Test
+ public class TestZoneRules {
+@@ -90,15 +90,17 @@ public class TestZoneRules {
+             {WINDHOEK, LocalDate.of(1994, 3, 23), OFF_1, OFF_1, false},
+             {WINDHOEK, LocalDate.of(2016, 9, 23), OFF_2, OFF_1, true},
+ 
+-            // Africa/Casablanca for the Rule "Morocco" Defines negative DST till 2037 as of 2019a.
++            // Africa/Casablanca for the Rule "Morocco" defines negative DST until early 2026,
++            // then returns to standard UTC permanently later that year, starting with 2026c.
+             {CASABLANCA, LocalDate.of(1939, 9, 13), OFF_1, OFF_0, true},
+             {CASABLANCA, LocalDate.of(1939, 11, 20), OFF_0, OFF_0, false},
+             {CASABLANCA, LocalDate.of(2018, 6, 18), OFF_1, OFF_0, true},
+             {CASABLANCA, LocalDate.of(2019, 1, 1), OFF_1, OFF_0, true},
+             {CASABLANCA, LocalDate.of(2019, 5, 6), OFF_0, OFF_0, false},
+-            {CASABLANCA, LocalDate.of(2037, 10, 5), OFF_0, OFF_0, false},
+-            {CASABLANCA, LocalDate.of(2037, 11, 16), OFF_1, OFF_0, true},
+-            {CASABLANCA, LocalDate.of(2038, 11, 8), OFF_1, OFF_0, true},
++            {CASABLANCA, LocalDate.of(2026, 2, 16), OFF_0, OFF_0, false},
++            {CASABLANCA, LocalDate.of(2026, 3, 23), OFF_1, OFF_0, true},
++            {CASABLANCA, LocalDate.of(2026, 9, 21), OFF_0, OFF_0, false},
++            {CASABLANCA, LocalDate.of(2038, 11, 8), OFF_0, OFF_0, false},
+         };
+     }
+ 
+diff --git a/test/jdk/java/util/TimeZone/Bug6329116.java b/test/jdk/java/util/TimeZone/Bug6329116.java
+index f005b634464..94eaa4c5474 100644
+--- a/test/jdk/java/util/TimeZone/Bug6329116.java
++++ b/test/jdk/java/util/TimeZone/Bug6329116.java
+@@ -1,5 +1,5 @@
+ /*
+- * Copyright (c) 2005, 2025, Oracle and/or its affiliates. All rights reserved.
++ * Copyright (c) 2005, 2026, Oracle and/or its affiliates. All rights reserved.
+  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+  *
+  * This code is free software; you can redistribute it and/or modify it
+@@ -25,7 +25,7 @@
+  * @test
+  * @bug 6329116 6756569 6757131 6758988 6764308 6796489 6834474 6609737 6507067
+  *      7039469 7090843 7103108 7103405 7158483 8008577 8059206 8064560 8072042
+- *      8077685 8151876 8166875 8169191 8170316 8176044 8347841
++ *      8077685 8151876 8166875 8169191 8170316 8176044 8347841 8388214
+  * @summary Make sure that timezone short display names are idenical to Olson's data.
+  * @run junit/othervm -Djava.locale.providers=COMPAT,SPI Bug6329116
+  */
+@@ -42,6 +42,14 @@ import static org.junit.jupiter.api.Assertions.fail;
+ 
+ public class Bug6329116 {
+ 
++    // As of CLDR v48.2, CLDR provides these short names for zones with explicit DST offsets.
++    private static final Map<String, String> CLDR_SHORT_NAMES = Map.of(
++            "America/Edmonton", "MST",
++            "Canada/Mountain", "MST",
++            "America/Yellowknife", "MST",
++            "America/Vancouver", "PST",
++            "Canada/Pacific", "PST");
++
+     static Locale[] locales = Locale.getAvailableLocales();
+     static String[] timezones = Arrays.stream(TimeZone.getAvailableIDs())
+             .filter(Predicate.not(ZoneId.SHORT_IDS::containsKey))
+@@ -246,6 +254,11 @@ public class Bug6329116 {
+             return tz.getDisplayName().substring(0, 3).equals(got.substring(0, 3));
+         }
+ 
++        // Some zones use CLDR short names even when the tzdata FORMAT changed.
++        if (!inDST) {
++            return CLDR_SHORT_NAMES.getOrDefault(tz.getID(), "").equals(got);
++        }
++
+         return false;
+     }
+ 
+diff --git a/test/jdk/java/util/TimeZone/NegativeDSTTest.java b/test/jdk/java/util/TimeZone/NegativeDSTTest.java
+index ab9438f2388..47c35a08147 100644
+--- a/test/jdk/java/util/TimeZone/NegativeDSTTest.java
++++ b/test/jdk/java/util/TimeZone/NegativeDSTTest.java
+@@ -1,5 +1,5 @@
+ /*
+- * Copyright (c) 2019, 2025, Oracle and/or its affiliates. All rights reserved.
++ * Copyright (c) 2019, 2026, Oracle and/or its affiliates. All rights reserved.
+  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+  *
+  * This code is free software; you can redistribute it and/or modify it
+@@ -38,7 +38,7 @@ import org.junit.jupiter.params.provider.MethodSource;
+ 
+ /**
+  * @test
+- * @bug 8212970 8324065
++ * @bug 8212970 8324065 8388214
+  * @summary Test whether the savings are positive in time zones that have
+  *      negative savings in the source TZ files.
+  * @run junit NegativeDSTTest
+@@ -73,18 +73,17 @@ public class NegativeDSTTest {
+             {WINDHOEK, LocalDate.of(1994, 3, 23), ONE_HOUR, false},
+             {WINDHOEK, LocalDate.of(2016, 9, 23), 2 * ONE_HOUR, true},
+ 
+-            // Africa/Casablanca for the Rule "Morocco" Defines negative DST till 2037 as of 2019a.
++            // Africa/Casablanca for the Rule "Morocco" defines negative DST until early 2026,
++            // then returns to standard UTC permanently later that year, starting with 2026c.
+             {CASABLANCA, LocalDate.of(1939, 9, 13), ONE_HOUR, true},
+             {CASABLANCA, LocalDate.of(1939, 11, 20), 0, false},
+             {CASABLANCA, LocalDate.of(2018, 6, 18), ONE_HOUR, true},
+             {CASABLANCA, LocalDate.of(2019, 1, 1), ONE_HOUR, true},
+             {CASABLANCA, LocalDate.of(2019, 5, 6), 0, false},
+-            {CASABLANCA, LocalDate.of(2037, 10, 5), 0, false},
+-            {CASABLANCA, LocalDate.of(2037, 11, 16), ONE_HOUR, true},
+-            {CASABLANCA, LocalDate.of(2038, 9, 27), 0, false},
+-            {CASABLANCA, LocalDate.of(2038, 11, 1), ONE_HOUR, true},
+-            {CASABLANCA, LocalDate.of(2087, 3, 31), 0, false},
+-            {CASABLANCA, LocalDate.of(2087, 5, 12), ONE_HOUR, true},
++            {CASABLANCA, LocalDate.of(2026, 2, 16), 0, false},
++            {CASABLANCA, LocalDate.of(2026, 3, 23), ONE_HOUR, true},
++            {CASABLANCA, LocalDate.of(2026, 9, 21), 0, false},
++            {CASABLANCA, LocalDate.of(2038, 11, 1), 0, false},
+         };
+     }
+ 
+diff --git a/test/jdk/java/util/TimeZone/TimeZoneData/VERSION b/test/jdk/java/util/TimeZone/TimeZoneData/VERSION
+index 7ae8c6f5c48..5f54cd5a174 100644
+--- a/test/jdk/java/util/TimeZone/TimeZoneData/VERSION
++++ b/test/jdk/java/util/TimeZone/TimeZoneData/VERSION
+@@ -1 +1 @@
+-tzdata2026b
++tzdata2026c
+diff --git a/test/jdk/java/util/TimeZone/TimeZoneData/displaynames.txt b/test/jdk/java/util/TimeZone/TimeZoneData/displaynames.txt
+index 03f5305e65e..7168266f715 100644
+--- a/test/jdk/java/util/TimeZone/TimeZoneData/displaynames.txt
++++ b/test/jdk/java/util/TimeZone/TimeZoneData/displaynames.txt
+@@ -32,7 +32,7 @@ America/Dawson MST
+ America/Dawson_Creek MST
+ America/Denver MST MDT
+ America/Detroit EST EDT
+-America/Edmonton MST MDT
++America/Edmonton CST
+ America/El_Salvador CST CDT
+ America/Fort_Nelson MST
+ America/Glace_Bay AST ADT
+@@ -88,7 +88,7 @@ America/Tegucigalpa CST CDT
+ America/Thule AST ADT
+ America/Tijuana PST PDT
+ America/Toronto EST EDT
+-America/Vancouver PST PDT
++America/Vancouver MST
+ America/Whitehorse MST
+ America/Winnipeg CST CDT
+ America/Yakutat AKST AKDT
+-- 
+2.55.0
+

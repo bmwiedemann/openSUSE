@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Aug 24 17:22:38 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream tag jdk-21.0.12.1+1 (August 2026 CSPU)
+  * Changes
+    + JDK-8333743: Change .jcheck/conf branches property to match
+      valid branches
+    + JDK-8382471, bsc#1275777, CVE-2026-60589: Improve Resource
+      Resolving
+    + JDK-8384708, bsc#1275778, CVE-2026-61308: Enhance HTTP
+      Connections
+    + JDK-8386205, bsc#1275764, CVE-2026-70907: Enhance TLS server
+    + JDK-8388789: Bump update version for OpenJDK: jdk-21.0.12.1
+    + JDK-8389946: [21u] Remove designator
+      DEFAULT_PROMOTED_VERSION_PRE=ea for release 21.0.12.1
+- Added patch:
+  * tzdata-2026c.patch
+    + backport upcoming upgrade of timezone data (bsc#1275035)
+
+-------------------------------------------------------------------
+Mon Jul 27 19:29:07 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Added patch:
+  * bsc-1221224.patch
+    + Fix bsc#1221224 java-21-openjdk classlist depends on the CPU
+      count of the build machine
+    + Explicitly use G1 if the JVM supports it. GC ergonomics pick
+      SerialGC on single-CPU machines. SerialGC does not support
+      dumping of the shared heap, thus the classlist is different on
+      a single-CPU builder.
+
+-------------------------------------------------------------------
 Wed Jul 22 09:45:34 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream tag jdk-21.0.12+8 (July 2026 CPU)

@@ -1,0 +1,78 @@
+From: Bernhard M. Wiedemann <bwiedemann@suse.de>
+Date: Mon, 27 Jul 2026 05:37:39 +0200
+Subject: [PATCH] Make classlist generation independent of the build CPU count
+
+The previous backport attempts did not help: JDK-8334598's "grep -v @cp"
+filter is a no-op on JDK 21 (@cp lines only exist after JDK-8293980,
+which is JDK 23+), and JDK-8293980's -Xint plus
+-Djava.util.concurrent.ForkJoinPool.common.parallelism=0 address
+constant pool resolution, not class loading.
+
+The actual cause of boo#1221224 is GC ergonomics: on a machine with a
+single CPU the JVM is not considered a server class machine and picks
+SerialGC. In JDK 21 only G1 can dump the shared heap
+(HeapShared::can_write() requires UseG1GC), so the intermediate
+-Xshare:dump of the classlist recipe produces an archive without
+archived heap objects. The second HelloClasslist run then does not
+restore the archived subgraphs, which changes the set of loaded classes
+- java/lang/Byte$ByteCache, java/lang/Short$ShortCache and
+jdk/internal/math/FDBigInteger are the visible symptom - and the
+resulting lib/classlist differs, which in turn changes lib/modules,
+lib/server/classes*.jsa and jmods/java.base.jmod.
+
+Explicitly use G1 for classlist generation if the JVM supports it, the
+same way Images.gmk already does when dumping the shipped CDS archives.
+Measured on this machine, the classlist and the intermediate archive are
+now bit-identical for 1, 2, 4 and 16 CPUs, and identical to what
+multi-core builds produce today, so the shipped content does not change.
+
+Upstream fixed this differently and only in JDK 24 via JDK-8298614
+(Support CDS heap dumping for SerialGC and ParallelGC), which is a
+HotSpot change that is not suitable for 21u.
+
+---
+diff --git a/make/GenerateLinkOptData.gmk b/make/GenerateLinkOptData.gmk
+index 5dd766c8c07..4ade4373842 100644
+--- a/make/GenerateLinkOptData.gmk
++++ b/make/GenerateLinkOptData.gmk
+@@ -59,6 +59,19 @@ ifeq ($(EXTERNAL_BUILDJDK), true)
+   INTERIM_IMAGE_DIR := $(BUILD_JDK)
+ endif
+ 
++# These are needed for deterministic classlist:
++# - The classlist can be influenced by locale. Always set it to en/US.
++# - Only G1 supports dumping the shared heap, and GC ergonomics pick SerialGC on
++#   single-CPU machines. Without archived heap objects a different set of classes
++#   is loaded, so the classlist would depend on the CPU count of the build machine.
++#   Explicitly use G1 if the JVM supports it, like Images.gmk does for the shipped
++#   CDS archives.
++CLASSLIST_GC_OPT := $(if $(filter g1gc, $(JVM_FEATURES_$(JVM_VARIANT_MAIN))),-XX:+UseG1GC)
++
++CLASSLIST_FILE_VM_OPTS = \
++    -Duser.language=en -Duser.country=US \
++    $(CLASSLIST_GC_OPT)
++
+ # Save the stderr output of the command and print it along with stdout in case
+ # something goes wrong.
+ $(CLASSLIST_FILE): $(INTERIM_IMAGE_DIR)/bin/java$(EXECUTABLE_SUFFIX) $(CLASSLIST_JAR)
+@@ -66,17 +79,17 @@ $(CLASSLIST_FILE): $(INTERIM_IMAGE_DIR)/bin/java$(EXECUTABLE_SUFFIX) $(CLASSLIST
+ 	$(call LogInfo, Generating $(patsubst $(OUTPUTDIR)/%, %, $@))
+ 	$(call LogInfo, Generating $(patsubst $(OUTPUTDIR)/%, %, $(JLI_TRACE_FILE)))
+ 	$(FIXPATH) $(INTERIM_IMAGE_DIR)/bin/java -XX:DumpLoadedClassList=$@.raw \
+-	    -Duser.language=en -Duser.country=US \
++	    $(CLASSLIST_FILE_VM_OPTS) \
+ 	    -cp $(SUPPORT_OUTPUTDIR)/classlist.jar \
+ 	    build.tools.classlist.HelloClasslist $(LOG_DEBUG)
+ 	$(GREP) -v HelloClasslist $@.raw > $@.interim
+ 	$(FIXPATH) $(INTERIM_IMAGE_DIR)/bin/java -Xshare:dump \
+ 	    -XX:SharedClassListFile=$@.interim -XX:SharedArchiveFile=$@.jsa \
+-	    -Xmx128M -Xms128M $(LOG_INFO)
++	    $(CLASSLIST_GC_OPT) -Xmx128M -Xms128M $(LOG_INFO)
+ 	$(FIXPATH) $(INTERIM_IMAGE_DIR)/bin/java -XX:DumpLoadedClassList=$@.raw.2 \
+ 	    -XX:SharedClassListFile=$@.interim -XX:SharedArchiveFile=$@.jsa \
+ 	    -Djava.lang.invoke.MethodHandle.TRACE_RESOLVE=true \
+-	    -Duser.language=en -Duser.country=US \
++	    $(CLASSLIST_FILE_VM_OPTS) \
+ 	    --module-path $(SUPPORT_OUTPUTDIR)/classlist.jar \
+ 	    -cp $(SUPPORT_OUTPUTDIR)/classlist.jar \
+ 	    build.tools.classlist.HelloClasslist \

@@ -38,7 +38,8 @@
 %global featurever      21
 %global interimver      0
 %global updatever       12
-%global buildver        8
+%global patchver        1
+%global buildver        1
 %global openjdk_repo    jdk21u
 %global openjdk_tag     jdk-%{featurever}%{?updatever:.%{interimver}.%{updatever}}%{?patchver:.%{patchver}}+%{buildver}
 %global openjdk_dir     %{openjdk_repo}-jdk-%{featurever}%{?updatever:.%{interimver}.%{updatever}}%{?patchver:.%{patchver}}-%{buildver}
@@ -184,6 +185,9 @@ Patch200:       ppc_stack_overflow_fix.patch
 #
 Patch302:       disable-doclint-by-default.patch
 Patch303:       java-40y.patch
+Patch304:       bsc-1221224.patch
+#
+Patch400:       tzdata-2026c.patch
 #
 BuildRequires:  alsa-lib-devel
 BuildRequires:  autoconf
@@ -426,6 +430,9 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 
 %patch -P 302 -p1
 %patch -P 303 -p1
+%patch -P 304 -p1
+
+%patch -P 400 -p1
 
 # Extract systemtap tapsets
 
