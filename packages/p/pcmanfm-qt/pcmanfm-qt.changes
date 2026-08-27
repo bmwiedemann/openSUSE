@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Aug 26 18:14:12 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.4.1:
+  * The desktop screen is set explicitly on Wayland because, starting with Qt ≥
+    6.11.2, it isn't automatically set based on its geometry.
+  * Close tabs without close buttons by middle clicking with Qt ≥ 6.11.
+  * A small and safe workaround is added for a bad behavior of wlroots.
+  * Other small changes.
+
+-------------------------------------------------------------------
 Tue Apr 21 00:43:23 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
 
 - Update to version 2.4.0:

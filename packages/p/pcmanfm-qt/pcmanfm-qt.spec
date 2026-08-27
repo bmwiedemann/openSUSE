@@ -1,7 +1,7 @@
 #
 # spec file for package pcmanfm-qt
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           pcmanfm-qt
-Version:        2.4.0
+Version:        2.4.1
 Release:        0
 Summary:        File manager and desktop icon manager
 License:        GPL-2.0-or-later
@@ -38,8 +38,8 @@ BuildRequires:  pkgconfig
 BuildRequires:  cmake(LayerShellQt) >= 6.0.0
 BuildRequires:  cmake(Qt6DBus) >= 6.6.0
 BuildRequires:  cmake(Qt6LinguistTools)
-BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  cmake(Qt6Svg)
+BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  cmake(fm-qt6)
 BuildRequires:  cmake(lxqt2-build-tools) >= 2.1.0
 
