@@ -7,4 +7,39 @@
     <comment>New package, forwarded from devel:languages:python (dependency for vllm).</comment>
     <requestid>1365175</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e3a0545544fcca4f1efc7c172ced4dd5</srcmd5>
+    <version>2.11.2</version>
+    <time>1787849495</time>
+    <user>anag_factory</user>
+    <comment>Update python-pydantic-extra-types to 2.11.2.
+
+Upstream changes:
+- TimeZoneName validator accepts common timezone abbreviations such as EDT
+- Negative pendulum Duration values now serialize to correct ISO 8601
+- Missing Pendulum Interval wrapper support added
+- New ISIN type with checksum validation
+- New JsonSchema type validated through jsonschema
+
+A note on the version, since PyPI reports 2.11.1 as latest: upstream yanked
+2.11.2 from PyPI because the two new types (ISIN, JsonSchema) were merged into
+what was meant to be a patch release. The yank reason states there are no known
+security risks, both types are kept on upstream master, and no successor release
+has appeared in the four months since. Fedora, Gentoo, Arch and FreeBSD all ship
+2.11.2. The three genuine bugfixes above only exist in this release.
+
+Packaging changes:
+- Add fix-tests-for-pydantic-2.13.patch, the upstream merge commit from
+  gh#pydantic/pydantic-extra-types#394, needed because pydantic 2.13 adds a
+  description member to the Coordinate JSON schema that the tests did not expect
+- Replace the previous import smoke test with the real upstream test suite;
+  13497 tests pass per Python flavour. tests/test_cron.py, tests/test_ulid.py
+  and tests/test_json_schema.py stay excluded because cron-converter and
+  python-ulid are not packaged in Factory
+- jsonschema is a new test-only dependency (python-jsonschema 4.26.0 is in
+  Factory); it is an optional extra upstream, so it is not a runtime Requires
+
+Built natively on aarch64: rpmlint 0 errors, 0 warnings, 0 badness.</comment>
+    <requestid>1373870</requestid>
+  </revision>
 </revisionlist>

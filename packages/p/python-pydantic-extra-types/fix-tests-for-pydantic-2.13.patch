@@ -1,0 +1,186 @@
+From 6f0217de5e26b99d09ffd9bb95da415779e6bef6 Mon Sep 17 00:00:00 2001
+From: Colin Watson <cjwatson@debian.org>
+Date: Wed, 13 May 2026 16:45:47 +0100
+Subject: [PATCH] fix: Adjust tests for Pydantic 2.13 (#394)
+
+https://github.com/pydantic/pydantic/pull/12815 has the effect of adding
+a new `description` member to the `Coordinate` schema.  Ignore it so
+that tests pass with both old and new versions.
+---
+ tests/test_coordinate.py  | 85 +++++++++++++++++++++------------------
+ tests/test_json_schema.py | 41 ++++++++++---------
+ 2 files changed, 67 insertions(+), 59 deletions(-)
+
+diff --git a/tests/test_coordinate.py b/tests/test_coordinate.py
+index 99e9365e..74e515a6 100644
+--- a/tests/test_coordinate.py
++++ b/tests/test_coordinate.py
+@@ -3,6 +3,7 @@
+ from typing import Any, Optional, Union
+ 
+ import pytest
++from dirty_equals import IsPartialDict
+ from pydantic import BaseModel, ValidationError
+ from pydantic_core._pydantic_core import ArgsKwargs
+ 
+@@ -215,27 +216,29 @@ def test_json_schema():
+     class Model(BaseModel):
+         value: Coordinate
+ 
+-    assert Model.model_json_schema(mode='validation')['$defs']['Coordinate'] == {
+-        'properties': {
+-            'latitude': {
+-                'anyOf': [
+-                    {'maximum': 90.0, 'minimum': -90.0, 'type': 'number'},
+-                    {'type': 'string', 'pattern': '^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$'},
+-                ],
+-                'title': 'Latitude',
+-            },
+-            'longitude': {
+-                'anyOf': [
+-                    {'maximum': 180.0, 'minimum': -180.0, 'type': 'number'},
+-                    {'type': 'string', 'pattern': '^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$'},
+-                ],
+-                'title': 'Longitude',
++    assert Model.model_json_schema(mode='validation')['$defs']['Coordinate'] == IsPartialDict(
++        {
++            'properties': {
++                'latitude': {
++                    'anyOf': [
++                        {'maximum': 90.0, 'minimum': -90.0, 'type': 'number'},
++                        {'type': 'string', 'pattern': '^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$'},
++                    ],
++                    'title': 'Latitude',
++                },
++                'longitude': {
++                    'anyOf': [
++                        {'maximum': 180.0, 'minimum': -180.0, 'type': 'number'},
++                        {'type': 'string', 'pattern': '^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$'},
++                    ],
++                    'title': 'Longitude',
++                },
+             },
+-        },
+-        'required': ['latitude', 'longitude'],
+-        'title': 'Coordinate',
+-        'type': 'object',
+-    }
++            'required': ['latitude', 'longitude'],
++            'title': 'Coordinate',
++            'type': 'object',
++        }
++    )
+     assert Model.model_json_schema(mode='validation')['properties']['value'] == {
+         'anyOf': [
+             {'$ref': '#/$defs/Coordinate'},
+@@ -254,27 +257,29 @@ class Model(BaseModel):
+     }
+     assert Model.model_json_schema(mode='serialization') == {
+         '$defs': {
+-            'Coordinate': {
+-                'properties': {
+-                    'latitude': {
+-                        'anyOf': [
+-                            {'maximum': 90.0, 'minimum': -90.0, 'type': 'number'},
+-                            {'type': 'string', 'pattern': '^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$'},
+-                        ],
+-                        'title': 'Latitude',
++            'Coordinate': IsPartialDict(
++                {
++                    'properties': {
++                        'latitude': {
++                            'anyOf': [
++                                {'maximum': 90.0, 'minimum': -90.0, 'type': 'number'},
++                                {'type': 'string', 'pattern': '^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$'},
++                            ],
++                            'title': 'Latitude',
++                        },
++                        'longitude': {
++                            'anyOf': [
++                                {'maximum': 180.0, 'minimum': -180.0, 'type': 'number'},
++                                {'type': 'string', 'pattern': '^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$'},
++                            ],
++                            'title': 'Longitude',
++                        },
+                     },
+-                    'longitude': {
+-                        'anyOf': [
+-                            {'maximum': 180.0, 'minimum': -180.0, 'type': 'number'},
+-                            {'type': 'string', 'pattern': '^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$'},
+-                        ],
+-                        'title': 'Longitude',
+-                    },
+-                },
+-                'required': ['latitude', 'longitude'],
+-                'title': 'Coordinate',
+-                'type': 'object',
+-            }
++                    'required': ['latitude', 'longitude'],
++                    'title': 'Coordinate',
++                    'type': 'object',
++                }
++            )
+         },
+         'properties': {'value': {'$ref': '#/$defs/Coordinate', 'title': 'Value'}},
+         'required': ['value'],
+diff --git a/tests/test_json_schema.py b/tests/test_json_schema.py
+index 62748d3a..f82219b7 100644
+--- a/tests/test_json_schema.py
++++ b/tests/test_json_schema.py
+@@ -2,6 +2,7 @@
+ 
+ import pycountry
+ import pytest
++from dirty_equals import IsPartialDict
+ from pydantic import BaseModel
+ 
+ import pydantic_extra_types
+@@ -189,27 +190,29 @@
+             Coordinate,
+             {
+                 '$defs': {
+-                    'Coordinate': {
+-                        'properties': {
+-                            'latitude': {
+-                                'anyOf': [
+-                                    {'maximum': 90.0, 'minimum': -90.0, 'type': 'number'},
+-                                    {'type': 'string', 'pattern': '^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$'},
+-                                ],
+-                                'title': 'Latitude',
+-                            },
+-                            'longitude': {
+-                                'anyOf': [
+-                                    {'maximum': 180.0, 'minimum': -180.0, 'type': 'number'},
+-                                    {'type': 'string', 'pattern': '^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$'},
+-                                ],
+-                                'title': 'Longitude',
++                    'Coordinate': IsPartialDict(
++                        {
++                            'properties': {
++                                'latitude': {
++                                    'anyOf': [
++                                        {'maximum': 90.0, 'minimum': -90.0, 'type': 'number'},
++                                        {'type': 'string', 'pattern': '^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$'},
++                                    ],
++                                    'title': 'Latitude',
++                                },
++                                'longitude': {
++                                    'anyOf': [
++                                        {'maximum': 180.0, 'minimum': -180.0, 'type': 'number'},
++                                        {'type': 'string', 'pattern': '^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$'},
++                                    ],
++                                    'title': 'Longitude',
++                                },
+                             },
++                            'required': ['latitude', 'longitude'],
++                            'title': 'Coordinate',
++                            'type': 'object',
+                         },
+-                        'required': ['latitude', 'longitude'],
+-                        'title': 'Coordinate',
+-                        'type': 'object',
+-                    }
++                    )
+                 },
+                 'properties': {
+                     'x': {

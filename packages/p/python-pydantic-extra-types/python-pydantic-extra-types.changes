@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Aug 26 18:04:53 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2.11.2:
+  * Accept common timezone abbreviations such as EDT in the
+    TimeZoneName validator
+  * Correct ISO 8601 serialization of negative pendulum Duration
+    values
+  * Add the missing Pendulum Interval wrapper
+  * New ISIN type with checksum validation
+  * New JsonSchema type validated through jsonschema
+- Upstream yanked 2.11.2 from PyPI because the two new types were
+  merged into a patch release by mistake, not for any defect; both
+  are kept on upstream master and no security issue is involved
+- Add fix-tests-for-pydantic-2.13.patch: adjust the tests for the
+  description member that pydantic 2.13 adds to the Coordinate
+  schema (gh#pydantic/pydantic-extra-types#394)
+- Run the upstream test suite instead of an import smoke test;
+  tests/test_cron.py, tests/test_ulid.py and tests/test_json_schema.py
+  remain excluded because cron-converter and python-ulid are not
+  packaged; jsonschema becomes a new test-only dependency
+
+-------------------------------------------------------------------
 Sun Jul 12 14:05:19 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Initial package python-pydantic-extra-types 2.11.1

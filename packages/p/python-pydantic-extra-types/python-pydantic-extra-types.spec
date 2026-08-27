@@ -1,7 +1,7 @@
 #
 # spec file for package python-pydantic-extra-types
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,14 @@
 
 
 Name:           python-pydantic-extra-types
-Version:        2.11.1
+Version:        2.11.2
 Release:        0
 Summary:        Extra Pydantic types
 License:        MIT
 URL:            https://github.com/pydantic/pydantic-extra-types
 Source:         https://files.pythonhosted.org/packages/source/p/pydantic_extra_types/pydantic_extra_types-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM fix-tests-for-pydantic-2.13.patch gh#pydantic/pydantic-extra-types#394 -- adjust tests for the description member pydantic 2.13 adds to the Coordinate schema
+Patch0:         fix-tests-for-pydantic-2.13.patch
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pydantic >= 2.5.2}
@@ -35,6 +37,7 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module annotated-types}
 BuildRequires:  %{python_module dirty-equals}
+BuildRequires:  %{python_module jsonschema >= 4.0.0}
 BuildRequires:  %{python_module pendulum}
 BuildRequires:  %{python_module phonenumbers}
 BuildRequires:  %{python_module pycountry}
@@ -63,11 +66,10 @@ payment card numbers, MAC addresses, semantic versions and more.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# The test suite (incl. tests/test_json_schema.py) imports optional type
-# backends not packaged in Factory -- cron-converter (cron type) and
-# python-ulid (ulid type) -- so pytest cannot even collect. Fall back to an
-# import smoke test of the core, dependency-free types.
-%python_expand PYTHONDONTWRITEBYTECODE=1 $python -c "import pydantic_extra_types; from pydantic_extra_types import mac_address, coordinate, isbn"
+# tests/test_cron.py, tests/test_ulid.py and tests/test_json_schema.py import
+# optional type backends not packaged in Factory -- cron-converter (cron type)
+# and python-ulid (ulid type) -- so they cannot be collected.
+%pytest --ignore tests/test_cron.py --ignore tests/test_ulid.py --ignore tests/test_json_schema.py
 
 %files %{python_files}
 %license LICENSE
