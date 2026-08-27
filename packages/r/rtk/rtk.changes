@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Aug 27 15:37:32 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.46.0:
+  * find: dispatch on find's own grammar and compress the output of
+    predicates rtk does not model, with a never-worse guard and a tail
+    hint when the result cap is imposed
+  * git: stop misdetecting the argument of a value-taking option as a
+    patch flag, and preserve patch output from log commands
+  * stream: decode invalid UTF-8 lossily instead of dropping the line
+  * tee: hash long recovery file slugs so they cannot collide
+- No licence change: the vendored set still resolves to the existing
+  License tag, with MIT elected for the Unlicense/MIT crates. Refreshed
+  the crate counts in the Legal-Review-Notice comment (193 vendored, 134
+  linked, thirteen MIT-only)
+
+-------------------------------------------------------------------
 Sun Aug  9 18:57:46 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.45.0:

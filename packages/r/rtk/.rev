@@ -55,4 +55,31 @@ Built locally on aarch64: 2655 tests pass, rpmlint 0 errors / 0 warnings /
 3446 and 3447 are still open.</comment>
     <requestid>1370422</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9fd95dd614fc30e798e1c6bc4f209dc0</srcmd5>
+    <version>0.46.0</version>
+    <time>1787849764</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.46.0 (upstream release 2026-08-26).
+
+Upstream tags release candidates as GitHub releases and they sort above stable
+-- dev-0.46.1-rc.367 is NEWER by date than v0.46.0. Target picked by the
+prerelease flag, not tag order.
+
+Both downstream patches are still required and still apply at --fuzz=0: the
+upstream PRs they were sent as (3446 unbundle-sqlite, 3447 no-deny-warnings)
+are both still open.
+
+Verified: 2728 tests pass / 0 fail, rpmlint 0 errors / 0 warnings / 0 badness,
+source_validator clean, spec-cleaner no-diff. The RPM still carries
+Requires: libsqlite3.so.0 (sqlite is not re-bundled) and rtk-debuginfo is
+9.8 MB (release profile strip is still disabled).
+
+Licence re-derived on this re-vendor with cargo tree -e normal: 193 crates
+vendored, 134 linked. The License tag is unchanged -- every mandatory licence
+(MPL-2.0, Unicode-3.0, ISC, CDLA-Permissive-2.0, BSD-3-Clause) is already named
+and every OR expression is satisfied by Apache-2.0 or MIT. Only the stale counts
+in the Legal-Review-Notice comment were refreshed.</comment>
+    <requestid>1374097</requestid>
+  </revision>
 </revisionlist>
