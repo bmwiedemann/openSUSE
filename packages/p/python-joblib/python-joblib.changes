@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 25 12:35:44 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Add upstream patch np25.patch, gh#joblib/joblib#1777
+
+-------------------------------------------------------------------
 Thu Aug 13 12:18:18 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add upstream patch fix-generator-unordered-lock.patch

@@ -1,0 +1,27 @@
+From 305ae4a9a9b45eb4d1234a27444c1b372178d2c5 Mon Sep 17 00:00:00 2001
+From: Nanored4498 <nanored.mc@gmail.com>
+Date: Fri, 6 Feb 2026 06:26:24 +0100
+Subject: [PATCH] MNT Avoid numpy 2.5 warning when changing an array shape
+ (#1777)
+
+---
+ joblib/numpy_pickle.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/joblib/numpy_pickle.py b/joblib/numpy_pickle.py
+index 169016d81..3e9e771c8 100644
+--- a/joblib/numpy_pickle.py
++++ b/joblib/numpy_pickle.py
+@@ -201,10 +201,10 @@ def read_array(self, unpickler, ensure_native_byte_order):
+                 del data
+ 
+             if self.order == "F":
+-                array.shape = self.shape[::-1]
++                array = array.reshape(self.shape[::-1])
+                 array = array.transpose()
+             else:
+-                array.shape = self.shape
++                array = array.reshape(self.shape)
+ 
+         if ensure_native_byte_order:
+             # Detect byte order mismatch and swap as needed.

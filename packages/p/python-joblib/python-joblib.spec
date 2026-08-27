@@ -31,6 +31,8 @@ Patch1:         also-filter-new-fork-warning.patch
 Patch2:         fix-tests-numpy-2.4.patch
 # PATCH-FIX-UPSTREAM fix-generator-unordered-lock.patch gh#joblib/joblib#1789
 Patch3:         fix-generator-unordered-lock.patch
+# PATCH-FIX-UPSTREAM np25.patch gh#joblib/joblib#1777
+Patch4:         np25.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module lz4}
 BuildRequires:  %{python_module numpy}
