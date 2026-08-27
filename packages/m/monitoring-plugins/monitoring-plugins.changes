@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 19 20:29:52 UTC 2026 - Ruediger Oertel <ro@suse.com>
+
+- fix apparmor profile for check_procs:
+  allow to read /sys/devices/system/node/ also on sle15 and later
+
+-------------------------------------------------------------------
 Tue Jun 17 12:46:50 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Remove BuildRequires dhcp-devel because it is EOL.
