@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Aug 26 07:51:38 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
+
+- Update to version 20260826:
+  * Fix NFS mount with xprtsec=tls / xprtsec=mtls (bsc#1275783)
+  * named filetrans for netconfig (bsc#1275219)
+  * Revert "Apply fix_unconfined.patch" (bsc#1275219)
+  * sshd_session_t needs to access kanidm sshkeys (bsc#1275492)
+  * Fix broken kanidm_sshkeys_t security context (bsc#1275492)
+  * Initial policy for xrdp (bsc#1262291)
+
+-------------------------------------------------------------------
 Thu Aug 20 11:35:35 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
 
 - Update to version 20260820:
