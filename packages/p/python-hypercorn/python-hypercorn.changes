@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 25 02:57:29 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove Python 3.10 support from the {Build,}Requires.
+
+-------------------------------------------------------------------
 Thu Aug 13 10:47:01 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
 - Add tests.patch to fix tests with new h2

@@ -38,12 +38,10 @@ BuildRequires:  %{python_module httpx}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module pdm-backend}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry-core >= 1}
 BuildRequires:  %{python_module priority}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-trio}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module taskgroup if %python-base < 3.11}
 BuildRequires:  %{python_module trio >= 0.22.0}
 BuildRequires:  %{python_module wsproto >= 0.14.0}
 BuildRequires:  fdupes
@@ -59,12 +57,6 @@ Requires:       alts
 %else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-%endif
-%if %{python_version_nodots} < 311
-Requires:       python-exceptiongroup >= 1.1
-Requires:       python-taskgroup
-Requires:       python-tomli
-Requires:       python-typing-extensions
 %endif
 %python_subpackages
 

@@ -72,4 +72,12 @@
     <comment></comment>
     <requestid>1371019</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>285c6ec80d6eea0de35b555895a5d8fa</srcmd5>
+    <version>0.18.0</version>
+    <time>1787849383</time>
+    <user>anag_factory</user>
+    <comment>- Remove Python 3.10 support from the {Build,}Requires.</comment>
+    <requestid>1373502</requestid>
+  </revision>
 </revisionlist>
