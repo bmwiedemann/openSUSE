@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Aug 26 17:57:52 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 5.16.1:
+  * Add GLM-5.3-Flash, a natively multimodal 320B model with 18B
+    active parameters mixing sparse and linear attention
+  * Pin the remote ESMFold2 kernel revision and re-point it at
+    the upstream biohub repositories
+  * Restore backwards compatibility for the tensor-parallel API
+- Update to 5.16.0:
+  * Add Qwen4-Exp, Granite Speech 5.0, Step-3.7-Flash,
+    CohereCompass, ESMC and ESMFold2
+  * The legacy tensor-parallel implementation was replaced by a
+    DTensor-native backend, so code still using the old TP API
+    for inference or training has to be migrated
+  * wav2vec2-conformer, wav2vec2-bert and SeamlessM4T/v2 now
+    dispatch attn_implementation="sdpa", which changes their
+    initialisation behaviour
+  * FuyuProcessor no longer returns image_patch_indices
+  * Add NVFP4 quantization and a naive pipeline-parallel
+    inference engine wired into generate()
+  * Fix a sliding-window cache off-by-one on wraparound, Whisper
+    speculative decoding, Emu3 image generation, OLMo garbage
+    output and a silently dropped GPT2 cross-attention mask
+  * ... see upstream's release notes for the full list
+- Drop transformers-allow-tokenizers-0.23.1.patch and raise the
+  tokenizers floor to 0.23.1: upstream now declares
+  tokenizers >= 0.23.1, < 0.24.0 itself, which is exactly what
+  the patch widened the old <= 0.23.0 cap to
+- Switch from update-alternatives to libalternatives
+
+-------------------------------------------------------------------
 Thu Aug 20 05:46:40 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 5.15.1:

@@ -69,4 +69,43 @@ pre-existing and untouched to keep this update scoped to the fix).</comment>
 </comment>
     <requestid>1372113</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a17d31236ff6502d99816bc1a0af187b</srcmd5>
+    <version>5.16.1</version>
+    <time>1787849498</time>
+    <user>anag_factory</user>
+    <comment>Update python-transformers to 5.16.1 (crosses 5.16.0).
+
+New models: Qwen4-Exp, Granite Speech 5.0, Step-3.7-Flash, CohereCompass, ESMC,
+ESMFold2 and GLM-5.3-Flash.
+
+Breaking changes upstream declares for 5.16.0: the legacy tensor-parallel
+implementation was replaced by a DTensor-native backend (5.16.1 restores
+backwards compatibility for the old API with a deprecation cycle),
+wav2vec2_conformer / wav2vec2-bert / SeamlessM4T-v2 now dispatch
+attn_implementation=&quot;sdpa&quot;, and FuyuProcessor no longer returns
+image_patch_indices.
+
+transformers-allow-tokenizers-0.23.1.patch is dropped: upstream took the fix in
+huggingface/transformers#46381 and now declares tokenizers &gt;=0.23.1,&lt;0.24.0
+itself, so the downstream widening is obsolete. The Requires/BuildRequires floor
+is raised to 0.23.1 to match; the &lt;0.24.0 ceiling stays declared so a future
+0.24 shows up as unresolvable rather than installing and failing at import time.
+
+Also converts the package from update-alternatives to libalternatives. Both
+flavours ship /usr/bin/transformers as a real symlink to alts plus their own
+priority conf under %{_datadir}/libalternatives/transformers/, and %pre carries
+the update-alternatives migration. No other package provides that command name,
+so there is no shared-command-pair sequencing to coordinate.
+
+No CVE in the v5.15.1..v5.16.1 commit range (167 commits grepped for CVE ids).
+CVE-2025-6921 / boo#1250447 is already cited in the 5.15.0 changelog entry and
+is unaffected by this bump.
+
+Built green locally on aarch64 against science:machinelearning/openSUSE_Tumbleweed;
+the %check import smoke test passes for python313 and python314. rpmlint is
+unchanged from the previous build at 4 badness (4x non-executable-script on
+upstream's shebanged library modules, pre-existing). source_validator clean.</comment>
+    <requestid>1373869</requestid>
+  </revision>
 </revisionlist>

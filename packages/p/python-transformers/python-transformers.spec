@@ -16,22 +16,22 @@
 #
 
 
+%bcond_without libalternatives
 Name:           python-transformers
-Version:        5.15.1
+Version:        5.16.1
 Release:        0
 Summary:        State-of-the-art Machine Learning for JAX, PyTorch and TensorFlow
 License:        Apache-2.0
 URL:            https://github.com/huggingface/transformers
 Source:         https://files.pythonhosted.org/packages/source/t/transformers/transformers-%{version}.tar.gz
-# Upstream caps tokenizers at <=0.23.0, but the only stable 0.23.x release is
-# 0.23.1 - the cap makes "import transformers" fail outright.
-Patch0:         transformers-allow-tokenizers-0.23.1.patch
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-PyYAML >= 5.1
 Requires:       python-huggingface-hub >= 1.5.0
 Requires:       python-numpy >= 1.17
@@ -41,11 +41,9 @@ Requires:       python-safetensors >= 0.8.0
 # dependency_versions_check.py enforces the upper bound at import time, so an
 # undeclared 0.24 would install fine and then fail on "import transformers".
 Requires:       python-tokenizers < 0.24.0
-Requires:       python-tokenizers >= 0.22.0
+Requires:       python-tokenizers >= 0.23.1
 Requires:       python-tqdm >= 4.60
 Requires:       python-typer
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION runtime dependencies (also needed for the %%check import test)
 BuildRequires:  %{python_module PyYAML >= 5.1}
@@ -54,7 +52,7 @@ BuildRequires:  %{python_module numpy >= 1.17}
 BuildRequires:  %{python_module packaging >= 20.0}
 BuildRequires:  %{python_module regex >= 2025.10.22}
 BuildRequires:  %{python_module safetensors >= 0.8.0}
-BuildRequires:  %{python_module tokenizers >= 0.22.0}
+BuildRequires:  %{python_module tokenizers >= 0.23.1}
 BuildRequires:  %{python_module tqdm >= 4.60}
 BuildRequires:  %{python_module typer}
 # /SECTION
@@ -83,6 +81,7 @@ unified API.
 %install
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/transformers
+%python_group_libalternatives transformers
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -91,11 +90,8 @@ unified API.
 # Fall back to an import smoke test of the top-level package.
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -B -c "import transformers; print(transformers.__version__)"
 
-%post
-%python_install_alternative transformers
-
-%postun
-%python_uninstall_alternative transformers
+%pre
+%python_libalternatives_reset_alternative transformers
 
 %files %{python_files}
 %license LICENSE
