@@ -916,4 +916,41 @@
 - Remove invalid use of `%{?python_version_nodots}` macros.</comment>
     <requestid>1352564</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>debe8c32f5f9683968a5269befa18ba0</srcmd5>
+    <version>4.0.7</version>
+    <time>1787849467</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.0.7:
+  ## False Positives Fixed
+  * Fix a false positive for invalid-name when a module-level variable is
+    assigned an instance of a TypedDict subclass.
+  * implicit-str-concat is no longer emitted for an implicit concatenation of
+    a raw string with a non-raw one (e.g. r&quot;\d&quot; &quot;\n&quot;).
+  * Fix a false positive for invalid-name (C0103) where the default
+    typevar-rgx rejected TypeVar names containing digits, such as Ec2T.
+  * Fix a false positive for too-many-arguments in (non-static) methods and
+    classmethods.
+  * Fix a false positive for no-member when a value is inferred to several
+    possible types and at least one of them defines a dynamic __getattr__.
+  * Fix a false positive for function-redefined (E0102) when reusing names
+    that match dummy-variables-rgx (such as _), which is common for
+    pytest-bdd step definitions.
+  * Fix undefined-variable false positive when a name used as a metaclass
+    argument in a nested class is referenced again later in the module.
+  * Fix a false positive for unused-variable where global variables matching
+    dummy-variables-rgx were still reported as unused when
+    allow-global-unused-variables was disabled.
+  * Fix a false positive for bad-dunder-name when there is a user-defined
+    __suppress_context__ attribute on exception subclasses.
+  * Fix used-before-assignment false positive for names bound by from X
+    import * in every branch of an if/elif/else chain.
+  * Check for metaclass call signature when evaluating arguments of a class
+    call.
+  * Fix false positive method-hidden when cached_property is imported
+    directly with from functools import cached_property.
+  ## Other Bug Fixes
+  * Fix a crash in the bad-open-mode check when the mode argument of open is</comment>
+    <requestid>1373747</requestid>
+  </revision>
 </revisionlist>
