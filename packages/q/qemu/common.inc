@@ -163,10 +163,8 @@ virtualization.
  --disable-gcrypt		\\\
  --disable-gettext		\\\
  --disable-gio			\\\
- --disable-glusterfs		\\\
  --disable-gnutls		\\\
  --disable-gtk			\\\
- --disable-gtk-clipboard	\\\
  --disable-guest-agent		\\\
  --disable-guest-agent-msi	\\\
  --disable-hv-balloon		\\\
@@ -217,6 +215,7 @@ virtualization.
  --disable-pvg			\\\
  --disable-qcow1		\\\
  --disable-qed			\\\
+ --disable-qemu-vnc             \\\
  --disable-qom-cast-debug	\\\
  --disable-qpl			\\\
  --disable-rbd			\\\

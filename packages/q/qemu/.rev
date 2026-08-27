@@ -5040,4 +5040,44 @@ vhost-user-gpu-fix-leak-in-virgl_cmd_res.patch</comment>
 </comment>
     <requestid>1368854</requestid>
   </revision>
+  <revision rev="311" vrev="1">
+    <srcmd5>b69e0da9fb9fb53420de6f75eaa9a2ad</srcmd5>
+    <version>11.1.0</version>
+    <time>1787849346</time>
+    <user>anag_factory</user>
+    <comment>- Revisit the fix for bsc#1232712:
+  * hw/display/xenfb: always register vfb and allocate console early (bsc#1232712)
+- Switch to ipxe-qemu:
+  * [openSUSE][RPM] spec: stop building edk2-basetools and ipxe
+- Upgrade to version 11.1.0
+  The full list of changes are available at:
+   https://wiki.qemu.org/ChangeLog/11.1
+  Highlights include:
+  * Universal Flash Storage (UFS) emulation support for Write Booster
+    (device-level caching) and Host-Initiated Defragmentation (HID) based
+    on UFS 4.1 specification
+  * vhost-host-user support for offloading real-time clock handling from
+    the hypervisor when using virtio-rtc
+  * GUI: improvements to virtual console handling/specifying of different
+    character encoding and GTK/VNC improvements as well
+  * ARM: support for new architectural CPU features (too many to list
+    here, see full changelog)
+  * ARM: support for new imx8mp-evk machine type (based on i.MX 8MM
+    Evaluation kit)
+  * ARM: 'virt' board support for specifying cache topology, 'hvf'
+    accelerator now supports nested virtualization and vGIC
+  * HPPA: updated to SeaBIOS-hppa v25 firmware, TLB insert fixes for
+    HP-UX 9
+  * PowerPC: MPIPL support for PowerNV to preserve memory after an
+    unexpected reset, as well as support for emulating a nest MMU
+  * RISC-V: ISA exstention support for big-endian, Zbr/xbr0p93, Zvfbfa,
+    fractional LMUL on vector SHA instructions, KVM support for Zicbop
+    and BFloat16 extensions, and more
+  * RISC-V: new board support for K230, support for Tenstorrent mvendorid,
+    and other misc. fixes/features
+  * s390x: KVM support for ASTFLE facility 2 (for nested)
+  * and lots more...
+</comment>
+    <requestid>1373446</requestid>
+  </revision>
 </revisionlist>

@@ -85,22 +85,13 @@
 %bcond_without fuse
 
 %global have_libcbor 1
-%global have_block_gluster 0
-
-# enforce pxe rom sizes for migration compatability from SLE 11 SP3 forward
-# the following need to be > 64K
-%define supported_nics_large {e1000 rtl8139}
-# the following need to be <= 64K
-%define supported_nics_small {virtio}
-# Though not required, make unsupported pxe roms migration compatable as well
-%define unsupported_nics {eepro100 ne2k_pci pcnet}
 
 Name:           qemu
 URL:            https://www.qemu.org/
 Summary:        Machine emulator and virtualizer
 License:        BSD-2-Clause AND BSD-3-Clause AND GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
 Group:          System/Emulators/PC
-Version:        11.0.3
+Version:        11.1.0
 Release:        0
 Source0:        qemu-%{version}.tar.xz
 Source1:        common.inc
@@ -217,9 +208,6 @@ BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(epoxy)
 BuildRequires:  pkgconfig(gbm)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.56
-%if %{have_block_gluster}
-BuildRequires:  pkgconfig(glusterfs-api) >= 3
-%endif
 BuildRequires:  pkgconfig(gnutls) >= 3.5.18
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
 BuildRequires:  pkgconfig(jack)
@@ -314,9 +302,6 @@ Suggests:       qemu-block-rbd
 %endif
 Suggests:       qemu-accel-qtest
 Suggests:       qemu-block-dmg
-%if %{have_block_gluster}
-Suggests:       qemu-block-gluster
-%endif
 Suggests:       qemu-block-iscsi
 Suggests:       qemu-block-ssh
 Suggests:       qemu-chardev-baum
@@ -415,11 +400,12 @@ This package acts as an umbrella package to the other QEMU sub-packages.
 %_datadir/%name/qemu-ifup
 %_datadir/%name/qemu-nsis.bmp
 %_datadir/%name/trace-events-all
-%_mandir/man1/%name.1.gz
-%_mandir/man7/qemu-block-drivers.7.gz
-%_mandir/man7/qemu-cpu-models.7.gz
-%_mandir/man7/qemu-qmp-ref.7.gz
-%_mandir/man7/qemu-ga-ref.7.gz
+%_mandir/man1/%name.1*
+%{_mandir}/man1/qemu-vnc.1*
+%_mandir/man7/qemu-block-drivers.7*
+%_mandir/man7/qemu-cpu-models.7*
+%_mandir/man7/qemu-qmp-ref.7*
+%_mandir/man7/qemu-ga-ref.7*
 %{_libdir}/%{name}/hw-uefi-vars.so
 /usr/lib/supportconfig/plugins/%name
 %license COPYING COPYING.LIB LICENSE
@@ -484,12 +470,8 @@ sed -i '/pygdbmi/d' pythondeps.toml
 %define s390x_extra_firmware %{nil}
 %define x86_default_firmware {linuxboot_dma.bin multiboot_dma.bin kvmvapic.bin pvh.bin}
 %define x86_extra_firmware {bios.bin bios-256k.bin bios-microvm.bin qboot.rom \
-pxe-e1000.rom pxe-eepro100.rom pxe-ne2k_pci.rom pxe-pcnet.rom pxe-rtl8139.rom \
-pxe-virtio.rom vgabios-ati.bin vgabios-bochs-display.bin \
-vgabios.bin vgabios-cirrus.bin vgabios-qxl.bin vgabios-ramfb.bin \
-vgabios-stdvga.bin vgabios-virtio.bin vgabios-vmware.bin \
-efi-e1000.rom efi-e1000e.rom efi-eepro100.rom efi-ne2k_pci.rom efi-pcnet.rom \
-efi-rtl8139.rom efi-virtio.rom efi-vmxnet3.rom}
+vgabios-ati.bin vgabios-bochs-display.bin vgabios.bin vgabios-cirrus.bin vgabios-qxl.bin \
+vgabios-ramfb.bin vgabios-stdvga.bin vgabios-virtio.bin vgabios-vmware.bin}
 
 # Complete list of all the firmwares that we build, if we consider
 # all the builds, on all the arches.
@@ -700,9 +682,6 @@ EXTRA_CFLAGS="$(echo %{optflags} | sed -E 's/-[A-Z]?_FORTIFY_SOURCE[=]?[0-9]*//g
 	--enable-gcrypt \
 	--enable-gettext \
 	--enable-gio \
-%if %{have_block_gluster}
-	--enable-glusterfs \
-%endif
 	--enable-gnutls \
 	--enable-gtk \
 	--enable-guest-agent \
@@ -735,6 +714,7 @@ EXTRA_CFLAGS="$(echo %{optflags} | sed -E 's/-[A-Z]?_FORTIFY_SOURCE[=]?[0-9]*//g
 	--enable-png \
 	--enable-qcow1 \
 	--enable-qed \
+	--enable-qemu-vnc \
 	--enable-rdma \
 	--enable-relocatable \
 	--enable-replication \
@@ -850,37 +830,6 @@ popd
 
 %make_build -C %srcdir/roms seavgabios-ati \
 
-%make_build -C %srcdir/roms pxerom NO_WERROR=1
-
-%make_build -C %srcdir/roms edk2-basetools EXTRA_OPTFLAGS='-fPIE'
-
-%make_build -C %srcdir/roms efirom NO_WERROR=1
-
-%if %{force_fit_virtio_pxe_rom}
-pushd %srcdir
-patch -p1 < %{rpmfilesdir}/openSUSE-pcbios-stub-out-the-SAN-req-s-i.patch
-popd
-%make_build -C %srcdir/roms NO_WERROR=1 pxerom_variants=virtio pxerom_targets=1af41000 pxerom
-%endif
-
-for i in %supported_nics_large %unsupported_nics
-  do
-    if test "`stat -c '%s' %srcdir/pc-bios/pxe-$i.rom`" -gt "131072" ; then
-    echo "pxe rom is too large"
-    exit 1
-  fi
-  if test "`stat -c '%s' %srcdir/pc-bios/pxe-$i.rom`" -le "65536" ; then
-    %srcdir/roms/ipxe/src/util/padimg.pl %srcdir/pc-bios/pxe-$i.rom -s 65536 -b 255
-    echo -ne "SEGMENT OVERAGE\0" >> %srcdir/pc-bios/pxe-$i.rom
-  fi
-done
-for i in %supported_nics_small
-  do
-    if test "`stat -c '%s' %srcdir/pc-bios/pxe-$i.rom`" -gt "65536" ; then
-    echo "pxe rom is too large"
-    exit 1
-  fi
-done
 # End of "if build_x86_firmware"
 %endif
 
@@ -938,10 +887,12 @@ install -D -m 0644 %{rpmfilesdir}/kvm.conf %{buildroot}%{_prefix}/lib/modules-lo
 # End of "if kvm_available"
 %endif
 
-# We rely on a separate project / package to provide edk2 firmware
+# We rely on separate packages to provide edk2 and iPXE firmwares
 rm -f %{buildroot}%_datadir/%name/edk2-*.fd
 rm -f %{buildroot}%_datadir/%name/edk2-licenses.txt
 rm -f %{buildroot}%_datadir/%name/firmware/*edk2*.json
+rm -f %{buildroot}%_datadir/%name/pxe-*.rom
+rm -f %{buildroot}%_datadir/%name/efi-*.rom
 
 # this was never meant for customer consumption - delete even though installed
 unlink %{buildroot}%_bindir/elf2dmp
@@ -1177,7 +1128,7 @@ currently necessary for having a functional (headless) QEMU/KVM stack.
 Summary:        Machine emulator and virtualizer for x86 architectures
 Group:          System/Emulators/PC
 Requires:       %name = %{version}
-Requires:       qemu-ipxe
+Requires:       ipxe-qemu
 Requires:       qemu-seabios
 Requires:       qemu-vgabios
 %ifarch x86_64
@@ -1207,8 +1158,8 @@ This package provides i386 and x86_64 emulation.
 Summary:        Machine emulator and virtualizer for Power architectures
 Group:          System/Emulators/PC
 Requires:       %name = %{version}
+Requires:       ipxe-qemu
 Requires:       qemu-SLOF
-Requires:       qemu-ipxe
 Requires:       qemu-vgabios
 
 %description ppc
@@ -1254,7 +1205,7 @@ This package provides s390x emulation.
 Summary:        Machine emulator and virtualizer for ARM architectures
 Group:          System/Emulators/PC
 Requires:       %name = %{version}
-Requires:       qemu-ipxe
+Requires:       ipxe-qemu
 Recommends:     ovmf
 Recommends:     qemu-uefi-aarch64
 Recommends:     qemu-vgabios
@@ -1276,7 +1227,7 @@ This package provides arm emulation.
 Summary:        Machine emulator and virtualizer for "extra" architectures
 Group:          System/Emulators/PC
 Requires:       %name = %{version}
-Recommends:     qemu-ipxe
+Recommends:     ipxe-qemu
 Recommends:     qemu-skiboot
 Recommends:     qemu-vgabios
 
@@ -1289,6 +1240,7 @@ popular QEMU packages which are dedicated to a single architecture.)
 
 %files extra
 %_bindir/qemu-system-alpha
+%_bindir/qemu-system-hexagon
 %_bindir/qemu-system-hppa
 %_bindir/qemu-system-loongarch64
 %_bindir/qemu-system-mips64
@@ -1433,21 +1385,6 @@ qemu-img tool and QEMU system emulation.
 %dir %_libdir/%name
 %_libdir/%name/block-dmg-bz2.so
 %_libdir/%name/block-dmg-lzfse.so
-
-%if %{have_block_gluster}
-%package block-gluster
-Summary:        GlusterFS block support for QEMU
-Group:          System/Emulators/PC
-%{qemu_module_conflicts}
-
-%description block-gluster
-This package contains a module for accessing network-based image files over a
-GlusterFS network connection from qemu-img tool and QEMU system emulation.
-
-%files block-gluster
-%dir %_libdir/%name
-%_libdir/%name/block-gluster.so
-%endif
 
 %package block-iscsi
 Summary:        iSCSI block support for QEMU
@@ -1943,7 +1880,7 @@ wider support than qboot, but still focuses on quick boot up.
 %package seabios
 Summary:        x86 Legacy BIOS for QEMU
 Group:          System/Emulators/PC
-Version:        11.0.3%{sbver}
+Version:        11.1.0%{sbver}
 Release:        0
 BuildArch:      noarch
 Conflicts:      %name < 1.6.0
@@ -1964,7 +1901,7 @@ is the default and legacy BIOS for QEMU.
 %package vgabios
 Summary:        VGA BIOSes for QEMU
 Group:          System/Emulators/PC
-Version:        11.0.3%{sbver}
+Version:        11.1.0%{sbver}
 Release:        0
 BuildArch:      noarch
 Conflicts:      %name < 1.6.0
@@ -1987,34 +1924,6 @@ video card. For use with QEMU.
 %_datadir/%name/vgabios-vmware.bin
 %license roms/seabios/COPYING
 
-%package ipxe
-Summary:        PXE ROMs for QEMU NICs
-Group:          System/Emulators/PC
-Version:        11.0.3
-Release:        0
-BuildArch:      noarch
-Conflicts:      %name < 1.6.0
-
-%description ipxe
-Provides Preboot Execution Environment (PXE) ROM support for various emulated
-network adapters available with QEMU.
-
-%files ipxe
-%dir %_datadir/%name
-%_datadir/%name/efi-e1000.rom
-%_datadir/%name/efi-e1000e.rom
-%_datadir/%name/efi-eepro100.rom
-%_datadir/%name/efi-ne2k_pci.rom
-%_datadir/%name/efi-pcnet.rom
-%_datadir/%name/efi-rtl8139.rom
-%_datadir/%name/efi-virtio.rom
-%_datadir/%name/efi-vmxnet3.rom
-%_datadir/%name/pxe-e1000.rom
-%_datadir/%name/pxe-eepro100.rom
-%_datadir/%name/pxe-ne2k_pci.rom
-%_datadir/%name/pxe-pcnet.rom
-%_datadir/%name/pxe-rtl8139.rom
-%_datadir/%name/pxe-virtio.rom
 # End of "if build_x86_firmware"
 %endif
 
