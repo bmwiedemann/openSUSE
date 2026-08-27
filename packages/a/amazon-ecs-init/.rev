@@ -284,4 +284,33 @@
   * Bugfix - Fix flaky TestHostResourceManagerTrickleQueue integration test (#5026) (forwarded request 1369260 from glaubitz)</comment>
     <requestid>1369270</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>878a0dc5c1d12dcb36b1e6253b61cb41</srcmd5>
+    <version>1.106.1</version>
+    <time>1787849724</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.106.1
+  * Enhancement - Add retry for EFS volume creation to handle plugin
+    timeout errors caused by concurrent mount operation (#5077)
+  * Enhancement - Bump github.com/aws/aws-sdk-go-v2/config from
+    1.32.23 to 1.32.31 in /agent (#5064)
+  * Enhancement - Bump google.golang.org/grpc from 1.79.3 to 1.82.1
+    in /ecs-agent/daemonimages/csidriver (#5056)
+  * Enhancement - Bump github.com/gorilla/mux from 1.8.0 to 1.8.1
+    in /ecs-agent (#5063)
+  * Enhancement - add nos3readcache S3 Files mount option (#5062)
+  * Feature - Nvidia MPS GPU sharing (not yet enabled)
+    * Add ecs.capability.gpu-sharing-mps capability for NVIDIA MPS
+      GPU sharing (#5053)
+    * Inject NVIDIA MPS env vars and pipe mount into MPS containers
+      (#5082)
+    * Map ACS GPU sharingStrategy onto the internal container model
+      for MPS (#5076)
+    * Gate gpu-sharing-mps on complete per-GPU memory- (#5075) (#5075)
+    * Regenerate ACS model for GPU sharingStrategy and validate it (#5071)
+    * Report per-GPU memory at container instance registration
+      for GPU sharing (#5061)
+    * Regenerate ECS SDK with gpuInfo on PlatformDevice (#5060) (forwarded request 1373933 from glaubitz)</comment>
+    <requestid>1374069</requestid>
+  </revision>
 </revisionlist>
