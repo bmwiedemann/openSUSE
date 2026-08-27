@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Wed Aug 26 06:17:03 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- version update to 6.19
+  * Significant Reorganizations and Rewrites
+    - The manual pages related to <string.h> and
+     <memory.h> have been significantly rewritten.
+    - termios(3) was split into many pages, including
+     separate pages for individual functions like
+     cfmakeraw(3), cfsetspeed(3), etc.
+    - quotactl(2) was split into many pages, creating
+     several separate Q_* constants (e.g.,
+     Q_GETQUOTA, Q_SETQUOTA, etc.) in man2const/
+     and dqblk, dqinfo in man2type/.
+  * New and Split Pages
+    - intro(1) was split into intro.0 (in man0/)
+     and intro.1 (in man1/).
+    - clone(2) was split into clone(2) and
+     clone2(2).
+    - _exit(2) was removed, with its content moved
+     and split into exit(2) and _exit(3).
+    - llseek(2) was split and moved to _llseek(2), and
+     lseek64(3) was split into two pages, including
+     llseek(3).
+    - Several new/split string-related functions in man3/
+     (e.g., strlcpy(3), explicit_bzero(3),
+     memset_explicit(3), strcasestr(3)).
+  * Newly Documented Interfaces
+    - openat2(2): documented OPENAT2_REGULAR.
+    - seccomp(2): documented SECCOMP_FILTER_FLAG_ flags.
+    - userfaultfd(2): documented UFFDIO_REGISTER_MODE_RWP
+     and UFFD_PAGEFAULT_FLAG_RWP.
+    - ldconfig(8): documented -t and /etc/tunables.conf.
+    - suffixes(7): added .xz and .zst.
+  * Global Build System Changes
+    - share/mk/: switched to POSIX.1-2008's ::=
+     assignment operator instead of GNU's :=.
+
+-------------------------------------------------------------------
 Thu Apr 23 06:30:52 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - version update to 6.18

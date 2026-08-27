@@ -17,7 +17,7 @@
 
 
 Name:           man-pages
-Version:        6.18
+Version:        6.19
 Release:        0
 Summary:        Linux Manual Pages
 License:        BSD-3-Clause AND GPL-2.0-or-later AND MIT
@@ -99,6 +99,7 @@ fi
 %dir %{_mandir}/man3type
 %dir %{_mandir}/man2const
 %dir %{_mandir}/man3attr
+%dir %{_mandir}/man0
 %{_mandir}/man*/*.gz
 
 %changelog
