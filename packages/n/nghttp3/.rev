@@ -197,4 +197,12 @@ Built on aarch64: 0 rpmlint badness, source_validator clean, tarball
 signature verified against the packaged keyring. (forwarded request 1368497 from pluskalm)</comment>
     <requestid>1368788</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>b25f7b30d4a3209bbc24a351584ff0b4</srcmd5>
+    <version>1.18.0</version>
+    <time>1787849381</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1373471</requestid>
+  </revision>
 </revisionlist>

@@ -28,6 +28,8 @@ Source0:        https://github.com/ngtcp2/nghttp3/releases/download/v%{version}/
 Source1:        https://github.com/ngtcp2/nghttp3/releases/download/v%{version}/nghttp3-%{version}.tar.xz.asc
 Source2:        nghttp3.keyring
 Source3:        baselibs.conf
+# https://github.com/lexiforest/curl-impersonate/raw/refs/tags/v2.1.1/patches/nghttp3.patch
+Patch0:         curl-impersonate.patch
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros

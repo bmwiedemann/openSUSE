@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 24 18:07:11 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Add curl-impersonate.patch backporting backward compatible changes
+  used by curl-impersonate project
+
+-------------------------------------------------------------------
 Thu Jul 30 06:28:44 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.18.0:
