@@ -17,7 +17,7 @@
 
 
 Name:           msgpack-c
-Version:        7.0.1
+Version:        7.0.2
 Release:        0
 Summary:        Object serialization library for cross-language communication
 License:        BSL-1.0
@@ -68,8 +68,7 @@ This package provides headers and other devel files.
 %cmake_install
 %fdupes %{buildroot}/%{_includedir}/%{name}
 
-%post   -n libmsgpack-c2 -p /sbin/ldconfig
-%postun -n libmsgpack-c2 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libmsgpack-c2
 
 %files -n libmsgpack-c2
 %license COPYING
