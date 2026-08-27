@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Thu Aug 27 07:13:11 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to git snapshot 0+git20260825.77cd7eb:
+  * Security: trusting a parent directory no longer implicitly
+    trusts every repository cloned underneath it afterwards
+  * Harden always-allow scoping and reduce auto-mode permission
+    friction, gate the bubblewrap lockdown helper on enforce mode
+    and pass typed sandbox quota denials through to tool errors
+  * Make the interactive default permission mode configurable; the
+    change that made auto the default was reverted again
+  * Sanitize and quote remote text in the failed-server reminder
+    and add a fail-closed shallow-clone protocol
+  * Extend TLS trust and custom CA handling across the HTTPS and
+    WebSocket clients, fall back to SSL_CERT_FILE, read the OS
+    trust store once per process and fix invalid-certificate
+    classification and WebSocket ALPN
+  * Resolve stale authentication locks in place so recovery can no
+    longer log the whole machine out
+  * Key MCP server merge and discovery by server name instead of
+    URL, infer the HTTP transport in "mcp add" for http(s) URLs,
+    start stdio servers without blocking session startup, support
+    elicitation and announce server failures once per episode
+  * Default compaction to two-pass mode and chat compaction to
+    segments
+  * Load workflows from the remote subagent bundle, autocomplete
+    saved workflows on /workflow, honour effort and agent_budget on
+    workflow child agents, enforce exclusive source selection and
+    hide the workflow tool from child agents
+  * Stop concurrent subagents serialising behind the parent
+    session, back off and retry subagent turns through proxy 429
+    bursts and memoize tool schema generation so subagent startup
+    stays flat under fan-out
+  * Reuse a linked or local codebase for session worktrees and for
+    "grok clone", which now bootstraps at depth one
+  * Add a headless session resume page and classify headless
+    sessions in the shell
+  * Show plugin-provided agents in the /agents modal, support a
+    custom plugin marketplace via config and accept /plugin as an
+    alias of /plugins
+  * Switch between /minimal and /fullscreen in-process instead of
+    re-executing, widen /edit-prompt to the full TUI, make up-arrow
+    jump to queued prompts and reassemble relay-mangled X10 mouse
+    reports instead of typing them as text
+  * Treat recalled memory context as advisory and ground durable
+    memory summaries in reusable facts
+  * Ship the generated Grok Build configuration-file reference as
+    CLI documentation
+- Refresh the vendored Rust crate dependencies and re-derive the
+  licence set from the new vendor tree: unchanged, still the same
+  eight MPL-2.0 crates plus the statically linked libgit2 sources;
+  the audited crate count in the Legal-Review-Notice is refreshed
+  to 1252
+
+-------------------------------------------------------------------
 Sun Aug 23 05:30:19 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to git snapshot 0+git20260819.19d42e3:
