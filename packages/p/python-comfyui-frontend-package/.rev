@@ -50,4 +50,59 @@ installcheck leaves comfyui unresolvable: it currently
 Requires python-comfyui-frontend-package = 1.49.6).</comment>
     <requestid>1373016</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>beafaa0395ef12a06a81e2dddf3a5b46</srcmd5>
+    <version>1.51.9</version>
+    <time>1787849588</time>
+    <user>anag_factory</user>
+    <comment>Update python-comfyui-frontend-package to 1.51.9.
+
+Upstream's git tags run ahead of what is published to PyPI; Source0 is
+the pythonhosted sdist, so 1.51.9 is the newest release this package
+can consume (uploaded 2026-08-26, not yanked). ComfyUI upstream's own
+requirements.txt now pins comfyui-frontend-package==1.51.9.
+
+- Update to 1.51.9:
+  * Render node search highlights as plain text instead of generated
+    HTML, and restrict localhost downloads from the missing-model
+    dialog
+  * Persist workflow drafts across a page refresh, keep node preview
+    images across workflow tab switches and preserve the initial node
+    execution state
+  * Keep Ctrl/Cmd shortcuts from falling through to the browser, add
+    space-bar panning while dragging Vue nodes, and stop Canvas
+    Navigation mode resetting to Custom on reload
+  * Resolve widget labels, output names and tooltips from the backend
+  * Cut minimap change-detection cost on large graphs, and harden the
+    VIDEO_EDIT widget and its filmstrip generation
+  * Tolerate a missing /api/i18n endpoint and an unusable localStorage
+    during bootstrap
+  * Replace lobe-i18n with an in-house locale pipeline and repair
+    stale and malformed locale data
+  * Lift Select and SearchAutocomplete dropdowns above modal dialogs;
+    a malformed MatchType spec no longer deletes the input
+  * Default an active templates search to Popular instead of Relevance
+  * Route all error reports through a single reporter, which adds a
+    bundled Datadog browser SDK chunk (Apache-2.0) that this build
+    never initialises
+  * Assorted node-editor, Cloud billing, workspace and asset fixes -
+    see upstream's release notes for the full list
+
+
+No patches are carried. Upstream ships no dependency change: setup.py,
+setup.cfg, MANIFEST.in and __init__.py are byte-identical to 1.50.6,
+install_requires stays empty and requires-python stays &gt;= 3.9.
+openSUSE:Factory/comfyui requires this package with a floor
+(&gt;= 1.50.6), so the bump does not affect its resolvability.
+
+The new vendor-datadog chunk is the Apache-2.0 Datadog browser SDK.
+Its only init call site sits behind a __DISTRIBUTION__ === 'cloud'
+branch that is dead-code-eliminated from this build, so nothing in
+the shipped assets can initialise it.
+
+Built locally for openSUSE_Tumbleweed/aarch64: succeeded, rpmlint 0
+errors 0 warnings 0 badness (unchanged vs the 1.50.6 baseline);
+source_validator rc 0.</comment>
+    <requestid>1373925</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Aug 27 06:19:04 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.51.9:
+  * Render node search highlights as plain text instead of generated
+    HTML, and restrict localhost downloads from the missing-model
+    dialog
+  * Persist workflow drafts across a page refresh, keep node preview
+    images across workflow tab switches and preserve the initial node
+    execution state
+  * Keep Ctrl/Cmd shortcuts from falling through to the browser, add
+    space-bar panning while dragging Vue nodes, and stop Canvas
+    Navigation mode resetting to Custom on reload
+  * Resolve widget labels, output names and tooltips from the backend
+  * Cut minimap change-detection cost on large graphs, and harden the
+    VIDEO_EDIT widget and its filmstrip generation
+  * Tolerate a missing /api/i18n endpoint and an unusable localStorage
+    during bootstrap
+  * Replace lobe-i18n with an in-house locale pipeline and repair
+    stale and malformed locale data
+  * Lift Select and SearchAutocomplete dropdowns above modal dialogs;
+    a malformed MatchType spec no longer deletes the input
+  * Default an active templates search to Popular instead of Relevance
+  * Route all error reports through a single reporter, which adds a
+    bundled Datadog browser SDK chunk (Apache-2.0) that this build
+    never initialises
+  * Assorted node-editor, Cloud billing, workspace and asset fixes -
+    see upstream's release notes for the full list
+
+-------------------------------------------------------------------
 Sat Aug 22 08:19:08 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.50.6:
