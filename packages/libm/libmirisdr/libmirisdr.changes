@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Wed Aug 26 17:32:08 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Switch upstream to the maintained fork f4exb/libmirisdr-4 and
+  update to version 2.0.0:
+  * The osmocom libmirisdr repository this package tracked has seen no
+    commit since 2013; the f4exb fork is what Debian, Ubuntu, Kali,
+    OpenMandriva, Raspbian and ROSA ship
+  * The fork merges libmirisdr-2 by Miroslav Slugen with the
+    libmirisdr-3-bsz additions by Leif Asbrink SM5BSZ
+  * The fork numbers its release tags independently of its library
+    major version: release 2.0.0 ships SONAME libmirisdr.so.4
+- Changes since the 2013 osmocom snapshot:
+  * Much larger public API: bandwidth, IF and crystal frequency,
+    sample format, USB transfer mode, per-stage gain (LNA, mixer,
+    mixbuffer, baseband), bias tee, band query, explicit streaming and
+    asynchronous start/stop, device reset and ADC init
+  * mirisdr_set_hw_flavour() selects the hardware flavour (generic
+    MSi2500 or SDRplay) and drives the frequency plan; in 2.0.0 it
+    moved out of mirisdr_open() into a function of its own
+  * All entry points of the 2013 snapshot keep their names and
+    signatures, so existing callers of the old API still compile
+  * New miri_fm command line FM demodulator next to miri_sdr
+  * Recognise the SDRplay RSP1A and RSP2 in the udev rules
+  * Bias tee support for the purple dongle
+  * Enable the hidden 260-380 MHz band, enable the FM notch in the
+    400 MHz and 1 GHz bands, improve tuning accuracy and correct the
+    GPIO mapping
+  * Restore the gain settings after frequency, bandwidth and IF
+    changes, and correct baseband and mixbuffer gain handling
+  * Drop the useless automatic gain mode; its setter and getter remain
+    for compatibility but do nothing
+  * Do not call libusb_close() on asynchronous failure, which caused a
+    segfault, and abort cleanly after libusb submit transfer failures
+  * Build against the system libusb instead of the bundled and
+    deprecated libusb.h 1.0.13
+  * New DETACH_KERNEL_DRIVER build option, not enabled here
+- Rename the shared library subpackage libmirisdr0 to libmirisdr4, the
+  fork bumped the SONAME from libmirisdr.so.0 to libmirisdr.so.4:
+  * Add matching Provides and Obsoletes for libmirisdr0 so installed
+    systems upgrade cleanly
+  * Point the devel subpackage at the renamed library subpackage
+  * Everything linking the library needs a rebuild: gr-osmosdr and
+    soapy-osmo do, gqrx does not link it directly
+- Drop libmirisdr-cmake-libsuffix.diff, the fork already applies the
+  library suffix to the pkg-config file and to its install location
+- Add libmirisdr-release-version.patch: upstream leaves the patch level
+  at "git" in its release archives, which produced an empty pkg-config
+  version and a library called libmirisdr.so.4.0git instead of
+  libmirisdr.so.4.0.0
+- Build from the upstream release tarball and drop the _service and
+  _servicedata files that tracked the dormant osmocom git repository
+- Correct the license from the deprecated GPL-2.0 to GPL-2.0-or-later,
+  which is what every compiled source file header grants; the shipped
+  udev rules file carries a GPL-3.0-or-later header, recorded in a
+  Legal-Review-Notice above the License tag rather than split out into
+  its own subpackage tag, the way other distributions declare it too
+- Packaging cleanup:
+  * Pass -DCMAKE_SKIP_INSTALL_RPATH=ON, upstream hardcodes an install
+    RPATH of /usr/lib
+  * Package the new miri_fm binary
+  * Turn mirisdr-udev into a noarch subpackage and drop its
+    %udev_rules_update scriptlets, a no-op now that udev ships a file
+    trigger
+  * Drop the git-core build requirement, no longer needed
+  * Ship COPYING as %license and README.md as %doc, upstream no longer
+    has an AUTHORS file
+  * Correct the summaries and descriptions, the chip is the Mirics
+    MSi2500 and not the MRi2500
+  * Use %cmake_build, %ldconfig_scriptlets and explicit shared library
+    file names, drop Group tags and %defattr
+
+-------------------------------------------------------------------
 Thu Feb 29 17:38:11 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

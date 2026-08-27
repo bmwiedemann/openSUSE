@@ -1,7 +1,7 @@
 #
 # spec file for package libmirisdr
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2012-2014 Wojciech Kazubski, wk@ire.pw.edu.pl
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,106 +13,108 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define sover 0
+# The fork numbers its release tags and its library major version
+# independently: release 2.0.0 ships SONAME libmirisdr.so.4
+%define sover   4
 %define libname libmirisdr%{sover}
 Name:           libmirisdr
-Version:        0.0.0+git.20130608
+Version:        2.0.0
 Release:        0
-Summary:        Support programs for MRi2500
-License:        GPL-2.0
-Group:          Productivity/Hamradio/Other
-Url:            http://cgit.osmocom.org/libmirisdr/
-Source:         %{name}-%{version}.tar.xz
-Patch0:         libmirisdr-cmake-libsuffix.diff
+Summary:        Support programs for Mirics MSi2500 based SDR receivers
+# Legal-Review-Notice: every source file compiled into the shared library
+# and the command line tools carries a GPL-2.0-or-later header, and COPYING
+# is the GPL-2.0 text, so the whole package is tagged GPL-2.0-or-later -
+# the same way other distributions declare it.  Two files disagree with
+# that in their own headers and are noted here so the finding is not
+# re-derived every time: the shipped udev rules file carries a
+# GPL-3.0-or-later header, and so does the CMake build system, which is
+# build tooling and is not shipped in any binary package at all.
+License:        GPL-2.0-or-later
+URL:            https://github.com/f4exb/libmirisdr-4
+Source:         %{url}/archive/refs/tags/v%{version}.tar.gz#/libmirisdr-4-%{version}.tar.gz
+Patch0:         libmirisdr-release-version.patch
 BuildRequires:  cmake
-BuildRequires:  git-core
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(udev)
 
 %description
-Programs that controls Mirics MRi2500 based DVB dongle in raw mode, so
-it can be used as a SDR receiver.
+Programs that control a Mirics MSi2500 based DVB dongle in raw mode, so
+that it can be used as an SDR receiver.
 
 %package -n %{libname}
-Summary:        SDR driver for MRi2500
-Group:          System/Libraries
-Provides:       %{name} = %{version}
+Summary:        SDR driver for Mirics MSi2500 based receivers
 Requires:       mirisdr-udev
+Provides:       %{name} = %{version}-%{release}
+# The upstream fork bumped the SONAME from libmirisdr.so.0 to libmirisdr.so.4
+Provides:       libmirisdr0 = %{version}-%{release}
+Obsoletes:      libmirisdr0 < %{version}-%{release}
 
 %description -n %{libname}
-Library to run Mirics MRi2500 based DVB dongle as a SDR receiver.
+Library to run a Mirics MSi2500 based DVB dongle as an SDR receiver.
 
 %package -n mirisdr
-Summary:        Support programs for MRi2500
-Group:          Productivity/Hamradio/Other
+Summary:        Support programs for Mirics MSi2500 based SDR receivers
 
 %description -n mirisdr
-Programs that controls Mirics MRi2500 based DVB dongle in raw mode, so
-it can be used as a SDR receiver.
+Programs that control a Mirics MSi2500 based DVB dongle in raw mode, so
+that it can be used as an SDR receiver.
 
 %package devel
 Summary:        Development files for libmirisdr
-Group:          Development/Libraries/C and C++
-Requires:       %{name} = %{version}-%{release}
+Requires:       %{libname} = %{version}-%{release}
 
 %description devel
-Library headers and other development files for mirisdr driver.
+Library headers and other development files for the mirisdr driver.
 
 %package -n mirisdr-udev
-Summary:        Udev rules for Mirics MRi2500 based DVB dongles
-Group:          Hardware/Other
+Summary:        Udev rules for Mirics MSi2500 based DVB dongles
+BuildArch:      noarch
 
 %description -n mirisdr-udev
-Udev rules for Mirics MRi2500 based DVB dongles.
-
+Udev rules for Mirics MSi2500 based DVB dongles.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n libmirisdr-4-%{version}
 
 %build
-%cmake
-make %{?_smp_mflags}
+# Upstream hardcodes an install RPATH of %%{_prefix}/lib
+%cmake \
+    -DCMAKE_SKIP_INSTALL_RPATH:BOOL=ON
+%cmake_build
 
 %install
 %cmake_install
+# Only the shared library is shipped
 rm %{buildroot}%{_libdir}/libmirisdr.a
 
-#install udev rules
 install -D -p -m 0644 mirisdr.rules %{buildroot}%{_udevrulesdir}/10-mirisdr.rules
 
-%post -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
-
-%post -n mirisdr-udev
-%udev_rules_update
-
-%postun -n mirisdr-udev
-%udev_rules_update
+%ldconfig_scriptlets -n %{libname}
 
 %files -n mirisdr
-%defattr(-,root,root)
-%doc AUTHORS COPYING README
+%license COPYING
+%doc README.md
+%{_bindir}/miri_fm
 %{_bindir}/miri_sdr
 
 %files -n %{libname}
-%defattr(-,root,root)
-%doc AUTHORS COPYING README
-%{_libdir}/libmirisdr.so.%{sover}*
+%license COPYING
+%{_libdir}/libmirisdr.so.%{sover}
+%{_libdir}/libmirisdr.so.%{sover}.*
 
 %files -n mirisdr-udev
-%defattr(-,root,root)
+%license COPYING
 %{_udevrulesdir}/10-mirisdr.rules
 
 %files devel
-%defattr(-,root,root)
-%{_libdir}/libmirisdr.so
 %{_includedir}/mirisdr.h
 %{_includedir}/mirisdr_export.h
+%{_libdir}/libmirisdr.so
 %{_libdir}/pkgconfig/libmirisdr.pc
 
 %changelog

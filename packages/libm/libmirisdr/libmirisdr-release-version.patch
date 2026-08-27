@@ -1,0 +1,22 @@
+Mark the release tarball as a numbered release instead of a git build.
+
+Upstream leaves VERSION_INFO_PATCH_VERSION at "git" even in the tagged
+release archives.  Because a tarball is not a git checkout, "git describe"
+returns nothing and the build ends up with an empty pkg-config Version:
+field and a shared library called libmirisdr.so.4.0git.  Declaring the
+patch level makes the release build self-consistent: libmirisdr.so.4.0.0
+behind SONAME libmirisdr.so.4, and "Version: 4.0.0" in libmirisdr.pc.
+
+Index: libmirisdr-4-2.0.0/CMakeLists.txt
+===================================================================
+--- libmirisdr-4-2.0.0.orig/CMakeLists.txt
++++ libmirisdr-4-2.0.0/CMakeLists.txt
+@@ -48,7 +48,7 @@ set(CMAKE_BUILD_TYPE ${CMAKE_BUILD_TYPE}
+ # Set the version information here
+ set(VERSION_INFO_MAJOR_VERSION 4) # increment major on api compatibility changes
+ set(VERSION_INFO_MINOR_VERSION 0) # increment minor on feature-level changes
+-set(VERSION_INFO_PATCH_VERSION git) # increment patch for bug fixes and docs
++set(VERSION_INFO_PATCH_VERSION 0) # increment patch for bug fixes and docs
+ include(Version) # setup version info
+ 
+ ########################################################################

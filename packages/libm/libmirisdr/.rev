@@ -15,4 +15,81 @@
     <comment></comment>
     <requestid>1153592</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f0feb4b9fc2ef5c8afc79c10238c9e39</srcmd5>
+    <version>2.0.0</version>
+    <time>1787849487</time>
+    <user>anag_factory</user>
+    <comment>Migrate libmirisdr to the maintained upstream fork f4exb/libmirisdr-4 and
+update from the 2013 osmocom snapshot 0.0.0+git.20130608 to release 2.0.0.
+
+Supersedes SR 1373844, which declared the mirisdr-udev subpackage as
+GPL-3.0-or-later. That subpackage now inherits the package-wide
+GPL-2.0-or-later; see the licence note below. Nothing else changed.
+
+The osmocom libmirisdr repository the package tracked has seen no commit
+since June 2013. Debian, Ubuntu, Kali, OpenMandriva, Raspbian and ROSA all
+ship the f4exb fork; Debian carries the same 2.0.0 release.
+
+SONAME / REBUILD SCOPE - please note for staging:
+
+  The fork bumped the SONAME from libmirisdr.so.0 to libmirisdr.so.4, so
+  the shared library subpackage libmirisdr0 is renamed to libmirisdr4.
+  libmirisdr4 carries Provides: libmirisdr0 = %{version}-%{release} and
+  Obsoletes: libmirisdr0 &lt; %{version}-%{release} so installed systems
+  upgrade cleanly, and libmirisdr-devel now requires libmirisdr4.
+
+  Three packages in Factory pull libmirisdr in:
+
+    gr-osmosdr  - uses the API. Rebuilt locally on aarch64 against the new
+                  library: build succeeded, rpmlint unchanged from its
+                  Factory baseline, and libgnuradio-osmosdr now requires
+                  libmirisdr.so.4()(64bit).
+    soapy-osmo  - uses the API. Rebuilt locally on aarch64 against the new
+                  library: build succeeded, rpmlint clean, and the
+                  soapysdr module now requires libmirisdr.so.4()(64bit).
+    gqrx        - does not link libmirisdr at all; it only requires
+                  libgnuradio-osmosdr.so.0.2.0 and reaches libmirisdr
+                  transitively through gr-osmosdr. No source change needed.
+
+  The public API is a strict superset of the 2013 snapshot: every entry
+  point the old header declared is still present with an unchanged
+  signature, which is why both API consumers build unmodified.
+
+Other packaging changes:
+
+  - Source is now the upstream release tarball; the _service and
+    _servicedata files that tracked the dormant osmocom git repository
+    are dropped, and URL points at the fork.
+  - libmirisdr-cmake-libsuffix.diff dropped: the fork already applies the
+    library suffix to the pkg-config file and to its install location.
+  - libmirisdr-release-version.patch added: upstream leaves the patch
+    level at &quot;git&quot; in its release archives, which yields an empty
+    pkg-config version and a library named libmirisdr.so.4.0git. The
+    patch declares the patch level so the release builds
+    libmirisdr.so.4.0.0 behind SONAME libmirisdr.so.4. Debian carries the
+    equivalent change. It is a distro patch and is not going upstream.
+  - License corrected from the deprecated GPL-2.0 to GPL-2.0-or-later,
+    uniformly across every subpackage, which is what the headers of every
+    compiled source file grant and what COPYING contains. Two files carry
+    a GPL-3.0-or-later header instead: the shipped udev rules file, and
+    the CMake build system, which is not shipped in any binary package.
+    Both are recorded in a Legal-Review-Notice above the License tag so
+    the finding does not have to be re-derived, rather than split out
+    into a separate subpackage tag - the same way other distributions
+    declare this package.
+  - The new miri_fm FM demodulator is packaged next to miri_sdr.
+  - mirisdr-udev is now noarch and its udev_rules_update scriptlets are
+    dropped, they are a no-op now that udev ships a file trigger.
+  - Spec cleanup: %cmake_build, %license, %ldconfig_scriptlets, explicit
+    shared library file names, Group tags and %defattr removed, git-core
+    build requirement dropped, -DCMAKE_SKIP_INSTALL_RPATH=ON because
+    upstream hardcodes an install RPATH of /usr/lib.
+
+Built locally on aarch64 against openSUSE_Tumbleweed: succeeded, rpmlint
+0 errors / 1 warning / 0 badness, down from 1 error / 1 warning / 1
+badness (mirisdr-udev no-binary, gone now that it is noarch). Upstream
+ships no test suite, hence no %check.</comment>
+    <requestid>1373863</requestid>
+  </revision>
 </revisionlist>
