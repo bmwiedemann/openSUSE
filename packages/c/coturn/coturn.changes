@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Aug 27 14:37:43 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Added chaneglog for version 4.16.0
+- Improved older changelogs and added CVS/boo numbers
+
+- Update to version 4.17.2
+  * Fix outgoing UDP TTL pinned to 1 on client-facing sockets in 
+    gh#coturn/coturn#2045
+
+- Update to version 4.17.1
+  * Gate merges on the more tests suites by @eakraly
+    in gh#coturn/coturn#2039
+  * build: Drop ginstall detection in configure by @eakraly
+    in gh#coturn/coturn#2038
+  * Flash before socket close by @eakraly in gh#coturn/coturn#2041
+
+-------------------------------------------------------------------
 Fri Aug  7 13:22:24 UTC 2026 - chris@computersalat.de
 
 - fix ChangeLog
@@ -18,8 +35,10 @@ Three defaults changed in this release. Read these before upgrading.
 
 Security fixes
   * Allocation quotas could be bypassed under --mobility
+    CVE-2026-73216, boo#1275000
   * DTLS allocated per-peer state before the cookie was verified
   * EVEN-PORT with the R bit clear leaked relay ports
+    CVE-2026-73215, boo#1274999
 
 Changes
   * free the secrets list on the get_user_key error paths
@@ -40,6 +59,40 @@ Changes
   * Emit exactly one log line per record gh#coturn/coturn#2033
   * Enable stateless nonce by default gh#coturn/coturn#2036
 
+- Update to version 4.16.0
+Security fixes
+  * CVE-2026-68555, boo#1275768
+  * CVE-2026-73213, boo#1274997
+  * CVE-2026-73214, boo#1274998
+    DTLS listener: correct the handshake buffer bound and remove the
+    non-functional client-cert path by @eakraly in gh#coturn/coturn#2003
+
+Changes
+  * Restore support for hiredis < 1.1.0 (for AlmaLinux/RHEL/Rocky Linux 9)
+    by @robert-scheck in gh#coturn/coturn#2001
+  * Add --stateless-nonce: bound memory under valid-structure STUN floods
+    (gh#coturn/coturn#1999) by @eakraly in gh#coturn/coturn#2002
+  * Fix NULL deref: --prometheus-address/-path/-port take a required 
+    value by @eakraly in gh#coturn/coturn#2005
+  * Return 508, not 400/440, when a well-formed Allocate cannot be satisfied
+    by @eakraly in gh#coturn/coturn#2007
+  * Narrow ChannelBind to the RFC 8656 channel range 0x4000-0x4FFF 
+    by @eakraly in gh#coturn/coturn#2006
+  * Split --stun-backward-compatibility: move RFC 3489 handling to its own
+    deprecated flag by @eakraly in gh#coturn/coturn#2008
+  * DTLS: drop non-handshake records from unknown sources by 
+    @eakraly in gh#coturn/coturn#2010
+  * DTLS: cap concurrent half-open handshakes (pre-cookie state-exhaustion)
+    by @eakraly in gh#coturn/coturn#2012
+  * DTLS: release idle handshake buffers on half-open sockets by
+    @eakraly in gh#coturn/coturn#2013
+  * Declare ERROR-CODE / ADDRESS-ERROR-CODE reason phrases without padding 
+    by @eakraly in gh#coturn/coturn#2015
+  * Send: make a duplicate XOR-PEER-ADDRESS first-wins instead of last-wins
+    by @eakraly in gh#coturn/coturn#2016
+  * multiplex-peer: bound the shared per-thread peer demux table by @eakraly
+    in gh#coturn/coturn#2017
+
 -------------------------------------------------------------------
 Wed Jul 22 10:11:27 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
@@ -50,14 +103,14 @@ Security
     than FINGERPRINT) must be ignored, but coturn processed the full attribute
     list. This also fixes an interop bug where an RFC 8489 client sending
     MESSAGE-INTEGRITY-SHA256 after MESSAGE-INTEGRITY was wrongly answered with
-    error 420.
+    error 420. CVE-2026-68554, boo#1275767
 
   * Bind mobility session-resume to the original allocation owner
     (gh#coturn/coturn#1969) — a MOBILITY-TICKET resume is now only accepted
-    from the user that created the allocation.
+    from the user that created the allocation. CVE-2026-65981, boo#1273388
 
   * Reject ACME requests via signed 400 response (gh#coturn/coturn#1965)
-    instead of silently dropping them.
+    instead of silently dropping them. CVE-2026-62959, boo#1273238
 
   * Reset the reused UDP receive-buffer offset in the DTLS listener
     (gh#coturn/coturn#1986).
@@ -66,7 +119,7 @@ Security
     uninitialized stack bytes never reach the wire (gh#coturn/coturn#1984).
 
   * Fixed a uint16_t truncation overflow when computing STUN message length
-    (gh#coturn/coturn#1964).
+    (gh#coturn/coturn#1964). CVE-2026-68552, boo#1275765
 
   * Fixed an off-by-one write past the realm buffer in redis_list_admin_users
     (gh#coturn/coturn#1978).
@@ -186,6 +239,7 @@ Mon Jun 15 13:43:28 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 - Update to version 4.13.1
   * null-terminate server_name in stun_is_challenge_response_str.
   * Canonicalize all IPv4-in-IPv6 encodings before peer-IP checks.
+    CVE-2026-73212, boo#1274996
   * Auto-deny coturn's own database backend endpoints as relay
     peers.
   * Deny link-local / ULA / site-local relay peers by default.
@@ -194,6 +248,12 @@ Mon Jun 15 13:43:28 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 Sun Jun 14 11:46:35 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.13.0
+Security fixes
+  * CVE-2026-68553, boo#1275766
+  * CVE-2026-53449, boo#1271324
+  * CVE-2026-53450, boo#1271325
+
+Changes
   * Wrap atomic everywhere.
   * Fix sendmmsg stride bug in multiplex-peer UDP batch flush.
   * Reap TURN permissions/channels via a per-thread sweep instead
@@ -217,6 +277,9 @@ Sun Jun 14 11:46:35 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 Mon May 25 09:16:38 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.12.0
+
+  Fix for CVE-2026-53448, boo#1271323
+
   * Update khash to the latest version (#1919).
   * Update readme to match latest changes (#1920).
   * Update docs for drop-invalid-packets and
@@ -243,60 +306,102 @@ Mon May 25 09:16:38 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 Tue May  5 12:48:47 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.11.0
-  * Filc harness and pointer typedefs (#1896).
-  * Load generator mode in turnutils_uclient (#1894).
-  * Cache hot lookups in TURN data-path handlers (#1893).
-  * Inline get_ioa_addr_len() in the header (#1891).
-  * Trim two redundant checks from per-packet relay hot path.
-  * Hoist turn_server_get_engine() out of per-packet hot path.
-  * Add fuzz coverage for integrity helpers (#1888).
-  * Add deterministic challenge-response builder to FuzzStun.
-  * Seed address-mapping table in fuzz initializer (#1885).
-  * Unblock fuzz coverage for is_http and rare STUN attributes.
-  * HTTP parsing fixes (#1882).
-  * Out of bound HTTP detection in parser (#1877).
-  * Delete log line per relay thread on start (#1876).
-  * Add Unity-based unit test scaffolding (#1875).
-  * Drop udp_relay_servers_number config and clean up dead UDP
-    id-space (#1874).
-  * Fix build failure: define _GNU_SOURCE for recvmmsg() on Linux.
-  * Pin session origin only after MESSAGE-INTEGRITY validates.
-  * Abort on malformed allowed/denied-peer-ip at startup (#1872).
-  * Fix format-string injection in Redis DB driver (#1870).
-  * Use constant-time compare for STUN MESSAGE-INTEGRITY HMAC.
+
+  Fix for CVE-2026-43915, boo#1268547
+
+  * Fix prometheus response memory leak introduced in 4.10.0
+  * Use constant-time compare for STUN MESSAGE-INTEGRITY HMAC by
+    @eakraly in gh#coturn/coturn#1869
+  * Fix format-string injection in Redis DB driver
+    by @eakraly in gh#coturn/coturn#1870
+  * Abort on malformed allowed/denied-peer-ip at startup by
+    @eakraly in gh#coturn/coturn#1872
+  * Pin session origin only after MESSAGE-INTEGRITY validates by
+    @eakraly in gh#coturn/coturn#1871
+  * Fix build failure: define _GNU_SOURCE for recvmmsg() on Linux by
+    @eakraly in gh#coturn/coturn#1868
+  * Drop udp_relay_servers_number config and clean up dead UDP id-space by
+    @eakraly in gh#coturn/coturn#1874
+  * Add Unity-based unit test scaffolding by @eakraly in
+    gh#coturn/coturn#1875
+  * Delete log line per relay thread on start by @eakraly in
+    gh#coturn/coturn#1876
+  * Out of bound HTTP detection in parser by @eakraly in
+    gh#coturn/coturn#1877
+  * Extend STUN client fuzz builder coverage by @eakraly
+    in gh#coturn/coturn#1878
+  * Extend fuzzing coverage and enable local fuzzing in a container by
+    @eakraly in gh#coturn/coturn#1881
+  * Cover all public stun_buffer.c wrappers in FuzzStunClient by @eakraly
+    in gh#coturn/coturn#1883
+  * HTTP parsing fixes by @eakraly in gh#coturn/coturn#1882
+  * Unblock fuzz coverage for is_http and rare STUN attributes by @eakraly 
+    in gh#coturn/coturn#1884
+  * Seed address-mapping table in fuzz initializer by @eakraly
+    in gh#coturn/coturn#1885
+  * Add deterministic challenge-response builder to FuzzStun by 
+    @eakraly in gh#coturn/coturn#1886
+  * Add fuzz coverage for integrity helpers by @eakraly in
+    gh#coturn/coturn#1888
+  * Hoist turn_server_get_engine() out of per-packet hot path by
+    @eakraly in gh#coturn/coturn#1889
+  * Inline addr_cpy() in the header by @eakraly in gh#coturn/coturn#1892
+  * Trim two redundant checks from per-packet relay hot path by
+    @eakraly in gh#coturn/coturn#1890
+  * Inline get_ioa_addr_len() in the header by @eakraly 
+    in gh#coturn/coturn#1891
+  * Cache hot lookups in TURN data-path handlers by @eakraly
+    in gh#coturn/coturn#1893
+  * Load generator mode in turnutils_uclient by @eakraly 
+    in gh#coturn/coturn#1894
+  * Filc harness and pointer typedefs by @eakraly in gh#coturn/coturn#1896
 
 -------------------------------------------------------------------
 Tue Apr 14 12:31:23 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.10.0
-  * Skip response buffer allocation for STUN indications.
-  * WebRTC Auth optimization path (#1860).
-  * Fix null pointer dereferences in post_parse() (#1859).
-  * Extend seed corpus (#1858).
-  * Add Linux-only `recvmmsg` receive path for DTLS/UDP listener.
-  * Fix Linux build warnings (#1853).
-  * perf: remove mutex from per-thread super_memory allocator.
-  * Keep only NEV_UDP_SOCKET_PER_THREAD network engine.
-  * Fix stack buffer overflow in OAuth token decoding.
-  * Update config and Readme files about deprecated TLSv1/1.1.
-  * perf: eliminate mutex and reduce copies on auth message
-    dispatch (#1843).
-  * perf: replace mutex_bps with lock-free atomics for bandwidth
-    tracking.
+Security
+  * CVE-2026-40613 Misaligned Memory Access STUN Attribute Parser
+
+Performance
+  * Add Linux-only recvmmsg client receive path for DTLS/UDP listener
+    (gh#coturn/coturn#1852)
+  * Skip response buffer allocation for STUN indications
+  * Remove mutex from per-thread super_memory allocator (gh#coturn/coturn#1851)
+  * Eliminate mutex and reduce copies on auth message dispatch
+    (gh#coturn/coturn#1843)
+  * Replace mutex_bps with lock-free atomics for bandwidth tracking
+    (gh#coturn/coturn#1846)
+  * Remove unused mutex from ur_map structure (gh#coturn/coturn#1861)
+  * WebRTC Auth optimization path (gh#coturn/coturn#1860)
+  * Improve worst case scenario - avoid memory allocation
+    (gh#coturn/coturn#1823)
+
+Memory issues
+  * Fix null pointer dereferences in post_parse() (gh#coturn/coturn#1859)
+  * Fix stack buffer overflow in OAuth token decoding (gh#coturn/coturn#1850)
+    CVE-2026-43994, boo#1268548
   * Fix uint16_t truncation overflow in stun_get_message_len_str()
-    causes (#1844).
-  * fix: restore RFC 3489 (old STUN) backward compatibility broken
-    since 4.7.0 (#1839).
-  * Change port identifiers to use uint16_t (#1752).
-  * Fixes: run_tests.sh and no db (#1834).
-  * Add session usage reporting callback to TURN database driver.
-  * Initialize variables before use (#1832).
-  * Replace perror with logging (#1831).
-  * CLI interface is disabled by default.
-  * Disable reason string in response messages to reduce
-    amplification factor.
-  * Perf: improve worst case scenario optimization.
-  * Fix compilation warnings (#1822).
+    (gh#coturn/coturn#1844)
+  * Initialize variables before use (gh#coturn/coturn#1832)
+
+General Improvements
+  * Disable reason string in response messages to reduce amplification factor
+    (gh#coturn/coturn#1829)
+  * Keep only NEV_UDP_SOCKET_PER_THREAD network engine (gh#coturn/coturn#1849)
+  * Replace perror with logging (gh#coturn/coturn#1831)
+  * Extend seed corpus (gh#coturn/coturn#1858) and add more fuzzing scenarios
+    (gh#coturn/coturn#1857)
+  * Update config and Readme files about deprecated TLSv1/1.1
+    (gh#coturn/coturn#1848)
+  * Restore RFC 3489 (old STUN) backward compatibility broken since 4.7.0
+    (gh#coturn/coturn#1839)
+  * Change port identifiers to use uint16_t (gh#coturn/coturn#1752)
+  * Fixes: run_tests.sh and no db (gh#coturn/coturn#1834)
+  * Improve PostgreSQL.md Clarity (gh#coturn/coturn#1833)
+  * Add session usage reporting callback to TURN database driver
+    (gh#coturn/coturn#1794)
+  * CLI interface is disabled by default (gh#coturn/coturn#1830
 
 -------------------------------------------------------------------
 Fri Mar 13 23:01:27 UTC 2026 - Martin Hauke <mardnh@gmx.de>
