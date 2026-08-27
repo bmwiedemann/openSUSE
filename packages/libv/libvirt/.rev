@@ -5133,4 +5133,18 @@ https://build.opensuse.org/requests/1354518
     https://libvirt.org/news.html#v12-6-0-2026-08-03</comment>
     <requestid>1369584</requestid>
   </revision>
+  <revision rev="446" vrev="2">
+    <srcmd5>85ec187301d8d0c58d5622eb0a83dea9</srcmd5>
+    <version>12.6.0</version>
+    <time>1787849443</time>
+    <user>anag_factory</user>
+    <comment>- CVE-2026-77159: qemu: tpm: Avoid following symlinks when
+  chown'ing log file
+  bsc#1274946
+
+- CVE-2026-18917: remote: Fix integer overflow in RPC handler for
+  virNodeGetFreePages
+  bsc#1275863</comment>
+    <requestid>1373862</requestid>
+  </revision>
 </revisionlist>
