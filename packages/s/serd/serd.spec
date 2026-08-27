@@ -22,7 +22,7 @@
 %define with_docs 1
 %endif
 Name:           serd
-Version:        0.32.8
+Version:        0.32.10
 Release:        0
 Summary:        A lightweight C library for RDF syntax
 License:        ISC

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 26 07:25:52 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- update to 0.32.10
+  * Address new warnings in clang-tidy 22
+  * Fix writing quotes at the end of long literals
+
+-------------------------------------------------------------------
 Fri Apr 10 07:31:51 UTC 2026 - Simon Lees <sflees@suse.de>
 - update to 0.32.8
   * Avoid use of snprintf() when writing
