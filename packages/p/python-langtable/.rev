@@ -175,4 +175,14 @@
   * territories.xml: Rename Asia/Rangoon to Asia/Yangon</comment>
     <requestid>1362048</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>aee71b26aabcd5dc0cf8ed1ada365781</srcmd5>
+    <version>0.0.71</version>
+    <time>1787849402</time>
+    <user>anag_factory</user>
+    <comment>- Rewrite to use modern packaging macros (%pyproject_* instead of
+  %python_{build,install}).
+</comment>
+    <requestid>1373654</requestid>
+  </revision>
 </revisionlist>

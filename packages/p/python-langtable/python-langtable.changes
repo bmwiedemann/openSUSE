@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 25 15:38:34 UTC 2026 - Matej Cepl <mcepl@suse.com>
+
+- Rewrite to use modern packaging macros (%pyproject_* instead of
+  %python_{build,install}).
+
+-------------------------------------------------------------------
 Sat Jun 27 21:00:40 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.0.71:

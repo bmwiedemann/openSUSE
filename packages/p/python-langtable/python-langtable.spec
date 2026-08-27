@@ -39,16 +39,16 @@ License:        GPL-3.0-or-later
 Group:          System/Localization
 URL:            https://github.com/mike-fabian/langtable
 Source0:        https://github.com/mike-fabian/langtable/releases/download/%{version}/langtable-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{pythons}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  libxml2-tools
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-base
+BuildArch:      noarch
 %if %{without data}
 Requires:       %{literalpython}-langtable-data = %{version}
 %endif
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -69,7 +69,7 @@ by more python target versions and also it can be used indenpendently.
 %autosetup -n langtable-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 
@@ -79,14 +79,13 @@ by more python target versions and also it can be used indenpendently.
   mv langtable/data/* %{buildroot}/%{_datadir}/langtable/data
 %else
 # Main package
-  %python_install
+  %pyproject_install
   %python_expand %fdupes %{buildroot}%{$python_sitelib}
   %python_expand rm -rf %{buildroot}%{$python_sitelib}/langtable/data
 %endif
 
 # Main package
 %if %{without data}
-
 %check
 (cd langtable; python3 langtable.py)
 python3 test_cases.py
@@ -100,8 +99,8 @@ done
 %files %{python_files}
 %license COPYING unicode-license.txt
 %doc README ChangeLog
-%{python_sitelib}/*
-
+%{python_sitelib}/langtable
+%{python_sitelib}/langtable-%{version}*-info
 %else
 # Data package
 
