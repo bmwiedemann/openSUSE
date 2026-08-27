@@ -29,6 +29,10 @@ RUN set -euo pipefail; \
     export PERMCTL_ALLOW_INSECURE_MODE_IF_NO_PROC=1 SOURCE_DATE_EPOCH=0; \
     zypper -n --installroot /target --gpg-auto-import-keys install php8 php8-cli php-composer2 php8-curl php8-zip php8-zlib php8-phar php8-mbstring php8-readline
 
+COPY docker-php-source docker-php-entrypoint docker-php-ext-configure docker-php-ext-enable docker-php-ext-install /target/usr/local/bin/
+RUN chmod +x /target/usr/local/bin/docker-php-*
+
+
 # cleanup logs and temporary files
 RUN set -euo pipefail; zypper -n --installroot /target clean -a; \
     t=$(mktemp -d); mv /target/usr/lib/sysimage/rpm/Packages.db $t; rpmdb --rebuilddb --dbpath=$t; \
@@ -67,5 +71,3 @@ ENV PHP_INI_DIR="/etc/php8/"
 ENV PHP_VERSION="%%php_version%%"
 ENTRYPOINT ["docker-php-entrypoint"]
 CMD ["php", "-a"]
-COPY docker-php-source docker-php-entrypoint docker-php-ext-configure docker-php-ext-enable docker-php-ext-install /usr/local/bin/
-RUN chmod +x /usr/local/bin/docker-php-*
