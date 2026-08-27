@@ -190,4 +190,15 @@
 - Update Requires from pyproject.toml (forwarded request 1351124 from glaubitz)</comment>
     <requestid>1351394</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>9a89ea9c978791b4e048ab622aa8a056</srcmd5>
+    <version>4.11.2</version>
+    <time>1787849734</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 4.11.2
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1373972 from glaubitz)</comment>
+    <requestid>1374073</requestid>
+  </revision>
 </revisionlist>

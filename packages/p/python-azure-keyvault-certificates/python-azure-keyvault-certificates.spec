@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-keyvault-certificates
-Version:        4.11.1
+Version:        4.11.2
 Release:        0
 Summary:        Microsoft Azure Key Vault Certificates Client Library for Python
 License:        MIT
