@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Thu Aug 27 09:03:39 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Version 3.7.12
+
+  Bugs fixed
+  * Bump etcd client modules to v3.5.33
+    -Bump etcd client modules to v3.5.33
+  * fastproxy
+    - Bump github.com/valyala/fasthttp to v1.73.0
+  * file
+    - Include the filename in file provider configuration errors
+  * http3
+    - Apply read timeout, idle timeout, and max header bytes for HTTP/3
+  * k8s
+    - Fix typos in docs and an OCSP log message
+  * k8s/ingress-nginx
+    - Fix TLS option name collision across namespaces in the ingress-nginx
+      provider
+  * k8s, k8s/ingress-nginx
+    - Fix redirect www host with a non-numeric port
+  * server
+    - Add an entry point option to handle request headers with aliasing names
+  * tcp, udp
+    - Reject negative weights in TCP and UDP weighted services
+
+- Version 3.7.11
+
+  CVEs fixed
+  * Advisory GHSA-5w68-77r2-r64c
+  * Advisory GHSA-g55h-rg46-x9c5
+  * Advisory GHSA-j994-9gqj-9hwq
+  * Advisory GHSA-m6wx-622r-48r9
+
+  Bugs fixed
+  * Bump golang.org/x dependencies
+  * fastproxy
+    - Reject out-of-range status codes from backends when using FastProxy
+  * http3
+    - Bump github.com/quic-go/quic-go to v0.61.0
+  * k8s/crd
+    - Add an option to restrict the namespace of the default TLS resources
+    - Add safe naming option to avoid collisions for Kubernetes CRD provider
+    - Name failover generated services after the referenced Kubernetes Service
+    - Prevent generated name collisions in the Kubernetes CRD provider
+    - Scope generated Kubernetes Service names to their parent in the
+      CRD provider
+  * k8s/gatewayapi
+    - Fix Gateway API router rules
+    - Preserve encoded path segments in Gateway API URLRewrite and
+      RequestRedirect
+  * k8s/ingress
+    - Enforce crossProviderNamespace for Kubernetes Ingress service middleware
+  * k8s/ingress-nginx
+    - Apply auth, custom-headers, custom errors and ssl-redirect to ingress
+      default backend
+    - Dedupe client-auth TLS options across ingresses sharing a host for
+      ingress-nginx provider
+    - Honor asDefault and exclude internal entrypoints from default
+      selection for ingress-nginx provider
+  * middleware, authentication
+    - Bump github.com/containous/go-http-auth to b975dcaa8c48
+  * tls
+    - Add an option to disable the fallback to the default TLS options
+
+-------------------------------------------------------------------
 Wed Aug  5 08:24:48 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Version 3.7.10
