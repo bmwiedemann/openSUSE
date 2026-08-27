@@ -1,0 +1,13 @@
+# Upstream sets SOVERSION to "<major>.<minor>-1" (LIME_SUITE_SOVER in
+# CMakeLists.txt), so the library's SONAME is libLimeSuite.so.23.11-1 --
+# its version part contains a dash. rpmlint's shared library policy
+# check only recognises a versioned library as ".so" followed by
+# dot-separated digits, so it does not recognise libLimeSuite.so.23.11-1
+# as a library at all and concludes the package ships none.
+#
+# The package does follow the shared library packaging policy: it is
+# named after the SONAME it ships, and it ships exactly that one
+# versioned library file. Before this filter was needed the check was
+# only satisfied by also shipping libLimeSuite.so.23.11.0, a versioned
+# path that is not the SONAME.
+addFilter("shlib-policy-missing-lib")

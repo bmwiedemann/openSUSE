@@ -1,7 +1,7 @@
 #
 # spec file for package limesuite
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2017-2023, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +17,12 @@
 #
 
 
-%define sover 23_11-0
+# Upstream sets SOVERSION to "<major>.<minor>-1" (LIME_SUITE_SOVER in
+# CMakeLists.txt), so the shipped SONAME is libLimeSuite.so.23.11-1.
+# Keep both spellings in sync: sonamever is the SONAME as it appears in
+# the file name, sover the same value as it appears in the package name.
+%define sonamever 23.11-1
+%define sover 23_11-1
 %define libname libLimeSuite%{sover}
 %define soapy_modver 0.8-3
 Name:           limesuite
@@ -25,11 +30,10 @@ Version:        23.11.0
 Release:        0
 Summary:        Collection of software supporting LMS7-based hardware
 License:        Apache-2.0
-Group:          Productivity/Hamradio/Other
 URL:            https://myriadrf.org/projects/lime-suite/
 #Git-Clone:     https://github.com/myriadrf/LimeSuite.git
 Source:         https://github.com/myriadrf/LimeSuite/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM limesuite-add-missing-includes.patch -- Add missing include
+Source1:        %{name}-rpmlintrc
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  gnuplot
@@ -49,8 +53,18 @@ module.
 
 %package -n %{libname}
 Summary:        Library for Lime Suite
-Group:          System/Libraries
 Requires:       %{name}-udev
+# Until now this library was packaged as libLimeSuite23_11-0, a name that
+# did not match the SONAME it ships. Both names own the same library
+# paths, so the rename needs an explicit replacement. The Obsoletes is
+# deliberately unversioned: the released libLimeSuite23_11-0 carries a
+# higher release number than a fresh build of the renamed package, so a
+# "< %%{version}-%%{release}" form would never match it. No matching
+# Provides is added: every consumer outside this source package binds to
+# the SONAME libLimeSuite.so.23.11-1 rather than to the package name,
+# and a Provides would only trade rpmlint's obsolete-not-provided for
+# its self-obsoletion.
+Obsoletes:      libLimeSuite23_11-0
 
 %description -n %{libname}
 Lime Suite is a collection of software supporting several hardware
@@ -58,7 +72,6 @@ platforms and other tools for developing with LMS7-based hardware.
 
 %package udev
 Summary:        Udev rules for LimeSDR
-Group:          Hardware/Other
 BuildArch:      noarch
 
 %description udev
@@ -66,7 +79,6 @@ Udev rules for Lime Suite
 
 %package devel
 Summary:        Development files for libLimeSuite
-Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
 
 %description devel
@@ -75,14 +87,13 @@ use of libLimeSuite.
 
 %package -n soapysdr%{soapy_modver}-module-lms7
 Summary:        SoapySDR LMS7 support module
-Group:          System/Libraries
 
 %description -n soapysdr%{soapy_modver}-module-lms7
 Soapy LMS7 - LimeSDR device support for Soapy SDR.
 A Soapy module that supports LimeSDR devices within the Soapy API.
 
 %prep
-%setup -q -n LimeSuite-%{version}
+%autosetup -n LimeSuite-%{version}
 
 # HACK: set udev permissions to 666
 sed -i 's|MODE="660"|MODE="666"|g' udev-rules/64-limesuite.rules
@@ -105,6 +116,16 @@ sed -i 's|MODE="660"|MODE="666"|g' udev-rules/64-limesuite.rules
 %install
 %cmake_install
 
+# Upstream sets both VERSION and SOVERSION on the library, so cmake
+# installs the real file under the version-suffixed name
+# libLimeSuite.so.23.11.0 and leaves the SONAME libLimeSuite.so.23.11-1
+# as a symlink to it. A versioned path that is not the SONAME
+# file-conflicts between package versions, so make the SONAME the real
+# file and keep it the only versioned path this package ships.
+rm %{buildroot}%{_libdir}/libLimeSuite.so.%{sonamever}
+mv %{buildroot}%{_libdir}/libLimeSuite.so.%{version} \
+   %{buildroot}%{_libdir}/libLimeSuite.so.%{sonamever}
+
 %ldconfig_scriptlets -n %{libname}
 
 %post udev
@@ -126,7 +147,7 @@ sed -i 's|MODE="660"|MODE="666"|g' udev-rules/64-limesuite.rules
 %{_udevrulesdir}/64-limesuite.rules
 
 %files -n %{libname}
-%{_libdir}/libLimeSuite.so.*
+%{_libdir}/libLimeSuite.so.%{sonamever}
 
 %files devel
 %{_libdir}/libLimeSuite.so

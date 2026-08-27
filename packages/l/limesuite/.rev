@@ -315,4 +315,82 @@
     <comment></comment>
     <requestid>1291694</requestid>
   </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>59001bd781d4166ad18283cfac788e73</srcmd5>
+    <version>23.11.0</version>
+    <time>1787849470</time>
+    <user>anag_factory</user>
+    <comment>No version change - 23.11.0 in both devel and Factory. This forwards a
+stranded devel fix, completes it so that it can actually land, and adds
+a small spec cleanup.
+
+1) The shared library subpackage is renamed libLimeSuite23_11-0 -&gt;
+   libLimeSuite23_11-1. That fix is Martin Hauke's work
+   &lt;mardnh@gmx.de&gt;, committed to hardware:sdr on 2025-09-21 and never
+   submitted since. It is correct: upstream sets SOVERSION to
+   &quot;&lt;major&gt;.&lt;minor&gt;-1&quot; (LIME_SUITE_SOVER in CMakeLists.txt), so the
+   shipped SONAME is libLimeSuite.so.23.11-1 and rpm's auto-provides
+   reads libLimeSuite.so.23.11-1()(64bit). Factory's current
+   libLimeSuite23_11-0 therefore does not encode the SONAME it ships.
+
+2) The rename on its own is not submittable, and this is what is new
+   here. SR 1307597 carried exactly that change and was declined on
+   2025-09-29 with:
+
+     found conflict of libLimeSuite23_11-0-23.11.0-3.1.x86_64 with
+     libLimeSuite23_11-1-23.11.0-1.1.x86_64
+       /usr/lib64/libLimeSuite.so.23.11.0
+
+   The SONAME itself does not change, so this is a rename at constant
+   SONAME: old and new package own the same library paths, nothing
+   declared one as the replacement of the other, and installcheck
+   therefore sees two co-installable packages claiming the same file.
+   Two changes fix that:
+
+   - libLimeSuite23_11-1 now carries &quot;Obsoletes: libLimeSuite23_11-0&quot;.
+     This is what actually clears the conflict, since the two stop
+     being candidates for simultaneous installation. The Obsoletes is
+     deliberately unversioned: as the decline output above shows, the
+     released 23_11-0 sits at release 3.x while a fresh staging build
+     of the renamed package starts at 1.x, so a &quot;&lt; version-release&quot;
+     form would never match it. No matching Provides is added, because
+     every consumer outside this source package binds to the SONAME
+     and not to the package name - osmo-trx-lms and urh both require
+     libLimeSuite.so.23.11-1()(64bit), and the only dependency on the
+     old package name comes from limesuite-devel, which is rebuilt
+     from this same source package. rpmlint's obsolete-not-provided
+     warning is that decision, and it is intentional.
+
+   - The library is now installed under its SONAME rather than under
+     the version-suffixed name. Upstream sets both VERSION and
+     SOVERSION, so cmake shipped libLimeSuite.so.23.11.0 as the real
+     file with the SONAME as a symlink to it; the package now ships
+     only libLimeSuite.so.23.11-1, listed explicitly in %files instead
+     of via a glob. That also removes the exact path the 2025-09-29
+     decline named.
+
+3) limesuite-rpmlintrc is added, filtering shlib-policy-missing-lib.
+   Once the version-suffixed name is gone, rpmlint stops recognising
+   the library at all: its shared library policy check matches a
+   versioned library as &quot;.so&quot; followed by dot-separated digits only,
+   and this SONAME's version part contains a dash. The package does
+   follow the policy - it is named after the SONAME it ships and ships
+   exactly that one versioned library file. Until now the check was
+   satisfied only as a side effect of shipping the extra non-SONAME
+   path. Happy to drop the filter and keep the extra path instead if
+   you would rather not carry an rpmlintrc.
+
+4) Spec cleanup on top: drop the Group tags, switch to autosetup, and
+   drop the stale comment for limesuite-add-missing-includes.patch,
+   which was removed from the package back in 2023.
+
+Rebuild scope: osmo-trx and urh, both consuming limesuite-devel and
+limesuite-udev. Neither needs a source change, since the SONAME is
+unchanged and both already require it by soname.
+
+Built locally for openSUSE_Tumbleweed/aarch64: green, rpmlint 0 errors
+and 0 badness, matching the current Factory baseline. There is no
+baselibs.conf in this package.</comment>
+    <requestid>1373851</requestid>
+  </revision>
 </revisionlist>
