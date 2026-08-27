@@ -1,7 +1,7 @@
 #
 # spec file for package gerbv
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,22 +23,20 @@ Release:        0
 %define somajor 1
 Summary:        Gerber File Viewer that supports the RS-274X Standard
 License:        GPL-2.0-only
-Group:          Productivity/Scientific/Electronics
 URL:            http://gerbv.geda-project.org/
 Source0:        https://github.com/gerbv/gerbv/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch1:         gerbv-build-with-g++-13.patch
 Patch2:         gerbv-remove-unused-code.patch
+Patch3:         gerbv-desktop-categories.patch
 BuildRequires:  cmake
 %if 0%{?suse_version} >= 1600
 BuildRequires:  gcc-c++
 %else
 BuildRequires:  gcc13-c++
 %endif
-BuildRequires:  gtk2-devel
-BuildRequires:  libpng-devel
-BuildRequires:  libtool
-BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gtk+-2.0)
+BuildRequires:  pkgconfig(libpng)
 
 %description
 Gerber Viewer (gerbv) is a viewer for Gerber files. Gerber files are
@@ -51,18 +49,16 @@ aperture list.
 
 %package -n     %{libname}%{somajor}
 Summary:        Gerber File Viewer library
-Group:          System/Libraries
 
 %description -n %{libname}%{somajor}
-Gerbv library , allows developers to include parsing, editing, exporting,
+Gerbv library, allows developers to include parsing, editing, exporting,
 rendering of Gerber files into other programs.
 
 %package        devel
 Summary:        Gerber File Viewer that supports the RS-274X Standard
-Group:          Development/Libraries/C and C++
 Requires:       %{libname}%{somajor} = %{version}
-Requires:       gtk2-devel
-Requires:       libpng-devel
+Requires:       pkgconfig(gtk+-2.0)
+Requires:       pkgconfig(libpng)
 
 %description    devel
 This package contains development files for developing applications
@@ -73,9 +69,8 @@ that use gerbv library.
 %if 0%{?suse_version} < 1600
 %patch -P 1 -p1
 %endif
-%if 0%{?suse_version} > 1690
 %patch -P 2 -p1
-%endif
+%patch -P 3 -p1
 
 %build
 %cmake --preset linux-gnu-gcc
@@ -84,8 +79,6 @@ that use gerbv library.
 %install
 %cmake_install
 
-%suse_update_desktop_file -r %{name} Education Engineering
-find %{buildroot}%{_libdir} -name '*.la' -type f -delete -print
 find %{buildroot}%{_libdir} -name '*.a' -type f -delete -print
 
 %find_lang %{name}
@@ -111,7 +104,8 @@ find %{buildroot}%{_libdir} -name '*.a' -type f -delete -print
 %{_libdir}/%{libname}.so.%{somajor}*
 
 %files devel
-%{_includedir}/*
+%dir %{_includedir}/gerbv/
+%{_includedir}/gerbv/gerbv.h
 %{_libdir}/%{libname}.so
 %{_libdir}/pkgconfig/%{libname}.pc
 

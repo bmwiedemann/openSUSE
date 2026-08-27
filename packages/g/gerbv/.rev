@@ -146,4 +146,12 @@ http://lists.opensuse.org/opensuse-factory/2012-12/msg00538.html</comment>
   Tumbleweed (forwarded request 1370356 from wkazubski)</comment>
     <requestid>1371767</requestid>
   </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>d3bc087f40a8fd5d4fd5992d1e908fa9</srcmd5>
+    <version>2.13.0</version>
+    <time>1787849738</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1374080</requestid>
+  </revision>
 </revisionlist>

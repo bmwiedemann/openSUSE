@@ -1,0 +1,9 @@
+--- a/desktop/gerbv.desktop
++++ b/desktop/gerbv.desktop
+@@ -12,5 +12,5 @@
+ Exec=gerbv %F
+ Icon=gerbv
+ MimeType=application/x-gerber;application/x-excellon;
+-Categories=Engineering;Electronics;
++Categories=Education;Engineering;Electronics;
+ Keywords=Gerber;PCB

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug 19 09:47:07 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Patch gerbv-remove-unused-code.patch can be applied in all distros
+- Migrate from %suse_update_desktop_file to use a patch:
+  * gerbv-desktop-categories.patch
+- Modernize packaging
+
+-------------------------------------------------------------------
 Sat Aug  8 16:07:23 UTC 2026 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - Patch gerbv-remove-unused-code.patch added to fix build for
