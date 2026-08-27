@@ -18,7 +18,7 @@
 
 
 Name:           mkmedia
-Version:        6.1
+Version:        6.2
 Release:        0
 Summary:        Tool to create and modify SUSE, Fedora, Red Hat Linux installation media
 License:        GPL-3.0+
