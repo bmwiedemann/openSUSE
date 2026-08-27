@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Aug 26 19:58:02 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 9.0.0
+  * Fix out-of-bounds reads and writes, heap buffer overflows,
+    double frees, use-after-frees, nullptr dereferencing and
+    integer overflows.
+  * Breaking change: Fix ext32 max size truncation on 64-bit by
+    widening visit_ext size to size_t.
+    If you have a custom visitor that implements visit_ext(),
+    widen its size parameter from uint32_t to std::size_t:
+    Before: bool visit_ext(const char *v, uint32_t size)
+    After:  bool visit_ext(const char *v, std::size_t size)
+
+-------------------------------------------------------------------
 Sun May 31 14:43:07 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 8.0.0
