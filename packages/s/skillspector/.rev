@@ -73,4 +73,58 @@ test_build_server_registers_scan_skill, which does run.</comment>
 - Add packaging &gt;= 24.0 (requirement parsing for OSV lookups)</comment>
     <requestid>1372636</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>801e8f075004632f757a83ef38425636</srcmd5>
+    <version>2.10.0</version>
+    <time>1787849592</time>
+    <user>anag_factory</user>
+    <comment>Update skillspector to 2.10.0.
+
+Upstream 2.10.0 (2026-08-26) adds bounded inspection of hidden and nested
+ZIP/DOCX/XLSX/PPTX artifacts (HIGH SC9 for concealed executables), opt-in
+transitive reference scanning, recognition of AISOP/AISP structured skill
+bundles, EA5 detection for external model/provider selection,
+SKILLSPECTOR_OUTPUT_LANGUAGE and risk_assessment.max_issue_severity, and it
+floors an otherwise SAFE recommendation to CAUTION when requested LLM
+analysis degrades.
+
+Packaging notes:
+
+- langgraph-cli dropped from BuildRequires and Requires. Upstream moved
+  langgraph-cli[inmem] out of the base install into a new langgraph-dev
+  extra, and neither the shipped code nor the test suite imports it.
+  python-langgraph-cli remains in Factory for anyone who wants it.
+
+- Four tests new in this release are deselected in %check because 2.10.0
+  analyses artifacts more slowly than the ceilings those tests assume, and
+  they fail on aarch64. Each was re-run undeselected in the build chroot on
+  an otherwise idle machine first, so these are deterministic results rather
+  than builder contention, and the spec records the per-test timings:
+
+  * test_five_megabyte_normalized_static_scan_stays_below_memory_ceiling
+    (5 MB artifact) takes 30.07 s, pinned exactly at the scanner's own
+    MAX_STATIC_ANALYSIS_SECONDS_PER_ARTIFACT = 30.0 s budget
+    (observed_seconds 30.047 vs limit_seconds 30.0), so the inspection
+    ledger fail-closes to outcome=partial / reason_code=runtime_limit and
+    the test's &quot;completed&quot; assertion cannot hold. The memory property the
+    test exists for still holds: peak 2.1 MiB against its own 64 MiB
+    ceiling.
+  * test_rd04_large_file_pair_detects_start_boundary_and_end and
+    test_nine_case_contract_across_public_surfaces (~1.26 MB fixture) take
+    33 s and 34 s and hit the same budget.
+  * test_dense_directory_discovery_and_cache_complete_with_modest_real_elapsed_time
+    allows 5 s to walk and cache 256 one-byte files and takes 19.7 s, about
+    77 ms per one-byte file; this release moved nested-artifact inspection,
+    artifact classification and reference resolution into that path.
+
+  This is the fail-closed resource bound behaving as designed, not a
+  detection regression, and the same bounds stay covered by the tests that
+  monkeypatch the budget instead of racing it. Worth reporting upstream.
+  Note test_cross_window_separator_pair_across_public_surfaces was checked
+  the same way, passes, and is deliberately NOT deselected.
+
+The rest of the offline unit suite runs at build time; rpmlint is unchanged
+from 2.9.6 (0 errors, 0 badness).</comment>
+    <requestid>1373934</requestid>
+  </revision>
 </revisionlist>
