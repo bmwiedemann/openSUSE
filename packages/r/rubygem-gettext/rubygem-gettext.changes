@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul  1 00:49:05 UTC 2026 - Steven Baker <steven.baker@suse.com>
+
+- Regenerate spec file to drop update-alternatives dependency
+
+-------------------------------------------------------------------
 Thu Aug  4 13:11:59 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 3.4.3

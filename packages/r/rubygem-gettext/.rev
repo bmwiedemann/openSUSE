@@ -344,4 +344,12 @@ Note: the spec file has been regenerated with new gem2rpm. (forwarded request 12
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>993484</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>d3a3283f308572225de6e09a4a5571df</srcmd5>
+    <version>3.4.3</version>
+    <time>1787849695</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1373995</requestid>
+  </revision>
 </revisionlist>
