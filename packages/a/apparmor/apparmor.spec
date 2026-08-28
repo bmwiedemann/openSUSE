@@ -83,14 +83,17 @@ Patch6:         apache-extra-profile-include-if-exists.diff
 # add path for precompiled cache (only done/applied if precompiled_cache is enabled)
 Patch7:         apparmor-enable-precompiled-cache.diff
 
+# upstream(ed) fixes since the 5.0.2 release
+Patch10:        changes-since-5.0.2.diff
+
 # /usr/etc/krb5.conf - boo#1246689 - not submitted upstream yet since https://github.com/krb5/krb5/pull/1437/ is still open
 Patch11:        kerberosclient-usrmerge.diff
 
-# fix nslookup profile - submitted upstream 2026-07-31 https://gitlab.com/apparmor/apparmor/-/merge_requests/2185
-Patch12:        nslookup.diff
-
 # fix wg-quick profile - boo#1265394 - submitted upstream https://gitlab.com/apparmor/apparmor/-/merge_requests/2123
 Patch13:        wg-quick.diff
+
+# profile fixes for dovecot 2.4, boo#1265453
+Patch14:        dovecot.diff
 
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -361,9 +364,10 @@ mv -v profiles/apparmor.d/usr.lib.apache2.mpm-prefork.apache2 profiles/apparmor/
 %if %{with precompiled_cache}
 %patch -P 7
 %endif
+%patch -P 10 -p1
 %patch -P 11 -p1
-%patch -P 12 -p1
 %patch -P 13 -p1
+%patch -P 14 -p1
 
 %build
 export SUSE_ASNEEDED=0

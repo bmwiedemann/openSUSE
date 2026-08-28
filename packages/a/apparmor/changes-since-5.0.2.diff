@@ -1,0 +1,253 @@
+This patch includes all changes in the 5.0 branch since the 5.0.2 release:
+
+7ae1285eb Merge libapparmor: swig: don't use removed macro %new_copy_array
+55e6f1bbd libapparmor: swig: don't use removed macro %new_copy_array
+528703846 Merge postfix-qmgr: allow disconnected systemd-userdb access
+aa1a23857 postfix-qmgr: allow disconnected systemd-userdb access
+271657f87 Merge Fix console output in several profiles
+dae1f40cb Fix console output in several profiles
+87235d196 Merge Fix nslookup profile
+4830afcbe Fix nslookup profile
+756c04e5d Merge Fix comment about mode conflicts in test-file.py
+027f65e2a Fix comment about mode conflicts in test-file.py
+b160af356 abstractions/kerberosclient: allow /usr/etc/krb5.conf
+2e95dd539 firefox: allow communication with the PC/SC smartcard daemon (pcscd)
+74ceab2dc Merge hostname, firefox: Updates for Ubuntu 26.04/resolute
+d1d120e78 Merge unix-chkpwd AppArmor profile denies the nslcd socket, breaking all LDAP logins
+1616e670d Merge init: find systemd-detect-virt on $PATH
+
+
+diff --git a/init/rc.apparmor.functions b/init/rc.apparmor.functions
+index 96cb23d33..2c37b0e35 100644
+--- a/init/rc.apparmor.functions
++++ b/init/rc.apparmor.functions
+@@ -91,7 +91,7 @@ is_container_with_internal_policy() {
+ 	local ns_name
+ 
+ 	# WSL needs to be detected explicitly
+-	if [ -x /usr/bin/systemd-detect-virt ] && \
++	if command -v systemd-detect-virt >/dev/null && \
+ 	   [ "$(systemd-detect-virt --container)" = "wsl" ]; then
+ 		return 0
+ 	fi
+diff --git a/libraries/libapparmor/swig/SWIG/libapparmor.i b/libraries/libapparmor/swig/SWIG/libapparmor.i
+index d14166d9d..e4e01b97c 100644
+--- a/libraries/libapparmor/swig/SWIG/libapparmor.i
++++ b/libraries/libapparmor/swig/SWIG/libapparmor.i
+@@ -143,7 +143,11 @@ warnings.warn("free_record is now a no-op as the record's memory is handled auto
+   }
+   if (alloc_status != SWIG_NEWOBJ) {
+     // Unconditionally copy because the C function modifies the string in place
+-    $1 = %new_copy_array(con_ptr, con_len+1, char);
++    $1 = %new_array(con_len+1, char);
++    if ($1 == NULL) {
++      SWIG_exception_fail(SWIG_MemoryError, "could not allocate C con_ptr copy array");
++    }
++    memcpy($1, con_ptr, con_len+1);
+   } else {
+     $1 = con_ptr;
+   }
+diff --git a/profiles/apparmor.d/abstractions/kerberosclient b/profiles/apparmor.d/abstractions/kerberosclient
+index 1323b93af..91abf5cf9 100644
+--- a/profiles/apparmor.d/abstractions/kerberosclient
++++ b/profiles/apparmor.d/abstractions/kerberosclient
+@@ -28,7 +28,7 @@
+   /usr/lib/@{multiarch}/krb5/plugins/authdata/* mr,
+ 
+   /etc/{,krb5/}krb5.keytab    rk,
+-  /etc/{,krb5/}krb5.conf      r,
++  @{etc_ro}/{,krb5/}krb5.conf      r,
+   /etc/{,krb5/}krb5.conf.d/   r,
+   /etc/{,krb5/}krb5.conf.d/*  r,
+ 
+diff --git a/profiles/apparmor.d/free b/profiles/apparmor.d/free
+index 4023cab36..6d1ce7c27 100644
+--- a/profiles/apparmor.d/free
++++ b/profiles/apparmor.d/free
+@@ -13,6 +13,7 @@ include <tunables/global>
+ 
+ profile free /usr/bin/free {
+   include <abstractions/base>
++  include <abstractions/consoles>
+ 
+   /usr/bin/free mr,
+ 
+diff --git a/profiles/apparmor.d/hostname b/profiles/apparmor.d/hostname
+index 794dba1a5..2e4661d9e 100644
+--- a/profiles/apparmor.d/hostname
++++ b/profiles/apparmor.d/hostname
+@@ -12,10 +12,11 @@ abi <abi/5.0>,
+ 
+ include <tunables/global>
+ 
++@{att}=/att/hostname
+ @{bin}={/usr,}/bin
+ @{exec}={hostname,domainname,ypdomainname,nisdomainname,dnsdomainname}
+ 
+-profile hostname @{bin}/@{exec} {
++profile hostname @{bin}/@{exec} flags=(attach_disconnected.path=@{att}) {
+   include <abstractions/base>
+   include <abstractions/nameservice-strict>
+ 
+@@ -28,6 +29,8 @@ profile hostname @{bin}/@{exec} {
+   network inet dgram,
+   network inet6 dgram,
+ 
++  @{att}@{run}/nscd/socket rw,
++
+   file r /etc/hostname,
+   file r /etc/defaultdomain,
+ 
+diff --git a/profiles/apparmor.d/locale b/profiles/apparmor.d/locale
+index 826aad0c4..8e6b130fe 100644
+--- a/profiles/apparmor.d/locale
++++ b/profiles/apparmor.d/locale
+@@ -17,6 +17,7 @@ abi <abi/5.0>,
+ 
+ profile locale /usr/bin/locale {
+   include <abstractions/base>
++  include <abstractions/consoles>
+ 
+   file r /usr/share/i18n/charmaps/,
+   file r /usr/share/i18n/charmaps/*,
+diff --git a/profiles/apparmor.d/lsof b/profiles/apparmor.d/lsof
+index 9efaa52cc..679854db1 100644
+--- a/profiles/apparmor.d/lsof
++++ b/profiles/apparmor.d/lsof
+@@ -17,6 +17,7 @@ include <tunables/global>
+ 
+ profile lsof /usr/bin/lsof flags=(attach_disconnected.path=/att/lsof/) {
+   include <abstractions/base>
++  include <abstractions/consoles>
+   include <abstractions/nameservice>
+ 
+   /usr/bin/lsof mr,
+diff --git a/profiles/apparmor.d/nslookup b/profiles/apparmor.d/nslookup
+index c35fcc1b4..bddfee0f6 100644
+--- a/profiles/apparmor.d/nslookup
++++ b/profiles/apparmor.d/nslookup
+@@ -16,6 +16,7 @@ include <tunables/global>
+ 
+ profile nslookup /usr/bin/nslookup {
+   include <abstractions/base>
++  include <abstractions/consoles>
+   include <abstractions/nameservice-strict>
+   include <abstractions/terminfo>
+ 
+@@ -30,6 +31,7 @@ profile nslookup /usr/bin/nslookup {
+ 
+   # Read access is requested to the following locations during bare `nslookup`
+   /usr/bin/nslookup mr,
++  /proc/sys/net/ipv4/ip_local_port_range r,
+   /proc/version_signature r,
+   /sys/kernel/mm/transparent_hugepage/enabled r,
+ 
+diff --git a/profiles/apparmor.d/ssh-keyscan b/profiles/apparmor.d/ssh-keyscan
+index 5f5e07a44..44bbf1de9 100644
+--- a/profiles/apparmor.d/ssh-keyscan
++++ b/profiles/apparmor.d/ssh-keyscan
+@@ -13,6 +13,7 @@ include <tunables/global>
+ 
+ profile ssh-keyscan /usr/bin/ssh-keyscan {
+   include <abstractions/base>
++  include <abstractions/consoles>
+   include <abstractions/nameservice-strict>
+   
+   network inet dgram,
+diff --git a/profiles/apparmor.d/unix-chkpwd b/profiles/apparmor.d/unix-chkpwd
+index 05ae7bb85..8aab22f86 100644
+--- a/profiles/apparmor.d/unix-chkpwd
++++ b/profiles/apparmor.d/unix-chkpwd
+@@ -40,6 +40,7 @@ profile unix-chkpwd /{,usr/}{,s}bin/unix_chkpwd flags=(attach_disconnected.path=
+ 
+   # disconnected paths - their non-disconnected counterpart is allowed via abstractions
+   /att/unix-chkpwd/run/authd.sock rw,
++  /att/unix-chkpwd/run/nslcd/socket rw,
+   /att/unix-chkpwd/run/systemd/journal/dev-log w,
+   /att/unix-chkpwd/run/systemd/userdb/io.systemd.DynamicUser rw,
+   /att/unix-chkpwd/run/systemd/userdb/org.gnome.DisplayManager rw,
+diff --git a/profiles/apparmor.d/zgrep b/profiles/apparmor.d/zgrep
+index ce465ef5a..b7e891e55 100644
+--- a/profiles/apparmor.d/zgrep
++++ b/profiles/apparmor.d/zgrep
+@@ -14,6 +14,7 @@ include <tunables/global>
+ 
+ profile zgrep /usr/bin/{x,}zgrep {
+   include <abstractions/base>
++  include <abstractions/consoles>
+   include <abstractions/bash>
+ 
+   /dev/tty rw,
+@@ -44,6 +45,7 @@ profile zgrep /usr/bin/{x,}zgrep {
+ 
+   profile helper {
+     include <abstractions/base>
++    include <abstractions/consoles>
+ 
+     capability dac_override,
+     capability dac_read_search,
+diff --git a/profiles/apparmor/profiles/extras/firefox b/profiles/apparmor/profiles/extras/firefox
+index b284e4a20..7fa895c64 100644
+--- a/profiles/apparmor/profiles/extras/firefox
++++ b/profiles/apparmor/profiles/extras/firefox
+@@ -67,6 +67,12 @@ profile firefox @{MOZ_LIBDIR}/@{MOZ_APP_NAME}{,*[^s][^h]} {
+   @{PROC}/@{pid}/net/ipv6_route r,
+   @{PROC}/@{pid}/net/dev r,
+   @{PROC}/@{pid}/net/wireless r,
++
++  # Allow communication with the PC/SC Smart Card Daemon (pcscd), needed for
++  # smartcard-based authentication (e.g. the Spanish DNIe) via PKCS#11 modules
++  @{run}/pcscd/pcscd.comm rw,
++  @{run}/pcscd/ r,
++
+   dbus (send)
+        bus=system
+        path=/org/freedesktop/NetworkManager
+@@ -459,10 +465,10 @@ profile firefox @{MOZ_LIBDIR}/@{MOZ_APP_NAME}{,*[^s][^h]} {
+   # Extensions
+   # /usr/share/.../extensions/... is already covered by '/usr/.../** r', above.
+   # Allow 'x' for downloaded extensions, but inherit policy for safety
+-  owner @{HOME}/.mozilla/**/extensions/** mixr,
++  owner @{HOME}/.{,config/}mozilla/**/extensions/** mixr,
+ 
+   # Widevine CDM plugin (LP: #1777070)
+-  owner @{HOME}/.mozilla/firefox/*/gmp-widevinecdm/*/libwidevinecdm.so m,
++  owner @{HOME}/.{,config/}mozilla/firefox/*/gmp-widevinecdm/*/libwidevinecdm.so m,
+ 
+   deny @{MOZ_LIBDIR}/update.test w,
+   deny /usr/lib/mozilla/extensions/**/ w,
+diff --git a/profiles/apparmor/profiles/extras/postfix-qmgr b/profiles/apparmor/profiles/extras/postfix-qmgr
+index afb2dcc23..b0c4d6543 100644
+--- a/profiles/apparmor/profiles/extras/postfix-qmgr
++++ b/profiles/apparmor/profiles/extras/postfix-qmgr
+@@ -20,6 +20,8 @@ profile postfix-qmgr /usr/lib{,exec}/postfix/{bin/,sbin/,}qmgr flags=(attach_dis
+   include <abstractions/postfix-common>
+ 
+   @{att}/systemd/journal/dev-log w,
++  @{att}@{run}/systemd/userdb/io.systemd.DynamicUser rw,
++  @{att}@{run}/systemd/userdb/io.systemd.Machine rw,
+ 
+   @{exec_path} mrix,
+ 
+diff --git a/utils/test/test-file.py b/utils/test/test-file.py
+index 56d3ffdca..f54984cd4 100644
+--- a/utils/test/test-file.py
++++ b/utils/test/test-file.py
+@@ -113,7 +113,7 @@ class FileTestParseInvalid(FileTest):
+     tests = (
+         #                                    exception          matches regex
+         ('/foo x,',                         (AppArmorException, True)),  # should be *x
+-        ('/foo raw,',                       (AppArmorException, True)),  # r and a conflict
++        ('/foo raw,',                       (AppArmorException, True)),  # w and a conflict
+         ('deny /foo ix,',                   (AppArmorException, True)),  # endy only allows x, but not *x
+         ('deny /foo Px,',                   (AppArmorException, True)),  # deny only allows x, but not *x
+         ('deny /foo Pi,',                   (AppArmorException, True)),  # missing 'x', and P not allowed
+@@ -273,7 +273,7 @@ class InvalidFileInit(AATest):
+ 
+ 
+         # misc
+-        (      ('/foo',       'rwa',              'ix',       '/bar', False,  False,        False),        AppArmorException),  # 'r' and 'a' conflict  # noqa: E201
++        (      ('/foo',       'rwa',              'ix',       '/bar', False,  False,        False),        AppArmorException),  # 'w' and 'a' conflict  # noqa: E201
+         (      ('/foo',       None,               'rw',       '/bar', False,  False,        False),        AppArmorBug),        # file perms in exec perms parameter  # noqa: E201
+         (      ('/foo',       'ix',               None,       '/bar', False,  False,        False),        AppArmorBug),        # exec perms in file perms parameter  # noqa: E201
+         (      ('foo',        'rw',               'ix',       '/bar', False,  False,        False),        AppArmorException),  # path doesn't start with /  # noqa: E201

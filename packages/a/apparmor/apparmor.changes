@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Aug 25 15:25:22 UTC 2026 - Christian Boltz <suse-beta@cboltz.de>
+
+- add changes-since-5.0.2.diff
+  - several profile updates
+  - fix compability with Swig 4.5 (boo#1275508)
+- drop upstreamed nslookup.diff
+- refresh kerberosclient-usrmerge.diff
+- add dovecot.diff with several dovecot profile updates (boo#1265453)
+
+-------------------------------------------------------------------
 Fri Jul 31 18:15:46 UTC 2026 - Christian Boltz <suse-beta@cboltz.de>
 
 - update to AppArmor 5.0.2

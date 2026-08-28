@@ -3222,4 +3222,17 @@ Detailed changelog:
 - add nslookup.diff to fix nslookup output (forwarded request 1368905 from cboltz)</comment>
     <requestid>1368906</requestid>
   </revision>
+  <revision rev="241" vrev="2">
+    <srcmd5>32ab90ab0ecec23869a9697eb8285826</srcmd5>
+    <version>5.0.2</version>
+    <time>1787939183</time>
+    <user>anag_factory</user>
+    <comment>- add changes-since-5.0.2.diff
+  - several profile updates
+  - fix compability with Swig 4.5 (boo#1275508)
+- drop upstreamed nslookup.diff
+- refresh kerberosclient-usrmerge.diff
+- add dovecot.diff with several dovecot profile updates (boo#1265453) (forwarded request 1373664 from cboltz)</comment>
+    <requestid>1373665</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,82 @@
+commit 23e89615a0da6d69b1ce557598176fc00a3432c2
+Author: Christian Boltz <apparmor@cboltz.de>
+Date:   Wed Aug 12 21:13:13 2026 +0200
+
+    Update dovecot profiles for dovecot 2.4
+    
+    Fixes: https://bugzilla.opensuse.org/show_bug.cgi?id=1265453
+
+diff --git a/profiles/apparmor.d/usr.lib.dovecot.anvil b/profiles/apparmor.d/usr.lib.dovecot.anvil
+index eb0b3f5ee..c97f62f9a 100644
+--- a/profiles/apparmor.d/usr.lib.dovecot.anvil
++++ b/profiles/apparmor.d/usr.lib.dovecot.anvil
+@@ -23,6 +23,7 @@ profile dovecot-anvil /usr/lib*/dovecot/anvil {
+   unix (receive, send) type=stream peer=(label=dovecot),
+ 
+   @{run}/dovecot/anvil rw,
++  @{run}/dovecot/anvil-connect-limit rw,
+   @{run}/dovecot/anvil-auth-penalty rw,
+   @{exec_path} mr,
+ 
+diff --git a/profiles/apparmor.d/usr.lib.dovecot.auth b/profiles/apparmor.d/usr.lib.dovecot.auth
+index ad1614af6..256065e91 100644
+--- a/profiles/apparmor.d/usr.lib.dovecot.auth
++++ b/profiles/apparmor.d/usr.lib.dovecot.auth
+@@ -14,7 +14,8 @@ abi <abi/5.0>,
+ 
+ include <tunables/global>
+ 
+-profile dovecot-auth /usr/lib*/dovecot/auth {
++@{att}=/att/dovecot-auth/
++profile dovecot-auth /usr/lib*/dovecot/auth flags=(attach_disconnected.path=@{att}) {
+   include <abstractions/authentication>
+   include <abstractions/base>
+   include <abstractions/mysql>
+@@ -53,6 +54,8 @@ profile dovecot-auth /usr/lib*/dovecot/auth {
+ 
+   /var/spool/postfix/private/auth rw,
+ 
++  @{att}/systemd/journal/dev-log w,
++
+   # Site-specific additions and overrides. See local/README for details.
+   include if exists <local/usr.lib.dovecot.auth>
+ }
+diff --git a/profiles/apparmor.d/usr.lib.dovecot.imap-login b/profiles/apparmor.d/usr.lib.dovecot.imap-login
+index 605be07b1..83d29a55a 100644
+--- a/profiles/apparmor.d/usr.lib.dovecot.imap-login
++++ b/profiles/apparmor.d/usr.lib.dovecot.imap-login
+@@ -28,6 +28,7 @@ profile dovecot-imap-login /usr/lib*/dovecot/imap-login {
+ 
+   @{exec_path} mr,
+   @{run}/dovecot/anvil rw,
++  @{run}/dovecot/anvil-connect-limit rw,
+   @{run}/dovecot/login-master-notify* rw,
+   @{run}/dovecot/login/ r,
+   @{run}/dovecot/login/* rw,
+diff --git a/profiles/apparmor.d/usr.lib.dovecot.log b/profiles/apparmor.d/usr.lib.dovecot.log
+index e8a28be8c..00024ff29 100644
+--- a/profiles/apparmor.d/usr.lib.dovecot.log
++++ b/profiles/apparmor.d/usr.lib.dovecot.log
+@@ -19,6 +19,8 @@ profile dovecot-log /usr/lib*/dovecot/log flags=(attach_disconnected) {
+ 
+   @{exec_path} mr,
+ 
++  /systemd/journal/dev-log w,  # disconnected path
++
+   # Site-specific additions and overrides. See local/README for details.
+   include if exists <local/usr.lib.dovecot.log>
+ }
+diff --git a/profiles/apparmor.d/usr.sbin.dovecot b/profiles/apparmor.d/usr.sbin.dovecot
+index 12f441a90..8177abec2 100644
+--- a/profiles/apparmor.d/usr.sbin.dovecot
++++ b/profiles/apparmor.d/usr.sbin.dovecot
+@@ -81,6 +81,9 @@ profile dovecot /usr/{bin,sbin}/dovecot flags=(attach_disconnected) {
+   link @{run}/dovecot/** -> /var/lib/dovecot/**,
+   owner /tmp/doveconf.* rw,
+ 
++  /systemd/notify w,           # disconnected path
++  /systemd/journal/dev-log w,  # disconnected path
++
+   # Site-specific additions and overrides. See local/README for details.
+   include if exists <local/usr.sbin.dovecot>
+ }
