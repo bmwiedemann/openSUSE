@@ -1,4 +1,91 @@
 -------------------------------------------------------------------
+Fri Aug 28 06:32:22 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.5.0:
+  * No CLI-related changes
+  * Dependency updates
+    - chore(deps): lock file maintenance
+    - fix(deps): update module github.com/getkin/kin-openapi to
+      v0.147.0
+    - chore(deps): update dependency renovate to v44.33.2
+    - chore(deps): update module github.com/google/cel-go to
+      v0.30.0 [security]
+    - fix(deps): update module github.com/docker/go-connections to
+      v0.8.1
+    - fix(deps): update module
+      github.com/google/go-containerregistry to v0.21.9
+    - chore(deps): update github/codeql-action digest to ff2f1c6
+    - chore(deps): update cachix/install-nix-action digest to
+      13d8dd5
+    - chore(deps): lock file maintenance
+    - fix(deps): update module golang.org/x/mod to v0.40.0
+      [security]
+    - chore(deps): update dependency renovate to v44.27.0
+    - fix(deps): update module github.com/alecthomas/kong to
+      v1.16.1
+    - fix(deps): update module google.golang.org/protobuf to
+      v1.36.12
+    - chore(deps): update renovatebot/github-action action to
+      v46.2.2
+    - chore(deps): update dependency renovate to v44.23.3
+    - chore(deps): update gomod2nix digest to 1201ddd
+    - chore(deps): lock file maintenance
+    - chore(deps): update korthout/backport-action action to v4.6.0
+    - chore(deps): update actions/checkout action to v6.1.0
+    - chore(deps): update github/codeql-action digest to 5595cca
+    - fix(deps): update module github.com/go-git/go-git/v5 to
+      v5.19.2
+    - fix(deps): update module github.com/go-git/go-billy/v5 to
+      v5.9.1
+    - chore(deps): update renovatebot/github-action action to
+      v46.2.1
+    - fix(deps): update module github.com/docker/cli to
+      v29.7.1+incompatible
+    - chore(deps): update module github.com/sigstore/sigstore-go to
+      v1.2.1 [security]
+    - chore(deps): update github/codeql-action digest to f205ea1
+    - chore(deps): update renovatebot/github-action action to
+      v46.2.0
+    - chore(deps): update cachix/install-nix-action digest to
+      630ae54
+    - chore(deps): update module
+      github.com/sigstore/timestamp-authority/v2 to v2.1.0
+      [security]
+    - chore(deps): update module github.com/klauspost/compress to
+      v1.18.7 [security]
+    - fix(deps): update module github.com/getkin/kin-openapi to
+      v0.144.0 [security]
+    - chore(deps): update module github.com/google/cel-go to
+      v0.29.0 [security]
+    - chore(deps): update module github.com/go-chi/chi/v5 to v5.3.0
+      [security]
+    - chore(deps): update actions/stale digest to 1e223db
+    - chore(deps): update actions/checkout digest to d23441a
+    - fix(deps): update module google.golang.org/grpc to v1.82.1
+      [security]
+    - fix(deps): update module
+      github.com/crossplane/crossplane/apis/v2 to v2.3.4
+    - chore(deps): update module oras.land/oras-go/v2 to v2.6.2
+      [security]
+    - chore(deps): update module github.com/yuin/goldmark to
+      v1.7.17 [security]
+    - chore(deps): update renovatebot/github-action action to
+      v46.1.18
+    - chore(deps): update module oras.land/oras-go/v2 to v2.6.1
+      [security]
+    - fix(deps): update module github.com/docker/cli to
+      v29.6.1+incompatible
+    - chore(deps): update module github.com/sigstore/cosign/v3 to
+      v3.0.6 [security]
+    - chore(deps): update module github.com/sigstore/rekor to
+      v1.5.2 [security]
+    - chore(deps): update module github.com/sigstore/cosign/v2 to
+      v2.6.3 [security]
+    - fix(deps): update module github.com/emicklei/dot to v1.11.0
+    - fix(deps): update module github.com/docker/cli to
+      v29.6.0+incompatible
+
+-------------------------------------------------------------------
 Mon Jul 27 05:07:54 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.4.1:
