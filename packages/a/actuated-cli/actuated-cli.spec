@@ -17,7 +17,7 @@
 
 
 Name:           actuated-cli
-Version:        0.2.15
+Version:        0.2.16
 Release:        0
 Summary:        CLI for actuated
 License:        MIT

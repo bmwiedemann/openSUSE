@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Aug 28 12:08:55 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.16:
+  * Add verbose runner output
+  * Clarify profiling units
+  * Add profiling command
+
+-------------------------------------------------------------------
 Thu Jul 02 12:39:29 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.15:
