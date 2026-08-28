@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Fri Aug 28 12:17:49 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.30.4:
+  https://istio.io/latest/news/releases/1.30.x/announcing-1.30.4/
+  * Security update
+    https://istio.io/latest/news/security/istio-security-2026-006/
+    - Envoy CVEs
+      - CVE-2026-73513: (CVSS score 7.5): Fixed a heap
+        use-after-free where an untrusted upstream could send
+        HTTP/2 response trailers without the END_STREAM flag to an
+        Envoy instance using oghttp2, corrupting stream state and
+        terminating the process.
+      - CVE-2026-73552: (CVSS score 7.5): Fixed an issue where
+        safe_regex matching treated accepted non-UTF-8 HTTP header
+        bytes as a non-match; in RBAC policies using negative
+        matching this could fail open and allow access to a
+        protected resource.
+      - CVE-2026-73512: (CVSS score 7.5): Fixed a use-after-free in
+        the QUIC HTTP datagram handler where late HTTP/3 datagrams
+        could reference a stream decoder that was already destroyed
+        or replaced.
+      - CVE-2026-73547: (CVSS score 7.5): Fixed an abnormal process
+        termination in the ext_authz filter when processing CONNECT
+        requests without a :path pseudo-header.
+      - CVE-2026-73549: (CVSS score 5.3): Fixed an abnormal process
+        termination for scoped IPv6 client addresses in original
+        DST clusters with HTTP/3.
+      - CVE-2026-50572: (CVSS score 5.9): Fixed a use-after-free in
+        the ext_authz raw HTTP client where completing an
+        authorization request could destroy the client while its
+        completion handler was still executing.
+      - CVE-2026-73546: (CVSS score 7.4): Fixed a stored cross-site
+        scripting issue in the HTML stats interface
+        (/stats?format=html) where dynamically named statistics
+        could introduce attacker-controlled content.
+      - CVE-2026-48521: (CVSS score 5.9): Fixed an abnormal process
+        termination where Envoy could dereference null transport
+        socket options during ALPN-based HTTP/3 connection-pool
+        selection.
+      - CVE-2026-73551: (CVSS score 5.3): Fixed URL normalization
+        of dot and dot-dot path segments containing parameters,
+        which could cause access-control components and upstream
+        applications to interpret a request path differently.
+      - CVE-2026-73511: (CVSS score 5.3): Fixed path matching for
+        paths containing per-segment parameters, where Envoy and
+        backends could select different resources for the same
+        request and bypass path-based selection or authentication.
+      - CVE-2026-73548: (CVSS score 7.5): Fixed cross-user response
+        poisoning involving generic, non-WebSocket HTTP upgrades,
+        where request payload sent before an upgrade was accepted
+        could contaminate a shared upstream connection.
+      - CVE-2026-73550: (CVSS score 7.5): Fixed an HTTP/2
+        memory-exhaustion issue where discarded duplicate Host
+        headers were not counted toward request-header size and
+        count limits.
+      - CVE-2026-73553: (CVSS score 7.5): Fixed an authorization
+        bypass when ignore_path_parameters_in_path_matching was
+        enabled, where a path such as /admin;x could bypass an RBAC
+        policy for /admin while still reaching the protected route.
+    - Istio CVEs
+      - GHSA-qm8v-g4f9-qhjx (CVSS score 6.8, Moderate):
+        BackendTLSPolicy fails open to plaintext on sidecar proxies
+        when its CA reference is unresolved. Reported by @thc1006.
+  * No istioctl-related changes
+
+-------------------------------------------------------------------
 Fri Jul 17 05:28:05 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.30.3:
