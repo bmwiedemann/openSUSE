@@ -1,7 +1,7 @@
 #
 # spec file for package lxqt-wallet
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %endif
 %define c_lib   lib%{name}6_0_0
 Name:           lxqt-wallet
-Version:        4.0.2
+Version:        4.1.0
 Release:        0
 Summary:        Secure storage of information for LXQt
 License:        BSD-2-Clause

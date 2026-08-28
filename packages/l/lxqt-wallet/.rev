@@ -33,4 +33,13 @@
   * Default to use xdg paths when they are set. (forwarded request 1222519 from AndnoVember)</comment>
     <requestid>1223220</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f810817633f0758b8899479ff07651b1</srcmd5>
+    <version>4.1.0</version>
+    <time>1787939308</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.1.0:
+  * Make the library linkable when used with a hardened compiler</comment>
+    <requestid>1374158</requestid>
+  </revision>
 </revisionlist>

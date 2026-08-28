@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 28 04:50:40 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.1.0:
+  * Make the library linkable when used with a hardened compiler
+
+-------------------------------------------------------------------
 Thu Nov  7 16:53:41 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
 
 - Update to 4.0.2:
