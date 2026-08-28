@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-mustache
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,18 +28,14 @@ Version:        1.1.1
 Release:        0
 %define mod_name mustache
 %define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{ruby >= 2.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
-BuildRequires:  update-alternatives
 URL:            https://github.com/mustache/mustache
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Mustache is a framework-agnostic way to render logic-free views
 License:        MIT
-Group:          Development/Languages/Ruby
-PreReq:         update-alternatives
 
 %description
 Inspired by ctemplate, Mustache is a framework-agnostic way to render
