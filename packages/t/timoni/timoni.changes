@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Fri Aug 28 07:06:21 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.33.0:
+  * Highlights
+    - Timoni now ships an agent skill and a docs MCP server,
+      enabling AI Agents to author modules, compose bundles and
+      deploy apps across clusters.
+    - The new timoni mod show config and timoni mod show readme
+      commands print a module's #Config schema as CUE and its
+      README to stdout, from a local path or an OCI artifact.
+    - The timoni build, timoni bundle build and timoni apply --diff
+      commands keep Kubernetes Secret values out of the terminal,
+      see bundle.
+    - Modules now declare their container image defaults in an
+      images.cue file, and timoni mod push records them in the
+      sh.timoni.images artifact annotation for image tracking and
+      scanning.
+    - The timoni mod list and timoni artifact list commands resolve
+      digests concurrently and are much faster.
+    - The 1Password integration docs show how to inject secrets
+      into bundles with op run and --runtime-from-env.
+    - The website has been migrated to Mintlify.
+    - Timoni is now built with Go 1.27.
+  * What's Changed
+    - Migrate website to Mintlify in #629
+    - feat(cli): Add --mask-secrets to build commands in #630
+    - Add the Timoni agent skills and docs MCP Server in #631
+    - build(deps): bump the ci group with 3 updates in #628
+    - feat(oci): Resolve digests concurrently and add --limit to
+      mod/artifact list in #632
+    - refactor: Modernize code for Go 1.27 and add golangci-lint in
+      #633
+    - docs: Add 1Password secrets injection with op run in #634
+    - feat(blueprint): container images ref standard in #635
+    - feat(oci): Add the sh.timoni.images annotation to module
+      artifacts in #636
+    - feat(cli): add mod show readme and refactor mod show config
+      in #637
+- Update to version 0.32.0:
+  * Highlights
+    - The timoni.sh/core package offers standard schemas for pod
+      scheduling with anti-affinity presets and for Prometheus
+      monitoring with ServiceMonitor and PodMonitor values.
+    - Interrupted upgrades and uninstalls can now be resumed, as
+      Timoni retains the instance record until the operation
+      completes, see instance.
+    - The new timoni artifact digest command resolves the digest of
+      an artifact tag, and emits structured output with --output
+      json|yaml for AI Agents and CI automation.
+  * Breaking changes
+    - The #SecurityProfile schema introduced in v0.31.0 was renamed
+      to #SecurityContextPreset, and its #PodSecurityContext input
+      from #Profile to #Preset.
+  * What's Changed
+    - feat(api): Add Prometheus monitoring and pod affinity schemas
+      in #621
+    - fix(cli): Retain inventory until delete finalizes in #623
+    - feat(reconciler): Introduce pending state for in-flight
+      upgrades in #622
+    - examples: Update redis to use securityContextPreset in #624
+    - feat(cli): Add artifact digest command in #626
+    - Update OTEL dependencies in #627
+
+-------------------------------------------------------------------
 Tue Aug 11 11:21:46 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.31.0:
