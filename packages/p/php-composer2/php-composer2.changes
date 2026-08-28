@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Aug 28 11:02:52 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- version update to 2.10.3
+  * Validate package bin paths against path traversal using symlinks (GHSA-96h3-5x6v-m776, CVE-2026-59944)
+  * Fixed command injection via malicious Perforce url (GHSA-rvx4-ffvw-m9q3)
+  * Sanitize URL-embedded usernames/token in a few more places (#13044)
+  * Fixed matching of gitlab URLs to avoid possible credential leak to the wrong domain (#12988)
+  * Fixed PHP 8.6 deprecation warnings (#12967, #13028)
+  * Fixed error output when a policy blocks a package version to be clearer (#12993)
+  * Fixed the lock file's content-hash with a conflict marker ending up breaking at runtime (#13048)
+  * Fixed possible race condition while creating directories like the cache dir when running multiple
+      Composer processes in parallel (#12977)
+  * Fixed forgejo support to handle empty repositories better (#12968)
+  * Fixed FilterListApiClient not forwarding transport options (#13040)
+
+-------------------------------------------------------------------
 Fri Jul 31 12:16:36 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - fix a regression on s390x due last change [bsc#1271729]

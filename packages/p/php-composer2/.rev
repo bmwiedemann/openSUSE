@@ -551,4 +551,12 @@
     <comment>[bsc#1271729]</comment>
     <requestid>1368848</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>3995f8d74950ddd40598fc61ae6e91b6</srcmd5>
+    <version>2.10.3</version>
+    <time>1787939693</time>
+    <user>anag_factory</user>
+    <comment>CVE-2026-59944, GHSA-96h3-5x6v-m776, GHSA-rvx4-ffvw-m9q3</comment>
+    <requestid>1374350</requestid>
+  </revision>
 </revisionlist>

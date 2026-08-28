@@ -17,7 +17,7 @@
 
 
 Name:           php-composer2
-Version:        2.10.2
+Version:        2.10.3
 Release:        0
 Summary:        Dependency Management for PHP
 License:        MIT
