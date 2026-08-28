@@ -1319,4 +1319,34 @@
   * build(deps): bump mvdan.cc/gofumpt from 0.9.2 to 0.11.0 (#6687) (forwarded request 1372099 from jfkw)</comment>
     <requestid>1372100</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>3d952170a0d13a24d042da850c216592</srcmd5>
+    <version>2.13.2</version>
+    <time>1787939291</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.13.2:
+  * chore: prepare release
+  * fix: decrease cache entropy (#6762)
+  * build(deps): github.com/lasiar/canonicalheader from v1.1.2 to a fork (#6761)
+  * build(deps): bump docker/setup-buildx-action from 4.2.0 to 4.3.0 in the github-actions group (#6758)
+  * build(deps): bump github.com/stretchr/testify from 1.12.0 to 1.12.1 in /scripts/gen_github_action_config in the scripts group (#6757)
+  * build(deps): bump mvdan.cc/unparam to 2fa3d841b0c8 (#6756)
+  * build(deps): bump github.com/uudashr/iface from 1.5.0 to 1.5.1 (#6749)
+  * build(deps): bump honnef.co/go/tools from 0.8.0 to 0.8.1 (#6748)
+  * docs: fix changelog (#6743)
+  * docs: update GitHub Action assets (#6741)
+
+- Update to version 2.13.1:
+  * chore: prepare release
+  * build(deps): bump gofmt to e84e05053792 (#6740)
+  * build(deps): bump the github-actions group with 2 updates (#6739)
+  * build(deps): bump honnef.co/go/tools from 0.8.0-rc.1 to 0.8.0 (#6738)
+  * build(deps): bump github.com/bombsimon/wsl/v5 from 5.8.0 to 5.9.0 (#6737)
+  * build(deps): bump github.com/nunnatsa/ginkgolinter from 0.23.1 to 0.24.0 (#6735)
+  * dev: disable cooldown to get the linter's updates as soon as possible (#6736)
+  * build(deps): bump github.com/sirupsen/logrus from 1.10.0 to 1.10.1 (#6734)
+  * docs: update GitHub Action assets (#6730)
+  * docs: update documentation assets (#6729) (forwarded request 1374146 from jfkw)</comment>
+    <requestid>1374147</requestid>
+  </revision>
 </revisionlist>
