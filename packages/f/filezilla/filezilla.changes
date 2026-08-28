@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Aug 28 10:42:47 UTC 2026 - ecsos <ecsos@opensuse.org> - 3.71.1
+
+- Update to 3.71.1
+  * Bugfixes and minor changes:
+    - macOS: Work around a bug in macOS 27 where setting the locale
+      to non-English triggers crashes in AppKit
+    - SFTP: Improved heuristic when keyboard-interactive requests
+      are treated as a simple password prompt on servers not
+      offering the password authentication method
+
+-------------------------------------------------------------------
 Fri Aug 21 08:39:34 UTC 2026 - ecsos <ecsos@opensuse.org> - 3.71.0
 
 - Update to 3.71.0
