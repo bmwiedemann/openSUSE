@@ -2,7 +2,7 @@
   <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/openbao/openbao.git</param>
     <param name="scm">git</param>
-    <param name="revision">refs/tags/v2.6.1</param>
+    <param name="revision">refs/tags/v2.6.2</param>
     <param name="package-meta">yes</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
