@@ -17,7 +17,7 @@
 
 
 Name:           mingw32-runtime
-Version:        12.0.0
+Version:        14.0.0
 Release:        0
 Summary:        MinGW-w64 runtime libraries for Win32
 License:        SUSE-Public-Domain
@@ -38,7 +38,7 @@ BuildRequires:  xz
 Requires:       mingw32-headers <= %version
 # Once this is installed, mingw32-bootstrap (binary bootstrapper) is no
 # longer needed.
-Obsoletes:      mingw32-runtime-bootstrap
+Obsoletes:      mingw32-runtime-bootstrap < %{version}
 BuildArch:      noarch
 %_mingw32_package_header_debug
 
@@ -49,8 +49,10 @@ MinGW Win64 cross-compiler runtime, base libraries.
 %autosetup -n mingw-w64-v%version/mingw-w64-crt
 
 %build
-%_mingw32_configure --enable-lib32 --disable-lib64 \
-	--with-default-msvcrt=msvcrt
+%_mingw32_configure \
+    --disable-lib64 \
+    --enable-lib32\
+    --with-default-msvcrt=%{?_mingw32_crt:%{_mingw32_crt}}%{!?_mingw32_crt:msvcrt}
 %make_build
 
 %install
