@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Aug 28 07:40:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.5.4:
+  * add changelog for v1.5.4 release (#2944)
+  * Apply proactive hardening against malformed requests
+    (GHSA-843x-px86-vq42) (#2945)
+  * build(deps): Bump github.com/go-swagger/go-swagger from 0.33.2
+    to 0.36.4 in /hack/tools in the all group across 1 directory
+    (#2840)
+  * better handle connection issues (#2931)
+  * build(deps): Bump github.com/tink-crypto/tink-go-gcpkms/v2 from
+    2.2.0 to 2.4.0 (#2939)
+  * remove repetitive viper lookups from api endpoints (#2922)
+  * move CI containers to GHCR (#2943)
+  * build(deps): Bump the all group across 1 directory with 3
+    updates (#2942)
+  * build(deps): Bump golang.org/x/crypto from 0.54.0 to 0.55.0
+    (#2938)
+  * build(deps): Bump cloud.google.com/go/iam from 1.11.0 to 1.13.0
+    (#2937)
+
+-------------------------------------------------------------------
 Fri Aug 21 08:29:12 UTC 2026 - meissner@suse.com
 
 - Update to version 1.5.3:

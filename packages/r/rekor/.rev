@@ -557,4 +557,12 @@
   * build(deps): Bump google.com/cloudsdktool/google-cloud-cli (forwarded request 1372736 from msmeissn)</comment>
     <requestid>1372738</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>f2d8bdc729abaa0e57c277768d4fa346</srcmd5>
+    <version>1.5.4</version>
+    <time>1787939690</time>
+    <user>anag_factory</user>
+    <comment>update to 1.5.4 (forwarded request 1374264 from ojkastl_buildservice)</comment>
+    <requestid>1374351</requestid>
+  </revision>
 </revisionlist>
