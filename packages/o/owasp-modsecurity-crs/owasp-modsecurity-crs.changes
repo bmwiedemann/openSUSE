@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Fri Aug 28 08:40:48 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- version update to 4.29.0
+  * Requires libmodsecurity v3.0.16 or later (Nginx/libmodsecurity v3)
+    due to XML attribute injection fix in rule 901181 depending on
+    ModSecurity#3589.
+  * Fully opting out of XML attribute inspection requires ModSecurity
+    v2 >= v2.9.14 (pending fix in ModSecurity#3591).
+  * Fixes CVE-2026-33691 (Whitespace padding bypass in file upload
+    extension checks) across PHP double-extensions (#4547), PHP upload
+    detection (#4546), and JSP file upload detection (#4548).
+  * Backport hardening for 4RI-250413 (JSON-encoded key/variable-assignment
+    noise handling across LDAP, RCE, generic, and SQL).
+  * Backport ReDoS Hardening: Remove exponential backtracking in PHP
+    function-call comment/whitespace (933160/933161) and PHP variable-
+    function noise (933180) suffixes.
+  * Add backslash-prefix evasion to shell command detection (rule 932) (#4599).
+  * Detect basic quote evasion attempts against known Unix commands (#4649).
+  * Detect the 'stat' command at Paranoia Level 2+ (PL-2+) (#4735).
+  * Expand web shells (v1) to detect fresh signatures for known PHP backdoors
+    (#4626).
+  * Allow optional 'json.' prefix in rule 932171 ARGS_NAMES (#4703).
+  * Require operator/quote after '!' to cut down SQL FPs (rule 942190) (#4704).
+  * Tighten SQL comment detection comma branch to cut down User-Agent/Referer
+    FPs (rule 942200) (#4665).
+  * Remove bypassable length bound on quoted/unary SQL literals (#4713).
+  * Fix response body FPs with "(inclusive)" and "must be a valid" (#4697)
+    and with "'> in all'" (#4736).
+  * Remove 'w' from Unix no-arguments command list (#4592).
+  * Require arguments for base64, lastlog, lastlogin in Unix rules (#4593).
+  * Restore node_modules coverage (rule 930120) (#4681).
+  * Backport SQL comma without whitespace FP fix, exclude 'pg' command from
+    PL1 Unix detection, fix parameter name FPs containing '.history' (930120),
+    and drop HTTP/0.9 GET support from request line validation (920100).
+- version update to 4.28.0
+  * Inspect XML attribute values across attack-detection rules (GHSA-6jp8-c2w2-x7wr).
+  * Remove catastrophic backtracking in unix-shell-evasion prefix
+    (GHSA-f5qm-3h4p-8qhg).
+  * Enable 'crs_validate_utf8_encoding' by default (#4647).
+  * Added detection for quote evasion (#3813).
+  * Detect ORM lookup operator injection (rule 934) (#4659).
+  * Detect uninitialized variable spacer in RCE evasion prefix (rule 932) (#4652).
+  * Create 941170.ra file (#4493).
+  * Update restricted-files.data to include NPM subdirectories without FPs (#4653).
+  * Remove exponential backtracking in comment suffix (933160/933161) (#4666),
+    CSS url(javascript) detection (941140) (#4670), and variable-function noise
+    suffix (933180) (#4669).
+  * Move rule 942390 to regex-assembly (#4011).
+  * Add default actions for phases 3-5 in crs-setup (#4675).
+  * Avoid excessive backtracking in rule 942522 (#4676).
+  * Hardening against 4RI-250413 (#4672).
+  * Fix FPs related to RESPONSE_BODY (#4684).
+
+-------------------------------------------------------------------
 Mon Jun  1 14:11:54 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - version update to 4.27.0

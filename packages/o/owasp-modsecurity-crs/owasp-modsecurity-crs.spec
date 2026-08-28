@@ -18,7 +18,7 @@
 
 
 Name:           owasp-modsecurity-crs
-Version:        4.27.0
+Version:        4.29.0
 Release:        0
 Summary:        OWASP ModSecurity Common Rule Set (CRS)
 License:        Apache-2.0

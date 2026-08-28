@@ -117,4 +117,12 @@ Wed Sep 19 14:45:05 UTC 2012 - Thomas.Worm@DATEV.de
     <comment>version update to 4.27.0</comment>
     <requestid>1356387</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>43c7748692118e0ea9086d5ceb81e129</srcmd5>
+    <version>4.29.0</version>
+    <time>1787939598</time>
+    <user>anag_factory</user>
+    <comment>CVE-2026-33691, GHSA-6jp8-c2w2-x7wr, GHSA-f5qm-3h4p-8qhg</comment>
+    <requestid>1374308</requestid>
+  </revision>
 </revisionlist>
