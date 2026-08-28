@@ -3086,4 +3086,12 @@ No CVEs in the 0.12.5..0.12.6 commit range and no open openSUSE bugs
 against the package.</comment>
     <requestid>1373752</requestid>
   </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>68826a04304de8fea7021f90db781ac7</srcmd5>
+    <version>0.12.7</version>
+    <time>1787939486</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.12.7 (forwarded request 1374222 from pluskalm)</comment>
+    <requestid>1374235</requestid>
+  </revision>
 </revisionlist>

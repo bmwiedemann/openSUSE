@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Aug 28 06:54:03 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.12.7:
+  * Replace a managed Python installation when upgrading to a newer
+    build of the same version instead of leaving the old one behind
+  * Support the Linux s390x, ppc64le and loongarch64 targets in
+    cross-platform dependency resolution
+  * Retry a download with the configured credentials when Azure
+    Storage denies anonymous access to a UV_AZURE_ENDPOINT_URL
+    endpoint
+  * Reject a source archive whose hash does not match before its
+    extracted contents are persisted to the cache
+  * Deduplicate extracted wheels in the cache by content hash under
+    the new content-addressed-cache preview feature
+  * Remove the pyx-specific support (PyTorch backend, simple-API
+    extensions, .whl.tar.zst format, publication, authentication)
+  * Refresh the vendored crates; the linked licence set is unchanged
+  * Not affected by CVE-2026-25800 (boo#1273367): vendored
+    quinn-proto is 0.11.17, above the 0.11.15 fix, and is not in
+    the linked crate graph at all
+
+-------------------------------------------------------------------
 Wed Aug 26 07:12:21 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.12.6:
