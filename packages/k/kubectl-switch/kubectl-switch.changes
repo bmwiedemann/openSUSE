@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri Aug 28 08:28:06 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.4.32:
+  * Bug Fixes
+    - ed21a1a: fix(go): update kubernetes monorepo ( v0.36.4 →
+      v0.37.0 )
+- Update to version 2.4.31:
+  * Bug Fixes
+    - ab6b4d6: fix(go): update github.com/sirupsen/logrus ( v1.10.1
+      → v1.10.2 )
+- Update to version 2.4.30:
+  * Bug Fixes
+    - 774c9e6: fix(go): update charm.land/bubbles/v2 ( v2.2.0 →
+      v2.2.1 )
+  * Chores
+    - f97b0a3: chore(mise): switch goreleaser/goreleaser to github
+      backend, bump to 2.18.0 (#255)
+- Update to version 2.4.29:
+  * Bug Fixes
+    - 7ede69c: fix(go): update charm.land/bubbles/v2 ( v2.1.1 →
+      v2.2.0 )
+- Update to version 2.4.28:
+  * Bug Fixes
+    - 91969e2: fix(go): update kubernetes monorepo ( v0.36.3 →
+      v0.36.4 )
+  * Chores
+    - 534117a: chore(mise): update go ( 1.26.7 → 1.27.0 ) (#252)
+    - c9bec64: chore(mise): update golangci-lint ( 2.13.0 → 2.13.1
+      )
+- Update to version 2.4.27:
+  * Bug Fixes
+    - d83ce27: fix(go): update charm.land/bubbletea/v2 ( v2.0.8 →
+      v2.0.9 )
+    - 0e8797c: fix(go): update github.com/sirupsen/logrus ( v1.10.0
+      → v1.10.1 )
+  * Chores
+    - 83fb005: chore(mise): update go ( 1.26.6 → 1.26.7 )
+
+-------------------------------------------------------------------
 Fri Aug 14 05:24:41 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.4.26:
