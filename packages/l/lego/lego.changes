@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Aug 28 06:08:04 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 5.4.0:
+  * fix: invalid PEM default option with CSR (#3230)
+  * chore: update workflows (#3231)
+  * Add DNS provider for NexDNS (#3222)
+  * poweradmin: fix record ID type (#3219)
+
+-------------------------------------------------------------------
 Wed Jul 22 06:41:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 5.3.1:
