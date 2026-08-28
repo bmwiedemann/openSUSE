@@ -43,4 +43,16 @@
 - Update to 7.0.2</comment>
     <requestid>1346948</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>94e06ed1899999cec015bf8dcf045cb8</srcmd5>
+    <version>7.2.1</version>
+    <time>1787939301</time>
+    <user>anag_factory</user>
+    <comment>- Rebuilt for https://fedoraproject.org/wiki/Fedora_45_Mass_Rebuild
+
+- Generate suse package names
+
+- Update to 7.2.1</comment>
+    <requestid>1374151</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jul 16 00:00:00 UTC 2026 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_45_Mass_Rebuild
+
+-------------------------------------------------------------------
+Fri Apr 17 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Generate suse package names
+
+-------------------------------------------------------------------
+Tue Mar 24 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.2.1
+
+-------------------------------------------------------------------
 Sat Mar 21 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
 
 - Merge back rocm-smi7.2
