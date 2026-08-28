@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Aug 28 08:50:32 UTC 2026 - ecsos <ecsos@opensuse.org> - 9.14.0
+
+- Update to 9.14.0
+  * New Features
+    - Allow generating book covers using AI with different cover styles such as romance, sci-fi, pulp fiction etc.
+    - Edit book: File browser: When hovering the mouse over an image file
+      show a floating preview of the image next to the file browser
+    - Tags editor: have searching ignore accents
+    - AI: Add Anthropic and Grok backends for Claude and Grok models
+    - AI: Remove GitHub backend as service has been discontinued
+    - Edit metadata dialog: Always scale up cover preview to fill available space while maintaining aspect ratio
+  * Bug Fixes
+    - Content server: OPDS: Fix a regression that caused first line of comments to be missing
+    - Undo delete books: Show a progress bar when more than five books have to be undeleted
+    - Linux: Binary builds: Fix hyperlinks in labels not working on some Linux systems
+    - Get books: Fix a regression that broke show in store
+    - Fix cover images with empty EXIF records not showing on Kindle lockscreen
+    - Fix a regression in 9.11 that broke configuring the Folder device driver
+    - Google AI: Fix the checkbox to allow search grounding invisible in the config dialog
+    - Fix a regression in 9.11 that broke reading metadata from HTML files in
+      builds of calibre with Python runtime assertions enabled
+    - Edit book: Jump to class: Fix @charset rule causing jump to class to be off-by-one
+      because it uses tiny css which ignores chaset rules while cssutils does not
+    - FB2 Input: Only accept known FB2 namespaces to avoid arbitrary file write
+    - Content server: Fix various arbitrary file write bugs for authenticated users
+    - Content server: Fix remote code execution for authenticated users
+    - Content server: Fix cross site scripting in legacy book details page
+    - MOBI Output: Make palmdoc compression robust against crafted input
+
+-------------------------------------------------------------------
 Sun Aug  9 17:02:08 UTC 2026 - ecsos <ecsos@opensuse.org> - 9.13.0
 
 - Update to 9.13.0
