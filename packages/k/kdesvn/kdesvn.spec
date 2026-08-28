@@ -1,7 +1,7 @@
 #
 # spec file for package kdesvn
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,50 +16,49 @@
 #
 
 
+%define kf6_version 6.0
+%define qt6_version 6.5.0
+
 Name:           kdesvn
-Version:        2.1.0
+Version:        2.1.0git.20260824T015138~94bd2ad8
 Release:        0
 Summary:        KDE Subversion Client
 License:        GPL-2.0-or-later
 URL:            https://apps.kde.org/kdesvn
-Source:         https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM
-Patch0:         kdesvn-cmake4.patch
-BuildRequires:  extra-cmake-modules
+Source:         kdesvn-%{version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  subversion-devel
-BuildRequires:  cmake(KF5Bookmarks)
-BuildRequires:  cmake(KF5Codecs)
-BuildRequires:  cmake(KF5Completion)
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5ConfigWidgets)
-BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5DBusAddons)
-BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5IconThemes)
-BuildRequires:  cmake(KF5ItemViews)
-BuildRequires:  cmake(KF5JobWidgets)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5Notifications)
-BuildRequires:  cmake(KF5Parts)
-BuildRequires:  cmake(KF5Service)
-BuildRequires:  cmake(KF5TextWidgets)
-BuildRequires:  cmake(KF5Wallet)
-BuildRequires:  cmake(KF5WidgetsAddons)
-BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5DBus)
-BuildRequires:  cmake(Qt5Gui)
-BuildRequires:  cmake(Qt5Sql)
-BuildRequires:  cmake(Qt5Widgets)
-BuildRequires:  cmake(Qt5Xml)
+BuildRequires:  cmake(KF6Bookmarks) >= %{kf6_version}
+BuildRequires:  cmake(KF6Codecs) >= %{kf6_version}
+BuildRequires:  cmake(KF6Completion) >= %{kf6_version}
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6ConfigWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
+BuildRequires:  cmake(KF6ItemViews) >= %{kf6_version}
+BuildRequires:  cmake(KF6JobWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
+BuildRequires:  cmake(KF6Parts) >= %{kf6_version}
+BuildRequires:  cmake(KF6Service) >= %{kf6_version}
+BuildRequires:  cmake(KF6TextWidgets) >= %{kf6_version}
+BuildRequires:  cmake(KF6Wallet) >= %{kf6_version}
+BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
+BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Sql) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Xml) >= %{qt6_version}
 # needed for the database
-Requires:       libQt5Sql5-sqlite
-Provides:       kde4-kdesvn = %{version}
-Obsoletes:      kde4-kdesvn < %{version}
-Obsoletes:      libsvnqt7 < %{version}
+Requires:       qt6-sql-sqlite >= %{qt6_version}
 
 %description
 kdesvn is a GUI client for subversion repositories.
@@ -68,40 +67,36 @@ kdesvn is a GUI client for subversion repositories.
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build
-%cmake_build
+%cmake_kf6
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --all-name --with-man
+%find_lang %{name} --all-name --with-man --with-html
 
-%{kf5_find_htmldocs}
-
-%fdupes %{buildroot}%{_datadir}
+%fdupes %{buildroot}%{_kf6_sharedir}
 
 %files -f %{name}.lang
 %license COPYING COPYING.OpenSSL
 %doc AUTHORS ChangeLog
-%doc %lang(en) %{_kf5_htmldir}/en/kdesvn/
-%doc %lang(en) %{_kf5_mandir}/man1/kdesvn.1%{?ext_man}
-%doc %lang(en) %{_kf5_mandir}/man1/kdesvnaskpass.1%{?ext_man}
-%{_kf5_applicationsdir}/org.kde.kdesvn.desktop
-%{_kf5_appstreamdir}/org.kde.kdesvn.appdata.xml
-%{_kf5_bindir}/kdesvn
-%{_kf5_bindir}/kdesvnaskpass
-%{_kf5_configkcfgdir}/
-%{_kf5_dbusinterfacesdir}/kf5_org.kde.kdesvnd.xml
-%{_kf5_iconsdir}/hicolor/*/*/*
-%{_kf5_kxmlguidir}/kdesvn/
-%{_kf5_plugindir}/kdesvnpart.so
-%{_kf5_plugindir}/kf5/kded/kdesvnd.so
-%{_kf5_plugindir}/kio_ksvn.so
-%{_kf5_servicesdir}/*.desktop
-%{_kf5_servicesdir}/*.protocol
-%{_kf5_servicesdir}/ServiceMenus/
-%{_kf5_sharedir}/dbus-1/services/org.kde.kdesvnd.service
-%{_kf5_sharedir}/kconf_update/
-%{_kf5_sharedir}/kdesvn/
+%doc %lang(en) %{_kf6_htmldir}/en/kdesvn/
+%doc %lang(en) %{_kf6_mandir}/man1/kdesvn.1%{?ext_man}
+%doc %lang(en) %{_kf6_mandir}/man1/kdesvnaskpass.1%{?ext_man}
+%{_kf6_applicationsdir}/org.kde.kdesvn.desktop
+%{_kf6_appstreamdir}/org.kde.kdesvn.appdata.xml
+%{_kf6_bindir}/kdesvn
+%{_kf6_bindir}/kdesvnaskpass
+%{_kf6_configkcfgdir}/kdesvn_part.kcfg
+%{_kf6_dbusinterfacesdir}/kf6_org.kde.kdesvnd.xml
+%{_kf6_iconsdir}/hicolor/*/*/*
+%{_kf6_plugindir}/kf6/kded/kdesvnd.so
+%dir %{_kf6_plugindir}/kf6/kfileitemaction
+%{_kf6_plugindir}/kf6/kfileitemaction/ksvn_fileitemactions.so
+%{_kf6_plugindir}/kf6/kio/kio_ksvn.so
+%{_kf6_plugindir}/kf6/parts/kdesvnpart.so
+%{_kf6_sharedir}/dbus-1/services/org.kde.kdesvnd.service
+%{_kf6_sharedir}/kdesvn/
 
 %changelog

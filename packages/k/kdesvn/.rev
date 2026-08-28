@@ -495,4 +495,13 @@
     <comment>CMake 4 compat change</comment>
     <requestid>1254730</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>b16dd906a8b5bfed1e4cc539b6873c98</srcmd5>
+    <version>2.1.0git.20260824T015138~94bd2ad8</version>
+    <time>1787939664</time>
+    <user>anag_factory</user>
+    <comment>- Update to a git snapshot using Qt 6 and KDE Frameworks 6
+- Drop kdesvn-cmake4.patch</comment>
+    <requestid>1374326</requestid>
+  </revision>
 </revisionlist>

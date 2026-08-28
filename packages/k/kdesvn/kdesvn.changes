@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 28 09:06:33 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to a git snapshot using Qt 6 and KDE Frameworks 6
+- Drop kdesvn-cmake4.patch
+
+-------------------------------------------------------------------
 Thu Mar 20 13:04:01 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - - Add patch:
