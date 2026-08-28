@@ -19,7 +19,7 @@
 %define include_ada 0
 %_mingw32_package_header_debug
 Name:           mingw32-gcc
-Version:        13.2.0
+Version:        16.2.0
 Release:        0
 Summary:        MinGW Windows compiler (GCC) for C
 License:        GPL-3.0-or-later
@@ -293,19 +293,21 @@ perl -pi -e 's#include_next\ \<math\.h\>#include\ \<math\.h\>#g' \
 %{_mingw32_libdir}/gcc/%{_mingw32_target}/%{version}/crtbegin.o
 %{_mingw32_libdir}/gcc/%{_mingw32_target}/%{version}/crtend.o
 %{_mingw32_libdir}/gcc/%{_mingw32_target}/%{version}/crtfastmath.o
+%{_mingw32_libdir}/gcc/%{_mingw32_target}/%{version}/libatomic.a
+%{_mingw32_libdir}/gcc/%{_mingw32_target}/%{version}/libatomic.dll.a
+%{_mingw32_libdir}/gcc/%{_mingw32_target}/%{version}/libatomic_asneeded.a
+%{_mingw32_libdir}/gcc/%{_mingw32_target}/%{version}/libcaf_shmem.a
 %{_mingw32_libdir}/gcc/%{_mingw32_target}/%{version}/libcaf_single.a
 %{_mingw32_libdir}/gcc/%{_mingw32_target}/%{version}/libgcc.a
 %{_mingw32_libdir}/gcc/%{_mingw32_target}/%{version}/libgcc_eh.a
 %{_mingw32_libdir}/gcc/%{_mingw32_target}/%{version}/libgcc_s.a
 %{_mingw32_libdir}/gcc/%{_mingw32_target}/%{version}/libgcov.a
-%{_mingw32_libdir}/gcc/%{_mingw32_target}/%{version}/libssp.a
-%{_mingw32_libdir}/gcc/%{_mingw32_target}/%{version}/libssp.dll.a
-%{_mingw32_libdir}/gcc/%{_mingw32_target}/%{version}/libssp_nonshared.a
 %{_mingw32_libdir}/gcc/%{_mingw32_target}/%{version}/libgomp.a
 %{_mingw32_libdir}/gcc/%{_mingw32_target}/%{version}/libgomp.dll.a
 %{_mingw32_libdir}/gcc/%{_mingw32_target}/%{version}/libgomp.spec
-%{_mingw32_libdir}/gcc/%{_mingw32_target}/%{version}/libatomic.a
-%{_mingw32_libdir}/gcc/%{_mingw32_target}/%{version}/libatomic.dll.a
+%{_mingw32_libdir}/gcc/%{_mingw32_target}/%{version}/libssp.a
+%{_mingw32_libdir}/gcc/%{_mingw32_target}/%{version}/libssp.dll.a
+%{_mingw32_libdir}/gcc/%{_mingw32_target}/%{version}/libssp_nonshared.a
 %{_mingw32_infodir}/libgomp.info.gz
 %dir %{_mingw32_libdir}/gcc/%{_mingw32_target}/%{version}/include
 %dir %{_mingw32_libdir}/gcc/%{_mingw32_target}/%{version}/include-fixed
@@ -369,6 +371,7 @@ perl -pi -e 's#include_next\ \<math\.h\>#include\ \<math\.h\>#g' \
 %{_mingw32_libdir}/gcc/%{_mingw32_target}/%{version}/include/c++/
 %{_mingw32_libdir}/gcc/%{_mingw32_target}/%{version}/libstdc++.a
 %{_mingw32_libdir}/gcc/%{_mingw32_target}/%{version}/libstdc++.dll.a
+%{_mingw32_libdir}/gcc/%{_mingw32_target}/%{version}/libstdc++.modules.json
 %{_mingw32_libdir}/gcc/%{_mingw32_target}/%{version}/libstdc++exp.a
 %{_mingw32_libdir}/gcc/%{_mingw32_target}/%{version}/libstdc++fs.a
 %{_mingw32_libdir}/gcc/%{_mingw32_target}/%{version}/libsupc++.a

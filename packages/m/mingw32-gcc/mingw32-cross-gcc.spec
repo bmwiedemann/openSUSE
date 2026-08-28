@@ -24,7 +24,7 @@
 
 %define include_ada 0
 Name:           mingw32-cross-gcc
-Version:        13.2.0
+Version:        16.2.0
 Release:        0
 Summary:        MinGW Windows cross-compiler (GCC) for C
 License:        GPL-3.0-or-later
@@ -33,7 +33,6 @@ URL:            http://www.mingw.org/
 Source0:        ftp://ftp.gnu.org/gnu/gcc/gcc-%{version}/gcc-%{version}.tar.xz
 Source100:      mingw32-gcc-rpmlintrc
 Patch0:         gcc-make-xmmintrin-header-cplusplus-compatible.patch
-Patch1:         gcc-13.2.0-build-with-fpie.patch
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel >= 4.2.0
 BuildRequires:  makeinfo
@@ -142,6 +141,7 @@ CPPFLAGS_FOR_TARGET="-DGC_NOT_DLL %{_mingw32_cflags}" \
   --disable-multilib \
   --enable-default-pie=no \
   --enable-shared \
+  --enable-host-pie=yes \
   --enable-default-pie=no \
   --disable-plugin \
   --with-system-zlib \
@@ -221,6 +221,9 @@ perl -pi -e 's#include_next\ \<math\.h\>#include\ \<math\.h\>#g' \
 %{_libdir}/gcc/%{_mingw32_target}/%{version}/libssp.la
 %{_libdir}/gcc/%{_mingw32_target}/%{version}/libssp_nonshared.a
 %{_libdir}/gcc/%{_mingw32_target}/%{version}/libssp_nonshared.la
+%{_libdir}/gcc/%{_mingw32_target}/%{version}/libatomic_asneeded.a
+%{_libdir}/gcc/%{_mingw32_target}/%{version}/libcaf_shmem.a
+%{_libdir}/gcc/%{_mingw32_target}/%{version}/libcaf_shmem.la
 %{_libdir}/gcc/%{_mingw32_target}/%{version}/libcaf_single.a
 %{_libdir}/gcc/%{_mingw32_target}/%{version}/libcaf_single.la
 %{_libdir}/gcc/%{_mingw32_target}/%{version}/libgomp.a
@@ -265,6 +268,7 @@ perl -pi -e 's#include_next\ \<math\.h\>#include\ \<math\.h\>#g' \
 %{_libdir}/gcc/%{_mingw32_target}/%{version}/libstdc++.a
 %{_libdir}/gcc/%{_mingw32_target}/%{version}/libstdc++.dll.a
 %{_libdir}/gcc/%{_mingw32_target}/%{version}/libstdc++.la
+%{_libdir}/gcc/%{_mingw32_target}/%{version}/libstdc++.modules.json
 %{_libdir}/gcc/%{_mingw32_target}/%{version}/libstdc++exp.a
 %{_libdir}/gcc/%{_mingw32_target}/%{version}/libstdc++exp.la
 %{_libdir}/gcc/%{_mingw32_target}/%{version}/libstdc++fs.a
