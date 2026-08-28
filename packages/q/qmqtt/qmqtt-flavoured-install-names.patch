@@ -15,11 +15,11 @@ it.
 openSUSE passes -DQMQTT_PACKAGE_NAME=qmqtt-qt5 / -DQMQTT_PACKAGE_NAME=qmqtt-qt6
 for its two flavours.
 
---- qmqtt-1.0.7.orig/CMakeLists.txt
-+++ qmqtt-1.0.7/CMakeLists.txt
+--- qmqtt-1.0.8.orig/CMakeLists.txt
++++ qmqtt-1.0.8/CMakeLists.txt
 @@ -2,6 +2,12 @@
  
- project( qmqtt VERSION 1.0.7 )
+ project( qmqtt VERSION 1.0.8 )
  
 +# Name under which the library and its CMake package get installed.  Defaults
 +# to the project name; a distribution that ships a Qt5 and a Qt6 build of QMQTT

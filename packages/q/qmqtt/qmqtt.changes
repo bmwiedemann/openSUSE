@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Aug 27 18:09:20 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.0.8:
+  * Picks up the three fixes this package was carrying as patches:
+    the unit tests are built with the library's SSL configuration,
+    the CMake test tree configures and compiles against either Qt
+    major, and the CMake export is installed once instead of twice
+  * No change to the library sources themselves, so the ABI and the
+    SONAMEs are untouched (libqmqtt-qt5.so.1, libqmqtt-qt6.so.1)
+- Drop qmqtt-tests-follow-ssl-option.patch, merged upstream as
+  gh#emqx/qmqtt#269
+- Drop qmqtt-tests-any-qt-major.patch, merged upstream as
+  gh#emqx/qmqtt#270
+- Drop qmqtt-drop-duplicate-cmake-export.patch, merged upstream as
+  gh#emqx/qmqtt#271
+- Rebase qmqtt-flavoured-install-names.patch; it stays downstream,
+  since it exists only to serve this package's flavour split
+
+-------------------------------------------------------------------
 Wed Aug 26 17:54:28 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Initial package, version 1.0.7:

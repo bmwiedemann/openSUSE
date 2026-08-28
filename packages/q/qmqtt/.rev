@@ -97,4 +97,32 @@ library policy check, rpmlint clean apart from the invalid-spec-name every
 multibuild source package emits.</comment>
     <requestid>1373867</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ee6ea4d64cf9c548cb51e0b5eebc2e20</srcmd5>
+    <version>1.0.8</version>
+    <time>1787939246</time>
+    <user>anag_factory</user>
+    <comment>Update qmqtt to 1.0.8.
+
+Upstream 1.0.8 is a build/test-only release: it merges the three fixes this
+package was carrying as patches (gh#emqx/qmqtt#269 tests built with the
+library's SSL configuration, #270 the CMake test tree building against either
+Qt major, #271 the CMake export installed once instead of twice). All three
+patches are therefore dropped; the library sources themselves are unchanged,
+so the ABI and the SONAMEs (libqmqtt-qt5.so.1, libqmqtt-qt6.so.1) stay put and
+no rebuild of the one consumer (jaero) is needed.
+
+The remaining downstream patch, qmqtt-flavoured-install-names.patch, is
+rebased onto 1.0.8 (context only).
+
+The spec also picks up a spec-cleaner-driven relocation of the
+ExclusiveArch guard into the tag block; it produces identical RPMs, hence no
+changelog bullet.
+
+Built locally on aarch64 against openSUSE_Tumbleweed, both _multibuild
+flavours green, 107 Google Test cases passing each. rpmlint unchanged from
+the 1.0.7 baseline (1 error, 1 badness: invalid-spec-name, inherent to the
+flavour split). source_validator clean.</comment>
+    <requestid>1374110</requestid>
+  </revision>
 </revisionlist>

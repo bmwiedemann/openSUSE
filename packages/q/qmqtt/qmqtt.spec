@@ -18,11 +18,7 @@
 
 # Upstream sets SOVERSION to the project major version in CMakeLists.txt.
 %define sover 1
-
 %global qmqtt_flavor @BUILD_FLAVOR@%{nil}
-%if "%{qmqtt_flavor}" == ""
-ExclusiveArch:  do_not_build
-%endif
 %if "%{qmqtt_flavor}" == "qt6"
 %define qt6 1
 %define qt_major 6
@@ -38,15 +34,13 @@ ExclusiveArch:  do_not_build
 # this once WebSockets are enabled.
 %define qt_min 5.7.0
 %endif
-
 %define pname qmqtt
 %if 0%{?qt_major}
 %define libname lib%{pname}-qt%{qt_major}-%{sover}
 %define psuffix -qt%{qt_major}
 %endif
-
 Name:           %{pname}%{?psuffix}
-Version:        1.0.7
+Version:        1.0.8
 Release:        0
 Summary:        MQTT client library for %{qt_descr}
 # Legal-Review-Notice: upstream's LICENSE file offers this library under "the
@@ -68,26 +62,13 @@ Summary:        MQTT client library for %{qt_descr}
 License:        EPL-1.0 OR BSD-3-Clause
 URL:            https://github.com/emqx/qmqtt
 Source:         https://github.com/emqx/qmqtt/archive/v%{version}.tar.gz#/%{pname}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM qmqtt-tests-follow-ssl-option.patch gh#emqx/qmqtt#269 --
-# compile the unit tests with the same SSL configuration as the library,
-# otherwise the mocks and the library disagree about the vtable layout of
-# NetworkInterface and the suite segfaults
-Patch0:         qmqtt-tests-follow-ssl-option.patch
-# PATCH-FIX-UPSTREAM qmqtt-drop-duplicate-cmake-export.patch gh#emqx/qmqtt#271
-# -- upstream installs the same CMake export twice, the second time under a
-# name nothing includes
-Patch1:         qmqtt-drop-duplicate-cmake-export.patch
 # PATCH-FIX-OPENSUSE qmqtt-flavoured-install-names.patch -- add a
 # QMQTT_PACKAGE_NAME knob so the installed library and its CMake package can be
 # renamed, which is what stops the qt5 and qt6 flavours claiming the same files
 # and, worse, the same SONAME for two incompatible ABIs. Deliberately NOT sent
 # upstream: it exists to serve this package's flavour split, so it stays
 # downstream unless upstream asks for the knob.
-Patch2:         qmqtt-flavoured-install-names.patch
-# PATCH-FIX-UPSTREAM qmqtt-tests-any-qt-major.patch gh#emqx/qmqtt#270 -- the
-# CMake test tree hardcodes Qt5, so it neither configures nor compiles against
-# Qt6
-Patch3:         qmqtt-tests-any-qt-major.patch
+Patch0:         qmqtt-flavoured-install-names.patch
 BuildRequires:  cmake >= 3.9
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -95,6 +76,9 @@ BuildRequires:  pkgconfig(%{qt_descr}Core) >= %{qt_min}
 BuildRequires:  pkgconfig(%{qt_descr}Network) >= %{qt_min}
 BuildRequires:  pkgconfig(%{qt_descr}Test) >= %{qt_min}
 BuildRequires:  pkgconfig(%{qt_descr}WebSockets) >= %{qt_min}
+%if "%{qmqtt_flavor}" == ""
+ExclusiveArch:  do_not_build
+%endif
 
 %description
 QMQTT is an MQTT client library for the Qt framework, speaking the MQTT 3.1
