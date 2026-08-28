@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Aug 23 18:14:50 UTC 2026 - Axel Braun <axel.braun@gmx.de>
+
+- version 10.3
+  * Wait until Orthanc has finalized its startup before executing the 
+    DB HOUSEKEEPING task to avoid 
+    "Plugin trying to call the database during its initialization" errors.
+
+-------------------------------------------------------------------
 Wed Jul 29 09:24:29 UTC 2026 - Axel Braun <axel.braun@gmx.de>
 
 - version 10.2
