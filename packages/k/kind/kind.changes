@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Aug 28 07:54:52 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.33.0:
+  This release contains critical dependency updates, bug fixes, and
+  defaults to Kubernetes 1.36.1.
+  * Breaking Changes
+    - The default node image is now
+      kindest/node:v1.37.0@sha256:a1ed56cfb0e7b93589bdf97c8cd566405a265939e3620fc4f5de89adff580ae5.
+  * New Features
+    - Assorted dependency updates.
+  * Images pre-built for this release:
+    - v1.37.0:
+      kindest/node:v1.37.0@sha256:a1ed56cfb0e7b93589bdf97c8cd566405a265939e3620fc4f5de89adff580ae5
+    - v1.36.4:
+      kindest/node:v1.36.4@sha256:099e049362a1526b2db71494e1947aae99bd16290d7c895f2b7ea312e3cbfaed
+    - v1.35.8:
+      kindest/node:v1.35.8@sha256:07b2536e30b803ed61d1677a79df6115f798ce64c80f9e22f6ed45afd09323c0
+    - v1.34.11:
+      kindest/node:v1.34.11@sha256:44e222ee2132dab25ff87301682f89eb82c7880ea3a1bf543bfe9708fd08d67d
+    NOTE: You must use the @sha256 digest to guarantee an image
+    built for this release, until such a time as we switch to a
+    different tagging scheme. Even then we will highly encourage
+    digest pinning for security and reproducibility reasons.
+  * Fixes
+    - Respect Docker client proxy config for docker nodes. (#4192)
+    - Preserve external load balancer CDS/LDS configuration across
+      container restarts. (#4195)
+    - Improve local-path-provisioner helperPod tolerations. (#4210)
+    - Assorted documentation fixes and improvements.
+
+-------------------------------------------------------------------
 Wed Jun 03 04:52:26 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.32.0:

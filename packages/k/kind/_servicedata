@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/kubernetes-sigs/kind/</param>
-              <param name="changesrevision">cda67ef8588f6bfdac5358233f2471cb2149ecaf</param></service></servicedata>
+              <param name="changesrevision">cda67ef8588f6bfdac5358233f2471cb2149ecaf</param></service><service name="tar_scm">
+                <param name="url">https://github.com/kubernetes-sigs/kind.git</param>
+              <param name="changesrevision">407a9675e6d9af1200b5f57f9ca52ec6cdacce74</param></service></servicedata>
