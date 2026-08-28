@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Aug 28 08:14:09 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.19.0:
+  Large update, please see the release notes for details
+  https://github.com/kyverno/kyverno/releases/tag/v1.19.0
+  * Security
+    - fix(deps): bump golang.org/x/crypto to v0.53.0 and x/net to
+      v0.56.0 to resolve security CVEs in #16340
+    - chore(deps): bump golang.org/x/net from 0.48.0 to 0.55.0 in
+      /hack/controller-gen in #16420
+    - fix(deps): patch ORAS and sigstore CodeQL vulnerabilities in
+      #16426
+    - chore(deps): bump golang.org/x/crypto from 0.53.0 to 0.54.0
+      in #16576
+    - chore(deps): bump google.golang.org/grpc from 1.82.0 to
+      1.82.1 in #16669
+
+-------------------------------------------------------------------
 Fri Jul 10 05:40:36 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.18.2:

@@ -17,7 +17,7 @@
 
 
 Name:           kyverno
-Version:        1.18.2
+Version:        1.19.0
 Release:        0
 Summary:        CLI and kubectl plugin for Kyverno
 License:        Apache-2.0
@@ -83,6 +83,7 @@ sed -i "/vcs.revision/,+5 {s/---/${COMMIT_HASH:0:8}/}" ./pkg/version/version.go
 go build \
    -mod=vendor \
    -buildmode=pie \
+   -trimpath \
    -ldflags="-X github.com/kyverno/kyverno/pkg/version.BuildVersion=%{version}" \
    -o bin/kyverno ./cmd/cli/kubectl-kyverno
 
