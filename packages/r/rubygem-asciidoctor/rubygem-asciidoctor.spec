@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-asciidoctor
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,13 +31,11 @@ Release:        0
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
-BuildRequires:  update-alternatives
 URL:            https://asciidoctor.org
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        An implementation of the AsciiDoc text processor and publishing
 License:        MIT
-PreReq:         update-alternatives
 
 %description
 A fast, open source text processor and publishing toolchain for converting
