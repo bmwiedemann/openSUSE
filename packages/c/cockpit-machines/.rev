@@ -442,4 +442,13 @@ outside of Factory
 - Update to 348 (fixes bsc#1257836/CVE-2026-25547, bsc#1258641/CVE-2026-26996, bsc#1259013/CVE-2026-27904)</comment>
     <requestid>1367650</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>916e06a33a89060a0d21d283142211d5</srcmd5>
+    <version>355</version>
+    <time>1787939669</time>
+    <user>anag_factory</user>
+    <comment>- Update to 355
+  * Translations and dependency updates</comment>
+    <requestid>1374320</requestid>
+  </revision>
 </revisionlist>
