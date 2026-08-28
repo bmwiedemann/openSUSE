@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Fri Aug 28 06:41:45 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.230.0:
+  * Features
+    - Add control plane component config support (#8821)
+    - Add support for BottlerocketFips AMI family in managed
+      nodegroups (#8778)
+  * Improvements
+    - Make vpc-cni and kube-proxy optional when creating IPv6
+      clusters (#8790)
+  * Bug Fixes
+    - Grant ec2:DescribeSubnets to the IPv6 VPC CNI role (#8835)
+    - Bump oras-go to 2.6.2 to resolve five open advisories (#8829)
+  * Maintenance
+    - Update aws-node to v1.23.0 (#8832)
+    - Update coredns (#8833)
+    - Update ec2-info (#8723)
+    - Update coredns (#8724)
+    - Update aws-node to v1.22.4 (#8747)
+    - Update nvidia-device-plugin to v0.19.3 (#8722)
+    - Bump the go-minor-patch group across 1 directory with 5
+      updates (#8828)
+    - Bump peter-evans/create-pull-request from 7.0.8 to 8.1.1
+      (#8730)
+    - Bump github.com/onsi/ginkgo/v2 from 2.29.0 to 2.32.0 (#8813)
+    - Bump release-drafter/release-drafter from 7.3.1 to 7.7.0
+      (#8814)
+    - Bump the kubernetes group across 1 directory with 3 updates
+      (#8823)
+    - Bump the aws-sdk group with 11 updates (#8822)
+    - Bump
+      github.com/aws/aws-sdk-go-v2/service/elasticloadbalancing
+      from 1.33.25 to 1.36.4 (#8806)
+    - Bump github.com/aws/aws-sdk-go-v2/service/cloudformation from
+      1.72.1 to 1.76.1 (#8809)
+    - Bump github.com/hashicorp/go-version from 1.7.0 to 1.9.0
+      (#8810)
+    - Bump github.com/dave/dst from 0.27.3 to 0.27.4 (#8811)
+    - Bump goreleaser/goreleaser-action from 6.4.0 to 7.2.3 (#8802)
+    - Bump the go_modules group across 1 directory with 6 updates
+      (#8777)
+    - Bump golang.org/x/text from 0.38.0 to 0.40.0 (#8805)
+    - Bump github.com/aws/aws-sdk-go-v2/credentials from 1.19.15 to
+      1.19.34 (#8804)
+    - Bump aws-actions/amazon-ecr-login from 2.1.1 to 2.1.5 (#8754)
+    - Bump release-drafter/release-drafter from 7.1.1 to 7.3.1
+      (#8753)
+    - Bump github.com/aws/amazon-ec2-instance-selector/v3 from
+      3.1.2 to 3.1.3 (#8733)
+    - Bump
+      github.com/aws/aws-sdk-go-v2/service/elasticloadbalancingv2
+      from 1.54.12 to 1.58.5 (#8765)
+    - Bump github.com/aws/aws-sdk-go-v2/service/cloudformation from
+      1.71.11 to 1.72.1 (#8764)
+    - Bump github.com/aws/aws-sdk-go-v2/service/iam from 1.53.10 to
+      1.58.1 (#8760)
+    - Bump github.com/aws/aws-sdk-go-v2/service/kms from 1.51.0 to
+      1.53.4 (#8759)
+    - Bump github.com/vektra/mockery/v2 from 2.53.5 to 2.53.6
+      (#8761)
+    - Bump github.com/onsi/gomega from 1.40.0 to 1.42.1 (#8767)
+    - Bump github.com/onsi/ginkgo/v2 from 2.28.3 to 2.29.0 (#8766)
+
+-------------------------------------------------------------------
 Thu Jul 02 05:31:41 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.229.0:
