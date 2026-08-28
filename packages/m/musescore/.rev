@@ -673,4 +673,15 @@
     <comment></comment>
     <requestid>1370489</requestid>
   </revision>
+  <revision rev="57" vrev="2">
+    <srcmd5>53866bca48b0c895e6662b8c02f2c9f3</srcmd5>
+    <version>4.7.4</version>
+    <time>1787939272</time>
+    <user>anag_factory</user>
+    <comment>- Revert new dependcies for now to make it build
+
+- add musescore-styleddropdownnavigation.patch (from Fedora, fixes qml issues)
+- enable building mnx import/export plugin (new deps: mnxdom and json-schema-validator)</comment>
+    <requestid>1374143</requestid>
+  </revision>
 </revisionlist>

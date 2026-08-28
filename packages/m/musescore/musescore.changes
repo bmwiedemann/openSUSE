@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Aug 27 20:00:19 UTC 2026 - Cor Blom <cornelis@solcon.nl>
+
+- Revert new dependcies for now to make it build
+
+-------------------------------------------------------------------
+Thu Aug 27 17:36:41 UTC 2026 - Edgar Aichinger <edogawa@aon.at>
+
+- add musescore-styleddropdownnavigation.patch (from Fedora, fixes qml issues)
+- enable building mnx import/export plugin (new deps: mnxdom and json-schema-validator)
+
+-------------------------------------------------------------------
 Sun Aug  9 02:41:26 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 4.7.4:

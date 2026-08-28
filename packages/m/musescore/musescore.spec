@@ -64,6 +64,7 @@ Source4:        https://ftp.osuosl.org/pub/musescore/soundfont/MuseScore_General
 Source5:        README.SUSE
 # Patch for CVE-2025-56225
 Patch0:         musescore-CVE-2025-56225.patch
+Patch1:         musescore-styleddropdownnavigation.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 %if 0%{?suse_version} < 1560 && 0%{?sle_version} <= 150600
@@ -106,6 +107,7 @@ BuildRequires:  cmake(Qt6Test)
 BuildRequires:  cmake(Qt6WebSockets)
 BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  cmake(Qt6Xml)
+#BuildRequires:  cmake(nlohmann_json_schema_validator)
 BuildRequires:  cmake(tinyxml2)
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(flac)
@@ -119,6 +121,7 @@ BuildRequires:  pkgconfig(libpipewire-0.3)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libpulse-mainloop-glib)
 BuildRequires:  pkgconfig(libpulse-simple)
+#BuildRequires:  pkgconfig(mnxdom)
 BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(opus)
 BuildRequires:  pkgconfig(portaudio-2.0)

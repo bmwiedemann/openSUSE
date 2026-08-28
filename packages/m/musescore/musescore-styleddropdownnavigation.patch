@@ -1,0 +1,16 @@
+--- MuseScore-4.7.4/src/framework/uicomponents/qml/Muse/UiComponents/StyledDropdown.qml.orig	2026-07-06 01:52:32.000000000 -0600
++++ MuseScore-4.7.4/src/framework/uicomponents/qml/Muse/UiComponents/StyledDropdown.qml	2026-07-20 11:15:50.635166138 -0600
+@@ -50,10 +50,10 @@ Item {
+
+     property int popupItemsCount: 18
+
+-    property alias dropIcon: mainItem.dropIcon
+-    property alias label: mainItem.label
++    property alias dropIcon: dropIconItem
++    property alias label: labelItem
+
+-    property alias navigation: mainItem.navigation
++    property alias navigation: navCtrl
+
+     property alias isOpened: dropdownLoader.isOpened
+     property alias dropdown: dropdownLoader.dropdown
