@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jul 26 21:07:35 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Add mark-clc-flush-denormal-if-not-supported-as-static.patch to
+  work around missing definition errors.
+- Tell CMake where to find the compiler if versioned Clang/LLVM is
+  used. (However, that compiler isn't actually used for the build.)
+- Add cmake-use-imported-targets.patch to make the build use the
+  imported targets. This ensures we're picking up the right tools
+  when versioned Clang/LLVM is used.
+- Rewrite fix-subnormal-build.patch with upstream git root as base.
+- Fix list of targets for SLE/Leap 15.x.
+
+-------------------------------------------------------------------
 Thu Apr 23 03:14:06 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - build against llvm22/clang22 on older products than TW in order

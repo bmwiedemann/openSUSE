@@ -20,6 +20,10 @@
 %define _version %_libclc_llvm_ver%{?_rc:rc%_rc}
 %define _tagver %_libclc_llvm_ver%{?_rc:-rc%_rc}
 
+%if 0%{?suse_version} < 1699
+%global _clang_version 22
+%endif
+
 Name:           libclc
 Version:        0.2.0+llvm%{_libclc_llvm_ver}%{?_rc:~rc%_rc}
 Release:        0
@@ -33,14 +37,11 @@ Source0:        %{name}-%{_version}.src.tar.xz
 Source100:      %{name}-rpmlintrc
 Source101:      https://releases.llvm.org/release-keys.asc#/%{name}.keyring
 Patch1:         fix-subnormal-build.patch
+Patch2:         mark-clc-flush-denormal-if-not-supported-as-static.patch
+Patch3:         cmake-use-imported-targets.patch
+BuildRequires:  clang%{?_clang_version}-devel
 BuildRequires:  cmake
-%if 0%{?suse_version} >= 1699
-BuildRequires:  clang-devel
-BuildRequires:  llvm-devel
-%else
-BuildRequires:  clang22-devel
-BuildRequires:  llvm22-devel
-%endif
+BuildRequires:  llvm%{?_clang_version}-devel
 BuildRequires:  python3-base
 BuildRequires:  pkgconfig(LLVMSPIRVLib)
 Provides:       libclc(llvm%{_llvm_sonum})
@@ -51,17 +52,17 @@ Library requirements of the OpenCL C programming language.
 
 %prep
 %setup -q -n libclc-%{_version}.src
-%autopatch
+%autopatch -p2
 
 %build
 # The libraries are bitcode files, so LTO is neither supported nor does it help.
 %define _lto_cflags %{nil}
 
 %cmake \
-  -DCMAKE_C_COMPILER=clang \
-  -DCMAKE_CXX_COMPILER=clang++ \
+  -DCMAKE_C_COMPILER=clang%{?_clang_version:-%{_clang_version}} \
+  -DCMAKE_CXX_COMPILER=clang++%{?_clang_version:-%{_clang_version}} \
 %if 0%{?suse_version} < 1550
-  -DLIBCLC_TARGETS_TO_BUILD="amdgcn--;amdgcn--amdhsa;amdgcn-mesa-mesa3d;r600--;nvptx--;nvptx64--;nvptx--nvidiacl;nvptx64--nvidiacl" \
+  -DLIBCLC_TARGETS_TO_BUILD="amdgcn--;amdgcn-amd-amdhsa;amdgcn-mesa-mesa3d;r600--;nvptx64--;nvptx64--nvidiacl;nvptx64-nvidia-cuda" \
 %endif
   -DENABLE_RUNTIME_SUBNORMAL:BOOL=ON
 %cmake_build

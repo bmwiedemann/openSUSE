@@ -5,10 +5,10 @@ Fixes build error:
         [...]/opencl/lib/generic/subnormal_use_default.ll
     error: Permission denied
 
-diff --git a/CMakeLists.txt b/CMakeLists.txt
+diff --git a/libclc/CMakeLists.txt b/libclc/CMakeLists.txt
 index d060b71..c17b350 100644
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
+--- a/libclc/CMakeLists.txt
++++ b/libclc/CMakeLists.txt
 @@ -239,6 +239,7 @@ configure_file( libclc.pc.in libclc.pc @ONLY )
  install( FILES ${CMAKE_CURRENT_BINARY_DIR}/libclc.pc DESTINATION "${CMAKE_INSTALL_DATADIR}/pkgconfig" )
  
