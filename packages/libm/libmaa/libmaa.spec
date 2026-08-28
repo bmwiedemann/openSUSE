@@ -1,7 +1,7 @@
 #
 # spec file for package libmaa
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ License:        MIT
 URL:            https://github.com/cheusov/libmaa
 Source0:        https://downloads.sourceforge.net/dict/%{name}-%{version}.tar.gz
 BuildRequires:  mk-configure
+# Yes, we actually don’t need it, but configure searches for it
+BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig(zlib)
 
 %description
