@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Aug 28 06:47:47 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.16.1:
+  * Update vulnerable Go modules (#5599)
+  * Update go toolchain directive to v1.26.6 [SECURITY] (#5564)
+  * Update dependency rancher/cli to v2.15.0 (#5574)
+  * Update go toolchain directive to v1.26.5 [SECURITY] (#5544)
+  * [v0.16] - Split pkg/helmvalues into its own Go module (#5396)
+    (#5539)
+  * Update module github.com/go-git/go-git/v5 to v5.19.2 [SECURITY]
+    (#5531)
+  * Update dependency rancherlabs/slsactl to v0.1.36 (#5523)
+  * Update module github.com/klauspost/compress to v1.18.7
+    [SECURITY] (#5486)
+
+-------------------------------------------------------------------
 Thu Jul 23 05:59:38 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.16.0:
