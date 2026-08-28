@@ -7,4 +7,12 @@
     <comment>- Initial release of 1.0.0.</comment>
     <requestid>1373494</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e4373b7aa17dd9614a485f491fffd5e3</srcmd5>
+    <version>1.0.0</version>
+    <time>1787939305</time>
+    <user>anag_factory</user>
+    <comment>- Switch to the GitHub tarball so we can run tests.</comment>
+    <requestid>1374156</requestid>
+  </revision>
 </revisionlist>

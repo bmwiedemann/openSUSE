@@ -16,13 +16,15 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-unipatch
 Version:        1.0.0
 Release:        0
 Summary:        Apply unified diffs in memory, compatible with GNU patch
 License:        MIT
 URL:            https://github.com/adamchainz/unipatch
-Source:         https://files.pythonhosted.org/packages/source/u/unipatch/unipatch-%{version}.tar.gz
+Source:         https://github.com/adamchainz/unipatch/archive/refs/tags/%{version}.tar.gz#/unipatch-%{version}.tar.gz
+BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module uv-build}
@@ -60,9 +62,8 @@ Hence the name is ``unipatch``.
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-# https://github.com/adamchainz/patchy/issues/622
-#%%check
-#%%pytest
+%check
+%pytest
 
 %files %{python_files}
 %doc README.rst
