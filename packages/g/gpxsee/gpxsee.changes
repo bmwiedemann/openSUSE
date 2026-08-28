@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Aug 28 08:46:23 CEST 2026 - tumic@gpxsee.org
+
+- Update to version 16.14
+  * Fixed missing patterns in Mapsforge map style (broken in 16.13)
+  * Fixed crashes in ENC maps/atlases.
+  * Fixed minor Mapsforge style rendering issues.
+  * Improved Windows installer.
+  * Minor IMG maps performance improvements.
+
+-------------------------------------------------------------------
 Wed Aug 19 23:59:56 CEST 2026 - tumic@gpxsee.org
 
 - Update to version 16.13

@@ -1,3 +1,13 @@
+gpxsee (16.14) stable; urgency=medium
+
+  * Fixed missing patterns in Mapsforge map style (broken in 16.13)
+  * Fixed crashes in ENC maps/atlases.
+  * Fixed minor Mapsforge style rendering issues.
+  * Improved Windows installer.
+  * Minor IMG maps performance improvements.
+
+ -- Martin Tůma <tumic@gpxsee.org>  Fri, 28 Aug 2026 08:50:19 +0200
+
 gpxsee (16.13) stable; urgency=low
 
   * Added warning about broken GPXSee flatpaks from flathub.org.
