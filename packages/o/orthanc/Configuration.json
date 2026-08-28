@@ -1,6 +1,11 @@
 {
   /**
    * General configuration of Orthanc
+   *
+   * As a general recommendation, you should always favor absolute
+   * paths when you need to provide a path to a file or a directory.  
+   * This is not done in this configuration file since we don't know 
+   * where Orthanc is going to be installed.
    **/
 
   // The logical name of this instance of Orthanc. This one is
@@ -13,21 +18,9 @@
   "StorageDirectory" : "/var/lib/orthanc/OrthancStorage",
 
   // Path to the directory that holds the SQLite index (if unset, the
-  // value of StorageDirectory is used). This index could be stored on
+  // value of "StorageDirectory" is used). This index could be stored on
   // a RAM-drive or a SSD device for performance reasons.
-  "IndexDirectory" : "/var/lib/orthanc/OrthancStorage",
-
-  // Path to the directory where Orthanc stores its large temporary
-  // files. The content of this folder can be safely deleted if
-  // Orthanc once stopped. The folder must exist. The corresponding
-  // filesystem must be properly sized, given that for instance a ZIP
-  // archive of DICOM images created by a job can weight several GBs,
-  // and that there might be up to "min(JobsHistorySize,
-  // MediaArchiveSize)" archives to be stored simultaneously. If not
-  // set, Orthanc will use the default temporary folder of the
-  // operating system (such as "/tmp/" on UNIX-like systems, or
-  // "C:/Temp" on Microsoft Windows).
-  // "TemporaryDirectory" : "/tmp/Orthanc/",
+  // "IndexDirectory" : "OrthancStorage",
 
   // Enable the transparent compression of the DICOM instances
   "StorageCompression" : false,
@@ -40,7 +33,41 @@
   // in the storage (a value of "0" indicates no limit on the number
   // of patients)
   "MaximumPatientCount" : 0,
-  
+
+  // Action to take when the maximum storage is reached.
+  // By default, the patients are recycled ("Recycle" mode).
+  // In "Reject" mode, the sender will receive a 0xA700 DIMSE status code
+  // if the instance was sent through C-STORE, a 507 HTTP status code
+  // if using the REST API and a 0xA700 Failure reason when using
+  // DICOMweb STOW-RS.
+  // Note: this value is taken into account only if you have set 
+  // a MaximumStorageSize != 0 or a MaximumPatientCount != 0
+  // Allowed values: "Recycle", "Reject"
+  // (new in Orthanc 1.11.2)
+  "MaximumStorageMode" : "Recycle",
+
+  // Maximum size of the storage cache in MB. The storage cache is
+  // stored in RAM and contains a copy of recently accessed files
+  // (written or read). A value of "0" disables this cache. (new in
+  // Orthanc 1.10.0)
+  "MaximumStorageCacheSize" : 128,
+
+  // Number of threads that are used to read files from the storage.
+  // A value > 4 is meaningful only if the storage is a distributed
+  // network storage (e.g., object storage plugin). In this case, you
+  // can typically increase it to 20 and you should then monitor the
+  // "orthanc_storage_available_threads" metrics to determine the
+  // optimal value for your setup. (new in Orthanc 1.13.0)
+  "StorageLoaderThreadsCount" : 4,
+
+  // Peak amount of RAM (in MB) that can be allocated by the threads
+  // loading from the storage area. Note that this limit can be
+  // exceeded when a single file is larger than this option. You
+  // should monitor the "orthanc_storage_memory_usage_mb" and
+  // "orthanc_storage_memory_max_usage_mb" metrics to determine the
+  // optimal value for your setup. (new in Orthanc 1.13.0)
+  "StorageMemoryCapacity" : 512,
+
   // List of paths to the custom Lua scripts that are to be loaded
   // into this instance of Orthanc
   "LuaScripts" : [
@@ -52,15 +79,13 @@
   // folders, in which case they will be scanned non-recursively to
   // find shared libraries. Backslashes must be either escaped by
   // doubling them, or replaced by forward slashes "/".
-  // global definition for openSUSE
   "Plugins" : [
-  "/usr/share/orthanc/plugins"
   ],
 
   // Maximum number of processing jobs that are simultaneously running
-  // at any given time. A value of "0" indicates to use all the
-  // available CPU logical cores. To emulate Orthanc <= 1.3.2, set
-  // this value to "1".
+  // at any given time in the Orthanc jobs engine. A value of "0"
+  // indicates to use all the available CPU logical cores. To emulate
+  // Orthanc <= 1.3.2, set this value to "1".
   "ConcurrentJobs" : 2,
 
 
@@ -73,20 +98,41 @@
   // Explorer will not be available.
   "HttpServerEnabled" : true,
 
+  // Enable/disable the Orthanc Explorer Web user interface. This
+  // option is only meaningful if the "HttpServerEnabled" option is
+  // set to "true" (new in Orthanc 1.8.2).
+  "OrthancExplorerEnabled" : true,
+
   // HTTP port for the REST services and for the GUI
   "HttpPort" : 8042,
 
-  // When the following option is "true", if an error is encountered
-  // while calling the REST API, a JSON message describing the error
-  // is put in the HTTP answer. This feature can be disabled if the
-  // HTTP client does not properly handles such answers.
-  "HttpDescribeErrors" : true,
+  // IP addresses the HTTP server listens on.
+  // This is notably useful if your computer has multiple network
+  // interfaces and you want Orthanc to be accessible on a single
+  // sub-network.
+  // By default, the HTTP server listens on all IP addresses.
+  // Note that setting "HttpBindAddresses" to ["127.0.0.1"] is
+  // almost equivalent to setting "RemoteAccessAllowed". In the
+  // first case, external HTTP clients will not be able to connect at
+  // all to Orthanc while, in the second case, external HTTP clients
+  // will be able to connect but will receive a 401 Unauthorized
+  // HTTP status code.
+  // "HttpBindAddresses" : ["1.2.3.4", "127.0.0.1"]
 
-  // Enable HTTP compression to improve network bandwidth utilization,
-  // at the expense of more computations on the server. Orthanc
-  // supports the "gzip" and "deflate" HTTP encodings.
-  "HttpCompressionEnabled" : true,
+  // Number of threads that are used by the embedded HTTP server.
+  "HttpThreadsCount" : 50,
 
+  // Enable the publication of the content of the Orthanc server as a
+  // WebDAV share (new in Orthanc 1.8.0). On the localhost, the WebDAV
+  // share is mapped as "http://localhost:8042/webdav/".
+  "WebDavEnabled" : true,
+
+  // Whether to allow deletions through the WebDAV share. This is
+  // disabled by default to avoid accidental loss of DICOM instances.
+  "WebDavDeleteAllowed" : false,
+
+  // Whether to allow uploads through the WebDAV share.
+  "WebDavUploadAllowed" : true,
 
 
   /**
@@ -111,31 +157,69 @@
 
   // The default encoding that is assumed for DICOM files without
   // "SpecificCharacterSet" DICOM tag, and that is used when answering
-  // C-Find requests (including worklists). The allowed values are
+  // C-FIND requests (including worklists). The allowed values are
   // "Ascii", "Utf8", "Latin1", "Latin2", "Latin3", "Latin4",
   // "Latin5", "Cyrillic", "Windows1251", "Arabic", "Greek", "Hebrew",
   // "Thai", "Japanese", "Chinese", "JapaneseKanji", "Korean", and
   // "SimplifiedChinese".
   "DefaultEncoding" : "Latin1",
 
-  // The transfer syntaxes that are accepted by Orthanc C-Store SCP
-  "DeflatedTransferSyntaxAccepted"     : true,
-  "JpegTransferSyntaxAccepted"         : true,
-  "Jpeg2000TransferSyntaxAccepted"     : true,
-  "JpegLosslessTransferSyntaxAccepted" : true,
-  "JpipTransferSyntaxAccepted"         : true,
-  "Mpeg2TransferSyntaxAccepted"        : true,
-  "RleTransferSyntaxAccepted"          : true,
-  "Mpeg4TransferSyntaxAccepted"        : true,  // New in Orthanc 1.6.0
+  // The transfer syntaxes that are accepted by Orthanc C-STORE SCP.
+  // This is an array listing the accepted transfer syntax UIDs. Each
+  // entry can contain wildcards ("?" or "*"). By default, all the
+  // known transfer syntaxes are accepted. (new in Orthanc 1.9.0)
+  "AcceptedTransferSyntaxes" : [ "1.2.840.10008.1.*" ],
 
-  // Whether Orthanc accepts to act as C-Store SCP for unknown storage
+  // User-friendly groups of transfer syntaxes that can be enabled or
+  // disabled at once. These options are applied after the main
+  // "AcceptedTransferSyntaxes" option has been applied (if present).
+  /**
+     "DeflatedTransferSyntaxAccepted"     : true,
+     "JpegTransferSyntaxAccepted"         : true,
+     "Jpeg2000TransferSyntaxAccepted"     : true,
+     "JpegLosslessTransferSyntaxAccepted" : true,
+     "JpipTransferSyntaxAccepted"         : true,
+     "Mpeg2TransferSyntaxAccepted"        : true,
+     "RleTransferSyntaxAccepted"          : true,
+     "Mpeg4TransferSyntaxAccepted"        : true,  // New in Orthanc 1.6.0
+     "H265TransferSyntaxAccepted"         : true,  // New in Orthanc 1.9.0
+  **/
+  
+  // Whether Orthanc accepts to act as C-STORE SCP for unknown storage
   // SOP classes (aka. "promiscuous mode")
-  "UnknownSopClassAccepted"            : false,
+  "UnknownSopClassAccepted" : false,
 
-  // Set the timeout (in seconds) after which the DICOM associations
-  // are closed by the Orthanc SCP (server) if no further DIMSE
-  // command is received from the SCU (client).
-  "DicomScpTimeout" : 30,
+  // The list of accepted Storage SOP classes.
+  // If empty or not defined, this list defaults to all storage classes
+  // defined in DCMTK in case of C-STORE SCP and to a reduced list of 120
+  // common storage classes in case of C-GET SCU.
+  // List of DCMTK default Storage SOP Classes:
+  // https://github.com/DCMTK/dcmtk/blob/master/dcmdata/libsrc/dcuid.cc#L664
+  // Each entry can contain wildcards ("?" or "*") to add
+  // subsets of SOP classes that are defined in DCMTK defaults:
+  // - "?" accepts any single character at that position.
+  // - "*" accepts any string value at that position.
+  // If you want to add a a SOP class that is not defined in
+  // DCMTK defaults, you must add it explicitly. (new in Orthanc 1.12.6)
+  // Example to add a non standard class and keep the default ones:
+  // "AcceptedSopClasses" : [
+  //   "1.3.12.2.1107.5.9.1",
+  //   "1.2.840.*"
+  // ]
+  // Example to limit to 2 SOP Classes:
+  // "AcceptedSopClasses" : [
+  //   "1.2.840.10008.5.1.4.1.1.2",
+  //   "1.2.840.10008.5.1.4.1.1.4"
+  // ]
+
+  // The list of rejected Storage SOP classes.
+  // This configuration is only meaningful if "AcceptedSopClasses" is using
+  // regular expressions or if it is not defined.
+  // Each entry can contain wildcards ("?" or "*"). (new in Orthanc 1.12.6)
+  // "RejectedSopClasses" : [
+  //   "1.2.840.10008.5.1.4.1.1.2",
+  //   "1.2.840.10008.5.1.4.1.1.4"
+  // ]
 
 
 
@@ -149,10 +233,23 @@
   // Whether or not SSL is enabled
   "SslEnabled" : false,
 
-  // Path to the SSL certificate in the PEM format (meaningful only if
-  // SSL is enabled)
+  // Path to the SSL certificate used by the HTTP server. The file
+  // must be stored in the PEM format, and must contain both the
+  // certificate and the private key. This option is only meaningful
+  // if "SslEnabled" is true.
   "SslCertificate" : "certificate.pem",
 
+  // Whether or not peer client certificates shall be checked. This
+  // option is only meaningful if "SslEnabled" is true.
+  "SslVerifyPeers" : false,
+
+  // Path to a file containing the concatenation of the client SSL
+  // certificate(s) that are trusted to verify the identity of remote
+  // HTTP clients. The individual certificate(s) or root CAs must be 
+  // stored in the PEM format. This option is only meaningful 
+  // if "SslVerifyPeers" is true.  
+  "SslTrustedClientCertificates" : "trustedClientCertificates.pem",
+  
   // Whether or not the password protection is enabled (using HTTP
   // basic access authentication). Starting with Orthanc 1.5.8, if
   // "AuthenticationEnabled" is not explicitly set, authentication is
@@ -164,9 +261,96 @@
 
   // The list of the registered users. Because Orthanc uses HTTP
   // Basic Authentication, the passwords are stored as plain text.
-  "RegisteredUsers" : {
-    // "alice" : "alicePassword"
-  },
+  /**
+     "RegisteredUsers" : {
+       // "alice" : "alicePassword"
+     },
+  **/
+
+
+  /**
+   * Security-related options for the DICOM connections (SCU/SCP)
+   **/
+
+  // Whether DICOM TLS is enabled in the Orthanc SCP (new in Orthanc 1.9.0)
+  "DicomTlsEnabled" : false,
+
+  // Path to the TLS certificate file (in PEM format) to be used for
+  // both Orthanc SCP (incoming DICOM connections) and Orthanc SCU
+  // (outgoing DICOM connections). Note that contrarily to the
+  // "SslCertificate" option, the certificate and its private key must
+  // be split into two separate files. (new in Orthanc 1.9.0)
+  /**
+     "DicomTlsCertificate" : "orthanc.crt",
+  **/
+
+  // Path to the file containing the private key (in PEM format) that
+  // corresponds to the TLS certificate specified in option
+  // "DicomTlsCertificate". (new in Orthanc 1.9.0)
+  /**
+     "DicomTlsPrivateKey" : "orthanc.key",
+  **/
+
+  // Path to a file containing all the TLS certificates that Orthanc
+  // can trust, both for its SCP (incoming DICOM connections) and SCU
+  // (outgoing DICOM connections). This file must contain a sequence
+  // of PEM certificates. (new in Orthanc 1.9.0)
+  /**
+     "DicomTlsTrustedCertificates" : "trusted.crt",
+  **/
+  
+  // Whether Orthanc rejects DICOM TLS connections to/from remote
+  // modalities that do not provide a certificate. Setting this option
+  // to "true" (resp. "false") corresponds to "--require-peer-cert"
+  // (resp. "--ignore-peer-cert") in the DCMTK command-line
+  // tools. (new in Orthanc 1.9.3)
+  // Once you set this configuration to true, you must provide a list of
+  // trusted certificates in DicomTlsTrustedCertificates.
+  "DicomTlsRemoteCertificateRequired" : true,
+  
+  // Whether the Orthanc SCP allows incoming C-ECHO requests, even
+  // from SCU modalities it does not know about (i.e. that are not
+  // listed in the "DicomModalities" option above). Orthanc 1.3.0
+  // is the only version to behave as if this argument were set to "false".
+  "DicomAlwaysAllowEcho" : true,
+
+  // Whether the Orthanc SCP allows incoming C-STORE requests, even
+  // from SCU modalities it does not know about (i.e. that are not
+  // listed in the "DicomModalities" option above)
+  "DicomAlwaysAllowStore" : true,
+
+  // Whether the Orthanc SCP allows incoming C-FIND requests, even
+  // from SCU modalities it does not know about (i.e. that are not
+  // listed in the "DicomModalities" option above). Setting this
+  // option to "true" implies security risks. (new in Orthanc 1.9.0)
+  // Note: From Orthanc 1.10.0, this option only applies to C-FIND
+  // requests for patients/studies/series/instances. Use option
+  // "DicomAlwaysAllowFindWorklist" for worklists.
+  "DicomAlwaysAllowFind" : false,
+
+  // Whether the Orthanc SCP allows incoming C-FIND requests for worklists, 
+  // even from SCU modalities it does not know about (i.e. that are not
+  // listed in the "DicomModalities" option above). Setting this
+  // option to "true" implies security risks. (new in Orthanc 1.10.0)
+  "DicomAlwaysAllowFindWorklist" : false,
+
+  // Whether the Orthanc SCP allows incoming C-GET requests, even
+  // from SCU modalities it does not know about (i.e. that are not
+  // listed in the "DicomModalities" option above). Setting this
+  // option to "true" implies security risks. (new in Orthanc 1.9.0)
+  "DicomAlwaysAllowGet" : false,
+
+  // Whether the Orthanc SCP allows incoming C-MOVE requests, even
+  // from SCU modalities it does not know about (i.e. that are not
+  // listed in the "DicomModalities" option above). Setting this
+  // option to "true" implies security risks. (new in Orthanc 1.9.7)
+  "DicomAlwaysAllowMove" : false,
+
+  // Whether Orthanc checks the IP/hostname address of the remote
+  // modality initiating a DICOM connection (as listed in the
+  // "DicomModalities" option above). If this option is set to
+  // "false", Orthanc only checks the AET of the remote modality.
+  "DicomCheckModalityHost" : false,
 
 
 
@@ -174,7 +358,9 @@
    * Network topology
    **/
 
-  // The list of the known DICOM modalities
+  // The list of the known DICOM modalities. This option is ignored if
+  // "DicomModalitiesInDatabase" is set to "true", in which case you
+  // must use the REST API to define modalities.
   "DicomModalities" : {
     /**
      * Uncommenting the following line would enable Orthanc to
@@ -193,13 +379,14 @@
      * specific PACS manufacturers. The allowed values are currently:
      * - "Generic" (default value),
      * - "GenericNoWildcardInDates" (to replace "*" by "" in date fields 
-     *   in outgoing C-Find requests originating from Orthanc),
+     *   in outgoing C-FIND requests originating from Orthanc),
      * - "GenericNoUniversalWildcard" (to replace "*" by "" in all fields
-     *   in outgoing C-Find SCU requests originating from Orthanc),
-     * - "StoreScp" (storescp tool from DCMTK),
+     *   in outgoing C-FIND SCU requests originating from Orthanc),
      * - "Vitrea",
      * - "GE" (Enterprise Archive, MRI consoles and Advantage Workstation
      *   from GE Healthcare).
+     * - "SiemensSyngoCT" (proposes both SCP and SCU C-Store roles when performing
+     *    a C-Get SCU)
      *
      * This parameter is case-sensitive.
      **/
@@ -207,13 +394,40 @@
 
     /**
      * By default, the Orthanc SCP accepts all DICOM commands (C-ECHO,
-     * C-STORE, C-FIND, C-MOVE, and storage commitment) issued by the
+     * C-STORE, C-FIND, C-MOVE, C-GET and storage commitment) issued by the
      * registered remote SCU modalities. Starting with Orthanc 1.5.0,
      * it is possible to specify which DICOM commands are allowed,
      * separately for each remote modality, using the syntax
-     * below. The "AllowEcho" (resp.  "AllowStore") option only has an
-     * effect respectively if global option "DicomAlwaysAllowEcho"
-     * (resp. "DicomAlwaysAllowStore") is set to false.
+     * below.
+     *
+     * The "AllowEcho" (resp.  "AllowStore") option only has an effect
+     * respectively if global option "DicomAlwaysAllowEcho"
+     * (resp. "DicomAlwaysAllowStore") is set to "false".
+     *
+     * Starting with Orthanc 1.7.0, "AllowTranscoding" can be used to
+     * disable the transcoding to uncompressed transfer syntaxes if
+     * this remote modality doesn't support compressed transfer
+     * syntaxes. This option currently applies to Orthanc C-GET SCP
+     * and to Orthanc C-STORE SCU. This option only has an effect if
+     * the global option "EnableTranscoding" is set to "true".
+     *
+     * By default, all "Allow*" options are true.
+     * "AllowStorageCommitment" is actually an alias for 
+     * "AllowNAction" & "AllowEventReport".
+     * 
+     * The "UseDicomTls" option specifies whether DICOM TLS should be
+     * used when opening a SCU connection from Orthanc to this remote
+     * modality. By default, DICOM TLS is not enabled.
+     *
+     * The "LocalAet" option allows one to overwrite the global
+     * "DicomAet" configuration option in order to specify another AET
+     * for Orthanc when initiating an SCU to this very specific
+     * modality. Similarly, "Timeout" allows one to overwrite the
+     * global value "DicomScuTimeout" on a per-modality basis.
+     *
+     * The "RetrieveMethod" option allows one to overwrite the global
+     * "DicomDefaultRetrieveMethod" configuration option for this
+     * specific modality. (Allowed values: "C-MOVE" or "C-GET").
      **/
     //"untrusted" : {
     //  "AET" : "ORTHANC",
@@ -222,9 +436,16 @@
     //  "Manufacturer" : "Generic",
     //  "AllowEcho" : false,
     //  "AllowFind" : false,
+    //  "AllowFindWorklist" : false,       // new in 1.10.0
+    //  "AllowGet"  : false,
     //  "AllowMove" : false,
     //  "AllowStore" : true,
-    //  "AllowStorageCommitment" : false  // new in 1.6.0
+    //  "AllowStorageCommitment" : false,  // new in 1.6.0
+    //  "AllowTranscoding" : true,         // new in 1.7.0
+    //  "UseDicomTls" : false,             // new in 1.9.0
+    //  "LocalAet" : "HELLO",              // new in 1.9.0
+    //  "Timeout" : 60,                    // new in 1.9.1
+    //  "RetrieveMethod" : "C-MOVE"        // new in 1.12.6
     //}
   },
 
@@ -232,29 +453,46 @@
   // instead of in this configuration file (new in Orthanc 1.5.0)
   "DicomModalitiesInDatabase" : false,
 
-  // Whether the Orthanc SCP allows incoming C-Echo requests, even
-  // from SCU modalities it does not know about (i.e. that are not
-  // listed in the "DicomModalities" option above). Orthanc 1.3.0
-  // is the only version to behave as if this argument was set to "false".
-  "DicomAlwaysAllowEcho" : true,
+  // Whether the C-ECHO SCU is automatically followed by a C-FIND SCU,
+  // while testing the connectivity from Orthanc to a remote DICOM
+  // modality. This allows one to check that the remote modality does
+  // accept C-FIND requests from Orthanc (new in Orthanc 1.8.1).
+  "DicomEchoChecksFind" : false,
 
-  // Whether the Orthanc SCP allows incoming C-Store requests, even
-  // from SCU modalities it does not know about (i.e. that are not
-  // listed in the "DicomModalities" option above)
-  "DicomAlwaysAllowStore" : true,
+  // Whether Orthanc uses C-MOVE or C-GET to retrieve a resource after
+  // a C-FIND (when calling "/queries/.../retrieve").
+  // This configuration can be overridden for each modality by providing
+  // "RetrieveMethod" in the "DicomModalities" entry.
+  // (new in Orthanc 1.12.6)
+  "DicomDefaultRetrieveMethod" : "C-MOVE",
 
-  // Whether Orthanc checks the IP/hostname address of the remote
-  // modality initiating a DICOM connection (as listed in the
-  // "DicomModalities" option above). If this option is set to
-  // "false", Orthanc only checks the AET of the remote modality.
-  "DicomCheckModalityHost" : false,
+  // During a C-STORE SCU request initiated by Orthanc, if the remote
+  // modality doesn't support the original transfer syntax of some
+  // DICOM instance, specify which transfer syntax should be preferred
+  // to transcode this instance (provided the remote modality accepts
+  // this syntax). In Orthanc between 1.7.0 and 1.8.2, this parameter
+  // was implicitly set to "Little Endian Implicit"
+  // (1.2.840.10008.1.2). In Orthanc <= 1.6.1 and in Orthanc >= 1.9.0,
+  // this parameter is by default set to "Little Endian Explicit"
+  // (1.2.840.10008.1.2.1). This parameter can possibly correspond to
+  // a compressed transfer syntax. (new in Orthanc 1.9.0)
+  "DicomScuPreferredTransferSyntax" : "1.2.840.10008.1.2.1",
 
-  // The timeout (in seconds) after which the DICOM associations are
-  // considered as closed by the Orthanc SCU (client) if the remote
-  // DICOM SCP (server) does not answer.
-  "DicomScuTimeout" : 10,
+  // Number of threads that are used by the embedded DICOM server.
+  // This defines the number of concurrent DICOM operations that can
+  // be run when Orthanc is acting as SCP. 
+  // Note: This is not limiting the number of concurrent connections
+  // but the number of concurrent DICOM operations.
+  // For instance, with a single thread, if a C-FIND request is received during
+  // e.g. the transcoding of an incoming C-STORE, the C-FIND will
+  // be processed only at the end of the C-STORE operation but both
+  // DICOM associations will remain active.
+  // (new in Orthanc 1.10.0, before this version, the value was fixed to 4)
+  "DicomThreadsCount" : 4,
 
-  // The list of the known Orthanc peers
+  // The list of the known Orthanc peers. This option is ignored if
+  // "OrthancPeersInDatabase" is set to "true", in which case you must
+  // use the REST API to define Orthanc peers.
   "OrthancPeers" : {
     /**
      * Each line gives the base URL of an Orthanc peer, possibly
@@ -266,9 +504,12 @@
 
     /**
      * This is another, more advanced format to define Orthanc
-     * peers. It notably allows to specify HTTP headers, a HTTPS
+     * peers. It notably allows one to specify HTTP headers, a HTTPS
      * client certificate in the PEM format (as in the "--cert" option
      * of curl), or to enable PKCS#11 authentication for smart cards.
+     *
+     * The "Timeout" option allows one to overwrite the global value
+     * "HttpTimeout" on a per-peer basis.
      **/
     // "peer" : {
     //   "Url" : "http://127.0.0.1:8043/",
@@ -278,7 +519,8 @@
     //   "CertificateFile" : "client.crt",
     //   "CertificateKeyFile" : "client.key",
     //   "CertificateKeyPassword" : "certpass",
-    //   "Pkcs11" : false
+    //   "Pkcs11" : false,
+    //   "Timeout" : 42            // New in Orthanc 1.9.1
     // }
   },
 
@@ -298,12 +540,13 @@
   "HttpVerbose" : false,
 
   // Set the timeout for HTTP requests issued by Orthanc (in seconds).
+  // 0 means no timeout.
   "HttpTimeout" : 60,
 
-  // Enable the verification of the peers during HTTPS requests. This
-  // option must be set to "false" if using self-signed certificates.
-  // Pay attention that setting this option to "false" results in
-  // security risks!
+  // Enable the verification of the peers certificates during HTTPS
+  // requests. Setting this option to "false" is equivalent to the
+  // "--insecure" curl option. Pay attention that setting this option
+  // to "false" results in security risks!
   // Reference: http://curl.haxx.se/docs/sslcerts.html
   "HttpsVerifyPeers" : true,
 
@@ -313,7 +556,11 @@
   // verify the peers. The file may contain multiple CA
   // certificates. The certificate(s) must be in PEM format." On
   // Debian-based systems, this option can be set to
-  // "/etc/ssl/certs/ca-certificates.crt"
+  // "/etc/ssl/certs/ca-certificates.crt".
+  // Starting with Orthanc 1.12.6 and provided that Orthanc has been
+  // built with libcurl > 8.2.0, when this option is empty,
+  // Orthanc uses the operating system native CA store ("--ca-native"
+  // option)
   "HttpsCACertificates" : "",
 
 
@@ -321,23 +568,6 @@
   /**
    * Advanced options
    **/
-
-  // Dictionary of symbolic names for the user-defined metadata. Each
-  // entry must map an unique string to an unique number between 1024
-  // and 65535. Reserved values:
-  //  - The Orthanc whole-slide imaging plugin uses metadata 4200
-  "UserMetadata" : {
-    // "Sample" : 1024
-  },
-
-  // Dictionary of symbolic names for the user-defined types of
-  // attached files. Each entry must map an unique string to an unique
-  // number between 1024 and 65535. Optionally, a second argument can
-  // provided to specify a MIME content type for the attachment.
-  "UserContentType" : {
-    // "sample" : 1024
-    // "sample2" : [ 1025, "application/pdf" ]
-  },
 
   // Number of seconds without receiving any instance before a
   // patient, a study or a series is considered as stable.
@@ -348,87 +578,35 @@
   // case-sensitive matching.
   "StrictAetComparison" : false,
 
-  // When the following option is "true", the MD5 of the DICOM files
-  // will be computed and stored in the Orthanc database. This
-  // information can be used to detect disk corruption, at the price
-  // of a small performance overhead.
-  "StoreMD5ForAttachments" : true,
-
   // The maximum number of results for a single C-FIND request at the
   // Patient, Study or Series level. Setting this option to "0" means
   // no limit.
+  // Note: This limit is also used in the "/tools/find" API route.
   "LimitFindResults" : 0,
 
   // The maximum number of results for a single C-FIND request at the
   // Instance level. Setting this option to "0" means no limit.
+  // Note: This limit is also used in the "/tools/find" API route.
   "LimitFindInstances" : 0,
 
-  // The maximum number of active jobs in the Orthanc scheduler. When
-  // this limit is reached, the addition of new jobs is blocked until
-  // some job finishes.
-  "LimitJobs" : 10,
-
-  // If this option is set to "true" (default behavior until Orthanc
-  // 1.3.2), Orthanc will log the resources that are exported to other
-  // DICOM modalities or Orthanc peers, inside the URI
-  // "/exports". Setting this option to "false" is useful to prevent
-  // the index to grow indefinitely in auto-routing tasks (this is the
-  // default behavior since Orthanc 1.4.0).
-  "LogExportedResources" : false,
-
-  // Enable or disable HTTP Keep-Alive (persistent HTTP
-  // connections). Setting this option to "true" prevents Orthanc
-  // issue #32 ("HttpServer does not support multiple HTTP requests in
-  // the same TCP stream"), but can possibly slow down HTTP clients
-  // that do not support persistent connections. The default behavior
-  // used to be "false" in Orthanc <= 1.5.1. Setting this option to
-  // "false" is also recommended if Orthanc is compiled against
-  // Mongoose.
-  "KeepAlive" : true,
-
-  // Enable or disable Nagle's algorithm. Only taken into
-  // consideration if Orthanc is compiled to use CivetWeb. Experiments
-  // show that best performance can be obtained by setting both
-  // "KeepAlive" and "TcpNoDelay" to "true". Beware however of
-  // caveats: https://eklitzke.org/the-caveats-of-tcp-nodelay
-  "TcpNoDelay" : true,
-
-  // Number of threads that are used by the embedded HTTP server.
-  "HttpThreadsCount" : 50,
-
   // If this option is set to "false", Orthanc will run in index-only
-  // mode. The DICOM files will not be stored on the drive. Note that
-  // this option might prevent the upgrade to newer versions of Orthanc.
+  // mode. The DICOM files will not be stored on the drive: Orthanc
+  // only indexes the small subset of the so-called "main DICOM tags"
+  // in its SQL database. Note that this option might prevent the
+  // upgrade to newer versions of Orthanc. Also note that this
+  // behavior might not be available with the storage area plugins.
   "StoreDicom" : true,
-
-  // DICOM associations initiated by Lua scripts are kept open as long
-  // as new DICOM commands are issued. This option sets the number of
-  // seconds of inactivity to wait before automatically closing a
-  // DICOM association used by Lua. If set to 0, the connection is
-  // closed immediately.
-  "DicomAssociationCloseDelay" : 5,
 
   // Maximum number of query/retrieve DICOM requests that are
   // maintained by Orthanc. The least recently used requests get
   // deleted as new requests are issued.
   "QueryRetrieveSize" : 100,
 
-  // When handling a C-Find SCP request, setting this flag to "true"
+  // When handling a C-FIND SCP request, setting this flag to "true"
   // will enable case-sensitive match for PN value representation
   // (such as PatientName). By default, the search is
   // case-insensitive, which does not follow the DICOM standard.
   "CaseSensitivePN" : false,
-
-  // Configure PKCS#11 to use hardware security modules (HSM) and
-  // smart cards when carrying on HTTPS client authentication.
-  /**
-     "Pkcs11" : {
-       "Module" : "/usr/local/lib/libbeidpkcs11.so",
-       "Module" : "C:/Windows/System32/beidpkcs11.dll",
-       "Pin" : "1234",
-       "Verbose" : true
-     }
-   **/
   
   // If set to "false", Orthanc will not load its default dictionary
   // of private tags. This might be necessary if you cannot import a
@@ -450,20 +628,35 @@
   // multiplicity (> 0 with defaults to 1), possibly the maximum
   // multiplicity (0 means arbitrary multiplicity, defaults to 1), and
   // possibly the Private Creator (for private tags).
+  // Note: For private tags, you should only declare the lower 8 bits
+  // of the element since the higher 8 bits may vary from one file to
+  // the other.
   "Dictionary" : {
     // "0014,1020" : [ "DA", "ValidationExpiryDate", 1, 1 ]
-    // "00e1,10c2" : [ "UI", "PET-CT Multi Modality Name", 1, 1, "ELSCINT1" ]
-    // "7053,1003" : [ "ST", "Original Image Filename", 1, 1, "Philips PET Private Group" ]
+    // "00e1,c2" : [ "UI", "PET-CT Multi Modality Name", 1, 1, "ELSCINT1" ]
+    // "7053,03" : [ "ST", "Original Image Filename", 1, 1, "Philips PET Private Group" ]
     // "2001,5f" : [ "SQ", "StackSequence", 1, 1, "Philips Imaging DD 001" ]
   },
 
-  // Whether to run DICOM C-Move operations synchronously. If set to
-  // "false" (asynchronous mode), each incoming C-Move request results
+  // Load a set of external DICOM dictionaries in order to replace the
+  // default dictionaries. This option must contain a set of files in
+  // the DCMTK format. The order of the dictionaries *is*
+  // important. This option can be used to turn Orthanc into a DICONDE
+  // server. (new in Orthanc 1.9.4)
+  /**
+     "ExternalDictionaries" : [
+     "/usr/share/libdcmtk12/dicom.dic",
+     "/usr/share/libdcmtk12/diconde.dic"
+     ]
+  **/
+
+  // Whether to run DICOM C-MOVE operations synchronously. If set to
+  // "false" (asynchronous mode), each incoming C-MOVE request results
   // in the creation of a new background job. Up to Orthanc 1.3.2, the
-  // implicit behavior was to use synchronous C-Move ("true"). Between
+  // implicit behavior was to use synchronous C-MOVE ("true"). Between
   // Orthanc 1.4.0 and 1.4.2, the default behavior was set to
-  // asynchronous C-Move ("false"). Since Orthanc 1.5.0, the default
-  // behavior is back to synchronous C-Move ("true", which ensures
+  // asynchronous C-MOVE ("false"). Since Orthanc 1.5.0, the default
+  // behavior is back to synchronous C-MOVE ("true", which ensures
   // backward compatibility with Orthanc <= 1.3.2).
   "SynchronousCMove" : true,
 
@@ -486,11 +679,18 @@
   "SaveJobs" : true,
 
   // Specifies how Orthanc reacts when it receives a DICOM instance
-  // whose SOPInstanceUID is already stored. If set to "true", the new
-  // instance replaces the old one. If set to "false", the new
-  // instance is discarded and the old one is kept. Up to Orthanc
-  // 1.4.1, the implicit behavior corresponded to "false".
-  "OverwriteInstances" : false,
+  // whose SOPInstanceUID is already stored. If set to "Always", the new
+  // instance replaces the old one. If set to "Never", the new
+  // instance is discarded and the old one is kept.  If set to "IfChanged"
+  // the instance replaces the old one only if their MD5 differ.  This
+  // option is only available if the "StoreMD5ForAttachments" configuration
+  // is set to true.
+  // Up to Orthanc 1.4.1, the implicit behavior corresponded to "Never".
+  // Up to Orthanc 1.12.11, the configuration was a boolean with false
+  // corresponding to "Never" and true corresponding to "Always".
+  // Boolean values are still accepted for backward compatibility.
+  // "OverwriteInstances" : "Never",
+  "OverwriteInstances" : "Never", 
 
   // Maximum number of ZIP/media archives that are maintained by
   // Orthanc, as a response to the asynchronous creation of archives.
@@ -500,7 +700,8 @@
   "MediaArchiveSize" : 1,
 
   // Performance setting to specify how Orthanc accesses the storage
-  // area during C-FIND. Three modes are available: (1) "Always"
+  // area during find operations (C-FIND, "/tools/find", API route, and
+  // QIDO-RS in the DICOMweb plugin). Three modes are available: (1) "Always"
   // allows Orthanc to read the storage area as soon as it needs an
   // information that is not present in its database (slowest mode),
   // (2) "Never" prevents Orthanc from accessing the storage area, and
@@ -513,19 +714,9 @@
 
   // Whether Orthanc monitors its metrics (new in Orthanc 1.5.4). If
   // set to "true", the metrics can be retrieved at
-  // "/tools/metrics-prometheus" formetted using the Prometheus
+  // "/tools/metrics-prometheus" formatted using the Prometheus
   // text-based exposition format.
   "MetricsEnabled" : true,
-
-  // Whether calls to URI "/tools/execute-script" is enabled. Starting
-  // with Orthanc 1.5.8, this URI is disabled by default for security.
-  "ExecuteLuaEnabled" : false,
-
-  // Set the timeout for HTTP requests, in seconds. This corresponds
-  // to option "request_timeout_ms" of Mongoose/Civetweb. It will set
-  // the socket options "SO_RCVTIMEO" and "SO_SNDTIMEO" to the
-  // specified value.
-  "HttpRequestTimeout" : 30,
 
   // Set the default private creator that is used by Orthanc when it
   // looks for a private tag in its dictionary (cf. "Dictionary"
@@ -534,5 +725,131 @@
 
   // Maximum number of storage commitment reports (i.e. received from
   // remote modalities) to be kept in memory (new in Orthanc 1.6.0).
-  "StorageCommitmentReportsSize" : 100
+  "StorageCommitmentReportsSize" : 100,
+
+  // Whether Orthanc transcodes DICOM files to an uncompressed
+  // transfer syntax over the DICOM protocol, if the remote modality
+  // does not support compressed transfer syntaxes. This option is
+  // used in outgoing C-STORE SCU commands (including if synchronous
+  // C-MOVE is used), and by the C-GET SCP handler. (new in Orthanc 1.7.0).
+  "TranscodeDicomProtocol" : true,
+
+  // If some plugin to decode/transcode DICOM instances is installed,
+  // this option specifies whether the built-in decoder/transcoder of
+  // Orthanc (that uses DCMTK) is applied before or after the plugins,
+  // or is not applied at all (new in Orthanc 1.7.0). The allowed
+  // values for this option are "After" (default value, corresponding
+  // to the behavior of Orthanc <= 1.6.1), "Before", or "Disabled".
+  "BuiltinDecoderTranscoderOrder" : "After",
+
+  // If this option is set, Orthanc will transparently transcode any
+  // incoming DICOM instance to the given transfer syntax before
+  // storing it into its database. Beware that this might result in
+  // high CPU usage (if transcoding to some compressed transfer
+  // syntax), or in higher disk consumption (if transcoding to an
+  // uncompressed syntax). Also, beware that transcoding to a transfer
+  // syntax with lossy compression (notably JPEG) will change the
+  // "SOPInstanceUID" DICOM tag, and thus the Orthanc identifier at
+  // the instance level, which might break external workflow.
+  /**
+     "IngestTranscoding" : "1.2.840.10008.1.2",
+  **/
+
+  // Whether ingest transcoding is applied to incoming DICOM instances
+  // that have an uncompressed transfer syntax, i.e. Little Endian
+  // Implicit, Little Endian Explicit or Big Endian Explicit (new in
+  // Orthanc 1.8.2).
+  "IngestTranscodingOfUncompressed" : true,
+  
+  // Whether ingest transcoding is applied to incoming DICOM instances
+  // that have a compressed transfer syntax (new in Orthanc 1.8.2).
+  "IngestTranscodingOfCompressed" : true,
+  
+  // The default compression level that is used when transcoding to one
+  // of the lossy/JPEG transfer syntaxes (integer between 1 and 100).
+  // This value is currently only used by the default built-in DCMTK
+  // transcoder and is not provided to transcoding plugins.
+  "DicomLossyTranscodingQuality" : 90,
+
+  // Deidentify/anonymize the contents of the logs (notably C-FIND,
+  // C-GET, and C-MOVE queries submitted to Orthanc) according to
+  // Table E.1-1 of the DICOM standard (new in Orthanc 1.8.2).
+  // Note that the DICOM logs at TRACE level are not deidentified!
+  "DeidentifyLogs" : true,
+
+  // If "DeidentifyLogs" is true, this sets the DICOM standard to
+  // follow for the deidentification/anonymization of the query
+  // contents. Possible values are "2008", "2017c", "2021b" (new
+  // in Orthanc 1.8.2), and "2023b" (new in Orthanc 1.12.1)
+  "DeidentifyLogsDicomVersion" : "2023b",
+
+  // Arbitrary identifier of this Orthanc server when storing its
+  // global properties if a custom index plugin is used. This
+  // identifier is only useful in the case of multiple
+  // readers/writers, in order to avoid collisions between multiple
+  // Orthanc servers. If unset, this identifier is taken as a SHA-1
+  // hash derived from the MAC addresses of the network interfaces,
+  // and from the AET and TCP ports used by Orthanc. Manually setting
+  // this option is needed in Docker/Kubernetes environments. (new in
+  // Orthanc 1.9.2)
+  /**
+     "DatabaseServerIdentifier" : "Orthanc1",
+  **/
+
+  // Whether Orthanc protects the modification of metadata and
+  // attachments using revisions, which is done using the HTTP headers
+  // "ETag", "If-Match" and "If-None-Match" in the calls to the REST
+  // API. This is needed to handle collisions between concurrent
+  // modifications in the case of multiple writers. The database
+  // back-end must support this option, which is notably *not* yet the
+  // case of the built-in SQLite index. (new in Orthanc 1.9.2)
+  "CheckRevisions" : false,
+
+  // Whether Orthanc streams ZIP archive/media to the HTTP
+  // client. Setting this option to "false" corresponds to the
+  // behavior of Orthanc <= 1.9.3: The ZIP is first entirely written
+  // to a temporary file, then sent to the client (which necessitates
+  // disk space and might lead to HTTP timeouts on large archives). If
+  // set to "true", the chunks of the ZIP file are progressively sent
+  // as soon as one DICOM file gets compressed (new in Orthanc 1.9.4)
+  "SynchronousZipStream" : true,
+
+  // Extra Main Dicom tags that are stored in DB together with all default
+  // Main Dicom tags that are already stored.
+  // see https://orthanc.uclouvain.be/book/faq/main-dicom-tags.html 
+  // (new in Orthanc 1.11.0)
+  // Sequences tags are not supported.
+  /**
+  "ExtraMainDicomTags" : {
+    "Instance" : [
+      "Rows",
+      "Columns",
+      "ImageType",
+      "SOPClassUID",
+      "ContentDate",
+      "ContentTime",
+      "FrameOfReferenceUID",
+      "PixelSpacing",
+      "SpecificCharacterSet",
+      "BitsAllocated"
+    ],
+    "Series" : [],
+    "Study" : [],
+    "Patient" : []
+  },
+  */
+
+  // Configure Orthanc in read only mode.
+  // In this mode, many Orthanc features that requires a write access to the 
+  // Index DB or the disk storage won't be available at all.
+  // (new in Orthanc 1.12.5)
+  "ReadOnly" : false,
+
+  // Whether to use UTF-8 filenames in the ZIP archives generated by
+  // Orthanc. By default, it is set to "false" and only ASCII
+  // filenames are generated, which corresponds to the behavior of
+  // Orthanc <= 1.12.10. This default value can be overwritten per archive,
+  // by providing the "Utf8" field to the "{...}/archive" and
+  // "/tools/create-archives" routes. (new in Orthanc 1.12.11)
+  "ZipUseUtf8" : false
 }

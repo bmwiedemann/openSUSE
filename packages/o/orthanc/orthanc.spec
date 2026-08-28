@@ -18,7 +18,7 @@
 
 
 Name:           orthanc
-Version:        1.12.11
+Version:        1.13.0
 Release:        0
 Summary:        RESTful DICOM server for healthcare and medical research
 License:        GPL-3.0-or-later
@@ -44,18 +44,17 @@ BuildRequires:  curl-devel
 BuildRequires:  dcmtk
 BuildRequires:  dcmtk-devel
 BuildRequires:  doxygen
-%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
-BuildRequires:  gcc13-c++
-%else
 BuildRequires:  gcc-c++
-%endif
 BuildRequires:  googletest-devel
 BuildRequires:  help2man
 BuildRequires:  jsoncpp-devel
+
+BuildRequires:  boost-devel
 BuildRequires:  libboost_date_time-devel >= 1.66
 BuildRequires:  libboost_filesystem-devel >= 1.66
 BuildRequires:  libboost_iostreams-devel >= 1.66
 BuildRequires:  libboost_locale-devel >= 1.66
+BuildRequires:  libboost_program_options-devel
 BuildRequires:  libboost_regex-devel >= 1.66
 %if 0%{?suse_version} <= 1600
 BuildRequires:  libboost_system-devel >= 1.66
@@ -148,12 +147,16 @@ cp %{S:8} OrthancServer/Resources/.
 mkdir -p OrthancServer/ThirdPartyDownloads
 cp %{S:10} %{S:11} %{S:12} %{S:13} OrthancServer/ThirdPartyDownloads/.
 
+# Doppelten Eintrag entfernen
+sed -i '/^[[:space:]]*"DicomAssociationCloseDelay"/d' OrthancServer/Resources/Configuration.json
+
 %build
 %if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
 export CC=gcc-13
 export CXX=g++-13
 %endif
 %cmake	../OrthancServer \
+    -DCMAKE_BUILD_TYPE=Release \
     -DSTANDALONE_BUILD:BOOL=ON \
     -DSTATIC_BUILD:BOOL=OFF \
     -DENABLE_CIVETWEB=ON \
@@ -161,6 +164,7 @@ export CXX=g++-13
     -DUSE_SYSTEM_MONGOOSE=OFF \
     -DSYSTEM_MONGOOSE_USE_CA/var/tmp/build-root/openSUSE_Tumbleweed-x86_64LLBACKS=OFF \
     -DUNIT_TESTS_WITH_HTTP_CONNEXIONS=OFF \
+    -DORTHANC_FRAMEWORK_ADDITIONAL_LIBRARIES=boost_program_options \
     -DBoost_NO_BOOST_CMAKE=ON
 
 %cmake_build %{?_smp_mflags}
@@ -173,7 +177,8 @@ help2man ./Orthanc -N -n "Lightweight, RESTful DICOM server for healthcare and m
 %ifarch != ix86
   build/UnitTests
 %else
-  build/UnitTests --gtest_filter=-ImageProcessing.Convolution --gtest_filter=-Version.CivetwebCompression --gtest_filter=-SharedLibrary.Basic
+  build/UnitTests --gtest_filter=-ImageProcessing.Convolution --gtest_filter=-Version.CivetwebCompression \
+  --gtest_filter=-SharedLibrary.Basic
 %endif
 
 %install
@@ -205,7 +210,7 @@ sed -i '/list(APPEND ORTHANC_BOOST_COMPONENTS/ s/ system//g' %{buildroot}/usr/sr
 # Do not mark Python scripts as executable
 find %{buildroot}/usr/src/%{name} -name '*.py' -exec chmod a-x "{}" +
 #...and delete dot files
-rm %{buildroot}/usr/src/%{name}/.[!.]*
+rm -rf %{buildroot}/usr/src/%{name}/.[!.]*
 
 # and patched files
 find %{buildroot}/usr/src/%{name} -iname *.orig -type f -print | xargs /bin/rm -f
@@ -310,8 +315,10 @@ getent passwd orthanc >/dev/null || \
 %{_docdir}/orthanc/index.html
 %{_docdir}/orthanc/Orthanc*
 %{_docdir}/orthanc/Samples/*
-%dir %attr(0755, orthanc, orthanc) %{_docdir}/orthanc/Samples
-%dir %attr(0755, orthanc, orthanc) %{_docdir}/orthanc/OrthancPluginSamples
+%dir %attr(-, orthanc, orthanc) %{_docdir}/orthanc/Samples
+%dir %attr(-, orthanc, orthanc) %{_docdir}/orthanc/OrthancPluginSamples
+%attr(-, orthanc, orthanc) %{_docdir}/orthanc/Samples*
+%attr(-, orthanc, orthanc) %{_docdir}/orthanc/OrthancPluginSamples*
 
 %files source
 %defattr(-,root,root)
