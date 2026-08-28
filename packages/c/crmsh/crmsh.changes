@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Aug 28 06:23:52 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.1.0+20260828.be794583:
+  * ci(workflow): restore weekly test container rebuild
+  * chore: remove /TODO
+  * docs: move development doc to CONTRIBUTING.md
+
+-------------------------------------------------------------------
+Thu Aug 27 10:16:37 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.1.0+20260827.5b50d266:
+  * ci(workflow): optimize test container caching and remove artifact overhead
+
+-------------------------------------------------------------------
+Thu Aug 27 08:57:13 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.1.0+20260827.651cf50b:
+  * test(features): use local container image by default and build one if not exists
+
+-------------------------------------------------------------------
+Wed Aug 26 10:09:01 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.1.0+20260826.f0d2f36d:
+  * docs(report): remove `crmsh_crm_report` document stub
+
+-------------------------------------------------------------------
 Wed Aug 26 04:34:08 UTC 2026 - XLiang@suse.com
 
 - Update to version 5.1.0+20260826.a973bf9a:
