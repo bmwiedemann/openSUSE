@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Fri Aug 28 05:54:33 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.2.41:
+  * build(deps): bump chainguard.dev/sdk from 0.1.210 to 0.1.212
+    (#2434)
+  * apk: expose cache metrics (#2435)
+  * build(deps): bump the codeql group with 2 updates (#2431)
+  * build(deps): bump github.com/package-url/packageurl-go from
+    0.1.6 to 0.1.7 (#2430)
+  * build(deps): bump k8s.io/apimachinery from 0.36.3 to 0.36.4
+    (#2429)
+  * build(deps): bump chainguard.dev/sdk from 0.1.204 to 0.1.210
+    (#2428)
+  * fix(apk): stop racing on the shared indexOpts authenticator
+    (#2432)
+  * go1.27 (#2427)
+  * build(deps): bump chainguard.dev/sdk from 0.1.197 to 0.1.204
+    (#2425)
+  * build(deps): bump go.step.sm/crypto from 0.88.0 to 0.89.0
+    (#2424)
+  * build(deps): bump step-security/action-actionlint from 1.72.0
+    to 1.73.1 (#2420)
+  * build(deps): bump chainguard-dev/actions/setup-registry from
+    1.6.31 to 1.6.32 (#2421)
+  * build(deps): bump github.com/stretchr/testify from 1.12.0 to
+    1.12.1 (#2419)
+- Update to version 1.2.40:
+  * erofs: add 'apko erofs mount' and 'apko erofs umount' (#2415)
+  * fix(oci): tolerate an unreadable config when building the index
+    (#2416)
+- Update to version 1.2.39:
+  * build: make WithAnnotations and WithFormat order-independent
+    (#2413)
+  * erofs: add a privileged CI job that mounts a layer (#2414)
+- Update to version 1.2.38:
+  * erofs: first batch of #2408 follow-ups (#2410)
+  * Makefile: fix `make lint`, reading its version from CI (#2411)
+  * Bump go-erofs import to current main. (#2412)
+  * build(deps): bump go.step.sm/crypto from 0.87.0 to 0.88.0
+    (#2409)
+  * Add erofs support to apko. (#2249)
+  * build(deps): bump chainguard.dev/sdk from 0.1.191 to 0.1.197
+    (#2403)
+  * build(deps): bump step-security/harden-runner from 2.20.1 to
+    2.21.0 (#2405)
+  * build(deps): bump the codeql group with 2 updates (#2404)
+  * build(deps): bump google.golang.org/api from 0.292.0 to 0.293.0
+    (#2402)
+  * build(deps): bump github.com/stretchr/testify from 1.11.1 to
+    1.12.0 (#2401)
+  * build(deps): bump chainguard.dev/sdk from 0.1.184 to 0.1.191
+    (#2398)
+  * build(deps): bump chainguard-dev/actions/setup-registry from
+    1.6.30 to 1.6.31 (#2396)
+- Update to version 1.2.37:
+  * certificates: also add kaniko certs (#2395)
+  * build(deps): bump chainguard.dev/sdk from 0.1.170 to 0.1.184
+    (#2394)
+  * build(deps): bump github.com/klauspost/compress from 1.19.1 to
+    1.19.2 (#2393)
+  * build(deps): bump google.golang.org/api from 0.291.0 to 0.292.0
+    (#2392)
+  * build(deps): bump github.com/google/go-containerregistry from
+    0.21.8 to 0.21.9 (#2391)
+
+-------------------------------------------------------------------
 Mon Aug 10 05:01:28 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.2.36:

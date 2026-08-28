@@ -17,7 +17,7 @@
 
 
 Name:           apko
-Version:        1.2.36
+Version:        1.2.41
 Release:        0
 Summary:        Build OCI images from APK packages directly without Dockerfile
 License:        Apache-2.0
@@ -26,8 +26,8 @@ Source:         apko-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
+BuildRequires:  go1.27 >= 1.27.0
 BuildRequires:  zsh
-BuildRequires:  golang(API) >= 1.26
 
 %description
 Build and publish OCI container images built from apk packages.
