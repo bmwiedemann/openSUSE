@@ -63,4 +63,12 @@
     <comment>[synchronization between mingw32/64-* packages]</comment>
     <requestid>1244893</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f6b466c01e50f38f1b12c8e505831f26</srcmd5>
+    <version>14.0.0</version>
+    <time>1787939494</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 14</comment>
+    <requestid>1374241</requestid>
+  </revision>
 </revisionlist>
