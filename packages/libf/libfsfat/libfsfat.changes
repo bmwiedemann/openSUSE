@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 28 12:22:07 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20260826
+  * Check for out-of-bounds cluster indexes and reject them
+
+-------------------------------------------------------------------
 Mon Aug 24 07:41:32 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20260823
