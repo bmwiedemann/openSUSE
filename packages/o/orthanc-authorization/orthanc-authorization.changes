@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Aug 28 14:07:36 UTC 2026 - Axel Braun <axel.braun@gmx.de>
+
+- Version 0.12.0
+  * Added support for inbox-links (new permission: create-inbox-links)
+
+-------------------------------------------------------------------
+Sat Jul 25 07:38:40 UTC 2026 - Axel Braun <axel.braun@gmx.de>
+
+- version 0.11.4
+  * Support new /tools/bulk-delete payload
+  * New default permissions for DICOMWeb /qido & /retrieve routes.
+
+-------------------------------------------------------------------
 Fri Apr 24 05:53:32 UTC 2026 - Axel Braun <axel.braun@gmx.de>
 
 - version 0.11.3
