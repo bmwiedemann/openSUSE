@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Fri Aug 28 06:13:08 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.23.5:
+  * Bug Fixes
+    - Fix nil issue
+    - Add more tests
+    - update module github.com/magiconair/properties to v1.18.11
+      (#235) (#235)
+    - update module github.com/santhosh-tekuri/jsonschema/v6 to
+      v6.0.3 (#236) (#236)
+    - update module github.com/sirupsen/logrus to v1.10.0 (#237)
+      (#237)
+    - update module github.com/sirupsen/logrus to v1.10.1 (#240)
+    - Add discovery phase before processing dependencies
+  * Chores
+    - Format
+    - Update deps
+    - Add justfile
+    - update docker/login-action digest to 650006c (#221)
+    - update docker/setup-buildx-action digest to d7f5e7f (#222)
+    - update goreleaser/goreleaser-action digest to 5daf1e9 (#223)
+    - Enable automerging
+    - update github-actions (#224) (#224)
+    - update alpine docker tag to v3.24 (#225)
+    - update github-actions to 718ea10 (#226) (#226)
+    - update actions/checkout action to v7 (#227)
+    - update github-actions (#228) (#228)
+    - update softprops/action-gh-release digest to 3d0d988 (#231)
+      (#231)
+    - update actions/setup-go action to v7 (#232)
+    - update github-actions (#233) (#233)
+    - update docker/login-action digest to dbcb813 (#234) (#234)
+    - update docker/setup-buildx-action digest to 37fe631 (#239)
+    - release 0.23.5
+  * Documentation
+    - Clarify verification support
+    - Fix some stale docs
+  * Features
+    - Add check mode
+
+-------------------------------------------------------------------
 Wed Jun 03 11:39:13 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.23.4:

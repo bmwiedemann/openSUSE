@@ -17,7 +17,7 @@
 
 
 Name:           helm-schema
-Version:        0.23.4
+Version:        0.23.5
 Release:        0
 Summary:        Generate jsonschemas from helm charts
 License:        MIT
