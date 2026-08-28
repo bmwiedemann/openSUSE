@@ -43,7 +43,7 @@
 %endif
 
 Name:           ansible
-Version:        14.3.0
+Version:        14.3.1
 Release:        0
 Summary:        Radically simple IT automation
 License:        GPL-3.0-or-later
