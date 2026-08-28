@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Fri Aug 28 08:50:43 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.62:
+  * Added
+    - flavor: add support for Markdown with Gherkin (MDG) (db62377)
+- Update to version 0.2.61:
+  * Added
+    - cli: add --stdin-batch for NUL-framed multi-document linting
+      and --stdin-batch-closed-world for supplied-document-only
+      link resolution
+- Update to version 0.2.60:
+  * Fixed
+    - deps: update h2 to 0.4.16 (a650302)
+- Update to version 0.2.59:
+  * Fixed
+    - MD033: ignore escaped HTML tag openers (eaa4075)
+    - config: match absolute patterns through symlinks (5dd6158)
+    - MD013: stop reflow from joining a setext heading into its
+      underline (9ec9e17)
+- Update to version 0.2.58:
+  * Added
+    - wasm: load extends chains from embedder-supplied config files
+      (e7c7d8f)
+- Update to version 0.2.57:
+  * Fixed
+    - MD013: let a sentence open with a number under
+      require-sentence-capital (5060333)
+    - lsp: keep a CRLF document's line endings through fixes and
+      code actions (c88a7da)
+- Update to version 0.2.56:
+  * Fixed
+    - MD076: attach its edit to each warning so the CLI reports it
+      fixable (a10f6c8)
+    - MD076: analyse each nested list on its own spacing (eb2d9d8)
+    - MD064: judge column alignment per list so a nested item keeps
+      its parent's exemption (9ea97d1)
+    - MD076: measure a list item's nesting level in columns as the
+      block tracker does (15ba409)
+    - MD032: measure list indent in columns so a tab nests and
+      continues an item (bd197b0)
+    - MD013: read sentence openers off the parse and honour
+      reference definitions (78bafa9)
+    - MD032: measure an HTML opener's indent in columns against
+      every open item (56944fc)
+    - MD013: keep links, images, math and HTML whole in sentence
+      reflow (72871b9)
+    - code-block-tools: resolve Windows tool names the way
+      Command::new does (a005be4)
+    - MD032: let an HTML block or fence at short indent end a list
+      (75d49a8)
+    - MD032: keep a Quarto div fence out of the lazy-continuation
+      check (98242fd)
+    - MD013: run reflow after every rule that rewrites inline
+      content (aabb420)
+    - MD046: classify indented code blocks from the line above's
+      verdict (e8004fb)
+    - MD032: treat under-indented text and no-space # lines as lazy
+      continuations (3e60005)
+    - code-block-tools: resolve tools in-process instead of
+      spawning which (fb3e5d8)
+    - MD057: invalidate cache when link targets change (f6ae68f)
+    - MD075: require an outer pipe on orphaned table row candidates
+      (66d8d12)
+    - MD034: recognize reference definitions whose label escapes a
+      closing bracket (f024e4d)
+
+-------------------------------------------------------------------
 Thu Aug 13 06:11:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.55:
