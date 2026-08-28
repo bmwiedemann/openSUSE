@@ -18,13 +18,14 @@
 
 %define         appid com.system76.CosmicLauncher
 Name:           cosmic-launcher
-Version:        1.6.0
+Version:        1.7.0
 Release:        0
 Summary:        Layer Shell frontend
 License:        GPL-3.0-only
 URL:            https://github.com/pop-os/cosmic-launcher
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
+Patch0:         fix-justfile.patch
 BuildRequires:  cargo-packaging
 BuildRequires:  desktop-file-utils
 BuildRequires:  hicolor-icon-theme
@@ -43,7 +44,7 @@ in wayland is defined here but it will be switched to use wlr-foreign-toplevel-m
 when it is ready.
 
 %prep
-%autosetup -a1
+%autosetup -a1 -p1
 
 %build
 just build-release
