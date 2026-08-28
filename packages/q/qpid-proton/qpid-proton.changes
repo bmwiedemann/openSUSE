@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Aug 25 09:20:16 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.40.0 (includes 0.39.0):
+  * Python binding is cffi, not SWIG: fixes the Python 3.14 FTBFS
+  * Minimum Python 3.9, minimum CMake 3.16
+  * OpenSSL: TLS keys held in an HSM, intermediate CAs as trust anchors
+  * Raw connection, proactor and TLS fixes, among them a use-after-free
+    in the epoll proactor
+- Drop gcc16.patch, qpid-proton-fix_linking.patch and
+  qpid-pythonbuild.patch: fixed upstream or obsolete now SWIG is gone
+- Drop qpid-proton-openssl-3.0.0.patch: OpenSSL reverted the deprecation
+  it worked around and upstream declined the same change
+- Link the Python binding against libqpid-proton-core rather than
+  bundling a private copy of proton-c
+- Stop overriding CMAKE_C_FLAGS, which silently dropped the distribution
+  optflags; disable upstream -Werror instead
+- Package libqpid-proton-tls0 for raw connection TLS
+- Pin SASL and jsoncpp off instead of autodetecting them
+- Run the testsuite for every Python flavour, regenerating the test
+  certificates that expired in 2025 first
+- Make qpid-proton-test noarch and conflict with libqpid-proton10
+- Take sources from archive.apache.org and verify their signature
+- Stop letting the doc package provide and obsolete qpid-proton
+
+-------------------------------------------------------------------
 Mon Jun  1 12:06:32 UTC 2026 - Josef Melcr <josef.melcr@suse.com>
 
 - Added patch:

@@ -1,1 +1,6 @@
 addFilter("qpid-proton-test.* devel-file-in-non-devel-package")
+# The example and test trees are shipped as sources, deliberately not executable:
+# making them executable would give the documentation package an interpreter
+# dependency for programs that cannot run without the bindings anyway.
+addFilter("qpid-proton-devel-doc.* non-executable-script")
+addFilter("qpid-proton-test.* non-executable-script")
