@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 20 11:30:58 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.0.10
+  * adds support for meson build
+- switch to meson
+
+-------------------------------------------------------------------
 Mon Feb  5 12:31:54 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.0.9

@@ -1,7 +1,7 @@
 #
 # spec file for package makedepend
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           makedepend
-Version:        1.0.9
+Version:        1.0.10
 Release:        0
 Summary:        Utility to create dependencies in makefiles
 License:        MIT
@@ -26,8 +26,7 @@ URL:            https://xorg.freedesktop.org/
 Source0:        http://xorg.freedesktop.org/releases/individual/util/%{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM https://gitlab.freedesktop.org/xorg/util/makedepend/-/merge_requests/10
 # For autogen.sh
-BuildRequires:  autoconf
-BuildRequires:  automake
+BuildRequires:  meson
 BuildRequires:  pkgconfig(xorg-macros) >= 1.8
 # This was part of the xorg-x11-util-devel package up to version 7.6
 Conflicts:      xorg-x11-util-devel <= 7.6
@@ -45,12 +44,11 @@ has changed.
 %autosetup -p1
 
 %build
-NOCONFIGURE=1 ./autogen.sh
-%configure
-%make_build
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
 
 %files
 %license COPYING

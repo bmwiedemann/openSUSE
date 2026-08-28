@@ -120,4 +120,12 @@
 - supersedes u_Avoid-depending-on-xproto.patch</comment>
     <requestid>1144238</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>58c4a7c4f22ee530bfa4e7ddfca5e993</srcmd5>
+    <version>1.0.10</version>
+    <time>1787939176</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1374057</requestid>
+  </revision>
 </revisionlist>
