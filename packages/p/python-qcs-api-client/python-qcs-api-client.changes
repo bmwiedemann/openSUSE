@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Aug 28 02:29:45 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.27.3:
+  * No upstream changelog.
+- Refresh switch-to-pyrfc39999.patch.
+- Drop patches:
+  * switch-to-poetry-core.patch
+  * support-new-pydantic-settings.patch
+
+-------------------------------------------------------------------
 Fri Sep  5 06:21:40 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Upgrade to 0.26.5:

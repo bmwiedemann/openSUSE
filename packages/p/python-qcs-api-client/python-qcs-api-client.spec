@@ -1,7 +1,7 @@
 #
 # spec file for package python-qcs-api-client
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,33 +17,29 @@
 
 
 Name:           python-qcs-api-client
-Version:        0.26.5
+Version:        0.27.3
 Release:        0
 Summary:        Python client library for accessing the Rigetti QCS API
 License:        MIT
 URL:            https://github.com/rigetti/qcs-api-client-python
 Source:         https://github.com/rigetti/qcs-api-client-python/archive/refs/tags/v%{version}.tar.gz#/qcs-api-client-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#rigetti/qcs-api-client-python#11
-Patch0:         switch-to-poetry-core.patch
 # PATCH-FIX-OPENSUSE Use pyRFC3339 rather than rfc3339 which is not packaged
 Patch1:         switch-to-pyrfc3339.patch
-# PATCH-FIX-UPSTREAM gh#rigetti/qcs-api-client-python#17
-Patch2:         support-new-pydantic-settings.patch
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION runtime
-BuildRequires:  %{python_module PyJWT >= 2.4.0}
-BuildRequires:  %{python_module attrs >= 21.3}
-BuildRequires:  %{python_module httpx}
-BuildRequires:  %{python_module iso8601 >= 1.0.2}
+BuildRequires:  %{python_module PyJWT >= 2.12.1}
+BuildRequires:  %{python_module attrs >= 25.4}
+BuildRequires:  %{python_module httpx >= 0.28.1}
 BuildRequires:  %{python_module pyRFC3339 >= 1.1}
-BuildRequires:  %{python_module pydantic >= 2.6.3}
-BuildRequires:  %{python_module pydantic-settings >= 2.2.1}
-BuildRequires:  %{python_module python-dateutil}
-BuildRequires:  %{python_module tenacity >= 8.3}
+BuildRequires:  %{python_module pydantic >= 2.10.6}
+BuildRequires:  %{python_module pydantic-settings >= 2.8.1}
+BuildRequires:  %{python_module python-dateutil >= 2.9.0}
+BuildRequires:  %{python_module qcs-api-client-common >= 0.17.5}
+BuildRequires:  %{python_module tenacity >= 9.1}
 BuildRequires:  %{python_module toml >= 0.10.2}
 # /SECTION
 # SECTION test
@@ -51,15 +47,15 @@ BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module respx >= 0.20}
 # /SECTION
-Requires:       python-PyJWT >= 2.4.0
-Requires:       python-attrs >= 21.3
-Requires:       python-httpx >= 0.23
-Requires:       python-iso8601 >= 1.0.2
+Requires:       python-PyJWT >= 2.12.1
+Requires:       python-attrs >= 25.4
+Requires:       python-httpx >= 0.28.1
 Requires:       python-pyRFC3339 >= 1.1
-Requires:       python-pydantic >= 2.6.3
-Requires:       python-pydantic-settings >= 2.2.1
-Requires:       python-python-dateutil >= 2.8.1
-Requires:       python-tenacity >= 8.3
+Requires:       python-pydantic >= 2.10.6
+Requires:       python-pydantic-settings >= 2.8.1
+Requires:       python-python-dateutil >= 2.9.0
+Requires:       python-qcs-api-client-common >= 0.17.5
+Requires:       python-tenacity >= 9.1
 Requires:       python-toml >= 0.10.2
 BuildArch:      noarch
 %python_subpackages
@@ -78,12 +74,12 @@ Allows access to the Rigetti Quantum Computing System API
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest --ignore tests/test_client/test_auth.py --asyncio-mode=auto -k 'not test_sync_client_api_call'
+%pytest -k "not test_datetime_conversion"
 
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%{python_sitelib}/qcs_api_client-%{version}.dist-info
 %{python_sitelib}/qcs_api_client
+%{python_sitelib}/qcs_api_client-%{version}.dist-info
 
 %changelog
