@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Fri Aug 28 07:05:44 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.1.17:
+  This will be the last release of Talhelper.
+  It's been an awesome four years journey for me, unfortunately I
+  no longer have the time and motivation to continue with the
+  development.
+  A lot of people have contributed to this tool, which is a big
+  surprise for me considering this is my first ever tool that isn't
+  shell script.
+  For those who have contributed, whether you're simply using this
+  tool as an user, or just reported an issue, to code and financial
+  contributor, I want to say THANK YOU!
+  This repo will now be archived, and I suggest people who depend
+  on this tool to migrate to other similar tool like topf and
+  talstomize.
+  * fix(deps): update module github.com/google/go-containerregistry
+    to v0.22.0
+  * chore(container): update mcr.microsoft.com/devcontainers/go
+    docker tag to v2.2
+  * fix(deps): update module github.com/sirupsen/logrus to v1.10.2
+  * chore(container): update goreleaser/goreleaser docker tag to
+    v2.18.0
+  * chore(schema): update talos-extensions.yaml JSON schema (#1753)
+  * chore(github-action): update renovatebot/github-action action
+    to v46.2.4
+  * chore(container): update registry.k8s.io/kubectl docker tag to
+    v1.36.4
+  * chore(container): update golangci/golangci-lint docker tag to
+    v2.13.1
+  * chore(schema): update talos-extensions.yaml JSON schema (#1749)
+  * chore(schema): update talos-extensions.yaml JSON schema (#1746)
+  * docs: update CLI reference documentation (#1744)
+  * fix(deps): update module github.com/sirupsen/logrus to v1.10.1
+  * chore(deps): update dependency siderolabs/talos to v1.13.9
+  * chore(container): update ghcr.io/siderolabs/talosctl docker tag
+    to v1.13.9
+  * fix(deps): update module github.com/sirupsen/logrus to v1.10.0
+  * fix(deps): update module golang.org/x/mod to v0.40.0
+  * fix(deps): update module github.com/gookit/validate/v2 to
+    v2.0.2
+  * chore(schema): update talos-extensions.yaml JSON schema
+  * chore(schema): update talos-extensions.yaml JSON schema (#1736)
+  * chore(schema): update talos-extensions.yaml JSON schema (#1734)
+  * chore(schema): update talos-extensions.yaml JSON schema (#1730)
+  * chore(schema): update talos-extensions.yaml JSON schema (#1729)
+  * fix(deps): update module golang.org/x/mod to v0.39.0
+  * chore(github-action): update renovatebot/github-action action
+    to v46.2.2
+  * chore(schema): update talos-extensions.yaml JSON schema (#1726)
+  * chore(schema): update talos-extensions.yaml JSON schema
+  * fix(deps): update module github.com/budimanjojo/talhelper/v3 to
+    v3.1.16
+  * feat: update Scoop for talhelper version v3.1.16
+  * feat: update flake (#1723)
+
+-------------------------------------------------------------------
 Thu Aug 06 07:21:56 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.1.16:
