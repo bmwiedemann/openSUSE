@@ -129,4 +129,26 @@ Devel accepts: sr#1372135 (core), sr#1372136 (openai), sr#1372137 (anthropic).
     Anthropic API (kept on AIMessage.invalid_tool_calls)</comment>
     <requestid>1372627</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>29058da20b342e4b3466373779b135c3</srcmd5>
+    <version>1.7.0</version>
+    <time>1787939239</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.7.0.
+
+The notable change is support for the anthropic 1.x SDK, which is what
+Factory already ships (python-anthropic 1.1.0): upstream widened its
+requirement from &lt; 1.0.0 to &lt; 2.0.0 and now routes the sampling
+parameters 1.x dropped through extra_body. Dependency floors are
+unchanged (anthropic &gt;= 0.120.0, langchain-core &gt;= 1.6.0,
+pydantic &gt;= 2.7.4). Also adds the top-level container parameter for
+code-execution skills, the required beta headers for the updates
+thinking display mode and the advisor_20260301 tool, and LangSmith
+gateway response metadata in generation_info; the code_execution_20250825
+tool no longer auto-appends its beta header.
+
+Built locally for openSUSE_Tumbleweed/aarch64: green, rpmlint 0 errors
+0 warnings 0 badness, %check 236 passed / 1 deselected per flavour.</comment>
+    <requestid>1374109</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Aug 27 18:13:22 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.7.0:
+  * Support the anthropic 1.x SDK next to 0.x; 1.x is what Factory
+    ships: the sampling parameters temperature/top_p/top_k that 1.x
+    dropped from the message API are relocated into extra_body, and
+    the async with_raw_response parse() is awaited when the SDK
+    hands back a coroutine
+  * Accept a top-level container parameter (container id or dict)
+    so code-execution skills can be loaded; reuse_last_container
+    now merges into it instead of overwriting it
+  * Auto-append the beta headers the API requires for the updates
+    thinking display mode and for the advisor_20260301 tool
+  * The code_execution_20250825 tool no longer auto-appends the
+    code-execution-2025-08-25 beta header, which the API no longer
+    requires
+  * Surface LangSmith gateway response metadata in generation_info
+- Upstream widened its anthropic requirement to < 2.0.0; the
+  dependency floors are unchanged (anthropic >= 0.120.0,
+  langchain-core >= 1.6.0, pydantic >= 2.7.4)
+
+-------------------------------------------------------------------
 Thu Aug 20 18:42:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.6.1:
