@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 26 09:54:30 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Add %{?pythons_for_pypi}, convert to multibuild to keep the minimal
+  stack truly minimal
+
+-------------------------------------------------------------------
 Thu May  7 06:02:25 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.4.0:

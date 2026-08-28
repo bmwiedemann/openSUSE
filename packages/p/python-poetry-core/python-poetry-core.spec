@@ -16,8 +16,17 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%{?pythons_for_pypi}
+%endif
 %{?sle15_python_module_pythons}
-Name:           python-poetry-core
+Name:           python-poetry-core%{psuffix}
 Version:        2.4.0
 Release:        0
 Summary:        Poetry PEP 517 Build Backend
@@ -30,9 +39,11 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
+%if %{with test}
 # SECTION these are all test dependencies, including python-devel and git-core
 BuildRequires:  %{python_module devel >= 3.10}
 BuildRequires:  %{python_module build >= 0.10.0}
+BuildRequires:  %{python_module poetry-core = %{version}}
 BuildRequires:  %{python_module pytest >= 7.1.2}
 BuildRequires:  %{python_module pytest-mock >= 3.10}
 BuildRequires:  %{python_module setuptools >= 60}
@@ -41,6 +52,7 @@ BuildRequires:  %{python_module trove-classifiers >= 2022.5.19}
 BuildRequires:  %{python_module virtualenv >= 20.21}
 BuildRequires:  git-core
 # /SECTION
+%endif
 %python_subpackages
 
 %description
@@ -59,24 +71,32 @@ cp -p src/poetry/core/_vendor/packaging/LICENSE.BSD     vendoredlicenses/packagi
 cp -p src/poetry/core/_vendor/tomli/LICENSE             vendoredlicenses/tomli.LICENSE
 
 %build
+%if !%{with test}
 %pyproject_wheel
+%endif
 
 %install
+%if !%{with test}
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
 %check
+%if %{with test}
 # gh#python-poetry/poetry#1645
 git init
 # tests expect the default 2016-01-01 for test builds, not the epoch set by OBS (serverside)
 unset SOURCE_DATE_EPOCH
 %pytest
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %doc README.md
 %license LICENSE vendoredlicenses/*
 %dir %{python_sitelib}/poetry
 %{python_sitelib}/poetry/core
 %{python_sitelib}/poetry_core-%{version}.dist-info
+%endif
 
 %changelog
