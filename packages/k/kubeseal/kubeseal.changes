@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Aug 28 07:23:23 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.39.1:
+  - Bump Golang to 1.26.6 (#2028)
+  - Bump Golang to 1.26.7 (#2029)
+  - Bump github.com/onsi/ginkgo/v2 from 2.32.0 to 2.32.1 (#2027)
+  - Bump golang.org/x/crypto from 0.54.0 to 0.55.0 (#2026)
+  - Release carvel package 2.19.2 (#2024)
+- Update to version 0.39.0:
+  - Bump github.com/mattn/go-isatty from 0.0.22 to 0.0.23 (#2009)
+  - Bump github.com/mattn/go-isatty from 0.0.23 to 0.0.24 (#2011)
+  - Bump github.com/prometheus/client_golang from 1.23.2 to 1.24.1
+    (#2016)
+  - Bump golang.org/x/crypto from 0.53.0 to 0.54.0 (#2007)
+  - Bump k8s.io/client-go from 0.36.2 to 0.36.3 (#2012)
+  - Bump k8s.io/code-generator from 0.36.2 to 0.36.3 (#2014)
+
+-------------------------------------------------------------------
 Fri Jul 03 10:51:58 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.38.2:
