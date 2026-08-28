@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Aug 28 07:28:33 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.5.1:
+  * Fixes:
+    - Preserve package namespaces when querying osv.dev API (fixes
+      #2978).
+    - Re-add support for the OSV_SCANNER_LOCAL_DB_CACHE_DIRECTORY
+      environment variable (fixes #2983).
+    - Fix local vulnerability matching (--offline-vulnerabilities)
+      not working when network capability is NetworkOnline.
+
+-------------------------------------------------------------------
 Fri Aug 07 06:17:59 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.5.0:
