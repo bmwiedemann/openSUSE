@@ -1,4 +1,511 @@
 -------------------------------------------------------------------
+Tue Aug 25 11:26:04 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.44 → 3.1.45
+
+-------------------------------------------------------------------
+Sun Aug 23 20:52:31 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Drop extra rootfs image checksum test
+
+  The image is verified against the checksum record
+  fetched from its origin. This Fixes #103
+
+-------------------------------------------------------------------
+Sun Aug 23 20:45:15 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update appstore
+
+  Also add checksum files for kis images
+
+-------------------------------------------------------------------
+Sun Aug 23 20:42:17 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Refactor firecracker checksum validation
+
+  So far the --kis-image pull method downloaded a tar file
+  and only verified the checksum of the root filesystem
+  image inside the tarball. However the tarball also contains
+  initrd and kernel files and the kiwi kis build also provides
+  an overall checksum file for the entire archive. This
+  commit refactors the code such that the entire tar file
+  is matched against its checksum. The appstore has been
+  already updated to provide these checksum files along
+  with the actual kis tar files. This Fixes #103
+
+-------------------------------------------------------------------
+Thu Aug 20 16:22:03 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.43 → 3.1.44
+
+-------------------------------------------------------------------
+Thu Aug 20 16:19:03 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update rsync options
+
+  Do not set extended attributes and acls as they failed to
+  transfer into the storage backend used by podman
+
+-------------------------------------------------------------------
+Thu Aug 20 11:21:55 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.42 → 3.1.43
+
+-------------------------------------------------------------------
+Thu Aug 20 11:20:32 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add --force option to remove command
+
+  Add --force option to flake-ctl firecracker remove
+  and fix the tab completion
+
+-------------------------------------------------------------------
+Wed Aug 19 18:10:28 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.41 → 3.1.42
+
+-------------------------------------------------------------------
+Wed Aug 19 18:09:16 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed firecracker pilot garbage collector
+
+  Only remove firecracker pilot related metadata files ending with .vmid
+
+-------------------------------------------------------------------
+Wed Aug 19 17:50:33 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update appstore
+
+-------------------------------------------------------------------
+Wed Aug 19 17:14:37 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.40 → 3.1.41
+
+-------------------------------------------------------------------
+Wed Aug 19 17:07:54 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix commandline quoting for sci
+
+  call_str is now parsed with shell_words::split(), the same
+  shell-style parser sci already uses for the run= kernel
+  cmdline variable. The trailing token is popped as the exec
+  port, the remainder is kept as exec_cmd. This Fixes #37
+
+-------------------------------------------------------------------
+Wed Aug 19 16:42:29 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Increas scope of rsync transfer
+
+  Make sure extended attributes and ACLs gets transfered
+
+-------------------------------------------------------------------
+Wed Aug 19 14:36:04 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.39 → 3.1.40
+
+-------------------------------------------------------------------
+Wed Aug 19 13:16:19 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add support for init command
+
+  So far the user mode setup requires a user to read the
+  information from the flake-pilot man page and to create
+  the respective directories and files in the home directory
+  himself. This commit adds a new command to allow to
+  perform this task. This Fixes #96
+
+-------------------------------------------------------------------
+Wed Aug 19 12:38:37 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix spec file
+
+  man page files listed twice
+
+-------------------------------------------------------------------
+Wed Aug 19 12:30:03 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.38 → 3.1.39
+
+-------------------------------------------------------------------
+Wed Aug 19 12:10:27 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add show command for podman and firecracker pilots
+
+  Allow to show details about running containers or
+  firecracker process. This Fixes #97
+
+-------------------------------------------------------------------
+Wed Aug 19 09:57:48 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add user mode support for firecracker
+
+  Similar to the podman-pilot now also the firecracker-pilot
+  now supports a user mode. In this mode images gets downloaded
+  into the calling user's home directory and flake registrations
+  are stored there too.
+
+-------------------------------------------------------------------
+Wed Aug 19 09:25:14 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update flake-pilot man page
+
+  Update the instructions to setup for rootless podman/firecracker
+
+-------------------------------------------------------------------
+Tue Aug 18 22:46:14 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update firecracker appstore
+
+  new claude image
+
+-------------------------------------------------------------------
+Tue Aug 18 22:36:29 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update firecracker appstore
+
+  new leap image
+
+-------------------------------------------------------------------
+Tue Aug 18 22:17:46 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update documentation
+
+  Fix typos
+
+-------------------------------------------------------------------
+Tue Aug 18 22:14:51 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update documentation
+
+  More details how to use the firecracker claude
+  example and some consistency changes
+
+-------------------------------------------------------------------
+Tue Aug 18 21:51:14 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.37 → 3.1.38
+
+-------------------------------------------------------------------
+Tue Aug 18 18:33:55 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed podman pilot garbage collector
+
+  Only remove podman pilot related metadata files ending with .cid
+
+-------------------------------------------------------------------
+Tue Aug 18 17:53:38 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed firecracker garbage collector
+
+  Make sure to cleanup the sock_NR call ID sockets as well
+
+-------------------------------------------------------------------
+Tue Aug 18 17:52:48 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Change garbage collector threshold
+
+  Set the threshold for all pilots to 1. This will run
+  the cleanup with every invocation
+
+-------------------------------------------------------------------
+Tue Aug 18 17:06:20 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Drop user name from cid file
+
+  The cid files are organized in /tmp/flakes/UID/flakename.cid
+  The additional user name in the .cid file, as it was before,
+  is now superfluous information and can be dropped.
+
+-------------------------------------------------------------------
+Tue Aug 18 16:35:53 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.36 → 3.1.37
+
+-------------------------------------------------------------------
+Tue Aug 18 16:22:38 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add sci child reaper for firecracker
+
+  In a resume type firecracker VM the sci command servers as
+  the init process (PID 1). All childs of this process ended
+  up to be defunct. To avoid this a reaper function was added
+  to reap re-parented processes so nothing lingers as defunct
+
+-------------------------------------------------------------------
+Tue Aug 18 13:29:55 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add shadow and procps to claude VM
+
+-------------------------------------------------------------------
+Tue Aug 18 10:24:15 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Use var/tmp for managing downloads
+
+  Image data is downloaded to a temporary location before it is
+  moved to its final destination in the registry. The system
+  default temporary directory /tmp is in most cases backed by a
+  memory filesystem which is too small to hold an image. Thus
+  the temporary data is placed in defaults::TEMP_DIR which is
+  expected to be persistent storage
+
+-------------------------------------------------------------------
+Tue Aug 18 10:00:28 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update appstore
+
+-------------------------------------------------------------------
+Tue Aug 18 09:51:37 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update appstore
+
+-------------------------------------------------------------------
+Tue Aug 18 00:16:33 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update README
+
+  Fixed ip calls, must be done with root permissions
+
+-------------------------------------------------------------------
+Mon Aug 17 22:32:51 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add support for terminfo to firecracker pilot
+
+  Add terminfo support to sci such that cursor keys
+  and other VTE(8003) features work
+
+-------------------------------------------------------------------
+Mon Aug 17 16:33:58 CEST 2026 - Robert Schweikert <rjschwei@suse.com>
+
+- Permission fix up during package update
+
+  As a follow up to #84 and #95 we need to fix up the permissions and file
+  locations when the RPM package is updated. We handle the permission and
+  location change in the pre scriptlet to ensure changes are applied before the
+  new binaries are installed. On update this also ensures that the setup is in
+  place in case flake-ctl is called during update of another package. This
+  should avoid any error conditions.
+
+  Co-authored-by: Gemini
+
+-------------------------------------------------------------------
+Mon Aug 17 16:02:30 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update appstore
+
+  Add leap basesystem for firecracker. Update to latest sci
+  for all firecracker images
+
+-------------------------------------------------------------------
+Mon Aug 17 15:26:20 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.35 → 3.1.36
+
+-------------------------------------------------------------------
+Mon Aug 17 15:19:09 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Followup fix for garbage collect on metadata
+
+  Check if filetype is a normal file, avoid working on
+  socket files or other special file types
+
+-------------------------------------------------------------------
+Mon Aug 17 15:18:36 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Set custom PROMPT in sci
+
+  Use a standard prompt in the sci caller
+
+-------------------------------------------------------------------
+Mon Aug 17 14:49:48 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed metadata garbage collector
+
+  Only check for deleting garbage if the file in question
+  actually exists
+
+-------------------------------------------------------------------
+Mon Aug 17 14:44:31 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Appstore update
+
+  Update claude for firecracker. Add google SDK and several
+  other useful tools
+
+-------------------------------------------------------------------
+Mon Aug 17 13:19:00 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Set default log level for firecracker to debug
+
+  Instead of trace set debug as default log level
+
+-------------------------------------------------------------------
+Mon Aug 17 13:07:48 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix terminal emulation in firecracker sessions
+
+  Make sure to place the caller terminal in raw mode such
+  that tab completion can work. Additionally make sure
+  to setup window size and terminal type correctly
+
+-------------------------------------------------------------------
+Sun Aug 16 00:41:08 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Allow to ignore volume setup
+
+  Add new podman pilot option %ignore_missing_volume_path.
+  When provisioning a container with a shared volume setup
+  like --volume /host/path:/container/path
+  or -v /host/path:/container/path, the default action is
+  to stop with an error when the host path does not exist.
+  This option allows to continue even if the host path is
+  missing. This Fixes bsc#1274855
+
+-------------------------------------------------------------------
+Sat Aug 15 23:45:40 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.34 → 3.1.35
+
+-------------------------------------------------------------------
+Sat Aug 15 23:40:23 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update documentation
+
+  Add section about known issues
+
+-------------------------------------------------------------------
+Sat Aug 15 20:52:02 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update documentation
+
+  Fix typo
+
+-------------------------------------------------------------------
+Sat Aug 15 20:25:12 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed target column in list output for firecracker
+
+-------------------------------------------------------------------
+Sat Aug 15 17:35:34 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add --format option to list command
+
+  flake-ctl list gained --format <FORMAT> with format
+  available as table(default), json and csv.
+
+-------------------------------------------------------------------
+Sat Aug 15 17:07:53 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update spec file
+
+  Make sure to modify eventually existing /tmp/flakes
+  tmp directory permissions to the new sticky permissions
+  to prevent running into the hard error for 0777.
+
+-------------------------------------------------------------------
+Fri Aug 14 11:48:13 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Drop robot test framework
+
+  Integration testing is done sandboxed. One cannot call
+  the test framework on a work system because the tests
+  changes it. The tests also removes paths from the system
+  and are pretty intrusive. The tests itself are pretty
+  outdated und unmaintained. We run integration tests on
+  sandboxed systems providing the required podman and
+  firecracker engines and want these tests to run on the
+  desired target distribution.
+
+-------------------------------------------------------------------
+Thu Aug 13 19:18:55 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Refactor code to fix certain security issues
+
+  New shared primitives
+  IO::private_dir(base, user) — creates the shared base dir as
+  1777 (sticky) and a per-uid 0700 subdir, verifying it is a real
+  directory owned by the caller. Refuses to run if the base is
+  world-writable without the sticky bit. IO::no_symlink(path) /
+  IO::create_meta_file(path) — O_NOFOLLOW, mode 0600.
+
+  podman-pilot
+  @NAME validated before use; graphroot 777→755, per-user
+  runroot 777→700; CID files moved into the private per-uid dir
+  with a symlink check on read and on create; gc()/gc_cid_file()
+  follow; sudo --preserve-env moved to --preserve-env=
+  CONTAINERS_STORAGE_CONF,XDG_RUNTIME_DIR;
+  the %VAR expansion loop is bounded (defaults::VAR_EXPANSION_LIMIT).
+
+  firecracker-pilot
+  @NAME validated; .vmid files in the private per-uid dir, written
+  via IO::create_meta_file; the sci command socket moved from
+  /tmp/sci_cmd_<app>.sock to <ids-dir>/<uid>/sci_cmd_<app>.sock
+  and chmod 777→600 (the per-port listener socket inherits the
+  private dir and gets a symlink check); overlay dir created by
+  the calling user at 0700 — when HOME is unset it now falls
+  back to the user's private dir instead of shared /tmp;
+  delete_file uses fs::remove_file instead of a PATH-resolved rm.
+
+  flake-ctl
+  /usr/share/flakes 777→755;
+  /var/lib/firecracker/{images,storage} 0o777→0o755;
+  --preserve-env scoped as in the pilot; downloads are refused over
+  non-https unless FLAKE_ALLOW_INSECURE_TRANSPORT is set (https_only
+  also blocks https→http redirects); the KIS .sha256 record is now
+  verified against the rootfs instead of being deleted unread,
+  documented in doc/flake-ctl-firecracker-pull.rst.
+
+  Behaviour changes:
+
+  1. Env inheritance is gone. Flakes that relied on arbitrary
+  variables reaching podman or the sudo-wrapped helpers will
+  no longer see them; only CONTAINERS_STORAGE_CONF and
+  XDG_RUNTIME_DIR are forwarded.
+
+  2. An existing /tmp/flakes at 0777 is now a hard error with a message
+  telling the user to chmod 1777 /tmp/flakes. Meta data also moves
+  down one level into /tmp/flakes/<uid>/, so running instances from
+  a pre-upgrade pilot won't be found by the new one.
+
+  3. flake-ctl firecracker pull over plain http now fails unless
+  FLAKE_ALLOW_INSECURE_TRANSPORT is set — note the second example
+  in the pull man page uses an https S3 URL, so it still works.
+
+  4. The KIS sha256 check fails the pull on a genuine mismatch;
+  a missing/unparsable record or absent sha256sum only warns,
+  so systems without coreutils keep working.
+
+-------------------------------------------------------------------
+Thu Aug 13 14:15:43 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add more details to the list output
+
+  Provide more information about the location of the flake
+  setup files and which engine is used for the flake
+
+-------------------------------------------------------------------
+Wed Aug 12 17:20:38 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update README
+
+  gemini seems dead, switch AI example to claude and also
+  mention limitations of krun
+
+-------------------------------------------------------------------
+Wed Aug 12 12:08:16 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Apply clippy fixes
+
+  Mostly removing redundant borrows
+
+-------------------------------------------------------------------
+Wed Aug 12 11:51:55 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update claude container
+
+  Provide system wide setup file, and make sure the
+  google sdk exists for vertex authentication
+
+-------------------------------------------------------------------
 Mon Jul 06 14:59:00 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 3.1.33 → 3.1.34

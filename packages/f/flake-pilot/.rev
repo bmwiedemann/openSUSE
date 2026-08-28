@@ -359,4 +359,41 @@ https://github.com/OSInside/flake-pilot?tab=readme-ov-file#flake-pilot</comment>
 - Add ECR container sources to appstore</comment>
     <requestid>1364056</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>753993fb6d06e84a8666a7d0d478356a</srcmd5>
+    <version>3.1.45</version>
+    <time>1787939227</time>
+    <user>anag_factory</user>
+    <comment>- Bump version: 3.1.44 → 3.1.45
+
+- Drop extra rootfs image checksum test
+  The image is verified against the checksum record
+  fetched from its origin. This Fixes #103
+
+- Update appstore
+  Also add checksum files for kis images
+
+- Refactor firecracker checksum validation
+  So far the --kis-image pull method downloaded a tar file
+  and only verified the checksum of the root filesystem
+  image inside the tarball. However the tarball also contains
+  initrd and kernel files and the kiwi kis build also provides
+  an overall checksum file for the entire archive. This
+  commit refactors the code such that the entire tar file
+  is matched against its checksum. The appstore has been
+  already updated to provide these checksum files along
+  with the actual kis tar files. This Fixes #103
+
+- Bump version: 3.1.43 → 3.1.44
+
+- Update rsync options
+  Do not set extended attributes and acls as they failed to
+  transfer into the storage backend used by podman
+
+- Bump version: 3.1.42 → 3.1.43
+
+- Add --force option to remove command
+  Add --force option to flake-ctl firecracker remove</comment>
+    <requestid>1373633</requestid>
+  </revision>
 </revisionlist>
