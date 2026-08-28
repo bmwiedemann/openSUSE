@@ -24,6 +24,7 @@ License:        SUSE-Public-Domain
 Group:          Productivity/Publishing/TeX/Utilities
 Source:         dvgt-3.51L3.tar.bz2
 Patch0:         dvgt-3.51L3.dif
+Patch1:         reproducible.patch
 BuildRequires:  texlive-bin-devel
 BuildRequires:  texlive-devel
 BuildRequires:  texlive-latex

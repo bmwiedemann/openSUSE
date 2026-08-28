@@ -1,0 +1,44 @@
+Make the installed DVI documents reproducible.
+
+TeX stores the current date and time in the DVI preamble comment
+("TeX output YYYY.MM.DD:HHMM"), so sysguide.dvi and userguide.dvi differ
+between two builds of the same source.  Unlike pdftex, plain web2c tex does
+not honour SOURCE_DATE_EPOCH, but it offers -output-comment to replace that
+comment with a fixed string.
+
+--- doc/Makefile
++++ doc/Makefile
+@@ -1,7 +1,11 @@
+ # Makefile for DVItoVDU documents.  18:56 Tue 11 May 1993.  Geoffrey Tobin.
+ 
++# -output-comment replaces the build date that TeX otherwise stores in the
++# DVI preamble comment, so that the generated documents are reproducible.
++TEX = tex -output-comment='DVItoVDU documentation'
++
+ .tex.dvi:
+-	tex $<
++	$(TEX) $<
+ 
+ dvi: guidemacs.tex example.dvi sysguide.dvi tripvdu.dvi userguide.dvi
+ 
+@@ -9,16 +13,16 @@
+ # Sun/OS make has no trouble.
+ 
+ example.dvi: example.tex
+-	tex example
++	$(TEX) example
+ 
+ sysguide.dvi: guidemacs.tex sysguide.tex
+-	tex sysguide
++	$(TEX) sysguide
+ 
+ tripvdu.dvi: tripvdu.tex
+-	tex tripvdu
++	$(TEX) tripvdu
+ 
+ userguide.dvi: guidemacs.tex userguide.tex
+-	tex userguide
++	$(TEX) userguide
+ 
+ clean:
+ 	rm  *.dvi  *.log
