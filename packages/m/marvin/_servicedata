@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/undistro/marvin</param>
-              <param name="changesrevision">27c6720adbf0a5bdd71c60aa36049592194d398f</param></service></servicedata>
+              <param name="changesrevision">27c6720adbf0a5bdd71c60aa36049592194d398f</param></service><service name="tar_scm">
+                <param name="url">https://github.com/undistro/marvin.git</param>
+              <param name="changesrevision">253420a05718e2a875088d8e4b156a3fa4ed01e9</param></service></servicedata>
