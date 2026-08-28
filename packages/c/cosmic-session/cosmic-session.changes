@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 27 04:27:01 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.7.0:
+  * Fix hardcoded values for XDG_RUNTIME_DIR
+  * start-cosmic: use sh
+
+-------------------------------------------------------------------
 Wed Jul 15 08:19:24 UTC 2026 - rrahl0@opensuse.org
 
 - Update to version 1.3.0:
