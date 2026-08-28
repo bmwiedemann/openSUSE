@@ -17,13 +17,13 @@
 
 
 Name:           buildstream
-Version:        2.7.0
+Version:        2.8.0
 Release:        0
 Summary:        A framework for modelling build pipelines in YAML
 License:        LGPL-2.1-or-later
 Group:          Development/Tools/Building
 URL:            https://buildstream.build/
-Source0:        https://github.com/apache/buildstream/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  bubblewrap
 BuildRequires:  fdupes
