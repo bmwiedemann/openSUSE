@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Fri Aug 28 08:06:27 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 26.8.4:
+  * build(deps): bump golang to 1.26.7 (#15610)
+  * fix(policy-controller): negotiate the TLSRoute API version with
+    the cluster (#15584)
+  * Guard nil ExternalWorkload in opaque protocol computation
+    (#15551) (#15575)
+- Update to version 26.8.2:
+  * build(deps): bump github.com/mattn/go-runewidth from 0.0.27 to
+    0.0.28 (#15594)
+  * build(deps): bump rustls-webpki from 0.103.13 to 0.103.14
+    (#15596)
+  * build(deps): bump quote from 1.0.46 to 1.0.47 (#15597)
+  * build(deps): bump pkg-config from 0.3.33 to 0.3.34 (#15598)
+  * build(deps): bump rand_core from 0.10.0 to 0.10.1 (#15599)
+  * build(deps): bump google.golang.org/protobuf (#15576)
+  * build(deps): bump docker/setup-buildx-action (#15591)
+  * build(deps): bump h2 from 0.4.15 to 0.4.17 (#15592)
+  * build(deps): bump tokio-stream from 0.1.18 to 0.1.19 (#15589)
+  * build(deps): bump enum-ordinalize-derive from 4.4.1 to 4.4.2
+    (#15588)
+  * build(deps): bump the pest group with 4 updates (#15587)
+  * build(deps): bump the serde group across 1 directory with 4
+    updates (#15510)
+  * build(deps): bump the futures group with 8 updates (#15586)
+  * build(deps): bump docker/setup-buildx-action from 4.2.0 to
+    4.3.0 (#15590)
+  * build(deps): bump tokio-macros from 2.7.1 to 2.7.2 (#15555)
+  * build(deps): bump core-js from 3.49.0 to 3.50.0 in /web/app
+    (#15564)
+  * build(deps): bump rustls-pki-types from 1.15.0 to 1.15.1
+    (#15559)
+  * build(deps): bump DavidAnson/markdownlint-cli2-action (#15560)
+  * build(deps): bump Swatinem/rust-cache from 2.9.1 to 2.9.2
+    (#15565)
+  * build(deps): bump ipnet from 2.12.0 to 2.12.1 (#15573)
+  * build(deps): bump query-string from 9.4.1 to 9.5.0 in /web/app
+    (#15579)
+  * build(deps): bump async-trait from 0.1.89 to 0.1.92 (#15574)
+  * build(deps): bump helm.sh/helm/v3 from 3.21.3 to 3.21.4
+    (#15580)
+  * build(deps): bump golang.org/x/tools from 0.48.0 to 0.49.0
+    (#15581)
+  * build(deps): bump github.com/sirupsen/logrus from 1.9.4 to
+    1.10.0 (#15582)
+  * proxy: v2.366.0 (#15585)
+  * build(deps): bump oras.land/oras-go/v2 from 2.6.1 to 2.6.2
+    (#15569)
+- Update to version 26.8.2:
+  * build(deps): gateway api 1.5.1 support via linkerd-kubert
+    0.27.0 (#15567)
+  * build(deps): bump tokio-util from 0.7.18 to 0.7.19 (#15556)
+  * build(deps): bump getrandom (#15542)
+  * build(deps): bump postcss from 8.5.22 to 8.5.25 in /web/app
+    (#15553)
+  * build(deps): bump event-listener from 5.4.1 to 5.4.2 (#15543)
+  * build(deps-dev): bump webpack from 5.109.1 to 5.109.2 in
+    /web/app (#15546)
+  * build(deps-dev): bump webpack-cli from 7.2.1 to 7.2.2 in
+    /web/app (#15547)
+  * build(deps): bump google.golang.org/grpc from 1.82.1 to 1.83.0
+    (#15550)
+
+-------------------------------------------------------------------
 Tue Aug 04 05:19:04 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 26.8.1:
