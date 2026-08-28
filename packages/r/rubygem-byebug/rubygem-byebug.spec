@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-byebug
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,19 +34,15 @@ Release:        0
 %define rb_default_ruby_abi ruby:2.2.0 ruby:2.3.0 ruby:2.4.0
 %endif
 # /MANUAL
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  ruby-macros >= 5
 BuildRequires:  %{rubydevel >= 2.4.0}
 BuildRequires:  %{rubygem gem2rpm}
-BuildRequires:  ruby-macros >= 5
-BuildRequires:  update-alternatives
 URL:            https://github.com/deivid-rodriguez/byebug
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        rubygem-byebug-rpmlintrc
 Source2:        gem2rpm.yml
 Summary:        Ruby fast debugger - base + CLI
 License:        BSD-2-Clause
-Group:          Development/Languages/Ruby
-PreReq:         update-alternatives
 
 %description
 Byebug is a Ruby debugger. It's implemented using the
