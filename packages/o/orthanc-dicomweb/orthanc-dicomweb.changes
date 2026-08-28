@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Aug 23 18:19:11 UTC 2026 - Axel Braun <axel.braun@gmx.de>
+
+- version 1.24
+  * Allow searching DICOM resources by "Study ID" in the DICOMweb client Web user interface.
+  * New configuration option "OtherBinaryMode" to control how OB, OD,
+    OF, OL, OV, or OW value representations are encoded in WADO-RS
+    responses. Possible values: "BulkDataURI" (new default),
+    "InlineBinary", "ArrayOfValues". Previous releases used the
+    "ArrayOfValues" mode, which was valid but could be problematic for
+    large datasets. (contribution by Yusuf Sayita, Philips)
+  * Clarified error message when trying to access a single frame from a video in WADO-RS.
+  * Fixed rendering of multiframe RGB48 images.
+  * Fix: If the metadata cache attachment is missing from disk for a series, it is now generated again.
+
+-------------------------------------------------------------------
 Wed Apr 15 14:22:57 UTC 2026 - Axel Braun <axel.braun@gmx.de>
 
 - version 1.23
