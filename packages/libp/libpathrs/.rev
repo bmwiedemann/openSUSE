@@ -17,4 +17,12 @@ dependency of container tools like runc, podman, buildah, etc in the future.</co
   &lt;https://github.com/cyphar/libpathrs/releases/tag/v0.2.4&gt;</comment>
     <requestid>1336068</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>13a340c86307ebfe80402b771d6d3001</srcmd5>
+    <version>0.2.5</version>
+    <time>1787939695</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1374355</requestid>
+  </revision>
 </revisionlist>

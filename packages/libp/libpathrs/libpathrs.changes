@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Aug 28 05:53:54 UTC 2026 - Aleksa Sarai <cyphar@cyphar.com>
+
+- Update to libpathrs v0.2.5. Upstream release notes:
+  <https://github.com/cyphar/libpathrs/releases/tag/v0.2.4>
+
+  WARNING: This release includes breaking API changes which will cause issues
+  when rebuilding binaries. Previously-built binaries will continue to work
+  (thanks to symbol versioning) but any dependency of this package should
+  validate their builds.
+
+-------------------------------------------------------------------
 Tue Mar  3 13:55:52 UTC 2026 - Aleksa Sarai <cyphar@cyphar.com>
 
 - Update to libpathrs v0.2.4. Upstream release notes:

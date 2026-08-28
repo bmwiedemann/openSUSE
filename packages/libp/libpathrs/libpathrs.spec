@@ -1,7 +1,7 @@
 #
 # spec file for package libpathrs
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2026 Aleksa Sarai <cyphar@cyphar.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,21 +23,21 @@
 %define pyname  pathrs
 
 Name:           libpathrs
-Version:        0.2.4
+Version:        0.2.5
 Release:        0
 Summary:        Safe path resolution library for Linux
 Group:          Productivity/Security
-License:        MPL-2.0 OR LGPL-3.0-or-later
+License:        LGPL-3.0-or-later OR MPL-2.0
 URL:            https://github.com/cyphar/%{name}
 Source0:        https://github.com/cyphar/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.xz
 Source1:        https://github.com/cyphar/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 Source3:        vendor.tar.zst
-BuildRequires:  rust >= 1.63
 BuildRequires:  cargo
 BuildRequires:  cargo-packaging
-BuildRequires:  zstd
 BuildRequires:  fdupes
+BuildRequires:  rust >= 1.63
+BuildRequires:  zstd
 # We need to use lld in order to avoid issues with our version scripts.
 BuildRequires:  lld
 BuildRequires:  clang
@@ -94,11 +94,11 @@ Summary:        Python3 bindings for %{name}
 Group:          Development/Libraries/Python
 URL:            https://pypi.org/p/pathrs
 BuildRequires:  %{python_module cffi >= 1.10.0}
+BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 44}
 BuildRequires:  %{python_module toml if %python-base < 3.11}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module devel}
 BuildRequires:  python-rpm-macros
 Requires:       %{libname} = %{version}-%{release}
 %define python_subpackage_only 1
