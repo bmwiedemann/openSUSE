@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Aug 20 14:20:41 UTC 2026 - Marius Tomaschewski <mt@suse.com>
+
+- Fix two OOB reads in ni_capture_inspect_udp_header and improve:
+  [+ 0001-capture-fix-two-OOB-reads-in-ni_capture_inspect_udp.patch]
+  - Reject packets with ip_len < ihl to avoid a size_t underflow of the
+    UDP length, which the checksum truncates to uint16_t (bsc#1274627,
+    CVE-2026-71401).
+  - Set payload_len to the remaining payload, not ip_len, which over-read
+    the DHCP option walker by ihl + 8 bytes past the buffer (bsc#1274627,
+    CVE-2026-71402).
+  - Avoid checksumming packets that fail the length/protocol checks and
+    tidy up the debug messages (bsc#1274627).
+  - Fix underflow check in ni_dhcp4_option_next to handle option code
+    and length separately as the END and PAD options don't have length
+    (bsc#1274627).
+  Thanks to Daniel Birtwhistle for discovering and reporting the issues.
+
+-------------------------------------------------------------------
 Thu Jul 23 11:39:18 UTC 2026 - Jan Fooken <jan.fooken@suse.com>
 
 - Update to version 0.6.80

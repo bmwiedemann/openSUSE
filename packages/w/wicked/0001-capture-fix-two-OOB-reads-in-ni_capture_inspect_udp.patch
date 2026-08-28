@@ -1,0 +1,132 @@
+From 41da0defebf9f22a631d7a4919bec6131a68bf0b Mon Sep 17 00:00:00 2001
+From: Marius Tomaschewski <mt@suse.com>
+Date: Tue, 11 Aug 2026 10:43:28 +0200
+Subject: [PATCH 1/3] capture: fix two OOB reads in
+ ni_capture_inspect_udp_header
+Upstream: yes
+References: bsc#1274627,CVE-2026-71401,CVE-2026-71402
+
+- Reject packets with ip_len < ihl to avoid a size_t underflow of the
+  UDP length, which the checksum truncates to uint16_t (bsc#1274627,
+  CVE-2026-71401).
+- Set payload_len to the remaining payload, not ip_len, which over-read
+  the DHCP option walker by ihl + 8 bytes past the buffer (bsc#1274627,
+  CVE-2026-71402).
+
+Thanks to Daniel Birtwhistle for discovering and reporting the issues.
+
+diff --git a/src/capture.c b/src/capture.c
+index cfb4cccab..38d51b9ce 100644
+--- a/src/capture.c
++++ b/src/capture.c
+@@ -275,6 +275,11 @@ ni_capture_inspect_udp_header(void *data, size_t bytes, size_t *payload_len,
+ 		return NULL;
+ 	}
+ 
++	if (ip_len < ihl) {
++		ni_debug_socket("bad IP header length, ignoring");
++		return NULL;
++	}
++
+ 	if (bytes < ihl) {
+ 		ni_debug_socket("truncated IP header, ignoring");
+ 		return NULL;
+@@ -318,7 +323,7 @@ ni_capture_inspect_udp_header(void *data, size_t bytes, size_t *payload_len,
+ 		return NULL;
+ 	}
+ 
+-	*payload_len = ip_len;
++	*payload_len = bytes;
+ 	return data;
+ }
+ 
+-- 
+2.51.0
+
+
+From 79f0fe9cdddeb99cd6d64dddc73520826d80547d Mon Sep 17 00:00:00 2001
+From: Marius Tomaschewski <mt@suse.com>
+Date: Tue, 11 Aug 2026 11:56:39 +0200
+Subject: [PATCH 2/3] capture: verify IP header checksum after the length
+ checks
+Upstream: yes
+References: bsc#1274627
+
+Avoid checksumming packets that fail the length/protocol checks
+and tidy up the debug messages (bsc#1274627).
+
+diff --git a/src/capture.c b/src/capture.c
+index 38d51b9ce..43918039c 100644
+--- a/src/capture.c
++++ b/src/capture.c
+@@ -285,18 +285,14 @@ ni_capture_inspect_udp_header(void *data, size_t bytes, size_t *payload_len,
+ 		return NULL;
+ 	}
+ 
+-	if (checksum(iph, ihl) != 0) {
+-		ni_debug_socket("bad IP header checksum, ignoring");
+-		return NULL;
+-	}
+-
+ 	if (bytes < ip_len) {
+ 		ni_debug_socket("truncated IP packet, ignoring");
+ 		return NULL;
+ 	}
+ 
+ 	if (bytes > ip_len) {
+-		ni_debug_socket("Received %x bytes, but ip_len is %x. Adjusting.", (int)bytes, ip_len);
++		ni_debug_socket("Received %zx bytes, but ip_len is %x. Adjusting.",
++				bytes, ip_len);
+ 		bytes = ip_len;
+ 	}
+ 
+@@ -309,7 +305,12 @@ ni_capture_inspect_udp_header(void *data, size_t bytes, size_t *payload_len,
+ 	}
+ 
+ 	if (bytes < sizeof(*uh)) {
+-		ni_debug_socket("truncated IP packet, ignoring");
++		ni_debug_socket("truncated UDP header, ignoring");
++		return NULL;
++	}
++
++	if (checksum(iph, ihl) != 0) {
++		ni_debug_socket("bad IP header checksum, ignoring");
+ 		return NULL;
+ 	}
+ 
+-- 
+2.51.0
+
+
+From 4675b7aeb95655c865445d27991bb0d79a526029 Mon Sep 17 00:00:00 2001
+From: Marius Tomaschewski <mt@suse.com>
+Date: Thu, 20 Aug 2026 15:41:31 +0200
+Subject: [PATCH 3/3] dhcp4: fix underflow check in ni_dhcp4_option_next
+Upstream: yes
+References: bsc#1274627
+
+Fix to check for option code and length in the message buffer
+separately as the END and PAD options don't have any length.
+
+diff --git a/src/dhcp4/protocol.c b/src/dhcp4/protocol.c
+index afd88b6aa..0745b35d1 100644
+--- a/src/dhcp4/protocol.c
++++ b/src/dhcp4/protocol.c
+@@ -223,11 +223,13 @@ ni_dhcp4_option_next(ni_buffer_t *bp, ni_buffer_t *optbuf)
+ 		return -1;
+ 	if (bp->head == bp->tail)
+ 		return DHCP4_END;
+-	if (bp->tail - bp->head < 2)
++	if (!(bp->tail > bp->head))
+ 		goto underflow;
+ 
+ 	code = bp->base[bp->head++];
+ 	if (code != DHCP4_PAD && code != DHCP4_END) {
++		if (!(bp->tail > bp->head))
++			goto underflow;
+ 		count = bp->base[bp->head++];
+ 		if (bp->tail - bp->head < count)
+ 			goto underflow;
+-- 
+2.51.0
+
