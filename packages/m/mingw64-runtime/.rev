@@ -56,4 +56,12 @@
 [synchronization between mingw32/64-* causes changelog edits]</comment>
     <requestid>1244891</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>fa4d52d1b0666fc77f894297dd7b19c6</srcmd5>
+    <version>14.0.0</version>
+    <time>1787939495</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 14</comment>
+    <requestid>1374245</requestid>
+  </revision>
 </revisionlist>

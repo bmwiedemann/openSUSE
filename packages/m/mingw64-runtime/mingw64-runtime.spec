@@ -17,7 +17,7 @@
 
 
 Name:           mingw64-runtime
-Version:        12.0.0
+Version:        14.0.0
 Release:        0
 Summary:        MinGW-w64 runtime libraries for Win64
 License:        SUSE-Public-Domain
@@ -38,7 +38,7 @@ BuildRequires:  xz
 Requires:       mingw64-headers <= %version
 # Once this is installed, mingw64-bootstrap (binary bootstrapper) is no
 # longer needed.
-Obsoletes:      mingw64-runtime-bootstrap
+Obsoletes:      mingw64-runtime-bootstrap < %{version}
 BuildArch:      noarch
 %_mingw64_package_header_debug
 
@@ -49,8 +49,10 @@ MinGW Win64 cross-compiler runtime, base libraries.
 %autosetup -n mingw-w64-v%version/mingw-w64-crt
 
 %build
-%_mingw64_configure --disable-lib32 --enable-lib64 \
-	--with-default-msvcrt=msvcrt
+%_mingw64_configure \
+    --disable-lib32 \
+    --enable-lib64 \
+    --with-default-msvcrt=%{?_mingw64_crt:%{_mingw64_crt}}%{!?_mingw64_crt:msvcrt}
 %make_build
 
 %install
