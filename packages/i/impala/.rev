@@ -53,4 +53,13 @@
   * Fix no station found error when dis/connecting</comment>
     <requestid>1373877</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2d6ee3ec5a0b269c6c3f4748af924c0b</srcmd5>
+    <version>0.9.0</version>
+    <time>1787939320</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.9.0:
+  * Add configurable colors</comment>
+    <requestid>1374160</requestid>
+  </revision>
 </revisionlist>
