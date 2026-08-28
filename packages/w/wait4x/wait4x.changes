@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Fri Aug 28 08:50:49 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.7.1:
+  * Bump github.com/moby/go-archive from 0.2.0 to 0.3.0
+- Update to version 3.7.0:
+  * Highlights
+    - The waiter no longer races or leaks memory when checks run in
+      parallel
+    - CI runs Go 1.26.6, and GitHub Actions and base images are
+      pinned by digest
+  * Exciting New Features
+    - tag debian images in docker bake in #524
+  * Enhancements
+    - update CI to Go 1.26 in #527
+    - pin ci actions and image digests in #538
+    - upgrade runtime packages and add envrc in #540
+  * Bug Fixes
+    - Fix waiter race condition and memory leak in #475
+    - stop pinning wait4x.dev IPs in DNS tests in #523
+    - wait until mysql is ready in tests in #526
+  * Dependency Updates
+    - Bump the github-actions group across 1 directory with 2
+      updates in #470
+    - Bump the testcontainers group with 7 updates in #469
+    - Bump golang.org/x/net from 0.40.0 to 0.49.0 in #503
+    - Bump the github-actions group across 1 directory with 8
+      updates in #522
+    - Bump the docker group across 1 directory with 2 updates in
+      #525
+    - Bump the testcontainers group across 1 directory with 7
+      updates in #488
+    - Bump go.mongodb.org/mongo-driver from 1.17.4 to 1.17.9 in
+      #519
+    - Bump github.com/tidwall/gjson from 1.18.0 to 1.19.0 in #516
+    - Bump github.com/segmentio/kafka-go from 0.4.48 to 0.4.51 in
+      #520
+    - Bump github.com/lib/pq from 1.10.9 to 1.12.3 in #521
+    - Bump filippo.io/edwards25519 from 1.1.0 to 1.1.1 in #528
+    - Bump github.com/antchfx/htmlquery from 1.3.4 to 1.3.6 in #517
+    - Bump github.com/miekg/dns from 1.1.68 to 1.1.72 in #507
+    - Bump go.temporal.io/api from 1.51.0 to 1.63.5 in #518
+    - Bump github.com/stretchr/testify from 1.11.1 to 1.12.0 in
+      #531
+    - Bump github.com/go-sql-driver/mysql from 1.9.3 to 1.10.0 in
+      #534
+    - Bump github.com/fatih/color from 1.18.0 to 1.19.0 in #536
+    - Bump github.com/rabbitmq/amqp091-go from 1.10.0 to 1.13.0 in
+      #535
+    - Bump golang.org/x/net from 0.56.0 to 0.58.0 in #533
+    - Bump github.com/rs/zerolog from 1.34.0 to 1.35.1 in #532
+    - Bump github.com/go-logr/logr from 1.4.3 to 1.4.4 in #537
+    - Bump github.com/spf13/cobra from 1.9.1 to 1.10.2 in #496
+    - Bump mvdan.cc/sh/v3 from 3.12.0 to 3.13.1 in #530
+  * Other Changes
+    - Update mailmap in #494
+
+-------------------------------------------------------------------
 Thu Feb 26 07:35:09 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package wait4x: Wait4X allows you to wait for a port or a

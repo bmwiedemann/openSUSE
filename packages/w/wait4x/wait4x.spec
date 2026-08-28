@@ -17,14 +17,14 @@
 
 
 Name:           wait4x
-Version:        3.6.0
+Version:        3.7.1
 Release:        0
 Summary:        Wait for a port or a service to enter the requested state
 License:        Apache-2.0
 URL:            https://github.com/wait4x/wait4x
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) >= 1.24
+BuildRequires:  go1.25 >= 1.25.4
 
 %description
 Wait4X is a lightweight, zero-dependency tool to wait for services to be ready.
