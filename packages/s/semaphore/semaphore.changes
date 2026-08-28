@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Aug 28 08:28:17 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.19.11 (.9 and .10 were not released):
+  * 0c3f373 test(db): add tests for db migration
+- Update to version 2.19.8:
+  * Bugfixes
+    - Fixed SQLite migration
+
+-------------------------------------------------------------------
 Wed Aug 12 06:29:35 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.19.7 (no releases between 2.18.29 and this):
