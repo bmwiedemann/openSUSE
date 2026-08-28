@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 28 06:17:32 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.11.2:
+  * upgrade go to v1.27 to mitigate #613
+
+-------------------------------------------------------------------
 Mon Aug 10 05:18:05 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.11.1:

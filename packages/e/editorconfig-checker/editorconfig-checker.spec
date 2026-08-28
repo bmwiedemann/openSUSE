@@ -19,7 +19,7 @@
 %define executable_name ec
 
 Name:           editorconfig-checker
-Version:        3.11.1
+Version:        3.11.2
 Release:        0
 Summary:        Tool to verify that your files are in harmony with your .editorconfig
 License:        MIT
@@ -28,8 +28,9 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go >= 1.22
 BuildRequires:  zsh
+# really require 1.27.0, not rc3 or similar
+BuildRequires:  go1.27 >= 1.27.0
 Provides:       ec = %{version}
 
 %description
@@ -47,12 +48,10 @@ editorconfig.org.
 go build \
    -mod=vendor \
    -buildmode=pie \
-   -ldflags=" \
-   -X main.version=v%{version}" \
+   -ldflags="-X main.version=v%{version}" \
    -o bin/%{executable_name} ./cmd/%{name}
 
 %install
-# Install the binary.
 install -D -m 0755 bin/%{executable_name} %{buildroot}/%{_bindir}/%{executable_name}
 
 %check
