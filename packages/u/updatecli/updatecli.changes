@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Aug 28 07:26:48 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.120.1:
+  * Bug Fixes
+    - fix: skip resource depends on skipped source (#9916)
+    - fix: go module cooldown with pseudo version (#9917)
+    - fix(yaml): pass keyonly condition with searchpattern when at
+      least one file matches (#9889)
+    - fix(temurin): include specificversion in ReportConfig (#9850)
+  * Maintenance
+    - deps: Bump Golang version to 1.26.6 (#9925)
+    - deps: bump Updatecli GH action to v3.5.0 (#9901)
+    - deps: bump Updatecli GH action to v0.120.0 (#9890)
+    - deps(updatecli/policies): bump all policies (#9877)
+    - deps(go): bump module go.opentelemetry.io/otel/trace to
+      v1.45.0 (#9861)
+    - chore(dockerfile): upgrade node version (#9822)
+  * Documentation
+    - Add checklist item for manual testing (#9905)
+
+-------------------------------------------------------------------
 Wed Aug 05 12:29:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.120.0:
