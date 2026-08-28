@@ -1,7 +1,7 @@
 #
 # spec file for package git-lfs
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %bcond_without    build_docs
 
 Name:           git-lfs
-Version:        3.7.1
+Version:        3.8.0
 Release:        0
 Summary:        Git extension for versioning large files
 License:        MIT

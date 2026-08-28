@@ -1,4 +1,120 @@
 -------------------------------------------------------------------
+Fri Aug 28 08:25:26 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 3.8.0:
+  This release is a feature release which adds support for
+  zstd-compressed object downloads and introduces several new
+  options, including the ability to fetch Git LFS objects for a
+  list of references piped to standard input and the ability to
+  limit how long Git LFS will wait when instructed by a server to
+  retry an HTTP request.
+  Git LFS now determines the case sensitivity of filesystems from
+  the core.ignoreCase Git configuration option, respects global and
+  system-wide Git attribute files when migrating repositories, and
+  tries the default Git LFS HTTP URL derived from an SSH URL when
+  HTTP authentication via SSH is not available.
+  This Git LFS release improves SSH session reuse, parses invalid
+  custom transfer adapter configurations and invalid Git attribute
+  patterns without crashing, handles file deletion conflicts on
+  Windows in the same manner as Git, resolves remote-tracking
+  branches for downloads correctly, avoids re-reading working tree
+  files during clean filter operations since the files may be in an
+  inconsistent state, and terminates lengthy or endless HTTP
+  authentication sequences after a limited number of requests.
+  Note that we now provide official packages and support for
+  versions of Linux distributions based on Debian 13 ("trixie"). We
+  also now provide a source code package with all of our Go module
+  dependencies in a vendor directory.
+  * Features
+    - Enhance LFS transfer retries with maximum retry time limit
+      #6304
+    - fall back to guessed endpoint when git-lfs-authenticate is
+      unavailable #6286
+    - add lfs.httpDownloadEncoding with zstd and gzip support #6196
+    - Use core.ignorecase to determine case sensitivity #6212
+    - Full support of special attributes in migrate #6170
+    - feat: git lfs pointer support extensions #6093
+    - fetch: allow providing refs via stdin #6088
+  * Bugs
+    - gitattr: handle invalid wildmatch patterns #6324
+    - filter-process: Ignore file size in working copy when
+      cleaning #6011
+    - Handle unknown object sizes in progress log and fix
+      throttling #6288
+    - Fix standalone adapter crash and ignore invalid custom
+      adapter names #6252
+    - Reuse SSH sessions when possible and only close at client
+      exit #6266
+    - locking: ignore missing files after unlock #6244
+    - Fix remote ref resolution for download operations #6250
+    - Fix concurrent map/struct races in sshCache and lazyManifest
+      #6243
+    - Fix --remote option when a git push remote is set #6228
+    - Fix adapter reuse when server returns empty transfer adapter
+      name #6240
+    - commands: fix format string type mismatch in lockverifier
+      #6237
+    - Fix extra header duplication on retry #6204
+    - tools: add RobustRemove() for Windows to handle file lock
+      errors #6221
+    - transform DoWithAuth from recursive to loop approach to
+      prevent endless authentication attempts #6018
+    - lfshttp: fix auth response ExpiresIn data type #6200
+    - commands: show root help for -h #6172
+    - Handle git lfs checkout merge conflict option file paths
+      correctly #6136
+    - Support Macro in migrate --fixup #6126
+  * Misc
+    - Add missing patch version entries in primary change log #6334
+    - Update Linux distributions and include Debian ARM64 links in
+      releases #6333
+    - Upgrade to Go v1.27 #6332
+    - Remove stale Linux distributions before v3.8.0 release #6291
+    - t/t-pre-push.sh: use calc_oid_file in URL optimization test
+      #6287
+    - Update tests to dynamically match internal program limits
+      #6285
+    - Update Go modules and Dependabot configuration #6278
+    - Add corrupt object download tests #6274
+    - Fix and revise chunked transfer encoding test #6273
+    - Temporarily restore concurrency limit to historical fixed
+      default #6258
+    - Simplify client structure initializations #6254
+    - Use consistent exit functions for all commands #6255
+    - Add --add-i386 option to RPM build script #6251
+    - Update Linux distribution package list for v3.8.0 release
+      #6248
+    - Scale default concurrent transfers by CPU count #6241
+    - Fix and refactor HTTP encoding and retry tests #6207
+    - Update Windows release signing action #6222
+    - Simplify object storage directory traversals #6223
+    - Upgrade to Go v1.26 and build separate Windows resource files
+      on 386 and amd64 platforms #6220
+    - Various gopls lint cleanups for package git #6211
+    - Log additional HTTP request headers when tracing #6195
+    - Docs: recommend bracket-glob patterns for cross-platform case
+      safety in FAQ (refs #6187) #6192
+    - Improve formatting of manual page synopses #6188
+    - docs(README): add mise alternative method installation #6169
+    - Makefile,script: add vendored source release asset #6159
+    - Correct and improve grep -v and grep -c usage in tests #6151
+    - Add missing backticks around --no-modify-attrs #6154
+    - Add missing options to manual pages and make JSON options
+      consistent #6152
+    - Detect invalid object IDs and repo names in test functions
+      #6142
+    - Use relative paths exclusively for internal checkout and pull
+      operations #6140
+    - Fix manual page formatting errors from AsciiDoc conversion
+      #6138
+    - Add a FAQ entry re memory usage by Git when cloning #6137
+    - docs: Provide clearer instructions for non destructive
+      imports #6111
+    - Upgrade to Go 1.25 #6116
+    - commands: use Exit() function to exit with a warning message
+      #6095
+
+-------------------------------------------------------------------
 Fri Oct 17 08:10:35 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 3.7.1: (boo#1252259 CVE-2025-26625)
