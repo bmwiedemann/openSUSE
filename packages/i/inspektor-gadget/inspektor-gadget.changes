@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Aug 28 08:06:23 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.55.1:
+  * Bugfixes
+    - [BACKPORT] Various fixes in #5763:
+      - ELF/uprobe resource exhaustion: crafted binaries from
+        untrusted containers could exhaust memory or CPU in the
+        privileged process. Symbol parsing now uses a bounded
+        streaming iterator, USDT notes are capped at 10,000, and
+        debuginfod files are size-checked before parsing.
+      - runc / container hook: the fanotify listener now only
+        accepts exec events from root, validates container IDs
+        against runc's format (blocking log injection and path
+        traversal), and consumes one event per read(), fixing queue
+        overflows and lost container events.
+
+-------------------------------------------------------------------
 Tue Aug 04 05:19:56 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.55.0:
