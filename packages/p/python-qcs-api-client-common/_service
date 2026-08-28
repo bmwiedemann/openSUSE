@@ -1,0 +1,8 @@
+<services>
+  <service name="download_files" mode="manual"/>
+  <service name="cargo_vendor" mode="manual">
+    <param name="srctar">qcs_api_client_common-*.tar.gz</param>
+    <param name="compression">zst</param>
+    <param name="i-accept-the-risk">RUSTSEC-2023-0071</param>
+  </service>
+</services>
