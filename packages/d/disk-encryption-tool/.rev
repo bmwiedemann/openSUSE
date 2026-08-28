@@ -172,4 +172,14 @@
     <comment></comment>
     <requestid>1336588</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>adf90a1433f69c3b26450b8cebec9a8c</srcmd5>
+    <version>1+git20260827.0550628</version>
+    <time>1787939210</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1+git20260827.0550628:
+  * Comment why there is no timeout in the key
+  * test: update the enrollment with the new keyring names (forwarded request 1374054 from aplanas)</comment>
+    <requestid>1374055</requestid>
+  </revision>
 </revisionlist>

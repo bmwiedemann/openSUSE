@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 27 11:59:02 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20260827.0550628:
+  * Comment why there is no timeout in the key
+  * test: update the enrollment with the new keyring names
+
+-------------------------------------------------------------------
 Wed Mar 04 20:19:11 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to version 1+git20260304.d12960d:
