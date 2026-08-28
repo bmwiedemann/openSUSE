@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 27 04:27:13 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.7.0:
+  * Fix low battery alert on systems without batteries (#186)
+
+-------------------------------------------------------------------
 Wed Aug 19 11:38:20 UTC 2026 - rrahl0@opensuse.org
 
 - Update to version 1.6.0:

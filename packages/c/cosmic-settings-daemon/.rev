@@ -7,4 +7,13 @@
     <comment></comment>
     <requestid>1372656</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b4adee8811265ead83859cc0b0008770</srcmd5>
+    <version>1.7.0</version>
+    <time>1787939833</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.7.0:
+  * Fix low battery alert on systems without batteries (#186)</comment>
+    <requestid>1374419</requestid>
+  </revision>
 </revisionlist>
