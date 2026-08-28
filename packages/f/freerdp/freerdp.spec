@@ -42,7 +42,7 @@
 %define uwac_package %{uwac_version}-%{uwac_version}
 
 Name:           freerdp
-Version:        3.30.0
+Version:        3.31.0
 Release:        0
 Summary:        Remote Desktop Viewer Client
 License:        Apache-2.0
@@ -67,8 +67,10 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  libgsm-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(alsa)
+BuildRequires:  pkgconfig(aom)
 BuildRequires:  pkgconfig(cairo)
 %{?_with_faad2:BuildRequires:  pkgconfig(faad2)}
+BuildRequires:  pkgconfig(dav1d)
 BuildRequires:  pkgconfig(fuse3)
 BuildRequires:  pkgconfig(icu-i18n)
 %{?_with_gss:BuildRequires:  pkgconfig(krb5) >= 1.13}
@@ -100,6 +102,7 @@ BuildRequires:  pkgconfig(SDL2_ttf)
 BuildRequires:  pkgconfig(sdl2)
 %endif
 %{?_with_sso_mib:BuildRequires:  pkgconfig(sso-mib)}
+BuildRequires:  pkgconfig(libyuv)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-scanner)
 BuildRequires:  pkgconfig(x11)
@@ -321,6 +324,9 @@ export CXX=g++-12
         -DWITH_XTEST=ON \
         -DWITH_XV=ON \
         -DWITH_ZLIB=ON \
+        -DWITH_AOM=ON \
+        -DWITH_DAV1D=ON \
+        -DWITH_YUV=ON \
 %ifarch x86_64
         -DWITH_SSE2=ON \
 %else
