@@ -228,4 +228,23 @@ bugowner: varkoly</comment>
     <comment>- Update to 2.4.4 (boo#1265146 boo#1265147 boo#1265148 boo#1265149 boo#1265150)</comment>
     <requestid>1352803</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>637ddac80eb0f6b9d98a6037cb16f642</srcmd5>
+    <version>2.4.5</version>
+    <time>1787939775</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.4.5 (boo#1276794 boo#1276795 boo#1276799 boo#1276800
+  boo#1276802 boo#1276804 boo#1276807 boo#1276809 boo#1276810
+  boo#1276811 boo#1276812 boo#1276813 boo#1276815 boo#1276817
+  boo#1276819 boo#1276820 boo#1276824 boo#1276826 boo#1276827
+  boo#1276828 boo#1276829 boo#1276830 boo#1276833 boo#1276835
+  boo#1276837)
+
+- The following man pages are currently not available as they are
+  missing in the tarball. They will be added back to the package
+  when the upstream issue is solved:
+  doveadm-sieve.1 sieve-dump.1 sieve-filter.1 sieve-test.1 sievec.1
+  pigeonhole.7</comment>
+    <requestid>1374366</requestid>
+  </revision>
 </revisionlist>

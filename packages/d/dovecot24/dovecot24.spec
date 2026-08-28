@@ -17,8 +17,8 @@
 
 
 %define pkg_name dovecot
-%define dovecot_version 2.4.4
-%define dovecot_pigeonhole_version 2.4.4
+%define dovecot_version 2.4.5
+%define dovecot_pigeonhole_version 2.4.5
 %define dovecot_branch  2.4
 %define dovecot_pigeonhole_source_dir %{pkg_name}-pigeonhole-%{dovecot_pigeonhole_version}
 %define dovecot_pigeonhole_docdir     %{_docdir}/%{pkg_name}/dovecot-pigeonhole
@@ -48,7 +48,7 @@
 %endif
 
 Name:           dovecot24
-Version:        2.4.4
+Version:        2.4.5
 Release:        0
 Summary:        IMAP and POP3 Server Written Primarily with Security in Mind
 License:        BSD-3-Clause AND LGPL-2.1-or-later AND MIT
@@ -632,14 +632,14 @@ fi
 %{_mandir}/man1/dovecot-lda.1%{?ext_man}
 %{_mandir}/man1/dovecot-sysreport.1%{?ext_man}
 %{_mandir}/man1/dovecot.1%{?ext_man}
-%{_mandir}/man1/doveadm-sieve.1%{?ext_man}
-%{_mandir}/man1/sieve-dump.1%{?ext_man}
-%{_mandir}/man1/sieve-filter.1%{?ext_man}
-%{_mandir}/man1/sieve-test.1%{?ext_man}
-%{_mandir}/man1/sievec.1%{?ext_man}
+#sieve# %{_mandir}/man1/doveadm-sieve.1%{?ext_man}
+#sieve# %{_mandir}/man1/sieve-dump.1%{?ext_man}
+#sieve# %{_mandir}/man1/sieve-filter.1%{?ext_man}
+#sieve# %{_mandir}/man1/sieve-test.1%{?ext_man}
+#sieve# %{_mandir}/man1/sievec.1%{?ext_man}
 %{_mandir}/man1/sieved.1%{?ext_man}
 %{_mandir}/man7/doveadm-search-query.7%{?ext_man}
-%{_mandir}/man7/pigeonhole.7%{?ext_man}
+#sieve# %{_mandir}/man7/pigeonhole.7%{?ext_man}
 # doc
 %doc %{_docdir}/%{pkg_name}
 %if %{with solr}
