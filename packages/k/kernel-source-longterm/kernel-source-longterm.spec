@@ -17,8 +17,8 @@
 
 
 %define srcversion 6.18
-%define patchversion 6.18.46
-%define git_commit 52799bc82d94b4ab5ea5d8c9aa1f2e274cbfa85c
+%define patchversion 6.18.47
+%define git_commit 9b7efed7d18cce335fa9256b447c5869feb4a956
 %define variant -longterm%{nil}
 %define gcc_package gcc
 %define gcc_compiler gcc
@@ -28,9 +28,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,arch-symbols,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-source-longterm
-Version:        6.18.46
+Version:        6.18.47
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g52799bc
+Release:        <RELEASE>.g9b7efed
 %else
 Release:        0
 %endif
@@ -127,6 +127,9 @@ Recommends:     openssl-devel
 # pahole needed for BTF
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150300
 Recommends:     dwarves >= 1.22
+%endif
+%if 0%{?suse_version} > 1610
+Recommends:     libdw-devel
 %endif
 # dracut no longer carries installkernel
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150300

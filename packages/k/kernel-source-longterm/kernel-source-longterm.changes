@@ -1,4 +1,183 @@
 -------------------------------------------------------------------
+Thu Aug 27 16:22:47 CEST 2026 - rfrohl@suse.com
+
+- Linux 6.18.47 (bsc#1258210).
+- net: gro: properly validate BIG TCP aggregation criteria
+  (bsc#1258210).
+- ptp: vmclock: prevent read-only mappings from becoming writable
+  (bsc#1258210).
+- futex: Avoid private hash use-after-free on final put
+  (bsc#1258210).
+- Bluetooth: hci_aml: validate firmware segment lengths
+  (bsc#1258210).
+- Bluetooth: MGMT: reject HCI_CMD_SYNC params_len above 255
+  (bsc#1258210).
+- Bluetooth: ISO: zero the sockaddr before returning it in getname
+  (bsc#1258210).
+- Bluetooth: ISO: do not force BT_LISTEN after a failed BIG sync
+  (bsc#1258210).
+- Bluetooth: hci_sync: Fix accept list UAF during suspend
+  (bsc#1258210).
+- Bluetooth: hci_event: validate LE Set CIG Parameters response
+  (bsc#1258210).
+- Bluetooth: hci_event: fix LE list UAF on reset (bsc#1258210).
+- HID: hyperv: validate initial device info bounds (bsc#1258210).
+- HID: uclogic: fix use-after-free of inrange_timer on remove
+  (bsc#1258210).
+- HID: sensor: custom: Fix use-after-free in enable_sensor
+  (bsc#1258210).
+- HID: core: fix number/pointer type confusion on long items
+  (bsc#1258210).
+- HID: nintendo: stop device IO before hid_hw_stop on probe
+  failure (bsc#1258210).
+- HID: nintendo: register input device after capabilities are set
+  (bsc#1258210).
+- HID: nintendo: fix out-of-bounds read in
+  joycon_ctlr_read_handler() (bsc#1258210).
+- futex: Fix might_sleep() warning in futex_pivot_pending()
+  (bsc#1258210).
+- futex: Fix race on the initial mm->futex.phash.ref allocation
+  (bsc#1258210).
+- futex/pi: Plug private futex exec() race (bsc#1258210).
+- futex: Sanitize and document task_struct::futex::state
+  transitions (bsc#1258210).
+- futex/pi: Reject cross-mm private futex owners (bsc#1258210).
+- Input: atkbd - skip deactivate for HONOR ZQC-P (bsc#1258210).
+- Input: atkbd - skip deactivate for HONOR FMB-P's internal
+  keyboard (bsc#1258210).
+- xfrm: fix sk_dst_cache double-free in xfrm_user_policy()
+  (bsc#1258210).
+- net/ionic: avoid OOB TX partner lookup for hwstamp RXQ
+  (bsc#1258210).
+- HID: pidff: fix OOB write when hid->inputs is empty
+  (bsc#1258210).
+- HID: core: fix OOB read of field->usage in hid_set_field()
+  (bsc#1258210).
+- HID: magicmouse: Prevent out-of-bounds (OOB) read during
+  DOUBLE_REPORT_ID (bsc#1258210).
+- HID: magicmouse: do not keep a stale msc->input if no input
+  is claimed (bsc#1258210).
+- HID: magicmouse: re-enable multitouch after reset-resume
+  (bsc#1258210).
+- HID: magicmouse: fix battery reporting for Bluetooth Magic
+  Trackpad USB-C (bsc#1258210).
+- ASoC: codecs: lpass-tx-macro: Fix enum kcontrol accesses
+  (bsc#1258210).
+- mptcp: pm: fix memory leak from alloc-during-teardown race
+  (bsc#1258210).
+- mptcp: pm: uniform announced addresses helpers (bsc#1258210).
+- mptcp: pm: rename add_entry structure to add_addr (bsc#1258210).
+- mptcp: pm: use for_each_subflow helper (bsc#1258210).
+- nvmet: pci-epf: put CQ ref on create_cq mapping failure
+  (bsc#1258210).
+- nvmet: pci-epf: fix use-after-free in
+  nvmet_pci_epf_exec_iod_work() (bsc#1258210).
+- nvmet-tcp: Do not WARN on remotely-controlled oversized SGL
+  allocations (bsc#1258210).
+- nvmet-tcp: bound SGL data length before allocating command
+  buffers (bsc#1258210).
+- nvmet-fc: fix invalid free in LS IOD error path (bsc#1258210).
+- nvmet-auth: zero the AUTH_RECEIVE response buffer (bsc#1258210).
+- dmaengine: fsl-edma: Add error handling for devm_kasprintf
+  (bsc#1258210).
+- mailbox: mchp-ipc-sbi: Add null check for devm_kasprintf()
+  (bsc#1258210).
+- ipv6: fix use-after-free in ip6_finish_output2() (bsc#1258210).
+- ipv4: reject undersized MTUs in ip_do_fragment() (bsc#1258210).
+- drm/xe: Fix DPT allocation paths (bsc#1258210).
+- nfc: nci: free destination parameters when closing a connection
+  (bsc#1258210).
+- nfc: nci: fix uninit-value in the RF discover/activated NTF
+  handlers (bsc#1258210).
+- nfc: nci: fix out-of-bounds write in nci_target_auto_activated()
+  (bsc#1258210).
+- nfc: nci: add data_len bound checks to activation parameter
+  extractors (bsc#1258210).
+- nfc: st21nfca: validate ATR_REQ length against the received
+  frame (bsc#1258210).
+- nfc: pn533: purge fragmented skbs during cleanup (bsc#1258210).
+- nfc: llcp: reject PDUs shorter than the LLCP header
+  (bsc#1258210).
+- nfc: llcp: fix OOB read and u8 offset wrap in TLV parsers
+  (bsc#1258210).
+- nfc: llcp: bound the connect_sn TLV walk to the skb
+  (bsc#1258210).
+- nfc: microread: validate target discovery payload lengths
+  (bsc#1258210).
+- nfc: fdp: bound the device-reported read length and fix an
+  skb leak (bsc#1258210).
+- nfc: digital: clamp SENSF_RES length to the destination buffer
+  (bsc#1258210).
+- libceph: fix OOB read in decode_watchers() via missing bounds
+  check (bsc#1258210).
+- xfs: validate attr entry pointer before field access
+  (bsc#1258210).
+- ext4: fix incorrect function call when initializing s_resgid
+  (bsc#1258210).
+- ext4: don't enable DAX on new encrypted files (bsc#1258210).
+- ext4: propagate errors from fast commit range replay
+  (bsc#1258210).
+- ext4: avoid tail write_begin walk for uptodate folios
+  (bsc#1258210).
+- ext4: clear error before retrying inode xattr space fallback
+  (bsc#1258210).
+- nilfs2: reject invalid block index in GC ioctl (bsc#1258210).
+- ext4: stop retrying saturated xattr cache entries (bsc#1258210).
+- kcov: fix data corruption and race conditions on PREEMPT_RT
+  (bsc#1258210).
+- null_blk: fix UBSAN shift-out-of-bounds when zone_size is 0
+  or overflows (bsc#1258210).
+- ocfs2: fix missing metadata reservation for large xattrs
+  (bsc#1258210).
+- io_uring/uring_cmd: don't skip completion for a synchronous
+  multishot cmd (bsc#1258210).
+- io_uring/rsrc: fix folio size overflow in io_vec_fill_bvec()
+  (bsc#1258210).
+- io_uring/io-wq: fix worker accounting when canceling creation
+  callbacks (bsc#1258210).
+- io_uring/cmd: fix iovec leak when the async cmd is not recycled
+  (bsc#1258210).
+- ALSA: dummy: Check card index validity at probe (bsc#1258210).
+- io_uring/futex: don't mark futex wake requests as inflight
+  (bsc#1258210).
+- nvmet: fix NULL pointer dereference in
+  nvmet_execute_identify_nslist() (bsc#1258210).
+- rndis_host: add overflow check in rndis_rx_fixup() (bsc#1258210).
+- ALSA: scarlett2: Use a private URB for the notification endpoint
+  (bsc#1258210).
+- ALSA: FCP: Use a private URB for the notification endpoint
+  (bsc#1258210).
+- iommu/iommufd: Fix NULL pointer deref in
+  iommufd_ioas_change_process when racing with iopt_map_file_pages
+  (bsc#1258210).
+- iommu/tegra241-cmdqv: Fix CMD_SYNC use-after-free on teardown
+  (bsc#1258210).
+- Bluetooth: RFCOMM: take rfcomm_mutex for the deferred setup
+  accept (bsc#1258210).
+- PCI: host-generic: Fix NULL pointer dereference on 32-bit CAM
+  systems (bsc#1258210).
+- xfs: don't livelock in scrub on a circular unlinked list
+  (bsc#1258210).
+- xfs: hoist per-bucket unlinked list check to helper
+  (bsc#1258210).
+- xfs: rtsummary scrub should treat rtbitmap corruption errors
+  as an xref error (bsc#1258210).
+- xfs: add a xchk_ip_set_corrupt helper (bsc#1258210).
+- serial: sc16is7xx: enable THRI before filling TX FIFO
+  (bsc#1258210).
+- serial: sc16is7xx: use guards for simple mutex locks
+  (bsc#1258210).
+- serial: sc16is7xx: rename EFR mutex with generic name
+  (bsc#1258210).
+- commit 344a5b8
+
+-------------------------------------------------------------------
+Tue Aug 25 22:41:04 CEST 2026 - rbm@suse.com
+
+- kernel-source: Recommend libdw-devel (bsc#1276665)
+- commit b0e41fa
+
+-------------------------------------------------------------------
 Sun Aug 23 15:42:17 CEST 2026 - rfrohl@suse.com
 
 - Linux 6.18.46 (bsc#1258210).
