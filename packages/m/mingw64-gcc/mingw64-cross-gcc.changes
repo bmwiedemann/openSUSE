@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Aug 26 16:15:52 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 16.2.0
+  * Improved C++23/26 support
+  * ASCII art visualizations, hierarchial error reporting, HTML
+    diagnostics
+  * Extended support for newer OpenMP 5.x and 6.x functionality
+  * x86: Added support for new instruction extensions like AVX10.2,
+    APX features (except CFCMOV), Intel AMX variants (AMX-AVX512,
+    AMX-FP8, AMX-TF32, etc.), and targeting for the Diamond Rapids
+    CPU.
+- Delete gcc-13.2.0-build-with-fpie.patch
+
+-------------------------------------------------------------------
 Wed Feb 11 12:48:22 UTC 2026 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Use the makeinfo package instead of texinfo to reduce the

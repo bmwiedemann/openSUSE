@@ -23,7 +23,7 @@
 %endif
 
 Name:           mingw64-cross-gcc-bootstrap
-Version:        13.2.0
+Version:        16.2.0
 Release:        0
 Summary:        MinGW Windows cross-compiler (GCC) for C
 License:        GPL-3.0-or-later
@@ -31,7 +31,6 @@ Group:          Development/Languages/C and C++
 URL:            http://www.mingw.org/
 Source:         ftp://ftp.gnu.org/gnu/gcc/gcc-%{version}/gcc-%{version}.tar.xz
 Source100:      mingw64-gcc-rpmlintrc
-Patch0:         gcc-13.2.0-build-with-fpie.patch
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel >= 4.2.0
 BuildRequires:  makeinfo
@@ -87,6 +86,7 @@ CXX="g++ %{optflags} -fPIC -fPIE -pie" \
   --with-gnu-as --with-gnu-ld --verbose \
   --without-newlib \
   --disable-multilib \
+  --enable-host-pie=yes \
   --enable-default-pie=no \
   --enable-shared \
   --disable-plugin \
@@ -100,7 +100,7 @@ CXX="g++ %{optflags} -fPIC -fPIE -pie" \
   --enable-vtable-verify \
   --with-pkgversion="SUSE Linux"
 
-make %{?_smp_mflags} all-gcc || make all-gcc
+%make_build all-gcc || make all-gcc
 
 %install
 cd build

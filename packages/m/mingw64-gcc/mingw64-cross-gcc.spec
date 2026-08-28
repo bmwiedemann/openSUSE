@@ -24,7 +24,7 @@
 
 %define include_ada 0
 Name:           mingw64-cross-gcc
-Version:        13.2.0
+Version:        16.2.0
 Release:        0
 Summary:        MinGW Windows cross-compiler (GCC) for C
 License:        GPL-3.0-or-later
@@ -33,7 +33,6 @@ URL:            http://www.mingw.org/
 Source0:        ftp://ftp.gnu.org/gnu/gcc/gcc-%{version}/gcc-%{version}.tar.xz
 Source100:      mingw64-gcc-rpmlintrc
 Patch0:         gcc-make-xmmintrin-header-cplusplus-compatible.patch
-Patch1:         gcc-13.2.0-build-with-fpie.patch
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel >= 4.2.0
 BuildRequires:  makeinfo
@@ -140,9 +139,9 @@ CPPFLAGS_FOR_TARGET="-DGC_NOT_DLL %{_mingw64_cflags}" \
   --with-gnu-as --with-gnu-ld --verbose \
   --without-newlib \
   --disable-multilib \
+  --enable-host-pie=yes \
   --enable-default-pie=no \
   --enable-shared \
-  --enable-default-pie=no \
   --disable-plugin \
   --with-system-zlib \
   --disable-nls --without-included-gettext \
@@ -161,7 +160,7 @@ CPPFLAGS_FOR_TARGET="-DGC_NOT_DLL %{_mingw64_cflags}" \
   --with-pkgversion="SUSE Linux" \
   --enable-link-serialization
 
-make %{?_smp_mflags} all || make all
+%make_build all || make all
 
 %install
 cd build
@@ -212,24 +211,27 @@ perl -pi -e 's#include_next\ \<math\.h\>#include\ \<math\.h\>#g' \
 %{_libdir}/gcc/%{_mingw64_target}/%{version}/crtbegin.o
 %{_libdir}/gcc/%{_mingw64_target}/%{version}/crtend.o
 %{_libdir}/gcc/%{_mingw64_target}/%{version}/crtfastmath.o
+%{_libdir}/gcc/%{_mingw64_target}/%{version}/libatomic.a
+%{_libdir}/gcc/%{_mingw64_target}/%{version}/libatomic.dll.a
+%{_libdir}/gcc/%{_mingw64_target}/%{version}/libatomic.la
+%{_libdir}/gcc/%{_mingw64_target}/%{version}/libatomic_asneeded.a
+%{_libdir}/gcc/%{_mingw64_target}/%{version}/libcaf_shmem.a
+%{_libdir}/gcc/%{_mingw64_target}/%{version}/libcaf_shmem.la
+%{_libdir}/gcc/%{_mingw64_target}/%{version}/libcaf_single.a
+%{_libdir}/gcc/%{_mingw64_target}/%{version}/libcaf_single.la
 %{_libdir}/gcc/%{_mingw64_target}/%{version}/libgcc.a
 %{_libdir}/gcc/%{_mingw64_target}/%{version}/libgcc_eh.a
 %{_libdir}/gcc/%{_mingw64_target}/%{version}/libgcc_s.a
 %{_libdir}/gcc/%{_mingw64_target}/%{version}/libgcov.a
+%{_libdir}/gcc/%{_mingw64_target}/%{version}/libgomp.a
+%{_libdir}/gcc/%{_mingw64_target}/%{version}/libgomp.dll.a
+%{_libdir}/gcc/%{_mingw64_target}/%{version}/libgomp.la
+%{_libdir}/gcc/%{_mingw64_target}/%{version}/libgomp.spec
 %{_libdir}/gcc/%{_mingw64_target}/%{version}/libssp.a
 %{_libdir}/gcc/%{_mingw64_target}/%{version}/libssp.dll.a
 %{_libdir}/gcc/%{_mingw64_target}/%{version}/libssp.la
 %{_libdir}/gcc/%{_mingw64_target}/%{version}/libssp_nonshared.a
 %{_libdir}/gcc/%{_mingw64_target}/%{version}/libssp_nonshared.la
-%{_libdir}/gcc/%{_mingw64_target}/%{version}/libcaf_single.a
-%{_libdir}/gcc/%{_mingw64_target}/%{version}/libcaf_single.la
-%{_libdir}/gcc/%{_mingw64_target}/%{version}/libgomp.a
-%{_libdir}/gcc/%{_mingw64_target}/%{version}/libgomp.dll.a
-%{_libdir}/gcc/%{_mingw64_target}/%{version}/libgomp.la
-%{_libdir}/gcc/%{_mingw64_target}/%{version}/libgomp.spec
-%{_libdir}/gcc/%{_mingw64_target}/%{version}/libatomic.a
-%{_libdir}/gcc/%{_mingw64_target}/%{version}/libatomic.dll.a
-%{_libdir}/gcc/%{_mingw64_target}/%{version}/libatomic.la
 %dir %{_libdir}/gcc/%{_mingw64_target}/%{version}/include
 %dir %{_libdir}/gcc/%{_mingw64_target}/%{version}/include-fixed
 %dir %{_libdir}/gcc/%{_mingw64_target}/%{version}/include/ssp
@@ -265,6 +267,7 @@ perl -pi -e 's#include_next\ \<math\.h\>#include\ \<math\.h\>#g' \
 %{_libdir}/gcc/%{_mingw64_target}/%{version}/libstdc++.a
 %{_libdir}/gcc/%{_mingw64_target}/%{version}/libstdc++.dll.a
 %{_libdir}/gcc/%{_mingw64_target}/%{version}/libstdc++.la
+%{_libdir}/gcc/%{_mingw64_target}/%{version}/libstdc++.modules.json
 %{_libdir}/gcc/%{_mingw64_target}/%{version}/libstdc++exp.a
 %{_libdir}/gcc/%{_mingw64_target}/%{version}/libstdc++exp.la
 %{_libdir}/gcc/%{_mingw64_target}/%{version}/libstdc++fs.a
