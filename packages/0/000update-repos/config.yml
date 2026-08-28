@@ -64,3 +64,9 @@
 - 15.6:non-oss:update:
     refresh: true
     url: http://downloadcontent.opensuse.org/update/leap/15.6/non-oss
+- 16.0:
+    refresh: true
+    url: http://downloadcontent.opensuse.org/distribution/leap/16.0/repo/oss
+- 16.1:
+    refresh: true
+    url: http://downloadcontent.opensuse.org/distribution/leap/16.1/repo/oss

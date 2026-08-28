@@ -18931,4 +18931,24 @@ Switch to repomd for 42.1, its susetags are bugged</comment>
     <user>staging-bot</user>
     <comment>Automatic update</comment>
   </revision>
+  <revision rev="2947" vrev="2947">
+    <srcmd5>0f6cc51736346c2ec16361f28693f9cc</srcmd5>
+    <version>unknown</version>
+    <time>1787925375</time>
+    <user>dimstar_suse</user>
+  </revision>
+  <revision rev="2948" vrev="2948">
+    <srcmd5>21d1826e5fd42c0df9e1cf60ca39c94f</srcmd5>
+    <version>unknown</version>
+    <time>1787926719</time>
+    <user>dimstar_suse</user>
+    <comment>Correct 16.0 and 16.1 repos</comment>
+  </revision>
+  <revision rev="2949" vrev="2949">
+    <srcmd5>bb2b6812a2d1111cb4f2cfeae9c7a3a4</srcmd5>
+    <version>unknown</version>
+    <time>1787926863</time>
+    <user>staging-bot</user>
+    <comment>Automatic update</comment>
+  </revision>
 </revisionlist>
