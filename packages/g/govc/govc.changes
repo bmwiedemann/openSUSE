@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Aug 28 12:11:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.56.0:
+  * Fix
+    - [dab7364] vslm/TestList (#4099)
+    - [460e7a5] include AudienceRestriction in SAML assertion C14N
+    - [85f1ada] remove ovf test files with non-ascii names
+  * Dependencies
+    - chore(deps): bump github.com/stretchr/testify from 1.12.0 to
+      1.12.1 (#4104)
+    - chore(deps): bump golang.org/x/text from 0.40.0 to 0.41.0
+      (#4086)
+    - chore(deps): bump github.com/stretchr/testify from 1.11.1 to
+      1.12.0 (#4087)
+    - chore(deps): bump actions/setup-go from 6.5.0 to 7.0.0
+      (#4078)
+    - chore(deps): bump golang.org/x/text from 0.39.0 to 0.40.0
+      (#4071)
+    - chore(deps): bump golang.org/x/text from 0.38.0 to 0.39.0
+      (#4067)
+
+-------------------------------------------------------------------
 Mon Jul 06 05:04:24 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.55.1:

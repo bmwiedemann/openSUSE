@@ -17,7 +17,7 @@
 
 
 Name:           govc
-Version:        0.55.1
+Version:        0.56.0
 Release:        0
 Summary:        vSphere CLI built on top of govmomi
 License:        Apache-2.0
