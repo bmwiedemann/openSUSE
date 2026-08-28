@@ -7,4 +7,22 @@
     <comment></comment>
     <requestid>1372655</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5584b6427b056220b420ee98ed78306f</srcmd5>
+    <version>1.7.0</version>
+    <time>1787939835</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.7.0:
+  * fix(libcosmic): keyboard focus not visible in nav bar until pointer moves
+  * feat(bluetooth): add back navigation for multiple Bluetooth adapters (#2154)
+  * Epoch 1.7.0 version update
+  * chore(input): remove unimplemented menu items (#2169)
+  * i18n: translation updates from weblate
+  * chore: cargo fmt
+  * input: mark move up/down disabled for first/last keyboard laout disabled
+  * chore: update cosmic-comp-config
+  * feat: add option to toggle shake cursor to find it
+  * fix(displays): pass current refresh rate to cosmic-randr when changing monitor position (#2139)</comment>
+    <requestid>1374420</requestid>
+  </revision>
 </revisionlist>

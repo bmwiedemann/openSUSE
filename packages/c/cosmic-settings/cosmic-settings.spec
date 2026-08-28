@@ -18,7 +18,7 @@
 
 %define         appid com.system76.CosmicSettings
 Name:           cosmic-settings
-Version:        1.6.0
+Version:        1.7.0
 Release:        0
 Summary:        COSMIC Settings
 License:        GPL-3.0-only

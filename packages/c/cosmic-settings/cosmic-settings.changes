@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Aug 27 04:27:07 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.7.0:
+  * fix(libcosmic): keyboard focus not visible in nav bar until pointer moves
+  * feat(bluetooth): add back navigation for multiple Bluetooth adapters (#2154)
+  * Epoch 1.7.0 version update
+  * chore(input): remove unimplemented menu items (#2169)
+  * i18n: translation updates from weblate
+  * chore: cargo fmt
+  * input: mark move up/down disabled for first/last keyboard laout disabled
+  * chore: update cosmic-comp-config
+  * feat: add option to toggle shake cursor to find it
+  * fix(displays): pass current refresh rate to cosmic-randr when changing monitor position (#2139)
+
+-------------------------------------------------------------------
 Wed Aug 19 11:38:16 UTC 2026 - rrahl0@opensuse.org
 
 - Update to version 1.6.0:
