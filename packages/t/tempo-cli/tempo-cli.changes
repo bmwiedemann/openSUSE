@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Aug 28 08:34:20 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.0.3:
+  * chore: update Go to 1.26.5 to fix stdlib CVEs (#7726)
+  * chore(deps): lock file maintenance (#7402)
+  * fix(security/unknown/): update module golang.org/x/text to
+    v0.39.0 [security] (#7653)
+  * fix(security/high/): update module google.golang.org/grpc to
+    v1.82.1 [security] (#7658)
+  * fix(security/unknown/): update module
+    github.com/klauspost/compress to v1.18.7 [security] (#7686)
+  * fix(security/unknown/): update module go.opentelemetry.io/otel
+    to v1.44.0 [security] (#7682)
+  * fix(security/unknown/tools): update module golang.org/x/text to
+    v0.39.0 [security] (#7654)
+  * fix(security/unknown/): update module golang.org/x/net to
+    v0.56.0 [security] (#7652)
+
+-------------------------------------------------------------------
 Wed Jun 10 05:21:56 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.0.2:
