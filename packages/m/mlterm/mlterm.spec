@@ -1,7 +1,7 @@
 #
 # spec file for package mlterm
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %bcond_with uim
 %endif
 Name:           mlterm
-Version:        3.9.4
+Version:        3.9.5
 Release:        0
 Summary:        Multilingual Terminal Emulator for X and Wayland
 License:        BSD-3-Clause
@@ -36,8 +36,6 @@ URL:            https://mlterm.sourceforge.net/
 Source0:        http://downloads.sourceforge.net/project/mlterm/01release/%{name}-%{version}/%{name}-%{version}.tar.gz
 Source1:        %{name}.desktop
 Patch0:         etc.patch
-# https://github.com/arakiken/mlterm/commit/da9db7673ab7f5a9111533f7db7db2720643b35f
-Patch1:         mlterm-gcc15.patch
 BuildRequires:  ccache
 BuildRequires:  coreutils
 BuildRequires:  gcc-c++

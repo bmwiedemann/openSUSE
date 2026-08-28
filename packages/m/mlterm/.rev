@@ -896,4 +896,12 @@
   * Update unicode property table (generated from UnicodeData.txt and (forwarded request 1284817 from pgajdos)</comment>
     <requestid>1285024</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>2b942fb5a78644f0c9de76911628d2d1</srcmd5>
+    <version>3.9.5</version>
+    <time>1787939684</time>
+    <user>anag_factory</user>
+    <comment>version update to 3.9.5</comment>
+    <requestid>1374344</requestid>
+  </revision>
 </revisionlist>
