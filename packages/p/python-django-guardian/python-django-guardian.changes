@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Aug 28 06:03:24 UTC 2026 - Andreas Schneider <asn@cryptomilk.org>
+
+- update to version 3.3.4:
+  documentation is refactored, ai rules are added
+- update to version 3.3.3:
+  * Update configuration.md
+  * Fix generic object_pk bigint cast regression in shortcuts
+- update to version 3.3.2:
+  * Add note box regarding Meta inheritance
+  * Fixed user and group inconsistency with get perms
+  * Documentation: fix readme link to docs, add paperless-ngx to usage
+  * Move common code from shortcuts into dedicated methods
+  * Remove a query in prefetch_perms()
+
+-------------------------------------------------------------------
 Sun May  3 17:34:46 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.3.1:

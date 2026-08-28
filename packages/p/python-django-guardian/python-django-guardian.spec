@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 %define pypi_package_name django-guardian
 Name:           python-%{pypi_package_name}
-Version:        3.3.1
+Version:        3.3.4
 Release:        0
 Summary:        Implementation of per object permissions for Django
 License:        BSD-2-Clause
@@ -34,7 +34,10 @@ BuildRequires:  %{python_module typing-extensions >= 4.12.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+# SECTION test requirements
 Requires:       python-Django >= 3.2
+# /SECTION
+BuildRequires:  fdupes
 Requires:       python-typing-extensions >= 4.12.0
 BuildArch:      noarch
 %python_subpackages

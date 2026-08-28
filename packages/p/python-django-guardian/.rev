@@ -242,4 +242,12 @@ SPDX syntax (http://www.spdx.org/licenses) (forwarded request 83930 from babelwo
 - update to 3.0.4:</comment>
     <requestid>1350553</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>271c128c79ce5404b451067cecdebd5e</srcmd5>
+    <version>3.3.4</version>
+    <time>1787939707</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1374381</requestid>
+  </revision>
 </revisionlist>
