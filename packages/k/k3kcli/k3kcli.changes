@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Aug 28 12:13:35 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.2.0:
+  * Update Ginkgo to `v2.32.1` and docs scripts (#1173)
+  * Update Go from `1.26.5` to `1.26.6` and some indirect deps
+    (#1160)
+  * Update module github.com/stretchr/testify to v1.12.0 (#1154)
+  * Add e2e tests for external datastores (#1141)
+  * Add gomodcheck script to compare `go.mod` dependencies (#1161)
+  * feat: update kubeconfig generate command (#1158)
+  * feat: import CI images directly into containerd instead of
+    ttl.sh (#1151)
+  * feat: enhance ingress exposure validation and add tests for
+    tlsSANs requirements (#1147)
+
+-------------------------------------------------------------------
 Mon May 11 10:58:59 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.1.0:

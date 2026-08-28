@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/rancher/k3k</param>
-              <param name="changesrevision">cfbd29f7ccc758fc5cc1031eed63a471058b7cb8</param></service></servicedata>
+              <param name="changesrevision">cfbd29f7ccc758fc5cc1031eed63a471058b7cb8</param></service><service name="tar_scm">
+                <param name="url">https://github.com/rancher/k3k.git</param>
+              <param name="changesrevision">26463532a84a78c35cceb384dc5d3b8afb0a0539</param></service></servicedata>
