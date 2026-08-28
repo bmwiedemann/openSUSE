@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Aug 27 04:25:59 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.7.0:
+  * Epoch 1.7.0 version update
+  * Align center for text on items in grid view. fixes #754
+  * i18n(pt-BR): update translations from Weblate
+  * refactor: rename favorite renaming action to "Change sidebar label"
+  * feat: allow renaming sidebar favorites to custom names
+  * detect remote filesystems so SFTP browsing is not slow
+  * do not panic in truly invalid timestamps
+  * Return None on mtime overflow
+  * add submit form on focus search input, change import search_input
+  * i18n: translation updates from weblate
+  * fix: accept a URI typed into the location bar from any location
+  * fix incorrect search
+  * add autofocus, move label to placeholder, add search and clear icons
+  * remove extra translations
+  * add search field in 'open with' dialog
+
+-------------------------------------------------------------------
 Wed Aug 19 11:37:27 UTC 2026 - rrahl0@opensuse.org
 
 - Update to version 1.6.0:
