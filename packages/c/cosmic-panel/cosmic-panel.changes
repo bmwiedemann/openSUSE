@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 27 04:26:48 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.7.0:
+  * fix: don't map applet popups before their grab is forwarded
+
+-------------------------------------------------------------------
 Thu Jul 30 12:44:39 UTC 2026 - rrahl0@opensuse.org
 
 - Update to version 1.5.0:
