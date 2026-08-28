@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Aug 28 08:05:13 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.14.3:
+  * Bug or Regression
+    - Fix the Cilium LRP by @kron4eg in #4189
+    - Fixed a bug where upgrading a vSphere cluster from an older
+      KubeOne version left behind a stale
+      validation.csi.vsphere.vmware.com
+      ValidatingWebhookConfiguration, blocking StorageClass changes
+      and all new dynamic volume provisioning/PVC deletion in #4195
+  * Updates
+    - Update Cilium version to v1.19.7 in #4209
+
+-------------------------------------------------------------------
 Fri Aug 14 05:34:36 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.14.2:
