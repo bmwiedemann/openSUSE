@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Aug 27 04:25:44 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.7.0:
+  * improv: clear image_cache on refresh
+  * improv: round up and down sample cursor sizes to limit cache
+  * feat: scalable cursor support
+  * Clamp zoom level to 1.0 if < 1.01
+  * a11y: magnifier: change zoom stepping to multiplicative, bound max, add presets
+  * feat: shake cursor to find by magnifying the cursor
+  * fix: treat unlocking the session as user activity
+
+-------------------------------------------------------------------
 Wed Aug 19 11:37:16 UTC 2026 - rrahl0@opensuse.org
 
 - Update to version 1.6.0:
