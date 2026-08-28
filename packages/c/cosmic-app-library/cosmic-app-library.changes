@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Aug 27 04:25:25 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.7.0:
+  * refactor: improve xdgen script
+  * update
+  * chore: update all dependencies
+  * feat: localize desktop entry and appstream metadata
+  * i18n: translation updates from weblate
+- fix-justfile.patch, as desktop and metainfo path got mangled
+
+-------------------------------------------------------------------
 Wed Aug 19 11:37:03 UTC 2026 - rrahl0@opensuse.org
 
 - Update to version 1.6.0:

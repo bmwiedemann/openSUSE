@@ -18,13 +18,14 @@
 
 %define         appid com.system76.CosmicAppLibrary
 Name:           cosmic-app-library
-Version:        1.6.0
+Version:        1.7.0
 Release:        0
 Summary:        A template for getting started with COSMIC
 License:        GPL-3.0-only
 URL:            https://github.com/pop-os/cosmic-applibrary
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
+Patch0:         fix-justfile.patch
 BuildRequires:  cargo-packaging
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  just
@@ -38,7 +39,7 @@ Cosmic App Library is an application launcher for the COSMIC desktop that lists
 all installed applications in a grid.
 
 %prep
-%autosetup -a1
+%autosetup -a1 -p1
 
 %build
 just build-release

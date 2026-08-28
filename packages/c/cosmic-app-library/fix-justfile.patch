@@ -1,0 +1,24 @@
+diff --git a/justfile b/justfile
+index 43505fe..0ca0c99 100644
+--- a/justfile
++++ b/justfile
+@@ -15,7 +15,7 @@ bin-src := cargo-target-dir / 'release' / name
+ bin-dst := base-dir / 'bin' / name
+ 
+ appdata := appid + '.metainfo.xml'
+-appdata-dst := base-dir / 'share' / 'appdata' / appdata
++appdata-dst := base-dir / 'share' / 'metainfo' / appdata
+ 
+ desktop := appid + '.desktop'
+ desktop-dst := base-dir / 'share' / 'applications' / desktop
+@@ -53,8 +53,8 @@ check-json: (check '--message-format=json')
+ # Installs files
+ install:
+     install -Dm0755 {{bin-src}} {{bin-dst}}
+-    install -Dm0644 {{ 'target' / 'xdgen' / desktop }} {{desktop-dst}}
+-    install -Dm0644 {{ 'target' / 'xdgen' / appdata }} {{appdata-dst}}
++    install -Dm0644 {{ 'data' / desktop }} {{desktop-dst}}
++    install -Dm0644 {{ 'data' / appdata }} {{appdata-dst}}
+     install -Dm0644 {{ 'data' / 'icons' / icon }} {{icon-dst}}
+ 
+ # Uninstalls installed files
