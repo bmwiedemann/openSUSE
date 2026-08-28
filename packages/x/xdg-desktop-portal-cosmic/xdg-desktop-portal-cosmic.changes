@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Aug 27 04:27:41 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.7.0:
+  * i18n: translation updates from weblate
+  * fix: screenshot to clipboard sometimes fails
+  * chore: update libcosmic, reis, and cosmic-files
+  * chore: remove unused `session_id` from screencast and remote_desktop
+  * feat: keyboard navigation in output arrangement widget
+  * fix: absolute cursor position on scaled outputs
+  * feat: persist and restore sessions via restore_data
+  * feat(remote desktop): implement Notify* via ei sender
+  * feat: add the remote desktop permission dialog
+  * refactor: share SessionData with screencast, extract capture helper
+  * chore: use cosmic-comp's ei dbus interface
+  * remote-desktop: add skeleton portal implementation
+
+-------------------------------------------------------------------
 Wed Aug 19 11:38:41 UTC 2026 - rrahl0@opensuse.org
 
 - Update to version 1.6.0:
