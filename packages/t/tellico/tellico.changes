@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Aug 28 07:01:14 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 4.2.2
+  * Updated to automatically add default file extension (.tc) to
+    save files with no extension.
+  * Removed gradient image files for entry templates, in favor
+    of data URLs.
+  * Added option to disable ISBN validation in entry editor
+    (kde#514622).
+  * Improved ISBN formatting for all country regions
+  * Updated ISBN validation to apply to multiple values (kde#521157)
+  * Updated UPCItemDb to accept multiple search values.
+  * Improved caching of entry images for the icon view.
+  * Improved Title search for arXiv and OpenLibrary sources.
+  * Improved entry updating from iTunes source.
+  * Added drag-and-drop text importing for RIS.
+  * Removed defunct DVDFr data source.
+  * Fixed crashing bug when exporting HTML for entries with
+    no title (kde#523140).
+  * Fixed bug with updating UI after checking-in entries.
+  * Fixed bug with updating UI for updating entries (kde#522673).
+
+-------------------------------------------------------------------
 Sat Jul  4 05:45:52 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 4.2.1
