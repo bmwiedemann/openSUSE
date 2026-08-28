@@ -244,4 +244,12 @@ Verified by running the built binary in the build chroot: it prints
 ctest 1/1 passed, rpmlint 0 errors 0 warnings 0 badness.</comment>
     <requestid>1373454</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>8709cb60d15d7498a30a0dfdd9322711</srcmd5>
+    <version>2.1.4</version>
+    <time>1787939483</time>
+    <user>anag_factory</user>
+    <comment>Update to 2.1.4; drop clpeak-version-override.patch, merged upstream (gh#krrishnarraj/clpeak#206) (forwarded request 1374221 from pluskalm)</comment>
+    <requestid>1374230</requestid>
+  </revision>
 </revisionlist>

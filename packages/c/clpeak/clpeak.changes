@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Aug 28 05:54:58 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2.1.4, a measurement-accuracy release -- the corrected
+  rows below no longer compare with older runs:
+  * INT8 dot and mixed precision (all backends) each ran an op the
+    op budget never counted inside the timed chain: OpenCL mp read
+    half the fp32 rate, RTX 5060 CUDA int8 33587 -> 41683 GOPS.
+  * Image bandwidth races both walk orders and reports the faster;
+    the ~1.5x CUDA/Vulkan gap was deflation, not inflation.
+  * Vulkan coopmat: tiles run at the subgroup width the driver
+    advertised, saturating tiles are filtered out (fixes a
+    process-killing Arc A380 int8 crash), shaders target SPIR-V 1.5,
+    new fp16_f16acc row; A380 fp16 12.5 -> ~25.9 TFLOPS.
+  * Vulkan fp16 shaders get the fp32 register budget; affine chain
+    seeds step a full vector width, so width >= 2 chains stop
+    starting out bitwise identical and CSE-able.
+  * Global bandwidth sizes its working set to 8x the device LLC;
+    local bandwidth is skipped where there is no real scratchpad.
+  * OpenCL transfer bandwidth collapsed to h2d_pinned/d2h_pinned;
+    oneAPI INT8 dot dropped, SYCL has no DP4a intrinsic so it never
+    measured one.
+- Drop clpeak-version-override.patch, merged upstream
+  (gh#krrishnarraj/clpeak#206); -DCLPEAK_VERSION_OVERRIDE stays.
+
+-------------------------------------------------------------------
 Mon Aug 24 16:50:17 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 2.1.3:
