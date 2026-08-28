@@ -17,7 +17,7 @@
 #!ExclusiveArch: aarch64 ppc64le s390x riscv64 x86_64
 #!BuildTag: opensuse/389-ds:%%389ds_version%%-%RELEASE%
 #!BuildTag: opensuse/389-ds:%%389ds_version%%
-#!BuildTag: opensuse/389-ds:3.1
+#!BuildTag: opensuse/389-ds:3.2
 #!BuildTag: opensuse/389-ds:latest
 
 #!BuildRelease: 35
@@ -32,7 +32,7 @@ RUN set -euo pipefail; \
 # sanity check that the version from the tag is equal to the version of 389-ds that we expect
 RUN set -euo pipefail; \
     [ "$(rpm --root /target -q --qf '%{version}' 389-ds | \
-    cut -d '.' -f -2)" = "3.1" ]
+    cut -d '.' -f -2)" = "3.2" ]
 
 # cleanup logs and temporary files
 RUN set -euo pipefail; zypper -n --installroot /target clean -a; \
