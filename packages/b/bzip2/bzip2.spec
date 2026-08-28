@@ -1,7 +1,7 @@
 #
 # spec file for package bzip2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,9 @@ Source100:      bzip2-rpmlintrc
 Patch0:         bzip2-1.0.6.2-autoconfiscated.patch
 Patch3:         bzip2-point-to-doc-pkg.patch
 Patch4:         bzip2-ocloexec.patch
+# PATCH-FIX-UPSTREAM CVE-2026-42250.patch bsc#1266786 antonio.teixeira@suse.com
+# CVE-2026-42250: off‑by‑one error in the bzip2recover utility when processing a specially crafted file can lead to a crash
+Patch5:         CVE-2026-42250.patch
 BuildRequires:  autoconf >= 2.57
 BuildRequires:  libtool
 BuildRequires:  pkgconfig

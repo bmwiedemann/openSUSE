@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 26 17:37:34 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Fix CVE-2026-42250, off‑by‑one error in the bzip2recover utility when
+  processing a specially crafted file can lead to a crash (bsc#1266786)
+  * CVE-2026-42250.patch
+
+-------------------------------------------------------------------
 Wed Mar  8 10:04:51 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Build AVX2 enabled hwcaps library for x86_64-v3
