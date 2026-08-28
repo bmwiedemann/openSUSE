@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri Aug 28 06:16:59 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.0.26:
+  * docs: Update vulnerability dashboard status to completed
+    (#1084)
+  * build(deps): bump golang.org/x/term from 0.43.0 to 0.44.0
+    (#988)
+  * build(deps): bump codecov/codecov-action from 6.0.0 to 7.0.0
+    (#989)
+  * build(deps): bump github.com/sahilm/fuzzy from 0.1.2 to 0.1.3
+    (#1005)
+  * build(deps): bump actions/checkout from 6.0.2 to 7.0.1 (#1061)
+  * test: replace demo.goharbor.io with a local Harbor stack
+    (#1083)
+  * doc: regenerate docs for --log-format flag (#1082)
+  * feat: Adding slog support and handlers (#722)
+  * fix: correct spelling typo and missing newline in CLI output
+    (#1052)
+  * Feat : implements the `harbor project summary` command (#869)
+  * fix: prevent silent success on empty configs and fix context
+    switch error propagation (#930)
+  * fix: password command documentation (#1079)
+  * fix: clean up incorrect CLI log output usage (#953)
+  * feat: add non-interactive replication policy updates (#972)
+  * fix: Skip Permission Mode selector when robot create has
+    sufficient CLI flags (#980)
+  * fix: remove debug log statement from member view (#1000)
+  * fix(password): handle credential errors and add flag support
+    (#857)
+  * fix: default insecure flag to false for registry create (#913)
+  * refactor(utils): extract shared pagination validation helper
+    (#895)
+  * fix(robot): handle empty permissions in robot view (#998)
+  * fix(preheat): handle nil payload during policy update (#1022)
+  * fix: handle GetRobot error in robot create and update output
+    path to prevent nil panic (#928)
+  * Update harbor-cli manifest
+
+-------------------------------------------------------------------
 Tue Aug 04 08:33:40 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.0.25:
