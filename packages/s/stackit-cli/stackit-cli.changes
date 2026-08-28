@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Fri Aug 28 07:04:40 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.72.0:
+  * chore(deps): bump golang.org/x/text from 0.40.0 to 0.41.0
+    (#1564)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/serverupdate
+    (#1556)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/loadbalancer
+    (#1558)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/serverbackup
+    (#1559)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/authorization
+    (#1560)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/cdn from 1.19.0
+    to 1.20.0 (#1553)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/iaas (#1554)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/sqlserverflex
+    (#1551)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/dns (#1552)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/intake from
+    0.7.1 to 0.11.1 (#1543)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/logs (#1550)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/secretsmanager
+    (#1549)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/logme (#1548)
+  * chore(deps): bump golang.org/x/mod from 0.38.0 to 0.39.0
+    (#1547)
+  * feat(albwaf): onboard albwaf custom rule group (#1533)
+  * feat(sqlserverflex): move service out of beta (#1546)
+  * chore(logme,mariadb,opensearch,rabbitmq,redis): deprecate
+    planName and version flags, remove planId validation (#1540)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/serviceenablement
+    (#1542)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/objectstorage
+    (#1544)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/albwaf (#1545)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/alb (#1541)
+  * chore(sqlserverflex): Deprecate fields, flags and commands
+    (#1535)
+  * chore(deps): bump actions/labeler from 6 to 7 (#1539)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/ske (#1538)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/vpn from 0.14.0
+    to 0.15.0 (#1536)
+  * chore(deps): bump k8s.io/apimachinery from 0.36.2 to 0.36.3
+    (#1537)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/sfs from 0.9.0
+    to 0.11.1 (#1526)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/cdn from 1.16.0
+    to 1.19.0 (#1501)
+  * feat(alb-waf): Onboard WAF managed rule set (#1534)
+  * fix(sqlserverflex): add user wait handlers (#1531)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/rabbitmq
+    (#1525)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/edge (#1509)
+  * feat(github): add labeler action (#1506)
+  * chore(deps): bump github.com/lmittmann/tint from 1.1.3 to 1.2.0
+    (#1513)
+  * chore(docs): removal of deprecated contribution guide
+    placeholder (#1532)
+
+-------------------------------------------------------------------
 Thu Aug 13 06:11:52 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.71.0:
