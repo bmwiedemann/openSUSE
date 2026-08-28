@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Fri Aug 28 07:54:28 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.122.0:
+  * New Features
+    - [jfrog-cli-security] XRAY-145930 - Onboard cargo for jf ca
+      #856
+  * Bug Fixes
+    - [build-info-go] RTECO-1885 - Fix Gradle -D/-P property values
+      getting wrapped in literal quotes #416
+    - [jfrog-cli-security] Fix go-sarif breaks server-client miss
+      match versions #855
+  * Other Changes
+    - [jfrog-cli-security] XRAY-145930 - Updated deps before
+      security CLI release #857
+    - JGC-541 - Bump Go to 1.26.6 for CVE-2026-39821 (#3673)
+- Update to version 2.121.0:
+  * New Features
+    - [build-info-go] RTECO-1536 - Add RubyGems FlexPack for native
+      build-info collection (#394) 23e528d30b96 (@agrasth Naman)
+    - [jfrog-cli] Expose disable-token-refresh flag on jf login
+      #3643
+    - [jfrog-cli] Add --legacy flag to jf login and jf c add #3655
+    - [jfrog-cli] Parse first User-Agent product segment for
+      product_id and version #3662
+    - [jfrog-cli] RTECO-1784 - Add --project build-info e2e for
+      agent plugins and skills #3650
+    - [jfrog-cli] RTECO-1536 - Add jf ruby command for native
+      RubyGems/Bundler support #3574
+    - [jfrog-cli] MLD-1373 - Add vscode harness to agent plugins
+      e2e #3668
+    - [jfrog-cli-artifactory] RTECO-1784 - Implement project flag
+      in build info #529
+    - [jfrog-cli-artifactory] RTECO-1536 - Add native
+      RubyGems/Bundler command with auth and build-info #499
+    - [jfrog-cli-artifactory] MLD-1373 - Agent plugin install VS
+      Code support #533
+    - [jfrog-cli-core] Add disableTokenRefresh support to
+      LoginCommand #1600
+    - [jfrog-cli-core] Add legacy flag to preserve per-service URL
+      config for Artifactory v6.x #1605
+    - [jfrog-cli-security] Add risky tech callback guard after
+      techs detection #852
+    - [jfrog-client-go] Add proportional refresh threshold for
+      platform access tokens #1373
+  * Bug Fixes
+    - [build-info-go] XRAY-157662 - fix npm peer dependency #413
+    - [jfrog-cli] Fix jf api rejecting flags placed after the
+      endpoint path #3651
+    - [jfrog-cli] JGC-453 - Fix documentation links #3407
+    - [jfrog-cli] XRAY-157662 - fix npm peer dependency #3660
+    - [jfrog-cli-artifactory] RTECO-1777 - Fix install & update's
+      --version related issue #528
+    - [jfrog-cli-core] JGC-453 - Fix documentation links #1539
+    - [jfrog-cli-security] XRAY-156919 - CVS fallback for yarn and
+      pnpm #837
+    - [jfrog-cli-security] XRAY-156537 - Keep sbom-enrich running
+      when a vulnerability has no CVE #847
+    - [jfrog-cli-security] XRAY-157127 - Keep each package manager
+      resolving against its own Artifactory repo #849
+    - [jfrog-cli-security] XRAY-157755 - Fix insecure tls flag
+      traversal for maven projects #846
+  * Internal Changes
+    - [jfrog-cli-security] Update dependencies for 1.34.1 #853
+  * Other Changes
+    - [jfrog-cli]
+      jf-ide-setup-support-user-auth-tokens-for-curated-ai-editor-extensions
+      #3667
+    - [jfrog-cli-artifactory]
+      jf-ide-setup-support-user-auth-tokens-for-curated-ai-editor-extensions
+      #531
+    - [jfrog-cli-core] Use proportional refresh threshold for
+      platform access tokens #1601
+    - [jfrog-cli-security] XRAY-156683 Native support for pip,
+      pipenv and poetry(curation-audit) #833
+    - [jfrog-cli-security] XRAY-157301 - Apply the SAST exclude
+      rules users configure #832
+    - [jfrog-cli-security] XRAY-157581 - Stop reporting
+      pre-existing SAST findings on every pull request #840
+    - [jfrog-cli-security] XRAY-157581 - Stop reporting
+      pre-existing SAST findings on every pull request #850
+    - [jfrog-cli-security] Merge main into dev + update
+      dependencies #851
+
+-------------------------------------------------------------------
 Thu Aug 13 06:11:48 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.120.0:
