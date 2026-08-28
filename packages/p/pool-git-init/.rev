@@ -1,0 +1,13 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f2c3e7a55e222fd5dbdf56ed50a629fe</srcmd5>
+    <version>0.3.0</version>
+    <time>1787939902</time>
+    <user>anag_factory</user>
+    <comment>update and renaming obs-git-init
+
+It is actually not bound to OBS, but general purpose git initialization
+according to our standards.</comment>
+    <requestid>1374397</requestid>
+  </revision>
+</revisionlist>
