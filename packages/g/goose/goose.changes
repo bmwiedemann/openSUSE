@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Aug 28 06:04:13 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.48.0:
+  * the "goose tui" command is gone -- upstream removed the tui
+    feature outright
+  * new "/new" slash command starts a fresh session without
+    restarting; --with-extension can name the extension it adds
+  * built-in web-search and browser-use skills
+  * new declarative providers (TrustedRouter, OpenCode Zen, Gondola,
+    SayGM, Lynkr, PleumRouter); Z.ai GLM-5.2 replaced by GLM-5.3
+  * PreToolUse hooks gained an on_failure block and a tool_call_id
+    that stays stable across the tool lifecycle
+  * compaction uses the main session model instead of the fast one
+    and reports its failures honestly
+  * session listing limits before counting messages, so large
+    histories load quickly
+  * hardening: tool/app visibility, skill plugin enablement and
+    invalid GCP or Codex configuration now fail closed; recipe
+    library writes, skill file reads, call-graph traversal and
+    mention scans are bounded
+- Drop the tui feature from the build: it no longer exists in
+  goose-cli
+- Build only the goose and generate_manpages binaries: 1.48.0 adds
+  mcp_conformance_driver, a CI-only harness we neither ship nor need
+- Rebase goose-system-libdbus.patch
+- Drop the wtype and xdotool Recommends: neither string occurs
+  anywhere in the tree, and computercontroller's screen control is
+  macOS-only (it shells out to peekaboo)
+- Re-derive the License tag from the new vendored crate graph (1324
+  crates vendored, 612 linked): the 13 SPDX identifiers are unchanged
+
+-------------------------------------------------------------------
 Sat Aug 22 13:49:47 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.47.0:

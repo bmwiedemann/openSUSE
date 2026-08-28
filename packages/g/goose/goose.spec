@@ -16,9 +16,9 @@
 #
 
 
-%global goose_features aws-providers,nostr,otel,rustls-tls,system-keyring,tui,disable-update
+%global goose_features aws-providers,nostr,otel,rustls-tls,system-keyring,disable-update
 Name:           goose
-Version:        1.47.0
+Version:        1.48.0
 Release:        0
 Summary:        Extensible open source AI agent that automates engineering tasks
 # Legal-Review-Notice: goose itself is Apache-2.0, but the shipped binary
@@ -26,7 +26,7 @@ Summary:        Extensible open source AI agent that automates engineering tasks
 # whole linked set. Derived on this vendoring with
 # "cargo tree --offline -p goose-cli -e normal --no-default-features
 #  --features %%{goose_features}" over the vendored tree
-# (1216 crates vendored, 607 in the linked graph -- the code-mode and
+# (1324 crates vendored, 612 in the linked graph -- the code-mode and
 # local-inference branches, and with them v8/candle/llama-cpp, are not built,
 # and neither is the cuda branch, so the cudaforge git dependency is unused),
 # then reading "license =" from every vendor-crates/<name>-<version>/Cargo.toml.
@@ -35,14 +35,13 @@ Summary:        Extensible open source AI agent that automates engineering tasks
 # the graph adds an identifier. The remaining entries are crates with no choice
 # to make: LGPL-3.0-or-later from ansi_colours (pulled in by bat),
 # MPL-2.0 from option-ext (via dirs-sys), Unicode-3.0 from the 20 ICU crates,
-# CC0-1.0 from the five bitcoin_hashes/secp256k1 crates (nostr),
+# CC0-1.0 from the six bitcoin_hashes/secp256k1 crates (nostr),
 # CDLA-Permissive-2.0 from the two webpki-roots, ISC from rustls-webpki,
 # simple_asn1 and untrusted (and from ring, "Apache-2.0 AND ISC"),
 # BSD-3-Clause from subtle/brotli/alloc-no-stdlib/exr/lebe, Zlib from foldhash
 # and zlib-rs, MIT-0 from borrow-or-share, bzip2-1.0.6 from libbz2-rs-sys, and
-# MIT from the 164 MIT-only crates. No crate in the graph carries BSD-2-Clause
-# any more (arrayref left it in 1.47.0); that identifier is now held solely by
-# the bundled leaflet.min.js named below.
+# MIT from the 165 MIT-only crates. No crate in the graph carries BSD-2-Clause;
+# that identifier is held solely by the bundled leaflet.min.js named below.
 # MPL-2.0 section 3.2 and the LGPL-3.0 source requirement
 # are satisfied because the complete vendor-crates.tar.zst ships in the src.rpm;
 # the two texts are additionally installed as %%license files.
@@ -69,10 +68,6 @@ BuildRequires:  rust >= 1.94.1
 # libdbus-sys (via keyring -> dbus-secret-service) probes for it; the floor is
 # the one its build script passes to pkg-config
 BuildRequires:  pkgconfig(dbus-1) >= 1.6
-# The computer-controller extension shells out to these; goose warns at start-up
-# when none of them is present, but works without them.
-Recommends:     wtype
-Recommends:     xdotool
 # Four C libraries are compiled into the binary from crate-bundled sources and
 # cannot be unbundled without patching the feature selection upstream picked:
 # sqlx requests libsqlite3-sys with "bundled", so SQLite is the cc-compiled
@@ -133,7 +128,9 @@ rm -rf bin
 
 %build
 %limit_build -m 2000
-%{cargo_build} -p goose-cli --bins --no-default-features --features %{goose_features}
+# named bins rather than --bins: 1.48.0 added mcp_conformance_driver, a CI-only
+# harness we neither ship nor want to compile
+%{cargo_build} -p goose-cli --bin goose --bin generate_manpages --no-default-features --features %{goose_features}
 
 %install
 install -D -m 0755 target/release/%{name} %{buildroot}%{_bindir}/%{name}

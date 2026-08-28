@@ -77,4 +77,12 @@ is too old to read the lock file - and it is not a Factory target.</comment>
   selection upstream picked</comment>
     <requestid>1373122</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d019188f8a9389d3748c63ad1bbe2a27</srcmd5>
+    <version>1.48.0</version>
+    <time>1787939528</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.48.0; drop tui feature (removed upstream) and stale wtype/xdotool Recommends</comment>
+    <requestid>1374254</requestid>
+  </revision>
 </revisionlist>
