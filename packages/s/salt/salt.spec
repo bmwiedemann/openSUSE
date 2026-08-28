@@ -679,6 +679,9 @@ Patch218:       stabilize-testsuite-773.patch
 # PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/774
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/69704
 Patch219:       migrate-rest_tornado-saltnado-tests-to-pytest-774.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/778
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/68946
+Patch220:       honor-proxy-settings-in-gitfs-git_pillar-and-winrepo.patch
 
 ### IMPORTANT: The line below is used as a snippet marker. Do not touch it.
 ### SALT PATCHES LIST END

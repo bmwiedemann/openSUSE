@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug 27 10:01:33 UTC 2026 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Honor proxy settings in gitfs, git_pillar and winrepo (bsc#1261147)
+
+- Added:
+  * honor-proxy-settings-in-gitfs-git_pillar-and-winrepo.patch
+
+-------------------------------------------------------------------
 Tue Aug 11 08:37:22 UTC 2026 - Marek Czernek <marek.czernek@suse.com>
 
 - Fix test failures with pytest>=8
