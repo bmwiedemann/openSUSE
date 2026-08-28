@@ -55,4 +55,44 @@
     <comment>re-flex 6.3.0: shared libreflex.so.6 via the upstream CMake build (supersedes the 6.0.0 conversion SR; SOVERSION unchanged at 6, ABI-stable for the falcosecurity-container-plugin that links it)</comment>
     <requestid>1360275</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8aab89a6e56dd44696ac29d4e8a774f6</srcmd5>
+    <version>6.4.0</version>
+    <time>1787939243</time>
+    <user>anag_factory</user>
+    <comment>Update to RE/flex 6.4.0.
+
+Upstream: improved DFA growth control (the edge count and the accumulated
+positions are now capped alongside the state count, and the state cap itself
+is tightened to a third of the previous limit, so pathological patterns fail
+with exceeds_limits instead of growing unbounded), AbstractMatcher::set_end()
+defaults to true, and a large CMake build overhaul.
+
+Heads-up - this is a real soname bump: libreflex.so.6 -&gt; libreflex.so.6.4,
+so libreflex6 is renamed to libreflex6_4. reflex::Pattern grew by 16 bytes in
+6.4.0 (34784 -&gt; 34800 bytes, measured across the 6.0.0-6.4.0 headers), and the
+reflex generator emits &quot;static const reflex::Pattern PATTERN_&lt;cond&gt;(...)&quot; into
+every generated scanner, so the object size is baked into consumers. Upstream
+declares no ABI stability between releases (its CMake package version file is
+ExactVersion), so the soversion now tracks major.minor. No Obsoletes: old and
+new library packages are co-installable while consumers are rebuilt.
+
+The only reverse dependency in Factory is falcosecurity-container-plugin,
+which reaches re-flex through re-flex-devel (name unchanged), so it needs a
+rebuild but no source change and no coupled submission. Expect a somewhat
+longer staging dwell than a plain version bump.
+
+Other packaging changes:
+- new libreflexmin6_4 subpackage: upstream's CMake build now also builds the
+  minimal runtime library; -devel ships both pkg-config files.
+- %check now runs upstream's rtest regression suite (registered via CTest
+  in 6.4.0).
+- dropped the x86-64-v3 BuildConstraint (boo#1246164): 6.4.0 probes SIMD
+  support by compiling instead of running and applies the AVX2/AVX512BW
+  flags only to the sources that need them, so the build result no longer
+  depends on the build host's CPU and the baseline code stays SSE2.
+- reflex-shared-soversion.patch rebased onto the reworked CMakeLists.txt; it
+  now derives the soversion from the project version instead of hardcoding it.</comment>
+    <requestid>1374117</requestid>
+  </revision>
 </revisionlist>

@@ -26,24 +26,23 @@
 # published by the Open Source Initiative.
 
 
-%define sover 6
+# upstream promises no ABI stability between releases (its CMake package
+# version file is ExactVersion), so the soversion tracks major.minor
+%define soversion 6.4
+%define sover     6_4
 Name:           re-flex
-Version:        6.3.0
+Version:        6.4.0
 Release:        0
 Summary:        C++ regex library and lexical analyzer generator with Unicode support
 License:        BSD-3-Clause
 URL:            https://www.genivia.com/doc/reflex/html/
 Source:         %{name}-%{version}.tar.xz
-# build the shared library (libreflex.so) the upstream CMake build supports and
-# give it a soversion; the autotools build only produced static archives
+# ship only the shared libreflex/libreflexmin and give them a soversion;
+# upstream's CMake build sets none and also installs the static archives
 Patch0:         reflex-shared-soversion.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  pkgconfig
-# make sure SIMD optimizations are used and package build reprodicbly
-%ifarch x86_64
-#!BuildConstraint: hardware:cpu:flag x86-64-v3
-%endif
 
 %description
 A high-performance C++ regex library and lexical analyzer generator with
@@ -57,18 +56,26 @@ Summary:        C++ regex library of RE-flex
 %description -n libreflex%{sover}
 The RE-flex regex matching/lexing runtime library (shared object).
 
+%package -n libreflexmin%{sover}
+Summary:        Minimal C++ regex library of RE-flex
+
+%description -n libreflexmin%{sover}
+The minimal RE-flex runtime library (shared object): the matcher engine
+without the pattern converter, POSIX support and Unicode tables, for linking
+generated scanners that do not need them.
+
 %package devel
 Summary:        Development files for %{name}
 Requires:       %{name} = %{version}
 Requires:       libreflex%{sover} = %{version}
+Requires:       libreflexmin%{sover} = %{version}
 
 %description devel
-Unicode support. Extends Flex++ with Unicode support, indent/dedent anchors,
-lazy quantifiers, functions for lex and syntax error reporting and more.
-Seamlessly integrates with Bison and other parsers.
+RE-flex is a high-performance C++ regex library and lexical analyzer generator
+with Unicode support.
 
 This package contains files required for building with re-flex (headers, the
-shared-library symlink and the CMake package config).
+shared-library symlinks, the pkg-config files and the CMake package config).
 
 %prep
 %autosetup -p1
@@ -82,7 +89,12 @@ shared-library symlink and the CMake package config).
 # the CMake build does not install the manpage; ship it like the autotools build did
 install -D -m 0644 doc/man/reflex.1 %{buildroot}%{_mandir}/man1/reflex.1
 
+%check
+%ctest
+
 %ldconfig_scriptlets -n libreflex%{sover}
+
+%ldconfig_scriptlets -n libreflexmin%{sover}
 
 %files
 %license LICENSE.txt
@@ -91,12 +103,19 @@ install -D -m 0644 doc/man/reflex.1 %{buildroot}%{_mandir}/man1/reflex.1
 
 %files -n libreflex%{sover}
 %license LICENSE.txt
-%{_libdir}/libreflex.so.%{sover}*
+%{_libdir}/libreflex.so.%{soversion}*
+
+%files -n libreflexmin%{sover}
+%license LICENSE.txt
+%{_libdir}/libreflexmin.so.%{soversion}*
 
 %files devel
 %license LICENSE.txt
 %{_includedir}/reflex
 %{_libdir}/libreflex.so
+%{_libdir}/libreflexmin.so
 %{_libdir}/cmake/reflex/
+%{_libdir}/pkgconfig/reflex.pc
+%{_libdir}/pkgconfig/reflexmin.pc
 
 %changelog

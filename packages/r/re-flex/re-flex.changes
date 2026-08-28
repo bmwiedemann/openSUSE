@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Aug 27 18:26:39 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.4.0:
+  * improve DFA growth control: the edge count and the accumulated
+    positions are now capped alongside the state count, and the state
+    cap itself is tightened to a third of the previous limit, so
+    pathological patterns fail with exceeds_limits instead of growing
+    unbounded
+  * AbstractMatcher::set_end() defaults its argument to true
+  * CMake build overhaul: install reflex.pc and reflexmin.pc plus a
+    package version file, make the installed CMake and pkg-config
+    files relocatable, and register the rtest regression test
+- Rename libreflex6 to libreflex6_4: reflex::Pattern grew by 16 bytes,
+  which breaks every generated scanner that embeds one by value, and
+  upstream promises no ABI stability between releases, so the
+  soversion now tracks major.minor
+- Package the minimal runtime library as libreflexmin6_4 with its
+  pkgconfig file; upstream's CMake build now builds it alongside
+  libreflex
+- Run the upstream rtest regression suite in %check
+- Drop the x86-64-v3 build constraint (boo#1246164): 6.4.0 probes SIMD
+  support by compiling instead of running and applies the AVX2 and
+  AVX512BW flags only to the sources that need them, so the build no
+  longer depends on the builder's CPU and the baseline stays SSE2
+- Rebase reflex-shared-soversion.patch: derive the soversion from the
+  project version, drop the added static ReflexMinLibStatic target
+
+-------------------------------------------------------------------
 Thu Jun 18 15:14:54 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 6.3.0:
