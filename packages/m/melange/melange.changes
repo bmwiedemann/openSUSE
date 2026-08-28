@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Aug 28 06:07:15 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.59.2:
+  * build(deps): bump the gomod group with 4 updates (#2621)
+  * build(deps): bump step-security/harden-runner in the actions
+    group (#2623)
+  * build(deps): bump google.golang.org/protobuf from
+    1.36.12-0.20260120151049-f2248ac996af to 1.36.12 (#2622)
+  * Remove stale SHA-1 signature references (#2620)
+  * build(deps): bump chainguard-dev/actions/setup-gitsign from
+    1.6.30 to 1.6.31 in the actions group (#2617)
+  * build(deps): bump the gomod group across 1 directory with 5
+    updates (#2618)
+- Update to version 0.59.1:
+  * Fetch license-check sources with native handlers (#2619)
+
+-------------------------------------------------------------------
 Fri Aug 14 05:25:15 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.59.0:
