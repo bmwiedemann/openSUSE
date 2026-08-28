@@ -16,12 +16,12 @@
 #
 
 
-%define gfx_aarch64_version 595.91.07
+%define gfx_aarch64_version 595.99.02
 
 %ifarch aarch64
 %define gfx_version %gfx_aarch64_version
 %else
-%define gfx_version 595.91.07
+%define gfx_version 595.99.02
 %endif
 %define cuda_version 610.57.04
 
@@ -106,8 +106,9 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  kernel-source
 BuildRequires:  kernel-syms
-%ifarch aarch64
 %if 0%{?suse_version} >= 1610 && 0%{?suse_version} < 1699
+BuildRequires:  kernel-rt-devel
+%ifarch aarch64
 BuildRequires:  kernel-source-nvidia
 BuildRequires:  kernel-syms-nvidia
 %endif
@@ -144,8 +145,7 @@ ExcludeArch:    %ix86 s390x ppc64le
 #  NOTE: kernel_module_package macro affects preference among nvidia, nvidia-open
 #  and nvidia-open-signed driver by adding:
 # Enhance: kernel-%FLAVOR
-%define x_flavors rt
-%kernel_module_package -n %{name} -t %_builddir/nvidia-kmp-template -f %_sourcedir/kmp-filelist -p %_sourcedir/preamble -x %x_flavors
+%kernel_module_package -n %{name} -t %_builddir/nvidia-kmp-template -f %_sourcedir/kmp-filelist -p %_sourcedir/preamble
 %{expand:%(
       for f in %{flavors_to_build}; do \
 	  echo "%package -n %{name}-${f}-devel"; \
@@ -277,6 +277,9 @@ for flavor in %{flavors_to_build}; do
 	  export SYSSRC=/usr/src/linux
 	fi
 	export SYSOUT=/usr/src/linux-obj/%_target_cpu/$flavor
+	if [ "$flavor" == "rt" ]; then
+	  export IGNORE_PREEMPT_RT_PRESENCE=1
+	fi
         make -k %{?_smp_mflags} modules DATE="date -d @${SOURCE_DATE_EPOCH:-$(date +%s)}" NV_BUILD_HOST=OBS HOSTNAME=OBS
         popd
 done
@@ -295,6 +298,9 @@ for flavor in %{flavors_to_build}; do
 	  export SYSSRC=/usr/src/linux
 	fi
 	export SYSOUT=/usr/src/linux-obj/%_target_cpu/$flavor
+	if [ "$flavor" == "rt" ]; then
+	  export IGNORE_PREEMPT_RT_PRESENCE=1
+	fi
         make -k modules_install
 	popd
 done
