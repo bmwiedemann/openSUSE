@@ -17,7 +17,7 @@
 
 
 Name:           sc-controller
-Version:        0.6.6
+Version:        0.7.0
 Release:        0
 Summary:        User-mode driver, mapper, and GTK3-based GUI for the Steam Controller and many other controllers.
 License:        GPL-2.0-only
@@ -42,9 +42,8 @@ Requires:       python3-pylibacl
 Requires:       python3-setuptools
 Requires:       python3-vdf
 
-%description
-User-mode driver and GTK3-based GUI for game controllers, 
-including but not limited to the Steam Controller (2015 & 2026).
+%description 
+User-mode driver and GTK3-based GUI for game controllers, including but not limited to the Steam Controller (2015 & 2026).
 
 %prep
 %setup -q

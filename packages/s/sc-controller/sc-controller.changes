@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Aug 28 02:22:00 UTC 2026 - Armin Seuchter <a.seuchter@gmail.com>
+
+- Update to 0.7.0
+  * Steam Controller (2026) now gives haptic feedback when clicking the touchpads
+  * Wayland support was further improved
+  * A lot of bugs were squashed
+  * Profile version was bumped to v1.6
+
+-------------------------------------------------------------------
 Wed Aug 12 00:54:00 UTC 2026 - Armin Seuchter <a.seuchter@gmail.com>
 
 - Update to 0.6.6
