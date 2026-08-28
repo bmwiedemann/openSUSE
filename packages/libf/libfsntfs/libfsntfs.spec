@@ -21,7 +21,7 @@
 
 %define lname	libfsntfs1
 Name:           libfsntfs
-Version:        20260727
+Version:        20260827
 Release:        0
 Summary:        Library and tools to access the NTFS filesystem
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
