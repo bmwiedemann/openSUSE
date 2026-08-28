@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Aug 28 07:25:03 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.12.6:
+  * SECURITY ADVISORIES:
+    - When interacting with OCI Distribution registries for module
+      or provider package installation, earlier versions of
+      OpenTofu could incorrectly resend credentials intended for
+      the original origin to the target of an HTTP redirect.
+      (#4422)
+    - When interacting with an attacker-controlled remote state
+      backend or provider/module registry, tofu init in earlier
+      versions of OpenTofu could potentially cause high CPU usage
+      and/or high memory usage resolving crafted relative URLs in
+      the API responses. (#4472)
+      - go.mod: go get oras.land/oras-go/v2@v2.6.1
+
+-------------------------------------------------------------------
 Tue Jul 21 12:00:57 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.12.5:
