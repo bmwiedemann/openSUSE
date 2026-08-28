@@ -16,9 +16,14 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-huggingface-hub
-Version:        1.28.0
+Version:        1.29.0
 Release:        0
 Summary:        Client library for interaction with the huggingface hub
 License:        Apache-2.0
@@ -45,9 +50,14 @@ Requires:       python-httpx >= 0.23.0
 Requires:       python-packaging >= 20.9
 Requires:       python-tqdm >= 4.42.1
 Requires:       python-typing-extensions >= 4.1.0
+BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-BuildArch:      noarch
+%endif
 %python_subpackages
 
 %description
@@ -71,6 +81,7 @@ sed -i 's/click>=8.4.2,<9.0.0/click>=8.1.7,<9.0.0/' setup.py
 %python_clone -a %{buildroot}%{_bindir}/hf
 %python_clone -a %{buildroot}%{_bindir}/huggingface-cli
 %python_clone -a %{buildroot}%{_bindir}/tiny-agents
+%python_group_libalternatives hf huggingface-cli tiny-agents
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -78,6 +89,11 @@ sed -i 's/click>=8.4.2,<9.0.0/click>=8.1.7,<9.0.0/' setup.py
 # cannot run in the build environment. Restrict %%check to an import smoke test
 # that exercises the freshly built package under every configured Python flavour.
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -c "import huggingface_hub"
+
+%pre
+%python_libalternatives_reset_alternative hf
+%python_libalternatives_reset_alternative huggingface-cli
+%python_libalternatives_reset_alternative tiny-agents
 
 %post
 %python_install_alternative hf

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Aug 27 18:08:33 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.29.0:
+  * Cache the Xet connection info so a snapshot download no longer
+    requests a read token per file, which rate-limited large repos
+  * Extend the CVE-2026-15717 path-traversal validation to
+    hf buckets sync / sync_bucket(), which joined server-supplied
+    keys onto the destination unchecked
+  * Never fall back to pickle in load_state_dict_from_file() for a
+    shard named exactly ".safetensors"
+  * Add HfApi.update_bucket_settings() and hf buckets settings to
+    change a bucket's visibility after creation
+  * Send LoRA weights for fal-ai text-to-video and hint at
+    stream=True when a conversational call fails with 504
+  * Fix hf upload with a wildcard local_path and argument help
+    rendering under click 8.5
+  * Drop the deprecated labels argument of
+    zero_shot_image_classification(); use candidate_labels
+  * Cap the optional mcp extra at mcp < 2.0
+  * Assorted doc and test fixes, see upstream's release notes for
+    the full list
+- Switch from update-alternatives to libalternatives
+
+-------------------------------------------------------------------
 Wed Aug 19 07:19:37 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.28.0:

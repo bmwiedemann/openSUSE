@@ -112,4 +112,29 @@ smoke test passes for both python313 and python314, source_validator clean.</com
   * Drop the undocumented INFERENCE_ENDPOINT_IMAGE_KEYS constant</comment>
     <requestid>1371919</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b2b9a6ce937d0c5ff9f798f405086d56</srcmd5>
+    <version>1.29.0</version>
+    <time>1787939248</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.29.0.
+
+Two security-relevant upstream fixes: the CVE-2026-15717 path-traversal
+validation now also covers &quot;hf buckets sync&quot; / sync_bucket(), which joined
+server-supplied keys onto the destination unchecked; and
+load_state_dict_from_file() no longer falls back to pickle for a shard named
+exactly &quot;.safetensors&quot; (Path.suffix is empty for extension-only names).
+
+Also switches the hf / huggingface-cli / tiny-agents generic names from
+update-alternatives to libalternatives, keeping the SLE-15 fallback since the
+devel project still builds 15.x.
+
+Runtime dependency floors are unchanged upstream. The only API removal is the
+long-deprecated labels= argument of InferenceClient.zero_shot_image_classification();
+no Factory consumer uses it and none caps huggingface-hub.
+
+Built locally on aarch64 against openSUSE_Tumbleweed: green, rpmlint 0 errors /
+0 warnings / 0 badness.</comment>
+    <requestid>1374116</requestid>
+  </revision>
 </revisionlist>
