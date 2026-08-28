@@ -17,7 +17,7 @@
 
 
 Name:           mingw32-headers
-Version:        12.0.0
+Version:        14.0.0
 Release:        0
 Summary:        MinGW-w64 headers for Win32 and Win64
 License:        SUSE-Public-Domain
@@ -54,7 +54,9 @@ an actual pthread implementation (like winpthreads) is installed.
 %autosetup -n mingw-w64-v%version/mingw-w64-headers -p2
 
 %build
-%_mingw32_configure --enable-sdk=all --with-default-msvcrt=msvcrt
+%_mingw32_configure \
+    --enable-sdk=all \
+    --with-default-msvcrt=%{?_mingw32_crt:%{_mingw32_crt}}%{!?_mingw32_crt:msvcrt}
 %make_build
 
 %install
