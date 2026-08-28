@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+Fri Aug 28 06:25:13 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Initial package version 3.7.0:
+  * Version specified in kubernetes v1.37.0
+    ref: https://github.com/kubernetes/kubernetes/blob/v1.37.0/build/dependencies.yaml#L65-L67 
