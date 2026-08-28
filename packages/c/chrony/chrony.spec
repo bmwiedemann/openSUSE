@@ -33,7 +33,7 @@
 %bcond_without testsuite
 
 %define _systemdutildir %(pkg-config --variable systemdutildir systemd)
-%global clknetsim_ver 6ee99f50
+%global clknetsim_ver 56b60ef2
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
@@ -41,7 +41,7 @@
 %define chrony_helper %{_libexecdir}/chrony/helper
 %define chrony_rundir %{_rundir}/%{name}
 Name:           chrony
-Version:        4.8
+Version:        4.9
 Release:        0
 Summary:        System Clock Synchronization Client and Server
 License:        GPL-2.0-only
@@ -56,7 +56,7 @@ Source5:        chrony-dnssrv@.service
 Source6:        chrony-dnssrv@.timer
 Source8:        chrony.keyring
 # Simulator for test suite
-Source10:       https://github.com/mlichvar/clknetsim/archive/%{clknetsim_ver}/clknetsim-%{clknetsim_ver}.tar.gz
+Source10:       https://gitlab.com/chrony/clknetsim/-/archive/%{clknetsim_ver}/clknetsim-%{clknetsim_ver}.tar.gz
 Source11:       chrony-tmpfiles
 Source12:       pool.conf.suse
 Source13:       pool.conf.opensuse
@@ -70,9 +70,10 @@ Patch2:         chrony-logrotate.patch
 Patch3:         chrony-service-ordering.patch
 Patch7:         chrony-htonl.patch
 Patch8:         chrony.nm-dispatcher.dhcp.patch
-Patch9:         chrony-libnettle4.patch
 # Select /etc/chrony.conf if present, else fall back to /usr/etc/chrony.conf (UsrEtc)
 Patch10:        chrony-usretc-service.patch
+# Tolerate arch-dependent glibc log() rounding in the 129-reload simulation test
+Patch11:        chrony-test-tolerance.patch
 BuildRequires:  NetworkManager-devel
 BuildRequires:  bison
 BuildRequires:  findutils
@@ -184,7 +185,7 @@ e.g. because the servers will be set via DHCP.
 %patch -P 3
 %patch -P 7
 %patch -P 8
-%patch -P 9
+%patch -P 11
 %if %{with usr_etc}
 %patch -P 10
 %endif
