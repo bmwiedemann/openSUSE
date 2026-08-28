@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 27 13:59:55 UTC 2026 - Nassim Lhadj <lhadjnassim311@gmail.com>
+
+- Update to version 0.4.4:
+  * Fixed monitor descriptions with hashes in hyprland lua config #140
+  * Implemented Hyprland colorspace + VRR support #137
+
+-------------------------------------------------------------------
 Wed Jul 15 17:19:17 UTC 2026 - Nassim Lhadj <lhadjnassim311@gmail.com>
 
 - Update to version 0.4.3:

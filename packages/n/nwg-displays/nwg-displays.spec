@@ -17,7 +17,7 @@
 
 
 Name:           nwg-displays
-Version:        0.4.3
+Version:        0.4.4
 Release:        0
 Summary:        Output management utility for sway, Hyprland and Niri
 License:        MIT
