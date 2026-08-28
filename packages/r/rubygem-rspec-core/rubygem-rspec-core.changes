@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul  1 00:49:05 UTC 2026 - Steven Baker <steven.baker@suse.com>
+
+- Regenerate spec file to drop update-alternatives dependency
+
+-------------------------------------------------------------------
 Mon Nov  4 17:25:51 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
 
 - New upstream release 3.13.2, see bundled Changelog.md
