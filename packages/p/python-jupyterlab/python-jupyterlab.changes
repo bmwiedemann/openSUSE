@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Aug 28 10:00:04 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
+
+- Update to 4.5.10:
+  ## Security patches
+  * CVE-2026-73415 GHSA-gx64-gj6p-pc4c (bsc#1274985): XSS in image
+    viewer when opening a malicious image in a new browser tab
+  * CVE-2026-73416 GHSA-89vp-jrxv-24w8 (bsc#1274986): extension
+    blocklist bypass via PyPI package-name canonicalization
+  * CVE-2026-73417 GHSA-pppj-hq3g-57pj (bsc#1274987): XSS via
+    crafted settings overrides.json file
+  * CVE-2026-73626 GHSA-r336-hqvq-mfjh (bsc#1274983): missing await
+    allowed allowlist/blocklist bypass in
+    PyPIExtensionManager.install()
+  * CVE-2026-73627 GHSA-fpf6-h6p9-9rjr (bsc#1274982): PluginManager
+    lock-rule enforcement bypass via direct /lab/api/plugins
+    requests
+
+-------------------------------------------------------------------
 Thu Jun 25 07:39:54 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Update to 4.5.9 (bsc#1269072, GHSA-vmhf-c436-hxj4):
