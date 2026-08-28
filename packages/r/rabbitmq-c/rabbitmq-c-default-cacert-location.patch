@@ -1,8 +1,6 @@
-Index: rabbitmq-c-0.14.0/tools/common.c
-===================================================================
---- rabbitmq-c-0.14.0.orig/tools/common.c
-+++ rabbitmq-c-0.14.0/tools/common.c
-@@ -133,7 +133,7 @@ static int amqp_heartbeat = 0;
+--- rabbitmq-c-0.17.0/tools/common.c.orig	2026-08-26 03:35:30.443591639 +0000
++++ rabbitmq-c-0.17.0/tools/common.c	2026-08-26 03:35:37.713675206 +0000
+@@ -133,7 +133,7 @@
  static char *amqp_authfile;
  #ifdef WITH_SSL
  static int amqp_ssl = 0;
@@ -10,4 +8,4 @@ Index: rabbitmq-c-0.14.0/tools/common.c
 +static char *amqp_cacert = "/var/lib/ca-certificates/ca-bundle.pem";
  static char *amqp_key = NULL;
  static char *amqp_cert = NULL;
- #endif /* WITH_SSL */
+ static int amqp_no_default_cert_paths = 0;

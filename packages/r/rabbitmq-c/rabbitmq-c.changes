@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Aug 26 03:43:12 UTC 2026 - Simon Lees + Gemini <sflees@suse.de>
+
+- Update to 0.17.0:
+  * Security: fix size_t overflow in bounds check leading to OOB
+    read (GHSA-jgjf-7fwf-f3c7)
+  * Security: fix heap buffer overflow in frame serialization
+    (GHSA-hfjv-vcp3-39wh)
+  * librabbitmq-tools: fall back to AMQP_URL env var if connection
+    options are omitted
+  * Tools: enable default SSL verification paths by default unless
+    --no-default-cert-paths is passed
+- Also includes changes from 0.16.0:
+  * Security: fix out-of-bounds read via undersized frames
+    (GHSA-9mmv-r8g3-qp46)
+  * Security: fix crash on too-low frame_max negotiation
+    (GHSA-jh48-qjf5-fx5v)
+  * Add amqp_bytes_from_buffer macro
+  * Fix several pointer safety and file stream leak bugs
+  * Minimum build requirement: CMake 3.22 and C99 compiler
+  * TLSv1.2 is now the minimum supported SSL protocol version
+- Rebase rabbitmq-c-default-cacert-location.patch to zero fuzz
+
+-------------------------------------------------------------------
 Sat Nov  8 09:24:31 UTC 2025 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - Fix generated rabbitmq-targets-relwithdebinfo.cmake:

@@ -20,11 +20,10 @@
 %global libname     librabbitmq
 %global majsonum    4
 Name:           rabbitmq-c
-Version:        0.15.0
+Version:        0.17.0
 Release:        0
 Summary:        Client library for AMQP
 License:        MIT
-Group:          Development/Libraries/C and C++
 URL:            https://github.com/alanxz/rabbitmq-c
 Source0:        https://github.com/alanxz/rabbitmq-c/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # [bsc#1232541], https://github.com/alanxz/rabbitmq-c/issues/846
@@ -32,10 +31,11 @@ Patch0:         rabbitmq-c-default-cacert-location.patch
 BuildRequires:  cmake > 2.8.12
 BuildRequires:  gcc
 BuildRequires:  openssl-devel
-# For tools
-BuildRequires:  popt-devel
+BuildRequires:  pkgconfig
 # For man page
 BuildRequires:  xmlto
+# For tools
+BuildRequires:  pkgconfig(popt)
 # SECTION test requirements
 BuildRequires:  rabbitmq-server
 BuildRequires:  rabbitmq-server-plugins
@@ -47,7 +47,6 @@ speaking protocol versions 0-9-1.
 
 %package -n %{libname}%{majsonum}
 Summary:        Client library for AMQP
-Group:          Development/Libraries/C and C++
 
 %description -n %{libname}%{majsonum}
 This is a C-language AMQP client library for use with AMQP servers
@@ -55,7 +54,6 @@ speaking protocol versions 0-9-1.
 
 %package -n %{libname}-devel
 Summary:        Header files and development libraries for %{name}
-Group:          Development/Libraries/C and C++
 Requires:       %{libname}%{majsonum} = %{version}
 
 %description -n %{libname}-devel
@@ -64,7 +62,6 @@ for %{name}.
 
 %package -n %{name}-tools
 Summary:        Example tools built using the librabbitmq package
-Group:          Development/Libraries/C and C++
 
 %description -n %{name}-tools
 This package contains example tools built using %{name}. It provides:
@@ -108,7 +105,7 @@ export RABBITMQ_MNESIA_BASE=/home/abuild/rabbitmq/mnesia
 export RABBITMQ_SCHEMA_DIR=/home/abuild/rabbitmq/schema
 export RABBITMQ_GENERATED_CONFIG_DIR=/home/abuild/rabbitmq/config
 %endif
-sbin_base=/usr/lib*/rabbitmq/lib/rabbitmq_server-*/sbin
+sbin_base=%{_prefix}/lib*/rabbitmq/lib/rabbitmq_server-*/sbin
 $sbin_base/rabbitmq-server&
 sleep 10
 $sbin_base/rabbitmqctl await_startup

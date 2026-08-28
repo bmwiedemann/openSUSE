@@ -160,4 +160,12 @@
     <comment></comment>
     <requestid>1316558</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e390d0a42489b143566ee72687a815ef</srcmd5>
+    <version>0.17.0</version>
+    <time>1787939401</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.17.0 (forwarded request 1373719 from simotek_worker)</comment>
+    <requestid>1374201</requestid>
+  </revision>
 </revisionlist>
