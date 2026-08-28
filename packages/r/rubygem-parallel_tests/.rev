@@ -159,4 +159,12 @@ The updated YaST package will be submitted later, this SR is done in advance to 
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1182818</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>cfda26b4b3726778836adbebad0061ea</srcmd5>
+    <version>4.7.1</version>
+    <time>1787939192</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1373994</requestid>
+  </revision>
 </revisionlist>

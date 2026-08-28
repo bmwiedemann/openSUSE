@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-parallel_tests
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,13 +31,11 @@ Release:        0
 BuildRequires:  %{ruby >= 2.7.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
-BuildRequires:  update-alternatives
 URL:            https://github.com/grosser/parallel_tests
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Run Test::Unit / RSpec / Cucumber / Spinach in parallel
 License:        MIT
-PreReq:         update-alternatives
 
 %description
 Run Test::Unit / RSpec / Cucumber / Spinach in parallel.

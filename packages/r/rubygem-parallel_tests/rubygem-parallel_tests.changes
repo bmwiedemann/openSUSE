@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 25 12:42:00 UTC 2026 - Steven Baker <steven.baker@suse.com>
+
+- Regenerate spec file to drop update-alternatives dependency
+
+-------------------------------------------------------------------
 Fri Jun 21 10:22:16 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
 
 - New upstream release 4.7.1, no changelog found
@@ -508,4 +513,5 @@ Wed Aug  1 05:06:15 UTC 2012 - coolo@suse.com
 Wed Dec 14 18:00:53 UTC 2011 - jmassaguerpla@suse.com
 
 - initial commit 
+
 
