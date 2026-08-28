@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Fri Aug 28 12:03:08 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.11.124:
+  * 55e5cdc Add arkade oci login for registry auth
+- Update to version 0.11.123:
+  * 1167959 Move FIFO test into a unix-only test file
+  * 7de0f26 Preserve symlinked empty directories in oci publish
+  * 45b71d9 Canonicalize source root for symlink containment in oci
+    publish
+  * cba2adf Detect directory symlink cycles in oci publish
+  * 86892c6 Bound symlink dereferencing and skip special files in
+    oci publish
+  * a4f682d Dereference symlinks when publishing directories
+  * 5152e3b Reject digest references as publish tags in oci publish
+  * db2ff1b Tighten --bundle platform validation in oci publish
+  * 4daa779 Reject extra positionals and stream tar to disk in oci
+    publish
+  * 76830e1 Pin crossplane to v2.3.0 until v2.4.0 ships binaries
+  * 48872aa Reject non-directory sources in oci publish
+  * a456437 Add arkade oci publish, the inverse of oci install
+  * 31c38ed Document upstream commenting requires authorisation
+  * d8966ed Reference upstream issue on kube-burner pin
+  * d4925d3 Require a justification comment on tool version pins
+- Update to version 0.11.122:
+  * 09bf0db Add oha and fq to arkade get
+  * 69ff89e Pin kube-burner to v2.8.1
+- Update to version 0.11.121:
+  * 5f37041 Document master pin in gha bump help
+  * 1337f33 Pin e2e workflow actions to versioned tags
+  * 8bd958f Map arch aliases for vzzn in arkade get
+  * f095db9 Add vzzn to arkade get
+- Update to version 0.11.120:
+  * f619a38 Boot a repo release from v0.0.0 when no tags exist
+  * 614b927 Pin actions versions
+  * f12c28a Use functions.imagePullPolicy for function pull policy
+  * 17d8195 Handle ARM64 aliases for k8sgpt downloads
+  * 0e77294 Add k8sgpt to arkade get
+- Update to version 0.11.119:
+  * fa85209 Add github alias for actions-runner
+  * 5c15292 Support GitLab Runner install on macOS
+  * 367d44e Support Prometheus install on macOS
+  * 272b4a2 Make actions-runner archive-only scriptable
+
+-------------------------------------------------------------------
+Fri Aug 14 05:24:08 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.11.118:
+  * Add actions-runner install support for macOS
+
+-------------------------------------------------------------------
 Mon Aug 10 05:17:55 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.11.117:
