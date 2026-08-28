@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Aug 28 05:41:58 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.5.2:
+  * CLI-related changes
+    - fix: recover from kubectl panic in AuthReconcile when SA is
+      forbidden (cherry-pick #28669 for 3.5) (#29294)
+  * Dependencies
+    - chore(deps): update dependency dexidp/dex to v2.45.1
+      (#29334)
+- Update to version 3.5.1:
+  No CLI-related changes or dependency updates
+
+-------------------------------------------------------------------
 Wed Aug 05 05:20:23 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.5.0 (bsc#1271768):
