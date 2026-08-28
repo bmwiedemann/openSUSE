@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Fri Aug 28 06:17:34 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 5.5.0:
+  * What's Changed
+    - This release overhauls image digest reconciliation to prevent
+      unnecessary container recreation.
+      Existing containers may be recreated the first time you run
+      compose up after upgrading, as image digests are re-evaluated
+      using the new logic.
+      compose pull now honors pull_policy refresh windows (daily,
+      weekly, every_N).
+  * Improvements
+    - New image digest reconciliation process #14011 #14041
+  * Fixes
+    - Fix(bridge): skip pulling default image references for
+      build-only ser… in #14010
+    - Fix(watch): stop pruning every dangling image of the project
+      in #14012
+    - Fix(config): resolve service environment when computing
+      --hash in #14002
+    - Fix(watch): skip unreadable directories instead of failing
+      the watch in #13992
+    - Fix: ignore one-off container events in up monitor by
+      @brano-osif in #14038
+    - Fix(bridge): validate arguments of bridge subcommands by
+      @glours in #14003
+    - Fix(images): tolerate containers whose image record is gone
+      in #14028
+  * Internal
+    - Test: Set stop_signal to SIGTERM in nginx-based services in
+      #13881
+    - Chore: inline needlessly extracted single-use helpers in
+      #14048
+    - Add ENGINE column driven by label in #13959
+  * Dependencies
+    - Build(deps): bump github.com/moby/moby/client from 0.5.0 to
+      0.5.1 in #13999
+    - Build(deps): bump github/codeql-action/upload-sarif from
+      4.37.3 to 4.37.4 in #14009
+    - Build(deps): bump github/codeql-action/upload-sarif from
+      4.37.4 to 4.37.5 in #14019
+    - Build(deps): bump github.com/moby/buildkit from 0.32.1 to
+      0.32.2 in #14033
+    - Build(deps): bump github.com/docker/buildx from 0.36.0 to
+      0.36.1 in #14034
+    - Build(deps): bump
+      docker/github-builder/.github/workflows/bake.yml from 1.15.0
+      to 1.16.0 in the docker-actions group in #14035
+    - Build(deps): bump github.com/moby/go-archive from 0.3.2 to
+      0.3.3 in #14043
+    - Build(deps): bump github/codeql-action/upload-sarif from
+      4.37.5 to 4.37.6 in #14022
+    - Build(deps): bump github.com/docker/cli from
+      29.6.2+incompatible to 29.7.2+incompatible in #14042
+    - Build(deps): bump google.golang.org/grpc from 1.82.1 to
+      1.83.0 in #14008
+    - Bump golang to version 1.26.6 in #14045
+
+-------------------------------------------------------------------
 Tue Aug 04 05:18:21 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 5.4.0:
