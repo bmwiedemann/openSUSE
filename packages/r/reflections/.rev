@@ -15,4 +15,12 @@
     <comment>Explicite jsr305 requirement</comment>
     <requestid>1273821</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>59ed5d6f4fb90d41bb973fdb13afbdd9</srcmd5>
+    <version>0.10.2</version>
+    <time>1788018086</time>
+    <user>dimstar_suse</user>
+    <comment>Align version in pom.xml with package version</comment>
+    <requestid>1374485</requestid>
+  </revision>
 </revisionlist>

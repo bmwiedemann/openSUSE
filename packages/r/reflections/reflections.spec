@@ -59,6 +59,8 @@ This package contains the API documentation for %{name}.
 %prep
 %autosetup -p1
 
+%pom_xpath_set pom:project/pom:version %{version}
+
 find -type f '(' -name '*.jar' -o -name '*.class' ')' -not -path './src/test/*' -print -delete
 
 %build
