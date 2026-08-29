@@ -374,4 +374,14 @@ outside of Factory
 - Update dependencies bsc#1257836/CVE-2026-25547, bsc#1258641/CVE-2026-26996, bsc#1259013/CVE-2026-27904</comment>
     <requestid>1367651</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>5a9284ce4cae3db7f524cda69fd3a13e</srcmd5>
+    <version>129</version>
+    <time>1788018016</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 129
+  * Bugfixes
+  * Translations and dependency updates</comment>
+    <requestid>1374319</requestid>
+  </revision>
 </revisionlist>
