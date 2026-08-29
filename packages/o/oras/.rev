@@ -79,4 +79,12 @@
     <comment>- Update to version 1.3.3 (bsc#1271462, CVE-2026-50163):</comment>
     <requestid>1366417</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a784dd6bf6963fc7ace497c3cc7ab100</srcmd5>
+    <version>1.3.4</version>
+    <time>1788018033</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1374465</requestid>
+  </revision>
 </revisionlist>

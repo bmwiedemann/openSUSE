@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Fri Aug 28 12:34:16 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.3.4:
+  ORAS CLI v1.3.4 is a security-focused maintenance release. It
+  scopes registry credentials — mTLS client certificates, custom
+  --header values, and --debug trace output — strictly to the
+  configured registry origin, and adds an opt-in --force copy mode
+  for registries that report incomplete content as present.
+  * Highlights
+    - Security: three credential-scoping advisories are fixed —
+      mTLS client certificates (GHSA-h3wm-jjqf-8jm2), custom
+      request headers (GHSA-whvf-jp7m-59f3), and --debug HTTP
+      traces (GHSA-5jhf-2qmf-m8c5). All three were reported by
+      Hardik Mehta (@hardw00t).
+    - oras cp and oras push gain --force, which walks every
+      referenced manifest instead of trusting the destination's
+      Exists() response — this fixes manifest blob unknown failures
+      against pull-through caches (ACR Artifact Cache, ECR
+      pull-through, GAR remote repositories).
+    - Shared authentication cache: repeated in-process calls now
+      reuse credentials instead of re-running the 401 challenge on
+      every call.
+    - Supply-chain hardening: release checksums and archives are
+      now GPG-signed in the release workflow with the ORAS project
+      release key.
+  * Features
+    - Add --force to oras cp/oras push to handle
+      partially-populated destinations by @renshao in #2061
+    - Save authentication context between calls so in-process usage
+      authenticates once by @TerryHowe in #1923
+    - Sign release checksums in the release workflow by @TerryHowe
+      in #2112
+  * Bug Fixes
+    - Avoid send on closed channel in the progress messenger by
+      @harshasiddartha in #2126
+    - Route logger output to command stderr by @vigneshakaviki in
+      #2123
+  * Security
+    - Registry mTLS client certificates are disclosed to
+      cross-origin TLS peers (CWE-201, GHSA-h3wm-jjqf-8jm2): a
+      certificate supplied via --cert-file/--key-file was installed
+      on a single shared transport and presented to any HTTPS peer,
+      including cross-origin redirect and bearer-realm targets and
+      HTTPS proxies. The certificate is now scoped to the
+      configured registry origin.
+    - Registry custom credentials are forwarded across HTTP origins
+      (GHSA-whvf-jp7m-59f3): values passed with
+      --header/--from-header/--to-header were appended to every
+      request, including redirect targets and bearer token realms
+      on other hosts. They are now stripped for any origin that
+      does not match the configured registry.
+    - Debug HTTP traces expose replayable bearer credentials
+      (CWE-532, GHSA-5jhf-2qmf-m8c5): --debug trace output
+      persisted URL userinfo and query parameters (e.g. pre-signed
+      X-Amz-Signature), Location/Content-Location/Referer headers,
+      cookies, proxy authorization, configured custom headers, and
+      token response bodies. These are now redacted.
+  * Maintenance
+    - Replace containerd/console with golang.org/x/term in #2062
+    - Group GitHub Actions Dependabot updates in #2119
+    - Float the Go version in the release workflow to match the
+      other workflows in #2137
+    - Cover the shared auth client cache in tests in #2127
+    - Strengthen display handler test assertions in #2055
+    - Expect scrubbed custom header values in e2e in #2133
+    - Dependency bumps: sirupsen/logrus 1.9.4 → 1.10.1 (#2130,
+      #2138), onsi/ginkgo/v2 2.32.1 in /test/e2e (#2129),
+      library/golang 1.26.5 → 1.27.0-alpine (#2134, #2139), and
+      grouped GitHub Actions updates (#2115, #2116, #2117, #2120,
+      #2122, #2124, #2128, #2135, #2140)
+
+-------------------------------------------------------------------
 Mon Jul 13 04:54:22 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.3.3 (bsc#1271462, CVE-2026-50163):
