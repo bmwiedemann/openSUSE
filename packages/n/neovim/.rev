@@ -1812,4 +1812,41 @@ FIXES (LSP):
     <comment></comment>
     <requestid>1368331</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>deadc09f23e0acd908a36b153b69b901</srcmd5>
+    <version>0.12.5</version>
+    <time>1788018097</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.12.5:
+  + restart: &quot;:restart&quot; (no bang) saves/restores session
+  + restart: ZR restores session
+  + :restart: v:startreason
+  + lsp: pass target buffer to `reuse_client` predicate
+  + build: fix wasmtime version regex
+  + channel: handle socket accept failure
+  + decor: 'breakindent'/'showbreak' gap ignores active highlight
+  + drawline: 'statuscolumn' breaks unprintable char wrapping
+  + floatwin: don't use same window as altwin
+  + floatwin: relative='cursor' may use outdated cursor position
+  + help: g==: 'No code block found'
+  + inccommand: enforce timeout during matching, not just after a line
+  + lsp: guard linked_editing_range refresh on attach
+  + lsp: improve inlayHint.resolveSupport in client capabilities
+  + lsp: incorrect rendering of markdown codeblock
+  + lua: don't limit indexed vim.cmd positional argument count
+  + lua: give nicer error message when trying to index vim.NIL
+  + lua: vim.regex():match_str abort in Luv callback
+  + man.lua: cache pages until width changes
+  + pack: do not write the lockfile when installing from it
+  + path: avoid shell fallback for unknown users
+  + restart: distinguish v:exitreason for :restart!
+  + restart: keep :restart error message concise
+  + restart: messages EXX error codes
+  + restart: remove `-S [file]` from v:argv
+  + restart: set job env instead of mutating parent env
+  + shada: persist cleared registers
+  + shada: persist cleared search patterns
+  + socket: --listen silently truncates long paths (forwarded request 1374500 from rrahl0)</comment>
+    <requestid>1374501</requestid>
+  </revision>
 </revisionlist>
