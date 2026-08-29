@@ -21,7 +21,7 @@ Name:           coredns
 Version:        1.14.7
 Release:        0
 Summary:        DNS server written in Go
-License:        Apache-2.0
+License:        Apache-2.0 AND MPL-2.0
 URL:            https://coredns.io
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
