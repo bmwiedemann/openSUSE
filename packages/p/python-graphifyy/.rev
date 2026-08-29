@@ -103,4 +103,16 @@ python-missing-require on the deliberately-Recommends tree-sitter
 grammars, unchanged from the 0.9.49 baseline).</comment>
     <requestid>1373778</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9d54ea0599414634e357367847358a69</srcmd5>
+    <version>0.9.51</version>
+    <time>1788018204</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.9.51
+
+Fix-only release: shrink guard, --force --code-only rescan, hyperedge
+remap, Leiden endpoint canonicalization, TS/JS new Foo() call edges,
+Elixir when-guards, Common Lisp node-id collisions. 3970 tests pass.</comment>
+    <requestid>1374585</requestid>
+  </revision>
 </revisionlist>
