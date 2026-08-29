@@ -23,4 +23,16 @@
     <comment>Update to version 0.6.0: volume support (E2B-compatible volume framework), X-API-Key on all request paths; one stale upstream test deselected (reported upstream)</comment>
     <requestid>1367773</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>981c3a8a0d39efd7f03f7e152fb56fed</srcmd5>
+    <version>0.7.0</version>
+    <time>1788018202</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.7.0
+
+Typed SandboxInfo from get_info(), new update_network(), VolumeMount
+read-only attachments, Template.set_alias(). Drops a now-obsolete
+--deselect: upstream fixed the assertion, test passes. 254 tests pass.</comment>
+    <requestid>1374584</requestid>
+  </revision>
 </revisionlist>

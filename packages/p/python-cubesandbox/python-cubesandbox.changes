@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Aug 29 07:36:01 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.7.0:
+  * sb.get_info() now returns a typed SandboxInfo with E2B-style
+    snake_case attributes (state, started_at/end_at as datetime);
+    it still behaves as the raw CubeAPI dict, minus envdAccessToken
+    which is dropped from iteration and serialization
+  * New Sandbox.update_network() replaces a running sandbox's egress
+    policy, resetting connections the new policy disallows
+  * Sandbox.create() gains distribution_scope to pin a sandbox to
+    given compute nodes, and envs as an E2B alias for env_vars
+  * Volume mounts accept the new VolumeMount wrapper to make a single
+    attachment read-only
+  * Network policy Match gains port (requires scheme) to scope
+    CubeEgress interception to one host/port/scheme tuple
+  * New Template.set_alias(); TemplateInfo.name is now taken from
+    aliases only and build() no longer sends an empty name
+  * Sandbox.clone() refcounts its temporary snapshot and deletes it
+    only after the last clone is killed
+- Stop deselecting test_template_get_parses_network_fields, upstream
+  updated its assertion for the X-API-Key headers change.
+
+-------------------------------------------------------------------
 Sat Jul 25 19:02:50 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.6.0 (SDK release accompanying the
