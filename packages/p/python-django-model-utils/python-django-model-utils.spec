@@ -24,6 +24,8 @@ Summary:        Django model mixins and utilities
 License:        BSD-3-Clause
 URL:            https://github.com/jazzband/django-model-utils
 Source:         https://files.pythonhosted.org/packages/source/d/django-model-utils/django_model_utils-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/jazzband/django-model-utils/pull/641 Add formal support for Django 5.2
+Patch:          dj52.patch
 BuildRequires:  %{python_module Django >= 4.2}
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module freezegun}

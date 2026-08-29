@@ -1,0 +1,27 @@
+From 2ad921c04d9a36d63cd08bd08767f81999d5e062 Mon Sep 17 00:00:00 2001
+From: jelmert <info@jelmert.nl>
+Date: Tue, 8 Apr 2025 09:49:47 +0200
+Subject: [PATCH] Model.save keyword only
+
+---
+ tests/test_fields/test_field_tracker.py | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/tests/test_fields/test_field_tracker.py b/tests/test_fields/test_field_tracker.py
+index f2f2127e..b823eb62 100644
+--- a/tests/test_fields/test_field_tracker.py
++++ b/tests/test_fields/test_field_tracker.py
+@@ -124,7 +124,12 @@ def test_pre_save_has_changed(self) -> None:
+ 
+     def test_save_with_args(self) -> None:
+         self.instance.number = 1
+-        self.instance.save(False, False, None, None)
++        self.instance.save(
++            force_insert=False,
++            force_update=False,
++            using=None,
++            update_fields=None
++        )
+         self.assertChanged()
+ 
+     def test_first_save(self) -> None:

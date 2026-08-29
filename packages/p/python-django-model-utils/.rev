@@ -208,4 +208,14 @@
     <comment></comment>
     <requestid>1330004</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>49f356bb11603432ee6d239f02b47e70</srcmd5>
+    <version>5.0.0</version>
+    <time>1788018228</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1373951 from mcalabkova
+
+- Add dj52.patch to fix tests on Django 6.1, which dropped some deprecations</comment>
+    <requestid>1374596</requestid>
+  </revision>
 </revisionlist>
