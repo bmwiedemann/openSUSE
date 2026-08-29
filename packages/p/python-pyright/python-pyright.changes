@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Aug 28 16:11:31 UTC 2026 - Matej Cepl <mcepl@suse.com>
+
+- Vendor the pyright npm payload with obs-service-node_modules:
+  * build and run without network access
+  * use the system Node.js interpreter and remove nodeenv downloads
+  * omit the unneeded macOS-only fsevents binary
+- Use libalternatives unconditionally.
+- Fix env-script-interpreter rpmlint errors on js files in pyright/dist.
+
+-------------------------------------------------------------------
 Wed Aug 12 06:38:16 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 1.1.411:

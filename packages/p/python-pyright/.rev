@@ -27,4 +27,18 @@
   intepreter instead of downloading its own.</comment>
     <requestid>1370858</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>6fe8741ce9c8df07f9100b9dbb91d51d</srcmd5>
+    <version>1.1.411</version>
+    <time>1788018040</time>
+    <user>dimstar_suse</user>
+    <comment>- Vendor the pyright npm payload with obs-service-node_modules:
+  * build and run without network access
+  * use the system Node.js interpreter and remove nodeenv downloads
+  * omit the unneeded macOS-only fsevents binary
+- Use libalternatives unconditionally.
+- Fix env-script-interpreter rpmlint errors on js files in pyright/dist.
+</comment>
+    <requestid>1374470</requestid>
+  </revision>
 </revisionlist>

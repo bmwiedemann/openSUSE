@@ -1,14 +1,11 @@
----
- src/pyright/_utils.py |   35 ++--------------
- src/pyright/node.py   |  108 +++++---------------------------------------------
- tests/conftest.py     |    8 +++
- 3 files changed, 23 insertions(+), 128 deletions(-)
-
-Index: pyright-python-1.1.411/src/pyright/_utils.py
-===================================================================
---- pyright-python-1.1.411.orig/src/pyright/_utils.py	2026-06-25 04:13:32.000000000 +0200
-+++ pyright-python-1.1.411/src/pyright/_utils.py	2026-08-12 08:31:38.120365735 +0200
-@@ -1,10 +1,7 @@
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -1,2 +1 @@
+-nodeenv>=1.6.0
+ typing-extensions>=4.1
+--- a/src/pyright/_utils.py
++++ b/src/pyright/_utils.py
+@@ -1,112 +1,32 @@
  from __future__ import annotations
  
  import os
@@ -16,20 +13,54 @@ Index: pyright-python-1.1.411/src/pyright/_utils.py
 -import json
  import logging
 -import subprocess
- from typing import Any
+-from typing import Any
  from pathlib import Path
  
-@@ -49,34 +46,12 @@
-             log.debug('using bundled pyright at %s', bundled_path)
-             return bundled_path
+-from . import node, _mureq as mureq
+-from .utils import env_to_bool, get_cache_dir, get_latest_version
++from .utils import env_to_bool, get_latest_version
+ from ._version import __version__, __pyright_version__
+-
+-ROOT_CACHE_DIR = get_cache_dir() / 'pyright-python'
+-DEFAULT_PACKAGE_JSON: dict[str, Any] = {
+-    'name': 'pyright-binaries',
+-    'version': '1.0.0',
+-    'private': True,
+-    'description': 'Cache directory created by Pyright Python to store downloads of the NPM package',
+-    'main': 'node_modules/pyright/index.js',
+-    'author': 'RobertCraigie',
+-    'license': 'Apache-2.0',
+-}
+ log: logging.Logger = logging.getLogger(__name__)
  
+ 
+ def install_pyright(args: tuple[object, ...], *, quiet: bool | None) -> Path:
+-    """Internal helper function to install the Pyright npm package to a cache.
+-
+-    This returns the path to the installed package.
+-
+-    This accepts a single argument which corresponds to the arguments given to the CLI / langserver
+-    which are used to determine whether or not certain warnings / logs will be printed.
+-    """
+-    version = _get_configured_pyright_version()
+-    if version == 'latest':
+-        version = node.latest('pyright')
+-    else:
+-        if _should_warn_version(args=args, quiet=quiet):
+-            print(
+-                f'WARNING: there is a new pyright version available (v{version} -> v{get_latest_version()}).\n'
+-                + 'Please install the new version or set PYRIGHT_PYTHON_FORCE_VERSION to `latest`\n'
+-            )
+-
+-    if version == __pyright_version__ and env_to_bool('PYRIGHT_PYTHON_USE_BUNDLED_PYRIGHT', default=True):
+-        bundled_path = Path(__file__).parent.joinpath('dist')
+-        if bundled_path.exists():
+-            log.debug('using bundled pyright at %s', bundled_path)
+-            return bundled_path
+-
 -    cache_dir = ROOT_CACHE_DIR / version
 -    cache_dir.mkdir(exist_ok=True, parents=True)
-+    for root in (Path('/usr/share/node_modules'), Path('/usr/lib/node_modules')):
-+        pkg_dir = root / 'pyright'
-+        if node.get_pkg_version(pkg_dir / 'package.json') == version:
-+            return pkg_dir
- 
+-
 -    pkg_dir = cache_dir / 'node_modules' / 'pyright'
 -    package_json = cache_dir / 'package.json'
 -    current_version = node.get_pkg_version(pkg_dir / 'package.json')
@@ -55,37 +86,89 @@ Index: pyright-python-1.1.411/src/pyright/_utils.py
 -        )
 -
 -    return pkg_dir
-+    raise RuntimeError(f'System pyright npm package version {version} is not installed; install it from the distribution package')
+-
+-
+-def _get_configured_pyright_version() -> str:
++    """Return the distribution-provided Pyright npm package."""
+     force_version = os.environ.get('PYRIGHT_PYTHON_FORCE_VERSION')
+-    if force_version:
+-        return force_version
+-
+-    pylance_version = os.environ.get('PYRIGHT_PYTHON_PYLANCE_VERSION')
+-    if pylance_version:
+-        return _get_pylance_pyright_version(pylance_version)
+-
+-    return __pyright_version__
+-
+-
+-def _get_pylance_pyright_version(pylance_version: str) -> str:
+-    url = f'https://raw.githubusercontent.com/microsoft/pylance-release/main/releases/{pylance_version}.json'
++    if force_version and force_version != __pyright_version__:
++        raise RuntimeError(
++            f'This distribution package provides pyright {__pyright_version__}; '
++            f'the requested version {force_version} cannot be downloaded'
++        )
+ 
+-    try:
+-        response = mureq.get(url, timeout=1)
+-        response.raise_for_status()
++    if os.environ.get('PYRIGHT_PYTHON_PYLANCE_VERSION'):
++        raise RuntimeError('Pylance version lookup is unavailable in this distribution package')
+ 
+-        data = response.json()
+-        log.debug(f'Pylance release data: {data}')
+-        version = data['pyrightVersion']
++    bundled_path = Path(__file__).parent / 'dist'
++    if not bundled_path.exists():
++        raise RuntimeError('The distribution-provided Pyright npm package is missing')
+ 
+-        log.debug(f'Pylance {pylance_version} uses pyright version {version}')
+-        return version
+-    except Exception as exc:
+-        log.debug(f'Failed to download release metadata for Pylance {pylance_version} from {url}: {type(exc)} - {exc}')
+-        raise
++    log.debug('using distribution-provided pyright at %s', bundled_path)
++    return bundled_path
  
  
- def _get_configured_pyright_version() -> str:
-Index: pyright-python-1.1.411/src/pyright/node.py
-===================================================================
---- pyright-python-1.1.411.orig/src/pyright/node.py	2026-06-25 04:13:32.000000000 +0200
-+++ pyright-python-1.1.411/src/pyright/node.py	2026-08-12 08:31:38.120734741 +0200
-@@ -8,11 +8,10 @@
+ def _should_warn_version(
+--- a/src/pyright/node.py
++++ b/src/pyright/node.py
+@@ -1,30 +1,21 @@
+ from __future__ import annotations
+ 
+-import os
+ import re
+ import sys
+-import json
+ import shutil
  import logging
  import platform
  import subprocess
 -import importlib.util
 -from typing import Any, Dict, Tuple, Union, Mapping, Optional, NamedTuple, cast
-+from typing import Any, Dict, Tuple, Union, Optional, NamedTuple, cast
++from typing import Any, Tuple, Union, Optional, NamedTuple, cast
  from pathlib import Path
- from functools import lru_cache
+-from functools import lru_cache
 -from typing_extensions import Literal, assert_never
 +from typing_extensions import Literal
  
  from . import errors
  from .types import Target, check_target
-@@ -23,7 +22,6 @@
- ENV_DIR: Path = get_env_dir()
- BINARIES_DIR: Path = get_bin_dir(env_dir=ENV_DIR)
- USE_GLOBAL_NODE = env_to_bool('PYRIGHT_PYTHON_GLOBAL_NODE', default=True)
+-from .utils import env_to_bool, get_bin_dir, get_env_dir, maybe_decode
++from .utils import maybe_decode
+ 
+ log: logging.Logger = logging.getLogger(__name__)
+ 
+-ENV_DIR: Path = get_env_dir()
+-BINARIES_DIR: Path = get_bin_dir(env_dir=ENV_DIR)
+-USE_GLOBAL_NODE = env_to_bool('PYRIGHT_PYTHON_GLOBAL_NODE', default=True)
 -USE_NODEJS_WHEEL = env_to_bool('PYRIGHT_PYTHON_NODEJS_WHEEL', default=True)
- NODE_VERSION = os.environ.get('PYRIGHT_PYTHON_NODE_VERSION', default=None)
+-NODE_VERSION = os.environ.get('PYRIGHT_PYTHON_NODE_VERSION', default=None)
  VERSION_RE = re.compile(r'\d+\.\d+\.\d+')
  
-@@ -41,27 +39,6 @@
+ 
+@@ -41,27 +32,6 @@
      return '.cmd'
  
  
@@ -113,7 +196,7 @@ Index: pyright-python-1.1.411/src/pyright/node.py
  def _get_global_binary(target: Target) -> Optional[Path]:
      log.debug('Checking for global target binary: %s', target)
  
-@@ -80,54 +57,20 @@
+@@ -80,54 +50,20 @@
      return None
  
  
@@ -174,10 +257,17 @@ Index: pyright-python-1.1.411/src/pyright/node.py
  
  
  def run(
-@@ -143,37 +86,7 @@
-             'subprocess.CompletedProcess[str] | subprocess.CompletedProcess[bytes]',
-             subprocess.run(node_args, **kwargs),
-         )
+@@ -136,44 +72,12 @@
+     check_target(target)
+ 
+     strategy = _resolve_strategy(target)
+-    if strategy.type == 'global':
+-        node_args = [str(strategy.path), *args]
+-        log.debug('Running global node command with args: %s', node_args)
+-        return cast(
+-            'subprocess.CompletedProcess[str] | subprocess.CompletedProcess[bytes]',
+-            subprocess.run(node_args, **kwargs),
+-        )
 -    elif strategy.type == 'nodejs_wheel':
 -        import nodejs_wheel
 -
@@ -209,47 +299,132 @@ Index: pyright-python-1.1.411/src/pyright/node.py
 -        )
 -    else:
 -        assert_never(strategy)
-+    raise AssertionError(f'Unsupported node strategy: {strategy.type}')
++    node_args = [str(strategy.path), *args]
++    log.debug('Running system command with args: %s', node_args)
++    return cast(
++        'subprocess.CompletedProcess[str] | subprocess.CompletedProcess[bytes]',
++        subprocess.run(node_args, **kwargs),
++    )
  
  
  def version(target: Target) -> Tuple[int, ...]:
-@@ -245,7 +158,7 @@
-     return data.get('version')
- 
- 
+@@ -187,91 +91,3 @@
+     info = tuple(int(value) for value in match.group(0).split('.'))
+     log.debug('Version check for %s returning %s', target, info)
+     return info
+-
+-
+-@lru_cache(maxsize=None)
+-def latest(package: str) -> str:
+-    """Return the latest version for the given package"""
+-    proc = run(
+-        'npm',
+-        'info',
+-        package,
+-        'version',
+-        stdout=subprocess.PIPE,
+-        stderr=subprocess.STDOUT,
+-    )
+-    stdout = maybe_decode(proc.stdout)
+-
+-    if proc.returncode != 0:
+-        print(stdout, file=sys.stderr)
+-        raise errors.VersionCheckFailed(f'Version check for {package} failed, see output above.')
+-
+-    match = VERSION_RE.search(stdout)
+-    if not match:
+-        print(stdout, file=sys.stderr)
+-        raise errors.VersionCheckFailed(f'Could not find version for {package}, see output above')
+-
+-    value = match.group(0)
+-    log.debug('Version check for %s returning %s', package, value)
+-    return value
+-
+-
+-def get_env_variables() -> Dict[str, Any]:
+-    """Return the environmental variables that should be passed to a binary"""
+-    # NOTE: I do not actually know if these result in the intended behaviour
+-    #       I simply copied them from bin/shim in nodeenv
+-    return {
+-        'NODE_PATH': str(ENV_DIR / 'lib' / 'node_modules'),
+-        'NPM_CONFIG_PREFIX': str(ENV_DIR),
+-        'npm_config_prefix': str(ENV_DIR),
+-    }
+-
+-
+-def get_pkg_version(pkg: Path) -> str | None:
+-    """Given a path to a `package.json` file, parse it and returns the `version` property
+-
+-    Returns `None` if the version could not be resolved for any reason.
+-    """
+-    if not pkg.exists():
+-        return None
+-
+-    try:
+-        data = json.loads(pkg.read_text())
+-    except Exception:
+-        # TODO: test this
+-        log.debug('Ignoring error while reading/parsing the %s file', pkg, exc_info=True)
+-        return None
+-
+-    return data.get('version')
+-
+-
 -def _update_path_env(
-+'''def _update_path_env(
-     *,
-     env: Mapping[str, str] | None,
-     target_bin: Path,
-@@ -275,3 +188,4 @@
- 
-     log.debug('Using PATH environment variable: %s', path)
-     return path
-+'''
-Index: pyright-python-1.1.411/tests/conftest.py
-===================================================================
---- pyright-python-1.1.411.orig/tests/conftest.py	2026-06-25 04:13:32.000000000 +0200
-+++ pyright-python-1.1.411/tests/conftest.py	2026-08-12 08:17:47.441389908 +0200
-@@ -3,7 +3,10 @@
+-    *,
+-    env: Mapping[str, str] | None,
+-    target_bin: Path,
+-    sep: str = os.pathsep,
+-) -> str:
+-    """Returns a modified version of the `PATH` environment variable that has been updated
+-    to include the location of the downloaded Node binaries.
+-    """
+-    if env is None:
+-        env = dict(os.environ)
+-
+-    log.debug('Attempting to prepend %s to the PATH', target_bin)
+-    assert target_bin.exists(), f'Target directory {target_bin} does not exist'
+-
+-    path = env.get('PATH', '') or os.environ.get('PATH', '')
+-    if path:
+-        log.debug('Found PATH contents: %s', path)
+-
+-        # handle the case where the PATH already starts with the separator (this probably shouldn't happen)
+-        if path.startswith(sep):
+-            path = f'{target_bin.absolute()}{path}'
+-        else:
+-            path = f'{target_bin.absolute()}{sep}{path}'
+-    else:
+-        # handle the case where there is no PATH set (unlikely / impossible to actually happen?)
+-        path = str(target_bin.absolute())
+-
+-    log.debug('Using PATH environment variable: %s', path)
+-    return path
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -1,9 +1,9 @@
+ import os
++import shutil
+ from typing import Iterator
  from pathlib import Path
  
  import pytest
 -import nodejs_wheel
-+try:
-+    import nodejs_wheel
-+except ImportError:
-+    nodejs_wheel = None
  
  
  @pytest.fixture(name='tmp_path')
-@@ -19,6 +22,9 @@
+@@ -19,10 +19,10 @@
  
  @pytest.fixture(name='node', scope='session')
  def node_fixture() -> str:
-+    if nodejs_wheel is None:
-+        pytest.skip('nodejs-wheel-binaries is not installed')
-+
-     if os.name == 'nt':
-         return str(Path(nodejs_wheel.__file__).parent / 'node.exe')
+-    if os.name == 'nt':
+-        return str(Path(nodejs_wheel.__file__).parent / 'node.exe')
+-
+-    return str(Path(nodejs_wheel.__file__).parent / 'bin' / 'node')
++    node = shutil.which('node')
++    if node is None:
++        pytest.skip('system node is not installed')
++    return node
  
+ 
+ @pytest.fixture(autouse=True)
