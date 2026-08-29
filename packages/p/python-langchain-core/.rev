@@ -129,4 +129,16 @@ Devel accepts: sr#1372135 (core), sr#1372136 (openai), sr#1372137 (anthropic).
 </comment>
     <requestid>1372138</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>57a616e029da6772432282d46e5146d2</srcmd5>
+    <version>1.6.1</version>
+    <time>1788018199</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.6.1
+
+Gateway metadata propagated on the error path, StructuredTool
+JSON-serializable again, Google GenAI v1 tool-call streaming indices
+preserved. Dependency floors unchanged. 2032/2055 tests pass.</comment>
+    <requestid>1374580</requestid>
+  </revision>
 </revisionlist>

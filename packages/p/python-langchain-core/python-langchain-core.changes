@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Aug 29 07:19:34 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.6.1:
+  * Chat models: propagate LangChain gateway metadata on the error
+    path, so a failed generation now carries the gateway details in
+    its generation_info instead of dropping them
+  * StructuredTool is JSON-serializable again: an args_schema model
+    class is dumped as its JSON schema (cached, since pydantic does
+    not memoize it) rather than raising
+    PydanticSerializationError
+  * Google GenAI v1 block translation keeps tool-call streaming
+    indices, so chunks reassemble in the right order
+
+-------------------------------------------------------------------
 Thu Aug 20 06:00:23 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.6.0:
