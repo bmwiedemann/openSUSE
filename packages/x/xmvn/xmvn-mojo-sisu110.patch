@@ -1,0 +1,19 @@
+--- xmvn-4.3.0/xmvn-mojo/src/main/java/org/fedoraproject/xmvn/mojo/BuilddepMojo.java	2026-07-29 19:23:53.411435683 +0200
++++ xmvn-4.3.0/xmvn-mojo/src/main/java/org/fedoraproject/xmvn/mojo/BuilddepMojo.java	2026-07-29 19:44:24.509981895 +0200
+@@ -144,7 +144,15 @@
+     private Lifecycle getDefaultLifecycle( MavenProject project )
+         throws MojoExecutionException
+     {
+-        LifecycleMapping lifecycleMapping = lifecycleMappings.get( project.getPackaging() );
++        String packaging = project.getPackaging();
++        LifecycleMapping lifecycleMapping = lifecycleMappings.get( packaging );
++
++        if ( lifecycleMapping == null && !"pom".equals( packaging ) )
++        {
++            logger.debug( "Lifecycle mapping for '" + packaging + "' not found. Falling back to 'jar'.") ;
++            lifecycleMapping = lifecycleMappings.get( "jar" );
++        }
++
+         if ( lifecycleMapping == null )
+         {
+             throw new MojoExecutionException( "Unable to get lifecycle for project " + project.getId() );

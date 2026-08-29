@@ -215,4 +215,12 @@
     <comment>Support threaded dependency collection in maven-resolver 2.x</comment>
     <requestid>1367568</requestid>
   </revision>
+  <revision rev="28" vrev="6">
+    <srcmd5>449c0616fd06cfdb043ebe96d4039ed3</srcmd5>
+    <version>4.3.0</version>
+    <time>1788018088</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with sisu 1.1.0</comment>
+    <requestid>1374487</requestid>
+  </revision>
 </revisionlist>
