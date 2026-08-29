@@ -61,4 +61,15 @@ python-comfyui-workflow-templates-core 0.3.322 and
 python-comfyui-workflow-templates-json 0.1.57.</comment>
     <requestid>1373739</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f8afc7d0a6039a26725349e011084bf1</srcmd5>
+    <version>0.1.36</version>
+    <time>1788018212</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.1.36
+
+Six preview images for the five new Google Gemini Omni Flash 1.1
+templates. No existing asset changed or removed.</comment>
+    <requestid>1374577</requestid>
+  </revision>
 </revisionlist>
