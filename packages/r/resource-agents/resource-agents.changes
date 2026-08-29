@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Aug 27 21:02:38 UTC 2026 - varkoly@suse.com
+
+- Update to version 4.18.0+git94.6c50a9b:
+  * SAPInstance - fix-issue-2209 - list-unit-files creates high load on systemd (bsc#1273064)
+  * ZFS: wait for the pool state to settle before start returns
+  * High: storage-mon: High: storage-mon: Delete a timer that has not stopped.
+  * portblock: fix incorrect parameters for NftDelete() when using reset_local_on_unblock_stop
+  * podman-etcd: treat crm_attribute 'not found' exits as empty, not error
+  * OCPBUGS-104851: podman-etcd: add restart_no_leave CRM attribute guard to skip member removal
+  * OCPBUGS-100303: podman-etcd: add test hooks for FNC race reproduction
+  * OCPBUGS-100303: podman-etcd: resolve force_new_cluster race during simultaneous dual-start
+  * mediationzone: new resource agent (#2191)
+  * powervs-subnet: fix plaintext token file support
+  * ibmmq: new resource agent for IBM MQ queue managers (#2192)
+  * podman-etcd: scope sync to etcd filesystem only
+  * spec: Remove EOL Fedora compatibility blocks from spec file
+  * Route: restore unique="1" for destination and warn on "default"
+  * Route: update destination parameter to non-unique
+  * powervs-move-ip: introduce support for trusted profiles, refine handling of API return codes
+
+-------------------------------------------------------------------
 Tue Aug 11 14:31:51 UTC 2026 - Peter Varkoly <varkoly@suse.com>
 
 - Update to version 4.18.0+git81.694408f0:

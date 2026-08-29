@@ -2143,4 +2143,28 @@
 - Remove use-python-311.patch. Use more flexible solution for handling the different python versions.</comment>
     <requestid>1370715</requestid>
   </revision>
+  <revision rev="152" vrev="1">
+    <srcmd5>bd1ed8ab971266788eb2682c8cfb7c0f</srcmd5>
+    <version>4.18.0+git94.6c50a9b</version>
+    <time>1788017998</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.18.0+git94.6c50a9b:
+  * SAPInstance - fix-issue-2209 - list-unit-files creates high load on systemd (bsc#1273064)
+  * ZFS: wait for the pool state to settle before start returns
+  * High: storage-mon: High: storage-mon: Delete a timer that has not stopped.
+  * portblock: fix incorrect parameters for NftDelete() when using reset_local_on_unblock_stop
+  * podman-etcd: treat crm_attribute 'not found' exits as empty, not error
+  * OCPBUGS-104851: podman-etcd: add restart_no_leave CRM attribute guard to skip member removal
+  * OCPBUGS-100303: podman-etcd: add test hooks for FNC race reproduction
+  * OCPBUGS-100303: podman-etcd: resolve force_new_cluster race during simultaneous dual-start
+  * mediationzone: new resource agent (#2191)
+  * powervs-subnet: fix plaintext token file support
+  * ibmmq: new resource agent for IBM MQ queue managers (#2192)
+  * podman-etcd: scope sync to etcd filesystem only
+  * spec: Remove EOL Fedora compatibility blocks from spec file
+  * Route: restore unique=&quot;1&quot; for destination and warn on &quot;default&quot;
+  * Route: update destination parameter to non-unique
+  * powervs-move-ip: introduce support for trusted profiles, refine handling of API return codes</comment>
+    <requestid>1374142</requestid>
+  </revision>
 </revisionlist>
