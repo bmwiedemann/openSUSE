@@ -1208,4 +1208,25 @@ As a side note Leap is affected as well by this. Might be worth back porting thi
     - Fix crashes in the portal update monitor and OCI JSON</comment>
     <requestid>1371781</requestid>
   </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>24b93cd9837888a78918e2ba0f6a61ad</srcmd5>
+    <version>1.18.2</version>
+    <time>1788018012</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.18.2:
+  + Bug fixes:
+    - Validate GVariant structure of summaries before using
+      generated variant readers
+    - Fix crash in system helper when iterating cache directories
+    - Avoid corrupted output from non-UTF-8 characters in error
+      messages
+    - Fix portal passing wrong file descriptor when
+      sandbox-expose-fd-ro triggers fd remapping collision
+    - Fix system helper tracking wrong D-Bus sender for pulls
+    - Fix extensions not being populated in the sandbox due to
+      unhandled EAGAIN from openat2
+    - Fix build failure with GLib versions older than 2.72
+    - Test infrastructure improvements</comment>
+    <requestid>1374289</requestid>
+  </revision>
 </revisionlist>
