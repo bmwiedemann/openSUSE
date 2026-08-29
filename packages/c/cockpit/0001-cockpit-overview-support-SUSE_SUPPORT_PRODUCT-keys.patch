@@ -12,18 +12,19 @@ This patch should be dropped when systemd is fixed
  1 file changed, 8 insertions(+), 2 deletions(-)
 
 diff --git a/pkg/systemd/overview.jsx b/pkg/systemd/overview.jsx
-index 868469d68..186fcf59e 100644
+index c6d75f93c..a3be516d3 100644
 --- a/pkg/systemd/overview.jsx
 +++ b/pkg/systemd/overview.jsx
-@@ -42,6 +42,7 @@ import { ShutdownModal } from 'cockpit-components-shutdown.jsx';
+@@ -28,6 +28,8 @@ import { ShutdownModal } from 'cockpit-components-shutdown.jsx';
  import { WithDialogs, DialogsContext } from "dialogs.jsx";
  
  import "./overview.scss";
 +import { read_os_release } from "os-release.js";
++
+ import { Title, TitleSizes } from '@patternfly/react-core/dist/esm/components/Title';
  
  const _ = cockpit.gettext;
- 
-@@ -98,6 +99,7 @@ class OverviewPage extends React.Component {
+@@ -85,6 +87,7 @@ class OverviewPage extends React.Component {
          this.hostname_proxy.addEventListener("changed", data => {
              this.setState({ hostnameData: data.detail });
          });
@@ -31,9 +32,9 @@ index 868469d68..186fcf59e 100644
      }
  
      render() {
-@@ -160,8 +162,12 @@ class OverviewPage extends React.Component {
+@@ -147,8 +150,12 @@ class OverviewPage extends React.Component {
                              {this.hostname_text()}
-                         </h1>
+                         </Title>
                          {this.state.hostnameData &&
 -                         this.state.hostnameData.OperatingSystemPrettyName &&
 -                         <div className="ct-overview-header-subheading" id="system_information_os_text">{cockpit.format(_("running $0"), this.state.hostnameData.OperatingSystemPrettyName)}</div>}
@@ -46,11 +47,11 @@ index 868469d68..186fcf59e 100644
                      </div>
                      <div className='ct-overview-header-actions'>
                          { show_superuser && <SuperuserIndicator proxy={this.superuser} /> }
-diff --git a/src/common/cockpitsystem.c b/src/common/cockpitsystem.c
-index 83e2965f7..73716fff7 100644
+diff --git a/src/ws/cockpitsystem.c b/src/ws/cockpitsystem.c
+index 011ade3c8..afe490fca 100644
 --- a/src/ws/cockpitsystem.c
 +++ b/src/ws/cockpitsystem.c
-@@ -107,6 +107,12 @@ cockpit_system_load_os_release (void)
+@@ -96,6 +96,12 @@ cockpit_system_load_os_release (void)
          }
      }
  

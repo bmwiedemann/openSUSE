@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 12 08:40:15 UTC 2026 - Alice Brooks <alice.brooks@suse.com>
+
+- Update to 365
+  * Translations and dependency updates
+  * Fix btrfs subvolume mount option parsing (rhbz#2483145)
+
+-------------------------------------------------------------------
 Tue Jun 30 10:26:18 UTC 2026 - Alice Brooks <alice.brooks@suse.com>
 
 - Update to 364

@@ -968,4 +968,14 @@ outside of Factory
     - Drop CVE-2026-4802.patch as this was fixed upstream</comment>
     <requestid>1367649</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>c9e5ab1b150c9558d61efca61ef457f7</srcmd5>
+    <version>365</version>
+    <time>1788018015</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 365
+  * Translations and dependency updates
+  * Fix btrfs subvolume mount option parsing (rhbz#2483145)</comment>
+    <requestid>1374318</requestid>
+  </revision>
 </revisionlist>
