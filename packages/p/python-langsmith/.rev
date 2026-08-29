@@ -232,4 +232,16 @@ rpmlint reports 0 errors, 0 warnings and 0 badness.
 </comment>
     <requestid>1372110</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>ef1bc71f605805fbae6f2d8cd786daec</srcmd5>
+    <version>0.11.2</version>
+    <time>1788018218</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.11.2
+
+Wider env-var redaction filter, exact ints &gt;= 2**64, deterministic
+replica run ids. Adds BuildRequires pytest-socket so the new
+test_multipart_retry_matrix.py runs: 473 pass, up from 446 + 27 errors.</comment>
+    <requestid>1374582</requestid>
+  </revision>
 </revisionlist>
