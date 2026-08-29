@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 27 10:33:38 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Modify curl-impersonate.patch: Build and distribute the bssl
+  executable
+
+-------------------------------------------------------------------
 Mon Aug 24 14:32:50 UTC 2026 - Fridrich Strba <fridrich.strba@bluewin.ch>
 
 - Update to version 0.20260813:

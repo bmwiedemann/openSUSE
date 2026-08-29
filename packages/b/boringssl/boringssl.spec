@@ -100,6 +100,9 @@ install -D -m0755 build/libboringssl_ssl.so.%{sover} %{buildroot}%{_libdir}/libb
 ln -sf libboringssl_crypto.so.%{sover} %{buildroot}%{_libdir}/libboringssl_crypto.so
 ln -sf libboringssl_ssl.so.%{sover} %{buildroot}%{_libdir}/libboringssl_ssl.so
 
+# Install bssl tool
+install -D -m0755 build/bssl %{buildroot}%{_bindir}/bssl
+
 # Install sources
 rm -rf build/
 mkdir -p %{buildroot}%{src_install_dir}
@@ -176,8 +179,13 @@ cp -a %{buildroot}%{_prefix}/src/boringssl/LICENSE %{buildroot}%{_docdir}/%{name
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
 
-%files -n %{libname}
+%files
+%{_bindir}/bssl
 %doc %{_docdir}/%{name}/README.md
+%exclude %{_docdir}/%{name}
+%license %{_docdir}/%{name}/LICENSE
+
+%files -n %{libname}
 %license %{_docdir}/%{name}/LICENSE
 %exclude %{_docdir}/%{name}
 %{_libdir}/libboringssl_crypto.so.%{sover}
