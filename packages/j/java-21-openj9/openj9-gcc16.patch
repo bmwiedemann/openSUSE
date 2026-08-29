@@ -1,10 +1,312 @@
+diff --git a/runtime/compiler/control/CompilationRuntime.hpp b/runtime/compiler/control/CompilationRuntime.hpp
+index 8205563ebe..349dce946f 100644
+--- a/openj9/runtime/compiler/control/CompilationRuntime.hpp
++++ b/openj9/runtime/compiler/control/CompilationRuntime.hpp
+@@ -219,7 +219,8 @@ class TR_JProfilingQueue {
+ public:
+     TR_PERSISTENT_ALLOC(TR_Memory::PersistentInfo); // TODO: define its own category
+     TR_JProfilingQueue()
+-        : _firstQentry(NULL)
++        : _compInfo(NULL)
++        , _firstQentry(NULL)
+         , _lastQentry(NULL)
+         , _size(0)
+         , _weight(0)
+@@ -470,6 +471,20 @@ public:
+     };
+ 
+     struct CompilationStatistics {
++        CompilationStatistics()
++            : _heartbeatWindowCount(0)
++            , _windowStartTick(0)
++            , _sampleMessagesSent(0)
++            , _sampleMessagesReceived(0)
++            , _interpretedMethodSamples(0)
++            , _compiledMethodSamples(0)
++            , _compiledMethodSamplesIgnored(0)
++            , _ticksInIdleMode(0)
++            , _methodsCompiledOnCount(0)
++            , _methodsReachingSampleInterval(0)
++            , _methodsSelectedToRecompile(0)
++            , _methodsSampleWindowReset(0)
++        {}
+         // perhaps not the greatest way to do this, but TR_Stats classes weren't an exact match
+         uint32_t _heartbeatWindowCount;
+         uint32_t _windowStartTick;
+@@ -486,6 +501,10 @@ public:
+     }; // CompilationStatistics
+ 
+     struct CompilationStatsPerInterval {
++        CompilationStatsPerInterval()
++        {
++            reset();
++        }
+         uint32_t _interpretedMethodSamples;
+         uint32_t _compiledMethodSamples;
+         uint32_t _numFirstTimeCompilationsInInterval;
+diff --git a/runtime/compiler/control/CompilationThread.cpp b/runtime/compiler/control/CompilationThread.cpp
+index 22bf4a8734..bc4aa328e9 100644
 --- a/openj9/runtime/compiler/control/CompilationThread.cpp
 +++ b/openj9/runtime/compiler/control/CompilationThread.cpp
-@@ -778,6 +778,7 @@ bool TR::CompilationInfo::createCompilationInfo(J9JITConfig *jitConfig)
-         /* Note: there are embedded objects in TR::CompilationInfo that rely on the fact
-            that we do memset this object to 0 */
-         memset(alloc, 0, sizeof(TR::CompilationInfo));
-+        __asm__("" : : : "memory");
+@@ -774,10 +774,6 @@ bool TR::CompilationInfo::createCompilationInfo(J9JITConfig *jitConfig)
+     try {
+         TR::RawAllocator rawAllocator(jitConfig->javaVM);
+         void *alloc = rawAllocator.allocate(sizeof(TR::CompilationInfo));
+-        /* FIXME: Replace this with the appropriate initializers in the constructor */
+-        /* Note: there are embedded objects in TR::CompilationInfo that rely on the fact
+-           that we do memset this object to 0 */
+-        memset(alloc, 0, sizeof(TR::CompilationInfo));
          _compilationRuntime = new (alloc) TR::CompilationInfo(jitConfig);
          jitConfig->compilationRuntime = (void *)_compilationRuntime;
  #ifdef DEBUG
+@@ -997,6 +993,7 @@ TR::CompilationInfoPerThreadBase::CompilationInfoPerThreadBase(TR::CompilationIn
+     , _compilationCanBeInterrupted(false)
+     , _uninterruptableOperationDepth(0)
+     , _compilationThreadState(COMPTHREAD_UNINITIALIZED)
++    , _previousCompilationThreadState(COMPTHREAD_UNINITIALIZED)
+     , _compilationShouldBeInterrupted(false)
+     ,
+ #if defined(J9VM_OPT_JITSERVER)
+@@ -1124,8 +1121,133 @@ TR::CompilationInfo::CompilationInfo(J9JITConfig *jitConfig)
+     , _lastCompThreadID(0)
+     , _lastDiagnosticTheadID(0)
+     , _arrayOfCompilationInfoPerThread(NULL)
++    , _compInfoForDiagnosticCompilationThread(NULL)
+     , _lastAllocatedCompThreadID(0)
++    , _stats()
++    , _intervalStats()
++    , _persistedMethods(NULL)
++    , _methodQueue(NULL)
++    , _methodPool(NULL)
++    , _methodPoolSize(0)
++    , _compilationMonitor(NULL)
++    , _classUnloadMonitor(NULL)
++    , _logMonitor(NULL)
++    , _schedulingMonitor(NULL)
++#if defined(J9VM_JIT_DYNAMIC_LOOP_TRANSFER)
++    , _dltMonitor(NULL)
++    , _freeDLTRecord(NULL)
++    , _numDLTRecords(0)
++#endif
++    , _dltHT(NULL)
++    , _vlogMonitor(NULL)
++    , _rtlogMonitor(NULL)
++    , _iprofilerBufferArrivalMonitor(NULL)
++    , _j9MonitorTable(NULL)
++    , _numSyncCompilations(0)
++    , _numAsyncCompilations(0)
++    , _numCompsUsedForCompDensityCalculations(0)
++    , _numCompThreadsActive(0)
++    , _numCompThreadsJobless(0)
++    , _numCompThreadsCompilingHotterMethods(0)
++    , _numAppThreadsActive(0)
++    , _elapsedTimeNumAppThreadsActiveWasSet(0)
++    , _numQueuedMethods(0)
++    , _maxQueueSize(0)
++    , _numQueuedFirstTimeCompilations(0)
++    , _queueWeight(0)
++    , _cpuUtil(NULL)
++    , _overallCompCpuUtilization(0)
++    , _idleThreshold(0)
++    , _compilationBudget(0)
++    , _warmSCC(TR_maybe)
++    , _compBudgetSupport(false)
++    , _rampDownMCT(false)
++    , _exceedsCompCpuEntitlement(TR_maybe)
++    , _samplerThread(NULL)
++    , _samplerState(TR::CompilationInfo::SAMPLER_NOT_INITIALIZED)
++    , _prevSamplerState(TR::CompilationInfo::SAMPLER_NOT_INITIALIZED)
++    , _samplingThreadLifetimeState(TR::CompilationInfo::SAMPLE_THR_NOT_CREATED)
++    , _numMethodsFoundInSharedCache(0)
++    , _numInvRequestsInCompQueue(0)
++    , _lastReqStartTime(0)
++    , _lastCompilationsShouldBeInterruptedTime(0)
++    , _statNumAotedMethods(0)
++    , _statNumMethodsFromSharedCache(0)
++    , _statNumAotedMethodsRecompiled(0)
++    , _statNumForcedAotUpgrades(0)
++    , _statNumJNIMethodsCompiled(0)
++    , statCompErrors()
++    , _statNumPriorityChanges(0)
++    , _statNumYields(0)
++    , _statNumUpgradeInterpretedMethod(0)
++    , _statNumDowngradeInterpretedMethod(0)
++    , _statNumUpgradeJittedMethod(0)
++    , _statNumQueuePromotions(0)
++    , _statNumGCRInducedCompilations(0)
++    , _statNumSamplingJProfilingBodies(0)
++    , _statNumJProfilingBodies(0)
++    , _statNumRecompilationForBodiesWithJProfiling(0)
++    , _statNumMethodsFromJProfilingQueue(0)
++    , _statTotalAotQueryTime(0)
++    , _statTotalAotRelocationTime(0)
++    , _numberBytesReadInaccessible(0)
++    , _numberBytesWriteInaccessible(0)
++    , _flags()
++    , _numSeriousFailures(0)
++    , _gpuInitMonitor(NULL)
++#ifdef DEBUG
++    , _traceCompiling(false)
++#endif
++    , _isInShutdownMode(false)
++    , _isSwapMemoryDisabled(false)
++    , _canDisclaimOnSwap(false)
++    , _canDisclaimOnFile(false)
++    , _iprofilerMaxCount(0)
++    , _numGCRQueued(0)
++    , _appSleepNano(0)
++    , _starvationDetected(false)
++    , _totalCompThreadCpuUtilWhenStarvationComputed(0)
++    , _numActiveCompThreadsWhenStarvationComputed(0)
++    , _compileFromLPQRegardlessOfCPU(false)
++    , _jvmIsStarved(false)
++    , _lowCompDensityMode(false)
++    , _hasEnteredLowCompDensityModeInThePast(false)
++    , _cachedFreePhysicalMemoryB(0)
++    , _cachedIncompleteFreePhysicalMemory(false)
++    , _cgroupMemorySubsystemEnabled(false)
++    , _suspendThreadDueToLowPhysicalMemory(false)
++    , _interpSamplTrackingInfo(NULL)
++#if defined(J9VM_OPT_CRIU_SUPPORT)
++    , _crRuntime(NULL)
++#endif
++#if defined(J9VM_OPT_JITSERVER)
++    , _clientSessionHT(NULL)
++    , _classesCachedAtServerMonitor(NULL)
++    , _unloadedClassesTempList(NULL)
++    , _illegalFinalFieldModificationList(NULL)
++    , _sequencingMonitor(NULL)
++    , _compReqSeqNo(0)
++    , _lastCriticalCompReqSeqNo(0)
++    , _newlyExtendedClasses(NULL)
++    , _chTableUpdateFlags(0)
++    , _localGCCounter(0)
++    , _sslRootCerts()
++    , _activationPolicy(JITServer::CompThreadActivationPolicy::AGGRESSIVE)
++    , _sharedROMClassCache(NULL)
++    , _JITServerAOTCacheMap(NULL)
++    , _JITServerAOTDeserializer(NULL)
++#endif
+ {
++#if defined(J9VM_JIT_DYNAMIC_LOOP_TRANSFER)
++    memset(_dltHash, 0, sizeof(_dltHash)); ///< in C++11 notation: _dltHash = {0};
++#endif
++    memset(_statsOptLevels, 0, sizeof(_statsOptLevels)); ///< in C++11 notation: _statsOptLevels = {0};
++#if defined(J9VM_OPT_JITSERVER)
++    memset(_statsRemoteOptLevels, 0, sizeof(_statsRemoteOptLevels)); ///< in C++11 notation: _statsRemoteOptLevels = {0};
++#endif
++#if defined(J9VM_OPT_SHARED_CLASSES)
++    memset(&_javacoreData, 0, sizeof(_javacoreData)); ///< in C++11 notation: _javacoreData = {0};
++#endif
+     // The object is zero-initialized before this method is called
+     //
+     ::jitConfig = jitConfig;
+@@ -11189,10 +11311,12 @@ void TR::CompilationInfo::storeAOTInSharedCache(J9VMThread *vmThread, J9ROMMetho
+ 
+ //===========================================================
+ TR_LowPriorityCompQueue::TR_LowPriorityCompQueue()
+-    : _firstLPQentry(NULL)
++    : _compInfo(NULL)
++    , _firstLPQentry(NULL)
+     , _lastLPQentry(NULL)
+     , _sizeLPQ(0)
+     , _LPQWeight(0)
++    , _threshold(0)
+     , _trackingEnabled(false)
+     , _spine(NULL)
+     , _STAT_compReqQueuedByIProfiler(0)
+diff --git a/runtime/compiler/env/CpuUtilization.hpp b/runtime/compiler/env/CpuUtilization.hpp
+index 9f092695ad..55b2c21b1b 100644
+--- a/openj9/runtime/compiler/env/CpuUtilization.hpp
++++ b/openj9/runtime/compiler/env/CpuUtilization.hpp
+@@ -249,6 +249,14 @@ private:
+ // to allocate it dynamically and store a pointer into TR::CompilationInfo
+ struct TR_CpuEntitlement {
+ public:
++    TR_CpuEntitlement()
++        : _hypervisorPresent(TR_maybe)
++        , _numTargetCpu(0)
++        , _guestCpuEntitlement(0.0)
++        , _jvmCpuEntitlement(0.0)
++        , _jitConfig(NULL)
++    {}
++
+     // The constructor cannot set all fields correctly because we have to make
+     // sure te portlib is up and running
+     void init(J9JITConfig *jitConfig)
+diff --git a/runtime/compiler/optimizer/NewInitialization.cpp b/runtime/compiler/optimizer/NewInitialization.cpp
+index ab315f451b..11c587cca7 100644
+--- a/openj9/runtime/compiler/optimizer/NewInitialization.cpp
++++ b/openj9/runtime/compiler/optimizer/NewInitialization.cpp
+@@ -442,8 +442,7 @@ bool TR_NewInitialization::findAllocationNode(TR::TreeTop *treeTop, TR::Node *no
+ 
+     // An allocation node has been found. Create a new candidate entry.
+     //
+-    Candidate *candidate = new (trStackMemory()) Candidate;
+-    memset(candidate, 0, sizeof(Candidate));
++    Candidate *candidate = new (trStackMemory()) Candidate();
+     candidate->treeTop = treeTop;
+     candidate->node = node;
+     candidate->size = size;
+diff --git a/runtime/compiler/optimizer/NewInitialization.hpp b/runtime/compiler/optimizer/NewInitialization.hpp
+index c1238910b4..3dab8191b0 100644
+--- a/openj9/runtime/compiler/optimizer/NewInitialization.hpp
++++ b/openj9/runtime/compiler/optimizer/NewInitialization.hpp
+@@ -65,6 +65,22 @@ protected:
+     };
+ 
+     struct Candidate : public TR_Link<Candidate> {
++        Candidate()
++            : treeTop(NULL)
++            , node(NULL)
++            , uninitializedWords(NULL)
++            , initializedBytes(NULL)
++            , uninitializedBytes(NULL)
++            // localStores, localLoads, and inlinedCalls are automatically constructed
++            , size(0)
++            , startOffset(0)
++            , numUninitializedWords(0)
++            , numInitializedBytes(0)
++            , numUninitializedBytes(0)
++            , isArrayNew(false)
++            , isInSniffedMethod(false)
++        {}
++
+         TR::TreeTop *treeTop;
+         TR::Node *node;
+         TR_BitVector *uninitializedWords;
+diff --git a/runtime/compiler/runtime/RelocationRuntime.cpp b/runtime/compiler/runtime/RelocationRuntime.cpp
+index 5ca67aab61..ee956e5b2a 100644
+--- a/openj9/runtime/compiler/runtime/RelocationRuntime.cpp
++++ b/openj9/runtime/compiler/runtime/RelocationRuntime.cpp
+@@ -153,6 +153,30 @@ const char *TR_RelocationRuntime::_reloErrorCodeNames[] = {
+ };
+ 
+ TR_RelocationRuntime::TR_RelocationRuntime(J9JITConfig *jitCfg)
++    : _relocationStatus(RelocationNoError)
++    , _reloErrorCode(TR_RelocationErrorCode::relocationOK)
++    , _fe(NULL)
++    , _exceptionTable(NULL)
++    , _newExceptionTableStart(NULL)
++    , _newPersistentInfo(NULL)
++    , _dataCacheDelta(0)
++    , _codeCacheDelta(0)
++    , _aotHeader(NULL)
++    , _classReloAmount(0)
++    , _codeCache(NULL)
++    , _dataCache(NULL)
++    , _useCompiledCopy(false)
++    , _metaDataAllocSize(0)
++    , _aotMethodHeaderEntry(NULL)
++    , _exceptionTableCacheEntry(NULL)
++    , _currentThread(NULL)
++    , _newMethodCodeStart(NULL)
++    , _haveReservedCodeCache(false)
++    , _reloStartTime(0)
++    , _reloEndTime(0)
++    , _returnCode(0)
++    , _comp(NULL)
++    , _currentResolvedMethod(NULL)
+ {
+     _method = NULL;
+     _ramCP = NULL;
