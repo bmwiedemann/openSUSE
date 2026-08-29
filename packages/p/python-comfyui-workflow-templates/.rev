@@ -92,4 +92,16 @@ satisfies the &quot;&gt;= 0.11.44&quot; floor 1373695 introduces, so no comfyui 
 change is needed.</comment>
     <requestid>1373740</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6e0697d0802a5090b95ea6250a25270f</srcmd5>
+    <version>0.11.50</version>
+    <time>1788018217</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.11.50
+
+Bundle pins move: -core 0.3.326, -json 0.1.61, -media-assets-01 0.1.36.
+Dependency floors raised to match; needs requests 1374575, 1374576 and
+1374577 accepted first or this is unresolvable. Module code unchanged.</comment>
+    <requestid>1374579</requestid>
+  </revision>
 </revisionlist>

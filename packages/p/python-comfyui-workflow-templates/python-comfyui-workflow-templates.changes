@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Aug 29 07:18:06 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.11.50:
+  * Only the pinned bundle versions move: -core to 0.3.326, -json
+    to 0.1.61 and -media-assets-01 to 0.1.36, which together add
+    the five Google Gemini Omni Flash 1.1 templates (edit, extend,
+    image to video, reference to video and text to video) and
+    retire the Veo 2 image-to-video template
+  * Template index entries now carry a minComfyUIVersion field
+  * Module code, README and license are unchanged from 0.11.48
+- Raise the bundle dependency floors to the versions this release
+  pins: -core >= 0.3.326, -json >= 0.1.61 and
+  -media-assets-01 >= 0.1.36
+
+-------------------------------------------------------------------
 Wed Aug 26 05:55:50 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.11.48:
