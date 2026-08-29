@@ -23,7 +23,7 @@
 FROM opensuse/tumbleweed:latest
 
 RUN set -euo pipefail; \
-    zypper -n install --no-recommends ruby4.0 ruby4.0-rubygem-bundler ruby4.0-devel ruby4.0-rubygem-gem2rpm util-linux gcc-c++ sqlite3-devel make timezone xz curl findutils gawk git-core procps util-linux
+    zypper -n install --no-recommends ruby4.0 ruby4.0-rubygem-bundler ruby4.0-devel ruby4.0-rubygem-gem2rpm util-linux gcc-c++ sqlite3-devel make timezone xz libexslt0 curl findutils gawk git-core procps util-linux
 
 # cleanup logs and temporary files
 RUN set -euo pipefail; zypper -n clean -a; \
