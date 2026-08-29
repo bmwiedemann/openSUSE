@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Aug 29 07:17:11 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.3.0:
+  * New built-in studio subcommand, previously contributed by the
+    modelscope SDK as a plugin, and a new logout subcommand that
+    clears persisted credentials
+  * Upstream reclaimed the modelscope and ms console scripts from
+    the umbrella SDK, so all four aliases now come from this dist
+  * Agent visibility API changed; new agent_visibility_label()
+    and agent_last_modified() read the renamed metadata fields
+  * Look up the current username from the OIDC-style
+    preferred_username/name claims the server now returns
+  * Walk truncated repo file listings: the repo/files endpoint
+    silently caps at 3000 entries with no truncation flag
+  * Write credential files under ~/.modelscope atomically with
+    mode 0600 instead of relying on the process umask
+  * Fix the download lock file path, and revision defaulting for
+    local_files_only lookups
+  * Assorted fixes to the legacy compat API
+- Do not install the new modelscope and ms scripts: Factory's
+  python-modelscope still owns those paths and requires this
+  package, so shipping both would be a file conflict
+
+-------------------------------------------------------------------
 Sat Aug 22 05:58:38 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Switch from update-alternatives to libalternatives

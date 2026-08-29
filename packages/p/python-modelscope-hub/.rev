@@ -7,4 +7,18 @@
     <comment>Initial package of python-modelscope-hub 0.2.0</comment>
     <requestid>1372990</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7a8ea7c62ed818e23c3d62bedd7d6590</srcmd5>
+    <version>0.3.0</version>
+    <time>1788018221</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.3.0
+
+requires_dist unchanged. 0.3.0 newly claims /usr/bin/modelscope and
+/usr/bin/ms, which python-modelscope 1.39.1 already owns and pulls in via
+Requires - a hard file conflict. Both are removed in %install (bare rm,
+so the build breaks loudly once upstream resolves script ownership).
+133 tests pass.</comment>
+    <requestid>1374589</requestid>
+  </revision>
 </revisionlist>

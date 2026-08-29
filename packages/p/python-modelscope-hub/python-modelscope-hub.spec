@@ -19,7 +19,7 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-modelscope-hub
-Version:        0.2.0
+Version:        0.3.0
 Release:        0
 Summary:        Official Python client for ModelScope Hub
 License:        Apache-2.0
@@ -60,6 +60,10 @@ HubApi class and the modelscope-hub and ms-hub commands.
 
 %install
 %pyproject_install
+# 0.3.0 reclaimed the modelscope/ms scripts from the umbrella SDK, but Factory's
+# python-modelscope still ships them and Requires us -> co-installed file
+# conflict. Drop ours until python-modelscope stops installing them.
+rm %{buildroot}%{_bindir}/modelscope %{buildroot}%{_bindir}/ms
 %python_clone -a %{buildroot}%{_bindir}/modelscope-hub
 %python_clone -a %{buildroot}%{_bindir}/ms-hub
 %python_group_libalternatives modelscope-hub
