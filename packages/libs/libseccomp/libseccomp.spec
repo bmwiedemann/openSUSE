@@ -102,6 +102,8 @@ This subpackage contains debug utilities for the seccomp interface.
 %package -n python-seccomp
 Summary:        Python bindings for seccomp
 Group:          Development/Tools/Debuggers
+BuildRequires:  libseccomp-devel
+Requires:       %{lname}
 
 %description -n python-seccomp
 The libseccomp library provides an interface to the Linux Kernel's
@@ -147,49 +149,47 @@ export LD_LIBRARY_PATH="$PWD/src/.libs${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
 %endif
 
 %install
+%define _pyproject_wheeldir ./dist
 %if %{with python}
-%{python_expand \
-  %make_install PYTHON=$python pyexecdir=%$python_sitearch
-}
-b="%buildroot"
-rm -Rf "$b/%_bindir" "$b/%_libdir"/libsec* "$b/%_libdir/pkgconfig" \
-	"$b/%_includedir" "$b/%_datadir"
+prev="$PWD"
+cd src/python
+%pyproject_install
+cd "$prev"
 %else
 %make_install
 %endif
-find "%buildroot/%_libdir" -type f -name "*.la" -delete
-%if %{with python}
-%python_expand rm -fv %buildroot/%$python_sitearch/install_files.txt
-%endif
+find "%buildroot/%_libdir" -type f -name "*.la" -delete -print
 %fdupes %buildroot/%_prefix
 
 %check
 %if %{with python}
 export LD_LIBRARY_PATH="$PWD/src/.libs"
+# We really don't want %%make_build here
 %{python_expand \
-  make PYTHON=$python PYTHONPATH="${PYTHONPATH:+$PYTHONPATH:}%buildroot%{$python_sitearch}" PYTHONDONTWRITEBYTECODE=1 check
+  make PYTHON=$python \
+    PYTHONPATH="${PYTHONPATH:+$PYTHONPATH:}%buildroot%{$python_sitearch}" \
+    PYTHONDONTWRITEBYTECODE=1 check
 }
 %endif
 
+%if %{without python}
 %ldconfig_scriptlets -n %lname
 
-%if "%flavor" == ""
 %files -n %lname
 %_libdir/%pname.so.2*
 %license LICENSE
 
 %files devel
-%_mandir/man3/seccomp_*.3*
+%_mandir/man3/seccomp_*.3%{?ext_man}
 %_includedir/%pname/
 %_libdir/%pname.so
 %_libdir/pkgconfig/%pname.pc
 
 %files tools
 %_bindir/scmp_sys_resolver
-%_mandir/man1/scmp_sys_resolver.1*
-%endif
+%_mandir/man1/scmp_sys_resolver.1%{?ext_man}
 
-%if %{with python}
+%else
 %files %{python_files seccomp}
 %python_sitearch/seccomp*.so
 %python_sitearch/seccomp-%{version}*-info

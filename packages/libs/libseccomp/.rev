@@ -388,4 +388,13 @@
     <comment>- Skip tests/52-basic-load.py under qemu emulation</comment>
     <requestid>1367101</requestid>
   </revision>
+  <revision rev="44" vrev="3">
+    <srcmd5>9adc6d97e462e4679b10b7203b123ad8</srcmd5>
+    <version>2.6.1</version>
+    <time>1788017981</time>
+    <user>dimstar_suse</user>
+    <comment>- `python` build should not install non-Python files.
+- replace deprecated 'setup.py install' with PEP 517 wheel install</comment>
+    <requestid>1374322</requestid>
+  </revision>
 </revisionlist>

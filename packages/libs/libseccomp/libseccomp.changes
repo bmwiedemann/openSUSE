@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 27 12:49:02 UTC 2026 - Matej Cepl <mcepl@suse.com>
+
+- `python` build should not install non-Python files.
+- replace deprecated 'setup.py install' with PEP 517 wheel install
+
+-------------------------------------------------------------------
 Wed Jul 22 08:24:09 UTC 2026 - Andreas Schwab <schwab@suse.de>
 
 - Skip tests/52-basic-load.py under qemu emulation
