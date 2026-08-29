@@ -311,4 +311,12 @@
     <comment>OpenJ9 0.60.0 with July 2026 CPU fixes</comment>
     <requestid>1370209</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>fc87432389bff432774e8385c0a4183d</srcmd5>
+    <version>11.0.32.1</version>
+    <time>1788018052</time>
+    <user>dimstar_suse</user>
+    <comment>August 2026 CSPU fixes</comment>
+    <requestid>1374478</requestid>
+  </revision>
 </revisionlist>

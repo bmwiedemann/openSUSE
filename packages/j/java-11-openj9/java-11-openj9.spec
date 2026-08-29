@@ -35,18 +35,18 @@
 %global featurever      11
 %global interimver      0
 %global updatever       32
-%global patchver        0
-%global buildver        9
+%global patchver        1
+%global buildver        1
 %global root_repository https://github.com/ibmruntimes/openj9-openjdk-jdk%{featurever}/archive
-%global root_revision   cb00718c9bc24aa94fa99dc4214f641b66cd492c
-%global root_branch     v0.60.0-release
+%global root_revision   8ebd14870a582e07adccb2dc12a0dc8944251b23
+%global root_branch     v0.61.0-release
 %global omr_repository  https://github.com/eclipse-openj9/openj9-omr/archive
-%global omr_revision    2e3166f7afc61f577ccaa63b85444b63b82491f7
-%global omr_branch      v0.60.0-release
+%global omr_revision    ebd02d9129dc06fa67a6f885f99a3926aa869154
+%global omr_branch      v0.61.0-release
 %global openj9_repository https://github.com/eclipse-openj9/openj9/archive
-%global openj9_revision 396c827fb365c53b26586f55ec09d4727b37d9be
-%global openj9_branch   v0.60.0-release
-%global openj9_tag      openj9-0.60.0
+%global openj9_revision a1daf225f5cb0ccfb5d7309014701570435a94c4
+%global openj9_branch   v0.61.0-release
+%global openj9_tag      openj9-0.61.0
 %if 0%{?suse_version} > 1500
 %bcond_without libalternatives
 %else
