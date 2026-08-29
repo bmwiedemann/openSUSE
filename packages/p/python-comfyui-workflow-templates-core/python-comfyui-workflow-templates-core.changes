@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Aug 29 07:17:44 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.3.326:
+  * Template manifest grows from 533 to 537 entries: adds the five
+    Google Gemini Omni Flash 1.1 templates (edit, extend, image to
+    video, reference to video and text to video) and drops the
+    Veo 2 image-to-video entry
+  * Refreshed asset checksums for the template index and all of
+    its localisations
+  * No changes to the loader or the public helper API
+
+-------------------------------------------------------------------
 Wed Aug 26 05:55:36 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.3.322:

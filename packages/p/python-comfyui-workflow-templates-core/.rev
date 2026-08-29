@@ -84,4 +84,16 @@ python-comfyui-workflow-templates-json 0.1.57 and
 python-comfyui-workflow-templates-media-assets-01 0.1.35.</comment>
     <requestid>1373737</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0d204488bb1c4ce227d9e9906ff25964</srcmd5>
+    <version>0.3.326</version>
+    <time>1788018210</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.3.326
+
+Template manifest 533 -&gt; 537 entries: adds the five Google Gemini Omni
+Flash 1.1 templates, drops the Veo 2 image-to-video entry. Refreshed
+index checksums. Loader and public API unchanged.</comment>
+    <requestid>1374575</requestid>
+  </revision>
 </revisionlist>
