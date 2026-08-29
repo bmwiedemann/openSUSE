@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Aug 29 07:17:01 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.0.29:
+  * Add LowFormer, CPUBone, PP-LCNetV2 and LingBot-Vision model
+    definitions and pretrained weights
+  * Add per-batch image and batch size scheduling for non-NaFlex
+    training (progressive small-to-large resolution schedules)
+  * NaFlexViT: optional key-only attention masks, compile-friendly
+    and memory-efficient position embedding sampling, cached
+    variable-patch interpolation
+  * Improve model factory path and checkpoint handling
+  * Fix positional embedding resampling for equal-token grid
+    changes, and classifier head device/dtype loss on reset
+  * Fix CutMix minmax border sampling and other mixup/cutmix bbox
+    range issues
+  * Fix custom input channels for pruned EfficientNet models
+  * Fix optimizer bugs: AdafactorBigVision factored row
+    normalization, SGDW foreach weight decay, layer_decay without
+    an explicit min scale
+  * Fix auto-augment crashes on hparams=None and 'inc'/'b' config
+    flags ignoring the documented 0 value
+  * See upstream's release notes for the remaining minor fixes
+
+-------------------------------------------------------------------
 Mon Aug 24 18:07:15 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.0.28:

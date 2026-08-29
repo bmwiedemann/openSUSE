@@ -70,4 +70,16 @@ name is present so a future timm bump cannot silently break it.
 Built and tested locally for openSUSE_Tumbleweed/aarch64.</comment>
     <requestid>1373474</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>44726854784757828ba197c683cfcce1</srcmd5>
+    <version>1.0.29</version>
+    <time>1788018220</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.0.29
+
+Version-only bump; dependencies unchanged upstream. Smoke check verifies
+version, list_models(), vit_so400m_patch14_siglip_384 presence and a
+resnet18 forward pass.</comment>
+    <requestid>1374588</requestid>
+  </revision>
 </revisionlist>
