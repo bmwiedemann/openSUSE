@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 28 10:20:00 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.de>
+
+- Build the ICC print profiles with GLIBC_TUNABLES=glibc.cpu.hwcaps=-FMA,-FMA4
+  so that they no longer depend on the build host CPU (boo#1217747)
+
+-------------------------------------------------------------------
 Wed Apr 22 16:56:58 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
 
 - Mark both /var/lib/colord and /var/lib/colord/icc as %ghost

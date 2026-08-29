@@ -150,6 +150,11 @@ there are no users logged in.
 # chunk of RAM to put the entire B-to-A tables in.
 ulimit -Sv 2000000
 
+# argyllcms colprof fits the print profiles numerically, and glibc picks FMA
+# variants of pow/atan2/... when the build host CPU has them, which changes most
+# of the bytes in the generated .icc files (boo#1237156)
+export GLIBC_TUNABLES=glibc.cpu.hwcaps=-FMA,-FMA4
+
 # Avoid boo#1228331 (incompatible pointer passed to a function)
 %global optflags %{optflags} "-D_FILE_OFFSET_BITS=64" "-D_TIME_BITS=64"
 
