@@ -40,7 +40,6 @@ Patch12:        bootlist-set-ethernet-using-open-firmware-path-as-bo.patch
 Patch13:        ppc64_cpu-bring-power-mode-reporting-inline-with-PAP.patch
 Patch14:        drmgr-Use-30-secs-timeout-for-each-LMB-removal-kerne.patch
 Patch15:        lparstat-report-virtual-cpus-as-vcpu-in-non-legacy-m.patch
-Patch41:        powerpc-utils-lsprop.patch
 Patch42:        ofpathname_powernv.patch
 Patch43:        fix_kexec_service_name_for_suse.patch
 Patch44:        libvirt-service-dep.patch

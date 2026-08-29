@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug 21 13:17:28 UTC 2026 - Michal Suchanek <msuchanek@suse.de>
+
+- Delete obsolete powerpc-utils-lsprop.patch
+
+-------------------------------------------------------------------
 Wed Aug 19 12:55:42 UTC 2026 - Michal Suchanek <msuchanek@suse.de>
 
 - Add timeoout for DLPAR memory remove operation (bsc#1265903 ltc#216658 bsc#1268314 ltc#218736)
@@ -28,8 +33,9 @@ Thu May 21 08:17:04 UTC 2026 - Michal Suchanek <msuchanek@suse.de>
   * 0006-drmgr-Allocate-CPU-bitmap-for-each-NUMA-node.patch
   * 0007-drmgr-Add-NUMA-configuration-update-for-CPU-remove.patch
   * 0008-drmgr-Add-NUMA-based-CPU-removal.patch
+- Add LMB removal timeout (bsc#1265903 ltc#216658 bsc#1268314 ltc#218736)
   * 0009-drmgr-Allow-signals-mentioned-in-new-sigset_t.patch
-  * 0010-drmgr-Add-timeout-signal-handling-for-NUMA-memory-RE.patch (bsc#1265903 ltc#216658 bsc#1268314 ltc#218736)
+  * 0010-drmgr-Add-timeout-signal-handling-for-NUMA-memory-RE.patch
   * 0011-drmgr-Do-not-remove-LMBs-when-the-timer-expires.patch
 
 -------------------------------------------------------------------
