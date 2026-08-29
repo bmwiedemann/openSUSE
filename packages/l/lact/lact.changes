@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Aug 24 15:29:16 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Security fixes from SUSE security audit (bsc#1274863):
+  * CVE-2026-75037: Polkit authentication bypass via peer PID
+    spoofing/reuse (CWE-290, local root exploit via malicious
+    profile hooks)
+    Add lact-CVE-2026-75037-polkit-peer-pid-auth.patch
+  * CVE-2026-75038: predictable /tmp file creation in snapshot
+    generation (CWE-377, local DoS without protect_symlinks)
+    Add lact-CVE-2026-75038-snapshot-tmpfile-race.patch 
+
+-------------------------------------------------------------------
+Wed Aug 12 04:20:42 UTC 2026 - pallas wept <pallaswept@proton.me>
+
+- Update to version 0.10.0:
+  * chore: prepare for release
+  * fix: correctly set "enable editing" in VF curve editor init (#1148)
+  * Translations update from Fedora Weblate (#1099)
+  * fix: use consistent reset/default terminlogoy (#1145)
+  * chore: replace SplitButton with a separate CheckButton in service setup dialog
+  * feat: enable autostart during the service setup (#1146)
+  * refactor: gpu stats section (#1132)
+  * fix: broken padding on nvidia fan control (#1144)
+  * chore: fix powerset feature compilation
+  * chore: improve settings apply tests
+- Add polkit action for changes as root
+- Rebase prevent-strip.patch
+- Use config.toml from vendor tarball
+
+-------------------------------------------------------------------
 Wed Jul  1 04:08:20 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
 
 - Added prevent-strip.patch to stop stripping binaries after compilation

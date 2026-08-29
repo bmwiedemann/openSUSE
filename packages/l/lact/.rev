@@ -138,4 +138,35 @@ Changelog:
 - Added fix-clang-arg.patch to fix lact-daemon build</comment>
     <requestid>1362766</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0dc413579532e9d68de3e3cb80225855</srcmd5>
+    <version>0.10.0</version>
+    <time>1788018077</time>
+    <user>dimstar_suse</user>
+    <comment>- Security fixes from SUSE security audit (bsc#1274863):
+  * CVE-2026-75037: Polkit authentication bypass via peer PID
+    spoofing/reuse (CWE-290, local root exploit via malicious
+    profile hooks)
+    Add lact-CVE-2026-75037-polkit-peer-pid-auth.patch
+  * CVE-2026-75038: predictable /tmp file creation in snapshot
+    generation (CWE-377, local DoS without protect_symlinks)
+    Add lact-CVE-2026-75038-snapshot-tmpfile-race.patch
+
+(Forwarded request 1370897 from pallaswept)
+- Update to version 0.10.0:
+  * chore: prepare for release
+  * fix: correctly set &quot;enable editing&quot; in VF curve editor init (#1148)
+  * Translations update from Fedora Weblate (#1099)
+  * fix: use consistent reset/default terminlogoy (#1145)
+  * chore: replace SplitButton with a separate CheckButton in service setup dialog
+  * feat: enable autostart during the service setup (#1146)
+  * refactor: gpu stats section (#1132)
+  * fix: broken padding on nvidia fan control (#1144)
+  * chore: fix powerset feature compilation
+  * chore: improve settings apply tests
+- Add polkit action for changes as root
+- Rebase prevent-strip.patch
+- Use config.toml from vendor tarball</comment>
+    <requestid>1374479</requestid>
+  </revision>
 </revisionlist>
