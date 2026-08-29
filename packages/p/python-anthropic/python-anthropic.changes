@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Aug 29 07:13:24 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.2.0:
+  * Beta files and skills namespaces now use the GA response
+    shapes; the dated beta header pins are gone
+  * webhooks: unwrap() now requires the request headers to be
+    passed explicitly
+  * bedrock/aws: sign the raw request bytes so binary file
+    uploads work
+  * sessions: the event accumulator tolerates unknown event
+    types instead of failing on them
+  * tools: read() can return a view_range from a file larger
+    than the size cap
+  * tools: the agent toolset and memory tool preserve exact
+    file bytes, no newline translation
+
+-------------------------------------------------------------------
 Thu Aug 27 05:47:11 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.1.0:

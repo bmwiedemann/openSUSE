@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-anthropic
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        The official Python library for the Anthropic API
 # Legal-Review-Notice: ships vendored httpx_aiohttp (BSD-3-Clause)
