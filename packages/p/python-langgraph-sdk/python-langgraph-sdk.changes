@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Aug 29 07:19:43 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.4.4:
+  * Resource-scoped auth decorators (@auth.on.threads, ...) now
+    honour their actions= argument instead of silently registering
+    a catch-all handler, and reject empty, duplicate or unknown
+    action names
+  * A resources= selector on a resource-specific decorator must
+    name that same resource; use @auth.on(resources=...) for
+    others
+  * Note: unmatched custom-auth paths are still allowed, so
+    deployments using action-scoped handlers should add a global
+    default-deny handler
+  * Thread streams accept langsmith_tracing=, forwarded to the
+    server as the run.start langsmith_tracer parameter
+
+-------------------------------------------------------------------
 Thu Aug 20 05:49:22 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.4.3:

@@ -29,4 +29,16 @@
 </comment>
     <requestid>1372118</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e32ca8cbeb89b2a9bf3f24ef107698cb</srcmd5>
+    <version>0.4.4</version>
+    <time>1788018200</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.4.4
+
+Resource-scoped auth decorators now honour actions= instead of silently
+registering a catch-all; deployments using action-scoped handlers should
+add a global default-deny handler. 510 tests pass.</comment>
+    <requestid>1374581</requestid>
+  </revision>
 </revisionlist>
