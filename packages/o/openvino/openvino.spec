@@ -32,13 +32,13 @@
 %define pythons python3
 %endif
 %define __builder ninja
-%define so_ver 2630
+%define so_ver 2631
 %define shlib lib%{name}%{so_ver}
 %define shlib_c lib%{name}_c%{so_ver}
 %define prj_name OpenVINO
 
 Name:           openvino
-Version:        2026.3.0
+Version:        2026.3.1
 Release:        0
 Summary:        A toolkit for optimizing and deploying AI inference
 # Let's be safe and put all third party licenses here, no matter that we use specific thirdparty libs or not
@@ -52,6 +52,8 @@ Patch0:         openvino-fix-install-paths.patch
 Patch1:         openvino-ComputeLibrary-include-string.patch
 # PATCH-FIX-UPSTREAM openvino-fix-build-sample-path.patch cabelo@opensuse.org -- Fix sample source path in build script
 Patch2:         openvino-fix-build-sample-path.patch
+# PATCH-FIX-UPSTREAM Fix build with OpenCL-CLHPP >= 2026.05.29
+Patch3:         openvino-fix-opencl-clhpp.patch
 BuildRequires:  ade-devel
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -268,7 +270,7 @@ This package provides the tensorflow-lite frontend for OpenVINO.
 %package -n python-openvino
 Summary:        Python module for openVINO toolkit
 Requires:       python-openvino-telemetry
-Requires:       (python-numpy >= 1.16.6 with python-numpy < 2.5.0)
+Requires:       (python-numpy >= 1.16.6 with python-numpy <= 2.5.2)
 
 %description -n python-openvino
 OpenVINO is an open-source toolkit for optimizing and deploying AI inference.

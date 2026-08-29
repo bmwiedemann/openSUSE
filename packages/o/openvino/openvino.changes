@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri Aug 28 01:45:13 UTC 2026 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
+
+- Update to 2026.3.1
+- Added openvino-fix-opencl-clhpp.patch - Fix build with 
+  OpenCL-CLHPP >= 2026.05.29
+- Summary of major features and improvements  
+   * Functionally enabled Muse-Glimmer-30B model:
+    + Model card and IR available: 
+      OpenVINO/Muse-Glimmer-30B-int4-ov · Hugging Face
+      - Notebooks to try:
+        * Muse Glimmer-30B multimodal reasoning with OpenVINO™
+        * Create VLM-powered Chatbot using OpenVINO Generate API
+      - Blogs:
+        * Running Meta’s Muse Glimmer 30B Locally with OpenVINO
+          GenAI;
+        * Day 0 Support for Muse Glimmer from Meta on Intel
+          Platforms
+   * Functionally enabled Qwen3.8-27B model:
+     + Model card and IR available: OpenVINO/Qwen3.8-27B-int4-ov
+       Hugging Face
+     + Notebook to try: Create VLM-powered Chatbot using OpenVINO
+       Generate API
+     + Blog: Day 0 Support for Qwen3.8–27B: Run the New Model on
+       Intel Agentic PCs with OpenVINO™ from Day One
+   * Fixed issues:
+     + Property ENABLE_CPU_PINNING supported now on dual-socket
+       Intel® Xeon® 6+ processors (formerly codenamed Clearwater
+       Forest) Windows Servers.
+     + Chat template was updated for Gemma 4 models. Now it can be
+       parced by the Minja templating engine.
+     + Fixed accuracy issue for the Gemma 4 26B A4B model when the
+       input prompt is long.
+     + Fixed accuracy issue for the Gemma 4 31B model when an image
+       is included in the input.
+     + Fixed accuracy issue for lfm2-1.2b, lfm2.5-1.2b-instruct
+       models for NPU device target.
+
+-------------------------------------------------------------------
 Fri Aug  7 05:24:03 UTC 2026 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
 
 - Update to 2026.3.0
