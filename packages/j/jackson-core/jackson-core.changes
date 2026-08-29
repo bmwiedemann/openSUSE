@@ -11,7 +11,7 @@ Thu Jun 25 11:45:39 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 - Update to 2.18.8
   * Changes of 2.18.8
     + #1611: Apply number-length validator on streaming integer path
-      of async parser
+      of async parser (bsc#1273857, CVE-2026-68494)
   * Changes of 2.18.7
     + #1570: Fail parsing from 'DataInput' if 'StreamReadConstraints
       .getMaxDocumentLength()' set
@@ -24,7 +24,7 @@ Thu Jun 25 11:45:39 UTC 2026 - Fridrich Strba <fstrba@suse.com>
     + #1548: 'StreamReadConstraints.maxDocumentLength' not checked
       when creating parser with fixed buffer
     + #1555: Enforce 'StreamReadConstraints.maxNumberLength' for
-     non-blocking (async) parser
+     non-blocking (async) parser (bsc#1273856, CVE-2026-18401)
   * Changes of 2.18.5
     + #1433: 'JsonParser#getNumberType()' throws
       'JsonParseException' when the current token is non-numeric

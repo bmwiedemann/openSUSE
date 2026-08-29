@@ -161,4 +161,12 @@
     <comment>2.18.9</comment>
     <requestid>1365954</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>b48b871b55a5696aace80f7bf77daabf</srcmd5>
+    <version>2.18.9</version>
+    <time>1788018086</time>
+    <user>dimstar_suse</user>
+    <comment>Add bug numbers</comment>
+    <requestid>1374484</requestid>
+  </revision>
 </revisionlist>
