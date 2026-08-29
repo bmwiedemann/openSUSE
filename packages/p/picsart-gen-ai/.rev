@@ -98,4 +98,16 @@ Built and verified on openSUSE_Tumbleweed/aarch64: rpmlint 0 errors,
 deliberate one documented in the spec.</comment>
     <requestid>1373481</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9fa9cbe6b2af6de1a78bcfceb8989a29</srcmd5>
+    <version>2.70.0</version>
+    <time>1788018208</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2.70.0
+
+Model catalogue refresh via inlined @picsart/ai-sdk 5.10.0 -&gt; 5.21.0,
+new creativity/refer-type/turbo-mode/upscale-factor flags. Re-vendored:
+71 packages, none added or removed, licence set unchanged.</comment>
+    <requestid>1374587</requestid>
+  </revision>
 </revisionlist>
