@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Aug 29 14:38:29 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Add 005-skip-mix-compile-concurrent-listening-test.patch: skip the
+  Mix.Tasks.CompileTest "listening to concurrent compilations" test,
+  which hangs in the OBS build environment
+
+-------------------------------------------------------------------
+Sat Aug 29 08:46:53 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Upgrade to Elixir 1.20.4:
+  * Changelog available at https://hexdocs.pm/elixir/1.20.4/changelog.html
+
+-------------------------------------------------------------------
+Fri Aug 21 04:55:59 UTC 2026 - Simon Lees <sflees@suse.de>
+
+- Add 004-skip-mix-sync-lock-on-taken-test.patch: skip the
+  Mix.Sync.Lock "calls :on_taken when the lock is held by a
+  different process" test, new in Elixir 1.18. It probes lock
+  holders over a loopback TCP socket, which does not work in the
+  network-isolated OBS build root and hangs until the
+  assert_receive timeout, failing the build. Noticed on AARCH64 in
+  SLES
+
+-------------------------------------------------------------------
 Tue Aug  4 17:24:18 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
 
 - Upgrade to Elixir 1.20.3:

@@ -408,4 +408,12 @@
     <comment>Update to v1.20.3</comment>
     <requestid>1369576</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>0bea8d525c46d3dd1cdbece89c850371</srcmd5>
+    <version>1.20.4</version>
+    <time>1788018236</time>
+    <user>dimstar_suse</user>
+    <comment>Update to v1.20.4 and patch hanging test on aarch64</comment>
+    <requestid>1374609</requestid>
+  </revision>
 </revisionlist>

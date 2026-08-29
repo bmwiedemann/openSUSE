@@ -1,0 +1,12 @@
+diff --git a/lib/mix/test/mix/tasks/compile_test.exs b/lib/mix/test/mix/tasks/compile_test.exs
+index d202102..743f8d2 100644
+--- a/lib/mix/test/mix/tasks/compile_test.exs
++++ b/lib/mix/test/mix/tasks/compile_test.exs
+@@ -389,6 +389,7 @@ defmodule Mix.Tasks.CompileTest do
+     end)
+   end
+ 
++  @tag :skip
+   test "listening to concurrent compilations" do
+     timeout = 2_000
+ 

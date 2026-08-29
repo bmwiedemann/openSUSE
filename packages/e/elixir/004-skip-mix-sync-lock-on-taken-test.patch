@@ -1,0 +1,16 @@
+Index: elixir-1.18.1/lib/mix/test/mix/sync/lock_test.exs
+===================================================================
+--- elixir-1.18.1.orig/lib/mix/test/mix/sync/lock_test.exs
++++ elixir-1.18.1/lib/mix/test/mix/sync/lock_test.exs
+@@ -153,6 +153,11 @@ defmodule Mix.Sync.LockTest do
+            end) == :still_works!
+   end
+
++  # Mix.Sync.Lock probes other lock holders over a loopback TCP socket.
++  # The OBS build root has no usable network access, so the probe
++  # connect always fails and :on_taken is never invoked, hanging
++  # this test until the assert_receive timeout.
++  @tag :skip
+   test "calls :on_taken when the lock is held by a different process" do
+     parent = self()
+

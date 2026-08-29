@@ -18,7 +18,7 @@
 
 %define elixirdir %{_prefix}/lib/elixir
 Name:           elixir
-Version:        1.20.3
+Version:        1.20.4
 Release:        0
 Summary:        Functional meta-programming aware language built atop Erlang
 License:        Apache-2.0
@@ -31,6 +31,8 @@ Source100:      README.md
 Patch0:         001-skip-translator-supervisor-test.patch
 Patch1:         002-skip-tests-iex-helpers.patch
 Patch2:         003-skip-tests-daemon-mode-source.patch
+Patch3:         004-skip-mix-sync-lock-on-taken-test.patch
+Patch4:         005-skip-mix-compile-concurrent-listening-test.patch
 BuildRequires:  erlang >= 25
 BuildRequires:  erlang-dialyzer
 BuildRequires:  erlang-src
@@ -102,7 +104,7 @@ cp -pa doc %{buildroot}%{_defaultdocdir}/elixir-doc
 
 %check
 export LANG=en_US.UTF-8
-%make_build test
+/usr/bin/make -O V=1 VERBOSE=1 test
 
 %files
 %doc CHANGELOG.md README.md
