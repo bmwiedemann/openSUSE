@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Aug 28 07:04:07 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 2.1.2
+  * When we define default dialog size, it didn't work when
+    screen scale size was different to 100%
+  * In textaddons autogenerate lib, don't allow to collapse with
+    double click in textautogeneratehistorylistview
+  * Reduce duplicate FlowLayout class
+  * Fix attachment widget layout (Use QToolButton). This class
+    is used in kaichat.
+  * Fix initialise variable in plugincommonmodelinstalledinfosdelegate
+  * Reduce duplicate code in plugin textaddons autogenerate
+
+-------------------------------------------------------------------
 Sat Jul 18 11:51:59 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 2.1.1. No changelog.
