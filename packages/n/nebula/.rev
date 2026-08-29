@@ -179,4 +179,28 @@
     adding a lighthouse instead of waiting for the next update tick (forwarded request 1368494 from rrahl0)</comment>
     <requestid>1368495</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ce1d006bf4ab1633a670d8599f588cc7</srcmd5>
+    <version>1.11.1</version>
+    <time>1788018234</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.11.1:
+  + IPv6 packets whose next header is a protocol Nebula does not parse (SCTP,
+    GRE, IP-in-IP, etc.) are now classified as that protocol with no ports,
+    closing a firewall bypass where a crafted payload could steer the classifier
+    into reading one as TCP/UDP and matching a TCP/UDP rule. These packets are
+    now matched as their true protocol, so only a proto: any rule allows them. If
+    you carry one of these protocols over the overlay, confirm a proto: any rule
+    covers it before upgrading, it may have been passing only through this bypass
+  + The ICMPv6 type was read from the wrong byte when classifying IPv6 packets,
+    so the echo identifier used for conntrack was never picked up
+  + Enforce outbound message counter limits so a tunnel is rehandshaked before
+    the counter can wrap, preventing nonce reuse. This is unreachable in
+    practice, but is enforced as a defense-in-depth measure
+  + Prevent nebula-cert ca from running out of memory on 32bit systems when
+    generating encrypted private keys
+  + Tolerate ErrDumpInterrupted when listing tun addresses on Linux, so a
+    transient interrupted netlink dump no longer aborts startup (forwarded request 1374602 from rrahl0)</comment>
+    <requestid>1374603</requestid>
+  </revision>
 </revisionlist>

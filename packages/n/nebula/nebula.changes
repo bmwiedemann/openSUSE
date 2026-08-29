@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Aug 29 13:08:07 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.11.1:
+  + IPv6 packets whose next header is a protocol Nebula does not parse (SCTP,
+    GRE, IP-in-IP, etc.) are now classified as that protocol with no ports,
+    closing a firewall bypass where a crafted payload could steer the classifier
+    into reading one as TCP/UDP and matching a TCP/UDP rule. These packets are
+    now matched as their true protocol, so only a proto: any rule allows them. If
+    you carry one of these protocols over the overlay, confirm a proto: any rule
+    covers it before upgrading, it may have been passing only through this bypass
+  + The ICMPv6 type was read from the wrong byte when classifying IPv6 packets,
+    so the echo identifier used for conntrack was never picked up
+  + Enforce outbound message counter limits so a tunnel is rehandshaked before
+    the counter can wrap, preventing nonce reuse. This is unreachable in
+    practice, but is enforced as a defense-in-depth measure
+  + Prevent nebula-cert ca from running out of memory on 32bit systems when
+    generating encrypted private keys
+  + Tolerate ErrDumpInterrupted when listing tun addresses on Linux, so a
+    transient interrupted netlink dump no longer aborts startup
+
+-------------------------------------------------------------------
 Thu Jul 30 06:23:36 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.11.0:
