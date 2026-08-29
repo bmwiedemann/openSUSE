@@ -75,6 +75,10 @@ BuildRequires:  pkgconfig(lxc) >= 5.0.0
 BuildRequires:  bash-completion
 BuildRequires:  fish
 BuildRequires:  zsh
+
+# this package needs the actual incus binary that is now in the CLI subpackage
+Requires:       %{name}-cli
+
 Requires:       kernel-base >= 5.4
 # Bits required for images and other things at runtime.
 Requires:       acl
@@ -139,6 +143,14 @@ Suggests:       zfs
 Incus is a system container manager. It offers a user experience
 similar to virtual machines but uses Linux containers (LXC) instead.
 
+%package cli
+Summary:        Binary for %{name}, usable to connect to remote instances
+Group:          System/Management
+
+%description cli
+This package only installs the %{name} binary to be able to connect to remote
+Incus instances.
+
 %package tools
 Summary:        Optional extra tools for %{name}
 Group:          System/Management
@@ -151,35 +163,38 @@ be helpful for some users but are not necessary for most Incus deployments
 (such as benchmarking tools and tools for managing simplestreams Incus image
 servers).
 
-%package bash-completion
-Summary:        Bash Completion for %{name}
+%package cli-bash-completion
+Summary:        Bash Completion for %{name}-cli
 Group:          System/Management
-Requires:       %{name} = %{version}
-Supplements:    (%{name} and bash-completion)
+Requires:       %{name}-cli = %{version}
+Supplements:    (%{name}-cli and bash-completion)
+Obsoletes:      %{name}-bash-completion
 BuildArch:      noarch
 
-%description bash-completion
+%description cli-bash-completion
 Bash command line completion support for %{name}.
 
-%package fish-completion
-Summary:        Fish Completion for %{name}
+%package cli-fish-completion
+Summary:        Fish Completion for %{name}-cli
 Group:          System/Management
-Requires:       %{name} = %{version}
-Supplements:    (%{name} and fish)
+Requires:       %{name}-cli = %{version}
+Supplements:    (%{name}-cli and fish)
+Obsoletes:      %{name}-fish-completion
 BuildArch:      noarch
 
-%description fish-completion
-Fish command line completion support for %{name}.
+%description cli-fish-completion
+Fish command line completion support for %{name}-cli.
 
-%package zsh-completion
-Summary:        Zsh Completion for %{name}
+%package cli-zsh-completion
+Summary:        Zsh Completion for %{name}-cli
 Group:          System/Management
-Requires:       %{name} = %{version}
-Supplements:    (%{name} and zsh)
+Requires:       %{name}-cli = %{version}
+Supplements:    (%{name}-cli and zsh)
+Obsoletes:      %{name}-zsh-completion
 BuildArch:      noarch
 
-%description zsh-completion
-Zsh command line completion support for %{name}.
+%description cli-zsh-completion
+Zsh command line completion support for %{name}-cli.
 
 %prep
 %autosetup -p1
@@ -414,7 +429,6 @@ grep -q '^root:' /etc/subgid || \
 %defattr(-,root,root)
 %doc AUTHORS README.md doc/
 %license COPYING
-%{_bindir}/incus
 %{_sbindir}/incusd
 %{_sbindir}/incus-user
 %{_mandir}/man*/*
@@ -436,6 +450,9 @@ grep -q '^root:' /etc/subgid || \
 
 %config(noreplace) %{_sysconfdir}/dnsmasq.d/60-incus.conf
 
+%files cli
+%{_bindir}/incus
+
 %files tools
 %defattr(-,root,root)
 %{_bindir}/incus-benchmark
@@ -447,15 +464,15 @@ grep -q '^root:' /etc/subgid || \
 %{_sbindir}/incus-migrate
 %{_sbindir}/lxd-to-incus
 
-%files bash-completion
+%files cli-bash-completion
 %defattr(-,root,root)
 %{_datarootdir}/bash-completion/completions/incus
 
-%files fish-completion
+%files cli-fish-completion
 %defattr(-,root,root)
 %{_datadir}/fish/vendor_completions.d/incus.fish
 
-%files zsh-completion
+%files cli-zsh-completion
 %defattr(-,root,root)
 %{_sysconfdir}/zsh_completion.d/_incus
 
