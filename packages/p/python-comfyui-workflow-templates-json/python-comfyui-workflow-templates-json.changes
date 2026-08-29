@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Aug 29 07:17:54 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.1.61:
+  * Add the five Google Gemini Omni Flash 1.1 templates (edit,
+    extend, image to video, reference to video and text to video)
+  * Drop the Veo 2 image-to-video template
+  * Template index gains a minComfyUIVersion field -- added to the
+    index schema and populated for all 521 templates in the index
+    and its localisations, so the picker can hide templates the
+    running ComfyUI is too old for
+  * No existing template workflow JSON changed
+
+-------------------------------------------------------------------
 Wed Aug 26 05:55:50 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.1.57:
