@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Aug 28 20:42:47 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.5.19:
+  + Add support of swig 4.5.0
+  + getMechanismList(): do not fail on unknown mechanisms
+  + Remove use of deprecated CKA_SECONDARY_AUTH
+  + Move source code in src/
+  + minor improvements
+
+-------------------------------------------------------------------
 Tue Aug 12 09:20:14 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to version 1.5.18:

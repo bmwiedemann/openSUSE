@@ -74,4 +74,17 @@
   * minor improvements (forwarded request 1299014 from rrahl0)</comment>
     <requestid>1299015</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>63cfee3ef5ad78a051fb268bbc3e7499</srcmd5>
+    <version>1.5.19</version>
+    <time>1788018095</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.5.19:
+  + Add support of swig 4.5.0
+  + getMechanismList(): do not fail on unknown mechanisms
+  + Remove use of deprecated CKA_SECONDARY_AUTH
+  + Move source code in src/
+  + minor improvements (forwarded request 1374502 from rrahl0)</comment>
+    <requestid>1374503</requestid>
+  </revision>
 </revisionlist>

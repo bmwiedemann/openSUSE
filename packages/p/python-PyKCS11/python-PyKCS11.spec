@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyKCS11
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-PyKCS11
-Version:        1.5.18
+Version:        1.5.19
 Release:        0
 Summary:        A Full PKCS#11 wrapper for Python
 License:        GPL-2.0-or-later
@@ -61,6 +61,6 @@ export $(python3 get_PYKCS11LIB.py)
 %doc Changes.txt README.md
 %license COPYING
 %{python_sitearch}/PyKCS11
-%{python_sitearch}/[Pp]y[Kk][cC][Ss]11-%{version}.dist-info
+%{python_sitearch}/pykcs11-%{version}.dist-info
 
 %changelog
