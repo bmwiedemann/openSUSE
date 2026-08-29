@@ -2357,4 +2357,15 @@
   * GO-2026-6278 GHSA-w67g-5rqw-f597 (forwarded request 1374152 from jfkw)</comment>
     <requestid>1374153</requestid>
   </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>a68ff7e2a94e627a6584909924f5f5b5</srcmd5>
+    <version>0.0.20260828T144745</version>
+    <time>1788018169</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0.20260828T144745 2026-08-28T14:47:45Z.
+  Refs jsc#PED-11136
+  Go CVE Numbering Authority IDs added or updated with aliases:
+  * GO-2026-6303 CVE-2026-56854 (forwarded request 1374518 from jfkw)</comment>
+    <requestid>1374519</requestid>
+  </revision>
 </revisionlist>
