@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Aug 29 07:05:40 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.20.1:
+  * Fix
+    - fix: Handle renamed secret push protection setting in 5.1.3
+      (#136 (closed)) (242f183)
+
+-------------------------------------------------------------------
+Sat Apr 18 05:47:59 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.20.0:
+  * Feature
+    - feat: Add --nest option for scanning sub-groups & projects (#108
+      (closed)) (f34717e)
+
+-------------------------------------------------------------------
+Sat Apr 11 07:00:38 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.19.3:
+  * Fix
+    - fix: Dependency bumps (tqdm, tabulate & python-gitlab) (7aef2d1)
+- update to 1.19.2:
+  * Fix
+    - fix: Update GraphQL queries for 4.0.0 (#132 (closed)) (9fd1504)
+
+-------------------------------------------------------------------
 Thu Apr  9 11:52:17 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.19.1:
