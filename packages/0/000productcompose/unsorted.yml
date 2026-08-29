@@ -2658,14 +2658,14 @@ unsorted:
   - coreboot-utils 
   - coredns 
   - coredns-extras 
-  - coredns-for-k8s1.33 
-  - coredns-for-k8s1.33-extras 
   - coredns-for-k8s1.34 
   - coredns-for-k8s1.34-extras 
   - coredns-for-k8s1.35 
   - coredns-for-k8s1.35-extras 
   - coredns-for-k8s1.36 
   - coredns-for-k8s1.36-extras 
+  - coredns-for-k8s1.37 
+  - coredns-for-k8s1.37-extras 
   - coreos-installer 
   - corepack-default 
   - corepack24 
@@ -3910,10 +3910,10 @@ unsorted:
   - espresso 
   - etc-update 
   - etcd 
-  - etcd-for-k8s1.33 
   - etcd-for-k8s1.34 
   - etcd-for-k8s1.35 
   - etcd-for-k8s1.36 
+  - etcd-for-k8s1.37 
   - etcdctl 
   - etcdutl 
   - etckeeper 
@@ -9945,8 +9945,6 @@ unsorted:
   - k3s-install 
   - k3s-selinux 
   - k3sup 
-  - k4dirstat 
-  - k4dirstat-lang 
   - k6 
   - k6-bash-completion 
   - k6-fish-completion 
@@ -10295,8 +10293,6 @@ unsorted:
   - kfdtest 
   - kfind 
   - kfind-lang 
-  - kfloppy 
-  - kfloppy-lang 
   - kfourinline 
   - kfourinline-lang 
   - kgeotag 
@@ -10783,17 +10779,6 @@ unsorted:
   - kubernetes-scheduler-minus1 
   - kubernetes-scheduler-minus2 
   - kubernetes-scheduler-minus3 
-  - kubernetes1.33-apiserver 
-  - kubernetes1.33-client 
-  - kubernetes1.33-client-bash-completion 
-  - kubernetes1.33-client-common 
-  - kubernetes1.33-client-fish-completion 
-  - kubernetes1.33-controller-manager 
-  - kubernetes1.33-kubeadm 
-  - kubernetes1.33-kubelet 
-  - kubernetes1.33-kubelet-common 
-  - kubernetes1.33-proxy 
-  - kubernetes1.33-scheduler 
   - kubernetes1.34-apiserver 
   - kubernetes1.34-client 
   - kubernetes1.34-client-bash-completion 
@@ -10827,6 +10812,17 @@ unsorted:
   - kubernetes1.36-kubelet-common 
   - kubernetes1.36-proxy 
   - kubernetes1.36-scheduler 
+  - kubernetes1.37-apiserver 
+  - kubernetes1.37-client 
+  - kubernetes1.37-client-bash-completion 
+  - kubernetes1.37-client-common 
+  - kubernetes1.37-client-fish-completion 
+  - kubernetes1.37-controller-manager 
+  - kubernetes1.37-kubeadm 
+  - kubernetes1.37-kubelet 
+  - kubernetes1.37-kubelet-common 
+  - kubernetes1.37-proxy 
+  - kubernetes1.37-scheduler 
   - kubescape 
   - kubeseal 
   - kubesec 
@@ -15846,6 +15842,7 @@ unsorted:
   - libqpid-proton-core10 
   - libqpid-proton-cpp12 
   - libqpid-proton-proactor1 
+  - libqpid-proton-tls0 
   - libqpid-proton11 
   - libqpl1 
   - libqrcodegen1 
@@ -16102,7 +16099,8 @@ unsorted:
   - libredwg-devel 
   - libredwg-tools 
   - libredwg0 
-  - libreflex6 
+  - libreflex6_4 
+  - libreflexmin6_4 
   - libregf-devel 
   - libregf-tools 
   - libregf1 
@@ -23603,6 +23601,7 @@ unsorted:
   - polymake 
   - polymake-devel 
   - pommed 
+  - pool-git-init 
   - pop 
   - pop-icon-theme 
   - pop-launcher 
@@ -24482,12 +24481,14 @@ unsorted:
   - python311-pipx 
   - python311-platformdirs 
   - python311-pluggy 
+  - python311-poetry-core 
   - python311-pymathics-graph 
   - python311-setuptools 
   - python311-setuptools-wheel 
   - python311-setuptools_scm 
   - python311-testsuite 
   - python311-tk 
+  - python311-tomlkit 
   - python311-tools 
   - python311-trove-classifiers 
   - python311-userpath 
@@ -24518,11 +24519,13 @@ unsorted:
   - python312-pipx 
   - python312-platformdirs 
   - python312-pluggy 
+  - python312-poetry-core 
   - python312-setuptools 
   - python312-setuptools-wheel 
   - python312-setuptools_scm 
   - python312-testsuite 
   - python312-tk 
+  - python312-tomlkit 
   - python312-tools 
   - python312-trove-classifiers 
   - python312-userpath 
@@ -27731,6 +27734,7 @@ unsorted:
   - python313-pyzstd 
   - python313-q 
   - python313-qcs-api-client 
+  - python313-qcs-api-client-common 
   - python313-qet_tb_generator 
   - python313-qmk_gui 
   - python313-qpageview 
@@ -31848,6 +31852,7 @@ unsorted:
   - python314-pyzstd 
   - python314-q 
   - python314-qcs-api-client 
+  - python314-qcs-api-client-common 
   - python314-qet_tb_generator 
   - python314-qmk_gui 
   - python314-qpageview 
@@ -33778,6 +33783,7 @@ unsorted:
   - rocm-rpm-macros-modules 
   - rocm-smi 
   - rocm-smi-devel 
+  - rocm-smi-libs 
   - rocminfo 
   - rocq 
   - rocq-devel 
