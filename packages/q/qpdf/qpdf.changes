@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Aug 28 07:46:27 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- Update to version 12.4.1:
+- Update to 12.4.1:
+  * Avoid generating JSON with leading zeroes when converting real numbers.
+  * Detect and warn in check linearization when the cross-reference (xref)
+    stream reports that the object containing a compressed object is itself
+    a compressed object.
+  * Improve uniformity and accuracy of progress reporting when writing
+    linearized files and files with a large number of object streams.
+   10
+- Update to 12.4.0:
+  * Fix error message when --check encounters a PDF file with no pages.
+  * Remove non-array/empty /Annots entries and non-dictionary annotations
+    from copied pages in QPDFAcroFormDocumentHelper::fixCopiedAnnotations.
+  * Fix failure in QPDFWriter when trailer /ID entries are invalid.
+  * Limit the effect of QPDF::setMaxWarnings to the initial loading of the
+    PDF file to prevent treating subsequent exceptions as recoverable.
+  * Correctly handle page rotation values outside [0, 360] range in
+    QPDFPageObjectHelper::getMatrixForTransformations.
+  * Enforce conservative limits on the depth of direct objects created via
+    QPDFObjectHandle::makeDirect to reduce stack overflow risk.
+  * Enforce conservative limits on pages tree depth to prevent stack overflows.
+  * Detect duplicate entries in the AcroForm field hierarchy earlier.
+  * Rewrite zsh and bash shell completion functions to autogenerate from
+    argument parsing metadata (job.yml) instead of invoking the executable.
+  * Show linearization data even if linearization checks throw an exception.
+  * Add REQUIRE_SHELLS CMake option to fail completion tests if new bash/zsh
+    are missing (enabled by default in maintainer mode).
+  * Deprecate external-libs on Windows in favor of vcpkg.
+
+-------------------------------------------------------------------
 Mon Feb 16 14:39:55 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - fix build for 15
