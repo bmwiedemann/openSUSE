@@ -28,7 +28,7 @@
 %define py_min_ver 3.9
 %define vo_min_ver 0.9.6
 Name:           Radicale
-Version:        3.7.7
+Version:        3.7.8
 Release:        0
 Summary:        A CalDAV calendar and CardDav contact server
 License:        GPL-3.0-or-later
