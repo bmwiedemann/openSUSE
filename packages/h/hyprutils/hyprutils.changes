@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Aug 16 14:46:39 UTC 2026 - Nassim Lhadj <lhadjnassim311@gmail.com>
+
+- Update to version 0.14.1:
+  * weakptr: check for expired in casting
+  * Normalize all namespaces to be nested and clang-format them
+  * os: add init ProcLock and Semaphore
+
+-------------------------------------------------------------------
 Fri Jul 17 23:12:02 UTC 2026 - Avindra Goolcharan <avindra@opensuse.org>
 
 - Update to version 0.14.0:
