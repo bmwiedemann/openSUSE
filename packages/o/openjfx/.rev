@@ -63,4 +63,12 @@
     <comment>July 2026 CPU fixes</comment>
     <requestid>1367368</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>6c1bd011c8c8371a42e8d29986413582</srcmd5>
+    <version>17.0.20.0</version>
+    <time>1788018089</time>
+    <user>dimstar_suse</user>
+    <comment>Fix bug number</comment>
+    <requestid>1374488</requestid>
+  </revision>
 </revisionlist>

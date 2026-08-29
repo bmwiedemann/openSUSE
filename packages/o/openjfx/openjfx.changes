@@ -25,7 +25,7 @@ Wed Jul 22 14:27:33 UTC 2026 - Fridrich Strba <fstrba@suse.com>
     + JDK-8366217: Update GStreamer to 1.26.5
     + JDK-8379206: 4 Null pointer dereference defect groups in 4
       glib files
-    + JDK-8381447, CVE-2026-47035, bsc#8379205: Remove
+    + JDK-8381447, CVE-2026-47035, bsc#1272232: Remove
       G_DISABLE_CHECKS compiler flag on Windows to align
       GLib/GStreamer compilation with macOS/Linux
     + JDK-8375084: Update libxslt to 1.1.45
