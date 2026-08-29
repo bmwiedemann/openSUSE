@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bc1bf97f3404074c0fe2e71853c0b17f</srcmd5>
+    <version>0.1.2</version>
+    <time>1788018225</time>
+    <user>dimstar_suse</user>
+    <comment>New package: pure-Python WHATWG URL Standard implementation (MIT).
+
+Needed by skillspector &gt;= 2.11.0 for bundled-hook URL analysis.
+
+%check runs the real WPT URL conformance suite (1600 cases). The sdist ships
+the suite but not its fixtures -- upstream CI downloads them -- so three WPT
+JSONs are carried as Source1..3, pinned to the tarball's DEFAULT_WPT_COMMIT and
+byte-identical to the declared raw.githubusercontent.com URLs. Without them
+pytest does not collect at all. test_wpt_idna.py / test_wpt_toascii.py are
+excluded: upstream marks them xfail because python-idna enforces RFC 5891/5892,
+stricter than WHATWG's lenient UTS46.
+
+Requires: python-idna is declared by hand -- pythondistdeps does not emit it
+despite Requires-Dist: idna&gt;=3.4 in the installed METADATA (rpmlint:
+python-missing-require idna).
+
+rpmlint 0 errors, 0 warnings.</comment>
+    <requestid>1374594</requestid>
+  </revision>
+</revisionlist>

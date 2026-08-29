@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Sat Aug 29 08:18:21 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package (version 0.1.2)
+  * Needed by skillspector >= 2.11.0.
+  * WPT URL conformance fixtures are not in the sdist; carried as
+    separate sources pinned to the WPT commit upstream's CI uses, so
+    %check runs the real conformance suite (1600 cases).
+  * test_wpt_idna.py/test_wpt_toascii.py excluded from %check: they
+    are xfail upstream because python-idna enforces RFC 5891/5892,
+    stricter than WHATWG's lenient UTS46.
+
