@@ -18,7 +18,7 @@
 
 
 # Only make DNF backend available openSUSE Leap 16+
-%if 0%{?suse_version} >= 1600
+%if 0%{?suse_version} >= 1600 && 0%{?is_opensuse}
 %bcond_without dnf5
 %bcond_with cnf
 %else

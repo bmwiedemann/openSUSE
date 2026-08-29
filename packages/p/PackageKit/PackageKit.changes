@@ -1,7 +1,14 @@
 -------------------------------------------------------------------
+Fri Aug 28 06:49:48 UTC 2026 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Only make DNF backend available in openSUSE Leap 16+. Add
+  0%{?is_opensuse} check to make sure it's only available in Leap.
+
+-------------------------------------------------------------------
 Wed Jul 22 01:00:30 UTC 2026 - Jonathan Kang <songchuan.kang@suse.com>
 
-- Update to version 1.3.6 (bsc#1267250, CVE-2026-10294):
+- Update to version 1.3.6 (bsc#1267250, CVE-2026-10294,
+  bsc#1273069):
   + Bugfixes:
     - daemon: stop idle progress timer after flushing updates
     - tests: Actually run the daemon tests on CI using a helper
@@ -23,6 +30,14 @@ Wed Jul 22 01:00:30 UTC 2026 - Jonathan Kang <songchuan.kang@suse.com>
     - PkTransaction: Simplify the error quark creation
     - ci: Ensure D-Bus is available and running for all tests
     - docs: Add error-checking to PK usage example
+- Drop PackageKit-CVE-2026-10294.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Wed Jul 22 01:00:30 UTC 2026 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add PackageKit-CVE-2026-10294.patch: daemon: Do not accept
+  symlinks as frontend socket (bsc#1267250, CVE-2026-10294,
+  gh#PackageKit/PackageKit/commit/4c1994d).
 
 -------------------------------------------------------------------
 Thu Jul 16 06:24:12 UTC 2026 - Jonathan Kang <songchuan.kang@suse.com>

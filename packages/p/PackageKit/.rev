@@ -2179,4 +2179,21 @@ Pushing GNOME 45.rc packages</comment>
     - docs: Add error-checking to PK usage example</comment>
     <requestid>1367815</requestid>
   </revision>
+  <revision rev="248" vrev="2">
+    <srcmd5>8084bf70b593464dbdf28bd0eec792b1</srcmd5>
+    <version>1.3.6</version>
+    <time>1788018011</time>
+    <user>dimstar_suse</user>
+    <comment>- Only make DNF backend available in openSUSE Leap 16+. Add
+  0%{?is_opensuse} check to make sure it's only available in Leap.
+
+- Update to version 1.3.6 (bsc#1267250, CVE-2026-10294,
+  bsc#1273069):
+- Drop PackageKit-CVE-2026-10294.patch: fixed upstream.
+
+- Add PackageKit-CVE-2026-10294.patch: daemon: Do not accept
+  symlinks as frontend socket (bsc#1267250, CVE-2026-10294,
+  gh#PackageKit/PackageKit/commit/4c1994d).</comment>
+    <requestid>1374287</requestid>
+  </revision>
 </revisionlist>
