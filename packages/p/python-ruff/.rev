@@ -3644,4 +3644,12 @@ an &quot;excludebuild:python-ruff:test&quot; line in openSUSE:Factory:Staging.
   stays MIT AND MPL-2.0</comment>
     <requestid>1372710</requestid>
   </revision>
+  <revision rev="125" vrev="1">
+    <srcmd5>e65c8a9db0428426a39386d90fdf5ab6</srcmd5>
+    <version>0.16.5</version>
+    <time>1788018003</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.16.5 (forwarded request 1374225 from pluskalm)</comment>
+    <requestid>1374236</requestid>
+  </revision>
 </revisionlist>

@@ -28,7 +28,7 @@
 %define origname python-ruff
 %bcond_without libalternatives
 Name:           %{origname}%{psuffix}
-Version:        0.16.4
+Version:        0.16.5
 Release:        0
 Summary:        An extremely fast Python linter, written in Rust
 # Legal-Review-Notice: ruff itself is MIT, but the binary statically links
@@ -41,10 +41,10 @@ Summary:        An extremely fast Python linter, written in Rust
 #  - version-ranges, pulled in through pyproject-toml -> pep508_rs ->
 #    pep440_rs.
 # r-efi offers an LGPL-2.1-or-later option but is UEFI-target-only and is
-# absent from the Linux graph. Everything else is permissive (MIT,
-# Apache-2.0, Unicode-3.0, BSD, ISC, Zlib, Unlicense, 0BSD, CC0-1.0,
-# WTFPL, BSL-1.0). MPL-2.0 section 3.2 is satisfied because the complete
-# vendor.tar.zst ships in the src.rpm.
+# absent from the Linux graph. Everything else is permissive (MIT, MIT-0,
+# Apache-2.0, Unicode-3.0, Unicode-DFS-2016, BSD, ISC, Zlib, Unlicense,
+# CC0-1.0, WTFPL, BSL-1.0, PSF-2.0). MPL-2.0 section 3.2 is satisfied
+# because the complete vendor.tar.zst ships in the src.rpm.
 License:        MIT AND MPL-2.0
 URL:            https://github.com/astral-sh/ruff
 Source:         https://files.pythonhosted.org/packages/source/r/ruff/ruff-%{version}.tar.gz

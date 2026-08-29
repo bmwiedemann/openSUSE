@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Aug 28 06:01:49 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.16.5:
+  * Preview: rules may now be registered without a code, and
+    category selectors let a whole rule category be enabled or
+    disabled at once; the preview default rule/category set was
+    refreshed accordingly
+  * ASYNC210 now also flags blocking generic HTTP requests
+  * DTZ007 accepts timezone-safe strptime chains
+  * SIM401 no longer rewrites lambda defaults that have side
+    effects
+- Re-vendor the Rust dependencies and re-derive the licence set of
+  the statically linked crates: unchanged at MIT AND MPL-2.0, same
+  three MPL-2.0 crates (colored, option-ext, version-ranges); the
+  permissive list in the Legal-Review-Notice is corrected to what
+  the graph actually contains (0BSD is not linked; MIT-0, PSF-2.0
+  and Unicode-DFS-2016 are)
+
+-------------------------------------------------------------------
 Fri Aug 21 05:42:09 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.16.4:
