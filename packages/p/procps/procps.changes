@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 28 09:28:50 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch procps-ng-4.0.7-sysctl_ipv6.patch (boo#1276206)
+  * Really ignore stable_secret below /proc/sys/net/ipv6/conf
+
+-------------------------------------------------------------------
 Wed Aug 19 13:40:40 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Extend the corrected patch procps-ng-3.3.8-readeof.patch

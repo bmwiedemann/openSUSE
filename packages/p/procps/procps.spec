@@ -38,6 +38,8 @@ Source1:        https://downloads.sourceforge.net/project/procps-ng/Production/p
 #Alternate:     https://gitlab.com/procps-ng/procps/-/archive/v%%{version}/procps-v%%{version}.tar.gz
 Source2:        procps-rpmlintrc
 Source3:        procps.keyring
+# PATCH-FIX-OPENSUSE -- Allow EIO error for sysctl -a
+Patch2:         procps-ng-4.0.7-sysctl_ipv6.patch
 # PATCH-FIX-COMMUNITY
 Patch3:         procps-ng-3.3.9-w-notruncate.diff
 Patch7:         procps-ng-3.3.8-readeof.patch
@@ -159,6 +161,7 @@ the process information pseudo-file system.
 
 %prep
 %setup -q -n procps-ng-%{version}
+%patch -P2 -b .ipv6
 %patch -P3 -p1 -b .trcate
 %patch -P7 -b .rof
 %patch -P8 -b .cache
