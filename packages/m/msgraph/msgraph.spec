@@ -20,7 +20,7 @@
 %define sover 1
 
 Name:           msgraph
-Version:        0.3.4
+Version:        0.3.5
 Release:        0
 Summary:        Library for accessing online serive APIs using MS Graph protocol
 License:        LGPL-3.0-or-later
