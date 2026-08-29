@@ -632,14 +632,14 @@ fi
 %{_mandir}/man1/dovecot-lda.1%{?ext_man}
 %{_mandir}/man1/dovecot-sysreport.1%{?ext_man}
 %{_mandir}/man1/dovecot.1%{?ext_man}
-#sieve# %{_mandir}/man1/doveadm-sieve.1%{?ext_man}
-#sieve# %{_mandir}/man1/sieve-dump.1%{?ext_man}
-#sieve# %{_mandir}/man1/sieve-filter.1%{?ext_man}
-#sieve# %{_mandir}/man1/sieve-test.1%{?ext_man}
-#sieve# %{_mandir}/man1/sievec.1%{?ext_man}
+%{_mandir}/man1/doveadm-sieve.1%{?ext_man}
+%{_mandir}/man1/sieve-dump.1%{?ext_man}
+%{_mandir}/man1/sieve-filter.1%{?ext_man}
+%{_mandir}/man1/sieve-test.1%{?ext_man}
+%{_mandir}/man1/sievec.1%{?ext_man}
 %{_mandir}/man1/sieved.1%{?ext_man}
 %{_mandir}/man7/doveadm-search-query.7%{?ext_man}
-#sieve# %{_mandir}/man7/pigeonhole.7%{?ext_man}
+%{_mandir}/man7/pigeonhole.7%{?ext_man}
 # doc
 %doc %{_docdir}/%{pkg_name}
 %if %{with solr}

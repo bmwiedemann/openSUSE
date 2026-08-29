@@ -247,4 +247,13 @@ bugowner: varkoly</comment>
   pigeonhole.7</comment>
     <requestid>1374366</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>6cf7179cc5df9de22eb13351e430ac6d</srcmd5>
+    <version>2.4.5</version>
+    <time>1788018099</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace the dovecot pigeonhole tarballs with the new ones and
+  restore the man pages</comment>
+    <requestid>1374494</requestid>
+  </revision>
 </revisionlist>

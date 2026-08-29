@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 28 19:39:45 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Replace the dovecot pigeonhole tarballs with the new ones and
+  restore the man pages 
+
+-------------------------------------------------------------------
 Fri Aug 28 12:04:17 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - The following man pages are currently not available as they are
