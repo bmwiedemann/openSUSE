@@ -28,7 +28,7 @@
 %define minor    3
 %define micro    2
 %define tmajor   0
-%define tminor   4
+%define tminor   5
 %define tmicro   0
 %define tlibver  %{tmajor}.%{tminor}.%{tmicro}
 %endif
@@ -39,7 +39,7 @@
 %endif
 %define libver   %{major}.%{minor}.%{micro}
 Name:           %{flavor}
-Version:        3.1.4.1
+Version:        3.2.0
 Release:        0
 Summary:        A SIMD-accelerated library for manipulating JPEG image files
 License:        BSD-3-Clause
@@ -165,7 +165,8 @@ export LD_LIBRARY_PATH=%{buildroot}%{_libdir}${LD_LIBRARY_PATH:+:${LD_LIBRARY_PA
 %if 0%{?fedora_version} || 0%{?centos_version}
   ctest --output-on-failure --force-new-ctest-process
 %else
-  %ctest
+# https://github.com/libjpeg-turbo/libjpeg-turbo/issues/897
+  %ctest --exclude-regex='djpeg12-shared-3x2-float-prog-cmp'
 %endif
 
 %install

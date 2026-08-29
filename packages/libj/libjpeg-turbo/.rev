@@ -1257,4 +1257,27 @@ Adds an explicit provides line, so that &quot;zypper in jpegtran&quot; will work
     and another ICC profile was associated with the TurboJPEG (forwarded request 1345948 from dirkmueller)</comment>
     <requestid>1346361</requestid>
   </revision>
+  <revision rev="77" vrev="84">
+    <srcmd5>1b285c1e40ce81277e000836bd7e6a0b</srcmd5>
+    <version>unknown</version>
+    <time>1788018025</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.2.0:
+  * Fixed a regression introduced by 3.2 beta1[9] that broke Arm64EC Windows builds.
+  * Hardened the PNG writer (which is used by djpeg and tj3SaveImage*()) against
+    applications that may erroneously attempt to write sample values that are out of
+    range for the specified output data precision. 
+  * Hardened the libjpeg API against hypothetical applications that may erroneously
+    call jpeg_crop_scanline() with buffered-image mode and raw data output enabled. 
+  * Fixed a buffer overrun and subsequent segfault in jpegtran that occurred when
+     attempting to use the -crop and -trim options to expand the width of an image
+     narrower than one iMCU, discard partial iMCUs, and fill each block in the
+     expanded region with the DC coefficient of the nearest block in the input
+     image (&quot;flatten.&quot;) 
+- deleted sources
+  * libjpeg-turbo-3.1.4.1.tar.gz.sig (not needed)
+- added sources
+  * libjpeg-turbo-3.2.0.tar.gz.sig</comment>
+    <requestid>1374391</requestid>
+  </revision>
 </revisionlist>
