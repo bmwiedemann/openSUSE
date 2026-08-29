@@ -150,4 +150,12 @@
     <comment>version update to 3.2.2</comment>
     <requestid>1324184</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a48cc338b6f7197cb50d8dce97400a55</srcmd5>
+    <version>3.2.3</version>
+    <time>1788018023</time>
+    <user>dimstar_suse</user>
+    <comment>version update to 3.2.3</comment>
+    <requestid>1374353</requestid>
+  </revision>
 </revisionlist>
