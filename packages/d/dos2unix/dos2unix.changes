@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Aug 28 08:16:16 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- update to 7.5.7:
+  * Detect a missing UTF-16 low surrogate at the end of a file.
+  * Fixed the processing of files containing only half a BOM.
+  * unix2dos: Fixed conversion of a DOS line break immediately
+    after a Mac line break.
+  * mac2unix/unix2mac: Fixed counting line breaks in verbose
+    mode of files with mixed line break types.
+  * Code cleanup.
+
+-------------------------------------------------------------------
 Fri May 29 19:51:48 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 7.5.6:
