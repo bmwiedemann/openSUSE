@@ -124,4 +124,16 @@ Built green on openSUSE_Tumbleweed/aarch64: rpmlint 0 errors, 0 warnings,
 0 badness; %check asserts the built CLI reports 0.84.3.</comment>
     <requestid>1373506</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1a373ea1c21643ceaa71b0daf8f3cc95</srcmd5>
+    <version>0.84.4</version>
+    <time>1788018207</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.84.4
+
+Terminal capability overrides, new RPC clear_queue, auto-compaction
+between tool execution and next response. Re-vendored: dependency set
+unchanged at 135 modules, licence union unchanged, no copyleft added.</comment>
+    <requestid>1374586</requestid>
+  </revision>
 </revisionlist>

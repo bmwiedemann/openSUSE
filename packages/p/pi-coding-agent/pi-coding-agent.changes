@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Aug 29 07:17:56 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.84.4:
+  * Detected terminal hyperlink, image and truecolor support can now
+    be overridden through environment variables and settings
+  * New ui_prompt_start/ui_prompt_end extension events, letting
+    integrations tell agent work apart from waiting on a prompt
+  * New RPC clear_queue call to retrieve and drop queued steering
+    and follow-up messages
+  * New fullscreenCopyOnSelect setting to turn off automatic
+    fullscreen selection copying, with Ctrl+X to copy on demand
+  * Experimental vision-capable deepseek-v4-flash-vision-exp model
+    and a new detectSupportedImageMimeTypeFromFile() library export
+  * Auto-compaction now runs between tool execution and the next
+    assistant response, so oversized tool results no longer reach
+    the provider uncompacted
+  * Fixed resumed sessions corrupting the next transcript entry when
+    the JSONL file lacked a trailing newline
+  * Assorted extension replay, rendering, autocomplete, Google
+    Vertex proxy, OpenRouter and Mistral streaming fixes
+- Refresh package-lock.json (six @earendil-works sibling integrity
+  hashes filled in) and the vendored node_modules archive to match;
+  the dependency set stays at 135 modules and the license union is
+  unchanged
+
+-------------------------------------------------------------------
 Mon Aug 24 20:10:14 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.84.3:

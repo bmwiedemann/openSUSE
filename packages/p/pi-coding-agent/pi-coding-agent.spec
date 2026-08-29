@@ -23,7 +23,7 @@
 %global __nodejs_provides %{nil}
 %global __nodejs_requires %{nil}
 Name:           pi-coding-agent
-Version:        0.84.3
+Version:        0.84.4
 Release:        0
 Summary:        Minimal terminal coding agent
 # Legal-Review-Notice: pi itself is MIT. The 135 vendored dependencies are
