@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Fri Aug 28 12:38:37 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.7.0:
+  * aed3cda4 feat: handle additional multi-line fields
+- Update to version 0.6.1:
+  * Bug Fixes
+    - 0dfa7fd4 fix(deps): update charm ui components to v2
+    - 7a7ec192 fix(deps): update module
+      github.com/alecthomas/chroma/v2 to v2.27.0
+    - a60c5591 fix(deps): update module
+      github.com/charmbracelet/log to v2
+  * Others
+    - 6b1fc7cb chore(deps): update golang docker tag to v1.27
+    - 7ccabe66 chore(deps): update goreleaser/goreleaser docker tag
+      to v2.18.0
+- Update to version 0.6.0:
+  https://gitlab.com/tanna.dev/renovate-pretty-log/-/releases/v0.6.0
+  * Features
+    - Add a -json flag to renovate-pretty-log (88dc658)
+    - Write a shareable HTML report of a run (b839543)
+    - Use Renovate's calculation for repository run time taken
+      (c7c8100)
+    - Surface each repository's result and status (dbaca14)
+  * HTML report
+    - Fold a report line's context open on click, highlighted
+      (f7e34c4)
+    - Add open/close-all controls to the report (4d3fe69)
+    - Say where a report came from (d09c78e)
+  * Rendering
+    - Add a light mode colour scheme (4f417ce)
+    - Render stack traces as the lines they're made of (73917e8)
+  * renovate-pretty-log-tui
+    - Allow scrolling horizontally through truncated content
+      (dd83ddf)
+    - Search through a log line's context, not just its message
+      (582956e)
+    - Filter as you type, and add match navigation (1605ccc)
+    - Allow changing log level at runtime (2605343)
+    - Surface which repository and run a line belongs to (470c097)
+    - Show how long has passed between log lines (3b491d5)
+    - Add mouse support (5de02c7)
+    - Copy the selected line to the clipboard as JSON (09cd20a)
+    - Add keybindings for jumping to start/end (1051976)
+    - Add a line wrap toggle (eae5aa7)
+    - Jump between warnings and errors (601b275)
+    - Add a summary pape and jump to what went wrong (47d63b6)
+    - Show the log as a repository/branch tree (7bfe538)
+    - Allow tailing a log (af7ad6b)
+    - Nest base branches in the tree (154784a)
+    - Filter searches by field, not just text (bf1cc03)
+    - Follow the terminal's size down as well as up (6abb2df)
+  * Bug fixes
+    - Skip log lines we can't parse as JSON (347672b)
+    - Error when renovate-pretty-log is given no -path (517f53d)
+    - Make renovate-text-to-json's output deterministic (3fb2529)
+  * HTML report
+    - Keep the report's gutter off the highlighted JSON (6398179)
+  * Rendering
+    - Don't panic on an unknown log level (af8d179)
+    - Stop the extras pane scattering blank lines after JSON
+      (33ca2b1)
+  * renovate-pretty-log-tui
+    - Don't crash when paging with nothing to show (38b835c)
+    - Group branches logged outside a base branch stretch (cc89549)
+  * Performance
+  * renovate-pretty-log-tui
+    - Cache rendered lines, and only render what's on screen
+      (ace1b3d)
+  * Refactors
+    - Extract reading a debug log into log.Scanner (a5b71eb)
+    - Extract parsing the -level flag into log.ParseLevel (cb16a0e)
+  * renovate-pretty-log-tui
+    - Describe key bindings with a key map (bb9d124)
+  * Documentation
+    - Correct the TUI's documented default log level (9563ff2)
+    - Document the TUI's key bindings (a5193f0)
+    - Correct renovate-pretty-log's description (24c7d2b)
+
+-------------------------------------------------------------------
 Mon Mar 09 07:53:12 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.5.2:
