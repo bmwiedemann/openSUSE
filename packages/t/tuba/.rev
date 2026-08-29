@@ -152,4 +152,40 @@
   * Vala 0.56 changes (forwarded request 1310910 from rrahl0)</comment>
     <requestid>1310911</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>414f86791e533507e66c1db264838443</srcmd5>
+    <version>0.11.0</version>
+    <time>1788018107</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.11.0:
+  + Full Mastodon quote support
+  + Mastodon Collections
+  + Hashtag lists
+  + Unifiedpush
+  + Selectable custom font size, replacing the &quot;larger font size&quot; setting
+  + Warning before boosting a post that has attachments without alt text
+  + Custom thumbnail support for videos/audio attachments in the composer
+  + Custom Emoji Picker was re-written to optimize for thousands of
+    custom emojis
+  + Profile notes are now more prominent, show the full content and are easier to edit
+  + Moved to AdwShortcutsDialog
+  + Match Media Viewer controls with Loupe's and animate zoom
+  + Media Viewer zoom towards point instead of center
+  + More compact spacing on narrow window sizes
+  + Replaced big profile views when displaying accounts with smaller more
+    compact ones in some timelines, matching the Mastodon-web design
+  + &quot;Open Folder&quot; action on the saved media toast
+  + Respect content warnings of desktop push notifications
+  + Poll and attachments at the same time support for the Composer on supported fedi software
+  + Workflow to re-authenticate or remove accounts that had their tokens revoked by the instance
+  + Regular update of post stats of a threads and notification of newly found replies
+  + User confirmation before loading UNKNOWN media (unhandled media types or
+    sometimes unproxied media) from remote instances and let the Media Viewer
+    handle them
+  + Support for Mastodon's &quot;Featured&quot;, &quot;Media&quot; and media replies profile toggles
+  + Greatly improved focus workflow
+  + Proper account searching for the Advanced Search Dialog
+- New upstream URL (forwarded request 1374505 from rrahl0)</comment>
+    <requestid>1374506</requestid>
+  </revision>
 </revisionlist>

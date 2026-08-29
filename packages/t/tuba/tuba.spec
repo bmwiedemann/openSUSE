@@ -1,8 +1,7 @@
 #
 # spec file for package tuba
 #
-# Copyright (c) 2025 SUSE LLC
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,11 +18,11 @@
 
 %define         appid dev.geopjr.Tuba
 Name:           tuba
-Version:        0.10.3
+Version:        0.11.0
 Release:        0
 Summary:        Browse the Fediverse
 License:        GPL-3.0-only
-URL:            https://github.com/GeopJr/Tuba
+URL:            https://codeberg.org/GeopJr/Tuba
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
@@ -42,7 +41,7 @@ BuildRequires:  pkgconfig(gtk4) >= 4.18.0
 BuildRequires:  pkgconfig(gtksourceview-5) >= 5.7.1
 BuildRequires:  pkgconfig(icu-uc)
 BuildRequires:  pkgconfig(json-glib-1.0) >= 1.4.4
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.7.5
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.8
 BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(libsecret-1) >= 0.20
 BuildRequires:  pkgconfig(libsoup-3.0) >= 3.0.0
@@ -57,13 +56,18 @@ BuildRequires:  pkgconfig(webkitgtk-6.0)
 %{summary}.
 
 %prep
-%autosetup -n Tuba-%{version}
+%autosetup -n tuba
 
 %build
 %meson \
   -Ddevel=false \
   -Ddistro=true \
-  -Dclapper=true
+  -Dclapper=enabled \
+  -Dgstreamer=enabled \
+  -Din-app-browser=enabled \
+  -Dgexiv2=enabled \
+  -Dunifiedpush=disabled \
+  %{nil}
 %meson_build
 
 %install

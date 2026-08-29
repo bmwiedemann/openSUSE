@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Aug 28 20:55:13 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 0.11.0:
+  + Full Mastodon quote support
+  + Mastodon Collections
+  + Hashtag lists
+  + Unifiedpush
+  + Selectable custom font size, replacing the "larger font size" setting
+  + Warning before boosting a post that has attachments without alt text
+  + Custom thumbnail support for videos/audio attachments in the composer
+  + Custom Emoji Picker was re-written to optimize for thousands of
+    custom emojis
+  + Profile notes are now more prominent, show the full content and are easier to edit
+  + Moved to AdwShortcutsDialog
+  + Match Media Viewer controls with Loupe's and animate zoom
+  + Media Viewer zoom towards point instead of center
+  + More compact spacing on narrow window sizes
+  + Replaced big profile views when displaying accounts with smaller more
+    compact ones in some timelines, matching the Mastodon-web design
+  + "Open Folder" action on the saved media toast
+  + Respect content warnings of desktop push notifications
+  + Poll and attachments at the same time support for the Composer on supported fedi software
+  + Workflow to re-authenticate or remove accounts that had their tokens revoked by the instance
+  + Regular update of post stats of a threads and notification of newly found replies
+  + User confirmation before loading UNKNOWN media (unhandled media types or
+    sometimes unproxied media) from remote instances and let the Media Viewer
+    handle them
+  + Support for Mastodon's "Featured", "Media" and media replies profile toggles
+  + Greatly improved focus workflow
+  + Proper account searching for the Advanced Search Dialog
+- New upstream URL
+
+-------------------------------------------------------------------
 Sun Oct 12 09:08:54 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to version 0.10.3:
