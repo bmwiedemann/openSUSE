@@ -179,4 +179,21 @@ Packaging notes:
    compiled binary and its --version matches. rpmlint badness 0.</comment>
     <requestid>1373682</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c507b1fcb420746905b2ca64b4d44c8c</srcmd5>
+    <version>1.18.25</version>
+    <time>1788018183</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.18.25
+
+Azure Entra ID sign-in via Azure CLI, Bedrock unreplayable reasoning
+blocks dropped before caching, v2 config fields read in v1, migration
+history recovery for older local databases.
+
+Vendor sources regenerated: dependency closure unchanged (upstream root
+package.json byte-identical to 1.18.23, bun.lock delta confined to
+packages/console which the filtered install skips). Licence set unchanged
+over 509 packages, no copyleft. Green on aarch64 and x86_64.</comment>
+    <requestid>1374573</requestid>
+  </revision>
 </revisionlist>

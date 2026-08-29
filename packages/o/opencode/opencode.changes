@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Aug 29 07:42:20 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.18.25:
+  * Azure providers can sign in through the Azure CLI with
+    Microsoft Entra ID instead of an API key, and that sign-in no
+    longer requires bun to be installed.
+  * Drop unreplayable Amazon Bedrock reasoning blocks before they
+    are cached, instead of turning them into empty messages that
+    cannot be replayed.
+  * Read the supported v2 configuration fields in v1, so newer
+    configuration files keep working in mixed setups.
+  * Recover the migration history of older local databases whose
+    migration table predates the name column, instead of treating
+    them as unmigrated.
+- Regenerate the vendor sources without --retrace: the CLI
+  dependency closure did not move (upstream's root package.json is
+  byte-identical to 1.18.23, the bun.lock delta is confined to
+  packages/console, which the filtered install skips, and
+  opencode-vendor-keep.txt still matches at 512 store entries).
+  The SPDX license set is unchanged over the same 509 packages and
+  still contains no copyleft; README.SUSE-maint records the audit
+  as redone for 1.18.25.
+
+-------------------------------------------------------------------
 Tue Aug 25 17:04:17 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.18.23:
