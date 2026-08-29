@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Fri Aug 28 07:11:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.97.1:
+  * Carry GitHub App installation ID on repo units (#5215)
+  * Refine SECURITY.md (#5216)
+  * [SCAN-101] s3 source accept persisted unit envelopes in UnmarshalSourceUnit (#5224)
+  * preallocate bindings capacity in dockerhub and groq, with unit tests (#5213)
+  * Doubled timeout, as MongoDB secrets are repeatedly hitting this and failing to verify (#5222)
+  * [SCAN-1020] neon scram pgx (#5217)
+  * fix(detectors/docker): don't greedy match in keyPat (#5214)
+  * docs: add generic config-secret custom detector example (#5195)
+  * Fix GHEC with Data Residency (`*.ghe.com`) base URL (#4777)
+  * Update module github.com/go-git/go-git/v5 to v5.19.2 [SECURITY] (#5196)
+- Update to version 3.97.0:
+  * fix(detectors/harness): allow underscore in PAT account segment (#5153)
+  * Add AWS Secrets Manager metadata type (#5210)
+  * update huggingface to fix unbounded resources bug (#5204)
+  * fix blogger detector to use Google API prefix instead of generic hex string (#5203)
+  * Add custom endpoint support to the S3 source (#5202)
+  * fix(jiratoken): stop 202 reverification retry loop (#5200)
+  * Add SolarWinds Observability detector (#5199)
+  * Deprecated bingsubscriptionkey detector (#5179)
+  * Anthropic detector: surface API error detail on non-2xx verification (#5180)
+  * Deprecate AppOptics detector (#5198)
+  * Update regex pattern and 403 handling in the Lob detector to fix false positives (#5188)
+  * Updated protos to support bitbucket Api token authentication (#5171)
+  * fix(github): fallback resource Name to avoid empty-string proto validation failure (#5182)
+  * Add Figma Personal Access Token v3 Detector (#4790)
+  * surface git clone errors at v(0) (#5162)
+  * [INS-456] Add Microsoft Teams Webhook V2 detector (#4902)
+  * make cwd-changing normalization tests non-parallel to fix flaky clone failures (#5178)
+  * [SCAN-1018] Treat SlackWebhook invalid_token (HTTP 400) as determinate not-live (#5177)
+  * feat(output): add SARIF output format for GitHub code scanning (#5165)
+  * Give each clone its own directory under `--clone-path` (#5175)
+  * [INS-344] Add New Relic Mobile App Token Detector (#4810)
+  * Update aws-sdk-go-v2 monorepo (#4890)
+  * Update github-actions (#5036)
+  * Update github.com/shurcooL/githubv4 digest to 2402fdf (#5038)
+  * Set CircleCI project count to 3 in tests (#5166)
+  * fix(sources): stop UnitHook Close racing in-flight Finish sends (#5154)
+  * [INS-345] Add New Relic Insights Query Key detector (#4781)
+  * [INS-339] Add New Relic User Key detector (#4794)
+  * [INS-348] Add New Relic Browser Key detector (#4769)
+  * [INS-318] Add New Relic License Key Detector (#4760)
+  * Update github.com/avast/apkparser digest to 7fcaee4 (#5037)
+  * Remove url tag from common HTTP client metrics (#5158)
+  * Update module go.mongodb.org/mongo-driver to v1.17.7 [SECURITY] (#5058)
+  * fix(detectors/privatekey): report encrypted keys with uncrackable passphrases (#5127)
+
+-------------------------------------------------------------------
 Mon Jul 27 04:58:05 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.96.0:
