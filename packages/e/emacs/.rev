@@ -2376,4 +2376,41 @@ Now one could consider building emacs with gsettings support (both debian and fe
   VUL-0: emacs: zero-click local command execution via TRAMP</comment>
     <requestid>1372858</requestid>
   </revision>
+  <revision rev="222" vrev="1">
+    <srcmd5>7d95a2a5b6d06ea3ad3470d5fd2f068d</srcmd5>
+    <version>31.1</version>
+    <time>1788018018</time>
+    <user>dimstar_suse</user>
+    <comment>- Use lexical-binding for lisp file
+
+ 
+- Update to GNU Emacs version 31.1
+  + This update fix bsc#1275941, bsc#1275927 (CVE-2026-79992), and bsc#1276264
+  * Using the mouse to control Emacs in a terminal enabled by default
+  * New user-lisp/ subdirectory of your Emacs configuration directory
+  * Child frames supported on text frames
+  * Various improvements to the *Completions* buffer
+  * Commands to split windows make better choices about the split direction
+  * The *grep* and *xref* buffers now support editable modes
+  * New feature to review changes to packages before installing or upgrading them
+  * New theme designed to make Emacs more approachable for new users
+  * No ctags support in etags anymore
+- Remove obsolete patches now upstream solved
+  * 0009-pdumper-set-DUMP_RELOC_ALIGNMENT_BITS-1-for-m68k.patch
+  * 03_all_ruby-flymake.patch
+  * 04_all_shorthands.patch
+  * emacs-30.1-seccomp.patch
+  * emacs-30.2-boo1262611.patch
+  * emacs-30.2-bsc1275927.patch
+  * emacs-30.2-tree-sitter-0.26.8.patch
+- Port patch emacs-29.1.dif and renamed it to emacs-31.1.dif
+- Port patches
+  * 0012-Add-inhibit-native-compilation.patch
+  * 0013-Rename-to-inhibit-automatic-native-compilation.patch
+  * 0016-Change-native-comp-async-report-warnings-errors-to-s.patch
+  * emacs-24.1-ps-mule.patch
+  * emacs-24.3-iconic.patch
+  * emacs-24.4-glibc.patch</comment>
+    <requestid>1374345</requestid>
+  </revision>
 </revisionlist>

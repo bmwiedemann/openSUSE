@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Thu Aug 27 08:37:39 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Use lexical-binding for lisp file
+
+-------------------------------------------------------------------
+Tue Aug 25 10:46:52 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+ 
+- Update to GNU Emacs version 31.1
+  + This update fix bsc#1275941, bsc#1275927 (CVE-2026-79992), and bsc#1276264
+  * Using the mouse to control Emacs in a terminal enabled by default
+  * New user-lisp/ subdirectory of your Emacs configuration directory
+  * Child frames supported on text frames
+  * Various improvements to the *Completions* buffer
+  * Commands to split windows make better choices about the split direction
+  * The *grep* and *xref* buffers now support editable modes
+  * New feature to review changes to packages before installing or upgrading them
+  * New theme designed to make Emacs more approachable for new users
+  * No ctags support in etags anymore
+- Remove obsolete patches now upstream solved
+  * 0009-pdumper-set-DUMP_RELOC_ALIGNMENT_BITS-1-for-m68k.patch
+  * 03_all_ruby-flymake.patch
+  * 04_all_shorthands.patch
+  * emacs-30.1-seccomp.patch
+  * emacs-30.2-boo1262611.patch
+  * emacs-30.2-bsc1275927.patch
+  * emacs-30.2-tree-sitter-0.26.8.patch
+- Port patch emacs-29.1.dif and renamed it to emacs-31.1.dif
+- Port patches
+  * 0012-Add-inhibit-native-compilation.patch
+  * 0013-Rename-to-inhibit-automatic-native-compilation.patch
+  * 0016-Change-native-comp-async-report-warnings-errors-to-s.patch
+  * emacs-24.1-ps-mule.patch
+  * emacs-24.3-iconic.patch
+  * emacs-24.4-glibc.patch
+  * emacs-24.4-nonvoid.patch
+  * emacs-24.4-ps-bdf.patch
+  * emacs-27.1-pdftex.patch
+  * emacs-30.1-pdumper.patch
+  * emacs-30.1-silent.patch
+  * pdump.patch
+- Add upstream patch
+  * 0001-speedbar-mode-must-be-enabled-in-the-speedbar-window.patch
+
+-------------------------------------------------------------------
 Fri Aug 21 09:40:20 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch 04_all_shorthands.patch and 03_all_ruby-flymake.patch

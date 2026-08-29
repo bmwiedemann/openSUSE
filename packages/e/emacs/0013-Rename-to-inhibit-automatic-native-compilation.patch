@@ -27,7 +27,7 @@ diff --git a/lisp/emacs-lisp/comp.el b/lisp/emacs-lisp/comp.el
 index d1182b35cfe..8f7a49e471c 100644
 --- a/lisp/emacs-lisp/comp.el
 +++ b/lisp/emacs-lisp/comp.el
-@@ -3359,7 +3359,7 @@ comp--trampoline-abs-filename
+@@ -3435,7 +3435,7 @@ comp--trampoline-abs-filename
    "Return the absolute filename for a trampoline for SUBR-NAME."
    ;; If we've disabled nativecomp, don't write the trampolines to
    ;; the eln cache (but create them).
@@ -40,7 +40,7 @@ diff --git a/lisp/startup.el b/lisp/startup.el
 index e5d6bd87cac..c6242b39e4f 100644
 --- a/lisp/startup.el
 +++ b/lisp/startup.el
-@@ -524,7 +524,7 @@ startup--xdg-or-homedot
+@@ -518,7 +518,7 @@ startup--xdg-or-homedot
       (t emacs-d-dir))))
  
  (defvar native-comp-eln-load-path)
@@ -49,7 +49,7 @@ index e5d6bd87cac..c6242b39e4f 100644
  (defvar native-comp-enable-subr-trampolines)
  
  (defvar startup--original-eln-load-path nil
-@@ -586,7 +586,8 @@ normal-top-level
+@@ -580,7 +580,8 @@ normal-top-level
      (setq android-fonts-enumerated t))
  
    ;; Allow disabling automatic .elc->.eln processing.
@@ -59,7 +59,7 @@ index e5d6bd87cac..c6242b39e4f 100644
  
    (if command-line-processed
        (message internal--top-level-message)
-@@ -606,7 +607,7 @@ normal-top-level
+@@ -600,7 +601,7 @@ normal-top-level
          ;; in this session.  This is necessary if libgccjit is not
          ;; available on MS-Windows, but Emacs was built with
          ;; native-compilation support.
@@ -72,7 +72,7 @@ diff --git a/src/comp.c b/src/comp.c
 index ffbc2be106b..f63a6f3a6d9 100644
 --- a/src/comp.c
 +++ b/src/comp.c
-@@ -5201,7 +5201,7 @@ maybe_defer_native_compilation (Lisp_Object function_name,
+@@ -5088,7 +5088,7 @@ maybe_defer_native_compilation (Lisp_Object function_name,
      return;
  
    if (!native_comp_jit_compilation
@@ -81,7 +81,7 @@ index ffbc2be106b..f63a6f3a6d9 100644
        || noninteractive
        || !NILP (Vpurify_flag)
        || !CLOSUREP (definition)
-@@ -5689,12 +5689,14 @@ DEFUN ("native-comp-available-p", Fnative_comp_available_p,
+@@ -5567,12 +5567,14 @@ DEFUN ("native-comp-available-p", Fnative_comp_available_p,
  syms_of_comp (void)
  {
  #ifdef HAVE_NATIVE_COMP

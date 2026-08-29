@@ -1,0 +1,27 @@
+From 51dfcfba94802ce5e341cdcd43df5143133a17db Mon Sep 17 00:00:00 2001
+From: Vincenzo Pupillo <v.pupillo@gmail.com>
+Date: Tue, 25 Aug 2026 00:33:33 +0200
+Subject: [PATCH] 'speedbar-mode' must be enabled in the 'speedbar-window'
+ buffer.
+
+* lisp/speedbar.el (speedbar-window-mode): Enable 'speedbar-mode'
+major-mode in the 'speedbar-window' buffer.
+---
+ lisp/speedbar.el | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/lisp/speedbar.el b/lisp/speedbar.el
+index 01704785c44..198a309065d 100644
+--- a/lisp/speedbar.el
++++ b/lisp/speedbar.el
+@@ -1083,6 +1083,7 @@ speedbar-window-mode
+ 	    speedbar-last-selected-file nil)
+ 
+       (set-buffer speedbar-buffer)
++      (speedbar-mode)
+ 
+       ;; let's create the window
+       (setq speedbar--window
+-- 
+2.55.0
+
