@@ -1626,6 +1626,7 @@ unsorted:
   - borgbackup-fish-completion 
   - borgbackup-zsh-completion 
   - borgmatic 
+  - boringssl 
   - boringssl-devel 
   - boringssl-source 
   - bosh 
@@ -9041,11 +9042,12 @@ unsorted:
   - include-what-you-use 
   - include-what-you-use-tools 
   - incus 
-  - incus-bash-completion 
-  - incus-fish-completion 
+  - incus-cli 
+  - incus-cli-bash-completion 
+  - incus-cli-fish-completion 
+  - incus-cli-zsh-completion 
   - incus-os-flashertool 
   - incus-tools 
-  - incus-zsh-completion 
   - indent 
   - indent-lang 
   - indi 
@@ -15390,14 +15392,14 @@ unsorted:
   - libopentimelineio18 
   - libopentracing-cpp1 
   - libopenvdb13_0 
-  - libopenvino2630 
-  - libopenvino_c2630 
-  - libopenvino_ir_frontend2630 
-  - libopenvino_onnx_frontend2630 
-  - libopenvino_paddle_frontend2630 
-  - libopenvino_pytorch_frontend2630 
-  - libopenvino_tensorflow_frontend2630 
-  - libopenvino_tensorflow_lite_frontend2630 
+  - libopenvino2631 
+  - libopenvino_c2631 
+  - libopenvino_ir_frontend2631 
+  - libopenvino_onnx_frontend2631 
+  - libopenvino_paddle_frontend2631 
+  - libopenvino_pytorch_frontend2631 
+  - libopenvino_tensorflow_frontend2631 
+  - libopenvino_tensorflow_lite_frontend2631 
   - libopenvswitch-3_7-0 
   - liboping-devel 
   - liboping0 
@@ -27723,6 +27725,7 @@ unsorted:
   - python313-pywayland 
   - python313-pywbem 
   - python313-pywebpush 
+  - python313-pywhatwgurl 
   - python313-pywinrm 
   - python313-pywlroots 
   - python313-pyxattr 
@@ -31840,6 +31843,7 @@ unsorted:
   - python314-pywayland 
   - python314-pywbem 
   - python314-pywebpush 
+  - python314-pywhatwgurl 
   - python314-pywinrm 
   - python314-pywlroots 
   - python314-pyxattr 
