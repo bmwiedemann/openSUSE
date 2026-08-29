@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Aug 28 18:42:57 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to OpenJDK 8u504 build 01 with OpenJ9 0.61.0 virtual
+  machine
+- Including Oracle August 2026 CSPU changes
+  * CVE-2026-70906 (bsc#1275763), CVE-2026-61308 (bsc#1275778),
+    CVE-2026-70907 (bsc#1275764), CVE-2026-60589 (bsc#1275777)
+  * OpenJ9 changes, see
+    https://www.eclipse.org/openj9/docs/version0.60/
+- Modified patches:
+  * omr-gcc16.patch
+    + upstream fix, augmented with our work on proper initialisation
+      of C++ classes and structs
+  * openj9-gcc16.patch
+    + properly initiate ALL necessary classes and structs instead
+      of a memory barrier that is not portable with C++98
+
+-------------------------------------------------------------------
 Thu Aug  6 15:55:16 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.de>
 
 - Add patches for reproducible builds:
