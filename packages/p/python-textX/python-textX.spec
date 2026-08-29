@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-textX
-Version:        4.3.0
+Version:        4.4.0
 Release:        0
 Summary:        Meta-language for DSL implementation inspired by Xtext
 License:        MIT
@@ -64,6 +64,8 @@ ambiguities, unlimited lookahead, interpreter style of work.
 %prep
 %setup -q -n textX-%{version}
 sed -i '0,/#!\/usr\/bin\/env/ d' examples/hello_world/hello.py
+# https://github.com/textX/textX/issues/449
+grep -Frl 'flit_core >=3.8.0,<4' | xargs sed -i 's/flit_core >=3.8.0,<4/flit_core >=3.8.0,<5/'
 
 %build
 %pyproject_wheel

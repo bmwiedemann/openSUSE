@@ -340,4 +340,12 @@
   * Reworked project setup.</comment>
     <requestid>1329541</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>078484042092c7cab99fd360ec8a23ab</srcmd5>
+    <version>4.4.0</version>
+    <time>1788018226</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1374598</requestid>
+  </revision>
 </revisionlist>

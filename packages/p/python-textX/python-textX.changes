@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Aug 22 11:41:35 UTC 2026 - Sebastian Wagner <sebix@sebix.at>
+
+- update to version 4.4.0:
+ - Changed:
+  - Migrated to [just](https://github.com/casey/just) for project management.
+  - Autoformating code with [ruff](https://docs.astral.sh/ruff/).
+  - loosen flit_core version constraint to allow v4. See [442].
+ - Fixed:
+  - Empty grammars now raise `TextXSyntaxError` instead of `IndexError`.
+- overwrite flit-core version restriction in tests, as already in place for the overall project
+  https://github.com/textX/textX/issues/449
+
+-------------------------------------------------------------------
 Tue Jan 27 17:15:51 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.3.0:
