@@ -157,4 +157,12 @@
     area-based thresholds</comment>
     <requestid>1339159</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>db83fcba4cdff8ae2dcb0d25161799a2</srcmd5>
+    <version>1.20.0</version>
+    <time>1788018101</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1374513</requestid>
+  </revision>
 </revisionlist>

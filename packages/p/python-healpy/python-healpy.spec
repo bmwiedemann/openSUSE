@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-healpy%{?psuffix}
-Version:        1.19.0
+Version:        1.20.0
 Release:        0
 Summary:        Python library to handle pixelated data on the sphere based on HEALPix
 License:        GPL-2.0-only
@@ -116,7 +116,7 @@ export CFLAGS="%{optflags}"
 export PYTEST_DEBUG_TEMPROOT=$(mktemp -d -p ./)
 export MPLCONFIGDIR=${PWD}
 # Skip tests requiring network access
-%pytest_arch -k 'not (test_astropy_download_file or test_rotate_map_polarization or test_pixelweights_local_datapath or test_pixwin)' ./test/
+%pytest_arch -k 'not (test_astropy_download_file or test_rotate_map_polarization or test_pixelweights_local_datapath or test_pixwin or test_input_type_alm_with_pixwin or test_input_type_alm_polarized or test_input_type_alm_does_not_mutate_input)' ./test/
 
 %endif
 
