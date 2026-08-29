@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 03 12:21:00 UTC 2026 - mbussolotto <michele.bussolotto@suse.com>
+
+- Fix executable bit on tomcat, tomcat-digest, tomcat-tool-wrapper
+  (bsc#1273184)
+
+-------------------------------------------------------------------
 Thu Jul 23 15:21:27 UTC 2026 - mbussolotto <michele.bussolotto@suse.com>
 
 - Update to Tomcat 9.0.120

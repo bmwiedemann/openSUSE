@@ -391,6 +391,7 @@ sed -e "s|\@\@\@TCHOME\@\@\@|%{homedir}|g" \
     > %{buildroot}%{_fillupdir}/sysconfig.%{name}
 sed -e "s|@LIBEXECDIR@|%{_libexecdir}|g" %{SOURCE4} \
     > %{buildroot}%{_sbindir}/%{name}
+chmod 0755 %{buildroot}%{_sbindir}/%{name}
 sed -e "s|@LIBEXECDIR@|%{_libexecdir}|g" %{SOURCE11} \
     > %{buildroot}%{_unitdir}/%{name}.service
 sed -e "s|@LIBEXECDIR@|%{_libexecdir}|g" %{SOURCE20} \
@@ -401,10 +402,12 @@ sed -e "s|\@\@\@TCHOME\@\@\@|%{homedir}|g" \
    -e "s|\@\@\@TCTEMP\@\@\@|%{tempdir}|g" \
    -e "s|\@\@\@LIBDIR\@\@\@|%{_libdir}|g" %{SOURCE6} \
     > %{buildroot}%{_bindir}/%{name}-digest
+chmod 0755 %{buildroot}%{_bindir}/%{name}-digest
 sed -e "s|\@\@\@TCHOME\@\@\@|%{homedir}|g" \
    -e "s|\@\@\@TCTEMP\@\@\@|%{tempdir}|g" \
    -e "s|\@\@\@LIBDIR\@\@\@|%{_libdir}|g" %{SOURCE7} \
     > %{buildroot}%{_bindir}/%{name}-tool-wrapper
+chmod 0755 %{buildroot}%{_bindir}/%{name}-tool-wrapper
 
 sed -e "s|@LIBEXECDIR@|%{_libexecdir}|g" %{SOURCE21} \
     > %{buildroot}%{_libexecdir}/%{name}/functions
