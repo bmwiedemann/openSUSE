@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 27 16:06:00 UTC 2026 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Fix server-controlled unbounded MD5 loop in FTP OPIE
+  [bsc#1276962; CVE-2026-16599]
+  * CVE-2026-16599.patch
+
+-------------------------------------------------------------------
 Wed Aug 12 14:05:01 UTC 2026 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - Fix segmentation fault in metalink4, bsc#1273449
