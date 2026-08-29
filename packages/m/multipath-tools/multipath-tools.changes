@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Aug 28 11:00:28 UTC 2026 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 0.15.1+227+suse.6644513 (see NEWS.md for details)
+
+  * The `preferredip=`parameter for the `iet` prioritizer has been generalized.
+    See multipath.conf(5) for details.
+
+- Upstream fixes for vulnerabilities:
+  * DoS on mulipathd socket by blocking IPC send operations
+  (GHSA-hmcm-9cq4-r2xm bsc#1277199)
+  * DoS on multipathd socket by exhausting connections
+  (GHSA-pvp6-c9p3-25fp bsc#1277203)
+  * Heap Out-of-Bounds Read in Custom Format String Parser via Trailing `%`
+  (GHSA-g5mh-253r-jjw5 bsc#1277205)
+  * Heap out-of-bounds read in device-mapper-multipath ALUA RTPG parsing
+  (GHSA-pxwh-g75c-95pc 1277208)
+  * kpartx: Heap Out-of-Bounds Read in GPT Header Validation
+  (GHSA-p6rh-9x9j-3hvx, bsc#1277209)
+  * Path traversal in device-mapper-multipath failed_wwids management
+  (GHSA-gr7q-prfc-q636 bsc#1277210)
+  * libmpathpersist PRIN READ FULL STATUS parser — unbounded descriptor rewrite causes root heap overflow
+  (GHSA-hj7j-qr9h-5fv6 bsc#1277212)
+
+- Bug fixes:
+
+  * Fix use-after free error during shutdown (gh#opensvc/multipath-tools#152)
+  * Add missing NULL check in DM parser (gh#opensvc/multipath-tools#155)
+
+-------------------------------------------------------------------
 Wed Jul 22 22:30:11 UTC 2026 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 0.15~1+230+suse.d36a6a70:

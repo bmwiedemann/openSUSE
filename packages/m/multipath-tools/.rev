@@ -2360,4 +2360,32 @@ Binary file multipath-tools-0.14.3+212+suse.f5d32098.tar.xz (revision 178) delet
   * libmultipath: async_checker: fix sync checker case (bsc#1272188)</comment>
     <requestid>1367351</requestid>
   </revision>
+  <revision rev="182" vrev="1">
+    <srcmd5>a8d2226f3a3995e44c3af89dc0f2c398</srcmd5>
+    <version>0.15.1+227+suse.6644513</version>
+    <time>1788018026</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.15.1+227+suse.6644513 (see NEWS.md for details)
+  * The `preferredip=`parameter for the `iet` prioritizer has been generalized.
+    See multipath.conf(5) for details.
+- Upstream fixes for vulnerabilities:
+  * DoS on mulipathd socket by blocking IPC send operations
+  (GHSA-hmcm-9cq4-r2xm bsc#1277199)
+  * DoS on multipathd socket by exhausting connections
+  (GHSA-pvp6-c9p3-25fp bsc#1277203)
+  * Heap Out-of-Bounds Read in Custom Format String Parser via Trailing `%`
+  (GHSA-g5mh-253r-jjw5 bsc#1277205)
+  * Heap out-of-bounds read in device-mapper-multipath ALUA RTPG parsing
+  (GHSA-pxwh-g75c-95pc 1277208)
+  * kpartx: Heap Out-of-Bounds Read in GPT Header Validation
+  (GHSA-p6rh-9x9j-3hvx, bsc#1277209)
+  * Path traversal in device-mapper-multipath failed_wwids management
+  (GHSA-gr7q-prfc-q636 bsc#1277210)
+  * libmpathpersist PRIN READ FULL STATUS parser — unbounded descriptor rewrite causes root heap overflow
+  (GHSA-hj7j-qr9h-5fv6 bsc#1277212)
+- Bug fixes:
+  * Fix use-after free error during shutdown (gh#opensvc/multipath-tools#152)
+  * Add missing NULL check in DM parser (gh#opensvc/multipath-tools#155)</comment>
+    <requestid>1374432</requestid>
+  </revision>
 </revisionlist>
