@@ -1,12 +1,18 @@
-diff --git a/desktop/build-scripts/common-resources/common-linux/tuxguitar.sh b/desktop/build-scripts/common-resources/common-linux/tuxguitar.sh
-index 65fcdf07b..a8887b2d6 100755
+diff -rupN a/desktop/build-scripts/common-resources/common-linux/tuxguitar.sh b/desktop/build-scripts/common-resources/common-linux/tuxguitar.sh
 --- a/desktop/build-scripts/common-resources/common-linux/tuxguitar.sh
 +++ b/desktop/build-scripts/common-resources/common-linux/tuxguitar.sh
-@@ -1,20 +1,157 @@
+@@ -1,4 +1,5 @@
  #!/bin/sh
--##SCRIPT DIR
--TG_DIR=`dirname $(realpath "$0")`
 +
+ ## try to read light/dark theme from dbus
+ getTheme() {
+     tuxguitarTheme="none"
+@@ -11,22 +12,158 @@ getTheme() {
+     echo $tuxguitarTheme
+ }
+ 
+-##SCRIPT DIR
+-TG_DIR=`dirname "$(realpath "$0")"`
 +# system dependencies
 +swt_guess_()
 +{
@@ -165,5 +171,5 @@ index 65fcdf07b..a8887b2d6 100755
  ##Avoid problems with Accelerated Compositing mode in SWT/WebKitGTK
  export WEBKIT_DISABLE_COMPOSITING_MODE=1
  ##LAUNCH
--${JAVA} -cp :${CLASSPATH} -Dtuxguitar.home.path="${TG_DIR}" -Dtuxguitar.share.path="share/" -Djava.library.path="${LD_LIBRARY_PATH}" ${MAINCLASS} "$@"
-+${JAVA} -cp :${CLASSPATH} -Dtuxguitar.share.path="${SHAREPATH}/" -Djava.library.path="${LD_LIBRARY_PATH}" ${MAINCLASS} "$@"
+-${JAVA} -cp ":${CLASSPATH}" -Dtuxguitar.home.path="${TG_DIR}" -Dtuxguitar.share.path="share" -Djava.library.path="${LD_LIBRARY_PATH}" -Dtuxguitar.theme=$(getTheme) ${MAINCLASS} "$@"
++${JAVA} -cp :${CLASSPATH} -Dtuxguitar.share.path="${SHAREPATH}/" -Djava.library.path="${LD_LIBRARY_PATH}" -Dtuxguitar.theme=$(getTheme) ${MAINCLASS} "$@"

@@ -26,7 +26,7 @@
 %global with_lv2 0
 %endif
 Name:           tuxguitar
-Version:        2.0.1
+Version:        2.1.0
 Release:        0
 Summary:        A multitrack tablature editor and player written in Java-SWT
 License:        LGPL-2.1-or-later
@@ -56,6 +56,7 @@ Requires:       fluid-soundfont-gm
 Recommends:     snd_sf2
 Recommends:     timidity
 Recommends:     wqy-zenhei-fonts
+Recommends:     libwebkit2gtk-4_1-0
 %if %{with_fluidsynth}
 BuildRequires:  fluidsynth-devel
 BuildRequires:  liblilv-0-devel
@@ -145,12 +146,14 @@ cp -a desktop/build-scripts/common-resources/common-linux/share/mime/packages/tu
 # data files
 mkdir -p %{buildroot}/%{_datadir}/%{name}
 cp -a desktop/TuxGuitar/share/* %{buildroot}/%{_datadir}/%{name}
-cp -a common/resources/* %{buildroot}/%{_datadir}/%{name}
-cp -a misc/tuxguitar.tg %{buildroot}/%{_datadir}/%{name}
+cp -a common/resources/lang %{buildroot}/%{_datadir}/%{name}
+cp -a common/resources/templates %{buildroot}/%{_datadir}/%{name}
+cp -a common/resources/tunings %{buildroot}/%{_datadir}/%{name}
 cp -a desktop/build-scripts/%{name}-linux-swt/target/%{name}-%{version}-linux-swt/dist/* %{buildroot}/%{_datadir}/%{name}
 
 # desktop files
 install -dm 755 %{buildroot}/%{_datadir}/applications
+mv desktop/build-scripts/common-resources/common-linux/share/applications/TuxGuitar.desktop desktop/build-scripts/common-resources/common-linux/share/applications/tuxguitar.desktop
 install -pm 644 desktop/build-scripts/common-resources/common-linux/share/applications/tuxguitar.desktop %{buildroot}/%{_datadir}/applications/
 
 # icon
@@ -160,6 +163,9 @@ install -D -m 644 desktop/build-scripts/common-resources/common-linux/share/pixm
 # man page
 mkdir -p %{buildroot}/%{_mandir}/man1
 cp -a desktop/build-scripts/common-resources/common-linux/share/man/man1/%{name}.1 %{buildroot}/%{_mandir}/man1/
+
+# license file
+cp -a docs/LICENSE .
 
 %fdupes -s %{buildroot}
 

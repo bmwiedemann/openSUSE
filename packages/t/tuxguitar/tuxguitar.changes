@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul 27 12:22:00 UTC 2026 - guiv42 <guiv42@tuta.io>
+
+- Updated to new upstream release 2.1.0
+  * Fix CVE-2026-55543, prevent loading malicious .tg files
+  * Allow continuous scrolling when playing
+  * Save and restore zoom level across sessions
+  * Add quantization to MIDI import
+
+-------------------------------------------------------------------
 Mon May 11 17:03:06 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:
