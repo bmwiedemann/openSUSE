@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Mon Aug 17 06:19:02 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 4.1.0:
+  + Fixes:
+    - Default Alpha to false to avoid rare video performance
+      problems..
+    - Properly handle unterminated strings in configuration files..
+    - Properly handle a string parsing error for _NET_STARTUP_ID..
+    - Free the picture before its pixmap to prevent an error
+      message.
+  + Changes:
+    - Add a new winoption ignoreUserTime.
+    - Add a "mousemove" command to icesh.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Apr  9 20:30:27 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0.0:
+  * Features:
+    - Add QuickSwitchPreview for application previews during
+      Alt+Tab switching.
+    - Support for high-resolution icons (up to 256x256) in
+      previews and taskbar.
+    - Add getWorkspaceName and getWorkspaceNames commands to
+      icesh.
+    - Select applications by the first letter of their class name
+      in Alt+Tab.
+    - Improved system tray icon handling for mixed bit depths
+    - Improved clock LED rendering and fallback to fonts if
+      pixmaps are missing.
+    - Recognition of UTF-8 combining marks in window titles.
+    - Enhanced QuickSwitch with workspace separators and keypad
+      support.
+    - Server-side caching of icon pictures to improve drawing
+      performance.
+  * Fixes:
+    - Prevent crash when a dock layer window exits.
+    - Fix keyboard layout switching on OpenBSD.
+    - Fix bug where tasks pane could overlap workspaces pane.
+    - Fix sorting of FDO menu entries with non-English
+      characters.
+    - Improve workspace name updates on the taskbar when
+      changed externally.
+    - Diagnostic messages for loadicon and saveicon in icesh.
+    * Changes:
+      - Increase maximum icon size to 256 for LargeIconSize and
+        HugeIconSize.
+      - Set the default value for Alpha blending to 1 and drop
+        DoubleBuffer preference.
+      - Update issue tracker and repository URLs to the ice-wm
+        organization.
+      - Improved autogen.sh with better versioning and error
+        handling.
+      - Updated translations for many languages including
+        Indonesian, Russian, Dutch, and Japanese.
+
+-------------------------------------------------------------------
 Tue Sep  2 07:42:56 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.9.0:

@@ -1,7 +1,7 @@
 #
 # spec file for package icewm
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global lites icewm icewmhint icewmbg icesh icewm-session
 Name:           icewm
-Version:        3.9.0
+Version:        4.1.0
 Release:        0
 Summary:        Window Manager with a Taskbar
 License:        LGPL-2.1-or-later
