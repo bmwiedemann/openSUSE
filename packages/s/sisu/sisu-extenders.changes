@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Jul 29 13:10:03 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream release 1.1.0
+  * New feature: JSR330 bean filtering.
+    + Important: when using Sisu Plexus Shim (that implicitly
+      creates Sisu Inject), the JSR330 bean filtering will
+      automatically "follow" (have same filtering rules applied) the
+      Plexus Beans visibility. Control this behaviour using Plexus
+      ContainerConfiguration new method
+      setJSR330ComponentVisibilityFollowsPlexusVisibility(boolean)
+    + Users of Sisu Inject only (without Plexus Shim) are not
+      affected by this change.
+  * Changes
+    + Update Security Policy
+    + Build update
+    + Feat: Ability to filter JSR330 beans based on some predicate
+    + Update conversion doc
+    + Introduce more tests for lifecycle
+
+-------------------------------------------------------------------
 Fri Jun 26 07:28:26 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream release 1.0.1

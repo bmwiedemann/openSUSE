@@ -18,7 +18,7 @@
 
 %global reltype releases
 Name:           sisu
-Version:        1.0.1
+Version:        1.1.0
 Release:        0
 Summary:        Eclipse dependency injection framework
 License:        BSD-3-Clause AND EPL-1.0 AND EPL-2.0

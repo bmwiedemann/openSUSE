@@ -18,7 +18,7 @@
 
 %global reltype releases
 Name:           sisu-extenders
-Version:        1.0.1
+Version:        1.1.0
 Release:        0
 Summary:        Sisu Extenders
 License:        EPL-1.0 AND EPL-2.0
