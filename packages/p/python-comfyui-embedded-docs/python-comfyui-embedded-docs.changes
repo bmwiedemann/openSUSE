@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Aug 29 07:18:06 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.5.11:
+  * 37 new documented nodes: TRELLIS 2 (conditioning, shape,
+    texture and upsample stages plus the VAE decoders), 3D mesh
+    editing (remesh, decimate, unwrap, weld, smooth normals,
+    paint, ambient-occlusion/normal-map/texture baking, render,
+    UV atlas), ByteDance Seedream V3, 2Reference V2 and video
+    enhance, FishAudio text-to-speech, speech-to-text and voice
+    cloning, and Flux video upscale
+  * 431 existing node en.md files refreshed and their
+    translations regenerated for all 12 locales
+  * Nodes with dynamic combo inputs now document their grouped
+    input format, and translated docs use the frontend's own
+    parameter-name translations
+  * Chinese: "sigmas" was mistranslated as "variance"
+
+-------------------------------------------------------------------
 Fri Aug 21 08:51:33 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Initial package (version 0.5.10): embedded Markdown documentation

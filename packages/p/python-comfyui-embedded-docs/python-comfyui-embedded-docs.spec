@@ -16,7 +16,7 @@
 #
 
 Name:           python-comfyui-embedded-docs
-Version:        0.5.10
+Version:        0.5.11
 Release:        0
 Summary:        Embedded documentation for ComfyUI nodes
 License:        GPL-3.0-only
