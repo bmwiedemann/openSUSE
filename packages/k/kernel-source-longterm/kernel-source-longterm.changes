@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Aug 28 10:05:31 CEST 2026 - rfrohl@suse.com
+
+- Linux 6.18.48 (bsc#1258210).
+- inet: frags: strip GSO state from fragments before reassembly
+  (bsc#1258210).
+- commit 65685b9
+
+-------------------------------------------------------------------
 Thu Aug 27 16:22:47 CEST 2026 - rfrohl@suse.com
 
 - Linux 6.18.47 (bsc#1258210).
