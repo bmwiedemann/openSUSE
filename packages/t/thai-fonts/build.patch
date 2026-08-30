@@ -1,8 +1,8 @@
-Index: thaifonts-scalable-0.4.16/Makefile.in
+Index: fonts-tlwg-0.7.4/Makefile.in
 ===================================================================
---- thaifonts-scalable-0.4.16.orig/Makefile.in
-+++ thaifonts-scalable-0.4.16/Makefile.in
-@@ -664,23 +664,6 @@ uninstall-am:
+--- fonts-tlwg-0.7.4.orig/Makefile.in
++++ fonts-tlwg-0.7.4/Makefile.in
+@@ -823,23 +823,6 @@ uninstall-am:
  
  
  @INCLUDE_XFONTSDIR_TRUE@install-data-hook:
