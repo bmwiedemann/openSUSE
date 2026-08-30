@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Aug 13 14:31:03 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * httpcomponents-client-CVE-2026-64607.patch
+    + backport of upstream patch fixing bsc#1273163, CVE-2026-64607:
+      improper release of underlying connection back to connection
+      manager when an invalid or unsupported "Content-Encoding"
+      header value in a response message
+
+-------------------------------------------------------------------
 Thu Nov  7 12:27:13 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Update to version 4.5.14

@@ -1,7 +1,7 @@
 #
 # spec file for package httpcomponents-client
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ Source0:        https://archive.apache.org/dist/httpcomponents/httpclient/source
 Source1:        %{name}-build.tar.xz
 Patch0:         0001-Use-system-copy-of-effective_tld_names.dat.patch
 Patch1:         %{name}-java8compat.patch
+Patch2:         %{name}-CVE-2026-64607.patch
 BuildRequires:  ant
 BuildRequires:  apache-commons-codec
 BuildRequires:  apache-commons-logging
@@ -70,9 +71,7 @@ Group:          Documentation/HTML
 %{summary}.
 
 %prep
-%setup -q -c -a1
-%patch -P 0 -p1
-%patch -P 1 -p1
+%autosetup -c -a1 -p1
 
 # Remove optional build deps not available in openSUSE
 %pom_disable_module httpclient-osgi
