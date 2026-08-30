@@ -7599,4 +7599,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>7.2; bugs: bsc#1012628 bsc#1259453 bsc#1270053 bsc#1271264 bsc#1272261 bsc#1273084</comment>
     <requestid>1371888</requestid>
   </revision>
+  <revision rev="856" vrev="1">
+    <srcmd5>3d8c8da3d1fa1ffa2252d7b9e395228a</srcmd5>
+    <version>7.2.2</version>
+    <time>1788109606</time>
+    <user>dimstar_suse</user>
+    <comment>7.2.2 &amp; 7.2.1 &amp; disable BATMAN_ADV &amp; enable SND_SOC_TAS2783_SDW; bugs: bsc#1012628 bsc#1272239 bsc#1274559 bsc#1276665</comment>
+    <requestid>1374209</requestid>
+  </revision>
 </revisionlist>

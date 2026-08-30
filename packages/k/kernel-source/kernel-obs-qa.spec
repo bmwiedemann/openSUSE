@@ -17,15 +17,15 @@
 # needsrootforbuild
 
 
-%define patchversion 7.2.0
+%define patchversion 7.2.2
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
 
 Name:           kernel-obs-qa
-Version:        7.2.0
+Version:        7.2.2
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g2b1d628
+Release:        <RELEASE>.g93c77bd
 %else
 Release:        0
 %endif
@@ -36,7 +36,7 @@ BuildRequires:  kernel-default
 # kernel-obs-build must be also configured as VMinstall, but is required
 # here as well to avoid that qa and build package build parallel
 %if ! 0%{?qemu_user_space_build}
-BuildRequires:  kernel-obs-build-srchash-2b1d62831e372c454d117a20a6d629665fd2b7d0
+BuildRequires:  kernel-obs-build-srchash-93c77bdd9a1dc19c6c656eac93fc5f263d5fd2dd
 %endif
 BuildRequires:  modutils
 ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64

@@ -17,7 +17,7 @@
 
 
 %define srcversion 7.2
-%define patchversion 7.2.0
+%define patchversion 7.2.2
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -25,9 +25,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,arch-symbols,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           dtb-armv7l
-Version:        7.2.0
+Version:        7.2.2
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g2b1d628
+Release:        <RELEASE>.g93c77bd
 %else
 Release:        0
 %endif

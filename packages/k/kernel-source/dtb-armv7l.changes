@@ -1,4 +1,199 @@
 -------------------------------------------------------------------
+Fri Aug 28 08:55:47 CEST 2026 - jslaby@suse.cz
+
+- Linux 7.2.2 (bsc#1012628).
+- inet: frags: strip GSO state from fragments before reassembly
+  (bsc#1012628 CVE-2026-80590).
+- commit 820247d
+
+-------------------------------------------------------------------
+Thu Aug 27 19:28:59 CEST 2026 - jslaby@suse.cz
+
+- Linux 7.2.1 (bsc#1012628).
+- ptp: vmclock: prevent read-only mappings from becoming writable
+  (bsc#1012628).
+- futex: Fix might_sleep() warning in futex_pivot_pending()
+  (bsc#1012628).
+- Bluetooth: hci_aml: validate firmware segment lengths
+  (bsc#1012628).
+- Bluetooth: MGMT: reject HCI_CMD_SYNC params_len above 255
+  (bsc#1012628).
+- Bluetooth: ISO: zero the sockaddr before returning it in getname
+  (bsc#1012628).
+- Bluetooth: ISO: do not force BT_LISTEN after a failed BIG sync
+  (bsc#1012628).
+- Bluetooth: hci_sync: Fix accept list UAF during suspend
+  (bsc#1012628).
+- Bluetooth: hci_event: validate LE Set CIG Parameters response
+  (bsc#1012628).
+- Bluetooth: hci_event: fix LE list UAF on reset (bsc#1012628).
+- HID: input: read battery capacity from its actual report offset
+  (bsc#1012628).
+- HID: hyperv: validate initial device info bounds (bsc#1012628).
+- HID: uclogic: fix use-after-free of inrange_timer on remove
+  (bsc#1012628).
+- HID: sensor: custom: Fix use-after-free in enable_sensor
+  (bsc#1012628).
+- HID: ft260: fix stack-use-after-return write in I2C read race
+  (bsc#1012628).
+- HID: core: fix number/pointer type confusion on long items
+  (bsc#1012628).
+- HID: rapoo: fix missing hid_is_usb() check (bsc#1012628).
+- HID: nintendo: stop device IO before hid_hw_stop on probe
+  failure (bsc#1012628).
+- HID: nintendo: register input device after capabilities are set
+  (bsc#1012628).
+- HID: nintendo: fix out-of-bounds read in
+  joycon_ctlr_read_handler() (bsc#1012628).
+- HID: huawei: fix missing hid_is_usb() check (bsc#1012628).
+- HID: asus: fix missing hid_is_usb() check (bsc#1012628).
+- net/ionic: avoid OOB TX partner lookup for hwstamp RXQ
+  (bsc#1012628).
+- HID: pidff: fix OOB write when hid->inputs is empty
+  (bsc#1012628).
+- HID: core: fix OOB read of field->usage in hid_set_field()
+  (bsc#1012628).
+- HID: magicmouse: do not keep a stale msc->input if no input
+  is claimed (bsc#1012628).
+- HID: magicmouse: re-enable multitouch after reset-resume
+  (bsc#1012628).
+- HID: magicmouse: prevent unbounded recursion in
+  magicmouse_raw_event() (bsc#1012628).
+- HID: magicmouse: fix battery reporting for Bluetooth Magic
+  Trackpad USB-C (bsc#1012628).
+- nvmet: pci-epf: put CQ ref on create_cq mapping failure
+  (bsc#1012628).
+- nvmet: pci-epf: fix use-after-free in
+  nvmet_pci_epf_exec_iod_work() (bsc#1012628).
+- nvmet-tcp: Do not WARN on remotely-controlled oversized SGL
+  allocations (bsc#1012628).
+- nvmet-tcp: bound SGL data length before allocating command
+  buffers (bsc#1012628).
+- nvmet-fc: fix invalid free in LS IOD error path (bsc#1012628).
+- nvmet-auth: zero the AUTH_RECEIVE response buffer (bsc#1012628).
+- dmaengine: fsl-edma: Add error handling for devm_kasprintf
+  (bsc#1012628).
+- mailbox: mchp-ipc-sbi: Add null check for devm_kasprintf()
+  (bsc#1012628).
+- ipv6: fix use-after-free in ip6_finish_output2() (bsc#1012628).
+- ipv4: reject undersized MTUs in ip_do_fragment() (bsc#1012628).
+- nfc: nci: free destination parameters when closing a connection
+  (bsc#1012628).
+- nfc: nci: fix uninit-value in the RF discover/activated NTF
+  handlers (bsc#1012628).
+- nfc: nci: fix out-of-bounds write in nci_target_auto_activated()
+  (bsc#1012628).
+- nfc: nci: add data_len bound checks to activation parameter
+  extractors (bsc#1012628).
+- nfc: st21nfca: validate ATR_REQ length against the received
+  frame (bsc#1012628).
+- nfc: pn533: purge fragmented skbs during cleanup (bsc#1012628).
+- nfc: llcp: reject PDUs shorter than the LLCP header
+  (bsc#1012628).
+- nfc: llcp: fix OOB read and u8 offset wrap in TLV parsers
+  (bsc#1012628).
+- nfc: llcp: bound the connect_sn TLV walk to the skb
+  (bsc#1012628).
+- nfc: microread: validate target discovery payload lengths
+  (bsc#1012628).
+- nfc: fdp: bound the device-reported read length and fix an
+  skb leak (bsc#1012628).
+- nfc: digital: clamp SENSF_RES length to the destination buffer
+  (bsc#1012628).
+- xfs: restore nofs context unconditionally in xfs_trans_roll
+  (bsc#1012628).
+- xfs: validate attr entry pointer before field access
+  (bsc#1012628).
+- ext4: fix incorrect function call when initializing s_resgid
+  (bsc#1012628).
+- ext4: don't enable DAX on new encrypted files (bsc#1012628).
+- ext4: propagate errors from fast commit range replay
+  (bsc#1012628).
+- ext4: avoid tail write_begin walk for uptodate folios
+  (bsc#1012628).
+- ext4: clear error before retrying inode xattr space fallback
+  (bsc#1012628).
+- nilfs2: reject invalid block index in GC ioctl (bsc#1012628).
+- ext4: stop retrying saturated xattr cache entries (bsc#1012628).
+- kcov: fix data corruption and race conditions on PREEMPT_RT
+  (bsc#1012628).
+- null_blk: fix UBSAN shift-out-of-bounds when zone_size is 0
+  or overflows (bsc#1012628).
+- ocfs2: fix missing metadata reservation for large xattrs
+  (bsc#1012628).
+- io_uring: defer eventfd signaling when queued from a wakeup
+  handler (bsc#1012628).
+- io_uring/uring_cmd: don't skip completion for a synchronous
+  multishot cmd (bsc#1012628).
+- io_uring/rsrc: fix folio size overflow in io_vec_fill_bvec()
+  (bsc#1012628).
+- io_uring/io-wq: fix worker accounting when canceling creation
+  callbacks (bsc#1012628).
+- io_uring/cmd: fix iovec leak when the async cmd is not recycled
+  (bsc#1012628).
+- ALSA: dummy: Check card index validity at probe (bsc#1012628).
+- io_uring/futex: only mark private futex waits as inflight
+  (bsc#1012628).
+- io_uring/futex: don't mark futex wake requests as inflight
+  (bsc#1012628).
+- futex: Fix race on the initial mm->futex.phash.ref allocation
+  (bsc#1012628).
+- futex: Avoid private hash use-after-free on final put
+  (bsc#1012628).
+- futex/pi: Plug private futex exec() race (bsc#1012628).
+- futex: Sanitize and document task_struct::futex::state
+  transitions (bsc#1012628).
+- futex/pi: Reject cross-mm private futex owners (bsc#1012628).
+- nvmet: fix NULL pointer dereference in
+  nvmet_execute_identify_nslist() (bsc#1012628).
+- rndis_host: add overflow check in rndis_rx_fixup()
+  (bsc#1012628).
+- ALSA: scarlett2: Use a private URB for the notification endpoint
+  (bsc#1012628).
+- ALSA: FCP: Use a private URB for the notification endpoint
+  (bsc#1012628).
+- iommu/iommufd: Fix NULL pointer deref in
+  iommufd_ioas_change_process when racing with iopt_map_file_pages
+  (bsc#1012628).
+- iommu/tegra241-cmdqv: Fix CMD_SYNC use-after-free on teardown
+  (bsc#1012628).
+- Bluetooth: RFCOMM: take rfcomm_mutex for the deferred setup
+  accept (bsc#1012628).
+- PCI: host-generic: Fix NULL pointer dereference on 32-bit CAM
+  systems (bsc#1012628).
+- commit 4fb6c76
+
+-------------------------------------------------------------------
+Tue Aug 25 22:41:04 CEST 2026 - rbm@suse.com
+
+- kernel-source: Recommend libdw-devel (bsc#1276665)
+- commit b0e41fa
+
+-------------------------------------------------------------------
+Tue Aug 25 11:58:59 CEST 2026 - jslaby@suse.cz
+
+- Refresh
+  patches.suse/x86-mm-Fix-and-document-DEBUG_PAGEALLOC.patch.
+- Refresh
+  patches.suse/x86-mm-pat-Don-t-gate-cpa_lock-on-debug_pagealloc_enabled.patch.
+- Refresh
+  patches.suse/x86-mm-pat-Take-cpa_lock-around-large-page-collapse.patch.
+  Update upstream status by:
+  ./scripts/series_sort -u
+- commit 6c4906b
+
+-------------------------------------------------------------------
+Tue Aug 25 11:55:13 CEST 2026 - jslaby@suse.cz
+
+- Refresh
+  patches.suse/md-raid1-create-serial-pool-adding-rdev-to-array-wit.patch.
+- Refresh
+  patches.suse/soundwire-dmi-quirks-Disable-ghost-Realtek-on-Asus-Z.patch.
+  Update upstream status -- move md-raid1 to the sorted section and run:
+  ./scripts/series_sort -u
+- commit 1f86c97
+
+-------------------------------------------------------------------
 Mon Aug 17 13:14:40 CEST 2026 - pfalcato@suse.de
 
 - update to 7.2 final
@@ -34,6 +229,18 @@ Wed Aug 12 12:06:05 CEST 2026 - jslaby@suse.cz
   (bsc#1012628 bsc#1259453).
   Add a reference.
 - commit 067e5f8
+
+-------------------------------------------------------------------
+Tue Aug 11 10:57:44 CEST 2026 - jslaby@suse.cz
+
+- Update config files. Set SND_SOC_TAS2783_SDW=m (bsc#1274559)
+- commit e6536c5
+
+-------------------------------------------------------------------
+Tue Aug 11 06:19:34 CEST 2026 - jslaby@suse.cz
+
+- Update config files. Disable BATMAN_ADV (bsc#1272239)
+- commit 7e90304
 
 -------------------------------------------------------------------
 Mon Aug 10 11:26:31 CEST 2026 - pfalcato@suse.de
