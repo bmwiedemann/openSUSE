@@ -56,4 +56,12 @@
     <comment>- Add macro that checks if a certain package is the most recent one.</comment>
     <requestid>1307231</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>dcb400bcde195e2f6c64ae2e9953a426</srcmd5>
+    <version>1.0</version>
+    <time>1788109592</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1374595</requestid>
+  </revision>
 </revisionlist>

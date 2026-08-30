@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 27 15:51:45 UTC 2026 - Giuliano Belinassi <giuliano.belinassi@suse.com>
+
+- Add -flive-patching=inline-clone to avoid untraceable inter-procedural
+  optimizations (bsc#1277247).
+
+-------------------------------------------------------------------
 Thu Sep 25 22:21:54 UTC 2025 - Giuliano Belinassi <giuliano.belinassi@suse.com>
 
 - Add macro that checks if a certain package is the most recent one.
