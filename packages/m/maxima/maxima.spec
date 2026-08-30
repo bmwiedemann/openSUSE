@@ -46,6 +46,8 @@ Source1:        maxima.rpmlintrc
 Source2:        README.SUSE.packaging
 # PATCH-FIX-UPSTREAM maxima-python3.patch badshah400@gmail.com -- Use python3 instead of python(2) when importing vtk modules and building help; this allows maxima to be built with python3 instead of python2.
 Patch0:         maxima-python3.patch
+# PATCH-FIX-UPSTREAM maxima-clisp-fail-on-error.patch -- fail the build instead of installing an empty maxima.mem when clisp saveinitmem dies, e.g. https://gitlab.com/gnu-clisp/clisp/-/work_items/59
+Patch1:         maxima-clisp-fail-on-error.patch
 BuildRequires:  bash-completion
 BuildRequires:  fdupes
 BuildRequires:  gzip
@@ -188,9 +190,9 @@ sed -Ei '1{\@^#!/bin/sh@d}' %{buildroot}%{_datadir}/maxima/%{version}/share/tran
 rm -f %{buildroot}%{_infodir}/dir
 # set executable rights for example scripts
 chmod +x %{buildroot}%{_datadir}/%{name}/%{version}/share/contrib/lurkmathml/mathmltest
-# compress manpages
-gzip %{buildroot}%{_mandir}/man1/maxima.1
-gzip %{buildroot}%{_mandir}/*/man1/maxima.1
+# compress manpages, -n keeps the mtime out of the gzip header
+gzip -n9 %{buildroot}%{_mandir}/man1/maxima.1
+gzip -n9 %{buildroot}%{_mandir}/*/man1/maxima.1
 # reduce space, create symlinks
 %fdupes -s %{buildroot}/%{_datadir}/%{name}/%{version}/share %{buildroot}/%{_datadir}/%{name}/%{version}/src
 

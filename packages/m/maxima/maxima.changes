@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Aug 23 05:44:53 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Compress the manpages with `gzip -n9` so that the build time does
+  not end up in the gzip header; this makes the maxima package
+  reproducible.
+- Add maxima-clisp-fail-on-error.patch: clisp exits 0 even when
+  ext:saveinitmem fails, so an empty binary-clisp/maxima.mem was
+  silently packaged (seen past 2036, where saveinitmem dies with
+  "not a 32-bit integer",
+  https://gitlab.com/gnu-clisp/clisp/-/work_items/59). Check that the
+  image is non-empty and fail the build otherwise.
+
+-------------------------------------------------------------------
 Tue Aug 18 16:58:14 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.50.0:

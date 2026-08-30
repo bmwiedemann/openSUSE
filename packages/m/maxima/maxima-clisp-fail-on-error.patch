@@ -1,0 +1,34 @@
+From: Bernhard M. Wiedemann <bwiedemann@suse.de>
+Date: 2026-08-23
+Subject: [PATCH] Fail the build when clisp cannot save maxima.mem
+
+clisp exits 0 even when ext:saveinitmem bails out, leaving a zero-length
+binary-clisp/maxima.mem behind. `make` happily installed and packaged that
+empty file, so the breakage only surfaced at runtime.
+
+Seen with clisp 2.49.95+ when the clock is past 2036, where saveinitmem dies
+with "*** - not a 32-bit integer: 4504185493" (clisp stores the CL universal
+time, 1900 epoch, in 32 bits) - https://gitlab.com/gnu-clisp/clisp/-/work_items/59
+
+Checking that the image is non-empty turns that into a build failure.
+
+--- maxima-5.50.0.orig/src/Makefile.am	2026-08-23 07:35:01.956928005 +0200
++++ maxima-5.50.0/src/Makefile.am	2026-08-23 07:35:01.973291090 +0200
+@@ -177,6 +177,7 @@
+ 	$(EXECUTECLISP) clisp-command.lisp
+ 	echo '$(LOADDEFSYSTEM) $(DEFSYSTEMLOAD) (ext:saveinitmem "$@" :init-function (function cl-user::run) $(clispexeflag))' > clisp-command.lisp
+ 	$(EXECUTECLISP) clisp-command.lisp
++	test -s "$@" || { echo "$(CLISP_NAME) failed to save $@" >&2; exit 1; }
+ 	rm clisp-command.lisp
+ 
+ clisp-depends.mk: maxima.system Makefile *.lisp
+--- maxima-5.50.0.orig/src/Makefile.in	2026-08-23 07:35:01.958742765 +0200
++++ maxima-5.50.0/src/Makefile.in	2026-08-23 07:35:01.974197166 +0200
+@@ -1275,6 +1275,7 @@
+ @CLISP_TRUE@	$(EXECUTECLISP) clisp-command.lisp
+ @CLISP_TRUE@	echo '$(LOADDEFSYSTEM) $(DEFSYSTEMLOAD) (ext:saveinitmem "$@" :init-function (function cl-user::run) $(clispexeflag))' > clisp-command.lisp
+ @CLISP_TRUE@	$(EXECUTECLISP) clisp-command.lisp
++@CLISP_TRUE@	test -s "$@" || { echo "$(CLISP_NAME) failed to save $@" >&2; exit 1; }
+ @CLISP_TRUE@	rm clisp-command.lisp
+ 
+ @CLISP_TRUE@clisp-depends.mk: maxima.system Makefile *.lisp
