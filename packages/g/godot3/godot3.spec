@@ -30,7 +30,7 @@
 %define version_text This is branch 3.x with version specific file locations
 
 Name:           %{original_name}%{branch}
-Version:        3.6.2
+Version:        3.6.3
 Release:        0
 Summary:        Cross-Platform Game Engine with an Integrated Editor
 License:        MIT
@@ -171,11 +171,11 @@ Provides:       bundled(embree) = 3.13.5
 Provides:       bundled(bullet) = 3.25
 # see comments for freetype2, libpng and zlib Factory BuildRequires
 Provides:       bundled(freetype2)
-Provides:       bundled(libpng) = 1.6.43
+Provides:       bundled(libpng) = 1.6.58
 Provides:       bundled(libzstd) = 1.5.5
 Provides:       bundled(zlib) = 1.3.1
 %if 0%{?sle_version} < 150200
-Provides:       bundled(mbedtls) = 3.6.5
+Provides:       bundled(mbedtls) = 3.6.7
 %endif
 %if !0%{?is_opensuse}
 # SLES seems not to have miniupnpc and wslay

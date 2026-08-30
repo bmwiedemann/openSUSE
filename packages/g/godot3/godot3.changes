@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug 25 12:00:00 UTC 2026 - cunix@mail.de
+
+- Update to 3.6.3
+  * Process TTS callback on the main thread to avoid speech-dispatcher deadlock
+  * Always use Godot's OS as entropy source with bundled mbedtls
+  * Make physics interpolation compatible with separate-thread rendering
+  * and more: https://godotengine.github.io/godot-interactive-changelog/#3.6.3
+
+-------------------------------------------------------------------
 Tue Jun 23 21:29:44 UTC 2026 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Require mbedtls-devel < 4 since newer versions are not supported
