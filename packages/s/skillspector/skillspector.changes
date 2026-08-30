@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun Aug 30 08:09:19 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.11.0:
+  * Analyse bundled execution surfaces: hooks/hooks.json and
+    .claude/settings*.json now yield BH1 (hooks can execute), BH2 (proven
+    remote transfer of sensitive content) and BH3 (broad or ignored
+    permission modes) findings
+  * Resolve exact npm versions from package-lock.json and
+    npm-shrinkwrap.json (formats 1-3) instead of manifest ranges
+  * Add SKILLSPECTOR_TEMPERATURE and SKILLSPECTOR_SEED sampling controls,
+    keeping provider defaults when unset
+  * Traverse path ancestors with O_PATH so restricted sandboxes need only
+    search permission on them
+  * Drop the nominal MP3/P6 false positives without weakening directive
+    detection
+  * Resolve the model default from the provider that actually builds the
+    chat model on the OpenAI fallback path
+- New dependencies python-pywhatwgurl and python-regex for the
+  bundled-execution-surface analyzer; upstream pins both exactly, floors
+  only here because Factory already ships newer
+- Re-select test_dense_directory_discovery_and_cache_complete_with_...:
+  the O_PATH traversal took it from 19.7 s to 1.7 s, back inside its own
+  5 s ceiling
+- Deselect the four test_bundled_execution_surface_acceptance.py tests
+  that shell out to /usr/bin/skillspector, which only an editable dev
+  install provides, and the malformed_schema case of
+  test_discovery_parser_bounds_and_ledger_table, where Factory's
+  pywhatwgurl 0.1.2 parses two invalid punycode hosts that upstream's
+  pinned 0.1.1 rejects
+
+-------------------------------------------------------------------
 Thu Aug 27 06:57:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.10.0:

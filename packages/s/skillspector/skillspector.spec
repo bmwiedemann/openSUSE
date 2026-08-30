@@ -21,7 +21,7 @@
 # %%{primary_python} so it stays correct as the primary interpreter moves.
 %define pythons %{primary_python}
 Name:           skillspector
-Version:        2.10.0
+Version:        2.11.0
 Release:        0
 Summary:        Security scanner for AI agent skills
 License:        Apache-2.0
@@ -50,6 +50,12 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pydantic >= 2.11.7}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
+# New in 2.11.0 (bundled_execution_surface analyzer): WHATWG URL parsing and
+# \p{...} classes stdlib re lacks. Upstream pins both exactly; Factory already
+# ships newer, so floors only -- an `=` is unresolvable the moment either bumps.
+# The in-tree BiDi check is additive, so it stays correct on pywhatwgurl > 0.1.1.
+BuildRequires:  %{python_module pywhatwgurl >= 0.1.1}
+BuildRequires:  %{python_module regex >= 2026.5.9}
 BuildRequires:  %{python_module rich >= 14.0.0}
 BuildRequires:  %{python_module typer >= 0.16.0}
 BuildRequires:  %{python_module wheel}
@@ -69,6 +75,8 @@ Requires:       %{primary_python}-langsmith >= 0.7.30
 Requires:       %{primary_python}-openai >= 2.25.0
 Requires:       %{primary_python}-packaging >= 24.0
 Requires:       %{primary_python}-pydantic >= 2.11.7
+Requires:       %{primary_python}-pywhatwgurl >= 0.1.1
+Requires:       %{primary_python}-regex >= 2026.5.9
 Requires:       %{primary_python}-rich >= 14.0.0
 # Upstream caps typer < 0.24 to avoid a click clash with semgrep; that cap is
 # environment-specific (Factory ships typer 0.27), so only the floor is
@@ -123,50 +131,52 @@ cp -a .skillspector-baseline.example.yaml skillspector-baseline.example.yaml
 # test_input_handler_ssrf.py plus three equivalents added upstream in
 # test_input_handler.py.
 #
-# test_mcp_stdio_initialize_registers_scan_skill re-execs "python -m
-# skillspector.cli mcp" with PYTHONPATH *replaced* by the source src/ directory.
-# The child therefore imports the module from the source tree, which carries no
-# .dist-info, and dies with "PackageNotFoundError: No package metadata was found
-# for skillspector" before the server ever speaks; the harness assumes an
-# editable dev install, while we install into the buildroot. Its assertion --
-# that the server registers the scan_skill tool -- is covered in-process by
-# test_build_server_registers_scan_skill, which does run here.
+# Five tests need a console script installed next to sys.executable, i.e.
+# /usr/bin/skillspector, which only an editable dev install provides -- we
+# install into the buildroot, so they die before the CLI ever runs:
+#   * test_mcp_stdio_initialize_registers_scan_skill re-execs "python -m
+#     skillspector.cli mcp" with PYTHONPATH replaced by the source src/, which
+#     carries no .dist-info, so it dies with PackageNotFoundError. Its
+#     assertion is covered in-process by
+#     test_build_server_registers_scan_skill.
+#   * the four in test_bundled_execution_surface_acceptance.py resolve
+#     Path(sys.executable).with_name("skillspector") and get
+#     FileNotFoundError. The remaining eight tests in that file drive the same
+#     analyzer in-process and do run.
 #
-# Four tests added in 2.10.0 fail on aarch64 because this release's analysis
-# is slower per artifact than the ceilings those tests assume. Each was
-# re-run undeselected in this chroot on an otherwise idle machine, so these
-# are deterministic results, not contention: the timings below are pytest
-# --durations figures from that run.
+# test_discovery_parser_bounds_and_ledger_table[malformed_schema] expects the
+# invalid punycode hosts xn--a.com (decodes to U+0080) and xn--drf7t.example
+# (leading combining mark) to be rejected by domain-to-ASCII. Upstream pins
+# pywhatwgurl==0.1.1, which rejects both; Factory ships 0.1.2, which parses
+# them, so two extra BH1 findings appear. That is over-reporting on a
+# malformed host, not missed detection, and the other four cases of this
+# parametrization still run.
 #
-# Three of them assert that an artifact was inspected to completion, but the
-# scanner enforces MAX_STATIC_ANALYSIS_SECONDS_PER_ARTIFACT = 30.0 s per
-# artifact; when analysis reaches that budget the inspection ledger records
+# Three tests assert an artifact was inspected to completion, but the scanner
+# enforces MAX_STATIC_ANALYSIS_SECONDS_PER_ARTIFACT = 30.0 s per artifact; on
+# aarch64 each one reaches that budget, so the inspection ledger records
 # outcome=partial / reason_code=runtime_limit and the completeness assertion
 # can no longer hold. That is the fail-closed bound doing its job, not a
-# regression in what the scanner detects:
-#   * test_five_megabyte_... (5 MB artifact) -- 30.07 s, pinned exactly at the
-#     budget; observed_seconds 30.047 against limit_seconds 30.0. The memory
-#     property this test exists for still holds (peak 2.1 MiB against its own
-#     64 MiB ceiling); only its "completed" assertion fails.
-#   * test_rd04_... and test_nine_case_... (~1.26 MB fixture) -- 33 s and 34 s.
-#     The first sees only 2 of its 4 window markers, the second reports
-#     is_complete=False; both are the same truncation.
-# Note test_cross_window_separator_pair_across_public_surfaces (~512 KB) is
-# NOT deselected: it was verified to pass here, so it stays in the suite.
-#
-# The fourth, test_dense_directory_discovery_..., asserts elapsed < 5.0 s to
-# walk and cache 256 one-byte files, and measures 19.73 s -- about 77 ms per
-# one-byte file. 2.10.0 moved nested-artifact inspection, artifact
-# classification and reference resolution into that path, so the ceiling does
-# not hold on this architecture; upstream CI does not see it.
+# regression in what the scanner detects. Re-measured undeselected in this
+# chroot on an idle host, pytest --durations:
+#   * test_five_megabyte_... (5 MB artifact) -- 30.03 s, pinned exactly at the
+#     budget. The memory property this test exists for still holds (peak
+#     2.1 MiB against its own 64 MiB ceiling); only "completed" fails.
+#   * test_rd04_... 31.55 s and test_nine_case_... 31.70 s (~1.26 MB fixture)
+#     -- the same truncation.
+# Note test_cross_window_separator_pair_across_public_surfaces (~512 KB, 84 s)
+# is NOT deselected: it asserts no completeness bound and passes here.
+# test_dense_directory_discovery_... is no longer deselected either -- 2.11.0's
+# O_PATH ancestor traversal took it from 19.73 s to 1.68 s against its own
+# 5.0 s ceiling.
 #
 # Deselecting keeps the build gate meaningful without hiding a detection
 # failure: the same resource bounds are asserted deterministically by the
 # tests that monkeypatch the budget rather than racing it (e.g.
 # test_static_runtime_limit_is_reported_as_partial,
 # test_static_output_limit_is_reported_as_partial, and the build_context
-# deadline tests), and those do run. Worth reporting upstream.
-%pytest --deselect tests/unit/test_mcp_server.py::test_mcp_stdio_initialize_registers_scan_skill --deselect tests/unit/test_input_handler_ssrf.py::TestGitCloneSSRF::test_github_url_allowed --deselect tests/unit/test_input_handler_ssrf.py::TestGitCloneSSRF::test_gitlab_url_allowed --deselect tests/unit/test_input_handler_ssrf.py::TestDownloadSSRF::test_raw_githubusercontent_allowed --deselect tests/unit/test_input_handler_ssrf.py::TestDownloadSSRF::test_download_does_not_follow_redirects --deselect tests/unit/test_input_handler.py::test_validate_url_host_scp_extracts_github --deselect tests/unit/test_input_handler.py::test_scp_valid_host_clones --deselect tests/unit/test_input_handler.py::test_https_url_unchanged --deselect tests/nodes/test_security_end_to_end.py::test_rd04_large_file_pair_detects_start_boundary_and_end --deselect tests/nodes/test_security_end_to_end.py::test_nine_case_contract_across_public_surfaces --deselect tests/nodes/test_security_remediation.py::test_five_megabyte_normalized_static_scan_stays_below_memory_ceiling --deselect tests/nodes/test_build_context.py::test_dense_directory_discovery_and_cache_complete_with_modest_real_elapsed_time
+# deadline tests), and those do run.
+%pytest --deselect tests/unit/test_mcp_server.py::test_mcp_stdio_initialize_registers_scan_skill --deselect tests/unit/test_input_handler_ssrf.py::TestGitCloneSSRF::test_github_url_allowed --deselect tests/unit/test_input_handler_ssrf.py::TestGitCloneSSRF::test_gitlab_url_allowed --deselect tests/unit/test_input_handler_ssrf.py::TestDownloadSSRF::test_raw_githubusercontent_allowed --deselect tests/unit/test_input_handler_ssrf.py::TestDownloadSSRF::test_download_does_not_follow_redirects --deselect tests/unit/test_input_handler.py::test_validate_url_host_scp_extracts_github --deselect tests/unit/test_input_handler.py::test_scp_valid_host_clones --deselect tests/unit/test_input_handler.py::test_https_url_unchanged --deselect "tests/nodes/analyzers/test_bundled_execution_surface.py::test_discovery_parser_bounds_and_ledger_table[malformed_schema]" --deselect tests/test_bundled_execution_surface_acceptance.py::test_public_cli_exit_contract --deselect tests/test_bundled_execution_surface_acceptance.py::test_recursive_single_child_routes_execution_surfaces_from_child_root --deselect tests/test_bundled_execution_surface_acceptance.py::test_cli_fail_on_incomplete_is_opt_in --deselect tests/nodes/test_security_end_to_end.py::test_rd04_large_file_pair_detects_start_boundary_and_end --deselect tests/nodes/test_security_end_to_end.py::test_nine_case_contract_across_public_surfaces --deselect tests/nodes/test_security_remediation.py::test_five_megabyte_normalized_static_scan_stays_below_memory_ceiling
 
 %files
 %license LICENSE

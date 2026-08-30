@@ -127,4 +127,23 @@ The rest of the offline unit suite runs at build time; rpmlint is unchanged
 from 2.9.6 (0 errors, 0 badness).</comment>
     <requestid>1373934</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f6b23812b16f8880fc55c472bb13aaa5</srcmd5>
+    <version>2.11.0</version>
+    <time>1788109702</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2.11.0
+
+Bundled execution-surface analysis (BH1-BH3), npm lockfile version
+resolution, LLM sampling controls, O_PATH ancestor traversal.
+
+New deps python-pywhatwgurl and python-regex; floors only, upstream pins
+both exactly and Factory already ships newer.
+
+Deselect four acceptance tests that shell out to /usr/bin/skillspector
+(editable dev install only) and the malformed_schema case, where Factory's
+pywhatwgurl 0.1.2 parses two invalid punycode hosts upstream's pinned
+0.1.1 rejects. test_dense_directory_... re-selected: 19.7 s -&gt; 1.7 s.</comment>
+    <requestid>1374666</requestid>
+  </revision>
 </revisionlist>
