@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 26 13:26:36 UTC 2026 - Robert Frohl <rfrohl@suse.com>
+
+- Build exclusively for x86_64 and aarch64 to allow addition to Leap 16.x
+
+-------------------------------------------------------------------
 Wed Dec 25 20:03:47 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
 
 - initial packaging version 20241211

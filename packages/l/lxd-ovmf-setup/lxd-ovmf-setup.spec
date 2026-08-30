@@ -1,7 +1,7 @@
 #
 # spec file for package lxd-ovmf-setup
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,6 +14,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %define ovmf_suse_dir %{_datadir}/qemu
 
@@ -31,14 +32,15 @@ Group:          Development/Libraries/Other
 BuildArch:      noarch
 BuildRequires:  qemu-ovmf-x86_64
 BuildRequires:  qemu-uefi-aarch64
+ExclusiveArch:  aarch64 x86_64
 
 %description
 Provides the default links for OVMF
 
 %package x86_64
-Summary:  Symlink package for OVMF x86_64
-Group:    Development/Libraries/Other
-Requires: qemu-ovmf-x86_64
+Summary:        Symlink package for OVMF x86_64
+Group:          Development/Libraries/Other
+Requires:       qemu-ovmf-x86_64
 
 %description x86_64
 Provides the default links for OVMF
@@ -46,9 +48,9 @@ for software which doesn't use the QEMU firmware files
 such as LXD and Incus
 
 %package aarch64
-Summary:  Symlink package for OVMF aarch64
-Group:    Development/Libraries/Other
-Requires: qemu-uefi-aarch64
+Summary:        Symlink package for OVMF aarch64
+Group:          Development/Libraries/Other
+Requires:       qemu-uefi-aarch64
 
 %description aarch64
 Provides the default links for OVMF
@@ -75,7 +77,6 @@ ln -s %{ovmf_suse_dir}/aavmf-aarch64-code.bin %{buildroot}%{lxd_ovmf_dir}/AAVMF_
 ln -s %{ovmf_suse_dir}/aavmf-aarch64-vars.bin %{buildroot}%{lxd_ovmf_dir}/AAVMF_VARS.fd
 ln -s %{ovmf_suse_dir}/aavmf-aarch64-ms-code.bin %{buildroot}%{lxd_ovmf_dir}/AAVMF_CODE.ms.fd
 ln -s %{ovmf_suse_dir}/aavmf-aarch64-ms-vars.bin %{buildroot}%{lxd_ovmf_dir}/AAVMF_VARS.ms.fd
-
 
 %files x86_64
 %dir %{lxd_dir}
