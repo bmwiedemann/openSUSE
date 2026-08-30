@@ -1,0 +1,61 @@
+From: Bernhard M. Wiedemann <bwiedemann@suse.de>
+Date: 2026-08-19
+Subject: Make rivet-build output independent of the build machine
+
+Split plugin sources into a fixed number of buckets
+instead of one bucket per CPU core,
+so that the code compiled into each plugin .so
+does not vary with the core count of the build machine.
+Parallelism is unaffected, because it comes from make -j.
+
+Also give the concatenated temporary .cc files deterministic names,
+because these names end up in generated symbol names
+(e.g. _GLOBAL__sub_I_tmp.EbeVPlcG.cc.cold) and in debug info.
+
+This patch was done while working on reproducible builds for openSUSE.
+
+--- a/bin/rivet-build.in	2026-08-19 12:10:07.135116702 +0200
++++ b/bin/rivet-build.in	2026-08-19 12:10:25.434788951 +0200
+@@ -75,7 +75,9 @@
+ ## Remove options
+ shift $((OPTIND-1))
+ 
+-if [[ -n "$RIVET_BUILD_ALLCAT" ]]; then num_jobs=1; fi
++## Fixed bucket count, so the built library does not depend on the core count
++let max_buckets=16
++if [[ -n "$RIVET_BUILD_ALLCAT" ]]; then num_jobs=1; max_buckets=1; fi
+ 
+ ## Check num_jobs is a number
+ if [[ ! $num_jobs -eq $num_jobs ]]; then
+@@ -228,7 +230,7 @@
+ ##################
+ ## Assemble and run build machinery
+ 
+-## Split sources into buckets, one for each core
++## Split sources into buckets
+ let idx=1
+ sources=""
+ for src in "$@"
+@@ -239,7 +241,7 @@
+         if [[ -n $RIVET_BUILD_NOCAT ]]; then
+ 		    let idx=idx+1
+         else
+-            let idx=(idx%$num_jobs)+1
++            let idx=(idx%$max_buckets)+1
+         fi
+ 	else
+ 		if [[ ${src:0:1} == "-" ]]; then
+@@ -262,10 +264,9 @@
+ ## Loop over buckets
+ for idx in $(seq 1 $num_buckets); do
+ 
+-	## DO NOT SIMPLIFY, the OS X mktemp can't deal with suffixes directly
+-	tmpfile="$(mktemp tmp.XXXXXXXX)"
+-	mv "$tmpfile" "$tmpfile.cc"
+-	tmpfile="$tmpfile.cc"
++	## Deterministic name, so generated symbol names are reproducible
++	tmpfile="tmp.$(basename "$libname" .so).$idx.cc"
++	: > "$tmpfile"
+ 
+     ## Concatenate the analysis codes into a single .cc, with separator lines to fool the preprocessor!
+ 	for i in $(echo ${buckets[$idx]}); do #< find the real way to do this!

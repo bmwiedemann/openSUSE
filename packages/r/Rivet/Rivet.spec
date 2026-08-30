@@ -27,6 +27,8 @@ Source:         https://www.hepforge.org/archive/rivet/%{name}-%{version}.tar.bz
 Patch0:         sover.diff
 # PATCH-FEATURE-OPENSUSE Rivet-disable-testCmdLine.patch badshah400@gmail.com -- Disable an outdated and failing test
 Patch1:         Rivet-disable-testCmdLine.patch
+# PATCH-FIX-UPSTREAM Rivet-reproducible-plugin-build.patch bwiedemann@suse.de -- Make plugin .so builds independent of CPU count and tmp file names
+Patch2:         Rivet-reproducible-plugin-build.patch
 BuildRequires:  HepMC-devel >= 3.2
 BuildRequires:  YODA-devel >= 2.0
 BuildRequires:  bash-completion

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 19 10:11:14 UTC 2026 - Bernhard M. Wiedemann <bwiedemann@suse.de>
+
+- Add Rivet-reproducible-plugin-build.patch to make plugin
+  libraries build reproducibly independent of CPU count
+  and temp file names (boo#1102408)
+
+-------------------------------------------------------------------
 Sun Nov 16 08:08:39 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 4.1.2:
