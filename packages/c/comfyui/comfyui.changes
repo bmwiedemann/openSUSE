@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Aug 30 08:06:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.34.2:
+  * Remux HEVC into mp4/mov as hvc1, so Apple players accept the
+    video Save Video writes
+  * API nodes: added Google Omni 1.1
+- Changes in 0.34.1:
+  * API nodes only: added WAN3-Prime and the Recraft V4 styles,
+    dropped the Google Veo 2 node and the retiring Veo 3.0 models
+- Raise the python-comfyui-workflow-templates floor to >= 0.11.50,
+  following upstream; still a floor, not requirements.txt's ==
+
+-------------------------------------------------------------------
 Thu Aug 27 06:17:01 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.34.0:

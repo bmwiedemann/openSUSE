@@ -184,4 +184,21 @@ Built locally for openSUSE_Tumbleweed/aarch64, rpmlint unchanged
 from the previous version.</comment>
     <requestid>1373929</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>95271649a728bbfe1bbfa2e2a68affd6</srcmd5>
+    <version>0.34.2</version>
+    <time>1788109703</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.34.2
+
+- 0.34.2: remux HEVC into mp4/mov as hvc1 so Apple players accept what
+  Save Video writes; API nodes gained Google Omni 1.1
+- 0.34.1: API nodes only (WAN3-Prime, Recraft V4 styles, Google Veo 2
+  node dropped)
+- python-comfyui-workflow-templates floor raised to &gt;= 0.11.50,
+  following upstream. Kept a floor, not the == requirements.txt writes:
+  exact pins on the comfy* packages previously made comfyui
+  uninstallable in Factory whenever one of them was updated alone.</comment>
+    <requestid>1374668</requestid>
+  </revision>
 </revisionlist>

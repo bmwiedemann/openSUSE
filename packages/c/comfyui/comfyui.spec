@@ -20,7 +20,7 @@
 # Follow %%{primary_python} so the interpreter tracks the distro primary.
 %define pythons %{primary_python}
 Name:           comfyui
-Version:        0.34.0
+Version:        0.34.2
 Release:        0
 Summary:        Modular node-graph engine for local AI content creation
 License:        GPL-3.0-only
@@ -70,7 +70,7 @@ Requires:       %{primary_python}-comfyui-embedded-docs >= 0.5.10
 # GHSA-2gr5-vw2p-2hcf, GHSA-j6xv-rx8r-mh6j and GHSA-8xxc-66vh-2pf3. Do not
 # lower it to whatever upstream's requirements.txt happens to name.
 Requires:       %{primary_python}-comfyui-frontend-package >= 1.50.6
-Requires:       %{primary_python}-comfyui-workflow-templates >= 0.11.48
+Requires:       %{primary_python}-comfyui-workflow-templates >= 0.11.50
 Requires:       %{primary_python}-einops
 Requires:       %{primary_python}-filelock
 Requires:       %{primary_python}-numpy >= 1.25.0
