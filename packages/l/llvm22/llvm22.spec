@@ -436,6 +436,8 @@ Patch30:        bolt-link-shared-library.patch
 Patch31:        clang-riscv-triple.patch
 # PATCH-FIX-UPSTREAM Enable build of bolt's hugify runtime on riscv64.
 Patch32:        bolt-riscv-build-hugify-runtime.patch
+# PATCH-FIX-UPSTREAM Use MapVector for deterministic iteration order
+Patch33:        https://github.com/llvm/llvm-project/commit/965f9d87adb0a7376454374fbc140ab69bd796a9.patch#/llvm-deterministic-loopunroll.patch
 BuildRequires:  %{python_pkg}-base >= 3.8
 BuildRequires:  binutils-devel >= 2.21.90
 BuildRequires:  cmake >= 3.13.4
@@ -897,6 +899,7 @@ rm -r cross-project-tests flang flang-rt libclc libsycl llvm-libgcc mlir
 %patch -P 25 -p1
 %patch -P 28 -p1
 %patch -P 30 -p1
+%patch -P 33 -p1
 
 # clang
 %patch -P 2

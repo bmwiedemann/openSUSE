@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug 28 08:20:40 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add llvm-deterministic-loopunroll.patch for reproducible builds.
+
+-------------------------------------------------------------------
 Sun Aug 23 13:52:04 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Remove soft limit on open files. Depending on the number of jobs,
