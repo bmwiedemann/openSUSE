@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Sun Aug 30 06:43:33 UTC 2026 - Axel Braun <axel.braun@gmx.de>
+
+- version 1.8.3
+  * Security fixes, see https://blog.apdu.fr/posts/2026/08/new-version-of-libccid-183/
+  * Add support of
+      Broadcom Corp 58200 0x5884
+      Broadcom Corp 58200 0x5885
+      Broadcom Corp 58200 0x5886
+      Broadcom Corp 58200 0x5887
+      Circle CIR135 ICC
+      DigiFlow LLP. KAZTOKEN
+      HID Global Crescendo NFC Reader
+      HID Global OMNIKEY Plug
+      HID Global OMNIKEY SE Plug
+      Neowave LinkeoC-PRO
+      Swissbit iShield Key 2 Pro
+  * macOS: provide a sample script to build the driver with meson
+  * fix some minor issues found by an AI tool
+  * Some other minor improvements
+
+- version 1.8.2
+  * Fix initialisation of composite devices (like Yubico tokens)
+  * Correctly close the slots of a multi-slots reader (serial)
+
+- version 1.8.1
+  * Correctly close the slots of a multi-slots reader
+  * Fix 3 minor issues "Found by AISLE in partnership with Red Hat"
+  * Some other minor improvements
+ 
+- version 1.8.0
+  * Add support of
+      GLSolutions NM61 PC/SC
+      Identiv uTrust FIDO2 Security Key
+      Kensington VeriMark NFC+ USB-C Security Key
+      MARX CryptoTech LP Tokey 3 FIDO
+      mCore Contact-Reader
+      mCore Contactless-Reader
+      mCore DualSlot-Reader
+      Pol Henarejos Pico Fido
+      Pol Henarejos Pico HSM
+      Pol Henarejos Pico OpenPGP
+      Richmond Technologies CO. LLC AEGIS PRO4 Smart Card Reader
+      SCR Prime
+  * Remove the limitation to 16 readers
+  * udev: Update rules file to comply with systemd documentation (and fix permissions issue)
+  * meson: install serial config file in correct dir
+  * Remove support of autotools
+  * Fix crash in multi slots readers code
+  * Fix some race conditions
+  * Some other minor improvements
+ 
+-------------------------------------------------------------------
 Fri Apr 24 12:25:29 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.7.1:
