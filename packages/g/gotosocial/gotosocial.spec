@@ -36,7 +36,8 @@ BuildRequires:  rsync
 BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
 BuildRequires:  yarn
-BuildRequires:  golang(API) >= 1.25.0
+# BuildRequires:  golang(API) >= 1.25.0
+BuildRequires:  go1.26
 BuildRequires:  pkgconfig(systemd)
 %{?systemd_ordering}
 %sysusers_requires

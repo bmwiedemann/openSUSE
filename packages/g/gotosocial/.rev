@@ -147,4 +147,12 @@
     <comment>- Update to version 0.22.1 (forwarded request 1366938 from fl4nn)</comment>
     <requestid>1366979</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>9b3e895dd08bcc11e0155e012679cdeb</srcmd5>
+    <version>0.22.1</version>
+    <time>1788109710</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1374691</requestid>
+  </revision>
 </revisionlist>
