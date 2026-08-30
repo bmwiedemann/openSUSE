@@ -923,4 +923,52 @@
     <comment></comment>
     <requestid>1366552</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>eaf8229c8dab3d7353c47cfff4a399df</srcmd5>
+    <version>0.24.15</version>
+    <time>1788109724</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 0.24.15
+  * Changed mpd-conf.patch
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.24.15/NEWS
+  * protocol: fixed crash on &quot;sticker delete&quot; and &quot;sticker find&quot;
+  * database: upnp: fixed crash bug
+  * input
+    * alsa, curl, nfs: fixed stalled transfers
+    * qobuz: use HTTPS for API requests
+  * playlist
+    * asx, pls, rss, xspf: limit to 16 MB
+    * cue: fixed problem playing CUE tracks in music directory root
+  * player: fixed noise with replay gain and cross-fade
+  * storage
+    * curl: bound WebDAV PROPFIND responses
+    * nfs
+      * work around libnfs memory leak
+      * fixed use-after-free bug after timeout
+      * fixed assertion failures
+      * stop after 256k directory entries
+  * decoder
+    * dsdiff: fixed tag parser
+    * dsdiff: stored audio format in database
+    * dsdiff: rejected overflowing chunk offsets
+    * mad: limit ID3 tags to 4 MB
+    * mad: ignore implausible Xing frame counts
+    * modplug, openmpt: fixed error handling bug
+    * output
+      * alsa
+        * removed logging calls from the real-time thread
+        * removed option &quot;thesycon_dsd_workaround&quot;
+        * fixed corruption bug with &quot;stop_dsd_silence&quot;
+      * osx
+        * fixed format selection bugs
+        * fixed volume truncation
+      * pipewire
+        * removed logging calls from the real-time thread
+        * fixed uninitialized variable
+        * fixed thread-safety bugs
+        * fixed deadlock bug
+        * fixed ring buffer corruption bug
+  * supported Zeroconf with systemd socket activation</comment>
+    <requestid>1374717</requestid>
+  </revision>
 </revisionlist>

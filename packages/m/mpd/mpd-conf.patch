@@ -1,6 +1,6 @@
-diff -Pdpru mpd-0.24.8.orig/doc/mpdconf.example mpd-0.24.8/doc/mpdconf.example
---- mpd-0.24.8.orig/doc/mpdconf.example	2026-01-26 16:50:08.000000000 +0300
-+++ mpd-0.24.8/doc/mpdconf.example	2026-02-07 02:37:02.977081403 +0300
+diff -Pdpru mpd-0.24.15.orig/doc/mpdconf.example mpd-0.24.15/doc/mpdconf.example
+--- mpd-0.24.15.orig/doc/mpdconf.example	2026-08-27 12:26:33.000000000 +0300
++++ mpd-0.24.15/doc/mpdconf.example	2026-08-30 18:44:59.300226392 +0300
 @@ -19,7 +19,7 @@
  # format. This setting defaults to playlist saving being disabled.
  #
@@ -47,7 +47,7 @@ diff -Pdpru mpd-0.24.8.orig/doc/mpdconf.example mpd-0.24.8/doc/mpdconf.example
  # The location of the sticker database.  This is a database which
  # manages dynamic information attached to songs.
  #
- #sticker_file			"$XDG_CACHE_HOME/sticker.sql"
+ #sticker_file			"$XDG_CACHE_HOME/mpd/sticker.sql"
 -#sticker_file			"~/.mpd/sticker.sql"
 +#sticker_file			"/var/lib/mpd/sticker.sql"
  #
@@ -98,13 +98,11 @@ diff -Pdpru mpd-0.24.8.orig/doc/mpdconf.example mpd-0.24.8/doc/mpdconf.example
  #
  # The argument to this setting will be the Zeroconf / Avahi unique name for
  # this MPD server on the network. %h will be replaced with the hostname.
-@@ -218,11 +218,11 @@ input {
- #
+@@ -219,10 +219,10 @@ input {
  #audio_output {
  #	type		"alsa"
--#	name		"My ALSA Device"
+ #	name		"My ALSA Device"
 -##	device		"hw:0,0"	# optional
-+#	name		"ALSA Device"
 +##	device		"plug:plugequal"	# optional
  ##	mixer_type      "hardware"	# optional
  ##	mixer_device	"default"	# optional
@@ -113,13 +111,7 @@ diff -Pdpru mpd-0.24.8.orig/doc/mpdconf.example mpd-0.24.8/doc/mpdconf.example
  ##	mixer_index	"0"		# optional
  #}
  #
-@@ -242,14 +242,14 @@ input {
- #audio_output {
- #	type		"shout"
- #	encoder		"vorbis"		# optional
--#	name		"My Shout Stream"
-+#	name		"Shout Stream"
- #	host		"localhost"
+@@ -247,9 +247,9 @@ input {
  #	port		"8000"
  #	mount		"/mpd.ogg"
  #	password	"hackme"
@@ -132,12 +124,8 @@ diff -Pdpru mpd-0.24.8.orig/doc/mpdconf.example mpd-0.24.8/doc/mpdconf.example
  ##	protocol	"icecast2"		# optional
  ##	user		"source"		# optional
  ##	description	"My Stream Description"	# optional
-@@ -264,37 +264,37 @@ input {
- #
- #audio_output {
- #	type		"recorder"
--#	name		"My recorder"
-+#	name		"Recorder"
+@@ -267,9 +267,9 @@ input {
+ #	name		"My recorder"
  #	encoder		"vorbis"		# optional, vorbis or lame
  #	path		"/var/lib/mpd/recorder/mpd.ogg"
 -##	quality		"5.0"			# do not define if bitrate is defined
@@ -149,11 +137,7 @@ diff -Pdpru mpd-0.24.8.orig/doc/mpdconf.example mpd-0.24.8/doc/mpdconf.example
  #}
  #
  # An example of a httpd output (built-in HTTP streaming server):
- #
- #audio_output {
- #	type		"httpd"
--#	name		"My HTTP Stream"
-+#	name		"HTTP Stream"
+@@ -280,21 +280,21 @@ input {
  #	encoder		"vorbis"		# optional, vorbis or lame
  #	port		"8000"
  #	bind_to_address	"0.0.0.0"		# optional, IPv4 or IPv6
@@ -172,23 +156,16 @@ diff -Pdpru mpd-0.24.8.orig/doc/mpdconf.example mpd-0.24.8/doc/mpdconf.example
 -#	type		"pulse"
 -#	name		"My Pulse Output"
 -##	server		"remote_server"		# optional
+-##	sink		"remote_server_sink"	# optional
+-##	media_role	"media_role"		#optional
+-#}
 +audio_output {
 +	type		"pulse"
 +	name		"Pulse Output"
-+##	server		"127.0.0.1"		# optional
- ##	sink		"remote_server_sink"	# optional
- ##	media_role	"media_role"		#optional
--#}
++#	server		"remote_server"		# optional
++#	sink		"remote_server_sink"	# optional
++#	media_role	"media_role"		#optional
 +}
  #
  # An example of a winmm output (Windows multimedia API).
  #
-@@ -357,7 +357,7 @@ input {
- #	command		"AudioCompress -m | aplay -f cd 2>/dev/null"
- ## Or to send raw PCM stream through PCM:
- #	command		"nc example.org 8765"
--#	format		"44100:16:2"
-+#	format		"48000:16:2"
- #}
- #
- ## An example of a null output (for no audio output):

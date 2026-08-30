@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Sun Aug 30 15:48:28 UTC 2026 - Илья Индиго <ilya@ilya.top>
+
+- Updated to 0.24.15
+  * Changed mpd-conf.patch
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.24.15/NEWS
+  * protocol: fixed crash on "sticker delete" and "sticker find"
+  * database: upnp: fixed crash bug
+  * input
+    * alsa, curl, nfs: fixed stalled transfers
+    * qobuz: use HTTPS for API requests
+  * playlist
+    * asx, pls, rss, xspf: limit to 16 MB
+    * cue: fixed problem playing CUE tracks in music directory root
+  * player: fixed noise with replay gain and cross-fade
+  * storage
+    * curl: bound WebDAV PROPFIND responses
+    * nfs
+      * work around libnfs memory leak
+      * fixed use-after-free bug after timeout
+      * fixed assertion failures
+      * stop after 256k directory entries
+  * decoder
+    * dsdiff: fixed tag parser
+    * dsdiff: stored audio format in database
+    * dsdiff: rejected overflowing chunk offsets
+    * mad: limit ID3 tags to 4 MB
+    * mad: ignore implausible Xing frame counts
+    * modplug, openmpt: fixed error handling bug
+    * output
+      * alsa
+        * removed logging calls from the real-time thread
+        * removed option "thesycon_dsd_workaround"
+        * fixed corruption bug with "stop_dsd_silence"
+      * osx
+        * fixed format selection bugs
+        * fixed volume truncation
+      * pipewire
+        * removed logging calls from the real-time thread
+        * fixed uninitialized variable
+        * fixed thread-safety bugs
+        * fixed deadlock bug
+        * fixed ring buffer corruption bug
+  * supported Zeroconf with systemd socket activation
+
+-------------------------------------------------------------------
 Sat Jul 18 22:13:56 UTC 2026 - Илья Индиго <ilya@ilya.top>
 
 - Removed mpd.firewalld (upstreamed in firewalld 2.3.2).
