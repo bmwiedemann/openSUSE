@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Aug 28 15:07:45 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to version 3.1.61:
+  * prepare next release
+  * fix: restore Actor.name_email_regex (#2220)
+  * fix: wait for git daemon to listen before connecting
+- Update to version 3.1.60:
+  * prepare new release
+  * fix: prefer `.git` during repository discovery
+  * fix: require opt-in for no-index diffs
+  * fix: parse actor identities without regular expressions
+  * fix: decode quoted diff paths in one pass
+  * Preserve Git config value semantics
+
+-------------------------------------------------------------------
+Wed Aug 26 15:24:34 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- drop testsuite.patch and fix test setup instead
+
+-------------------------------------------------------------------
 Wed Aug 12 13:15:02 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to version 3.1.59 (fixes CVE-2026-78679 (bsc#1276430),

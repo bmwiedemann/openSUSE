@@ -1146,4 +1146,25 @@ bsc#1273781, bsc#1273783, bsc#1273785, bsc#1278787):
   * new bugs have been opened since CVE numbers were assigned and old bugs have been closed as duplicates</comment>
     <requestid>1373552</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>4558fc2e90a002fde952a0ee55414456</srcmd5>
+    <version>3.1.61</version>
+    <time>1788109596</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1374451 from nkrapp
+
+- Update to version 3.1.61:
+    * prepare next release
+    * fix: restore Actor.name_email_regex (#2220)
+    * fix: wait for git daemon to listen before connecting
+  - Update to version 3.1.60:
+    * prepare new release
+    * fix: prefer `.git` during repository discovery
+    * fix: require opt-in for no-index diffs
+    * fix: parse actor identities without regular expressions
+    * fix: decode quoted diff paths in one pass
+    * Preserve Git config value semantics
+  - drop testsuite.patch and fix test setup instead</comment>
+    <requestid>1374599</requestid>
+  </revision>
 </revisionlist>

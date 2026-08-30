@@ -18,16 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-GitPython
-Version:        3.1.59
+Version:        3.1.61
 Release:        0
 Summary:        Python Git Library
 License:        BSD-3-Clause
 URL:            https://github.com/gitpython-developers/GitPython
 Source:         GitPython-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE testsuite.patch
-# disable tests that throw "HEAD is a detatched reference" that occurs because
-# of the way we run the tests in OBS
-Patch0:         testsuite.patch
 BuildRequires:  %{python_module ddt >= 1.1.1}
 BuildRequires:  %{python_module gitdb >= 4.0.1}
 BuildRequires:  %{python_module pip}
@@ -36,8 +32,10 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module smmap >= 3.0.1}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  /usr/bin/ps
 BuildRequires:  fdupes
 BuildRequires:  git-core
+BuildRequires:  git-daemon
 BuildRequires:  python-rpm-macros
 Requires:       git-core
 Requires:       python-gitdb >= 4.0.1
@@ -74,14 +72,20 @@ export TRAVIS=true
 
 export LANG=en_US.UTF-8
 export GIT_PYTHON_TEST_GIT_REPO_BASE=${PWD}
-export PYTEST_XFAIL_MSG="HEAD is a detached symbolic reference"
 
 git config --global protocol.file.allow "always"
 git config --global user.email "you@example.com"
 git config --global user.name "Your Name"
 cat test/fixtures/.gitconfig >> ~/.gitconfig
+# bug in GitPython causes problem when checkout out a detached rev
+git checkout -b master
 
-%pytest -k 'not (test_cloned_repo_object or test_fetch_error or test_it_honors_kill_after_timeout_with_output_stream or test_installation or test_rev_parse)'
+# require network
+skiplist+='test_fetch_error'
+skiplist+=' or test_cloned_repo_object'
+
+skiplist+=' or test_installation'
+%pytest -k "not ($skiplist)"
 
 %files %{python_files}
 %license LICENSE
