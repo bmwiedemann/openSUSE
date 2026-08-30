@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 28 13:07:05 UTC 2026 - Eugenio Paolantonio <eugenio.paolantonio@suse.com>
+
+- immutable_base: install transactional-wrapper by default on SLE
+  (jsc#PED-15607)
+
+-------------------------------------------------------------------
 Wed Jul 15 12:48:15 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
 
 - Suggest sudo-rpm to give the solver a hint to prefer sudo.rpm

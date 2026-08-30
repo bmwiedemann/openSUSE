@@ -1293,4 +1293,12 @@ by zypper, as no packages with those names exist</comment>
     <comment></comment>
     <requestid>1366002</requestid>
   </revision>
+  <revision rev="150" vrev="34">
+    <srcmd5>27d46796e0ef57dfa0854f89c79e28d8</srcmd5>
+    <version>20241218</version>
+    <time>1788109603</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1374613</requestid>
+  </revision>
 </revisionlist>

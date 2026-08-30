@@ -848,6 +848,7 @@ Requires:       distrobox-branding-SLE
 Requires:       iputils
 Requires:       supportutils
 Requires:       systemd-presets-branding-SLE_immutable
+Requires:       transactional-wrapper
 Requires:       group(wheel)
 # zypper ps is useless in transactional mode. It also checks for
 # /run/reboot-needed though which is created by transactional-update
