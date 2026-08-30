@@ -106,6 +106,8 @@ go build \
     -X github.com/k3s-io/k3s/pkg/version.Program=${PROG} \
     -X github.com/k3s-io/k3s/pkg/version.Version=%{version} \
     -X github.com/k3s-io/k3s/pkg/version.UpstreamGolang=${VERSION_GOLANG} \
+    -X github.com/k3s-io/k3s/pkg/cloudprovider.DefaultLBImage=rancher/klipper-lb:${KLIPPERLB_VERSION} \
+    -X github.com/k3s-io/helm-controller/pkg/controllers/chart.DefaultJobImage=rancher/klipper-helm:${KLIPPERHELM_VERSION} \
     -X github.com/rancher/rke2/pkg/images.DefaultRegistry=docker.io \
     -X github.com/rancher/rke2/pkg/images.DefaultEtcdImage=rancher/hardened-etcd:${ETCD_VERSION}-%{hardened_etcd_version} \
     -X github.com/rancher/rke2/pkg/images.DefaultKubernetesImage=rancher/hardened-kubernetes:${KUBERNETES_IMAGE_TAG} \
