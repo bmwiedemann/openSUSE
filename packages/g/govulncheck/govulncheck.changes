@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Aug 29 03:39:01 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging improvements:
+  * Update to BuildRequires: golang(API) >= 1.27 latest stable.
+    This tool requires that it be built with the same or newer
+    go1.x toolchain as the Go applications it operates on.
+  * Refs boo#1248678
+
+-------------------------------------------------------------------
 Thu Aug 13 18:01:04 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 1.7.0:

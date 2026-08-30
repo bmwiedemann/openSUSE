@@ -362,4 +362,16 @@
   * go.mod: update golang.org/x dependencies (forwarded request 1371639 from jfkw)</comment>
     <requestid>1371640</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>337ce2cabe4c64ac799f45480d65ebbb</srcmd5>
+    <version>1.7.0</version>
+    <time>1788109682</time>
+    <user>dimstar_suse</user>
+    <comment>- Packaging improvements:
+  * Update to BuildRequires: golang(API) &gt;= 1.27 latest stable.
+    This tool requires that it be built with the same or newer
+    go1.x toolchain as the Go applications it operates on.
+  * Refs boo#1248678 (forwarded request 1374521 from jfkw)</comment>
+    <requestid>1374617</requestid>
+  </revision>
 </revisionlist>

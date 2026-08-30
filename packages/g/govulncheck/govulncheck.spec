@@ -25,7 +25,7 @@ Group:          Development/Languages/Go
 URL:            https://github.com/golang/vuln
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) >= 1.26
+BuildRequires:  golang(API) >= 1.27
 # Required to build on SLE-12
 ExcludeArch:    s390
 
