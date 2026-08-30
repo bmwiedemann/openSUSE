@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 28 12:34:06 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Re-add site_init.py to pass through SOURCE_DATE_EPOCH
+  for reproducible builds (https://github.com/SCons/scons/pull/4261).
+  It was dropped without mention in the 4.10.1 update (SR#1337378).
+
+-------------------------------------------------------------------
 Tue Jun  9 20:42:20 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Add missing python3-base BR

@@ -443,4 +443,18 @@ SCons 4.10.1</comment>
     <comment></comment>
     <requestid>1358252</requestid>
   </revision>
+  <revision rev="56" vrev="4">
+    <srcmd5>e8beaaf40603649018bf7d24c246902d</srcmd5>
+    <version>4.10.1</version>
+    <time>1788109593</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1374393 from bmwiedemann
+
+Re-add site_init.py to pass through SOURCE_DATE_EPOCH
+    for reproducible builds (https://github.com/SCons/scons/pull/4261).
+    It was dropped without mention in the 4.10.1 update (SR#1337378).
+
+  CC @AndreasStieger in case there was a reason and it was just never documented.</comment>
+    <requestid>1374597</requestid>
+  </revision>
 </revisionlist>
