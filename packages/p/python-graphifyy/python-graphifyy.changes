@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sun Aug 30 07:50:46 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.9.52:
+  * watch/update no longer drops a Markdown wikilink to a
+    semantic-backed document during a code-only rebuild; the
+    reference is repointed at the target's representative node
+  * T-SQL routines that parse to tree-sitter ERROR nodes (CREATE OR
+    ALTER, the PROC shorthand, bracket-delimited names) are
+    recovered by name over a comment/string-masked copy
+  * graphify --help lists the prs and provider commands and the
+    export formats actually supported
+  * Razor @inject/@using in .razor/.cshtml flow through the
+    scope-aware C# type resolver, so an injected service type
+    resolves cross-file
+  * The MCP prs tools surface a genuine failure as an MCP error
+    instead of success text
+  * The MCP get_node tool resolves through the same tiered resolver
+    as get_neighbors, so the two no longer disagree
+  * install --project emits a bare graphify hook command resolved at
+    run time, so the committed hook stops churning across machines;
+    a global install still pins the interpreter path
+  * PHP new Foo() emits a calls edge to the constructed class,
+    completing object-creation modelling after C# and TypeScript
+  * A method call through a field whose type is declared on an
+    ancestor class now resolves from a subclass
+  * The Objective-C field-to-type table is re-keyed alongside the
+    node-id rewrites, so self.field calls survive update
+  * TypeScript type-only imports no longer manufacture false import
+    cycles
+  * import(...) used as a call type-argument no longer drops the
+    declarations after it
+  * Corrected the deepseek-v4-flash pricing entry
+
+-------------------------------------------------------------------
 Sat Aug 29 07:36:12 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.9.51:

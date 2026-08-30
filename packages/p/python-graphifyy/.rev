@@ -115,4 +115,24 @@ remap, Leiden endpoint canonicalization, TS/JS new Foo() call edges,
 Elixir when-guards, Common Lisp node-id collisions. 3970 tests pass.</comment>
     <requestid>1374585</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b472dfe4506df0d447278f02d8a4aefa</srcmd5>
+    <version>0.9.52</version>
+    <time>1788109700</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.9.52
+
+Upstream bugfix-only release (13 fixes): Markdown wikilinks to
+semantic-backed documents survive a code-only rebuild, T-SQL routines
+that parse to ERROR nodes are recovered, PHP object-creation calls
+edges, inherited field-type receiver resolution, Objective-C field
+table remap across id rewrites, TypeScript type-only imports no longer
+fake import cycles, and the MCP prs/get_node tools report failures and
+resolve nodes consistently.
+
+No dependency, licence or packaging change: the only spec edit is the
+Version: line. Built natively on aarch64, 4023 tests pass per flavour
+(python313/python314), rpmlint 0 errors / 0 badness.</comment>
+    <requestid>1374667</requestid>
+  </revision>
 </revisionlist>
