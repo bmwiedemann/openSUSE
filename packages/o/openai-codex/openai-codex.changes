@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Aug 29 18:57:46 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.151.0:
+  * Configurable grace period for discovering tools from optional
+    MCP servers
+  * Extensions can inspect or replace MCP tool results before they
+    reach the model
+  * Plugin catalogs combine per-repository configuration and report
+    invalid project marketplaces without hiding valid plugins
+  * Preserve restored permission profiles across TUI turns; /cd can
+    no longer weaken sandbox restrictions
+  * Stale Guardian classifications no longer authorize actions after
+    a permission-state change
+  * Remote sandbox enforcement uses the executor's actual home
+    directory, OS and path conventions
+  * Keep tool availability and reasoning effort correct when
+    switching models or falling back to another one
+  * Nested subagent token usage counts toward root goal budgets
+- Rebase codex-drop-v8-code-mode.patch: 0.151.0 adds a "worktree"
+  workspace member next to "websocket-client", which shifted the
+  context of the hunk dropping "v8-poc". Same six removals as before.
+- Vendored dependency set is unchanged from 0.150.1 (1193 crates,
+  none added or removed), so the License tally and the bundled()
+  versions still hold.
+
+-------------------------------------------------------------------
 Thu Aug 27 08:05:39 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.150.1:

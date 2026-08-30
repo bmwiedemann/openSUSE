@@ -224,4 +224,33 @@ Built locally on openSUSE_Tumbleweed/aarch64: rpmlint 0 errors,
 0 warnings, 0 badness, and the %check suite green with 349 tests passed.</comment>
     <requestid>1373939</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4efd7cce7353f0d013dd51a04bedc020</srcmd5>
+    <version>0.151.0</version>
+    <time>1788109695</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.151.0.
+
+Upstream: configurable grace period for optional-MCP-server tool discovery,
+extensions can inspect/replace MCP tool results, per-repository plugin catalog
+configuration, plus sandbox/permission fixes (restored permission profiles
+survive TUI turns, /cd can no longer weaken sandbox restrictions, stale
+Guardian classifications no longer authorize actions after a permission-state
+change).
+
+Packaging:
+- codex-drop-v8-code-mode.patch rebased -- 0.151.0 adds a &quot;worktree&quot; workspace
+  member next to &quot;websocket-client&quot;, shifting the context of the hunk that
+  drops &quot;v8-poc&quot;. Same six removals; both patches apply at --fuzz=0.
+- Re-vendored. The third-party set is unchanged from 0.150.1 (1193 crates,
+  none added or removed), so the License expression and the bundled() versions
+  still hold. The only Cargo.lock additions are the first-party workspace
+  crate codex-worktree and the 0.150.1 -&gt; 0.151.0 bumps of the 139 codex-*
+  members. cargo-audit reports the lockfile clean.
+- Upstream still pins rust 1.95.0, so BuildRequires: rust &gt;= 1.95 stands.
+
+Built on Tumbleweed aarch64: rpmlint 0 errors / 0 warnings / 0 badness,
+%check green (380 tests across the five allowlisted crates).</comment>
+    <requestid>1374664</requestid>
+  </revision>
 </revisionlist>
