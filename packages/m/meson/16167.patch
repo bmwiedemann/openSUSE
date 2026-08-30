@@ -1,0 +1,23 @@
+From 8cd863b7304fa2079bc517ba315ac8e4fdf53edb Mon Sep 17 00:00:00 2001
+From: Tristan Partin <tristan@partin.io>
+Date: Fri, 28 Aug 2026 14:46:40 +0000
+Subject: [PATCH] Add LLVM 23 version suffixes
+
+Signed-off-by: Tristan Partin <tristan@partin.io>
+---
+ mesonbuild/tooldetect.py | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/mesonbuild/tooldetect.py b/mesonbuild/tooldetect.py
+index cc8e8ddf6af3..967d7ef5e783 100644
+--- a/mesonbuild/tooldetect.py
++++ b/mesonbuild/tooldetect.py
+@@ -140,6 +140,8 @@ def get_llvm_tool_names(tool: str) -> T.List[str]:
+     # unless it becomes a stable release.
+     suffixes = [
+         '', # base (no suffix)
++        '-23.1', '23.1',
++        '-23', '23',
+         '-22.1', '22.1',
+         '-22', '22',
+         '-21.1', '21.1',

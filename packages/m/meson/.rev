@@ -1242,4 +1242,12 @@ Smoketest in GNOME:Next passed</comment>
     <comment></comment>
     <requestid>1370709</requestid>
   </revision>
+  <revision rev="146" vrev="2">
+    <srcmd5>82fc8ea372ed2ca13351c4ea210a6fe5</srcmd5>
+    <version>1.12.0</version>
+    <time>1788109605</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1374614</requestid>
+  </revision>
 </revisionlist>

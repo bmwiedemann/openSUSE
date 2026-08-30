@@ -50,6 +50,7 @@ Patch0:         meson-test-installed-bin.patch
 Patch1:         extend-test-timeout-on-qemu-builds.patch
 # PATCH-FEATURE-UPSTREAM -- based on https://github.com/mesonbuild/meson/pull/14001/commits
 Patch2:         14001.patch
+Patch3:         https://github.com/mesonbuild/meson/pull/16167.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
