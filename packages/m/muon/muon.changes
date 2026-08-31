@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Aug 30 22:52:25 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Build the installed muon binary with the release build type.
+- Remove the unowned meson-reference.3 man page during installation.
+- Make the docs conditional safe when suse_version is undefined.
+- Drop the unused make build dependency.
+- Allow the virtual c_compiler capability to satisfy the compiler
+  build dependency.
+- Use the generic cc driver so alternative c_compiler providers can be used.
+- Run Muon's own test suite during the package build while disabling
+  imported Meson and C++/Objective-C tests to keep bootstrap dependencies
+  minimal.
+
+-------------------------------------------------------------------
+Thu Jun 25 14:13:29 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 0.6.0:
+  * Toolchains are now defined in a muon script
+  * Added support for tcc, clang-cl, ccache and sccache
+  * Added muon help command
+  * Added DAP debugger protocol support & dcmake integration
+  * Added wayland module
+
+-------------------------------------------------------------------
 Mon Aug  4 13:46:07 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to version 0.5.0:

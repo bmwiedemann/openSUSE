@@ -16,25 +16,25 @@
 #
 
 
-%if %{suse_version} >= 1600
+%if 0%{?suse_version} >= 1600
   %bcond_without docs
 %else
   %bcond_with docs
 %endif
 
 Name:           muon
-Version:        0.5.0
+Version:        0.6.0
 Release:        0
 Summary:        An implementation of the meson build system in c99
 License:        Apache-2.0 AND GPL-3.0-only
 URL:            https://muon.build/
 Source0:        https://muon.build/releases/v%{version}/%{name}-v%{version}.tar.gz
-BuildRequires:  gcc
-BuildRequires:  make
+BuildRequires:  (c_compiler or gcc)
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libarchive)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libpkgconf)
+BuildRequires:  python3
 %if 0%{with docs}
 BuildRequires:  scdoc
 %endif
@@ -53,7 +53,7 @@ minimal dependencies.
 %global _builddir_stage2  %{_builddir}/muon-stage2
 
 %{set_build_flags}
-export CC="gcc"
+export CC=cc
 
 # there are two way to build muon, either using meson or bootstrapping
 # from scratch
@@ -68,6 +68,9 @@ export CC="gcc"
 
 # stage 2: build again using the new muon
 %{_builddir_stage1}/muon setup \
+  -Dbuildtype=release \
+  -Ddisable-test-languages=cpp,objc \
+  -Dmeson-tests=disabled \
   -Dprefix=%{_prefix} \
 %if 0%{with docs}
   -Dman-pages=enabled \
@@ -83,6 +86,11 @@ export CC="gcc"
 %install
 export DESTDIR=%{buildroot}
 %{_builddir_stage1}/muon -C %{_builddir_stage2} install
+
+rm -f %{buildroot}%{_mandir}/man3/meson-reference.3
+
+%check
+%{_builddir_stage2}/muon -C %{_builddir_stage2} test -R
 
 %files
 %license LICENSES/*
