@@ -21,7 +21,7 @@
 %define library_version 1.0.0
 %define library_soversion 0unstable
 Name:           aws-c-io
-Version:        0.27.6
+Version:        0.27.7
 Release:        0
 Summary:        I/O and TLS package AWS SDK for C
 License:        Apache-2.0
@@ -87,12 +87,12 @@ export LD_LIBRARY_PATH=%{_builddir}/%{name}-%{version}/build
 %files -n lib%{name}%{library_soversion}
 %doc README.md
 %license LICENSE
-%{_libdir}/*.so.%{library_soversion}
-%{_libdir}/*.so.%{library_version}
+%{_libdir}/lib%{name}.so.%{library_soversion}
+%{_libdir}/lib%{name}.so.%{library_version}
 
 %files devel
 %{_libdir}/cmake/%{name}/
-%{_libdir}/*.so
+%{_libdir}/lib%{name}.so
 %{_includedir}/*
 
 %changelog
