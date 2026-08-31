@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Aug 30 13:03:45 UTC 2026 - munix9@googlemail.com
+
+- Fix source url
+
+-------------------------------------------------------------------
+Sun Aug 30 11:37:50 UTC 2026 - munix9@googlemail.com
+
+- update to version 0.45
+  * Support for 6.15 kernels
+  * Fix building with clang
+
+- update to version 0.44
+  * Support for 6.4 kernel
+
+- Add tp_smapi-preamble
+- Add build for Factory longterm kernel
+- Add use-strscpy-instead-of-strncpy.patch
+  * strncpy was removed in Linux 7.2
+    (gh#linux-thinkpad/tp_smapi#81)
+    (gh#linux-thinkpad/tp_smapi#82)
+- Remove del_timer.patch and kernel_64.diff (fixed upstream)
+- Clean up spec file
+
+-------------------------------------------------------------------
 Wed Jun 11 10:35:43 UTC 2025 - Axel Braun <axel.braun@gmx.de>
 
 - del_timer.patch added to fix deprecated call

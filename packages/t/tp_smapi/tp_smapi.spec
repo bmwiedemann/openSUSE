@@ -1,7 +1,7 @@
 #
 # spec file for package tp_smapi
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,25 +16,29 @@
 #
 
 
+%ifarch x86_64
+%if 0%{?suse_version} >= 1699
+%define kmp_longterm 1
+%endif
+%endif
+
 Name:           tp_smapi
 Summary:        IBM ThinkPad hardware functions driver
-Version:        0.43
+Version:        0.45
 Release:        0
 License:        GPL-2.0-or-later
-Group:          System/Kernel
 URL:            https://github.com/linux-thinkpad/tp_smapi
-Source:         tp_smapi-%{version}.tar.gz
-Patch0:         kernel_64.diff
-Patch1:         del_timer.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %kernel_module_package_buildreqs
-BuildRequires:  kernel-source
-BuildRequires:  kernel-syms
-BuildRequires:  module-init-tools
+Source0:        %{url}/releases/download/tp-smapi%2F%{version}/%{name}-%{version}.tgz
+Source1:        %{name}-preamble
+BuildRequires:  %{kernel_module_package_buildreqs}
+%if 0%{?kmp_longterm}
+BuildRequires:  kernel-syms-longterm
+%endif
+# PATCH-FIX-UPSTREAM use-strscpy-instead-of-strncpy.patch -- based on PR 81
+Patch0:         use-strscpy-instead-of-strncpy.patch
 ExclusiveArch:  %ix86 x86_64
-Requires:       kernel-desktop
 
-%suse_kernel_module_package -p -n tp_smapi kdump um
+%kernel_module_package -p %{SOURCE1}
 
 %description
 The tp_smapi kernel module exposes some features of the ThinkPad hardware/firmware via a sysfs interface.
@@ -43,7 +47,7 @@ It also includes an improved version of the HDAPS driver. The underlying hardwar
 and direct access to the embedded controller.
 
 %prep
-%autosetup -p2 -n tp_smapi-%{version}
+%autosetup -p1
 set -- *
 mkdir source
 mv "$@" source/
