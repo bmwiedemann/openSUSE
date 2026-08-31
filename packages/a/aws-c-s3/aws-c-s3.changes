@@ -1,7 +1,18 @@
 -------------------------------------------------------------------
+Tue Aug 25 12:59:50 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.13.7
+  * Clean up docs by @azkrishpy in (#665)
+  * fix(copy-object): forward request-payer to the source-size HEAD
+    by @TingDaoK in (#654)
+  * update doc on endpoint resolver update script by @azkrishpy in (#667)
+- from version 0.13.6
+  * CI/CD improvements by @azkrishpy in (#666)
+
+-------------------------------------------------------------------
 Mon Aug 10 12:15:02 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
-- Update to version
+- Update to version 0.13.5
   * support opaque etags by @TingDaoK in (#664)
   * Combine per-part CRCs for whole-object download checksum
     validation by @TingDaoK in (#663)
