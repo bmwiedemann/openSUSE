@@ -4,7 +4,7 @@
     <param name="url">https://github.com/cilynx/rtl88x2bu.git</param>
     <param name="filename">rtl88x2bu</param>
     <param name="versionformat">5.8.7.1+git%cd.%h</param>
-    <param name="revision">fc158d1f71b9e5dfcd1fccaf4d28725b65086e3b</param>
+    <param name="revision">04ed7009bac4b235fe1880ba29e23159f49a6121</param>
     <param name="changesgenerate">enable</param>
   </service>
   <service name="set_version" mode="manual" />
