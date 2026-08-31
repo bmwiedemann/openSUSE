@@ -20,7 +20,7 @@
 %define library_pkg 1_0_0
 %define library_soversion 1
 Name:           aws-c-sdkutils
-Version:        0.2.9
+Version:        0.2.10
 Release:        0
 Summary:        AWS C SDK Utils
 License:        Apache-2.0
@@ -77,12 +77,12 @@ ln -s lib%{name}.so.%{library_version} %{buildroot}%{_libdir}/lib%{name}.so.%{li
 %files -n lib%{name}%{library_pkg}
 %doc NOTICE README.md
 %license LICENSE
-%{_libdir}/*.so.%{library_soversion}
-%{_libdir}/*.so.%{library_version}
+%{_libdir}/lib%{name}.so.%{library_soversion}
+%{_libdir}/lib%{name}.so.%{library_version}
 
 %files devel
 %{_libdir}/cmake/
-%{_libdir}/*.so
+%{_libdir}/lib%{name}.so
 %{_includedir}/*
 
 %changelog

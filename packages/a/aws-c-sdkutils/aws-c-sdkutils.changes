@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug 26 09:19:41 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.2.10
+  * Clean up docs by @azkrishpy in (#72)
+  * chore(release): add governance files by @azkrishpy in (#74)
+- Prefer explicit path and filenames over wildcards in %files section
+
+-------------------------------------------------------------------
 Mon Aug 10 12:17:42 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.2.9
