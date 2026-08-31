@@ -7,4 +7,14 @@
     <comment>- Initial release of 0.1.0.</comment>
     <requestid>1353126</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d646126c9ff7be08ed2120cdcb0ae9f8</srcmd5>
+    <version>0.1.2</version>
+    <time>1788184598</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.1.2:
+  * Fix README code-block formatting.
+  * Make setup.py executable.</comment>
+    <requestid>1374771</requestid>
+  </revision>
 </revisionlist>

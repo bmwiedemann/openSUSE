@@ -17,7 +17,7 @@
 
 
 Name:           python-catalogus
-Version:        0.1.0
+Version:        0.1.2
 Release:        0
 Summary:        Python classes for name-to-object registry-like support
 License:        GPL-2.0-or-later
