@@ -17,10 +17,10 @@
 #
 
 
-%define version_suffix 3-11
+%define version_suffix 3-13
 %define short_version 3
 Name:           Botan
-Version:        3.11.1
+Version:        3.13.0
 Release:        0
 Summary:        A C++ Crypto Library
 License:        BSD-2-Clause

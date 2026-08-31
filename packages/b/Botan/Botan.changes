@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Mon Aug 31 09:08:14 UTC 2026 - Angel Yankov <angel.yankov@suse.com>
+
+- Update to 3.13.0:
+  * Fix a blind SSRF during OCSP request processing. A malicious OCSP responder or network attacker could cause the application to perform a blind GET to an internal service. (GH #5815)
+  * Fix a bug in AutoSeeded_RNG, affecting only platforms without a system RNG, where an API sequence of calling first clear, followed by randomize writing to an empty buffer, resulted in the RNG object being considered seeded even though it was not. (GH #5839 #5838)
+  * Fix an integer overflow in Scrypt parameter handling, affecting 32-bit platforms. (GH #5820 #5629)
+  * Fix a bug where certain DN name constraints were not correctly enforced.
+  * Fix an integer overflow in the FFI interface which might be exploitable in unusual scenarios involving attacker-control cipher specifiers and the raw block cipher (ECB) APIs. (GH #5805)
+  * Add URI and email name constraint processing to X509 path validation (GH #5598)
+  * Add DNSName, URI, and EmailAddress types. (GH #5598 #5601 #5622 #5663 #5683 #5750)
+  * The default policy for TLS now no longer lists finite field Diffie-Hellman. If required for compatibility it must be enabled by the application. (GH #5782)
+  * By default OCSP no longer accepts soft-fail conditions such as network failure. (GH #5785 #5804)
+  * DTLS 1.2 servers now must either set a DTLS cookie secret and provide the peer network identity, or explicitly opt out of the cookie exchange by overriding dtls_server_require_cookie_exchange to return false. (GH #5792)
+  * Fix DTLS 1.2 handshake edge cases, including pacing of repeated timeout checks, replay of final flights after local activation, partial server-flight delivery, and delayed server-side flight handling. (GH #2310 #2498 #4022 #4036 #5696 #5790 #5791 #5792 #5793 #5800 #5801 #5802 #5803 #5811 #5829 #5834 #5835 #5836)
+  * Add support for SPAKE2+ from RFC 9383 (GH #5711)
+  * Add support for PKCS #12 (GH #5478 #5625)
+  * Add support for GCM-SIV from RFC 8452 (GH #5770)
+  * Add support for the RFC 9608 No Revocation Available extension (GH #5595)
+  * Add support for encoding name constraint extensions (GH #5734)
+  * Add X509_DN::parse and improve the parsing and printing of Distinguished Name strings, including capturing RDN groupings and escaping control characters (GH #5618 #5657 #5658)
+  * Optimize X509_DN comparison and name constraint checks using precomputed canonical encodings (GH #5652)
+  * During path validation, by default require that OCSP responses are no more than seven days old. Previously any age was accepted as long as it preceded the response’s nextUpdate. (GH #5623)
+  * Improve OCSP request and response serialization (GH #5678 #5741)
+  * Improve handling of the authority and subject key identifier extensions (GH #5735 #5737)
+  * Properly decode and handle the X509 CRL Distribution Point and Authority Information Access extensions (GH #5712)
+  * Upgrade to TLS-Anvil 1.5 (GH #5630) 
+
+-------------------------------------------------------------------
+Mon Jun 29 06:03:08 UTC 2026 - Angel Yankov <angel.yankov@suse.com>
+
+- Update to 3.12.0:
+  * CVE-2026-44378: Resolve a CPU based denial of service when decoding BER encoded data.
+  * Optimize and improve certificate store search operations (GH #5510)
+  * Require strict DER when decoding PKIX types such as certificates (#5521)
+  * Discard TLS handshake state once the handshake has completed, retaining only the data needed for the active connection (GH #5517)
+  * Various TLS conformance, hardening, and performance fixes. (GH #5550 #5551 #5568 #5555)
+  * Various X509/PKIX/OCSP optimizations and bug fixes (GH #5535 #5536 #5546 #5554 #5561 #5562 #5569)
+  * Skip OCSP/CRL revocation checks on certificate chains which were already going to be rejected due to path validation errors (GH #5512)
+  * Add BER_Decoder::Limits which allows controlling what DER/BER syntax is accepted while decoding. (GH #5507 #5514)
+  * Add support for IPv6 name constraints in X.509 certificate path validation, and add IPv6 address parsing and formatting utilities (GH #5534 #5537)
+  * Refactor the Windows system certificate store and add a cache of materialized certificates to avoid repeated parsing. (GH #5539)
+  * Improve handling of unknown X.509 certificate extensions (GH #5518)
+  * Skip checking the self-signature of self-signed certificates during parsing (GH #5515)
+  * Add an index to X509_CRL for fast revocation checks (GH #5511)
+  * Add X509_Certificate::Tag for fast searching/indexing of certificates (GH #5509)
+  * Change X509_Object to share immutable state between copies (GH #5504)
+  * Fix bugs in handling of indefinite length BER data, including missing EOC markers being silently accepted (GH #5545)
+  * Make certificate path building DFS incremental (GH #5513 #5520 #5521)
+  * Avoid sending the TLS certificate_type extension unless TLS 1.2 is disabled, since raw public keys are not currently supported in 1.2 (GH #5523)
+  * Add support for RFC 9258 PSK import in TLS 1.3 (GH #5523)
+  * Avoid truncation of large handshake messages in DTLS (GH #5522)
+  * Add ALPN support to the Boost ASIO TLS stream (GH #5428)
+  * Upgrade TLS-Anvil and add client-side TLS-Anvil testing (GH #5503)
+  * Upgrade BoGo tests (GH #5523 #5556)
+  * Add a script for running the NIST ACVP test vectors (GH #5527)
+  * Add BigInt::signum to simplify sign comparisons (GH #5519)
+  * Fixes for compiling with GCC 16 (GH #5564)
+  * Add DRBG helpers to the C89/FFI interface and Python binding (GH #5527)
+  * Add EC scalar and point operations to the C89/FFI interface (GH #5404 #5565)
+  * Add NIST key wrap with padding to the Python binding (GH #5521)
+  * Enforce maximum input length limits for ChaCha20Poly1305 and GHASH/GCM (GH #5521)
+  * Add configure.py --without-include-namespace to allow installing headers without the botan-3/ subdirectory (GH #5528) 
+
+-------------------------------------------------------------------
 Tue Apr 14 09:40:56 UTC 2026 - Angel Yankov <angel.yankov@suse.com>
 
 - Update to 3.11.1

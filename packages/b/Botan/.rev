@@ -788,4 +788,41 @@ For full release notes, see: https://botan.randombit.net/news.html#version-3-9-0
     * Fix a bug preventing botan_srp6_server_session_step1 from being reinvoked (GH #5112 #5135)</comment>
     <requestid>1346904</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>780ad94612866a27c0c6680abf4b1d84</srcmd5>
+    <version>3.13.0</version>
+    <time>1788184718</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.13.0:
+  * Fix a blind SSRF during OCSP request processing. A malicious OCSP responder or network attacker could cause the application to perform a blind GET to an internal service. (GH #5815)
+  * Fix a bug in AutoSeeded_RNG, affecting only platforms without a system RNG, where an API sequence of calling first clear, followed by randomize writing to an empty buffer, resulted in the RNG object being considered seeded even though it was not. (GH #5839 #5838)
+  * Fix an integer overflow in Scrypt parameter handling, affecting 32-bit platforms. (GH #5820 #5629)
+  * Fix a bug where certain DN name constraints were not correctly enforced.
+  * Fix an integer overflow in the FFI interface which might be exploitable in unusual scenarios involving attacker-control cipher specifiers and the raw block cipher (ECB) APIs. (GH #5805)
+  * Add URI and email name constraint processing to X509 path validation (GH #5598)
+  * Add DNSName, URI, and EmailAddress types. (GH #5598 #5601 #5622 #5663 #5683 #5750)
+  * The default policy for TLS now no longer lists finite field Diffie-Hellman. If required for compatibility it must be enabled by the application. (GH #5782)
+  * By default OCSP no longer accepts soft-fail conditions such as network failure. (GH #5785 #5804)
+  * DTLS 1.2 servers now must either set a DTLS cookie secret and provide the peer network identity, or explicitly opt out of the cookie exchange by overriding dtls_server_require_cookie_exchange to return false. (GH #5792)
+  * Fix DTLS 1.2 handshake edge cases, including pacing of repeated timeout checks, replay of final flights after local activation, partial server-flight delivery, and delayed server-side flight handling. (GH #2310 #2498 #4022 #4036 #5696 #5790 #5791 #5792 #5793 #5800 #5801 #5802 #5803 #5811 #5829 #5834 #5835 #5836)
+  * Add support for SPAKE2+ from RFC 9383 (GH #5711)
+  * Add support for PKCS #12 (GH #5478 #5625)
+  * Add support for GCM-SIV from RFC 8452 (GH #5770)
+  * Add support for the RFC 9608 No Revocation Available extension (GH #5595)
+  * Add support for encoding name constraint extensions (GH #5734)
+  * Add X509_DN::parse and improve the parsing and printing of Distinguished Name strings, including capturing RDN groupings and escaping control characters (GH #5618 #5657 #5658)
+  * Optimize X509_DN comparison and name constraint checks using precomputed canonical encodings (GH #5652)
+  * During path validation, by default require that OCSP responses are no more than seven days old. Previously any age was accepted as long as it preceded the response’s nextUpdate. (GH #5623)
+  * Improve OCSP request and response serialization (GH #5678 #5741)
+  * Improve handling of the authority and subject key identifier extensions (GH #5735 #5737)
+  * Properly decode and handle the X509 CRL Distribution Point and Authority Information Access extensions (GH #5712)
+  * Upgrade to TLS-Anvil 1.5 (GH #5630) 
+
+- Update to 3.12.0:
+  * CVE-2026-44378: Resolve a CPU based denial of service when decoding BER encoded data.
+  * Optimize and improve certificate store search operations (GH #5510)
+  * Require strict DER when decoding PKIX types such as certificates (#5521)
+  * Discard TLS handshake state once the handshake has completed, retaining only the data needed for the active connection (GH #5517)</comment>
+    <requestid>1374833</requestid>
+  </revision>
 </revisionlist>
