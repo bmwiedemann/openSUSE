@@ -345,4 +345,13 @@ Superceed previous request.</comment>
   for tree-sitter-php-devel).</comment>
     <requestid>1372547</requestid>
   </revision>
+  <revision rev="29" vrev="5">
+    <srcmd5>e4cefa1bb129ba8dd4da8c528758397e</srcmd5>
+    <version>0.26.8</version>
+    <time>1788184566</time>
+    <user>anag_factory</user>
+    <comment>- Revendored to the latest versions of dependencies (including
+  bytes-1.12.1 to fix bsc#1274132, CVE-2026-25541).</comment>
+    <requestid>1374625</requestid>
+  </revision>
 </revisionlist>

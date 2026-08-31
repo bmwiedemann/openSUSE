@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Aug 29 17:33:38 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Revendored to the latest versions of dependencies (including
+  bytes-1.12.1 to fix bsc#1274132, CVE-2026-25541).
+
+-------------------------------------------------------------------
 Thu Aug 20 13:53:41 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Do not emit treesitter_grammar_src() rpm symbols for relative
