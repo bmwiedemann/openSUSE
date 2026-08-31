@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Aug 29 17:25:50 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 2.3.12:
+  * Update rootcerts.pem
+  * Increase version number
+  * CI: gitlab-templates/linux.yml is gone
+  * qca-ossl: do not dereference a DH key that failed to generate
+  * qca-ossl: load the default OpenSSL provider explicitly (kde#482819)
+  * CI: Add build with openssl4
+  * Update rootcerts.pem
+  * CI: A bit of janitoring
+  * Increase version number
+  * Define QCA_FULL_INCLUDE_INSTALL_DIR after USE_RELATIVE_PATHS has been processed
+  * Compile with openssl4
+  * CI:  Remove fedora 34 build
+  * Remove FreeBSD Qt5 build
+
+-------------------------------------------------------------------
 Sat Nov 22 21:23:58 CET 2025 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove unused BuildRequires: update-desktop-files.

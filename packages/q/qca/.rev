@@ -136,4 +136,25 @@
     <comment>- Remove unused BuildRequires: update-desktop-files. (forwarded request 1319432 from sbrabec)</comment>
     <requestid>1319524</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>251569aae86837dce049bbdf5c4fc6cc</srcmd5>
+    <version>2.3.12</version>
+    <time>1788184567</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.3.12:
+  * Update rootcerts.pem
+  * Increase version number
+  * CI: gitlab-templates/linux.yml is gone
+  * qca-ossl: do not dereference a DH key that failed to generate
+  * qca-ossl: load the default OpenSSL provider explicitly (kde#482819)
+  * CI: Add build with openssl4
+  * Update rootcerts.pem
+  * CI: A bit of janitoring
+  * Increase version number
+  * Define QCA_FULL_INCLUDE_INSTALL_DIR after USE_RELATIVE_PATHS has been processed
+  * Compile with openssl4
+  * CI:  Remove fedora 34 build
+  * Remove FreeBSD Qt5 build (forwarded request 1374621 from Vogtinator)</comment>
+    <requestid>1374633</requestid>
+  </revision>
 </revisionlist>
