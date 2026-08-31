@@ -1,0 +1,64 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6f9ed28e3b3f11f9649ea1f090032a75</srcmd5>
+    <version>1.1.2</version>
+    <time>1788184766</time>
+    <user>anag_factory</user>
+    <comment>New package: cm256cc, a small C++ library implementing a GF(256) Cauchy
+MDS block erasure codec - forward error correction that reconstructs lost
+blocks from redundant ones over lossy links.
+
+License: BSD-3-Clause AND GPL-3.0-only AND MIT. The codec sources
+(cm256.*, gf256.*) carry a 3-clause BSD header; the installed export.h
+visibility header is GPL-3.0-only and both public headers include it; the
+bundled sse2neon.h used on the NEON path is MIT. The BSD-2-Clause tag
+carried in hardware:sdr was wrong on all three counts and is fixed here.
+
+Why Factory: it is the erasure-coding dependency of SDRangel, which
+build-requires pkgconfig(libcm256cc). That submission is a separate
+effort and has not been filed yet, so this is the prerequisite going in
+first. The package has been maintained in hardware:sdr since 2017.
+
+Notes for the reviewer:
+
+- 1.1.2 (2025-09-20) is upstream's newest tag; master carries a single
+  cosmetic commit past it, so there is nothing newer to take. Alpine
+  ships the same release with the same ENABLE_DISTRIBUTION and
+  x86_64/aarch64 choices made independently.
+- Carries one patch, cm256cc-fix-pkgconfig-version.patch, submitted
+  upstream as gh#f4exb/cm256cc#23. Upstream never bumped PATCH_VERSION
+  for 1.1.1 or 1.1.2, so the installed libcm256cc.pc still declares
+  1.1.0. sdrangel's FindCM256cc.cmake runs a QUIET
+  pkg_check_modules(libcm256cc&gt;=1.1.2) and return()s when it fails, so
+  the stale string silently disables its cm256cc plugins with no build
+  error - upstream's own comment notes the .pc is the only place the
+  library exposes a version. The patch sets PATCH_VERSION to 2; the
+  library file becomes libcm256cc.so.1.1.2 and the SONAME is unchanged.
+  Drop it once the PR lands.
+- Split per the shared library policy into libcm256cc1 (SONAME
+  libcm256cc.so.1) and cm256cc-devel; there is no main package.
+  libcm256cc1 obsoletes the old main package, which owned the same
+  library paths.
+- Built with -DENABLE_DISTRIBUTION=ON. Upstream's default CMake path
+  probes the build host CPU with try_run() and derives the SIMD compile
+  flags and feature defines from whatever that particular worker
+  supports. ENABLE_DISTRIBUTION drops the probes and pins x86 to the
+  SSSE3 baseline the library needs anyway, and ARM to NEON. On x86_64
+  the emitted code is unchanged: openSUSE's %cmake forces
+  RelWithDebInfo, and upstream appends everything above SSSE3 to
+  CMAKE_CXX_FLAGS_RELEASE only, so those flags were already inert.
+- ExclusiveArch: x86_64 aarch64. Upstream has no scalar fallback and its
+  CMakeLists return()s early without SSSE3 or NEON, so ppc64le and s390x
+  configure to an empty build and then fail in %install. i586 would
+  compile but SSSE3 is above its baseline; armv7l needs -mfpu=neon,
+  which upstream does not add on that path.
+- Upstream hardcodes an install RPATH of %{_prefix}/lib; %cmake only
+  passes CMAKE_SKIP_INSTALL_RPATH on suse_version &lt;= 1500, so the spec
+  passes it explicitly.
+- Upstream's unit-test and UDP demo binaries are not installed;
+  cm256_test runs as %check instead.
+
+Supersedes 1374718, adding the upstream PR reference for the patch.</comment>
+    <requestid>1374720</requestid>
+  </revision>
+</revisionlist>

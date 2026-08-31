@@ -1,0 +1,136 @@
+-------------------------------------------------------------------
+Sun Aug 30 16:01:55 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Add cm256cc-fix-pkgconfig-version.patch (gh#f4exb/cm256cc#23):
+  PATCH_VERSION was never bumped for 1.1.1 or 1.1.2, so
+  libcm256cc.pc still declared 1.1.0 and sdrangel's
+  libcm256cc>=1.1.2 check silently disabled its cm256cc plugins.
+  Also renames the library file to libcm256cc.so.1.1.2; the
+  SONAME is unchanged.
+- Split the shared library out into libcm256cc1 per the shared
+  library packaging policy; -devel now requires that instead of the
+  main package, which no longer ships anything. libcm256cc1
+  obsoletes the old main package, which owned the same library
+  paths.
+- Correct License: cm256/gf256 carry the non-endorsement clause so
+  they are BSD-3-Clause not BSD-2-Clause, the installed export.h is
+  GPL-3.0-only and both public headers include it, and sse2neon.h
+  is MIT.
+- Build with -DENABLE_DISTRIBUTION=ON: the default path runs
+  try_run() CPU probes on the build host, so the compile flags and
+  feature defines depend on which worker picked the job.
+- Add ExclusiveArch: x86_64 aarch64 - upstream has no scalar
+  fallback and return()s early without SSSE3/NEON, which built
+  nothing and failed %install on ppc64le and s390x. i586 would
+  build but SSSE3 is above its baseline, and armv7l needs
+  -mfpu=neon, which upstream does not add on this path.
+- Strip upstream's hardcoded /usr/lib install RPATH.
+- Stop installing cm256_rx, cm256_test and cm256_tx; they are
+  upstream's unit-test and UDP demo programs, and cm256_tx tripped
+  binary-or-shlib-calls-gethostbyname.
+- Run cm256_test as %check.
+- Package the LICENSE file.
+- Drop Group tags and replace deprecated %make_jobs with
+  %cmake_build.
+
+-------------------------------------------------------------------
+Sat Sep 20 07:49:33 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.1.2
+  * Set cmake_minimum_required to 3.5 for compatibility with
+    cmake4.
+
+-------------------------------------------------------------------
+Fri Mar  1 21:35:12 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.1.1
+  * This release fixes a problem when compiling with gcc 13
+
+-------------------------------------------------------------------
+Sat Mar  6 11:53:05 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.1.0
+  * Now requires c++11 also includes the "nullptr" define fix
+  * Unnecessary dependency to Boost has been removed.
+
+-------------------------------------------------------------------
+Tue Apr 16 18:21:41 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.5
+  * Cmake CPU flags discovery and fixes for Clang
+
+-------------------------------------------------------------------
+Sat Dec 29 22:05:24 UTC 2018 - mardnh@gmx.de
+
+- Update to version 1.0.4
+  * Misc fixes
+
+-------------------------------------------------------------------
+Mon Oct 15 17:30:21 UTC 2018 - mardnh@gmx.de
+
+- Update to version 1.0.2
+  * cmake fixes
+- Drop patch:
+  * cm256cc-fix-cmake.patch (fixed upstream)
+
+-------------------------------------------------------------------
+Sat Oct  6 11:09:40 UTC 2018 - mardnh@gmx.de
+
+- Update to version 1.0.1
+  * Use 16 bit alignment for structures used by SIMD instructions
+  * Fixed compilation warnings
+- Drop patches:
+  * cm256cc-cmake-libsuffix.diff (fixed upstream)
+- Add patch:
+  * cm256cc-fix-cmake.patch
+
+-------------------------------------------------------------------
+Sat Jun 03 12:57:32 UTC 2017 - mardnh@gmx.de
+
+- Update to version 0.0.0+git.20170525:
+  * gf256_ctx: added init debug messages
+  * treated warning as errors and suppressed them
+  * removed warnings as errors
+- Add patch:
+  * cm256cc-cmake-force-use-neon-on-aarch64.diff
+
+-------------------------------------------------------------------
+Tue Apr 25 17:37:31 UTC 2017 - mardnh@gmx.de
+
+- Update to version 0.0.0+git.20170425:
+  * Fixed no return in non void function
+  * Truing to support aarch64
+  * Truing to support i686
+- Remove patch:
+  * 0001-Fix-no-return-in-nonvoid-function.patch (fixed upstream)
+- Add patch:
+  * cm256cc-cmake-libsuffix.diff
+* Remove gcc workaround and add "-std=c++11" to the CXXFLAGS
+
+-------------------------------------------------------------------
+Mon Apr 24 10:01:36 UTC 2017 - mpluskal@suse.com
+
+- Update dependencies to build on Leap as well
+- Exclude unsupported architectures
+- Split subpackages
+
+-------------------------------------------------------------------
+Thu Apr 13 21:29:46 UTC 2017 - mardnh@gmx.de
+
+- Update to version 0.0.0+git.20161106:
+  * Remove executables
+  * UDP transmission example (4): receiver
+  * UDP transmission example (4): check data method in receiver
+  * UDP transmission example (4): receiver program implementation
+  * UDP transmission example: complete
+  * Converted to clean C++ code
+  * Updated readme
+  * Updated readme
+  * Use a little endian test that is compatible with strict aliasing
+  * Use more precise SIMD flags and detect actual x86_64 SIMD features
+
+-------------------------------------------------------------------
+Thu Apr 13 21:27:21 UTC 2017 - mardnh@gmx.de
+
+- initial package
+

@@ -1,0 +1,9 @@
+<package name="cm256cc" project="openSUSE:Factory">
+  <title>Fast GF(256) Cauchy MDS Block Erasure Codec in C++</title>
+  <description>This is the rewrite in (as much as possible) clean C++ of cm256.
+cm256cc is a simple library for erasure codes. From given data it
+generates redundant data that can be used to recover the originals.
+
+</description>
+  <url>https://github.com/f4exb/cm256cc</url>
+</package>
