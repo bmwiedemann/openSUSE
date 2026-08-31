@@ -1095,6 +1095,7 @@
     <package name="libpango-1_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
     <package name="libparted-fs-resize0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libparted2" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
+    <package name="libpathrs0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-containers-runtime_podman -->
     <package name="libpci3" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libpciaccess0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-base-hardware -->
     <package name="libpcre2-16-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
