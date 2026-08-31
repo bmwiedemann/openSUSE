@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Aug 30 15:32:13 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 0.77.2:
+  * Let find show selected text or word at cursor
+  * Fix bug with Tab key behavior
+  * Set prgname to application ID
+  * Merge translations
+
+-------------------------------------------------------------------
 Tue Jul 21 06:55:48 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.77.1:

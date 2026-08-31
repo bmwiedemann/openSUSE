@@ -19,19 +19,17 @@
 
 %define skip_python2 1
 %define hierarchical_name org.zim_wiki.Zim
-
 Name:           zim
-Version:        0.77.1
+Version:        0.77.2
 Release:        0
 Summary:        A Desktop Wiki
 License:        GPL-2.0-or-later
-Group:          Productivity/Office/Organizers
 URL:            https://zim-wiki.org
 Source:         https://zim-wiki.org/downloads/%{name}-%{version}.tar.gz
-BuildRequires:  fdupes
 # For directory ownership
 BuildRequires:  %{python_module gobject >= 3.2}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  python3 >= 3.6.0
 BuildRequires:  typelib-1_0-Gtk-3_0
@@ -42,6 +40,9 @@ Requires:       typelib-1_0-Gtk-3_0
 Requires:       xdg-utils
 # for the version control plugin
 Suggests:       bzr
+# spec-cleaner --perl explodes this into ~20 perl(Git::*) provides; git-core
+# is a VCS tool dep here, not a perl one - keep it literal (deliberately
+# built without --perl)
 Suggests:       git-core
 Suggests:       mercurial
 BuildArch:      noarch
@@ -75,7 +76,6 @@ rm -r %{buildroot}%{_datadir}/icons/{ubuntu-mono-dark,ubuntu-mono-light}
 %fdupes -s %{buildroot}
 
 %files
-%defattr(-,root,root)
 %license LICENSE
 %doc CHANGELOG.md PLUGIN_WRITING.md CONTRIBUTING.md
 %{python_sitelib}/%{name}/
