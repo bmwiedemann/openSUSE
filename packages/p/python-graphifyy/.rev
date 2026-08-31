@@ -135,4 +135,38 @@ Version: line. Built natively on aarch64, 4023 tests pass per flavour
 (python313/python314), rpmlint 0 errors / 0 badness.</comment>
     <requestid>1374667</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3475e8cbb3bbed577f4ac5e904f25406</srcmd5>
+    <version>0.9.53</version>
+    <time>1788184650</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.9.53.
+
+Upstream: cross-language inheritance-edge corrections (JS extends, PHP
+interfaces/enums/traits, Scala traits, qualified Kotlin/Scala supertypes,
+C# interface-extends-interface, Go type-set constraints); a new optional
+Robot Framework extractor via robot.api; chat-template control tokens
+defanged by form instead of an enumerated list, closing a prompt-injection
+gap for attacker-chosen tokens. No CVE assigned upstream.
+
+Packaging:
+- BuildRequires/Recommends robotframework &gt;= 4.0 for the new [robot] extra,
+  so its extractor tests actually run.
+- The 25 tree-sitter grammar BuildRequires/Recommends now carry the version
+  floors upstream declares, so OBS holds the build unresolvable rather than
+  starting one that can only misparse. Upstream's upper caps are deliberately
+  not carried: Factory already ships tree-sitter 0.26.0, above upstream's
+  &lt;0.26 cap, and the suite is green against it.
+- tests/test_watch.py is no longer ignored in %check; its watchdog-backed
+  observer tests self-skip when watchdog is absent, leaving only
+  deterministic helper tests.
+
+Built locally on aarch64 against editors:tree-sitter/openSUSE_Factory:
+4272 passed, rpmlint 0 errors / 0 badness. The 52 rpmlint warnings are all
+python-missing-require tree-sitter-*, by design - the grammars are
+Recommends. aarch64/armv7l are unresolvable in OBS because the tree-sitter
+grammar packages are disabled for Factory's ports repo; pre-existing and
+untouched here.</comment>
+    <requestid>1374798</requestid>
+  </revision>
 </revisionlist>

@@ -19,7 +19,7 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-graphifyy
-Version:        0.9.52
+Version:        0.9.53
 Release:        0
 Summary:        Code knowledge graph builder and query CLI for AI assistants
 License:        Apache-2.0 AND MIT
@@ -35,36 +35,39 @@ BuildRequires:  %{python_module numpy >= 1.21}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module rapidfuzz >= 3.0}
+# .robot/.resource extraction parses via robot.api (upstream [robot] extra);
+# absent, those tests skip and only Robot Framework support is lost
+BuildRequires:  %{python_module robotframework >= 4.0}
 BuildRequires:  %{python_module setuptools >= 77}
 # HTTP MCP tests import starlette; extra floor is 1.3.1 (CVE-2026-48818 /
 # CVE-2026-54283)
 BuildRequires:  %{python_module starlette >= 1.3.1}
 BuildRequires:  %{python_module tree-sitter >= 0.23}
-BuildRequires:  %{python_module tree-sitter-bash}
-BuildRequires:  %{python_module tree-sitter-c-sharp}
-BuildRequires:  %{python_module tree-sitter-cpp}
-BuildRequires:  %{python_module tree-sitter-c}
-BuildRequires:  %{python_module tree-sitter-elixir}
-BuildRequires:  %{python_module tree-sitter-fortran}
-BuildRequires:  %{python_module tree-sitter-go}
-BuildRequires:  %{python_module tree-sitter-groovy}
-BuildRequires:  %{python_module tree-sitter-javascript}
-BuildRequires:  %{python_module tree-sitter-java}
-BuildRequires:  %{python_module tree-sitter-json}
-BuildRequires:  %{python_module tree-sitter-julia}
-BuildRequires:  %{python_module tree-sitter-kotlin}
-BuildRequires:  %{python_module tree-sitter-lua}
-BuildRequires:  %{python_module tree-sitter-objc}
-BuildRequires:  %{python_module tree-sitter-php}
-BuildRequires:  %{python_module tree-sitter-powershell}
-BuildRequires:  %{python_module tree-sitter-python}
-BuildRequires:  %{python_module tree-sitter-ruby}
-BuildRequires:  %{python_module tree-sitter-rust}
-BuildRequires:  %{python_module tree-sitter-scala}
-BuildRequires:  %{python_module tree-sitter-swift}
-BuildRequires:  %{python_module tree-sitter-typescript}
-BuildRequires:  %{python_module tree-sitter-verilog}
-BuildRequires:  %{python_module tree-sitter-zig}
+BuildRequires:  %{python_module tree-sitter-bash >= 0.23}
+BuildRequires:  %{python_module tree-sitter-c >= 0.23}
+BuildRequires:  %{python_module tree-sitter-c-sharp >= 0.23}
+BuildRequires:  %{python_module tree-sitter-cpp >= 0.23}
+BuildRequires:  %{python_module tree-sitter-elixir >= 0.3}
+BuildRequires:  %{python_module tree-sitter-fortran >= 0.6}
+BuildRequires:  %{python_module tree-sitter-go >= 0.23}
+BuildRequires:  %{python_module tree-sitter-groovy >= 0.1}
+BuildRequires:  %{python_module tree-sitter-java >= 0.23}
+BuildRequires:  %{python_module tree-sitter-javascript >= 0.23}
+BuildRequires:  %{python_module tree-sitter-json >= 0.23}
+BuildRequires:  %{python_module tree-sitter-julia >= 0.23}
+BuildRequires:  %{python_module tree-sitter-kotlin >= 1.0}
+BuildRequires:  %{python_module tree-sitter-lua >= 0.2}
+BuildRequires:  %{python_module tree-sitter-objc >= 3.0}
+BuildRequires:  %{python_module tree-sitter-php >= 0.23}
+BuildRequires:  %{python_module tree-sitter-powershell >= 0.26}
+BuildRequires:  %{python_module tree-sitter-python >= 0.23}
+BuildRequires:  %{python_module tree-sitter-ruby >= 0.23}
+BuildRequires:  %{python_module tree-sitter-rust >= 0.23}
+BuildRequires:  %{python_module tree-sitter-scala >= 0.23}
+BuildRequires:  %{python_module tree-sitter-swift >= 0.7}
+BuildRequires:  %{python_module tree-sitter-typescript >= 0.23}
+BuildRequires:  %{python_module tree-sitter-verilog >= 1.0}
+BuildRequires:  %{python_module tree-sitter-zig >= 1.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  alts
 BuildRequires:  fdupes
@@ -105,32 +108,33 @@ Requires:       alts
 Requires:       python-networkx >= 3.4
 Requires:       python-numpy >= 1.21
 Requires:       python-rapidfuzz >= 3.0
+Recommends:     %{python_flavor}-robotframework >= 4.0
 Recommends:     %{python_flavor}-tree-sitter >= 0.23
-Recommends:     %{python_flavor}-tree-sitter-bash
-Recommends:     %{python_flavor}-tree-sitter-c
-Recommends:     %{python_flavor}-tree-sitter-c-sharp
-Recommends:     %{python_flavor}-tree-sitter-cpp
-Recommends:     %{python_flavor}-tree-sitter-elixir
-Recommends:     %{python_flavor}-tree-sitter-fortran
-Recommends:     %{python_flavor}-tree-sitter-go
-Recommends:     %{python_flavor}-tree-sitter-groovy
-Recommends:     %{python_flavor}-tree-sitter-java
-Recommends:     %{python_flavor}-tree-sitter-javascript
-Recommends:     %{python_flavor}-tree-sitter-json
-Recommends:     %{python_flavor}-tree-sitter-julia
-Recommends:     %{python_flavor}-tree-sitter-kotlin
-Recommends:     %{python_flavor}-tree-sitter-lua
-Recommends:     %{python_flavor}-tree-sitter-objc
-Recommends:     %{python_flavor}-tree-sitter-php
-Recommends:     %{python_flavor}-tree-sitter-powershell
-Recommends:     %{python_flavor}-tree-sitter-python
-Recommends:     %{python_flavor}-tree-sitter-ruby
-Recommends:     %{python_flavor}-tree-sitter-rust
-Recommends:     %{python_flavor}-tree-sitter-scala
-Recommends:     %{python_flavor}-tree-sitter-swift
-Recommends:     %{python_flavor}-tree-sitter-typescript
-Recommends:     %{python_flavor}-tree-sitter-verilog
-Recommends:     %{python_flavor}-tree-sitter-zig
+Recommends:     %{python_flavor}-tree-sitter-bash >= 0.23
+Recommends:     %{python_flavor}-tree-sitter-c >= 0.23
+Recommends:     %{python_flavor}-tree-sitter-c-sharp >= 0.23
+Recommends:     %{python_flavor}-tree-sitter-cpp >= 0.23
+Recommends:     %{python_flavor}-tree-sitter-elixir >= 0.3
+Recommends:     %{python_flavor}-tree-sitter-fortran >= 0.6
+Recommends:     %{python_flavor}-tree-sitter-go >= 0.23
+Recommends:     %{python_flavor}-tree-sitter-groovy >= 0.1
+Recommends:     %{python_flavor}-tree-sitter-java >= 0.23
+Recommends:     %{python_flavor}-tree-sitter-javascript >= 0.23
+Recommends:     %{python_flavor}-tree-sitter-json >= 0.23
+Recommends:     %{python_flavor}-tree-sitter-julia >= 0.23
+Recommends:     %{python_flavor}-tree-sitter-kotlin >= 1.0
+Recommends:     %{python_flavor}-tree-sitter-lua >= 0.2
+Recommends:     %{python_flavor}-tree-sitter-objc >= 3.0
+Recommends:     %{python_flavor}-tree-sitter-php >= 0.23
+Recommends:     %{python_flavor}-tree-sitter-powershell >= 0.26
+Recommends:     %{python_flavor}-tree-sitter-python >= 0.23
+Recommends:     %{python_flavor}-tree-sitter-ruby >= 0.23
+Recommends:     %{python_flavor}-tree-sitter-rust >= 0.23
+Recommends:     %{python_flavor}-tree-sitter-scala >= 0.23
+Recommends:     %{python_flavor}-tree-sitter-swift >= 0.7
+Recommends:     %{python_flavor}-tree-sitter-typescript >= 0.23
+Recommends:     %{python_flavor}-tree-sitter-verilog >= 1.0
+Recommends:     %{python_flavor}-tree-sitter-zig >= 1.0
 # Matching C grammar libraries (see BuildRequires comment above).
 Recommends:     tree-sitter-bash
 Recommends:     tree-sitter-c
@@ -222,7 +226,7 @@ sed -i '1{/^#!/d}' graphify/callflow_html.py
 # PYTEST_ADDOPTS --basetemp avoids pytest-of-abuild: two query CLI
 # tests assert "build" not in the output, which matches the OBS user
 export PYTEST_ADDOPTS="--basetemp=%{_tmppath}/gfytmp"
-%pytest --ignore tests/test_skillgen.py --ignore tests/test_hooks.py --ignore tests/test_terraform.py --ignore tests/test_security.py --ignore tests/test_home_sandbox.py --ignore tests/test_watch.py --ignore tests/test_manifest_ingest.py --ignore tests/test_llm_backends.py --ignore tests/test_install_strings.py --ignore tests/test_detect.py -k "not (anthropic or openai or gemini or bedrock or ollama or test_label_communities_batches_when_over_batch_size or test_built_wheel_ships_the_full_skill_payload)"
+%pytest --ignore tests/test_skillgen.py --ignore tests/test_hooks.py --ignore tests/test_terraform.py --ignore tests/test_security.py --ignore tests/test_home_sandbox.py --ignore tests/test_manifest_ingest.py --ignore tests/test_llm_backends.py --ignore tests/test_install_strings.py --ignore tests/test_detect.py -k "not (anthropic or openai or gemini or bedrock or ollama or test_label_communities_batches_when_over_batch_size or test_built_wheel_ships_the_full_skill_payload)"
 
 %pre
 %python_libalternatives_reset_alternative graphify

@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Mon Aug 31 06:50:58 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.9.53:
+  * Cross-language inheritance edges corrected: JavaScript class
+    extends emits inherits; PHP interfaces, enums and traits become
+    class-like nodes with their heritage; Scala traits become
+    class-like nodes and qualified extends/with bases resolve to the
+    tail type; a qualified Kotlin supertype resolves to its tail type
+    rather than the package head; a C# interface extending an
+    interface is inherits, not implements; a Go interface type-set
+    constraint no longer emits a spurious embeds edge
+  * Robot Framework .robot/.resource files are extracted through the
+    official robot.api parser (new optional [robot] extra): suites,
+    test cases, user keywords, keyword-call edges and
+    resource/library imports, with case/space/underscore-insensitive
+    keyword resolution
+  * Chat-template control tokens are defanged by form (<|...|>,
+    [INST]/[SYSTEM]) instead of an enumerated few, closing a
+    prompt-injection gap for attacker-chosen tokens
+  * watch/update preserves an authored Markdown link whose target
+    node is still live under a different spelling
+  * A semantic node is no longer silently dropped when a run did not
+    re-extract the semantic tier; the shrink guard arms and the
+    source is re-queued
+  * The git hook-guard detects a search command only in an executed
+    position, not in a comment or quoted message
+  * install backs up a diverged SKILL.md before overwriting instead
+    of clobbering user edits
+  * GRAPH_REPORT community counts reconcile with what is rendered,
+    the knowledge-gaps threshold matches its label, and the wiki
+    export marks a truncated god-node relation group
+- BuildRequires/Recommends python-robotframework >= 4.0 for the new
+  [robot] extra, so the Robot Framework extractor tests run
+- Give the 25 tree-sitter grammar BuildRequires/Recommends the
+  version floors upstream declares, so OBS holds the build
+  unresolvable instead of starting one that can only misparse;
+  upstream's upper caps are deliberately not carried (Factory
+  already ships tree-sitter 0.26.0 above upstream's <0.26 cap and
+  the suite is green)
+- Stop ignoring tests/test_watch.py in %%check: its watchdog-backed
+  observer tests skip themselves when watchdog is absent, leaving
+  only deterministic helper tests
+
+-------------------------------------------------------------------
 Sun Aug 30 07:50:46 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.9.52:
