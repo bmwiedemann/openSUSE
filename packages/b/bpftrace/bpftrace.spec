@@ -42,19 +42,19 @@ BuildRequires:  bison >= 3.7
 BuildRequires:  clang%{product_libs_llvm_ver}-devel
 BuildRequires:  cmake
 BuildRequires:  flex
-BuildRequires:  libbpf-devel
 BuildRequires:  libbpf-devel-static
-BuildRequires:  libxml2-devel
 BuildRequires:  llvm%{product_libs_llvm_ver}-devel
 BuildRequires:  pkgconfig
-BuildRequires:  readline-devel
 BuildRequires:  xxd
 BuildRequires:  cmake(cereal)
 BuildRequires:  pkgconfig(libbcc) >= 0.11
+BuildRequires:  pkgconfig(libbpf)
 BuildRequires:  pkgconfig(libelf)
+BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(readline)
 BuildRequires:  pkgconfig(zlib)
 BuildRequires:  rubygem(asciidoctor)
-ExcludeArch:    %arm %ix86
+ExcludeArch:    %{arm} %{ix86}
 
 %description
 High-level tracing language for Linux, allowing for instrumentation of
@@ -75,8 +75,7 @@ system. These are all BPFtrace scripts within %{_datadir}/bpftrace, and can be
 easily modified to allow for different types of debugging.
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 # Correct the #!-line to avoid rpmlint warnings.
 find tools -name '*.bt' -type f \
