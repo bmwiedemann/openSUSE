@@ -18,7 +18,7 @@
 
 %define with_redis 1
 
-%if 0%{?suse_version} == 1500
+%if 0%{?suse_version} < 1699
 %define with_redis 0
 %endif
 

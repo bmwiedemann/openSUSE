@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 27 13:10:39 UTC 2026 - Eugenio Paolantonio <eugenio.paolantonio@suse.com>
+
+- Disable redis support in CODE 16 too (jsc#PED-16500)
+
+-------------------------------------------------------------------
 Thu Jul 23 16:52:32 UTC 2026 - chris@computersalat.de
 
 - Update to 1.3.9c
