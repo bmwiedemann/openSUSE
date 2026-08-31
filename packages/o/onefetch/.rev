@@ -535,4 +535,22 @@
   * ascii_colors should match ascii-language colors when provided by CLI when no language detected bcfca6b</comment>
     <requestid>1342183</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>8b38adfd2436df9c66751567abfe3007</srcmd5>
+    <version>2.28.1</version>
+    <time>1788184640</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.28.1:
+  * Fix CD pipeline
+
+- Update to 0.28.0:
+  New Features:
+  * Add language support for Just b0b9742
+  * Add language support for Mojo #1500
+  * Add language support for Batch file #1745
+  * Add language support for Slang #1759
+  Bug Fixes:
+  * Prevent churn calculation from returning an error on partial clones #1736</comment>
+    <requestid>1374789</requestid>
+  </revision>
 </revisionlist>

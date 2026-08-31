@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Aug 31 06:32:46 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.28.1:
+  * Fix CD pipeline
+
+-------------------------------------------------------------------
+Mon Aug 31 06:31:47 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.28.0:
+  New Features:
+  * Add language support for Just b0b9742
+  * Add language support for Mojo #1500
+  * Add language support for Batch file #1745
+  * Add language support for Slang #1759
+  Bug Fixes:
+  * Prevent churn calculation from returning an error on partial clones #1736
+
+-------------------------------------------------------------------
 Tue Mar 24 08:17:23 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.27.1:
