@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Aug 25 05:49:11 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.714.0 (0.714)
+   see /usr/share/doc/packages/perl-Dancer2-Plugin-Auth-Extensible/Changes
+
+  0.714 Mon 24 Aug 08:00:00 BST 2026
+
+      [BUG FIXES]
+
+      * Fix failing tests when sendmail binary not present on system.
+
+-------------------------------------------------------------------
 Sat Aug 15 05:39:43 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.713.0 (0.713)

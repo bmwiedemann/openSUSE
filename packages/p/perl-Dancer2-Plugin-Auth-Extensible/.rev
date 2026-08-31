@@ -52,4 +52,16 @@
         bsc#1275272</comment>
     <requestid>1372843</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fa945817fb8e817968bb8ce96eb646aa</srcmd5>
+    <version>0.714.0</version>
+    <time>1788184737</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.714.0 (0.714)
+   see /usr/share/doc/packages/perl-Dancer2-Plugin-Auth-Extensible/Changes
+  0.714 Mon 24 Aug 08:00:00 BST 2026
+      [BUG FIXES]
+      * Fix failing tests when sendmail binary not present on system.</comment>
+    <requestid>1374840</requestid>
+  </revision>
 </revisionlist>

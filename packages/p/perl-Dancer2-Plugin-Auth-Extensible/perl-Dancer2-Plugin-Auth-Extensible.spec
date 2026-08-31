@@ -18,10 +18,10 @@
 
 %define cpan_name Dancer2-Plugin-Auth-Extensible
 Name:           perl-Dancer2-Plugin-Auth-Extensible
-Version:        0.713.0
+Version:        0.714.0
 Release:        0
-# 0.713 -> normalize -> 0.713.0
-%define cpan_version 0.713
+# 0.714 -> normalize -> 0.714.0
+%define cpan_version 0.714
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Extensible authentication framework for Dancer2 apps
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -87,11 +87,6 @@ Provides:       perl(Dancer2::Plugin::Auth::Extensible::Test) = %{version}
 Provides:       perl(Dancer2::Plugin::Auth::Extensible::Test::App) = %{version}
 %undefine       __perllib_provides
 %{perl_requires}
-# MANUAL BEGIN
-# https://github.com/PerlDancer/Dancer2-Plugin-Auth-Extensible/issues/100
-BuildRequires:  sendmail
-BuildRequires:  openssl-3
-# MANUAL END
 
 %description
 A user authentication and authorisation framework plugin for Dancer2 apps.
