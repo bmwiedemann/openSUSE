@@ -1,7 +1,7 @@
 #
 # spec file for package torrentinfo
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2009 Pascal Bleser <guru@unixtech.be>
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
@@ -23,7 +23,7 @@ Name:           torrentinfo
 Version:        1.8.7
 Release:        0
 Summary:        Displays information contained in .torrent Files
-License:        GPL-2.0-only
+License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Other
 URL:            https://github.com/Fuuzetsu/torrentinfo
 Source0:        https://github.com/Fuuzetsu/torrentinfo/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
