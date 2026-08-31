@@ -1,7 +1,155 @@
 -------------------------------------------------------------------
+Mon Aug 31 06:26:47 UTC 2026 - Aleksa Sarai <cyphar@cyphar.com>
+
+- incus-config: work around an unfortunate yaml parser regression in a recent
+  version of Incus, which caused all commands to fail with:
+
+    : Failed to load configuration: Unable to decode the configuration: yaml: construct errors: <unknown position>: yaml: no documents in stream
+
+-------------------------------------------------------------------
+Sat Aug 29 04:35:30 UTC 2026 - Aleksa Sarai <cyphar@cyphar.com>
+
+- Use more standard Provides/Obsoletes incantation for obsoleting the pre-split
+  completion package names.
+- Make incus require the exact same version of incus-cli to avoid problematic
+  downgrades.
+
+-------------------------------------------------------------------
+Sat Aug 29 04:16:02 UTC 2026 - Aleksa Sarai <cyphar@cyphar.com>
+
+- Update to Incus 7.4. See upstream changelog online at
+  <https://discuss.linuxcontainers.org/t/incus-7-4-has-been-released/27169>
+
+  - CVE-2026-81500
+  - CVE-2026-81501
+
+  + UEFI Secure Boot key management
+  + Near-live migration of containers
+  + One-time boot override for virtual machines
+  + Sharing networks with restricted projects
+  + DNS NOTIFY support for network zones
+  + New table rendering in the CLI
+  + librbd backend for Ceph RBD
+  + Recovery of shared storage pools in clusters
+  + Remote-specific client certificates
+  + Raw API requests with custom headers and data files
+  + NVRAM access from QEMU scriptlets
+  + OVN multicast configuration
+  + Control of IPv6 router advertisements
+  + Burst I/O limits for network and disk devices
+  + NIC queuing disciplines
+  + Image property columns
+  + Image locations in clusters
+  + Instance start protection
+  + Ceph Object endpoint certificate
+
+-------------------------------------------------------------------
+Sun Aug  2 07:23:01 UTC 2026 - Aleksa Sarai <cyphar@cyphar.com>
+
+- Update to Incus 7.3. See upstream changelog online at
+  <https://discuss.linuxcontainers.org/t/incus-7-3-has-been-released/27033>
+
+  - CVE-2026-62867
+  - CVE-2026-62940
+  - CVE-2026-62941
+  - CVE-2026-63125
+  - CVE-2026-63343
+  - GHSA-26gp-p5fw-3r2h
+  - GHSA-67qw-68v3-36h6
+  - GHSA-7fj9-65v4-rp7h
+  - GHSA-p2v3-6wvc-cv3p
+  - GHSA-4qxq-p5hm-3q3p
+  - GHSA-m3j6-p3v3-qmjv
+  - CVE-2026-62313
+  - GHSA-6v6x-387m-rj4w
+
+  + GPU sharing for virtual machines through DRM native context
+  + UEFI variable management for virtual machines
+  + Instance port forwarding
+  + Reworked authorization configuration
+  + Introducing incus low-level
+  + BGP unnumbered support
+  + Control of nested virtualization
+  + Listing instances across all remotes
+  + Improved VM agent handling
+  + Network allocations improvements
+  + I/O limits improvements
+  + Storage pool metrics
+  + ACME External Account Binding
+  + CPU cluster reporting in the resources API
+
+-------------------------------------------------------------------
+Mon Jun 29 00:42:31 UTC 2026 - Aleksa Sarai <cyphar@cyphar.com>
+
+- Update to Incus 7.2. See upstream changelog online at
+  <https://discuss.linuxcontainers.org/t/incus-7-2-has-been-released/26879>
+
+  - CVE-2026-48749
+  - CVE-2026-48750
+  - CVE-2026-48751
+  - CVE-2026-48752
+  - CVE-2026-48755
+  - CVE-2026-48769
+  - CVE-2026-55621
+  - CVE-2026-55622
+
+  + Per-instance SELinux integration
+  + New incus default CLI command
+  + Filtered server info by default
+  + Keepalive timeout from the CLI
+  + Standalone server certificate update
+  + Static network configuration for OCI containers
+  + Per-instance BGP route advertisement
+  + Dynamic addresses in proxy NAT mode
+  + Expanded NBD access to VMs
+  + Btrfs compression for storage volumes
+  + InfiniBand SR-IOV GUID configuration
+  + Websocket origin restriction
+  + Deferred function logging
+
+-------------------------------------------------------------------
 Tue Jun 23 11:34:20 UTC 2026 - kuan yen <azazabc123@gmail.com>
 
 - fix typo on installation the completion files
+
+-------------------------------------------------------------------
+Mon Jun  1 21:39:57 UTC 2026 - Aleksa Sarai <cyphar@cyphar.com>
+
+- Update to Incus 7.1. See upstream changelog online at
+  <https://discuss.linuxcontainers.org/t/incus-7-1-has-been-released/26750>
+
+  - CVE-2026-48753
+  - CVE-2026-47753
+  - CVE-2026-48754
+  - CVE-2026-48756
+
+  + Rebuilding custom storage volumes
+  + Explicit CPU topology for virtual machines
+  + Custom TPM platform certificate
+  + Volume creation on attach
+  + Filesystem creation options for storage
+  + Low-level LINSTOR configuration
+  + IP ranges in network address sets
+  + Multicast snooping control on bridge networks
+  + Multiple addresses per remote
+  + S3 object storage improvements
+
+-------------------------------------------------------------------
+Fri May  3 23:11:35 UTC 2026 - Aleksa Sarai <cyphar@cyphar.com>
+
+- Update to Incus 7.0 LTS. See upstream changelog online at
+  <https://discuss.linuxcontainers.org/t/incus-7-0-lts-has-been-released/26641>
+
+  - CVE-2026-39402
+
+  + Landlock protection of the monitor process
+  + Split of hook and runtime environment configuration
+
+  This release removes support for:
+
+  - CGroupV1
+  - Kernels without PIDFD support (Linux < 5.1)
+  - Kernels without the new mount API (Linux < 5.2)
 
 -------------------------------------------------------------------
 Sat Mar 28 15:06:37 UTC 2026 - Aleksa Sarai <cyphar@cyphar.com>

@@ -19,3 +19,7 @@
 #     project: default
 #     protocol: incus
 #     public: false
+
+# Newer versions of Incus error out if this file is just full of comments, so
+# include an empty object to make it happy:
+{}

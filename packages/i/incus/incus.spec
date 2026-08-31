@@ -31,7 +31,7 @@
 %endif
 
 Name:           incus
-Version:        6.23
+Version:        7.4
 Release:        0
 Summary:        Container hypervisor based on LXC
 License:        Apache-2.0
@@ -58,7 +58,7 @@ Source130:      %{name}-config.yml
 Source201:      %{name}.dnsmasq
 BuildRequires:  fdupes
 BuildRequires:  file
-BuildRequires:  go >= 1.24.7
+BuildRequires:  go >= 1.26.7
 BuildRequires:  golang-packaging
 BuildRequires:  libacl-devel
 BuildRequires:  libcap-devel
@@ -77,7 +77,7 @@ BuildRequires:  fish
 BuildRequires:  zsh
 
 # this package needs the actual incus binary that is now in the CLI subpackage
-Requires:       %{name}-cli
+Requires:       %{name}-cli = %{version}
 
 Requires:       kernel-base >= 5.4
 # Bits required for images and other things at runtime.
@@ -168,7 +168,8 @@ Summary:        Bash Completion for %{name}-cli
 Group:          System/Management
 Requires:       %{name}-cli = %{version}
 Supplements:    (%{name}-cli and bash-completion)
-Obsoletes:      %{name}-bash-completion
+Provides:       %{name}-bash-completion = %{version}
+Obsoletes:      %{name}-bash-completion < %{version}
 BuildArch:      noarch
 
 %description cli-bash-completion
@@ -179,7 +180,8 @@ Summary:        Fish Completion for %{name}-cli
 Group:          System/Management
 Requires:       %{name}-cli = %{version}
 Supplements:    (%{name}-cli and fish)
-Obsoletes:      %{name}-fish-completion
+Provides:       %{name}-fish-completion = %{version}
+Obsoletes:      %{name}-fish-completion < %{version}
 BuildArch:      noarch
 
 %description cli-fish-completion
@@ -190,7 +192,8 @@ Summary:        Zsh Completion for %{name}-cli
 Group:          System/Management
 Requires:       %{name}-cli = %{version}
 Supplements:    (%{name}-cli and zsh)
-Obsoletes:      %{name}-zsh-completion
+Provides:       %{name}-zsh-completion = %{version}
+Obsoletes:      %{name}-zsh-completion < %{version}
 BuildArch:      noarch
 
 %description cli-zsh-completion
@@ -462,7 +465,6 @@ grep -q '^root:' /etc/subgid || \
 %{_bindir}/lxc-to-incus
 %{_sbindir}/incus-fuidshift
 %{_sbindir}/incus-migrate
-%{_sbindir}/lxd-to-incus
 
 %files cli-bash-completion
 %defattr(-,root,root)
