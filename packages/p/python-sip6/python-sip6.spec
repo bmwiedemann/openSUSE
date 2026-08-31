@@ -23,14 +23,16 @@
 %bcond_with libalternatives
 %endif
 Name:           python-sip6
-Version:        6.15.3
+Version:        6.16.1
 Release:        0
 Summary:        A Python bindings generator for C/C++ libraries
 License:        BSD-2-Clause
 Group:          Development/Libraries/Python
 URL:            https://github.com/Python-SIP/sip
 Source0:        https://github.com/Python-SIP/sip/archive/refs/tags/%{version}.tar.gz#/sip-%{version}-gh.tar.gz
-BuildRequires:  %{python_module base >= 3.9}
+# PATCH-FIX-UPSTREAM sip-6.16.1-abi-fix.patch gh#Python-SIP/sip#114
+Patch0:         https://github.com/philthompson10/sip/commit/09598895c607f3e41f0249ade217ace0a4da6437.patch#/sip-6.16.1-abi-fix.patch
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module packaging >= 24.2}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}

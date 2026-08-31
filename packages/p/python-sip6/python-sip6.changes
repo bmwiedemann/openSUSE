@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Sun Aug 30 10:11:54 UTC 2026 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.16.1
+  * Support for GCC v16
+  * The code generated for comparison operators was changed to
+  satisfy GCC v16’s implementation of C++20. Support for multi-arch
+  stable ABI filenames
+  * Python v3.15 adds support for architecture-specific tags in the
+    names of extension modules that use the stable ABI. SIP will
+    generate these tags if they are supported.
+  * This also fixes a regression in SIP v6.16.0. Resolves #112
+  ## Bug fixes
+  * Reverted a change in SIP v6.16.0 that allowed options specified
+    as arguments to a sipbuild.Project sub-class in a project.py
+    file to be overridden on the command line or in a
+    pyproject.toml file.
+- Release v6.16.0
+  * The current ABI versions are now v12.19.0 and v13.12.0 and
+    v14.0.0.
+  * ABI v14 has been added as an experimental ABI. Bindings that
+    target this ABI can support multiple interpreters and
+    free-threading. Python v3.15 or later is required.
+  * __buffer__() and __release_buffer__() are now generated as part
+    of a class definition in a .pyi file where appropriate.
+  * get_limited_abi_version() was added to the Project class to
+    give a project complete control over the version of the Python
+    ABI to be targeted.
+  * Support for PEP 803: Support was added for the stable ABI in
+    free-thread builds (PEP 803). The Py_TARGET_ABI3T C
+    preprocessor macro is defined and the abi3.abi3t composite
+    wheel tag is used when appropriate.
+  * Improved pickle support: The format used to pickle wrapped
+    types has been changed to be more robust and faster. Pickles
+    using the legacy format can still be read but the new format
+    will be used if they are rewritten. All ABI versions can read
+    the new format.
+  * /Factory/ not supported for non-pointers: The /Factory/
+    annotation is not intended to be used for callables that return
+    non-pointers. This is now enforced and will result in a
+    build-time error.
+  * Improved support for /Movable/: The /Movable/ mapped type
+    annotation is properly supported when an instance is returned
+    by a Python reimplemention of a virtual.
+  * It is now a build error when it is known that a mapped type
+    needs to be copied and there is no assignment operator
+    available.
+  * Some mapped type annotations imply the setting of other mapped
+    type annotations. These are now documented.
+  ## Bug fixes
+  * It is now possible to override a setting in pyproject.toml from
+    the command line
+  * Explicitly clean up temporary build directories to avoid a
+    resource warning.
+  * It is now an error to specify DisallowNone for string types.
+  * Fixed bugs in ABI v12 and v13 that could cause crashes when
+    memory is short.
+  * The /Capsule/ typedef annotation now behaves as documented.
+  * Virtual error handlers are now handled correctly.
+  * Ensure that the --help and --version command line options work
+    when the pyproject.toml file is missing. Resolves #109
+  * Ensure than the --help and --version command line options
+    always work. Resolves #107
+  * A regression in v6.15.0 in the PEP 604 support for using the |
+    operator instead of Optional in pointers to ordinary types was
+    fixed. Resolves #108
+  * The type hints generated for output arguments is now correct.
+  * A number of other type hint fixes to make them more accurate.
+  * Generated type stub files no longer depend on import loader
+    side effects.
+- Add sip-6.16.1-abi-fix.patch gh#Python-SIP/sip#114
+
+-------------------------------------------------------------------
 Thu Apr 30 12:07:23 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to 6.15.3:
