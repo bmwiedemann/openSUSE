@@ -1,7 +1,7 @@
 #
 # spec file for package cxxtools
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,10 @@ Patch1:         0001-add-missing-header-time.h-to-src-timer.cpp.patch
 Patch2:         0001-remove-timespan-unittest-which-is-prone-to-rounding-.patch
 Patch3:         0001-fix-reading-time-zones-on-32-bit-systems.patch
 Patch4:         0001-remove-range-check-in-serializationinfo.patch
+# PATCH-FIX-UPSTREAM https://github.com/maekitalo/cxxtools/commit/354ddfecd33067d8aac339437defdcf0b8c32b68.patch
+Patch5:         354ddfecd33067d8aac339437defdcf0b8c32b68.patch
+# PATCH-FIX-UPSTREAM https://github.com/maekitalo/cxxtools/commit/7de2501261ace60a5851af6ec3f1832ab25d4458.patch
+Patch6:         7de2501261ace60a5851af6ec3f1832ab25d4458.patch
 BuildRequires:  autoconf
 BuildRequires:  gcc-c++
 BuildRequires:  libtool

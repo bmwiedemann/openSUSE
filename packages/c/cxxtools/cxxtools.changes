@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Aug 28 12:22:54 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 354ddfecd33067d8aac339437defdcf0b8c32b68.patch and
+  7de2501261ace60a5851af6ec3f1832ab25d4458.patch to fix build on C++20/GCC 16+:
+  * 354ddfecd33067d8aac339437defdcf0b8c32b68.patch: Replaces removed std::allocator
+    members (reference, const_reference, pointer, const_pointer, difference_type)
+    and applies upstream C++20 compatibility fixes for charmapcodec/log flag casts.
+  * 7de2501261ace60a5851af6ec3f1832ab25d4458.patch: Fixes test assertion compilation
+    failure due to C++20 deleted ostream operator for wide characters/strings.
+
+-------------------------------------------------------------------
 Thu Aug 11 08:51:05 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add upstream changes to fix build and tests:
