@@ -2387,6 +2387,7 @@ unsorted:
   - cm 
   - cm-devel 
   - cm-unicode-fonts 
+  - cm256cc-devel 
   - cmake 
   - cmake-doc-qhelp 
   - cmake-extras 
@@ -12623,7 +12624,7 @@ unsorted:
   - libboost_wave1_91_0-devel 
   - libboost_wave1_91_0-x86-64-v3 
   - libboringssl1 
-  - libbotan-3-11 
+  - libbotan-3-13 
   - libbotan-devel 
   - libbox2d-devel 
   - libbpf-devel 
@@ -12875,6 +12876,7 @@ unsorted:
   - libclthreads2 
   - libclxclient3 
   - libcm1 
+  - libcm256cc1 
   - libcmark-gfm-extensions0_29_0_gfm_13 
   - libcmark-gfm0_29_0_gfm_13 
   - libcmh0 
@@ -15541,7 +15543,6 @@ unsorted:
   - libpasswdqc0 
   - libpathrs-devel 
   - libpathrs-devel-static 
-  - libpathrs0 
   - libpcap-devel 
   - libpcap-devel-32bit 
   - libpcap-devel-static 
@@ -45745,6 +45746,7 @@ unsorted:
   - totem-pl-parser-devel 
   - touchegg 
   - tp_smapi-kmp-default 
+  - tp_smapi-kmp-longterm 
   - tpm-fido 
   - tpm-quote-tools 
   - tpm-tools 
@@ -47475,6 +47477,7 @@ unsorted:
   - xgc 
   - xh 
   - xhfsutil 
+  - xhydra 
   - xindy 
   - xindy-rules 
   - xine-ui 
