@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Sun Aug 30 16:42:25 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.6.2.1
+  * Fixed misses of register writes problem at the LLE-OPL3
+    emulator.
+  * Fixed build when default embedded banks database regeneration
+    is enabled.
+- Update to version 1.6.2
+  * Fixed the random stuck problem in the DOS version of the
+    ADLMIDI player.
+  * Added support for HMI and HMP files!
+  * Added support for in-track (local) loops.
+  * Optimized work with chip instruments.
+  * The panic will be always triggered on attempt to switch the
+    bank.
+  * Improved sounding accuracy at DMX banks.
+  * Added MS Adlib driver's for Win3x volume model.
+  * Added IMF Creator's volume model.
+  * Added Jammie O'Connel's FM Synth volume model.
+  * Added support for DMX OP2's Fixed Note feature for
+    melodicinstruments.
+  * Fixed the unexpected playback distortion while playing
+    IMF/CMF/KLM files using DosBox OPL3 emulator.
+  * Fixed unexpected non-GM instruments from embedded bank
+    appears when loading custom GM-only bank.
+  * Added adl_rt_rawOPL3() public API to send raw OPL3 register
+    writes to a specific chip, reusing the same internal routing
+    used by IMF/KLM playback. Allows callers to render raw-OPL
+    formats alongside MIDI playback on the same chip.
+  * Added adl_reserveChipChannels() / adl_getReservedChipChannels()
+    public API for per-chip bitmask reservation of chip channels,
+    so the MIDI voice allocator will skip them and leave them free
+    for raw OPL writes.
+  * The Nuked OPL3 v1.8 got been slightly updated to sync with the
+    mainstream to have all recent envelope generator fixes.
+  * The old Nuked OPL3 v1.7 emulator is replaced with an optimised
+    alternative fork by tgies.
+  * Added Nuked CQM emulator (Emulator of the Creative's OPL3 clone
+    chip known as Creative Quadratic Modulation).
+  * Fixed the silence problem at the MIDI channel after playing too
+    many notes without Note OFF event.
+  * Added adl_setDeviceFilterMask() public API to assign the device
+    filter mask for the HMI/HMP/EMIDI tracks disabling/enabling.
+  * Added handling of music files designed for the EMIDI standard
+    from the Apogee Sound System. This feature must be enabled
+    manually to avoid heuristics and possible conflicts.
+  * Added adl_setModeEMIDI() public API to enable handling EMIDI
+    specification events without conflicts to other formats.
+  * Added an ability to run the DosBox emulator in OPL2 mode.
+
+-------------------------------------------------------------------
 Mon Sep 22 09:32:17 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.6.1
