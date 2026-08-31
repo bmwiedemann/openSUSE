@@ -7,4 +7,41 @@
     <comment>Add package required for python-requests-ratelimiter ( https://build.opensuse.org/requests/1347051 )</comment>
     <requestid>1347052</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6dd612e8caecf415fcd0a3e12a0e4721</srcmd5>
+    <version>4.4.0</version>
+    <time>1788184615</time>
+    <user>anag_factory</user>
+    <comment>- Add missing BuildRequires on psmisc for killall.
+- Rewrite description.
+
+- update to 4.4.0:
+  * Bug-fix, scalability, and internal-refactor release. No
+    public API changes
+  * **InMemoryBucket**: guard the internal item list with a lock
+    so the background `Leaker` thread can no longer race
+    `put`/`peek`/`leak`. This was a data race in the default
+    configuration (in-memory bucket + scheduled leak).
+  * `MultiprocessBucket` aliases this lock to its shared cross-
+    process lock.
+  * **PostgresClock**: when the DB time query fails, fall back to
+    local **wall-clock** epoch time instead of monotonic time. The
+    monotonic fallback was ~5 orders of magnitude smaller than the
+    stored epoch-ms timestamps and would corrupt every window
+    comparison and leak bound.
+  * **Leaker**: make the background sync-leak worker restartable.
+    Re-registering a bucket after every bucket had been disposed
+    previously raised
+  * **Limiter**: release the limiter lock during the synchronous
+    blocking wait, so a long wait on one key no longer serializes
+    acquisitions for every other key sharing the limiter.
+  * **RedisBucket**: batch weighted `ZADD`s in bounded chunks
+    inside the atomic Lua script, lowering latency for high-weight puts.
+  * Unify the limiter's sync/async acquire plumbing into a single
+    coroutine and share the delay-step decision across the sync
+    and async branches.
+  * Add a declarative `is_async` bucket attribute so the `Leaker`
+    no longer detects async by executing a side-effecting `leak(0)`</comment>
+    <requestid>1374777</requestid>
+  </revision>
 </revisionlist>

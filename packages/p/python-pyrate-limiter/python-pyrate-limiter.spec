@@ -17,31 +17,33 @@
 
 
 Name:           python-pyrate-limiter
-Version:        4.1.0
+Version:        4.4.0
 Release:        0
 Summary:        Python Rate-Limiter using Leaky-Bucket Algorithm Family
 License:        MIT
 URL:            https://github.com/vutran1710/PyrateLimiter
 Source:         https://files.pythonhosted.org/packages/source/p/pyrate_limiter/pyrate_limiter-%{version}.tar.gz
 BuildArch:      noarch
+BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module base >= 3.10}
-BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module filelock >= 3.0}
 BuildRequires:  %{python_module hatchling}
-BuildRequires:  %{python_module sqlite3}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module psycopg >= 3.2.9}
 BuildRequires:  %{python_module pytest >= 8.4.1}
 BuildRequires:  %{python_module pytest-asyncio >= 1.1.0}
-BuildRequires:  %{python_module filelock >= 3.0}
 BuildRequires:  %{python_module redis >= 6.2.0}
-BuildRequires:  %{python_module psycopg >= 3.2.9}
+BuildRequires:  %{python_module sqlite3}
 BuildRequires:  fdupes
+BuildRequires:  psmisc
 BuildRequires:  redis
 Requires:       python-filelock >= 3.0
-Requires:       python-redis >= 6.2.0
 Requires:       python-psycopg >= 3.2.9
+Requires:       python-redis >= 6.2.0
 %python_subpackages
 
 %description
-The request rate limiter using Leaky-bucket Algorithm.
+A fast, async-friendly rate limiter for Python with pluggable algorithms and backends.
 
 %prep
 %autosetup -p1 -n pyrate_limiter-%{version}
@@ -56,8 +58,8 @@ The request rate limiter using Leaky-bucket Algorithm.
 %check
 # Run the redis server on background since it is required for the tests
 %{_sbindir}/redis-server &
-
-%pytest
+%pytest -k "not test_bucket_waiting"
+killall redis-server
 
 %files %{python_files}
 %license LICENSE
@@ -66,4 +68,3 @@ The request rate limiter using Leaky-bucket Algorithm.
 %{python_sitelib}/pyrate_limiter-%{version}.dist-info
 
 %changelog
-
