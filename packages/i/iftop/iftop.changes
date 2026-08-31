@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 24 18:32:53 UTC 2026 - Luiz Angelo Daros de Luca <luizluca@tre-sc.jus.br>
+
+- Added 008-Fix-bug-with-DNS-resolution.-https-bugzilla.redhat.c.patch
+  Backport fix for IPv6 DNS reverse
+
+-------------------------------------------------------------------
 Tue Mar  4 15:33:38 UTC 2025 - pgajdos@suse.com
 
 - 
