@@ -18,7 +18,6 @@
 #!BuildTag: opensuse/kubectl:%%kubectl_version%%-%RELEASE%
 #!BuildTag: opensuse/kubectl:%%kubectl_version%%
 #!BuildTag: opensuse/kubectl:1.36
-#!BuildTag: opensuse/kubectl:latest
 
 #!FilterBaseContainerPkgs
 FROM opensuse/bci/bci-micro:latest AS target
