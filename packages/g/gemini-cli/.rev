@@ -998,4 +998,41 @@
   * no change over 0.55.1</comment>
     <requestid>1373320</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>0042a55d462cd29dba63d6f9e113de15</srcmd5>
+    <version>0.57.0</version>
+    <time>1788184748</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.57.0:
+  * fix(core): dynamically resolve Cloud Workstations proxy
+    redirect URI for OAuth flows
+  * fix(core): resolve swallowed directory mismatch in IDE
+    connections
+  * Feat/eval validate
+  * feat(evals): add tool call formatter and integrate failure
+    summaries
+  * Changelog for v0.55.1
+  * test(e2e): stabilize file-system-interactive test on slow
+    runners
+  * fix(core): implement context-aware silent retries and
+    availability TTL for capacity errors
+  * fix(core): rollback entire multi-turn request on cancellation
+    or abort
+  * fix(core): normalize git environment and resolve workspace
+    state mismatch
+  * [SSR Agent] Issue Fix (19826): Migrate process.env to
+    vi.stubEnv in a2a-server tests
+  * [SSR Agent] Issue Fix (21911): Add composite flag to
+    packages/cli tsconfig
+  * [SSR Agent] Issue Fix (26120): Clarify privacy notice wording
+    and selection options
+  * [SSR Agent] Issue Fix (21919): Fix TypeScript strict-null
+    errors in integration tests
+  * [SSR Agent] Issue Fix (21477): Prevent indefinite TUI hang by
+    adding execution timeouts
+  * [SSR Agent] Issue Fix (19239): Update /clear command docs to
+    include context reset
+  * [SSR Agent] Issue Fix (24587): Fix misleading admin error for</comment>
+    <requestid>1374841</requestid>
+  </revision>
 </revisionlist>

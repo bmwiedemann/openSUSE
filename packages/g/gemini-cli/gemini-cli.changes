@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Mon Aug 31 10:39:30 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.57.0:
+  * fix(core): dynamically resolve Cloud Workstations proxy
+    redirect URI for OAuth flows
+  * fix(core): resolve swallowed directory mismatch in IDE
+    connections
+  * Feat/eval validate
+  * feat(evals): add tool call formatter and integrate failure
+    summaries
+  * Changelog for v0.55.1
+  * test(e2e): stabilize file-system-interactive test on slow
+    runners
+  * fix(core): implement context-aware silent retries and
+    availability TTL for capacity errors
+  * fix(core): rollback entire multi-turn request on cancellation
+    or abort
+  * fix(core): normalize git environment and resolve workspace
+    state mismatch
+  * [SSR Agent] Issue Fix (19826): Migrate process.env to
+    vi.stubEnv in a2a-server tests
+  * [SSR Agent] Issue Fix (21911): Add composite flag to
+    packages/cli tsconfig
+  * [SSR Agent] Issue Fix (26120): Clarify privacy notice wording
+    and selection options
+  * [SSR Agent] Issue Fix (21919): Fix TypeScript strict-null
+    errors in integration tests
+  * [SSR Agent] Issue Fix (21477): Prevent indefinite TUI hang by
+    adding execution timeouts
+  * [SSR Agent] Issue Fix (19239): Update /clear command docs to
+    include context reset
+  * [SSR Agent] Issue Fix (24587): Fix misleading admin error for
+    personal accounts
+  * [SSR Agent] Issue Fix (19463): Format cli_help subagent
+    output as markdown
+  * [SSR Agent] Issue Fix (28050): Add Vertex AI locations
+    documentation link
+  * [SSR Agent] Issue Fix (22093): Prevent subagents from running
+    when agents mode is disabled
+  * [SSR Agent] Issue Fix (23954): Add trailing space to
+    autocomplete suggestions
+  * [SSR Agent] Issue Fix (24935): Force terminal buffer rerender
+    after exiting external editors
+  * [SSR Agent] Issue Fix (28518): Fix sub-agent handoff token
+    regression on startup
+  * fix(core): preserve empty text turns with tools or media
+  * fix(patch): cherry-pick 812f7a2 to
+    release/v0.57.0-preview.0-pr-28934 to patch version
+    v0.57.0-preview.0 and create version 0.57.0-preview.1
+  * **Full Changelog**: https://github.com/google-gemini/gemini-
+    cli/compare/v0.56.0...v0.57.0
+
+-------------------------------------------------------------------
 Mon Aug 24 06:00:52 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.56.0:
