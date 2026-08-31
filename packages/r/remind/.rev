@@ -1179,4 +1179,30 @@
   reminders.</comment>
     <requestid>1373378</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>6c786129e7f7a1ab385729b3d5db87a1</srcmd5>
+    <version>6.3.1</version>
+    <time>1788186456</time>
+    <user>anag_factory</user>
+    <comment>- VERSION 06.03.01 - 2026-08-24
+- DOCUMENTATION FIX: Update to current text of GPL version 2.0,
+  pointed out by Dick Marinus.
+- INCLUDED FILES: include/sun.rem: Guard against errors if a day lacks
+  a sunrise or sunset.
+- MINOR IMPROVEMENT: tkremind: The configure script looks for tclsh,
+  wish, and a few common versioned-names thereof.  It prefers tclsh,
+  but falls back to wish.
+- MINOR IMPROVEMENT: remind: Fix code in a few places that was causing
+  &quot;make cppcheck&quot; warnings.
+- MINOR CHANGE: tkremind: Disable the &quot;ibus&quot; input method.  It makes
+  Tcl/Tk programs very slow; see
+  https://github.com/ibus/ibus/issues/2924
+- CLEANUPS: Cleanup and simplification of the &quot;make test&quot; target,
+  courtesy of Jochen Sprickerhof.
+- BUG FIX: remind: Cast all arguments to functions in ctype.h to
+  unsigned char.  Remind was technically using these functions
+  incorrectly, but only NetBSD was picky enough to actually make them
+  fail.</comment>
+    <requestid>1374853</requestid>
+  </revision>
 </revisionlist>

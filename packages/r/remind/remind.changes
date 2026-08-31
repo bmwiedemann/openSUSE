@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Aug 31 12:05:43 UTC 2026 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- VERSION 06.03.01 - 2026-08-24
+
+- DOCUMENTATION FIX: Update to current text of GPL version 2.0,
+  pointed out by Dick Marinus.
+
+- INCLUDED FILES: include/sun.rem: Guard against errors if a day lacks
+  a sunrise or sunset.
+
+- MINOR IMPROVEMENT: tkremind: The configure script looks for tclsh,
+  wish, and a few common versioned-names thereof.  It prefers tclsh,
+  but falls back to wish.
+
+- MINOR IMPROVEMENT: remind: Fix code in a few places that was causing
+  "make cppcheck" warnings.
+
+- MINOR CHANGE: tkremind: Disable the "ibus" input method.  It makes
+  Tcl/Tk programs very slow; see
+  https://github.com/ibus/ibus/issues/2924
+
+- CLEANUPS: Cleanup and simplification of the "make test" target,
+  courtesy of Jochen Sprickerhof.
+
+- BUG FIX: remind: Cast all arguments to functions in ctype.h to
+  unsigned char.  Remind was technically using these functions
+  incorrectly, but only NetBSD was picky enough to actually make them
+  fail.
+
+-------------------------------------------------------------------
 Mon Aug 24 11:08:47 UTC 2026 - Detlef Steuer <detlef.steuer@gmx.de>
 
 - VERSION 06.03.00 - 2026-08-20
