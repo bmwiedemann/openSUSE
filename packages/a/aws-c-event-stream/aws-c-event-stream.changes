@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Aug 25 17:05:34 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.7.2
+  * Support s2n-tls on macOS by @sfod in (#148)
+  * Regression Labeler Fix by @azkrishpy in (#150)
+  * Use latest as aws-crt-builder version by @sfod in (#151)
+  * CI/CD improvements by @azkrishpy in (#153)
+- Prefer explicit path and filenames over wildcards in %files section
+- Refresh aces_re-add-so-version.patch
+
+-------------------------------------------------------------------
 Fri May 22 07:48:02 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.7.1

@@ -21,7 +21,7 @@
 %define library_version 1.0.0
 %define library_soversion 1
 Name:           aws-c-event-stream
-Version:        0.7.1
+Version:        0.7.2
 Release:        0
 Summary:        C99 implementation of the vnd.amazon.eventstream content-type
 License:        Apache-2.0
@@ -87,12 +87,12 @@ export LD_LIBRARY_PATH=%{_builddir}/%{name}-%{version}/build
 %files -n lib%{name}%{library_soversion}
 %doc NOTICE README.md
 %license LICENSE
-%{_libdir}/*.so.%{library_soversion}
-%{_libdir}/*.so.%{library_version}
+%{_libdir}/lib%{name}.so.%{library_soversion}
+%{_libdir}/lib%{name}.so.%{library_version}
 
 %files devel
 %{_libdir}/cmake/
-%{_libdir}/*.so
+%{_libdir}/lib%{name}.so
 %{_includedir}/aws/
 
 %changelog

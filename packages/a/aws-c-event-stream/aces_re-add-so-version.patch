@@ -1,9 +1,9 @@
-diff -Nru aws-c-event-stream-0.2.5.orig/CMakeLists.txt aws-c-event-stream-0.2.5/CMakeLists.txt
---- aws-c-event-stream-0.2.5.orig/CMakeLists.txt	2020-11-13 21:29:52.000000000 +0100
-+++ aws-c-event-stream-0.2.5/CMakeLists.txt	2020-11-26 17:32:23.861160125 +0100
-@@ -71,6 +71,7 @@
+diff -Nru aws-c-event-stream-0.7.2.orig/CMakeLists.txt aws-c-event-stream-0.7.2/CMakeLists.txt
+--- aws-c-event-stream-0.7.2.orig/CMakeLists.txt	2026-08-18 01:12:45.000000000 +0000
++++ aws-c-event-stream-0.7.2/CMakeLists.txt	2026-08-25 17:03:16.806621437 +0000
+@@ -53,6 +53,7 @@
  
- 
+ # TODO: switch to VERSION derived from the VERSION file (via aws_get_version) once SOVERSION is set explicitly, to avoid changing the SONAME.
  set_target_properties(${PROJECT_NAME} PROPERTIES VERSION 1.0.0)
 +set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES SOVERSION 1)
  
