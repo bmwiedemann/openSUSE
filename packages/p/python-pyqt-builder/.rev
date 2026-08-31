@@ -249,4 +249,13 @@
     <comment>update</comment>
     <requestid>1311794</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>f330e86c6cb397e28977d3094874bccd</srcmd5>
+    <version>1.19.1</version>
+    <time>1788184570</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.19.1
+  * No relevant changes for Linux builds (MSVC DLL bundling)</comment>
+    <requestid>1374679</requestid>
+  </revision>
 </revisionlist>
