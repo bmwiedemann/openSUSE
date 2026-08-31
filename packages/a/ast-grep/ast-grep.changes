@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Aug 31 06:45:45 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to version 0.45.3:
+  * 0.45.3 bump version
+  * chore(deps): update dependency dprint to v0.57.0 (#2916)
+  * feat: add min-severity cli (#2917)
+  * chore: update tree-sitter 0.27
+  * fix: ast-grep-ignore must be at first be the frist alphabet to take effect
+  * fix: fix clippy
+  * fix(outline): anchor fallback signatures to names (#2913)
+  * feat(outline): add Markdown heading support (#2912)
+  * chore(deps): update dependency oxlint to v1.80.0 (#2908)
+  * chore(deps): update dependency @ast-grep/napi to v0.45.2 (#2906)
+
+-------------------------------------------------------------------
 Mon Aug 24 06:37:00 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to version 0.45.2:
