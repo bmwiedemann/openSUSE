@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Mon Aug 24 10:59:52 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260824.b49927f7:
+  * Freeze: also setup product repository for Agama offline image
+
+-------------------------------------------------------------------
+Thu Aug 20 10:11:21 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260820.83a60fac:
+  * check_bugowner: Check for activeness on SUSEID.
+
+-------------------------------------------------------------------
+Fri Aug 14 06:08:49 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260814.56bb2150:
+  * pkglistgen: Force 2nd run for prodcomposer
+
+-------------------------------------------------------------------
+Wed Aug 12 14:39:35 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260812.462c7753:
+  * staging: update frozenage to show all letter projects
+
+-------------------------------------------------------------------
+Thu Aug 06 12:04:34 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260806.96e0d04a:
+  * feat: add yaml needed for qem-bot to trigger PR testing
+
+-------------------------------------------------------------------
+Thu Aug 06 11:07:26 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260806.74804271:
+  * pkglistgen Factory: enable caluclation of Agama Offline image
+  * legal-auto: add HTTP timeouts so legaldb calls cannot hang forever
+
+-------------------------------------------------------------------
+Wed Aug 05 11:59:24 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260805.e225a6af:
+  * pkglistgen: Add flag allowing to build package lists for dirty projects.
+
+-------------------------------------------------------------------
+Mon Aug 03 13:52:23 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260803.cd062e3b:
+  * gocd: Drop obsolete pipelines
+
+-------------------------------------------------------------------
+Fri Jul 31 13:30:16 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260731.a33bef70:
+  * pkglistgen: fix frequent error with mis-detected latest collection
+
+-------------------------------------------------------------------
+Fri Jul 31 12:52:45 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260731.44d54628:
+  * gocd/rabbit-repoid.py: Skip :PullRequest: projects
+
+-------------------------------------------------------------------
+Fri Jul 31 12:29:13 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260731.68cf6248:
+  * gocd: enable shallow_clone for the botmaster suse-repos and opensuse-repos materials
+
+-------------------------------------------------------------------
+Fri Jul 24 16:06:53 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260724.593c1817:
+  * gocd: run SLE.Legal.Import at 02:00 instead of midnight
+
+-------------------------------------------------------------------
 Fri Jul 17 09:03:47 UTC 2026 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20260717.a122b2ed:
