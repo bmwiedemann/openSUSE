@@ -930,4 +930,12 @@
     <comment>July 2026 CPU fixes</comment>
     <requestid>1369432</requestid>
   </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>5ddab4f325630d2cf5893e53364213c9</srcmd5>
+    <version>1.8.0.504</version>
+    <time>1788184758</time>
+    <user>anag_factory</user>
+    <comment>August 2026 CSPU fixes</comment>
+    <requestid>1374846</requestid>
+  </revision>
 </revisionlist>

@@ -20,7 +20,7 @@
 %global make make
 %{!?aarch64:%global aarch64 aarch64 arm64 armv8}
 %global jit_arches %{ix86} x86_64 ppc64 ppc64le %{aarch64} %{arm}
-%global icedtea_version 3.40.0
+%global icedtea_version 3.40.1
 %global buildoutputdir openjdk.build/
 %global headless_binaries java keytool orbd policytool rmid rmiregistry servertool tnameserv
 %global headless_binaries_comma %(echo %{headless_binaries} | sed 's#\ #,#g')
@@ -43,8 +43,8 @@
 %global priority        1805
 %global featurever      8
 %global javaver         1.%{featurever}.0
-%global updatever       502
-%global buildver        07
+%global updatever       504
+%global buildver        01
 # Standard JPackage directories and symbolic links.
 %global sdklnk          java-%{javaver}-openjdk
 %global archname        %{sdklnk}

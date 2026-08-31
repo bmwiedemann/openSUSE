@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Aug 31 06:24:20 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version jdk8u504 (icedtea 3.40.1)
+  * CVEs
+    + CVE-2026-60589, bsc#1275777
+    + CVE-2026-61308, bsc#1275778
+    + CVE-2026-70907, bsc#1275764
+  * Import of OpenJDK 8 u504 build 01
+    + JDK-8382471: Improve Resource Resolving
+    + JDK-8384708: Enhance HTTP Connections
+    + JDK-8385390: Update FreeType to 2.14.3
+    + JDK-8386205: Enhance TLS server
+    + JDK-8388811: [8u] VS2010 build broken by JDK-8374058
+    + JDK-8389477: Bump update version for OpenJDK: 8u504
+
+-------------------------------------------------------------------
 Tue Aug  4 07:40:34 UTC 2026 - Andreas Schwab <schwab@suse.de>
 
 - Modified patch:
