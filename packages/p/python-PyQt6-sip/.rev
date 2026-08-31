@@ -163,4 +163,17 @@
     <comment> (forwarded request 1350683 from alarrosa)</comment>
     <requestid>1350694</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>3243cd94b879f55cb9c5fa31e6a9ec8f</srcmd5>
+    <version>13.12.0</version>
+    <time>1788184573</time>
+    <user>anag_factory</user>
+    <comment>- Update to ABI 13.12
+  * GCC v16 support
+  * Python 3.15 support
+  * PEP 803
+  * see also python-sip6 package
+</comment>
+    <requestid>1374682</requestid>
+  </revision>
 </revisionlist>
