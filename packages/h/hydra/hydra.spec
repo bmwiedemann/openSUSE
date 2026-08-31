@@ -1,7 +1,7 @@
 #
 # spec file for package hydra
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ URL:            https://github.com/vanhauser-thc/thc-hydra
 Source0:        https://github.com/vanhauser-thc/thc-hydra/archive/%{git_rev}/%{name}-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  make
 BuildRequires:  pkgconfig
@@ -61,6 +62,14 @@ Hydra works by using different approaches, such as brute-force
 attacks and dictionary attacks, in order to guess the right username
 and password combination.
 
+%package -n xhydra
+Summary:        Graphical frontend for Hydra
+Group:          Productivity/Networking/Diagnostic
+Requires:       hydra = %{version}-%{release}
+
+%description -n xhydra
+XHydra is a GTK graphical frontend for the Hydra network login cracker.
+
 %prep
 %autosetup -n thc-%{name}-%{git_rev} -p1
 
@@ -85,18 +94,24 @@ sed -i '1s|^.*$|#!/bin/bash|' hydra-wizard.sh
 %fdupes -s %{buildroot}/%{_mandir}
 %fdupes %{buildroot}/%{_prefix}
 
+%check
+desktop-file-validate %{buildroot}%{_datadir}/applications/xhydra.desktop
+
 %files
 %license LICENSE LICENSE_OPENSSL
 %doc README CHANGES TODO
 %{_bindir}/%{name}
-%{_bindir}/xhydra
 %{_bindir}/%{name}-wizard.sh
 %{_bindir}/pw-inspector
 %{_bindir}/dpl4hydra.sh
 %{_mandir}/man1/hydra.1%{?ext_man}
 %{_mandir}/man1/pw-inspector.1%{?ext_man}
-%{_mandir}/man1/xhydra.1%{?ext_man}
 %{_datarootdir}/%{name}
+
+%files -n xhydra
+%{_bindir}/xhydra
+%{_datadir}/applications/xhydra.desktop
+%{_mandir}/man1/xhydra.1%{?ext_man}
 %{_datarootdir}/pixmaps/xhydra.png
 
 %changelog

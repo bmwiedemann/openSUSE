@@ -123,4 +123,17 @@ Index: hydra-9.7.tar.gz
 Binary file hydra-9.7.tar.gz (revision 4) deleted</comment>
     <requestid>1361923</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>fc510b9314ec0f53e507b97345cff008</srcmd5>
+    <version>9.7+git20.gbccaea1</version>
+    <time>1788184614</time>
+    <user>anag_factory</user>
+    <comment>- Split the GTK frontend into the xhydra subpackage so that the
+  command-line package no longer pulls in the GUI stack.
+- Install and validate the upstream XHydra desktop file.
+- Correct the previous snapshot version to 9.7+git20.gbccaea1.
+
+- Update to version 9.7+git20.gbccaea1:</comment>
+    <requestid>1374768</requestid>
+  </revision>
 </revisionlist>
