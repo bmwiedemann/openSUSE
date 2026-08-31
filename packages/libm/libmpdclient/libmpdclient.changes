@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Aug 30 16:12:39 UTC 2026 - Илья Индиго <ilya@ilya.top>
+
+- Updated to 2.27
+  * Added libmpdclient-test-song-parser-for-i586.patch
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/libmpdclient/v2.27/NEWS
+  * refuse to send newline and carriage return characters
+  * use strncmp() instead of memcmp() to avoid over-read
+  * fix several NULL pointer dereference bugs on OOM
+  * fail instead of crashing if socket descriptor is >= 1024
+  * capabilities, sticker: fix memory leak on OOM
+  * search: fix string truncation in mpd_search_add_db_songs_to_playlist()
+  * song: fix memory leak in the "RealUri" parser
+  * song: parse floating-point numbers with the POSIX localew
+  * connection: fix microsecond/millisecond mixup in mpd_connection_set_timeout()
+  * queue: fix assertion failure on missing "Id" line
+
+-------------------------------------------------------------------
 Thu Jul  9 19:34:31 UTC 2026 - Илья Индиго <ilya@ilya.top>
 
 - Updated to 2.26

@@ -1,0 +1,12 @@
+diff -Pdpru libmpdclient-2.27.orig/src/song.c libmpdclient-2.27/src/song.c
+--- libmpdclient-2.27.orig/src/song.c	2026-08-09 11:46:51.000000000 +0300
++++ libmpdclient-2.27/src/song.c	2026-08-30 19:09:00.024289503 +0300
+@@ -568,7 +568,7 @@ mpd_song_parse_range(struct mpd_song *so
+ 
+ 	if (end > 0.0) {
+ 		song->end = (unsigned)end;
+-		song->end_ms = (unsigned)(end * 1000);
++		song->end_ms = (unsigned)(end * 1000 + 0.5);
+ 		if (song->end == 0)
+ 			/* round up, because the caller must see that
+ 			   there's an upper limit */
