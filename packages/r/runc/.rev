@@ -720,4 +720,12 @@ provides).</comment>
 - runc.keyring has been updated to match the new version from upstream.</comment>
     <requestid>1366218</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>d2e6ab46c9fbf34a4e77376283259af8</srcmd5>
+    <version>1.5.1</version>
+    <time>1788184563</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1374520</requestid>
+  </revision>
 </revisionlist>
