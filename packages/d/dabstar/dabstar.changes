@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Aug 31 07:36:06 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.7.0
+  * Integrated latest RTL-SDR adaptation from @old-dab to support
+    RTL-SDR Blog V4L.
+  * Added traffic light status icons with distinct color states
+    (green, yellow-green, yellow, red-yellow, red, orange, off).
+  * Added SNR and MER display on the main window (use the A/Q toggle
+    button to switch between audio level and SNR/MER bar graphs).
+  * Modularized audio processing and playback into a dedicated
+    AudioPipeline class for cleaner threading.
+  * Accelerated frequency correction calculation using VOLK SIMD
+    kernels.
+  * Improved fine frequency correction precision.
+  * Fixed a brief UI freeze when rendering "PRS Phase unwrapped".
+  * Reworked sub-window opening and closing behavior; toggle buttons
+    now feature a small yellow indicator showing the window's open
+    state.
+  * Fixed an issue in the TII web server when handling empty TII
+    content (untested under real-world conditions).
+  * Various internal optimizations and code cleanups.
+
+-------------------------------------------------------------------
 Sat Aug  8 14:49:44 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 5.6.0
