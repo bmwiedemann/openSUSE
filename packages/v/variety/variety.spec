@@ -19,7 +19,7 @@
 
 %global __requires_exclude typelib\\(AyatanaAppIndicator3\\)
 Name:           variety
-Version:        0.9.0
+Version:        0.9.1
 Release:        0
 Summary:        Wallpaper changer
 License:        GPL-3.0-only
