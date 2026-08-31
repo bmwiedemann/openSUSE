@@ -159,11 +159,12 @@ getent passwd lklfuse >/dev/null || \
   useradd -g lklfuse --no-create-home -r -s /sbin/nologin lklfuse
 
 %post -n lklfuse
-cat >> %{_localstatedir}/adm/update-messages/%{name}-%{version}-%{release}-something << EOF
+cat >> %{_localstatedir}/adm/update-messages/%{name}-%{version}-%{release}-experimental << EOF
 
 WARNING: lklfuse is EXPERIMENTAL; using it could cause data corruption!
 
 EOF
+exit 0
 
 %post -n liblkl0 -p /sbin/ldconfig
 %postun -n liblkl0 -p /sbin/ldconfig

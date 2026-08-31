@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 24 03:29:53 UTC 2026 - David Disseldorp <ddiss@suse.com>
+
+- Ignore update-messages file creation errors in %post (bsc#1274589)
+
+-------------------------------------------------------------------
 Wed Aug  5 23:12:30 UTC 2026 - David Disseldorp <ddiss@suse.com>
 
 - Merge opensuse-kernel/SLE15-SP6-LTSS 26d5bc0a4bd189
