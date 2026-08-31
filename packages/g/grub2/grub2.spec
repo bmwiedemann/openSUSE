@@ -198,6 +198,10 @@ Source17:       grub2-systemd-sleep.sh
 Source18:       grub2-check-default.sh
 Source19:       grub2-instdev-fixup.pl
 Source1000:     PATCH_POLICY
+Patch:          0001-fs-btrfs-mark-Btrfs-on-disk-structs-as-GRUB_PACKED.patch
+Patch:          0002-fs-btrfs-add-btrfs-info-command.patch
+Patch:          0003-fs-btrfs-add-btrfs-list-subvols-command.patch
+Patch:          0004-fs-btrfs-add-btrfs-get-default-subvol-command.patch
 Patch:          0001-lvm-allocate-metadata-buffer-from-raw-contents.patch
 Patch:          0001-net-http-Check-result-of-grub_netbuff_put-in-http_re.patch
 Patch:          0002-efinet-Add-structures-for-PXE-messages.patch
@@ -269,7 +273,6 @@ Patch:          grub2-btrfs-05-grub2-mkconfig.patch
 Patch:          grub2-btrfs-06-subvol-mount.patch
 Patch:          grub2-btrfs-07-subvol-fallback.patch
 Patch:          grub2-btrfs-08-workaround-snapshot-menu-default-entry.patch
-Patch:          grub2-btrfs-09-get-default-subvolume.patch
 Patch:          grub2-btrfs-10-config-directory.patch
 Patch:          grub2-efi-xen-chainload.patch
 Patch:          grub2-efi-xen-cmdline.patch

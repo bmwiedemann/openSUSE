@@ -8,110 +8,7 @@ return code handling.
 
 --- a/grub-core/fs/btrfs.c
 +++ b/grub-core/fs/btrfs.c
-@@ -3297,8 +3297,7 @@
- }
- 
- static grub_err_t
--grub_cmd_btrfs_get_default_subvol (struct grub_extcmd_context *ctxt,
--			     int argc, char **argv)
-+grub_btrfs_get_default_subvol (const char *name, grub_uint64_t *ret_subvolid, char **ret_subvol)
- {
-   char *devname;
-   grub_device_t dev;
-@@ -3307,21 +3306,8 @@
-   grub_uint64_t id;
-   char *subvol = NULL;
-   grub_uint64_t subvolid = 0;
--  char *varname = NULL;
--  char *output = NULL;
--  int path_only = ctxt->state[1].set;
--  int num_only = ctxt->state[2].set;
--
--  if (ctxt->state[0].set)
--    varname = ctxt->state[0].arg;
--
--  if (argc < 1)
--    return grub_error (GRUB_ERR_BAD_ARGUMENT, "device name required");
--
--  devname = grub_file_get_device_name(argv[0]);
--  if (!devname)
--    return grub_errno;
- 
-+  devname = grub_file_get_device_name(name);
-   dev = grub_device_open (devname);
-   grub_free (devname);
-   if (!dev)
-@@ -3332,8 +3318,7 @@
-     {
-       grub_device_close (dev);
-       grub_dprintf ("btrfs", "failed to open fs\n");
--      grub_errno = GRUB_ERR_NONE;
--      return 0;
-+      return grub_errno;
-     }
- 
-   err = grub_btrfs_get_default_subvolume_id (data, &subvolid);
-@@ -3362,12 +3347,47 @@
- 	  return err;
- 	}
- 
--      if (subvol)
--        grub_free (subvol);
-+      grub_free (subvol);
-       subvol = path_out;
-       id = parent_id;
-     }
- 
-+  if (ret_subvolid)
-+    *ret_subvolid = subvolid;
-+  if (ret_subvol)
-+    *ret_subvol = subvol;
-+
-+  grub_btrfs_unmount (data);
-+  grub_device_close (dev);
-+
-+  return GRUB_ERR_NONE;
-+}
-+
-+static grub_err_t
-+grub_cmd_btrfs_get_default_subvol (struct grub_extcmd_context *ctxt,
-+			     int argc, char **argv)
-+{
-+  grub_err_t err;
-+  char *subvol = NULL;
-+  grub_uint64_t subvolid = 0;
-+  char *varname = NULL;
-+  char *output = NULL;
-+  int path_only = ctxt->state[1].set;
-+  int num_only = ctxt->state[2].set;
-+
-+  if (ctxt->state[0].set)
-+    varname = ctxt->state[0].arg;
-+
-+  if (argc < 1)
-+    return grub_error (GRUB_ERR_BAD_ARGUMENT, "device name required");
-+
-+  if ((err = grub_btrfs_get_default_subvol (argv[0], &subvolid, &subvol)) != GRUB_ERR_NONE)
-+    {
-+      if (err == GRUB_ERR_BAD_FS)
-+	err = grub_errno = GRUB_ERR_NONE;
-+      return err;
-+    }
-+
-   if (num_only && path_only)
-       output = grub_xasprintf ("%"PRIuGRUB_UINT64_T" /%s", subvolid, subvol);
-   else if (num_only)
-@@ -3383,9 +3403,6 @@
-   grub_free (output);
-   grub_free (subvol);
- 
--  grub_btrfs_unmount (data);
--  grub_device_close (dev);
--
-   return GRUB_ERR_NONE;
- }
- 
-@@ -3464,6 +3481,122 @@
+@@ -3518,6 +3518,122 @@
      return "";
  }
  
@@ -234,7 +131,7 @@ return code handling.
  GRUB_MOD_INIT (btrfs)
  {
    grub_btrfs_fs.mod = mod;
-@@ -3488,6 +3621,8 @@
+@@ -3543,6 +3659,8 @@
                                 subvol_set_env);
    grub_register_variable_hook ("btrfs_subvolid", subvolid_get_env,
                                 subvolid_set_env);
@@ -243,11 +140,11 @@ return code handling.
    grub_env_export ("btrfs_subvol");
    grub_env_export ("btrfs_subvolid");
    grub_env_export ("btrfs_relative_path");
-@@ -3497,6 +3632,7 @@
+@@ -3552,6 +3670,7 @@
  {
    grub_register_variable_hook ("btrfs_subvol", NULL, NULL);
    grub_register_variable_hook ("btrfs_subvolid", NULL, NULL);
 +  grub_register_variable_hook ("btrfs_relative_path", NULL, NULL);
+   grub_fs_unregister (&grub_btrfs_fs);
    grub_unregister_command (cmd_info);
    grub_unregister_extcmd (cmd_list_subvols);
-   grub_fs_unregister (&grub_btrfs_fs);

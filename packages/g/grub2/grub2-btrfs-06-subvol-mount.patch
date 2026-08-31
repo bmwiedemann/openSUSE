@@ -33,8 +33,8 @@ v4:
 +find_mtab_subvol_tree (const char *path, char **path_in_subvol);
  
  static grub_err_t
- read_sblock (grub_disk_t disk, struct grub_btrfs_superblock *sb)
-@@ -1302,9 +1309,26 @@
+ grub_btrfs_get_parent_subvol_path (struct grub_btrfs_data *data,
+@@ -1309,9 +1316,26 @@
    grub_err_t err;
    grub_uint64_t tree = 0;
    grub_uint8_t type;
@@ -61,7 +61,7 @@ v4:
    if (err)
        return grub_error(GRUB_ERR_FILE_NOT_FOUND, "couldn't locate %s\n", path);
  
-@@ -2342,11 +2366,20 @@
+@@ -2354,11 +2378,20 @@
    grub_uint8_t type;
    grub_size_t est_size = 0;
    grub_size_t sz;
@@ -83,7 +83,7 @@ v4:
    if (err)
      {
        grub_btrfs_unmount (data);
-@@ -2480,11 +2513,21 @@
+@@ -2492,11 +2525,21 @@
    struct grub_btrfs_inode inode;
    grub_uint8_t type;
    struct grub_btrfs_key key_in;
@@ -106,8 +106,8 @@ v4:
    if (err)
      {
        grub_btrfs_unmount (data);
-@@ -2728,6 +2771,150 @@
-   return 0;
+@@ -2759,6 +2802,150 @@
+   return GRUB_ERR_NONE;
  }
  
 +struct grub_btrfs_mtab
@@ -257,24 +257,24 @@ v4:
  static grub_err_t
  get_fs_root(struct grub_btrfs_data *data, grub_uint64_t tree,
              grub_uint64_t objectid, grub_uint64_t offset,
-@@ -2940,6 +3127,7 @@
+@@ -3250,6 +3437,7 @@
  };
  
  static grub_command_t cmd_info;
 +static grub_command_t cmd_mount_subvol;
  static grub_extcmd_t cmd_list_subvols;
+ static grub_extcmd_t cmd_get_default_subvol;
  
- static char *
-@@ -3004,6 +3192,9 @@
-   cmd_info = grub_register_command("btrfs-info", grub_cmd_btrfs_info,
- 				   "DEVICE",
- 				   "Print BtrFS info about DEVICE.");
+@@ -3316,6 +3504,9 @@
+ 				    grub_cmd_btrfs_info,
+ 				    "DEVICE",
+ 				    "Print BtrFS info about DEVICE.");
 +  cmd_mount_subvol = grub_register_command("btrfs-mount-subvol", grub_cmd_btrfs_mount_subvol,
 +				   "DEVICE DIRECTORY SUBVOL",
 +				   "Set btrfs DEVICE the DIRECTORY a mountpoint of SUBVOL.");
    cmd_list_subvols = grub_register_extcmd("btrfs-list-subvols",
  					 grub_cmd_btrfs_list_subvols, 0,
- 					 "[-p|-n] [-o var] DEVICE",
+ 					 "[-p|-n] [-r] [-o var] DEVICE",
 --- a/grub-core/osdep/linux/getroot.c
 +++ b/grub-core/osdep/linux/getroot.c
 @@ -103,6 +103,14 @@
@@ -431,7 +431,7 @@ v4:
  	    }
  	}
        else if (!retry && grub_strcmp (entries[i].fstype, "autofs") == 0)
-@@ -1213,6 +1337,24 @@
+@@ -1223,6 +1347,24 @@
  }
  #endif
  

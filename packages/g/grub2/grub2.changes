@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Aug 27 08:24:15 UTC 2026 - Michael Chang <mchang@suse.com>
+
+- Backport merged upstream patch
+  * 0001-fs-btrfs-mark-Btrfs-on-disk-structs-as-GRUB_PACKED.patch
+  * 0002-fs-btrfs-add-btrfs-info-command.patch
+  * 0003-fs-btrfs-add-btrfs-list-subvols-command.patch
+  * 0004-fs-btrfs-add-btrfs-get-default-subvol-command.patch
+- Patch rebased
+  * grub2-btrfs-01-add-ability-to-boot-from-subvolumes.patch
+  * grub2-btrfs-06-subvol-mount.patch
+  * grub2-btrfs-10-config-directory.patch
+- Drop local patch
+  * grub2-btrfs-09-get-default-subvolume.patch
+
+-------------------------------------------------------------------
 Wed Jul 29 02:40:42 UTC 2026 - Michael Chang <mchang@suse.com>
 
 - Fix crash in booting kernel on some AMD systems (bsc#1271980)
