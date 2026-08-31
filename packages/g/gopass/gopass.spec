@@ -1,7 +1,7 @@
 #
 # spec file for package gopass
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,13 @@
 
 %global make_args PREFIX=%{_prefix} GOPASS_REVISION=v%{version}
 Name:           gopass
-Version:        1.16.1
+Version:        1.17.0
 Release:        0
+%global pkg_version 1.17.0
 Summary:        The slightly more awesome standard unix password manager for teams
 License:        MIT
 URL:            https://www.gopass.pw/
-Source:         https://github.com/gopasspw/gopass/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://github.com/gopasspw/gopass/archive/refs/tags/v%{pkg_version}.tar.gz#/%{name}-%{pkg_version}.tar.gz
 Source1:        vendor.tar.xz
 Source2:        system_config
 Source9:        series
@@ -112,7 +113,7 @@ Full autonomy - No network connectivity required, unless you want it
 This package provides a symlink to make this a drop in replacement for password-store.
 
 %prep
-%autosetup -p1 -a1
+%autosetup -p1 -a1 -n %{name}-%{pkg_version}
 
 %build
 %make_build %{make_args}

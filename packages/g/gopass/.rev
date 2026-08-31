@@ -158,4 +158,14 @@
   - fix: Fix version check against latest release (#3292)</comment>
     <requestid>1322794</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d865c33f8e80221e6e4eca73bc9989a9</srcmd5>
+    <version>1.17.0</version>
+    <time>1788184581</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1374705 from darix
+
+- Update to 1.17.0:</comment>
+    <requestid>1374706</requestid>
+  </revision>
 </revisionlist>
