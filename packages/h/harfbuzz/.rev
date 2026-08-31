@@ -1492,4 +1492,33 @@ New stable rel</comment>
   + WASM shaper code can now read the user features.</comment>
     <requestid>1371800</requestid>
   </revision>
+  <revision rev="141" vrev="1">
+    <srcmd5>6e70e13843a0dfac77e07df743b8b433</srcmd5>
+    <version>14.4.0</version>
+    <time>1788184568</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 14.4.0:
+  + Glyph positions and extents now saturate instead of
+    overflowing.
+  + Arabic Windows-1256 fallback shaping is now enabled on all
+    platforms.
+  + Fix cluster values and a dropped glyph advance in the Graphite
+    shaper.
+  + Fix `avar` axis value mapping in fonts that repeat the boundary
+    entries.
+  + Fix `avar` version 2 partial instancing.
+  + Fix `COLR` sweep gradient truncation and unbounded memory use.
+  + Faster subsetting, especially for large `GSUB`/`GPOS` and `CFF`
+    tables.
+  + Faster extraction of the experimental glyph dependency graph.
+  + Various shaping speedups.
+  + Various fixes for crashes and hangs with malformed fonts.
+  + Various fixes to the experimental raster, vector, and GPU
+    libraries.
+  + Various improvements to the HarfRust integration shaper.
+  + The DirectWrite backend no longer uses the C++ runtime.
+  + Various build, portability, and fuzzing fixes.
+  + New API: +hb_set_intersects()</comment>
+    <requestid>1374670</requestid>
+  </revision>
 </revisionlist>

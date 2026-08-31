@@ -19,7 +19,7 @@
 %bcond_with gpu
 
 Name:           harfbuzz
-Version:        14.3.1
+Version:        14.4.0
 Release:        0
 Summary:        An OpenType text shaping engine
 License:        MIT
