@@ -1,7 +1,7 @@
 #
 # spec file for package libconfuse
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,13 @@
 
 %define library_name libconfuse2
 Name:           libconfuse
-Version:        3.3
+Version:        3.4
 Release:        0
 Summary:        A configuration file parser library
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            http://www.nongnu.org/confuse/
 Source:         https://github.com/martinh/libconfuse/releases/download/v%{version}/confuse-%{version}.tar.xz
-# PATCH-FIX_UPSTREAM
-Patch0:         libconfuse-d73777c2c3566fb2647727bb56d9a2295b81669b.patch
 BuildRequires:  check-devel
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-devel
@@ -97,7 +95,7 @@ rm %{buildroot}%{_libdir}/libconfuse.la
 %{_libdir}/libconfuse.so.*
 
 %files devel
-%doc doc/html/ doc/tutorial-html/ examples/
+%doc doc/html/ examples/
 %{_libdir}/libconfuse.so
 %{_libdir}/pkgconfig/libconfuse.pc
 %{_includedir}/confuse.h
