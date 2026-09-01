@@ -1,0 +1,142 @@
+-------------------------------------------------------------------
+Sun Aug 30 16:48:46 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Take the source from the upstream release tag instead of the local
+  tarball produced by a manual tar_scm service, which OBS could not
+  reproduce; drop that _service. The tag archive also leaves out the
+  66MB of satellite-recordings submodule content, which only the
+  manual test.sh uses
+- Correct the License tag: besides upstream's GPL-3.0-or-later,
+  libgnuradio-satellites links MIT (randomizer), Apache-2.0
+  (vendored viterbi) and LGPL-2.1-or-later (libfec and Karn's
+  viterbi) code; the unversioned LGPL headers are flagged for legal
+  review rather than settled here, and the vendored Apache text now
+  ships alongside LICENSE
+- Declare the runtime dependencies that were missing: satellites
+  imports the submitter and csp_zmq modules unconditionally, so
+  requests, websocket-client and pyzmq are hard requirements, as are
+  gnuradio, PyYAML, numpy and matplotlib, the last for the shipped
+  smog_p_spectrum; floor construct at 2.9 as upstream documents, and
+  recommend feh for the realtime image decoders
+- Rework the subpackage dependencies: devel now pulls the library
+  subpackage rather than the whole main package, and additionally
+  gnuradio-devel, whose headers and cmake config it reaches into;
+  devel-doc, being standalone doxygen output, requires neither
+- Ship python bytecode, which upstream's cmake never installed, and
+  fdupes the identical .pyc/.opt-1.pyc pairs
+- Convert the two CRLF files in %prep instead of the buildroot; the
+  old glob missed satyaml/EIRSAT-1.yml
+- Strip shebangs from the installed python modules, they are
+  importable modules rather than scripts; the rpmlintrc no longer
+  needs to filter that and now only covers the matplotlib
+  explicit-lib-dependency false positive
+- Spec cleanup:
+  * floor the gnuradio buildrequires at 3.10, as find_package asks
+  * add bzip2 (manpage compression), drop unused gmp-devel
+  * let devel-doc own its documentation directory
+  * record why there is no %check
+
+-------------------------------------------------------------------
+Sat Dec 20 13:34:48 UTC 2025 - Mikhail Paulyshka <me@mixaill.net>
+
+- remove libboost_system-devel dependency
+- version 5.9.0
+  * added
+    + Kurtosis block
+    + Level to Message block
+    + Message Counter block
+    + NanoCom Golay Decode Length block
+    + Packet CSMA block
+    + Support for 239Alferov
+    + Support for BEE-1000
+    + Support for BOTAN
+    + Support for CroCube
+    + Support for FORESAIL-1P
+    + Support for Geoscan-1,2,3,4,5,6
+    + Support for HCT-SAT2
+    + Support for HUNITY
+    + Support for HYDRA-T and HYDRA-W
+    + Support for INHA-RoSAT
+    + Support for INNOCUBE
+    + Support for InnoSat3 and InnoSat16
+    + Support for JACK-001 and JACK-003
+    + Support for K-HERO
+    + Support for PHI-1
+    + Support for RSP-03
+    + Support for SNUGLITE-III DURI and HANA
+    + Support for SPIRONE
+    + Support for UND ROADS 1 and 2
+  * changed
+    + Added new CCSDS framing to ERMINAZ-1U SatYAML
+    + Added packet length tat support to Fixed Length to PDU block
+    + Deprecate varlen_packet_framer and varlen_packet_tagger
+    + Refactored timezone handling
+    + Removed some unused imports and code duplication in telemetry parsers
+    + TUBIN telemetry server URL
+    + Update HADES-R NORAD ID
+    + Update WS-1 NORAD ID
+    + Upgrade to C++17
+  * fixed
+    + MOBITEX deframer: drop frame if none of the datablocks is correct
+  * removed
+    + Removed deprecated fixedlen_tagger block
+    + sync_to_pdu*.grc files
+- version 5.8.0
+  * added
+    + Added callsign to deframer options
+    + Basic support for SigMF input
+    + CSP Address Filter block
+    + CSP ZMQ blocks
+    + Frame counter block
+    + Mobitex-NX deframer
+    + Support for JINJUSAT-1B
+    + Support for Hex20 Nila
+    + Support for NUSHSAT-1
+    + Support for TEVEL2 satellites
+    + Telemetry decoder for TUBiX20 (TUBIN)
+    + Time-dependent delay block
+    + Time synchronization tag to Doppler correction block
+    + U482C encoder block
+    + Uplink argument to tle_to_doppler_file.py example
+  * fixed
+    + Callsign '-' handling in Check AX.25 Address
+    + Packet size bug in AX100 deframer
+    + pybind11 bug in swap_header
+    + Timezone handling in PDU to KISS
+  * changed
+    + Added callsign in SatYAML to BEESAT-1,-9, TUBIN, NanoFF-A,-B, and TechnoSat
+    + Improved version printout in gr_satellites CLI app
+    + Updated AX.25 packet radio examples
+    + Use GNU Radio crc_check in GNU Radio >= 3.10
+- version 5.7.0 
+  * added
+    + Check Hex String block
+    + OpenLST deframer
+    + Repeater address matching to Check AX.25 Address block
+    + Support for AEPEX
+    + Support for ARTICSAT-1
+    + Support for ASRTU-1
+    + Support for BINAR-2, -3, and -4
+    + Support for Bluebird-01 to -05
+    + Support for COLIBRI-S
+    + Support for DORA
+    + Support for HADES-R
+    + Support for HORIZON
+    + Support for HYPERVIEW-1G
+    + Support for MORDOVIA-IOT
+    + Support for RTU-MIREA1
+    + Support for RUZAEVKA-390
+    + Support for TUSUR-GO
+    + Support for VIZARD-ION
+    + Support for ZIMSAT-2
+    + TM KISS transport
+    + Vector stream IO Reed-Solomon encoder block
+  * fixed
+    + Error when opening Doppler file fails in Doppler correction block
+  * changed
+    + Added frame length parameter to GEOSCAN deframer
+    + Replaced erminaz_ssdv and jy1sat_ssdv by generic gr_satellites_ssdv script
+-------------------------------------------------------------------
+Wed Nov 27 21:57:47 UTC 2024 - Mikhail Paulyshka <me@mixaill.net>
+
+- version 5.6.0 

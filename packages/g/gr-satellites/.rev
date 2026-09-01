@@ -1,0 +1,60 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>621fc43e06e34f1b8f09456a58515b03</srcmd5>
+    <version>5.9.0</version>
+    <time>1788270436</time>
+    <user>anag_factory</user>
+    <comment>New package: gr-satellites 5.9.0, a GNU Radio out-of-tree module with
+telemetry decoders for around 400 amateur satellites.
+
+gnuradio is already in Factory (3.10.12.0) and its devel project is
+hardware:sdr, which is where this package is maintained, so it sits next to
+the gr-osmosdr and gr-iqbal out-of-tree modules Factory already ships.
+
+Cleaned up before submitting:
+
+- Source now comes from the upstream release tag archive. It previously came
+  from a manual tar_scm service, so the committed tarball was not something
+  OBS or a reviewer could reproduce; the _service is gone. The tag archive
+  also leaves out the satellite-recordings submodule, 66MB of sample captures
+  that only the manual test.sh uses and that nothing in the build, install or
+  payload touches.
+- License corrected from GPL-3.0-only. libgnuradio-satellites also links MIT
+  (lib/randomizer.c), Apache-2.0 (lib/viterbi/, vendored from xukmin/viterbi)
+  and LGPL code (lib/libfec/ and lib/viterbi.c, Karn). Karn's headers say only
+  &quot;LGPL&quot; with no version; I tagged LGPL-2.1-or-later because -only would be
+  GPL-3-incompatible inside this very library, and left a Legal-Review-Notice
+  above the tag flagging it as an open question rather than settling it.
+  Debian reads the same headers as LGPL-2.1. Both licence texts are shipped.
+- Runtime dependencies were badly under-declared. satellites/__init__.py
+  imports the submitter and csp_zmq modules unconditionally, so requests,
+  websocket-client and pyzmq are hard requirements; gnuradio, PyYAML, numpy
+  and matplotlib (for the shipped smog_p_spectrum) were missing too. construct
+  is floored at 2.9 per upstream's install docs, and feh is recommended for
+  the realtime image decoders.
+- devel now pulls the library subpackage plus gnuradio-devel, whose headers
+  and cmake config it reaches into.
+- Python bytecode is now shipped (upstream's cmake installed none), with
+  fdupes for the identical .pyc/.opt-1.pyc pairs.
+- CRLF conversion moved from the buildroot into %prep, where it also covers
+  satyaml/EIRSAT-1.yml that the previous glob missed.
+- Shebangs stripped from the installed python modules, which are importable
+  modules rather than scripts.
+- gnuradio BuildRequires floored at 3.10 per the CMakeLists find_package.
+
+No %check: upstream declares no C++ tests, and all 29 of its python QA tests
+set GR_TEST_PYTHON_DIRS to the build tree plus a 3.8-era swig directory, where
+no importable satellites package exists, so they cannot run out of tree. The
+reason is recorded in a spec comment. Upstream CI does not run them either and
+Debian runs them with failures ignored.
+
+rpmlint is clean, 0 errors and 0 badness. The one filter in the rpmlintrc
+covers explicit-lib-dependency on python3-matplotlib, which is a false
+positive: a python import dependency cannot be autodetected, so the explicit
+Requires is correct.
+
+I have added myself (pluskalm) as a co-maintainer of the package in
+hardware:sdr, alongside the existing maintainer.</comment>
+    <requestid>1374733</requestid>
+  </revision>
+</revisionlist>
