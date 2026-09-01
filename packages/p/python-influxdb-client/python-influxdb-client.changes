@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep  1 05:37:09 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove unneeded BuildRequires on py.
+- Add patch support-pandas-3.patch:
+  * Support Pandas 3 datatypes in the testsuite.
+
+-------------------------------------------------------------------
 Wed May 27 14:30:12 UTC 2026 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.50.0

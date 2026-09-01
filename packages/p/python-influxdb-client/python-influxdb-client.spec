@@ -25,6 +25,8 @@ Summary:        InfluxDB 2.0 Python client library
 License:        MIT
 URL:            https://github.com/influxdata/influxdb-client-python
 Source:         https://github.com/influxdata/influxdb-client-python/archive/refs/tags/v%{version}.tar.gz#/influxdb_client-%{version}-gh.tar.gz
+# PATCH-FIX-OPENSUSE Support Pandas 3 datatype changes
+Patch0:         support-pandas-3.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -47,7 +49,6 @@ BuildRequires:  %{python_module httpretty >= 1.0.5}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pluggy >= 0.3.1}
 BuildRequires:  %{python_module psutil >= 5.6.3}
-BuildRequires:  %{python_module py >= 1.4.31}
 BuildRequires:  %{python_module pytest >= 5.0.0}
 BuildRequires:  %{python_module pytest-timeout >= 2.1.0}
 BuildRequires:  %{python_module python-dateutil >= 2.5.3}
