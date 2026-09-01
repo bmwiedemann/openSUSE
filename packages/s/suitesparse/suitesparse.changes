@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Aug 30 21:35:51 UTC 2026 - Christoph G <foss@grueninger.de>
+
+- Update to 7.14.0
+  * GraphBLAS 10.5.0: faster resize, post-iso check revised, and a
+    bug fix
+
+-------------------------------------------------------------------
 Mon Aug 10 21:43:12 UTC 2026 - Christoph G <foss@grueninger.de>
 
 - Update to 7.13.0

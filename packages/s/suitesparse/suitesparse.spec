@@ -34,7 +34,7 @@
 Name:           suitesparse
 Summary:        A collection of sparse matrix libraries
 License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-2.1-or-later
-Version:        7.13.0
+Version:        7.14.0
 Release:        0
 Group:          Development/Libraries/C and C++
 URL:            https://people.engr.tamu.edu/davis/suitesparse.html
