@@ -7,4 +7,12 @@
     <comment>🤖: initial submission of kubevirt-1.9-image</comment>
     <requestid>1373599</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9b698f7381c179dd61d66c023e89490e</srcmd5>
+    <version>unknown</version>
+    <time>1788270494</time>
+    <user>anag_factory</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1374946</requestid>
+  </revision>
 </revisionlist>
