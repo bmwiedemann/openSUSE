@@ -40,6 +40,9 @@ Source:         %{name}-%{version}.tar.xz
 Source1:        preamble
 Source2:        modprobe.d_98-v4l2loopback.conf
 Source3:        modules-load.d_v4l2loopback.conf
+%if 0%{?suse_version} == 1610 && 0%{?is_opensuse}
+Patch:          v4l2-adjust-v4l2_fh_add_delete_for_suse_6.12.patch
+%endif
 BuildRequires:  %{kernel_module_package_buildreqs}
 %if 0%{?kmp_longterm}
 BuildRequires:  kernel-syms-longterm

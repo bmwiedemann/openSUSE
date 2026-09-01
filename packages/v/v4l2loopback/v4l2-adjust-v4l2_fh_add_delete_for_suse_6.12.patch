@@ -1,0 +1,13 @@
+Index: b/source/v4l2loopback.c
+===================================================================
+--- a/source/v4l2loopback.c
++++ b/source/v4l2loopback.c
+@@ -62,7 +62,7 @@
+ #define file_to_opener(ptr) \
+ 	container_of(file_to_v4l2_fh(ptr), struct v4l2_loopback_opener, fh)
+ 
+-#if LINUX_VERSION_CODE < KERNEL_VERSION(6, 18, 0)
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6, 12, 0)
+ #define v4l2l_f_to_opener(_file, _fh) fh_to_opener(_fh)
+ #define v4l2_fh_add(fh, filp) v4l2_fh_add(fh)
+ #define v4l2_fh_del(fh, filp) v4l2_fh_del(fh)

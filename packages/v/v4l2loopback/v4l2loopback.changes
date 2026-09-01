@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep  1 10:56:31 UTC 2026 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Add v4l2-adjust-v4l2_fh_add_delete_for_suse_6.12.patch to cope with
+  v4l2 backport of 6.18 to openSUSE 6.12 kernel 
+  Fixes: bsc#1274767
+
+-------------------------------------------------------------------
 Sat Jul 18 04:57:47 UTC 2026 - <munix9@googlemail.com>
 
 - Update to version 0.15.4:
