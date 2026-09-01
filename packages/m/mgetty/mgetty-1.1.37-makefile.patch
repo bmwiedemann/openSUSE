@@ -1,7 +1,7 @@
-Index: Makefile
+Index: b/Makefile
 ===================================================================
---- Makefile.orig
-+++ Makefile
+--- a/Makefile
++++ b/Makefile
 @@ -109,7 +109,8 @@ HOSTCC=$(CC)
  #	    USTAT	  - ustat(), no statfs etc.
  #
@@ -224,10 +224,10 @@ Index: Makefile
  	FAX_SPOOL_IN="$(FAX_SPOOL_IN)" CONFDIR="$(CONFDIR)" \
  	VARRUNDIR="$(VARRUNDIR)" \
  	SHELL="$(SHELL)" vgetty-all
-Index: callback/Makefile
+Index: b/callback/Makefile
 ===================================================================
---- callback/Makefile.orig
-+++ callback/Makefile
+--- a/callback/Makefile
++++ b/callback/Makefile
 @@ -37,7 +37,7 @@ clean:
  # install programs
  #
@@ -238,10 +238,10 @@ Index: callback/Makefile
 +	$(INSTALL) -m 4755 ct $(BINDIR)
  
  # source modules
-Index: doc/Makefile
+Index: b/doc/Makefile
 ===================================================================
---- doc/Makefile.orig
-+++ doc/Makefile
+--- a/doc/Makefile
++++ b/doc/Makefile
 @@ -79,7 +79,7 @@ install: $(MANSRC) mgetty.info
  		$(INSTALL) -m 644 $$i $(MAN8DIR) ; \
  	done
@@ -251,10 +251,10 @@ Index: doc/Makefile
  	    for i in mgetty.info* ; do \
  		$(INSTALL) -m 644 $$i $(INFODIR) ; \
  	    done ; \
-Index: fax/Makefile
+Index: b/fax/Makefile
 ===================================================================
---- fax/Makefile.orig
-+++ fax/Makefile
+--- a/fax/Makefile
++++ b/fax/Makefile
 @@ -52,26 +52,29 @@ install: all
  #
  # programs / scripts
@@ -303,10 +303,10 @@ Index: fax/Makefile
  #
 -	$(INSTALL) -m 644 faxspool.rules $(CONFDIR)/faxspool.rules.sample
 +	$(INSTALL) -m 644 faxspool.rules $(DESTDIR)$(CONFDIR)/faxspool.rules.sample
-Index: g3/Makefile
+Index: b/g3/Makefile
 ===================================================================
---- g3/Makefile.orig
-+++ g3/Makefile
+--- a/g3/Makefile
++++ b/g3/Makefile
 @@ -37,12 +37,12 @@ install: all
  # install programs
  #
@@ -322,10 +322,10 @@ Index: g3/Makefile
  	test -x g3topbm || ln -s g32pbm g3topbm
  
  
-Index: login.cfg.in
+Index: b/login.cfg.in
 ===================================================================
---- login.cfg.in.orig
-+++ login.cfg.in
+--- a/login.cfg.in
++++ b/login.cfg.in
 @@ -30,7 +30,7 @@
  #  (Big advantage: tuucp can use the same passwd file for serial dial-in 
  #   and tcp dial-in [uucico running as in.uucpd]). Works from 1.05 up.
@@ -344,10 +344,10 @@ Index: login.cfg.in
  
  #
  #
-Index: policy.h-dist
+Index: b/policy.h-dist
 ===================================================================
---- policy.h-dist.orig
-+++ policy.h-dist
+--- a/policy.h-dist
++++ b/policy.h-dist
 @@ -123,7 +123,7 @@
  /* group id that the device is chown()ed to. If not defined, the
   * primary group of "DEVICE_OWNER" is used.
@@ -402,10 +402,10 @@ Index: policy.h-dist
  
  /* default minimum space required on spooling partition for receiving a FAX
   * (in KILObytes)
-Index: samples/new_fax.mail
+Index: b/samples/new_fax.mail
 ===================================================================
---- samples/new_fax.mail.orig
-+++ samples/new_fax.mail
+--- a/samples/new_fax.mail
++++ b/samples/new_fax.mail
 @@ -10,8 +10,8 @@
  # Revision 1.2  2000/07/16 21:18:08  gert
  # add .gz to file names, for automatic unziping
@@ -425,10 +425,10 @@ Index: samples/new_fax.mail
  	    $G3TOPBM $STRETCH $FAX \
  	    | gzip -9 \
  	    | uuencode `basename $FAX`.pbm.gz
-Index: voice/Makefile
+Index: b/voice/Makefile
 ===================================================================
---- voice/Makefile.orig
-+++ voice/Makefile
+--- a/voice/Makefile
++++ b/voice/Makefile
 @@ -6,6 +6,8 @@
  # $Id: Makefile,v 1.10 2018/03/04 19:39:56 gert Exp $
  #

@@ -1,6 +1,8 @@
---- fax/faxspool.in
-+++ fax/faxspool.in
-@@ -675,9 +675,7 @@
+Index: b/fax/faxspool.in
+===================================================================
+--- a/fax/faxspool.in
++++ b/fax/faxspool.in
+@@ -709,9 +709,7 @@ do
      if [ x$file = x- ]
      then
  	$echo "spooling $file (stdin)..."
@@ -11,7 +13,7 @@
      else
  	$echo "spooling $file..."
      fi
-@@ -924,7 +922,7 @@
+@@ -966,7 +964,7 @@ if [ -z "$finalpg" -a -z "$poll_req" ]
  then
      $echo "\nnothing to do (no cover page, no data)." >&2
      cd $FAX_SPOOL_OUT
@@ -20,7 +22,7 @@
      exit 52
  fi
  
-@@ -965,7 +963,7 @@
+@@ -1007,7 +1005,7 @@ $FAXQ_HELPER activate $new_seq < $job.q
  # clean up
  rm $job.q
  cd ..

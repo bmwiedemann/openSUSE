@@ -1,6 +1,8 @@
---- fax/faxspool.in
-+++ fax/faxspool.in
-@@ -578,7 +578,7 @@
+Index: b/fax/faxspool.in
+===================================================================
+--- a/fax/faxspool.in
++++ b/fax/faxspool.in
+@@ -612,7 +612,7 @@ if [ $# -eq 0 ] ; then
  fi
  
  phone=$1 ; shift

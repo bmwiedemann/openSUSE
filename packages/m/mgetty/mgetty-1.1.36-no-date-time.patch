@@ -1,8 +1,8 @@
-Index: mgetty.c
+Index: b/mgetty.c
 ===================================================================
---- mgetty.c.orig	2006-01-01 14:13:18.000000000 -0300
-+++ mgetty.c	2010-08-29 13:16:06.330122665 -0400
-@@ -361,7 +361,7 @@ int main _P2((argc, argv), int argc, cha
+--- a/mgetty.c
++++ b/mgetty.c
+@@ -410,7 +410,7 @@ int main _P2((argc, argv), int argc, cha
      lprintf( L_MESG, "vgetty: %s", vgetty_version);
  #endif
      lprintf( L_MESG, "mgetty: %s", mgetty_version);
@@ -11,11 +11,11 @@ Index: mgetty.c
      i=getppid();
      lprintf( L_NOISE, "user id: %d, pid: %d, parent pid: %d", getuid(), getpid(), i);
      if ( i != 1 )
-Index: sendfax.c
+Index: b/sendfax.c
 ===================================================================
---- sendfax.c.orig	2007-01-19 04:38:21.000000000 -0300
-+++ sendfax.c	2010-08-29 13:16:37.702183926 -0400
-@@ -314,7 +314,7 @@ int main _P2( (argc, argv),
+--- a/sendfax.c
++++ b/sendfax.c
+@@ -364,7 +364,7 @@ int main _P2( (argc, argv),
      sendfax_get_config( NULL );
  
      lprintf( L_MESG, "sendfax: %s", mgetty_version );

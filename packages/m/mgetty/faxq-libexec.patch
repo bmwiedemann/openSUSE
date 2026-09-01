@@ -1,7 +1,7 @@
-Index: mgetty-1.2.1/Makefile
+Index: b/Makefile
 ===================================================================
---- mgetty-1.2.1.orig/Makefile
-+++ mgetty-1.2.1/Makefile
+--- a/Makefile
++++ b/Makefile
 @@ -199,6 +199,10 @@ BINDIR=$(prefix)/bin
  #
  LIBDIR=$(prefix)/lib/mgetty+sendfax
@@ -49,10 +49,10 @@ Index: mgetty-1.2.1/Makefile
  #
  # callback tool
  #
-Index: mgetty-1.2.1/doc/faxspool.1in
+Index: b/doc/faxspool.1in
 ===================================================================
---- mgetty-1.2.1.orig/doc/faxspool.1in
-+++ mgetty-1.2.1/doc/faxspool.1in
+--- a/doc/faxspool.1in
++++ b/doc/faxspool.1in
 @@ -207,7 +207,7 @@ program to create fax cover page (see co
  program to control which file extentions are recognized (.txt, .ps, ...)
  and how those file formats should be converted to G3.
@@ -62,10 +62,10 @@ Index: mgetty-1.2.1/doc/faxspool.1in
  this a small C helper program that facilitates access to the fax spool
  queue (which is since mgetty 1.1.29 no longer world-writeable)
  .fi
-Index: mgetty-1.2.1/fax/Makefile
+Index: b/fax/Makefile
 ===================================================================
---- mgetty-1.2.1.orig/fax/Makefile
-+++ mgetty-1.2.1/fax/Makefile
+--- a/fax/Makefile
++++ b/fax/Makefile
 @@ -58,8 +58,9 @@ install: all
  		$(INSTALL) -m 755 $$i $(DESTDIR)$(BINDIR) ; \
  	done
@@ -78,10 +78,10 @@ Index: mgetty-1.2.1/fax/Makefile
  #
  # data files
  #
-Index: mgetty-1.2.1/fax/faxq.in
+Index: b/fax/faxq.in
 ===================================================================
---- mgetty-1.2.1.orig/fax/faxq.in
-+++ mgetty-1.2.1/fax/faxq.in
+--- a/fax/faxq.in
++++ b/fax/faxq.in
 @@ -30,7 +30,7 @@ AWK=@AWK@
  
  #
@@ -91,10 +91,10 @@ Index: mgetty-1.2.1/fax/faxq.in
  
  # ------------- subroutines -----------
  do_faxq_stop()
-Index: mgetty-1.2.1/fax/faxspool.in
+Index: b/fax/faxspool.in
 ===================================================================
---- mgetty-1.2.1.orig/fax/faxspool.in
-+++ mgetty-1.2.1/fax/faxspool.in
+--- a/fax/faxspool.in
++++ b/fax/faxspool.in
 @@ -130,7 +130,7 @@ FAX_SEQ_LOCK=$FAX_SEQ_LOCKDIR/LCK..seq
  LAST_RUN=@FAX_SPOOL_OUT@/faxqueue_done
  
@@ -104,10 +104,10 @@ Index: mgetty-1.2.1/fax/faxspool.in
  
  # fax phone directories - format: <alias> <fax phone number>
  GLOBAL_PHONE_DIR=@CONFDIR@/faxaliases
-Index: mgetty-1.2.1/mksed.c
+Index: b/mksed.c
 ===================================================================
---- mgetty-1.2.1.orig/mksed.c
-+++ mgetty-1.2.1/mksed.c
+--- a/mksed.c
++++ b/mksed.c
 @@ -49,6 +49,7 @@ int main _P0( void )
      printf( "      -e 's;@BINDIR@;%s;g'\\\n", BINDIR );
      printf( "      -e 's;@SBINDIR@;%s;g'\\\n", SBINDIR );
@@ -116,3 +116,16 @@ Index: mgetty-1.2.1/mksed.c
      printf( "      -e 's;@CONFDIR@;%s;g'\\\n", CONFDIR );
      printf( "      -e 's;@LOGIN@;%s;g'\n", DEFAULT_LOGIN_PROGRAM );
      return 0;
+Index: b/fax/faxrm.in
+===================================================================
+--- a/fax/faxrm.in
++++ b/fax/faxrm.in
+@@ -16,7 +16,7 @@ FAX_SPOOL_OUT=@FAX_SPOOL_OUT@
+ echo="@ECHO@"
+ #
+ # helper program for privileged queue access
+-FAXQ_HELPER=@LIBDIR@/faxq-helper
++FAXQ_HELPER=@LIBEXECDIR@/faxq-helper
+ #
+ 
+ if [ ! -d $FAX_SPOOL_OUT ]

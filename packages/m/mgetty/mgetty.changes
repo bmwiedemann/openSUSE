@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Aug 31 13:31:44 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Fix faxq-helper path in faxrm (boo#1269217)
+  * faxq-libexec.patch
+- Refresh patches to apply with -p1:
+  * mgetty-1.1.36-implicit-fortify-decl.patch
+  * mgetty-1.1.36-local.patch
+  * mgetty-1.1.36-no-date-time.patch
+  * mgetty-1.1.36-specialdigits.patch
+  * mgetty-1.1.36-tempfile.patch
+  * mgetty-1.1.37-makefile.patch
+- Apply patches with autosetup
+
+-------------------------------------------------------------------
 Tue Aug 18 10:16:06 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix build on Factory: /var/spool/fax/outgoing can notonly change
