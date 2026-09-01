@@ -63,4 +63,67 @@
     <comment></comment>
     <requestid>1264956</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c5e4b380c29049fe6c9e210f7da268e4</srcmd5>
+    <version>0.3.4+git20251009.143ff5e</version>
+    <time>1788270431</time>
+    <user>anag_factory</user>
+    <comment>Update to a pinned upstream master snapshot, 0.3.4+git20251009.143ff5e
+(143ff5e7e0f786e341df8846c04e8273c5183c26, 2025-10-09).
+
+Supersedes sr#1374754, which carried only the Requires change below.
+
+The 0.3.4 tag is from 2022-01; master is 7 commits ahead of it and all of
+them are bug fixes:
+
+- setBandwidth stored the request rounded through
+  hackrf_compute_baseband_filter_bw, and setSampleRate then overrode it
+  again whenever auto-bandwidth was on. Both are gone, so a requested
+  bandwidth now survives a sample-rate change.
+- hackrf_set_amp_enable() was only called when the device already
+  happened to be streaming in that direction, so setting the amp gain
+  before starting a stream silently did nothing.
+- closeStream() now deactivates the stream first.
+
+The first of those is the one behavioural change worth flagging:
+automatic baseband-filter selection is gone with it. _auto_bandwidth is
+still written but no longer read, so a client that only calls
+setSampleRate() no longer gets a filter picked for it, and setBandwidth
+now passes the raw request to the firmware (which rounds up) instead of
+SoapySDR rounding it down. That is upstream's deliberate fix for the
+bandwidth bug, not a regression.
+- cmake_minimum_required became the range 2.8.12...3.10, which cmake 4
+  accepts on its own. The -DCMAKE_POLICY_VERSION_MINIMUM=3.5 workaround
+  is therefore dropped; verified green against Tumbleweed's cmake 4.4.2
+  and Leap 16.0's 3.31.7.
+
+The version format is +git, not ~git: labelCompare(0.3.4,
+0.3.4+git20251009.143ff5e) is -1, so the snapshot sorts above the tag;
+~git would sort below it and be a downgrade. Same form as Factory's own
+soapy-sdr, whose _service this one is modelled on, except that the
+revision is pinned to the full sha instead of &quot;master&quot;, so the tarball
+is reproducible. The committed tarball is content-identical to GitHub's
+archive of that sha.
+
+For the record: Gentoo, NixOS and FreeBSD all still ship the 0.3.4 tag,
+so nobody else carries a snapshot. Upstream has not tagged since 2022
+and publishes no GitHub releases at all, so waiting for a tag means
+waiting indefinitely for fixes that have been on master for four years.
+
+Also carried over from sr#1374754:
+
+Add an explicit Requires: soapy-sdr to the module subpackage. The module
+links libSoapySDR, so it has always had the automatic soname dependency
+(libSoapySDR.so.0.8-3), and the loader itself - the SoapySDR_loadModules
+symbol - lives in that library, so the library was never missing. What
+the module never pulled in is the soapy-sdr package, whose only content
+is /usr/bin/SoapySDRUtil. This is therefore a usability dependency, not
+a functional one: a module with no client on the system is useless,
+which is the point raised in review on sr#1374694. The rest of the
+SoapySDR plugin family is getting the same treatment.
+
+Plus %cmake_build instead of a bare make call and a copyright header
+refresh.</comment>
+    <requestid>1374796</requestid>
+  </revision>
 </revisionlist>

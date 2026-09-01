@@ -1,0 +1,19 @@
+<services>
+  <service name="tar_scm" mode="manual">
+    <param name="url">https://github.com/pothosware/SoapyHackRF.git</param>
+    <param name="scm">git</param>
+    <!-- master, pinned; last tag 0.3.4 predates the bandwidth/amp fixes -->
+    <param name="revision">143ff5e7e0f786e341df8846c04e8273c5183c26</param>
+    <param name="changesgenerate">disable</param>
+    <param name="filename">soapy-hackrf</param>
+    <!-- bump the 0.3.4 prefix by hand when upstream finally tags -->
+    <param name="versionformat">0.3.4+git%cd.%h</param>
+  </service>
+  <service name="recompress" mode="manual">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="manual">
+    <param name="basename">soapy-hackrf</param>
+  </service>
+</services>

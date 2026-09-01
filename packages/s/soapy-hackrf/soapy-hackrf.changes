@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Aug 31 06:35:52 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.3.4+git20251009.143ff5e:
+  * setBandwidth no longer rounds the request through
+    hackrf_compute_baseband_filter_bw, and setSampleRate no longer
+    overrides it
+  * hackrf_set_amp_enable() is now actually called - it was gated on
+    the device already streaming in that direction
+  * closeStream() deactivates the stream first
+  * cmake_minimum_required is now a 2.8.12...3.10 range, so the
+    CMAKE_POLICY_VERSION_MINIMUM workaround is dropped
+- Switch to a pinned master snapshot via _service (tar_scm, pinned
+  sha): the 0.3.4 tag is from 2022-01 and predates the fixes above.
+- Add Requires: soapy-sdr - the automatic soname dep covers only
+  libSoapySDR, so nothing pulls in SoapySDRUtil for probing an
+  installed module.
+- Use %cmake_build instead of a bare make call, small spec cleanup.
+
+-------------------------------------------------------------------
 Thu Mar 27 19:00:43 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - SOAPY_SDR_ABI_VERSION bump -> "0.8-3"
