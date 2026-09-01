@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Aug 28 09:43:27 UTC 2026 - Christoph G <foss@grueninger.de>
+
+- update to CMake 4.4.3
+  * Swift policy CMP0215's NEW behavior has been updated to require
+    policies CMP0157 and CMP0195 to also be set to NEW.
+- drop FindLua.cmake as this is part of the release
+
+-------------------------------------------------------------------
 Sun Aug  2 11:00:53 UTC 2026 - Christoph G <foss@grueninger.de>
 
 - update to CMake 4.4.2

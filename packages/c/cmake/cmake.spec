@@ -51,7 +51,7 @@
 %define pyver 3
 %endif
 Name:           cmake%{?psuffix}
-Version:        4.4.2
+Version:        4.4.3
 Release:        0
 Summary:        Cross-platform make system
 License:        BSD-3-Clause
@@ -64,9 +64,6 @@ Source4:        cmake.prov
 Source5:        https://github.com/Kitware/CMake/releases/download/v%{version}/cmake-%{version}-SHA-256.txt
 Source6:        https://github.com/Kitware/CMake/releases/download/v%{version}/cmake-%{version}-SHA-256.txt.asc
 Source7:        cmake.keyring
-# Work with Lua 5.5
-# https://gitlab.kitware.com/cmake/cmake/-/blob/261b7b933c66/Modules/FindLua.cmake
-Source50:       FindLua.cmake
 Source99:       README.SUSE
 # Search for python interpreters from newest to oldest rather then picking up /usr/bin/python as first choice
 Patch1:         feature-suse-python-interp-search-order.patch
@@ -150,9 +147,6 @@ CMake documentation for offline reading - qhelp version.
 # Verify hashes in that file against source tarball.
 echo "`grep cmake-%{version}.tar.gz %{SOURCE5} | grep -Eo '^[0-9a-f]+'`  %{SOURCE0}" | sha256sum -c
 %autosetup -p1 -n cmake-%{version}
-
-# Use modern FindLua.cmake capable of working with Lua 5.5
-cp %{SOURCE50} ./Modules/FindLua.cmake
 
 %build
 cp -p %{SOURCE99} .
