@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Thu Aug 27 16:25:23 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 1.23.2:
+  * CVE-2026-XXXXX (GHSA-g89c-p67h-r497) Heap buffer overflow in
+    scale_nearest_neighbor() via duplicate alpha planes from nested
+    iden/auxl items. (critical)
+  * (GHSA-2jg2-4ch7-h545) Out-of-bounds read and write in derived-
+    item and pixel-plane handling. Through iden and auxl item
+    chains, a crafted file could attach pixel planes whose size
+    differs from the image geometry; crop, scale, and plane-
+    extraction code then indexed those planes with the wrong size.
+    A working code-execution exploit was confirmed. Plane sizes are
+    now validated wherever they are consumed. (critical)
+  * CVE-2026-XXXXX (GHSA-24wx-9w62-c96w) brotli/zlib decompression
+    of mime metadata and unci image data had no effective output-
+    size limit, so a decompression bomb could exhaust memory.
+    Decompressed output is now bounded by the security limits.
+    (high)
+  * CVE-2026-XXXXX (GHSA-x8xm-cm2c-cfc8) Chains of derived-image
+    references (grid, iovl, iden) bypassed decode caching and
+    memory limits, causing CPU and memory amplification. (high)
+  * CVE-2026-XXXXX (GHSA-xw34-mjcp-jqh8) Sequence sample-timing
+    initialization could produce non-terminating decode loops and
+    unbounded memory, bypassing max_sequence_frames. (high)
+  * CVE-2026-XXXXX (GHSA-j264-xvrp-5v7q) Out-of-bounds write in the
+    unci encoder when heif_context_add_image_tile() is given a tile
+    whose planes do not match its declared size. (high)
+  * CVE-2026-XXXXX (GHSA-p58j-h3vm-3fp5) Heap out-of-bounds read in
+    the inline-mask region API when mask_data_len does not match
+    the region geometry. (medium)
+  * C++ exceptions such as std::bad_alloc can no longer escape the
+    C API read/decode entry points; they are returned as a
+    heif_error instead of aborting the process
+  * assert()s in the pixel-image plane allocation were replaced by
+    runtime errors
+  * stts/ctts tables describing more samples than the track can
+    have are rejected
+  * pclr (JPEG 2000 palette) box: the number of palette entries is
+    bounded by the box size
+  * BitReader::skip_bytes() is now constant time (fixes a fuzzer
+    timeout on bogus alignment values)
+  * iden items now validate the decoded image size like all other
+    items
+  * The uncompressed (unci) encoder rejects images without pixel
+    planes
+  * meta, mini, and moov boxes with size 0 (extending to the end of
+    the file) are now parsed correctly
+  * Fixed an integer overflow when probing the file size
+  * Fixed undefined behavior (signed shift) when reading the NAL
+    unit length in the OpenH264 decoder
+  * heif_region_item_add_region_inline_mask_data() now requires
+    non-zero width and height and the mask_data_len must equal
+    the expected (width * height + 7) / 8; otherwise it returns
+    an error instead of storing the mask
+  * heif_image_add_plane() returns an error instead of aborting
+    for bit depths outside 1..128 or interleaved component counts
+    outside 1..255
+
+-------------------------------------------------------------------
 Thu Jul 30 06:58:39 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.23.1:

@@ -2,6 +2,7 @@
 # spec file for package libheif
 #
 # Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,7 +47,7 @@
 %bcond_with heif_view
 
 Name:           libheif%{?psuffix}
-Version:        1.23.1
+Version:        1.23.2
 Release:        0
 Summary:        HEIF/AVIF file format decoder and encoder
 License:        LGPL-3.0-only AND MIT
@@ -403,62 +404,75 @@ rm -f %{buildroot}%{_datadir}/thumbnailers/heif.thumbnailer
 
 %files -n libheif1
 %license COPYING
-%{_libdir}/libheif.so.*
+%{_libdir}/libheif.so.1{,.*}
 %dir %{_libexecdir}/libheif
 
 %files aom
+%license COPYING
 %{_libexecdir}/libheif/libheif-aomdec.so
 %{_libexecdir}/libheif/libheif-aomenc.so
 
 %files dav1d
+%license COPYING
 %{_libexecdir}/libheif/libheif-dav1d.so
 
 %files ffmpeg
+%license COPYING
 %{_libexecdir}/libheif/libheif-ffmpegdec.so
 
 %files jpeg
+%license COPYING
 %{_libexecdir}/libheif/libheif-jpegdec.so
 %{_libexecdir}/libheif/libheif-jpegenc.so
 
 %if %{with kvazaar}
 %files kvazaar
+%license COPYING
 %{_libexecdir}/libheif/libheif-kvazaar.so
 %endif
 
 %if %{with openjpeg}
 %files openjpeg
+%license COPYING
 %{_libexecdir}/libheif/libheif-j2kdec.so
 %{_libexecdir}/libheif/libheif-j2kenc.so
 %endif
 
 %files openh264
+%license COPYING
 %{_libexecdir}/libheif/libheif-openh264dec.so
 
 %if %{with openjph}
 %files openjph
+%license COPYING
 %{_libexecdir}/libheif/libheif-jphenc.so
 %endif
 
 %files rav1e
+%license COPYING
 %{_libexecdir}/libheif/libheif-rav1e.so
 
 %if %{with svtenc}
 %files svtenc
+%license COPYING
 %{_libexecdir}/libheif/libheif-svtenc.so
 %endif
 
 %if %{with x264}
 %files x264
+%license COPYING
 %{_libexecdir}/libheif/libheif-x264.so
 %endif
 
 %if %{with x265}
 %files HEIF
+%license COPYING
 %{_libexecdir}/libheif/libheif-libde265.so
 %{_libexecdir}/libheif/libheif-x265.so
 %endif
 
 %files devel
+%license COPYING
 %doc README.md
 %{_includedir}/libheif
 %{_libdir}/libheif.so
@@ -466,10 +480,12 @@ rm -f %{buildroot}%{_datadir}/thumbnailers/heif.thumbnailer
 %{_libdir}/pkgconfig/libheif.pc
 
 %files -n gdk-pixbuf-loader-libheif
+%license COPYING
 %{_libdir}/gdk-pixbuf-2.0/%{gdk_pixbuf_binary_version}/loaders/*.so
 
 %if %{with x265}
 %files -n heif-examples
+%license COPYING
 %{_bindir}/heif-convert
 %{_bindir}/heif-dec
 %{_bindir}/heif-enc
@@ -479,6 +495,7 @@ rm -f %{buildroot}%{_datadir}/thumbnailers/heif.thumbnailer
 %{_mandir}/man1/heif-info.1%{?ext_man}
 
 %files -n heif-thumbnailer
+%license COPYING
 %{_bindir}/heif-thumbnailer
 %dir %{_datadir}/thumbnailers
 %{_datadir}/thumbnailers/heif.thumbnailer
