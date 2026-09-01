@@ -1,0 +1,8 @@
+<package name="rtlamr" project="openSUSE:Factory">
+  <title>SDR receiver for &quot;Smart Meters&quot;</title>
+  <description>An rtl-sdr receiver for Itron ERT compatible smart meters operating
+in the 900MHz ISM band.
+
+</description>
+  <url>https://github.com/bemasher/rtlamr</url>
+</package>

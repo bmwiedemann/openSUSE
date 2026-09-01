@@ -1,0 +1,26 @@
+From a1f6df82a21f80558c9abfc2b891ee68bb651a57 Mon Sep 17 00:00:00 2001
+From: bemasher <bemasher@gmail.com>
+Date: Sat, 25 Apr 2026 15:12:00 -0600
+Subject: [PATCH] Remove errant fmt.Println.
+
+Backported by Martin Pluskal <martin@pluskal.org>: the fix landed one commit
+after the v0.9.5 tag and is in no release yet. init() wrote the compile-time
+source dir to stdout, which is the data channel the csv/json/xml encoders
+write to, so it corrupted the first line of every machine-readable dump.
+
+---
+ main.go | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/main.go b/main.go
+index 44d04352..095d6c11 100644
+--- a/main.go
++++ b/main.go
+@@ -304,7 +304,6 @@ func init() {
+ 	if ok {
+ 		dir = filepath.Dir(file)
+ 		dir = filepath.Dir(dir) + string(filepath.Separator)
+-		fmt.Println(dir)
+ 	}
+ 
+ 	slog.SetDefault(slog.New(slog.NewTextHandler(os.Stderr,

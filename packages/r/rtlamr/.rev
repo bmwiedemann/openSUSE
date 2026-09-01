@@ -1,0 +1,56 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0a7130bd388c2424f32feab183ef612e</srcmd5>
+    <version>0.9.5</version>
+    <time>1788270435</time>
+    <user>anag_factory</user>
+    <comment>New package: rtlamr 0.9.5, an rtl-sdr receiver for Itron ERT compatible smart
+meters in the 900 MHz ISM band. Never submitted to Factory before.
+
+Developed in hardware:sdr, where Martin Hauke has maintained it since 2019; I
+have added myself to the package _meta as a co-maintainer.
+
+FOR LEGAL REVIEW - the licence tag needs a look:
+
+  License: AGPL-3.0-only AND BSD-2-Clause AND BSD-3-Clause
+
+rtlamr's own sources grant &quot;version 3 of the License, or (at your option) any
+later version&quot;, so on its own it would be AGPL-3.0-or-later. It is tagged
+-only because of a vendored dependency: github.com/bemasher/rtltcp is linked
+into the binary, and at the revision go.mod pins it ships NO licence text at
+all. That project's repository has since gained a LICENSE holding the bare
+AGPLv3 with no or-later grant. So the aggregate cannot be conveyed under a
+later AGPL, and -or-later would overstate what recipients get. Whether the
+later-added LICENSE covers the pinned revision is a call for legal, not for
+me; the reasoning is recorded in a Legal-Review-Notice above the tag.
+
+The rest of the expression: BSD-3-Clause from the in-tree r900/gf package (Go
+Authors, imported by r900) and from vendored golang.org/x/xerrors;
+BSD-2-Clause from vendored github.com/pkg/errors. All four notices ship under
+%license. go.mod also requires sirupsen/logrus, but no source file imports it,
+so go mod vendor omits it and it is not linked.
+
+Other review notes:
+
+* rtlamr-no-debug-stdout-print.patch is a backport of upstream commit
+  a1f6df82a21f80558c9abfc2b891ee68bb651a57 (&quot;Remove errant fmt.Println.&quot;,
+  bemasher, 2026-04-25), not a downstream invention. It sits exactly one
+  commit past the v0.9.5 tag and is in no release yet, so 0.9.5 still has the
+  bug: init() wrote the compile-time source directory to stdout on every run,
+  and stdout is the data channel (the csv/json/xml encoders write there), so
+  it corrupted the first line of every machine-readable dump. The patch keeps
+  upstream's authorship and the spec comment says to drop it once a release
+  contains a1f6df8.
+
+* vendor.tar.gz was regenerated for 0.9.5 with the go_modules source service.
+  The vendored module set is identical to the one 0.9.3 shipped.
+
+* The spec moves off the golang-packaging %goprep/%gobuild/%goinstall macros
+  to the go-modules idiom from the packaging guidelines. %check added, running
+  upstream's test suite.
+
+Built locally on aarch64 for Tumbleweed and Leap 16.0: rpmlint clean, tests
+pass, binary runs.</comment>
+    <requestid>1374729</requestid>
+  </revision>
+</revisionlist>

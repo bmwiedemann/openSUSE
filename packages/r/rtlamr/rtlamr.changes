@@ -1,0 +1,37 @@
+-------------------------------------------------------------------
+Sun Aug 30 17:13:35 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.9.5:
+  * Rework sample block reading; warn when the sample consumption rate
+    drops below the configured sample rate
+  * Honour the value of -unique; -unique=false previously still
+    enabled the filter
+  * Only SIGINT is handled now, not SIGTERM, so systemctl stop or kill
+    skips the graceful shutdown and can truncate a -samplefile dump
+  * Switch logging from log to log/slog
+  * Raise the documented minimum Go version to 1.21
+  * Update the compatible-meter tables, adding the Itron 100WR
+- Add rtlamr-no-debug-stdout-print.patch, a backport of upstream commit
+  a1f6df8: 0.9.5 printed the build dir to stdout, corrupting the first
+  line of csv/json output; the fix is one commit past v0.9.5 and is not
+  in any release yet
+- Regenerate vendor.tar.gz; the vendored module set is unchanged
+- Build with the go-modules idiom (go build -mod=vendor -buildmode=pie
+  -trimpath) instead of the golang-packaging macros
+- Add %check running the upstream test suite
+- License is AGPL-3.0-only AND BSD-2-Clause AND BSD-3-Clause; vendored
+  rtltcp grants no or-later upgrade, r900/gf and x/xerrors are
+  BSD-3-Clause, pkg/errors is BSD-2-Clause
+- _service: go_modules and download_files to manual (Factory rejects
+  trylocal), drop the no-op set_version
+
+-------------------------------------------------------------------
+Tue Sep 21 19:35:03 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.9.3
+- Cleanup specfile
+
+-------------------------------------------------------------------
+Sat Jan  5 16:10:33 UTC 2019 - mardnh@gmx.de
+
+- Initial package, version 0.9.1
