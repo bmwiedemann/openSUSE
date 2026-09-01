@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Sep  1 06:01:34 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.152.0:
+  * Vim mode gains "/" and "?" search within drafts, with match
+    highlighting and n/N repeat navigation
+  * Rate-limit banners offer actions for checking usage, managing
+    credits, resetting limits and managing plans
+  * TUI and "codex exec" show credential-refresh progress,
+    including Amazon Bedrock reauthentication
+  * MCP server names may contain ":", "@", "/" and "."
+  * Individual MCP tools honour an output_token_limit setting
+  * App-server clients can configure thread/shellCommand timeouts
+    longer than one hour
+  * Cloud task requests reject untrusted backend URLs and refuse
+    redirects, protecting saved credentials
+  * The planning tool is now disabled by default; re-enable with
+    tools.update_plan.enabled = true
+  * Vim-enabled composers start fresh drafts in Insert mode again
+- cargo-audit reports five advisories on the vendored lockfile, all
+  pre-existing and unchanged since 0.151.0; audit a bare Cargo.lock
+  because upstream's codex-rs/.cargo/audit.toml hides four of them:
+  * CVE-2026-25800 (RUSTSEC-2026-0185, quinn-proto 0.11.14): not
+    affected, reqwest gates dep:quinn behind its "http3" feature,
+    which the workspace leaves off, so it is never linked
+  * RUSTSEC-2026-0194 and -0195 (quick-xml 0.39.4) and
+    RUSTSEC-2026-0118 and -0119 (hickory-proto 0.25.2), DoS with no
+    CVE assigned: linked, but each fix is a semver-incompatible
+    bump of an intermediate crate, or not released at all
+- Legal-Review-Notice: linked-crate count 874/876 -> 875/877 on
+  aarch64/x86_64, from one new first-party workspace crate
+  (codex-guardian-context). The vendored dependency set, the
+  bundled() versions and the License tag are unchanged from 0.151.0
+
+-------------------------------------------------------------------
 Sat Aug 29 18:57:46 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.151.0:

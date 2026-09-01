@@ -8,27 +8,46 @@
     the v8-poc/code-mode-runtime/code-mode-host workspace members (~213 MB of
     sources that are never compiled) stay out of the bundle.  To regenerate:
 
-      tar xf codex-rust-v0.151.0.tar.gz
-      patch -p1 -d codex-rust-v0.151.0 < codex-drop-v8-code-mode.patch
-      rm -rf codex-rust-v0.151.0/codex-rs/vendor
-      osc service manualrun
-      rm -rf codex-rust-v0.151.0
+      tar xf codex-rust-v0.152.0.tar.gz
+      patch -p1 -d codex-rust-v0.152.0 < codex-drop-v8-code-mode.patch
+      rm -rf codex-rust-v0.152.0/codex-rs/vendor
+      osc service manualrun cargo_vendor
+      rm -rf codex-rust-v0.152.0
 
     The codex-rs/vendor removal drops the bundled bubblewrap 0.11.2 C sources,
     which %prep removes as well - codex uses the system bubblewrap instead.
   -->
   <!--
     update=false is deliberate, not an oversight.  source_validator suggests
-    update=true "to apply security updates", but cargo_vendor's own cargo-audit
-    pass reports the upstream lockfile clean - there is no advisory to fix - and
-    "cargo update" moves 383 of the ~1190 locked crates, including 0.x -> 1.0
-    jumps (anstream, anstyle-parse) and an aws-lc-sys 0.39 -> 0.44 bump, i.e. a
-    wholesale untested re-resolution of an 850-crate link graph rather than a
-    security update.  When an advisory does land, re-vendor the affected crate
-    with the cargo_vendor "update-crate" parameter instead.
+    update=true "to apply security updates", but "cargo update" moves 383 of
+    the ~1190 locked crates, including 0.x -> 1.0 jumps (anstream,
+    anstyle-parse) and an aws-lc-sys 0.39 -> 0.44 bump, i.e. a wholesale
+    untested re-resolution of an 850-crate link graph rather than a security
+    update.  When an advisory lands on a crate that is actually linked,
+    re-vendor just that crate with the cargo_vendor "update-crate" parameter.
+
+    cargo-audit is NOT clean, and running it inside codex-rs hides most of it:
+    upstream's codex-rs/.cargo/audit.toml ignores 11 advisories, which drops
+    the count from 5 to 1.  Audit a bare copy of Cargo.lock instead.  As of
+    0.152.0, and unchanged since 0.151.0:
+      RUSTSEC-2026-0185 / CVE-2026-25800 (quinn-proto 0.11.14, fixed
+        0.11.15) - NOT linked.  reqwest gates dep:quinn behind its "http3"
+        feature, which the workspace leaves off, so it never reaches
+        "cargo tree -p codex-cli -e normal,no-proc-macro".
+      RUSTSEC-2026-0194, RUSTSEC-2026-0195 (quick-xml 0.39.4, DoS) - linked
+        via codex-tui -> syntect -> plist.  Fixed in 0.41.0, which is
+        semver-incompatible for plist, so update-crate cannot reach it.
+      RUSTSEC-2026-0118, RUSTSEC-2026-0119 (hickory-proto 0.25.2, DoS) -
+        linked via codex-network-proxy -> rama-tcp -> rama-dns ->
+        hickory-resolver.  0118 has no fixed release at all; 0119 needs
+        0.26.1, semver-incompatible for hickory-resolver.
+    Only 0185 carries a CVE id; the other four are GHSA/RUSTSEC-only, so
+    there is no security-tracker exposure.  Re-run the bare-lockfile audit on
+    each bump - the fix for the linked four is an upstream dependency bump,
+    not anything this package can vendor around.
   -->
   <service name="cargo_vendor" mode="manual">
-    <param name="srcdir">codex-rust-v0.151.0/codex-rs</param>
+    <param name="srcdir">codex-rust-v0.152.0/codex-rs</param>
     <param name="compression">zst</param>
     <param name="update">false</param>
   </service>

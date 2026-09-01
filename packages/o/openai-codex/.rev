@@ -253,4 +253,75 @@ Built on Tumbleweed aarch64: rpmlint 0 errors / 0 warnings / 0 badness,
 %check green (380 tests across the five allowlisted crates).</comment>
     <requestid>1374664</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>11c8647f0516ffcaaf7da153922aa61a</srcmd5>
+    <version>0.152.0</version>
+    <time>1788270707</time>
+    <user>anag_factory</user>
+    <comment>openai-codex 0.152.0
+
+Upstream: vim-mode draft search with n/N navigation, rate-limit banner
+actions, credential-refresh progress (including Amazon Bedrock),
+package-style MCP server names, per-tool output_token_limit, app-server
+shell timeouts beyond one hour, cloud-task requests rejecting untrusted
+backend URLs, and the planning tool now off by default.
+
+Packaging notes:
+
+- Both downstream patches apply at &quot;patch -p1 --fuzz=0&quot; with line
+  offsets only, so no rebase was needed. After
+  codex-drop-v8-code-mode.patch applies, codex-rs/Cargo.toml has no
+  remaining v8 / code-mode-host / code-mode-runtime reference, i.e. the
+  same five removals still take effect.
+
+- The vendored crate set did not move. Compared at name+version
+  granularity, Cargo.lock carries the same 1218 entries with a &quot;source&quot;
+  field in 0.151.0 and 0.152.0 - zero added, zero removed, zero version
+  changes. The only new lockfile entry is codex-guardian-context, which
+  has no &quot;source&quot; field: it is a first-party workspace member, not a
+  vendored dependency, and the first-party count is what goes 143 -&gt;
+  144 here.
+
+- &quot;cargo tree --offline -p codex-cli -e normal,no-proc-macro&quot; was re-run
+  against both vendored trees: 748 third-party linked crates in each,
+  with a byte-identical crate-to-licence map. License: is therefore
+  unchanged and was not re-derived beyond that check. The
+  Legal-Review-Notice counts moved only because first-party workspace
+  members in that graph went 126 -&gt; 127 (aarch64 874 -&gt; 875, x86_64
+  876 -&gt; 877, Apache-2.0 647 -&gt; 648). The parenthetical now names the
+  748 third-party figure separately, so the licence-relevant number
+  stops drifting every time upstream adds a workspace crate.
+
+- cargo-audit must be run against a BARE copy of Cargo.lock: upstream
+  ships codex-rs/.cargo/audit.toml with 11 ignore entries, and running
+  the audit from inside codex-rs drops the count from 5 advisories to 1.
+  All five are pre-existing - the crate set is byte-identical to
+  0.151.0, which is already in Factory - and only one carries a CVE id:
+    RUSTSEC-2026-0185 / CVE-2026-25800, quinn-proto 0.11.14, fixed
+    0.11.15. NOT linked: reqwest gates dep:quinn behind its &quot;http3&quot;
+    feature, which the workspace leaves off, so quinn-proto is absent
+    from codex-cli's cargo tree entirely.
+    RUSTSEC-2026-0194 and -0195, quick-xml 0.39.4, DoS, no CVE. Linked
+    via codex-tui -&gt; syntect -&gt; plist. Fixed in 0.41.0, which is
+    semver-incompatible for plist, so cargo_vendor's update-crate
+    cannot reach it.
+    RUSTSEC-2026-0118 and -0119, hickory-proto 0.25.2, DoS, no CVE.
+    Linked via codex-network-proxy -&gt; rama-tcp -&gt; rama-dns -&gt;
+    hickory-resolver. 0118 has no fixed release at all; 0119 needs
+    0.26.1, semver-incompatible for hickory-resolver.
+  The four linked ones need an upstream dependency bump, not anything
+  this package can vendor around, so they are documented rather than
+  worked around. The _service comment previously claimed the lockfile
+  audited clean; it now carries the list above.
+
+- BuildRequires: rust &gt;= 1.95 still matches upstream's
+  rust-toolchain.toml pin (channel 1.95.0).
+
+- Re-checked as still accurate for 0.152.0 and left alone: the
+  Provides: bundled(...) versions (the -sys crates are unmoved,
+  aws-lc-sys is still 0.39.0), _constraints, the %check crate allowlist
+  (all five crates still exist), the %prep removals, and the multicall
+  helper and subcommand names in %description.</comment>
+    <requestid>1375084</requestid>
+  </revision>
 </revisionlist>
