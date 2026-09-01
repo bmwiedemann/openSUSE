@@ -255,6 +255,7 @@ Source50:       emacs-30.2-pgtk-visual-bell-boo1271643.patch
 Patch51:        0001-speedbar-mode-must-be-enabled-in-the-speedbar-window.patch
 Patch52:        0012-Add-inhibit-native-compilation.patch
 Patch53:        0013-Rename-to-inhibit-automatic-native-compilation.patch
+Patch54:        0001-speedbar-window-now-run-speedbar-before-delete-hook-.patch
 Patch55:        0015-Change-native-comp-async-jobs-number-default-to-1.patch
 Patch56:        0016-Change-native-comp-async-report-warnings-errors-to-s.patch
 Patch57:        emacs-30.2-fix-zoom.patch
@@ -428,6 +429,7 @@ and most assembler-like syntaxes.
 %patch -P51 -p1
 %patch -P52 -p1
 %patch -P53 -p1
+%patch -P54 -p1
 %patch -P55 -p1
 %patch -P56 -p1
 %patch -P57 -p1

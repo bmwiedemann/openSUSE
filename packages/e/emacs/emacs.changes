@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 31 07:34:56 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Add upstream patch 0001-speedbar-window-now-run-speedbar-before-delete-hook-.patch
+  * 'speedbar-window' now run 'speedbar-before-delete-hook'
+
+-------------------------------------------------------------------
 Thu Aug 27 08:37:39 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Use lexical-binding for lisp file

@@ -2413,4 +2413,13 @@ Now one could consider building emacs with gsettings support (both debian and fe
   * emacs-24.4-glibc.patch</comment>
     <requestid>1374345</requestid>
   </revision>
+  <revision rev="223" vrev="2">
+    <srcmd5>515f8f94a02463ab21c851b30d16b6fc</srcmd5>
+    <version>31.1</version>
+    <time>1788270400</time>
+    <user>anag_factory</user>
+    <comment>- Add upstream patch 0001-speedbar-window-now-run-speedbar-before-delete-hook-.patch
+  * 'speedbar-window' now run 'speedbar-before-delete-hook'</comment>
+    <requestid>1374832</requestid>
+  </revision>
 </revisionlist>
