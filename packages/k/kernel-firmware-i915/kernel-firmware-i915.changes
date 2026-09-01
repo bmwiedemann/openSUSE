@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug  7 16:14:18 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260806 (git commit 16d815da3637):
+  * xe: Update GUC to v70.72.1 for BMG, LNL, PTL, NVL-S
+
+-------------------------------------------------------------------
 Thu Jul  9 09:58:01 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260706 (git commit 2c35b1ed46f6):

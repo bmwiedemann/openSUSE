@@ -276,4 +276,13 @@ After this PR, there will be a delete request for kernel-firmware.
 - Update aliases from 7.1 / 7.2-rc1</comment>
     <requestid>1364841</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>01370daca8aff08b960f480de5e2f56f</srcmd5>
+    <version>20260806</version>
+    <time>1788270342</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260806 (git commit 16d815da3637):
+  * xe: Update GUC to v70.72.1 for BMG, LNL, PTL, NVL-S</comment>
+    <requestid>1374907</requestid>
+  </revision>
 </revisionlist>
