@@ -28,6 +28,7 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/NVIDIA/egl-gbm
 Source0:        https://github.com/NVIDIA/egl-gbm/archive/%{version}/%{rname}-%{version}.tar.gz
 Source1:        baselibs.conf
+Patch0:         0001-fix-parameter-validation.patch
 BuildRequires:  gcc-c++
 BuildRequires:  meson
 BuildRequires:  ninja

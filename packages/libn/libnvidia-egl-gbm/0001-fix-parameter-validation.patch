@@ -1,0 +1,37 @@
+From ac4e1348b6c2943dde20e77949613a4e005be764 Mon Sep 17 00:00:00 2001
+From: Riku Salminen <rsalminen@nvidia.com>
+Date: Tue, 14 Apr 2026 09:16:35 +0000
+Subject: [PATCH] fix parameter validation
+
+Add missing validation for EGL_NATIVE_RENDERABLE to eglChooseConfig.
+
+Fixes dEQP-EGL.functional.negative_api.*
+---
+ src/gbm-display.c | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+diff --git a/src/gbm-display.c b/src/gbm-display.c
+index f3cc607..fcc8c0e 100644
+--- a/src/gbm-display.c
++++ b/src/gbm-display.c
+@@ -516,6 +516,17 @@ eGbmChooseConfigHook(EGLDisplay dpy,
+                 (attribs[nAttribs + 1] & ~EGL_WINDOW_BIT) |
+                 EGL_STREAM_BIT_KHR;
+ 
++        /* Validate EGL_NATIVE_RENDERABLE boolean value */
++        } else if (attribs[nAttribs] == EGL_NATIVE_RENDERABLE) {
++            if (attribs[nAttribs + 1] != EGL_TRUE &&
++                attribs[nAttribs + 1] != EGL_FALSE &&
++                attribs[nAttribs + 1] != EGL_DONT_CARE) {
++                err = EGL_BAD_ATTRIBUTE;
++                goto done;
++            }
++            newAttribs[nNewAttribs++] = attribs[nAttribs];
++            newAttribs[nNewAttribs++] = attribs[nAttribs + 1];
++
+         /* Remove all instances of the EGL_nATIVE_VISUAL_ID attribute */
+         } else if (attribs[nAttribs] != EGL_NATIVE_VISUAL_ID) {
+             newAttribs[nNewAttribs++] = attribs[nAttribs];
+-- 
+2.51.0
+
