@@ -298,4 +298,19 @@
   * Add support for Python 3.14.</comment>
     <requestid>1343525</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>41b6864ca7c29675ff75628003899b47</srcmd5>
+    <version>8.3</version>
+    <time>1788270519</time>
+    <user>anag_factory</user>
+    <comment>- update to 8.3:
+  * Move package metadata from setup.py to pyproject.toml.
+  * Add support for Python 3.15: Restore the pre-3.15 behavior of
+    reporting a doctest as a single test even if it contains
+    multiple examples.  Python 3.15 changed doctest.DocTestCase
+    to report each example as a separate subtest
+    (python/cpython#108885), which broke zope.testrunner's
+    failure reporting.</comment>
+    <requestid>1374982</requestid>
+  </revision>
 </revisionlist>
