@@ -37,4 +37,13 @@
   * Skip a test with Python 3.15+.</comment>
     <requestid>1363921</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>06ba96e6009d1f8e394376dd60e081aa</srcmd5>
+    <version>1.5.26</version>
+    <time>1788270358</time>
+    <user>anag_factory</user>
+    <comment>- Update patch support-python-315.patch:
+  * Also allow &lt;frozen linecache&gt; to call os.stat.</comment>
+    <requestid>1374775</requestid>
+  </revision>
 </revisionlist>

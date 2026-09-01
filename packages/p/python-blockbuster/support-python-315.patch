@@ -10,3 +10,15 @@ Index: blockbuster-1.5.26/tests/test_blockbuster.py
  async def test_os_scandir() -> None:
      with os.scandir(tempfile.tempdir) as files, pytest.raises(
          BlockingError, match="Blocking call to ScandirIterator.__next__"
+Index: blockbuster-1.5.26/blockbuster/blockbuster.py
+===================================================================
+--- blockbuster-1.5.26.orig/blockbuster/blockbuster.py
++++ blockbuster-1.5.26/blockbuster/blockbuster.py
+@@ -293,6 +293,7 @@ def _get_os_wrapped_functions(
+         can_block_functions=[
+             ("<frozen importlib._bootstrap>", {"_find_and_load"}),
+             ("linecache.py", {"checkcache", "updatecache"}),
++            ("<frozen linecache>", {"checkcache", "updatecache", "getline", "getlines"}),
+             ("coverage/control.py", {"_should_trace"}),
+             ("asyncio/unix_events.py", {"create_unix_server", "_stop_serving"}),
+         ],
