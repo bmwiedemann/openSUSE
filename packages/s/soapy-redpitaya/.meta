@@ -1,0 +1,8 @@
+<package name="soapy-redpitaya" project="openSUSE:Factory">
+  <title>SoapySDR RedPitaya module</title>
+  <description>Soapy RedPitaya - RedPitaya device support for Soapy SDR.
+A Soapy module that supports RedPitaya devices within the Soapy API.
+
+</description>
+  <url>https://github.com/pothosware/SoapyRedPitaya/wiki</url>
+</package>

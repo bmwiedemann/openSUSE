@@ -1,0 +1,56 @@
+-------------------------------------------------------------------
+Sun Aug 30 18:32:50 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Add 0001-Update-for-compat-with-newer-CMake.patch: upstream's only
+  commit past the 0.1.1 tag; switches cmake_minimum_required to the
+  2.8.12...3.10 range form, which cmake 4 accepts without the
+  distro-wide CMAKE_POLICY_VERSION_MINIMUM escape hatch.
+- Fix License to GPL-3.0-or-later: the source header grants v3 "or (at
+  your option) any later version".
+- Spec cleanup: drop Group tags, switch to %autosetup, add %check,
+  ship Changelog.txt.
+- Explicitly require soapy-sdr: the automatic soname dependency pulls
+  only libSoapySDR, so the module could be installed with no SoapySDR
+  client - not even SoapySDRUtil - to reach it
+
+-------------------------------------------------------------------
+Tue Apr  1 09:58:28 UTC 2025 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- SOAPY_SDR_ABI_VERSION bump -> "0.8-3"
+
+-------------------------------------------------------------------
+Sat Jul 10 10:58:56 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- SoapySDR version bumped to 0.8
+
+-------------------------------------------------------------------
+Thu Dec 13 12:24:04 UTC 2018 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 0.1.1
+
+-------------------------------------------------------------------
+Sat Nov 10 13:22:39 UTC 2018 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update soapy-module version 0.6 -> 0.7
+
+-------------------------------------------------------------------
+Fri May  5 13:36:53 UTC 2017 - mardnh@gmx.de
+
+- Update soapy-module version 0.5-2 -> 0.6
+
+-------------------------------------------------------------------
+Wed Apr 19 21:48:51 UTC 2017 - mardnh@gmx.de
+
+- renamed packages according the debian package name from upstream
+
+-------------------------------------------------------------------
+Fri Apr 14 20:28:47 UTC 2017 - mardnh@gmx.de
+
+- Update to version 0.1.0 (tagged release)
+- renamed package from SoapyRedPitaya to soapy-redpitaya
+- specfile cleanup
+
+-------------------------------------------------------------------
+Fri Dec 25 20:30:16 UTC 2015 - mardnh@gmx.de
+
+ - initial package, version version 0.0.0.git1450955812.d0d2954

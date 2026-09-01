@@ -1,0 +1,29 @@
+From 0702140487231658d200d488dfde7db3e41a5538 Mon Sep 17 00:00:00 2001
+From: "Christian W. Zuckschwerdt" <christian@zuckschwerdt.org>
+Date: Thu, 9 Oct 2025 18:48:57 +0200
+Subject: [PATCH] Update for compat with newer CMake
+
+---
+ CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 01b10fa..ca242c0 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ ########################################################################
+ # Project setup
+ ########################################################################
+-cmake_minimum_required(VERSION 2.6)
++cmake_minimum_required(VERSION 2.8.12...3.10)
+ project(SoapyRedPitaya CXX)
+ enable_testing()
+ 
+@@ -25,4 +25,4 @@ endif ()
+ SOAPY_SDR_MODULE_UTIL(
+     TARGET RedPitaya
+     SOURCES SoapyRedPitaya.cpp
+-)
+\ No newline at end of file
++)

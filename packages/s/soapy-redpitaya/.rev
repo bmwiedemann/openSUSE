@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b1848c69c53bbf81d91c46d196374453</srcmd5>
+    <version>0.1.1</version>
+    <time>1788270419</time>
+    <user>anag_factory</user>
+    <comment>New package: soapy-redpitaya, the Red Pitaya backend for SoapySDR.
+
+Factory already ships soapy-sdr and seven of its plugin backends
+(soapy-airspy, soapy-bladerf, soapy-hackrf, soapy-osmo, soapy-remote,
+soapy-rtlsdr, soapy-uhd), every one of them with hardware:sdr as its
+registered devel project. Red Pitaya is the peer that is missing, so
+Factory's set of SoapySDR hardware backends is incomplete.
+
+License: GPL-3.0-or-later. The sole source file grants GPLv3 &quot;or (at
+your option) any later version&quot; and COPYING is the plain GPLv3 text.
+This differs from the MIT/BSL-1.0 siblings, so the tag is deliberate
+rather than inherited.
+
+No proprietary dependency: the backend is a plain TCP client for the
+server running on the Red Pitaya board, so it builds against SoapySDR
+alone. The installed module links only libSoapySDR, libstdc++, libgcc
+and libc -- no vendor SDK, no redistributable blob, no firmware.
+
+Ships a single dlopened module, soapysdr0.8-3-module-redpitaya,
+following the existing plugin naming and the SoapySDR module ABI
+directory.
+
+Upstream last tagged 0.1.1 in 2018 and the only commit since is a
+CMake 4 compatibility fix, carried here as
+0001-Update-for-compat-with-newer-CMake.patch; Debian ships the same
+commit as its only patch in 0.1.1-6.
+
+Built natively on aarch64 against openSUSE_Tumbleweed: clean, rpmlint
+reports 0 errors, 0 warnings, 0 badness.
+
+ADDED IN THIS REVISION
+Explicit &quot;Requires: soapy-sdr&quot; on the module subpackage, at dimstar's request
+on SR 1374694 (soapy-plutosdr), applied to all five plugin submissions: &quot;Shouldn't that require soapy-sdr? The module
+on its own seems quite useless&quot;.
+
+To be precise about what this does and does not change: the dlopen itself lives
+in libSoapySDR (SoapySDR::loadModules(), reached from Device::make()), which the
+module already pulled in through its automatic soname dependency on
+libSoapySDR.so.0.8-3 - so any application linking the library could always load
+the module. What nothing pulled in was the soapy-sdr package, which ships
+SoapySDRUtil; the module could therefore be installed on a system with no
+SoapySDR client at all to enumerate or probe it. So this is a usability
+dependency rather than a functional one, and the spec comment says so. The
+soname dependency remains the ABI-exact constraint, which is why the new line is
+deliberately unversioned instead of duplicating the ABI in the spec.
+
+Stated plainly so it is not mistaken for convention: none of Factory's existing
+SoapySDR plugins - soapy-airspy, soapy-bladerf, soapy-hackrf, soapy-osmo,
+soapy-remote, soapy-rtlsdr, soapy-uhd - carries such a Requires. This change
+makes these five stricter than current Factory practice; it is what the reviewer
+asked for, not a convention being matched.
+
+Rebuilt natively on aarch64 after the change: green, rpmlint unchanged, and
+&quot;rpm -qp --requires&quot; on the built module now lists both
+libSoapySDR.so.0.8-3()(64bit) and soapy-sdr.
+
+Supersedes SR 1374695.</comment>
+    <requestid>1374740</requestid>
+  </revision>
+</revisionlist>
