@@ -1,0 +1,58 @@
+-------------------------------------------------------------------
+Sun Aug 30 18:32:50 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.1.1+git20251009.63b22ec:
+  * Raise cmake_minimum_required, dropping the package's reliance on
+    the distro-wide CMAKE_POLICY_VERSION_MINIMUM shim
+  * Catch std::invalid_argument by const reference
+- Upstream has not tagged since 0.1.1 (2019) and cuts no releases;
+  master is that tag plus the two patches below, so track a pinned
+  snapshot via obs_scm and ship patch-free
+- Drop patches, both merged upstream:
+  * SoapyAudio-hamlib-control-not-working.patch
+  * SoapyAudio-fix-for-hamlib-4_2.patch
+- Keep upstream's in-tree RtAudio 5.1.0 and declare it as
+  bundled(rtaudio): rtaudio 6 dropped the RtAudioError API and moved
+  device enumeration to opaque ids from getDeviceIds(), which
+  SoapyAudio's index-based enumeration does not implement
+- Ship the bundled RtAudio's own MIT notice as LICENSE.RtAudio.txt
+- Check the module actually loads with SoapySDRUtil
+- Spec cleanup: drop Group tags, switch to pkgconfig() BuildRequires
+- Explicitly require soapy-sdr: the automatic soname dependency pulls
+  only libSoapySDR, so the module could be installed with no SoapySDR
+  client - not even SoapySDRUtil - to reach it
+
+-------------------------------------------------------------------
+Tue Apr  1 09:57:26 UTC 2025 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- SOAPY_SDR_ABI_VERSION bump -> "0.8-3"
+
+-------------------------------------------------------------------
+Thu Sep 26 20:24:20 UTC 2024 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Disable RTaudio support for Tumbleweed (version 6.x is not yet
+  supported)
+- Use %autosetup macro instead of %patchX macro
+- Add empty %check section
+- Do not require pkgconfig for build
+
+-------------------------------------------------------------------
+Wed Jul 14 22:14:35 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- SoapySDR version bumped to 0.8
+- added a patch SoapyAudio-hamlib-control-not-working.patch from git
+- added a patch SoapyAudio-fix-for-hamlib-4_2.patch to fix build 
+  hamlib 4.2 
+
+-------------------------------------------------------------------
+Tue May 14 21:08:23 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- version 0.1.1
+  * Support building against system rtaudio
+- system rtaudio library used for Leap 15.0 and later
+
+-------------------------------------------------------------------
+Sat Dec 22 10:12:58 UTC 2018 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- version 0.1.0
+- initial package

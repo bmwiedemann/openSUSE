@@ -1,0 +1,19 @@
+<services>
+  <!-- Upstream last tagged 0.1.1 in 2019 and cuts no releases; master is that
+       tag plus the two hamlib patches we used to carry, so pinning it ships
+       patch-free. '+git' (not '~git') keeps it sorting above the tag. -->
+  <service name="obs_scm" mode="manual">
+    <param name="url">https://github.com/pothosware/SoapyAudio.git</param>
+    <param name="scm">git</param>
+    <param name="revision">63b22ec6ebf90a3a2732db66c588de0cc0b8a378</param>
+    <param name="versionformat">0.1.1+git%cd.%h</param>
+    <param name="exclude">.git*</param>
+    <param name="filename">soapy-audio</param>
+  </service>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">zst</param>
+  </service>
+  <service name="set_version" mode="buildtime"/>
+</services>

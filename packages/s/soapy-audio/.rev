@@ -1,0 +1,97 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ea52e574f2916a3b9ae4b0a2c22092ab</srcmd5>
+    <version>0.1.1+git20251009.63b22ec</version>
+    <time>1788270421</time>
+    <user>anag_factory</user>
+    <comment>New package: soapy-audio - the SoapySDR backend for soundcard-class receivers.
+
+Why it belongs in Factory: Factory already ships soapy-sdr and seven of its
+hardware plugins (soapy-airspy, soapy-bladerf, soapy-hackrf, soapy-osmo,
+soapy-remote, soapy-rtlsdr, soapy-uhd). soapy-audio is the direct peer for the
+one remaining common hardware class - receivers that present themselves as a
+sound card (Softrock and similar quadrature front-ends on a line-in, SDR
+transceivers exposed as audio devices) - with optional hamlib rig control for
+tuning. Without it the set of SoapySDR backends in Factory is incomplete, and
+every SoapySDR frontend in Factory silently lacks that device class.
+
+It is submitted from hardware:sdr, which is already the registered devel project
+for soapy-sdr and all seven plugins above, so it lands where its peers are
+maintained and follows their spec layout (same soapy_modver / module naming).
+
+License: MIT (upstream LICENSE.txt). Two notes recorded as a Legal-Review-Notice
+in the spec so they need not be re-derived on each scan:
+ - cmake/Modules/FindRtAudio.cmake is BSD-3-Clause (Idiap); LibFindMacros.cmake
+   and Findhamlib.cmake carry no notice at all. All three are build-system
+   helpers and are never compiled into a shipped artifact.
+ - the bundled RtAudio is MIT (its extra &quot;please send modifications upstream&quot;
+   sentence is explicitly non-binding); its notice ships as LICENSE.RtAudio.txt.
+
+Source: upstream last tagged 0.1.1 in 2019 and publishes no releases, so this
+ships a pinned master snapshot (0.1.1+git20251009.63b22ec, obs_scm). Master is
+the 0.1.1 tree plus exactly the two hamlib patches this package used to carry
+downstream, plus a cmake_minimum_required bump and an exception-by-const-ref
+fix. Pinning master therefore lets the package ship patch-free and stop relying
+on the distro-wide CMAKE_POLICY_VERSION_MINIMUM shim. It is not an FTBFS fix -
+the 0.1.1 tag still builds today via that shim. '+git' is deliberate: the '~git'
+form would sort below the 0.1.1 tag.
+
+Bundled RtAudio, declared as Provides: bundled(rtaudio) = 5.1.0. The module
+builds upstream's in-tree RtAudio 5.1.0 rather than linking Factory's rtaudio 6:
+RtAudio 6 removed the RtAudioError API that SoapyAudio uses and changed device
+enumeration from a 0..count-1 index to opaque ids from getDeviceIds(), which
+SoapyAudio does not implement. A compile-only fix (as Debian carries) leaves
+device enumeration wrong at runtime, so the correct port belongs upstream rather
+than in a first Factory submission.
+
+No proprietary content in the bundled copy: Factory's own rtaudio.spec strips
+include/ and tests/Windows (the Steinberg ASIO SDK headers) in %prep. The
+in-tree copy here is only README.md, RtAudio.cpp and RtAudio.h, so there is
+nothing equivalent to remove.
+
+Debian is the only other distro carrying this package (soapyaudio 0.1.1-7,
+forky/sid; not in Fedora or Arch). Their 01-rtaudio-6.patch changes Streaming.cpp
+only - exceptions to error codes - and leaves Registration.cpp's index-based
+device enumeration untouched against rtaudio 6's opaque ids, which is why
+keeping the in-tree copy is the correct call here rather than the lazy one.
+
+Backend: PulseAudio only, which also covers PipeWire. RtAudio selects the first
+compiled-in API whose getDeviceCount() is non-zero and RtApiPulse unconditionally
+reports one device, so any second backend compiled in beside it would be
+unreachable dead code rather than a fallback.
+
+Built natively on aarch64 against Factory, and hardware:sdr built the submitted
+revision green on Tumbleweed x86_64 and aarch64 (plus Leap 16.0). rpmlint reports
+0 errors, 0 warnings, 0 badness on both arches; %check verifies that SoapySDR
+actually loads the built module.
+
+ADDED IN THIS REVISION
+Explicit &quot;Requires: soapy-sdr&quot; on the module subpackage, at dimstar's request
+on SR 1374694 (soapy-plutosdr), applied to all five plugin submissions: &quot;Shouldn't that require soapy-sdr? The module
+on its own seems quite useless&quot;.
+
+To be precise about what this does and does not change: the dlopen itself lives
+in libSoapySDR (SoapySDR::loadModules(), reached from Device::make()), which the
+module already pulled in through its automatic soname dependency on
+libSoapySDR.so.0.8-3 - so any application linking the library could always load
+the module. What nothing pulled in was the soapy-sdr package, which ships
+SoapySDRUtil; the module could therefore be installed on a system with no
+SoapySDR client at all to enumerate or probe it. So this is a usability
+dependency rather than a functional one, and the spec comment says so. The
+soname dependency remains the ABI-exact constraint, which is why the new line is
+deliberately unversioned instead of duplicating the ABI in the spec.
+
+Stated plainly so it is not mistaken for convention: none of Factory's existing
+SoapySDR plugins - soapy-airspy, soapy-bladerf, soapy-hackrf, soapy-osmo,
+soapy-remote, soapy-rtlsdr, soapy-uhd - carries such a Requires. This change
+makes these five stricter than current Factory practice; it is what the reviewer
+asked for, not a convention being matched.
+
+Rebuilt natively on aarch64 after the change: green, rpmlint unchanged, and
+&quot;rpm -qp --requires&quot; on the built module now lists both
+libSoapySDR.so.0.8-3()(64bit) and soapy-sdr.
+
+Supersedes SR 1374701.</comment>
+    <requestid>1374741</requestid>
+  </revision>
+</revisionlist>

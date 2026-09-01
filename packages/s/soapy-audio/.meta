@@ -1,0 +1,5 @@
+<package name="soapy-audio" project="openSUSE:Factory">
+  <title>SoapySDR audio module</title>
+  <description>Soapy Audio - audio device support for Soapy SDR.
+A Soapy module that supports audio devices within the Soapy API.</description>
+</package>
