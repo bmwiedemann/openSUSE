@@ -1,0 +1,12 @@
+diff --git a/src/index.html b/src/index.html
+index c83d803..12517cc 100644
+--- a/src/index.html
++++ b/src/index.html
+@@ -12,6 +12,7 @@ Copyright (C) 2017 Red Hat, Inc.
+ 
+     <link rel="stylesheet" href="index.css">
+     <link href="../../static/branding.css" rel="stylesheet" />
++    <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet">
+ 
+     <script type="text/javascript" src="index.js"></script>
+     <script type="text/javascript" src="po.js"></script>
