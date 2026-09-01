@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Aug 31 11:30:52 UTC 2026 - antonio.feijoo@suse.com
+
+- Update to version 112+suse.47.gec0b378:
+  * fix(base): check first argument in load_fstype()
+  * fix(url-lib): check error if curl fails in subshell
+  * fix(dracut-systemd): actually make rd.break=pre-trigger stop before pre-trigger
+  * fix(lvm): unset DM_VG_NAME and DM_LV_NAME in each iteration
+  * fix(lvm): drop stray leading and trailing spaces from generated cmdline
+  * fix(lvm): install the LVM system ID file again
+  * fix(lvm): deduplicate rd.lvm.lv= arguments in cmdline()
+  * fix(lvm): check all host devices in cmdline()
+  * fix(iscsi): sanitize netroot= value passed to initqueue scripts
+
+- CVE-2026-6893: root code execution via dhcp options command injection
+  (bsc#1268322, follow-up fixes recently merged)
+  * fix(network-legacy): sanitize values written to /tmp/net.${netif}.override
+  * fix(network-legacy): sanitize values written to /tmp/net.${netif}.gw
+  * fix(network-legacy): sanitize values written to /tmp/net.${netif}.hostname
+  * fix(network-legacy): strip DHCP-supplied domain to a safe charset
+
+- Maintain configuration in OBS
+
+-------------------------------------------------------------------
 Wed Aug 19 11:25:05 UTC 2026 - antonio.feijoo@suse.com
 
 - Update to version 112+suse.34.g35e16b7:
@@ -959,6 +982,10 @@ Fri Apr 01 15:31:08 UTC 2022 - antonio.feijoo@suse.com
   * fix(resume): only exclude this module when swap is netdev
   * fix(network): do not use network-wicked as default network handler
   * chore(suse): update spec
+
+- CVE-2026-16445: root code execution via dhcp options command injection in
+  networkmanager initrd module (bsc#1273580)
+  * fix(network-manager): ensure safe content of /tmp/dhclient."$ifname".dhcpopts
 
 -------------------------------------------------------------------
 Fri Feb 18 07:48:46 UTC 2022 - antonio.feijoo@suse.com

@@ -26,7 +26,7 @@
 %endif
 
 Name:           dracut
-Version:        112+suse.34.g35e16b7
+Version:        112+suse.47.gec0b378
 Release:        0
 Summary:        Event driven initramfs infrastructure
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -38,12 +38,18 @@ Source2:        README.susemaint
 # Temporary files for locations outside of /usr and /etc (jsc#PED-14785 - comply
 # with immutable mode).
 Source3:        dracut-rpm-tmpfiles.conf
+# Distribution configuration.
+Source4:        01-dist.conf
 # Example configuration to add the debug module.
-Source4:        99-debug.conf
+Source5:        99-debug.conf
+# Configuration for FIPS.
+Source6:        10-fips.conf
+# Configuration for IMA.
+Source7:        10-ima.conf
 # Default by-uuid persistent policy.
-Source5:        persistent_policy.conf
+Source8:        persistent_policy.conf
 # Specific by-path persistent policy for s390x (bsc#915218).
-Source6:        s390x_persistent_policy.conf
+Source9:        s390x_persistent_policy.conf
 BuildRequires:  bash
 BuildRequires:  cargo
 BuildRequires:  docbook-xsl-stylesheets
@@ -174,18 +180,18 @@ rm -rf %{buildroot}%{dracutlibdir}/modules.d/10warpclock
 %endif
 
 rm -rf %{buildroot}%{dracutlibdir}/dracut.conf.d/*
-install -D -m 0644 dracut.conf.d/opensuse/01-dist.conf %{buildroot}%{dracutlibdir}/dracut.conf.d/01-dist.conf
-install -m 0644 %{SOURCE4} %{buildroot}%{_sysconfdir}/dracut.conf.d/99-debug.conf
+install -D -m 0644 %{SOURCE4} %{buildroot}%{dracutlibdir}/dracut.conf.d/01-dist.conf
+install -D -m 0644 %{SOURCE5} %{buildroot}%{_sysconfdir}/dracut.conf.d/99-debug.conf
 %ifnarch %ix86
-install -m 0644 dracut.conf.d/fips/10-fips.conf %{buildroot}%{_sysconfdir}/dracut.conf.d/10-fips.conf
-install -m 0644 dracut.conf.d/ima/10-ima.conf %{buildroot}%{_sysconfdir}/dracut.conf.d/10-ima.conf
+install -m 0644 %{SOURCE6} %{buildroot}%{_sysconfdir}/dracut.conf.d/10-fips.conf
+install -m 0644 %{SOURCE7} %{buildroot}%{_sysconfdir}/dracut.conf.d/10-ima.conf
 %endif
 
 # Install persistent policy config.
 %ifarch s390 s390x
-install -m 0644 %{SOURCE6} %{buildroot}%{_sysconfdir}/dracut.conf.d/10-persistent_policy.conf
+install -m 0644 %{SOURCE9} %{buildroot}%{_sysconfdir}/dracut.conf.d/10-persistent_policy.conf
 %else
-install -m 0644 %{SOURCE5} %{buildroot}%{_sysconfdir}/dracut.conf.d/10-persistent_policy.conf
+install -m 0644 %{SOURCE8} %{buildroot}%{_sysconfdir}/dracut.conf.d/10-persistent_policy.conf
 %endif
 
 # Install tmpfiles config.
