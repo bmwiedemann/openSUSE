@@ -1,7 +1,7 @@
 #
 # spec file for package soapy-airspy
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2017-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -29,7 +29,7 @@ URL:            https://github.com/pothosware/SoapyAirspy/wiki
 Source:         https://github.com/pothosware/SoapyAirspy/archive/%{name}-%{version}.tar.gz
 BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(SoapySDR)
 BuildRequires:  pkgconfig(libairspy)
 
@@ -39,6 +39,8 @@ A Soapy module that supports Airspy devices within the Soapy API.
 
 %package -n %{soapy_modname}
 Summary:        SoapySDR Airspy module
+# soname dep covers libSoapySDR only - also pull SoapySDRUtil
+Requires:       soapy-sdr
 
 %description -n %{soapy_modname}
 Soapy Airspy - Airspy device support for Soapy SDR.
@@ -48,8 +50,9 @@ A Soapy module that supports Airspy devices within the Soapy API.
 %setup -q -n SoapyAirspy-%{name}-%{version}
 
 %build
+# upstream CMakeLists still declares cmake_minimum_required < 3.5
 %cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5
-make VERBOSE=1 %{?_smp_mflags}
+%cmake_build
 
 %install
 %cmake_install

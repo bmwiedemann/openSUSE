@@ -55,4 +55,33 @@
     <comment></comment>
     <requestid>1264954</requestid>
   </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>481660ca4981fe1922d6818fb2e4d7e6</srcmd5>
+    <version>0.2.0</version>
+    <time>1788270427</time>
+    <user>anag_factory</user>
+    <comment>Add an explicit Requires: soapy-sdr to the module subpackage.
+
+The module links libSoapySDR, so it has always had an automatic soname
+dependency (libSoapySDR.so.0.8-3), and the loader itself - the
+SoapySDR_loadModules symbol - lives in that library. So the library was
+never missing. What the module never pulled in is the soapy-sdr package,
+whose only content is /usr/bin/SoapySDRUtil. This is therefore a usability
+dependency, not a functional one: a module with no client on the system is
+useless, which is the point raised in review.
+
+It is not a match of existing practice: no soapy-* plugin package in Factory
+today carries this Requires. Prompted by the review comment on sr#1374694
+(soapy-plutosdr, since superseded by sr#1374737 and sr#1374739 - the comment
+is on the original, dead request). The rest of the SoapySDR plugin family is
+getting the same treatment.
+
+Also in this request: use %cmake_build instead of a bare make call, plus a
+small spec cleanup (pkg-config -&gt; pkgconfig, copyright header).
+
+No version change. 0.2.0 is still the newest upstream tag; master carries 5
+unreleased commits (a debug-log format fix and CMake modernisation), and
+NixOS, FreeBSD and Void all ship 0.2.0, so the tag stands.</comment>
+    <requestid>1374752</requestid>
+  </revision>
 </revisionlist>

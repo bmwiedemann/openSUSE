@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Aug 30 18:48:51 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Add Requires: soapy-sdr - the automatic soname dep covers only
+  libSoapySDR, so nothing pulls in SoapySDRUtil for probing an
+  installed module.
+- Use %cmake_build instead of a bare make call, small spec cleanup.
+
+-------------------------------------------------------------------
 Thu Mar 27 19:02:10 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - SOAPY_SDR_ABI_VERSION bump -> "0.8-3"
