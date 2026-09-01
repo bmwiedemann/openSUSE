@@ -4652,4 +4652,12 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
     <comment>version update to 7.1.2.29</comment>
     <requestid>1369411</requestid>
   </revision>
+  <revision rev="348" vrev="1">
+    <srcmd5>ab7285ab35d443ea94103c7251ab2d94</srcmd5>
+    <version>7.1.2.30</version>
+    <time>1788270396</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1374829</requestid>
+  </revision>
 </revisionlist>
