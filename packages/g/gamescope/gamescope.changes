@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Aug 31 13:58:42 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to version 3.16.28:
+  * Revert "steamcompmgr: Remove old Warframe (230410) hack"
+  * steamcompmgr: Remove old Warframe (230410) hack
+  * process: derive AppID from /proc/$pid/cgroup where possible, instead of walking the process tree
+  * build: Simplify the expression of the wayland-protocols dependency
+  * Utils: bound the "true" compare in Parse<bool> to the view's length
+  * layer: Fixes to help with cross-compilation
+  * Utils: move the Split helpers out of convar.h into a separate header
+  * Utils: make the parsing of a "true" value case-insensitive
+  * Utils: move the Parse helpers out of convar.h into a separate header
+  * main: reject --xwayland-count below 1
+
+-------------------------------------------------------------------
 Sat Aug 15 09:31:59 UTC 2026 - Jon Brightwell <jon@moozaad.co.uk>
 
 - Update to version 3.16.25:
