@@ -1308,4 +1308,21 @@
   + Fix &quot;gpaste-client help&quot;, &quot;version&quot;, &quot;ui&quot; and &quot;preferences&quot;</comment>
     <requestid>1373060</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>99514407d8af4117fb742b4e7e1fb809</srcmd5>
+    <version>50.9</version>
+    <time>1788270665</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 50.9:
+  + Fix the daemon crashing when copying files right after copying
+    anything else: the file-list comparison read the clipboard's
+    tagged union without checking what it actually held, walking a
+    text value (or a colour's floats) as a list of files
+  + Fix a memory leak on every clipboard read: the file list GDK
+    hands back is the caller's to free
+  + Fix &quot;gpaste-client&quot; exiting silently with status 255, instead
+    of showing its usage, on an unknown command or a wrong number
+    of arguments</comment>
+    <requestid>1375038</requestid>
+  </revision>
 </revisionlist>
