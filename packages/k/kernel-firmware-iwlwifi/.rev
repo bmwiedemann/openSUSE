@@ -187,4 +187,22 @@ After this PR, there will be a delete request for kernel-firmware.
     <comment>- Update aliases from 7.1 / 7.2-rc1</comment>
     <requestid>1364842</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>3ba0afca313015a621b7948624daa279</srcmd5>
+    <version>20260820</version>
+    <time>1788270345</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260820 (git commit f2ab551dea14):
+  * iwlwifi: add Bz/Sc FW for core24.70-49 release
+  * iwlwifi: Add Hr/Gf firmware for core24.70-49 release
+  * iwlwifi: update ty/So/Ma firmwares for core24.70-49 release
+  * iwlwifi: update cc/Qu/QuZ firmwares for core24.70-49 release
+
+- Update to version 20260703 (git commit c95059a3774b):
+  * iwlwifi: add Bz/Sc FW for core24.60-33 release
+  * iwlwifi: Add Hr/Gf firmware for core24.60-33 release
+  * iwlwifi: update ty/So/Ma firmwares for core24.60-33 release
+  * iwlwifi: update cc/Qu/QuZ firmwares for core24.60-33 release</comment>
+    <requestid>1374909</requestid>
+  </revision>
 </revisionlist>
