@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Aug 31 13:18:51 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.52.6:
+  + Improve memory usage in pages that use font variations
+  + Allow disabling font subpixel rendering through WPESettings,
+    which is now the default setting and matches font the default
+    rendering in most desktop environments.
+  + The webkit://gpu page now respects the dark theme user
+    preference.
+  + Fix cross compilation due to failure to pick the correct
+    gio-unix-2.0 headers in certain configurations.
+  + Fix calculating data sizes of reported through
+    WebKitWebsiteData.
+  + Fix the build with USE_SYSTEM_UNIFDEF=OFF, which still checked
+    for an installed unifdef command unconditionally.
+  + Fix the build with CMake 4.4 or newer.
+  + Fix several crashes and rendering issues.
+- Drop 70960.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Wed Aug 19 06:53:13 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 70960.patch: Fix build using cmake 4.4.
