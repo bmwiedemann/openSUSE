@@ -80,4 +80,15 @@
 </comment>
     <requestid>1285215</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e058eb782f4a3aee0dd7717eb1cc1bb1</srcmd5>
+    <version>0.900.0</version>
+    <time>1788270404</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.900.0 (0.90)
+   see /usr/share/doc/packages/perl-Archive-Extract/CHANGES
+  0.90    Thu 20 Aug 2026 00:29:33 BST
+  * Make unzip binary work under FreeBSD and support -Z1 switch</comment>
+    <requestid>1374860</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug 20 05:47:57 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.900.0 (0.90)
+   see /usr/share/doc/packages/perl-Archive-Extract/CHANGES
+
+  0.90    Thu 20 Aug 2026 00:29:33 BST
+  * Make unzip binary work under FreeBSD and support -Z1 switch
+
+-------------------------------------------------------------------
 Thu Jun 12 17:22:48 UTC 2025 - Tina Müller <tina.mueller@suse.com>
 
 - Normalize CPAN version
