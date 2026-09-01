@@ -77,4 +77,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * Move firmware licenses to a LICENSES/ directory</comment>
     <requestid>1361020</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>61d1f60f5509c5da86c8c6aebaada95b</srcmd5>
+    <version>20260809</version>
+    <time>1788270340</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260809 (git commit 6f221d80d2fa):
+  * ath10k: WCN3990 hw1.0: update board-2.bin</comment>
+    <requestid>1374904</requestid>
+  </revision>
 </revisionlist>
