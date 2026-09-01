@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Aug 30 18:20:23 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Add explicit 'Requires: soapy-sdr' to the module subpackage: a
+  module alone is not usable. libSoapySDR itself already arrives via
+  the automatic soname dependency, this pulls in SoapySDRUtil
+- Correct License to LGPL-2.1-or-later, the sources grant version
+  2.1 "or (at your option) any later version"
+- Spec cleanup:
+  * Switch to pkgconfig() BuildRequires and %autosetup
+  * Declare the SoapySDR >= 0.4 floor upstream's CMakeLists checks
+
+-------------------------------------------------------------------
 Thu Mar 27 19:03:23 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - SOAPY_SDR_ABI_VERSION bump -> "0.8-3"

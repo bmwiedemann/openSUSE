@@ -55,4 +55,52 @@
     <comment></comment>
     <requestid>1264953</requestid>
   </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>58b09736be4a67a870d5b1ede4521251</srcmd5>
+    <version>0.4.2</version>
+    <time>1788270429</time>
+    <user>anag_factory</user>
+    <comment>Add an explicit 'Requires: soapy-sdr' to the module subpackage.
+
+Requested by dimstar reviewing the soapy-plutosdr submission (sr#1374694,
+since superseded to sr#1374739):
+&quot;Shouldn't that require soapy-sdr? The module on its own seems quite useless&quot;.
+Applied here to the whole SoapySDR plugin set rather than to that one package.
+
+To be precise about what this does and does not do: libSoapySDR is what dlopens
+the module, and that is already covered by the automatic soname dependency on
+libSoapySDR.so.0.8-3 - it is not what was missing. What the module did not pull
+in is the soapy-sdr package proper, which ships SoapySDRUtil, the tool used to
+enumerate and probe devices. That is the gap this closes.
+
+Note on precedent: no SoapySDR plugin currently released in Factory carries
+this dependency (checked soapy-rtlsdr, soapy-hackrf, soapy-airspy, soapy-osmo,
+soapy-uhd), so this is a deliberate tightening rather than an existing
+convention. It is being applied across the plugin set, not to this package
+alone.
+
+Also in this request:
+
+- License corrected from LGPL-2.1-only to LGPL-2.1-or-later. All four source
+  files (bladeRF_Registration.cpp, bladeRF_Settings.cpp, bladeRF_Streaming.cpp,
+  bladeRF_SoapySDR.hpp) carry the standard header granting &quot;version 2.1 of the
+  License, or (at your option) any later version&quot;. The bare &quot;LGPL-2.1&quot; in
+  upstream's debian/copyright is the old Debian shorthand, not a restriction.
+- Declared the SoapySDR floor upstream actually checks for: CMakeLists.txt has
+  find_package(SoapySDR &quot;0.4&quot; NO_MODULE), so pkgconfig(SoapySDR) &gt;= 0.4. No
+  floor for libbladeRF - upstream's FindLibbladeRF.cmake probes it unversioned.
+- spec-cleaner pass: bladeRF-devel -&gt; pkgconfig(libbladeRF), soapy-sdr-devel -&gt;
+  pkgconfig(SoapySDR), %setup -&gt; %autosetup.
+
+No version bump. 0.4.2 (2024-12-22) is still upstream's newest tag. master is
+three commits ahead, but the entire diff against the tag is two lines - a
+cmake_minimum_required bump and a one-line RX2/TX2 streaming fix - and
+upstream's Changelog.txt has no pending-release section, so there is nothing
+worth snapshotting.
+
+Built locally on Tumbleweed/aarch64; rpmlint reports 0 errors, 0 warnings,
+0 badness. The only change to the installed RPM is the License tag and the
+added dependency.</comment>
+    <requestid>1374755</requestid>
+  </revision>
 </revisionlist>
