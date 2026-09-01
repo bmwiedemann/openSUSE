@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Aug 30 18:19:31 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Require soapy-sdr from soapysdr0.8-3-module-uhd: the generated soname
+  dependencies only pull libSoapySDR0_8-3, never the soapy-sdr package
+  itself, so the module shipped without SoapySDRUtil
+- Drop the Group tags
+- Drop the always-true suse_version guard around the boost
+  BuildRequires; 16.0 is the oldest target
+
+-------------------------------------------------------------------
 Thu Jun 18 17:47:59 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Fix the build against UHD 4.x and recent Boost (the package was

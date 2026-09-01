@@ -87,4 +87,33 @@
     <comment>soapy-uhd: fix the build against UHD 4.x (C++17, needed by UHD's std::optional/std::is_convertible_v headers) and recent Boost (explicit boost/lexical_cast.hpp include), rescuing it from the botdel (SR 1360107). No version change (already at latest). Both fixes submitted upstream: pothosware/SoapyUHD#75 and #76.</comment>
     <requestid>1360306</requestid>
   </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>97d037b7606352be2a11a57a27ac09f5</srcmd5>
+    <version>0.4.1git20250213</version>
+    <time>1788270426</time>
+    <user>anag_factory</user>
+    <comment>Add an explicit &quot;Requires: soapy-sdr&quot; to soapysdr0.8-3-module-uhd.
+
+The module links libSoapySDR, so rpm does generate soname dependencies -
+but they resolve to libSoapySDR0_8-3 and libuhd4_10_0, and nothing pulls
+in the soapy-sdr package itself, which is what ships SoapySDRUtil.
+Verified: SoapySDRUtil is absent from a build root carrying the module's
+full dependency closure.
+
+Note this is a deliberate tightening rather than an existing convention:
+no SoapySDR plugin currently in Factory carries this dependency (verified
+across soapy-rtlsdr, soapy-hackrf, soapy-airspy, soapy-bladerf, soapy-osmo
+and soapy-uhd).
+
+Also in this request:
+- Dropped the two Group tags.
+- Dropped the always-true &quot;%if 0%{?suse_version} &gt; 1500&quot; guard around the
+  boost BuildRequires; the oldest target is 16.0.
+
+Deliberately NO version change. We ship git snapshot 0.4.1git20250213,
+which is upstream commit 6b521393 and is AHEAD of upstream's newest tag
+soapy-uhd-0.4.1. Repology/Anitya reporting 0.4.1 for this package is a
+false positive, and &quot;updating&quot; to that tag would be a downgrade.</comment>
+    <requestid>1374748</requestid>
+  </revision>
 </revisionlist>

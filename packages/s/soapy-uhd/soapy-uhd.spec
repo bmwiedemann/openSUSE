@@ -19,13 +19,13 @@
 
 %define soapy_modver 0.8-3
 %define soapy_modname soapysdr%{soapy_modver}-module-uhd
-
 Name:           soapy-uhd
 Version:        0.4.1git20250213
 Release:        0
 Summary:        Soapy SDR plugins for UHD supported SDR devices
+# The three built sources carry the deprecated SPDX id GPL-3.0, which maps
+# to GPL-3.0-only; the only or-later grant is in CMakeLists.txt, not shipped.
 License:        GPL-3.0-only
-Group:          Hardware/Other
 URL:            https://github.com/pothosware/SoapyUHD/wiki
 #Git-Clone:     https://github.com/pothosware/SoapyUHD.git
 Source:         https://github.com/pothosware/SoapyUHD/archive/%{name}-%{version}.tar.gz
@@ -36,14 +36,12 @@ Patch1:         cxx17.patch
 Patch2:         boost-lexical-cast.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(SoapySDR)
-BuildRequires:  pkgconfig(uhd)
-%if 0%{?suse_version} > 1500
 BuildRequires:  libboost_chrono-devel
 BuildRequires:  libboost_date_time-devel
 BuildRequires:  libboost_thread-devel
-%endif
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(SoapySDR)
+BuildRequires:  pkgconfig(uhd)
 
 %description
 Soapy UHD - Soapy SDR devices for UHD.
@@ -51,7 +49,9 @@ A UHD module that supports Soapy devices within the UHD API.
 
 %package -n %{soapy_modname}
 Summary:        Soapy SDR plugins for UHD supported SDR devices
-Group:          System/Libraries
+# The soname deps only pull libSoapySDR0_8-3; the soapy-sdr package
+# (SoapySDRUtil) is never pulled in automatically
+Requires:       soapy-sdr
 # soapysdr0.7-module-uhd needs to be force dropped
 Conflicts:      soapysdr0.7-module-uhd
 # Add 'Provides/Obsoletes' entries for future updates
