@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep  1 08:27:55 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Add proper Provides/Obsoletes for python3-pvirsh.
+
+-------------------------------------------------------------------
+Thu Aug  6 16:54:27 UTC 2026 - Matej Cepl <mcepl@suse.com>
+
+- Clean up the SPEC file, modernize to use `%pyproject-*` macros
+
+-------------------------------------------------------------------
 Tue Jun  9 06:19:53 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Use pyproject macros to build and install the macro.

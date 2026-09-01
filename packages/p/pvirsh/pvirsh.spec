@@ -16,8 +16,6 @@
 #
 
 
-%define pythons python3
-
 Name:           pvirsh
 Version:        2.2
 Release:        0
@@ -26,18 +24,19 @@ License:        GPL-3.0-or-later
 Group:          System/Management
 URL:            https://github.com/aginies/pvirsh
 Source:         %{name}-%{version}.tar.gz
-BuildRequires:  %{python_module PyYAML}
-BuildRequires:  %{python_module libvirt-python}
-BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  python3-PyYAML
+BuildRequires:  python3-libvirt-python
+BuildRequires:  python3-pip
+BuildRequires:  python3-setuptools
+BuildRequires:  python3-wheel
 Requires:       python3-PyYAML
 Requires:       python3-curses
 Requires:       python3-libvirt-python
 BuildArch:      noarch
-%python_subpackages
+Provides:       python3-pvirsh = %{version}-%{release}
+Obsoletes:      python3-pvirsh < %{version}-%{release}
 
 %description
 Parallel virsh command to manage a selected group of Virtual Machine.
@@ -45,27 +44,26 @@ This provides an easy way to execute the same command on a selected
 group of Virtual Machine.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-%pyproject_wheel
+%python3_pyproject_wheel
 
 %install
-%pyproject_install
+%python3_pyproject_install
 # move group yaml file to /etc/pvirsh
 mkdir -p %{buildroot}%{_sysconfdir}/%{name}/
 mv %{buildroot}%{_datadir}/%{name}/*.yaml %{buildroot}%{_sysconfdir}/%{name}/
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%fdupes %{buildroot}%{python3_sitelib}
 
-%files %{python_files}
-%defattr(-,root,root)
+%files
 %license LICENSE
 %doc ChangeLog README.md AUTHORS
 %{_bindir}/%{name}
-%{python_sitelib}/%{name}
-%{python_sitelib}/%{name}-%{version}.dist-info
+%{python3_sitelib}/%{name}
+%{python3_sitelib}/%{name}-%{version}*-info
 %attr(0755,root,root) %{_datadir}/%{name}/
 %attr(0755,root,root) %config(noreplace) %{_sysconfdir}/%{name}
-%{_mandir}/man1/%{name}.1%{ext_man}
+%{_mandir}/man1/%{name}.1%{?ext_man}
 
 %changelog
