@@ -3269,4 +3269,19 @@ do special case rings. (forwarded request 934053 from matz2)</comment>
   trampolines (BZ #34144, BZ #15792) (forwarded request 1361544 from Andreas_Schwab)</comment>
     <requestid>1361545</requestid>
   </revision>
+  <revision rev="307" vrev="1">
+    <srcmd5>d367aa54a5d2b1dc6e34e546c10f4992</srcmd5>
+    <version>2.44</version>
+    <time>1788270412</time>
+    <user>anag_factory</user>
+    <comment>- dt-d-rule.patch: Makerules: Make the .dt to .d conversion safe against
+  concurrent sub-makes
+- math-sinh-worst-case-results.patch: math: Fix sinh worst-case results
+  for |x| &gt; 36.736801 (BZ #34441)
+- math-x86-64-tanh-floatn-aliases.patch: Fix x86_64 tanh _FloatN aliases
+  binding to the FMA variant (BZ #34465)
+- elf-honor-skip-ifunc-for-ifunc-relocations.patch: elf: Honour skip_ifunc
+  for cross-object IFUNC relocations (BZ #34428) (forwarded request 1371785 from Andreas_Schwab)</comment>
+    <requestid>1371787</requestid>
+  </revision>
 </revisionlist>

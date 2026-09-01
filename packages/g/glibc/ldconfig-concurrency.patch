@@ -44,10 +44,11 @@ Index: glibc-2.34/elf/cache.c
    if (fd < 0)
      goto out_fail;
  
-@@ -1167,5 +1167,6 @@ save_aux_cache (const char *aux_cache_na
+@@ -1167,6 +1167,7 @@ save_aux_cache (const char *aux_cache_na
  out_fail:
    /* Free allocated memory.  */
    free (temp_name);
 +out_fail2:
    free (file_entries);
  }
+ 

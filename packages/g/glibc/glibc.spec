@@ -50,6 +50,9 @@
 %define cross_arch ppc64le
 %define cross_cpu powerpc64le
 %endif
+%if "%flavor" == "cross-x86_64"
+%define cross_cpu x86_64
+%endif
 
 %if 0%{?cross_cpu:1}
 %define binutils_os %{cross_cpu}-suse-linux
@@ -186,10 +189,10 @@ Name:           glibc%{name_suffix}
 Summary:        Standard Shared Libraries (from the GNU C Library)
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-2.1-or-later WITH GCC-exception-2.0
 Group:          System/Libraries
-Version:        2.43
+Version:        2.44
 Release:        0
 %if %{without snapshot}
-%define git_id f762ccf84f
+%define git_id c3a3a9808a
 %define libversion %version
 %else
 %define git_id %(echo %version | sed 's/.*\.g//')
@@ -263,6 +266,9 @@ BuildRequires:  glibc-devel-static
 BuildRequires:  libidn2-0
 BuildRequires:  libstdc++-devel
 BuildRequires:  python3-pexpect
+%ifarch aarch64 %{ix86} x86_64 ppc64le s390x armv7hl riscv64
+BuildRequires:  valgrind
+%endif
 %endif
 %if %{build_utils}
 BuildRequires:  gd-devel
@@ -337,54 +343,14 @@ Patch306:       glibc-fix-double-loopback.diff
 ###
 # Patches from upstream
 ###
-# PATCH-FIX-UPSTREAM resolv: Count records correctly (CVE-2026-4437, BZ #34014)
-Patch1000:      resolv-count-resource-records.patch
-# PATCH-FIX-UPSTREAM resolv: Check hostname for validity (CVE-2026-4438, BZ #34015)
-Patch1001:      resolv-check-hostname.patch
-# PATCH-FIX-UPSTREAM Fix ldbl-128ibm ceill, floorl, roundl and truncl zero-sign handling (BZ #33623)
-Patch1002:      ldbl-128ibm-ceill-floorl-roundl-truncl.patch
-# PATCH-FIX-UPSTREAM Linux: In getlogin_r, use utmp fallback only for specific errors
-Patch1003:      getlogin-utmp-fallback.patch
-# PATCH-FIX-UPSTREAM nss: Missing checks in __nss_configure_lookup, __nss_database_get (BZ #28940)
-Patch1004:      nss-malloc-failure-checks.patch
-# PATCH-FIX-UPSTREAM nss: Introduce dedicated struct nss_database_for_fork type
-Patch1005:      nss-database-for-fork.patch
-# PATCH-FIX-UPSTREAM malloc: Avoid accessing /sys/kernel/mm files
-Patch1006:      malloc-sys-kernel-mm.patch
-# PATCH-FIX-UPSTREAM tests: aarch64: fix makefile dependencies for dlopen tests for BTI
-Patch1007:      tests-aarch64-makefile-deps-bti.patch
-# PATCH-FIX-UPSTREAM aarch64: Lock GCS status at startup
-Patch1008:      aarch64-lock-gcs-startup.patch
-# PATCH-FIX-UPSTREAM elf: Use dl-symbol-redir-ifunc.h instead _dl_strlen
-Patch1009:      elf-strlen-redir-ifunc.patch
-# PATCH-FIX-UPSTREAM riscv: Resolve calls to memcpy using memcpy-generic in early startup
-Patch1010:      riscv-redir-memcpy-generic.patch
-# PATCH-FIX-UPSTREAM tests: fix tst-rseq with Linux 7.0
-Patch1011:      tst-rseq-linux-7.patch
-# PATCH-FIX-UPSTREAM include: isolate __O_CLOEXEC flag for sys/mount.h and fcntl.h
-Patch1012:      sys-mount-cloexec-flag.patch
-# PATCH-FIX-UPSTREAM Linux: Only define OPEN_TREE_* macros in <sys/mount.h> if undefined (BZ #33921)
-Patch1013:      sys-mount-open-tree-macros.patch
-# PATCH-FIX-UPSTREAM Use pending character state in IBM1390, IBM1399 character sets (CVE-2026-4046, BZ #33980)
-Patch1014:      ibm139x-pending-char-state.patch
-# PATCH-FIX-UPSTREAM libio: Fix ungetwc operating on byte stream (CVE-2026-5928, BZ #33998)
-Patch1015:      ungetwc-byte-stream.patch
-# PATCH-FIX-UPSTREAM stdio-common: Fix buffer overflow in scanf %mc (CVE-2026-5450, BZ #34008)
-Patch1016:      scanf-mc-buffer-overflow.patch
-# PATCH-FIX-UPSTREAM math: Fix fma alignment when exponent difference is exactly 64 (BZ #34183)
-Patch1017:      fma-shift-ub.patch
-# PATCH-FIX-UPSTREAM Rename __unused fields to __glibc_reserved
-Patch1018:      struct-reserved-members.patch
-# PATCH-FIX-UPSTREAM iconv: Suppress intermediate errors with //TRANSLIT (BZ #34236)
-Patch1019:      iconv-translit-intermediate-errors.patch
-# PATCH-FIX-UPSTREAM arm: Save/restore VFP registers in PLT trampolines (BZ #34144, BZ #15792)
-Patch1020:      arm-vfp-plt-trampoline.patch
-# PATCH-FIX-UPSTREAM resolv: More types as unknown in ns_sprintrrf (CVE-2026-5435, BZ #34033)
-Patch1021:      resolv-sprintrrf-unkown-types.patch
-# PATCH-FIX-UPSTREAM resolv: Check for inet_ntop failure in ns_sprintrrf
-Patch1022:      resolv-sprintrrf-inet-ntop-check.patch
-# PATCH-FIX-UPSTREAM resolv: Fix buffer overreads in ns_sprintrrf (CVE-2026-6238, BZ #34069)
-Patch1023:      resolv-sprintrrf-buffer-overreads.patch
+# PATCH-FIX-UPSTREAM Makerules: Make the .dt to .d conversion safe against concurrent sub-makes
+Patch1000:      dt-d-rule.patch
+# PATCH-FIX-UPSTREAM math: Fix sinh worst-case results for |x| > 36.736801 (BZ #34441)
+Patch1001:      math-sinh-worst-case-results.patch
+# PATCH-FIX-UPSTREAM math: Fix x86_64 tanh _FloatN aliases binding to the FMA variant (BZ #34465)
+Patch1002:      math-x86-64-tanh-floatn-aliases.patch
+# PATCH-FIX-UPSTREAM elf: Honour skip_ifunc for cross-object IFUNC relocations (BZ #34428)
+Patch1003:      elf-honor-skip-ifunc-for-ifunc-relocations.patch
 %endif
 
 ###
@@ -858,6 +824,24 @@ xstatbuild l 64 "const char *"
 
 cd ..
 
+%if "%flavor" == "cross-x86_64"
+mkdir cc-x86
+cd cc-x86
+../configure \
+	CFLAGS="$BuildFlags" BUILD_CFLAGS="$BuildFlags" \
+	CC="$BuildCC -m32" CXX="$BuildCCplus -m32" \
+	--prefix=%{_prefix} \
+	--libexecdir=%{_libexecdir} --infodir=%{_infodir} \
+	--disable-profile \
+	--build=%{build} --host=i586-suse-linux \
+	--with-headers=%{sysroot}/usr/include \
+	--disable-crypt \
+        --disable-build-nscd \
+        --disable-nscd
+make %{?_smp_mflags} %{?make_output_sync}
+cd ..
+%endif
+
 #
 # Build html documentation
 #
@@ -1219,6 +1203,11 @@ rm %{buildroot}%{slibdir}/lp64d
 export STRIP_KEEP_SYMTAB=*.so*
 export NO_BRP_STRIP_DEBUG=true
 make %{?_smp_mflags} install_root=%{buildroot}/%{sysroot} install -C cc-base
+%if "%flavor" == "cross-x86_64"
+make %{?_smp_mflags} install_root=%{buildroot}/%{sysroot} install -C cc-x86
+rm -rf %{buildroot}/%{sysroot}%{_prefix}/lib/audit
+rm -rf %{buildroot}/%{sysroot}%{_prefix}/lib/gconv
+%endif
 rm -rf %{buildroot}/%{sysroot}/%{_libdir}/audit
 rm -rf %{buildroot}/%{sysroot}/%{_libdir}/gconv
 rm -rf %{buildroot}/%{sysroot}/%{_infodir}
@@ -1226,6 +1215,7 @@ rm -rf %{buildroot}/%{sysroot}/%{_datadir}
 rm -rf %{buildroot}/%{sysroot}/%{_libexecdir}
 rm -rf %{buildroot}/%{sysroot}/%{_bindir}
 rm -rf %{buildroot}/%{sysroot}/%{_sbindir}
+rm -rf %{buildroot}/%{sysroot}/%{rootsbindir}
 rm -rf %{buildroot}/%{sysroot}/etc
 rm -rf %{buildroot}/%{sysroot}/var
 

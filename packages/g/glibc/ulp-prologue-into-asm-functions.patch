@@ -1,4 +1,4 @@
-From 126de75d927a46d050383431023e7a04f2b2ae42 Mon Sep 17 00:00:00 2001
+From a4b0acf5c85f303aa7c8ebc0f1c9b890b1451320 Mon Sep 17 00:00:00 2001
 From: Giuliano Belinassi <gbelinassi@suse.de>
 Date: Fri, 18 Apr 2025 14:22:49 -0300
 Subject: [PATCH] Add Userspace Livepatch prologue into ASM functions
@@ -26,12 +26,12 @@ Signed-off-by: Giuliano Belinassi <gbelinassi@suse.de>
  11 files changed, 205 insertions(+), 20 deletions(-)
 
 diff --git a/config.h.in b/config.h.in
-index 8b4077f578..fb25193ca8 100644
+index 17bdd30570..5ab8ae6beb 100644
 --- a/config.h.in
 +++ b/config.h.in
-@@ -213,6 +213,9 @@
- /* Define to 1 if libpthread actually resides in libc.  */
- #define PTHREAD_IN_LIBC 0
+@@ -219,6 +219,9 @@
+ /* Define to 1 if libpthread is provided by htl.  */
+ #define __PTHREAD_HTL 0
  
 +/* Define to 1 if support for userspace livepatching is enabled.  */
 +#define ENABLE_USERSPACE_LIVEPATCH 0
@@ -40,32 +40,32 @@ index 8b4077f578..fb25193ca8 100644
  #define TIMEOUTFACTOR 1
  
 diff --git a/config.make.in b/config.make.in
-index fca75ab5d3..7d738ba4fb 100644
+index 0ddc24a589..cac82f740e 100644
 --- a/config.make.in
 +++ b/config.make.in
-@@ -82,6 +82,8 @@ mach-interface-list = @mach_interface_list@
- memory-tagging = @memory_tagging@
+@@ -79,6 +79,8 @@ multi-arch = @multi_arch@
+ mach-interface-list = @mach_interface_list@
  
  # Configuration options.
 +enable-userspace-livepatch = @enable_userspace_livepatch@
 +supports-msplit-patch-nops = @supports_msplit_patch_nops@
  build-shared = @shared@
  build-profile = @profile@
- build-static-nss = @static_nss@
+ cross-compiling = @cross_compiling@
 diff --git a/configure b/configure
-index e8de94464c..273ad66484 100755
+index 604279533a..62bb2e6fe2 100755
 --- a/configure
 +++ b/configure
-@@ -615,6 +615,8 @@ LIBOBJS
- pthread_in_libc
+@@ -614,6 +614,8 @@ ac_subst_vars='LTLIBOBJS
+ LIBOBJS
  RELEASE
  VERSION
 +supports_msplit_patch_nops
 +enable_userspace_livepatch
  mach_interface_list
  DEFINES
- static_nss
-@@ -825,6 +827,7 @@ enable_scv
+ profile
+@@ -818,6 +820,7 @@ enable_scv
  enable_fortify_source
  enable_sframe
  with_cpu
@@ -73,7 +73,7 @@ index e8de94464c..273ad66484 100755
  '
        ac_precious_vars='build_alias
  host_alias
-@@ -1510,6 +1513,8 @@ Optional Features:
+@@ -1500,6 +1503,8 @@ Optional Features:
                            hardening, defaults to highest possible value
                            supported by the build compiler.
    --enable-sframe         Enable building with SFrame support [default=no]
@@ -82,7 +82,7 @@ index e8de94464c..273ad66484 100755
  
  Optional Packages:
    --with-PACKAGE[=ARG]    use PACKAGE [ARG=yes]
-@@ -9498,6 +9503,55 @@ libc_cv_multidir=`${CC-cc} $CFLAGS $CPPFLAGS -print-multi-directory`
+@@ -9577,6 +9582,55 @@ libc_cv_multidir=`${CC-cc} $CFLAGS $CPPFLAGS -print-multi-directory`
  
  
  
@@ -139,10 +139,10 @@ index e8de94464c..273ad66484 100755
  RELEASE=`sed -n -e 's/^#define RELEASE "\([^"]*\)"/\1/p' < $srcdir/version.h`
  
 diff --git a/configure.ac b/configure.ac
-index fc01d054ba..c1d4952066 100644
+index 2fe7980fc9..552e61853e 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -2178,6 +2178,35 @@ AC_SUBST(DEFINES)
+@@ -2193,6 +2193,35 @@ AC_SUBST(DEFINES)
  dnl See sysdeps/mach/configure.ac for this variable.
  AC_SUBST(mach_interface_list)
  
@@ -195,7 +195,7 @@ index b77775cf95..8340a8e02f 100644
  # passed to all such object files.
  type-float128-CFLAGS := -mfloat128
 diff --git a/sysdeps/powerpc/powerpc64/sysdep.h b/sysdeps/powerpc/powerpc64/sysdep.h
-index f05dae71f6..55c6b9b45b 100644
+index 26cccbf269..6ce22bc8d5 100644
 --- a/sysdeps/powerpc/powerpc64/sysdep.h
 +++ b/sysdeps/powerpc/powerpc64/sysdep.h
 @@ -163,6 +163,46 @@
@@ -277,7 +277,7 @@ index f05dae71f6..55c6b9b45b 100644
  #define ENTRY(name, ...)			\
  	ENTRY_TOCLESS(name, ## __VA_ARGS__)
 diff --git a/sysdeps/x86_64/Makefile b/sysdeps/x86_64/Makefile
-index c3e1065c81..4b52dbff81 100644
+index ff0463d7ca..3d81acbcfa 100644
 --- a/sysdeps/x86_64/Makefile
 +++ b/sysdeps/x86_64/Makefile
 @@ -1,3 +1,8 @@
@@ -290,7 +290,7 @@ index c3e1065c81..4b52dbff81 100644
  long-double-fcts = yes
  
 diff --git a/sysdeps/x86_64/multiarch/strcmp-avx2.S b/sysdeps/x86_64/multiarch/strcmp-avx2.S
-index 4b46a8de17..8266f558d9 100644
+index 3b43dc2e00..a66029cb88 100644
 --- a/sysdeps/x86_64/multiarch/strcmp-avx2.S
 +++ b/sysdeps/x86_64/multiarch/strcmp-avx2.S
 @@ -201,10 +201,7 @@ END (STRCASECMP)
@@ -306,7 +306,7 @@ index 4b46a8de17..8266f558d9 100644
  # if defined USE_AS_STRCASECMP_L
  	/* We have to fall back on the C implementation for locales with
 diff --git a/sysdeps/x86_64/multiarch/strcmp-evex.S b/sysdeps/x86_64/multiarch/strcmp-evex.S
-index 6316bb940e..91192f2d2e 100644
+index d87d33cc64..5cd52f3e37 100644
 --- a/sysdeps/x86_64/multiarch/strcmp-evex.S
 +++ b/sysdeps/x86_64/multiarch/strcmp-evex.S
 @@ -226,10 +226,7 @@ END (STRCASECMP)
@@ -322,7 +322,7 @@ index 6316bb940e..91192f2d2e 100644
  # if defined USE_AS_STRCASECMP_L
  	/* We have to fall back on the C implementation for locales with
 diff --git a/sysdeps/x86_64/multiarch/strcmp-sse4_2.S b/sysdeps/x86_64/multiarch/strcmp-sse4_2.S
-index 1b746c4b2f..01c8eb44e3 100644
+index c0d7210404..720e5e4bf3 100644
 --- a/sysdeps/x86_64/multiarch/strcmp-sse4_2.S
 +++ b/sysdeps/x86_64/multiarch/strcmp-sse4_2.S
 @@ -103,10 +103,7 @@ END (STRCASECMP)
@@ -338,7 +338,7 @@ index 1b746c4b2f..01c8eb44e3 100644
  /*
   * This implementation uses SSE to compare up to 16 bytes at a time.
 diff --git a/sysdeps/x86_64/sysdep.h b/sysdeps/x86_64/sysdep.h
-index cb475bec98..2bb84c4c31 100644
+index f71f49213f..dee7ec0f90 100644
 --- a/sysdeps/x86_64/sysdep.h
 +++ b/sysdeps/x86_64/sysdep.h
 @@ -49,6 +49,46 @@ enum cf_protection_level
@@ -415,5 +415,5 @@ index cb475bec98..2bb84c4c31 100644
  /* This macro is for setting proper CFI with DW_CFA_expression describing
     the register as saved relative to %rsp instead of relative to the CFA.
 -- 
-2.50.1
+2.55.0
 

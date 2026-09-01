@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Tue Aug 18 09:46:17 UTC 2026 - Andreas Schwab <schwab@suse.de>
+
+- dt-d-rule.patch: Makerules: Make the .dt to .d conversion safe against
+  concurrent sub-makes
+- math-sinh-worst-case-results.patch: math: Fix sinh worst-case results
+  for |x| > 36.736801 (BZ #34441)
+- math-x86-64-tanh-floatn-aliases.patch: Fix x86_64 tanh _FloatN aliases
+  binding to the FMA variant (BZ #34465)
+- elf-honor-skip-ifunc-for-ifunc-relocations.patch: elf: Honour skip_ifunc
+  for cross-object IFUNC relocations (BZ #34428)
+
+-------------------------------------------------------------------
+Mon Aug  3 15:20:44 UTC 2026 - Andreas Schwab <schwab@suse.de>
+
+- For the cross-x86_64 flavor also build the -m32 glibc
+
+-------------------------------------------------------------------
+Tue Jul 28 09:21:20 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- Enable cross-x86_64
+
+-------------------------------------------------------------------
+Mon Jul 27 06:08:07 UTC 2026 - Andreas Schwab <schwab@suse.de>
+
+- Update to glibc 2.44
+  * System-wide tunables can be applied using /etc/tunables.conf and
+    running ldconfig
+  * A new tunable, glibc.elf.thp, is added to map read-only segments with
+    Transparent Huge Pages (THP) if THP is not disabled in the kernel
+  * The THP page size in malloc is capped to MAX_THP_PAGESIZE
+  * Additional optimized and correctly rounded mathematical functions have
+    been imported from the CORE-MATH project
+  * Many additional improvements to existing functions have been synchronized
+    from the CORE-MATH project
+  * For C++26, the assert macro is now variadic
+  * The SVID error handling for cosh and sinh was moved to compatibility
+    symbols
+  * Static PIE is now supported for arm-*-linux-gnueabi
+  * On AArch64 targets that support the Guarded Control Stack extension all GCS
+    operations (including status, write on shadow stack, and push to shadow
+    stack) are locked after enabling GCS with ENFORCED or OVERRIDE GCS policy
+  * On AArch64 targets, log, exp, sin, cas, sinh, cosh, asinh, acosh, atanh
+    single and double precision special cases have been vectorized for SVE and
+    AdvSIMD, and vector variants of powr have been added
+  * On RISC-V targets, vector extension optimized variants of memcmp, memccpy,
+    memchr, memcpy, memmove, stpncpy, strcmp, strchr, strcpy, strncmp, strncpy,
+    strlen, and strrchr have been added
+  * On PowerPC, memchr optimized for Power10 has been re-added
+  * Pre-built ld.so.cache files can be installed with ldconfig
+  * A new locale has been added: hrx_BR (Hunsrik language spoken in Brazil)
+  * Although malloc and related functions currently return pointers
+    aligned to alignof (max_align_t), the documentation now says future
+    versions of glibc may relax alignment requirements for small allocations
+  * GLIBC-SA-2026-0013: Potential stack-based buffer clash during tilde
+    expansion in wordexp (CVE-2026-6791)
+  * GLIBC-SA-2026-0014: wordexp with WRDE_APPEND may result in an invalid
+    call to free() (CVE-2026-6368)
+- resolv-count-resource-records.patch, resolv-check-hostname.patch,
+  ldbl-128ibm-ceill-floorl-roundl-truncl.patch,
+  getlogin-utmp-fallback.patch, nss-malloc-failure-checks.patch,
+  nss-database-for-fork.patch, malloc-sys-kernel-mm.patch,
+  tests-aarch64-makefile-deps-bti.patch, aarch64-lock-gcs-startup.patch,
+  elf-strlen-redir-ifunc.patch, riscv-redir-memcpy-generic.patch,
+  tst-rseq-linux-7.patch, sys-mount-cloexec-flag.patch,
+  sys-mount-open-tree-macros.patch, ibm139x-pending-char-state.patch,
+  ungetwc-byte-stream.patch, scanf-mc-buffer-overflow.patch,
+  fma-shift-ub.patch, struct-reserved-members.patch,
+  iconv-translit-intermediate-errors.patch, arm-vfp-plt-trampoline.patch,
+  resolv-sprintrrf-unkown-types.patch,
+  resolv-sprintrrf-inet-ntop-check.patch,
+  resolv-sprintrrf-buffer-overreads.patch: Removed
+
+-------------------------------------------------------------------
 Mon Jun 22 10:30:37 UTC 2026 - Andreas Schwab <schwab@suse.de>
 
 - resolv-sprintrrf-unkown-types.patch: resolv: More types as unknown in
