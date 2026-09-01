@@ -196,4 +196,17 @@
   * Add preliminary support for Python 3.14.</comment>
     <requestid>1339004</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>7be63674b4c33503d1cc9b8e0204330f</srcmd5>
+    <version>8.4</version>
+    <time>1788270517</time>
+    <user>anag_factory</user>
+    <comment>- update to 8.4:
+  * Add support for Python 3.15.
+  * Add support for automatically building and publishing
+    Windows/ARM64 wheels.
+  * Add support for automatically building and publishing source
+    distributions.</comment>
+    <requestid>1374980</requestid>
+  </revision>
 </revisionlist>
