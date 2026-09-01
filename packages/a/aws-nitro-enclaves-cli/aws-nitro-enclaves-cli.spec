@@ -20,7 +20,7 @@
 %define ne_rundir %_rundir/nitro_enclaves
 
 Name:           aws-nitro-enclaves-cli
-Version:        1.4.5~git0.18a5f6f
+Version:        1.5.0~git0.2950b36
 Release:        0
 Summary:        Tools for managing enclaves
 License:        Apache-2.0
@@ -36,10 +36,10 @@ Requires(pre):  system-group-%ne_system_group = %version-%release
 Requires(post): coreutils
 Requires:       aws-nitro-enclaves-binaryblobs
 Requires:       jq
-BuildRequires:  cargo > 1.81
+BuildRequires:  cargo > 1.94
 BuildRequires:  clang
 BuildRequires:  glibc-devel-static
-BuildRequires:  rust > 1.81
+BuildRequires:  rust > 1.94
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(openssl)
