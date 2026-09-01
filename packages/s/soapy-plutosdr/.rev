@@ -1,0 +1,67 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f6fff75c70873034a90a6c87963f8bd8</srcmd5>
+    <version>0.2.2</version>
+    <time>1788270418</time>
+    <user>anag_factory</user>
+    <comment>New package: soapy-plutosdr - SoapySDR backend for ADALM-Pluto / PlutoSDR.
+
+What it is: a SoapySDR plugin module (libPlutoSDRSupport.so) that lets any
+SoapySDR application drive Analog Devices ADALM-Pluto / PlutoSDR hardware.
+It ships exactly one module into the ABI-versioned SoapySDR module
+directory (modules0.8-3); it exposes no libraries and no headers.
+
+Why it belongs in Factory: Factory already ships soapy-sdr together with
+seven SoapySDR backend modules - soapy-airspy, soapy-bladerf, soapy-hackrf,
+soapy-osmo, soapy-remote, soapy-rtlsdr and soapy-uhd. PlutoSDR is a direct
+peer of those, and the ADALM-Pluto is one of the most widely used low-cost
+SDR devices, so its absence leaves the shipped set of hardware backends
+incomplete.
+
+License: LGPL-2.1-only. Upstream ships the bare LGPL-2.1 text; there is no
+&quot;or later&quot; grant in any source file, in README.md or in debian/copyright,
+so -only rather than -or-later. The &quot;any later version&quot; strings in LICENSE
+are inside LGPL section 13 and the &quot;How to Apply These Terms&quot; appendix,
+neither of which is a grant. A Legal-Review-Notice above the License tag
+records this.
+
+Dependencies are all already in Factory: soapy-sdr (identical version, so
+the module ABI directory matches), libiio, libad9361-iio and libusb-1_0.
+
+Version 0.2.2 is the newest upstream tag; Debian, Gentoo, Arch, NixOS and
+FreeBSD all ship the same version. Built natively on aarch64, including a
+build forced against Factory's libad9361 0.4.0; rpmlint is clean (0 errors,
+0 warnings, 0 badness).
+
+pluskalm has been added as package maintainer in hardware:sdr.
+
+ADDED IN THIS REVISION
+Explicit &quot;Requires: soapy-sdr&quot; on the module subpackage, at dimstar's request
+on the original request for this package, SR 1374694: &quot;Shouldn't that require soapy-sdr? The module
+on its own seems quite useless&quot;.
+
+To be precise about what this does and does not change: the dlopen itself lives
+in libSoapySDR (SoapySDR::loadModules(), reached from Device::make()), which the
+module already pulled in through its automatic soname dependency on
+libSoapySDR.so.0.8-3 - so any application linking the library could always load
+the module. What nothing pulled in was the soapy-sdr package, which ships
+SoapySDRUtil; the module could therefore be installed on a system with no
+SoapySDR client at all to enumerate or probe it. So this is a usability
+dependency rather than a functional one, and the spec comment says so. The
+soname dependency remains the ABI-exact constraint, which is why the new line is
+deliberately unversioned instead of duplicating the ABI in the spec.
+
+Stated plainly so it is not mistaken for convention: none of Factory's existing
+SoapySDR plugins - soapy-airspy, soapy-bladerf, soapy-hackrf, soapy-osmo,
+soapy-remote, soapy-rtlsdr, soapy-uhd - carries such a Requires. This change
+makes these five stricter than current Factory practice; it is what the reviewer
+asked for, not a convention being matched.
+
+Rebuilt natively on aarch64 after the change: green, rpmlint unchanged, and
+&quot;rpm -qp --requires&quot; on the built module now lists both
+libSoapySDR.so.0.8-3()(64bit) and soapy-sdr.
+
+Supersedes SR 1374737.</comment>
+    <requestid>1374739</requestid>
+  </revision>
+</revisionlist>

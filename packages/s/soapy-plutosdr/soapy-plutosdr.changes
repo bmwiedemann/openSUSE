@@ -1,0 +1,62 @@
+-------------------------------------------------------------------
+Sun Aug 30 18:32:50 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Correct SPDX license to LGPL-2.1-only - upstream grants 2.1 only,
+  there is no "or later" clause in any source file, README or
+  debian/copyright
+- Fix Source URL - GitHub archives by tag name, the old path 404s
+- Declare pkgconfig(libiio) >= 0.9, the floor CMakeLists checks, so
+  OBS holds the build rather than failing in configure
+- Spec cleanup: drop Group tags, switch to %autosetup, wire up
+  %check, normalise README.md line endings (shipped CRLF), drop
+  stale "pro+" wording from the module description
+- Explicitly require soapy-sdr: the automatic soname dependency pulls
+  only libSoapySDR, so the module could be installed with no SoapySDR
+  client - not even SoapySDRUtil - to reach it
+
+-------------------------------------------------------------------
+Tue Apr  1 09:58:07 UTC 2025 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- SOAPY_SDR_ABI_VERSION bump -> "0.8-3"
+
+-------------------------------------------------------------------
+Sat Jun  1 09:10:08 UTC 2024 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- updated to version 0.2.2
+  + Fix src increment for rx_streamer recv on non direct-copy
+  + Add uri key to match devices, ensure that libiio context is a PlutoSDR
+  + Add libusb check for known ADALM-Pluto VID:PID
+  + Set label when PlutoSDR is USB-connected
+  + Disable automatic gain by default
+  + Add CS8 TX direct copy, fix CS12 TX direct copy
+  + Fix for backend scan errors
+  + Fix undefined default warnings
+  + Add getSampleRateRange() API
+-------------------------------------------------------------------
+Sat Jul 10 10:56:51 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- SoapySDR version bumped to 0.8
+
+-------------------------------------------------------------------
+Mon Feb 22 22:59:04 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- updated to version 0.2.1
+
+-------------------------------------------------------------------
+Wed Jun 26 20:31:52 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- updated to version 0.2.0
+- patch soapy-plutosdr-module-name.patch removed (applied upstream)
+
+-------------------------------------------------------------------
+Mon Dec 31 10:42:19 UTC 2018 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- fixed typo in spelling of PlutoSDR support module
+- patch soapy-plutosdr-module-name.patch backported from git commit
+
+-------------------------------------------------------------------
+Sat Dec 22 21:56:30 UTC 2018 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- version 0.1.0
+- initial package
+
