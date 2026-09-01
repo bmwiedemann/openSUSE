@@ -21,7 +21,7 @@
 %endif
 
 Name:           FreeFileSync
-Version:        14.9
+Version:        14.11
 Release:        0
 Summary:        Backup software to synchronize files and folders
 License:        GPL-3.0-or-later
@@ -39,6 +39,8 @@ Patch2:         FreeFileSync-remove_ifdef_exceptions.patch
 Patch3:         FreeFileSync-gui.patch
 # PATCH-FIX-UPSTREAM glib2-2.78-free_size-Fix-build-when-g_free-macro-is-defined.patch -- based on https://freefilesync.org/forum/viewtopic.php?t=13050#p50762
 Patch4:         glib2-2.78-free_size-Fix-build-when-g_free-macro-is-defined.patch
+# https://salsa.debian.org/bastif/freefilesync/-/blob/debian/latest/debian/patches/03-deps/wxwidgets-no-wx3.3.1-WxLogCollector.patch
+Patch5:         wxwidgets-no-wx3.3.1-WxLogCollector.patch
 BuildRequires:  boost-devel >= 1.54
 BuildRequires:  gcc%{?force_gcc_version}-c++ >= 15
 BuildRequires:  libcurl-devel

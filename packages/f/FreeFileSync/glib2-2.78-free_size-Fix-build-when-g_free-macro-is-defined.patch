@@ -33,11 +33,11 @@ Forwarded: https://freefilesync.org/forum/viewtopic.php?p=50762#p50762
  zen/zstring.cpp                          | 4 ++++
  3 files changed, 16 insertions(+)
 
-diff --git a/FreeFileSync/Source/afs/ftp.cpp b/FreeFileSync/Source/afs/ftp.cpp
-index 5bfbc11..28c848d 100644
---- a/FreeFileSync/Source/afs/ftp.cpp
-+++ b/FreeFileSync/Source/afs/ftp.cpp
-@@ -121,7 +121,11 @@ Zstring ansiToUtfEncoding(const std::string_view& str) //throw SysError
+Index: FreeFileSync-14.10/FreeFileSync/Source/afs/ftp.cpp
+===================================================================
+--- FreeFileSync-14.10.orig/FreeFileSync/Source/afs/ftp.cpp
++++ FreeFileSync-14.10/FreeFileSync/Source/afs/ftp.cpp
+@@ -116,7 +116,11 @@ Zstring ansiToUtfEncoding(const std::str
                                  &error);       //GError** error
      if (!utfStr)
          throw SysError(formatGlibError("g_convert(" + std::string(str) + ", LATIN1 -> UTF-8)", error));
@@ -49,7 +49,7 @@ index 5bfbc11..28c848d 100644
  
      return {utfStr, bytesWritten};
  
-@@ -150,7 +154,11 @@ std::string utfToAnsiEncoding(const Zstring& str) //throw SysError
+@@ -145,7 +149,11 @@ std::string utfToAnsiEncoding(const Zstr
                                   &error);         //GError** error
      if (!ansiStr)
          throw SysError(formatGlibError("g_convert(" + utfTo<std::string>(strNorm) + ", UTF-8 -> LATIN1)", error));
@@ -61,11 +61,11 @@ index 5bfbc11..28c848d 100644
  
      return {ansiStr, bytesWritten};
  
-diff --git a/FreeFileSync/Source/base/icon_loader.cpp b/FreeFileSync/Source/base/icon_loader.cpp
-index e8f813d..abf09fc 100644
---- a/FreeFileSync/Source/base/icon_loader.cpp
-+++ b/FreeFileSync/Source/base/icon_loader.cpp
-@@ -164,7 +164,11 @@ FileIconHolder fff::getIconByTemplatePath(const Zstring& templatePath, int maxSi
+Index: FreeFileSync-14.10/FreeFileSync/Source/base/icon_loader.cpp
+===================================================================
+--- FreeFileSync-14.10.orig/FreeFileSync/Source/base/icon_loader.cpp
++++ FreeFileSync-14.10/FreeFileSync/Source/base/icon_loader.cpp
+@@ -164,7 +164,11 @@ FileIconHolder fff::getIconByTemplatePat
                                                        nullptr);             //gboolean* result_uncertain
      if (!contentType)
          throw SysError(formatSystemError("g_content_type_guess(" + copyStringTo<std::string>(templatePath) + ')', L"", L"Unknown content type."));
@@ -77,11 +77,11 @@ index e8f813d..abf09fc 100644
  
      GIcon* const fileIcon = ::g_content_type_get_icon(contentType);
      if (!fileIcon)
-diff --git a/zen/zstring.cpp b/zen/zstring.cpp
-index 488fd44..529f823 100644
---- a/zen/zstring.cpp
-+++ b/zen/zstring.cpp
-@@ -25,7 +25,11 @@ Zstring getUnicodeNormalForm_NonAsciiValidUtf(const Zstring& str, UnicodeNormalF
+Index: FreeFileSync-14.10/zen/zstring.cpp
+===================================================================
+--- FreeFileSync-14.10.orig/zen/zstring.cpp
++++ FreeFileSync-14.10/zen/zstring.cpp
+@@ -25,7 +25,11 @@ Zstring getUnicodeNormalForm_NonAsciiVal
          gchar* strNorm = ::g_utf8_normalize(str.c_str(), str.length(), form == UnicodeNormalForm::nfc ? G_NORMALIZE_NFC : G_NORMALIZE_NFD);
          if (!strNorm)
              throw SysError(formatSystemError("g_utf8_normalize", L"", L"Conversion failed."));

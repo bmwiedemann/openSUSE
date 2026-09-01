@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Aug 30 10:05:37 UTC 2026 - munix9@googlemail.com
+
+- Update to 14.11:
+  * Fixed "TLS session resumption required" FTP error
+  * Log file time errors as "info" after comparing by file content
+  * Fixed tooltip not being updated during mouse scrolling (macOS, Linux)
+  * Fixed sluggy mouse scrolling during mouse movement (Linux)
+  * Skip ADS when failing to copy to ReFS (Windows)
+  * Updated translation files
+
+- Add wxwidgets-no-wx3.3.1-WxLogCollector.patch
+  * WxLogCollector appeared is wxWidgets 3.3.1 & FreeFileSync 14.10
+    This reverts to the way it worked in FreeFileSync 14.9
+
+-------------------------------------------------------------------
+Thu Jul  9 06:44:13 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 14.10:
+  * Added CRC32 verification for application resource files
+  * Improved error reporting when application files become corrupted
+  * Fixed access denied error for Windows SFTP server
+  * Updated toolchain and library dependencies to latest versions
+
+-------------------------------------------------------------------
 Mon Jun  1 07:45:52 UTC 2026 - munix9@googlemail.com
 
 - Add glib2-2.78-free_size-Fix-build-when-g_free-macro-is-defined.patch
