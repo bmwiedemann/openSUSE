@@ -379,4 +379,15 @@
     <comment></comment>
     <requestid>1254321</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>73d6d9e47fc9c7bbc77d6ecbc3d10d81</srcmd5>
+    <version>1.18.1</version>
+    <time>1788270334</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.18.1:
+  + Fix memory leak in Context::pop_group()
+  + Updated documentation.
+  + Meson build system fixes</comment>
+    <requestid>1374892</requestid>
+  </revision>
 </revisionlist>

@@ -17,12 +17,12 @@
 
 
 Name:           cairomm
-Version:        1.18.0
+Version:        1.18.1
 Release:        0
 Summary:        C++ Interface for Cairo
 License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
-URL:            https://www.cairographics.org/
+URL:            https://www.cairographics.org
 Source:         %{url}/releases/%{name}-%{version}.tar.xz
 
 BuildRequires:  c++_compiler
