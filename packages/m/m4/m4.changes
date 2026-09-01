@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 25 14:05:33 UTC 2026 - Andreas Schwab <schwab@suse.de>
+
+- posix-spawn-faction.patch: Fix check for posix_spawn_file_actions_addchdir
+
+-------------------------------------------------------------------
 Sat Feb  7 15:57:00 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.4.21:

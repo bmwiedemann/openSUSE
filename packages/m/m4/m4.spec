@@ -1,7 +1,7 @@
 #
 # spec file for package m4
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -29,6 +29,8 @@ Source1:        https://ftp.gnu.org/pub/gnu/m4/%{name}-%{version}.tar.xz.sig
 # https://savannah.gnu.org/users/ericb 0x71C2CC22B1C4602927D2F3AAA7A16B4A2527436A
 Source2:        %{name}.keyring
 Provides:       base:%{_bindir}/m4
+Patch0:         posix-spawn-faction.patch
+BuildRequires:  automake
 
 %description
 GNU m4 is an implementation of the traditional Unix macro processor.
@@ -40,6 +42,7 @@ cp -a /usr/lib/rpm/config.{sub,guess} build-aux/
 %endif
 
 %build
+autoreconf
 %configure \
   --without-included-regex \
 %if 0%{?mageia}
