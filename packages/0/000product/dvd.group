@@ -982,7 +982,6 @@
     <package name="kgamma6-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kgeography" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="kgeography-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
-    <package name="kglobalaccel5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_office -->
     <package name="kglobalacceld6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="khangman" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="khangman-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
@@ -1161,7 +1160,6 @@
     <package name="libKF5DocTools5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5GlobalAccel5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5GlobalAccel5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libKF5GlobalAccelPrivate5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_office -->
     <package name="libKF5GuiAddons5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5I18n5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5I18n5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2607,7 +2605,7 @@
     <package name="libsigc-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libsigc-3_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libsignon-qt6-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libsimdutf33" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libsimdutf35" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libslang2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libslirp0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libslp1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->

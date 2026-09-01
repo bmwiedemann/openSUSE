@@ -1107,6 +1107,7 @@ unsorted:
   - atuin-bash-completion 
   - atuin-fish-completion 
   - atuin-nushell-completion 
+  - atuin-server 
   - atuin-zsh-completion 
   - aubio-docs 
   - aubio-tools 
@@ -2442,6 +2443,7 @@ unsorted:
   - cockpit-client-launcher 
   - cockpit-devel 
   - cockpit-doc 
+  - cockpit-files 
   - cockpit-firewalld 
   - cockpit-kdump 
   - cockpit-machines 
@@ -3552,6 +3554,8 @@ unsorted:
   - ds4-battery-monitor 
   - ds4drv 
   - dsda-doom 
+  - dsdcc 
+  - dsdcc-devel 
   - dssi 
   - dssi-devel 
   - dssim 
@@ -4385,6 +4389,7 @@ unsorted:
   - flom 
   - flom-devel 
   - flowgrind 
+  - flrig 
   - fltk-devel 
   - fltk-devel-32bit 
   - fltk-devel-static 
@@ -7534,6 +7539,9 @@ unsorted:
   - gnote-lang 
   - gns3-gui 
   - gns3-server 
+  - gnss-sdr 
+  - gnss-sdr-volk 
+  - gnss-sdr-volk-devel 
   - gnu-efi-apps 
   - gnu-efi-devel 
   - gnu-free-fonts 
@@ -8034,6 +8042,9 @@ unsorted:
   - gr-osmosdr 
   - gr-osmosdr-devel 
   - gr-osmosdr-doc 
+  - gr-satellites 
+  - gr-satellites-devel 
+  - gr-satellites-devel-doc 
   - grabpng 
   - grafana 
   - grafana-ha-cluster-dashboards 
@@ -9996,8 +10007,6 @@ unsorted:
   - kalzium 
   - kalzium-devel 
   - kalzium-lang 
-  - kamerka 
-  - kamerka-lang 
   - kamoso 
   - kamoso-lang 
   - kanidm 
@@ -10303,6 +10312,7 @@ unsorted:
   - kget 
   - kget-lang 
   - kglobalaccel-devel 
+  - kglobalaccel5 
   - kglobalacceld6-devel 
   - kgoldrunner 
   - kgoldrunner-lang 
@@ -11373,6 +11383,7 @@ unsorted:
   - libKF5Declarative5 
   - libKF5Declarative5-lang 
   - libKF5Emoticons5 
+  - libKF5GlobalAccelPrivate5 
   - libKF5ItemModels5 
   - libKF5KCMUtils5 
   - libKF5KCMUtils5-lang 
@@ -11791,7 +11802,7 @@ unsorted:
   - libSciTokens0 
   - libShowMySky-Qt6-15 
   - libShowMySky-Qt6-devel 
-  - libSimGearCore-2024_1_6 
+  - libSimGearCore-2024_1_7 
   - libSingular-4_4_1 
   - libSingular-devel 
   - libSoQt20 
@@ -13133,6 +13144,7 @@ unsorted:
   - libdmapsharing-devel 
   - libdmmp-devel 
   - libdmmp0_2_0 
+  - libdmrconf0 
   - libdmtx-devel 
   - libdmx-devel 
   - libdmx1 
@@ -13180,6 +13192,7 @@ unsorted:
   - libdrumstick-widgets2 
   - libdruntime-ldc112 
   - libdrvproxy2 
+  - libdsdcc1 
   - libduktape207-32bit 
   - libdumb2 
   - libdv 
@@ -13900,6 +13913,7 @@ unsorted:
   - libgnuradio-iqbalance-devel 
   - libgnuradio-iqbalance3_9_0 
   - libgnuradio-osmosdr0_2_0 
+  - libgnuradio-satellites5_9_0 
   - libgnutls-dane-devel 
   - libgnutls-devel 
   - libgnutls-devel-32bit 
@@ -15543,6 +15557,7 @@ unsorted:
   - libpasswdqc0 
   - libpathrs-devel 
   - libpathrs-devel-static 
+  - libpathrs0 
   - libpcap-devel 
   - libpcap-devel-32bit 
   - libpcap-devel-static 
@@ -16441,6 +16456,7 @@ unsorted:
   - libsigc++2-devel 
   - libsigc++3-devel 
   - libsigc-2_0-0-32bit 
+  - libsigmf-devel 
   - libsignal-protocol-c-devel 
   - libsignal-protocol-c2 
   - libsignon-qt-docs 
@@ -17222,6 +17238,7 @@ unsorted:
   - libvoikko1-32bit 
   - libvolk-1_4_341 
   - libvolk3_3 
+  - libvolk_gnsssdr0_0_21 
   - libvomsapi1 
   - libvorbis-devel 
   - libvorbis-devel-32bit 
@@ -20373,7 +20390,6 @@ unsorted:
   - nv-prefer-signed-open-driver 
   - nv-prefer-signed-open-driver-G07 
   - nvidia-libXNVCtrl-devel 
-  - nvidia-modprobe 
   - nvidia-open-driver-G06-signed-check 
   - nvidia-open-driver-G06-signed-cuda-check 
   - nvidia-open-driver-G06-signed-cuda-default-devel 
@@ -24034,6 +24050,7 @@ unsorted:
   - putty 
   - pv 
   - pvetui 
+  - pvirsh 
   - pw3270 
   - pw3270-branding-upstream 
   - pw3270-lang 
@@ -24404,7 +24421,6 @@ unsorted:
   - python3-pocketsphinx 
   - python3-presage 
   - python3-presagemate 
-  - python3-pvirsh 
   - python3-pwquality 
   - python3-pyaskalono 
   - python3-pybullet 
@@ -32771,6 +32787,8 @@ unsorted:
   - qcustomplot-qt6-devel 
   - qd-devel 
   - qdirstat 
+  - qdmr 
+  - qdmr-devel 
   - qdox 
   - qdox-javadoc 
   - qelectrotech 
@@ -33902,6 +33920,7 @@ unsorted:
   - rtl_433-devel 
   - rtla 
   - rtla-rebuild 
+  - rtlamr 
   - rtmidi-devel 
   - rtorrent 
   - rtr-tools 
@@ -34879,11 +34898,16 @@ unsorted:
   - soapy-sdr 
   - soapy-sdr-devel 
   - soapysdr0.8-3-module-airspy 
+  - soapysdr0.8-3-module-airspyhf 
+  - soapysdr0.8-3-module-audio 
   - soapysdr0.8-3-module-bladerf 
+  - soapysdr0.8-3-module-fcdpp 
   - soapysdr0.8-3-module-hackrf 
   - soapysdr0.8-3-module-lms7 
   - soapysdr0.8-3-module-mirisdr 
   - soapysdr0.8-3-module-osmosdr 
+  - soapysdr0.8-3-module-plutosdr 
+  - soapysdr0.8-3-module-redpitaya 
   - soapysdr0.8-3-module-remote 
   - soapysdr0.8-3-module-rtlsdr 
   - soapysdr0.8-3-module-uhd 
