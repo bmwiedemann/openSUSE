@@ -49,7 +49,7 @@ Index: ffmpeg-9.0/libavcodec/libavcodec.v
 ===================================================================
 --- ffmpeg-9.0.orig/libavcodec/libavcodec.v
 +++ ffmpeg-9.0/libavcodec/libavcodec.v
-@@ -1,9 +1,190 @@
+@@ -1,9 +1,191 @@
 -LIBAVCODEC_MAJOR {
 -    global:
 -        av_*;
@@ -229,6 +229,7 @@ Index: ffmpeg-9.0/libavcodec/libavcodec.v
 +	avpriv_find_start_code;
 +	avpriv_fits_header_init;
 +	avpriv_fits_header_parse_line;
++	avpriv_h264_has_num_reorder_frames;
 +	avpriv_mpeg4audio_get_config2;
 +	avpriv_mpegaudio_decode_header;
 +	avpriv_pix_fmt_find;
@@ -566,7 +567,7 @@ Index: ffmpeg-9.0/libavutil/libavutil.v
 ===================================================================
 --- ffmpeg-9.0.orig/libavutil/libavutil.v
 +++ ffmpeg-9.0/libavutil/libavutil.v
-@@ -1,6 +1,642 @@
+@@ -1,6 +1,649 @@
 -LIBAVUTIL_MAJOR {
 -    global:
 -        av*;
@@ -595,6 +596,12 @@ Index: ffmpeg-9.0/libavutil/libavutil.v
 +	av_alpha_mode_name;
 +	av_ambient_viewing_environment_alloc;
 +	av_ambient_viewing_environment_create_side_data;
++	av_amf_attach_hdr_metadata;
++	av_amf_display_mastering_meta_to_hdrmeta;
++	av_amf_extract_hdr_metadata;
++	av_amf_get_color_profile;
++	av_amf_light_metadata_to_hdrmeta;
++	av_amf_to_av_format;
 +	av_append_path_component;
 +	av_asprintf;
 +	av_assert0_fpu;
@@ -609,6 +616,7 @@ Index: ffmpeg-9.0/libavutil/libavutil.v
 +	av_audio_fifo_size;
 +	av_audio_fifo_space;
 +	av_audio_fifo_write;
++	av_av_to_amf_format;
 +	av_base64_decode;
 +	av_base64_encode;
 +	av_basename;

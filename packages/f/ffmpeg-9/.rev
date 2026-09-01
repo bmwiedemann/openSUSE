@@ -15,4 +15,12 @@
     <comment>add SLE bugrefs</comment>
     <requestid>1371614</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>8863e39c61cfff3d694861024897e10c</srcmd5>
+    <version>9.0.1</version>
+    <time>1788270355</time>
+    <user>anag_factory</user>
+    <comment>- Complete work-around-abi-break.patch for BUILD_ORIG=1 builds</comment>
+    <requestid>1374985</requestid>
+  </revision>
 </revisionlist>

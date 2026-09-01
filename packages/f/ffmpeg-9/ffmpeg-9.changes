@@ -1,9 +1,38 @@
 -------------------------------------------------------------------
+Mon Aug 31 22:20:15 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Complete work-around-abi-break.patch for BUILD_ORIG=1 builds
+
+-------------------------------------------------------------------
 Wed Aug 12 13:52:05 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 9.0.1
   * Added boundary checks for various input formats, added nullptr
-    checks, cure some integer overflows and underflows
+    checks, cure some integer overflows and underflows.
+  * avcodec/dvbsub_parser: avoid signed overflow in the capacity check.
+    (CVE-2026-70628, bsc#1274268)
+  * avcodec/rscc: do not leave uninitilized data when the input is too short.
+    (CVE-2026-70629, bsc#1274270)
+  * avcodec/screenpresso: reject deflate output shorter than the frame.
+    (CVE-2026-70630, bsc#1274282)
+  * avcodec/tiff: reject inflate output shorter than the strip.
+    (CVE-2026-70631, bsc#1274287)
+  * avcodec/cfhd: reject transform-2 output wider than the plane.
+    (CVE-2026-70632, bsc#1274289)
+  * avformat/hevc: reject hvcC NAL arrays that overflow the 16-bit count.
+    (CVE-2026-75141, bsc#1276407)
+  * avformat/mpegenc: reject stream counts that overflow the system header.
+    (CVE-2026-75142, bsc#1276408)
+  * avformat/librist: honor the caller buffer size in librist_read.
+    (CVE-2026-75143, bsc#1276409)
+  * avformat/rtpenc_vc2hq: reject data units larger than the RTP payload buffer.
+    (CVE-2026-75144, bsc#1276410)
+  * avformat/rtpenc_av1: do not narrow the OBU size to (long).
+    (CVE-2026-75145, bsc#1276411)
+  * avformat/dashdec: reject a negative fragment index.
+    (CVE-2026-75146, bsc#1276412)
+  * avformat/rtpenc_av1: bound OBU size in the keyframe search loop.
+    (CVE-2026-75147, bsc#1276413)
 
 -------------------------------------------------------------------
 Wed Aug  5 17:37:10 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
