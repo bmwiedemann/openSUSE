@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Sep  1 06:04:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.12.8:
+  * Do not trust hashes from direct URLs that are discovered only in
+    wheel metadata when installing with --require-hashes
+  * Redact Azure shared access signature (sig) query parameters from
+    displayed URLs
+  * Use an Azure Storage API version compatible with both anonymous
+    and authenticated requests, so credential retries work when
+    public access is disabled
+  * Treat projects below one-level workspace member globs as
+    standalone instead of aborting workspace discovery
+  * Warn about invalid tool directories and keep upgrading the valid
+    ones with uv tool upgrade --all
+  * Avoid downloading and extracting the same remote wheel more than
+    once when uv processes run concurrently
+  * Speed up dependency graph construction from large lockfiles, and
+    reuse that indexing for exports, dependency trees, audits and
+    freshness checks
+  * Speed up warm resolutions by reducing repeated marker interner
+    work
+  * Deduplicate identical files within and across cached wheels under
+    the content-addressed-cache preview feature
+  * Update astral-tokio-tar to 0.7.0 and use effective sizes when
+    tracking extracted hard links
+  * Refresh the vendored crates; the linked graph grows to 516 crates
+    (cpubits and zerocopy-derive are new) but the licence set is
+    unchanged
+
+-------------------------------------------------------------------
 Fri Aug 28 06:54:03 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.12.7:

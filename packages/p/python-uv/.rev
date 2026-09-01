@@ -3094,4 +3094,33 @@ against the package.</comment>
     <comment>Update to 0.12.7 (forwarded request 1374222 from pluskalm)</comment>
     <requestid>1374235</requestid>
   </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>9f94866b267502a6f1fcb76155f749fa</srcmd5>
+    <version>0.12.8</version>
+    <time>1788270649</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.12.8.
+
+Security-relevant fix: uv no longer trusts hashes from direct URLs that are
+discovered only in wheel metadata when installing with --require-hashes.
+Azure shared access signature (sig) query parameters are now redacted from
+displayed URLs, and the Azure Storage API version was changed so credential
+retries work when public access is disabled. Also fixes workspace discovery
+aborting on projects below one-level member globs.
+
+No CVE/GHSA was assigned upstream to any of these (checked the repository's
+security advisories: the newest is GHSA-4gg8-gxpx-9rph from 2026-05-18).
+
+Vendored crates refreshed. The linked crate graph goes 509 -&gt; 516 (cpubits
+and zerocopy-derive added, none removed), but the set of licence expressions
+across the graph is unchanged, so License stays
+(Apache-2.0 OR MIT) AND MPL-2.0. cargo-audit reports only the pre-existing
+accepted RUSTSEC-2023-0071 (rsa, no fixed release) already declared in
+_service; the two unmaintained warnings reach uv-dev only, which is not in
+the shipped binary graph. Upstream MSRV is unchanged at 1.96.
+
+Built and %check'd natively on aarch64 and on OBS x86_64: rpmlint 0 errors,
+0 badness; the test flavour runs 61 test binaries, 1369 passed, 0 failed.</comment>
+    <requestid>1375030</requestid>
+  </revision>
 </revisionlist>
