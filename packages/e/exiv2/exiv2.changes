@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Aug 31 10:52:28 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.28.9 (bsc#1277579, CVE-2026-68547,
+                    bsc#1277579, CVE-2026-68546,
+                    CVE-2026-49275):
+  * https://github.com/Exiv2/exiv2/security/advisories/GHSA-3695-mjv8-3r52
+  * https://github.com/Exiv2/exiv2/security/advisories/GHSA-jcgh-p9v3-pw6j
+  * https://github.com/Exiv2/exiv2/security/advisories/GHSA-hxph-pv7w-8649
+  * https://github.com/Exiv2/exiv2/security/advisories/GHSA-vg6c-9f6h-4x5q
+  * https://github.com/Exiv2/exiv2/security/advisories/GHSA-9v3x-mhg4-wwv2
+  * https://github.com/Exiv2/exiv2/security/advisories/GHSA-fgw8-p7pr-37cp
+  * https://github.com/Exiv2/exiv2/security/advisories/GHSA-pwvq-9w4q-786w
+
+-------------------------------------------------------------------
 Wed Mar  4 15:24:00 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.28.8 (bsc#1259083, CVE-2026-25884, bsc#1259085,
