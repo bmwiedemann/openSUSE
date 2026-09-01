@@ -1,7 +1,7 @@
 #
 # spec file for package nanopb
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define sover 0
 %define src_install_dir %{_prefix}/src/%{name}
 Name:           nanopb
-Version:        0.4.9.1
+Version:        0.4.9.2
 Release:        0
 Summary:        Protocol Buffers with small code size
 License:        Zlib

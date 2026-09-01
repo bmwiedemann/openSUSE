@@ -221,4 +221,23 @@
 </comment>
     <requestid>1228004</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>875236299dac498d2cda32f2b7a75b7f</srcmd5>
+    <version>0.4.9.2</version>
+    <time>1788270704</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.4.9.2:
+  * Fix callback and oneof calling attacker-controlled ptr
+    (GHSA-p24j-vqcp-x988)
+  * Fix callback for message inside oneof not getting called
+    (#1061)
+  * Fix setting of package name in .options file (#1131)
+  * Add minimal support for protobuf editions (#900)
+  * Fix comment parsing in options string literals (#1175)
+  * Add PB_MESSAGE_NESTING_MAX option for limiting recursion depth
+    (GHSA-9w99-4pfq-6396)
+  * Bazel, CMake and platformio build system improvements
+</comment>
+    <requestid>1375075</requestid>
+  </revision>
 </revisionlist>
