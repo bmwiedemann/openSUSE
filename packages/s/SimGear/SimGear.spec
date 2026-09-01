@@ -20,10 +20,10 @@
 # in our requirements, i.e. the same version we have built against
 %define openscenegraph_version %(rpm -qa --nosignature --nodigest libOpenSceneGraph\*-devel | sed 's/.*-devel-\\(.*\\)-.*/\\1/')
 
-%define libname libSimGearCore-2024_1_6
+%define libname libSimGearCore-2024_1_7
 %define main_version 2024.1
 Name:           SimGear
-Version:        %{main_version}.6
+Version:        %{main_version}.7
 Release:        0
 Summary:        Simulator Construction Gear
 # https://sourceforge.net/p/flightgear/codetickets/1940/
