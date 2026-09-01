@@ -1,0 +1,16 @@
+<services>
+  <service mode="buildtime" name="docker_label_helper"/>
+  <service mode="buildtime" name="kiwi_metainfo_helper"/>
+  <service mode="buildtime" name="replace_using_package_version">
+    <param name="file">Dockerfile.base</param>
+    <param name="regex">%%opencode_version%%</param>
+    <param name="package">opencode</param>
+    <param name="parse-version">patch</param>
+  </service>
+  <service mode="buildtime" name="replace_using_package_version">
+    <param name="file">Dockerfile.devel</param>
+    <param name="regex">%%opencode_version%%</param>
+    <param name="package">opencode</param>
+    <param name="parse-version">patch</param>
+  </service>
+</services>
