@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Mon Aug 31 11:27:35 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1788175640.07173bb1:
+  * refactor(ui): remove jQuery from main application scripts
+  * feat(munin): Make alert email more useful
+  * chore(deps): Dependency cron 2026-08-27
+  * style: Enforce perlcritic policy ProhibitUnusedCapture
+  * feat(dependencies): add perl(IO::Interactive) runtime dependency
+  * fix(openqa-clone-job): Avoid error when checking incident repos
+  * feat(openqa-clone-job): Improve error message if repos unavailable
+  * docs: Reword documentation of `follow` parameter
+  * docs: Document ancestors and descendants parameters
+  * feat: Allow querying the number of restarts via the jobs API
+  * chore(deps): Dependency cron 2026-08-26
+  * fix: avoid reloading inactive worker slots via try-reload-or-restart
+  * fix(test): Skip subtest for newer MCP version
+  * chore: Update Perl-Tidy to 20260808
+  * chore(deps): Dependency cron 2026-08-22
+  * docs: Format `docs/Installing.md` with prettier
+  * docs(Installing.md): fix Prettier emphasis style in Installing.md
+  * feat: Retry jobs that exceed the max setup time automatically
+  * feat: add dynamic network bonding and openQA repos to agama profile
+  * feat: Make filter/sorting/pagination/status of workers table persistent
+  * docs: Fix a few problems/inconsistencies via newly introduced prettier
+  * docs: Fix some grammar mistakes
+  * docs: Fix lists under "Code style suggestions" and "Rules for commits"
+  * docs: Fix "Folder structure" section after Markdown conversion
+  * docs: Avoid excessive use of blank lines and `<!-- -->` in lists
+  * docs: Fix several lists after Markdown conversion
+  * docs: Rewrap some lines in `Installing.md` and `WritingTests.md`
+  * docs: Wrap lines in certain quotation blocks more consistently
+  * docs: Fix further quotation blocks after Markdown conversion
+  * fix(worker): avoid podman database runroot mismatch in concurrent jobs
+  * docs(worker): update custom worker engine container docs
+  * feat(worker): auto-mount host CA directories into rootless podman
+  * feat(comments): load comments via AJAX
+  * docs: Mention motivation of default throttling patterns
+  * docs: Mention `…:=~^$` syntax
+  * test: Simplify `t/config.t`
+  * feat: Throttle jobs without `CASEDIR` and thus not specifying a Git-URL
+  * feat: Allow adjusting prio for empty or non-existent variable
+
+-------------------------------------------------------------------
 Wed Aug 19 09:55:39 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1787133330.4deef227:
