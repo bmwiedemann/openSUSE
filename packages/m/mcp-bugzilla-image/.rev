@@ -7,4 +7,12 @@
     <comment>🤖: initial submission of mcp-bugzilla-image</comment>
     <requestid>1368162</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>25b840dc380c486029400ef09822672c</srcmd5>
+    <version>unknown</version>
+    <time>1788270702</time>
+    <user>anag_factory</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1374943</requestid>
+  </revision>
 </revisionlist>
