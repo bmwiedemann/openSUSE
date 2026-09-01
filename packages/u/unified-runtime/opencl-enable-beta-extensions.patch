@@ -1,0 +1,11 @@
+diff --git a/source/adapters/opencl/CMakeLists.txt b/source/adapters/opencl/CMakeLists.txt
+index d6cf2dc0..bcc0e2bb 100644
+--- a/source/adapters/opencl/CMakeLists.txt
++++ b/source/adapters/opencl/CMakeLists.txt
+@@ -75,6 +75,7 @@ message(STATUS "OpenCL ICD Loader Library: ${OpenCLICDLoaderLibrary}")
+ # Define all symbols up to OpenCL 3.0.
+ target_compile_definitions(ur_adapter_opencl PRIVATE
+     CL_TARGET_OPENCL_VERSION=300
++    CL_ENABLE_BETA_EXTENSIONS
+     CL_USE_DEPRECATED_OPENCL_1_2_APIS
+ )

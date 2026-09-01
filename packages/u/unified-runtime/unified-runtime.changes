@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 31 15:52:12 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Add opencl-enable-beta-extensions.patch to fix building the OpenCL
+  adapter with current OpenCL headers
+- Add a hardware-independent urinfo smoke test
+
+-------------------------------------------------------------------
 Wed May  7 13:18:04 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Use source urls to fetch project sources 

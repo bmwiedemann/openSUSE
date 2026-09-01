@@ -44,4 +44,14 @@
     across different queue</comment>
     <requestid>1275288</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>5b6e1fb0e15aa3197b4c3ebf3bf03545</srcmd5>
+    <version>0.11.10</version>
+    <time>1788270463</time>
+    <user>anag_factory</user>
+    <comment>- Add opencl-enable-beta-extensions.patch to fix building the OpenCL
+  adapter with current OpenCL headers
+- Add a hardware-independent urinfo smoke test</comment>
+    <requestid>1374898</requestid>
+  </revision>
 </revisionlist>

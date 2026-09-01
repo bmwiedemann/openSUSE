@@ -29,6 +29,7 @@ License:        Apache-2.0
 URL:            https://github.com/oneapi-src/unified-runtime
 Source0:        https://github.com/oneapi-src/unified-runtime/archive/v%{version}/%{name}-%{version}.tar.gz
 Patch1:         remove-link.patch
+Patch2:         opencl-enable-beta-extensions.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  ninja
@@ -101,6 +102,9 @@ This package contains the oneAPI Unified Runtime OpenCL adapter.
     -DCMAKE_SKIP_RPATH=ON
 %cmake_build
 %cmake_build urinfo
+
+%check
+LD_LIBRARY_PATH="$PWD/build/lib" build/bin/urinfo --version
 
 %install
 %cmake_install
