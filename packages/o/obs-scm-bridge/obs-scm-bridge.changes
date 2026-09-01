@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 25 07:59:08 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- 0.8.0
+  * factored out python module to parse directory structure
+  * _manifest file validation via schema
+
+-------------------------------------------------------------------
 Thu Jul 16 08:41:49 UTC 2026 - Adrian Schröter <adrian@suse.de>
 
 - 0.7.5
