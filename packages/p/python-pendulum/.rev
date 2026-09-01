@@ -134,4 +134,13 @@
     <comment></comment>
     <requestid>1335733</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>cd408933e20fb75368f6f9e1189644d3</srcmd5>
+    <version>3.2.0</version>
+    <time>1788270359</time>
+    <user>anag_factory</user>
+    <comment>- Add patch update-pyo3-to-0.29.patch:
+  * Update pyo3 to a new version and regenerate the vendoring.</comment>
+    <requestid>1374788</requestid>
+  </revision>
 </revisionlist>

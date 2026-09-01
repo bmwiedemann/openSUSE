@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 31 06:27:05 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch update-pyo3-to-0.29.patch:
+  * Update pyo3 to a new version and regenerate the vendoring.
+
+-------------------------------------------------------------------
 Mon Mar  2 07:09:11 UTC 2026 - Adrian Schröter <adrian@suse.de>
 
 - Update to 3.2.0

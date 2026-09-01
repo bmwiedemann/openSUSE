@@ -1,0 +1,37 @@
+From cc32cba736a287c5f6e89afc0964ac36e0c68bc8 Mon Sep 17 00:00:00 2001
+From: "Benjamin A. Beasley" <code@musicinmybrain.net>
+Date: Tue, 30 Jun 2026 20:10:07 +0100
+Subject: [PATCH] Update PyO3 to 0.29
+
+---
+ rust/Cargo.lock                   | 92 ++++---------------------------
+ rust/Cargo.toml                   |  2 +-
+ rust/src/python/types/timezone.rs |  2 +-
+ 3 files changed, 12 insertions(+), 84 deletions(-)
+
+diff --git a/rust/Cargo.toml b/rust/Cargo.toml
+index 097321fe..b4c3a43e 100644
+--- a/rust/Cargo.toml
++++ b/rust/Cargo.toml
+@@ -14,7 +14,7 @@ strip = true
+ overflow-checks = false
+ 
+ [dependencies]
+-pyo3 = { version = "0.27", features = ["extension-module", "generate-import-lib"] }
++pyo3 = { version = "0.29", features = ["extension-module"] }
+ 
+ [features]
+ extension-module = ["pyo3/extension-module"]
+diff --git a/rust/src/python/types/timezone.rs b/rust/src/python/types/timezone.rs
+index 64dce026..f6f74747 100644
+--- a/rust/src/python/types/timezone.rs
++++ b/rust/src/python/types/timezone.rs
+@@ -2,7 +2,7 @@
+ use pyo3::prelude::*;
+ use pyo3::types::{PyDelta, PyDict, PyTzInfo};
+ 
+-#[pyclass(module = "_pendulum", extends = PyTzInfo)]
++#[pyclass(module = "_pendulum", extends = PyTzInfo, from_py_object)]
+ #[derive(Clone)]
+ pub struct FixedTimezone {
+     offset: i32,
