@@ -1030,7 +1030,6 @@ packagesets:
    - kgamma6-lang # reason: dvd:patterns-kde-kde
    - kgeography # reason: dvd:patterns-kde-kde_edutainment
    - kgeography-lang # reason: dvd:patterns-kde-kde_edutainment
-   - kglobalaccel5 # reason: dvd:patterns-kde-kde_office
    - kglobalacceld6 # reason: dvd:patterns-kde-kde
    - khangman # reason: dvd:patterns-kde-kde_edutainment
    - khangman-lang # reason: dvd:patterns-kde-kde_edutainment
@@ -1209,7 +1208,6 @@ packagesets:
    - libKF5DocTools5 # reason: dvd:patterns-kde-kde
    - libKF5GlobalAccel5 # reason: dvd:patterns-kde-kde
    - libKF5GlobalAccel5-lang # reason: dvd:patterns-kde-kde
-   - libKF5GlobalAccelPrivate5 # reason: dvd:patterns-kde-kde_office
    - libKF5GuiAddons5 # reason: dvd:patterns-kde-kde
    - libKF5I18n5 # reason: dvd:patterns-kde-kde
    - libKF5I18n5-lang # reason: dvd:patterns-kde-kde
@@ -2655,7 +2653,7 @@ packagesets:
    - libsigc-2_0-0 # reason: dvd:openSUSE-release
    - libsigc-3_0-0 # reason: dvd:patterns-gnome-gnome
    - libsignon-qt6-1 # reason: dvd:patterns-kde-kde
-   - libsimdutf33 # reason: dvd:patterns-gnome-gnome
+   - libsimdutf35 # reason: dvd:patterns-gnome-gnome
    - libslang2 # reason: dvd:patterns-kde-kde
    - libslirp0 # reason: dvd:patterns-media-rest_dvd
    - libslp1 # reason: dvd:patterns-kde-kde
@@ -5621,7 +5619,6 @@ packagesets:
    - libpango-1_0-0 # reason: opensuse_microos:patterns-microos-onlyDVD
    - libparted-fs-resize0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libparted2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libpathrs0 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libpci3 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libpciaccess0 # reason: opensuse_microos:patterns-base-hardware
    - libpcre2-16-0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -7424,7 +7421,6 @@ packagesets:
    - libpango-1_0-0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libparted-fs-resize0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libparted2 # reason: opensuse_kalpa:patterns-kalpa-base
-   - libpathrs0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libpci3 # reason: opensuse_kalpa:patterns-kalpa-base
    - libpciaccess0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libpcre2-16-0 # reason: opensuse_kalpa:patterns-kalpa-base
