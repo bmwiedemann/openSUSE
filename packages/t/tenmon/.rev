@@ -243,4 +243,14 @@
 </comment>
     <requestid>1362352</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b72d96e47440f371d0ba9610891d667e</srcmd5>
+    <version>20260826</version>
+    <time>1788270662</time>
+    <user>anag_factory</user>
+    <comment>- Update to 20260826:
+  * Hotfix for Windows opening XISF files with really long filenames.
+</comment>
+    <requestid>1375037</requestid>
+  </revision>
 </revisionlist>
