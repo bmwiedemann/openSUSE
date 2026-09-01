@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 31 16:26:00 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
+
+- fix access permissions of rpmdb
+
+-------------------------------------------------------------------
 Thu Jul 23 10:59:04 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
 
 - set SOURCE_DATE_EPOCH for reproducible package installation times
