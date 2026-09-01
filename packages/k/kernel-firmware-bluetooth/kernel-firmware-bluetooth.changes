@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Aug 28 13:58:03 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260828 (git commit b6bdea3726dc):
+  * linux-firmware: Update firmware file for Intel BlazarIW core
+  * linux-firmware: Update firmware file for Intel BlazarU core
+  * linux-firmware: Update firmware file for Intel Scorpius core
+
+-------------------------------------------------------------------
+Tue Aug 25 16:00:11 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260825 (git commit 0305399a8783):
+  * QCA: Update Bluetooth WCN3988 firmware 2.1.5.c5-00042 to 2.1.5.c5-00060
+
+-------------------------------------------------------------------
+Sat Aug 22 06:30:14 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260821 (git commit 8c7fac62c0d1):
+  * qca: Update Bluetooth QCC2072 UART interface firmware from 1.1.0-00295 to 1.1.0-00340
+
+-------------------------------------------------------------------
 Tue Jul 21 06:59:20 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260720 (git commit 18cf97993f06):
