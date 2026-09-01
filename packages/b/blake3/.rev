@@ -61,4 +61,13 @@
     build, fixing a build failure on Arch Linux ARM.</comment>
     <requestid>1370282</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a911996e2fa6481c986ce7bb792e103b</srcmd5>
+    <version>1.8.7</version>
+    <time>1788270357</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.8.7:
+  * Remove the arrayref dependency.</comment>
+    <requestid>1374765</requestid>
+  </revision>
 </revisionlist>

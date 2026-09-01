@@ -30,7 +30,7 @@
 %bcond_with     b3sum
 
 Name:           blake3
-Version:        1.8.6
+Version:        1.8.7
 Release:        0
 Summary:        A cryptographic hash function
 License:        Apache-2.0
