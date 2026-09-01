@@ -1,0 +1,70 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0b09819568bd9ba30210ce682d5c5b67</srcmd5>
+    <version>1.9.6</version>
+    <time>1788270416</time>
+    <user>anag_factory</user>
+    <comment>New package: dsdcc 1.9.6, GPL-3.0-or-later.
+
+DSDcc is a C++ digital speech decoder library for the DMR, dPMR, D-Star
+and Yaesu System Fusion (YSF) digital voice standards. It is a rewrite of
+the original DSD project as a real library: callers push 48 kS/s samples
+into a decoder object instead of the decoder pulling from a file or
+device. The submission ships libdsdcc1 (SONAME libdsdcc.so.1), dsdcc-devel
+with the headers and libdsdcc.pc, and the dsdccx stdin/stdout decoder in
+the main package.
+
+Why it belongs in Factory: it is a build dependency of SDRangel, which
+today exists only in hardware:sdr and whose own Factory submission is a
+separate effort that has not landed and may not. Upstream's README states
+the library was written specifically to be integrated as an SDRangel
+plugin. dsdcc is nonetheless useful on its own: dsdccx decodes these
+standards as a shell filter, and Factory currently carries no other
+decoder for them.
+
+PLEASE RULE ON ONE LICENCE POINT (flagged deliberately, not hidden):
+
+descramble.cpp carries two notices. F4EXB's own header at the top places
+the file under GPL-3, but below it sits an older notice for Jonathan
+Naylor G4KLX's pcrepeatercontroller code reading &quot;version 2 of the
+License.&quot; with no later-version clause - i.e. GPL-2.0-only, which does
+not upgrade to GPL-3. The file is compiled into libdsdcc, and
+descramble.h ships in -devel. F4EXB appears to have relicensed his
+derivative, but whether that disposes of the G4KLX grant is a legal call,
+not a packaging one, so I am surfacing it rather than deciding it. I
+audited all 64 sources; descramble.cpp is the only GPL-2.0-only file.
+
+Remaining licence findings, recorded in a Legal-Review-Notice above the
+License tag so they need not be re-derived:
+
+- Upstream ships no LICENSE file at all.
+- 58 of 64 sources carry a box header truncated after &quot;as version 3 of
+  the License, or&quot; - the later-version clause is simply absent. That
+  wording is identical in the v1.0.0 tag from 2016, so it is upstream's
+  own text, not a formatting accident. Read as or-later because the same
+  author's locator.{cpp,h} carry the clause in full and his in-tree
+  debian/copyright declares GPL-3.0+. Debian reached the same conclusion.
+- nxdnconvolution.{cpp,h} and nxdncrc.{cpp,h} are GPL-2.0-or-later
+  (G4KLX), which GPL-3.0-or-later absorbs cleanly.
+
+Packaging notes:
+
+- Maintained in hardware:sdr since 2017. 1.9.6 (2025-09-20) is current
+  upstream; Debian and NixOS ship the same version.
+- mbelib is disabled (-DUSE_MBELIB=OFF). It implements the patent-
+  encumbered AMBE/IMBE vocoder, is not in Factory, and upstream itself
+  documents building without it as the way to avoid that exposure.
+  Without mbelib the library extracts raw MBE frames only.
+- Upstream hardcodes CMAKE_INSTALL_RPATH to &lt;prefix&gt;/lib, and the %cmake
+  macro only strips it on suse_version &lt;= 1500, so both shipped ELF
+  objects carried a bogus lib64-less RUNPATH. Fixed with
+  -DCMAKE_SKIP_INSTALL_RPATH:BOOL=ON; readelf now shows none.
+- No %check. Upstream's testfec/ programs only print their results and
+  return 0 unconditionally, so wiring them up would be a check that can
+  never fail. They are not referenced by CMakeLists.txt at all.
+- The tracked tarball was named .tar.xz while actually being gzip; it has
+  been renamed to .tar.gz. Content is unchanged and byte-identical to the
+  upstream v1.9.6 archive.</comment>
+    <requestid>1374714</requestid>
+  </revision>
+</revisionlist>

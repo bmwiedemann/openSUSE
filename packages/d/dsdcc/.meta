@@ -1,0 +1,10 @@
+<package name="dsdcc" project="openSUSE:Factory">
+  <title>Digital Speech Decoder (DSD) rewritten as a C++ library</title>
+  <description>DSDcc is a complete rewrite from the original DSD (Digital Speech Decoder) project.
+It provides a binary executable dsdccx and a library libdsdcc.so to be used in
+other programs.
+It decodes DMR, dPMR, D-Star and Yaesu System Fusion (YSF) standards
+
+</description>
+  <url>https://github.com/f4exb/dsdcc</url>
+</package>

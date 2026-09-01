@@ -1,0 +1,178 @@
+-------------------------------------------------------------------
+Sun Aug 30 15:34:04 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Prepare the package for submission to openSUSE:Factory:
+  * Rename the tarball to .tar.gz - it always was gzip, only the
+    name claimed xz.
+  * Drop the bogus /usr/lib RUNPATH from libdsdcc and dsdccx;
+    upstream hardcodes it and the cmake macro only strips it on
+    suse_version <= 1500.
+  * Drop the Group tags, switch to autosetup and cmake_build, ship
+    CHANGELOG, reword the descriptions.
+  * Replace the libdsdcc.so.1* glob with the SONAME and the real
+    library file, so a future libdsdcc.so.10 cannot be swallowed
+    into libdsdcc1.
+  * Record the licence audit above License, including
+    descramble.cpp's embedded GPL-2.0-only notice from G4KLX.
+
+-------------------------------------------------------------------
+Mon Sep 22 09:38:14 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.9.6
+  * Set cmake_minimum_required to 3.5 for compatibility with cmake4
+- Update to version 1.9.5
+ * Fix Golay_20_8 parity correction and index out of range.
+- Update to version 1.9.4
+  * Do not memset after the end of the array.
+  * Initialize DMR basic privacy key to zero.
+  * Implement stale action
+
+-------------------------------------------------------------------
+Wed Apr 21 07:49:29 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.9.3
+  * Another bugfix release
+
+-------------------------------------------------------------------
+Mon Apr 19 06:59:45 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.9.2
+  * Bugfix release
+
+-------------------------------------------------------------------
+Thu Apr 15 15:54:47 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.9.1
+  * All: tolerate some mismatching symbols in the sync sequence.
+  * DMR BP: apply only to the 49 bits of data
+
+-------------------------------------------------------------------
+Sat Jul 25 15:05:13 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.9.0
+  * All: tolerate some mismatching symbols in the sync sequence.
+  * DMR BP: apply only to the 49 bits of data
+
+-------------------------------------------------------------------
+Mon Jun 15 17:18:15 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.8.7
+  * Implemented DMR basic privacy (issue #31)
+  * Fixed discrepancy between tag and CMakeLists.txt version
+- Create subpackage for the shared library
+
+-------------------------------------------------------------------
+Sun Aug 25 21:47:57 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.8.6
+  * Fixed zero divide in race conditions
+  * Fixed issue when changing decode mode
+
+-------------------------------------------------------------------
+Sat May 11 09:19:50 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.8.5
+  * NXDN: take RTCH-C frames into consideration
+  * MSVC compatibility
+
+-------------------------------------------------------------------
+Sun Dec 30 11:40:59 UTC 2018 - mardnh@gmx.de
+
+- Update to version 1.8.4
+  * Put in place the export logic for compatibility with
+    MSVC compilers.
+
+-------------------------------------------------------------------
+Fri Jun 29 07:59:07 UTC 2018 - mardnh@gmx.de
+
+- Update to version 1.8.3
+  * NXDN: support full rate (EFR)
+
+-------------------------------------------------------------------
+Mon Jun 25 09:25:00 UTC 2018 - mardnh@gmx.de
+
+- Update to version 1.8.2
+  * Reverted recent cleanup changes that introduced a compilation
+    error when using serial DV. Fixed the unused variables warning
+    by declaring these variables only if serial DV is used.
+
+-------------------------------------------------------------------
+Sun Jun 24 12:14:16 UTC 2018 - mardnh@gmx.de
+
+- Update to version 1.8.1
+  * HP filter enhancement
+    Run the high pass filter on the 8 kS/s output from AMBE.
+    It makes it easier to have the -3dB corner at 300 Hz exactly.
+    Moreover it can prevent saturation of the interpolation and
+    LP filter stage in case loud bass audio is present.
+
+-------------------------------------------------------------------
+Sat Jun 23 07:44:36 UTC 2018 - mardnh@gmx.de
+
+- Update to version 1.8.0
+  * NXDN implementation
+
+-------------------------------------------------------------------
+Wed Apr 25 17:45:45 UTC 2018 - mardnh@gmx.de
+
+- Update to version 1.7.7
+  * Allow upsampling by other integer multiples of 8000 S/s than 6.
+    Thus audio sample rates of 16000, 24000, 32000 and 40000 S/s can
+    be supported in addition of the existing 8000 and 48000 S/s
+
+-------------------------------------------------------------------
+Tue Apr 24 11:41:05 UTC 2018 - mardnh@gmx.de
+
+- Update to version 1.7.6
+  * Reverted changes made in v1.7.5 as this breaks normal DMR
+    operation.
+
+-------------------------------------------------------------------
+Mon Apr  2 15:41:05 UTC 2018 - mardnh@gmx.de
+
+- Update to version 1.7.5
+  * Implemented DMR negative
+
+-------------------------------------------------------------------
+Wed Jan  3 13:44:33 UTC 2018 - mardnh@gmx.de
+
+- Update to version 1.7.4
+  * Changed cutoff of audio high pass filter when using mbelib
+
+-------------------------------------------------------------------
+Mon Jan  1 10:37:07 UTC 2018 - mardnh@gmx.de
+
+- Update to version 1.7.3
+  * Added optional audio high pass filter when processing with mbelib
+- Remove patch:
+  * dsdcc-cmake-libsuffix.diff (fixed upstream)
+
+-------------------------------------------------------------------
+Fri May 26 05:05:14 UTC 2017 - mardnh@gmx.de
+
+- Update to version 1.7.2
+  * Activated compiler warnings and made corresponding fixes
+
+-------------------------------------------------------------------
+Mon May  8 17:39:09 UTC 2017 - mardnh@gmx.de
+
+- Update to version 1.7.1
+  * Make PLL to track symbol synchronization optional
+  * YSF: fixed FICH code
+
+-------------------------------------------------------------------
+Sun May  7 07:54:48 UTC 2017 - mardnh@gmx.de
+
+- Update to version 1.7.0
+  + PLL for symbol synchronization
+  + Code cleanup
+
+-------------------------------------------------------------------
+Mon Apr 24 10:35:26 UTC 2017 - mpluskal@suse.com
+
+- Small package adjustements
+
+-------------------------------------------------------------------
+Sun Apr 23 08:45:32 UTC 2017 - mardnh@gmx.de
+
+- initial package, version 1.6.0
