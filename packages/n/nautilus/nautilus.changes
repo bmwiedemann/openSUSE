@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Aug 31 12:57:55 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.3:
+  + Bugfixes:
+    - Mark network address entry invalid on the a11y layer when
+      appropriate
+    - Correctly position related apps in the app chooser
+    - Fix thumbnail not being updated while loading is some cases
+    - Show the correct starred status and normal features of
+      properties in Recents
+    - Fix Escape not closing the app chooser dialog when the entry
+      is focused
+    - Fix a bug where copied files are not selected after the
+      operation has ended
+    - Fix memory trimming on window closure
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon May 25 17:35:26 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 50.2.2:

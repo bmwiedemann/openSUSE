@@ -1892,4 +1892,25 @@ Hence, recommended to be added to 12.3</comment>
   + Updated translations.</comment>
     <requestid>1355929</requestid>
   </revision>
+  <revision rev="233" vrev="1">
+    <srcmd5>0a6e2ac53099355c4181de6693e01dcd</srcmd5>
+    <version>50.3</version>
+    <time>1788270332</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 50.3:
+  + Bugfixes:
+    - Mark network address entry invalid on the a11y layer when
+      appropriate
+    - Correctly position related apps in the app chooser
+    - Fix thumbnail not being updated while loading is some cases
+    - Show the correct starred status and normal features of
+      properties in Recents
+    - Fix Escape not closing the app chooser dialog when the entry
+      is focused
+    - Fix a bug where copied files are not selected after the
+      operation has ended
+    - Fix memory trimming on window closure
+  + Updated translations.</comment>
+    <requestid>1374889</requestid>
+  </revision>
 </revisionlist>
