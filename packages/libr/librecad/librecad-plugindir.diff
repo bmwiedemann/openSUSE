@@ -18,7 +18,7 @@ Index: LibreCAD-2.2.0.2/librecad/src/lib/engine/rs_system.cpp
      RS_SETTINGS->endGroup();
  
 +	if (subDirectory == "plugins")
-+		dirList.append("##LIBDIR##" + appDirName + "/" + subDirectory);
++		dirList.append("##LIBDIR##" + m_appDirName + "/" + subDirectory);
 +
      QStringList ret;
  

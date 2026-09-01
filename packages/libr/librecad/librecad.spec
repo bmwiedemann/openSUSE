@@ -17,7 +17,7 @@
 
 
 Name:           librecad
-Version:        2.2.1.3
+Version:        2.2.1.5
 Release:        0
 Summary:        Computer-aided design (CAD) software package for 2D design and drafting
 License:        (Apache-2.0 OR SUSE-GPL-3.0+-with-font-exception) AND GPL-2.0-only
@@ -28,9 +28,9 @@ URL:            http://librecad.org/
 Source:         https://github.com/LibreCAD/LibreCAD/archive/v%version.tar.gz
 # Version is actually 8, not 3 (it is 3 in the filename due to how MediaWiki
 # works -- see http://wiki.librecad.org/index.php/File:Architect3-LCAD.zip)
-Source2:        https://wiki.librecad.org/images/d/d9/Architect3-LCAD.zip
-Source3:        https://wiki.librecad.org/images/7/70/Electronics3-LCAD.zip
-Source4:        https://wiki.librecad.org/images/9/9d/Electrical1-LCAD.zip
+Source2:        https://dokuwiki.librecad.org/lib/exe/fetch.php/partlibs:architect3-lcad.zip#/architect3-lcad.zip
+Source3:        https://dokuwiki.librecad.org/lib/exe/fetch.php/partlibs:electronics3-lcad.zip#/electronics3-lcad.zip
+Source4:        https://dokuwiki.librecad.org/lib/exe/fetch.php/partlibs:electrical1-lcad.zip#/electrical1-lcad.zip
 Source10:       ttf2lff.1
 Source20:       %name-rpmlintrc
 Patch4:         librecad-no-date.diff

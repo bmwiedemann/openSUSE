@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Aug 31 07:10:52 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
+
+- Update to release 2.2.1.5:
+  * Issue #2501: update translations by @dxli in #2502
+  * 2.2.1: update translations by @dxli in #2512
+  * 2.2.1 fixes by @dxli in #2525
+  * 2.2.1 Translations by @dxli in #2531
+  * Add crash handler by @dxli in #2542
+  * windows translation qm files by @dxli in #2453
+  * Issue #2447: fixed a crash by block insertion by @dxli in #2454
+  * Issue #2451 : incorrect SCMREVISION for windows packaging by @dxli in #2474
+  * Issue #2462: block insertion fixes by @dxli in #2480
+  * 2.2.1.4 preparation by @dxli in #2487
+- fix URL of libs, they moved to dokuwiki
+
+-------------------------------------------------------------------
 Tue Feb 17 07:42:12 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
 
 - Update to release 2.2.1.3:
