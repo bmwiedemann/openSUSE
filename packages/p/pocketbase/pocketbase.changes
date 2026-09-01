@@ -1,4 +1,98 @@
 -------------------------------------------------------------------
+Mon Aug 31 15:49:55 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 0.40.1:
+  * Fixed regressions related to the encoding/json/v2 update:
+    + Allow mangling invalid UTF-8 characters when serializing JSON
+      data
+    + Fixed OAuth2 provider config merging incorrectly replacing the
+      entire slice
+- Update to version 0.40.0:
+  * Propagated console command errors and recovered panics to
+    app.Start(), enabling non-zero exit codes while retaining graceful
+    shutdown handling
+  * Added safer Content-Disposition quoting and the default
+    Cross-Origin-Opener-Policy response header
+  * Added Record.GetInt64(), Store.Keys(), log deletion API/UI, and a
+    configurable maximum saved Log.Data size
+  * Added low-level filesystem writer, creation, and deletion hooks
+  * Optimized backups to avoid transaction-locking the database
+  * Updated modernc.org/sqlite to 1.57.0 and enabled defensive mode
+  * Migrated to encoding/json/v2 and raised the minimum Go version to
+    1.27.0
+- Update to version 0.39.11:
+  * Fixed API preview examples and made minor UI improvements
+  * Updated golang.org/x dependencies
+- Update to version 0.39.10:
+  * Restored non-zero exits for panicking CLI commands
+  * Made minor UI improvements and updated modernc.org/sqlite to 1.55.0
+- Update to version 0.39.9:
+  * Fixed Shift+Click range selection in Firefox
+  * Updated goja and improved filter handling
+- Update to version 0.39.8:
+  * Reset the JSVM global $app override for pooled executors
+  * Improved number inputs and added Shift+Click range selection
+  * Updated golang.org/x dependencies and modernc.org/sqlite to 1.54.0
+- Update to version 0.39.7:
+  * Switched from go-ozzo/ozzo-validation to the trusted PocketBase fork
+  * Fixed imported collection fields access and View collection
+    validation
+  * Fixed unhandled panics in internal worker goroutines
+- Update to version 0.39.6:
+  * Added Cc/Bcc support to the development sendmail command
+  * Hardened Microsoft OAuth2 email extraction
+  * Updated goja and golang.org/x dependencies
+- Update to version 0.39.5:
+  * Improved long URL display and restored the fullscreen editor option
+  * Updated goja
+- Update to version 0.39.4:
+  * Relaxed redirectURL validation during OAuth2 code exchange
+  * Enabled sorting by implicit presentable relation fields
+  * Fixed minor UI issues and updated goja
+- Update to version 0.39.3:
+  * Fixed file maxSelect UI errors, modal save shortcuts, zero-valued
+    number validation, and field validation messages
+- Update to version 0.39.2:
+  * Fixed record sorting, invalid date input handling, and unnecessary
+    pb_hooks directory traversal
+  * Improved SQL console affected-row reporting
+  * Updated modernc.org/sqlite to 1.52.0
+- Update to version 0.39.1:
+  * Fixed multiple-select wrapping and superuser realtime data access
+  * Added panic recovery for cron jobs
+- Update to version 0.39.0:
+  * Added an SQL console under Settings > Debug
+  * Added automated-backup failure emails for superusers
+  * Improved log and record lists, labels, text contrast, OAuth2 option
+    fields, and default email templates
+  * Updated modernc.org/sqlite to 1.51.0
+- Update to version 0.38.2:
+  * Added an absolute realtime connection timeout and additional client
+    IP checks
+  * Preserved record-list pagination on record updates
+  * Updated golang.org/x packages for security fixes
+- Update to version 0.38.1:
+  * Improved superuser IP confirmation and experimental UI extensions
+  * Invalidated realtime authentication after credential changes
+  * Fixed collection index updates and improved UI error reporting
+  * Updated modernc.org/sqlite to 1.50.1
+- Update to version 0.38.0:
+  * Fixed log pagination, media CSP, and Office document content types
+  * Added cross-process runtime state synchronization
+  * Added superuser and rate-limit IP/CIDR configuration
+- Update to version 0.37.5:
+  * Fixed password-field change detection
+  * Improved date labels, trusted proxy settings, relation expansion,
+    and email-change checks
+- Update to version 0.37.4:
+  * Improved backup, record upsert, and preview UI behavior
+  * Fixed SMTP IPv6 addresses and autocomplete selection
+  * Added ghupdate.BaseURL and hardened authentication timing behavior
+  * Updated OAuth2 providers and fixed a pre-hijacking account-linking
+    vulnerability
+  * Updated Go and npm dependencies
+
+-------------------------------------------------------------------
 Thu Apr 23 23:26:56 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Disabled "environment-sensitive" tests

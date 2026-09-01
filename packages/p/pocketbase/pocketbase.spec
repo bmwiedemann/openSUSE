@@ -18,7 +18,7 @@
 
 
 Name:           pocketbase
-Version:        0.37.3
+Version:        0.40.1
 Release:        0
 Summary:        Open Source realtime backend
 License:        MIT
@@ -26,6 +26,7 @@ URL:            https://github.com/pocketbase/pocketbase
 Source0:        https://github.com/pocketbase/pocketbase/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 BuildRequires:  golang-packaging
+BuildRequires:  golang(API) >= 1.27
 BuildRequires:  zstd
 # 32-bit builds are not supported upstream
 ExcludeArch:    %{ix86} %{arm32}
