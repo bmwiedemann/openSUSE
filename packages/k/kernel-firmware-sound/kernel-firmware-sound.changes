@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Tue Aug 25 16:00:42 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260825 (git commit 0305399a8783):
+  * cirrus: cs35l54: Add Cirrus CS35L54 firmware mappings for an HP laptop
+  * linux-firmware: Upload firmware for tas2573 stereo
+  * intel: avs: Add AudioDSP base firmware for LKF platforms
+  * intel: avs: Update AudioDSP firmware for APL-based platforms
+  * intel: avs: Update AudioDSP firmware for SKL-based platforms
+  * intel: catpt: Update AudioDSP firmware for BDW platforms
+
+-------------------------------------------------------------------
+Fri Aug 21 06:06:46 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260820 (git commit f2ab551dea14):
+  * cirrus: cs42l45: Add CS42L45 SDCA codec firmware for Samsung laptops
+  * cirrus: cs42l45: Add new SSIDs for Dell laptops
+  * cirrus: cs35l56: Add firmware for Cirrus Amps for an ASUS laptop
+  * cirrus: cs35l56: Add Cirrus CS35L56 firmware mappings for some Dell laptops
+
+-------------------------------------------------------------------
+Fri Aug 14 07:17:53 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260813 (git commit 984503d80fd6):
+  * cirrus: cs35l63: Add Cirrus CS35L63 firmware mappings for some Dell laptops
+
+-------------------------------------------------------------------
+Tue Aug  4 05:49:29 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260803 (git commit 73b4d58aba76):
+  * linux-firmware: Add firmware for new project
+
+-------------------------------------------------------------------
+Sat Aug  1 07:01:51 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260731 (git commit a968c5c2962e):
+  * cirrus: cs35l57: Add firmware for Cirrus Amps for some Samsung laptops
+
+-------------------------------------------------------------------
+Thu Jul 30 09:11:43 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260728 (git commit 543b8f5f987c):
+  * linux-firmware: Add firmware for new soundwire projects
+
+-------------------------------------------------------------------
 Thu Jul  9 09:58:22 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260706 (git commit 2c35b1ed46f6):

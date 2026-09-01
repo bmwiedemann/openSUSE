@@ -498,4 +498,36 @@ After this PR, there will be a delete request for kernel-firmware.
 - Update aliases</comment>
     <requestid>1364849</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>26d941046f24cf1f08d6cb9715d69212</srcmd5>
+    <version>20260825</version>
+    <time>1788270352</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260825 (git commit 0305399a8783):
+  * cirrus: cs35l54: Add Cirrus CS35L54 firmware mappings for an HP laptop
+  * linux-firmware: Upload firmware for tas2573 stereo
+  * intel: avs: Add AudioDSP base firmware for LKF platforms
+  * intel: avs: Update AudioDSP firmware for APL-based platforms
+  * intel: avs: Update AudioDSP firmware for SKL-based platforms
+  * intel: catpt: Update AudioDSP firmware for BDW platforms
+
+- Update to version 20260820 (git commit f2ab551dea14):
+  * cirrus: cs42l45: Add CS42L45 SDCA codec firmware for Samsung laptops
+  * cirrus: cs42l45: Add new SSIDs for Dell laptops
+  * cirrus: cs35l56: Add firmware for Cirrus Amps for an ASUS laptop
+  * cirrus: cs35l56: Add Cirrus CS35L56 firmware mappings for some Dell laptops
+
+- Update to version 20260813 (git commit 984503d80fd6):
+  * cirrus: cs35l63: Add Cirrus CS35L63 firmware mappings for some Dell laptops
+
+- Update to version 20260803 (git commit 73b4d58aba76):
+  * linux-firmware: Add firmware for new project
+
+- Update to version 20260731 (git commit a968c5c2962e):
+  * cirrus: cs35l57: Add firmware for Cirrus Amps for some Samsung laptops
+
+- Update to version 20260728 (git commit 543b8f5f987c):
+  * linux-firmware: Add firmware for new soundwire projects</comment>
+    <requestid>1374916</requestid>
+  </revision>
 </revisionlist>
