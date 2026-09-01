@@ -28,9 +28,6 @@ Thu Jun 18 14:10:51 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
                     public dashboard query endpoint (bsc#1268868)
     CVE-2026-9029: Fix arbitrary code execution and information
                    disclosure via XSS in geomap panel (bsc#1272328)
-    CVE-2026-41607: Fix out-of-bounds read and potential
-                    information disclosure in Apache Thrift
-                    (bsc#1263289)
     CVE-2026-33814: Fix infinite loop in HTTP/2 transport by
                     updating golang.org/x/net (bsc#1265763)
     CVE-2026-8609: Fix pre-authentication DoS in the OAuth login
@@ -160,6 +157,7 @@ Mon May  4 14:29:36 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
   * Add 0008-Bump-github.com-apache-thrift.patch
 - CVE-2026-41607: Fix potential information disclosure in Apache
   Thrift (bsc#1263272)
+- CVE-2026-41606: Fix potential DoS in Apache Thrift (bsc#1263330)
 
 -------------------------------------------------------------------
 Thu Apr 30 13:52:41 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
