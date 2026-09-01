@@ -18,10 +18,10 @@
 
 %define cpan_name Sereal-Encoder
 Name:           perl-Sereal-Encoder
-Version:        5.6.0
+Version:        5.10.0
 Release:        0
-# 5.006 -> normalize -> 5.6.0
-%define cpan_version 5.006
+# 5.010 -> normalize -> 5.10.0
+%define cpan_version 5.010
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Binary serialization module for Perl (encoder part)
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -33,13 +33,13 @@ BuildRequires:  perl-macros
 BuildRequires:  perl(Devel::CheckLib) >= 1.160
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 7.0
 BuildRequires:  perl(ExtUtils::ParseXS) >= 2.21
-BuildRequires:  perl(Sereal::Decoder) >= 5.6
+BuildRequires:  perl(Sereal::Decoder) >= 5.10
 BuildRequires:  perl(Test::Deep)
 BuildRequires:  perl(Test::Differences)
 BuildRequires:  perl(Test::LongString)
 BuildRequires:  perl(Test::More) >= 0.88
 BuildRequires:  perl(Test::Warn)
-Requires:       perl(Sereal::Decoder) >= 5.6
+Requires:       perl(Sereal::Decoder) >= 5.10
 Provides:       perl(Sereal::Encoder) = %{version}
 Provides:       perl(Sereal::Encoder::Constants) = %{version}
 %undefine       __perllib_provides

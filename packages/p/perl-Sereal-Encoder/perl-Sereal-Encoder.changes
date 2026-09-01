@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Aug  6 07:52:35 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 5.10.0 (5.010)
+   see /usr/share/doc/packages/perl-Sereal-Encoder/Changes
+
+  5.010
+      * Released to match Decoder version.
+  5.009
+      * Only use Perl's C<$Config{ccflags}> when building bundled zstd on
+        AIX / IBM toolchains, or when C<SEREAL_ZSTD_USE_CONFIG_CCFLAGS> is
+        set. Other platforms now use the normal zstd build flags again.
+  5.008
+      * Released to match Decoder version.
+  5.007
+      * Use $Config{ccflags} to compile ztd with. Should fix AIX.
+        Thanks to Thomas Seeling for the suggestion.
+
+-------------------------------------------------------------------
 Thu May 21 10:05:38 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 5.6.0 (5.006)
