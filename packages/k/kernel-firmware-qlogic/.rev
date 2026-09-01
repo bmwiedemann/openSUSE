@@ -56,4 +56,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * Move firmware licenses to a LICENSES/ directory</comment>
     <requestid>1361044</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>dee295aa05679fa27eec06574185d2ad</srcmd5>
+    <version>20260731</version>
+    <time>1788270350</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260731 (git commit a968c5c2962e):
+  * qla2xxx: Add ql2900_fw.bin firmware for 29xx adapters</comment>
+    <requestid>1374914</requestid>
+  </revision>
 </revisionlist>
