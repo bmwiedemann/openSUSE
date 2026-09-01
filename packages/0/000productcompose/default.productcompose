@@ -224,6 +224,7 @@ packagesets:
    - bluez-cups # reason: dvd:patterns-gnome-gnome
    - bluez-firmware # reason: dvd:patterns-media-rest_cd_core
    - bluez-obexd # reason: dvd:patterns-gnome-gnome
+   - bluez-zsh-completion # reason: dvd:patterns-media-rest_dvd
    - bolt # reason: dvd:patterns-gnome-gnome
    - boost-license1_91_0 # reason: dvd:openSUSE-release
    - branding-openSUSE # reason: dvd:patterns-gnome-gnome
@@ -244,6 +245,7 @@ packagesets:
    - btrfsprogs-bash-completion # reason: dvd:patterns-media-rest_cd_core
    - btrfsprogs-udev-rules # reason: dvd:patterns-media-rest_cd_core
    - bubblewrap # reason: dvd:openSUSE-release
+   - bubblewrap-zsh-completion # reason: dvd:patterns-media-rest_dvd
    - busybox # reason: dvd:openSUSE-release
    - busybox-coreutils # reason: dvd:patterns-base-sw_management
    - busybox-diffutils # reason: dvd:openSUSE-release
@@ -277,12 +279,17 @@ packagesets:
    - chrony-pool-openSUSE # reason: dvd:patterns-gnome-gnome
    - cifs-utils # reason: dvd:patterns-gnome-gnome
    - clamav # reason: dvd:patterns-server-mail_server
+   - clang # reason: dvd:patterns-media-rest_dvd
+   - clang-tools # reason: dvd:patterns-media-rest_dvd
+   - clang23 # reason: dvd:patterns-media-rest_dvd
+   - clazy # reason: dvd:patterns-media-rest_dvd
    #-  clicfs not found on x86_64
    - clutter-gtk-lang # reason: dvd:patterns-xfce-xfce
    - clutter-lang # reason: dvd:patterns-xfce-xfce
    - cnf # reason: dvd:patterns-kde-kde
    - cnf-bash # reason: dvd:patterns-kde-kde
    - cnf-locale # reason: dvd:patterns-kde-kde
+   - cnf-zsh # reason: dvd:patterns-media-rest_dvd
    - cogl-lang # reason: dvd:patterns-xfce-xfce
    - colord # reason: dvd:patterns-media-rest_dvd
    - colord-color-profiles # reason: dvd:patterns-media-rest_dvd
@@ -299,6 +306,7 @@ packagesets:
    - cpio-mt # reason: dvd:patterns-gnome-gnome_yast
    - cpp # reason: dvd:patterns-kde-kde
    - cpp16 # reason: dvd:patterns-kde-kde
+   - cppcheck # reason: dvd:patterns-media-rest_dvd
    - cpupower # reason: dvd:patterns-kde-kde
    - cpupower-bash-completion # reason: dvd:patterns-kde-kde
    - cpupower-lang # reason: dvd:patterns-kde-kde
@@ -321,6 +329,7 @@ packagesets:
    - cups-pk-helper # reason: dvd:patterns-gnome-gnome
    - cups-pk-helper-lang # reason: dvd:patterns-gnome-gnome
    - curl # reason: dvd:patterns-kde-kde
+   - curl-zsh-completion # reason: dvd:patterns-media-rest_dvd
    - cyreal-lobster-cyrillic-fonts # reason: dvd:openSUSE-release
    - cyrus-sasl # reason: dvd:patterns-kde-kde
    - cyrus-sasl-crammd5 # reason: dvd:patterns-kde-kde
@@ -425,6 +434,7 @@ packagesets:
    - fd0ssh # reason: dvd:patterns-media-rest_cd_core
    - fdupes # reason: dvd:patterns-gnome-gnome_yast
    - feh # reason: dvd:patterns-kde-kde
+   - feh-zsh-completion # reason: dvd:patterns-media-rest_dvd
    - ffmpegthumbnailer # reason: dvd:patterns-xfce-xfce
    - ffmpegthumbs # reason: dvd:patterns-kde-kde
    - file # reason: dvd:openSUSE-release
@@ -438,12 +448,14 @@ packagesets:
    - firewalld # reason: dvd:patterns-kde-kde
    - firewalld-bash-completion # reason: dvd:patterns-kde-kde
    - firewalld-lang # reason: dvd:patterns-kde-kde
+   - firewalld-zsh-completion # reason: dvd:patterns-media-rest_dvd
    - fixmath # reason: dvd:openSUSE-release
    - flatpak # reason: dvd:patterns-kde-kde
    - flatpak-kcm6 # reason: dvd:patterns-kde-kde
    - flatpak-kcm6-lang # reason: dvd:patterns-kde-kde
    - flatpak-remote-flathub # reason: dvd:patterns-kde-kde
    - flatpak-selinux # reason: common_locks:expansion
+   - flatpak-zsh-completion # reason: dvd:patterns-media-rest_dvd
    - folks-data # reason: dvd:patterns-gnome-gnome
    - folks-lang # reason: dvd:patterns-gnome-gnome
    - fontconfig # reason: dvd:openSUSE-release
@@ -466,6 +478,7 @@ packagesets:
    - gawk # reason: dvd:openSUSE-release
    - gcab # reason: dvd:patterns-kde-kde
    - gcab-lang # reason: dvd:patterns-kde-kde
+   - gcc # reason: dvd:patterns-media-rest_dvd
    - gcc16 # reason: dvd:patterns-base-console
    - gcc16-locale # reason: dvd:patterns-base-console
    - gcin # reason: dvd:openSUSE-release
@@ -518,6 +531,7 @@ packagesets:
    - git-core # reason: dvd:patterns-media-rest_dvd
    - git-email # reason: dvd:patterns-media-rest_dvd
    - git-gui # reason: dvd:patterns-media-rest_dvd
+   - git-svn # reason: dvd:patterns-media-rest_dvd
    - git-web # reason: dvd:patterns-media-rest_dvd
    - gitk # reason: dvd:patterns-media-rest_dvd
    - gjs # reason: dvd:patterns-gnome-gnome
@@ -739,6 +753,9 @@ packagesets:
    - gzip # reason: dvd:patterns-kde-kde
    - hack-fonts # reason: dvd:patterns-kde-kde
    - hdparm # reason: dvd:patterns-kde-kde
+   - heaptrack # reason: dvd:patterns-media-rest_dvd
+   - heaptrack-gui # reason: dvd:patterns-media-rest_dvd
+   - heaptrack-lang # reason: dvd:patterns-media-rest_dvd
    - hicolor-icon-theme # reason: dvd:openSUSE-release
    - hicolor-icon-theme-branding-openSUSE # reason: dvd:patterns-gnome-gnome
    - hostname # reason: dvd:patterns-gnome-gnome
@@ -884,6 +901,10 @@ packagesets:
    - kdepim-runtime-lang # reason: dvd:patterns-kde-kde
    - kdeplasma6-addons # reason: dvd:patterns-kde-kde
    - kdeplasma6-addons-lang # reason: dvd:patterns-kde-kde
+   - kdevelop # reason: dvd:patterns-media-rest_dvd
+   - kdevelop-lang # reason: dvd:patterns-media-rest_dvd
+   - kdevplatform # reason: dvd:patterns-media-rest_dvd
+   - kdevplatform-lang # reason: dvd:patterns-media-rest_dvd
    - kdialog # reason: dvd:patterns-kde-kde
    - kdialog-lang # reason: dvd:patterns-kde-kde
    - kdoctools # reason: dvd:patterns-kde-kde
@@ -1179,6 +1200,7 @@ packagesets:
    - libImlib2-1 # reason: dvd:patterns-kde-kde
    - libJudy1 # reason: dvd:patterns-kde-kde
    - libKCddb5 # reason: dvd:patterns-kde-kde
+   - libKChart2 # reason: dvd:patterns-media-rest_dvd
    - libKDEGames6 # reason: dvd:patterns-kde-kde
    - libKDSoapWSDiscoveryClient0 # reason: dvd:patterns-kde-kde
    - libKDcrawQt6-5 # reason: dvd:patterns-kde-kde
@@ -1227,6 +1249,7 @@ packagesets:
    - libKF5Style5 # reason: dvd:patterns-kde-kde
    - libKF5TextWidgets5 # reason: dvd:patterns-kde-kde
    - libKF5TextWidgets5-lang # reason: dvd:patterns-kde-kde
+   - libKF5ThreadWeaver5 # reason: dvd:patterns-media-rest_dvd
    - libKF5Wallet5 # reason: dvd:patterns-kde-kde
    - libKF5WidgetsAddons5 # reason: dvd:patterns-kde-kde
    - libKF5WidgetsAddons5-lang # reason: dvd:patterns-kde-kde
@@ -1430,7 +1453,6 @@ packagesets:
    - libKirigamiAddonsStatefulApp6 # reason: dvd:patterns-kde-kde
    - libKirigamiApp6 # reason: dvd:patterns-kde-kde
    - libKirigamiPlatform6 # reason: dvd:patterns-kde-kde
-   - libLLVM22 # reason: dvd:postgresql-contrib
    - libLLVM23 # reason: dvd:openSUSE-release
    - libLayerShellQtInterface6 # reason: dvd:patterns-kde-kde
    - libLerc4 # reason: dvd:openSUSE-release
@@ -1473,6 +1495,7 @@ packagesets:
    - libQt6DBus6 # reason: dvd:openSUSE-release
    - libQt6Designer6 # reason: dvd:patterns-kde-kde
    - libQt6Gui6 # reason: dvd:openSUSE-release
+   - libQt6Help6 # reason: dvd:patterns-media-rest_dvd
    - libQt6HunspellInputMethod6 # reason: dvd:patterns-kde-kde
    - libQt6LabsAnimation6 # reason: dvd:openSUSE-release
    - libQt6LabsFolderListModel6 # reason: dvd:openSUSE-release
@@ -1729,6 +1752,8 @@ packagesets:
    - libboost_iostreams1_91_0-x86-64-v3 # reason: dvd:patterns-media-rest_dvd
    - libboost_locale1_91_0 # reason: dvd:openSUSE-release
    - libboost_locale1_91_0-x86-64-v3 # reason: dvd:patterns-media-rest_dvd
+   - libboost_program_options1_91_0 # reason: dvd:patterns-media-rest_dvd
+   - libboost_program_options1_91_0-x86-64-v3 # reason: dvd:patterns-media-rest_dvd
    - libboost_python-py3-1_91_0 # reason: dvd:patterns-kde-kde_edutainment
    - libboost_python-py3-1_91_0-x86-64-v3 # reason: dvd:patterns-media-rest_dvd
    - libboost_thread1_91_0 # reason: dvd:openSUSE-release
@@ -1792,6 +1817,9 @@ packagesets:
    - libcjson1 # reason: dvd:openSUSE-release
    - libclamav12 # reason: dvd:patterns-server-mail_server
    - libclammspack0 # reason: dvd:patterns-server-mail_server
+   - libclang-cpp23 # reason: dvd:patterns-media-rest_dvd
+   - libclang13 # reason: dvd:patterns-media-rest_dvd
+   - libclang_rt23 # reason: dvd:patterns-media-rest_dvd
    - libclastfm0 # reason: dvd:patterns-media-rest_dvd
    - libcloudproviders0 # reason: dvd:openSUSE-release
    - libclucene-contribs-lib1 # reason: dvd:openSUSE-release
@@ -2223,6 +2251,7 @@ packagesets:
    - libkbdfile1 # reason: dvd:openSUSE-release
    - libkcddb-qt6 # reason: dvd:patterns-kde-kde
    - libkcddb-qt6-lang # reason: dvd:patterns-kde-kde
+   - libkchart-lang # reason: dvd:patterns-media-rest_dvd
    - libkdcraw-qt6 # reason: dvd:patterns-kde-kde
    - libkdecorations3-6 # reason: dvd:patterns-kde-kde
    - libkdecorations3-6-lang # reason: dvd:patterns-kde-kde
@@ -2232,6 +2261,7 @@ packagesets:
    - libkdegames-lang # reason: dvd:patterns-kde-kde
    - libkdepim # reason: dvd:patterns-kde-kde
    - libkdepim-lang # reason: dvd:patterns-kde-kde
+   - libkdevplatform66 # reason: dvd:patterns-media-rest_dvd
    - libkdsingleapplication-qt6-1_2 # reason: dvd:patterns-kde-kde
    - libkdsoap-qt6-2 # reason: dvd:patterns-kde-kde
    - libkerfuffle26 # reason: dvd:patterns-kde-kde
@@ -2643,6 +2673,7 @@ packagesets:
    - libsensors4 # reason: dvd:patterns-gnome-gnome
    - libsepol2 # reason: dvd:openSUSE-release
    - libserd-0-0 # reason: dvd:openSUSE-release
+   - libserf-1-1 # reason: dvd:patterns-media-rest_dvd
    - libsframe2 # reason: dvd:patterns-base-console
    - libsgutils2-1_48-2 # reason: dvd:patterns-kde-kde
    - libsha1detectcoll1 # reason: dvd:patterns-media-rest_dvd
@@ -2704,8 +2735,10 @@ packagesets:
    - libsss_idmap0 # reason: dvd:patterns-server-directory_server
    - libstaroffice-0_0-0 # reason: dvd:openSUSE-release
    - libstartup-notification-1-0 # reason: dvd:patterns-gnome-gnome
+   - libstdc++-devel # reason: dvd:patterns-media-rest_dvd
    - libstdc++6 # reason: dvd:openSUSE-release
    - libstdc++6-32bit # reason: dvd:patterns-media-rest_dvd
+   - libstdc++6-devel-gcc16 # reason: dvd:patterns-media-rest_dvd
    - libstdc++6-locale # reason: dvd:openSUSE-release
    - libstdc++6-pp # reason: dvd:patterns-kde-kde
    - libstdc++6-pp-32bit # reason: dvd:patterns-media-rest_dvd
@@ -2716,6 +2749,8 @@ packagesets:
    - libstorage-ng1 # reason: dvd:patterns-kde-kde
    - libsubid6 # reason: dvd:patterns-gnome-gnome
    - libsuitesparseconfig7 # reason: dvd:patterns-gnome-gnome
+   - libsvn_auth_gnome_keyring-1-0 # reason: dvd:patterns-media-rest_dvd
+   - libsvn_auth_kwallet-1-0 # reason: dvd:patterns-media-rest_dvd
    - libsvrcore0 # reason: dvd:patterns-server-directory_server
    - libswresample6 # reason: dvd:openSUSE-release
    - libswscale9 # reason: dvd:openSUSE-release
@@ -2795,6 +2830,7 @@ packagesets:
    - libusbredirparser1 # reason: dvd:patterns-gnome-gnome
    - libusdm0 # reason: dvd:patterns-media-rest_dvd
    - libutf8_range-34_2_0 # reason: dvd:patterns-gnome-gnome
+   - libutf8proc3 # reason: dvd:patterns-media-rest_dvd
    - libuuid1 # reason: dvd:openSUSE-release
    - libuv1 # reason: dvd:patterns-kde-kde
    - libv4l # reason: dvd:patterns-gnome-gnome
@@ -2988,6 +3024,7 @@ packagesets:
    - lightsoff-lang # reason: dvd:patterns-gnome-gnome
    - linux-glibc-devel # reason: dvd:patterns-base-console
    - lklug-fonts # reason: dvd:patterns-media-rest_dvd
+   - llvm23-gold # reason: dvd:patterns-media-rest_dvd
    - localsearch # reason: dvd:patterns-gnome-gnome
    - localsearch-lang # reason: dvd:patterns-gnome-gnome
    - login_defs # reason: dvd:openSUSE-release
@@ -3044,6 +3081,8 @@ packagesets:
    - memtest86+ # reason: dvd:patterns-media-rest_cd_core
    - menulibre # reason: dvd:patterns-xfce-xfce
    - menulibre-lang # reason: dvd:patterns-xfce-xfce
+   - meson # reason: dvd:patterns-media-rest_dvd
+   - meson-vim # reason: dvd:patterns-media-rest_dvd
    - messagelib # reason: dvd:patterns-kde-kde
    - messagelib-lang # reason: dvd:patterns-kde-kde
    - metamail # reason: dvd:patterns-kde-kde
@@ -3122,6 +3161,7 @@ packagesets:
    - nfs-client # reason: dvd:patterns-server-file_server
    - nfs-kernel-server # reason: dvd:patterns-server-file_server
    - nftables # reason: dvd:patterns-gnome-gnome
+   - ninja # reason: dvd:patterns-media-rest_dvd
    - nkf # reason: dvd:openSUSE-release
    - notification-daemon # reason: dvd:openSUSE-release
    - notification-daemon-lang # reason: dvd:openSUSE-release
@@ -3139,6 +3179,7 @@ packagesets:
    - nvidia-open-driver-G07-signed-kmp-default # reason: common_locks:expansion
    - nvme-cli # reason: dvd:patterns-media-rest_dvd
    - nvme-cli-bash-completion # reason: dvd:patterns-media-rest_dvd
+   - nvme-cli-zsh-completion # reason: dvd:patterns-media-rest_dvd
    - obex-data-server # reason: dvd:patterns-xfce-xfce
    - ocean-sound-theme6 # reason: dvd:patterns-kde-kde
    - ofl # reason: dvd:patterns-media-rest_cd_core
@@ -3495,6 +3536,7 @@ packagesets:
    - powerdevil6 # reason: dvd:patterns-kde-kde
    - powerdevil6-lang # reason: dvd:patterns-kde-kde
    - powerprofilesctl-bash-completion # reason: dvd:patterns-kde-kde
+   - powerprofilesctl-zsh-completion # reason: dvd:patterns-media-rest_dvd
    - ppp # reason: dvd:patterns-gnome-gnome
    - pptp # reason: dvd:patterns-gnome-gnome
    - pragha # reason: dvd:patterns-xfce-xfce
@@ -3537,7 +3579,7 @@ packagesets:
    - python313-Pillow # reason: dvd:inkscape
    - python313-PySocks # reason: dvd:patterns-gnome-gnome
    - python313-PyYAML # reason: dvd:salt-master
-   - python313-Pygments # reason: dvd:salt-master
+   - python313-Pygments # reason: dvd:patterns-media-rest_dvd
    - python313-Twisted # reason: dvd:salt-master
    - python313-Twisted-tls # reason: dvd:salt-master
    - python313-aioquic # reason: dvd:salt-master
@@ -3874,6 +3916,9 @@ packagesets:
    - step-lang # reason: dvd:patterns-kde-kde_edutainment
    - stix-fonts # reason: dvd:patterns-kde-kde
    - strace # reason: dvd:patterns-kde-kde
+   - subversion # reason: dvd:patterns-media-rest_dvd
+   - subversion-bash-completion # reason: dvd:patterns-media-rest_dvd
+   - subversion-perl # reason: dvd:patterns-media-rest_dvd
    - sudo # reason: dvd:patterns-kde-kde
    - sudo-plugin-python # reason: dvd:patterns-kde-kde
    - sudo-policy-wheel-auth-self # reason: dvd:patterns-media-rest_dvd
@@ -4106,6 +4151,7 @@ packagesets:
    - udisks2 # reason: dvd:grub2
    - udisks2-bash-completion # reason: dvd:patterns-kde-kde
    - udisks2-lang # reason: dvd:grub2
+   - udisks2-zsh-completion # reason: dvd:patterns-media-rest_dvd
    - umbrello # reason: dvd:patterns-media-rest_dvd
    - umbrello-lang # reason: dvd:patterns-media-rest_dvd
    - un-fonts # reason: dvd:patterns-media-rest_dvd
@@ -4177,6 +4223,7 @@ packagesets:
    - wireplumber # reason: dvd:openSUSE-release
    - wireplumber-bash-completion # reason: dvd:patterns-kde-kde
    - wireplumber-lang # reason: dvd:openSUSE-release
+   - wireplumber-zsh-completion # reason: dvd:patterns-media-rest_dvd
    - wmctrl # reason: dvd:patterns-kde-kde
    - wol # reason: dvd:patterns-kde-kde
    - wol-lang # reason: dvd:patterns-kde-kde
@@ -4507,6 +4554,7 @@ packagesets:
    - zip # reason: dvd:patterns-media-rest_cd_core
    - zisofs-tools # reason: dvd:patterns-gnome-gnome
    - zoo # reason: dvd:patterns-server-mail_server
+   - zsh # reason: dvd:patterns-media-rest_dvd
    - zstd # reason: dvd:patterns-gnome-gnome_yast
    - zypper # reason: dvd:patterns-gnome-gnome
    - zypper-log # reason: dvd:patterns-gnome-gnome
