@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Fri Aug 28 07:17:12 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- Update to 0.6.2.8:
+  * Free the RSA factor/CRT `BIGNUM`s and reject an incomplete private-key parameter set on JWK
+    import (OpenSSL >= 1.1) instead of silently dropping and leaking them; adds a regression test
+  * Take the JWS import copy-helper length as `size_t` so the (deliberately `size_t`) compact
+    serialization dot-scan offsets are no longer truncated back through `int`
+  * Parse the shared `"unprotected"` header in `cjose_jwe_import_json` (it was silently dropped),
+    restoring symmetry with `cjose_jwe_export_json`
+  * Decode/encode a top-level scalar JSON value in `cjose_header_set_raw` / `cjose_header_get_raw`
+    (`JSON_DECODE_ANY` / `JSON_ENCODE_ANY`), so e.g. an RFC 7797 `"b64":false` header round-trips
+  * Propagate `_cjose_jws_build_cser` failure out of `cjose_jws_export` (it returned `true` with a
+    possibly-`NULL` `*compact`) and set `err` when the serialization components are missing
+  * Clear `err` on a successful `alg:"none"` `cjose_jws_import` so it is not left holding the
+    `INVALID_ARG` recorded while rejecting `none` as a signing algorithm
+  * Free the RSA `BIGNUM`s if `RSA_set0_key` is refused, and free the `RSA` in `_RSA_new` when the
+    JWK allocation fails, closing two out-of-memory leaks on the RSA key path (OpenSSL >= 1.1)
+  * Free the temporary string in `_cjose_json_stringn` when `json_string` fails (jansson <= 2.6)
+  * Guard the base64 encode size calculation against `size_t` overflow, matching the decode side
+  * Reject an empty `"crit"` header list in `_cjose_header_validate_crit` (RFC 7515 section 4.1.11)
+  * Skip the zeroing `memset` in `_cjose_jwe_malloc` for a zero-byte request (`memset(NULL, 0, 0)`
+    is undefined behaviour if `malloc(0)` returned NULL)
+  * Drop a duplicated `enc_iv` base64url conversion in `_cjose_convert_to_base64` (no-op cleanup)
+  * Size the AES-CBC plaintext buffer in `size_t` to avoid a signed-`int` overflow near `INT_MAX`
+  * Drop a dead store of the end pointer after the final write in `concatkdf` otherinfo assembly
+  * Run the base64 decode length sanity check before publishing the output pointer, so its
+    (currently unreachable) failure path cannot leave `*output` dangling at freed memory
+  * Lower-bound the `kty` argument in `cjose_jwk_name_for_kty` so a value below `CJOSE_JWK_KTY_RSA`
+    cannot index the key-type name table out of bounds
+  * Correct the documented contract of `cjose_const_memcmp` (equal/not-equal, not orde
+  * Avoid a NULL dereference of the optional `cjose_err` in ECDH-ES ConcatKDF otherinfo creation; adds a regression test
+  * Check the per-block hash allocation in `cjose_concatkdf_derive`
+  * NUL-terminate the JWK `kid` without over-reading the source buffer
+  * Cleanse the JWS HMAC digest buffer before reallocation
+  * Make the JWE content-cipher (`enc`) dispatch mutually exclusive
+  * Cleanse the per-iteration digest buffer (derived key material) in `cjose_concatkdf_derive`
+  * Cleanse the base64url-encoded private key material on the EC and oct JWK export paths
+  * Cleanse the decrypted JWE plaintext buffer on release and reuse (incl. unauthenticated
+    plaintext left behind by a failed AES-GCM tag check)
+  * Validate the caller-supplied IV length on the JWE encrypt path (12 bytes for AES-GCM,
+    16 for AES-CBC-HMAC), mirroring the decrypt-side checks; adds a regression test
+  * Require the RSA-decrypted CEK length to match the `enc` keysize and the encrypted key
+    segment to be exactly the modulus size; adds a regression test
+  * Use `size_t` for the dot-scan offsets in `cjose_jws_import` (truncated for >2GiB input)
+  * Check the result of `json_object_set_new` in `cjose_header_set` / `cjose_header_set_raw`
+  * Bounds-check the error-message table in `cjose_err_message` and render OpenSSL error
+    strings into a thread-local buffer instead of the shared static one
+  * Validate the JWS ECDSA signature length against the key's curve before splitting it into
+    R || S, rejecting non-canonical (e.g. trailing-byte-padded) signatures that the
+    `sig_len / 2` split would otherwise accept (RFC 7518 section 3.4); adds a regression test
+  * Avoid an unsigned underflow of the remaining-bytes counter on the final block of
+    `cjose_concatkdf_derive`
+  * Make the JWE CEK key-size (`enc`) selection mutually exclusive and reject an unrecognized
+    `enc` instead of deriving a zero-length CEK
+  * Fix EVP_CIPHER_CTX leak in AES-CBC content encryption on authentication-tag failure
+  * Avoid NULL dereference of the optional `cjose_err` in ECDH-ES key decryption
+  * Use a constant-time comparison for the multi-recipient CEK consistency check
+  * Cleanse private key material (RSA/EC/oct) on JWK import and export, and fix a leak of the
+    base64url buffer in EC private-key export
+  * Check the ephemeral-key allocation in ECDH key derivation
+  * Use integer arithmetic (instead of floating-point) for the base64url length check on
+    imported JWK fields
+  * Harden JWS EC signature reconstruction against allocation failures (NULL checks on
+    ECDSA_SIG_new and BN_new)
+  * Enforce the RFC 7518 minimum HMAC key length (key >= hash size) for JWS sign/verify
+  * Fix heap buffer overflow in AES key unwrap by validating the encrypted_key length before AES_unwrap_key
+  * Fix functions that rely on nonportable malloc behaviour; closes #29; thanks @kirill-shevtsov
+  * Check ECDH secret allocation result
+  * Check base64 decode length bounds
+  * Guard JWK retain count overflow
+  * Enforce JOSE IV lengths
+  * Check JOSE algorithms against key types
+  * Validate critical JOSE headers
+  * Cleanse sensitive buffers before release
+  * Guard JWE buffer length calculations
+  * Use OpenSSL constant-time comparisons
+  * Validate EC inputs before key agreement
+  * Fix JWS import allocation handling
+
+-------------------------------------------------------------------
 Tue Aug 12 14:14:19 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to 0.6.2.4:
