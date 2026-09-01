@@ -1830,4 +1830,41 @@ eplacement for google-api-python-client, follow our naming convention</comment>
     <comment></comment>
     <requestid>1364522</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>dd97301320ac6b765f9937d71c47650b</srcmd5>
+    <version>2.200.0</version>
+    <time>1788270522</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.200.0:
+  * Drop support for Python 3.7-3.9
+  * **accesscontextmanager:** Update the api
+  * **admin:** Update the api
+  * **agentidentity:** Update the api
+  * **agentregistry:** Update the api
+  * **aiplatform:** Update the api
+  * **alloydb:** Update the api
+  * **analyticshub:** Update the api
+  * **androiddeviceprovisioning:** Update the api
+  * **androidenterprise:** Update the api
+  * **androidmanagement:** Update the api
+  * **androidpublisher:** Update the api
+  * **apigee:** Update the api
+  * **apihub:** Update the api
+  * **apikeys:** Update the api
+  * **appengine:** Update the api
+  * **artifactregistry:** Update the api
+  * **assuredworkloads:** Update the api
+  * **authorizedbuyersmarketplace:** Update the api
+  * **backupdr:** Update the api
+  * **batch:** Update the api
+  * **beyondcorp:** Update the api
+  * **biglake:** Update the api
+  * **bigqueryconnection:** Update the api
+  * **bigquerydatatransfer:** Update the api
+  * **bigqueryreservation:** Update the api
+  * **bigquery:** Update the api
+  * **bigtableadmin:** Update the api
+  * **calendar:** Update the api</comment>
+    <requestid>1374991</requestid>
+  </revision>
 </revisionlist>

@@ -18,12 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-api-python-client
-Version:        2.198.0
+Version:        2.200.0
 Release:        0
 Summary:        Google APIs Python Client
 License:        Apache-2.0
 URL:            https://github.com/google/google-api-python-client
 Source:         https://files.pythonhosted.org/packages/source/g/google_api_python_client/google_api_python_client-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module google-api-core >= 1.31.5}
 BuildRequires:  %{python_module google-auth >= 1.32.0}
 BuildRequires:  %{python_module google-auth-httplib2 >= 0.2.0}
@@ -31,6 +32,7 @@ BuildRequires:  %{python_module httplib2 >= 0.19.0}
 BuildRequires:  %{python_module parameterized}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module uritemplate  >= 3.0.1}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
