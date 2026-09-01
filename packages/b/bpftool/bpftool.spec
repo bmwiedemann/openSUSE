@@ -29,11 +29,11 @@ BuildRequires:  binutils-devel
 # Needed for compiling included BPF program (i.e. skeletons)
 BuildRequires:  clang%{product_libs_llvm_ver}
 BuildRequires:  docutils
-BuildRequires:  libcap-devel
 BuildRequires:  libelf-devel
-BuildRequires:  libzstd-devel
 # llvm-strip is needed for the included BPF program (i.e. skeletons)
 BuildRequires:  llvm%{product_libs_llvm_ver}
+BuildRequires:  pkgconfig(libcap)
+BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(openssl)
 
 %description
@@ -68,8 +68,8 @@ export CFLAGS="%{optflags}"
     man
 
 %install
-make -C src  V=1 install DESTDIR=%{buildroot} prefix=%{_prefix} mandir=%{_mandir}
-make -C docs V=1 install DESTDIR=%{buildroot} prefix=%{_prefix} mandir=%{_mandir}
+%make_install -C src V=1 prefix=%{_prefix} mandir=%{_mandir}
+%make_install -C docs V=1 prefix=%{_prefix} mandir=%{_mandir}
 
 %files
 %license LICENSE LICENSE.BSD-2-Clause LICENSE.GPL-2.0

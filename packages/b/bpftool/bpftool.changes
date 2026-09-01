@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 27 06:22:01 UTC 2026 - Hoyeon Lee <hoyeon.lee@suse.com>
+
+- Use pkgconfig() dependencies, and %make_install
+
+-------------------------------------------------------------------
 Mon Mar 23 11:30:24 UTC 2026 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
 
 - Update to version 7.7.0:
