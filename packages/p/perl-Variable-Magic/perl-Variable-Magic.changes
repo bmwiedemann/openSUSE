@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Aug 21 05:53:29 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.650.0 (0.65)
+   see /usr/share/doc/packages/perl-Variable-Magic/Changes
+
+  0.65    2026-08-20 14:20 UTC
+          + Chg : The 'delete' callback for hashes will now correctly be fired in
+                  void context. VMG_COMPAT_HASH_DELETE_NOUVAR_VOID is now always
+                  set to false. This is a (good) side effect of the following fix.
+          + Fix : [RT #180372] Test failures under perl v5.45.2
+                  Thanks Lukas Mai for reporting and providing a fix.
+          + Upd : AI contributions are not welcomed.
+
+-------------------------------------------------------------------
 Fri Mar 22 16:40:36 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.64
