@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep 01 13:11:32 UTC 2026 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 10.0.3:
+  * Prepare v10.0.3
+  * seat: Fix NULL pointer dereference in seat_monitor_hotplug_dev
+  * Fix use-after-free crash in seat_go_foreground
+  * seat: Fix use after free in kmscon_seat_remove_video()
+- Drop patches, now upstream:
+  * 0001-seat-Fix-use-after-free-in-kmscon_seat_remove_video.patch
+
+-------------------------------------------------------------------
 Fri Aug 21 07:50:06 UTC 2026 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 10.0.2:
