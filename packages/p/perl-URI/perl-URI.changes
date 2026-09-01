@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Aug 20 05:49:40 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 5.360.0 (5.36)
+   see /usr/share/doc/packages/perl-URI/Changes
+
+  5.36      2026-08-19 19:37:22Z
+      - Apply Unicode NFC normalization in URI::_idna nameprep so IDNA host
+        encoding matches other clients instead of emitting a non-standard,
+        non-round-tripping A-label [CVE-2026-19953] (reported by Naseeb Dangi,
+        @naseeb0) (GH#191)
+
+-------------------------------------------------------------------
 Mon Jun 15 11:25:31 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 5.350.0 (5.35)

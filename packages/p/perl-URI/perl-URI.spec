@@ -18,10 +18,10 @@
 
 %define cpan_name URI
 Name:           perl-URI
-Version:        5.350.0
+Version:        5.360.0
 Release:        0
-# 5.35 -> normalize -> 5.350.0
-%define cpan_version 5.35
+# 5.36 -> normalize -> 5.360.0
+%define cpan_version 5.36
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Uniform Resource Identifiers (absolute and relative)
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -32,7 +32,6 @@ BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(MIME::Base32)
-BuildRequires:  perl(Test::Fatal)
 BuildRequires:  perl(Test::More) >= 0.96
 BuildRequires:  perl(Test::Needs)
 BuildRequires:  perl(Test::Warnings)

@@ -475,4 +475,18 @@
       - Strip leading zeros from port numbers in canonical URIs (GH#69) (GH#162)</comment>
     <requestid>1360005</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>88c4df80365c8889edf5cbef19a92888</srcmd5>
+    <version>5.360.0</version>
+    <time>1788270405</time>
+    <user>anag_factory</user>
+    <comment>- updated to 5.360.0 (5.36)
+   see /usr/share/doc/packages/perl-URI/Changes
+  5.36      2026-08-19 19:37:22Z
+      - Apply Unicode NFC normalization in URI::_idna nameprep so IDNA host
+        encoding matches other clients instead of emitting a non-standard,
+        non-round-tripping A-label [CVE-2026-19953] (reported by Naseeb Dangi,
+        @naseeb0) (GH#191)</comment>
+    <requestid>1374861</requestid>
+  </revision>
 </revisionlist>
