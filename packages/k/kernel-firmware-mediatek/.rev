@@ -402,4 +402,20 @@ After this PR, there will be a delete request for kernel-firmware.
 - Update aliases</comment>
     <requestid>1364844</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>4f8cd2bc6eae1078d0120fc76cf11986</srcmd5>
+    <version>20260825</version>
+    <time>1788270347</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260825 (git commit 0305399a8783):
+  * mediatek MT7925: update bluetooth firmware to 20260813113236
+  * linux-firmware: update firmware for MT7925 WiFi device
+
+- Update to version 20260813 (git commit 984503d80fd6):
+  * linux-firmware: update firmware for MT7922 WiFi device
+
+- Update to version 20260805 (git commit 31883adc3365):
+  * mediatek MT7922: update bluetooth firmware to 20260724143815</comment>
+    <requestid>1374911</requestid>
+  </revision>
 </revisionlist>
