@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 31 16:26:00 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
+
+- fix access permissions of rpmdb
+
+-------------------------------------------------------------------
 Tue Aug 25 09:17:55 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
 
 - First version of the KubeVirt cdi-apiserver 1.66 BCI
