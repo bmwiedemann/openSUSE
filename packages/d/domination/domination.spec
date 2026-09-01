@@ -17,7 +17,7 @@
 
 
 Name:           domination
-Version:        1.3.4
+Version:        1.3.5
 Release:        0
 Summary:        Board game that is a bit like the well known game Risk
 License:        GPL-3.0-only
