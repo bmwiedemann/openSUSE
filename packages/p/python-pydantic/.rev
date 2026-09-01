@@ -714,4 +714,18 @@
   * Support changes required by ruff 0.16.</comment>
     <requestid>1368260</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>c9a6cc9e2320a8daaeefdcefd145cd3c</srcmd5>
+    <version>2.13.5</version>
+    <time>1788270336</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.13.5:
+  * Allow reuse of validators when plugins are set by @Viicos in
+  * Fix missing GC traversal on some `pydantic-core` struct
+    fields by @Viicos in #13624
+  * Fix missing GC traversal in `pydantic-core` for
+    `GeneralFieldsSerializer` by @Viicos in #13629
+  * Count validated model fields once in smart unions by @tamird</comment>
+    <requestid>1374900</requestid>
+  </revision>
 </revisionlist>

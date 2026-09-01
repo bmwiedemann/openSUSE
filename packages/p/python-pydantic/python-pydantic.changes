@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Aug 31 15:34:32 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.13.5:
+  * Allow reuse of validators when plugins are set by @Viicos in
+  * Fix missing GC traversal on some `pydantic-core` struct
+    fields by @Viicos in #13624
+  * Fix missing GC traversal in `pydantic-core` for
+    `GeneralFieldsSerializer` by @Viicos in #13629
+  * Count validated model fields once in smart unions by @tamird
+
+-------------------------------------------------------------------
 Tue Jul 28 01:32:49 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-ruff-0.16.patch:
