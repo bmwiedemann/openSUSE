@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Aug 28 15:17:38 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 9.0.38:
+  * Updated phone metadata for region code(s):
+    GM, HK, IN, JO, PG, SN, TZ, ZW
+  * Updated geocoding data for country calling code(s):
+    55 (en), 61 (en), 91 (en), 220 (en), 221 (en), 263 (en)
+  * Updated carrier data for country calling code(s):
+    221 (en), 254 (en), 255 (en), 373 (en), 675 (en), 852 (en, zh),
+    962 (en)
+
+-------------------------------------------------------------------
+Thu Aug 20 04:12:27 UTC 2026 - Andreas Stieger <Andreas.Stieger@gmx.de>
+
+- update to 9.0.37:
+  * Updated alternate formatting data for country calling code(s):
+    34, 90
+  * Updated phone metadata for region code(s):
+    AR, BD, CL, ES, FJ, GM, GY, IL, MZ, NO, PE, SJ, SY, TG, TR, UG
+  * Updated short number metadata for region code(s): ES
+  * Updated geocoding data for country calling code(s):
+    220 (en), 963 (en)
+  * Updated carrier data for country calling code(s):
+    47 (en), 56 (en), 90 (en), 220 (en), 228 (en), 234 (en),
+    254 (en), 256 (en), 592 (en), 963 (en), 972 (en)
+  * Updated / refreshed time zone meta data
+
+-------------------------------------------------------------------
 Fri Jul 31 23:58:03 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 9.0.36:
