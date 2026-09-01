@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Aug 30 08:49:10 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 9.1.0:
+  + Various bug fixes and feature enhancments.
+- Changes from version 9.0.0:
+  + C++17 is now required. Users who need to stay on C++11 or C++14
+    should continue using the 8.x series (we will continue to
+    provide patches for it as needed).
+  + No C++ standard library required at runtime (optional). Thanks
+    to excellent work by @mitchellh, you can now compile simdutf in
+    a freestanding mode that does not depend on the C++ standard
+    library. See the README for configuration details.
+  + fastbase64 command-line tool significantly upgraded. It is now
+    a fast drop-in replacement for the standard base64 utility. On
+    large inputs, it can be several times faster than common
+    alternatives.
+  + New compile-time base64 literal. You can now conveniently
+    declare base64-encoded arrays directly in code using the
+    _base64 suffix: auto data = "SGVsbG8gd29ybGQ="_base64;  //
+    decoded at compile time into a byte array
+  + Base64 API extended. We have added base64_to_binary_details to
+    provide more detailed decoding information.
+- Bump lib_ver define to 35.0.0 and so_ver define to 35 following
+  upstream changes.
+
+-------------------------------------------------------------------
 Mon Mar 23 08:07:12 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run

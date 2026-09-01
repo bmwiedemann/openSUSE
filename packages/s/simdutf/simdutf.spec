@@ -16,10 +16,10 @@
 #
 
 
-%define lib_ver 33.0.0
-%define so_ver 33
+%define lib_ver 35.0.0
+%define so_ver 35
 Name:           simdutf
-Version:        8.2.0
+Version:        9.1.0
 Release:        0
 Summary:        Unicode validation and transcoding at billions of characters per second
 
