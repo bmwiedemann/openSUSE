@@ -1,13 +1,4 @@
 -------------------------------------------------------------------
-Fri Aug 28 11:29:26 UTC 2026 - Aleksa Sarai <cyphar@cyphar.com>
-
-- Update to 1.5.1. Upstream changelog is available from
-  <https://github.com/opencontainers/runc/releases/tag/v1.5.1>.
-- libpathrs is now used by default in runc. Though still optional, we enable it
-  for our builds because it provides better security hardening and upstream
-  currently plans to make it required by runc 1.6.
-
--------------------------------------------------------------------
 Thu Jul 16 14:30:06 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.3 (bsc#1268275, CVE-2026-41579):

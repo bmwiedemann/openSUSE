@@ -728,4 +728,12 @@ provides).</comment>
     <comment>1</comment>
     <requestid>1374520</requestid>
   </revision>
+  <revision rev="83" vrev="2">
+    <srcmd5>823a8cdf6e3db04e29a5e69af90d39b5</srcmd5>
+    <version>1.4.3</version>
+    <time>1788270666</time>
+    <user>anag_factory</user>
+    <comment>Revert to 1.4.x; 1.5 fails with with --security-opt no-new-privileges</comment>
+    <requestid>1375022</requestid>
+  </revision>
 </revisionlist>

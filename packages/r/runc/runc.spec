@@ -18,31 +18,35 @@
 # nodebuginfo
 
 
+%bcond_with libpathrs
+
 # MANUAL: Make sure you update this each time you update runc.
-%define git_version 8f2685a471d3347a686ad3909783d8aafc6bb208
-%define git_short   8f2685a4
+%define git_version bb14dabeb7185bb72c8c86735d090dcb20f36587
+%define git_short   bb14dabe
 
 %define project github.com/opencontainers/runc
 
 Name:           runc
-Version:        1.5.1
+Version:        1.4.3
 %define upstream_version %{version}
 Release:        0
 Summary:        Tool for spawning and running OCI containers
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/opencontainers/runc
-Source0:        https://github.com/opencontainers/runc/releases/download/v%{upstream_version}/runc-%{upstream_version}.tar.xz
-Source1:        https://github.com/opencontainers/runc/releases/download/v%{upstream_version}/runc-%{upstream_version}.tar.xz.asc
+Source0:        https://github.com/opencontainers/runc/releases/download/v%{upstream_version}/runc.tar.xz#/runc-%{upstream_version}.tar.xz
+Source1:        https://github.com/opencontainers/runc/releases/download/v%{upstream_version}/runc.tar.xz.asc#/runc-%{upstream_version}.tar.xz.asc
 Source2:        runc.keyring
 Source9:        vendor.tar.zst
 BuildRequires:  diffutils
 BuildRequires:  fdupes
 BuildRequires:  go-go-md2man
-BuildRequires:  libpathrs-devel >= 0.2.5
 BuildRequires:  libseccomp-devel
 BuildRequires:  libselinux-devel
 BuildRequires:  golang(API) >= 1.24
+%if 0%{with libpathrs}
+BuildRequires:  libpathrs-devel
+%endif
 Recommends:     criu
 # There used to be a docker-runc package which was specifically for Docker.
 # Since Docker now tracks upstream more consistently, we use the same package
@@ -76,8 +80,13 @@ and has grown to become a separate project entirely.
 export CGO_CFLAGS="--std=gnu11"
 %endif
 
+BUILDTAGS="seccomp"
+%if 0%{with libpathrs}
+BUILDTAGS+=" libpathrs"
+%endif
+
 # build runc
-make RUNC_BUILDTAGS="seccomp libpathrs" COMMIT="%{git_describe}" runc
+make BUILDTAGS="$BUILDTAGS" COMMIT="%{git_describe}" runc
 
 # build man pages
 man/md2man-all.sh
