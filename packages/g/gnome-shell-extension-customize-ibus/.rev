@@ -61,4 +61,15 @@
     <comment></comment>
     <requestid>1336040</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>585a81544b7490dbc886dfc08052fe69</srcmd5>
+    <version>94</version>
+    <time>1788270460</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 94:
+  + Support GNOME 51
+  + Bump some libraries to the latest versions
+  + Updated translations.</comment>
+    <requestid>1374891</requestid>
+  </revision>
 </revisionlist>
