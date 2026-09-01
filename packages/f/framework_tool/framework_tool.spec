@@ -29,7 +29,10 @@ Source0:        https://github.com/FrameworkComputer/framework-system/archive/re
 Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
 BuildRequires:  pkg-config
-BuildRequires:  systemd-devel
+BuildRequires:  pkgconfig(libusb-1.0)
+BuildRequires:  pkgconfig(zlib)
+BuildRequires:  pkgconfig(libgit2)
+BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  zsh
 ExclusiveArch:  x86_64
 
@@ -38,6 +41,7 @@ Rust tools to interact with the Framework Computer systems, especially with the 
 
 %prep
 %autosetup -p1 -a1 -n %{reponame}-%{version}
+export LIBGIT2_NO_VENDOR=1
 
 %build
 %cargo_build

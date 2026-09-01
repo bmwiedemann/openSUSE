@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep  1 12:43:03 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- don't use vendored system libs
+
+-------------------------------------------------------------------
 Mon Jul  6 07:35:21 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 0.6.5

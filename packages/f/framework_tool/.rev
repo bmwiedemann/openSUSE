@@ -104,4 +104,12 @@
     <comment></comment>
     <requestid>1364200</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>5c2fe90a8c966041c267be74fcfbde6a</srcmd5>
+    <version>0.6.5</version>
+    <time>1788270728</time>
+    <user>anag_factory</user>
+    <comment>don't use vendored system libs</comment>
+    <requestid>1375122</requestid>
+  </revision>
 </revisionlist>
