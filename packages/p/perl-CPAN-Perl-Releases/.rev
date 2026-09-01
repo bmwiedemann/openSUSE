@@ -1389,4 +1389,13 @@
    see /usr/share/doc/packages/perl-CPAN-Perl-Releases/Changes</comment>
     <requestid>1371818</requestid>
   </revision>
+  <revision rev="171" vrev="1">
+    <srcmd5>12e811bf6dc1577c53b8d698978c6ee7</srcmd5>
+    <version>5.202.608.200</version>
+    <time>1788270438</time>
+    <user>anag_factory</user>
+    <comment>- updated to 5.202.608.200 (5.20260820)
+   see /usr/share/doc/packages/perl-CPAN-Perl-Releases/Changes</comment>
+    <requestid>1374859</requestid>
+  </revision>
 </revisionlist>
