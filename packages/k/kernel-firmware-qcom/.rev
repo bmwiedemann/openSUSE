@@ -540,4 +540,30 @@ After this PR, there will be a delete request for kernel-firmware.
   * qcom: Update DSP firmware for sa8775p platform</comment>
     <requestid>1367334</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>379b6c7942ff5bd8d70a0dc90483b7d0</srcmd5>
+    <version>20260828</version>
+    <time>1788270349</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260828 (git commit b6bdea3726dc):
+  * qcom: update CDSP firmware for x1e80100 platform
+  * qcom: add QUPv3 firmware for nord
+  * qcom: add HPASS firmware for nord platform
+  * qcom/sa8775p: update signature on cdsp1 firmware
+
+- Update to version 20260820 (git commit f2ab551dea14):
+  * qcom: add NSP firmware for nord platform
+  * WHENCE: Move qcom qcdxkmsuc8[23]80.mbn firmwares to Adreno section
+
+- Update to version 20260813 (git commit 984503d80fd6):
+  * qcom: add CDSP firmware for eliza platform
+
+- Update to version 20260803 (git commit 73b4d58aba76):
+  * qcom: Add gpu firmwares for Eliza chipset
+
+- Update to version 20260728 (git commit 543b8f5f987c):
+  * qcom: Update qdsp6sw firmware for shikra platform
+  * qcom: Update DSP firmware for qcs8300 platform</comment>
+    <requestid>1374913</requestid>
+  </revision>
 </revisionlist>

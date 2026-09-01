@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Aug 28 13:58:16 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260828 (git commit b6bdea3726dc):
+  * qcom: update CDSP firmware for x1e80100 platform
+  * qcom: add QUPv3 firmware for nord
+  * qcom: add HPASS firmware for nord platform
+  * qcom/sa8775p: update signature on cdsp1 firmware
+
+-------------------------------------------------------------------
+Fri Aug 21 06:06:19 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260820 (git commit f2ab551dea14):
+  * qcom: add NSP firmware for nord platform
+  * WHENCE: Move qcom qcdxkmsuc8[23]80.mbn firmwares to Adreno section
+
+-------------------------------------------------------------------
+Fri Aug 14 07:17:11 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260813 (git commit 984503d80fd6):
+  * qcom: add CDSP firmware for eliza platform
+
+-------------------------------------------------------------------
+Tue Aug  4 05:49:05 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260803 (git commit 73b4d58aba76):
+  * qcom: Add gpu firmwares for Eliza chipset
+
+-------------------------------------------------------------------
+Thu Jul 30 09:11:06 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260728 (git commit 543b8f5f987c):
+  * qcom: Update qdsp6sw firmware for shikra platform
+  * qcom: Update DSP firmware for qcs8300 platform
+
+-------------------------------------------------------------------
 Fri Jul 17 08:02:54 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260717 (git commit fb91c990e602):
