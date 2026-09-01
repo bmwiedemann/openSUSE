@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Aug 31 14:20:06 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to git snapshot 0+git20260828.bc7f02e (upstream 1.0.11 and
+  1.0.12):
+  * Hooks: a UserPromptSubmit hook can now reject a prompt, and
+    tool-permission hooks gained "ask" and "defer" decisions plus
+    additionalContext; runner, dispatcher and HTTP hooks reworked
+  * Auto mode auto-allows more: subagent messages, and mkdir and
+    touch no longer prompt; headless sessions can auto-allow
+    prompts via a startup hint; a permission card is now shown
+    when the classifier blocks an action
+  * Permission matching for command chains and subcommands is more
+    reliable, the default mode for new interactive sessions is
+    configurable, and blocked prompts no longer reappear after a
+    restart
+  * Sandbox: read-deny enforcement is verified durable in the mount
+    namespace, and the well-known container-runtime API sockets are
+    denied in network-restricted profiles
+  * New opt-in send_subagent_message tool (features
+    active_agent_messages, default off)
+  * MCP servers failing transiently are retried instead of staying
+    unavailable
+  * Further subagent, background-task, context-accounting,
+    terminal, resume-picker and /voice fixes; see upstream's
+    release notes for the full list
+- Refresh the vendored Rust crate dependencies; the licence tag is
+  unchanged, only the audited Legal-Review-Notice crate counts move
+  (1016 in the shipped binary's graph, 1251 vendored)
+
+-------------------------------------------------------------------
 Thu Aug 27 07:13:11 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to git snapshot 0+git20260825.77cd7eb:

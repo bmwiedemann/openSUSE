@@ -2,7 +2,7 @@
   <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/xai-org/grok-build.git</param>
     <param name="scm">git</param>
-    <param name="revision">77cd7eb675ba911c225c3aaeeece3a20cbccc426</param>
+    <param name="revision">bc7f02eddd3d84085849dc19ed216f11c23b0571</param>
     <param name="version">0</param>
     <param name="versionformat">0+git%cd.%h</param>
     <param name="changesgenerate">disable</param>

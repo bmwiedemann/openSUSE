@@ -195,4 +195,33 @@ Both downstream patches (0001-disable-self-updater.patch, 0002-disable-telemetry
 The vendored crate set was re-audited against the new vendor tree (cargo tree -p xai-grok-pager-bin -e normal): 1015 crates in the graph, 1252 vendored, the same eight MPL-2.0 crates and the statically linked libgit2 sources - the License tag is unchanged.</comment>
     <requestid>1373935</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7dbd9b5273a3939f3db7ce28114446ee</srcmd5>
+    <version>0+git20260828.bc7f02e</version>
+    <time>1788270462</time>
+    <user>anag_factory</user>
+    <comment>Update to git snapshot 0+git20260828.bc7f02e (upstream 1.0.11 and 1.0.12).
+
+Headline: a UserPromptSubmit hook can now reject a prompt and tool-permission
+hooks gained &quot;ask&quot;/&quot;defer&quot; decisions; sandbox read-deny enforcement is
+verified durable in the mount namespace and container-runtime API sockets are
+denied in network-restricted profiles; the permission manager, hook runner and
+dispatcher were reworked. The pre-warmed worktree pool is gone (its config
+section is still parsed). New send_subagent_message tool, off by default.
+
+Both downstream patches (0001-disable-self-updater.patch,
+0002-disable-telemetry-by-default.patch) still apply at fuzz 0, unchanged -
+verified in-tree that upstream has not fixed either behaviour. Vendored crates
+refreshed, 1252 -&gt; 1251; the only new crate names are typeshare and
+typeshare-annotation, both MIT OR Apache-2.0, so the licence tag is unchanged
+- the copyleft set is still exactly the same eight MPL-2.0 crates plus the
+statically linked libgit2 sources. Only the audited crate counts in the
+Legal-Review-Notice moved.
+
+Built natively on aarch64: rpmlint 0 errors, 0 badness, 3 pre-existing
+warnings. Smoke-tested in the build chroot (&quot;grok update&quot; reports
+&quot;Auto-update is not available for manual installations&quot;, so the self-updater
+patch is effective).</comment>
+    <requestid>1374894</requestid>
+  </revision>
 </revisionlist>
