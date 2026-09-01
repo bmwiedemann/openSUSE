@@ -7,4 +7,12 @@
     <comment>🤖: initial submission of kubectl-1.37-image</comment>
     <requestid>1374830</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>33c08e7366727ec617b68c1377aa7bd5</srcmd5>
+    <version>unknown</version>
+    <time>1788270483</time>
+    <user>anag_factory</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1374936</requestid>
+  </revision>
 </revisionlist>
