@@ -1,0 +1,14 @@
+--- a/system/SoapySDRServer.service.in
++++ b/system/SoapySDRServer.service.in
+@@ -2,6 +2,11 @@
+ Description=SoapyRemote network server
+ Wants=network-online.target
+ After=network-online.target
++# mDNS registration is one-shot: avahi_entry_group_new() fails if the daemon is
++# not on the bus yet and nothing ever retries, so ordering is required, not just
++# preferred. Type=dbus makes After= wait for the bus name. No-op if not installed.
++Wants=avahi-daemon.service
++After=avahi-daemon.service
+ 
+ [Service]
+ # added automatically, for details please see

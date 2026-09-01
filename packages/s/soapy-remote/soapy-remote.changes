@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sun Aug 30 19:36:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Build against avahi to enable device discovery over mDNS/DNS-SD:
+  upstream only warns when the client libraries are absent and
+  silently compiles a no-op stub, so discovery was disabled
+- Recommend avahi from both subpackages, the daemon is what
+  advertises and browses. Deliberately not a hard requirement, SSDP
+  discovery is unaffected and upstream opens the client with
+  AVAHI_CLIENT_NO_FAIL
+- Order the server unit after avahi-daemon, add patch:
+  * SoapySDRServer-order-after-avahi.patch
+  Registration is one-shot: if the daemon is not on the bus yet
+  avahi_entry_group_new() fails and nothing ever retries, so losing
+  the race disabled advertisement for the life of the process
+
+-------------------------------------------------------------------
+Sun Aug 30 18:20:38 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Add explicit 'Requires: soapy-sdr' to the module subpackage:
+  libSoapySDR does the dlopen and is already covered by the soname
+  dependency, this pulls in SoapySDRUtil. Not added to the server
+  subpackage, a standalone daemon linking libSoapySDR directly
+- Spec cleanup:
+  * Use %cmake_build and the %{_sysctldir} macro
+  * mkdir -p for the sbindir, so the build survives /usr/sbin being
+    merged and the directory already existing
+  * Declare the SoapySDR >= 0.4.0 floor upstream's CMakeLists checks
+
+-------------------------------------------------------------------
 Thu Mar 27 19:04:05 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - SOAPY_SDR_ABI_VERSION bump -> "0.8-3"

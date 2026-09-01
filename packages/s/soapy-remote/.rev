@@ -79,4 +79,104 @@
     <comment></comment>
     <requestid>1264952</requestid>
   </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>0bed7c59e46725c5ae0fce685d6e8e80</srcmd5>
+    <version>0.5.2</version>
+    <time>1788270430</time>
+    <user>anag_factory</user>
+    <comment>Add an explicit 'Requires: soapy-sdr' - to the module subpackage only.
+
+Requested by dimstar reviewing the soapy-plutosdr submission (sr#1374694,
+since superseded to sr#1374739):
+&quot;Shouldn't that require soapy-sdr? The module on its own seems quite useless&quot;.
+Applied across the SoapySDR plugin set rather than to that one package.
+
+To be precise about what this does and does not do: libSoapySDR is what dlopens
+a plugin, and that is already covered by the automatic soname dependency on
+libSoapySDR.so.0.8-3 - it was never missing. What a module package did not pull
+in is the soapy-sdr package proper, which ships SoapySDRUtil, the tool used to
+enumerate and probe devices. That is the gap this closes.
+
+Note on precedent: no SoapySDR plugin currently released in Factory carries this
+dependency (checked soapy-rtlsdr, soapy-hackrf, soapy-airspy, soapy-osmo,
+soapy-uhd), so this is a deliberate tightening rather than an existing
+convention.
+
+soapy-remote is not a plain plugin, so the dependency is deliberately NOT
+applied uniformly across its subpackages:
+
+- soapysdr0.8-3-module-remote ships only the dlopened client plugin
+  libremoteSupport.so, under the ABI-versioned SoapySDR module directory. This
+  is the plugin dimstar's argument is about, and it gets the Requires.
+
+- soapy-remote-server ships the SoapySDRServer daemon, its systemd unit, a
+  sysctl.d drop-in and the man page. That is a standalone application, not a
+  plugin: it links libSoapySDR directly (and so already carries the automatic
+  libSoapySDR.so.0.8-3 soname dependency) and uses nothing from the soapy-sdr
+  package - the string &quot;SoapySDRUtil&quot; does not occur anywhere in the 0.5.2
+  source tree. Adding the Requires there would be redundant, so it is not.
+
+The code shared between the two halves (SoapySDRRemoteCommon) is a static
+library that is never installed, so the client plugin is the only shared object
+this package ships and there is no soname question here.
+
+Also in this request, packaging cleanup with no change to the installed file
+set: %cmake_build instead of an open-coded make line, the %{_sysctldir} macro
+instead of a hand-built path, 'mkdir -p' for the sbindir so the build does not
+break once /usr/sbin is merged and the directory already exists, and the
+SoapySDR floor upstream actually checks for - CMakeLists.txt has
+find_package(SoapySDR &quot;0.4.0&quot; NO_MODULE), so pkgconfig(SoapySDR) &gt;= 0.4.0.
+
+Left alone deliberately: Conflicts: soapysdr0.7-module-remote is not stale -
+soapysdr0.7-module-remote is still published in openSUSE:Backports:SLE-15-SP1
+(4 binaries), SP2 (4) and SP3 (5).
+
+No version bump. 0.5.2 (2020-07-20) is still upstream's newest tag, and Debian,
+Gentoo, Arch and FreeBSD all ship it. master is 30 commits ahead with a
+&quot;Release 0.6.0 (pending)&quot; changelog, but upstream has released none of it and it
+relocates the systemd and sysctl install paths (and renames the drop-in), so
+moving to a pinned snapshot is a separate decision rather than something to fold
+into a dependency fix.
+
+Also fixed here: device discovery over mDNS/DNS-SD was silently disabled.
+common/CMakeLists.txt calls find_package(Avahi) and on failure issues only a
+CMake WARNING, not a FATAL_ERROR, then compiles SoapyMDNSEndpointNone.cpp - a
+no-op stub - in place of SoapyMDNSEndpointAvahi.cpp. So the package built green
+while one of its two discovery mechanisms was compiled out. Adding
+BuildRequires: pkgconfig(avahi-client) (Factory's libavahi-devel, which carries
+avahi-client.pc plus the client/common libraries and headers that upstream's
+FindAvahi.cmake probes) fixes it. Confirmed from the build log rather than
+inferred from a green build: cmake now reports &quot;Found Avahi&quot;, prints
+AVAHI_LIBRARIES=/usr/lib64/libavahi-common.so;/usr/lib64/libavahi-client.so, the
+warning is gone, and SoapyMDNSEndpointAvahi.cpp is what lands in the static
+library. Both subpackages consequently gain libavahi-client.so.3 and
+libavahi-common.so.3; the installed file set is unchanged.
+
+Enabling Avahi exposed a second, run-time half of the same bug, fixed here by
+SoapySDRServer-order-after-avahi.patch. Upstream's mDNS registration is
+one-shot: avahi_entry_group_new() fails if the daemon is not yet on the bus,
+and registerService() returns at that point - before the avahi_simple_poll_loop
+task is armed - so the client never leaves CONNECTING and nothing ever
+re-registers. AVAHI_CLIENT_NO_FAIL buys survival, not recovery. Meanwhile
+nothing ordered the two units: avahi-daemon.service carries no After= at all
+and SoapySDRServer.service only ordered itself after network-online.target, so
+both were merely WantedBy=multi-user.target. Losing that race would have moved
+the exact defect this request fixes from build time to run time. The patch adds
+Wants=/After=avahi-daemon.service; avahi-daemon is Type=dbus, so After=
+guarantees the bus name is owned, and Wants= on an uninstalled unit is a no-op,
+which keeps it consistent with the weak Recommends below. The patch is
+upstreamable - it is a defect in upstream's own unit file - and has not been
+sent yet.
+
+Both subpackages also get Recommends: avahi rather than a hard Requires. The
+daemon is what actually advertises and browses, so it is wanted - but upstream
+opens the client with AVAHI_CLIENT_NO_FAIL and guards the null client, so its
+absence degrades gracefully, and SSDP discovery is unaffected either way.
+Debian uses a hard Depends: avahi-daemon on both; a weak dependency seemed the
+better fit for openSUSE, and is easy to change if reviewers prefer otherwise.
+
+Built locally on Tumbleweed/aarch64; rpmlint reports 0 errors, 0 warnings,
+0 badness.</comment>
+    <requestid>1374759</requestid>
+  </revision>
 </revisionlist>

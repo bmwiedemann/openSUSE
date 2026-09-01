@@ -1,7 +1,7 @@
 #
 # spec file for package soapy-remote
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,6 @@
 
 %define soapy_modver 0.8-3
 %define soapy_modname soapysdr%{soapy_modver}-module-remote
-
 Name:           soapy-remote
 Version:        0.5.2
 Release:        0
@@ -29,16 +28,30 @@ URL:            https://github.com/pothosware/SoapyRemote/wiki
 #Git-Clone:     https://github.com/pothosware/SoapyRemote.git
 Source:         https://github.com/pothosware/SoapyRemote/archive/%{name}-%{version}.tar.gz
 Patch0:         harden_SoapySDRServer.service.patch
+# Order after avahi-daemon: upstream's mDNS registration is one-shot and never
+# retries, so losing the startup race disables advertisement permanently
+Patch1:         SoapySDRServer-order-after-avahi.patch
 BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
-BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(SoapySDR)
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(SoapySDR) >= 0.4.0
+# Without this upstream only WARNS and silently builds the no-op MDNS stub,
+# losing mDNS/DNS-SD discovery
+BuildRequires:  pkgconfig(avahi-client)
 
 %description
 A Soapy module that supports remote devices within the Soapy API.
 
 %package -n %{soapy_modname}
 Summary:        Remote device support for Soapy SDR
+# Factory review of the soapy-* modules: libSoapySDR does the dlopen and is
+# already covered by the soname dep; this pulls the SoapySDR package proper
+# (SoapySDRUtil). Not on -server, which is a standalone daemon linking
+# libSoapySDR directly.
+Requires:       soapy-sdr
+# mDNS browsing needs the daemon; not hard, SSDP discovery works without it and
+# upstream opens the client with AVAHI_CLIENT_NO_FAIL
+Recommends:     avahi
 # soapysdr0.7-module-remote needs to be force dropped
 Conflicts:      soapysdr0.7-module-remote
 # Add 'Provides/Obsoletes' entries for future updates
@@ -50,6 +63,8 @@ A Soapy module that supports remote devices within the Soapy API.
 
 %package server
 Summary:        Server for remote device support for Soapy SDR
+# mDNS advertisement needs the daemon; see the module subpackage
+Recommends:     avahi
 # The server part was split, a 'Conflicts' line is also needed here.
 Conflicts:      soapysdr0.7-module-remote
 
@@ -63,12 +78,12 @@ connected to.
 
 %build
 %cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5
-make VERBOSE=1 %{?_smp_mflags}
+%cmake_build
 
 %install
 %cmake_install
 
-mkdir %{buildroot}%{_sbindir}
+mkdir -p %{buildroot}%{_sbindir}
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcSoapySDRServer
 
 %check
@@ -98,8 +113,8 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcSoapySDRServer
 %doc Changelog.txt README.md
 %{_bindir}/SoapySDRServer
 %{_sbindir}/rcSoapySDRServer
-%{_mandir}/man1/SoapySDRServer.1%{ext_man}
-%{_prefix}/lib/sysctl.d/SoapySDRServer.conf
+%{_mandir}/man1/SoapySDRServer.1%{?ext_man}
+%{_sysctldir}/SoapySDRServer.conf
 %{_unitdir}/SoapySDRServer.service
 
 %changelog
