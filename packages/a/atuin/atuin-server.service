@@ -1,0 +1,42 @@
+[Unit]
+Description=Atuin sync server
+Documentation=https://docs.atuin.sh/latest/self-hosting/server-setup/
+After=network-online.target postgresql.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=atuin
+Group=atuin
+Environment=ATUIN_CONFIG_DIR=/etc/atuin
+ExecStart=/usr/bin/atuin-server start
+Restart=on-failure
+RestartSec=5
+
+# Hardening
+NoNewPrivileges=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectSystem=strict
+ProtectHome=yes
+ReadWritePaths=/var/lib/atuin
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+RestrictNamespaces=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+SystemCallFilter=~@resources @privileged
+CapabilityBoundingSet=
+AmbientCapabilities=
+UMask=0077
+RuntimeDirectory=atuin
+StateDirectory=atuin
+
+[Install]
+WantedBy=multi-user.target

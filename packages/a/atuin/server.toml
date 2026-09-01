@@ -1,0 +1,30 @@
+## Atuin server configuration
+## See https://docs.atuin.sh/latest/self-hosting/server-setup/
+
+## Host to bind to
+host = "127.0.0.1"
+
+## Port to bind to
+port = 8888
+
+## Whether to allow anyone to register an account
+open_registration = false
+
+## Database URI (required)
+## PostgreSQL: "postgres://user:password@localhost/atuin"
+## SQLite:      "sqlite:///var/lib/atuin/atuin-server.db"
+db_uri = "sqlite:///var/lib/atuin/atuin-server.db"
+
+## Optional: URI for read replica database
+## read_db_uri = "postgres://user:password@localhost-replica/atuin"
+
+## Maximum size for one record entry (default: 1 GiB)
+# max_record_size = 1073741824
+
+## Optional: register webhook
+# register_webhook_username = ""
+
+# [metrics]
+# enable = false
+# host = "127.0.0.1"
+# port = 9001

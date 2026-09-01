@@ -17,7 +17,7 @@
 
 
 Name:           atuin
-Version:        18.19.0
+Version:        18.21.0
 Release:        0
 Summary:        Magical shell history
 License:        MIT
@@ -25,13 +25,17 @@ Group:          System/Console
 URL:            https://github.com/ellie/atuin
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor-deps.tar.zst
+Source2:        atuin-server.service
+Source3:        server.toml
+Source4:        atuin-server.conf
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
-BuildRequires:  cargo >= 1.97
+BuildRequires:  cargo >= 1.98
 BuildRequires:  cargo-packaging
 BuildRequires:  cmake
 BuildRequires:  openssl-devel
 BuildRequires:  protobuf-devel
+BuildRequires:  systemd-rpm-macros
 BuildRequires:  zstd
 
 %description
@@ -74,6 +78,17 @@ BuildArch:      noarch
 %description nushell-completion
 Nushell command line completion support for %{name}.
 
+%package server
+Summary:        Atuin sync server
+Requires:       %{name} = %{version}
+BuildRequires:  sysuser-tools
+%{?systemd_ordering}
+%?sysusers_requires
+
+%description server
+Atuin sync server for self-hosting shell history synchronisation.
+Supports PostgreSQL and SQLite backends, selectable via configuration.
+
 %prep
 %autosetup -a1 -p1
 # Git does not resolve symlinks
@@ -82,6 +97,8 @@ ln -s ../../../vendor/bash-preexec crates/atuin/vendor/bash-preexec
 
 %build
 %{cargo_build} --no-default-features -F "atuin/client,atuin/sync,atuin/daemon,atuin/clipboard"
+%{cargo_build} -p atuin-server
+%sysusers_generate_pre %{SOURCE4} atuin-server atuin-server.conf
 
 for shell in "zsh" "bash" "fish" "nushell"
 do
@@ -93,6 +110,11 @@ install -D -m 0755 "%{_builddir}/%{name}-%{version}/target/release/atuin" "%{bui
 install -D -m 0644 "target/%{name}.bash" "%{buildroot}/%{_datadir}/bash-completion/completions/%{name}"
 install -D -m 0644 "target/%{name}.fish" "%{buildroot}/%{_datadir}/fish/vendor_completions.d/%{name}.fish"
 install -D -m 0644 "target/%{name}.zsh" "%{buildroot}/%{_datadir}/zsh/site-functions/_%{name}"
+install -D -m 0755 "%{_builddir}/%{name}-%{version}/target/release/atuin-server" "%{buildroot}%{_bindir}/atuin-server"
+install -D -m 0644 "%{_sourcedir}/atuin-server.service" "%{buildroot}%{_unitdir}/atuin-server.service"
+install -D -m 0644 "%{_sourcedir}/server.toml" "%{buildroot}%{_sysconfdir}/atuin/server.toml"
+install -D -m 0644 "%{_sourcedir}/atuin-server.conf" "%{buildroot}%{_sysusersdir}/atuin-server.conf"
+install -d -m 0750 "%{buildroot}%{_localstatedir}/lib/atuin"
 install -D -m 0644 "target/%{name}.nushell" "%{buildroot}/%{_datadir}/nushell/vendor/autoload/atuin.nu"
 
 %files
@@ -118,5 +140,24 @@ install -D -m 0644 "target/%{name}.nushell" "%{buildroot}/%{_datadir}/nushell/ve
 %dir %{_datadir}/nushell/vendor
 %dir %{_datadir}/nushell/vendor/autoload
 %{_datadir}/nushell/vendor/autoload/atuin.nu
+
+%pre server -f atuin-server.pre
+
+%post server
+%{?service_add_post atuin-server.service}
+
+%preun server
+%{?service_del_preun atuin-server.service}
+
+%postun server
+%{?service_del_postun atuin-server.service}
+
+%files server
+%{_bindir}/atuin-server
+%{_unitdir}/atuin-server.service
+%dir %{_sysconfdir}/atuin
+%config(noreplace) %{_sysconfdir}/atuin/server.toml
+%{_sysusersdir}/atuin-server.conf
+%dir %attr(0750,atuin,atuin) %{_localstatedir}/lib/atuin
 
 %changelog
