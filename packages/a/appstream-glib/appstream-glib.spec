@@ -19,7 +19,7 @@
 
 
 Name:           appstream-glib
-Version:        0.8.3
+Version:        0.8.4
 Release:        0
 Summary:        AppStream Abstraction Library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later

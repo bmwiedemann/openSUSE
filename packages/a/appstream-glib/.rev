@@ -889,4 +889,19 @@ to have a hook to perform appstream-util install &lt;xml&gt; &lt;iconset&gt; and
     <comment>Switch to tar.xz post git scm move</comment>
     <requestid>1342936</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>90f8ba45cb433e7aa7bd48ef49bb663e</srcmd5>
+    <version>0.8.4</version>
+    <time>1788270335</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.8.4:
+  + New Features:
+    - Add symbol and sample text for Amharic and Inuktitut
+    - Add symbol text for N'Ko and Yi script
+  + Bugfixes:
+    - Fix building the silo when shared-mime-info &gt;= 2.5.1 is
+      installed
+    - Fix RISC-V test failure</comment>
+    <requestid>1374893</requestid>
+  </revision>
 </revisionlist>
