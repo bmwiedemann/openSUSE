@@ -26,7 +26,7 @@ LC_TIME=POSIX
 
 cd "$RPM_BUILD_ROOT"
 
-for f in `find . -type f -name "*.exe" -or -name "*.dll"`; do
+for f in `find . -type f \( -name "*.exe" -or -name "*.dll" \)`; do
 	case $("$OBJDUMP" -h "$f" 2>/dev/null | grep -E -o '(debug[\.a-z_]*|gnu.version)') in
 	    *debuglink*) continue ;;
 	    *debug*) ;;

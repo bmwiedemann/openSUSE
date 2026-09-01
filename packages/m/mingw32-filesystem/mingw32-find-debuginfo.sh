@@ -97,7 +97,10 @@ if [ ! -e "$BUILDDIR" ]; then
 fi
 
 # extract debug info
-find $RPM_BUILD_ROOT -type f -name "*.exe" -or -name "*.dll" | sort | \
+# objcopy modifies hardlinked files through their shared inode, so process
+# only the first name of each hardlink group and link the .debug afterwards
+candidates=$(find $RPM_BUILD_ROOT -type f \( -name "*.exe" -or -name "*.dll" \) -printf '%D_%i %p\n' | sort -k2)
+echo "$candidates" | awk '!seen[$1]++' | cut -d' ' -f2- | \
 	BUILDDIR=$BUILDDIR \
 	OBJDUMP=$OBJDUMP \
 	OBJCOPY=$OBJCOPY \
@@ -108,15 +111,25 @@ find $RPM_BUILD_ROOT -type f -name "*.exe" -or -name "*.dll" | sort | \
 	srcdir=$srcdir \
 	xargs --max-args=1 --max-procs=0 bash -x $0
 
+declare -A firstname
+while read -r inum f; do
+	[ -z "$inum" ] && continue
+	if [ -z "${firstname[$inum]}" ]; then
+		firstname[$inum]=$f
+	elif [ -e "${firstname[$inum]}.debug" ]; then
+		ln -f "${firstname[$inum]}.debug" "$f.debug"
+	fi
+done <<<"$candidates"
+
 cat "$SOURCEFILE".tmp.* >"$SOURCEFILE.tmp" 2>/dev/null || :
 
 # generate debug info file list
-find $RPM_BUILD_ROOT -type f \
+find $RPM_BUILD_ROOT -type f \( \
 		-name "*.exe.debug" \
 	-or -name "*.dll.debug" \
 	-or -name "*.exe.mdb" \
 	-or -name "*.dll.mdb" \
-| sort \
+\) | sort \
 | sed -n -e "s#^$RPM_BUILD_ROOT##p" > $BUILDDIR/$target-debugfiles.list
 
 if [ "$SOURCE_PACKAGE" -eq 0 ]; then

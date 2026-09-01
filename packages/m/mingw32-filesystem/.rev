@@ -337,4 +337,12 @@
   * fix a race between the parallel debug-info extraction processes (boo#1102408) (forwarded request 1371665 from bmwiedemann)</comment>
     <requestid>1371701</requestid>
   </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>466eedc08b6effb622eb2c0d99886e72</srcmd5>
+    <version>20260312</version>
+    <time>1788270722</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1375091</requestid>
+  </revision>
 </revisionlist>

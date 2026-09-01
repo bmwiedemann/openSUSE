@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Aug 25 10:37:55 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- mingw32-find-debuginfo.sh:
+  * Extract debug info from hardlinked binaries only once:
+    objcopy strips them through their shared inode, so the parallel
+    workers for the other names raced against it, producing .debug
+    files with random content or missing ones (boo#1102408)
+
+-------------------------------------------------------------------
+Tue Aug 25 09:53:08 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- mingw32-find-debuginfo.sh, mingw32-install-post.sh:
+  * Do not process symlinks to .exe/.dll files: a "find -type f -name
+    *.exe -or -name *.dll" precedence bug let .dll symlinks through,
+    so a symlinked dll was stripped twice in parallel, making the
+    embedded .gnu_debuglink name and PE checksum depend on which
+    objcopy finished last (boo#1102408)
+
+-------------------------------------------------------------------
 Tue Aug 18 06:32:56 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - mingw32-find-debuginfo.sh:
