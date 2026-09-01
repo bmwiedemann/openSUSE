@@ -399,4 +399,13 @@ This also handles TW properly. (forwarded request 653860 from lslezak)</comment>
     <comment></comment>
     <requestid>1370488</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>bf5c1e8ae3cf3f8f3217c6bde35f12c4</srcmd5>
+    <version>20260830</version>
+    <time>1788270410</time>
+    <user>anag_factory</user>
+    <comment>- Recommend libreoffice-qt6 when installing the KDE Office
+  pattern rather than libreoffice-qt5 (boo#1277445) (forwarded request 1374632 from krop)</comment>
+    <requestid>1374895</requestid>
+  </revision>
 </revisionlist>

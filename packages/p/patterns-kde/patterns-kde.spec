@@ -17,7 +17,7 @@
 
 
 Name:           patterns-kde
-Version:        20260428
+Version:        20260830
 Release:        0
 Summary:        Patterns for Installation (kde devel)
 License:        MIT
@@ -563,19 +563,9 @@ Recommends:     pinentry-qt5
 Recommends:     pam_kwallet6
 Recommends:     xwaylandvideobridge
 
-%if 0%{?suse_version} > 1500
-# pipewire
 Recommends:     pipewire
 Recommends:     pipewire-alsa
 Recommends:     pipewire-pulseaudio
-%else
-# pulseaudio
-Recommends:     pulseaudio
-Recommends:     alsa-plugins-pulse
-Recommends:     pulseaudio-module-x11
-Recommends:     pulseaudio-module-zeroconf
-Recommends:     pulseaudio-utils
-%endif
 
 # Thumbnailers
 Recommends:     ffmpegthumbs
@@ -861,7 +851,7 @@ Obsoletes:      patterns-openSUSE-kde4_office < %{version}
 Obsoletes:      patterns-openSUSE-kde_office < %{version}
 Supplements:    (patterns-kde-kde and patterns-office-office)
 Recommends:     libreoffice-icon-theme-breeze
-Recommends:     libreoffice-qt5
+Recommends:     libreoffice-qt6
 Suggests:       scribus
 
 %description kde_office

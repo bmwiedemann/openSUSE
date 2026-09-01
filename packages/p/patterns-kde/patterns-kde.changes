@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Aug 31 15:35:17 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Drop Leap 15 recommends from spec file
+
+-------------------------------------------------------------------
+Sat Aug 29 22:04:31 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Recommend libreoffice-qt6 when installing the KDE Office
+  pattern rather than libreoffice-qt5 (boo#1277445)
+
+-------------------------------------------------------------------
 Sat Aug  8 07:10:35 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Remove plasma6-session-x11 from the plasma 6 pattern (boo#1274552)
