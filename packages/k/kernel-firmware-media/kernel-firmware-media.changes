@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Aug 14 07:16:48 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260813 (git commit 984503d80fd6):
+  * qcom: vpu: add Gen2 firmware binary for Eliza
+
+-------------------------------------------------------------------
+Sat Aug  1 07:01:19 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260731 (git commit a968c5c2962e):
+  * qcom: venus-5.4: fix vp9 decoder assertion failure
+
+-------------------------------------------------------------------
 Thu Jul  9 09:58:11 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260706 (git commit 2c35b1ed46f6):
