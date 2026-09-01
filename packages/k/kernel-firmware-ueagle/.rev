@@ -47,4 +47,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * Move firmware licenses to a LICENSES/ directory</comment>
     <requestid>1361050</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>56052bb7b3ce9526eddbe14bbac3e684</srcmd5>
+    <version>20260703</version>
+    <time>1788270353</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260703 (git commit c95059a3774b):
+  * ueagle-atm: sadly drop unlicensed files</comment>
+    <requestid>1374917</requestid>
+  </revision>
 </revisionlist>
