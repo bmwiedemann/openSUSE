@@ -1,0 +1,31 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f9171703b7ced5e7950891c27906439c</srcmd5>
+    <version>0.15.1</version>
+    <time>1788270436</time>
+    <user>anag_factory</user>
+    <comment>New package: qdmr 0.15.1, GPL-3.0-or-later.
+
+qDMR is a graphical codeplug programming tool (CPS) for DMR amateur
+radios: it reads, edits, verifies and writes the codeplug (channels,
+zones, contacts, scan lists, callsign DB) of the radio over USB. It
+ships the qdmr GUI, the dmrconf command line tool, and libdmrconf,
+split per the shared library policy into libdmrconf0 and qdmr-devel.
+
+Supported radios include Radioddity/Baofeng RD-5R and GD-77, TYT
+MD-UV390/MD-2017, Retevis RT3S, AnyTone AT-D868UVE/D878UV/D578UV,
+BTECH DMR-6x2 (PRO) and DM-1701, Baofeng DM-32UV, and the OpenGD77
+firmware family.
+
+Why Factory: the manufacturers ship device- and even revision-specific
+CPS tools with no Linux build, so without qdmr these radios cannot be
+programmed from openSUSE. Factory has chirp for analog/FM radios but
+nothing that writes a DMR codeplug (qdmr reads chirp CSV). The
+package has been maintained in hardware:sdr since 2021, tracks upstream
+closely, and Fedora, Debian, Gentoo and NixOS all ship the same 0.15.1.
+
+Upstream's test suite runs in %check (27/27 pass). rpmlint is clean
+(0 errors, 0 warnings, 0 badness).</comment>
+    <requestid>1374732</requestid>
+  </revision>
+</revisionlist>

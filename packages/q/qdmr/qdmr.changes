@@ -1,0 +1,467 @@
+-------------------------------------------------------------------
+Sun Aug 30 16:38:14 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Drop the gcc13 workaround for Leap 15.x: the project has no
+  15.x repo, and the guard matches nowhere else (Tumbleweed
+  defines no sle_version, 16.0 defines it as 0).
+- Replace the chrpath hack with -DCMAKE_SKIP_INSTALL_RPATH=ON:
+  qt6_standard_project_setup() gives every non-static target an
+  $ORIGIN install RPATH and %cmake only strips it on
+  suse_version <= 1500, so libdmrconf.so kept one; chrpath
+  covered only the two binaries.
+- Run the upstream test suite: -DBUILD_TESTS=ON plus %ctest.
+- Drop Group tags.
+
+-------------------------------------------------------------------
+Sun Jun 21 08:30:01 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.15.1
+  What's Changed
+  * Relaxed AnyTone auto-repeater index linking.
+  * Show error messages in status bar, if repeater database
+    requests fail.
+  * Fixed DM32UV interface detection.
+  * Added missing DM32UV and DR1801 to cli verify.
+  * Added frequency raster limit for GD-73.
+  * Fixed handling of sparse contact definitions.
+  * Disabled flow control, control signal lines explicitly.
+  * Added encoding/decoding of channel encryption key reference.
+  * Fixed error messages on detection issues.
+  * Added status messages for database downloads.
+  * Fix opengd77 settings.
+  * Added TRACE level and use it for raw IO dumps in OpenGD77.
+  * Store dialog sizes..
+  * Fixed encoding/decoding of CTCSS frequencies for the DM32UV.
+  * Relaxed linking of MD32UV channels.
+  * Automatically enable fixed position for channel.
+  * Added transmit QSY flag for OpenGD77 radios.
+  * Implemented hidden zone flags for DMR6X2 and DMR6X2Pro.
+  New Translation
+  * Chinese
+
+-------------------------------------------------------------------
+Mon May 11 09:56:00 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.15.0
+  What's Changed
+  * Added AnyTone D168UV support
+  * Updated AnyTone D878UV (II) support to FW version 4.0.
+  * Fixes for DM-32UV detection and codeplug.
+  * Added common audio settings.
+  * Updated repeatermap API.
+  * Added API token to repeaterbook request.
+  * Added russian translation.
+  * Enabled support for DMR6X2 PRO radio model.
+ Minor changes
+  * Added allocation of untouched memory sections.
+  * Fixed encoding of APRS settings.
+  * Added satellite name editing.
+
+-------------------------------------------------------------------
+Tue Apr  7 08:35:40 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to vesion 0.14.1
+  * Fixed property delegate to edit levels.
+  * Added satellite transponder editor.
+  * Hide elements that are already in lists.
+  * Fix inverted range check in RadioLimitLevel::verify().
+  * DM-32UV: fix mic level range and FM decode asymmetry.
+  * DM-32UV: clear APRS fields in ChannelElement::encode().
+  * Fixed channel bank encoding/decoding for DM-32UV.
+  * Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar 26 10:41:12 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.14.0
+  What's Changed
+  * Added AM channels
+  * Added support for the Baofeng DM-32UV
+  * Added common GNSS settings.
+  * Added common DMR settings extension.
+  * Added common channel extension.
+  Minor changes
+  * Allow for separate log-levels for stdout and log file.
+  * Set minimum window size to 800x600.
+  * Fix encoding of some AnyTone extensions.
+
+-------------------------------------------------------------------
+Tue Jan 20 06:36:26 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.13.3
+  What's Changed
+  * Reworked parallel parsing of databases. Fixes random crashes
+    at startup.
+  Minor updates/fixes
+  * Fixed decoding issue of AES keys for AnyTone devices.
+  * Fix misleading error message in AnytoneInterface::ReadResponse.
+  * Implemented mapping of ranges.
+  * Fixed missing encoding of GPS toggle for D878UV.
+  * Update translations.
+
+-------------------------------------------------------------------
+Sun Nov 30 20:38:20 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.13.2
+  * Fixed crash when adding new channels.
+  * Fixed out-of-bounds write when encoding call-sign DB.
+  * Update and clean-up of AT-D587UV codeplug.
+  * Fix encoding of back-light duration for all AnyTone like
+    devices.
+  * Fixed handling of modified signal.
+  * Implemented filtering/sorting of all tables.
+  * Update D578UV to add missing key functions.
+  * Fix D578 issues with display colours.
+  * Fixed call-sign DB for OpenUV380 etc.
+  * Speed up startup.
+  * Implemented hack to prevent crash of OpenGD77 FW.
+  * Update frequency input matching.
+  * Fixed spelling.
+  * Completed Italian translation.
+
+-------------------------------------------------------------------
+Tue Oct 21 17:33:19 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.13.1
+  Bugfix release including:
+  * Fixed build of man-pages, also added docbook man-page XSLT
+    file for OpenSuSE.
+  * Fixed install of header files.
+  * Fixed build and loading of translations.
+- Drop not longer needed patches:
+  * 0001-Fixed-DocBook-man-page-build.patch
+  * fix-docbook-xsl-path.patch
+- Force gcc13 on older Leap systems
+
+-------------------------------------------------------------------
+Mon Oct 20 15:45:25 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.13.0
+  * Moved to QT6.
+  * Added support for OpenMD9600 and OpenMD2017.
+  * Add support for BTECH DMR-6x2 PRO.
+  * Add support for AnyTone D578UVIII (alias for D578UV).
+  GUI changes:
+  * Fix #677 Add offset frequency indicator for repeaters.
+  * Fixes #679 Theme updates when system switches to/from
+    light/dark.
+  * Reworked issue dialog to show tracebacks.
+  Concerning OpenGD77 etc:
+  * Updated OpenGD77 call-sign database implementation.
+  * Theme settings for OpenUV380.
+  * Fixed en/decoding of DTMF contact for OpenGD77.
+  * Set date time during programming of OpenGD77 devices.
+  * Finished encryption support.
+  * Implemented missing tot transmit timeout for opengd77 devices.
+  Concerning AnyTone devices (and alike)
+  * Update DMR6X2 to FW Version 2.21.
+  * Fixed encoding of volume change prompt setting.
+  * Fixed en/decoding of backlight duration setting..
+  * Fixed APRS PTT extension settings for AnyTone.
+  * Added 8.33kHz VFO tuning step for D878UV.
+  * Updated HW version strings for AnyTone devices.
+  Concerning Radioddity devices:
+  * Fixed channel type and power setting for GD73.
+  * Fixed squelch encoding for GD73.
+  Other changes / bugfixes
+  * Fix desktop file.
+  * Fixed RX/TX frequency for repeatermap.de sources.
+  * Enforce DMR radio ID limit.
+
+-------------------------------------------------------------------
+Thu Oct  2 17:41:11 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.12.3
+  * Fixed radiolimits prevent setting SelectedChannel as revert
+    channel.
+  * Fixed RT3S channel linking issues.
+  * Fixed auto-completion swapping of RX/TX frequency for some
+    sources.
+
+-------------------------------------------------------------------
+Fri May 30 13:35:55 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.12.2
+  Bugfix release
+  * Fixed linking and decoding of per-channel DMR IDs for OpenGD77.
+  * Added support for satellite tracking function.
+  * Fixed en/decoding of subtones in OpenGD77 firmwares.
+  * Fixed location settings for OpenGD77 channels.
+  * Fixed encoding of group list indices for OpenGD77 channels.
+  * Fixed encoding of APRS settings.
+  * Fixed bandwidth in CHIRP decoding.
+  * Fixed enforcement of lower list limits.
+  * Added channel extension, implemented TX CC encoding.
+  * Fixed RX backlight duration settings documentation.
+  * AnyTone default channel linking issue (fixed #563).
+  * Fix AppStream metadata.
+  * Fix OpenGD77 (UV380) codeplug encodings.
+  * Include Norad IDs in satellite selection.
+  * Made all dialogs minimum-expanding.
+  * Fixed representation of selected revert channel (fixes #606).
+  * Fix APRS transmit frequency handling in OpenGD77.
+  * Implemented APRS PTT settings.
+  * Added extension column to all table views.
+  * Fixed encoding of second VHF auto-repeater frequency range.
+
+-------------------------------------------------------------------
+Fri Jan  3 14:21:49 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.12.1
+  Larger changes:
+  * Reworked CTCSS/DCS settings.
+  * Reworked repeater database sources.
+  * Updated OpenGD77 support to R20240908.
+  Some minor changes and bug fixes:
+  * Fixed SMS bank and message offset (#467).
+  * Fixed possible crash when writing to BTECH DMR-6X2UV.
+  * Enforces limit on SMS messages.
+  * Fixed MD380Tools button settings.
+  * Merge a lot of translations into master.
+  * Fixes duplication of sms templates.
+  * Fix modified and main-window-close signals.
+  * Fixed TX contact encoding.
+  * Updated translations.
+- Use %ldconfig_scriptlets
+
+-------------------------------------------------------------------
+Sat Oct  5 16:54:40 UTC 2024 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 0.12.0
+  New Devices
+  + Radioddity GD-73A/E
+  + BTECH BF-1801UV (A6)
+  New Features
+  + Integer frequency type.
+  + Implemented codeplug import/merge.
+  + Implemented drag & drop move in lists and tables.
+  + Implemented manual device interface & model selection. (#435)
+  + Implemented SMS templates (#413)
+  + Added CHIRP CSV file support.
+  Bug fixes
+  + Fixed encoding of settings extension for D578UV.
+  + Fixed handling of signaling enum. (#399)
+  + Fixed encoding of DMTF number length for AnyTone devices. (#425)
+  + Implemented region selection for repeater book.
+  + Fixed misleading error message on codeplug verification. (#387).
+  + Added city, state and comment to TyT call-sign db.
+  + Added column to roaming channel list, showing the roaming zones. (#378)
+  + Fix D878UVII function-key decoding.
+  + Fixed handling of missing default DMR IDs. (#458)
+  + Changed verification dialog colors for dark mode. (#461)
+
+-------------------------------------------------------------------
+Sun Aug 27 12:10:32 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.11.3
+  Rather huge bugfix release including:
+  * Implementation of AnyTone device specific settings.
+  * Show zones in channel list.
+  * Flip APRS enabled analog/digital values.
+  * Enable APRS RX only on the APRS revert channel.
+  * Enabled call-sign DB for TyT MD2017, UV390.
+  * Added TyT extension to set DMR squelch for TyT MD-UV390 and
+    MD-2017.
+  * Fixed dialog when deleting a roaming channel.
+  * Fixed decoding of roaming channels.
+  * Switch column labels.
+  * Wrap c_str in QString when emiting QTextStream.
+  * Allow for userdb file in CLI.
+  * Fix crash on missing access rights to dfu device.
+  * Added Swedish translation.
+- Update to version 0.11.2
+  * Fixed detection of DMR-6X2UV.
+  * Verified codeplug implementation for CPS version 1.5 and
+    firmware version 2.3.
+  * Swapped DMR admit criterion 'SameCC'->'Different CC'.
+  * Avoid AnyTone DMR-APRS RX/SMS firmware bug.
+  * Implements call-sign DB for BTECH DM-1701, Retevis RT84.
+
+-------------------------------------------------------------------
+Sat Jan 14 11:17:54 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.11.1
+  * Added proper support for the BTech DMR-6X2UV.
+
+-------------------------------------------------------------------
+Fri Oct 21 17:50:23 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.10.4
+  Bugfix release, including:
+  * Fixed handling of sparse lists for DM-1701, MD-2017, MD-390,
+    MD-UV390.
+  * Fixed encoding of TyT group lists.
+  * Implemented DMR channel extension for AnyTone devices.
+  * Fixed error message, when device detection fails.
+  * Added notes about auto-completion to channel dialogs.
+  * Added German translation.
+- Switch to %autosetup macro and add %check section to fix build
+  for Tumbleweed and Factory
+
+-------------------------------------------------------------------
+Sun Sep 11 17:32:52 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.10.3
+  Bugfix release including:
+  * TyT: Fixed scan-list transmit-channel decoding.
+  * MD380/MD390: Create invalid frequency range when band cannot
+    be guessed from programmed channels.- AnyTone: Extended channel
+    extension.
+  * DM-1701: Fixed detection.
+  * MD-2017: Fixed decoding of contact elements.
+  * AnyTone: Fixed encoding/decoding for DTMF contacts.
+  * AnyTone: Fixed frequency ranges.
+  * AnyTone: Fixed decoding of alert type of contact elements.
+  * AnyTone: Fixed encoding/decoding of contacts.
+  * GD77: Fixed callsign db.
+  * OpenGD77: Updated codeplug to FW rev E2022.02.
+  * OpenGD77: Implemented scan flags for channels.
+  * OpenGD77: Swapped time-slot override flags for contact
+    extension.
+  * OpenGD77: Fixed encoding of group lists for OpenGD77.
+  * OpenGD77: Fixed encoding of contact extension.
+  * Core: Fixed handling of private calls in group lists.
+  * Core: Fixed crash when encoding a channel missing the default
+    radio id.
+  * Core: Skip TX frequency check if channel is RX only.
+  * Fixed reset of codeplugs.
+  * GUI: Fixed swapped RX/TX frequencies in auto-completion.
+  * GUI: Removed 'Refresh Repeater DB' menu entry. Useless
+    since 0.10.2.
+
+-------------------------------------------------------------------
+Sat Mar 26 12:21:43 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.10.2
+  Bugfix release:
+  * Fixed static colors for ChannelListView (dark mode).
+  * Fixed limit DB entries toggling.
+  * Fixed radio limit checks.
+  * Fixed MD2017 zone decoding (off-by-one error).
+  * Fixed creation of APRS channel when decoding D878UV codeplugs.
+  * Fixed encoding/decoding of DCS settings for all AnyTone devices.
+
+-------------------------------------------------------------------
+Sat Jan 22 19:37:40 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.10.1
+  Bugfix release:
+  * Added auto-gen list of supported devices to about dialog.
+  * Added access right check for Unix systems.
+  * Implemented interface selection and detection.
+  * Implemented Radioddity radio settings extension.
+  * Implemented RadioID editor. Fixed RadioID list.
+  * Store header states for all extension views.
+  * Fixed stupid cast mistake in AbstractConfigObjectList.
+  * Fixed encoding/decoding of APRS src/dst for D878UV and later.
+  * Added color output for logger.
+  * Fixed squelch encoding for RD5R.
+  * Fixed decoding of AnyTone general settings.
+  * Fixed manual license.
+
+-------------------------------------------------------------------
+Thu Jan  6 19:35:03 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.10.0
+  * Added support for Baofeng DM-1701, still untested and user-db
+    is missing.
+  * Hide extensions in AnalogChannelEditor if
+    show-commercial-features is disabled.
+  * Fixed potential crash and memory leak in DTMFContactDialog.
+  * Fixed squelch settings for RD-5R. Fixes #182.
+  * Implemented TyT menu, extension.
+  * Fixed error message on TyT device detection.
+  * Fixed copying of squelch settings & signalling for analog
+    channels.
+  * Fixed GUI update for general settings tab.
+  * Fixed handling and instantiation of device specific extensions.
+
+-------------------------------------------------------------------
+Sun Nov 28 13:00:35 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Udpate to version 0.9.3
+  * Fixed YAML serialization.
+  * Fixed YAML parser warning.
+  * Added description fields for device specific settings.
+  * Added TyT channel, scan list, general settings.
+  * Fixed reset of owned ConfigItem properties.
+  * Added auto-copying of properties.
+  * Fixed icon sizes.
+
+-------------------------------------------------------------------
+Sat Nov 20 09:45:53 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to versino 0.9.2
+  * Fixed YAML parser to properly link APRS systems.
+  * Fixed YAML parser issue serializing DefaultRadioID.
+  * Fixed connection issue with TyT devices.
+  * Fixed GUI update issue when reading a codeplug from the device.
+  * Added extension editors to all config elements. These editors
+    are only visible when "Show Commercial Features" is enabled in
+    the settings dialog.
+
+-------------------------------------------------------------------
+Sat Nov  6 16:18:03 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.9.1
+  Changelog (since version 0.8.1):
+  * Rewrite of codeplug representation, allows to extend generic
+    device-independent codeplug representation for device specific
+    settings.
+  * New codeplug file format (YAML based). Also allows for
+    device-specific settings to be strored.
+  * Rewrite of binary codeplug encoding/decoding. Allows to extend
+    existing codeplugs and codeplug elements by just implementing
+    the differences. This makes the cumbersome encoding/decoding of
+    device specific settings feasible.
+  * Added support for the TyT MD-2017.
+  * Added TyT MD-390 support.
+  * Added Hide/Show Commercial Features flag to settings dialog.
+    This shows/hides the radio ID list (in ham radio you will only
+    need one DMR ID).
+  * Cleanup of GUI. Some minor GUI cleanup things.
+  * Added unified device names and --list-radios option for command
+    line tool.
+  * Fixed call-sign DB entry for OpenGD77.
+  * Added band information to repeater database, showing it in
+    auto-completer.
+
+-------------------------------------------------------------------
+Thu Oct 28 18:59:11 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.9.0alpha4
+  Bugfix release:
+  * Destroy radio object when verification fails.
+  * Fixed ZoneDialog adding channels always to list A.
+  * Fixed include path for yaml-cpp.
+  * Fixed crash when encoding OpenGD77 codeplugs with extension.
+  * Disabled conf-format export in command line tool.
+
+-------------------------------------------------------------------
+Sun Oct 10 14:18:03 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.9.0alpha3
+  * Added TyT MD-390 support.
+  * Added alias for TyT MD-UV380 to UV390.
+  * Fixed crash after codeplug reset in the presence of extensions.
+  * Fixed encoding of GPS systems for TyT devices.
+  * Fixed crash when decoding an unkown enum value.
+  * Fixed analog and digital channel dialog.
+  * Fixed copy constructor of Analog/DigitalChannel.
+  * Fixed crash in TyTInterface when no radio is connected.
+  * Fixed overriding of radio detection.
+
+-------------------------------------------------------------------
+Mon Oct  4 19:09:25 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.9.0alpha2
+
+-------------------------------------------------------------------
+Sat Oct  2 20:29:25 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.9.0alpha1
+
+-------------------------------------------------------------------
+Wed Sep 22 20:42:43 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 0.8.1
