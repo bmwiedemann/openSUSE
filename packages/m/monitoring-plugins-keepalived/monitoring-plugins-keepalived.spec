@@ -1,7 +1,7 @@
 #
 # spec file for package monitoring-plugins-keepalived
 #
-# Copyright (c) 2016 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,15 +21,15 @@ Summary:        Check keepalived
 License:        BSD-3-Clause
 Group:          System/Monitoring
 Version:        0.1.5
-Release:        1
-Url:            https://en.opensuse.org/Monitoring-plugins-keepalived
+Release:        0
+URL:            https://en.opensuse.org/Monitoring-plugins-keepalived
 Source0:        check_keepalived
 Source1:        keepalived_notify_monitoring.sh
 Source2:        monitoring-plugins-keepalived-rpmlintrc
 BuildRequires:  keepalived
 Requires:       awk
 Requires:       bash
-Requires:       coreutils 
+Requires:       coreutils
 Requires:       grep
 Requires:       keepalived
 Requires:       logrotate
@@ -42,13 +42,13 @@ BuildRequires:  nagios-rpm-macros
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
-This script either uses the 'notify' or snmp functionality of keepalived 
+This script either uses the 'notify' or snmp functionality of keepalived
 to inform an administrator about the current state of keepalived masters and
 slaves.
 
-While the SNMP part is simply querying a SNMP server for the keepalived 
+While the SNMP part is simply querying a SNMP server for the keepalived
 part (via agentx), the 'notify' part needs some adaptions in the keepalived.conf
-to: 
+to:
 * execute a script on changes during keepalived runtime, which writes
   the state change into a temporary file
 * read the file each time the monitoring server asks for the state if
@@ -113,7 +113,7 @@ EOF
 #
 cat >> %buildroot/%{nrpe_sysconfdir}/check_keepalived.cfg  <<EOF
 # example command definition for check_keepalived
-# please run 
+# please run
 #   %{nagios_plugindir}/check_keepalived -h
 # for a complete list of options
 command[check_keepalived]=%{nagios_plugindir}/check_keepalived
@@ -122,7 +122,7 @@ EOF
 %clean
 rm -rf %buildroot
 
-%files 
+%files
 %defattr(-,root,root)
 # avoid build dependecy of nagios - own the dirs
 %dir %{nagios_libdir}

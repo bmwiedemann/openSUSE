@@ -40,6 +40,7 @@ PIDFILE='/var/run/keepalived.pid'
 STATE='UNKOWN - no data processed'
 PROGPATH='/usr/lib/nagios/plugins/'
 USE_SNMP=false
+USE_NOTIFICATION=false
 SNMP_VERSION='2c'
 SNMP_HOSTNAME='localhost'
 SNMP_COMMUNITY='public'
@@ -62,6 +63,7 @@ print_usage() {
     echo "       -h                      : print this usage"
     echo "       -V                      : print version information"
     echo "       -s                      : use SNMP"
+    echo "       -n                      : use notification file"
     echo "       -H <hostname>           : SNMP host to query"
     echo "       -v <snmp_version>       : SNMP version (currently only 2c is supported, therefor default)"
     echo "       -c <snmp_community>     : SNMP v2 community string"
@@ -91,7 +93,7 @@ print_help() {
     exit $STATE_OK
 }
 
-while getopts 'F:p:SMhVv:sH:c:' OPTION ; do
+while getopts 'F:p:SMhVv:snH:c:' OPTION ; do
     case $OPTION in
         v|V)
             print_revision $PROGNAME $REVISION
@@ -115,6 +117,9 @@ while getopts 'F:p:SMhVv:sH:c:' OPTION ; do
         ;;
         s)
             USE_SNMP=true
+        ;;
+        n)
+            USE_NOTIFICATION=true
         ;;
         H)
             SNMP_HOSTNAME="$OPTARG"
@@ -199,6 +204,49 @@ if [ $KEEPALIVESTATE -eq $STATE_OK ]; then
 		fi
 	fi
 
+  elif [ "$USE_NOTIFICATION" == "true" ] ; then
+    if [ -r "$STATEFILE" ] ; then
+        STATE1=$(grep "in MASTER state" "$STATEFILE")
+        STATE2=$(grep "in BACKUP state" "$STATEFILE")
+        STATE3=$(grep "in FAULT state" "$STATEFILE")
+        STATE4=$(grep "in STOP state" "$STATEFILE")
+    else
+        echo "UNKOWN: could not read $STATEFILE"
+        exit $STATE_UNKNOWN
+    fi
+    if [ -n "$STATE3" -o -n "$STATE4" ] ;then
+        echo "$STATE3 $STATE4"
+        exit $STATE_CRITICAL
+    fi
+
+    if [ "$MASTER" == "true" ]; then
+        if [ -n "$STATE1" ]; then
+            echo "OK: $STATE1 $STATE2"
+            exit $STATE_OK
+        elif [ -n "$STATE2" ]; then
+            echo "CRIT: $STATE1 $STATE2 is not master"
+            exit $STATE_CRITICAL
+        fi
+    elif [ "$SLAVE" == "true" ]; then
+        if [ -n "$STATE2" ]; then
+            echo "OK: $STATE1 $STATE2"
+            exit $STATE_OK
+        elif [ -n "$STATE1" ]; then
+            echo "CRIT: $STATE1 $STATE2 is not slave"
+            exit $STATE_CRITICAL
+	else
+            echo "UNKOWN: could not detect state from $STATEFILE : $STATE1 $STATE2"
+            exit $STATE_UNKNOWN
+        fi
+    else
+        if [ -n "$STATE1" -o -n "$STATE2" ]; then
+            echo "OK: $STATE1 $STATE2"
+            exit $STATE_OK
+	else
+            echo "UNKOWN: could not detect state from $STATEFILE : $STATE1 $STATE2"
+            exit $STATE_UNKNOWN
+        fi
+    fi
   else
     rm -f $STATEFILE
     kill -USR2 $PID

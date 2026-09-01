@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 25 12:16:54 UTC 2026 - Ruediger Oertel <ro@suse.com>
+
+- add a "-n" option to actually use the state file written by
+  keepalived_notify_monitoring.conf
+
+-------------------------------------------------------------------
 Fri Feb 23 13:33:06 UTC 2018 - lars@linux-schulserver.de
 
 - Version 0.1.5
