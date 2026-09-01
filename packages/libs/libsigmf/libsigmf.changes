@@ -1,0 +1,39 @@
+-------------------------------------------------------------------
+Sun Aug 30 15:18:26 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Require nlohmann_json in -devel: libsigmfConfig.cmake does
+  find_dependency() on it, so find_package(libsigmf) failed for
+  every consumer that did not already pull it in
+- Add libsigmf-install-interface-include-path.patch: the installed
+  CMake interface exposed only <prefix>/include, so the usage the
+  README documents, #include <sigmf.h>, did not compile (nor did
+  the angle-bracket include inside flatbuffers_type_to_json.h)
+- Run upstream's example programs in %check instead of leaving it
+  empty; they are the only thing that compiles a header-only
+  library, and one of them checks a full JSON round-trip:
+  * build them with -UNDEBUG: their asserts are the entire
+    verification, and compiled out they report success no matter
+    what the code did
+  * also build and run a throwaway consumer against the staged
+    tree, so a broken installed CMake config fails here rather
+    than in every consumer
+- Ship NOTICE next to LICENSE (Apache-2.0 attribution)
+- Spec cleanup: %autosetup, summary/description that describe SigMF
+  rather than repeating the package name
+
+-------------------------------------------------------------------
+Sun Sep 29 07:56:33 UTC 2024 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Updated to version (tag) 1.0.2
+- Patch 10.patch removed (applied upstream)
+
+-------------------------------------------------------------------
+Sat Apr 24 19:53:30 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Add patch https://github.com/deepsig/libsigmf/pull/10.patch
+  to fix installation of fbs files
+
+-------------------------------------------------------------------
+Sat Apr 24 19:37:30 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 0~git20200411

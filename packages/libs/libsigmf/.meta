@@ -1,0 +1,7 @@
+<package name="libsigmf" project="openSUSE:Factory">
+  <title>A header-only C++ library for working with SigMF metadata</title>
+  <description>A header-only C++ library for working with SigMF metadata.
+
+</description>
+  <url>https://github.com/deepsig/libsigmf</url>
+</package>
