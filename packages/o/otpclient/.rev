@@ -699,4 +699,24 @@
     (#405)</comment>
     <requestid>1369985</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>6380ec0df1146100cb8bd169b8105793</srcmd5>
+    <version>5.1.8</version>
+    <time>1788270452</time>
+    <user>anag_factory</user>
+    <comment>- Update to 5.1.8:
+  + FIX: no tray icon appeared in sandboxed builds even with a tray
+    host present, because the session bus refused the
+    process-derived org.kde.StatusNotifierItem-&lt;pid&gt;-1 name and the
+    tray tore itself down instead of falling back. The item is now
+    registered under the unique bus connection name whenever the
+    well-known one cannot be had, so the icon appears regardless of
+    what the sandbox grants.
+  + FIX: two sandboxed applications could not both show a tray
+    icon. Every Flatpak process sees itself as pid 2 under bwrap
+    --unshare-pid, so their process-derived StatusNotifierItem
+    names collided and whichever lost the race silently got none.
+    Both now get an icon.</comment>
+    <requestid>1374887</requestid>
+  </revision>
 </revisionlist>

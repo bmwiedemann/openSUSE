@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Aug 31 13:03:50 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to 5.1.8:
+  + FIX: no tray icon appeared in sandboxed builds even with a tray
+    host present, because the session bus refused the
+    process-derived org.kde.StatusNotifierItem-<pid>-1 name and the
+    tray tore itself down instead of falling back. The item is now
+    registered under the unique bus connection name whenever the
+    well-known one cannot be had, so the icon appears regardless of
+    what the sandbox grants.
+  + FIX: two sandboxed applications could not both show a tray
+    icon. Every Flatpak process sees itself as pid 2 under bwrap
+    --unshare-pid, so their process-derived StatusNotifierItem
+    names collided and whichever lost the race silently got none.
+    Both now get an icon.
+
+-------------------------------------------------------------------
 Wed Aug  5 06:42:46 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 5.1.7:
