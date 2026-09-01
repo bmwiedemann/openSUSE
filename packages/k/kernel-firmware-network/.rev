@@ -158,4 +158,19 @@ After this PR, there will be a delete request for kernel-firmware.
   * Move firmware licenses to a LICENSES/ directory</comment>
     <requestid>1361038</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>3111c19c0ff896c393103563fad5b7ea</srcmd5>
+    <version>20260813</version>
+    <time>1788270347</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260813 (git commit 984503d80fd6):
+  * morsemicro: add firmware for mm8108 support
+
+- Update to version 20260806 (git commit 16d815da3637):
+  * linux-firmware: Update firmware for an8811hb 2.5G ethernet phy
+
+- Update to version 20260805 (git commit 31883adc3365):
+  * airoha: update AN7583 NPU firmwares to version 0.5</comment>
+    <requestid>1374912</requestid>
+  </revision>
 </revisionlist>

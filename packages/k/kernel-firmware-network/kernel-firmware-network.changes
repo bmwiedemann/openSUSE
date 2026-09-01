@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Aug 14 07:17:05 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260813 (git commit 984503d80fd6):
+  * morsemicro: add firmware for mm8108 support
+
+-------------------------------------------------------------------
+Fri Aug  7 16:14:27 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260806 (git commit 16d815da3637):
+  * linux-firmware: Update firmware for an8811hb 2.5G ethernet phy
+
+-------------------------------------------------------------------
+Wed Aug  5 15:41:34 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260805 (git commit 31883adc3365):
+  * airoha: update AN7583 NPU firmwares to version 0.5
+
+-------------------------------------------------------------------
 Wed Jun 10 14:16:46 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260610 (git commit e7eb98afc667):
