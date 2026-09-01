@@ -20,10 +20,10 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define git_version 3ee099cd4a2091e0395a05b8fe27099ad2398aea
+%define git_version a968c5c2962e0bad2482f4b05a3fb627b871ca89
 
 Name:           kernel-firmware-realtek
-Version:        20260629
+Version:        20260731
 Release:        0
 Summary:        Kernel firmware files for Realtek wireless drivers
 License:        GPL-2.0-or-later AND SUSE-Firmware

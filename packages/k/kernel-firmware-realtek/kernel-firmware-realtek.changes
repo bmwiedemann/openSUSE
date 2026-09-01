@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Aug  1 07:01:42 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260731 (git commit a968c5c2962e):
+  * rtw89: 8922d: add fw 0.35.113.2
+
+-------------------------------------------------------------------
+Thu Jul 30 09:11:29 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260728 (git commit 543b8f5f987c):
+  * rtw88: add firmware v41.0.0 for RTL8723B
+
+-------------------------------------------------------------------
 Mon Jun 29 13:25:26 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260629 (git commit 3ee099cd4a20):

@@ -279,4 +279,16 @@ After this PR, there will be a delete request for kernel-firmware.
 - Update aliases</comment>
     <requestid>1364848</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>68fd728e1194f108547332d033632cdf</srcmd5>
+    <version>20260731</version>
+    <time>1788270351</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260731 (git commit a968c5c2962e):
+  * rtw89: 8922d: add fw 0.35.113.2
+
+- Update to version 20260728 (git commit 543b8f5f987c):
+  * rtw88: add firmware v41.0.0 for RTL8723B</comment>
+    <requestid>1374915</requestid>
+  </revision>
 </revisionlist>
