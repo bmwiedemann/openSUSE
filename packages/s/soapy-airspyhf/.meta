@@ -1,0 +1,8 @@
+<package name="soapy-airspyhf" project="openSUSE:Factory">
+  <title>SoapySDR AirspyHF+ module</title>
+  <description>Soapy AirspyHF - AirspyHF+ device support for Soapy SDR.
+A Soapy module that supports AirspyHF+ devices within the Soapy API.
+
+</description>
+  <url>https://github.com/pothosware/SoapyAirspyHF/wiki</url>
+</package>

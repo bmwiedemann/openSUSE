@@ -1,0 +1,55 @@
+-------------------------------------------------------------------
+Sun Aug 30 18:32:50 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.2.0+git20251009.7457d69:
+  * Probe for airspyhf_set_hf_att with check_function_exists instead
+    of the AIRSPYHF_VER_* cascade, which demanded REVISION >= 2
+    whatever MINOR was; harmless against the 1.6.8 we ship, but it
+    would disable gain control on airspyhf master (1.8.1)
+  * Widen cmake_minimum_required to a 2.8.12...3.10 range for CMake
+    4 compatibility
+- Upstream has only two tags ever (0.1.0 in 2018, 0.2.0 in 2021) and
+  three commits since, so pin master via obs_scm; "+git" keeps the
+  snapshot sorting above 0.2.0
+- Add pkgconfig(SoapySDR) >= 0.4.0, the floor CMakeLists checks
+- Drop Group tags, switch to %autosetup and run spec-cleaner
+- Fix the "AirspyHF#" typo in the module description and point URL
+  at the repository rather than its wiki
+- Explicitly require soapy-sdr: the automatic soname dependency pulls
+  only libSoapySDR, so the module could be installed with no SoapySDR
+  client - not even SoapySDRUtil - to reach it
+
+-------------------------------------------------------------------
+Thu Mar 27 19:05:01 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- SOAPY_SDR_ABI_VERSION bump -> "0.8-3"
+
+-------------------------------------------------------------------
+Wed Apr 10 22:35:12 UTC 2024 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to release 0.2.0
+  + Fix return early when readStream() not active
+  + Support opening the device by serial convention
+  + Use converter registry for sample format support
+  + Fix return code handling for airspyhf_list_devices()
+  + Manual gain settings in firmware R1.3 and airspyhf 1.1.2 or later
+
+-------------------------------------------------------------------
+Tue Jul  6 11:54:09 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- SoapySDR version bumped to 0.8
+
+-------------------------------------------------------------------
+Sat Dec 22 14:41:09 UTC 2018 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to release 0.1.0
+
+-------------------------------------------------------------------
+Sat Nov 10 15:32:23 UTC 2018 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update soapy-module version 0.6 -> 0.7
+
+-------------------------------------------------------------------
+Sun Feb 25 10:34:56 UTC 2018 - mardnh@gmx.de
+
+ - initial package

@@ -1,0 +1,89 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>eecda213c4c82fe3c99a4280c8121e52</srcmd5>
+    <version>0.2.0+git20251009.7457d69</version>
+    <time>1788270423</time>
+    <user>anag_factory</user>
+    <comment>New package: soapy-airspyhf - SoapySDR backend for Airspy HF+ receivers
+
+WHAT
+Exposes Airspy HF+ / Discovery receivers through the vendor-neutral SoapySDR
+API. Ships exactly one dlopen'd plugin,
+%{_libdir}/SoapySDR/modules0.8-3/libairspyhfSupport.so, in subpackage
+soapysdr0.8-3-module-airspyhf. No shared library, no headers, no -devel.
+
+LICENCE
+MIT, single-licensed. Upstream LICENSE.txt is packaged via %license and every
+source file carries the same MIT header. Nothing bundled or vendored.
+
+WHY FACTORY
+Factory already ships soapy-sdr plus seven SoapySDR backends - soapy-airspy,
+soapy-bladerf, soapy-hackrf, soapy-osmo, soapy-remote, soapy-rtlsdr and
+soapy-uhd - and every one of them, like this package, is developed in
+hardware:sdr. This is a direct peer of that set: Factory has soapy-airspy for
+the Airspy R2/Mini but nothing for the HF+ family.
+
+More concretely, Factory already ships the device library airspyhf 1.6.8 (also
+from hardware:sdr) and no Factory package currently uses it. Without this
+module that library has no SoapySDR backend to reach it, so an Airspy HF+
+cannot be driven from SoapySDR applications - gnuradio and welle-io both build
+against SoapySDR in Factory, and soapy-remote re-exports any module over the
+network.
+
+VERSION - a pinned snapshot, deliberately
+0.2.0+git20251009.7457d69. Upstream has cut only two tags ever (0.1.0 in
+2018, 0.2.0 in 2021). Master carries three commits past that tag, and they
+matter:
+ - Gain detection moved from a nested AIRSPYHF_VER_* macro cascade to cmake
+   check_function_exists(airspyhf_set_hf_att). The old cascade demanded
+   REVISION &gt;= 2 regardless of MINOR. Every released libairspyhf from 1.1.2
+   onwards satisfies that, 1.6.8 included, so this is not a live breakage in
+   Factory today - but airspyhf master is 1.8.1 (MINOR=8, REVISION=1), which
+   the cascade silently fails. The capability probe is correct by construction
+   rather than by coincidence.
+ - cmake_minimum_required widened to a 2.8.12...3.10 range. That range is what
+   lets this configure under Factory's cmake 4.4 without the
+   -DCMAKE_POLICY_VERSION_MINIMUM=3.5 workaround Factory's soapy-airspy still
+   carries.
+Fedora Rawhide ships this identical commit (soapy-airspyhf
+0.2.0^20251009git7457d69-2.fc45), independent corroboration of the pin. The version uses '+git' rather than '~git'
+so that it sorts above 0.2.0; soapy-sdr and soapy-uhd in Factory already use
+the same snapshot convention. Sources come from a pinned-commit obs_scm
+_service, so the snapshot is reproducible.
+
+BUILD
+Clean. rpmlint reports 0 errors and 0 badness; the only warning is
+no-%check-section, which is accurate - upstream ships no test suite.
+
+pluskalm has been added as package maintainer in hardware:sdr.
+
+ADDED IN THIS REVISION
+Explicit &quot;Requires: soapy-sdr&quot; on the module subpackage, at dimstar's request
+on SR 1374694 (soapy-plutosdr), applied to all five plugin submissions: &quot;Shouldn't that require soapy-sdr? The module
+on its own seems quite useless&quot;.
+
+To be precise about what this does and does not change: the dlopen itself lives
+in libSoapySDR (SoapySDR::loadModules(), reached from Device::make()), which the
+module already pulled in through its automatic soname dependency on
+libSoapySDR.so.0.8-3 - so any application linking the library could always load
+the module. What nothing pulled in was the soapy-sdr package, which ships
+SoapySDRUtil; the module could therefore be installed on a system with no
+SoapySDR client at all to enumerate or probe it. So this is a usability
+dependency rather than a functional one, and the spec comment says so. The
+soname dependency remains the ABI-exact constraint, which is why the new line is
+deliberately unversioned instead of duplicating the ABI in the spec.
+
+Stated plainly so it is not mistaken for convention: none of Factory's existing
+SoapySDR plugins - soapy-airspy, soapy-bladerf, soapy-hackrf, soapy-osmo,
+soapy-remote, soapy-rtlsdr, soapy-uhd - carries such a Requires. This change
+makes these five stricter than current Factory practice; it is what the reviewer
+asked for, not a convention being matched.
+
+Rebuilt natively on aarch64 after the change: green, rpmlint unchanged, and
+&quot;rpm -qp --requires&quot; on the built module now lists both
+libSoapySDR.so.0.8-3()(64bit) and soapy-sdr.
+
+Supersedes SR 1374702.</comment>
+    <requestid>1374742</requestid>
+  </revision>
+</revisionlist>

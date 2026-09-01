@@ -1,0 +1,18 @@
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="url">https://github.com/pothosware/SoapyAirspyHF.git</param>
+    <param name="scm">git</param>
+    <!-- upstream tags rarely (2 tags since 2018); pin master past soapy-airspyhf-0.2.0 -->
+    <param name="revision">7457d6972d97ea6808a2774a9439501308e4c688</param>
+    <!-- '+git' not '~git': this snapshot is AFTER 0.2.0 and must sort above it -->
+    <param name="versionformat">0.2.0+git%cd.%h</param>
+    <param name="exclude">.git*</param>
+    <param name="filename">soapy-airspyhf</param>
+  </service>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">zst</param>
+  </service>
+  <service name="set_version" mode="buildtime"/>
+</services>
