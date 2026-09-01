@@ -41,12 +41,12 @@ BuildRequires:  clang >= 10.0.0
 BuildRequires:  gcc
 BuildRequires:  libbpf-devel
 BuildRequires:  libelf-devel
-BuildRequires:  libpcap-devel
 BuildRequires:  llvm >= 10.0.0
 BuildRequires:  m4
 BuildRequires:  make
-BuildRequires:  pkg-config
-BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(libpcap)
+BuildRequires:  pkgconfig(zlib)
 # For README.org file, but pulls in too much dependency
 #BuildRequires:  emacs-nox
 # Always keep xdp-tools and libxdp packages in sync
@@ -74,8 +74,7 @@ The libxdp-devel package contains headers used for building XDP programs using
 libxdp.
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
 # Not Autoconf-based, so need to set environmental variables
@@ -105,8 +104,7 @@ rm -f %{buildroot}%{_libdir}/libxdp.a
 # Remove test file to avoid rpmlint's arch-dependent-file-in-usr-share error
 rm -rf %{buildroot}%{_datadir}/xdp-tools/
 
-%post -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}
 
 %files
 %{_sbindir}/xdp-filter
