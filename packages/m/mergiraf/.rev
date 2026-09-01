@@ -144,4 +144,17 @@
     <comment>Update to version 0.19.0: (forwarded request 1372873 from develop7)</comment>
     <requestid>1372874</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f010ad9999a05bd6c2e8d19ae65cbad3</srcmd5>
+    <version>0.19.1</version>
+    <time>1788270718</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.19.1:
+  * Set version to 0.19.1
+  * fix: don't abort the overall merge when merging binary files (#817)
+  * fix(kotlin): add missing signature for visibility modifiers (#820)
+  * refactor: simplify code using the `in_data_dir` helper (#814)
+  * cargo-update-20260817 (#811) (forwarded request 1375085 from develop7)</comment>
+    <requestid>1375086</requestid>
+  </revision>
 </revisionlist>
