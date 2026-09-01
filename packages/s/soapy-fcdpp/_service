@@ -1,0 +1,17 @@
+<services>
+  <!-- upstream tags only 0.1.0/0.1.1 (2019); all later work sits on master, so pin a commit -->
+  <service name="obs_scm" mode="manual">
+    <param name="url">https://github.com/pothosware/SoapyFCDPP.git</param>
+    <param name="scm">git</param>
+    <param name="revision">1ae85f008f60e1afdf0f2601338563b0c81c7e9d</param>
+    <param name="versionformat">0.2.0~git%cd.%h</param>
+    <param name="exclude">.git*</param>
+    <param name="filename">soapy-fcdpp</param>
+  </service>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">zst</param>
+  </service>
+  <service name="set_version" mode="buildtime"/>
+</services>

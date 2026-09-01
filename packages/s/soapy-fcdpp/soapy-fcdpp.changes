@@ -1,0 +1,64 @@
+-------------------------------------------------------------------
+Sun Aug 30 18:32:50 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.2.0~git20251009.1ae85f0:
+  * Support FUNcube Dongle Pro (V1.x) besides the Pro+
+  * Expose bias-T and frequency (TCXO) correction via the Soapy API
+  * mmap direct-buffer streaming and a selectable period
+  * Detect devices against the current libhidapi-libusb path format
+- Ship a pinned master snapshot: upstream last tagged 0.1.1 in 2019 and
+  cuts no releases, while its own changelog calls master "Release 0.2.0
+  (pending)"
+- Drop SoapyFCDPP-add-missing-return.patch, fixed upstream
+- Correct License to BSL-1.0; upstream SPDX headers and LICENSE_1_0.txt
+  are Boost, never MIT, and the file is now installed as %license
+- Adjust build dependencies:
+  * Drop unused pkgconfig(libbladeRF); nothing references bladeRF
+  * Replace libhidapi-devel with pkgconfig(hidapi-libusb), the only
+    hidapi backend FindHIDAPI.cmake links
+  * Require pkgconfig(SoapySDR) >= 0.8 to match the ABI-keyed module dir
+  * Require cmake >= 3.5, the policy floor the build relies on
+- Spec cleanup: drop Group tags and the empty %check, refresh the
+  summary/description wording and the URL tag
+- Explicitly require soapy-sdr: the automatic soname dependency pulls
+  only libSoapySDR, so the module could be installed with no SoapySDR
+  client - not even SoapySDRUtil - to reach it
+
+-------------------------------------------------------------------
+Tue Apr  1 09:57:49 UTC 2025 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- SOAPY_SDR_ABI_VERSION bump -> "0.8-3"
+
+-------------------------------------------------------------------
+Thu Sep 26 20:37:41 UTC 2024 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Use autosetup macro instead of patchX
+- Minor specfile update
+
+-------------------------------------------------------------------
+Sat Jul 10 10:48:29 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- SoapySDR version bumped to 0.8
+
+-------------------------------------------------------------------
+Sat Jul 13 07:09:11 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- added patch SoapyFCDPP-add-missing-return.patch to avoid returning
+  random data from a function
+
+-------------------------------------------------------------------
+Sun Jan 27 22:37:30 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- version 0.1.1
+  * Cleared up license - Boost Software License 1.0
+  * Improved stream reading regarding handling ALSA states
+  * Added Raspberry Pi 3 optimization compiler flags to meson.build
+  * Fixed install path in meson.build
+  * Shortened the period length from 4096 to 2048. Works fine on
+    Raspberry Pi 3.
+
+-------------------------------------------------------------------
+Fri Dec 21 23:28:38 UTC 2018 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- version 0.1.0
+- initial package

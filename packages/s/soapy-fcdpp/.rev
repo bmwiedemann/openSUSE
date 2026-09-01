@@ -1,0 +1,72 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d4c514ad01993fed7f3b4ccc50be821e</srcmd5>
+    <version>0.2.0~git20251009.1ae85f0</version>
+    <time>1788270424</time>
+    <user>anag_factory</user>
+    <comment>New package: soapy-fcdpp - the SoapySDR hardware backend for the FUNcube
+Dongle Pro+ (and the older Pro V1.x).
+
+Why Factory: Factory already ships soapy-sdr plus seven SoapySDR modules
+(soapy-airspy, soapy-bladerf, soapy-hackrf, soapy-osmo, soapy-remote,
+soapy-rtlsdr, soapy-uhd). The FUNcube Dongle is a common entry-level
+receiver and its backend is the one obvious hole in that set, so SoapySDR
+frontends already in Factory - gqrx and gr-osmosdr - cannot drive the
+hardware today. The package has been maintained in hardware:sdr since 2018
+and builds there for Tumbleweed, Factory:ARM and Leap 16.0.
+
+License: BSL-1.0. LICENSE_1_0.txt, debian/copyright (Files: *) and the
+per-file SPDX-License-Identifier headers all agree. The tag previously read
+MIT, which was simply wrong; it is corrected here and the licence file is
+now installed via %license. A Legal-Review-Notice above the License tag
+records why fcd.c and fcd.h look different to a scanner: they carry only
+Xcode's &quot;All rights reserved&quot; template line, from the same author.
+
+No proprietary dependency: the FUNcube Dongle is an ALSA-audio-plus-HID
+device, so the module links libSoapySDR, libasound and libhidapi-libusb and
+nothing else. There is no vendor SDK and no firmware blob - every file in
+the source archive is plain text.
+
+Snapshot rather than a tag: upstream has tagged exactly twice, 0.1.0 and
+0.1.1, both in 2019, and cut no releases at all, while master is 43 commits
+ahead and upstream's own Changelog.txt calls that line &quot;Release 0.2.0
+(pending)&quot;. This pins commit 1ae85f008f60 (2025-10-09) reproducibly via
+obs_scm. Those commits add FUNcube Dongle Pro V1.x support, bias-T and TCXO
+control, mmap direct-buffer streaming and a configurable period; they fix
+device detection against the current libhidapi-libusb device-path format,
+which the 2019 tag predates; and they fix the missing return value we
+previously carried downstream as SoapyFCDPP-add-missing-return.patch, now
+dropped. Factory's own soapy-sdr is likewise a pinned git snapshot.
+
+pluskalm has been added as package maintainer in hardware:sdr.
+
+ADDED IN THIS REVISION
+Explicit &quot;Requires: soapy-sdr&quot; on the module subpackage, at dimstar's request
+on SR 1374694 (soapy-plutosdr), applied to all five plugin submissions: &quot;Shouldn't that require soapy-sdr? The module
+on its own seems quite useless&quot;.
+
+To be precise about what this does and does not change: the dlopen itself lives
+in libSoapySDR (SoapySDR::loadModules(), reached from Device::make()), which the
+module already pulled in through its automatic soname dependency on
+libSoapySDR.so.0.8-3 - so any application linking the library could always load
+the module. What nothing pulled in was the soapy-sdr package, which ships
+SoapySDRUtil; the module could therefore be installed on a system with no
+SoapySDR client at all to enumerate or probe it. So this is a usability
+dependency rather than a functional one, and the spec comment says so. The
+soname dependency remains the ABI-exact constraint, which is why the new line is
+deliberately unversioned instead of duplicating the ABI in the spec.
+
+Stated plainly so it is not mistaken for convention: none of Factory's existing
+SoapySDR plugins - soapy-airspy, soapy-bladerf, soapy-hackrf, soapy-osmo,
+soapy-remote, soapy-rtlsdr, soapy-uhd - carries such a Requires. This change
+makes these five stricter than current Factory practice; it is what the reviewer
+asked for, not a convention being matched.
+
+Rebuilt natively on aarch64 after the change: green, rpmlint unchanged, and
+&quot;rpm -qp --requires&quot; on the built module now lists both
+libSoapySDR.so.0.8-3()(64bit) and soapy-sdr.
+
+Supersedes SR 1374707.</comment>
+    <requestid>1374743</requestid>
+  </revision>
+</revisionlist>
