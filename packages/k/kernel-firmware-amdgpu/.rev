@@ -752,4 +752,41 @@ After this PR, there will be a delete request for kernel-firmware.
   * amdgpu: DMCUB updates for various ASICs</comment>
     <requestid>1367330</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>71f606069e7aba7e52602bf6a7a8f4c3</srcmd5>
+    <version>20260829</version>
+    <time>1788270339</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260829 (git commit 458e40fdbb4d):
+  * amdgpu: DMCUB updates for various ASICs
+
+- Update to version 20260828 (git commit b6bdea3726dc):
+  * amdgpu: add VCN 5.3.0 firmware
+
+- Update to version 20260821 (git commit 8c7fac62c0d1):
+  * amdgpu: add VPE 2.0.0 firmware
+  * amdgpu: add SDMA 6.1.4 firmware
+  * amdgpu: add DCN 4.2 firmware
+  * amdgpu: add PSP 15.0.9 firmware
+  * amdgpu: add PSP 15.0.0 firmware
+  * amdgpu: add GC 11.7.1 firmware
+  * amdgpu: add GC 11.7.0 firmware
+  * amdgpu: DMCUB update for DCN314
+
+- Update to version 20260814 (git commit 2398c20fc656):
+  * amdgpu: DMCUB updates for various ASICs
+
+- Update to version 20260813 (git commit 984503d80fd6):
+  * Revert &quot;amdgpu: update GC 10.3.6 firmware&quot;
+  * amdgpu: update vangogh firmware
+  * amdgpu: update VPE 6.1.1 firmware
+  * amdgpu: update VCN 4.0.6 firmware
+  * amdgpu: update PSP 14.0.1 firmware
+  * amdgpu: update GC 11.5.1 firmware
+  * amdgpu: update VPE 6.1.0 firmware
+  * amdgpu: update VCN 4.0.5 firmware
+  * amdgpu: update PSP 14.0.0 firmware
+  * amdgpu: update GC 11.5.0 firmware</comment>
+    <requestid>1374903</requestid>
+  </revision>
 </revisionlist>

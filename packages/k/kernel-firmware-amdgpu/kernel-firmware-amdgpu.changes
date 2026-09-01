@@ -1,4 +1,112 @@
 -------------------------------------------------------------------
+Mon Aug 31 07:50:56 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260829 (git commit 458e40fdbb4d):
+  * amdgpu: DMCUB updates for various ASICs
+
+-------------------------------------------------------------------
+Fri Aug 28 13:57:52 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260828 (git commit b6bdea3726dc):
+  * amdgpu: add VCN 5.3.0 firmware
+
+-------------------------------------------------------------------
+Sat Aug 22 06:30:03 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260821 (git commit 8c7fac62c0d1):
+  * amdgpu: add VPE 2.0.0 firmware
+  * amdgpu: add SDMA 6.1.4 firmware
+  * amdgpu: add DCN 4.2 firmware
+  * amdgpu: add PSP 15.0.9 firmware
+  * amdgpu: add PSP 15.0.0 firmware
+  * amdgpu: add GC 11.7.1 firmware
+  * amdgpu: add GC 11.7.0 firmware
+  * amdgpu: DMCUB update for DCN314
+
+-------------------------------------------------------------------
+Sat Aug 15 07:03:46 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260814 (git commit 2398c20fc656):
+  * amdgpu: DMCUB updates for various ASICs
+
+-------------------------------------------------------------------
+Fri Aug 14 07:16:21 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260813 (git commit 984503d80fd6):
+  * Revert "amdgpu: update GC 10.3.6 firmware"
+  * amdgpu: update vangogh firmware
+  * amdgpu: update VPE 6.1.1 firmware
+  * amdgpu: update VCN 4.0.6 firmware
+  * amdgpu: update PSP 14.0.1 firmware
+  * amdgpu: update GC 11.5.1 firmware
+  * amdgpu: update VPE 6.1.0 firmware
+  * amdgpu: update VCN 4.0.5 firmware
+  * amdgpu: update PSP 14.0.0 firmware
+  * amdgpu: update GC 11.5.0 firmware
+  * amdgpu: update renoir firmware
+  * amdgpu: update yellow carp firmware
+  * amdgpu: update raven2 firmware
+  * amdgpu: update raven firmware
+  * amdgpu: update VCN 3.1.2 firmware
+  * amdgpu: update PSP 13.0.5 firmware
+  * amdgpu: update GC 10.3.6 firmware
+  * amdgpu: update picasso firmware
+  * amdgpu: update PSP 13.0.11 firmware
+  * amdgpu: update GC 11.0.4 firmware
+  * amdgpu: update VCN 4.0.2 firmware
+  * amdgpu: update PSP 13.0.4 firmware
+  * amdgpu: update GC 11.0.1 firmware
+  * amdgpu: update VCN 5.0.0 firmware
+  * amdgpu: update SMU 14.0.3 firmware
+  * amdgpu: update PSP 14.0.3 firmware
+  * amdgpu: update GC 12.0.1 firmware
+  * amdgpu: update SMU 14.0.2 firmware
+  * amdgpu: update PSP 14.0.2 firmware
+  * amdgpu: update GC 12.0.0 firmware
+  * amdgpu: update vcn 4.0.4 firmware
+  * amdgpu: update SMU 13.0.7 firmware
+  * amdgpu: update PSP 13.0.7 firmware
+  * amdgpu: update GC 11.0.2 firmware
+  * amdgpu: update SMU 13.0.10 firmware
+  * amdgpu: update SDMA 6.0.3 firmware
+  * amdgpu: update PSP 13.0.10 firmware
+  * amdgpu: update GC 11.0.3 firmware
+  * amdgpu: update VCN 4.0.0 firmware
+  * amdgpu: update SMU 13.0.0 firmware
+  * amdgpu: update PSP 13.0.0 firmware
+  * amdgpu: update GC 11.0.0 firmware
+  * amdgpu: update beige goby firmware
+  * amdgpu: update dimgrey cavefish firmware
+  * amdgpu: update navy flounder firmware
+  * amdgpu: update sienna cichlid firmware
+  * amdgpu: update navi14 firmware
+  * amdgpu: update navi12 firmware
+  * amdgpu: update navi10 firmware
+  * amdgpu: add PSP 13.0.15 firmware
+  * amdgpu: update VCN 5.0.1 firmware
+  * amdgpu: update PSP 13.0.12 firmware
+  * amdgpu: update GC 9.5.0 firmware
+  * amdgpu: update PSP 13.0.14 firmware
+  * amdgpu: update GC 9.4.4 firmware
+  * amdgpu: update PSP 14.0.5 firmware
+  * amdgpu: update GC 11.5.3 firmware
+  * amdgpu: update VPE 6.1.3 firmware
+  * amdgpu: update PSP 14.0.4 firmware
+  * amdgpu: update GC 11.5.2 firmware
+  * amdgpu: update green sardine firmware
+  * amdgpu: update arcturus firmware
+  * amdgpu: update VCN 4.0.3 firmware
+  * amdgpu: update PSP 13.0.6 firmware
+  * amdgpu: update GC 9.4.3 firmware
+  * amdgpu: update aldebaran firmware
+
+-------------------------------------------------------------------
+Thu Jul 30 09:10:45 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260728 (git commit 543b8f5f987c):
+  * amdgpu: DMCUB updates for various ASICs
+
+-------------------------------------------------------------------
 Fri Jul 17 08:02:39 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260717 (git commit fb91c990e602):
