@@ -118,4 +118,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * Move firmware licenses to a LICENSES/ directory</comment>
     <requestid>1361022</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a8a8bb33440364cc98e6ce4d121713c4</srcmd5>
+    <version>20260813</version>
+    <time>1788270340</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260813 (git commit 984503d80fd6):
+  * ath12k: QCC2072 hw1.0: update to WLAN.COL.1.0.c2-00228-QCACOLSWPL_V1_TO_SILICON-1</comment>
+    <requestid>1374905</requestid>
+  </revision>
 </revisionlist>
