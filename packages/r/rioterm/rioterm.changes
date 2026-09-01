@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Mon Aug 24 13:29:14 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 0.5.26:
+  * https://rioterm.com/changelog#0526-2026-08-24
+
+-------------------------------------------------------------------
+Mon Aug 17 15:12:15 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 0.5.25:
+  * https://rioterm.com/changelog#0525-2026-08-15
+
+-------------------------------------------------------------------
+Fri Aug 14 15:11:57 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 0.5.24:
+  * https://rioterm.com/changelog#0524-2026-08-13
+- Update to version 0.5.23:
+  * https://rioterm.com/changelog#0523-2026-08-12
+
+-------------------------------------------------------------------
+Wed Aug 12 14:26:43 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 0.5.22:
+  * https://rioterm.com/changelog#0522-2026-08-12
+- Update to version 0.5.21:
+  * https://rioterm.com/changelog#0521-2026-08-12-tag-superseded-by-0522
+
+-------------------------------------------------------------------
+Wed Aug 12 00:22:18 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 0.5.20:
+  * https://rioterm.com/changelog#0520-2026-08-12
+
+-------------------------------------------------------------------
+Fri Aug  7 14:39:02 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 0.5.19:
+  * https://rioterm.com/changelog#0519-2026-08-07
+  * https://rioterm.com/changelog#0518-2026-08-07
+  * https://rioterm.com/changelog#0517-2026-08-06
+
+-------------------------------------------------------------------
+Thu Aug  6 16:34:28 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- The changelogs now have a date associated with them as part of the link.
+  * For example, https://rioterm.com/changelog#0517-2026-08-06 ; nothing wrong
+    with this per se, but makes it so rioterm.com/changelog MUST be checked
+    each time since the date isn't immediately known
+    * They're also extra chatty lately, so I'm going back to linking them
+- Update to versopm 0.5.16:
+  * https://rioterm.com/changelog#0516-2026-08-06
+  * https://rioterm.com/changelog#0515-2026-08-06
+  * https://rioterm.com/changelog#0514-2026-08-05
+  * https://rioterm.com/changelog#0513-2026-08-05
+  * https://rioterm.com/changelog#0512-2026-08-05
+  * https://rioterm.com/changelog#0511-2026-08-05
+  * https://rioterm.com/changelog#0510-2026-08-04
+  * https://rioterm.com/changelog#059-2026-08-04
+  * https://rioterm.com/changelog#058-2026-08-04
+  * https://rioterm.com/changelog#057-2026-08-03
+  * https://rioterm.com/changelog#056-2026-08-03
+
+-------------------------------------------------------------------
 Sun Aug  2 21:58:17 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to version 0.5.5:
