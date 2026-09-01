@@ -97,4 +97,34 @@
   * Patch boost.patch (forwarded request 1308180 from anag_factory)</comment>
     <requestid>1308181</requestid>
   </revision>
+  <revision rev="13" vrev="13">
+    <srcmd5>b7793b1e28ad0ed5b5ef2113a13870c3</srcmd5>
+    <version>0.2.5</version>
+    <time>1788270425</time>
+    <user>anag_factory</user>
+    <comment>Add an explicit &quot;Requires: soapy-sdr&quot; to each SoapySDR module subpackage
+(soapysdr0.8-3-module-mirisdr, -module-osmosdr, and the bcond'd
+-module-freesrp).
+
+The modules link libSoapySDR, so rpm does generate a soname dependency -
+but it resolves to libSoapySDR0_8-3, and nothing pulls in the soapy-sdr
+package itself, which is what ships SoapySDRUtil. Verified: SoapySDRUtil
+is absent from a build root carrying the modules' full dependency closure.
+The dependency is added to the module subpackages only, not to
+libSoapyOsmoSDR0.
+
+Note this is a deliberate tightening rather than an existing convention:
+no SoapySDR plugin currently in Factory carries this dependency (verified
+across soapy-rtlsdr, soapy-hackrf, soapy-airspy, soapy-bladerf, soapy-osmo
+and soapy-uhd).
+
+Also in this request:
+- License corrected to GPL-3.0-or-later; every built source that carries a
+  licence header is GPLv3 or later.
+- COPYING shipped in the module subpackages.
+- %cmake_build instead of a hand-rolled make invocation.
+
+No version change: 0.2.5 is the current upstream tag.</comment>
+    <requestid>1374747</requestid>
+  </revision>
 </revisionlist>

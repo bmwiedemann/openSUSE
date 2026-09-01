@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Aug 30 18:19:23 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Require soapy-sdr from each SoapySDR module subpackage: the generated
+  soname dependencies only pull libSoapySDR0_8-3, never the soapy-sdr
+  package itself, so the modules shipped without SoapySDRUtil
+- Correct License to GPL-3.0-or-later; every built source that carries
+  a licence header is GPLv3 or later
+- Ship COPYING in the module subpackages
+- Build with %cmake_build instead of a hand-rolled make invocation
+
+-------------------------------------------------------------------
 Tue Sep 30 12:16:47 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Remove BuildRequires on libboost_system-devel,
