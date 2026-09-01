@@ -297,4 +297,19 @@
    see /usr/share/doc/packages/perl-MCE/Changes</comment>
     <requestid>1309620</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>555d5d9b92f236a2705675d438a95076</srcmd5>
+    <version>1.904.0</version>
+    <time>1788270439</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.904.0 (1.904)
+   see /usr/share/doc/packages/perl-MCE/Changes
+  1.904 Fri Aug 21 16:00:00 EST 2026
+    * Update License.
+      Thank you, Paul Howarth.
+  1.903 Thu Aug 20 21:00:00 EST 2026
+    * Check that the MCE Model is imported in the namespace before use.
+      Thank you, @djerius.</comment>
+    <requestid>1374864</requestid>
+  </revision>
 </revisionlist>

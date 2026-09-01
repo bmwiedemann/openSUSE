@@ -1,7 +1,7 @@
 #
 # spec file for package perl-MCE
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name MCE
 Name:           perl-MCE
-Version:        1.902.0
+Version:        1.904.0
 Release:        0
-# 1.902 -> normalize -> 1.902.0
-%define cpan_version 1.902
+# 1.904 -> normalize -> 1.904.0
+%define cpan_version 1.904
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Many-Core Engine for Perl providing parallel processing capabilities
 URL:            https://metacpan.org/release/%{cpan_name}
