@@ -1,0 +1,1894 @@
+-------------------------------------------------------------------
+Sun Aug 30 15:13:07 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Correct License to GPL-3.0-or-later AND LGPL-2.0-or-later AND
+  LGPL-3.0-or-later; only the stale COPYING text is GPLv2. The weaker
+  grants are the bundled src/xmlrpcpp flxmlrpc copy (LGPLv3+) and the
+  FLTK-derived src/widgets/Fl_Text_*_mod.cxx (Library GPLv2+), both
+  compiled in.
+- Add pkgconfig(libgpiod) >= 2.2.1 BuildRequires, Tumbleweed only:
+  configure auto-detects it, so GPIO PTT/CW keying was silently built
+  out. Leap 16.0 carries libgpiod 1.6.3 and would go unresolvable.
+- Declare Provides: bundled(flxmlrpc) and drop the now-unused
+  flxmlrpc-devel BuildRequires: 2.0.12 has no system-flxmlrpc configure
+  check and always compiles the bundled copy.
+- Drop deprecated %suse_update_desktop_file and its update-desktop-files
+  BuildRequires/Requires(post); validate the upstream desktop file with
+  desktop-file-validate instead. desktop-file-utils must stay a
+  BuildRequires or rpmlint's bundled validator cannot load libgio and
+  reports a false invalid-desktopfile.
+- Package AUTHORS.
+- Spec cleanup: drop Group, https Source URL, %setup -q to %autosetup,
+  libudev-devel to pkgconfig(libudev).
+
+-------------------------------------------------------------------
+Tue Aug  4 09:33:53 UTC 2026 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 2.0.12
+  * fix Icom bandwidth tables
+  * Clean up std::cout: add // to lines
+  * PTS device add /dev/pts/* devices to serial ports
+    . provides i/o to virtual serial device used primarily for testing
+  * IC7300 class corrections
+    + enable get/set tracing in ic7300 class methods
+    + correct wrong CAT string
+    + remove set_pbt command being sent before xcvr test complete
+    + fix xmlrpc command cat_string
+  * add UDS socket support for Linux target
+  * TX Power etal: tx power, swr, alc etc were not being read from
+    transceiver during CW keydown
+  * Modify scripts for current development h/w
+  * A/B Button events: correct event processing for A/B button
+    LEFT, RIGHT, SHIFT and CONTROL
+  * Remove unused debugging statements
+  * PTT coding error: check ptt state erroneously resetting PTT to
+    current stat creating race condition
+  * record tracing
+    + add time to execute and client ID if available
+    + add record button to trace view dialog
+    + set test_trace to default OFF
+  * add Xiegu X6200 transceiver
+    . model after Icom 705
+  * xmlrpc priority
+    +  changes implemented to correct JS8Call and possibly others
+       from wasting time executing unnecessary transceiver access
+    +  add code to allow xmlrpc ptt request to have priority
+       over internal polling
+    +  add code to test for freq, mode, state values older than 5
+      seconds
+    +  disallow frivolous set function execution, ie: new data does
+      not change current transceiver value
+  * change thread lock timeout to 500 msec
+  * FT710
+    + testing mods for Richard Shaw
+    + eliminate possible bad pointers in parsing replystr responses
+      from CAT queries
+  * add version to title bar
+  * Yaesu FTX-1
+    + add new transceiver
+  * Send Command bug fix
+    + add ability to read up to and never more than a specific
+      number of bytes in response to a CAT command for data.
+      . different than Kenwood or Icom responses
+      . different than later model Yaesu that are similar to Kenwood
+  * G90 V4
+    + add new backend for G90 firmware update
+  * CW Auto Tune / Zero-in
+    + add CW zero in button on CW extras tab
+    + add CW zero in button on CW send dialog
+    + Supported by:
+      . FT891
+      . FT991 / FT991A
+      . FTdx10
+      . FTdx101D
+     . FTdx1200
+  * FT-891 update
+    + modify and correct code testing with Yaesu h/w
+    + add vfo adjust
+    + add agc slow, medium, fast, auto
+    + add auto-on/off
+    + add power out conversion table
+    + fix log 200 scale
+    +  add ability to use power limited AM tune signal
+      . allow use of 3rd party tuners such as LDG auto tuner
+    + add class code to compensate for 891 firmware bug that
+      forces DATA-U/L bandwidth to 500 with every select A/B
+      or SWAP A/B operation
+    +  calibrate SWR value-to-scale conversion
+    +  correct get_tune logic
+  * trace expansion:
+    + add separate failure trace function that
+      cannot be disabled at the user level
+      . report trace event if thread lock excedes 50 msec
+    +  reduce scope of thread locking in xml server PTT execution
+    +  add additional "std::string(__func__)" parameters to
+       guard_lock calls that were not providing named events
+    + * add test_trace function
+  * FT991A bug fix
+    + correct detection of AGC Auto Medium
+  * TS870S attenuator control
+    +  recognize left/right click on attenuator button
+    +  coded split functions set/get
+  * TrxAVR homebrew
+    + add new transceiver class for beautifully crafted
+      homebrew digital transceiver, TrxAVR
+- Update to version 2.0.11
+  * rewrite set_ptt ... no functional change
+  * Create new debug menu with trace and events access
+  * thread locking
+    + change instantiation of guard lock to use trylock
+      multiple times, reporting every 10th failed attempt
+    + alter guard lock behavior to remove unnecessarty calls
+    + remove unnecessary serial locks from xmlrpc server code
+       . ie: read smeter using User Interface values, etc.
+    + fix trace thread locking to NOT use guard lock mechanism
+    + add thread locking trace control to trace config dialog
+  * Poll Voltage: separate from test version polling with mode
+  * CWIO keyline control: xmlrpc control of key state, 1/0, down/up
+  * FMD-DUO:
+    + repeat xcvr presence check if first attempt fails
+    + update the get_swr method
+    + add TUNE off command
+  * add backup files stack of four
+  * Multi monitor
+    + correct positioning of application dialogs
+    + correct screen assignment in multi-monitor environment
+  * Xcvr Config UI
+    + change visual appearance
+    + change label for CW / PTT
+  * correct ICOM xcvr logic on returned tuner state
+  * XMLRPC ptt/tune status
+    + return PTT status immediately in CW mode if transceiver PTT
+      disabled; semi or full break-in
+    + show power out and swr when tx state is TUNE
+  * rig panel:
+    + suppress unused menu items when libgpiod not present
+    + fix SWR scale visibility
+    + zero Power meter when in Rx mode 
+  * CW label mismatch: correct undesignated "m1" label caption
+  * correct xmlrpc interface for remote client flrig connection
+  * remove code section incompaible with Wayland
+
+-------------------------------------------------------------------
+Sat Dec 20 00:32:31 UTC 2025 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 2.0.10
+  * Documentation update
+    + Add library versions to About dialog
+    + Add how to resize dialogs using numeric keyboard +/- keys
+  * Correct unnecessary LETTERS/FIGURES shifts when sending a space
+  * cwio & fskio ui
+    + replace text sent widget with FTextView
+    + replace text-to-send widget with FTextEdit
+    + add restorable position and size to both dialogs
+    + add font and font size select for cwio & fskio text widgets
+    + add color selection for text widget background
+    + save & restore background color
+    + save & restore text attributes: color, font, size
+  * Change both gpio ptt and gpio cw to use calls to gpio deamon.
+  * Add Text Sent control, text sent panel added just above text to
+    send on CW & FSK dialogs
+  * Change to non-invasive serial port discovery using operating
+    system specific commands vice generic posix open device tests
+  * IC 7410 mode changes
+    + correct reported problem setting USB-D / LSB-D
+    + add get/set preamp
+  * QMXp
+    + Add new functions to support
+      . modes: LSB, USB, CW, DIGIU, CW-R, DIGIL
+      . selectable bandwidth
+        CW widths: 50, 100, 150, 200, 250, 300, 400, 500
+        DIGI widths: 2500, 2700, 2900, 3200
+        SSB widths: 2500, 2700, 2900, 3200
+      . CW keying using character strings
+      . S meter measurement & display
+      . SWR measurement & display
+      . Power out measurement & display
+      . Sidetone volume adjust
+      . Volume control
+    + Audio mute
+      . RF gain control
+  * Debug read_mode(), change to always read filter / bandwidth
+    when reading mode.
+  * Increase size of off-screen dummy dialog to prevent X errors
+  * Save and reset screen number, position and dialog scale
+  * CW ptt signaling
+    + correct timing with xmlrpc data stream.
+      . use control-P on fldigi to alternate between sending and
+        receiving
+      . use control-R on fldigi to set receive state
+      . use control-T on fldigi to set transmit state
+      . use "T/R" button on fldigi to change to transmit or
+        receive state.
+  * Add read FSK parameters via xmlrpc query for baud, stop bits
+    and idles
+  * fsk mods
+    + change timing to replicate CWIO timing
+    + terminate transmission with a ' ' | LETTERS baudot byte
+    + ignore PTT off state change until after transmission has
+      completed.
+  * Dialog placement
+    + fix issue with opening and closing main dialog at extreme
+      bottom of the screen, application always opens with extras
+      tab(s) hiddeneven if shut down with the tabs visible.
+
+-------------------------------------------------------------------
+Tue Oct 21 21:37:33 UTC 2025 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 2.0.09
+  * Reject xmlrpc mode change
+    External cluster clients may error by changing transceiver mode
+    USB and/or USB-D for all digital modes. That precludes using
+    flrig in FSK mode, such as RTTY or RTTY-R on the Icom 7300.
+  * gcc warnings: gcc-15 introduced many warnings regarding
+    ambiguous use of parameters in class virtual methods.
+
+-------------------------------------------------------------------
+Fri Jul  4 20:52:17 UTC 2025 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 2.0.08
+  * gcc 15 initialization:
+    + correct for segfault caused by gcc initialization order
+  * Service Request Processing
+    + deprecate use of serviceQUE
+    + reuse code for direct call from requesting process
+    + fix Fl_Browser calls for fltk-1.4.x
+  * nanosleep redefinition
+    + redefinition conflict with newer mingw gcc version
+- Update to version 2.0.07
+  * IC-7760:
+    + Add support for IC-7760
+    + Add missing files to repository:
+      . NEWRIG.txt
+      . src/fileselector/fileselect.cxx
+
+-------------------------------------------------------------------
+Sat Jun 14 15:31:04 UTC 2025 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 2.0.06
+  * add fltk 1.4.x Fl_Preferences call
+  * IC705 wfm
+    + IC-705 number of modes is now set to 14
+    + Fix sizes of mode_filterX and mode_bwX initializers
+    + Use enum of IC-705 modes whenever possible
+  * TS870S header file: correct get_pc_min_max
+  * Change .com to .org to correct for change in web page hosting
+  * QMX+ digital naming change to comply with hamlib interface
+  * GPIO: restore configuration tab
+  * FT-991/A power out: fix double query
+  * FT2000: correct read/set power control
+  * IC 7600/7610/9700 time functions
+    + correct CAT strings for 7600 & 7610
+    + add synch date/time for 9700
+    + TT550 debug: add trace statements
+    + IC7000: add agc and vox controls
+  * FTdx101D: Add code to prevent leaving transceiver in TUNE mode
+    on 70 cm band
+  * FLTK 1.4.0: correct for Fl_Preferences change
+  * IC705 update: changes to computation of IDD
+  * IDD scales: enable optional 4=5 amp scale, auto select 5, 25,
+    50 amp IDD range
+  * Send Command: change waitResponse interval from fixed 200 msec
+    to progStatus.serial_timeout value
+  * FT2000 rfgain
+    + change rfgain set/get algorithm
+    + resolve rf gain A/B
+    + correct sscanf format string
+    + code for inverse gain values in RGnNNN; cat string
+  * K4 controls: add independent save restore A/B for volume,
+    IF shift, RF gain, attenuator, preamp, AGC
+  * IC7300 labels: change on/off labeling for IC7300 controls
+  * rig_io multiple string test: correct boolean test for string 'req2'
+  * TS590: correct readin ALC and SWR
+  * Restore memory sort: add left click on header bar to sort by
+    category, frequency, bandwidth, mode, comments
+  * RTS/DTR PTT: insure that serPTT is set correctly
+  * echo auto detect: auto detect echo once and done
+  * remove flfnc_common: remove unused, deprecated source file
+  * update m4 macros to automake 2.71
+  * UI configuration
+    + correct UI discrepancies
+      . Reset/Cancel loses your original settings
+      . Tab Clr does not reset
+      . Automatically-changing foreground text color
+      . Configuration tree navigator hard-coded black
+      . UI does not update dynamically
+    + separate color preferences from xcvr preferences
+      . allows user to maintain and select multiple named
+        color preference schemes
+    + provide both save and save-as menu item for saving UI between
+      flrig executions.
+      . 'save' does not prompt for file name, uses current
+        named scheme, default is 'default'
+      ' 'save as' prompts for file name, reconstructs to
+         insure it is in <NAME>.UI format
+  * Icom Send Cmd: correct end of string error
+  * G90 read smeter: orrect number of read bytes from 8 to 9
+  * TCP-IP read response: add timeout to loop / wait for response
+  * 991/A auto start: fix power on sequence
+  * Auto Notch Label: change default vector of labels
+  * FT890 status
+    + change read info from 28 to 18 chars
+      . correct vfo value parsing
+    + add read 5 status bytes
+      . parse vfo A/B
+      . parse split
+      . parse ptt
+    + add read power out
+  * Cannot connect logic
+    + retain serial port assignment if transceiver fails to respond
+      to initialization
+    + improve alert message to provide hint as to probable cause
+  * Mode fast set/get
+    + improved UI display of mode / bw set/get
+    + faster response to xmlrpc request for mode / bw
+  * BW fast set/get: improved set/get processing of transceiver bandwidth
+  * UI update: set/get/display MODE, BANDWIDTH, FREQ
+  * XML label access:
+    + change all C style label string arrays to C++ vectors
+    + make both the array and current label value accessible
+      via XML cmds
+    + XML cmd additions: get_agc, incr_agc
+  * FT991A: test for valid return strings to queries
+  * QMX: add set time
+  * Icom transceivers mode change
+    + change to FM bandwidth decode
+    + change to mode/bandwidth/freq display sequence
+    + use set_FILT when selecting FM/FM-D bandwidths
+    + change xmlrpc command rig.set_bandwidth to select the nearest
+      available bandwidth. previously selected the next largest
+      bandwidth
+    + changes effect: 7300
+  * UI tab color: add restore tab color to ui initialization
+  * FT747GX: add to list of supported transceivers.
+  * Yaesu Auto ON/OFF sequence updates for FT450, FT450D, FT710
+  * TCPIP connection:
+    + change timeout for VSP type connection
+    + Coded TCP/IP access similarly to a serial port.
+    + Successfully tested both the FT-991 and IC-7300.
+  * Yaesu Xcvr RFgain/squelch
+    + code additions contributed by Steve AG7GN
+    + added squelch control methods to FT991, FT991A, FT710, FT2000
+    + added RFgain control methods to FT2000
+  * Yaesu binary: avoid std::string out-of-bounds assert failure
+    when testing for icom echo on binary string return from a
+    non-Icom transceiver
+  * FT747: change code which checks for presence of FT747
+  * IC7610:
+    + Fix reported bugs:
+      . CW break-in management
+      . Sub receiver, vfo-B, start and end settings
+      . Copy vfoA to vfoB
+      . Dual watch
+    + work on following controls:
+      . squelch
+      . mode - code for get mode was bogus
+      . equalize vfoA / vfoB
+      . CW break in
+    + correct methods to set/get pbt values
+  * LISTSIZE: gee, someone actually wants more than 200 memory spots
+  * TMD710 update
+    + correct get_vfo code
+    + correct reading of the current transceiver mode (AM FM NFM)
+    + correct selection (read and write) of in used vfo A or B
+    + removed forced dual band mode on startup
+  * add ability to sort memory contents by FREQ, BW, MODE, or COMMENTS
+    by clicking on sort list header
+  * change FontBrowser class to use std::list vice C array of structures
+  * meterpair structure
+    + define globally as {float; float;}
+    + FT450D
+      . change to linear conversion
+
+-------------------------------------------------------------------
+Sun Dec 31 10:10:43 UTC 2023 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 2.0.05
+  * maintenance release
+  * FT 891/991/991A: correct start up method
+  * TMD710: add gett, sett trace statements to aid in debuggin* 
+  * IC705: update DV mode/bandwidths
+  * FT710 bug fix: vfoB frequency incorrectly parsed
+  * qmx14: 
+    + update to AG get/set
+      change flrig AG control to be RF gain as that is
+      the parameter most closely akin to the system gain
+      that is controlled by the AG command set. Phone
+      audio output is not controlled by AG command.
+    + update to MD get/set
+  * K4 update
+    + hide opBW
+    + set mode/bw relationship when set at xcvr or flrig
+  * SWR xmlrpc
+    + add get_SWR: returns string representing SWR in
+      floating point a conversion from meter reading to SWR value
+  * XMLrpc get_swr 
+    + Add new xmlrpc class
+    + Update PowerSDR class
+  * xml client fix: bypass transceiver check() if executing
+    as an xml client
+  * Value Wheel Slider
+    + fltk value_slider incorrectly draws '-0' when changing
+      from a small negative value to zero, this is a force
+      fix outside of the widget code
+  * UI cosmetics: Change all occurances of 'Hang' to 'Delay'
+  * FLTK 1.4.x / gcc 12: changes for fltk/gcc compatability
+  * Documentation Overhaul
+    + Change document structure
+    + Add missing elements
+    + Change xcvr naming for consistency in a product line
+    + Update documentation source and source files as required
+      . add missing transceivers
+      . organize help files to generate a manual more easily
+        searched and used by first time users
+    + edited by Cliff Scott, AE5ZA, and David Freese, W1HKJ
+
+-------------------------------------------------------------------
+Thu Oct 12 22:43:11 UTC 2023 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 2.0.04
+  * maintenance release
+  * serial-i/o: restore end of string testing in ReadBuffer method
+  * serial trace: restore serial_trace inhibit
+  * Serial read:  more tuning of read serial method, remove dependency
+    on find2, find2 strings, simplify parsing of return string for
+    Icom echo
+  * PowerSDR
+    + change methods to use wait_string vice wait_char
+    + read voltmeter issue in xcvr software: disable in flrig
+      PowerSDR class
+    + change read methods for noise reduction, swr and squelch
+  * rigbase: add wait_string function
+  * Code cleanup, correct compile warnings
+  * FLEX-1500
+    + update to transceiver class methods
+    + add new function wait_string for ASCII cat string processing
+    + correct passband tuning, activate only for variable filters
+    + change User Interface for controlling mode, bandwidth,
+      passband tuning and filter selection
+    + tweak UI positions and sizes
+  * IC7300
+    + autostart code modification
+  * FT991
+    +  remove get split FR command reference. not available in 991
+  * IC7851
+    + fix set/get modes
+  * Icom Echo
+    + modify read code to make impervious to the state of ECHO at
+      transceiver
+    + improve Windows serial readbuffer and setcommtimeouts
+    + disable serial write delay
+
+-------------------------------------------------------------------
+Sat Sep  2 21:57:37 UTC 2023 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 2.0.03
+  * maintenance release
+  * add support for Flex SmartSDR
+  * Add new ALC 40dB scale for PowerSDR
+  * FTdx10: add Idd and Vdd meterinig
+  * IC9700: correct get_sat_mode
+  * xmlrpc_rig
+   + add ability to connect to an executing flrig anywhere on
+     localhost, LAN, or WAN.
+     . set address and port on "client" configuration tab
+     . select "xmlrig" from serial port select control
+     . only works with transceivers using serial streams for
+       sending and receiving transceiver CAT data
+     . uses target flrig xmlrpc interface commands
+       rig.client_string, rig.get_ptt, rig.set_ptt, rig.get_xcvr
+       and system.listMethods
+- Update to version 2.0.02
+  * maintenance release
+  * ic735 bw: remove has_bandwidth_control
+  * KX2: Add separate class for KX2 based on KX3, correct
+    bandwidth table for KX3
+  * flex 1500: remove startup reference to tci centers array
+  * rigs array: change xcvr order in rigs[]
+  * FTdx3000/9000: update mode lists
+  * FT991A agc: fix to annunciate AUTO, submitted by Dave, KZ1O
+  * QMX: add qrp_labs QMX transceiver
+  * sdr2 select
+    + correct operation of select A/B channels
+    + correct Smeter parsing
+      . display for Rx #
+      . display for Channel A/B
+  * ui controls: fix label sizes
+  * xmlrpc alert: add indication when xmlrpc server active
+  * tci interface
+    + fix various issues with slice vice channel
+    + fix various issues with set/get mode
+    + add tci "sendCommand"
+- Update to version 2.0.01
+  * maintenance release
+  * QDX has bandwidth
+    + restore "has_bandwidth_control = true" to class instantiation.
+      needed to satisfy wsjtx xmlrpc client's request for bandwidth.
+    + change rigbase default bandwidth (used if has_bandwidth_control
+      is false), was "NONE" change to "3000"
+  * TS990 meters: add missing meters
+  * K3, KX3, K4 controls
+    + update bandwidth controls to support both A and B
+      independently
+    +  update xmlrpc bandwidth interface
+  * Missing FT987D: add missing instantiation code
+  * DSP-L/DSP-H bws
+    + fix bws transfer to xmlrpc client; effects all transceivers
+      with DSP-L and DSP-H bandwidth selectors
+    + fix set_bw to correctly handle H/L as well simple BW parameter
+  * xmlrpc get bandwidth
+    + ignore transceivers that do not support variable bandwidth
+      or bandwidth tables
+  * rigbase vectors
+    + failed to properly initialize rigbase vectors
+     . only effects transceivers without either mode, bandwidth,
+       or DSP controls; such as Yaesu FT-847
+  * fltk-1.4.x compatability
+
+-------------------------------------------------------------------
+Sat May 20 10:25:00 UTC 2023 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 2.0.0
+  * Update release
+  * xml command button
+    + add xml command to execute User defined command button
+  * button colors
+    + remove fixed color attribute from various controls
+  * FT890 update
+    + change initial serial timeout values
+  * X6100 update
+    + update x6100 class methods to firmware 1.1.6 capability
+    + improve transceiver polling algorithm. efficiently skip
+      over unpolled items.
+  * string vectors
+    + replace all occurances of "const char *...[]" with 
+      std::vector<std::string>...
+    + enclose all access to vectors using safe mode 'at(N)'
+      vice memory corrupting C style array's '[N]'
+    + remove all NULL entries in former const char*[] C style arrays    
+    + h/w such as chained Elecraft transceiver, power amp,
+      panoramic adapter (specifically the KX series) interferes
+      with the free flow of serial data between the transceiver
+      and the PC. Corrupted strings occassionally caused segmentation
+      fault by out-of-bounds accessing of const char * string arrays.
+    + default transceiver pick list to be sorted by name
+      . add reference to class instantiation by list item:
+        correct transceiver class instantiation selected
+        independent of sort order
+      . browser pick list for transcceiver always in ASCII
+        sorted order independent of addition ordering
+    + instantiate std::vector<std::string> ... as static to
+      allow building on 18 years old Mac's
+  * trusdx seg fault
+    + correct erroneous trace parameter
+  * combo highlight
+    + fix off by one pulldown highlight
+  * TS590S/SG
+    + Change default serial port write delay.
+  * Yaesu FT710
+    + add FT710 transceiver
+  * Elecraft BW interface
+    * correct UI for changed BW paradigm for K2, K3, KX3, K4
+    + fix various segfault issues with Elecraft xcvr i/o strings.
+  * xmlrpc server
+    + add guard_lock requests to circumvent thread
+      interaction observed with KX3 / wsjt-x
+      . wsjt-x is turning out to be a nemisis
+    + fix trace formatting
+  * IC7700 set BW
+    + correct CAT string for setting digital mode BW
+  * Kenwood meter readings
+    + changes to correctly parse returned queries on Kenwood
+      transceiver(s): TS890, TS990
+  * FTdx10 bandwidths
+    + eliminate "Default" bandwidth selection as transceiver
+      never seems to return a 00 value.
+    + update frequency control documentation
+    + added new command line parameters
+      --trace rig
+      --trace get
+      --trace set
+      --trace serial
+      --trace xml
+      --trace rpc
+      --trace tci
+      --trace
+- New specfile based on fldigi specflie
+
+-------------------------------------------------------------------
+Sun Mar 12 19:56:40 UTC 2023 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 1.4.8
+  * allow immediate response to PTT request for impatient clients
+  * change socket address to allow LAN connect on winders
+  * add command line paramater '--iconify' to start flrig
+    iconified to desktop status bar
+  * updates for compatability with fltk-1.4
+  * corect Morse table entry for double quote
+  * Combo visibility: force first row to be visibile when pop up
+    list has 2 or less entries.
+    + corrected sort method
+    + additional changes to add method
+  * Fixed several edge case behaviors with Combobox widgets
+  * xmlrpc get vfo
+    + change UI / xmlrpc clients to all have equal probability of
+      access to the serial i/o. UI polling was locking out client
+      requests and causing some to time out.
+  * remove serial guardlock from all functions called byan Fl::awake
+    callback. 
+  * Meters dialog
+    + save and restore position and shown state of meters dialog
+    + reduce size of Meters group when power out and Vcc metering
+      is not available.
+    + deactive meter if control not available in specific transceiver
+  * Button logic
+    + change IC7300 logic for button states:
+      . preamp
+      . attenuator
+    + change polling logic for all transceivers
+    + Separate PBT selection from IF Shift configuration
+  * changed get/set/display paradigm for preamp attenuator for
+    + Icom transcivers
+    + Elecraft transceivers
+    + Kenwood transceivers
+    + SunSDR2 Dx/Pro
+    + Xiegu transceivers
+    + Yaesu transceivers
+    + Flex transceivers
+    + TenTec transceivers
+  * UI - Frequency Control behavior
+    + Made FC behavior consistent across flapps
+    + Prevent unintended focus assumption by FC when flrig
+      application does not have focus and mouse transits FreqControl
+    + Restore focus to main flrig window upon FC focus release
+  * Make preamp button aware of levels 0,1 and 2
+  * Make preamp and attenuator buttons work on whichever receiver is selected.
+  * Improve AGC button labelling
+  * Make volume, rf-gain, and agc apply to selected receiver instead of
+    just main receiver.
+  * Instead of having doing two IF Sliders make IF Slider apply to
+    selected receiver - A is always Main receiver, B is always Sub receiver
+  * RF Gain slider jump problem fixed
+  * serial-mods
+    + changes to basic serial i/o class
+      . added set_attributes and ability to change baud, DCR, DTR, 
+        CTSRTS and StopBits after port is opened
+    + changed readbuffer loop to avoid cpu capture if user
+      changes xcvr baudrate while connected to flrig, or serial
+      port h/w fails (RFI or otherwise)
+    + changes to various rigbase functions
+    + remove unnecessary delays in serial i/o
+    + change timeout processing for readbuffer
+    + improved serial i/o tracing
+    + move setting timeouts to within loop just before reading the i/o.
+    + add verbose trace statements to serial.cxx
+    + change timing and timed reports to microsecond precision
+    + add command line parameter to set SERIALDEBUG
+    + modify WriteBuffer (serial i/o) to simulate hamlib
+      serial implementation of write_delay and post_write_delay
+      . change byte_interval to write_delay
+      . change comm_wait to post_write_delay
+    + read and convert original timeouts to new serial_xxx values
+  * SunSDR2
+    + correct max allowable frequency
+    + Add INNER, OUTER controls for bandwidth adjustment
+  * Icom 705
+    * correct max frequency allowable
+  * QDX
+    + add backend for QDX transceiver
+    + update methods to firmware >= 1.06
+  * TS570
+    + correct smeter cat string parser
+  * Flex 1500 U/L filter
+    + add upper/lower filter controls similar to SunSDR2
+      implementation
+  * Yaesu vfo
+    + change 1.25 scaling to 10.0 for get/set frequency
+  * PCR1000
+    + add DSP control commands / UI elements
+  * IC751 ICR71
+    + Add new rigs
+  * Power SDR update
+    + Add AGC controls
+    + Fix ZZNR command
+  * trusdx
+    + add initialization delay to allow xcvr to complete it's init
+  * Xiegu rigs
+    + correct smeter, swr meter conversions for G90, 5105
+  * FTdx1200 write delay
+    + change default for FTdx1200 to 5 msec
+    + add multiple attempts to check method
+    + disable reading old prefs timing values
+  * FTdx101D power display
+    + correct power display and get processing FTdx10 meters
+  * FT857
+    + add eeprom bit test for vfo status A/B before sending
+      command to switch vfo.
+  * powersdr
+    + tune status fix
+  * TS870S
+    + rewrite of several methods using switch code block
+    + corrected mismatch of replystr length
+    + added get/set trace statements
+    + added tests to prevent out-of-bounds array access
+    + added get set squelch
+    + added get set auto notch
+  * SunSDR Pro/DX
+    + Add individual support for Expert SunSDR Pro / DX xcvrs
+      using TCI interface code
+  * IC-7610
+    + IC-7610 Extra Controls - Band Tab - Fixes for band selection
+      and register store functions
+    + Add documentation of this feature
+    + Changing inner or outer passband tuning via slider
+      control will cause crash-to-desktop if 'set' commands
+      are being traced; applies only to IC-7610.
+    + Don't send PBT commands to both inner and outer
+      unless 'lock' is set
+  * (tr)uSDX
+    + add backend class for (tr)uSDX transceiver
+  * FTdx10
+    + correct set notch logic
+    + fix autostart
+    + fix cw tone ON upon initial CAT start
+    + enable date/time synch with PC
+    + update to set/get notch ON/OFF/Value methods
+    * correct logic for converting RM and SM responses to UI metering
+    + FA/FB change ascii string to long long int conversion
+  * IC7851
+    + correct x25 x26 freq mode get/set CAT strings
+  * TS 590 S/SG 
+    + add AM data mode
+  * K4
+     + add transceiver class for Elecraft K4
+     + Fix K4 passband tuning
+     + Fix IF Shift for K4 which in K4 is really AF center-pitch
+     + Fix set_power_control() -- K4 power settings a different.
+  * K3
+    + implement K3 set/get for both vfoA and vfoB
+- update to version 1.4.7
+  * fix failure to set new vfo A/B when selected from memory manager
+
+-------------------------------------------------------------------
+Tue Jul 26 20:54:17 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 1.4.6
+  * Yaesu microphone gain - change scaling for these transceivers:
+    FTDX1200, FTDX3000, FTDX101D, and FTDX10
+  * Icom mode_type: add missing mode_type tables for IC728 and IC735
+  * Yaesu split: modify read split to monitor eeprom address when
+    xcvr is in Rx for FT857D and FT817BB
+  * sdr2-win: fix for min-gw builds
+  * SunSDR2:
+    + add support for SunSDR2 series of transceivers
+      . serial support via virtual device
+      . tci support via socket interface address/port configurable
+        by operator
+    + add identification of /dev/tnt* virtual devices created
+      by tty0tty.
+    + add power limit control. disallow power above % of max
+      when power limiting enabled (can still be ursurped at xcvr)
+    + Change CW bandwidths in tcisdr transceiver class
+    + USB and LSB bandwidths selectively centered at specified 
+      frequency
+      . add center and width controls for LSB and USB
+      . width only for other modes
+      . selection of center frequency and width is unique to the tci
+        interface. ExpertSDR2 will recognize the tci cat string
+        lower/upper filter frequencies as 'user'
+  * IC7600 mods:  corrections and additions to code marked ALH
+  * IC9700 satellite support
+  * IC7300 FM CW
+    + fix BW control problem when one vfo set to CW and the other
+      to FM.
+    + bandwidth table element "bandwidths_" not updated during
+      select vfo operation.
+    + deprecate use of 7300 swapAB command 0x07 0xB0 and use flrig
+      internal swapAB processing. Icom swap is simply to activate
+      the alternate vfo. flrig internal swap results in physically
+      changing vfo A and B contents including filters and bandwidths.
+      Emulates the Kenwood swap.
+    + deprecated use of pass by reference in trace support functions
+      printXCVRSTATE(XCVR_STATE ...) and *print(XCVR_STATE ...)
+      to avoid parameter contamination by sibling thread access.
+  * fsk fixes: flrig -> flrig FSK keying would drop characters and
+    miss end of transmission characters. problem resolved
+  * CW keyer enhancements
+    + Add macro substitutions
+      . MYCALL
+      . MYNAME
+      . MYQTH
+      . CALL
+      . NAME
+    +  Add contest number faculty
+       . set current (starting) number
+       . send current number
+       . increment current number
+    + transmit log
+      . plain text file
+      . date-time stamped entry for each transmission
+    + Add import/export ADIF text files
+  * FTdx10: correct get power out
+  * Vd / Idd metering
+    + add Vd and Idd metering
+      . selectable with SWR, ALC, IDD image/sliders
+      . update to Icom transceivers:
+        IC7100.cxx, IC7300.cxx, IC7600.cxx, IC7610.cxx
+        IC7700.cxx, IC7800.cxx, IC7851.cxx
+      . update to Yaesu transceivers
+        FT2000.cxx, FT5000.cxx, FT950.cxx, FT991.cxx
+        FT991A.cxx, FTdx101D.cxx, FTdx3000.cxx
+      . add 50 V voltage scale for the Yaesu FT101DxMP
+  * X6100 / G90
+    + update methods based on user feedback
+    + add G90 get_ptt method
+  * FT991A/FTdx3000 mods:  VFO B set/get - correct query
+    and control of VFO B
+  * Compression
+    + read and annunciate inital xcvr compression values
+      . on/off
+      . value
+  * QCX+: Add backend for QCX+, a Kenwood style command set
+  * TS570 Split: Correct get logic
+  * pts ports: add /dev/pts to serial port search path
+  * FT450/D
+    * set inuse when reading vfo A/B
+    * modify waitN to wait_char and add gett statements
+  * 817 defaults: change to default serial and polling values.
+
+-------------------------------------------------------------------
+Sat Mar 26 20:43:38 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 1.4.5
+  Maintenance release, update documentation
+  * PowerSDR
+    - added get set noise
+    - update to get power out
+  * trace mod - change temp storage to simple std::string
+  * cwio xcvr compensation = allow user to adjust keydown/keyup
+    timing to compensate for keying delays in transceiver.
+  * FT817 startup - wait short time interval after serial port
+    open before sending commands. needed for xcvrs with marginal
+    firmware processing power
+  * correct PTT sensing for FT817/8 series
+  * IC F8101 - trace statement additions
+  * TS990 - class methods
+  * Serial Trace
+    - change ReadBuffer implementation
+    - add pause control to trace viewing dialog
+    - add \r to <cr> conversion
+  * Variable PTT
+    - PTT signal line can be one of OFF/BOTH/SET/GET
+    - Allows mixed use of h/w, and serial ptt signals
+  * TT566 - rewrite class methods
+  * RX polling - revise RX polling sequence]
+  * FT 857/897/D
+    - Update FT897/D mode table, methods.
+    - Add trace statements to methods
+    - Add timing delays to some methods
+    - Decode mode allowing for undocumented return code 0xFC
+      packet 9600 baud
+  * TT Eagle -  add trace statements to TT599 methods
+  * freq control - modify input method
+  * Xiegu X6100 = add X6100 backend, emulates Icom IC7000
+  * FT817mod
+    - changes to compensate for busy radio,
+    - Insure that xml_server vfo reads are consistent with other
+      transceiver usage.
+  * Start up values - correct display of start up value
+   - vfo A/B
+   - mode
+   - bandwidth
+  * fskio idle -  change idle sleep time
+  * AGC controls
+    -  correct AGC values for IC7300
+    - add missing AGC controls, FT991A
+  * IC705 update
+    - add igett trace statements to various get methods
+    - change power out control to 0...10 vice 0...100
+  * 7300 power table - update lower values
+  * CW keydown -  Add key down/up button to cwio dialog
+  * cwio fskio - testing external interface
+  * 10 W Power scale
+    - Add 10 W power scale
+    - Correct power scale auto switching logic
+  * G90 update
+    - Update iaw V1.0, Radioddity CAT/Digimode manual
+    - added CW spot
+    - added Auto Tune On/Off
+  * FT1000MP-MKV - added FT1000MP_A transceiver clas,s something
+    fishy in Yaesu land. flrig now supports separate classes for
+    FT1000, FT1000MP and FT1000MP_A to satisfy reported
+    differences in vfo set/get on seemingly identical transceiver
+    models
+  * FT990/A
+    - add get/set trace statements to FT990 and FT990A class methods
+  * FTdx10 - correct commands for vfo A/B select and split operation
+  * TX500 - Implement CAT get/set PTT
+  * Start up failure - Fix NULL bandwidth pointers for PowerSDR,
+    Flex1500 etc.
+  * TS2000 - change get_split to return 0,1,2,3 depending on vfo
+    T/R usage.
+  * FTdx101D - restore missing split button
+  * TX vfo - add read VFO when PTT enabled
+
+-------------------------------------------------------------------
+Wed Dec 29 13:36:07 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 1.4.4
+  Bug fixes, corrections:
+  * FT450D - power out conversion method improved
+  * FT 817/100D - correct reported power reading problems
+  * Icom transceiver CIV selection controls active during xcvr select
+  * IC7300 CAT query response cleanup
+  * IC756 Pro - Add missing code to set mode A/B
+  * IC7610 - correct various reported issues including attenuator control
+  * TX500 code cleanup
+  * UI
+    . enable-debug (NDEBUG) compilation to allow UI testing sans transceiver
+    . add embedded / dialog tab selector for extra functions
+    . FreqControl - remove FL_RED reverse colorization used for testing
+    . Signal Bar - Change peak detect and averaging algorithm
+    . remove debugging code
+  XmlRpc
+  * add new xmlrpc exchange structures, correct reported problems
+  New functionality:
+  * CWIO - new accurate timing delay functions
+  * CWIO - add execution of [ ] control characters to control PTT
+  * DATE/TIME - add date/time synch for supported transceivers
+  * FSK - add send FSK signals on DTR or RTS serial line(s)
+  * TMATE2 - add support for Elad TMATE-2 control interface
+  Volt meter:
+  * Add visible volt meter for supported transceivers
+  * Meters display dialog to view all meter types concurrently
+  Documentation:
+  * Update documentation
+
+-------------------------------------------------------------------
+Tue Nov 16 23:48:07 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 1.4.3
+  cwio accu_sleep
+  * replace milliSleep with new accu_sleep function
+  * change activated state of configuration items based on
+    port selection
+  * change loop timing to use global accu_sleep
+  A2B freq only
+  * add shift-click to A->B button to transfer only
+    frequency from vfoA to vfoB
+  * add control-click to A->B button to transfer only
+    frequency for vfoB to vfoA
+  vfo adjust
+  * change increment to fractional values
+  start/exit set clock
+  * add user configurable commands on program
+    . start - immediately after normal start up
+    . exit - immediately after normal exit
+  * add time sychronization if supported by xcvr
+    . xcvr clock synchronized to PC clock on next minute
+      rollover, to nearest 50 msec.
+    . implemented for these transceiver:
+      - IC7100, IC7300, IC7600, IC7610, IC7700, IC7800, IC7851
+      - FT991, FT991A, FTdx10, FTdx101D, FTdx101MP FT1200:time only
+      - TS990
+    . corrected deactivated controls on some supported xcvrs
+  TX500
+  * Add Lab599 TX500 transceiver
+  CW
+  * update to timing intervals for CW generator
+  * allow user to specify DTR/RTS either normal (+) or inverted(-)
+    signaling.
+  FTdx101D
+  * fix table lookups for bandwidth
+  FTdx10
+  * add as independent transceiver backend
+   . shares many identical CAT commands to FTdx101D
+  FT1000MP
+  * correct read vfo A/B conversion logic
+  Power control
+  * change to floating point control to allow for fractional
+    changes in power level, i.e. 0.1 W / step
+  ELAD
+  * Add ELAD FDM-DUO qrp transceiver
+  G90
+  * set CW/CWR tuning sense
+  * update power/swr methods
+  K3
+  * add OM; read for power level min/max/step initialization
+  Disable Polling
+  * USE to test various comms issues between flrig and transceiver
+    . allow user to disable polling
+    . allow user to disable xmlrpc server
+  Transmit meters
+  * FT991A reported as not showing power out during transmit cycle
+  cmedia/serial port
+  * allow both serial port and cmedia devices to be initialized
+    during startup
+  K3/KX3/KXPA
+  * add programmed support for KXPA
+  * use GET OPTIONS to discover KXPA100 presence
+  * correct smeter conversion
+  * read KX3 power out when KXPA is in standby mode
+  * Add code to read SWR from KXPA if active
+    . note: the KXPA100 programmers guide
+  * Add get trace for KXPA swr reads
+  IC7851/9610/9700
+  * Change get/set vfoA/B to use x25, x26 command strings
+  * correct set/get bandwidth by mode/data/filter
+  KX3
+  * add get_PTT
+  * add reset IF shift control based on current mode
+  * add has_ptt_control as test for get_PTT call
+  * poll for change in KXPA presence with poll of power level
+    setting. Perform test during both Rx and Tx status
+
+-------------------------------------------------------------------
+Sun Aug 15 10:25:46 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 1.4.2
+  Images
+    * add images for PowerSDR, Flex1500
+  TS570
+    * corrected method to test for evidence of TS570 serial comms
+      was limited to TS590 and failed if xcvr was TS570S.
+    * corrected get_smeter method for variable length return string
+  openSUSE tumbleweed
+    * remove Warnings & Errors exposed by gcc 11.1.1
+  get meter
+     * xmlrpc classes get smeter power_meter
+  Split set/get
+    * correct CAT strings for split control on PowerSDR, Flex-1500
+      and TS-2000
+  Smeter in dbm
+    * add xmlrpc command to retrieve Smeter in dbm get_smeterDBM
+  PowerSDR/1500
+    * correct FM bandwidth table
+    * prevent using string data NULL pointer
+  Lighted buttons
+     * fix missing select color schemes
+    * add scheme "gleam"
+  Multiple xmlrpc client conflicts
+    * open up additional get xmlrpc demands to direct access to
+      transceiver CAT i/o.
+    * add verification to set_split
+  FT1000MP
+    * correct read vfo values
+
+-------------------------------------------------------------------
+Thu Jul 15 09:20:42 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 1.4.1
+  VFO A/B
+    * Change quick vfo access for weak in the knees xcvrs. includes
+      all Icom and Xiegu transceivers that cannot independently
+      control vfo A/B frequency
+  cmedia PTT
+    * add CM108... GPIO type ptt
+  FLEX1500
+    * add separate class for Flex 1500 based on PowerSDR
+  FT991A
+    * correct data port command string
+  PowerSDR
+    * correct CW bandwidth tables
+    * refresh bandwidth table with PowerSDR label strings
+      whenever mode is changed
+    * change order of bandwidth to comply with ordering on
+      PowerSDR main dialog.
+    * fix coding error for get/set split methods
+    * add set/get squelch
+    * correct set/get rfgain (AGC-T). scale to -20...120
+  CWIO
+    * restore ability to read power out in CW mode
+  Orion-II
+    * update to power out algorithm
+  FT450/D
+    * correct get power out method
+  G90 update
+    * change power scale to read actual power measured
+    * remove tune control  
+  FT891
+    * add wrapped get/set debugging statements
+  TS440
+    * add backend for TS440
+  FT1000MP
+    * test to discern PKT-U from info return string    
+- update to version 1.4.0
+  Elecraft/Icom/Kenwood
+    * KX3: added IOselect timout initialization for the
+      KX3 transceiver very slow to respond to query after
+      many set operations. changed IOselect to 500 msec
+    * corrected code in many of the class methods
+    * changed user interface to better support the xcvr
+    * front panel functions: correction to preamp cat control
+    * K3/KX3 vfos: swap/copy A/B vfos, allow independent
+      control of A/B vfos
+    * IC705/7100/7200/7300: crrect logic for detecting
+      transceiver CW mode sideband sense
+    * Faster Icom Access
+    * IC7000 preamp bug - correct CAT string, remove use of
+      IC746PRO get_preamp method
+    * IC9700 attenuator/preamp, modify control internal / external
+      on/off, remove disable attenuator when preamp on, fix
+      attenuator control strings
+    * TS480 preamp: correct get response string size test, add get
+      check when setting attenuator or preamp
+    * Tune serial port response on Icom transceivers
+  PowerSDR
+    * add get/set split
+    * add new functionality to PowerSDR class
+  FTdx1200
+    * Correct bandwidth tables
+  FT857/897 mods
+    * start / exit changes similar to FT817/818 series
+    * add get/set split
+  IC7300 split
+    * fix UI update when split changed at xcvr
+  Socket i/o
+    * Change timing & block sizes for tcpip connection
+  XmlRpcClient
+    * Add thread mutex to client implementation
+  FT817/818
+    * Code fixes for 817, 817BB and 818: change check method to
+      include repeated reads waiting for response to vfo read
+      request, add check to all set methods that might change
+      the band / mode state; including selectA /selectB
+    * Added FT818ND
+    * Yaesu has found that the undocumented "BB" command adds undue
+      read/write wear to the FT-81x flash and Yaesu no longer can get
+      this type of flash. Rather than damaging the radios, Yaesu
+      eliminated the command from the FT-818 onwards. The undocumented
+      CAT commands previously used in the FT-817 driver will still work
+      on the older radios, but run the risk of permanently disabling the
+      rigs. Based on this information, there are now two FT817 interface
+      selections
+       FT817 - only uses documented commands flrig will not report which
+        VFO is in use and will simply toggle between VFO A and B rather
+        than going directly to either one.
+       FT817BB - uses undocumented commands in read-only mode, flrig will
+        report which VFO is in use and will going directly to either one.
+    * FT818ND does not use undocumented cat commands  TS480xx
+    * Restored xcvr specific control methods. Generic Kenwood
+      methods not correct to this TS480 transceivers
+    * modify TS480HX/SAT get split display
+  IC serial
+    * Add timeout to waitFOR, waitFB
+    * Update IC705, IC9700
+  K2/K3/KX3
+    * Update read calls response to some commands is to go mute
+      for > 500 msec
+    * Update K2 trace statements: change all occurances of waitN
+      to wait_char
+    * Update KX3 trace statements
+  IC7100/7300
+    * add trace code to measure transceiver CI-V response times 
+  Duplicate RTS/DTR buttons
+    * Duplicate the initial state of RTS/DTR buttons on xcvr setup
+      and ptt setup panels 
+  CW via xmlrpc command
+    * convert xmlrpc command string into DTR/RTS keying tested
+      with IC7300 DTR keying on primary serial port both using
+      flrig keyer dialog and rpc calls from fldigi and flrig-shell
+      script. Excellent performance 10 to 50 wpm.  
+  TMD710
+    * add Kenwood TMD710 support
+  FT450/D
+    * Correction to inoperative methods
+    * Add AGC / RFGAIN controls to FT450 
+  
+-------------------------------------------------------------------
+Wed Feb  3 23:43:19 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 1.3.54
+  PowerSDR
+    * Added PowerSDR transceiver
+    * compatible with Thetis
+  TS2000
+    * test for NR; response of ?;
+  hcomm INVALID HANDLE VALUE
+    * initialize hcomm to invalid handle value when creating
+      new WIN32 class instance
+    * test for open port before attempting to reopen
+      close port if necessary
+  External close command
+    * Fix shutdown segmentation fault encountered during
+      shutdown initiated by external xmlrpc command
+  Check PTT
+    * add check for NON CAT ptt configuration
+  xmlrpc server
+    * correction to data types
+    * change zmsec computation
+    * allow xmlrpc requests for get/set_power & get_pwrmeter
+      direct access to xcvr i/o.
+    * add xmlrpc command rig.tune
+      enable transceiver tune function  
+    * update xmlrpc server method list to correctly indicate
+      signature <ret:arg> types
+    * rewrite set numeric as integer
+    * add xml_trace statements to get/set
+      . volume, mic gain, rf gain, power control
+  IC7300
+    * Add get/set trace statements
+  FT817ND
+    * add trace statements for testing
+  FT847
+    * add get_modetype
+  BigSur serial ports
+    * Modify port discovery for Big Sur naming convention
+  Break-in
+    * Add break-in selection for transceivers which support
+      set / get CAT commands for break-in
+      - Icom, Yaesu
+      - Change enable_break_in to set_break_in
+      - Add get_break_in
+        . method
+        . polling
+  Bands
+    * Add missing 1.2 GHz save/restore
+  IC7300 power table
+    * modify power table conversion method
+  Pmax
+    * return maximum available power to rig.get_pwrmax
+  Autostart
+    * Changes to transceiver autostart methods in supported
+      transceivers
+  IC7100 auto ON/OFF
+    * rewrite autostart processing to show time for
+      xcvr setup.  7100 takes about 5 seconds from a
+      CAT wakeup command to when it can process additional
+      commands
+  Trace/Debug
+    * Disable text widget update if respective dialog not visible
+    * Clear Fl_Text_Display buffer when buffer length exceeds 100000
+      This will prevent excessive use of memory and possibility of
+      segmentation fault caused by the text display widget.
+  FT736R update
+    * added mode type method
+  xmlrpcpp tracing
+  TOD clock
+    * correction to millisecond field
+  Icom sliders
+    * adjust min power for 7100, 7300, 9100, 9700
+
+-------------------------------------------------------------------
+Sat Dec 12 23:57:49 UTC 2020 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 1.3.53
+  xmlrpc server
+    * add command rig.cat_priority
+      . receive and execute cat string with higher priority
+        than any internal processes
+      . required for sending CW text strings
+  Xiegu G90 etal
+    * Correctly parse Xiegu G90 power output in tenths of watts
+    * Add XML-RPC API: rig.get_pwrmeter_scale. Divide rig.get_pwrmeter by
+      this value to get the actual value in watts.
+    * Add XML-RPC API: rig.get_swrmeter (currently broken with G90 since it
+      seemingly always outputs 0)
+  FT757GX2
+    * adde Yaesu FT-757GX2 transceiver
+  Cmd Buttons
+    * fix issue with commands 17-24
+  FTdx101D
+    * Correct read ALC
+  IC705
+    * change power set/get to % of full power
+  commands
+    * fix read/write of commands to status file
+  FT450D
+    * add AGC button
+    * relabel IPO button
+  Extras dialog
+    * change tab labels for better fit on Pi & macOS
+  FT-991/A
+    * FT991A
+      - Correct FT991A mic gain, values are 0 .. 100.
+      - FT-991A split
+        . The FT-991/A does not support the FR CAT command
+        . change to use RI (Radio Information) CAT command
+      - Add 50ms delay between setting PTT and reading
+        . corrects timing problems with WSJTX.
+    * FT991, clean up class code structures
+  Remove superfluous ceil call in get_rf_gain() as the cast to int truncates it anyway.
+  FT450D / TS-480SAT
+    * Change for loops to while loops.
+    * Simplify logic in some places.
+    * Fix RF slider values on the FT-450D which were inverted
+  CPU optimization
+    * added new --enable-optimizations options to ./configure
+      - RaspberryPi 1,2,3,4 [rpi1, rpi2, rpi3, rpi4]
+      - BeagleBone Black [bbb]
+      - Cyclone5 [cyclone5]
+      - Optimize for sse4 [sse4]
+      - Use AVX extensions [avx, avx2]
+      - i486, i686 [i486, i686]
+      - x86-64 [x86-64]
+      - ARM CPU-native [nativeARM]
+  Font Browser
+    * fix segmentation fault
+
+-------------------------------------------------------------------
+Sun Nov  1 18:20:59 UTC 2020 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 1.3.52
+  * FT736R: Correct mode select cat string
+  * IC-705: Add Icom 705 transceiver based on IC7300
+    - added DV mode to mode select
+  * IC7000: add bandwidth table.
+  * IC7100: Correct/add memory bank read/write
+  * Xiegu G90: added G90 transceiver backend modeled after Icom 7100
+  * FT-991A: get/set split fixes:
+    - The FT-991/A does not support the FR CAT command so port to RI
+      (Radio Information).
+    - Add 50ms delay between setting PTT and reading which was
+      causing problems with WSJTX.
+    - Add band selection
+  * FT-450 / FT-450D Mic Gain fixes
+    - get_mic_gain was not converting 0 ... 255 value to 0 ... 100,
+      however, the FT-450D only has 3 states, LOW (1), NORMAL (86),
+      and HIGH (171).
+    - Update slider steps to snap to 0 (LOW), 50 (NORMAL), and 100 (HIGH).
+    - Update get_mic_gain to map those values to their 0 ... 255 equivalent.
+  * Tweaks for Yaesu FT-450D and Kenwood TS-480SAT
+  * gpio PTT: add Pi gpio PTT capability
+    - Fix RF slider values on the FT-450D which were inverted
+  * Increase number of user defined buttons to 24
+  * fix slow start caused by font fixed/proportional enumeration
+  * FreqControl Update: simplify frequency control widget
+  * fix bug which caused alc/swr meter to display wrong image after
+    change of bands / tune
+  * documentation updated
+  * memory leaks fixed
+-------------------------------------------------------------------
+Mon Jul 20 22:05:18 UTC 2020 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 1.3.51
+  * Update transceiver listings
+  * Update configuration tabs
+  * Separate parts of existing text into topic files
+  * Add CW keyer documentation
+  * FT991A power: modify quadratic conversion of meter reading to power out
+  * Add user enable/disable PTT when transceiver in a CW mode
+  * monitor PTT state changes made at transceiver
+  * FT736R: added basic freq / mode support
+  * add CW generator using DTR or RTS signal line
+  * add separate CW keyboard / mouse dialog
+  * xmlrpc controls with new control interface
+  * add user selectable PTT or Break-in keying
+  * IC9700: add get_mic_gain
+  * Add a configuration item for xml server port
+  * Implement changing xml server port during execution
+  * FT450D: clean up code
+  * IC7300 Correct debug string for get_pbt_outer, get_pbt_inner
+  * Detect out-of-bounds BCD return values to both VFO and MODE
+    queries when the the xcvr is in a memory vice vfo setting and
+    the memory channel has not been programmed.
+  * FTdx101D/mp: correct get SWR method
+  * IC9100: add mic gain get/set, add compression get/set,
+    add SWR, Power Out tables
+  * fix read sideband code in IC7100, IC7200 and IC7300
+  * Xiegu-5105: added, based on IC7000
+
+-------------------------------------------------------------------
+Sun Jan 19 18:08:09 UTC 2020 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 1.3.49
+
+-------------------------------------------------------------------
+Wed Aug 21 21:24:55 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 1.3.48
+  * IC 746/756: transceiver does not support get split
+  * FT857D/897D: correct missing ptt control
+  * FT450D: S-meter scale, split on VFO-B
+- update to version 1.3.47
+  * IC7600/IC7851: Correct mode reads
+  * FTdx101D: update iaw recent changes to xcvr firmware
+
+-------------------------------------------------------------------
+Mon Jul 29 20:34:43 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 1.3.46
+  * IC7200 test: add get/set trace statements to test start/stop
+    work flow
+  * Update to KX3, added support for KXPA100 power out query
+  * Fixes for FTdx101D
+  * Fixes for FT-450 / FT-450D
+  * Added backend for F8101 commercial transceiver for use in Dominic
+     emergency network
+  * Change PTT to control audio in, Mic / Aux
+  * Add correct conversions for volume level
+  * Add shutdown sequence: return to memory / scan mode
+  * Correct set mode CAT string
+  * Add controls:
+    - Preamp / attenuator
+    - NB on/off
+    - Speech processor on/off
+    - Noise Reduction on/off
+  * Add BW controls - pending resolution of CAT command access
+  * update Smeter / POmeter mapping
+  * Split tune button into on/off and manual tune for several rigs
+  * Fix error in support.cxx
+  * FT-450 doesn't have separate Tx / Rx split commands.
+
+-------------------------------------------------------------------
+Sun Jun 16 08:36:22 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 1.3.45
+  * FT-891 update
+  * TT-550 - restore tabs dialog visibility
+  * add user configuration for sliders
+  * Modify to allow unique FT891 read intitial values
+  * Add Kenwood TS790 backend
+  * remove readonly attribute of input box
+  * save/restore user entered combo entries
+  * expose set/get methods on xmlrpc interface
+  * restore mic control on small-ui large sliders
+  * Some transceivers either by default or by user option change
+    the vfo when changing mode, ie: USB->CW->LSB etc. Typical of
+    TS2000 by default. IC7300 allows user to set that option ... 
+    not something I would ever elect.
+
+-------------------------------------------------------------------
+Tue May 14 22:56:13 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 1.3.44
+  * IC mode type
+- update to version 1.3.43
+  * Start/Stop Progress
+  * Trace start/exit
+  * New xmlrpc functions
+  * TS890S
+  * Icom filter table
+
+-------------------------------------------------------------------
+Sun Feb  3 01:32:42 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 1.3.42
+
+-------------------------------------------------------------------
+Thu Nov  8 00:29:03 UTC 2018 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 1.3.40
+- specfile cleanup
+
+-------------------------------------------------------------------
+Tue May 16 22:08:06 UTC 2017 - dl8fcl@darc.de
+
+- update to version 1.3.31
+  * IC735 Changed frequency resolution to 10 Hertz
+  * FT817 CW MODE. Modify code to insure that CW is USB
+    and CW-R is LSB type reception
+  * Added FT-891 class and support code
+  * IC7200 Initial BW  added
+  * TS850 Added backend class for TS850 transceiver
+
+-------------------------------------------------------------------
+Sat Apr  1 12:39:17 UTC 2017 - dl8fcl@darc.de
+
+- update to version 1.3.30
+  * remove FT817 base class dependency from both
+    FT857D and FT897D class definitions.
+
+-------------------------------------------------------------------
+Thu Mar 30 18:55:15 UTC 2017 - dl8fcl@darc.de
+
+- update to version 1.3.29
+  TS990
+    * Enable MON on/off for TX monitoring
+    * Set / Read SWR & ALC
+    * Replace all atoi(...) code with fm_decimal(p, n)
+  FT817
+    * added code to read vfo B state
+    * added 5 watt power scale
+    * added undocumented read vfo A/B state
+    0x00 0x55 0x00 0x00 0xBB
+    * Implement undocumented CAT command BD to read
+    PWR, SWR and ALC
+    * Prevent flrig from making changes to xcvr vfo
+    mode etc. when memory channel usage detected
+    - display MEMORY on flrig main display when
+      so detected
+    * disabled POWER control on wide and touch UI
+  Xcvr Init
+    * cleaned up init code to provide improved code readability
+    * added test for two vfos to VFO initialization
+  k3 kx3
+    * code change needed to read K3/KX3 meters
+  AGC button
+    * set button illumination to user color selection
+  initial bandwidth
+    * retain xcvr bandwidth when changing modes via xmlrpc server
+    command
+  BCD/Decimal conversions
+    * change parameter passing to string vice sz pointer.
+    - 64 bit compiles were passing null strings when contents
+      of original substr returned values were similar to "00 40" !
+  Missing tooltips
+    * Added tooltips for S-meter, CW-wpm
+  Polling
+    * Add set all for meters & operating controls
+  TS480SAT update
+    * Update to NR, AN, and Squelch controls
+    * Change default baud rate to 57600
+  FT817 metering
+    * Enable S-meter and Power-out metering
+  Exchange-Equalize AB
+    * Implement Exchange CAT command for Icom xcvrs
+    - 718, 706MKIIG
+    - 746, 746PRO, 756, 756PRO2, 756PRO3
+    - 7000, 7100, 7200, 7300, 7410, 7600, 7800
+    - 910, 9100
+  IC7300 update
+    * all updates combined effort of KB1OIQ and W1HKJ
+    * change mode set/get methods
+    * correct various command strings
+    * added AGC, OFF, FAST, MED, SLO
+    * add IF shift function using upper/lower passband tuning commands.
+    - IF shift slider range changes to +/- BW/2 as bandwidth
+      is selected.
+    - IF shift slider always increments by 50 Hz
+    * added tooltips to VOX and Compression controls
+  PCR1000 update
+    * correction to IF Shift control method
+    * corrected various text strings
+  IC7200 mods
+    * modify set_split method
+    * add get_split, can_split methods
+    * add IF shift function using upper/lower passband
+    tuning commands.
+    - IF shift slider range changes to +/- BW/2 as bandwidth
+      is selected.
+    - IF shift slider always increments by 50 Hz
+    * correct logic for queA / queB processing
+
+-------------------------------------------------------------------
+Sun Jan 22 19:57:59 UTC 2017 - dl8fcl@darc.de
+
+- update to version 1.3.28
+  Multiple xmlrpc servers
+    * Add configuration item in the file "flrig.prefs"
+      - xml_port:nn
+        where nn is the port number, default is 12345
+      - start and then stop flrig
+      - edit the flrig.prefs file to change the port assignment
+      - direct configuration usage with the --config-dir command
+        line parameter.
+  Separate PTT
+    * Change to allow both DTR and RTS switching
+  K2 comments
+    * Added data strings received from M1CNK
+  User defined command buttons
+    * Added 8 user defined command buttons
+      - allows user to add items like power on / off etc.
+  ic7300 update
+    * Corrected data mode tables and command strings
+    * Corrected get bandwidth command strings
+  IC9100 update
+    * Added CAT strings for setting data mode for
+      LSB and USB data modes added to mode combo box
+
+-------------------------------------------------------------------
+Thu Dec  8 17:03:03 UTC 2016 - dl8fcl@darc.de
+
+- update to version 1.3.27
+  TS480SAT extras
+    * Added Noise blanker on/off, set/get value
+  New controls
+    * Added following controls
+      - AGC
+      For these transceivers
+      - IC-7200
+      - TS-480SAT
+  Xmlrpcpp source director
+    * update based on fldigi/src/xmlrpcpp.
+      - needed for correct build on OS X Xcode8
+  FT100D
+    * Correct vfo tracking problem
+  IC9100 mode/bw
+    * Corrected Mode selection
+    * Disabled BW selection
+  TS990 TS590SG
+    * Modification to read swr/alc
+    * Modification to initialize ATT
+  restore keep rig data
+    * add missing set clear for menu items
+  TT 550 Pegasus mods
+    * enabled VFO adjust
+    * changed method of setting TUNE command
+    * added AT11 support
+    * added power peak detect
+  IC7300 serial defaults
+    * Change to be same as 7200 defaults sans baudrate
+  TS990 ALC/SWR
+    * correct meter reading methods
+  fix XmlRpc tm_mday comparison typo
+    * xmlrpcpp/XmlRpcValue.cpp: In function ‘bool XmlRpc::tmEq(const tm&,
+      const tm&)’:
+      xmlrpcpp/XmlRpcValue.cpp:159:52: warning: self-comparison always
+      evaluates to true [-Wtautological-compare]
+                 t1.tm_hour == t2.tm_hour && t1.tm_mday == t1.tm_mday &&
+                                             ~~~~~~~~~~~^~~~~~~~~~~~~
+  mxe update
+    * corrected mxe build scripts
+  IC756 volume range
+    * Change range to 0..100
+  C11 errors
+    * changes to correct C11 reported warnings/errors
+
+-------------------------------------------------------------------
+Mon Jun 27 08:57:06 UTC 2016 - dl8fcl@darc.de
+
+- update to version 1.3.26
+  IC7200 update, Added read attenuator method to IC7200 class
+
+-------------------------------------------------------------------
+Sat Feb  6 20:20:23 UTC 2016 - dl8fcl@t-online.de
+
+- update to version 1.3.24
+  * Added backend for Yaesu FTdx9000 transceiver
+  * Add new backend for Yaesu FT0991
+  * FT5000 removed CW_SPOT_TONE method
+  * FTdx3000 removed CW_TONE_SPOT method
+  * removed dependency on enumerated list of rigs
+    - a cause of numerous seg faults when adding and
+      testing a new transceiver class
+  * removed use of "rig_nbr" to reference either list of rigs
+    or selected rig.
+    - rigs are uniquely identified by noun name
+  * TS2000 updates
+   - VFO-B read/write
+   - A/B switch
+   - Corrected SL/SH tables
+   - Corrected xml server updates of hi/lo cutoff values
+   - Corrected rig enumerations in rigbase.h and rigs.h
+   - Tested TS2000 class with physical transceiver
+   - Calibrated notch filter settings
+  * Added code in serial thread to isolate K3/KX3 vfo, mode, bw
+    reads from the other supported transceivers.
+  * FT900: Update from DJ7HS
+    - vfo A/B swap fix
+    - poll-split fix
+    - read front panel vfoA/B select
+  * IC7100 data mode detect
+
+-------------------------------------------------------------------
+Sun Dec 13 21:35:36 UTC 2015 - dl8fcl@darc.de
+
+- update to version 1.3.23
+  * FT817 FT857D FT897D,added read ACK after every write,
+    up to 10 retries if ACK not received after write.
+  * xmlrpc server, added new get's
+    - rig.get_info, transfers all controls data in a single string
+    - rig.get_update, transfers all changed controls data in a
+      single string, "NIL" if no changes FT900
+  * FT900 backend added, contributed by Ernst Schroeder, DJ7HS
+  * Correct split behavior for have_splitAB designated xcvrs like
+    the FT950 and FT900 TS590SG
+  * add back end for 590SG MXE update FT990a
+  * simple blind control of FT990 with very early ROM version Set
+    Mode/BW controls
+  * change ordering of set when mode change read from transceiver
+    KENWOOD mods
+  * change read SWR / ALC command strings and interpretation for TS990
+  * correct various errors in Shift/Width, Lo/Hi cut tables.
+    Reorder use of SL and SH variables - TS480 - TS590 - TS870
+    - TS990 - TS2000 IC7800
+  * Added IC-7800 class fldigi BW interface
+  * Add missing bw_vals_ to various xcvr backends restore xml client
+  * allow flrig to act as either a multi-client xmlrcp server or a
+    single client to fldigi server BUILD_{DATE,USER,HOST}
+
+-------------------------------------------------------------------
+Tue Apr 28 00:45:02 UTC 2015 - dl8fcl@darc.de
+
+- update to version 1.3.22
+  requires libflxmlrpc
+
+-------------------------------------------------------------------
+Sat Apr  4 15:30:21 UTC 2015 - dl8fcl@darc.de
+
+- update to version 1.3.21, Maintenance release
+
+-------------------------------------------------------------------
+Tue Mar 24 20:51:52 UTC 2015 - dl8fcl@darc.de
+
+- update to version 1.3.20, Maintenance release
+
+-------------------------------------------------------------------
+Fri Dec 26 20:07:21 UTC 2014 - dl8fcl@darc.de
+
+- update to version 1.3.19, Maintenance release
+
+-------------------------------------------------------------------
+Wed Dec 10 23:34:41 UTC 2014 - dl8fcl@darc.de
+
+- update to version 1.3.18, Maintenance release
+
+-------------------------------------------------------------------
+Thu Oct 16 08:04:51 UTC 2014 - dl8fcl@darc.de
+
+- update to version 1.3.17
+   * new transceivers  FT450D, IC7410
+   * support for touch screen interface
+
+-------------------------------------------------------------------
+Mon Jun 30 18:42:33 UTC 2014 - dl8fcl@darc.de
+
+- update to version 1.3.16, Maintenance release
+    * Corrected FTdx1200 get_mode
+    * insure that RTS/DTR are inactive when closing the serial port
+    * Added wait_char function
+    * Modified FT950 code to use wait_char
+    * fixed logic error for --config-dir expansion
+    * Added detection of socat virtual ports created as $HOME/virtual/ttySnn
+    * reorganize src directories / files in preparation for addition of remote server capability.
+    * Added detection of executable location in folder ending in FL_APPS.  If found, that folder is used as the $HOME folder for all flrig configuration folders/files.
+    * Added detection of flrig.files in $HOME.  If present that directory is used in lieu of .flrig
+    * Updates iaw W3NR feedback (TT599)
+    * Corrected FT847 power out and smeter conversions
+    * Corrected Pegasus split mode operation
+      - When ON
+        . Receive frequency remains on active VFO
+        . Transmit frequency changes to inactive VFO
+      - When OFF
+        . Rx & Tx frequency iaw active VFO
+    *  IC756 xcvr added
+
+  ComboBox/ListBox
+    * add key stroke handler to popup
+    * down arrow opens the popup if the combo has keyboard focus.
+    * up/down arrow keys move selection in popup
+    * enter key moves the popup selection to the output widget
+    * escape key closes the popup
+    * enter ASCII key sequence to search for and select corresponding entry in popup
+    * closing popup erases keyboard buffer
+    * added Fl_ListBox, derived from Fl_ComboBox
+
+  License Declaration
+    * Updated all source licensing to satisfy distribution requirements.  
+
+-------------------------------------------------------------------
+Tue Feb  4 19:42:36 UTC 2014 - dl8fcl@darc.de
+
+- update to version 1.3.5, Maintenance release
+
+-------------------------------------------------------------------
+Tue Oct 29 10:33:21 UTC 2013 - dl8fcl@darc.de
+
+- update to version 1.3.4, Maintenance release 
+
+-------------------------------------------------------------------
+Tue Sep  3 07:14:05 UTC 2013 - dl8fcl@darc.de
+
+- update to version 1.3.3
+  * Added FTdx3000 and IC-7100 
+
+-------------------------------------------------------------------
+Fri May 24 23:47:08 UTC 2013 - dl8fcl@darc.de
+
+- update to version 1.3.2, Maintenance release
+  * Added control class for Yaesu FT-990
+  * Added serial port identification use /dev/serial/by-id/ entries
+  * Added VFO adjust control for FT950
+  * Add code to control A/B; B/A split operations for TS870
+
+-------------------------------------------------------------------
+Sun Jan  6 20:09:06 UTC 2013 - dl8fcl@darc.de
+
+- update to version 1.3.11, Maintenance release 
+
+-------------------------------------------------------------------
+Fri Dec 21 17:06:31 UTC 2012 - dl8fcl@darc.de
+
+- update to version 1.3.10 
+
+-------------------------------------------------------------------
+Wed Dec 12 21:29:21 UTC 2012 - dl8fcl@darc.de
+
+- update to version 1.3.09, Maintenance release 
+
+-------------------------------------------------------------------
+Sat Sep  1 20:57:39 UTC 2012 - dl8fcl@darc.de
+
+- update to version 1.3.08 
+
+-------------------------------------------------------------------
+Mon Aug  6 21:43:41 UTC 2012 - dl8fcl@darc.de
+
+- update to version 1.3.07, Maintenance release 
+
+-------------------------------------------------------------------
+Sat Jul  7 20:37:09 UTC 2012 - dl8fcl@darc.de
+
+- update to version 1.3.05, Maintenance release
+
+-------------------------------------------------------------------
+Mon Jun 25 20:31:07 UTC 2012 - dl8fcl@darc.de
+
+- update to version 1.3.03 
+
+-------------------------------------------------------------------
+Mon May  7 22:36:05 UTC 2012 - dl8fcl@darc.de
+
+- update to version 1.3.01
+
+-------------------------------------------------------------------
+Tue Apr 17 21:37:23 UTC 2012 - dl8fcl@darc.de
+
+- update to version 1.2.13
+
+-------------------------------------------------------------------
+Tue Mar 27 21:51:51 UTC 2012 - dl8fcl@darc.de
+
+- update to version 1.2.12 
+
+-------------------------------------------------------------------
+Thu Jan 26 14:29:04 UTC 2012 - dl8fcl@darc.de
+
+- update to version 1.2.6, build with fltk-1.1.10 and fltk-1.3.0 
+
+-------------------------------------------------------------------
+Tue Dec 27 19:36:12 UTC 2011 - dl8fcl@darc.de
+
+- update to version 1.2.5, maintenance release 
+
+-------------------------------------------------------------------
+Wed Nov  2 18:07:28 UTC 2011 - dl8fcl@darc.de
+
+- update to version 1.2.2 
+
+-------------------------------------------------------------------
+Mon Aug 22 11:56:30 UTC 2011 - dl8fcl@darc.de
+
+ - update to version 1.2.0
+
+-------------------------------------------------------------------
+Sun Apr 10 18:44:09 UTC 2011 - dl8fcl@darc.de
+
+- update to version 1.1.3 
+
+-------------------------------------------------------------------
+Wed Mar 30 19:59:28 UTC 2011 - dl8fcl@darc.de
+
+- update to version 1.1.2 
+
+-------------------------------------------------------------------
+Tue Mar 22 21:46:35 UTC 2011 - dl8fcl@darc.de
+
+- update to version 1.1.1 
+
+-------------------------------------------------------------------
+Sun Feb 20 10:19:28 UTC 2011 - dl8fcl@darc.de
+
+- update to version 1.0.1 
+
+-------------------------------------------------------------------
+Sun Jan 30 00:35:04 UTC 2011 - dl8fcl@darc.de
+
+- update to version 1.0.0bX 
+
+-------------------------------------------------------------------
+Sat Nov 27 09:49:27 UTC 2010 - dl8fcl@darc.de
+
+- update to version 1.0.0bO 
+
+-------------------------------------------------------------------
+Thu Aug  5 15:15:26 UTC 2010 - dl8fcl@darc.de
+
+- update to version 1.0.0bN 
+
+-------------------------------------------------------------------
+Sat Jul 17 04:10:34 UTC 2010 - dl8fcl@darc.de
+
+- update to version 1.0.0bI
+
+-------------------------------------------------------------------
+Tue Jul  6 20:31:34 UTC 2010 - dl8fcl@darc.de
+
+- update to version 1.0.0bG
+
+-------------------------------------------------------------------
+Mon May  3 05:53:21 UTC 2010 - dl8fcl@darc.de
+
+- import into buildservice
+

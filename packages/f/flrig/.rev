@@ -1,0 +1,45 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>856a8613790c7cb2f48650ce2085b7a8</srcmd5>
+    <version>2.0.12</version>
+    <time>1788270415</time>
+    <user>anag_factory</user>
+    <comment>New package: flrig 2.0.12 -- amateur-radio transceiver (CAT) control, by W1HKJ.
+
+Why Factory: fldigi is already in Factory (4.2.13) and its devel project is
+hardware:sdr, the same project this submission comes from. flrig is fldigi's
+companion rig-control application -- same upstream author, same SourceForge
+release tree, and fldigi drives it over XML-RPC. Factory shipping fldigi
+without flrig is an incomplete pairing.
+
+License: GPL-3.0-or-later AND LGPL-2.0-or-later AND LGPL-3.0-or-later, with a
+Legal-Review-Notice block above the tag. The shipped COPYING is a stale GPLv2
+text, but every source header grants GPLv3+ (Debian and Fedora concluded the
+same). Two sets of files inside flrig_SOURCES carry weaker grants and are
+compiled into the binary: src/xmlrpcpp, a bundled flxmlrpc copy under LGPLv3+,
+and the FLTK-derived src/widgets/Fl_Text_{Buffer,Display,Editor}_mod.cxx plus
+their headers under &quot;Library GPL v2 or later&quot;. src/cmedia/hid_win.cxx is
+GPL-3.0-only but __WIN32__-only and never built.
+
+flrig 2.0.12 dropped its system-flxmlrpc configure check and always compiles
+the bundled src/xmlrpcpp, so the package declares Provides: bundled(flxmlrpc)
+and no longer BuildRequires flxmlrpc-devel. Unbundling would need a patch
+upstream has not taken.
+
+Build dependencies all resolve in Factory: fltk, libgpiod, systemd (libudev),
+desktop-file-utils.
+
+Cleanup carried in the same commit: License corrected from GPL-2.0-only; the
+deprecated %suse_update_desktop_file and its update-desktop-files
+BuildRequires/Requires(post) replaced by desktop-file-validate; Group dropped;
+%setup -q -&gt; %autosetup; canonical https Source URL. pkgconfig(libgpiod) &gt;=
+2.2.1 was added -- configure auto-detects it, so GPIO PTT/CW keying was
+silently built out -- gated to suse_version &gt;= 1699 because every Leap 16.x /
+SLFO still carries libgpiod 1.6.3.
+
+Local aarch64 build is green; rpmlint reports 0 errors and 0 badness. The two
+remaining warnings are upstream's gethostbyname call and the absent %check
+section (upstream ships no test suite at all).</comment>
+    <requestid>1374711</requestid>
+  </revision>
+</revisionlist>

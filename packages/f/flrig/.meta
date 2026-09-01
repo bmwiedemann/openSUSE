@@ -1,0 +1,10 @@
+<package name="flrig" project="openSUSE:Factory">
+  <title>flrig</title>
+  <description>Flrig is a rig control program that may be used stand-a-lone or in
+concert with fldigi.  It interfaces to fldigi using the updated xmlrpc
+interface. It does not use any 3rd party transceiver control libraries.
+
+Authors:
+--------
+    W1HKJ    -   w1hkj@w1hkj.com</description>
+</package>
