@@ -1,0 +1,12 @@
+diff -Nrup a/src/GNUmakefile b/src/GNUmakefile
+--- a/src/GNUmakefile	2026-06-21 22:58:56.000000000 +0200
++++ b/src/GNUmakefile	2026-08-04 17:02:15.870253575 +0200
+@@ -32,7 +32,7 @@ DMACROS         := -DNDEBUG -DUNIX -DPAC
+ INCDIRS         := -I'./include'
+ CXXFLAGS        += -std=c++11 $(WARNINGS) $(OPTIMS)
+ CPPFLAGS        += $(DMACROS) $(INCDIRS)
+-EXTRA_LIBS      := -lSDL2main -lGL -lGLEW -lSDL2 -lSDL2_image -lphysfs -lopenal -lalut -lpthread -ltinyxml2
++EXTRA_LIBS      := -lGL -lGLEW -lSDL2 -lSDL2_image -lphysfs -lopenal -lalut -lpthread -ltinyxml2
+ LDFLAGS         += $(EXTRA_LIBS)
+ INSTALL_PROGRAM := install --mode=0755
+ INSTALL_DATA    := install --mode=0644

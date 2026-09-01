@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Aug 29 13:34:11 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 0.6.7:
+  * "Ghost" cars driving along your best path
+  * Collision with surroundings dealing damage to the car
+  * Game options and controls now can be adjusted via menus
+  * Added 3 new events and 35 new single race maps
+    (total 46 new maps)
+  * Enhanced immersion with gear shifting SFX and break lights
+  * Improved car physics: drag, lift, torque distribution
+  * Fixed camera behaviour
+  * Improved compatibility with modern versions of PhysFS,
+    TinyXML2 and SDL2
+  * Fixed OBJ mesh loader
+  * Fixed math library bugs and warnings
+  * Fine-tuned car models: Fox Kit Car, Fox WRC
+  * Various UI, build and documentation enhancements
+- Drop trigger-rally.desktop and trigger-rally.appdata.xml,
+  fixed upstream
+- Drop BuildRequires update-desktop-files 
+- Add trigger-rally.6 manpage from Debian
+- Add trigger-rally-libs.patch, fix linking libs
+
+-------------------------------------------------------------------
 Fri Feb 18 12:51:07 UTC 2022 - Matthias Mailänder <mailaender@opensuse.org>
 
 - Fix screenshot URLs
