@@ -71,4 +71,63 @@
     <comment></comment>
     <requestid>1264957</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2514b3bd9ed91ec11b170adb97c71ed1</srcmd5>
+    <version>0.3.3+git20250825.b1f568d</version>
+    <time>1788270434</time>
+    <user>anag_factory</user>
+    <comment>Bump to a pinned upstream master snapshot: 0.3.3+git20250825.b1f568d
+(commit b1f568d1b57cc973a1d2ee49be68d0d748d164e4, 2025-08-25).
+
+Supersedes sr#1374753, which carried only the Requires: soapy-sdr change
+on top of the 0.3.3 tag. That change is preserved here unchanged.
+
+Why a snapshot. 0.3.3 is still upstream's newest tag and there are no
+GitHub releases at all; master is exactly 12 commits ahead. The reason to
+take them is commit 148c1eec, &quot;Add enhanced tuning range for RTL-SDR Blog
+V4&quot;: on a Blog V4 (tuner R828D, USB strings &quot;RTLSDRBlog&quot; / &quot;Blog V4&quot;) the
+module now reports a 0 Hz - 1764 MHz range instead of the generic 24 MHz
+lower bound, so the dongle's built-in upconverter is reachable through
+SoapySDR. The V4 is a very common stick and Factory users have no support
+for this today. The other commits: a time/tick accounting fix, an
+uninitialised tunerGain fix, a missing &lt;cstring&gt; include, testmode listed
+in ArgInfoList, optional PLL dithering control, and CI/CMake housekeeping.
+The CMake housekeeping raises cmake_minimum_required to 2.8.12...3.10 -
+still under 3.5, so the -DCMAKE_POLICY_VERSION_MINIMUM=3.5 workaround has
+to stay. Note this puts openSUSE ahead of the pack: Fedora and Void both
+still ship the 0.3.3 tag. The V4 support is the reason to be there.
+
+Testability, plainly. I have no V4 dongle, so the tuning-range behaviour
+is NOT exercised - I am relying on what upstream's commit does and says.
+What is verified: it builds clean natively on aarch64 for both
+openSUSE_Tumbleweed and 16.0 with rpmlint 0 errors / 0 warnings / 0
+badness, and the code path is present in the shipped module (the strings
+&quot;RTLSDRBlog&quot; and &quot;Blog V4&quot; appear in librtlsdrSupport.so). The PLL
+dithering control is compiled out here: CMake's check_function_exists
+gates it on rtlsdr_set_dithering, which Factory's librtlsdr 2.0.3 does
+not have (&quot;Looking for rtlsdr_set_dithering - not found&quot; in the log).
+
+Versioning. '+git', not the '~git' that a snapshot scaffold defaults to:
+'~' sorts BELOW the plain tag and the bump would be a downgrade.
+rpm.labelCompare: 0.3.3+git20250825.b1f568d &gt; 0.3.3 &gt;
+0.3.3~git20250825.b1f568d, and a future 0.3.4 still sorts above the
+snapshot. This also matches Factory's own soapy-sdr, which has shipped
+0.8.1+git20250223.6e99da1 for months. Note that a version string of the
+form 0.3.3.0.20250825 seen in trackers is another distribution's
+snapshot-date packaging, not an upstream release.
+
+Carried over from sr#1374753: Requires: soapy-sdr on the module
+subpackage. libSoapySDR is what dlopens the module - SoapySDR_loadModules
+is a GLOBAL FUNC in libSoapySDR.so.0.8.1 - and that library always arrived
+via the automatic soname dep (libSoapySDR.so.0.8-3). What the module never
+pulled in is the soapy-sdr package itself, whose only content is
+/usr/bin/SoapySDRUtil. So this is a usability dependency, not a functional
+one: a module nothing on the system can enumerate or probe is dead weight.
+Prompted by the review comment on sr#1374694.
+
+Also in this request: pkgconfig(SoapySDR) &gt;= 0.4.0, the floor CMakeLists
+actually checks for; Source switched to a pinned obs_scm service; URL
+points at the repo rather than the wiki; copyright header.</comment>
+    <requestid>1374797</requestid>
+  </revision>
 </revisionlist>

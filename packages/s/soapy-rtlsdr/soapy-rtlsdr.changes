@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Aug 31 06:38:24 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.3.3+git20250825.b1f568d:
+  * 12 commits past the 0.3.3 tag; upstream has no newer release
+  * RTL-SDR Blog V4 now reports a 0 Hz - 1764 MHz tuning range
+    instead of the generic 24 MHz floor, keyed on the USB
+    manufacturer/product strings (untested here, needs the dongle)
+  * Optional PLL dithering control; compiled out against Factory's
+    librtlsdr 2.0.3, which has no rtlsdr_set_dithering
+  * Fix time/tick tracking, uninitialised tunerGain and a missing
+    <cstring> include; list testmode in ArgInfoList
+  * cmake_minimum_required raised to 2.8.12...3.10, still under 3.5,
+    so the CMAKE_POLICY_VERSION_MINIMUM workaround stays
+- Pin the snapshot with obs_scm; '+git' so it sorts above 0.3.3
+- Add Requires: soapy-sdr - the automatic soname dep covers only
+  libSoapySDR, so nothing pulls in SoapySDRUtil for probing an
+  installed module
+- Spec cleanup: declare the SoapySDR >= 0.4.0 floor that
+  CMakeLists checks for, point URL at the repo rather than the
+  wiki, pkg-config -> pkgconfig, copyright header
+
+-------------------------------------------------------------------
 Thu Mar 27 18:57:30 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - SOAPY_SDR_ABI_VERSION bump -> "0.8-3"

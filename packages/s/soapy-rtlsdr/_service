@@ -1,0 +1,18 @@
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="url">https://github.com/pothosware/SoapyRTLSDR.git</param>
+    <param name="scm">git</param>
+    <!-- pin master past soapy-rtl-sdr-0.3.3: RTL-SDR Blog V4 tuning range is unreleased -->
+    <param name="revision">b1f568d1b57cc973a1d2ee49be68d0d748d164e4</param>
+    <!-- '+git' not '~git': this snapshot is AFTER 0.3.3 and must sort above it -->
+    <param name="versionformat">0.3.3+git%cd.%h</param>
+    <param name="exclude">.git*</param>
+    <param name="filename">soapy-rtlsdr</param>
+  </service>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">zst</param>
+  </service>
+  <service name="set_version" mode="buildtime"/>
+</services>
