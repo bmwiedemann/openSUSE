@@ -1,0 +1,59 @@
+-------------------------------------------------------------------
+Sun Aug 30 17:52:49 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix build: name the VOLK library subpackage after its SONAME,
+  libvolk_gnsssdr0_0_17 -> libvolk_gnsssdr0_0_21
+- Correct the license tags, per flavour, and record the components
+  that are shipped but never built in a Legal-Review-Notice - upstream
+  is GPL-3.0-or-later and not -only, and the binaries carry further
+  licenses:
+  * gnss-sdr: LGPL-3.0-only (libswiftcnav), BSD-1-Clause (supl),
+    BSD-2-Clause (rtklib), BSD-3-Clause (inih), MIT (gsl-lite)
+  * volk flavour: BSD-3-Clause (installed cmake files), Zlib (the
+    sincos kernels)
+- Build require abseil, the logging and flags backend 0.0.21 actually
+  links; glog and gflags were required but unused, and abseil is only
+  optional to cmake, so losing it would have switched the backend
+  silently instead of failing
+- Drop gnuradio from the volk flavour build requires - volk_gnsssdr is
+  standalone, and the dependency left the flavour unresolvable
+  wherever gnuradio is not built
+- Stop building the unit tests in the default flavour, they were
+  compiled and then discarded; drops the gtest build requirement
+- Strip the shebang from the volk_gnsssdr_modtool modules, they are
+  imported and not executed, and drop their stale sidecar bytecode
+- Run the VOLK QA suite in %check, minus qa_volk_gnsssdr_32fc_convert_8ic,
+  which compares the NEON kernel against generic at tolerance 0 and
+  trips on a 1 LSB rounding difference on some aarch64 workers
+- Declare the minimum versions upstream cmake enforces: gnuradio,
+  which is fatal when older, and armadillo, matio and protobuf, where
+  an older version makes cmake download sources instead
+- Ship COPYING in the library and devel subpackages as well
+- Let the devel subpackage require the matching library version
+- Spec cleanup: drop Group tags, use %autosetup and
+  %ldconfig_scriptlets, switch build dependencies to pkgconfig()
+
+-------------------------------------------------------------------
+Tue Apr 14 13:13:52 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.0.21
+  * https://github.com/gnss-sdr/gnss-sdr/releases/tag/v0.0.21
+  * https://github.com/gnss-sdr/gnss-sdr/releases/tag/v0.0.20
+  * https://github.com/gnss-sdr/gnss-sdr/releases/tag/v0.0.19.1
+  * https://github.com/gnss-sdr/gnss-sdr/releases/tag/v0.0.19
+  * https://github.com/gnss-sdr/gnss-sdr/releases/tag/v0.0.18
+
+-------------------------------------------------------------------
+Thu Jul 28 10:57:05 UTC 2022 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Version 0.0.17 
+
+-------------------------------------------------------------------
+Wed Aug 26 12:48:03 UTC 2020 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Version 0.0.13
+
+-------------------------------------------------------------------
+Tue Sep  3 12:54:05 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Initial package version (0.0.11)

@@ -1,0 +1,56 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>89cf698dcca6922aa20f09fc1eca2a89</srcmd5>
+    <version>0.0.21</version>
+    <time>1788270418</time>
+    <user>anag_factory</user>
+    <comment>New package: gnss-sdr, a software-defined receiver for GNSS signals (GPS L1/L2C/L5,
+GLONASS L1/L2, BeiDou B1I/B3I, Galileo E1b/c/E5a), maintained in hardware:sdr.
+
+This is a _multibuild source package, so it is ONE Factory package with two build
+flavours:
+
+  flavour &quot;&quot;      -&gt; gnss-sdr
+  flavour &quot;volk&quot;  -&gt; gnss-sdr-volk, gnss-sdr-volk-devel, libvolk_gnsssdr0_0_21
+
+volk_gnsssdr is upstream's own standalone SIMD kernel library, shipped inside the
+gnss-sdr tarball. It is unrelated to Factory's volk/libvolk3_3 and shares no file
+or package name with it. The default flavour BuildRequires gnss-sdr-volk-devel
+from the volk flavour of this same source package; OBS schedules the flavours as
+separate jobs, which is how it already builds in hardware:sdr.
+
+Cleaned up before submitting:
+- the VOLK library subpackage was still named libvolk_gnsssdr0_0_17 while the
+  SONAME is libvolk_gnsssdr.so.0.0.21. That failed the build on rpmlint
+  shlib-policy-name-error (badness 10000), so the volk flavour had been red since
+  the 0.0.21 update and Factory would have hit the same. Renamed to
+  libvolk_gnsssdr0_0_21.
+- License re-derived per flavour from what each flavour actually compiles and
+  installs: upstream is GPL-3.0-or-later, not GPL-3.0-only, and the binaries
+  additionally carry LGPL-3.0-only, BSD-1-Clause, BSD-2-Clause, BSD-3-Clause and
+  MIT (default flavour) resp. BSD-3-Clause and Zlib (volk). A Legal-Review-Notice
+  above the tag records which tarball components are never built.
+- abseil is now build required. It is the logging and flags backend 0.0.21 links,
+  while the previously required glog and gflags were unused; abseil is only
+  optional to upstream cmake, so losing it from the buildroot would have switched
+  the backend silently rather than failing.
+- gnuradio dropped from the volk flavour; volk_gnsssdr does not reference it, and
+  the dependency made that flavour unresolvable wherever gnuradio is unavailable.
+- the default flavour no longer builds the unit tests it then discarded.
+- %check runs the VOLK QA suite (47 of 48 ctest cases).
+  qa_volk_gnsssdr_32fc_convert_8ic is deselected: it compares the NEON kernel
+  against generic at tolerance 0 and trips on a 1 LSB rounding difference on
+  some aarch64 workers. A spec comment records why.
+- version floors declared for gnuradio (fatal when older) and for armadillo,
+  matio and protobuf (older versions make upstream cmake download sources, which
+  cannot work in OBS).
+- Group tags dropped, %autosetup, %ldconfig_scriptlets, pkgconfig() build deps,
+  COPYING shipped in every subpackage, shebangs and stale sidecar bytecode
+  removed from the imported volk_gnsssdr_modtool modules.
+
+Both flavours build green in hardware:sdr on x86_64 and aarch64 (revision 6);
+rpmlint badness 0 for gnss-sdr and 1 for the volk flavour (invalid-spec-name,
+which every multibuild source package emits).</comment>
+    <requestid>1374738</requestid>
+  </revision>
+</revisionlist>
