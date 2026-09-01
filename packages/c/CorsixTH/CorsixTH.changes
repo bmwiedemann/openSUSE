@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Aug 28 14:16:32 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 0.70.1:
+  * Bug Fixes
+    - Prevent game crashes when using a MIDI API, such as JACK
+    - Prevent game crashes when checking for missing staff in rooms,
+      such as Psychiatry
+    - Prevented a game crash with the bottom drawer when loading a
+      game from 0.69.2 or earlier
+
+-------------------------------------------------------------------
 Sun Aug  9 21:30:00 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.de>
 
 - Drop pkgconfig(libpostproc) BuildRequires: the build asks
