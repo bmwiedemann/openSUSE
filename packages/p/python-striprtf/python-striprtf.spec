@@ -23,7 +23,7 @@
 %bcond_with libalternatives
 %endif
 Name:           python-striprtf
-Version:        0.0.32
+Version:        0.0.33
 Release:        0
 Summary:        A simple library to convert rtf to text
 License:        BSD-3-Clause
