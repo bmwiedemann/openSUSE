@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Sep 02 00:42:00 UTC 2026 - Armin Seuchter <a.seuchter@gmail.com>
+
+- Update to 0.7.1
+  * Fixed up a regression from 0.7.0 which broke some features on manually registered controllers
+  * Added a feature for controllers connected over Bluetooth where if a mouse action is triggered via a 
+    stick, it is smoothed out to 250Hz even if the controller input is less - this should make camera 
+    movement smooth
+  * Fix touch pad on DualSense connected over hidraw not working
+  * Fix automapper not reading from SDL's database correctly, getting controllers like Xbox One S working 
+    with the feature
+  * Right stick on the default Xbox profile is now also boosted by 20% just like the left stick was 
+    to avoid diagonal movement having less oomph
+  * Further fixes for the input mapper not highlighting/showing things as it should
+  * Some crash fixes
+  * Lots of deprecation fixes, making a possible future migration to GTK4 easier
+
+-------------------------------------------------------------------
 Fri Aug 28 02:22:00 UTC 2026 - Armin Seuchter <a.seuchter@gmail.com>
 
 - Update to 0.7.0
