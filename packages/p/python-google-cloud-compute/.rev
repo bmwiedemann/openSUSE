@@ -132,4 +132,16 @@
 - Update BuildRequires and Requires from setup.py (forwarded request 1366171 from glaubitz)</comment>
     <requestid>1366176</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3b823e2e9b473f7960a99a520eb6f7e9</srcmd5>
+    <version>1.51.0</version>
+    <time>1788361483</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.51.0
+  * update googleapis and regenerate (#18087)
+- from version 1.50.0
+  * update googleapis and regenerate (#17725)
+- Update BuildRequires and Requires from setup.py (forwarded request 1375396 from glaubitz)</comment>
+    <requestid>1375397</requestid>
+  </revision>
 </revisionlist>

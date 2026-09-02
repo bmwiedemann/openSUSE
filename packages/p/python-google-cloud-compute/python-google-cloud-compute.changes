@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep  2 13:33:39 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.51.0
+  * update googleapis and regenerate (#18087)
+- from version 1.50.0
+  * update googleapis and regenerate (#17725)
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Thu Jul 16 11:34:17 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.49.0
