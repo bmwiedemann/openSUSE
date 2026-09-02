@@ -41,13 +41,16 @@
 # major 69
 # mainver %%major.99
 %define major          153
-%define mainver        %major.1.0
-%define orig_version   153.1.0
+%define mainver        %major.2.0
+%define orig_version   153.2.0
 %define orig_suffix    esr
 %define update_channel esr
 %define branding       1
 %define devpkg         0
 %define do_profiling   1
+%if 0%{?want_reproducible_builds}
+%define do_profiling   0
+%endif
 
 # upstream default is clang (to use gcc for large parts set to 0)
 %define clang_build    0
