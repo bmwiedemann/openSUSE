@@ -16,8 +16,7 @@
 #
 
 
-%define pythons python3
-
+%define pythons %{?primary_python}%{!?primary_python:python3}
 Name:           virt-scenario
 Version:        2.1.3
 Release:        0
@@ -35,14 +34,14 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-#Buildrequires:	pandoc
-BuildArch:      noarch
 Requires:       python-PyYAML
 Requires:       python-curses
 Requires:       python-libvirt-python
 Requires:       python-psutil
 Requires:       python-pyudev
 Provides:       virt-scenario = %{version}
+#Buildrequires:	pandoc
+BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -81,9 +80,8 @@ mv src/demo_api_usage.py %{buildroot}%{_datadir}/%{name}/
 %{python_sitelib}/virt_select_firmware
 %{python_sitelib}/virtscenario_launch
 %{python_sitelib}/virt_scenario-%{version}.dist-info
-#%attr(0644,root,root) %{_datadir}/%name
-%{_mandir}/man1/%{name}.1%{ext_man}
-%{_mandir}/man1/%{name}-settings.1%{ext_man}
+%{_mandir}/man1/%{name}.1%{?ext_man}
+%{_mandir}/man1/%{name}-settings.1%{?ext_man}
 #%attr(0644,root,root) %{_datadir}/%{name}/
 %{_datadir}/%{name}/
 #%attr(0644,root,root) %config(noreplace) %{_sysconfdir}/%{name}
