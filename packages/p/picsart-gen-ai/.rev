@@ -110,4 +110,39 @@ new creativity/refer-type/turbo-mode/upscale-factor flags. Re-vendored:
 71 packages, none added or removed, licence set unchanged.</comment>
     <requestid>1374587</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>657ee646852b63d4c75b80dd640f2708</srcmd5>
+    <version>2.73.0</version>
+    <time>1788361177</time>
+    <user>anag_factory</user>
+    <comment>Update picsart-gen-ai to 2.73.0.
+
+Supersedes SR 1375174 (2.71.1), which was still sitting in staging
+adi:8. That request's changelog entry is preserved unchanged; this
+one adds a second entry for the new revision, so the delta a
+reviewer needs to look at is only 2.71.1 -&gt; 2.73.0:
+
+- Catalogue grows 202 -&gt; 205 entries: Captions (a new provider that
+  transcribes a vertical video and burns in animated captions),
+  MiniMax H3 Max Ref-to-Video and Muse Image 1.0
+- Five new parameters, all on Muse Image 1.0: reasoning-strength,
+  moderation, enable-image-search, enable-web-search, enable-shell
+- The Seedance 2.0/2.5 reference image and video slots now declare a
+  300px minimum short side; this is catalogue metadata only, the CLI
+  does not enforce it
+- 2.73.0 itself is a version-only republish: its cli.js is
+  byte-identical to 2.72.1
+
+The vendored dependency set did not move again: node_modules.obscpio,
+node_modules.spec.inc and node_modules.sums are byte-identical to the
+2.70.0 revision and package-lock.json differs only in its two version
+strings, so the 71-package licence tally (MIT 63, ISC 5, Apache-2.0 1,
+BlueOak-1.0.0 1, one &quot;MIT OR CC0-1.0&quot;) and the License tag are
+unchanged. engines.node is still &gt;=22.0.0.
+
+Local aarch64 build green; rpmlint 0 errors, 0 badness, only the
+intended obsolete-not-provided warning; %check prints
+@picsart/gen-ai/2.73.0.</comment>
+    <requestid>1375299</requestid>
+  </revision>
 </revisionlist>

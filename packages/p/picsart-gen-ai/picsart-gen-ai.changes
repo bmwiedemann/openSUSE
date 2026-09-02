@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Wed Sep  2 06:30:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.73.0:
+  * Add the Captions, MiniMax H3 Max Ref-to-Video and Muse Image
+    1.0 models, taking the catalogue from 202 to 205 entries
+  * Captions is a new provider that transcribes a vertical video
+    and burns in animated captions from 67 style templates
+  * Add the reasoning-strength, moderation, enable-image-search,
+    enable-web-search and enable-shell parameters, all of them on
+    the new Muse Image 1.0 model
+  * Declare a 300px minimum short side on the Seedance 2.0 and 2.5
+    reference image and video slots; it is catalogue metadata only,
+    nothing in the CLI enforces it
+  * 2.73.0 itself only bumps the version string, its cli.js is
+    identical to 2.72.1
+- Re-vendor for the new release: the dependency set is still
+  bit-identical to 2.70.0, so node_modules.obscpio,
+  node_modules.spec.inc and node_modules.sums are unchanged and the
+  licence set of the 71 vendored packages still holds
+
+-------------------------------------------------------------------
+Tue Sep  1 05:53:35 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.71.1:
+  * Add the MiniMax H3 Max and Qwen 3.0 Pro models, taking the
+    catalogue from 200 to 202 entries
+  * Rename the hailuo-03 model id to minimax-h3 to match its
+    modelId; scripts passing the old id need updating
+  * Correct the gemini-omni-1.1-flash-preview display name from
+    Gemini Omni 1.2 Flash to Gemini Omni 1.1 Flash
+  * Add the prompt-expansion-mode and enable-safety-checker
+    parameters and a 768p output size, used by MiniMax H3 Max
+- Re-vendor for the new release: the dependency set is bit-identical
+  to 2.70.0, so node_modules.obscpio, node_modules.spec.inc and
+  node_modules.sums are unchanged and the licence set of the 71
+  vendored packages still holds
+
+-------------------------------------------------------------------
 Sat Aug 29 07:24:44 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.70.0:
