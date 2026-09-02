@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Aug  7 18:36:33 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.de>
+
+- Make the package build reproducible:
+  new patch: ksh93-license-year.dif to not embed the build year
+  in the copyright notices of generated ast headers
+  new patch: ksh93-child_max.dif to not embed the build host's
+  memory-dependent CHILD_MAX value
+
+-------------------------------------------------------------------
 Tue Jun 16 14:49:32 CEST 2026 - Michael Schroeder <mls@suse.de>
 
 - Fix overlapping memory copy in hist_word [bsc#1261689]

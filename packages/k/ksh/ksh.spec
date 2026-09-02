@@ -171,6 +171,10 @@ Patch57:        ksh93-no-sysctl.dif
 Patch58:        ksh93-putval.dif
 Patch59:        ksh93-untrustedenv.dif
 Patch60:        ksh93-edit_strcpy.dif
+# PATCH-FIX-OPENSUSE make build reproducible
+Patch61:        ksh93-license-year.dif
+# PATCH-FIX-OPENSUSE make build reproducible
+Patch64:        ksh93-child_max.dif
 Patch62:        ksh-locale.patch
 Patch63:        cpp.patch
 
@@ -286,6 +290,8 @@ fi
 %patch -P 58
 %patch -P 59
 %patch -P 60
+%patch -P 61
+%patch -P 64
 
 %patch -P 63 -p 1
 

@@ -1,0 +1,13 @@
+Use the ast-base release date as the copyright end year in generated
+headers instead of the build date, matching the notices in the shipped
+source files. Otherwise the build date leaks into ksh-devel headers,
+making the build unreproducible.
+
+--- lib/package/ast.lic
++++ lib/package/ast.lic
+@@ -2,4 +2,5 @@
+ . epl.def
+ license+=(
+ 	start=2011
++	source=2012
+ )

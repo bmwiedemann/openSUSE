@@ -1,0 +1,18 @@
+CHILD_MAX is a dynamic limit: sysconf(_SC_CHILD_MAX) follows
+RLIMIT_NPROC, which the kernel derives from available RAM. Probing it
+with getconf at build time bakes a build-host-specific number into
+ast_limits.h, conftab and libshell, making the build unreproducible.
+Skip the probe and use the POSIX minimum like on hosts without getconf;
+at runtime astconf() still queries sysconf() for the real value.
+
+--- src/lib/libast/comp/conf.tab
++++ src/lib/libast/comp/conf.tab
+@@ -64,7 +64,7 @@
+ CHAR_MAX			C	XX 1 L
+ CHAR_MIN			C	XX 1 L
+ CHAR_TERM			POSIX	SC 2 FUW
+-CHILD_MAX			POSIX	SC 1 CDLMUX	6	cc{
++CHILD_MAX			POSIX	SC 1 CDLMU	6	cc{
+ 	#if _lib_fork
+ 	#define child()		fork()
+ 	#else

@@ -1159,4 +1159,12 @@
     <comment>Fix overlapping memory copy in hist_word [bsc#1261689]</comment>
     <requestid>1359902</requestid>
   </revision>
+  <revision rev="121" vrev="14">
+    <srcmd5>80a6d3df1164f02bbfb8dff4a3147391</srcmd5>
+    <version>93vu</version>
+    <time>1788361476</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1375387</requestid>
+  </revision>
 </revisionlist>
