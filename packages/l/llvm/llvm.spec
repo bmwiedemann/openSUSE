@@ -16,7 +16,7 @@
 #
 
 
-%define _sonum 22
+%define _sonum 23
 
 %ifarch aarch64 %{ix86} loongarch64 ppc64 ppc64le riscv64 x86_64
 %global has_openmp 1
@@ -44,7 +44,8 @@ Obsoletes:      %{1}17%{?2:-%{2}} \
 Obsoletes:      %{1}18%{?2:-%{2}} \
 Obsoletes:      %{1}19%{?2:-%{2}} \
 Obsoletes:      %{1}20%{?2:-%{2}} \
-Obsoletes:      %{1}21%{?2:-%{2}}
+Obsoletes:      %{1}21%{?2:-%{2}} \
+Obsoletes:      %{1}22%{?2:-%{2}}
 
 %define conflicts_update_alternatives() \
 Conflicts:      (%{1}13 unless %{1}13-update-alternatives-removed) \

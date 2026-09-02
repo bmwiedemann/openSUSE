@@ -2471,4 +2471,19 @@ So it would be very nice to get this into 12.2. As it is an isolated feature, it
 - Also have clang-devel require llvm-devel.</comment>
     <requestid>1359240</requestid>
   </revision>
+  <revision rev="156" vrev="1">
+    <srcmd5>2931fc9798c9b4d2ab5a652774ef4a27</srcmd5>
+    <version>23</version>
+    <time>1788361098</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 23.
+  * For details, see the release notes:
+    - https://releases.llvm.org/23.1.0/docs/ReleaseNotes.html
+    - https://releases.llvm.org/23.1.0/tools/clang/docs/ReleaseNotes.html
+    - https://releases.llvm.org/23.1.0/tools/clang/tools/extra/docs/ReleaseNotes.html
+    - https://releases.llvm.org/23.1.0/projects/libcxx/docs/ReleaseNotes.html
+    - https://releases.llvm.org/23.1.0/tools/lld/docs/ReleaseNotes.html
+</comment>
+    <requestid>1374359</requestid>
+  </revision>
 </revisionlist>

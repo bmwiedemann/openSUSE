@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Aug 23 19:36:25 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 23.
+  * For details, see the release notes:
+    - https://releases.llvm.org/23.1.0/docs/ReleaseNotes.html
+    - https://releases.llvm.org/23.1.0/tools/clang/docs/ReleaseNotes.html
+    - https://releases.llvm.org/23.1.0/tools/clang/tools/extra/docs/ReleaseNotes.html
+    - https://releases.llvm.org/23.1.0/projects/libcxx/docs/ReleaseNotes.html
+    - https://releases.llvm.org/23.1.0/tools/lld/docs/ReleaseNotes.html
+
+-------------------------------------------------------------------
 Sun Jun 14 12:31:57 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Also have clang-devel require llvm-devel.
