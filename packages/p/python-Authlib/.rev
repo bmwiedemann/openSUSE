@@ -384,4 +384,12 @@
     <comment>1</comment>
     <requestid>1373817</requestid>
   </revision>
+  <revision rev="35" vrev="4">
+    <srcmd5>61a75226e439ba0fa1641d8cbd102996</srcmd5>
+    <version>1.7.2</version>
+    <time>1788361459</time>
+    <user>anag_factory</user>
+    <comment>Add missing bug reference</comment>
+    <requestid>1375383</requestid>
+  </revision>
 </revisionlist>
