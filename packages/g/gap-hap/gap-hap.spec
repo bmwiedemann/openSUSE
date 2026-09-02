@@ -17,7 +17,7 @@
 
 
 Name:           gap-hap
-Version:        1.78
+Version:        1.79
 Release:        0
 Summary:        GAP: Homological Algebra Programming
 License:        GPL-2.0-or-later
@@ -28,12 +28,17 @@ Source:         https://github.com/gap-packages/hap/archive/refs/tags/v%version.
 BuildArch:      noarch
 BuildRequires:  fdupes
 BuildRequires:  gap-rpm-devel
+Requires:       ImageMagick
+Requires:       graphviz
+Requires:       polymake
+Requires:       singular
 Requires:       gap-aclib >= 1.1
 Requires:       gap-core >= 4.12
 Requires:       gap-crystcat >= 1.1
 Requires:       gap-fga >= 1.1
 Requires:       gap-nq >= 1.1
 Requires:       gap-polycyclic >= 1.1
+Requires:       gap-polymaking >= 0.8.4
 Suggests:       gap-congruence
 Suggests:       gap-edim >= 1.2.2
 Suggests:       gap-gapdoc
@@ -41,7 +46,6 @@ Suggests:       gap-hapcryst >= 0.1.0
 Suggests:       gap-homology
 Suggests:       gap-laguna
 Suggests:       gap-nq >= 1.1
-Suggests:       gap-polymaking >= 0.8.4
 Suggests:       gap-singular >= 06.07.23
 Suggests:       gap-xmod
 
