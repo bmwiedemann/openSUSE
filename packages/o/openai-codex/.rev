@@ -324,4 +324,28 @@ Packaging notes:
   helper and subcommand names in %description.</comment>
     <requestid>1375084</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>30fc8598c7133a07070016081c665dd8</srcmd5>
+    <version>0.152.1</version>
+    <time>1788361449</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.152.1
+
+Upstream patch release: Guardian approval review now sources its Node
+REPL policy from model metadata, and a mid-session model switch is
+refused when the destination changes that policy.
+
+Vendored crate set is byte-identical to 0.152.0 (same 1192 crates);
+upstream changed 12 files and the only manifest change is the
+workspace version stamp, so License: and the Legal-Review-Notice
+counts stand.  Re-derived anyway: 875 linked crates on aarch64 = 748
+third-party + 127 first-party.  Both downstream patches re-verified at
+--fuzz=0.  cargo-audit on a bare Cargo.lock reports the same five
+advisories as 0.152.0, already documented in _service and the 0.152.0
+changelog entry.
+
+Built locally on aarch64 and on OBS for x86_64 and aarch64: rpmlint 0
+errors / 0 warnings / 0 badness, %check 763 tests, 0 failed.</comment>
+    <requestid>1375356</requestid>
+  </revision>
 </revisionlist>

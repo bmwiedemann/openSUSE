@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep  2 06:29:40 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.152.1:
+  * Guardian approval review honours Node REPL policies supplied
+    through model metadata; the bundled policy is now only the
+    fallback
+  * Switching models mid-session is refused when the destination
+    changes the Guardian parent-fallback node REPL policy
+
+-------------------------------------------------------------------
 Tue Sep  1 06:01:34 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.152.0:

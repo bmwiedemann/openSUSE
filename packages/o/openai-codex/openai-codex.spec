@@ -17,7 +17,7 @@
 
 
 Name:           openai-codex
-Version:        0.152.0
+Version:        0.152.1
 Release:        0
 Summary:        OpenAI Codex coding agent for the terminal
 # Legal-Review-Notice: upstream codex is Apache-2.0. Everything after that

@@ -8,11 +8,11 @@
     the v8-poc/code-mode-runtime/code-mode-host workspace members (~213 MB of
     sources that are never compiled) stay out of the bundle.  To regenerate:
 
-      tar xf codex-rust-v0.152.0.tar.gz
-      patch -p1 -d codex-rust-v0.152.0 < codex-drop-v8-code-mode.patch
-      rm -rf codex-rust-v0.152.0/codex-rs/vendor
+      tar xf codex-rust-v0.152.1.tar.gz
+      patch -p1 -d codex-rust-v0.152.1 < codex-drop-v8-code-mode.patch
+      rm -rf codex-rust-v0.152.1/codex-rs/vendor
       osc service manualrun cargo_vendor
-      rm -rf codex-rust-v0.152.0
+      rm -rf codex-rust-v0.152.1
 
     The codex-rs/vendor removal drops the bundled bubblewrap 0.11.2 C sources,
     which %prep removes as well - codex uses the system bubblewrap instead.
@@ -29,7 +29,7 @@
     cargo-audit is NOT clean, and running it inside codex-rs hides most of it:
     upstream's codex-rs/.cargo/audit.toml ignores 11 advisories, which drops
     the count from 5 to 1.  Audit a bare copy of Cargo.lock instead.  As of
-    0.152.0, and unchanged since 0.151.0:
+    0.152.1, and unchanged since 0.151.0:
       RUSTSEC-2026-0185 / CVE-2026-25800 (quinn-proto 0.11.14, fixed
         0.11.15) - NOT linked.  reqwest gates dep:quinn behind its "http3"
         feature, which the workspace leaves off, so it never reaches
@@ -47,7 +47,7 @@
     not anything this package can vendor around.
   -->
   <service name="cargo_vendor" mode="manual">
-    <param name="srcdir">codex-rust-v0.152.0/codex-rs</param>
+    <param name="srcdir">codex-rust-v0.152.1/codex-rs</param>
     <param name="compression">zst</param>
     <param name="update">false</param>
   </service>
