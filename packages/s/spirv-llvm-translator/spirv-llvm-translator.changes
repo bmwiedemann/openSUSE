@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat Aug 29 14:34:44 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 23.1.0.
+  * New extensions:
+    - SPV_KHR_float_controls2
+    - SPV_KHR_abort
+    - SPV_KHR_poison_freeze
+    - SPV_ALTERA_arbitrary_precision_integers
+    - SPV_AMD_weak_linkage
+    - SPV_INTEL_subgroup_buffer_prefetch
+    - SPV_INTEL_rounded_div_sqrt
+    - SPV_INTEL_subgroup_scaled_matrix_multiply_accumulate
+    - SPV_NV_shader_atomic_fp16_vector
+  * Add translation for:
+    * llvm.ldexp.*
+    * llvm.exp10.*
+    * ptrtoaddr
+    * sadd_with_overflow_i8
+  * Add support for debug macro information.
+  * Add FP4/FP8 operand support for
+    SubgroupMatrixMultiplyAccumulateINTEL.
+  * Update SPV_INTEL_fp_conversions to the latest spec revision.
+  * Remove leftovers of deprecated SPV_INTEL_fast_composite.
+  * Extend INT4/FP4 packed conversions for i16, i64, and vector
+    packed inputs.
+  * Represent FP4 E2M1 with SPV_EXT_ocp_microscaling_types.
+
+-------------------------------------------------------------------
 Thu Aug 20 21:32:37 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 22.1.5.
