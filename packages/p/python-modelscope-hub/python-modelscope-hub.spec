@@ -19,7 +19,7 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-modelscope-hub
-Version:        0.3.0
+Version:        0.3.1
 Release:        0
 Summary:        Official Python client for ModelScope Hub
 License:        Apache-2.0

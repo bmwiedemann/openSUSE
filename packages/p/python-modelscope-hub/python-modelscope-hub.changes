@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Sep  1 16:00:40 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.3.1:
+  * Upload tunables renamed to canonical MODELSCOPE_UPLOAD_* names
+    that spell out their unit (_SECONDS, _BYTES, _ENABLED); the old
+    names still work but now emit a FutureWarning
+  * Folder upload caching defaults to the environment
+    (MODELSCOPE_UPLOAD_CACHE_ENABLED) instead of a hardcoded True,
+    for both the API and the CLI --use-cache flag
+  * List MCP servers via GET /mcp/servers, falling back to the
+    legacy PUT and retrying anonymously when a stale or readonly
+    token is rejected; new nested filter argument
+  * Legacy AIGC create_model/create_model_tag take readme_content
+    and commit it before the version snapshot
+  * Legacy create_model_tag reconciles a timed-out tag against the
+    remote revision list instead of failing outright, and
+    push_model honours the configured worker count instead of 4
+
+-------------------------------------------------------------------
 Sat Aug 29 07:17:11 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.3.0:

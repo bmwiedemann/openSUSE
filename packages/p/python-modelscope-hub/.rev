@@ -21,4 +21,25 @@ so the build breaks loudly once upstream resolves script ownership).
 133 tests pass.</comment>
     <requestid>1374589</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>64a4a5a1f00b1228a068feec98eaa914</srcmd5>
+    <version>0.3.1</version>
+    <time>1788361213</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.3.1
+
+- Upload tunables renamed to canonical MODELSCOPE_UPLOAD_* names that spell out
+  their unit; the old names still work but emit a FutureWarning.
+- Folder upload caching now defaults to MODELSCOPE_UPLOAD_CACHE_ENABLED instead
+  of a hardcoded True, for both the API and the CLI --use-cache flag.
+- MCP servers listed via GET /mcp/servers, falling back to the legacy PUT and
+  retrying anonymously when a stale or readonly token is rejected.
+- Legacy AIGC create_model/create_model_tag take readme_content; create_model_tag
+  reconciles a timed-out tag against the remote revision list.
+
+Built locally on aarch64 and green on OBS x86_64 at srcmd5
+64a4a5a1f00b1228a068feec98eaa914: 177 tests pass per Python flavour,
+rpmlint 0 errors / 0 badness.</comment>
+    <requestid>1375188</requestid>
+  </revision>
 </revisionlist>
