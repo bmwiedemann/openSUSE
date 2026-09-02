@@ -486,4 +486,12 @@
     <comment>Qt 6.11.2 (forwarded request 1372096 from krop)</comment>
     <requestid>1372266</requestid>
   </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>d3ff37be4be67eff352fd203af5a8742</srcmd5>
+    <version>6.11.2</version>
+    <time>1788361102</time>
+    <user>anag_factory</user>
+    <comment>- Add 0003-CMake-Add-LLVM-23-to-supported-QDoc-Clang-versions.patch. (forwarded request 1375199 from aaronpuchert)</comment>
+    <requestid>1375214</requestid>
+  </revision>
 </revisionlist>

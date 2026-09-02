@@ -53,6 +53,8 @@ Patch0:         0001-QDoc-Add-LLVM-22-implementation-to-QualTypeNames-for.patch
 Patch1:         0002-CMake-Add-LLVM-22-to-supported-QDoc-Clang-versions.patch
 # PATCH-FIX-UPSTREAM
 Patch2:         0001-QDoc-Use-deterministic-tiebreaker-for-shared-notifie.patch
+# PATCH-FIX-UPSTREAM -- llvm 23 support
+Patch3:         0003-CMake-Add-LLVM-23-to-supported-QDoc-Clang-versions.patch
 # clang-devel in Leap 15 points to clang7...
 %if 0%{?suse_version} == 1500
 # Leap 15.6 has llvm 19 since 2025-02-12, we need to use it to avoid doc build issues
