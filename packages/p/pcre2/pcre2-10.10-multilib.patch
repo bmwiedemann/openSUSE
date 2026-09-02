@@ -8,11 +8,11 @@ Do not set RPATH nor add explicit -L path to compiler.
  pcre2-config.in |   12 ------------
  1 file changed, 12 deletions(-)
 
-Index: pcre2-10.10/pcre2-config.in
+Index: pcre2-10.48/pcre2-config.in
 ===================================================================
---- pcre2-10.10.orig/pcre2-config.in	2014-10-17 17:07:57.000000000 +0200
-+++ pcre2-10.10/pcre2-config.in	2015-06-18 20:56:20.000000000 +0200
-@@ -28,19 +28,7 @@ if test $# -eq 0; then
+--- pcre2-10.48.orig/pcre2-config.in
++++ pcre2-10.48/pcre2-config.in
+@@ -28,29 +28,7 @@ if test $# -eq 0; then
  fi
  
  libR=
@@ -26,9 +26,19 @@ Index: pcre2-10.10/pcre2-config.in
 -esac
 -
  libS=
--if test @libdir@ != /usr/lib ; then
--  libS=-L@libdir@
--fi
+-case "@libdir@" in
+-  # system locations on Linux, no -L needed
+-  /usr/lib|/usr/lib32|/usr/lib64|/usr/lib/*-gnu*)
+-  ;;
+-  /lib|/lib32|/lib64|/lib/*-gnu*)
+-  ;;
+-  # system locations on AIX and Solaris, no -L needed
+-  /usr/lib/64|/usr/lib/amd*|/usr/lib/sparc*|/usr/lib/ppc*)
+-  ;;
+-  *)
+-  libS="-L@libdir@"
+-  ;;
+-esac
  
  while test $# -gt 0; do
    case "$1" in

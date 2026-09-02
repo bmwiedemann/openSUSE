@@ -2,7 +2,7 @@
 # spec file for package pcre2
 #
 # Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,13 @@
 
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 Name:           pcre2
-Version:        10.47
+Version:        10.48
 Release:        0
 Summary:        A library for Perl-compatible regular expressions
 # code: BSD-3-Clause WITH PCRE2-exception
 # testdata: Public Domain
 # JIT-compiler: BSD-2-Clause
-License:        BSD-2-Clause AND BSD-3-Clause WITH PCRE2-exception AND SUSE-Public-Domain
+License:        BSD-2-Clause AND BSD-3-Clause WITH PCRE2-exception AND LicenseRef-SUSE-Public-Domain
 Group:          Development/Libraries/C and C++
 URL:            https://pcre2project.github.io/pcre2/
 Source0:        https://github.com/PCRE2Project/pcre2/releases/download/%{name}-%{version}/%{name}-%{version}.tar.bz2
@@ -37,11 +37,11 @@ Source4:        baselibs.conf
 Patch1:         pcre2-10.10-multilib.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  gcc-c++
-BuildRequires:  libbz2-devel
-BuildRequires:  libedit-devel
+BuildRequires:  c++_compiler
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(bzip2)
+BuildRequires:  pkgconfig(libedit)
 BuildRequires:  pkgconfig(zlib)
 
 %description
@@ -213,6 +213,9 @@ export LDFLAGS="-Wl,-z,relro,-z,now"
 %make_install
 mkdir -p %{buildroot}/%{_defaultdocdir}
 mv %{buildroot}%{_datadir}/doc/pcre2 %{buildroot}/%{_defaultdocdir}/pcre2-doc
+rm %{buildroot}/%{_defaultdocdir}/pcre2-doc/LICENCE.md
+rm %{buildroot}/%{_defaultdocdir}/pcre2-doc/README
+
 #empty dependecy_libs
 find %{buildroot} -type f -name "*.la" -delete -print
 
@@ -227,7 +230,7 @@ export LANG=POSIX
 
 %files -n libpcre2-8-0
 %license LICENCE.md
-%doc AUTHORS.md ChangeLog NEWS README
+%doc AUTHORS.md ChangeLog NEWS
 %{_libdir}/libpcre2-8.so.*
 
 %files -n libpcre2-16-0
@@ -251,15 +254,19 @@ export LANG=POSIX
 
 %files doc
 %license LICENCE.md
-%doc AUTHORS.md ChangeLog NEWS README
+%doc AUTHORS.md ChangeLog NEWS
 %doc doc/html doc/*.txt
 %doc %{_defaultdocdir}/pcre2-doc
 
 %files devel
 %license LICENCE.md
 %{_bindir}/pcre2-config
-%{_includedir}/*
-%{_libdir}/*.so
+%{_includedir}/pcre2.h
+%{_includedir}/pcre2posix.h
+%{_libdir}/libpcre2-8.so
+%{_libdir}/libpcre2-16.so
+%{_libdir}/libpcre2-32.so
+%{_libdir}/libpcre2-posix.so
 %{_libdir}/pkgconfig/libpcre2-8.pc
 %{_libdir}/pkgconfig/libpcre2-16.pc
 %{_libdir}/pkgconfig/libpcre2-32.pc

@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Mon Aug 31 19:05:45 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 10.48:
+  * GHSA-2p8c-ff85-vh9x: If pcre2_jit_compile() is called with
+    options for some match modes, and then pcre2_match() is used to
+    perform a match for a different match mode, an out-of-bounds
+    read can occur if the match is attempted against invalid UTF
+    input.
+    (boo#1277708)
+  * GHSA-q8g2-wprr-34m9: If pcre2_convert() is called on untrusted
+    input on platforms with 32-bit size_t, an out-of-bounds heap
+    write can occur
+    (boo#1277707)
+  * GHSA-3r4p-g7gg-ppmf: Fixed an out-of-bounds write in DFA
+    matching when using a heap limit; also fixed possible integer
+    overflows which could cause under-allocation of the workspace.
+    (boo#1277713)
+  * GHSA-fmgr-6ggq-9859: Added bounds checks for several integer
+    overflows while compiling patterns on 32-bit CPUs, which could
+    cause under-allocation followed by out-of-bounds writes.
+    (boo#1277709)
+  * GHSA-9qww-pwc4-77qq: Applied lower buffer bound to prevent two
+    out-of-bounds reads while scanning backwards through invalid
+    UTF data with PCRE2_MATCH_INVALID_UTF.
+    (boo#1277710)
+  * Fix a JIT-specific matching bug affecting prefix scanning on
+    patterns with repeats
+  * Fix a JIT-specific matching bug in variable-length lookbehinds
+  * Miscompiled Unicode character classes combining characters at
+    or below U+00FF with characters at U+0100 and U+8000 or above
+  * Incorrect JIT character advancement with
+    PCRE2_MATCH_INVALID_UTF in UTF-8 and UTF-16 modes, which could
+    skip adjacent characters
+  * Update Unicode support to Unicode 17.0
+  * Fix a leak and later invalid free when calling the fast-path
+    pcre2_jit_match() function with a match data object previously
+    used with pcre2_match() and PCRE2_COPY_MATCHED_SUBJECT.
+    (boo#1277711)
+  * GHSA-q7rw-r7qq-2hx6: Fix exposure of two uninitialised bytes
+    from malloc() via pcre2_serialize_encode()
+    (boo#1277712)
+
+-------------------------------------------------------------------
+Mon Aug 31 18:22:43 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Fix (all) rpmlint warnings
+
+-------------------------------------------------------------------
 Tue Oct 21 22:00:57 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 10.47:

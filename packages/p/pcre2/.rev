@@ -340,4 +340,20 @@ Not source compatible. Installable in parallel with all packages.</comment>
     <comment>pcre2 10.47 (forwarded request 1312911 from AndreasStieger)</comment>
     <requestid>1312912</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>b6051b6740a636d80e09abe05fb798b2</srcmd5>
+    <version>10.48</version>
+    <time>1788361081</time>
+    <user>anag_factory</user>
+    <comment>pcre2 10.48
+
+boo#1277707
+boo#1277708
+boo#1277709
+boo#1277710
+boo#1277711
+boo#1277712
+boo#1277713</comment>
+    <requestid>1374973</requestid>
+  </revision>
 </revisionlist>
