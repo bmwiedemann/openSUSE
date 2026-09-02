@@ -78,4 +78,20 @@ image-to-video. Index gains minComfyUIVersion, populated for all 521
 templates and localisations. No existing workflow JSON changed.</comment>
     <requestid>1374576</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>91f0e45259e79cca1a6529c0b9857d1f</srcmd5>
+    <version>0.1.64</version>
+    <time>1788361426</time>
+    <user>anag_factory</user>
+    <comment>Update python-comfyui-workflow-templates-json to 0.1.64.
+
+Adds eight template definitions (three Fish Audio, three MiniMax H3
+Max, two PixVerse 6), drops api_veo3, refreshes 24 existing templates
+and rebuilds the template index and its 12 localisations.
+
+Part of a set with -core 0.3.329, -media-assets-01 0.1.37 and the
+comfyui-workflow-templates 0.11.52 meta package, which upstream
+releases in lockstep.</comment>
+    <requestid>1375332</requestid>
+  </revision>
 </revisionlist>

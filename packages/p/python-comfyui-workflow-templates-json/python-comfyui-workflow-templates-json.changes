@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Sep  2 07:38:14 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.1.64:
+  * Adds eight template definitions (three Fish Audio, three
+    MiniMax H3 Max, two PixVerse 6) and drops api_veo3
+  * Refreshes 24 existing templates -- node graphs as well as
+    widget values
+  * Rebuilds the template index, its 11 localisations and the MCP
+    and provider-logo indexes
+
+-------------------------------------------------------------------
 Sat Aug 29 07:17:54 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.1.61:
