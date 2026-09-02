@@ -1,52 +1,52 @@
-Index: b/doc/cpio.info
+Index: b/doc/cpio.texi
 ===================================================================
---- a/doc/cpio.info
-+++ b/doc/cpio.info
-@@ -224,7 +224,8 @@ option, e.g.:
- '-B'
-      Set the I/O block size to 5120 bytes.
- '-c'
--     Use the old portable (ASCII) archive format.
-+     Identical to "-H newc", use the new (SVR4) portable format.
-+     If you wish the old portable (ASCII) archive format, use "-H odc" instead.
- '-C NUMBER'
- '--io-size=NUMBER'
-      Set the I/O block size to the given NUMBER of bytes.
-@@ -305,7 +306,8 @@ option.
- '-B'
-      Set the I/O block size to 5120 bytes.
- '-c'
--     Use the old portable (ASCII) archive format.
-+     Identical to "-H newc", use the new (SVR4) portable format.
-+     If you wish the old portable (ASCII) archive format, use "-H odc" instead.
- '-C NUMBER'
- '--io-size=NUMBER'
-      Set the I/O block size to the given NUMBER of bytes.
-@@ -415,7 +417,8 @@ option.
- '-B'
-      Set the I/O block size to 5120 bytes.
- '-c'
--     Use the old portable (ASCII) archive format.
-+     Identical to "-H newc", use the new (SVR4) portable format.
-+     If you wish the old portable (ASCII) archive format, use "-H odc" instead.
- '-C NUMBER'
- '--io-size=NUMBER'
-      Set the I/O block size to the given NUMBER of bytes.
-@@ -566,7 +569,8 @@ option is valid.
+--- a/doc/cpio.texi
++++ b/doc/cpio.texi
+@@ -271,7 +271,8 @@
+ @item -B
+ Set the I/O block size to 5120 bytes.
+ @item -c
+-Use the old portable (ASCII) archive format.
++Identical to @option{-H newc}, use the new (SVR4) portable format.
++If you wish the old portable (ASCII) archive format, use @option{-H odc} instead.
+ @item -C @var{number}
+ @itemx --io-size=@var{number}
+ Set the I/O block size to the given @var{number} of bytes.
+@@ -354,7 +355,8 @@
+ @item -B
+ Set the I/O block size to 5120 bytes.
+ @item -c
+-Use the old portable (ASCII) archive format.
++Identical to @option{-H newc}, use the new (SVR4) portable format.
++If you wish the old portable (ASCII) archive format, use @option{-H odc} instead.
+ @item -C @var{number}
+ @itemx --io-size=@var{number}
+ Set the I/O block size to the given @var{number} of bytes.
+@@ -465,7 +467,8 @@
+ @item -B
+ Set the I/O block size to 5120 bytes.
+ @item -c
+-Use the old portable (ASCII) archive format.
++Identical to @option{-H newc}, use the new (SVR4) portable format.
++If you wish the old portable (ASCII) archive format, use @option{-H odc} instead.
+ @item -C @var{number}
+ @itemx --io-size=@var{number}
+ Set the I/O block size to the given @var{number} of bytes.
+@@ -614,7 +617,8 @@
  
- '-c'
-      [*note copy-in::,*note copy-out::,*note copy-pass::]
--     Use the old portable (ASCII) archive format.
-+     Identical to "-H newc", use the new (SVR4) portable format.
-+     If you wish the old portable (ASCII) archive format, use "-H odc" instead.
+ @item -c
+ [@ref{copy-in},@ref{copy-out},@ref{copy-pass}]
+-@*Use the old portable (ASCII) archive format.
++@*Identical to @option{-H newc}, use the new (SVR4) portable format.
++If you wish the old portable (ASCII) archive format, use @option{-H odc} instead.
  
- '-C IO-SIZE'
- '--io-size=IO-SIZE'
+ @item -C @var{io-size}
+ @itemx --io-size=@var{io-size}
 Index: b/src/main.c
 ===================================================================
 --- a/src/main.c
 +++ b/src/main.c
-@@ -331,6 +331,7 @@ parse_opt (int key, char *arg, struct ar
+@@ -331,6 +331,7 @@
      case 'c':		/* Use the old portable ASCII format.  */
        if (archive_format != arf_unknown)
  	USAGE_ERROR ((0, 0, _("Archive format multiply defined")));

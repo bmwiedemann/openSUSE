@@ -87,6 +87,9 @@ This package includes the 'mt', a local tape drive control program.
 %build
 gettextize -f --no-changelog
 autoreconf -fiv
+# doc/cpio.texi is patched, so its mtime is the build date - keep automake from
+# stamping that into doc/version.texi and thus into the installed cpio.info
+touch doc/stamp-vti doc/version.texi
 export CFLAGS="%{optflags} -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -fcommon -std=gnu11"
 %configure \
   --with-rmt="%{_bindir}/rmt" \
