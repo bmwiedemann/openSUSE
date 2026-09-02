@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep  1 11:41:54 UTC 2026 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 0.7.2
+  * Two small cleanups: missing break and a hardcoded buffer count
+  * isp: assign y1 in the crop command
+  * v4l2: omit filling format description when >= v4.2
+  * Now builds with v7.2 kernels 
+
+-------------------------------------------------------------------
 Mon Jun 15 08:30:50 UTC 2026 - Patrik Jakobsson <patrik.jakobsson@suse.com>
 
 - Update to version 0.7.0.2
