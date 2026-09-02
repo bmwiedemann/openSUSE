@@ -276,4 +276,18 @@
   * Fix Channel.close() for channels with multiple consumers</comment>
     <requestid>1359333</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>3075f3ab6463bd2325fb89c35c337ad4</srcmd5>
+    <version>1.4.4</version>
+    <time>1788361257</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.4.4:
+  * Revert &quot;Fix callLater typing by passing keyword arguments&quot;
+    #1678 (jeremycline)
+  * Importing pika.adapters can break asyncio subprocesses on
+    Windows #1639
+  * Stop mutating global asyncio event loop policy on import
+    #1642 (lukebakken)</comment>
+    <requestid>1375242</requestid>
+  </revision>
 </revisionlist>
