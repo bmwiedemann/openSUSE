@@ -9,7 +9,7 @@ Fri Aug 21 22:06:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Fri Aug 14 05:28:46 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
-- update to 4.2.4:
+- update to 4.2.4 (bsc#1276510, CVE-2026-41178):
   * fix: Improve error reporting for helm template --debug with
     --show-only- #31185
   * fix: fetch logs from all containers in test pods- #32099

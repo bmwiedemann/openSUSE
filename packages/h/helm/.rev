@@ -1295,4 +1295,12 @@ See changelog in:
     #32521</comment>
     <requestid>1372954</requestid>
   </revision>
+  <revision rev="113" vrev="2">
+    <srcmd5>85c49142152d48fb1a1fe0134e126ac0</srcmd5>
+    <version>4.2.4</version>
+    <time>1788361185</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.2.4 (bsc#1276510, CVE-2026-41178):</comment>
+    <requestid>1375194</requestid>
+  </revision>
 </revisionlist>
