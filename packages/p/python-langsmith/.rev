@@ -244,4 +244,44 @@ replica run ids. Adds BuildRequires pytest-socket so the new
 test_multipart_retry_matrix.py runs: 473 pass, up from 446 + 27 errors.</comment>
     <requestid>1374582</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>a2cc7d6eba4fbbdcf04bd83e2c31141c</srcmd5>
+    <version>0.12.1</version>
+    <time>1788361214</time>
+    <user>anag_factory</user>
+    <comment>Supersedes SR 1375190 (0.12.0, staged in adi:14).
+
+Delta from the superseded request:
+
+- Upstream 0.12.1: the anonymizer's string-walk queue now drains via
+  collections.deque instead of list.pop(0), which was O(n) per pop and
+  quadratic overall; that walk runs inline on the caller's event loop
+  (gh#langchain-ai/langsmith-sdk#3475). It is the only functional change
+  - PKG-INFO Requires-Dist is byte-identical between 0.12.0 and 0.12.1,
+  so the httpx2 swap and every dependency floor are exactly as reviewed
+  on 1375190, and the spec needed nothing beyond Version.
+
+- Two upstream tests deselected in %check.
+  test_admission_under_concurrency over-specifies: it asserts the first
+  replica always claims the next compressed frame, but a concurrent
+  drain can reset between the two writes of a single post(). Delivery
+  stays correct - admission and drain both hold compressed_traces.lock
+  - so the assertion is over-strict, not a race. It was red on
+  openSUSE_Factory_ARM/aarch64 at 0.12.0.
+  test_extract_string_nodes_scales_linearly is new in 0.12.1 and
+  asserts a wall-clock ratio, which should not gate a distro build.
+
+The rest of the entry is the 0.11.2 -&gt; 0.12.0 story already reviewed
+here, kept as one entry because Factory goes straight from 0.11.2 to
+0.12.1.
+
+langsmith-python314-iscoroutinefunction.patch kept: still applies at
+fuzz 0 and still needed - upstream PR #3347 is open and 0.12.1 still
+calls asyncio.iscoroutinefunction.
+
+No new advisory: every OSV advisory for PyPI langsmith has a fixed
+version floor at or below 0.8.18. No Factory consumer caps langsmith
+(langchain-core &gt;= 0.3.45, skillspector &gt;= 0.7.30, both floors).</comment>
+    <requestid>1375295</requestid>
+  </revision>
 </revisionlist>

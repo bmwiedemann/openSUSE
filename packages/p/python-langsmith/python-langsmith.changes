@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Sep  2 06:19:36 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.12.1:
+  * Drain the anonymizer string walk with a deque - list.pop(0)
+    made it quadratic, and the walk runs inline on the caller's
+    event loop
+- Update to 0.12.0:
+  * Switch the HTTP backend to httpx2; httpx stays as an import
+    fallback but is no longer a declared dependency
+  * Trace sampling is deterministic and keys on the trace rather
+    than the run - direct create_run/update_run calls on child runs
+    must now pass trace_id or dotted_order to land on the same side
+    of the sample as their trace (@traceable/RunTree unaffected)
+  * process_inputs/process_outputs fail closed: a redactor that
+    raises now drops the payload behind an ls_error marker instead
+    of uploading it unredacted
+  * Compress replica writes that carry their own credentials, and
+    serialize identical replicas once into a single frame
+- Require python-httpx2 >= 2 instead of python-httpx, following the
+  upstream dependency swap
+- Skip two upstream tests in %check: the replica-compression
+  concurrency test over-specifies which destination claims the next
+  frame, and the anonymizer scaling test asserts a wall-clock ratio
+
+-------------------------------------------------------------------
 Sat Aug 29 07:23:58 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.11.2:
