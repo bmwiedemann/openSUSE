@@ -1,0 +1,7 @@
+<services>
+  <service name="download_files" mode="manual"/>
+  <service name="cargo_vendor" mode="manual">
+    <param name="srcdir">nono</param>
+    <param name="compression">zstd</param>
+  </service>
+</services>
