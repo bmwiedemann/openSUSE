@@ -84,4 +84,20 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1352911</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1bab7af08d87e68fc8a0bb2161fbab87</srcmd5>
+    <version>2.12.1</version>
+    <time>1788361370</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.12.1:
+  * Don't depend on deprecated pyo3/generate-import-lib feature
+  * Fix Buffer protocol typing
+- Refreshed patches:
+  * cramjam-opensuse-config.patch
+  * cramjam-issue193-test_variants.patch
+- Ship README in built packages.
+
+- Disable test_variants_raise_exception[deflate]</comment>
+    <requestid>1375264</requestid>
+  </revision>
 </revisionlist>

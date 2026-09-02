@@ -1,9 +1,9 @@
-Index: cramjam-2.11.0/tests/test_variants.py
+Index: cramjam-2.12.1/tests/test_variants.py
 ===================================================================
---- cramjam-2.11.0.orig/tests/test_variants.py
-+++ cramjam-2.11.0/tests/test_variants.py
-@@ -104,7 +104,7 @@ def test_variants_raise_exception(varian
-     "output_type", (bytes, bytearray, "numpy", cramjam.Buffer, cramjam.File, memoryview)
+--- cramjam-2.12.1.orig/tests/test_variants.py
++++ cramjam-2.12.1/tests/test_variants.py
+@@ -132,7 +132,7 @@ def test_variants_into_reject_readonly_o
+     "output_type", (bytearray, "numpy", cramjam.Buffer, cramjam.File, memoryview)
  )
  @pytest.mark.parametrize("variant_str", VARIANTS)
 -@given(raw_data=st.binary())
@@ -11,8 +11,8 @@ Index: cramjam-2.11.0/tests/test_variants.py
  def test_variants_compress_into(
      variant_str,
      input_type,
-@@ -181,7 +181,7 @@ def test_variants_compress_into(
-     "output_type", (bytes, bytearray, "numpy", cramjam.Buffer, cramjam.File, memoryview)
+@@ -209,7 +209,7 @@ def test_variants_compress_into(
+     "output_type", (bytearray, "numpy", cramjam.Buffer, cramjam.File, memoryview)
  )
  @pytest.mark.parametrize("variant_str", VARIANTS)
 -@given(raw_data=st.binary())
@@ -20,7 +20,7 @@ Index: cramjam-2.11.0/tests/test_variants.py
  def test_variants_decompress_into(
      variant_str,
      input_type,
-@@ -191,9 +191,6 @@ def test_variants_decompress_into(
+@@ -219,9 +219,6 @@ def test_variants_decompress_into(
      is_pypy,
      is_free_threaded,
  ):

@@ -1,8 +1,8 @@
-Index: cramjam-2.12.0/pyproject.toml
+Index: cramjam-2.12.1/pyproject.toml
 ===================================================================
---- cramjam-2.12.0.orig/pyproject.toml
-+++ cramjam-2.12.0/pyproject.toml
-@@ -16,7 +16,26 @@ build-backend = "maturin"
+--- cramjam-2.12.1.orig/pyproject.toml
++++ cramjam-2.12.1/pyproject.toml
+@@ -28,7 +28,26 @@ build-backend = "maturin"
  
  [tool.maturin]
  python-source = "src"
@@ -28,14 +28,14 @@ Index: cramjam-2.12.0/pyproject.toml
 +#    "use-system-blosc2-shared"
 +]
  
- [dependency-groups]
- dev = [
-Index: cramjam-2.12.0/Cargo.toml
+ [tool.pyright]
+ include = ["typing_tests"]
+Index: cramjam-2.12.1/Cargo.toml
 ===================================================================
---- cramjam-2.12.0.orig/Cargo.toml
-+++ cramjam-2.12.0/Cargo.toml
-@@ -104,7 +104,8 @@ libcramjam = { version = "^0.8", default
- pyo3-build-config = "^0.25"
+--- cramjam-2.12.1.orig/Cargo.toml
++++ cramjam-2.12.1/Cargo.toml
+@@ -102,7 +102,8 @@ libcramjam = { version = "^0.8", default
+ pyo3-build-config = "^0.29.2"
  
  [profile.release]
 -strip = true

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Sep  2 04:51:17 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.12.1:
+  * Don't depend on deprecated pyo3/generate-import-lib feature
+  * Fix Buffer protocol typing
+- Refreshed patches:
+  * cramjam-opensuse-config.patch
+  * cramjam-issue193-test_variants.patch
+- Ship README in built packages.
+
+-------------------------------------------------------------------
 Wed May  6 01:39:19 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Work around version misnumbering.
@@ -33,7 +44,7 @@ Fri Jan  2 16:11:13 UTC 2026 - Ben Greiner <code@bnavigator.de>
     in #197
   * Bump libcramjam -> 0.7.0 by @milesgranger in #198
   * Update PyO3 to 0.24 by @musicinmybrain in #207
-- Disable test_variants_raise_exception[deflate]
+- Disable test_variants_raise_exception[deflate] 
   * gh#milesgranger/cramjam#211
 - Disable blosc2 because it fails to compile right now and upstream
   degraded it from the default feature set to experimental
