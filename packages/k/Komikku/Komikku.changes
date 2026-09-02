@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Sep  1 13:18:25 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.13.0:
+  + [Preferences] OCR Translator: Added default language to use as
+    target language for translations
+  + [Reader] OCR Translator: Added a button to copy the source text
+  + [Reader] Webtoon pager: Fixed keayboard navigation
+  + [Servers] JManga (JA): Update
+  + [Servers] MangaFreak (EN): Update
+  + [L10n] Updated French, Russian and Ukrainian translations
+- Changes from version 50.12.0:
+  + [Reader] RTL/LTR/Vertical pager: Fixed keyboard/mouse
+    navigation
+  + [Reader] OCR Translator: Improvements in Translator
+  + [L10n] Updated Russian and Ukrainian translations
+- Add pkgconfig(gtksourceview-5) BuildRequires: new dependency.
+- Rebase convert-to-modern-colorthief.patch using quilt.
+
+-------------------------------------------------------------------
 Tue Aug  4 14:54:03 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 50.11.0:

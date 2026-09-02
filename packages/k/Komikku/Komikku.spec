@@ -18,7 +18,7 @@
 
 %define         appid info.febvre.Komikku
 Name:           Komikku
-Version:        50.11.0
+Version:        50.13.0
 Release:        0
 Summary:        A manga reader for GNOME
 # appdata.xml is CC-BY-4.0
@@ -74,6 +74,7 @@ BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.44.3
 BuildRequires:  pkgconfig(glycin-gtk4-2) >= 2.0.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.35.9
 BuildRequires:  pkgconfig(gtk4) >= 4.18
+BuildRequires:  pkgconfig(gtksourceview-5)
 BuildRequires:  pkgconfig(libadwaita-1) >= 1.8
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(python3)

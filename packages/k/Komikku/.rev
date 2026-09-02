@@ -762,4 +762,26 @@
     <comment>Update to version 50.11.0</comment>
     <requestid>1371778</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>0b200b6239e2d3bf929970dd8414f217</srcmd5>
+    <version>50.13.0</version>
+    <time>1788361375</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 50.13.0:
+  + [Preferences] OCR Translator: Added default language to use as
+    target language for translations
+  + [Reader] OCR Translator: Added a button to copy the source text
+  + [Reader] Webtoon pager: Fixed keayboard navigation
+  + [Servers] JManga (JA): Update
+  + [Servers] MangaFreak (EN): Update
+  + [L10n] Updated French, Russian and Ukrainian translations
+- Changes from version 50.12.0:
+  + [Reader] RTL/LTR/Vertical pager: Fixed keyboard/mouse
+    navigation
+  + [Reader] OCR Translator: Improvements in Translator
+  + [L10n] Updated Russian and Ukrainian translations
+- Add pkgconfig(gtksourceview-5) BuildRequires: new dependency.
+- Rebase convert-to-modern-colorthief.patch using quilt.</comment>
+    <requestid>1375292</requestid>
+  </revision>
 </revisionlist>

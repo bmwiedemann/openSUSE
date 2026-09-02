@@ -1,7 +1,8 @@
-diff -rubN komikku/komikku/models/database/mangas.py komikku-patched/komikku/models/database/mangas.py
---- komikku/komikku/models/database/mangas.py	2026-07-31 23:10:40.000000000 +0200
-+++ komikku-patched/komikku/models/database/mangas.py	2026-08-05 13:24:31.114005061 +0200
-@@ -13,7 +13,7 @@
+Index: komikku/komikku/models/database/mangas.py
+===================================================================
+--- komikku.orig/komikku/models/database/mangas.py
++++ komikku/komikku/models/database/mangas.py
+@@ -13,7 +13,7 @@ from pathlib import Path
  import shutil
  import time
  
@@ -10,7 +11,7 @@ diff -rubN komikku/komikku/models/database/mangas.py komikku-patched/komikku/mod
  from PIL import Image
  from PIL import ImageFilter
  from PIL import ImageStat
-@@ -135,7 +135,7 @@
+@@ -135,7 +135,7 @@ class Manga:
                  if '@define-color' not in data:
                      return data
  
@@ -19,21 +20,23 @@ diff -rubN komikku/komikku/models/database/mangas.py komikku-patched/komikku/mod
          if len(palette) != 2:
              # Single color image?
              return None
-diff -rubN komikku/komikku/utils.py komikku-patched/komikku/utils.py
---- komikku/komikku/utils.py	2026-07-31 23:10:40.000000000 +0200
-+++ komikku-patched/komikku/utils.py	2026-08-05 13:27:05.372290806 +0200
-@@ -18,7 +18,7 @@
+Index: komikku/komikku/utils.py
+===================================================================
+--- komikku.orig/komikku/utils.py
++++ komikku/komikku/utils.py
+@@ -18,7 +18,7 @@ import re
  import subprocess
  import traceback
-
+ 
 -from colorthief import ColorThief
 +from modern_colorthief import get_palette
  import gi
- from jxlpy import JXLImagePlugin  # noqa: F401
- import magic
-diff -rubN komikku/requirements.txt komikku-patched/requirements.txt
---- komikku/requirements.txt	2026-07-31 23:10:40.000000000 +0200
-+++ komikku-patched/requirements.txt	2026-08-05 13:24:31.114005061 +0200
+ try:
+     from jxlpy import JXLImagePlugin  # noqa: F401
+Index: komikku/requirements.txt
+===================================================================
+--- komikku.orig/requirements.txt
++++ komikku/requirements.txt
 @@ -4,7 +4,7 @@
  
  beautifulsoup4
