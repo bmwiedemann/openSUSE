@@ -17,37 +17,34 @@
 
 
 %global optflags %{optflags} -Wno-unused-variable
-
 Name:           zeal
-Version:        0.8.1
+Version:        0.9.1
 Release:        0
 Summary:        Offline API documentation browser
 License:        GPL-3.0-or-later
-Group:          Development/Tools/Other
 URL:            https://zealdocs.org
 Source0:        %{name}-%{version}.tar.xz
 # `help2man zeal > zeal.1` can't be run without X started.
 Source9:        zeal.1
-# PATCH-FIX-UPSTREAM zeal-cmake-find-qt-components.patch gh#zealdocs/zeal#1643 badshah400@gmail.com -- Explicitly find necessary Qt6 components to fix build with Qt 6.7.2
-Patch0:         zeal-cmake-find-qt-components.patch
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
-BuildRequires:  qt6-gui-private-devel
+BuildRequires:  tomlplusplus-devel
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt6Concurrent) >= 6.2.0
-BuildRequires:  pkgconfig(Qt6Core) >= 6.2.0
-BuildRequires:  pkgconfig(Qt6Gui) >= 6.2.0
-BuildRequires:  pkgconfig(Qt6Test) >= 6.2.0
-BuildRequires:  pkgconfig(Qt6WebChannel) >= 6.2.0
-BuildRequires:  pkgconfig(Qt6WebEngineWidgets) >= 6.2.0
+BuildRequires:  pkgconfig(Qt6Concurrent) >= 6.4.2
+BuildRequires:  pkgconfig(Qt6Core) >= 6.4.2
+BuildRequires:  pkgconfig(Qt6Gui) >= 6.4.2
+BuildRequires:  pkgconfig(Qt6Svg) >= 6.4.2
+BuildRequires:  pkgconfig(Qt6Test) >= 6.4.2
+BuildRequires:  pkgconfig(Qt6WebChannel) >= 6.4.2
+BuildRequires:  pkgconfig(Qt6WebEngineWidgets) >= 6.4.2
 BuildRequires:  pkgconfig(libarchive)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(xcb-keysyms)
-Requires:       libQt6Sql6 >= 6.2.0
+Requires:       libQt6Sql6 >= 6.4.2
 Requires(post): hicolor-icon-theme
 Requires(post): update-desktop-files
 Requires(postun): hicolor-icon-theme
@@ -64,14 +61,14 @@ Zeal is an offline API documentation browser inspired by Dash
    Editor plugins for details.
 
 %prep
-%autosetup -p1
+%autosetup
 
 %build
 %cmake_qt6 -DCMAKE_SKIP_INSTALL_RPATH=ON
-%qt6_build
+%{qt6_build}
 
 %install
-%qt6_install
+%{qt6_install}
 %suse_update_desktop_file -r org.zealdocs.zeal Office Viewer
 %fdupes -s %{buildroot}%{_datadir}
 
@@ -83,7 +80,7 @@ cp %{SOURCE9} %{buildroot}%{_mandir}/man1
 %license COPYING
 %doc README.md
 %{_bindir}/%{name}
-%{_mandir}/man1/%{name}.1%{ext_man}
+%{_mandir}/man1/%{name}.1%{?ext_man}
 %{_datadir}/applications/org.zealdocs.zeal.desktop
 %{_datadir}/metainfo/org.zealdocs.zeal.appdata.xml
 %{_datadir}/icons/hicolor/*/apps/%{name}*

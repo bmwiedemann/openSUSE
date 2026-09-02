@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Aug 30 15:02:58 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 0.9.1 (includes 0.9.0, skipped in packaging):
+  * Redesigned application icon; Tabler icons used across the UI
+  * Add page zoom controls and a default zoom level setting
+  * Enable fuzzy search by default; add Sidebar toggle and Go menu
+  * Add --port command-line option; show download size in tooltips
+  * Support compressed tarix docsets
+  * Performance: O(1) symbol/list lookups, parallelized docset
+    loading, fewer allocations in fuzzy search
+  * Harden docset download/extraction and settings (TOML) parsing
+  * Now requires Qt >= 6.4.2 and C++20; Qt 5 support dropped
+- Drop zeal-cmake-find-qt-components.patch: upstream's own
+  src/app/CMakeLists.txt now lists all required Qt6 components
+  (gh#zealdocs/zeal#1643 was fixed upstream; the patch no longer
+  applies against 0.9.1)
+- Drop BuildRequires: qt6-gui-private-devel: QxtGlobalShortcut no
+  longer uses Qt6::GuiPrivate since upstream dropped Qt 5 support
+- Bump Qt6 BuildRequires and Requires floors from 6.2.0 to 6.4.2,
+  matching upstream's new minimum; add BuildRequires:
+  pkgconfig(Qt6Svg) for the new icon set
+- Switch to system tomlplusplus (exact version match, 3.4.0) instead
+  of the bundled copy for the new TOML settings file support; keep
+  using the bundled cpp-httplib header (used for the update-check
+  HTTP client), since Factory's cpp-httplib is built as a compiled
+  library requiring OpenSSL/zlib/brotli that zeal does not need
+
+-------------------------------------------------------------------
 Sun Apr 05 07:34:08 UTC 2026 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Update to version 0.8.1:
