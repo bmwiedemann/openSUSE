@@ -68,4 +68,12 @@
     <comment>- Update to release 7.0.2</comment>
     <requestid>1373891</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>81aba7a1bd6e4955cebdc217f6632186</srcmd5>
+    <version>7.0.2</version>
+    <time>1788361436</time>
+    <user>anag_factory</user>
+    <comment>add bugrefs</comment>
+    <requestid>1375338</requestid>
+  </revision>
 </revisionlist>
