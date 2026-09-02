@@ -18,7 +18,6 @@
 #!BuildTag: opensuse/bci/opencode:%%opencode_version%%-%RELEASE%
 #!BuildTag: opensuse/bci/opencode:%%opencode_version%%
 #!BuildTag: opensuse/bci/opencode:devel
-#!BuildTag: opensuse/bci/opencode:latest
 #!BcntSyncTag: opencode-image
 
 FROM opensuse/tumbleweed:latest

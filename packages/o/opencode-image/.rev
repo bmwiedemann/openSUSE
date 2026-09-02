@@ -7,4 +7,12 @@
     <comment>🤖: initial submission of opencode-image</comment>
     <requestid>1375107</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>25840c8650b85583e46fa0bc0d02540d</srcmd5>
+    <version>unknown</version>
+    <time>1788361454</time>
+    <user>anag_factory</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1375372</requestid>
+  </revision>
 </revisionlist>
