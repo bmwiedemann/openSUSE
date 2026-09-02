@@ -1,7 +1,7 @@
 #
 # spec file for package libmodi
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,7 +21,7 @@
 
 Name:           libmodi
 %define lname	libmodi1
-Version:        20251121
+Version:        20260902
 Release:        0
 Summary:        Library and tools to access the Mac OS disk image formats
 License:        LGPL-3.0-or-later
@@ -37,26 +37,26 @@ BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(fuse3)
-BuildRequires:  pkgconfig(libbfio) >= 20240414
-BuildRequires:  pkgconfig(libcaes) >= 20251121
-BuildRequires:  pkgconfig(libcdata) >= 20240414
-BuildRequires:  pkgconfig(libcdirectory) >= 20240414
-BuildRequires:  pkgconfig(libcerror) >= 20240413
-BuildRequires:  pkgconfig(libcfile) >= 20240414
-BuildRequires:  pkgconfig(libclocale) >= 20240414
-BuildRequires:  pkgconfig(libcnotify) >= 20240414
-BuildRequires:  pkgconfig(libcpath) >= 20240414
-BuildRequires:  pkgconfig(libcsplit) >= 20240414
-BuildRequires:  pkgconfig(libcthreads) >= 20240413
-BuildRequires:  pkgconfig(libfcache) >= 20240414
-BuildRequires:  pkgconfig(libfdata) >= 20240415
-BuildRequires:  pkgconfig(libfguid) >= 20240415
-BuildRequires:  pkgconfig(libfmos) >= 20240415
-BuildRequires:  pkgconfig(libfplist) >= 20240415
-BuildRequires:  pkgconfig(libfvalue) >= 20240415
-BuildRequires:  pkgconfig(libhmac) >= 20240417
+BuildRequires:  pkgconfig(libbfio) >= 20260623
+BuildRequires:  pkgconfig(libcaes) >= 20260520
+BuildRequires:  pkgconfig(libcdata) >= 20260703
+BuildRequires:  pkgconfig(libcdirectory) >= 20260703
+BuildRequires:  pkgconfig(libcerror) >= 20260703
+BuildRequires:  pkgconfig(libcfile) >= 20260704
+BuildRequires:  pkgconfig(libclocale) >= 20260703
+BuildRequires:  pkgconfig(libcnotify) >= 20260703
+BuildRequires:  pkgconfig(libcpath) >= 20260703
+BuildRequires:  pkgconfig(libcsplit) >= 20260703
+BuildRequires:  pkgconfig(libcthreads) >= 20260703
+BuildRequires:  pkgconfig(libfcache) >= 20260520
+BuildRequires:  pkgconfig(libfdata) >= 20260521
+BuildRequires:  pkgconfig(libfguid) >= 20260521
+BuildRequires:  pkgconfig(libfmos) >= 20260520
+BuildRequires:  pkgconfig(libfplist) >= 20260521
+BuildRequires:  pkgconfig(libfvalue) >= 20260531
+BuildRequires:  pkgconfig(libhmac) >= 20260522
 BuildRequires:  pkgconfig(liblzma)
-BuildRequires:  pkgconfig(libuna) >= 20240414
+BuildRequires:  pkgconfig(libuna) >= 20260602
 BuildRequires:  pkgconfig(zlib)
 %python_subpackages
 # Various notes: https://en.opensuse.org/libyal
@@ -78,11 +78,11 @@ Supported formats include:
 * Sparse bundle disk image
 * Sparse disk image
 * Universal Disk Image Format (UDIF) image
-  * uncompressed
-  * ADC compressed
-  * bzip2 compressed
-  * LZMA compressed
-  * zlib/DEFLATE compressed
+* uncompressed
+* ADC compressed
+* bzip2 compressed
+* LZMA compressed
+* zlib/DEFLATE compressed
 
 %package devel
 Summary:        Development files for libmodi
@@ -140,6 +140,6 @@ find "%buildroot" -type f -name "*.la" -delete -print
 %_mandir/man1/modi*
 
 %files %python_files
-%python_sitearch/pymodi.so
+%python_sitearch/pymodi*
 
 %changelog
