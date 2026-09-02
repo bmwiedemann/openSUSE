@@ -1,0 +1,25 @@
+From 8f485fa789b8972fa9614910edc4dfa24ab2b8ef Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Wed, 2 Sep 2026 12:15:55 +1000
+Subject: [PATCH] fix: allow complilation with Python 3.15
+
+Python 3.15 has moved the GIL into the stable API, which means
+Py_mod_gil is always defined. Use the correct define to support older
+versions as well as 3.15 and above.
+---
+ asv/_rangemedian.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/asv/_rangemedian.cpp b/asv/_rangemedian.cpp
+index cd52223b6..d88df2cc4 100644
+--- a/asv/_rangemedian.cpp
++++ b/asv/_rangemedian.cpp
+@@ -502,7 +502,7 @@ static PyModuleDef_Slot rangemedian_slots[] = {
+      */
+     {Py_mod_exec, (void *)rangemedian_modexec},
+ 
+-#ifdef Py_mod_gil
++#ifdef Py_GIL_DISABLED
+     {Py_mod_gil, Py_MOD_GIL_NOT_USED},
+ #endif
+ 
