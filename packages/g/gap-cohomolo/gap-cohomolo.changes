@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep  2 07:38:04 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.7.1
+  * In `SplitExtensionCHR`, `NonsplitExtension` and
+    `CoveringGroup`, the order of the result is now known if the
+    order of the given finitely presented group is known.
+
+-------------------------------------------------------------------
 Sat Aug 15 02:14:44 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.7.0

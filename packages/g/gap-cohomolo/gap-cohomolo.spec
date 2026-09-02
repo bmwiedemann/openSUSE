@@ -17,7 +17,7 @@
 
 
 Name:           gap-cohomolo
-Version:        1.7.0
+Version:        1.7.1
 Release:        0
 Summary:        GAP: Cohomology groups of finite groups on finite modules
 License:        GPL-2.0-only
