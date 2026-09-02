@@ -1,7 +1,7 @@
 #
 # spec file for package fs-uae
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ License:        GPL-2.0-or-later
 Group:          System/Emulators/Other
 URL:            https://fs-uae.net/
 Source:         https://github.com/FrodeSolheim/fs-uae/releases/download/v%{version}/fs-uae-%{version}.tar.xz
+#PATCH-FIX-SUSE fix conflict between variable numbers and C++20 std::numbers
+Patch0:         numbers_fix.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -65,7 +67,7 @@ recommended, but not required (FS-UAE can emulate a joystick
 using the cursor keys and right Ctrl/Alt keys).
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %if 0%{?sle_version} == 150000

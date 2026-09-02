@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 26 15:19:42 UTC 2026 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- Add patch numbers_fix.patch
+  * fix build with gcc16
+
+-------------------------------------------------------------------
 Mon Sep  8 22:37:10 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.2.35

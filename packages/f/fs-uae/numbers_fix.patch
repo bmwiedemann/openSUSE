@@ -1,0 +1,22 @@
+Fix conflict of variable numbers after the introduction of std::numbers in C++20
+
+--- fs-uae-3.2.35/src/statusline.cpp.ori	2026-08-26 11:02:35.970398207 -0400
++++ fs-uae-3.2.35/src/statusline.cpp	2026-08-26 11:02:51.969278951 -0400
+@@ -44,7 +44,7 @@
+ 	}
+ }
+ 
+-static const char *numbers = { /* ugly  0123456789CHD%+-P */
++static const char *number_s = { /* ugly  0123456789CHD%+-P */
+ 	"+++++++--++++-+++++++++++++++++-++++++++++++++++++++++++++++++++++++++++++++-++++++-++++----++---+--------------+++++++"
+ 	"+xxxxx+--+xx+-+xxxxx++xxxxx++x+-+x++xxxxx++xxxxx++xxxxx++xxxxx++xxxxx++xxxx+-+x++x+-+xxx++-+xx+-+x---+----------+xxxxx+"
+ 	"+x+++x+--++x+-+++++x++++++x++x+++x++x++++++x++++++++++x++x+++x++x+++x++x++++-+x++x+-+x++x+--+x++x+--+x+----+++--+x---x+"
+@@ -67,7 +67,7 @@
+ 	int j;
+ 	const char *numptr;
+ 
+-	numptr = numbers + num * TD_NUM_WIDTH + NUMBERS_NUM * TD_NUM_WIDTH * y;
++	numptr = number_s + num * TD_NUM_WIDTH + NUMBERS_NUM * TD_NUM_WIDTH * y;
+ 	for (j = 0; j < TD_NUM_WIDTH; j++) {
+ 		if (*numptr == 'x')
+ 			putpixel (buf, bpp, x + j, c1, 1);
