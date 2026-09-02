@@ -30,6 +30,8 @@ BuildRequires:  pkgconfig(gjs-1.0)
 BuildRequires:  pkgconfig(webkitgtk-6.0)
 BuildRequires:  pkgconfig(libadwaita-1) >= 1.8
 BuildREquires:  pkgconfig(appstream) >= 1.0
+# /usr/bin/com.github.tchx84.Flatseal has #!/usr/bin/gjs defined as interpreter
+Requires:       gjs
 BuildArch:      noarch
 
 %description
