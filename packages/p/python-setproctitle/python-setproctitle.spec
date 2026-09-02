@@ -1,7 +1,7 @@
 #
 # spec file for package python-setproctitle
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,8 @@ Summary:        Python module to allow customization of the process title
 License:        BSD-3-Clause
 URL:            https://github.com/dvarrazzo/py-setproctitle/
 Source:         https://files.pythonhosted.org/packages/source/s/setproctitle/setproctitle-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
+# PATCH-FIX-UPSTREAM gh#dvarrazzo/py-setproctitle#158
+Patch0:         support-python315.patch
 BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
@@ -42,7 +43,7 @@ the task each process is busy with. The technique is used by PostgreSQL  and
 the OpenSSH Server for example.
 
 %prep
-%setup -q -n setproctitle-%{version}
+%autosetup -p1 -n setproctitle-%{version}
 
 %build
 export CFLAGS="%{optflags}"

@@ -343,4 +343,13 @@
     <comment></comment>
     <requestid>1306569</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>c388be7e559e69f4773b4e376f71ae45</srcmd5>
+    <version>1.3.7</version>
+    <time>1788361373</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-python315.patch:
+  * Do not segfault if environ is NULL.</comment>
+    <requestid>1375267</requestid>
+  </revision>
 </revisionlist>
