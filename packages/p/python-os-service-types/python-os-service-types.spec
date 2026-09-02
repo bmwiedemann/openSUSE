@@ -1,7 +1,7 @@
 #
 # spec file for package python-os-service-types
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-os-service-types
-Version:        1.8.2
+Version:        1.9.0
 Release:        0
 Summary:        Python library for consuming OpenStack sevice-types-authority data
 License:        Apache-2.0
@@ -25,7 +25,7 @@ Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/os-service-types/latest/
 Source0:        https://files.pythonhosted.org/packages/source/o/os_service_types/os_service_types-%{version}.tar.gz
 BuildRequires:  %{python_module oslotest}
-BuildRequires:  %{python_module pbr >= 2.0.0}
+BuildRequires:  %{python_module pbr >= 6.1.1}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module python-subunit}
 BuildRequires:  %{python_module requests-mock}
@@ -35,7 +35,7 @@ BuildRequires:  %{python_module testscenarios}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  openstack-macros
 BuildArch:      noarch
-Requires:       python-typing-extensions
+Requires:       python-typing-extensions >= 4.1.0
 %if "python%{python_nodots_ver}" == "%{primary_python}"
 Obsoletes:      python3-os-service-types < %{version}
 %else

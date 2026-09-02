@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Sep  1 21:02:08 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.9.0:
+  * pre-commit: Bump versions
+  * Deprecate version attribute
+  * Drop Python 3.10 support
+  * zuul: Use openstack-python3-next-jobs template
+  * pre-commit: Bump versions
+  * Update packaging configuration
+  * typing: Update for typed testtools
+  * ruff: Configure hacking as external linter
+  * Run mypy from tox
+  * Add typing classifier
+  * ruff: Enable E5 check
+
+-------------------------------------------------------------------
 Sun Dec 28 13:49:30 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.8.2:

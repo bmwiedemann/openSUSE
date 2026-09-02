@@ -128,4 +128,23 @@
   * ruff: Use more specific name to enable pyupgrade rule</comment>
     <requestid>1324569</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c3543dc16635af8b11659c773438ad55</srcmd5>
+    <version>1.9.0</version>
+    <time>1788361250</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.9.0:
+  * pre-commit: Bump versions
+  * Deprecate version attribute
+  * Drop Python 3.10 support
+  * zuul: Use openstack-python3-next-jobs template
+  * pre-commit: Bump versions
+  * Update packaging configuration
+  * typing: Update for typed testtools
+  * ruff: Configure hacking as external linter
+  * Run mypy from tox
+  * Add typing classifier
+  * ruff: Enable E5 check</comment>
+    <requestid>1375231</requestid>
+  </revision>
 </revisionlist>
