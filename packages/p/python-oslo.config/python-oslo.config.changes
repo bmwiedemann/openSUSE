@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep  1 21:35:23 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 10.7.0:
+  * bindep: Remove stale marker
+  * Implements sample_max and sample_min
+  * Maintain doc8 options in pyproject.toml
+
+-------------------------------------------------------------------
 Wed Aug  5 14:25:20 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 10.6.0:

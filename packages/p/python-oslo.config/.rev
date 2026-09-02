@@ -1001,4 +1001,15 @@ all changed Requires/Buildrequires seem to be available
   * Better support Sphinx doc generation with custom option types</comment>
     <requestid>1369779</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>08ca7dcc65cc0892c0da61a6f82dd434</srcmd5>
+    <version>10.7.0</version>
+    <time>1788361251</time>
+    <user>anag_factory</user>
+    <comment>- update to 10.7.0:
+  * bindep: Remove stale marker
+  * Implements sample_max and sample_min
+  * Maintain doc8 options in pyproject.toml</comment>
+    <requestid>1375237</requestid>
+  </revision>
 </revisionlist>
