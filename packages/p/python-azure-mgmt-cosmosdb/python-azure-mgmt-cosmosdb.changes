@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep  1 09:38:01 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 10.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from pyproject.toml
+
+-------------------------------------------------------------------
 Fri Nov 14 08:13:37 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release
