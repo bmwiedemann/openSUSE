@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Sep  2 06:24:59 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.3.329:
+  * Template manifest grows from 537 to 544 entries: adds three
+    Fish Audio (speech to text, text to speech, voice clone TTS),
+    three MiniMax H3 Max (first-last-frame, image and text to
+    video) and two PixVerse 6 (image and text to video) templates,
+    and drops the Veo 3 entry
+  * No changes to the loader or the public helper API
+
+-------------------------------------------------------------------
 Sat Aug 29 07:17:44 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.3.326:

@@ -96,4 +96,20 @@ Flash 1.1 templates, drops the Veo 2 image-to-video entry. Refreshed
 index checksums. Loader and public API unchanged.</comment>
     <requestid>1374575</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>37a4d783a3e2ea0e2a119f9941aed294</srcmd5>
+    <version>0.3.329</version>
+    <time>1788361424</time>
+    <user>anag_factory</user>
+    <comment>Update python-comfyui-workflow-templates-core to 0.3.329.
+
+Template manifest 537 -&gt; 544 entries (adds three Fish Audio, three
+MiniMax H3 Max and two PixVerse 6 templates, drops Veo 3); loader and
+public helper API unchanged.
+
+Part of a set with -json 0.1.64, -media-assets-01 0.1.37 and the
+comfyui-workflow-templates 0.11.52 meta package, which upstream
+releases in lockstep.</comment>
+    <requestid>1375331</requestid>
+  </revision>
 </revisionlist>
