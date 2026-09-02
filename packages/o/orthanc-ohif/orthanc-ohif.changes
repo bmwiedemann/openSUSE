@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 15 14:16:40 UTC 2026 - Axel Braun <axel.braun@gmx.de>
+
+- version 1.8
+  * Updated OHIF to 3.12.0
+  * removed the "BulkDataURI" configuration from the default configuration.
+
+-------------------------------------------------------------------
 Wed Sep 10 09:28:54 UTC 2025 - Axel Braun <axel.braun@gmx.de>
 
 - remove libboost_system-devel for TW (removed in boost 1.89)
