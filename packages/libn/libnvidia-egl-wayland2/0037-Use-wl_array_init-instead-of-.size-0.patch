@@ -1,0 +1,30 @@
+From bb913bfb4146b31c5add9880521aa073295d3137 Mon Sep 17 00:00:00 2001
+From: Ian Douglas Scott <idscott@system76.com>
+Date: Mon, 6 Jul 2026 08:11:37 -0700
+Subject: [PATCH 37/38] Use `wl_array_init` instead of `.size = 0`
+
+`wl_array_release` does not check `size` before calling `free`, so if
+the `ptr` field is not also set to `0`, `wl_array_release` will
+segfault in `FinishDefaultFeedback` freeing `WL_ARRAY_POISON_PTR`.
+
+Signed-off-by: Ian Douglas Scott <idscott@system76.com>
+---
+ src/wayland/wayland-dmabuf.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/wayland/wayland-dmabuf.c b/src/wayland/wayland-dmabuf.c
+index 2f90880..90962a9 100644
+--- a/src/wayland/wayland-dmabuf.c
++++ b/src/wayland/wayland-dmabuf.c
+@@ -169,7 +169,7 @@ static WlFormatList *FinishDefaultFeedback(DefaultFeedbackState *state, dev_t *r
+         if (tranche->target_device != state->base.main_device)
+         {
+             wl_array_release(&tranche->formats);
+-            tranche->formats.size = 0;
++            wl_array_init(&tranche->formats);
+             continue;
+         }
+ 
+-- 
+2.51.0
+

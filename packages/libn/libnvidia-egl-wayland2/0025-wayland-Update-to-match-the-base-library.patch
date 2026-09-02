@@ -1,0 +1,72 @@
+From 57ef1265daaff3409342266db3b0c843cbd95e74 Mon Sep 17 00:00:00 2001
+From: Kyle Brenneman <kbrenneman@nvidia.com>
+Date: Tue, 10 Mar 2026 11:07:57 -0600
+Subject: [PATCH 25/38] wayland: Update to match the base library.
+
+Replaced eplWlQueryBufferAge with eplWlQuerySurface, to match the base
+library changes.
+---
+ src/wayland/wayland-platform.c |  2 +-
+ src/wayland/wayland-platform.h |  2 +-
+ src/wayland/wayland-surface.c  | 16 ++++++++++++----
+ 3 files changed, 14 insertions(+), 6 deletions(-)
+
+diff --git a/src/wayland/wayland-platform.c b/src/wayland/wayland-platform.c
+index b3d32f4..7b909d9 100644
+--- a/src/wayland/wayland-platform.c
++++ b/src/wayland/wayland-platform.c
+@@ -59,7 +59,7 @@ static const EplImplFuncs WL_IMPL_FUNCS =
+     .SwapBuffers = eplWlSwapBuffers,
+     .WaitGL = eplWlWaitGL,
+     .SwapInterval = eplWlSwapInterval,
+-    .QueryBufferAge = eplWlQueryBufferAge,
++    .QuerySurface = eplWlQuerySurface,
+ };
+ 
+ static EGLBoolean LoadProcHelper(EplPlatformData *plat, void *handle, void **ptr, const char *name)
+diff --git a/src/wayland/wayland-platform.h b/src/wayland/wayland-platform.h
+index 2ed5745..0d4503d 100644
+--- a/src/wayland/wayland-platform.h
++++ b/src/wayland/wayland-platform.h
+@@ -142,6 +142,6 @@ EGLBoolean eplWlSwapInterval(EplDisplay *pdpy, EplSurface *psurf, EGLint interva
+ 
+ EGLBoolean eplWlWaitGL(EplDisplay *pdpy, EplSurface *psurf);
+ 
+-EGLint eplWlQueryBufferAge(EplDisplay *pdpy, EplSurface *psurf);
++EplQueryResult eplWlQuerySurface(EplDisplay *pdpy, EplSurface *psurf, EGLint attrib, EGLint *ret_value);
+ 
+ #endif // WAYLAND_PLATFORM_H
+diff --git a/src/wayland/wayland-surface.c b/src/wayland/wayland-surface.c
+index 0a66c46..8481c67 100644
+--- a/src/wayland/wayland-surface.c
++++ b/src/wayland/wayland-surface.c
+@@ -1648,14 +1648,22 @@ EGLBoolean eplWlWaitGL(EplDisplay *pdpy, EplSurface *psurf)
+     return ret;
+ }
+ 
+-EGLint eplWlQueryBufferAge(EplDisplay *pdpy, EplSurface *psurf)
++EplQueryResult eplWlQuerySurface(EplDisplay *pdpy, EplSurface *psurf, EGLint attrib, EGLint *ret_value)
+ {
+-    if (psurf->priv->current.swapchain->prime)
++    if (attrib == EGL_BUFFER_AGE_KHR)
+     {
+-        return 0;
++        if (psurf->priv->current.swapchain->prime)
++        {
++            *ret_value = 0;
++        }
++        else
++        {
++            *ret_value = psurf->priv->current.swapchain->current_back->buffer_age;
++        }
++        return EPL_QUERY_RESULT_SUCCESS;
+     }
+     else
+     {
+-        return psurf->priv->current.swapchain->current_back->buffer_age;
++        return EPL_QUERY_RESULT_UNKNOWN;
+     }
+ }
+-- 
+2.51.0
+

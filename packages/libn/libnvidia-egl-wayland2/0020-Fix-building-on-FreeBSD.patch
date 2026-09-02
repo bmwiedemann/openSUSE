@@ -1,7 +1,7 @@
 From 3bda68accb174e112e21f37b348cbab3da912afd Mon Sep 17 00:00:00 2001
 From: Kyle Brenneman <kbrenneman@nvidia.com>
 Date: Mon, 22 Dec 2025 07:49:35 -0700
-Subject: [PATCH 20/21] Fix building on FreeBSD.
+Subject: [PATCH 20/38] Fix building on FreeBSD.
 
 FreeBSD doesn't have ETIME, so if drmSyncobjTimelineWait times out, it
 will fail with ETIMEDOUT instead.

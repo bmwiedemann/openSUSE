@@ -1,7 +1,7 @@
 From 744774943caf4ff0ab95687ae0f6d3e11ea7c44d Mon Sep 17 00:00:00 2001
 From: Kyle Brenneman <kbrenneman@nvidia.com>
 Date: Mon, 15 Dec 2025 15:46:18 -0700
-Subject: [PATCH 19/21] Don't use the wl_display during teardown.
+Subject: [PATCH 19/38] Don't use the wl_display during teardown.
 
 Some applications will call wl_display_disconnect but not eglTerminate
 before exiting, which leads to segfaults or hangs when we try to clean

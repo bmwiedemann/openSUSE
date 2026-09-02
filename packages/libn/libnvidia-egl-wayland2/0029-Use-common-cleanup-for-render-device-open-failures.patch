@@ -1,0 +1,46 @@
+From b2d8caf98ea38432863ddf1f0e0b15e772f2e4c2 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Do=C4=9Fukan=20Korkmazt=C3=BCrk?= <dkorkmazturk@nvidia.com>
+Date: Tue, 28 Apr 2026 11:54:28 -0400
+Subject: [PATCH 29/38] Use common cleanup for render device open failures
+
+When creating a display instance for an alternate render device, two
+failure paths directly unrefed the partially initialized instance and
+returned NULL. That bypassed the function's shared cleanup block,
+leaving local resources such as the registry object, event queue, DRM
+node string, or open fd to be skipped depending on where the failure
+occurred.
+
+Route those errors through the existing done label instead. The common
+cleanup path now handles local resources and releases the partial
+display instance consistently with the rest of
+eplWlDisplayInstanceCreate.
+---
+ src/wayland/wayland-display.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/src/wayland/wayland-display.c b/src/wayland/wayland-display.c
+index 6cd953e..d1347f8 100644
+--- a/src/wayland/wayland-display.c
++++ b/src/wayland/wayland-display.c
+@@ -996,16 +996,14 @@ WlDisplayInstance *eplWlDisplayInstanceCreate(EplDisplay *pdpy, EGLBoolean from_
+             if (node == NULL)
+             {
+                 eplSetError(pdpy->platform, EGL_BAD_ACCESS, "Driver error: Can't find device node");
+-                eplWlDisplayInstanceUnref(inst);
+-                return NULL;
++                goto done;
+             }
+ 
+             drmFd = open(node, O_RDWR);
+             if (drmFd < 0)
+             {
+                 eplSetError(pdpy->platform, EGL_BAD_ACCESS, "Can't open device node %s: %s", node, strerror(errno));
+-                eplWlDisplayInstanceUnref(inst);
+-                return NULL;
++                goto done;
+             }
+         }
+ 
+-- 
+2.51.0
+

@@ -36,4 +36,30 @@
   * 0021-Fix-NULL-pointer-passed-to-wl_event_queue_destroy.patch</comment>
     <requestid>1331012</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8285701042c4d5816c683deb429d5cae</srcmd5>
+    <version>1.0.2~20260716gitMACRO</version>
+    <time>1788361362</time>
+    <user>anag_factory</user>
+    <comment>- added latest patches from git
+  * 0022-Remove-the-still-in-development-line-from-the-readme.patch
+  * 0023-Increment-version-number-to-1.0.2.patch
+  * 0024-base-Replace-EplImplFuncs-QueryBufferAge-with-QueryS.patch
+  * 0025-wayland-Update-to-match-the-base-library.patch
+  * 0026-fix-parameter-validation.patch
+  * 0027-Return-invalid-fd-on-syncobj-creation-failure.patch
+  * 0028-Clean-up-Wayland-display-globals.patch
+  * 0029-Use-common-cleanup-for-render-device-open-failures.patch
+  * 0030-Store-presentation-timestamps-in-nanoseconds.patch
+  * 0031-Accept-surface-feedback-tranches-whose-target-matche.patch
+  * 0032-Always-reset-per-tranche-modifier-state-in-OnSurface.patch
+  * 0033-Close-dma-buf-fd-on-swapchain-creation-failure.patch
+  * 0034-Return-NULL-not-EGL_FALSE-from-eplWlHookQueryString.patch
+  * 0035-Don-t-send-a-wl_surface-frame-request-if-the-swap-in.patch
+  * 0036-base-Add-DRM_FORMAT_XBGR16161616F-to-the-format-list.patch
+  * 0037-Use-wl_array_init-instead-of-.size-0.patch
+  * 0038-wayland-Bound-protocol-override-separator-search.patch
+- bump version to 1.0.2</comment>
+    <requestid>1375251</requestid>
+  </revision>
 </revisionlist>

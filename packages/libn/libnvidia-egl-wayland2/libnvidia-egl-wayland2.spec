@@ -20,8 +20,8 @@
 %define meson_install /usr/bin/meson install -C %{_vpath_builddir} --no-rebuild --destdir=%{buildroot}
 %endif
 
-%global commit0 ada1c37041002f4f009a33d6d285eae39bf9ad02
-%global date 20251213
+%global commit0 2023f59ba02af9cbdb3ad26678ccc95ffc777c5a
+%global date 20260716
 %global shortcommit0 %(c=%{commit0}; echo ${c:0:7})
 #global tag %%{version}
 
@@ -30,8 +30,8 @@
 %define rname egl-wayland2
 
 Name:           libnvidia-egl-wayland2
-Version:        1.0.1%{!?tag:~%{date}git%{shortcommit0}}
-Release:        1
+Version:        1.0.2%{!?tag:~%{date}git%{shortcommit0}}
+Release:        0
 Summary:        Dma-buf-based Wayland external platform library
 # src/wayland/dma-buf.h is GPL 2, rest is Apache 2.0
 License:        Apache-2.0 and GPL-2.0
@@ -62,6 +62,23 @@ Patch18:        0018-Replace-SurfaceFeedbackState-modifiers_changed-with-.patch
 Patch19:        0019-Don-t-use-the-wl_display-during-teardown.patch
 Patch20:        0020-Fix-building-on-FreeBSD.patch
 Patch21:        0021-Fix-NULL-pointer-passed-to-wl_event_queue_destroy.patch
+Patch22:        0022-Remove-the-still-in-development-line-from-the-readme.patch
+Patch23:        0023-Increment-version-number-to-1.0.2.patch
+Patch24:        0024-base-Replace-EplImplFuncs-QueryBufferAge-with-QueryS.patch
+Patch25:        0025-wayland-Update-to-match-the-base-library.patch
+Patch26:        0026-fix-parameter-validation.patch
+Patch27:        0027-Return-invalid-fd-on-syncobj-creation-failure.patch
+Patch28:        0028-Clean-up-Wayland-display-globals.patch
+Patch29:        0029-Use-common-cleanup-for-render-device-open-failures.patch
+Patch30:        0030-Store-presentation-timestamps-in-nanoseconds.patch
+Patch31:        0031-Accept-surface-feedback-tranches-whose-target-matche.patch
+Patch32:        0032-Always-reset-per-tranche-modifier-state-in-OnSurface.patch
+Patch33:        0033-Close-dma-buf-fd-on-swapchain-creation-failure.patch
+Patch34:        0034-Return-NULL-not-EGL_FALSE-from-eplWlHookQueryString.patch
+Patch35:        0035-Don-t-send-a-wl_surface-frame-request-if-the-swap-in.patch
+Patch36:        0036-base-Add-DRM_FORMAT_XBGR16161616F-to-the-format-list.patch
+Patch37:        0037-Use-wl_array_init-instead-of-.size-0.patch
+Patch38:        0038-wayland-Bound-protocol-override-separator-search.patch
 BuildRequires:  Mesa-libGL-devel
 BuildRequires:  gcc-c++
 BuildRequires:  meson >= 0.50

@@ -1,0 +1,39 @@
+From 18dcd8cec53ccebb273f2688fa7911ca9a4be4f8 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Do=C4=9Fukan=20Korkmazt=C3=BCrk?= <dkorkmazturk@nvidia.com>
+Date: Fri, 15 May 2026 07:50:54 -0400
+Subject: [PATCH 31/38] Accept surface feedback tranches whose target matches
+ our render device
+
+OnSurfaceFeedbackTrancheDone is meant to keep the per-surface modifier
+set from a tranche only when the tranche's target device is one of the
+render devices the platform instance is rendering on. The condition was
+inverted (`!=` instead of `==`), so a tranche whose target_device
+matched our render device was rejected, and a tranche that did not
+match was kept.
+
+The end result was that per-surface tranches were dropped, and we fell
+back to PickDefaultModifiers.
+
+Flip the comparison so we keep tranches whose target_device matches one
+of our render device ids, as the surrounding logic and the comments in
+the function assume.
+---
+ src/wayland/wayland-surface.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/wayland/wayland-surface.c b/src/wayland/wayland-surface.c
+index 543ba34..fa4ffcd 100644
+--- a/src/wayland/wayland-surface.c
++++ b/src/wayland/wayland-surface.c
+@@ -368,7 +368,7 @@ static void OnSurfaceFeedbackTrancheDone(void *userdata,
+     {
+         for (i=0; i<psurf->priv->inst->render_device_id_count; i++)
+         {
+-            if (state->base.tranche_target_device != psurf->priv->inst->render_device_id[i])
++            if (state->base.tranche_target_device == psurf->priv->inst->render_device_id[i])
+             {
+                 use_tranche = EGL_TRUE;
+                 break;
+-- 
+2.51.0
+

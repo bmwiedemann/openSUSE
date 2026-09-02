@@ -1,0 +1,26 @@
+From 7e4484e8fa8fc1965cdd1a0b6ffabbefad8d9a9a Mon Sep 17 00:00:00 2001
+From: Kyle Brenneman <kbrenneman@nvidia.com>
+Date: Tue, 23 Jun 2026 10:18:59 -0600
+Subject: [PATCH 36/38] base: Add DRM_FORMAT_XBGR16161616F to the format list.
+
+Add an EplFormatInfo entry for DRM_FORMAT_XBGR16161616F, so that
+EGL_PRESENT_OPAQUE_EXT can work with DRM_FORMAT_ABGR16161616F.
+---
+ src/base/config-list.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/base/config-list.c b/src/base/config-list.c
+index 19299e7..c132f50 100644
+--- a/src/base/config-list.c
++++ b/src/base/config-list.c
+@@ -42,6 +42,7 @@ const EplFormatInfo FORMAT_INFO_LIST[] =
+     { DRM_FORMAT_ARGB2101010, 32, { 10, 10, 10, 2 }, { 20, 10, 0, 30 } },
+     { DRM_FORMAT_ABGR2101010, 32, { 10, 10, 10, 2 }, { 0, 10, 20, 30 } },
+     { DRM_FORMAT_ABGR16161616F, 64, { 16, 16, 16, 16 }, {  0, 16, 32, 48 } },
++    { DRM_FORMAT_XBGR16161616F, 64, { 16, 16, 16,  0 }, {  0, 16, 32,  0 } },
+ 
+     /* 8 bpp RGB */
+     { DRM_FORMAT_RGB332, 8, { 3, 3, 2, 0 }, { 5, 2, 0, 0 } },
+-- 
+2.51.0
+

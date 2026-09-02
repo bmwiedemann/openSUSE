@@ -1,7 +1,7 @@
 From f7b4c68f62efc15e6f25517a6ce370e2b0d6f48f Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Do=C4=9Fukan=20Korkmazt=C3=BCrk?= <dkorkmazturk@nvidia.com>
 Date: Fri, 9 Jan 2026 08:46:25 -0500
-Subject: [PATCH 21/21] Fix NULL pointer passed to wl_event_queue_destroy
+Subject: [PATCH 21/38] Fix NULL pointer passed to wl_event_queue_destroy
 
 In eplWlDisplayInstanceCreate, the queue variable may remain NULL if an
 error occurs before an event queue is successfully created. The cleanup

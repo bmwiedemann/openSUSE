@@ -1,0 +1,54 @@
+From d3fc2d3d5c01ef1daaed6335a4e6580e8461ba3b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Do=C4=9Fukan=20Korkmazt=C3=BCrk?= <dkorkmazturk@nvidia.com>
+Date: Fri, 15 May 2026 07:51:44 -0400
+Subject: [PATCH 33/38] Close dma-buf fd on swapchain creation failure
+
+eplWlSwapChainCreate obtains a dma-buf fd from gbm_bo_get_fd() and then
+hands it to PlatformImportColorBufferNVX, which does not take ownership
+of the fd. If that import failed, the function jumped to the cleanup
+label without closing the fd, leaking one file descriptor per failed
+swapchain creation.
+
+Track ownership explicitly and clear `dmabuf` once it has been handed
+off, and close it at the cleanup label if it is still owned by this
+function.
+---
+ src/wayland/wayland-swapchain.c | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/src/wayland/wayland-swapchain.c b/src/wayland/wayland-swapchain.c
+index ee6f7b6..134fd08 100644
+--- a/src/wayland/wayland-swapchain.c
++++ b/src/wayland/wayland-swapchain.c
+@@ -398,7 +398,6 @@ WlSwapChain *eplWlSwapChainCreate(WlDisplayInstance *inst, struct wl_surface *ws
+         // linear present buffers. We don't need to create any present buffers
+         // yet -- we can do that in the first call to eglSwapBuffers.
+         swapchain->modifier = DRM_FORMAT_MOD_LINEAR;
+-        close(dmabuf);
+     }
+     else
+     {
+@@ -407,6 +406,9 @@ WlSwapChain *eplWlSwapChainCreate(WlDisplayInstance *inst, struct wl_surface *ws
+         swapchain->modifier = gbm_bo_get_modifier(gbo);
+         swapchain->current_back = SwapChainAppendPresentBuffer(inst, swapchain,
+                 dmabuf, gbm_bo_get_stride(gbo), gbm_bo_get_offset(gbo, 0));
++        // SwapChainAppendPresentBuffer takes ownership of the fd in both the
++        // success and failure cases.
++        dmabuf = -1;
+         if (swapchain->current_back == NULL)
+         {
+             goto done;
+@@ -422,6 +424,10 @@ done:
+         eplWlSwapChainDestroy(inst, swapchain);
+         swapchain = NULL;
+     }
++    if (dmabuf >= 0)
++    {
++        close(dmabuf);
++    }
+     if (gbo != NULL)
+     {
+         gbm_bo_destroy(gbo);
+-- 
+2.51.0
+

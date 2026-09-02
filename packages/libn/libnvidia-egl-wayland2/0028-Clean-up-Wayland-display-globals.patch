@@ -1,0 +1,62 @@
+From 42c2c5a36ee23020ff39ec8902da85573911861a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Do=C4=9Fukan=20Korkmazt=C3=BCrk?= <dkorkmazturk@nvidia.com>
+Date: Tue, 28 Apr 2026 11:44:40 -0400
+Subject: [PATCH 28/38] Clean up Wayland display globals
+
+Display initialization creates presentation-time, fifo, and
+commit-timing globals when frame pacing protocols are available, and it
+duplicates the display extension string. The display-instance teardown
+path only destroyed the dmabuf and syncobj globals, so those additional
+globals and the extension string leaked for each initialized display.
+
+Destroy all Wayland globals while the native display is still valid,
+using reverse creation order, and free the duplicated extension string
+with the rest of the display-owned heap data.
+---
+ src/wayland/wayland-display.c | 17 +++++++++++++++--
+ 1 file changed, 15 insertions(+), 2 deletions(-)
+
+diff --git a/src/wayland/wayland-display.c b/src/wayland/wayland-display.c
+index 0907003..6cd953e 100644
+--- a/src/wayland/wayland-display.c
++++ b/src/wayland/wayland-display.c
+@@ -1163,14 +1163,26 @@ static void eplWlDisplayInstanceFree(WlDisplayInstance *inst)
+          */
+         if (eplWlDisplayInstanceIsNativeValid(inst))
+         {
+-            if (inst->globals.dmabuf != NULL)
++            if (inst->globals.commit_timing != NULL)
+             {
+-                zwp_linux_dmabuf_v1_destroy(inst->globals.dmabuf);
++                wp_commit_timing_manager_v1_destroy(inst->globals.commit_timing);
++            }
++            if (inst->globals.fifo != NULL)
++            {
++                wp_fifo_manager_v1_destroy(inst->globals.fifo);
++            }
++            if (inst->globals.presentation_time != NULL)
++            {
++                wp_presentation_destroy(inst->globals.presentation_time);
+             }
+             if (inst->globals.syncobj != NULL)
+             {
+                 wp_linux_drm_syncobj_manager_v1_destroy(inst->globals.syncobj);
+             }
++            if (inst->globals.dmabuf != NULL)
++            {
++                zwp_linux_dmabuf_v1_destroy(inst->globals.dmabuf);
++            }
+         }
+ 
+         if (inst->own_display && inst->wdpy != NULL)
+@@ -1191,6 +1203,7 @@ static void eplWlDisplayInstanceFree(WlDisplayInstance *inst)
+         eplWlFormatListFree(inst->default_feedback);
+         eplWlFormatListFree(inst->driver_formats);
+         eplConfigListFree(inst->configs);
++        free(inst->extension_string);
+ 
+         if (inst->platform != NULL)
+         {
+-- 
+2.51.0
+

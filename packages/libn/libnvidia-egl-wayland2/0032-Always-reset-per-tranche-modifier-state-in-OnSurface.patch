@@ -1,0 +1,50 @@
+From 6ce955d008ee7abeca7881334b7e8c84cc6653cf Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Do=C4=9Fukan=20Korkmazt=C3=BCrk?= <dkorkmazturk@nvidia.com>
+Date: Fri, 15 May 2026 10:41:13 -0400
+Subject: [PATCH 32/38] Always reset per-tranche modifier state in
+ OnSurfaceFeedbackTrancheDone
+
+The per-tranche scratch arrays were only cleared inside the
+`if (use_tranche)` branch, so a rejected tranche's TRUE entries survived
+into the next tranche.
+
+OnSurfaceFeedbackTrancheFormats only flips entries from FALSE to TRUE
+for what the current tranche advertises, and it never clears entries
+the tranche does not mention, so those leftover TRUE entries persisted.
+
+If the next tranche was accepted, the leftover entries were copied into
+modifiers_supported[] alongside its own modifiers, telling the driver
+the surface accepts modifiers that only the rejected tranche had
+advertised.
+
+Clear the tranche arrays unconditionally after every tranche_done.
+---
+ src/wayland/wayland-surface.c | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/src/wayland/wayland-surface.c b/src/wayland/wayland-surface.c
+index fa4ffcd..4e71e04 100644
+--- a/src/wayland/wayland-surface.c
++++ b/src/wayland/wayland-surface.c
+@@ -381,12 +381,16 @@ static void OnSurfaceFeedbackTrancheDone(void *userdata,
+         for (i=0; i<psurf->priv->driver_format->num_modifiers; i++)
+         {
+             state->modifiers_supported[i] = state->tranche_modifiers_supported[i];
+-            state->tranche_modifiers_supported[i] = EGL_FALSE;
+         }
+         state->linear_supported = state->tranche_linear_supported;
+-        state->tranche_linear_supported = EGL_FALSE;
+     }
+ 
++    for (i=0; i<psurf->priv->driver_format->num_modifiers; i++)
++    {
++        state->tranche_modifiers_supported[i] = EGL_FALSE;
++    }
++    state->tranche_linear_supported = EGL_FALSE;
++
+     eplWlDmaBufFeedbackCommonTrancheDone(&state->base);
+ }
+ 
+-- 
+2.51.0
+

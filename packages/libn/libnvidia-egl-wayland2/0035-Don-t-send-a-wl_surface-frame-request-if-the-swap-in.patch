@@ -1,0 +1,102 @@
+From c3d496d4971d78eb2c72fb7a841cce2741213484 Mon Sep 17 00:00:00 2001
+From: Kyle Brenneman <kbrenneman@nvidia.com>
+Date: Mon, 18 May 2026 11:22:10 -0600
+Subject: [PATCH 35/38] Don't send a wl_surface::frame request if the swap
+ interval is zero
+
+If the current swap interval is zero, then don't send a
+wl_surface::frame request, and don't wait for or destroy the callback
+from any previous frame.
+
+Because the server can wait indefinitely before sending the callback
+event, sending a wl_surface::frame request every frame can cause an
+unbounded number of wl_callback objects to pile up in the server.
+Destroying the wl_callback proxy in the client doesn't help with that,
+because the server object still exists -- the protocol doesn't have a
+request to tell the server that the client is no longer interested in
+the callback.
+
+In addition, if the swap interval is zero but there's still a pending
+frame callback (which could happen if the previous swap had a nonzero
+interval), then don't destroy the wl_callback, but don't wait on it
+either.
+
+That ensures that we never have more than one outstanding
+wl_surface::frame callback. If the interval is nonzero, then we'll wait
+for the callback before sending the next wl_surface::frame request. If
+the swap interval is zero, then we don't wait for it, but we don't send
+another wl_surface::frame request.
+
+This should always give the correct result when the interval is zero,
+because we'll never wait for the callback before committing the next
+frame.
+
+If the swap interval is always nonzero, then it'll also be correct,
+because we'll always wait for the previous frame callback before
+committing the next frame.
+
+The one case that's slightly less correct is if the application changes
+the swap interval from 1 to 0 and then back to 1. In that case, the
+third frame will wait on the first frame to be presented, instead of the
+second.
+
+Still, that's better than risking resource exhaustion, and we can't get
+proper FIFO semantics without wp_fifo anyway.
+---
+ src/wayland/wayland-surface.c | 25 ++++++++++++++++---------
+ 1 file changed, 16 insertions(+), 9 deletions(-)
+
+diff --git a/src/wayland/wayland-surface.c b/src/wayland/wayland-surface.c
+index 543ba34..6e8d55e 100644
+--- a/src/wayland/wayland-surface.c
++++ b/src/wayland/wayland-surface.c
+@@ -1387,11 +1387,7 @@ EGLBoolean eplWlSwapBuffers(EplPlatformData *plat, EplDisplay *pdpy,
+             // presentation time.
+             DiscardPresentationFeedback(psurf);
+         }
+-        if (psurf->priv->current.frame_callback != NULL)
+-        {
+-            wl_callback_destroy(psurf->priv->current.frame_callback);
+-            psurf->priv->current.frame_callback = NULL;
+-        }
++
+         if (psurf->priv->current.last_swap_sync != NULL)
+         {
+             wl_callback_destroy(psurf->priv->current.last_swap_sync);
+@@ -1400,7 +1396,6 @@ EGLBoolean eplWlSwapBuffers(EplPlatformData *plat, EplDisplay *pdpy,
+     }
+ 
+     assert(psurf->priv->current.presentation_feedback == NULL);
+-    assert(psurf->priv->current.frame_callback == NULL);
+     assert(psurf->priv->current.last_swap_sync == NULL);
+ 
+     if (rects != NULL && n_rects > 0
+@@ -1499,10 +1494,22 @@ EGLBoolean eplWlSwapBuffers(EplPlatformData *plat, EplDisplay *pdpy,
+             wp_fifo_v1_wait_barrier(psurf->priv->current.fifo);
+         }
+     }
+-    else
++    else if (swap_interval > 0)
+     {
+-        // If we don't have FIFO or presentation time support, then just
+-        // request a frame callback.
++        /*
++         * If we don't have FIFO or presentation time support, then just
++         * request a frame callback.
++         *
++         * Only send that request if the swap interval is non-zero, though.
++         * Since the server can wait indefinitely before sending the response,
++         * and since wl_callback doesn't have a destroy request, sending a
++         * wl_surface::frame request every frame without waiting for them could
++         * create an unbounded number of pending wl_callbacks in the server.
++         */
++
++        // If swap_interval is nonzero, then we should have called
++        // WaitForPreviousFrames above, which would clear frame_callback.
++        assert(psurf->priv->current.frame_callback == NULL);
+         psurf->priv->current.frame_callback = wl_surface_frame(psurf->priv->current.wsurf);
+         if (psurf->priv->current.frame_callback != NULL)
+         {
+-- 
+2.51.0
+

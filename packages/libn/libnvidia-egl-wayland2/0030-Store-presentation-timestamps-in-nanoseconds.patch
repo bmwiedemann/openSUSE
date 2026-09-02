@@ -1,0 +1,38 @@
+From 8cdf00aa4d304d0b65b5dada80052f36afbb4ae7 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Do=C4=9Fukan=20Korkmazt=C3=BCrk?= <dkorkmazturk@nvidia.com>
+Date: Tue, 28 Apr 2026 11:58:37 -0400
+Subject: [PATCH 30/38] Store presentation timestamps in nanoseconds
+
+The wp_presentation_feedback::presented handler combined the seconds and
+nanoseconds fields with simple addition. last_present_timestamp is later
+used as a nanosecond timestamp for commit timing, so storing seconds
+plus nanoseconds produced values in mixed units and could schedule
+future commits with incorrect timing.
+
+Convert the 64-bit presentation seconds value to nanoseconds before
+adding tv_nsec. This matches the discard path and keeps
+last_present_timestamp in the units expected by the commit-timing
+calculation.
+
+Co-authored-by: Codex <codex@openai.com>
+---
+ src/wayland/wayland-surface.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/wayland/wayland-surface.c b/src/wayland/wayland-surface.c
+index 8481c67..543ba34 100644
+--- a/src/wayland/wayland-surface.c
++++ b/src/wayland/wayland-surface.c
+@@ -1182,7 +1182,8 @@ static void on_wp_presentation_feedback_presented(void *userdata,
+ 
+     assert(wfeedback == psurf->priv->current.presentation_feedback);
+ 
+-    psurf->priv->current.last_present_timestamp = (((uint64_t) tv_sec_hi) << 32 | tv_sec_lo) + tv_nsec;
++    psurf->priv->current.last_present_timestamp =
++        ((((uint64_t) tv_sec_hi) << 32) | tv_sec_lo) * 1000000000 + tv_nsec;
+     psurf->priv->current.last_present_refresh = refresh;
+ 
+     wp_presentation_feedback_destroy(psurf->priv->current.presentation_feedback);
+-- 
+2.51.0
+

@@ -1,0 +1,30 @@
+From 2023f59ba02af9cbdb3ad26678ccc95ffc777c5a Mon Sep 17 00:00:00 2001
+From: Emre Cecanpunar <emreleno@gmail.com>
+Date: Thu, 16 Jul 2026 19:23:04 +0300
+Subject: [PATCH 38/38] wayland: Bound protocol override separator search
+
+FindNextStringToken returns a pointer and length for each comma-delimited token, but strchr can locate an equals sign in a later token. That makes the computed name length exceed the allocation accounted for during the first pass and can cause a heap buffer overflow in memcpy.
+
+Limit the separator search to the current token length.
+
+Signed-off-by: Emre Cecanpunar <emreleno@gmail.com>
+---
+ src/wayland/wayland-display.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/wayland/wayland-display.c b/src/wayland/wayland-display.c
+index 2058650..fe23811 100644
+--- a/src/wayland/wayland-display.c
++++ b/src/wayland/wayland-display.c
+@@ -334,7 +334,7 @@ static ProtocolVersionOverride *ParseProtocolOverrideString(const char *str)
+     num_tokens = 0;
+     while (FindNextStringToken(&tok, &len, ","))
+     {
+-        const char *sep = strchr(tok, '=');
++        const char *sep = memchr(tok, '=', len);
+         if (sep != NULL)
+         {
+             size_t namelen = (sep - tok);
+-- 
+2.51.0
+

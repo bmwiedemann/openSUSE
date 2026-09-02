@@ -1,0 +1,30 @@
+From 99cefc522fa4b331d7b5148f3e1b649db83776a2 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Do=C4=9Fukan=20Korkmazt=C3=BCrk?= <dkorkmazturk@nvidia.com>
+Date: Fri, 15 May 2026 07:53:51 -0400
+Subject: [PATCH 34/38] Return NULL, not EGL_FALSE, from eplWlHookQueryString
+
+eplWlHookQueryString returns `const char *`, but the
+display-acquire-failure path returned `EGL_FALSE`. EGL_FALSE is 0 and
+implicitly converts to a null pointer, so behavior is unchanged, but
+the return value is misleading to readers and to static analysis.
+Return NULL to match the declared type.
+---
+ src/wayland/wayland-display.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/wayland/wayland-display.c b/src/wayland/wayland-display.c
+index d1347f8..2058650 100644
+--- a/src/wayland/wayland-display.c
++++ b/src/wayland/wayland-display.c
+@@ -1219,7 +1219,7 @@ const char *eplWlHookQueryString(EGLDisplay edpy, EGLint name)
+ 
+     if (pdpy == NULL)
+     {
+-        return EGL_FALSE;
++        return NULL;
+     }
+ 
+     if (name == EGL_EXTENSIONS)
+-- 
+2.51.0
+

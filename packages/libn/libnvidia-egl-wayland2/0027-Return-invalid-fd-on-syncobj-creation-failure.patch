@@ -1,0 +1,31 @@
+From aebd8761519a7592af1a5c0c60df576b803688ee Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Do=C4=9Fukan=20Korkmazt=C3=BCrk?= <dkorkmazturk@nvidia.com>
+Date: Tue, 28 Apr 2026 11:31:21 -0400
+Subject: [PATCH 27/38] Return invalid fd on syncobj creation failure
+
+eplWlTimelinePointToSyncFD returns a file descriptor, where negative
+values indicate failure. Returning EGL_FALSE from the drmSyncobjCreate
+failure path produced integer 0, which is a valid file descriptor and
+could be treated as a valid sync fd by callers.
+
+Return -1 instead so a failure would correctly return an invalid fd.
+---
+ src/wayland/wayland-timeline.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/wayland/wayland-timeline.c b/src/wayland/wayland-timeline.c
+index 4b87c30..263554e 100644
+--- a/src/wayland/wayland-timeline.c
++++ b/src/wayland/wayland-timeline.c
+@@ -106,7 +106,7 @@ int eplWlTimelinePointToSyncFD(WlDisplayInstance *inst, WlTimeline *timeline)
+                 gbm_device_get_fd(inst->gbmdev),
+                 0, &tempobj) != 0)
+     {
+-        return EGL_FALSE;
++        return -1;
+     }
+ 
+     if (inst->platform->priv->drm.SyncobjTransfer(gbm_device_get_fd(inst->gbmdev),
+-- 
+2.51.0
+
