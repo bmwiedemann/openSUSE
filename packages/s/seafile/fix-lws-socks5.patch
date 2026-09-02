@@ -1,0 +1,28 @@
+Guard the SOCKS5 proxy setup for the notification server with LWS_WITH_SOCKS5.
+
+socks_proxy_address / socks_proxy_port only exist in struct
+lws_context_creation_info when libwebsockets is built with
+-DLWS_WITH_SOCKS5=ON, which is not the case for the distro package.
+
+Index: seafile-9.0.21/daemon/notif-mgr.c
+===================================================================
+--- seafile-9.0.21.orig/daemon/notif-mgr.c
++++ seafile-9.0.21/daemon/notif-mgr.c
+@@ -836,12 +836,17 @@
+             info.http_proxy_port = has_auth ? 0 :
+                                    (seaf->http_proxy_port > 0 ? seaf->http_proxy_port : 80);
+         } else if (g_strcmp0 (seaf->http_proxy_type, PROXY_TYPE_SOCKS) == 0) {
++#if defined(LWS_WITH_SOCKS5)
+             if (seaf->http_proxy_port >= 0) {
+                 socks_proxy_addr = has_auth ? build_proxy_address (1080) : g_strdup (seaf->http_proxy_addr);
+                 info.socks_proxy_address = socks_proxy_addr;
+                 info.socks_proxy_port = has_auth ? 0 :
+                                     (seaf->http_proxy_port > 0 ? seaf->http_proxy_port : 1080);
+             }
++#else
++            seaf_warning ("libwebsockets was built without SOCKS5 support, "
++                          "not using the SOCKS proxy for the notification server.\n");
++#endif
+         }
+     }
+ 

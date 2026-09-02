@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep  1 12:13:57 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 9.0.21 (no changelog).
+- Add fix-lws-socks5.patch: guard the new SOCKS5 proxy support in
+  the notification manager with LWS_WITH_SOCKS5, since
+  libwebsockets is not built with -DLWS_WITH_SOCKS5=ON.
+
+-------------------------------------------------------------------
 Tue Jun 30 07:13:54 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 9.0.20 (no changelog).
