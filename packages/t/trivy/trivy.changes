@@ -1,7 +1,8 @@
 -------------------------------------------------------------------
 Fri Aug 21 20:33:00 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
-- Update to version 0.74.0:
+- Update to version 0.74.0 (bsc#1276326, CVE-2026-50163,
+      bsc#1278002, CVE-2026-37236):
   * release: v0.74.0 [main] (#11037)
   * chore(deps): update golang.org/x modules (#11094)
   * chore(deps): bump the docker group with 2 updates (#11090)
@@ -33,7 +34,9 @@ Fri Aug 21 20:33:00 UTC 2026 - Dirk Müller <dmueller@suse.com>
 Wed Aug 05 08:21:21 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - Update to version 0.73.0 (bsc#1276128,
-  CVE-2026-72817,CVE-2026-72815,CVE-2026-72816):
+      CVE-2026-72817,CVE-2026-72815,CVE-2026-72816,
+      bsc#1276745, CVE-2026-41178,
+      bsc#1258543, CVE-2026-24122):
   * release: v0.73.0 [main] (#11012)
   * docs: clarify debug logs when version check or telemetry is disabled (#10984)
   * feat(java): support user-defined Maven mirrors in trivy.yaml (#11006)

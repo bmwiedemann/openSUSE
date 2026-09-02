@@ -1734,4 +1734,16 @@ dropped patch file
   CVE-2026-72817,CVE-2026-72815,CVE-2026-72816):</comment>
     <requestid>1372939</requestid>
   </revision>
+  <revision rev="101" vrev="2">
+    <srcmd5>1610cee4a03d028a2d5402a38914cc40</srcmd5>
+    <version>0.74.0</version>
+    <time>1788361241</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.74.0 (bsc#1276326, CVE-2026-50163,
+      bsc#1278002, CVE-2026-37236):
+      CVE-2026-72817,CVE-2026-72815,CVE-2026-72816,
+      bsc#1276745, CVE-2026-41178,
+      bsc#1258543, CVE-2026-24122):</comment>
+    <requestid>1375224</requestid>
+  </revision>
 </revisionlist>
