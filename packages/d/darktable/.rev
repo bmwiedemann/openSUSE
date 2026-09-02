@@ -1700,4 +1700,14 @@ Togan
     <comment></comment>
     <requestid>1366278</requestid>
   </revision>
+  <revision rev="124" vrev="1">
+    <srcmd5>3af59edf8840af2da4b867a4b4144ffb</srcmd5>
+    <version>5.6.1</version>
+    <time>1788361389</time>
+    <user>anag_factory</user>
+    <comment>- Update tp version 5.6.1:
+  * https://github.com/darktable-org/darktable/releases/tag/release-5.6.1
+</comment>
+    <requestid>1375314</requestid>
+  </revision>
 </revisionlist>
