@@ -1,7 +1,7 @@
 #
 # spec file for package Bear
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,90 +16,81 @@
 #
 
 
-%bcond_with     tests
+%bcond_without  tests
+
 Name:           Bear
-Version:        3.1.6
+Version:        4.2.1
 Release:        0
-Summary:        Tool to generate compilation database for clang tooling
+Summary:        Tool that generates a compilation database for clang tooling
 License:        GPL-3.0-or-later
 URL:            https://github.com/rizsotto/Bear
-Source:         %{URL}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         no-BUILD_ALWAYS.patch
-BuildRequires:  bash-completion
-BuildRequires:  cmake
-BuildRequires:  pkgconfig
-BuildRequires:  cmake(nlohmann_json) >= 3.7.3
-BuildRequires:  pkgconfig(absl_synchronization)
-BuildRequires:  pkgconfig(fmt) >= 6.2
-BuildRequires:  pkgconfig(grpc)
-BuildRequires:  pkgconfig(grpc++) >= 1.26
-BuildRequires:  pkgconfig(protobuf) >= 3.11
-BuildRequires:  pkgconfig(spdlog)
-%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
-BuildRequires:  gcc13-c++
-%else
-BuildRequires:  gcc-c++
-%endif
+Source0:        %{name}-%{version}.tar.zst
+Source1:        vendor.tar.zst
+BuildRequires:  cargo-packaging
+BuildRequires:  lld
 %if %{with tests}
+#BuildRequires:  ccache
 BuildRequires:  fakeroot
-# the fakeroot test requires xargs
-BuildRequires:  findutils
-# additional binaries for specific tests
-%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
-BuildRequires:  gcc13-fortran
-%else
+BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
-%endif
-BuildRequires:  python3-lit
-BuildRequires:  python3-setuptools
-# one of the tests requires /usr/bin/more
-BuildRequires:  util-linux
+BuildRequires:  libtool
 BuildRequires:  valgrind
-BuildRequires:  pkgconfig(gmock) >= 1.10
-BuildRequires:  pkgconfig(gtest) >= 1.10
-BuildRequires:  pkgconfig(gtest_main) >= 1.10
 %endif
+ExclusiveArch:  %{rust_tier1_arches}
 
 %description
-Bear is a tool to generate compilation database for clang tooling.
-
-One way to get compilation database is to use cmake as build tool. When the
-project compiles with no cmake, but another build system, there is no free json
-file. Bear is a tool to generate such file during the build process.
+Build ear produces compilation database in JSON format. This database
+describes how single compilation unit should be processed and can be
+used by Clang tooling.
 
 %prep
-%autosetup -p1
+%autosetup -a1 -p1
 
 %build
-for f in $(ls test/bin/); do
-    sed -i "s|^#\!%{_bindir}/env\s\+python\s\?$|#!python3|" test/bin/$f
-done
-%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
-export CC=gcc-13
-export CXX=g++-13
-%endif
-%cmake \
-%if %{without tests}
-  -DENABLE_UNIT_TESTS=OFF \
-  -DENABLE_FUNC_TESTS=OFF
-%else
-  -DENABLE_UNIT_TESTS=ON \
-  -DENABLE_FUNC_TESTS=ON
-%endif
-%cmake_build
+export INTERCEPT_LIBDIR=%{_lib}
+%{cargo_build}
+./target/release/generate-completions target/release/completions
 
 %install
-%cmake_install
-# Let RPM install it correctly
-rm -rf %{buildroot}%{_datadir}/doc
+#%%{cargo_install}
+DESTDIR=%{buildroot} PREFIX=%{_prefix} INTERCEPT_LIBDIR=%{_lib} ./scripts/install.sh
+chmod 0755 %{buildroot}%{_libexecdir}/bear/%{_lib}/libexec.so
+rm -r %{buildroot}%{_datadir}/{doc,elvish}
+
+%if %{with tests}
+%check
+export INTERCEPT_LIBDIR=%{_lib}
+# Several cases fail if ccache wrappers are in the PATH
+cc_path=$(command -v gcc)
+if [ "$cc_path" != "${cc_path%%/ccache*}" ]; then
+    cc_path=$(dirname "$cc_path")
+    export PATH="${PATH%"$cc_path:"*}${PATH##*"$cc_path:"}"
+fi
+unset cc_path
+#%%{cargo_test}
+cargo build --offline
+cargo test
+%endif
 
 %files
 %license COPYING
 %doc README.md
 %{_bindir}/bear
+%dir %{_datadir}/bash-completion
+%dir %{_datadir}/bash-completion/completions
+%{_datadir}/bash-completion/completions/bear
+%dir %{_datadir}/fish
+%dir %{_datadir}/fish/vendor_completions.d
+%{_datadir}/fish/vendor_completions.d/bear.fish
+%dir %{_datadir}/zsh
+%dir %{_datadir}/zsh/site-functions
+%{_datadir}/zsh/site-functions/_bear
+%dir %{_libexecdir}/bear
+%dir %{_libexecdir}/bear/bin
+%dir %{_libexecdir}/bear/%{_lib}
+%{_libexecdir}/bear/bin/bear-driver
+%{_libexecdir}/bear/bin/bear-wrapper
+%{_libexecdir}/bear/%{_lib}/libexec.so
 %{_mandir}/man1/bear.1%{?ext_man}
-%{_mandir}/man1/bear-citnames.1%{?ext_man}
-%{_mandir}/man1/bear-intercept.1%{?ext_man}
-%{_libdir}/bear/
 
 %changelog

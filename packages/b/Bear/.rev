@@ -142,4 +142,26 @@
     <comment></comment>
     <requestid>1267834</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>b066032ae8d2d87abf52443894189166</srcmd5>
+    <version>4.2.1</version>
+    <time>1788361955</time>
+    <user>anag_factory</user>
+    <comment>Update Bear to 4.2.1.
+
+Resubmission of SR 1375344, which factory-auto declined because
+no-BUILD_ALWAYS.patch was removed without a changelog line naming it. That
+removal is now documented in its own entry.
+
+The patch is genuinely obsolete rather than dropped by accident: it reverted
+BUILD_ALWAYS in ExternalProject_Add(BearSource) so build artifacts would not
+land in stage/ (upstream issue 627). Bear 4.2.1 builds with cargo -- the spec
+uses %cargo_build and BuildRequires cargo-packaging -- so the CMakeLists.txt
+the patch modified no longer exists in the tree.
+
+The 4.2.1 update itself is munix9's work in devel:tools:building; the only
+change I made is the added changelog entry. Factory x86_64 and aarch64 both
+build green on the submitted revision.</comment>
+    <requestid>1375348</requestid>
+  </revision>
 </revisionlist>

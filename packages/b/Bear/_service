@@ -1,0 +1,8 @@
+<services>
+  <service name="cargo_vendor" mode="manual">
+    <param name="src">https://github.com/rizsotto/Bear.git</param>
+    <param name="revision">4.2.1</param>
+    <param name="update">true</param>
+    <param name="filter">true</param>
+  </service>
+</services>

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Sep  2 09:45:17 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Drop no-BUILD_ALWAYS.patch: it reverted BUILD_ALWAYS in
+  ExternalProject_Add(BearSource) to keep build artifacts out of
+  stage/, and 4.2.1 builds with cargo, so the CMakeLists.txt it
+  patched is gone.
+
+-------------------------------------------------------------------
+Sat Aug 29 12:09:35 UTC 2026 - munix9@googlemail.com
+
+- update to version 4.2.1
+  * TI Code Generation Tools recognized
+  * MSVC glued option spellings
+  * Clang -F with a separated framework path
+  * The output flag is recorded the way the build wrote it
+  * One entry, one answer for a path
+  * Semantic analysis moved into its own crate
+  * serde-saphyr moved to 1.1
+
+  * See also https://github.com/rizsotto/Bear/releases/tag/4.2.1
+    and https://github.com/rizsotto/Bear/compare/3.1.6...4.2.1
+    for more details.
+
+-------------------------------------------------------------------
 Sun Mar 30 07:55:51 UTC 2025 - Christoph G <foss@grueninger.de>
 
 - update to version 3.1.6
