@@ -1320,4 +1320,12 @@ Mon Nov  14 08:20:28 UTC 2023 - Fredrik Lönnegren &lt;fredrik.lonnegren@suse.co
   in version 27.</comment>
     <requestid>1374395</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>0d36cb96fcada69ee7affa6f47dfb0ac</srcmd5>
+    <version>26</version>
+    <time>1788362046</time>
+    <user>anag_factory</user>
+    <comment>Revert to v26 - https://github.com/systemd/mkosi/issues/4437</comment>
+    <requestid>1375346</requestid>
+  </revision>
 </revisionlist>

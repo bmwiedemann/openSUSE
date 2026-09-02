@@ -1,0 +1,51 @@
+From d53761c4dd2fe4a86a203d81c5bf1bbcf4e06ead Mon Sep 17 00:00:00 2001
+From: Antonio Alvarez Feijoo <antonio.feijoo@suse.com>
+Date: Fri, 19 Dec 2025 12:14:11 +0100
+Subject: [PATCH] distribution: do not default to release=VERSION_ID for
+ openSUSE Tumbleweed
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+`config_default_release()` calls `detect_distribution()` to get the default
+release if it's not set, which picks the value from os-release's `VERSION_ID`.
+In openSUSE Tumbleweed this property has the snapshot number. Since
+`mkosi-initrd` does not set `Release=` via config, mkosi thinks that it's Leap
+and fails:
+
+```
+$ mkosi-initrd
+‣ Validating certificates and keys
+‣ Building main image
+‣  Copying in sandbox trees…
+‣  Installing openSUSE
+Warning: Enforced setting: $releasever=20251217
+Loading repository data...
+Reading installed packages...
+'Leap-release' not found in package names. Trying capabilities.
+No provider of 'Leap-release' found.
+‣ "zypper --installroot=/buildroot --cache-dir=/var/cache/zypp --non-interactive --no-refresh --releasever=20251217 --no-gpg-checks install --download in-advance --no-recommends --force-resolution filesystem Leap-release" returned non-zero exit code 104.
+‣ "mkosi --force --directory= --format=cpio --output=initrd --output-directory=/tmp/tmpcvx9let7 --extra-tree=/usr/lib/modules/6.17.0-2-default:/usr/lib/modules/6.17.0-2-default --extra-tree=/usr/lib/firmware:/usr/lib/firmware '--remove-files=/usr/lib/firmware/*-ucode' --build-sources= --include=mkosi-initrd --kernel-modules=host --extra-tree=/usr/lib/modules/6.17.0-1-default/updates/hdaps.ko:/usr/lib/modules/6.17.0-1-default/updates/hdaps.ko --extra-tree=/usr/lib/modules/6.17.0-1-default/updates/thinkpad_ec.ko:/usr/lib/modules/6.17.0-1-default/updates/thinkpad_ec.ko --extra-tree=/usr/lib/modules/6.17.0-1-default/updates/tp_smapi.ko:/usr/lib/modules/6.17.0-1-default/updates/tp_smapi.ko --package-cache-dir=/var --cache-only=metadata --output-mode=600 --include /usr/lib/mkosi-initrd --include /etc/mkosi-initrd --sandbox-tree=/tmp/tmp0tjr7mwr --extra-tree=/etc/vconsole.conf:/etc/vconsole.conf" returned non-zero exit code 104.
+```
+
+Fixes 0b701c690ddcf3543bc1a698a1977ea390dbfd36
+---
+ mkosi/distribution/__init__.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/mkosi/distribution/__init__.py b/mkosi/distribution/__init__.py
+index 2b8b632b..e59025ac 100644
+--- a/mkosi/distribution/__init__.py
++++ b/mkosi/distribution/__init__.py
+@@ -162,7 +162,7 @@ def detect_distribution(root: Path = Path("/")) -> tuple[Optional[Distribution],
+ 
+     dist_id = os_release.get("ID", "linux")
+     dist_id_like = os_release.get("ID_LIKE", "").split()
+-    version_id = os_release.get("VERSION_ID", None)
++    version_id = os_release.get("VERSION_ID", None) if dist_id != "opensuse-tumbleweed" else "tumbleweed"
+     version_codename = os_release.get("VERSION_CODENAME", None)
+ 
+     quirks = {
+-- 
+2.51.0
+
