@@ -196,4 +196,22 @@ packages/console which the filtered install skips). Licence set unchanged
 over 509 packages, no copyleft. Green on aarch64 and x86_64.</comment>
     <requestid>1374573</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b5cd1a6f8f83d918486d4bf3f9a50cef</srcmd5>
+    <version>1.18.26</version>
+    <time>1788361383</time>
+    <user>anag_factory</user>
+    <comment>Update to opencode 1.18.26.
+
+Upstream bugfix release. The vendored npm closure was retraced: 512 to
+507 store entries, SPDX set unchanged over 506 packages and still free
+of copyleft (README.SUSE-maint carries the audit). The bun and
+@opentui/core pins did not move, so nothing else has to be bumped
+alongside. Dropping seroval 1.3.2 with the solid-js/web import also
+takes six seroval CVEs out of the bundled binary - incidental, not an
+upstream security fix.
+
+Built and %check'd natively on aarch64; OBS x86_64 verified green.</comment>
+    <requestid>1375302</requestid>
+  </revision>
 </revisionlist>

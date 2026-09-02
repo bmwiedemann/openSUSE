@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Sep  2 07:07:03 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.18.26:
+  * Tolerate stale thinking blocks in Claude 5 sessions instead of
+    failing the request after a prompt or tool change.
+  * Accept "none" reasoning effort on Bedrock GPT-5.6 models.
+  * Fix Amazon Bedrock reasoning and replay handling.
+  * Keep tool call timing accurate when a tool updates its
+    metadata while it is still running.
+  * Stop apply_patch emitting an empty move path in permission
+    metadata.
+  * Ask for the resource name directly during Azure CLI sign-in
+    instead of querying the Azure management APIs.
+  * Keep the home screen shortcuts right-aligned when no session
+    is open.
+- Retrace the vendor keep list (512 to 507 store entries):
+  @ai-sdk/anthropic collapses to a single 3.0.111 through a new
+  root override, amazon-bedrock moves to 4.0.166, and seroval
+  falls out with the solid-js/web import the TUI dropped. SPDX
+  set unchanged over 506 packages, still no copyleft; the audit
+  is recorded in README.SUSE-maint.
+- Dropping seroval 1.3.2 also takes CVE-2026-23736,
+  CVE-2026-23737, CVE-2026-23956, CVE-2026-23957, CVE-2026-24006
+  and CVE-2026-59940 out of the bundled tree. Incidental, not an
+  upstream security fix.
+
+-------------------------------------------------------------------
 Sat Aug 29 07:42:20 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.18.25:

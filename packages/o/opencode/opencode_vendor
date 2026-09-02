@@ -192,7 +192,7 @@ echo "==> packing the slimmed source"
 slim="$work/opencode-$version-slim/opencode-$version"
 mkdir -p "$slim/packages"
 for f in "${root_files[@]}"; do install -Dpm 0644 "$tree/$f" "$slim/$f"; done
-# patches/ holds the 17 files package.json's patchedDependencies and bun.lock
+# patches/ holds the 18 files package.json's patchedDependencies and bun.lock
 # name by path. The build never reads them -- the dependency tarball already
 # carries the patched result -- but a source tree that references patch files
 # it does not ship is not reviewable, and these are the only record of how the
