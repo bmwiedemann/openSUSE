@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Aug 28 10:39:41 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- version update to 1.6.4.5:
+  * Add cmp(1) and diff3(1)
+  * autoconf.1: Full translation
+  * join.1: Full translation
+  * zstd.1: Full translation
+  * Refresh kill(1) and add it to procps-ng exclusion list
+
+-------------------------------------------------------------------
 Wed Aug 20 05:29:02 UTC 2025 - Cliff Zhao <qzhao@suse.com>
 
 - version update to 1.6.4.3:

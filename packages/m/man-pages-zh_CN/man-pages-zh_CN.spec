@@ -1,7 +1,7 @@
 #
 # spec file for package man-pages-zh_CN
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           man-pages-zh_CN
-Version:        1.6.4.3
+Version:        1.6.4.5
 Release:        0
 Summary:        Simplified Chinese Linux man pages
 License:        GFDL-1.3-or-later
@@ -40,7 +40,7 @@ pages translation project, with some new addons from openSUSE
 maintainers.
 
 %prep
-%setup -q -n manpages-zh-%{version}
+%autosetup -p1 -n manpages-zh-%{version}
 
 %build
 %cmake
