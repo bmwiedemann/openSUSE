@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Wed Sep 02 07:01:39 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 0.47:
+  * Avoid running git in a potentially unsafe manner
+  * Remove unnecessary BASE variable
+
+-------------------------------------------------------------------
+Tue Sep 01 09:56:55 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 0.46.1:
+  * Fix service handling
+
+-------------------------------------------------------------------
+Tue Sep 01 09:50:23 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 0.46:
+  * avoid legacy shell back ticks
+  * Readability improvements
+  * Fix source-tracking regressions and adding a testcase
+  * Fix source-tracking regressions and adding a testcase
+  * Avoid a few shellcheck warnings
+  * Revert excessive git related warnings check
+- drop revert-pr161.patch (obsolete)
+
+-------------------------------------------------------------------
+Tue Sep  1 08:21:46 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- add revert-pr161.patch
+
+-------------------------------------------------------------------
+Mon Aug 31 15:01:35 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 0.45:
+  * Git add the sources to make the git testing working
+  * switch to ubuntu 26.04
+- drop obs-service-source_validator-test-git-init.patch (upstream)
+
+-------------------------------------------------------------------
+Mon Aug 31 14:06:45 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 0.44:
+  * Small test case for current factory remoteasset policy
+  * Fix remoteasset validation
+  * Move git related check out of OSC section
+  * Ignore .gitignore or AI related files
+  * 20-files-present-and-referenced: ignore .obs directory
+  * Use a wider-scoped wildcard for ignoring Debian special files
+  * Add test data for declarative BuildSystem
+  * ci: make the test suite run even from the tarball
+
+-------------------------------------------------------------------
 Tue Jul 07 20:57:47 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - Update to version 0.43:

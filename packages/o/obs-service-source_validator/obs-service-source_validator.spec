@@ -22,7 +22,7 @@
 %define build_pkg_name obs-build
 %endif
 Name:           obs-service-source_validator
-Version:        0.43
+Version:        0.47
 Release:        0
 Summary:        An OBS source service: running all the osc source-validator checks
 License:        GPL-2.0-or-later
@@ -30,7 +30,6 @@ Group:          Development/Tools/Building
 URL:            https://github.com/openSUSE/obs-service-source_validator
 # use osc service mr to update
 Source:         %{name}-%{version}.tar.xz
-Patch0:         obs-service-source_validator-test-git-init.patch
 BuildRequires:  %{build_pkg_name}
 BuildRequires:  git-core
 BuildRequires:  zstd
@@ -40,6 +39,7 @@ Requires:       %{build_pkg_name}
 Requires:       bzip2
 Requires:       diffutils
 Requires:       patch
+Requires:       perl = %{perl_version}
 Requires:       perl-TimeDate
 Requires:       unzip
 Requires:       xz
