@@ -375,4 +375,12 @@
     <comment>Update to 12.6.0</comment>
     <requestid>1371943</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>7f5cd61e40c0962e5b51aff79ffd6e92</srcmd5>
+    <version>12.7.0</version>
+    <time>1788361248</time>
+    <user>anag_factory</user>
+    <comment>Update to 12.7.0</comment>
+    <requestid>1375227</requestid>
+  </revision>
 </revisionlist>
