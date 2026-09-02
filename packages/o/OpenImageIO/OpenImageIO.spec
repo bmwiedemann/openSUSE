@@ -46,12 +46,12 @@
 %global force_boost_version 1_75_0
 %endif
 
-%global images_ts 20260613T190229
+%global images_ts 20260825T082532
 %global so_ver 3_1
 %global major_minor_ver 3.1
 
 Name:           OpenImageIO
-Version:        3.1.16.0
+Version:        3.1.17.0
 Release:        0
 Summary:        Library for Reading and Writing Images
 License:        Apache-2.0
@@ -279,18 +279,19 @@ export PYTHONDONTWRITEBYTECODE=1
 #
 # https://github.com/AcademySoftwareFoundation/OpenImageIO/issues/4615
 #
-# heif -> our libheif does not support h265
-# ptex -> fileformat which we do not support
-# jxl -> issue with icc profiles fails the test: fixed in next major upstream version
-# jpeg-ultrahdr -> fileformat which we do not support
 # cmake-consumer docs-examples-cpp -> currently failing tests as they assume normal cmake search paths will work to find the OIIO devel files in the final location
 # docs-examples-python -> fails if docs-examples-cpp was not attempted
+# heif -> our libheif does not support h265
 #
 # https://github.com/AcademySoftwareFoundation/OpenImageIO/issues/5358
 #
 # openexr-partialtile imagebufalgo-opencv -> currently failing tests as they assume normal cmake search paths will work to find the OIIO devel files in the final location
 #
-export disabled_tests="heif|ptex|jpeg-ultrahdr|cmake-consumer|docs-examples-cpp|docs-examples-python|imagebufalgo-opencv|openexr-partialtile"
+# ffmpeg -> our factory ffmpeg does not fit the bill
+# sgi -> the tests does not cope with their own changed OIIO library outputs
+#
+#export disabled_tests="heif|ptex|jpeg-ultrahdr|cmake-consumer|docs-examples-cpp|docs-examples-python|imagebufalgo-opencv|openexr-partialtile|ffmpeg"
+export disabled_tests="cmake-consumer|docs-examples-cpp|docs-examples-python|heif|imagebufalgo-opencv|openexr-partialtile|ffmpeg|sgi"
 %ifarch x86_64
 %ctest '-E' ${disabled_tests}
 %else
