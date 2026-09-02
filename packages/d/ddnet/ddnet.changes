@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Tue Sep  1 14:05:54 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Drop %patch -P 0 -p1 line in spec file
+
+-------------------------------------------------------------------
+Thu Aug 27 18:49:41 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 20.0:
+  * [Server] 128 player support
+  * [Client] Web version
+  * [Editor] Tabs to open multiple maps at the same time
+  * [Client] Android: Add aim-relative joystick and relative
+    direct input
+  * [Client] More FPS: Stop rendering off-screen entities,
+    players, hooks, ghosts and spectator chars
+  * [Client] Dynamic antiping player prediction
+    (cl_antiping_players 2/3)
+  * [Client] Replace invisible assets with default sprites
+  * [Client] More FPS: Cache scoreboard text containers
+  * [Client] Reuse the text container buffer in CCachedText
+  * [Client] Clip hook collision line on maps without telehooks
+  * [Client] Improve hook collision line render check
+  * [Client] Fix old telehooks not being detected for the
+    telehook check
+  * [Client] Fix projectile clipping being applied to start
+    position instead of actual position
+  * [Client] Show skin names in scoreboard tooltips
+  * [Client] Improve player settings country filter, highlight
+    matches and show reset button
+  * [Client] Also bind W to +jump by default
+  * [Client] Add "Show directory" button to automapper rule
+    selection popup
+  * [Client] Minor cleanup of settings menus
+  * [Client] Fix potential thread-safety issue in community
+    icon loading
+  * [Client] Validate and initialize demo player data
+  * [Client] Get server info by const reference instead of copying
+  * [Editor] Rewrite envelope editor as editor component
+    with separate state per map
+  * [Editor] Keep map settings, layer/image/sound lists,
+    history UI, font typer and HD/zoom preview state separate
+    for each map
+  * [Editor] Properly clip envelope editor timebar and inactive
+    region background
+  * [Editor] Fix points of unused channels being selected by
+    envelope box selection
+  * [Editor] Properly slow mouse in envelope editor
+  * [Editor] Add quick action for "Goto position"
+  * [Editor] Fix quad flipping for multiple quads
+  * [Editor] Reimplement action to delete selected quads
+  * [Editor] Attach brushes to a separate internal map, fix
+    invalid texture used for tile layer brush with quad image
+  * [Editor] Fix incorrect item size for info map item when
+    loading map
+  * [Editor] Improve validation of map version item and other
+    map data
+  * [Editor] Avoid marking datafile data as unloaded when it
+    failed to be loaded
+  * [Editor] Fix dummy_map tool creating invalid map for
+    sv_vanilla_antispoof feature
+  * [Client&Server] Ensure snapshot item offsets and sizes are
+    aligned with int32_t
+  * [Client&Server] Reject oversized uncompressed packets
+    in UnpackPacket
+  * [Client&Server] Validate tune zone of DDNetProjectile snapshot
+    object and tick of sv_preinput messages
+  * [Server] Add SSL support for MySQL database connections
+  * [Server] Fix rescue blocking team from finishing when used
+    before start line
+  * [Server] Don't unfreeze player on skipped rescue
+  * [Server] Allow /cancelswap while using super, clarify
+    that /swap is not allowed
+  * [Server] Purge acked snapshots from snapshot storage, search
+    starting from the newest snapshot
+  * [Server] Include shortened git revision hash in server
+    version, change 0.6.4 game version prefix to 0.6
+  * [Server] Assert non-reserved server gametype instead of
+    checking pure tuning
+  * [Infra.] Split settings menus into separate source files,
+    move UI popup menus to ui_popups.cpp
+  * [Infra.] Improve macOS packaging and MACOS_CODESIGN
+- Drop ddnet-fix-vulkan-shaders-installation.patch, fixed upstream
+
+-------------------------------------------------------------------
 Sat Jul 11 07:33:43 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 19.9:

@@ -17,7 +17,7 @@
 
 
 Name:           ddnet
-Version:        19.9
+Version:        20.0
 Release:        0
 Summary:        DDraceNetwork, a cooperative racing mod of Teeworlds
 License:        Apache-2.0 AND CC-BY-SA-3.0 AND Zlib AND MIT AND SUSE-Public-Domain
@@ -26,8 +26,6 @@ URL:            https://ddnet.org/
 Source0:        https://github.com/ddnet/ddnet/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
-# PATCH-FIX-UPSTREAM ddnet-fix-vulkan-shaders-installation.patch - https://github.com/ddnet/ddnet/issues/12361
-Patch0:         ddnet-fix-vulkan-shaders-installation.patch
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  appstream-glib
 BuildRequires:  cargo
@@ -87,7 +85,6 @@ Standalone server for DDraceNetwork (DDNet).
 
 %prep
 %setup -qa1
-%patch -P 0 -p1
 
 mkdir cargo-home
 cat >cargo-home/config <<EOF
