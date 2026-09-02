@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Aug 29 18:37:35 UTC 2026 - Nassim Lhadj <lhadjnassim311@gmail.com>
+
+- Update to aquamarine version 0.15.0:
+  - A new ABI breaking release:
+    * frame: reschedule one more idle frame if requested
+    * Fix connector sequencing on high-performance multiple
+      monitor setups
+    * drm: drop unaccounted pageflip, don't present tearing twice
+    * Handle atomic modeset DRM for AMD iGPU (Ryzen AI 9 370HX)
+      panel max BPC reporting failure
+    * drm: keep scanning extension blocks after the first CTA
+    * swapchain: preserve multigpu flag in resize()
+    * drm: use libdisplay-info API di_info_get_hdr_static_metadata()
+    * drm: don't delete HDR_OUTPUT_METADATA when EOTF is 0
+    * core/drm: introduce async commits
+
+-------------------------------------------------------------------
 Tue Jul 28 06:59:50 UTC 2026 - Nassim Lhadj <lhadjnassim311@gmail.com>
 
 - Update to aquamarine version 0.14.0:
