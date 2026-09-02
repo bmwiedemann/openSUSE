@@ -172,4 +172,23 @@
   binaires yields erroneous results.</comment>
     <requestid>1367634</requestid>
   </revision>
+  <revision rev="13" vrev="10">
+    <srcmd5>a8c00410297a95c157acef645ee32de8</srcmd5>
+    <version>0.34.0</version>
+    <time>1788361217</time>
+    <user>anag_factory</user>
+    <comment>- Update github.com/mark3labs/mcp-go/server to v0.56.0 to fix
+  CVE-2026-81092: Missing Host Header Validation Enables DNS
+  Rebinding (bsc#1278013).
+  Above change removes a dependency on
+  github.com/buger/jsonparser=github.com/buger/jsonparser.
+
+- Update  go.opentelemetry.io/otel to 1.44.0 to fix CVE-2026-41178
+  (bsc#1276612).
+  It caused `Parse` to process arbitrarily large/invalid baggage
+  headers and log errors, enabling DoS via oversized inputs.
+- Remove go module replacements which were downgrading
+  dependencies.</comment>
+    <requestid>1375281</requestid>
+  </revision>
 </revisionlist>

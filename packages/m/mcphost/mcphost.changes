@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Sep  2 06:03:05 UTC 2026 - Egbert Eich <eich@suse.com>
+
+- Update github.com/mark3labs/mcp-go/server to v0.56.0 to fix
+  CVE-2026-81092: Missing Host Header Validation Enables DNS
+  Rebinding (bsc#1278013).
+  Above change removes a dependency on
+  github.com/buger/jsonparser=github.com/buger/jsonparser.
+
+-------------------------------------------------------------------
+Tue Sep  1 16:16:06 UTC 2026 - Egbert Eich <eich@suse.com>
+
+- Update  go.opentelemetry.io/otel to 1.44.0 to fix CVE-2026-41178
+  (bsc#1276612).
+  It caused `Parse` to process arbitrarily large/invalid baggage
+  headers and log errors, enabling DoS via oversized inputs.
+- Remove go module replacements which were downgrading
+  dependencies.
+
+-------------------------------------------------------------------
 Thu Jul 23 15:50:00 UTC 2026 - Egbert Eich <eich@suse.com>
 
 - Update the golang.org/x/net dependency to version v0.57.0
