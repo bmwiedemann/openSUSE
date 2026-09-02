@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Sep  1 19:56:19 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.26.8 (released 2026-09-01) includes fixes to cgo, the
+  compiler, the runtime, and the debug/elf and os packages.
+  Refs boo#1255111 go1.26 release tracking
+  * go#81152 cmd/compile/internal/test: TestMergeLocalsIntegration failures
+  * go#81113 debug/elf: applyRelocationsPPC was broken by CL 705075
+  * go#80889 os: TestRootMultiMkdirAllShallow failures on openbsd
+  * go#80851 cmd/go: pseudo #cgo directive FFLAGS value mixed up with CXXFLAGS in Go 1.26
+  * go#80827 runtime: async preemption corrupts AVX (YMM) state on netbsd/amd64
+
+-------------------------------------------------------------------
 Wed Aug 19 14:43:46 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.26.7 (released 2026-08-19) includes fixes to the net/http
