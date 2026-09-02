@@ -20,7 +20,7 @@
 
 Name:           libfsxfs
 %define lname	libfsxfs1
-Version:        20260703
+Version:        20260901
 Release:        0
 Summary:        Library and tools for accessing the SGI X File System (XFS)
 License:        LGPL-3.0-or-later
@@ -36,14 +36,14 @@ BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(fuse3)
 BuildRequires:  pkgconfig(libbfio) >= 20260623
-BuildRequires:  pkgconfig(libcdata) >= 20260612
-BuildRequires:  pkgconfig(libcerror) >= 20260612
-BuildRequires:  pkgconfig(libcfile) >= 20260615
-BuildRequires:  pkgconfig(libclocale) >= 20260612
-BuildRequires:  pkgconfig(libcnotify) >= 20260612
-BuildRequires:  pkgconfig(libcpath) >= 20260621
-BuildRequires:  pkgconfig(libcsplit) >= 20260612
-BuildRequires:  pkgconfig(libcthreads) >= 20260615
+BuildRequires:  pkgconfig(libcdata) >= 20260703
+BuildRequires:  pkgconfig(libcerror) >= 20260703
+BuildRequires:  pkgconfig(libcfile) >= 20260704
+BuildRequires:  pkgconfig(libclocale) >= 20260703
+BuildRequires:  pkgconfig(libcnotify) >= 20260703
+BuildRequires:  pkgconfig(libcpath) >= 20260703
+BuildRequires:  pkgconfig(libcsplit) >= 20260703
+BuildRequires:  pkgconfig(libcthreads) >= 20260703
 BuildRequires:  pkgconfig(libfcache) >= 20260520
 BuildRequires:  pkgconfig(libfcrypto) >= 20260521
 BuildRequires:  pkgconfig(libfdata) >= 20260521
