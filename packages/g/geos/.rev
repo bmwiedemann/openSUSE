@@ -775,4 +775,27 @@ All changes since 3.3.7:
     <comment>Minor spec cleanup (curlify %{ix86} macro)</comment>
     <requestid>1356801</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>71e305024132953e5fb6be813a14db38</srcmd5>
+    <version>3.15.0</version>
+    <time>1788361386</time>
+    <user>anag_factory</user>
+    <comment>Update to GEOS 3.15.0.
+
+SONAME: the C++ library moves libgeos.so.3.14.1 -&gt; libgeos.so.3.15.0, so the
+libgeos3_14_1 subpackage is renamed to libgeos3_15_0. The C API SONAME is
+UNCHANGED at 1 (CAPI_INTERFACE_CURRENT 22 - AGE 21), so libgeos_c1 stays.
+GEOS versions the two libraries independently.
+
+Cone impact is a rebuild, not a break: nothing outside the geos source package
+links libgeos.so.3.14.1. All external consumers (gdal, grass, mapserver, ossim,
+librttopo, libspatialite, postgis x5, qgis, Shapely, MapProxy) link only
+libgeos_c.so.1, whose SONAME did not move. python-Shapely additionally requires
+the renamed subpackage, but that Requires is generated from the installed
+geos-devel at its own build time and self-corrects on rebuild. No consumer
+declares a GEOS upper bound.
+
+Local aarch64 build green, 535/535 ctest, rpmlint 0 errors / 0 badness.</comment>
+    <requestid>1375315</requestid>
+  </revision>
 </revisionlist>
