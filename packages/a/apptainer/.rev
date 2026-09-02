@@ -677,4 +677,15 @@
   destination (bsc#1275248).</comment>
     <requestid>1371956</requestid>
   </revision>
+  <revision rev="50" vrev="3">
+    <srcmd5>ba10b67c2eb02eab9e4037c0bd3774da</srcmd5>
+    <version>1.5.3</version>
+    <time>1788361162</time>
+    <user>anag_factory</user>
+    <comment>- Update  go.opentelemetry.io/otel to 1.44.0 to fix CVE-2026-41178
+  (bsc#1276731).
+  It caused `Parse` to process arbitrarily large/invalid baggage
+  headers and log errors, enabling DoS via oversized inputs.</comment>
+    <requestid>1375159</requestid>
+  </revision>
 </revisionlist>

@@ -6,5 +6,8 @@
    <param name="replace">
     github.com/moby/go-archive=github.com/moby/go-archive@v0.3.0
    </param>
+   <param name="replace">
+     go.opentelemetry.io/otel=go.opentelemetry.io/otel@v1.44.0
+   </param>
   </service>
 </services>

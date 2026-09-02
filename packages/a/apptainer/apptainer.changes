@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep  1 14:17:31 UTC 2026 - Egbert Eich <eich@suse.com>
+
+- Update  go.opentelemetry.io/otel to 1.44.0 to fix CVE-2026-41178
+  (bsc#1276731).
+  It caused `Parse` to process arbitrarily large/invalid baggage
+  headers and log errors, enabling DoS via oversized inputs.
+
+-------------------------------------------------------------------
 Wed Aug 19 09:53:14 UTC 2026 - Egbert Eich <eich@suse.com>
 
 - Update github.com/moby/go-archive to v0.3.0 to fix CVE-2026-17106:
