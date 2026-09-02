@@ -3123,4 +3123,23 @@ Built and %check'd natively on aarch64 and on OBS x86_64: rpmlint 0 errors,
 0 badness; the test flavour runs 61 test binaries, 1369 passed, 0 failed.</comment>
     <requestid>1375030</requestid>
   </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>fc140838eb574d0f3d9e21edfd564cca</srcmd5>
+    <version>0.12.9</version>
+    <time>1788361443</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.12.9
+
+Bug fixes include a memory-safety fix in the vendored
+astral_async_http_range_reader (0.11.1) when reading metadata ranges from
+untrusted wheels, dropping sensitive headers on redirects that cross an
+authentication realm, and redacting secrets in signed URLs from retry
+diagnostics.
+
+Re-vendored: linked crate graph unchanged at 516 crates with an identical
+crate-name set, so License stays (Apache-2.0 OR MIT) AND MPL-2.0.
+cargo-audit reports only the pre-existing accepted RUSTSEC-2023-0071 (rsa,
+no fixed release). Test flavour: 61 binaries, 1371 passed, 0 failed.</comment>
+    <requestid>1375341</requestid>
+  </revision>
 </revisionlist>

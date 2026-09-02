@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Sep  2 06:39:43 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.12.9:
+  * Update astral_async_http_range_reader to 0.11.1, fixing a
+    potential memory-safety issue when reading metadata ranges from
+    untrusted wheels
+  * Drop sensitive headers when a redirect crosses an authentication
+    realm, including same-host redirects that change the URL scheme
+  * Redact secrets in signed URLs from retry diagnostics, including
+    nested request errors
+  * Add --no-locked and --no-frozen to disable lock modes enabled by
+    UV_LOCKED and UV_FROZEN for a single invocation, and give
+    --locked, --frozen, --check and --check-exists precedence over
+    conflicting environment values
+  * Name the exact command-line lock-mode flag in warnings and errors
+  * Add CPython 3.15.0rc2
+  * Speed up cold wheel installs by extracting each streaming ZIP in
+    one blocking task and reusing buffers across files
+  * Stop concurrent uv processes redundantly extracting the same
+    local or source-built wheel
+
+-------------------------------------------------------------------
 Tue Sep  1 06:04:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.12.8:
