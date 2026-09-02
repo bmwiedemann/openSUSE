@@ -168,4 +168,25 @@ takes headers explicitly, bedrock signs raw request bytes. Requires-Dist
 byte-identical to 1.1.0. 211 tests pass per flavor.</comment>
     <requestid>1374583</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>db83a711567f717dff7086cdba1803c4</srcmd5>
+    <version>1.3.0</version>
+    <time>1788361379</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.3.0.
+
+Beta user profiles gain external_user_onboarded_at and drop relationship
+in favour of access_type; new organization compliance settings plus
+user-profile order_by, memory-store and toolset schema updates; beta
+responses now report input_transformations (thinking blocks a binding
+check dropped). aws: base_url is resolved from aws_region under
+skip_auth and with_options, and AnthropicAWS no longer falls back to an
+ambient ANTHROPIC_API_KEY/ANTHROPIC_AUTH_TOKEN.
+
+Requires-Dist byte-identical to 1.2.0, so no dependency floors move. No
+public names removed, so the Factory consumers (langchain-anthropic,
+langchain-aws, sglang, skillspector, switchyard) are unaffected; none
+caps anthropic. 211 tests pass per flavour, rpmlint clean.</comment>
+    <requestid>1375294</requestid>
+  </revision>
 </revisionlist>
