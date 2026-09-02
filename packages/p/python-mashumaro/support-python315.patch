@@ -1,0 +1,281 @@
+From ac873080fef77a93ea5c94f59d5774f8db8dea28 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Edgar=20Ram=C3=ADrez=20Mondrag=C3=B3n?=
+ <edgarrm358@gmail.com>
+Date: Mon, 31 Aug 2026 13:12:30 -0600
+Subject: [PATCH 1/4] Declare support for Python 3.15
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Edgar Ramírez Mondragón <edgarrm358@gmail.com>
+---
+ .github/workflows/main.yml     | 6 +++---
+ mashumaro/core/meta/helpers.py | 4 ++++
+ pyproject.toml                 | 1 +
+ requirements-dev.txt           | 2 +-
+ 4 files changed, 9 insertions(+), 4 deletions(-)
+
+diff --git a/.github/workflows/main.yml b/.github/workflows/main.yml
+index fd30181d..fce06b07 100644
+--- a/.github/workflows/main.yml
++++ b/.github/workflows/main.yml
+@@ -15,7 +15,7 @@ jobs:
+     strategy:
+       fail-fast: false
+       matrix:
+-        python-version: ["3.10", "3.11", "3.12", "3.13", "3.14"]
++        python-version: ["3.10", "3.11", "3.12", "3.13", "3.14", "3.15"]
+     steps:
+       - uses: actions/checkout@v4
+       - name: Set up Python ${{ matrix.python-version }}
+@@ -55,7 +55,7 @@ jobs:
+     strategy:
+       fail-fast: false
+       matrix:
+-        python-version: ["3.10", "3.11", "3.12", "3.13", "3.14"]
++        python-version: ["3.10", "3.11", "3.12", "3.13", "3.14", "3.15"]
+     steps:
+     - uses: actions/checkout@v4
+     - name: Set up Python ${{ matrix.python-version }}
+@@ -86,7 +86,7 @@ jobs:
+     strategy:
+       fail-fast: false
+       matrix:
+-        python-version: ["3.10", "3.11", "3.12", "3.13", "3.14"]
++        python-version: ["3.10", "3.11", "3.12", "3.13", "3.14", "3.15"]
+     steps:
+     - uses: actions/checkout@v4
+     - name: Set up Python ${{ matrix.python-version }}
+diff --git a/mashumaro/core/meta/helpers.py b/mashumaro/core/meta/helpers.py
+index ecfe1644..746f3620 100644
+--- a/mashumaro/core/meta/helpers.py
++++ b/mashumaro/core/meta/helpers.py
+@@ -283,6 +283,10 @@ def type_name(
+         if short:
+             return typ.__name__
+         return f"{typ.__module__}.{typ.__name__}"
++    if is_type_var_tuple(typ):
++        if short:
++            return typ.__name__
++        return f"{typ.__module__}.{typ.__name__}"
+     try:
+         if short:
+             return typ.__qualname__  # type: ignore
+diff --git a/pyproject.toml b/pyproject.toml
+index 721e5e4e..7f59a2f8 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -19,6 +19,7 @@ classifiers = [
+     "Programming Language :: Python :: 3.12",
+     "Programming Language :: Python :: 3.13",
+     "Programming Language :: Python :: 3.14",
++    "Programming Language :: Python :: 3.15",
+     "Development Status :: 5 - Production/Stable",
+ ]
+ dependencies = [
+diff --git a/requirements-dev.txt b/requirements-dev.txt
+index 900d5b88..2751cb25 100644
+--- a/requirements-dev.txt
++++ b/requirements-dev.txt
+@@ -26,7 +26,7 @@ pyperf>=2.6.1
+ termtables>=0.2.3
+ pytablewriter[html]>=0.58.0
+ cattrs==24.1.2
+-pydantic==2.12.0
++pydantic==2.14.0b1
+ dacite==1.7.0  # see https://github.com/konradhalas/dacite/issues/236#issuecomment-1613987368
+ marshmallow>=3.19.0
+ dataclasses-json==0.6.7
+
+From cb338c51bc49ccc5370155fb5bbd2ed447940e39 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Edgar=20Ram=C3=ADrez=20Mondrag=C3=B3n?=
+ <edgarrm358@gmail.com>
+Date: Mon, 31 Aug 2026 13:22:08 -0600
+Subject: [PATCH 2/4] Constrain Ruff to <0.16
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Edgar Ramírez Mondragón <edgarrm358@gmail.com>
+---
+ requirements-dev.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/requirements-dev.txt b/requirements-dev.txt
+index 2751cb25..fa1b2ecb 100644
+--- a/requirements-dev.txt
++++ b/requirements-dev.txt
+@@ -14,7 +14,7 @@ pytest-cov>=2.10.1
+ pytest-xdist>=3.5.0
+ coveralls>=3.0.0
+ black==26.3.1
+-ruff>=0.0.285
++ruff>=0.0.285,<0.16
+ codespell>=2.2.2
+ 
+ # third party features
+
+From 485716e6a1a760c959b57bf90eca2cc7df6b09e6 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Edgar=20Ram=C3=ADrez=20Mondrag=C3=B3n?=
+ <edgarrm358@gmail.com>
+Date: Mon, 31 Aug 2026 13:29:59 -0600
+Subject: [PATCH 3/4] Handle both `typing.TypeVar` and pre-3.11
+ `typing_extensions.TypeVarTuple`
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Edgar Ramírez Mondragón <edgarrm358@gmail.com>
+---
+ mashumaro/core/meta/helpers.py | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/mashumaro/core/meta/helpers.py b/mashumaro/core/meta/helpers.py
+index 746f3620..310b84da 100644
+--- a/mashumaro/core/meta/helpers.py
++++ b/mashumaro/core/meta/helpers.py
+@@ -284,9 +284,12 @@ def type_name(
+             return typ.__name__
+         return f"{typ.__module__}.{typ.__name__}"
+     if is_type_var_tuple(typ):
+-        if short:
++        if type(typ).__module__ == "typing":
++            # Python 3.15+ prefixes TypeVarTuple's repr with a variance
++            # marker (e.g. "~Ts") like TypeVar; strip it to keep the
++            # pre-3.15 bare name.
+             return typ.__name__
+-        return f"{typ.__module__}.{typ.__name__}"
++        return str(typ)
+     try:
+         if short:
+             return typ.__qualname__  # type: ignore
+
+From b9233d661f6a6c36bba1f656fd296f16bfb8a9b5 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Edgar=20Ram=C3=ADrez=20Mondrag=C3=B3n?=
+ <edgarrm358@gmail.com>
+Date: Mon, 31 Aug 2026 14:59:52 -0600
+Subject: [PATCH 4/4] Split tests instead of adapting `type_name`
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Edgar Ramírez Mondragón <edgarrm358@gmail.com>
+---
+ mashumaro/core/const.py        |  5 ++++-
+ mashumaro/core/meta/helpers.py |  7 -------
+ tests/test_pep_646.py          | 37 +++++++++++++++++++++++++---------
+ 3 files changed, 32 insertions(+), 17 deletions(-)
+
+diff --git a/mashumaro/core/const.py b/mashumaro/core/const.py
+index df6dfa27..5d40585b 100644
+--- a/mashumaro/core/const.py
++++ b/mashumaro/core/const.py
+@@ -7,6 +7,7 @@
+     "PY_312_MIN",
+     "PY_313_MIN",
+     "PY_314_MIN",
++    "PY_315_MIN",
+     "Sentinel",
+ ]
+ 
+@@ -15,8 +16,10 @@
+ PY_311 = sys.version_info.major == 3 and sys.version_info.minor == 11
+ PY_312 = sys.version_info.major == 3 and sys.version_info.minor == 12
+ PY_313 = sys.version_info.major == 3 and sys.version_info.minor == 13
+-PY_314_MIN = sys.version_info.major == 3 and sys.version_info.minor >= 14
++PY_314 = sys.version_info.major == 3 and sys.version_info.minor == 14
++PY_315_MIN = sys.version_info.major == 3 and sys.version_info.minor >= 15
+ 
++PY_314_MIN = PY_314 or PY_315_MIN
+ PY_313_MIN = PY_313 or PY_314_MIN
+ PY_312_MIN = PY_312 or PY_313_MIN
+ PY_311_MIN = PY_311 or PY_312_MIN
+diff --git a/mashumaro/core/meta/helpers.py b/mashumaro/core/meta/helpers.py
+index 310b84da..ecfe1644 100644
+--- a/mashumaro/core/meta/helpers.py
++++ b/mashumaro/core/meta/helpers.py
+@@ -283,13 +283,6 @@ def type_name(
+         if short:
+             return typ.__name__
+         return f"{typ.__module__}.{typ.__name__}"
+-    if is_type_var_tuple(typ):
+-        if type(typ).__module__ == "typing":
+-            # Python 3.15+ prefixes TypeVarTuple's repr with a variance
+-            # marker (e.g. "~Ts") like TypeVar; strip it to keep the
+-            # pre-3.15 bare name.
+-            return typ.__name__
+-        return str(typ)
+     try:
+         if short:
+             return typ.__qualname__  # type: ignore
+diff --git a/tests/test_pep_646.py b/tests/test_pep_646.py
+index 4b89ef08..4a2d54b3 100644
+--- a/tests/test_pep_646.py
++++ b/tests/test_pep_646.py
+@@ -15,7 +15,7 @@
+ import pytest
+ 
+ from mashumaro import DataClassDictMixin
+-from mashumaro.core.const import PY_311_MIN
++from mashumaro.core.const import PY_311_MIN, PY_315_MIN
+ 
+ # noinspection PyProtectedMember
+ from mashumaro.core.meta.helpers import (
+@@ -206,8 +206,7 @@ class DataClass(DataClassDictMixin):
+     )
+ 
+ 
+-@pytest.mark.skipif(not PY_311_MIN, reason="requires python 3.11")
+-def test_type_name_for_unpacks_py_311():
++def _assert_type_name_for_unpacks_py_311_common():
+     assert _type_name(Tuple[Unpack[Tuple[int, ...]]]) == "Tuple[int, ...]"
+     assert _type_name(Tuple[Unpack[Tuple[int, float]]]) == "Tuple[int, float]"
+     assert (
+@@ -234,14 +233,8 @@ def test_type_name_for_unpacks_py_311():
+         )
+         == "Tuple[str, Tuple[int, ...], int]"
+     )
+-    assert _type_name(Tuple[Unpack[Ts]]) == "Tuple[*Ts]"
+-    assert _type_name(Tuple[int, Unpack[Ts], int]) == "Tuple[int, *Ts, int]"
+-    assert _type_name(Generic[Unpack[Ts]]) == "Generic[*Ts]"
+-    assert _type_name(Generic[K, Unpack[Ts], V]) == "Generic[Any, *Ts, Any]"
+     assert _type_name(Unpack[Tuple[int]]) == "int"
+     assert _type_name(Unpack[Tuple[int, float]]) == "int, float"
+-    assert _type_name(Unpack[Ts]) == "*Ts"
+-    assert _type_name(Ts) == "Ts"
+     assert (
+         _type_name(Tuple[Unpack[Ts], K][Unpack[Tuple[int, ...]]])
+         == "Tuple[*Tuple[int, ...], int]"
+@@ -256,6 +249,32 @@ def test_type_name_for_unpacks_py_311():
+     )
+ 
+ 
++@pytest.mark.skipif(
++    not PY_311_MIN or PY_315_MIN, reason="requires python 3.11-3.14"
++)
++def test_type_name_for_unpacks_py_311():
++    _assert_type_name_for_unpacks_py_311_common()
++    assert _type_name(Tuple[Unpack[Ts]]) == "Tuple[*Ts]"
++    assert _type_name(Tuple[int, Unpack[Ts], int]) == "Tuple[int, *Ts, int]"
++    assert _type_name(Generic[Unpack[Ts]]) == "Generic[*Ts]"
++    assert _type_name(Generic[K, Unpack[Ts], V]) == "Generic[Any, *Ts, Any]"
++    assert _type_name(Unpack[Ts]) == "*Ts"
++    assert _type_name(Ts) == "Ts"
++
++
++@pytest.mark.skipif(not PY_315_MIN, reason="requires python 3.15")
++def test_type_name_for_unpacks_py_315():
++    # Python 3.15 adds a variance marker to TypeVarTuple's repr (like
++    # TypeVar's), e.g. "~Ts" instead of "Ts".
++    _assert_type_name_for_unpacks_py_311_common()
++    assert _type_name(Tuple[Unpack[Ts]]) == "Tuple[*~Ts]"
++    assert _type_name(Tuple[int, Unpack[Ts], int]) == "Tuple[int, *~Ts, int]"
++    assert _type_name(Generic[Unpack[Ts]]) == "Generic[*~Ts]"
++    assert _type_name(Generic[K, Unpack[Ts], V]) == "Generic[Any, *~Ts, Any]"
++    assert _type_name(Unpack[Ts]) == "*~Ts"
++    assert _type_name(Ts) == "~Ts"
++
++
+ @pytest.mark.skipif(PY_311_MIN, reason="requires python<3.11")
+ def test_type_name_for_unpacks_py_less_than_311():
+     assert _type_name(Tuple[Unpack[Tuple[int, ...]]]) == "Tuple[int, ...]"

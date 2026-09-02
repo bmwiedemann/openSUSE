@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep  2 05:21:42 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-python315.patch:
+  * Support changes required by Python 3.15.
+
+-------------------------------------------------------------------
 Fri May 29 05:56:37 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 3.22:

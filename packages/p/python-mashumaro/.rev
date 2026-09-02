@@ -79,4 +79,13 @@
     <comment></comment>
     <requestid>1355846</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>bb526f99fbe5af76af7af3a6a7cb18a4</srcmd5>
+    <version>3.22</version>
+    <time>1788361370</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-python315.patch:
+  * Support changes required by Python 3.15.</comment>
+    <requestid>1375265</requestid>
+  </revision>
 </revisionlist>
