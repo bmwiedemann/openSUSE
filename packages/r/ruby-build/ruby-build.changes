@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep  2 14:18:13 UTC 2026 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20260902.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20260902
+  * JRuby 10.1.1.0 by @headius in #2635
+  * Produce optimized builds for `ruby-dev`, Ruby < 3.2 on Fedora 42+ after regression in ruby-build 20250716 by @eregon in #2638
+
+-------------------------------------------------------------------
 Thu Jul 16 17:35:17 UTC 2026 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 20260716.
