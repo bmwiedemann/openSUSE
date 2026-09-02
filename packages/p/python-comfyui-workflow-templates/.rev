@@ -104,4 +104,21 @@ Dependency floors raised to match; needs requests 1374575, 1374576 and
 1374577 accepted first or this is unresolvable. Module code unchanged.</comment>
     <requestid>1374579</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8d8a526194c1cfc095188a07c938b850</srcmd5>
+    <version>0.11.52</version>
+    <time>1788361430</time>
+    <user>anag_factory</user>
+    <comment>Update python-comfyui-workflow-templates to 0.11.52.
+
+Upstream re-pins core to 0.3.329, json to 0.1.64 and media-assets-01
+to 0.1.37; media-api/video/image/other are unchanged. The bundle
+dependency floors are raised to match. They stay '&gt;=' floors, not '='
+pins, per the in-spec comment: exact pins on this family previously
+made the package uninstallable on every independent bundle release.
+
+Submitted together with -core 0.3.329, -json 0.1.64 and
+-media-assets-01 0.1.37.</comment>
+    <requestid>1375336</requestid>
+  </revision>
 </revisionlist>

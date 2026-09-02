@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Sep  2 07:37:55 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.11.52:
+  * Only the pinned bundle versions move: -core to 0.3.329, -json
+    to 0.1.64 and -media-assets-01 to 0.1.37, which together add
+    three Fish Audio, three MiniMax H3 Max and two PixVerse 6
+    templates and retire the Veo 3 template
+  * -media-api, -media-video, -media-image and -media-other keep
+    their 0.11.50 pins
+  * Module code, README and license are unchanged from 0.11.50
+- Raise the bundle dependency floors to the versions this release
+  pins: -core >= 0.3.329, -json >= 0.1.64 and
+  -media-assets-01 >= 0.1.37; floors, not '=' pins, per the
+  in-spec comment
+
+-------------------------------------------------------------------
 Sat Aug 29 07:18:06 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.11.50:
