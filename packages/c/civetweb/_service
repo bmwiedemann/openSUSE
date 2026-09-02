@@ -3,7 +3,7 @@
     <param name="url">https://github.com/civetweb/civetweb</param>
     <param name="scm">git</param>
     <param name="revision">master</param>
-    <param name="versionformat">1.6+git%ct.%h</param>
+    <param name="versionformat">1.16+git%ct.%h</param>
   </service>
   <service name="tar" mode="buildtime"/>
   <service name="recompress" mode="buildtime">

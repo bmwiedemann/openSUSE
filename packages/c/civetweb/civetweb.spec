@@ -19,7 +19,7 @@
 %define         soname  1_16_0
 %define         _libname libcivetweb
 Name:           civetweb
-Version:        1.6+git1776611085.588860e3
+Version:        1.16+git1776611085.588860e3
 Release:        0
 Summary:        A C/C++ web server
 License:        MIT
