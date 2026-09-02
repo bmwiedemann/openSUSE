@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Sep  2 07:31:18 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Update to 0.3.1
+  * fixed helper symlink creation
+
+- Update to 0.3.0
+  * renamed from obs-git-init to pool-git-init
+  * Updated .gitignore rules
+  * new .gitmodules merge tool
+  * prepare-commit-message hook to suggest additions from .changes file
+
+-------------------------------------------------------------------
 Thu Jul  2 13:49:54 UTC 2026 - Adrian Schröter <adrian@suse.de>
 
 - Update to 0.2.7

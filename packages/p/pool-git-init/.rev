@@ -10,4 +10,18 @@ It is actually not bound to OBS, but general purpose git initialization
 according to our standards.</comment>
     <requestid>1374397</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>dfc9a908ca187551cda88a2a458de34f</srcmd5>
+    <version>0.3.1</version>
+    <time>1788361414</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.3.1
+  * fixed helper symlink creation
+- Update to 0.3.0
+  * renamed from obs-git-init to pool-git-init
+  * Updated .gitignore rules
+  * new .gitmodules merge tool
+  * prepare-commit-message hook to suggest additions from .changes file</comment>
+    <requestid>1375323</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           pool-git-init
-Version:        0.3.0
+Version:        0.3.1
 Release:        0
 Summary:        Helper services to setup git repositories for packaging
 License:        GPL-2.0-or-later
@@ -40,11 +40,19 @@ BuildArch:      noarch
 %install
 make DESTDIR=%{buildroot} install
 
+%posttrans
+# because rpm itself can not replace directory with a symlink
+# 1st we still may have a remaining empty directory, clean it
+[ -d %{_prefix}/lib/obs/helper ] && rmdir %{_prefix}/lib/obs/helper
+# create the compat symlink
+[ -e %{_prefix}/lib/obs/helper ] || ln -sf ../pool/helper %{_prefix}/lib/obs/
+
 %files
 %license LICENSE
 %doc README.md
 %{_bindir}/*
-%{_prefix}/lib/obs
+%dir %{_prefix}/lib/obs
+%ghost %{_prefix}/lib/obs/helper
 %{_prefix}/lib/pool
 
 %changelog
