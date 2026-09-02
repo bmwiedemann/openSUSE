@@ -72,4 +72,20 @@ Six preview images for the five new Google Gemini Omni Flash 1.1
 templates. No existing asset changed or removed.</comment>
     <requestid>1374577</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>aa384113562ddbd2eb2edb7a0567477c</srcmd5>
+    <version>0.1.37</version>
+    <time>1788361428</time>
+    <user>anag_factory</user>
+    <comment>Update python-comfyui-workflow-templates-media-assets-01 to 0.1.37.
+
+Adds the eight preview images for the new Fish Audio, MiniMax H3 Max
+and PixVerse 6 templates plus the Fish Audio provider logo; no
+existing asset changed or removed.
+
+Part of a set with -core 0.3.329, -json 0.1.64 and the
+comfyui-workflow-templates 0.11.52 meta package, which upstream
+releases in lockstep.</comment>
+    <requestid>1375333</requestid>
+  </revision>
 </revisionlist>
