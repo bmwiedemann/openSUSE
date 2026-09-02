@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           xwaylandvideobridge
-Version:        0.5.0
+Version:        0.5.2
 Release:        0
 Summary:        XWayland Video Bridge
 License:        GPL-2.0-only OR GPL-3.0-or-later
@@ -36,6 +36,7 @@ BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
+BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6StatusNotifierItem) >= %{kf6_version}
 BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
@@ -74,6 +75,6 @@ This tool allows us to share specific windows to X11 clients, but within the con
 %{_kf6_bindir}/xwaylandvideobridge
 %{_kf6_configdir}/autostart/org.kde.xwaylandvideobridge.desktop
 %{_kf6_debugdir}/xwaylandvideobridge.categories
-%{_kf6_iconsdir}/hicolor/scalable/apps/xwaylandvideobridge.svg
+%{_kf6_iconsdir}/hicolor/scalable/apps/org.kde.xwaylandvideobridge.svg
 
 %changelog

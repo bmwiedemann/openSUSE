@@ -7,4 +7,26 @@
     <comment>Reintroduce it, development was picked up again.</comment>
     <requestid>1359104</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>84cd9ae8c3c9234ce8c4622b22bed186</srcmd5>
+    <version>0.5.2</version>
+    <time>1788361223</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.5.2:
+  * CI: Flatpak: Formatting
+  * CI: Flatpak: Disable tests for KDE modules
+  * CI: Flatpak: Sort finish arguments
+  * Fix redirection counting never reaching zero
+  * Don't hold a fullscreen screen-spanning window while idle
+  * Clang format.
+  * Start a session on the redirect itself.
+  * Fix Messages.sh.
+  * Fix deprecation warning.
+- Changes in 0.5.1:
+  * Fix the Icon in the Flatpak
+  * CI - Flatpak - Update Runtime to 6.11
+  * Make the bridge window frameless so it can't eat clicks
+- Add BuildRequires cmake(KF6DBusAddons) &gt;= %{kf6_version} (forwarded request 1375171 from Kieltux)</comment>
+    <requestid>1375213</requestid>
+  </revision>
 </revisionlist>
