@@ -295,7 +295,7 @@ Index: loki/docs/sources/operations/storage/filesystem.md
 ===================================================================
 --- loki.orig/docs/sources/operations/storage/filesystem.md
 +++ loki/docs/sources/operations/storage/filesystem.md
-@@ -13,7 +13,7 @@ Very simply it stores all the objects (c
+@@ -23,7 +23,7 @@ You can also configure the chunks direct
  ```yaml
  storage_config:
    filesystem:
@@ -303,7 +303,7 @@ Index: loki/docs/sources/operations/storage/filesystem.md
 +    directory: /var/lib/loki/
  ```
  
- A folder is created for every tenant all the chunks for one tenant are stored in that directory.
+ Loki creates a folder for every tenant. All the chunks for one tenant are stored in that tenant's folder.
 Index: loki/production/helm/loki/templates/ruler/statefulset-ruler.yaml
 ===================================================================
 --- loki.orig/production/helm/loki/templates/ruler/statefulset-ruler.yaml

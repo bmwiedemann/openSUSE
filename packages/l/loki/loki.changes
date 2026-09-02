@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Thu Aug 27 20:30:45 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 3.7.7:
+  * feat: Add flag to ignore missing chunks during deletion of logs with line filter [release-3.7.x] (#24233)
+  * fix(storage): Pre-compute SHA-256 to avoid aws-chunked on PutObject [release-3.7.x] (#24215)
+  * docs: Change note on OTEL-Loki configuration [release-3.7.x] (#24221)
+  * docs: Check autoscaling queriers for accuracy 🤖🤖🤖 [release-3.7.x] (#24186)
+  * docs: Check overrides exporter for accuracy  🤖🤖🤖  [release-3.7.x] (#24185)
+  * docs: Check the multi-tenancy topic for accuracy 🤖🤖🤖 [release-3.7.x] (#24149)
+  * docs: Check meta-monitoring single-binary for accuracy 🤖🤖🤖 - #24089 [release-3.7.x] (#24148)
+  * docs: Check zone ingesters for accuracy [backport 3.7.x] (#24142)
+  * docs: Check mixins topic for accuracy 🤖🤖🤖 [release-3.7.x] (#24141)
+  * fix(security/UNKNOWN/): Update module golang.org/x/mod to v0.40.0 [SECURITY] (release-3.7.x) (#23962)
+  * ci(release): Bump loki-release and publish the docker driver plugin again (#24095)
+  * fix(security/UNKNOWN/): Update module go.etcd.io/etcd/client/pkg/v3 to v3.6.14 [SECURITY] (release-3.7.x) (#24061)
+  * fix(security/UNKNOWN/): Update module github.com/containerd/containerd/v2 to v2.2.5 [SECURITY] (release-3.7.x) (#24097)
+  * chore(deps): Upgrade to moby from docker (backport release-3.7.x) (#24067)
+  * docs: Check Table Manager topic for accuracy  🤖🤖🤖  (#24088)
+  * docs: Check logs deletion topic for accuracy 🤖🤖🤖 (#24081) (#24092)
+  * docs: Check retention topic for accuracy 🤖🤖🤖 [release-3.7.x] (#24091)
+  * docs: Check the Legacy Storage topic for accuracy  🤖🤖🤖 - #24078 (#24087)
+  * docs: Check WAL topic for accuracy 🤖🤖🤖  [release-3.7.x] (#24086)
+  * docs: Check filesystem topic for accuracy (#24075)
+  * docs: Check storage schema topic for accuracy 🤖🤖🤖 (#24065) (#24074)
+  * docs: Check scalability topic for accuracy 🤖🤖🤖  [release-3.7.x] (#24072)
+  * docs: Check Authentication topic for accuracy  🤖🤖🤖  [release-3.7.x] (#24073)
+  * docs: Check TSDB topic for accuracy  🤖🤖🤖  (#24055) (#24063)
+  * docs: Check boltdb-shipper for accuracy  🤖🤖🤖  (#24056)
+  * docs: Check recording rules topic for accuracy  🤖🤖🤖  (#24054) (#24058)
+  * docs: Check stream sharding topic for accuracy 🤖🤖🤖 - #24023 [release-3.7.x] (#24044)
+  * docs: Check Rate Limits topic for accuracy  🤖🤖🤖 - #23777 (#23953) (#24027)
+  * docs: Check Bloom Filters topic for accuracy  🤖🤖🤖  [release-3.7.x] (#24024)
+  * docs: Check caching topic for accuracy  🤖🤖🤖 - #23777 (#23950) (#24018)
+  * docs: Update shuffle sharding topic for accuracy  🤖🤖🤖 [release-3.7.x] (#24016)
+  * docs: Update metamonitoring overview for accuracy  🤖🤖🤖 [release-3.7.x] (#24015)
+  * docs: Check query fairness topic for accuracy  🤖🤖🤖 - #23777 [release-3.7.x] (#23956)
+  * docs: Check blocked queries topic for accuracy  🤖🤖🤖 - #23777 [release-3.7.x] (#23951)
+  * docs: Check Canary topic for accuracy  🤖🤖🤖 - #23777 [release-3.7.x] (#23948)
+  * docs: Update Helm Charts docs  🤖🤖🤖 [release-3.7.x] (#23930)
+  * docs: Configuration best practices had "Simple Storage Storage" mistake (#23924)
+  * docs: Update Release Notes for 3.7.x [release-3.7.x] (#23799)
+  * docs: Update 3.6.x Release Notes [release-3.7.x] (#23798)
+  * chore(release-3.7.x): Release 3.7.6 (#23773)
+- refresh patch proper-data-directories.patch
+
+-------------------------------------------------------------------
 Thu Aug 06 11:07:56 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.7.6:

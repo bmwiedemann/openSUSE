@@ -1068,4 +1068,14 @@
 update to 3.7.6</comment>
     <requestid>1370137</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>619eeeec828ca5f514797d92914e0ec4</srcmd5>
+    <version>3.7.7</version>
+    <time>1788361263</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1374401 from darix
+
+- Update to version 3.7.7:</comment>
+    <requestid>1375238</requestid>
+  </revision>
 </revisionlist>
