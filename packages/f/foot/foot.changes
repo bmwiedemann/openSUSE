@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Sep  2 14:24:35 UTC 2026 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to v1.28.0:
+  * foot.ini options:
+    * colors and colors2 sections, and the corresponding color-theme-switch-1
+      and color-theme-switch-2 key bindings have been removed.
+      These were deprecated in v1.26.0 and were replaced by
+      colors-dark and colors-light sections and color-theme-switch-dark and
+      color-theme-switch-light key bindings.
+  * Added --class command line option as an alias for --app-id.
+  * Command line option -D,--working-directory now supports file:// URIs.
+  * Added support for terminal visibility reports protocol.
+  * Changed default URL regex to allow single quotes inside the URL
+    but not at the end, unless balanced, and require at least one character
+    inside balanced [], (), '' or "".
+  * Added alucard theme and updated dracula theme.
+  * Fixed various crashes, hangs and other issues.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.28.0 for more details.
+
+-------------------------------------------------------------------
 Fri May 15 07:03:48 UTC 2026 - Arnav Singh <opensuse@arnavion.dev>
 
 - Update to v1.27.0:
@@ -30,7 +50,7 @@ Tue Mar  3 17:05:46 UTC 2026 - Arnav Singh <opensuse@arnavion.dev>
     * Added colors-*.blur option to enable background blur if the compositor
       supports the ext-background-effect-v1 Wayland protocol and
       the blur effect. This option is experimental.
-    * Renamed colors and colors2 sections to colors.dark and colors.light.
+    * Renamed colors and colors2 sections to colors-dark and colors-light.
       The old names are deprecated and will be removed in a future release.
       The builtin themes have already been updated to use the new sections.
       Custom configs using the old names will print a warning at startup.
