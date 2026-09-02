@@ -1,0 +1,27 @@
+Fix errors when building on i586:
+
+[...]/libc/src/__support/FPUtil/BasicOperations.h:63:67: error: SSE register return with SSE2 disabled
+   63 | template <> LIBC_INLINE constexpr float16 max(float16 x, float16 y) {
+      |                                                                   ^
+
+[...]/libc/src/__support/FPUtil/except_value_utils.h:171:26: error: invalid conversion from type '_Float16' without option '-msse2'
+  171 |     volatile float tmp = value_rn;
+      |                          ^~~~~~~~
+
+[...]/libc/src/__support/math/acoshf16.h:63:14: error: operation not permitted on type '_Float16' without option '-msse2'
+   63 |     if (x == 1.0f)
+      |              ^~~~
+
+
+diff --git a/libc/include/llvm-libc-macros/float16-macros.h b/libc/include/llvm-libc-macros/float16-macros.h
+index 528c7f0..ca17970 100644
+--- a/libc/include/llvm-libc-macros/float16-macros.h
++++ b/libc/include/llvm-libc-macros/float16-macros.h
+@@ -15,6 +15,7 @@
+     (!defined(__GNUC__) || __GNUC__ >= 13 ||                                   \
+      (defined(__clang__) && __clang_major__ >= 12)) &&                         \
+     !defined(__arm__) && !defined(_M_ARM) && !defined(__riscv) &&              \
++    (!defined(__i386__) || defined(__SSE2__)) &&                               \
+     !defined(_WIN32)
+ #define LIBC_TYPES_HAS_FLOAT16
+ 

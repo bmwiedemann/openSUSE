@@ -1,0 +1,38 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6f608f97eaeae9eb66797d8d10d1f3b5</srcmd5>
+    <version>23.1.0</version>
+    <time>1788361097</time>
+    <user>anag_factory</user>
+    <comment>- New package based on version 23.1.0.
+  * For details, see the release notes:
+    - https://releases.llvm.org/23.1.0/docs/ReleaseNotes.html
+    - https://releases.llvm.org/23.1.0/tools/clang/docs/ReleaseNotes.html
+    - https://releases.llvm.org/23.1.0/tools/clang/tools/extra/docs/ReleaseNotes.html
+    - https://releases.llvm.org/23.1.0/projects/libcxx/docs/ReleaseNotes.html
+    - https://releases.llvm.org/23.1.0/tools/lld/docs/ReleaseNotes.html
+  * New LLVM tools:
+    - llubi is an UB-aware interpreter for LLVM IR.
+    - llvm-extract-offload-entry can extract an offload bundle
+      entry from a binary.
+    - llvm-gpu-loader can launch programs on the GPU.
+  * New Clang tools for &quot;scalable static analysis&quot;:
+    - clang-ssaf-analyzer
+    - clang-ssaf-format
+    - clang-ssaf-linker
+- Rebase patches:
+  * assume-opensuse.patch
+  * bolt-link-shared-library.patch
+  * check-no-llvm-exegesis.patch
+  * clang-riscv-triple.patch
+  * default-to-i586.patch
+  * llvm-fix-cov-test-i586.patch
+  * tests-use-python3.patch
+- Add patches to fix build:
+  * llvm-FileCheck-avoid-x87.patch for i586.
+  * llvm-fix-i586-build.patch for i586.
+  * llvm-fix-riscv-build-gcc.patch for riscv64.
+- Clean up update-alternatives migration.</comment>
+    <requestid>1374358</requestid>
+  </revision>
+</revisionlist>

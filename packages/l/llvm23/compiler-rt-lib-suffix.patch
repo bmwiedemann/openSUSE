@@ -1,0 +1,12 @@
+diff --git a/llvm/cmake/modules/LLVMExternalProjectUtils.cmake b/llvm/cmake/modules/LLVMExternalProjectUtils.cmake
+index 975798a8c263..cbb9b62ec277 100644
+--- a/llvm/cmake/modules/LLVMExternalProjectUtils.cmake
++++ b/llvm/cmake/modules/LLVMExternalProjectUtils.cmake
+@@ -170,6 +170,7 @@ function(llvm_ExternalProject_Add name source_dir)
+   endif ()
+ 
+   set(DEFAULT_PASSTHROUGH_VARIABLES
++    LLVM_LIBDIR_SUFFIX
+     LibEdit_INCLUDE_DIRS
+     LibEdit_LIBRARIES
+     ZLIB_INCLUDE_DIR

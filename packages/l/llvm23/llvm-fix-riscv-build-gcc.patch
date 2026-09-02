@@ -1,0 +1,22 @@
+Fix GCC warning:
+
+[...]/llvm/lib/Target/RISCV/RISCVTargetTransformInfo.h: In member function 'virtual bool llvm::RISCVTTIImpl::isLegalToVectorizeReduction(const llvm::RecurrenceDescriptor&, llvm::ElementCount) const':
+[...]/llvm/lib/Target/RISCV/RISCVTargetTransformInfo.h:463:3: error: control reaches end of non-void function [-Werror=return-type]
+  463 |   }
+      |   ^
+
+diff --git a/llvm/lib/Target/RISCV/RISCVTargetTransformInfo.h b/llvm/lib/Target/RISCV/RISCVTargetTransformInfo.h
+index 40c6204ee038..35543f8ef30f 100644
+--- a/llvm/lib/Target/RISCV/RISCVTargetTransformInfo.h
++++ b/llvm/lib/Target/RISCV/RISCVTargetTransformInfo.h
+@@ -458,8 +458,9 @@ public:
+     case RecurKind::FAddChainWithSubs:
+       return false;
+     case RecurKind::None:
+-      llvm_unreachable("Unknown reduction kind.");
++      break;
+     }
++    llvm_unreachable("Unknown reduction kind.");
+   }
+ 
+   unsigned getMaxInterleaveFactor(ElementCount VF,

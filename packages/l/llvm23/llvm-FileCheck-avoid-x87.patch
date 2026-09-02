@@ -1,0 +1,31 @@
+diff --git a/llvm/lib/FileCheck/FileCheck.cpp b/llvm/lib/FileCheck/FileCheck.cpp
+index 9889f5d68a52..ae970c73d182 100644
+--- a/llvm/lib/FileCheck/FileCheck.cpp
++++ b/llvm/lib/FileCheck/FileCheck.cpp
+@@ -1381,7 +1381,7 @@ void Pattern::printFuzzyMatch(const SourceMgr &SM, StringRef Buffer,
+   // save them having to actually check the input manually.
+   size_t NumLinesForward = 0;
+   size_t Best = StringRef::npos;
+-  double BestQuality = 0;
++  unsigned BestQuality = 0;
+ 
+   // Arbitrarily limit quadratic search behavior stemming from long CHECK lines.
+   if (size_t(4096) * size_t(2048) <
+@@ -1402,7 +1402,7 @@ void Pattern::printFuzzyMatch(const SourceMgr &SM, StringRef Buffer,
+     // Compute the "quality" of this match as an arbitrary combination of the
+     // match distance and the number of lines skipped to get to this match.
+     unsigned Distance = computeMatchDistance(Buffer.substr(i));
+-    double Quality = Distance + (NumLinesForward / 100.);
++    unsigned Quality = 100 * Distance + NumLinesForward;
+ 
+     if (Quality < BestQuality || Best == StringRef::npos) {
+       Best = i;
+@@ -1413,7 +1413,7 @@ void Pattern::printFuzzyMatch(const SourceMgr &SM, StringRef Buffer,
+   // Print the "possible intended match here" line if we found something
+   // reasonable and not equal to what we showed in the "scanning from here"
+   // line.
+-  if (Best && Best != StringRef::npos && BestQuality < 50) {
++  if (Best && Best != StringRef::npos && BestQuality < 5000) {
+     SMLoc MatchStart = SMLoc::getFromPointer(Buffer.data() + Best);
+     if (Diags)
+       Diags->emplace<MatchFuzzyDiag>(MatchStart);
