@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep  1 19:36:25 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20260902
+  * Updated the CI/CD scripts and testsuite
+
+-------------------------------------------------------------------
 Sun May  4 07:46:30 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - build with fuse 3 (boo#1242079)
