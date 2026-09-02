@@ -942,4 +942,12 @@ unconditionally and fixes CVE-2026-39821 (bsc#1266618) regardless of
 Go's unicode.Version.</comment>
     <requestid>1373358</requestid>
   </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>79de26ec67ada381ef88b325352fee06</srcmd5>
+    <version>2.99.0</version>
+    <time>1788361438</time>
+    <user>anag_factory</user>
+    <comment>gh: update to 2.99.0</comment>
+    <requestid>1375339</requestid>
+  </revision>
 </revisionlist>

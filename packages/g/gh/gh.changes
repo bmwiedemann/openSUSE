@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Sep  2 08:43:14 UTC 2026 - Pavel Dostál <pdostal@suse.com>
+
+- Update to version 2.99.0:
+  * Add repeatable --attach flag to upload local images/videos to
+    issues, pull requests, and comments (max 50 files per call)
+  * Add worktree checkout support to gh issue develop --checkout
+    --worktree
+  * Fix repo sync to avoid corrupting a linked worktree and to
+    explain when the target branch is checked out elsewhere
+  * Fix pr merge --delete-branch to safely handle linked worktrees
+  * Reject --comments combined with --json on view commands
+
+-------------------------------------------------------------------
 Mon Aug 24 09:10:37 UTC 2026 - Pavel Dostál <pdostal@suse.com>
 
 - Update to version 2.98.0:
