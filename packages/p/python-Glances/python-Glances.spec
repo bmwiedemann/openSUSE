@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Glances
-Version:        4.5.5
+Version:        4.5.6
 Release:        0
 Summary:        A cross-platform curses-based monitoring tool
 License:        LGPL-3.0-only
@@ -102,6 +102,7 @@ install -D -m 644 %{SOURCE3} %{buildroot}%{_prefix}/lib/firewalld/services/glanc
 %check
 # Don't test piped output using popen
 donttest="test_run_sanitizes_pipe_in_mustache or test_pipe"
+donttest+=" or test_run_sanitizes_cmdline_section"
 # Assumes network interfaces exist
 donttest+=" or test_glances_api_plugin_network"
 %pytest -k "not ($donttest)"

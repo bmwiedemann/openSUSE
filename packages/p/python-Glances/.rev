@@ -401,4 +401,12 @@
   *  KeyError: 'syscalls' and terminal layout broken #1956</comment>
     <requestid>1362713</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>b01deebd2cec0f5897633a79f512f303</srcmd5>
+    <version>4.5.6</version>
+    <time>1788361160</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1375156</requestid>
+  </revision>
 </revisionlist>
