@@ -19,6 +19,7 @@
     <param name="replace">oras.land/oras-go/v2=oras.land/oras-go/v2@v2.6.2</param>
     <param name="replace">google.golang.org/grpc=google.golang.org/grpc@v1.82.1</param>
     <param name="replace">go.opentelemetry.io/otel=go.opentelemetry.io/otel@v1.44.0</param>
+    <param name="replace">github.com/grpc-ecosystem/grpc-gateway/v2=github.com/grpc-ecosystem/grpc-gateway/v2@v2.29.0</param>
   </service>
   <!-- services below are running at buildtime -->
   <service name="tar" mode="buildtime">
