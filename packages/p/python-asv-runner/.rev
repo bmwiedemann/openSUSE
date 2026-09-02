@@ -43,4 +43,15 @@
     uses SHA-256 of code+env payload on the wire.</comment>
     <requestid>1369597</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2978c2916157da9094a87a62b047f4b3</srcmd5>
+    <version>0.3.1</version>
+    <time>1788361364</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.3.1:
+  * Class-level setup(self) no longer runs inside do_setup_cache.
+- Run the testsuite.
+- Ship the license and README in the built packages.</comment>
+    <requestid>1375260</requestid>
+  </revision>
 </revisionlist>

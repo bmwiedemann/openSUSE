@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-asv-runner
-Version:        0.3.0
+Version:        0.3.1
 Release:        0
 Summary:        Core Python benchmark code for ASV
 License:        BSD-3-Clause
@@ -26,13 +26,11 @@ URL:            https://github.com/airspeed-velocity/asv_runner
 Source:         https://files.pythonhosted.org/packages/source/a/asv_runner/asv_runner-%{version}.tar.gz
 BuildRequires:  %{python_module pdm-backend}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module importlib-metadata}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-importlib-metadata
 BuildArch:      noarch
 %python_subpackages
 
@@ -54,7 +52,12 @@ writing an extension.
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
+%check
+%pytest
+
 %files %{python_files}
+%license LICENSE.md
+%doc README.md
 %{python_sitelib}/asv_runner
 %{python_sitelib}/asv_runner-%{version}.dist-info
 

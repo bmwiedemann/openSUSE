@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep  2 02:12:58 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.3.1:
+  * Class-level setup(self) no longer runs inside do_setup_cache.
+- Run the testsuite.
+- Ship the license and README in the built packages.
+
+-------------------------------------------------------------------
 Tue Aug  4 21:22:22 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.3.0:
