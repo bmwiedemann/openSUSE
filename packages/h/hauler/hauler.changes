@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Sep  1 19:36:46 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.0 (bsc#1265425, CVE-2026-41888):
+  * `v2.1.0` is a **minor** release built on the containerd-
+    native foundation laid down in `v2.0.0`. The headline is that
+    `hauler store sync` and `hauler store add` are now fully
+    concurrent, with signature verification pinned to digests and
+    running in parallel too. Alongside that, this release adds an
+    audit trail, a store integrity checker, store-to-manifest
+    generation, private/insecure registry support across every
+    pull path, and a set of fixes for containerd imports, chunked
+    hauls, and Docker Hub reference handling.
+  * **Notable dependency bumps:** Go → **1.26.6**;
+    `containerd/v2` → 2.3.4; `sigstore/cosign/v3` → 3.1.3;
+    `sigstore/sigstore` → 1.10.9; `go-containerregistry` →
+    0.22.0; `helm/v4` → 4.2.4; `k8s.io` libs (apimachinery, api,
+    client-go) → 0.37.0; `logrus` → 1.10.2; `docker/go-metrics` →
+    0.1.0; `sigstore/rekor` → 1.5.4 (CVE resolution); plus
+    `x/mod` and `go-isatty`.
+
+-------------------------------------------------------------------
 Fri Aug 21 20:24:04 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.3 (bsc#1276124,
@@ -27,7 +48,8 @@ Sun Jun 28 21:15:11 UTC 2026 - Dirk Müller <dmueller@suse.com>
   * bump go to 1.26.4 to squash CVE noise
   * Full v2 Release notes: https://github.com/hauler-
     dev/hauler/releases/tag/v2.0.0
-- update to 2.0.0:
+- update to 2.0.0 (bsc#1277965, CVE-2026-37236,
+      bsc#1276651, CVE-2026-41178):
   * `v2.0.0` is a **major** release. It replaces Hauler's entire
     OCI plumbing... the ORAS v1 dependency and the in-house
     cosign fork with a native containerd based implementation,

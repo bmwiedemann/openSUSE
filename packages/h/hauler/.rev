@@ -391,4 +391,31 @@
     bsc#1265425, CVE-2026-41888):</comment>
     <requestid>1372935</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>baebde750de4b8b15783fee905960a78</srcmd5>
+    <version>2.1.0</version>
+    <time>1788361233</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.1.0 (bsc#1265425, CVE-2026-41888):
+  * `v2.1.0` is a **minor** release built on the containerd-
+    native foundation laid down in `v2.0.0`. The headline is that
+    `hauler store sync` and `hauler store add` are now fully
+    concurrent, with signature verification pinned to digests and
+    running in parallel too. Alongside that, this release adds an
+    audit trail, a store integrity checker, store-to-manifest
+    generation, private/insecure registry support across every
+    pull path, and a set of fixes for containerd imports, chunked
+    hauls, and Docker Hub reference handling.
+  * **Notable dependency bumps:** Go → **1.26.6**;
+    `containerd/v2` → 2.3.4; `sigstore/cosign/v3` → 3.1.3;
+    `sigstore/sigstore` → 1.10.9; `go-containerregistry` →
+    0.22.0; `helm/v4` → 4.2.4; `k8s.io` libs (apimachinery, api,
+    client-go) → 0.37.0; `logrus` → 1.10.2; `docker/go-metrics` →
+    0.1.0; `sigstore/rekor` → 1.5.4 (CVE resolution); plus
+    `x/mod` and `go-isatty`.
+
+- update to 2.0.0 (bsc#1277965, CVE-2026-37236,
+      bsc#1276651, CVE-2026-41178):</comment>
+    <requestid>1375220</requestid>
+  </revision>
 </revisionlist>
