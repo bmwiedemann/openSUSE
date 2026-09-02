@@ -1,0 +1,38 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>535b0fc900d97714e4ba2b4ae19aa539</srcmd5>
+    <version>2.1.1</version>
+    <time>1788361222</time>
+    <user>anag_factory</user>
+    <comment>New package: python-mcp-types 2.1.1.
+
+mcp-types carries the wire types for the Model Context Protocol. Upstream splits
+it out of the MCP Python SDK monorepo (modelcontextprotocol/python-sdk) at the
+same tag as the mcp dist, so 2.1.1 here matches mcp 2.1.1, and mcp 2.x declares
+Requires-Dist: mcp-types==2.1.1.
+
+Licence MIT, confirmed from the LICENSE shipped in the tag archive and the PyPI
+classifier. Pure Python, noarch, singlespec. Runtime dependencies are pydantic
+&gt;= 2.12.0 and typing-extensions &gt;= 4.13.0, both already in Factory; all
+BuildRequires resolve there too, so nothing needs to land alongside this.
+
+Built from the upstream tag archive rather than the PyPI sdist because the sdist
+carries no tests. The two trees are otherwise identical: diff -r between the
+sdist's mcp_types/ and the tag archive's src/mcp-types/mcp_types/ is empty, so
+this builds the released code. %check runs the upstream suite, 446 tests per
+flavour.
+
+Devel project is science:machinelearning:mcp, alongside python-mcp from the same
+upstream monorepo. python-fastmcp is being moved there too (change_devel request
+1375071), so the MCP packages live together.
+
+Scope note: this does not imply an imminent python-mcp 2.x bump. mcp 2.x breaks 7
+of 9 current Factory consumers and four of them have no upstream release
+supporting it, so python-mcp stays on 1.x for now. python-mcp-types is useful and
+buildable on its own, and it is one of the two prerequisites for a future
+python-fastmcp 4.x, which is NOT submitted.
+
+No file conflict with python-mcp 1.28.1, which ships no mcp_types.</comment>
+    <requestid>1375207</requestid>
+  </revision>
+</revisionlist>

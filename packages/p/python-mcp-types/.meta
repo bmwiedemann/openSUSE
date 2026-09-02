@@ -1,0 +1,5 @@
+<package name="python-mcp-types" project="openSUSE:Factory">
+  <title>Model Context Protocol wire types</title>
+  <description>The wire types for the Model Context Protocol.</description>
+  <url>https://github.com/modelcontextprotocol/python-sdk</url>
+</package>

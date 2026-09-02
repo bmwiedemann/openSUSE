@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Tue Sep  1 06:30:54 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package (version 2.1.1):
+  * MCP wire types split out of the mcp Python SDK; needed by
+    python-fastmcp 4.x
+  * built from the python-sdk tag archive, not the PyPI sdist, which
+    ships no tests
+
