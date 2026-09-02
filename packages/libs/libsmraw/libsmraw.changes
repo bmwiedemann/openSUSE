@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep  2 07:36:00 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20260902
+  * Fixed off-by-one errors in libsmraw_io_handle_set_basename
+  * Fixed potential nullptr dereferencing in globbing functions
+
+-------------------------------------------------------------------
 Sun May  4 16:26:10 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - build with fuse 3 (boo#1242079)
