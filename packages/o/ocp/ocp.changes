@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Sep  2 07:15:19 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.5.0
+  Added support for *.OPUS
+  [opus]
+  * Initial version
+  [sidplayfp/residfp] Update to latest masters
+  * New tunable parameters:
+    + Wave Offset 6581
+    + DAC Leakage Level
+    + DC Block Resistor
+  [speex]
+  * Seek home did not work as expected
+  [general/posix]
+  * Add #include <stddef.h> to types.h, for size_t defintion.
+
+-------------------------------------------------------------------
 Fri Aug  7 18:05:48 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.4.1

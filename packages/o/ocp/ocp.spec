@@ -17,7 +17,7 @@
 
 
 Name:           ocp
-Version:        3.4.1
+Version:        3.5.0
 Release:        0
 Summary:        Open Cubic Player for MOD/S3M/XM/IT/MIDI music files
 # Code is GPL-2.0-or-later, Graphics and animations are CC-BY-3.0
