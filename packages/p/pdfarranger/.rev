@@ -149,4 +149,25 @@
     - Bundle poppler encoding files with Windows build</comment>
     <requestid>1330529</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>77e92d9b92c84d90d2399aedb22856a9</srcmd5>
+    <version>1.14.0</version>
+    <time>1788361224</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.14.0:
+  * New / improved features:
+    - Zoom into one page with zoom fit
+    - Add A0, A1 and A2 paper sizes to insert blank page and
+      page size dialog
+    - Move paper size first in insert blank page and page size dialog
+    - Rebuild PDF outlines on export (merge bookmarks etc)
+    - Add swap odd/even pages function
+  * Fixes:
+    - Handle exit code when saving
+    - Sanitize language list in preferences dialog
+    - Add some missing internationalization
+    - Fix false &quot;unsaved&quot; state on accidental micro-drag
+    - Windows ZIP &amp; MSI: Updated OpenSSL DLL files (among others) (forwarded request 1375209 from Giohk404)</comment>
+    <requestid>1375211</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Sep  1 19:01:50 UTC 2026 - Nassim Lhadj <lhadjnassim311@gmail.com>
+
+- Update to 1.14.0:
+  * New / improved features:
+    - Zoom into one page with zoom fit
+    - Add A0, A1 and A2 paper sizes to insert blank page and
+      page size dialog
+    - Move paper size first in insert blank page and page size dialog
+    - Rebuild PDF outlines on export (merge bookmarks etc)
+    - Add swap odd/even pages function
+  * Fixes:
+    - Handle exit code when saving
+    - Sanitize language list in preferences dialog
+    - Add some missing internationalization
+    - Fix false "unsaved" state on accidental micro-drag
+    - Windows ZIP & MSI: Updated OpenSSL DLL files (among others)
+
+-------------------------------------------------------------------
 Sun Feb  1 20:13:41 UTC 2026 - ecsos <ecsos@opensuse.org>
 
 - Update to 1.13.0 (fixes boo#1257190)

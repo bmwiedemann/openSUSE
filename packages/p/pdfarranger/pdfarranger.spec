@@ -24,7 +24,7 @@
 %endif
 
 Name:           pdfarranger
-Version:        1.13.0
+Version:        1.14.0
 Release:        0
 Summary:        Merge, split, rotate, crop, and rearrange pages of PDF documents
 License:        GPL-3.0-only
