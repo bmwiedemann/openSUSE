@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep  1 21:37:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.5:
+  * JWK: Ignore keys with unknown kty values when importing a key
+    set.
+  * JWE: Add max_recipients to JWERegistry.
+
+-------------------------------------------------------------------
 Mon Jul 20 16:15:11 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.7.4:

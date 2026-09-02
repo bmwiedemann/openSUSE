@@ -138,4 +138,15 @@
     <comment>Add bug reference for CVE-2026-62995, bsc#1272991</comment>
     <requestid>1368855</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>3245dde74a87c05d55a78f302870b84d</srcmd5>
+    <version>1.7.5</version>
+    <time>1788361253</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.7.5:
+  * JWK: Ignore keys with unknown kty values when importing a key
+    set.
+  * JWE: Add max_recipients to JWERegistry.</comment>
+    <requestid>1375236</requestid>
+  </revision>
 </revisionlist>
