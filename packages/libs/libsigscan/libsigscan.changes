@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep  2 13:11:49 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20260902
+  * Better group support within
+    `libsigscan_scan_tree_fill_pattern_weights`
+
+-------------------------------------------------------------------
 Sun May  5 21:59:39 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20240505

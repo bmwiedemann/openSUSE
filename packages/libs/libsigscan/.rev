@@ -178,4 +178,12 @@ Required by recent python-dfVFS release</comment>
     <comment>- Update to release 20240505</comment>
     <requestid>1172035</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>569f94d8af6323632163e0a48a410eee</srcmd5>
+    <version>20260902</version>
+    <time>1788361481</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 20260902</comment>
+    <requestid>1375391</requestid>
+  </revision>
 </revisionlist>
