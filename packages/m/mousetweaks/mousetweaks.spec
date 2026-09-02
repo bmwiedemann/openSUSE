@@ -58,6 +58,8 @@ export LANG=C.UTF-8
 %doc AUTHORS NEWS README TODO
 %{_bindir}/*
 %{_mandir}/man1/*.1%{ext_man}
+%dir %{_datadir}/GConf
+%dir %{_datadir}/GConf/gsettings
 %{_datadir}/GConf/gsettings/mousetweaks.convert
 %{_datadir}/glib-2.0/schemas/org.gnome.mousetweaks.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.mousetweaks.gschema.xml

@@ -569,4 +569,13 @@
     <comment>Scripted push from GNOME:Factory</comment>
     <requestid>930920</requestid>
   </revision>
+  <revision rev="77" vrev="4">
+    <srcmd5>bc5a10f52e7af70b755f60efc0ee16cf</srcmd5>
+    <version>3.32.0</version>
+    <time>1788361456</time>
+    <user>anag_factory</user>
+    <comment>- Own %{_datadir}/GConf and %{_datadir}/GConf/gsettings: legacy
+  migration directories.</comment>
+    <requestid>1375379</requestid>
+  </revision>
 </revisionlist>

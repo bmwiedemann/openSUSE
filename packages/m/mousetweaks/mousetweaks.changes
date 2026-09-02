@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep  2 10:19:25 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Own %{_datadir}/GConf and %{_datadir}/GConf/gsettings: legacy
+  migration directories.
+
+-------------------------------------------------------------------
 Thu Sep 16 02:03:40 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove obsolete translation-update-upstream support
