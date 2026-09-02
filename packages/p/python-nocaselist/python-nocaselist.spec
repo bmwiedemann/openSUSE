@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-nocaselist
-Version:        2.2.0
+Version:        2.2.1
 Release:        0
 Summary:        A case-insensitive list for Python
 License:        Apache-2.0

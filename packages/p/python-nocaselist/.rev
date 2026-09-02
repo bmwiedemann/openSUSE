@@ -134,4 +134,21 @@
   * Dropped support for Python 3.6 and 3.7 because they are out</comment>
     <requestid>1337641</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f2e3e496f06a4bf75b28f93858cf62dd</srcmd5>
+    <version>2.2.1</version>
+    <time>1788361257</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.2.1:
+  * Fixed safety issues up to 2026-08-23.
+  * Dev: Fixed link to change log on GitHub release page.
+  * Development: Tolerate premature deletion of local
+    release/start branches.
+  * Docs: Migrated from our own support for generating summary
+    tables in the documentation to using autodocsumm to fix an
+    import error with Sphinx 9.
+  * Development: Upgraded GitHub Actions plugins to versions that
+    use node.js 24.</comment>
+    <requestid>1375240</requestid>
+  </revision>
 </revisionlist>
