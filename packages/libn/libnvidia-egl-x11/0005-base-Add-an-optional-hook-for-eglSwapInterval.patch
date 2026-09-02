@@ -1,0 +1,151 @@
+From 61356b495fd3dd6476cdfb77bf839d43d08f36c1 Mon Sep 17 00:00:00 2001
+From: Kyle Brenneman <kbrenneman@nvidia.com>
+Date: Wed, 12 Mar 2025 14:15:21 -0600
+Subject: [PATCH 05/18] base: Add an optional hook for eglSwapInterval
+
+Add an optional EplImplFuncs::SwapInterval function to handle
+eglSwapInterval calls.
+
+If it's not NULL, then the base library will provide a hook function for
+eglSwapInterval.
+
+HookSwapInterval will handle looking up the current EGLDisplay and
+EGLSurface and making sure that they're valid, including all the
+necessary locking.
+---
+ src/base/platform-base.c | 61 ++++++++++++++++++++++++++++++++++++++++
+ src/base/platform-base.h |  1 +
+ src/base/platform-impl.h | 19 +++++++++++++
+ 3 files changed, 81 insertions(+)
+
+diff --git a/src/base/platform-base.c b/src/base/platform-base.c
+index 687e323..2560f14 100644
+--- a/src/base/platform-base.c
++++ b/src/base/platform-base.c
+@@ -130,6 +130,7 @@ EplPlatformData *eplPlatformBaseAllocate(int major, int minor,
+     platform->egl.MakeCurrent = driver->getProcAddress("eglMakeCurrent");
+     platform->egl.WaitGL = driver->getProcAddress("eglWaitGL");
+     platform->egl.WaitNative = driver->getProcAddress("eglWaitNative");
++    platform->egl.SwapInterval = driver->getProcAddress("eglSwapInterval");
+     platform->egl.WaitClient = driver->getProcAddress("eglWaitClient");
+     platform->egl.ChooseConfig = driver->getProcAddress("eglChooseConfig");
+     platform->egl.GetConfigAttrib = driver->getProcAddress("eglGetConfigAttrib");
+@@ -1238,6 +1239,62 @@ static EGLBoolean HookQueryDisplayAttrib(EGLDisplay edpy, EGLint attribute, EGLA
+     return ret;
+ }
+ 
++static EGLBoolean HookSwapInterval(EGLDisplay edpy, EGLint interval)
++{
++    EplDisplay *pdpy = NULL;
++    EGLBoolean ret = EGL_FALSE;
++    EGLDisplay internal_edpy = EGL_NO_DISPLAY;
++    PFNEGLSWAPINTERVALPROC SwapInterval = NULL;
++
++    pdpy = eplDisplayAcquire(edpy);
++    if (pdpy == NULL)
++    {
++        return EGL_FALSE;
++    }
++
++    if (pdpy->platform->egl.GetCurrentDisplay() == edpy)
++    {
++        EGLSurface esurf = pdpy->platform->egl.GetCurrentSurface(EGL_DRAW);
++        const struct glvnd_list *surface_list = eplDisplayLockSurfaceList(pdpy);
++        EplSurface *psurf = eplSurfaceListLookup(surface_list, esurf);
++        if (psurf != NULL)
++        {
++            if (pdpy->platform->impl->SwapInterval != NULL)
++            {
++                ret = pdpy->platform->impl->SwapInterval(pdpy, psurf, interval);
++            }
++            else
++            {
++                // This should never happen: If we don't have a SwapInterval
++                // implementation, then we shouldn't have provided an
++                // eglSwapInterval hook to the driver.
++                assert(!"Can't happen -- no SwapInterval implementation");
++                ret = EGL_TRUE;
++            }
++        }
++        else
++        {
++            // If we don't recognize he current EGLSurface, then we'll just
++            // pass the call through to the driver after we unlock everything.
++            internal_edpy = pdpy->internal_display;
++            SwapInterval = pdpy->platform->egl.SwapInterval;
++        }
++        eplDisplayUnlockSurfaceList(pdpy);
++    }
++    else
++    {
++        eplSetError(pdpy->platform, EGL_BAD_SURFACE, "EGLDisplay %p is not current", edpy);
++    }
++
++    if (SwapInterval != NULL)
++    {
++        ret = SwapInterval(internal_edpy, interval);
++    }
++
++    eplDisplayRelease(pdpy);
++    return ret;
++}
++
+ static const EplHookFunc BASE_HOOK_FUNCTIONS[] =
+ {
+     { "eglCreatePbufferSurface", HookCreatePbufferSurface },
+@@ -1285,6 +1342,10 @@ void *eplGetHookAddressExport(void *platformData, const char *name)
+     {
+         return HookWaitNative;
+     }
++    if (plat->impl->SwapInterval != NULL && strcmp(name, "eglSwapInterval") == 0)
++    {
++        return HookSwapInterval;
++    }
+     return NULL;
+ }
+ 
+diff --git a/src/base/platform-base.h b/src/base/platform-base.h
+index f31834d..5616321 100644
+--- a/src/base/platform-base.h
++++ b/src/base/platform-base.h
+@@ -217,6 +217,7 @@ typedef struct _EplPlatformData
+         PFNEGLWAITGLPROC WaitGL;
+         PFNEGLWAITCLIENTPROC WaitClient;
+         PFNEGLWAITNATIVEPROC WaitNative;
++        PFNEGLSWAPINTERVALPROC SwapInterval;
+ 
+         PFNEGLQUERYDEVICEATTRIBEXTPROC QueryDeviceAttribEXT;
+         PFNEGLQUERYDEVICESTRINGEXTPROC QueryDeviceStringEXT;
+diff --git a/src/base/platform-impl.h b/src/base/platform-impl.h
+index a44ac60..e3a865d 100644
+--- a/src/base/platform-impl.h
++++ b/src/base/platform-impl.h
+@@ -290,6 +290,25 @@ typedef struct _EplImplFuncs
+      * \return EGL_TRUE on success, EGL_FALSE on failure.
+      */
+     EGLBoolean (*QueryDisplayAttrib) (EplDisplay *pdpy, EGLint attrib, EGLAttrib *ret_value);
++
++    /**
++     * Implements eglSwapInterval.
++     *
++     * This is only called if the current EGLSurface belongs to the platform
++     * library. If the current EGLSurface does not belong to the platform
++     * library (e.g., a pbuffer or stream), then the base library will pass the
++     * call through to the driver.
++     *
++     * This function is optional. If it's NULL, then the base library will not
++     * provide a hook function eglSwapInterval, and so the driver will follow its
++     * default behavior.
++     *
++     * \param pdpy The current display.
++     * \param psurf The current draw surface. This will never be NULL.
++     * \param interval The new swap interval.
++     * \return EGL_TRUE on success, or EGL_FALSE on failure.
++     */
++    EGLBoolean (* SwapInterval) (EplDisplay *pdpy, EplSurface *psurf, EGLint interval);
+ } EplImplFuncs;
+ 
+ #ifdef __cplusplus
+-- 
+2.51.0
+

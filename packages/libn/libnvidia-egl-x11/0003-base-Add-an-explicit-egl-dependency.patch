@@ -1,0 +1,38 @@
+From 6c93d5120feca384a75856a172f86f0351184350 Mon Sep 17 00:00:00 2001
+From: Kyle Brenneman <kbrenneman@nvidia.com>
+Date: Wed, 26 Mar 2025 10:16:55 -0600
+Subject: [PATCH 03/18] base: Add an explicit egl dependency
+
+Add an explicit dependency on 'egl' to the meson.build files.
+---
+ meson.build          | 1 +
+ src/base/meson.build | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/meson.build b/meson.build
+index 449baf2..5314d06 100644
+--- a/meson.build
++++ b/meson.build
+@@ -21,6 +21,7 @@ project('nvidia-egl-platform-base', 'c',
+ dep_libdrm = dependency('libdrm')
+ dep_threads = dependency('threads')
+ dep_eglexternal = dependency('eglexternalplatform', version : ['>=1.2', '<2'])
++dep_egl = dependency('egl', version : ['>=1.5', '<2']).partial_dependency(includes : true, compile_args : true)
+ inc_base = include_directories('src/base')
+ 
+ cc = meson.get_compiler('c')
+diff --git a/src/base/meson.build b/src/base/meson.build
+index a909998..0c863e1 100644
+--- a/src/base/meson.build
++++ b/src/base/meson.build
+@@ -24,6 +24,7 @@ platform_base = static_library('platform-base',
+     dep_libdrm.partial_dependency(compile_args : true, includes : true),
+     dep_threads,
+     dep_eglexternal,
++    dep_egl,
+   ],
+   gnu_symbol_visibility: 'hidden',
+   install: false)
+-- 
+2.51.0
+

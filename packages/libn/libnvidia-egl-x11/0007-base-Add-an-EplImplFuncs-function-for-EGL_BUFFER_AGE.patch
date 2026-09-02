@@ -1,0 +1,72 @@
+From 94f578e48cbcde2468385b7187b71d22b2bb9ba2 Mon Sep 17 00:00:00 2001
+From: Kyle Brenneman <kbrenneman@nvidia.com>
+Date: Tue, 14 Oct 2025 16:42:08 -0600
+Subject: [PATCH 07/18] base: Add an EplImplFuncs function for EGL_BUFFER_AGE.
+
+Add a new function, EplImplFuncs::QueryBufferAge, which is used to check
+the value of EGL_BUFFER_AGE for a surface.
+---
+ src/base/platform-base.c | 23 +++++++++++++++++++----
+ src/base/platform-impl.h | 12 ++++++++++++
+ 2 files changed, 31 insertions(+), 4 deletions(-)
+
+diff --git a/src/base/platform-base.c b/src/base/platform-base.c
+index 94aa4b7..f746fe3 100644
+--- a/src/base/platform-base.c
++++ b/src/base/platform-base.c
+@@ -1329,10 +1329,25 @@ static EGLBoolean HookQuerySurface(EGLDisplay edpy, EGLSurface esurf, EGLint att
+                 goto done;
+             }
+ 
+-            // Note: This is where we'll call into the platform-specific code
+-            // once we add a query function to EplImplFuncs. Until then,
+-            // returning zero is valid (if not very useful).
+-            *value = 0;
++            if (pdpy->platform->impl->QueryBufferAge != NULL)
++            {
++                EGLint age = pdpy->platform->impl->QueryBufferAge(pdpy, psurf);
++                if (age < 0)
++                {
++                    goto done;
++                }
++
++                *value = age;
++            }
++            else
++            {
++                /*
++                 * If the platform code doesn't implement this, then just return
++                 * zero. That's always valid, and means that the application can't
++                 * make any assumptions about the buffer's contents.
++                 */
++                *value = 0;
++            }
+ 
+             psurf->bufferAgeCalled = EGL_TRUE;
+             ret = EGL_TRUE;
+diff --git a/src/base/platform-impl.h b/src/base/platform-impl.h
+index e3a865d..d767f3b 100644
+--- a/src/base/platform-impl.h
++++ b/src/base/platform-impl.h
+@@ -309,6 +309,18 @@ typedef struct _EplImplFuncs
+      * \return EGL_TRUE on success, or EGL_FALSE on failure.
+      */
+     EGLBoolean (* SwapInterval) (EplDisplay *pdpy, EplSurface *psurf, EGLint interval);
++
++    /**
++     * Returns the value of EGL_BUFFER_AGE_KHR.
++     *
++     * This function is optional. If it's NULL, then the base library will just
++     * return zero.
++     *
++     * \param pdpy The current display.
++     * \param psurf The current draw surface. This will never be NULL.
++     * \return The buffer age, or -1 on error.
++     */
++    EGLint (* QueryBufferAge) (EplDisplay *pdpy, EplSurface *psurf);
+ } EplImplFuncs;
+ 
+ #ifdef __cplusplus
+-- 
+2.51.0
+

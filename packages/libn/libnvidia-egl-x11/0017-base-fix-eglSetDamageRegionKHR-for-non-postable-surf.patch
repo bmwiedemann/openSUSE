@@ -1,0 +1,37 @@
+From ec2d477c65d5fe45976aa37a8573fd22656da7f6 Mon Sep 17 00:00:00 2001
+From: Riku Salminen <rsalminen@nvidia.com>
+Date: Fri, 7 Aug 2026 12:05:40 +0000
+Subject: [PATCH 17/18] base: fix eglSetDamageRegionKHR for non-postable
+ surfaces
+
+When eglSetDamageRegionKHR is called on a surface not in the EPL surface
+list (e.g. a pbuffer), the previous code either forwarded the call to the
+driver (if the driver function pointer was set) or silently returned
+EGL_TRUE. The EGL_KHR_partial_update spec requires EGL_BAD_MATCH for
+non-postable surfaces.
+
+Initialize egl.SetDamageRegionKHR in eplPlatformBaseAllocate so the
+driver function pointer is available. This enables the pass-through path
+for postable surfaces not tracked by the EPL, such as EGL stream producer
+surfaces created with eglCreateStreamProducerSurfaceKHR.
+
+Fixes dEQP-EGL.functional.negative_partial_update.not_postable_surface
+---
+ src/base/platform-base.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/base/platform-base.c b/src/base/platform-base.c
+index 1f86ffc..eac69fe 100644
+--- a/src/base/platform-base.c
++++ b/src/base/platform-base.c
+@@ -148,6 +148,7 @@ EplPlatformData *eplPlatformBaseAllocate(int major, int minor,
+         platform->egl.SwapBuffersWithDamage = driver->getProcAddress("eglSwapBuffersWithDamageEXT");
+     }
+     platform->egl.CreateStreamProducerSurfaceKHR = driver->getProcAddress("CreateStreamProducerSurfaceKHR");
++    platform->egl.SetDamageRegionKHR = driver->getProcAddress("eglSetDamageRegionKHR");
+ 
+     if (platform->egl.QueryString == NULL
+             || platform->egl.QueryString == NULL
+-- 
+2.51.0
+

@@ -1,0 +1,596 @@
+From 4aa5e626958f76bd6c2433292d11b41e8d065311 Mon Sep 17 00:00:00 2001
+From: Kyle Brenneman <kbrenneman@nvidia.com>
+Date: Fri, 24 Jan 2025 15:06:48 -0700
+Subject: [PATCH 01/18] base: Use an rwlock for the surface list.
+
+Use an rwlock to protect the display's surface list.
+
+eglCreate*Surface, eglDestroySurface, and eglTerminate all take the
+write lock. All other functions that operate on an EGLSurface take the
+read lock.
+
+This will allow most EGL functions that take an EGLSurface to run
+concurrently, without worrying about another thread calling
+eglDestroySurface or eglTerminate.
+
+That works because, outside of creation and destruction, almost
+everything in EplSurface is effectively read-only. The only thing that
+might change is the internal EGLSurface handle, and with the new
+platform surface interface, that won't need need to change either.
+
+This also changes and simplifies surface destruction. Since
+eglSwapBuffers et. al. don't need to worry about another thread
+destroying an EplSurface, EplSurface no longer needs to be refcounted.
+
+Now, the EplSurface is always fully destroyed during the
+eglDestroySurface hook, and so we can remove EplImplFuncs::FreeSurface.
+
+Also remove eplSurfaceAcquire and eplSurfaceRelease. Instead, there's a
+new eplDisplayLockSurfaceList function, which takes the read lock for
+the surface list and returns a pointer to the list head, and
+eplSurfaceListLookup, which scans the surface list for an external
+EGLSurface handle.
+
+As a convenience, eplHookDisplaySurface and eplHookDisplaySurfaceEnd
+are wrappers to the functions above to handle looking up an EGLDisplay
+and an EGLSurface, with the appropriate locking and unlocking.
+---
+ src/base/platform-base.c | 159 +++++++++++++++++++++++++--------------
+ src/base/platform-base.h |  78 +++++++++++++++----
+ src/base/platform-impl.h |  37 +++++----
+ 3 files changed, 183 insertions(+), 91 deletions(-)
+
+diff --git a/src/base/platform-base.c b/src/base/platform-base.c
+index 8710d10..0a487cb 100644
+--- a/src/base/platform-base.c
++++ b/src/base/platform-base.c
+@@ -85,7 +85,6 @@ EplPlatformData *eplPlatformBaseAllocate(int major, int minor,
+     assert(impl->InitializeDisplay != NULL);
+     assert(impl->TerminateDisplay != NULL);
+     assert(impl->DestroySurface != NULL);
+-    assert(impl->FreeSurface != NULL);
+ 
+     // SwapBuffers is only required if the platform supports windows.
+     assert(impl->CreateWindowSurface == NULL || impl->SwapBuffers != NULL);
+@@ -356,17 +355,16 @@ EGLDisplay eplGetCurrentDisplay(void)
+ 
+ static void DestroyAllSurfaces(EplDisplay *pdpy)
+ {
++    pthread_rwlock_wrlock(&pdpy->surface_list_lock);
++
+     while (!glvnd_list_is_empty(&pdpy->surface_list))
+     {
+         EplSurface *psurf = glvnd_list_first_entry(&pdpy->surface_list, EplSurface, entry);
+ 
+-        // Bump the refcount, as if we'd called eglSurfaceAcquire, so that
+-        // eplSurfaceRelease works below.
+-        eplRefCountRef(&psurf->refcount);
+-
+         DeleteSurfaceCommon(pdpy, psurf);
+-        eplSurfaceRelease(pdpy, psurf);
+     }
++
++    pthread_rwlock_unlock(&pdpy->surface_list_lock);
+ }
+ 
+ static void DestroyDisplay(EplDisplay *pdpy)
+@@ -518,47 +516,78 @@ EGLBoolean eplTerminateInternalDisplay(EplPlatformData *platform, EplInternalDis
+     return EGL_TRUE;
+ }
+ 
+-EplSurface *eplSurfaceAcquire(EplDisplay *pdpy, EGLSurface esurf)
++const struct glvnd_list *eplDisplayLockSurfaceList(EplDisplay *pdpy)
++{
++    pthread_rwlock_rdlock(&pdpy->surface_list_lock);
++
++    return &pdpy->surface_list;
++}
++
++void eplDisplayUnlockSurfaceList(EplDisplay *pdpy)
++{
++    pthread_rwlock_unlock(&pdpy->surface_list_lock);
++}
++
++EplSurface *eplSurfaceListLookup(const struct glvnd_list *surface_list, EGLSurface esurf)
+ {
+     EplSurface *psurf;
+-    EplSurface *found = NULL;
+ 
+-    if (pdpy == NULL || esurf == EGL_NO_SURFACE)
++    if (esurf == EGL_NO_SURFACE)
+     {
+         return NULL;
+     }
+ 
+-    glvnd_list_for_each_entry(psurf, &pdpy->surface_list, entry)
++    glvnd_list_for_each_entry(psurf, surface_list, entry)
+     {
+         if (psurf->external_surface == esurf)
+         {
+-            found = psurf;
+-            break;
++            return psurf;
+         }
+     }
+ 
+-    if (found != NULL)
++    return NULL;
++}
++
++EGLBoolean eplHookDisplaySurface(EGLDisplay edpy, EGLSurface esurf,
++        EplDisplay **ret_pdpy, EplSurface **ret_psurf)
++{
++    EplDisplay *pdpy = eplDisplayAcquire(edpy);
++    const struct glvnd_list *surface_list = NULL;
++    EplSurface *psurf = NULL;
++
++    *ret_pdpy = NULL;
++    *ret_psurf = NULL;
++
++    if (pdpy == NULL)
+     {
+-        eplRefCountRef(&found->refcount);
++        return EGL_FALSE;
+     }
+ 
+-    return found;
++    if (esurf == EGL_NO_SURFACE)
++    {
++        eplSetError(pdpy->platform, EGL_BAD_SURFACE, "EGLSurface handle is EGL_NO_SURFACE");
++        eplDisplayRelease(pdpy);
++        return EGL_FALSE;
++    }
++
++    surface_list = eplDisplayLockSurfaceList(pdpy);
++    psurf = eplSurfaceListLookup(surface_list, esurf);
++    if (psurf == NULL)
++    {
++        eplDisplayUnlockSurfaceList(pdpy);
++    }
++    *ret_pdpy = pdpy;
++    *ret_psurf = psurf;
++    return EGL_TRUE;
+ }
+ 
+-void eplSurfaceRelease(EplDisplay *pdpy, EplSurface *psurf)
++void eplHookDisplaySurfaceEnd(EplDisplay *pdpy, const EplSurface *psurf)
+ {
+     if (psurf != NULL)
+     {
+-        if (eplRefCountUnref(&psurf->refcount))
+-        {
+-            // If the refcount is zero, then that means eglDestroySurface or
+-            // eglTerminate has already run, so the platform-specific code has
+-            // already cleaned up the surface.
+-            assert(psurf->deleted);
+-            pdpy->platform->impl->FreeSurface(pdpy, psurf);
+-            FreeBaseSurface(psurf);
+-        }
++        eplDisplayUnlockSurfaceList(pdpy);
+     }
++    eplDisplayRelease(pdpy);
+ }
+ 
+ static EGLDisplay eplGetPlatformDisplayExport(void *platformData,
+@@ -662,6 +691,14 @@ static EGLDisplay eplGetPlatformDisplayExport(void *platformData,
+         goto done;
+     }
+ 
++    if (pthread_rwlock_init(&pdpy->surface_list_lock, NULL) != 0)
++    {
++        eplSetError(plat, EGL_BAD_ALLOC, "Failed to create internal locks");
++        pthread_mutex_destroy(&pdpy->mutex);
++        free(pdpy);
++        goto done;
++    }
++
+     pdpy->platform = eplPlatformDataRef(plat);
+     pdpy->platform_enum = platform;
+     pdpy->external_display = (EGLDisplay) pdpy;
+@@ -836,18 +873,20 @@ static EGLSurface CommonCreateSurface(EplDisplay *pdpy,
+     psurf = AllocBaseSurface(pdpy->platform);
+     if (psurf == NULL)
+     {
+-        eplDisplayRelease(pdpy);
+         return EGL_NO_SURFACE;
+     }
+ 
+     psurf->type = type;
+ 
++    pthread_rwlock_wrlock(&pdpy->surface_list_lock);
++
+     if (type == EPL_SURFACE_TYPE_WINDOW)
+     {
+         if (pdpy->platform->impl->CreateWindowSurface != NULL)
+         {
+             psurf->internal_surface = pdpy->platform->impl->CreateWindowSurface(pdpy->platform,
+-                    pdpy, psurf, config, native_handle, attrib_list, create_platform);
++                    pdpy, psurf, config, native_handle, attrib_list, create_platform,
++                    &pdpy->surface_list);
+         }
+         else
+         {
+@@ -859,7 +898,8 @@ static EGLSurface CommonCreateSurface(EplDisplay *pdpy,
+         if (pdpy->platform->impl->CreatePixmapSurface != NULL)
+         {
+             psurf->internal_surface = pdpy->platform->impl->CreatePixmapSurface(pdpy->platform,
+-                    pdpy, psurf, config, native_handle, attrib_list, create_platform);
++                    pdpy, psurf, config, native_handle, attrib_list, create_platform,
++                    &pdpy->surface_list);
+         }
+         else
+         {
+@@ -876,7 +916,6 @@ static EGLSurface CommonCreateSurface(EplDisplay *pdpy,
+     {
+         psurf->external_surface = (EGLSurface) psurf;
+         ret = psurf->external_surface;
+-        eplRefCountRef(&psurf->refcount);
+         glvnd_list_add(&psurf->entry, &pdpy->surface_list);
+     }
+     else
+@@ -884,6 +923,7 @@ static EGLSurface CommonCreateSurface(EplDisplay *pdpy,
+         FreeBaseSurface(psurf);
+     }
+ 
++    pthread_rwlock_unlock(&pdpy->surface_list_lock);
+     return ret;
+ }
+ 
+@@ -989,22 +1029,18 @@ static EGLSurface HookCreatePbufferSurface(EGLDisplay edpy, EGLConfig config, co
+ 
+ static void DeleteSurfaceCommon(EplDisplay *pdpy, EplSurface *psurf)
+ {
+-    assert(!psurf->deleted);
++    glvnd_list_del(&psurf->entry);
+ 
+-    if (!psurf->deleted)
+-    {
+-        psurf->deleted = EGL_TRUE;
+-        glvnd_list_del(&psurf->entry);
+-        pdpy->platform->impl->DestroySurface(pdpy, psurf);
++    pdpy->platform->impl->DestroySurface(pdpy, psurf, &pdpy->surface_list);
+ 
+-        eplRefCountUnref(&psurf->refcount);
+-    }
++    FreeBaseSurface(psurf);
+ }
+ 
+ static EGLBoolean HookDestroySurface(EGLDisplay edpy, EGLSurface esurf)
+ {
+     EplDisplay *pdpy;
+-    EplSurface *psurf;
++    EplSurface *elem;
++    EplSurface *psurf = NULL;
+     EGLBoolean ret = EGL_FALSE;
+ 
+     pdpy = eplDisplayAcquire(edpy);
+@@ -1013,11 +1049,20 @@ static EGLBoolean HookDestroySurface(EGLDisplay edpy, EGLSurface esurf)
+         return EGL_FALSE;
+     }
+ 
+-    psurf = eplSurfaceAcquire(pdpy, esurf);
++    pthread_rwlock_wrlock(&pdpy->surface_list_lock);
++
++    glvnd_list_for_each_entry(elem, &pdpy->surface_list, entry)
++    {
++        if (elem->external_surface == esurf)
++        {
++            psurf = elem;
++            break;
++        }
++    }
++
+     if (psurf != NULL)
+     {
+         DeleteSurfaceCommon(pdpy, psurf);
+-        eplSurfaceRelease(pdpy, psurf);
+         ret = EGL_TRUE;
+     }
+     else
+@@ -1027,6 +1072,7 @@ static EGLBoolean HookDestroySurface(EGLDisplay edpy, EGLSurface esurf)
+         ret = pdpy->platform->egl.DestroySurface(pdpy->internal_display, esurf);
+     }
+ 
++    pthread_rwlock_unlock(&pdpy->surface_list_lock);
+     eplDisplayRelease(pdpy);
+     return ret;
+ }
+@@ -1037,8 +1083,7 @@ static EGLBoolean HookSwapBuffersWithDamage(EGLDisplay edpy, EGLSurface esurf, c
+     EplSurface *psurf;
+     EGLBoolean ret = EGL_FALSE;
+ 
+-    pdpy = eplDisplayAcquire(edpy);
+-    if (pdpy == NULL)
++    if (!eplHookDisplaySurface(edpy, esurf, &pdpy, &psurf))
+     {
+         return EGL_FALSE;
+     }
+@@ -1046,11 +1091,10 @@ static EGLBoolean HookSwapBuffersWithDamage(EGLDisplay edpy, EGLSurface esurf, c
+     if (pdpy->platform->egl.GetCurrentDisplay() != edpy)
+     {
+         eplSetError(pdpy->platform, EGL_BAD_SURFACE, "EGLDisplay %p is not current", edpy);
+-        eplDisplayRelease(pdpy);
++        eplHookDisplaySurfaceEnd(pdpy, psurf);
+         return EGL_FALSE;
+     }
+ 
+-    psurf = eplSurfaceAcquire(pdpy, esurf);
+     if (psurf != NULL)
+     {
+         if (psurf->type != EPL_SURFACE_TYPE_WINDOW)
+@@ -1068,8 +1112,7 @@ static EGLBoolean HookSwapBuffersWithDamage(EGLDisplay edpy, EGLSurface esurf, c
+             ret = pdpy->platform->impl->SwapBuffers(pdpy->platform, pdpy, psurf, rects, n_rects);
+         }
+ 
+-        eplSurfaceRelease(pdpy, psurf);
+-        eplDisplayRelease(pdpy);
++        eplHookDisplaySurfaceEnd(pdpy, psurf);
+     }
+     else
+     {
+@@ -1081,7 +1124,7 @@ static EGLBoolean HookSwapBuffersWithDamage(EGLDisplay edpy, EGLSurface esurf, c
+ 
+         // Release the display before calling into the driver, so that we don't
+         // sit on the lock for a (potentially long) SwapBuffers operation.
+-        eplDisplayRelease(pdpy);
++        eplHookDisplaySurfaceEnd(pdpy, psurf);
+ 
+         if (SwapBuffersWithDamage != NULL && rects != NULL && n_rects > 0)
+         {
+@@ -1113,12 +1156,15 @@ static EGLBoolean HookWaitGL(void)
+         return EGL_FALSE;
+     }
+ 
++
+     assert(pdpy->platform->impl->WaitGL != NULL);
+     if (pdpy->platform->impl->WaitGL != NULL)
+     {
+-        EplSurface *psurf = eplSurfaceAcquire(pdpy, pdpy->platform->egl.GetCurrentSurface(EGL_DRAW));
++        const struct glvnd_list *surface_list = eplDisplayLockSurfaceList(pdpy);
++        EplSurface *psurf = eplSurfaceListLookup(surface_list, pdpy->platform->egl.GetCurrentSurface(EGL_DRAW));
++
+         ret = pdpy->platform->impl->WaitGL(pdpy, psurf);
+-        eplSurfaceRelease(pdpy, psurf);
++        eplDisplayUnlockSurfaceList(pdpy);
+     }
+     else
+     {
+@@ -1126,8 +1172,6 @@ static EGLBoolean HookWaitGL(void)
+         // we have an implementation. But, if we wanted to handle this case,
+         // then we could just forward the call through to the driver.
+         eplSetError(pdpy->platform, EGL_BAD_ALLOC, "Internal error: eglWaitGL hook should not be called");
+-        eplDisplayRelease(pdpy);
+-        return EGL_FALSE;
+     }
+ 
+     eplDisplayRelease(pdpy);
+@@ -1148,15 +1192,15 @@ static EGLBoolean HookWaitNative(void)
+     assert(pdpy->platform->impl->WaitNative != NULL);
+     if (pdpy->platform->impl->WaitNative != NULL)
+     {
+-        EplSurface *psurf = eplSurfaceAcquire(pdpy, pdpy->platform->egl.GetCurrentSurface(EGL_DRAW));
++        const struct glvnd_list *surface_list = eplDisplayLockSurfaceList(pdpy);
++        EplSurface *psurf = eplSurfaceListLookup(surface_list, pdpy->platform->egl.GetCurrentSurface(EGL_DRAW));
++
+         ret = pdpy->platform->impl->WaitNative(pdpy, psurf);
+-        eplSurfaceRelease(pdpy, psurf);
++        eplDisplayUnlockSurfaceList(pdpy);
+     }
+     else
+     {
+         eplSetError(pdpy->platform, EGL_BAD_ALLOC, "Internal error: eglWaitNative hook should not be called");
+-        eplDisplayRelease(pdpy);
+-        return EGL_FALSE;
+     }
+ 
+     eplDisplayRelease(pdpy);
+@@ -1303,11 +1347,11 @@ static void *eplGetInternalHandleExport(EGLDisplay edpy, EGLenum type, void *han
+         {
+             if (type == EGL_OBJECT_SURFACE_KHR)
+             {
+-                EplSurface *psurf = eplSurfaceAcquire(pdpy, (EGLSurface) handle);
++                const struct glvnd_list *surface_list = eplDisplayLockSurfaceList(pdpy);
++                EplSurface *psurf = eplSurfaceListLookup(surface_list, (EGLSurface) handle);
+                 if (psurf != NULL)
+                 {
+                     ret = psurf->internal_surface;
+-                    eplSurfaceRelease(pdpy, psurf);
+                 }
+                 else
+                 {
+@@ -1320,6 +1364,7 @@ static void *eplGetInternalHandleExport(EGLDisplay edpy, EGLenum type, void *han
+                      */
+                     ret = handle;
+                 }
++                eplDisplayUnlockSurfaceList(pdpy);
+             }
+             eplDisplayRelease(pdpy);
+         }
+diff --git a/src/base/platform-base.h b/src/base/platform-base.h
+index 63e36f8..297def3 100644
+--- a/src/base/platform-base.h
++++ b/src/base/platform-base.h
+@@ -79,8 +79,6 @@ typedef struct
+  */
+ typedef struct
+ {
+-    EplRefCount refcount;
+-
+     EGLSurface external_surface;
+     EGLSurface internal_surface;
+     EplSurfaceType type;
+@@ -139,11 +137,6 @@ typedef struct
+      */
+     struct _EplPlatformData *platform;
+ 
+-    /**
+-     * All of the existing EplSurface structs.
+-     */
+-    struct glvnd_list surface_list;
+-
+     /**
+      * Private data for the implementation.
+      */
+@@ -152,6 +145,24 @@ typedef struct
+     // Everything after this in EplDisplay should be treated as internal to
+     // platform-base.c.
+ 
++    /**
++     * All of the existing EplSurface structs.
++     */
++    struct glvnd_list surface_list;
++
++    /**
++     * A read/write lock to protect the surface list.
++     *
++     * The eglCreate*Surface and eglDestroySurface hooks will hold the write
++     * lock, and any other functions that operate on an EGLSurface a will hold
++     * the read lock.
++     *
++     * This allows most functions (especially eglSwapBuffers, which may have to
++     * block for extended periods of time) to run concurrently, without needing
++     * to worry about the EGLSurface getting destroyed out from under it.
++     */
++    pthread_rwlock_t surface_list_lock;
++
+     /**
+      * A mutex to control access to the display. This is a recursive mutex.
+      */
+@@ -367,20 +378,59 @@ EGLBoolean eplTerminateInternalDisplay(EplPlatformData *platform, EplInternalDis
+ void eplSetError(EplPlatformData *platform, EGLint error, const char *fmt, ...);
+ 
+ /**
+- * Looks up the EplSurface struct for a surface.
++ * Returns the display's surface list.
++ *
++ * This will take the read lock for the surface list, and then return the list
++ * head.
++ *
++ * The caller must call eplDisplayUnlockSurfaceList to unlock the surface list
++ * afterward.
++ */
++const struct glvnd_list *eplDisplayLockSurfaceList(EplDisplay *pdpy);
++
++/**
++ * Unlocks the display's surface list.
++ */
++void eplDisplayUnlockSurfaceList(EplDisplay *pdpy);
++
++/**
++ * A convenience function for hooks that operate on an EGLSurface.
++ *
++ * This function just calls eglDisplayAcquire to look up the EplDisplay, and
++ * then eplDisplayLockSurfaceList and eplSurfaceListLookup to look up an
++ * EplSurface.
+  *
+- * This will lock the surface and increment its refcount.
++ * The caller must then call \c eplHookDisplaySurfaceEnd afterward.
+  *
+- * The caller must release the surface with \c eplSurfaceRelease.
++ * \note If \p esurf is not NULL, but doesn't match any EplSurface struct, then
++ * this function will still succeed. In most cases, that just means that the
++ * hook function should pass it through to the driver.
+  *
+- * Note that this might return NULL if the surface is a pbuffer or stream.
++ * \note If \p ret_psurf returns NULL, then the surface list will be left
++ * unlocked.
++ *
++ * \param edpy The external EGLDisplay handle.
++ * \param esurf The external EGLSurface handle.
++ * \param[out] ret_pdpy Returns the EplDisplay pointer.
++ * \param[out] ret_psurf Returns the EplSurface pointer, or NULL if \p esurf
++ *      doesn't match any EplDisplay.
++ * \return EGL_TRUE on success. EGL_FALSE if \p edpy is invalid, or if
++ *      \p esurf is EGL_NO_SURFACE.
+  */
+-EplSurface *eplSurfaceAcquire(EplDisplay *pdpy, EGLSurface esurf);
++EGLBoolean eplHookDisplaySurface(EGLDisplay edpy, EGLSurface esurf,
++        EplDisplay **ret_pdpy, EplSurface **ret_surface);
++
++void eplHookDisplaySurfaceEnd(EplDisplay *pdpy, const EplSurface *psurf);
+ 
+ /**
+- * Decrements the refcount for an EplSurface and unlocks it.
++ * Looks up an EplSurface from its external EGLSurface handle.
++ *
++ * \param surface_list The surface list, as returned by \c eplDisplayLockSurfaceList.
++ * \param esurf The external EGLSurface handle.
++ * \return The corresponding EplSurface, or NULL if \p esurf doesn't match any
++ *      surface.
+  */
+-void eplSurfaceRelease(EplDisplay *pdpy, EplSurface *psurf);
++EplSurface *eplSurfaceListLookup(const struct glvnd_list *surface_list, EGLSurface esurf);
+ 
+ /**
+  * Replaces the current surface.
+diff --git a/src/base/platform-impl.h b/src/base/platform-impl.h
+index abd74be..a44ac60 100644
+--- a/src/base/platform-impl.h
++++ b/src/base/platform-impl.h
+@@ -183,10 +183,13 @@ typedef struct _EplImplFuncs
+      * \param create_platform If this is true, then the call is from
+      *      eglCreatePlatformWindowSurface. If false, it's from
+      *      eglCreateWindowSurface.
++     * \param existing_surfaces A linked list of existing surfaces. The new
++     *      surface will not be in this list.
+      * \return The internal EGLSurface handle, or EGL_NO_SURFACE on failure.
+      */
+     EGLSurface (* CreateWindowSurface) (EplPlatformData *plat, EplDisplay *pdpy, EplSurface *psurf,
+-            EGLConfig config, void *native_surface, const EGLAttrib *attribs, EGLBoolean create_platform);
++            EGLConfig config, void *native_surface, const EGLAttrib *attribs, EGLBoolean create_platform,
++            const struct glvnd_list *existing_surfaces);
+ 
+     /**
+      * Creates an EGLSurface for a pixmap.
+@@ -202,35 +205,29 @@ typedef struct _EplImplFuncs
+      * \param create_platform If this is true, then the call is from
+      *      eglCreatePlatformPixmapSurface. If false, it's from
+      *      eglCreatePixmapSurface.
++     * \param existing_surfaces A linked list of existing surfaces. The new
++     *      surface will not be in this list.
+      * \return The internal EGLSurface handle, or EGL_NO_SURFACE on failure.
+      */
+     EGLSurface (* CreatePixmapSurface) (EplPlatformData *plat, EplDisplay *pdpy, EplSurface *psurf,
+-            EGLConfig config, void *native_surface, const EGLAttrib *attribs, EGLBoolean create_platform);
++            EGLConfig config, void *native_surface, const EGLAttrib *attribs, EGLBoolean create_platform,
++            const struct glvnd_list *existing_surfaces);
+ 
+     /**
+-     * Called to handle eglDestroySurface and eglTerminate.
++     * Called from eglDestroySurface and eglTerminate to destroy a surface.
+      *
+-     * Note that it's possible that the EplSurface struct itself might stick around
+-     * if another thread is holding a reference to it.
++     * After this, the \c EplSurface struct itself is freed.
+      *
+-     * \c FreeSurface is called when the refcount actually drops to zero.
++     * Note that this function is called with the surface list already locked,
++     * so it must not try to call \c eplDisplayLockSurfaceList.
+      *
+-     * \param plat The EplPlatformData struct
+-     * \param pdpy The EplDisplay struct
+-     */
+-    void (* DestroySurface) (EplDisplay *pdpy, EplSurface *psurf);
+-
+-    /**
+-     * Called when an EplSurface is about to be freed.
+-     *
+-     * At this point, it's safe to assume that no other thread is going to touch
+-     * the surface, so the platform must free anything that it hasn't already freed
+-     * in \c DestroySurface.
+-     *
+-     * \param plat The EplPlatformData struct
+      * \param pdpy The EplDisplay struct
++     * \param psurf The EplSurface that's being destroyed.
++     * \param existing_surfaces A linked list of existing surfaces. \p psurf
++     *      will not be in this list.
+      */
+-    void (* FreeSurface) (EplDisplay *pdpy, EplSurface *psurf);
++    void (* DestroySurface) (EplDisplay *pdpy, EplSurface *psurf,
++            const struct glvnd_list *existing_surfaces);
+ 
+     /**
+      * Implements eglSwapBuffers and eglSwapBuffersWithDamageEXT.
+-- 
+2.51.0
+

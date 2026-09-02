@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Tue Sep  1 12:28:04 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- upated to 1.0.5 release tarball
+  * Fix building on FreeBSD
+  * Some fixes for handling the attribute list in
+    eglCreateWindow/PixmapSurface
+  * Add a setting to tell egl-x11 to run on the normal NVIDIA Xorg
+    driver. Requires DRI3 1.2 support, which was added in 595 and
+    later drivers.
+- supersedes the following patches
+  0001-Fix-attribute-handling-for-eglCreateWindow-PixmapSur.patch
+  0002-Handle-eglQuerySurface-EGL_RENDER_BUFFER.patch
+  0003-Bump-version-number-to-1.0.5.patch
+  0004-Enable-implicit-sync-if-we-re-talking-to-the-NVIDIA-.patch
+  0005-Fix-building-on-FreeBSD.patch
+- added latest patches from git
+  * 0001-base-Use-an-rwlock-for-the-surface-list.patch
+  * 0002-base-Use-an-rwlock-for-eglInitialize-eglTerminate.patch
+  * 0003-base-Add-an-explicit-egl-dependency.patch
+  * 0004-Replace-eplGetCurrentDisplay-with-eplGetCurrentSurfa.patch
+  * 0005-base-Add-an-optional-hook-for-eglSwapInterval.patch
+  * 0006-base-Add-basic-support-for-EGL_KHR_partial_update.patch
+  * 0007-base-Add-an-EplImplFuncs-function-for-EGL_BUFFER_AGE.patch
+  * 0008-base-Add-an-EplImplFuncs-function-for-eglSetDamageRe.patch
+  * 0009-egl-wayland2-add-FP16-DRM-format.patch
+  * 0010-Bump-the-version-number-to-1.0.6.patch
+  * 0011-base-Replace-EplImplFuncs-QueryBufferAge-with-QueryS.patch
+  * 0012-Update-the-X11-code-to-match-the-base-library-change.patch
+  * 0013-x11-Remove-some-unused-function-pointers.patch
+  * 0014-poll-for-resize-events-in-x11-SwapBuffers.patch
+  * 0015-fix-parameter-validation.patch
+  * 0016-x11-implement-EGL_BUFFER_AGE_KHR-tracking-for-window.patch
+  * 0017-base-fix-eglSetDamageRegionKHR-for-non-postable-surf.patch
+  * 0018-base-fix-eglSwapInterval-to-return-correct-error-wit.patch
+- bumped version to 1.0.6
+
+-------------------------------------------------------------------
 Wed Feb  4 14:35:37 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - added the following patches

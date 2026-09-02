@@ -1,0 +1,156 @@
+From 0e4e129ff2315f0cd8d3cd2327e7809b7e93e1ac Mon Sep 17 00:00:00 2001
+From: Kyle Brenneman <kbrenneman@nvidia.com>
+Date: Wed, 29 Jan 2025 10:48:10 -0700
+Subject: [PATCH 04/18] Replace eplGetCurrentDisplay with eplGetCurrentSurface.
+
+Remove eplGetCurrentDisplay, and replace it with a eplGetCurrentSurface
+function that returns both the current EGLDisplay and the current
+EGLSurface.
+
+That makes it possible to use eplHookDisplaySurface and
+eplHookDisplaySurfaceEnd with functions that operate on the current
+EGLSurface.
+---
+ src/base/platform-base.c | 45 +++++++++++++++++++++++-----------------
+ src/base/platform-base.h |  8 +++++--
+ 2 files changed, 32 insertions(+), 21 deletions(-)
+
+diff --git a/src/base/platform-base.c b/src/base/platform-base.c
+index ad0dc8c..687e323 100644
+--- a/src/base/platform-base.c
++++ b/src/base/platform-base.c
+@@ -323,10 +323,11 @@ EplDisplay *eplDisplayAcquire(EGLDisplay edpy)
+     return pdpy;
+ }
+ 
+-EGLDisplay eplGetCurrentDisplay(void)
++void eplGetCurrentSurface(EGLDisplay *ret_edpy, EGLSurface *ret_esurf)
+ {
+     EplPlatformData *plat;
+     EGLDisplay edpy = EGL_NO_DISPLAY;
++    EGLSurface esurf = EGL_NO_SURFACE;
+ 
+     /*
+      * In practice, loadEGLExternalPlatform is only ever going to get called
+@@ -343,12 +344,20 @@ EGLDisplay eplGetCurrentDisplay(void)
+         edpy = plat->egl.GetCurrentDisplay();
+         if (edpy != EGL_NO_DISPLAY)
+         {
++            esurf = plat->egl.GetCurrentSurface(EGL_DRAW);
+             break;
+         }
+     }
+     pthread_mutex_unlock(&platform_data_list_mutex);
+ 
+-    return edpy;
++    if (ret_edpy != NULL)
++    {
++        *ret_edpy = edpy;
++    }
++    if (ret_esurf != NULL)
++    {
++        *ret_esurf = esurf;
++    }
+ }
+ 
+ static void DestroyAllSurfaces(EplDisplay *pdpy)
+@@ -1137,24 +1146,23 @@ static EGLBoolean HookSwapBuffers(EGLDisplay edpy, EGLSurface esurf)
+ 
+ static EGLBoolean HookWaitGL(void)
+ {
+-    EGLDisplay edpy = eplGetCurrentDisplay();
+-    EplDisplay *pdpy = eplDisplayAcquire(edpy);
++    EGLDisplay edpy = EGL_NO_DISPLAY;
++    EGLDisplay esurf = EGL_NO_SURFACE;
++    EplDisplay *pdpy = NULL;
++    EplSurface *psurf = NULL;
+     EGLBoolean ret = EGL_FALSE;
+ 
+-    if (pdpy == NULL)
++    eplGetCurrentSurface(&edpy, &esurf);
++
++    if (!eplHookDisplaySurface(edpy, esurf, &pdpy, &psurf))
+     {
+         return EGL_FALSE;
+     }
+ 
+-
+     assert(pdpy->platform->impl->WaitGL != NULL);
+     if (pdpy->platform->impl->WaitGL != NULL)
+     {
+-        const struct glvnd_list *surface_list = eplDisplayLockSurfaceList(pdpy);
+-        EplSurface *psurf = eplSurfaceListLookup(surface_list, pdpy->platform->egl.GetCurrentSurface(EGL_DRAW));
+-
+         ret = pdpy->platform->impl->WaitGL(pdpy, psurf);
+-        eplDisplayUnlockSurfaceList(pdpy);
+     }
+     else
+     {
+@@ -1164,17 +1172,20 @@ static EGLBoolean HookWaitGL(void)
+         eplSetError(pdpy->platform, EGL_BAD_ALLOC, "Internal error: eglWaitGL hook should not be called");
+     }
+ 
+-    eplDisplayRelease(pdpy);
++    eplHookDisplaySurfaceEnd(pdpy, psurf);
+     return ret;
+ }
+ 
+ static EGLBoolean HookWaitNative(void)
+ {
+-    EGLDisplay edpy = eplGetCurrentDisplay();
+-    EplDisplay *pdpy = eplDisplayAcquire(edpy);
++    EGLDisplay edpy = EGL_NO_DISPLAY;
++    EGLDisplay esurf = EGL_NO_SURFACE;
++    EplDisplay *pdpy = NULL;
++    EplSurface *psurf = NULL;
+     EGLBoolean ret = EGL_FALSE;
+ 
+-    if (pdpy == NULL)
++    eplGetCurrentSurface(&edpy, &esurf);
++    if (!eplHookDisplaySurface(edpy, esurf, &pdpy, &psurf))
+     {
+         return EGL_FALSE;
+     }
+@@ -1182,18 +1193,14 @@ static EGLBoolean HookWaitNative(void)
+     assert(pdpy->platform->impl->WaitNative != NULL);
+     if (pdpy->platform->impl->WaitNative != NULL)
+     {
+-        const struct glvnd_list *surface_list = eplDisplayLockSurfaceList(pdpy);
+-        EplSurface *psurf = eplSurfaceListLookup(surface_list, pdpy->platform->egl.GetCurrentSurface(EGL_DRAW));
+-
+         ret = pdpy->platform->impl->WaitNative(pdpy, psurf);
+-        eplDisplayUnlockSurfaceList(pdpy);
+     }
+     else
+     {
+         eplSetError(pdpy->platform, EGL_BAD_ALLOC, "Internal error: eglWaitNative hook should not be called");
+     }
+ 
+-    eplDisplayRelease(pdpy);
++    eplHookDisplaySurfaceEnd(pdpy, psurf);
+     return ret;
+ }
+ 
+diff --git a/src/base/platform-base.h b/src/base/platform-base.h
+index 8ec845e..f31834d 100644
+--- a/src/base/platform-base.h
++++ b/src/base/platform-base.h
+@@ -317,9 +317,13 @@ void eplPlatformBaseInitFail(EplPlatformData *plat);
+ EplDisplay *eplDisplayAcquire(EGLDisplay edpy);
+ 
+ /**
+- * Returns the current EGLDisplay for the current thread.
++ * Returns the current external EGLDisplay and EGLSurface handles for the
++ * calling thread.
++ *
++ * \param[out] ret_edpy Returns the current external EGLDisplay
++ * \param[out] ret_esurf Returns the current external EGLSurface
+  */
+-EGLDisplay eplGetCurrentDisplay(void);
++void eplGetCurrentSurface(EGLDisplay *ret_edpy, EGLSurface *ret_esurf);
+ 
+ /**
+  * Releases a display acquired with eplDisplayAcquire.
+-- 
+2.51.0
+

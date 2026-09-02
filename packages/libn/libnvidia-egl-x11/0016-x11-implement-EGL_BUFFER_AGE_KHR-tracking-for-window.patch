@@ -1,0 +1,124 @@
+From 5da0d37a6171bcd3cffd17874c31f44feadf657c Mon Sep 17 00:00:00 2001
+From: Riku Salminen <rsalminen@nvidia.com>
+Date: Thu, 30 Jul 2026 12:11:25 +0000
+Subject: [PATCH 16/18] x11: implement EGL_BUFFER_AGE_KHR tracking for window
+ surfaces
+
+Add buffer age tracking to the X11 window backend, following the same
+pattern as the wayland2 backend.
+
+Each X11ColorBuffer gains a buffer_age field (0 = undefined). After a
+successful PresentPixmap and buffer swap, the just-presented buffer's
+age is set to 1 and all other non-zero ages are incremented. PRIME
+surfaces always return age 0 (no multi-buffer tracking for PRIME).
+
+eplX11QuerySurface now handles EGL_BUFFER_AGE_KHR by returning the
+current back buffer's age via the new eplX11GetWindowBufferAge helper.
+
+Fixes dEQP-EGL.functional.partial_update.* (27 tests, all pass)
+---
+ src/x11/x11-platform.c | 12 ++++++++++++
+ src/x11/x11-platform.h |  8 ++++++++
+ src/x11/x11-window.c   | 30 ++++++++++++++++++++++++++++++
+ 3 files changed, 50 insertions(+)
+
+diff --git a/src/x11/x11-platform.c b/src/x11/x11-platform.c
+index 96f39fe..3dab885 100644
+--- a/src/x11/x11-platform.c
++++ b/src/x11/x11-platform.c
+@@ -1551,6 +1551,18 @@ EplQueryResult eplX11QuerySurface(EplDisplay *pdpy, EplSurface *psurf, EGLint at
+         }
+         return EPL_QUERY_RESULT_SUCCESS;
+     }
++    else if (attrib == EGL_BUFFER_AGE_KHR)
++    {
++        if (psurf->type == EPL_SURFACE_TYPE_WINDOW)
++        {
++            *ret_value = eplX11GetWindowBufferAge(psurf);
++        }
++        else
++        {
++            *ret_value = 0;
++        }
++        return EPL_QUERY_RESULT_SUCCESS;
++    }
+     else
+     {
+         return EPL_QUERY_RESULT_UNKNOWN;
+diff --git a/src/x11/x11-platform.h b/src/x11/x11-platform.h
+index 1e510bc..db84c32 100644
+--- a/src/x11/x11-platform.h
++++ b/src/x11/x11-platform.h
+@@ -453,6 +453,14 @@ void eplX11DestroyPixmap(EplSurface *surf);
+ 
+ EGLBoolean eplX11SwapInterval(EplDisplay *pdpy, EplSurface *psurf, EGLint interval);
+ 
++/**
++ * Returns the EGL_BUFFER_AGE_KHR value for a window surface.
++ *
++ * Returns 0 for PRIME surfaces or if no swap has occurred yet.
++ * Must only be called when the surface is current (enforced by platform-base.c).
++ */
++EGLint eplX11GetWindowBufferAge(EplSurface *surf);
++
+ void eplX11DestroyWindow(EplSurface *surf);
+ 
+ EGLBoolean eplX11WaitGLWindow(EplDisplay *pdpy, EplSurface *psurf);
+diff --git a/src/x11/x11-window.c b/src/x11/x11-window.c
+index ff6ea62..1c490fa 100644
+--- a/src/x11/x11-window.c
++++ b/src/x11/x11-window.c
+@@ -148,6 +148,14 @@ typedef struct
+      */
+     X11Timeline timeline;
+ 
++    /**
++     * The EGL_BUFFER_AGE_KHR value for this buffer.
++     *
++     * 0 means the contents are undefined (buffer was never presented, or
++     * this is a PRIME surface). Updated after each successful PresentPixmap.
++     */
++    EGLint buffer_age;
++
+     struct glvnd_list entry;
+ } X11ColorBuffer;
+ 
+@@ -2280,6 +2288,18 @@ EGLBoolean eplX11SwapBuffers(EplPlatformData *plat, EplDisplay *pdpy, EplSurface
+             eplSetError(plat, EGL_BAD_ALLOC, "Driver error: Can't assign new color buffers");
+             goto done;
+         }
++
++        if (!pwin->prime)
++        {
++            X11ColorBuffer *buf;
++            glvnd_list_for_each_entry(buf, &pwin->color_buffers, entry)
++            {
++                if (buf == pwin->current_front)
++                    buf->buffer_age = 1;
++                else if (buf->buffer_age != 0)
++                    buf->buffer_age++;
++            }
++        }
+     }
+ 
+     ret = EGL_TRUE;
+@@ -2291,6 +2311,16 @@ done:
+     return ret;
+ }
+ 
++EGLint eplX11GetWindowBufferAge(EplSurface *surf)
++{
++    X11Window *pwin = (X11Window *) surf->priv;
++
++    if (pwin->prime || pwin->current_back == NULL)
++        return 0;
++
++    return pwin->current_back->buffer_age;
++}
++
+ EGLBoolean eplX11SwapInterval(EplDisplay *pdpy, EplSurface *psurf, EGLint interval)
+ {
+     if (psurf->type == EPL_SURFACE_TYPE_WINDOW)
+-- 
+2.51.0
+

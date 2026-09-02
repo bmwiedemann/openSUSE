@@ -1,0 +1,35 @@
+From c83c2e8829e6eda418a7c876aae70084bfaf42e7 Mon Sep 17 00:00:00 2001
+From: Riku Salminen <rsalminen@nvidia.com>
+Date: Fri, 7 Aug 2026 11:44:47 +0000
+Subject: [PATCH 18/18] base: fix eglSwapInterval to return correct error
+ without current context
+
+When eglSwapInterval is called with no current context, the EPL's
+HookSwapInterval returned EGL_BAD_SURFACE because the current display
+check fails. Pass through to the driver instead, which now returns
+EGL_BAD_CONTEXT via NvEglIntSwapInterval.
+
+Fixes dEQP-EGL.functional.negative_api.swap_interval
+---
+ src/base/platform-base.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/src/base/platform-base.c b/src/base/platform-base.c
+index eac69fe..e4aa714 100644
+--- a/src/base/platform-base.c
++++ b/src/base/platform-base.c
+@@ -1300,7 +1300,10 @@ static EGLBoolean HookSwapInterval(EGLDisplay edpy, EGLint interval)
+     }
+     else
+     {
+-        eplSetError(pdpy->platform, EGL_BAD_SURFACE, "EGLDisplay %p is not current", edpy);
++        // Current display is not this display (or there is no current context).
++        // Pass through to the driver, which will return the appropriate error.
++        internal_edpy = pdpy->internal_display;
++        SwapInterval = pdpy->platform->egl.SwapInterval;
+     }
+ 
+     if (SwapInterval != NULL)
+-- 
+2.51.0
+

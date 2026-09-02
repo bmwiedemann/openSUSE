@@ -1,0 +1,55 @@
+From 361c1bae90cbfbbc2e7bba19ef45f7607b7dfa75 Mon Sep 17 00:00:00 2001
+From: Kyle Brenneman <kbrenneman@nvidia.com>
+Date: Tue, 10 Mar 2026 11:34:26 -0600
+Subject: [PATCH 13/18] x11: Remove some unused function pointers.
+
+Remove the QueryDisplayAttribKHR, SwapInterval, and QuerySurface
+function pointers from EplImplPlatform::egl, since nothing uses them.
+---
+ src/x11/x11-platform.c | 8 +-------
+ src/x11/x11-platform.h | 3 ---
+ 2 files changed, 1 insertion(+), 10 deletions(-)
+
+diff --git a/src/x11/x11-platform.c b/src/x11/x11-platform.c
+index 0b85eb5..96f39fe 100644
+--- a/src/x11/x11-platform.c
++++ b/src/x11/x11-platform.c
+@@ -182,9 +182,6 @@ EGLBoolean eplX11LoadEGLExternalPlatformCommon(int major, int minor,
+         return EGL_FALSE;
+     }
+ 
+-    plat->priv->egl.QueryDisplayAttribKHR = driver->getProcAddress("eglQueryDisplayAttribKHR");
+-    plat->priv->egl.SwapInterval = driver->getProcAddress("eglSwapInterval");
+-    plat->priv->egl.QuerySurface = driver->getProcAddress("eglQuerySurface");
+     plat->priv->egl.QueryDmaBufFormatsEXT = driver->getProcAddress("eglQueryDmaBufFormatsEXT");
+     plat->priv->egl.QueryDmaBufModifiersEXT = driver->getProcAddress("eglQueryDmaBufModifiersEXT");
+     plat->priv->egl.CreateSync = driver->getProcAddress("eglCreateSync");
+@@ -202,10 +199,7 @@ EGLBoolean eplX11LoadEGLExternalPlatformCommon(int major, int minor,
+     plat->priv->egl.PlatformAllocColorBufferNVX = driver->getProcAddress("eglPlatformAllocColorBufferNVX");
+     plat->priv->egl.PlatformExportColorBufferNVX = driver->getProcAddress("eglPlatformExportColorBufferNVX");
+ 
+-    if (plat->priv->egl.QueryDisplayAttribKHR == NULL
+-            || plat->priv->egl.SwapInterval == NULL
+-            || plat->priv->egl.QuerySurface == NULL
+-            || plat->priv->egl.QueryDmaBufFormatsEXT == NULL
++    if (plat->priv->egl.QueryDmaBufFormatsEXT == NULL
+             || plat->priv->egl.QueryDmaBufModifiersEXT == NULL
+             || plat->priv->egl.CreateSync == NULL
+             || plat->priv->egl.DestroySync == NULL
+diff --git a/src/x11/x11-platform.h b/src/x11/x11-platform.h
+index 3b6e791..1e510bc 100644
+--- a/src/x11/x11-platform.h
++++ b/src/x11/x11-platform.h
+@@ -76,9 +76,6 @@ struct _EplImplPlatform
+ {
+     struct
+     {
+-        PFNEGLQUERYDISPLAYATTRIBKHRPROC QueryDisplayAttribKHR;
+-        PFNEGLSWAPINTERVALPROC SwapInterval;
+-        PFNEGLQUERYSURFACEPROC QuerySurface;
+         PFNEGLQUERYDMABUFFORMATSEXTPROC QueryDmaBufFormatsEXT;
+         PFNEGLQUERYDMABUFMODIFIERSEXTPROC QueryDmaBufModifiersEXT;
+         PFNEGLCREATESYNCPROC CreateSync;
+-- 
+2.51.0
+

@@ -20,20 +20,33 @@
 %define lname libnvidia-egl-x11%{so_ver}
 %define rname egl-x11
 Name:           libnvidia-egl-x11
-Version:        1.0.5
+Version:        1.0.6
 Release:        0
 Summary:        NVIDIA XLib and XCB EGL Platform Library
 # src/x11/dma-buf.h:/* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note */
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/NVIDIA/egl-x11
-Source0:        %{rname}-1.0.4.tar.gz
+Source0:        %{rname}-1.0.5.tar.gz
 Source1:        baselibs.conf
-Patch1:         0001-Fix-attribute-handling-for-eglCreateWindow-PixmapSur.patch
-Patch2:         0002-Handle-eglQuerySurface-EGL_RENDER_BUFFER.patch
-Patch3:         0003-Bump-version-number-to-1.0.5.patch
-Patch4:         0004-Enable-implicit-sync-if-we-re-talking-to-the-NVIDIA-.patch
-Patch5:         0005-Fix-building-on-FreeBSD.patch
+Patch1:         0001-base-Use-an-rwlock-for-the-surface-list.patch
+Patch2:         0002-base-Use-an-rwlock-for-eglInitialize-eglTerminate.patch
+Patch3:         0003-base-Add-an-explicit-egl-dependency.patch
+Patch4:         0004-Replace-eplGetCurrentDisplay-with-eplGetCurrentSurfa.patch
+Patch5:         0005-base-Add-an-optional-hook-for-eglSwapInterval.patch
+Patch6:         0006-base-Add-basic-support-for-EGL_KHR_partial_update.patch
+Patch7:         0007-base-Add-an-EplImplFuncs-function-for-EGL_BUFFER_AGE.patch
+Patch8:         0008-base-Add-an-EplImplFuncs-function-for-eglSetDamageRe.patch
+Patch9:         0009-egl-wayland2-add-FP16-DRM-format.patch
+Patch10:        0010-Bump-the-version-number-to-1.0.6.patch
+Patch11:        0011-base-Replace-EplImplFuncs-QueryBufferAge-with-QueryS.patch
+Patch12:        0012-Update-the-X11-code-to-match-the-base-library-change.patch
+Patch13:        0013-x11-Remove-some-unused-function-pointers.patch
+Patch14:        0014-poll-for-resize-events-in-x11-SwapBuffers.patch
+Patch15:        0015-fix-parameter-validation.patch
+Patch16:        0016-x11-implement-EGL_BUFFER_AGE_KHR-tracking-for-window.patch
+Patch17:        0017-base-fix-eglSetDamageRegionKHR-for-non-postable-surf.patch
+Patch18:        0018-base-fix-eglSwapInterval-to-return-correct-error-wit.patch
 BuildRequires:  gcc-c++
 BuildRequires:  meson
 BuildRequires:  ninja
@@ -97,7 +110,7 @@ This package provides headers and libraries required to build software
 using %{name}.
 
 %prep
-%autosetup -n %{rname}-1.0.4 -p1
+%autosetup -n %{rname}-1.0.5 -p1
 
 %build
 export LDFLAGS="-Wl,-z,noexecstack -Wl,-z,now -Wl,-z,relro %{?_lto_cflags}"

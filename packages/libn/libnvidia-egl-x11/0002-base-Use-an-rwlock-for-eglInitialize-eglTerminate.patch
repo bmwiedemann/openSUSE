@@ -1,0 +1,450 @@
+From dcc787efd2cf407652d6bdbafc8f4a4195c9ad30 Mon Sep 17 00:00:00 2001
+From: Kyle Brenneman <kbrenneman@nvidia.com>
+Date: Fri, 24 Jan 2025 15:39:09 -0700
+Subject: [PATCH 02/18] base: Use an rwlock for eglInitialize/eglTerminate
+
+Use an rwlock to protect against concurrent calls to eglTerminate,
+instead of using a secondary refcount.
+
+Removed EplDisplay::use_count, and instead added EplDisplay::init_lock,
+which is a read/write lock that protects the eglInitialize count.
+
+eglInitialize, eglTermiante, and teardown will all take the write lock.
+
+Any function which needs an initialized EGLDisplay will take the read
+lock. That's enough to prevent any other threads from terminating the
+EGLDisplay out from under it, without otherwise blocking concurrent
+functions.
+
+As with surfaces, a read lock is fine. The surface list has its own
+lock, and outside of eglInitialize/eglTerminate, everything else in
+EplDisplay has its own lock.
+
+In particular, eglSwapBuffers implementations no longer need to
+temporarily unlock the display before perfoming long waits or reads.
+
+Unlocking like that makes it much harder to reason about, because you
+have to deal with the case where another thread calls eglDestroySurface
+or eglTerminate.
+
+In addition, the use_count field would give the wrong behavior in one
+(admittedly contrived) case: If another thread calls eglTerminate and
+then eglInitilize during that temporary unlock, then they get
+effectively ignored, and none of the cleanup stuff in eglTerminate
+happens.
+---
+ src/base/platform-base.c | 150 ++++++++++++++++++++-------------------
+ src/base/platform-base.h |  43 +++--------
+ 2 files changed, 87 insertions(+), 106 deletions(-)
+
+diff --git a/src/base/platform-base.c b/src/base/platform-base.c
+index 0a487cb..ad0dc8c 100644
+--- a/src/base/platform-base.c
++++ b/src/base/platform-base.c
+@@ -26,8 +26,6 @@
+ #include "platform-utils.h"
+ #include "platform-impl.h"
+ 
+-#define USE_ERRORCHECK_MUTEX 1
+-
+ static void *eplGetHookAddressExport(void *platformData, const char *name);
+ static EGLBoolean eplIsValidNativeDisplayExport(void *platformData, void *nativeDisplay);
+ static EGLDisplay eplGetPlatformDisplayExport(void *platformData, EGLenum platform, void *nativeDisplay, const EGLAttrib* attribs);
+@@ -69,6 +67,7 @@ static __attribute__((destructor)) void LibraryFini(void)
+ 
+ EPL_REFCOUNT_DEFINE_TYPE_FUNCS(EplPlatformData, eplPlatformData, refcount, free);
+ EPL_REFCOUNT_DEFINE_TYPE_FUNCS(EplInternalDisplay, eplInternalDisplay, refcount, free);
++EPL_REFCOUNT_DEFINE_TYPE_FUNCS(EplDisplay, eplDisplay, refcount, DestroyDisplay);
+ 
+ EplPlatformData *eplPlatformBaseAllocate(int major, int minor,
+         const EGLExtDriver *driver, EGLExtPlatform *extplatform,
+@@ -231,21 +230,19 @@ static EGLBoolean eplUnloadExternalPlatformExport(void *platformData)
+             continue;
+         }
+ 
+-        pthread_mutex_lock(&pdpy->mutex);
+-
+         // Remove the display from the list and decrement its refcount.
+         glvnd_list_del(&pdpy->entry);
+-        pthread_mutex_unlock(&pdpy->mutex);
++
++        pthread_rwlock_wrlock(&pdpy->init_lock);
++        TerminateDisplay(pdpy);
++        pthread_rwlock_unlock(&pdpy->init_lock);
+ 
+         // Note that if some other thread is still holding a reference to this
+         // display, then it might get leaked.
+         // TODO: Should we just unconditionally free the display here? If
+         // another thread is in the middle of a function call, then it's going
+         // to crash anyway.
+-        if (eplRefCountUnref(&pdpy->refcount))
+-        {
+-            DestroyDisplay(pdpy);
+-        }
++        eplDisplayUnref(pdpy);
+     }
+     pthread_mutex_unlock(&display_list_mutex);
+ 
+@@ -271,7 +268,7 @@ static EGLBoolean eplUnloadExternalPlatformExport(void *platformData)
+  * This looks up and locks an EGLDisplay, but it does not check whether the
+  * display is initialized.
+  */
+-static EplDisplay *eplLockDisplayInternal(EGLDisplay edpy)
++static EplDisplay *eplLookupDisplay(EGLDisplay edpy)
+ {
+     EplDisplay *pdpy = NULL;
+     EplDisplay *node = NULL;
+@@ -297,9 +294,7 @@ static EplDisplay *eplLockDisplayInternal(EGLDisplay edpy)
+         return NULL;
+     }
+ 
+-    pthread_mutex_lock(&pdpy->mutex);
+-    eplRefCountRef(&pdpy->refcount);
+-    pdpy->use_count++;
++    eplDisplayRef(pdpy);
+ 
+     pthread_mutex_unlock(&display_list_mutex);
+ 
+@@ -308,17 +303,20 @@ static EplDisplay *eplLockDisplayInternal(EGLDisplay edpy)
+ 
+ EplDisplay *eplDisplayAcquire(EGLDisplay edpy)
+ {
+-    EplDisplay *pdpy = eplLockDisplayInternal(edpy);
++    EplDisplay *pdpy = eplLookupDisplay(edpy);
+ 
+     if (pdpy == NULL)
+     {
+         return NULL;
+     }
+ 
++    pthread_rwlock_rdlock(&pdpy->init_lock);
++
+     if (!pdpy->initialized)
+     {
+         eplSetError(pdpy->platform, EGL_NOT_INITIALIZED, "EGLDisplay %p is not initialized", edpy);
+-        eplDisplayRelease(pdpy);
++        pthread_rwlock_unlock(&pdpy->init_lock);
++        eplDisplayUnref(pdpy);
+         return NULL;
+     }
+ 
+@@ -375,7 +373,8 @@ static void DestroyDisplay(EplDisplay *pdpy)
+     DestroyAllSurfaces(pdpy);
+ 
+     pdpy->platform->impl->CleanupDisplay(pdpy);
+-    pthread_mutex_destroy(&pdpy->mutex);
++    pthread_rwlock_destroy(&pdpy->init_lock);
++    pthread_rwlock_destroy(&pdpy->surface_list_lock);
+ 
+     eplPlatformDataUnref(pdpy->platform);
+     free(pdpy);
+@@ -388,24 +387,9 @@ void eplDisplayRelease(EplDisplay *pdpy)
+         return;
+     }
+ 
+-    pdpy->use_count--;
+-    CheckTerminateDisplay(pdpy);
+-    pthread_mutex_unlock(&pdpy->mutex);
++    pthread_rwlock_unlock(&pdpy->init_lock);
+ 
+-    if (eplRefCountUnref(&pdpy->refcount))
+-    {
+-        DestroyDisplay(pdpy);
+-    }
+-}
+-
+-void eplDisplayUnlock(EplDisplay *pdpy)
+-{
+-    pthread_mutex_unlock(&pdpy->mutex);
+-}
+-
+-void eplDisplayLock(EplDisplay *pdpy)
+-{
+-    pthread_mutex_lock(&pdpy->mutex);
++    eplDisplayUnref(pdpy);
+ }
+ 
+ EplInternalDisplay *eplLookupInternalDisplay(EplPlatformData *platform, EGLDisplay handle)
+@@ -684,9 +668,9 @@ static EGLDisplay eplGetPlatformDisplayExport(void *platformData,
+         goto done;
+     }
+ 
+-    if (!eplInitRecursiveMutex(&pdpy->mutex))
++    if (pthread_rwlock_init(&pdpy->init_lock, NULL) != 0)
+     {
+-        eplSetError(plat, EGL_BAD_ALLOC, "Failed to create internal mutex");
++        eplSetError(plat, EGL_BAD_ALLOC, "Failed to create internal locks");
+         free(pdpy);
+         goto done;
+     }
+@@ -694,7 +678,7 @@ static EGLDisplay eplGetPlatformDisplayExport(void *platformData,
+     if (pthread_rwlock_init(&pdpy->surface_list_lock, NULL) != 0)
+     {
+         eplSetError(plat, EGL_BAD_ALLOC, "Failed to create internal locks");
+-        pthread_mutex_destroy(&pdpy->mutex);
++        pthread_rwlock_destroy(&pdpy->init_lock);
+         free(pdpy);
+         goto done;
+     }
+@@ -709,7 +693,8 @@ static EGLDisplay eplGetPlatformDisplayExport(void *platformData,
+ 
+     if (!plat->impl->GetPlatformDisplay(plat, pdpy, nativeDisplay, remainingAttribs, &display_list))
+     {
+-        pthread_mutex_destroy(&pdpy->mutex);
++        pthread_rwlock_destroy(&pdpy->init_lock);
++        pthread_rwlock_destroy(&pdpy->surface_list_lock);
+         eplPlatformDataUnref(pdpy->platform);
+         free(pdpy);
+         ret = EGL_NO_DISPLAY;
+@@ -727,20 +712,23 @@ done:
+ 
+ static EGLBoolean HookInitialize(EGLDisplay edpy, EGLint *major, EGLint *minor)
+ {
+-    EplDisplay *pdpy = eplLockDisplayInternal(edpy);
++    EplDisplay *pdpy = eplLookupDisplay(edpy);
+ 
+     if (pdpy == NULL)
+     {
+         return EGL_FALSE;
+     }
+ 
++    pthread_rwlock_wrlock(&pdpy->init_lock);
++
+     if (!pdpy->initialized)
+     {
+         pdpy->major = 1;
+         pdpy->minor = 5;
+         if (!pdpy->platform->impl->InitializeDisplay(pdpy->platform, pdpy, &pdpy->major, &pdpy->minor))
+         {
+-            eplDisplayRelease(pdpy);
++            pthread_rwlock_unlock(&pdpy->init_lock);
++            eplDisplayUnref(pdpy);
+             return EGL_FALSE;
+         }
+         pdpy->initialized = EGL_TRUE;
+@@ -767,31 +755,28 @@ static EGLBoolean HookInitialize(EGLDisplay edpy, EGLint *major, EGLint *minor)
+         *minor = pdpy->minor;
+     }
+ 
+-    eplDisplayRelease(pdpy);
++    pthread_rwlock_unlock(&pdpy->init_lock);
++    eplDisplayUnref(pdpy);
+     return EGL_TRUE;
+ }
+ 
+ static void TerminateDisplay(EplDisplay *pdpy)
+ {
+     pdpy->init_count = 0;
+-    pdpy->initialized = EGL_FALSE;
+-
+-    if (pdpy->platform == NULL)
++    if (pdpy->initialized)
+     {
+-        // We've already gone through teardown, so don't try to do anything
+-        // else. All remaining cleanup will happen in DestroyDisplay.
+-        return;
+-    }
++        pdpy->initialized = EGL_FALSE;
+ 
+-    DestroyAllSurfaces(pdpy);
+-    pdpy->platform->impl->TerminateDisplay(pdpy->platform, pdpy);
++        DestroyAllSurfaces(pdpy);
++        pdpy->platform->impl->TerminateDisplay(pdpy->platform, pdpy);
++    }
+ }
+ 
+ static void CheckTerminateDisplay(EplDisplay *pdpy)
+ {
+     if (pdpy->initialized)
+     {
+-        if (pdpy->init_count == 0 && pdpy->use_count == 0)
++        if (pdpy->init_count == 0)
+         {
+             TerminateDisplay(pdpy);
+         }
+@@ -800,18 +785,23 @@ static void CheckTerminateDisplay(EplDisplay *pdpy)
+ 
+ static EGLBoolean HookTerminate(EGLDisplay edpy)
+ {
+-    EplDisplay *pdpy = eplLockDisplayInternal(edpy);
++    EplDisplay *pdpy = eplLookupDisplay(edpy);
+ 
+     if (pdpy == NULL)
+     {
+         return EGL_FALSE;
+     }
+ 
++    pthread_rwlock_wrlock(&pdpy->init_lock);
++
+     if (pdpy->init_count > 0)
+     {
+         pdpy->init_count--;
++        CheckTerminateDisplay(pdpy);
+     }
+-    eplDisplayRelease(pdpy);
++
++    pthread_rwlock_unlock(&pdpy->init_lock);
++    eplDisplayUnref(pdpy);
+     return EGL_TRUE;
+ }
+ 
+@@ -1333,40 +1323,52 @@ static void *eplGetInternalHandleExport(EGLDisplay edpy, EGLenum type, void *han
+ 
+     if (type == EGL_OBJECT_DISPLAY_KHR)
+     {
+-        EplDisplay *pdpy = eplLockDisplayInternal(handle);
++        EplDisplay *pdpy = eplLookupDisplay(handle);
++
+         if (pdpy != NULL)
+         {
+-            ret = pdpy->internal_display;
+-            eplDisplayRelease(pdpy);
++            pthread_rwlock_rdlock(&pdpy->init_lock);
++            if (pdpy->initialized)
++            {
++                ret = pdpy->internal_display;
++            }
++            pthread_rwlock_unlock(&pdpy->init_lock);
++            eplDisplayUnref(pdpy);
+         }
+     }
+     else
+     {
+-        EplDisplay *pdpy = eplLockDisplayInternal(edpy);
++        EplDisplay *pdpy = eplLookupDisplay(edpy);
+         if (pdpy != NULL)
+         {
+-            if (type == EGL_OBJECT_SURFACE_KHR)
++            pthread_rwlock_rdlock(&pdpy->init_lock);
++
++            if (pdpy->initialized)
+             {
+-                const struct glvnd_list *surface_list = eplDisplayLockSurfaceList(pdpy);
+-                EplSurface *psurf = eplSurfaceListLookup(surface_list, (EGLSurface) handle);
+-                if (psurf != NULL)
+-                {
+-                    ret = psurf->internal_surface;
+-                }
+-                else
++                if (type == EGL_OBJECT_SURFACE_KHR)
+                 {
+-                    /*
+-                     * Assume that if we don't recognize the handle, then it's
+-                     * a pbuffer or stream surface, and so the driver should
+-                     * just pass it through. If the handle is invalid, then the
+-                     * driver should then set the appropriate error code on its
+-                     * own.
+-                     */
+-                    ret = handle;
++                    const struct glvnd_list *surface_list = eplDisplayLockSurfaceList(pdpy);
++                    EplSurface *psurf = eplSurfaceListLookup(surface_list, (EGLSurface) handle);
++                    if (psurf != NULL)
++                    {
++                        ret = psurf->internal_surface;
++                    }
++                    else
++                    {
++                        /*
++                         * Assume that if we don't recognize the handle, then it's
++                         * a pbuffer or stream surface, and so the driver should
++                         * just pass it through. If the handle is invalid, then the
++                         * driver should then set the appropriate error code on its
++                         * own.
++                         */
++                        ret = handle;
++                    }
++                    eplDisplayUnlockSurfaceList(pdpy);
+                 }
+-                eplDisplayUnlockSurfaceList(pdpy);
+             }
+-            eplDisplayRelease(pdpy);
++            pthread_rwlock_unlock(&pdpy->init_lock);
++            eplDisplayUnref(pdpy);
+         }
+     }
+ 
+diff --git a/src/base/platform-base.h b/src/base/platform-base.h
+index 297def3..8ec845e 100644
+--- a/src/base/platform-base.h
++++ b/src/base/platform-base.h
+@@ -83,8 +83,6 @@ typedef struct
+     EGLSurface internal_surface;
+     EplSurfaceType type;
+ 
+-    EGLBoolean deleted;
+-
+     /**
+      * Private data used by the implementation.
+      */
+@@ -145,6 +143,17 @@ typedef struct
+     // Everything after this in EplDisplay should be treated as internal to
+     // platform-base.c.
+ 
++	/**
++	 * A read/write lock to protect against concurrent calls to eglTerminate.
++	 *
++	 * eglInitialize, eglTerminate, and library teardown will all take the read
++	 * lock.
++	 *
++	 * All other functions will take the read lock, so that they don't have to
++	 * worry about another thread coming along and terminating the display.
++	 */
++	pthread_rwlock_t init_lock;
++
+     /**
+      * All of the existing EplSurface structs.
+      */
+@@ -163,11 +172,6 @@ typedef struct
+      */
+     pthread_rwlock_t surface_list_lock;
+ 
+-    /**
+-     * A mutex to control access to the display. This is a recursive mutex.
+-     */
+-    pthread_mutex_t mutex;
+-
+     /**
+      * True if this display was created with EGL_TRACK_REFERENCES set.
+      */
+@@ -180,14 +184,6 @@ typedef struct
+      */
+     unsigned int init_count;
+ 
+-    /**
+-     * This is a counter to keep track of whether the display is in use or not.
+-     *
+-     * If the app calls eglTerminate, then we defer the termination until the
+-     * display is no longer in use.
+-     */
+-    unsigned int use_count;
+-
+     /// The major version number for eglInitialize in this context.
+     EGLint major;
+     /// The minor version number for eglInitialize in this context.
+@@ -330,23 +326,6 @@ EGLDisplay eplGetCurrentDisplay(void);
+  */
+ void eplDisplayRelease(EplDisplay *pdpy);
+ 
+-/**
+- * Unlocks the mutex for an EplDisplay, but does not decrement the reference
+- * count.
+- *
+- * This allows a platform library to temporarily release the mutex for an
+- * EplDisplay, but ensures that the EplDisplay itself sticks around.
+- *
+- * The caller must call eplDisplayLock to lock the mutex again before calling
+- * eplDisplayRelease.
+- */
+-void eplDisplayUnlock(EplDisplay *pdpy);
+-
+-/**
+- * Re-locks the mutex for an EplDisplay.
+- */
+-void eplDisplayLock(EplDisplay *pdpy);
+-
+ /**
+  * Looks up an internal EGLDisplay. If an EplInternalDisplay struct doesn't
+  * already exist, then it will be created and returned.
+-- 
+2.51.0
+
