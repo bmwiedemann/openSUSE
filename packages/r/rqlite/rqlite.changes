@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Sep 01 15:46:51 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 10.3.0:
+  * Console app supports quickly querying for first 100 rows of a
+    table
+  * Rename read-only nodes to read replicas. Command-line flags
+    unchanged
+  * Bundles dependencies updated
+  * Add infra for pushing OTLP metrics to an OpenTelemetry
+    Collector
+  * Add query logging at database level
+  * Add CopyDir functionality to file utils.
+  * Add ability to clone Snapshots, primarily for testing purposes
+  * Store Index and Term in Fingerprint file and check during
+    start-up
+
+-------------------------------------------------------------------
 Mon Jul 06 09:22:27 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 10.2.7:
