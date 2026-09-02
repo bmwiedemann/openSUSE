@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Sep  1 13:42:15 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.5.1
+  libbson
+  * No changes since 2.5.0.
+   Version incremented to match the libmongoc version.
+  libmongoc
+  Fixes
+  * Validate database and collection name arguments against "."
+    and NUL bytes (CVE-2026-81524).
+- Update to version 2.5.0
+  libbson
+  * No changes since 2.4.0.
+    Version incremented to match the libmongoc version.
+  libmongoc
+  New Features
+  * Honor the server-supplied baseBackoffMS on responses labeled
+    SystemOverloadedError, using it in place of the driver's
+    default base delay when calculating how long to wait before
+    retrying.
+  * Add collection bulk write getters.
+  Improvements
+  * Update bundled utf8proc to 2.11.3.
+
+-------------------------------------------------------------------
 Wed Aug  5 09:48:37 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.4.0

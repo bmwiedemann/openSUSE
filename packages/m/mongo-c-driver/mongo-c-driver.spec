@@ -18,7 +18,7 @@
 
 %define soname 2
 Name:           mongo-c-driver
-Version:        2.4.0
+Version:        2.5.1
 Release:        0
 Summary:        Client library written in C for MongoDB
 # See THIRD_PARTY_NOTICES
@@ -35,7 +35,7 @@ BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(snappy)
 BuildRequires:  pkgconfig(zlib)
 Provides:       bundled(jsonsl)
-Provides:       bundled(libutf8proc) = 2.8.0
+Provides:       bundled(libutf8proc) = 2.11.3
 Provides:       bundled(uthash) = 2.3.0
 
 %description
