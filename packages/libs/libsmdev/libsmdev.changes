@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep  2 13:04:00 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20260902
+  * Fix off-by-one errors in filename handling
+
+-------------------------------------------------------------------
 Sun May  5 22:00:02 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20240505
