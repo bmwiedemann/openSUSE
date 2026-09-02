@@ -191,4 +191,16 @@
     <comment></comment>
     <requestid>1352216</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>9c826d98145c36f5366db2dfdd303ce1</srcmd5>
+    <version>5.0.0</version>
+    <time>1788361260</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1375148 from polslinux
+
+- Update to 5.0.0:
+  * See the bundled changelog for the full list of upstream changes.
+  * IPv6 is now built by default upstream.</comment>
+    <requestid>1375239</requestid>
+  </revision>
 </revisionlist>

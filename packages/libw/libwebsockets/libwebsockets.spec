@@ -17,9 +17,9 @@
 #
 
 
-%define sover 21
+%define sover 22
 Name:           libwebsockets
-Version:        4.5.8
+Version:        5.0.0
 Release:        0
 Summary:        A WebSockets library written in C
 # base64-decode.c and ssl-http2.c is under MIT license with FPC exception.
@@ -32,9 +32,14 @@ Source:         https://github.com/warmcat/libwebsockets/archive/v%{version}.tar
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(dbus-1)
+BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(libcrypto)
+BuildRequires:  pkgconfig(libev)
+BuildRequires:  pkgconfig(libevent)
 BuildRequires:  pkgconfig(libssl)
 BuildRequires:  pkgconfig(libuv)
+BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(zlib)
 
 %description
@@ -69,6 +74,36 @@ Obsoletes:      %{name}-evlib-uv < %{version}
 %description evlib_uv
 This package contains the shared library for evlib_uv plugin.
 
+%package evlib_ev
+Summary:        Shared library for evlib_ev plugin
+Group:          Development/Libraries/C and C++
+Requires(pre):  %{name}%{sover} = %{version}
+
+%description evlib_ev
+This package contains the shared library for the evlib_ev plugin, which
+lets applications drive libwebsockets from a libev event loop. Install it
+only if an application asks for it.
+
+%package evlib_event
+Summary:        Shared library for evlib_event plugin
+Group:          Development/Libraries/C and C++
+Requires(pre):  %{name}%{sover} = %{version}
+
+%description evlib_event
+This package contains the shared library for the evlib_event plugin, which
+lets applications drive libwebsockets from a libevent event loop. Install it
+only if an application asks for it.
+
+%package evlib_glib
+Summary:        Shared library for evlib_glib plugin
+Group:          Development/Libraries/C and C++
+Requires(pre):  %{name}%{sover} = %{version}
+
+%description evlib_glib
+This package contains the shared library for the evlib_glib plugin, which
+lets applications drive libwebsockets from a glib event loop. Install it
+only if an application asks for it.
+
 %package devel
 Summary:        Development files for %{name}
 Group:          Development/Libraries/C and C++
@@ -82,13 +117,81 @@ applications that want to make use of the WebSockets library.
 %autosetup -p1
 
 %build
+# This is upstream's LWS_WITH_DISTRO_RECOMMENDED feature set (the block at
+# CMakeLists-implied-options.txt:93), spelled out option by option, minus
+# LWS_WITH_LWSWS and LWS_WITH_PLUGINS_BUILTIN.
+#
+# It has to be spelled out rather than switched on with the one option,
+# because that block assigns every option with a plain set(), which creates a
+# normal variable that shadows the cache entry an -D on the command line would
+# write. So with -DLWS_WITH_DISTRO_RECOMMENDED=ON, *nothing* it enables can be
+# turned back off, and the two we need off both break the build:
+#   - lwsws: upstream installs no unit file and no configuration for it, and
+#     since 5.0.0 its install rule runs useradd for the system users lwsws and
+#     lwsws-priv. Shipping it would need sysusers.d and a service file.
+#     It also implies LWS_WITH_PLUGINS (implied-options:314).
+#   - the bundled protocol plugins: demo protocols meant to be served by lwsws.
+#     Each one calls require_lws_config(), which probes for features by
+#     compiling against an *installed* libwebsockets.h, so it always fails in a
+#     clean build root.
+# Note this list does not track upstream automatically: check the block above
+# against this one when updating, and decide per option rather than inheriting.
+#
+# DISABLE_WERROR because upstream adds -Werror unconditionally
+# (CMakeLists.txt:1151). That turns any warning from a compiler newer than the
+# one upstream tested into a build failure, which it already does here: the
+# auth-dns zone signer ignores write() return values.
+#
+# LWS_WITH_HTTP3 defaults to ON in 5.0.0 (CMakeLists.txt:159-164, on whenever
+# UDP is enabled), and CMakeLists.txt:281 then force-enables LWS_WITH_GNUTLS,
+# because OpenSSL is not one of the backends it accepts for QUIC. GnuTLS does
+# not sit alongside OpenSSL, it replaces it: the backends are an if/elseif
+# chain in lib/tls/CMakeLists.txt. So just adding gnutls-devel would silently
+# switch the TLS backend of every libwebsockets consumer in the distribution.
+# Turning HTTP/3 off keeps OpenSSL and needs no extra dependency.
 %cmake \
+    -DLWS_WITH_HTTP2=ON \
+    -DLWS_WITH_CGI=ON \
+    -DLWS_WITH_HTTP_STREAM_COMPRESSION=ON \
+    -DLWS_IPV6=ON \
+    -DLWS_WITH_ZIP_FOPS=ON \
+    -DLWS_WITH_SOCKS5=ON \
+    -DLWS_WITH_RANGES=ON \
+    -DLWS_WITH_ACME=ON \
+    -DLWS_WITH_SYS_METRICS=ON \
+    -DLWS_WITH_GLIB=ON \
+    -DLWS_WITH_LIBUV=ON \
+    -DLWS_WITH_LIBEV=ON \
+    -DLWS_WITH_LIBEVENT=ON \
+    -DLWS_WITH_EVLIB_PLUGINS=ON \
+    -DLWS_WITHOUT_EXTENSIONS=OFF \
+    -DLWS_ROLE_DBUS=ON \
+    -DLWS_WITH_FTS=ON \
+    -DLWS_WITH_THREADPOOL=ON \
+    -DLWS_UNIX_SOCK=ON \
+    -DLWS_WITH_HTTP_PROXY=ON \
+    -DLWS_WITH_DISKCACHE=ON \
+    -DLWS_WITH_LWSAC=ON \
+    -DLWS_WITH_LEJP_CONF=ON \
+    -DLWS_ROLE_RAW_PROXY=ON \
+    -DLWS_WITH_GENCRYPTO=ON \
+    -DLWS_WITH_CBOR=ON \
+    -DLWS_WITH_COSE=ON \
+    -DLWS_WITH_JOSE=ON \
+    -DLWS_WITH_STRUCT_JSON=ON \
+    -DLWS_WITH_STRUCT_SQLITE3=ON \
+    -DLWS_WITH_SPAWN=ON \
+    -DLWS_ROLE_MQTT=ON \
+    -DLWS_WITH_SECURE_STREAMS=ON \
+    -DLWS_WITH_SECURE_STREAMS_PROXY_API=ON \
+    -DLWS_WITH_DIR=ON \
+    -DLWS_WITH_SELFDNS=ON \
     -DLWS_WITHOUT_TESTAPPS=ON \
     -DLWS_WITHOUT_BUILTIN_GETIFADDRS=ON \
     -DLWS_WITHOUT_BUILTIN_SHA1=ON \
     -DLWS_WITH_STATIC=OFF \
-    -DLWS_WITHOUT_TESTAPPS=ON \
-    -DLWS_WITH_LIBUV=ON
+    -DLWS_WITH_HTTP3=OFF \
+    -DDISABLE_WERROR=ON
 %cmake_build
 
 %install
@@ -107,6 +210,18 @@ rm %{buildroot}%{_libdir}/pkgconfig/libwebsockets_static.pc
 %files evlib_uv
 %license LICENSE
 %{_libdir}/libwebsockets-evlib_uv.so
+
+%files evlib_ev
+%license LICENSE
+%{_libdir}/libwebsockets-evlib_ev.so
+
+%files evlib_event
+%license LICENSE
+%{_libdir}/libwebsockets-evlib_event.so
+
+%files evlib_glib
+%license LICENSE
+%{_libdir}/libwebsockets-evlib_glib.so
 
 %files devel
 %license LICENSE
