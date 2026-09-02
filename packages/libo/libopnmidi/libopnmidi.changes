@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Sep  1 14:29:53 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.6.2
+  * Added support for HMI and HMP files.
+  * Added support for in-track (local) loops.
+  * Optimized work with chip instruments.
+  * Fixed the silence problem at the MIDI channel after playing too
+    many notes without Note OFF event.
+  * Added opn2_setDeviceFilterMask() public API to assign the
+    device filter mask for the HMI/HMP/EMIDI tracks disabling
+    or enabling.
+  * Added handling of music files designed for the EMIDI standard
+    from the Apogee Sound System. This feature must be enabled
+    manually to avoid heuristics and possible conflicts.
+  * Added opn2_setModeEMIDI() public API to enable handling EMIDI
+    specification events without conflicts to other formats.
+
+-------------------------------------------------------------------
 Fri Oct 17 19:23:23 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Initial package for libopnmidi, version 1.6.1

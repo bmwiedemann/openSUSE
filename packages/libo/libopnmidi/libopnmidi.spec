@@ -1,7 +1,7 @@
 #
 # spec file for package libopnmidi
 #
-# Copyright (c) 2025, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2025-2026, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define sover 1
 %define libname libOPNMIDI
 Name:           libopnmidi
-Version:        1.6.1
+Version:        1.6.2
 Release:        0
 Summary:        A software MIDI synthesizer library with OPN2 (YM2612) emulation
 License:        GPL-3.0-only AND LGPL-3.0-only
@@ -29,6 +29,7 @@ Source:         https://github.com/Wohlstand/libopnmidi/archive/refs/tags/v%{ver
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(sdl2)
 
 %description
