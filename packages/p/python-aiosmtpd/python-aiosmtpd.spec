@@ -31,6 +31,8 @@ Patch0:         support-python-313.patch
 Patch1:         support-python-314.patch
 # PATCH-FIX-UPSTREAM aiosmtpd-pr557-pkg_resources.patch gh#aio-libs/aiosmtpd#557
 Patch2:         aiosmtpd-pr557-pkg_resources.patch
+# PATCH-FIX-UPSTREAM gh#aio-libs/aiosmtpd#575
+Patch3:         do-not-use-typing-bytestring.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}

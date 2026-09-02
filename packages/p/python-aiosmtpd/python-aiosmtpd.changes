@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep  2 02:56:55 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch do-not-use-typing-bytestring.patch:
+  * Do not use typing.ByteString.
+
+-------------------------------------------------------------------
 Fri Jan  2 12:16:00 UTC 2026 - Ben Greiner <code@bnavigator.de>
 
 - Add aiosmtpd-pr557-pkg_resources.patch gh#aio-libs/aiosmtpd#557

@@ -180,4 +180,13 @@
     <comment></comment>
     <requestid>1325152</requestid>
   </revision>
+  <revision rev="20" vrev="6">
+    <srcmd5>4050195362f8bd2d0193fbc011619920</srcmd5>
+    <version>1.4.6</version>
+    <time>1788361367</time>
+    <user>anag_factory</user>
+    <comment>- Add patch do-not-use-typing-bytestring.patch:
+  * Do not use typing.ByteString.</comment>
+    <requestid>1375262</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,87 @@
+From ee784d143b3adfa2e638ec38fe913e86ac2df2b0 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=E9=A2=86=E7=A7=8058?=
+ <86288566+lingxiu58@users.noreply.github.com>
+Date: Wed, 6 May 2026 18:33:24 +0800
+Subject: [PATCH] fix: replace deprecated typing.ByteString with Union[bytes,
+ bytearray, memoryview]
+
+typing.ByteString is deprecated since Python 3.9 and will be removed in
+Python 3.14. Replace all usages in proxy_protocol.py with the explicit
+Union[bytes, bytearray, memoryview] type annotation, which is compatible
+with Python 3.9+ and correctly represents the same set of buffer-protocol
+types.
+
+Closes #549
+
+Signed-off-by: Cocoon-Break <86288566+lingxiu58@users.noreply.github.com>
+---
+ aiosmtpd/proxy_protocol.py | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/aiosmtpd/proxy_protocol.py b/aiosmtpd/proxy_protocol.py
+index b5be17cb..22d6040c 100644
+--- a/aiosmtpd/proxy_protocol.py
++++ b/aiosmtpd/proxy_protocol.py
+@@ -9,7 +9,7 @@
+ from enum import IntEnum
+ from functools import partial
+ from ipaddress import IPv4Address, IPv6Address, ip_address
+-from typing import Any, ByteString, Dict, Optional, Protocol, Tuple, Union
++from typing import Any, Dict, Optional, Protocol, Tuple, Union
+ 
+ import attr
+ from public import public
+@@ -165,7 +165,7 @@ def same_attribs(self, _raises: bool = False, **kwargs) -> bool:
+     @classmethod
+     def parse(
+         cls,
+-        data: ByteString,
++        data: Union[bytes, bytearray, memoryview],
+         partial_ok: bool = True,
+         strict: bool = False,
+     ) -> Tuple[Dict[str, Any], Dict[str, int]]:
+@@ -179,7 +179,7 @@ def parse(
+         rslt: Dict[str, Any] = {}
+         tlv_loc: Dict[str, int] = {}
+ 
+-        def _pars(chunk: ByteString, *, offset: int) -> None:
++        def _pars(chunk: Union[bytes, bytearray, memoryview], *, offset: int) -> None:
+             i = 0
+             while i < len(chunk):
+                 typ = chunk[i]
+@@ -218,7 +218,7 @@ def _pars(chunk: ByteString, *, offset: int) -> None:
+ 
+     @classmethod
+     def from_raw(
+-        cls, raw: ByteString, strict: bool = False
++        cls, raw: Union[bytes, bytearray, memoryview], strict: bool = False
+     ) -> Optional["ProxyTLV"]:
+         """
+         Parses raw bytes for TLV Vectors, decode them and giving them human-readable
+@@ -265,7 +265,7 @@ class ProxyData:
+     dst_addr: Optional[EndpointAddress] = _anoinit(default=None)
+     src_port: Optional[int] = _anoinit(default=None)
+     dst_port: Optional[int] = _anoinit(default=None)
+-    rest: ByteString = _anoinit(default=b"")
++    rest: Union[bytes, bytearray, memoryview] = _anoinit(default=b"")
+     """
+     Rest of PROXY Protocol data following UNKNOWN (v1) or UNSPEC (v2), or containing
+     undecoded TLV (v2). If the latter, you can use the ProxyTLV class to parse the
+@@ -340,7 +340,7 @@ def __bool__(self) -> bool:
+ # Reference: https://github.com/haproxy/haproxy/blob/v2.3.0/doc/proxy-protocol.txt
+ 
+ 
+-async def _get_v1(reader: AsyncReader, initial: ByteString = b"") -> ProxyData:
++async def _get_v1(reader: AsyncReader, initial: Union[bytes, bytearray, memoryview] = b"") -> ProxyData:
+     proxy_data = ProxyData(version=1)
+     proxy_data.whole_raw = bytearray(initial)
+ 
+@@ -424,7 +424,7 @@ async def get_ap(matcher: "re.Pattern[str]") -> str:
+     return proxy_data
+ 
+ 
+-async def _get_v2(reader: AsyncReader, initial: ByteString = b"") -> ProxyData:
++async def _get_v2(reader: AsyncReader, initial: Union[bytes, bytearray, memoryview] = b"") -> ProxyData:
+     proxy_data = ProxyData(version=2)
+     whole_raw = bytearray()
+ 
