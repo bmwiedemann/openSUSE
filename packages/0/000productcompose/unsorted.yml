@@ -2280,6 +2280,9 @@ unsorted:
   - clang21 
   - clang21-devel 
   - clang21-doc 
+  - clang22 
+  - clang22-devel 
+  - clang22-doc 
   - clang23-devel 
   - clang23-doc 
   - clanlib 
@@ -11410,6 +11413,8 @@ unsorted:
   - libLLVM20 
   - libLLVM21 
   - libLLVM21-32bit 
+  - libLLVM22 
+  - libLLVM22-32bit 
   - libLLVM23-32bit 
   - libLLVMSPIRVLib-devel 
   - libLLVMSPIRVLib23 
@@ -11417,6 +11422,7 @@ unsorted:
   - libLTO19 
   - libLTO20 
   - libLTO21 
+  - libLTO22 
   - libLTO23 
   - libLerc4-32bit 
   - libLibreGraphAPI1 
@@ -12835,11 +12841,14 @@ unsorted:
   - libclang-cpp20 
   - libclang-cpp21 
   - libclang-cpp21-32bit 
+  - libclang-cpp22 
+  - libclang-cpp22-32bit 
   - libclang-cpp23-32bit 
   - libclang_rt18 
   - libclang_rt19 
   - libclang_rt20 
   - libclang_rt21 
+  - libclang_rt22 
   - libclapper-0_0-0 
   - libclapper-gtk-0_0-0 
   - libclastfm-devel 
@@ -14640,6 +14649,7 @@ unsorted:
   - liblldb19 
   - liblldb20 
   - liblldb21 
+  - liblldb22 
   - liblldb23 
   - liblldpctl4 
   - libllhttp9_3 
@@ -15291,6 +15301,7 @@ unsorted:
   - libomp19-devel 
   - libomp20-devel 
   - libomp21-devel 
+  - libomp22-devel 
   - libomp23-devel 
   - libonnxruntime1 
   - liboop-devel 
@@ -17834,6 +17845,7 @@ unsorted:
   - lld19 
   - lld20 
   - lld21 
+  - lld22 
   - lld23 
   - lldap 
   - lldap-cli 
@@ -17849,6 +17861,8 @@ unsorted:
   - lldb20-devel 
   - lldb21 
   - lldb21-devel 
+  - lldb22 
+  - lldb22-devel 
   - lldb23 
   - lldb23-devel 
   - lldpd 
@@ -17917,6 +17931,20 @@ unsorted:
   - llvm21-polly 
   - llvm21-polly-devel 
   - llvm21-vim-plugins 
+  - llvm22 
+  - llvm22-bolt 
+  - llvm22-devel 
+  - llvm22-doc 
+  - llvm22-gold 
+  - llvm22-libc++-devel 
+  - llvm22-libc++1 
+  - llvm22-libc++abi-devel 
+  - llvm22-libc++abi1 
+  - llvm22-libclang13 
+  - llvm22-opt-viewer 
+  - llvm22-polly 
+  - llvm22-polly-devel 
+  - llvm22-vim-plugins 
   - llvm23 
   - llvm23-bolt 
   - llvm23-devel 
@@ -24234,6 +24262,7 @@ unsorted:
   - python3-clang19 
   - python3-clang20 
   - python3-clang21 
+  - python3-clang22 
   - python3-clang23 
   - python3-clingo 
   - python3-clustershell 
@@ -24336,6 +24365,7 @@ unsorted:
   - python3-lldb19 
   - python3-lldb20 
   - python3-lldb21 
+  - python3-lldb22 
   - python3-lldb23 
   - python3-logreduce 
   - python3-lttngust 
