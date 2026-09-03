@@ -1430,7 +1430,8 @@ packagesets:
    - libKirigamiAddonsStatefulApp6 # reason: dvd:patterns-kde-kde
    - libKirigamiApp6 # reason: dvd:patterns-kde-kde
    - libKirigamiPlatform6 # reason: dvd:patterns-kde-kde
-   - libLLVM22 # reason: dvd:openSUSE-release
+   - libLLVM22 # reason: dvd:postgresql-contrib
+   - libLLVM23 # reason: dvd:openSUSE-release
    - libLayerShellQtInterface6 # reason: dvd:patterns-kde-kde
    - libLerc4 # reason: dvd:openSUSE-release
    - libMagickCore-7_Q16HDRI10 # reason: dvd:patterns-gnome-gnome
@@ -5074,7 +5075,7 @@ packagesets:
    - libKirigamiAddonsStatefulApp6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libKirigamiApp6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libKirigamiPlatform6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libLLVM22 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
+   - libLLVM23 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libLayerShellQtInterface6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libLerc4 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libOpenEXR-3_4-33 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -6890,7 +6891,7 @@ packagesets:
    - libKirigamiAddonsStatefulApp6 # reason: opensuse_kalpa:patterns-kalpa-base
    - libKirigamiApp6 # reason: opensuse_kalpa:patterns-kalpa-base
    - libKirigamiPlatform6 # reason: opensuse_kalpa:patterns-kalpa-base
-   - libLLVM22 # reason: opensuse_kalpa:patterns-kalpa-base
+   - libLLVM23 # reason: opensuse_kalpa:patterns-kalpa-base
    - libLayerShellQtInterface6 # reason: opensuse_kalpa:patterns-kalpa-base
    - libLerc4 # reason: opensuse_kalpa:patterns-kalpa-base
    - libOpenEXR-3_4-33 # reason: opensuse_kalpa:patterns-kalpa-base

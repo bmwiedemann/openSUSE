@@ -2287,6 +2287,9 @@ unsorted:
   - clang22 
   - clang22-devel 
   - clang22-doc 
+  - clang23 
+  - clang23-devel 
+  - clang23-doc 
   - clanlib 
   - clanlib-devel 
   - clanlib-doc 
@@ -11434,13 +11437,15 @@ unsorted:
   - libLLVM21 
   - libLLVM21-32bit 
   - libLLVM22-32bit 
+  - libLLVM23-32bit 
   - libLLVMSPIRVLib-devel 
-  - libLLVMSPIRVLib22 
+  - libLLVMSPIRVLib23 
   - libLTO18 
   - libLTO19 
   - libLTO20 
   - libLTO21 
   - libLTO22 
+  - libLTO23 
   - libLerc4-32bit 
   - libLibreGraphAPI1 
   - libLimeSuite23_11-1 
@@ -12224,7 +12229,7 @@ unsorted:
   - libapr-util1-0-dbd-mysql 
   - libapr-util1-0-dbd-pgsql 
   - libapr-util1-0-dbd-sqlite3 
-  - libaquamarine13 
+  - libaquamarine14 
   - libaravis-0_8-0 
   - libaravis-0_8-devel 
   - libarchive-devel 
@@ -12863,12 +12868,15 @@ unsorted:
   - libclang-cpp21-32bit 
   - libclang-cpp22 
   - libclang-cpp22-32bit 
+  - libclang-cpp23 
+  - libclang-cpp23-32bit 
   - libclang13 
   - libclang_rt18 
   - libclang_rt19 
   - libclang_rt20 
   - libclang_rt21 
   - libclang_rt22 
+  - libclang_rt23 
   - libclapper-0_0-0 
   - libclapper-gtk-0_0-0 
   - libclastfm-devel 
@@ -13741,7 +13749,7 @@ unsorted:
   - libgensiocpp14 
   - libgensiomdns14 
   - libgensioosh14 
-  - libgeos3_14_1 
+  - libgeos3_15_0 
   - libgeos_c1 
   - libgeotiff5 
   - libgepub-devel 
@@ -14672,6 +14680,7 @@ unsorted:
   - liblldb20 
   - liblldb21 
   - liblldb22 
+  - liblldb23 
   - liblldpctl4 
   - libllhttp9_3 
   - liblmdb-0_9_35-32bit 
@@ -15323,6 +15332,7 @@ unsorted:
   - libomp20-devel 
   - libomp21-devel 
   - libomp22-devel 
+  - libomp23-devel 
   - libonnxruntime1 
   - liboop-devel 
   - liboop4 
@@ -17334,8 +17344,11 @@ unsorted:
   - libwebrtc_audio_processing-devel-static 
   - libwebrtc_audio_processing1 
   - libwebsockets-devel 
+  - libwebsockets-evlib_ev 
+  - libwebsockets-evlib_event 
+  - libwebsockets-evlib_glib 
   - libwebsockets-evlib_uv 
-  - libwebsockets21 
+  - libwebsockets22 
   - libweston-16 
   - libweston-16-0 
   - libwf-config1 
@@ -17869,6 +17882,7 @@ unsorted:
   - lld20 
   - lld21 
   - lld22 
+  - lld23 
   - lldap 
   - lldap-cli 
   - lldap-migration-tool 
@@ -17885,6 +17899,8 @@ unsorted:
   - lldb21-devel 
   - lldb22 
   - lldb22-devel 
+  - lldb23 
+  - lldb23-devel 
   - lldpd 
   - lldpd-devel 
   - llhttp-devel 
@@ -17956,10 +17972,24 @@ unsorted:
   - llvm22-devel 
   - llvm22-doc 
   - llvm22-gold 
+  - llvm22-libc++-devel 
+  - llvm22-libc++1 
+  - llvm22-libc++abi-devel 
+  - llvm22-libc++abi1 
+  - llvm22-libclang13 
   - llvm22-opt-viewer 
   - llvm22-polly 
   - llvm22-polly-devel 
   - llvm22-vim-plugins 
+  - llvm23 
+  - llvm23-bolt 
+  - llvm23-devel 
+  - llvm23-doc 
+  - llvm23-gold 
+  - llvm23-opt-viewer 
+  - llvm23-polly 
+  - llvm23-polly-devel 
+  - llvm23-vim-plugins 
   - lmdb 
   - lmdb-devel 
   - lmdbxx-devel 
@@ -20293,6 +20323,7 @@ unsorted:
   - nomino 
   - non-ntk-devel 
   - non-ntk-fluid 
+  - nono-cli 
   - noping 
   - normaliz 
   - normaliz-devel 
@@ -20452,7 +20483,6 @@ unsorted:
   - objenesis 
   - objenesis-javadoc 
   - oboete 
-  - obs-git-init 
   - obs-scm-bridge 
   - obs-service-appimage 
   - obs-service-cargo 
@@ -24275,6 +24305,7 @@ unsorted:
   - python3-clang20 
   - python3-clang21 
   - python3-clang22 
+  - python3-clang23 
   - python3-clingo 
   - python3-clustershell 
   - python3-coconut 
@@ -24377,6 +24408,7 @@ unsorted:
   - python3-lldb20 
   - python3-lldb21 
   - python3-lldb22 
+  - python3-lldb23 
   - python3-logreduce 
   - python3-lttngust 
   - python3-magnumclient-doc 
@@ -24458,7 +24490,6 @@ unsorted:
   - python3-unbound 
   - python3-vapoursynth 
   - python3-vigranumpy 
-  - python3-virt-scenario 
   - python3-virt-tuner 
   - python3-vtk 
   - python3-vtk-openmpi4 
@@ -26742,6 +26773,7 @@ unsorted:
   - python313-mccabe 
   - python313-mcp 
   - python313-mcp-devel 
+  - python313-mcp-types 
   - python313-md2workflow 
   - python313-md2workflow-plugins-jira 
   - python313-md2workflow-plugins-redmine 
@@ -28418,6 +28450,7 @@ unsorted:
   - python313-veusz 
   - python313-vim-vint 
   - python313-vine 
+  - python313-virt-scenario 
   - python313-virtkey 
   - python313-virtualenv 
   - python313-virtualenv-clone 
@@ -30835,6 +30868,7 @@ unsorted:
   - python314-mccabe 
   - python314-mcp 
   - python314-mcp-devel 
+  - python314-mcp-types 
   - python314-md2workflow 
   - python314-md2workflow-plugins-jira 
   - python314-md2workflow-plugins-redmine 
