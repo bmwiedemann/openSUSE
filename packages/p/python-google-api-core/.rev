@@ -537,4 +537,13 @@
     <comment>- Update BuildRequires and Requires from pyproject.toml (forwarded request 1371777 from glaubitz)</comment>
     <requestid>1371794</requestid>
   </revision>
+  <revision rev="52" vrev="3">
+    <srcmd5>adea2810f4db40ee677cfc8ccfefe3f3</srcmd5>
+    <version>2.34.0</version>
+    <time>1788518292</time>
+    <user>anag_factory</user>
+    <comment>- Cherry-pick fix_google-auth_compatibility.patch to fix compatibility
+  issues with google-auth &gt;= 2.56.3 in AuthMetadataPlugin unit test (forwarded request 1375390 from glaubitz)</comment>
+    <requestid>1375420</requestid>
+  </revision>
 </revisionlist>

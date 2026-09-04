@@ -32,6 +32,9 @@ Summary:        Google API client core library
 License:        Apache-2.0
 URL:            https://github.com/googleapis/google-cloud-python/tree/main/packages/google-api-core
 Source:         https://files.pythonhosted.org/packages/source/g/google_api_core/google_api_core-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM - fix(api_core): support suppress_metrics_header fallback in AuthMetadataPlugin
+# https://github.com/googleapis/google-cloud-python/pull/18029
+Patch:          fix_google-auth_compatibility.patch
 BuildRequires:  %{python_module googleapis-common-protos >= 1.69.2}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 40.3.0}
@@ -76,7 +79,7 @@ BuildArch:      noarch
 Core Library for Google Client Libraries.
 
 %prep
-%autosetup -p1 -n google_api_core-%{version}
+%autosetup -p3 -n google_api_core-%{version}
 
 %build
 %pyproject_wheel

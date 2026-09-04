@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep  2 13:25:49 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Cherry-pick fix_google-auth_compatibility.patch to fix compatibility
+  issues with google-auth >= 2.56.3 in AuthMetadataPlugin unit test
+
+-------------------------------------------------------------------
 Tue Aug 18 13:53:02 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update BuildRequires and Requires from pyproject.toml

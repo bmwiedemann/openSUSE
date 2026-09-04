@@ -1,0 +1,577 @@
+From ca7427a2d4719a9322b218b87220e09efd51bc10 Mon Sep 17 00:00:00 2001
+From: ohmayr <omairn@google.com>
+Date: Fri, 7 Aug 2026 18:53:33 +0000
+Subject: [PATCH 01/10] fix(api_core): support suppress_metrics_header fallback
+ in AuthMetadataPlugin unit test
+
+---
+ .../tests/unit/test_grpc_helpers.py              | 16 +++++++++++++---
+ 1 file changed, 13 insertions(+), 3 deletions(-)
+
+diff --git a/packages/google-api-core/tests/unit/test_grpc_helpers.py b/packages/google-api-core/tests/unit/test_grpc_helpers.py
+index 4f2912f82367..2d472e98c114 100644
+--- a/packages/google-api-core/tests/unit/test_grpc_helpers.py
++++ b/packages/google-api-core/tests/unit/test_grpc_helpers.py
+@@ -453,9 +453,19 @@ def test_create_channel_implicit_with_default_host(
+     assert channel is grpc_secure_channel.return_value
+ 
+     google_auth_default.assert_called_once_with(scopes=None, default_scopes=None)
+-    auth_metadata_plugin.assert_called_once_with(
+-        mock.sentinel.credentials, mock.sentinel.Request, default_host=default_host
+-    )
++    try:
++        auth_metadata_plugin.assert_called_once_with(
++            mock.sentinel.credentials,
++            mock.sentinel.Request,
++            default_host=default_host,
++            suppress_metrics_header=True,
++        )
++    except AssertionError:
++        auth_metadata_plugin.assert_called_once_with(
++            mock.sentinel.credentials,
++            mock.sentinel.Request,
++            default_host=default_host,
++        )
+ 
+     grpc_secure_channel.assert_called_once_with(
+         expected_target, composite_creds, compression=None
+
+From a53426d18332465a820733e7e7fa951d0164cafb Mon Sep 17 00:00:00 2001
+From: ohmayr <omairn@google.com>
+Date: Fri, 7 Aug 2026 18:59:29 +0000
+Subject: [PATCH 02/10] fix(api_core): update AuthMetadataPlugin mock assertion
+ for sync and async tests
+
+---
+ .../tests/asyncio/test_grpc_helpers_async.py    | 17 ++++++++++++++---
+ .../tests/unit/test_grpc_helpers.py             |  5 +++--
+ 2 files changed, 17 insertions(+), 5 deletions(-)
+
+diff --git a/packages/google-api-core/tests/asyncio/test_grpc_helpers_async.py b/packages/google-api-core/tests/asyncio/test_grpc_helpers_async.py
+index 0855e15e9ec7..f513ef2e4de6 100644
+--- a/packages/google-api-core/tests/asyncio/test_grpc_helpers_async.py
++++ b/packages/google-api-core/tests/asyncio/test_grpc_helpers_async.py
+@@ -421,9 +421,20 @@ def test_create_channel_implicit_with_default_host(
+     assert channel is grpc_secure_channel.return_value
+ 
+     google_auth_default.assert_called_once_with(scopes=None, default_scopes=None)
+-    auth_metadata_plugin.assert_called_once_with(
+-        mock.sentinel.credentials, mock.sentinel.Request, default_host=default_host
+-    )
++    assert auth_metadata_plugin.call_count in (1, 2)
++    try:
++        auth_metadata_plugin.assert_called_with(
++            mock.sentinel.credentials,
++            mock.sentinel.Request,
++            default_host=default_host,
++            suppress_metrics_header=True,
++        )
++    except AssertionError:
++        auth_metadata_plugin.assert_called_with(
++            mock.sentinel.credentials,
++            mock.sentinel.Request,
++            default_host=default_host,
++        )
+     grpc_secure_channel.assert_called_once_with(
+         expected_target, composite_creds, compression=None
+     )
+diff --git a/packages/google-api-core/tests/unit/test_grpc_helpers.py b/packages/google-api-core/tests/unit/test_grpc_helpers.py
+index 2d472e98c114..52b5234fd0f8 100644
+--- a/packages/google-api-core/tests/unit/test_grpc_helpers.py
++++ b/packages/google-api-core/tests/unit/test_grpc_helpers.py
+@@ -453,15 +453,16 @@ def test_create_channel_implicit_with_default_host(
+     assert channel is grpc_secure_channel.return_value
+ 
+     google_auth_default.assert_called_once_with(scopes=None, default_scopes=None)
++    assert auth_metadata_plugin.call_count in (1, 2)
+     try:
+-        auth_metadata_plugin.assert_called_once_with(
++        auth_metadata_plugin.assert_called_with(
+             mock.sentinel.credentials,
+             mock.sentinel.Request,
+             default_host=default_host,
+             suppress_metrics_header=True,
+         )
+     except AssertionError:
+-        auth_metadata_plugin.assert_called_once_with(
++        auth_metadata_plugin.assert_called_with(
+             mock.sentinel.credentials,
+             mock.sentinel.Request,
+             default_host=default_host,
+
+From a325022a81780466ef2b720cf11da8adc98c7ff8 Mon Sep 17 00:00:00 2001
+From: ohmayr <omairn@google.com>
+Date: Fri, 7 Aug 2026 20:18:59 +0000
+Subject: [PATCH 03/10] docs(api_core): add comment explaining
+ AuthMetadataPlugin call_count in (1, 2) check
+
+---
+ .../google-api-core/tests/asyncio/test_grpc_helpers_async.py   | 3 +++
+ packages/google-api-core/tests/unit/test_grpc_helpers.py       | 3 +++
+ 2 files changed, 6 insertions(+)
+
+diff --git a/packages/google-api-core/tests/asyncio/test_grpc_helpers_async.py b/packages/google-api-core/tests/asyncio/test_grpc_helpers_async.py
+index f513ef2e4de6..a0cd4dd597bd 100644
+--- a/packages/google-api-core/tests/asyncio/test_grpc_helpers_async.py
++++ b/packages/google-api-core/tests/asyncio/test_grpc_helpers_async.py
+@@ -421,6 +421,9 @@ def test_create_channel_implicit_with_default_host(
+     assert channel is grpc_secure_channel.return_value
+ 
+     google_auth_default.assert_called_once_with(scopes=None, default_scopes=None)
++    # AuthMetadataPlugin can be called once (if installed google-auth supports
++    # suppress_metrics_header) or twice (if older google-auth raises TypeError
++    # on call 1 and falls back to call 2 without suppress_metrics_header).
+     assert auth_metadata_plugin.call_count in (1, 2)
+     try:
+         auth_metadata_plugin.assert_called_with(
+diff --git a/packages/google-api-core/tests/unit/test_grpc_helpers.py b/packages/google-api-core/tests/unit/test_grpc_helpers.py
+index 52b5234fd0f8..016842f2b403 100644
+--- a/packages/google-api-core/tests/unit/test_grpc_helpers.py
++++ b/packages/google-api-core/tests/unit/test_grpc_helpers.py
+@@ -453,6 +453,9 @@ def test_create_channel_implicit_with_default_host(
+     assert channel is grpc_secure_channel.return_value
+ 
+     google_auth_default.assert_called_once_with(scopes=None, default_scopes=None)
++    # AuthMetadataPlugin can be called once (if installed google-auth supports
++    # suppress_metrics_header) or twice (if older google-auth raises TypeError
++    # on call 1 and falls back to call 2 without suppress_metrics_header).
+     assert auth_metadata_plugin.call_count in (1, 2)
+     try:
+         auth_metadata_plugin.assert_called_with(
+
+From bde282405f8bf4456865dd80126f498ccb220029 Mon Sep 17 00:00:00 2001
+From: ohmayr <omairn@google.com>
+Date: Fri, 7 Aug 2026 20:20:52 +0000
+Subject: [PATCH 04/10] fix(api_core): inspect AuthMetadataPlugin signature for
+ deterministic test assertions
+
+---
+ .../tests/asyncio/test_grpc_helpers_async.py  | 20 ++++++++++++-------
+ .../tests/unit/test_grpc_helpers.py           | 20 ++++++++++++-------
+ 2 files changed, 26 insertions(+), 14 deletions(-)
+
+diff --git a/packages/google-api-core/tests/asyncio/test_grpc_helpers_async.py b/packages/google-api-core/tests/asyncio/test_grpc_helpers_async.py
+index a0cd4dd597bd..c6325ca0e657 100644
+--- a/packages/google-api-core/tests/asyncio/test_grpc_helpers_async.py
++++ b/packages/google-api-core/tests/asyncio/test_grpc_helpers_async.py
+@@ -32,7 +32,16 @@
+     pytest.skip("No GRPC", allow_module_level=True)
+ 
+ 
++import inspect
+ import google.auth.credentials
++import google.auth.transport.grpc
++
++_SUPPORTS_SUPPRESS_METRICS = (
++    "suppress_metrics_header"
++    in inspect.signature(
++        google.auth.transport.grpc.AuthMetadataPlugin.__init__
++    ).parameters
++)
+ 
+ from google.api_core import exceptions, grpc_helpers_async
+ 
+@@ -421,18 +430,15 @@ def test_create_channel_implicit_with_default_host(
+     assert channel is grpc_secure_channel.return_value
+ 
+     google_auth_default.assert_called_once_with(scopes=None, default_scopes=None)
+-    # AuthMetadataPlugin can be called once (if installed google-auth supports
+-    # suppress_metrics_header) or twice (if older google-auth raises TypeError
+-    # on call 1 and falls back to call 2 without suppress_metrics_header).
+-    assert auth_metadata_plugin.call_count in (1, 2)
+-    try:
+-        auth_metadata_plugin.assert_called_with(
++    if _SUPPORTS_SUPPRESS_METRICS:
++        auth_metadata_plugin.assert_called_once_with(
+             mock.sentinel.credentials,
+             mock.sentinel.Request,
+             default_host=default_host,
+             suppress_metrics_header=True,
+         )
+-    except AssertionError:
++    else:
++        assert auth_metadata_plugin.call_count == 2
+         auth_metadata_plugin.assert_called_with(
+             mock.sentinel.credentials,
+             mock.sentinel.Request,
+diff --git a/packages/google-api-core/tests/unit/test_grpc_helpers.py b/packages/google-api-core/tests/unit/test_grpc_helpers.py
+index 016842f2b403..c1281fdba28f 100644
+--- a/packages/google-api-core/tests/unit/test_grpc_helpers.py
++++ b/packages/google-api-core/tests/unit/test_grpc_helpers.py
+@@ -12,6 +12,7 @@
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+ 
++import inspect
+ from unittest import mock
+ 
+ import pytest
+@@ -24,10 +25,18 @@
+     pytest.skip("No GRPC", allow_module_level=True)
+ 
+ import google.auth.credentials
++import google.auth.transport.grpc
+ from google.longrunning import operations_pb2
+ 
+ from google.api_core import exceptions, grpc_helpers
+ 
++_SUPPORTS_SUPPRESS_METRICS = (
++    "suppress_metrics_header"
++    in inspect.signature(
++        google.auth.transport.grpc.AuthMetadataPlugin.__init__
++    ).parameters
++)
++
+ 
+ def test__patch_callable_name():
+     callable = mock.Mock(spec=["__class__"])
+@@ -453,18 +462,15 @@ def test_create_channel_implicit_with_default_host(
+     assert channel is grpc_secure_channel.return_value
+ 
+     google_auth_default.assert_called_once_with(scopes=None, default_scopes=None)
+-    # AuthMetadataPlugin can be called once (if installed google-auth supports
+-    # suppress_metrics_header) or twice (if older google-auth raises TypeError
+-    # on call 1 and falls back to call 2 without suppress_metrics_header).
+-    assert auth_metadata_plugin.call_count in (1, 2)
+-    try:
+-        auth_metadata_plugin.assert_called_with(
++    if _SUPPORTS_SUPPRESS_METRICS:
++        auth_metadata_plugin.assert_called_once_with(
+             mock.sentinel.credentials,
+             mock.sentinel.Request,
+             default_host=default_host,
+             suppress_metrics_header=True,
+         )
+-    except AssertionError:
++    else:
++        assert auth_metadata_plugin.call_count == 2
+         auth_metadata_plugin.assert_called_with(
+             mock.sentinel.credentials,
+             mock.sentinel.Request,
+
+From c69f6ee9cc487ad0bd4e69449f9c8c7c4f7ca9e1 Mon Sep 17 00:00:00 2001
+From: ohmayr <omairn@google.com>
+Date: Fri, 7 Aug 2026 20:21:37 +0000
+Subject: [PATCH 05/10] docs(api_core): add explanatory comments for
+ google-auth suppress_metrics_header feature check
+
+---
+ .../google-api-core/tests/asyncio/test_grpc_helpers_async.py    | 2 ++
+ packages/google-api-core/tests/unit/test_grpc_helpers.py        | 2 ++
+ 2 files changed, 4 insertions(+)
+
+diff --git a/packages/google-api-core/tests/asyncio/test_grpc_helpers_async.py b/packages/google-api-core/tests/asyncio/test_grpc_helpers_async.py
+index c6325ca0e657..4856c3b26459 100644
+--- a/packages/google-api-core/tests/asyncio/test_grpc_helpers_async.py
++++ b/packages/google-api-core/tests/asyncio/test_grpc_helpers_async.py
+@@ -431,6 +431,7 @@ def test_create_channel_implicit_with_default_host(
+ 
+     google_auth_default.assert_called_once_with(scopes=None, default_scopes=None)
+     if _SUPPORTS_SUPPRESS_METRICS:
++        # Installed google-auth supports suppress_metrics_header parameter
+         auth_metadata_plugin.assert_called_once_with(
+             mock.sentinel.credentials,
+             mock.sentinel.Request,
+@@ -438,6 +439,7 @@ def test_create_channel_implicit_with_default_host(
+             suppress_metrics_header=True,
+         )
+     else:
++        # Older google-auth raises TypeError on call 1, triggering fallback call 2
+         assert auth_metadata_plugin.call_count == 2
+         auth_metadata_plugin.assert_called_with(
+             mock.sentinel.credentials,
+diff --git a/packages/google-api-core/tests/unit/test_grpc_helpers.py b/packages/google-api-core/tests/unit/test_grpc_helpers.py
+index c1281fdba28f..3b3304c4407d 100644
+--- a/packages/google-api-core/tests/unit/test_grpc_helpers.py
++++ b/packages/google-api-core/tests/unit/test_grpc_helpers.py
+@@ -463,6 +463,7 @@ def test_create_channel_implicit_with_default_host(
+ 
+     google_auth_default.assert_called_once_with(scopes=None, default_scopes=None)
+     if _SUPPORTS_SUPPRESS_METRICS:
++        # Installed google-auth supports suppress_metrics_header parameter
+         auth_metadata_plugin.assert_called_once_with(
+             mock.sentinel.credentials,
+             mock.sentinel.Request,
+@@ -470,6 +471,7 @@ def test_create_channel_implicit_with_default_host(
+             suppress_metrics_header=True,
+         )
+     else:
++        # Older google-auth raises TypeError on call 1, triggering fallback call 2
+         assert auth_metadata_plugin.call_count == 2
+         auth_metadata_plugin.assert_called_with(
+             mock.sentinel.credentials,
+
+From 035f6a32a9641171a0183211c4b87f4fe12b87a5 Mon Sep 17 00:00:00 2001
+From: ohmayr <omairn@google.com>
+Date: Fri, 7 Aug 2026 20:28:57 +0000
+Subject: [PATCH 06/10] fix(api_core): use assert_called_once_with for both
+ google-auth feature branches
+
+---
+ .../tests/asyncio/test_grpc_helpers_async.py                | 6 +++---
+ packages/google-api-core/tests/unit/test_grpc_helpers.py    | 6 +++---
+ 2 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/packages/google-api-core/tests/asyncio/test_grpc_helpers_async.py b/packages/google-api-core/tests/asyncio/test_grpc_helpers_async.py
+index 4856c3b26459..fd814073e9b4 100644
+--- a/packages/google-api-core/tests/asyncio/test_grpc_helpers_async.py
++++ b/packages/google-api-core/tests/asyncio/test_grpc_helpers_async.py
+@@ -439,9 +439,9 @@ def test_create_channel_implicit_with_default_host(
+             suppress_metrics_header=True,
+         )
+     else:
+-        # Older google-auth raises TypeError on call 1, triggering fallback call 2
+-        assert auth_metadata_plugin.call_count == 2
+-        auth_metadata_plugin.assert_called_with(
++        # Older google-auth raises TypeError on call 1 during autospec signature check,
++        # so only the successful fallback call 2 is recorded by unittest.mock.
++        auth_metadata_plugin.assert_called_once_with(
+             mock.sentinel.credentials,
+             mock.sentinel.Request,
+             default_host=default_host,
+diff --git a/packages/google-api-core/tests/unit/test_grpc_helpers.py b/packages/google-api-core/tests/unit/test_grpc_helpers.py
+index 3b3304c4407d..44c9e6c13625 100644
+--- a/packages/google-api-core/tests/unit/test_grpc_helpers.py
++++ b/packages/google-api-core/tests/unit/test_grpc_helpers.py
+@@ -471,9 +471,9 @@ def test_create_channel_implicit_with_default_host(
+             suppress_metrics_header=True,
+         )
+     else:
+-        # Older google-auth raises TypeError on call 1, triggering fallback call 2
+-        assert auth_metadata_plugin.call_count == 2
+-        auth_metadata_plugin.assert_called_with(
++        # Older google-auth raises TypeError on call 1 during autospec signature check,
++        # so only the successful fallback call 2 is recorded by unittest.mock.
++        auth_metadata_plugin.assert_called_once_with(
+             mock.sentinel.credentials,
+             mock.sentinel.Request,
+             default_host=default_host,
+
+From 76a689335d7f54120c1f44e24e45e15b743652e5 Mon Sep 17 00:00:00 2001
+From: ohmayr <omairn@google.com>
+Date: Fri, 7 Aug 2026 20:30:17 +0000
+Subject: [PATCH 07/10] fix(api_core): move imports before
+ _SUPPORTS_SUPPRESS_METRICS to fix flake8 E402
+
+---
+ .../google-api-core/tests/asyncio/test_grpc_helpers_async.py  | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/packages/google-api-core/tests/asyncio/test_grpc_helpers_async.py b/packages/google-api-core/tests/asyncio/test_grpc_helpers_async.py
+index fd814073e9b4..08642f7ed831 100644
+--- a/packages/google-api-core/tests/asyncio/test_grpc_helpers_async.py
++++ b/packages/google-api-core/tests/asyncio/test_grpc_helpers_async.py
+@@ -36,6 +36,8 @@
+ import google.auth.credentials
+ import google.auth.transport.grpc
+ 
++from google.api_core import exceptions, grpc_helpers_async
++
+ _SUPPORTS_SUPPRESS_METRICS = (
+     "suppress_metrics_header"
+     in inspect.signature(
+@@ -43,8 +45,6 @@
+     ).parameters
+ )
+ 
+-from google.api_core import exceptions, grpc_helpers_async
+-
+ 
+ class RpcErrorImpl(grpc.RpcError, grpc.Call):
+     def __init__(self, code):
+
+From bc0adb078640ce39eed74d36425e6824dbfab85f Mon Sep 17 00:00:00 2001
+From: ohmayr <omairn@google.com>
+Date: Fri, 7 Aug 2026 20:32:48 +0000
+Subject: [PATCH 08/10] fix(api_core): simplify AuthMetadataPlugin assertions
+ in unit tests
+
+---
+ .../tests/asyncio/test_grpc_helpers_async.py  | 32 +++++--------------
+ .../tests/unit/test_grpc_helpers.py           | 32 +++++--------------
+ 2 files changed, 16 insertions(+), 48 deletions(-)
+
+diff --git a/packages/google-api-core/tests/asyncio/test_grpc_helpers_async.py b/packages/google-api-core/tests/asyncio/test_grpc_helpers_async.py
+index 08642f7ed831..3b3e9311d74b 100644
+--- a/packages/google-api-core/tests/asyncio/test_grpc_helpers_async.py
++++ b/packages/google-api-core/tests/asyncio/test_grpc_helpers_async.py
+@@ -32,19 +32,11 @@
+     pytest.skip("No GRPC", allow_module_level=True)
+ 
+ 
+-import inspect
+ import google.auth.credentials
+ import google.auth.transport.grpc
+ 
+ from google.api_core import exceptions, grpc_helpers_async
+ 
+-_SUPPORTS_SUPPRESS_METRICS = (
+-    "suppress_metrics_header"
+-    in inspect.signature(
+-        google.auth.transport.grpc.AuthMetadataPlugin.__init__
+-    ).parameters
+-)
+-
+ 
+ class RpcErrorImpl(grpc.RpcError, grpc.Call):
+     def __init__(self, code):
+@@ -430,22 +422,14 @@ def test_create_channel_implicit_with_default_host(
+     assert channel is grpc_secure_channel.return_value
+ 
+     google_auth_default.assert_called_once_with(scopes=None, default_scopes=None)
+-    if _SUPPORTS_SUPPRESS_METRICS:
+-        # Installed google-auth supports suppress_metrics_header parameter
+-        auth_metadata_plugin.assert_called_once_with(
+-            mock.sentinel.credentials,
+-            mock.sentinel.Request,
+-            default_host=default_host,
+-            suppress_metrics_header=True,
+-        )
+-    else:
+-        # Older google-auth raises TypeError on call 1 during autospec signature check,
+-        # so only the successful fallback call 2 is recorded by unittest.mock.
+-        auth_metadata_plugin.assert_called_once_with(
+-            mock.sentinel.credentials,
+-            mock.sentinel.Request,
+-            default_host=default_host,
+-        )
++    assert auth_metadata_plugin.call_count == 1
++    assert auth_metadata_plugin.call_args.args == (
++        mock.sentinel.credentials,
++        mock.sentinel.Request,
++    )
++    assert auth_metadata_plugin.call_args.kwargs["default_host"] == default_host
++    if "suppress_metrics_header" in auth_metadata_plugin.call_args.kwargs:
++        assert auth_metadata_plugin.call_args.kwargs["suppress_metrics_header"] is True
+     grpc_secure_channel.assert_called_once_with(
+         expected_target, composite_creds, compression=None
+     )
+diff --git a/packages/google-api-core/tests/unit/test_grpc_helpers.py b/packages/google-api-core/tests/unit/test_grpc_helpers.py
+index 44c9e6c13625..83187dd36b79 100644
+--- a/packages/google-api-core/tests/unit/test_grpc_helpers.py
++++ b/packages/google-api-core/tests/unit/test_grpc_helpers.py
+@@ -12,7 +12,6 @@
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+ 
+-import inspect
+ from unittest import mock
+ 
+ import pytest
+@@ -30,13 +29,6 @@
+ 
+ from google.api_core import exceptions, grpc_helpers
+ 
+-_SUPPORTS_SUPPRESS_METRICS = (
+-    "suppress_metrics_header"
+-    in inspect.signature(
+-        google.auth.transport.grpc.AuthMetadataPlugin.__init__
+-    ).parameters
+-)
+-
+ 
+ def test__patch_callable_name():
+     callable = mock.Mock(spec=["__class__"])
+@@ -462,22 +454,14 @@ def test_create_channel_implicit_with_default_host(
+     assert channel is grpc_secure_channel.return_value
+ 
+     google_auth_default.assert_called_once_with(scopes=None, default_scopes=None)
+-    if _SUPPORTS_SUPPRESS_METRICS:
+-        # Installed google-auth supports suppress_metrics_header parameter
+-        auth_metadata_plugin.assert_called_once_with(
+-            mock.sentinel.credentials,
+-            mock.sentinel.Request,
+-            default_host=default_host,
+-            suppress_metrics_header=True,
+-        )
+-    else:
+-        # Older google-auth raises TypeError on call 1 during autospec signature check,
+-        # so only the successful fallback call 2 is recorded by unittest.mock.
+-        auth_metadata_plugin.assert_called_once_with(
+-            mock.sentinel.credentials,
+-            mock.sentinel.Request,
+-            default_host=default_host,
+-        )
++    assert auth_metadata_plugin.call_count == 1
++    assert auth_metadata_plugin.call_args.args == (
++        mock.sentinel.credentials,
++        mock.sentinel.Request,
++    )
++    assert auth_metadata_plugin.call_args.kwargs["default_host"] == default_host
++    if "suppress_metrics_header" in auth_metadata_plugin.call_args.kwargs:
++        assert auth_metadata_plugin.call_args.kwargs["suppress_metrics_header"] is True
+ 
+     grpc_secure_channel.assert_called_once_with(
+         expected_target, composite_creds, compression=None
+
+From 1fb1e98d564d8b24716966f292a1e3e3fc5eebf6 Mon Sep 17 00:00:00 2001
+From: ohmayr <omairn@google.com>
+Date: Fri, 7 Aug 2026 20:34:25 +0000
+Subject: [PATCH 09/10] fix(api_core): remove unnecessary
+ google.auth.transport.grpc top-level imports
+
+---
+ .../google-api-core/tests/asyncio/test_grpc_helpers_async.py     | 1 -
+ packages/google-api-core/tests/unit/test_grpc_helpers.py         | 1 -
+ 2 files changed, 2 deletions(-)
+
+diff --git a/packages/google-api-core/tests/asyncio/test_grpc_helpers_async.py b/packages/google-api-core/tests/asyncio/test_grpc_helpers_async.py
+index 3b3e9311d74b..1749489544e3 100644
+--- a/packages/google-api-core/tests/asyncio/test_grpc_helpers_async.py
++++ b/packages/google-api-core/tests/asyncio/test_grpc_helpers_async.py
+@@ -33,7 +33,6 @@
+ 
+ 
+ import google.auth.credentials
+-import google.auth.transport.grpc
+ 
+ from google.api_core import exceptions, grpc_helpers_async
+ 
+diff --git a/packages/google-api-core/tests/unit/test_grpc_helpers.py b/packages/google-api-core/tests/unit/test_grpc_helpers.py
+index 83187dd36b79..5b74603d9f31 100644
+--- a/packages/google-api-core/tests/unit/test_grpc_helpers.py
++++ b/packages/google-api-core/tests/unit/test_grpc_helpers.py
+@@ -24,7 +24,6 @@
+     pytest.skip("No GRPC", allow_module_level=True)
+ 
+ import google.auth.credentials
+-import google.auth.transport.grpc
+ from google.longrunning import operations_pb2
+ 
+ from google.api_core import exceptions, grpc_helpers
+
+From fdd1b679b2bca00a27162fa3dcaa4ddb36725ad6 Mon Sep 17 00:00:00 2001
+From: ohmayr <omairn@google.com>
+Date: Fri, 7 Aug 2026 20:38:33 +0000
+Subject: [PATCH 10/10] docs(api_core): add explanatory comment for
+ suppress_metrics_header check
+
+---
+ .../google-api-core/tests/asyncio/test_grpc_helpers_async.py     | 1 +
+ packages/google-api-core/tests/unit/test_grpc_helpers.py         | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/packages/google-api-core/tests/asyncio/test_grpc_helpers_async.py b/packages/google-api-core/tests/asyncio/test_grpc_helpers_async.py
+index 1749489544e3..dcb09f18fea2 100644
+--- a/packages/google-api-core/tests/asyncio/test_grpc_helpers_async.py
++++ b/packages/google-api-core/tests/asyncio/test_grpc_helpers_async.py
+@@ -427,6 +427,7 @@ def test_create_channel_implicit_with_default_host(
+         mock.sentinel.Request,
+     )
+     assert auth_metadata_plugin.call_args.kwargs["default_host"] == default_host
++    # google-auth >= 2.56.3 supports suppress_metrics_header; older versions omit it during fallback
+     if "suppress_metrics_header" in auth_metadata_plugin.call_args.kwargs:
+         assert auth_metadata_plugin.call_args.kwargs["suppress_metrics_header"] is True
+     grpc_secure_channel.assert_called_once_with(
+diff --git a/packages/google-api-core/tests/unit/test_grpc_helpers.py b/packages/google-api-core/tests/unit/test_grpc_helpers.py
+index 5b74603d9f31..69281d58109b 100644
+--- a/packages/google-api-core/tests/unit/test_grpc_helpers.py
++++ b/packages/google-api-core/tests/unit/test_grpc_helpers.py
+@@ -459,6 +459,7 @@ def test_create_channel_implicit_with_default_host(
+         mock.sentinel.Request,
+     )
+     assert auth_metadata_plugin.call_args.kwargs["default_host"] == default_host
++    # google-auth >= 2.56.3 supports suppress_metrics_header; older versions omit it during fallback
+     if "suppress_metrics_header" in auth_metadata_plugin.call_args.kwargs:
+         assert auth_metadata_plugin.call_args.kwargs["suppress_metrics_header"] is True
+ 
