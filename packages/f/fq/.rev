@@ -190,4 +190,23 @@ https://hackweek.opensuse.org/21/projects/add-mbr-binary-format-support-to-the-f
     + Fix type error messages for split and match functions. (forwarded request 1339127 from mnhauke)</comment>
     <requestid>1339186</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>bdf7f05884c886a3ee8e337ad7180e87</srcmd5>
+    <version>0.18.0</version>
+    <time>1788518281</time>
+    <user>anag_factory</user>
+    <comment>- Packaging improvements:
+  * Drop RPM directive nodebuginfo. Recent versions of GNU strip
+    can correctly process Go binaries to generate debuginfo.
+  * Re-enable binary stripping and debuginfo boo#1210938
+  * Update to BuildRequires: golang(API) &gt;= 1.25 matching go.mod
+  * Build PIE with pattern that may become recommended procedure:
+    %%ifnarch ppc64 GOFLAGS=&quot;-buildmode=pie&quot; %%endif go build
+    A go toolchain buildmode default config would be preferable
+    but none exist at this time.
+  * Drop mod=vendor, go1.14+ will detect vendor dir and auto-enable
+  * Add basic %check to execute binary --help
+  * Format recent changelog entries (forwarded request 1375414 from jfkw)</comment>
+    <requestid>1375417</requestid>
+  </revision>
 </revisionlist>

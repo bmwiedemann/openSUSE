@@ -14,13 +14,10 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-# nodebuginfo
 
-
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           fq
-Version:        0.17.0
+Version:        0.18.0
 Release:        0
 Summary:        CLI tool and REPL for working with binary data inspired by jq
 License:        MIT
@@ -28,7 +25,7 @@ Group:          Development/Tools/Other
 URL:            https://github.com/wader/fq
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) >= 1.18
+BuildRequires:  golang(API) >= 1.25
 
 %description
 fq is inspired by the well known jq tool and language and allows you to work
@@ -40,18 +37,23 @@ supports nested formats and has an interactive REPL with auto-completion.
 %autosetup -a 1
 
 %build
-# Build the binary.
-go build \
-   -mod=vendor \
-   -buildmode=pie
+%ifnarch ppc64
+export GOFLAGS="-buildmode=pie"
+%endif
+go build
+
+%check
+# execute the binary as a basic check
+./%{name} --help
 
 %install
-# Install the binary.
 install -D -m 0755 %{name} "%{buildroot}/%{_bindir}/%{name}"
+install -D -m 0644 doc/fq.1 %{buildroot}/%{_mandir}/man1/%{name}.1
 
 %files
 %doc README.md
 %license LICENSE
 %{_bindir}/%{name}
+%{_mandir}/man1/%{name}.1%{?ext_man}
 
 %changelog

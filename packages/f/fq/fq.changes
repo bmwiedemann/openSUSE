@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Wed Sep  2 13:31:51 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging improvements:
+  * Drop RPM directive nodebuginfo. Recent versions of GNU strip
+    can correctly process Go binaries to generate debuginfo.
+  * Re-enable binary stripping and debuginfo boo#1210938
+  * Update to BuildRequires: golang(API) >= 1.25 matching go.mod
+  * Build PIE with pattern that may become recommended procedure:
+    %%ifnarch ppc64 GOFLAGS="-buildmode=pie" %%endif go build
+    A go toolchain buildmode default config would be preferable
+    but none exist at this time.
+  * Drop mod=vendor, go1.14+ will detect vendor dir and auto-enable
+  * Add basic %check to execute binary --help
+  * Format recent changelog entries
+
+-------------------------------------------------------------------
+Wed Sep  2 09:38:13 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.18.0:
+  * jq compatibility: Add $ARGS, --args and --jsonargs support.
+  * jq compatibility: Using - as input filename reads from stdin.
+    Previously leaving out any filename argument would be the only
+    way to read from stdin.
+  * Add gaps for struct/array bitbufs and skip adding single empty
+    gap.
+  * Faster format options handling during decode. Will speed up
+    decoding of formats that might use lots of sub-formats, for
+    example big mp4 files.
+  * open Make returned file value behave more properly as a binary.
+  * avc_nalu
+    + Remove redundant_pic_cnt name in nalu.
+  * avc_sei
+    + Decode SEI recovery point.
+  * heif Add High Efficiency Image Format decoder.
+    + Generic item support.
+    + Partial item decode for HEIC (HEVC) and AVIF (AV1).
+  * mp4
+    + Make stsd decode aware of qt/isom difference.
+    + More correct and flexible probe via brands.
+  * stl
+    + Add Standard Tessellation Language decoder.
+  * webp
+    + Fix incorrect decoding of size for lossless (vp8l).
+
+-------------------------------------------------------------------
 Sun Mar 15 18:23:47 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.17.0:
