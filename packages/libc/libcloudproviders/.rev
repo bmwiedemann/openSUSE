@@ -126,4 +126,13 @@
     <comment>Switch to tar.xz post git scm move</comment>
     <requestid>1342981</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>93e91d58a4d5a96f4f92102d622f2b83</srcmd5>
+    <version>0.4.1</version>
+    <time>1788518178</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.4.1:
+  + Complete the documentation to fix the validation test.</comment>
+    <requestid>1375041</requestid>
+  </revision>
 </revisionlist>
