@@ -1,8 +1,8 @@
 #
 # spec file for package paralleloverhead
 #
-# Copyright (c) 2025 SUSE LLC and contributors
-# Copyright (c) 2025, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2025-2026, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 
 %define realname ParallelOverhead
 Name:           paralleloverhead
-Version:        1.1.4
+Version:        1.2.0
 Release:        0
 Summary:        An endless runner game
 License:        CC0-1.0 AND MIT
@@ -27,7 +27,6 @@ Group:          Amusements/Games/Action/Arcade
 URL:            https://huitsi.net/ParallelOverhead/
 #Git-Clone:     https://codeberg.org/Huitsi/ParallelOverhead.git
 Source:         https://codeberg.org/Huitsi/ParallelOverhead/releases/download/%{version}/%{realname}-%{version}-source_with_built_assets.tar.gz
-Patch0:         fix-gcc15.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  help2man
 BuildRequires:  hicolor-icon-theme

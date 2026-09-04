@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Sep  2 13:08:32 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.0
+  Features
+  * Unstable Pulse by oglsdl to the soundtrack
+  * highest score tracking
+  Fixes
+  * game time sometimes running faster than real time.
+  * HUD rendering with sdl2-compat.
+  * building with the -std=gnu23 GCC flag (default in GCC 15).
+  * building with the -Werror=format-security GCC flag.
+- Drop patch:
+  * fix-gcc15.patch
+
+-------------------------------------------------------------------
 Sat Sep 13 17:52:32 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.1.4
