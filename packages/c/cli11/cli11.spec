@@ -1,7 +1,7 @@
 #
 # spec file for package cli11
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           cli11
-Version:        2.4.2
+Version:        2.7.2
 Release:        0
 Summary:        Command line parser for C++11
 License:        BSD-3-Clause
@@ -96,6 +96,6 @@ limits by choice:
 %{_datadir}/pkgconfig/CLI11.pc
 
 %files doc
-%doc build/docs/html/
+%doc html/
 
 %changelog
