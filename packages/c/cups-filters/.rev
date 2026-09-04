@@ -518,4 +518,12 @@
     <comment>Provide cups-browsed as separated cups-filters-cups-browsed sub-package (forwarded request 1357945 from jsmeix)</comment>
     <requestid>1357946</requestid>
   </revision>
+  <revision rev="64" vrev="9">
+    <srcmd5>dd5770618b4c1f3f564483b251d2d164</srcmd5>
+    <version>1.28.17</version>
+    <time>1788518184</time>
+    <user>anag_factory</user>
+    <comment>Fixes for CVE-2026-64611 bsc#1273145 and CVE-2026-64612 bsc#1273146 (forwarded request 1375093 from jsmeix)</comment>
+    <requestid>1375096</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Sep  1 11:05:03 UTC 2026 - Johannes Meixner <jsmeix@suse.com>
+
+- cups-filters-1.28.17-CVE-2026-64611.patch is based on
+  https://github.com/OpenPrinting/libcupsfilters/commit/4b343522823403df01f6753082df83f07d18c217
+  backported to cups-filters 1.28.17 to fix CVE-2026-64611
+  "Infinite-loop CPU-exhaustion DoS in
+   cfIEEE1284NormalizeMakeModel on empty MDL field"
+  https://github.com/OpenPrinting/libcupsfilters/security/advisories/GHSA-rcq7-rv5g-j3r4
+  "user who controls an IEEE-1284 device ID consumed by
+   `cfIEEE1284GetMakeModel` can drive
+   `cfIEEE1284NormalizeMakeModel` into an infinite loop"
+  (bsc#1273145)
+- cups-filters-1.28.17-CVE-2026-64612.patch is based on
+  https://github.com/OpenPrinting/libcupsfilters/commit/e8888af31419
+  backported to cups-filters 1.28.17 to fix CVE-2026-64612
+  "Malformed PNG aborts CUPS image filter process
+   (missing libpng setjmp recovery)"
+  https://github.com/OpenPrinting/libcupsfilters/security/advisories/GHSA-7mxj-cfq5-84ch
+  "authenticated client that can submit an image print job
+   can abort the CUPS filter process by supplying a malformed PNG"
+  (bsc#1273146)
+
+-------------------------------------------------------------------
 Tue Jun  2 16:04:55 UTC 2026 - Johannes Meixner <jsmeix@suse.com>
 
 - Provide cups-browsed as separated cups-filters-cups-browsed

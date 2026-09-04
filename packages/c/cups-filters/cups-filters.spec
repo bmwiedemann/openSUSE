@@ -99,7 +99,7 @@ Patch4:         cups-filters-1.28.15-0003-beh-backend-Further-improvements-CVE-2
 # So this patch removes CUPS Browsing support in cups-browsed, see the upstream commit
 # https://github.com/OpenPrinting/cups-browsed/commit/1d1072a0de573b7850958df614e9ec5b73ea0e0d
 Patch108:       cups-filters-1.28.17-CVE-2024-47176.patch
-# Patch109 cups-filters-1.25.0-CVE-2024-47076.patch is based on
+# Patch109 cups-filters-1.28.17-CVE-2024-47076.patch is based on
 # https://github.com/OpenPrinting/libcupsfilters/commit/95576ec3
 # backported to cups-filters 1.28.17 to fix CVE-2024-47076
 # "lack of input sanitization in cfGetPrinterAttributes5"
@@ -117,6 +117,22 @@ Patch110:       cups-filters-1.28.17-CVE-2024-47175.patch
 # https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=285412
 # newer cups code in git does not use qpdf, no upstream handling required
 Patch111:       cups-filters-qpdf12.patch
+# Patch112 cups-filters-1.28.17-CVE-2026-64612.patch is based on
+# https://github.com/OpenPrinting/libcupsfilters/commit/e8888af31419
+# backported to cups-filters 1.28.17 to fix CVE-2026-64612
+# "Malformed PNG aborts CUPS image filter process (missing libpng setjmp recovery)"
+# https://github.com/OpenPrinting/libcupsfilters/security/advisories/GHSA-7mxj-cfq5-84ch
+# "authenticated client that can submit an image print job can abort the CUPS filter process by supplying a malformed PNG"
+# https://bugzilla.suse.com/show_bug.cgi?id=1273146
+Patch112:       cups-filters-1.28.17-CVE-2026-64612.patch
+# Patch113 cups-filters-1.28.17-CVE-2026-64611.patch is based on
+# https://github.com/OpenPrinting/libcupsfilters/commit/4b343522823403df01f6753082df83f07d18c217
+# backported to cups-filters 1.28.17 to fix CVE-2026-64611
+# "Infinite-loop CPU-exhaustion DoS in cfIEEE1284NormalizeMakeModel on empty MDL field"
+# https://github.com/OpenPrinting/libcupsfilters/security/advisories/GHSA-rcq7-rv5g-j3r4
+# "user who controls an IEEE-1284 device ID consumed by `cfIEEE1284GetMakeModel` can drive `cfIEEE1284NormalizeMakeModel` into an infinite loop"
+# https://bugzilla.suse.com/show_bug.cgi?id=1273145
+Patch113:       cups-filters-1.28.17-CVE-2026-64611.patch
 # Support for cups154 in the SLE12 legacy module is abandoned (by default SLE12 has CUPS 1.7.5)
 # because newer cups-filters versions use stuff that is provided since CUPS > 1.5.4 so that it does
 # no longer build with CUPS 1.5.4 so that cups-filters does not work with CUPS 1.5.4:
