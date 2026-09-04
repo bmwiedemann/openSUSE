@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Sep  4 04:32:27 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.3:
+  + Bug fixes and improvements: EogScrollView: Fix Drag&Drop
+    through FileTransfer portal
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep  2 11:37:27 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Own %{_datadir}/GConf and %{_datadir}/GConf/gsettings: legacy
+  migration directories.
+
+-------------------------------------------------------------------
 Sat Jun 27 19:02:06 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 50.2:

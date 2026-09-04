@@ -1407,4 +1407,18 @@ New stable release</comment>
   + Updated translations.</comment>
     <requestid>1362906</requestid>
   </revision>
+  <revision rev="177" vrev="1">
+    <srcmd5>394d0feac37c13b9b75b17ba18011f67</srcmd5>
+    <version>50.3</version>
+    <time>1788518605</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 50.3:
+  + Bug fixes and improvements: EogScrollView: Fix Drag&amp;Drop
+    through FileTransfer portal
+  + Updated translations.
+
+- Own %{_datadir}/GConf and %{_datadir}/GConf/gsettings: legacy
+  migration directories.</comment>
+    <requestid>1375704</requestid>
+  </revision>
 </revisionlist>

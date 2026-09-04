@@ -17,7 +17,7 @@
 
 
 Name:           eog
-Version:        50.2
+Version:        50.3
 Release:        0
 Summary:        Image Viewer for GNOME
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -101,6 +101,8 @@ developing eog plugins.
 %{_datadir}/metainfo/org.gnome.eog.metainfo.xml
 %{_datadir}/icons/hicolor/*/apps/org.gnome.%{name}*.svg
 %{_datadir}/%{name}/
+%dir %{_datadir}/GConf
+%dir %{_datadir}/GConf/gsettings
 %{_datadir}/GConf/gsettings/%{name}.convert
 %{_datadir}/glib-2.0/schemas/org.gnome.%{name}.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.%{name}.gschema.xml
