@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Tue Sep  1 14:32:54 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.1.6
+  New Features
+  * Team chat (replaces the shared clipboard) — The non-persistent
+    clipboard has grown into a live, collaboration-focused chat,
+    synchronized over the websocket hub across every browser and
+    the --tui dashboard (which authors as tui@<host>).
+    Highlights:
+    + Markdown rendering with the full :shortcode: emoji catalog
+      (~1800 emoji), composer autosuggest, and collapsible long
+      code blocks.
+    + Emoji reactions (with a who-reacted tooltip) and in-place
+      editing of your own messages (↑ in the composer recalls and
+      cycles them; edits are flagged (edited)).
+    + Image paste (inlined as base64, or written to disk with
+      --persist-chat-images) and file upload via 📎 (POST
+      /?chatUpload → .goshs-chat/, respects --read-only, hidden
+      from the listing).
+    + Own-message highlight and opt-in desktop notifications
+      (🔔 toggle) for others' messages when the tab is hidden.
+    + Opt-in persistence — --persist-chat writes the full log
+      (messages, edit flags, per-emoji reaction authors) to
+      <webroot>/.goshs-chat/chat.json and restores it on restart;
+      in memory only by default.
+   Security
+   * Content-destruction / mode-flag bypasses under --no-delete
+     / --upload-only / --read-only (#256) — Across every write
+     protocol, --no-delete/--upload-only now treat overwrite,
+     in-place write, truncate and rename/move of a pre-existing
+     file as deletion-class operations and refuse them, while
+     still allowing new-file creation and the operator's own
+     create→write→rename upload flow.
+   * SMB WRITE opcode overwrite (GHSA-275v-rxgc-4rcj, High) — the
+     SMB2 WRITE opcode ignored the flags, allowing in-place
+     overwrite of existing files.
+   * SMB overwrite disposition & SET_INFO truncate
+     (GHSA-jx6h-2x8x-hf5r, High) —
+     FILE_OVERWRITE/OVERWRITE_IF/SUPERSEDE creates and SET_INFO
+     allocation/EOF truncation destroyed existing file contents.
+   * SMB rename/clobber (GHSA-ppvh-3pc7-mvxw, High) —
+     FileRenameInformation moved and clobbered existing files.
+   * TFTP --no-delete ignored (GHSA-2q29-798w-6qcp, High) — a TFTP
+     WRQ ignored --no-delete, allowing overwrite and truncation of
+     existing files.
+   * TFTP WRQ destroys served files (GHSA-vw29-46p5-7h7x, High)
+     — an unauthenticated WRQ could truncate any served file
+     (os.Create implies O_TRUNC).
+   * HTTP DELETE on block-listed files (GHSA-ppmc-5w4w-2669, High)
+     — incomplete fix of CVE-2026-40189: .goshs block-listed files
+     could still be removed via HTTP DELETE; the block list is now
+     enforced before removal, mirroring the read/share/bulk/WebDAV
+     paths.
+   * WebDAV LOCK plants empty files (GHSA-whqg-vqcj-px54, Medium)
+     — the library's LOCK handler plants lock-null empty files for
+     absent paths, bypassing --read-only/--upload-only; webdavGuard
+     now refuses LOCK/UNLOCK in those modes.
+   Credential & ACL exposure (#234)
+   * Collaborator feed leaks the .goshs Authorization header
+     (GHSA-wfg4-m42q-9pvq, High).
+   * Block-only .goshs erases an ancestor's auth
+    (GHSA-cfhc-8j7j-54wq, High)
+
+-------------------------------------------------------------------
 Mon Aug  3 07:24:50 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.1.5
