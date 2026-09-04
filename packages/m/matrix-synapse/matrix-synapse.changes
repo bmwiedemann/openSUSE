@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Wed Sep  2 22:14:07 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.160.0
+  - Features
+    - Add experimental support for MSC4502: Targeted and
+      unrestricted room member queries. (#19974)
+    - Add optional support for MSC4262: Profile Updates for Sliding
+      Sync. Currently defaults to disabled, and is limited to local
+      users only for the sync results. (#20003)
+    - Allow specifying multiple action_name and status query
+      parameters when listing scheduled tasks via the admin API.
+      (#20067)
+  - Bugfixes
+    - Fix sending custom profile field removals to legacy sync
+      clients when the field is deleted using the profile field
+      delete endpoint. (#20147)
+    - Fix a bug where stream positions (presence, to-device
+      message, etc.) could stop being sent to clients if a request
+      was cancelled while a write was allocating a stream ID.
+      Contributed by @FrenchGithubUser @Famedly. (#20090)
+    - Thumbnail WebP images that use transparency as PNG rather
+      than JPEG, to preserve transparency during thumbnailing.
+      Contributed by @catfromplan9. (#20094)
+    - Fix sync stream not being woken up when a user updates a
+      profile field without belonging to any rooms. (#20135)
+  - Improved Documentation
+    - Document lighttpd reverse proxy configuration example.
+      Contributed by JaxLUG from the Jacksonville Linux Users Group
+      Inc.. (#19875)
+    - Fix the documentation on the federation_domain_whitelist
+      config option. (#20089)
+  - Internal Changes
+    - Update release script to check more often for actions being
+      completed so you don't have to wait around as much. (#20093)
+    - Speed up the conversion of device list changes into outbound
+      federation pokes, and add a metric for how far behind the
+      conversion is. (#20098)
+    - Fix the schema diff CI not using faketime for SQLite.
+      (#20099)
+    - Fix the schema diff CI breaking when the Rust module was
+      changed. (#20117, #20129)
+    - Reduce database CPU usage when marking device list changes as
+      sent over federation. (#20120)
+    - Fix cache __len__ of Sliding Sync PerConnectionState ignoring
+      account data entries. (#20124)
+    - Update Synapse repo link in inconsistent stream error.
+      (#20128)
+    - Update rustls-webpki to address GHSA-82j2-j2ch-gfr8. (#20131)
+    - Update pyo3 to address GHSA-36hh-v3qg-5jq4 and
+      GHSA-chgr-c6px-7xpp. (#20131)
+- refresh patches to apply cleanly again
+  - 0001-pyo3-Disable-abi3-feature.patch
+  - matrix-synapse-1.4.1-paths.patch
+-------------------------------------------------------------------
 Tue Aug 18 20:26:21 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 1.159.0

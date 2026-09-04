@@ -231,7 +231,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.159.0
+Version:        1.160.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        AGPL-3.0-or-later

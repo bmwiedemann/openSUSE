@@ -50,7 +50,7 @@ Index: synapse/synapse/config/server.py
 ===================================================================
 --- synapse.orig/synapse/config/server.py
 +++ synapse/synapse/config/server.py
-@@ -931,7 +931,7 @@ class ServerConfig(Config):
+@@ -1002,7 +1002,7 @@ class ServerConfig(Config):
          listeners: list[dict] | None = None,
          **kwargs: Any,
      ) -> str:
