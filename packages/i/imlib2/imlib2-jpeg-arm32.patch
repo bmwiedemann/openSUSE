@@ -1,0 +1,31 @@
+Index: imlib2-1.12.7/src/modules/loaders/loader_jpeg.c
+===================================================================
+--- imlib2-1.12.7.orig/src/modules/loaders/loader_jpeg.c
++++ imlib2-1.12.7/src/modules/loaders/loader_jpeg.c
+@@ -19,7 +19,7 @@ typedef struct {
+ static void
+ _JPEGFatalErrorHandler(j_common_ptr jcp)
+ {
+-    ImLib_JPEG_data *jd = (ImLib_JPEG_data *) jcp->err;
++    ImLib_JPEG_data *jd = (ImLib_JPEG_data *)(void *) jcp->err;
+ 
+ #if 0
+     jcp->err->output_message(jcp);
+@@ -31,7 +31,7 @@ static void
+ _JPEGErrorHandler(j_common_ptr jcp)
+ {
+ #if 0
+-    ImLib_JPEG_data *jd = (ImLib_JPEG_data *) jcp->err;
++    ImLib_JPEG_data *jd = (ImLib_JPEG_data *)(void *) jcp->err;
+ 
+     jcp->err->output_message(jcp);
+     siglongjmp(jd->setjmp_buffer, 1);
+@@ -42,7 +42,7 @@ static void
+ _JPEGErrorHandler2(j_common_ptr jcp, int msg_level)
+ {
+ #if 0
+-    ImLib_JPEG_data *jd = (ImLib_JPEG_data *) jcp->err;
++    ImLib_JPEG_data *jd = (ImLib_JPEG_data *)(void *) jcp->err;
+ 
+     jcp->err->output_message(jcp);
+     siglongjmp(jd->setjmp_buffer, 1);

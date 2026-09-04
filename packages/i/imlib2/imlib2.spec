@@ -31,13 +31,15 @@
 %bcond_without svg
 %bcond_with postscript
 Name:           imlib2
-Version:        1.12.6
+Version:        1.12.7
 Release:        0
 Summary:        Image handling and conversion library
 License:        BSD-3-Clause
 Group:          Development/Libraries/X11
 URL:            https://sourceforge.net/projects/enlightenment
 Source:         https://downloads.sourceforge.net/project/enlightenment/imlib2-src/%{version}/%{name}-%{version}.tar.xz
+Patch0:         imlib-ico-loader.patch
+Patch1:         imlib2-jpeg-arm32.patch
 BuildRequires:  doxygen
 BuildRequires:  giflib-devel
 BuildRequires:  pkgconfig

@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Sep  2 12:33:17 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add imlib2-jpeg-arm32.patch: loader_jpeg: silence -Wcast-align
+  error on 32-bit ARM architectures.
+
+-------------------------------------------------------------------
+Wed Sep  2 12:19:29 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.12.7:
+  + AVIF saver: Fix saving images with alpha
+  + BMP loader: Fix alpha detection
+  + JXL loader: Change runners from max 4 to ncores/2
+  + JXL loader: Refactor runners handling
+  + PNM loader: add support for 16-bit (high depth) PGM/PPM/PAM
+  + Spec file: Add a %conf section
+  + TIFF saver: Fix saving images with alpha
+  + ico: validate palette size for indexed images
+  + id3: reject external APIC picture links
+  + j2k: limit decoded image dimensions
+  + loaders: limit decompressed temporary output
+  + png: validate APNG IHDR length
+  + scale: add bicubic scaling via uscaler
+  + scale: support flips with uscaler
+  + y4m: read high-bit-depth grayscale samples safely
+  + Updated tests.
+
+
+-------------------------------------------------------------------
+Wed Sep  2 12:11:15 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add imlib-ico-loader.patch: Fix ico loader: planes and bpp are
+  defined as uint16 in the spec, thus apply LE_16 macros on it
+  (boo#1278182).
+
+-------------------------------------------------------------------
 Wed Jan  7 21:47:30 UTC 2026 - Michal Suchanek <msuchanek@suse.de>
 
 - Update project URL
