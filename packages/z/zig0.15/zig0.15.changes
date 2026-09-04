@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Aug 14 12:21:21 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix the aarch64 build failure: lld20 ships no unversioned
+  /usr/bin/ld.lld, so CMAKE_LINKER_TYPE=LLD emitted a "-fuse-ld=lld"
+  that clang rejected. Select the version-matched linker through a
+  custom CMake linker type instead (boo#1193892)
+- Run the test suite for the first time: "%if 0%{?with test}" is
+  always false, so %check had never executed. Run it in a new
+  _multibuild "test" flavour rather than inline, so a suite that has
+  never run cannot block the packages that build against zig
+- Generate and ship the rendered language reference; the package
+  shipped upstream's docgen template, markers and all
+- Give zig-libs0.15 an honest License tag and ship the licence texts
+  of the code it bundles; it claimed plain MIT with no %license entry
+- Add PATCH-FIX-* headers to all patches, and point the
+  skip-localhost-test.patch tag at the local file instead of a remote
+  URL that no longer exists
+- Drop two stale rpmlintrc filters; rpmlint is now clean
+
+-------------------------------------------------------------------
 Wed Jan 28 03:29:54 UTC 2026 - Mihai Petracovici <petracvv@opensuse.org>
 
 - Remove reproducible.patch as it breaks system library lookups 
