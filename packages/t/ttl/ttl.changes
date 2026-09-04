@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep  1 12:37:04 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.22.0:
+  * chore(tui): make the render fingerprint exhaustive over its
+    inputs.
+  * perf(tui): skip snapshot+draw when idle (LAN-1222 experiment).
+  * chore: exclude demo assets (gif/tape) from published crate.
+
+-------------------------------------------------------------------
 Mon Aug 10 13:56:01 UTC 2026 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - don't assign capabilities in the spec file anymore, the permissions package
