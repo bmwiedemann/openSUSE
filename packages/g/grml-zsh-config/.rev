@@ -296,4 +296,16 @@
   * zshrc: check for /etc/os-release instead of /etc/debian_version.</comment>
     <requestid>1369178</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>de609081d60acaa01fc105ae9d7b68e0</srcmd5>
+    <version>0.20.2</version>
+    <time>1788518390</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.20.2:
+  * dreadme - View READMEs in /usr/share/doc
+  * dchange - allow opening specific changelog
+  * zshrc: update alias screen
+  * zshrc: fix dreadme and dchange</comment>
+    <requestid>1375508</requestid>
+  </revision>
 </revisionlist>

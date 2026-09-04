@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep  3 05:54:52 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.20.2:
+  * dreadme - View READMEs in /usr/share/doc
+  * dchange - allow opening specific changelog
+  * zshrc: update alias screen
+  * zshrc: fix dreadme and dchange
+
+-------------------------------------------------------------------
 Mon Aug  3 07:26:01 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.20.1:
