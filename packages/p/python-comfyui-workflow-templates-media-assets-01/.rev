@@ -88,4 +88,20 @@ comfyui-workflow-templates 0.11.52 meta package, which upstream
 releases in lockstep.</comment>
     <requestid>1375333</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3b2b7a056a8d10fbfdb713ae8fb2eed9</srcmd5>
+    <version>0.1.38</version>
+    <time>1788518325</time>
+    <user>anag_factory</user>
+    <comment>Update python-comfyui-workflow-templates-media-assets-01 to 0.1.38.
+
+Adds the four preview images for the new MiniMax H3 Max
+reference-to-video, PixVerse 6 reference-to-video and Bria
+increase-resolution templates. No existing asset changed or removed.
+
+Part of the coupled comfyui-workflow-templates set; submit this before
+python-comfyui-workflow-templates 0.11.54, whose floor is
+-media-assets-01 &gt;= 0.1.38.</comment>
+    <requestid>1375579</requestid>
+  </revision>
 </revisionlist>

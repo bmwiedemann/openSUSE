@@ -16,7 +16,7 @@
 #
 
 Name:           python-comfyui-workflow-templates-media-assets-01
-Version:        0.1.37
+Version:        0.1.38
 Release:        0
 Summary:        ComfyUI workflow template media assets bundle 01
 # Legal-Review-Notice: sdist ships no LICENSE file; upstream
