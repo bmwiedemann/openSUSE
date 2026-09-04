@@ -1,7 +1,7 @@
 #
 # spec file for package libbde
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 
 %define lname	libbde1
 Name:           libbde
-Version:        20240502
+Version:        20260903
 Release:        0
 Summary:        Library and tools to access Microsoft Bitlocker Disk Encrypted partitions
 License:        GFDL-1.1-or-later AND LGPL-3.0-or-later AND GFDL-1.3-or-later
@@ -158,6 +158,6 @@ find "%buildroot" -name "*.a" -print -delete
 
 %files %python_files
 %license COPYING*
-%python_sitearch/pybde.so
+%python_sitearch/pybde*
 
 %changelog
