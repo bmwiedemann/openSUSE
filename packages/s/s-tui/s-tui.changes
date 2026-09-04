@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Sep  2 07:05:07 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.5.0
+  New Features:
+  * The main new addition is adding throttle detect for supported
+    AMD CPUs. This is not as advanced as the Intel version, but if
+    a CPU is being throttled below it's base clock due to power or
+    temperature limitations, this will be indicated by a change in
+    color of the graph and of the statistic line
+  Changes:
+  * Unsafe handling of psutil.cpu_count().
+  * Change the dashed line, fixing #280.
+  * Replace built-in stresser's numpy kernel with dense matmul for
+    stronger thermal load.
+  * Handle dynamic Energy Performance Preference in Power Profile.
+  * Narrow EPP choices reactively when a write is rejected (Intel
+    fix).
+  * Do not show a strategy if it is not available.
+  * Save stress menu options between sessions.
+  * Feat/amd throttle detect.
+  * Fall back to /proc/device-tree/model for processor name.
+  * Disable buffering on MSR reads.
+  * fix: handle psutil sensor read failures.
+  * Handle non-IndexError failures in graph and summary updates.
+  * chore(lint): pyright basic mode, drop 21 stale urwid ignores.
+  * fix: stop rebuilding Fan/Rapl widget tree every cycle (100%
+    CPU after hours).
+
+-------------------------------------------------------------------
 Thu Mar 19 15:28:23 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.4.0
