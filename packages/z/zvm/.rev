@@ -129,4 +129,12 @@
   * remove dependancy on system tar for xz and tar decompression (forwarded request 1355090 from lmulling)</comment>
     <requestid>1355091</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>2a5273b44a83432ffd0ab5b1d90beb83</srcmd5>
+    <version>0.8.27</version>
+    <time>1788518358</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1375489</requestid>
+  </revision>
 </revisionlist>

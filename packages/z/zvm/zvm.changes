@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jul 18 14:06:45 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 0.8.27:
+  * added support for http.timeout 
+
+-------------------------------------------------------------------
 Mon May 25 12:15:16 UTC 2026 - Lucas Mulling <lucas.mulling@suse.com>
 
 - Update to 0.8.22:
