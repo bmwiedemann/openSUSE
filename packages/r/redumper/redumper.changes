@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Sep  2 11:53:18 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 746
+  * Support BU50N in flash_mt1959 (#436).
+  * Add LG-Based ASUS SDRW-8D2S-U (LG GP75N inside) (#434).
+  * MSF fix tools, some cleanup.
+  * clang release modules compiler bug workaround.
+  * Fix missing include (#427).
+  * Add initial UDF support (#403).
+  * dat and dat_extra split (#425).
+  * Extract Content IDs from PS4/PS5 PKGs (#390).
+  * toc fixes.
+
+-------------------------------------------------------------------
 Sun Jul 19 08:03:24 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 734
