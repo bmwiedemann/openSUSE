@@ -18,7 +18,7 @@
 
 
 Name:           vkquake
-Version:        1.35.0
+Version:        1.36.0
 Release:        0
 Summary:        Quake 1 port using Vulkan instead of OpenGL for rendering
 License:        GPL-2.0-or-later
