@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Sep  3 10:46:27 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.16.22
+  * New commands: Use `system.file_name.replace_slash.set` and
+    `system.torrent_name.use_sanitized.set` to replace forward
+    slashes in download and file names, defaults to _ and is
+    disabled by using an empty string.
+  * Reject an XMLRPC size limit above the SCGI content size limit.
+  * Expose `system.files.close_idle` for FileManager idle FD
+    timeout.
+
+-------------------------------------------------------------------
 Wed Aug 26 19:32:42 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.16.21
