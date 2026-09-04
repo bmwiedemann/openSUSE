@@ -244,6 +244,7 @@ BuildRequires:  pkgconfig(libplacebo) >= 6.292.0
 %else
 BuildRequires:  (pkgconfig(libplacebo) >= 4.192.0 with pkgconfig(libplacebo) < 6.292.0)
 %endif
+BuildRequires:  pkgconfig(SPIRV-Headers)
 BuildRequires:  pkgconfig(vulkan) >= 1.3.255
 %endif
 

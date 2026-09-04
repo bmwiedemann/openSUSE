@@ -23,4 +23,13 @@
     <comment>- Complete work-around-abi-break.patch for BUILD_ORIG=1 builds</comment>
     <requestid>1374985</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>36710b7d14f6b1d9fd5b24483553c287</srcmd5>
+    <version>9.0.1</version>
+    <time>1788518155</time>
+    <user>anag_factory</user>
+    <comment>- Add pkgconfig(SPIRV-Headers) BuildRequires: Support swscale
+  SPIR-V backend.</comment>
+    <requestid>1375215</requestid>
+  </revision>
 </revisionlist>

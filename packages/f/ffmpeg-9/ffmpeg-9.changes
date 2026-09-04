@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep  1 15:38:56 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add pkgconfig(SPIRV-Headers) BuildRequires: Support swscale
+  SPIR-V backend.
+
+-------------------------------------------------------------------
 Mon Aug 31 22:20:15 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Complete work-around-abi-break.patch for BUILD_ORIG=1 builds
