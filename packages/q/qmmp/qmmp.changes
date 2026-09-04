@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Thu Sep  3 07:50:39 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.4.2
+  * added feature to enable built-in OPL3 FM synthesizer in the
+    wildmidi plugin.
+  * fixed crash on startup when shuffle mode is enabled.
+- Update to version 2.4.1
+  * fixed Qt 6.2 support in the projectm plugin.
+  * fixed shortcuts settings in the skinned plugin.
+- Update to version 2.4.0
+  * added batch tag editor plugin (experimental).
+  * added built-in lyrics editor.
+  * added feature to display album/artist in the extra title of
+    the group.
+  * added plugin priority settings.
+  * added "OK" button in the track details dialog.
+  * added "OK" and "Cancel" buttons in the settings dialog.
+  * improved libqmmp/libqmmpui API:
+    + added some implicit shared classes to reduce pointer
+      manipulation.
+    + using PIMPL idiom.
+    + using move assignment constructors and operators.
+  * improved simple user interface:
+    + added dark mode support for playlist and visualization.
+    + added feature to hide status bar.
+    + reworked color settings.
+  * improved wilmidi plugin:
+    + using QIODevice-based input.
+    + added information about file format.
+    + added displaying of the libWildMidi version.
+    + changed default sample rate to 48000 Hz.
+  * improved lyrics plugin:
+    + added feature to fetch lyrics by user request.
+    + reduced timeout.
+  * added id3v2 tags support in the flac plugin.
+  * added QIODevice-based input in the wavpack plugin.
+  * added more information in the archive plugin.
+  * added metadata settings in the shout plugin.
+  * added WebM Opus support in the ffmeg plugin.
+  * added some optimizations in the mpeg plugin.
+  * reduced memory usage in the hotkey plugin.
+  * improved command-line support:
+    + added "--pl-select", "--pl-create" and "--pl-delete" options
+    + added support for playlist name as argument of the
+      "--pl-dump", "--pl-clear" and "--pl-play" options.
+    + changed output of the "--pl-list" and "--pl-dump" options.
+  * using QOpenGLFunctions class in the projectm plugin.
+  * fixed projectM 4.x support.
+  * updated translations.
+
+-------------------------------------------------------------------
 Sun Jun  7 17:55:30 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.3.3

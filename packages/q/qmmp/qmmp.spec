@@ -18,9 +18,9 @@
 
 %global __provides_exclude_from ^%{_libdir}/qmmp-[0-9\.]*/
 %define sover   2
-%define mver    2.3
+%define mver    2.4
 Name:           qmmp
-Version:        2.3.3
+Version:        2.4.2
 Release:        0
 Summary:        Qt-based Multimedia Player
 License:        GPL-2.0-or-later
