@@ -332,4 +332,13 @@
 - Update upstream URL in URL field (forwarded request 1370983 from glaubitz)</comment>
     <requestid>1371015</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>8533b179fb72ac046721dc370099e393</srcmd5>
+    <version>2.10.2</version>
+    <time>1788518294</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.10.2
+  * **handwritten:** centralize CONTRIBUTING.rst pointers (#17642) (forwarded request 1375586 from glaubitz)</comment>
+    <requestid>1375617</requestid>
+  </revision>
 </revisionlist>
