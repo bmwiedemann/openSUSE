@@ -121,4 +121,26 @@ Submitted together with -core 0.3.329, -json 0.1.64 and
 -media-assets-01 0.1.37.</comment>
     <requestid>1375336</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4af2236a112d04077b55cf792bb4592b</srcmd5>
+    <version>0.11.54</version>
+    <time>1788518327</time>
+    <user>anag_factory</user>
+    <comment>Update python-comfyui-workflow-templates to 0.11.54.
+
+Meta package: only the pinned bundle versions move (-core 0.3.331,
+-json 0.1.66, -media-assets-01 0.1.38), adding the MiniMax H3 Max
+reference-to-video, PixVerse 6 reference-to-video and Bria
+increase-resolution templates. Module code, README and license
+unchanged.
+
+Dependency floors raised to match. Upstream pins the bundles with '=';
+we ship '&gt;=' floors, because the constraint is one-directional (a
+bundle older than the manifest means a missing asset) and an exact pin
+makes the package uninstallable on every independent bundle release.
+
+Depends on the -core 0.3.331, -json 0.1.66 and -media-assets-01 0.1.38
+submissions filed alongside this one; please stage them together.</comment>
+    <requestid>1375580</requestid>
+  </revision>
 </revisionlist>

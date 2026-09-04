@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Sep  3 08:55:58 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.11.54:
+  * Only the pinned bundle versions move: -core to 0.3.331, -json
+    to 0.1.66 and -media-assets-01 to 0.1.38, which together add
+    the MiniMax H3 Max reference to video, PixVerse 6 reference to
+    video and Bria increase-resolution templates
+  * -media-api, -media-video, -media-image and -media-other pins
+    are unchanged
+  * Module code, README and license are unchanged from 0.11.52
+- Raise the bundle dependency floors to the versions this release
+  pins: -core >= 0.3.331, -json >= 0.1.66 and
+  -media-assets-01 >= 0.1.38; floors, not '=' pins, per the
+  in-spec comment
+
+-------------------------------------------------------------------
 Wed Sep  2 07:37:55 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.11.52:
