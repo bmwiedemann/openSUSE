@@ -1020,4 +1020,13 @@ source service setup which messed up my spec file.
     Always set serialize_policy sysfs attribute to 1 for RAID1 arrays</comment>
     <requestid>1366439</requestid>
   </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>15f2f0ff0aee08fc3962ac57ec22ebf9</srcmd5>
+    <version>16.1.7</version>
+    <time>1788518188</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 16.1.7:
+  * If no initrd is found rebuild it (gh#openSUSE/suse-module-tools#133)</comment>
+    <requestid>1375472</requestid>
+  </revision>
 </revisionlist>

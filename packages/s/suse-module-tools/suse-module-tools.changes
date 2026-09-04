@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 26 13:58:04 UTC 2026 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.1.7:
+  * If no initrd is found rebuild it (gh#openSUSE/suse-module-tools#133)
+
+-------------------------------------------------------------------
 Fri Jul 17 16:21:35 UTC 2026 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 16.1.6:
