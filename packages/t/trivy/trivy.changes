@@ -2,7 +2,8 @@
 Fri Aug 21 20:33:00 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - Update to version 0.74.0 (bsc#1276326, CVE-2026-50163,
-      bsc#1278002, CVE-2026-37236):
+      bsc#1278002, CVE-2026-37236,
+      bsc#1278624, CVE-2026-56855,CVE-2026-56854,CVE-2026-78662):
   * release: v0.74.0 [main] (#11037)
   * chore(deps): update golang.org/x modules (#11094)
   * chore(deps): bump the docker group with 2 updates (#11090)

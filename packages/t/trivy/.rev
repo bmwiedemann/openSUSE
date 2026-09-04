@@ -1746,4 +1746,13 @@ dropped patch file
       bsc#1258543, CVE-2026-24122):</comment>
     <requestid>1375224</requestid>
   </revision>
+  <revision rev="102" vrev="3">
+    <srcmd5>4a30c1c7bb6bb7077e6319997eb075f4</srcmd5>
+    <version>0.74.0</version>
+    <time>1788518572</time>
+    <user>anag_factory</user>
+    <comment>      bsc#1278002, CVE-2026-37236,
+      bsc#1278624, CVE-2026-56855,CVE-2026-56854,CVE-2026-78662):</comment>
+    <requestid>1375682</requestid>
+  </revision>
 </revisionlist>
