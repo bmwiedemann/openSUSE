@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep  2 16:19:49 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to 1.9.12
+  * Allow redirects for fetching cover images from media server
+  * Actually delete cover images temporary files
+  * Misc qss fixes for light mode
+  * Display additional metadata in tooltips
+  * Browser: add popup option to send a track range to the playlist
+
+-------------------------------------------------------------------
 Sun Jun  7 21:43:23 UTC 2026 - Holden Fried <holden@opensuse.org>
 
 - Update to 1.9.11:
