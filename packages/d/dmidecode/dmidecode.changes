@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep  1 08:40:47 UTC 2026 - Michal Suchanek <msuchanek@suse.de>
+
+- Display slot information for EDSFF (jsc#NVIDIA-68)
+  * dmidecode-Display-slot-information-for-EDSFF.patch
+
+-------------------------------------------------------------------
 Fri Dec 19 14:22:37 UTC 2025 - Jean Delvare <jdelvare@suse.com>
 
 - Update to upstream version 3.7:

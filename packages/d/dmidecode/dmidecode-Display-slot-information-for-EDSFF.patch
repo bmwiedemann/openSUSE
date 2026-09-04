@@ -1,0 +1,32 @@
+From 566922aed8f865553aac053bbc43a9a1d3e3594a Mon Sep 17 00:00:00 2001
+From: "Matthew R. Ochs" <mochs@nvidia.com>
+Date: Mon, 13 Apr 2026 11:55:31 +0200
+Subject: [PATCH] dmidecode: Display slot information for EDSFF
+
+Upstream: merged, expected in next release (3.8?)
+Git-commit: 566922aed8f865553aac053bbc43a9a1d3e3594a
+
+Include EDSFF slots when displaying slot information.
+
+Signed-off-by: Matthew R. Ochs <mochs@nvidia.com>
+Signed-off-by: Jean Delvare <jdelvare@suse.de>
+---
+ dmidecode.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/dmidecode.c b/dmidecode.c
+index 463f12b..cd33ec5 100644
+--- a/dmidecode.c
++++ b/dmidecode.c
+@@ -2423,6 +2423,8 @@ static void dmi_slot_information(u8 type, u8 code)
+ 		case 0xC2: /* PCI Express 5 */
+ 		case 0xC3: /* PCI Express 5 */
+ 		case 0xC4: /* PCI Express 6+ */
++		case 0xC5: /* EDSFF E1 */
++		case 0xC6: /* EDSFF E3 */
+ 			if (code)
+ 				pr_attr("PCI Express Generation", "%u", code);
+ 			break;
+-- 
+2.51.0
+

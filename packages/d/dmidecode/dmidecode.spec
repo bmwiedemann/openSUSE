@@ -1,7 +1,7 @@
 #
 # spec file for package dmidecode
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,8 @@ Source0:        http://download.savannah.gnu.org/releases/%{name}/%{name}-%{vers
 Source1:        http://download.savannah.gnu.org/releases/%{name}/%{name}-%{version}.tar.xz.sig
 # https://savannah.nongnu.org/project/memberlist-gpgkeys.php?group=dmidecode
 Source2:        %{name}.keyring
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+# https://cgit.git.savannah.nongnu.org/cgit/dmidecode.git/commit/?id=566922aed8f865553aac053bbc43a9a1d3e3594a
+Patch1:         dmidecode-Display-slot-information-for-EDSFF.patch
 BuildRequires:  xz
 ExclusiveArch:  %ix86 ia64 x86_64 %arm aarch64 riscv64
 
