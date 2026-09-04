@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Thu Sep  3 14:58:23 UTC 2026 - Detlef Steuer <detlef.steuer@gmx.de>
+
+-  VERSION 06.03.02 - 2026-09-03
+
+- NEW FEATURE: remind: Add the join() operator, which takes any number
+  of arguments.  It converts any non-STRING arguments to STRINGs,
+  concatenates them all and returns the result.  Thus, something like:
+
+      SET a "Hello, " + name + ".  Today is " + today() + "!"
+
+  can be written as:
+
+      SET a join("Hello, ", name, ".  Today is ", today(), "!")
+
+  and the join() function will execute more efficiently than repeated
+  + operators.
+
+- NEW FEATURE: remind: Add a new form of string using `backticks` as
+  the quote operator.  The new form of string is called an
+  interpolated string and it converts a string of the form:
+
+      `part1 [expr1] part2 [expr2] ...`
+
+  Into:
+
+      join("part1", expr1, "part2", expr2, ...)
+
+  The join example above can therefore be written:
+
+      SET a `Hello, [name].  Today is [today()]!`
+
+  If there are no square brackets in the interpolated string, it
+  simply becomes a string constant, so a convenient way to get
+  double-quotes in a string is:
+
+      SET a `Sure, your joke was "funny".`
+
+- DOCUMENTATION CHANGE: Use a Canadian landmark as an example in the
+  remind(1) man page rather than an American one.
+
+- INTERNAL CHANGE: The internal representation of strings has changed
+  to include the string length, which should make certain operations
+  more efficient.  There should be no other change in behavior
+  resulting from this change.
+
+-------------------------------------------------------------------
 Mon Aug 31 12:05:43 UTC 2026 - Detlef Steuer <detlef.steuer@gmx.de>
 
 - VERSION 06.03.01 - 2026-08-24

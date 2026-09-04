@@ -1205,4 +1205,38 @@
   fail.</comment>
     <requestid>1374853</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>a84198ba67a8dc4e6edb4500bc590592</srcmd5>
+    <version>6.3.2</version>
+    <time>1788518531</time>
+    <user>anag_factory</user>
+    <comment>-  VERSION 06.03.02 - 2026-09-03
+- NEW FEATURE: remind: Add the join() operator, which takes any number
+  of arguments.  It converts any non-STRING arguments to STRINGs,
+  concatenates them all and returns the result.  Thus, something like:
+      SET a &quot;Hello, &quot; + name + &quot;.  Today is &quot; + today() + &quot;!&quot;
+  can be written as:
+      SET a join(&quot;Hello, &quot;, name, &quot;.  Today is &quot;, today(), &quot;!&quot;)
+  and the join() function will execute more efficiently than repeated
+  + operators.
+- NEW FEATURE: remind: Add a new form of string using `backticks` as
+  the quote operator.  The new form of string is called an
+  interpolated string and it converts a string of the form:
+      `part1 [expr1] part2 [expr2] ...`
+  Into:
+      join(&quot;part1&quot;, expr1, &quot;part2&quot;, expr2, ...)
+  The join example above can therefore be written:
+      SET a `Hello, [name].  Today is [today()]!`
+  If there are no square brackets in the interpolated string, it
+  simply becomes a string constant, so a convenient way to get
+  double-quotes in a string is:
+      SET a `Sure, your joke was &quot;funny&quot;.`
+- DOCUMENTATION CHANGE: Use a Canadian landmark as an example in the
+  remind(1) man page rather than an American one.
+- INTERNAL CHANGE: The internal representation of strings has changed
+  to include the string length, which should make certain operations
+  more efficient.  There should be no other change in behavior
+  resulting from this change.</comment>
+    <requestid>1375637</requestid>
+  </revision>
 </revisionlist>
