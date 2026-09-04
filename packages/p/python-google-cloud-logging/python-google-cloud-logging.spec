@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-cloud-logging
-Version:        3.16.2
+Version:        3.16.3
 Release:        0
 Summary:        Stackdriver Logging API client library
 License:        Apache-2.0

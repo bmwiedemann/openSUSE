@@ -73,4 +73,13 @@
 - Update BuildRequires and Requires from setup.py (forwarded request 1370706 from glaubitz)</comment>
     <requestid>1370707</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8bd2eef7b988a8456e978d21f51bc2e2</srcmd5>
+    <version>3.16.3</version>
+    <time>1788518290</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.16.3
+  * **handwritten:** centralize CONTRIBUTING.rst pointers (#17642) (forwarded request 1375400 from glaubitz)</comment>
+    <requestid>1375419</requestid>
+  </revision>
 </revisionlist>
