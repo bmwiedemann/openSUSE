@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 31 03:37:07 UTC 2026 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Add gegl-CVE-2026-18300.patch: libs/rgbe: fix >200kb report
+  from ZDI (bsc#1276229, CVE-2026-18300)
+
+-------------------------------------------------------------------
 Sat Mar 28 22:57:39 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 0.4.70:

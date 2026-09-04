@@ -35,6 +35,8 @@ URL:            https://gegl.org/
 Source0:        https://download.gimp.org/pub/gegl/0.4/%{name}-%{version}.tar.xz
 Source1:        normalize-gir.pl
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM CVE-2026-18300.patch bsc#1276229 xwang@suse.com -- libs/rgbe:fix >200kb report from ZDI
+Patch0:         gegl-CVE-2026-18300.patch
 
 BuildRequires:  ImageMagick
 BuildRequires:  asciidoc

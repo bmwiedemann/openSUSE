@@ -822,4 +822,12 @@ Update the changelog to record security CVE fixed in previous update. (CVE-2025-
     <comment></comment>
     <requestid>1343522</requestid>
   </revision>
+  <revision rev="93" vrev="2">
+    <srcmd5>3bc40ab4e5b92a66c67312cb1f2bba82</srcmd5>
+    <version>0.4.70</version>
+    <time>1788518174</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1375020</requestid>
+  </revision>
 </revisionlist>
