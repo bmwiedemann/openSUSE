@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Tue Sep  1 16:38:07 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 1.12.3:
+  * Validate hash algorithm for use with RSA modulus
+  * Validate parameters of Balloon KDF
+  * Validate parallelism of Argon2 KDF
+  * Fix parsing quoted parts and CRLF/LFCR in s-expression
+  * Support BUFLEN check for GCRYMPI_FMT_SSH
+  * Fix RSA PSS verify message length checking
+  * Avoid a NULL ptr deref due to a unsupported genkey flag for
+    ECC
+  * Assert 32 KiB input cap in gcm_ctr_encrypt
+  * Fix assertion failure in OCB when a buffered block becomes
+    block 65536
+  * Fix OOB read in IMIT MAC verify of GOST28147
+  * Fix CMAC block-count truncation for 64 GiB writes
+  * Fix AEAD spurious byte-counter carry for 4 GiB adds
+  * Validate all KEM input lengths
+  * Add length check of DATALEN when parsing s-expression
+  * Only accept canonical value for S with EdDSA
+  * Only accept canonical signatures for RSA
+  * Fix an assertion failure for invalid small-order Ed25519 public
+    keys
+  * Validate length of supplied receiver public-key length in DHKEM
+    decapsulation
+  * Use a more strict value for the PKCS#1 minimal frame length.
+  * Use just strong random for the Dilithium signature nonce and the
+    Kyber encapsulation coins
+  * Allow internal users to skip fast random poll for ciphers and
+    hashes
+  * Speedup sntrup761 by defer reduction in polynomial
+    multiplication, reading random with a single call, and reducing
+    freeze helpers w/o division
+  * Avoid byte-wise load/store on RISC-V with Zicclsm
+  * Use unaligned vector memory access on RSIV-V when supported
+  * Add Intel SM4 instructions accelerated AVX512 and AVX2
+    implementation
+  * Add Intel SM3 extension implementation
+  * Add Intel SHA512 extension implementation
+  * kyber: Accept and return a seed using the gcry_pk_genkey API
+  * Add curve "ietf25" as alternative to "Curve25519" with exact
+    RFC-8410 semantics.  The name "X25519" was already used as an
+    alias, thus this new name.
+  * Add straight-line speculation hardening for function ends
+  * Fix constant time memequal check for SM2
+  * Add post-quantum algorithm benchmarking to bench-slope
+  * Due to the minor API updates and but with no newer branch
+    released the SO name has been updated.
+- update upstream signing key
+
+-------------------------------------------------------------------
 Mon Apr 20 10:01:16 UTC 2026 - Angel Yankov <angel.yankov@suse.com>
 
 - Update to 1.12.2

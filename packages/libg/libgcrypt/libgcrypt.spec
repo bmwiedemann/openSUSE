@@ -21,7 +21,7 @@
 %define libsoname %{name}%{libsover}
 %define hmac_key orboDeJITITejsirpADONivirpUkvarP
 Name:           libgcrypt
-Version:        1.12.2
+Version:        1.12.3
 Release:        0
 Summary:        The GNU Crypto Library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later
@@ -33,7 +33,7 @@ Source2:        baselibs.conf
 Source3:        random.conf
 Source4:        hwf.deny
 # https://www.gnupg.org/signature_key.html
-Source5:        https://gnupg.org/signature_key.asc#/%{name}.keyring
+Source5:        %{name}.keyring
 Source99:       libgcrypt.changes
 Patch1:         libgcrypt-1.10.0-allow_FSM_same_state.patch
 #PATCH-FIX-OPENSUSE Do not pull revision info from GIT when autoconf is run
@@ -91,7 +91,6 @@ Group:          Development/Libraries/C and C++
 Requires:       %{libsoname} = %{version}
 Requires:       glibc-devel
 Requires:       jitterentropy-devel >= 3.4.0
-Requires:       libgpg-error-devel >= 1.49
 
 %description devel
 Libgcrypt is a general purpose library of cryptographic building
