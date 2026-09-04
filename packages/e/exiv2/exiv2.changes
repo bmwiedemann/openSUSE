@@ -3,7 +3,7 @@ Mon Aug 31 10:52:28 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.28.9 (bsc#1277579, CVE-2026-68547,
                     bsc#1277579, CVE-2026-68546,
-                    CVE-2026-49275):
+                    bsc#1277791, CVE-2026-49275):
   * https://github.com/Exiv2/exiv2/security/advisories/GHSA-3695-mjv8-3r52
   * https://github.com/Exiv2/exiv2/security/advisories/GHSA-jcgh-p9v3-pw6j
   * https://github.com/Exiv2/exiv2/security/advisories/GHSA-hxph-pv7w-8649

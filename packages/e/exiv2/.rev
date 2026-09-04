@@ -955,4 +955,12 @@
   * https://github.com/Exiv2/exiv2/security/advisories/GHSA-pwvq-9w4q-786w</comment>
     <requestid>1374882</requestid>
   </revision>
+  <revision rev="87" vrev="2">
+    <srcmd5>4dc41762dd3ad5e4d7771537446b927f</srcmd5>
+    <version>0.28.9</version>
+    <time>1788518150</time>
+    <user>anag_factory</user>
+    <comment>                    bsc#1277791, CVE-2026-49275):</comment>
+    <requestid>1375186</requestid>
+  </revision>
 </revisionlist>
