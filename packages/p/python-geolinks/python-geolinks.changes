@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Sep  3 17:13:37 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.2.3:
+  * 0.2.1: drop Python 2 support, add type annotations and a
+    click-based geolinks command line tool
+  * 0.2.2: ship LICENSE.md in the sdist, fix the version and
+    dependency declarations in setup.py
+  * 0.2.3: ship requirements.txt in the sdist, without which the
+    0.2.2 sdist could not be built
+- Add python-click requirement, new upstream dependency of the
+  geolinks command line tool
+- Register the geolinks command through libalternatives
+- Follow upstream rename of LICENSE to LICENSE.md
+- Run the test suite via pytest
+- Modernise spec, drop Group tag
+
+-------------------------------------------------------------------
 Tue Jun 17 04:37:51 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Use pyproject macros to build and install.

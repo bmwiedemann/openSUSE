@@ -15,4 +15,28 @@
     <comment></comment>
     <requestid>1291512</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>298858f225550b566f02e1cfd7ef5d16</srcmd5>
+    <version>0.2.3</version>
+    <time>1788518565</time>
+    <user>anag_factory</user>
+    <comment>Update python-geolinks to 0.2.3 (0.2.1 and 0.2.2 crossed).
+
+- 0.2.1 drops Python 2, adds type annotations and a click-based
+  geolinks command line tool; registered here via libalternatives
+- Add python-click: the RPM carried no click dependency at all, so
+  both &quot;import geolinks&quot; and the new CLI failed on a fresh install
+  (rpmlint W: python-missing-require). No floor invented - upstream
+  requirements.txt is the bare name
+- 0.2.2 renames LICENSE to LICENSE.md and fixes setup.py metadata
+- 0.2.3 ships requirements.txt in the sdist, without which the
+  0.2.2 sdist could not be built
+- Source stays the tag archive: the PyPI sdist still ships no tests/
+- %check now runs via %pytest; spec-cleaner clean, Group dropped,
+  %setup -&gt; %autosetup
+
+Local build openSUSE_Tumbleweed/aarch64 green, rpmlint 0 badness,
+1 test passed per flavour (python313, python314).</comment>
+    <requestid>1375669</requestid>
+  </revision>
 </revisionlist>
