@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Mon Aug 31 17:18:09 UTC 2026 - Gerald Chen <gerald_chen@foxmail.com>
+
+- Update to version 8.2.9:
+  * Updated NEWS
+  * Small improvements to the autogain plugin
+  * Bump github/codeql-action from 4.37.8 to 4.37.9
+  * pipewire: set node.link-group on virtual and internal filter nodes
+  * Translated using Weblate (Italian)
+  * Translated using Weblate (Estonian)
+  * Translated using Weblate (Estonian)
+  * Translated using Weblate (Estonian)
+  * Refactor security warning format in README.md
+  * Translated using Weblate (Estonian)
+  * Translated using Weblate (Italian)
+  * Translated using Weblate (Estonian)
+  * Clarify security warning with direct link to discussion
+  * Updated readme
+  * Translated using Weblate (Estonian)
+  * Translated using Weblate (Indonesian)
+  * Added translation using Weblate (Estonian)
+  * Translated using Weblate (Indonesian)
+  * Added translation using Weblate (Estonian)
+  * Translated using Weblate (Chinese (Simplified Han script))
+  * Bump github/codeql-action from 4.37.7 to 4.37.8
+  * Translated using Weblate (Irish)
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Russian)
+  * Translated using Weblate (Chinese (Traditional Han script))
+  * Translated using Weblate (Russian)
+  * Translated using Weblate (French)
+  * Only hide window on failure
+  * Updated translation template
+  * docs: rewrite midside equalizer docs in natural tone
+  * feat: implement Mid-Side Equalizer effect
+  * Translated using Weblate (German)
+  * Bump github/codeql-action from 4.37.6 to 4.37.7
+  * Reverb and crossfeed: do not bind the presets button to the show native plugin window key
+  * Translated using Weblate (French)
+  * Translated using Weblate (Chinese (Simplified Han script))
+  * Translated using Weblate (French)
+  * Translated using Weblate (Romanian)
+  * Translated using Weblate (Chinese (Simplified Han script))
+  * Translated using Weblate (Spanish (Mexico))
+  * Translated using Weblate (Czech)
+  * fix preset autoload on volume changes
+  * Bump github/codeql-action from 4.37.5 to 4.37.6
+  * Bump github/codeql-action from 4.37.4 to 4.37.5
+  * Translated using Weblate (Polish)
+  * Translated using Weblate (Irish)
+  * Translated using Weblate (Chinese (Traditional Han script))
+  * Translated using Weblate (Russian)
+  * Translated using Weblate (Italian)
+  * Translated using Weblate (French)
+  * The automatic global bypass reset on device change can be disabled by the user
+  * The automatic global bypass reset on device change can be disabled by the user
+  * Bump github/codeql-action from 4.37.3 to 4.37.4
+  * Translated using Weblate (French)
+  * Duplex devices can be selected as input/output devices
+  * Translated using Weblate (Irish)
+  * Upgrade to flatpak kde runtime 6.11 Means we can drop our build qt6-graphs which often ran into ABI/API mismatches with the QT build in the kde runtime, which caused bugs when the kde flatpak runtime was updated outside of our control.
+  * Protecting lilv_instance_deactivate with a mutex
+  * Bump github/codeql-action from 4.37.1 to 4.37.3
+  * Translated using Weblate (Italian)
+
+-------------------------------------------------------------------
 Wed Jul 22 02:09:22 UTC 2026 - Gerald Chen <gerald_chen@foxmail.com>
 
 - Update to version 8.2.8:
