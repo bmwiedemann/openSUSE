@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Sep  3 08:32:12 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to the version 4.61.0:
+  - Update translations.
+  - Don't confuse usecache with referer - position vs named
+    params.
+  - adapter_potionsandsnitches: http->https Closes #1404
+  - Clear INI Snippet setting between Add URL dialog calls.
+  - base_xenforo2forum_adapter: Fix non-first post TOC stories
+    using BrowserCache
+  - base_xenforo2forum_adapter: Reader mode--don't try pages < 1
+  - Remove python2 support code
+  - Update included plugin dependencies to Python 3.8 (Calibre 5)
+
+-------------------------------------------------------------------
 Sat Aug  1 18:04:04 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to the version 4.60.0:
