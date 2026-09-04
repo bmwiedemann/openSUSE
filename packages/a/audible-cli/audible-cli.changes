@@ -1,0 +1,265 @@
+-------------------------------------------------------------------
+Thu Sep  3 05:51:08 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.0:
+  Breaking:
+  * Log output now goes to stderr, so stdout carries only what a command
+    produces. Every log line went to stdout before, which handed audible api
+    library | jq prose along with the JSON and left a caller no way to tell the
+    two apart. A script that redirected stdout to keep the log, such as audible
+    download … > log.txt, needs 2> or the new --log-file from now on (#306)
+  * audible manage auth-file add asks whether the auth file should have a
+    password. --password has always written an encrypted file, but it was the
+    only option of that command without a prompt, so the questions it asks
+    walked straight past the one about encryption while quickstart asked
+    outright. A script that passed every other option has to pass --password ''
+    as well from here on, to say that it wants none (#313, #315)
+  Fixed:
+  * audible manage auth-file add --external-login no longer asks for an Audible
+    username and password. The browser performs that login: build_auth_file()
+    hands the two values to Authenticator.from_login, while the external branch
+    calls from_login_external, which is given the marketplace and the callback
+    that opens the browser. They were asked for and dropped (#314, #315)
+  * audible manage auth-file remove reports a wrong password instead of raising
+    a traceback about PKCS7 padding (#313, #315)
+  * --version no longer exits 1 with the error glued to the version when the
+    update check cannot reach GitHub. The version now prints on its own line
+    and the failure is a warning on stderr (#309)
+  * The deprecated resolve_podcats() handed back a coroutine instead of
+    awaiting it, so it warned about its own spelling and then did nothing
+    (#305)
+  * --resolve-podcasts now takes every parent podcast out of the library, not
+    every second one. The parents were removed from the very list being walked,
+    so each removal moved the rest along underneath the walk and the following
+    item was stepped over. Where parents sit next to each other, the ones left
+    behind became download jobs that cannot succeed, a parent having no audio
+    of its own (#305)
+  * A podcast episode that is already downloaded no longer costs a voucher on
+    every run. The licence was requested before the file was found to be there,
+    which spends one of the licences Audible grants per title and per day
+    (#299)
+  * A cover size a title does not offer is reported as a warning, not an error,
+    so a batch download carries on with the rest (#300)
+  * A request to Audible's CDE host is tried up to three times when it gets no
+    answer. That host answers the AAX download request and drops connections
+    often enough to fail a run that would otherwise have finished (#298)
+  * A failed download job now names the command, the title and the ASIN,
+    instead of leaving a message that says only that something went wrong
+    (#298)
+  * AAXC downloads of podcast episodes are no longer rejected over their
+    audio/mp3 content type (#297)
+  * The content type of a download is compared by its media type, so parameters
+    such as ; charset=utf-8 and a difference in casing no longer decide whether
+    a file is accepted (#297)
+  Changed:
+  * Nine remaining status messages became log messages, so --verbosity reaches
+    them too (#306)
+  * --version prints the version alone; the update notice goes to stderr, where
+    a pipe no longer picks it up (#306)
+  * Prompts and the sentences explaining them moved to stderr with the rest, so
+    a redirected stdout no longer swallows half of quickstart (#306)
+  * Progress bars hold their line: a ruled block at the bottom of the terminal
+    with one numbered line per worker and one for the queue. It follows the
+    window through a resize and keeps the queue line when there is no room for
+    the rest; --no-progress turns it off (#302)
+  * A title too long for the window loses its middle instead of pushing the bar
+    and the counts off the line (#302)
+  Added:
+  * audible manage auth-file encrypt puts a password on an auth file that has
+    none, and audible manage auth-file decrypt takes it off again. Encryption
+    could only be chosen while a device was being registered, so a file written
+    in the open stayed that way short of deregistering and starting over.
+    Whatever is not given on the command line is asked for, so a password need
+    not be typed where the shell keeps it, and a script that passes both
+    options is asked nothing. An auth file holds the registration of a device
+    and half of one can only be replaced by registering again, so the rewrite
+    writes beside the file, flushes it and the directory, and moves it into
+    place in a single step with the permissions the old file had. A symlink is
+    followed to what it points at; a file with a second hard link, an empty
+    password, a file that is not an auth file and one already in the shape the
+    command would produce are all refused without anything being written (#313,
+    #315)
+  * --log-file PATH writes the log to a file as well, with timestamp, module
+    and line (#306)
+  * NO_COLOR and FORCE_COLOR decide whether diagnostics are coloured (#306)
+  * Standalone builds for arm64 on Linux and Windows; the macOS build stays
+    Apple silicon only (#296)
+  * Release download names now carry the architecture, for example
+    audible_win_arm64.zip. The previous names stay alongside them until 15
+    November 2026 (#296)
+  * A pycryptodome extra for platforms that cryptography publishes no wheel for (#296)
+  * Documentation for running audible-cli in CI with GitHub Actions through the
+    setup-audible-cli action, storing only the two device credentials that ADP
+    signing needs (#303)
+
+-------------------------------------------------------------------
+Mon Aug 17 06:20:13 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.5.1:
+  Fixed:
+  * build_auth_file() no longer raises an AttributeError when its filename is
+    passed as a str, which its signature allows.  The failure happened after
+    the login had already registered the device, so the registration was lost
+    without the auth file being written (#273)
+  * The convert-oa-file plugin works again. It has failed to even load since
+    v0.2 because it imported pass_session from the wrong module, and behind
+    that sat a tuple passed to pathlib.Path(), a call to a Session method that
+    does not exist, an expiry read as seconds although OpenAudible writes
+    milliseconds, a KeyError on cookie fields that are optional, and a profile
+    name from the converted file that could write outside the config directory
+    (#286)
+  * The size of a finished audiobook download is checked again. The check
+    existed but nothing ever called it, so a file that arrived at a different
+    length than announced was renamed to its final name and counted as a
+    success. Covers and PDFs take the older download path and were never
+    affected (#291)
+- Migrate from setup.py to pyproject.toml
+
+-------------------------------------------------------------------
+Thu Aug  6 07:45:26 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.5.0:
+  Breaking:
+  * parse_api_datetime() and datetime_type now return timezone-aware UTC values
+    instead of naive ones. Plugins comparing them against naive datetimes raise
+    TypeError, and .isoformat() output gains a +00:00 suffix (#266)
+  Changed:
+  * API timestamps, library date filters and voucher deadlines are now
+    timezone-aware UTC; naive --start-date/--end-date input is interpreted as
+  * UTC, as the option help already stated (#266)
+  * Replaced datetime.utcnow() and datetime.utcfromtimestamp(), deprecated since Python 3.12 (#266)
+  * Without --ignore-errors, the download command now really aborts on the
+    first failure: running downloads finish, queued ones are skipped (#235)
+  * The download command exits non-zero when a download job raised an error,
+    also with --ignore-errors. Failures that are only logged, such as an
+    unknown ASIN or a download rejected by its HTTP status, still exit zero for
+    now (#256)
+  * --jobs now rejects values below 1 instead of accepting 0, which queued work
+    that no consumer would ever pick up (#235)
+  Fixed:
+  * Accept API timestamps with and without fractional seconds, fixing the
+    --start-date/--end-date crash on podcast episodes and the mirror-image
+    crash in is_published() (#264)
+  * Keep items whose date cannot be determined instead of crashing with an
+    AttributeError, when a date filter is active and an item carries no
+    library_status (#268)
+  * Skip the voucher refresh check when refresh_date is empty or null rather
+    than only when the key is absent, instead of raising a TypeError (#268)
+  * Treat an unknown publication_datetime as published rather than crashing,
+    and let ItemNotPublished report the ASIN without a countdown when no usable
+    date is available (#268)
+  * Reach LicenseDenied and NoDownloadUrl as intended when
+    license_denial_reasons, content_metadata or content_url are null, instead
+    of raising a TypeError or AttributeError (#268)
+  * audible manage config edit no longer crashes with TypeError: 'PosixPath'
+    object is not iterable; click.edit() accepts a str or an iterable of them,
+    but not a pathlib.Path (#248)
+  * The download command no longer hangs forever after failed downloads. A
+    failing job killed its consumer, and once every --jobs consumer had died
+    the queue was never drained (#235, #239)
+
+-------------------------------------------------------------------
+Mon Aug  3 07:45:52 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.4.0:
+  Added:
+  * The --page-size option as a replacement for the now deprecated --bunch-size option.
+  * Optional cryptography extra (pip install "audible-cli[cryptography]") that
+    enables audible's Rust-accelerated crypto backend for faster cryptographic
+    operations (activation bytes, AAX/AAXC decryption).
+  * Prebuilt release binaries now bundle the Rust-accelerated cryptography
+    backend, statically linked via PyInstaller, so the standalone executables
+    benefit from it out of the box.
+  Changed:
+  * The --bunch-size option is now deprected and will be replaced with option --page-size some releases later.
+  * Raised the minimum supported Python to >=3.11,<3.15 (dropped Python 3.10, added 3.14).
+  * Bumped audible to >=0.11.0 and httpx to >=0.27.2,<0.29.
+  * Raised minimum versions for aiofiles, click, Pillow, tabulate, tqdm, questionary, packaging, and colorama.
+  Fixed:
+  * Allow the audio/mp4 content type when downloading audiobooks, so AAX/AAXC
+    downloads are no longer rejected when Audible responds with audio/mp4.
+
+-------------------------------------------------------------------
+Tue Nov  8 10:21:12 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.2.4:
+  Added:
+  * Allow download multiple cover sizes at once. Each cover size
+    must be provided with the --cover-size option
+  Changed:
+  * Rework start_date and end_date option
+  Bugfix:
+  * In some cases, the purchase date is None. This results in an
+    exception. Now check for purchase date or date added and skip,
+    if date is missing
+
+-------------------------------------------------------------------
+Tue Nov  8 10:20:55 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.2.2:
+  * PDFs could not be found using the download command (#112)
+
+-------------------------------------------------------------------
+Tue Nov  8 10:19:35 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.2.1:
+  Changed:
+  * by default a licenserequest (voucher) will not include chapter
+    information by default
+  * moved licenserequest part from models.LibraryItem.get_aaxc_url
+    to its own models.LibraryItem.get_license function
+  *  allow book tiltes with hyphens (#96)
+  * if there is no title fallback to an empty string (#98)
+  * reduce response_groups for the download command to speed up
+    fetching the library (#109)
+  Fixed:
+  * Extreme quality is not supported by the Audible API anymore (#107)
+  * download command continued execution after error (#104)
+  * Currently paths with dots will break the decryption (#97)
+  * models.Library.from_api_full_sync called models.Library.from_api
+    with incorrect keyword arguments
+  Misc:
+  * reworked cmd_remove-encryption plugin command (e.g. support nested
+    chapters, use chapter file for aaxc files)
+  * added explanation in README.md for creating a second profile
+
+-------------------------------------------------------------------
+Tue Nov  8 10:18:17 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.2.0:
+  Added:
+  * --aax-fallback option to download command to download books in
+    aax format and fallback to aaxc, if the book is not available as aax
+  * --annotation option to download command to get bookmarks and notes
+  * questionary package to dependencies
+  * add and remove subcommands to wishlist
+  * full_response_callback to utils
+  * export_to_csv to utils
+  * run_async to decorators
+  * pass_client to decorators
+  * profile_option to decorators
+  * password_option to decorators
+  * timeout_option to decorators
+  * bunch_size_option to decorators
+  * ConfigFile.get_profile_option get the value for an option for a given profile
+  * Session.selected.profile to get the profile name for the current session
+  * Session.get_auth_for_profile to get an auth file for a given profile
+  * models.BaseItem.create_base_filename to build a filename in given mode
+  * models.LibraryItem.get_annotations to get annotations for a library item
+  Changed:
+  * bump audible to v0.8.2 to fix a bug in httpx
+  * rework plugin examples in plugin_cmds
+  * rename config.Config to config.ConfigFile
+  * move click_verbosity_logger from _logging to decorators and rename it to
+    verbosity_option
+  * move wrap_async from utils to decorators
+  * move add_param_to_session from config to decorators
+  * move pass_session from config to decorators
+  * download command let you now select items when using --title option
+  Fixed:
+  * the library export and wishlist export command will now export to csv correctly
+
+-------------------------------------------------------------------
+Fri Apr  8 16:18:07 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Initial package of audible-cli 0.1.3 for openSUSE
