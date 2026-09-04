@@ -16,9 +16,10 @@
 #
 
 
+%define __builder ninja
 %define _name PrismLauncher
 Name:           prismlauncher
-Version:        11.0.3
+Version:        11.1.0
 Release:        0
 Summary:        A custom launcher for Minecraft
 License:        GPL-3.0-only AND Apache-2.0 AND LGPL-3.0-only AND OFL-1.1 AND LGPL-2.1-only AND MIT AND BSD-3-Clause
@@ -29,6 +30,7 @@ BuildRequires:  extra-cmake-modules
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  java-17-devel
+BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(Qt6Concurrent)
 BuildRequires:  cmake(Qt6Core)
@@ -67,6 +69,7 @@ A custom launcher for Minecraft that allows you to easily manage multiple instal
 sed -i -e 's|\$ORIGIN/||' -e 's/\${TODAY}/unknown/' CMakeLists.txt
 
 %build
+export CMAKE_GENERATOR=Ninja
 %cmake -LA \
        -DLauncher_BUILD_PLATFORM="openSUSE" \
        -DLauncher_QT_VERSION_MAJOR="6"
