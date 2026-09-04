@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Aug 30 15:48:48 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 5.0:
+  * libpoke SONAME bumped to libpoke.so.2 (libtool version-info 2:0:0) -
+    lib subpackage renamed libpoke1 -> libpoke2; from this release upstream
+    commits to not breaking the libpoke ABI going forward
+  * Floating-point arithmetic support for uint<32>/uint<64> (IEEE 754
+    single/double precision), with a full set of dotted operators
+    (.+ .- .* ./ ./^ .** .% .++ .-- and comparisons)
+  * Reactive IO spaces: mapped PVM values are only re-mapped on writes to
+    their extent, a large performance win for read-intense programs
+  * Fixed undefined behavior around left-shifts; nested integral
+    struct/union field writes now materialize correctly in IO space
+  * IOS_F_TRUNCATE flag re-introduced; hyperlink server can bind to a
+    user-specified port (-p/--hserver-port)
+  * New sqrtf/sqrtd standard library functions; closure pretty-printer
+    now includes the closure's name
+  * The manual is no longer split into poke.info-{1,2,3}; instead a new
+    "GNU poke Internals and Development Guide" (pokeint.info) is shipped
+    alongside poke.info
+  * Upstream dropped etc/poke-map-mode.el; emacs-poke no longer ships it
+    (poke-ras-mode.el is unaffected)
+  * New utility pk-bpfcoredump, to dump BPF CO-RE relocations
+  * See upstream NEWS for the full list of changes since 4.3
+
+-------------------------------------------------------------------
 Thu Jun 12 20:56:58 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 4.3

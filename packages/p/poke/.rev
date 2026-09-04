@@ -103,4 +103,24 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1287022</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>58161ad59a48dae19edc9f874176cbdd</srcmd5>
+    <version>5.0</version>
+    <time>1788518515</time>
+    <user>anag_factory</user>
+    <comment>Update to 5.0 (major version):
+- libpoke SONAME bumped to libpoke.so.2 (version-info 2:0:0); lib subpackage
+  renamed libpoke1 -&gt; libpoke2. From this release upstream commits to not
+  breaking the libpoke ABI going forward.
+- Floating-point arithmetic support for uint&lt;32&gt;/uint&lt;64&gt;, reactive IO
+  spaces, left-shift UB fixes, new sqrtf/sqrtd, new pk-bpfcoredump utility.
+- Manual restructured: no longer split into poke.info-{1,2,3}; a new
+  pokeint.info (Internals and Development Guide) is shipped instead.
+  Upstream also dropped etc/poke-map-mode.el (poke-ras-mode.el unaffected).
+- Note for the reviewer: editors/poke-dwarf BuildRequires poke-devel and
+  currently resolves against libpoke1; it will need a rebuild once
+  libpoke2 publishes (soname-bump rebuild scope, no other consumers found
+  via _builddepinfo). (forwarded request 1374722 from amanzini)</comment>
+    <requestid>1375622</requestid>
+  </revision>
 </revisionlist>

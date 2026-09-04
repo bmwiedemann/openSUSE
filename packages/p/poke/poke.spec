@@ -1,7 +1,7 @@
 #
 # spec file for package poke
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,9 +17,9 @@
 #
 
 
-%define sover   1
+%define sover   2
 Name:           poke
-Version:        4.3
+Version:        5.0
 Release:        0
 Summary:        An interactive, extensible editor for binary data
 License:        GPL-3.0-or-later
@@ -103,15 +103,14 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %doc README AUTHORS NEWS
 %{_bindir}/%{name}
 %{_bindir}/pk-bin2poke
+%{_bindir}/pk-bpfcoredump
 %{_bindir}/pk-jojopatch
 %{_bindir}/pk-strings
 %{_bindir}/poked
 %{_bindir}/pokefmt
 %{_datadir}/%{name}
 %{_infodir}/%{name}.info%{?ext_info}
-%{_infodir}/%{name}.info-1%{?ext_info}
-%{_infodir}/%{name}.info-2%{?ext_info}
-%{_infodir}/%{name}.info-3%{?ext_info}
+%{_infodir}/pokeint.info%{?ext_info}
 %{_mandir}/man1/%{name}.1%{?ext_man}
 %{_mandir}/man1/pokefmt.1%{?ext_man}
 %{_mandir}/man1/poked.1%{?ext_man}
@@ -132,7 +131,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %license COPYING
 %dir %{_datadir}/emacs
 %dir %{_datadir}/emacs/site-lisp
-%{_datadir}/emacs/site-lisp/poke-map-mode.el
 %{_datadir}/emacs/site-lisp/poke-ras-mode.el
 
 %files -n vim-%{name}
