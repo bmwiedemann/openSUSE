@@ -19,7 +19,7 @@
 
 %define sover 45
 Name:           gpgme
-Version:        2.1.2
+Version:        2.2.0
 Release:        0
 Summary:        Programmatic library interface to GnuPG
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later

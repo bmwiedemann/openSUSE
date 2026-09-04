@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep  3 05:56:18 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 2.2.0:
+  * gpgme_verify_result_t now provides issuer serial number and
+    issuer name for S/MIME certificates used for signing that are
+    not included in a signature
+  * Handle the new SIGINFO status line
+  * Ignore TRUST_ status lines if no NEWSIG was seen
+
+-------------------------------------------------------------------
 Sun Jul  5 16:01:45 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 2.1.2:
