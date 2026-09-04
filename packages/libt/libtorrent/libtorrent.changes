@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep  3 09:37:37 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.16.22
+  * Reject leading zeros in a bencode integer regardless of sign.
+  * Add DHT peer nodes learned from the peer protocol PORT message.
+  * Optionally sanitize download and file names by replacing slash
+    with underscore.
+
+-------------------------------------------------------------------
 Wed Aug 26 19:28:47 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.16.21
