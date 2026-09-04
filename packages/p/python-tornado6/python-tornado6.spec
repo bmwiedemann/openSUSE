@@ -29,8 +29,9 @@ Source99:       python-tornado6-rpmlintrc
 Patch0:         ignore-resourcewarning-doctests.patch
 # PATCH-FIX-OPENSUSE increase compatibility with newer pycares versions
 Patch1:         pycares-getaddrinfo.patch
-BuildRequires:  %{python_module base >= 3.9}
-BuildRequires:  %{python_module devel}
+# PATCH-FIX-UPSTREAM Based on gh#tornadoweb/tornado#3624
+Patch2:         run-multi-process-in-fresh-process.patch
+BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pycares}
 BuildRequires:  %{python_module pycurl}

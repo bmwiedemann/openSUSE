@@ -346,4 +346,13 @@
   (upstream)</comment>
     <requestid>1373067</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>dfc6d3d0c601b7d08a497cdf842b1bc9</srcmd5>
+    <version>6.5.8</version>
+    <time>1788518170</time>
+    <user>anag_factory</user>
+    <comment>- Add patch run-multi-process-in-fresh-process.patch:
+  * Run test_multi_process in a fresh subprocess to avoid a warning.</comment>
+    <requestid>1374988</requestid>
+  </revision>
 </revisionlist>

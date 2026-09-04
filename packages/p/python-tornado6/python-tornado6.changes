@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep  1 01:58:51 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch run-multi-process-in-fresh-process.patch:
+  * Run test_multi_process in a fresh subprocess to avoid a warning.
+
+-------------------------------------------------------------------
 Sat Aug 22 13:38:07 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.5.8 (bsc#1276210, bsc#1276211):
