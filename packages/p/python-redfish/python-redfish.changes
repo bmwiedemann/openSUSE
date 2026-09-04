@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Sep  2 06:06:02 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.4.0
+  * Updated publication flow to leverage PyPI trusted publishing.
+- Update to version 3.3.9
+  * Added support for asynchronous aiohttp Redfish clients.
+- Update to version 3.3.8
+  * Fixed usage of 'max_retry' when attempting to raise the
+    'RetriesExhaustedError' exception.
+
+-------------------------------------------------------------------
 Sat Jul 25 08:23:57 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.3.7

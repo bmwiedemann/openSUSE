@@ -18,7 +18,7 @@
 
 
 Name:           python-redfish
-Version:        3.3.7
+Version:        3.4.0
 Release:        0
 Summary:        Redfish Python Library
 License:        BSD-3-Clause
@@ -29,6 +29,8 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Recommends:     python-aiohttp
+Recommends:     python-multidict >= 4.5
 Requires:       python-jsonpatch
 Requires:       python-jsonpath-ng
 Requires:       python-jsonpointer
@@ -37,6 +39,7 @@ Requires:       python-requests-toolbelt
 Requires:       python-requests-unixsocket
 BuildArch:      noarch
 # SECTION test requirements
+BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module jsonpatch}
 BuildRequires:  %{python_module jsonpath-ng}
 BuildRequires:  %{python_module jsonpointer}
