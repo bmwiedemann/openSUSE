@@ -475,4 +475,13 @@ There are 4 months worth of complicated commit, and I cannot go through them all
     <comment>Update to 2.1.4</comment>
     <requestid>1371429</requestid>
   </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>5a25336ca00a20f911ddd5857ff7a65e</srcmd5>
+    <version>2.1.4</version>
+    <time>1788518583</time>
+    <user>anag_factory</user>
+    <comment>Fixed compilation on aarch64 caused by enum names clashing with kernel macros names
+</comment>
+    <requestid>1375693</requestid>
+  </revision>
 </revisionlist>

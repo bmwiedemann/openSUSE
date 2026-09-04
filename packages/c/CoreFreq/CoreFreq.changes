@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep  3 22:24:37 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
+
+- fixed compilation on aarch64 caused by enum names clashing with
+  kernel macros names
+
+-------------------------------------------------------------------
 Sun Aug 16 07:22:16 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
 
 - Update to 2.1.4

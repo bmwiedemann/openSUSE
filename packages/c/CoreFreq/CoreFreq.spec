@@ -50,6 +50,13 @@ sed -i \
     x86_64/corefreqk.c
 %endif
 
+# On aarch64, fix naming collisions between {FPSR,FPCR}_* enums defined in coretypes.h and macros with the same name defined in
+# /usr/src/linux-<version>-obj/arm64/default/arch/arm64/include/generated/asm/sysreg-defs.h
+# Append _ to problematic names
+sed -i \
+    -e 's/\b\(FPSR\|FPCR\)_[A-Z]*\b/&_/g' \
+    aarch64/{corefreq-cli.c,coretypes.h}
+
 %build
 %make_build
 
