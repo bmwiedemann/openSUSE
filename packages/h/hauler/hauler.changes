@@ -1,7 +1,8 @@
 -------------------------------------------------------------------
 Tue Sep  1 19:36:46 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
-- update to 2.1.0 (bsc#1265425, CVE-2026-41888):
+- update to 2.1.0 (bsc#1265425, CVE-2026-41888,
+    bsc#1278584, CVE-2026-56855,CVE-2026-56854,CVE-2026-78662):
   * `v2.1.0` is a **minor** release built on the containerd-
     native foundation laid down in `v2.0.0`. The headline is that
     `hauler store sync` and `hauler store add` are now fully

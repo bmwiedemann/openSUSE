@@ -418,4 +418,13 @@
       bsc#1276651, CVE-2026-41178):</comment>
     <requestid>1375220</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>8e13fee20ede5c52a75b49ccd08c3935</srcmd5>
+    <version>2.1.0</version>
+    <time>1788518573</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.1.0 (bsc#1265425, CVE-2026-41888,
+    bsc#1278584, CVE-2026-56855,CVE-2026-56854,CVE-2026-78662):</comment>
+    <requestid>1375683</requestid>
+  </revision>
 </revisionlist>
