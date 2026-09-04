@@ -18,7 +18,7 @@
 
 Name:           SDL3_image
 %define lname	libSDL3_image0
-Version:        3.4.4
+Version:        3.4.6
 Release:        0
 Summary:        Simple DirectMedia Layer image loading library
 License:        Zlib

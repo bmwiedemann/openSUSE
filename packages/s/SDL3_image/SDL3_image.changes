@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep  2 15:38:37 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.4.6
+  * Improved robustness when handling invalid ANI, BMP, GIF, LBM,
+    XCF, and XPM format images.
+
+-------------------------------------------------------------------
 Sat May  2 10:11:43 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.4.4
