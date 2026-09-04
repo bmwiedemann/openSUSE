@@ -3,11 +3,11 @@ libsqlite3-sys. openSUSE packages must not ship bundled libraries: a
 statically linked SQLite would have to be tracked and patched separately
 for every SQLite CVE.
 
-Index: rtk-0.45.0/Cargo.toml
+Index: rtk-0.47.0/Cargo.toml
 ===================================================================
 --- a/Cargo.toml
 +++ b/Cargo.toml
-@@ -22,7 +22,7 @@
+@@ -30,7 +30,7 @@
  serde_json = { version = "1", features = ["preserve_order"] }
  colored = "3"
  dirs = "5"

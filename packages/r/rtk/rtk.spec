@@ -17,13 +17,13 @@
 
 
 Name:           rtk
-Version:        0.46.0
+Version:        0.47.0
 Release:        0
 Summary:        CLI proxy that reduces LLM token consumption of dev commands
 # Legal-Review-Notice: rtk itself is Apache-2.0, but the binary statically links
 # the vendored Rust dependencies, so the tag below covers the whole linked set.
 # Derived on this re-vendor with "cargo tree --offline -p rtk -e normal" over the
-# vendored tree (193 crates vendored, 134 in the linked graph): MPL-2.0 comes
+# vendored tree (194 crates vendored, 134 in the linked graph): MPL-2.0 comes
 # from colored and option-ext, Unicode-3.0 from the 18 ICU/zerovec crates, ISC
 # from rustls-webpki and untrusted (and from ring, "Apache-2.0 AND ISC"),
 # CDLA-Permissive-2.0 from webpki-roots, BSD-3-Clause from subtle, and MIT from

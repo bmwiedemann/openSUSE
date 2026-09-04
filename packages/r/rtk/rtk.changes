@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Sep  3 09:35:29 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.47.0:
+  * grep: incompatible flag change, -t, -l and -m under "rtk grep" are
+    now the native grep flags and the never-wired --file-type is gone;
+    use "rtk rg -t <type>" for type filtering
+  * ctest: new compact output filter
+  * phpt: new filter for php-src run-tests.php
+  * mvn: recognise the Maven Daemon via "rtk mvnd"
+  * ls: cap long listings with a tee tail hint and follow the standard
+    dotfile semantics
+  * diff, git-diff: render a real diff instead of dumping both files,
+    keep the +/- markers at column 0, end hunks at their declared
+    length and pass word diffs through untouched
+  * hooks: honour CLAUDE_CONFIG_DIR and exclude_commands under wrapped
+    commands, and tolerate a UTF-8 BOM on hook stdin and JSON input
+  * tsc: handle pretty diagnostics and bound the failure dump
+- Refresh rtk-unbundle-sqlite.patch and rtk-no-deny-warnings.patch
+  against the 0.47.0 manifest (context only, both still needed --
+  upstream PRs 3446 and 3447 are open)
+- No licence change: the re-vendored set still resolves to the existing
+  License tag; refreshed the crate counts in the Legal-Review-Notice
+  comment (194 vendored, 134 linked)
+
+-------------------------------------------------------------------
 Thu Aug 27 15:37:32 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.46.0:

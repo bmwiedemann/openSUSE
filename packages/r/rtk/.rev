@@ -82,4 +82,22 @@ and every OR expression is satisfied by Apache-2.0 or MIT. Only the stale counts
 in the Legal-Review-Notice comment were refreshed.</comment>
     <requestid>1374097</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>91c56b66e672a4279e4741b12b2be33f</srcmd5>
+    <version>0.47.0</version>
+    <time>1788518465</time>
+    <user>anag_factory</user>
+    <comment>Update rtk to 0.47.0.
+
+New ctest and PHP .phpt filters, Maven Daemon support, capped ls listings,
+a rewritten diff/git-diff renderer, and BOM/CLAUDE_CONFIG_DIR fixes in the
+hooks. Incompatible change: -t/-l/-m under &quot;rtk grep&quot; are the native grep
+flags now and --file-type (a silent no-op) is gone.
+
+Both downstream patches (unbundled SQLite, no manifest-wide -Dwarnings) are
+still needed -- upstream PRs 3446 and 3447 are open -- and were refreshed
+against the new manifest. Re-derived licence set over the re-vendored tree:
+unchanged.</comment>
+    <requestid>1375597</requestid>
+  </revision>
 </revisionlist>
