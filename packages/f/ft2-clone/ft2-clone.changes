@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Sep  1 14:20:05 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to versoin 2.23
+  * Fixed: If the "WAV exporting" screen was open, the "Render
+    individual tracks" checkbox would have a much taller clickable
+    area than it should, which could interfere with for example
+    moving sample loops in the sample editor screen or interacting
+    with the pattern editor.
+  * Fixed: Several of the functions in Smp. Ed. -> Effects didn't
+    set the "song is modified" flag.
+  * Fixed: When zapping the song, the Disk Op. module filename
+    wasn't reset.
+  * The Zap dialog's text was maybe a bit unclear..
+  * Changed from "Total devastation of the..." to "What do you
+    want to clear?".
+  * Also changed the "All" button to "Everything".
+
+-------------------------------------------------------------------
 Sun Jul 19 17:41:11 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.22
