@@ -32,4 +32,29 @@ Fri Aug 21 10:07:52 UTC 2026 - Martin Pluskal &lt;mpluskal@suse.com&gt;
 </comment>
     <requestid>1372826</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>951daac03788413b7d51b7d6766dce24</srcmd5>
+    <version>0.2.32</version>
+    <time>1788518323</time>
+    <user>anag_factory</user>
+    <comment>python-comfy-kitchen 0.2.32
+
+- New sol_attn op (Sol-Attn training-free sparse attention) with an eager
+  implementation, so it is usable in this CPU-only build.
+- flash_attention_decode now works on a ROCm torch, dispatching to the HIP
+  backend instead of always reporting unavailable.
+- torch floor raised to &gt;= 2.7.0 in BuildRequires and Requires: since
+  0.2.28 the na3d torch.library.custom_op schema uses PEP 585 generics,
+  which infer_schema rejects before 2.7.0, so comfy_kitchen fails at
+  import on torch 2.5/2.6. Upstream only documented the real minimum in
+  this release. Factory python-torch is 2.12.0, so nothing regresses.
+- No new dependencies and no exact &quot;=&quot; pins: upstream pyproject still has
+  dependencies = []. comfyui's floor is &gt;= 0.2.31, unaffected.
+- Local aarch64 build against openSUSE:Factory:ARM green; %check (eager
+  backend import) passes on python313 and python314; rpmlint 0 errors /
+  0 badness. The two python-leftover-require warnings on torch are a
+  false positive: upstream declares no runtime deps, so the manual
+  Requires is the only source of the torch dependency in the RPM.</comment>
+    <requestid>1375569</requestid>
+  </revision>
 </revisionlist>

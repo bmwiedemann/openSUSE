@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-comfy-kitchen
-Version:        0.2.31
+Version:        0.2.32
 Release:        0
 Summary:        Fast kernel library for ComfyUI (CPU/eager backend)
 # Legal-Review-Notice: NOTICE names the NVIDIA CUDA runtime EULA for a
@@ -32,11 +32,11 @@ Source:         https://github.com/Comfy-Org/comfy-kitchen/archive/refs/tags/v%{
 Patch0:         comfy-kitchen-cpu-only-build.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 61.0}
-BuildRequires:  %{python_module torch >= 2.5.0}
+BuildRequires:  %{python_module torch >= 2.7.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-torch >= 2.5.0
+Requires:       python-torch >= 2.7.0
 BuildArch:      noarch
 # Match Factory python-torch (ExcludeArch: %%ix86 %%{arm})
 ExcludeArch:    %{ix86} %{arm}

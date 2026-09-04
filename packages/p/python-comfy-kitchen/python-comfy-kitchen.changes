@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Sep  3 08:54:51 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.2.32:
+  * New sol_attn op (Sol-Attn training-free sparse attention),
+    with an eager implementation, so it is usable in this
+    CPU-only build
+  * flash_attention_decode now works on a ROCm torch, dispatching
+    to the HIP backend instead of always reporting unavailable
+  * Otherwise CUDA/HIP kernel work only (int8 Sol-Attn, bf16
+    flash decode, occupancy-aware WMMA GEMM tile selection),
+    not compiled in this build
+- Raise torch floor to >= 2.7.0: since 0.2.28 the na3d
+  torch.library.custom_op schema uses PEP 585 generics, which
+  infer_schema rejects before 2.7.0, so the import fails outright;
+  upstream only documented the real minimum now
+
+-------------------------------------------------------------------
 Fri Aug 21 10:07:52 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - ExcludeArch %%{ix86} %%{arm} to match Factory python-torch, so
