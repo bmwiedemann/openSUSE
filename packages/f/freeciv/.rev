@@ -286,4 +286,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1370916</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>9283ab2df766c81b002471767c5e80b3</srcmd5>
+    <version>3.2.6</version>
+    <time>1788518606</time>
+    <user>anag_factory</user>
+    <comment>freeciv 3.2.6 boo#1278695 boo#1278696 (forwarded request 1375702 from AndreasStieger)</comment>
+    <requestid>1375703</requestid>
+  </revision>
 </revisionlist>

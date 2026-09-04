@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Sep  4 04:50:48 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- freeciv 3.2.6:
+  * Fix Heap Buffer Overflow in worklist_load() via Crafted Save
+    File (boo#1278695)
+  * Fix Out-of-Bounds Read in activities.order[] via Crafted Save
+    File (boo#1278696)
+  * Fix some unit move legality checks and path finding issues
+  * Improve logging about player authentication
+  * Fix infinite audio loop in the client exit with the SDL3 audio
+  * Fix issue with displayed "turns to grow" for the city to be
+    wrong after city shrank
+  * Made tech tree not to show buildings or governments which tech
+    actually makes unavailable
+  * Bug fixes, translation updates, docummentation updates
+- drop reproducible.patch, merged upstream
+
+-------------------------------------------------------------------
 Thu Aug  6 04:43:42 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.de>
 
 - Update reproducible.patch to sort tolua generated type
