@@ -481,4 +481,41 @@
     - Admin config fetch retries with exponential backoff</comment>
     <requestid>1373262</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>392817dfb59b57948e9e56ce4bb8eeae</srcmd5>
+    <version>2.24.5</version>
+    <time>1788518415</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.24.5:
+  - Added
+    - Fuzzy search in the MCP servers and connectors browser
+  - Changed
+    - Faster startup through additional lazy imports and deferred
+      schema builds
+  - Fixed
+    - Trust prompt is skipped when --worktree or --trust already
+      grants access
+    - Links are normalized before opening to prevent broken
+      clicks
+    - Themes apply correctly at startup
+    - Retried Mistral responses are released back into the
+      connection pool
+- Add obs-test-synchronization.patch fixing tests
+
+- Update to 2.24.4:
+  - Added
+    - LLM-generated session titles and terminal title
+    - Queue selection and edit mode for queued messages
+    - Git info is shown in the session header
+  - Changed
+    - Model connections are reused across tool turns for faster
+      responses
+  - Fixed
+    - /mcp login &lt;connector&gt; routes to the connector auth flow
+    - Rate-limited calls retry with adaptive backoff and pacing
+    - Model retry state stays authoritative across clients
+    - Loading nix-managed skills through a symlinked SKILL.md no
+      longer freezes</comment>
+    <requestid>1375544</requestid>
+  </revision>
 </revisionlist>

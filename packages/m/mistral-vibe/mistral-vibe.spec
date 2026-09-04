@@ -16,7 +16,7 @@
 #
 
 Name:           mistral-vibe
-Version:        2.24.3
+Version:        2.24.5
 Release:        0
 Summary:        Minimal CLI coding agent by Mistral
 License:        Apache-2.0
@@ -40,6 +40,9 @@ Patch4:         fix_ui_tests.patch
 # PATCH-FIX-OPENSUSE warning_cleanup.patch mcepl@suse.com
 # suppress warnings caused by build-environment and dependency compatibility
 Patch5:         warning_cleanup.patch
+# PATCH-FIX-OPENSUSE obs-test-synchronization.patch mcepl@suse.com
+# make UI tests robust on slow build workers
+Patch6:         obs-test-synchronization.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base >= 3.12
@@ -47,6 +50,7 @@ BuildRequires:  python3-editables
 BuildRequires:  python3-hatch-vcs
 BuildRequires:  python3-hatchling
 BuildRequires:  python3-pip
+BuildRequires:  python3-rfc8785 >= 0.1.4
 Requires:       python3-GitPython >= 3.1.57
 Requires:       python3-PyJWT >= 2.13.0
 Requires:       python3-PyYAML >= 6.0.3
@@ -116,6 +120,7 @@ Requires:       python3-python-dotenv >= 1.2.2
 Requires:       python3-python-multipart >= 0.0.32
 Requires:       python3-referencing >= 0.37.0
 Requires:       python3-requests >= 2.34.2
+Requires:       python3-rfc8785 >= 0.1.4
 Requires:       python3-rich >= 15.0.0
 Requires:       python3-rpds-py >= 0.30.0
 Requires:       python3-sentry-sdk >= 2.64.0
@@ -130,7 +135,6 @@ Requires:       python3-textual-speedups >= 0.2.1
 Requires:       python3-tomli-w >= 1.2.0
 Requires:       python3-tree-sitter >= 0.26.0
 Requires:       python3-tree-sitter-bash >= 0.25.1
-Requires:       tree-sitter-bash
 Requires:       python3-truststore >= 0.10.4
 Requires:       python3-typing-extensions >= 4.15.0
 Requires:       python3-typing-inspection >= 0.4.2
@@ -141,6 +145,7 @@ Requires:       python3-watchfiles >= 1.2.0
 Requires:       python3-websockets >= 16.0
 Requires:       python3-zipp >= 3.23.1
 Requires:       python3-zstandard >= 0.25.0
+Requires:       tree-sitter-bash
 Obsoletes:      python312-mistral-vibe < %{version}
 Provides:       python312-mistral-vibe = %{version}
 Obsoletes:      python313-mistral-vibe < %{version}
@@ -217,10 +222,10 @@ BuildRequires:  python3-pydantic-settings >= 2.14.2
 BuildRequires:  python3-pygments >= 2.20.0
 BuildRequires:  python3-pyperclip >= 1.11.0
 BuildRequires:  python3-pytest
-BuildRequires:  python3-pytest-xdist >= 3.8.0
 BuildRequires:  python3-pytest-asyncio >= 1.2.0
 BuildRequires:  python3-pytest-textual-snapshot >= 1.1.0
 BuildRequires:  python3-pytest-timeout >= 2.4.0
+BuildRequires:  python3-pytest-xdist >= 3.8.0
 BuildRequires:  python3-python-dateutil >= 2.9.0.post0
 BuildRequires:  python3-python-dotenv >= 1.2.2
 BuildRequires:  python3-python-multipart >= 0.0.32
@@ -240,7 +245,6 @@ BuildRequires:  python3-tomli-w >= 1.2.0
 BuildRequires:  python3-tomlkit >= 0.13.0
 BuildRequires:  python3-tree-sitter >= 0.26.0
 BuildRequires:  python3-tree-sitter-bash >= 0.25.1
-BuildRequires:  tree-sitter-bash
 BuildRequires:  python3-truststore >= 0.10.4
 BuildRequires:  python3-typing-extensions >= 4.15.0
 BuildRequires:  python3-typing-inspection >= 0.4.2
@@ -252,6 +256,7 @@ BuildRequires:  python3-watchfiles >= 1.2.0
 BuildRequires:  python3-websockets >= 16.0
 BuildRequires:  python3-zipp >= 3.23.1
 BuildRequires:  python3-zstandard >= 0.25.0
+BuildRequires:  tree-sitter-bash
 # /SECTION
 
 %description
@@ -279,6 +284,7 @@ export PYTEST_ADDOPTS+=" --ignore=tests/snapshots"
 
 %files
 %license LICENSE
+%doc README.md
 %{_bindir}/vibe
 %{_bindir}/vibe-acp
 %{_bindir}/vibe-app-server

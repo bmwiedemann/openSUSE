@@ -1,0 +1,151 @@
+Index: mistral-vibe-2.24.5/tests/cli/test_connector_auth_app.py
+===================================================================
+--- mistral-vibe-2.24.5.orig/tests/cli/test_connector_auth_app.py	2026-08-31 08:24:47.483883761 +0200
++++ mistral-vibe-2.24.5/tests/cli/test_connector_auth_app.py	2026-08-31 08:24:47.498852360 +0200
+@@ -253,8 +253,8 @@
+     async def test_action_refresh_dispatches_worker(self) -> None:
+         app = _make_app()
+ 
+-        def close_worker(coroutine, **_kwargs: object) -> None:
+-            coroutine.close()
++        def close_worker(coroutine_factory, **_kwargs: object) -> None:
++            coroutine_factory().close()
+ 
+         app.run_worker = MagicMock(side_effect=close_worker)
+         app.query_one = MagicMock()
+Index: mistral-vibe-2.24.5/tests/cli/test_mcp_app.py
+===================================================================
+--- mistral-vibe-2.24.5.orig/tests/cli/test_mcp_app.py	2026-08-31 08:24:45.830139052 +0200
++++ mistral-vibe-2.24.5/tests/cli/test_mcp_app.py	2026-08-31 08:24:47.499468230 +0200
+@@ -425,8 +425,8 @@
+ def test_start_refresh_dispatches_one_worker() -> None:
+     app = MCPApp(_state(), refresh_callback=AsyncMock(return_value="Refreshed"))
+ 
+-    def close_worker(coroutine, **_kwargs: object) -> None:
+-        coroutine.close()
++    def close_worker(coroutine_factory, **_kwargs: object) -> None:
++        coroutine_factory().close()
+ 
+     app.run_worker = MagicMock(side_effect=close_worker)
+ 
+Index: mistral-vibe-2.24.5/tests/cli/textual_ui/test_queue_selection_ui.py
+===================================================================
+--- mistral-vibe-2.24.5.orig/tests/cli/textual_ui/test_queue_selection_ui.py	2026-08-31 08:24:45.830139052 +0200
++++ mistral-vibe-2.24.5/tests/cli/textual_ui/test_queue_selection_ui.py	2026-09-02 07:54:45.031953978 +0200
+@@ -627,19 +627,18 @@
+     # items so the drain consumes them by running the shell (no LLM turn).
+     async with vibe_app.run_test() as pilot:
+         chat_input = vibe_app.query_one(ChatInputContainer)
+-        chat_input.value = "!sleep 2"
++        chat_input.value = "!sleep 10"
+         await pilot.press("enter")
+         assert await _wait_until(
+             pilot, lambda: vibe_app._bash_task is not None, timeout=2.0
+         )
+ 
+-        chat_input.value = "!sleep 1"
++        chat_input.value = "!sleep 10"
+         await pilot.press("enter")
+-        await pilot.pause(0.05)
++        assert await _wait_until(pilot, lambda: len(vibe_app._queue) == 1, timeout=6.0)
+         chat_input.value = "!echo newest"
+         await pilot.press("enter")
+-        await pilot.pause(0.05)
+-        assert len(vibe_app._queue) == 2
++        assert await _wait_until(pilot, lambda: len(vibe_app._queue) == 2, timeout=6.0)
+ 
+         body = vibe_app.query_one(ChatInputContainer)._body
+         assert body is not None
+@@ -647,16 +646,15 @@
+         # Highlight the OLDEST item (the one the drain consumes first, FIFO).
+         # newest-first list: cursor 0 = newest, cursor 1 = oldest.
+         await pilot.press("up")
+-        await pilot.pause(0.1)
++        assert await _wait_until(pilot, lambda: body._queue_cursor == 0, timeout=6.0)
+         await pilot.press("up")
+-        await pilot.pause(0.1)
+-        assert body._queue_cursor == 1
++        assert await _wait_until(pilot, lambda: body._queue_cursor == 1, timeout=6.0)
+         assert vibe_app._queue_selected_widget is not None
+ 
+         # Blocking bash finishes, drain consumes the highlighted oldest bash
+         # (FIFO) — the highlighted widget is removed but _queue_selected_widget
+         # still points at it until the next resync re-posts the scroll.
+-        assert await _wait_until(pilot, lambda: len(vibe_app._queue) == 1, timeout=6.0)
++        assert await _wait_until(pilot, lambda: len(vibe_app._queue) == 1, timeout=15.0)
+         # Re-sync via navigation hits the clamp branch (highlighted widget gone);
+         # the fix re-posts the scroll so _queue_selected_widget re-points at the
+         # surviving newest item. Without it, Backspace below no-ops.
+@@ -677,7 +675,7 @@
+ ) -> None:
+     async with vibe_app.run_test() as pilot:
+         chat_input = vibe_app.query_one(ChatInputContainer)
+-        chat_input.value = "!sleep 2"
++        chat_input.value = "!sleep 10"
+         await pilot.press("enter")
+         assert await _wait_until(
+             pilot, lambda: vibe_app._bash_task is not None, timeout=2.0
+@@ -693,14 +691,14 @@
+ 
+         # Enter edit mode on the bash item while the app is still busy.
+         await pilot.press("up")
+-        await pilot.pause(0.1)
++        assert await _wait_until(pilot, lambda: vibe_app._queue_selected_widget is not None, timeout=6.0)
++        assert await _wait_until(pilot, lambda: body._queue_cursor == 0, timeout=6.0)
+         await pilot.press("enter")
+-        await pilot.pause(0.1)
+-        assert body._queue_in_edit_mode
++        assert await _wait_until(pilot, lambda: body._queue_in_edit_mode, timeout=6.0)
+         assert body._queue_edit_kind == QueuedItemKind.BASH
+ 
+         # Wait for the drain to consume the queued bash item.
+-        assert await _wait_until(pilot, lambda: len(vibe_app._queue) == 0, timeout=6.0)
++        assert await _wait_until(pilot, lambda: len(vibe_app._queue) == 0, timeout=15.0)
+ 
+         assert body.input_widget is not None
+         body.input_widget.clear_text()
+Index: mistral-vibe-2.24.5/tests/update_notifier/test_ui_update_notification.py
+===================================================================
+--- mistral-vibe-2.24.5.orig/tests/update_notifier/test_ui_update_notification.py	2026-08-31 08:24:45.830139052 +0200
++++ mistral-vibe-2.24.5/tests/update_notifier/test_ui_update_notification.py	2026-08-31 08:25:48.175638232 +0200
+@@ -28,6 +28,15 @@
+ TEST_CURRENT_VERSION = "0.1.0"
+ 
+ 
++async def _wait_until(pilot, predicate, timeout: float = 2.0) -> bool:
++    deadline = asyncio.get_running_loop().time() + timeout
++    while asyncio.get_running_loop().time() < deadline:
++        if predicate():
++            return True
++        await pilot.pause(0.05)
++    return predicate()
++
++
+ @pytest.fixture
+ def build_update_test_app(
+     vibe_config_with_update_checks_enabled: VibeConfigSchema,
+@@ -79,6 +88,7 @@
+     )
+ 
+     async with app.run_test() as pilot:
++        assert await _wait_until(pilot, lambda: notifier.fetch_update_calls == 1, timeout=6.0)
+         await _assert_no_notifications(app, pilot, timeout=0.3)
+ 
+     assert notifier.fetch_update_calls == 1
+@@ -91,9 +101,15 @@
+     build_update_test_app: Callable[..., VibeApp],
+ ) -> None:
+     notifier = FakeUpdateGateway(update=None)
+-    app = build_update_test_app(update_notifier=notifier)
++    repository = FakeUpdateCacheRepository()
++    app = build_update_test_app(
++        update_notifier=notifier, update_cache_repository=repository
++    )
+ 
+     async with app.run_test() as pilot:
++        assert await _wait_until(
++            pilot, lambda: notifier.fetch_update_calls == 1, timeout=6.0
++        )
+         await _assert_no_notifications(app, pilot, timeout=0.3)
+     assert notifier.fetch_update_calls == 1
+ 
