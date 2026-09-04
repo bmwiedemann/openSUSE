@@ -1,7 +1,7 @@
 #
 # spec file for package libhtp
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,7 +21,7 @@
 %define lname   %{name}%{sover}
 %bcond_without tests
 Name:           libhtp
-Version:        0.5.50
+Version:        0.5.53
 Release:        0
 Summary:        HTTP normalizer and parser
 License:        BSD-3-Clause

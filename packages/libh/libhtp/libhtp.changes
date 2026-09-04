@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Aug 22 16:21:26 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.5.53:
+  * htp: checks a hostname does not begin with a slash
+  * htp: typo fix for Content-Encoding: identity
+  * ci: bump version for cifuzz upload-artifact action
+  * htp: do not log anomaly for Content-Encoding: identity
+  * decompressors: fix leak in lzma error case
+  * request: do not fully error on data after HTTP/0.9
+
+-------------------------------------------------------------------
 Tue May 27 22:36:21 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - WARNING: OISF is in the process of migrating this package to
@@ -136,7 +147,7 @@ Wed Mar  3 20:52:34 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 - Update to version 0.5.37
   * support request body decompression
   * several accuracy fixes
-  * fuzz improvments 
+  * fuzz improvments
 
 -------------------------------------------------------------------
 Fri Dec  4 17:09:01 UTC 2020 - Martin Hauke <mardnh@gmx.de>
