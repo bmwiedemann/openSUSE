@@ -117,6 +117,8 @@ Patch10:        gimp-CVE-2026-59088.patch
 Patch11:        gimp-CVE-2026-59090.patch
 # PATCH-FIX-UPSTREAM gimp-CVE-2026-59091.patch bsc#1274851, glgo#GNOME/gimp#16510 alynx.zhou@suse.com -- Fix multiple vulnerabilities in file format plugins via crafted image file
 Patch12:        gimp-CVE-2026-59091.patch
+# PATCH-FIX-UPSTREAM gimp-CVE-2026-66757-2.patch bsc#1273151 mgorse@suse.com -- fix allocation of SGI tables.
+Patch13:        gimp-CVE-2026-66757-2.patch
 %if %{with debug_in_build_gimp}
 BuildRequires:  gdb
 %endif

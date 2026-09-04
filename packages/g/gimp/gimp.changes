@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 31 19:57:01 UTC 2026 - Michael Gorse <mgorse@suse.com>
+
+- Replace gimp-CVE-2026-66757.patch with the upstream backport.
+- Add gimp-CVE-2026-66757-2.patch: fix allocation of SGI tables
+  (glgo#GNOME/gimp!2984).
+
+-------------------------------------------------------------------
 Tue Aug 18 02:12:02 UTC 2026 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Add CVE fixes:
