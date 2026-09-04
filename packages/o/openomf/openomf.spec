@@ -36,7 +36,7 @@ BuildRequires:  libpng16-compat-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(SDL2_mixer)
-BuildRequires:  pkgconfig(argtable2)
+BuildRequires:  pkgconfig(argtable3)
 BuildRequires:  pkgconfig(cunit)
 BuildRequires:  pkgconfig(epoxy)
 BuildRequires:  pkgconfig(libconfuse)
