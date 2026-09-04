@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep  2 17:12:38 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update bundled pip wheels to pip-20.0.2-py2.py3-none-any.whl
+  patched from SUSE:SLE-15-SP4:Update/python3-pip
+  Fixing also bsc#1262429 CVE-2026-3219, bsc#1273094
+  CVE-2026-13346, bsc#1273091 CVE-2026-13346, bsc#1274743
+  CVE-2026-1703, bsc#1273090 CVE-2026-13346, and bsc#1276903 or
+  bsc#1277271.
+
+-------------------------------------------------------------------
 Sat Aug  8 15:14:27 UTC 2026 - Matej Cepl <mcepl@suse.com>
 
 - noCVE: CVE-2026-6019 fix does not handle non-ascii chars correctly

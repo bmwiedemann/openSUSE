@@ -129,6 +129,11 @@ Source20:       idle3.appdata.xml
 # 3. mkdir Vendor && mv usr/include/* Vendor/
 # 4. tar cJf bluez-devel-vendor.tar.xz Vendor/
 Source21:       bluez-devel-vendor.tar.xz
+
+# Fixed bundled wheels
+Source30:       setuptools-67.7.2-py2.py3-none-any.whl
+Source31:       pip-20.0.2-py2.py3-none-any.whl
+
 Source98:       python310-rpmlintrc
 # Tarball is signed by the GPG key of Pablo Galindo Salgado (0x64E628F8D684696D)
 # https://keybase.io/pablogsal/pgp_keys.asc?fingerprint=a035c8c19219ba821ecea86b64e628f8d684696d
@@ -583,6 +588,16 @@ rm Lib/site-packages/README.txt
 
 # Add vendored bluez-devel files
 tar xvf %{SOURCE21}
+
+# Replace bundled wheels with the updates ones
+rm -v Lib/ensurepip/_bundled/*.whl
+STVER=$(basename %{SOURCE30}|cut -d- -f2)
+PIPVER=$(basename %{SOURCE31}|cut -d- -f2)
+cp -v %{SOURCE30} Lib/ensurepip/_bundled/setuptools-${STVER}-py3-none-any.whl
+cp -v %{SOURCE31} Lib/ensurepip/_bundled/pip-${PIPVER}-py3-none-any.whl
+sed -E -i -e "s/^(\s*_SETUPTOOLS_VERSION\s+=\s+)\"[0-9.]+\"/\1\"${STVER}\"/" \
+          -e "s/^(\s*_PIP_VERSION\s+=\s+)\"[0-9.]+\"/\1\"${PIPVER}\"/" \
+    Lib/ensurepip/__init__.py
 
 # Don't fail on warnings when building documentation
 sed -i -e '/^SPHINXERRORHANDLING/s/-W//' Doc/Makefile

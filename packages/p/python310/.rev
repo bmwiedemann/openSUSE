@@ -1416,4 +1416,17 @@ CVE-2026-3276-On2-unicodedata-normalize.patch
   bsc1263083-http-cookies-atob-utf8.patch</comment>
     <requestid>1371250</requestid>
   </revision>
+  <revision rev="81" vrev="10">
+    <srcmd5>1e5f5275d95a2076814c76db72e268d9</srcmd5>
+    <version>3.10.20</version>
+    <time>1788518348</time>
+    <user>anag_factory</user>
+    <comment>- Update bundled pip wheels to pip-20.0.2-py2.py3-none-any.whl
+  patched from SUSE:SLE-15-SP4:Update/python3-pip
+  Fixing also bsc#1262429 CVE-2026-3219, bsc#1273094
+  CVE-2026-13346, bsc#1273091 CVE-2026-13346, bsc#1274743
+  CVE-2026-1703, bsc#1273090 CVE-2026-13346, and bsc#1276903 or
+  bsc#1277271.</comment>
+    <requestid>1375464</requestid>
+  </revision>
 </revisionlist>
