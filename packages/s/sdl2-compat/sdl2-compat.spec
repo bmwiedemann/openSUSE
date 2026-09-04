@@ -19,7 +19,7 @@
 %define lname libSDL2-2_0-0
 %global _lto_cflags %_lto_cflags -ffat-lto-objects
 Name:           sdl2-compat
-Version:        2.32.70
+Version:        2.32.72
 Release:        0
 Summary:        SDL-2.0 Compatibility Layer for Simple DirectMedia Layer 3.0
 License:        Zlib
@@ -43,9 +43,12 @@ against SDL 2.0, but it uses SDL 3.0 behind the scenes.
 %package -n %lname
 Summary:        SDL-2.0 Compatibility Layer for Simple DirectMedia Layer 3.0
 Group:          System/Libraries
-Requires:       libSDL3-0 >= 3.2.10
-# "sdl2-compat 2.32.54: SDL3 library is too old (have 3.2.8, but
-# need at least 3.2.10). Segmentation fault (core dumped)"
+# There is a runtime check for an appropraite SDL3 base
+%ifarch %x86_64 %arm64 %loongarch64 %mips64 %power64 %sparc64 %riscv64
+Requires:       libSDL3.so.0()(64bit) >= 3.2.12
+%else
+Requires:       libSDL3.so.0 >= 3.2.12
+%endif
 
 %description -n %lname
 This is the "Simple DirectMedia Layer" library built from sdl2-compat.

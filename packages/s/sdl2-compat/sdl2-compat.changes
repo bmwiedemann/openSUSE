@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Sep  3 07:58:22 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.32.72
+  * Fixed a crash during the menu transition in Super Mario War.
+  * Fixed menu rendering in The Ur-Quan Masters.
+  * Fixed loading screen flickering in Payday 2.
+  * Fixed the pointer position in Augustus when screen scaling is
+    enabled.
+  * Fixed an out of bounds exception in the OBS plugin
+    "input-overlay" when using the new Steam Controller.
+
+-------------------------------------------------------------------
 Mon Jun  8 15:31:48 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.32.70
