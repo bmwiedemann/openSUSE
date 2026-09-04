@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Sep  2 15:27:12 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.2
+  * dpll: Added frequency monitoring support
+  * dpll: monitor: add -t/--timestamp and --tshort options
+  * rdma: netns can now be specified by PID
+  * bridge: vlan: Added support for neigh_forward_grat
+  * netshaper: Added bw-min and weight parameter support
+  * netshaper: Added group command for creating scheduling hierarchies
+  * iplink: bridge: Added stp_mode support
+  * devlink: Added dump support for resource show
+- Ditch libnetlink-devel. This was never really a public API,
+  and mipv6d (its original user back in 2014) has long had its
+  own copy of libnetlink.
+
+-------------------------------------------------------------------
 Wed Jun 17 19:14:21 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 7.1

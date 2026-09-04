@@ -1238,4 +1238,12 @@ require bash-completion for iproute2-bash-completion]</comment>
     <comment>- Update to release 7.1</comment>
     <requestid>1360094</requestid>
   </revision>
+  <revision rev="151" vrev="1">
+    <srcmd5>3440a3db4a3011ec8720dde79a9ac76e</srcmd5>
+    <version>7.2</version>
+    <time>1788518189</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 7.2</comment>
+    <requestid>1375486</requestid>
+  </revision>
 </revisionlist>

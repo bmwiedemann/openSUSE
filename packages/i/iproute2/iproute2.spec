@@ -17,7 +17,7 @@
 
 
 Name:           iproute2
-Version:        7.1
+Version:        7.2
 Release:        0
 Summary:        Linux network configuration utilities
 License:        GPL-2.0-only
@@ -50,6 +50,8 @@ Provides:       %name-doc = %version
 Provides:       iproute = %version-%release
 Provides:       %name(xfrm6_raw) = %version-%release
 Obsoletes:      %name-doc < 4.15.0
+Obsoletes:      iproute2-bash-completion < %version-%release
+Provides:       iproute2-bash-completion < %version-%release
 
 %description
 iproute2 is a collection of user-space utilities to set up networking
@@ -57,27 +59,6 @@ under Linux from the command-line. It can inspect and configure,
 among other things: interface paramters, IP addresses, routing,
 tunnels, bridges, packet transformations (IPsec, etc.), and Quality
 of Service.
-
-%package -n libnetlink-devel
-Summary:        A Higher Level Interface to the Netlink Service
-License:        GPL-2.0-or-later
-Group:          Development/Libraries/C and C++
-Provides:       libnetlink = %version-%release
-
-%description -n libnetlink-devel
-libnetlink provides a higher-level interface to rtnetlink(7).
-New programs should use libmnl-devel instead.
-
-%package bash-completion
-Summary:        Bash completion for iproute
-License:        GPL-2.0-or-later
-Group:          System/Shells
-Requires:       %name
-Requires:       bash-completion
-Supplements:    (%name and bash-completion)
-
-%description bash-completion
-bash command line completion support for iproute.
 
 %package arpd
 Summary:        Userspace ARP daemon
@@ -115,10 +96,6 @@ mkdir -pv "$b/usr/bin" "$b/usr/sbin" "$b/sbin"
 # We have m_xt instead
 rm -fv "$b/%_libdir/tc/m_ipt.so"
 
-install -pm0644 "lib/libnetlink.a" "$b/%_libdir/"
-chmod -x "$b/%_libdir/libnetlink.a"
-install -pm0644 "include/libnetlink.h" "$b/%_includedir/"
-chmod -x "$b/%_includedir/libnetlink.h"
 install -Dm0644 "%SOURCE3" "$b/%_tmpfilesdir/%name.conf"
 %if 0%{?suse_version} >= 1550
 ln -sfv "%_sbindir/ip" "$b/%_bindir/ip"
@@ -132,6 +109,7 @@ for BIN in lnstat nstat routel ss; do
 done
 mkdir -pv "$b/%_docdir/%name"
 cp -anv README* examples/bpf "$b/%_docdir/%name/"
+rm -Rfv "$b/%_includedir"
 
 # bugzilla.opensuse.org/1205632
 # You can't parse routel output anyway so it does not matter what our replacement program outputs
@@ -169,13 +147,6 @@ EOF
 %_datadir/tc/
 %_docdir/%name/
 %license COPYING
-
-%files -n libnetlink-devel
-%_includedir/*
-%_mandir/man3/libnetlink*
-%_libdir/lib*
-
-%files bash-completion
 %_datadir/bash-completion/
 
 %files arpd
