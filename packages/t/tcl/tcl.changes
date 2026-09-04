@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Aug 26 12:28:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Split the test suite into a multibuild "test" flavour: the main
+  build no longer runs it (%check measured 326s of a 471s build on
+  aarch64) and no longer pulls in the timezone build dependency;
+  the test flavour builds only a src.rpm
+- Do not build the test flavour in the Factory rings and staging,
+  which set %_with_ringdisabled
+- Modernise the spec: drop the obsolete BuildRoot, Group, defattr
+  and PreReq tags, brace all macros, use %autosetup and %make_build
+- Point URL, Source0 and the description at tcl-lang.org; the
+  tcl.tk domain no longer resolves at all
+- Run the full test suite: drop the 31-entry known-failures
+  whitelist, every id of which passes again (47159 tests, 43939
+  passed, 3220 skipped, 0 failed on aarch64); only the riscv64 and
+  qemu-only entries are kept
+- Fail the build on a crashed or aborted test run, which previously
+  passed silently: the pipeline reported tee's exit status, and
+  tests/all.tcl returns 0 even on failures unless ERROR_ON_FAILURES
+  is set
+- Drop the dead s390 test guard; only s390x still exists
+- Drop the ppc64 tcl-64bit and tcl-devel-64bit Obsoletes, added in
+  2009 for the SLE10-era biarch packages
+- Drop the %post scriptlet removing a /usr/lib/tcl8.6 compat symlink
+  from the pre-2005 layout; no tcl 8.6 package has ever created it
+
+-------------------------------------------------------------------
 Fri May 29 13:32:39 UTC 2026 - Reinhard Max <max@suse.com>
 
 - Version 8.6.18:
