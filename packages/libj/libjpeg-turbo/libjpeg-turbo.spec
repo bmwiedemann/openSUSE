@@ -134,6 +134,7 @@ MYCFLAGS="$MYCFLAGS -fsanitize=address"
 %if %{debug_build}
 MYCFLAGS="$MYCFLAGS -O0 -g"
 %endif
+# https://github.com/libjpeg-turbo/libjpeg-turbo/issues/897
 %cmake \
 %if "%{flavor}" == "libjpeg-turbo"
     -DWITH_JPEG8=ON \
@@ -153,6 +154,9 @@ MYCFLAGS="$MYCFLAGS -O0 -g"
 %ifarch s390x riscv64
     -DFLOATTEST=fp-contract \
 %endif
+%ifarch x86_64_v3
+    -DFLOATTEST12=fp-contract \
+%endif
     %{nil}
 %make_build
 
@@ -165,8 +169,7 @@ export LD_LIBRARY_PATH=%{buildroot}%{_libdir}${LD_LIBRARY_PATH:+:${LD_LIBRARY_PA
 %if 0%{?fedora_version} || 0%{?centos_version}
   ctest --output-on-failure --force-new-ctest-process
 %else
-# https://github.com/libjpeg-turbo/libjpeg-turbo/issues/897
-  %ctest --exclude-regex='djpeg12-shared-3x2-float-prog-cmp'
+  %ctest
 %endif
 
 %install

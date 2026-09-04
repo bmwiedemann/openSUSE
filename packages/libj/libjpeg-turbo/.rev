@@ -1280,4 +1280,13 @@ Adds an explicit provides line, so that &quot;zypper in jpegtran&quot; will work
   * libjpeg-turbo-3.2.0.tar.gz.sig</comment>
     <requestid>1374391</requestid>
   </revision>
+  <revision rev="78" vrev="85">
+    <srcmd5>f08a3ccd6270cf460f4fbbe761f1668d</srcmd5>
+    <version>unknown</version>
+    <time>1788518160</time>
+    <user>anag_factory</user>
+    <comment>- do not skip djpeg12-shared-3x2-float-prog-cmp, use correct parameters
+  instead</comment>
+    <requestid>1375155</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep  1 13:42:15 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- do not skip djpeg12-shared-3x2-float-prog-cmp, use correct parameters
+  instead
+
+-------------------------------------------------------------------
 Fri Aug 28 09:00:16 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - update to 3.2.0:
