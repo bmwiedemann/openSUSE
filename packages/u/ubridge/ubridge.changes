@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Sep  2 16:58:48 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.2
+  * fix(pcap_capture): free capture on failures.
+
+-------------------------------------------------------------------
+Sat Aug  8 07:11:48 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.1
+  * fix: IOL delay-line data race (double-free/UAF) on filter/port
+  * fix: IOL bridge pthread_cancel(0) crash on delete after stop.
+  * feat(marker): add linktype support to the mark filter.
+
+-------------------------------------------------------------------
 Thu Aug  6 12:28:13 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Udpate to version 1.2.0

@@ -17,7 +17,7 @@
 
 
 Name:           ubridge
-Version:        1.2.0
+Version:        1.2.2
 Release:        0
 Summary:        Bridging between UDP tunnels, Ethernet and TAP interfaces
 License:        GPL-3.0-only
@@ -34,7 +34,7 @@ Ethernet and TAP interfaces is supported.  Packet capture is also
 supported.
 
 %prep
-%setup -q
+%autosetup
 # remove bundled iniparser
 rm -rf src/iniparser
 
