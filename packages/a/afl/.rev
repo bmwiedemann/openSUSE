@@ -1790,4 +1790,41 @@
     - Fixes in the PCGUARD and LTO instrumentation that could lead to sanitizer</comment>
     <requestid>1358498</requestid>
   </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>4233d54a07d91dcd7b1998ade6806b3e</srcmd5>
+    <version>5.03c</version>
+    <time>1788518301</time>
+    <user>anag_factory</user>
+    <comment>- Version ++5.03c (release)
+  ! Value Profile implementation for AFL++ by Khaled Yakdan (@kyakdan) that
+    is much more efficient and intelligent than the libfuzzer implementation.
+    Enable in the fuzz target with `AFL_LLVM_VALUE_PROFILE=1` and enable for
+    afl-fuzz with `-r &lt;seconds&gt;` when to activate (default off)
+  ! macOS now uses POSIX shared memory instead of SysV, which lifts the
+    `kern.sysv.shmseg` / `kern.sysv.shmmax` ceilings (CmpLog alone needs a
+    145 MB segment, far past the 4 MB macOS default). !!! You need to
+    recompile your targets on macOS - a target built by an older afl-cc still
+    expects a SysV id in `__AFL_SHM_ID` !!!
+  afl-fuzz
+    - big change: limits before switching modes is not time based but exec based now.
+    - fix: shmem leakage on target timeouts and crashes - this has been the case
+      since vanilla AFL. Now fixed for Linux, MacOS and mmap targets.
+    - for more variability, a &quot;starved&quot; mode is implemented now. If for a longer
+      time no finds are found, then more seed and mutation variability is
+      introduced incl. splicing phase enabled. This is visible in the UI.
+    - env `AFL_STARVED_MINIMIZE_QUEUE`: if starve mode does not help either,
+      minimize the the queue like afl-cmin does and make the coverage of the
+      removed entries rediscoverable. Inspired by `Novelty Not Found: Adaptive
+      Fuzzer Restarts to Improve Input Space Coverage`
+    - sending `SIGUSR2` forces a sync (AFL internal sync and foreign `-F` ) as
+      soon as the current queue entry has been fuzzed
+    - the trimming stage no longer throws away what it produces: crashes,
+      hangs and new coverage found while shortening a queue entry are now
+      saved (visible as `op:trim`/`op:ptrim` in the file names)
+    - `-s fixed_seed` now only sets a fixed seed and does not ignore timings
+      anymore (required for proper benchmarking in containers without urandom)
+    - `-t xxx+` fix so dummy seeds do not kill a start-up. rechecks now over
+      time (forwarded request 1375434 from msmeissn)</comment>
+    <requestid>1375439</requestid>
+  </revision>
 </revisionlist>

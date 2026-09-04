@@ -29,7 +29,7 @@
 %endif
 
 Name:           afl
-Version:        5.00c
+Version:        5.03c
 Release:        0
 Summary:        American fuzzy lop is a security-oriented fuzzer
 #URL:            https://lcamtuf.coredump.cx/afl/
@@ -100,6 +100,7 @@ export AFL_NO_X86=1
 %endif
 export CFLAGS_FLTO=""
 make %{?_smp_mflags} PREFIX=%{_prefix} CFLAGS_FLTO=$CFLAGS_FLTO LIBEXEC_DIR=%{_libexecdir} DOC_DIR=%{_docdir} MAN_PATH=%{_mandir}/man8 DESTDIR=%{buildroot} install
+
 chmod -x %{buildroot}/%{_libexecdir}/%{name}/*.o
 
 %files
