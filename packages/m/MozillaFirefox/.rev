@@ -8441,4 +8441,41 @@
   * CVE-2026-74946 (bmo#2059997)</comment>
     <requestid>1372157</requestid>
   </revision>
+  <revision rev="500" vrev="1">
+    <srcmd5>7d1bf1bf4ad5ed5cd3cdab75a5ff1d73</srcmd5>
+    <version>155.0</version>
+    <time>1788518225</time>
+    <user>anag_factory</user>
+    <comment>- Mozilla Firefox 155.0
+  https://www.firefox.com/en-US/firefox/155.0/releasenotes
+  MFSA 2026-82 (bsc#1278001))
+  * CVE-2026-84117 (bmo#2053320)
+    Privilege escalation in Firefox for Android
+  * CVE-2026-84118 (bmo#2057457)
+    Use-after-free in the JavaScript: GC component
+  * CVE-2026-84119 (bmo#2057817)
+    Sandbox escape due to use-after-free in the DOM: Navigation
+    component
+  * CVE-2026-84120 (bmo#2058911)
+    Use-after-free in the Audio/Video component
+  * CVE-2026-84121 (bmo#2059018)
+    Sandbox escape due to use-after-free in the DOM: Security
+    component
+  * CVE-2026-84122 (bmo#2059965)
+    Use-after-free in the Audio/Video component
+  * CVE-2026-84123 (bmo#2060047)
+    Privilege escalation due to use-after-free in the Graphics:
+    WebGPU component
+  * CVE-2026-84124 (bmo#2061110)
+    Use-after-free in the DOM: Core &amp; HTML component
+  * CVE-2026-84125 (bmo#2063871)
+    Use-after-free in the DOM: Core &amp; HTML component
+  * CVE-2026-84126 (bmo#2063893)
+    Incorrect boundary conditions in the Layout: Grid component
+  * CVE-2026-84127 (bmo#1699444)
+    Information disclosure in the WebExtensions component in
+    Firefox for Android
+  * CVE-2026-84128 (bmo#2044280)</comment>
+    <requestid>1375640</requestid>
+  </revision>
 </revisionlist>

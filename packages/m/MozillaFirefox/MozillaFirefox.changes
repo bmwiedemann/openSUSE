@@ -1,4 +1,118 @@
 -------------------------------------------------------------------
+Tue Sep  1 17:47:46 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 155.0
+  https://www.firefox.com/en-US/firefox/155.0/releasenotes
+  MFSA 2026-82 (bsc#1278001))
+  * CVE-2026-84117 (bmo#2053320)
+    Privilege escalation in Firefox for Android
+  * CVE-2026-84118 (bmo#2057457)
+    Use-after-free in the JavaScript: GC component
+  * CVE-2026-84119 (bmo#2057817)
+    Sandbox escape due to use-after-free in the DOM: Navigation
+    component
+  * CVE-2026-84120 (bmo#2058911)
+    Use-after-free in the Audio/Video component
+  * CVE-2026-84121 (bmo#2059018)
+    Sandbox escape due to use-after-free in the DOM: Security
+    component
+  * CVE-2026-84122 (bmo#2059965)
+    Use-after-free in the Audio/Video component
+  * CVE-2026-84123 (bmo#2060047)
+    Privilege escalation due to use-after-free in the Graphics:
+    WebGPU component
+  * CVE-2026-84124 (bmo#2061110)
+    Use-after-free in the DOM: Core & HTML component
+  * CVE-2026-84125 (bmo#2063871)
+    Use-after-free in the DOM: Core & HTML component
+  * CVE-2026-84126 (bmo#2063893)
+    Incorrect boundary conditions in the Layout: Grid component
+  * CVE-2026-84127 (bmo#1699444)
+    Information disclosure in the WebExtensions component in
+    Firefox for Android
+  * CVE-2026-84128 (bmo#2044280)
+    Privilege escalation in the WebDriver BiDi component
+  * CVE-2026-84129 (bmo#2055028)
+    Site isolation issue in the DOM: Navigation component
+  * CVE-2026-84130 (bmo#2057834)
+    Information disclosure in the Graphics: WebGPU component
+  * CVE-2026-84131 (bmo#2060008)
+    Privilege escalation due to invalid pointer in the Graphics
+    component
+  * CVE-2026-84132 (bmo#2063020)
+    Information disclosure in the Networking: HTTP component
+  * CVE-2026-84133 (bmo#2032388)
+    Site isolation issue in the DOM: Push Subscriptions component
+  * CVE-2026-84134 (bmo#2044882)
+    Other issue in the Profile Backup component
+  * CVE-2026-84135 (bmo#2046661)
+    Other issue in Firefox Focus for Android
+  * CVE-2026-84136 (bmo#2048699)
+    Other issue in the DOM: Navigation component
+  * CVE-2026-84137 (bmo#2051146)
+    Spoofing issue in the DOM: Core & HTML component
+  * CVE-2026-84138 (bmo#2056164)
+    Denial-of-service in the PDF Viewer component
+  * CVE-2026-84139 (bmo#2060153)
+    Clickjacking issue in the DOM: Events component
+  * CVE-2026-84140 (bmo#2063780)
+    Site isolation issue in the DOM: Navigation component
+  * CVE-2026-84141 (bmo#2063994)
+    Integer overflow in the Graphics: ImageLib component
+  * CVE-2026-84142 (bmo#2029421, bmo#2040889, bmo#2045313, bmo#2045435,
+    bmo#2048796, bmo#2053150, bmo#2053578, bmo#2057356, bmo#2058621,
+    bmo#2058626)
+    Internally found bugs fixed in Firefox 155
+  * CVE-2026-84143 (bmo#2048793, bmo#2054631, bmo#2054645, bmo#2054657,
+    bmo#2055007, bmo#2055681, bmo#2057107, bmo#2057108, bmo#2057114,
+    bmo#2058087, bmo#2058088, bmo#2058090, bmo#2058095, bmo#2058101,
+    bmo#2059109, bmo#2059183, bmo#2059185, bmo#2061287, bmo#2061301,
+    bmo#2061325)
+    Internally found bugs fixed in Firefox 155, Firefox ESR 153.2
+    and Firefox ESR 140.15
+  * CVE-2026-84144 (bmo#2054619, bmo#2054620, bmo#2054624, bmo#2054625,
+    bmo#2054691, bmo#2054702, bmo#2054726, bmo#2054775, bmo#2055703,
+    bmo#2058006, bmo#2058013, bmo#2058085, bmo#2058098, bmo#2058627,
+    bmo#2058661, bmo#2059002, bmo#2059127, bmo#2059128, bmo#2059144,
+    bmo#2059180, bmo#2059191, bmo#2059192, bmo#2059199, bmo#2059205,
+    bmo#2061320, bmo#2061430, bmo#2061495, bmo#2061505, bmo#2061521,
+    bmo#2061532, bmo#2061775, bmo#2061799, bmo#2062395, bmo#2062404)
+    Internally found bugs fixed in Firefox 155 and Firefox ESR 153.2
+  * CVE-2026-84145 (bmo#2054640, bmo#2054650, bmo#2054652, bmo#2055678,
+    bmo#2055693, bmo#2055705, bmo#2058001, bmo#2058051, bmo#2058652,
+    bmo#2058660, bmo#2059027, bmo#2059139, bmo#2061220, bmo#2061242,
+    bmo#2061285, bmo#2061300, bmo#2061316, bmo#2061397, bmo#2062400,
+    bmo#2062419)
+    Internally found bugs fixed in Firefox 155, Firefox ESR
+    153.2, Firefox ESR 140.15 and Firefox ESR 115.40
+- requires
+  * NSPR >= 4.40
+  * NSS >= 3.127
+- glxtest, vaapitest, v4ltest and vulkantest unshipped in favor of
+  gfxtest
+
+-------------------------------------------------------------------
+Wed Aug 26 09:40:00 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 154.0.1
+  https://www.firefox.com/en-US/firefox/154.0.1/releasenotes
+  * Fixed slower access to saved passwords and unexpected Primary
+    Password prompts caused by recent changes to password storage.
+    (bmo#2064411, bmo#2065593, bmo#2063993)
+  * Fixed an issue where addresses were failing to autofill on some
+    sites. (bmo#2065145, bmo#2063599)
+  * Fixed Firefox adding a new Start Menu shortcut on Windows every
+    time it started. (bmo#2064652)
+  * Fixed an issue where connections to local network devices were
+    failing without a permission prompt on some sites loaded over HTTP.
+    (bmo#2059274)
+  * Fixed a crash that could occur when opening intranet sites that
+    are configured to link to files on a local network share.
+    (bmo#2064648)
+  * Fixed an issue on Windows where tab titles were cut off at the
+    start when the system font was MS UI Gothic. (bmo#2056856)
+
+-------------------------------------------------------------------
 Tue Aug 18 14:31:57 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 154.0

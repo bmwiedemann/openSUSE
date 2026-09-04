@@ -28,9 +28,9 @@
 # orig_suffix b3
 # major 69
 # mainver %%major.99
-%define major          154
+%define major          155
 %define mainver        %major.0
-%define orig_version   154.0
+%define orig_version   155.0
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -129,8 +129,8 @@ BuildRequires:  libcurl-devel
 BuildRequires:  libiw-devel
 BuildRequires:  libproxy-devel
 BuildRequires:  makeinfo
-BuildRequires:  mozilla-nspr-devel >= 4.39
-BuildRequires:  mozilla-nss-devel >= 3.126
+BuildRequires:  mozilla-nspr-devel >= 4.40
+BuildRequires:  mozilla-nss-devel >= 3.127
 BuildRequires:  nasm >= 2.14
 BuildRequires:  nodejs >= 12.22.12
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
@@ -753,15 +753,8 @@ exit 0
 %{progdir}/%{progname}-bin
 %{progdir}/application.ini
 %{progdir}/dependentlibs.list
+%{progdir}/gfxtest
 %{progdir}/*.so
-%{progdir}/glxtest
-%if 0%{wayland_supported}
-%{progdir}/vaapitest
-%endif
-%{progdir}/vulkantest
-%ifarch aarch64 riscv64 %arm
-%{progdir}/v4l2test
-%endif
 %{progdir}/omni.ja
 %{progdir}/fonts/
 %{progdir}/pingsender
