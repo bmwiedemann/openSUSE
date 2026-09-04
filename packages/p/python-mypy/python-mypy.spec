@@ -20,6 +20,13 @@
 %define types_setuptools_version 82.0.0.20260508
 %define hatchling_version 1.18.0
 %bcond_without test
+# turn off docs build on Ring 1
+%bcond_with ringdisabled
+%if %{with ringdisabled}
+%bcond_with docs
+%else
+%bcond_without docs
+%endif
 %if 0%{?suse_version} > 1500
 %bcond_without libalternatives
 %else
@@ -27,7 +34,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-mypy
-Version:        2.2.0
+Version:        2.3.1
 Release:        0
 Summary:        Optional static typing for Python
 License:        MIT
@@ -85,10 +92,15 @@ BuildRequires:  %{python_module testsuite}
 BuildRequires:  %{python_module virtualenv >= 20.6}
 BuildRequires:  gcc-c++
 %endif
+%if %{with docs}
 # SECTION docs
-BuildRequires:  python3-Sphinx >= 1.4.4
-BuildRequires:  python3-sphinx_rtd_theme >= 0.1.9
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-furo
+BuildRequires:  python3-myst-parser
+BuildRequires:  python3-sphinx-inline-tabs
+BuildRequires:  python3-sphinx_rtd_theme
 # /SECTION
+%endif
 %python_subpackages
 
 %description
@@ -119,11 +131,12 @@ rm docs/make.bat
 
 %build
 %pyproject_wheel
-# building docs fails due to missing theme 'furo'
-#pushd docs
-#%%make_build html
-#rm build/html/.buildinfo
-#popd
+%if %{with docs}
+pushd docs
+%make_build html
+rm build/html/.buildinfo
+popd
+%endif
 
 %install
 %pyproject_install

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Aug 28 14:10:03 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2.3.1
+  * We are planning to enable the new native parser (--native-parser)
+    by default soon
+  * List operations are now memory-safe on free threaded Python builds
+  * Mypyc now supports librt.threading.Lock, which is a lock type
+    optimized for use in compiled code
+  * Instance attributes of native classes declared as Final are now
+    read-only at runtime
+  * More updates, see upstream changelog
+  * Typeshed updates
+- Enable docs build with a switch for potential exclusion
+
+-------------------------------------------------------------------
 Thu Jul 23 07:35:08 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove unneeded BuildRequires on pytest-forked.

@@ -730,4 +730,22 @@ reveal_type(Context[MyBot]().bot)
     <comment>- Remove unneeded BuildRequires on pytest-forked.</comment>
     <requestid>1367324</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>2e6661f18484e96f292595997fabe326</srcmd5>
+    <version>2.3.1</version>
+    <time>1788518180</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.3.1
+  * We are planning to enable the new native parser (--native-parser)
+    by default soon
+  * List operations are now memory-safe on free threaded Python builds
+  * Mypyc now supports librt.threading.Lock, which is a lock type
+    optimized for use in compiled code
+  * Instance attributes of native classes declared as Final are now
+    read-only at runtime
+  * More updates, see upstream changelog
+  * Typeshed updates
+- Enable docs build with a switch for potential exclusion</comment>
+    <requestid>1375044</requestid>
+  </revision>
 </revisionlist>
