@@ -253,4 +253,12 @@
     rpm), and set all packages build to off by default</comment>
     <requestid>1127583</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>7340f83d928aed8773f06437694e8a1f</srcmd5>
+    <version>2.7.15</version>
+    <time>1788518299</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1375431</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,41 @@
+From 191cfde1d8622bd746e299f1c37f120b47c69ed1 Mon Sep 17 00:00:00 2001
+From: 94xhn <87560781+94xhn@users.noreply.github.com>
+Date: Tue, 14 Jul 2026 07:31:10 +0800
+Subject: [PATCH 2/2] Fix under-allocation in
+ ulfius_websocket_pop_first_message realloc
+
+message_list->list is an array of struct _websocket_message pointers,
+but the realloc() call in ulfius_websocket_pop_first_message() was
+sizing the shrunk buffer in raw byte count ((len-1)) instead of
+((len-1) * sizeof(struct _websocket_message *)), matching the correct
+pattern already used a few lines above in
+ulfius_push_websocket_message() (o_realloc(..., (len+1)*sizeof(struct
+_websocket_message *))).
+
+On a 64-bit build this under-allocates the array by a factor of 8,
+so any list index write past the first pointer touches unallocated
+heap memory. Draining a message list via repeated
+ulfius_websocket_pop_first_message() calls (the documented usage
+pattern in API.md, and the default behavior since keep_messages
+defaults to U_WEBSOCKET_KEEP_INCOMING|U_WEBSOCKET_KEEP_OUTCOMING)
+reliably corrupts the heap after a handful of pops.
+---
+ src/u_websocket.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/u_websocket.c b/src/u_websocket.c
+index 8592603..a066a17 100644
+--- a/src/u_websocket.c
++++ b/src/u_websocket.c
+@@ -1646,7 +1646,7 @@ struct _websocket_message * ulfius_websocket_pop_first_message(struct _websocket
+       message_list->list[len] = message_list->list[len+1];
+     }
+     if (message_list->len > 1) {
+-      message_list->list = o_realloc(message_list->list, (message_list->len-1));
++      message_list->list = o_realloc(message_list->list, (message_list->len-1)*sizeof(struct _websocket_message *));
+     } else {
+       o_free(message_list->list);
+       message_list->list = NULL;
+-- 
+2.55.0
+

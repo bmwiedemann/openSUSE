@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep  2 11:42:41 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Temporarily build with "-Wno-error=discarded-qualifiers" to fix
+  build errors on TW.
+- Add patches to fix builds for TW:
+  * 0001-Fix-lenght-length-typo-2-occurrences-in-API.md-287.patch
+  * 0002-Fix-under-allocation-in-ulfius_websocket_pop_first_m.patch
+- Use ldconfig_scriptlets macro.
+
+-------------------------------------------------------------------
 Sun Nov 19 21:52:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.7.15:
