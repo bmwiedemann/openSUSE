@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep  2 10:51:25 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.60
+  * Fix binary prefix parsing.
+  * Add set, clear, toggle and test bit operators.
+  * Fix readline path resolution for Apple Silicon.
+
+-------------------------------------------------------------------
 Mon Aug 21 12:37:13 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 0.50
