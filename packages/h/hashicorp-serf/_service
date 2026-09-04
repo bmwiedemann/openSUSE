@@ -2,11 +2,11 @@
 <service name="tar_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://github.com/hashicorp/serf.git</param>
-    <param name="revision">v0.10.2</param>
+    <param name="revision">v0.10.4</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">[v]?([^-+a-z]+)(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
-    <param name="changesgenerate">disable</param>
+    <param name="changesgenerate">enable</param>
     <param name="filename">hashicorp-serf</param>
   </service>
 
@@ -24,6 +24,6 @@
   </service>
 
   <service name="go_modules" mode="manual">
-    <param name="archive">serf-*.tar.xz</param>
+    <param name="archive">hashicorp-serf-*.tar.xz</param>
   </service>
 </services>

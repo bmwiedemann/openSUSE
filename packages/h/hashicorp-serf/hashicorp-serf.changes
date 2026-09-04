@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Sep  3 13:14:05 UTC 2026 - Dario Faggioli <dfaggioli@suse.com>
+
+- Skip some more flacky tests during %check 
+
+-------------------------------------------------------------------
+Wed Sep  2 14:46:12 UTC 2026 - Dario Faggioli <dfaggioli@suse.com>
+
+- Update to version v10.0.4
+  * Fixed a data race during shutdown
+  * Various dependency updates, including:
+    * memberlist update described in HCSEC-2026-18
+    * go-metrics is updated to 0.6.0. This requires using the hashicorpmetrics build tag. 
+  See: https://github.com/hashicorp/serf/releases/tag/v0.10.4
+
+-------------------------------------------------------------------
 Fri Dec  5 22:52:41 UTC 2025 - Dario Faggioli <dfaggioli@suse.com>
 
 - Improve user creation and make the service file more robust 
