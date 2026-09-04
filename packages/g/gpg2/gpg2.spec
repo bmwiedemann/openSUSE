@@ -18,7 +18,7 @@
 
 
 Name:           gpg2
-Version:        2.5.21
+Version:        2.5.22
 Release:        0
 Summary:        File encryption, decryption, signature creation and verification utility
 License:        GPL-3.0-or-later

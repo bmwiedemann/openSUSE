@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Sep  3 06:06:10 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 2.5.22:
+  * gpg: New option "primary" for the --card-edit "generate"
+    command. This option is useful create only the primary key on
+    the first slot of an OpenPGP card
+  * gpgsm: Emit issuer and serial no. when the certificate is not
+    found
+  * A range of bug fixes
+
+-------------------------------------------------------------------
 Sun Jul  5 16:28:05 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 2.5.21:
