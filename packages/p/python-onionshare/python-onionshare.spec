@@ -51,9 +51,11 @@ BuildRequires:  %{mypython}-pytest-xvfb
 # /SECTION
 # SECTION runtime test
 BuildRequires:  %{mypython}-Cython >= 3.0.2
-BuildRequires:  %{mypython}-Flask >= 3.1.3
+BuildRequires:  %{mypython}-Flask
+##% BuildRequires:  %{mypython}-Flask >= 3.1.3
 BuildRequires:  %{mypython}-Flask-Compress >= 1.13
-BuildRequires:  %{mypython}-Flask-SocketIO >= 5.6
+BuildRequires:  %{mypython}-Flask-SocketIO
+##% BuildRequires:  %{mypython}-Flask-SocketIO >= 5.6
 BuildRequires:  %{mypython}-PyNaCl
 BuildRequires:  %{mypython}-PySocks
 BuildRequires:  %{mypython}-Unidecode

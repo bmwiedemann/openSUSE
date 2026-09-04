@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep  2 07:05:32 UTC 2026 - Axel Braun <axel.braun@gmx.de>
+
+- remove dependendy on python-Flask and python-Flask-SocketIO
+  to allow update to Leap 16 and 16.1
+
+-------------------------------------------------------------------
 Fri Jun 26 05:40:16 UTC 2026 - Axel Braun <axel.braun@gmx.de>
 
 - version 2.6.4 (bsc#1269693, CVE-2026-54707,

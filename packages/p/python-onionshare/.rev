@@ -285,4 +285,15 @@
   initial build on OBS</comment>
     <requestid>1362627</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>98875aecc53b936ccf892612f439de9a</srcmd5>
+    <version>2.6.4</version>
+    <time>1788518410</time>
+    <user>anag_factory</user>
+    <comment>- remove dependendy on python-Flask and python-Flask-SocketIO
+  to allow update to Leap 16 and 16.1
+boo#1277932
+</comment>
+    <requestid>1375550</requestid>
+  </revision>
 </revisionlist>
