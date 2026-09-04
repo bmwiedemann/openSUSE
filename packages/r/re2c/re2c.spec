@@ -17,10 +17,10 @@
 
 
 Name:           re2c
-Version:        4.5.1
+Version:        4.6
 Release:        0
 Summary:        Tool for generating C-based recognizers from regular expressions
-License:        SUSE-Public-Domain
+License:        LicenseRef-SUSE-Public-Domain
 URL:            https://re2c.org/
 Source:         https://github.com/skvadrik/re2c/releases/download/%{version}/%{name}-%{version}.tar.xz
 BuildRequires:  bison

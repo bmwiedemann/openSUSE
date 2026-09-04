@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep  1 13:13:34 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.6
+  * Added support for Zig labeled continue optimization. (#580).
+  * Updated C/C++ examples to use re2c features available in
+    version 4.0 or higher.
+
+-------------------------------------------------------------------
 Fri May 29 16:00:56 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Fix License tag to SUSE-Public-Domain (the previous
