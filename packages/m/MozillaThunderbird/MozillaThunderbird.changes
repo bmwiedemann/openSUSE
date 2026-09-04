@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Sun Aug 30 10:25:54 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 140.15.0 ESR
+  https://www.thunderbird.net/en-US/thunderbird/140.15.0esr/releasenotes/
+  * Windows jump list menu no longer functioned correctly
+  MFSA 2026-87 (bsc#1278001)
+  * CVE-2026-84639 (bmo#2061087)
+    Uninitialized memory in MIME parsing
+  * CVE-2026-84640 (bmo#2063964)
+    One byte overflow read in mail parser
+  * CVE-2026-84641 (bmo#2057805)
+    Information disclosure due to malicious IMAP server response
+  * CVE-2026-75874 (bmo#2039972)
+    Sandbox escape in the Remote Settings Client component
+  * CVE-2026-16365 (bmo#2049149)
+    Privilege escalation in the DOM: Workers component
+  * CVE-2026-84119 (bmo#2057817)
+    Sandbox escape due to use-after-free in the DOM: Navigation component
+  * CVE-2026-84120 (bmo#2058911)
+    Use-after-free in the Audio/Video component
+  * CVE-2026-84121 (bmo#2059018)
+    Sandbox escape due to use-after-free in the DOM: Security component
+  * CVE-2026-84122 (bmo#2059965)
+    Use-after-free in the Audio/Video component
+  * CVE-2026-84124 (bmo#2061110)
+    Use-after-free in the DOM: Core & HTML component
+  * CVE-2026-16371 (bmo#2008369)
+    Privilege escalation in the DOM: Navigation component
+  * CVE-2026-84131 (bmo#2060008)
+    Privilege escalation due to invalid pointer in the Graphics component
+  * CVE-2026-84143 (bmo#2048793, bmo#2054631, bmo#2054645, bmo#2054657,
+    bmo#2055007, bmo#2055681, bmo#2057107, bmo#2057108, bmo#2057114,
+    bmo#2058087, bmo#2058088, bmo#2058090, bmo#2058095, bmo#2058101,
+    bmo#2059109, bmo#2059183, bmo#2059185, bmo#2061287, bmo#2061301,
+    bmo#2061325)
+    Internally found bugs fixed in Thunderbird 155, Thunderbird
+    ESR 153.2 and Thunderbird ESR 140.15
+  * CVE-2026-84145 (bmo#2054640, bmo#2054650, bmo#2054652, bmo#2055678,
+    bmo#2055693, bmo#2055705, bmo#2058001, bmo#2058051, bmo#2058652,
+    bmo#2058660, bmo#2059027, bmo#2059139, bmo#2061220, bmo#2061242,
+    bmo#2061285, bmo#2061300, bmo#2061316, bmo#2061397, bmo#2062400,
+    bmo#2062419)
+    Internally found bugs fixed in Thunderbird 155, Thunderbird
+    ESR 153.2 and Thunderbird ESR 140.15
+- Mozilla Thunderbird 140.14.1 ESR
+  * Dragging attachments from Local Folders to desktop failed on Windows
+
+-------------------------------------------------------------------
 Tue Aug 18 13:05:07 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 140.14.0 ESR

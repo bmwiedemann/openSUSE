@@ -6538,4 +6538,41 @@ I cannot test locally unfortunately.
     Canvas2D component</comment>
     <requestid>1372156</requestid>
   </revision>
+  <revision rev="393" vrev="1">
+    <srcmd5>3e0a6f691068e679db58e08a41b71780</srcmd5>
+    <version>140.15.0</version>
+    <time>1788518392</time>
+    <user>anag_factory</user>
+    <comment>- Mozilla Thunderbird 140.15.0 ESR
+  https://www.thunderbird.net/en-US/thunderbird/140.15.0esr/releasenotes/
+  * Windows jump list menu no longer functioned correctly
+  MFSA 2026-87 (bsc#1278001)
+  * CVE-2026-84639 (bmo#2061087)
+    Uninitialized memory in MIME parsing
+  * CVE-2026-84640 (bmo#2063964)
+    One byte overflow read in mail parser
+  * CVE-2026-84641 (bmo#2057805)
+    Information disclosure due to malicious IMAP server response
+  * CVE-2026-75874 (bmo#2039972)
+    Sandbox escape in the Remote Settings Client component
+  * CVE-2026-16365 (bmo#2049149)
+    Privilege escalation in the DOM: Workers component
+  * CVE-2026-84119 (bmo#2057817)
+    Sandbox escape due to use-after-free in the DOM: Navigation component
+  * CVE-2026-84120 (bmo#2058911)
+    Use-after-free in the Audio/Video component
+  * CVE-2026-84121 (bmo#2059018)
+    Sandbox escape due to use-after-free in the DOM: Security component
+  * CVE-2026-84122 (bmo#2059965)
+    Use-after-free in the Audio/Video component
+  * CVE-2026-84124 (bmo#2061110)
+    Use-after-free in the DOM: Core &amp; HTML component
+  * CVE-2026-16371 (bmo#2008369)
+    Privilege escalation in the DOM: Navigation component
+  * CVE-2026-84131 (bmo#2060008)
+    Privilege escalation due to invalid pointer in the Graphics component
+  * CVE-2026-84143 (bmo#2048793, bmo#2054631, bmo#2054645, bmo#2054657,
+    bmo#2055007, bmo#2055681, bmo#2057107, bmo#2057108, bmo#2057114,</comment>
+    <requestid>1375538</requestid>
+  </revision>
 </revisionlist>
