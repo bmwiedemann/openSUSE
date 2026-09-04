@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Sep  3 07:50:09 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.4.16
+  * Fixed loading BMP files with < 8 bits per pixel and odd widths
+  * Fixed the depth format sample count support check in the GPU
+    API
+  * Removed WM_TAKE_FOCUS from WM_PROTOCOLS for X11 windows
+  * Report SDL_PenInputFlags in SDL_PenProximityEvent
+  * Fixed vertical high-resolution mouse wheel scaling on evdev
+  * Fixed joystick stick calibration on Nintendo Joy-Con
+    controllers
+
+-------------------------------------------------------------------
 Tue Aug  4 08:22:28 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.4.14
