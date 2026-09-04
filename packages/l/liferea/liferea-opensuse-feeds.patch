@@ -1,180 +1,180 @@
-Index: liferea-2.0/opml/feedlist_bg.opml
+Index: liferea-2.0.1/opml/feedlist_bg.opml
 ===================================================================
---- liferea-2.0.orig/opml/feedlist_bg.opml
-+++ liferea-2.0/opml/feedlist_bg.opml
-@@ -12,6 +12,10 @@
+--- liferea-2.0.1.orig/opml/feedlist_bg.opml
++++ liferea-2.0.1/opml/feedlist_bg.opml
+@@ -11,6 +11,10 @@
  
- 	<!-- lets keep this default English block in sync over all feed lists! -->
  	<outline text="International">		<!-- translate this title for localized feed list -->
-+		<outline text="openSUSE">
-+			<outline text="openSUSE News" htmlUrl="https://news.opensuse.org/" xmlUrl="https://news.opensuse.org/feed.xml" />
-+			<outline text="Planet openSUSE" htmlUrl="https://planet.opensuse.org/" xmlUrl="https://planet.opensuse.org/global/rss20.xml" />
-+		</outline>
+ 		<!-- start of default block: lets keep this default English block in sync over all feed lists! -->
++                <outline text="openSUSE">
++                        <outline text="openSUSE News" htmlUrl="https://news.opensuse.org/" xmlUrl="https://news.opensuse.org/feed.xml" />
++                        <outline text="Planet openSUSE" htmlUrl="https://planet.opensuse.org/" xmlUrl="https://planet.opensuse.org/global/rss20.xml" />
++                </outline>
  		<outline text="News">
  			<outline text="Ars Technica" htmlUrl="https://arstechnica.com" xmlUrl="https://feeds.arstechnica.com/arstechnica/index"/>
  			<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="https://rss.slashdot.org/Slashdot/slashdotMain" />
-Index: liferea-2.0/opml/feedlist_ca.opml
+Index: liferea-2.0.1/opml/feedlist_ca.opml
 ===================================================================
---- liferea-2.0.orig/opml/feedlist_ca.opml
-+++ liferea-2.0/opml/feedlist_ca.opml
+--- liferea-2.0.1.orig/opml/feedlist_ca.opml
++++ liferea-2.0.1/opml/feedlist_ca.opml
 @@ -17,6 +17,10 @@
  
- 	<!-- lets keep this default English block in sync over all feed lists! -->
  	<outline text="Example Feeds">		<!-- translate this title for localized feed list -->
-+		<outline text="openSUSE">
-+			<outline text="openSUSE News" htmlUrl="https://news.opensuse.org/" xmlUrl="https://news.opensuse.org/feed.xml" />
-+			<outline text="Planet openSUSE" htmlUrl="https://planet.opensuse.org/" xmlUrl="https://planet.opensuse.org/global/rss20.xml" />
-+		</outline>
+ 		<!-- start of default block: lets keep this default English block in sync over all feed lists! -->
++                <outline text="openSUSE">
++                        <outline text="openSUSE News" htmlUrl="https://news.opensuse.org/" xmlUrl="https://news.opensuse.org/feed.xml" />
++                        <outline text="Planet openSUSE" htmlUrl="https://planet.opensuse.org/" xmlUrl="https://planet.opensuse.org/global/rss20.xml" />
++                </outline>
  		<outline text="News">
  			<outline text="Ars Technica" htmlUrl="https://arstechnica.com" xmlUrl="https://feeds.arstechnica.com/arstechnica/index"/>
  			<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="https://rss.slashdot.org/Slashdot/slashdotMain" />
-Index: liferea-2.0/opml/feedlist_de.opml
+Index: liferea-2.0.1/opml/feedlist_de.opml
 ===================================================================
---- liferea-2.0.orig/opml/feedlist_de.opml
-+++ liferea-2.0/opml/feedlist_de.opml
-@@ -19,6 +19,10 @@
+--- liferea-2.0.1.orig/opml/feedlist_de.opml
++++ liferea-2.0.1/opml/feedlist_de.opml
+@@ -18,6 +18,10 @@
   
- 		<!-- lets keep this default English block in sync over all feed lists! -->
  		<outline text="International">		<!-- translate this title for localized feed list -->
-+			<outline text="openSUSE">
-+				<outline text="openSUSE News" htmlUrl="https://news.opensuse.org/" xmlUrl="https://news.opensuse.org/feed.xml" />
-+				<outline text="Planet openSUSE" htmlUrl="https://planet.opensuse.org/" xmlUrl="https://planet.opensuse.org/global/rss20.xml" />
-+			</outline>
- 			<outline text="News">
- 				<outline text="Ars Technica" htmlUrl="https://arstechnica.com" xmlUrl="https://feeds.arstechnica.com/arstechnica/index"/>
- 				<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="https://rss.slashdot.org/Slashdot/slashdotMain" />
-Index: liferea-2.0/opml/feedlist_en.opml
-===================================================================
---- liferea-2.0.orig/opml/feedlist_en.opml
-+++ liferea-2.0/opml/feedlist_en.opml
-@@ -6,6 +6,10 @@
- <body>
- 	<!-- lets keep this default English block in sync over all feed lists! -->
- 	<outline text="Example Feeds">		<!-- translate this title for localized feed list -->
-+		<outline text="openSUSE">
-+			<outline text="openSUSE News" htmlUrl="https://news.opensuse.org/" xmlUrl="https://news.opensuse.org/feed.xml" />
-+			<outline text="Planet openSUSE" htmlUrl="https://planet.opensuse.org/" xmlUrl="https://planet.opensuse.org/global/rss20.xml" />
-+		</outline>
+ 		<!-- start of default block: lets keep this default English block in sync over all feed lists! -->
++                <outline text="openSUSE">
++                        <outline text="openSUSE News" htmlUrl="https://news.opensuse.org/" xmlUrl="https://news.opensuse.org/feed.xml" />
++                        <outline text="Planet openSUSE" htmlUrl="https://planet.opensuse.org/" xmlUrl="https://planet.opensuse.org/global/rss20.xml" />
++                </outline>
  		<outline text="News">
  			<outline text="Ars Technica" htmlUrl="https://arstechnica.com" xmlUrl="https://feeds.arstechnica.com/arstechnica/index"/>
  			<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="https://rss.slashdot.org/Slashdot/slashdotMain" />
-Index: liferea-2.0/opml/feedlist_es.opml
+Index: liferea-2.0.1/opml/feedlist_en.opml
 ===================================================================
---- liferea-2.0.orig/opml/feedlist_es.opml
-+++ liferea-2.0/opml/feedlist_es.opml
+--- liferea-2.0.1.orig/opml/feedlist_en.opml
++++ liferea-2.0.1/opml/feedlist_en.opml
+@@ -7,6 +7,10 @@
+ 
+ 	<outline text="Example Feeds">		<!-- translate this title for localized feed list -->
+ 		<!-- start of default block: lets keep this default English block in sync over all feed lists! -->
++                <outline text="openSUSE">
++                        <outline text="openSUSE News" htmlUrl="https://news.opensuse.org/" xmlUrl="https://news.opensuse.org/feed.xml" />
++                        <outline text="Planet openSUSE" htmlUrl="https://planet.opensuse.org/" xmlUrl="https://planet.opensuse.org/global/rss20.xml" />
++                </outline>
+ 		<outline text="News">
+ 			<outline text="Ars Technica" htmlUrl="https://arstechnica.com" xmlUrl="https://feeds.arstechnica.com/arstechnica/index"/>
+ 			<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="https://rss.slashdot.org/Slashdot/slashdotMain" />
+Index: liferea-2.0.1/opml/feedlist_es.opml
+===================================================================
+--- liferea-2.0.1.orig/opml/feedlist_es.opml
++++ liferea-2.0.1/opml/feedlist_es.opml
 @@ -15,6 +15,10 @@
  
- 	<!-- lets keep this default English block in sync over all feed lists! -->
  	<outline text="Fuentes de ejemplo (inglés)">
-+		<outline text="openSUSE">
-+			<outline text="openSUSE News" htmlUrl="https://news.opensuse.org/" xmlUrl="https://news.opensuse.org/feed.xml" />
-+			<outline text="Planet openSUSE" htmlUrl="https://planet.opensuse.org/" xmlUrl="https://planet.opensuse.org/global/rss20.xml" />
-+		</outline>
+ 		<!-- start of default block: lets keep this default English block in sync over all feed lists! -->
++                <outline text="openSUSE">
++                        <outline text="openSUSE News" htmlUrl="https://news.opensuse.org/" xmlUrl="https://news.opensuse.org/feed.xml" />
++                        <outline text="Planet openSUSE" htmlUrl="https://planet.opensuse.org/" xmlUrl="https://planet.opensuse.org/global/rss20.xml" />
++                </outline>
  		<outline text="News">
  			<outline text="Ars Technica" htmlUrl="https://arstechnica.com" xmlUrl="https://feeds.arstechnica.com/arstechnica/index"/>
- 			<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="https://rss.slashdot.org/Slashdot/slashdot" />
-Index: liferea-2.0/opml/feedlist_eu.opml
+ 			<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="https://rss.slashdot.org/Slashdot/slashdotMain" />
+Index: liferea-2.0.1/opml/feedlist_eu.opml
 ===================================================================
---- liferea-2.0.orig/opml/feedlist_eu.opml
-+++ liferea-2.0/opml/feedlist_eu.opml
+--- liferea-2.0.1.orig/opml/feedlist_eu.opml
++++ liferea-2.0.1/opml/feedlist_eu.opml
 @@ -17,6 +17,10 @@
  
- 	<!-- lets keep this default English block in sync over all feed lists! -->
  	<outline text="Nazioarteko jarioak">		<!-- translate this title for localized feed list -->
-+		<outline text="openSUSE">
-+			<outline text="openSUSE News" htmlUrl="https://news.opensuse.org/" xmlUrl="https://news.opensuse.org/feed.xml" />
-+			<outline text="Planet openSUSE" htmlUrl="https://planet.opensuse.org/" xmlUrl="https://planet.opensuse.org/global/rss20.xml" />
-+		</outline>
- 		<outline text="Berriak">
+ 		<!-- start of default block: lets keep this default English block in sync over all feed lists! -->
++                <outline text="openSUSE">
++                        <outline text="openSUSE News" htmlUrl="https://news.opensuse.org/" xmlUrl="https://news.opensuse.org/feed.xml" />
++                        <outline text="Planet openSUSE" htmlUrl="https://planet.opensuse.org/" xmlUrl="https://planet.opensuse.org/global/rss20.xml" />
++                </outline>
+ 		<outline text="News">
  			<outline text="Ars Technica" htmlUrl="https://arstechnica.com" xmlUrl="https://feeds.arstechnica.com/arstechnica/index"/>
  			<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="https://rss.slashdot.org/Slashdot/slashdotMain" />
-Index: liferea-2.0/opml/feedlist_fa.opml
+Index: liferea-2.0.1/opml/feedlist_fa.opml
 ===================================================================
---- liferea-2.0.orig/opml/feedlist_fa.opml
-+++ liferea-2.0/opml/feedlist_fa.opml
+--- liferea-2.0.1.orig/opml/feedlist_fa.opml
++++ liferea-2.0.1/opml/feedlist_fa.opml
 @@ -13,6 +13,10 @@
  		
- 		<!-- lets keep this default English block in sync over all feed lists! -->
  		<outline text="International">		
-+			<outline text="openSUSE">
-+				<outline text="openSUSE News" htmlUrl="https://news.opensuse.org/" xmlUrl="https://news.opensuse.org/feed.xml" />
-+				<outline text="Planet openSUSE" htmlUrl="https://planet.opensuse.org/" xmlUrl="https://planet.opensuse.org/global/rss20.xml" />
-+			</outline>
- 			<outline text="News">
- 				<outline text="Ars Technica" htmlUrl="https://arstechnica.com" xmlUrl="https://feeds.arstechnica.com/arstechnica/index"/>
- 				<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="https://rss.slashdot.org/Slashdot/slashdotMain" />
-Index: liferea-2.0/opml/feedlist_fr.opml
-===================================================================
---- liferea-2.0.orig/opml/feedlist_fr.opml
-+++ liferea-2.0/opml/feedlist_fr.opml
-@@ -17,6 +17,10 @@
- 
- 	<!-- lets keep this default English block in sync over all feed lists! -->
- 	<outline text="International">		<!-- translate this title for localized feed list -->
-+		<outline text="openSUSE">
-+			<outline text="openSUSE News" htmlUrl="https://news.opensuse.org/" xmlUrl="https://news.opensuse.org/feed.xml" />
-+			<outline text="Planet openSUSE" htmlUrl="https://planet.opensuse.org/" xmlUrl="https://planet.opensuse.org/global/rss20.xml" />
-+		</outline>
- 		<outline text="News">		<!-- translate this title for localized feed list -->
- 			<outline text="Ars Technica" htmlUrl="https://arstechnica.com" xmlUrl="https://feeds.arstechnica.com/arstechnica/index"/>
- 			<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="https://rss.slashdot.org/Slashdot/slashdotMain" />
-Index: liferea-2.0/opml/feedlist_gl.opml
-===================================================================
---- liferea-2.0.orig/opml/feedlist_gl.opml
-+++ liferea-2.0/opml/feedlist_gl.opml
-@@ -12,6 +12,10 @@
- 	</outline>
- 	<!-- lets keep this default English block in sync over all feed lists! -->
- 	<outline text="Exemplos de fontes (inglés)">
-+		<outline text="openSUSE">
-+			<outline text="openSUSE News" htmlUrl="https://news.opensuse.org/" xmlUrl="https://news.opensuse.org/feed.xml" />
-+			<outline text="Planet openSUSE" htmlUrl="https://planet.opensuse.org/" xmlUrl="https://planet.opensuse.org/global/rss20.xml" />
-+		</outline>
+ 		<!-- start of default block: lets keep this default English block in sync over all feed lists! -->
++                <outline text="openSUSE">
++                        <outline text="openSUSE News" htmlUrl="https://news.opensuse.org/" xmlUrl="https://news.opensuse.org/feed.xml" />
++                        <outline text="Planet openSUSE" htmlUrl="https://planet.opensuse.org/" xmlUrl="https://planet.opensuse.org/global/rss20.xml" />
++                </outline>
  		<outline text="News">
  			<outline text="Ars Technica" htmlUrl="https://arstechnica.com" xmlUrl="https://feeds.arstechnica.com/arstechnica/index"/>
  			<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="https://rss.slashdot.org/Slashdot/slashdotMain" />
-Index: liferea-2.0/opml/feedlist_he.opml
+Index: liferea-2.0.1/opml/feedlist_fr.opml
 ===================================================================
---- liferea-2.0.orig/opml/feedlist_he.opml
-+++ liferea-2.0/opml/feedlist_he.opml
-@@ -28,6 +28,10 @@
-     </outline>
-  		<!-- lets keep this default English block in sync over all feed lists! -->
+--- liferea-2.0.1.orig/opml/feedlist_fr.opml
++++ liferea-2.0.1/opml/feedlist_fr.opml
+@@ -17,6 +17,10 @@
+ 
+       <outline text="International">		<!-- translate this title for localized feed list -->
+ 		<!-- start of default block: lets keep this default English block in sync over all feed lists! -->
++                <outline text="openSUSE">
++                        <outline text="openSUSE News" htmlUrl="https://news.opensuse.org/" xmlUrl="https://news.opensuse.org/feed.xml" />
++                        <outline text="Planet openSUSE" htmlUrl="https://planet.opensuse.org/" xmlUrl="https://planet.opensuse.org/global/rss20.xml" />
++                </outline>
+ 		<outline text="News">
+ 			<outline text="Ars Technica" htmlUrl="https://arstechnica.com" xmlUrl="https://feeds.arstechnica.com/arstechnica/index"/>
+ 			<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="https://rss.slashdot.org/Slashdot/slashdotMain" />
+Index: liferea-2.0.1/opml/feedlist_gl.opml
+===================================================================
+--- liferea-2.0.1.orig/opml/feedlist_gl.opml
++++ liferea-2.0.1/opml/feedlist_gl.opml
+@@ -13,6 +13,10 @@
+ 	
+ 	<outline text="Exemplos de fontes (inglés)">
+ 		<!-- start of default block: lets keep this default English block in sync over all feed lists! -->
++                <outline text="openSUSE">
++                        <outline text="openSUSE News" htmlUrl="https://news.opensuse.org/" xmlUrl="https://news.opensuse.org/feed.xml" />
++                        <outline text="Planet openSUSE" htmlUrl="https://planet.opensuse.org/" xmlUrl="https://planet.opensuse.org/global/rss20.xml" />
++                </outline>
+ 		<outline text="News">
+ 			<outline text="Ars Technica" htmlUrl="https://arstechnica.com" xmlUrl="https://feeds.arstechnica.com/arstechnica/index"/>
+ 			<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="https://rss.slashdot.org/Slashdot/slashdotMain" />
+Index: liferea-2.0.1/opml/feedlist_he.opml
+===================================================================
+--- liferea-2.0.1.orig/opml/feedlist_he.opml
++++ liferea-2.0.1/opml/feedlist_he.opml
+@@ -29,6 +29,10 @@
+ 
  		<outline text="מהעולם">		<!-- translate this for localized feed list -->
-+			<outline text="openSUSE">
-+				<outline text="openSUSE News" htmlUrl="https://news.opensuse.org/" xmlUrl="https://news.opensuse.org/feed.xml" />
-+				<outline text="Planet openSUSE" htmlUrl="https://planet.opensuse.org/" xmlUrl="https://planet.opensuse.org/global/rss20.xml" />
-+			</outline>
- 			<outline text="News">
- 				<outline text="Ars Technica" htmlUrl="https://arstechnica.com" xmlUrl="https://feeds.arstechnica.com/arstechnica/index"/>
- 				<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="https://rss.slashdot.org/Slashdot/slashdotMain" />
-Index: liferea-2.0/opml/feedlist_hu.opml
+ 		<!-- start of default block: lets keep this default English block in sync over all feed lists! -->
++                <outline text="openSUSE">
++                        <outline text="openSUSE News" htmlUrl="https://news.opensuse.org/" xmlUrl="https://news.opensuse.org/feed.xml" />
++                        <outline text="Planet openSUSE" htmlUrl="https://planet.opensuse.org/" xmlUrl="https://planet.opensuse.org/global/rss20.xml" />
++                </outline>
+ 		<outline text="News">
+ 			<outline text="Ars Technica" htmlUrl="https://arstechnica.com" xmlUrl="https://feeds.arstechnica.com/arstechnica/index"/>
+ 			<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="https://rss.slashdot.org/Slashdot/slashdotMain" />
+Index: liferea-2.0.1/opml/feedlist_hu.opml
 ===================================================================
---- liferea-2.0.orig/opml/feedlist_hu.opml
-+++ liferea-2.0/opml/feedlist_hu.opml
+--- liferea-2.0.1.orig/opml/feedlist_hu.opml
++++ liferea-2.0.1/opml/feedlist_hu.opml
 @@ -6,6 +6,10 @@
  <body>
- 	<!-- lets keep this default English block in sync over all feed lists! -->
  	<outline text="Példa hírforrások">		<!-- translate this for localized feed list -->
-+		<outline text="openSUSE">
-+			<outline text="openSUSE News" htmlUrl="https://news.opensuse.org/" xmlUrl="https://news.opensuse.org/feed.xml" />
-+			<outline text="Planet openSUSE" htmlUrl="https://planet.opensuse.org/" xmlUrl="https://planet.opensuse.org/global/rss20.xml" />
-+		</outline>
- 		<outline text="Magyar hírek 🇭🇺">
- 			<outline text="[origo]" htmlUrl="http://www.origo.hu/" xmlUrl="http://www.origo.hu/contentpartner/rss/hircentrum/origo.xml" />
- 			<outline text="Index" htmlUrl="https://index.hu/" xmlUrl="https://index.hu/24ora/rss/" />
-Index: liferea-2.0/opml/feedlist_id.opml
+ 		<!-- start of default block: lets keep this default English block in sync over all feed lists! -->
++                <outline text="openSUSE">
++                        <outline text="openSUSE News" htmlUrl="https://news.opensuse.org/" xmlUrl="https://news.opensuse.org/feed.xml" />
++                        <outline text="Planet openSUSE" htmlUrl="https://planet.opensuse.org/" xmlUrl="https://planet.opensuse.org/global/rss20.xml" />
++                </outline>
+ 		<outline text="News">
+ 			<outline text="Ars Technica" htmlUrl="https://arstechnica.com" xmlUrl="https://feeds.arstechnica.com/arstechnica/index"/>
+ 			<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="https://rss.slashdot.org/Slashdot/slashdotMain" />
+Index: liferea-2.0.1/opml/feedlist_id.opml
 ===================================================================
---- liferea-2.0.orig/opml/feedlist_id.opml
-+++ liferea-2.0/opml/feedlist_id.opml
+--- liferea-2.0.1.orig/opml/feedlist_id.opml
++++ liferea-2.0.1/opml/feedlist_id.opml
 @@ -6,6 +6,10 @@
  <body>
- 	<!-- lets keep this default English block in sync over all feed lists! -->
  	<outline text="Contoh Feed">		<!-- translate this title for localized feed list -->
-+		<outline text="openSUSE">
-+			<outline text="openSUSE News" htmlUrl="https://news.opensuse.org/" xmlUrl="https://news.opensuse.org/feed.xml" />
-+			<outline text="Planet openSUSE" htmlUrl="https://planet.opensuse.org/" xmlUrl="https://planet.opensuse.org/global/rss20.xml" />
-+		</outline>
- 		<outline text="Berita">
+ 		<!-- start of default block: lets keep this default English block in sync over all feed lists! -->
++                <outline text="openSUSE">
++                        <outline text="openSUSE News" htmlUrl="https://news.opensuse.org/" xmlUrl="https://news.opensuse.org/feed.xml" />
++                        <outline text="Planet openSUSE" htmlUrl="https://planet.opensuse.org/" xmlUrl="https://planet.opensuse.org/global/rss20.xml" />
++                </outline>
+ 		<outline text="News">
  			<outline text="Ars Technica" htmlUrl="https://arstechnica.com" xmlUrl="https://feeds.arstechnica.com/arstechnica/index"/>
  			<outline text="Slashdot" htmlUrl="https://slashdot.org"  xmlUrl="https://rss.slashdot.org/Slashdot/slashdotMain" />

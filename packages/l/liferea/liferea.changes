@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Sep  2 15:22:19 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.0.1:
+  + Fixes missing installation of OPML default files
+  + Fixes folder expansion regression on startup
+  + Fixes an issue where RSS metadata values were not stored once
+    but multiple times
+  + Fixes network_init called too late
+  + Render media:starRating, media:community @favourites + @views,
+    itunes:image and slash:comments
+  + Restores comment feed functionality. Now updates item view
+    without scroll reset
+  + Dropped bold-unread plugin as it does not work anymore with
+    GtkListView
+  + Update of all default OPML files. Updated international feeds
+    section. Removed some broken feeds.
+- Rebase liferea-opensuse-feeds.patch.
+
+-------------------------------------------------------------------
 Thu Aug 20 18:22:41 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.0:
