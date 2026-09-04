@@ -778,7 +778,6 @@
     <package name="ipa-uigothic-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="ipmitool" supportstatus="unsupported"/> <!-- reason: dvd:ipmitool -->
     <package name="iproute2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="iproute2-bash-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="iputils" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="ipw-firmware" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="ipxe-qemu" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->

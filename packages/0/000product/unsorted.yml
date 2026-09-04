@@ -4027,6 +4027,7 @@ unsorted:
   - fake-hwclock 
   - fakechroot 
   - fakeroot 
+  - fakeroot-32bit 
   - falco-libs-devel 
   - falcoctl 
   - falcoctl-bash-completion 
@@ -4518,7 +4519,6 @@ unsorted:
   - frameworkintegration-plugin 
   - francis 
   - francis-lang 
-  - fred 
   - free-ttf-fonts 
   - freealut-devel 
   - freecell-solver 
@@ -10077,7 +10077,6 @@ unsorted:
   - kdb-sqlite3-driver 
   - kdbusaddons-devel 
   - kddockwidgets-qt6-devel 
-  - kde-fcstd-thumbnailer 
   - kde-inotify-survey-lang 
   - kde-l10n-devel 
   - kde-oxygen-fonts 
@@ -15123,7 +15122,6 @@ unsorted:
   - libnetfilter_log1 
   - libnetfilter_queue-devel 
   - libnetfilter_queue1 
-  - libnetlink-devel 
   - libnetpbm-devel 
   - libnetpbm11-32bit 
   - libnettle-devel 
@@ -15656,7 +15654,7 @@ unsorted:
   - libpodofo-devel 
   - libpodofo2 
   - libpodofo4 
-  - libpoke1 
+  - libpoke2 
   - libpolkit-agent-1-0-32bit 
   - libpolkit-gobject-1-0-32bit 
   - libpolkit-qt5-1-devel 
@@ -16074,7 +16072,7 @@ unsorted:
   - librdmacm-utils 
   - librdmacm1-32bit 
   - libre2-11 
-  - libre44 
+  - libre45 
   - libreadline-java 
   - libreadline-java-javadoc 
   - libreadline5 
@@ -16858,7 +16856,7 @@ unsorted:
   - libtimidity-devel 
   - libtimidity2 
   - libtins-devel 
-  - libtins4_4 
+  - libtins4_6 
   - libtinygettext0 
   - libtinyobjloader2 
   - libtinyxml0 
@@ -16893,7 +16891,7 @@ unsorted:
   - libtorrent-rasterbar-devel 
   - libtorrent-rasterbar-doc 
   - libtorrent-rasterbar2_0 
-  - libtorrent49 
+  - libtorrent50 
   - libtoxcore2 
   - libtpl-extensions3 
   - libtpm2-totp0 
@@ -20284,6 +20282,9 @@ unsorted:
   - non-ntk-devel 
   - non-ntk-fluid 
   - nono-cli 
+  - nono-cli-bash-completion 
+  - nono-cli-fish-completion 
+  - nono-cli-zsh-completion 
   - noping 
   - normaliz 
   - normaliz-devel 
@@ -24934,6 +24935,7 @@ unsorted:
   - python313-attr 
   - python313-aubio 
   - python313-audible 
+  - python313-audible-cli 
   - python313-audio-degrader 
   - python313-audiogrep 
   - python313-audioop-lts 
@@ -28995,6 +28997,7 @@ unsorted:
   - python314-attrs 
   - python314-aubio 
   - python314-audible 
+  - python314-audible-cli 
   - python314-audio-degrader 
   - python314-audiogrep 
   - python314-audioop-lts 
@@ -34587,7 +34590,6 @@ unsorted:
   - selinux-sandbox 
   - selinux-sandbox-lang 
   - selinux-targeted-setup 
-  - semantik 
   - semaphore 
   - sendfax 
   - sendmail-devel 
