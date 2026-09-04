@@ -1,8 +1,8 @@
 #
 # spec file for package bittwist
 #
-# Copyright (c) 2023 SUSE LLC
-# Copyright (c) 2016-2023, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2016-2026, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,11 @@
 
 
 Name:           bittwist
-Version:        3.8
+Version:        4.7
 Release:        0
 Summary:        A libpcap-based Ethernet packet generator
 License:        GPL-2.0-only
 Group:          Productivity/Networking/Diagnostic
-#Git-Clone:     https://github.com/ayeowch/bittwist.git
 URL:            https://bittwist.sourceforge.io
 Source:         http://downloads.sourceforge.net/%{name}/Linux/Bit-Twist%%20%{version}/%{name}-linux-%{version}.tar.gz
 Patch0:         bittwist-makefile.diff

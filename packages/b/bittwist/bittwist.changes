@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Wed Sep  2 14:20:35 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.7
+  bittwiste (editor)
+  * added support for editing IEEE 802.1ad Q-in-Q VLAN packets.
+- Update to version 4.6
+  bittwiste (editor)
+  * added support for editing IEEE 802.1Q VLAN packets.
+- Update to version 4.5
+  bittwist (generator)
+  * added -j flag to enable jumbo frame transmission on supported
+    NICs.
+- Update to version 4.4
+  bittwist (generator)
+  * truncate large packets, e.g. TSO packets, to the supported MTU.
+  bittwiste (editor)
+  * bumped max. payload length from 1514 to 65535 bytes.
+- Update to version 4.3
+  bittwist (generator)
+  * use pcap_send_queue on Windows when using -r 0.
+- Update to version 4.2
+  bittwist (generator)
+  * fix cleanup()
+  bittwiste (editor)
+  * updated option -X to also accept range or range:payload, e.g.
+    -X 0-1000
+    -X 0-1000:0302aad1
+  * updated option -T eth -t type to also accept integer or
+    hexadecimal value in addition to the existing keywords: ip,
+    ip6, arp.
+- Update to version 4.1
+  * executables moved from src to bin directory.
+- Update to version 4.0
+  * removed github repo https://github.com/ayeowch/bittwist to
+    limit maintenance.
+  bittwiste (editor)
+  * remove linking to libpcap
+- Update patch:
+  * bittwist-makefile.diff
+
+-------------------------------------------------------------------
 Thu Feb 22 10:30:52 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
