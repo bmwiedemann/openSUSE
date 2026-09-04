@@ -917,4 +917,20 @@
   * Improve detection of snapshot systems (forwarded request 1373635 from aplanas)</comment>
     <requestid>1373636</requestid>
   </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>f3d779b4e184f7c0a0d821b497475ae7</srcmd5>
+    <version>1+git20260903.f91f636</version>
+    <time>1788518221</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1+git20260903.f91f636:
+  * Include FIDO2 unlocked devices for ordering (bsc#1234010)
+  * Test in parallel for speed up
+  * Add --repair parameter to cleanup
+  * Fix shellcheck complain
+  * Report entries with missing files
+  * Avoid duplicate entries in non-snapper systems
+  * Add initial tests for sdbootutil
+  * Report the error if bootctl clean fails (forwarded request 1375626 from aplanas)</comment>
+    <requestid>1375627</requestid>
+  </revision>
 </revisionlist>

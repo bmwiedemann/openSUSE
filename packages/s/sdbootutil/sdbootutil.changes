@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Thu Sep 03 13:44:56 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20260903.f91f636:
+  * Include FIDO2 unlocked devices for ordering (bsc#1234010)
+  * Test in parallel for speed up
+  * Add --repair parameter to cleanup
+  * Fix shellcheck complain
+  * Report entries with missing files
+  * Avoid duplicate entries in non-snapper systems
+  * Add initial tests for sdbootutil
+  * Report the error if bootctl clean fails
+
+-------------------------------------------------------------------
+Tue Sep 01 13:30:41 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20260901.41540d5:
+  * No warn if a component is not in the event log
+  * Add status command
+  * Select the new sdbootutil if available
+  * Skip blank lines in measure-pcr-generator.sh
+  * Do not change crypttab for unrelated entries
+  * Report the bad PCR when update-prediction fail
+  * Do not write the recovery PIN in the journal
+  * Improves non snapshot system support
+  * Update help message for --measure-pcr
+  * Report when PCR 7 is dropped because shim update
+  * Add --strict parameter for --pcr policy
+  * Report dropped PCRs via a warn
+  * Adjust the limits for PolicyOR issues
+  * Avoid update predictions if the service is up
+  * Keep the exit status of sdbootutil call
+
+-------------------------------------------------------------------
+Thu Aug 27 13:35:41 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20260827.786f9a8:
+  * Do not accept empty passwords
+  * jeos-firstboot-enroll: report errors also in the journal
+  * Restore old crypttab via the exit trap
+  * Update CLAUDE data
+  * Detect half created openssl keys
+  * check_enrolled report when something was written in the LUKS2 header
+  * Improve a bit the disk-encryption-tool keyslot detection
+  * Avoid leak of env var secrets
+  * Wipe the d-e-t key in the enroll service and jeos module
+  * Remove the correct keyslot left by d-e-t
+  * Differentiate tpm2 and tpm2+pin for unattended unlock
+  * Use is_same_device in detect_tracked_device and drop greps
+  * Refactor check to avoid shellcheck complain
+  * Parse the entry file in a sigle place
+  * Validate the entry with the new kernel name
+  * Refactor enrollment interface and deprecate the old one
+  * New kernels will have different hash
+  * Warn If no crypttab entry found
+  * Extend is_same_device
+  * jeos-firstboot-enroll: validate the passwords
+  * sdbootutil-enroll: report when no encryption method is provided
+  * Write recovery pin after enrollment in jeos module
+  * Write recovery pin after enrollment
+  * Improve error detection in sdbootutil-enroll
+  * Increase keyctl timeout
+  * Merge require_unlock and set_unlock_method
+  * Be sure that the terminal check works with snapper
+  * Renerate initrd when new measure-pcr keys are created
+  * Separate ask-* parameters
+  * Fix reading credential and keyctl password
+  * Get the device password for each enrolling mechanism
+  * Drop elements from crypttab if the enrollment fails
+  * Validate the enrollment for each method
+  * Add warning when enrolling FIDO2 token
+
+-------------------------------------------------------------------
 Tue Aug 25 14:42:40 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to version 1+git20260825.c7a5a97:

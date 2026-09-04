@@ -18,7 +18,7 @@
 
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 Name:           sdbootutil
-Version:        1+git20260825.c7a5a97
+Version:        1+git20260903.f91f636
 Release:        0
 Summary:        Bootctl wrapper for BLS boot loaders
 License:        MIT
@@ -31,6 +31,8 @@ BuildRequires:  cargo-packaging
 BuildRequires:  libopenssl-devel
 BuildRequires:  systemd-rpm-macros
 Requires:       %{name}-dracut-measure-pcr
+# 2.4.0 for --disable-external-tokens, used to validate a password
+Requires:       cryptsetup >= 2.4.0
 Requires:       dracut-pcr-signature
 Requires:       e2fsprogs
 Requires:       efibootmgr
@@ -204,13 +206,26 @@ cat > /dev/null || :
 [ -e /sys/firmware/efi/efivars ] || exit 0
 [ -z "$TRANSACTIONAL_UPDATE" ] || exit 0
 [ -z "$VERBOSE_FILETRIGGERS" ] || echo "%{name}-%{version}-%{release}: updating bootloader"
+# The marker is set by the snapper plugin, that already scheduled a
+# deferred update-predictions for this transaction.  The plugin sets
+# it in the pre snapshot, so it is here before this trigger runs, and
+# the deferred service runs after the post snapshot, once the entries
+# that this trigger does not touch are in place.  Updating the
+# predictions here too builds the pcrlock policy and rewrites the TPM2
+# NVIndex a second time, inside the rpm transaction, and that first
+# policy is discarded by the deferred run seconds later.
+#
+# Without the snapper plugin there is no marker and no deferral, so
+# this trigger stays the only chance to update the predictions
+predictions=
+[ ! -e /run/sdbootutil/update-predictions ] || predictions=--disable-predictions
 if [ -e /etc/sysconfig/bootloader ]; then
 	. /etc/sysconfig/bootloader &> /dev/null
 	if [ "$LOADER_TYPE" = "grub2-bls" ] || [ "$LOADER_TYPE" = "systemd-boot" ]; then
-		sdbootutil update
+		sdbootutil update $predictions
 	fi
 else
-	sdbootutil update
+	sdbootutil update $predictions
 fi
 
 %preun
