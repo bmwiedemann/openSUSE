@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Sep  2 06:44:28 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.5.3
+  * Per draft-ietf-radext-deprecating-radius-10 Section 4, no
+    longer require or position-check the Message-Authenticator
+    attribute in responses received over RADIUS/TLS or RADIUS/DTLS;
+    those transports are already integrity-protected.
+  * Fix TLS/DTLS server hostname verification being silently
+    disabled whenever tls-verify-hostname was explicitly set to
+    anything other than the literal string "no". This didn't affect
+    the default config file where tls-verify-hostname is commented
+    out.
+  * Fix a stack buffer overflow in rc_avpair_log() when logging an
+    attribute whose dictionary name is longer than 32 bytes: the
+    buffer-space estimate assumed a fixed 32-byte name field while
+    names can be up to 64 bytes, and the unbounded sprintf() wrote
+    past the caller-supplied buffer.
+  * Added rc_acct_async(): sends an accounting request to every
+    configured accounting server without waiting for a reply, for
+    best-effort notifications (e.g. an Accounting-Stop sent while
+    an application is shutting down and cannot afford to block on
+    network I/O). Unlike rc_acct(), which stops at the first server
+    that replies, this addresses all configured servers
+    unconditionally.
+- Switch from autotools to meson
+
+-------------------------------------------------------------------
 Mon Jun  8 06:36:56 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.5.2

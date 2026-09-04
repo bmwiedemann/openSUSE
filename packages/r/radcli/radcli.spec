@@ -19,16 +19,14 @@
 
 %define sover 10
 Name:           radcli
-Version:        1.5.2
+Version:        1.5.3
 Release:        0
 Summary:        A RADIUS client library
 License:        BSD-2-Clause AND MIT
 Group:          Development/Languages/C and C++
 URL:            https://radcli.github.io/radcli/
-Source:         https://github.com/radcli/radcli/releases/download/%{version}/%{name}-%{version}.tar.gz
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  libtool
+Source:         https://github.com/radcli/radcli/releases/download/%{version}/%{name}-%{version}.tar.xz
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gnutls)
 BuildRequires:  pkgconfig(nettle)
@@ -71,22 +69,19 @@ Provides:       freeradius-client-devel
 This package contains the compatibility headers and libraries for freeradius-client and radiusclient-ng.
 
 %prep
-%setup -q
+%autosetup
 
 %build
-touch config.rpath
-autoreconf -fiv
-%configure \
-    --disable-static \
-    --disable-rpath \
-    --with-nettle \
-    --with-tls \
-    --enable-legacy-compat
-%make_build
+%meson \
+  -Dtls=enabled \
+  -Dnettle=enabled \
+  -Dlegacy-compat=true \
+  -Dstatic=false \
+  -Ddocs=disabled
+%meson_build
 
 %install
-%make_install
-find %{buildroot} -type f -name "*.la" -delete -print
+%meson_install
 
 %check
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:%{buildroot}/%{_libdir}
