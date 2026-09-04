@@ -20,7 +20,7 @@
 %define primary_python python313
 %define pythons %{primary_python}
 Name:           ubi_reader
-Version:        0.8.14
+Version:        0.8.15
 Release:        0
 Summary:        Extract files from UBI and UBIFS images
 License:        LGPL-3.0-or-later
