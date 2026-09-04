@@ -37,6 +37,13 @@ Source1:        baselibs.conf
 Patch1:         0001-egl-wayland-add-FP16-DRM-format.patch
 Patch2:         0002-Bump-version-to-1.1.22.patch
 Patch3:         0003-egl-wayland-remove-extraneous-call-to-wl_display_rou.patch
+Patch4:         0004-egl-wayland-fix-fd-and-mapping-leaks-in-dmabuf-feedb.patch
+Patch5:         0005-egl-wayland-destroy-the-default-feedback-proxy-after.patch
+Patch6:         0006-egl-wayland-destroy-the-display-registry-after-initi.patch
+Patch7:         0007-egl-wayland-make-the-registry-a-local-variable.patch
+Patch8:         0008-egl-wayland-unmap-the-format-table-with-the-proxy.patch
+Patch9:         0009-egl-wayland-clear-the-feedback-proxy-pointer-on-dest.patch
+Patch10:        0010-Remove-the-unused-queue-parameter-from-wlEglSendDama.patch
 BuildRequires:  gcc-c++
 BuildRequires:  meson >= 0.50
 BuildRequires:  ninja

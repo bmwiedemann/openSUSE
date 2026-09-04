@@ -1,0 +1,51 @@
+From 39f0e37ccfd683ed25db1eb1b3218acdf94600b7 Mon Sep 17 00:00:00 2001
+From: qdu <qdduuu@gmail.com>
+Date: Tue, 7 Jul 2026 15:47:57 +0800
+Subject: [PATCH 04/10] egl-wayland: fix fd and mapping leaks in dmabuf
+ feedback handlers
+
+dmabuf_feedback_check_format_table() ignored the format-table fd
+without closing it, leaking one fd per EGL display initialization.
+
+dmabuf_feedback_format_table() overwrote the previous mapping when a
+compositor resends feedback, leaking the old table mapping. Unmap it
+before replacing.
+---
+ src/wayland-egldisplay.c | 13 ++++++++++++-
+ 1 file changed, 12 insertions(+), 1 deletion(-)
+
+diff --git a/src/wayland-egldisplay.c b/src/wayland-egldisplay.c
+index a46d127..fdd9f66 100644
+--- a/src/wayland-egldisplay.c
++++ b/src/wayland-egldisplay.c
+@@ -385,6 +385,15 @@ dmabuf_feedback_format_table(void *data,
+     (void) dmabuf_feedback;
+ 
+     assert(size % sizeof(WlEglDmaBufFormatTableEntry) == 0);
++
++    /* On a feedback resend, unmap the previous table before replacing it. */
++    if (feedback->formatTable.entry &&
++        feedback->formatTable.entry != MAP_FAILED &&
++        feedback->formatTable.len > 0) {
++        munmap((void *)feedback->formatTable.entry,
++               sizeof(feedback->formatTable.entry[0]) * feedback->formatTable.len);
++    }
++
+     feedback->formatTable.len = size / sizeof(WlEglDmaBufFormatTableEntry);
+ 
+     feedback->formatTable.entry =
+@@ -590,8 +599,10 @@ dmabuf_feedback_check_format_table(void *data,
+ {
+     (void) data;
+     (void) dmabuf_feedback;
+-    (void) fd;
+     (void) size;
++
++    /* This probe only cares about main_device; don't leak the table fd. */
++    close(fd);
+ }
+ 
+ static const struct zwp_linux_dmabuf_feedback_v1_listener dmabuf_feedback_check_listener = {
+-- 
+2.51.0
+

@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Tue Sep  1 11:23:51 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- 0004-egl-wayland-fix-fd-and-mapping-leaks-in-dmabuf-feedb.patch
+  * egl-wayland: fix fd and mapping leaks in dmabuf feedback handlers:
+    dmabuf_feedback_check_format_table() ignored the format-table fd
+    without closing it, leaking one fd per EGL display initialization.
+    dmabuf_feedback_format_table() overwrote the previous mapping when a
+    compositor resends feedback, leaking the old table mapping. Unmap it
+    before replacing.
+- 0005-egl-wayland-destroy-the-default-feedback-proxy-after.patch
+  * egl-wayland: destroy the default feedback proxy after initialization:
+    The default dmabuf feedback is bound on the display's internal event
+    queue, which is never dispatched again once initialization completes.
+    When a compositor resends feedback (e.g. mutter < 50 resends the
+    format table on every scanout-candidacy change), each resent
+    format_table event carries an fd that sits in the undispatched queue
+    forever. Long-lived clients accumulate fds until they hit
+    RLIMIT_NOFILE, at which point the kernel drops the next SCM_RIGHTS
+    message, libwayland fails demarshalling with "file descriptor
+    expected, object (N), message format_table(hu)" and the client dies
+    with a fatal display error. Observed in the wild with kitty on
+    GNOME 46 / NVIDIA 580: hundreds of leaked 4032-byte
+    /memfd:mutter-shared fds and a crash roughly every 40 minutes under
+    frequent feedback resends.
+    The proxy's parsed data (format table and tranches) lives in
+    defaultFeedback and remains valid; resent updates were never being
+    processed anyway since the queue is not dispatched. Destroy the proxy
+    once the initial burst has been handled. Per-surface feedback still
+    tracks dynamic changes on the surface queues, which are dispatched at
+    swap time.
+- 0006-egl-wayland-destroy-the-display-registry-after-initi.patch
+  * egl-wayland: destroy the display registry after initialization:
+    The registry is only used to discover globals during initialization,
+    but it was kept alive for the display's lifetime while its events are
+    delivered to a queue that is never dispatched again on the dmabuf
+    path, so runtime global announcements (e.g. output hotplug)
+    accumulate on that queue indefinitely. Destroy the registry once
+    initialization completes, as suggested in review, to better match
+    egl-wayland2, which keeps neither the registry nor the event queue
+    after eglInitialize.
+    The queue itself is retained here since wlDmaBuf and other long-lived
+    proxies remain attached to it and the EGLStream path still performs
+    swap-interval roundtrips on it.
+- 0007-egl-wayland-make-the-registry-a-local-variable.patch
+  * The wl_registry no longer outlasts wlEglInitializeHook, so it does not
+    need to be stored in WlEglDisplay. Destroy it on the failure path as
+    well, since terminateDisplay() no longer does.
+- 0008-egl-wayland-unmap-the-format-table-with-the-proxy.patch
+  * The default feedback's format table is only read while parsing tranche
+    events, which can no longer arrive once the proxy is destroyed, so
+    unmap it there instead of holding the mapping for the display's
+    lifetime. Move the unmap into a helper so the resend and teardown
+    paths share its guards.
+- 0009-egl-wayland-clear-the-feedback-proxy-pointer-on-dest.patch
+  * egl-wayland: clear the feedback proxy pointer on destroy:
+    wlEglDestroyFeedback destroyed the proxy but left the pointer set, so
+    a second call on the same feedback (e.g. terminateDisplay running
+    again after a failed eglInitialize retry) would destroy a stale proxy.
+- 0010-Remove-the-unused-queue-parameter-from-wlEglSendDama.patch
+  * Remove the unused queue parameter from wlEglSendDamageEvent:
+    Since wlEglSendDamageEvent doesn't dispatch an event queue anymore, it
+    doesn't need to take a wl_event_queue parameter.
+    Also, in damage_thread, don't allocate a wl_event_queue, since the only
+    place it was used there was to pass it to wlEglSendDamageEvent.
+
+-------------------------------------------------------------------
 Wed Feb  4 14:09:01 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - added latest patches

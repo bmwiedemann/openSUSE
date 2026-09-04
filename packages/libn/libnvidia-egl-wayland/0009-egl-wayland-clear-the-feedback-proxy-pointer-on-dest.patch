@@ -1,0 +1,28 @@
+From 9cb24d87613ab2c360a3e7fb657b757e7ed397af Mon Sep 17 00:00:00 2001
+From: qdu <qdduuu@gmail.com>
+Date: Tue, 4 Aug 2026 13:07:57 +0800
+Subject: [PATCH 09/10] egl-wayland: clear the feedback proxy pointer on
+ destroy
+
+wlEglDestroyFeedback destroyed the proxy but left the pointer set, so
+a second call on the same feedback (e.g. terminateDisplay running
+again after a failed eglInitialize retry) would destroy a stale proxy.
+---
+ src/wayland-egldisplay.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/wayland-egldisplay.c b/src/wayland-egldisplay.c
+index 21f33c5..1746811 100644
+--- a/src/wayland-egldisplay.c
++++ b/src/wayland-egldisplay.c
+@@ -173,6 +173,7 @@ wlEglDestroyFeedback(WlEglDmaBufFeedback *feedback)
+ 
+     if (feedback->wlDmaBufFeedback) {
+         zwp_linux_dmabuf_feedback_v1_destroy(feedback->wlDmaBufFeedback);
++        feedback->wlDmaBufFeedback = NULL;
+     }
+ }
+ 
+-- 
+2.51.0
+

@@ -1,0 +1,94 @@
+From 0d182258a54eab4f8622298f9eb4a01cfcc68db7 Mon Sep 17 00:00:00 2001
+From: Kyle Brenneman <kbrenneman@nvidia.com>
+Date: Mon, 24 Aug 2026 16:47:36 -0600
+Subject: [PATCH 10/10] Remove the unused queue parameter from
+ wlEglSendDamageEvent.
+
+Since wlEglSendDamageEvent doesn't dispatch an event queue anymore, it
+doesn't need to take a wl_event_queue parameter.
+
+Also, in damage_thread, don't allocate a wl_event_queue, since the only
+place it was used there was to pass it to wlEglSendDamageEvent.
+---
+ include/wayland-eglsurface-internal.h | 1 -
+ src/wayland-eglsurface.c              | 8 ++------
+ src/wayland-eglswap.c                 | 4 ++--
+ 3 files changed, 4 insertions(+), 9 deletions(-)
+
+diff --git a/include/wayland-eglsurface-internal.h b/include/wayland-eglsurface-internal.h
+index b70b9d3..9bbe1cb 100644
+--- a/include/wayland-eglsurface-internal.h
++++ b/include/wayland-eglsurface-internal.h
+@@ -206,7 +206,6 @@ EGLBoolean
+ wlEglSurfaceCheckReleasePoints(WlEglDisplay *display, WlEglSurface *surface);
+ 
+ EGLBoolean wlEglSendDamageEvent(WlEglSurface *surface,
+-                                struct wl_event_queue *queue,
+                                 EGLint *rects,
+                                 EGLint n_rects);
+ 
+diff --git a/src/wayland-eglsurface.c b/src/wayland-eglsurface.c
+index b601934..da13de9 100644
+--- a/src/wayland-eglsurface.c
++++ b/src/wayland-eglsurface.c
+@@ -243,7 +243,6 @@ send_explicit_sync_points (WlEglDisplay *display, WlEglSurface *surface,
+ 
+ EGLBoolean
+ wlEglSendDamageEvent(WlEglSurface *surface,
+-                     struct wl_event_queue *queue,
+                      EGLint *rects,
+                      EGLint n_rects)
+ {
+@@ -321,9 +320,7 @@ damage_thread(void *args)
+     WlEglSurface          *surface = (WlEglSurface*)args;
+     WlEglDisplay          *display = surface->wlEglDpy;
+     WlEglPlatformData     *data    = display->data;
+-    struct wl_event_queue *queue   = wl_display_create_queue(
+-                                        display->nativeDpy);
+-    int                    ok      = (queue != NULL);
++    int                    ok      = 1;
+     EGLint                 state;
+ 
+     while (ok) {
+@@ -377,7 +374,7 @@ damage_thread(void *args)
+ 
+                 wlEglCreateFrameSync(surface);
+ 
+-                ok = wlEglSendDamageEvent(surface, queue, NULL, 0);
++                ok = wlEglSendDamageEvent(surface, NULL, 0);
+                 surface->ctx.framesProcessed++;
+ 
+                 pthread_cond_signal(&surface->condFrameSync);
+@@ -397,7 +394,6 @@ damage_thread(void *args)
+         }
+     }
+ 
+-    wl_event_queue_destroy(queue);
+     data->egl.releaseThread();
+ 
+     return NULL;
+diff --git a/src/wayland-eglswap.c b/src/wayland-eglswap.c
+index ea99f49..85f0a6f 100644
+--- a/src/wayland-eglswap.c
++++ b/src/wayland-eglswap.c
+@@ -147,7 +147,7 @@ EGLBoolean wlEglSwapBuffersWithDamageHook(EGLDisplay eglDisplay, EGLSurface eglS
+             surface->ctx.framesProduced++;
+         } else {
+             wlEglCreateFrameSync(surface);
+-            res = wlEglSendDamageEvent(surface, surface->wlEventQueue, rects, n_rects);
++            res = wlEglSendDamageEvent(surface, rects, n_rects);
+             wlEglSurfaceCheckReleasePoints(display, surface);
+         }
+     }
+@@ -434,7 +434,7 @@ EGLBoolean wlEglPostPresentExport2(WlEglSurface *surface,
+         surface->ctx.framesProduced++;
+     } else {
+         wlEglCreateFrameSync(surface);
+-        res = wlEglSendDamageEvent(surface, surface->wlEventQueue, NULL, 0);
++        res = wlEglSendDamageEvent(surface, NULL, 0);
+     }
+ 
+     // Release wlEglSurface lock.
+-- 
+2.51.0
+

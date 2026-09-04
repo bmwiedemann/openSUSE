@@ -1,7 +1,7 @@
 From a557bed172dcd7ba379095f784d047202281c0de Mon Sep 17 00:00:00 2001
 From: Austin Shafer <ashafer@badland.io>
 Date: Tue, 6 Jan 2026 10:51:18 -0500
-Subject: [PATCH 3/3] egl-wayland: remove extraneous call to
+Subject: [PATCH 03/10] egl-wayland: remove extraneous call to
  wl_display_roundtrip_queue
 
 This replaces a call to wl_display_roundtrip_queue that we have had

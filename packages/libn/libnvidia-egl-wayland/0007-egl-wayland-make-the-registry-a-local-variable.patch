@@ -1,0 +1,86 @@
+From 60074fbd8544dd19c324810771cd84d8becaeb87 Mon Sep 17 00:00:00 2001
+From: qdu <qdduuu@gmail.com>
+Date: Tue, 4 Aug 2026 10:58:54 +0800
+Subject: [PATCH 07/10] egl-wayland: make the registry a local variable
+
+The wl_registry no longer outlasts wlEglInitializeHook, so it does not
+need to be stored in WlEglDisplay. Destroy it on the failure path as
+well, since terminateDisplay() no longer does.
+---
+ include/wayland-egldisplay.h |  1 -
+ src/wayland-egldisplay.c     | 18 +++++++++---------
+ 2 files changed, 9 insertions(+), 10 deletions(-)
+
+diff --git a/include/wayland-egldisplay.h b/include/wayland-egldisplay.h
+index 466456c..01de62a 100644
+--- a/include/wayland-egldisplay.h
++++ b/include/wayland-egldisplay.h
+@@ -129,7 +129,6 @@ typedef struct WlEglDisplayRec {
+     EGLBoolean         ownNativeDpy;
+     struct wl_display *nativeDpy;
+ 
+-    struct wl_registry             *wlRegistry;
+     struct wl_eglstream_display    *wlStreamDpy;
+     struct wl_eglstream_controller *wlStreamCtl;
+     struct zwp_linux_dmabuf_v1     *wlDmaBuf;
+diff --git a/src/wayland-egldisplay.c b/src/wayland-egldisplay.c
+index f5f58ad..5fa689e 100644
+--- a/src/wayland-egldisplay.c
++++ b/src/wayland-egldisplay.c
+@@ -743,10 +743,6 @@ static EGLBoolean terminateDisplay(WlEglDisplay *display, EGLBoolean globalTeard
+         wlEglDestroyFormatSet(&display->formatSet);
+         wlEglDestroyFeedback(&display->defaultFeedback);
+ 
+-        if (display->wlRegistry) {
+-            wl_registry_destroy(display->wlRegistry);
+-            display->wlRegistry = NULL;
+-        }
+         if (display->wlStreamDpy) {
+             wl_eglstream_display_destroy(display->wlStreamDpy);
+             display->wlStreamDpy = NULL;
+@@ -1325,6 +1321,7 @@ EGLBoolean wlEglInitializeHook(EGLDisplay dpy, EGLint *major, EGLint *minor)
+     WlEglDisplay      *display = wlEglAcquireDisplay(dpy);
+     WlEglPlatformData *data    = NULL;
+     struct wl_display *wrapper = NULL;
++    struct wl_registry *wlRegistry = NULL;
+     EGLint             err     = EGL_SUCCESS;
+     int                ret     = 0;
+     const char *dev_exts = NULL;
+@@ -1388,9 +1385,9 @@ EGLBoolean wlEglInitializeHook(EGLDisplay dpy, EGLint *major, EGLint *minor)
+     /* Listen to wl_registry events and make a roundtrip in order to find the
+      * wl_eglstream_display and/or zwp_linux_dmabuf_v1 global object
+      */
+-    display->wlRegistry = wl_display_get_registry(wrapper);
++    wlRegistry = wl_display_get_registry(wrapper);
+     wl_proxy_wrapper_destroy(wrapper); /* Done with wrapper */
+-    ret = wl_registry_add_listener(display->wlRegistry,
++    ret = wl_registry_add_listener(wlRegistry,
+                                    &registry_listener,
+                                    display);
+     if (ret == 0) {
+@@ -1462,9 +1459,9 @@ EGLBoolean wlEglInitializeHook(EGLDisplay dpy, EGLint *major, EGLint *minor)
+         display->defaultFeedback.wlDmaBufFeedback = NULL;
+     }
+ 
+-    if (display->wlRegistry) {
+-        wl_registry_destroy(display->wlRegistry);
+-        display->wlRegistry = NULL;
++    if (wlRegistry) {
++        wl_registry_destroy(wlRegistry);
++        wlRegistry = NULL;
+     }
+ 
+     if (major != NULL) {
+@@ -1479,6 +1476,9 @@ EGLBoolean wlEglInitializeHook(EGLDisplay dpy, EGLint *major, EGLint *minor)
+     return EGL_TRUE;
+ 
+ fail:
++    if (wlRegistry) {
++        wl_registry_destroy(wlRegistry);
++    }
+     terminateDisplay(display, EGL_FALSE);
+     if (err != EGL_SUCCESS) {
+         wlEglSetError(data, err);
+-- 
+2.51.0
+

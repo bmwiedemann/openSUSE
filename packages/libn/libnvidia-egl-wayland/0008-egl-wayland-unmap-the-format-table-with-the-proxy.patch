@@ -1,0 +1,77 @@
+From e494943876cbea5704f3a99a9e7ab65835dd0960 Mon Sep 17 00:00:00 2001
+From: qdu <qdduuu@gmail.com>
+Date: Tue, 4 Aug 2026 10:59:11 +0800
+Subject: [PATCH 08/10] egl-wayland: unmap the format table with the proxy
+
+The default feedback's format table is only read while parsing tranche
+events, which can no longer arrive once the proxy is destroyed, so
+unmap it there instead of holding the mapping for the display's
+lifetime. Move the unmap into a helper so the resend and teardown
+paths share its guards.
+---
+ src/wayland-egldisplay.c | 31 +++++++++++++++++++++++--------
+ 1 file changed, 23 insertions(+), 8 deletions(-)
+
+diff --git a/src/wayland-egldisplay.c b/src/wayland-egldisplay.c
+index 5fa689e..21f33c5 100644
+--- a/src/wayland-egldisplay.c
++++ b/src/wayland-egldisplay.c
+@@ -151,12 +151,25 @@ typedef caddr_t pointer_t;
+ typedef void *pointer_t;
+ #endif
+ 
++static void
++wlEglFeedbackUnmapFormatTable(WlEglDmaBufFeedback *feedback)
++{
++    if (feedback->formatTable.entry &&
++        feedback->formatTable.entry != MAP_FAILED &&
++        feedback->formatTable.len > 0) {
++        munmap((pointer_t)feedback->formatTable.entry,
++               sizeof(feedback->formatTable.entry[0]) * feedback->formatTable.len);
++    }
++
++    feedback->formatTable.entry = NULL;
++    feedback->formatTable.len = 0;
++}
++
+ void
+ wlEglDestroyFeedback(WlEglDmaBufFeedback *feedback)
+ {
+     wlEglFeedbackResetTranches(feedback);
+-    munmap((pointer_t)feedback->formatTable.entry,
+-           sizeof(feedback->formatTable.entry[0]) * feedback->formatTable.len);
++    wlEglFeedbackUnmapFormatTable(feedback);
+ 
+     if (feedback->wlDmaBufFeedback) {
+         zwp_linux_dmabuf_feedback_v1_destroy(feedback->wlDmaBufFeedback);
+@@ -387,12 +400,7 @@ dmabuf_feedback_format_table(void *data,
+     assert(size % sizeof(WlEglDmaBufFormatTableEntry) == 0);
+ 
+     /* On a feedback resend, unmap the previous table before replacing it. */
+-    if (feedback->formatTable.entry &&
+-        feedback->formatTable.entry != MAP_FAILED &&
+-        feedback->formatTable.len > 0) {
+-        munmap((void *)feedback->formatTable.entry,
+-               sizeof(feedback->formatTable.entry[0]) * feedback->formatTable.len);
+-    }
++    wlEglFeedbackUnmapFormatTable(feedback);
+ 
+     feedback->formatTable.len = size / sizeof(WlEglDmaBufFormatTableEntry);
+ 
+@@ -1457,6 +1465,13 @@ EGLBoolean wlEglInitializeHook(EGLDisplay dpy, EGLint *major, EGLint *minor)
+     if (display->defaultFeedback.wlDmaBufFeedback) {
+         zwp_linux_dmabuf_feedback_v1_destroy(display->defaultFeedback.wlDmaBufFeedback);
+         display->defaultFeedback.wlDmaBufFeedback = NULL;
++
++        /*
++         * The tranches parsed out of the format table are self-contained
++         * copies, and no further tranche events can arrive once the proxy is
++         * gone, so the mapping is no longer needed.
++         */
++        wlEglFeedbackUnmapFormatTable(&display->defaultFeedback);
+     }
+ 
+     if (wlRegistry) {
+-- 
+2.51.0
+

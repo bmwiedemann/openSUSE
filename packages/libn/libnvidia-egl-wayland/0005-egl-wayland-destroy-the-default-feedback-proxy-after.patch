@@ -1,0 +1,59 @@
+From 4327889b448372652d3eb7c8a5e119852c273301 Mon Sep 17 00:00:00 2001
+From: qdu <qdduuu@gmail.com>
+Date: Tue, 7 Jul 2026 15:48:23 +0800
+Subject: [PATCH 05/10] egl-wayland: destroy the default feedback proxy after
+ initialization
+
+The default dmabuf feedback is bound on the display's internal event
+queue, which is never dispatched again once initialization completes.
+When a compositor resends feedback (e.g. mutter < 50 resends the
+format table on every scanout-candidacy change), each resent
+format_table event carries an fd that sits in the undispatched queue
+forever. Long-lived clients accumulate fds until they hit
+RLIMIT_NOFILE, at which point the kernel drops the next SCM_RIGHTS
+message, libwayland fails demarshalling with "file descriptor
+expected, object (N), message format_table(hu)" and the client dies
+with a fatal display error. Observed in the wild with kitty on
+GNOME 46 / NVIDIA 580: hundreds of leaked 4032-byte
+/memfd:mutter-shared fds and a crash roughly every 40 minutes under
+frequent feedback resends.
+
+The proxy's parsed data (format table and tranches) lives in
+defaultFeedback and remains valid; resent updates were never being
+processed anyway since the queue is not dispatched. Destroy the proxy
+once the initial burst has been handled. Per-surface feedback still
+tracks dynamic changes on the surface queues, which are dispatched at
+swap time.
+---
+ src/wayland-egldisplay.c | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
+
+diff --git a/src/wayland-egldisplay.c b/src/wayland-egldisplay.c
+index fdd9f66..ea288b1 100644
+--- a/src/wayland-egldisplay.c
++++ b/src/wayland-egldisplay.c
+@@ -1441,6 +1441,21 @@ EGLBoolean wlEglInitializeHook(EGLDisplay dpy, EGLint *major, EGLint *minor)
+     /* We haven't created any surfaces yet, so no need to reallocate. */
+     display->defaultFeedback.unprocessedFeedback = false;
+ 
++    /*
++     * The initial feedback burst was dispatched by the roundtrip above and
++     * its parsed data (format table, tranches) lives in defaultFeedback, not
++     * in the proxy. wlEventQueue is never dispatched again after init, so a
++     * live proxy would only accumulate undispatched resend events, each
++     * holding an open format-table fd (compositors such as mutter < 50
++     * resend feedback on every scanout-candidacy change), until the process
++     * hits RLIMIT_NOFILE. Destroy the proxy now; per-surface feedback keeps
++     * handling dynamic changes on queues that are dispatched at swap time.
++     */
++    if (display->defaultFeedback.wlDmaBufFeedback) {
++        zwp_linux_dmabuf_feedback_v1_destroy(display->defaultFeedback.wlDmaBufFeedback);
++        display->defaultFeedback.wlDmaBufFeedback = NULL;
++    }
++
+     if (major != NULL) {
+         *major = display->devDpy->major;
+     }
+-- 
+2.51.0
+
