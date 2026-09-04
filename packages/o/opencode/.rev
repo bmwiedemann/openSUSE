@@ -214,4 +214,26 @@ upstream security fix.
 Built and %check'd natively on aarch64; OBS x86_64 verified green.</comment>
     <requestid>1375302</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>bfe99bdfd17d5d8fccdb33d086e88cc7</srcmd5>
+    <version>1.18.27</version>
+    <time>1788518427</time>
+    <user>anag_factory</user>
+    <comment>opencode 1.18.27.
+
+Upstream: provider header and streamed-chunk timeouts now default to five
+minutes (both take false to disable); Anthropic thinking-block binding is
+narrowed to Claude 5.1+ and honours a blockBinding: false opt-out; the
+rejection from cancelling a timed-out SSE read is caught instead of going
+unhandled.
+
+Packaging: vendor keep list retraced, 507 -&gt; 509 store entries but the same
+506 packages - ai-gateway-provider 3.2.0 and gitlab-ai-provider 6.12.1 each
+get one store entry per @ai-sdk/provider-utils peer resolution (4.0.23 and
+4.0.50). SPDX set unchanged, still no copyleft; README.SUSE-maint records the
+re-audit. All four patches apply unchanged; the @opentui/core pin stays 0.4.5.
+
+Built locally on aarch64, %check green, rpmlint 0 errors / 0 badness.</comment>
+    <requestid>1375573</requestid>
+  </revision>
 </revisionlist>

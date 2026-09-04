@@ -35,15 +35,15 @@
 %global node_arch arm64
 %endif
 Name:           opencode
-Version:        1.18.26
+Version:        1.18.27
 Release:        0
 Summary:        AI coding agent for the terminal
 # opencode itself is MIT. The npm dependency tree is compiled into the
 # executable, so its licences are part of the binary; see README.SUSE-maint
 # for how the expression below is derived and rechecked on a bump.
-# Legal-Review-Notice: rederived for 1.18.26 from the declared license field
-# of all 506 unique packages in the vendor tarball (507 store entries). No
-# copyleft of any kind. The SPDX set is unchanged from 1.18.25. Two
+# Legal-Review-Notice: rederived for 1.18.27 from the declared license field
+# of all 506 unique packages in the vendor tarball (509 store entries). No
+# copyleft of any kind. The SPDX set is unchanged from 1.18.26. Two
 # conclusions are not visible from the packages themselves: poe-oauth 0.0.8
 # declares no licence and ships no text, its MIT grant comes from the
 # upstream repository root; caniuse-lite is CC-BY-4.0, whose attribution

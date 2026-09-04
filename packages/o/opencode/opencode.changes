@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Sep  3 08:52:46 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.18.27:
+  * Default the provider header and streamed-chunk timeouts to
+    five minutes instead of leaving them unset; both take false
+    to disable.
+  * Bind Anthropic thinking blocks only on Claude 5.1 and newer,
+    so older deployments stop rejecting the request, and honour
+    blockBinding: false as a per-provider opt-out.
+  * Catch the rejection from cancelling a timed-out SSE read
+    instead of leaving it unhandled.
+- Retrace the vendor keep list (507 to 509 store entries):
+  ai-gateway-provider 3.2.0 and gitlab-ai-provider 6.12.1 are now
+  each kept twice, one entry per @ai-sdk/provider-utils peer
+  resolution (4.0.23 and 4.0.50). Same 506 packages, same SPDX
+  set, still no copyleft; README.SUSE-maint records the audit as
+  redone for 1.18.27.
+
+-------------------------------------------------------------------
 Wed Sep  2 07:07:03 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.18.26:

@@ -204,6 +204,7 @@ abstract-logging@2.0.1
 acorn@8.15.0
 agent-base@7.1.4
 ai-gateway-provider@3.2.0+a6631614dda8d488
+ai-gateway-provider@3.2.0+f0b5ab122f9e8fd1
 ai@6.0.168+d6123d32214422cb
 ajv-formats@3.0.1
 ajv@8.20.0
@@ -298,7 +299,8 @@ gensync@1.0.0-beta.2
 get-caller-file@2.0.5
 get-east-asian-width@1.6.0
 get-stream@8.0.1
-gitlab-ai-provider@6.12.1+73b0dab39db04f21
+gitlab-ai-provider@6.12.1+40d0fcf8a09bea5b
+gitlab-ai-provider@6.12.1+6dfbf2eb88514315
 glob@13.0.5
 glob@9.3.5
 google-auth-library@10.5.0+759ce506b1ed1a42
