@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep  1 14:24:42 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.12.2
+  * Fix up NTLM single host data unpacking to be less strict
+    making it compatible with newer Windows versions.
+  * Use canoncial Kerberos client principal from kinit operation,
+    this avoid issues around not being able to find TGT in cache
+    during Kerberos authentication.
+  * Use canonical client principal when initializing kinit ccache.
+
+-------------------------------------------------------------------
 Wed Mar  4 19:56:50 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.12.1
