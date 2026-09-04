@@ -31,7 +31,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-hatch%{psuffix}
-Version:        1.17.1
+Version:        1.18.0
 Release:        0
 Summary:        Modern, extensible Python project management
 License:        MIT
@@ -53,6 +53,8 @@ Source21:       https://files.pythonhosted.org/packages/py3/r/requests/requests-
 Source22:       https://files.pythonhosted.org/packages/py3/s/setuptools/setuptools-80.9.0-py3-none-any.whl
 Source23:       https://files.pythonhosted.org/packages/py3/t/trove_classifiers/trove_classifiers-2025.12.1.14-py3-none-any.whl
 Source24:       https://files.pythonhosted.org/packages/py3/u/urllib3/urllib3-2.6.2-py3-none-any.whl
+# PATCH-FIX-UPSTREAM https://github.com/pypa/hatch/pull/2399 Fix a couple of tests when no “python” in path
+Patch0:         change-python-to-python3.patch
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module hatch-vcs >= 0.3}
 BuildRequires:  %{python_module hatchling >= 1.27}
@@ -147,19 +149,10 @@ export UV_OFFLINE=1
 donttest="(test_install and test_already_installed_update_prompt)"
 donttest="$donttest or (test_install and test_already_installed_update_flag)"
 donttest="$donttest or (test_install and test_all)"
-# platform distribution selection errors: https://github.com/pypa/hatch/issues/1145
-%ifnarch x86_64
-donttest="$donttest or (test_resolve and test_resolution_error)"
-donttest="$donttest or (test_resolve and test_legacy_option)"
-donttest="$donttest or (test_resolve and test_compatib)"
-donttest="$donttest or test_custom_source or test_pypy_custom"
-%endif
 %ifarch s390x
 # Console width different
 donttest="$donttest or test_context_formatting"
 %endif
-# This requires a hatchling not released yet (hatchling > 1.28)
-donttest+=" or test_sbom_from_build_data"
 %if 0%{?suse_version} < 1699
 # Wants to create a Python 3.9 environment and would download the interpreter
 donttest+=" or test_workspace_overrides_matrix_conditional_members"

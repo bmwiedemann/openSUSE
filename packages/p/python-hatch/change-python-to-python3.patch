@@ -1,0 +1,60 @@
+From 9eeb6f4564b80bbe4a97adf82727c71456665097 Mon Sep 17 00:00:00 2001
+From: "Benjamin A. Beasley" <code@musicinmybrain.net>
+Date: Wed, 19 Aug 2026 06:59:22 +0100
+Subject: [PATCH] =?UTF-8?q?Fix=20a=20couple=20of=20tests=20when=20no=20?=
+ =?UTF-8?q?=E2=80=9Cpython=E2=80=9D=20in=20path?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+These CLI tests assume a “python” executable is available outside of a
+virtualenv, which is not necessarily true (e.g. Fedora has only
+“python3” if the `python-unversioned-command` package is not installed).
+Use the basename from `sys.executable` in the script configs for these
+tests instead.
+---
+ tests/cli/run/test_run.py | 19 +++++++++++++++++--
+ 1 file changed, 17 insertions(+), 2 deletions(-)
+
+diff --git a/tests/cli/run/test_run.py b/tests/cli/run/test_run.py
+index 5323fd7b9..4b9074a7a 100644
+--- a/tests/cli/run/test_run.py
++++ b/tests/cli/run/test_run.py
+@@ -1,4 +1,5 @@
+ import os
++import pathlib
+ import signal
+ import sys
+ import sysconfig
+@@ -722,7 +723,14 @@ def test_scripts_no_environment(hatch, helpers, temp_dir, config_file):
+ 
+     project = Project(project_path)
+     config = dict(project.raw_config)
+-    config["tool"]["hatch"]["scripts"] = {"py": "python -c {args}"}
++    # Try to handle testing on systems where there is no "python", only e.g.
++    # "python3". Ideally we would use the absolute path from sys.executable
++    # path, but then we are much more likely to have problems due to things
++    # like whitespace in the directory path, considering we are not attempting
++    # shell escaping. Even the executable name could have these issues, but
++    # this should be good enough for testing purposes.
++    py = pathlib.Path(sys.executable).name
++    config["tool"]["hatch"]["scripts"] = {"py": f"{py} -c {{args}}"}
+     project.save_config(config)
+ 
+     with project_path.as_cwd(env_vars={ConfigEnvVars.DATA: str(data_path)}):
+@@ -761,7 +769,14 @@ def test_interrupt_signal_not_inherited(hatch, temp_dir, config_file):
+ 
+     project = Project(project_path)
+     config = dict(project.raw_config)
+-    config["tool"]["hatch"]["scripts"] = {"py": "python -c {args}"}
++    # Try to handle testing on systems where there is no "python", only e.g.
++    # "python3". Ideally we would use the absolute path from sys.executable
++    # path, but then we are much more likely to have problems due to things
++    # like whitespace in the directory path, considering we are not attempting
++    # shell escaping. Even the executable name could have these issues, but
++    # this should be good enough for testing purposes.
++    py = pathlib.Path(sys.executable).name
++    config["tool"]["hatch"]["scripts"] = {"py": f"{py} -c {{args}}"}
+     project.save_config(config)
+ 
+     original_handler = signal.getsignal(signal.SIGINT)

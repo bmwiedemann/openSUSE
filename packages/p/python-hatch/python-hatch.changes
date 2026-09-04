@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Aug 26 09:06:23 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 0.18.0
+  * Add the sources environment option, which redirects dependencies
+    to a local path, Git repository, URL, alternate index, or workspace
+    member at install time without altering published metadata
+  * Add the --all/-a flag to the build command to build the workspace
+    root and every workspace member defined by the selected environment
+  * Add the tool.hatch.requires-hatch field
+  * Add first-class support for free-threaded distribution names such as
+    3.13t and 3.14t to the python commands and environment python option,
+    rather than requiring the HATCH_PYTHON_VARIANT_GIL environment variable
+  * The version command can now bump versions that are statically defined
+    by the project.version field, updating pyproject.toml in place.
+    Pass --force to allow an explicit downgrade
+  * Support managing Python 3.15 distributions, currently 3.15.0rc1
+- Add change-python-to-python3.patch to fix tests on our systems
+
+-------------------------------------------------------------------
 Fri Jul 24 05:01:50 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.17.1:
