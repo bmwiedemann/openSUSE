@@ -1871,4 +1871,12 @@ Add sb-manual-source-date-epoch.patch to make the manual
   baseline x86_64-v1 machine (boo#1100677) (forwarded request 1371634 from bmwiedemann)</comment>
     <requestid>1373348</requestid>
   </revision>
+  <revision rev="135" vrev="1">
+    <srcmd5>96ccb2c13010a2c29cbe5b7ff8ebf9a6</srcmd5>
+    <version>2.6.8</version>
+    <time>1788518472</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1375603</requestid>
+  </revision>
 </revisionlist>
