@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Wed Sep  2 10:24:13 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Update to version 12.4.10:
+  * Security:
+    CVE-2026-17183: Fix exposing data accessible through Grafana's
+                    configured datasource credentials (bsc#1275934)
+    CVE-2026-2303: Drop dependency on vulnerable
+                   go.mongodb.org/mongo-driver (bsc#1269841)
+    CVE-2026-17033: Fix stored XSS via external Alertmanager
+                    generatorURL (bsc#1276426)
+    CVE-2026-73501: Fix fail-open authentication bypass in
+                    github.com/getkin/kin-openapi (bsc#1276973)
+    CVE-2026-19475: Fix DoS in PostgreSQL Datasource (bsc#1278307)
+    CVE-2026-14199: Fix session takeover via Auth Proxy cache key
+                    collision (bsc#1278322)
+  * Bug fixes:
+    Dashboards: Fix adhoc and groupby variable datasource on UI
+                import
+    Dashboards: Fix version dates and user display names in the
+                legacy version history page
+
+- Update to version 12.4.9:
+  * Features and enhancements:
+    Dashboard Import: Labels in v2 schema
+  * Bug fixes:
+    Azure Monitor: fix migration for dimension filters
+
+- Update to version 12.4.8:
+  * Security:
+    CVE-2026-19197: Fix access control in dashboard snapshots
+                    (bsc#1277025)
+
+- Update to version 12.4.7:
+  * Security:
+    CVE-2026-56852: Fix infinite loop on truncated/invalid UTF-8
+                    input in golang.org/x/text/unicode/norm
+                    (bsc#1272008)
+  * Features and enhancements:
+    Dashboards: Get annotations and dashboard endpoint performance
+                improvements
+  * Bug fixes:
+    DashboardDS: Fix Mixed panels with a time override stuck in
+                 permanent loading
+
+- Update to version 12.4.6:
+  * Security:
+    CVE-2026-41178: Fix opentelemetry-go's baggage parsing
+                    (bsc#1276658)
+  * Features and enhancements:
+    Alerting: Add protected fields authorization check to
+              provisioning API
+    Alerting: Return 403 instead of 500 on contact point provenance
+              mismatch
+  * Bug fixes:
+    Jaeger: Handle gzip, deflate, and brotli compressed API
+            responses
+    Alerting: fix ORM table mapping bug causing SELECT alert_rule
+              columns FROM user on PostgreSQL
+
+- Drop 0005-Bump-edwards25519.patch
+
+-------------------------------------------------------------------
 Mon Jul 13 14:44:19 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Update to version 12.4.5 (jsc#PED-16512):
