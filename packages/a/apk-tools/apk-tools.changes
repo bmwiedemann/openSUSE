@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Sep  1 13:04:14 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.0.8:
+  * adb: validate object/array length in adb_r_obj().
+  * blob: fix bounds check in apk_blob_pull_hexdump().
+  * extract: harden hardlink and symlink handling
+  * fs_fsys: remove unreached directory branch in
+    fsys_file_extract.
+  * fs_fsys: consider apk temporary filenames as harmful in
+    package.
+  * fs_fsys: harden hardlink target validation.
+  * test: add fixup for fakeroot mangled LD_LIBRARY_PATH.
+  * test: fix shellcheck warning for user/dirperms
+  * fs_fsys: chmod directory set-uid/gid bit, and use
+    AT_SYMLINK_NOFOLLOW.
+  * db: fallback to not using cache if its not writable.
+  * db: download missing index also with read-only actions.
+  * adb: use adb specific error codes when calling adb_w_error.
+  * adb: remove development time assert in adb_w_error.
+  * adb: validate ADB block size and memory allocation.
+  * libfetch: size the address scratch buffer for full-form IPv6.
+  * libfetch: release the redirect URL on all paths in
+    http_request().
+  * libfetch: avoid sign extension in http_base64().
+  * libfetch: track the previous entry in fetch_cache_get().
+  * libfetch: include 400 and 599 in HTTP_ERROR().
+  * libfetch: return -1, not EBADF, from
+    fetchIO_read()/fetchIO_write().
+  * libfetch: test the write callback in fetchIO_write().
+  * libfetch: fix inverted $HOME test in fetch_netrc_auth().
+  * libfetch: fix leak in the fetchAppendURLList() error path.
+  * libfetch: fix use-after-free in fetch_cache_put().
+  * libfetch: free the addrinfo list in fetch_bind().
+
+-------------------------------------------------------------------
 Wed Jul 29 07:43:26 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.0.7:

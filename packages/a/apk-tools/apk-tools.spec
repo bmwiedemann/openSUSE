@@ -21,7 +21,7 @@
 %define soname 3_0_0
 %define libname libapk%{soname}
 Name:           apk-tools
-Version:        3.0.7
+Version:        3.0.8
 Release:        0
 Summary:        Alpine package manager
 License:        GPL-2.0-or-later
@@ -98,7 +98,7 @@ that use libapk.
 %{_mandir}/man8/apk.8%{?ext_man}
 %{_mandir}/man[5,8]/apk-*.[5,8]%{?ext_man}
 %{_datadir}/bash-completion/completions/_apk
-%{_datadir}/zsh/site-functions/_apk_zsh
+%{_datadir}/zsh/site-functions/_apk
 %{python_sitearch}/apk.cpython-*.so
 
 %files -n %{libname}
