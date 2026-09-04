@@ -10,6 +10,39 @@ such as garbage collection, type safety, certain dynamic-typing capabilities,
 additional built-in types (for example, variable-length arrays and key-value
 maps) and a large standard library.
 
+## FIPS 140-3
+
+Go binaries can natively operate in a mode that facilitates
+[FIPS 140-3 Compliance](https://go.dev/doc/security/fips140).
+
+### The GOFIPS140 environment variable
+
+The `GOFIPS140` environment variable can be used with `go build`, `go install`,
+and `go test` to enable FIPS 140-3 mode.
+
+The recommended values are `off` (default value) or `certified` to select the
+corresponding NIST CMVP certified release.
+
+### The fips140 GODEBUG option
+
+The `fips140` option in `GODEBUG` controls FIPS 140-3 mode during runtime execution.
+
+It defaults to `off` unless `GOFIPS140` was set at build time.
+
+The possible values for `fips140` are:
+
+- **off**: The Go Cryptographic Module does not operate in FIPS 140-3 mode.
+- **on**: The Go Cryptographic Module operates in FIPS 140-3 mode.
+- **only**: The Go Cryptographic Module operates in FIPS 140-3 mode, but cryptographic algorithms not approved by FIPS 140-3 return an error or panic.
+
+### Migration from Go-openssl
+
+Starting with Go 1.27, the Go-openssl variant—which routes cryptographic
+operations through OpenSSL—will no longer be supported in openSUSE BCI.
+
+To maintain compatibility with prior Go-openssl behavior, during build time
+set `GOFIPS140` to `certified` or set `fips140=on` during runtime in `GODEBUG`.
+
 
 ## Usage
 We recommend using the Go image as a build environment. Thus,
