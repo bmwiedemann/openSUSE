@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Sep  3 08:55:30 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.3.331:
+  * Template manifest grows from 544 to 547 entries: adds MiniMax
+    H3 Max reference to video, PixVerse 6 reference to video and
+    the Bria increase-resolution upscale utility, all in the
+    media-assets-01 bundle
+  * Refreshed asset checksums for the three existing MiniMax H3
+    Max templates and for the template index and its localisations
+  * No changes to the loader or the public helper API
+
+-------------------------------------------------------------------
 Wed Sep  2 06:24:59 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.3.329:

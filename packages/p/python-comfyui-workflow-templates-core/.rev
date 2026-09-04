@@ -112,4 +112,21 @@ comfyui-workflow-templates 0.11.52 meta package, which upstream
 releases in lockstep.</comment>
     <requestid>1375331</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>bc12f0b29eb34acade0b080d65ae754c</srcmd5>
+    <version>0.3.331</version>
+    <time>1788518324</time>
+    <user>anag_factory</user>
+    <comment>Update python-comfyui-workflow-templates-core to 0.3.331.
+
+Manifest grows 544 -&gt; 547 entries (MiniMax H3 Max reference to video,
+PixVerse 6 reference to video, Bria increase-resolution); refreshed
+checksums for the three MiniMax H3 Max templates and the index
+localisations. Loader and public helper API unchanged.
+
+Part of the coupled comfyui-workflow-templates set; submit this before
+python-comfyui-workflow-templates 0.11.54, whose floor is
+-core &gt;= 0.3.331.</comment>
+    <requestid>1375577</requestid>
+  </revision>
 </revisionlist>
