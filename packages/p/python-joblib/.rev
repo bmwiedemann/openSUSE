@@ -435,4 +435,41 @@
     <comment>1</comment>
     <requestid>1373608</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>694e16bdf3cfd3d9c15ef81fe2d213af</srcmd5>
+    <version>1.6.0</version>
+    <time>1788518171</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.6.0:
+  * Fix caching of functions whose source cannot be retrieved, such as
+    functions defined in a notebook cell. Their identity fell back to
+    str(hash(func.__code__)), which is salted by PYTHONHASHSEED and so
+    differed between processes. A worker reading the func_code.py written by
+    another one concluded that the function had changed and wiped the whole
+    cache directory for it, discarding results computed by its peers.
+    func_code.py is also no longer rewritten in place, so a reader can no
+    longer catch it half-written and draw the same conclusion.
+  * Drop python 3.9 support. The oldest supported Python version is now
+    Python 3.10.
+  * Fix eval_expr (used to evaluate the pre_dispatch argument of Parallel) to
+    raise a ValueError as documented instead of leaking a ZeroDivisionError
+    for expressions that divide or take a modulo by zero.
+  * MemorizedResult now forwards mmap_mode to its store backend, so a cached
+    array reconstructed from a location is memory-mapped as requested instead
+    of being loaded fully into memory.
+  * Unvendor cloudpickle to more quickly benefit from maintenance releases of
+    cloudpickle
+  * Fix Memory.cache for functions with a keyword-only argument that has a
+    default declared before a keyword-only argument without a default.
+  * Fix behavior of filter_args on some precise cases.
+  * Fix a concurrency error that could happen with unordered generator.
+  * Fix: dump() now accepts any input os.PathLike object to be consistent
+    with load.
+  * Vendor loky 3.6.0
+- Drop patches:
+  * also-filter-new-fork-warning.patch, no longer required
+  * fix-tests-numpy-2.4.patch, merged upstream
+  * fix-generator-unordered-lock.patch, merged upstream</comment>
+    <requestid>1374993</requestid>
+  </revision>
 </revisionlist>

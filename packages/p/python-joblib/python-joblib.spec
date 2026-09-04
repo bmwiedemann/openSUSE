@@ -18,34 +18,28 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-joblib
-Version:        1.5.3
+Version:        1.6.0
 Release:        0
 Summary:        Module for using Python functions as pipeline jobs
 License:        BSD-3-Clause
 URL:            https://github.com/joblib/joblib
 Source:         https://files.pythonhosted.org/packages/source/j/joblib/joblib-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE Also avoid a DeprecationWarning when using fork() under
-# multiprocessing
-Patch1:         also-filter-new-fork-warning.patch
-# PATCH-FIX-UPSTREAM fix-tests-numpy-2.4.patch gh#joblib/joblib#1770
-Patch2:         fix-tests-numpy-2.4.patch
-# PATCH-FIX-UPSTREAM fix-generator-unordered-lock.patch gh#joblib/joblib#1789
-Patch3:         fix-generator-unordered-lock.patch
-# PATCH-FIX-UPSTREAM np25.patch gh#joblib/joblib#1777
-Patch4:         np25.patch
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.10}
+BuildRequires:  %{python_module cloudpickle >= 3.0}
 BuildRequires:  %{python_module lz4}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module pytest-run-parallel}
+BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module threadpoolctl}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Recommends:     python-lz4
+Requires:       python-cloudpickle >= 3.0
 Recommends:     python-numpy
 Recommends:     python-psutil
 Suggests:       python-dask-distributed
