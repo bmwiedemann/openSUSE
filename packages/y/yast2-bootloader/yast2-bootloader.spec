@@ -17,7 +17,7 @@
 
 
 Name:           yast2-bootloader
-Version:        5.0.33
+Version:        5.0.42
 Release:        0
 Summary:        YaST2 - Bootloader Configuration
 License:        GPL-2.0-or-later
@@ -34,7 +34,6 @@ BuildRequires:  yast2-ruby-bindings >= 4.4.7
 BuildRequires:  yast2-storage-ng >= 5.0.31
 # lenses needed also for tests
 BuildRequires:  augeas-lenses
-BuildRequires:  update-desktop-files
 BuildRequires:  rubygem(%rb_default_ruby_abi:cfa_grub2) >= 1.0.1
 BuildRequires:  rubygem(%rb_default_ruby_abi:rspec)
 BuildRequires:  rubygem(%rb_default_ruby_abi:yast-rake)

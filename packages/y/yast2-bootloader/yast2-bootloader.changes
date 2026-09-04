@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Mon Aug 31 11:56:44 UTC 2026 - Josef Reidinger <jreidinger@suse.com>
+
+- revert "do not suggest grub2-bls if there are other systems"
+  as it breaks upgrades scenario (bsc#1258861)
+- 5.0.42
+
+-------------------------------------------------------------------
+Mon Aug 17 10:53:26 UTC 2026 - Josef Reidinger <jreidinger@suse.com>
+
+- remove remaining occurrences of trusted boot to fix crash when
+  writting sysconfig for systemd-boot and grub2-bls (bsc#1274932)
+- 5.0.41
+
+-------------------------------------------------------------------
+Mon Jul 13 20:45:01 UTC 2026 - Josef Reidinger <jreidinger@suse.com>
+
+- propose secure boot only for ECKD DASD (bsc#1270367)
+- 5.0.40
+
+-------------------------------------------------------------------
+Fri Jun 12 11:34:43 UTC 2026 - Stefan Schubert <schubi@suse.de>
+
+- Reducing error level for not available shim package while using
+  systemd-boot (bsc#1265870).
+- 5.0.39
+
+-------------------------------------------------------------------
+Wed Apr 22 12:52:04 UTC 2026 - Michal Filka <mfilka@suse.com>
+
+- jsc#PED-7975 and bsc#1262249
+  - dropped trusted boot
+- 5.0.38
+
+-------------------------------------------------------------------
+Mon Mar 30 10:14:36 UTC 2026 - Stefan Schubert <schubi@suse.de>
+
+  AutoYaST/systemd-boot export/import: Using string for
+  secure_boot setting in export file (bsc#1260385).
+- 5.0.37
+
+-------------------------------------------------------------------
+Tue Mar 10 09:00:28 UTC 2026 - Michal Filka <mfilka@suse.com>
+
+- jsc#PED-14507
+  - Removed reference to update-desktop-files from spec file 
+  - 5.0.36
+-------------------------------------------------------------------
+Tue Mar 10 08:03:16 UTC 2026 - Josef Reidinger <jreidinger@suse.com>
+
+- Propose always secure boot with zipl on DASD (jsc#/PED-13734)
+
+-------------------------------------------------------------------
+Wed Feb 18 14:50:25 UTC 2026 - Stefan Schubert <schubi@suse.de>
+
+- Do not suggest grub2-bls if there is another e.g. windows
+  system installed (bsc#1257528, bsc#1257510).
+- 5.0.34
+
+-------------------------------------------------------------------
 Tue Feb 10 11:53:30 UTC 2026 - Stefan Schubert <schubi@suse.de>
 
 - update BLS: Calling "sdbootutil update-all-entries" in order
