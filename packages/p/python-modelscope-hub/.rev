@@ -42,4 +42,60 @@ Built locally on aarch64 and green on OBS x86_64 at srcmd5
 rpmlint 0 errors / 0 badness.</comment>
     <requestid>1375188</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>82978d15c480e87a1275b8ff37dd2031</srcmd5>
+    <version>0.4.0</version>
+    <time>1788518322</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.4.0
+
+Follows 0.3.1 (SR 1375188), accepted into Factory earlier today.
+Feature release with a credential-handling fix, not a version-string catch-up.
+
+Fixes worth calling out:
+- Legacy Studio compat stopped forwarding transport kwargs as business fields.
+  update_studio_settings forwarded **kwargs as the settings payload, so a
+  caller's API token could end up inside the PATCH request body and hence in
+  server-side request logs; get_studio_logs(token=) raised TypeError, and
+  per-call token=/endpoint= overrides were silently ignored. Factory's
+  python-modelscope re-exports this class as modelscope.hub.api.HubApi, so the
+  leak was reachable from a shipped Factory package.
+- Studio create/update no longer silently drops cover_image (the outbound
+  field rename ran the wrong way).
+- Public Studio and MCP reads retry once anonymously, so a stale or read-scoped
+  token can no longer hide data any anonymous caller can see.
+
+Features:
+- New Agent-IDP surface: Ed25519/JWK helpers, agent identity CRUD, key reset,
+  pause, token issue and records, OIDC discovery and JWKS, as a new agent-idp
+  subcommand. Private JWKs are written 0600 and only to an explicitly requested
+  path. This is what pulls in the new cryptography &gt;= 41 dependency, added as
+  both BuildRequires and Requires.
+- Studio list, plaintext variables, hardware tiers, base images and SDK
+  versions across the API, the CLI and the legacy compat layer; new
+  StudioVisibility (adds a protected state the integer Visibility cannot
+  express) and TokenScope enums; repo list gains --repo-type studio and
+  mcp list gains --hosted.
+- OpenAPI string error codes map to typed exceptions, including the new
+  QuotaExceededError (E3027); signature, jwt and private_key added to the log
+  redaction sets.
+
+Consumer check: Factory's python-modelscope 1.39.1 imports 52 symbols from
+modelscope_hub across 17 modules. All still resolve at runtime against the
+built 0.4.0 RPM. compat/constants.py is byte-identical to 0.3.1 and
+constants.py is purely additive, so no compat alias was dropped and no
+constant changed value.
+
+The rm of %{_bindir}/modelscope and %{_bindir}/ms in %install still applies:
+upstream's pyproject still declares all four console scripts, the rm has no -f
+and the build is green, and the RPMs ship only the -hub variants.
+
+%check: the new tests/test_openapi_coverage.py needs tests/data/openapi.json,
+which the sdist does not ship. The six tests taking that fixture are deselected;
+the other 35 in that module (registry -&gt; method binding) still run.
+
+Built locally on aarch64: 296 passed / 6 deselected per Python flavour (177 at
+0.3.1), rpmlint 0 errors / 0 badness.</comment>
+    <requestid>1375445</requestid>
+  </revision>
 </revisionlist>

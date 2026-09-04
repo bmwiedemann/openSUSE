@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Sep  2 15:20:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.4.0:
+  * New Agent-IDP surface: Ed25519/JWK helpers, identity CRUD, key
+    reset, pause, token issue/records, OIDC discovery and JWKS, as
+    a new agent-idp subcommand; private JWKs written 0600 only to
+    an explicitly requested path
+  * Studio gains list, plaintext variables, hardware tiers, base
+    images and SDK versions across API, CLI and legacy compat, plus
+    StudioVisibility (adds protected) and TokenScope enums; repo
+    list gains --repo-type studio, and mcp list gains --hosted
+  * Legacy Studio compat stopped forwarding transport kwargs as
+    business fields: the caller's token used to land in the PATCH
+    body and server logs, get_studio_logs(token=) raised TypeError
+    and per-call token=/endpoint= were ignored
+  * Studio create/update no longer drops cover_image
+  * Public Studio and MCP reads retry once anonymously so a stale
+    or read-scoped token cannot hide data anonymous callers see; a
+    token refused over its tier completes as a reduced-capability
+    login instead of being reported invalid
+  * OpenAPI string error codes map to typed exceptions, including
+    the new QuotaExceededError (E3027); signature, jwt and
+    private_key added to the log redaction sets
+- Add python-cryptography >= 41, new upstream requirement for the
+  Agent-IDP Ed25519 key handling
+- Deselect the six test_openapi_coverage spec-drift guards: their
+  tests/data/openapi.json fixture is missing from the sdist
+
+-------------------------------------------------------------------
 Tue Sep  1 16:00:40 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.3.1:

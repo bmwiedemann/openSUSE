@@ -19,13 +19,14 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-modelscope-hub
-Version:        0.3.1
+Version:        0.4.0
 Release:        0
 Summary:        Official Python client for ModelScope Hub
 License:        Apache-2.0
 URL:            https://github.com/modelscope/modelscope_hub
 Source:         https://files.pythonhosted.org/packages/source/m/modelscope_hub/modelscope_hub-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.10}
+BuildRequires:  %{python_module cryptography >= 41}
 BuildRequires:  %{python_module filelock >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
@@ -40,6 +41,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  timezone
 Requires:       alts
+Requires:       python-cryptography >= 41
 Requires:       python-filelock >= 3.9
 Requires:       python-requests >= 2.28
 Requires:       python-tqdm >= 4.64.0
@@ -73,7 +75,10 @@ rm %{buildroot}%{_bindir}/modelscope %{buildroot}%{_bindir}/ms
 %check
 # Offline mock-mode tests (HTTP mocked with responses). Skip @remote
 # tests that need live Hub credentials.
-%pytest -m "not remote"
+# The six test_openapi_coverage spec-drift guards read
+# tests/data/openapi.json, which the sdist does not ship; the rest of
+# that module checks the registry->method binding and still runs.
+%pytest -m "not remote" --deselect tests/test_openapi_coverage.py::test_every_covered_operation_is_registered --deselect tests/test_openapi_coverage.py::test_registry_has_no_unknown_operations --deselect tests/test_openapi_coverage.py::test_registry_does_not_claim_deferred_tags --deselect tests/test_openapi_coverage.py::test_every_tag_is_accounted_for --deselect tests/test_openapi_coverage.py::test_spec_is_the_expected_document --deselect tests/test_openapi_coverage.py::test_covered_tags_account_for_every_registered_entry
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -B -c "import modelscope_hub"
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} %{buildroot}%{_bindir}/ms-hub-%{$python_bin_suffix} --help
 
