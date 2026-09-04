@@ -2388,4 +2388,12 @@ Binary file multipath-tools-0.14.3+212+suse.f5d32098.tar.xz (revision 178) delet
   * Add missing NULL check in DM parser (gh#opensvc/multipath-tools#155)</comment>
     <requestid>1374432</requestid>
   </revision>
+  <revision rev="183" vrev="2">
+    <srcmd5>d7fe361942bd809ad70b6b01dfa20164</srcmd5>
+    <version>0.15.1+227+suse.6644513</version>
+    <time>1788518219</time>
+    <user>anag_factory</user>
+    <comment>Fix bug ref</comment>
+    <requestid>1375582</requestid>
+  </revision>
 </revisionlist>

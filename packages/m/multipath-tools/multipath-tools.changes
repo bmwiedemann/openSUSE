@@ -14,7 +14,7 @@ Fri Aug 28 11:00:28 UTC 2026 - Martin Wilck <mwilck@suse.com>
   * Heap Out-of-Bounds Read in Custom Format String Parser via Trailing `%`
   (GHSA-g5mh-253r-jjw5 bsc#1277205)
   * Heap out-of-bounds read in device-mapper-multipath ALUA RTPG parsing
-  (GHSA-pxwh-g75c-95pc 1277208)
+  (GHSA-pxwh-g75c-95pc bsc#1277208)
   * kpartx: Heap Out-of-Bounds Read in GPT Header Validation
   (GHSA-p6rh-9x9j-3hvx, bsc#1277209)
   * Path traversal in device-mapper-multipath failed_wwids management
