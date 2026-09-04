@@ -18,17 +18,15 @@
 #!BcntSyncTag: ollama
 
 # We require too much memory atm.
-# these jobs work on all supported archs with the specified memory of _constraints file
-# found by trial and error
+# these jobs work on all supported
 %ifarch x86_64
 %global jobs 3
 %else
 %global jobs 4
 %endif
 
-# Keep these vendored revisions pinned to the versions required by Ollama.
-%global llama_cpp_version b10091
-%global mlx_version 33c03c486c34a7dadab5339563612c9933c4a406
+%global llama_cpp_version b10630
+%global mlx_version c793734eb715dbcfdb1ced58e348ec53c2d7ed85
 %global mlx_c_version fba4470b89073180056c9ea46c443051375f7399
 
 %{bcond_with rocm}
@@ -43,7 +41,7 @@
 %global preset_flavor %flavor
 
 %if "%{flavor}" == "cuda"
-%global preset_flavor cuda-v13
+%global preset_flavor llama_cuda_v13_linux
 %if %{with cuda}
 ExclusiveArch:  x86_64
 %else
@@ -76,11 +74,11 @@ ExclusiveArch:  SKIP_IT
 %endif
 
 %define cuda_version_major 13
-%define cuda_version_minor 0
+%define cuda_version_minor 3
 %define cuda_version %{cuda_version_major}-%{cuda_version_minor}
 
 Name:           ollama
-Version:        0.32.3
+Version:        0.33.1
 Release:        0
 Summary:        Tool for running AI models on-premise
 License:        MIT
@@ -92,20 +90,20 @@ Source2:        %{name}.service
 Source3:        %{name}-user.conf
 Source4:        sysconfig.%{name}
 Source5:        %{name}-rpmlintrc
-# Hints for the pbuild-ai update tooling that maintains this package. Listed as
-# a source because factory-auto declines any file the spec does not mention.
-Source6:        AGENTS.md
-# Keep the helper directory recognized by source_validator.
-Source7:        tool-scripts
+
+#!RemoteAsset: git+https://github.com/ggml-org/llama.cpp#%{llama_cpp_version}
+#!CreateArchive
+Source10:       llama.cpp-main.tar.xz
+
+#!RemoteAsset: git+https://github.com/ml-explore/mlx#%{mlx_version}
+#!CreateArchive
+Source11:       mlx-main.tar.xz
 
 # Pinned vendored revision.
-Source10:       https://github.com/ggml-org/llama.cpp/archive/refs/tags/%{llama_cpp_version}.tar.gz#/llama.cpp-main.tar.xz
+#!RemoteAsset: git+https://github.com/ml-explore/mlx-c#%{mlx_c_version}
+#!CreateArchive
+Source12:       mlx-c-main.tar.xz
 
-# Pinned vendored revision.
-Source11:       https://github.com/ml-explore/mlx/archive/%{mlx_version}.tar.gz#/mlx-main.tar.xz
-
-# Pinned vendored revision.
-Source12:       https://github.com/ml-explore/mlx-c/archive/%{mlx_c_version}.tar.gz#/mlx-c-main.tar.xz
 Patch0:         fix-mlxrunner-tests.diff
 Patch1:         disable-llama.cpp-ui.patch
 BuildRequires:  ccache
@@ -144,7 +142,7 @@ BuildRequires:  spirv-headers
 BuildRequires:  pkgconfig(vulkan)
 %endif
 
-%if "%{flavor}" == "cuda" || "%{flavor}" == "mlx_cuda"
+%if "%{flavor}" == "cuda"
 # requires cuda-toolkit*-config-common, cuda-cudart, cuda-cccl
 BuildRequires:  cuda-cudart-devel-%{cuda_version}
 BuildRequires:  cuda-driver-devel-%{cuda_version}
@@ -210,10 +208,13 @@ Ollama plugin module for ROCm.
 
 %prep
 %autosetup -a1 -p1 -n %{name}-%{version}
+mkdir git-modules
+pushd git-modules
 mkdir llama.cpp mlx mlx-c
 tar xf %{S:10} --strip-components=1 -C llama.cpp
 tar xf %{S:11} --strip-components=1 -C mlx
 tar xf %{S:12} --strip-components=1 -C mlx-c
+popd
 
 # 2. Patch cmake/local.cmake to skip git-dependent compat patch checks (submodules are extracted from tarballs, not git)
 sed -i 's/git submodule update --init --recursive/# git submodule update skipped — sources from tarballs/' CMakeLists.txt || true
@@ -264,8 +265,8 @@ sed -i -e 's@CMAKE_LIB_DIR "lib/ollama"@CMAKE_LIB_DIR "%{_lib}/ollama"@' CMakeLi
 echo -e 'package ml\nvar LibOllamaPath string = "/usr/%{_lib}/ollama"' > ml/path.go
 
 # and also the local copy of MLX sources
-export OLLAMA_MLX_SOURCE=$PWD/mlx
-export OLLAMA_MLX_C_SOURCE=$PWD/mlx-c
+export OLLAMA_MLX_SOURCE=$PWD/git-modules/mlx
+export OLLAMA_MLX_C_SOURCE=$PWD/git-modules/mlx-c
 
 %cmake \
     -UOLLAMA_INSTALL_DIR -DOLLAMA_INSTALL_DIR=%{_libdir}/ollama \
@@ -275,11 +276,12 @@ export OLLAMA_MLX_C_SOURCE=$PWD/mlx-c
     -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
     -DCMAKE_INSTALL_RPATH='$ORIGIN' \
     -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=OFF \
-    -DFETCHCONTENT_SOURCE_DIR_LLAMA_CPP=$PWD/../llama.cpp \
-    -DOLLAMA_LLAMA_CPP_SKIP_COMPAT_PATCH=ON \
     -DOLLAMA_BUILD_PARALLEL=%jobs \
+    -DFETCHCONTENT_SOURCE_DIR_LLAMA_CPP=$PWD/../git-modules/llama.cpp \
+    -DOLLAMA_MLX_BACKENDS="" \
 %if "%{?flavor}" == "cuda"
     -DCMAKE_CUDA_COMPILER=/usr/local/cuda-%{cuda_version_major}.%{cuda_version_minor}/bin/nvcc \
+    -DOLLAMA_MLX_BACKENDS=cuda_v13 \
 %endif
 %if "%{?flavor}" == "rocm"
     -DCMAKE_HIP_COMPILER=%rocmllvm_bindir/clang++ \
@@ -292,30 +294,36 @@ export OLLAMA_MLX_C_SOURCE=$PWD/mlx-c
     %{nil}
 
 #
-# MLX Flavor
+# Main package
 #
-%if "%{?flavor}" == "mlx_cuda"
-cd ..
-export OLLAMA_SKIP_CPU_GENERATE="1"
-cmake -S llama/server --preset 'llama_cuda_v13_linux' \
-    -DOLLAMA_MLX_BACKENDS=cuda_v13 \
-    -DBLAS_INCLUDE_DIRS=/usr/include/openblas \
-    -DLAPACK_INCLUDE_DIRS=/usr/include/openblas \
-    -DCMAKE_SKIP_BUILD_RPATH=ON \
-    -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
-    -DCMAKE_INSTALL_RPATH='$ORIGIN' \
-    -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=OFF \
-    -DFETCHCONTENT_SOURCE_DIR_LLAMA_CPP=$PWD/llama.cpp \
-    -DOLLAMA_BUILD_PARALLEL=%jobs \
+%if "%{?flavor}" == ""
+%cmake_build -j %jobs
 
-cmake --build build/mlx_cuda_v13 -- -l %{jobs}
+cd ..
+go build -ldflags="-X github.com/ollama/ollama/version.Version=%version" -trimpath -o %{name} .
 exit 0
 %endif
 
 #
-# Flavor package (vulkan/cuda/rocm)
+# Cuda Flavor
 #
-%if "%{?flavor}" != ""
+%if "%{?flavor}" == "cuda"
+cd ..
+export OLLAMA_SKIP_CPU_GENERATE="1"
+cmake -S llama/server --preset 'llama_cuda_v13_linux' \
+    -DCMAKE_SKIP_BUILD_RPATH=ON \
+    -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
+    -DCMAKE_INSTALL_RPATH='$ORIGIN' \
+    -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=OFF \
+    -DFETCHCONTENT_SOURCE_DIR_LLAMA_CPP=$PWD/git-modules/llama.cpp \
+
+cmake --build build/llama-server-cuda_v13 -- -l %{jobs}
+exit 0
+%endif
+
+#
+# Flavor package (vulkan/rocm)
+#
 cd ..
 export OLLAMA_SKIP_CPU_GENERATE="1"
 cmake -S llama/server --preset %preset_flavor \
@@ -323,21 +331,11 @@ cmake -S llama/server --preset %preset_flavor \
     -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
     -DCMAKE_INSTALL_RPATH='$ORIGIN' \
     -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=OFF \
-    -DFETCHCONTENT_SOURCE_DIR_LLAMA_CPP=$PWD/llama.cpp \
-    -DOLLAMA_BUILD_PARALLEL=%jobs \
+    -DFETCHCONTENT_SOURCE_DIR_LLAMA_CPP=$PWD/git-modules/llama.cpp \
 
 local_directory=build/llama-server-%preset_flavor
 cmake --build ${local_directory%_linux} -- -l %{jobs}
-exit 0
-%endif
 
-#
-# Main package
-#
-%cmake_build -j %jobs
-
-cd ..
-go build -trimpath -o %{name} .
 
 %install
 %if "%{?flavor}" == "test"
@@ -351,12 +349,8 @@ export DESTDIR=%buildroot
 #
 local_directory=%preset_flavor
 local_directory=${local_directory%_linux}
-%if "%{?flavor}" == "mlx_cuda"
-cmake --install build/mlx_cuda_v13 --component MLX --prefix %{_prefix}
-cmake --install build/mlx_cuda_v13 --component MLX_VENDOR --prefix %{_prefix}
-%else
+local_directory=${local_directory#llama_}
 cmake --install build/llama-server-${local_directory} --component llama-server --prefix %{_prefix}
-%endif
 mv %buildroot/usr/%_lib/ollama/${local_directory}/* %buildroot/usr/%_lib/ollama/
 rmdir %buildroot/usr/%_lib/ollama/${local_directory}
 %else

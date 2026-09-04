@@ -1,6 +1,0 @@
-<services>
-  <service name="download_files" mode="manual">
-    <param name="recompress">yes</param>
-  </service>
-  <service name="go_modules" mode="manual" />
-</services>

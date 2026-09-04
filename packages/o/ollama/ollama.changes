@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Thu Aug 27 04:51:49 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Update to 0.33.1
+  * MLX: Qwen3.8 Flash Next support
+  * cmake: make external compat patches idempotent
+  * MLX and llama.cpp update
+  * mlxrunner: add structured output support
+  * mlxrunner: avoid Metal GPU timeouts when loading models from slow storage
+
+-------------------------------------------------------------------
+Wed Aug 26 09:17:50 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Update to 0.33.0
+  * Improved caching
+  * DeepSeek Harness launcher now falls back to npx when the global
+    npm install fails, with Windows command-shim support
+  * MLX dependency update
+
+-------------------------------------------------------------------
+Tue Aug 11 13:23:00 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 0.32.9
+  * Added support for the NVIDIA Nemotron 3 architecture.
+  * Handled a boundary condition in the Muse Glimmer
+    function-calling parser.
+- Update to version 0.32.8
+  * Added Muse Glimmer support for NVIDIA, AMD, and
+    additional platforms.
+- Update to version 0.32.7
+  * Added initial MLX support for Muse Glimmer on Apple Silicon,
+    including DFlash and image input support.
+- Update to version 0.32.6
+  * Made Qwen3.5 faster on Apple GPUs with automatic
+    speculative decoding through the MLX MTP head.
+  * Matched OpenAI's wire format for OpenAI-compatible
+    streaming responses.
+  * Truncated OpenAI responses now report a length finish reason.
+  * Made ollama run kimi-k3 offer kimi-k3:cloud for cloud models.
+  * Fixed TUI rendering, file completion, and /prompt scrolling.
+  * Temporarily removed experimental image generation support.
+  * Updated the MLX and llama.cpp engines.
+- Update to version 0.32.5
+  * Fixed an MLX Metal bug that could reduce output quality
+    for NVFP4 models, particularly Laguna.
+- Update to version 0.32.4
+  * Added Laguna support on Apple GPUs through the MLX engine.
+  * Quantized draft-model output heads at the requested type
+    when creating speculative-decoding drafts.
+  * Fixed Qwen3 MoE decoding for differently-quantized experts
+    and improved packed gate/up projection performance.
+
+-------------------------------------------------------------------
 Tue Aug  4 12:48:11 UTC 2026 - VaiTon <eyadlorenzo@gmail.com>
 
 - Add missing service_del_postun call for ollama.service
@@ -386,6 +438,8 @@ Sat Feb 28 15:54:51 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
 - Update to version 0.17.1:
   * Nemotron architecture support in Ollama's engine
   * Improved LFM2 and LFM2.5 models in Ollama's engine
+- CVE-2026-7482: ollama: heap out-of-bounds read in the GGUF
+  model loader
 - Update to version 0.17.0:
   * OpenClaw can now be installed and configured automatically via
     Ollama: ollama launch openclaw

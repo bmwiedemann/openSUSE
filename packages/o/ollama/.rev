@@ -915,4 +915,41 @@ because we don't need git-web and the other stuff here (forwarded request 125417
   * Fixed ollama launch so choosing Pick another model for a</comment>
     <requestid>1370283</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>d1c3980cb0cd3bda020b3592031bcabd</srcmd5>
+    <version>0.33.1</version>
+    <time>1788518414</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.33.1
+  * MLX: Qwen3.8 Flash Next support
+  * cmake: make external compat patches idempotent
+  * MLX and llama.cpp update
+  * mlxrunner: add structured output support
+  * mlxrunner: avoid Metal GPU timeouts when loading models from slow storage
+
+- Update to 0.33.0
+  * Improved caching
+  * DeepSeek Harness launcher now falls back to npx when the global
+    npm install fails, with Windows command-shim support
+  * MLX dependency update
+
+- Update to version 0.32.9
+  * Added support for the NVIDIA Nemotron 3 architecture.
+  * Handled a boundary condition in the Muse Glimmer
+    function-calling parser.
+- Update to version 0.32.8
+  * Added Muse Glimmer support for NVIDIA, AMD, and
+    additional platforms.
+- Update to version 0.32.7
+  * Added initial MLX support for Muse Glimmer on Apple Silicon,
+    including DFlash and image input support.
+- Update to version 0.32.6
+  * Made Qwen3.5 faster on Apple GPUs with automatic
+    speculative decoding through the MLX MTP head.
+  * Matched OpenAI's wire format for OpenAI-compatible
+    streaming responses.
+  * Truncated OpenAI responses now report a length finish reason.
+  * Made ollama run kimi-k3 offer kimi-k3:cloud for cloud models.</comment>
+    <requestid>1375542</requestid>
+  </revision>
 </revisionlist>
