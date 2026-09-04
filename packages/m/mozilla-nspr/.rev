@@ -828,4 +828,15 @@ require it nevertheless
   * Added .editorconfig</comment>
     <requestid>1354538</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>b5bdb90d6ad6b9199faf4190bb3537fb</srcmd5>
+    <version>4.40</version>
+    <time>1788518200</time>
+    <user>anag_factory</user>
+    <comment>- update to version 4.40
+  * no upstream release notes found
+
+- update to version 4.39</comment>
+    <requestid>1375536</requestid>
+  </revision>
 </revisionlist>
