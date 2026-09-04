@@ -111,4 +111,12 @@
     <comment>bugref updates</comment>
     <requestid>1366900</requestid>
   </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>ea93bfe54e9533c19e74428dee1cd981</srcmd5>
+    <version>8.1.2</version>
+    <time>1788518150</time>
+    <user>anag_factory</user>
+    <comment>backports</comment>
+    <requestid>1375173</requestid>
+  </revision>
 </revisionlist>

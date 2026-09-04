@@ -1,4 +1,192 @@
 -------------------------------------------------------------------
+Mon Aug 28 05:22:38 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-8-CVE-2026-75147.patch:
+  Backport 983dae9c from upstream, avformat/rtpenc_av1: bound OBU
+  size in the keyframe search loop.
+  (CVE-2026-75147, bsc#1276413)
+
+-------------------------------------------------------------------
+Mon Aug 28 04:47:54 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-8-CVE-2026-75146.patch:
+  Backport 65b0dab9 from upstream, avformat/dashdec: reject a negative
+  fragment index.
+  (CVE-2026-75146, bsc#1276412)
+
+-------------------------------------------------------------------
+Mon Aug 28 04:02:17 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-8-CVE-2026-75145.patch:
+  Backport b4c199c5 from upstream, avformat/rtpenc_av1: do not narrow
+  the OBU size to (long).
+  (CVE-2026-75145, bsc#1276411)
+
+-------------------------------------------------------------------
+Mon Aug 28 03:34:50 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-8-CVE-2026-75144.patch:
+  Backport 1c10bcc2 from upstream, avformat/rtpenc_vc2hq: reject data
+  units larger than the RTP payload buffer.
+  (CVE-2026-75144, bsc#1276410)
+
+-------------------------------------------------------------------
+Mon Aug 28 03:17:21 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-8-CVE-2026-75143.patch:
+  Backport 1c10bcc2 from upstream, avformat/librist: honor the caller
+  buffer size in librist_read.
+  (CVE-2026-75143, bsc#1276409)
+
+-------------------------------------------------------------------
+Mon Aug 28 02:58:12 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-8-CVE-2026-75142.patch:
+  Backport 9d786e4b from upstream, avformat/mpegenc: reject stream
+  counts that overflow the system header.
+  (CVE-2026-75142, bsc#1276408)
+
+-------------------------------------------------------------------
+Mon Aug 28 02:44:56 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-8-CVE-2026-75141.patch:
+  Backport acf5d7cd from upstream, avformat/hevc: reject hvcC
+  NAL arrays that overflow the 16-bit count.
+  (CVE-2026-75141, bsc#1276407)
+
+-------------------------------------------------------------------
+Wed Aug 14 09:44:28 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-8-CVE-2026-70632.patch:
+  Backport 16b2049d from upstream, avcodec/cfhd: reject transform-2
+  output wider than the plane.
+  (CVE-2026-70632, bsc#1274289)
+
+-------------------------------------------------------------------
+Wed Aug 14 08:27:41 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-8-CVE-2026-70631.patch:
+  Backport 3c287af3 from upstream, avcodec/tiff: reject inflate
+  output shorter than the strip.
+  (CVE-2026-70631, bsc#1274287)
+
+-------------------------------------------------------------------
+Wed Aug 14 07:58:24 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-8-CVE-2026-70630.patch:
+  Backport c22667d0 from upstream, avcodec/screenpresso: reject
+  deflate output shorter than the frame.
+  (CVE-2026-70630, bsc#1274282)
+
+-------------------------------------------------------------------
+Wed Aug 14 07:22:18 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-8-CVE-2026-70629.patch:
+  Backport a5fe21a1 from upstream, avcodec/rscc: do not leave
+  uninitilized data when the input is too short.
+  (CVE-2026-70629, bsc#1274270)
+
+-------------------------------------------------------------------
+Wed Aug 14 06:52:11 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-8-CVE-2026-70628.patch:
+  Backport 02fc47e1 from upstream, avcodec/dvbsub_parser: avoid
+  signed overflow in the capacity check.
+  (CVE-2026-70628, bsc#1274268)
+
+-------------------------------------------------------------------
+Wed Aug 14 06:41:28 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-8-CVE-2026-66037.patch:
+  Backport f15e730c from upstream, avformat/iamf_parse: check
+  count_label against the available bytes.
+  (CVE-2026-66037, bsc#1272764)
+
+-------------------------------------------------------------------
+Wed Aug 14 06:28:33 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-8-CVE-2026-66036.patch:
+  Backport 62294b6a from upstream, avfilter/vf_hqdn3d: support
+  dynamic frame sizes.
+  (CVE-2026-66036, bsc#1272763)
+
+-------------------------------------------------------------------
+Wed Aug 14 05:51:42 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-8-CVE-2026-66036-shim01.patch
+  Backport e3d0c719 from upstream, avfilter/vf_hqdn3d: reject
+  unsupported frame parameter changes. This patch is for facilitate 
+  ffmpeg-CVE-2026-66036.patch.
+  (CVE-2026-66036, bsc#1272763)
+
+-------------------------------------------------------------------
+Wed Aug 14 05:31:22 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-8-CVE-2026-65706.patch:
+  Backport b3c7ebc1 from upstream, avfilter/vf_swaprect: size the
+  temp row buffer for the widest plane.
+  (CVE-2026-65706, bsc#1272762)
+
+-------------------------------------------------------------------
+Wed Aug 14 04:56:09 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-8-CVE-2026-65705.patch:
+  Backport 30a52276 from upstream, avfilter/vf_floodfill: remove
+  unneeded variables.
+  (CVE-2026-65705, bsc#1272761)
+
+-------------------------------------------------------------------
+Wed Aug 14 04:31:19 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-8-CVE-2026-65704.patch:
+  Backport 52f7983f from upstream, avformat/ty: don't let the Series2
+  AC3 trim underflow the packet size.
+  (CVE-2026-65704, bsc#1272760)
+
+-------------------------------------------------------------------
+Wed Aug 14 04:02:11 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-8-CVE-2026-65703.patch:
+  Backport 3b85fbe8 from upstream, avcodec/tdsc: unref the reference
+  frame before reallocating on size change.
+  (CVE-2026-65703, bsc#1272759)
+
+-------------------------------------------------------------------
+Wed Aug 14 03:46:28 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-8-CVE-2026-64834.patch:
+  Backport 3c441711 from upstream, avformat/rtpdec_asf: reject ASF
+  objects smaller than their header.
+  (CVE-2026-64834, bsc#1272757)
+
+-------------------------------------------------------------------
+Wed Aug 14 03:33:14 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-8-CVE-2026-64833.patch:
+  Backport 385ac2fa from upstream, avformat/spdifenc: bound DTS
+  core_size against the packet size in the HD path.
+  (CVE-2026-64833, bsc#1272755)
+
+-------------------------------------------------------------------
+Wed Aug 14 03:28:13 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-8-CVE-2026-58049.patch:
+  Backport f8d7795d from upstream, avcodec/rasc: Check that 32-bit
+  DLTA accesses stay within the row.
+  (CVE-2026-58049, bsc#1269550)
+ 
+-------------------------------------------------------------------
+Tue Aug 11 10:43:34 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Rename the ffmpeg BRPM back to ffmpeg-8 to make room for ffmpeg-9
+  to fill the role. [boo#1271606]
+
+-------------------------------------------------------------------
+Tue Jul 21 13:58:03 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Rename the ffmpeg-8 BRPM to ffmpeg. [boo#1271606]
+
+-------------------------------------------------------------------
 Wed Jun 17 18:20:21 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 8.1.2
