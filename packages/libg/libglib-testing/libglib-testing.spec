@@ -17,12 +17,12 @@
 
 
 Name:           libglib-testing
-Version:        0.1.1
+Version:        0.2.0
 Release:        0
 Summary:        GLib test harness and mocking framework
 License:        LGPL-2.1-or-later
 URL:            https://gitlab.gnome.org/pwithnall/libglib-testing
-Source:         %{url}/-/archive/%{version}/%{name}-%{version}.tar.bz2
+Source:         %{name}-%{version}.tar.xz
 BuildRequires:  gtk-doc
 BuildRequires:  meson >= 0.45.0
 BuildRequires:  pkgconfig(gio-2.0) >= 2.44

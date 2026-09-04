@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jun 30 08:29:31 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.2.0:
+  + Add documentation tests
+  + ci: Fix docs CI build and deployment
+  + Add functions to emit a signal from the mocked service and mock
+    activatable bus named
+  + dbus-queue: Use POSIX file functions instead of GIO for
+    activatable names
+  + dbus-queue: Allow empty varargs to
+    gt_dbus_queue_assert_pop_message().
+
+-------------------------------------------------------------------
 Fri Jun 24 12:02:02 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.1.1:
