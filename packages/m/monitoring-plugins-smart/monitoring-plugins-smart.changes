@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep  2 07:09:16 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 6.18.3
+  * Fix /dev/bus/ device path to support double-digits.
+
+-------------------------------------------------------------------
 Sat May  9 09:55:05 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 6.18.2
