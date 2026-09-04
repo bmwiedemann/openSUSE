@@ -826,7 +826,6 @@ packagesets:
    - ipa-uigothic-fonts # reason: dvd:openSUSE-release
    - ipmitool # reason: dvd:ipmitool
    - iproute2 # reason: dvd:openSUSE-release
-   - iproute2-bash-completion # reason: dvd:patterns-kde-kde
    - iputils # reason: dvd:openSUSE-release
    - ipw-firmware # reason: dvd:patterns-media-rest_cd_core
    - ipxe-qemu # reason: dvd:patterns-media-rest_dvd
