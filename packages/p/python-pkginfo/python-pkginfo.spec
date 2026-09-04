@@ -1,7 +1,7 @@
 #
 # spec file for package python-pkginfo
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pkginfo
-Version:        1.12.1.2
+Version:        1.13
 Release:        0
 Summary:        Python package for querying metadatdata from sdists/bdists/installed packages
 License:        MIT
@@ -36,7 +36,6 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-setuptools
 BuildArch:      noarch
 %if %{with libalternatives}
 BuildRequires:  alts
@@ -71,8 +70,8 @@ the *.egg-info stored in a "development checkout"
 %python_clone -a %{buildroot}%{_bindir}/pkginfo
 
 %check
-# install wheel in tests with an explicit metadata version, looks like we have a different default (openSUSE-only)
-sed -iE "s/_make_installed('wheel')/_make_installed('wheel', metadata_version='2.3')/" pkginfo/tests/test_installed.py
+# correct package version in test data
+sed -i 's/Version: 1.13.dev0/Version: 1.13/' pkginfo/tests/dodgy/namespaced.dodgy-0.1.egg-info/PKG-INFO
 %pytest
 
 %post

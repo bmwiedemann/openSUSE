@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep  1 09:34:43 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- update to 1.13
+  * add support for Python 3.14
+  * support 'metadata_version' == '2.5'
+  * drop support for Python 3.9
+
+-------------------------------------------------------------------
 Thu Aug 21 15:25:03 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives on SLE-16-based and newer systems only
