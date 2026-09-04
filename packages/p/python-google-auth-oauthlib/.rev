@@ -223,4 +223,14 @@
   * replace deprecated `utcfromtimestamp` in google-auth-oauthlib (#16732) (forwarded request 1352419 from glaubitz)</comment>
     <requestid>1352479</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>c1faa3f64eab20d294c5ee1a44c1f268</srcmd5>
+    <version>1.4.1</version>
+    <time>1788518298</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.4.1
+  * **google-auth-oauthlib:** prevent port re-use on windows (#18166)
+  * **handwritten:** centralize CONTRIBUTING.rst pointers (#17642) (forwarded request 1375584 from glaubitz)</comment>
+    <requestid>1375645</requestid>
+  </revision>
 </revisionlist>
