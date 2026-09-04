@@ -63,18 +63,17 @@ expressions and context-free grammars.
 
 %build
 export CMAKE_GENERATOR=Ninja
+# Exclude the internal C++ build artifacts (headers plus the static
+# libxgrammar.a, unused at runtime) from the wheel instead of deleting them in
+# %%install: the fat-LTO .a is not reproducible (random .gnu.lto_* section
+# names, ar timestamps) and deleting it after the fact left its varying
+# checksum behind in dist-info/RECORD.
+export SKBUILD_WHEEL_EXCLUDE='**.a;**.h'
 %pyproject_wheel
 
 %install
 %pyproject_install
-# The wheel ships internal C++ build artifacts (headers plus the static
-# libxgrammar.a) that are not used at runtime by the loadable bindings module;
-# drop them so they neither bloat the package nor trip the devel-file/LTO
-# rpmlint checks.
-%{python_expand find %{buildroot}%{$python_sitearch} -name '*.h' -delete
-find %{buildroot}%{$python_sitearch} -name '*.a' -delete
-$python -m compileall -q -f -o 0 -o 1 --invalidation-mode unchecked-hash %{buildroot}%{$python_sitearch}/xgrammar
-}
+%{python_expand $python -m compileall -q -f -o 0 -o 1 --invalidation-mode unchecked-hash %{buildroot}%{$python_sitearch}/xgrammar}
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check

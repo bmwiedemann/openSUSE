@@ -15,4 +15,21 @@
     <comment>Update to 0.2.5: Lark grammar frontend; sparse FSM end states (removes quadratic FSM-construction memory); prevent XML whitespace state explosion; plus 0.2.4 fixes. Source now generated from the git tag via _service (upstream dropped the PyPI sdist; C++ build needs bundled 3rdparty submodules). %check smoke test temporarily tolerates the transformers ImportError caused by the current Factory python-transformers 5.14.1 (tokenizers&lt;=0.23.0) vs python-tokenizers 0.23.1 skew, while still asserting the native C++ binding loads.</comment>
     <requestid>1367538</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>fc7b24092bb84697d36d25422c8f7cf2</srcmd5>
+    <version>0.2.5</version>
+    <time>1788518421</time>
+    <user>anag_factory</user>
+    <comment>Forward the stranded devel-only reproducibility fix (no version change, still 0.2.5):
+exclude the static libxgrammar.a and the headers from the wheel via
+SKBUILD_WHEEL_EXCLUDE instead of deleting them in %install, so dist-info/RECORD no
+longer retains the varying checksum of the unreproducible fat-LTO static library.
+Accepted into science:machinelearning on 2026-08-18 (rq1371724) but never forwarded.
+
+Upstream v0.2.5.post1 was deliberately not taken: it is a PyPI-wheel-matrix
+re-release whose only source delta vs v0.2.5 is the version string in
+pyproject.toml plus a GitHub Actions change, so it is a no-op for this package,
+which builds from the git tag.</comment>
+    <requestid>1375572</requestid>
+  </revision>
 </revisionlist>

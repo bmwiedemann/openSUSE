@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 18 10:40:32 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Exclude the static libxgrammar.a and headers from the wheel
+  instead of deleting them in %install, so that dist-info/RECORD
+  no longer retains the varying checksum of the unreproducible
+  fat-LTO static library
+
+-------------------------------------------------------------------
 Thu Jul 23 19:52:52 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.2.5:
