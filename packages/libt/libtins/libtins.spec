@@ -1,7 +1,7 @@
 #
 # spec file for package libtins
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,19 @@
 #
 
 
-%define libname  libtins4_4
+%define libname  libtins4_6
 Name:           libtins
-Version:        4.4
+Version:        4.6
 Release:        0
 Summary:        C++ library for manipulating raw network packets
 License:        BSD-2-Clause
 Group:          Productivity/Networking/Other
 URL:            https://libtins.github.io/
 Source0:        https://github.com/mfontanini/%{name}/archive/v%{version}.tar.gz
-Patch0:         libtins-4.2_build.patch
-Patch1:         https://github.com/mfontanini/libtins/commit/812be7966d445ec56e88eab512f8fd2d57152427.patch
+BuildRequires:  boost-devel
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
+BuildRequires:  libboost_regex-devel
 BuildRequires:  libpcap-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libcrypto)
