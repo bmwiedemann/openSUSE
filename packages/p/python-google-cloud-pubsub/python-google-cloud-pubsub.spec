@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-cloud-pubsub
-Version:        2.39.1
+Version:        2.39.2
 Release:        0
 Summary:        Google Cloud Pub/Sub API client library
 License:        Apache-2.0
