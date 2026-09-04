@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep  1 00:19:28 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 1.8.1:
+  * Fix CMS parser to avoid possible infinite loop
+- drop libksba-nobetasuffix.patch, not needed when autoreconf is
+  not run. Also don't run it.
+- Fix fgrep deprecation warnings in ksba-config --libs output
+  boo#1203092 add libksba-1.8.1-fgrep-warning.patch, sent upstream
+
+-------------------------------------------------------------------
 Fri May 15 08:02:11 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 1.8.0:

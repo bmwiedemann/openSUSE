@@ -1,0 +1,35 @@
+From 19d5612ca192dcb132c75f1e4b04e086c06ff651 Mon Sep 17 00:00:00 2001
+From: Andreas Stieger <Andreas.Stieger@gmx.de>
+Date: Tue, 1 Sep 2026 02:05:10 +0200
+Subject: [PATCH] ksba-config: more portable, using grep -F over fgrep
+
+Avoids spurious warnings in ksba-config output.
+---
+ src/ksba-config.in | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/ksba-config.in b/src/ksba-config.in
+index 76d038d..27b187b 100644
+--- a/src/ksba-config.in
++++ b/src/ksba-config.in
+@@ -126,7 +126,7 @@ if test "$echo_cflags" = "yes"; then
+     fi
+     tmp=""
+     for i in $includes $cflags; do
+-       if echo "$tmp" | fgrep -v -- "$i" >/dev/null; then
++       if echo "$tmp" | @FGREP@ -v -- "$i" >/dev/null; then
+            tmp="$tmp $i"
+        fi
+     done
+@@ -140,7 +140,7 @@ if test "$echo_libs" = "yes"; then
+     fi
+     tmp=""
+     for i in $libdirs $libs; do
+-       if echo "$tmp" | fgrep -v -- "$i" >/dev/null; then
++       if echo "$tmp" | @FGREP@ -v -- "$i" >/dev/null; then
+            tmp="$tmp $i"
+        fi
+     done
+-- 
+2.55.0
+

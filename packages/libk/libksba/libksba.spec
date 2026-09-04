@@ -2,6 +2,7 @@
 # spec file for package libksba
 #
 # Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +19,7 @@
 
 %define soname 8
 Name:           libksba
-Version:        1.8.0
+Version:        1.8.1
 Release:        0
 Summary:        A X.509 Library
 License:        (GPL-2.0-or-later OR LGPL-3.0-or-later) AND GPL-3.0-or-later AND MIT
@@ -29,11 +30,7 @@ Source2:        https://gnupg.org/ftp/gcrypt/libksba/%{name}-%{version}.tar.bz2.
 # https://www.gnupg.org/signature_key.html
 Source3:        %{name}.keyring
 Source4:        libksba.changes
-#PATCH-FIX-OPENSUSE Do not pull revision info from GIT when autoconf is run
-Patch0:         libksba-nobetasuffix.patch
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  libtool
+Patch0:         libksba-1.8.1-fgrep-warning.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gpg-error) >= 1.28
 
@@ -68,13 +65,12 @@ libksba.
 %autosetup -p1
 
 %build
-autoreconf -vfi
 build_timestamp=$(date -u +%{Y}-%{m}-%{dT}%{H}:%{M}+0000 -r %{SOURCE4})
 %configure \
 	--disable-static \
 	--with-pic \
-	--enable-build-timestamp="${build_timestamp}"
-
+	--enable-build-timestamp="${build_timestamp}" \
+	%{nil}
 %make_build
 
 %check
@@ -84,18 +80,17 @@ build_timestamp=$(date -u +%{Y}-%{m}-%{dT}%{H}:%{M}+0000 -r %{SOURCE4})
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -n %{name}%{soname} -p /sbin/ldconfig
-%postun -n %{name}%{soname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{name}%{soname}
 
 %files -n %{name}%{soname}
 %license COPYING*
 %doc README AUTHORS ChangeLog NEWS THANKS TODO
-%{_libdir}/libksba*.so.*
+%{_libdir}/libksba.so.%{soname}{,.*}
 
 %files devel
 %license COPYING*
 %{_bindir}/ksba-config
-%{_libdir}/libksba*.so
+%{_libdir}/libksba.so
 %{_libdir}/pkgconfig/ksba.pc
 %{_includedir}/ksba.h
 %{_datadir}/aclocal/ksba.m4
