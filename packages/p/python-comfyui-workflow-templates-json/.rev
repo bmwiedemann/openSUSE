@@ -94,4 +94,22 @@ comfyui-workflow-templates 0.11.52 meta package, which upstream
 releases in lockstep.</comment>
     <requestid>1375332</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>02671962ee506a775bfbeef89e8cc82c</srcmd5>
+    <version>0.1.66</version>
+    <time>1788518325</time>
+    <user>anag_factory</user>
+    <comment>Update python-comfyui-workflow-templates-json to 0.1.66.
+
+Adds the MiniMax H3 Max reference-to-video, PixVerse 6
+reference-to-video and Bria increase-resolution templates; the three
+existing MiniMax H3 Max workflows gain an optional context-IR /
+regenerate branch and save outputs; index plus its 11 localisations and
+the MCP index rebuilt.
+
+Part of the coupled comfyui-workflow-templates set; submit this before
+python-comfyui-workflow-templates 0.11.54, whose floor is
+-json &gt;= 0.1.66.</comment>
+    <requestid>1375578</requestid>
+  </revision>
 </revisionlist>

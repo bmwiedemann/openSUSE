@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Sep  3 08:55:45 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.1.66:
+  * Add MiniMax H3 Max reference to video, PixVerse 6 reference to
+    video and Bria increase-resolution upscale templates
+  * The three existing MiniMax H3 Max workflows (first-last-frame,
+    image and text to video) gain an optional context-IR and
+    regenerate branch behind switch toggles, plus video and text
+    save outputs and inline notes
+  * Fish Audio speech to text is now described as covering 80+
+    languages instead of 13+
+  * Rebuilds the template index, its 11 localisations and the MCP
+    index
+
+-------------------------------------------------------------------
 Wed Sep  2 07:38:14 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.1.64:
