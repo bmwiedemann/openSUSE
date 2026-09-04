@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Sep  3 08:41:11 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20260902 (public_suffix_list.dat snapshot taken
+  from upstream commit of 2026-09-02):
+  * Add builtwithrocket.new and rocketpreview.app to PRIVATE
+    section (#2948)
+  * Add canva-code.cn (#2980)
+  * Add tmp.now to PRIVATE section (Vercel) (#3193)
+  * Add eth.limo and eth.link gateways (#3199)
+  * Remove demo.datacenter.fi and paas.datacenter.fi (#3197)
+  * Remove XnBay Technology entries (#3176)
+
+-------------------------------------------------------------------
 Sun Aug 23 05:17:36 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20260819 (public_suffix_list.dat snapshot taken

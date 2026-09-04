@@ -1927,4 +1927,24 @@ openSUSE_Factory_ARM (--clean): green, %check &quot;make test-syntax&quot;
 (pslint) passed, rpmlint 0 errors 0 warnings.</comment>
     <requestid>1373164</requestid>
   </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>a8a380a3cae0f50e8f6876f3ce8f20d8</srcmd5>
+    <version>20260902</version>
+    <time>1788518212</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260902 (public_suffix_list.dat snapshot taken from
+  upstream commit of 2026-09-02):
+  * Add builtwithrocket.new and rocketpreview.app to PRIVATE section (#2948)
+  * Add canva-code.cn (#2980)
+  * Add tmp.now to PRIVATE section (Vercel) (#3193)
+  * Add eth.limo and eth.link gateways (#3199)
+  * Remove demo.datacenter.fi and paas.datacenter.fi (#3197)
+  * Remove XnBay Technology entries (#3176)
+
+Weekly public_suffix_list.dat refresh; keeps cookie-scope/domain boundaries
+correct for the newly delegated suffixes. Data only, no spec changes beyond
+Version. Built locally on aarch64 against openSUSE_Factory_ARM (--clean):
+green, %check &quot;make test-syntax&quot; (pslint) passed, rpmlint 0 errors 0 warnings.</comment>
+    <requestid>1375565</requestid>
+  </revision>
 </revisionlist>
