@@ -18,7 +18,7 @@
 
 %define sover 7
 Name:           gpgmepp
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        C++ bindings/wrapper for GPGME
 License:        LGPL-2.0-or-later AND LGPL-2.1-or-later
@@ -32,7 +32,7 @@ BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gpg-error) >= 1.47
-BuildRequires:  pkgconfig(gpgme) >= 2.0.0
+BuildRequires:  pkgconfig(gpgme) >= 2.2.0
 %if 0%{?suse_version} < 1600
 BuildRequires:  gcc12-c++
 %endif

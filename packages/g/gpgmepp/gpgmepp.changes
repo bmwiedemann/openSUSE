@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Sep  3 06:00:30 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 2.2.0:
+  * Signature now provides issuer serial number and issuer name for
+    S/MIME certificates used for signing that are not included in a
+    signature
+  * Added missing getters for the number of notations of a
+    signature and the numbers of created signatures and of invalid
+    signing keys of a signing result
+
+-------------------------------------------------------------------
 Sun May 31 06:51:22 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 2.1.0:

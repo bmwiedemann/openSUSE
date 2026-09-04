@@ -16,4 +16,12 @@ See boo#1244605. Goes with SR#1293440</comment>
     <comment>gpgmepp 2.1.0 (forwarded request 1356108 from AndreasStieger)</comment>
     <requestid>1356111</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a13848042eda43cb2f0cb098d3d6294d</srcmd5>
+    <version>2.2.0</version>
+    <time>1788518192</time>
+    <user>anag_factory</user>
+    <comment>gpgmepp 2.2.0 (forwarded request 1375526 from AndreasStieger)</comment>
+    <requestid>1375528</requestid>
+  </revision>
 </revisionlist>
