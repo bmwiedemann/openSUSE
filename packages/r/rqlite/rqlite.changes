@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep 04 05:17:34 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 10.3.1:
+  * Consolidate SQLite driver construction
+  * Plumb Term and Index through during Snapshot Restore
+  * Hard exit if FSM Restore fails post database-swap
+
+-------------------------------------------------------------------
 Tue Sep 01 15:46:51 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 10.3.0:

@@ -425,4 +425,12 @@
     <comment>rqlite 10.3.0 (forwarded request 1375183 from AndreasStieger)</comment>
     <requestid>1375184</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>bc82efbd62703ff4e894b340bc2cbee0</srcmd5>
+    <version>10.3.1</version>
+    <time>1788518617</time>
+    <user>anag_factory</user>
+    <comment>rqlite 10.3.1 (forwarded request 1375705 from AndreasStieger)</comment>
+    <requestid>1375706</requestid>
+  </revision>
 </revisionlist>
