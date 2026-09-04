@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Sep  2 11:50:38 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- Add gcc16-pr124811.patch to fix build reproducability when PCH
+  is used
+- Add gcc16-znver6-cpuid.patch to fix auto-detection of Zen6
+  [bsc#1277919]
+
+-------------------------------------------------------------------
+Mon Aug 31 12:30:08 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- Remove support for s390, make sure to configure s390x with
+  --disable-multilib to avoid configury error without explicit
+  disable of multilibs.  Support for s390 is officially deprecated.
+
+-------------------------------------------------------------------
 Wed Aug 12 14:24:23 UTC 2026 - Richard Biener <rguenther@suse.com>
 
 - Disable cross-x86_64-gcc build for SLFO

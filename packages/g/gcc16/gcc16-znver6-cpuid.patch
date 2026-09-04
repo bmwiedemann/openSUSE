@@ -1,0 +1,145 @@
+From 28bb548c8b87b4cf80c7df18c8de1950bed53222 Mon Sep 17 00:00:00 2001
+From: Richard Biener <rguenther@suse.de>
+Date: Tue, 25 Aug 2026 13:54:55 +0530
+Subject: [PATCH] Fix zen6 AVX512BMM cpuid check.
+To: gcc-patches@gcc.gnu.org
+
+From: Dipesh Sharma <Dipesh.Sharma@amd.com>
+
+- Moved bit_AVX512BMM to extended features section.
+- Added test for __builtin_cpu_supports ("avx512bmm") compile and runtime tests.
+
+gcc/ChangeLog:
+
+	* common/config/i386/cpuinfo.h (get_available_features): Detect AVX512BMM from
+	extended features instead of standard leaf.
+	* config/i386/cpuid.h (bit_AVX512BMM): Move to extended features
+	section.
+
+gcc/testsuite/ChangeLog:
+
+	* gcc.target/i386/avx512bmm-check-1.c: New test.
+	* gcc.target/i386/avx512bmm-check-2.c: New test.
+	* gcc.target/i386/avx512bmm-check-3.c: New test.
+
+(cherry picked from commit 33053605189f2b903b1a0d730a1feec166e89735)
+---
+ gcc/common/config/i386/cpuinfo.h              | 16 +++------------
+ gcc/config/i386/cpuid.h                       |  4 +---
+ .../gcc.target/i386/avx512bmm-check-1.c       |  6 ++++++
+ .../gcc.target/i386/avx512bmm-check-2.c       | 20 +++++++++++++++++++
+ .../gcc.target/i386/avx512bmm-check-3.c       |  6 ++++++
+ 5 files changed, 36 insertions(+), 16 deletions(-)
+ create mode 100644 gcc/testsuite/gcc.target/i386/avx512bmm-check-1.c
+ create mode 100644 gcc/testsuite/gcc.target/i386/avx512bmm-check-2.c
+ create mode 100644 gcc/testsuite/gcc.target/i386/avx512bmm-check-3.c
+
+diff --git a/gcc/common/config/i386/cpuinfo.h b/gcc/common/config/i386/cpuinfo.h
+index f59090c8cde..e07d01991ca 100644
+--- a/gcc/common/config/i386/cpuinfo.h
++++ b/gcc/common/config/i386/cpuinfo.h
+@@ -1112,16 +1112,6 @@ get_available_features (struct __processor_model *cpu_model,
+ 	}
+     }
+ 
+-  /* Get Advanced Features at level 0x21 (eax = 0x21).  */
+-  if (max_cpuid_level >= 0x21)
+-    {
+-      __cpuid (0x21, eax, ebx, ecx, edx);
+-      if (eax & bit_AVX512BMM)
+-	{
+-	  set_feature (FEATURE_AVX512BMM);
+-	}
+-    }
+-
+   /* Get Advanced Features at level 0x24 (eax = 0x24, ecx = 0).  */
+   if (avx10_set && max_cpuid_level >= 0x24)
+     {
+@@ -1196,9 +1186,9 @@ get_available_features (struct __processor_model *cpu_model,
+     {
+       __cpuid (0x80000021, eax, ebx, ecx, edx);
+       if (eax & bit_AMD_PREFETCHI)
+-	{
+-	  set_feature (FEATURE_PREFETCHI);
+-	}
++	set_feature (FEATURE_PREFETCHI);
++      if (eax & bit_AVX512BMM)
++	set_feature (FEATURE_AVX512BMM);
+     }
+ 
+ #undef set_feature
+diff --git a/gcc/config/i386/cpuid.h b/gcc/config/i386/cpuid.h
+index c48556afa6e..0b5e6cc99a0 100644
+--- a/gcc/config/i386/cpuid.h
++++ b/gcc/config/i386/cpuid.h
+@@ -75,6 +75,7 @@
+ /* Extended Features (%eax == 0x80000021) */
+ /* %eax */
+ #define bit_AMD_PREFETCHI (1 << 20)
++#define bit_AVX512BMM (1 << 23)
+ 
+ /* Extended Features Leaf (%eax == 7, %ecx == 0) */
+ /* %ebx */
+@@ -167,9 +168,6 @@
+ #define bit_AESKLE	( 1<<0 )
+ #define bit_WIDEKL	( 1<<2 )
+ 
+-/* Sub leaf (%eax == 0x21) */
+-#define bit_AVX512BMM	( 1<<23 )
+-
+ /* AMX sub leaf (%eax == 0x1e, %ecx == 1) */
+ /* %eax */
+ #define bit_AMX_FP8	(1 << 4)
+diff --git a/gcc/testsuite/gcc.target/i386/avx512bmm-check-1.c b/gcc/testsuite/gcc.target/i386/avx512bmm-check-1.c
+new file mode 100644
+index 00000000000..176b06eb09a
+--- /dev/null
++++ b/gcc/testsuite/gcc.target/i386/avx512bmm-check-1.c
+@@ -0,0 +1,6 @@
++/* { dg-do compile } */
++/* { dg-options "-O2 -march=znver6" } */
++
++#ifndef __AVX512BMM__
++# error AVX512BMM should be enabled for target znver6.
++#endif
+diff --git a/gcc/testsuite/gcc.target/i386/avx512bmm-check-2.c b/gcc/testsuite/gcc.target/i386/avx512bmm-check-2.c
+new file mode 100644
+index 00000000000..956ae2d2acb
+--- /dev/null
++++ b/gcc/testsuite/gcc.target/i386/avx512bmm-check-2.c
+@@ -0,0 +1,20 @@
++/* { dg-do run } */
++/* { dg-options "-O2 -march=native" } */
++
++int
++main ()
++{
++  if (__builtin_cpu_supports ("avx512bmm"))
++    {
++#ifndef __AVX512BMM__
++      __builtin_abort ();
++#endif
++    }
++  else
++    {
++#ifdef __AVX512BMM__
++      __builtin_abort ();
++#endif
++    }
++  return 0;
++}
+diff --git a/gcc/testsuite/gcc.target/i386/avx512bmm-check-3.c b/gcc/testsuite/gcc.target/i386/avx512bmm-check-3.c
+new file mode 100644
+index 00000000000..25ffeb8c87b
+--- /dev/null
++++ b/gcc/testsuite/gcc.target/i386/avx512bmm-check-3.c
+@@ -0,0 +1,6 @@
++/* { dg-do compile } */
++/* { dg-options "-O2 -march=native -mno-avx512bmm" } */
++
++#if defined(__ZNVER6__) && defined(__AVX512BMM__)
++# error AVX512BMM should be disabled for native detection of target znver6 with -mno-avx512bmm.
++#endif
+-- 
+2.51.0
+

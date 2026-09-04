@@ -1,0 +1,67 @@
+From 5e8bef95e4b4e3fc3fbf180405e26f9b3bdfe738 Mon Sep 17 00:00:00 2001
+From: Richard Biener <rguenther@suse.de>
+Date: Wed, 12 Aug 2026 15:58:39 -0400
+Subject: [PATCH] c++: do not hash TYPENAME_TYPEs on pointers [PR124811]
+To: gcc-patches@gcc.gnu.org
+
+From: Patrick Palka <ppalka@redhat.com>
+
+typename_htab is written to a precompiled header.  A hash table is
+streamed out slot array and all: gt_pch_nx() relocates the pointers
+inside the entries but leaves every entry in the slot it happened to
+occupy.  typename_hasher hashed on the addresses of the scope and the
+fullname, so the slots were chosen from addresses that ASLR randomises
+in the process writing the header, and they no longer correspond to the
+hash of anything once the header has been read back at a different
+address.
+
+Lookups then find a restored TYPENAME_TYPE only when it happens to lie
+on the probe sequence of the slot the new hash points at, so most miss
+and build a duplicate, and which ones miss depends on the layout the
+writing process had.  That makes a compile using a PCH differ from the
+same compile without one, and differ from itself between runs: the
+duplicates consume DECL_UIDs, every later DECL_UID shifts, and
+var-tracking hashes on DECL_UID, so .debug_loclists comes out different.
+
+Hash on TYPE_UID instead, which the header preserves, and use
+iterative_hash_template_arg to properly hash fullname which can be an
+arbitrary TEMPLATE_ID_EXPR.  (It's important to hash the fullname instead
+of just the name for sake of the PR c++/65328 compile-time-hog testcase.)
+
+	PR c++/124811
+
+gcc/cp/ChangeLog:
+
+	* decl.cc (typename_hasher::hash): Instead of pointer hashing,
+	hash TYPE_HASH of context and use iterative_hash_template_arg
+	to hash fullname.
+
+Co-authored-by: Bernhard M. Wiedemann <bwiedemann@suse.de>
+Reviewed-by: Jason Merrill <jason@redhat.com>
+(cherry picked from commit cc08be7bf549072bf3699a57d3d37222e8c1087d)
+---
+ gcc/cp/decl.cc | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/gcc/cp/decl.cc b/gcc/cp/decl.cc
+index 095cef2f2e5..d6164fead61 100644
+--- a/gcc/cp/decl.cc
++++ b/gcc/cp/decl.cc
+@@ -4925,8 +4925,12 @@ struct typename_hasher : ggc_ptr_hash<tree_node>
+   hash (tree context, tree fullname)
+   {
+     hashval_t hash = 0;
+-    hash = iterative_hash_object (context, hash);
+-    hash = iterative_hash_object (fullname, hash);
++    hash = iterative_hash_hashval_t (TYPE_HASH (context), hash);
++    /* FULLNAME could be a template-id, so use iterative_hash_template_arg here.
++       And might as well set comparing_specializations for stronger hashing.  */
++    ++comparing_specializations;
++    hash = iterative_hash_template_arg (fullname, hash);
++    --comparing_specializations;
+     return hash;
+   }
+ 
+-- 
+2.51.0
+

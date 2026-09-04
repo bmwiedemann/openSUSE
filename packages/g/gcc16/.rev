@@ -146,4 +146,19 @@ builds significantly due to switching to release checking.
     <comment>- Disable cross-x86_64-gcc build for SLFO</comment>
     <requestid>1370868</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>d1b57c5cc3d3ae5813a9a5ba1055e979</srcmd5>
+    <version>16.2.0+git9497</version>
+    <time>1788518273</time>
+    <user>anag_factory</user>
+    <comment>- Add gcc16-pr124811.patch to fix build reproducability when PCH
+  is used
+- Add gcc16-znver6-cpuid.patch to fix auto-detection of Zen6
+  [bsc#1277919]
+
+- Remove support for s390, make sure to configure s390x with
+  --disable-multilib to avoid configury error without explicit
+  disable of multilibs.  Support for s390 is officially deprecated.</comment>
+    <requestid>1375370</requestid>
+  </revision>
 </revisionlist>

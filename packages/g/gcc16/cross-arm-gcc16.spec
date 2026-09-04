@@ -99,7 +99,7 @@
 %endif
 
 Name:           %{pkgname}
-%define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
+%define biarch_targets x86_64 powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
 Version:        16.2.0+git9497
@@ -130,6 +130,9 @@ Patch51:        gcc41-ppc32-retaddr.patch
 # Some patches taken from Debian
 Patch60:        gcc44-textdomain.patch
 Patch61:        gcc44-rename-info-files.patch
+# Patches picked from upstream branch
+Patch100:       gcc16-pr124811.patch
+Patch101:       gcc16-znver6-cpuid.patch
 
 # Define the canonical target and host architecture
 #   %%gcc_target_arch  is supposed to be the full target triple
@@ -336,6 +339,7 @@ ln -s newlib-4.6.0.20260123/newlib .
 %patch -p1 -P 22
 %patch -P 51
 %patch -p1 -P 60 -P 61
+%patch -p1 -P 100 -P 101
 
 #test patching end
 
@@ -367,7 +371,7 @@ for flag in $RPM_OPT_FLAGS; do
     # default compiler settings now.
     -mcpu=i?86|-march=i?86|-mtune=i?86) ;;
 %endif
-%ifarch s390 s390x
+%ifarch s390x
     -fsigned-char) ;;
     -O1) add_flag=-O2 ;;
 %endif
@@ -556,7 +560,7 @@ amdgcn-amdhsa,\
 %endif
 %endif
 	--enable-linux-futex \
-%ifarch %ix86 x86_64 ppc ppc64 ppc64le %arm aarch64 s390 s390x %sparc
+%ifarch %ix86 x86_64 ppc ppc64 ppc64le %arm aarch64 s390x %sparc
 	--enable-gnu-indirect-function \
 %endif
 %ifarch %{disable_multilib_arch}
@@ -728,7 +732,7 @@ amdgcn-amdhsa,\
 %endif
 	--with-tune=generic \
 %endif
-%if "%{TARGET_ARCH}" == "s390" || "%{TARGET_ARCH}" == "s390x"
+%if "%{TARGET_ARCH}" == "s390x"
 %if %{suse_version} >= 1600 && !0%{?is_opensuse}
         --with-tune=z15 --with-arch=z14 \
 %else
