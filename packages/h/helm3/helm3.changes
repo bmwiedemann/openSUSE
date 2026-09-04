@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep  2 19:24:49 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update vendor.tar to fix
+  * bsc#1278270, CVE-2026-84303
+  * bsc#1278273, CVE-2026-84304
+  * bsc#1278688, CVE-2026-84445
+
+-------------------------------------------------------------------
 Tue Sep  1 19:58:25 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update vendor.tar to fix

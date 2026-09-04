@@ -231,4 +231,15 @@
   * go.opentelemetry.io/otel@v1.44.0 (bsc#1276644, CVE-2026-41178)</comment>
     <requestid>1375223</requestid>
   </revision>
+  <revision rev="23" vrev="8">
+    <srcmd5>46673fe804fd8a90bb0f0353852e655b</srcmd5>
+    <version>3.21.3</version>
+    <time>1788518353</time>
+    <user>anag_factory</user>
+    <comment>- update vendor.tar to fix
+  * bsc#1278270, CVE-2026-84303
+  * bsc#1278273, CVE-2026-84304
+  * bsc#1278688, CVE-2026-84445</comment>
+    <requestid>1375681</requestid>
+  </revision>
 </revisionlist>
