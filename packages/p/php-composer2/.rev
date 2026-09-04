@@ -559,4 +559,12 @@
     <comment>CVE-2026-59944, GHSA-96h3-5x6v-m776, GHSA-rvx4-ffvw-m9q3</comment>
     <requestid>1374350</requestid>
   </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>200467829a467bd54b9df5b41f2ef33b</srcmd5>
+    <version>2.10.3</version>
+    <time>1788518511</time>
+    <user>anag_factory</user>
+    <comment>[bsc#1278257], CVE-2026-84361</comment>
+    <requestid>1375615</requestid>
+  </revision>
 </revisionlist>

@@ -13,6 +13,7 @@ Fri Aug 28 11:02:52 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
       Composer processes in parallel (#12977)
   * Fixed forgejo support to handle empty repositories better (#12968)
   * Fixed FilterListApiClient not forwarding transport options (#13040)
+- fixes CVE-2026-84361 [bsc#1278257]
 
 -------------------------------------------------------------------
 Fri Jul 31 12:16:36 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
