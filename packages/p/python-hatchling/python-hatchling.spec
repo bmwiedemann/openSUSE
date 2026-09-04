@@ -24,7 +24,7 @@
 %{?pythons_for_pypi}
 %{?sle15_python_module_pythons}
 Name:           python-hatchling
-Version:        1.31.0
+Version:        1.32.0
 Release:        0
 Summary:        Build backend used by Hatch
 License:        MIT
@@ -36,12 +36,14 @@ BuildRequires:  %{python_module pathspec >= 0.10.1}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pluggy >= 1.0.0}
 BuildRequires:  %{python_module tomli >= 1.2.2 if %python-base < 3.11}
+BuildRequires:  %{python_module tomlkit >= 0.11.1}
 BuildRequires:  %{python_module trove-classifiers}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-packaging >= 21.3
 Requires:       python-pathspec >= 0.10.1
 Requires:       python-pluggy >= 1.0.0
+Requires:       python-tomlkit >= 0.11.1
 Requires:       python-trove-classifiers
 Requires:       (python-tomli >= 1.2.2 if python-base < 3.11)
 BuildArch:      noarch

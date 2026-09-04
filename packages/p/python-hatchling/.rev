@@ -341,4 +341,12 @@
     <comment></comment>
     <requestid>1364668</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>b4c8bec8fb2f1577826caf1e1b105358</srcmd5>
+    <version>1.32.0</version>
+    <time>1788518157</time>
+    <user>anag_factory</user>
+    <comment>https://build.opensuse.org/request/show/1375110 could fix the staging failure</comment>
+    <requestid>1375111</requestid>
+  </revision>
 </revisionlist>
