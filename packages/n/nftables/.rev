@@ -357,4 +357,12 @@
   backport the reproducible build feature.</comment>
     <requestid>1361758</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>80db2c20e1e72d789da931bc7f44d8a5</srcmd5>
+    <version>1.1.7</version>
+    <time>1788518187</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 1.1.7</comment>
+    <requestid>1375216</requestid>
+  </revision>
 </revisionlist>

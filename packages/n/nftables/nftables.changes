@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Sep  1 19:21:58 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.1.7
+  * Fix spurious EEXIST error when using the create element command
+    with large batches.
+  * Improve error reporting for syntax errors by printing expected
+    tokens.
+  * Set element support for multi-statements, e.g. counter + quota.
+  * Connlimit support with maps.
+  * Support for using bitmask datatypes as set key, e.g. tcp flags.
+- Delete support-reproducible-build.patch (merged)
+
+-------------------------------------------------------------------
 Thu Jun 25 10:39:03 UTC 2026 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - add support-reproducible-build.patch: this is a cherry pick of
