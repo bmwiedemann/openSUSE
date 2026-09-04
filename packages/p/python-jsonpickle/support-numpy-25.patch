@@ -1,0 +1,27 @@
+From eb27cf084a90e545c10f8a5435d7f17cf1d28ff9 Mon Sep 17 00:00:00 2001
+From: Theelx <43764914+Theelx@users.noreply.github.com>
+Date: Wed, 21 Jan 2026 17:01:24 -0500
+Subject: [PATCH 1/3] Fix pandas 3.0.0 errors and numpy deprecations
+
+Index: jsonpickle-4.1.2/tests/numpy_test.py
+===================================================================
+--- jsonpickle-4.1.2.orig/tests/numpy_test.py
++++ jsonpickle-4.1.2/tests/numpy_test.py
+@@ -104,7 +104,7 @@ def test_ndarray_roundtrip():
+         np.array(['foo', 'bar']),
+         np.array([b'baz']),
+         np.array(['2010', 'NaT', '2030']).astype('M'),
+-        np.rec.array(b'abcdefg' * 100, formats='i2,a3,i4', shape=3),
++        np.rec.array(b'abcdefg' * 100, formats='i2,S3,i4', shape=3),
+         np.rec.array(
+             [
+                 (1, 11, 'a'),
+@@ -115,7 +115,7 @@ def test_ndarray_roundtrip():
+                 (6, 66, 'f'),
+                 (7, 77, 'g'),
+             ],
+-            formats='u1,f4,a1',
++            formats='u1,f4,S1',
+         ),
+         np.array(['1960-03-12', datetime.date(1960, 3, 12)], dtype='M8[D]'),
+         np.array([0, 1, -1, np.inf, -np.inf, np.nan], dtype='f2'),

@@ -386,4 +386,13 @@
     <comment>- Skip two tests broken by Pandas 3 while we wait for 5.0.0 to release.</comment>
     <requestid>1367876</requestid>
   </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>b53d21599a2b34392ff60d5398bfe31a</srcmd5>
+    <version>4.1.2</version>
+    <time>1788518387</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-numpy-25.patch:
+  * Use non-removed string formats.</comment>
+    <requestid>1375504</requestid>
+  </revision>
 </revisionlist>

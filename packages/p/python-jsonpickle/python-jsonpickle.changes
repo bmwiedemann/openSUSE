@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep  3 04:14:52 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-numpy-25.patch:
+  * Use non-removed string formats.
+
+-------------------------------------------------------------------
 Mon Jul 27 05:19:51 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Skip two tests broken by Pandas 3 while we wait for 5.0.0 to release.

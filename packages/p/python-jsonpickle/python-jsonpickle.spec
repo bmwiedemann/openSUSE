@@ -27,6 +27,8 @@ Source:         https://files.pythonhosted.org/packages/source/j/jsonpickle/json
 Patch1:         enable_gmpy_test.patch
 # PATCH-FIX-OPENSUSE Increase warning counts for new warnings added with 4.1.2, remove with 5.0.0
 Patch2:         increase-warning-counts.patch
+# PATCH-FIX-UPSTREAM Based on one small part of gh#jsonpickle/jsonpickle#592
+Patch3:         support-numpy-25.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 61.2}
