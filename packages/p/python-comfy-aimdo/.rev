@@ -74,4 +74,28 @@ pin on comfyui-workflow-templates). Please stage the two together, or
 let 1373685 land first.</comment>
     <requestid>1373687</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a91cf38cf7fe4b94a06b92e560ccd4f9</srcmd5>
+    <version>0.5.0</version>
+    <time>1788518321</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.5.0.
+
+Upstream's &quot;memory compiler&quot; branch: a native CUDA malloc-graph recorder that
+replays an allocation trace instead of re-deciding it per step, plus VBAR
+eviction during CUDA graph capture.
+
+Python side is additive only - new comfy_aimdo.malloc_graph module and
+control.record(); every other module is byte-identical to 0.4.15 and no name
+was removed, so comfyui's &quot;&gt;= 0.4.15&quot; floor is unaffected. Both need the
+native allocator, which this build does not compile.
+
+0.5.0 ships a tests/ tree, but all 44 cases need a real CUDA device and the
+native aimdo.so, so %check stays the import/no-accelerator check, now also
+covering malloc_graph.
+
+Patch0 is still required (upstream PR #84 still open) and applies with no fuzz.
+</comment>
+    <requestid>1375418</requestid>
+  </revision>
 </revisionlist>

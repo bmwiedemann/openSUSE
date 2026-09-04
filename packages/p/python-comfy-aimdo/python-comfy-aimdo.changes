@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Sep  2 14:43:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.5.0:
+  * New "memory compiler": a native CUDA malloc-graph recorder that
+    replays an allocation trace instead of re-deciding it per step,
+    plus VBAR eviction during CUDA graph capture
+  * Adds the comfy_aimdo.malloc_graph module and control.record();
+    both need the native allocator, which this build does not compile
+  * Purely additive on the Python side -- no name was removed, and
+    every other module is byte-identical to 0.4.15, so consumers
+    pinning a >= floor are unaffected
+  * Ships a tests/ tree, but every case needs a CUDA device, so
+    %check stays the import/no-accelerator check
+- Extend %check to import the new comfy_aimdo.malloc_graph module
+
+-------------------------------------------------------------------
 Tue Aug 25 16:59:43 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.4.15:
