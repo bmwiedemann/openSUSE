@@ -932,4 +932,13 @@ last submission had wrong tar ball for unknown reason</comment>
   * Use a wider-scoped wildcard for ignoring Debian special files</comment>
     <requestid>1375301</requestid>
   </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>2c5425f375fdfd1cf0842f332ffa6dee</srcmd5>
+    <version>0.47+1</version>
+    <time>1788518483</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.47+1:
+  * Allow AGENTS.md in checkouts</comment>
+    <requestid>1375606</requestid>
+  </revision>
 </revisionlist>
