@@ -27,6 +27,7 @@ Group:          Development/Tools/IDE
 URL:            https://github.com/MaskRay/ccls
 Source0:        %{URL}/archive/%{version}/%{name}-%{version}.tar.gz
 Patch1:         fix-llvm22-build.patch
+Patch2:         fix-llvm23-build.patch
 BuildRequires:  clang-devel >= 10
 BuildRequires:  cmake >= 3.8
 BuildRequires:  llvm-devel >= 10

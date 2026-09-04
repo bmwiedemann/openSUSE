@@ -256,4 +256,13 @@
 </comment>
     <requestid>1349440</requestid>
   </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>37bcdb743b994af7058eaf827ccfbf24</srcmd5>
+    <version>0.20250815.1</version>
+    <time>1788518603</time>
+    <user>anag_factory</user>
+    <comment>- Add fix-llvm23-build.patch to fix build with LLVM 23.
+</comment>
+    <requestid>1375697</requestid>
+  </revision>
 </revisionlist>

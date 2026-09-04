@@ -1,0 +1,57 @@
+From e74892376d8a280c5ee99c19cb2349e6ca834bad Mon Sep 17 00:00:00 2001
+From: Fangrui Song <i@maskray.me>
+Date: Mon, 27 Apr 2026 23:51:13 -0700
+Subject: [PATCH] Adapt llvm 23 changes
+
+USRGeneration is moved from clangIndex to a new clangUnifiedSymbolResolution
+library by llvmorg-22-init-27296-g65cb738ff419.
+
+PrintingPolicy::AnonymousTagLocations is replaced with AnonymousTagNameStyle
+(an AnonymousTagMode enum bitfield) by llvmorg-22-init-25026-gf5f8435605ba.
+---
+ CMakeLists.txt | 3 +++
+ src/indexer.cc | 8 ++++++++
+ 2 files changed, 11 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index af9bcc1a3..67be5f603 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -89,6 +89,9 @@ else()
+     clangDriver
+     clangBasic
+   )
++  if(LLVM_VERSION_MAJOR GREATER_EQUAL 23) # llvmorg-22-init-27296-g65cb738ff419
++    target_link_libraries(ccls PRIVATE clangUnifiedSymbolResolution)
++  endif()
+ endif()
+ 
+ if(LLVM_LINK_LLVM_DYLIB)
+diff --git a/src/indexer.cc b/src/indexer.cc
+index bd4da48db..b22ef9c58 100644
+--- a/src/indexer.cc
++++ b/src/indexer.cc
+@@ -15,7 +15,11 @@
+ #include <clang/Frontend/MultiplexConsumer.h>
+ #include <clang/Index/IndexDataConsumer.h>
+ #include <clang/Index/IndexingAction.h>
++#if LLVM_VERSION_MAJOR >= 23 // llvmorg-22-init-27296-g65cb738ff419
++#include <clang/UnifiedSymbolResolution/USRGeneration.h>
++#else
+ #include <clang/Index/USRGeneration.h>
++#endif
+ #include <clang/Lex/PreprocessorOptions.h>
+ #include <llvm/ADT/DenseSet.h>
+ #include <llvm/Support/CrashRecoveryContext.h>
+@@ -506,7 +510,11 @@ class IndexDataConsumer : public index::IndexDataConsumer {
+ 
+   PrintingPolicy getDefaultPolicy() const {
+     PrintingPolicy pp(ctx->getLangOpts());
++#if LLVM_VERSION_MAJOR >= 23 // llvmorg-22-init-25026-gf5f8435605ba
++    pp.AnonymousTagNameStyle = static_cast<unsigned>(PrintingPolicy::AnonymousTagMode::Plain);
++#else
+     pp.AnonymousTagLocations = false;
++#endif
+     pp.TerseOutput = true;
+     pp.PolishForDeclaration = true;
+     pp.ConstantsAsWritten = true;
