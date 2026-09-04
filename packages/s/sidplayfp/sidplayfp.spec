@@ -18,7 +18,7 @@
 
 
 Name:           sidplayfp
-Version:        3.1.0
+Version:        3.2.0
 Release:        0
 Summary:        SID chip music module player
 License:        GPL-2.0-or-later
@@ -28,9 +28,9 @@ URL:            https://sourceforge.net/projects/sidplay-residfp/
 Source0:        https://github.com/libsidplayfp/sidplayfp/releases/download/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(fmt)
 BuildRequires:  pkgconfig(libsidplayfp) >= 2.0
 BuildRequires:  pkgconfig(libstilview)
-Provides:       bundled(fmt)
 Provides:       bundled(ghc_filesystem)
 Provides:       bundled(miniaudio)
 
