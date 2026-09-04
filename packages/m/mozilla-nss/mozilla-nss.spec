@@ -40,9 +40,9 @@
 %define origname mozilla-nss
 
 Name:           %{origname}%{psuffix}
-Version:        3.126.1
+Version:        3.127
 Release:        0
-%define underscore_version 3_126_1
+%define underscore_version 3_127
 Summary:        Network Security Services
 License:        MPL-2.0
 Group:          System/Libraries
