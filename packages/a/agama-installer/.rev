@@ -722,4 +722,12 @@
  - Fix multiple IP/route assignments in multi-bond setups with</comment>
     <requestid>1371748</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>3e4e659970dbe389fbe00fcbc4321b34</srcmd5>
+    <version>24.0.0</version>
+    <time>1788518166</time>
+    <user>anag_factory</user>
+    <comment>Automatic update from systemsmanagement:Agama:Release</comment>
+    <requestid>1375355</requestid>
+  </revision>
 </revisionlist>

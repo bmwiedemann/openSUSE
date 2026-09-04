@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Sep  1 15:51:10 UTC 2026 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Version 24
+
+-------------------------------------------------------------------
+Mon Aug 31 12:55:59 UTC 2026 - Martin Vidner <mvidner@suse.com>
+
+- Remove agama-integration-tests, keep just nodejs(engine)
+  (gh#agama-project/agama#3852)
+
+-------------------------------------------------------------------
+Fri Aug 28 15:31:19 UTC 2026 - Ladislav Slezák <lslezak@suse.com>
+
+- Added Kiwi profile definition for the SLES for NVIDIA product,
+  use kernel-nvidia instead of kernel-default, disable self-update
+  for it (jsc#PED-16833)
+
+-------------------------------------------------------------------
+Tue Aug 25 10:12:59 UTC 2026 - Ladislav Slezák <lslezak@suse.com>
+
+- Omit the "multipath" dracut module from the initrd, it might
+  freeze during the boot process. In 16.0 it was omitted
+  automatically by Kiwi, but that hardcoded omit list has been
+  removed and now we need to omit the dracut module explicitly
+  here. (bsc#1274053, bsc#1271407)
+
+-------------------------------------------------------------------
+Tue Aug 18 12:58:28 UTC 2026 - Steffen Winterfeldt <snwint@suse.com>
+
+- remove ppc64 hacks from boot config scripts (gh#agama-project/agama#3826)
+
+-------------------------------------------------------------------
 Mon Aug 17 09:30:00 UTC 2026 - Knut Anderssen <kanderssen@suse.com>
 
 - HCN: do not collect data from functions that log. dracut's
