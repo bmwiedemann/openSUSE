@@ -4027,6 +4027,7 @@ unsorted:
   - fake-hwclock 
   - fakechroot 
   - fakeroot 
+  - fakeroot-32bit 
   - falco-libs-devel 
   - falcoctl 
   - falcoctl-bash-completion 
