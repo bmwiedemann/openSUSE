@@ -132,4 +132,23 @@ repo layering the prepared boto3/botocore 1.43.72 over Tumbleweed;
 - Follow upstream and raise the langchain-core floor to &gt;= 1.6.0</comment>
     <requestid>1373868</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>722244aeeddd1908671e74574ec841e7</srcmd5>
+    <version>1.7.5</version>
+    <time>1788518445</time>
+    <user>anag_factory</user>
+    <comment>python-langchain-aws 1.7.5
+
+- ChatBedrockConverse: xAI Grok streaming + any/tool tool_choice
+- ChatBedrock: explicit temperature 0 kept in tracing metadata
+- ChatAnthropicMantle: new auth_mode (auto/api_key/sigv4)
+- BedrockPromptCachingMiddleware omits its inputs from traces
+- ChatBedrockNovaSonic on aws-sdk-bedrock-runtime &gt;= 0.10 (nova-sonic
+  extra, not packaged)
+- Refreshed bundled Bedrock model profile data
+
+No runtime dependency floor changes. Built native aarch64: 611 tests
+passed per flavour (py313/py314), rpmlint 0 badness.</comment>
+    <requestid>1375576</requestid>
+  </revision>
 </revisionlist>

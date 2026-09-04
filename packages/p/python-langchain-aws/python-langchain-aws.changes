@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Sep  3 08:52:17 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.7.5:
+  * ChatBedrockConverse now streams xAI Grok models and accepts
+    the any/tool tool_choice values on them
+  * Keep an explicit temperature of 0 in ChatBedrock tracing
+    metadata instead of dropping it as falsy
+  * ChatAnthropicMantle gained auth_mode (auto/api_key/sigv4) to
+    force the credential source, and now also reads the bearer
+    key from ANTHROPIC_AWS_API_KEY
+  * BedrockPromptCachingMiddleware omits its inputs from traces
+  * ChatBedrockNovaSonic moved to the async client of
+    aws-sdk-bedrock-runtime >= 0.10, which also pulls in
+    smithy-http[awscrt]; both nova-sonic extra only, not in Factory
+  * Refreshed the bundled Bedrock model profile data
+
+-------------------------------------------------------------------
 Wed Aug 26 17:55:37 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.7.4:
