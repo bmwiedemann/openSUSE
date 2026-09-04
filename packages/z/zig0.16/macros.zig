@@ -4,7 +4,7 @@
 %__zig %{_bindir}/zig
 
 # expected features for each arch when targeting baseline
-# found in https://github.com/ziglang/zig/tree/master/lib/std/target
+# found in https://codeberg.org/ziglang/zig/src/branch/master/lib/std/Target
 #
 # aarch64:
 #   ete, fuse_aes, neon, perfmon, use_postra_scheduler,

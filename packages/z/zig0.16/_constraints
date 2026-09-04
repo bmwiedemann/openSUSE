@@ -11,8 +11,23 @@
       <size unit="G">8</size>
     </memory>
   </hardware>
+  <!--
+    The test flavour repeats the whole compile and then runs the behaviour suite on top,
+    so give it headroom above the 10.8G max_rss that bump_max_rss.patch sets for the
+    stage3 step in zig's own build.zig.
+  -->
   <overwrite>
-    <!-- 
+    <conditions>
+      <package>zig0.16:test</package>
+    </conditions>
+    <hardware>
+      <memory>
+        <size unit="G">12</size>
+      </memory>
+    </hardware>
+  </overwrite>
+  <overwrite>
+    <!--
       We have disabled debuginfo on 32 bit architecture because they simply can no address enough memory to link llvm libraries with it.
       Without debuginfo the disk and memory requirements are much lower.
     -->

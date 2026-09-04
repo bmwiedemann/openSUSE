@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Aug 14 12:21:21 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix the aarch64 build failure: lld21 ships no unversioned
+  /usr/bin/ld.lld, so CMAKE_LINKER_TYPE=LLD emitted a "-fuse-ld=lld"
+  that clang-21 rejected. Declare a custom CMake linker type naming
+  ld.lld-21 instead (boo#1193892); x86_64 takes the mold path and was
+  unaffected
+- Add 0003-link-Elf-support-R_X86_64_PC64.patch: upstream fix teaching
+  zig's ELF linker the R_X86_64_PC64 relocation
+- Run the test suite for the first time: "%if 0%{?with test}" is
+  always false, so %check had never executed. Run it in a new
+  _multibuild "test" flavour rather than inline, so a suite that has
+  never run cannot block the packages that build against zig. The
+  flavour requests 12G in _constraints
+- Generate and ship the rendered language reference; the CMake build
+  hardcodes -Dno-langref, which is why upstream exposes a standalone
+  langref step
+- Give zig-libs0.16 its own License tag and ship the licence texts of
+  the code it bundles; plain MIT was materially incomplete
+- Add PATCH-FIX-* headers to all patches
+
+-------------------------------------------------------------------
 Mon Jun  8 00:49:30 UTC 2026 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Keep a local copy of skip-localhost-test.patch

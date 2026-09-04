@@ -1,0 +1,30 @@
+From 9df02121d0d87c17173f79d55692bed9cb65722c Mon Sep 17 00:00:00 2001
+From: rpkak <rpkak@noreply.codeberg.org>
+Date: Wed, 22 Apr 2026 09:18:52 +0200
+Subject: [PATCH] link.Elf: support R_X86_64_PC64
+
+---
+ src/link/Elf/Atom.zig | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/link/Elf/Atom.zig b/src/link/Elf/Atom.zig
+index dc545bb75b..7f34383f35 100644
+--- a/src/link/Elf/Atom.zig
++++ b/src/link/Elf/Atom.zig
+@@ -983,7 +983,7 @@ const x86_64 = struct {
+                 }
+             },
+ 
+-            .PC32 => {
++            .PC32, .PC64 => {
+                 try atom.scanReloc(symbol, rel, pcRelocAction(symbol, elf_file), elf_file);
+             },
+ 
+@@ -1083,6 +1083,7 @@ const x86_64 = struct {
+ 
+             .PLT32 => mem.writeInt(i32, code[r_offset..][0..4], @as(i32, @intCast(S + A - P)), .little),
+             .PC32 => mem.writeInt(i32, code[r_offset..][0..4], @as(i32, @intCast(S + A - P)), .little),
++            .PC64 => mem.writeInt(i64, code[r_offset..][0..8], S + A - P, .little),
+ 
+             .GOTPCREL => mem.writeInt(i32, code[r_offset..][0..4], @as(i32, @intCast(G + GOT + A - P)), .little),
+             .GOTPC32 => mem.writeInt(i32, code[r_offset..][0..4], @as(i32, @intCast(GOT + A - P)), .little),

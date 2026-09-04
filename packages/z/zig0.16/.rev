@@ -7,4 +7,12 @@
     <comment>add zig0.16 versioned package to factory.</comment>
     <requestid>1357820</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9b0bbac995af0f5b9640df8f27fa90ac</srcmd5>
+    <version>0.16.0</version>
+    <time>1788518356</time>
+    <user>anag_factory</user>
+    <comment>@dimstar please see 1371239 for the details</comment>
+    <requestid>1375487</requestid>
+  </revision>
 </revisionlist>
