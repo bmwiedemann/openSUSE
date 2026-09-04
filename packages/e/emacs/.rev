@@ -2422,4 +2422,12 @@ Now one could consider building emacs with gsettings support (both debian and fe
   * 'speedbar-window' now run 'speedbar-before-delete-hook'</comment>
     <requestid>1374832</requestid>
   </revision>
+  <revision rev="224" vrev="3">
+    <srcmd5>84be403d44796ef331d431580755956a</srcmd5>
+    <version>31.1</version>
+    <time>1788518193</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1375534</requestid>
+  </revision>
 </revisionlist>

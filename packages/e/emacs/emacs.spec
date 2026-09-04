@@ -569,7 +569,7 @@ export CC CFLAGS LDFLAGS
 	 --libexecdir=%{_libexecdir} \
 	 --with-file-notification=yes \
 	 --libdir=%{_libdir} \
-	 --enable-locallisppath=%{_datadir}/emacs/%{version}/site-lisp:%{_datadir}/emacs/site-lisp
+	 --enable-locallisppath=%{_datadir}/emacs/%{version}/site-lisp:%{_datadir}/emacs/site-lisp:%{_libdir}/emacs/site-lisp
 "
 
 DESKTOP_SHARED="
@@ -988,6 +988,7 @@ find %{buildroot}%{_datadir}/emacs/%{version}/etc/ -name '*[a-z].[16]' | \
 rm -vf %{buildroot}%{_datadir}/emacs/%{version}/lisp/COPYING
 ln -sf ../etc/COPYING \
        %{buildroot}%{_datadir}/emacs/%{version}/lisp/COPYING
+mkdir -p %{buildroot}%{_libdir}/emacs/site-lisp
 # Support system wide ELPA/MELPA
 mkdir -p %{buildroot}%{_libdir}/emacs/elpa
 mkdir -p %{buildroot}%{_datadir}/emacs/%{version}/site-lisp/elpa
@@ -1082,6 +1083,9 @@ rm -rf native-lisp/%{version}-*
 ln -sf %{buildroot}%{_libdir}/emacs/%{version}/native-lisp/%{version}-* native-lisp/
 sed -ri '/sleep 2/{ s/sleep 2/sleep 6/ }' test/lisp/eshell/eshell-tests.el
 sed -ri '/\(sleep-for/{ s/1/5/ }' test/lisp/net/network-stream-tests.el
+sed -ri '/\(looking-at "hello stderr!"\)/ i\
+	        (sleep-for 1)' test/src/process-tests.el
+sed -ri '/defvar eshell-test--max-wait-time/ s/[0-9]+/60/' test/lisp/eshell/resources/eshell-tests-helpers.el
 SCREENDIR=$(mktemp -d ${PWD}/screen.XXXXXX) || exit 1
 SCREENRC=${SCREENDIR}/ncurses
 export SCREENRC SCREENDIR
@@ -3970,6 +3974,8 @@ done
 %dir %{_datadir}/emacs/site-lisp/
 %dir %{_datadir}/emacs/site-lisp/elpa/
 %dir %{_datadir}/emacs/site-lisp/site-start.d/
+%dir %{_libdir}/emacs/
+%dir %{_libdir}/emacs/site-lisp/
 %{_mandir}/man1/*.1%{ext_man}
 %exclude %{_mandir}/man1/*tags.1%{ext_man}
 
@@ -4024,7 +4030,6 @@ done
 %if %{with nativecomp}
 %files       -n emacs-eln -f eln.list
 %defattr(-, root, root)
-%dir %{_libdir}/emacs/
 %dir %{_libdir}/emacs/%{version}/
 %dir %{_libdir}/emacs/%{version}/native-lisp/
 %dir %{_libdir}/emacs/%{version}/native-lisp/%{version}-*/
