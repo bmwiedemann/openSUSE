@@ -7,4 +7,12 @@
     <comment>Conflict with the old cups-filters and cups-filters-devel version 1.x RPMs</comment>
     <requestid>1280576</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9785ed23b914ce74e1ef266d7258df48</srcmd5>
+    <version>2.1.1</version>
+    <time>1788518409</time>
+    <user>anag_factory</user>
+    <comment>Fixes for CVE-2026-64611 bsc#1273145 and CVE-2026-64612 bsc#1273146 (forwarded request 1375547 from jsmeix)</comment>
+    <requestid>1375548</requestid>
+  </revision>
 </revisionlist>

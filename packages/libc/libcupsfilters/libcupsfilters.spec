@@ -26,6 +26,23 @@ Release:        0
 # To get Source0 go to https://github.com/OpenPrinting/libcupsfilters/releases and use e.g.
 # wget https://github.com/OpenPrinting/libcupsfilters/releases/download/2.1.1/libcupsfilters-2.1.1.tar.gz
 Source0:        libcupsfilters-%{version}.tar.gz
+# Patch100 libcupsfilters-2.1.1-CVE-2026-64612.patch is based on
+# https://github.com/OpenPrinting/libcupsfilters/commit/e8888af31419
+# backported to libcupsfilters 2.1.1 to fix CVE-2026-64612
+# "Malformed PNG aborts CUPS image filter process (missing libpng setjmp recovery)"
+# https://github.com/OpenPrinting/libcupsfilters/security/advisories/GHSA-7mxj-cfq5-84ch
+# "authenticated client that can submit an image print job can abort the CUPS filter process by supplying a malformed PNG"
+# https://bugzilla.suse.com/show_bug.cgi?id=1273146
+Patch100:       libcupsfilters-2.1.1-CVE-2026-64612.patch
+# Patch111 libcupsfilters-2.1.1-CVE-2026-64611.patch is based on
+# https://github.com/OpenPrinting/libcupsfilters/commit/4b343522823403df01f6753082df83f07d18c217
+# backported to libcupsfilters 2.1.1 to fix CVE-2026-64611
+# "Infinite-loop CPU-exhaustion DoS in cfIEEE1284NormalizeMakeModel on empty MDL field"
+# https://github.com/OpenPrinting/libcupsfilters/security/advisories/GHSA-rcq7-rv5g-j3r4
+# "user who controls an IEEE-1284 device ID consumed by `cfIEEE1284GetMakeModel` can drive `cfIEEE1284NormalizeMakeModel` into an infinite loop"
+# https://bugzilla.suse.com/show_bug.cgi?id=1273145
+Patch111:       libcupsfilters-2.1.1-CVE-2026-64611.patch
+# Build Requirements:
 BuildRequires:  cups-devel >= 2.2.2
 BuildRequires:  ghostscript-devel >= 10.0.0
 BuildRequires:  qpdf-devel >= 10.3.2
