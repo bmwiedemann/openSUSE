@@ -19,31 +19,33 @@
 %define skip_python36 1
 %{?sle15_python_module_pythons}
 Name:           python-pydata-sphinx-theme
-Version:        0.19.0
+Version:        0.21.0
 Release:        0
 Summary:        Bootstrap-based Sphinx theme from the PyData community
 License:        BSD-3-Clause
 URL:            https://github.com/pydata/pydata-sphinx-theme
 Source:         https://files.pythonhosted.org/packages/source/p/pydata-sphinx-theme/pydata_sphinx_theme-%{version}.tar.gz#/pydata-sphinx-theme-%{version}.tar.gz
-# Source1 and Source2 created with ./prepare_vendor.sh
-Source1:        python-pydata-sphinx-theme-%{version}-vendor.tar.xz
-Source2:        python-pydata-sphinx-theme-%{version}-vendor-licenses.txt
-Source99:       prepare_vendor.sh
+# package-lock.json file generated with command:
+# npm install --package-lock-only --legacy-peer-deps --ignore-scripts
+Source1:        package-lock.json
+# node_modules generated using "osc service mr" with the https://github.com/openSUSE/obs-service-node_modules
+Source2:        node_modules.spec.inc
+%include        %{_sourcedir}/node_modules.spec.inc
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sphinx-theme-builder}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  local-npm-registry
 BuildRequires:  python-rpm-macros
 Requires:       python-Babel
+Requires:       python-Jinja2
 Requires:       python-Sphinx
 Requires:       python-accessible-pygments
 Requires:       python-beautifulsoup4
 Requires:       python-docutils
-Requires:       python-packaging
 Requires:       python-pygments
-Requires:       python-sphinx-theme-builder
-Requires:       python-typing_extensions
+Requires:       python-requests
 Suggests:       python-beautifulsoup4
 Suggests:       python-codecov
 Suggests:       python-docutils
@@ -63,10 +65,8 @@ BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module accessible-pygments}
 BuildRequires:  %{python_module beautifulsoup4}
 BuildRequires:  %{python_module docutils}
-BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pytest-regressions}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module typing_extensions}
 BuildRequires:  nodejs-default
 BuildRequires:  nodejs-devel
 BuildRequires:  nodejs-packaging
@@ -79,21 +79,14 @@ BuildRequires:  yarn
 Bootstrap-based Sphinx theme from the PyData community
 
 %prep
-%autosetup -p1 -n pydata_sphinx_theme-%{version} -a1
+%autosetup -p1 -n pydata_sphinx_theme-%{version}
 sed -i 's,^\(node-version = \)".*",\1"%{nodejs_version}",' pyproject.toml
-
-# Create a node header tarball so we don't try to download it
-mkdir -p node-v%{nodejs_version}/include
-cp -a %{_includedir}/node* node-v%{nodejs_version}/include/node
-tar czf node-v%{nodejs_version}-headers.tar.gz node-v%{nodejs_version}
-echo "tarball=\"$PWD/node-v%{nodejs_version}-headers.tar.gz\"" > .npmrc
+local-npm-registry %{_sourcedir} install --include=dev --include=peer
 
 %build
 export STB_USE_SYSTEM_NODE=1
 export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=1
-export YARN_CACHE_FOLDER="$PWD/.package-cache"
 export NODE_OPTIONS=--openssl-legacy-provider
-yarn install --offline
 
 # nodeenv generated with python3, no need to generate a different
 # nodeenv for each flavor

@@ -909,4 +909,38 @@
   * revendor the vendored tarball with updated versions</comment>
     <requestid>1362630</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f586d3747c86c91574236ce5ebadd92f</srcmd5>
+    <version>0.21.0</version>
+    <time>1788518450</time>
+    <user>anag_factory</user>
+    <comment>- Change js vendoring to use node_modules obs service instead of a
+  custom script
+- Update to 0.21.0
+  # Breaking
+  - None.
+  # Fixes
+  - Fix navbar rendering for special pages in toctree
+  - Fix empty search page when search_as_you_type and dirhtml is used
+  - Tox run a11y-tests correctly defaults to chromium ; add doc to run a single test.
+  - fix: correct typo in source
+  - fix: don't share sidebars between pages with non-flat output URIs
+  - Prevent &quot;Back to Top&quot; button from being cropped on firefox/android
+  # Improvements
+  - Add helper release script to bump version
+  - Add GALACTIC documentation link to gallery
+  - Avoid redundant processing when collapse_navigation=False
+  - refactor: drop user-select rule superseded by Sphinx's basic.css
+- 0.20.0
+  # Breaking
+  - Drop Sphinx &lt;= 8.1, Python &lt;= 3.10
+  # Fixes
+  - Fix relative json_url on home page when using dirhtml builder
+  - Fix content of sidebar shifting vertically on page load
+  - Fix broken link in our example gallery and replace it with another one
+  # Internal tooling
+  - Unpin internal actions
+  - Fix incorrect tox env name in prerelease docs build step</comment>
+    <requestid>1375595</requestid>
+  </revision>
 </revisionlist>
