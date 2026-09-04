@@ -1114,4 +1114,12 @@
  - Add an action to &quot;probe&quot; the software service (gh#agama-project/agama#3341).</comment>
     <requestid>1371744</requestid>
   </revision>
+  <revision rev="54" vrev="54">
+    <srcmd5>9b9b279ac73535e5ddb2d6e704ebc7d5</srcmd5>
+    <version>0</version>
+    <time>1788518162</time>
+    <user>anag_factory</user>
+    <comment>Automatic update from systemsmanagement:Agama:Release</comment>
+    <requestid>1375351</requestid>
+  </revision>
 </revisionlist>
