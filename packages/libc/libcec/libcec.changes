@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Sep  3 08:46:58 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 8.1.7:
+  * A power toggle from the TV no longer suspends the device as the
+    TV switches to it - a toggle only means off while this device
+    is the active source, and the wake-up toggle is not handed to
+    the client as a power key
+  * cecc-client --help and --list-devices are implemented; both
+    parsed their option and then printed nothing
+  * RPi backend (not built here): VideoCore callbacks run on a
+    thread libCEC sizes itself instead of VideoCore's 4KiB one, bus
+    changes are reported off the callback dispatch thread, and the
+    host teardown on close was inverted
+  * AMD ADL headers replaced by AMD's MIT-licensed GPUOpen release;
+    the old ones granted no redistribution permission. Declarations
+    only, no MIT code in the binaries, so License is unchanged
+
+-------------------------------------------------------------------
 Sat Aug  8 04:57:47 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 8.1.6:

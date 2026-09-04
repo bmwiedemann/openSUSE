@@ -218,4 +218,21 @@ changes.</comment>
     <comment>Update to version 8.1.6 (8.1.5 + 8.1.6): SendPlay() in every binding and as a cec-client play command, Open() without a port picks the first usable adapter, three physical-address regressions fixed. soname unchanged (libcec.so.8). Built and verified on aarch64 (openSUSE_Factory_ARM): rpmlint 0 errors / 5 warnings / 0 badness - byte-identical to the 8.1.4 baseline in hardware - source_validator clean.</comment>
     <requestid>1370304</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>89766af3044c1e09714a97e4c5e303ba</srcmd5>
+    <version>8.1.7</version>
+    <time>1788518447</time>
+    <user>anag_factory</user>
+    <comment>Update libcec to 8.1.7
+
+- power toggle from the TV no longer suspends the device as the TV switches to it
+- cecc-client --help and --list-devices implemented (were silent no-ops)
+- RPi VideoCore threading/teardown fixes (backend not built here)
+- AMD ADL headers replaced by AMD's MIT-licensed GPUOpen release
+
+No patches, SOVERSION stays 8. The only spec change beyond the version bump is a
+Legal-Review-Notice: the new AMD MIT/Expat headers are declarations only, compiled
+into libcec.so but shipped in no runtime RPM, so License stays GPL-2.0-or-later.</comment>
+    <requestid>1375587</requestid>
+  </revision>
 </revisionlist>

@@ -21,9 +21,13 @@
 %define libname	%{name}%{sover}
 %bcond_with enable_rpi_build
 Name:           libcec
-Version:        8.1.6
+Version:        8.1.7
 Release:        0
 Summary:        Library to control devices with TV remote control via HDMI
+# Legal-Review-Notice: src/libcec/platform/adl/adl_{defines,sdk,structures}.h
+# are AMD's MIT/Expat headers, new in 8.1.7 (licenses/components.json,
+# LICENSE.md). Declarations only - compiled into libcec.so, installed in no
+# runtime RPM (debugsource aside), so the tag stays GPL-2.0-or-later.
 License:        GPL-2.0-or-later
 URL:            https://github.com/Pulse-Eight/libcec
 Source:         https://github.com/Pulse-Eight/libcec/archive/libcec-%{version}.tar.gz
