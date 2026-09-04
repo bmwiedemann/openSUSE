@@ -682,6 +682,13 @@ Patch219:       migrate-rest_tornado-saltnado-tests-to-pytest-774.patch
 # PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/778
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/68946
 Patch220:       honor-proxy-settings-in-gitfs-git_pillar-and-winrepo.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/777
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/68456
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/commit/64aae7bff10cbfa48c352a4a40b31b941e47f689
+Patch221:       fix-file-handlers-leaking-on-using-syncwrapper-bsc-1.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/779
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/70172
+Patch222:       fix-test_tcp-for-pytest-8-779.patch
 
 ### IMPORTANT: The line below is used as a snippet marker. Do not touch it.
 ### SALT PATCHES LIST END

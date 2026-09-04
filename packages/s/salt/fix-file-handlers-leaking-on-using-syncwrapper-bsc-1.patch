@@ -1,0 +1,331 @@
+From 016cbde7805a4aadee1c3bbe72fb453e750deea7 Mon Sep 17 00:00:00 2001
+From: Victor Zhestkov <vzhestkov@suse.com>
+Date: Tue, 1 Sep 2026 10:01:31 +0200
+Subject: [PATCH] Fix file handlers leaking on using SyncWrapper
+ (bsc#1272939) (#777)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+* fix: descriptor leaking in salt.utils.http.query
+
+* chore: add tests
+
+* Guard SyncWrapper teardown against leaking shutdown_* coroutines
+
+Root cause of "RuntimeWarning: coroutine 'BaseEventLoop.shutdown_asyncgens'
+was never awaited" on Python 3.14 / Windows in the batch CLI tests:
+
+  loop.run_until_complete(loop.shutdown_asyncgens())
+
+evaluates the inner argument FIRST -- creating the
+``shutdown_asyncgens`` coroutine object -- and only THEN runs
+``run_until_complete`` which calls ``_check_closed()`` /
+``_check_running()``.  If either check raises (the loop has already
+been closed or is already running for some other reason), the
+``RuntimeError`` propagates before ``ensure_future`` can wrap the
+coroutine into a Task, the bare coroutine object is orphaned, and
+``coroutine.__del__`` emits the warning when the GC reaps it.  On
+Python 3.14 / Windows that happens to land while the outer loop's
+``_ready.clear()`` is mid-flight, which is what put
+``self._ready.clear()`` in the warning's traceback in the failing
+``test_batch_retcode`` / ``test_multiple_modules_in_batch`` jobs.
+
+Same trap for ``shutdown_default_executor`` and for the
+``asyncio.gather(...)`` over cancelled pending tasks.
+
+Fix:
+
+* New ``SyncWrapper._loop_can_run_until_complete(loop)`` helper —
+  ``True`` iff ``loop is not None and not loop.is_closed() and not
+  loop.is_running()``.  Anything that can't be driven to completion
+  is gated out before the coroutine is ever constructed.
+
+* In ``SyncWrapper.close``, gate every ``run_until_complete`` call
+  through that helper.  As a belt-and-braces, on the ``except`` arm
+  explicitly ``.close()`` the (now-orphaned) coroutine so even a
+  loop-state race between the guard and the call can't leak.
+
+Replaces the previous ``asyncio.sleep(0)`` drain workaround
+introduced in commit d3bfd533e50, which only papered over the leak
+by giving the GC more wallclock to run the scheduled-but-unawaited
+coroutines before ``close()`` cleared them.
+
+Acceptance bar (Linux Py3.10):
+
+  python -W error::RuntimeWarning -X dev -m pytest \
+    tests/pytests/integration/cli/test_batch.py::test_batch_retcode \
+    --core-tests -xvs
+
+PASSES.  Full sweep (9 integration + 74 unit batch tests +
+``test_fd_leak_asyncgens_executor.py`` +
+``test_fd_leak_task_cancellation.py``) under the same flags: 85
+passed, 0 failed.
+
+---------
+
+Co-authored-by: Vitaliy Vasylenko <me@vitalvas.com>
+Co-authored-by: Daniel A. Wozniak <dan.woz@gmail.com>
+---
+ salt/utils/asynchronous.py            |  84 +++++++++++++++++++-
+ salt/utils/http.py                    |  11 ++-
+ tests/pytests/unit/utils/test_http.py | 109 ++++++++++++++++++++++++++
+ 3 files changed, 198 insertions(+), 6 deletions(-)
+
+diff --git a/salt/utils/asynchronous.py b/salt/utils/asynchronous.py
+index 403b2dbdc30..5e22a12b5ae 100644
+--- a/salt/utils/asynchronous.py
++++ b/salt/utils/asynchronous.py
+@@ -124,6 +124,28 @@ class SyncWrapper:
+     def __repr__(self):
+         return f"<SyncWrapper(cls={self.cls})"
+ 
++    @staticmethod
++    def _loop_can_run_until_complete(loop):
++        """
++        Return ``True`` iff ``loop.run_until_complete(coro)`` can drive a
++        freshly created coroutine to completion without immediately raising.
++
++        ``BaseEventLoop.run_until_complete`` raises ``RuntimeError`` if the
++        loop is closed or already running, but only *after* its
++        ``future`` argument has been evaluated.  Constructing the
++        coroutine without being able to await it leaks it through
++        ``coroutine.__del__`` as ``RuntimeWarning: coroutine '...' was
++        never awaited`` (see ``close()``).  We avoid that by inspecting
++        the loop's state up front.
++        """
++        if loop is None:
++            return False
++        if loop.is_closed():
++            return False
++        if loop.is_running():
++            return False
++        return True
++
+     def close(self):
+         for method in self._close_methods:
+             if method in self._async_methods:
+@@ -138,8 +160,66 @@ class SyncWrapper:
+                 method()
+             except AttributeError:
+                 log.error("No async method %s on object %r", method, self.obj)
+-            except Exception:  # pylint: disable=broad-except
+-                log.exception("Exception encountered while running stop method")
++            except Exception as exc:  # pylint: disable=broad-except
++                log.exception(
++                    "Exception encountered while running stop method: %s", exc
++                )
++        # Shut down asyncio resources before closing the IOLoop so file descriptors
++        # held by pending tasks, async generators, and the default executor are released.
++        #
++        # Each of the three ``run_until_complete`` calls below takes a freshly
++        # constructed coroutine object as its argument.  If the loop is already
++        # closed (or running) at that point ``run_until_complete`` raises
++        # ``RuntimeError`` *after* the coroutine has been created but *before*
++        # ``ensure_future`` wraps it — and the bare coroutine object is then
++        # garbage-collected unawaited, emitting a
++        # ``RuntimeWarning: coroutine '...' was never awaited`` on stderr.  On
++        # Python 3.14 / Windows the batch CLI integration tests
++        # (``tests/pytests/integration/cli/test_batch.py::test_batch_retcode``
++        # and ``test_multiple_modules_in_batch``) gate on ``assert not
++        # cmd.stderr`` and turn that warning into a hard failure.
++        #
++        # Gate every call on ``not _loop_can_run_until_complete(loop)`` so we
++        # never even *construct* the inner coroutine when the loop can't drive
++        # it to completion.
++        try:
++            if self._loop_can_run_until_complete(self.asyncio_loop):
++                pending_tasks = [
++                    task
++                    for task in asyncio.all_tasks(self.asyncio_loop)
++                    if not task.done()
++                ]
++                if pending_tasks:
++                    for task in pending_tasks:
++                        task.cancel()
++                    gathered = asyncio.gather(*pending_tasks, return_exceptions=True)
++                    try:
++                        self.asyncio_loop.run_until_complete(gathered)
++                    except Exception:  # pylint: disable=broad-except
++                        # ``gathered`` is a Future; if run_until_complete bailed
++                        # part-way we still need to make sure the Future is
++                        # consumed so its exception (if any) isn't logged as
++                        # unhandled.  Tasks already cancelled above.
++                        if not gathered.done():
++                            gathered.cancel()
++
++            if self._loop_can_run_until_complete(self.asyncio_loop):
++                shutdown_agens = self.asyncio_loop.shutdown_asyncgens()
++                try:
++                    self.asyncio_loop.run_until_complete(shutdown_agens)
++                except Exception:  # pylint: disable=broad-except
++                    shutdown_agens.close()
++
++            if self._loop_can_run_until_complete(self.asyncio_loop):
++                shutdown_exec = self.asyncio_loop.shutdown_default_executor()
++                try:
++                    self.asyncio_loop.run_until_complete(shutdown_exec)
++                except Exception:  # pylint: disable=broad-except
++                    shutdown_exec.close()
++
++        except Exception as exc:  # pylint: disable=broad-except
++            log.error("Error during asyncio shutdown: %s", exc)
++
+         io_loop = self.io_loop
+         io_loop.stop()
+         try:
+diff --git a/salt/utils/http.py b/salt/utils/http.py
+index bc9e095d32d..7b2d8a518f6 100644
+--- a/salt/utils/http.py
++++ b/salt/utils/http.py
+@@ -607,12 +607,15 @@ def query(
+         req_kwargs = salt.utils.data.decode(req_kwargs, to_str=True)
+ 
+         try:
+-            download_client = SyncWrapper(
++            download_client_kwargs = (
++                {"max_body_size": max_body} if supports_max_body_size else {}
++            )
++            with SyncWrapper(
+                 AsyncHTTPClient,
+-                kwargs={"max_body_size": max_body} if supports_max_body_size else {},
++                kwargs=download_client_kwargs,
+                 async_methods=["fetch"],
+-            )
+-            result = download_client.fetch(url_full, **req_kwargs)
++            ) as download_client:
++                result = download_client.fetch(url_full, **req_kwargs)
+         except tornado.httpclient.HTTPError as exc:
+             ret["status"] = exc.code
+             ret["error"] = str(exc)
+diff --git a/tests/pytests/unit/utils/test_http.py b/tests/pytests/unit/utils/test_http.py
+index 52bf3d2ca28..cb397f4b196 100644
+--- a/tests/pytests/unit/utils/test_http.py
++++ b/tests/pytests/unit/utils/test_http.py
+@@ -1,10 +1,67 @@
+ import pytest
+ import requests
++import tornado.httpclient
+ 
+ import salt.utils.http
+ from tests.support.mock import MagicMock, patch
+ 
+ 
++class _FakeFetchResponse:
++    """Simple object mimicking the bits of tornado's HTTPResponse we rely on."""
++
++    def __init__(self, code=200, body=b"payload", headers=None):
++        self.code = code
++        self.body = body
++        self.headers = headers or {"Content-Type": "text/plain; charset=utf-8"}
++
++
++@pytest.fixture
++def syncwrapper_stub(monkeypatch):
++    """Patch ``salt.utils.http.SyncWrapper`` with a controllable test double."""
++
++    class SyncWrapperStub:
++        fetch_return = _FakeFetchResponse()
++        fetch_side_effect = None
++        enter_calls = 0
++        close_calls = 0
++        fetch_calls = 0
++
++        def __init__(self, *args, **kwargs):
++            # Mirror SyncWrapper signature but we only need to track usage.
++            pass
++
++        def __enter__(self):
++            SyncWrapperStub.enter_calls += 1
++            return self
++
++        def __exit__(self, exc_type, exc, tb):
++            self.close()
++            # Propagate exceptions so http.query can handle them
++            return False
++
++        def close(self):
++            SyncWrapperStub.close_calls += 1
++
++        def fetch(self, *args, **kwargs):
++            SyncWrapperStub.fetch_calls += 1
++            if SyncWrapperStub.fetch_side_effect is not None:
++                raise SyncWrapperStub.fetch_side_effect
++            return SyncWrapperStub.fetch_return
++
++        @classmethod
++        def reset_counters(cls, *, clear_fetch=True):
++            cls.enter_calls = 0
++            cls.close_calls = 0
++            cls.fetch_calls = 0
++            if clear_fetch:
++                cls.fetch_side_effect = None
++                cls.fetch_return = _FakeFetchResponse()
++
++    monkeypatch.setattr(salt.utils.http, "SyncWrapper", SyncWrapperStub)
++    SyncWrapperStub.reset_counters()
++    return SyncWrapperStub
++
++
+ def test_requests_session_verify_ssl_false(ssl_webserver, integration_files_dir):
+     """
+     test salt.utils.http.session when using verify_ssl
+@@ -51,3 +108,55 @@ def test_session_ca_bundle():
+     with patch_os:
+         ret = salt.utils.http.session(ca_bundle=fpath)
+     assert ret.verify == fpath
++
++
++def test_query_tornado_httperror_no_response():
++    """
++    Tests that http.query handles a Tornado HTTPError where exc.response is None.
++    This happens on connection-level failures such as a connect timeout (HTTP 599)
++    where no HTTP response is ever received from the server.
++    """
++    import tornado.httpclient
++
++    http_error = tornado.httpclient.HTTPError(599, "Timeout while connecting")
++    assert http_error.response is None
++
++    mock_client = MagicMock()
++    mock_client.fetch.side_effect = http_error
++    # http.query() uses SyncWrapper as a context manager; ensure
++    # __enter__() returns the mock_client itself.
++    mock_client.__enter__.return_value = mock_client
++
++
++def test_query_tornado_closes_syncwrapper_on_success(syncwrapper_stub):
++    syncwrapper_stub.reset_counters()
++    syncwrapper_stub.fetch_return = _FakeFetchResponse(body=b"test-body")
++
++    ret = salt.utils.http.query("http://example.com", backend="tornado", status=True)
++
++    assert syncwrapper_stub.enter_calls == 1
++    assert syncwrapper_stub.close_calls == 1
++    assert syncwrapper_stub.fetch_calls == 1
++    assert ret["body"] == "test-body"
++    assert ret["status"] == 200
++
++
++def test_query_tornado_closes_syncwrapper_on_http_error(syncwrapper_stub):
++    syncwrapper_stub.reset_counters()
++    response = MagicMock(body=b"", headers={"Content-Type": "text/plain"})
++    syncwrapper_stub.fetch_side_effect = tornado.httpclient.HTTPError(
++        599, "Unit test failure", response=response
++    )
++
++    ret = salt.utils.http.query(
++        "http://example.com",
++        backend="tornado",
++        status=True,
++        raise_error=True,
++    )
++
++    assert syncwrapper_stub.enter_calls == 1
++    assert syncwrapper_stub.close_calls == 1
++    assert syncwrapper_stub.fetch_calls == 1
++    assert ret["status"] == 599
++    assert "Unit test failure" in ret["error"]
+-- 
+2.55.0
+

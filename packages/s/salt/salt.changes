@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Sep  3 14:19:52 UTC 2026 - Marek Czernek <marek.czernek@suse.com>
+
+- Fix test_tcp for pytest >=8
+
+- Added:
+  * fix-test_tcp-for-pytest-8-779.patch
+
+-------------------------------------------------------------------
+Tue Sep  1 08:09:05 UTC 2026 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Fix file handlers leaking on using SyncWrapper (bsc#1272939)
+
+- Added:
+  * fix-file-handlers-leaking-on-using-syncwrapper-bsc-1.patch
+
+-------------------------------------------------------------------
 Thu Aug 27 10:01:33 UTC 2026 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
 
 - Honor proxy settings in gitfs, git_pillar and winrepo (bsc#1261147)
