@@ -203,4 +203,16 @@
 - Update BuildRequires and Requires from setup.py (forwarded request 1370028 from glaubitz)</comment>
     <requestid>1370029</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>7666bda7f5594318dfc1819fff35d93e</srcmd5>
+    <version>2.7.0</version>
+    <time>1788518296</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.7.0
+  * **core:** implement PEP 0810 explicit lazy imports in
+    google-cloud-core (#18052)
+  * use lowercase x-goog-api-client header (#18064)
+  * **handwritten:** centralize CONTRIBUTING.rst pointers (#17642) (forwarded request 1375574 from glaubitz)</comment>
+    <requestid>1375644</requestid>
+  </revision>
 </revisionlist>

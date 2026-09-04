@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep  3 09:08:35 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.7.0
+  * **core:** implement PEP 0810 explicit lazy imports in
+    google-cloud-core (#18052)
+  * use lowercase x-goog-api-client header (#18064)
+  * **handwritten:** centralize CONTRIBUTING.rst pointers (#17642)
+
+-------------------------------------------------------------------
 Thu Aug  6 11:03:09 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.6.1
