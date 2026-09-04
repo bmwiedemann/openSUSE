@@ -1,7 +1,7 @@
 #
 # spec file for package libquo
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2014-2016 Christoph Junghans <junghans@votca.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           libquo
-Version:        1.4
+Version:        1.4.1
 %global sover   8
 Release:        0
 Summary:        A library for run-time tuning of process binding policies

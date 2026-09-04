@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Aug 22 16:37:24 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.1:
+  * Fix the __hwloc_inline keyword in public headers when
+    compiling with a C++ compiler.
+  * Add Port info attribute to network OS devices inside
+    OpenFabrics PCI devices so as to identify which interface
+    corresponds to which port.
+  * Document requirements for interoperability helpers: I/O
+    devices discovery is required for some of them; the topology
+    must match the current host for most of them.
+
+-------------------------------------------------------------------
 Mon Mar 18 16:56:29 UTC 2024 - Christoph Junghans <junghans@votca.org>
 
 - update to 1.4:
@@ -17,7 +30,7 @@ Sun Feb 28 18:16:06 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.3.1:
   * see https://github.com/lanl/libquo/compare/v1.3...v1.3.1
-- remove 29.patch (upstream) 
+- remove 29.patch (upstream)
 
 -------------------------------------------------------------------
 Fri Nov  1 02:48:20 UTC 2019 - Christoph Junghans <junghans@votca.org>
@@ -75,7 +88,7 @@ Wed Aug 24 19:41:46 UTC 2016 - junghans@votca.org
 -------------------------------------------------------------------
 Sat Oct 10 14:24:33 UTC 2015 - junghans@votca.org
 
-- version bumped to 1.2.4, details: 
+- version bumped to 1.2.4, details:
   https://github.com/losalamos/libquo/commits/master
 - added pkg-config file to devel package
 
