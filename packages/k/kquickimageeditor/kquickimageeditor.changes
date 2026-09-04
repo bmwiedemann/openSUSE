@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Sep  2 13:13:42 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 0.7.0.1:
+  * Fix build on ARM with SVE
+
+-------------------------------------------------------------------
+Tue Sep  1 09:30:32 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 0.7.0:
+  * Removed OpenCV dependency by replacing the stack blur with a Qt
+    Concurrency and Highway SIMD library based implementation.
+  * Added color adjustment API.
+  * Added repainted signal to AnnotationDocument. AnnotationDocument
+    periodically repaints annotationsImage and canvasBaseImage.
+  * AnnotationDocument::renderToImage always returns the latest image. If
+    necessary, it will wait for repaints to finish before returning.
+  * Annotation shadows don't jitter as much while being drawn or resized.
+  * Added hasSelectionChanged and optionsChanged signals to
+    SelectedItemWrapper.
+  * For more details see
+    https://mail.kde.org/pipermail/kde-announce/2026-August/000524.html
+- Add %check
+
+-------------------------------------------------------------------
 Wed Jul  1 09:28:06 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Udpate to 0.6.2.1
