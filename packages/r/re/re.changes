@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Sep  2 13:48:24 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.11.0
+  Security Fixes
+  * libre's HTTP Basic auth verifier accept empty or prefix
+    credential blindly fixed by #1601.
+  * libre allows one spoofed UDP packet forges RTCP control
+    messages fixed by #1600.
+  Changes
+  * btrace: optimize addr2line handling.
+  * aubuf: remove adaptive mode.
+  * httpauth/basic: fix mem_seccmp cmp length.
+  * srtcp: fix/add AES-GCM no encryption flag auth.
+  * mem_pool: fix mem_pool_flush free list handling.
+  * mem/mem_pool: check mem_pool_borrow_extend empty pool param.
+  * json/decode_odict: fix possible container dangling pointer.
+
+-------------------------------------------------------------------
 Wed Jul 22 14:43:36 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.10.0
