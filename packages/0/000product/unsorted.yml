@@ -176,7 +176,6 @@ unsorted:
   - NetworkManager-cloud-setup 
   - NetworkManager-config-server 
   - NetworkManager-devel 
-  - NetworkManager-devel-32bit 
   - NetworkManager-fortisslvpn 
   - NetworkManager-fortisslvpn-lang 
   - NetworkManager-iodine 
@@ -3980,7 +3979,6 @@ unsorted:
   - extension-manager 
   - extension-manager-lang 
   - extest 
-  - extest-32bit 
   - extra166y 
   - extra166y-javadoc 
   - extrace 
@@ -8557,6 +8555,7 @@ unsorted:
   - hdajacksensetest 
   - hdf5 
   - hdf5-devel 
+  - hdf5-devel-32bit 
   - hdf5-devel-data 
   - hdf5-examples 
   - hdf5-mvapich2 
@@ -11743,7 +11742,6 @@ unsorted:
   - libSDL2_gfx-1_0-0 
   - libSDL2_gfx-devel 
   - libSDL2_image-2_0-0 
-  - libSDL2_image-2_0-0-32bit 
   - libSDL2_mixer-2_0-0 
   - libSDL2_net-2_0-0 
   - libSDL2_sound2 
@@ -11801,7 +11799,6 @@ unsorted:
   - libVulkanLayerSettings-1_4_357 
   - libWN3 
   - libWPEBackend-fdo-1_0-1 
-  - libWPEBackend-fdo-1_0-1-32bit 
   - libWPEWebKit-2_0-1 
   - libWildMidi2 
   - libX11-6-32bit 
@@ -12450,6 +12447,7 @@ unsorted:
   - libblockdev-devel 
   - libblosc1 
   - libblosc2-7 
+  - libblosc2-7-32bit 
   - libblosc2-7-x86-64-v3 
   - libbluetooth3-32bit 
   - libbluray-bdj 
@@ -12764,9 +12762,7 @@ unsorted:
   - libcec-devel 
   - libcec8 
   - libcelt-devel 
-  - libcelt-devel-32bit 
   - libcelt0-2 
-  - libcelt0-2-32bit 
   - libcephfs-devel 
   - libcephfs2 
   - libcephsqlite 
@@ -13243,7 +13239,6 @@ unsorted:
   - libemf2svg-devel 
   - libemf2svg1 
   - libenca0 
-  - libenca0-32bit 
   - libenchant-2-2-32bit 
   - libenchant1 
   - libenet7 
@@ -13349,9 +13344,7 @@ unsorted:
   - libfaad_drm2-32bit 
   - libfabric 
   - libfabric-devel 
-  - libfabric-devel-32bit 
   - libfabric1 
-  - libfabric1-32bit 
   - libfactory-4_4_1 
   - libfactory-devel 
   - libfactory-gftables 
@@ -13389,8 +13382,6 @@ unsorted:
   - libfdk-aac-devel 
   - libfdk-aac2-32bit 
   - libfdt-devel 
-  - libfdt-devel-32bit 
-  - libfdt1-32bit 
   - libfec3 
   - libfeedback-0_0-0 
   - libff-1_0_0 
@@ -13487,6 +13478,7 @@ unsorted:
   - libfmt10 
   - libfmt12-32bit 
   - libfmt9 
+  - libfmt9-32bit 
   - libfole-devel 
   - libfole1 
   - libfolks-telepathy26 
@@ -14134,22 +14126,27 @@ unsorted:
   - libhasl0 
   - libhavege2 
   - libhdf5-310 
+  - libhdf5-310-32bit 
   - libhdf5-310-mvapich2 
   - libhdf5-310-openmpi4 
   - libhdf5-310-openmpi5 
   - libhdf5_cpp310 
+  - libhdf5_cpp310-32bit 
   - libhdf5_cpp310-mvapich2 
   - libhdf5_cpp310-openmpi4 
   - libhdf5_cpp310-openmpi5 
   - libhdf5_fortran310 
+  - libhdf5_fortran310-32bit 
   - libhdf5_fortran310-mvapich2 
   - libhdf5_fortran310-openmpi4 
   - libhdf5_fortran310-openmpi5 
   - libhdf5_hl310 
+  - libhdf5_hl310-32bit 
   - libhdf5_hl310-mvapich2 
   - libhdf5_hl310-openmpi4 
   - libhdf5_hl310-openmpi5 
   - libhdf5_hl_cpp310 
+  - libhdf5_hl_cpp310-32bit 
   - libhdf5_hl_cpp310-mvapich2 
   - libhdf5_hl_cpp310-openmpi4 
   - libhdf5_hl_cpp310-openmpi5 
@@ -14158,6 +14155,7 @@ unsorted:
   - libhdf5_hl_fortran310-openmpi4 
   - libhdf5_hl_fortran310-openmpi5 
   - libhdf5_tools310 
+  - libhdf5_tools310-32bit 
   - libhdf5_tools310-mvapich2 
   - libhdf5_tools310-openmpi4 
   - libhdf5_tools310-openmpi5 
@@ -14285,9 +14283,7 @@ unsorted:
   - libime-tools 
   - libimhex1_38_1 
   - libiml0 
-  - libimobiledevice-1_0-6-32bit 
   - libimobiledevice-devel 
-  - libimobiledevice-glue-1_0-0-32bit 
   - libimobiledevice-glue-devel 
   - libinchi1 
   - libindiAlignmentDriver2 
@@ -14315,7 +14311,6 @@ unsorted:
   - libinsane_gobject1 
   - libinsighttoolkit5_4-1 
   - libinstpatch-1_0-2 
-  - libinstpatch-1_0-2-32bit 
   - libinstpatch-devel 
   - libint-devel 
   - libint2-2 
@@ -14351,7 +14346,6 @@ unsorted:
   - libiscsi-devel 
   - libiscsi-test 
   - libiscsi-utils 
-  - libiscsi11-32bit 
   - libisds-devel 
   - libisds5 
   - libisl23-32bit 
@@ -14690,7 +14684,6 @@ unsorted:
   - liblqr-devel 
   - liblrdf-devel 
   - liblrdf2 
-  - liblrdf2-32bit 
   - liblrs1 
   - liblsan0-gcc13 
   - liblsan0-gcc14 
@@ -14830,6 +14823,7 @@ unsorted:
   - libmatrix_client0_10_1 
   - libmatroska-devel 
   - libmaxminddb-devel 
+  - libmaxminddb0-32bit 
   - libmbedcrypto16 
   - libmbedcrypto16-x86-64-v3 
   - libmbedcrypto7 
@@ -15002,7 +14996,6 @@ unsorted:
   - libmpdec++4-32bit 
   - libmpdec4-32bit 
   - libmpeg2-0 
-  - libmpeg2-0-32bit 
   - libmpeg2-devel 
   - libmpeg2convert0 
   - libmpeg2encpp-2_2-0-32bit 
@@ -15126,7 +15119,6 @@ unsorted:
   - libnetpbm11-32bit 
   - libnettle-devel 
   - libnettle-devel-32bit 
-  - libnewt0_52-32bit 
   - libnextcloudsync-devel 
   - libnextcloudsync0 
   - libnf2ff0 
@@ -15173,7 +15165,6 @@ unsorted:
   - libnl3-devel 
   - libnl3-devel-32bit 
   - libnlopt1 
-  - libnm0-32bit 
   - libnma-devel 
   - libnma-docs 
   - libnma-gtk4-devel 
@@ -15227,14 +15218,12 @@ unsorted:
   - libnutscan4 
   - libnvidia-egl-gbm-devel 
   - libnvidia-egl-gbm1 
-  - libnvidia-egl-gbm1-32bit 
   - libnvidia-egl-wayland-devel 
   - libnvidia-egl-wayland1 
   - libnvidia-egl-wayland1-32bit 
   - libnvidia-egl-wayland21 
   - libnvidia-egl-x11-devel 
   - libnvidia-egl-x111 
-  - libnvidia-egl-x111-32bit 
   - libnvme-devel 
   - libnvme-mi1 
   - libnvme3-devel 
@@ -15405,9 +15394,7 @@ unsorted:
   - libopusenc0 
   - libopusfile0 
   - liboqs-devel 
-  - liboqs-devel-32bit 
   - liboqs9 
-  - liboqs9-32bit 
   - liborc-0_4-0-32bit 
   - liborcania2_3 
   - liborcus-devel 
@@ -15610,9 +15597,7 @@ unsorted:
   - libplayerctl2 
   - libplib0 
   - libplist++-2_0-4 
-  - libplist++-2_0-4-32bit 
   - libplist++-2_0-devel 
-  - libplist-2_0-4-32bit 
   - libplist-2_0-devel 
   - libplot2 
   - libplotter2 
@@ -16041,7 +16026,6 @@ unsorted:
   - libradospp-devel 
   - libraft0 
   - libraptor-devel 
-  - libraptor2-0-32bit 
   - libraqm-devel 
   - libraqm-doc 
   - libraqm0 
@@ -16072,6 +16056,7 @@ unsorted:
   - librdmacm-utils 
   - librdmacm1-32bit 
   - libre2-11 
+  - libre2-11-32bit 
   - libre45 
   - libreadline-java 
   - libreadline-java-javadoc 
@@ -16782,7 +16767,6 @@ unsorted:
   - libtasn1-tools 
   - libtatsu-devel 
   - libtatsu0 
-  - libtatsu0-32bit 
   - libtbbbind_2_5-3 
   - libtbbmalloc2 
   - libtcmalloc4 
@@ -17049,7 +17033,6 @@ unsorted:
   - liburing-devel 
   - liburing-ffi2 
   - liburiparser1-32bit 
-  - libusb-0_1-4-32bit 
   - libusb-1_0-0-32bit 
   - libusb-1_0-devel 
   - libusb-1_0-devel-32bit 
@@ -17062,7 +17045,6 @@ unsorted:
   - libusbgx-devel 
   - libusbgx-tools 
   - libusbgx3 
-  - libusbmuxd-2_0-7-32bit 
   - libusbmuxd-devel 
   - libusbmuxd-tools 
   - libuser 
@@ -17299,7 +17281,6 @@ unsorted:
   - libwebrtc-audio-processing-1-devel 
   - libwebrtc-audio-processing-1-devel-static 
   - libwebrtc-audio-processing-2-1 
-  - libwebrtc-audio-processing-2-1-32bit 
   - libwebrtc-audio-processing-devel 
   - libwebrtc-audio-processing-devel-static 
   - libwebrtc_audio_processing-devel 
@@ -17346,7 +17327,6 @@ unsorted:
   - libwpd-devel-doc 
   - libwpd-tools 
   - libwpe-1_0-1 
-  - libwpe-1_0-1-32bit 
   - libwpe-devel 
   - libwpg-devel 
   - libwpg-devel-doc 
