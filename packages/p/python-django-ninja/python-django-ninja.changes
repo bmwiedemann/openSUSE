@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 28 12:16:41 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- update to 1.6.3
+  * Drop Django upper version constraint
+  * Migrate packaging metadata to PEP 621 for Flit 4 compatibility
+
+-------------------------------------------------------------------
 Fri Mar 27 09:44:51 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to version 1.6.2:

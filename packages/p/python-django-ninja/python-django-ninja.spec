@@ -15,15 +15,15 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define pkgname django_ninja
+%define pkgname django-ninja
 
 Name:           python-django-ninja
-Version:        1.6.2
+Version:        1.6.3
 Release:        0
 Summary:        Django Ninja - Fast Django REST framework
 License:        MIT
 URL:            https://django-ninja.dev
-Source:         https://files.pythonhosted.org/packages/source/d/%{pkgname}/%{pkgname}-%{version}.tar.gz
+Source:         https://github.com/vitalik/django-ninja/archive/refs/tags/v%{version}.tar.gz#/%{pkgname}-%{version}.tar.gz
 BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module flit-core >= 2}
 BuildRequires:  %{python_module pip}
