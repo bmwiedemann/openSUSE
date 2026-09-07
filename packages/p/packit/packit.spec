@@ -1,7 +1,7 @@
 #
 # spec file for package packit
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,12 +22,10 @@ Release:        0
 Summary:        Network injection and capture
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Diagnostic
-URL:            https://github.com/eribertomota/packit
-Source0:        https://github.com/eribertomota/packit/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://github.com/resurrecting-open-source-projects/packit
+Source0:        https://github.com/resurrecting-open-source-projects/packit/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # https://github.com/resurrecting-open-source-projects/packit/issues/24
 Patch0:         packit-gcc15.patch
-# PATCH-FIX-OPENSUSE packit-1.7-fix_automake_1.16.5_build.patch
-#Patch0:         packit-1.7-fix_automake_1.16.5_build.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libnet-devel
