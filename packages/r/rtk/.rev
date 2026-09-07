@@ -100,4 +100,25 @@ against the new manifest. Re-derived licence set over the re-vendored tree:
 unchanged.</comment>
     <requestid>1375597</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ec14caf300345aa3706b04f003f4e6a1</srcmd5>
+    <version>0.48.0</version>
+    <time>1788773581</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.48.0.
+
+- bun and deno filters for both JavaScript runtimes, incl. test summaries
+- find: missing-path handling, hidden/gitignored disclosure, symlinked roots
+- diff: byte-different files are no longer reported as identical
+- filters: unanchored TOML match_command rejected at load time
+- telemetry: &quot;consent not given&quot; told apart from a missing salt
+
+Both downstream patches (rtk-unbundle-sqlite, rtk-no-deny-warnings) still
+apply unchanged; upstream PRs 3446 and 3447 remain open. Re-vendored; the
+linked crate set resolves to the unchanged License tag.
+
+Built on aarch64 and x86_64: 3136 tests passed, 0 failed, 8 upstream-ignored;
+rpmlint 0 errors, 0 warnings, 0 badness on both.</comment>
+    <requestid>1375917</requestid>
+  </revision>
 </revisionlist>

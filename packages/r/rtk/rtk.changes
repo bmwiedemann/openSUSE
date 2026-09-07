@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Sep  5 11:14:57 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.48.0:
+  * bun, deno: filters for both JavaScript runtimes, including test
+    summaries, with "rtk bun x" routed to the bunx tool filters
+  * find: report a missing path the way find itself does, disclose
+    hidden and gitignored matches, and follow a symlinked root
+  * diff: stop reporting byte-different files as identical
+  * filters: reject an unanchored TOML match_command at load time
+  * discover: derive savings from the real passthrough status and
+    record the hook decisions instead of inferring coverage after
+    the fact
+  * telemetry: tell "consent not given" apart from a missing salt,
+    and treat an empty RTK_TELEMETRY_URL as no endpoint
+  * runner: keep real diagnostics while dropping test stdout
+- Both downstream patches still apply unchanged against the 0.48.0
+  manifest; upstream PRs 3446 and 3447 are still open
+- No licence change on the re-vendor: the linked crate set resolves
+  to the existing License tag (194 vendored, 134 linked)
+- cargo audit: quick-xml 0.37.5 carries RUSTSEC-2026-0194 and
+  RUSTSEC-2026-0195, both fixed only in 0.41, which upstream's "0.37"
+  requirement cannot reach; unchanged from 0.47.0
+  * RUSTSEC-2026-0195 needs an NsReader, which rtk never builds
+  * RUSTSEC-2026-0194 is reachable only over the .trx files that
+    a local "dotnet test" run writes, never over network input
+
+-------------------------------------------------------------------
 Thu Sep  3 09:35:29 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.47.0:
