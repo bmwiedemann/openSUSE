@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Sep  1 20:50:57 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.11.7:
+  * fix: accept use_site_for_root in the bin functions
+- update to 4.11.5:
+  * docs: fix the iterator order claim in api.rst
+  * fix: return one site applications path for multipath
+  * fix: accept app arguments in the applications functions
+  * refactor: keyword-only booleans on the applications functions
+  * fix: accept app arguments in user_preference_dir
+- update to 4.11.4:
+  * fix: stop iter_*_dirs yielding the same directory twice
+  * docs: fix merge order in the config how-to
+
+-------------------------------------------------------------------
 Sat Aug 22 09:25:31 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.11.3:

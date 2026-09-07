@@ -310,4 +310,22 @@
   * docs(changelog): rebuild against release history</comment>
     <requestid>1373038</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>901aa85ee5dde77d7b418c649d5a2254</srcmd5>
+    <version>4.11.7</version>
+    <time>1788773289</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.11.7:
+  * fix: accept use_site_for_root in the bin functions
+- update to 4.11.5:
+  * docs: fix the iterator order claim in api.rst
+  * fix: return one site applications path for multipath
+  * fix: accept app arguments in the applications functions
+  * refactor: keyword-only booleans on the applications functions
+  * fix: accept app arguments in user_preference_dir
+- update to 4.11.4:
+  * fix: stop iter_*_dirs yielding the same directory twice
+  * docs: fix merge order in the config how-to</comment>
+    <requestid>1375228</requestid>
+  </revision>
 </revisionlist>
