@@ -37,11 +37,14 @@ Summary:        FastAPI framework
 License:        MIT
 URL:            https://github.com/fastapi/fastapi
 Source:         https://files.pythonhosted.org/packages/source/f/fastapi/fastapi-%{version}.tar.gz
+BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module pdm-backend}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-annotated-doc >= 0.0.2
+Requires:       python-base
 Requires:       python-pydantic >= 2.9.0
 Requires:       python-starlette >= 0.46.0
 Requires:       python-typing-inspection >= 0.4.2
@@ -79,7 +82,6 @@ BuildRequires:  %{python_module pydantic-settings >= 2.0.0}
 BuildRequires:  %{python_module pytest >= 9.0.0}
 BuildRequires:  %{python_module pytest-timeout >= 2.4.0}
 BuildRequires:  %{python_module pytest-xdist >= 2.5.0}
-BuildRequires:  %{python_module python-jose >= 3.3}
 BuildRequires:  %{python_module python-multipart >= 0.0.18}
 BuildRequires:  %{python_module sqlmodel >= 0.0.31}
 BuildRequires:  %{python_module trio}

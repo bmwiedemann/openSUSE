@@ -763,4 +763,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1362541</requestid>
   </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>51686bd9899c0bf8ad43f2550cd63835</srcmd5>
+    <version>0.138.0</version>
+    <time>1788773274</time>
+    <user>anag_factory</user>
+    <comment>- Drop unnecessary dependency on python-python-jose
+- Add dependency on python-base
+</comment>
+    <requestid>1375797</requestid>
+  </revision>
 </revisionlist>
