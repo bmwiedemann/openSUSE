@@ -73,4 +73,12 @@
     <comment></comment>
     <requestid>1152841</requestid>
   </revision>
+  <revision rev="11" vrev="18">
+    <srcmd5>0b6e431cf316b1f5a1ccd172399fe72c</srcmd5>
+    <version>1.5.1</version>
+    <time>1788774788</time>
+    <user>anag_factory</user>
+    <comment>Replace usage of %jobs for reproducible builds (boo#1237231)</comment>
+    <requestid>1375981</requestid>
+  </revision>
 </revisionlist>

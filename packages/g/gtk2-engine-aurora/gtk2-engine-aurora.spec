@@ -43,7 +43,7 @@ look for Gtk applications.
 
 %build
 %configure --enable-animation
-make %{?jobs:-j%jobs}
+%make_build
 
 %install
 %makeinstall
