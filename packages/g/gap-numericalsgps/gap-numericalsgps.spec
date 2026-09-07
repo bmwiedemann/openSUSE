@@ -1,7 +1,7 @@
 #
 # spec file for package gap-numericalsgps
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,17 @@
 
 
 Name:           gap-numericalsgps
-Version:        1.4.0
+Version:        1.5.0
 Release:        0
 Summary:        GAP: A package for numerical semigroups
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://gap-packages.github.io/numericalsgps
-
 #Git-Clone:     https://github.com/gap-packages/numericalsgps
 Source:         https://github.com/gap-packages/numericalsgps/releases/download/v%version/NumericalSgps-%version.tar.gz
 BuildArch:      noarch
 BuildRequires:  gap-rpm-devel
-Requires:       gap-core >= 4.7
+Requires:       gap-core >= 4.12
 
 %description
 The features of this package include

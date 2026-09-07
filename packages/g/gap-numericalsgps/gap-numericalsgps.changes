@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Sep  4 21:53:26 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.5.0
+  * Added IsUlrich for ideals of numerical semigroups
+  * Added AllIntegralIdealsContainingConductor for a numerical
+    semigroup
+  * Modified `StarClosureOfIdealOfNumericalSemigroup` to accept an
+    optional second argument
+  * Added `IsReflexive` for ideals of numerical semigroups
+  * Added `IdealOfElementsGreaterThanOrEqualTo` for numerical semigroups
+  * Added `IsIntegrallyClosed` for ideals of numerical semigroups
+  * Added `IdealOfNumericalSemigroupBySmallElements`,
+    `AddPseudoFrobeniusNumberToIdeal`
+  * Added `NormalizedIdeals` for a numerical semigroup
+  * Added `KunzCoordinates` for an ideal of a numerical semigroup
+    (and optionally an element in the ambient semigroup)
+  * Added `RemoveMinimalGeneratorFromIdeal`
+  * Added `AsNumericalSemigroup` for idemopotent ideals of
+    numerical semigroups
+  * Added `IsStable` for ideals of numerical semigroups
+  * Added a numerical set category
+  * Added conductor, multiplicity, gaps, small elements, Frobenius
+    number for numerical sets
+  * Added equality, inclusion and difference between numerical sets
+    and numerical semigroups and ideals of numerical semigroups
+
+-------------------------------------------------------------------
 Tue Sep  3 13:49:12 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.4.0
