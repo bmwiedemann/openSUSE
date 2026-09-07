@@ -55,4 +55,15 @@
   * Bump GitHub Actions dependencies</comment>
     <requestid>1339429</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>09682871f37a35403c3d1d94b0578af8</srcmd5>
+    <version>2.2.0</version>
+    <time>1788773292</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.2.0:
+  * Fix astral-plane Unicode handling in links, including host
+    names and link terminators
+  * Drop the runtime dependency on `uc-micro-py`</comment>
+    <requestid>1375229</requestid>
+  </revision>
 </revisionlist>

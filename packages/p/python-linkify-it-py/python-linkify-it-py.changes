@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep  1 20:58:25 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.0:
+  * Fix astral-plane Unicode handling in links, including host
+    names and link terminators
+  * Drop the runtime dependency on `uc-micro-py`
+
+-------------------------------------------------------------------
 Mon Mar 16 20:25:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.1.0:

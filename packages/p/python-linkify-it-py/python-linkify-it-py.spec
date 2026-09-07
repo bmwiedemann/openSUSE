@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-linkify-it-py
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        Links recognition library with FULL unicode support
 License:        MIT
@@ -26,11 +26,9 @@ URL:            https://github.com/tsutsu3/linkify-it-py
 Source:         https://github.com/tsutsu3/linkify-it-py/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module uc-micro-py}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-uc-micro-py
 BuildArch:      noarch
 %python_subpackages
 
