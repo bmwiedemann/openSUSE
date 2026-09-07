@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep  3 11:39:57 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 5539.patch: Fix building with LLVM 23.
+
+-------------------------------------------------------------------
 Wed Aug 19 14:39:12 UTC 2026 - Hoyeon Lee <hoyeon.lee@suse.com>
 
 - Refactor CMake-based build flow with %cmake/%cmake_{build,install}

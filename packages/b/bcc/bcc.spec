@@ -41,6 +41,7 @@ Group:          Development/Tools/Other
 URL:            https://github.com/iovisor/bcc
 Source:         https://github.com/iovisor/bcc/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source100:      bcc-rpmlintrc
+Patch0:         https://github.com/iovisor/bcc/pull/5539.patch
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  bison
