@@ -1,4 +1,125 @@
 -------------------------------------------------------------------
+Fri Sep  4 11:22:13 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.78.1
+  - [management] Serve networks with peer-based routers from the
+    SQLite network map by @mlsmaycon in #7424
+
+-------------------------------------------------------------------
+Thu Sep  3 19:43:08 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.78.0
+  - 7c12530 [client] Renew the Android TUN only when the routes it
+    carries change (#7396)
+  - bb233c7 [client] Rebuild the overlay listeners when the TUN is
+    renewed (#7397)
+  - fbd4730 [client] Expose the remote jobs opt-in in the Android
+    and iOS SDK preferences (#7406)
+  - b0e0303 [client] Pick the probe port from the system in
+    Test_freePort (#7404)
+  - 778b3b3 [client] Unify peer and route ACL filtering with
+    multi-source rules (#6322)
+  - 6aaeed7 [management] Check a provider's url and credential
+    before saving it (#7301)
+  - 26e5495 [management,proxy] Serve guardrail allowlists of
+    declared model ids (#7389)
+  - 8a5e940 [management] remove old math rand lib (#6836)
+  - 7b22d55 [client] Bind the cached SSH JWT to the local caller
+    that obtained it (#7378)
+  - c3cf7c0 [client] Clarify that metrics ingest X-Peer-ID is not a
+    credential (#7363)
+  - ecbeba8 [management] Fix geolocation panics (#7382)
+  - 2f55965 [client, android] Type the split tunnelling mode
+    instead of storing a string (#7387)
+  - a1415db [client] Fix the ICEBind races that wedge interface
+    creation (#7377)
+  - e3d6c3d [management] fix private services calc on new db path
+    (#7383)
+  - e5c0cdf [client] Stay connected with login command (#7384)
+  - ebc259e [management,client] Gate remote jobs behind an admin
+    opt-in with MDM support (#7153)
+  - 3027130 [management] Add Agent Network access roles and
+    self-service endpoints (#7221)
+  - 652d5f3 [client] Reuse the profile's account for iOS SSO logins
+    (#7193)
+  - 7a9582d [management,proxy] Add agentgateway integration (#7274)
+  - 4749005 [client] Resolve profiles for the sudo invoking user
+    instead of root (#7238)
+  - 352a1d3 [client] Do not log the WireGuard key on a parse
+    failure (#7379)
+  - 922be0b Fix docs link (#7352)
+  - c170905 [client] Allow logging out of the active profile when
+    profiles are disabled (#7360)
+  - 1081ca0 [management,client] Add anonymize level and upload URL
+    to remote debug bundle jobs (#7147)
+  - 930a253 [client] Keep the route selection on an invalid request
+    and apply it on a partial one (#7292)
+  - 12e8874 [client, relay, management] Bump go version to 1.26 and
+    go-quic to v0.62.0 (#7359)
+  - 24959e1 [client] Drop agentConnecting whenever ICE session
+    state clears (#7327)
+  - 7ffbcb0 [client] Add Ukrainian localization for desktop client
+    (#7035)
+  - 086d8ba [client] Close the session-expiration dialog only on
+    renewal (#7337)
+  - 945b0b6 Store the Android split tunnelling settings per profile
+    (#7349)
+  - 11733fd [infrastructure] Improve domain, Docker Compose, and
+    license validation in self-hosted scripts (#7339)
+  - 353251d [management] fix posture check evaluation for direct
+    peers in policy definition (#7348)
+  - 611a929 [management] fix posture check flip evaluation for
+    affected peers calc (#7347)
+  - 89c6e84 [client, ios] Fix context cancellation during restart
+    (#7329)
+  - 6620219 [client] Add catch-all NRPT rule when NetBird is the
+    primary DNS resolver (#7071)
+  - 63c26be [client] Add local Prometheus metrics endpoint (#6689)
+  - e06c17c [management] network map from nmap data type (#6919)
+  - 473392a [client] Tolerate a still-locked updater binary when
+    cleaning up after an update (#7286)
+  - 0bd1147 [client] Keep NetBird traffic out of third-party fwmark
+    rules (#7314)
+  - f221347 [infrastructure] Trigger the dashboard wasm client bump
+    on release tags (#7277)
+  - 0a9ce7f [client] fix a flake in
+    TestResolver_ConcurrentStaleHitsCollapseRefresh test (#7326)
+  - 7e8b4e1 [client, proxy] Remove lazy connection exclusions and
+    run Rosenpass on the embedded proxy (#6763)
+  - 2621aaa [management, client] add protobuf breaking changes
+    check (#7305)
+  - ed7d4de [client, ios] Migrate switft profile manager to go
+    (#6528)
+  - 51095cb [client, management] Support per-peer lazy connection
+    state and default proxy peers to lazy (#6762)
+  - ccf8f43 [client] Ask the OS for privileges when a guarded SSH
+    setting is changed (#7066)
+  - 15fff4c [client] Sweep connections on network loss via a shared
+    netevents manager (#7254)
+  - c512bf2 [management] handle nil ptr in sendInitialSync() when
+    the peer is deleted (#7315)
+  - 7d83a39 [proxy] validate header auth on proxy (#7263)
+  - a08f7f6 [client] Create GUI windows on demand and destroy them
+    on close (#7096)
+  - 3f90181 [ci] Remove mobile build validation workflow (#7302)
+  - 5fc1911 [client] Revert declaring multi-buffer support for the
+    loopback XDP program (#7303)
+  - 7f03a2e [client] Hold a peer offer or answer that arrives
+    before the handshaker starts listening (#7255)
+  - f038538 [proxy,management] Serve Bedrock model discovery from
+    the control plane (#7250)
+  - 5e88d3f [management] Offer a provider's live model list in the
+    config form (#7246)
+  - 7be45c2 [proxy,management] Bound model discovery to the
+    caller's own policies (#7239)
+  - 766fcae [proxy,management] Conform the Agent Network endpoint
+    to the LLM gateway protocol (#7154)
+  - ee253fe [misc] Pin the toolchain gomobile init needs for gobind
+    (#7291)
+  - 335adfe [client] Move the PCP implementation to the go-nat fork
+    (#7282)
+
+-------------------------------------------------------------------
 Fri Aug 21 19:38:51 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 0.77.1
