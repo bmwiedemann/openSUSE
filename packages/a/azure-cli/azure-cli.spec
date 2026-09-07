@@ -33,7 +33,7 @@
 %endif
 
 Name:           azure-cli%{?psuffix}
-Version:        2.89.1
+Version:        2.90.0
 Release:        0
 Summary:        Microsoft Azure CLI 2.0
 License:        MIT
@@ -82,7 +82,7 @@ Requires:       %{pythons}-azure-mgmt-containerinstance >= 10.2.0~b1
 Requires:       %{pythons}-azure-mgmt-containerregistry >= 15.1.0~b2
 Requires:       %{pythons}-azure-mgmt-containerregistrytasks >= 1.0.0~b1
 Requires:       %{pythons}-azure-mgmt-containerservice >= 41.5.0
-Requires:       %{pythons}-azure-mgmt-cosmosdb >= 9.9.0
+Requires:       %{pythons}-azure-mgmt-cosmosdb >= 10.0.0
 Requires:       %{pythons}-azure-mgmt-datalake-store >= 1.1.0~b1
 Requires:       %{pythons}-azure-mgmt-datamigration >= 10.0.0
 Requires:       %{pythons}-azure-mgmt-devtestlabs >= 2.2
@@ -95,7 +95,7 @@ Requires:       %{pythons}-azure-mgmt-imagebuilder >= 1.3.0
 Requires:       %{pythons}-azure-mgmt-iotcentral >= 10.0.0b1
 Requires:       %{pythons}-azure-mgmt-iothub >= 5.0.0~b1
 Requires:       %{pythons}-azure-mgmt-iothubprovisioningservices >= 1.1.0
-Requires:       %{pythons}-azure-mgmt-keyvault >= 13.0.0
+Requires:       %{pythons}-azure-mgmt-keyvault >= 14.0.1
 Requires:       %{pythons}-azure-mgmt-loganalytics >= 13.0.0
 Requires:       %{pythons}-azure-mgmt-managementgroups >= 1.0.0
 Requires:       %{pythons}-azure-mgmt-maps >= 2.0.0
