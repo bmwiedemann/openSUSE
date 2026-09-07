@@ -1,7 +1,26 @@
 -------------------------------------------------------------------
+Wed Sep  2 15:11:09 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.31.5
+  *) Feature: control API.
+  *) Feature: predicate locations.
+  *) Feature: the ngx_http_json_module.
+  *) Feature: the "client_body_early_read" directive.
+  *) Bugfix: use-after-free might occur in a worker process if
+     proxying with buffering was used and an error occurred while
+     sending the response to an HTTP/2 client.
+  *) Bugfix: a worker process might not exit or "accept4() failed
+     (9: Bad file descriptor)" alerts might appear in logs if the
+     worker process ran out of file descriptors before graceful
+     shutdown.
+  *) Bugfix: requests to FastCGI and uwsgi backends were malformed
+     if a parameter name was too long.
+  *) Bugfixes in HTTP/3, ngx_http_
+
+-------------------------------------------------------------------
 Wed Aug 19 17:53:27 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
-- Update to 1.31.4 
+- Update to 1.31.4
   *) Feature: the "proxy_protocol" directive in the stream and mail
      modules now supports the PROXY protocol version 2.
   *) Change: now HTTP/2 and gRPC requests to backends are always

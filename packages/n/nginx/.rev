@@ -1559,4 +1559,26 @@
     <comment>1</comment>
     <requestid>1372073</requestid>
   </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>2b2b9a7f03149efa70359dcec0e94206</srcmd5>
+    <version>1.31.5</version>
+    <time>1788773316</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.31.5
+  *) Feature: control API.
+  *) Feature: predicate locations.
+  *) Feature: the ngx_http_json_module.
+  *) Feature: the &quot;client_body_early_read&quot; directive.
+  *) Bugfix: use-after-free might occur in a worker process if
+     proxying with buffering was used and an error occurred while
+     sending the response to an HTTP/2 client.
+  *) Bugfix: a worker process might not exit or &quot;accept4() failed
+     (9: Bad file descriptor)&quot; alerts might appear in logs if the
+     worker process ran out of file descriptors before graceful
+     shutdown.
+  *) Bugfix: requests to FastCGI and uwsgi backends were malformed
+     if a parameter name was too long.
+  *) Bugfixes in HTTP/3, ngx_http_</comment>
+    <requestid>1375423</requestid>
+  </revision>
 </revisionlist>
