@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Sep  2 08:44:05 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 6.1.1
+  * Fixed many bugs and regressions in Django 6.1
+  * See https://docs.djangoproject.com/en/6.1/releases/6.1.1/
+
+-------------------------------------------------------------------
+Tue Aug 25 07:16:16 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 6.1
+  * Model field fetch modes
+  * Database-level delete options for ForeignKey.on_delete
+  * The new MAILERS setting configuring multiple email backends
+    with different options
+  * Many backwards-incompatible changes, many new deprecations
+  * see https://docs.djangoproject.com/en/6.1/releases/6.1/
+- Drop test_strip_tags.patch, not needed here anymore
+
+-------------------------------------------------------------------
 Wed Aug  5 12:02:09 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Update to 6.0.8

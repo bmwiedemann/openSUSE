@@ -27,18 +27,15 @@
 %endif
 %define skip_python311 1
 Name:           python-Django
-Version:        6.0.8
+Version:        6.1.1
 Release:        0
 Summary:        A high-level Python Web framework
 License:        BSD-3-Clause
 URL:            https://www.djangoproject.com
-Source:         https://www.djangoproject.com/m/releases/6.0/django-%{version}.tar.gz
+Source:         https://www.djangoproject.com/m/releases/6.1/django-%{version}.tar.gz
 Source1:        https://www.djangoproject.com/m/pgp/Django-%{version}.checksum.txt
 Source2:        %{name}.keyring
 Source99:       python-Django-rpmlintrc
-# PATCH-FIX-UPSTREAM https://github.com/django/django/pull/19639 Fixed #36499 -- Adjusted utils_tests.test_html.TestUtilsHtml.test_strip_tags following Python's HTMLParser new behavior.
-# fixed and refined upstream, but some of our interpreters weren't updated to a new version yet and still only carry the patch, so providing the non-conditional version
-Patch1:         test_strip_tags.patch
 BuildRequires:  %{python_module Jinja2 >= 2.9.2}
 BuildRequires:  %{python_module Pillow >= 6.2.0}
 BuildRequires:  %{python_module PyYAML}

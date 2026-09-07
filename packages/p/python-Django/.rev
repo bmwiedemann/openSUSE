@@ -1626,4 +1626,23 @@
   * Added compatibility for sqlparse 0.5.5</comment>
     <requestid>1369745</requestid>
   </revision>
+  <revision rev="153" vrev="1">
+    <srcmd5>2f1808959c373a07f01c79ef52c87c84</srcmd5>
+    <version>6.1.1</version>
+    <time>1788773373</time>
+    <user>anag_factory</user>
+    <comment>- Update to 6.1.1
+  * Fixed many bugs and regressions in Django 6.1
+  * See https://docs.djangoproject.com/en/6.1/releases/6.1.1/
+
+- Update to 6.1
+  * Model field fetch modes
+  * Database-level delete options for ForeignKey.on_delete
+  * The new MAILERS setting configuring multiple email backends
+    with different options
+  * Many backwards-incompatible changes, many new deprecations
+  * see https://docs.djangoproject.com/en/6.1/releases/6.1/
+- Drop test_strip_tags.patch, not needed here anymore</comment>
+    <requestid>1375473</requestid>
+  </revision>
 </revisionlist>
