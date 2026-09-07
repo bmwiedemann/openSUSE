@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Sep  4 07:56:30 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.49.0:
+  * CLI extensions load in the background, so the prompt is usable
+    before every MCP server has finished starting
+  * "goose session" gained --system, matching "goose run"
+  * custom providers can fetch their credential by running a
+    command, so short-lived tokens refresh without a restart
+  * new provider Opper; Databricks discovers Unity Catalog model
+    services; Z.ai default model id fixed, GLM-5.3-flash added
+  * configurable Anthropic prompt-cache TTL (5m or 1h)
+  * context limits resolve centrally through the provider API, and
+    limits stored in old sessions are ignored
+  * MCP OAuth keeps a still-valid access token when the server
+    issued no refresh token
+  * the keyring unlock no longer times out mid-password
+  * hardening: per-turn model tool allowlists, restricted extension
+    tool dispatch, provider secret suffixes no longer exposed,
+    agent listing confined to its source roots, bounded local image
+    reads
+  * see upstream's release notes for the full list
+- Rebase goose-system-libdbus.patch
+- Bump bundled(aws-lc) to 5.7.0: aws-lc-sys moved 0.44.0 -> 0.45.0
+- Re-derive the License tag from the new vendored crate graph (1328
+  crates vendored, 612 linked): the 13 SPDX identifiers are unchanged
+
+-------------------------------------------------------------------
 Fri Aug 28 06:04:13 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.48.0:

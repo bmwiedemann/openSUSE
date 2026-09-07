@@ -85,4 +85,29 @@ is too old to read the lock file - and it is not a Factory target.</comment>
     <comment>Update to 1.48.0; drop tui feature (removed upstream) and stale wtype/xdotool Recommends</comment>
     <requestid>1374254</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>cd4facbabd308c3d3401b930e92fe025</srcmd5>
+    <version>1.49.0</version>
+    <time>1788773412</time>
+    <user>anag_factory</user>
+    <comment>Update goose to 1.49.0.
+
+- CLI extensions load in the background, so the prompt is usable before every
+  MCP server has finished starting; &quot;goose session&quot; gained --system.
+- Custom providers can fetch their credential by running a command, so
+  short-lived tokens refresh without a restart.
+- New providers Opper and Databricks Unity Catalog discovery; Z.ai default
+  model id fixed and GLM-5.3-flash added.
+- Upstream hardening: per-turn model tool allowlists, restricted extension tool
+  dispatch, provider secret suffixes no longer exposed. No CVE/GHSA ids were
+  assigned in the 1.48.0..1.49.0 range.
+- Re-vendored (1328 crates, 612 linked); the 13-identifier License tag is
+  unchanged. bundled(aws-lc) corrected to 5.7.0 after aws-lc-sys 0.44.0 -&gt;
+  0.45.0.
+- goose-system-libdbus.patch rebased for the iroh bump.
+
+Built locally on aarch64 against openSUSE:Factory:ARM: rpmlint 0 errors,
+0 warnings, 0 badness.</comment>
+    <requestid>1375755</requestid>
+  </revision>
 </revisionlist>
