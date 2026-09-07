@@ -29,7 +29,7 @@
 %endif
 
 Name:           %{pname}
-Version:        0.10.0
+Version:        0.10.1
 Release:        0
 Summary:        Linux GPU Configuration And Monitoring Tool
 License:        MIT
@@ -67,12 +67,6 @@ Patch0:         prevent-strip.patch
 
 # PATCH-FIX-OPENSUSE fix-clang-args.patch -- Fix clang args for bindgen to find vendored DRM headers.
 Patch1:         fix-clang-args.patch
-
-# PATCH-FIX-UPSTREAM lact-CVE-2026-75037-polkit-peer-pid-auth.patch bsc#1274863 CVE-2026-75037 -- Fixes Polkit auth bypass via PID reuse/spoofing (CWE-290) 
-Patch2:         lact-CVE-2026-75037-polkit-peer-pid-auth.patch
-
-# PATCH-FIX-UPSTREAM lact-CVE-2026-75038-snapshot-tmpfile-race.patch bsc#1274863 CVE-2026-75038 -- Fixes predictable /tmp file creation (CWE-377)
-Patch3:         lact-CVE-2026-75038-snapshot-tmpfile-race.patch
 
 # Rust is only available on these architectures
 ExclusiveArch:  x86_64 aarch64

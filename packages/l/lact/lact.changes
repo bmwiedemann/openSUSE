@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Sep 04 21:19:57 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Removed the following patches, as they are included upstream in this release:
+  * lact-CVE-2026-75037-polkit-peer-pid-auth.patch
+  * lact-CVE-2026-75038-snapshot-tmpfile-race.patch
+- Bump to version 0.10.1:
+  * chore: appdata with new release
+  * chore: translations update from Fedora Weblate (#1150)
+  * refactor: abstract away intel DRM logic, add a mock implementation  (#1182)
+  * fix: Mb -> MiB in vram size
+  * fix: use pidfd for polkit auth if possible, patch zbus_polkit
+  * chore: remove device name from stats (#1176)
+  * fix: update list of apu devices which need p-levels workaround (#1174)
+  * chore: add Asrock 9070 XT Steel Legend and Sparkle Arc 310 Eco (#1173)
+  * feat: show additional clock domains in UI (#1172)
+  * fix: swtich nvidia V/F curve to offsets (#1161)
+  * feat: support AMD profile performance-levels (#1170)
+  * feat: fan control for Intel Xe (needs patched kernel) (#1108)
+  * fix: only create new file when writing debug snapshot
+  * fix: pass uid from unix socket creds instead of inferring from pid in polkit checks
+  * fix: ignore intel_pmt on test snapshots (#1165)
+  * chore: update a380-xe snapshot data
+  * feat: report clockspeed of extra clock domains on nvidia (#1155)
+  * feat: fmt gpu name in gpu-picker (#1157)
+  * fix: complete Turkish translations (#1152)
+  * fix: show time in local timezone in chart rendering
+  * chore: add commited cliff.toml
+  * fix: add policy file to fedora spec
+  * fix: service setup dialog in flatpak
+  * chore: Update spec files for release v0.10.0 (#1149)
+
+-------------------------------------------------------------------
 Mon Aug 24 15:29:16 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
 
 - Security fixes from SUSE security audit (bsc#1274863):
