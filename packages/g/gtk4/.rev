@@ -1165,4 +1165,16 @@ New upstream release</comment>
   + Updated translations.</comment>
     <requestid>1366022</requestid>
   </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>a6c244c8ed3b5eb28a74581a25783f66</srcmd5>
+    <version>4.22.4+35</version>
+    <time>1788773250</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 4.22.4+35:
+  + css: Fix invalidation for text decorations
+  + gtkapplication-wayland: Add a missing NULL check when
+    forgetting a window
+  + Updated translations.</comment>
+    <requestid>1375699</requestid>
+  </revision>
 </revisionlist>
