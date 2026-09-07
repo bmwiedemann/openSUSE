@@ -278,4 +278,14 @@
   * Add patch Remove-boost-system-component-from-cmakefiles.patch (forwarded request 1308809 from anag_factory)</comment>
     <requestid>1308810</requestid>
   </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>080500d56481a3b01b64334316701706</srcmd5>
+    <version>2.5.14</version>
+    <time>1788773549</time>
+    <user>anag_factory</user>
+    <comment>* Add cadabra2-microtex-inc-FcFreeTypeQuery-def.patch to include the header file for FcFreeTypeQuery function definition.
+* Drop BuildRequires: libboost_date-time-devel: stub library, no longer needed (for TW only).
+* Use fdupes to symlink duplicate doc files.</comment>
+    <requestid>1375898</requestid>
+  </revision>
 </revisionlist>

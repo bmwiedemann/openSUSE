@@ -1,7 +1,7 @@
 #
 # spec file for package cadabra2
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,6 +42,8 @@ Source0:        %{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM cadabra2-disable-components-test.patch gh#kpeeters/cadabra2#212 badshah400@gmail.com -- Disable a test that crashes for unknown reasons
 Patch0:         cadabra2-disable-components-test.patch
 Patch1:         Remove-boost-system-component-from-cmakefiles.patch
+# PATCH-FIX-UPSTREAM cadabra2-microtex-inc-FcFreeTypeQuery-def.patch  badshah400@gmail.com -- Include fontconfig/fcfreetype.h header for FcFreeTypeQuery definition
+Patch2:         cadabra2-microtex-inc-FcFreeTypeQuery-def.patch
 BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module gobject-devel}
 BuildRequires:  %{python_module matplotlib}
@@ -51,10 +53,13 @@ BuildRequires:  appstream-glib
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  doxygen
+BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
 BuildRequires:  hicolor-icon-theme
+%if 0%{?suse_version} < 1650
 BuildRequires:  libboost_date_time-devel
+%endif
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_headers-devel
 BuildRequires:  libboost_program_options-devel
@@ -63,6 +68,7 @@ BuildRequires:  libboost_regex-devel
 BuildRequires:  libuuid-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
+BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(gtkmm-3.0)
 BuildRequires:  pkgconfig(jsoncpp)
@@ -161,7 +167,7 @@ rm examples/.gitignore
 # Remove timestamps from Doxygen HTML files
 echo "HTML_TIMESTAMP = NO" >> config/Doxyfile
 # REMOVE HASHBANG FROM NON-EXEC SCRIPT
-sed -i "1{/#!\/usr\/bin\/env python/d}" libs/appdirs/cdb_appdirs.py
+sed -i "1{/#!\/usr\/bin\/env python/d}" libs/appdirs/cdb_appdirs.py core/packages/cdb/remote/__init__.py
 
 %build
 %{python_expand #
@@ -183,6 +189,7 @@ cd ..
 
 %install
 %cmake_install
+%fdupes -s doxygen/html
 
 mkdir -p %{buildroot}%{_datadir}/texmf/tex/latex/cadabra2/
 ln %{buildroot}%{_datadir}/cadabra2/latex/* %{buildroot}%{_datadir}/texmf/tex/latex/cadabra2/

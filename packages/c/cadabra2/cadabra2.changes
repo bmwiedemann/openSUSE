@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Sep  5 08:09:38 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Restore BuildRequires: libboost_date_time-devel for Leap 16.1
+  and older to fix build failures.
+
+-------------------------------------------------------------------
+Sat Sep  5 06:57:39 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add cadabra2-microtex-inc-FcFreeTypeQuery-def.patch to include
+  the header file for FcFreeTypeQuery function definition.
+- Drop BuildRequires: libboost_date-time-devel: stub library, no
+  longer needed.
+- Use fdupes to symlink duplicate doc files.
+
+-------------------------------------------------------------------
 Fri Oct  3 07:39:10 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Remove BuildRequires on libboost_system-devel,
