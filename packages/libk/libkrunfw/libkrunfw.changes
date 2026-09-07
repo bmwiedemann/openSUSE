@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug  3 21:11:36 UTC 2026 - Matej Cepl <mcepl@suse.com>
+
+- Add use-evp-api.patch which replaces the deprecated OpenSSL 3.0
+  digest APIs with the correct modern EVP API.
+
+-------------------------------------------------------------------
 Fri Jun 12 10:13:38 UTC 2026 - Dario Faggioli <dfaggioli@suse.com>
 
 - Update to 5.5.0

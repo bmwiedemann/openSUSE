@@ -1,0 +1,166 @@
+Port to modern OpenSSL EVP API to fix deprecation warnings
+
+The `krunfw_measurement.c` tool uses `SHA256_Init`, `SHA256_Update`, 
+`SHA256_Final` and `SHA384` directly. These are deprecated in 
+OpenSSL 3.0+. This causes a build failure if warnings are treated 
+as errors or due to stricter compilation flags in the OBS environment.
+
+Switch to `EVP_DigestInit_ex`, `EVP_DigestUpdate`, `EVP_DigestFinal_ex`,
+and `EVP_Q_digest` to maintain compatibility with modern OpenSSL versions.
+
+Signed-off-by: AI Assistant
+---
+ utils/krunfw_measurement.c |   53 ++++++++++++++++++++++++---------------------
+ 1 file changed, 29 insertions(+), 24 deletions(-)
+
+Index: libkrunfw-5.5.0/utils/krunfw_measurement.c
+===================================================================
+--- libkrunfw-5.5.0.orig/utils/krunfw_measurement.c	2026-06-08 16:54:35.000000000 +0200
++++ libkrunfw-5.5.0/utils/krunfw_measurement.c	2026-08-03 22:26:08.661075833 +0200
+@@ -3,6 +3,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <dlfcn.h>
++#include <openssl/evp.h>
+ #include <openssl/sha.h>
+ #include <unistd.h>
+ #include <asm/bootparam.h>
+@@ -94,7 +95,7 @@
+ void digest_blob(char *current, char *blob, uint64_t load_addr, size_t size)
+ {
+ 	int i, j;
+-	SHA512_CTX ctx;
++	EVP_MD_CTX *mdctx;
+ 	struct page_info info;
+ 
+ 
+@@ -103,19 +104,19 @@
+ 		memset(&info, 0, sizeof(struct page_info));
+ 
+ 		memcpy(&info.current[0], current, 48);
+-		SHA384(blob + i, 4096, &info.contents[0]);
++		EVP_Q_digest(NULL, "SHA384", NULL, blob + i, 4096, &info.contents[0], NULL);
+ 
+ 		info.length = sizeof(struct page_info);
+ 		info.page_type = 1;
+ 		info.gpa = load_addr + i;
+ 
+-		SHA384((char *)&info, sizeof(struct page_info), current);
++		EVP_Q_digest(NULL, "SHA384", NULL, (char *)&info, sizeof(struct page_info), current, NULL);
+ 	}
+ }
+ 
+ void digest_zero(char *current, uint64_t gaddr, size_t size, uint8_t page_type)
+ {
+-	SHA512_CTX ctx;
++	EVP_MD_CTX *mdctx;
+ 	struct page_info info;
+ 	int i;
+ 
+@@ -128,24 +129,24 @@
+ 		info.page_type = page_type;
+ 		info.gpa = gaddr + i;
+ 
+-		SHA384((char *)&info, sizeof(struct page_info), current);
++		EVP_Q_digest(NULL, "SHA384", NULL, (char *)&info, sizeof(struct page_info), current, NULL);
+ 	}
+ }
+ 
+ void digest_vmsa(char *current, const char *vmsa)
+ {
+-	SHA512_CTX ctx;
++	EVP_MD_CTX *mdctx;
+ 	struct page_info info;
+ 
+ 	memset(&info, 0, sizeof(struct page_info));
+ 	memcpy(&info.current[0], current, 48);
+-	SHA384(vmsa, 4096, &info.contents[0]);
++	EVP_Q_digest(NULL, "SHA384", NULL, vmsa, 4096, &info.contents[0], NULL);
+ 
+ 	info.length = sizeof(struct page_info);
+ 	info.page_type = 2;
+ 	info.gpa = 0xFFFFFFFFF000;
+ 
+-	SHA384((char *)&info, sizeof(struct page_info), current);
++	EVP_Q_digest(NULL, "SHA384", NULL, (char *)&info, sizeof(struct page_info), current, NULL);
+ }
+ 
+ void measurement_snp(int num_cpus)
+@@ -193,31 +194,33 @@
+ 	char *payload_addr;
+ 	size_t payload_size;
+ 	size_t load_addr;
+-	SHA256_CTX shactx;
++	EVP_MD_CTX *mdctx;
+ 	char digest[33];
+ 	int i;
+ 
+-	SHA256_Init(&shactx);
++	mdctx = EVP_MD_CTX_new();
++	EVP_DigestInit_ex(mdctx, EVP_sha256(), NULL);
+ 
+ 	payload_addr = krunfw_get_qboot(&payload_size);
+-	SHA256_Update(&shactx, payload_addr, payload_size);
++	EVP_DigestUpdate(mdctx, payload_addr, payload_size);
+ 
+ 	payload_addr = krunfw_get_kernel(&load_addr, &payload_size);
+-	SHA256_Update(&shactx, payload_addr, payload_size);
++	EVP_DigestUpdate(mdctx, payload_addr, payload_size);
+ 
+ 	payload_addr = krunfw_get_initrd(&payload_size);
+-	SHA256_Update(&shactx, payload_addr, payload_size);
++	EVP_DigestUpdate(mdctx, payload_addr, payload_size);
+ 
+ 	bootp.hdr.ramdisk_size = payload_size;
+-	SHA256_Update(&shactx, &bootp, 4096);
++	EVP_DigestUpdate(mdctx, &bootp, 4096);
+ 
+-	SHA256_Update(&shactx, &VMSA_BP, 4096);
++	EVP_DigestUpdate(mdctx, &VMSA_BP, 4096);
+ 	for (i = 1; i < num_cpus; i++)
+ 	{
+-		SHA256_Update(&shactx, &VMSA_AP, 4096);
++		EVP_DigestUpdate(mdctx, &VMSA_AP, 4096);
+ 	}
+ 
+-	SHA256_Final(&digest[0], &shactx);
++	EVP_DigestFinal_ex(mdctx, &digest[0], NULL);
++	EVP_MD_CTX_free(mdctx);
+ 
+ 	printf("SEV-ES:\t");
+ 	for (i = 0; i < 32; ++i)
+@@ -232,25 +235,27 @@
+ 	char *payload_addr;
+ 	size_t payload_size;
+ 	size_t load_addr;
+-	SHA256_CTX shactx;
++	EVP_MD_CTX *mdctx;
+ 	char digest[33];
+ 	int i;
+ 
+-	SHA256_Init(&shactx);
++	mdctx = EVP_MD_CTX_new();
++	EVP_DigestInit_ex(mdctx, EVP_sha256(), NULL);
+ 
+ 	payload_addr = krunfw_get_qboot(&payload_size);
+-	SHA256_Update(&shactx, payload_addr, payload_size);
++	EVP_DigestUpdate(mdctx, payload_addr, payload_size);
+ 
+ 	payload_addr = krunfw_get_kernel(&load_addr, &payload_size);
+-	SHA256_Update(&shactx, payload_addr, payload_size);
++	EVP_DigestUpdate(mdctx, payload_addr, payload_size);
+ 
+ 	payload_addr = krunfw_get_initrd(&payload_size);
+-	SHA256_Update(&shactx, payload_addr, payload_size);
++	EVP_DigestUpdate(mdctx, payload_addr, payload_size);
+ 
+ 	bootp.hdr.ramdisk_size = payload_size;
+-	SHA256_Update(&shactx, &bootp, 4096);
++	EVP_DigestUpdate(mdctx, &bootp, 4096);
+ 
+-	SHA256_Final(&digest[0], &shactx);
++	EVP_DigestFinal_ex(mdctx, &digest[0], NULL);
++	EVP_MD_CTX_free(mdctx);
+ 
+ 	printf("SEV:\t");
+ 	for (i = 0; i < 32; ++i)

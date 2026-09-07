@@ -41,6 +41,9 @@ License:        GPL-2.0-only AND LGPL-2.1-only
 URL:            https://github.com/containers/libkrunfw
 Source0:        https://github.com/containers/libkrunfw/archive/v%{version}.tar.gz#/libkrunfw-%{version}.tar.gz
 Source1:        https://www.kernel.org/pub/linux/kernel/v6.x/%{kernel}.tar.xz
+# PATCH-FIX-UPSTREAM use-evp-api.patch mcepl@suse.com
+# make the package compatible with OpenSSL 3.*
+Patch0:         use-evp-api.patch
 ExclusiveArch:  x86_64 aarch64
 # For building libkrunfw itself, we need:
 BuildRequires:  gcc
@@ -110,7 +113,7 @@ consume the guest payload integrated in libkrunfw-sev.
 %endif
 
 %prep
-%autosetup -S git
+%autosetup -p1 -S git
 mkdir tarballs
 cp %{SOURCE1} tarballs/
 
