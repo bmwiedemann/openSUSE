@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Sep  3 20:19:43 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 1.2609.0:
+  * Speed up object member lookup by traversing child pages
+    directly
+  * Fix buffered JSON dumping with zero-sized and small caller-
+    provided workspaces
+  * Ensure correct linking with libm on glibc 2.42 and later
+  * Correct transposed calloc() arguments that trigger warnings
+    with newer compilers
+  * Clarify string-buffer lifetime and thread-safety guarantees in
+    the API documentation
+  * Expand correctness tests, fuzzing, and cross-platform CI
+    coverage
+
+-------------------------------------------------------------------
 Sat Jul 25 09:57:44 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Employ a Source URL for the tarball
