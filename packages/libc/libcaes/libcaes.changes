@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Sep  6 13:05:30 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20260905
+  * New function `libcaes_crypt_ccm_ctr_only`
+
+-------------------------------------------------------------------
 Thu May 21 01:14:41 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20260520
