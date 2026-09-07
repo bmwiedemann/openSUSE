@@ -712,4 +712,12 @@
     <comment>Add support for recommended firmware attribute. jsc#PED-14636 - UEFI as default for new VMs.</comment>
     <requestid>1332578</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>788cb569099f1cb459e3f1ebf8223788</srcmd5>
+    <version>20260812</version>
+    <time>1788773248</time>
+    <user>anag_factory</user>
+    <comment>Update to version 20260812 and fix for bsc#1268781</comment>
+    <requestid>1375690</requestid>
+  </revision>
 </revisionlist>

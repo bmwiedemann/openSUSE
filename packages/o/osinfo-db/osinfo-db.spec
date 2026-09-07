@@ -17,25 +17,22 @@
 
 
 Name:           osinfo-db
-Version:        20251212
+Version:        20260812
 Release:        0
 Summary:        Osinfo database files
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
 Group:          System/Management
 URL:            https://gitlab.com/libosinfo/osinfo-db
-Source:         https://releases.pagure.org/libosinfo/%{name}-%{version}.tar.xz
-Patch1:         Add-optional-recommended-attribute-to-firmware.patch
+Source:         https://gitlab.com/libosinfo/osinfo-db/-/releases/v%{version}/downloads/osinfo-db-%{version}.tar.xz
 Patch21:        add-oes-support.patch
 Patch22:        add-caasp40-support.patch
-Patch23:        add-win-2k19-media-info.patch
-Patch24:        fix-tumbleweed-order.patch
-Patch25:        adjust-tumbleweed-hardware-requirements.patch
+Patch23:        fix-tumbleweed-order.patch
+Patch24:        adjust-tumbleweed-hardware-requirements.patch
 Patch30:        add-slem6.0-support.patch
 Patch31:        add-slem6.1-support.patch
 Patch32:        add-slem6.2-support.patch
-Patch33:        add-sles16-support.patch
-Patch34:        add-sles16.1-support.patch
-Patch35:        add-opensuse-leap-16.1-support.patch
+Patch33:        add-sles16.1-support.patch
+Patch34:        add-opensuse-leap-16.1-support.patch
 BuildRequires:  intltool
 BuildRequires:  osinfo-db-tools
 BuildArch:      noarch

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Sep  2 15:45:58 MDT 2026 - carnold@suse.com
+
+- Update to database version 20260812 (jsc#PED-14625)
+  osinfo-db-20251212.tar.xz
+- Drop patches contained in new tarball
+  Add-optional-recommended-attribute-to-firmware.patch
+  add-win-2k19-media-info.patch
+  add-sles16-support.patch (see bsc#1268781)
+- Update add-sles16.1-support.patch
+
+-------------------------------------------------------------------
 Tue Feb 10 10:52:18 MST 2026 - carnold@suse.com
 
 - jsc#PED-14636 - UEFI as default for new VMs

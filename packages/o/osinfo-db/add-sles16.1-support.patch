@@ -1,7 +1,7 @@
-Index: osinfo-db-20251212/os/suse.com/sles-16.1.xml
+Index: osinfo-db-20260812/os/suse.com/sles-16.1.xml
 ===================================================================
 --- /dev/null
-+++ osinfo-db-20251212/os/suse.com/sles-16.1.xml
++++ osinfo-db-20260812/os/suse.com/sles-16.1.xml
 @@ -0,0 +1,77 @@
 +<?xml version="1.0"?>
 +<libosinfo version="0.0.1">
@@ -14,7 +14,7 @@ Index: osinfo-db-20251212/os/suse.com/sles-16.1.xml
 +    <name xml:lang="ko">&#xC218;&#xC138; &#xB9AC;&#xB205;&#xC2A4; &#xAE30;&#xC5C5;&#xC6A9; 16.1</name>
 +    <name xml:lang="pl">SUSE Linux Enterprise Server 16.1</name>
 +    <name xml:lang="it">SUSE Linux Enterprise Server 16.1</name>
-+    <version>16</version>
++    <version>16.0</version>
 +    <vendor>SUSE</vendor>
 +    <vendor xml:lang="ka">SUSE</vendor>
 +    <vendor xml:lang="ko">&#xC218;&#xC138;</vendor>
@@ -30,8 +30,8 @@ Index: osinfo-db-20251212/os/suse.com/sles-16.1.xml
 +    <vendor xml:lang="ca">SUSE</vendor>
 +    <family>linux</family>
 +    <distro>sles</distro>
-+    <upgrades id="http://suse.com/sles/16"/>
-+    <derives-from id="http://suse.com/sles/16"/>
++    <upgrades id="http://suse.com/sles/16.0"/>
++    <derives-from id="http://suse.com/sles/16.0"/>
 +    <firmware arch="x86_64" type="efi" recommended="true"/>
 +    <media arch="x86_64">
 +      <iso>
