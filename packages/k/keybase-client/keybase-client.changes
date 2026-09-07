@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Sep  5 17:57:12 UTC 2026 - Matthias Bach <marix@marix.org>
+
+- CVE-2026-56855,CVE-2026-56854,CVE-2026-78662: authentication bypass and deadlocks in the crypto/ssh library 
+  * Add update-go-crypto.patch to update affected dependency (bsc#1278586).
+- Update to go 1.26 as required to update go crypto library
+  * Add fix-go-1.26.patch to fix build issues with go 1.26.
+
+-------------------------------------------------------------------
 Sat Jul 18 10:12:34 UTC 2026 - Matthias Bach <marix@marix.org>
 
 - CVE-2026-39824: failure to reject ASCII-only Punycode-encoded labels

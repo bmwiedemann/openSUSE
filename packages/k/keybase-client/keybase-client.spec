@@ -36,8 +36,10 @@ Patch3:         update-filippo.io-edwards25519.patch
 Patch4:         update-golang-image-1.patch
 Patch5:         update-golang-image-2.patch
 Patch6:         update-golang-net.patch
+Patch7:         update-go-crypto.patch
+Patch8:         fix-go-1.26.patch
 BuildRequires:  fdupes
-BuildRequires:  go1.25
+BuildRequires:  go1.26
 BuildRequires:  golang-packaging
 BuildRequires:  gzip
 BuildRequires:  pkgconfig

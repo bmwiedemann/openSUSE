@@ -1,0 +1,33 @@
+From: Matthias Bach <marix@marix.org>
+Date: Sat, 5 Sep 2026 20:07:23 +0200
+Subject: [PATCH] Fix errors preventing build on on Go 1.26
+Upstream: tbd
+
+---
+ go/keybase/main.go | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/go/keybase/main.go b/go/keybase/main.go
+index 1bc9f44661..392e1b0ed1 100644
+--- a/go/keybase/main.go
++++ b/go/keybase/main.go
+@@ -495,14 +495,14 @@ func startProfile(g *libkb.GlobalContext) {
+ 			g.Log.Debug("dumping periodic memory profile")
+ 			f, err := os.CreateTemp("", "keybase_memprofile")
+ 			if err != nil {
+-				g.Log.Debug("could not create memory profile: ", err)
++				g.Log.Debug("could not create memory profile: %v", err)
+ 				continue
+ 			}
+ 
+ 			debug.FreeOSMemory()
+ 			runtime.GC() // get up-to-date statistics
+ 			if err := pprof.WriteHeapProfile(f); err != nil {
+-				g.Log.Debug("could not write memory profile: ", err)
++				g.Log.Debug("could not write memory profile: %v", err)
+ 				continue
+ 			}
+ 			f.Close()
+-- 
+2.51.0
+
