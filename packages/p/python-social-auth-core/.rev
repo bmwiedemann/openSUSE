@@ -581,4 +581,13 @@
   * VK app authentication now requires an auth key.</comment>
     <requestid>1362191</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>ffd194a5cce6ea75ecdd043f9f5f89cc</srcmd5>
+    <version>5.0.2</version>
+    <time>1788773462</time>
+    <user>anag_factory</user>
+    <comment>- drop optional dependency on python-python-jose
+</comment>
+    <requestid>1375802</requestid>
+  </revision>
 </revisionlist>

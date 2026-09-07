@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep  4 12:35:02 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- drop optional dependency on python-python-jose
+
+-------------------------------------------------------------------
 Sun Jun 28 14:44:05 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.0.2:

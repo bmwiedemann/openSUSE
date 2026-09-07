@@ -48,7 +48,6 @@ BuildRequires:  %{python_module responses}
 BuildRequires:  %{python_module typing_extensions}
 #/SECTION
 # SECTION optional requirements for tests
-BuildRequires:  %{python_module python-jose >= 3.0.0}
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module python3-saml >= 1.16.0}
 #/SECTION
@@ -60,7 +59,6 @@ Requires:       python-python3-openid >= 3.2.0
 Requires:       python-python3-saml >= 1.16.0
 Requires:       python-requests >= 2.34.0
 Requires:       python-requests-oauthlib >= 2.0.0
-Recommends:     python-python-jose >= 3.0.0
 BuildArch:      noarch
 %python_subpackages
 
