@@ -1813,4 +1813,13 @@ http://lists.opensuse.org/opensuse-factory/2015-03/msg00391.html (forwarded requ
   * Updated lists of ioctl commands from Linux 7.2. (forwarded request 1371788 from Andreas_Schwab)</comment>
     <requestid>1371789</requestid>
   </revision>
+  <revision rev="122" vrev="2">
+    <srcmd5>bb96bef1eb50e53e0f29d093c423ce66</srcmd5>
+    <version>7.2</version>
+    <time>1788773180</time>
+    <user>anag_factory</user>
+    <comment>- Remove unused sysvinit-tools and time
+- Don't require mpers support (forwarded request 1375556 from Andreas_Schwab)</comment>
+    <requestid>1375557</requestid>
+  </revision>
 </revisionlist>

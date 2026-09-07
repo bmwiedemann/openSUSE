@@ -42,10 +42,6 @@ BuildRequires:  libunwind-devel
 BuildRequires:  lksctp-tools-devel
 BuildRequires:  xz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%if 0%{?suse_version} > 1140
-BuildRequires:  sysvinit-tools
-BuildRequires:  time
-%endif
 %ifarch x86_64
 Obsoletes:      strace-32bit
 %endif
@@ -63,11 +59,7 @@ and processes can be seen.  Child processes can also be tracked.
 %setup -q
 
 %build
-%configure \
-%ifarch aarch64
-  --disable-mpers \
-%endif
-  %{nil}
+%configure --enable-mpers=check
 make %{?_smp_mflags}
 
 # Exclude testsuite for qemu builds, qemu-linux-user doesn't support ptrace.

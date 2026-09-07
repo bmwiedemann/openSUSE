@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep  2 15:35:21 UTC 2026 - Andreas Schwab <schwab@suse.de>
+
+- Remove unused sysvinit-tools and time
+- Don't require mpers support
+
+-------------------------------------------------------------------
 Tue Aug 18 12:05:15 UTC 2026 - Andreas Schwab <schwab@suse.de>
 
 - Update to strace 7.2
