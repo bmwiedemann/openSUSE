@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Sep  2 20:03:13 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.3:
+  + Fixed pam_gdm regression where a previous security fix caused
+    authentication to fail on systemd, which intentionally leaves
+    the kernel keyring buffer unterminated
+  + Fixed potential use-after-free where gdm-session-settings did
+    not keep a reference to the user, which could be freed by the
+    manager while it was still emitting signals
+  + Fixed connection reference leaks and a use-after-free crash in
+    session worker connection teardown that could bring down the
+    whole user session during screen lock/unlock
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Aug 13 02:31:39 UTC 2026 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Add gdm-fix-tty1-mode.patch: During system startup, tty1 is left
