@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Sep  4 09:15:44 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to 26.2.4
+  * Added NVL-P Platform Support.
+  * Upgraded API version to 2.17.
+  * Fixed AV1/H264/H265 decoder destructor exception handling.
+- Changes from 26.1.5
+  * Decode Surface Allocation Fix: Fixed surface allocation for
+    H264, H265, and VVC decoders - minimum surface count changed
+    from dpbSize + 1 + asyncDepth to dpbSize + 2 * asyncDepth to
+    prevent surface starvation at async depth > 1.
+  * Decode Error Code Accuracy: Fixed error code returned for empty
+    work surface in AV1, VVC, and legacy decoders — now returns
+    MFX_ERR_INVALID_VIDEO_PARAM instead of MFX_ERR_LOCK_MEMORY for
+    more accurate diagnostics.
+  * AV1 Decode Robustness: Added null pointer check for input
+    parameter in AV1 CheckFourCCProfile to prevent potential crash
+    on invalid input.
+  * VA Profile Coverage: Extended VA_PROFILE bit definitions for
+    broader profile coverage.
+  * API Alignment: Relaxed frame width and height alignment
+    requirement in API description for struct mfxFrameInfo.
+- Update supplements.inc with new entries.
+
+-------------------------------------------------------------------
 Wed Feb  4 12:55:54 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to 26.1.1
