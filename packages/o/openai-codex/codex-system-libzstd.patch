@@ -1,0 +1,22 @@
+From: Martin Pluskal <martin@pluskal.org>
+Subject: Link zstd against the system libzstd
+
+zstd-sys otherwise compiles and statically links its bundled zstd 1.5.7 C
+sources.  Its "pkg-config" feature (forwarded by zstd-safe) makes build.rs
+probe pkg-config for libzstd instead; setting it in the workspace manifest
+rather than via ZSTD_SYS_USE_PKG_CONFIG covers %build and %check in one place.
+
+Distribution policy (do not bundle system libraries), not suitable for
+upstream submission.
+
+--- a/codex-rs/Cargo.toml
++++ b/codex-rs/Cargo.toml
+@@ -504,7 +504,7 @@
+ wildmatch = "2.6.1"
+ winapi-util = "0.1.11"
+ zip = "2.4.2"
+-zstd = "0.13"
++zstd = { version = "0.13", features = ["pkg-config"] }
+ 
+ wiremock = "0.6"
+ zeroize = "1.8.2"

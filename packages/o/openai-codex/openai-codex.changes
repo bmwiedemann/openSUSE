@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Fri Sep  4 08:26:17 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.153.2:
+  * Correct the GPT-6-Astra Fast tier description to "2x speed"
+    instead of "1.5x"; display text only, request handling is
+    unchanged
+- Update to version 0.153.1:
+  * GPT-6-Astra can be configured through the API without changing
+    the default model or listing it in the model picker
+- Build against the system bzip2, libzstd, oniguruma and sqlite
+  instead of the copies bzip2-sys, zstd-sys, onig_sys and
+  libsqlite3-sys otherwise compile in; drop their bundled()
+  Provides and add pkgconfig(bzip2), pkgconfig(libzstd),
+  pkgconfig(oniguruma) >= 6.9.3 and pkgconfig(sqlite3) >= 3.34.1
+  * Add codex-system-libzstd.patch, which turns on zstd's
+    "pkg-config" feature in the workspace manifest
+  * oniguruma and sqlite have no usable manifest switch, so %build
+    and %check export RUSTONIG_SYSTEM_LIBONIG and
+    LIBSQLITE3_SYS_USE_PKG_CONFIG instead, and %install now fails
+    the build unless all four are DT_NEEDED of codex
+  * aws-lc stays bundled: aws-lc-sys has no system-library mode
+- Keep vendor.tar.zst: 0.153.2 has the same Cargo.lock as 0.153.0,
+  so the linked crate set, the License tag and the
+  Legal-Review-Notice counts are unchanged
+
+-------------------------------------------------------------------
+Thu Sep  3 08:56:51 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.153.0:
+  * Vim mode gains undo (u) and redo (Ctrl+R), preserving whole
+    drafts including pasted content and attachments
+  * The plugin CLI lists, installs and removes plugins from remote
+    marketplaces
+  * tui.auto_recap = false turns off automatic recaps while keeping
+    /recap available
+  * TUI history shows complete patches, input sent to background
+    terminals and individual completed commands
+  * TUI sessions reconnect after an app-server connection drops,
+    keeping drafts and holding queued submissions for review
+  * Guardian review history survives compaction, restarts and
+    forks; Full Access skips Guardian review for confirmation-only
+    actions
+  * Remembered MCP tool approvals are scoped to the selected
+    app account
+  * tui.disable_paste_burst replaces the top-level setting, which
+    stays supported as a fallback
+  * New disabled-by-default
+    features.context_management.experimental_mode
+- Refresh codex-drop-v8-code-mode.patch and
+  codex-no-startup-update-check.patch for the moved context
+- Regenerate vendor.tar.zst: the 14 crates 0.153.0 adds to the
+  lockfile are all Windows-only, so the linked third-party set,
+  the License tag and the bundled() versions are unchanged; the
+  Legal-Review-Notice counts move only by one added first-party
+  workspace member
+
+-------------------------------------------------------------------
 Wed Sep  2 06:29:40 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.152.1:

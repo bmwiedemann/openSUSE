@@ -348,4 +348,41 @@ Built locally on aarch64 and on OBS for x86_64 and aarch64: rpmlint 0
 errors / 0 warnings / 0 badness, %check 763 tests, 0 failed.</comment>
     <requestid>1375356</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>39f14fb273a207079d14c287af8d337f</srcmd5>
+    <version>0.153.2</version>
+    <time>1788773384</time>
+    <user>anag_factory</user>
+    <comment>openai-codex 0.153.0 -&gt; 0.153.2, and unbundle four C libraries
+
+Supersedes sr#1375609 (0.153.0), which this replaces rather than follows.
+
+- 0.153.1 lets GPT-6-Astra be configured through the API without changing
+  the default model or listing it in the model picker; 0.153.2 corrects one
+  displayed tier description (&quot;2x speed&quot;, not &quot;1.5x&quot;) - display text only.
+- bzip2, libzstd, oniguruma and sqlite now come from the distribution
+  instead of being compiled in by bzip2-sys, zstd-sys, onig_sys and
+  libsqlite3-sys. Their bundled() Provides are dropped and pkgconfig(bzip2),
+  pkgconfig(libzstd), pkgconfig(oniguruma) &gt;= 6.9.3 and
+  pkgconfig(sqlite3) &gt;= 3.34.1 added - the two floors are the versions the
+  crates' own build scripts probe for.
+  The mechanism differs per crate and was read out of each build.rs:
+  libzstd via the manifest feature (codex-system-libzstd.patch); oniguruma
+  and sqlite via RUSTONIG_SYSTEM_LIBONIG / LIBSQLITE3_SYS_USE_PKG_CONFIG,
+  neither crate offering a usable manifest switch; bzip2 by bzip2-sys's own
+  pkg-config autodetect. %install now aborts unless all four are DT_NEEDED
+  of the binary, so the unbundling cannot regress silently.
+- aws-lc stays bundled: aws-lc-sys has no system-library mode.
+- Cargo.lock is byte-identical to 0.153.0's, so vendor.tar.zst is reused and
+  the linked crate tally, the License tag and the Legal-Review-Notice counts
+  (876/128/748 aarch64, 878/128/750 x86_64) are unchanged.
+- Built locally on aarch64: rpmlint 0 errors / 0 warnings / 0 badness,
+  %check 765 tests passed in 10 binaries. The packaged binary NEEDs
+  libbz2.so.1, libzstd.so.1, libonig.so.5 and libsqlite3.so.0, and the RPM
+  requires all four sonames; the 0.153.0 build required none of them.
+  Smoke-tested with LD_BIND_NOW=1: codex --version, codex debug models, and
+  codex app-server, whose SQLite stores report &quot;last written using SQLite
+  version 3053002&quot; - the system 3.53.2, not the bundled 3.51.3.</comment>
+    <requestid>1375766</requestid>
+  </revision>
 </revisionlist>

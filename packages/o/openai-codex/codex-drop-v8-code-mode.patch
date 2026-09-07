@@ -23,15 +23,15 @@ Downstream-only distribution policy, not suitable for upstream submission.
      "codex-home",
      "cloud-config",
      "cloud-tasks",
-@@ -96,7 +94,6 @@
-     "otel",
+@@ -101,7 +99,6 @@
+     "otel-trace-websocket",
      "tui",
      "tools",
 -    "v8-poc",
      "websocket-client",
      "worktree",
      "workload-identity",
-@@ -178,7 +175,6 @@
+@@ -185,7 +182,6 @@
  codex-cloud-tasks-mock-client = { path = "cloud-tasks-mock-client" }
  codex-code-mode = { path = "code-mode" }
  codex-code-mode-protocol = { path = "code-mode-protocol" }
@@ -39,7 +39,7 @@ Downstream-only distribution policy, not suitable for upstream submission.
  codex-home = { path = "codex-home" }
  codex-http-client = { path = "http-client" }
  codex-websocket-client = { path = "websocket-client" }
-@@ -280,7 +276,6 @@
+@@ -290,7 +286,6 @@
  codex-utils-stream-parser = { path = "utils/stream-parser" }
  codex-utils-string = { path = "utils/string" }
  codex-utils-template = { path = "utils/template" }
@@ -47,7 +47,7 @@ Downstream-only distribution policy, not suitable for upstream submission.
  codex-workload-identity = { path = "workload-identity" }
  codex-windows-sandbox = { path = "windows-sandbox-rs" }
  core_test_support = { path = "core/tests/common" }
-@@ -490,7 +485,6 @@
+@@ -501,7 +496,6 @@
  url = "2"
  urlencoding = "2.1"
  uuid = "1"
@@ -55,7 +55,7 @@ Downstream-only distribution policy, not suitable for upstream submission.
  vt100 = "0.16.2"
  walkdir = "2.5.0"
  webbrowser = "1.2.2"
-@@ -551,7 +545,6 @@
+@@ -562,7 +556,6 @@
  ignored = [
      "icu_provider",
      "openssl-sys",

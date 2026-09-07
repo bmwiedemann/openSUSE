@@ -17,20 +17,20 @@
 
 
 Name:           openai-codex
-Version:        0.152.1
+Version:        0.153.2
 Release:        0
 Summary:        OpenAI Codex coding agent for the terminal
 # Legal-Review-Notice: upstream codex is Apache-2.0. Everything after that
 # covers the Rust crates statically linked into the shipped
 # %%{_bindir}/codex binary, enumerated with
 #   cargo tree --offline -p codex-cli -e normal,no-proc-macro
-# against the vendored tree (875 crates on aarch64, 877 on x86_64: 748
-# third-party vendored deps on aarch64 and 750 on x86_64, plus 127
+# against the vendored tree (876 crates on aarch64, 878 on x86_64: 748
+# third-party vendored deps on aarch64 and 750 on x86_64, plus 128
 # first-party codex workspace members, which are Apache-2.0 like upstream.
 # Every one declares a licence, none is missing; only the third-party count
 # is a licence signal, the workspace one moves whenever upstream adds a
 # crate). Electing Apache-2.0 where it is offered and MIT otherwise, the
-# aarch64 tally is Apache-2.0 648, MIT 174,
+# aarch64 tally is Apache-2.0 649, MIT 174,
 # Unicode-3.0 20, MPL-2.0 12, ISC 7, BSD-3-Clause 6, Zlib 5, BSD-2-Clause 1,
 # CC0-1.0 1, CDLA-Permissive-2.0 1.
 #  - self_cell 1.2.2 is "Apache-2.0 OR GPL-2.0-only" and is the ONLY crate
@@ -54,10 +54,19 @@ Summary:        OpenAI Codex coding agent for the terminal
 #    "ISC AND (Apache-2.0 OR ISC) AND Apache-2.0 AND MIT AND BSD-3-Clause AND
 #    (Apache-2.0 OR ISC OR MIT) AND (Apache-2.0 OR ISC OR MIT-0)". Electing
 #    Apache-2.0 in each OR leaves ISC, Apache-2.0, MIT and BSD-3-Clause, all of
-#    which the tag already carries. It is one of the bundled C libraries listed
-#    in the Provides: bundled(...) lines below. matchit (MIT AND BSD-3-Clause),
-#    encoding_rs, ring and aws-lc-rs similarly keep ISC / BSD-3-Clause in the
-#    tag even when Apache-2.0 is elected as the crate's primary licence.
+#    which the tag already carries. aws-lc is the only third-party C *library*
+#    still compiled into the binary (Provides: bundled(aws-lc) below; ring and
+#    blake3 also build C/asm of their own, but neither is a packaged system
+#    library, so neither is owed a bundled() line); bzip2, libzstd,
+#    oniguruma and sqlite now come from the distribution, so the C sources the
+#    matching -sys crates carry - bzip2's own licence, SQLite's public domain,
+#    oniguruma's BSD-2-Clause and zstd's BSD-3-Clause-or-GPL-2.0 dual - are
+#    shipped in the src.rpm inside vendor.tar.zst but linked into nothing, and
+#    place no obligation on the binary package. The Rust glue crates are still
+#    linked, so the tally above and the License: tag are unchanged by that.
+#  - matchit (MIT AND BSD-3-Clause), encoding_rs, ring and aws-lc-rs similarly
+#    keep ISC / BSD-3-Clause in the tag even when Apache-2.0 is elected as the
+#    crate's primary licence.
 License:        Apache-2.0 AND MIT AND Unicode-3.0 AND MPL-2.0 AND ISC AND BSD-3-Clause AND Zlib AND BSD-2-Clause AND CC0-1.0 AND CDLA-Permissive-2.0
 URL:            https://github.com/openai/codex
 Source0:        https://github.com/openai/codex/archive/refs/tags/rust-v%{version}.tar.gz#/codex-rust-v%{version}.tar.gz
@@ -66,6 +75,8 @@ Source1:        vendor.tar.zst
 Patch0:         codex-drop-v8-code-mode.patch
 # PATCH-FIX-OPENSUSE codex-no-startup-update-check.patch mpluskal@suse.com -- distribution policy: do not probe github.com for updates on startup
 Patch1:         codex-no-startup-update-check.patch
+# PATCH-FIX-OPENSUSE codex-system-libzstd.patch mpluskal@suse.com -- link zstd-sys against the system libzstd instead of its bundled copy
+Patch2:         codex-system-libzstd.patch
 BuildRequires:  cargo
 BuildRequires:  cargo-packaging >= 1.2.0
 BuildRequires:  cmake
@@ -75,8 +86,14 @@ BuildRequires:  memory-constraints
 BuildRequires:  pkgconfig
 BuildRequires:  rust >= 1.95
 BuildRequires:  zstd
+BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(liblzma)
+BuildRequires:  pkgconfig(libzstd)
+# onig_sys builds without its "generate" feature here, so its pre-generated
+# bindings need the 6.9.3 API; libsqlite3-sys asks pkg-config for 3.34.1.
+BuildRequires:  pkgconfig(oniguruma) >= 6.9.3
 BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(sqlite3) >= 3.34.1
 # The Linux sandbox launcher looks up bwrap in PATH and panics when it is
 # absent, so this is a hard requirement rather than a recommendation.
 Requires:       bubblewrap
@@ -84,15 +101,14 @@ Requires:       bubblewrap
 Requires:       git-core
 # Used for the built-in code search when present.
 Recommends:     ripgrep
-# Rust -sys crates that compile and statically link a bundled C library rather
-# than using the system one. There is no crate-level switch to unbundle
-# aws-lc-sys (it is reached through rama-tls-rustls); the others are the
-# crates' only supported build mode.
+# aws-lc-sys, reached through rama-tls-rustls, compiles and statically links
+# its own aws-lc and offers no switch to use a system library. bzip2-sys,
+# zstd-sys, onig_sys and libsqlite3-sys no longer compile theirs (see the
+# pkgconfig() BuildRequires above, Patch2, the exports in %%build/%%check and
+# the DT_NEEDED assertion in %%install); those C sources stay inside
+# vendor.tar.zst, hence in the src.rpm, but end up in no binary package and so
+# get no bundled() Provides.
 Provides:       bundled(aws-lc) = 1.71.0
-Provides:       bundled(bzip2) = 1.0.8
-Provides:       bundled(libzstd) = 1.5.7
-Provides:       bundled(oniguruma) = 6.9.10
-Provides:       bundled(sqlite) = 3.51.3
 ExclusiveArch:  %{rust_tier1_arches}
 
 %description
@@ -163,6 +179,18 @@ rm -rf codex-rs/v8-poc codex-rs/code-mode-runtime codex-rs/code-mode-host
 # bundling a private bubblewrap. The sandbox launcher looks up the system bwrap
 # on PATH first (codex-rs/linux-sandbox/src/launcher.rs).
 export CODEX_SKIP_BWRAP_BUILD=1
+# Use the system oniguruma and sqlite instead of the copies onig_sys and
+# libsqlite3-sys would otherwise compile in. Neither can be switched off from
+# the workspace manifest: onig_sys has no feature for it at all, and
+# libsqlite3-sys gets "bundled" from sqlx's sqlite-bundled, whose only upstream
+# opt-out (sqlite-unbundled) pulls in bindgen, which is not vendored (the
+# lockfile reaches it only through the v8 crate Patch0 removes, and
+# vendor.tar.zst carries neither bindgen nor clang-sys), so it cannot be used in
+# an offline build. Both build scripts check these env vars first. %%check
+# repeats them because both declare rerun-if-env-changed; %%install asserts the
+# result on the linked binary.
+export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
+export RUSTONIG_SYSTEM_LIBONIG=1
 # Upstream's release profile uses thin LTO. Combined with the -C debuginfo=2
 # the distribution adds (so find-debuginfo.sh can split out -debuginfo), the
 # single LTO rustc peaks at 43 GB RSS here - far beyond what any OBS worker
@@ -197,6 +225,16 @@ if test -z "$targetdir"; then
 fi
 install -D -m 0755 "$targetdir/release/codex" %{buildroot}%{_bindir}/codex
 
+# The unbundling is silent when it regresses: bzip2-sys falls back to its own
+# copy when pkg-config fails, and the two env vars in %%build are easy to lose.
+# Fail the build instead.
+for lib in libbz2.so libzstd.so libonig.so libsqlite3.so; do
+    readelf -d %{buildroot}%{_bindir}/codex | grep -q "NEEDED.*$lib" || {
+        echo "ERROR: $lib is not a DT_NEEDED of codex - it got bundled again" >&2
+        exit 1
+    }
+done
+
 install -d %{buildroot}%{_datadir}/bash-completion/completions
 install -d %{buildroot}%{_datadir}/fish/vendor_completions.d
 install -d %{buildroot}%{_datadir}/zsh/site-functions
@@ -209,6 +247,10 @@ install -d %{buildroot}%{_datadir}/zsh/site-functions
 "$targetdir/release/codex" completion zsh  > %{buildroot}%{_datadir}/zsh/site-functions/_codex
 
 %check
+# Same as %%build: both build scripts declare rerun-if-env-changed, so without
+# these the test profile would rebuild them with the library bundled.
+export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
+export RUSTONIG_SYSTEM_LIBONIG=1
 cd codex-rs
 # Deliberately an allowlist rather than --workspace. --workspace cannot be used
 # at all: it reaches the members Patch0 removes. Beyond that the choice is one
