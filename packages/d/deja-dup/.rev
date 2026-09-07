@@ -842,4 +842,22 @@ So preferably for 13.1 as well.</comment>
     failures on slow hardware</comment>
     <requestid>1349694</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>c0418363d22ca634c5389d91195f445b</srcmd5>
+    <version>50.2</version>
+    <time>1788773659</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 50.2:
+  + Show disk usage of include/exclude folders in the
+    first-time-backup screen too
+  + Notice when an encrypted volume is unlocked, and re-attempt
+    backup if we're overdue
+  + Use full &quot;Déjà Dup Backups&quot; as app name in system menus
+    (instead of &quot;Backups&quot;)
+  + Minor UI tweaks (follow HIG better, update cloud icons)
+  + Duplicity: allow overwriting files on restore again (this broke
+    with duplicity 3.0.7)
+  + Restic: speed up the every-two-months verification step</comment>
+    <requestid>1376126</requestid>
+  </revision>
 </revisionlist>

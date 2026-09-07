@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Sep  6 06:40:37 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.2:
+  + Show disk usage of include/exclude folders in the
+    first-time-backup screen too
+  + Notice when an encrypted volume is unlocked, and re-attempt
+    backup if we're overdue
+  + Use full "Déjà Dup Backups" as app name in system menus
+    (instead of "Backups")
+  + Minor UI tweaks (follow HIG better, update cloud icons)
+  + Duplicity: allow overwriting files on restore again (this broke
+    with duplicity 3.0.7)
+  + Restic: speed up the every-two-months verification step
+
+-------------------------------------------------------------------
 Mon Apr 27 06:11:31 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 50.1:
