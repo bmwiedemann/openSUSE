@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Feature-Compat-Class
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,22 +18,23 @@
 
 %define cpan_name Feature-Compat-Class
 Name:           perl-Feature-Compat-Class
-Version:        0.70.0
+Version:        0.80.0
 Release:        0
-# 0.07 -> normalize -> 0.70.0
-%define cpan_version 0.07
+# 0.08 -> normalize -> 0.80.0
+%define cpan_version 0.08
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Make class syntax available
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/P/PE/PEVANS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Module::Build) >= 0.4004
-BuildRequires:  perl(Object::Pad) >= 0.806
-BuildRequires:  perl(Test::More) >= 0.88
-Requires:       perl(Object::Pad) >= 0.806
+BuildRequires:  perl(Module::Build) >= 0.400.400
+BuildRequires:  perl(Object::Pad) >= 0.823
+BuildRequires:  perl(Test2::V0)
+Requires:       perl(Object::Pad) >= 0.823
 Provides:       perl(Feature::Compat::Class) = %{version}
 %undefine       __perllib_provides
 %{perl_requires}
@@ -47,7 +48,8 @@ Perl added such syntax at version 5.38.0, which is enabled by
    use feature 'class';
 
 This syntax was further expanded in 5.40, adding the '__CLASS__' keyword
-and ':reader' attribute on fields.
+and ':reader' attribute on fields, and again in 5.42 to add the ':writer'
+attribute.
 
 On that version of perl or later, this module simply enables the core
 feature equivalent of using it directly. On such perls, this module will
@@ -65,7 +67,7 @@ of the early-access nature of this branch, and are expected to be lifted as
 work progresses towards a more featureful and complete implementation.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Build.PL --installdirs=vendor

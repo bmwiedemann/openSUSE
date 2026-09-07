@@ -7,4 +7,19 @@
     <comment>Module to try out new perl features ahead of time</comment>
     <requestid>1241528</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>fbfbc83230ce499fe3955b028b06f1e2</srcmd5>
+    <version>0.80.0</version>
+    <time>1788791040</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.80.0 (0.08)
+   see /usr/share/doc/packages/perl-Feature-Compat-Class/Changes
+  0.08    2025-12-08
+          [CHANGES]
+           * Updated for Perl v5.42 to support the `:writer` field attribute on
+             scalar fields
+           * Swapped unit tests from `Test::More` to `Test2::V0`
+           * Account for respelling of &quot;unrecognized&quot; in latest bleadperl</comment>
+    <requestid>1375844</requestid>
+  </revision>
 </revisionlist>

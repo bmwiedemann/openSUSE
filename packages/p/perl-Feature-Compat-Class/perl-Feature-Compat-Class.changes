@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Dec  9 05:34:49 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.80.0 (0.08)
+   see /usr/share/doc/packages/perl-Feature-Compat-Class/Changes
+
+  0.08    2025-12-08
+          [CHANGES]
+           * Updated for Perl v5.42 to support the `:writer` field attribute on
+             scalar fields
+           * Swapped unit tests from `Test::More` to `Test2::V0`
+           * Account for respelling of "unrecognized" in latest bleadperl
+
+-------------------------------------------------------------------
 Tue Jan 28 17:28:49 UTC 2025 - Tina Müller <tina.mueller@suse.com>
 
 - Initial import
