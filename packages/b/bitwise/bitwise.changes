@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Sep  7 06:54:07 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.70
+  Enhancements:
+  * Unary plus and minus in expressions: -5, 5 * -2 and 10 - -2
+    evaluate instead of being rejected. On the command line,
+    separate a leading minus with --: bitwise -- '-5'.
+  Bug Fixes:
+  * &, ^ and | now have the C precedence order, where & and ^ used
+    to share a level.
+  * Numbers that don't parse cleanly are now refused instead of
+    guessing: 12a used to evaluate as 12, a bare 0x or 0b as 0,
+    and a literal past UINT64_MAX as UINT64_MAX.
+  * Shifts and BIT() at or past the width of the value give 0,
+    instead of an answer computed from a masked shift count:
+    1 << 64 used to be 1, and 1 << 200 used to be 256.
+  * Fixed a stack buffer overflow on tokens longer than 64
+    characters, reachable from both the command line and the
+    : prompt.
+  * Radix64 output now matches the system l64a(); a fallback shim
+    was overriding libc and printing a different alphabet.
+  * Parse errors no longer corrupt the curses display.
+  * Fixed the ASCII line of the conversion output on big-endian
+    hosts.
+
+-------------------------------------------------------------------
 Wed Sep  2 10:51:25 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.60

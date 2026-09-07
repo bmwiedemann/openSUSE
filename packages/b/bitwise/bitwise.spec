@@ -18,7 +18,7 @@
 
 
 Name:           bitwise
-Version:        0.60
+Version:        0.70
 Release:        0
 Summary:        Interactive bit-wise operation in ncurses
 License:        GPL-3.0-or-later
