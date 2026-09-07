@@ -3652,4 +3652,34 @@ an &quot;excludebuild:python-ruff:test&quot; line in openSUSE:Factory:Staging.
     <comment>Update to 0.16.5 (forwarded request 1374225 from pluskalm)</comment>
     <requestid>1374236</requestid>
   </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>736e72ba8e6aa1acf64d207ec414e10e</srcmd5>
+    <version>0.16.6</version>
+    <time>1788773262</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.16.6
+
+- Preview: pytest-fixture-autouse moved to the restriction category, PT020
+  gained an autofix, the TID254/TID255 fix loop is fixed, I001 no longer
+  counts pragma comments towards the line length
+- Parser now validates unary expressions; unary plus allowed in match
+  patterns on Python 3.15
+- Rule fixes: ASYNC230/PLW1514 recognise builtins.open, B031 no longer
+  panics on match subjects, DTZ901 rejects tzinfo=None for datetime
+  bounds, PT017 no longer emits duplicate diagnostics, RUF102 drops the
+  lint.external hint, PTH208 gained a display-only fix for os.listdir
+
+Rust dependencies re-vendored. Licence set of the statically linked
+crates re-derived with cargo tree over the new vendored tree: unchanged
+at MIT AND MPL-2.0, same three MPL-2.0 crates (colored, option-ext,
+version-ranges). No crate added or removed; seven permissive crates moved
+by patch/minor only. The linked-crate count in the Legal-Review-Notice
+goes 297 -&gt; 298 for the new ruff_python_edits workspace crate.
+
+Built locally on aarch64, both multibuild flavours green: rpmlint 0
+errors / 0 warnings / 0 badness; the test flavour's cargo test suite is
+62 suites, 2966 passed, 0 failed, 7 ignored. cargo audit reports no
+advisories.</comment>
+    <requestid>1375756</requestid>
+  </revision>
 </revisionlist>

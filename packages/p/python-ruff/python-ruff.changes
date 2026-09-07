@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Sep  4 08:34:54 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.16.6:
+  * Preview: pytest-fixture-autouse moved to the restriction
+    category, PT020 gained an autofix, the TID254/TID255 fix loop
+    is fixed, and I001 no longer counts pragma comments towards
+    the line length
+  * Parser now validates unary expressions; unary plus is allowed
+    in match patterns on Python 3.15
+  * ASYNC230 and PLW1514 recognise builtins.open
+  * B031 no longer panics on match subjects
+  * DTZ901 rejects tzinfo=None for datetime bounds
+  * PT017 no longer emits duplicate diagnostics
+  * RUF102 drops the lint.external hint for Ruff-specific
+    suppressions
+  * PTH208 gained a display-only fix for os.listdir
+- Re-vendor the Rust dependencies and re-derive the licence set of
+  the statically linked crates: unchanged at MIT AND MPL-2.0, same
+  three MPL-2.0 crates (colored, option-ext, version-ranges); only
+  seven permissive crates moved, all patch/minor bumps; the
+  linked-crate count in the Legal-Review-Notice goes 297 -> 298 for
+  the new ruff_python_edits workspace crate
+
+-------------------------------------------------------------------
 Fri Aug 28 06:01:49 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.16.5:
