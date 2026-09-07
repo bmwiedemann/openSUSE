@@ -18,7 +18,7 @@
 
 
 Name:           dnglab
-Version:        0.7.2
+Version:        0.8.0
 Release:        0
 Summary:        Camera RAW to DNG file format converter
 License:        LGPL-2.1-only
