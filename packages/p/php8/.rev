@@ -1914,4 +1914,12 @@
     <comment>[bsc#1273075], [bsc#1273076], [bsc#1273077], [bsc#1273078], CVE-2026-17543, CVE-2026-17544, CVE-2026-7260, CVE-2026-9672, GHSA-7qpv-r5mr-78m4, GHSA-vc5h-9ppw-p5f3, GHSA-x692-q9x7-8c3f</comment>
     <requestid>1368801</requestid>
   </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>9258504b6d1666e613f3acae925e2617</srcmd5>
+    <version>8.5.10</version>
+    <time>1788773256</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1375735</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Fri Aug 28 05:59:46 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
+
+- version update to 8.5.10
+    Core:
+        Fixed bug GH-22782 (Const expr FCC crashes under preloading).
+        Fixed bug GH-23088 (Stack overflow when comparing deeply nested arrays).
+    Date:
+        Fixed leak on double DatePeriod::__construct() call.
+    DOM:
+        Fixed bug GH-23116 (Stack overflow when normalizing a deeply nested DOMDocument).
+        Fixed bug GH-23117 (Stack overflow when normalizing a deeply nested Dom\XMLDocument).
+        Fixed bug GH-22825 (DOMElement::setAttribute() fails silently when the DTD declares a default value for the attribute).
+        Fixed bug GH-23120 (Stack overflow when comparing deeply nested DOM nodes with DOMNode::isEqualNode()).
+    Exif:
+        Fixed exif_read_data() allocating a HEIF meta box larger than the file it came from.
+    Intl:
+        Fixed IntlListFormatter::__construct() leaving stale global error state after successful calls.
+    Opcache:
+        Fixed GH-22693 (DT_TEXTREL in JIT-generated TLS access on x86_64).
+        Fixed bug GH-22763 (JIT fails to clear ZREG_TYPE_ONLY after setting reg).
+        Fixed bug GH-22857 (Function JIT emits wrong code for FETCH_OBJ_FUNC_ARG on a property hook getter, losing register-held variables).
+        Fixed bug GH-22916 (Preserve parent regs in zend_jit_deoptimizer_start()).
+    OpenSSL:
+        Fix missing error check on invalid alpn protocols.
+    MBString:
+        Fixed bug GH-22779 (mb_strrpos() returns the wrong position for a negative offset in a non-UTF-8 encoding).
+        Fixed bug GH-21036 (mb_ereg_search_getregs() crashes after mb_eregi() invalidates the regex cache).
+    PCRE:
+        Fixed bug GH-21134 (Crash with \C + UTF-8). Using \C in UTF-8 patterns is now forbidden.
+    PDO_ODBC:
+        Fixed bug GH-23016 (NULL values in long columns come back as garbage binary strings).
+    PDO_PGSQL:
+        Fixed several lazy fetch (PDO::ATTR_PREFETCH => 0) defects: an infinite loop when cleaning up a fetch left in a COPY, a use-after-free when a statement with emulated or disabled prepares is destroyed, a connection left busy for the next fetch, and rows delivered from a result another statement took over.
+    Reflection:
+        Fixed bug GH-22905 (Reflection exception messages truncate on null bytes).
+        Fixed ReflectionProperty::isLazy() and skipLazyInitialization() using the parent slot when a child class hooks an inherited property.
+        Fixed segfault in ReflectionMethod::createFromMethodName() on an uninstantiable subclass.
+    Session:
+        Fix corruption in mod_mm.
+        Fixed bug GH-23043 (broken session id code can cause zend_mm_heap corrupted).
+    SimpleXML:
+        Fixed integer element offsets that cannot resolve aliasing an existing element.
+        Fixed segfault when comparing uninitialized SimpleXMLElement instances.
+    Sockets:
+        Fixed socket_set_option() validation error messages for UDP_SEGMENT and SO_LINGER options.
+        Fixed various memory related issues in ext/sockets.
+    SQLite:
+        Fix leak when trying to close db if blob stream is still open.
+    Standard:
+        Fixed bug GH-23111 (Stack overflow in array_walk_recursive() with deeply nested arrays).
+        Fixed bug GH-23113 (Stack overflow in array_replace_recursive() with deeply nested arrays).
+        Fixed bug GH-23115 (Stack overflow in compact() with deeply nested arrays).
+    Streams:
+        Fixed bug GH-15836 (Use-after-free when a user stream filter accesses $this->stream during the close flush).
+    XSL:
+        Fixed use-after-free when a DOMDocument subclass __clone() retains the stylesheet copy made by XSLTProcessor::importStylesheet().
+- Removed php-fix-build-gcc16.patch (fixed upstream)
+
+-------------------------------------------------------------------
 Fri Jul 31 08:29:01 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - version update to 8.5.9

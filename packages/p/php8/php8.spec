@@ -57,7 +57,7 @@
 %bcond_without	sodium
 
 Name:           %{pprefix}%{php_name}%{psuffix}
-Version:        8.5.9
+Version:        8.5.10
 Release:        0
 Summary:        Interpreter for the PHP scripting language version 8
 License:        MIT AND PHP-3.01
@@ -93,8 +93,6 @@ Patch5:         php-systemd-unit.patch
 Patch22:        php-date-regenerate-lexers.patch
 # PATCH-FEATURE-UPSTREAM https://github.com/php/php-src/pull/6564
 Patch19:        php-build-reproducible-phar.patch
-# PATCH-FIX-OPENSUSE https://github.com/php/php-src/issues/22206
-Patch20:        php-fix-build-gcc16.patch
 BuildRequires:  apache-rpm-macros
 BuildRequires:  autoconf
 BuildRequires:  bison
