@@ -6898,4 +6898,12 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
 - Enable virtio vulkan driver</comment>
     <requestid>1372621</requestid>
   </revision>
+  <revision rev="587" vrev="1">
+    <srcmd5>9c8e07205f134bb602ea55f6887c4294</srcmd5>
+    <version>26.2.2</version>
+    <time>1788773259</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1375743</requestid>
+  </revision>
 </revisionlist>

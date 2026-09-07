@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Sep  4 06:22:01 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Adjust crate download URLs to http://static.crates.io/crates:
+  curl/wget receive a 403 when downloading from crates.io/api/
+
+-------------------------------------------------------------------
+Thu Sep  3 13:51:30 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to 26.2.2 bugfix release
+  --> https://docs.mesa3d.org/relnotes/26.2.2
+
+-------------------------------------------------------------------
 Thu Aug 20 11:00:32 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to 26.2.1 bugfix release

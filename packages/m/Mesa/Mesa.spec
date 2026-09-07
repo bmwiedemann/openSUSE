@@ -142,9 +142,9 @@
 %endif
 
 Name:           Mesa%{psuffix}
-Version:        26.2.1
+Version:        26.2.2
 Release:        0
-%define pkg_version 26.2.1
+%define pkg_version 26.2.2
 Summary:        System for rendering 3-D graphics
 License:        MIT
 Group:          System/Libraries
@@ -161,11 +161,11 @@ Source1:        https://archive.mesa3d.org/%{_name_archive}-%{pkg_version}.tar.x
 # To check new crates or update the versions, just go to the subprojects folder and
 # run `grep -r crates .` then set versions appropriately.
 # download with 'osc service runall download_files'; github tarballs have different checksums!
-Source2:        http://crates.io/api/v1/crates/unicode-ident/%{_unicode_ident_crate_ver}/download#/unicode-ident-%{_unicode_ident_crate_ver}.tar.gz
-Source3:        http://crates.io/api/v1/crates/syn/%{_syn_crate_ver}/download#/syn-%{_syn_crate_ver}.tar.gz
-Source4:        http://crates.io/api/v1/crates/quote/%{_quote_crate_ver}/download#/quote-%{_quote_crate_ver}.tar.gz
-Source5:        http://crates.io/api/v1/crates/proc-macro2/%{_proc_macro2_ver}/download#/proc-macro2-%{_proc_macro2_ver}.tar.gz
-Source6:        http://crates.io/api/v1/crates/paste/%{_paste_crate_ver}/download#/paste-%{_paste_crate_ver}.tar.gz
+Source2:        https://static.crates.io/crates/unicode-ident/unicode-ident-%{_unicode_ident_crate_ver}.crate#/unicode-ident-%{_unicode_ident_crate_ver}.tar.gz
+Source3:        http://static.crates.io/crates/syn/syn-%{_syn_crate_ver}.crate#/syn-%{_syn_crate_ver}.tar.gz
+Source4:        http://static.crates.io/crates/quote/quote-%{_quote_crate_ver}.crate#/quote-%{_quote_crate_ver}.tar.gz
+Source5:        http://static.crates.io/crates/proc-macro2/proc-macro2-%{_proc_macro2_ver}.crate#/proc-macro2-%{_proc_macro2_ver}.tar.gz
+Source6:        http://static.crates.io/crates/paste/paste-%{_paste_crate_ver}.crate#/paste-%{_paste_crate_ver}.tar.gz
 Source7:        baselibs.conf
 Source8:        README.updates
 Source9:        manual-pages.tar.bz2
@@ -173,7 +173,7 @@ Source10:       Mesa-rpmlintrc
 Source11:       Mesa.keyring
 Source12:       README-suse-maintenance.md
 # download with 'osc service runall download_files'; github tarballs have different checksums!
-Source22:       http://crates.io/api/v1/crates/rustc-hash/%{_rustc_hash_crate_ver}/download#/rustc-hash-%{_rustc_hash_crate_ver}.tar.gz
+Source22:       http://static.crates.io/crates/rustc-hash/rustc-hash-%{_rustc_hash_crate_ver}.crate#/rustc-hash-%{_rustc_hash_crate_ver}.tar.gz
 Patch2:         n_add-Mesa-headers-again.patch
 Patch17:        tlsdesc_test.patch
 # never to be upstreamed
