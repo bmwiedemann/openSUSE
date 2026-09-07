@@ -3861,4 +3861,20 @@ Petr</comment>
     <comment></comment>
     <requestid>1370016</requestid>
   </revision>
+  <revision rev="324" vrev="1">
+    <srcmd5>d7a722ca558f4441074ac679c01f1375</srcmd5>
+    <version>26.8.0.3</version>
+    <time>1788773318</time>
+    <user>anag_factory</user>
+    <comment>- Update to 26.8.0.3:
+  * Release notes:
+    https://wiki.documentfoundation.org/Releases/26.8.0/RC3
+- Update bundled pdfium to 7681 and skia to m147 as required by
+  the new download.lst.
+- Add box2d-detection.patch: configure derived the box2d version
+  from pkg-config only, which fails with the box2d 2.4.1 we ship
+  as it installs no box2d.pc.
+- Drop Qt 5 support in SLFO and Tumbleweed (related: boo#1277445)</comment>
+    <requestid>1375450</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Sep  1 03:51:55 UTC 2026 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Update to 26.8.0.3:
+  * Release notes:
+    https://wiki.documentfoundation.org/Releases/26.8.0/RC3
+- Update bundled pdfium to 7681 and skia to m147 as required by
+  the new download.lst.
+- Add box2d-detection.patch: configure derived the box2d version
+  from pkg-config only, which fails with the box2d 2.4.1 we ship
+  as it installs no box2d.pc.
+
+-------------------------------------------------------------------
+Sat Aug 29 22:09:56 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Drop Qt 5 support in SLFO and Tumbleweed (related: boo#1277445)
+
+-------------------------------------------------------------------
 Tue Jul 28 18:10:13 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to 26.2.5.2:

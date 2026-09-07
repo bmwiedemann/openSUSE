@@ -34,11 +34,11 @@
 %endif
 
 # When Tumbleweed or SLOF
-# Enable QT6/QT5 support
+# Enable QT6 support
 %if 0%{?suse_version} >= 1600
 %bcond_without qt
 %bcond_without qt6
-%bcond_without qt5
+%bcond_with qt5
 %else
 # When Leap or SLE15-SP4 or newer
 # Enable QT5 support
@@ -92,7 +92,7 @@
 %bcond_with system_curl
 %endif
 Name:           libreoffice
-Version:        26.2.5.2
+Version:        26.8.0.3
 Release:        0
 Summary:        A Free Office Suite (Framework)
 License:        LGPL-3.0-or-later AND MPL-2.0+
@@ -124,11 +124,11 @@ Source2005:     %{external_url}/a7983f859eafb2677d7ff386a023bc40-xsltml_2.1.2.zi
 Source2006:     https://dev-www.libreoffice.org/extern/8249374c274932a21846fa7629c2aa9b-officeotron-0.7.4-master.jar
 Source2007:     https://dev-www.libreoffice.org/extern/odfvalidator-0.9.0-RC2-SNAPSHOT-jar-with-dependencies-2726ab578664434a545f8379a01a9faffac0ae73.jar
 # PDFium is bundled everywhere
-Source2008:     %{external_url}/pdfium-7471.tar.bz2
+Source2008:     %{external_url}/pdfium-7681.tar.bz2
 # Single C file with patches from LO
 Source2009:     %{external_url}/dtoa-20180411.tgz
 # Skia is part of chromium and bundled everywhere as by google only way is monorepo way
-Source2010:     %{external_url}/skia-m142-f4ed99d2443962782cf5f8b4dd27179f131e7cbe.tar.xz
+Source2010:     %{external_url}/skia-m147-ad8ecedbfdef9f4ae4b1e73347b6dd56e6637d38.tar.xz
 # The following dependencies are for building JFreeReport, this fixes bsc#1195634
 Source2011:     %{external_url}/39bb3fcea1514f1369fcfc87542390fd-sacjava-1.3.zip
 Source2012:     %{external_url}/eeb2c7ddf0d302fba4bfc6e97eac9624-libbase-1.1.6.zip
@@ -156,6 +156,8 @@ Patch10:        fix_gtk_popover_on_3.20.patch
 Patch11:        fix_webp_on_sle12_sp5.patch
 # PATCH-FIX-SUSE Fix make distro-pack-install
 Patch15:        fix-sdk-idl.patch
+# PATCH-FIX-UPSTREAM detect system box2d without a pkg-config file
+Patch16:        box2d-detection.patch
 # try to save space by using hardlinks
 Patch990:       install-with-hardlinks.diff
 # save time by relying on rpm check rather than doing stupid find+grep
@@ -1129,6 +1131,7 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %patch -P 11 -p1
 %endif
 %patch -P 15 -p1
+%patch -P 16 -p1
 %patch -P 990 -p1
 %patch -P 991 -p1
 %if 0%{?suse_version} < 1550
