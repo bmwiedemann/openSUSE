@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep  3 14:02:51 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Drop USE_HIDAPI, as it produces a race condition (bsc#1234010)
+
+-------------------------------------------------------------------
 Fri Jan  2 21:39:16 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.16.0:

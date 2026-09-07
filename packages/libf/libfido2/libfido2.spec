@@ -93,7 +93,6 @@ This package contains the udev rules for FIDO2 compatible devices.
 %cmake \
     -DCBOR_LIBRARY_DIRS=%{_libdir} \
     -DBUILD_EXAMPLES=OFF \
-    -DUSE_HIDAPI=ON \
     -DNFC_LINUX=ON
 %cmake_build
 
