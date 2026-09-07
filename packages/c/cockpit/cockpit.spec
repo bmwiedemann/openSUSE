@@ -475,6 +475,9 @@ rm -f %{buildroot}/%{pamdir}/mock-pam-conv-mod.so
 
 sed -i "s|%{buildroot}||" *.list
 
+# Leap shares the same branding as opensuse
+ln -s ./opensuse %{buildroot}%{_datadir}/cockpit/branding/opensuse-leap
+
 %if 0%{?suse_version}
 test -e %{buildroot}/usr/share/cockpit/branding/opensuse/default-1920x1200.jpg  || install -m 644 -D /dev/null %{buildroot}/usr/share/cockpit/branding/opensuse/default-1920x1200.jpg
 test -e %{buildroot}/usr/share/cockpit/branding/suse/apple-touch-icon.png  || install -m 644 -D /dev/null %{buildroot}/usr/share/cockpit/branding/suse/apple-touch-icon.png

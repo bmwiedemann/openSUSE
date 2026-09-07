@@ -978,4 +978,13 @@ outside of Factory
   * Fix btrfs subvolume mount option parsing (rhbz#2483145)</comment>
     <requestid>1374318</requestid>
   </revision>
+  <revision rev="78" vrev="2">
+    <srcmd5>d7cedd56df7e56b70ee45bbb605fb611</srcmd5>
+    <version>365</version>
+    <time>1788773313</time>
+    <user>anag_factory</user>
+    <comment>- Symlink opensuse's branding to opensuse-leap as they should share the same
+  (bsc#1268639)</comment>
+    <requestid>1375321</requestid>
+  </revision>
 </revisionlist>
