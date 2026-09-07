@@ -56,7 +56,7 @@
 %endif
 
 Name:           python-kiwi
-Version:        10.3.9
+Version:        10.3.11
 Provides:       kiwi-schema = 8.1
 Release:        0
 Url:            https://github.com/OSInside/kiwi

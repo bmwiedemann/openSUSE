@@ -1,4 +1,148 @@
 -------------------------------------------------------------------
+Tue Aug 25 10:08:20 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.3.10 → 10.3.11
+
+-------------------------------------------------------------------
+Fri Aug 21 11:03:53 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix system mount list for chroot operations
+
+  Add /sys/fs/cgroup to the bind mount list as it is not
+  transported into the chroot when bind mounting only /sys.
+  This fixes problems for applications that runs as part
+  of image scripts or package scripts and required access
+  to the cgroups interface.
+
+-------------------------------------------------------------------
+Thu Aug 20 16:33:08 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update LVM integration test
+
+  Add a profile for building a DOS only LVM image and one with GPT
+
+-------------------------------------------------------------------
+Thu Aug 20 15:25:17 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix setup of partition IDs
+
+  When setting the partition type code (gUID, UUID) the partition
+  id hex code gets resetted to Linux(83) when it should stay at
+  the value it had before. This causes for example on LVM type(8e)
+  partitions a reset to Linux(83) which is unwanted. With this
+  commit we make sure the partition type hex code gets reset
+  to the correct value. This Fixes #3036
+
+-------------------------------------------------------------------
+Wed Aug 12 12:57:52 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.3.9 → 10.3.10
+
+-------------------------------------------------------------------
+Tue Aug 11 16:58:55 CEST 2026 - Neal Gompa <neal@gompa.dev>
+
+- doc: contributing: Rework AI policy
+
+  This is more in line with our intent and legal frameworks we operate
+  in.
+
+-------------------------------------------------------------------
+Tue Aug 11 16:00:12 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add SparseFile utility class
+
+  Add SparseFile class to consolidate sparse file creation to
+  be performed by either qemu-img or dd and replace all
+  direct qemu-img create calls by SparseFile.create(...).
+  This Fixes #3027
+
+  Assisted-by: GPT-5.3
+
+-------------------------------------------------------------------
+Mon Aug 10 16:48:26 CEST 2026 - Dan Čermák <dcermak@suse.com>
+
+- add autouse fixture that prevents /etc/kiwi.yml from loading
+
+  Currently kiwi will by default load the runtime config files, but that has the
+  disadvantage that the users config leaks into the test environment and breaks
+  certain tests that assume that the default tool is `foo`, but the users settings
+  say `bar`
+
+-------------------------------------------------------------------
+Mon Aug 10 16:11:03 CEST 2026 - Dan Čermák <dcermak@suse.com>
+
+- use f-strings
+
+-------------------------------------------------------------------
+Mon Aug 10 16:10:44 CEST 2026 - Dan Čermák <dcermak@suse.com>
+
+- remove obsolete python version check
+
+-------------------------------------------------------------------
+Mon Aug 10 12:01:20 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix test_baseVagrantSetup
+
+  The test checks for settings to appear in lowercase, but
+  depending on the OS this varies. This commit turns check
+  string and output string to lowercase to allow a match
+  in any case the setting occurs
+
+-------------------------------------------------------------------
+Mon Aug 10 10:26:30 CEST 2026 - Dan Čermák <dcermak@suse.com>
+
+- Align docs with code (#3029)
+
+  Align documentation with sources
+
+  This is a giant collection of various fixes to the documentation that drifted
+  from the source code. This is mostly new elements, removal of deprecated
+  elements, new values, flags or changed behavior
+
+  Co-authored-by: Claude Opus 5
+  Co-authored-by: GPT-5.6 Sol
+  Co-authored-by: Copilot Autofix powered by AI <175728472+Copilot@users.noreply.github.com>
+  Co-authored-by: Marcus Schäfer <marcus.schaefer@gmail.com>
+
+-------------------------------------------------------------------
+Wed Jul 29 14:20:29 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix test-image-aws-isolated-compute
+
+  Explicitly request python3-base. Due to changes on the
+  SUSE python packaging it's required to request python3-base
+  such that symlinks like /usr/bin/python3 exists
+
+-------------------------------------------------------------------
+Wed Jul 22 22:55:31 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix test-image-nitro-enclave rahide build test
+
+  /etc/modules-load.d only exists if a kernel gets
+  installed. For the container build to be used as
+  input for nitro-cli this is not the case
+
+-------------------------------------------------------------------
+Mon Jul 20 15:32:45 CEST 2026 - Ulf Seltmann <seltmann@b1-systems.de>
+
+- Fix OVA compose to respect machine section configuration
+
+  - Refactor OvaComposeTemplate for feature parity with VmwareSettingsTemplate
+  - Extract disk controller, network driver from machine section
+  - Support multiple NICs with per-interface configuration
+  - Add virtual hardware version (vmx-${version}) support
+
+  Fixes: #3025
+  Co-authored-by: copilot
+
+-------------------------------------------------------------------
+Sun Jul 19 10:20:14 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed build status helper
+
+  Make sure to show disabled build tests correctly
+
+-------------------------------------------------------------------
 Fri Jul 10 13:43:12 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 10.3.8 → 10.3.9
