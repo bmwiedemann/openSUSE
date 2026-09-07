@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Sep  4 07:15:00 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.10.9:
+  * Upstream release note: Salvaging (and verified) what's useful from #6103
+  * Includes the following technical improvements:
+    - Added new injection testing switches: --odata, --sparql, and --xslt
+    - Added --multi-bit switch to optimize blind inference
+    - Implemented Sybase ASE support (TDS 5.0) in dbwire client
+    - Introduced ten new WAF-bypass tamper scripts
+    - Improved automatic WAF bypass and keyset pagination
+    - Fixed several bugs across various database engines
+
+-------------------------------------------------------------------
 Mon Aug 10 09:17:37 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 1.10.8:
