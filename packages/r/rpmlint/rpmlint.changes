@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 31 11:57:26 UTC 2026 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- Update to version 2.10.0+git20260827.9644f1e0:
+  * polkit-rules-whitelist: add portprotonqt rules (bsc#1270218)
+
+-------------------------------------------------------------------
 Fri Aug 21 12:55:58 UTC 2026 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - Update to version 2.10.0+git20260819.485e0ded:

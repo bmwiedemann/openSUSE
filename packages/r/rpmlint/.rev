@@ -5796,4 +5796,13 @@ The version curretnly submitted to Factory breaks build of e.g coreutils (forwar
   * Bump actions/checkout from 6.0.2 to 6.0.3</comment>
     <requestid>1372854</requestid>
   </revision>
+  <revision rev="548" vrev="1">
+    <srcmd5>8273c388c19130e7cf101325a9613c54</srcmd5>
+    <version>2.10.0+git20260827.9644f1e0</version>
+    <time>1788773280</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.10.0+git20260827.9644f1e0:
+  * polkit-rules-whitelist: add portprotonqt rules (bsc#1270218)</comment>
+    <requestid>1374856</requestid>
+  </revision>
 </revisionlist>
