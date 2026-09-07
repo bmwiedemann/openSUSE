@@ -1328,4 +1328,12 @@ Mon Nov  14 08:20:28 UTC 2023 - Fredrik Lönnegren &lt;fredrik.lonnegren@suse.co
     <comment>Revert to v26 - https://github.com/systemd/mkosi/issues/4437</comment>
     <requestid>1375346</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>a905096471906579297a7ebee839de33</srcmd5>
+    <version>27</version>
+    <time>1788791073</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1376075</requestid>
+  </revision>
 </revisionlist>

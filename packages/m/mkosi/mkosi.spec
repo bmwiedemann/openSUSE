@@ -1,7 +1,7 @@
 #
 # spec file for package mkosi
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define pythons python3
 
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1699
 %ifarch x86_64 aarch64
 %bcond_without pandoc
 %else
@@ -28,7 +28,7 @@
 %endif
 
 Name:           mkosi
-Version:        26
+Version:        27
 Release:        0
 Summary:        Build bespoke OS Images
 License:        LGPL-2.1-or-later
@@ -36,8 +36,10 @@ Group:          System/Management
 URL:            https://github.com/systemd/mkosi
 Source0:        https://github.com/systemd/mkosi/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        mkosi-initrd.conf
-# PATCH-FIX-UPSTREAM https://github.com/systemd/mkosi/pull/4079
-Patch0:         0001-distribution-do-not-default-to-release-VERSION_ID-fo.patch
+# PATCH-FIX-UPSTREAM https://github.com/systemd/mkosi/pull/4432
+Patch0:         0001-tests-skip-test_fork_and_wait-if-on-rc-1.patch
+# PATCH-FIX-UPSTREAM https://github.com/systemd/mkosi/pull/4442
+Patch1:         0002-opensuse-tolerate-missing-RPM-keyring.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wheel}
