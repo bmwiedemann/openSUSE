@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep  3 10:29:35 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.57.0
+  * **auth:** add deprecation warning for grpcio &lt; 1.83.0 (PQC support) (#18070)
+  * **auth:** parse hostname for mTLS and PSC endpoint certificate rotation (#18153)
+  * **auth:** prevent TypeError and support home-dir cert fallback for X509 WIF on
+    ECP machines ([#18016)
+  * **handwritten:** centralize CONTRIBUTING.rst pointers (#17642)
+
+-------------------------------------------------------------------
 Wed Aug 12 08:02:53 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.56.3
