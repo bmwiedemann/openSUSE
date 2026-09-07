@@ -145,4 +145,43 @@ intended obsolete-not-provided warning; %check prints
 @picsart/gen-ai/2.73.0.</comment>
     <requestid>1375299</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d488bbfdbd0a268721d237a28ab1d7d1</srcmd5>
+    <version>2.75.0</version>
+    <time>1788773411</time>
+    <user>anag_factory</user>
+    <comment>Update picsart-gen-ai to 2.75.0 (crosses 2.74.1; there is no 2.74.0).
+
+- 2.75.0 adds the Gemini 3.8 Flash model: multimodal image-to-text
+  with vision and a low/medium/high --thinking.
+- 2.74.1 adds MiniMax H3 Max Turbo (5-15s video at 480p/768p from a
+  prompt or a start/end frame); retires --human-fidelity (--fidelity)
+  and --static-mask; narrows per-model surfaces (--resolution off
+  Kling Video O1 and both Motion Controls, --rendering-speed off Kling
+  V3 Omni and V2.6, --image-weight off Kling V2.1 Image, --count off
+  Qwen, --cfg-scale off Wan 2.6, which widens the merged --cfg-scale
+  range to 1-50); offers --seed on 18 models instead of 5; and rejects
+  several bad jobs locally instead of at the API.
+- Re-vendored via the node_modules OBS service: the package set is
+  unchanged, the nine @inquirer/* tarballs move up one patch level,
+  and the licence set of the 71 vendored packages still holds, so the
+  License tag and the Legal-Review-Notice are untouched.
+
+npm is the release authority: upstream tags on GitHub but publishes no
+GitHub releases, and the git tree is unbuildable downstream (its tsup
+config inlines the private @pulse/core and @pulse/server), so the
+package consumes the published npm artifact. Every changelog bullet was
+verified against the shipped cli.js bundles rather than the checked-in
+test snapshots, which lag the release.
+
+Built locally on aarch64: rpmlint 0 errors, 0 badness, the single
+warning the documented deliberate obsolete-not-provided; %check runs
+the installed entry point and reports 2.75.0.
+
+Supersedes SR 1375013, a stale 2.71.1 request declined by factory-auto
+for an orphaned gen-ai-2.71.1.tgz; the intervening 2.73.0 update landed
+via SR 1375299. This revision carries no unreferenced source: the only
+tarball is gen-ai-2.75.0.tgz (Source0).</comment>
+    <requestid>1375753</requestid>
+  </revision>
 </revisionlist>

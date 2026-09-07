@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Sep  4 08:36:21 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.75.0:
+  * Add the Gemini 3.8 Flash model: multimodal image-to-text with
+    vision and a low/medium/high --thinking
+- Update to version 2.74.1:
+  * Add the MiniMax H3 Max Turbo model: faster-than-realtime video
+    from a prompt or a start/end frame, 5-15s at 480p or 768p
+  * Retire --human-fidelity (--fidelity) and --static-mask, and
+    narrow per-model surfaces: --resolution off Kling Video O1 and
+    both Motion Controls, --rendering-speed off Kling V3 Omni
+    (10 -> 7 reference images) and Kling V2.6, --image-weight off
+    Kling V2.1 Image, --count off Qwen
+  * Drop --cfg-scale from Wan 2.6 and with it Kling's 0-1 variant,
+    which widens the merged range to 1-50; offer --seed on 18
+    models instead of 5, make --duration a free range on six more
+    models, add --audio-setting to Wan 2.7 Video Edit and rework
+    the ElevenLabs --language and --voice-id surface
+  * Reject locally rather than at the API: Kling Video Effects
+    templates needing two reference images, Kling Elements without
+    its video, Wan 3.0 with neither prompt nor media, an end frame
+    without a start frame, frames or multi-shot with base editing
+- Re-vendor: the package set is unchanged, the nine @inquirer/*
+  tarballs move up one patch level each, and the licence set of the
+  71 vendored packages still holds
+
+-------------------------------------------------------------------
 Wed Sep  2 06:30:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.73.0:
