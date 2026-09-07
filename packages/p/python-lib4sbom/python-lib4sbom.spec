@@ -28,6 +28,7 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 # Test requirements
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module PyYAML >= 5.4}
