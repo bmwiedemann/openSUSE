@@ -427,4 +427,23 @@
     bsc#1278584, CVE-2026-56855,CVE-2026-56854,CVE-2026-78662):</comment>
     <requestid>1375683</requestid>
   </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>730e12c54fbae0543b902cb00a81381f</srcmd5>
+    <version>2.1.0</version>
+    <time>1788789022</time>
+    <user>anag_factory</user>
+    <comment>- update vendor.tar to fix:
+  * bsc#1278584, CVE-2026-56855,CVE-2026-56854,CVE-2026-78662:
+    hauler: golang.org/x/crypto/ssh: authentication bypass and
+    deadlocks in the crypto/ssh library
+
+- update vendor.tar to fix:
+  * bsc#1279416, CVE-2026-84304
+  * bsc#1279296, CVE-2026-84303
+  * bsc#1278934, CVE-2026-84445: google.golang.org/grpc: DoS via
+    crash due to missing ':authority' and 'Host' headers
+
+- update to 2.1.0 (bsc#1265425, CVE-2026-41888):</comment>
+    <requestid>1376031</requestid>
+  </revision>
 </revisionlist>
