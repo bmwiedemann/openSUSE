@@ -924,4 +924,15 @@ Search-provider is now it's own subpackage (forwarded request 180587 from dimsta
     <comment>Update version</comment>
     <requestid>1348448</requestid>
   </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>fab90eaaab34e8242bae5a2795172b58</srcmd5>
+    <version>50.2</version>
+    <time>1788773660</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 50.2:
+  + Fixes: Fix opening in new window sometimes opens in existing
+    window
+  + Updated translations.</comment>
+    <requestid>1376127</requestid>
+  </revision>
 </revisionlist>
