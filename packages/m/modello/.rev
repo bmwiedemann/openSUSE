@@ -217,4 +217,12 @@
     <comment>2.7.0</comment>
     <requestid>1352128</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>9679417a4b68f5dc836753b094e43b6f</srcmd5>
+    <version>2.7.0</version>
+    <time>1788773443</time>
+    <user>anag_factory</user>
+    <comment>Fix build after removal of bootstrap plugins</comment>
+    <requestid>1375785</requestid>
+  </revision>
 </revisionlist>
