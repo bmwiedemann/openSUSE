@@ -128,7 +128,11 @@ export VTEST_SANDBOXED_PACKAGING='yes'
 # Build-time configuration
 export VEXE="%{_builddir}/%{buildsubdir}/%{name}"
 export VMODULES="%{_builddir}/%{buildsubdir}/.vmodules"
+%if 0%{?suse_version} >= 1600
+export VJOBS="${RPM_BUILD_NCPUS}"
+%else
 export VJOBS="%{?jobs:%jobs}"
+%endif
 
 # Print information about the build
 ./%{name} doctor

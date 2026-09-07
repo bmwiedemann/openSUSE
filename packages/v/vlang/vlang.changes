@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Sep  5 02:15:14 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Replace %jobs to make it bit-reproducible (boo#1237231)
+
+-------------------------------------------------------------------
 Fri Aug  7 20:01:37 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - CVE-2026-67201: vlang: server-side request forgery bypass flaw
