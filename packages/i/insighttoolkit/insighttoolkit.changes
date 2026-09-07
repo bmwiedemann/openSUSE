@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Sep  3 17:50:47 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to release 5.4.7
+  * NRRD IO reads and writes 5D datasets with multiple non-spatial
+    axes; TIFF IO gained signed/unsigned 32-bit integer support
+  * DiffusionTensor3DReconstructionImageFilter hoists the constant
+    tensor-basis SVD out of the per-voxel loop - large speedup, and
+    it no longer calls the thread-unsafe Netlib dsvdc
+  * ImageFileReader no longer crashes on short axis direction
+    vectors
+  * Single-precision FFTW headers and factory registration fixed
+- Changes from 5.4.6
+  * Fixed infinite loop in VoronoiDiagram2DGenerator, integer-only
+    Bresenham line construction, null checks in IPLCommonImageIO,
+    zero guard in CumulativeGaussianCostFunction, and added
+    ImageAdaptor::ComputeOffset so ImageRegionIterator works
+  * Inline destructors moved out of line for 30 exported classes to
+    stabilise the ABI
+  * Upstream's bundled-GDCM CVE-2026-3650 backport does not apply
+    here: this package builds against system GDCM
+  * Upstream's FFTW SIMD codelet work applies only to ITK's own
+    bundled FFTW; this package links the system fftw3
+  * Python-wrapping changes (PEP 688 buffer, GIL release) are not
+    shipped: the bindings stay disabled
+  * Many more fixes; see upstream's release notes for the full list
+- Spec cleanup: spec-cleaner pass, no functional change
+
+-------------------------------------------------------------------
 Wed Feb  4 20:07:46 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 5.4.5

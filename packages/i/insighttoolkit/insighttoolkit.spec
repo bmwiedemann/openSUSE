@@ -20,7 +20,6 @@
 %global __builder ninja
 %define tarname ITK
 %define libname lib%{name}5_4-1
-
 # Do not use system eigen on aarch64 until fixed upstream:
 # https://github.com/InsightSoftwareConsortium/ITK/issues/2903
 %ifarch aarch64
@@ -28,7 +27,6 @@
 %else
 %bcond_without system_eigen
 %endif
-
 # Python >= 3.8 is required
 %if 0%{?suse_version} > 1650
 %bcond_with python
@@ -36,12 +34,10 @@
 # Unreleased master branch of swig required <https://github.com/InsightSoftwareConsortium/ITK/issues/4746>
 %bcond_with python
 %endif
-
 # Tests disabled because they require downloading separate data files
 %bcond_with tests
-
 Name:           insighttoolkit
-Version:        5.4.5
+Version:        5.4.7
 Release:        0
 Summary:        Toolkit for scientific image processing, segmentation, and registration
 License:        Apache-2.0
@@ -70,6 +66,7 @@ BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(zlib)
 %if %{with python}
+# spec-cleaner --pkgconfig would expand this to stale pkgconfig(python-3.6)
 BuildRequires:  python3-devel >= 3.8
 BuildRequires:  swig >= 4.3
 %endif
