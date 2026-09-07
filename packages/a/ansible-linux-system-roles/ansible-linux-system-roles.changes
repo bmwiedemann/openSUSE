@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep  7 07:14:56 UTC 2026 - Harshvardhan Sharma <harshvardhan.sharma@suse.com>
+
+- Update to version 1.5.0: add new role
+- Add himmelblau role 1.2.0 (SLE 16.1 only):
+  - Microsoft Entra ID authentication and identity on Linux via
+    Himmelblau (https://github.com/SUSE/ansible-himmelblau)
+
+-------------------------------------------------------------------
 Mon Aug  3 15:26:32 UTC 2026 - Harshvardhan Sharma <harshvardhan.sharma@suse.com>
 
 - Update to version 1.4.1: fix HA cluster deployment on pacemaker 3.x (bsc#1271113)

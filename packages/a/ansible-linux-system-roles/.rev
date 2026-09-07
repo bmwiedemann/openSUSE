@@ -137,4 +137,12 @@ This package contains ansible roles from linux-system-roles project: https://git
     <comment></comment>
     <requestid>1369509</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>afe58d8b92c24adbd12e81cb7c5fa50a</srcmd5>
+    <version>1.5.0</version>
+    <time>1788773656</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1376098</requestid>
+  </revision>
 </revisionlist>

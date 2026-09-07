@@ -39,6 +39,7 @@
 %global network_version 1.18.0
 %global sudo_version 1.2.9
 %global logging_version 1.16.0
+%global himmelblau_version 1.2.0
 
 %if 0%{?suse_version} >= 1600
 %global sle16 1
@@ -50,7 +51,7 @@
 %define ansible_collection_path %{_datadir}/ansible/collections/ansible_collections/suse/%{ansible_collection_name}
 
 Name:           ansible-linux-system-roles
-Version:        1.4.1
+Version:        1.5.0
 Release:        0
 Summary:        Collection of Ansible roles for Linux system management
 License:        GPL-3.0-or-later
@@ -78,6 +79,7 @@ Source18:       %{url}/ansible-kernel_settings/archive/refs/tags/%{kernel_settin
 Source19:       %{url}/ansible-network/archive/refs/tags/%{network_version}-suse.tar.gz#/network-%{network_version}.tar.gz
 Source20:       %{url}/ansible-sudo/archive/refs/tags/%{sudo_version}-suse.tar.gz#/sudo-%{sudo_version}.tar.gz
 Source21:       %{url}/ansible-logging/archive/refs/tags/%{logging_version}-suse.tar.gz#/logging-%{logging_version}.tar.gz
+Source22:       %{url}/ansible-himmelblau/archive/refs/tags/%{himmelblau_version}-suse.tar.gz#/himmelblau-%{himmelblau_version}.tar.gz
 %endif
 Source999:      galaxy.yml
 
@@ -123,6 +125,7 @@ roles=(
   "network:%{network_version}"
   "sudo:%{sudo_version}"
   "logging:%{logging_version}"
+  "himmelblau:%{himmelblau_version}"
 %endif
 )
 
