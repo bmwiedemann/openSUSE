@@ -1,0 +1,261 @@
+From cb25e3b0a23327a1d8c39ca7fd089150604ecf02 Mon Sep 17 00:00:00 2001
+From: Jiri Slaby <jirislaby@kernel.org>
+Date: Sat, 5 Sep 2026 06:23:56 +0200
+Subject: [PATCH] Support openSUSE Leap 16.1
+References: bsc#1274769
+Patch-mainline: Submitted https://github.com/VirtualBox/virtualbox/issues/854
+
+The kernel in openSUSE Leap 16.1 is defined as SLFO 1.3.
+
+1) Define a new macro RTLNX_SUSE_SLFO_MAJ_PREREQ() for SLFO.
+2) Use it over the code, because the kernel adopted many features, but
+   is still at version 6.12.
+
+Signed-off-by: Jiri Slaby <jirislaby@kernel.org>
+---
+ include/iprt/linux/version.h                        | 7 +++++++
+ src/VBox/Additions/linux/drm/vbox_drv.c             | 8 ++++----
+ src/VBox/Additions/linux/drm/vbox_drv.h             | 8 ++++++++
+ src/VBox/Additions/linux/drm/vbox_fb.c              | 4 ++--
+ src/VBox/Additions/linux/drm/vbox_main.c            | 4 ++--
+ src/VBox/Additions/linux/drm/vbox_mode.c            | 2 +-
+ src/VBox/HostDrivers/Support/linux/SUPDrv-linux.c   | 2 +-
+ src/VBox/Runtime/r0drv/linux/initterm-r0drv-linux.c | 8 ++++----
+ src/VBox/Runtime/r0drv/linux/memobj-r0drv-linux.c   | 6 +++---
+ src/VBox/Runtime/r0drv/linux/the-linux-kernel.h     | 3 ++-
+ 10 files changed, 34 insertions(+), 18 deletions(-)
+
+diff --git a/include/iprt/linux/version.h b/include/iprt/linux/version.h
+index 27f414b00e0f..a40ea2e5ebe6 100644
+--- a/include/iprt/linux/version.h
++++ b/include/iprt/linux/version.h
+@@ -133,6 +133,13 @@
+ # define RTLNX_SUSE_MAJ_PREREQ(a_iMajor, a_iMinor) (0)
+ #endif
+ 
++/** @def RTLNX_SUSE_SLFO_MAJ_PREREQ
++ * Require a minimum minor release number for the given SUSE SLFO release.
++ * @param a_iMajor      CONFIG_SUSE_VERSION must _equal_ this.
++ * @param a_iMinor      CONFIG_SUSE_PATCHLEVEL must be greater or equal to this.
++ */
++#define RTLNX_SUSE_SLFO_MAJ_PREREQ(a_iMajor, a_iMinor) (IS_ENABLED(CONFIG_SUSE_PRODUCT_SLFO) && RTLNX_SUSE_MAJ_PREREQ(a_iMajor, a_iMinor))
++
+ /** @def RTLNX_SUSE_ADLP_MAJ_LNX_PREREQ
+  * Require a minimum minor release number for the given SUSE release.
+  *
+diff --git a/src/VBox/Additions/linux/drm/vbox_drv.c b/src/VBox/Additions/linux/drm/vbox_drv.c
+index 5679e97091ff..24dd0244d813 100644
+--- a/src/VBox/Additions/linux/drm/vbox_drv.c
++++ b/src/VBox/Additions/linux/drm/vbox_drv.c
+@@ -43,14 +43,14 @@
+ # include <drm/drm_probe_helper.h>
+ #endif
+ 
+-#if RTLNX_VER_MIN(6,13,0) && defined(CONFIG_APERTURE_HELPERS) || RTLNX_RHEL_RANGE(9,7, 9,99) || RTLNX_RHEL_RANGE(10,1, 10,99)
++#if RTLNX_VER_MIN(6,13,0) && defined(CONFIG_APERTURE_HELPERS) || RTLNX_RHEL_RANGE(9,7, 9,99) || RTLNX_RHEL_RANGE(10,1, 10,99) || RTLNX_SUSE_SLFO_MAJ_PREREQ(1,3)
+ # include <linux/aperture.h>
+ #endif
+ 
+ #if RTLNX_VER_RANGE(5,14,0, 6,13,0) || RTLNX_RHEL_RANGE(8,6, 8,99)
+ /** RHEL 9.7 is based on 5.14, however this header is not available
+  * there due to backports from newer kernels. Same for RHEL 10.X (based on 6.12) */
+-# if !RTLNX_RHEL_RANGE(9,7, 9,99) && !RTLNX_RHEL_RANGE(10,1, 10,99)
++# if !RTLNX_RHEL_RANGE(9,7, 9,99) && !RTLNX_RHEL_RANGE(10,1, 10,99) && !RTLNX_SUSE_SLFO_MAJ_PREREQ(1,3)
+ #  include <drm/drm_aperture.h>
+ # endif
+ #endif
+@@ -102,7 +102,7 @@ static int vbox_pci_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
+ 	}
+ #endif
+ 
+-# if RTLNX_VER_MIN(6,13,0) && defined(CONFIG_APERTURE_HELPERS) || RTLNX_RHEL_RANGE(9,7, 9,99) || RTLNX_RHEL_RANGE(10,1, 10,99)
++# if RTLNX_VER_MIN(6,13,0) && defined(CONFIG_APERTURE_HELPERS) || RTLNX_RHEL_RANGE(9,7, 9,99) || RTLNX_RHEL_RANGE(10,1, 10,99) || RTLNX_SUSE_SLFO_MAJ_PREREQ(1,3)
+ 	ret = aperture_remove_conflicting_pci_devices(pdev, driver.name);
+ # elif RTLNX_VER_RANGE(5,14,0, 6,13,0) || RTLNX_RHEL_RANGE(8,6, 8,99)
+ #  if RTLNX_VER_MIN(5,15,0) || RTLNX_RHEL_RANGE(8,7, 8,99) || RTLNX_RHEL_MIN(9,1) || RTLNX_SUSE_MAJ_PREREQ(15,4)
+@@ -399,7 +399,7 @@ static struct drm_driver driver = {
+ #endif
+ 	.name = DRIVER_NAME,
+ 	.desc = DRIVER_DESC,
+-#if RTLNX_VER_MAX(6,14,0) && !RTLNX_RHEL_RANGE(9,7, 9,99) && !RTLNX_RHEL_RANGE(10,1, 10,99)
++#if RTLNX_VER_MAX(6,14,0) && !RTLNX_RHEL_RANGE(9,7, 9,99) && !RTLNX_RHEL_RANGE(10,1, 10,99) && !RTLNX_SUSE_SLFO_MAJ_PREREQ(1,3)
+ 	.date = DRIVER_DATE,
+ #endif
+ #if RTLNX_VER_MIN(6,15,0) || RTLNX_RHEL_RANGE(9,7, 9,99) || RTLNX_RHEL_RANGE(10,1, 10,99)
+diff --git a/src/VBox/Additions/linux/drm/vbox_drv.h b/src/VBox/Additions/linux/drm/vbox_drv.h
+index 9f47a5e3aac0..ffdecbe2bb47 100644
+--- a/src/VBox/Additions/linux/drm/vbox_drv.h
++++ b/src/VBox/Additions/linux/drm/vbox_drv.h
+@@ -123,6 +123,14 @@
+ #else
+ # define RTLNX_SUSE_MAJ_PREREQ(a_iMajor, a_iMinor) (0)
+ #endif
++
++/** @def RTLNX_SUSE_SLFO_MAJ_PREREQ
++ * Require a minimum minor release number for the given SUSE SLFO release.
++ * @param a_iMajor      CONFIG_SUSE_VERSION must _equal_ this.
++ * @param a_iMinor      CONFIG_SUSE_PATCHLEVEL must be greater or equal to this.
++ */
++#define RTLNX_SUSE_SLFO_MAJ_PREREQ(a_iMajor, a_iMinor) (IS_ENABLED(CONFIG_SUSE_PRODUCT_SLFO) && RTLNX_SUSE_MAJ_PREREQ(a_iMajor, a_iMinor))
++
+ /* iprt/linux/version.h copy - end */
+ 
+ #if RTLNX_VER_MAX(4,5,0)
+diff --git a/src/VBox/Additions/linux/drm/vbox_fb.c b/src/VBox/Additions/linux/drm/vbox_fb.c
+index 16970bed2ee1..b29b39c81313 100644
+--- a/src/VBox/Additions/linux/drm/vbox_fb.c
++++ b/src/VBox/Additions/linux/drm/vbox_fb.c
+@@ -420,7 +420,7 @@ int vboxfb_create(struct drm_fb_helper *helper,
+ 	return 0;
+ }
+ 
+-#if RTLNX_VER_MAX(6,15,0) && !RTLNX_RHEL_RANGE(9,7, 9,99) && !RTLNX_RHEL_RANGE(10,1, 10,99)
++#if RTLNX_VER_MAX(6,15,0) && !RTLNX_RHEL_RANGE(9,7, 9,99) && !RTLNX_RHEL_RANGE(10,1, 10,99) && !RTLNX_SUSE_SLFO_MAJ_PREREQ(1,3)
+ static struct drm_fb_helper_funcs vbox_fb_helper_funcs = {
+ 	.fb_probe = vboxfb_create,
+ };
+@@ -493,7 +493,7 @@ int vbox_fbdev_init(struct drm_device *dev)
+ 	vbox->fbdev = fbdev;
+ 	spin_lock_init(&fbdev->dirty_lock);
+ 
+-#if RTLNX_VER_MIN(6,15,0) || RTLNX_RHEL_RANGE(9,7, 9,99) || RTLNX_RHEL_RANGE(10,1, 10,99)
++#if RTLNX_VER_MIN(6,15,0) || RTLNX_RHEL_RANGE(9,7, 9,99) || RTLNX_RHEL_RANGE(10,1, 10,99) || RTLNX_SUSE_SLFO_MAJ_PREREQ(1,3)
+ 	drm_fb_helper_prepare(dev, &fbdev->helper, 32, NULL);
+ #elif RTLNX_VER_MIN(6,3,0) || RTLNX_RHEL_RANGE(8,9, 8,99) || RTLNX_RHEL_RANGE(9,3, 9,99)
+ 	drm_fb_helper_prepare(dev, &fbdev->helper, 32, &vbox_fb_helper_funcs);
+diff --git a/src/VBox/Additions/linux/drm/vbox_main.c b/src/VBox/Additions/linux/drm/vbox_main.c
+index 1fa4d139cc40..747d0224a6d1 100644
+--- a/src/VBox/Additions/linux/drm/vbox_main.c
++++ b/src/VBox/Additions/linux/drm/vbox_main.c
+@@ -180,7 +180,7 @@ int vbox_framebuffer_init(struct drm_device *dev,
+ {
+ 	int ret;
+ 
+-#if RTLNX_VER_MIN(6,17,0) || RTLNX_RHEL_RANGE(9,8, 9,99) || RTLNX_RHEL_RANGE(10,2, 10,99)
++#if RTLNX_VER_MIN(6,17,0) || RTLNX_RHEL_RANGE(9,8, 9,99) || RTLNX_RHEL_RANGE(10,2, 10,99) || RTLNX_SUSE_SLFO_MAJ_PREREQ(1,3)
+ 	const struct drm_format_info *format = drm_get_format_info(dev, mode_cmd->pixel_format, 0);
+ 	drm_helper_mode_fill_fb_struct(dev, &vbox_fb->base, format, mode_cmd);
+ #elif RTLNX_VER_MIN(4,11,0) || RTLNX_RHEL_MAJ_PREREQ(7,5)
+@@ -201,7 +201,7 @@ int vbox_framebuffer_init(struct drm_device *dev,
+ static struct drm_framebuffer *vbox_user_framebuffer_create(
+ 		struct drm_device *dev,
+ 		struct drm_file *filp,
+-#if RTLNX_VER_MIN(6,17,0) || RTLNX_RHEL_RANGE(9,8, 9,99) || RTLNX_RHEL_RANGE(10,2, 10,99)
++#if RTLNX_VER_MIN(6,17,0) || RTLNX_RHEL_RANGE(9,8, 9,99) || RTLNX_RHEL_RANGE(10,2, 10,99) || RTLNX_SUSE_SLFO_MAJ_PREREQ(1,3)
+ 		const struct drm_format_info *info,
+ #endif
+ #if RTLNX_VER_MIN(4,5,0) || RTLNX_RHEL_MAJ_PREREQ(7,3)
+diff --git a/src/VBox/Additions/linux/drm/vbox_mode.c b/src/VBox/Additions/linux/drm/vbox_mode.c
+index e18c50be611c..bd40181c5f78 100644
+--- a/src/VBox/Additions/linux/drm/vbox_mode.c
++++ b/src/VBox/Additions/linux/drm/vbox_mode.c
+@@ -660,7 +660,7 @@ static int vbox_get_modes(struct drm_connector *connector)
+     return num_modes;
+ }
+ 
+-#if RTLNX_VER_MIN(6,15,0) || RTLNX_RHEL_RANGE(9,7, 9,99) || RTLNX_RHEL_RANGE(10,1, 10,99)
++#if RTLNX_VER_MIN(6,15,0) || RTLNX_RHEL_RANGE(9,7, 9,99) || RTLNX_RHEL_RANGE(10,1, 10,99) || RTLNX_SUSE_SLFO_MAJ_PREREQ(1,3)
+ static enum drm_mode_status vbox_mode_valid(struct drm_connector *connector, const struct drm_display_mode *mode)
+ #elif RTLNX_VER_MIN(3,14,0) || RTLNX_RHEL_MAJ_PREREQ(7,1)
+ static enum drm_mode_status vbox_mode_valid(struct drm_connector *connector, struct drm_display_mode *mode)
+diff --git a/src/VBox/HostDrivers/Support/linux/SUPDrv-linux.c b/src/VBox/HostDrivers/Support/linux/SUPDrv-linux.c
+index 01d6b33aed30..8693f4a14ea7 100644
+--- a/src/VBox/HostDrivers/Support/linux/SUPDrv-linux.c
++++ b/src/VBox/HostDrivers/Support/linux/SUPDrv-linux.c
+@@ -250,7 +250,7 @@ static struct file_system_type                  g_SupDrvLnxFsType =
+ static __typeof__(switch_fpu_return)           *g_pfnSwitchFpuReturn;
+ #endif
+ 
+-#if RTLNX_VER_MIN(6,19,0) && (defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86))
++#if (RTLNX_VER_MIN(6,19,0) || RTLNX_SUSE_SLFO_MAJ_PREREQ(1,3)) && (defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86))
+ # define SUPDRV_LINUX_DYNAMIC_CR4_FUNCTIONS
+ /** Function pointer to cr4_update_irqsoff(). */
+ static __typeof__(cr4_update_irqsoff)           *g_pfnCr4UpdateIrqsoff;
+diff --git a/src/VBox/Runtime/r0drv/linux/initterm-r0drv-linux.c b/src/VBox/Runtime/r0drv/linux/initterm-r0drv-linux.c
+index 88f49f816c9e..ef60fc6d7e3b 100644
+--- a/src/VBox/Runtime/r0drv/linux/initterm-r0drv-linux.c
++++ b/src/VBox/Runtime/r0drv/linux/initterm-r0drv-linux.c
+@@ -72,7 +72,7 @@ bool g_fLnxIsCetSupported = false;
+ /** Whether CET is enabled. */
+ bool g_fLnxIsCetEnabled  = false;
+ 
+-#if RTLNX_VER_MIN(6,19,0) && (defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86))
++#ifdef LINUX_DYNAMIC_FLUSH_TLB_ALL
+ /** Pointer to __flush_tlb_all kernel symbol. */
+ __typeof__(__flush_tlb_all) *g_pfnLinuxFlushTlbAll;
+ #endif
+@@ -179,7 +179,7 @@ DECLHIDDEN(int) rtR0InitNative(void)
+             g_pLnxInitMm = (struct mm_struct *)RTR0DbgKrnlInfoGetSymbol(hKrnlInfo, NULL,  "init_mm");
+             //printk("rtR0InitNative: g_pLnxInitMm=%#lx\n", (unsigned long)g_pLnxInitMm);
+             printk(KERN_INFO "rtR0InitNative: g_pLnxInitMm=%p\n", g_pLnxInitMm);
+-# if RTLNX_VER_MIN(6,19,0) && (defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86))
++# ifdef LINUX_DYNAMIC_FLUSH_TLB_ALL
+             g_pfnLinuxFlushTlbAll = (__typeof__(g_pfnLinuxFlushTlbAll))RTR0DbgKrnlInfoGetFunction(hKrnlInfo, NULL,
+                                                                                                    "__flush_tlb_all");
+ # endif
+@@ -188,7 +188,7 @@ DECLHIDDEN(int) rtR0InitNative(void)
+         else
+             printk(KERN_WARNING "rtR0InitNative: RTR0DbgKrnlInfoOpen failed: %d\n", rc2);
+ 
+-# if RTLNX_VER_MIN(6,19,0) && (defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86))
++# ifdef LINUX_DYNAMIC_FLUSH_TLB_ALL
+         if (!RT_VALID_PTR(g_pfnLinuxFlushTlbAll))
+             g_pfnLinuxFlushTlbAll = (__typeof__(g_pfnLinuxFlushTlbAll))__symbol_get("__flush_tlb_all");
+         if (!RT_VALID_PTR(g_pfnLinuxFlushTlbAll))
+@@ -215,7 +215,7 @@ DECLHIDDEN(void) rtR0TermNative(void)
+     g_prtR0LnxWorkQueue = NULL;
+ #endif
+ 
+-#if RTLNX_VER_MIN(6,19,0) && (defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86))
++#ifdef LINUX_DYNAMIC_FLUSH_TLB_ALL
+     /* Don't bother putting __flush_tlb_all, it's in kernel text and we
+        probably got it via kallsyms anyway. */
+     g_pfnLinuxFlushTlbAll = NULL;
+diff --git a/src/VBox/Runtime/r0drv/linux/memobj-r0drv-linux.c b/src/VBox/Runtime/r0drv/linux/memobj-r0drv-linux.c
+index 05549cbc9f4b..c533709dfd73 100644
+--- a/src/VBox/Runtime/r0drv/linux/memobj-r0drv-linux.c
++++ b/src/VBox/Runtime/r0drv/linux/memobj-r0drv-linux.c
+@@ -47,7 +47,7 @@
+ #include <iprt/mem.h>
+ #include <iprt/process.h>
+ #include <iprt/string.h>
+-#if RTLNX_VER_MIN(6,19,0) && (defined(RT_ARCH_X86) || defined(RT_ARCH_AMD64))
++#ifdef LINUX_DYNAMIC_FLUSH_TLB_ALL
+ # include <iprt/mp.h>
+ # include <iprt/asm-amd64-x86.h>
+ # ifndef X86_CPUID_FEATURE_EDX_PGE /* can't include iprt/x86.h here */
+@@ -2260,7 +2260,7 @@ DECLHIDDEN(int) rtR0MemObjNativeMapUser(PPRTR0MEMOBJINTERNAL ppMem, RTR0MEMOBJ p
+ /*
+  * Wrapper around __flush_tlb_all and fallback code for 4.19+.
+  */
+-# if RTLNX_VER_MIN(6,19,0)
++# ifdef LINUX_DYNAMIC_FLUSH_TLB_ALL
+ 
+ static DECLCALLBACK(void) rtR0MemObjLinuxFlushTlbAllOnEach(RTCPUID idCpu, void *pvUser1, void *pvUser2)
+ {
+@@ -2290,7 +2290,7 @@ static DECLCALLBACK(void) rtR0MemObjLinuxFlushTlbAllOnEachInvPcid(RTCPUID idCpu,
+ 
+ static void rtR0MemObjLinuxFlushTlbAll(void)
+ {
+-# if RTLNX_VER_MIN(6,19,0)
++# ifdef LINUX_DYNAMIC_FLUSH_TLB_ALL
+     if (RT_LIKELY(RT_VALID_PTR(g_pfnLinuxFlushTlbAll)))
+         RTLNX_CET_UNSAFE_CALL(g_pfnLinuxFlushTlbAll, g_pfnLinuxFlushTlbAll());
+     else
+diff --git a/src/VBox/Runtime/r0drv/linux/the-linux-kernel.h b/src/VBox/Runtime/r0drv/linux/the-linux-kernel.h
+index 18c50e0da30c..c942f2796808 100644
+--- a/src/VBox/Runtime/r0drv/linux/the-linux-kernel.h
++++ b/src/VBox/Runtime/r0drv/linux/the-linux-kernel.h
+@@ -512,7 +512,8 @@ RTDECL(struct page *) rtR0MemObjLinuxVirtToPage(void *pv);
+ 
+ 
+ extern struct mm_struct *g_pLnxInitMm;
+-#if RTLNX_VER_MIN(6,19,0) && (defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86))
++#if (RTLNX_VER_MIN(6,19,0) || RTLNX_SUSE_SLFO_MAJ_PREREQ(1,3)) && (defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86))
++#define LINUX_DYNAMIC_FLUSH_TLB_ALL 1
+ extern void (*g_pfnLinuxFlushTlbAll)(void);
+ #endif
+ 
+-- 
+2.55.0
+

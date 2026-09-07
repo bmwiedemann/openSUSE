@@ -2941,4 +2941,13 @@ we must have vb7.1.10.</comment>
     <comment>- Update to release 7.2.16</comment>
     <requestid>1371978</requestid>
   </revision>
+  <revision rev="315" vrev="2">
+    <srcmd5>7178640211c66db6d76fc8934d7aef81</srcmd5>
+    <version>7.2.16</version>
+    <time>1788773381</time>
+    <user>anag_factory</user>
+    <comment>- add Leap-16.1.patch (bsc#1274769)
+- add kernel-7.3.patch to fix build against kernel 7.3.</comment>
+    <requestid>1375889</requestid>
+  </revision>
 </revisionlist>
