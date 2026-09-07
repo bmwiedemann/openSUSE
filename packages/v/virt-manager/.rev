@@ -2326,4 +2326,12 @@
     <comment>1</comment>
     <requestid>1373484</requestid>
   </revision>
+  <revision rev="294" vrev="16">
+    <srcmd5>280cfe09cb8126358c04db65ef60c27e</srcmd5>
+    <version>5.1.0</version>
+    <time>1788773245</time>
+    <user>anag_factory</user>
+    <comment>Fix for bsc#1268781 - inconsistent OS names in virt-install for 16.0</comment>
+    <requestid>1375689</requestid>
+  </revision>
 </revisionlist>
