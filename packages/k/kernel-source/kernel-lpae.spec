@@ -1,5 +1,5 @@
 #
-# spec file for package kernel-pae
+# spec file for package kernel-lpae
 #
 # Copyright (c) 2026 SUSE LLC
 #
@@ -29,7 +29,7 @@
 %define split_base 0
 %define split_optional 0
 %define supported_modules_check 0
-%define build_flavor pae
+%define build_flavor lpae
 %define generate_compile_commands 1
 %define use_suse_kabi_tools 1
 %define gcc_package gcc
@@ -39,14 +39,14 @@
 
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,arch-symbols,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
-Name:           kernel-pae
+Name:           kernel-lpae
 Version:        7.2.3
 %if 0%{?is_kotd}
 Release:        <RELEASE>.g263d925
 %else
 Release:        0
 %endif
-Summary:        Kernel with PAE Support
+Summary:        Kernel for LPAE enabled systems
 License:        GPL-2.0-only
 Group:          System/Kernel
 URL:            https://www.kernel.org/
@@ -98,7 +98,7 @@ BuildRequires:  suse-kabi-tools
 # Remove some packages that are installed automatically by the build system,
 # but are not needed to build the kernel
 #!BuildIgnore: autoconf automake gettext-runtime libtool cvs gettext-tools udev insserv
-ExclusiveArch:  %ix86
+ExclusiveArch:  armv7hl
 
 %ifarch %ix86 x86_64
 %define image vmlinuz
@@ -376,22 +376,6 @@ Provides:       kernel-%build_flavor-base-srchash-%git_commit
 Provides:       kernel-srchash-%git_commit
 # END COMMON DEPS
 Provides:       %name-srchash-%git_commit
-%ifarch %ix86
-Provides:       kernel-desktop = 4.3
-Obsoletes:      kernel-desktop < 4.3
-Provides:       kernel-xen = 4.4
-Obsoletes:      kernel-xen < 4.4
-Provides:       kernel-ec2 = 4.4
-Obsoletes:      kernel-ec2 < 4.4
-%endif
-%ifarch %ix86
-Provides:       kernel-desktop-base = 4.3
-Obsoletes:      kernel-desktop-base < 4.3
-Provides:       kernel-xen-base = 4.4
-Obsoletes:      kernel-xen-base < 4.4
-Provides:       kernel-ec2-base = 4.4
-Obsoletes:      kernel-ec2-base < 4.4
-%endif
 %obsolete_rebuilds %name
 
 %define kmp_target_cpu %_target_cpu
@@ -425,14 +409,8 @@ Provides:       kernel-preempt_%_target_cpu = %version-%source_rel
 }
 
 %description
-This kernel supports up to 64GB of main memory. It requires Physical
-Addressing Extensions (PAE), which were introduced with the Pentium Pro
-processor.
-
-PAE is not only more physical address space but also important for the
-"no execute" feature which disables execution of code that is marked as
-non-executable. Therefore, the PAE kernel should be used on any systems
-that support it, regardless of the amount of main memory.
+The kernel for all 32-bit ARM platforms that support LPAE. This includes all
+Cortex A15 based SoCs, like the Exynos5, OMAP5 or Calxeda ECX-2000.
 
 
 %source_timestamp
@@ -476,7 +454,7 @@ that support it, regardless of the amount of main memory.
 
 %if "%CONFIG_MODULES" == "y" && %split_base
 %package base
-Summary:        Kernel with PAE Support - base modules
+Summary:        Kernel for LPAE enabled systems - base modules
 Group:          System/Kernel
 Url:            http://www.kernel.org/
 Provides:       kernel-base = %version-%source_rel
@@ -541,28 +519,14 @@ Provides:       kernel = %version-%source_rel
 Provides:       kernel-%build_flavor-base-srchash-%git_commit
 Provides:       kernel-srchash-%git_commit
 
-%ifarch %ix86
-Provides:       kernel-desktop-base = 4.3
-Obsoletes:      kernel-desktop-base < 4.3
-Provides:       kernel-xen-base = 4.4
-Obsoletes:      kernel-xen-base < 4.4
-Provides:       kernel-ec2-base = 4.4
-Obsoletes:      kernel-ec2-base < 4.4
-%endif
 %obsolete_rebuilds %name-base
 %ifarch %ix86
 Conflicts:      libc.so.6()(64bit)
 %endif
 
 %description base
-This kernel supports up to 64GB of main memory. It requires Physical
-Addressing Extensions (PAE), which were introduced with the Pentium Pro
-processor.
-
-PAE is not only more physical address space but also important for the
-"no execute" feature which disables execution of code that is marked as
-non-executable. Therefore, the PAE kernel should be used on any systems
-that support it, regardless of the amount of main memory.
+The kernel for all 32-bit ARM platforms that support LPAE. This includes all
+Cortex A15 based SoCs, like the Exynos5, OMAP5 or Calxeda ECX-2000.
 
 This package contains only the base modules, required in all installs.
 
@@ -602,7 +566,7 @@ This package contains only the base modules, required in all installs.
 %endif
 
 %package extra
-Summary:        Kernel with PAE Support - Unsupported kernel modules
+Summary:        Kernel for LPAE enabled systems - Unsupported kernel modules
 Group:          System/Kernel
 URL:            https://www.kernel.org/
 Provides:       %name-extra_%_target_cpu = %version-%source_rel
@@ -613,14 +577,6 @@ Requires(pre):  coreutils awk
 Requires(post): modutils
 Requires(post): perl-Bootloader
 Requires(post): dracut
-%ifarch %ix86
-Provides:       kernel-desktop-extra = 4.3
-Obsoletes:      kernel-desktop-extra < 4.3
-Provides:       kernel-xen-extra = 4.4
-Obsoletes:      kernel-xen-extra < 4.4
-Provides:       kernel-ec2-extra = 4.4
-Obsoletes:      kernel-ec2-extra < 4.4
-%endif
 %obsolete_rebuilds %name-extra
 Supplements:    packageand(product(SLED):%{name}_%_target_cpu)
 Supplements:    packageand(product(sle-we):%{name}_%_target_cpu)
@@ -636,14 +592,8 @@ Provides:       kernel-preempt-extra_%_target_cpu = %version-%source_rel
 %endif
 
 %description extra
-This kernel supports up to 64GB of main memory. It requires Physical
-Addressing Extensions (PAE), which were introduced with the Pentium Pro
-processor.
-
-PAE is not only more physical address space but also important for the
-"no execute" feature which disables execution of code that is marked as
-non-executable. Therefore, the PAE kernel should be used on any systems
-that support it, regardless of the amount of main memory.
+The kernel for all 32-bit ARM platforms that support LPAE. This includes all
+Cortex A15 based SoCs, like the Exynos5, OMAP5 or Calxeda ECX-2000.
 
 This package contains additional modules not supported by SUSE.
 
@@ -687,7 +637,7 @@ This package contains additional modules not supported by SUSE.
 
 %if %split_extra && %split_optional
 %package optional
-Summary:        Kernel with PAE Support - Optional kernel modules
+Summary:        Kernel for LPAE enabled systems - Optional kernel modules
 Group:          System/Kernel
 URL:            https://www.kernel.org/
 Provides:       %name-optional_%_target_cpu = %version-%source_rel
@@ -698,14 +648,6 @@ Requires(pre):  coreutils awk
 Requires(post): modutils
 Requires(post): perl-Bootloader
 Requires(post): dracut
-%ifarch %ix86
-Provides:       kernel-desktop-optional = 4.3
-Obsoletes:      kernel-desktop-optional < 4.3
-Provides:       kernel-xen-optional = 4.4
-Obsoletes:      kernel-xen-optional < 4.4
-Provides:       kernel-ec2-optional = 4.4
-Obsoletes:      kernel-ec2-optional < 4.4
-%endif
 %obsolete_rebuilds %name-optional
 Supplements:    packageand(product(Leap):%{name}_%_target_cpu)
 %ifarch %ix86
@@ -719,14 +661,8 @@ Provides:       kernel-preempt-optional_%_target_cpu = %version-%source_rel
 %endif
 
 %description optional
-This kernel supports up to 64GB of main memory. It requires Physical
-Addressing Extensions (PAE), which were introduced with the Pentium Pro
-processor.
-
-PAE is not only more physical address space but also important for the
-"no execute" feature which disables execution of code that is marked as
-non-executable. Therefore, the PAE kernel should be used on any systems
-that support it, regardless of the amount of main memory.
+The kernel for all 32-bit ARM platforms that support LPAE. This includes all
+Cortex A15 based SoCs, like the Exynos5, OMAP5 or Calxeda ECX-2000.
 
 This package contains optional modules only for openSUSE Leap.
 
@@ -829,14 +765,6 @@ Provides:       kernel-preempt-devel = %version-%release
 %endif
 %endif
 Requires:       %gcc_package
-%ifarch %ix86
-Provides:       kernel-desktop-devel = 4.3
-Obsoletes:      kernel-desktop-devel < 4.3
-Provides:       kernel-xen-devel = 4.4
-Obsoletes:      kernel-xen-devel < 4.4
-Provides:       kernel-ec2-devel = 4.4
-Obsoletes:      kernel-ec2-devel < 4.4
-%endif
 %obsolete_rebuilds %name-devel
 PreReq:         coreutils
 

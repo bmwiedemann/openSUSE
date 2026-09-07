@@ -16,15 +16,15 @@
 #
 
 
-%define git_commit 93c77bdd9a1dc19c6c656eac93fc5f263d5fd2dd
+%define git_commit 263d9258ef078247c90a6b2b59d6e65ef2f26ae6
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
 
 Name:           kernel-syms
-Version:        7.2.2
+Version:        7.2.3
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g93c77bd
+Release:        <RELEASE>.g263d925
 %else
 Release:        0
 %endif
@@ -33,15 +33,18 @@ License:        GPL-2.0-only
 Group:          Development/Sources
 URL:            https://www.kernel.org/
 BuildRequires:  coreutils
-ExclusiveArch:  %ix86 aarch64 ppc64le riscv64 s390x x86_64
+ExclusiveArch:  %ix86 aarch64 armv6hl armv7hl ppc64le riscv64 s390x x86_64
 Prefix:         /usr/src
 AutoReqProv:    off
 Source:         README.KSYMS
 %ifarch aarch64
 Requires:       kernel-64kb-devel = %version-%source_rel
 %endif
-%ifarch aarch64 %ix86 ppc64le riscv64 s390x x86_64
+%ifarch aarch64 armv6hl armv7hl %ix86 ppc64le riscv64 s390x x86_64
 Requires:       kernel-default-devel = %version-%source_rel
+%endif
+%ifarch armv7hl
+Requires:       kernel-lpae-devel = %version-%source_rel
 %endif
 %ifarch %ix86
 Requires:       kernel-pae-devel = %version-%source_rel

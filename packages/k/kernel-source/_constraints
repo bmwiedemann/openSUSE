@@ -8,6 +8,8 @@
 <package>kernel-source:kernel-default</package>
 <package>kernel-kvmsmall</package>
 <package>kernel-source:kernel-kvmsmall</package>
+<package>kernel-lpae</package>
+<package>kernel-source:kernel-lpae</package>
 <package>kernel-pae</package>
 <package>kernel-source:kernel-pae</package>
 <package>kernel-vanilla</package>
@@ -75,6 +77,8 @@
 <package>kernel-source:kernel-default</package>
 <package>kernel-kvmsmall</package>
 <package>kernel-source:kernel-kvmsmall</package>
+<package>kernel-lpae</package>
+<package>kernel-source:kernel-lpae</package>
 <package>kernel-pae</package>
 <package>kernel-source:kernel-pae</package>
 <package>kernel-vanilla</package>
@@ -99,6 +103,8 @@
 <package>kernel-source:kernel-default</package>
 <package>kernel-kvmsmall</package>
 <package>kernel-source:kernel-kvmsmall</package>
+<package>kernel-lpae</package>
+<package>kernel-source:kernel-lpae</package>
 <package>kernel-pae</package>
 <package>kernel-source:kernel-pae</package>
 <package>kernel-vanilla</package>
@@ -128,6 +134,8 @@
 <package>kernel-source:kernel-default</package>
 <package>kernel-kvmsmall</package>
 <package>kernel-source:kernel-kvmsmall</package>
+<package>kernel-lpae</package>
+<package>kernel-source:kernel-lpae</package>
 <package>kernel-pae</package>
 <package>kernel-source:kernel-pae</package>
 <package>kernel-vanilla</package>
@@ -152,6 +160,8 @@
 <package>kernel-source:kernel-default</package>
 <package>kernel-kvmsmall</package>
 <package>kernel-source:kernel-kvmsmall</package>
+<package>kernel-lpae</package>
+<package>kernel-source:kernel-lpae</package>
 <package>kernel-pae</package>
 <package>kernel-source:kernel-pae</package>
 <package>kernel-vanilla</package>
@@ -176,6 +186,8 @@
 <package>kernel-source:kernel-default</package>
 <package>kernel-kvmsmall</package>
 <package>kernel-source:kernel-kvmsmall</package>
+<package>kernel-lpae</package>
+<package>kernel-source:kernel-lpae</package>
 <package>kernel-pae</package>
 <package>kernel-source:kernel-pae</package>
 <package>kernel-vanilla</package>
@@ -211,6 +223,8 @@
 <package>kernel-source:kernel-default</package>
 <package>kernel-kvmsmall</package>
 <package>kernel-source:kernel-kvmsmall</package>
+<package>kernel-lpae</package>
+<package>kernel-source:kernel-lpae</package>
 <package>kernel-pae</package>
 <package>kernel-source:kernel-pae</package>
 <package>kernel-vanilla</package>
@@ -235,6 +249,8 @@
 <package>kernel-source:kernel-default</package>
 <package>kernel-kvmsmall</package>
 <package>kernel-source:kernel-kvmsmall</package>
+<package>kernel-lpae</package>
+<package>kernel-source:kernel-lpae</package>
 <package>kernel-pae</package>
 <package>kernel-source:kernel-pae</package>
 <package>kernel-vanilla</package>

@@ -19,7 +19,7 @@
 
 #!BuildIgnore: post-build-checks
 
-%define patchversion 7.2.2
+%define patchversion 7.2.3
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -38,23 +38,23 @@
 %endif
 %endif
 %endif
-%global kernel_package kernel%kernel_flavor-srchash-93c77bdd9a1dc19c6c656eac93fc5f263d5fd2dd
+%global kernel_package kernel%kernel_flavor-srchash-263d9258ef078247c90a6b2b59d6e65ef2f26ae6
 %endif
 %if 0%{?rhel_version}
 %global kernel_package kernel
 %endif
 
 Name:           kernel-obs-build
-Version:        7.2.2
+Version:        7.2.3
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g93c77bd
+Release:        <RELEASE>.g263d925
 %else
 Release:        0
 %endif
 Summary:        package kernel and initrd for OBS VM builds
 License:        GPL-2.0-only
 Group:          SLES
-Provides:       kernel-obs-build-srchash-93c77bdd9a1dc19c6c656eac93fc5f263d5fd2dd
+Provides:       kernel-obs-build-srchash-263d9258ef078247c90a6b2b59d6e65ef2f26ae6
 BuildRequires:  coreutils
 BuildRequires:  device-mapper
 BuildRequires:  dracut
@@ -63,7 +63,7 @@ BuildRequires:  util-linux
 %if 0%{?suse_version} > 1550 || 0%{?sle_version} > 150200
 BuildRequires:  zstd
 %endif
-ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
+ExclusiveArch:  aarch64 armv6hl armv7hl ppc64le riscv64 s390x x86_64
 
 %description
 This package is repackaging already compiled kernels to make them usable
@@ -125,7 +125,7 @@ export KERNEL_MODULES="
 	xfs nf_conntrack_ipv6 binfmt_misc virtio_pci virtio_mmio virtio_blk virtio_rng fat vfat
 	nls_cp437 nls_iso8859-1 ibmvscsi sd_mod e1000 ibmveth overlay 9p 9pnet_virtio qemu_fw_cfg
 	algif_hash aegis128 xts bridge br_netfilter nf_nat nf_tables xt_conntrack iptable_nat iptable_filter
-	iso9660 xt_addrtype"
+	iso9660 xt_addrtype nft_compat nft_chain_nat"
 
 # manually load all modules to make sure they're available
 for i in $KERNEL_MODULES; do
