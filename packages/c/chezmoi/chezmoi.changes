@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep  4 16:46:34 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.72.1:
+   - Features
+    * feat: Add protonPassAttachment template function
+    * feat: Revert to github.com/Masterminds/sprig for template functions
+    * feat: Switch to github.com/go-sprout/sprout/sprigin for template funcs
+
+-------------------------------------------------------------------
 Fri Aug  7 22:30:05 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.72.0:

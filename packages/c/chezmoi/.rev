@@ -1259,4 +1259,17 @@
 </comment>
     <requestid>1370289</requestid>
   </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>d058b5260900229be2f92c31048fe545</srcmd5>
+    <version>2.72.1</version>
+    <time>1788773516</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.72.1:
+   - Features
+    * feat: Add protonPassAttachment template function
+    * feat: Revert to github.com/Masterminds/sprig for template functions
+    * feat: Switch to github.com/go-sprout/sprout/sprigin for template funcs
+</comment>
+    <requestid>1375830</requestid>
+  </revision>
 </revisionlist>
