@@ -162,4 +162,13 @@
   target x86_64-oe-linux-gnu).</comment>
     <requestid>1374078</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>ef1e4e93dbf953543cf95bdbe4297342</srcmd5>
+    <version>140.15.0</version>
+    <time>1788773308</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 140.15.0:
+  + See https://www.firefox.com/en-US/firefox/140.15.0/releasenotes/</comment>
+    <requestid>1375290</requestid>
+  </revision>
 </revisionlist>
