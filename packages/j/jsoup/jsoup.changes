@@ -1,4 +1,1079 @@
 -------------------------------------------------------------------
+Wed Aug 26 11:46:54 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 1.23.2
+  * Changes of 1.23.2
+    + Improvement: Improved consecutive StreamParser.selectFirst()
+      calls during progressive parsing, so later matches are
+      returned with their parsed contents when earlier selections
+      had left them as parser lookahead. E.g., given
+      <title>One</title><p id=hit>Full</p><p>Next</p>, selecting
+      title and then #hit now advances the partial lookahead and
+      returns <p id="hit">Full</p>, rather than returning an empty
+      <p id="hit"></p> before its content is parsed. The updated
+      readiness tracking follows StreamParser’s normal emission
+      order across implicit HTML structure and parser recovery.
+    + Improvement: Improved XML parser performance and memory use
+      for documents with many nested namespace declarations by
+      recording namespace changes within each element scope
+      (bsc#1275912, CVE-2026-75140).
+    + Improvement: Improved W3CDom conversion performance for
+      documents with many nested namespace declarations. The W3C
+      converter now uses the same optimized namespace tracking as
+      the XML parser.
+    + Improvement: Improved W3CDom XML conversion to retain
+      processing instructions, comments outside the root element,
+      and CDATA sections, which were previously dropped or converted
+      to text.
+    + Improvement: DOM mutation methods, including child insertion
+      and replacement, now reject operations that would create a
+      cycle, such as making a node its own child or moving an
+      ancestor beneath a descendant.
+    + Improvement: Added Elements#before(Node), after(Node),
+      prepend(Node), and append(Node) to match the existing HTML
+      string methods.
+    + Improvement: Large file-backed uploads through
+      Connection.requestBodyStream(InputStream) now stream directly
+      with the JDK HttpClient on Java 11+, rather than being loaded
+      fully into memory first.
+    + Improvement: Extended Java 11+ HTTP client reuse from requests
+      sharing a Jsoup.newSession() to ordinary Jsoup.connect()
+      calls, reducing transport thread and connection setup churn
+      under sustained request loads. Sessions with custom
+      authentication or SSL contexts continue to use their own
+      client.
+    + Change: Aligned the XML parser stack depth and lookups to the
+      configured maximum, which now defaults to 512 for both HTML
+      and XML. Use Parser#setMaxDepth(int) to configure.
+    + Bugfix: Fixed W3CDom namespace conversion in several cases:
+      - Namespace declarations and prefixed attributes now carry the
+        correct namespace URI, so namespace-aware DOM lookups work
+        as expected.
+      - Attributes added after parsing, or included through subtree
+        conversion, now use inherited prefix declarations.
+      - Namespace declarations now apply regardless of attribute
+        order, and an empty declaration shadows an inherited binding
+        only within its scope.
+      - With namespace awareness disabled, inherited and undeclared
+        prefixes now receive the declarations needed for XML
+        serialization.
+      - Valid HTML names that are not XML QNames, such as a:b:c, are
+        normalized. Attributes that still cannot be represented are
+        skipped, and unrepresentable elements no longer change the
+        surrounding tree.
+    + Bugfix: Fixed W3CDom conversion of programmatically created or
+      renamed elements whose names can be represented in a jsoup
+      HTML DOM but are not valid XML names, such as 1abc. These
+      names are now normalized (e.g. _1abc) instead of causing a
+      NullPointerException.
+    + Bugfix: Fixed XML doctype serialization when a system
+      identifier contains a double quote, which could otherwise
+      produce invalid XML.
+    + Bugfix: XML serialization now repairs element and attribute
+      names that start with an invalid character, rather than
+      outputting null elements or dropping attributes. For example,
+      an attribute named 1a is written as _1a. Additional leading
+      underscores keep repaired attribute names unique if they
+      conflict with another attribute.
+    + Bugfix: Supplementary Unicode characters are now escaped
+      correctly when serializing with non-UTF, non-ASCII output
+      charsets such as ISO-8859-1. Previously, characters could be
+      emitted unescaped when their low 16-bit value was
+      representable by the configured charset, causing replacement
+      or corruption when the output was encoded.
+    + Bugfix: Fixed the JDK HttpClient implementation to accept
+      responses missing a Content-Type header, matching the
+      HttpURLConnection implementation.
+    + Bugfix: Fixed HTTP response content-type matching to handle
+      media types case-insensitively and recognize structured +xml
+      suffixes, including vendor-specific media types.
+    + Bugfix: HTTP request URL normalization now percent-encodes
+      ASCII control characters, DEL, and embedded fragment
+      delimiters, keeping normalized URLs valid for HTTP requests
+      while preserving existing escapes.
+    + Bugfix: Corrected multipart form encoding to percent-escape CR
+      and LF in field names and filenames, matching the HTML form
+      submission specification. Multipart file content-types
+      containing CR or LF are now rejected with a
+      ValidationException.
+    + Bugfix: Aligned trailing comment placement with the HTML
+      specification: comments after </body> remain children of the
+      html element, while comments after </html> remain children of
+      the document.
+    + Bugfix: When using the optional re2j regular expression
+      engine, memory allocation errors caused by complex selector
+      patterns at match time are now normalized to a
+      ValidationException with a Pattern complexity error message.
+    + Bugfix: Fixed parsing of malformed SVG and MathML content so
+      that breakout HTML tags are placed according to the HTML
+      specification.
+    + Bugfix: Fixed deeply nested malformed HTML parsing that could
+      lose the document body because stack lookups did not align to
+      the configured maximum parser depth.
+    + Bugfix: Aligned RCDATA, RAWTEXT, and script-data parsing with
+      the HTML specification: malformed end tags no longer consume
+      following markup, unclosed title/textarea content stays text
+      through EOF, and custom text tags match exact names.
+    + Bugfix: Improved URL validation during HTTP/HTTPS URL
+      resolution and cleaning; resolved URLs without a host are now
+      rejected instead of being accepted based only on their scheme
+      prefix, aligning to RFC 9110. Valid relative links and
+      non-HTTP(S) schemes are unchanged.
+    + Bugfix: Redirects with malformed single-slash HTTP locations
+      now use standard URL resolution to align with browsers.
+    + Bugfix: Template fragment parsing now handles unmatched
+      </template> tags without throwing a ValidationException.
+    + Bugfix: Improved source tracking for adopted formatting
+      elements and malformed markup ending at EOF.
+  * Changes of 1.23.1
+    + Improvement: Reduced retained memory when parsing with source
+      position tracking enabled (Parser#setTrackPosition(true)).
+      Source ranges are now stored in compact parser-owned span
+      records instead of node and attribute user data, and Position
+      objects are created lazily when source ranges are read. This
+      cuts tracked DOM retained size by about 50-60% on
+      representative benchmark documents, while keeping
+      Node#sourceRange(), Element#endSourceRange(), and
+      Attribute#sourceRange() behavior intact.
+    + Improvement: Added Element#classList(), an immutable snapshot
+      of an element’s class names in attribute order. Use hasClass()
+      when you just need to test for one class, classList() when you
+      want to read or iterate classes without needing a mutable
+      result, and classNames() when you want the existing mutable,
+      deduplicated set that can be written back with
+      classNames(Set). The class APIs now share an HTML-whitespace
+      scanner, which also makes classNames() faster and lighter on
+      allocation, especially when walking many elements without
+      class names.
+    + Improvement: Aligned HTML parser scope classification with the
+      current HTML spec for select, foreignObject, and template.
+    + Improvement: Simplified the HTML tree builder’s scope,
+      implied-end-tag, and special-element checks by caching
+      parser-only options on Tag. That improves HTML parser
+      throughput by about 10% on small inputs and up to about 30% on
+      larger inputs in the benchmark fixtures.
+    + Improvement: Improved HTML parser throughput stability by
+      making hot tokeniser scan paths compile more predictably.
+    + Improvement: <noscript> fallback markup is now parsed into an
+      inspectable DOM subtree in both the document head and body.
+      The fallback acts as a contained parsing island, so malformed
+      markup cannot disrupt the surrounding document structure,
+      while normal HTML tokenization still applies within it. This
+      also improves round-trip serialization.
+    + Improvement: Improved redirect credential handling as a
+      defense-in-depth measure: explicit authorization headers and
+      request cookies are no longer forwarded across origins,
+      reducing exposure through open redirects and aligning with
+      HTTP guidance. Cookies managed by a CookieStore continue to
+      follow their configured scope.
+    + Improvement: Elements can now append their outer HTML,
+      including their own tags, directly to an Appendable with
+      Node#outerHtml(Appendable), without first creating a String.
+      This complements Element#html(Appendable), which appends inner
+      HTML only.
+    + Improvement: Aligned CDATA tokenization with the HTML spec:
+      CDATA syntax in HTML content is parsed as a bogus comment,
+      while it remains supported in SVG, MathML, and XML. Also
+      improved namespace-aware fragment parsing so SVG and MathML
+      contexts, HTML integration points, and context-sensitive
+      tokenizer states are handled correctly.
+    + Improvement: When using the optional re2j regular expression
+      engine, stack overflows caused by complex selector patterns
+      are now normalized to a ValidationException with a Pattern
+      complexity error message.
+    + Bugfix: Fixed HTML parsing of mixed-case RCDATA end tags after
+      tag-shaped text. For example, <title><p>Foo</TiTLE> and
+      <textarea><img src=x></TeXtArEa> now keep the tag-shaped
+      content as text instead of promoting it to markup.
+    + Bugfix: Fixed W3CDom XML conversion so plain XML elements
+      don’t serialize with the reserved XML namespace as the default
+      namespace. Explicit XML namespaces and xml:* attributes are
+      still preserved.
+    + Bugfix: Preserve control characters in parsed tag names.
+    + Bugfix: Updated HTTP redirects to follow the specification:
+      307 and 308 preserve the request method and content, 301 and
+      302 only change POST to GET, and Location is followed only for
+      301, 302, 303, 307, and 308 responses. Streamed request bodies
+      are not buffered; if an automatic redirect requires replaying
+      one, execution fails, so the caller can resend with a fresh
+      stream.
+    + Bugfix: Corrected the Cleaner’s same-site link detection to
+      compare hostnames rather than URL prefixes when applying
+      rel=nofollow.
+    + Build change: Cleaned up the Maven build for the multi-release
+      JAR so Java 8 and Java 11+ sources compile as separate source
+      sets. This avoids spurious Java 8 compiler warnings from
+      newer-language overlay sources, keeps long-running parser
+      checks behind an explicit profile, and preserves the same
+      published artifacts and runtime behavior.
+    + Build change: Improved parallelism and tuned timing in our
+      integration tests, so that a full mvn clean verify drops from
+      ~ 1m18s to ~ 21 seconds.
+  * Changes of 1.22.2
+    + Improvement: Expanded and clarified NodeTraversor support for
+      in-place DOM rewrites during NodeVisitor.head(). Current-node
+      edits such as remove, replace, and unwrap now recover more
+      predictably, while traversal stays within the original root
+      subtree. This makes single-pass tree cleanup and normalization
+      visitors easier to write, for example when unwrapping
+      presentational elements or replacing text nodes as you walk
+      the DOM.
+    + Documentation: clarified that a configured Cleaner may be
+      reused across concurrent threads, and that shared Safelist
+      instances should not be mutated while in use.
+    + Improvement: Updated the default HTML TagSet for current HTML
+      elements: added dialog, search, picture, and slot; made ins,
+      del, button, audio, video, and canvas inline by default
+      (Tag#isInline(), aligned to phrasing content in the spec); and
+      added readable Element.text() boundaries for controls and
+      embedded objects via the new Tag.TextBoundary option. This
+      improves pretty-printing and keeps normalized text from
+      running adjacent words together.
+    + Android (R8/ProGuard): added a rule to ignore the optional
+      re2j dependency when not present.
+    + Bugfix: Fixed a NodeTraversor regression in 1.21.2 where
+      removing or replacing the current node during head() could
+      revisit the replacement node and loop indefinitely. The
+      traversal docs now also clarify which inserted nodes are
+      visited in the current pass.
+    + Bugfix: Parsing during charset sniffing no longer fails if an
+      advisory available() call throws IOException, as seen on JDK 8
+      HttpURLConnection.
+    + Bugfix: Cleaner no longer makes relative URL attributes in the
+      input document absolute when cleaning or validating a
+      Document. URL normalization now applies only to the cleaned
+      output, and Safelist.isSafeAttribute() is side effect free.
+    + Bugfix: Cleaner no longer duplicates enforced attributes when
+      the input Document preserves attribute case. A case-variant
+      source attribute is now replaced by the enforced attribute in
+      the cleaned output.
+    + Bugfix: If a per-request SOCKS proxy is configured, jsoup now
+      avoids using the JDK HttpClient, because the JDK would
+      silently ignore that proxy and attempt to connect directly.
+      Those requests now fall back to the legacy HttpURLConnection
+      transport instead, which does support SOCKS.
+    + Bugfix: Connection.Response.streamParser() and
+      DataUtil.streamParser(Path, ...) could fail on small inputs
+      without a declared charset, if the initial 5 KB charset sniff
+      fully consumed the input and closed it before the stream parse
+      began.
+    + Bugfix: In XML mode, doctypes with an internal subset, such as
+      <!DOCTYPE root [<!ENTITY name "value">]>, now round-trip
+      correctly. The subset is preserved as raw text only; entities
+      are not expanded and external DTDs are not loaded.
+    + Build change: Migrated the integration test server from Jetty
+      to Netty, which actively maintains support for our minimum JDK
+      target (8).
+  * Changes of 1.22.1
+    + Improvement: Added support for using the re2j regular
+      expression engine for regex-based CSS selectors (e.g.
+      [attr~=regex], :matches(regex)), which ensures linear-time
+      performance for regex evaluation. This allows safer handling
+      of arbitrary user-supplied query regexes. To enable, add the
+      com.google.re2j dependency to your classpath, e.g.:
+
+      <dependency>
+        <groupId>com.google.re2j</groupId>
+        <artifactId>re2j</artifactId>
+        <version>1.8</version>
+      </dependency>
+
+      (If you already have that dependency in your classpath, but
+      you want to keep using the Java regex engine, you can disable
+      re2j via System.setProperty("jsoup.useRe2j", "false").) You
+      can confirm that the re2j engine has been enabled correctly by
+      calling Regex.usingRe2j().
+    + Improvement: Added an instance method Parser#unescape(String,
+      boolean) that unescapes HTML entities using the parser’s
+      configuration (e.g. to support error tracking), complementing
+      the existing static utility Parser.unescapeEntities(String,
+      boolean).
+    + Improvement: Added a configurable maximum parser depth (to
+      limit the number of open elements on stack) to both HTML and
+      XML parsers. The HTML parser now defaults to a depth of 512 to
+      match browser behavior, and protect against unbounded stack
+      growth, while the XML parser keeps unlimited depth by default,
+      but can opt into a limit via Parser.setMaxDepth().
+    + Build: added CI coverage for JDK 25.
+    + Build: added a CI fuzzer for contextual fragment parsing (in
+      addition to existing full body HTML and XML fuzzers).
+    + Change: Set a removal schedule of jsoup 1.24.1 for previously
+      deprecated APIs.
+    + Bugfix: Previously cached child Elements of an Element were
+      not correctly invalidated in Node#replaceWith(Node), which
+      could lead to incorrect results when subsequently calling
+      Element#children().
+    + Bugfix: Attribute selector values are now compared literally
+      without trimming. Previously, jsoup trimmed whitespace from
+      selector values and from element attribute values, which could
+      cause mismatches with browser behavior (e.g. [attr=" foo "]).
+      Now matches align with the CSS specification and browser
+      engines.
+    + Bugfix: When using the JDK HttpClient, any system default
+      proxy (ProxySelector.getDefault()) was ignored. Now, the
+      system proxy is used if a per-request proxy is not set.
+    + Bugfix: A ValidationException could be thrown in the adoption
+      agency algorithm with particularly broken input. Now logged as
+      a parse error.
+    + Bugfix: Null characters in the HTML body were not consistently
+      removed; and in foreign content were not correctly replaced.
+    + Bugfix: An IndexOutOfBoundsException could be thrown when
+      parsing a body fragment with crafted input. Now logged as a
+      parse error.
+    + Bugfix: When using StructuralEvaluators (e.g., a parent child
+      selector) across many retained threads, their memoized results
+      could also be retained, increasing memory use. These results
+      are now cleared immediately after use, reducing overall memory
+      consumption.
+    + Bugfix: Cloning a Parser now preserves any custom TagSet
+      applied to the parser.
+    + Bugfix: Custom tags marked as Tag.Void now parse and serialize
+      like the built-in void elements: they no longer consume
+      following content, and the XML serializer emits the expected
+      self-closing form.
+    + Bugfix: The <br> element is once again classified as an inline
+      tag (Tag.isBlock() == false), matching common developer
+      expectations and its role as phrasing content in HTML, while
+      pretty-printing and text extraction continue to treat it as a
+      line break in the rendered output.
+    + Bugfix: Fixed an intermittent truncation issue when fetching
+      and parsing remote documents via Jsoup.connect(url).get(). On
+      responses without a charset header, the initial charset sniff
+      could sometimes (depending on buffering / available()
+      behavior) be mistaken for end-of-stream and a partial parse
+      reused, dropping trailing content.
+    + Bugfix: TagSet copies no longer mutate their template during
+      lazy lookups, preventing cross-thread
+      ConcurrentModificationException when parsing with shared
+      sessions.
+    + Bugfix: Fixed parsing of <svg> foreignObject content nested
+      within a <p>, which could incorrectly move the HTML subtree
+      outside the SVG.
+    + Change: Deprecated internal helper
+      org.jsoup.internal.Functions (for removal in v1.23.1). This
+      was previously used to support older Android API levels
+      without full java.util.function coverage; jsoup now requires
+      core library desugaring so this indirection is no longer
+      necessary.
+  * Changes of 1.21.2
+    + Change: Deprecated internal (yet visible) methods
+      Normalizer#normalize(String, bool) and
+      Attribute#shouldCollapseAttribute(Document.OutputSettings).
+      These will be removed in a future version.
+    + Change: Deprecated
+      Connection#sslSocketFactory(SSLSocketFactory) in favor of the
+      new Connection#sslContext(SSLContext). Using sslSocketFactory
+      will force the use of the legacy HttpUrlConnection
+      implementation, which does not support HTTP/2.
+    + Improvement: When pretty-printing, if there are consecutive
+      text nodes (via DOM manipulation), the non-significant
+      whitespace between them will be collapsed.
+    + Improvement: Updated Connection.Response#statusMessage() to
+      return a simple loggable string message (e.g. “OK”) when using
+      the HttpClient implementation, which doesn’t otherwise return
+      any server-set status message.
+    + Improvement: Attributes#size() and Attributes#isEmpty() now
+      exclude any internal attributes (such as user data) from their
+      count. This aligns with the attributes’ serialized output and
+      iterator.
+    + Improvement: Added Connection#sslContext(SSLContext) to
+      provide a custom SSL (TLS) context to requests, supporting
+      both the HttpClient and the legacy HttUrlConnection
+      implementations.
+    + Improvement: Performance optimizations for DOM manipulation
+      methods including when repeatedly removing an element’s first
+      child (element.child(0).remove()), and when using
+      Parser#parseBodyFragement() to parse a large number of direct
+      children.
+    + Bugfix: When parsing from an InputStream and a multibyte
+      character happened to straddle a buffer boundary, the stream
+      would not be completely read.
+    + Bugfix: In NodeTraversor, if a last child element was removed
+      during the head() call, the parent would be visited twice.
+    + Bugfix: Cloning an Element that has an Attributes object would
+      add an empty internal user-data attribute to that clone, which
+      would cause unexpected results for Attributes#size() and
+      Attributes#isEmpty().
+    + Bugfix: In a multithreaded application where multiple threads
+      are calling Element#children() on the same element
+      concurrently, a race condition could happen when the method
+      was generating the internal child element cache (a filtered
+      view of its child nodes). Since concurrent reads of DOM
+      objects should be threadsafe without external synchronization,
+      this method has been updated to execute atomically.
+    + Bugfix: When parsing HTML with svg:script elements in SVG
+      elements, don’t enter the Text insertion mode, but continue to
+      parse as foreign content. Otherwise, misnested HTML could then
+      cause an IndexOutOfBoundsException.
+    + Bugfix: Malformed HTML could throw an
+      IndexOutOfBoundsException during the adoption agency.
+  * Changes of 1.21.1
+    + Change: Removed previously deprecated methods.
+    + Change: Deprecated the :matchText pseduo-selector due to its
+      side effects on the DOM; use the new ::textnode selector and
+      the Element#selectNodes(String css, Class<T> type) method
+      instead.
+    + Change: Deprecated Connection.Response#bufferUp() in lieu of
+      Connection.Response#readFully() which can throw a checked
+      IOException.
+    + Change: Deprecated internal methods
+      Validate#ensureNotNull(Object) (replaced by typed
+      Validate#expectNotNull(T)); protected HTML appenders from
+      Attribute and Node.
+    + Change: If you happen to be using any of the deprecated
+      methods, please take the opportunity now to migrate away from
+      them, as they will be removed in a future release.
+    + Improvement: Enhanced the Selector to support direct matching
+      against nodes such as comments and text nodes. For example,
+      you can now find an element that follows a specific comment:
+      ::comment:contains(prices) + p will select p elements
+      immediately after a <!-- prices: --> comment. Supported types
+      include ::node, ::leafnode, ::comment, ::text, ::data, and
+      ::cdata. Node contextual selectors like ::node:contains(text),
+      :matches(regex), and :blank are also supported. Introduced
+      Element#selectNodes(String css) and Element#selectNodes(String
+      css, Class<T> nodeType) for direct node selection.
+    + Improvement: Added TagSet#onNewTag(Consumer<Tag> customizer):
+      register a callback that’s invoked for each new or cloned Tag
+      when it’s inserted into the set. Enables dynamic tweaks of tag
+      options (for example, marking all custom tags as self-closing,
+      or everything in a given namespace as preserving whitespace).
+    + Improvement: Made TokenQueue and CharacterReader
+      autocloseable, to ensure that they will release their buffers
+      back to the buffer pool, for later reuse.
+    + Improvement: Added Selector#evaluatorOf(String css), as a
+      clearer way to obtain an Evaluator from a CSS query. An alias
+      of QueryParser.parse(String css).
+    + Improvement: Custom tags (defined via the TagSet) in a foreign
+      namespace (e.g. SVG) can be configured to parse as data tags.
+    + Improvement: Added NodeVisitor#traverse(Node) to simplify node
+      traversal calls (vs. importing NodeTraversor).
+    + Improvement: Updated the default user-agent string to improve
+      compatibility.
+    + Improvement: The HTML parser now allows the specific text-data
+      type (Data, RcData) to be customized for known tags.
+      (Previously, that was only supported on custom tags.)
+    + Improvement: Added Connection.Response#readFully() as a
+      replacement for Connection.Response#bufferUp() with an
+      explicit IOException. Similarly, added
+      Connection.Response#readBody() over
+      Connection.Response#body(). Deprecated
+      Connection.Response#bufferUp().
+    + Improvement: When serializing HTML, the < and > characters are
+      now escaped in attributes. This helps prevent a class of
+      mutation XSS attacks.
+    + Improvement: Changed Connection to prefer using the JDK’s
+      HttpClient over HttpUrlConnection, if available, to enable
+      HTTP/2 support by default. Users can disable via
+      -Djsoup.useHttpClient=false.
+    + Bugfix: The contents of a script in a svg foreign context
+      should be parsed as script data, not text.
+    + Bugfix: Tag#isFormSubmittable() was updating the Tag’s
+      options.
+    + Bugfix: The HTML pretty-printer would incorrectly trim
+      whitespace when text followed an inline element in a block
+      element.
+    + Bugfix: Custom tags with hyphens or other non-letter
+      characters in their names now work correctly as Data or RcData
+      tags. Their closing tags are now tokenized properly.
+    + Bugfix: When cloning an Element, the clone would retain the
+      source’s cached child Element list (if any), which could lead
+      to incorrect results when modifying the clone’s child
+      elements.
+  * Changes of 1.20.1
+    + Change: To better follow the HTML5 spec and current browsers,
+      the HTML parser no longer allows self-closing tags (<foo />)
+      to close HTML elements by default. Foreign content (SVG,
+      MathML), and content parsed with the XML parser, still
+      supports self-closing tags. If you need specific HTML tags to
+      support self-closing, you can register a custom tag via the
+      TagSet configured in Parser.tagSet(), using
+      Tag#set(Tag.SelfClose). Standard void tags (such as <img>,
+      <br>, etc.) continue to behave as usual and are not affected
+      by this change.
+    + Change: The following internal components have been
+      deprecated. If you do happen to be using any of these, please
+      take the opportunity now to migrate away from them, as they
+      will be removed in jsoup 1.21.1.
+      - ChangeNotifyingArrayList,
+        Document.updateMetaCharsetElement(),
+        Document.updateMetaCharsetElement(boolean),
+        HtmlTreeBuilder.isContentForTagData(String),
+        Parser.isContentForTagData(String),
+        Parser.setTreeBuilder(TreeBuilder), Tag.formatAsBlock(),
+        Tag.isFormListed(), TokenQueue.addFirst(String),
+        TokenQueue.chompTo(String),
+        TokenQueue.chompToIgnoreCase(String),
+        TokenQueue.consumeToIgnoreCase(String),
+        TokenQueue.consumeWord(), TokenQueue.matchesAny(String...)
+    + Improvement: Rebuilt the HTML pretty-printer, to simplify and
+      consolidate the implementation, improve consistency, support
+      custom Tags, and provide a cleaner path for ongoing
+      improvements. The specific HTML produced by the pretty-printer
+      may be different from previous versions.
+    + Improvement: Added the ability to define custom tags, and to
+      modify properties of known tags, via the TagSet tag
+      collection. Their properties can impact both the parse and how
+      content is serialized (output as HTML or XML).
+    + Improvement: Element.cssSelector() will prefer to return
+      shorter selectors by using ancestor IDs when available and
+      unique. E.g. #id > div > p instead of html > body > div > div
+      > p.
+    + Improvement: Added Elements.deselect(int index),
+      Elements.deselect(Object o), and Elements.deselectAll()
+      methods to remove elements from the Elements list without
+      removing them from the underlying DOM. Also added
+      Elements.asList() method to get a modifiable list of elements
+      without affecting the DOM. (Individual Elements remain linked
+      to the DOM.)
+    + Improvement: Added support for sending a request body from an
+      InputStream with Connection.requestBodyStream(InputStream
+      stream).
+    + Improvement: The XML parser now supports scoped xmlns: prefix
+      namespace declarations, and applies the correct namespace to
+      Tags and Attributes. Also, added Tag#prefix(),
+      Tag#localName(), Attribute#prefix(), Attribute#localName(),
+      and Attribute#namespace() to retrieve these.
+    + Improvement: CSS identifiers are now escaped and unescaped
+      correctly to the CSS spec. Element#cssSelector() will emit
+      appropriately escaped selectors, and the QueryParser supports
+      those. Added Selector.escapeCssIdentifier() and `
+      Selector.unescapeCssIdentifier().
+    + Improvement: Refactored the CSS QueryParser into a clearer
+      recursive descent parser.
+    + Improvement: CSS selectors with consecutive combinators (e.g.
+      div >> p) will throw an explicit parse exception.
+    + Performance: reduced the shallow size of an Element from 40 to
+      32 bytes, and the NodeList from 32 to 24.
+    + Performance: reduced GC load of new StringBuilders when
+      tokenizing input HTML.
+    + Improvement: Made Parser instances threadsafe, so that
+      inadvertent use of the same instance across threads will not
+      lead to errors. For actual concurrency, use
+      Parser#newInstance() per thread.
+    + Bugfix: Element names containing characters invalid in XML are
+      now normalized to valid XML names when serializing.
+    + Bugfix: When serializing to XML, characters that are invalid
+      in XML 1.0 should be removed (not encoded).
+    + Bugfix: When converting a Document to the W3C DOM in W3CDom,
+      elements with an attribute in an undeclared namespace now get
+      a declaration of xmlns:prefix="undefined". This allows
+      subsequent serialization to XML via W3CDom.asString() to
+      succeed.
+    + Bugfix: The StreamParser could emit the final elements of a
+      document twice, due to how onNodeCompleted was fired when
+      closing out the stack.
+    + Bugfix: When parsing with the XML parser and error tracking
+      enabled, the trailing ? in <?xml version="1.0"?> would
+      incorrectly emit an error.
+    + Bugfix: Calling Element#cssSelector() on an element with
+      combining characters in the class or ID now produces the
+      correct output.
+  * Changes of 1.19.1
+    + Change: Added support for http/2 requests in Jsoup.connect(),
+      when running on Java 11+, via the Java HttpClient
+      implementation.
+      - In this version of jsoup, the default is to make requests
+        via the HttpUrlConnection implementation: use
+        System.setProperty("jsoup.useHttpClient", "true"); to enable
+        making requests via the HttpClient (if available), which
+        will enable http/2 support. This will become the default in
+        a later version of jsoup, so now is a good time to validate
+        it.
+      - If you are repackaging the jsoup jar in your deployment
+        (i.e. creating a shaded- or a fat-jar), make sure to specify
+        that as a Multi-Release JAR.
+      - If the HttpClient impl is not available in your JRE,
+        requests will continue to be made via HttpURLConnection (in
+        http/1.1 mode).
+    + Change: Updated the minimum Android API Level validation from
+      10 to 21. As with previous jsoup versions, Android developers
+      need to enable core library desugaring. The minimum Java
+      version remains Java 8.
+    + Change: Removed previously deprecated class:
+      org.jsoup.UncheckedIOException (replace with
+      java.io.UncheckedIOException); moved previously deprecated
+      method Element Element#forEach(Consumer) to void
+      Element#forEach(Consumer()).
+    + Change: Deprecated the methods
+      Document#updateMetaCharsetElement(boolean) and
+      Document#updateMetaCharsetElement(), as the setting had no
+      effect. When Document#charset(Charset) is called, the
+      document’s meta charset or XML encoding instruction is always
+      set.
+    + Improvement: When cleaning HTML with a Safelist that preserves
+      relative links, the isValid() method will now consider these
+      links valid. Additionally, the enforced attribute rel=nofollow
+      will only be added to external links when configured in the
+      safelist.
+    + Improvement: Added Element#selectStream(String query) and
+      Element#selectStream(Evaluator) methods, that return a Stream
+      of matching elements. Elements are evaluated and returned as
+      they are found, and the stream can be terminated early.
+    + Improvement: Element objects now implement Iterable, enabling
+      them to be used in enhanced for loops.
+    + Improvement: Added support for fragment parsing from a Reader
+      via Parser#parseFragmentInput(Reader, Element, String).
+    + Improvement: Reintroduced CLI executable examples, in
+      jsoup-examples.jar.
+    + Improvement: Optimized performance of selectors like #id
+      .class (and other similar descendant queries) by around 4.6x,
+      by better balancing the Ancestor evaluator’s cost function in
+      the query planner.
+    + Improvement: Removed the legacy parsing rules for <isindex>
+      tags, which would autovivify a form element with labels. This
+      is no longer in the spec.
+    + Improvement: Added Elements.selectFirst(String cssQuery) and
+      Elements.expectFirst(String cssQuery), to select the first
+      matching element from an Elements list.
+    + Improvement: When parsing with the XML parser, XML
+      Declarations and Processing Instructions are directly handled,
+      vs bouncing through the HTML parser’s bogus comment handler.
+      Serialization for non-doctype declarations no longer end with
+      a spurious !.
+    + Improvement: When converting parsed HTML to XML or the W3C
+      DOM, element names containing < are normalized to _ to ensure
+      valid XML. For example, <foo<bar> becomes <foo_bar>, as XML
+      does not allow < in element names, but HTML5 does.
+    + Improvement: Reimplemented the HTML5 Adoption Agency Algorithm
+      to the current spec. This handles mis-nested formating /
+      structural elements.
+    + Bugfix: If an element has an ; in an attribute name, it could
+      not be converted to a W3C DOM element, and so subsequent XPath
+      queries could miss that element. Now, the attribute name is
+      more completely normalized.
+    + Bugfix: For backwards compatibility, reverted the internal
+      attribute key for doctype names to “name”.
+    + Bugfix: In Connection, skip cookies that have no name, rather
+      than throwing a validation exception.
+    + Bugfix: When running on JDK 1.8, the error
+      java.lang.NoSuchMethodError:
+      java.nio.ByteBuffer.flip()Ljava/nio/ByteBuffer; could be
+      thrown when calling Response#body() after parsing from a URL
+      and the buffer size was exceeded.
+    + Bugfix: For backwards compatibility, allow null InputStream
+      inputs to Jsoup.parse(InputStream stream, ...), by returning
+      an empty Document.
+    + Bugfix: A template tag containing an li within an open li
+      would be parsed incorrectly, as it was not recognized as a
+      “special” tag (which have additional processing rules). Also,
+      added the SVG and MathML namespace tags to the list of special
+      tags.
+    + Bugfix: A template tag containing a button within an open
+      button would be parsed incorrectly, as the “in button scope”
+      check was not aware of the template element. Corrected other
+      instances including MathML and SVG elements, also.
+    + Bugfix: An :nth-child selector with a negative digit-less
+      step, such as :nth-child(-n+2), would be parsed incorrectly as
+      a positive step, and so would not match as expected.
+    + Bugfix: Calling doc.charset(charset) on an empty XML document
+      would throw an IndexOutOfBoundsException.
+    + Bugfix: Fixed a memory leak when reusing a nested
+      StructuralEvaluator (e.g., a selector ancestor chain like A B
+      C) by ensuring cache reset calls cascade to inner members.
+    + Bugfix: Concurrent calls to doc.clone().append(html) were not
+      supported. When a document was cloned, its Parser was not
+      cloned but was a shallow copy of the original parser.
+  * Changes of 1.18.3
+    + Bugfix: When serializing to XML, attribute names containing -,
+      ., or digits were incorrectly marked as invalid and removed.
+  * Changes of 1.18.2
+    + Improvement: Optimized the throughput and memory use
+      throughout the input read and parse flows, with heap
+      allocations and GC down between -6% and -89%, and throughput
+      improved up to +143% for small inputs. Most inputs sizes will
+      see throughput increases of ~ 20%. These performance
+      improvements come through recycling the backing byte[] and
+      char[] arrays used to read and parse the input.
+    + Improvement: Speed optimized html() and Entities.escape() when
+      the input contains UTF characters in a supplementary plane, by
+      around 49%.
+    + Improvement: The form associated elements returned by
+      FormElement.elements() now reflect changes made to the DOM,
+      subsequently to the original parse.
+    + Improvement: In the TreeBuilder, the onNodeInserted() and
+      onNodeClosed() events are now also fired for the outermost /
+      root Document node. This enables source position tracking on
+      the Document node (which was previously unset). And it also
+      enables the node traversor to see the outer Document node.
+    + Improvement: Selected Elements can now be position swapped
+      inline using Elements#set().
+    + Bugfix: Element.cssSelector() would fail if the element’s
+      class contained a * character.
+    + Bugfix: When tracking source ranges, a text node following an
+      invalid self-closing element may be left untracked.
+    + Bugfix: When a document has no doctype, or a doctype not named
+      html, it should be parsed in Quirks Mode.
+    + Bugfix: With a selector like div:has(span + a), the has()
+      component was not working correctly, as the inner combining
+      query caused the evaluator to match those against the outer’s
+      siblings, not children.
+    + Bugfix: A selector query that included multiple :has()
+      components in a nested :has() might incorrectly execute.
+    + Bugfix: When cookie names in a response are duplicated, the
+      simple view of cookies available via
+      Connection.Response#cookies() will provide the last one set.
+      Generally it is better to use the Jsoup.newSession method to
+      maintain a cookie jar, as that applies appropriate path
+      selection on cookies when making requests.
+    + Bugfix: When parsing named HTML entities, base entities should
+      resolve if they are a prefix of the input token (and not in an
+      attribute).
+    + Bugfix: Fixed incorrect tracking of source ranges for
+      attributes merged from late-occurring elements that were
+      implicitly created (html or body).
+    + Bugfix: Follow the current HTML specification in the tokenizer
+      to allow < as part of a tag name, instead of emitting it as a
+      character node.
+    + Bugfix: Similarly, allow a < as the start of an attribute
+      name, vs creating a new element. The previous behavior was
+      intended to parse closer to what we anticipated the author’s
+      intent to be, but that does not align to the spec or to how
+      browsers behave.
+  * Changes of 1.18.1
+    + Improvement: Stream Parser: A StreamParser provides a
+      progressive parse of its input. For URL requests, available
+      via Connection.Response.streamParser(). As each Element is
+      completed, it is emitted via a Stream or Iterator interface.
+      Elements returned will be complete with all their children,
+      and an (empty) next sibling, if applicable. Elements (or their
+      children) may be removed from the DOM during the parse, for
+      e.g. to conserve memory, providing a mechanism to parse an
+      input document that would otherwise be too large to fit into
+      memory, yet still providing a DOM interface to the document
+      and its elements. Additionally, the parser provides a
+      selectFirst(String query) / selectNext(String query), which
+      will run the parser until a hit is found, at which point the
+      parse is suspended. It can be resumed via another select()
+      call, or via the stream() or iterator() methods.
+    + Improvement: Download Progress: added a Response Progress
+      event interface, which reports progress and URLs are
+      downloaded (and parsed). Set via
+      Connection.onResponseProgress(). Supported on both a session
+      and a single connection level.
+    + Improvement: Added Path accepting parse methods:
+      Jsoup.parse(Path), Jsoup.parse(path, charsetName, baseUri,
+      parser), etc.
+    + Improvement: Updated the button tag configuration to include a
+      space between multiple button elements in the Element.text()
+      method.
+    + Improvement: Added support for the ns|* all elements in
+      namespace Selector.
+    + Improvement: When normalising attribute names during
+      serialization, invalid characters are now replaced with _, vs
+      being stripped. This should make the process clearer, and
+      generally prevent an invalid attribute name being coerced
+      unexpectedly.
+    + Change: Removed previously deprecated internal classes and
+      methods.
+    + Build change: the built jar’s OSGi manifest no longer imports
+      itself.
+    + Bugfix: When tracking source positions, if the first node was
+      a TextNode, its position was incorrectly set to -1.
+    + Bugfix: When connecting (or redirecting) to URLs with
+      characters such as {, } in the path, a Malformed URL exception
+      would be thrown (if in development), or the URL might
+      otherwise not be escaped correctly (if in production). The URL
+      encoding process has been improved to handle these characters
+      correctly.
+    + Bugfix: When using W3CDom with a custom output Document, a
+      Null Pointer Exception would be thrown.
+    + Bugfix: The :has() selector did not match correctly when using
+      sibling combinators (like e.g.: h1:has(+h2)).
+    + Bugfix: The :empty selector incorrectly matched elements that
+      started with a blank text node and were followed by non-empty
+      nodes, due to an incorrect short-circuit.
+    + Bugfix: Element.cssSelector() would fail with “Did not find
+      balanced marker” when building a selector for elements that
+      had a ( or [ in their class names. And selectors with those
+      characters escaped would not match as expected.
+    + Bugfix: Updated Entities.escape(string) to make the escaped
+      text suitable for both text nodes and attributes (previously
+      was only for text nodes). This does not impact the output of
+      Element.html() which correctly applies a minimal escape
+      depending on if the use will be for text data or in a quoted
+      attribute.
+    + Fuzz: a Stack Overflow exception could occur when resolving a
+      crafted <base href> URL, in the normalizing regex.
+  * Changes of 1.17.2
+    + Improvement: Attribute object accessors: Added
+      Element.attribute(String) and Attributes.attribute(String) to
+      more simply obtain an Attribute object.
+    + Improvement: Attribute source tracking: If source tracking is
+      on, and an Attribute's key is changed (via
+      Attribute.setKey(String)), the source range is now still
+      tracked in Attribute.sourceRange().
+    + Improvement: Wildcard attribute selector: Added support for
+      the [*] element with any attribute selector. And also restored
+      support for selecting by an empty attribute name prefix ([^]).
+    + Bugfix: Mixed-cased source position: When tracking the source
+      position of attributes, if the source attribute name was
+      mix-cased but the parser was lower-case normalizing attribute
+      names, the source position for that attribute was not tracked
+      correctly.
+    + Bugfix: Source position NPE: When tracking the source position
+      of a body fragment parse, a null pointer exception was thrown.
+    + Bugfix: Multi-point emoji entity: A multi-point encoded emoji
+      entity may be incorrectly decoded to the replacement character
+    + Bugfix: Selector sub-expressions: (Regression) in a selector
+      like parent [attr=va], other, the , OR was binding to
+      [attr=va] instead of parent [attr=va], causing incorrect
+      selections. The fix includes a EvaluatorDebug class that
+      generates a sexpr to represent the query, allowing simpler and
+      more thorough query parse tests.
+    + Bugfix: XML CData output: When generating XML-syntax output
+      from parsed HTML, script nodes containing (pseudo) CData
+      sections would have an extraneous CData section added, causing
+      script execution errors. Now, the data content is emitted in a
+      HTML/XML/XHTML polyglot format, if the data is not already
+      within a CData section.
+    + Bugfix: Thread safety: The :has evaluator held a
+      non-thread-safe Iterator, and so if an Evaluator object was
+      shared across multiple concurrent threads, a NoSuchElement
+      exception may be thrown, and the selected results may be
+      incorrect. Now, the iterator object is a thread-local.
+  * Changes of 1.17.1
+    + Improvement: in Jsoup.connect(), added support for
+      request-level authentication, supporting authentication to
+      proxies and to servers.
+    + Improvement: in the Elements list, added direct support for
+      `#set(index, element)`, `#remove(index)`, `#remove(object)`,
+      `#clear()`, `#removeAll(collection)`,
+      `#retainAll(collection)`, `#removeIf(filter)`,
+      `#replaceAll(operator)`. These methods update the original
+      DOM, as well as the Elements list.
+    + Improvement: added the NodeIterator class, to efficiently
+      traverse a node tree using the Iterator interface. And
+      added Stream Element#stream() and Node#nodeStream() methods,
+      to enable fluent composable stream pipelines of node
+      traversals.
+    + Improvement: when changing the OutputSettings syntax to XML,
+      the xhtml EscapeMode is automatically set by default.
+    + Improvement: added the `:is(selector list)` pseudo-selector,
+      which finds elements that match any of the selectors in the
+      selector list. Useful for making large ORed selectors more 
+      readable.
+    + Improvement: repackaged the library with native (vs automatic)
+      JPMS module support.
+    + Improvement: better fidelity of source positions when tracking
+      is enabled. And implicitly created or closed elements are
+      tracked and detectable via Range.isImplicit().
+    + Improvement: when source tracking is enabled, the source
+      position for attribute names and values is now available.
+      Attribute#sourceRange() provides the ranges.
+    + Improvement: when running concurrently under Java 21+ Virtual
+      Threads, virtual threads could be pinned to their carrier
+      platform thread when parsing an input stream. To improve
+      performance, particularly when parsing fetched URLs, the
+      internal ConstrainableInputStream has been replaced by
+      ControllableInputStream, which avoids the locking which caused
+      that pinning.
+    + Improvement: in Jsoup.Connect, allow any XML mimetype as a
+      supported mimetype. Was previously limited to
+      `{application|text}/xml`. This enables for e.g. fetching SVGs
+      with a image/svg+xml mimetype, without having to disable
+      mimetype validation.
+    + Bugfix: when outputting with XML syntax, HTML elements that
+      were parsed as data nodes (<script> and <style>) should be
+      emitted as CDATA nodes, so that they can be parsed correctly
+      by an XML parser.
+    + Bugfix: the Immediate Parent selector `>` could match elements
+      above the root context element, causing incorrect elements to
+      be returned when used on elements other than the root document
+    + Bugfix: in a sub-query such as `p:has(> span, > i)`,
+      combinators following the `,` Or combinator would be
+      incorrectly skipped, such that the sub-query was parsed as `i`
+      instead of `> i`.
+    + Bugfix: in W3CDom, if the jsoup input document contained an
+      empty doctype, the conversion would fail with a DOMException.
+      Now, said doctype is discarded, and the conversion continues.
+    + Bugfix: when cleaning a document containing SVG elements (or
+      other foreign elements that have preserved case names),
+      the cleaned output would be incorrectly nested if the safelist
+      had a different case than the input document.
+    + Bugfix: when cleaning a document, the output style of unknown
+      self-closing tags from the input was not preserved in the
+      output. (So a <foo /> in the input, if safe-listed, would be
+      output as <foo></foo>.)
+    + Build Improvement: added a local test proxy implementation,
+      for proxy integration tests.
+    + Build Improvement: added tests for HTTPS request support,
+      using a local self-signed cert. Includes proxy tests.
+    + Change: the InputStream returned in Connection.Response
+      .bodyStream() is no longer a ConstrainedInputStream, and so is
+      not subject to settings such as timeout or maximum size. It is
+      now a plain BufferedInputStream around the response stream.
+      Whilst this behaviour was not documented, you may have been
+      inadvertently relying on those constraints. The constraints
+      are still applied to other methods such as .parse() and
+      .bufferUp(). So if you do want  a constrained
+      BufferedInputStream, you may do Connection.Response.bufferUp()
+      .bodyStream().
+  * Changes of 1.16.2
+    + Improvement: optimized the performance of complex CSS
+      selectors, by adding a cost-based query planner. Evaluators
+      are sorted by their relative execution cost, and executed in
+      order of lower to higher cost. This speeds the matching
+      process by ensuring that simpler evaluations (such as a tag
+      name match) are conducted prior to more complex evaluations
+      (such as an attribute regex, or a deep child scan with a
+      :has).
+    + Improvement: added support for <svg> and <math> tags (and
+      their children). This includes tag namespaces and case
+      preservation on applicable tags and attributes.
+    + Improvement: when converting jsoup Documents to W3C Documents
+      in W3CDom, HTML documents will be placed in the
+      `http://www.w3.org/1999/xhtml` namespace by default, per the
+      HTML5 spec. This can be controlled by setting
+      `W3CDom#namespaceAware(false)`.
+    + Improvement: speed optimized the Structural Evaluators by
+      memoizing previous evaluations. Particularly the `~` (any
+      preceding sibling) and `:nth-of-type` selectors are improved.
+    + Improvement: tweaked the performance of the Element
+      nextElementSibling, previousElementSibling,
+      firstElementSibling, lastElementSibling, firstElementChild,
+      and lastElementChild. They now inplace filter/skip in the
+      child-node list, vs having to allocate and scan a complete
+      Element filtered list.
+    + Improvement: optimized internal methods that previously called
+      Element.children() to use filter/skip child-node list
+      accessors instead, reducing new Element List allocations.
+    + Improvement: tweaked the performance of parsing :pseudo
+      selectors.
+    + Improvement: when using the `:empty` pseudo-selector, blank
+      textnodes are now considered empty. Previously, an element
+      containing any whitespace was not considered empty.
+    + Improvement: in forms, <input type="image"> should be excluded
+      from formData() (and hence from form submissions).
+    + Improvement: in Safelist, made isSafeTag and isSafeAttribute
+      public methods, for extensibility.
+    + Bugfix: `form` elements and empty elements (such as `img`) did
+      not have their attributes de-duplicated.
+    + Bugfix: if Document.OutputSettings was cloned from a clone, an
+      NPE would be thrown when used.
+    + Bugfix: in Jsoup.connect(url), URL paths containing a %2B were
+      incorrectly recoded to a '+', or a '+' was recoded to a ' '.
+      Fixed by reverting to the previous behavior of not encoding
+      supplied paths, other than normalizing to ASCII.
+    + Bugfix: in Jsoup.connect(url), strings containing supplemental
+      characters (e.g. emoji) were not URL escaped correctly.
+    + Bugfix: in Jsoup.connect(url), the ConstrainableInputStream
+      would clear Thread interrupts when reading the body. This
+      precluded callers from spawning a thread, running a number of
+      requests for a length of time, then joining that thread after
+      interrupting it.
+    + Bugfix: when tracking HTML source positions, the closing tags
+      for H1...H6 elements were not tracked correctly.
+    + Bugfix: in Jsoup.connect(), a DELETE method request did not
+      support a request body.
+    + Bugfix: when calling Element.cssSelector() on an extremely
+      deeply nested element, a StackOverflowError could occur.
+      Further, a StackOverflowError may occur when running the query
+    + Bugfix: appending a node back to its original Element after
+      empty() would throw an Index out of bounds exception. Also,
+      now the child nodes that were removed have their parent node
+      cleared, fully detaching them from the original parent.
+    + Bugfix: in Jsoup.Connection when adding headers, the value may
+      have been assumed to be an incorrectly decoded ISO_8859_1
+      string, and re-encoded as UTF-8. The value is now left as-is.
+    + Change: removed previously deprecated methods
+      Document#normalise, Element#forEach(org.jsoup.helper
+      .Consumer<>), Node#forEach(org.jsoup.helper.Consumer<>), and
+      the org.jsoup.helper.Consumer interface; the latter being a
+      previously required compatibility shim prior to Android's
+      de-sugaring support.
+    + Change: the previous compatibility shim
+      org.jsoup.UncheckedIOException is deprecated in favor of the
+      now supported java.io.UncheckedIOException. If you are
+      catching the former, modify your code to catch the latter
+      instead.
+    + Change: blocked noscript tags from being added to Safelists,
+      due to incompatibilities between parsers with and without
+      script-mode enabled.
+  * Changes of 1.16.1
+    + Improvement: in Jsoup.connect(url), natively support URLs with
+      Unicode characters in the path or query string, without having
+      to be escaped by the caller.
+    + Improvement: Calling Node.remove() on a node with no parent is
+      now a no-op, vs a validation error.
+    + Bugfix: aligned the HTML Tree Builder processing steps for
+      AfterBody and AfterAfterBody to the updated WHATWG standard,
+      to not pop the stack to close <body> or <html> elements. This
+      prevents an errant </html> closing preceding structure. Also
+      added appropriate error message outputs in this case.
+    + Bugfix: Corrected support for ruby elements (<ruby>, <rp>,
+      <rt>, and <rtc>) to current spec.
+    + Bugfix: When using Node.before(node) or Node.after(node), if
+      the incoming node was a sibling of the context node, the
+      incoming node may be inserted into the wrong relative location
+    + Bugfix: In Jsoup.connect(url), if the input URL had components
+      that were already % escaped, they would be escaped again,
+      causing errors when fetched.
+    + Bugfix: when tracking input source positions, text in tables
+      that was fostered had invalid positions.
+    + Bugfix: If the Document.OutputSettings class was initialized,
+      and then Entities.escape(String) called, an NPE may be thrown
+      due to a class loading circular dependency.
+    + Bugfix: when pretty-printing, the first inline Element or
+      Comment in a block would not be wrap-indented if it were
+      preceded by a blank text node.
+    + Bugfix: when pretty-printing a <pre> containing block tags,
+      those tags were incorrectly indented.
+    + Bugfix: when pretty-printing nested inlineable blocks (such as
+      a <p> in a <td>), the inner element should be indented.
+    + Bugfix: <br> tags should be wrap-indented when in block tags
+      (and not when in inline tags).
+    + Bugfix: the contents of a sufficiently large <textarea> with
+      un-escaped HTML closing tags may be incorrectly parsed to an
+      empty node.
+  * Changes of 1.15.4
+    + Improvement: added the ability to escape CSS selectors (tags,
+      IDs, classes) to match elements that don't follow regular CSS
+      syntax. For example, to match by classname
+      <p class="one.two">, use document.select("p.one\\.two");
+    + Improvement: when pretty-printing, wrap text that follows a
+      <br> tag.
+    + Improvement: when pretty-printing, normalize newlines that
+      follow self-closing tags in custom tags.
+    + Improvement: when pretty-printing, collapse non-significant
+      whitespace between a block and an inline tag.
+    + Improvement: in Element#forEach and Node#forEachNode, use
+      java.util.function.Consumer instead of the previous Android
+      compatibility shim org.jsoup.helper.Consumer. Subsequently,
+      the latter has been deprecated.
+    + Improvement: added a new method Document#forms(), to
+      conveniently retrieve a List<FormElement> containing the
+      <form> elements in a document.
+    + Improvement: added a new method Document#expectForm(query),
+      to find the first matching FormElement, or blow up trying.
+    + Bugfix: URLs containing characters such as [ and ] were not
+      escaped correctly, and would throw a MalformedURLException
+      when fetched.
+    + Bugfix: Element.cssSelector would create invalid selectors for
+      elements where the tag name, ID, or classnames needed to be
+      escaped (e.g. if a class name contained a ':' or '.').
+    + Bugfix: element.text() should have a space between a block and
+      an inline element.
+    + Bugfix: if a Node or an Element was replaced with itself, that
+      node would incorrectly be orphaned.
+    + Bugfix: form data on a previous request was copied to a new
+      request in newRequest(), resulting in an accumulation of form
+      data when executing multi-step form submissions, or data sent
+      to later requests incorrectly. Now, newRequest() only copies
+      session related settings (cookies, proxy settings, user-agent,
+      etc) but not the request data nor the body.
+    + Bugfix: fixed an issue in Safelist.removeAttributes which
+      could throw a ConcurrentModificationException when using the
+      ":all" pseudo-attribute.
+    + Bugfix: given extremely deeply nested HTML, a number of
+      methods in Element could throw a StackOverflowError due to
+      excessive recursion. Namely: #data(), #hasText(), #parents(),
+      and #wrap(html).
+    + Change: deprecated the unused Document#normalise() method.
+      Normalization occurs during the HTML tree construction, and no
+      longer as a distinct phase.
+
+-------------------------------------------------------------------
 Wed Oct  2 15:54:24 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Spec file cleanup

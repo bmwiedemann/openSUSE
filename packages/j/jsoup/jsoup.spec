@@ -1,7 +1,7 @@
 #
 # spec file for package jsoup
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,21 @@
 
 
 Name:           jsoup
-Version:        1.15.3
+Version:        1.23.2
 Release:        0
 Summary:        Java library for working with HTML
 License:        MIT
 Group:          Development/Libraries/Java
 URL:            https://jsoup.org/
-# ./generate-tarball.sh
 Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-build.xml
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local >= 6
+BuildRequires:  jspecify
 BuildRequires:  jsr-305
+BuildRequires:  re2j
 BuildArch:      noarch
 
 %description
@@ -62,8 +63,8 @@ cp %{SOURCE1} .
 
 %build
 mkdir -p lib
-build-jar-repository -s lib jsr-305
-%{ant} -f %{name}-build.xml jar javadoc
+build-jar-repository -s lib jspecify jsr-305 re2j
+ant -f %{name}-build.xml jar javadoc
 
 %install
 # jar
@@ -79,7 +80,7 @@ install -pdm 0755 target/site/apidocs %{buildroot}%{_javadocdir}/%{name}
 %fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles
-%doc README.md CHANGES
+%doc README.md CHANGES.md
 %license LICENSE
 
 %files javadoc

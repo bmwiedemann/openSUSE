@@ -11,7 +11,7 @@
   <property name="project.name" value="jsoup Java HTML Parser"/>
   <property name="project.groupId" value="org.jsoup"/>
   <property name="project.artifactId" value="jsoup"/>
-  <property name="project.version" value="1.15.3"/>
+  <property name="project.version" value="1.23.2"/>
   <property name="project.description" value="jsoup is a Java library for working with real-world HTML. It provides a very convenient API for extracting and manipulating data, using the best of DOM, CSS, and jquery-like methods. jsoup implements the WHATWG HTML5 specification, and parses HTML to the same DOM as modern browsers do."/>
   <property name="project.organization.name" value="Jonathan Hedley"/>
   <property name="project.build.sourceEncoding" value="UTF-8"/>

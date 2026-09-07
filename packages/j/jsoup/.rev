@@ -39,4 +39,12 @@
     <comment>Spec file cleanup</comment>
     <requestid>1205270</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f0f1a53b75837683ae10c3a8e03bb4eb</srcmd5>
+    <version>1.23.2</version>
+    <time>1788773387</time>
+    <user>anag_factory</user>
+    <comment>1.23.2 with bsc#1275912, CVE-2026-75140</comment>
+    <requestid>1375652</requestid>
+  </revision>
 </revisionlist>
