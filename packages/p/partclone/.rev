@@ -277,4 +277,28 @@
     <comment></comment>
     <requestid>1368766</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>02304a4b7e4d451c8db38d731f85ecf1</srcmd5>
+    <version>0.3.49</version>
+    <time>1788791083</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.3.49.
+
+Notable: btrfs images of BLOCK_GROUP_TREE filesystems no longer restore
+unmountable (upstream #303); hfsplus writes the alternate volume header at the
+end of a larger target; load_image_desc_v1 no longer stores a stale zero as the
+device size; hardening against crafted images (undersized APFS spaceman record,
+zero FAT sector/cluster size, blocks_per_checksum of 0).
+
+Image format is unchanged, older images still read.
+
+Also adds a %check running upstream's new BLOCK_GROUP_TREE regression test - it
+covers the headline fix and needs no loop device or root - and declares the
+libntfs-3g &gt;= 2010 floor configure was already checking.
+
+Built locally on aarch64: green, %check passes, rpmlint 0 errors / 0 badness,
+18 warnings (all pre-existing; no-%check-section is now gone). btrfsprogs was
+verified to resolve via osc buildinfo on i586, x86_64, Leap 16.0 and 16.1.</comment>
+    <requestid>1376103</requestid>
+  </revision>
 </revisionlist>

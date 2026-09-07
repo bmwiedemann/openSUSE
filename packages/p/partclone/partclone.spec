@@ -18,7 +18,7 @@
 
 
 Name:           partclone
-Version:        0.3.48
+Version:        0.3.49
 Release:        0
 Summary:        File System Clone Utilities
 License:        GPL-2.0-or-later
@@ -26,6 +26,7 @@ URL:            https://partclone.org/
 Source:         https://github.com/Thomas-Tsai/partclone/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
+BuildRequires:  btrfsprogs
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  e2fsprogs-devel
 BuildRequires:  fdupes
@@ -34,7 +35,7 @@ BuildRequires:  libxslt-tools
 BuildRequires:  nilfs-utils-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(bash-completion)
-BuildRequires:  pkgconfig(libntfs-3g)
+BuildRequires:  pkgconfig(libntfs-3g) >= 2010
 BuildRequires:  pkgconfig(liburcu)
 BuildRequires:  pkgconfig(libxxhash)
 BuildRequires:  pkgconfig(libzstd)
@@ -85,6 +86,16 @@ autoreconf -fiv
 %make_install
 %fdupes -s %{buildroot}%{_datadir}
 %find_lang %{name}
+
+%check
+# Regression test for the BLOCK_GROUP_TREE chunk-root fix - operates on plain
+# files, no loop device or root needed.  The rest of the suite is not run: it
+# wants mkfs helpers Factory does not ship (hfsplus, apfs) or sudo/losetup
+# (btrfs_trees).
+# mkfs.btrfs and btrfs live in /usr/sbin, which is not on abuild's PATH.
+export PATH="%{_sbindir}:$PATH"
+# The test uses automake's exit 77 to signal "skip"; honour it outside the harness.
+bash tests/btrfs_bgt.test || test $? -eq 77
 
 %files
 %license COPYING

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Sep  7 06:38:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.3.49:
+  * btrfs: mark the chunk root and, with BLOCK_GROUP_TREE, the block
+    group tree root as used - images of such filesystems restored
+    unmountable (gh#Thomas-Tsai/partclone#303)
+  * hfsplus: write the alternate volume header to the end of the
+    target when it is larger than the source
+  * Fix load_image_desc_v1 storing a stale zero as the device size,
+    so shrinking a v1 image on load no longer zeroes it
+  * Reject crafted images: undersized APFS spaceman record, zero
+    sector or cluster size in the FAT boot sector, blocks_per_checksum
+    of 0 while checksums are enabled
+  * Bail out on failed allocations that --force lets past log_mesg
+  * Probe the OpenSSL EVP_MD_CTX API at configure time
+  * Use #error, not a GCC-only pragma, for unknown pointer widths
+  * Fix groff syntax in the partclone.chkimg manual page
+- Image format is unchanged; older images still read
+- Declare the libntfs-3g >= 2010 floor configure already checks
+- Run upstream's new BLOCK_GROUP_TREE regression test in %check;
+  the rest of the suite needs mkfs helpers we do not ship
+
+-------------------------------------------------------------------
 Fri Jul 31 06:53:31 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.3.48:
