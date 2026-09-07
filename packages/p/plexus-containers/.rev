@@ -124,4 +124,12 @@
     <comment>guice 6.0.0 + dependent changes</comment>
     <requestid>1179739</requestid>
   </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>657e289ace8d6b5b79e091dfdddfba7f</srcmd5>
+    <version>2.2.0</version>
+    <time>1788773442</time>
+    <user>anag_factory</user>
+    <comment>Fix build after removal of bootstrap plugins</comment>
+    <requestid>1375784</requestid>
+  </revision>
 </revisionlist>

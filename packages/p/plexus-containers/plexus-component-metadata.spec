@@ -47,12 +47,6 @@ BuildRequires:  mvn(org.codehaus.plexus:plexus-xml)
 BuildRequires:  mvn(org.codehaus.plexus:plexus:pom:)
 BuildRequires:  mvn(org.jdom:jdom2)
 BuildRequires:  mvn(org.ow2.asm:asm) >= 7
-#!BuildRequires: maven-compiler-plugin-bootstrap
-#!BuildRequires: maven-jar-plugin-bootstrap
-#!BuildRequires: maven-javadoc-plugin-bootstrap
-#!BuildRequires: maven-plugin-plugin-bootstrap
-#!BuildRequires: maven-resources-plugin-bootstrap
-#!BuildRequires: maven-surefire-plugin-bootstrap
 BuildArch:      noarch
 
 %description

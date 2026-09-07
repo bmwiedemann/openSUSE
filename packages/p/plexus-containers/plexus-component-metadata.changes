@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep  4 11:28:42 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Modify the BuildRequires after the removal of bootstrap plugins
+
+-------------------------------------------------------------------
 Thu May 16 12:59:05 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 2.2.0
