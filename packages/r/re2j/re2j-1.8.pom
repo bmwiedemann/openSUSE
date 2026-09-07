@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.google.re2j</groupId>
+  <artifactId>re2j</artifactId>
+  <version>1.8</version>
+  <name>RE2/J</name>
+  <description>Linear time regular expressions for Java</description>
+  <url>http://github.com/google/re2j</url>
+  <licenses>
+    <license>
+      <name>Go License</name>
+      <url>https://golang.org/LICENSE</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  <developers>
+    <developer>
+      <id>dev</id>
+      <name>The RE2/J Contributors</name>
+      <email>re2j-discuss@googlegroups.com</email>
+    </developer>
+  </developers>
+  <scm>
+    <url>https://github.com/google/re2j.git</url>
+  </scm>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.12</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.google.gwt</groupId>
+      <artifactId>gwt-dev</artifactId>
+      <version>2.9.0</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.google.gwt</groupId>
+      <artifactId>gwt-user</artifactId>
+      <version>2.9.0</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.google.truth</groupId>
+      <artifactId>truth</artifactId>
+      <version>0.36</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>1.7.10</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+</project>

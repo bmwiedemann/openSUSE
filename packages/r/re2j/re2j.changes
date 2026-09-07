@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Fri Sep  4 05:46:06 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 1.8
+  * Changes
+    + Fix NullPointerException in Pattern#namedGroups
+    + Add fast path for ASCII case folding
+    + ISSUE-124: removed unused error message variable
+    + Add support for (?<name>expr).
+    + Reduce the incidence of infinite loops while case folding
+    + Minor test fixes to enable running internally with Blaze.
+    + Use an explicit "UTF-8" character set argument when creating
+      Strings from bytes. The platform default character set is
+      guaranteed to be UTF-8.
+    + Add Pattern.programSize() and Matcher.programSize()
+
+-------------------------------------------------------------------
+Thu Nov 14 17:23:06 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging with version 1.7
