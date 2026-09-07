@@ -1,4 +1,99 @@
 -------------------------------------------------------------------
+Fri Sep  4 10:47:31 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 3.6.0
+  * Major architectural simplification:
+    + All test frameworks now execute through a single unified JUnit
+      Platform provider (surefire-junit-platform).
+    + The five legacy providers have been removed, reducing
+      maintenance complexity and enabling a consistent experience
+      across JUnit 5, JUnit 4, and TestNG.
+  * New features and improvements
+    + Fix #3303: distinguish JUnit 6 ParameterizedClass invocations
+    + SUREFIRE-1639: Add ability to configure JUnit 5
+      TestExecutionListener
+    + Issue #838 Implement extension point to run diagnosis tools
+      when forked JVM times out
+    + SUREFIRE-2148: Verify recovered BeforeAll does not fail build
+    + SUREFIRE-823: Decouple -DskipTests from Failsafe plugin
+    + Use StackWalker in StackTraceProvider when available (Java 9+)
+    + Issue-3380: Send sourceQualifiedName to forked clients
+  * Bug Fixes
+    + SUREFIRE-523: Link all reported tests to source XRef
+    + SUREFIRE-3446: Fix direct selection of JUnit Jupiter @nested
+      classes
+    + Discover tests in a fork when a toolchain JDK is used
+    + SUREFIRE-2239, SUREFIRE-2241, SUREFIRE-2260, SUREFIRE-2274,
+      SUREFIRE-2300: Preserve JUnit Platform test identity across
+      reruns
+    + Fix #3428: resolve parents via TestPlan.getParent for pre-1.8
+      platforms
+    + SUREFIRE-859: Make random test order reproducible
+    + SUREFIRE-862, SUREFIRE-3178: Handle missing Failsafe summary
+      files
+    + fix: report AfterAll/AfterClass exceptions as errors again
+    + Fixes #3264 : tests inside @suite incorrectly classified as
+      flakes
+    + Fix Windows flake in CommandChannelDecoderTest
+    + Fix reportNameSuffix in XML testcase classname
+    + Fix: resolve relative classpath elements against the fork's
+      working dir
+  * Documentation updates
+    + Magnify the home, well at least have something rather than
+      nothing :)
+    + Restore the straight quotes the FAQ conversion turned
+      typographic
+    + Restore the table borders lost in the APT conversion
+    + Convert the FAQ from FML to Markdown
+    + Convert the remaining site documentation from APT to Markdown
+    + javadoc: clarify statelessTestsetReporter,
+      consoleOutputReporter, statelessTestsetInfoReporter parameters
+    + Add AGENTS.md + SECURITY.md security-model pointer for scanner
+      discoverability
+    + Update documentation we support Junit 6 as well :)
+  * Maintenance
+    + Stop dependabot from updating test fixtures
+    + Migrate legacy plugin Javadoc annotations
+    + Use the resolver's own HTTP transport in the report plugin
+      tests
+    + Pin maven-jar-plugin 3.5.1 in modular IT fixtures
+  * Dependency updates
+    + Bump mavenVersion from 3.9.14 to 3.9.16
+    + Bump Maven parent version from 47 to 49
+    + Bump org.codehaus.plexus:plexus-java from 1.5.2 to 1.6.0
+    + Bump org.codehaus.plexus:plexus-interpolation from 1.29 to
+      1.30.0
+    + Bump org.codehaus.plexus:plexus-i18n from 1.1.0 to 1.2.0
+    + Bump org.xmlunit:xmlunit-core from 2.11.0 to 2.13.0
+    + Bump org.testng:testng from 6.14.3 to 7.5.1 in
+      /surefire-its/src/test/resources/fork-count-testng
+    + Bump junit:junit from 4.12 to 4.13.1 in
+      /surefire-its/src/test/resources/failsafe-buildfail
+    + Bump junit:junit from 4.12 to 4.13.1 in
+      /surefire-its/src/test/resources/surefire-510-testClassPath
+    + master: bump apache/maven-gh-actions-shared/.github/workflows/
+      /pr-automation.yml from 4 to 5
+    + master: bump apache/maven-gh-actions-shared/.github/workflows/
+      /maven-verify.yml from 4 to 5
+    + master: bump apache/maven-gh-actions-shared/.github/workflows/
+      /stale.yml from 4 to 5
+    + master: bump apache/maven-gh-actions-shared/.github/workflows/
+      /release-drafter.yml from 4 to 5
+    + Bump jacocoVersion from 0.8.14 to 0.8.15
+- Do not build the bootstrap plugins, build the non-bootstrap
+  versions using ant and generating the HelpMojo.java and the plugin
+  descriptors by an execution of maven-plugin-plugin goals outside
+  of maven lifecycle
+- Removed patch:
+  * 0001-Port-to-TestNG-7.4.0.patch
+    + not needed after the testng provider removal
+- Modified patch:
+  * 0002-Unshade-surefire.patch -> 0001-Unshade-surefire.patch
+    + Rebase to the current code-base and fix, so that it passes
+      all tests including the integration ones when building the
+      upstream way
+
+-------------------------------------------------------------------
 Sun Aug  2 14:14:27 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Modified patch:

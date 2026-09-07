@@ -18,7 +18,7 @@
 
 %global base_name maven-surefire
 Name:           %{base_name}-plugins
-Version:        3.5.6
+Version:        3.6.0
 Release:        0
 Summary:        Test framework project
 License:        Apache-2.0 AND CPL-1.0
@@ -27,40 +27,31 @@ URL:            https://maven.apache.org/surefire/
 Source0:        %{base_name}-%{version}.tar.xz
 Source1:        https://www.apache.org/licenses/LICENSE-2.0.txt
 Source2:        https://www.eclipse.org/legal/cpl-v10.html
-Patch0:         0001-Port-to-TestNG-7.4.0.patch
-Patch1:         0002-Unshade-surefire.patch
+Source10:       %{base_name}-build.tar.xz
+Patch0:         0001-Unshade-surefire.patch
+BuildRequires:  ant
+BuildRequires:  apache-commons-lang3
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  maven-local
-BuildRequires:  mvn(org.apache.maven.doxia:doxia-core)
-BuildRequires:  mvn(org.apache.maven.doxia:doxia-sink-api)
-BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-annotations)
-BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
-BuildRequires:  mvn(org.apache.maven.reporting:maven-reporting-impl)
-BuildRequires:  mvn(org.apache.maven.resolver:maven-resolver-api)
-BuildRequires:  mvn(org.apache.maven.shared:maven-shared-utils)
-BuildRequires:  mvn(org.apache.maven.surefire:maven-surefire-common)
-BuildRequires:  mvn(org.apache.maven.surefire:surefire-api)
-BuildRequires:  mvn(org.apache.maven.surefire:surefire-booter)
-BuildRequires:  mvn(org.apache.maven.surefire:surefire-extensions-api)
-BuildRequires:  mvn(org.apache.maven.surefire:surefire-logger-api)
-BuildRequires:  mvn(org.apache.maven.surefire:surefire-report-parser)
-BuildRequires:  mvn(org.apache.maven:maven-artifact)
-BuildRequires:  mvn(org.apache.maven:maven-core)
-BuildRequires:  mvn(org.apache.maven:maven-model)
+BuildRequires:  javapackages-local >= 6
+BuildRequires:  maven-doxia-core
+BuildRequires:  maven-doxia-sink-api
+BuildRequires:  maven-plugin-annotations
+BuildRequires:  maven-plugin-plugin
+BuildRequires:  maven-reporting-impl
+BuildRequires:  maven-resolver-api
+BuildRequires:  maven-shared-utils
+BuildRequires:  maven-surefire
+BuildRequires:  maven-surefire-report-parser
+BuildRequires:  plexus-i18n
+BuildRequires:  plexus-interpolation
+BuildRequires:  plexus-xml
+BuildRequires:  sisu-plexus
+BuildRequires:  xmvn-install
+BuildRequires:  xmvn-minimal
+BuildRequires:  xmvn-resolve
 BuildRequires:  mvn(org.apache.maven:maven-parent:pom:)
-BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
-BuildRequires:  mvn(org.apache.maven:maven-settings)
-BuildRequires:  mvn(org.codehaus.plexus:plexus-i18n)
-BuildRequires:  mvn(org.codehaus.plexus:plexus-interpolation)
-BuildRequires:  mvn(org.codehaus.plexus:plexus-xml)
-BuildRequires:  mvn(org.eclipse.sisu:org.eclipse.sisu.plexus)
 BuildRequires:  mvn(org.fusesource.jansi:jansi)
-#!BuildRequires: maven-compiler-plugin-bootstrap
-#!BuildRequires: maven-jar-plugin-bootstrap
-#!BuildRequires: maven-plugin-plugin-bootstrap
-#!BuildRequires: maven-resources-plugin-bootstrap
-#!BuildRequires: maven-surefire-plugin-bootstrap
 BuildArch:      noarch
 
 %description
@@ -109,11 +100,10 @@ Group:          Development/Libraries/Java
 Javadoc for %{name}.
 
 %prep
-%setup -q -n %{base_name}-%{version}
+%setup -q -n %{base_name}-%{version} -a10
 cp -p %{SOURCE1} %{SOURCE2} .
 
 %patch -P 0 -p1
-%patch -P 1 -p1
 
 # Disable strict doclint
 sed -i /-Xdoclint:all/d pom.xml
@@ -130,6 +120,9 @@ sed -i /-Xdoclint:all/d pom.xml
 %pom_disable_module surefire-shadefire
 %pom_remove_dep -r :surefire-shadefire
 
+%pom_remove_dep -r :mockito-bom
+%pom_remove_dep -r :junit-bom
+
 # Help plugin is needed only to evaluate effective Maven settings.
 # For building RPM package default settings will suffice.
 %pom_remove_plugin :maven-help-plugin surefire-its
@@ -137,33 +130,76 @@ sed -i /-Xdoclint:all/d pom.xml
 # We don't need site-source
 %pom_remove_plugin :maven-assembly-plugin maven-surefire-plugin
 
-# Disable all modules besides the 3 plugins
-for module in \
-    maven-surefire-common \
-    surefire-api \
-    surefire-booter \
-    surefire-grouper \
-    surefire-extensions-api \
-    surefire-extensions-spi \
-    surefire-its \
-    surefire-logger-api \
-    surefire-providers \
-    surefire-report-parser; do
-  %pom_disable_module ${module}
-done
+# Remove all dependencies with scope test, since a raw xmvn does not hide them
+%pom_remove_dep -r :::test:
 
 %build
 %{mvn_package} ":*tests*" __noinstall
 %{mvn_package} ":{surefire,surefire-providers}" __noinstall
 %{mvn_package} ":*{surefire-plugin,report-plugin}*" @1
 %{mvn_package} ":*junit-platform*" junit5
-%{mvn_package} ":*{junit,testng,failsafe-plugin,report-parser}*"  @1
+%{mvn_package} ":*{failsafe-plugin,report-parser}*"  @1
 
-%{mvn_build} -f -- \
-%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-    -Dmaven.compiler.release=8 \
-%endif
-    -Dsource=8
+%{mvn_file} ":{*}" %{base_name}/@1
+
+mkdir -p lib
+build-jar-repository -s -p lib \
+    apache-commons-lang3 \
+    atinject \
+    commons-compress \
+    commons-io \
+    maven-common-artifact-filters/maven-common-artifact-filters \
+    maven-doxia/doxia-core \
+    maven-doxia/doxia-sink-api \
+    maven/maven-artifact \
+    maven/maven-core \
+    maven/maven-model \
+    maven/maven-plugin-api \
+    maven/maven-settings \
+    maven-plugin-tools/maven-plugin-annotations \
+    maven-reporting-api/maven-reporting-api \
+    maven-reporting-impl/maven-reporting-impl \
+    maven-resolver/maven-resolver-api \
+    maven-resolver/maven-resolver-impl \
+    maven-resolver/maven-resolver-named-locks \
+    maven-resolver/maven-resolver-util \
+    maven-shared-utils/maven-shared-utils \
+    maven-surefire/maven-surefire-common \
+    maven-surefire/surefire-api \
+    maven-surefire/surefire-booter \
+    maven-surefire/surefire-extensions-api \
+    maven-surefire/surefire-logger-api \
+    maven-surefire/surefire-report-parser \
+    objectweb-asm/asm \
+    org.eclipse.sisu.inject \
+    org.eclipse.sisu.plexus \
+    plexus-containers/plexus-component-annotations \
+    plexus-i18n/plexus-i18n \
+    plexus/interpolation \
+    plexus-languages/plexus-java \
+    plexus/utils \
+    plexus/xml \
+    slf4j/api
+
+%{ant} \
+    -Dtest.skip=true \
+    -f build-plugins.xml \
+    package javadoc
+
+%{mvn_artifact} pom.xml
+%{mvn_artifact} surefire-providers/pom.xml
+
+mkdir -p target/site/apidocs
+
+for module in \
+    maven-surefire-plugin \
+    maven-failsafe-plugin \
+    maven-surefire-report-plugin; do
+  %{mvn_artifact} ${module}/pom.xml ${module}/target/${module}-%{version}.jar
+  if [ -d ${module}/target/site/apidocs ]; then
+    cp -r ${module}/target/site/apidocs target/site/apidocs/${module}
+  fi
+done
 
 %install
 %mvn_install

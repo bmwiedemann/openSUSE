@@ -17,7 +17,7 @@
 
 
 Name:           maven-surefire
-Version:        3.5.6
+Version:        3.6.0
 Release:        0
 Summary:        Test framework project
 License:        Apache-2.0 AND CPL-1.0
@@ -27,9 +27,7 @@ Source0:        %{name}-%{version}.tar.xz
 Source1:        https://www.apache.org/licenses/LICENSE-2.0.txt
 Source2:        https://www.eclipse.org/legal/cpl-v10.html
 Source10:       %{name}-build.tar.xz
-Patch0:         0001-Port-to-TestNG-7.4.0.patch
-Patch1:         0002-Unshade-surefire.patch
-Patch10:        %{name}-bootstrap-resources.patch
+Patch0:         0001-Unshade-surefire.patch
 BuildRequires:  ant
 BuildRequires:  apache-commons-compress
 BuildRequires:  apache-commons-io
@@ -40,7 +38,6 @@ BuildRequires:  java-devel >= 1.8
 BuildRequires:  javacc
 BuildRequires:  javapackages-local >= 6
 BuildRequires:  jsr-305
-BuildRequires:  junit
 BuildRequires:  junit5-minimal
 BuildRequires:  maven-common-artifact-filters
 BuildRequires:  maven-doxia-core
@@ -65,44 +62,17 @@ BuildRequires:  plexus-xml
 BuildRequires:  sisu-inject
 BuildRequires:  sisu-plexus
 BuildRequires:  slf4j
-BuildRequires:  testng
 BuildRequires:  xmvn-install
 BuildRequires:  xmvn-resolve
 BuildRequires:  mvn(org.apache.maven:maven-parent:pom:)
 # PpidChecker relies on /usr/bin/ps to check process uptime
 Requires:       procps
+Obsoletes:      %{name}-provider-junit
+Obsoletes:      %{name}-provider-testng
 BuildArch:      noarch
 
 %description
 Surefire is a test framework project.
-
-%package plugin-bootstrap
-Summary:        Surefire plugin for maven
-Group:          Development/Libraries/Java
-
-%description plugin-bootstrap
-Maven surefire plugin for running tests via the surefire framework.
-
-%package report-plugin-bootstrap
-Summary:        Surefire reports plugin for maven
-Group:          Development/Libraries/Java
-
-%description report-plugin-bootstrap
-Plugin for generating reports from surefire test runs.
-
-%package provider-junit
-Summary:        JUnit provider for Maven Surefire
-Group:          Development/Libraries/Java
-
-%description provider-junit
-JUnit provider for Maven Surefire.
-
-%package provider-testng
-Summary:        TestNG provider for Maven Surefire
-Group:          Development/Libraries/Java
-
-%description provider-testng
-TestNG provider for Maven Surefire.
 
 %package provider-junit5
 Summary:        JUnit 5 provider for Maven Surefire
@@ -118,27 +88,6 @@ Group:          Development/Libraries/Java
 %description report-parser
 Plugin for parsing report output files from surefire.
 
-%package -n maven-failsafe-plugin-bootstrap
-Summary:        Maven plugin for running integration tests
-Group:          Development/Libraries/Java
-
-%description -n maven-failsafe-plugin-bootstrap
-The Failsafe Plugin is designed to run integration tests while the
-Surefire Plugins is designed to run unit. The name (failsafe) was
-chosen both because it is a synonym of surefire and because it implies
-that when it fails, it does so in a safe way.
-
-If you use the Surefire Plugin for running tests, then when you have a
-test failure, the build will stop at the integration-test phase and
-your integration test environment will not have been torn down
-correctly.
-
-The Failsafe Plugin is used during the integration-test and verify
-phases of the build lifecycle to execute the integration tests of an
-application. The Failsafe Plugin will not fail the build during the
-integration-test phase thus enabling the post-integration-test phase
-to execute.
-
 %package javadoc
 Summary:        Javadoc for %{name}
 Group:          Documentation/HTML
@@ -153,8 +102,6 @@ Javadoc for %{name}.
 cp -p %{SOURCE1} %{SOURCE2} .
 
 %patch -P 0 -p1
-%patch -P 1 -p1
-%patch -P 10 -p1
 
 # Disable strict doclint
 sed -i /-Xdoclint:all/d pom.xml
@@ -171,6 +118,9 @@ sed -i /-Xdoclint:all/d pom.xml
 %pom_disable_module surefire-shadefire
 %pom_remove_dep -r :surefire-shadefire
 
+%pom_remove_dep -r :mockito-bom
+%pom_remove_dep -r :junit-bom
+
 # Help plugin is needed only to evaluate effective Maven settings.
 # For building RPM package default settings will suffice.
 %pom_remove_plugin :maven-help-plugin surefire-its
@@ -183,7 +133,7 @@ sed -i /-Xdoclint:all/d pom.xml
 %{mvn_package} ":{surefire,surefire-providers}" __noinstall
 %{mvn_package} ":*{surefire-plugin,report-plugin}*" @1
 %{mvn_package} ":*junit-platform*" junit5
-%{mvn_package} ":*{junit,testng,failsafe-plugin,report-parser}*"  @1
+%{mvn_package} ":*{failsafe-plugin,report-parser}*"  @1
 
 mkdir -p lib
 build-jar-repository -s -p lib \
@@ -192,7 +142,7 @@ build-jar-repository -s -p lib \
     commons-compress \
     commons-io \
     jsr-305 \
-    junit \
+    junit5/junit-jupiter-api \
     junit5/junit-platform-commons \
     junit5/junit-platform-engine \
     junit5/junit-platform-launcher \
@@ -221,8 +171,7 @@ build-jar-repository -s -p lib \
     plexus-languages/plexus-java \
     plexus/utils \
     plexus/xml \
-    slf4j/api \
-    testng
+    slf4j/api
 
 %{ant} \
     -Dtest.skip=true \
@@ -237,14 +186,10 @@ for module in \
     surefire-logger-api \
     surefire-api \
     surefire-booter \
-    surefire-grouper \
     surefire-extensions-api \
     surefire-extensions-spi \
     maven-surefire-common \
-    surefire-report-parser \
-    maven-surefire-plugin \
-    maven-failsafe-plugin \
-    maven-surefire-report-plugin; do
+    surefire-report-parser; do
   %{mvn_artifact} ${module}/pom.xml ${module}/target/${module}-%{version}.jar
   if [ -d ${module}/target/site/apidocs ]; then
     cp -r ${module}/target/site/apidocs target/site/apidocs/${module}
@@ -252,15 +197,7 @@ for module in \
 done
 for module in \
     common-java5 \
-    common-junit3 \
-    common-junit4 \
-    common-junit48 \
-    surefire-junit3 \
-    surefire-junit4 \
-    surefire-junit47 \
-    surefire-junit-platform \
-    surefire-testng-utils \
-    surefire-testng; do
+    surefire-junit-platform; do
   %{mvn_artifact} surefire-providers/${module}/pom.xml \
     surefire-providers/${module}/target/${module}-%{version}.jar
   if [ -d surefire-providers/${module}/target/site/apidocs ]; then
@@ -276,19 +213,9 @@ done
 %doc README.md
 %license LICENSE-2.0.txt cpl-v10.html
 
-%files plugin-bootstrap -f .mfiles-surefire-plugin
-
-%files report-plugin-bootstrap -f .mfiles-report-plugin
-
 %files report-parser -f .mfiles-report-parser
 
-%files provider-junit -f .mfiles-junit
-
 %files provider-junit5 -f .mfiles-junit5
-
-%files provider-testng -f .mfiles-testng
-
-%files -n maven-failsafe-plugin-bootstrap -f .mfiles-failsafe-plugin
 
 %files javadoc -f .mfiles-javadoc
 %license LICENSE-2.0.txt cpl-v10.html

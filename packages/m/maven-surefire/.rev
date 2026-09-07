@@ -176,4 +176,12 @@ put into adi:2</comment>
     <comment>bsc#1273185</comment>
     <requestid>1369190</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>6b9cc8934a1bd518c058e8542751917a</srcmd5>
+    <version>3.6.0</version>
+    <time>1788773445</time>
+    <user>anag_factory</user>
+    <comment>3.6.0 + removal of bootstrap plugins</comment>
+    <requestid>1375798</requestid>
+  </revision>
 </revisionlist>
