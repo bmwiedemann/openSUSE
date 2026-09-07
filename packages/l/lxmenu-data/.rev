@@ -150,4 +150,12 @@
     <comment></comment>
     <requestid>1154064</requestid>
   </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>3fab132a80258811984e64d55cbd38a0</srcmd5>
+    <version>0.1.5</version>
+    <time>1788773568</time>
+    <user>anag_factory</user>
+    <comment>Replace usage of %jobs for reproducible builds (boo#1237231)</comment>
+    <requestid>1375900</requestid>
+  </revision>
 </revisionlist>

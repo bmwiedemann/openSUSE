@@ -51,7 +51,7 @@ menu spec-compliant desktop menus for LXDE.
 
 %build
 %configure
-%__make %{?jobs:-j%{jobs}} V=1
+%make_build
 
 %install
 %makeinstall
