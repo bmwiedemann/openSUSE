@@ -106,6 +106,10 @@ Patch14:        2308.patch
 Patch15:        2462.patch
 # PATCH-FEATURE-SLE NetworkManager-initrd-generator-ip-hcn.patch PED-14534 sckang@suse.com -- handle "ip=hcn" option in nm-initrd-generator, it generates an empty connection
 Patch16:        NetworkManager-initrd-generator-ip-hcn.patch
+# PATCH-FIX-UPSTREAM NetworkManager-CVE-2026-10805.patch bsc#1267696, CVE-2026-10805, glfd#NetworkManager/NetworkManager!2426 sckang@suse.com --  dhclient: reject unsafe characters in URLs and hostnames
+Patch17:        NetworkManager-CVE-2026-10805.patch
+# PATCH-FIX-UPSTREAM NetworkManager-CVE-2026-19685.patch bsc#1276764, CVE-2026-19685, glfd#NetworkManager/NetworkManager!2513 sckang@suse.com -- core: 802.1x: reject ca-path for private connections
+Patch18:        NetworkManager-CVE-2026-19685.patch
 
 BuildRequires:  c++_compiler
 BuildRequires:  dnsmasq
@@ -337,6 +341,8 @@ This package is intended to be installed by default for server deployments.
 %if 0%{?sle_version} && 0%{?sle_version} > 160000
 %patch -P 16 -p1
 %endif
+%patch -P 17 -p1
+%patch -P 18 -p1
 
 # Fix server.conf's location, to end up in %%{_defaultdocdir}/%%{name},
 # rather then %%{_datadir}/doc/%%{name}/examples:

@@ -2614,4 +2614,17 @@ New stable release</comment>
   (PED-14534).</comment>
     <requestid>1368515</requestid>
   </revision>
+  <revision rev="295" vrev="4">
+    <srcmd5>a820c8c9be26f0d8f42cf9946d442434</srcmd5>
+    <version>1.56.1</version>
+    <time>1788773188</time>
+    <user>anag_factory</user>
+    <comment>- Add NetworkManager-CVE-2026-10805.patch: dhclient: reject unsafe
+  characters in URLs and hostnames (bsc#1267696, CVE-2026-10805,
+  glfd#NetworkManager/NetworkManager!2426).
+- Add NetworkManager-CVE-2026-19685.patch: core: 802.1x: reject
+  ca-path for private connections (bsc#1276764, CVE-2026-19685,
+  glfd#NetworkManager/NetworkManager!2513).</comment>
+    <requestid>1375598</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep  2 01:59:20 UTC 2026 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add NetworkManager-CVE-2026-10805.patch: dhclient: reject unsafe
+  characters in URLs and hostnames (bsc#1267696, CVE-2026-10805,
+  glfd#NetworkManager/NetworkManager!2426).
+- Add NetworkManager-CVE-2026-19685.patch: core: 802.1x: reject
+  ca-path for private connections (bsc#1276764, CVE-2026-19685,
+  glfd#NetworkManager/NetworkManager!2513).
+
+-------------------------------------------------------------------
 Tue Jul 28 02:12:42 UTC 2026 - Jonathan Kang <songchuan.kang@suse.com>
 
 - Add 2462.patch: nm-initrd-generator: set parent for NBFT
