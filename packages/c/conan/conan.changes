@@ -1,4 +1,99 @@
 -------------------------------------------------------------------
+Sat Sep  5 07:57:40 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.32.0:
+  * Feature: Add basic LoongArch64 architecture support and host
+    detection (gh#conan-io/conan#20288).
+  * Feature: Add support for gcc 16.2 (gh#conan-io/conan#20280).
+  * Feature: Parse reference attributes from --ref in workspace
+    add (gh#conan-io/conan#20269).
+  * Feature: Add raise_on_errors=True arg to CommandAPI.run, it
+    now raises on all errors returned by commands
+    (gh#conan-io/conan#20266).
+  * Feature: conan workspace open with no arguments will read the
+    conanws file and try to open the defined references there into
+    their respective folders if they are not present
+    (gh#conan-io/conan#20247).
+  * Feature: conan workspace open and conan workspace add --ref
+    learned a new --folder argument to indicate the relative
+    location wrt the workspace root for the cloning of the
+    repository (gh#conan-io/conan#20247).
+  * Feature: Add architecture_bits build helper to detect when the
+    target architecture is 64-bit (gh#conan-io/conan#20246).
+  * Feature: Add recipe_metadata()/package_metadata() API to
+    download metadata to a user folder (gh#conan-io/conan#20240).
+  * Feature: Improve source step output (gh#conan-io/conan#20234).
+  * Feature: Make conan report diff -f=html use a dark theme by
+    default (gh#conan-io/conan#20229).
+  * Feature: Add package_type_traits attribute to force
+    requirement traits by package_type (run only for now)
+    (gh#conan-io/conan#20228).
+  * Feature: Add --ref argument to conan editable add <path> as a
+    shortcut to define name, version, etc
+    (gh#conan-io/conan#20218).
+  * Feature: Feature: Allow copy() to accept multiple patterns,
+    also used by exports/exports_sources, for speedup
+    (gh#conan-io/conan#20217).
+  * Feature: Add qbs_file_name property to override the generated
+    Qbs module name and avoid collisions
+    (gh#conan-io/conan#20215).
+  * Feature: Allow conan run without a conanfile to run
+    executables from the profile's [tool_requires]
+    (gh#conan-io/conan#20214).
+  * Feature: Rework the conan graph build-order HTML formatter
+    with search and full offline support
+    (gh#conan-io/conan#20174).
+  * Feature: Populate the download cache with uploaded artifacts
+    if core.download:download_cache is set
+    (gh#conan-io/conan#20163).
+  * Feature: Accept CMake 4.4 --preset-file presets generated
+    outside the CMake root (gh#conan-io/conan#20158).
+  * Feature: Add !settings.build_type syntax to exclude build_type
+    from cmake_layout's build_folder_vars
+    (gh#conan-io/conan#17331).
+  * Fix: Do not force CONFIG requires for transitive dependencies
+    in CMakeConfigDeps (gh#conan-io/conan#20283).
+  * Fix: Correct a typo in the CycloneDX component recipe revision
+    (gh#conan-io/conan#20271).
+  * Fix: Failed creates in workspace subcommands now raise errors
+    as expected (gh#conan-io/conan#20266).
+  * Fix: Add support for python requires in remotes for conan
+    workspace create (gh#conan-io/conan#20265).
+  * Fix: Add support for lockfile reading in conan source for
+    Python requires (gh#conan-io/conan#20264).
+  * Fix: Generate valid CycloneDX SBOMs for recipes without a
+    description attribute (gh#conan-io/conan#20263).
+  * Fix: Make test_linker_script test resilient to the exact
+    linker error text, which changed with Meson >= 1.12
+    (gh#conan-io/conan#20257).
+  * Fix: Correct filename parsing in conan report diff -f=html for
+    non-ASCII filenames (gh#conan-io/conan#20229).
+  * Fix: Remove the Vigenère cipher used to store JWTs, since it
+    provided no real security benefit (gh#conan-io/conan#20227).
+  * Fix: Improve copy() performance when using lists of patterns
+    (gh#conan-io/conan#20226).
+  * Fix: Warn when tools.build:compiler_executables keys are
+    unknown or unused by CMakeToolchain/AutotoolsToolchain
+    (gh#conan-io/conan#20219).
+  * Fix: Add objc, objcpp and asm as
+    tools.build:compiler_executables for AutotoolsToolchain
+    (gh#conan-io/conan#20219).
+  * Fix: Make conan lock upgrade-config's path argument point to a
+    conanconfig.yml file, not a conanfile.py
+    (gh#conan-io/conan#20208).
+  * Fix: Remove the deprecated --order-by behavior and empty
+    version ranges, as planned for Conan 2.32
+    (gh#conan-io/conan#20207).
+  * Bugfix: Keep the local recipe index cache folder when conan
+    remote add fails on a duplicate without --force
+    (gh#conan-io/conan#20210).
+  * Bugfix: Make CMakeConfigDeps generate common files only for
+    the host context, avoiding lost CMake variables
+    (gh#conan-io/conan#20198).
+- Changes from version 2.30.0 to 2.31.2:
+  * See https://github.com/conan-io/conan/releases
+
+-------------------------------------------------------------------
 Sun Jun 28 20:15:55 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.29.1:
