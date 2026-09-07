@@ -203,4 +203,15 @@
   * IPv6 is now built by default upstream.</comment>
     <requestid>1375239</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>f2ed8b57d6e3b58f808f82ae67bbcd44</srcmd5>
+    <version>5.0.0</version>
+    <time>1788774782</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1376034 from adkorte
+
+- Require all libraries in the -devel package that are included through
+  the LibwebsocketsTargets.cmake INTERFACE_LINK_LIBRARIES</comment>
+    <requestid>1376044</requestid>
+  </revision>
 </revisionlist>

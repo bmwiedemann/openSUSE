@@ -108,6 +108,14 @@ only if an application asks for it.
 Summary:        Development files for %{name}
 Group:          Development/Libraries/C and C++
 Requires:       %{name}%{sover} = %{version}
+Requires:       pkgconfig(dbus-1)
+Requires:       pkgconfig(libcrypto)
+Requires:       pkgconfig(libssl)
+Requires:       pkgconfig(sqlite3)
+Requires:       %{name}-evlib_ev
+Requires:       %{name}-evlib_event
+Requires:       %{name}-evlib_glib
+Requires:       %{name}-evlib_uv
 
 %description devel
 This subpackage contains libraries and header files for developing

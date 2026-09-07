@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Sep  6 17:25:40 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
+
+- Require all libraries in the -devel package that are included through
+  the LibwebsocketsTargets.cmake INTERFACE_LINK_LIBRARIES
+
+-------------------------------------------------------------------
+Fri Sep  4 18:12:32 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Currently one of the header files pulls in sqlite3.h. While this
+  feels wrong, work around it for now with a Requires for the
+  sqlite3 devel package in the devel package.
+
+-------------------------------------------------------------------
 Tue Sep  1 13:05:48 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 5.0.0:
