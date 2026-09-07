@@ -1,7 +1,19 @@
 -------------------------------------------------------------------
+Sun Sep  6 13:29:38 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update vendor to address:
+  * bsc#1279395, CVE-2026-84304: trivy: github.com/grpc/grpc-go:
+        heap memory exhaustion via HTTP/2 DATA frame
+  * bsc#1279392, CVE-2026-84445: trivy: google.golang.org/grpc: DoS
+        via crash due to missing `:authority` and `Host` headers
+  * bsc#1279390, CVE-2026-84303: trivy: github.com/grpc/grpc-go:
+        xDS RBAC HTTP filter implementation issue allows for bypass
+        of authorization
+
+-------------------------------------------------------------------
 Fri Aug 21 20:33:00 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
-- Update to version 0.74.0 (bsc#1276326, CVE-2026-50163,
+- Update to version 0.74.0 (bsc#1278702, CVE-2026-50163,
       bsc#1278002, CVE-2026-37236,
       bsc#1278624, CVE-2026-56855,CVE-2026-56854,CVE-2026-78662):
   * release: v0.74.0 [main] (#11037)

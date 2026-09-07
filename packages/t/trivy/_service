@@ -16,5 +16,6 @@
   </service>
   <service name="go_modules" mode="manual">
     <param name="compression">zst</param>
+    <param name="replace">google.golang.org/grpc=google.golang.org/grpc@v1.83.2</param>
   </service>
 </services>

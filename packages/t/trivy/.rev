@@ -1755,4 +1755,21 @@ dropped patch file
       bsc#1278624, CVE-2026-56855,CVE-2026-56854,CVE-2026-78662):</comment>
     <requestid>1375682</requestid>
   </revision>
+  <revision rev="103" vrev="4">
+    <srcmd5>6d6302efdd28f4b48f504488c8227dd6</srcmd5>
+    <version>0.74.0</version>
+    <time>1788773652</time>
+    <user>anag_factory</user>
+    <comment>- update vendor to address:
+  * bsc#1279395, CVE-2026-84304: trivy: github.com/grpc/grpc-go:
+        heap memory exhaustion via HTTP/2 DATA frame
+  * bsc#1279392, CVE-2026-84445: trivy: google.golang.org/grpc: DoS
+        via crash due to missing `:authority` and `Host` headers
+  * bsc#1279390, CVE-2026-84303: trivy: github.com/grpc/grpc-go:
+        xDS RBAC HTTP filter implementation issue allows for bypass
+        of authorization
+
+- Update to version 0.74.0 (bsc#1278702, CVE-2026-50163,</comment>
+    <requestid>1376017</requestid>
+  </revision>
 </revisionlist>
