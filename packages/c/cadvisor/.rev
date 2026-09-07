@@ -148,4 +148,17 @@
   * go.opentelemetry.io/otel@v1.44.0 (bsc#1276727, CVE-2026-41178)</comment>
     <requestid>1373696</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>6c231379b43a13bf4359e92dd069e892</srcmd5>
+    <version>0.60.5</version>
+    <time>1788788995</time>
+    <user>anag_factory</user>
+    <comment>- update vendor.tar to fix
+  * bsc#1279044, CVE-2026-84445
+  * bsc#1279224, CVE-2026-84304
+  * bsc#1279320, CVE-2026-84303: cadvisor: google.golang.org/grpc:
+    xDS RBAC HTTP filter implementation issue allows for bypass
+    of authorization policies</comment>
+    <requestid>1376028</requestid>
+  </revision>
 </revisionlist>

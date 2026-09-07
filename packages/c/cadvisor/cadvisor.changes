@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep  2 19:24:49 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update vendor.tar to fix
+  * bsc#1279044, CVE-2026-84445
+  * bsc#1279224, CVE-2026-84304
+  * bsc#1279320, CVE-2026-84303: cadvisor: google.golang.org/grpc:
+    xDS RBAC HTTP filter implementation issue allows for bypass
+    of authorization policies
+
+-------------------------------------------------------------------
 Tue Aug 25 18:55:51 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update vendor:

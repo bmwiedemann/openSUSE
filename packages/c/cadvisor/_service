@@ -4,6 +4,7 @@
     <param name="subdir">cmd</param>
     <param name="compression">zst</param>
     <param name="replace">go.opentelemetry.io/otel=go.opentelemetry.io/otel@v1.44.0</param>
+    <param name="replace">google.golang.org/grpc=google.golang.org/grpc@v1.83.2</param>
   </service>
   <service name="set_version" mode="manual">
     <param name="basename">cadvisor</param>
