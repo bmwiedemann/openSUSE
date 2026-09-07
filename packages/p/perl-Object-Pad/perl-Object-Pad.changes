@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Mar 26 06:21:02 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.825.0 (0.825)
+   see /usr/share/doc/packages/perl-Object-Pad/Changes
+
+  0.825   2026-03-25
+          [CHANGES]
+           * Don't provoke warnings of freed unreferenced scalars when
+             cancelling suspended methods (RT174087)
+  0.824   2026-03-24
+          [CHANGES]
+           * Support anonymous and captured `method` closures inside roles,
+             allowing them to still be invoked on known-applied class instances
+           * Requires Perl version 5.22, removing a lot of back-compatibility
+             code previously guarded by `#ifdef`s
+          [BUGFIXES]
+           * Don't crash if lexicals that capture fields are rebound using
+             refalias assignment
+  0.823   2025-12-08
+          [CHANGES]
+           * Added internals to support Feature::Compat::Class restricting the
+             `:writer` attribute to just scalars, to match perl 5.42
+           * Document and test that a class method can be called `new` and still
+             use the lexical constructor
+  0.822   2025-11-30
+          [CHANGES]
+           * Added `:lexical_new` class attribute to assist in various design
+             patterns and API shapes
+  0.821   2025-07-12
+          [CHANGES]
+           * Don't apply implied pragmata on `class` or `role` keywords if the
+             imported version is 0.821 or above
+           * Consistently refer to `BUILD`, `ADJUST` and `APPLY` as phasers, not
+             blocks
+          [BUGFIXES]
+           * Ensure that methods of lexical classes are actually able to use
+             lexical variables (RT168139)
+
+-------------------------------------------------------------------
 Thu Feb 27 05:35:09 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.820.0 (0.820)
