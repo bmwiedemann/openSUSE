@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Aug 26 15:19:51 UTC 2026 - Shresth Kumar Lal <shresthkumarlal@gmail.com> - 1.2.0
+
+- Update to version 1.2.0 
+  * Added new project scaffolding commands (new-project, new-c-project, new-exe-project).
+  * Improved support for Windows and MinGW environments (import libraries, batch shell fallbacks).
+  * Enhanced package management and bundle-install dependency resolution.
+  * Improved test runner output with clearer error reporting for failing scripts.
+  * Expanded C code generation (cgen) capabilities.
+  * Adjusted update-pkgs to avoid reinstalling existing dependencies (PR #102).
+  * Added 'jpm tasks' top-level subcommand (PR #67).
+  * Added 'jpm show-config' top-level subcommand for debugging config.
+  * Added ':no-core' config option to disable core in static binaries (PR #109).
+ 
+- Modified:
+  * jpm.spec
+
+-------------------------------------------------------------------
 Wed Feb  7 16:30:15 UTC 2024 - Jochen Breuer <brejoc@gmail.com>
 
 - Removal of redundant tarball unpacking
